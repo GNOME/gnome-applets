@@ -21,6 +21,9 @@
 #include <ctype.h>
 #include <math.h>
 
+#ifdef __FreeBSD__
+#include <sys/types.h>
+#endif
 #include <regex.h>
 #include <time.h>
 #include <unistd.h>
