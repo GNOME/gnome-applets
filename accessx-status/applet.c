@@ -334,16 +334,26 @@ static guint _sk_timeout = 0, _bk_timeout = 0;
 static gboolean
 timer_reset_slowkeys_image (gpointer user_data)
 {
-	gtk_image_set_from_stock (GTK_IMAGE (user_data), SLOWKEYS_IDLE_ICON, 
-				  icon_size_spec);
+	GdkPixbuf *pixbuf = gtk_widget_render_icon (GTK_WIDGET (user_data),
+						    SLOWKEYS_IDLE_ICON,
+						    icon_size_spec,
+						    NULL);
+	
+	gtk_image_set_from_pixbuf (GTK_IMAGE (user_data), pixbuf); 
+
 	return FALSE;
 }
 
 static gboolean
 timer_reset_bouncekeys_image (gpointer user_data)
 {
-	gtk_image_set_from_stock (GTK_IMAGE (user_data), BOUNCEKEYS_ICON, 
-				  icon_size_spec);
+	GdkPixbuf *pixbuf = gtk_widget_render_icon (GTK_WIDGET (user_data),
+						    BOUNCEKEYS_ICON,
+						    icon_size_spec,
+						    NULL);
+	
+	gtk_image_set_from_pixbuf (GTK_IMAGE (user_data), pixbuf); 
+
 	return FALSE;
 }
 
@@ -930,6 +940,8 @@ accessx_status_applet_reparent_widget (GtkWidget *widget, GtkContainer *containe
 static void
 accessx_status_applet_layout_box (AccessxStatusApplet *sapplet, GtkWidget *box, GtkWidget *stickyfoo) 
 {
+        AtkObject *atko;
+
 	accessx_status_applet_reparent_widget (sapplet->shift_indicator, GTK_CONTAINER (stickyfoo));
 	accessx_status_applet_reparent_widget (sapplet->ctrl_indicator, GTK_CONTAINER (stickyfoo));
 	accessx_status_applet_reparent_widget (sapplet->alt_indicator, GTK_CONTAINER (stickyfoo));
@@ -955,6 +967,10 @@ accessx_status_applet_layout_box (AccessxStatusApplet *sapplet, GtkWidget *box, 
 	sapplet->stickyfoo = stickyfoo;
 	sapplet->box = box;
 
+	atko = gtk_widget_get_accessible (sapplet->box);
+	atk_object_set_name (atko, "AccessX Status");
+	atk_object_set_description (atko, "Shows kkeyboard status when accessibility features are used.");
+
 	gtk_widget_show (sapplet->box);
 	gtk_widget_show (GTK_WIDGET (sapplet->applet));
 	if (GTK_WIDGET_REALIZED (sapplet->applet))
@@ -968,10 +984,10 @@ accessx_status_applet_realize (GtkWidget *widget, gpointer user_data)
 	if (!sapplet->initialized) {
 		sapplet->initialized = True;
 		accessx_status_applet_xkb_select (sapplet);
-		accessx_status_applet_init_modifiers (sapplet);
-		accessx_status_applet_update (sapplet, ACCESSX_STATUS_ALL, NULL);
 		gdk_window_add_filter (NULL, accessx_status_xkb_filter, sapplet);
 	}
+	accessx_status_applet_init_modifiers (sapplet);
+	accessx_status_applet_update (sapplet, ACCESSX_STATUS_ALL, NULL);
 	return;
 }
 
@@ -980,13 +996,15 @@ create_applet (PanelApplet *applet)
 {
 	AccessxStatusApplet *sapplet = g_new0 (AccessxStatusApplet, 1);
 	GtkWidget           *box, *stickyfoo;
-	gint large_toolbar_pixels;
+	AtkObject           *atko;
+        gint                 large_toolbar_pixels;
 		
 	sapplet->xkb = NULL;
 	sapplet->xkb_display = NULL;
 	sapplet->box = NULL;
 	sapplet->initialized = False; /* there must be a better way */
 	sapplet->applet = applet;
+	panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);
 	sapplet->orient = panel_applet_get_orient (applet);
 	if (sapplet->orient == PANEL_APPLET_ORIENT_LEFT || 
 	    sapplet->orient == PANEL_APPLET_ORIENT_RIGHT) {
@@ -1039,7 +1057,9 @@ create_applet (PanelApplet *applet)
 	gtk_widget_show (sapplet->slowfoo);
 
 	accessx_status_applet_layout_box (sapplet, box, stickyfoo);
-
+	atko = gtk_widget_get_accessible (sapplet->applet);
+	atk_object_set_name (atko, "AccessX Status");
+	atk_object_set_description (atko, "Shows kkeyboard status when accessibility features are used.");
 	return sapplet;
 }
 
@@ -1083,6 +1103,35 @@ accessx_status_applet_resize (GtkWidget *widget, int size, gpointer user_data)
 }
 
 static gboolean
+button_press_cb (GtkWidget *widget, GdkEventButton *event, AccessxStatusApplet *sapplet)
+{
+	if (event->button == 1 && event->type == GDK_2BUTTON_PRESS) 
+		dialog_cb (NULL, sapplet, NULL);
+
+	return FALSE;
+}
+
+static gboolean
+key_press_cb (GtkWidget *widget, GdkEventKey *event, AccessxStatusApplet *sapplet)
+{
+	switch (event->keyval) {
+	case GDK_KP_Enter:
+	case GDK_ISO_Enter:
+	case GDK_3270_Enter:
+	case GDK_Return:
+	case GDK_space:
+	case GDK_KP_Space:
+		dialog_cb (NULL, sapplet, NULL);
+		return TRUE;
+
+	default:
+		break;
+	}
+
+	return FALSE;
+}
+
+static gboolean
 accessx_status_applet_reset (gpointer user_data)
 {
 	AccessxStatusApplet *sapplet = user_data;
@@ -1109,6 +1158,11 @@ accessx_status_applet_fill (PanelApplet *applet)
 			  "signal::change_orient", accessx_status_applet_reorient, sapplet,
 			  "signal::change_size", accessx_status_applet_resize, sapplet,
 			  NULL);
+			  
+	g_signal_connect (sapplet->applet, "button_press_event",
+				   G_CALLBACK (button_press_cb), sapplet);
+	g_signal_connect (sapplet->applet, "key_press_event",
+				   G_CALLBACK (key_press_cb), sapplet);				   
 
 	panel_applet_setup_menu_from_file (sapplet->applet,
                                            NULL,
@@ -1127,10 +1181,8 @@ accessx_status_applet_fill (PanelApplet *applet)
 	atk_object_set_name (atk_object, _("AccessX Status"));
 	atk_object_set_description (atk_object,
 				    _("Displays current state of keyboard accessibility features"));
-
 	gtk_widget_show_all (GTK_WIDGET (sapplet->applet));
-
-	/* FIXME nasty hack to give race insurance : need to find the actual race instead */
+	/* hack for race insurance */
 	g_timeout_add (1000, accessx_status_applet_reset, sapplet);
 }
 
