@@ -22,7 +22,7 @@
 #include <gnome.h>
 #include <panel-applet.h>
 
-#define MAX_EYES 5
+#define MAX_EYES 100
 typedef struct
 {
 	GtkWidget *pbox;
@@ -37,7 +37,7 @@ typedef struct
 	PanelApplet *applet;
 	GtkWidget   *vbox;
 	GtkWidget   *hbox;
-	GtkWidget   *eyes[MAX_EYES];
+	GtkWidget   **eyes;
 	guint        timeout_id;
 	gint pointer_last_x;
 	gint pointer_last_y;

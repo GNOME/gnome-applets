@@ -1,3 +1,27 @@
+2004-02-23  Dennis Smit  <ds@nerds-incorporated.org>
+
+	* geyes.c (destroy_cb): Destroy the eye
+	box and GtkWidget eye array.
+
+	(destroy_eyes):
+	Free the GtkWidget eye array.
+
+	(setup_eyes):
+	Allocate memory for the eye array.
+
+	* geyes.h: Changed GtkWidget *eyes[MAX_EYES] into
+	GtkWidget **eyes within the EyesApplet structure.
+
+	Bumped MAX_EYES up to 100 which is basicly sanity
+	because themes with such a great number of eyes are
+	insane anyway.
+
+	* themes.c (parse_theme_file):
+	Check if the eyes in the theme is above MAX_EYES. If
+	so set the num_eyes entry to MAX_EYES.
+
+	Fixes bug #106315.
+
 2004-02-22  Dennis Smit  <ds@nerds-incorporated.org>
 
 	* themes.c (theme_dirs_create):

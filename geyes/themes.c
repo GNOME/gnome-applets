@@ -69,6 +69,8 @@ parse_theme_file (EyesApplet *eyes_applet, FILE *theme_file)
                                 token++;
                         }
                         sscanf (token, "%d", &eyes_applet->num_eyes);
+			if (eyes_applet->num_eyes > MAX_EYES)
+				eyes_applet->num_eyes = MAX_EYES;
                 } else if (strncmp (token, "eye-pixmap", strlen ("eye-pixmap")) == 0) {
                         token = strtok (NULL, "\"");
                         token = strtok (NULL, "\"");          

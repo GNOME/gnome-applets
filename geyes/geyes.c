@@ -294,6 +294,8 @@ setup_eyes (EyesApplet *eyes_applet)
         eyes_applet->hbox = gtk_hbox_new (FALSE, 0);
         gtk_box_pack_start (GTK_BOX (eyes_applet->vbox), eyes_applet->hbox, TRUE, TRUE, 0);
 
+	eyes_applet->eyes = g_new0 (GtkWidget *, eyes_applet->num_eyes);
+
         for (i = 0; i < eyes_applet->num_eyes; i++) {
                 eyes_applet->eyes[i] = gtk_image_new ();
                 if (eyes_applet->eyes[i] == NULL)
@@ -335,6 +337,8 @@ destroy_eyes (EyesApplet *eyes_applet)
 {
 	gtk_widget_destroy (eyes_applet->hbox);
 	eyes_applet->hbox = NULL;
+
+	g_free (eyes_applet->eyes);
 }
 
 static EyesApplet *
@@ -356,6 +360,8 @@ destroy_cb (GtkObject *object, EyesApplet *eyes_applet)
 	g_return_if_fail (eyes_applet);
 
 	gtk_timeout_remove (eyes_applet->timeout_id);
+	if (eyes_applet->hbox)
+		destroy_eyes (eyes_applet);
 	if (eyes_applet->tooltips)
 		g_object_unref (eyes_applet->tooltips);
 	eyes_applet->timeout_id = 0;
@@ -491,7 +497,6 @@ geyes_applet_fill (PanelApplet *applet)
 		return FALSE;
 
 	setup_eyes (eyes_applet);
-
 
 	return TRUE;
 }
