@@ -150,7 +150,8 @@ void stickynote_change_properties(StickyNote *note)
 	if (note->font)
 		gnome_font_picker_set_font_name(GNOME_FONT_PICKER(note->w_font), note->font);
 
-	gtk_dialog_run(GTK_DIALOG(note->w_properties));
+	while (gtk_dialog_run(GTK_DIALOG(note->w_properties)) == GTK_RESPONSE_HELP)
+		gnome_help_display("stickynotes_applet", "stickynotes-introduction", NULL);
 	gtk_widget_hide(note->w_properties);
 
 	stickynotes_save();
