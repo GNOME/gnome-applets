@@ -1,0 +1,11 @@
+1998-05-13  Christopher Blizzard  <blizzard@appliedtheory.com>
+
+	* bussign.c (refresh_imagefile): Does the panel close stdout by
+ 	any chance?  wget was apparently dying on a SIGPIPE from it's
+ 	output.
+
+	* Makefile.am (sys_DATA): Add the stuff to install the desktop
+ 	file.
+
+	* bussign_applet.desktop: New desktop file.
+

@@ -20,3 +20,8 @@ bussign_applet_LDADD = ../../panel/libpanel_applet.la \
 		     $(GNOMEUI_LIBS) $(INTLLIBS)
 
 bussign_applet_LINK = $(CXXLINK)
+
+EXTRA_DIST = bussign_applet.desktop
+
+sysdir = $(datadir)/applets/Amusements
+sys_DATA = bussign_applet.desktop

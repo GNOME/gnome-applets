@@ -155,8 +155,14 @@ create_bussign_widget(GtkWidget *a_parent)
   gtk_widget_push_colormap(gdk_imlib_get_colormap());
   l_style = gtk_widget_get_style(a_parent);
   
+  fprintf(stderr, "Refreshing Image.\n");
   /* refresh the image */
-  refresh_imagefile();
+  if (refresh_imagefile() < 0)
+    {
+      fprintf(stderr, "Failed to exec wget: %s\n", strerror(errno));
+      exit(1);
+    }
+    
   /* load the file */
   sg_bus = gdk_imlib_load_image(IMAGE_FILENAME);
   /* render it */
@@ -190,6 +196,7 @@ static int
 refresh_imagefile(void)
 {
   char *l_image_location = NULL;
+  int   l_return = 0;
   
   /*
     l_image_location = g_malloc(strlen(sg_properties.url) + 5 + 2);
@@ -198,11 +205,11 @@ refresh_imagefile(void)
   */
   
   unlink (IMAGE_FILENAME);
-  system("wget http://www1.netscape.com/fishcam/livefishcamsmall.cgi?livesigncamsmall");
+  l_return = system("wget -q http://www1.netscape.com/fishcam/livefishcamsmall.cgi?livesigncamsmall");
   /* 
      g_free(l_image_location);
   */
-  return 0;
+  return l_return;
 }
 
 static int
