@@ -401,7 +401,8 @@ show_history_signal(GtkWidget *widget, gpointer data)
 static gint 
 file_browser_ok_signal(GtkWidget *widget, gpointer file_select)
 {
-    PanelApplet *applet = g_object_get_data (G_OBJECT (file_select), "applet");
+    GtkWidget *fs = file_select;
+    PanelApplet *applet = g_object_get_data (G_OBJECT (fs), "applet");
     /* get selected file name */
     strcpy(browsed_filename, (char *) gtk_file_selection_get_filename(GTK_FILE_SELECTION(file_select)));
 
@@ -422,7 +423,7 @@ gint
 show_file_browser_signal(GtkWidget *widget, gpointer data)
 {
     /* FIXME: write this routine */
-    PanelApplet *applet;
+    PanelApplet *applet = data;
     GtkWidget *file_select;
 
     /* build file select dialog */

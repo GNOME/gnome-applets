@@ -162,12 +162,15 @@ redraw_applet(PanelApplet *applet)
     GtkWidget *handle;
     GtkWidget *icon;
     GtkWidget *vbox;
+    GtkTooltips *tooltips;
     int size_frames = 0;
     int size_status_line = 18;
 
     static GtkWidget *applet_vbox = NULL;
     static GtkWidget *applet_inner_vbox = NULL;
     static int first_time = TRUE;   
+    
+    tooltips = gtk_tooltips_new ();
     
     prop = g_object_get_data (G_OBJECT (applet), "prop");
 
@@ -240,11 +243,8 @@ redraw_applet(PanelApplet *applet)
     gtk_widget_set_usize(GTK_WIDGET(button), 13, 10);
     icon = gnome_pixmap_new_from_xpm_d (browser_mini_xpm);
     gtk_container_add(GTK_CONTAINER(button), icon);
-#if 0 /* FIXME */
-    applet_widget_set_widget_tooltip(APPLET_WIDGET(applet),
-				     GTK_WIDGET(button),
-				     _("Browser"));
-#endif
+
+    gtk_tooltips_set_tip (tooltips, button, _("Browser"), NULL);
     gtk_box_pack_start(GTK_BOX(hbox_buttons), button, TRUE, TRUE, 0);
 
     /* add history button */
@@ -255,11 +255,8 @@ redraw_applet(PanelApplet *applet)
     gtk_widget_set_usize(GTK_WIDGET(button), 13, 10);
     icon = gnome_pixmap_new_from_xpm_d (history_mini_xpm);
     gtk_container_add(GTK_CONTAINER(button), icon);
-#if 0 /* FIXME */
-    applet_widget_set_widget_tooltip(APPLET_WIDGET(applet),
-				     GTK_WIDGET(button),
-				     _("History"));
-#endif
+
+    gtk_tooltips_set_tip (tooltips, button, _("History"), NULL);
     gtk_box_pack_end(GTK_BOX(hbox_buttons), button, TRUE, TRUE, 0);
 
     /* add buttons into frame */
@@ -335,9 +332,6 @@ redraw_applet(PanelApplet *applet)
     gtk_box_pack_start(GTK_BOX(applet_vbox), applet_inner_vbox, TRUE, TRUE, 0);
 
     if(first_time)
-#if 0
-	applet_widget_add (APPLET_WIDGET (applet), applet_vbox);
-#endif
         gtk_container_add(GTK_CONTAINER(applet), applet_vbox);
     first_time = FALSE;
 
