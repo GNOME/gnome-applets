@@ -24,7 +24,6 @@
 G_BEGIN_DECLS
 
 void properties_load(DriveData *dd);
-void properties_save(DriveData *dd);
 void properties_show(PanelApplet *applet, gpointer data);
 
 G_END_DECLS
