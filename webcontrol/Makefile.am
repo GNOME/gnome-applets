@@ -13,10 +13,13 @@ webcontrol_applet_LDADD = \
 		     $(GNOME_LIBDIR) \
 		     $(GNOME_APPLETS_LIBS) $(INTLLIBS) 
 
-EXTRA_DIST = webcontrol_applet.desktop webcontrol_applet.gnorba
-
 sysdir = $(datadir)/applets/Network
-sys_DATA = webcontrol_applet.desktop
+sys_predata = webcontrol_applet.desktop.in
+sys_DATA = $(sys_predata:.desktop.in=.desktop)
+@XML_I18N_MERGE_DESKTOP_RULE@
 
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = webcontrol_applet.gnorba
+
+EXTRA_DIST = \
+	$(gnorba_DATA) $(sys_DATA) $(sys_predata)

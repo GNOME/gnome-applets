@@ -21,14 +21,17 @@ battery_applet_LDADD = \
 			$(GNOME_LIBDIR)  \
 			$(GNOME_APPLETS_LIBS) $(INTLLIBS)
 
-EXTRA_DIST = battery_applet.desktop battery_applet.gnorba \
-	     bolt.xpm bolt-horiz.xpm gnome-battery.png
-
 sysdir = $(datadir)/applets/Monitors
-sys_DATA = battery_applet.desktop
+sys_predata = battery_applet.desktop.in
+sys_DATA = $(sys_predata:.desktop.in=.desktop)
+@XML_I18N_MERGE_DESKTOP_RULE@
 
 pixmapdir = $(datadir)/pixmaps
 pixmap_DATA = gnome-battery.png
 
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = battery_applet.gnorba
+
+EXTRA_DIST = $(gnorba_DATA) $(sys_DATA) $(sys_predata) \
+	     bolt.xpm bolt-horiz.xpm gnome-battery.png
+

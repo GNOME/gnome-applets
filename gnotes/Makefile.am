@@ -23,19 +23,20 @@ gnotes_applet_LDADD = \
 	$(GNOME_XML_LIB) \
 	$(INTLLIBS)
 
-EXTRA_DIST = \
-        gnotes_applet.desktop \
-	gnotes_applet.h \
-	gnotes_session.h \
-        gnotes_applet.gnorba \
-		gnome-gnotes.png
-
 sysdir = $(datadir)/applets/Utility
-sys_DATA = gnotes_applet.desktop
+sys_predata = gnotes_applet.desktop.in
+sys_DATA = $(sys_predata:.desktop.in=.desktop)
+@XML_I18N_MERGE_DESKTOP_RULE@
 
 pixmapsdir = $(datadir)/pixmaps
 pixmaps_DATA = gnome-gnotes.png
 
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = gnotes_applet.gnorba
+
+EXTRA_DIST = \
+	gnotes_applet.h \
+	gnotes_session.h \
+	gnome-gnotes.png \
+	$(gnorba_DATA) $(sys_DATA) $(sys_predata)
 

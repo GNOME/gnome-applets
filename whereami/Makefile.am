@@ -8,12 +8,13 @@ whereami_applet_SOURCES = whereami.c
 
 whereami_applet_LDADD = $(GNOME_LIBDIR) $(GNOME_APPLETS_LIBS) $(INTLLIBS) 
 
-EXTRA_DIST = AUTHORS README TODO	\
-	whereami_applet.desktop		\
-	whereami_applet.gnorba
-
 sysdir = $(datadir)/applets/Utility
-sys_DATA = whereami_applet.desktop
+sys_predata = whereami_applet.desktop.in
+sys_DATA = $(sys_predata:.desktop.in=.desktop)
+@XML_I18N_MERGE_DESKTOP_RULE@
 
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = whereami_applet.gnorba
+
+EXTRA_DIST = AUTHORS README TODO	\
+	$(gnorba_DATA) $(sys_DATA) $(sys_predata)

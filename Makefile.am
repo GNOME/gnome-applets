@@ -112,5 +112,8 @@ DIST_SUBDIRS = \
 EXTRA_DIST = \
 	gnome-applets.spec.in	\
 	gnome-applets.spec	\
-	applet-docs.make
+	applet-docs.make	\
+	xml-i18n-update	\
+	xml-i18n-extract	\
+	xml-i18n-merge
 

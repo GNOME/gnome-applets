@@ -14,7 +14,9 @@ quicklaunch_applet_LDADD = \
 	$(GNOME_APPLETS_LIBS) $(INTLLIBS) 
 
 sysdir = $(datadir)/applets/Utility
-sys_DATA = quicklaunch_applet.desktop
+sys_predata = quicklaunch_applet.desktop.in
+sys_DATA = $(sys_predata:.desktop.in=.desktop)
+@XML_I18N_MERGE_DESKTOP_RULE@
 
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = quicklaunch_applet.gnorba
@@ -22,4 +24,6 @@ gnorba_DATA = quicklaunch_applet.gnorba
 pixmapsdir = $(datadir)/pixmaps
 pixmaps_DATA = gnome-quicklaunch.png
 
-EXTRA_DIST = $(sys_DATA) $(gnorba_DATA) $(pixmaps_DATA)
+EXTRA_DIST = $(pixmaps_DATA)	\
+	$(gnorba_DATA) $(sys_DATA) $(sys_predata)
+

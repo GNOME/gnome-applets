@@ -34,17 +34,19 @@ SUBDIRS= gkb xmodmap descs
 
 GKB_ICON = gkb.png gkb-icon.png
 
-EXTRA_DIST = gkb_applet.desktop $(GKB_ICON) \
-	gkb_applet.gnorba 
-
 sysdir = $(datadir)/applets/Utility
-sys_DATA = gkb_applet.desktop
+sys_predata = gkb_applet.desktop.in
+sys_DATA = $(sys_predata:.desktop.in=.desktop)
+@XML_I18N_MERGE_DESKTOP_RULE@
 
 gkbicondir = $(datadir)/pixmaps
 gkbicon_DATA = $(GKB_ICON)
 
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = gkb_applet.gnorba
+
+EXTRA_DIST = $(GKB_ICON) \
+	$(gnorba_DATA) $(sys_DATA) $(sys_predata)
 
 gkb_xmmap: gkb_xmmap.in ../config.status
 	sed "s,\$${prefix},$(prefix),g" \

@@ -29,17 +29,18 @@ gweather_LDADD = \
 	$(GHTTP_LIB)
 
 
-EXTRA_DIST = \
-	Locations		\
-	gweather.desktop	\
-	gweather.gnorba
-
 gweathergnorbadir = $(sysconfdir)/CORBA/servers
 gweathergnorba_DATA = gweather.gnorba
 
 gweatherappletdir = $(datadir)/applets/Utility
-gweatherapplet_DATA = gweather.desktop
+gweatherapplet_predata = gweather.desktop.in
+gweatherapplet_DATA = $(gweatherapplet_predata:.desktop.in=.desktop)
+@XML_I18N_MERGE_DESKTOP_RULE@
 
 gweatherlocationsdir = $(datadir)/gweather
 gweatherlocations_DATA = Locations
 
+EXTRA_DIST = \
+	Locations		\
+	$(gweathergnorba_DATA)	\
+	$(gweatherapplet_DATA)	$(gweatherapplet_predata)

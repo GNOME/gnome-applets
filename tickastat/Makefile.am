@@ -28,7 +28,9 @@ tickastat_applet_LDADD = \
 	$(GNOME_APPLETS_LIBS) $(INTLLIBS)
 
 sysdir = $(datadir)/applets/Utility
-sys_DATA = tickastat_applet.desktop
+sys_predata = tickastat_applet.desktop.in
+sys_DATA = $(sys_predata:.desktop.in=.desktop)
+@XML_I18N_MERGE_DESKTOP_RULE@
 
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = tickastat_applet.gnorba
@@ -36,5 +38,5 @@ gnorba_DATA = tickastat_applet.gnorba
 pixmapdir = $(datadir)/pixmaps
 pixmap_DATA = gnome-ticker.png
 
-EXTRA_DIST = $(sys_DATA) $(gnorba_DATA) noimage.xpm gnome-ticker.png
+EXTRA_DIST = $(sys_DATA) $(gnorba_DATA) $(sys_predata) noimage.xpm gnome-ticker.png
 

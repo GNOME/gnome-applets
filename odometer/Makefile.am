@@ -15,7 +15,9 @@ odometer_applet_LDADD = \
 		$(GNOME_APPLETS_LIBS) $(INTLLIBS) 
 
 sysdir = $(datadir)/applets/Amusements
-sys_DATA = odometer_applet.desktop
+sys_predata = odometer_applet.desktop.in
+sys_DATA = $(sys_predata:.desktop.in=.desktop)
+@XML_I18N_MERGE_DESKTOP_RULE@
 
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = odometer_applet.gnorba
@@ -25,6 +27,5 @@ pixmap_DATA = gnome-odometer.png
 
 EXTRA_DIST = \
 	README.themes	\
-	$(sys_DATA)	\
-	$(gnorba_DATA)	\
 	$(pixmap_DATA)
+	$(gnorba_DATA) $(sys_DATA) $(sys_predata)

@@ -24,17 +24,19 @@ jbc_applet_LDADD = \
 	$(CANVAS_PIXBUF_LIBS) \
 	$(INTLLIBS)
 
-EXTRA_DIST = jbc_applet.desktop jbc_applet.gnorba README AUTHORS \
-             ChangeLog gnome-jbc.png
-
 sysdir = $(datadir)/applets/Clocks
-sys_DATA = jbc_applet.desktop
+sys_predata = jbc_applet.desktop.in
+sys_DATA = $(sys_predata:.desktop.in=.desktop)
+@XML_I18N_MERGE_DESKTOP_RULE@
 
 pixmapsdir = $(datadir)/pixmaps
 pixmaps_DATA = gnome-jbc.png
 
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = jbc_applet.gnorba
+
+EXTRA_DIST = README AUTHORS ChangeLog gnome-jbc.png	\
+	$(gnorba_DATA) $(sys_DATA) $(sys_predata)
 
 
 # dist-hook:

@@ -17,13 +17,15 @@ modemlights_applet_LDADD = \
 		     $(GNOME_LIBDIR) \
 		     $(GNOME_APPLETS_LIBS) $(INTLLIBS) 
 
-EXTRA_DIST = \
-	modemlights_applet.desktop	\
-	digits.xpm			\
-	modemlights_applet.gnorba
-
 sysdir = $(datadir)/applets/Network
-sys_DATA = modemlights_applet.desktop
+sys_predata = modemlights_applet.desktop.in
+sys_DATA = $(sys_predata:.desktop.in=.desktop)
+@XML_I18N_MERGE_DESKTOP_RULE@
 
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = modemlights_applet.gnorba
+
+EXTRA_DIST = \
+	digits.xpm			\
+	$(gnorba_DATA) $(sys_DATA) $(sys_predata)
+

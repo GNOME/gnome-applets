@@ -1,3 +1,5 @@
+SUBDIRS = def_theme themes pvd docs
+
 INCLUDES = -I$(srcdir) -I$(builddir) \
 	-I$(top_srcdir) -I$(top_builddir)	\
 	-I$(top_srcdir)/intl -I$(top_builddir)/intl		\
@@ -44,15 +46,15 @@ sound_monitor_applet_LDADD = \
 	$(GNOME_APPLETS_LIBS) $(INTLLIBS)	\
 	@PIXBUF_LIBS@
 
-EXTRA_DIST = \
-	sound-monitor_applet.desktop	\
-	sound-monitor_applet.gnorba	\
-	THEME-SPEC
-
 sysdir = $(datadir)/applets/Multimedia
-sys_DATA = sound-monitor_applet.desktop
+sys_predata = sound-monitor_applet.desktop.in
+sys_DATA = $(sys_predata:.desktop.in=.desktop)
+@XML_I18N_MERGE_DESKTOP_RULE@
 
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = sound-monitor_applet.gnorba
 
-SUBDIRS = def_theme themes pvd docs
+EXTRA_DIST = \
+	THEME-SPEC	\
+	$(gnorba_DATA) $(sys_DATA) $(sys_predata)
+

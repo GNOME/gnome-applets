@@ -39,8 +39,21 @@ clockmail_applet_LDADD = \
 		$(GNOME_APPLETS_LIBS) $(INTLLIBS)	\
 		@PIXBUF_LIBS@
 
+clocksdir = $(datadir)/applets/Clocks
+clocks_DATA = clockmail_applet.desktop
+
+sysdir = $(datadir)/applets/Network
+sys_predata = clockmail_applet.desktop
+sys_DATA = $(sys_predata:.desktop.in=.desktop)
+@XML_I18N_MERGE_DESKTOP_RULE@
+
+gnorbadir  = $(sysconfdir)/CORBA/servers
+gnorba_DATA = clockmail_applet.gnorba
+
+pixmapdir = $(datadir)/pixmaps
+pixmap_DATA = gnome-clockmail.png
+
 EXTRA_DIST = \
-	clockmail_applet.desktop	\
 	backgrnd.xpm			\
 	backgrnd_tiny.xpm		\
 	backgrnd_tiny_v.xpm		\
@@ -53,18 +66,5 @@ EXTRA_DIST = \
 	clockmaildata			\
 	THEME-SPEC			\
 	gnome-clockmail.png		\
-	clockmail_applet.gnorba
-
-clocksdir = $(datadir)/applets/Clocks
-clocks_DATA = clockmail_applet.desktop
-
-netdir = $(datadir)/applets/Network
-net_DATA = clockmail_applet.desktop
-
-gnorbadir  = $(sysconfdir)/CORBA/servers
-gnorba_DATA = clockmail_applet.gnorba
-
-pixmapdir = $(datadir)/pixmaps
-pixmap_DATA = gnome-clockmail.png
-
+	$(gnorba_DATA) $(sys_DATA) $(sys_predata)
 

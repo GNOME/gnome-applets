@@ -16,8 +16,15 @@ drivemount_applet_LDADD = \
 		     $(GNOME_LIBDIR) \
 		     $(GNOME_APPLETS_LIBS) $(INTLLIBS) 
 
+sysdir = $(datadir)/applets/Utility
+sys_predata = drivemount_applet.desktop.in
+sys_DATA = $(sys_predata:.desktop.in=.desktop)
+@XML_I18N_MERGE_DESKTOP_RULE@
+
+gnorbadir  = $(sysconfdir)/CORBA/servers
+gnorba_DATA = drivemount_applet.gnorba
+
 EXTRA_DIST = \
-	drivemount_applet.desktop	\
 	cdrom_h_in.xpm			\
 	cdrom_h_out.xpm			\
 	cdrom_v_in.xpm			\
@@ -38,10 +45,4 @@ EXTRA_DIST = \
 	jazdrive_h_out.xpm		\
 	jazdrive_v_in.xpm		\
 	jazdrive_v_out.xpm		\
-	drivemount_applet.gnorba
-
-sysdir = $(datadir)/applets/Utility
-sys_DATA = drivemount_applet.desktop
-
-gnorbadir  = $(sysconfdir)/CORBA/servers
-gnorba_DATA = drivemount_applet.gnorba
+	$(gnorba_DATA) $(sys_DATA) $(sys_predata)

@@ -33,15 +33,20 @@ appletdir	= $(datadir)/applets
 
 Monitorsdir	= $(appletdir)/Monitors
 
-Monitors_DATA	= cpuload_applet.desktop memload_applet.desktop \
-		  swapload_applet.desktop netload_applet.desktop \
-		  loadavg_applet.desktop
+Monitors_predata	= cpuload_applet.desktop.in
+		memload_applet.desktop.in swapload_applet.desktop.in	\
+		netload_applet.desktop.in loadavg_applet.desktop.in
+Monitors_DATA = $(Monitors_predata:.desktop.in=.desktop)
+@XML_I18N_MERGE_DESKTOP_RULE@
 
 pixmaps = gnome-cpu.png gnome-mem.png
 pixmapdir = $(datadir)/pixmaps
 pixmap_DATA = $(pixmaps)
 
-EXTRA_DIST	= $(Monitors_DATA) multiload_applet.gnorba $(pixmaps)
-
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = multiload_applet.gnorba 
+
+EXTRA_DIST =	\
+		$(Monitors_DATA) $(Monitors_predata)	\
+		$(gnorba_DATA) $(pixmaps)
+

@@ -12,11 +12,15 @@ gtik2_applet_LDADD = 	$(GNOME_LIBDIR) \
 			$(GNOME_APPLETS_LIBS) \
 			$(GHTTP_LIB)
 
-EXTRA_DIST = \
-	gtik2_applet.desktop gtik2_applet.gnorba README AUTHORS ChangeLog
-
 sysdir = $(datadir)/applets/Network
-sys_DATA = gtik2_applet.desktop
+sys_predata = gtik2_applet.desktop.in
+sys_DATA = $(sys_predata:.desktop.in=.desktop)
+@XML_I18N_MERGE_DESKTOP_RULE@
 
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = gtik2_applet.gnorba
+
+EXTRA_DIST = \
+	README AUTHORS ChangeLog	\
+	$(gnorba_DATA) $(sys_DATA) $(sys_predata)
+

@@ -20,10 +20,13 @@ mixer_applet_LDADD = \
 		     $(GNOME_LIBDIR) \
 		     $(GNOME_APPLETS_LIBS) $(INTLLIBS) 
 
-EXTRA_DIST = mixer_applet.desktop mixer_applet.gnorba
-
 sysdir = $(datadir)/applets/Multimedia
-sys_DATA = mixer_applet.desktop
+sys_predata = mixer_applet.desktop.in
+sys_DATA = $(sys_predata:.desktop.in=.desktop)
+@XML_I18N_MERGE_DESKTOP_RULE@
 
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = mixer_applet.gnorba
+
+EXTRA_DIST = $(gnorba_DATA) $(sys_DATA) $(sys_predata)
+

@@ -27,15 +27,13 @@ asclock_applet_LDADD = \
 		     $(GNOME_LIBDIR) \
 		     $(GNOME_APPLETS_LIBS) $(INTLLIBS) 
 
-EXTRA_DIST = \
-	asclock_applet.desktop	\
-	asclock_applet.gnorba
-
 sysdir = $(datadir)/applets/Clocks
-sys_DATA = asclock_applet.desktop
+sys_predata = asclock_applet.desktop.in
+sys_DATA = $(sys_predata:.desktop.in=.desktop)
 
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = asclock_applet.gnorba
 
 themesdir    = $(datadir)/asclock/
  
+EXTRA_DIST = $(gnorba_DATA) $(sys_DATA) $(sys_predata)

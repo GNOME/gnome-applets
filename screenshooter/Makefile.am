@@ -22,11 +22,14 @@ pngdir = $(datadir)/pixmaps
 png_DATA = screenshooter_applet.png
 
 sysdir = $(datadir)/applets/Utility
-sys_DATA = screenshooter_applet.desktop
+sys_predata = screenshooter_applet.desktop.in
+sys_DATA = $(sys_predata:.desktop.in=.desktop)
+@XML_I18N_MERGE_DESKTOP_RULE@
 
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = screenshooter_applet.gnorba
 
-EXTRA_DIST = $(gnorba_DATA) $(sys_DATA) $(png_DATA) $(scrshot_SCRIPTS)
+EXTRA_DIST = $(png_DATA) $(scrshot_SCRIPTS)	\
+	$(gnorba_DATA) $(sys_DATA) $(sys_predata)
 
 SUBDIRS = docs

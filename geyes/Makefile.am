@@ -22,7 +22,9 @@ EXTRA_DIST = geyes_applet.desktop \
 	     gnome-eyes.png
 
 sysdir = $(datadir)/applets/Amusements
-sys_DATA = geyes_applet.desktop
+sys_predata = geyes_applet.desktop.in
+sys_DATA = $(sys_predata:.desktop.in=.desktop)
+@XML_I18N_MERGE_DESKTOP_RULE@
 
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = geyes_applet.gnorba 
@@ -32,4 +34,6 @@ themesdir = $(datadir)/geyes
 pixmapdir = $(datadir)/pixmaps
 pixmap_DATA = gnome-eyes.png
 
-EXTRA_DIST = README.themes $(sys_DATA) $(gnorba_DATA) $(pixmap_DATA)
+EXTRA_DIST = README.themes $(pixmap_DATA)	\
+	$(gnorba_DATA) $(sys_DATA) $(sys_predata)
+

@@ -20,7 +20,9 @@ typesdir = $(datadir)/bug-applet
 types_DATA = bugtypes.xml
 
 sysdir = $(datadir)/applets/Utility
-sys_DATA = bug-applet.desktop
+sys_predata = bug-applet.desktop.in
+sys_DATA = $(sys_predata:.desktop.in=.desktop)
+@XML_I18N_MERGE_DESKTOP_RULE@
 
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = bug-applet.gnorba
@@ -30,6 +32,5 @@ pixmaps_DATA = gnome-bug-tracker.png
 
 EXTRA_DIST = \
 	$(types_DATA)	\
-	$(sys_DATA)	\
-	$(gnorba_DATA) \
-	$(pixmaps_DATA)
+	$(pixmaps_DATA)	\
+	$(gnorba_DATA) $(sys_DATA) $(sys_predata)

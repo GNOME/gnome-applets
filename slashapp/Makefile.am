@@ -14,16 +14,20 @@ slash_applet_LDADD = \
 		     $(GNOME_APPLETS_LIBS) $(INTLLIBS)      \
                      $(GHTTP_LIB) $(GNOME_XML_LIB)
 
-EXTRA_DIST = \
-	slash_applet.desktop slashsplash.xpm gnotices.xpm \
-	slash_applet.gnorba noimage.xpm back.xpm \
-	slashapp.png
-
 sysdir = $(datadir)/applets/Network
-sys_DATA = slash_applet.desktop
+sys_predata = slash_applet.desktop.in
+sys_DATA = $(sys_predata:.desktop.in=.desktop)
+@XML_I18N_MERGE_DESKTOP_RULE@
 
 pixmapdir = $(datadir)/pixmaps
 pixmap_DATA = slashapp.png
 
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = slash_applet.gnorba
+
+EXTRA_DIST = \
+	slashsplash.xpm gnotices.xpm \
+	noimage.xpm back.xpm \
+	slashapp.png	\
+	$(gnorba_DATA) $(sys_DATA) $(sys_predata)
+

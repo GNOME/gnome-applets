@@ -13,14 +13,18 @@ fifteen_applet_LDADD = \
 		       $(GNOME_LIBDIR) \
 		       $(GNOME_APPLETS_LIBS) $(INTLLIBS) 
 
-EXTRA_DIST = \
-	fifteen_applet.desktop fifteen_applet.gnorba gnome-fifteen.png
-
 sysdir = $(datadir)/applets/Amusements
-sys_DATA = fifteen_applet.desktop
+sys_predata = fifteen_applet.desktop.in
+sys_DATA = $(sys_predata:.desktop.in=.desktop)
+@XML_I18N_MERGE_DESKTOP_RULE@
 
 pixmapdir = $(datadir)/pixmaps
 pixmap_DATA = gnome-fifteen.png
 
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = fifteen_applet.gnorba
+
+EXTRA_DIST = \
+	$(pixmap_DATA)	\
+	$(gnorba_DATA) $(sys_DATA) $(sys_predata)
+	

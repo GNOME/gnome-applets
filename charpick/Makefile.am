@@ -15,16 +15,18 @@ charpick_applet_LDADD = \
 		       $(GNOME_LIBDIR) \
 		       $(GNOME_APPLETS_LIBS) $(INTLLIBS) 
 
-EXTRA_DIST = \
-	charpick_applet.desktop	\
-	charpick_applet.gnorba \
-	charpick.png
-
 charpickbitmapsdir = $(datadir)/pixmaps/
 charpickbitmaps_DATA = charpick.png
 
 sysdir = $(datadir)/applets/Utility
-sys_DATA = charpick_applet.desktop
+sys_predata = charpick_applet.desktop.in
+sys_DATA = $(sys_predata:.desktop.in=.desktop)
+@XML_I18N_MERGE_DESKTOP_RULE@
 
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = charpick_applet.gnorba
+
+EXTRA_DIST = \
+	charpick.png	\
+	$(gnorba_DATA) $(sys_DATA) $(sys_predata)
+

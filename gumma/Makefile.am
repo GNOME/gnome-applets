@@ -26,20 +26,22 @@ gumma_SOURCES = \
 	led.c		\
 	led.h
 
+sysdir = $(datadir)/applets/Multimedia
+sys_predata = gumma.desktop.in
+sys_DATA = $(sys_predata:.desktop.in=.desktop)
+@XML_I18N_MERGE_DESKTOP_RULE@
+
+gnorbadatadir = $(sysconfdir)/CORBA/servers
+gnorbadata_DATA = gumma.gnorba
+
+DIST_SUBDIRS = cd gqmpeg xmms
+
 EXTRA_DIST = \
-	gumma.desktop		\
-	gumma.gnorba		\
 	pixmaps/eject.xpm	\
 	pixmaps/led.xpm		\
 	pixmaps/next.xpm	\
 	pixmaps/play-pause.xpm	\
 	pixmaps/prev.xpm	\
-	pixmaps/stop.xpm
+	pixmaps/stop.xpm	\
+	$(gnorba_DATA) $(sys_DATA) $(sys_predata)
 
-DIST_SUBDIRS = cd gqmpeg xmms
-
-sysdatadir = $(datadir)/applets/Multimedia
-sysdata_DATA = gumma.desktop
-
-gnorbadatadir = $(sysconfdir)/CORBA/servers
-gnorbadata_DATA = gumma.gnorba
