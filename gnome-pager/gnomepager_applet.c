@@ -88,7 +88,6 @@ void                enter_cb(GtkWidget * widget, Task * t);
 void                leave_cb(GtkWidget * widget, Task * t);
 void                add_task(Window win);
 void                del_task(Window win);
-void                client_prop_change_cb(GtkWidget * widget, GdkEvent * ev, Task * t);
 Task               *find_task(Window win);
 void                match_tasks(Window * win, guint num);
 void                update_tasks(void);
@@ -431,11 +430,13 @@ client_prop_change_cb(GtkWidget * widget, GdkEvent * ev, Task * t)
       gtk_label_set(GTK_LABEL(t->label), _("??"));
       gtk_label_set(GTK_LABEL(t->_label), _("??"));
     }
-      
+/*
   gtk_tooltips_set_tip(GTK_TOOLTIPS(t->tooltip),
 		       t->widget, t->name, t->name);
   gtk_tooltips_set_tip(GTK_TOOLTIPS(t->_tooltip),
 		       t->_widget, t->name, t->name);
+ */
+  
   pstick = t->sticky;
   pdesk = t->desktop;
   t->iconified = 0;
