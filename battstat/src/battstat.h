@@ -56,7 +56,6 @@ typedef struct _ProgressData {
   GtkTooltips *progressy_tip;
   GtkWidget *docklabel;
   GtkWidget *aclabel;
-  GtkWidget *fontlabel;
   GtkWidget *progdir_radio;
   GtkWidget *radio_orient_horizont;
   GtkWidget *radio_lay_batt_on;

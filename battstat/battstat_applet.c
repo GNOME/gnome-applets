@@ -1,3 +1,4 @@
+/* -*- Mode: C; tab-width: 2; indent-tabs-mode: t; c-basic-offset: 2 -*- */
 /* battstat        A GNOME battery meter for laptops. 
  * Copyright (C) 2000 by Jörgen Pehrson <jp@spektr.eu.org>
  *
@@ -17,7 +18,7 @@
  *
  * May, 2000. Implemented on FreeBSD 4.0-RELEASE (Compaq Armada M700)
  *
-$Id$
+ $Id$
  */
 
 #ifdef HAVE_CONFIG_H
@@ -47,7 +48,7 @@ $Id$
 #include <time.h>
 #include <unistd.h>
 
-#include <gnome.h>
+#include <glade/glade.h>
 #include <applet-widget.h>
 #include <status-docklet.h>
 
@@ -290,17 +291,17 @@ load_font (gpointer data)
   }
 }
 
-void
-draw_meter ( gpointer battdata, gpointer meterdata ) 
-{
+/* void */
+/* draw_meter ( gpointer battdata, gpointer meterdata )  */
+/* { */
 
-}
+/* } */
 
 gint
 pixmap_timeout( gpointer data )
 {
   ProgressData *battery = data;
-  MeterData *meter;
+/*   MeterData *meter; */
   GdkColor *color, *darkcolor;
   static guint flash=FALSE;
   static guint lastapm=1000;
@@ -530,9 +531,9 @@ pixmap_timeout( gpointer data )
 	  }
 	}
       }
-
+			
       if(battery->horizont)
-	gdk_draw_pixmap(battery->pixmapwid->window,
+				gdk_draw_pixmap(battery->pixmapwid->window,
 			battery->pixgc,
 			battery->pixmap,
 			0,0,
@@ -805,41 +806,21 @@ destroy_about (GtkWidget *w, gpointer data)
 void
 about_cb (AppletWidget *widget, gpointer data)
 {
-  ProgressData *battstat = data;
-  char *authors[7];
- 
-  if (DEBUG) g_print("about_cb()\n");
+	GtkWidget   *about_box;
+  char        *authors[] = { "Jörgen Pehrson <jp@spektr.eu.org>",
+														 NULL };
+	
+	about_box = gnome_about_new (
+		/* The long name of the applet in the About dialog.*/
+		_("Battery status utility"), VERSION,
+		_("(C) 2000 The Gnulix Society"),
+		(const char **) authors,
+		/* Longer description of the applet in the About dialog.*/
+		_("This utility show the status of your laptop battery."),
+		"battstat-tesla.xpm");
 
-  if (battstat->about_box != NULL) {
-    gdk_window_show(battstat->about_box->window);
-    gdk_window_raise(battstat->about_box->window);
-    return;
-  }
-  authors[0] = "Jörgen Pehrson <jp@spektr.eu.org>";
-  authors[1] = "Patrik Grip-Jansson <patrikj@gnulix.org>";
-  authors[2] = "Cezary Jackiewicz <cjackiewicz@poczta.onet.pl>";
-  authors[3] = "Joe Ammond <jra@twinight.org>";
-  authors[4] = "Mikael Hallendal <micke@codefactory.se>";
-  authors[5] = "Thomas Hood <jdthood@mail.com>";
-  authors[6] = NULL;
-
-  battstat->about_box =
-    gnome_about_new (
-		     /* The long name of the applet in the About dialog.*/
-		     _("Battery status utility"), VERSION,
-                     _("(C) 2000 The Gnulix Society"),
-                     (const char **) authors,
-		     /* Longer description of the applet in the About dialog.*/
-		     _("This utility show the status of your laptop battery."),
-                     "battstat-tesla.xpm");
-
-  gtk_signal_connect (GTK_OBJECT (battstat->about_box), "destroy",
-                      GTK_SIGNAL_FUNC (destroy_about), battstat);
-
-  gtk_widget_show (battstat->about_box);
-  return;
+  gtk_widget_show (about_box);
 }
-
 
 gint
 applet_save_session(GtkWidget *w,
@@ -1187,13 +1168,6 @@ simul_cb(GtkWidget *ignored, gpointer data)
 		     pixel_offset_top[i], i+2,
 		     pixel_offset_top[i]+progress_value, i+2);
     }
-    
-    gdk_draw_pixmap(battery->testpixmapwid->window,
-		    battery->testpixgc,
-		    battery->testpixmap,
-		    0,0,
-		    0,2,
-		    -1,-1);
   } else {
     progress_value = PROGLEN*slidervalue/100.0;
     
@@ -1220,13 +1194,6 @@ simul_cb(GtkWidget *ignored, gpointer data)
 		       x, i+2);
       }
     }
-    gdk_draw_pixmap(battery->testpixmapwid->window,
-		    battery->testpixgc,
-		    battery->testpixmap,
-		    0,0,
-		    0,2,
-		    -1,-1);
-
   }
   return;
 }
@@ -1272,10 +1239,10 @@ toggle_value_changed_cb ( GtkToggleButton *ignored, gpointer data )
     gtk_widget_set_sensitive(GTK_WIDGET (battstat->beep_toggle), FALSE);
 
   if(battstat->own_font) {
-    gtk_widget_set_sensitive(GTK_WIDGET (battstat->fontlabel), TRUE);
+/*     gtk_widget_set_sensitive(GTK_WIDGET (battstat->fontlabel), TRUE); */
     gtk_widget_set_sensitive(GTK_WIDGET (battstat->fontpicker), TRUE);
   } else {
-    gtk_widget_set_sensitive(GTK_WIDGET (battstat->fontlabel), FALSE);
+/*     gtk_widget_set_sensitive(GTK_WIDGET (battstat->fontlabel), FALSE); */
     gtk_widget_set_sensitive(GTK_WIDGET (battstat->fontpicker), FALSE);
   }
   gnome_property_box_changed (GNOME_PROPERTY_BOX (battstat->prop_win));
@@ -1473,10 +1440,12 @@ create_layout(int argc, char *argv[], gpointer data)
 						  &statusmask[AC],
 						  &battstat->style->bg[GTK_STATE_NORMAL],
 						  ac_small_xpm );
+
   statusimage[FLASH] = gdk_pixmap_create_from_xpm_d( battstat->applet->window,
 						     &statusmask[FLASH],
 						     &battstat->style->bg[GTK_STATE_NORMAL],
 						     flash_small_xpm );
+
   statusimage[WARNING] = gdk_pixmap_create_from_xpm_d( battstat->applet->window,
 						       &statusmask[WARNING],
 						       &battstat->style->bg[GTK_STATE_NORMAL],
@@ -1600,6 +1569,7 @@ main(int argc, char *argv[])
   battstat->colors_changed = TRUE;
   battstat->suspend_cmd = FALSE;
   battstat->panelsize = 48;
+	glade_gnome_init ();
   init_applet(argc, argv, battstat);
   load_preferences(battstat);
   create_layout(argc, argv, battstat);

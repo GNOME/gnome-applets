@@ -134,7 +134,10 @@ gnomedatadir = @gnomedatadir@
 gnomelocaledir = @gnomelocaledir@
 gnomeprefix = @gnomeprefix@
 
-INCLUDES =  	-I$(top_srcdir)/intl 	-I$(top_srcdir) 	-I$(includedir) 	$(GNOME_INCLUDEDIR) 	-DG_LOG_DOMAIN=\"battstat_applet\" 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"
+gladedir = $(datadir)/battstat_applet
+glade_DATA = battstat_applet.glade
+
+INCLUDES =  	-I$(top_srcdir)/intl 	-I$(top_srcdir) 	-I$(includedir) 	$(GNOME_INCLUDEDIR) 	-DDATA_DIR=\"$(datadir)\" 	-DGLADE_DIR=\"$(gladedir)\" 	-DG_LOG_DOMAIN=\"battstat_applet\" 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"
 
 
 bin_PROGRAMS = battstat_applet
@@ -143,7 +146,10 @@ battstat_applet_CFLAGS = -DAPPLET
 
 battstat_applet_SOURCES = battstat.h pixmaps.h properties.c battstat_applet.c 
 
-battstat_applet_LDADD = $(GNOME_APPLETS_LIBS) ${GNOME_DOCKLETS_LIBS} $(GNOME_LIBDIR) 
+battstat_applet_LDADD =  			$(GNOME_LIBDIR) 				$(GNOME_APPLETS_LIBS)   	 		${GNOME_DOCKLETS_LIBS}				-lglade						-lglade-gnome
+
+
+EXTRADIST = $(glade_DATA)
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = ../config.h
 CONFIG_CLEAN_FILES = 
@@ -162,6 +168,8 @@ COMPILE = $(CC) $(DEFS) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CF
 LTCOMPILE = $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 CCLD = $(CC)
 LINK = $(LIBTOOL) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(LDFLAGS) -o $@
+DATA =  $(glade_DATA)
+
 DIST_COMMON =  Makefile.am Makefile.in
 
 
@@ -244,6 +252,25 @@ maintainer-clean-libtool:
 battstat_applet: $(battstat_applet_OBJECTS) $(battstat_applet_DEPENDENCIES)
 	@rm -f battstat_applet
 	$(LINK) $(battstat_applet_LDFLAGS) $(battstat_applet_OBJECTS) $(battstat_applet_LDADD) $(LIBS)
+
+install-gladeDATA: $(glade_DATA)
+	@$(NORMAL_INSTALL)
+	$(mkinstalldirs) $(DESTDIR)$(gladedir)
+	@list='$(glade_DATA)'; for p in $$list; do \
+	  if test -f $(srcdir)/$$p; then \
+	    echo " $(INSTALL_DATA) $(srcdir)/$$p $(DESTDIR)$(gladedir)/$$p"; \
+	    $(INSTALL_DATA) $(srcdir)/$$p $(DESTDIR)$(gladedir)/$$p; \
+	  else if test -f $$p; then \
+	    echo " $(INSTALL_DATA) $$p $(DESTDIR)$(gladedir)/$$p"; \
+	    $(INSTALL_DATA) $$p $(DESTDIR)$(gladedir)/$$p; \
+	  fi; fi; \
+	done
+
+uninstall-gladeDATA:
+	@$(NORMAL_UNINSTALL)
+	list='$(glade_DATA)'; for p in $$list; do \
+	  rm -f $(DESTDIR)$(gladedir)/$$p; \
+	done
 
 tags: TAGS
 
@@ -337,20 +364,20 @@ installcheck: installcheck-am
 install-exec-am: install-binPROGRAMS
 install-exec: install-exec-am
 
-install-data-am:
+install-data-am: install-gladeDATA
 install-data: install-data-am
 
 install-am: all-am
 	@$(MAKE) $(AM_MAKEFLAGS) install-exec-am install-data-am
 install: install-am
-uninstall-am: uninstall-binPROGRAMS
+uninstall-am: uninstall-binPROGRAMS uninstall-gladeDATA
 uninstall: uninstall-am
-all-am: Makefile $(PROGRAMS)
+all-am: Makefile $(PROGRAMS) $(DATA)
 all-redirect: all-am
 install-strip:
 	$(MAKE) $(AM_MAKEFLAGS) AM_INSTALL_PROGRAM_FLAGS=-s install
 installdirs:
-	$(mkinstalldirs)  $(DESTDIR)$(bindir)
+	$(mkinstalldirs)  $(DESTDIR)$(bindir) $(DESTDIR)$(gladedir)
 
 
 mostlyclean-generic:
@@ -393,11 +420,11 @@ maintainer-clean: maintainer-clean-am
 maintainer-clean-binPROGRAMS uninstall-binPROGRAMS install-binPROGRAMS \
 mostlyclean-compile distclean-compile clean-compile \
 maintainer-clean-compile mostlyclean-libtool distclean-libtool \
-clean-libtool maintainer-clean-libtool tags mostlyclean-tags \
-distclean-tags clean-tags maintainer-clean-tags distdir \
-mostlyclean-depend distclean-depend clean-depend \
-maintainer-clean-depend info-am info dvi-am dvi check check-am \
-installcheck-am installcheck install-exec-am install-exec \
+clean-libtool maintainer-clean-libtool uninstall-gladeDATA \
+install-gladeDATA tags mostlyclean-tags distclean-tags clean-tags \
+maintainer-clean-tags distdir mostlyclean-depend distclean-depend \
+clean-depend maintainer-clean-depend info-am info dvi-am dvi check \
+check-am installcheck-am installcheck install-exec-am install-exec \
 install-data-am install-data install-am install uninstall-am uninstall \
 all-redirect all-am all installdirs mostlyclean-generic \
 distclean-generic clean-generic maintainer-clean-generic clean \

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: battstat cvs\n"
-"POT-Creation-Date: 2001-04-29 15:53+0200\n"
+"POT-Creation-Date: 2001-07-19 01:52+0200\n"
 "PO-Revision-Date: 2001-05-01 21:35+02:00\n"
 "Last-Translator: Emese Kovacs <emese@gnome.hu>\n"
 "Language-Team: German <hu@gnome.hu>\n"
@@ -21,34 +21,37 @@ msgstr "A rendszered nem támogatott!\n"
 
 #: src/battstat_applet.c:264
 msgid "The applet will not work properly (if at all).\n"
-msgstr "Az applet nem fog megbízhatóan mûködni (lehet, hogy egyáltalán nem fog mûködni).\n"
+msgstr ""
+"Az applet nem fog megbízhatóan mûködni (lehet, hogy egyáltalán nem fog "
+"mûködni).\n"
 
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
-#: src/battstat_applet.c:317 src/battstat_applet.c:890
+#: src/battstat_applet.c:322 src/battstat_applet.c:891
 msgid "High"
 msgstr "Magas"
 
 #. Low = The APM BIOS thinks that the battery charge is Low.
-#: src/battstat_applet.c:319 src/battstat_applet.c:892
+#: src/battstat_applet.c:324 src/battstat_applet.c:893
 msgid "Low"
 msgstr "Alacsony"
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: src/battstat_applet.c:321 src/battstat_applet.c:894
+#: src/battstat_applet.c:326 src/battstat_applet.c:895
 msgid "Critical"
 msgstr "Kritikus"
 
 #. Charging = The APM BIOS thinks that the battery is recharging.
-#: src/battstat_applet.c:323 src/battstat_applet.c:896
+#: src/battstat_applet.c:328 src/battstat_applet.c:897
 msgid "Charging"
 msgstr "Töltés"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: src/battstat_applet.c:429 src/battstat_applet.c:1087
+#: src/battstat_applet.c:434 src/battstat_applet.c:1088
+#, c-format
 msgid ""
 "System is running on battery power\n"
 "Battery: %d%% (%s)"
@@ -59,7 +62,8 @@ msgstr ""
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: src/battstat_applet.c:437 src/battstat_applet.c:1095
+#: src/battstat_applet.c:442 src/battstat_applet.c:1096
+#, c-format
 msgid ""
 "System is running on AC power\n"
 "Battery: %d%% (%s)"
@@ -69,15 +73,15 @@ msgstr ""
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
-#: src/battstat_applet.c:446 src/battstat_applet.c:1027
-#: src/battstat_applet.c:1108
+#: src/battstat_applet.c:451 src/battstat_applet.c:1028
+#: src/battstat_applet.c:1109
 msgid "System is running on battery power"
 msgstr "A rendszer áramellátását a telep biztosítja"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
-#: src/battstat_applet.c:452 src/battstat_applet.c:1033
-#: src/battstat_applet.c:1114
+#: src/battstat_applet.c:457 src/battstat_applet.c:1034
+#: src/battstat_applet.c:1115
 msgid "System is running on AC power"
 msgstr "A rendszer áramellátását a tápegység biztosítja"
 
@@ -85,7 +89,7 @@ msgstr "A rendszer áramellátását a tápegység biztosítja"
 #. * if the applet discovers that you have removed the battery
 #. * from the system and it only runs on AC power.
 #.
-#: src/battstat_applet.c:472
+#: src/battstat_applet.c:477
 msgid "N/A"
 msgstr "Nincs értelmezve"
 
@@ -93,7 +97,8 @@ msgstr "Nincs értelmezve"
 #. window when the laptop isn't connected to a power source
 #. and the battery charge is dropping below the value
 #. specified by the user.
-#: src/battstat_applet.c:611
+#: src/battstat_applet.c:616
+#, c-format
 msgid "Battery low (%d%%) and AC is offline"
 msgstr "A telep feszültsége alacsony (%d%%), a tápegység nincs csatlakoztatva"
 
@@ -101,58 +106,65 @@ msgstr "A telep feszültsége alacsony (%d%%), a tápegység nincs csatlakoztatva"
 #. window when the battery charge is dropping below the
 #. value specified by the user. Technically this shouldn't
 #. happen if the battery is working properly.
-#: src/battstat_applet.c:618
+#: src/battstat_applet.c:623
+#, c-format
 msgid "Battery low (%d%%) and AC is online"
 msgstr "A telep feszültsége alacsony (%d%%), a tápegység csatlakoztatva"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
-#: src/battstat_applet.c:638 src/battstat_applet.c:1007
+#: src/battstat_applet.c:643 src/battstat_applet.c:1008
+#, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
 msgstr "A rendszer áramellátását a telep biztosítja. Telep állapota: %d%%·(%s)"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
-#: src/battstat_applet.c:645 src/battstat_applet.c:1014
+#: src/battstat_applet.c:650 src/battstat_applet.c:1015
+#, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
-msgstr "A rendszer áramellátását a tápegység biztosítja. Telep állapota: %d%%·(%s)"
+msgstr ""
+"A rendszer áramellátását a tápegység biztosítja. Telep állapota: %d%%·(%s)"
 
 #. This string will display as a tooltip over the
 #. battery frame when the computer is using battery
 #. power and the battery isn't present. Not a
 #. possible combination, I guess... :)
-#: src/battstat_applet.c:656
+#: src/battstat_applet.c:661
 msgid "System is running on battery power. Battery: Not present"
-msgstr "A rendszer áramellátását a telep biztosítja. Telep állapota: nem elérhetõ"
+msgstr ""
+"A rendszer áramellátását a telep biztosítja. Telep állapota: nem elérhetõ"
 
 #. This string will display as a tooltip over the
 #. battery frame when the computer is using AC
 #. power and the battery isn't present.
-#: src/battstat_applet.c:662
+#: src/battstat_applet.c:667
 msgid "System is running on AC power. Battery: Not present"
-msgstr "A rendszer áramellátását a tápegység biztosítja. Telep állapota: nem elérhetõ"
+msgstr ""
+"A rendszer áramellátását a tápegység biztosítja. Telep állapota: nem elérhetõ"
 
 #. Displayed as a tooltip over the battery meter when there is
 #. a battery present. %d will hold the current charge and %s will
 #. hold the status of the battery, (High, Low, Critical, Charging.
-#: src/battstat_applet.c:671
+#: src/battstat_applet.c:676
+#, c-format
 msgid "Battery: %d%% (%s)"
 msgstr "Telep állapota: %d%%·(%s)"
 
 #. Displayed as a tooltip over the battery meter when no
 #. battery is present.
-#: src/battstat_applet.c:678
+#: src/battstat_applet.c:683
 msgid "Battery: Not present"
 msgstr "Telep állapota: nem elérhetõ"
 
 #. Displayed in a Gnome OK dialog window when the battery is
 #. fully recharged.
-#: src/battstat_applet.c:702
+#: src/battstat_applet.c:707
 msgid "Battery is now fully re-charged!"
 msgstr "A telep csurig feltöltve!"
 
 #. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: src/battstat_applet.c:743
+#: src/battstat_applet.c:747
 msgid ""
 "Can't open the APM device!\n"
 "\n"
@@ -165,7 +177,7 @@ msgstr ""
 "az APM-eszközhöz"
 
 #. Displayed if the APM system is disabled (Used under *BSD)
-#: src/battstat_applet.c:751
+#: src/battstat_applet.c:755
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
@@ -175,16 +187,16 @@ msgstr ""
 "Próbálkozz az \"apm - e 1\" (FreeBSD) kiadásával, hátha segít.\n"
 
 #. The long name of the applet in the About dialog.
-#: src/battstat_applet.c:826
+#: src/battstat_applet.c:829
 msgid "Battery status utility"
 msgstr "Telep-állapotkijelzõ applet"
 
-#: src/battstat_applet.c:827
+#: src/battstat_applet.c:830
 msgid "(C) 2000 The Gnulix Society"
 msgstr "(C) 2000 The Gnulix Society"
 
 #. Longer description of the applet in the About dialog.
-#: src/battstat_applet.c:830
+#: src/battstat_applet.c:833
 msgid "This utility show the status of your laptop battery."
 msgstr ""
 "Ez a segédprogrom kijelzi, hogy mennyi szuffla van még a laptopod telepében."
@@ -192,33 +204,33 @@ msgstr ""
 #. Displayed when the user tries to hide all
 #. parts of the applet in the preferences
 #. window.
-#: src/battstat_applet.c:972
+#: src/battstat_applet.c:973
 msgid "You can't hide all elements of the applet!"
 msgstr "Nem lehet az applet minden elemét elrejteni!"
 
 #. Message will be displayed if the applet couldn't be
 #. created at all.
-#: src/battstat_applet.c:1375
+#: src/battstat_applet.c:1373
 msgid "Can't create applet!\n"
 msgstr "Az applet létrehozása sikertelen!\n"
 
 #. Applet menu, Properties
-#: src/battstat_applet.c:1528
+#: src/battstat_applet.c:1525
 msgid "Properties..."
 msgstr "Tulajdonságok..."
 
 #. Applet menu, About
-#: src/battstat_applet.c:1535
+#: src/battstat_applet.c:1532
 msgid "About..."
 msgstr "Névjegy..."
 
 #. Applet menu, Help
-#: src/battstat_applet.c:1542
+#: src/battstat_applet.c:1539
 msgid "Help"
 msgstr "Súgó"
 
 #. Applet menu, Suspend laptop
-#: src/battstat_applet.c:1548
+#: src/battstat_applet.c:1545
 msgid "Suspend laptop"
 msgstr "Laptop felfüggesztése (suspend)"
 
@@ -333,10 +345,8 @@ msgstr "Mutatás"
 msgid "Hide"
 msgstr "Elrejtés"
 
-#: battstat_applet.desktop.in.h:1
-msgid "Battery Status Utility"
-msgstr "Telep-állapotkijelzõ"
+#~ msgid "Battery Status Utility"
+#~ msgstr "Telep-állapotkijelzõ"
 
-#: battstat_applet.desktop.in.h:2
-msgid "Shows the status of the battery"
-msgstr "Kijelzi a telep állatotát"
+#~ msgid "Shows the status of the battery"
+#~ msgstr "Kijelzi a telep állatotát"
