@@ -1,3 +1,11 @@
+Mon Sep 15 15:38:05 2003  George Lebl <jirka@5z.com>
+
+	* main.c: when started in lockdown mode, hide the preferences item,
+	  also hide the "run procman" item as it seems that would be harmful
+	  in a locked down session no matter how you look at it, also
+	  hide the procman launching if command line is inhibited since
+	  then procman would really be likely harmful.
+
 2003-08-09 John Fleck <jfleck@inkstain.net>
 
 	* docs/C/Makefile.am

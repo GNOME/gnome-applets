@@ -20,6 +20,7 @@
 #include <time.h>
 #include <gnome.h>
 #include <panel-applet.h>
+#include <gconf/gconf-client.h>
 #include <panel-applet-gconf.h>
 
 #include <gtk/gtk.h>
@@ -373,6 +374,8 @@ gboolean
 multiload_applet_new(PanelApplet *applet, const gchar *iid, gpointer data)
 {
 	MultiloadApplet *ma;
+	GConfClient *client;
+	BonoboUIComponent *popup_component;
 	
 	ma = g_new0(MultiloadApplet, 1);
 	
@@ -389,7 +392,27 @@ multiload_applet_new(PanelApplet *applet, const gchar *iid, gpointer data)
 					   NULL,
 					   multiload_menu_verbs,
 					  ma);	
-	
+
+	popup_component = panel_applet_get_popup_component (applet);
+
+	if (panel_applet_get_locked_down (applet)) {
+		bonobo_ui_component_set_prop (popup_component,
+					      "/commands/MultiLoadProperties",
+					      "hidden", "1",
+					      NULL);
+	}
+
+	client = gconf_client_get_default ();
+	if (gconf_client_get_bool (client, "/desktop/gnome/lockdown/inhibit_command_line", NULL) ||
+	    panel_applet_get_locked_down (applet)) {
+		/* When the panel is locked down or when the command line is inhibited,
+		   it seems very likely that running the procman would be at least harmful */
+		bonobo_ui_component_set_prop (popup_component,
+					      "/commands/MultiLoadRunProcman",
+					      "hidden", "1",
+					      NULL);
+	}
+
 	g_signal_connect(G_OBJECT(applet), "change_size",
 				G_CALLBACK(multiload_change_size_cb), ma);
 	g_signal_connect(G_OBJECT(applet), "change_orient",
