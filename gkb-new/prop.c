@@ -47,7 +47,7 @@ struct _PropWg
   GtkWidget *iconpathinput;
   GtkWidget *scrolledwin, *scrolledwinl;
   GtkWidget *hidebox, *hfa, *hfn;
-  GtkWidget *frame21, *frame22, *label24, *label25, *entry21;
+  GtkWidget *frame21, *frame22, *label25, *entry21;
   GtkWidget *vbox1, *hbox1, *vbox2, *hbox2, *hbox3, *hboxmap;
   GtkWidget *frame1, *frame2, *frame3, *frame4, *frame6;
   GtkWidget *vbox21, *hbox21, *hbox22;
@@ -70,14 +70,16 @@ struct _GKBpreset
 typedef struct _CountryData CountryData;
 struct _CountryData
 {
-  GtkWidget * widget, * listwg;
+  GtkWidget * widget;
+  PropWg * data;
   GList * keymaps;
 };
 
 typedef struct _LangData LangData;
 struct _LangData
 {
-  GtkWidget * widget, * listwg;
+  GtkWidget * widget;
+  PropWg * data;
   GHashTable * countries;
 };
 
@@ -103,10 +105,36 @@ static gint
 country_select_cb(GtkWidget * widget, CountryData * cdata)
 {
  /* TODO: Write this... */
+ GtkWidget * listwg;
+ GList * list;
+
+ listwg = cdata->data->list;
+
+ gtk_list_clear_items (GTK_LIST (listwg), 0, -1);
+
+ list = cdata->keymaps;
+
+ while (list != NULL)
+ {
+  GKBpreset * item;
+  GtkWidget *label, *list_item;
+
+  item = (GKBpreset *) list->data;
+
+  label=gtk_label_new(item->name);
+  list_item=gtk_list_item_new();
+  gtk_container_add(GTK_CONTAINER(list_item), label);
+  gtk_widget_show(label);
+  gtk_container_add(GTK_CONTAINER(listwg), list_item);
+  gtk_widget_show(list_item);
+
+  list = list->next;
+ }
+ return FALSE;
 }
 
 static void
-treeitems_create(GtkWidget *tree, GtkWidget *listwg)
+treeitems_create(GtkWidget *tree, PropWg * actdata)
 {
 	GList * list, * presets = NULL;
 	GHashTable * langs = g_hash_table_new(g_str_hash, g_str_equal);
@@ -118,7 +146,7 @@ treeitems_create(GtkWidget *tree, GtkWidget *listwg)
 
 	while (list = g_list_next(list))
 	{
-	  GKBpreset * item = item = g_new0(GKBpreset, 1);
+	  GKBpreset * item; 
 
 	  item = gkb_preset_load((gchar *)list->data);
 
@@ -128,30 +156,32 @@ treeitems_create(GtkWidget *tree, GtkWidget *listwg)
 	    if (cdata = g_hash_table_lookup (ldata->countries,item->country))
 	     {
 	      /* There is country */
-	      g_list_append(cdata->keymaps,item);
+             cdata->keymaps = g_list_append(cdata->keymaps,item);
+             gtk_signal_connect (GTK_OBJECT(cdata->widget), "select",     
+                                  GTK_SIGNAL_FUNC(country_select_cb),
+                                  cdata);
 	     }
 	     else
 	     {
 	      /* There is no country */
+
 	      GtkWidget * subtree, *subitem;
 
-	      subtree = gtk_tree_new();
-	      gtk_tree_set_selection_mode (GTK_TREE(subtree),                             
-	                                       GTK_SELECTION_SINGLE);
-	      gtk_tree_set_view_mode (GTK_TREE(subtree), GTK_TREE_VIEW_ITEM);
-	      gtk_tree_item_set_subtree (GTK_TREE_ITEM(ldata->widget), subtree);
 	      subitem = gtk_tree_item_new_with_label (item->country);
-	      gtk_signal_connect (GTK_OBJECT(subitem), "select",                        
-	                                GTK_SIGNAL_FUNC(country_select_cb), 
-	                                cdata);
-	      gtk_tree_append (GTK_TREE(subtree), subitem);
+	      gtk_tree_append (GTK_TREE(ldata->widget), subitem);
 	      gtk_widget_show (subitem);
+	      gtk_widget_show (ldata->widget);
 
 	      cdata = g_new0 (CountryData,1);
 
 	      cdata->widget = subitem;
-	      cdata->listwg = listwg;
+	      cdata->data = actdata;
 	      cdata->keymaps = NULL;
+
+              cdata->keymaps = g_list_append(cdata->keymaps,item);
+              gtk_signal_connect (GTK_OBJECT(cdata->widget), "select",     
+                                  GTK_SIGNAL_FUNC(country_select_cb),
+                                  cdata);
 
 	      g_hash_table_insert (ldata->countries, item->country, cdata);
 	     }
@@ -164,15 +194,13 @@ treeitems_create(GtkWidget *tree, GtkWidget *listwg)
 	    titem = gtk_tree_item_new_with_label (item->lang);
 	    gtk_tree_append (GTK_TREE(tree), titem);
 	    gtk_widget_show (titem);
+
 	    subtree = gtk_tree_new();
 	    gtk_tree_set_selection_mode (GTK_TREE(subtree),                             
                                  GTK_SELECTION_SINGLE);
 	    gtk_tree_set_view_mode (GTK_TREE(subtree), GTK_TREE_VIEW_ITEM);
 	    gtk_tree_item_set_subtree (GTK_TREE_ITEM(titem), subtree);
 	    subitem = gtk_tree_item_new_with_label (item->country);
-            gtk_signal_connect (GTK_OBJECT(subitem), "select",     
-                                  GTK_SIGNAL_FUNC(country_select_cb),
-                                  cdata);
 	    gtk_tree_append (GTK_TREE(subtree), subitem);
 	    gtk_widget_show (subitem);
 	    
@@ -180,13 +208,19 @@ treeitems_create(GtkWidget *tree, GtkWidget *listwg)
             cdata = g_new0 (CountryData,1);
 
             cdata->widget = subitem;
-            cdata->listwg = listwg; 
+            cdata->data = actdata; 
             cdata->keymaps = NULL;  
 	    
-	    ldata->listwg = listwg;
-	    ldata->widget = titem;
+	    ldata->data = actdata;
+	    ldata->widget = subtree;
 
 	    ldata->countries = g_hash_table_new (g_str_hash, g_str_equal);
+
+            cdata->keymaps = g_list_append(cdata->keymaps,item);
+            gtk_signal_connect (GTK_OBJECT(cdata->widget), "select",     
+                                  GTK_SIGNAL_FUNC(country_select_cb),
+                                  cdata);
+
 	    g_hash_table_insert (ldata->countries, item->country, cdata);
 
             g_hash_table_insert (langs, item->lang, ldata);
@@ -510,7 +544,6 @@ makenotebook (GKB * gkb, PropWg * actdata, int i)
   actdata->tree = gtk_tree_new ();
   gtk_widget_ref (actdata->tree);
 
-
   gtk_widget_show (actdata->tree);
 
   gtk_scrolled_window_add_with_viewport (GTK_SCROLLED_WINDOW (actdata->scrolledwin), actdata->tree);
@@ -528,13 +561,11 @@ makenotebook (GKB * gkb, PropWg * actdata, int i)
   gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (actdata->scrolledwinl),
 				  GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
   gtk_container_add (GTK_CONTAINER (actdata->frame22), actdata->scrolledwinl);
-  gtk_widget_set_usize (actdata->scrolledwinl, 130, 140);
+  gtk_widget_set_usize (actdata->scrolledwinl, 160, 140);
   gtk_widget_show (actdata->scrolledwinl);
 
   actdata->list = gtk_list_new ();
   gtk_widget_ref (actdata->list);
-
-  treeitems_create(actdata->tree,actdata->list);
 
   gtk_widget_show (actdata->list);
   gtk_scrolled_window_add_with_viewport (GTK_SCROLLED_WINDOW(actdata->scrolledwinl), actdata->list);
@@ -552,13 +583,6 @@ makenotebook (GKB * gkb, PropWg * actdata, int i)
   gtk_widget_show (actdata->hbox22);
   gtk_box_pack_start (GTK_BOX (actdata->vbox21), actdata->hbox22, FALSE,
 		      FALSE, 0);
-
-  actdata->label24 = gtk_label_new (_("Label:"));
-  gtk_widget_ref (actdata->label24);
-
-  gtk_widget_show (actdata->label24);
-  gtk_box_pack_start (GTK_BOX (actdata->hbox22), actdata->label24, FALSE,
-		      FALSE, 2);
 
   actdata->entry21 = gtk_entry_new ();
   gtk_widget_ref (actdata->entry21);
@@ -601,6 +625,7 @@ makenotebook (GKB * gkb, PropWg * actdata, int i)
 							 i + 1),
 			      actdata->label1);
 
+  treeitems_create(actdata->tree,actdata);
   advanced_show (gkb);
 
 }

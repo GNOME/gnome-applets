@@ -2,14 +2,15 @@ INCLUDES = -I. -I$(srcdir)                              \
 	-I$(top_srcdir)/intl -I$(top_builddir)/intl     \
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"        \
 	-I$(includedir) $(GNOME_INCLUDEDIR)		\
-	@PIXBUF_CFLAGS@
-
+	@PIXBUF_CFLAGS@ -DGNOMEDATADIR=\""$(datadir)"\"
 
 bin_PROGRAMS = gkb_applet
 
 bin_SCRIPTS = gkb_xmmap
 
-gkb_applet_SOURCES = gkb.c gkb.h prop.c prop_cb.h prop_copy.h prop_show.h
+gkb_applet_SOURCES = gkb.c gkb.h prop.c \
+		prop_cb.h prop_copy.h \
+		prop_show.h prop_preset.h
 
 #lib_LTLIBRARIES=libgkb_applet.la
 
@@ -20,7 +21,7 @@ gkb_applet_LDADD =     $(GNOME_APPLETS_LIBS) \
                        $(GNOMEGNORBA_LIBS) $(INTLLIBS) \
                        @PIXBUF_LIBS@
 
-SUBDIRS= gkb xmodmap docs
+SUBDIRS= gkb xmodmap docs descs
 
 GKB_ICON = gkb.png gkb-icon.png
 

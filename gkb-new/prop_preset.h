@@ -28,23 +28,19 @@ find_presets ()
 static GKBpreset *
 gkb_preset_load (const char *filename)
 {
-        GKBpreset *retval = retval = g_new0(GKBpreset, 1);
-        gchar confpath[PATH_MAX];
-        gchar *key, *value;
-        void *iter;
+        GKBpreset *retval;
         gchar * prefix;
-	GList *i18n_list = NULL;
 
  	g_assert (filename != NULL);
- 	
+
+        retval = g_new0(GKBpreset, 1);
+
  	prefix = g_strconcat ("=",prefixdir,"/", filename, "=/Keymap Entry/", NULL);
- 	
+
  	gnome_config_push_prefix (prefix);
  	g_free (prefix);
 
 	retval->name = gnome_config_get_translated_string ("Name");
-	printf ("%s\n",retval->name); fflush(stdout);
-
 	retval->lang = gnome_config_get_translated_string ("Language");
 	retval->country = gnome_config_get_translated_string ("Country");
 	retval->codepage = gnome_config_get_string ("Codepage");
@@ -53,8 +49,6 @@ gkb_preset_load (const char *filename)
 	retval->type = gnome_config_get_string ("Type");
 	retval->arch = gnome_config_get_string ("Arch");
 	retval->command = gnome_config_get_string ("Command");
-
-	printf ("%s\n",retval->name); fflush(stdout);
 
         return retval;
 }
