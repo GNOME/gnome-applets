@@ -74,7 +74,7 @@ mc_exec_command (MCData     *mc,
 		g_free (str);
 	} else {
 		gtk_entry_set_text (GTK_ENTRY (mc->entry), (gchar *) "");
-		append_history_entry (mc, (char *) command, FALSE);	
+		append_history_entry (mc, cmd, FALSE);	
 		}
 	g_strfreev (argv);
 
