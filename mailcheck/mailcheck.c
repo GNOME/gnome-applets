@@ -2567,6 +2567,8 @@ mailcheck_destroy (GtkWidget *widget, gpointer data)
 		gtk_widget_destroy (mc->property_window);
 	if (mc->about != NULL)
 		gtk_widget_destroy (mc->about);
+	if (mc->password_dialog != NULL)
+		gtk_widget_destroy (mc->password_dialog);
 
 	gtk_widget_unref (mc->da);
 
