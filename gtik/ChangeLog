@@ -1,5 +1,10 @@
 2002-11-27  Kevin Vandersloot <kfv101@psu.edu>
 
+	* gtik.c: realize drawing widget on startup since sometimes it doesn't seem
+	to be realized and the gc created at startup is therefore NULL
+
+2002-11-27  Kevin Vandersloot <kfv101@psu.edu>
+
 	* gtik.c: some changes from the stable branch. Make the scroll speed slower by
 	default. Make the skip-forward/backword buttons scroll a shorter distance.
 

@@ -1583,6 +1583,7 @@ static gint updateOutput(gpointer data)
 
 		gtk_widget_show (GTK_WIDGET (applet));
 		
+		gtk_widget_realize (stockdata->drawing_area);
 		create_gc(stockdata);
 
 		properties_set(stockdata,FALSE);
