@@ -218,7 +218,7 @@ static void
 about_cb (void)
 {
     GtkWidget *about;
-    const gchar *authors [] = {N_("Dave Camp <dave@davec.dhs.org>"), NULL};
+    const gchar *authors [] = {N_("Dave Camp <campd@oit.edu>"), NULL};
     
     about = gnome_about_new (_("gEyes"), VERSION, _("Copyright (C) 1999 Dave Camp"),
                              authors,
@@ -335,10 +335,6 @@ create_eyes_applet (void)
     if (!eyes_applet.applet)
         g_error ("Can't create applet!\n");
     
-    gtk_signal_connect (GTK_OBJECT (eyes_applet.applet),
-                        "save_session",
-                        GTK_SIGNAL_FUNC (save_session_cb), 
-                        NULL);
     gtk_signal_connect (GTK_OBJECT (eyes_applet.applet),
                         "save_session",
                         GTK_SIGNAL_FUNC (save_session_cb), 
