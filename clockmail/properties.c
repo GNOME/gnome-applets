@@ -407,7 +407,7 @@ void property_show(AppletWidget *applet, gpointer data)
 
 	/* theme list */
 	theme_clist=gtk_clist_new_with_titles (1, theme_title);
-	gtk_clist_set_policy (GTK_CLIST (theme_clist), GTK_POLICY_ALWAYS, GTK_POLICY_AUTOMATIC); 
+	/*gtk_clist_set_policy (GTK_CLIST (theme_clist), GTK_POLICY_ALWAYS, GTK_POLICY_AUTOMATIC);  */
 	gtk_clist_column_titles_passive (GTK_CLIST (theme_clist)); 
 	gtk_signal_connect (GTK_OBJECT (theme_clist), "select_row",(GtkSignalFunc) theme_selected_cb, ad);
 	gtk_container_add (GTK_CONTAINER (scrolled), theme_clist);
