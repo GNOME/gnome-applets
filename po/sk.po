@@ -5,14 +5,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-core 1.1.3\n"
-"POT-Creation-Date: 2000-11-01 15:06+0100\n"
-"PO-Revision-Date: 2000-11-03 09:29CET\n"
+"POT-Creation-Date: 2000-11-24 09:24+0100\n"
+"PO-Revision-Date: 2000-11-24 09:23CET\n"
 "Last-Translator: Stanislav Visnovsky <visnovsky@nenya.ms.mff.cuni.cz>\n"
 "Language-Team: Slovak <sk-i18n@rak.isternet.sk>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO 8859-2\n"
+"Content-Type: text/plain; charset=iso-8859-2\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 0.6\n"
+"X-Generator: KBabel 0.7\n"
 
 #: another_clock/another_clock.c:258
 msgid "Clock Settings"
@@ -22,7 +22,7 @@ msgstr "Vlastnosti hodín"
 #: battery/properties.c:83 clockmail/properties.c:421
 #: diskusage/properties.c:466 drivemount/properties.c:380
 #: gnotes/properties.c:190 mini-commander/src/preferences.c:801
-#: modemlights/properties.c:324 odometer/properties.c:293
+#: modemlights/properties.c:486 odometer/properties.c:293
 #: screenshooter/screenshooter_applet.c:434 slashapp/properties.c:337
 #: sound-monitor/properties.c:426 tickastat/properties.c:424
 msgid "General"
@@ -30,8 +30,8 @@ msgstr "V¹eobecné"
 
 #. frame for colors
 #: another_clock/another_clock.c:277 diskusage/properties.c:352
-#: mini-commander/src/preferences.c:723 multiload/load-graph.c:587
-#: multiload/load-graph.c:779
+#: mini-commander/src/preferences.c:723 modemlights/properties.c:525
+#: multiload/load-graph.c:587 multiload/load-graph.c:779
 msgid "Colors"
 msgstr "Farby"
 
@@ -75,12 +75,12 @@ msgid "An analog clock similar to that in CDE panel."
 msgstr "Analógové hodiny podobné tým z CDE panelu."
 
 #: another_clock/another_clock.c:725 asclock/asclock.c:615
-#: battery/battery.c:947 charpick/charpick.c:588 clockmail/clockmail.c:327
+#: battery/battery.c:951 charpick/charpick.c:588 clockmail/clockmail.c:327
 #: diskusage/diskusage.c:1058 drivemount/drivemount.c:702 geyes/geyes.c:393
 #: gkb-new/gkb.c:471 gnotes/gnotes_applet.c:192 gtik/gtik.c:1388
 #: gweather/gweather-applet.c:194
 #: mini-commander/src/mini-commander_applet.c:398
-#: modemlights/modemlights.c:1364 multiload/cpuload.c:95
+#: modemlights/modemlights.c:1464 multiload/cpuload.c:95
 #: multiload/loadavg.c:170 multiload/memload.c:98 multiload/netload.c:94
 #: multiload/swapload.c:98 odometer/odo.c:661
 #: screenshooter/screenshooter_applet.c:1006 slashapp/slashapp.c:77
@@ -89,7 +89,7 @@ msgid "Properties..."
 msgstr "Vlastnosti..."
 
 #: another_clock/another_clock.c:731 asclock/asclock.c:621
-#: battery/battery.c:953 cdplayer/cdplayer.c:592 charpick/charpick.c:595
+#: battery/battery.c:957 cdplayer/cdplayer.c:592 charpick/charpick.c:595
 #: clockmail/clockmail.c:334 cpumemusage/cpumemusage.c:299
 #: diskusage/diskusage.c:1081 drivemount/drivemount.c:708
 #: fifteen/fifteen.c:378 geyes/geyes.c:399 gkb-new/gkb.c:494
@@ -105,14 +105,14 @@ msgid "Help"
 msgstr "Pomocník"
 
 #: another_clock/another_clock.c:735 asclock/asclock.c:626
-#: battery/battery.c:958 cdplayer/cdplayer.c:599 charpick/charpick.c:601
+#: battery/battery.c:962 cdplayer/cdplayer.c:599 charpick/charpick.c:601
 #: clipboard/clipboard.c:339 clockmail/clockmail.c:339
 #: cpumemusage/cpumemusage.c:305 diskusage/diskusage.c:1088
 #: drivemount/drivemount.c:713 fifteen/fifteen.c:383 geyes/geyes.c:404
 #: gkb-new/gkb.c:499 gnotes/gnotes_applet.c:199 gtik/gtik.c:1397
 #: gweather/gweather-applet.c:204 jbc/jbc-applet.c:202 life/life.c:290
 #: mini-commander/src/mini-commander_applet.c:412 mixer/mixer.c:764
-#: modemlights/modemlights.c:1377 multiload/cpuload.c:115
+#: modemlights/modemlights.c:1477 multiload/cpuload.c:115
 #: multiload/loadavg.c:190 multiload/memload.c:118 multiload/netload.c:114
 #: multiload/swapload.c:118 odometer/odo.c:667 quicklaunch/quicklaunch.c:520
 #: screenshooter/screenshooter_applet.c:1017 slashapp/slashapp.c:80
@@ -134,7 +134,8 @@ msgid "Who said NeXT is dead?"
 msgstr "Kto povedal ¾e NeXT je màtvy?"
 
 #: asclock/dialogs.c:164
-msgid "Since you are root, would you like to set the system's default timezone?"
+msgid ""
+"Since you are root, would you like to set the system's default timezone?"
 msgstr "Ked¾e ste root, chcete nastavi» ¹tandardnú èasovú zónu systému?"
 
 #: asclock/dialogs.c:166
@@ -167,25 +168,25 @@ msgstr "Blikajúce èasti v hodinách"
 msgid "Timezone"
 msgstr "Èasové pásmo"
 
-#: battery/battery.c:142
+#: battery/battery.c:150
 msgid "The battery is low."
 msgstr "Slabé batérie."
 
-#: battery/battery.c:157
+#: battery/battery.c:165
 msgid "The battery is fully charged."
 msgstr "Batérie sú úplne nabité."
 
-#: battery/battery.c:702
+#: battery/battery.c:706
 msgid "Internal error: invalid mode in battery_set_mode"
 msgstr "Interná chyba: neplatný mód v battery_set_mode()"
 
-#: battery/battery.c:784 jbc/jbc-applet.c:178 multiload/cpuload.c:69
+#: battery/battery.c:788 jbc/jbc-applet.c:178 multiload/cpuload.c:69
 #: multiload/memload.c:72 multiload/netload.c:68 multiload/swapload.c:72
 #: screenshooter/screenshooter_applet.c:908
 msgid "Can't create applet!\n"
 msgstr "Nemô¾em vytvori» applet!\n"
 
-#: battery/battery.c:788
+#: battery/battery.c:792
 msgid ""
 "Error querying battery charge.\n"
 "\n"
@@ -195,15 +196,15 @@ msgstr ""
 "\n"
 "Overte, ¾e Vá¹ kernel má zabudovanú podporu APM."
 
-#: battery/battery.c:1033
+#: battery/battery.c:1037
 msgid "The GNOME Battery Monitor Applet"
 msgstr "Applet Monitor batérií pre GNOME"
 
-#: battery/battery.c:1034
+#: battery/battery.c:1038
 msgid " (C) 1997-1998 The Free Software Foundation"
 msgstr " (C) 1997-1998 Free Software Foundation"
 
-#: battery/battery.c:1036
+#: battery/battery.c:1040
 msgid ""
 "This applet monitors the charge of your laptop's battery.  Click on it to "
 "change display modes."
@@ -211,7 +212,7 @@ msgstr ""
 "Tento aplet monitoruje stav nabitia batérií Vá¹ho notebooku. Kliknutím sa "
 "mení mód zobrazovania."
 
-#: battery/battery.c:1236
+#: battery/battery.c:1240
 msgid "Could not allocate space for graph values"
 msgstr "Nemô¾em alokova» miesto pre hodnoty grafu"
 
@@ -305,26 +306,26 @@ msgstr "Varova», ak nabitie klesne pod:"
 msgid "Enable Full-Charge Notification"
 msgstr "Povoli» informáciu o úplnom nabití"
 
-#: battery/read-battery.c:62
+#: battery/read-battery.c:68
 msgid ""
 "Cannot open /proc/apm!  Make sure that you built APM support into your "
 "kernel.\n"
 msgstr "Nemô¾em otvori» /proc/apm! Uistite sa, ¾e vá¹ kernel podporuje APM.\n"
 
-#: battery/read-battery.c:97
+#: battery/read-battery.c:103
 #, c-format
 msgid "Could not dup() APM file descriptor: %s\n"
 msgstr "Nemô¾em vykona» dup() na APM súbor: %s\n"
 
-#: battery/read-battery.c:168
+#: battery/read-battery.c:176
 msgid "Cannot open /dev/apm; can't get data."
 msgstr "Nemô¾em otvori» /dev/apm; nemô¾em naèíta» dáta."
 
-#: battery/read-battery.c:173
+#: battery/read-battery.c:181
 msgid "ioctl failed on /dev/apm."
 msgstr "volanie ioctl na /dev/apm vrátilo chybu"
 
-#: battery/read-battery.c:184
+#: battery/read-battery.c:192
 msgid "APM is disabled!  Cannot read battery charge information."
 msgstr "APM je zakázané! Nemô¾em naèíta» informácie o stave batérie."
 
@@ -754,7 +755,7 @@ msgstr "Témy"
 
 #: gkb-new/gkb.c:257
 msgid "The keymap switching command returned with error!"
-msgstr "Príkaz pre prepnutie klávesovej mapy vrátil chybu!"
+msgstr "Príkaz pre prepínanie klávesníc vrátil chybu!"
 
 #: gkb-new/gkb.c:349
 msgid "The GNOME KeyBoard Switcher Applet"
@@ -1241,23 +1242,23 @@ msgstr "Severo-severozápad"
 
 #: gweather/weather.c:150
 msgid "Clear Sky"
-msgstr ""
+msgstr "Èistá obloha"
 
 #: gweather/weather.c:151
 msgid "Broken clouds"
-msgstr ""
+msgstr "Oblaèno"
 
 #: gweather/weather.c:152
 msgid "Scattered clouds"
-msgstr ""
+msgstr "Rozptýlená oblaènos»"
 
 #: gweather/weather.c:153
 msgid "Few clouds"
-msgstr ""
+msgstr "Malá oblaènos»"
 
 #: gweather/weather.c:154
 msgid "Overcast"
-msgstr ""
+msgstr "Zatiahnuté"
 
 #. NONE                         VICINITY                             LIGHT                      MODERATE                      HEAVY                      SHALLOW                      PATCHES                         PARTIAL                      THUNDERSTORM                    BLOWING                      SHOWERS                         DRIFTING                      FREEZING
 #. ******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
@@ -1265,852 +1266,852 @@ msgstr ""
 #. DRIZZLE
 #: gweather/weather.c:179
 msgid "Drizzle"
-msgstr ""
+msgstr "Mrholenie"
 
 #: gweather/weather.c:179
 msgid "Drizzle in the vicinity"
-msgstr ""
+msgstr "Mrholenie v okolí"
 
 #: gweather/weather.c:179
 msgid "Light drizzle"
-msgstr ""
+msgstr "¥ahké mrholenie"
 
 #: gweather/weather.c:179
 msgid "Moderate drizzle"
-msgstr ""
+msgstr "Mierne mrholenie"
 
 #: gweather/weather.c:179
 msgid "Heavy drizzle"
-msgstr ""
+msgstr "«a¾ké mrholenie"
 
 #: gweather/weather.c:179
 msgid "Shallow drizzle"
-msgstr ""
+msgstr "Slabé mrholenie"
 
 #: gweather/weather.c:179
 msgid "Patches of drizzle"
-msgstr ""
+msgstr "Obèasné mrholenie"
 
 #: gweather/weather.c:179
 msgid "Partial drizzle"
-msgstr ""
+msgstr "Èiastoèné mrholenie"
 
 #: gweather/weather.c:179 gweather/weather.c:180
 msgid "Thunderstorm"
-msgstr ""
+msgstr "Búrka"
 
 #: gweather/weather.c:179
 msgid "Windy drizzle"
-msgstr ""
+msgstr "Veterné mrholenie"
 
 #: gweather/weather.c:179
 msgid "Showers"
-msgstr ""
+msgstr "Spà¹ky"
 
 #: gweather/weather.c:179
 msgid "Drifting drizzle"
-msgstr ""
+msgstr "Kolísajúce mrholenie"
 
 #: gweather/weather.c:179
 msgid "Freezing drizzle"
-msgstr ""
+msgstr "Mrznúce mrholenie"
 
 #. RAIN
 #: gweather/weather.c:180
 msgid "Rain"
-msgstr ""
+msgstr "Dá¾ï"
 
 #: gweather/weather.c:180
 msgid "Rain in the vicinity"
-msgstr ""
+msgstr "Dá¾ï v okolí"
 
 #: gweather/weather.c:180
 msgid "Light rain"
-msgstr ""
+msgstr "¥ahký dá¾ï"
 
 #: gweather/weather.c:180
 msgid "Moderate rain"
-msgstr ""
+msgstr "Mierny dá¾ï"
 
 #: gweather/weather.c:180
 msgid "Heavy rain"
-msgstr ""
+msgstr "«a¾ký dá¾ï"
 
 #: gweather/weather.c:180
 msgid "Shallow rain"
-msgstr ""
+msgstr "Slabý dá¾ï"
 
 #: gweather/weather.c:180
 msgid "Patches of rain"
-msgstr ""
+msgstr "Obèasný dá¾ï"
 
 #: gweather/weather.c:180
 msgid "Partial rainfall"
-msgstr ""
+msgstr "Èiastoèné zrá¾ky"
 
 #: gweather/weather.c:180
 msgid "Blowing rainfall"
-msgstr ""
+msgstr "Veterné zrá¾ky"
 
 #: gweather/weather.c:180
 msgid "Rain showers"
-msgstr ""
+msgstr "Dá¾ïové spà¹ky"
 
 #: gweather/weather.c:180
 msgid "Drifting rain"
-msgstr ""
+msgstr "Kolísajúci dá¾ï"
 
 #: gweather/weather.c:180
 msgid "Freezing rain"
-msgstr ""
+msgstr "Mrznúci dá¾ï"
 
 #. SNOW
 #: gweather/weather.c:181
 msgid "Snow"
-msgstr ""
+msgstr "Sne¾enie"
 
 #: gweather/weather.c:181
 msgid "Snow in the vicinity"
-msgstr ""
+msgstr "Sne¾enie v okolí"
 
 #: gweather/weather.c:181
 msgid "Light snow"
-msgstr ""
+msgstr "¥ahké sne¾enie"
 
 #: gweather/weather.c:181
 msgid "Moderate snow"
-msgstr ""
+msgstr "Mierne sne¾enie"
 
 #: gweather/weather.c:181
 msgid "Heavy snow"
-msgstr ""
+msgstr "«a¾ké sne¾enie"
 
 #: gweather/weather.c:181
 msgid "Shallow snow"
-msgstr ""
+msgstr "Slabé sne¾enie"
 
 #: gweather/weather.c:181
 msgid "Patches of snow"
-msgstr ""
+msgstr "Obèasné sne¾enie"
 
 #: gweather/weather.c:181
 msgid "Partial snowfall"
-msgstr ""
+msgstr "Èiastoèné sne¾enie"
 
 #: gweather/weather.c:181 gweather/weather.c:182
 msgid "Snowstorm"
-msgstr ""
+msgstr "Snehová búrka"
 
 #: gweather/weather.c:181
 msgid "Blowing snowfall"
-msgstr ""
+msgstr "Veterné sne¾enie"
 
 #: gweather/weather.c:181
 msgid "Snow showers"
-msgstr ""
+msgstr "Snehové spà¹ky"
 
 #: gweather/weather.c:181
 msgid "Drifting snow"
-msgstr ""
+msgstr "Kolísajúce sne¾enie"
 
 #: gweather/weather.c:181
 msgid "Freezing snow"
-msgstr ""
+msgstr "Mrznúce sne¾enie"
 
 #. SNOW_GRAINS
 #: gweather/weather.c:182
 msgid "Snow grains"
-msgstr ""
+msgstr "Zrnité sne¾enie"
 
 #: gweather/weather.c:182
 msgid "Snow grains in the vicinity"
-msgstr ""
+msgstr "Zrnité sne¾enie v okolí"
 
 #: gweather/weather.c:182
 msgid "Light snow grains"
-msgstr ""
+msgstr "¥ahké zrnité sne¾enie"
 
 #: gweather/weather.c:182
 msgid "Moderate snow grains"
-msgstr ""
+msgstr "Mierne zrnité sne¾enie"
 
 #: gweather/weather.c:182
 msgid "Heavy snow grains"
-msgstr ""
+msgstr "«a¾ké zrnité sne¾enie"
 
 #: gweather/weather.c:182
 msgid "Shallow snow grains"
-msgstr ""
+msgstr "Slabé zrnité sne¾enie"
 
 #: gweather/weather.c:182
 msgid "Patches of snow grains"
-msgstr ""
+msgstr "Obèasné zrnité sne¾enie"
 
 #: gweather/weather.c:182
 msgid "Partial snow grains"
-msgstr ""
+msgstr "Èiastoèné zrnité sne¾enie"
 
 #: gweather/weather.c:182
 msgid "Blowing snow grains"
-msgstr ""
+msgstr "Veterné zrnité sne¾enie"
 
 #: gweather/weather.c:182
 msgid "Snow grain showers"
-msgstr ""
+msgstr "Spà¹ky zrnitého snehu"
 
 #: gweather/weather.c:182
 msgid "Drifting snow grains"
-msgstr ""
+msgstr "Kolísajúce zrnité sne¾enie"
 
 #: gweather/weather.c:182
 msgid "Freezing snow grains"
-msgstr ""
+msgstr "Mrznúce zrnité sne¾enie"
 
 #. ICE_CRYSTALS
 #: gweather/weather.c:183
 msgid "Ice crystals"
-msgstr ""
+msgstr "¥adové kry¹tály"
 
 #: gweather/weather.c:183
 msgid "Ice crystals in the vicinity"
-msgstr ""
+msgstr "¥adové kry¹tály v okolí"
 
 #: gweather/weather.c:183
 msgid "Few ice crystals"
-msgstr ""
+msgstr "Málo µadových kry¹tálov"
 
 #: gweather/weather.c:183
 msgid "Moderate ice crystals"
-msgstr ""
+msgstr "Mierne µadové kry¹tály"
 
 #: gweather/weather.c:183
 msgid "Heavy ice crystals"
-msgstr ""
+msgstr "«a¾ké µadové kry¹tály"
 
 #: gweather/weather.c:183
 msgid "Patches of ice crystals"
-msgstr ""
+msgstr "Obèasné µadové kry¹tály"
 
 #: gweather/weather.c:183
 msgid "Partial ice crystals"
-msgstr ""
+msgstr "Èiastoèné µadové kry¹tály"
 
 #: gweather/weather.c:183
 msgid "Ice crystal storm"
-msgstr ""
+msgstr "Búrka µadových kry¹tálov"
 
 #: gweather/weather.c:183
 msgid "Blowing ice crystals"
-msgstr ""
+msgstr "Veterné µadové kry¹tály"
 
 #: gweather/weather.c:183
 msgid "Showers of ice crystals"
-msgstr ""
+msgstr "Spà¹ky µadových kry¹tálálov"
 
 #: gweather/weather.c:183
 msgid "Drifting ice crystals"
-msgstr ""
+msgstr "Kolísajúce µadové kry¹tály"
 
 #: gweather/weather.c:183
 msgid "Freezing ice crystals"
-msgstr ""
+msgstr "Mrznúce µadové kry¹tály"
 
 #. ICE_PELLETS
 #: gweather/weather.c:184
 msgid "Ice pellets"
-msgstr ""
+msgstr "¥adové gulièky"
 
 #: gweather/weather.c:184
 msgid "Ice pellets in the vicinity"
-msgstr ""
+msgstr "¥adové gulièky v okolí"
 
 #: gweather/weather.c:184
 msgid "Few ice pellets"
-msgstr ""
+msgstr "Málo µadových gulièiek"
 
 #: gweather/weather.c:184
 msgid "Moderate ice pellets"
-msgstr ""
+msgstr "Mierne µadové gulièky"
 
 #: gweather/weather.c:184
 msgid "Heavy ice pellets"
-msgstr ""
+msgstr "«a¾ké µadové gulièky"
 
 #: gweather/weather.c:184
 msgid "Shallow ice pellets"
-msgstr ""
+msgstr "Slabé µadové gulièky"
 
 #: gweather/weather.c:184
 msgid "Patches of ice pellets"
-msgstr ""
+msgstr "Obèasné µadové gulièky"
 
 #: gweather/weather.c:184
 msgid "Partial ice pellets"
-msgstr ""
+msgstr "Èiastoèné µadové gulièky"
 
 #: gweather/weather.c:184
 msgid "Ice pellet storm"
-msgstr ""
+msgstr "Búrka µadových gulièiek"
 
 #: gweather/weather.c:184
 msgid "Blowing ice pellets"
-msgstr ""
+msgstr "Veterné µadové gulièky"
 
 #: gweather/weather.c:184
 msgid "Showers of ice pellets"
-msgstr ""
+msgstr "Spà¹ky µadových gulièiek"
 
 #: gweather/weather.c:184
 msgid "Drifting ice pellets"
-msgstr ""
+msgstr "Kolísajúce µadové gulièky"
 
 #: gweather/weather.c:184
 msgid "Freezing ice pellets"
-msgstr ""
+msgstr "Mrznúce µadové gulièky"
 
 #. HAIL
 #: gweather/weather.c:185
 msgid "Hail"
-msgstr ""
+msgstr "Krúpy"
 
 #: gweather/weather.c:185
 msgid "Hail in the vicinity"
-msgstr ""
+msgstr "Krúpy v okolí"
 
 #: gweather/weather.c:185 gweather/weather.c:186
 msgid "Light hail"
-msgstr ""
+msgstr "¥ahké krúpy"
 
 #: gweather/weather.c:185
 msgid "Moderate hail"
-msgstr ""
+msgstr "Mierne krúpy"
 
 #: gweather/weather.c:185
 msgid "Heavy hail"
-msgstr ""
+msgstr "«a¾ké krúpy"
 
 #: gweather/weather.c:185
 msgid "Shallow hail"
-msgstr ""
+msgstr "Slabé krúpy"
 
 #: gweather/weather.c:185
 msgid "Patches of hail"
-msgstr ""
+msgstr "Obèasné krúpy"
 
 #: gweather/weather.c:185
 msgid "Partial hail"
-msgstr ""
+msgstr "Èiastoèné krúpy"
 
 #: gweather/weather.c:185
 msgid "Hailstorm"
-msgstr ""
+msgstr "Krupobitie"
 
 #: gweather/weather.c:185
 msgid "Blowing hail"
-msgstr ""
+msgstr "Veterné krúpy"
 
 #: gweather/weather.c:185
 msgid "Hail showers"
-msgstr ""
+msgstr "Spà¹ky krúp"
 
 #: gweather/weather.c:185
 msgid "Drifting hail"
-msgstr ""
+msgstr "Kolísajúce krúpy"
 
 #: gweather/weather.c:185
 msgid "Freezing hail"
-msgstr ""
+msgstr "Mrznúce krúpy"
 
 #. SMALL_HAIL
 #: gweather/weather.c:186
 msgid "Small hail"
-msgstr ""
+msgstr "Male krúpy"
 
 #: gweather/weather.c:186
 msgid "Small hail in the vicinity"
-msgstr ""
+msgstr "Malé krúpy v okolí"
 
 #: gweather/weather.c:186
 msgid "Moderate small hail"
-msgstr ""
+msgstr "Mierne malé krúpy"
 
 #: gweather/weather.c:186
 msgid "Heavy small hail"
-msgstr ""
+msgstr "«a¾ké malé krúpy"
 
 #: gweather/weather.c:186
 msgid "Shallow small hail"
-msgstr ""
+msgstr "Slabé malé krúpy"
 
 #: gweather/weather.c:186
 msgid "Patches of small hail"
-msgstr ""
+msgstr "Obèasné malé krúpy"
 
 #: gweather/weather.c:186
 msgid "Partial small hail"
-msgstr ""
+msgstr "Èiastoèné malé krúpy"
 
 #: gweather/weather.c:186
 msgid "Small hailstorm"
-msgstr ""
+msgstr "Krupobitie s malými krúpami"
 
 #: gweather/weather.c:186
 msgid "Blowing small hail"
-msgstr ""
+msgstr "Veterné malé krúpy"
 
 #: gweather/weather.c:186
 msgid "Showers of small hail"
-msgstr ""
+msgstr "Spà¹ky malých krúp"
 
 #: gweather/weather.c:186
 msgid "Drifting small hail"
-msgstr ""
+msgstr "Kolísajúce malé krúpy"
 
 #: gweather/weather.c:186
 msgid "Freezing small hail"
-msgstr ""
+msgstr "Mrznúce malé krúpy"
 
 #. PRECIPITATION
 #: gweather/weather.c:187
 msgid "Unknown precipitation"
-msgstr ""
+msgstr "Neznáme zrá¾ky"
 
 #: gweather/weather.c:187
 msgid "Precipitation in the vicinity"
-msgstr ""
+msgstr "Zrá¾ky v okolí"
 
 #: gweather/weather.c:187
 msgid "Light precipitation"
-msgstr ""
+msgstr "¥ahké zrá¾ky"
 
 #: gweather/weather.c:187
 msgid "Moderate precipitation"
-msgstr ""
+msgstr "Mierne zrá¾ky"
 
 #: gweather/weather.c:187
 msgid "Heavy precipitation"
-msgstr ""
+msgstr "«a¾ké zrá¾ky"
 
 #: gweather/weather.c:187
 msgid "Shallow precipitation"
-msgstr ""
+msgstr "Slabé zrá¾ky"
 
 #: gweather/weather.c:187
 msgid "Patches of precipitation"
-msgstr ""
+msgstr "Obèasné zrá¾ky"
 
 #: gweather/weather.c:187
 msgid "Partial precipitation"
-msgstr ""
+msgstr "Èiastoèné zrá¾ky"
 
 #: gweather/weather.c:187
 msgid "Unknown thunderstorm"
-msgstr ""
+msgstr "Neznáma búrka"
 
 #: gweather/weather.c:187
 msgid "Blowing precipitation"
-msgstr ""
+msgstr "Veterné zrá¾ky"
 
 #: gweather/weather.c:187
 msgid "Showers, type unknown"
-msgstr ""
+msgstr "Spà¹ky, neznámy typ"
 
 #: gweather/weather.c:187
 msgid "Drifting precipitation"
-msgstr ""
+msgstr "Kolísajúce zrá¾ky"
 
 #: gweather/weather.c:187
 msgid "Freezing precipitation"
-msgstr ""
+msgstr "Mrznúce zrá¾ky"
 
 #. MIST
 #: gweather/weather.c:188
 msgid "Mist"
-msgstr ""
+msgstr "Opar"
 
 #: gweather/weather.c:188
 msgid "Mist in the vicinity"
-msgstr ""
+msgstr "Opar v okolí"
 
 #: gweather/weather.c:188
 msgid "Light mist"
-msgstr ""
+msgstr "¥ahký opar"
 
 #: gweather/weather.c:188
 msgid "Moderate mist"
-msgstr ""
+msgstr "Mierny opar"
 
 #: gweather/weather.c:188
 msgid "Thick mist"
-msgstr ""
+msgstr "Hustý opar"
 
 #: gweather/weather.c:188
 msgid "Shallow mist"
-msgstr ""
+msgstr "Slabý opar"
 
 #: gweather/weather.c:188
 msgid "Patches of mist"
-msgstr ""
+msgstr "Obèasný opar"
 
 #: gweather/weather.c:188
 msgid "Partial mist"
-msgstr ""
+msgstr "Èiastoèný opar"
 
 #: gweather/weather.c:188
 msgid "Mist with wind"
-msgstr ""
+msgstr "Opar s vetrom"
 
 #: gweather/weather.c:188
 msgid "Drifting mist"
-msgstr ""
+msgstr "Kolísajúci opar"
 
 #: gweather/weather.c:188
 msgid "Freezing mist"
-msgstr ""
+msgstr "Mrznúci opar"
 
 #. FOG
 #: gweather/weather.c:189
 msgid "Fog"
-msgstr ""
+msgstr "Hmla"
 
 #: gweather/weather.c:189
 msgid "Fog in the vicinity"
-msgstr ""
+msgstr "Hmla v okolí"
 
 #: gweather/weather.c:189
 msgid "Light fog"
-msgstr ""
+msgstr "¥ahká hmla"
 
 #: gweather/weather.c:189
 msgid "Moderate fog"
-msgstr ""
+msgstr "Mierna hmla"
 
 #: gweather/weather.c:189
 msgid "Thick fog"
-msgstr ""
+msgstr "Hustá hmla"
 
 #: gweather/weather.c:189
 msgid "Shallow fog"
-msgstr ""
+msgstr "Slabá hmla"
 
 #: gweather/weather.c:189
 msgid "Patches of fog"
-msgstr ""
+msgstr "Obèasná hmla"
 
 #: gweather/weather.c:189
 msgid "Partial fog"
-msgstr ""
+msgstr "Èiastoèná hmla"
 
 #: gweather/weather.c:189
 msgid "Fog with wind"
-msgstr ""
+msgstr "Hmla s vetrom"
 
 #: gweather/weather.c:189
 msgid "Drifting fog"
-msgstr ""
+msgstr "Kolísajúca hmla"
 
 #: gweather/weather.c:189
 msgid "Freezing fog"
-msgstr ""
+msgstr "Mrznúca hmla"
 
 #. SMOKE
 #: gweather/weather.c:190
 msgid "Smoke"
-msgstr ""
+msgstr "Dym"
 
 #: gweather/weather.c:190
 msgid "Smoke in the vicinity"
-msgstr ""
+msgstr "Dym v okolí"
 
 #: gweather/weather.c:190
 msgid "Thin smoke"
-msgstr ""
+msgstr "Priehµadný dym"
 
 #: gweather/weather.c:190
 msgid "Moderate smoke"
-msgstr ""
+msgstr "Mierny dym"
 
 #: gweather/weather.c:190
 msgid "Thick smoke"
-msgstr ""
+msgstr "Hustý dym"
 
 #: gweather/weather.c:190
 msgid "Shallow smoke"
-msgstr ""
+msgstr "Slabý dym"
 
 #: gweather/weather.c:190
 msgid "Patches of smoke"
-msgstr ""
+msgstr "Obèasný dym"
 
 #: gweather/weather.c:190
 msgid "Partial smoke"
-msgstr ""
+msgstr "Èiastoèný dym"
 
 #: gweather/weather.c:190
 msgid "Smoke w/ thunders"
-msgstr ""
+msgstr "Dym s hromami"
 
 #: gweather/weather.c:190
 msgid "Smoke with wind"
-msgstr ""
+msgstr "Dym s vetrom"
 
 #: gweather/weather.c:190
 msgid "Drifting smoke"
-msgstr ""
+msgstr "Kolísajúci dym"
 
 #. VOLCANIC_ASH
 #: gweather/weather.c:191
 msgid "Volcanic ash"
-msgstr ""
+msgstr "Sopeèný popol"
 
 #: gweather/weather.c:191
 msgid "Volcanic ash in the vicinity"
-msgstr ""
+msgstr "Sopeèný popol v okolí"
 
 #: gweather/weather.c:191
 msgid "Moderate volcanic ash"
-msgstr ""
+msgstr "Mierny sopeèný popol"
 
 #: gweather/weather.c:191
 msgid "Thick volcanic ash"
-msgstr ""
+msgstr "Hustý sopeèný popol"
 
 #: gweather/weather.c:191
 msgid "Shallow volcanic ash"
-msgstr ""
+msgstr "Slabý sopeèný popol"
 
 #: gweather/weather.c:191
 msgid "Patches of volcanic ash"
-msgstr ""
+msgstr "Obèasný sopeèný popol"
 
 #: gweather/weather.c:191
 msgid "Partial volcanic ash"
-msgstr ""
+msgstr "Èiastoèný sopeèný popol"
 
 #: gweather/weather.c:191
 msgid "Volcanic ash w/ thunders"
-msgstr ""
+msgstr "Sopeèný popol s hromami"
 
 #: gweather/weather.c:191
 msgid "Blowing volcanic ash"
-msgstr ""
+msgstr "Veterný sopeèný popol"
 
 #: gweather/weather.c:191
 msgid "Showers of volcanic ash "
-msgstr ""
+msgstr "Spà¹ky sopeèného popola"
 
 #: gweather/weather.c:191
 msgid "Drifting volcanic ash"
-msgstr ""
+msgstr "Kolísajúci sopeèný popol"
 
 #: gweather/weather.c:191
 msgid "Freezing volcanic ash"
-msgstr ""
+msgstr "Mrznúci sopeèný popol"
 
 #. SAND
 #: gweather/weather.c:192
 msgid "Sand"
-msgstr ""
+msgstr "Piesok"
 
 #: gweather/weather.c:192
 msgid "Sand in the vicinity"
-msgstr ""
+msgstr "Piesok v okolí"
 
 #: gweather/weather.c:192
 msgid "Light sand"
-msgstr ""
+msgstr "¥ahký piesok"
 
 #: gweather/weather.c:192
 msgid "Moderate sand"
-msgstr ""
+msgstr "Mierny piesok"
 
 #: gweather/weather.c:192
 msgid "Heavy sand"
-msgstr ""
+msgstr "«a¾ký piesok"
 
 #: gweather/weather.c:192
 msgid "Patches of sand"
-msgstr ""
+msgstr "Obèasný piesok"
 
 #: gweather/weather.c:192
 msgid "Partial sand"
-msgstr ""
+msgstr "Èiastoèný piesok"
 
 #: gweather/weather.c:192
 msgid "Blowing sand"
-msgstr ""
+msgstr "Veterný piesok"
 
 #: gweather/weather.c:192
 msgid "Drifting sand"
-msgstr ""
+msgstr "Kolísajúci piesok"
 
 #. HAZE
 #: gweather/weather.c:193
 msgid "Haze"
-msgstr ""
+msgstr "Opar"
 
 #: gweather/weather.c:193
 msgid "Haze in the vicinity"
-msgstr ""
+msgstr "Opar v okolí"
 
 #: gweather/weather.c:193
 msgid "Light haze"
-msgstr ""
+msgstr "¥ahký opar"
 
 #: gweather/weather.c:193
 msgid "Moderate haze"
-msgstr ""
+msgstr "Mierny opar"
 
 #: gweather/weather.c:193
 msgid "Thick haze"
-msgstr ""
+msgstr "Hustý opar"
 
 #: gweather/weather.c:193
 msgid "Shallow haze"
-msgstr ""
+msgstr "Slabý opar"
 
 #: gweather/weather.c:193
 msgid "Patches of haze"
-msgstr ""
+msgstr "Obèasný opar"
 
 #: gweather/weather.c:193
 msgid "Partial haze"
-msgstr ""
+msgstr "Èiastoèný opar"
 
 #: gweather/weather.c:193
 msgid "Haze with wind"
-msgstr ""
+msgstr "Opar s vetrom"
 
 #: gweather/weather.c:193
 msgid "Drifting haze"
-msgstr ""
+msgstr "Kolísajúci opar"
 
 #: gweather/weather.c:193
 msgid "Freezing haze"
-msgstr ""
+msgstr "Mrznúci opar"
 
 #. SPRAY
 #: gweather/weather.c:194
 msgid "Sprays"
-msgstr ""
+msgstr "Jemné spà¹ky"
 
 #: gweather/weather.c:194
 msgid "Sprays in the vicinity"
-msgstr ""
+msgstr "Jemné spà¹ky v okolí"
 
 #: gweather/weather.c:194
 msgid "Light sprays"
-msgstr ""
+msgstr "¥ahké jemné spà¹ky"
 
 #: gweather/weather.c:194
 msgid "Moderate sprays"
-msgstr ""
+msgstr "Mierne jemné spà¹ky"
 
 #: gweather/weather.c:194
 msgid "Heavy sprays"
-msgstr ""
+msgstr "Ta¾ké jemné spà¹ky"
 
 #: gweather/weather.c:194
 msgid "Shallow sprays"
-msgstr ""
+msgstr "Slabé jemné spà¹ky"
 
 #: gweather/weather.c:194
 msgid "Patches of sprays"
-msgstr ""
+msgstr "Obèasné jemné spà¹ky"
 
 #: gweather/weather.c:194
 msgid "Partial sprays"
-msgstr ""
+msgstr "Èiastoèné jemné spà¹ky"
 
 #: gweather/weather.c:194
 msgid "Blowing sprays"
-msgstr ""
+msgstr "Veterné jemné spà¹ky"
 
 #: gweather/weather.c:194
 msgid "Drifting sprays"
-msgstr ""
+msgstr "Kolísavé jemné spà¹ky"
 
 #: gweather/weather.c:194
 msgid "Freezing sprays"
-msgstr ""
+msgstr "Mrznúce jemné spà¹ky"
 
 #. DUST
 #: gweather/weather.c:195
 msgid "Dust"
-msgstr ""
+msgstr "Prach"
 
 #: gweather/weather.c:195
 msgid "Dust in the vicinity"
-msgstr ""
+msgstr "Prach v okolí"
 
 #: gweather/weather.c:195
 msgid "Light dust"
-msgstr ""
+msgstr "¥ahký prach"
 
 #: gweather/weather.c:195
 msgid "Moderate dust"
-msgstr ""
+msgstr "Mierny prach"
 
 #: gweather/weather.c:195
 msgid "Heavy dust"
-msgstr ""
+msgstr "«a¾ký prach"
 
 #: gweather/weather.c:195
 msgid "Patches of dust"
-msgstr ""
+msgstr "Obèasný prach"
 
 #: gweather/weather.c:195
 msgid "Partial dust"
-msgstr ""
+msgstr "Èiastoèný prach"
 
 #: gweather/weather.c:195
 msgid "Blowing dust"
-msgstr ""
+msgstr "Veterný prach"
 
 #: gweather/weather.c:195
 msgid "Drifting dust"
-msgstr ""
+msgstr "Kolísajúci prach"
 
 #. SQUALL
 #: gweather/weather.c:196
 msgid "Squall"
-msgstr ""
+msgstr "Poryvy"
 
 #: gweather/weather.c:196
 msgid "Squall in the vicinity"
-msgstr ""
+msgstr "Poryvy v okolí"
 
 #: gweather/weather.c:196
 msgid "Light squall"
-msgstr ""
+msgstr "¥ahké poryvy"
 
 #: gweather/weather.c:196
 msgid "Moderate squall"
-msgstr ""
+msgstr "Mierne poryvy"
 
 #: gweather/weather.c:196
 msgid "Heavy squall"
-msgstr ""
+msgstr "«a¾ké poryvy"
 
 #: gweather/weather.c:196
 msgid "Partial squall"
-msgstr ""
+msgstr "Èiastoèné poryvy"
 
 #: gweather/weather.c:196
 msgid "Thunderous squall"
-msgstr ""
+msgstr "Búrkové poryvy"
 
 #: gweather/weather.c:196
 msgid "Blowing squall"
-msgstr ""
+msgstr "Veterné poryvy"
 
 #: gweather/weather.c:196
 msgid "Drifting squall"
-msgstr ""
+msgstr "Kolísajúce poryvy"
 
 #: gweather/weather.c:196
 msgid "Freezing squall"
-msgstr ""
+msgstr "Mrazivé poryvy"
 
 #. SANDSTORM
 #: gweather/weather.c:197
@@ -2119,43 +2120,43 @@ msgstr "Piesoèná búrka"
 
 #: gweather/weather.c:197
 msgid "Sandstorm in the vicinity"
-msgstr ""
+msgstr "Piesoèná búrka v okolí"
 
 #: gweather/weather.c:197
 msgid "Light standstorm"
-msgstr ""
+msgstr "¥ahká piesoèná búrka"
 
 #: gweather/weather.c:197
 msgid "Moderate sandstorm"
-msgstr ""
+msgstr "Mierna piesoèná búrka"
 
 #: gweather/weather.c:197
 msgid "Heavy sandstorm"
-msgstr ""
+msgstr "«a¾ká piesoèná búrka"
 
 #: gweather/weather.c:197
 msgid "Shallow sandstorm"
-msgstr ""
+msgstr "Slabá piesoèná búrka"
 
 #: gweather/weather.c:197
 msgid "Partial sandstorm"
-msgstr ""
+msgstr "Èiastoèná piesoèná búrka"
 
 #: gweather/weather.c:197
 msgid "Thunderous sandstorm"
-msgstr ""
+msgstr "Piesoèná búrka s hromami"
 
 #: gweather/weather.c:197
 msgid "Blowing sandstorm"
-msgstr ""
+msgstr "Veterná piesková búrka"
 
 #: gweather/weather.c:197
 msgid "Drifting sandstorm"
-msgstr ""
+msgstr "Kolísajúca piesoèná búrka"
 
 #: gweather/weather.c:197
 msgid "Freezing sandstorm"
-msgstr ""
+msgstr "Mrazivá piesoèná búrka"
 
 #. DUSTSTORM
 #: gweather/weather.c:198
@@ -2164,84 +2165,84 @@ msgstr "Prachová búrka"
 
 #: gweather/weather.c:198
 msgid "Duststorm in the vicinity"
-msgstr ""
+msgstr "Prachová búrka v okolí"
 
 #: gweather/weather.c:198
 msgid "Light duststorm"
-msgstr ""
+msgstr "¥ahká prachová búrka"
 
 #: gweather/weather.c:198
 msgid "Moderate duststorm"
-msgstr ""
+msgstr "Mierna prachová búrka"
 
 #: gweather/weather.c:198
 msgid "Heavy duststorm"
-msgstr ""
+msgstr "«a¾ká prachová búrka"
 
 #: gweather/weather.c:198
 msgid "Shallow duststorm"
-msgstr ""
+msgstr "Slabá prachová búrka"
 
 #: gweather/weather.c:198
 msgid "Partial duststorm"
-msgstr ""
+msgstr "Èiastoèná prachová búrka"
 
 #: gweather/weather.c:198
 msgid "Thunderous duststorm"
-msgstr ""
+msgstr "Prachová búrka s hromami"
 
 #: gweather/weather.c:198
 msgid "Blowing duststorm"
-msgstr ""
+msgstr "Veterná prachová búrka"
 
 #: gweather/weather.c:198
 msgid "Drifting duststorm"
-msgstr ""
+msgstr "Kolísajúca prachová búrka"
 
 #: gweather/weather.c:198
 msgid "Freezing duststorm"
-msgstr ""
+msgstr "Mrazivá prachová búrka"
 
 #. FUNNEL_CLOUD
 #: gweather/weather.c:199
 msgid "Funnel cloud"
-msgstr ""
+msgstr "Lievikovité mraky"
 
 #: gweather/weather.c:199
 msgid "Funnel cloud in the vicinity"
-msgstr ""
+msgstr "Lievikovité mraky v okolí"
 
 #: gweather/weather.c:199
 msgid "Light funnel cloud"
-msgstr ""
+msgstr "¥ahké lievikovité mraky"
 
 #: gweather/weather.c:199
 msgid "Moderate funnel cloud"
-msgstr ""
+msgstr "Mierne lievikovité mraky"
 
 #: gweather/weather.c:199
 msgid "Thick funnel cloud"
-msgstr ""
+msgstr "Husté lievikovité mraky"
 
 #: gweather/weather.c:199
 msgid "Shallow funnel cloud"
-msgstr ""
+msgstr "Slabé lievikovité mraky"
 
 #: gweather/weather.c:199
 msgid "Patches of funnel clouds"
-msgstr ""
+msgstr "Obèasné lievikovité mraky"
 
 #: gweather/weather.c:199
 msgid "Partial funnel clouds"
-msgstr ""
+msgstr "Èiastoèné lievikovité mraky"
 
 #: gweather/weather.c:199
 msgid "Funnel cloud w/ wind"
-msgstr ""
+msgstr "Lievikovité mraky s vetrom"
 
 #: gweather/weather.c:199
 msgid "Drifting funnel cloud"
-msgstr ""
+msgstr "Kolísajúce lievikovité mraky"
 
 #. TORNADO
 #: gweather/weather.c:200
@@ -2250,72 +2251,72 @@ msgstr "Tornádo"
 
 #: gweather/weather.c:200
 msgid "Tornado in the vicinity"
-msgstr ""
+msgstr "Tornádo v okolí"
 
 #: gweather/weather.c:200
 msgid "Moderate tornado"
-msgstr ""
+msgstr "Mierne tornádo"
 
 #: gweather/weather.c:200
 msgid "Raging tornado"
-msgstr ""
+msgstr "Zúrivé tornádo"
 
 #: gweather/weather.c:200
 msgid "Partial tornado"
-msgstr ""
+msgstr "Èiastoèné tornádo"
 
 #: gweather/weather.c:200
 msgid "Thunderous tornado"
-msgstr ""
+msgstr "Búrkové tornádo"
 
 #: gweather/weather.c:200
 msgid "Drifting tornado"
-msgstr ""
+msgstr "Kolísajúce tornádo"
 
 #: gweather/weather.c:200
 msgid "Freezing tornado"
-msgstr ""
+msgstr "Mrazivé tornádo"
 
 #. DUST_WHIRLS
 #: gweather/weather.c:201
 msgid "Dust whirls"
-msgstr ""
+msgstr "Prachové víry"
 
 #: gweather/weather.c:201
 msgid "Dust whirls in the vicinity"
-msgstr ""
+msgstr "Prachové víry v okolí"
 
 #: gweather/weather.c:201
 msgid "Light dust whirls"
-msgstr ""
+msgstr "¥ahké prachové víry"
 
 #: gweather/weather.c:201
 msgid "Moderate dust whirls"
-msgstr ""
+msgstr "Mierne prachové víry"
 
 #: gweather/weather.c:201
 msgid "Heavy dust whirls"
-msgstr ""
+msgstr "«a¾ké prachové víry"
 
 #: gweather/weather.c:201
 msgid "Shallow dust whirls"
-msgstr ""
+msgstr "Slabé prachové víry"
 
 #: gweather/weather.c:201
 msgid "Patches of dust whirls"
-msgstr ""
+msgstr "Obèasné prachové víry"
 
 #: gweather/weather.c:201
 msgid "Partial dust whirls"
-msgstr ""
+msgstr "Èiastoèné prachové víry"
 
 #: gweather/weather.c:201
 msgid "Blowing dust whirls"
-msgstr ""
+msgstr "Veterné prachové víry"
 
 #: gweather/weather.c:201
 msgid "Drifting dust whirls"
-msgstr ""
+msgstr "Kolísajúce prachové víry"
 
 #: gweather/weather.c:772
 msgid "Failed to get METAR data.\n"
@@ -2343,7 +2344,7 @@ msgstr "Neznámy èas pozorovania"
 
 #: gweather/weather.c:1361
 msgid "Calm"
-msgstr ""
+msgstr "Bezvetrie"
 
 #: gweather/weather.c:1385
 msgid "Unknown"
@@ -2664,75 +2665,126 @@ msgstr ""
 msgid "Do you want to connect?"
 msgstr "Chcete sa pripoji»?"
 
-#: modemlights/modemlights.c:533
+#: modemlights/modemlights.c:537
+#, c-format
+msgid "%#.1fMb received / %#.1fMb sent / time: %.1d:%.2d"
+msgstr "%#.1fMb prijatých / %#.1fMb odoslaných / èas: %.1d:%.2d"
+
+#: modemlights/modemlights.c:542
 msgid "not connected"
 msgstr "nepripojený"
 
-#: modemlights/modemlights.c:1371
+#: modemlights/modemlights.c:1471
 msgid "Help..."
 msgstr "Pomocník..."
 
-#: modemlights/properties.c:234
+#: modemlights/properties.c:396
 msgid "Modem Lights Settings"
 msgstr "Nastavenia Svetiel modemu"
 
-#: modemlights/properties.c:239
+#: modemlights/properties.c:401
 msgid "Connecting"
 msgstr "Pripájam sa"
 
-#: modemlights/properties.c:253
+#: modemlights/properties.c:415
 msgid "Connect command:"
 msgstr "Príkaz na pripojenie:"
 
-#: modemlights/properties.c:270
+#: modemlights/properties.c:432
 msgid "Disconnect command:"
 msgstr "Príkaz na odpojenie:"
 
 #. confirmation checkbox
-#: modemlights/properties.c:283
+#: modemlights/properties.c:445
 msgid "Confirm connection"
 msgstr "Potvrdi» pripojenie"
 
-#: modemlights/properties.c:290 slashapp/properties.c:412
+#: modemlights/properties.c:452 slashapp/properties.c:412
 #: tickastat/properties.c:565
 msgid "Display"
 msgstr "Zobrazenie"
 
-#: modemlights/properties.c:304
+#: modemlights/properties.c:466
 msgid "Updates per second"
 msgstr "Frekvencia obnovovania"
 
 #. extra info checkbox
-#: modemlights/properties.c:317
+#: modemlights/properties.c:479
 msgid "Show connect time and throughput"
 msgstr "Zobrazi» èas pripojenia a rýchlos»"
 
-#: modemlights/properties.c:333
+#: modemlights/properties.c:495
+msgid "Receive data"
+msgstr "Príjem dát"
+
+#: modemlights/properties.c:497 modemlights/properties.c:502
+#: modemlights/properties.c:521
+msgid "Foreground"
+msgstr "Popredie"
+
+#: modemlights/properties.c:498 modemlights/properties.c:503
+#: modemlights/properties.c:522
+msgid "Background"
+msgstr "Pozadie"
+
+#: modemlights/properties.c:500
+msgid "Send data"
+msgstr "Odosielanie dát"
+
+#: modemlights/properties.c:505
+msgid "Connection status"
+msgstr "Stav spojenia"
+
+#: modemlights/properties.c:507
+msgid "Connected"
+msgstr "Pripojený"
+
+#: modemlights/properties.c:508
+msgid "Not connected"
+msgstr "Nepripojený"
+
+#: modemlights/properties.c:509
+msgid "Awaiting connection"
+msgstr "Oèakávam pripojenie"
+
+#: modemlights/properties.c:512
+msgid "Blink"
+msgstr "Blika»"
+
+#: modemlights/properties.c:519
+msgid "Text"
+msgstr "Text"
+
+#: modemlights/properties.c:523
+msgid "Outline"
+msgstr "Obrysy"
+
+#: modemlights/properties.c:534
 msgid "Modem options"
 msgstr "Mo¾nosti modemu"
 
-#: modemlights/properties.c:347
+#: modemlights/properties.c:548
 msgid "Modem lock file:"
 msgstr "Súbor so zámkom pre modem:"
 
-#: modemlights/properties.c:359
+#: modemlights/properties.c:560
 msgid "Verify owner of lock file"
 msgstr "Overi» vlastníka súboru so zámkom"
 
-#: modemlights/properties.c:371
+#: modemlights/properties.c:572
 msgid "Device:"
 msgstr "Zariadenie:"
 
 #. ISDN checkbox
-#: modemlights/properties.c:384
+#: modemlights/properties.c:585
 msgid "Use ISDN"
 msgstr "Pou¾i» ISDN"
 
-#: modemlights/properties.c:404
+#: modemlights/properties.c:605
 msgid "Set options as default"
-msgstr "Nastavi» mo¾nosti ako ¹tandardné"
+msgstr "Nastavi» ako ¹tandardné"
 
-#: modemlights/properties.c:410 sound-monitor/properties.c:511
+#: modemlights/properties.c:611 sound-monitor/properties.c:511
 msgid "Advanced"
 msgstr "Pokroèilé"
 
@@ -3068,7 +3120,8 @@ msgstr "Pauza v sekundách pred zachytením (len pre celú plochu)"
 
 #: screenshooter/screenshooter_applet.c:417
 msgid "Compressed Quality (JPEG/MIFF/PNG mode) High: good quality/large file"
-msgstr "Kvalita po kompresii (mód JPEG/MIFF/PNG) Vysoká: dobrá kvalita/veµký súbor"
+msgstr ""
+"Kvalita po kompresii (mód JPEG/MIFF/PNG) Vysoká: dobrá kvalita/veµký súbor"
 
 #: screenshooter/screenshooter_applet.c:428
 msgid "Create monochrome image"
@@ -3143,8 +3196,10 @@ msgid "Thumbnail Size (percentage of original)"
 msgstr "Veµkos» miniatúry (percent originálu)"
 
 #: screenshooter/screenshooter_applet.c:563
-msgid "Thumbnail compression (JPEG/MIFF/PNG mode) High: good quality/large file"
-msgstr "Kompresia miniatúry (mód JPEG/MIFF/PNG) Vysoká: dobrá kvalita/veµký obrázok"
+msgid ""
+"Thumbnail compression (JPEG/MIFF/PNG mode) High: good quality/large file"
+msgstr ""
+"Kompresia miniatúry (mód JPEG/MIFF/PNG) Vysoká: dobrá kvalita/veµký obrázok"
 
 #: screenshooter/screenshooter_applet.c:573
 msgid "Prefix to attach to thumbnail filename:"
@@ -3241,7 +3296,8 @@ msgid "Emboss image"
 msgstr "Vtlaèi» obrázok"
 
 #: screenshooter/screenshooter_applet.c:727
-msgid "When finished, send image and thumbnail filenames to script/program below"
+msgid ""
+"When finished, send image and thumbnail filenames to script/program below"
 msgstr "Po dokonèení, odosla» mená súborov s obrázkom a miniatúrou do programu"
 
 #: screenshooter/screenshooter_applet.c:735
@@ -3293,11 +3349,11 @@ msgstr "Ako veµmi hµada» hrany?"
 
 #: screenshooter/screenshooter_applet.c:797
 msgid "Implode Image"
-msgstr ""
+msgstr "Implodova»"
 
 #: screenshooter/screenshooter_applet.c:801
 msgid "Implode by what factor?"
-msgstr ""
+msgstr "O koµko implodova»?"
 
 #: screenshooter/screenshooter_applet.c:806
 msgid "Spurious"
@@ -3313,11 +3369,11 @@ msgstr "Aký polomer okolo ka¾dého bodu?"
 
 #: screenshooter/screenshooter_applet.c:822
 msgid "Solarise Image"
-msgstr ""
+msgstr "Oslni» obrázok"
 
 #: screenshooter/screenshooter_applet.c:826
 msgid "Solarize factor?"
-msgstr ""
+msgstr "Úroveò oslnenia?"
 
 #: screenshooter/screenshooter_applet.c:830
 msgid "Spread image pixels"
@@ -3329,11 +3385,11 @@ msgstr "Polomer, o ktorý rozotrie» ka¾dý bod?"
 
 #: screenshooter/screenshooter_applet.c:838
 msgid "Swirl pixels. My favorite :-)"
-msgstr ""
+msgstr "Rozvíri» body. Môj najobµúbenej¹í :-)"
 
 #: screenshooter/screenshooter_applet.c:842
 msgid "Radius to swirl pixels around?)"
-msgstr ""
+msgstr "Polomer víru okolo bodu?)"
 
 #: screenshooter/screenshooter_applet.c:846
 msgid "Spurious 2"
@@ -3410,7 +3466,7 @@ msgstr "Hostiteµ proxy:"
 
 #: slashapp/properties.c:320
 msgid "Proxy Port: "
-msgstr "Proxy port:"
+msgstr "Hostiteµ proxy:"
 
 #: slashapp/properties.c:333
 msgid "(These settings do not take effect until a refresh)"
@@ -3461,7 +3517,7 @@ msgstr "%d.%d.%d"
 
 #: slashapp/slashapp.c:189
 msgid "Justin Maurer <justin@helixcode.com>"
-msgstr "Justin Maurer <justin@helixcode.org>"
+msgstr "Justin Maurer <justin@helixcode.com>"
 
 #: slashapp/slashapp.c:191
 msgid "Craig Small <csmall@eye-net.com.au>"
@@ -3497,7 +3553,7 @@ msgstr "Nepodarilo sa rozlo¾i» dokument\n"
 
 #: slashapp/slashapp.c:364 slashapp/slashapp.c:373
 msgid "Can't parse XML. Net connection down?"
-msgstr "Nepodarilo sa rozlo¾i» XML. Stratené sie»ové spojenie?"
+msgstr "Nemô¾em rozlo¾i» XML. Sie»ové spojenie stratené?"
 
 #: slashapp/slashapp.c:401
 msgid "Unable to initialize request. Shouldn't happen\n"
@@ -3567,7 +3623,8 @@ msgstr ""
 "\n"
 "Ak Va¹a karta nie je stopercentne duplexná (mô¾e spracováva» vstup aj výstup "
 "naraz),\n"
-"tak to mô¾e prebudi» chyby v ovládaèi karty alebo esounde a zablokova» system.\n"
+"tak to mô¾e prebudi» chyby v ovládaèi karty alebo esounde a zablokova» "
+"system.\n"
 "\n"
 "My sme Vás varovali!"
 
@@ -3982,4 +4039,3 @@ msgstr ""
 #: whereami/whereami.c:210
 msgid "whereami_applet"
 msgstr "Aplet Kde som"
-
