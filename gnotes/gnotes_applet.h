@@ -25,6 +25,10 @@
 /* uncomment this to turn on debugging */
 /* #define GNOTE_DEBUG (1) */
 
+#include "config.h"
+#include <gnome.h>
+#include <applet-widget.h>
+
 #ifdef __GNUC__
 #ifdef GNOTE_DEBUG
 #  define g_debug(format, args...) \
@@ -39,14 +43,19 @@
 #define g_info(format, args...) \
   g_log(G_LOG_DOMAIN, G_LOG_LEVEL_INFO, "GNotes: "format, ##args)
 #else /* !__GNUC__ */
+#include <string.h>
+#include <stdarg.h>
 static void
 g_debug (const gchar *format,
 	 ...)
 {
 #ifdef GNOTE_DEBUG
   va_list args;
+  gchar s[1024];
   va_start (args, format);
-  g_logv (G_LOG_DOMAIN, G_LOG_LEVEL_DEBUG, "GNotes: "format, args);
+  strcpy (s, "GNotes: ");
+  strncat (s, format, sizeof(s)-strlen(s)-1);
+  g_logv (G_LOG_DOMAIN, G_LOG_LEVEL_DEBUG, s, args);
   va_end (args);
 #endif
 }
@@ -55,8 +64,11 @@ g_critical (const gchar *format,
 	    ...)
 {
   va_list args;
+  gchar s[1024];
   va_start (args, format);
-  g_logv (G_LOG_DOMAIN, G_LOG_LEVEL_CRITICAL, "GNotes: "format, args);
+  strcpy (s, "GNotes: ");
+  strncat (s, format, sizeof(s)-strlen(s)-1);
+  g_logv (G_LOG_DOMAIN, G_LOG_LEVEL_CRITICAL, s, args);
   va_end (args);
 }
 static void
@@ -64,28 +76,17 @@ g_info (const gchar *format,
 	...)
 {
   va_list args;
+  gchar s[1024];
   va_start (args, format);
-  g_logv (G_LOG_DOMAIN, G_LOG_LEVEL_INFO, "GNotes: "format, args);
+  strcpy (s, "GNotes: ");
+  strncat (s, format, sizeof(s)-strlen(s)-1);
+  g_logv (G_LOG_DOMAIN, G_LOG_LEVEL_INFO, s, args);
   va_end (args);
 }
 #endif
 
-
-#include <gnome.h>
-#include <applet-widget.h>
-#include "config.h"
-
 /* various actions */
-#define GNOTES_SAVE    "Save Notes"
-#define GNOTES_LOAD    "Load Notes"
-#define GNOTES_RAISE   "Raise Notes"
-#define GNOTES_LOWER   "Lower Notes"
-#define GNOTES_HIDE    "Hide Notes"
-#define GNOTES_SHOW    "Show Notes"
-#define GNOTE_RESIZE   "Resize Note"
-#define GNOTE_HIDE     "Hide Note"
-#define GNOTE_DELETE   "Delete Note"
-
+/* gettext won't work here if they would be defines */
 #define GNOTE_FORMAT "#GNOTE-1"
 
 #define GNOTES_DIR    ".gnome/gnotes.d"
