@@ -151,7 +151,7 @@ gkb_preset_load (GList * list)
 
 	  val->lang = gnome_config_get_translated_string ("Language");
 	  val->country = gnome_config_get_translated_string ("Country");
-
+	
 	  retlist = g_list_append (retlist, val);
 
 	  gnome_config_pop_prefix ();
