@@ -113,7 +113,7 @@ display_charlist (charpick_data *data)
   {
     currstr[0] = charlist[i];
     currstr[1] = '\0';
-    gtk_label_set(GTK_LABEL(data->labels[i]), currstr);
+    gtk_label_set_text(GTK_LABEL(data->labels[i]), currstr);
     gtk_widget_show_all(data->toggle_buttons[i]);
   }
   /* extra buttons? hide em */
