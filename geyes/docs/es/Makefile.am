@@ -1,14 +1,8 @@
 figs = \
-	figures/geyes_applet.png	\
-	figures/geyes_settings.png
-docname = geyes_applet
+	figures/geyes_applet.png
+docname = geyes
 lang = es
-omffile = geyes_applet-es.omf
-sgml_ents = geyes.sgml \
-	authors.sgml \
-	licencia-es.sgml \
-	licencia-nota-es.sgml \
-	license.sgml
-include $(top_srcdir)/sgmldocs.make
+omffile = geyes-es.omf
+entities = legal.xml
+include $(top_srcdir)/xmldocs.make
 dist-hook: app-dist-hook
-
