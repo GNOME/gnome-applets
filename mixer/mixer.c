@@ -711,6 +711,9 @@ mixer_popup_show (MixerData *data)
 	GtkRequisition  req;
 	GtkWidget      *frame;
 	GtkWidget      *inner_frame;
+	GtkWidget      *pluslabel, *minuslabel;
+	GtkWidget 	     *event;
+	GtkWidget 	     *box;
 	gint            x, y;
 	gint            width, height;
 	GdkGrabStatus   pointer, keyboard;
@@ -731,10 +734,18 @@ mixer_popup_show (MixerData *data)
 	gtk_frame_set_shadow_type (GTK_FRAME (inner_frame), GTK_SHADOW_NONE);
 	gtk_widget_show (inner_frame);
 	
+	event = gtk_event_box_new ();
+	/* This signal is to not let button press close the popup when the press is
+	** in the scale */
+	g_signal_connect_after (event, "button_press_event",
+				  G_CALLBACK (scale_button_event), data);
+	
 	if (IS_PANEL_HORIZONTAL (data->orientation)) {
+		box = gtk_vbox_new (FALSE, 0);
 		data->scale = gtk_vscale_new (data->adj);
 		gtk_widget_set_size_request (data->scale, -1, 100);			
 	} else {
+		box = gtk_hbox_new (FALSE, 0);
 		data->scale = gtk_hscale_new (data->adj);
 		gtk_widget_set_size_request (data->scale, 100, -1);
 		gtk_range_set_inverted (GTK_RANGE (data->scale), TRUE);
@@ -745,11 +756,7 @@ mixer_popup_show (MixerData *data)
 				_("Volume Controller"),
 				_("Use Up/Down arrow keys to change volume"));
 	}
-	/* This signal is to not let button press close the popup when the press is
-	** in the scale */
-	g_signal_connect_after (data->scale, "button_press_event",
-				  G_CALLBACK (scale_button_event), data);
-	g_signal_connect (data->popup,
+	g_signal_connect_after (data->popup,
 			  "button-press-event",
 			  (GCallback) scale_button_release_event_cb,
 			  data);
@@ -768,8 +775,24 @@ mixer_popup_show (MixerData *data)
 	gtk_container_add (GTK_CONTAINER (data->popup), frame);
 	
 	gtk_container_add (GTK_CONTAINER (frame), inner_frame);
-	gtk_container_add (GTK_CONTAINER (inner_frame), data->scale);
-
+	
+	/* Translators - The + and - refer to increasing and decreasing the volume. 
+	** I don't know if there are sensible alternatives in other languages */
+	pluslabel = gtk_label_new (_("+"));	
+	minuslabel = gtk_label_new (_("-"));
+	
+	if (IS_PANEL_HORIZONTAL (data->orientation)) {
+		gtk_box_pack_start (GTK_BOX (box), pluslabel, FALSE, FALSE, 0);
+		gtk_box_pack_end (GTK_BOX (box), minuslabel, FALSE, FALSE, 0);
+	} else {
+		gtk_box_pack_start (GTK_BOX (box), minuslabel, FALSE, FALSE, 0);
+		gtk_box_pack_end (GTK_BOX (box), pluslabel, FALSE, FALSE, 0);
+	}
+	gtk_box_pack_start (GTK_BOX (box), data->scale, TRUE, TRUE, 0);
+	
+	gtk_container_add (GTK_CONTAINER (event), box);
+	gtk_container_add (GTK_CONTAINER (inner_frame), event);
+	
 	gtk_widget_show_all (inner_frame);
 	
 	/*
