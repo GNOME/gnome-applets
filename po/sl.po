@@ -1,6 +1,7 @@
 # SLOVENIAN TRANSLATION OF GNOME APPLETS.
 # Copyright (C) 2001 Free Software Foundation, Inc.
 # Urban Borstnik <urban@cmm.ki.si>, 2000.
+# Nejc Novak <nejc.novak@guest.arnes.si>, 2002.
 # $Id$
 # $Source$
 #
@@ -9,7 +10,7 @@ msgstr ""
 "Project-Id-Version: gnome-applets 1.2\n"
 "POT-Creation-Date: 2002-03-01 12:22+0100\n"
 "PO-Revision-Date: 2000-11-26 11:04-0200\n"
-"Last-Translator: Urban Borstnik <urban@cmm.ki.si>\n"
+"Last-Translator: Nejc Novak <nejc.novak@guest.arnes.si>\n"
 "Language-Team: Slovenian <sl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -39,9 +40,8 @@ msgstr "Prazno"
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
 #: battstat/battstat_applet.c:320 battstat/battstat_applet.c:834
-#, fuzzy
 msgid "Critical"
-msgstr "Članki"
+msgstr "Kritično"
 
 #. Charging = The APM BIOS thinks that the battery is recharging.
 #: battstat/battstat_applet.c:322 battstat/battstat_applet.c:836
@@ -104,7 +104,7 @@ msgstr "N/A"
 #: battstat/battstat_applet.c:596 battstat/battstat_applet.c:905
 #, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
-msgstr "Sistem poganja baterijska energija. Baterija: %d%% (%s)"
+msgstr "Sistem poganja baterija. Baterija: %d%% (%s)"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
@@ -119,7 +119,7 @@ msgstr "Sistem poganja AC napetost. Baterija: %d%% (%s)"
 #. possible combination, I guess... :)
 #: battstat/battstat_applet.c:614
 msgid "System is running on battery power. Battery: Not present"
-msgstr "Sistem poganja baterijska napetost. Baterija: ni prisotna"
+msgstr "Sistem poganja baterija. Baterija: ni prisotna"
 
 #. This string will display as a tooltip over the
 #. battery frame when the computer is using AC
@@ -183,12 +183,17 @@ msgid ""
 "\"%d\"\n"
 "Please try to correct this error"
 msgstr ""
+"Prišlo je do napake pri izvajanju Suspend ukaza, ukaz je vrnil "
+"\"%d\"\n"
+"Prosim, poskusite odpraviti to napako"
 
 #: battstat/battstat_applet.c:774
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
 msgstr ""
+"Ukaz Suspend ni bil pravilno nastavljen v nastavitvah.\n"
+"Prosim, spremenite nastavitve in poskusite znova."
 
 #. The long name of the applet in the About dialog.
 #: battstat/battstat_applet.c:803
@@ -201,16 +206,15 @@ msgstr "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 
 #: battstat/battstat_applet.c:806
 msgid "This utility show the status of your laptop battery."
-msgstr "Orodje, ki prikaze status baterije vasega prenosnika."
+msgstr "Orodje, ki prikaze statusa baterije vašega prenosnika."
 
 #: battstat/GNOME_BattstatApplet.server.in.h:1
-#, fuzzy
 msgid "Battery Charge Monitor"
 msgstr "Prikazatelj statusa baterije"
 
 #: battstat/GNOME_BattstatApplet.server.in.h:2
 msgid "Battstat Factory"
-msgstr ""
+msgstr "Battstat tovarna"
 
 #: battstat/GNOME_BattstatApplet.server.in.h:3
 msgid "Laptop battery monitor applet"
@@ -261,7 +265,7 @@ msgstr "Lastnosti..."
 
 #: battstat/GNOME_BattstatApplet.xml.h:4
 msgid "Suspend Computer..."
-msgstr ""
+msgstr "Ugasni računalnik..."
 
 #: cdplayer/cdplayer.c:149
 msgid "Stop"
@@ -296,7 +300,6 @@ msgid "CD Player Applet"
 msgstr "Vstavek CD predvajalnik"
 
 #: cdplayer/cdplayer.c:368
-#, fuzzy
 msgid ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
@@ -313,14 +316,12 @@ msgid "CD Player"
 msgstr "CD Predvajalnik"
 
 #: cdplayer/GNOME_CDPlayerApplet.server.in.h:2
-#, fuzzy
 msgid "CD Player Applet Factory"
-msgstr "Vstavek CD predvajalnik"
+msgstr "Tovarna vstavka CD predvajalnik"
 
 #: cdplayer/GNOME_CDPlayerApplet.server.in.h:3
-#, fuzzy
 msgid "Factory for CD player applet"
-msgstr "Vstavek CD predvajalnik"
+msgstr "Tovarna za vstavek CD predvajalnik"
 
 #: cdplayer/GNOME_CDPlayerApplet.server.in.h:4
 #: mixer/GNOME_MixerApplet.server.in.h:2
@@ -329,12 +330,11 @@ msgstr "Multimedija"
 
 #: cdplayer/GNOME_CDPlayerApplet.server.in.h:5
 msgid "Panel applet for playing audio CDs"
-msgstr ""
+msgstr "Vstavek za predvajanje glasbenih CDjev"
 
 #: cdplayer/GNOME_CDPlayerApplet.xml.h:4
-#, fuzzy
 msgid "Run External CD Player"
-msgstr "Poženi CD Predvajalnik..."
+msgstr "Začeni zunanji CD Predvajalnik..."
 
 #: charpick/charpick.c:361
 msgid "Character Picker"
@@ -358,7 +358,7 @@ msgstr "Paleta znakov"
 
 #: charpick/GNOME_CharpickerApplet.server.in.h:2
 msgid "Charpicker Applet Factory"
-msgstr ""
+msgstr "Tovarna za vtičnik za izbiro znakov"
 
 #: charpick/GNOME_CharpickerApplet.server.in.h:3
 msgid "Insert characters"
@@ -377,9 +377,8 @@ msgstr ""
 "vstavek fokus, za vrnitev na ta seznam."
 
 #: charpick/properties.c:113
-#, fuzzy
 msgid "Character Palette Properties"
-msgstr "Nastavitve Izbirnika znakov"
+msgstr "Nastavitve palete znakov"
 
 #: drivemount/drivemount.c:418
 msgid "Drive Mount Applet"
@@ -387,11 +386,11 @@ msgstr "Vstavek Priklopnik pogonov"
 
 #: drivemount/drivemount.c:419
 msgid "(C) 1999-2001 The GNOME Hackers\n"
-msgstr "(C) 1999-2001 GNOME hekerji\n"
+msgstr "(C) 1999-2001 GNOME Hackers\n"
 
 #: drivemount/drivemount.c:421
 msgid "Applet for mounting and unmounting block volumes."
-msgstr ""
+msgstr "Vstavek za priklaplanje in odklaplanje pogonov"
 
 #: drivemount/drivemount.c:611
 msgid " mounted"
@@ -402,13 +401,12 @@ msgid " not mounted"
 msgstr " ni prikljopljen"
 
 #: drivemount/drivemount.c:724
-#, fuzzy
 msgid "Drive Mount Applet Warning"
-msgstr "Vstavek Priklopnik pogonov"
+msgstr "Vstavek Opozorilnik za priklaplanje pogonov"
 
 #: drivemount/drivemount.c:732
 msgid "\" reported:\n"
-msgstr "\" sporoceno:\n"
+msgstr "\" sporočeno:\n"
 
 # @ Maybe it's ,,prijavljeno``?
 #: drivemount/drivemount.c:734
@@ -428,13 +426,12 @@ msgid "Drive Mount Applet Factory"
 msgstr "Vstavek Priklopnik pogonov"
 
 #: drivemount/GNOME_DriveMountApplet.server.in.h:3
-#, fuzzy
 msgid "Factory for drive mount applet"
-msgstr "Vstavek Priklopnik pogonov"
+msgstr "Vstavek za priklaplanje pogonov"
 
 #: drivemount/GNOME_DriveMountApplet.server.in.h:4
 msgid "Panel applet for mounting block volumes"
-msgstr ""
+msgstr "Vstavek za priklaplanje pogonov"
 
 #: drivemount/GNOME_DriveMountApplet.xml.h:2 panel-menu/panel-menu-path.c:730
 msgid "Browse..."
@@ -470,7 +467,7 @@ msgstr "Cd zapisovalnik"
 
 #: drivemount/properties.c:317
 msgid "Zip Drive"
-msgstr "Pogon ZIP"
+msgstr "Pogon Zip"
 
 #: drivemount/properties.c:320
 msgid "Hard Disk"
@@ -482,7 +479,7 @@ msgstr "Pogon Jaz"
 
 #: drivemount/properties.c:326
 msgid "Custom"
-msgstr "Prikrojeno"
+msgstr "Po meri"
 
 #: drivemount/properties.c:339
 msgid "Select icon for mounted"
@@ -518,7 +515,7 @@ msgstr "Dave Camp <campd@oit.edu>"
 
 #: geyes/geyes.c:209
 msgid "gEyes"
-msgstr "gOči"
+msgstr "gEyes"
 
 #: geyes/geyes.c:210
 msgid "Copyright (C) 1999 Dave Camp"
@@ -530,20 +527,20 @@ msgstr "Smešen klon xeyes za GNOME pult."
 
 #: geyes/GNOME_GeyesApplet.server.in.h:1
 msgid "A set of eyeballs for your panel"
-msgstr ""
+msgstr "Skupina oči na vašem pultom"
 
 #: geyes/GNOME_GeyesApplet.server.in.h:2
+#, fuzzy
 msgid "Amusements"
-msgstr ""
+msgstr "Za zabavo"
 
 #: geyes/GNOME_GeyesApplet.server.in.h:3
-#, fuzzy
 msgid "Geyes Applet"
 msgstr "Vstavek Geyes"
 
 #: geyes/GNOME_GeyesApplet.server.in.h:4
 msgid "Geyes Applet Factory"
-msgstr ""
+msgstr "Tovarna vtičnika Geyes"
 
 #: geyes/themes.c:189
 msgid "Theme Name"
@@ -574,7 +571,7 @@ msgid "lang_%d"
 msgstr "lang_%d"
 
 #: gkb-new/gkb.c:422
-#, fuzzy, c-format
+#, c-format
 msgid "command_%d"
 msgstr "commang_%d"
 
@@ -591,7 +588,6 @@ msgid "(C) 1998-2000 Free Software Foundation"
 msgstr "(C) 1998-2000 Free Software Foundation"
 
 #: gkb-new/gkb.c:577
-#, fuzzy
 msgid ""
 "This applet switches between keyboard maps using setxkbmap, or xmodmap.\n"
 "Mail me your flag and keyboard layoutif you want support for your locale (my "
@@ -601,12 +597,13 @@ msgid ""
 "Kovacs <emese@gnome.hu> for her solidarity, help from guys like KevinV.\n"
 "Shooby Ban <shooby@gnome.hu>"
 msgstr ""
-"Ta vstavek prekljaplja med razporeditvami tipk.  Uporablja setxkbmap ali "
+"Ta vstavek prekljaplja med razporeditvami tipk s pomočjo setxkbmap ali"
 "xmodmap.\n"
-"Prosim, pošljite vašo zastavo (velikost 60x40), da jo vključim v CVS.\n"
+"Prosim, pošljite vašo zastavo in postavitev tipkovnice, če želite "
+podporo za vaš locale (moja epošta je shooby@gnome.hu).\n"
 "Zbogom, in hvala za vse ribe.\n"
 "Zahvale Balazs Nagy (Kevin) <julian7@kva.hu) za pomoč in Emese Kovacs "
-"<emese@eik.gme.hu> za solidarnost."
+"<emese@eik.gme.hu> za solidarnost in pomoč od fantov kot je KevinV.\n"
 
 # @ I just know there must be a ``standard'' xl for that last sentence from
 # the THE GUIDE.
@@ -616,7 +613,7 @@ msgstr "Domača stran GKB (http://projects.gnome.hu/gkb)"
 
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:1
 msgid "GKB Factory"
-msgstr ""
+msgstr "GKB tovarna"
 
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:2
 msgid "Keyboard Layout Switcher"
@@ -628,7 +625,7 @@ msgstr "GNOME vstavek Preklopnik tipkovnice"
 
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:4
 msgid "Produces keyboard layout switcher applets."
-msgstr ""
+msgstr "Proizvede vtičnik za postavitev tipkovnice"
 
 #: gkb-new/keygrab.c:69 gkb-new/keygrab.c:144
 msgid "Disabled"
@@ -640,7 +637,7 @@ msgstr "Pritisnite tipko ali Esc za preklic"
 
 #: gkb-new/prop-add.c:86
 msgid "Keymaps (select and press add)"
-msgstr ""
+msgstr "Nabor tipk (izberi in pritisni dodaj)"
 
 #: gkb-new/prop-add.c:362
 msgid "Select layout"
@@ -656,7 +653,7 @@ msgstr "Veliko"
 
 #: gkb-new/prop.c:139 gkb-new/util.c:41 gkb-new/util.c:48 gkb-new/util.c:74
 msgid "Flag"
-msgstr ""
+msgstr "Zastavica"
 
 #: gkb-new/prop-map.c:585 gkb-new/prop.c:140 gkb-new/util.c:38
 #: gkb-new/util.c:71
@@ -665,7 +662,7 @@ msgstr "Oznaka"
 
 #: gkb-new/prop.c:141 gkb-new/util.c:44 gkb-new/util.c:77
 msgid "Flag and Label"
-msgstr ""
+msgstr "Zastavica in oznaka"
 
 #: gkb-new/prop.c:273 modemlights/properties.c:371
 msgid "Display"
@@ -686,7 +683,7 @@ msgstr "Vroča tipka za preklop med legami"
 
 #: gkb-new/prop.c:340
 msgid "Grab hotkey"
-msgstr ""
+msgstr "Zapomni si vročo tipko"
 
 #. Create property box
 #: gkb-new/prop.c:392
@@ -696,11 +693,11 @@ msgstr "Lastnosti GKB"
 #: gkb-new/prop.c:406
 
 msgid "_Keymaps"
-msgstr ""
+msgstr "Nabor tip_k"
 
 #: gkb-new/prop.c:418
 msgid "_Options"
-msgstr "_Moznosti"
+msgstr "Možn_osti"
 
 #: gkb-new/prop-list.c:383
 msgid "Add"
@@ -760,11 +757,11 @@ msgstr "Francija"
 
 #: gkb-new/prop-map.c:199
 msgid "Georgia"
-msgstr ""
+msgstr "Georgija"
 
 #: gkb-new/prop-map.c:200
 msgid "Germany"
-msgstr "Nemcija"
+msgstr "Nemčija"
 
 #: gkb-new/prop-map.c:201
 msgid "Great Britain"
@@ -772,7 +769,7 @@ msgstr "Velika Britanija"
 
 #: gkb-new/prop-map.c:202
 msgid "Hungary"
-msgstr ""
+msgstr "Madžarska"
 
 #: gkb-new/prop-map.c:203
 msgid "Jamaica"
@@ -808,19 +805,19 @@ msgstr "Slovenija"
 
 #: gkb-new/prop-map.c:211
 msgid "South Africa"
-msgstr "Juzna Afrika"
+msgstr "Južna Afrika"
 
 #: gkb-new/prop-map.c:212
 msgid "Spain"
-msgstr "španija"
+msgstr "Španija"
 
 #: gkb-new/prop-map.c:213
 msgid "Sweden"
-msgstr "švedska"
+msgstr "Švedska"
 
 #: gkb-new/prop-map.c:214
 msgid "Switzerland"
-msgstr "švica"
+msgstr "Švica"
 
 #: gkb-new/prop-map.c:215
 msgid "Thailand"
@@ -828,15 +825,15 @@ msgstr "Tajska"
 
 #: gkb-new/prop-map.c:216
 msgid "Turkey"
-msgstr "Turcija"
+msgstr "Turčija"
 
 #: gkb-new/prop-map.c:217
 msgid "United Kingdom"
-msgstr "Zdruzeno kraljestvo"
+msgstr "Združeno kraljestvo"
 
 #: gkb-new/prop-map.c:218
 msgid "United States"
-msgstr "Zdruzene drzave Amerike"
+msgstr "Združene države Amerike"
 
 #: gkb-new/prop-map.c:219
 msgid "Yugoslavia"
@@ -844,83 +841,83 @@ msgstr "Jugoslavija"
 
 #: gkb-new/prop-map.c:239
 msgid "Armenian"
-msgstr "Armenijsko"
+msgstr "Armenščina"
 
 #: gkb-new/prop-map.c:240
 msgid "Basque"
-msgstr "Baskovsko"
+msgstr "Baskovščina"
 
 #: gkb-new/prop-map.c:241
 msgid "Bulgarian"
-msgstr "Bolgarsko"
+msgstr "Bolgarščina"
 
 #: gkb-new/prop-map.c:242
 msgid "Dutch"
-msgstr "Nizozemsko"
+msgstr "Nizozemščina"
 
 #: gkb-new/prop-map.c:243
 msgid "English"
-msgstr "Angleško"
+msgstr "Angleščina"
 
 #: gkb-new/prop-map.c:244
 msgid "French"
-msgstr "Francosko"
+msgstr "Francoščina"
 
 #: gkb-new/prop-map.c:245
 msgid "Georgian"
-msgstr ""
+msgstr "Georgijščina"
 
 #: gkb-new/prop-map.c:246
 msgid "German"
-msgstr "Nemško"
+msgstr "Nemščina"
 
 #: gkb-new/prop-map.c:247
 msgid "Hungarian"
-msgstr ""
+msgstr "Madžarščina"
 
 #: gkb-new/prop-map.c:248
 msgid "Norwegian"
-msgstr "Norvesko"
+msgstr "Norveščina"
 
 #: gkb-new/prop-map.c:249
 msgid "Polish"
-msgstr "Poljsko"
+msgstr "Poljščina"
 
 #: gkb-new/prop-map.c:250
 msgid "Portuguese"
-msgstr "Portugalsko"
+msgstr "Portugalščina"
 
 #: gkb-new/prop-map.c:251
 msgid "Russian"
-msgstr "Rusko"
+msgstr "Ruščina"
 
 #: gkb-new/prop-map.c:252
 msgid "Slovak"
-msgstr "Slovasko"
+msgstr "Slovaščina"
 
 #: gkb-new/prop-map.c:253
 msgid "Slovenian"
-msgstr "Slovensko"
+msgstr "Slovenščina"
 
 #: gkb-new/prop-map.c:254
 msgid "Swedish"
-msgstr "Svedsko"
+msgstr "Švedščina"
 
 #: gkb-new/prop-map.c:255
 msgid "Thai"
-msgstr "Tajsko"
+msgstr "Tajščina"
 
 #: gkb-new/prop-map.c:256
 msgid "Turkish"
-msgstr "Tursko"
+msgstr "Turščina"
 
 #: gkb-new/prop-map.c:257
 msgid "Wallon"
-msgstr ""
+msgstr "Waelščina"
 
 #: gkb-new/prop-map.c:258
 msgid "Yugoslavian"
-msgstr "Jugoslovansko"
+msgstr "Jugoslovanščina"
 
 #: gkb-new/prop-map.c:276
 msgid "105"
@@ -1012,7 +1009,7 @@ msgstr "ibm"
 
 #: gkb-new/prop-map.c:556
 msgid "Edit keymap"
-msgstr "Uredi tipke"
+msgstr "Uredi nabor tipk"
 
 #. Add the labels
 #: gkb-new/prop-map.c:584
@@ -1025,13 +1022,15 @@ msgstr "Jezik"
 
 #: gkb-new/prop-map.c:587
 msgid "Country"
-msgstr "Drzava"
+msgstr "Država"
 
 #: gkb-new/prop-map.c:588
 msgid ""
 "Flag\n"
 "Pixmap"
 msgstr ""
+"Flag\n"
+"Pixmap"
 
 #: gkb-new/prop-map.c:590
 msgid "Architecture"
@@ -1046,7 +1045,6 @@ msgid "Codepage"
 msgstr "Kodna stran"
 
 #: gkb-new/prop-map.c:593
-#, fuzzy
 msgid "Command"
 msgstr "Ukaz"
 
@@ -1064,15 +1062,15 @@ msgstr ""
 
 #: gkb-new/system.c:45
 msgid "The keymap switching command returned with error!"
-msgstr ""
+msgstr "Ukaz za preklaplanje med nabori tipk je vrnil napako!"
 
 #: gtik/GNOME_GtikApplet.server.in.h:1
 msgid "Gtik Applet Factory"
-msgstr ""
+msgstr "Gtik tovarna vstavkov"
 
 #: gtik/GNOME_GtikApplet.server.in.h:2
 msgid "Stock Ticker"
-msgstr ""
+msgstr "Borzni opazovalec"
 
 #: gtik/GNOME_GtikApplet.xml.h:3
 msgid "Refresh"
@@ -1080,11 +1078,11 @@ msgstr "Osveži"
 
 #: gtik/gtik.c:202 gtik/gtik.c:779
 msgid "No data available or properties not set"
-msgstr ""
+msgstr "Ni podatkov ali nastavitve niso nastavljene"
 
 #: gtik/gtik.c:648
 msgid "The GNOME Stock Ticker"
-msgstr ""
+msgstr "GNOME borzni opazovalec"
 
 #: gtik/gtik.c:650
 msgid ""
@@ -1093,6 +1091,11 @@ msgid ""
 "ABSOLUTELY NO WARRANTY.  Do not use the GNOME Stock Ticker for making "
 "investment decisions; it is for informational purposes only."
 msgstr ""
+"Ta program se poveže na znano stran in prenese trenutne vrednosti "
+"delnic. GNOME borzni monitor je brezplačna na Internetu osnovana "
+"aplikacija. Je POPOLNOMA BREZ GARANCIJE. Ne uporabljajte GNOME borznega "
+"opazovalca za izvedbo velikih investicij; je izključno za namene "
+"informiranja."
 
 #: gtik/gtik.c:1026
 msgid "New Symbol:"
@@ -1108,7 +1111,7 @@ msgstr "Odst_rani izbrano"
 
 #: gtik/gtik.c:1100
 msgid "Stock Ticker Properties"
-msgstr ""
+msgstr "Lastnosti borznega opazovalca"
 
 #: gtik/gtik.c:1121
 msgid "Update Frequency in minutes:"
@@ -1116,28 +1119,28 @@ msgstr "Frekvenca osveževanja (minut):"
 
 #: gtik/gtik.c:1137
 msgid "Enter symbols delimited with \"+\" in the box below."
-msgstr ""
+msgstr "Vstavite simbole opremljene z \"+\" v polje spodaj."
 
 #: gtik/gtik.c:1147
 msgid "Display only symbols and price"
-msgstr "Prikazi samo simbole in ceno"
+msgstr "Prikaži samo simbole in ceno"
 
 #: gtik/gtik.c:1150
 msgid "Scroll left to right"
-msgstr "Od leve proti desni"
+msgstr "Zdrsni od leve proti desni"
 
 #: gtik/gtik.c:1153
 msgid "Display arrows instead of -/+"
-msgstr ""
+msgstr "Prikaži puščice namesto -/+"
 
 #: gtik/gtik.c:1156
 msgid "Enable scroll buttons"
-msgstr ""
+msgstr "Omogoči gumbe za drsenje"
 
 #. COLOR
 #: gtik/gtik.c:1182
 msgid "+ Color"
-msgstr "+Barva"
+msgstr "+ Barva"
 
 #: gtik/gtik.c:1199
 msgid "- Color"
@@ -1145,11 +1148,11 @@ msgstr "- Barva"
 
 #: gtik/gtik.c:1219
 msgid "Stock Symbol:"
-msgstr ""
+msgstr "Simbol delnice:"
 
 #: gtik/gtik.c:1229
 msgid "Stock Change:"
-msgstr ""
+msgstr "Sprememba delnice:"
 
 #: gtik/gtik.c:1249
 msgid "_Symbols"
@@ -1157,7 +1160,7 @@ msgstr "_Simboli"
 
 #: gtik/gtik.c:1251
 msgid "_Behavior"
-msgstr "_Obnasanje"
+msgstr "_Obnašanje"
 
 #: gtik/gtik.c:1253
 msgid "_Appearance"
@@ -1169,25 +1172,23 @@ msgstr "(Ne"
 
 #: gtik/gtik.c:1472
 msgid "Change "
-msgstr "Spremeni"
+msgstr "Spremeni "
 
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.h:1
-#, fuzzy
 msgid "Factory for creating the weather applet."
-msgstr "Ne morem ustvariti vstavka Odometer!"
+msgstr "Tovarna za izdelovanje vtičnika o vremenu"
 
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.h:2
 msgid "Gweather Applet Factory"
-msgstr ""
+msgstr "Tovarna vtičnika Gweather"
 
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.h:3
-#, fuzzy
 msgid "The GNOME weather monitor"
 msgstr "GNOME prikazatelj vremena"
 
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.h:5
 msgid "Weather Report"
-msgstr "Vremensko porocilo"
+msgstr "Vremensko poročilo"
 
 #: gweather/GNOME_GWeatherApplet.xml.h:2 gweather/gweather-dialog.c:75
 #: gweather/gweather-dialog.c:297
@@ -1207,7 +1208,6 @@ msgid "Copyright (c)1999 by S. Papadimitriou"
 msgstr "Avtorske pravice pridržane (C) 1999 S. Papadimitriou"
 
 #: gweather/gweather-about.c:44
-#, fuzzy
 msgid ""
 "Released under the GNU General Public License.\n"
 "\n"
@@ -1215,7 +1215,7 @@ msgid ""
 msgstr ""
 "Izdano pod GNU splošno javno licenco.\n"
 "\n"
-"Vstavek za nadzorovanje lokalni vremenskih pogojev."
+"Vstavek za nadzorovanje lokalnih vremenskih pogojev."
 
 #: gweather/gweather-applet.c:321
 msgid "Updating..."
@@ -1326,13 +1326,12 @@ msgid "Password:"
 msgstr "Geslo:"
 
 #: gweather/gweather-pref.c:602
-#, fuzzy
 msgid ""
 "Warning: Your password will be saved as\n"
 "unencrypted text in a private configuration\n"
 "file."
 msgstr ""
-"Opozorilo: Vvaše geslo bo shranjeno v\n"
+"Opozorilo: Vaše geslo bo shranjeno v\n"
 "zasebni datoteki z nastavitvami in ne bo\n"
 "šifrirano!"
 
@@ -1343,9 +1342,8 @@ msgid "Network"
 msgstr "Omrežje"
 
 #: gweather/gweather-pref.c:635
-#, fuzzy
 msgid "Automatically update every"
-msgstr "Samodejno izberi najboljšo velikost za vstavek"
+msgstr "Samodejno posodobi vsake(-ih)"
 
 #: gweather/gweather-pref.c:641
 msgid "Use metric system units"
@@ -1360,19 +1358,16 @@ msgid "Enable radar map"
 msgstr "Vključi radarsko sliko"
 
 #: gweather/gweather-pref.c:661
-#, fuzzy
 msgid "Updates"
-msgstr "Osveži"
+msgstr "Posodobitve"
 
 #: gweather/gweather-pref.c:667
-#, fuzzy
 msgid "Automatically update every "
-msgstr "Samodejno izberi najboljšo velikost za vstavek"
+msgstr "Samodejno posodobi vsake(-ih)"
 
 #: gweather/gweather-pref.c:687
-#, fuzzy
 msgid "minute(s)"
-msgstr "minuta(s)"
+msgstr "minut(o)"
 
 #. The Miscellaneous frame
 #: gweather/gweather-pref.c:698
@@ -1413,67 +1408,67 @@ msgstr "Spremenljivo"
 
 #: gweather/weather.c:120
 msgid "North"
-msgstr "sever"
+msgstr "Sever"
 
 #: gweather/weather.c:120
 msgid "North - NorthEast"
-msgstr "sever - severovzhod"
+msgstr "Sever - Severovzhod"
 
 #: gweather/weather.c:120
 msgid "Northeast"
-msgstr "severovzhod"
+msgstr "Severovzhod"
 
 #: gweather/weather.c:120
 msgid "East - NorthEast"
-msgstr "vzhod - severovzhod"
+msgstr "Vzhod - severovzhod"
 
 #: gweather/weather.c:121
 msgid "East"
-msgstr "vzhod"
+msgstr "Vzhod"
 
 #: gweather/weather.c:121
 msgid "East - Southeast"
-msgstr "vzhod - jugovzhod"
+msgstr "Vzhod - jugovzhod"
 
 #: gweather/weather.c:121
 msgid "Southeast"
-msgstr "jugovzhod"
+msgstr "Jugovzhod"
 
 #: gweather/weather.c:121
 msgid "South - Southeast"
-msgstr "jug - jugovzhod"
+msgstr "Jug - jugovzhod"
 
 #: gweather/weather.c:122
 msgid "South"
-msgstr "jug"
+msgstr "Jug"
 
 #: gweather/weather.c:122
 msgid "South - Southwest"
-msgstr "jug - jugozahod"
+msgstr "Jug - jugozahod"
 
 #: gweather/weather.c:122
 msgid "Southwest"
-msgstr "jugozahod"
+msgstr "Jugozahod"
 
 #: gweather/weather.c:122
 msgid "West - Southwest"
-msgstr "zahod - jugozahod"
+msgstr "Zahod - jugozahod"
 
 #: gweather/weather.c:123
 msgid "West"
-msgstr "zahod"
+msgstr "Zahod"
 
 #: gweather/weather.c:123
 msgid "West - Northwest"
-msgstr "zahod - severozahod"
+msgstr "Zahod - severozahod"
 
 #: gweather/weather.c:123
 msgid "Northwest"
-msgstr "severozahod"
+msgstr "Severozahod"
 
 #: gweather/weather.c:123
 msgid "North - Northwest"
-msgstr "sever - severozahod"
+msgstr "Sever - severozahod"
 
 #: gweather/weather.c:130 gweather/weather.c:147 gweather/weather.c:211
 msgid "Invalid"
@@ -1559,7 +1554,6 @@ msgstr "Zmrzujoče pršenje"
 
 #. RAIN
 #: gweather/weather.c:174
-#, fuzzy
 msgid "Rain"
 msgstr "Dež"
 
@@ -2566,24 +2560,20 @@ msgid "Failed to get METAR data.\n"
 msgstr "Nisem mogel dobiti METAR podatkov.\n"
 
 #: gweather/weather.c:846 gweather/weather.c:874 gweather/weather.c:1071
-#, fuzzy
 msgid "WeatherInfo missing location"
-msgstr "Nastavitve opozoril"
+msgstr "WatherInfo pogreša lokacijo"
 
 #: gweather/weather.c:1039
-#, fuzzy
 msgid "Failed to get IWIN data.\n"
-msgstr "Nisem mogel dobiti IWIN napovednih podatkov.\n"
+msgstr "Nisem mogel dobiti IWIN podatkov.\n"
 
 #: gweather/weather.c:1280
-#, fuzzy
 msgid "Failed to get Met Office data.\n"
-msgstr "Nisem mogel dobiti METAR podatkov.\n"
+msgstr "Nisem mogel dobiti Met Office podatkov.\n"
 
 #: gweather/weather.c:1312
-#, fuzzy
 msgid "Failed to get Met Office forecast data.\n"
-msgstr "Nisem mogel dobiti IWIN napovednih podatkov.\n"
+msgstr "Nisem mogel dobiti Met Office napovednih podatkov.\n"
 
 #: gweather/weather.c:1437
 msgid "Failed to get radar map image.\n"
@@ -2608,7 +2598,7 @@ msgstr "Neznan"
 # @ Which form?
 #: gweather/weather.c:1873
 msgid "Retrieval failed"
-msgstr "Prevzem ni uspel"
+msgstr "Prevzem spodletel"
 
 #: mini-commander/src/about.c:39
 msgid "Mini-Commander Applet"
@@ -2697,24 +2687,21 @@ msgid "child exited"
 msgstr "otrok je končal"
 
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:1
-#, fuzzy
 msgid "Command Line"
-msgstr "Višina ukazne vrstice:"
+msgstr "Ukazne vrstice:"
 
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:2
-#, fuzzy
 msgid "Mini-Commander"
-msgstr "Vstavek Mini-upravnik"
+msgstr "Mini-upravnik"
 
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:3
-#, fuzzy
 msgid "MiniCommander Applet Factory"
-msgstr "Vstavek Mini-upravnik"
+msgstr "Tovarna vstavka Mini-upravnik"
 
 #: mini-commander/src/help.c:36
 #, fuzzy
 msgid "still not ported"
-msgstr " ni prikljopljen"
+msgstr " še vedno ni prenešen"
 
 #: mini-commander/src/message.c:148
 msgid "%H:%M - %d. %b"
@@ -2754,7 +2741,7 @@ msgstr "ura & datum vklopljena"
 
 #: mini-commander/src/preferences.c:115
 msgid "time on"
-msgstr "ura omogoena"
+msgstr "ura vklopljena"
 
 #: mini-commander/src/preferences.c:117
 msgid "date on"
@@ -2765,9 +2752,8 @@ msgid "clock off"
 msgstr "ura vklopljena"
 
 #: mini-commander/src/preferences.c:573
-#, fuzzy
 msgid "Command Line Properties"
-msgstr "Nastavitve Mini-upravnika"
+msgstr "Nastavitve Ukazne vrstice"
 
 #: mini-commander/src/preferences.c:586
 msgid "Clock"
@@ -2791,7 +2777,7 @@ msgstr "Videz"
 #. show handle check box
 #: mini-commander/src/preferences.c:617
 msgid "Show handle"
-msgstr "Kaži ročaj"
+msgstr "Kaži držalo"
 
 #. show frame check box
 #: mini-commander/src/preferences.c:624
@@ -2800,13 +2786,11 @@ msgstr "Kaži okvir"
 
 #. auto complete frame
 #: mini-commander/src/preferences.c:633
-#, fuzzy
 msgid "Autocompletion"
 msgstr "Samodejno dokončevanje"
 
 #. show history autocomplete
 #: mini-commander/src/preferences.c:641
-#, fuzzy
 msgid "Enable history based autocompletion"
 msgstr "Vključi samodejno dokončavanje glede na zgodovino"
 
@@ -2847,9 +2831,8 @@ msgid "Command line background:"
 msgstr "Ozadje ukazne vrstice:"
 
 #: mini-commander/src/preferences.c:829 modemlights/properties.c:405
-#, fuzzy
 msgid "_General"
-msgstr "Splošno"
+msgstr "S_plošno"
 
 #. prefix
 #: mini-commander/src/preferences.c:854
@@ -2864,22 +2847,20 @@ msgid "   Macro %.2d:"
 msgstr "   Makro %.2d:"
 
 #: mini-commander/src/preferences.c:886
-#, fuzzy
 msgid "_Macros"
-msgstr "Makri"
+msgstr "_Makri"
 
 #: mixer/GNOME_MixerApplet.server.in.h:1
 msgid "Applet for adjusting the sound volume"
-msgstr ""
+msgstr "Vtičnik za nastavljanje glasnosti"
 
 #: mixer/GNOME_MixerApplet.server.in.h:3 mixer/mixer.c:694
-#, fuzzy
 msgid "Volume Control"
 msgstr "Glasnost"
 
 #: mixer/GNOME_MixerApplet.xml.h:3
 msgid "Mute"
-msgstr ""
+msgstr "Tišina"
 
 #: mixer/GNOME_MixerApplet.xml.h:4
 msgid "Run Audio Mixer..."
@@ -2902,16 +2883,16 @@ msgstr ""
 #: mixer/mixer.c:192
 #, c-format
 msgid "Querying available channels of mixer device %s failed\n"
-msgstr ""
+msgstr "Pregledovanje omogočenih kanalov mešalke %s spodletelo\n"
 
 #: mixer/mixer.c:199
 msgid "warning: mixer has no volume channel - using PCM instead.\n"
-msgstr ""
+msgstr "opozorilo: mešalka nima kanala za glasnost - uporabi PCM.\n"
 
 #: mixer/mixer.c:202
 #, c-format
 msgid "Mixer device %s has neither volume nor PCM channels.\n"
-msgstr ""
+msgstr "Mešalka %s nima ne glasnosti ne PCM kanalov.\n"
 
 #: mixer/mixer.c:695
 msgid "(C) 2001 Richard Hult"
@@ -2919,10 +2900,9 @@ msgstr "(C) 2001 Richard Hult"
 
 #: mixer/mixer.c:696
 msgid "The volume control lets you set the volume level for your desktop."
-msgstr ""
+msgstr "Kontrola glasnosti vam omogoča nastavitev le-te za vaše namizje."
 
 #: modemlights/GNOME_ModemLightsApplet.server.in.h:1
-#, fuzzy
 msgid "Modem Lights"
 msgstr "Vstavek Luči modema"
 
@@ -2955,14 +2935,13 @@ msgstr "Ali želite vzpostaviti povezavo?"
 #: modemlights/modemlights.c:574
 #, c-format
 msgid "%#.1fMb received / %#.1fMb sent / time: %.1d:%.2d"
-msgstr ""
+msgstr "%#.1fMb prejeto / %#.1fMb poslano / čas: %.1d:%.2d"
 
 #: modemlights/modemlights.c:579
 msgid "not connected"
 msgstr "ni povezave"
 
 #: modemlights/properties.c:310
-#, fuzzy
 msgid "Modem Lights Properties"
 msgstr "Nastavitve Luči modema"
 
@@ -2994,59 +2973,54 @@ msgstr "Kaži trajanje povezave in pretok"
 
 #: modemlights/properties.c:415
 msgid "Receive data"
-msgstr ""
+msgstr "Prejeti podatki"
 
 #: modemlights/properties.c:417 modemlights/properties.c:422
 #: modemlights/properties.c:441
 msgid "Foreground"
-msgstr ""
+msgstr "Ospredje"
 
 #: modemlights/properties.c:418 modemlights/properties.c:423
 #: modemlights/properties.c:442
-#, fuzzy
+
 msgid "Background"
 msgstr "Ozadje:"
 
 #: modemlights/properties.c:420
 msgid "Send data"
-msgstr ""
+msgstr "Poslani podatki"
 
 #: modemlights/properties.c:425
-#, fuzzy
 msgid "Connection status"
-msgstr "Povezujem se"
+msgstr "Status povezave"
 
 #: modemlights/properties.c:427
-#, fuzzy
 msgid "Connected"
-msgstr "Povezujem se"
+msgstr "Povezan"
 
 #: modemlights/properties.c:428
-#, fuzzy
 msgid "Not connected"
 msgstr "ni povezave"
 
 #: modemlights/properties.c:429
-#, fuzzy
 msgid "Awaiting connection"
-msgstr "Potrdi povezavo"
+msgstr "Čakam povezavo"
 
 #: modemlights/properties.c:432
 msgid "Blink"
-msgstr ""
+msgstr "Utrip"
 
 #: modemlights/properties.c:439
-#, fuzzy
 msgid "Text"
 msgstr "Besedilo:"
 
 #: modemlights/properties.c:443
 msgid "Outline"
-msgstr ""
+msgstr "Izbočeno"
 
 #: modemlights/properties.c:454
 msgid "Modem options"
-msgstr "Izbire modema"
+msgstr "Možnosti modema"
 
 #: modemlights/properties.c:468
 msgid "Modem lock file:"
@@ -3067,7 +3041,7 @@ msgstr "Uporabi ISDN"
 
 #: modemlights/properties.c:523
 msgid "Set options as default"
-msgstr ""
+msgstr "Nastavi možnosti kot privzete"
 
 #: modemlights/properties.c:529
 msgid "Advanced"
@@ -3078,30 +3052,26 @@ msgid "CPU Load"
 msgstr "Zasedenost CPU"
 
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:1
-#, fuzzy
 msgid "A system load indicator"
-msgstr "Kazalec špic"
+msgstr "Kazalec sistemskega nalaganja"
 
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:2
-#, fuzzy
 msgid "System Monitor"
-msgstr "Sistem"
+msgstr "Nadzornik sistema"
 
 #: multiload/GNOME_MultiloadApplet.xml.h:3
 msgid "Run detailed system monitor"
-msgstr ""
+msgstr "Zaženi izpopolnjen nadzornik sistema"
 
 #: multiload/loadavg.c:94
 msgid "Load Average"
 msgstr "Povprečna obremenitev"
 
 #: multiload/main.c:53
-#, fuzzy
 msgid "System Monitor Applet"
-msgstr "Vstavek Nadzornik zvoka"
+msgstr "Vstavek Nadzornik sistema"
 
 #: multiload/main.c:55
-#, fuzzy
 msgid ""
 "Released under the GNU General Public License.\n"
 "\n"
@@ -3109,26 +3079,24 @@ msgid ""
 "file use, plus network traffic."
 msgstr ""
 "Izdan pod GNU splošno javno licenco.\n"
-"Nadzoruje porabljen in neporabljen prostor na diskovnih enotah."
+"Sistemski nadzornik obremenitve, sposoben prigazovanja grafov "
+"za CPU, ram in swap porabo, plus omrežni promet."
 
 #: multiload/main.c:176 multiload/properties.c:369
-#, fuzzy
 msgid "Processor"
-msgstr "Pritisk:"
+msgstr "Procesor"
 
 #: multiload/main.c:178 multiload/properties.c:375
-#, fuzzy
 msgid "Memory"
-msgstr "Zasedenost pomnilnika"
+msgstr "Pomnilnik"
 
 #: multiload/main.c:182 multiload/properties.c:387
 msgid "Swap File"
-msgstr ""
+msgstr "Izmenjevalna datoteka"
 
 #: multiload/main.c:184
-#, fuzzy
 msgid "Resource"
-msgstr "Ponastavi"
+msgstr "Vir"
 
 #: multiload/main.c:196
 #, c-format
@@ -3136,6 +3104,8 @@ msgid ""
 "%s:\n"
 "%d%% in use"
 msgstr ""
+"%s:\n"
+"%d%% ni v uporabi"
 
 #: multiload/memload.c:39
 msgid "Memory Load"
@@ -3147,26 +3117,23 @@ msgstr "Obremenjenost mreže"
 
 #: multiload/properties.c:256
 msgid "Monitored Resources"
-msgstr ""
+msgstr "Nadzorovani viri"
 
 #: multiload/properties.c:264
-#, fuzzy
 msgid "_Processor"
-msgstr "Pritisk:"
+msgstr "_Procesor"
 
 #: multiload/properties.c:274
-#, fuzzy
 msgid "_Memory"
-msgstr "Zasedenost pomnilnika"
+msgstr "Po_mnilnik"
 
 #: multiload/properties.c:284
-#, fuzzy
 msgid "_Network"
-msgstr "Omrežje"
+msgstr "Omr_ežje"
 
 #: multiload/properties.c:294
 msgid "_Swap File"
-msgstr ""
+msgstr "Izmen_jalna datoteka"
 
 #.
 #. check_box = gtk_check_button_new_with_mnemonic(_("_Average"));
@@ -3175,30 +3142,28 @@ msgstr ""
 #. gtk_box_pack_start(GTK_BOX(hbox), check_box, FALSE, FALSE, 0);
 #.
 #: multiload/properties.c:311
-#, fuzzy
 msgid "Options"
-msgstr "Nastavitve alarmov"
+msgstr "Nastavitve"
 
 #: multiload/properties.c:324
 msgid "System monitor width: "
-msgstr ""
+msgstr "Širina nadzornika sistema:"
 
 #: multiload/properties.c:326
 msgid "System monitor height: "
-msgstr ""
+msgstr "Višina nadzornika sistema:"
 
 #: multiload/properties.c:339
 msgid "pixels"
-msgstr ""
+msgstr "pikslov"
 
 #: multiload/properties.c:345
 msgid "System monitor speed: "
-msgstr ""
+msgstr "Hitrost nadzornika sistema"
 
 #: multiload/properties.c:356
-#, fuzzy
 msgid "milliseconds"
-msgstr "sekund"
+msgstr "milisekund"
 
 #: multiload/properties.c:370
 msgid "User"
@@ -3210,7 +3175,7 @@ msgstr "Sistem"
 
 #: multiload/properties.c:372
 msgid "Nice"
-msgstr "Nice"
+msgstr "Lepo"
 
 #: multiload/properties.c:373
 msgid "Idle"
@@ -3237,198 +3202,185 @@ msgid "SLIP"
 msgstr "SLIP"
 
 #: multiload/properties.c:383
-#, fuzzy
 msgid "PLIP"
-msgstr "SLIP"
+msgstr "PLIP"
 
 #: multiload/properties.c:384
-#, fuzzy
 msgid "Ethernet"
-msgstr "Ostalo"
+msgstr "Ethernet"
 
 #: multiload/properties.c:388
 msgid "Used"
 msgstr "Porabljeno"
 
 #: multiload/properties.c:409
-#, fuzzy
 msgid "System Monitor Properties"
-msgstr "Lastnosti Upravnika spleta"
+msgstr "Lastnosti Nadzornika sistema"
 
 #: multiload/swapload.c:39
 msgid "Swap Load"
-msgstr "Zasedenost zunanjega pomnilnika"
+msgstr "Zasedenost izmenjevalnega pomnilnika"
 
 #: panel-menu/GNOME_PanelMenuApplet.server.in.h:1
 msgid "Factory for Panel Menu Applet"
-msgstr ""
+msgstr "Tovarna za vtinčnik meni pulta"
 
 #: panel-menu/GNOME_PanelMenuApplet.server.in.h:2
 msgid "Panel Menu Applet Factory"
-msgstr ""
+msgstr "Tovarna vtičnika meni pulta"
 
 #: panel-menu/GNOME_PanelMenuApplet.server.in.h:3
-#, fuzzy
 msgid "Panel applet for displaying menus"
-msgstr "Program za prikaz zajetih slik:"
+msgstr "Vtičnik za prikaz menijev"
 
 #: panel-menu/panel-menu-actions.c:96
-#, fuzzy
 msgid "Actions"
-msgstr "Položaj"
+msgstr "Dejanja"
 
 #: panel-menu/panel-menu-add.c:76
 msgid "Add items to the Menu Bar"
-msgstr ""
+msgstr "Dodaj možnosti v meni"
 
 #: panel-menu/panel-menu-add.c:234 panel-menu/panel-menu-links.c:139
 #: panel-menu/panel-menu-links.c:401
-#, fuzzy
 msgid "Shortcuts"
-msgstr "Plohe"
+msgstr "Bljižnice"
 
 #: panel-menu/panel-menu-add.c:240
 msgid "My Documents"
-msgstr ""
+msgstr "Moji dokumenti"
 
 #: panel-menu/panel-menu-add.c:246 panel-menu/panel-menu-documents.c:134
 #: panel-menu/panel-menu-documents.c:399
 msgid "Documents"
-msgstr ""
+msgstr "Dokumenti"
 
 #: panel-menu/panel-menu-applications.c:80
-#, fuzzy
 msgid "Applications"
-msgstr "Položaj"
+msgstr "Programi"
 
 #: panel-menu/panel-menu.c:681
-#, fuzzy
 msgid "PanelMenu Applet"
-msgstr "Vstavek Mešalka"
+msgstr "Vtičnik Meni pulta"
 
 #: panel-menu/panel-menu.c:681
 msgid "(c) 2001 Chris Phelps"
-msgstr ""
+msgstr "(c) 2001 Chris Phelps"
 
 #: panel-menu/panel-menu.c:681
 msgid ""
 "The Panel Menu Applet allows you to display customized menubars on your "
 "panels."
 msgstr ""
+"Vtičnik meni pulta vam omogoča prikaz prikrojenih menijev na vaših "
+"pultih."
 
 #: panel-menu/panel-menu-directory.c:496
-#, fuzzy
 msgid "Create directory item..."
-msgstr "Ustvari predmet imenika..."
+msgstr "Ustvari možnost imenik..."
 
 #: panel-menu/panel-menu-directory.c:499
-#, fuzzy
 msgid "Home"
-msgstr "Glasnost"
+msgstr "Dom"
 
 #: panel-menu/panel-menu-directory.c:542
 msgid "Edit directory item..."
-msgstr ""
+msgstr "Uredi možnost imenik..."
 
 #: panel-menu/panel-menu-directory.c:601 panel-menu/panel-menu-documents.c:398
 #: panel-menu/panel-menu-documents.c:434 panel-menu/panel-menu-links.c:400
 #: panel-menu/panel-menu-links.c:436
-#, fuzzy
 msgid "Name:"
-msgstr "Ime"
+msgstr "Ime:"
 
 #: panel-menu/panel-menu-directory.c:611 panel-menu/panel-menu-path.c:721
 msgid "Path:"
-msgstr ""
+msgstr "Pot"
 
 #: panel-menu/panel-menu-directory.c:621
 msgid "Depth level:"
-msgstr ""
+msgstr "Stopnja globine:"
 
 #: panel-menu/panel-menu-documents.c:397
 msgid "Create documents item..."
-msgstr ""
+msgstr "Ustvari možnost dokument..."
 
 #: panel-menu/panel-menu-documents.c:433
 msgid "Rename documents item..."
-msgstr ""
+msgstr "Preimenuj možnost dokument..."
 
 #: panel-menu/panel-menu-links.c:323 panel-menu/panel-menu-path.c:573
 msgid "KDE Menus"
-msgstr ""
+msgstr "KDE meniji"
 
 #: panel-menu/panel-menu-links.c:326 panel-menu/panel-menu-path.c:233
 #: panel-menu/panel-menu-path.c:576
 msgid "Programs"
-msgstr ""
+msgstr "Programi"
 
 #: panel-menu/panel-menu-links.c:399
 msgid "Create links item..."
-msgstr ""
+msgstr "Ustvari povezavo..."
 
 #: panel-menu/panel-menu-links.c:435
 msgid "Rename links item..."
-msgstr ""
+msgstr "Preimenuj povezavo..."
 
 #: panel-menu/panel-menu-path.c:224
 msgid "KDE"
-msgstr ""
+msgstr "KDE"
 
 #: panel-menu/panel-menu-path.c:650
 msgid "Create menu path item..."
-msgstr ""
+msgstr "Ustvari pot menija..."
 
 #: panel-menu/panel-menu-path.c:682
 msgid "Edit path item..."
-msgstr ""
+msgstr "Uredi pot..."
 
 #: panel-menu/panel-menu-preferences.c:78
 msgid "Preferences"
-msgstr ""
+msgstr "Nastavitve"
 
 #: panel-menu/panel-menu-properties.c:71
-#, fuzzy
 msgid "Menu Bar Properties"
-msgstr "Nastavitve GVreme"
+msgstr "Meni možnosti"
 
 #: panel-menu/panel-menu-properties.c:75
-#, fuzzy
 msgid "Layout"
-msgstr "Prikaz"
+msgstr "Postavitev"
 
 #: panel-menu/panel-menu-properties.c:90
 msgid "Preferences Menu"
-msgstr ""
+msgstr "Meni možnosti"
 
 #: panel-menu/panel-menu-properties.c:110
 msgid "Applications Menu"
-msgstr ""
+msgstr "Meni aplikacije"
 
 #: panel-menu/panel-menu-properties.c:130
-#, fuzzy
 msgid "Select an icon for the Applications menu"
-msgstr "Izberi ikono za prikljopljeno"
+msgstr "Izberi ikono za meni aplikacije"
 
 #: panel-menu/panel-menu-properties.c:146
 msgid "Actions Menu"
-msgstr ""
+msgstr "Meni dejanja"
 
 #: panel-menu/panel-menu-properties.c:157
 msgid "Windows Menu"
-msgstr ""
+msgstr "Meni okna"
 
 #: panel-menu/panel-menu-properties.c:168
 msgid "Workspaces Menu"
-msgstr ""
+msgstr "Meni delovni prostor"
 
 #: panel-menu/panel-menu-windows.c:99
-#, fuzzy
 msgid "Windows"
-msgstr "Veter:"
+msgstr "Okna:"
 
 #: panel-menu/panel-menu-workspaces.c:80
 msgid "Workspaces"
-msgstr ""
+msgstr "Delovni prostori"
 
 #~ msgid "Clock Settings"
 #~ msgstr "Nastavitve ure"
