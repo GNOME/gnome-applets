@@ -115,6 +115,12 @@ cdplayer_play_pause(GtkWidget * w, gpointer data)
 	return 0;
 }
 
+static void start_gtcd_cb()
+{
+	gnome_execute_shell(NULL, "gtcd");
+}
+                
+
 static int 
 cdplayer_stop(GtkWidget * w, gpointer data)
 {
@@ -306,6 +312,12 @@ main(int argc, char **argv)
 		return 1;
 	}
 
+        applet_widget_register_stock_callback(APPLET_WIDGET(applet),
+		"run_gtcd",         
+	        NULL,
+	        _("Run gtcd..."),
+	        start_gtcd_cb, NULL);
+                                                                                                                                                                                                        
 	gtk_widget_show(cdplayer);
 	applet_widget_add (APPLET_WIDGET (applet), cdplayer);
 	gtk_widget_show (applet);
