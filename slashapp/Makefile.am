@@ -16,10 +16,14 @@ slash_applet_LDADD = \
 
 EXTRA_DIST = \
 	slash_applet.desktop slashsplash.xpm \
-	slash_applet.gnorba noimage.xpm back.xpm
+	slash_applet.gnorba noimage.xpm back.xpm \
+	slashapp.png
 
 sysdir = $(datadir)/applets/Network
 sys_DATA = slash_applet.desktop
+
+pixmapdir = $(datadir)/pixmaps
+pixmap_DATA = slashapp.png
 
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = slash_applet.gnorba
