@@ -675,10 +675,10 @@ int main (int argc, char *argv[])
 	bindtextdomain (PACKAGE, GNOMELOCALEDIR);
 	textdomain (PACKAGE);
 
-	applet_widget_init("scroll_applet", VERSION, argc, argv, NULL,
+	applet_widget_init("slash_applet", VERSION, argc, argv, NULL,
 			   0, NULL);
 
-	applet = applet_widget_new("scroll_applet");
+	applet = applet_widget_new("slash_applet");
 	if (!applet)
 		g_error("Can't create applet!\n");
 

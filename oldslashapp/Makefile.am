@@ -17,7 +17,8 @@ slash_applet_LDADD = ../../panel/libpanel_applet.la \
                      $(GHTTP_LIB)
 
 EXTRA_DIST = \
-	slash_applet.desktop back.xpm noimage.xpm slashsplash.xpm
+	slash_applet.desktop back.xpm noimage.xpm slashsplash.xpm \
+	slash_applet.gnorba
 
 sysdir = $(datadir)/applets/Amusements
 sys_DATA = slash_applet.desktop
