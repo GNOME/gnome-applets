@@ -53,7 +53,7 @@
 #define CDPLAYER_EJECT          "media-eject"
 
 /* Function prototypes */
-static gboolean applet_factory (PanelApplet *applet, const gchar *iid, gpointer data);
+static gboolean cdplayer_applet_factory (PanelApplet *applet, const gchar *iid, gpointer data);
 static gboolean applet_fill (PanelApplet *applet);
 static void cdplayer_load_config(CDPlayerData *cd);
 static void show_error(CDPlayerData *cd);
@@ -121,11 +121,11 @@ PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_CDPlayerApplet_Factory",
 			     PANEL_TYPE_APPLET,
                              "cdplayer",
                              "0",
-                              applet_factory,
+                              cdplayer_applet_factory,
                               NULL)
 
 static gboolean
-applet_factory (PanelApplet *applet,
+cdplayer_applet_factory (PanelApplet *applet,
         const gchar *iid,
         gpointer     data)
 {
@@ -303,6 +303,11 @@ cdplayer_destroy(GtkWidget * widget, gpointer data)
         g_object_set_data (G_OBJECT (cd->panel.applet), "tooltips", NULL);
     }
    
+    if (cd->play_image)
+        g_object_unref (cd->play_image);
+    if (cd->pause_image)
+        g_object_unref (cd->pause_image);
+
     if (cd->time_description)
         g_free(cd->time_description);
     if (cd->track_description)

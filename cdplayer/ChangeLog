@@ -1,3 +1,10 @@
+2003-10-10  Kjartan Maraas  <kmaraas@gnome.org>
+
+	* cdplayer.c: (cdplayer_applet_factory), (cdplayer_destroy): Rename
+	applet_factory() to cdplayer_applet_factory() just to have a sane 
+	namespace. Also plug a couple of leaks found by valgrind. Fixes
+	bug #124300.
+
 2003-08-07  Irene Ryan <irene.ryan@sun.com>
 
 	* docs/C/cdplayer.xml, cdplayer-C.omf: updates to Help for GNOME 2.4 release
