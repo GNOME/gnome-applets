@@ -72,11 +72,11 @@ always_built_SUBDIRS = \
 ## 
 SUBDIRS = \
 	po			\
+	$(mixer_SUBDIRS)	\
 	$(always_built_SUBDIRS)	
 ## 	$(gtop_SUBDIRS)		\
 ## 	$(ghttp_SUBDIRS)	\
 ## 	$(cdplayer_SUBDIRS)	\
-## 	$(mixer_SUBDIRS)	\
 ## 	$(modemlights_SUBDIRS)	\
 ## 	$(esd_SUBDIRS)		\
 ## 	$(wordexp_SUBDIRS)      \
