@@ -555,6 +555,13 @@ update_battery_image( ProgressData *battstat, BatteryStatus *info )
 
   gtk_image_set_from_pixmap( GTK_IMAGE(battstat->battery),
                              pixmap, pixmask );
+
+  /* The GtkImage does not assume a reference to the pixmap or mask;
+     you still need to unref them if you own references. GtkImage will
+     add its own reference rather than adopting yours.
+   */
+  g_object_unref( G_OBJECT(pixmap) );
+  g_object_unref( G_OBJECT(pixmask) );
 }
 
 static void
