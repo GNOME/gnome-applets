@@ -24,10 +24,14 @@ EXTRA_DIST = \
         gnotes_applet.desktop \
 	gnotes_applet.h \
 	gnotes_session.h \
-        gnotes_applet.gnorba
+        gnotes_applet.gnorba \
+		gnome-gnotes.png
 
 sysdir = $(datadir)/applets/Utility
 sys_DATA = gnotes_applet.desktop
+
+pixmapsdir = $(datadir)/pixmaps
+pixmaps_DATA = gnome-gnotes.png
 
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = gnotes_applet.gnorba
