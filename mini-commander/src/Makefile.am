@@ -52,9 +52,7 @@ uidir = $(datadir)/gnome-2.0/ui
 ui_DATA = GNOME_MiniCommanderApplet.xml
 
 install-data-local:
-	if test -z "$(DESTDIR)" ; then \
-		GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schema_DATA) ;\
-	fi
+	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schema_DATA) ;
 
 @INTLTOOL_SERVER_RULE@
 

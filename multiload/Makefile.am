@@ -36,9 +36,7 @@ schemadir 	= @GCONF_SCHEMA_FILE_DIR@
 schema_DATA	= multiload.schemas
 
 install-data-local:
-	if test -z "$(DESTDIR)" ; then \
-		GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schema_DATA) ;\
-	fi
+	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schema_DATA) ;
 		
 EXTRA_DIST =	\
 		GNOME_MultiLoadApplet_Factory.server.in \
