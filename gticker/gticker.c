@@ -90,7 +90,7 @@ static void start_new_applet(const gchar *param, gpointer data)
 {
   GtkWidget *applet;
  
-  applet = applet_widget_new_with_param(param);
+  applet = applet_widget_new_with_param(param, "ticker_applet");
           if (!applet)
 	    g_error("Can't create applet!\n");
   create_new_app(applet);

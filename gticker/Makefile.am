@@ -11,7 +11,7 @@ gticker_applet_SOURCES =  gticker.c	\
 			properties.c
 
 gticker_applet_LDADD = ../../panel/libpanel_applet.la \
-		     $(GNOME_LIBDIR) $(ORB_LIBS) -lXt \
+		     $(GNOME_LIBDIR) $(GNOMEGNORBA_LIBS) -lXt \
 		     $(GNOMEUI_LIBS) $(INTLLIBS) -lghttp 
 
 EXTRA_DIST = \
