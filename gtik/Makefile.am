@@ -1,4 +1,4 @@
-SUBDIRS = access
+SUBDIRS = access help
 
 INCLUDES =  -I$(srcdir)  -DGNOMELOCALEDIR=\""$(datadir)/locale"\" \
 		 $(GNOME_APPLETS_CFLAGS) $(GNOME_VFS_APPLETS_CFLAGS) \
