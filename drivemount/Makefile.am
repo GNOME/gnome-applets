@@ -3,7 +3,10 @@ SUBDIRS = docs
 INCLUDES = -I. -I$(srcdir) 				\
 	-I$(top_srcdir)/intl -I$(top_builddir)/intl	\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
-	-I$(includedir) $(GNOME_INCLUDEDIR)
+	-I$(includedir) $(GNOME_INCLUDEDIR)		\
+	-D_POSIX_SOURCE
+
+CFLAGS = -ansi -Werror -Wmissing-prototypes -Wmissing-declarations
 
 bin_PROGRAMS = drivemount_applet
 
