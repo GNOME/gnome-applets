@@ -21,6 +21,10 @@ gnorba_DATA = odometer_applet.gnorba
 pixmapdir = $(datadir)/pixmaps
 pixmap_DATA = gnome-odometer.png
 
-EXTRA_DIST = README.themes $(sys_DATA) $(gnorba_DATA)
+EXTRA_DIST = \
+	README.themes	\
+	$(sys_DATA)	\
+	$(gnorba_DATA)	\
+	$(pixmap_DATA)
 
 SUBDIRS = def_theme themes
