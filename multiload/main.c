@@ -288,6 +288,7 @@ multiload_applet_tooltip_update(LoadGraph *g)
 		total_used += g->data[0][i];
 	
 	percent = 100 * (gdouble)total_used / (gdouble)g->draw_height;
+	percent = CLAMP (percent, 0, 100);
 
 	tooltip_text = g_strdup_printf(_("%s:\n%d%% in use"), name, percent);
 	gtk_tooltips_set_tip(g->tooltips, g->disp, tooltip_text, tooltip_text);
