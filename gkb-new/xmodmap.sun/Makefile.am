@@ -1,7 +1,7 @@
-EXTRA_DIST = $(GKB_MAPS)
+EXTRA_DIST = $(GKB_MAPS) $(xmm_xml_in_file)
 
 gkbmapsdir = $(datadir)/xmodmap
-gkbmaps_DATA = $(GKB_MAPS)
+gkbmaps_DATA = $(GKB_MAPS) $(XMM_XML)
 
 GKB_MAPS = \
 		xmodmap.am \
@@ -63,3 +63,10 @@ GKB_MAPS = \
 		xmodmap.se-type4 \
 		xmodmap.us-type4 \
 		xmodmap.us-type6
+
+xmm_xml_in_file = base.xml.in
+XMM_XML = $(xmm_xml_in_file:.xml.in=.xml)
+
+%.xml: %.xml.in $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*.po)
+		$(INTLTOOL_MERGE) $(top_srcdir)/po $< $@ -x -u \
+		-c $(top_srcdir)/po/.intltool-merge-cache
