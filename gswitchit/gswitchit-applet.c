@@ -413,46 +413,62 @@ GSwitchItAppletChangePixelSize (PanelApplet *
 	GSwitchItAppletRevalidate (sia);
 }
 
-static void
-GSwitchItAppletChangeBackground (PanelApplet *
-				 widget, PanelAppletBackgroundType type,
-				 GdkColor * color, GdkPixmap * pixmap,
-				 GSwitchItApplet * sia)
+static void 
+GSwitchItAppletSetBackground(PanelAppletBackgroundType type,
+			     GtkRcStyle * rc_style,
+			     GtkWidget * w, 
+			     GdkColor * color,
+			     GdkPixmap * pixmap)
 {
-	GtkRcStyle *rc_style;
 	GtkStyle *style;
 
-	gtk_widget_set_style (GTK_WIDGET (sia->applet), NULL);
-	gtk_widget_set_style (GTK_WIDGET (sia->ebox), NULL);
-	rc_style = gtk_rc_style_new ();
-	gtk_widget_modify_style (GTK_WIDGET (sia->applet), rc_style);
-	gtk_widget_modify_style (GTK_WIDGET (sia->ebox), rc_style);
-	g_object_unref (rc_style);
+	gtk_widget_set_style (GTK_WIDGET (w), NULL);
+	gtk_widget_modify_style (GTK_WIDGET (w), rc_style);
 
 	switch (type)
 	{
 	case PANEL_NO_BACKGROUND:
+/* printf ("PANEL_NO_BACKGROUND for %p\n", w); */
 	        break;
 	case PANEL_COLOR_BACKGROUND:
-	        gtk_widget_modify_bg (GTK_WIDGET (sia->applet),
+/* printf ("PANEL_COLOR_BACKGROUND for %p\n", w); */
+	        gtk_widget_modify_bg (GTK_WIDGET (w),
 	                              GTK_STATE_NORMAL, color);
-	        gtk_widget_modify_bg (GTK_WIDGET (sia->ebox),
-	                              GTK_STATE_NORMAL, color);
-	        break;
+		break;
 	case PANEL_PIXMAP_BACKGROUND:
-	        style = gtk_style_copy (GTK_WIDGET (sia->applet)->style);
-	        if (style->bg_pixmap[GTK_STATE_NORMAL])
-	                g_object_unref (style->bg_pixmap[GTK_STATE_NORMAL]);
-	        style->bg_pixmap[GTK_STATE_NORMAL] = g_object_ref (pixmap);
-	        gtk_widget_set_style (GTK_WIDGET (sia->applet), style);
-	        
-		style = gtk_style_copy (GTK_WIDGET (sia->ebox)->style);
-	        if (style->bg_pixmap[GTK_STATE_NORMAL])
-	                g_object_unref (style->bg_pixmap[GTK_STATE_NORMAL]);
-	        style->bg_pixmap[GTK_STATE_NORMAL] = g_object_ref (pixmap);
-	        gtk_widget_set_style (GTK_WIDGET (sia->ebox), style);
-	        break;
+/* printf ("PANEL_PIXMAP_BACKGROUND for %p\n", w); */
+		style = gtk_style_copy (w->style);
+		if (style->bg_pixmap[GTK_STATE_NORMAL])
+			g_object_unref (style->bg_pixmap[GTK_STATE_NORMAL]);
+		style->bg_pixmap[GTK_STATE_NORMAL] = g_object_ref (pixmap);
+		gtk_widget_set_style (w, style);
+		break;
 	}
+	/* go down */
+	if (GTK_IS_CONTAINER (w))
+	{
+		GList * child = gtk_container_get_children(GTK_CONTAINER (w));
+		while (child != NULL)
+		{
+			GSwitchItAppletSetBackground (type, rc_style,
+			     GTK_WIDGET (child->data), color, pixmap);
+			child = child->next;
+		}
+	}
+}
+
+static void
+GSwitchItAppletChangeBackground (PanelApplet * widget, 
+				 PanelAppletBackgroundType type,
+				 GdkColor * color, GdkPixmap * pixmap,
+				 GSwitchItApplet * sia)
+{
+	GtkRcStyle *rc_style;
+
+	rc_style = gtk_rc_style_new ();
+
+	GSwitchItAppletSetBackground(type, rc_style, sia->applet, color, pixmap);
+	g_object_unref (rc_style);
 }
 
 static gboolean
