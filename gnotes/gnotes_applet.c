@@ -100,7 +100,7 @@ static void about(AppletWidget *applet, gpointer data)
     }
 
     about_box = gnome_about_new(_("GNotes!"), VERSION,
-                                _("Copyright (C) 1998-1999)"),
+                                _("Copyright (C) 1998-1999"),
                                 authors,
                                 _("Create sticky notes on your screen."), NULL);
     gtk_signal_connect(GTK_OBJECT(about_box), "destroy",
