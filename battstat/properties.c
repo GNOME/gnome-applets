@@ -333,6 +333,11 @@ prop_cb (BonoboUIComponent *uic,
   GtkWidget *widget;
   guint      percentage;
   gboolean   writable;
+  GConfClient *client;
+  gboolean   inhibit_command_line;
+
+  client = gconf_client_get_default ();
+  inhibit_command_line = gconf_client_get_bool (client, "/desktop/gnome/lockdown/inhibit_command_line", NULL);
 
   apm_readinfo (PANEL_APPLET (battstat->applet));
 
@@ -475,7 +480,8 @@ prop_cb (BonoboUIComponent *uic,
   g_signal_connect (G_OBJECT(battstat->suspend_entry), "changed",
 		    G_CALLBACK(suspend_changed), battstat);
 
-  if ( ! key_writable (PANEL_APPLET (battstat->applet), "suspend_command")) {
+  if ( ! key_writable (PANEL_APPLET (battstat->applet), "suspend_command") ||
+      inhibit_command_line) {
 	  hard_set_sensitive (battstat->suspend_entry, FALSE);
 	  hard_set_sensitive (glade_xml_get_widget (glade_xml, "suspend_label"), FALSE);
   }
