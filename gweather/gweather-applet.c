@@ -153,7 +153,7 @@ static void help_cb (BonoboUIComponent *uic,
 
     egg_help_display_on_screen (
 		"gweather", "gweather-prefs",
-		gtk_window_get_screen (GTK_WINDOW (gw_applet->applet)),
+		gtk_widget_get_screen (GTK_WIDGET (gw_applet->applet)),
 		&error);
 
     if (error) { /* FIXME: the user needs to see this error */
