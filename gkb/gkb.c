@@ -31,33 +31,46 @@ struct _GKB {
         GtkWidget *entry_2;       
         GtkWidget *combo1;         
         GtkWidget *combo2;         
+
 	GtkWidget *applet;
 	GtkWidget *frame;
 	GtkWidget *darea;
-	GtkWidget *aboutbox;
+
         GdkImlibImage *pix[2];
+
+	GtkWidget *aboutbox;
 	GtkWidget *propbox;
+
         PanelOrientType orient;
+	PanelSizeType size;
+
       	int curpix;
+
       	int width;
       	int height;
 };
 
 static void gkb_draw(GtkWidget *, GKB *);
 static void do_that_command(GKB *);
+static void gkb_draw(GtkWidget *darea, GKB *gkb);
+static void gkb_cb(GtkWidget * widget, GdkEventButton * e, GKB * gkb);
+static void gkb_draw(GtkWidget *darea, GKB *gkb);                        
+static int  gkb_expose(GtkWidget *darea, GdkEventExpose *event, GKB *gkb);
+static int  gkb_empty(GtkWidget *darea, GdkEventExpose *event, GKB *gkb);
+void        properties_dialog(AppletWidget *applet, gpointer gkbx);
+void        about_cb (AppletWidget *widget, gpointer gkbx);
 
 static void
-sized_render(GKB * gkb, PanelSizeType size)
+sized_render(GKB * gkb)
 {
 
 	if(gkb->pix[0])
 		gdk_imlib_destroy_image(gkb->pix[0]);
 	if(gkb->pix[1])
 		gdk_imlib_destroy_image(gkb->pix[1]);
-	
-	
+		
 	if((gkb->orient==ORIENT_LEFT) || (gkb->orient==ORIENT_RIGHT))
- 	 switch (size) {
+ 	 switch (gkb->size) {
 	   case SIZE_TINY    : gkb->width=FSIZE1; gkb->height=FSIZE1/1.5; break;
 	   case SIZE_STANDARD: gkb->width=FSIZE2; gkb->height=FSIZE2/1.5; break;
 	   case SIZE_LARGE   : gkb->width=FSIZE3; gkb->height=FSIZE3/1.5; break;
@@ -65,7 +78,7 @@ sized_render(GKB * gkb, PanelSizeType size)
 	   default           : gkb->width=FSIZE1; gkb->height=FSIZE1/1.5; break;
 	 }
 	else
-	 switch (size) {
+	 switch (gkb->size) {
 	   case SIZE_TINY    : gkb->width=FSIZE1*1.5; gkb->height=FSIZE1; break;
 	   case SIZE_STANDARD: gkb->width=FSIZE2*1.5; gkb->height=FSIZE2; break;
 	   case SIZE_LARGE   : gkb->width=FSIZE3*1.5; gkb->height=FSIZE3; break;
@@ -75,9 +88,18 @@ sized_render(GKB * gkb, PanelSizeType size)
 	
 	gkb->pix[0] = gdk_imlib_load_image(gkb->properties.image[0]);
 	gkb->pix[1] = gdk_imlib_load_image(gkb->properties.image[1]);
+
         gdk_imlib_render (gkb->pix[0], gkb->width, gkb->height);
         gdk_imlib_render (gkb->pix[1], gkb->width, gkb->height);
 
+
+        gtk_drawing_area_size(GTK_DRAWING_AREA(gkb->darea), gkb->width+2, gkb->height+2);
+	gtk_widget_set_usize (GTK_WIDGET(gkb->darea),       gkb->width+2, gkb->height+2);
+	gtk_widget_set_usize (GTK_WIDGET(gkb->frame),       gkb->width+2, gkb->height+2);
+	gtk_widget_set_usize (GTK_WIDGET(gkb->applet),      gkb->width+2, gkb->height+2);
+
+/*	gkb_draw(GTK_WIDGET(gkb->darea),gkb);
+*/
 }
 
 static void
@@ -85,31 +107,25 @@ gkb_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
 {
         GKB *gkb = data;
 
-        gkb->orient = o;
-	sized_render(gkb,applet_widget_get_panel_size(APPLET_WIDGET(gkb->applet)));
-	gtk_widget_set_usize(GTK_WIDGET(gkb->darea),gkb->width,gkb->height);
-	gtk_widget_set_usize(GTK_WIDGET(gkb->frame),gkb->width,gkb->height);
 
+        gkb->orient = o;
+	sized_render(gkb);
 }
 
 static void
 gkb_change_size(GtkWidget *w, PanelSizeType o, gpointer data)
 {
-	PanelSizeType size;
         GKB *gkb = data;
 
-        size = o;
-        sized_render(gkb,size);
-	gtk_widget_set_usize(GTK_WIDGET(gkb->darea),gkb->width,gkb->height);
-	gtk_widget_set_usize(GTK_WIDGET(gkb->frame),gkb->width,gkb->height);
 
+        gkb->size = o;
+        sized_render(gkb);
 }
 
 
 static void
 load_properties(GKB *gkb)
 {
-        PanelSizeType size;	
 	char buf[256];
 static  gkb_properties defaults = {
 	 "setxkbmap",
@@ -117,6 +133,8 @@ static  gkb_properties defaults = {
          { "us", "hu" },
 	 0
 	};
+
+
 
 	gnome_config_push_prefix(APPLET_WIDGET(gkb->applet)->privcfgpath);
 	g_free(gkb->properties.command);
@@ -137,15 +155,17 @@ static  gkb_properties defaults = {
 	gnome_config_pop_prefix();
 
         gkb->orient = applet_widget_get_panel_orient(APPLET_WIDGET(gkb->applet));
-        size = applet_widget_get_panel_size(APPLET_WIDGET(gkb->applet));
+        gkb->size   = applet_widget_get_panel_size  (APPLET_WIDGET(gkb->applet));
 
-	sized_render(gkb,size);
+	sized_render(gkb);
 }
 
 static void
 apply_cb(GnomePropertyBox * pb,
 	GKB * gkb)
 {
+
+
     	gnome_property_box_changed(GNOME_PROPERTY_BOX(gkb->propbox));
 }
 
@@ -154,6 +174,8 @@ apply_callback(GtkWidget * pb,
 	gint page,
 	GKB * gkb)
 {
+
+
 	if (page != -1)
 	    	return;	/* Thanks Havoc -- Julian7 */
 	memcpy( &gkb->properties, &gkb->temp_props, sizeof(gkb_properties) );
@@ -180,6 +202,7 @@ static void
 ch_xkb_cb(GtkWidget *widget,
 	GKB * gkb)
 {
+
     	gkb->temp_props.command = g_strdup("setxkbmap");
         gnome_property_box_changed(GNOME_PROPERTY_BOX(gkb->propbox)); 
 }
@@ -187,6 +210,7 @@ static void
 ch_xmodmap_cb(GtkWidget *widget,
 	GKB * gkb)
 {
+
         gkb->temp_props.command = g_strdup("xmodmap");
         gnome_property_box_changed(GNOME_PROPERTY_BOX(gkb->propbox));
 }
@@ -195,6 +219,8 @@ static void
 destroy_cb(GtkWidget *widget,
 	GKB * gkb )
 {
+
+
     	gkb->propbox=NULL;
 }
 
@@ -233,6 +259,8 @@ static	char *basemaps[]= {
 	"th", "tr_f", "tr_q", "uk", "us", "yu", 0 
 	};
 	
+
+
 	help_entry.name = gnome_app_id;
 
         if( gkb->propbox ) {
@@ -259,7 +287,7 @@ static	char *basemaps[]= {
         gkb->entry_1 = create_icon_entry(table1,"tile_file1",1,
             			_("Flag One"),
                          		gkb->temp_props.image[0],
-                         		gkb->propbox);
+                         		GTK_WIDGET(gkb->propbox));
         
         gtk_box_pack_start (GTK_BOX (hbox6), table1, TRUE, TRUE, 0);
    
@@ -358,10 +386,13 @@ static	char *basemaps[]= {
 }
 
 static void
-gkb_draw(GtkWidget *darea,
+gkb_draw(GtkWidget * darea,
 	GKB *gkb)
 {
-	if(!GTK_WIDGET_REALIZED(gkb->darea))
+
+
+	if(gkb->darea!=NULL)
+	 if(!GTK_WIDGET_REALIZED(gkb->darea))
 		return;
 
 	gdk_draw_pixmap(gkb->darea->window,
@@ -375,6 +406,8 @@ do_that_command(GKB *gkb)
 {
        char comm[100];
        int len; 
+
+
 
 	len=(strlen(gkb->properties.command)+(strcmp(gkb->properties.command,"xmodmap")?11:                                    
            strlen(gnome_datadir_file(g_strconcat ("xmodmap/",
@@ -391,6 +424,8 @@ gkb_cb(GtkWidget * widget,
 	GdkEventButton * e, 
 	GKB * gkb)
 {
+
+
         if (e->button != 1) {
 		/* Ignore buttons 2 and 3 */
 		return; 
@@ -407,6 +442,7 @@ gkb_empty(GtkWidget *darea,
 	GdkEventExpose *event,
 	GKB *gkb)
 {
+
         return FALSE;
 }
 
@@ -415,6 +451,7 @@ gkb_expose(GtkWidget *darea,
 	GdkEventExpose *event,
 	GKB *gkb)
 {
+
 	gdk_draw_pixmap(gkb->darea->window,
 			gkb->darea->style->fg_gc[GTK_WIDGET_STATE(
 						 gkb->darea)],
@@ -465,6 +502,7 @@ static void
 destroy_about(GtkWidget *widget,
 	GKB * gkb )
 {
+
     	gkb->aboutbox=NULL;
 }
 
@@ -477,6 +515,8 @@ about_cb (AppletWidget *widget,
 			{ "Szabolcs Ban (Shooby) <bansz@szif.hu>",
 			   NULL };
 
+
+
         if(gkb->aboutbox) {
 		gtk_widget_show(gkb->aboutbox);
 		gdk_window_raise(gkb->aboutbox->window);
@@ -484,7 +524,7 @@ about_cb (AppletWidget *widget,
 	}
 
 	gkb->aboutbox = gnome_about_new (_("The GNOME KeyBoard Applet"),
-			_("1.0.1"),
+			_("1.0.5"),
                         _("(C) 1998-99 LSC - Linux Supporting Center"),
                         (const char **)authors,
                         _("This applet switches between "   
@@ -513,6 +553,7 @@ applet_save_session(GtkWidget *w,
 	const char *globcfgpath,
 	GKB *gkb)
 {
+
 	gnome_config_push_prefix(privcfgpath);
 	gnome_config_set_string("gkb/command",gkb->properties.command);
 	gnome_config_set_string("gkb/image0",gkb->properties.image[0]);
@@ -536,13 +577,14 @@ gkb_activator(PortableServer_POA poa,
 {
         GKB *gkb;
         
+
+
         gkb = g_new0(GKB,1);
       
         gkb->applet=applet_widget_new(goad_id);
         
         load_properties(gkb);
       
-        /*gtk_widget_realize(applet);*/
         create_gkb_widget(gkb);
         gtk_widget_show(gkb->frame);
         applet_widget_add(APPLET_WIDGET(gkb->applet), gkb->frame);
@@ -555,6 +597,7 @@ gkb_activator(PortableServer_POA poa,
         gtk_signal_connect(GTK_OBJECT(gkb->applet),"change_orient",
                                      GTK_SIGNAL_FUNC(gkb_change_orient),
                                      gkb);
+
         gtk_signal_connect(GTK_OBJECT(gkb->applet),"change_size",
                                      GTK_SIGNAL_FUNC(gkb_change_size),
                                      gkb);
@@ -586,22 +629,11 @@ gkb_deactivator(PortableServer_POA poa,
 	gpointer impl_ptr,
 	CORBA_Environment *ev)
 {
+
+
         applet_widget_corba_deactivate(poa, goad_id, impl_ptr, ev);
 }
 
-#if 1 || defined(SHLIB_APPLETS)
-static const char *repo_id[]={"IDL:GNOME/Applet:1.0", NULL};
-static GnomePluginObject applets_list[] = {
-  {
-       repo_id, "gkb_applet", NULL, "The GNOME keyboard switcher",
-       &gkb_activator, &gkb_deactivator},
-  {NULL}
-};
-
-GnomePlugin GNOME_Plugin_info = {
-       applets_list, NULL
-};
-#else
 int
 main(int argc, char *argv[])
 {
@@ -621,4 +653,3 @@ main(int argc, char *argv[])
 
        return 0;
 }
-#endif

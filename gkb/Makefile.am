@@ -6,28 +6,15 @@ INCLUDES = -I. -I$(srcdir)                              \
         -I$(includedir) $(GNOME_INCLUDEDIR)
 
 
-#if DO_EXE
-#bin_PROGRAMS = gkb_applet
-#else
+bin_PROGRAMS = gkb_applet
 
 SUBDIRS= gkb xmodmap
 
-lib_LTLIBRARIES=libgkb_applet.la
+gkb_applet_SOURCES = gkb.c
 
-#endif
-
-#bin_PROGRAMS = gkb_applet
-
-libgkb_applet_la_SOURCES = gkb.c
-
-# libgkb_applet_la_LDADD = ../../panel/libpanel_applet.la \
-#		     $(GNOME_LIBDIR) $(ORB_LIBS) \
-#		     $(GNOMEUI_LIBS) $(INTLLIBS) $(GNOMEGNORBA_LIBS)
-
-# gkb_applet_DEPENDENCIES = $(P_HEADER_1)
-
-# gkb_applet_LINK = $(CXXLINK)
-
+gkb_applet_LDADD = ../../panel/libpanel_applet.la \
+		     $(GNOME_LIBDIR) $(ORB_LIBS) \
+		     $(GNOMEUI_LIBS) $(INTLLIBS) $(GNOMEGNORBA_LIBS)
 
 GKB_ICON = gkb.xpm
 
