@@ -75,12 +75,13 @@ StickyNote * stickynote_new(StickyNotesApplet *stickynotes)
 	g_signal_connect(G_OBJECT(note->window), "leave-notify-event", G_CALLBACK(window_cross_cb), note);
 	g_signal_connect(G_OBJECT(note->window), "focus-in-event", G_CALLBACK(window_focus_cb), note);
 	g_signal_connect(G_OBJECT(note->window), "focus-out-event", G_CALLBACK(window_focus_cb), note);
+	g_signal_connect(G_OBJECT(note->window), "button-press-event", G_CALLBACK(window_move_cb), note);
 	
-	g_signal_connect(G_OBJECT(glade_xml_get_widget(note->glade, "title_box")), "button-press-event", G_CALLBACK(window_move_cb), note);
 	g_signal_connect(G_OBJECT(glade_xml_get_widget(note->glade, "resize_button")), "button-press-event", G_CALLBACK(window_resize_cb), note);
 	g_signal_connect(G_OBJECT(glade_xml_get_widget(note->glade, "close_button")), "clicked", G_CALLBACK(window_close_cb), note);
 
 	/* Connect a popup menu to the buttons and title */
+	gnome_popup_menu_attach(gnome_popup_menu_new(popup_menu), note->window, note);
 	gnome_popup_menu_attach(gnome_popup_menu_new(popup_menu), glade_xml_get_widget(note->glade, "resize_button"), note);
 	gnome_popup_menu_attach(gnome_popup_menu_new(popup_menu), glade_xml_get_widget(note->glade, "close_button"), note);
 
@@ -141,14 +142,12 @@ void stickynote_set_color(StickyNote *note, const gchar *color_str, gboolean hig
 	}
 
 	style->base[GTK_STATE_NORMAL] = note->color[highlighted ? 0 : 1];
-
-	style->bg[GTK_STATE_NORMAL] = note->color[highlighted ? 2 : 3];
+	style->bg[GTK_STATE_NORMAL] = note->color[2];
 	style->bg[GTK_STATE_ACTIVE] = note->color[3];
 	style->bg[GTK_STATE_PRELIGHT] = note->color[1];
 
+	gtk_widget_set_style(note->window, style);
 	gtk_widget_set_style(note->body, style);
-
-	gtk_widget_set_style(glade_xml_get_widget(note->glade, "title_box"), style);
 	gtk_widget_set_style(glade_xml_get_widget(note->glade, "resize_button"), style);
 	gtk_widget_set_style(glade_xml_get_widget(note->glade, "close_button"), style);
 
