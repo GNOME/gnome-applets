@@ -25,6 +25,7 @@ static gint P_ask_for_confirmation = TRUE;
 static gint P_use_ISDN = FALSE;
 static gint P_verify_lock_file = TRUE;
 static gint P_show_extra_info = FALSE;
+static gint P_status_wait_blink = FALSE;
 
 static void show_extra_info_cb(GtkWidget *widget, gpointer data);
 static void verify_lock_file_cb(GtkWidget *widget, gpointer data);
@@ -34,9 +35,52 @@ static void isdn_checkbox_cb(GtkWidget *widget, gpointer data);
 static void property_apply_cb(GtkWidget *widget, gint page_num, gpointer data);
 static gint property_destroy_cb(GtkWidget *widget, gpointer data);
 
+static gchar *P_display_color_text[COLOR_COUNT] = {
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL
+};
+
+static gchar *color_rc_names[] = {
+	"color_rx",
+	"color_rx_bg",
+	"color_tx",
+	"color_tx_bg",
+	"color_status_bg",
+	"color_status_ok",
+	"color_status_wait",
+	"color_text_bg",
+	"color_text_fg",
+	"color_text_mid",
+	NULL
+};
+
+/* the default colors */
+static gchar *color_defaults[] = {
+	"#FF0000",
+	"#4D0000",
+	"#00FF00",
+	"#004D00",
+	"#004D00",
+	"#00FF00",
+	"#FEF06B",
+	"#000000",
+	"#00FF00",
+	"#004D00",
+	NULL
+};
+
 void property_load(const char *path)
 {
 	gchar *buf;
+	gint i;
 
 	g_free(command_connect);
 	g_free(command_disconnect);
@@ -68,11 +112,24 @@ void property_load(const char *path)
         use_ISDN	   = gnome_config_get_int("modem/isdn=0");
 	verify_lock_file   = gnome_config_get_int("modem/verify_lock=1");
 	show_extra_info    = gnome_config_get_int("modem/extra_info=0");
+	status_wait_blink  = gnome_config_get_int("modem/wait_blink=0");
+
+	for (i = 0; i < COLOR_COUNT; i++)
+		{
+		buf = g_strconcat("modem/", color_rc_names[i], "=", color_defaults[i], NULL);
+		g_free(display_color_text[i]);
+		display_color_text[i] = gnome_config_get_string(buf);
+
+		g_free(buf);
+		}
+
 	gnome_config_pop_prefix ();
 }
 
 void property_save(const char *path, gint to_default)
 {
+	gint i;
+
 	if (path && !to_default)
 		{
 	        gnome_config_push_prefix(path);
@@ -91,6 +148,17 @@ void property_save(const char *path, gint to_default)
         gnome_config_set_int("modem/isdn", use_ISDN);
         gnome_config_set_int("modem/verify_lock", verify_lock_file);
         gnome_config_set_int("modem/extra_info", show_extra_info);
+        gnome_config_set_int("modem/wait_blink", status_wait_blink);
+
+	for (i = 0; i < COLOR_COUNT; i++)
+		{
+		gchar *buf;
+
+		buf = g_strconcat("modem/", color_rc_names[i], NULL);
+	        gnome_config_set_string(buf, display_color_text[i]);
+		g_free(buf);
+		}
+
 	gnome_config_sync();
 	gnome_config_drop_all();
         gnome_config_pop_prefix();
@@ -128,6 +196,14 @@ static void confirm_checkbox_cb(GtkWidget *widget, gpointer data)
         data = NULL;
 }
 
+static void wait_blink_cb(GtkWidget *widget, gpointer data)
+{
+	P_status_wait_blink = GTK_TOGGLE_BUTTON (widget)->active;
+	gnome_property_box_changed(GNOME_PROPERTY_BOX(propwindow));
+        return;
+        data = NULL;
+}
+
 static void isdn_checkbox_cb(GtkWidget *widget, gpointer data)
 {
 	P_use_ISDN = GTK_TOGGLE_BUTTON (widget)->active;
@@ -148,9 +224,79 @@ static void set_default_cb(GtkWidget *widget, gpointer data)
 	gnome_property_box_set_modified((GnomePropertyBox *)propwindow, FALSE);
 }
 
+static void box_color_cb(GtkWidget *cp, guint nopr, guint nopg, guint nopb, guint nopa, gpointer data)
+{
+	ColorType color	= (ColorType)GPOINTER_TO_INT(data);
+	guint8 r, g, b, a;
+
+	gnome_color_picker_get_i8 (GNOME_COLOR_PICKER(cp), &r, &g, &b, &a);
+
+	g_free(P_display_color_text[color]);
+	P_display_color_text[color] = g_strdup_printf("#%06X", (r << 16) + (g << 8) + b);
+
+	gnome_property_box_changed(GNOME_PROPERTY_BOX(propwindow));
+}
+
+static GtkWidget *box_add_color(GtkWidget *box, const gchar *text, ColorType color)
+{
+	GtkWidget *vbox;
+	GtkWidget *label;
+	GtkWidget *color_sel;
+	GdkColor c;
+
+	g_free(P_display_color_text[color]);
+	P_display_color_text[color] = NULL;
+
+	vbox = gtk_vbox_new(FALSE, 0);
+	gtk_container_set_border_width(GTK_CONTAINER(vbox), 0);
+	gtk_box_pack_start(GTK_BOX(box), vbox, TRUE, TRUE, 0);
+	gtk_widget_show(vbox);
+
+	if (display_color_text[color] != NULL)
+		{
+		gdk_color_parse(display_color_text[color], &c);
+		}
+	else
+		{
+		c.red = c.green = c.blue = 0;
+		}
+
+	color_sel = gnome_color_picker_new();
+	gnome_color_picker_set_use_alpha(GNOME_COLOR_PICKER(color_sel), FALSE);
+	gnome_color_picker_set_i16(GNOME_COLOR_PICKER(color_sel), c.red, c.green, c.blue, 0);
+	gtk_signal_connect(GTK_OBJECT(color_sel), "color_set", box_color_cb, GINT_TO_POINTER((gint)color));
+	gtk_box_pack_start(GTK_BOX(vbox), color_sel, FALSE, FALSE, 0);
+	gtk_widget_show(color_sel);
+
+	label = gtk_label_new(text);
+	gtk_box_pack_start(GTK_BOX(vbox), label, FALSE, FALSE, GNOME_PAD_SMALL);
+	gtk_widget_show(label);
+
+	return vbox;
+}
+
+static GtkWidget *color_frame_new(GtkWidget *vbox, const gchar *text)
+	{
+	GtkWidget *frame;
+	GtkWidget *hbox;
+
+	frame = gtk_frame_new(text);
+	gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
+	gtk_widget_show(frame);
+
+	hbox = gtk_hbox_new(TRUE, 0);
+	gtk_container_set_border_width(GTK_CONTAINER(hbox), GNOME_PAD_SMALL);
+	gtk_container_add(GTK_CONTAINER(frame), hbox);
+	gtk_widget_show(hbox);
+
+	return hbox;
+	}
+
 static void property_apply_cb(GtkWidget *widget, gint page_num, gpointer data)
 {
 	gchar *new_text;
+	gint i;
+	gint c_changed;
 
 	if (page_num != -1) return;
 
@@ -174,6 +320,7 @@ static void property_apply_cb(GtkWidget *widget, gint page_num, gpointer data)
 	ask_for_confirmation = P_ask_for_confirmation;
 	use_ISDN = P_use_ISDN;
 	verify_lock_file = P_verify_lock_file;
+	status_wait_blink = P_status_wait_blink;
 
 	if (P_show_extra_info != show_extra_info)
 		{
@@ -181,6 +328,20 @@ static void property_apply_cb(GtkWidget *widget, gint page_num, gpointer data)
 		/* change display */
 		reset_orientation();
 		}
+
+	c_changed = FALSE;
+	for (i = 0; i < COLOR_COUNT; i++)
+		{
+		if (P_display_color_text[i] != NULL)
+			{
+			g_free(display_color_text[i]);
+			display_color_text[i] = P_display_color_text[i];
+			P_display_color_text[i] = NULL;
+			c_changed = TRUE;
+			}
+		}
+
+	if (c_changed) reset_colors();
 
 	start_callback_update();
 
@@ -228,6 +389,7 @@ void property_show(AppletWidget *applet, gpointer data)
 	P_ask_for_confirmation = ask_for_confirmation;
 	P_verify_lock_file = verify_lock_file;
 	P_show_extra_info = show_extra_info;
+	P_status_wait_blink = status_wait_blink;
 
 	propwindow = gnome_property_box_new();
 	gtk_window_set_title(GTK_WINDOW(&GNOME_PROPERTY_BOX(propwindow)->dialog.window),
@@ -324,6 +486,45 @@ void property_show(AppletWidget *applet, gpointer data)
         label = gtk_label_new(_("General"));
         gtk_widget_show(vbox);
         gnome_property_box_append_page( GNOME_PROPERTY_BOX(propwindow), vbox, label);
+
+	/* color settings */
+
+	vbox = gtk_vbox_new(FALSE, GNOME_PAD_SMALL);
+	gtk_container_set_border_width(GTK_CONTAINER(vbox), GNOME_PAD_SMALL);
+
+	hbox = color_frame_new(vbox, _("Receive data"));
+
+	box_add_color(hbox, _("Foreground"), COLOR_RX);
+	box_add_color(hbox, _("Background"), COLOR_RX_BG);
+
+	hbox = color_frame_new(vbox, _("Send data"));
+
+	box_add_color(hbox, _("Foreground"), COLOR_TX);
+	box_add_color(hbox, _("Background"), COLOR_TX_BG);
+
+	hbox = color_frame_new(vbox, _("Connection status"));
+
+	box_add_color(hbox, _("Connected"), COLOR_STATUS_OK);
+	box_add_color(hbox, _("Not connected"), COLOR_STATUS_BG);
+	vbox1 = box_add_color(hbox, _("Awaiting connection"), COLOR_STATUS_WAIT);
+
+
+	checkbox = gtk_check_button_new_with_label(_("Blink"));
+	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (checkbox), status_wait_blink);
+	gtk_signal_connect(GTK_OBJECT(checkbox), "toggled",
+			   GTK_SIGNAL_FUNC(wait_blink_cb), NULL);
+        gtk_box_pack_start(GTK_BOX(vbox1), checkbox, FALSE, FALSE, 0);
+	gtk_widget_show(checkbox);
+
+	hbox = color_frame_new(vbox, _("Text"));
+
+	box_add_color(hbox, _("Foreground"), COLOR_TEXT_FG);
+	box_add_color(hbox, _("Background"), COLOR_TEXT_BG);
+	box_add_color(hbox, _("Outline"), COLOR_TEXT_MID);
+
+	label = gtk_label_new(_("Colors"));
+	gtk_widget_show(vbox);
+	gnome_property_box_append_page( GNOME_PROPERTY_BOX(propwindow), vbox, label);
 
 	/* advanced settings */
 
@@ -423,3 +624,6 @@ void property_show(AppletWidget *applet, gpointer data)
         applet = NULL;
         data = NULL;
 } 
+
+
+

@@ -48,19 +48,18 @@ static unsigned long *isdn_stats = NULL;
 #define BUTTON_BLINK_INTERVAL 700
 
 typedef enum {
-	COLOR_RX,
-	COLOR_RX_BG,
-	COLOR_TX,
-	COLOR_TX_BG
-} ColorType;
-
-typedef enum {
 	LAYOUT_HORIZONTAL = 0,
 	LAYOUT_HORIZONTAL_EXTENDED = 1,
 	LAYOUT_VERTICAL = 2,
 	LAYOUT_VERTICAL_EXTENDED = 3,
 	LAYOUT_SQUARE = 4
 } DisplayLayout;
+
+typedef enum {
+	STATUS_OFF,
+	STATUS_ON,
+	STATUS_WAIT
+} StatusType;
 
 typedef struct _DisplayData DisplayData;
 struct _DisplayData {
@@ -129,6 +128,9 @@ static DisplayData layout_data[] = {
 	}
 };
 
+GdkColor display_color[COLOR_COUNT];
+gchar *display_color_text[COLOR_COUNT];
+
 gint UPDATE_DELAY = 5;		/* status lights update interval in Hz (1 - 20) */
 gchar *lock_file;		/* the modem lock file */
 gint verify_lock_file = TRUE;	/* do we verify the pid inside the lockfile? */
@@ -138,6 +140,7 @@ gchar *command_disconnect;
 gint ask_for_confirmation = TRUE;	/* do we ask for confirmation? */
 gint use_ISDN = FALSE;		/* do we use ISDN? */
 gint show_extra_info = FALSE;	/* display larger version with time/byte count */
+gint status_wait_blink = FALSE;	/* blink connection light during wait status */
 
 static gint button_blinking = FALSE;
 static gint button_blink_on = 0;
@@ -153,12 +156,9 @@ static GdkPixmap *digits = NULL;
 static GdkPixmap *lights = NULL;
 static GdkPixmap *button_on = NULL;
 static GdkPixmap *button_off = NULL;
+static GdkPixmap *button_wait = NULL;
 static GdkBitmap *button_mask = NULL;
 static GdkGC *gc = NULL;
-static GdkColor rx_color;
-static GdkColor rx_bgcolor;
-static GdkColor tx_color;
-static GdkColor tx_bgcolor;
 
 static int update_timeout_id = FALSE;
 static int ip_socket;
@@ -747,9 +747,10 @@ static void draw_load(int rxbytes, int txbytes)
 	else
 		bytes_per_dot = (float)load_max / (dot_height - 1);
 
-	gdk_draw_rectangle(display, display_area->style->black_gc, TRUE, x, y - dot_height + 1, 16, dot_height);
+	gdk_gc_set_foreground( gc, &display_color[COLOR_TEXT_BG] );
+	gdk_draw_rectangle(display, gc, TRUE, x, y - dot_height + 1, 16, dot_height);
 
-	gdk_gc_set_foreground( gc, &rx_color );
+	gdk_gc_set_foreground( gc, &display_color[COLOR_RX] );
 	for (i=0;i<16;i++)
 		{
 		if( load_hist_rx[i] )
@@ -757,7 +758,7 @@ static void draw_load(int rxbytes, int txbytes)
 				x+i, y - ((float)load_hist_rx[i] / bytes_per_dot) + 1);
 		}
 
-	gdk_gc_set_foreground( gc, &tx_color );
+	gdk_gc_set_foreground( gc, &display_color[COLOR_TX] );
 	for (i=0;i<16;i++)
 		{
 		if( load_hist_tx[i] )
@@ -784,12 +785,20 @@ static void draw_light(int lit, int x, int y, ColorType color)
 				 lights, 0, p, x, y, 9, 9);
 }
 
-static void update_button(gint lit)
+static void update_button(StatusType type)
 {
-	if (lit)
-		gtk_pixmap_set(GTK_PIXMAP(button_pixmap), button_on, button_mask);
-	else
-		gtk_pixmap_set(GTK_PIXMAP(button_pixmap), button_off, button_mask);
+	switch(type)
+		{
+		case STATUS_ON:
+			gtk_pixmap_set(GTK_PIXMAP(button_pixmap), button_on, button_mask);
+			break;
+		case STATUS_WAIT:
+			gtk_pixmap_set(GTK_PIXMAP(button_pixmap), button_wait, button_mask);
+			break;
+		default:
+			gtk_pixmap_set(GTK_PIXMAP(button_pixmap), button_off, button_mask);
+			break;
+		}
 }
 
 /* to minimize drawing (pixmap manipulations) we only draw a light if it has changed */
@@ -814,10 +823,10 @@ static void update_lights(int rx, int tx, int cd, int rx_bytes, gint force)
 		draw_light(tx, layout_current->tx_x, layout_current->tx_y, COLOR_TX);
 		redraw_required = TRUE;
 		}
-	if (cd != o_cd && !button_blinking)
+	if ((cd != o_cd && !button_blinking) || force)
 		{
 		o_cd = cd;
-		update_button(cd);
+		update_button(cd ? STATUS_ON : STATUS_OFF);
 		}
 
 	/* we do the extra info redraws here too */
@@ -831,7 +840,7 @@ static void update_lights(int rx, int tx, int cd, int rx_bytes, gint force)
 
 static gint button_blink_cb(gpointer data)
 {
-	if (button_blink_on)
+	if (button_blink_on && status_wait_blink)
 		{
 		button_blink_on = FALSE;
 		}
@@ -839,7 +848,7 @@ static gint button_blink_cb(gpointer data)
 		{
 		button_blink_on = TRUE;
 		}
-	update_button(button_blink_on);
+	update_button(button_blink_on ? STATUS_WAIT : STATUS_OFF);
 
 	return TRUE;
 	data = NULL;
@@ -867,7 +876,14 @@ static void button_blink(gint blink, gint status)
 
 	button_blinking = blink;
 	button_blink_on = status;
-	update_button(button_blink_on);
+	if (blink)
+		{
+		update_button(button_blink_on ? STATUS_WAIT : STATUS_OFF);
+		}	
+	else
+		{
+		update_button(button_blink_on ? STATUS_ON : STATUS_OFF);
+		}
 }
 
 
@@ -1017,21 +1033,27 @@ static void create_background_pixmap(void)
 
 	display = gdk_pixmap_new(display_area->window,
 				 layout_current->display_w, layout_current->display_h, -1);
+
+	/* main border */
 	draw_shadow_box(display, 0, 0, layout_current->display_w, layout_current->display_h,
 			FALSE, applet->style->bg_gc[GTK_STATE_NORMAL]);
-	draw_shadow_box(display, layout_current->load_x, layout_current->load_y,
-			layout_current->load_w, layout_current->load_h, TRUE, applet->style->black_gc);
 
+	/* load border */
+	gdk_gc_set_foreground( gc, &display_color[COLOR_TEXT_BG] );
+	draw_shadow_box(display, layout_current->load_x, layout_current->load_y,
+			layout_current->load_w, layout_current->load_h, TRUE, gc);
+
+	/* text border(s) */
 	if (layout_current->bytes_x >= 0)
 		{
 		draw_shadow_box(display, layout_current->bytes_x - 1, layout_current->bytes_y - 2,
 				28, layout_current->merge_extended_box ? 20 : 11,
-				TRUE, applet->style->black_gc);
+				TRUE, gc);
 		}
 	if (layout_current->time_x >= 0 && !layout_current->merge_extended_box)
 		{
 		draw_shadow_box(display, layout_current->time_x - 1, layout_current->time_y - 2,
-				28, 11, TRUE, applet->style->black_gc);
+				28, 11, TRUE, gc);
 		}
 }
 
@@ -1042,22 +1064,7 @@ static void draw_button_light(GdkPixmap *pixmap, gint x, gint y, gint s, gint et
 
 	s -= 8;
 
-	switch (color)
-		{
-		case COLOR_RX:
-			gdk_gc_set_foreground( gc, &rx_color );
-			break;
-		case COLOR_RX_BG:
-			gdk_gc_set_foreground( gc, &rx_bgcolor );
-			break;
-		case COLOR_TX:
-			gdk_gc_set_foreground( gc, &tx_color );
-			break;
-		case COLOR_TX_BG:
-		default:
-			gdk_gc_set_foreground( gc, &tx_bgcolor );
-			break;
-		}
+	gdk_gc_set_foreground( gc, &display_color[color] );
 
 	if (etched_in)
 		{
@@ -1087,6 +1094,54 @@ static void draw_button_light(GdkPixmap *pixmap, gint x, gint y, gint s, gint et
 	gdk_draw_rectangle(pixmap, gc, TRUE, x + 2, y + 2, 4 + s, 4 + s);
 }
 
+static void pixmap_set_colors(GdkPixmap *pixmap, GdkColor *bg, GdkColor *fg, GdkColor *mid)
+{
+	gint w;
+	gint h;
+	gint x, y;
+	GdkImage *image;
+	guint32 bg_pixel;
+	guint32 fg_pixel;
+	gint have_fg = FALSE;
+
+	gdk_window_get_size(pixmap, &w, &h);
+
+	image = gdk_image_get(pixmap, 0, 0, w, h);
+
+	/* always assume 0, 0 is background color */
+	bg_pixel = gdk_image_get_pixel(image, 0, 0);
+
+	for (x = 0; x < w; x++)
+		{
+		for (y = 0; y < h; y++)
+			{
+			guint32 pixel;
+
+			pixel = gdk_image_get_pixel(image, x, y);
+			if (pixel == bg_pixel)
+				{
+				gdk_gc_set_foreground( gc, bg );
+				}
+			else if (!have_fg || pixel == fg_pixel)
+				{
+				if (!have_fg)
+					{
+					have_fg = TRUE;
+					fg_pixel = pixel;
+					}
+				gdk_gc_set_foreground( gc, fg );
+				}
+			else
+				{
+				gdk_gc_set_foreground( gc, mid );
+				}
+			gdk_draw_point(pixmap, gc, x, y);
+			}
+		}
+
+	gdk_image_destroy(image);
+}
+
 static void update_pixmaps(void)
 {
 	GtkStyle *style;
@@ -1097,8 +1152,15 @@ static void update_pixmaps(void)
 		digits = gdk_pixmap_create_from_xpm_d(display_area->window, NULL,
 			&style->bg[GTK_STATE_NORMAL], (gchar **)digits_xpm);
 		}
+	/* change digit colors */
+	pixmap_set_colors(digits,
+			  &display_color[COLOR_TEXT_BG],
+			  &display_color[COLOR_TEXT_FG],
+			  &display_color[COLOR_TEXT_MID]);
+
 	if (!button_on) button_on = gdk_pixmap_new(display_area->window, 10, 10, -1);
 	if (!button_off) button_off = gdk_pixmap_new(display_area->window, 10, 10, -1);
+	if (!button_wait) button_wait = gdk_pixmap_new(display_area->window, 10, 10, -1);
 	if (!button_mask)
 		{
 		GdkGC *mask_gc = NULL;
@@ -1119,8 +1181,9 @@ static void update_pixmaps(void)
 		gdk_gc_unref(mask_gc);
 		}
 
-	draw_button_light(button_on, 0, 0, 10, TRUE, COLOR_TX);
-	draw_button_light(button_off, 0, 0, 10, TRUE, COLOR_TX_BG);
+	draw_button_light(button_on, 0, 0, 10, TRUE, COLOR_STATUS_OK);
+	draw_button_light(button_off, 0, 0, 10, TRUE, COLOR_STATUS_BG);
+	draw_button_light(button_wait, 0, 0, 10, TRUE, COLOR_STATUS_WAIT);
 
 	if (!lights) lights = gdk_pixmap_new(display_area->window, 9, 36, -1);
 
@@ -1133,24 +1196,36 @@ static void update_pixmaps(void)
 
 static void setup_colors(void)
 {
+	static gint allocated = FALSE;
 	GdkColormap *colormap;
+	gint i;
+	gboolean success[COLOR_COUNT];
 
         colormap = gtk_widget_get_colormap(display_area);
 
-	gdk_color_parse("#FF0000", &rx_color);
-	gdk_color_alloc(colormap, &rx_color);
+	if (allocated)
+		{
+		gdk_colormap_free_colors(colormap, display_color, COLOR_COUNT);
+		}
 
-	gdk_color_parse("#4D0000", &rx_bgcolor);
-	gdk_color_alloc(colormap, &rx_bgcolor);
+	for (i = 0; i < COLOR_COUNT; i++)
+		{
+		if (!display_color_text[i]) display_color_text[i] = g_strdup("#000000");
+		gdk_color_parse(display_color_text[i], &display_color[i]);
+		}
+	gdk_colormap_alloc_colors(colormap, display_color, COLOR_COUNT, FALSE, TRUE, success);
+	for (i = 0; i < COLOR_COUNT; i++)
+		{
+		if (!success[i]) printf("unable to allocate color %s\n", display_color_text[i]);
+		}
 
-	gdk_color_parse("#00FF00", &tx_color);
-        gdk_color_alloc(colormap, &tx_color);
+	allocated = TRUE;
 
-	gdk_color_parse("#004D00", &tx_bgcolor);
-        gdk_color_alloc(colormap, &tx_bgcolor);
-
-	gc = gdk_gc_new( display_area->window );
-        gdk_gc_copy( gc, display_area->style->white_gc );
+	if (!gc)
+		{
+		gc = gdk_gc_new( display_area->window );
+        	gdk_gc_copy( gc, display_area->style->white_gc );
+		}
 }
 
 void reset_orientation(void)
@@ -1199,7 +1274,9 @@ void reset_orientation(void)
 	if (layout < LAYOUT_HORIZONTAL || layout > LAYOUT_SQUARE) layout = LAYOUT_HORIZONTAL;
 	layout_current = &layout_data[layout];
 
+#if 0
 	printf("Test layout = %d\n", layout_current->layout);
+#endif
 
 	create_background_pixmap();
 	update_pixmaps();
@@ -1213,6 +1290,15 @@ void reset_orientation(void)
 	gtk_fixed_move(GTK_FIXED(frame), button, layout_current->button_x, layout_current->button_y);
 
 	/* we set the lights to off so they will be correct on the next update */
+	update_lights(FALSE, FALSE, FALSE, -1, TRUE);
+	redraw_display();
+}
+
+void reset_colors(void)
+{
+	setup_colors();
+	create_background_pixmap();
+	update_pixmaps();
 	update_lights(FALSE, FALSE, FALSE, -1, TRUE);
 	redraw_display();
 }
@@ -1266,7 +1352,7 @@ static gint applet_save_session(GtkWidget *widget, char *privcfgpath, char *glob
 
 int main (int argc, char *argv[])
 {
-	int i;
+	gint i;
 
         /* Initialize the i18n stuff */
         bindtextdomain (PACKAGE, GNOMELOCALEDIR);
@@ -1279,6 +1365,11 @@ int main (int argc, char *argv[])
 		{
 		load_hist_rx[i] = 0;
 		load_hist_tx[i] = 0;
+		}
+	for (i = 0; i < COLOR_COUNT; i++)
+		{
+		display_color_text[i] = NULL;
+		display_color[i] = (GdkColor){ 0, 0, 0, 0 };
 		}
 
 	layout_current = &layout_data[LAYOUT_HORIZONTAL];
@@ -1390,4 +1481,5 @@ int main (int argc, char *argv[])
 	applet_widget_gtk_main();
 	return 0;
 }
+
 

@@ -31,6 +31,23 @@
 #include <gnome.h>
 #include <applet-widget.h>
 
+typedef enum {
+	COLOR_RX = 0,
+	COLOR_RX_BG,
+	COLOR_TX,
+	COLOR_TX_BG,
+	COLOR_STATUS_BG,
+	COLOR_STATUS_OK,
+	COLOR_STATUS_WAIT,
+	COLOR_TEXT_BG,
+	COLOR_TEXT_FG,
+	COLOR_TEXT_MID
+} ColorType;
+#define COLOR_COUNT 10
+
+extern GdkColor display_color[];
+extern gchar *display_color_text[];
+
 extern gint UPDATE_DELAY;
 extern gchar *lock_file;
 extern gint verify_lock_file;
@@ -40,14 +57,18 @@ extern int ask_for_confirmation;
 extern gchar *device_name;
 extern gint use_ISDN;
 extern gint show_extra_info;
+extern gint status_wait_blink;
 
 extern GtkWidget *applet;
 
 void start_callback_update(void);
 void reset_orientation(void);
+void reset_colors(void);
 
 void property_load(const char *path);
 void property_save(const char *path, gint to_default);
 void property_show(AppletWidget *applet, gpointer data);
+
+
 
 
