@@ -55,7 +55,6 @@
 		char *tik_syms;
 		gboolean output;
 		gboolean scroll;
-		gboolean arrows;
 		gint timeout;
 		gchar *dcolor;
 		gchar *ucolor;
@@ -176,20 +175,12 @@
 			pango_font_description_free (stockdata->small_font);
 		stockdata->small_font = pango_font_description_from_string (stockdata->props.font2);
 
-		if ( !stockdata->extra_font || (stockdata->props.arrows == FALSE ) ){
+		if ( !stockdata->extra_font  ){
 			
-			if (stockdata->extra_font)
-				pango_font_description_free (stockdata->extra_font);
 			stockdata->extra_font = pango_font_description_from_string ("fixed 12");
 			stockdata->symbolfont = 0;
 		}
-		else {
-			if (stockdata->extra_font)
-				pango_font_description_free (stockdata->extra_font);
-			stockdata->extra_font = pango_font_description_from_string ("fixed 14");
-			stockdata->symbolfont = 1;
-
-		}
+		
 		if (!stockdata->my_font) {
 			stockdata->my_font = pango_font_description_from_string ("fixed 12");
 		}
@@ -282,9 +273,6 @@ static gint updateOutput(gpointer data)
 									  NULL);
 		stockdata->props.scroll = panel_applet_gconf_get_bool (applet,
 									  "scroll",
-									  NULL);
-		stockdata->props.arrows = panel_applet_gconf_get_bool (applet,
-									  "arrows",
 									  NULL);
 		stockdata->props.timeout = panel_applet_gconf_get_int (applet,
 								       "timeout",
@@ -832,29 +820,7 @@ static gint updateOutput(gpointer data)
 					     stockdata->props.scroll, NULL);
 					     
 	}
-	
-	static void
-	arrows_toggled (GtkToggleButton *button, gpointer data)
-	{
-		StockData *stockdata = data;
-		PanelApplet *applet = PANEL_APPLET (stockdata->applet);
 		
-		if (stockdata->props.arrows == gtk_toggle_button_get_active (button))
-			return;
-			
-		stockdata->props.arrows = gtk_toggle_button_get_active (button);
-		panel_applet_gconf_set_bool (applet,"arrows",
-					     stockdata->props.arrows, NULL);
-		load_fonts (stockdata);
-		if (!configured(stockdata)) {
-			reSetOutputArray(stockdata);
-			fprintf(stderr, "No data!\n");
-			setOutputArray(stockdata,
-				       _("No data available or properties not set"));
-		}
-					     
-	}
-	
 	static void
 	scroll_toggled (GtkToggleButton *button, gpointer data)
 	{
@@ -1403,7 +1369,7 @@ static gint updateOutput(gpointer data)
 		GtkObject *timeout_a;
 		GtkWidget *upColor, *downColor, *upLabel, *downLabel;
 		GtkWidget *bgColor, *bgLabel;
-		GtkWidget *check, *check2, *check3, *check4, *fontButton;
+		GtkWidget *check, *check2, *check4, *fontButton;
 		GtkWidget *font_picker;
 
 		int ur,ug,ub, dr,dg,db; 
@@ -1468,9 +1434,6 @@ static gint updateOutput(gpointer data)
 		check2 = gtk_check_button_new_with_mnemonic(_("Scroll _left to right"));
 		g_signal_connect (G_OBJECT (check2), "toggled",
 				  G_CALLBACK (rtl_toggled), stockdata);
-		check3 = gtk_check_button_new_with_mnemonic(_("Display a_rrows instead of -/+"));
-		g_signal_connect (G_OBJECT (check3), "toggled",
-				  G_CALLBACK (arrows_toggled), stockdata);
 		check4 = gtk_check_button_new_with_mnemonic(_("_Enable scroll buttons"));
 		g_signal_connect (G_OBJECT (check4), "toggled",
 				  G_CALLBACK (scroll_toggled), stockdata);
@@ -1478,7 +1441,6 @@ static gint updateOutput(gpointer data)
 
 		gtk_box_pack_start(GTK_BOX(vbox2), check, FALSE, FALSE, GNOME_PAD);
 		gtk_box_pack_start(GTK_BOX(vbox2), check2, FALSE, FALSE, GNOME_PAD);
-		gtk_box_pack_start(GTK_BOX(vbox), check3, FALSE, FALSE, GNOME_PAD);
 		gtk_box_pack_start(GTK_BOX(vbox), check4, FALSE, FALSE, GNOME_PAD);
 
 
@@ -1492,10 +1454,7 @@ static gint updateOutput(gpointer data)
 		if (stockdata->props.buttons == TRUE)
 			gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check4),
 							TRUE);
-		if (stockdata->props.arrows == TRUE)
-			gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check3),
-							TRUE);
-
+		
 		/* COLOR */
 		upLabel = gtk_label_new_with_mnemonic(_("+ C_olor"));
 		upColor = gnome_color_picker_new();
