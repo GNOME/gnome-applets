@@ -153,9 +153,11 @@ static void change_background_cb (
 static gboolean clicked_cb (GtkWidget *widget, GdkEventButton *ev, gpointer data)
 {
     GWeatherApplet *gw_applet = data;
+
     if ((ev == NULL) || (ev->button != 1))
-	    return FALSE;
-    if (ev->type == GDK_2BUTTON_PRESS) {
+        return FALSE;
+
+    if (ev->type == GDK_BUTTON_PRESS) {
 	gweather_dialog_open(gw_applet);
 	return TRUE;
     }
