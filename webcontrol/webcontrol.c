@@ -122,7 +122,6 @@ void create_widget() {
 	gtk_widget_show(hbox);
 	
 	gtk_box_pack_start(GTK_BOX(hbox), WC.label, FALSE, FALSE, 3);
-	gtk_box_pack_start(GTK_BOX(hbox), input, FALSE, FALSE, 0);
 	
 	WC.check = gtk_check_button_new_with_label (_("Launch new window"));
 	gtk_toggle_button_set_state(GTK_TOGGLE_BUTTON(WC.check), WC.properties.newwindow);
@@ -143,6 +142,10 @@ void create_widget() {
 	/* add the widget to the applet-widget, and thereby actually
 	   putting it "onto" the panel */
 	applet_widget_add (APPLET_WIDGET (WC.applet), vbox);
+
+	/*we want to allow pasting into the input box so we pack it after
+	  applet_widdget_add has bound the middle button*/
+	gtk_box_pack_start(GTK_BOX(hbox), input, FALSE, FALSE, 0);
 }
 
 static void
