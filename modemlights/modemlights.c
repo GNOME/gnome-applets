@@ -27,7 +27,7 @@
 
 #include "modemlights.h"
 #include <panel-applet.h>
-#include <egg-screen-help.h>
+#include <libgnome/gnome-help.h>
 #include "digits.xpm"
 
 #include <stdlib.h>
@@ -162,7 +162,7 @@ static void about_cb (BonoboUIComponent *uic,
 
 static int is_Modem_on(MLData *mldata)
 {
-	FILE *f = 0;
+	FILE *f = NULL;
 	gchar buf[64];
 	pid_t pid = -1;
 
@@ -402,11 +402,11 @@ static gint get_ISDN_connect_time(MLData *mldata, gint recalc_start)
 
 	if (recalc_start)
 		{
-		mldata->start_time = time(0);
+		mldata->start_time = time(NULL);
 		}
 
 	if (mldata->start_time != (time_t)0)
-		return (gint)(time(0) - mldata->start_time);
+		return (gint)(time(NULL) - mldata->start_time);
 	else
 		return -1;
 }
@@ -424,7 +424,7 @@ static gint get_modem_connect_time(MLData *mldata, gint recalc_start)
 		}
 
 	if (mldata->start_time != (time_t)0)
-		return (gint)(time(0) - mldata->start_time);
+		return (gint)(time(NULL) - mldata->start_time);
 	else
 		return -1;
 }
@@ -1409,7 +1409,7 @@ static void show_help_cb (BonoboUIComponent *uic,
 			  const char        *verbname)
 {
 	PanelApplet *applet = PANEL_APPLET (mldata->applet);
-	egg_help_display_on_screen (
+	gnome_help_display_on_screen (
 		"modemlights", NULL,
 		gtk_widget_get_screen (GTK_WIDGET (applet)),
 		NULL);
