@@ -331,13 +331,15 @@ main(int argc, char **argv)
 
 	mixerw = create_mixer_widget();
 	gtk_widget_show(mixerw);
+
+	gtk_signal_connect(GTK_OBJECT(applet),"change_orient",
+			   GTK_SIGNAL_FUNC(applet_change_orient),
+			   NULL);
+
 	applet_widget_add(APPLET_WIDGET(applet), mixerw);
 	gtk_widget_show(applet);
 	gtk_signal_connect(GTK_OBJECT(applet),"destroy",
 			   GTK_SIGNAL_FUNC(destroy_applet),
-			   NULL);
-	gtk_signal_connect(GTK_OBJECT(applet),"change_orient",
-			   GTK_SIGNAL_FUNC(applet_change_orient),
 			   NULL);
 
 /*
