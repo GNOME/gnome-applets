@@ -287,7 +287,7 @@ gkb_prop_map_edit (GkbPropertyBoxInfo * pbi)
   table1 = gtk_table_new (4, 2, FALSE);
   gtk_box_pack_start (GTK_BOX (vbox1), table1, TRUE, TRUE, 0);
   gtk_table_set_row_spacings (GTK_TABLE (table1), 6);
-  gtk_table_set_col_spacings (GTK_TABLE (table1), 6);
+  gtk_table_set_col_spacings (GTK_TABLE (table1), 12);
 
   gkb_prop_map_label_at (table1, 0, 0, _("_Name:"));
   mdi->name_entry = gkb_prop_map_entry_at (table1, 1, 0, mdi, keymap->name);

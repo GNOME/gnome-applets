@@ -318,7 +318,7 @@ gkb_prop_create_display_category (GkbPropertyBoxInfo * pbi)
   GtkWidget *table;
   gint size;
 
-  vbox = gtk_vbox_new(FALSE, 0);
+  vbox = gtk_vbox_new (FALSE, 6);
   gtk_container_set_border_width (GTK_CONTAINER (vbox), 0);
   gtk_widget_show (vbox);
   
@@ -332,6 +332,7 @@ gkb_prop_create_display_category (GkbPropertyBoxInfo * pbi)
   table = gtk_table_new (2, 2, FALSE);
   gtk_box_pack_start (GTK_BOX (hbox), table, TRUE, TRUE, 0);
   gtk_table_set_row_spacings (GTK_TABLE (table), 6);
+  gtk_table_set_col_spacings (GTK_TABLE (table), 12);
 
   /* Labels and option Menus */
   gkb_prop_label_at (table, 0, 0, _("_Appearance: "));
@@ -375,12 +376,12 @@ gkb_prop_create_hotkey_category (GkbPropertyBoxInfo * pbi, GtkWidget * widget)
   GtkWidget *label;
   GKB *gkb = pbi->gkb;
 
-  vbox = gtk_vbox_new (FALSE, 0);
+  vbox = gtk_vbox_new (FALSE, 6);
   gtk_container_set_border_width (GTK_CONTAINER(vbox), 0);
   gtk_widget_show (vbox);
   
   category = create_hig_category (vbox, _("Keyboard Shortcuts"));
-  hbox = gtk_hbox_new (FALSE, 6);
+  hbox = gtk_hbox_new (FALSE, 12);
 
   gtk_container_add (GTK_CONTAINER (category), hbox);
   gtk_container_set_border_width (GTK_CONTAINER (hbox), 0);
@@ -480,6 +481,7 @@ gkb_prop_create_property_box (GkbPropertyBoxInfo * pbi)
   gtk_dialog_set_has_separator (GTK_DIALOG (propwindow), FALSE);
 
   propnotebook =  gtk_notebook_new ();
+  gtk_container_set_border_width (GTK_CONTAINER (propnotebook), 12);
   gtk_box_pack_start (GTK_BOX (GTK_DIALOG (propwindow)->vbox), propnotebook,
                       TRUE, TRUE, 0);
                               
@@ -496,7 +498,7 @@ gkb_prop_create_property_box (GkbPropertyBoxInfo * pbi)
   label = gtk_label_new_with_mnemonic (_("_Keyboards:"));
   scrolled_window = gkb_prop_create_scrolled_window (pbi, label);
   buttons_vbox = gkb_prop_create_buttons_vbox (pbi);
-  hbox = gtk_hbox_new (FALSE, 6); 
+  hbox = gtk_hbox_new (FALSE, 12); 
   gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
   gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5); 
   gtk_box_pack_start (GTK_BOX (page_1_vbox), label, FALSE, FALSE, 0);
