@@ -1174,6 +1174,7 @@ mixer_pref_cb (BonoboUIComponent *uic,
                                                    GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
                                                    GTK_STOCK_HELP, GTK_RESPONSE_HELP,
                                                    NULL);
+	gnome_window_icon_set_from_file (GTK_WINDOW (dialog), GNOME_ICONDIR"/mixer/gnome-mixer-applet.png");	
 	gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_CLOSE);
 	gtk_dialog_set_has_separator (GTK_DIALOG (dialog), FALSE);
 	gtk_window_set_screen (GTK_WINDOW (dialog),
