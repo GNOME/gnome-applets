@@ -401,6 +401,7 @@ window_response (GtkWidget *w, int response, gpointer data)
     g_free (pbi);
     gtk_widget_destroy (w);
     propwindow = NULL;
+    gkb->addwindow = NULL;/*The add window gets destroyed with parent if open */
   }
        
 }

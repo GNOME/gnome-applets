@@ -389,7 +389,7 @@ gkb_prop_map_add (GkbPropertyBoxInfo * pbi)
       return;
     }
 
-  gkb->addwindow = gtk_dialog_new_with_buttons (_("Select Keyboard"), NULL,
+  gkb->addwindow = gtk_dialog_new_with_buttons (_("Select Keyboard"), pbi->box,
 						GTK_DIALOG_DESTROY_WITH_PARENT,
 						GTK_STOCK_HELP, GTK_RESPONSE_HELP,
 						GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
