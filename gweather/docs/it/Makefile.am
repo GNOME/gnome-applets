@@ -2,7 +2,7 @@ figdir = figures
 docname = gweather_applet
 lang = it
 omffile = gweather_applet-it.omf
-sgml_ents = gweather.sgml
-include $(top_srcdir)/sgmldocs.make
+entities = legal.xml
+include $(top_srcdir)/xmldocs.make
 dist-hook: app-dist-hook
 
