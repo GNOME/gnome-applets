@@ -1,9 +1,9 @@
-<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+﻿<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "1.104.0">
-  <!ENTITY manrevision "2.2">
-  <!ENTITY date "August 2002">
+  <!ENTITY appletversion "2.3.6">
+  <!ENTITY manrevision "2.5">
+  <!ENTITY date "September 2003">
   <!ENTITY applet "Geyes">
 ]>
 
@@ -12,8 +12,7 @@
   Maintained by the GNOME Documentation Project
   http://developer.gnome.org/projects/gdp
   Template version: 2.0 beta
-  Template last modified Mar 12, 2002
-  
+  Template last modified Mar 12, 2002  
 -->
 
 <article id="index" lang="zh_tw">
@@ -22,17 +21,22 @@
   <articleinfo>
 	 <title>&applet; Applet 手冊 V&manrevision;</title>
 	 <copyright> 
-		<year>2002</year>  
+		<year>2002 年</year>
+		<year>2003  年</year> 
 		<holder>Sun Microsystems</holder> 
-	 </copyright> 
+	 </copyright>  
 	 <copyright> 
-		<year>2000</year> 
+		<year>2000 年</year> 
 		<holder>Telsa Gwynne</holder> 
+	 </copyright>
+	 <copyright> 
+		<year>2000 年</year> 
+		<holder>Arjan Scherpenisse</holder> 
 	 </copyright>
 <!-- translators: uncomment this:
 
   <copyright>
-   <year>2002</year>
+   <year>2003</year>
    <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
   </copyright>
 
@@ -40,7 +44,7 @@
 
 	 <publisher> 
 		<publishername>GNOME 文件專案</publishername> 
-	 </publisher> 
+	 </publisher> 
 &legal;
 
 	 <authorgroup>
@@ -49,7 +53,7 @@
 		  <surname>GNOME 文件小組</surname> 
 		  <affiliation> 
 			 <orgname>Sun Microsystems</orgname> 
-			 <address> <email>gdocteam@sun.com</email> </address>
+			 <address></address>
 		  </affiliation>
 		</author>
 		<author> 
@@ -87,8 +91,31 @@
 		  <revnumber>&applet; Applet 手冊 V&manrevision;</revnumber> 
 		  <date>&date;</date> 
 		  <revdescription> 
-			 <para role="author">Sun GNOME 文件小組
-				<email>gdocteam@sun.com</email></para>
+			 <para role="author">Sun GNOME 文件小組</para>
+			 <para role="publisher">GNOME 文件專案</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>Geyes Applet 手冊 V2.4</revnumber> 
+		  <date>2003 年 8  月</date> 
+		  <revdescription> 
+			 <para role="author">Sun GNOME 文件小組</para>
+			 <para role="publisher">GNOME 文件專案</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>Geyes Applet 手冊 V2.3</revnumber> 
+		  <date>2003 年 1 月</date> 
+		  <revdescription> 
+			 <para role="author">Sun GNOME 文件小組</para>
+			 <para role="publisher">GNOME 文件專案</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>Geyes Applet 手冊 V2.2</revnumber> 
+		  <date>2002 年 8 月</date> 
+		  <revdescription> 
+			 <para role="author">Sun GNOME 文件小組</para>
 			 <para role="publisher">GNOME 文件專案</para>
 		  </revdescription>
 		</revision>
@@ -96,8 +123,7 @@
 		  <revnumber>Geyes Applet 手冊 V2.1</revnumber> 
 		  <date>2002 年 6 月</date> 
 		  <revdescription> 
-			 <para role="author">Sun GNOME 文件小組
-				<email>gdocteam@sun.com</email></para>
+			 <para role="author">Sun GNOME 文件小組</para>
 			 <para role="publisher">GNOME 文件專案</para>
 		  </revdescription>
 		</revision>
@@ -105,14 +131,13 @@
 		  <revnumber>Geyes Applet 手冊 V2.0</revnumber> 
 		  <date>2002 年 3 月</date> 
 		  <revdescription> 
-			 <para role="author">Sun GNOME 文件小組
-				<email>gdocteam@sun.com</email></para>
+			 <para role="author">Sun GNOME 文件小組</para>
 			 <para role="publisher">GNOME 文件專案</para>
 		  </revdescription>
 		</revision>
 		<revision> 
 		  <revnumber>gEyes Applet</revnumber> 
-		  <date>2000</date> 
+		  <date>2000 年</date> 
 		  <revdescription> 
 			 <para role="author">Telsa Gwynne
 				<email>hobbit@aloss.ukuu.org.uk</email></para>
@@ -122,16 +147,25 @@
 		  </revdescription>
 		</revision>
 	 </revhistory>
-	 <releaseinfo>本手冊的內容是說明 &appletversion; 版的 &applet;。
+	 <releaseinfo> 本手冊的內容是說明 &appletversion; 版的 &applet;。
 		</releaseinfo>
-	 <legalnotice><title>回饋</title>
-		<para>關於 &applet; applet 或本手冊，如果要報告錯誤或是提出建議，請遵照 <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink> 的指示。</para>
+	 <legalnotice> 
+		<title>意見回饋</title>
+		<para> 關於 &applet; Applet 或本手冊，如果要報告錯誤或提出建議，請遵照 <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink> 的指示。</para>
 		
 	 </legalnotice>
   </articleinfo>
-  <indexterm><primary>Geyes</primary></indexterm><!-- ============= Document Body ============================= --><!-- ============= Introduction ============================== --><sect1 id="geyes-introduction"><title>介紹</title>
+  <indexterm> 
+	 <primary>Geyes</primary> 
+  </indexterm> 
+
+<!-- ============= Document Body ============================= -->
+<!-- ============= Introduction ============================== -->
+<sect1 id="geyes-introduction">
+<title>介紹</title>
 <!-- ==== Figure ============================================= -->
-	 <figure id="geyes-fig"><title>&applet; Applet</title>
+	 <figure id="geyes-fig"> 
+		<title>&applet; Applet</title>
 		<screenshot>
 		  <mediaobject>
 			 <imageobject><imagedata fileref="figures/geyes_applet.png" format="PNG"/> 
@@ -143,18 +177,19 @@
 		</screenshot>
 	 </figure>
     <!-- ==== End of Figure ======================================= -->
-<para><application>&applet;</application> Applet 可以讓您在桌面上追蹤滑鼠指標的移動。Applet 會顯示為一或多個眼睛的影像，跟著滑鼠指標在螢幕上四處移動。</para>
-<para>如果要將 <application>&applet;</application> 加入面板，請在面板上按滑鼠右鍵，然後選擇<menuchoice><guimenu>加入面板</guimenu><guisubmenu>娛樂</guisubmenu><guimenuitem>Geyes</guimenuitem></menuchoice>。</para>
+<para><application>&applet;</application> Applet 可以讓您追蹤螢幕上滑鼠指標的移動。Applet 會顯示為一或多個眼睛的影像，跟著滑鼠指標在螢幕上四處移動。</para>
+<para>如果要將 <application>&applet;</application> 加入面板，請在面板上按滑鼠右鍵，然後選擇<menuchoice><guimenu>加入面板</guimenu><guisubmenu>娛樂</guisubmenu><guimenuitem>Geyes</guimenuitem>
+</menuchoice>。</para>
 </sect1>
 <!-- ============= Preferences  ================================ -->
-<sect1 id="geyes-settings"><title>個人喜好</title>
-<para>如果要配置 <application>&applet;</application>，請在 <application>&applet;</application> Applet 上按滑鼠右鍵，然後選擇<guimenu>個人喜好</guimenu>。</para>
+<sect1 id="geyes-settings"><title>偏好設定</title>
+<para>如果要配置 <application>&applet;</application>，請在 <application>&applet;</application> Applet 上按滑鼠右鍵，然後選擇<guimenu>偏好設定</guimenu>。</para>
 <variablelist>
-<varlistentry><term><guilabel>主題名稱</guilabel></term>
+<varlistentry>
+<term><guilabel>桌面配色</guilabel> </term>
 <listitem>
-<para>請從這個清單中選擇 <application>&applet;</application> 的主題。
-從恐怖到奇異的各種主題，為 <application>&applet;</application> 提供各種不同的外觀。</para>
-<para>預設值： <guilabel>.../Default-tiny</guilabel>。</para>
+<para>請從這個清單中選擇 <application>&applet;</application> 的配色。
+從恐怖到奇異的各種配色，為 <application>&applet;</application> 提供各種不同的外觀。</para>
 </listitem>
 </varlistentry>
 </variablelist>

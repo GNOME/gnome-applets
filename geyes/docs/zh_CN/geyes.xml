@@ -1,9 +1,9 @@
-<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+﻿<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "1.104.0">
-  <!ENTITY manrevision "2.2">
-  <!ENTITY date "August 2002">
+  <!ENTITY appletversion "2.3.6">
+  <!ENTITY manrevision "2.5">
+  <!ENTITY date "September 2003">
   <!ENTITY applet "Geyes">
 ]>
 
@@ -12,8 +12,7 @@
   Maintained by the GNOME Documentation Project
   http://developer.gnome.org/projects/gdp
   Template version: 2.0 beta
-  Template last modified Mar 12, 2002
-  
+  Template last modified Mar 12, 2002  
 -->
 
 <article id="index" lang="zh_cn">
@@ -22,17 +21,22 @@
   <articleinfo>
 	 <title>&applet; 小程序手册 V&manrevision;</title>
 	 <copyright> 
-		<year>2002</year>  
+		<year>2002</year>
+		<year>2003</year> 
 		<holder>Sun Microsystems</holder> 
-	 </copyright> 
+	 </copyright>  
 	 <copyright> 
 		<year>2000</year> 
 		<holder>Telsa Gwynne</holder> 
 	 </copyright>
+	 <copyright> 
+		<year>2000</year> 
+		<holder>Arjan Scherpenisse</holder> 
+	 </copyright>
 <!-- translators: uncomment this:
 
   <copyright>
-   <year>2002</year>
+   <year>2003</year>
    <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
   </copyright>
 
@@ -40,7 +44,7 @@
 
 	 <publisher> 
 		<publishername>GNOME Documentation Project</publishername> 
-	 </publisher> 
+	 </publisher> 
 &legal;
 
 	 <authorgroup>
@@ -49,7 +53,7 @@
 		  <surname>GNOME Documentation Team</surname> 
 		  <affiliation> 
 			 <orgname>Sun Microsystems</orgname> 
-			 <address> <email>gdocteam@sun.com</email> </address>
+			 <address></address>
 		  </affiliation>
 		</author>
 		<author> 
@@ -87,17 +91,39 @@
 		  <revnumber>&applet; 小程序手册 V&manrevision;</revnumber> 
 		  <date>&date;</date> 
 		  <revdescription> 
-			 <para role="author">Sun GNOME Documentation Team
-				<email>gdocteam@sun.com</email></para>
+			 <para role="author">Sun GNOME Documentation Team</para>
 			 <para role="publisher">GNOME Documentation Project</para>
 		  </revdescription>
 		</revision>
 		<revision> 
-		  <revnumber>Geyes 小程序手册 Manual V2.1</revnumber> 
+		  <revnumber>Geyes 小程序手册 V2.4</revnumber> 
+		  <date>2003 年 8 月</date> 
+		  <revdescription> 
+			 <para role="author">Sun GNOME Documentation Team</para>
+			 <para role="publisher">GNOME Documentation Project</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>Geyes 小程序手册 V2.3</revnumber> 
+		  <date>2003 年 1 月</date> 
+		  <revdescription> 
+			 <para role="author">Sun GNOME Documentation Team</para>
+			 <para role="publisher">GNOME Documentation Project</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>Geyes 小程序手册 V2.2</revnumber> 
+		  <date>2002 年 8 月</date> 
+		  <revdescription> 
+			 <para role="author">Sun GNOME Documentation Team</para>
+			 <para role="publisher">GNOME Documentation Project</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>Geyes 小程序手册 V2.1</revnumber> 
 		  <date>2002 年 6 月</date> 
 		  <revdescription> 
-			 <para role="author">Sun GNOME Documentation Team
-				<email>gdocteam@sun.com</email></para>
+			 <para role="author">Sun GNOME Documentation Team</para>
 			 <para role="publisher">GNOME Documentation Project</para>
 		  </revdescription>
 		</revision>
@@ -105,14 +131,13 @@
 		  <revnumber>Geyes 小程序手册 V2.0</revnumber> 
 		  <date>2002 年 3 月</date> 
 		  <revdescription> 
-			 <para role="author">Sun GNOME Documentation Team
-				<email>gdocteam@sun.com</email></para>
+			 <para role="author">Sun GNOME Documentation Team</para>
 			 <para role="publisher">GNOME Documentation Project</para>
 		  </revdescription>
 		</revision>
 		<revision> 
-		  <revnumber>gEyes 小程序</revnumber> 
-		  <date>2000</date> 
+		  <revnumber>Geyes 小程序</revnumber> 
+		  <date>2000 年</date> 
 		  <revdescription> 
 			 <para role="author">Telsa Gwynne
 				<email>hobbit@aloss.ukuu.org.uk</email></para>
@@ -126,7 +151,7 @@
 		</releaseinfo>
 	 <legalnotice> 
 		<title>反馈</title>
-		<para> 要报告关于 &applet; 小程序或本手册的错误或提出建议，请遵循 <ulink url="ghelp:gnome-feedback" type="help">GNOME 反馈页</ulink>中的指导。</para>
+		<para>要报告关于 &applet; 小程序或本手册的错误或提出建议，请遵循 <ulink url="ghelp:gnome-feedback" type="help">GNOME 反馈页</ulink>中的指导。</para>
 		
 	 </legalnotice>
   </articleinfo>
@@ -152,21 +177,19 @@
 		</screenshot>
 	 </figure>
     <!-- ==== End of Figure ======================================= -->
-<para><application>&applet;</application> 小程序使您能够跟踪鼠标指针在桌面上的移动情况。该小程序是一个或多个眼睛的图像，这些眼睛跟随着屏幕上的鼠标指针。</para>
-<para>要将 <application>&applet;</application>添加到面板，请右击该面板，然后选择<menuchoice><guimenu>"添加到面板"</guimenu><guisubmenu>"娱乐"</guisubmenu><guimenuitem>"Geyes"</guimenuitem></menuchoice>。</para>
+<para><application>&applet;</application> 小程序使您能够跟踪鼠标指针在屏幕上的移动情况。该小程序是一个或多个眼睛的图像，这些眼睛跟随着屏幕上的鼠标指针。</para>
+<para>要将 <application>&applet;</application>添加到面板，请右击该面板，然后选择<menuchoice><guimenu>&ldquo;Add to Panel&rdquo;</guimenu><guisubmenu>&ldquo;Amusements&rdquo;</guisubmenu><guimenuitem>&ldquo;Geyes&rdquo;</guimenuitem></menuchoice>。</para>
 </sect1>
 <!-- ============= Preferences  ================================ -->
 <sect1 id="geyes-settings">
 <title>首选项</title>
-<para>要配置 <application>&applet;</application>，请右击该 <application>
-&applet;</application> 小程序，然后选择<guimenu>"首选项"</guimenu>。 </para>
+<para>要配置 <application>&applet;</application>，请右击该 <application>&applet;</application> 小程序，然后选择<guimenu>&ldquo;Preferences&rdquo;</guimenu>。 </para>
 <variablelist>
 <varlistentry>
-<term><guilabel>主题名称</guilabel> </term>
+<term><guilabel>主题</guilabel> </term>
 <listitem>
 <para>从此列表中选择 <application>&applet;</application> 的主题。
 主题范围从恐怖到奇异，为 <application>&applet;</application> 提供了不同的外观。</para>
-<para>默认值： <guilabel>.../Default-tiny</guilabel>。</para>
 </listitem>
 </varlistentry>
 </variablelist>
