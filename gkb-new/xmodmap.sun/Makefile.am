@@ -51,4 +51,13 @@ GKB_MAPS = \
 		xmodmap.gb-usb \
 		xmodmap.it-usb \
 		xmodmap.se-usb \
-		xmodmap.us-usb
+		xmodmap.us-usb \
+		xmodmap.de-type4 \
+		xmodmap.dk-type4 \
+		xmodmap.es-type4 \
+		xmodmap.gb-type4 \
+		xmodmap.it-type4 \
+		xmodmap.jp-type4 \
+		xmodmap.pt-type4 \
+		xmodmap.se-type4 \
+		xmodmap.us-type4
