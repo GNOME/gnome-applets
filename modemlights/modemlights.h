@@ -1,5 +1,5 @@
 /* GNOME modemlights applet
- * (C) 1999 John Ellis
+ * (C) 2000 John Ellis
  *
  * Authors: John Ellis
  *          Martin Baulig
@@ -47,7 +47,7 @@ void start_callback_update(void);
 void reset_orientation(void);
 
 void property_load(char *path);
-void property_save(char *path);
+void property_save(char *path, gint to_default);
 void property_show(AppletWidget *applet, gpointer data);
 
 

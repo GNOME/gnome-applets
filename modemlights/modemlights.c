@@ -1,5 +1,5 @@
 /* GNOME modemlights applet
- * (C) 1999 John Ellis
+ * (C) 2000 John Ellis
  *
  * Authors: John Ellis
  *          Martin Baulig
@@ -51,6 +51,81 @@ typedef enum {
 	COLOR_TX_BG
 } ColorType;
 
+typedef enum {
+	LAYOUT_HORIZONTAL = 0,
+	LAYOUT_HORIZONTAL_EXTENDED = 1,
+	LAYOUT_VERTICAL = 2,
+	LAYOUT_VERTICAL_EXTENDED = 3,
+	LAYOUT_SQUARE = 4
+} DisplayLayout;
+
+typedef struct _DisplayData DisplayData;
+struct _DisplayData {
+	DisplayLayout layout;
+	gint width;
+	gint height;
+	gint button_x;	/* connect button */
+	gint button_y;
+	gint button_w;
+	gint button_h;
+	gint display_x;	/* display pixmap */
+	gint display_y;
+	gint display_w;
+	gint display_h;
+	gint load_x;	/* load meter */
+	gint load_y;
+	gint load_w;	/* this must always be 18 (hard coded) */
+	gint load_h;
+	gint rx_x;	/* RX light */
+	gint rx_y;
+	gint tx_x;	/* TX light */
+	gint tx_y;
+	gint bytes_x;	/* bytes throughput , -1 to disable */
+	gint bytes_y;
+	gint time_x;	/* time connected, -1 to disable */
+	gint time_y;
+	gint merge_extended_box;	/* save space ? */
+};
+
+/* this holds all the possible layout configurations */
+static DisplayData layout_data[] = {
+	{ LAYOUT_HORIZONTAL, 46, 22,
+	  0, 0, 16, 22,
+	  16, 0, 30, 22,
+	  1, 1, 18, 20,
+	  19, 1, 19, 10,
+	  -1, -1, -1, -1, FALSE
+	},
+	{ LAYOUT_HORIZONTAL_EXTENDED, 74, 22,
+	  0, 0, 16, 22,
+	  16, 0, 58, 22,
+	  29, 1, 18, 20,
+	  47, 1, 47, 10,
+	  2, 3, 2, 12, TRUE
+	},
+	{ LAYOUT_VERTICAL, 20, 46,
+	  0, 30, 20, 16,
+	  0, 0, 20, 30,
+	  1, 11, 18, 18,
+	  1, 1, 10, 1,
+	  -1, -1, -1, -1, FALSE
+	},
+	{ LAYOUT_VERTICAL_EXTENDED, 30, 58,
+	  0, 42, 30, 16,
+	  0, 0, 30, 42,
+	  1, 1, 18, 20,
+	  19, 1, 19, 10,
+	  2, 23, 2, 32, TRUE
+	},
+	{ LAYOUT_SQUARE, 46, 46,
+	  0, 0, 16, 46,
+	  16, 0, 30, 46,
+	  1, 1, 18, 20,
+	  19, 1, 19, 10,
+	  2, 24, 2, 36, FALSE
+	}
+};
+
 gint UPDATE_DELAY = 5;		/* status lights update interval in Hz (1 - 20) */
 gchar *lock_file;		/* the modem lock file */
 gint verify_lock_file = TRUE;	/* do we verify the pid inside the lockfile? */
@@ -90,10 +165,12 @@ static int confirm_dialog = FALSE;
 static PanelOrientType orient;
 
 #ifdef HAVE_PANEL_PIXEL_SIZE
-static int sizehint;
+static gint sizehint;
 #endif
 
-static gint panel_verticle = FALSE;
+static DisplayLayout layout = LAYOUT_HORIZONTAL;
+static DisplayData *layout_current = NULL;
+
 static gint setup_done = FALSE;
 
 
@@ -114,7 +191,7 @@ static void about_cb (AppletWidget *widget, gpointer data)
 	authors[2] = NULL;
 
         about = gnome_about_new ( _("Modem Lights Applet"), VERSION,
-			"(C) 1999",
+			"(C) 2000",
 			authors,
 			_("Released under the GNU general public license.\n"
 			"A modem status indicator and dialer.\n"
@@ -483,6 +560,13 @@ static void draw_digit(gint n, gint x, gint y)
 
 static void draw_timer(gint seconds, gint force)
 {
+	gint x, y;
+
+	if (!layout_current || layout_current->time_x < 0) return;
+
+	x = layout_current->time_x;
+	y = layout_current->time_y;
+
 	if (seconds > -1)
 		{
 		gint a, b;
@@ -492,63 +576,70 @@ static void draw_timer(gint seconds, gint force)
 		a = seconds / 60;
 		b = seconds % 60;
 
-		draw_digit(a / 10, 2, 36);
-		draw_digit(a % 10, 7, 36);
+		draw_digit(a / 10, x, y);
+		draw_digit(a % 10, x+5, y);
 
-		draw_digit(b / 10, 17, 36);
-		draw_digit(b % 10, 22, 36);
+		draw_digit(b / 10, x+15, y);
+		draw_digit(b % 10, x+20, y);
 
-		draw_digit(15, 12, 36);
+		draw_digit(15, x+10, y);
 		}
 	else
 		{
 		if (force)
 			{
-			draw_digit(10, 2, 36);
-			draw_digit(10, 7, 36);
+			draw_digit(10, x, y);
+			draw_digit(10, x+5, y);
 
-			draw_digit(10, 17, 36);
-			draw_digit(10, 22, 36);
+			draw_digit(10, x+15, y);
+			draw_digit(10, x+20, y);
 			}
 
-		draw_digit(14, 12, 36);
+		draw_digit(14, x+10, y);
 		}
 }
 
 static void draw_bytes(gint bytes)
 {
+	gint x, y;
+
+	if (!layout_current || layout_current->bytes_x < 0) return;
+
+	x = layout_current->bytes_x;
+	y = layout_current->bytes_y;
+
 	if (bytes > -1)
 		{
 		gint dig;
 		if (bytes > 9999)
 			{
 			bytes /= 1024;
-			draw_digit(12, 22, 24);
+			draw_digit(12, x + 20, y);
 			}
 		else
 			{
-			draw_digit(13, 22, 24);
+			draw_digit(13, x + 20, y);
 			}
 
 		dig = bytes / 1000;
-		draw_digit(dig, 2, 24);
+		draw_digit(dig, x, y);
 		bytes %= 1000;
 		dig = bytes / 100;
-		draw_digit(dig, 7, 24);
+		draw_digit(dig, x+5, y);
 		bytes %= 100;
 		dig = bytes / 10;
-		draw_digit(dig, 12, 24);
+		draw_digit(dig, x+10, y);
 		bytes %= 10;
-		draw_digit(bytes, 17, 24);
+		draw_digit(bytes, x+15, y);
 		}
 	else
 		{
-		draw_digit(10, 2, 24);
-		draw_digit(10, 7, 24);
-		draw_digit(10, 12, 24);
-		draw_digit(10, 17, 24);
+		draw_digit(10, x, y);
+		draw_digit(10, x+5, y);
+		draw_digit(10, x+10, y);
+		draw_digit(10, x+15, y);
 
-		draw_digit(11, 22, 24);
+		draw_digit(11, x+20, y);
 		}
 }
 
@@ -562,7 +653,7 @@ static gint update_extra_info(int rx_bytes, gint force)
 	gint new_timer;
 	gint new_bytes;
 
-	if (!show_extra_info) return FALSE;
+	if (!layout_current || (layout_current->bytes_x < 0 && layout_current->time_x < 0)) return FALSE;
 
 	update_counter++;
 	if (update_counter < UPDATE_DELAY && !force) return FALSE;
@@ -618,24 +709,11 @@ static void draw_load(int rxbytes, int txbytes)
 	int x, y, dot_height;
 	float bytes_per_dot;
 
-	if (show_extra_info)
-		{
-		x = 2;
-		y = 19;
-		dot_height = 18;
-		}
-	else if (panel_verticle)
-		{
-		x = 2;
-		y = 17;
-		dot_height = 16;
-		}
-	else
-		{
-		x = 2;
-		y = 27;
-		dot_height = 16;
-		}
+	if (!layout_current) return;
+
+	x = layout_current->load_x + 1;
+	y = layout_current->load_y + layout_current->load_h - 1;
+	dot_height = layout_current->load_h - 2;
 
 	/* sanity check: */
 	if (rxbytes <0) rxbytes = 0;
@@ -663,14 +741,14 @@ static void draw_load(int rxbytes, int txbytes)
 	else
 		bytes_per_dot = (float)load_max / (dot_height - 1);
 
-	gdk_draw_rectangle(display, display_area->style->black_gc, TRUE, x, y - dot_height + 1, 16, dot_height);
+	gdk_draw_rectangle(display, display_area->style->black_gc, TRUE, x, y - dot_height, 16, dot_height);
 
 	gdk_gc_set_foreground( gc, &rx_color );
 	for (i=0;i<16;i++)
 		{
 		if( load_hist_rx[i] )
 			gdk_draw_line(display, gc, x+i, y,
-				x+i, y - ((float)load_hist_rx[i] / bytes_per_dot ) + 1);
+				x+i, y - ((float)load_hist_rx[i] / bytes_per_dot ));
 		}
 
 	gdk_gc_set_foreground( gc, &tx_color );
@@ -678,7 +756,7 @@ static void draw_load(int rxbytes, int txbytes)
 		{
 		if( load_hist_tx[i] )
 			gdk_draw_line(display, gc, x+i, y,
-				x+i, y - ((float)load_hist_tx[i] / bytes_per_dot ) + 1);
+				x+i, y - ((float)load_hist_tx[i] / bytes_per_dot ));
 		}
 
 	redraw_display();
@@ -687,15 +765,6 @@ static void draw_load(int rxbytes, int txbytes)
 static void draw_light(int lit, int x, int y, ColorType color)
 {
 	gint p;
-
-	/* if the orientation is sideways (left or right panel), we swap x and y */
-	if (show_extra_info || panel_verticle)
-		{
-		int t;
-		t = y;
-		y = x;
-		x = 21 - t;
-		}
 
 	if (lit)
 		p = 9;
@@ -717,16 +786,18 @@ static void update_lights(int rx, int tx, int cd, int rx_bytes, gint force)
 	static int o_cd = FALSE;
 	int redraw_required = FALSE;
 
+	if (!layout_current) return;
+
 	if (rx != o_rx || force)
 		{
 		o_rx = rx;
-		draw_light(rx , 10, 1, COLOR_RX);
+		draw_light(rx , layout_current->rx_x, layout_current->rx_y, COLOR_RX);
 		redraw_required = TRUE;
 		}
 	if (tx != o_tx || force)
 		{
 		o_tx = tx;
-		draw_light(tx, 1, 1, COLOR_TX);
+		draw_light(tx, layout_current->tx_x, layout_current->tx_y, COLOR_TX);
 		redraw_required = TRUE;
 		}
 	if (cd != o_cd)
@@ -884,27 +955,27 @@ static void draw_shadow_box(GdkPixmap *window, gint x, gint y, gint w, gint h,
 
 static void create_background_pixmap()
 {
+	if (!layout_current) return;
+
 	if (display) gdk_pixmap_unref(display);
 
-	if (show_extra_info)
+	display = gdk_pixmap_new(display_area->window,
+				 layout_current->display_w, layout_current->display_h, -1);
+	draw_shadow_box(display, 0, 0, layout_current->display_w, layout_current->display_h,
+			FALSE, applet->style->bg_gc[GTK_STATE_NORMAL]);
+	draw_shadow_box(display, layout_current->load_x, layout_current->load_y,
+			layout_current->load_w, layout_current->load_h, TRUE, applet->style->black_gc);
+
+	if (layout_current->bytes_x >= 0)
 		{
-		display = gdk_pixmap_new(display_area->window, 30, 46, -1);
-		draw_shadow_box(display, 0, 0, 30, 46, FALSE, applet->style->bg_gc[GTK_STATE_NORMAL]);
-		draw_shadow_box(display, 1, 1, 18, 20, TRUE, applet->style->black_gc);
-		draw_shadow_box(display, 1, 22, 28, 11, TRUE, applet->style->black_gc);
-		draw_shadow_box(display, 1, 34, 28, 11, TRUE, applet->style->black_gc);
+		draw_shadow_box(display, layout_current->bytes_x - 1, layout_current->bytes_y - 2,
+				28, layout_current->merge_extended_box ? 20 : 11,
+				TRUE, applet->style->black_gc);
 		}
-	else if (panel_verticle)
+	if (layout_current->time_x >= 0 && !layout_current->merge_extended_box)
 		{
-		display = gdk_pixmap_new(display_area->window, 30, 20, -1);
-		draw_shadow_box(display, 0, 0, 30, 20, FALSE, applet->style->bg_gc[GTK_STATE_NORMAL]);
-		draw_shadow_box(display, 1, 1, 18, 18, TRUE, applet->style->black_gc);
-		}
-	else
-		{
-		display = gdk_pixmap_new(display_area->window, 20, 30, -1);
-		draw_shadow_box(display, 0, 0, 20, 30, FALSE, applet->style->bg_gc[GTK_STATE_NORMAL]);
-		draw_shadow_box(display, 1, 11, 18, 18, TRUE, applet->style->black_gc);
+		draw_shadow_box(display, layout_current->time_x - 1, layout_current->time_y - 2,
+				28, 11, TRUE, applet->style->black_gc);
 		}
 }
 
@@ -1028,48 +1099,63 @@ static void setup_colors()
 
 void reset_orientation(void)
 {
-#ifdef HAVE_PANEL_PIXEL_SIZE
-	if (((orient == ORIENT_LEFT || orient == ORIENT_RIGHT) && sizehint >= PIXEL_SIZE_STANDARD) ||
-	    ((orient == ORIENT_UP || orient == ORIENT_DOWN) && sizehint < PIXEL_SIZE_STANDARD))
-#else
-	if (orient == ORIENT_LEFT || orient == ORIENT_RIGHT)
-#endif
+	if (sizehint >= PIXEL_SIZE_STANDARD)
 		{
-		panel_verticle = TRUE;
+		if (show_extra_info)
+			{
+			layout = LAYOUT_SQUARE;
+			}
+		else if (orient == ORIENT_LEFT || orient == ORIENT_RIGHT)
+			{
+			layout = LAYOUT_HORIZONTAL;
+			}
+		else
+			{
+			layout = LAYOUT_VERTICAL;
+			}
 		}
 	else
 		{
-		panel_verticle = FALSE;
+		if (orient == ORIENT_LEFT || orient == ORIENT_RIGHT)
+			{
+			if (show_extra_info)
+				{
+				layout = LAYOUT_VERTICAL_EXTENDED;
+				}
+			else
+				{
+				layout = LAYOUT_VERTICAL;
+				}
+			}
+		else
+			{
+			if (show_extra_info)
+				{
+				layout = LAYOUT_HORIZONTAL_EXTENDED;
+				}
+			else
+				{
+				layout = LAYOUT_HORIZONTAL;
+				}
+			}
 		}
+
+	if (layout < LAYOUT_HORIZONTAL || layout > LAYOUT_SQUARE) layout = LAYOUT_HORIZONTAL;
+	layout_current = &layout_data[layout];
+
+	printf("Test layout = %d\n", layout_current->layout);
 
 	create_background_pixmap();
 	update_pixmaps();
 
-	/* resize the applet and set the proper background pixmap */
-	if (show_extra_info)
-		{
-		gtk_widget_set_usize(frame, 46, 46);
-		gtk_drawing_area_size(GTK_DRAWING_AREA(display_area), 30, 46);
-		gtk_widget_set_usize(button,16,46);
-		gtk_fixed_move(GTK_FIXED(frame),display_area,16,0);
-		gtk_fixed_move(GTK_FIXED(frame),button,0,0);
-		}
-	else if (panel_verticle)
-		{
-		gtk_widget_set_usize(frame, 46, 20);
-		gtk_drawing_area_size(GTK_DRAWING_AREA(display_area),30,20);
-		gtk_widget_set_usize(button,16,20);
-		gtk_fixed_move(GTK_FIXED(frame),display_area,16,0);
-		gtk_fixed_move(GTK_FIXED(frame),button,0,0);
-		}
-	else
-		{
-		gtk_widget_set_usize(frame, 20, 46);
-		gtk_drawing_area_size(GTK_DRAWING_AREA(display_area),20,30);
-		gtk_widget_set_usize(button,20,16);
-		gtk_fixed_move(GTK_FIXED(frame),display_area,0,0);
-		gtk_fixed_move(GTK_FIXED(frame),button,0,30);
-		}
+	gtk_widget_set_usize(frame, layout_current->width, layout_current->height);
+	gtk_drawing_area_size(GTK_DRAWING_AREA(display_area),
+			      layout_current->display_w, layout_current->display_h);
+
+	gtk_widget_set_usize(button, layout_current->button_w, layout_current->button_h);
+	gtk_fixed_move(GTK_FIXED(frame), display_area, layout_current->display_x, layout_current->display_y);
+	gtk_fixed_move(GTK_FIXED(frame), button, layout_current->button_x, layout_current->button_y);
+
 	/* we set the lights to off so they will be correct on the next update */
 	update_lights(FALSE, FALSE, FALSE, -1, TRUE);
 	redraw_display();
@@ -1116,7 +1202,7 @@ static void show_help_cb(AppletWidget *applet, gpointer data)
 
 static gint applet_save_session(GtkWidget *widget, char *privcfgpath, char *globcfgpath)
 {
-	property_save(privcfgpath);
+	property_save(privcfgpath, FALSE);
         return FALSE;
         widget = NULL;
         globcfgpath = NULL;
@@ -1138,6 +1224,8 @@ int main (int argc, char *argv[])
 		load_hist_rx[i] = 0;
 		load_hist_tx[i] = 0;
 		}
+
+	layout_current = &layout_data[LAYOUT_HORIZONTAL];
 
 	applet_widget_init("modemlights_applet", VERSION, argc, argv,
 				    NULL, 0, NULL);
@@ -1211,11 +1299,11 @@ int main (int argc, char *argv[])
 	gtk_widget_show(button_pixmap);
 
 	update_tooltip(FALSE,0,0);
-	gtk_widget_show(applet);
 
 	/* by now we know the geometry */
 	setup_done = TRUE;
 	reset_orientation();
+	gtk_widget_show(applet);
 
 	gtk_signal_connect(GTK_OBJECT(applet),"style_set",
 		GTK_SIGNAL_FUNC(applet_style_change_cb), NULL);

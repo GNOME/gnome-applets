@@ -1,5 +1,5 @@
 /* GNOME modemlights applet
- * (C) 1999 John Ellis
+ * (C) 2000 John Ellis
  *
  * Authors: John Ellis
  *          Martin Baulig
@@ -7,6 +7,8 @@
  */
 
 #include "modemlights.h"
+
+#define DEFAULT_PATH "/modemlights/"
 
 static GtkWidget *propwindow = NULL;
 static GtkWidget *connect_entry = NULL;
@@ -29,8 +31,8 @@ static void verify_lock_file_cb( GtkWidget *widget, gpointer data );
 static void update_delay_cb( GtkWidget *widget, GtkWidget *spin );
 static void confirm_checkbox_cb( GtkWidget *widget, gpointer data );
 static void isdn_checkbox_cb( GtkWidget *widget, gpointer data );
-static void property_apply_cb( GtkWidget *widget, void *data );
-static gint property_destroy_cb( GtkWidget *widget, void *data );
+static void property_apply_cb(GtkWidget *widget, gint pagenum);
+static gint property_destroy_cb(GtkWidget *widget, gpointer data);
 
 void property_load(char *path)
 {
@@ -40,7 +42,14 @@ void property_load(char *path)
 	g_free(command_disconnect);
 	g_free(device_name);
 
-        gnome_config_push_prefix (path);
+	gnome_config_push_prefix(path);
+
+	if (gnome_config_get_int("modem/delay=0") == 0)
+		{
+		/* must be just added to panel, try defaults file */
+		gnome_config_pop_prefix();
+		gnome_config_push_prefix(DEFAULT_PATH);
+		}
 
         UPDATE_DELAY = gnome_config_get_int("modem/delay=5");
 
@@ -62,9 +71,17 @@ void property_load(char *path)
 	gnome_config_pop_prefix ();
 }
 
-void property_save(char *path)
+void property_save(char *path, gint to_default)
 {
-        gnome_config_push_prefix(path);
+	if (path && !to_default)
+		{
+	        gnome_config_push_prefix(path);
+		}
+	else
+		{
+		gnome_config_push_prefix(DEFAULT_PATH);
+		}
+
         gnome_config_set_int("modem/delay", UPDATE_DELAY);
         gnome_config_set_string("modem/lockfile", lock_file);
         gnome_config_set_string("modem/connect", command_connect);
@@ -124,7 +141,14 @@ static void isdn_checkbox_cb( GtkWidget *widget, gpointer data )
         data = NULL;
 }
 
-static void property_apply_cb( GtkWidget *widget, void *data )
+static void set_default_cb(GtkWidget *widget, gpointer data)
+{
+	property_apply_cb(propwindow, 0);
+	property_save(NULL, TRUE);
+	gnome_property_box_set_modified((GnomePropertyBox *)propwindow, FALSE);
+}
+
+static void property_apply_cb(GtkWidget *widget, gint pagenum)
 {
 	gchar *new_text;
 
@@ -161,10 +185,10 @@ static void property_apply_cb( GtkWidget *widget, void *data )
 	applet_widget_sync_config(APPLET_WIDGET(applet));
 	return;
 	widget = NULL;
-        data = NULL;
+	pagenum = 0;
 }
 
-static gint property_destroy_cb( GtkWidget *widget, void *data )
+static gint property_destroy_cb(GtkWidget *widget, gpointer data)
 {
         propwindow = NULL;
 	return FALSE;
@@ -190,6 +214,7 @@ void property_show(AppletWidget *applet, gpointer data)
 	GtkWidget *delay_w;
 	GtkObject *delay_adj;
 	GtkWidget *checkbox;
+	GtkWidget *button;
 
 	if(propwindow)
 		{
@@ -367,6 +392,18 @@ void property_show(AppletWidget *applet, gpointer data)
 		gtk_widget_set_sensitive(device_entry, FALSE);
 		gtk_widget_set_sensitive(verify_checkbox, FALSE);
 		}
+
+	/* defaults save button */
+	
+	hbox = gtk_hbox_new(FALSE, GNOME_PAD_SMALL);
+	gtk_box_pack_end(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
+	gtk_widget_show(hbox);
+
+	button = gtk_button_new_with_label(_("Set options as default"));
+	gtk_signal_connect(GTK_OBJECT(button), "clicked",
+			   GTK_SIGNAL_FUNC(set_default_cb), NULL);
+	gtk_box_pack_end(GTK_BOX(hbox), button, FALSE, FALSE, 0);
+	gtk_widget_show(button);
 
         label = gtk_label_new(_("Advanced"));
         gtk_widget_show(vbox);

@@ -1,3 +1,21 @@
+Tue Sep 26 13:33:16 2000  John Ellis  <johne@bellatlantic.net>
+
+	* modemlights.c: Applet layout coordinates are now stored in a static
+	structure for each possible layout. Added layouts for connection info
+	with a tiny/small panel. Note that the vertical tiny panel is simply
+	too narrow to fit the byte rate and time, so the applet is still going
+	to enlarge the panel to 30 pixels (not as bad as before, at 46 pixels).
+
+Tue Sep 26 10:46:49 2000  John Ellis  <johne@bellatlantic.net>
+
+	* modemlights.[ch], properties.c: Added button in properties advanced
+	tab to save current options as default, this way the default start
+	options can be saved even if the applet is removed from the panel
+	(or it crashes :).
+	* modemlights.c (main): Moved _show() of applet to after
+	reset_orientation(), hoping to clear up some start-up problems peeps
+	were having with display corruption.
+
 2000-04-25  Fatih Demir	<kabalak@gmx.net>
 	
 	* modemlights_applet.desktop : Added [tr] section . 
