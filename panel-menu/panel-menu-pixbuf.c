@@ -33,7 +33,6 @@ typedef struct _PixbufEntry {
 }PixbufEntry;
 
 static void panel_menu_pixbuf_init (void);
-static void panel_menu_pixbuf_exit (void);
 static void register_gconf_notifications (void);
 static gboolean pixbuf_cache_remove (gpointer key, gpointer value,
 				     gpointer user_data);
