@@ -379,14 +379,14 @@ applet_change_pixel_size (PanelApplet *applet, gint s, gpointer data)
   data = NULL;
 }
 
-
-#ifdef FIXME
-void
-cb_properties_dialog (AppletWidget * widget, gpointer data)
+static void
+cb_properties_dialog (BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 {
 
   user_preferences *ad = &options;
+#ifdef FIXME
   static GnomeHelpMenuEntry helpEntry = { NULL, "preferences" };
+#endif
   GtkWidget *frame;
   GtkWidget *pref_vbox;
   GtkWidget *pref_vbox_2;
@@ -401,9 +401,9 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
       gdk_window_raise (ad->propwindow->window);
       return;
     }
-
+#ifdef FIXME
   helpEntry.name = gnome_app_id;
-
+#endif
   /* Grab old property settings for comparison */
   memcpy (&old_options, &options, sizeof (user_preferences));
 
@@ -474,8 +474,9 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
 
   ad->directory_entry = gnome_file_entry_new ("output_dir",
 					      "Select directory");
-  gnome_file_entry_set_directory (GNOME_FILE_ENTRY (ad->directory_entry),
-				  TRUE);
+  gnome_file_entry_set_directory_entry (GNOME_FILE_ENTRY (ad->directory_entry),
+				        TRUE);
+#ifdef FIXME  
   entry = GTK_COMBO (GNOME_FILE_ENTRY (ad->directory_entry)->gentry)->entry;
 
   if (ad->directory)
@@ -484,7 +485,7 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
   gtk_signal_connect_object (GTK_OBJECT (entry), "changed",
 			     GTK_SIGNAL_FUNC (gnome_property_box_changed),
 			     GTK_OBJECT (ad->propwindow));
-
+#endif
   gtk_box_pack_start (GTK_BOX (pref_hbox), ad->directory_entry, TRUE, TRUE,
 		      0);
   gtk_widget_show (ad->directory_entry);
@@ -875,9 +876,10 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
 		      GTK_SIGNAL_FUNC (property_apply_cb), ad);
   gtk_signal_connect (GTK_OBJECT (ad->propwindow), "destroy",
 		      GTK_SIGNAL_FUNC (property_destroy_cb), ad);
+#ifdef FIXME
   gtk_signal_connect (GTK_OBJECT (ad->propwindow), "help",
 		      GTK_SIGNAL_FUNC (gnome_help_pbox_display), &helpEntry);
-
+#endif
   if (ad->spurious)
     {
       gtk_widget_show_all (ad->spurious_pref_vbox);
@@ -887,9 +889,9 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
 
   gtk_widget_show (ad->propwindow);
   data = NULL;
-  widget = NULL;
 }
 
+#ifdef FIXME
 static gint
 applet_save_session (GtkWidget * widget, gchar * privcfgpath,
 		     gchar * globcfgpath, gpointer data)
@@ -1356,13 +1358,15 @@ expand_cb (GtkWidget * w, gpointer data)
   gchar *message = NULL;
   gchar *buf = NULL;
 
-  filename = gtk_entry_get_text (GTK_ENTRY (options.filename_entry));
+  filename = gtk_editable_get_chars (GTK_EDITABLE (options.filename_entry), 0, -1);
 
   if ((wordexpret = wordexp (filename, &mywordexp, 0) != 0))
     {
       gnome_ok_dialog (_("There was a word expansion error\n"
 			  "I think you have stuck something funny in the filename box"));
       wordfree (&mywordexp);
+      if (filename)
+          g_free (filename);
       return;
     }
   else
@@ -1377,12 +1381,14 @@ expand_cb (GtkWidget * w, gpointer data)
       gnome_ok_dialog (message);
       wordfree (&mywordexp);
     }
+  if (filename)
+    g_free (filename);
   return;
   data = NULL;
   w = NULL;
 }
 
-#ifdef FIXME
+
 void
 property_apply_cb (GtkWidget * w, gpointer data)
 {
@@ -1391,6 +1397,7 @@ property_apply_cb (GtkWidget * w, gpointer data)
   gchar *buf;
   gint info_changed = FALSE;
 
+#ifdef FIXME
   buf =
     gtk_entry_get_text (GTK_ENTRY
 			(GTK_COMBO
@@ -1405,8 +1412,8 @@ property_apply_cb (GtkWidget * w, gpointer data)
       ad->directory = g_strdup (buf);
       info_changed = TRUE;
     }
-
-  buf = gtk_entry_get_text (GTK_ENTRY (ad->filename_entry));
+#endif
+  buf = gtk_editable_get_chars (GTK_EDITABLE (ad->filename_entry), 0, -1);
 
   if ((buf) && (strcmp (buf, old->filename)))
     {
@@ -1416,8 +1423,10 @@ property_apply_cb (GtkWidget * w, gpointer data)
       ad->filename = g_strdup (buf);
       info_changed = TRUE;
     }
+  if (buf)
+    g_free (buf);
 
-  buf = gtk_entry_get_text (GTK_ENTRY (ad->app_entry));
+  buf = gtk_editable_get_chars (GTK_EDITABLE (ad->app_entry), 0, -1);
 
   if ((buf) && (strcmp (buf, old->app)))
     {
@@ -1427,8 +1436,10 @@ property_apply_cb (GtkWidget * w, gpointer data)
       ad->app = g_strdup (buf);
       info_changed = TRUE;
     }
+  if (buf)
+    g_free (buf);
 
-  buf = gtk_entry_get_text (GTK_ENTRY (ad->thumb_filename_entry));
+  buf = gtk_editable_get_chars (GTK_EDITABLE (ad->thumb_filename_entry), 0, -1);
 
   if ((buf) && (strcmp (buf, old->thumb_filename)))
     {
@@ -1438,8 +1449,10 @@ property_apply_cb (GtkWidget * w, gpointer data)
       ad->thumb_filename = g_strdup (buf);
       info_changed = TRUE;
     }
+  if (buf)
+    g_free (buf);
 
-  buf = gtk_entry_get_text (GTK_ENTRY (ad->script_entry));
+  buf =  gtk_editable_get_chars (GTK_EDITABLE (ad->script_entry), 0, -1);
 
   if ((buf) && (strcmp (buf, old->script_filename)))
     {
@@ -1449,7 +1462,9 @@ property_apply_cb (GtkWidget * w, gpointer data)
       ad->script_filename = g_strdup (buf);
       info_changed = TRUE;
     }
-
+  if (buf)
+    g_free (buf);
+   
   if (memcmp (ad, old, sizeof (user_preferences)))
     info_changed = TRUE;
 
@@ -1555,8 +1570,9 @@ create_slider_option (gchar * label, GtkWidget * target, int *option,
 }
 
 void
-showHelp (AppletWidget * applet, gpointer data)
+cb_help (BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 {
+#ifdef FIXME
   static GnomeHelpMenuEntry help_entry = { NULL, "index.html" };
 
   help_entry.name = gnome_app_id;
@@ -1565,29 +1581,11 @@ showHelp (AppletWidget * applet, gpointer data)
   return;
   applet = NULL;
   data = NULL;
-}
 #endif
-
-static void
-cb_props_dialog (BonoboUIComponent *uic,
-		 gpointer           user_data,
-		 const gchar       *verbname)
-{
-        g_message ("%s called\n", verbname);
 }
 
 static void
-cb_help (BonoboUIComponent *uic,
-	 gpointer           user_data,
-	 const gchar       *verbname)
-{
-        g_message ("%s called\n", verbname);
-}
-
-static void
-cb_about (BonoboUIComponent *uic,
-	  gpointer           user_data,
-	  const gchar       *verbname)
+cb_about (BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 {
   static GtkWidget *about = NULL;
   GtkWidget *my_url;
@@ -1632,7 +1630,7 @@ cb_about (BonoboUIComponent *uic,
 }
 
 static const BonoboUIVerb test_applet_menu_verbs [] = {
-        BONOBO_UI_VERB ("Props", cb_props_dialog),
+        BONOBO_UI_VERB ("Props", cb_properties_dialog),
         BONOBO_UI_VERB ("Help", cb_help),
         BONOBO_UI_VERB ("About", cb_about),
 
@@ -1653,7 +1651,6 @@ static const char test_applet_menu_xml [] =
 static BonoboObject *
 screenshooter_applet_new (void)
 {
-  GtkWidget *applet;
   GtkWidget *hbox;
   GtkWidget *vbox;
   GtkWidget *mainbox;
@@ -1749,25 +1746,6 @@ screenshooter_applet_new (void)
   gtk_widget_show (vbox);
   gtk_widget_show (hbox);
   gtk_widget_show (mainbox);
-
-#ifdef FIXME
-  applet_widget_register_stock_callback (APPLET_WIDGET (applet),
-					 "properties",
-					 GNOME_STOCK_MENU_PROP,
-					 _ ("Properties..."),
-					 (AppletCallbackFunc)
-					 cb_properties_dialog, NULL);
-  applet_widget_register_stock_callback (APPLET_WIDGET (applet),
-					 "help",
-					 GNOME_STOCK_PIXMAP_HELP,
-					 _ ("Help"),
-					 (AppletCallbackFunc) showHelp, NULL);
-  applet_widget_register_stock_callback (APPLET_WIDGET (applet),
-					 "about",
-					 GNOME_STOCK_MENU_ABOUT,
-					 _ ("About..."),
-					 (AppletCallbackFunc) cb_about, NULL);
-#endif
 	
   applet = panel_applet_new (mainbox);
   
@@ -1784,23 +1762,8 @@ screenshooter_applet_new (void)
   		 
   g_signal_connect (G_OBJECT (applet), "change_orient",
   		    G_CALLBACK (cb_applet_change_orient), NULL);
-
-#if 0
-
-	
-	test_applet_setup_tooltips (GTK_WIDGET (applet));
-
-	g_signal_connect (G_OBJECT (applet),
-			  "change_background",
-			  G_CALLBACK (test_applet_handle_background_change),
-			  label);
-
-	g_signal_connect (G_OBJECT (applet),
-			  "save_yourself",
-			  G_CALLBACK (test_applet_handle_save_yourself),
-			  label);
-#endif			  
-	return BONOBO_OBJECT (panel_applet_get_control (PANEL_APPLET (applet)));
+		  
+  return BONOBO_OBJECT (panel_applet_get_control (PANEL_APPLET (applet)));
 }
 
 static BonoboObject *

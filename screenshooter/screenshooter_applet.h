@@ -97,26 +97,12 @@ typedef struct
 }
 user_preferences;
 
-#ifdef FIXME
-void cb_about (AppletWidget * widget, gpointer data);
-void cb_properties_dialog (AppletWidget * widget, gpointer data);
 void property_apply_cb (GtkWidget * w, gpointer data);
 gint property_destroy_cb (GtkWidget * w, gpointer data);
 void expand_cb (GtkWidget * w, gpointer data);
 void spurious_cb (GtkWidget * w, gpointer data);
-void cb_applet_change_orient (GtkWidget * w, PanelOrientType o,
-			      gpointer data);
-void window_button_press (GtkWidget * button, user_preferences * options);
-void desktop_button_press (GtkWidget * button, user_preferences * options);
 static void properties_save (gchar * path, gpointer data);
-void grab_shot (user_preferences * opt, gboolean root);
-void change_orientation (PanelOrientType o, gboolean size_is_tiny);
-gboolean need_to_change_orientation (PanelOrientType o,
-				     gboolean size_is_tiny);
 void set_tooltip (GtkWidget * w, const gchar * tip);
- ifdef HAVE_PANEL_PIXEL_SIZE
-static void applet_change_pixel_size (GtkWidget * w, int s, gpointer data);
- endif
 void slider_option_cb (GtkWidget * w, gpointer data);
 void boolean_option_cb (GtkWidget * w, gpointer data);
 GtkWidget *create_bool_option (const gchar * label, int *opt,
@@ -124,7 +110,7 @@ GtkWidget *create_bool_option (const gchar * label, int *opt,
 GtkWidget *
 create_slider_option (gchar * label, GtkWidget * target, int *option, gfloat a,
 		     gfloat b, gfloat c, gfloat d, gfloat e);
-#endif
+
 
 /* Global variables */
 GtkWidget *applet;
