@@ -79,11 +79,7 @@ parse_theme_file (FILE *theme_file)
 void
 load_theme (gchar *theme_dir)
 {
-	/* Porting complete - well...mostly complete. Just need to figure 
-	   out the GdkImlib - GdkPixbuf mapping. I think I'm mostly happy
-	   with this func */
-
-        FILE* theme_file;
+	FILE* theme_file;
         gchar *file_name;
 
         eyes_applet.theme_dir = g_strdup_printf ("%s/", theme_dir);
@@ -131,41 +127,35 @@ destroy_theme ()
 }
 
 static void
-theme_selected_cb (GtkWidget *widget, 
-                   gint row, 
-                   gint col,
-                   GdkEventButton *event,
-                   gpointer data)
+theme_selected_cb (GtkTreeSelection *selection, gpointer data)
 {
-	/* Ported */
-        eyes_applet.prop_box.selected_row = row;
-        gnome_property_box_changed (GNOME_PROPERTY_BOX (eyes_applet.prop_box.pbox));
-	return;
-}
-
-static void
-apply_cb (GtkWidget *prob_box, gint page_num, gpointer data)
-{
-	/* Not ported - ugly Clist conversions :( */
-        gchar *clist_text;
-        
-        if (page_num == 0) {
-                gtk_clist_get_text (GTK_CLIST (eyes_applet.prop_box.clist),
-                                    eyes_applet.prop_box.selected_row,
-                                    0,
-                                    &clist_text);
-                destroy_eyes ();
-                destroy_theme ();
-                load_theme (clist_text);
-                create_eyes ();
-	}
-	return;
+	GtkWidget *applet = data;
+	GtkTreeModel *model;
+	GtkTreeIter iter;
+	gchar *theme;
+	
+	if (!gtk_tree_selection_get_selected (selection, &model, &iter))
+		return;
+	
+	gtk_tree_model_get (model, &iter, 0, &theme, -1);
+	
+	g_return_if_fail (theme);
+	
+	destroy_eyes ();
+        destroy_theme ();
+        load_theme (theme);
+        create_eyes ();
+	
+	panel_applet_gconf_set_string (PANEL_APPLET (applet), "theme-path",
+				       theme, NULL);
+	
+	g_free (theme);
 }
 
 static void
 phelp_cb (GtkWidget *w, gint tab, gpointer data)
 {
-	/* Ported */
+	
 #ifdef FIXME
 	GnomeHelpMenuEntry help_entry = { "geyes_applet",
 					  "index.html#GEYES-PREFS" };
@@ -173,51 +163,55 @@ phelp_cb (GtkWidget *w, gint tab, gpointer data)
 #endif
 }
 
+static void
+presponse_cb (GtkDialog *dialog, gint id, gpointer data)
+{
+	gtk_widget_destroy (GTK_WIDGET (dialog));
+}
+
 void
 properties_cb (BonoboUIComponent *uic, gpointer user_data, const gchar *verbname)
 {
-	/* Half ported - ugly etc, etc.. */
-        GtkWidget *pbox;
-        GtkWidget *clist;
+	GtkWidget *pbox;
+        GtkWidget *tree;
+        GtkListStore *model;
+        GtkTreeViewColumn *column;
+        GtkCellRenderer *cell;
+        GtkTreeSelection *selection;
+        GtkTreeIter iter;
         GtkWidget *label;
         gchar *title [] = { N_("Theme Name"), NULL };
         DIR *dfd;
         struct dirent *dp;
         int i;
         gchar filename [PATH_MAX];
-        
+     
 	if (eyes_applet.prop_box.pbox) {
 		gdk_window_show (eyes_applet.prop_box.pbox->window);
 		gdk_window_raise (eyes_applet.prop_box.pbox->window);
 		return;
 	}
 
-        pbox = gnome_property_box_new ();
+        pbox = gtk_dialog_new_with_buttons (_("Settings"), NULL,
+        				     GTK_DIALOG_DESTROY_WITH_PARENT,
+					     GTK_STOCK_OK, GTK_RESPONSE_OK,
+					     NULL);
 
-        g_signal_connect (G_OBJECT (pbox),
-                          "apply",
-                          G_CALLBACK (apply_cb),
-                          NULL);
+        g_signal_connect (G_OBJECT (pbox), "response",
+			  G_CALLBACK (presponse_cb), NULL);
 
-        g_signal_connect (G_OBJECT (pbox), 
-			  "destroy",
-			  G_CALLBACK (gtk_widget_destroyed),
-			  &eyes_applet.prop_box.pbox);
-
-	g_signal_connect (G_OBJECT (pbox), 
-			  "help",
-			  G_CALLBACK (phelp_cb), 
-			  NULL);
-
-        gtk_window_set_title (GTK_WINDOW (pbox),
-                              _("gEyes Settings"));
-        
-        title[0] = _(title[0]); /* necessary? */
-        clist = gtk_clist_new_with_titles (1, title);
-        gtk_clist_set_column_width (GTK_CLIST (clist), 0, 200);
-        gtk_signal_connect (GTK_OBJECT (clist), "select_row", 
-                            GTK_SIGNAL_FUNC (theme_selected_cb), 
-                            NULL);
+	model = gtk_list_store_new (1, G_TYPE_STRING);
+	tree = gtk_tree_view_new_with_model (GTK_TREE_MODEL (model));
+	g_object_unref (model);
+	
+	cell = gtk_cell_renderer_text_new ();
+	column = gtk_tree_view_column_new_with_attributes (title[0], cell,
+                                                           "text", 0, NULL);
+        gtk_tree_view_append_column (GTK_TREE_VIEW (tree), column);
+                                                           
+        selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (tree));
+        g_signal_connect (G_OBJECT (selection), "changed",
+        		  G_CALLBACK (theme_selected_cb), eyes_applet.applet);
         
         for (i = 0; i < NUM_THEME_DIRECTORIES; i++) {
                 if ((dfd = opendir (theme_directories[i])) != NULL) {
@@ -228,21 +222,20 @@ properties_cb (BonoboUIComponent *uic, gpointer user_data, const gchar *verbname
                                         strcpy (filename, 
                                                 theme_directories[i]);
                                         strcat (filename, dp->d_name);
-                                        gtk_clist_append (GTK_CLIST (clist), 
-                                                          elems);
+                                        gtk_list_store_insert (model, &iter, 0);
+                                        gtk_list_store_set (model, &iter, 0, &filename, -1);
                                 }
                         }
                         closedir (dfd);
                 }
         }
-        label = gtk_label_new (_("Themes"));
-        gnome_property_box_append_page (GNOME_PROPERTY_BOX (pbox), 
-                                        clist, label);
+        
+        gtk_box_pack_start (GTK_BOX (GTK_DIALOG (pbox)->vbox), tree, TRUE, TRUE, 0);
         
         gtk_widget_show_all (pbox);
         
         eyes_applet.prop_box.pbox = pbox;
-	eyes_applet.prop_box.clist = clist;
+	
 	return;
 }
 

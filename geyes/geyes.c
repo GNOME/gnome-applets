@@ -21,14 +21,13 @@
 #include <math.h>
 #include <gnome.h>
 #include <panel-applet.h>
-#include <gconf/gconf-client.h>
+#include <panel-applet-gconf.h>
 #include "geyes.h"
 
 #define UPDATE_TIMEOUT 75
 
 EyesApplet eyes_applet = {0};
 guint timeout_handle = -1;
-GConfClient *client;
 
 
 static void
@@ -229,35 +228,17 @@ destroy_eyes (void)
 }
 
 static void
-properties_save ()
-{
-	gconf_client_set_string (client, "/applets/gEyes/theme-path", eyes_applet.theme_name, NULL);
-}
-
-static void
-properties_load ()
+properties_load (PanelApplet *applet)
 {
         gchar *theme_path = NULL;
 
-	theme_path = gconf_client_get_string(client, "/applets/gEyes/theme-path", NULL);
+	theme_path = panel_applet_gconf_get_string (applet, "theme-path", NULL);
 	/* FIXME: should install gconf schemas to get defaults*/
 	if (theme_path == NULL)
-		theme_path = g_strdup (GEYES_THEMES_DIR"Default");
+		theme_path = g_strdup (GEYES_THEMES_DIR"Default");	
 	
         load_theme (theme_path);
         g_free (theme_path);
-}
-
-
-static gint
-save_session_cb (GtkWidget *widget,
-                 gchar *privcfgpath,
-                 gchar *globcfgpath)
-{
-        properties_save ();
-	return FALSE;
-	widget = NULL;
-	globcfgpath = NULL;
 }
 
 void 
@@ -346,16 +327,11 @@ static const char geyes_applet_menu_xml [] =
 static gboolean
 geyes_applet_fill (PanelApplet *applet)
 {
+	panel_applet_add_preferences (applet, "/schemas/apps/geyes/prefs", NULL);
 	
-	client = gconf_client_get_default ();
-	gconf_client_add_dir(client,
-                        "/extra/test/directory",
-                        GCONF_CLIENT_PRELOAD_NONE,
-                        NULL);
+	gdk_rgb_init ();
        	
-       	gdk_rgb_init ();
-       	
-        properties_load ();
+        properties_load (applet);
         
         eyes_applet.fixed = gtk_fixed_new ();
         eyes_applet.applet = GTK_WIDGET (applet);

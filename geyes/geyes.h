@@ -26,7 +26,6 @@
 typedef struct
 {
     GtkWidget *pbox;
-    GtkWidget *clist;
     
     gint selected_row;
 } EyesPropertyBox;
