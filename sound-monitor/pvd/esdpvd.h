@@ -6,7 +6,6 @@
  *
  */
 
-#include <config.h>
 #include <gnome.h>
 
 #include <esd.h>
