@@ -1188,7 +1188,8 @@ mail_check_timeout (gpointer data)
 
 		mailcheck_execute_shell (mc, mc->pre_check_cmd);
 
-		mc->mail_timeout = gtk_timeout_add(mc->update_freq, mail_check_timeout, mc);
+		if(mc->auto_update)
+			mc->mail_timeout = gtk_timeout_add(mc->update_freq, mail_check_timeout, mc);
 	}
 
 	check_mail_file_status (mc);
