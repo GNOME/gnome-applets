@@ -4,9 +4,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-applets 1.2.5\n"
-"POT-Creation-Date: 2001-04-22 09:21-0400\n"
-"PO-Revision-Date: 2001-04-22 09:23-04:00\n"
+"Project-Id-Version: gnome-applets 1.4.1\n"
+"POT-Creation-Date: 2001-06-06 15:06+0200\n"
+"PO-Revision-Date: 2001-06-06 15:08+0200\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian <no@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr "Innstillinger for klokke"
 #: another_clock/another_clock.c:267 asclock/dialogs.c:380
 #: battery/properties.c:83 clockmail/properties.c:421
 #: diskusage/properties.c:466 drivemount/properties.c:400
-#: gnotes/properties.c:190 gweather/gweather-pref.c:516
+#: gnotes/properties.c:190 gweather/gweather-pref.c:524
 #: mini-commander/src/preferences.c:801 modemlights/properties.c:486
 #: odometer/properties.c:293 screenshooter/screenshooter_applet.c:434
 #: slashapp/properties.c:412 sound-monitor/properties.c:424
@@ -381,7 +381,10 @@ msgstr "Antall rader med knapper:"
 msgid "Number of columns of buttons:"
 msgstr "Antall kolonner med knapper:"
 
-#. Size
+#. 	gtk_widget_set (best_size,
+#. 			"border_width", 2,
+#. 			"spacing", 2,
+#. 			NULL);
 #: charpick/properties.c:254 diskusage/properties.c:365
 #: mini-commander/src/preferences.c:611 tickastat/properties.c:500
 msgid "Size"
@@ -724,8 +727,8 @@ msgid ""
 "Sam Lloyd's all-time favorite game, now for your delight in the Gnome Panel. "
 "Guaranteed to be a productivity buster."
 msgstr ""
-"Sam Lloyds favorittspill, nå til alles begeistring tilgjengelig i "
-"Panelet.Garantert ødeleggende for produktiviteten."
+"Sam Lloyds favorittspill, nå til alles begeistring tilgjengelig i Panelet."
+"Garantert ødeleggende for produktiviteten."
 
 #: fifteen/fifteen.c:364
 msgid "Can't create fifteen applet!"
@@ -943,7 +946,7 @@ msgstr "Legg til"
 
 #: gkb-new/prop-list.c:379 webcontrol/properties.c:582
 msgid "Edit"
-msgstr "Redigér"
+msgstr "Rediger"
 
 #: gkb-new/prop-list.c:380
 msgid "Up"
@@ -1247,7 +1250,7 @@ msgstr "ibm"
 
 #: gkb-new/prop-map.c:552
 msgid "Edit keymap"
-msgstr "Redigér tastaturkart"
+msgstr "Rediger tastaturkart"
 
 #. Add the labels
 #: gkb-new/prop-map.c:580 tickastat/mod_news.c:1203
@@ -1501,7 +1504,7 @@ msgstr "GNOME Værmelding"
 msgid "Location:"
 msgstr "Plassering:"
 
-#: gweather/gweather-dialog.c:132 gweather/gweather-pref.c:490
+#: gweather/gweather-dialog.c:132
 msgid "Update:"
 msgstr "Oppdater:"
 
@@ -1575,7 +1578,7 @@ msgstr ""
 "tilgjengelig \n"
 "for byer i USA."
 
-#: gweather/gweather-pref.c:134
+#: gweather/gweather-pref.c:135
 msgid ""
 "Invalid location chosen!\n"
 "Properties remain unchanged."
@@ -1583,7 +1586,7 @@ msgstr ""
 "Ugyldig sted valgt!\n"
 "Egenskapene forblir uendret."
 
-#: gweather/gweather-pref.c:140
+#: gweather/gweather-pref.c:141
 msgid ""
 "Proxy URL is not of the form http://host:port/\n"
 "Properties remain unchanged."
@@ -1591,35 +1594,35 @@ msgstr ""
 "Proxy-URL er ikke av formen http://vert:port/\n"
 "Egenskapene forblir uendret."
 
-#: gweather/gweather-pref.c:199
+#: gweather/gweather-pref.c:200
 msgid "Regions"
 msgstr "Regioner"
 
-#: gweather/gweather-pref.c:313
+#: gweather/gweather-pref.c:317
 msgid "GNOME Weather Properties"
 msgstr "Egenskaper for GNOME værmelding"
 
-#: gweather/gweather-pref.c:352
+#: gweather/gweather-pref.c:356
 msgid "Location"
 msgstr "Plassering"
 
-#: gweather/gweather-pref.c:372
+#: gweather/gweather-pref.c:376
 msgid "Use proxy"
 msgstr "Bruk proxy"
 
-#: gweather/gweather-pref.c:376
+#: gweather/gweather-pref.c:380
 msgid "Proxy host:"
 msgstr "Proxy-vert:"
 
-#: gweather/gweather-pref.c:390
+#: gweather/gweather-pref.c:394
 msgid "Username:"
 msgstr "Brukernavn:"
 
-#: gweather/gweather-pref.c:404
+#: gweather/gweather-pref.c:408
 msgid "Password:"
 msgstr "Passord:"
 
-#: gweather/gweather-pref.c:419
+#: gweather/gweather-pref.c:423
 msgid ""
 "Warning: Your password will be saved as\n"
 "unencrypted text in a private configuration\n"
@@ -1628,29 +1631,42 @@ msgstr ""
 "Advarsel: Ditt passord vil bli lagret som\n"
 "klartekst i en privat konfigurasjonsfil."
 
-#: gweather/gweather-pref.c:427
+#: gweather/gweather-pref.c:431
 msgid "Network"
 msgstr "Nettverk"
 
-#: gweather/gweather-pref.c:472
-msgid "Update enabled"
-msgstr "Oppdatering aktiv"
+#: gweather/gweather-pref.c:456
+msgid "Automatically update every"
+msgstr "Automatisk oppdatering hver(t)"
 
-#: gweather/gweather-pref.c:476
-msgid "Use metric"
-msgstr "Bruk utgangsverdi"
+#: gweather/gweather-pref.c:460
+msgid "Use metric system units"
+msgstr "Bruk metriske måleenheter"
+
+#: gweather/gweather-pref.c:464
+msgid "Enable detailed forecast"
+msgstr "Slå på detaljert melding"
+
+#: gweather/gweather-pref.c:469
+msgid "Enable radar map"
+msgstr "Slå på radarkart"
+
+#: gweather/gweather-pref.c:474
+msgid "Updates"
+msgstr "Oppdateringer"
 
 #: gweather/gweather-pref.c:480
-msgid "Detailed forecast"
-msgstr "Detaljert melding"
+msgid "Autmatically update every "
+msgstr "Oppdater automatisk hver(t) "
 
-#: gweather/gweather-pref.c:485
-msgid "Enable radar maps"
-msgstr "Aktiver radarkart"
+#: gweather/gweather-pref.c:498
+msgid "minute(s)"
+msgstr "minutt"
 
-#: gweather/gweather-pref.c:512
-msgid "(sec)"
-msgstr "(sek)"
+#. The Miscellaneous frame
+#: gweather/gweather-pref.c:509
+msgid "Miscellaneous"
+msgstr "Forskjellig"
 
 #: gweather/weather.c:110
 msgid "Location vector needs to be 4 elements long"
@@ -3647,8 +3663,8 @@ msgid ""
 "jpg, jpeg, bmp, cgm, cmyk, dib, eps, fig, fpx, gif, ico, map, miff, pcx,\n"
 "pict, pix, png, pnm, ppm, psd, rgb, rgba, rla, rle, tiff, tga, xbm, xpm,\n"
 "and several obscure ones. Try your luck with something interesting!\n"
-"Eg .html for a client-side image map. You'll get a .gif, .html, and a "
-".shtml\n"
+"Eg .html for a client-side image map. You'll get a .gif, .html, and a ."
+"shtml\n"
 "\n"
 "Recommendations:\n"
 "Small file, pretty good quality:   jpg, 75% quality\n"
@@ -3713,8 +3729,8 @@ msgid ""
 "cherish\n"
 "speed and don't mind imperfection in your thumbnails."
 msgstr ""
-"(Dette vil bruke mye prosessorkraft, men vil forhindre at bildet komprimeres "
-"\n"
+"(Dette vil bruke mye prosessorkraft, men vil forhindre at bildet "
+"komprimeres \n"
 "to ganger hvis du bruker et format som taper data)\n"
 "Ikke bruk dette alternativet hvis du bruker et tapsfritt kompresjonsformat, "
 "eller hvis du setter pris på \n"
@@ -4776,7 +4792,7 @@ msgstr "  -n, --noX     tillat kjøring med X-tjener\n"
 
 #: webcontrol/properties.c:244
 msgid "Configure Browser"
-msgstr "Konfigurér nettleser"
+msgstr "Konfigurer nettleser"
 
 #: webcontrol/properties.c:252
 msgid "Browser Name:"
@@ -4855,3 +4871,9 @@ msgstr "Tøm"
 #: webcontrol/properties.c:655
 msgid "all entries in URL history"
 msgstr "alle oppføringer i URL-historikken"
+
+#~ msgid "Update enabled"
+#~ msgstr "Oppdatering aktiv"
+
+#~ msgid "(sec)"
+#~ msgstr "(sek)"
