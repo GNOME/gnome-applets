@@ -474,6 +474,10 @@ init_quicklaunch (void)
 int 
 main (int argc, char *argv[])
 {
+
+	bindtextdomain (PACKAGE, GNOMELOCALEDIR);
+	textdomain (PACKAGE);
+
 	applet_widget_init ("quicklaunch_applet", VERSION,
 			    argc, argv, NULL, 0, NULL);
 	init_quicklaunch ();
