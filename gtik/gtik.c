@@ -1804,10 +1804,13 @@ static gint updateOutput(gpointer data)
 			   guint a, gpointer data) {
 		StockData *stockdata = data;
 		PanelApplet *applet = PANEL_APPLET (stockdata->applet);
+		guint8 red, gr, bl;
 		
 		if (stockdata->props.ucolor)
 			g_free (stockdata->props.ucolor);
-		stockdata->props.ucolor = g_strdup_printf ("#%02x%02x%02x", r, g, b );
+		
+		gnome_color_picker_get_i8 (GNOME_COLOR_PICKER(cp), &red, &gr, &bl, NULL);
+		stockdata->props.ucolor = g_strdup_printf("#%06X", (red << 16) + (gr << 8) + bl);
 		panel_applet_gconf_set_string (applet, "ucolor", 
 					       stockdata->props.ucolor, NULL);
 		
@@ -1820,10 +1823,12 @@ static gint updateOutput(gpointer data)
 			   guint a, gpointer data) {
 		StockData *stockdata = data;
 		PanelApplet *applet = PANEL_APPLET (stockdata->applet);
+		guint8 red, gr, bl;
 		
 		if (stockdata->props.dcolor)
 			g_free (stockdata->props.dcolor);
-		stockdata->props.dcolor = g_strdup_printf ("#%02x%02x%02x", r, g, b );
+		gnome_color_picker_get_i8 (GNOME_COLOR_PICKER(cp), &red, &gr, &bl, NULL);
+		stockdata->props.dcolor = g_strdup_printf("#%06X", (red << 16) + (gr << 8) + bl);
 		panel_applet_gconf_set_string (applet, "dcolor", 
 					       stockdata->props.dcolor, NULL);
 		
