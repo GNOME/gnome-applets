@@ -113,7 +113,7 @@ cpufreq_parse_procfs (CPUFreqApplet *applet, gint *cpu, gint *fmax,
 	   gchar            *uri, *file;
 	   gchar            **lines;
 	   gchar             buffer[256];
-	   gint              i;
+	   gint              i, count;
 
 	   g_return_val_if_fail (PANEL_IS_APPLET (PANEL_APPLET (applet)), FALSE);
 
@@ -147,8 +147,8 @@ cpufreq_parse_procfs (CPUFreqApplet *applet, gint *cpu, gint *fmax,
 	   for (i=0; lines[i]; i++) {
 			 if (g_ascii_strncasecmp (lines[i], "CPU", 3) == 0) {
 				    /* CPU  0       650000 kHz ( 81 %)  -     800000 kHz (100 %)  -  powersave */
-				    sscanf (lines[i], "CPU %d %d kHz (%d %%) - %d kHz (%d %%) - %20s",
-						  cpu, fmin, pmin, fmax, pmax, mode);
+				    count = sscanf (lines[i], "CPU %d %d kHz (%d %%) - %d kHz (%d %%) - %20s",
+								cpu, fmin, pmin, fmax, pmax, mode);
 
 				    if ((*cpu) == applet->cpu)
 						  break;
@@ -158,7 +158,7 @@ cpufreq_parse_procfs (CPUFreqApplet *applet, gint *cpu, gint *fmax,
 	   g_strfreev (lines);
 	   g_free (file);
 
-	   if (i < 1) {
+	   if (count != 6) {
 			 /* /proc/cpufreq contains only the header */
 			 applet->iface = IFACE_CPUINFO;
 			 cpufreq_applet_run (applet);
