@@ -49,17 +49,6 @@ static const BonoboUIVerb mini_commander_menu_verbs[] = {
         BONOBO_UI_VERB_END
 };
 
-static const char mini_commander_menu_xml[] =
-        "<popup name=\"button3\">\n"
-        "   <menuitem name=\"Item 1\" verb=\"Props\" _label=\"Properties\"\n"
-        "             pixtype=\"stock\" pixname=\"gtk-properties\"/>\n"
-        "   <menuitem name=\"Item 2\" verb=\"Help\" _label=\"Help\"\n"
-        "             pixtype=\"stock\" pixname=\"gtk-help\"/>\n"
-        "   <menuitem name=\"Item 3\" verb=\"About\" _label=\"About\"\n"
-        "             pixtype=\"stock\" pixname=\"gnome-stock-about\"/>\n"
-        "</popup>\n";
-
-
 static gint
 applet_destroy_signal(GtkWidget *widget, gpointer data)
 {
@@ -408,8 +397,10 @@ mini_commander_applet_fill(PanelApplet *applet)
     
     redraw_applet(applet);
 
-    panel_applet_setup_menu(PANEL_APPLET(applet),
-			    mini_commander_menu_xml,
+    panel_applet_setup_menu_from_file (applet,
+			    NULL, /* opt. datadir */
+			    "GNOME_MiniCommanderApplet.xml",
+			    NULL,
 			    mini_commander_menu_verbs,
 			    applet);
       
