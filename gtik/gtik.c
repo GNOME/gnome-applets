@@ -95,12 +95,7 @@
 		/*  properties vars */
  	 
 		GtkWidget *tik_syms_entry;
-		GtkWidget *proxy_url_entry;
-		GtkWidget *proxy_port_entry;
-		GtkWidget *proxy_user_entry;
-		GtkWidget *proxy_passwd_entry;
-		GtkWidget *proxy_auth_button;
-
+		
 		GtkWidget *fontDialog;
 
 		GtkWidget * pb;
@@ -786,11 +781,6 @@ static gint updateOutput(gpointer data)
 	}
 
 	/*-----------------------------------------------------------------*/
-	static void changed_cb(GnomePropertyBox * pb, gpointer data) {
-		gnome_property_box_changed(GNOME_PROPERTY_BOX(pb));
-	}
-
-	/*-----------------------------------------------------------------*/
 
 	static void selected_cb(GtkCList *clist,gint row, gint column, 
 				GdkEventButton *event, gpointer data) {
@@ -862,112 +852,7 @@ static gint updateOutput(gpointer data)
 			gtk_widget_hide(stockdata->rightButton);
 		}
 					     
-	}
-	
-	static void
-	proxy_toggled (GtkToggleButton *button, gpointer data)
-	{
-		StockData *stockdata = data;
-    		GConfClient *client = gconf_client_get_default ();
-    		gboolean toggled;	
-	
-    		toggled = gtk_toggle_button_get_active(button);
-    		gtk_widget_set_sensitive(stockdata->proxy_url_entry, toggled);
-    		gtk_widget_set_sensitive(stockdata->proxy_user_entry, toggled);
-    		gtk_widget_set_sensitive(stockdata->proxy_port_entry, toggled);
-    		gtk_widget_set_sensitive(stockdata->proxy_passwd_entry, toggled);
-    		gtk_widget_set_sensitive(stockdata->proxy_auth_button, toggled);
-
-    		gconf_client_set_bool (client, "/system/gnome-vfs/use-http-proxy", 
-    			   toggled, NULL);		
 	}	
-
-	static gboolean
-	proxy_port_changed (GtkWidget *entry, GdkEventFocus *event, gpointer data)
-	{
-    		GConfClient *client = gconf_client_get_default ();
-    		gchar *text;
-    		gint port;
-
-    		text = gtk_editable_get_chars (GTK_EDITABLE (entry), 0, -1);
-    
-    		if (!text) 
-    			return FALSE;
-    		port = atoi (text);
-    		g_free (text);
-    
-    		gconf_client_set_int (client, "/system/gnome-vfs/http-proxy-port", 
-    			  port, NULL);
-    		
-    		return FALSE;
-
-	}
-
-	static void
-	proxy_auth_toggled (GtkToggleButton *button, gpointer data)
-	{
-    		GConfClient *client = gconf_client_get_default ();
-    		gboolean toggled;
-	
-    		toggled = gtk_toggle_button_get_active(button);
-    		gconf_client_set_bool (client, "/system/gnome-vfs/use-http-proxy-authorization", 
-    			   toggled, NULL);
-	}
-
-	static gboolean
-	proxy_url_changed (GtkWidget *entry, GdkEventFocus *event, gpointer data)
-	{
-    		GConfClient *client = gconf_client_get_default ();
-    		gchar *text;
-
-    		text = gtk_editable_get_chars (GTK_EDITABLE (entry), 0, -1);
-    
-    		if (!text) 
-    			return FALSE;
-    
-    		gconf_client_set_string (client, "/system/gnome-vfs/http-proxy-host", 
-    			     text, NULL);
-    		g_free (text);
-    		
-    		return FALSE;	
-	}
-
-	static gboolean
-	proxy_user_changed (GtkWidget *entry, GdkEventFocus *event, gpointer data)
-	{
-    		GConfClient *client = gconf_client_get_default ();
-    		gchar *text;
-   
-    		text = gtk_editable_get_chars (GTK_EDITABLE (entry), 0, -1);
-    
-    		if (!text)
-   			return FALSE;
-
-    		gconf_client_set_string (client, "/system/gnome-vfs/http-proxy-authorization-user", 
-    			     text, NULL); 
-    		g_free (text);
-    		
-    		return FALSE;
-
-	}
-	
-	static gboolean
-	proxy_password_changed (GtkWidget *entry, GdkEventFocus *event, gpointer data)
-	{
-    		GConfClient *client = gconf_client_get_default ();
-    		gchar *text;
-   
-    		text = gtk_editable_get_chars (GTK_EDITABLE (entry), 0, -1);
-    
-    		if (!text)
-   			return FALSE;
-
-    		gconf_client_set_string (client, "/system/gnome-vfs/http-proxy-authorization-password", 
-    			     text, NULL);
-    		g_free (text);
-    		
-    		return FALSE;
-	}
 	
 	static void
 	add_symbol (GtkEntry *entry, gpointer data)
@@ -1202,9 +1087,6 @@ static gint updateOutput(gpointer data)
   		
 		stockdata->tik_syms_entry = list;
 		
-		/*gtk_signal_connect_object(GTK_OBJECT(clist),"drag_drop",
-				GTK_SIGNAL_FUNC(changed_cb),GTK_OBJECT(stockdata->pb));*/
-
 		swindow = gtk_scrolled_window_new(NULL,NULL);
 		gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(swindow),
 						GTK_POLICY_AUTOMATIC,
@@ -1255,140 +1137,6 @@ static gint updateOutput(gpointer data)
 		return(mainhbox);
 
 	}
-	
-	static GtkWidget *
-	create_proxy_box (StockData *stockdata)
-	{
-		GtkWidget *vbox;
-		GtkWidget *hbox, *button, *label;
-		GConfClient *client = gconf_client_get_default ();
-		gboolean use_proxy, use_proxy_auth;
-    		gint proxy_port;
-    		gchar *string;
-    		gchar *proxy_url, *proxy_user, *proxy_psswd;
-		
-		use_proxy = 
-    			gconf_client_get_bool (client, 
-    					       "/system/gnome-vfs/use-http-proxy", 
-    					       NULL);
-    		use_proxy_auth = gconf_client_get_bool (client, 
-    			"/system/gnome-vfs/use-http-proxy-authorization", 
-    			NULL);
-    		proxy_url = gconf_client_get_string (client, 
-    			"/system/gnome-vfs/http-proxy-host", NULL);
-    		proxy_user = gconf_client_get_string (client, 
-    		 	"/system/gnome-vfs/http-proxy-authorization-user", NULL);
-    		proxy_psswd = gconf_client_get_string (client, 
-    		 	"/system/gnome-vfs/http-proxy-authorization-password", NULL);
-    		proxy_port = gconf_client_get_int (client, 
-    		 	"/system/gnome-vfs/http-proxy-port", NULL);
-		
-		vbox = gtk_vbox_new (FALSE, 4);
-		gtk_container_set_border_width (GTK_CONTAINER (vbox), 8);
-		
-		button = gtk_check_button_new_with_mnemonic (_("_Use HTTP proxy"));
-    		gtk_box_pack_start (GTK_BOX (vbox), button, 
-    				    FALSE, FALSE, 0);
-    		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), use_proxy);
-   		g_signal_connect (G_OBJECT (button), "toggled",
-    		       		  G_CALLBACK (proxy_toggled), stockdata);
-
-    		hbox = gtk_hbox_new (FALSE, 2);
-    		gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, FALSE, 0);
-    
-    		label = gtk_label_new_with_mnemonic (_("_Location :"));
-    		gtk_box_pack_start (GTK_BOX (hbox), label, 
-    			    FALSE, FALSE, 0);
-    
-    		stockdata->proxy_url_entry = gtk_entry_new ();
-    		gtk_widget_show (stockdata->proxy_url_entry);
-    		gtk_box_pack_start (GTK_BOX (hbox), stockdata->proxy_url_entry, 
-    			    FALSE, FALSE, 0);
-    		g_signal_connect (G_OBJECT (stockdata->proxy_url_entry), "focus_out_event",
-    		          G_CALLBACK (proxy_url_changed), stockdata);
-
-    		set_relation (stockdata->proxy_url_entry, GTK_LABEL (label));
-
-    		hbox = gtk_hbox_new (FALSE, 2);
-    		gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, FALSE, 0);
-    
-    		label = gtk_label_new_with_mnemonic (_("P_ort :"));
-    		gtk_widget_show (label);
-    		gtk_box_pack_start (GTK_BOX (hbox), label, 
-    			    FALSE, FALSE, 0);
-    			
-    		stockdata->proxy_port_entry = gtk_entry_new ();
-    		gtk_box_pack_start (GTK_BOX (hbox), stockdata->proxy_port_entry, 
-    				    FALSE, FALSE, 0);
-    		g_signal_connect (G_OBJECT (stockdata->proxy_port_entry), "focus_out_event",
-    		          G_CALLBACK (proxy_port_changed), stockdata);
-    		set_relation (stockdata->proxy_port_entry, GTK_LABEL (label));
-    		
-    		stockdata->proxy_auth_button = gtk_check_button_new_with_mnemonic (_("Pro_xy requires a username and password"));
-    		gtk_box_pack_start (GTK_BOX (vbox), stockdata->proxy_auth_button, 
-    				    FALSE, FALSE, 0);
-    		gtk_toggle_button_set_active 
-    			(GTK_TOGGLE_BUTTON (stockdata->proxy_auth_button), use_proxy_auth);
-        	g_signal_connect (G_OBJECT (stockdata->proxy_auth_button), "toggled",
-    		       G_CALLBACK (proxy_auth_toggled), stockdata);
-    		       
-    		hbox = gtk_hbox_new (FALSE, 2);
-    		gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, FALSE, 0);
-    
-    		label = gtk_label_new_with_mnemonic (_("Us_ername:"));
-    		gtk_box_pack_start (GTK_BOX (hbox), label, 
-    			    FALSE, FALSE, 0);
-    
-    		stockdata->proxy_user_entry = gtk_entry_new ();
-    		gtk_box_pack_start (GTK_BOX (hbox), stockdata->proxy_user_entry, 
-    			    FALSE, FALSE, 0);
-    		g_signal_connect (G_OBJECT (stockdata->proxy_user_entry), "focus_out_event",
-    		          G_CALLBACK (proxy_user_changed), stockdata);
-
-    		set_relation (stockdata->proxy_user_entry, GTK_LABEL (label));
-
-    		hbox = gtk_hbox_new (FALSE, 2);
-    		gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, FALSE, 0);
-    
-    		label = gtk_label_new_with_mnemonic (_("Pass_word:"));
-    		gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
-
-    		stockdata->proxy_passwd_entry = gtk_entry_new ();
-    		gtk_entry_set_visibility (GTK_ENTRY (stockdata->proxy_passwd_entry), FALSE);
-    		gtk_box_pack_start (GTK_BOX (hbox), stockdata->proxy_passwd_entry, 
-    			    FALSE, FALSE, 0);
-    		g_signal_connect (G_OBJECT (stockdata->proxy_passwd_entry), 
-    			          "focus_out_event",
-    		                  G_CALLBACK (proxy_password_changed), stockdata);
-
-    		set_relation (stockdata->proxy_passwd_entry, GTK_LABEL (label));
-    		 	
-    		gtk_entry_set_text(GTK_ENTRY(stockdata->proxy_url_entry), 
-    		       proxy_url ? 
-    		       proxy_url : "");
-    		gtk_entry_set_text(GTK_ENTRY(stockdata->proxy_passwd_entry), 
-    		       proxy_psswd ? 
-    		       proxy_psswd : "");
-    		gtk_entry_set_text(GTK_ENTRY(stockdata->proxy_user_entry), 
-    		       proxy_user ? 
-    		       proxy_user : "");
-    		string = g_strdup_printf ("%d", proxy_port);
-    		gtk_entry_set_text(GTK_ENTRY(stockdata->proxy_port_entry), string);
-    		g_free (string); 
-    		
-    		gtk_widget_set_sensitive (stockdata->proxy_auth_button, use_proxy);
-    		gtk_widget_set_sensitive (stockdata->proxy_url_entry, use_proxy);
-    		gtk_widget_set_sensitive (stockdata->proxy_port_entry, use_proxy);
-    		gtk_widget_set_sensitive (stockdata->proxy_passwd_entry, use_proxy);
-    		gtk_widget_set_sensitive (stockdata->proxy_user_entry, use_proxy);
-    		
-    		g_free (proxy_url);
-    		g_free (proxy_psswd);
-    		g_free (proxy_user);
-    			
-		gtk_widget_show_all (vbox);
-		return vbox;
-	} 
 	
 	static void
 	response_cb (GtkDialog *dialog, gint id, gpointer data)
@@ -1471,10 +1219,7 @@ static gint updateOutput(gpointer data)
 
 		gtk_entry_set_text(GTK_ENTRY(stockdata->tik_syms_entry), 
 			stockdata->props.tik_syms ? stockdata->props.tik_syms : "");
-		gtk_signal_connect_object(GTK_OBJECT(stockdata->tik_syms_entry), 
-					  "changed",GTK_SIGNAL_FUNC(changed_cb),
-					  GTK_OBJECT(stockdata->pb));
-
+		
 		check = gtk_check_button_new_with_mnemonic(_("Displa_y only symbols and price"));
 		g_signal_connect (G_OBJECT (check), "toggled",
 				  G_CALLBACK (output_toggled), stockdata);
@@ -1606,10 +1351,7 @@ static gint updateOutput(gpointer data)
 		gtk_notebook_append_page (GTK_NOTEBOOK (notebook), vbox, label);
 		label = gtk_label_new_with_mnemonic (_("_Appearance"));
 		gtk_notebook_append_page (GTK_NOTEBOOK (notebook), vbox2, label);
-		label = gtk_label_new_with_mnemonic (_("_Proxy"));
-		vbox4 = create_proxy_box (stockdata);
-		gtk_notebook_append_page (GTK_NOTEBOOK (notebook), vbox4, label);
-
+		
 		gtk_widget_show_all(stockdata->pb);
 		
 		g_signal_connect (G_OBJECT (stockdata->pb), "response",
