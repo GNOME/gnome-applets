@@ -194,7 +194,9 @@ timer_cb (EyesApplet *eyes_applet)
 }
 
 static void
-about_cb (BonoboUIComponent *uic, gpointer user_data, const gchar *verbname)
+about_cb (BonoboUIComponent *uic,
+	  EyesApplet        *eyes_applet,
+	  const gchar       *verbname)
 {
 	static GtkWidget *about = NULL;
 	GdkPixbuf	 *pixbuf;
@@ -212,9 +214,8 @@ about_cb (BonoboUIComponent *uic, gpointer user_data, const gchar *verbname)
 
 	const gchar *translator_credits = _("translator_credits");
 
-	if (about != NULL) {
-		gdk_window_show  (about->window);
-		gdk_window_raise (about->window);
+	if (about) {
+		gtk_window_present (GTK_WINDOW (about));
 		return;
 	}
         
@@ -353,7 +354,9 @@ destroy_cb (GtkObject *object, EyesApplet *eyes_applet)
 }
 
 static void
-help_cb (BonoboUIComponent *uic, gpointer user_data, const gchar *verbname)
+help_cb (BonoboUIComponent *uic,
+	 EyesApplet        *eyes_applet,
+	 const char        *verbname)
 {
 	GError *error = NULL;
 	gnome_help_display("geyes",NULL,&error);
@@ -367,9 +370,9 @@ help_cb (BonoboUIComponent *uic, gpointer user_data, const gchar *verbname)
 
 
 static const BonoboUIVerb geyes_applet_menu_verbs [] = {
-        BONOBO_UI_VERB ("Props", properties_cb),
-        BONOBO_UI_VERB ("Help", help_cb),
-        BONOBO_UI_VERB ("About", about_cb),
+        BONOBO_UI_UNSAFE_VERB ("Props", properties_cb),
+        BONOBO_UI_UNSAFE_VERB ("Help", help_cb),
+        BONOBO_UI_UNSAFE_VERB ("About", about_cb),
 
         BONOBO_UI_VERB_END
 };

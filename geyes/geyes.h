@@ -71,7 +71,7 @@ void load_theme    (EyesApplet        *eyes_applet,
 		    const gchar       *theme_dir);
 
 void properties_cb (BonoboUIComponent *uic,
-		    gpointer           user_data,
+		    EyesApplet        *eyes_applet,
 		    const gchar       *verbname);
 
 #endif
