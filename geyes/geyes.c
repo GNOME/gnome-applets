@@ -297,8 +297,30 @@ create_eyes (PanelApplet *applet)
 static void
 destroy_cb (GtkObject *object, EyesApplet *eyes_applet)
 {
-	g_warning ("destroy eyes control!");
+	g_return_if_fail (eyes_applet);
+	
 	gtk_timeout_remove (eyes_applet->timeout_id);
+	eyes_applet->timeout_id = 0;
+	if (eyes_applet->eye_image)
+		g_object_unref (eyes_applet->eye_image);
+	eyes_applet->eye_image = NULL;
+	if (eyes_applet->pupil_image)
+		g_object_unref (eyes_applet->pupil_image);
+	eyes_applet->pupil_image = NULL;
+	if (eyes_applet->theme_dir)
+		g_free (eyes_applet->theme_dir);
+	eyes_applet->theme_dir = NULL;
+	if (eyes_applet->theme_name)
+		g_free (eyes_applet->theme_name);
+	eyes_applet->theme_name = NULL;
+	if (eyes_applet->eye_filename)
+		g_free (eyes_applet->eye_filename);
+	eyes_applet->eye_filename = NULL;
+	if (eyes_applet->pupil_filename)
+		g_free (eyes_applet->pupil_filename);
+	eyes_applet->pupil_filename = NULL;
+	
+	g_free (eyes_applet);
 }
 
 static void

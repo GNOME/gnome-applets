@@ -94,10 +94,14 @@ load_theme (EyesApplet *eyes_applet, const gchar *theme_dir)
         
         parse_theme_file (eyes_applet, theme_file);
         fclose (theme_file);
-        
+
         eyes_applet->theme_name = g_strdup (theme_dir);
-        
+       
+        if (eyes_applet->eye_image)
+        	g_object_unref (eyes_applet->eye_image);
         eyes_applet->eye_image = gdk_pixbuf_new_from_file (eyes_applet->eye_filename, NULL);
+        if (eyes_applet->pupil_image)
+        	g_object_unref (eyes_applet->pupil_image);
         eyes_applet->pupil_image = gdk_pixbuf_new_from_file (eyes_applet->pupil_filename, NULL);
 
 	eyes_applet->eye_height = gdk_pixbuf_get_height (eyes_applet->eye_image);
