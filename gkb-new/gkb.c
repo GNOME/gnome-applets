@@ -146,14 +146,14 @@ loadprop (GKB * gkb, int i)
 
   Prop *actdata = g_new (Prop, 1);
 
-  g_snprintf (buf, 256, "map_%d/name=Hu", i);
+  g_snprintf (buf, 256, "map_%d/name=Us", i);
   actdata->name = gnome_config_get_string (buf);
 
   g_snprintf (buf, 256, "map_%d/image=%s", i,
-	      gnome_unconditional_pixmap_file ("gkb/hu.png"));
+	      gnome_unconditional_pixmap_file ("gkb/us.png"));
   actdata->iconpath = gnome_config_get_string (buf);
 
-  g_snprintf (buf, 256, "map_%d/command=setxkbmap hu2", i);
+  g_snprintf (buf, 256, "map_%d/command=setxkbmap us", i);
   actdata->command = gnome_config_get_string (buf);
 
   actdata->pix = NULL;
