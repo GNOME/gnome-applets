@@ -1,3 +1,23 @@
+2002-03-02  Kevin Vandersloot <kfv101@psu.edu>
+
+	* src/*.c: remove a lot of global variables. Fixes bug
+	#72169
+
+	* Makefile.am: hey, zvt is not even used anymore for this
+	applet so don't link to it
+
+	* preferences.c: remove the clock/data options since they
+	are dumb
+
+	* mini-commander_applet.c: make buttons horizontal when
+	size is really small so they don't get scrunched
+
+	* command_line.c: fix the color changing when the panel gets
+	focus
+
+	* message.c: #ifdef all the stuff here since it shouldn't
+	be used
+
 2002-02-21  Kevin Vandersloot <kfv101@psu.edu>
 
 	* src/command_line.c: fix file selection crash #71666. Also
