@@ -64,7 +64,7 @@ properties_load(DriveData *dd)
 		}
 		dd->interval = MAX (dd->interval, 1);
 		dd->device_pixmap = panel_applet_gconf_get_int(PANEL_APPLET(dd->applet), "pixmap", NULL);
-		dd->device_pixmap = CLAMP (dd->device_pixmap, 0, 6);
+		dd->device_pixmap =MIN (dd->device_pixmap, 5);
 		dd->scale_applet = panel_applet_gconf_get_bool(PANEL_APPLET(dd->applet), "scale", NULL);
 		dd->auto_eject = panel_applet_gconf_get_bool(PANEL_APPLET(dd->applet), "auto_eject", NULL);
 		dd->mount_point = panel_applet_gconf_get_string(PANEL_APPLET(dd->applet), "mount_point", NULL);
@@ -181,10 +181,10 @@ omenu_changed (GtkOptionMenu *menu, gpointer data)
 	
 	num = gtk_option_menu_get_history (menu);
 	dd->device_pixmap = num < 6 ? num : -1;
-
-	redraw_pixmap(dd);
 	panel_applet_gconf_set_int(PANEL_APPLET(dd->applet), "pixmap", 
 				   dd->device_pixmap, NULL);
+	redraw_pixmap(dd);
+	
 }
 	
 static void
