@@ -106,7 +106,7 @@ gnome_volume_applet_preferences_init (GnomeVolumeAppletPreferences *prefs)
   GtkTreeViewColumn *col;
   GtkCellRenderer *render;
 
-  prefs->client = NULL;
+  prefs->applet = NULL;
   prefs->mixer = NULL;
 
   /* make window look cute */
@@ -178,7 +178,7 @@ gnome_volume_applet_preferences_init (GnomeVolumeAppletPreferences *prefs)
 }
 
 GtkWidget *
-gnome_volume_applet_preferences_new (GConfClient *client,
+gnome_volume_applet_preferences_new (PanelApplet *applet,
 				     GList       *elements,
 				     GstMixer    *mixer,
 				     GstMixerTrack *track)
@@ -187,7 +187,7 @@ gnome_volume_applet_preferences_new (GConfClient *client,
 
   /* element */
   prefs = g_object_new (GNOME_VOLUME_APPLET_TYPE_PREFERENCES, NULL);
-  prefs->client = g_object_ref (G_OBJECT (client));
+  prefs->applet = g_object_ref (G_OBJECT (applet));
 
   /* show devices */
   for ( ; elements != NULL; elements = elements->next) {
@@ -206,9 +206,9 @@ gnome_volume_applet_preferences_dispose (GObject *object)
 {
   GnomeVolumeAppletPreferences *prefs = GNOME_VOLUME_APPLET_PREFERENCES (object);
 
-  if (prefs->client) {
-    g_object_unref (G_OBJECT (prefs->client));
-    prefs->client = NULL;
+  if (prefs->applet) {
+    g_object_unref (G_OBJECT (prefs->applet));
+    prefs->applet = NULL;
   }
 
   if (prefs->mixer) {
@@ -336,7 +336,7 @@ cb_dev_selected (GtkComboBox *box,
     /* write to gconf */
     value = gconf_value_new (GCONF_VALUE_STRING);
     gconf_value_set_string (value, label);
-    gconf_client_set (prefs->client,
+    panel_applet_gconf_set_value (PANEL_APPLET (prefs->applet),
 		      GNOME_VOLUME_APPLET_KEY_ACTIVE_ELEMENT,
 		      value, NULL);
     gconf_value_free (value);
@@ -362,7 +362,7 @@ cb_track_select (GtkTreeSelection *selection,
   /* write to gconf */
   value = gconf_value_new (GCONF_VALUE_STRING);
   gconf_value_set_string (value, label);
-  gconf_client_set (prefs->client,
+  panel_applet_gconf_set_value (PANEL_APPLET (prefs->applet),
 		    GNOME_VOLUME_APPLET_KEY_ACTIVE_TRACK,
 		    value, NULL);
   gconf_value_free (value);

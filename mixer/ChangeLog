@@ -1,3 +1,16 @@
+2005-01-22  Ronald S. Bultje  <rbultje@ronald.bitfreak.net>
+
+	* applet.c: (gnome_volume_applet_init),
+	(gnome_volume_applet_setup), (gnome_volume_applet_refresh),
+	(cb_gconf), (cb_verb):
+	* keys.h:
+	* preferences.c: (gnome_volume_applet_preferences_init),
+	(gnome_volume_applet_preferences_new),
+	(gnome_volume_applet_preferences_dispose), (cb_dev_selected),
+	(cb_track_select):
+	* preferences.h:
+	  Use panel_applet_gconf instead of gconf directly. Fixes #163743.
+
 2005-01-18  Carlos Garnacho Parro  <carlosg@gnome.org>
 
 	* applet.[ch]: handled panel size and icon theme changes, as well

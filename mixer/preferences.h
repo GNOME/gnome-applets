@@ -24,7 +24,8 @@
 
 #include <glib.h>
 #include <gtk/gtkdialog.h>
-#include <gconf/gconf-client.h>
+#include <panel-applet.h>
+#include <panel-applet-gconf.h>
 #include <gst/mixer/mixer.h>
 
 G_BEGIN_DECLS
@@ -51,8 +52,8 @@ typedef struct _GnomeVolumeAppletPreferences {
   /* current element that we're working on */
   GstMixer *mixer;
 
-  /* gconf client inherited from our parent */
-  GConfClient *client;
+  /* for gconf */
+  PanelApplet *applet;
 
   /* treeview inside us */
   GtkWidget *optionmenu, *treeview;
@@ -63,7 +64,7 @@ typedef struct _GnomeVolumeAppletPreferencesClass {
 } GnomeVolumeAppletPreferencesClass;
 
 GType	gnome_volume_applet_preferences_get_type (void);
-GtkWidget *gnome_volume_applet_preferences_new	(GConfClient *client,
+GtkWidget *gnome_volume_applet_preferences_new	(PanelApplet *applet,
 						 GList       *elements,
 						 GstMixer    *mixer,
 						 GstMixerTrack *track);

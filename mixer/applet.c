@@ -212,7 +212,7 @@ gnome_volume_applet_class_init (GnomeVolumeAppletClass *klass)
 static void
 gnome_volume_applet_init (GnomeVolumeApplet *applet)
 {
-  GtkWidget *image, *dock;
+  GtkWidget *image;
   GtkTooltips *tooltips;
 
   applet->timeout = 0;
@@ -274,6 +274,7 @@ gnome_volume_applet_setup (GnomeVolumeApplet *applet,
     BONOBO_UI_UNSAFE_VERB ("Pref",     cb_verb),
     BONOBO_UI_VERB_END
   };
+  gchar *key;
 
   /* default element to first */
   g_return_if_fail (elements != NULL);
@@ -282,7 +283,7 @@ gnome_volume_applet_setup (GnomeVolumeApplet *applet,
   applet->elements = elements;
 
   /* get active element, if any (otherwise we use the default) */
-  if ((value = gconf_client_get (applet->client,
+  if ((value = panel_applet_gconf_get_value (PANEL_APPLET (applet),
 				 GNOME_VOLUME_APPLET_KEY_ACTIVE_ELEMENT,
 				 NULL)) != NULL &&
       value->type == GCONF_VALUE_STRING) {
@@ -311,7 +312,7 @@ gnome_volume_applet_setup (GnomeVolumeApplet *applet,
    */
 
   /* get active track, if any (otherwise we use the default) */
-  if ((value = gconf_client_get (applet->client,
+  if ((value = panel_applet_gconf_get_value (PANEL_APPLET (applet),
 				 GNOME_VOLUME_APPLET_KEY_ACTIVE_TRACK,
 				 NULL)) != NULL &&
       value->type == GCONF_VALUE_STRING) {
@@ -363,10 +364,20 @@ gnome_volume_applet_setup (GnomeVolumeApplet *applet,
   g_signal_connect (component, "ui-event", G_CALLBACK (cb_ui_event), applet);
 
   /* gconf */
-  gconf_client_add_dir (applet->client, GNOME_VOLUME_APPLET_KEY_DIR,
+  key = panel_applet_gconf_get_full_key (PANEL_APPLET (applet),
+				GNOME_VOLUME_APPLET_KEY_ACTIVE_ELEMENT);
+#if 0
+  gconf_client_add_dir (applet->client, key,
 			GCONF_CLIENT_PRELOAD_RECURSIVE, NULL);
-  gconf_client_notify_add (applet->client, GNOME_VOLUME_APPLET_KEY_DIR,
+#endif
+  gconf_client_notify_add (applet->client, key,
 			   cb_gconf, applet, NULL, NULL);
+  g_free (key);
+  key = panel_applet_gconf_get_full_key (PANEL_APPLET (applet),
+                                GNOME_VOLUME_APPLET_KEY_ACTIVE_TRACK);
+  gconf_client_notify_add (applet->client, key,
+                           cb_gconf, applet, NULL, NULL);
+  g_free (key);
 
   gtk_widget_show (GTK_WIDGET (applet));
 }
@@ -823,7 +834,7 @@ cb_volume (GtkAdjustment *adj,
  * Automatic timer. Check for changes.
  */
 
-#define STATE(vol,m) ((vol << 1) | m != FALSE)
+#define STATE(vol,m) ((vol << 1) | (m ? 1 : 0))
 
 static void
 gnome_volume_applet_refresh (GnomeVolumeApplet *applet,
@@ -831,7 +842,6 @@ gnome_volume_applet_refresh (GnomeVolumeApplet *applet,
 {
   BonoboUIComponent *component;
   GdkPixbuf *pixbuf;
-  guint size;
   gint n, *volumes, volume = 0;
   gboolean mute;
 
@@ -900,16 +910,25 @@ cb_gconf (GConfClient *client,
 {
   GnomeVolumeApplet *applet = data;
   GConfValue *value;
-  const gchar *str;
+  const gchar *str, *key;
   const GList *item;
   GstMixerTrack *active_track = NULL;
   gboolean newdevice = FALSE;
+  gchar *keyroot;
+
+  keyroot = panel_applet_gconf_get_full_key (PANEL_APPLET (applet), "");
+  key = gconf_entry_get_key (entry);
+  if (strncmp (key, keyroot, strlen (keyroot))) {
+    g_free (keyroot);
+    return;
+  }
+  key += strlen (keyroot);
+  g_free (keyroot);
 
   if ((value = gconf_entry_get_value (entry)) != NULL &&
       (value->type == GCONF_VALUE_STRING) &&
       (str = gconf_value_get_string (value)) != NULL) {
-    if (!strcmp (gconf_entry_get_key (entry),
-		 GNOME_VOLUME_APPLET_KEY_ACTIVE_ELEMENT)) {
+    if (!strcmp (key, GNOME_VOLUME_APPLET_KEY_ACTIVE_ELEMENT)) {
       for (item = applet->elements; item != NULL; item = item->next) {
         gchar *cur_el_str = g_object_get_data (item->data,
 					       "gnome-volume-applet-name");
@@ -918,21 +937,23 @@ cb_gconf (GConfClient *client,
           GstElement *old_element = GST_ELEMENT (applet->mixer);
 
           /* change element */
-          gst_element_set_state (item->data, GST_STATE_READY);
+          if (gst_element_set_state (item->data,
+				GST_STATE_READY) != GST_STATE_SUCCESS)
+            continue;
           gst_object_replace ((GstObject **) &applet->mixer, item->data);
           gst_element_set_state (old_element, GST_STATE_NULL);
 
           newdevice = TRUE;
-          active_track = gst_mixer_list_tracks (applet->mixer)->data;
+          if (gst_mixer_list_tracks (applet->mixer)) {
+            active_track = gst_mixer_list_tracks (applet->mixer)->data;
+          }
           str = applet->track->label;
           break;
         }
       }
     }
 
-    if (!strcmp (gconf_entry_get_key (entry),
-		 GNOME_VOLUME_APPLET_KEY_ACTIVE_TRACK) ||
-        newdevice) {
+    if (!strcmp (key, GNOME_VOLUME_APPLET_KEY_ACTIVE_TRACK) || newdevice) {
       for (item = gst_mixer_list_tracks (applet->mixer);
            item != NULL; item = item->next) {
         GstMixerTrack *track = item->data;
@@ -1039,7 +1060,7 @@ cb_verb (BonoboUIComponent *uic,
     if (applet->prefs)
       return;
 
-    applet->prefs = gnome_volume_applet_preferences_new (applet->client,
+    applet->prefs = gnome_volume_applet_preferences_new (PANEL_APPLET (applet),
 							 applet->elements,
 							 applet->mixer,
 							 applet->track);
