@@ -1,6 +1,6 @@
 cpufreqselectordir = $(bindir)
 
-INCLUDES = -Wall $(CPUFREQ_SELECTOR_CFLAGS)
+INCLUDES = $(CPUFREQ_SELECTOR_CFLAGS)
 
 LDADD = $(CPUFREQ_SELECTOR_LIBS) -lpopt
 

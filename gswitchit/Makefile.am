@@ -21,10 +21,8 @@ if ENABLE_FLAGS
 endif
 
 COMMON_CFLAGS =				\
-	-Wall -Werror			\
 	-I$(top_srcdir)			\
 	-I.				\
-	-I$(top_srcdir)/intl		\
 	-DG_LOG_DOMAIN=\"GSwitchIt\"	\
 	-DGLADE_DIR=\""$(gladedir)"\"	\
 	$(LIBXKLAVIER_CFLAGS)		\

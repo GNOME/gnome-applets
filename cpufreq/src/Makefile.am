@@ -5,8 +5,6 @@ endif
 SUBDIRS = $(selector_SUBDIR)
 
 INCLUDES = \
-	-Wall							\
-	-I$(top_srcdir)/intl					\
 	$(GNOME_APPLETS_CFLAGS) 				\
 	$(GNOME_VFS_APPLETS_CFLAGS) 				\
 	$(LIBGLADE_CFLAGS)           				\
