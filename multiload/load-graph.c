@@ -763,7 +763,7 @@ load_graph_local_properties_init (GnomePropertyObject *object)
     RadioButtonCbData *cb_data;
 
     static const gchar *adj_data_texts [3] = {
-	N_("Speed:"), N_("Size:"), N_("Maximum:")
+	N_("Interval:"), N_("Size:"), N_("Maximum:")
     };
 
     static glong adj_data_descr [3*8] = {
