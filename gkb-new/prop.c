@@ -368,12 +368,8 @@ gkb_prop_create_hotkey_frame (GkbPropertyBoxInfo * pbi, GtkWidget * widget)
 static void
 prophelp_cb (GtkWidget *widget, gpointer data)
 {
-/* TODO:
-  GnomeHelpMenuEntry help_entry =
-    { "gkb_applet", "index.html#GKBAPPLET-PREFS" };
-
-  gnome_help_display (NULL, &help_entry);
-*/
+	GError *error = NULL;
+        gnome_help_display("gkb","gkbapplet-prefs",&error);
 }
 
 static void

@@ -412,11 +412,8 @@ about (BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 static void
 help_cb (BonoboUIComponent *uic, gpointer user_data, const gchar *verbname)
 {
-#ifdef FIXME
-        GnomeHelpMenuEntry help_entry = { "charpick_applet",
-                                          "index.html" };
-        gnome_help_display(NULL, &help_entry);
-#endif
+  GError *error = NULL;
+  gnome_help_display("char-palette",NULL,&error);
 }
 
 static void
@@ -567,7 +564,7 @@ charpicker_applet_factory (PanelApplet *applet,
 
 PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_CharpickerApplet_Factory",
 			     PANEL_TYPE_APPLET,
-			     "Inserts characters",
+			     "char-palette",
 			     "0",
 			     charpicker_applet_factory,
 			     NULL)

@@ -10,9 +10,7 @@
  *
  */
 
-#ifdef HAVE_CONFIG_H
 #  include <config.h>
-#endif
 
 #include <gnome.h>
 #include <panel-applet.h>
@@ -58,7 +56,7 @@ gweather_applet_factory(PanelApplet *applet,
 
 PANEL_APPLET_BONOBO_FACTORY("OAFIID:GNOME_GWeatherApplet_Factory",
 			PANEL_TYPE_APPLET,
-			"GWeather Applet Factory",
+			"gweather",
 			"0",
 			gweather_applet_factory,
 			NULL);

@@ -4,10 +4,8 @@ figs = \
 	figures/gkb_applet.png				\
 	figures/gkb_edit_keymap.png			\
 	figures/gkb_applet_settings.png
-docname = gkb_applet
+docname = gkb
 lang = C
 omffile = gkb_applet-C.omf
-sgml_ents = gkb.sgml
-include $(top_srcdir)/sgmldocs.make
+include $(top_srcdir)/xmldocs.make
 dist-hook: app-dist-hook
-

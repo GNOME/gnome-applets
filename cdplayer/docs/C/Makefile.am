@@ -1,9 +1,8 @@
 figs = \
 	figures/cdplayer_applet.png
-docname = cdplayer_applet
+docname = cdplayer
 lang = C
 omffile = cdplayer_applet-C.omf
-sgml_ents = cdplayer.sgml
-include $(top_srcdir)/sgmldocs.make
+entities = legal.xml
+include $(top_srcdir)/xmldocs.make
 dist-hook: app-dist-hook
-

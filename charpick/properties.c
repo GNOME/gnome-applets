@@ -112,11 +112,8 @@ static void default_chars_frame_create(charpick_data *curr_data)
 static void
 phelp_cb (GtkWidget *w, gint tab, gpointer data)
 {
-#ifdef FIXME
-	GnomeHelpMenuEntry help_entry = { "charpick_applet",
-                                          "index.html#CHARPICKAPPLET-PREFS" };
-	gnome_help_display(NULL, &help_entry);
-#endif
+  GError *error = NULL;
+  gnome_help_display("char-palette",NULL,&error);
 }
 
 static void

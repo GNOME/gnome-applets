@@ -1026,12 +1026,8 @@ void gweather_pref_load (GWeatherApplet *gw_applet)
 
 static void help_cb (void)
 {
-/*
-    GnomeHelpMenuEntry help_entry = { "gweather_applet",
-				      "index.html#GWEATHER-PREFS" };
-
-    gnome_help_display (NULL, &help_entry);
-*/
+    GError *error = NULL;
+    gnome_help_display("gweather","gweather-prefs",&error);
 }
 
 void gweather_pref_run (GWeatherApplet *gw_applet)

@@ -284,6 +284,13 @@ ACLOCAL="$ACLOCAL $ACLOCAL_FLAGS"
 
 AC_DEFINE_UNQUOTED(GNOME_ICONDIR, "${prefix}/share/pixmaps")
 
+#defined the below to enable help to work for applates 
+
+AC_DEFINE_UNQUOTED(DATADIR, "${prefix}/share")
+AC_DEFINE_UNQUOTED(SYSCONFDIR, "${prefix}/etc")
+AC_DEFINE_UNQUOTED(LIBDIR, "${prefix}/lib")
+AC_DEFINE_UNQUOTED(PREFIX, "$prefix")
+
 dnl Okay..uncomment the stuff and add in you want to work on :)
 
 AC_OUTPUT([
@@ -298,6 +305,8 @@ mixer/Makefile
 drivemount/Makefile
 modemlights/Makefile
 cdplayer/Makefile
+cdplayer/docs/Makefile
+cdplayer/docs/C/Makefile
 multiload/Makefile
 gkb-new/Makefile
 gkb-new/gkb/Makefile
@@ -314,6 +323,8 @@ gtik/Makefile
 gtik/access/Makefile
 gweather/Makefile
 gweather/pixmaps/Makefile
+gweather/docs/Makefile
+gweather/docs/C/Makefile
 geyes/Makefile
 geyes/themes/Makefile
 battstat/Makefile
@@ -322,6 +333,14 @@ battstat/sounds/Makefile
 man/Makefile
 omf-install/Makefile
 ])
+
+dnl gkb-new/docs/Makefile
+dnl gkb-new/docs/C/Makefile
+dnl mixer/docs/Makefile
+dnl mixer/docs/C/Makefile
+dnl geyes/docs/Makefile
+dnl geyes/docs/C/Makefile
+
 
 dnl Mostly Ported Applets
 dnl whereami/Makefile

@@ -781,14 +781,8 @@ mixer_help_cb (BonoboUIComponent *uic,
 	       gpointer           data,
 	       const gchar       *verbname)
 {
-#if 0
-	GnomeHelpMenuEntry help_entry = {
-		"volume-control-applet",
-		"index.html"
-	};
-
-	gnome_help_display (NULL, &help_entry);
-#endif
+        GError *error = NULL;
+	gnome_help_display("mixer",NULL,&error);
 }
 
 /* Dummy callback to get rid of a warning, for now. */
@@ -1039,7 +1033,7 @@ mixer_applet_factory (PanelApplet *applet,
 
 PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_MixerApplet_Factory",
 			     PANEL_TYPE_APPLET,
-			     "Volume control applet",
+			     "mixer",
 			     "0",
 			     mixer_applet_factory,
 			     NULL)

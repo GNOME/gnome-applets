@@ -416,10 +416,6 @@ gkb_prop_map_add (GkbPropertyBoxInfo * pbi)
 static void
 addhelp_cb (PanelApplet * applet, gpointer data)
 {
-/*
-  GnomeHelpMenuEntry help_entry =
-    { "gkb_applet", "index.html#GKBAPPLET-PREFS-ADD" };
-
-  gnome_help_display (NULL, &help_entry);
-*/
+        GError *error = NULL;
+        gnome_help_display("gkb","gkb-prefs-add",&error);
 }

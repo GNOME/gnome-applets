@@ -13,6 +13,10 @@
 
 #undef HAVE_ESD
 #undef HAVE_LIBESD
+#undef DATADIR
+#undef LIBDIR
+#undef SYSCONFDIR
+#undef PREFIX
 
 #undef HAVE_FVWM
 

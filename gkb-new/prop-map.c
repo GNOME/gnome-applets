@@ -148,12 +148,8 @@ gkb_prop_map_ok_clicked (GkbMapDialogInfo * mdi)
 static void
 gkb_prop_map_help_clicked (GkbMapDialogInfo * mdi)
 {
-/* TODO:
-  GnomeHelpMenuEntry help_entry =
-    { "gkb_applet", "index.html#GKBAPPLET-PREFS-EDIT" };
-
-  gnome_help_display (NULL, &help_entry);
-*/
+	GError *error = NULL;
+        gnome_help_display("gkb","gkbapplet-prefs-edit",&error);
 }
 
 

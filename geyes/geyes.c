@@ -357,10 +357,8 @@ destroy_cb (GtkObject *object, EyesApplet *eyes_applet)
 static void
 help_cb (BonoboUIComponent *uic, gpointer user_data, const gchar *verbname)
 {
-#ifdef FIXME
-	static GnomeHelpMenuEntry help_entry = { "geyes_applet", "index.html"};
-	gnome_help_display(NULL, &help_entry);
-#endif
+	GError *error = NULL;
+	gnome_help_display("geyes",NULL,&error);
 }
 
 
@@ -444,7 +442,7 @@ geyes_applet_factory (PanelApplet *applet,
 
 PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_GeyesApplet_Factory",
 			     PANEL_TYPE_APPLET,
-			     "Geyes Applet",
+			     "geyes",
 			     "0",
 			     geyes_applet_factory,
 			     NULL)

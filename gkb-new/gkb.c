@@ -26,9 +26,7 @@
  * USA
  */
 
-#ifdef HAVE_CONFIG_H
 #include <config.h>
-#endif
 
 #include <X11/keysym.h>
 #include <X11/Xmd.h>
@@ -620,11 +618,8 @@ help_cb (BonoboUIComponent *uic,
          GKB	 *gkb,
          const gchar	 *verbname)
 {
-/* TODO:
-  GnomeHelpMenuEntry help_entry = { "gkb_applet", "index.html" };
-
-  gnome_help_display (NULL, &help_entry);
-*/
+	GError *error = NULL;
+        gnome_help_display("gkb",NULL,&error);
 }
 
 static GdkFilterReturn
@@ -823,7 +818,7 @@ gkb_factory (PanelApplet *applet,
 
 PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_KeyboardApplet_Factory",
 			     PANEL_TYPE_APPLET,
-                             "GKB_keyboard_layout_switcher",
+                             "gkb",
                              "0",
                              gkb_factory,
                              NULL)

@@ -112,11 +112,8 @@ static void about_cb (BonoboUIComponent *uic, gpointer data, const gchar *verbna
 
 static void help_cb (BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 {
-#ifdef FIXME
-    static GnomeHelpMenuEntry help_entry = { "gweather_applet", "index.html"};
-
-    gnome_help_display(NULL, &help_entry);
-#endif
+    GError *error = NULL;
+    gnome_help_display("gweather",NULL,&error);
 }
 
 static void pref_cb (BonoboUIComponent *uic, gpointer data, const gchar *verbname)
@@ -149,7 +146,7 @@ static const BonoboUIVerb weather_applet_menu_verbs [] = {
 	BONOBO_UI_VERB ("Forecast", forecast_cb),
 	BONOBO_UI_VERB ("Update", update_cb),
         BONOBO_UI_VERB ("Props", pref_cb),
-/*        BONOBO_UI_VERB ("Help", help_cb), */
+        BONOBO_UI_VERB ("Help", help_cb), 
         BONOBO_UI_VERB ("About", about_cb),
 
         BONOBO_UI_VERB_END

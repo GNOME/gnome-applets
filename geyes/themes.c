@@ -164,15 +164,12 @@ theme_selected_cb (GtkTreeSelection *selection, gpointer data)
 	g_free (theme);
 }
 
-#ifdef FIXME
 static void
 phelp_cb (GtkWidget *w, gint tab, gpointer data)
 {
-	GnomeHelpMenuEntry help_entry = { "geyes_applet",
-					  "index.html#GEYES-PREFS" };
-	gnome_help_display(NULL, &help_entry);
+	GError *error = NULL;
+        gnome_help_display("geyes",NULL,&error);
 }
-#endif
 
 static void
 presponse_cb (GtkDialog *dialog, gint id, gpointer data)

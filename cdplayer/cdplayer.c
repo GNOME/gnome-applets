@@ -99,7 +99,7 @@ static const BonoboUIVerb applet_menu_verbs [] = {
 
 PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_CDPlayerApplet_Factory",
 			     PANEL_TYPE_APPLET,
-                             "CD-Player-Applet",
+                             "cdplayer",
                              "0",
                               applet_factory,
                               NULL)
@@ -395,7 +395,15 @@ properties_cb (GtkWidget *w, gpointer data)
 static void
 help_cb (GtkWidget *w, gpointer data)
 {
+    GError *error = NULL;
 
+    gnome_help_display ("cdplayer", NULL, &error);
+    if (error) {
+        g_warning ("help error: %s\n", error->message);
+        g_error_free (error);
+    }
+
+    return;
 }
 
 static void
