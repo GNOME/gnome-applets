@@ -103,8 +103,8 @@ loadavg_applet_new(PanelApplet *applet, gpointer data)
 	LoadGraph *g;
 	
 	g = load_graph_new(applet, 2, N_("Load Average"),
-					panel_applet_gconf_get_int(applet, "loadavg_speed", NULL), 
-					panel_applet_gconf_get_int(applet, "loadavg_size", NULL), 
+					panel_applet_gconf_get_int(applet, "speed", NULL), 
+					panel_applet_gconf_get_int(applet, "size", NULL), 
 					panel_applet_gconf_get_bool(applet, "view_loadavg", NULL), 
 					"loadavg", 
 					GetLoadAvg);

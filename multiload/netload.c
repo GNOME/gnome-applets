@@ -40,8 +40,8 @@ netload_applet_new(PanelApplet *applet, gpointer data)
 	LoadGraph *g;
 	
 	g = load_graph_new(applet, 4, N_("Net Load"), 
-					panel_applet_gconf_get_int(applet, "netload_speed", NULL), 
-					panel_applet_gconf_get_int(applet, "netload_size", NULL), 
+					panel_applet_gconf_get_int(applet, "speed", NULL), 
+					panel_applet_gconf_get_int(applet, "size", NULL), 
 					panel_applet_gconf_get_bool(applet, "view_netload", NULL), 
 					"netload", 
 					GetNet);

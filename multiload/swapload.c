@@ -41,8 +41,8 @@ swapload_applet_new(PanelApplet *applet, gpointer data)
 	LoadGraph *g;
 	
 	g = load_graph_new(applet, 2, N_("Swap Load"), 
-					panel_applet_gconf_get_int(applet, "swapload_speed", NULL), 
-					panel_applet_gconf_get_int(applet, "swapload_size", NULL), 
+					panel_applet_gconf_get_int(applet, "speed", NULL), 
+					panel_applet_gconf_get_int(applet, "size", NULL), 
 					panel_applet_gconf_get_bool(applet, "view_swapload", NULL), 
 					"swapload", 
 					GetSwap);

@@ -42,8 +42,8 @@ cpuload_applet_new(PanelApplet *applet, gpointer data)
 	LoadGraph *g;
 	
 	g = load_graph_new(applet, 4, N_("CPU Load"), 
-					panel_applet_gconf_get_int(applet, "cpuload_speed", NULL), 
-					panel_applet_gconf_get_int(applet, "cpuload_size", NULL), 
+					panel_applet_gconf_get_int(applet, "speed", NULL), 
+					panel_applet_gconf_get_int(applet, "size", NULL), 
 					panel_applet_gconf_get_bool(applet, "view_cpuload", NULL), 
 					"cpuload", 
 					GetLoad);

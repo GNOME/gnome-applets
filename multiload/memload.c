@@ -41,8 +41,8 @@ memload_applet_new(PanelApplet *applet, gpointer data)
 	LoadGraph *g;
 	
 	g = load_graph_new(applet, 4, N_("Memory Load"), 
-					panel_applet_gconf_get_int(applet, "memload_speed", NULL), 
-					panel_applet_gconf_get_int(applet, "memload_size", NULL), 
+					panel_applet_gconf_get_int(applet, "speed", NULL), 
+					panel_applet_gconf_get_int(applet, "size", NULL), 
 					panel_applet_gconf_get_bool(applet, "view_memload", NULL), 
 					"memload", 
 					GetMemory);

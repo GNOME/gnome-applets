@@ -61,6 +61,8 @@ struct _MultiloadApplet
 	
 	LoadGraph *graphs[5];
 	
+	GtkWidget *box;
+	
 	gboolean view_cpuload;
 	gboolean view_memload;
 	gboolean view_netload;
@@ -70,8 +72,6 @@ struct _MultiloadApplet
 
 #include "load-graph.h"
 #include "linux-proc.h"
-
-extern MultiloadApplet *multiload_applet;
 
 /* start a new instance of the cpuload applet */
 LoadGraph *
@@ -100,6 +100,10 @@ start_procman_cb (BonoboUIComponent *uic, gpointer data, const gchar *name);
 /* show properties dialog */
 void
 multiload_properties_cb(BonoboUIComponent *uic, gpointer data, const gchar *name);
+
+/* remove the old graphs and rebuild them */
+void
+multiload_applet_refresh(MultiloadApplet *ma);
 
 /* show help */
 void

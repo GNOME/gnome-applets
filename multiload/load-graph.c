@@ -15,14 +15,6 @@
 
 static GList *object_list = NULL;
 
-typedef struct	_RadioButtonCbData		RadioButtonCbData;
-
-struct _RadioButtonCbData
-{
-    GtkWidget *button, *color_frame, *data_frame;
-    gint index;
-};
-
 /* Redraws the backing pixmap for the load graph and updates the window */
 static void
 load_graph_draw (LoadGraph *g)
@@ -111,7 +103,7 @@ load_graph_update (LoadGraph *g)
     return TRUE;
 }
 
-static void
+void
 load_graph_unalloc (LoadGraph *g)
 {
     int i;
@@ -134,7 +126,7 @@ load_graph_unalloc (LoadGraph *g)
     g->data = g->odata = NULL;
     
     g_snprintf(name, sizeof(name), "%s_size", g->name);
-    g->size = panel_applet_gconf_get_int(g->applet, name, NULL);
+    g->size = panel_applet_gconf_get_int(g->applet, "size", NULL);
 
     if (g->pixmap) {
 		gdk_pixmap_unref (g->pixmap);
@@ -263,73 +255,6 @@ load_graph_destroy (GtkWidget *widget, gpointer data_ptr)
 }
 
 static void
-applet_pixel_size_changed_cb (GtkWidget *applet, int size, LoadGraph *g)
-{
-    load_graph_unalloc (g);
-
-    g->pixel_size = size;
-
-    gtk_widget_ref (g->box);
-
-    gtk_container_remove (GTK_CONTAINER (g->box->parent), g->box);
-
-    if (g->frame) {
-		gtk_widget_destroy (g->frame);
-		g->frame = NULL;
-    }
-
-    load_graph_alloc (g);
-
-    if (g->show_frame) {
-		g->frame = gtk_frame_new (NULL);
-		gtk_frame_set_shadow_type (GTK_FRAME (g->frame), GTK_SHADOW_IN);
-		gtk_container_add (GTK_CONTAINER (g->frame), g->box);
-		gtk_container_add (GTK_CONTAINER (g->main_widget), g->frame);
-		gtk_widget_show (g->frame);
-    } else {
-		gtk_container_add (GTK_CONTAINER (g->main_widget), g->box);
-    }
-
-    gtk_widget_unref (g->box);
-
-    if (g->orient)
-		gtk_widget_set_size_request (g->main_widget, g->pixel_size, g->size);
-    else
-		gtk_widget_set_size_request (g->main_widget, g->size, g->pixel_size);
-}
-
-static gint
-applet_orient_changed_cb (GtkWidget *applet, gpointer data, LoadGraph *g)
-{
-    load_graph_unalloc (g);
-    load_graph_alloc (g);
-
-    if (g->orient)
-		gtk_widget_set_size_request (g->main_widget, g->pixel_size, g->size);
-    else
-		gtk_widget_set_size_request (g->main_widget, g->size, g->pixel_size);
-
-    return FALSE;
-}
-
-static gint
-applet_save_session_cb (GtkWidget *w, const char *privcfgpath,
-			const char *globcfgpath, LoadGraph *g)
-{
-
-    /* make sure you return FALSE, otherwise your applet might not
-       work compeltely, there are very few circumstances where you
-       want to return TRUE. This behaves similiar to GTK events, in
-       that if you return FALSE it means that you haven't done
-       everything yourself, meaning you want the panel to save your
-       other state such as the panel you are on, position,
-       parameter, etc ... */
-
-    return FALSE;
-}
-
-/* FIXME: port to gconf */
-static void
 applet_load_config (LoadGraph *g)
 {
 	
@@ -367,20 +292,22 @@ load_graph_new (PanelApplet *applet, guint n, gchar *label,
 	g->n = n;
 	g->speed  = speed;
     g->size   = size;
-    	
+    
 	if (!visible)
 		return g;
-	
+
 	g->applet = applet;
 		
 	g->main_widget = gtk_vbox_new (FALSE, FALSE);
 
     g->box = gtk_vbox_new (FALSE, FALSE);
-	
+
+	load_graph_alloc (g);	
+		
 	if (g->show_frame)
 	{
 		g->frame = gtk_frame_new (NULL);
-		gtk_frame_set_shadow_type (GTK_FRAME (g->frame), GTK_SHADOW_IN);
+		gtk_frame_set_shadow_type (GTK_FRAME (g->frame), GTK_SHADOW_ETCHED_IN);
 		gtk_container_add (GTK_CONTAINER (g->frame), g->box);
 		gtk_container_add (GTK_CONTAINER (g->main_widget), g->frame);
     }
@@ -414,8 +341,6 @@ load_graph_new (PanelApplet *applet, guint n, gchar *label,
     g->timer_index = -1;
 
 	gtk_widget_show_all(GTK_WIDGET(g->applet));
-	
-    load_graph_alloc (g);
 
 	if (g->orient)
 	{
@@ -437,14 +362,6 @@ load_graph_new (PanelApplet *applet, guint n, gchar *label,
 			G_CALLBACK (load_graph_destroy), g);
 
 	gtk_box_pack_start_defaults (GTK_BOX (g->box), g->disp);    
-
-    g_signal_connect (G_OBJECT (g->applet), "change_orient",
-			G_CALLBACK (applet_orient_changed_cb),
-			(gpointer) g);
-
-    g_signal_connect (G_OBJECT (g->applet), "change_size",
-			G_CALLBACK (applet_pixel_size_changed_cb),
-			(gpointer) g);
 
     object_list = g_list_append (object_list, g);
 

@@ -5,7 +5,6 @@ INCLUDES =						\
 	-DGTK_DISABLE_DEPRECATED=1	\
 	$(GNOME_APPLETS_CFLAGS)                         \
 	$(GTOP_APPLETS_CFLAGS)				\
-	-I$(includedir)	\
 	-Wall
 
 bin_PROGRAMS = multiload-applet-2
