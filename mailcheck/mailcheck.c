@@ -2463,6 +2463,7 @@ mailcheck_about(BonoboUIComponent *uic, MailCheck *mc, const gchar *verbname)
 	if (mc->about) {
 		gtk_window_set_screen (GTK_WINDOW (mc->about),
 				       gtk_widget_get_screen (GTK_WIDGET (mc->applet)));
+
 		gtk_window_present (GTK_WINDOW (mc->about));
 		return;
 	}
@@ -2480,6 +2481,7 @@ mailcheck_about(BonoboUIComponent *uic, MailCheck *mc, const gchar *verbname)
 				     pixbuf);
 				     
 	gtk_window_set_wmclass (GTK_WINDOW (mc->about), "mailcheck", "Mailcheck");
+
 	gtk_window_set_screen (GTK_WINDOW (mc->about),
 			       gtk_widget_get_screen (GTK_WIDGET (mc->applet)));
 
@@ -2488,6 +2490,7 @@ mailcheck_about(BonoboUIComponent *uic, MailCheck *mc, const gchar *verbname)
 
 	g_signal_connect( G_OBJECT(mc->about), "destroy",
 			    G_CALLBACK(gtk_widget_destroyed), &mc->about );
+
 	gtk_widget_show(mc->about);
 }
 

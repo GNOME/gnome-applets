@@ -50,6 +50,9 @@ void about_box (BonoboUIComponent *uic,
 	const gchar *translator_credits = _("translator_credits");
 
 	if (mcdata->about_dialog) {
+		gtk_window_set_screen (GTK_WINDOW (mcdata->about_dialog),
+				       gtk_widget_get_screen (GTK_WIDGET (mcdata->applet)));
+
 		gtk_window_present (GTK_WINDOW (mcdata->about_dialog));
 		return;
 	}
@@ -76,9 +79,12 @@ void about_box (BonoboUIComponent *uic,
 
 	gtk_window_set_screen (GTK_WINDOW (mcdata->about_dialog),
 			       gtk_widget_get_screen (GTK_WIDGET (mcdata->applet)));
-   	gtk_window_set_wmclass (GTK_WINDOW (mcdata->about_dialog), "command line", "Command Line");
-   	g_signal_connect (mcdata->about_dialog, "destroy",
+
+	gtk_window_set_wmclass (GTK_WINDOW (mcdata->about_dialog), "command line", "Command Line");
+
+	g_signal_connect (mcdata->about_dialog, "destroy",
 			  G_CALLBACK (gtk_widget_destroyed),
 			  &mcdata->about_dialog);
-        gtk_widget_show (mcdata->about_dialog);
+
+	gtk_widget_show (mcdata->about_dialog);
 }
