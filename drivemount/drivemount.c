@@ -173,20 +173,20 @@ static gint device_is_in_mountlist(DriveData *dd)
 	gchar buf[201];
 	gint found = FALSE;
 
-	buf[201] = '\0';
+	buf[200] = '\0';
 
 	fp = popen(command_line, "r");
 
 	if (!fp)
-		{
+	{
 		printf("unable to run command: %s\n", command_line);
 		return FALSE;
-		}
+	}
 
 	while (fgets(buf, 200, fp) != NULL)
-		{
+	{
 		if (strstr(buf, dd->mount_point) != 0) found = TRUE;
-		}
+	}
 
 	pclose (fp);
 

@@ -1,3 +1,9 @@
+2000-02-11  Jason Leach  <leach@wam.umd.edu>
+
+	* drivemount.c (device_is_in_mountlist): fixing bug reported in
+	#2275, you can't do buf[201] = '\0' because with a declared char
+	buf[201], the last element is actually buf[200]
+
 Sat Feb 05 17:37:34 2000  George Lebl <jirka@5z.com>
 
 	* drivemount.c: fix possible segfault and test for the output
