@@ -1,0 +1,4116 @@
+# Serbian translation of gnome-applets
+# Courtesy of Prevod.org team (http://www.prevod.org/) -- 2003.
+# 
+# This file is distributed under the same license as the gnome-applets package.
+# 
+# Maintainer: Данило Шеган <dsegan@gmx.net>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-applets 2.2\n"
+"POT-Creation-Date: 2003-05-06 02:16+0200\n"
+"PO-Revision-Date: 2003-04-28 07:48+0200\n"
+"Last-Translator: Данило Шеган <danilo@prevod.org>\n"
+"Language-Team: Serbian (sr) <serbiangnome-lista@nongnu.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. The long name of the applet in the About dialog.
+#: battstat/GNOME_BattstatApplet.server.in.in.h:1
+#: battstat/battstat_applet.c:852
+msgid "Battery Charge Monitor"
+msgstr "Праћење стања батерије"
+
+#: battstat/GNOME_BattstatApplet.server.in.in.h:2
+msgid "Battstat Factory"
+msgstr "Фабрика аплета за праћење стања батерије"
+
+#: battstat/GNOME_BattstatApplet.server.in.in.h:3
+msgid "Monitor a laptop's remaining power"
+msgstr "Пратите преосталу струју преносног рачунара"
+
+#: battstat/GNOME_BattstatApplet.server.in.in.h:4
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:4
+#: drivemount/GNOME_DriveMountApplet.server.in.in.h:5
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:5
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:4
+#: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:3
+msgid "Utility"
+msgstr "Помоћни алати"
+
+#: battstat/GNOME_BattstatApplet.xml.h:1 cdplayer/GNOME_CDPlayerApplet.xml.h:1
+#: charpick/GNOME_CharpickerApplet.xml.h:1
+#: drivemount/GNOME_DriveMountApplet.xml.h:1 geyes/GNOME_GeyesApplet.xml.h:1
+#: gkb-new/GNOME_KeyboardApplet.xml.h:1 gtik/GNOME_GtikApplet.xml.h:1
+#: gweather/GNOME_GWeatherApplet.xml.h:1
+#: mailcheck/GNOME_MailCheckApplet.xml.h:1
+#: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
+#: mixer/GNOME_MixerApplet.xml.h:1 modemlights/GNOME_ModemlightsApplet.xml.h:1
+#: multiload/GNOME_MultiloadApplet.xml.h:1
+#: stickynotes/GNOME_StickyNotesApplet.xml.h:1
+#: wireless/GNOME_WirelessApplet.xml.h:1
+msgid "_About..."
+msgstr "_О..."
+
+#: battstat/GNOME_BattstatApplet.xml.h:2 cdplayer/GNOME_CDPlayerApplet.xml.h:2
+#: charpick/GNOME_CharpickerApplet.xml.h:2
+#: drivemount/GNOME_DriveMountApplet.xml.h:4 geyes/GNOME_GeyesApplet.xml.h:2
+#: gkb-new/GNOME_KeyboardApplet.xml.h:2 gtik/GNOME_GtikApplet.xml.h:2
+#: gweather/GNOME_GWeatherApplet.xml.h:3
+#: mailcheck/GNOME_MailCheckApplet.xml.h:2
+#: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
+#: mixer/GNOME_MixerApplet.xml.h:2 modemlights/GNOME_ModemlightsApplet.xml.h:2
+#: stickynotes/GNOME_StickyNotesApplet.xml.h:3
+msgid "_Help"
+msgstr "_Помоћ"
+
+#: battstat/GNOME_BattstatApplet.xml.h:3 cdplayer/GNOME_CDPlayerApplet.xml.h:3
+#: charpick/GNOME_CharpickerApplet.xml.h:3
+#: drivemount/GNOME_DriveMountApplet.xml.h:5 geyes/GNOME_GeyesApplet.xml.h:3
+#: gkb-new/GNOME_KeyboardApplet.xml.h:3 gtik/GNOME_GtikApplet.xml.h:3
+#: gweather/GNOME_GWeatherApplet.xml.h:4
+#: mailcheck/GNOME_MailCheckApplet.xml.h:3
+#: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
+#: mixer/GNOME_MixerApplet.xml.h:4 modemlights/GNOME_ModemlightsApplet.xml.h:3
+#: multiload/GNOME_MultiloadApplet.xml.h:2
+#: stickynotes/GNOME_StickyNotesApplet.xml.h:7
+#: wireless/GNOME_WirelessApplet.xml.h:2
+msgid "_Preferences..."
+msgstr "_Поставке..."
+
+#: battstat/GNOME_BattstatApplet.xml.h:4
+msgid "_Suspend Computer..."
+msgstr "_Суспендуј рачунар..."
+
+#. Message displayed if user tries to run applet
+#. on unsupported platform
+#: battstat/battstat_applet.c:286
+msgid "Your platform is not supported!\n"
+msgstr "Ваша платформа није подржана!\n"
+
+#: battstat/battstat_applet.c:287
+msgid "The applet will not work properly (if at all).\n"
+msgstr "Аплет неће исправно радити (ако уопште ради).\n"
+
+#. The following four messages will be displayed as tooltips over
+#. the battery meter.
+#. High = The APM BIOS thinks that the battery charge is High.
+#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:883
+#: gweather/gweather-dialog.c:82
+msgid "High"
+msgstr "Пуна"
+
+#. Low = The APM BIOS thinks that the battery charge is Low.
+#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:885
+#: gweather/gweather-dialog.c:82
+msgid "Low"
+msgstr "Слаба"
+
+#. Critical = The APM BIOS thinks that the battery charge is Critical.
+#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:887
+msgid "Critical"
+msgstr "Критично"
+
+#. Charging = The APM BIOS thinks that the battery is recharging.
+#: battstat/battstat_applet.c:324 battstat/battstat_applet.c:889
+msgid "Charging"
+msgstr "Пуњење"
+
+#: battstat/battstat_applet.c:405
+#, c-format
+msgid "Battery low (%d%%) and AC is offline"
+msgstr "Батерија је празна (%d%%) а напајање није укључено"
+
+#: battstat/battstat_applet.c:429
+msgid "Battery is now fully re-charged!"
+msgstr "Батерија је у потпуности напуњена!"
+
+#. This string will display as a tooltip over the status frame
+#. when the computer is using battery power and the battery meter
+#. and percent meter is hidden by the user.
+#: battstat/battstat_applet.c:448 battstat/battstat_applet.c:1047
+#, c-format
+msgid ""
+"System is running on battery power\n"
+"Battery: %d%% (%s)"
+msgstr ""
+"Систем ради на батерије\n"
+"Батерија: %d%% (%s)"
+
+#. This string will display as a tooltip over the status frame
+#. when the computer is using AC power and the battery meter
+#. and percent meter is hidden by the user.
+#: battstat/battstat_applet.c:452 battstat/battstat_applet.c:1055
+#, c-format
+msgid ""
+"System is running on AC power\n"
+"Battery: %d%% (%s)"
+msgstr ""
+"Систем се напаја из електричне мреже\n"
+"Батерија: %d%% (%s)"
+
+#. This string will display as a tooltip over the status frame
+#. when the computer is using battery power.
+#: battstat/battstat_applet.c:458 battstat/battstat_applet.c:979
+#: battstat/battstat_applet.c:1068
+msgid "System is running on battery power"
+msgstr "Систем ради на батерије"
+
+#. This string will display as a tooltip over the status frame
+#. when the computer is using AC power.
+#: battstat/battstat_applet.c:461 battstat/battstat_applet.c:985
+#: battstat/battstat_applet.c:1074
+msgid "System is running on AC power"
+msgstr "Систем се напаја из електричне мреже"
+
+#: battstat/battstat_applet.c:475
+msgid "N/A"
+msgstr "Недоступно"
+
+#. This string will display as a tooltip over the battery frame
+#. when the computer is using battery power.
+#: battstat/battstat_applet.c:599 battstat/battstat_applet.c:959
+#, c-format
+msgid "System is running on battery power. Battery: %d%% (%s)"
+msgstr "Систем ради на батерије. Батерија: %d%% (%s)"
+
+#. This string will display as a tooltip over the battery frame
+#. when the computer is using AC power.
+#: battstat/battstat_applet.c:606 battstat/battstat_applet.c:966
+#, c-format
+msgid "System is running on AC power. Battery: %d%% (%s)"
+msgstr "Систем се напаја из електричне мреже. Батерија: %d%% (%s)"
+
+#. This string will display as a tooltip over the
+#. battery frame when the computer is using battery
+#. power and the battery isn't present. Not a
+#. possible combination, I guess... :)
+#: battstat/battstat_applet.c:617
+msgid "System is running on battery power. Battery: Not present"
+msgstr "Систем ради на батерије. Батерија: пази кад је нема!"
+
+#. This string will display as a tooltip over the
+#. battery frame when the computer is using AC
+#. power and the battery isn't present.
+#: battstat/battstat_applet.c:623
+msgid "System is running on AC power. Battery: Not present"
+msgstr "Систем се напаја из електричне мреже. Батерија: Није присутна"
+
+#. Displayed as a tooltip over the battery meter when there is
+#. a battery present. %d will hold the current charge and %s will
+#. hold the status of the battery, (High, Low, Critical, Charging.
+#: battstat/battstat_applet.c:632
+#, c-format
+msgid "Battery: %d%% (%s)"
+msgstr "Батерија: %d%% (%s)"
+
+#. Displayed as a tooltip over the battery meter when no
+#. battery is present.
+#: battstat/battstat_applet.c:639
+msgid "Battery: Not present"
+msgstr "Батерија: није присутна"
+
+#. Displayed if the APM device couldn't be opened. (Used under *BSD)
+#: battstat/battstat_applet.c:722
+msgid ""
+"Can't open the APM device!\n"
+"\n"
+"Make sure you have read permission to the\n"
+"APM device."
+msgstr ""
+"Не може отворити APM уређај!\n"
+"\n"
+"Проверите да ли имате дозволе за употребу APM уређаја."
+
+#. Displayed if the APM system is disabled (Used under *BSD)
+#: battstat/battstat_applet.c:731
+msgid ""
+"The APM Management subsystem seems to be disabled.\n"
+"Try executing \"apm -e 1\" (FreeBSD) and see if \n"
+"that helps.\n"
+msgstr ""
+"Подсистем за управљање APM-ом треба искључити.\n"
+"Покушајте са покретањем „apm -e 1“ (FreeBSD) и \n"
+"проверите да ли је то помогло.\n"
+
+#: battstat/battstat_applet.c:787
+#, c-format
+msgid ""
+"An error occured while launching the Suspend command: %s\n"
+"Please try to correct this error"
+msgstr ""
+"Дошло је до грешке при покретању наредбе за суспензију: %s\n"
+"Покушајте да исправите ову грешку"
+
+#. Probably because the shell_ret is != 0
+#: battstat/battstat_applet.c:790
+#, c-format
+msgid ""
+"An error occured while launching the Suspend command, the command returned "
+"\"%d\"\n"
+"Please try to correct this error"
+msgstr ""
+"Дошло је до грешке при покретању наредбе за суспензију. Наредба је вратила „%"
+"d“\n"
+"Покушајте да исправите ову грешку"
+
+#: battstat/battstat_applet.c:798
+msgid ""
+"Suspend command wasn't setup correctly in the preferences.\n"
+"Please change the preferences and try again."
+msgstr ""
+"Наредба за суспензију није исправно постављена међу поставкама.\n"
+"Измените поставке и покушајте поново."
+
+#. if your charset supports it, please replace the "o" in
+#. * "Jorgen" into U00F6
+#: battstat/battstat_applet.c:829
+msgid "Jorgen Pehrson <jp@spektr.eu.org>"
+msgstr "Јурген Персон <jp@spektr.eu.org>"
+
+#: battstat/battstat_applet.c:839 cdplayer/cdplayer.c:514
+#: charpick/charpick.c:500 drivemount/drivemount.c:490 geyes/geyes.c:228
+#: gkb-new/gkb.c:622 gtik/gtik.c:706 gweather/gweather-about.c:44
+#: mailcheck/mailcheck.c:1875 mini-commander/src/about.c:48 mixer/mixer.c:992
+#: modemlights/modemlights.c:209 multiload/main.c:57
+#: stickynotes/stickynotes.glade.h:37 stickynotes/stickynotes_applet.c:252
+#: wireless/wireless-applet.c:733
+msgid "translator_credits"
+msgstr "Данило Шеган <danilo@prevod.org>"
+
+#: battstat/battstat_applet.c:854
+msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
+msgstr "©2000 Гнуликс Друштво, ©2002 Задужбина за Слободни Софтвер"
+
+#: battstat/battstat_applet.c:855
+#, fuzzy
+msgid "This utility shows the status of your laptop battery."
+msgstr "Ова алатка приказује стање батерије вашег преносног рачунара."
+
+#: battstat/battstat_applet.glade.h:1
+#: mini-commander/src/mini-commander.glade.h:1
+#: stickynotes/stickynotes.glade.h:1
+msgid "    "
+msgstr ""
+
+#: battstat/battstat_applet.glade.h:2
+#: mini-commander/src/mini-commander.glade.h:2
+#: stickynotes/stickynotes.glade.h:2
+msgid "*"
+msgstr "*"
+
+#: battstat/battstat_applet.glade.h:4
+#, no-c-format
+msgid "100%"
+msgstr "100%"
+
+#: battstat/battstat_applet.glade.h:6
+#, fuzzy, no-c-format
+msgid "<b>Battery Color Levels (%)</b>"
+msgstr "Нивои боја батерије (%)"
+
+#: battstat/battstat_applet.glade.h:7
+#, fuzzy
+msgid "<b>Layout</b>"
+msgstr "Изглед"
+
+#: battstat/battstat_applet.glade.h:8
+#, fuzzy
+msgid "<b>Progress Bar Direction</b>"
+msgstr "Смер пражњења батерије на слици"
+
+#: battstat/battstat_applet.glade.h:9
+#, fuzzy
+msgid "<b>Suspend</b>"
+msgstr "Суспензија"
+
+#: battstat/battstat_applet.glade.h:10
+#, fuzzy
+msgid "<b>Warnings</b>"
+msgstr "Упозорења"
+
+#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1403
+msgid "Appearance"
+msgstr "Изглед"
+
+#: battstat/battstat_applet.glade.h:12
+msgid "Battery Charge Monitor Preferences"
+msgstr "Поставке праћења стања батерије"
+
+#: battstat/battstat_applet.glade.h:13 drivemount/properties.c:304
+#: gweather/gweather-pref.c:293 mailcheck/mailcheck.c:1518
+#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:474
+msgid "General"
+msgstr "Опште"
+
+#: battstat/battstat_applet.glade.h:14
+#, fuzzy
+msgid "Moves towards _bottom"
+msgstr "Померати према дну"
+
+#: battstat/battstat_applet.glade.h:15
+#, fuzzy
+msgid "Moves towards _top"
+msgstr "Померати према врху"
+
+#: battstat/battstat_applet.glade.h:16
+msgid "Sho_w battery charge percentages"
+msgstr ""
+
+#: battstat/battstat_applet.glade.h:17
+#, fuzzy
+msgid "Show _power connection status"
+msgstr "Стање везе"
+
+#: battstat/battstat_applet.glade.h:18
+#, fuzzy
+msgid "War_n when battery is fully re-charged"
+msgstr "Обавестити када је батерија у потпуности напуњена"
+
+#: battstat/battstat_applet.glade.h:19
+msgid "_Beep when displaying a warning"
+msgstr ""
+
+#: battstat/battstat_applet.glade.h:20
+#, fuzzy
+msgid "_Orange:"
+msgstr "Наранџасто:"
+
+#: battstat/battstat_applet.glade.h:21
+#, fuzzy
+msgid "_Preview:"
+msgstr "Преглед:"
+
+#: battstat/battstat_applet.glade.h:22
+#, fuzzy
+msgid "_Red:"
+msgstr "Црвено:"
+
+#: battstat/battstat_applet.glade.h:23
+msgid "_Show battery status"
+msgstr ""
+
+#: battstat/battstat_applet.glade.h:24
+#, fuzzy
+msgid "_Suspend command:"
+msgstr "Наредба за суспензију:"
+
+#: battstat/battstat_applet.glade.h:25
+#, fuzzy
+msgid "_Warn when battery charge is low"
+msgstr "Обавестити када је батерија слаба"
+
+#: battstat/battstat_applet.glade.h:26
+#, fuzzy
+msgid "_Yellow:"
+msgstr "Жуто:"
+
+#: battstat/properties.c:256 drivemount/drivemount.c:455
+#: drivemount/properties.c:508 mailcheck/mailcheck.c:1741
+#: mailcheck/mailcheck.c:1953 mini-commander/src/preferences.c:352
+#: mixer/mixer.c:1099
+#, fuzzy, c-format
+msgid "There was an error displaying help: %s"
+msgstr "Дошло је до грешке при покретању „%s“: %s"
+
+#: battstat/sounds/battstat_applet.soundlist.in.h:1
+msgid "Battery Status Utility"
+msgstr "Алатка за стање батерије"
+
+#: battstat/sounds/battstat_applet.soundlist.in.h:2
+msgid "Battery fully re-charged"
+msgstr "Батерија у потпуности напуњена"
+
+#: battstat/sounds/battstat_applet.soundlist.in.h:3
+msgid "Battery power low"
+msgstr "Батерија слаба"
+
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:189
+#: cdplayer/cdplayer.c:532 cdplayer/cdplayer.c:941
+msgid "CD Player"
+msgstr "Пуштање ЦД-а"
+
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:2
+msgid "CD Player Applet Factory"
+msgstr "Фабрика аплета за пуштање ЦД-а"
+
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:3
+msgid "Factory for CD player applet"
+msgstr "Фабрика за аплет за пуштање ЦД-а"
+
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:4
+#: mixer/GNOME_MixerApplet.server.in.in.h:2
+msgid "Multimedia"
+msgstr "Мултимедија"
+
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:5
+msgid "Panel applet for playing audio CDs"
+msgstr "Аплет панела за пуштање музичких ЦД-а"
+
+#: cdplayer/GNOME_CDPlayerApplet.xml.h:4
+msgid "_Run External CD Player"
+msgstr "Покрени спољни програм за пуштање ЦД-а"
+
+#: cdplayer/cdplayer.c:169 cdplayer/cdplayer.c:931
+msgid "Stop"
+msgstr "Заустави"
+
+#: cdplayer/cdplayer.c:173 cdplayer/cdplayer.c:933
+msgid "Play / Pause"
+msgstr "Пусти / Пауза"
+
+#: cdplayer/cdplayer.c:177 cdplayer/cdplayer.c:935
+msgid "Eject"
+msgstr "Избаци"
+
+#: cdplayer/cdplayer.c:181 cdplayer/cdplayer.c:937
+msgid "Previous Track"
+msgstr "Претходна песма"
+
+#: cdplayer/cdplayer.c:185 cdplayer/cdplayer.c:939
+msgid "Next Track"
+msgstr "Следећа песма"
+
+#: cdplayer/cdplayer.c:307 drivemount/drivemount.c:399 mixer/mixer.c:958
+#: multiload/main.c:118
+#, c-format
+msgid "There was an error executing '%s' : %s"
+msgstr "Дошло је до грешке при покретању „%s“: %s"
+
+#: cdplayer/cdplayer.c:421
+msgid "CD Player Preferences"
+msgstr "Поставке за пуштање ЦД-а"
+
+#: cdplayer/cdplayer.c:440
+msgid "Device _Path:"
+msgstr "Путања уређаја:"
+
+#: cdplayer/cdplayer.c:449
+msgid "Device Path"
+msgstr "Путања до уређаја"
+
+#: cdplayer/cdplayer.c:449
+msgid "Set the device path here"
+msgstr "Овде поставите путању до уређаја"
+
+#: cdplayer/cdplayer.c:452
+msgid "Use _Default"
+msgstr "Користити _подразумевано"
+
+#: cdplayer/cdplayer.c:533
+msgid ""
+"(C) 1997 The Free Software Foundation\n"
+"(C) 2001 Chris Phelps (GNOME 2 Port)"
+msgstr ""
+"© 1997 Задужбина за Слободни Софтвер\n"
+"© 2001 Крис Фелпс (GNOME 2 издање)"
+
+#: cdplayer/cdplayer.c:535 cdplayer/cdplayer.c:942
+msgid "The CD Player applet is a simple audio CD player for your panel"
+msgstr "Аплет за пуштање ЦД-а је једноставан програм за ваш панел"
+
+#: cdplayer/cdplayer.c:792 cdplayer/cdplayer.c:803
+msgid "Elapsed time"
+msgstr "Протекло време"
+
+#: cdplayer/cdplayer.c:795 cdplayer/cdplayer.c:805
+msgid "Track number"
+msgstr "Број песме"
+
+#: cdplayer/cdplayer.c:857
+msgid "Audio device is busy, or being used by another application"
+msgstr "Уређај за звук је заузет, или га користи неки други програм"
+
+#: cdplayer/cdplayer.c:932
+msgid "Click this button to Stop playing the CD"
+msgstr "Притисните ово дугме да зауставите пуштање ЦД-а"
+
+#: cdplayer/cdplayer.c:934
+msgid "Click this button to Play or Pause the CD"
+msgstr "Притисните ово дугме да пустите или паузирате ЦД"
+
+#: cdplayer/cdplayer.c:936
+msgid "Click this button to eject the CD"
+msgstr "Притисните ово дугме да избаците ЦД"
+
+#: cdplayer/cdplayer.c:938
+msgid "Click this button to Play the previous track in the CD"
+msgstr "Притисните ово дугме да пустите претходну песму са ЦД-а"
+
+#: cdplayer/cdplayer.c:940
+msgid "Click this button to Play the next track in the CD"
+msgstr "Притисните ово дугме да пустите следећу песму са ЦД-а"
+
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:518
+#: charpick/charpick.c:661 charpick/properties.c:286
+msgid "Character Palette"
+msgstr "Палета знакова"
+
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:2
+msgid "Charpicker Applet Factory"
+msgstr "Фабрика за аплет за избор знакова"
+
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:3
+msgid "Insert characters"
+msgstr "Унесите знакове"
+
+#: charpick/charpick.c:395
+msgid "Available palettes"
+msgstr ""
+
+#: charpick/charpick.c:429
+msgid "Insert special characters"
+msgstr "Унесите нарочите знакове"
+
+#. If your charset supports it, please use U00F1 to replace the "n"
+#. * in "Muniz".
+#: charpick/charpick.c:491
+msgid "Alexandre Muniz <munizao@xprt.net>"
+msgstr "Александар Муњиз <munizao@xprt.net>"
+
+#: charpick/charpick.c:492
+msgid "Kevin Vandersloot"
+msgstr ""
+
+#: charpick/charpick.c:520
+msgid "Copyright (C) 1998"
+msgstr "©1998 — сва права задржана"
+
+#: charpick/charpick.c:521
+msgid ""
+"Gnome Panel applet for selecting strange characters that are not on my "
+"keyboard. Released under GNU General Public Licence."
+msgstr ""
+"Панел аплет за GNOME за избор чудних знакова који се не налазе на мојој "
+"тастатури. Објављено под Гнуовом Општом јавном лиценцом (GNU GPL)."
+
+#: charpick/properties.c:69
+#, fuzzy
+msgid "_Palette:"
+msgstr "Образац:"
+
+#: charpick/properties.c:104
+msgid "Add Palette"
+msgstr ""
+
+#: charpick/properties.c:139
+#, fuzzy
+msgid "Edit Palette"
+msgstr "Палета знакова"
+
+#: charpick/properties.c:291
+#, fuzzy
+msgid "Pal_ettes:"
+msgstr "Образац:"
+
+#: charpick/properties.c:363
+msgid "Character Palette Preferences"
+msgstr "Поставке палете знакова"
+
+#: drivemount/GNOME_DriveMountApplet.server.in.in.h:1
+#: drivemount/drivemount.c:508
+msgid "Disk Mounter"
+msgstr "Монтер диска"
+
+#: drivemount/GNOME_DriveMountApplet.server.in.in.h:2
+msgid "Drive Mount Applet Factory"
+msgstr "Фабрика аплета за монтирање дискова"
+
+#: drivemount/GNOME_DriveMountApplet.server.in.in.h:3
+msgid "Factory for drive mount applet"
+msgstr "Фабрика за аплет за монтирање дискова"
+
+#: drivemount/GNOME_DriveMountApplet.server.in.in.h:4
+msgid "Mount local disks and devices"
+msgstr "Монтирајте локалне дискове и уређаје"
+
+#: drivemount/GNOME_DriveMountApplet.xml.h:2
+msgid "_Browse..."
+msgstr "_Претражи..."
+
+#: drivemount/GNOME_DriveMountApplet.xml.h:3
+msgid "_Eject"
+msgstr "_Избаци"
+
+#: drivemount/drivemount.c:509
+msgid "(C) 1999-2001 The GNOME Hackers\n"
+msgstr "© 1999–2001 GNOME Хакери\n"
+
+#: drivemount/drivemount.c:511
+msgid "Applet for mounting and unmounting block volumes."
+msgstr "Аплет за монтирање и демонтирање блок уређаја."
+
+#: drivemount/drivemount.c:711
+msgid " mounted"
+msgstr " монтиран"
+
+#: drivemount/drivemount.c:713
+msgid " not mounted"
+msgstr " није монтиран"
+
+#: drivemount/drivemount.c:830
+msgid "Drive Mount Applet Warning"
+msgstr "Упозорење аплета за монтирање дискова"
+
+#: drivemount/drivemount.c:840
+msgid "\" reported:\n"
+msgstr "“ пријавио:\n"
+
+#: drivemount/drivemount.c:842
+msgid ""
+"Drivemount command failed.\n"
+"\""
+msgstr ""
+"Наредба за монтирање није извршена.\n"
+"„"
+
+#: drivemount/properties.c:284
+msgid "Disk Mounter Preferences"
+msgstr "Поставке монтера диска"
+
+#: drivemount/properties.c:310
+#, fuzzy
+msgid "_Mount directory:"
+msgstr "Тачка _монтирања:"
+
+#: drivemount/properties.c:316
+msgid "Select Mount Directory"
+msgstr ""
+
+#: drivemount/properties.c:333
+#, fuzzy
+msgid "_Update interval:"
+msgstr "_Време између допуна (у секундама):"
+
+#: drivemount/properties.c:347 mailcheck/mailcheck.c:1570
+#: mailcheck/mailcheck.c:1574 modemlights/properties.c:405
+#, fuzzy
+msgid "seconds"
+msgstr "милисекунди"
+
+#: drivemount/properties.c:356
+#, fuzzy
+msgid "_Icon:"
+msgstr "_Иконица: "
+
+#: drivemount/properties.c:376
+msgid "Floppy"
+msgstr "Меки диск"
+
+#: drivemount/properties.c:379
+msgid "Cdrom"
+msgstr "ЦД-РОМ"
+
+#: drivemount/properties.c:382
+msgid "Cd Recorder"
+msgstr "ЦД писач"
+
+#: drivemount/properties.c:385
+msgid "Zip Drive"
+msgstr "Zip уређај"
+
+#: drivemount/properties.c:388
+msgid "Hard Disk"
+msgstr "Тврди диск"
+
+# Ovo nije slucajno! Ko jos ima i koristi Iomega Jazz? ;)
+#: drivemount/properties.c:391
+msgid "Jaz Drive"
+msgstr "Џез уређај"
+
+#: drivemount/properties.c:394
+msgid "Custom"
+msgstr "Прилагођено"
+
+#: drivemount/properties.c:413
+msgid "Select icon for mounted"
+msgstr "Изаберите иконицу за монтирани"
+
+#: drivemount/properties.c:420
+#, fuzzy
+msgid "Moun_ted icon:"
+msgstr "Тачка _монтирања:"
+
+#: drivemount/properties.c:436
+msgid "Select icon for unmounted"
+msgstr "Изаберите иконицу за немонтирани"
+
+#: drivemount/properties.c:443
+msgid "Unmou_nted icon:"
+msgstr ""
+
+#: drivemount/properties.c:454
+msgid "_Scale size to panel"
+msgstr "_Увећајте на величину панела"
+
+#: drivemount/properties.c:461
+#, fuzzy
+msgid "_Eject disk when unmounting"
+msgstr "_Избаци по демонтирању"
+
+#: drivemount/properties.c:468
+msgid "Use _automount friendly status test"
+msgstr "_Користити једноставну пробу стања за самомонтирање"
+
+#: geyes/GNOME_GeyesApplet.server.in.in.h:1
+msgid "A set of eyeballs for your panel"
+msgstr "Пар очију за ваш панел"
+
+#: geyes/GNOME_GeyesApplet.server.in.in.h:2
+msgid "Amusements"
+msgstr "Занимљивости"
+
+#: geyes/GNOME_GeyesApplet.server.in.in.h:3 geyes/geyes.c:248
+#: geyes/geyes.c:443 geyes/geyes.c:445
+msgid "Geyes"
+msgstr "ГОчи"
+
+#: geyes/GNOME_GeyesApplet.server.in.in.h:4
+msgid "Geyes Applet Factory"
+msgstr "Фабрика аплета ГОчи"
+
+#: geyes/geyes.c:249
+msgid "Copyright (C) 1999 Dave Camp"
+msgstr "©1999 Дејв Кемп"
+
+#: geyes/geyes.c:250
+msgid "A goofy little xeyes clone for the GNOME panel."
+msgstr "Очи к'о у Шиље за панел (клон xeyes-а)"
+
+#: geyes/geyes.c:446
+msgid "The eyes look in the direction of the mouse pointer"
+msgstr "Погледом очи верно прате кретњу миша"
+
+#: geyes/themes.c:233
+msgid "Geyes Preferences"
+msgstr "Поставке ГОчију"
+
+#: geyes/themes.c:263
+msgid "Themes"
+msgstr ""
+
+#: geyes/themes.c:284
+msgid "_Select a theme:"
+msgstr ""
+
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:1
+msgid "Change the keyboard layout"
+msgstr "Измените изглед тастатуре"
+
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:2
+msgid "GKB Factory"
+msgstr "Фабрика GKB-а"
+
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:3 gkb-new/gkb.c:633
+msgid "Keyboard Layout Switcher"
+msgstr "Измењивач тастатура"
+
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:4
+msgid "Produces keyboard layout switcher applets."
+msgstr "Прави аплете за измењивање тастатура."
+
+#: gkb-new/gkb.c:113
+msgid ""
+"Press the hotkey to switch between layouts. The hotkey can be set through "
+"Properties dialog"
+msgstr ""
+"Притисните врући-тастер (пречицу) за измену тастатура. Пречицу можете "
+"поставити кроз прозорче за поставке."
+
+#: gkb-new/gkb.c:580 gkb-new/gkb.c:587
+msgid "GKB"
+msgstr "GKB"
+
+#: gkb-new/gkb.c:635
+msgid "(C) 1998-2000 Free Software Foundation"
+msgstr "©1998–2000 Задужбина за Слободни Софтвер"
+
+# Ako neko ovo razume, svaka mu cast!!!
+#
+# A i neka meni javi!
+#: gkb-new/gkb.c:636
+msgid ""
+"This applet switches between keyboard maps using setxkbmap or xmodmap.\n"
+"Mail me your flag and keyboard layout if you want support for your locale "
+"(my email address is shooby@gnome.hu).\n"
+"So long, and thanks for all the fish.\n"
+"Thanks for Balazs Nagy (Kevin) <julian7@iksz.hu> for his help and Emese "
+"Kovacs <emese@gnome.hu> for her solidarity, help from guys like KevinV.\n"
+"Shooby Ban <shooby@gnome.hu>"
+msgstr ""
+"Овај аплет мења мапе тастатура помоћу setxkbmap-а или xmodmap-а.\n"
+"Пошаљите вашу заставу и мапу тастуре ако желите подршку за ваш језик (моја е-"
+"адреса је shooby@gnome.hu).\n"
+"Збогом, и хвала на свој риби.\n"
+"Хвала Балашу Нагију (Кевин) <julian7@iksz.hu> за његову помоћ и Емезе Ковач "
+"<emese@gnome.hu> за њену солидарност, помоћ од оних као што је КевинВ.\n"
+"Шуби Бан <shooby@gnome.hu>"
+
+#: gkb-new/gkb.c:653
+msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
+msgstr "Матична страница GKB-а (http://projects.gnome.hu/gkb)"
+
+#: gkb-new/keygrab.c:69 gkb-new/keygrab.c:148
+msgid "Disabled"
+msgstr "Онемогућено"
+
+#: gkb-new/keygrab.c:384
+msgid "Press a key or press Esc to cancel"
+msgstr "Притисните тастер или Esc да откажете"
+
+#: gkb-new/preset.c:153 gkb-new/preset.c:156
+msgid "Undefined"
+msgstr ""
+
+#: gkb-new/prop-add.c:88
+msgid "Keyboards (select and press add)"
+msgstr "Тастатуре (изаберите и притисните „Додати“)"
+
+#: gkb-new/prop-add.c:315
+#, c-format
+msgid "Keymap `%s' for the country %s already exists"
+msgstr ""
+
+#: gkb-new/prop-add.c:426
+msgid "Select Keyboard"
+msgstr "Изаберите тастатуру"
+
+#: gkb-new/prop-add.c:449
+#, fuzzy
+msgid "_Keyboards (select and press add):"
+msgstr "Тастатуре (изаберите и притисните „Додати“)"
+
+#: gkb-new/prop-map.c:267
+msgid "Edit Keyboard"
+msgstr "Уредите тастатуру"
+
+#: gkb-new/prop-map.c:290
+msgid "_Name:"
+msgstr "_Име:"
+
+#: gkb-new/prop-map.c:294
+msgid "_Label:"
+msgstr "_Ознака:"
+
+#: gkb-new/prop-map.c:297 mini-commander/src/mini-commander.glade.h:8
+msgid "Co_mmand:"
+msgstr "_Наредба:"
+
+#: gkb-new/prop-map.c:300
+#, fuzzy
+msgid "_Flag:"
+msgstr "_Застава"
+
+#: gkb-new/prop.c:129 gkb-new/prop.c:199
+msgid "Normal"
+msgstr "Обично"
+
+#: gkb-new/prop.c:130 gkb-new/prop.c:203
+msgid "Big"
+msgstr "Велико"
+
+#: gkb-new/prop.c:148 gkb-new/util.c:41 gkb-new/util.c:48 gkb-new/util.c:74
+msgid "Flag"
+msgstr "Застава"
+
+#: gkb-new/prop.c:149 gkb-new/util.c:38 gkb-new/util.c:71
+msgid "Label"
+msgstr "Ознака"
+
+#: gkb-new/prop.c:150 gkb-new/util.c:44 gkb-new/util.c:77
+msgid "Flag and Label"
+msgstr "Застава и ознака"
+
+#: gkb-new/prop.c:323 gtik/gtik.c:1408 gweather/gweather-pref.c:329
+#: modemlights/properties.c:385
+msgid "Display"
+msgstr "Приказ"
+
+#. Labels and option Menus
+#: gkb-new/prop.c:336
+msgid "_Appearance: "
+msgstr "_Изглед:"
+
+#: gkb-new/prop.c:347
+#, fuzzy
+msgid "_Size: "
+msgstr "Величина"
+
+#: gkb-new/prop.c:381
+#, fuzzy
+msgid "Keyboard Shortcuts"
+msgstr "Пречице"
+
+#: gkb-new/prop.c:387
+msgid "S_witch layout:"
+msgstr ""
+
+#: gkb-new/prop.c:400
+#, fuzzy
+msgid "_Grab keys"
+msgstr "_Уграби пречицу"
+
+#. Create property box
+#: gkb-new/prop.c:471
+msgid "Keyboard Layout Switcher Preferences"
+msgstr "Поставке за измењивач тастатура"
+
+#: gkb-new/prop.c:492
+#, fuzzy
+msgid "Keyboards"
+msgstr "Уредите тастатуру"
+
+#. Page 1 Frame
+#: gkb-new/prop.c:496
+#, fuzzy
+msgid "_Keyboards:"
+msgstr "Уредите тастатуру"
+
+#: gkb-new/prop.c:511 multiload/properties.c:359
+msgid "Options"
+msgstr "Опције"
+
+#: gkb-new/system.c:46
+#, c-format
+msgid ""
+"An error occured.\n"
+"\n"
+"Keymap `%s' is not supported on this system. Please choose another keymap.\n"
+"\n"
+"The command was: %s"
+msgstr ""
+"Дошло је до грешке.\n"
+"\n"
+"Мапа тастера „%s“ није подржана на овом систему. Изаберите неку другу мапу.\n"
+"\n"
+"Неуспешна наредба: %s"
+
+#: gkb-new/system.c:51
+#, c-format
+msgid ""
+"An error occured.\n"
+"\n"
+"Unable to load keymap `%s', probably because command `xmodmap' could not be "
+"located in your PATH.\n"
+"\n"
+"The command was: %s"
+msgstr ""
+"Дошло је до грешке.\n"
+"\n"
+"Не може да учита мапу тастера „%s“, вероватно зато што наредба „xmodmap“ "
+"није нађена у вашој путањи (PATH).\n"
+"\n"
+"Неуспешна наредба: %s"
+
+#: gtik/GNOME_GtikApplet.server.in.in.h:1
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:1
+#: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:1
+msgid "Accessories"
+msgstr "Додатне алатке"
+
+#: gtik/GNOME_GtikApplet.server.in.in.h:2
+msgid "Get continuously updated stock quotes"
+msgstr "Обезбеђује непрекидно допуњавање података са берзе"
+
+#: gtik/GNOME_GtikApplet.server.in.in.h:3
+msgid "Gtik Applet Factory"
+msgstr "Фабрика аплета Гтик"
+
+#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:722
+msgid "Stock Ticker"
+msgstr "Праћење берзе"
+
+#: gtik/GNOME_GtikApplet.xml.h:4 gweather/GNOME_GWeatherApplet.xml.h:5
+#: mailcheck/GNOME_MailCheckApplet.xml.h:4
+msgid "_Update"
+msgstr "_Освежи"
+
+#: gtik/gtik.c:202
+msgid "No data available or properties not set"
+msgstr "Нема доступних података или није подешено"
+
+#: gtik/gtik.c:724
+msgid ""
+"This program connects to a popular site and downloads current stock quotes.  "
+"The GNOME Stock Ticker is a free Internet-based application.  It comes with "
+"ABSOLUTELY NO WARRANTY.  Do not use the GNOME Stock Ticker for making "
+"investment decisions; it is for informational purposes only."
+msgstr ""
+"Овај програм се повезује на популарну страницу и преузима тренутно стање "
+"акција на берзи.  GNOME Праћење берзе је слободан програм заснован на "
+"Интернету.  Нема никакву гаранцију. Не користите Праћење берзе за прављење "
+"одлука о улагању; намена му је само обавештајне природе."
+
+#: gtik/gtik.c:1185
+#, fuzzy
+msgid "Current _stocks:"
+msgstr "_Текуће прилике"
+
+#: gtik/gtik.c:1193
+#, fuzzy
+msgid "_New symbol:"
+msgstr "_Нови симбол:"
+
+#: gtik/gtik.c:1202
+msgid "_Add"
+msgstr "_Додај"
+
+#: gtik/gtik.c:1211
+#, fuzzy
+msgid "_Remove"
+msgstr "_Уклони изабрани"
+
+#: gtik/gtik.c:1313
+msgid "Stock Ticker Preferences"
+msgstr "Поставке праћења берзе"
+
+#: gtik/gtik.c:1331
+msgid "Symbols"
+msgstr "Симболи"
+
+#: gtik/gtik.c:1337 mailcheck/mailcheck.c:1807
+msgid "Behavior"
+msgstr "Понашање"
+
+#: gtik/gtik.c:1340 gweather/gweather-pref.c:298
+#, fuzzy
+msgid "Update"
+msgstr "_Освежи"
+
+#: gtik/gtik.c:1344
+#, fuzzy
+msgid "Stock update fre_quency:"
+msgstr "Учесталост освежавања берзе у минутима:"
+
+# bug:plural-forms
+#: gtik/gtik.c:1353 gweather/gweather-pref.c:325 mailcheck/mailcheck.c:1556
+#: mailcheck/mailcheck.c:1560
+#, fuzzy
+msgid "minutes"
+msgstr "минут(а)"
+
+#: gtik/gtik.c:1356
+msgid "Scrolling"
+msgstr ""
+
+#: gtik/gtik.c:1360
+#, fuzzy
+msgid "_Scroll speed:"
+msgstr "Брзина кретања:"
+
+#: gtik/gtik.c:1364
+#, fuzzy
+msgid "_Slow"
+msgstr "Снег"
+
+#: gtik/gtik.c:1366
+msgid "_Medium"
+msgstr ""
+
+#: gtik/gtik.c:1368
+#, fuzzy
+msgid "_Fast"
+msgstr "_Прогноза"
+
+#: gtik/gtik.c:1385
+msgid "_Enable scroll buttons"
+msgstr "_Омогући дугмиће за померање садржаја"
+
+#: gtik/gtik.c:1394
+msgid "Scroll _left to right"
+msgstr "Кретање са _лева на десно"
+
+#: gtik/gtik.c:1412
+msgid "Displa_y only symbols and price"
+msgstr "Прикажи само симболе и цену"
+
+#: gtik/gtik.c:1421 mini-commander/src/mini-commander.glade.h:23
+#: stickynotes/stickynotes.glade.h:35
+#, fuzzy
+msgid "_Width:"
+msgstr "_Ширина:"
+
+# Ja bih stavio "tacaka", ali...
+#: gtik/gtik.c:1431 mini-commander/src/mini-commander.glade.h:24
+#: multiload/properties.c:410 stickynotes/stickynotes.glade.h:36
+msgid "pixels"
+msgstr "тачака"
+
+#: gtik/gtik.c:1436
+msgid "_Font:"
+msgstr "_Писмо:"
+
+#: gtik/gtik.c:1450 modemlights/properties.c:535 multiload/properties.c:438
+msgid "Colors"
+msgstr "Боје"
+
+#: gtik/gtik.c:1455
+#, fuzzy
+msgid "Stock _raised:"
+msgstr "Праћење берзе"
+
+#: gtik/gtik.c:1470
+msgid "Stock _lowered:"
+msgstr ""
+
+#: gtik/gtik.c:1485
+msgid "Stock _unchanged:"
+msgstr ""
+
+#: gtik/gtik.c:1500 modemlights/properties.c:491
+#, fuzzy
+msgid "_Background:"
+msgstr "_Позадина"
+
+#: gtik/gtik.c:1597
+msgid "Skip forward"
+msgstr "Прескочи унапред"
+
+#: gtik/gtik.c:1598
+msgid "Skip backward"
+msgstr "Прескочи уназад"
+
+#: gtik/gtik.c:1599
+msgid ""
+"Stock Ticker\n"
+"Get continuously updated stock quotes"
+msgstr ""
+"Праћење берзе\n"
+"Непрекидно освежавање стања на берзи"
+
+#: gtik/gtik.c:1789
+msgid "(No"
+msgstr "(Нема"
+
+#: gtik/gtik.c:1790
+msgid "Change "
+msgstr "Промене "
+
+#: gweather/GNOME_GWeatherApplet.xml.h:2
+msgid "_Forecast"
+msgstr "_Прогноза"
+
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:2
+msgid "Factory for creating the weather applet."
+msgstr "Фабрика за прављење аплета за време."
+
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:3
+msgid "Gweather Applet Factory"
+msgstr "Гвреме аплет фабрика"
+
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:4
+msgid "Monitor the current weather conditions, and forecasts"
+msgstr "Праћење тренутних временских прилика и временске прогнозе"
+
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:5
+#: gweather/gweather-about.c:64
+msgid "Weather Report"
+msgstr "Извештај о времену"
+
+#: gweather/gweather-about.c:65
+msgid "Copyright (c)1999 by S. Papadimitriou"
+msgstr "©1999 — С. Пападимитроу"
+
+#: gweather/gweather-about.c:66
+msgid ""
+"Released under the GNU General Public License.\n"
+"\n"
+"An applet for monitoring local weather conditions."
+msgstr ""
+"Објављено под Гнуовом Општом јавном лиценцом.\n"
+"\n"
+"Аплет за праћење локалних временских прилика."
+
+#: gweather/gweather-applet.c:43
+#, c-format
+msgid ""
+"%s\n"
+"Today: %s\n"
+"Current temperature %d"
+msgstr ""
+
+#: gweather/gweather-applet.c:65
+#, c-format
+msgid ""
+"%s\n"
+"%s: %s\n"
+"Low %d, High %d"
+msgstr ""
+
+#: gweather/gweather-applet.c:293
+msgid "Updating..."
+msgstr "Освежава..."
+
+#: gweather/gweather-dialog.c:82
+#, fuzzy
+msgid "Day"
+msgstr "Приказ"
+
+#: gweather/gweather-dialog.c:83
+#, fuzzy
+msgid "Precipitation"
+msgstr "Делимично падавине"
+
+#: gweather/gweather-dialog.c:83
+#, fuzzy
+msgid "Condition"
+msgstr "Прилике:"
+
+#: gweather/gweather-dialog.c:86 gweather/gweather-dialog.c:192
+msgid "Forecast"
+msgstr "Прогноза"
+
+#: gweather/gweather-dialog.c:110
+#, fuzzy
+msgid "Current Conditions"
+msgstr "_Текуће прилике"
+
+#: gweather/gweather-dialog.c:121
+msgid "City:"
+msgstr ""
+
+#: gweather/gweather-dialog.c:128
+#, fuzzy
+msgid "Last update:"
+msgstr "Освежи:"
+
+#: gweather/gweather-dialog.c:135
+msgid "Conditions:"
+msgstr "Прилике:"
+
+#: gweather/gweather-dialog.c:146
+msgid "Temperature:"
+msgstr "Температура:"
+
+#: gweather/gweather-dialog.c:153
+msgid "Feels like:"
+msgstr ""
+
+#: gweather/gweather-dialog.c:160
+msgid "Humidity:"
+msgstr "Влажност:"
+
+#: gweather/gweather-dialog.c:167
+msgid "Wind:"
+msgstr "Ветар:"
+
+#: gweather/gweather-dialog.c:174
+#, fuzzy
+msgid "Visibilty:"
+msgstr "Видљивост:"
+
+#: gweather/gweather-dialog.c:181
+msgid "Pressure:"
+msgstr "Притисак:"
+
+#: gweather/gweather-dialog.c:307
+#, c-format
+msgid "%s / %.1f %s"
+msgstr ""
+
+#. Accessible Name and Description for the components in Preference Dialog
+#: gweather/gweather-pref.c:95
+msgid "Update spin button"
+msgstr "Освежи вртеће дугме"
+
+#: gweather/gweather-pref.c:95
+msgid "Spinbutton for updating"
+msgstr "Вртеће дугме за освежавање"
+
+#: gweather/gweather-pref.c:265
+msgid "Weather Preferences"
+msgstr "Поставке времена"
+
+#: gweather/gweather-pref.c:302
+#, fuzzy
+msgid "_Automatically update every:"
+msgstr "_Аутоматско освежавање сваких"
+
+#: gweather/gweather-pref.c:331
+msgid "Use _metric system units"
+msgstr "Користити _метрички систем јединица"
+
+#: gweather/gweather-pref.c:339
+msgid "_Display daily average temperatures"
+msgstr ""
+
+#: gweather/gweather-pref.c:350
+msgid "Number of _forecasts to display:"
+msgstr ""
+
+# Sta je "spray"? Zapraseno?
+#: gweather/gweather-pref.c:360
+#, fuzzy
+msgid "days"
+msgstr "Запрашено"
+
+#: gweather/gweather-pref.c:367 gweather/gweather-pref.c:376
+#: gweather/location.c:354
+msgid "Location"
+msgstr "Место"
+
+#: gweather/gweather-pref.c:387
+#, fuzzy
+msgid "Current city:"
+msgstr "_Текуће прилике"
+
+#: gweather/gweather-pref.c:399
+msgid "Available c_ountries:"
+msgstr ""
+
+#: gweather/gweather-pref.c:411
+msgid "Available c_ities:"
+msgstr ""
+
+#: gweather/location.c:184
+msgid "Could not download countries"
+msgstr ""
+
+#: gweather/location.c:186
+msgid "Could not download cities"
+msgstr ""
+
+#: gweather/location.c:243
+msgid "Downloading Cities..."
+msgstr ""
+
+#: gweather/location.c:305
+msgid "Country"
+msgstr ""
+
+#: gweather/location.c:388
+msgid "Downloading Countries..."
+msgstr ""
+
+#: gweather/weather.c:49
+msgid "knots"
+msgstr "чворови"
+
+#: gweather/weather.c:49
+msgid "kph"
+msgstr "km/h"
+
+# Kod nas treba mmHg
+#: gweather/weather.c:54
+msgid "inHg"
+msgstr "inHg"
+
+# Sta je ovo hPa? Pa za Pascal...
+#: gweather/weather.c:54
+msgid "hPa"
+msgstr "hPa"
+
+#: gweather/weather.c:58
+msgid "miles"
+msgstr "миља"
+
+#: gweather/weather.c:58
+msgid "kilometers"
+msgstr "километара"
+
+#: gweather/weather.c:63
+msgid "Clear Sky"
+msgstr "Ведро"
+
+#: gweather/weather.c:64
+msgid "Broken clouds"
+msgstr "Разбијени облаци"
+
+#: gweather/weather.c:65
+msgid "Scattered clouds"
+msgstr "Распирени облаци"
+
+#: gweather/weather.c:66
+msgid "Few clouds"
+msgstr "Местимично облачно"
+
+#: gweather/weather.c:67
+msgid "Overcast"
+msgstr "Облачно"
+
+#: gweather/weather.c:71
+#, fuzzy
+msgid "Windy"
+msgstr "Ветар:"
+
+#: gweather/weather.c:72
+#, fuzzy
+msgid "Thunder Storms"
+msgstr "Пљусак са грмљавином"
+
+#: gweather/weather.c:73
+msgid "Snow"
+msgstr "Снег"
+
+#: gweather/weather.c:74
+msgid "Rain"
+msgstr "Киша"
+
+#: gweather/weather.c:75
+#, fuzzy
+msgid "Heavy Rain"
+msgstr "Јака киша"
+
+#: gweather/weather.c:76
+msgid "Sleet"
+msgstr ""
+
+#: gweather/weather.c:77
+#, fuzzy
+msgid "Light Flurries"
+msgstr "Лагана прашина"
+
+#: gweather/weather.c:78
+msgid "Flurries"
+msgstr ""
+
+#: gweather/weather.c:79
+#, fuzzy
+msgid "Snow and Wind"
+msgstr "Трунке снега"
+
+#: gweather/weather.c:80
+msgid "Dust"
+msgstr "Прашина"
+
+#: gweather/weather.c:81
+msgid "Fog"
+msgstr "Магла"
+
+# I ovo je sumaglica, izmaglica kao i Mist, pa neka ovo bude sumaglica ;)
+#: gweather/weather.c:82
+msgid "Haze"
+msgstr "Сумаглица"
+
+#: gweather/weather.c:83
+msgid "Smoke"
+msgstr "Смог"
+
+#: gweather/weather.c:84
+#, fuzzy
+msgid "Cold"
+msgstr "Боје"
+
+#: gweather/weather.c:85
+msgid "Cloudy"
+msgstr ""
+
+#: gweather/weather.c:86
+msgid "Mostly Cloudy"
+msgstr ""
+
+#: gweather/weather.c:87
+msgid "Partly Cloudy"
+msgstr ""
+
+#: gweather/weather.c:88
+msgid "Sunny"
+msgstr ""
+
+#: gweather/weather.c:89
+msgid "Mostly Sunny"
+msgstr ""
+
+#: gweather/weather.c:90
+msgid "Hot"
+msgstr ""
+
+#: gweather/weather.c:91
+#, fuzzy
+msgid "Nothing"
+msgstr "Северни"
+
+#: gweather/weather.c:95
+msgid "Variable"
+msgstr "Променљив"
+
+#: gweather/weather.c:96
+msgid "North"
+msgstr "Северни"
+
+#: gweather/weather.c:96
+msgid "North - NorthEast"
+msgstr "Северни-Североисточни"
+
+#: gweather/weather.c:96
+msgid "Northeast"
+msgstr "Североисточни"
+
+#: gweather/weather.c:96
+msgid "East - NorthEast"
+msgstr "Источни-Североисточни"
+
+#: gweather/weather.c:97
+msgid "East"
+msgstr "Источни"
+
+#: gweather/weather.c:97
+msgid "East - Southeast"
+msgstr "Источни-Југоисточни"
+
+#: gweather/weather.c:97
+msgid "Southeast"
+msgstr "Југоисточни"
+
+#: gweather/weather.c:97
+msgid "South - Southeast"
+msgstr "Југо-Југоисточни"
+
+#: gweather/weather.c:98
+msgid "South"
+msgstr "Јужни"
+
+#: gweather/weather.c:98
+msgid "South - Southwest"
+msgstr "Југо-Југозападни"
+
+#: gweather/weather.c:98
+msgid "Southwest"
+msgstr "Југозападни"
+
+#: gweather/weather.c:98
+msgid "West - Southwest"
+msgstr "Западно-Јужнозападни"
+
+#: gweather/weather.c:99
+msgid "West"
+msgstr "Западни"
+
+#: gweather/weather.c:99
+msgid "West - Northwest"
+msgstr "Западни-Северозападни"
+
+#: gweather/weather.c:99
+msgid "Northwest"
+msgstr "Северозападни"
+
+#: gweather/weather.c:99
+msgid "North - Northwest"
+msgstr "Северно-Северозападни"
+
+#: gweather/weather.c:100
+msgid "Calm"
+msgstr "Мирно"
+
+#: gweather/weather.c:528 gweather/weather.c:553
+msgid "Could not download forecast"
+msgstr ""
+
+#: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:1
+msgid "Alert you when new mail arrives"
+msgstr ""
+
+#: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:2
+#, fuzzy
+msgid "Factory for creating inbox monitors."
+msgstr "Фабрика за прављење аплета за време."
+
+#: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:3
+#: mailcheck/mailcheck.c:330 mailcheck/mailcheck.c:1888
+msgid "Inbox Monitor"
+msgstr ""
+
+#: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:4
+msgid "Inbox Monitor Factory"
+msgstr ""
+
+#: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:5
+#: modemlights/GNOME_ModemLightsApplet.server.in.in.h:1
+msgid "Internet"
+msgstr "Интернет"
+
+#: mailcheck/mailcheck.c:206
+#, fuzzy, c-format
+msgid "There was an error executing %s: %s"
+msgstr "Дошло је до грешке при покретању „%s“: %s"
+
+#: mailcheck/mailcheck.c:336
+msgid ""
+"You didn't set a password in the preferences for the Inbox Monitor,\n"
+"so you have to enter it each time it starts up."
+msgstr ""
+
+#: mailcheck/mailcheck.c:344
+msgid "Please enter your mailserver's _password:"
+msgstr ""
+
+#: mailcheck/mailcheck.c:349 mailcheck/mailcheck.c:1459
+msgid "Password Entry box"
+msgstr ""
+
+#: mailcheck/mailcheck.c:403
+msgid "The Network may be down."
+msgstr ""
+
+#: mailcheck/mailcheck.c:406 mailcheck/mailcheck.c:409
+msgid "The User id or Password is not correct."
+msgstr ""
+
+#: mailcheck/mailcheck.c:412
+msgid "The Server name may be wrong."
+msgstr ""
+
+#: mailcheck/mailcheck.c:416
+msgid "Maybe you used a wrong server, username or password?"
+msgstr ""
+
+#: mailcheck/mailcheck.c:425
+#, c-format
+msgid ""
+"The Inbox Monitor failed to check your mails from %s and thus automatic "
+"updating has been deactivated for now.\n"
+"%s"
+msgstr ""
+
+#: mailcheck/mailcheck.c:605
+msgid "You have new mail."
+msgstr ""
+
+#: mailcheck/mailcheck.c:607
+msgid "You have mail."
+msgstr ""
+
+#: mailcheck/mailcheck.c:611
+#, c-format
+msgid "%d/%d messages"
+msgstr ""
+
+#: mailcheck/mailcheck.c:613
+#, c-format
+msgid "%d messages"
+msgstr ""
+
+#: mailcheck/mailcheck.c:617
+#, fuzzy
+msgid "No mail."
+msgstr "Обично"
+
+#: mailcheck/mailcheck.c:1116 mailcheck/mailcheck.c:1117
+#: mailcheck/mailcheck.c:2080 mailcheck/mailcheck.c:2081
+#, fuzzy
+msgid "Status not updated"
+msgstr " није монтиран"
+
+#: mailcheck/mailcheck.c:1298 mailcheck/mailcheck.c:1811
+msgid "Inbox Settings"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1324
+msgid "Mailbox _resides on:"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1335
+msgid "Local mailspool"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1343
+msgid "Local maildir"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1351
+msgid "Remote POP3-server"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1359
+msgid "Remote IMAP-server"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1379
+msgid "Mail _spool file:"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1386
+#, fuzzy
+msgid "Browse"
+msgstr "Прегледник"
+
+#: mailcheck/mailcheck.c:1401
+msgid "Mail s_erver:"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1410
+msgid "Mail Server Entry box"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1424
+#, fuzzy
+msgid "_Username:"
+msgstr "_Корисник"
+
+#: mailcheck/mailcheck.c:1435
+msgid "Username Entry box"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1448
+#, fuzzy
+msgid "_Password:"
+msgstr "_Процесор"
+
+#: mailcheck/mailcheck.c:1472
+msgid "_Folder:"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1483
+msgid "Folder Entry box"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1544
+msgid "Check for mail _every:"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1556
+msgid "Choose time interval in minutes to check mail"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1570
+msgid "Choose time interval in seconds to check mail"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1583
+msgid "Play a _sound when new mail arrives"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1590
+msgid "Set the number of unread mails to _zero when clicked"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1601
+msgid "Select a_nimation:"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1614
+#, fuzzy
+msgid "Commands"
+msgstr "Наредба:"
+
+#: mailcheck/mailcheck.c:1643
+msgid "Before each _update:"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1658
+msgid "Command to execute before each update"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1668
+msgid "When new mail _arrives:"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1681 mailcheck/mailcheck.schemas.in.h:2
+msgid "Command to execute when new mail arrives"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1691
+msgid "When clicke_d:"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1704
+msgid "Command to execute when clicked"
+msgstr ""
+
+#: mailcheck/mailcheck.c:1782
+#, fuzzy
+msgid "Inbox Monitor Preferences"
+msgstr "Поставке праћења система"
+
+#: mailcheck/mailcheck.c:1890
+msgid "Inbox Monitor notifies you when new mail arrives in your mailbox"
+msgstr ""
+
+#: mailcheck/mailcheck.c:2056
+#, fuzzy
+msgid "Text only"
+msgstr "Текст"
+
+#: mailcheck/mailcheck.c:2082
+msgid "Mail check"
+msgstr ""
+
+#: mailcheck/mailcheck.c:2083
+msgid "Mail check notifies you when new mail arrives in your mailbox"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:1
+msgid "Command to execute when checking mail"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:3
+msgid "Command to execute when you click on the Inbox Monitor"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:4
+msgid "Command to run before checking mail"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:5
+msgid "Do we run the exec-command"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:6
+msgid "Do we run the newmail-command"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:7
+msgid "How often (in milliseconds) we check the mail"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:8
+msgid "If mail should be checked automatically"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:9
+msgid "If this is set mail will be checked every update-freq milliseconds"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:10
+msgid "If this is set, we should run the exec-command"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:11
+msgid "If this is set, we should run the newmail-command"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:12
+msgid "Interval for checking mail"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:13
+msgid "Path to the animation file"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:14
+msgid "Play a sound when mail is recieved"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:15
+msgid "Remote folder for mail retrieval"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:16
+msgid "Remote server to connect to for our mail"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:17
+msgid "Run this command before we check the mail"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:18
+msgid "The mail server"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:19
+msgid "The user's password"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:20
+msgid "The user's password for the remote server"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:21
+msgid "This is how we check the mail, check the mail, check the mail..."
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:22
+msgid "This is how we process the mail, process the mail, process the mail..."
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:23
+msgid ""
+"This is the animation that will be displayed during normal Inbox Monitor "
+"usage"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:24
+msgid "Username on the remote server"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:25
+msgid "We run this command when the user clicks on Inbox Monitor"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:26
+msgid "Whether to reset mail status when you click on Inbox Monitor"
+msgstr ""
+
+#: mailcheck/mailcheck.schemas.in.h:27
+msgid "You've got mail!"
+msgstr ""
+
+#: mailcheck/mailcheck.soundlist.in.h:1
+msgid "Mailcheck"
+msgstr ""
+
+#: mailcheck/mailcheck.soundlist.in.h:2
+msgid "New Mail"
+msgstr ""
+
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:1
+#: mini-commander/src/about.c:66
+#: mini-commander/src/mini-commander_applet.c:328
+msgid "Command Line"
+msgstr "Наредба"
+
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:2
+msgid "Mini-Commander"
+msgstr "Мали-наредник"
+
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:3
+msgid "MiniCommander Applet Factory"
+msgstr "Аплет фабрика Малог-наредника"
+
+#: mini-commander/src/about.c:69
+#, fuzzy
+msgid ""
+"This GNOME applet adds a command line to the panel. It features command "
+"completion, command history, and changeable macros.\n"
+"\n"
+"This program is free software; you can redistribute it and/or modify it "
+"under the terms of the GNU General Public License as published by the Free "
+"Software Foundation; either version 2 of the License, or (at your option) "
+"any later version."
+msgstr ""
+"Овај GNOME аплет додаје могућност уноса наредбе на панелу. Садржи допуњавање "
+"наредби, списак претходних наредби, измењиве макрое и уграђени сат.\n"
+"\n"
+"Овај програм је слободан софтвер — можете га раздељивати и мењати под "
+"условима Гнуове Опште јавне лиценце како ју је објавила Фондација за "
+"слободни софтвер, и то или 2. издања Лиценце, или (по вашем нахођењу) било "
+"којег новијег издања."
+
+#. build file select dialog
+#: mini-commander/src/command_line.c:440
+msgid "Start program"
+msgstr "Покрени програм"
+
+#: mini-commander/src/command_line.c:482
+msgid "Command line"
+msgstr "Наредба"
+
+#: mini-commander/src/command_line.c:483
+msgid "Type a command here and Gnome will execute it for you"
+msgstr "Овде унесите наредбу и Gnome ће је извршити за вас"
+
+#: mini-commander/src/mc-install-default-macros.c:71
+#, c-format
+msgid "Cannot get schema for %s : %s"
+msgstr "Не може добавити схему за %s: %s"
+
+#: mini-commander/src/mc-install-default-macros.c:99
+#, c-format
+msgid "Cannot set schema for %s : %s"
+msgstr "Не може поставити схему за %s: %s"
+
+#: mini-commander/src/mc-install-default-macros.c:105
+#, c-format
+msgid "Set default list value for %s\n"
+msgstr "Постави подразумевану вредност списка за %s\n"
+
+#: mini-commander/src/mc-install-default-macros.c:117
+msgid "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL is set, not installing schemas\n"
+msgstr ""
+"Није постављено GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL, не подешава схеме\n"
+
+#: mini-commander/src/mc-install-default-macros.c:125
+msgid "Must set the GCONF_CONFIG_SOURCE environment variable\n"
+msgstr "Мора се поставити променљива окружења GCONF_CONFIG_SOURCE\n"
+
+#: mini-commander/src/mc-install-default-macros.c:142
+#, c-format
+msgid "Failed to access configuration source(s): %s\n"
+msgstr "Неуспешно приступање изворима подешавања: %s\n"
+
+#: mini-commander/src/mc-install-default-macros.c:154
+#, c-format
+msgid "Error syncing config data: %s"
+msgstr "Грешка при усклађивању података о подешавањима: %s"
+
+#: mini-commander/src/mini-commander.glade.h:3
+#, fuzzy
+msgid "<b>Appearance</b>"
+msgstr "Изглед"
+
+#: mini-commander/src/mini-commander.glade.h:4
+#, fuzzy
+msgid "<b>Auto Completion</b>"
+msgstr "Самодопуњавање"
+
+#: mini-commander/src/mini-commander.glade.h:5
+#, fuzzy
+msgid "<b>Colors</b>"
+msgstr "Боје"
+
+#: mini-commander/src/mini-commander.glade.h:6
+msgid "<b>Size</b>"
+msgstr ""
+
+#: mini-commander/src/mini-commander.glade.h:7
+msgid "Add New Macro"
+msgstr "Додавање новог макроа"
+
+#: mini-commander/src/mini-commander.glade.h:9
+msgid "Command Line Preferences"
+msgstr "Поставке аплета за издавање наредби"
+
+#: mini-commander/src/mini-commander.glade.h:10
+msgid "Command line _background:"
+msgstr "_Позадина поља за унос наредбе:"
+
+#: mini-commander/src/mini-commander.glade.h:11
+msgid "Command line _foreground:"
+msgstr "_Боја текста за унос наредбе:"
+
+#: mini-commander/src/mini-commander.glade.h:12
+#, fuzzy
+msgid "E_nable history-based auto completion"
+msgstr "_Омогући самодопуњавање засновано на претходним наредбама"
+
+#: mini-commander/src/mini-commander.glade.h:14
+msgid "Macros"
+msgstr "Макрои"
+
+#: mini-commander/src/mini-commander.glade.h:15
+#: stickynotes/stickynotes.glade.h:23
+msgid "Pick a color"
+msgstr "Изаберите боју"
+
+#: mini-commander/src/mini-commander.glade.h:16
+msgid "Show fram_e"
+msgstr "Прикажи оквир"
+
+#: mini-commander/src/mini-commander.glade.h:17
+msgid "Show han_dle"
+msgstr "Прикажи дршку за премештање аплета"
+
+#: mini-commander/src/mini-commander.glade.h:18
+#, fuzzy
+msgid "_Add Macro..."
+msgstr "_Додајте нови макро..."
+
+#: mini-commander/src/mini-commander.glade.h:19
+msgid "_Delete Macro"
+msgstr "Об_ришите макро"
+
+#: mini-commander/src/mini-commander.glade.h:20
+#, fuzzy
+msgid "_Macros:"
+msgstr "Макрои"
+
+#: mini-commander/src/mini-commander.glade.h:21
+#, fuzzy
+msgid "_Pattern:"
+msgstr "Образац:"
+
+#: mini-commander/src/mini-commander.glade.h:22
+msgid "_Use default theme colors"
+msgstr "_Користите подразумеване боје теме"
+
+#: mini-commander/src/mini-commander_applet.c:174
+#: mini-commander/src/mini-commander_applet.c:178
+msgid "Browser"
+msgstr "Прегледник"
+
+#: mini-commander/src/mini-commander_applet.c:179
+msgid "Click this button to start the browser"
+msgstr "Притисните ово дугме да покренете прегледник"
+
+#: mini-commander/src/mini-commander_applet.c:192
+#: mini-commander/src/mini-commander_applet.c:196
+msgid "History"
+msgstr "Претходне наредбе"
+
+#: mini-commander/src/mini-commander_applet.c:197
+msgid "Click this button for the list of previous commands"
+msgstr "Притисните ово дугме да видите списак претходних наредби"
+
+#: mini-commander/src/mini-commander_applet.c:326
+msgid "Mini-Commander applet"
+msgstr "Аплет Мали-наредник"
+
+#: mini-commander/src/mini-commander_applet.c:327
+msgid "This applet adds a command line to the panel"
+msgstr "Овај аплет додају поље за издавање наредби на панел"
+
+#: mini-commander/src/preferences.c:387
+msgid "You must specify a pattern"
+msgstr "Морате навести образац"
+
+#: mini-commander/src/preferences.c:391
+msgid "You must specify a pattern and a command"
+msgstr "Морате навести и образац и наредбу"
+
+#: mini-commander/src/preferences.c:392
+msgid "You must specify a command"
+msgstr "Морате навести наредбу"
+
+#: mini-commander/src/preferences.c:395
+msgid "You may not specify duplicate patterns"
+msgstr "Не можете двоструко навести исте обрасце"
+
+#: mixer/GNOME_MixerApplet.server.in.in.h:1
+msgid "Adjust the sound volume"
+msgstr "Подеси јачину звука"
+
+#: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:170
+#: mixer/mixer.c:1005
+msgid "Volume Control"
+msgstr "Управљање јачином звука"
+
+# Mozda je bolje "zanemi", ali sta onda sa "muted"?
+#: mixer/GNOME_MixerApplet.xml.h:3
+msgid "_Mute"
+msgstr "_Утишај"
+
+#: mixer/GNOME_MixerApplet.xml.h:5
+msgid "_Run Volume Control..."
+msgstr "_Покрени управљање јачином звука..."
+
+#: mixer/mixer.c:112
+msgid "Main Volume"
+msgstr ""
+
+#: mixer/mixer.c:112
+msgid "Bass"
+msgstr ""
+
+#: mixer/mixer.c:112
+msgid "Treble"
+msgstr ""
+
+#: mixer/mixer.c:112
+#, fuzzy
+msgid "Synth"
+msgstr "Јужни"
+
+#: mixer/mixer.c:113
+msgid "Pcm"
+msgstr ""
+
+#: mixer/mixer.c:113
+msgid "Speaker"
+msgstr ""
+
+#: mixer/mixer.c:113
+msgid "Line"
+msgstr ""
+
+#: mixer/mixer.c:114
+msgid "Microphone"
+msgstr ""
+
+#: mixer/mixer.c:114
+msgid "CD"
+msgstr ""
+
+#: mixer/mixer.c:114
+msgid "Mix"
+msgstr ""
+
+#: mixer/mixer.c:114
+msgid "Pcm2"
+msgstr ""
+
+#: mixer/mixer.c:115
+msgid "Recording Level"
+msgstr ""
+
+#: mixer/mixer.c:115
+msgid "Input Gain"
+msgstr ""
+
+#: mixer/mixer.c:115
+msgid "Output Gain"
+msgstr ""
+
+#: mixer/mixer.c:116
+msgid "Line1"
+msgstr ""
+
+#: mixer/mixer.c:116
+msgid "Line2"
+msgstr ""
+
+#: mixer/mixer.c:116
+msgid "Line3"
+msgstr ""
+
+#: mixer/mixer.c:116
+msgid "Digital1"
+msgstr ""
+
+#: mixer/mixer.c:117
+msgid "Digital2"
+msgstr ""
+
+#: mixer/mixer.c:117
+msgid "Digital3"
+msgstr ""
+
+#: mixer/mixer.c:118
+msgid "Phone Input"
+msgstr ""
+
+#: mixer/mixer.c:118
+msgid "Phone Output"
+msgstr ""
+
+#: mixer/mixer.c:118
+#, fuzzy
+msgid "Video"
+msgstr "Сакрити"
+
+#: mixer/mixer.c:118
+#, fuzzy
+msgid "Radio"
+msgstr "Киша"
+
+#: mixer/mixer.c:118
+#, fuzzy
+msgid "Monitor"
+msgstr "Праћење система"
+
+#: mixer/mixer.c:171
+msgid "Volume Control (muted)"
+msgstr "Управљање јачином звука (утишано)"
+
+#: mixer/mixer.c:172
+msgid "No audio device"
+msgstr ""
+
+#: mixer/mixer.c:254
+msgid ""
+"warning: this version of gmix was compiled with a different version of\n"
+"soundcard.h.\n"
+msgstr ""
+"упозорење: ово издање gmix-а је преведено са другим издањем\n"
+"soundcard.h датотеке.\n"
+
+#: mixer/mixer.c:745
+msgid "Volume Controller"
+msgstr "Управљање јачином звука"
+
+#: mixer/mixer.c:746
+msgid "Use Up/Down arrow keys to change volume"
+msgstr "Користите стрелице за горе и доле за измену јачине звука"
+
+#: mixer/mixer.c:1006
+msgid "(C) 2001 Richard Hult"
+msgstr "©2001 Ричард Хулт"
+
+#: mixer/mixer.c:1007
+msgid "The volume control lets you set the volume level for your desktop."
+msgstr ""
+"Управљање јачином звука вам омогућава да поставите јачину звука за ваш "
+"десктоп."
+
+#: mixer/mixer.c:1149
+#, fuzzy
+msgid "Volume Control Preferences"
+msgstr "Управљање јачином звука"
+
+#: mixer/mixer.c:1170
+msgid "Audio Channels"
+msgstr ""
+
+#: mixer/mixer.c:1186
+#, fuzzy
+msgid "_Select channel to control:"
+msgstr "Изаберите иконицу за монтирани"
+
+#: mixer/mixer.c:1454
+msgid "The volume control lets you set the volume level for your desktop"
+msgstr ""
+"Управљање јачином звука вам омогућава да поставите јачину звука за ваш "
+"десктоп."
+
+#: modemlights/GNOME_ModemLightsApplet.server.in.in.h:2
+#: modemlights/modemlights.c:227
+msgid "Modem Lights"
+msgstr "Лампице модема"
+
+#: modemlights/modemlights.c:229
+msgid ""
+"Released under the GNU general public license.\n"
+"A modem status indicator and dialer.\n"
+"Lights in order from the top or left are Send data and Receive data."
+msgstr ""
+"Објављено под Гнуовом Општом јавном лиценцом.\n"
+"Приказивање стања модема и позивање.\n"
+"Лампице (одозго, или слева) су за примање и слање података."
+
+#: modemlights/modemlights.c:558
+msgid ""
+"You are currently connected.\n"
+"Do you want to disconnect?"
+msgstr ""
+"Веза је тренутно успостављена.\n"
+"Желите да прекинете везу?"
+
+#: modemlights/modemlights.c:573
+msgid "Do you want to connect?"
+msgstr "Желите да успоставите везу?"
+
+#: modemlights/modemlights.c:601
+#, c-format
+msgid "%#.1fMb received / %#.1fMb sent / time: %.1d:%.2d"
+msgstr "Примљено %#.1fMb / Послато %#.1fMb  / време: %.1d:%.2d"
+
+#: modemlights/modemlights.c:606
+msgid "not connected"
+msgstr "веза није успостављена"
+
+#: modemlights/properties.c:365
+msgid "Modem Lights Preferences"
+msgstr "Поставке лампица модема"
+
+#: modemlights/properties.c:392
+#, fuzzy
+msgid "U_pdate every:"
+msgstr "Освежи:"
+
+# "protok" vise odgovara za "bandwidth", ali zasto da ne i ovako?
+#. extra info checkbox
+#: modemlights/properties.c:410
+msgid "Sho_w connect time and throughput"
+msgstr "При_кажи време трајања везе и проток"
+
+#: modemlights/properties.c:417
+msgid "B_link connection status when connecting"
+msgstr ""
+
+#: modemlights/properties.c:424
+#, fuzzy
+msgid "Connections"
+msgstr "Успоставља везу"
+
+#: modemlights/properties.c:433
+#, fuzzy
+msgid "Co_nnection command:"
+msgstr "_Наредба за повезивање:"
+
+#: modemlights/properties.c:452
+#, fuzzy
+msgid "_Disconnection command:"
+msgstr "Наредба за _раскид везе:"
+
+#. confirmation checkbox
+#: modemlights/properties.c:467
+msgid "Con_firm connection"
+msgstr "_Потврдити успостављање везе"
+
+#: modemlights/properties.c:483
+#, fuzzy
+msgid "Receive Data"
+msgstr "Примљени подаци"
+
+#: modemlights/properties.c:489
+#, fuzzy
+msgid "_Foreground:"
+msgstr "_Индикатор"
+
+#: modemlights/properties.c:494
+#, fuzzy
+msgid "Send Data"
+msgstr "Послати подаци"
+
+#: modemlights/properties.c:499
+#, fuzzy
+msgid "Foregroun_d:"
+msgstr "Ин_дикатор"
+
+#: modemlights/properties.c:501
+#, fuzzy
+msgid "Backg_round:"
+msgstr "Позад_ина"
+
+#: modemlights/properties.c:504
+#, fuzzy
+msgid "Connection Status"
+msgstr "Стање везе"
+
+#: modemlights/properties.c:512
+#, fuzzy
+msgid "Co_nnected:"
+msgstr "_Веза успостављена"
+
+#: modemlights/properties.c:514
+#, fuzzy
+msgid "Disconnec_ted:"
+msgstr "Наредба за _раскид везе:"
+
+#: modemlights/properties.c:517
+#, fuzzy
+msgid "C_onnecting:"
+msgstr "Успоставља везу"
+
+#: modemlights/properties.c:520
+msgid "Text"
+msgstr "Текст"
+
+#: modemlights/properties.c:528
+#, fuzzy
+msgid "For_eground:"
+msgstr "_Боја"
+
+#: modemlights/properties.c:530
+#, fuzzy
+msgid "Bac_kground:"
+msgstr "По_задина"
+
+#: modemlights/properties.c:532
+msgid "O_utline"
+msgstr "У_гашене бројке"
+
+#: modemlights/properties.c:544
+#, fuzzy
+msgid "Modem Options"
+msgstr "Поставке модема"
+
+#: modemlights/properties.c:553
+msgid "_Device:"
+msgstr "_Уређај:"
+
+#: modemlights/properties.c:572
+#, fuzzy
+msgid "_Lock file:"
+msgstr "Дато_тека за закључавање модема:"
+
+#: modemlights/properties.c:586
+msgid "_Verify owner of lock file"
+msgstr "_Проверити власника датотеке за закључавање"
+
+#. ISDN checkbox
+#: modemlights/properties.c:594
+msgid "U_se ISDN"
+msgstr "_Користи ISDN"
+
+#: modemlights/properties.c:614
+msgid "Set options as default"
+msgstr "Постави опције као подразумеване"
+
+#: modemlights/properties.c:620
+msgid "Advanced"
+msgstr "Напредно"
+
+#: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:1
+msgid "A system load indicator"
+msgstr "Показатељ оптерећења система"
+
+#: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:2
+#: multiload/main.c:78
+msgid "System Monitor"
+msgstr "Праћење система"
+
+#: multiload/GNOME_MultiloadApplet.xml.h:3
+msgid "_Run detailed system monitor"
+msgstr "_Покрени детаљно праћење система"
+
+#: multiload/cpuload.c:50
+msgid "CPU Load"
+msgstr "Оптерећење процесора"
+
+#: multiload/loadavg.c:107 multiload/main.c:244
+msgid "Load Average"
+msgstr "Просечно оптерећење"
+
+#: multiload/main.c:80
+#, fuzzy
+msgid ""
+"Released under the GNU General Public License.\n"
+"\n"
+"A system load monitor capable of displaying graphs for CPU, ram, and swap "
+"space use, plus network traffic."
+msgstr ""
+"Објављено под Гнуовом Општом јавном лиценцом.\n"
+"\n"
+"Праћење оптерећења система омогућава приказ графика за процесор, меморију, и "
+"меморију на диску, а уз то и мрежни саобраћај."
+
+#: multiload/main.c:236 multiload/properties.c:463
+msgid "Processor"
+msgstr "Процесор"
+
+#: multiload/main.c:238 multiload/properties.c:470
+msgid "Memory"
+msgstr "Меморија"
+
+#: multiload/main.c:240 multiload/properties.c:478
+msgid "Network"
+msgstr "Мрежа"
+
+#: multiload/main.c:242 multiload/properties.c:486
+#, fuzzy
+msgid "Swap Space"
+msgstr "Оптерећење меморије на диску"
+
+#: multiload/main.c:246
+msgid "Resource"
+msgstr "Ресурси"
+
+#: multiload/main.c:256
+#, c-format
+msgid ""
+"%s:\n"
+"%d%% in use"
+msgstr ""
+"%s:\n"
+"%d%% у употреби"
+
+#: multiload/memload.c:50
+msgid "Memory Load"
+msgstr "Оптерећење меморије"
+
+# Ili je ovo "net" kao "ukupno"?
+#: multiload/netload.c:49
+msgid "Net Load"
+msgstr "Оптерећење мреже"
+
+#: multiload/properties.c:280
+msgid "Monitored Resources"
+msgstr "Праћени ресурси"
+
+#: multiload/properties.c:305
+msgid "_Processor"
+msgstr "_Процесор"
+
+#: multiload/properties.c:315
+msgid "_Memory"
+msgstr "_Меморија"
+
+#: multiload/properties.c:325
+msgid "_Network"
+msgstr "М_режа"
+
+#: multiload/properties.c:335
+#, fuzzy
+msgid "S_wap Space"
+msgstr "Оптерећење меморије на диску"
+
+#: multiload/properties.c:345
+#, fuzzy
+msgid "_Load"
+msgstr "Оптерећење процесора"
+
+#: multiload/properties.c:390
+msgid "System m_onitor width: "
+msgstr "_Ширина аплета"
+
+#: multiload/properties.c:392
+msgid "System m_onitor height: "
+msgstr "_Висина аплета"
+
+#: multiload/properties.c:414
+msgid "Sys_tem monitor update interval: "
+msgstr "_Време између два освежавања приказа"
+
+#: multiload/properties.c:427
+msgid "milliseconds"
+msgstr "милисекунди"
+
+#: multiload/properties.c:465 multiload/properties.c:472
+msgid "_User"
+msgstr "_Корисник"
+
+#: multiload/properties.c:466
+msgid "S_ystem"
+msgstr "_Систем"
+
+#: multiload/properties.c:467
+msgid "N_ice"
+msgstr "_Мањеприоритетно"
+
+#: multiload/properties.c:468
+msgid "I_dle"
+msgstr "_Неупослен"
+
+#: multiload/properties.c:473
+msgid "Sh_ared"
+msgstr "_Дељена"
+
+#: multiload/properties.c:474
+msgid "_Buffers"
+msgstr "_Бафери"
+
+#: multiload/properties.c:475
+msgid "Cach_ed"
+msgstr ""
+
+#: multiload/properties.c:476
+msgid "F_ree"
+msgstr "_Слободна"
+
+#: multiload/properties.c:480
+#, fuzzy
+msgid "_SLIP"
+msgstr "S_LIP"
+
+#: multiload/properties.c:481
+msgid "PL_IP"
+msgstr "PL_IP"
+
+#: multiload/properties.c:482
+#, fuzzy
+msgid "_Ethernet"
+msgstr "Е_тернет"
+
+#: multiload/properties.c:483
+#, fuzzy
+msgid "Othe_r"
+msgstr "_Остала"
+
+#: multiload/properties.c:484 multiload/properties.c:494
+msgid "_Background"
+msgstr "_Позадина"
+
+#: multiload/properties.c:488
+msgid "_Used"
+msgstr "Ис_коришћено"
+
+#: multiload/properties.c:489
+msgid "_Free"
+msgstr "_Слободно"
+
+# Ili je ovo "net" kao "ukupno"?
+#: multiload/properties.c:491
+#, fuzzy
+msgid "Load"
+msgstr "Оптерећење мреже"
+
+#: multiload/properties.c:493
+#, fuzzy
+msgid "_Average"
+msgstr "Просечно оптерећење"
+
+#: multiload/properties.c:514
+msgid "System Monitor Preferences"
+msgstr "Поставке праћења система"
+
+#: multiload/swapload.c:51
+msgid "Swap Load"
+msgstr "Оптерећење меморије на диску"
+
+#: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
+msgid "Create, view, and manage sticky notes on the desktop"
+msgstr ""
+
+#. FIXME : Hack because libglade does not properly set these
+#: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:3
+#: stickynotes/stickynotes_applet.c:148 stickynotes/stickynotes_applet.c:246
+msgid "Sticky Notes"
+msgstr ""
+
+#: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:4
+#, fuzzy
+msgid "Sticky Notes Applet Factory"
+msgstr "Фабрика аплета Гтик"
+
+#: stickynotes/GNOME_StickyNotesApplet.xml.h:2
+#, fuzzy
+msgid "_Delete All Notes"
+msgstr "Об_ришите макро"
+
+#: stickynotes/GNOME_StickyNotesApplet.xml.h:4
+msgid "_Hide All Notes"
+msgstr ""
+
+#: stickynotes/GNOME_StickyNotesApplet.xml.h:5
+msgid "_Lock All Notes"
+msgstr ""
+
+#: stickynotes/GNOME_StickyNotesApplet.xml.h:6 stickynotes/stickynotes.c:29
+msgid "_New Note"
+msgstr ""
+
+#: stickynotes/GNOME_StickyNotesApplet.xml.h:8
+#, fuzzy
+msgid "_Show All Notes"
+msgstr "Прикажи свако _прозорче"
+
+#: stickynotes/GNOME_StickyNotesApplet.xml.h:9
+msgid "_Unlock All Notes"
+msgstr ""
+
+#: stickynotes/stickynotes.c:30
+#, fuzzy
+msgid "_Delete Note"
+msgstr "Об_ришите макро"
+
+#: stickynotes/stickynotes.c:32
+msgid "_Edit Title"
+msgstr ""
+
+#: stickynotes/stickynotes.glade.h:3
+msgid "<b>Default Behavior</b>"
+msgstr ""
+
+#: stickynotes/stickynotes.glade.h:4
+msgid "<b>Default Dimensions</b>"
+msgstr ""
+
+#: stickynotes/stickynotes.glade.h:5
+msgid ""
+"<b>Delete ALL sticky notes?</b>\n"
+"\n"
+"Changes will be saved instantly."
+msgstr ""
+
+#: stickynotes/stickynotes.glade.h:8
+msgid ""
+"<b>Delete this sticky note?</b>\n"
+"\n"
+"Changes will be saved instantly."
+msgstr ""
+
+#: stickynotes/stickynotes.glade.h:11
+msgid "<b>Other Settings</b>"
+msgstr ""
+
+#: stickynotes/stickynotes.glade.h:12
+msgid "<b>Style</b>"
+msgstr ""
+
+#: stickynotes/stickynotes.glade.h:13
+#, fuzzy
+msgid "C_olor:"
+msgstr "+ _Боја:"
+
+#: stickynotes/stickynotes.glade.h:14
+msgid "Choose a base color to use for all sticky notes"
+msgstr ""
+
+#: stickynotes/stickynotes.glade.h:15
+msgid "Choose if notes are visible on ALL workspaces"
+msgstr ""
+
+#: stickynotes/stickynotes.glade.h:16
+msgid "Clic_k:"
+msgstr ""
+
+#: stickynotes/stickynotes.glade.h:17
+msgid "Creates _New Note"
+msgstr ""
+
+#: stickynotes/stickynotes.glade.h:18
+msgid "Define the default behavior when the applet is clicked."
+msgstr ""
+
+#: stickynotes/stickynotes.glade.h:19
+msgid "Delete all sticky notes"
+msgstr ""
+
+#: stickynotes/stickynotes.glade.h:20
+#, fuzzy
+msgid "Delete note"
+msgstr "Об_ришите макро"
+
+#: stickynotes/stickynotes.glade.h:21
+#, fuzzy
+msgid "Edit title"
+msgstr "Уредите ставку за путању..."
+
+#: stickynotes/stickynotes.glade.h:22
+#, fuzzy
+msgid "H_eight:"
+msgstr "Пуна"
+
+#: stickynotes/stickynotes.glade.h:24
+msgid "Resize note"
+msgstr ""
+
+#: stickynotes/stickynotes.glade.h:25
+msgid "Specify the default height (in pixels) of new notes"
+msgstr ""
+
+#: stickynotes/stickynotes.glade.h:26
+msgid "Specify the default width (in pixels) of new notes"
+msgstr ""
+
+#: stickynotes/stickynotes.glade.h:27
+msgid "Sticky Note"
+msgstr ""
+
+#: stickynotes/stickynotes.glade.h:28
+#, fuzzy
+msgid "Sticky Notes Preferences"
+msgstr "Поставке монтера диска"
+
+#: stickynotes/stickynotes.glade.h:29
+msgid "Sticky Notes for the Gnome Desktop Environment"
+msgstr ""
+
+#: stickynotes/stickynotes.glade.h:30
+#, fuzzy
+msgid "_Delete ALL"
+msgstr "Об_ришите макро"
+
+#: stickynotes/stickynotes.glade.h:31
+msgid "_Hides/_Shows All Notes"
+msgstr ""
+
+#: stickynotes/stickynotes.glade.h:32
+msgid "_Locks/_Unlocks All Notes"
+msgstr ""
+
+#: stickynotes/stickynotes.glade.h:33
+msgid "_Put notes on all workspaces"
+msgstr ""
+
+#: stickynotes/stickynotes.glade.h:34
+msgid "_Title:"
+msgstr ""
+
+#: stickynotes/stickynotes.glade.h:38
+msgid "© 2002-2003 Loban A Rahman"
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:1
+msgid "Autosave timeout in minutes."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:2
+msgid ""
+"By default, sticky notes are given the current date as the title when they "
+"are created. This format is used. Anything that can be parsed by strftime() "
+"is valid."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:3
+msgid "Date format"
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:4
+msgid "Default base color for new notes"
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:5
+msgid ""
+"Default base color for new sticky notes. This can be any string found in rgb."
+"txt (that comes with XFree86), for example \"snow\" or \"yellow2\". Or it "
+"can be an html hex specification, for example \"#30FF50\"."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:6
+msgid ""
+"Default click behavior of the applet where \"0\" is \"New Note\", \"1\" is "
+"\"Show/Hide All Notes\", and \"2\" is \"Lock/Unlock All Notes\"."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:7
+msgid "Default height for new notes"
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:8
+msgid "Default height for new sticky notes in pixels."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:9
+msgid "Default left-click behavior of the applet"
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:10
+#, fuzzy
+msgid "Default width for new notes"
+msgstr "Подразумевани списак знакова"
+
+#: stickynotes/stickynotes.schemas.in.h:11
+msgid "Default width for new sticky notes in pixels."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:12
+msgid ""
+"Every time the specified number of minutes pass. The sticky notes are "
+"automatically saved."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:13
+msgid "Specifies whether the sticky notes are locked (uneditable) or not."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:14
+msgid ""
+"Specifies whether the sticky notes are visible on ALL workspaces on the "
+"desktop, or not."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:15
+msgid "Specifies whether the sticky notes are visible or not."
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:16
+msgid "Sticky notes locked state"
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:17
+msgid "Sticky notes visible state"
+msgstr ""
+
+#: stickynotes/stickynotes.schemas.in.h:18
+#, fuzzy
+msgid "Workspace stickyness"
+msgstr "Радне површи"
+
+#: stickynotes/stickynotes_applet.c:148
+#, fuzzy, c-format
+msgid ""
+"%s\n"
+"%d note"
+msgid_plural ""
+"%s\n"
+"%d notes"
+msgstr[0] ""
+"%s:\n"
+"%d%% у употреби"
+
+#: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:1
+msgid "Monitor the quality of a wireless network link"
+msgstr "Праћење каквоће бежичне мрежне везе"
+
+#: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:2
+#: wireless/wireless-applet.c:748
+msgid "Wireless Link Monitor"
+msgstr "Праћење бежичне везе"
+
+#: wireless/wireless-applet.c:350
+msgid ""
+"The images necessary to run the wireless monitor are missing.\n"
+"Please make sure that it is correctly installed."
+msgstr ""
+"Слике неопходне за покретање праћења бежичне везе недостају.\n"
+"Проверите да су исправно постављене на систем."
+
+#: wireless/wireless-applet.c:536 wireless/wireless-applet.c:693
+msgid "No Wireless Devices"
+msgstr "Нема бежичних уређаја"
+
+#: wireless/wireless-applet.c:538
+msgid ""
+"There doesn't seem to be any wireless devices configured on your system.\n"
+"Please verify your configuration if you think this is incorrect."
+msgstr ""
+"Чини се да нема ниједног подешеног бежичног уређаја на вашем систему.\n"
+"Проверите ваша подешавања уколико ово сматрате нетачним."
+
+#: wireless/wireless-applet.c:750
+msgid "(C) 2001, 2002 Free Software Foundation "
+msgstr "©2001, 2002 — Задужбина за Слободни Софтвер"
+
+#: wireless/wireless-applet.c:751
+msgid "This utility shows the status of a wireless link."
+msgstr "Ова алатка приказује стање бежичне везе"
+
+#: wireless/wireless-applet.glade.h:1
+msgid "Show _dialog boxes"
+msgstr "Прикажи свако _прозорче"
+
+# procenti -> postotci?
+#: wireless/wireless-applet.glade.h:2
+msgid "Show signal strength in _percentage"
+msgstr "Прикажи јачину сигнала у _процентима"
+
+#: wireless/wireless-applet.glade.h:3
+msgid "Wireless Link Monitor Preferences"
+msgstr "Поставке праћења бежичне везе"
+
+#: wireless/wireless-applet.glade.h:4
+#, fuzzy
+msgid "_Monitored device:"
+msgstr "Праћени уређај:"
+
+#~ msgid "Applet layout"
+#~ msgstr "Изглед аплета"
+
+#~ msgid "Beep when either of the above is true"
+#~ msgstr "Звучни сигнал ако је било које од изнад понуђених испуњено"
+
+#~ msgid "Show"
+#~ msgstr "Приказати"
+
+#~ msgid "Disc Image"
+#~ msgstr "Слика диска"
+
+#~ msgid "An image of a cd-rom disc"
+#~ msgstr "Слика ЦД-РОМ диска"
+
+#~ msgid "_Default character list:"
+#~ msgstr "_Подразумевани списак знакова:"
+
+#~ msgid "Set the default character list here"
+#~ msgstr "Овде поставите подразумевани списак знакова"
+
+#~ msgid ""
+#~ "These characters will appear when the panel is started. To return to this "
+#~ "list, hit <d> while the applet has focus."
+#~ msgstr ""
+#~ "Ови знакови ће се појављивати по покретању панела. Да се вратите на овај "
+#~ "списак, притисните <d> док је аплет у жижи."
+
+#~ msgid "Custom icon for moun_ted:"
+#~ msgstr "Иконица по избору за _монтирани"
+
+#~ msgid "Custom icon for not mou_nted:"
+#~ msgstr "Иконица по избору за немонтирани"
+
+#~ msgid "_Theme Name:"
+#~ msgstr "Име _теме:"
+
+#~ msgid ""
+#~ "Where command can be:\n"
+#~ " * xmodmap /full/path/xmodmap.hu\n"
+#~ " * gkb_xmmap hu\n"
+#~ " * setxkbmap hu"
+#~ msgstr ""
+#~ "Где наредба може бити:\n"
+#~ " * xmodmap /пуна/путања/до/xmodmap.sr\n"
+#~ " * gkb_xmmap sr\n"
+#~ " * setxkbmap sr"
+
+#~ msgid "Applet _size: "
+#~ msgstr "_Величина аплета:"
+
+#~ msgid "Hotkey for switching between layouts"
+#~ msgstr "Пречица за пребацивање тастатура"
+
+#~ msgid "Keymaps"
+#~ msgstr "Мапе тастера"
+
+#~ msgid "- Colo_r:"
+#~ msgstr "- Бо_ја:"
+
+#~ msgid "_Unchanged Color:"
+#~ msgstr "Боја _неизмењеног:"
+
+#~ msgid "Back_ground Color:"
+#~ msgstr "Боја _позадине:"
+
+#~ msgid "GNOME Weather"
+#~ msgstr "GNOME Време"
+
+#~ msgid "Location:"
+#~ msgstr "Место:"
+
+#~ msgid "Sky:"
+#~ msgstr "Небо:"
+
+#~ msgid "Dew point:"
+#~ msgstr "Најнижа температура:"
+
+#~ msgid "ForeCast Report"
+#~ msgstr "Временска прогноза"
+
+#~ msgid "See the ForeCast Details"
+#~ msgstr "Погледајте детаље прогнозе"
+
+#~ msgid "_Visit Weather.com"
+#~ msgstr "_Посетите Weather.com"
+
+#~ msgid "URL link Button"
+#~ msgstr "Дугме за веб везу"
+
+#~ msgid "Click to Enter Weather.com"
+#~ msgstr "Притисните да посетите Weather.com"
+
+#~ msgid "_Radar map"
+#~ msgstr "_Радарска мапа"
+
+#~ msgid ""
+#~ "Detailed forecast not available for this location.\n"
+#~ "Please try the state forecast; note that IWIN forecasts are available "
+#~ "only for US cities."
+#~ msgstr ""
+#~ "Детаљна прогноза није доступна за ово место.\n"
+#~ "Пробајте државну прогнозу; обратите пажњу на то да су IWIN прогнозе "
+#~ "доступне само за америчке градове."
+
+#~ msgid ""
+#~ "State forecast not available for this location.\n"
+#~ "Please try the detailed forecast; note that IWIN forecasts are available "
+#~ "only for US cities."
+#~ msgstr ""
+#~ "Државна прогноза није доступна за ово место.\n"
+#~ "Пробајте детаљну прогнозу; обратите пажњу на то да су IWIN прогнозе "
+#~ "доступне само за америчке градове."
+
+#~ msgid "Location view"
+#~ msgstr "Преглед места"
+
+#~ msgid "Select Location from the list"
+#~ msgstr "Изаберите место из списка"
+
+#~ msgid "Address Entry"
+#~ msgstr "Унос адресе"
+
+#~ msgid "Enter the URL"
+#~ msgstr "Унесите адресу"
+
+#~ msgid "Enable _detailed forecast"
+#~ msgstr "Омогућити _детаљну прогнозу"
+
+#~ msgid "Enable _radar map"
+#~ msgstr "Омогућити _радарску мапу"
+
+#~ msgid "Use cus_tom address for radar map"
+#~ msgstr "_Користити изабрану адресу за радарску мапу"
+
+#~ msgid "A_ddress :"
+#~ msgstr "Адре_са:"
+
+#~ msgid "Updates"
+#~ msgstr "Освежавања"
+
+#~ msgid "_Automatically update every "
+#~ msgstr "_Аутоматско освежавање сваких "
+
+#~ msgid "Miscellaneous"
+#~ msgstr "Разно"
+
+#~ msgid "Invalid"
+#~ msgstr "Неисправно"
+
+# Ovo kaze Morton-Benson :)
+#~ msgid "Drizzle"
+#~ msgstr "Ромињање"
+
+#~ msgid "Drizzle in the vicinity"
+#~ msgstr "Слаба киша у близини"
+
+#~ msgid "Light drizzle"
+#~ msgstr "Слабо ромињање"
+
+#~ msgid "Moderate drizzle"
+#~ msgstr "Умерено ромињање"
+
+#~ msgid "Heavy drizzle"
+#~ msgstr "Јако ромињање"
+
+#~ msgid "Shallow drizzle"
+#~ msgstr "Слабашно ромињање"
+
+#~ msgid "Patches of drizzle"
+#~ msgstr "Трагови ромињања"
+
+#~ msgid "Partial drizzle"
+#~ msgstr "Делимично ромињање"
+
+#~ msgid "Windy drizzle"
+#~ msgstr "Ветровито ромињање"
+
+#~ msgid "Showers"
+#~ msgstr "Пљусак"
+
+#~ msgid "Drifting drizzle"
+#~ msgstr "Ромињање се лагано премешта"
+
+#~ msgid "Freezing drizzle"
+#~ msgstr "Ледено ромињање"
+
+#~ msgid "Rain in the vicinity"
+#~ msgstr "Киша у близини"
+
+#~ msgid "Light rain"
+#~ msgstr "Кишица"
+
+#~ msgid "Moderate rain"
+#~ msgstr "Умерена киша"
+
+#~ msgid "Shallow rain"
+#~ msgstr "Слабашна киша"
+
+#~ msgid "Patches of rain"
+#~ msgstr "Трагови кише"
+
+#~ msgid "Partial rainfall"
+#~ msgstr "Делимично киша"
+
+#~ msgid "Blowing rainfall"
+#~ msgstr "Разорна киша"
+
+#~ msgid "Rain showers"
+#~ msgstr "Пљусак"
+
+#~ msgid "Drifting rain"
+#~ msgstr "Киша се лагано премешта"
+
+#~ msgid "Freezing rain"
+#~ msgstr "Ледена киша"
+
+#~ msgid "Snow in the vicinity"
+#~ msgstr "Снег у близини"
+
+#~ msgid "Light snow"
+#~ msgstr "Слаб снег"
+
+#~ msgid "Moderate snow"
+#~ msgstr "Умерен снег"
+
+#~ msgid "Heavy snow"
+#~ msgstr "Јак снег"
+
+#~ msgid "Shallow snow"
+#~ msgstr "Слабашан снег"
+
+#~ msgid "Patches of snow"
+#~ msgstr "Трагови снега"
+
+#~ msgid "Partial snowfall"
+#~ msgstr "Делимично снежно"
+
+#~ msgid "Snowstorm"
+#~ msgstr "Снежна олуја"
+
+#~ msgid "Blowing snowfall"
+#~ msgstr "Разарајући снег"
+
+#~ msgid "Snow showers"
+#~ msgstr "Снежни пљусак"
+
+#~ msgid "Drifting snow"
+#~ msgstr "Снег се лагано премешта"
+
+#~ msgid "Freezing snow"
+#~ msgstr "Ледени снег"
+
+#~ msgid "Snow grains in the vicinity"
+#~ msgstr "Трунке снега у близини"
+
+#~ msgid "Light snow grains"
+#~ msgstr "Слабе трунке снега"
+
+#~ msgid "Moderate snow grains"
+#~ msgstr "Умерене трунке снега"
+
+#~ msgid "Heavy snow grains"
+#~ msgstr "Јаке трунке снега"
+
+#~ msgid "Shallow snow grains"
+#~ msgstr "Слабашне трунке снега"
+
+#~ msgid "Patches of snow grains"
+#~ msgstr "Трагови трунки снега"
+
+#~ msgid "Partial snow grains"
+#~ msgstr "Делимичне трунке снега"
+
+#~ msgid "Blowing snow grains"
+#~ msgstr "Разарајуће трунке снега"
+
+#~ msgid "Snow grain showers"
+#~ msgstr "Пљусак трунки снега"
+
+#~ msgid "Drifting snow grains"
+#~ msgstr "Трунке снега се лагано премештају"
+
+#~ msgid "Freezing snow grains"
+#~ msgstr "Ледене трунке снега"
+
+#~ msgid "Ice crystals"
+#~ msgstr "Леденице"
+
+#~ msgid "Ice crystals in the vicinity"
+#~ msgstr "Леденице у близини"
+
+#~ msgid "Few ice crystals"
+#~ msgstr "Понешто леденица"
+
+#~ msgid "Moderate ice crystals"
+#~ msgstr "Умерене леденице"
+
+#~ msgid "Heavy ice crystals"
+#~ msgstr "Много леденица"
+
+#~ msgid "Patches of ice crystals"
+#~ msgstr "Трагови леденица"
+
+#~ msgid "Partial ice crystals"
+#~ msgstr "Делимично леденице"
+
+#~ msgid "Ice crystal storm"
+#~ msgstr "Олуја леденица"
+
+#~ msgid "Blowing ice crystals"
+#~ msgstr "Разарајуће леденице"
+
+#~ msgid "Showers of ice crystals"
+#~ msgstr "Пљусак леденица"
+
+#~ msgid "Drifting ice crystals"
+#~ msgstr "Леденице се лагано премештају"
+
+#~ msgid "Freezing ice crystals"
+#~ msgstr "Смрзавајуће леденице"
+
+#~ msgid "Ice pellets"
+#~ msgstr "Ледене куглице"
+
+#~ msgid "Ice pellets in the vicinity"
+#~ msgstr "Ледене куглице у близини"
+
+#~ msgid "Few ice pellets"
+#~ msgstr "Понешто ледених куглица"
+
+#~ msgid "Moderate ice pellets"
+#~ msgstr "Умерено ледене куглице"
+
+#~ msgid "Heavy ice pellets"
+#~ msgstr "Много ледених куглица"
+
+#~ msgid "Shallow ice pellets"
+#~ msgstr "Слабашне ледене куглице"
+
+#~ msgid "Patches of ice pellets"
+#~ msgstr "Трагови ледених куглица"
+
+#~ msgid "Partial ice pellets"
+#~ msgstr "Делимично ледених куглица"
+
+#~ msgid "Ice pellet storm"
+#~ msgstr "Олуја ледених куглица"
+
+#~ msgid "Blowing ice pellets"
+#~ msgstr "Разарајуће ледене куглице"
+
+#~ msgid "Showers of ice pellets"
+#~ msgstr "Пљусак ледених куглица"
+
+#~ msgid "Drifting ice pellets"
+#~ msgstr "Ледене куглице се лагано премештају"
+
+#~ msgid "Freezing ice pellets"
+#~ msgstr "Смрзавајуће ледене куглице"
+
+#~ msgid "Hail"
+#~ msgstr "Град"
+
+#~ msgid "Hail in the vicinity"
+#~ msgstr "Град у близини"
+
+#~ msgid "Light hail"
+#~ msgstr "Слаб град"
+
+#~ msgid "Moderate hail"
+#~ msgstr "Умерен град"
+
+#~ msgid "Heavy hail"
+#~ msgstr "Јак град"
+
+#~ msgid "Shallow hail"
+#~ msgstr "Слабашан град"
+
+#~ msgid "Patches of hail"
+#~ msgstr "Трагови града"
+
+#~ msgid "Partial hail"
+#~ msgstr "Делимично град"
+
+#~ msgid "Hailstorm"
+#~ msgstr "Олујни град"
+
+#~ msgid "Blowing hail"
+#~ msgstr "Разарајући град"
+
+#~ msgid "Hail showers"
+#~ msgstr "Пљусак града"
+
+#~ msgid "Drifting hail"
+#~ msgstr "Град се лагано премешта"
+
+#~ msgid "Freezing hail"
+#~ msgstr "Ледени град"
+
+#~ msgid "Small hail"
+#~ msgstr "Мањи град"
+
+#~ msgid "Small hail in the vicinity"
+#~ msgstr "Мањи град у близини"
+
+#~ msgid "Moderate small hail"
+#~ msgstr "Умерен мањи град"
+
+#~ msgid "Heavy small hail"
+#~ msgstr "Јаки мањи град"
+
+#~ msgid "Shallow small hail"
+#~ msgstr "Слабашни мањи град"
+
+#~ msgid "Patches of small hail"
+#~ msgstr "Трагови мањег града"
+
+#~ msgid "Partial small hail"
+#~ msgstr "Делимично мањи град"
+
+#~ msgid "Small hailstorm"
+#~ msgstr "Мања олуја града"
+
+#~ msgid "Blowing small hail"
+#~ msgstr "Разарајући мањи град"
+
+#~ msgid "Showers of small hail"
+#~ msgstr "Пљусак мањег града"
+
+#~ msgid "Drifting small hail"
+#~ msgstr "Мањи град се лагано премешта"
+
+#~ msgid "Freezing small hail"
+#~ msgstr "Ледени мањи град"
+
+#~ msgid "Unknown precipitation"
+#~ msgstr "Непознате падавине"
+
+#~ msgid "Precipitation in the vicinity"
+#~ msgstr "Падавине у близини"
+
+#~ msgid "Light precipitation"
+#~ msgstr "Слабе падавине"
+
+#~ msgid "Moderate precipitation"
+#~ msgstr "Умерене падавине"
+
+#~ msgid "Heavy precipitation"
+#~ msgstr "Јаке падавине"
+
+#~ msgid "Shallow precipitation"
+#~ msgstr "Слабашне падавине"
+
+#~ msgid "Patches of precipitation"
+#~ msgstr "Трагови падавина"
+
+#~ msgid "Unknown thunderstorm"
+#~ msgstr "Непозната олуја са грмљавином"
+
+#~ msgid "Blowing precipitation"
+#~ msgstr "Разарајуће падавине"
+
+#~ msgid "Showers, type unknown"
+#~ msgstr "Пљусак непознате врсте"
+
+#~ msgid "Drifting precipitation"
+#~ msgstr "Падавине се лагано премештају"
+
+#~ msgid "Freezing precipitation"
+#~ msgstr "Ледене падавине"
+
+#~ msgid "Mist"
+#~ msgstr "Измаглица"
+
+#~ msgid "Mist in the vicinity"
+#~ msgstr "Измаглица у близини"
+
+#~ msgid "Light mist"
+#~ msgstr "Слаба измаглица"
+
+#~ msgid "Moderate mist"
+#~ msgstr "Умерена измаглица"
+
+#~ msgid "Thick mist"
+#~ msgstr "Јака измаглица"
+
+#~ msgid "Shallow mist"
+#~ msgstr "Слабашна измаглица"
+
+#~ msgid "Patches of mist"
+#~ msgstr "Трагови измаглице"
+
+#~ msgid "Partial mist"
+#~ msgstr "Делимично измаглица"
+
+# Ovo je moguce? Zar vetar ne rastera maglu, a?
+#~ msgid "Mist with wind"
+#~ msgstr "Измаглица са ветром"
+
+#~ msgid "Drifting mist"
+#~ msgstr "Измаглица се лагано премешта"
+
+#~ msgid "Freezing mist"
+#~ msgstr "Ледена измаглица"
+
+#~ msgid "Fog in the vicinity"
+#~ msgstr "Магла у близини"
+
+#~ msgid "Light fog"
+#~ msgstr "Слаба магла"
+
+#~ msgid "Moderate fog"
+#~ msgstr "Умерена магла"
+
+#~ msgid "Thick fog"
+#~ msgstr "Јака магла"
+
+#~ msgid "Shallow fog"
+#~ msgstr "Слабашна магла"
+
+#~ msgid "Patches of fog"
+#~ msgstr "Трагови магле"
+
+#~ msgid "Partial fog"
+#~ msgstr "Делимично магла"
+
+#~ msgid "Fog with wind"
+#~ msgstr "Магла са ветром"
+
+#~ msgid "Drifting fog"
+#~ msgstr "Магла се лагано премешта"
+
+#~ msgid "Freezing fog"
+#~ msgstr "Ледена магла"
+
+#~ msgid "Smoke in the vicinity"
+#~ msgstr "Смог у близини"
+
+#~ msgid "Thin smoke"
+#~ msgstr "Мало смога"
+
+#~ msgid "Moderate smoke"
+#~ msgstr "Умерено смога"
+
+#~ msgid "Thick smoke"
+#~ msgstr "Много смога"
+
+#~ msgid "Shallow smoke"
+#~ msgstr "Слабашан смог"
+
+#~ msgid "Patches of smoke"
+#~ msgstr "Трагови смога"
+
+#~ msgid "Partial smoke"
+#~ msgstr "Делимични смог"
+
+#~ msgid "Smoke w/ thunders"
+#~ msgstr "Смог са грмљавином"
+
+#~ msgid "Smoke with wind"
+#~ msgstr "Смог са ветром"
+
+#~ msgid "Drifting smoke"
+#~ msgstr "Смог се лагано премешта"
+
+#~ msgid "Volcanic ash"
+#~ msgstr "Вулкански пепео"
+
+#~ msgid "Volcanic ash in the vicinity"
+#~ msgstr "Вулкански пепео у близини"
+
+#~ msgid "Moderate volcanic ash"
+#~ msgstr "Умерен вулкански пепео"
+
+#~ msgid "Thick volcanic ash"
+#~ msgstr "Много вулканског пепела"
+
+#~ msgid "Shallow volcanic ash"
+#~ msgstr "Мало вулканског пепела"
+
+#~ msgid "Patches of volcanic ash"
+#~ msgstr "Трагови вулканског пепела"
+
+#~ msgid "Partial volcanic ash"
+#~ msgstr "Делимично вулкански пепео"
+
+#~ msgid "Volcanic ash w/ thunders"
+#~ msgstr "Вулкански пепео уз грмљавину"
+
+#~ msgid "Blowing volcanic ash"
+#~ msgstr "Разарајући вулкански пепео"
+
+#~ msgid "Showers of volcanic ash "
+#~ msgstr "Пљусак вулканског пепела"
+
+#~ msgid "Drifting volcanic ash"
+#~ msgstr "Вулкански пепео се лагано премешта"
+
+#~ msgid "Freezing volcanic ash"
+#~ msgstr "Ледени вулкански пепео"
+
+#~ msgid "Sand"
+#~ msgstr "Песак"
+
+#~ msgid "Sand in the vicinity"
+#~ msgstr "Песак у близини"
+
+#~ msgid "Light sand"
+#~ msgstr "Мало песка"
+
+#~ msgid "Moderate sand"
+#~ msgstr "Умерно песка"
+
+#~ msgid "Heavy sand"
+#~ msgstr "Пуно песка"
+
+#~ msgid "Patches of sand"
+#~ msgstr "Трагови песка"
+
+#~ msgid "Partial sand"
+#~ msgstr "Делимични песак"
+
+#~ msgid "Blowing sand"
+#~ msgstr "Разарајући песак"
+
+#~ msgid "Drifting sand"
+#~ msgstr "Песак се лагано премешта"
+
+#~ msgid "Haze in the vicinity"
+#~ msgstr "Сумаглица у близини"
+
+#~ msgid "Light haze"
+#~ msgstr "Слаба сумаглица"
+
+#~ msgid "Moderate haze"
+#~ msgstr "Умерена сумаглица"
+
+#~ msgid "Thick haze"
+#~ msgstr "Јака сумаглица"
+
+#~ msgid "Shallow haze"
+#~ msgstr "Слабашна сумаглица"
+
+#~ msgid "Patches of haze"
+#~ msgstr "Трагови сумаглице"
+
+#~ msgid "Partial haze"
+#~ msgstr "Делимична сумаглица"
+
+#~ msgid "Haze with wind"
+#~ msgstr "Сумаглица са ветром"
+
+#~ msgid "Drifting haze"
+#~ msgstr "Сумаглица се лагано премешта"
+
+#~ msgid "Freezing haze"
+#~ msgstr "Ледена сумаглица"
+
+#~ msgid "Sprays in the vicinity"
+#~ msgstr "Запрашено у близини"
+
+#~ msgid "Light sprays"
+#~ msgstr "Лагано запрашено"
+
+#~ msgid "Moderate sprays"
+#~ msgstr "Умерено запрашено"
+
+#~ msgid "Heavy sprays"
+#~ msgstr "Јако запрашено"
+
+#~ msgid "Shallow sprays"
+#~ msgstr "Слабашно запрашено"
+
+#~ msgid "Patches of sprays"
+#~ msgstr "У траговима запрашено"
+
+#~ msgid "Partial sprays"
+#~ msgstr "Делимично запрашено"
+
+#~ msgid "Blowing sprays"
+#~ msgstr "Разарајуће запрашено"
+
+#~ msgid "Drifting sprays"
+#~ msgstr "Запрашено се лагано премешта"
+
+#~ msgid "Freezing sprays"
+#~ msgstr "Ледено запрашено"
+
+#~ msgid "Dust in the vicinity"
+#~ msgstr "Прашина у близини"
+
+#~ msgid "Moderate dust"
+#~ msgstr "Умерена прашина"
+
+#~ msgid "Heavy dust"
+#~ msgstr "Тешка прашина"
+
+#~ msgid "Patches of dust"
+#~ msgstr "Трагови прашине"
+
+#~ msgid "Partial dust"
+#~ msgstr "Делимишно прашњаво"
+
+# Da li mozda "Blowing" u svima ovima kao "Vetrovito"?
+#~ msgid "Blowing dust"
+#~ msgstr "Разарајућа прашина"
+
+#~ msgid "Drifting dust"
+#~ msgstr "Прашина се лагано премешта"
+
+#~ msgid "Squall"
+#~ msgstr "Удар ветра"
+
+#~ msgid "Squall in the vicinity"
+#~ msgstr "Удар ветра у близини"
+
+#~ msgid "Light squall"
+#~ msgstr "Слаб удар ветра"
+
+#~ msgid "Moderate squall"
+#~ msgstr "Умерен удар ветра"
+
+#~ msgid "Heavy squall"
+#~ msgstr "Јак удар ветра"
+
+#~ msgid "Partial squall"
+#~ msgstr "Делимични удар ветра"
+
+#~ msgid "Thunderous squall"
+#~ msgstr "Удар ветра са грмљавином"
+
+#~ msgid "Blowing squall"
+#~ msgstr "Разарајући удар ветра"
+
+#~ msgid "Drifting squall"
+#~ msgstr "Удар ветра се лагано премешта"
+
+#~ msgid "Freezing squall"
+#~ msgstr "Ледени удар ветра"
+
+#~ msgid "Sandstorm"
+#~ msgstr "Пешчана олуја"
+
+#~ msgid "Sandstorm in the vicinity"
+#~ msgstr "Пешчана олуја у близини"
+
+#~ msgid "Light standstorm"
+#~ msgstr "Слаба пешчана олуја"
+
+#~ msgid "Moderate sandstorm"
+#~ msgstr "Умерена пешчана олуја"
+
+#~ msgid "Heavy sandstorm"
+#~ msgstr "Јака пешчана олуја"
+
+#~ msgid "Shallow sandstorm"
+#~ msgstr "Слабашна пешчана олуја"
+
+#~ msgid "Partial sandstorm"
+#~ msgstr "Делимична пешчана олуја"
+
+#~ msgid "Thunderous sandstorm"
+#~ msgstr "Пешчана олуја уз грмљавину"
+
+#~ msgid "Blowing sandstorm"
+#~ msgstr "Разарајућа пешчана олуја"
+
+#~ msgid "Drifting sandstorm"
+#~ msgstr "Пешчана олуја се лагано премешта"
+
+#~ msgid "Freezing sandstorm"
+#~ msgstr "Ледена пешчана олуја"
+
+# Zalite se Mortonu i Bensonu, ili Morton-Bensonu ;)
+#~ msgid "Duststorm"
+#~ msgstr "Вртлог од прашине"
+
+#~ msgid "Duststorm in the vicinity"
+#~ msgstr "Вртлог од прашине у близини"
+
+#~ msgid "Light duststorm"
+#~ msgstr "Слаб вртлог од прашине"
+
+#~ msgid "Moderate duststorm"
+#~ msgstr "Умерен вртлог од прашине"
+
+#~ msgid "Heavy duststorm"
+#~ msgstr "Јак вртлог од прашине"
+
+#~ msgid "Shallow duststorm"
+#~ msgstr "Слабашан вртлог од прашине"
+
+#~ msgid "Partial duststorm"
+#~ msgstr "Делимичан вртлог од прашине"
+
+#~ msgid "Thunderous duststorm"
+#~ msgstr "Вртлог од прашине са грмљавином"
+
+#~ msgid "Blowing duststorm"
+#~ msgstr "Разарајући вртлог од прашине"
+
+#~ msgid "Drifting duststorm"
+#~ msgstr "Вртлог од прашине се лагано премешта"
+
+#~ msgid "Freezing duststorm"
+#~ msgstr "Ледени вртлог од прашине"
+
+#~ msgid "Funnel cloud"
+#~ msgstr "Облак ки димњак"
+
+#~ msgid "Funnel cloud in the vicinity"
+#~ msgstr "Облак ки димњак у близини"
+
+#~ msgid "Light funnel cloud"
+#~ msgstr "Лагани облак ки димњак"
+
+#~ msgid "Moderate funnel cloud"
+#~ msgstr "Умерени облак ки димњак"
+
+#~ msgid "Thick funnel cloud"
+#~ msgstr "Дебели облак ки димњак"
+
+#~ msgid "Shallow funnel cloud"
+#~ msgstr "Жгољави облак ки димњак"
+
+#~ msgid "Patches of funnel clouds"
+#~ msgstr "Трагови облака ки димњака"
+
+#~ msgid "Partial funnel clouds"
+#~ msgstr "Делимични облак ки димњак"
+
+#~ msgid "Funnel cloud w/ wind"
+#~ msgstr "Облак ки димњак, и још ветар"
+
+#~ msgid "Drifting funnel cloud"
+#~ msgstr "Облак ки димњак се лагано премешта"
+
+#~ msgid "Tornado"
+#~ msgstr "Торнадо"
+
+#~ msgid "Tornado in the vicinity"
+#~ msgstr "Торнадо у близини"
+
+#~ msgid "Moderate tornado"
+#~ msgstr "Умерени торнадо"
+
+#~ msgid "Raging tornado"
+#~ msgstr "Бесни торнадо"
+
+#~ msgid "Partial tornado"
+#~ msgstr "Делимични торнадо"
+
+#~ msgid "Thunderous tornado"
+#~ msgstr "Торнадо уз грмљавину"
+
+#~ msgid "Drifting tornado"
+#~ msgstr "Торнадо се лагано премешта"
+
+#~ msgid "Freezing tornado"
+#~ msgstr "Ледени торнадо"
+
+#~ msgid "Dust whirls"
+#~ msgstr "Ковитлаци прашине"
+
+#~ msgid "Dust whirls in the vicinity"
+#~ msgstr "Ковитлаци прашине у близини"
+
+#~ msgid "Light dust whirls"
+#~ msgstr "Лагани ковитлаци прашине"
+
+#~ msgid "Moderate dust whirls"
+#~ msgstr "Умерени ковитлаци прашине"
+
+#~ msgid "Heavy dust whirls"
+#~ msgstr "Јаки ковитлаци прашине"
+
+#~ msgid "Shallow dust whirls"
+#~ msgstr "Слабашни ковитлаци прашине"
+
+#~ msgid "Patches of dust whirls"
+#~ msgstr "Трагови ковитлаца прашине"
+
+#~ msgid "Partial dust whirls"
+#~ msgstr "Делимични ковитлаци прашине"
+
+#~ msgid "Blowing dust whirls"
+#~ msgstr "Разарајући ковитлаци прашине"
+
+#~ msgid "Drifting dust whirls"
+#~ msgstr "Ковитлаци прашине се лагано премештају"
+
+#~ msgid "Failed to get METAR data.\n"
+#~ msgstr "Неуспешно добављање METAR података.\n"
+
+#~ msgid "WeatherInfo missing location"
+#~ msgstr "Недостаје место за податке о времену"
+
+#~ msgid "Failed to get IWIN data.\n"
+#~ msgstr "Неуспешно добављање IWIN података.\n"
+
+#~ msgid "Failed to get IWIN forecast data.\n"
+#~ msgstr "Неуспешно добављање IWIN података за прогнозе.\n"
+
+#~ msgid "Failed to get Met Office data.\n"
+#~ msgstr "Неуспешно добављање података из Met канцеларије.\n"
+
+#~ msgid "Failed to get Met Office forecast data.\n"
+#~ msgstr "Неуспешно добављање података за прогнозу из Met канцеларије.\n"
+
+#~ msgid "Failed to get radar map image.\n"
+#~ msgstr "Неуспешно добављање радарске мапе.\n"
+
+#~ msgid "%a, %b %d / %H:%M"
+#~ msgstr "%a, %b %d / %H:%M"
+
+#~ msgid "Unknown observation time"
+#~ msgstr "Непознато време посматрања"
+
+#~ msgid "Unknown"
+#~ msgstr "Непознато"
+
+#~ msgid "Retrieval failed"
+#~ msgstr "Неуспешно добављање података"
+
+#~ msgid "Applet _width:"
+#~ msgstr "_Ширина аплета:"
+
+#~ msgid "Querying available channels of mixer device %s failed\n"
+#~ msgstr "Неуспешан упит доступних канала миксера (уређај %s)\n"
+
+#~ msgid "warning: mixer has no volume channel - using PCM instead.\n"
+#~ msgstr "упозорење: миксер нема канал за јачину звука — користи PCM.\n"
+
+#~ msgid "Mixer device %s has neither volume nor PCM channels.\n"
+#~ msgstr "Миксер (уређај %s) нема ни јачину звука ни PCM канал.\n"
+
+#~ msgid "U_pdates per second"
+#~ msgstr "Број о_свежавања по секунди"
+
+#~ msgid "No_t connected"
+#~ msgstr "Ве_за није успостављена"
+
+#~ msgid "A_waiting connection"
+#~ msgstr "По_везивање у току"
+
+#~ msgid "B_link"
+#~ msgstr "_Треперење"
+
+#~ msgid "Swap File"
+#~ msgstr "Меморија на диску"
+
+#~ msgid "_Swap File"
+#~ msgstr "Меморија на _диску"
+
+#~ msgid "_Other"
+#~ msgstr "_Остало"
+
+#~ msgid "Factory for Panel Menu Applet"
+#~ msgstr "Фабрика за аплет за панел меније"
+
+#~ msgid "Panel Menu Applet Factory"
+#~ msgstr "Панел мени аплет фабрика"
+
+#~ msgid "Panel applet for displaying menus"
+#~ msgstr "Панел аплет за приказивање менија"
+
+#~ msgid "Actions"
+#~ msgstr "Акције"
+
+#~ msgid "Actions Menu"
+#~ msgstr "Мени са акцијама"
+
+#~ msgid "Add items to the Menu Bar"
+#~ msgstr "Додајте ставке у Мени"
+
+#~ msgid "My Documents"
+#~ msgstr "Моја документа"
+
+#~ msgid "Documents"
+#~ msgstr "Документа"
+
+#~ msgid "Applications"
+#~ msgstr "Програми"
+
+#~ msgid ""
+#~ "Removing this entry is not allowed as this will cause the Menu Bar applet "
+#~ "to be removed from GNOME Panel"
+#~ msgstr ""
+#~ "Уклањање ове ставке није дозвољено пошто ће то проузроковати уклањање "
+#~ "Мени аплета са GNOME панела"
+
+#~ msgid "Create directory item..."
+#~ msgstr "Направиte ставку за директоријум..."
+
+#~ msgid "Home"
+#~ msgstr "Лично"
+
+#~ msgid "Edit directory item..."
+#~ msgstr "Уредите ставку за директоријум..."
+
+#~ msgid "_Path:"
+#~ msgstr "_Путања:"
+
+#~ msgid "..."
+#~ msgstr "..."
+
+#~ msgid "_Depth level:"
+#~ msgstr "_Број нивоа:"
+
+#~ msgid "Path specified is currently not a valid directory."
+#~ msgstr "Наведена путања тренутно није исправан директоријум."
+
+#~ msgid "Create documents item..."
+#~ msgstr "Направите ставку за документе..."
+
+#~ msgid "Rename documents item..."
+#~ msgstr "Преименујте ставку за документе..."
+
+#~ msgid "KDE Menus"
+#~ msgstr "KDE менији"
+
+#~ msgid "Programs"
+#~ msgstr "Програми"
+
+#~ msgid "Create links item..."
+#~ msgstr "Направите ставку за везе..."
+
+#~ msgid "Rename links item..."
+#~ msgstr "Преименујте ставку за везе..."
+
+#~ msgid "KDE"
+#~ msgstr "KDE"
+
+#~ msgid "Create menu path item..."
+#~ msgstr "Направите ставку за путању менија..."
+
+#~ msgid "Preferences"
+#~ msgstr "Поставке"
+
+#~ msgid "Menu Bar Preferences"
+#~ msgstr "Поставке Менија"
+
+#~ msgid "_Applications Menu"
+#~ msgstr "_Мени са програмима"
+
+#~ msgid "Select an icon for the Applications menu"
+#~ msgstr "Изаберите сличицу за мени са програмима"
+
+#~ msgid "_Preferences Menu"
+#~ msgstr "Мени за _поставке"
+
+#~ msgid "Ac_tions Menu"
+#~ msgstr "Мени за а_кције"
+
+#~ msgid "_Windows Menu"
+#~ msgstr "Мени за _прозоре"
+
+#~ msgid "W_orkspaces Menu"
+#~ msgstr "Мени за _радне површи"
+
+#~ msgid "Windows"
+#~ msgstr "Прозори"
+
+#~ msgid "Menu Bar"
+#~ msgstr "Мени"
+
+#~ msgid "(c) 2001 Chris Phelps"
+#~ msgstr "©2001 Крис Фелпс"
+
+#~ msgid ""
+#~ "The Menu Bar allows you to display customized menubars on your panels."
+#~ msgstr "Мени омогућава приказ прилагођених менија на вашим панелима."
+
+#~ msgid "Unable to find the GNOME_FILE_DOMAIN_APP_HELP domain"
+#~ msgstr "Не може пронаћи GNOME_FILE_DOMAIN_APP_HELP домен"
+
+#~ msgid "Unable to find the GNOME_FILE_DOMAIN_HELP domain."
+#~ msgstr "Не може пронаћи GNOME_FILE_DOMAIN_APP_HELP домен."
+
+#~ msgid ""
+#~ "Unable to show help as %s is not a directory.  Please check your "
+#~ "installation."
+#~ msgstr ""
+#~ "Не може да прикаже помоћ пошто %s није директоријум. Проверите да ли је "
+#~ "ваш систем исправно постављен."
+
+#~ msgid ""
+#~ "Unable to find the help files in either %s or %s.  Please check your "
+#~ "installation"
+#~ msgstr ""
+#~ "Не може да пронађе датотеке за помоћ ни у %s, ни у %s. Проверите да ли је "
+#~ "ваш систем исправно постављен."
+
+#~ msgid "Unable to find doc_id %s in the help path"
+#~ msgstr "Не може да пронађе doc_id %s у путањи за помоћ"
+
+#~ msgid "Help document %s/%s not found"
+#~ msgstr "Документ за помоћ %s/%s није нађен"
