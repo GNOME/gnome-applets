@@ -40,10 +40,12 @@ extern gchar *command_disconnect;
 extern int ask_for_confirmation;
 extern gchar *device_name;
 extern gint use_ISDN;
+extern gint show_extra_info;
 
 extern GtkWidget *applet;
 
 void start_callback_update(void);
+void reset_orientation(void);
 
 void property_load(char *path);
 void property_save(char *path);

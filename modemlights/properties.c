@@ -22,7 +22,9 @@ static gint P_UPDATE_DELAY = 10;
 static gint P_ask_for_confirmation = TRUE;
 static gint P_use_ISDN = FALSE;
 static gint P_verify_lock_file = TRUE;
+static gint P_show_extra_info = FALSE;
 
+static void show_extra_info_cb( GtkWidget *widget, gpointer data );
 static void verify_lock_file_cb( GtkWidget *widget, gpointer data );
 static void update_delay_cb( GtkWidget *widget, GtkWidget *spin );
 static void confirm_checkbox_cb( GtkWidget *widget, gpointer data );
@@ -45,6 +47,7 @@ void property_load(char *path)
 	device_name          = gnome_config_get_string("modem/device=ppp0");
         use_ISDN	   = gnome_config_get_int("modem/isdn=0");
 	verify_lock_file   = gnome_config_get_int("modem/verify_lock=1");
+	show_extra_info    = gnome_config_get_int("modem/extra_info=0");
 	gnome_config_pop_prefix ();
 }
 
@@ -59,9 +62,16 @@ void property_save(char *path)
         gnome_config_set_string("modem/device", device_name);
         gnome_config_set_int("modem/isdn", use_ISDN);
         gnome_config_set_int("modem/verify_lock", verify_lock_file);
+        gnome_config_set_int("modem/extra_info", show_extra_info);
 	gnome_config_sync();
 	gnome_config_drop_all();
         gnome_config_pop_prefix();
+}
+
+static void show_extra_info_cb( GtkWidget *widget, gpointer data )
+{
+	P_show_extra_info = GTK_TOGGLE_BUTTON (widget)->active;
+	gnome_property_box_changed(GNOME_PROPERTY_BOX(propwindow));
 }
 
 static void verify_lock_file_cb( GtkWidget *widget, gpointer data )
@@ -118,6 +128,13 @@ static void property_apply_cb( GtkWidget *widget, void *data )
 	use_ISDN = P_use_ISDN;
 	verify_lock_file = P_verify_lock_file;
 
+	if (P_show_extra_info != show_extra_info)
+		{
+		show_extra_info = P_show_extra_info;
+		/* change display */
+		reset_orientation();
+		}
+
 	start_callback_update();
 
 	applet_widget_sync_config(APPLET_WIDGET(applet));
@@ -150,6 +167,7 @@ void property_show(AppletWidget *applet, gpointer data)
         P_UPDATE_DELAY = UPDATE_DELAY;
 	P_ask_for_confirmation = ask_for_confirmation;
 	P_verify_lock_file = verify_lock_file;
+	P_show_extra_info = show_extra_info;
 
 	propwindow = gnome_property_box_new();
 	gtk_window_set_title(GTK_WINDOW(&GNOME_PROPERTY_BOX(propwindow)->dialog.window),
@@ -212,6 +230,14 @@ void property_show(AppletWidget *applet, gpointer data)
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (checkbox), ask_for_confirmation);
 	gtk_signal_connect( GTK_OBJECT(checkbox), "toggled",
 			    GTK_SIGNAL_FUNC(confirm_checkbox_cb), NULL);
+        gtk_box_pack_start( GTK_BOX(frame), checkbox, FALSE, FALSE, 5);
+	gtk_widget_show(checkbox);
+
+	/* extra info checkbox */
+	checkbox = gtk_check_button_new_with_label(_("Show connect time and throughput"));
+	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (checkbox), show_extra_info);
+	gtk_signal_connect( GTK_OBJECT(checkbox), "toggled",
+			    GTK_SIGNAL_FUNC(show_extra_info_cb), NULL);
         gtk_box_pack_start( GTK_BOX(frame), checkbox, FALSE, FALSE, 5);
 	gtk_widget_show(checkbox);
 

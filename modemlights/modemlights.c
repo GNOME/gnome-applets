@@ -25,7 +25,9 @@
 
 #include "backgrnd.xpm"
 #include "backgrnd_s.xpm"
+#include "backgrnd_a.xpm"
 #include "lights.xpm"
+#include "digits.xpm"
 #include "button_off.xpm"
 #include "button_on.xpm"
 
@@ -33,6 +35,7 @@
 #include <signal.h>
 #include <errno.h>
 #include <ctype.h>
+#include <sys/stat.h>
 
 #ifdef __OpenBSD__
 #include <net/if_ppp.h>
@@ -41,7 +44,6 @@
 #ifdef __linux__
 #include <linux/isdn.h>
 #include <sys/ioctl.h>
-#include <sys/stat.h>
 #include <fcntl.h>
 
 static unsigned long *isdn_stats = NULL;
@@ -55,6 +57,7 @@ gchar *command_connect;		/* connection commands */
 gchar *command_disconnect;
 gint ask_for_confirmation = TRUE;	/* do we ask for confirmation? */
 gint use_ISDN = FALSE;		/* do we use ISDN? */
+gint show_extra_info = FALSE;	/* display larger version with time/byte count */
 
 GtkWidget *applet;
 static GtkWidget *frame;
@@ -64,7 +67,9 @@ static GtkWidget *button_pixmap;
 static GdkPixmap *display;
 static GdkPixmap *display_back;
 static GdkPixmap *display_back_s;
+static GdkPixmap *display_back_a;
 static GdkPixmap *lights;
+static GdkPixmap *digits;
 static GdkPixmap *button_on;
 static GdkPixmap *button_off;
 static GdkGC *gc;
@@ -86,14 +91,24 @@ static void about_cb (AppletWidget *widget, gpointer data);
 static int is_Modem_on();
 static int is_ISDN_on();
 static int is_connected();
+static int get_modem_stats(int *in, int *out);
+static int get_ISDN_stats(int *in, int *out);
+static int get_stats(int *in, int *out);
+static gint get_ISDN_connect_time(gint recalc_start);
+static gint get_modem_connect_time(gint recalc_start);
+static gint get_connect_time(gint recalc_start);
 static void command_connect_cb( gint button, gpointer data);
 static void command_disconnect_cb( gint button, gpointer data);
 static void dial_cb();
 static void update_tooltip(int connected, int rx, int tx);
 static void redraw_display();
+static void draw_digit(gint n, gint x, gint y);
+static void draw_timer(gint seconds);
+static void draw_bytes(gint bytes);
+static gint update_extra_info(int rx_bytes);
 static void draw_load(int rxbytes,int txbytes);
 static void draw_light(int lit,int x,int y);
-static void update_lights(int rx,int tx,int cd);
+static void update_lights(int rx, int tx ,int cd ,int rx_bytes);
 static gint update_display();
 static void create_pixmaps();
 static void setup_colors();
@@ -344,6 +359,39 @@ static int get_stats(int *in, int *out)
 		return get_modem_stats(in, out);
 }
 
+static gint get_ISDN_connect_time(gint recalc_start)
+{
+	/* Fixme! not implemented for ISDN */
+	return 0;
+}
+
+static gint get_modem_connect_time(gint recalc_start)
+{
+	static time_t start_time = (time_t)0;
+	struct stat st;
+
+	if (recalc_start)
+		{
+		if (stat (lock_file, &st) == 0)
+			start_time = st.st_mtime;
+		else
+			start_time = (time_t)0;
+		}
+
+	if (start_time != (time_t)0)
+		return (gint)(time(0) - start_time);
+	else
+		return -1;
+}
+
+static gint get_connect_time(gint recalc_start)
+{
+	if (use_ISDN)
+		return get_ISDN_connect_time(recalc_start);
+	else
+		return get_modem_connect_time(recalc_start);
+}
+
 static void command_connect_cb( gint button, gpointer data)
 {
 	confirm_dialog = FALSE;
@@ -405,22 +453,154 @@ static void redraw_display()
 	gdk_window_clear(display_area->window);
 }
 
+static void draw_digit(gint n, gint x, gint y)
+{
+	gdk_draw_pixmap (display, display_area->style->fg_gc[GTK_WIDGET_STATE(display_area)],
+			 digits, n * 5, 0, x, y, 5, 7);
+}
+
+static void draw_timer(gint seconds)
+{
+	if (seconds > -1)
+		{
+		gint a, b;
+
+		if (seconds >= 3600) seconds /= 60; /* HH:MM, else MM:SS */
+
+		a = seconds / 60;
+		b = seconds % 60;
+
+		draw_digit(a / 10, 2, 36);
+		draw_digit(a % 10, 7, 36);
+
+		draw_digit(b / 10, 17, 36);
+		draw_digit(b % 10, 22, 36);
+
+		draw_digit(15, 12, 36);
+		}
+	else
+		{
+/* comment this out so that the last connect time is still printed (useful)
+		draw_digit(10, 2, 36);
+		draw_digit(10, 7, 36);
+
+		draw_digit(10, 17, 36);
+		draw_digit(10, 22, 36);
+*/
+
+		draw_digit(14, 12, 36);
+		}
+}
+
+static void draw_bytes(gint bytes)
+{
+	if (bytes > -1)
+		{
+		gint dig;
+		if (bytes > 9999)
+			{
+			bytes /= 1024;
+			draw_digit(12, 22, 24);
+			}
+		else
+			{
+			draw_digit(13, 22, 24);
+			}
+
+		dig = bytes / 1000;
+		draw_digit(dig, 2, 24);
+		bytes %= 1000;
+		dig = bytes / 100;
+		draw_digit(dig, 7, 24);
+		bytes %= 100;
+		dig = bytes / 10;
+		draw_digit(dig, 12, 24);
+		bytes %= 10;
+		draw_digit(bytes, 17, 24);
+		}
+	else
+		{
+		draw_digit(10, 2, 24);
+		draw_digit(10, 7, 24);
+		draw_digit(10, 12, 24);
+		draw_digit(10, 17, 24);
+
+		draw_digit(11, 22, 24);
+		}
+}
+
+static gint update_extra_info(int rx_bytes)
+{
+	static gint old_timer = -1;
+	static gint old_bytes = -1;
+	static gint old_rx_bytes = -1;
+	static gint update_counter = 0;
+	gint redraw = FALSE;
+	gint new_timer;
+	gint new_bytes;
+
+	if (!show_extra_info) return FALSE;
+
+	update_counter++;
+	if (update_counter < UPDATE_DELAY) return FALSE;
+	update_counter = 0;
+
+	new_timer = get_connect_time(FALSE);
+	if (new_timer != old_timer)
+		{
+		old_timer = new_timer;
+		redraw = TRUE;
+
+		draw_timer(new_timer);
+		}
+
+	if (rx_bytes == -1 || old_rx_bytes == -1)
+		{
+		new_bytes = -1;
+		}
+	else
+		{
+		new_bytes = rx_bytes - old_rx_bytes;
+		}
+
+
+	if (new_bytes != old_bytes)
+		{
+		old_bytes = new_bytes;
+		redraw = TRUE;
+	
+		draw_bytes(new_bytes);
+		}
+
+	old_rx_bytes = rx_bytes;
+
+	return redraw;
+}
+
 static void draw_load(int rxbytes,int txbytes)
 {
 	int load_max = 0;
 	int i;
-	int x,y;
+	int x, y, dot_height;
 	float bytes_per_dot;
 
-	if (orient == ORIENT_LEFT || orient == ORIENT_RIGHT)
+	if (show_extra_info)
+		{
+		x = 2;
+		y = 19;
+		dot_height = 18;
+		}
+	else if (orient == ORIENT_LEFT || orient == ORIENT_RIGHT)
 		{
 		x = 2;
 		y = 17;
+		dot_height = 16;
 		}
 	else
 		{
 		x = 2;
 		y = 27;
+		dot_height = 16;
 		}
 
 	/* sanity check: */
@@ -444,12 +624,12 @@ static void draw_load(int rxbytes,int txbytes)
 	load_hist_rx[15] = rxbytes;
 	load_hist_tx[15] = txbytes;
 
-	if (load_max < 16)
+	if (load_max < dot_height)
 		bytes_per_dot = 1.0;
 	else
-		bytes_per_dot = (float)load_max / 15;
+		bytes_per_dot = (float)load_max / (dot_height - 1);
 
-	gdk_draw_rectangle(display, display_area->style->black_gc, TRUE, x, y - 15, 16, 16);
+	gdk_draw_rectangle(display, display_area->style->black_gc, TRUE, x, y - dot_height + 1, 16, 16);
 
 	gdk_gc_set_foreground( gc, &rxcolor );
 	for (i=0;i<16;i++)
@@ -473,7 +653,7 @@ static void draw_load(int rxbytes,int txbytes)
 static void draw_light(int lit,int x,int y)
 {
 	/* if the orientation is sideways (left or right panel), we swap x and y */
-	if (orient == ORIENT_LEFT || orient == ORIENT_RIGHT)
+	if (show_extra_info || orient == ORIENT_LEFT || orient == ORIENT_RIGHT)
 		{
 		int t;
 		t = y;
@@ -489,7 +669,7 @@ static void draw_light(int lit,int x,int y)
 }
 
 /* to minimize drawing (pixmap manipulations) we only draw a light if it has changed */
-static void update_lights(int rx,int tx,int cd)
+static void update_lights(int rx,int tx,int cd, int rx_bytes)
 {
 	static int o_rx = FALSE;
 	static int o_tx = FALSE;
@@ -516,6 +696,13 @@ static void update_lights(int rx,int tx,int cd)
 		else
 			gtk_pixmap_set(GTK_PIXMAP(button_pixmap), button_off, NULL);
 		}
+
+	/* we do the extra info redraws here too */
+	if (show_extra_info && update_extra_info(rx_bytes))
+		{
+		redraw_required = TRUE;
+		}
+
 	if (redraw_required) redraw_display();
 }
 
@@ -524,21 +711,32 @@ static gint update_display()
 	static int old_rx,old_tx;
 	static int load_count;
 	static int modem_was_on = FALSE;
+	static gint last_time_was_connected = FALSE;
 	int rx, tx;
 	int light_rx = FALSE;
 	int light_tx = FALSE;
 
 	load_count++;
 
-	if (is_connected()) {
-		if (!get_stats (&rx, &tx)) {
+	if (is_connected())
+		{
+		if (!last_time_was_connected)
+			{
+			get_connect_time(TRUE); /* reset start time */
+			last_time_was_connected = TRUE;
+			}
+
+		if (!get_stats (&rx, &tx))
+			{
 			old_rx = old_tx = 0;
-		} else {
+			}
+		else
+			{
 			if (rx > old_rx) light_rx = TRUE;
 			if (tx > old_tx) light_tx = TRUE;
-		}
+			}
 		
-		update_lights(light_rx,light_tx,TRUE);
+		update_lights(light_rx, light_tx, TRUE, rx);
 		if (load_count > UPDATE_DELAY * 2)
 			{
 			static int load_rx, load_tx;
@@ -578,11 +776,15 @@ static gint update_display()
 			load_count = 0;
 			draw_load(0,0);
 			}
-		update_lights(FALSE,FALSE,FALSE);
+		update_lights(FALSE, FALSE, FALSE, -1);
 		if (modem_was_on)
 			{
 			update_tooltip(FALSE,0,0);
 			modem_was_on = FALSE;
+			}
+		if (last_time_was_connected)
+			{
+			last_time_was_connected = FALSE;
 			}
 		}
 
@@ -609,8 +811,12 @@ static void create_pixmaps()
 		&style->bg[GTK_STATE_NORMAL], (gchar **)backgrnd_xpm);
 	display_back_s = gdk_pixmap_create_from_xpm_d(display_area->window, &mask,
 		&style->bg[GTK_STATE_NORMAL], (gchar **)backgrnd_s_xpm);
+	display_back_a = gdk_pixmap_create_from_xpm_d(display_area->window, &mask,
+		&style->bg[GTK_STATE_NORMAL], (gchar **)backgrnd_a_xpm);
 	lights = gdk_pixmap_create_from_xpm_d(display_area->window, &mask,
 		&style->bg[GTK_STATE_NORMAL], (gchar **)lights_xpm);
+	digits = gdk_pixmap_create_from_xpm_d(display_area->window, &mask,
+		&style->bg[GTK_STATE_NORMAL], (gchar **)digits_xpm);
 	button_off = gdk_pixmap_create_from_xpm_d(applet->window, &mask,
 		&style->bg[GTK_STATE_NORMAL], (gchar **)button_off_xpm);
 	button_on = gdk_pixmap_create_from_xpm_d(applet->window, &mask,
@@ -634,12 +840,28 @@ static void setup_colors()
         gdk_gc_copy( gc, display_area->style->white_gc );
 }
 
+void reset_orientation(void)
+{
+	applet_change_orient(NULL, orient, NULL);
+}
+
 static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
 {
 	/* resize the applet and set the proper background pixmap */
 	orient = o;
 
-	if (orient == ORIENT_LEFT || orient == ORIENT_RIGHT)
+	if (show_extra_info)
+		{
+		gtk_widget_set_usize(frame, 46, 46);
+		display = gdk_pixmap_new(display_area->window, 30, 46, -1);
+		gtk_drawing_area_size(GTK_DRAWING_AREA(display_area), 30, 46);
+		gdk_draw_pixmap(display,display_area->style->fg_gc[GTK_WIDGET_STATE(display_area)],
+			display_back_a, 0, 0, 0, 0, 30, 46);
+		gtk_widget_set_usize(button,16,46);
+		gtk_fixed_move(GTK_FIXED(frame),display_area,16,0);
+		gtk_fixed_move(GTK_FIXED(frame),button,0,0);
+		}
+	else if (orient == ORIENT_LEFT || orient == ORIENT_RIGHT)
 		{
 		gtk_widget_set_usize(frame, 46, 20);
 		display = gdk_pixmap_new(display_area->window,30,20,-1);
@@ -662,7 +884,7 @@ static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
 		gtk_fixed_move(GTK_FIXED(frame),button,0,30);
 		}
 	/* we set the lights to off so they will be correct on the next update */
-	update_lights(FALSE, FALSE, FALSE);
+	update_lights(FALSE, FALSE, FALSE, -1);
 	redraw_display();
 }
 
