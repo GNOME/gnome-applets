@@ -66,5 +66,7 @@ make_swapload_applet (const gchar *goad_id)
 				     _("Run gtop..."),
 				     start_gtop_cb, NULL);
     
+    applet_widget_set_tooltip(APPLET_WIDGET(applet), "Swap Load"); 
+    
     return applet;
 }

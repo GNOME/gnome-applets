@@ -59,5 +59,8 @@ make_netload_applet (const gchar *goad_id)
 					   _("Properties..."),
 					   multiload_properties_cb,
 					   g);
+
+    applet_widget_set_tooltip(APPLET_WIDGET(applet), "Network Load");
+    
     return applet;
 }

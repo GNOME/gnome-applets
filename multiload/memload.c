@@ -65,5 +65,8 @@ make_memload_applet (const gchar *goad_id)
 				     "run_gtop",
 				     _("Run gtop..."),
 				     start_gtop_cb, NULL);
+
+    applet_widget_set_tooltip(APPLET_WIDGET(applet), "Memory Load");
+
     return applet;
 }
