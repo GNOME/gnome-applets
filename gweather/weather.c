@@ -101,7 +101,7 @@ WeatherLocation *weather_location_config_read (gchar *prefix)
 
     g_return_val_if_fail(prefix != NULL, NULL);
 
-    prefix_with_default = g_strconcat(prefix, "=Pittsburgh KPIT PAZ021 PBZ", NULL);
+    prefix_with_default = g_strconcat(prefix, "=Pittsburgh KPIT PAZ021 pit", NULL);
 
     gnome_config_get_vector(prefix_with_default, &nlocdata, &locdata);
     g_return_val_if_fail(nlocdata == 4, NULL);
