@@ -3,12 +3,11 @@
 
   <para>
    <application>Sound Monitor</application> applet, shown in its
-   default theme(appearance) in <xref
+   default theme (appearance) in <xref
    linkend="soundmonitorapplet-fig">, is a sound volume display and an
-   interface for controlling ESD (the Enlightened Sound Daemon). If
-   you are not familiar with ESD, it is a program which controls sound
-   on your system and allows all of your applications to play sound at
-   the same time.  To add this applet to a <interface>Panel</interface>, 
+   interface for controlling ESD (the Enlightened Sound Daemon) --
+   GNOME component responsible for sound output. To add this applet to
+   a <interface>Panel</interface>,  
    right-click on the <interface>Panel</interface> and choose
    <menuchoice>
     <guimenu>Panel</guimenu>
@@ -29,6 +28,44 @@
    </screenshot>
   </figure>
 
+  <!-- ============= Waht is ESD?  ================================ -->
+  <sect2 id="soundmonitorapplet-esd">
+   <title>Sound in GNOME</title>
+   <para>
+      GNOME uses a special program, called ESD (the Enlightened Sound
+      Daemon), as an intermediary between applications and sound
+      card. ESD allows mixing sound from several applications, so that
+      you can play a game and hear the sound effects while listening
+      to an aduio CD. To hear any sound from GNOME applications, ESD
+      must be running. Normally GNOME is configured so that ESD is
+      started every time you login; if for some reason this is not so,
+      click on the <guibutton>Main Menu</guibutton> button (the foot
+      icon) and select
+     <menuchoice>
+      <guimenu>Programs</guimenu>
+      <guisubmenu>Setting</guisubmenu>
+      <guisubmenu>Multimedia</guisubmenu>
+      <guimenuitem>Sound</guimenuitem>
+     </menuchoice>
+      and make sure that the option <guilabel>Enable sound server
+      startup</guilabel> is enabled, so that the next time you login,
+      ESD will be started. You can also start or stop ESD
+      using the <application>Sound Monitor</application> applet as
+      described below.
+    </para>
+    <para>
+      Non-GNOME applications usually are not aware of ESD and need
+      full control of the audio card --- they can not share audio card
+      with other applications. This means with such applications, you
+      can either have sound from GNOME or sound from non-GNOME
+      application, but not both. In many cases, this means that you
+      have to temporarily stop ESD to get sound from  non-GNOME
+      applications (otherwise, you get error messages like
+      <command>Device /dev/dsp busy</command>). 
+    </para>
+  </sect2>
+
+ 
   <!-- ============= Usage  ================================ -->
   <sect2 id="soundmonitorapplet-usage">
    <title>Usage</title>
@@ -99,28 +136,6 @@
 
     </itemizedlist>
    </para>
-
-   <note>
-    <title>Note About Sound in GNOME</title>
-    <para>
-     For sound to work in GNOME, you must have sound enabled in the
-     <application>Control Center</application>.  To configure sound,
-     click on the <guibutton>Main Menu</guibutton> button (the foot
-     icon) and select
-     <menuchoice>
-      <guimenu>Programs</guimenu>
-      <guisubmenu>Setting</guisubmenu>
-      <guisubmenu>Multimedia</guisubmenu>
-      <guimenuitem>Sound</guimenuitem>
-     </menuchoice>. Make sure both sound options are enabled in the
-     <guilabel>General</guilabel> tab.  Feel free to configure and
-     test things in the <guilabel>Sound Events</guilabel> section.
-     Note that you may have to exit GNOME and restart for sound to
-     work properly after enabling it in the <application>Control
-     Center</application> for the first time.
-    </para>
-   </note>
-
   </sect2>
 
 
@@ -131,7 +146,7 @@
       You can customize <application>Sound Monitor</application>
       applet by right-clicking on it and choosing
       <guimenuitem>Properties&hellip;</guimenuitem>. This will open the
-      <interface>Properties</interface> dialog(shown in <xref
+      <interface>Properties</interface> dialog (shown in <xref
       linkend="soundmonitor-settings-fig">), which allows you to
       change various settings.
     </para>
@@ -156,29 +171,32 @@
         indicator (the bright line which tracks the peak volume),
         either turning it off (<guilabel>off</guilabel>), having it
         follow the peak as if it is floating on top
-        (<guilabel>active</guilabel>), or having it follow a more
-        smooth sense of the peak(<guilabel>smooth</guilabel>), which
-        may actually lie slightly below the active peak which can
-        briefly increase above the smooth peak.
+        (<guilabel>active</guilabel>), or having it follow the peak
+        smoothing out short spikes and drops
+        (<guilabel>smooth</guilabel>). 
        </para>
       </listitem>
 
       <listitem>
        <para>
         Peak indicator falloff speed &mdash; This controls the speed
-        the peak indicator falls back to zero volume(for active mode)
-        or moves toward the current volume(for smooth mode).
+        the peak indicator falls back to zero volume (for active mode)
+        or moves toward the current volume (for smooth mode).
        </para>
       </listitem>
       <listitem>
        <para>
         Scope (scale 1:X, where X=?) &mdash; This controls the
         horizontal (time) axis scale for <application>Sound
-        Monitor</application> themes which resemble a scope. (Since
+        Monitor</application> "scope-like" themes, i.e., themes that
+        show a graph of sound level, with time along the horizontal
+        axis. (Since
         the default theme is not a scope, this control does not do
         anything until you have modified the theme, as described
-        below.) A value of 1 corresponds to having one pixel on the
-        display represent one sound sampling, which is taken at 44.1kHz.
+        below.) A value of 1 corresponds to time scale of 44 100
+        pixels/second; value of X gives 44 100/X pixels/second. (These
+        numbers appear because the standard for CD-quality audio
+        stipulates that there should be 44 100 sound samplings per second.)
        </para>
       </listitem>
 
@@ -266,7 +284,7 @@
       To start the <interface>Sound Monitor Manager</interface>,
       right-click on the applet and choose
       <guimenuitem>Manager&hellip;</guimenuitem>. This will open the
-      <interface>Sound Monitor - Manager</interface> dialog(shown in <xref
+      <interface>Sound Monitor - Manager</interface> dialog (shown in <xref
       linkend="soundmonitorappletmanager-fig">), which allows you to 
       view and modify various ESD settings.
     </para>
@@ -361,7 +379,7 @@
     As an example, suppose you are running the
     <application>GTCD</application> CD Player and you 
     lower its volume using the <interface>Manager</interface> window. Normally
-    the volume setting will be lost when the program(in this case
+    the volume setting will be lost when the program (in this case
     <application>GTCD</application>) is exited and
     restarted. However, if <application>esdpvd</application> is
     running and you start <application>GTCD</application> again, the
@@ -372,8 +390,9 @@
     If you configure GNOME to start <application>ESDPVD</application>
     each time GNOME is started (using the
     <interface>control-center</interface>'s <interface>Startup 
-    Programs</interface> section), <application>ESDPVD</application> will remember
-    sound volume and balance customizations between GNOME sessions.
+    Programs</interface> section), <application>ESDPVD</application>
+    will remember  sound volume and balance customizations between
+    GNOME sessions. 
    </para>
    <para>
     <application>ESDPVD</application> also remembers volume and
@@ -390,7 +409,10 @@
   <sect2 id="bugs">
    <title>Known Bugs and Limitations</title>
    <para>
-    This applet has no known bugs.
+    This applet only shows the sound volume for sound produced by
+    GNOME applications (to be precise, sounds passing through ESD); it
+    will not show sound volume for applications that directly connect
+    to audio card. 
    </para>
   </sect2>
 
@@ -407,8 +429,7 @@
     bug tracking database</ulink>. (Instructions for submitting bug
     reports can be found <ulink
     url="http://bugs.gnome.org/Reporting.html" type="http">
-    on-line</ulink>. If you are using
-    GNOME 1.1 or later, you can also use <application>Bug Report
+    on-line</ulink>. You can also use <application>Bug Report
     Tool</application> (<command>bug-buddy</command>), available in the
     <guisubmenu>Utilities</guisubmenu> submenu of <guimenu>Main
     Menu</guimenu>, for submitting bug reports.
@@ -417,13 +438,14 @@
    <para>
     This manual was written by Dan Mueth
     (<email>d-mueth@uchicago.edu</email>) and John Ellis
-    (<email>johne@bellatlantic.net</email>). Please send all comments and 
-    suggestions regarding this manual to the <ulink type="http"
-    url="http://www.gnome.org/gdp">GNOME Documentation Project</ulink> 
-    by sending an email to <email>docs@gnome.org</email>. You can also
-    submit comments online by using the <ulink type="http"
-    url="http://www.gnome.org/gdp/doctable/">GNOME Documentation Status
-    Table</ulink>.
+    (<email>johne@bellatlantic.net</email>). Please send all comments
+    and suggestions regarding this manual to the <ulink type="http"
+    url="http://developer.gnome.org/projects/gdp/">GNOME Documentation
+    Project</ulink> by sending an email to
+    <email>docs@gnome.org</email>. You can also submit comments online
+    by using the <ulink type="http"
+    url="http://developer.gnome.org/projects/doctable/">GNOME Documentation
+    Status Table</ulink>.
    </para>
 
    <!-- For translations: uncomment this:
