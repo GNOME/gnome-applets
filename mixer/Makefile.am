@@ -11,8 +11,6 @@ pixmaps_DATA =  gnome-mixer-applet.png		\
 INCLUDES = -I. -I$(srcdir) 				\
 	-I$(top_srcdir)/screen-exec			\
 	-DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\" 	\
-	-DG_DISABLE_DEPRECATED -DGTK_DISABLE_DEPRECATED \
-	-DGNOME_DISABLE_DEPRECATED -DGDK_DISABLE_DEPRECATED \
 	$(GNOME_APPLETS_CFLAGS)				
 
 libexec_PROGRAMS = mixer_applet2
@@ -50,4 +48,4 @@ EXTRA_DIST = 						\
 	$(schemas_in_files)
 	
 install-data-local:
-	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schemas_DATA) ;
+	-GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schemas_DATA) ;
