@@ -25,11 +25,6 @@
 #include <dirent.h>		/* for opendir() et al. */
 #include <string.h>		/* for strncmp() */
 
-#define FSIZE1 20
-#define FSIZE2 44
-#define FSIZE3 60
-#define FSIZE4 76
-
 typedef struct _gkb_properties gkb_properties;
 struct _gkb_properties {
 	char *command;
@@ -57,7 +52,7 @@ struct _GKB {
 	GtkWidget *propbox;
 
         PanelOrientType orient;
-	PanelSizeType size;
+	int size;
 
       	int curpix;
 
@@ -75,6 +70,47 @@ static int  gkb_empty(GtkWidget *darea, GdkEventExpose *event, GKB *gkb);
 void        properties_dialog(AppletWidget *applet, gpointer gkbx);
 void        about_cb (AppletWidget *widget, gpointer gkbx);
 
+static GtkWidget *
+gkb_create_icon_entry(GtkWidget *table,
+		      char *history_id,
+		      int cols, int cole,
+		      char *label,
+		      char *text,
+		      GtkWidget *w)
+{
+	GtkWidget *wlabel;
+	GtkWidget *entry;
+	GtkWidget *t;
+
+	wlabel = gtk_label_new(label);
+	gtk_misc_set_alignment(GTK_MISC(wlabel), 0.0, 0.5);
+	gtk_table_attach(GTK_TABLE(table), wlabel,
+			 cols, cole, 2, 3,
+			 GTK_SHRINK,
+			 GTK_EXPAND | GTK_FILL | GTK_SHRINK,
+			 GNOME_PAD_SMALL, GNOME_PAD_SMALL);
+	gtk_widget_show(wlabel);
+
+	entry = gnome_icon_entry_new(history_id,_("Browse"));
+	if (text)
+		gnome_icon_entry_set_icon(GNOME_ICON_ENTRY(entry),text);
+
+	t = gnome_icon_entry_gtk_entry (GNOME_ICON_ENTRY (entry));
+	gtk_table_attach(GTK_TABLE(table), entry,
+			 cols, cole, 1, 2,
+			 GTK_EXPAND | GTK_FILL | GTK_SHRINK,
+			 GTK_FILL | GTK_SHRINK,
+			 GNOME_PAD_SMALL, GNOME_PAD_SMALL);
+
+	if(w) {
+		gtk_signal_connect_object_while_alive (GTK_OBJECT (t), "changed",
+						       GTK_SIGNAL_FUNC(gnome_property_box_changed), 
+						       GTK_OBJECT(w));
+	}
+	return entry;
+}
+
+
 static void
 sized_render(GKB * gkb)
 {
@@ -84,22 +120,13 @@ sized_render(GKB * gkb)
 	if(gkb->pix[1])
 		gdk_imlib_destroy_image(gkb->pix[1]);
 		
-	if((gkb->orient==ORIENT_LEFT) || (gkb->orient==ORIENT_RIGHT))
- 	 switch (gkb->size) {
-	   case SIZE_TINY    : gkb->width=FSIZE1; gkb->height=FSIZE1/1.5; break;
-	   case SIZE_STANDARD: gkb->width=FSIZE2; gkb->height=FSIZE2/1.5; break;
-	   case SIZE_LARGE   : gkb->width=FSIZE3; gkb->height=FSIZE3/1.5; break;
-	   case SIZE_HUGE    : gkb->width=FSIZE4; gkb->height=FSIZE4/1.5; break;
-	   default           : gkb->width=FSIZE1; gkb->height=FSIZE1/1.5; break;
-	 }
-	else
-	 switch (gkb->size) {
-	   case SIZE_TINY    : gkb->width=FSIZE1*1.5; gkb->height=FSIZE1; break;
-	   case SIZE_STANDARD: gkb->width=FSIZE2*1.5; gkb->height=FSIZE2; break;
-	   case SIZE_LARGE   : gkb->width=FSIZE3*1.5; gkb->height=FSIZE3; break;
-	   case SIZE_HUGE    : gkb->width=FSIZE4*1.5; gkb->height=FSIZE4; break;
-	   default           : gkb->width=FSIZE1*1.5; gkb->height=FSIZE1; break;
-	 }
+	if((gkb->orient==ORIENT_LEFT) || (gkb->orient==ORIENT_RIGHT)) {
+		gkb->width=(gkb->size-4);
+		gkb->height=(gkb->size-4)/1.5;
+	} else {
+		gkb->width=(gkb->size-4)*1.5;
+		gkb->height=(gkb->size-4);
+	}
 	
 	gkb->pix[0] = gdk_imlib_load_image(gkb->properties.image[0]);
 	gkb->pix[1] = gdk_imlib_load_image(gkb->properties.image[1]);
@@ -128,12 +155,12 @@ gkb_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
 }
 
 static void
-gkb_change_size(GtkWidget *w, PanelSizeType o, gpointer data)
+gkb_change_pixel_size(GtkWidget *w, int size, gpointer data)
 {
         GKB *gkb = data;
 
 
-        gkb->size = o;
+        gkb->size = size;
         sized_render(gkb);
 }
 
@@ -171,7 +198,7 @@ static  gkb_properties defaults = {
 	gnome_config_pop_prefix();
 
         gkb->orient = applet_widget_get_panel_orient(APPLET_WIDGET(gkb->applet));
-        gkb->size   = applet_widget_get_panel_size  (APPLET_WIDGET(gkb->applet));
+        gkb->size   = applet_widget_get_panel_pixel_size  (APPLET_WIDGET(gkb->applet));
 
 	sized_render(gkb);
 }
@@ -311,9 +338,9 @@ properties_dialog(AppletWidget *applet,
         GList *combo2_items = NULL;
         GtkWidget *g2_menuitem;    
         GtkWidget *option1;        
-        GtkWidget *option2;        
+        /*GtkWidget *option2;*//*unused -George*/
         GtkWidget *option1_menu;   
-        GtkWidget *option2_menu;
+        /*GtkWidget *option2_menu;*//*unused -George*/
         GtkWidget *table1;
         GtkWidget *table2;
         GtkWidget *frame2;
@@ -352,7 +379,7 @@ static	char *basemaps[]= {
         table1 = gtk_table_new(2,2,FALSE);
         gtk_container_set_border_width(GTK_CONTAINER (table1), 3);
    
-        gkb->entry_1 = create_icon_entry(table1,"tile_file1",1,
+        gkb->entry_1 = gkb_create_icon_entry(table1,"tile_file1",1,2,
             			_("Flag One"),
                          		gkb->temp_props.image[0],
                          		GTK_WIDGET(gkb->propbox));
@@ -384,7 +411,7 @@ static	char *basemaps[]= {
         table2 = gtk_table_new(2,2,FALSE);
         gtk_container_set_border_width(GTK_CONTAINER (table2), 3);
    
-        gkb->entry_2 = create_icon_entry(table2,"tile_file2",1,
+        gkb->entry_2 = gkb_create_icon_entry(table2,"tile_file2",1,2,
                                 	        _("Flag Two"),
                      			gkb->temp_props.image[1],
                          		gkb->propbox);
@@ -455,10 +482,9 @@ static void
 gkb_draw(GtkWidget * darea,
 	GKB *gkb)
 {
-
-
-	if(gkb->darea!=NULL)
-	 if(!GTK_WIDGET_REALIZED(gkb->darea))
+	if(gkb->darea!=NULL ||
+	   !GTK_WIDGET_REALIZED(gkb->darea) ||
+	   !gkb->pix[gkb->properties.curpix]->pixmap)
 		return;
 
 	gdk_draw_pixmap(gkb->darea->window,
@@ -664,8 +690,8 @@ gkb_activator(PortableServer_POA poa,
                                      GTK_SIGNAL_FUNC(gkb_change_orient),
                                      gkb);
 
-        gtk_signal_connect(GTK_OBJECT(gkb->applet),"change_size",
-                                     GTK_SIGNAL_FUNC(gkb_change_size),
+        gtk_signal_connect(GTK_OBJECT(gkb->applet),"change_pixel_size",
+                                     GTK_SIGNAL_FUNC(gkb_change_pixel_size),
                                      gkb);
 
         do_that_command(gkb);
