@@ -1,10 +1,10 @@
  <sect1 id="gkbapplet">
   <title>GNOME KeyBoard Applet</title>
-
+<!-- reviewed by András-->
   <para>
    <application>GNOME KeyBoard Applet</application>, shown with its
-   default configuration in <xref
-   linkend="gkbapplet-fig">, allows you to easily and quickly change
+   default configuration in <xref linkend="gkbapplet-fig">, allows
+   you to easily and quickly change
    the keyboard map to those used in various different countries. To
    add this applet to a
    <interface>Panel</interface>,
@@ -14,7 +14,7 @@
     <guisubmenu>Add to panel</guisubmenu>
     <guisubmenu>Applet</guisubmenu>
     <guisubmenu>Utility</guisubmenu>
-    <guimenuitem>GKB International KeyBoard</guimenuitem>
+    <guimenuitem>GKB KeyBoard Switcher</guimenuitem>
    </menuchoice>.
   </para>
 
@@ -22,20 +22,22 @@
    <title>GNOME KeyBoard Applet</title>
    <screenshot>
     <screeninfo>GNOME KeyBoard Applet</screeninfo>
-    <graphic format="png" fileref="gkb_applet" 
-    srccredit="muet">
+    <graphic format="png" fileref="gkb_applet"
+    srccredit="emese">
     </graphic>
    </screenshot>
   </figure>
 
 
   <!-- ============= Usage  ================================ -->
-  <sect2 id="gkb-usage">
+  <sect2 id="gkbapplet-usage">
    <title>Usage</title>
    <para>
     Once configured, the <application>GNOME Keyboard</application>
-    applet allows you to switch the keyboard mapping between any number of 
-    countries. Just left-click on the applet to switch the keyboard
+    applet allows you to switch the keyboard mapping between any number of
+    keyboard layout. Just left-click on the applet or press 
+    <keycombo><keycap>Alt</keycap><keycap>Shift</keycap></keycombo> 
+    to switch the keyboard
     mapping.
    </para>
 
@@ -63,7 +65,7 @@
       <para>
        <guimenuitem>About&hellip;</guimenuitem> &mdash;
        shows basic information about <application>GNOME KeyBoard
-       Applet</application>, inluding the applet's version and the
+       Applet</application>, including the applet's version and the
        author's name.
       </para>
      </listitem>
@@ -82,7 +84,8 @@
       <guimenuitem>Properties&hellip;</guimenuitem>. This will open the
       <interface>Properties</interface> dialog (shown in <xref
       linkend="gkbapplet-settings-fig">), which allows you to
-      add, configure, and remove keymaps.
+      add, modify, and remove keymaps, as well as to <link linkend="gkbapplet-options">configure 
+      the applet's appearance</link>.
     </para>
 
     <figure id="gkbapplet-settings-fig">
@@ -90,100 +93,283 @@
      <screenshot>
       <screeninfo>Properties dialog</screeninfo>
       <graphic format="png" fileref="gkb_applet_settings"
-      srccredit="muet">
+      srccredit="emese">
       </graphic>
      </screenshot>
     </figure>
 
-    <para>
-      <application>GNOME KeyBoard</application> typically comes up
-      with two keyboard maps.  Each keyboard map has its own tab, with
-      a label indicating the language or country the map is for. In
-      <xref linkend="gkbapplet-settings-fig">, these are
-      <guilabel>US</guilabel> (for a US
-      keyboard) and <guilabel>HU</guilabel> (for Hungarian). You
-      can delete any keyboard map by selecting the tab and pressing
-      the <guibutton>Delete this keymap</guibutton> button.  To add
-      another keyboard map, press the <guibutton>New
-      keymap</guibutton> button and a new tab will appear for you to
-      customize.
-    </para> 
-
-    <para>
-     Each keymap tab has the following properties:
-     <itemizedlist>
-
-      <listitem>
-       <para>
-        Keymap name &mdash; This is the name of the keymap, which will
-        be displayed in the tab at the top. 
-       </para>
+    <para>The <interface>Properties</interface> dialog box has two tabs:
+    <guilabel>Keymaps</guilabel> and <guilabel>Options</guilabel>.
+    On the <guilabel>Keymaps</guilabel> tab, you can Add, Edit, Delete
+    or change the order of keyboard layouts. On the 
+    <guilabel>Options</guilabel> tab you can set the appearance of the 
+    applet (flag, label or flag+label) and its size (Normal or Big), as 
+    well as the key sequence to use to get GKB to switch between
+    keyboard layouts (see <xref  linkend="bugs"> section.)
+    </para>
+    <sect3 id="gkb-prefs-add">
+    <title>Setting keyboard layouts for you language</title>
+     <para>
+     Setting up keymaps can consist in one or more of the following steps:
+      <itemizedlist>
+       <listitem>
+    	 <para>
+         Adding a required keyboard layout &mdash; On the 
+         <guilabel>Keymaps</guilabel> tab, click on the 
+         <guibutton>Add</guibutton> button. The 
+         <interface>tree</interface> shown in 
+         <xref linkend="gkbapplet-add-keymap-fig"> allows you to choose 
+         the keymap best suited for you, based on the language and the 
+         country involved.  
+    	 </para>
+         
+         <figure id="gkbapplet-add-keymap-fig">
+         <title>Select Layout dialog</title>
+         <screenshot>
+         <screeninfo>Select layout dialog</screeninfo>
+         <graphic format="png" fileref="gkb_add_list" 
+         srccredit="emese"></graphic>
+         </screenshot>
+         </figure>
+         <para>To add a keymap, click on the <guibutton>+</guibutton> 
+         sign preceeding the languge you want to set. A list of coutries 
+         where the given language is used appears. Again, click on the 
+         <guibutton>+</guibutton> preceeding the country chosen, and a 
+         list of keymaps shows up. Select the keymap you would like to 
+         use and click <guibutton>Add</guibutton>. Your keymap gets added to
+         the list on the <interface>GKB Properties</interface> window. You 
+         may add another keymap or click
+         <guibutton>Close</guibutton> to close the 
+         <interface>Select Layout</interface> dialog.
+         </para>
       </listitem>
 
-      <listitem>
-       <para>
-        Icon path &mdash; This is the path to the icon which will be
-        displayed for the keyboard map.  For most countries, just
-        click on the image of a flag to the right to bring up a set of
-        images you can use.  If you select one of these standard map
-        images, you will not need to type the path by hand.
-       </para>
-      </listitem>
+    	<listitem>
+    	 <para>
+          Editing an existing keyboard layout &mdash; Selecting a keymap 
+          and pressing the <guibutton>Edit</guibutton> brings up the 
+          <interface>Edit keymap</interface> window (see 
+          <xref linkend="gkbapplet-prefs-edit">). 
+         </para>
 
-      <listitem>
-       <para>
-        Full command &mdash; This is the command which
+
+ <figure id="gkbapplet-prefs-edit">
+         <title>Edit keymap dialog</title>
+         <screenshot>
+         <screeninfo>Edit keymap dialog</screeninfo>
+         <graphic format="png" fileref="gkb_edit_keymap" 
+         srccredit="emese"></graphic>
+         </screenshot>
+         </figure>
+
+<para>
+On this dialog, you can modify different properties of the keymap. These 
+properties are:
+
+<itemizedlist>
+
+<listitem>
+<para>
+<guilabel>Name</guilabel>: The name of the keymap, as shown in the 
+<interface>GKB Properties</interface> window and in the hint appearing 
+when you move your mouse over the applet.
+</para>
+</listitem>
+
+<listitem>
+<para>
+<guilabel>Label</guilabel>: This is the label that appears when you set 
+"Label" or "Flag+Label" modes. See <xref  linkend="gkbapplet-options"> for more 
+details. 
+</para>
+</listitem>
+
+<listitem>
+<para>
+<guilabel>Language</guilabel>: This option will be used in Gnome 2.0. 
+It has no effect right now.
+</para>
+</listitem>
+
+<listitem>
+<para>
+<guilabel>Country</guilabel>: This option will be used in Gnome 2.0. It 
+has no effect right now. 
+</para>
+</listitem>
+
+<listitem>
+<para>
+<guilabel>Flag</guilabel>: This is the place where you can set the flag 
+to be displayed with the given keyboard layout.
+</para>
+</listitem>
+
+<listitem>
+<para>
+<guilabel>Architecture</guilabel>:This option will be used in Gnome 2.0. 
+It has no effect right now. 
+</para>
+</listitem>
+
+<listitem>
+<para>
+<guilabel>Type</guilabel>: This option will be used in Gnome 2.0. It has no 
+effect right now.
+</para>
+</listitem>
+
+<listitem>
+<para>
+<guilabel>Code page</guilabel>: This option will be used in Gnome 2.0. It 
+has no effect right now.
+</para>
+</listitem>
+
+<listitem>
+<para>
+<guilabel>Command</guilabel>: This is the command which
         <application>GNOME KeyBoard</application> will use to change
         the keymap.  The default is to use the
-        <command>setxkbmap <replaceable>LC</replaceable></command>
-        command, where <replaceable>LC</replaceable> should be
-        replaced by the 2-letter language code.   To set the keymap to a
-        US keyboard, for example, you would use <command>setxkbmap
-        us</command>. </para>
+        <command>gkb_xmmap <replaceable>xmodmap-file-extension</replaceable>
+</command> command, where <replaceable>xmodmap-file-extension</replaceable> 
+should be replaced by the extension of the xmodmap file you want to use.
+</para>
+<tip>
+<title>Finding keyboard layouts availble on your system</title>
+<para>On a typical Linux system, xmodmap files can be found under the 
+directory <filename class="directory">/usr/share/xmodmap</filename>.
+</para>
+</tip> 
+<para>        
+To set the keymap to a US 101 key keyboard, for example, you would 
+use <command>gkb_xmmap us-101</command>. 
+</para>
        <para>
 	    If this doesn't work, you may also try setting the
-	    keyboard using command <command>gkb_xmmap
-	    <replaceable>LC</replaceable></command> (for example,
-	    <command>gkb_xmmap fr</command> to use a French
+	    keyboard using command <command>setxkbmap
+	    <replaceable>LC</replaceable></command> where 
+            <replaceable>LC</replaceable> is the two letter country 
+            code of your locale. (for example,
+	    <command>setxkbmap fr</command> to use a French
 	    keyboard). Finally, if you have your own keyboard layout
 	    (xmodmap) file, set the command to <command>xmodmap
 	    <replaceable>xmodmap-filename</replaceable></command> (for
 	    example, <command>xmodmap
 	    ~/xrus/yawerty.koi8.xmm</command> to use keyboard layout
 	    for Cyrillic letters in koi8 encoding).  Please see
-	    <xref  linkend="gkbappplet-technical"> for more
-	    information. 
+	    <xref  linkend="gkbappplet-technical"> for more information.
        </para>
-      </listitem>
 
-     </itemizedlist>
-    </para>
+</listitem>
+</itemizedlist> 
+               
+    	 </para>
+    	</listitem>
 
-    <para> 
+    	<listitem>
+    	 <para>
+          Removing a keyboard layout that is no longer needed &mdash;
+          To remove a keyboard, select it (click on it in the 
+          <interface>GKB Properties</interface> window) and click the 
+          <guibutton>Delete</guibutton> button. 
+    	 </para>
+    	</listitem>
+
+    	<listitem>
+	 <para>
+         Reordering keyboard layouts &mdash; The order in which the 
+         keyboard layouts become active as you click on the applet or 
+         press the hot key depends on the order they appear in the list in 
+         the <interface>Properties</interface> window. The layout that is 
+         displayed at the top of 
+         the list will become the default layout when you close the 
+         <interface>Properties</interface> window. To change the order in 
+         the list, select the keymap to be moved, and click 
+         <guibutton>Up</guibutton> or <guibutton>Down</guibutton> as 
+         appropriate.
+         </para>
+    	</listitem>
+
+      </itemizedlist>
+     </para>
+     <para>
       After you have made all the changes you want, click on
-      <guibutton>OK</guibutton> to apply the changes and close the
-      <interface>Properties</interface> dialog. To cancel the changes
-      and return to previous values, click the
-      <guibutton>Close</guibutton> button.
+      <guibutton>Apply</guibutton> to apply the changes or on 
+      <guibutton>OK</guibutton> to apply the changes and close the 
+      <interface>Properties</interface> dialog. To cancel the changes 
+      and return to previous values, click the <guibutton>Close</guibutton> 
+      button. The <guibutton>Help</guibutton> button brings up this chapter 
+      of the on-line help.
     </para>
+
+    </sect3>
+
+
+    <sect3 id="gkbapplet-options">
+     <title>Miscellaneous options</title>
+     <para>
+     Different options allow you to customize the look of your applet. 
+     As a new feature, you can select between three different display modes:
+     <itemizedlist>
+
+	     	<listitem>
+	     	 <para>
+	          Flag mode &mdash; The flag associated to the keymap is 
+                  displayed on the <interface>Panel</interface>.
+	     	 </para>
+	     	</listitem>
+
+	     	<listitem>
+	     	 <para>
+	         Label mode &mdash; No flag is displayed, only the label 
+                 associated with the keymap. 
+	     	 </para>
+	     	</listitem>
+
+	     	<listitem>
+	     	 <para>
+	         Flag and label mode &mdash; Both flag and label 
+                 associated with the keymap are displayed.
+	     	 </para>
+    	    </listitem>
+
+      </itemizedlist>
+     </para>
+     <para>
+     Many users have reported, that the applet takes too much room on 
+     the panel. You can now set the applets size from the 
+     <guilabel>Applet size</guilabel> pull down list. Set the size to 
+     <guibutton>Normal</guibutton> if you want a smaller applet. 
+     If you have plenty of space or like nice big flags on you panel, 
+     set the option to <guibutton>Big</guibutton>.
+     </para>
+     <para>
+An often formulated user wish was to implement the keymap switching using 
+hotkeys. The developers proudly announce, that keyboard initiated switching now works. The hotkey combination that allows to change keymaps is set to
+<keycombo><keycap>Alt</keycap><keycap>Shift</keycap></keycombo> (<keycap>Alt</keycap> being the left <keycap>Alt</keycap> key). You can customize this hotkey sequence from the <interface>GKB Properties</interface> window's 
+<guilabel>Options</guilabel> tab. Click on the <guibutton>Grab hotkey</guibutton> button and press the keys you want to set. The key combination is displayed in the <interface>input box</interface> near the button (you may see something like: <keysym>Control-Shift_R</keysym>). Finally, click on <guibutton>Apply</guibutton> or <guibutton>OK</guibutton> to finalize the new settings.
+     </para>
+    </sect3>
+
   </sect2>
 
 <sect2 id="gkbappplet-technical">
     <title>Technical information</title>
-    <para> 
+    <para>
       Normally you do not need these details - but if something is not
     working, or you are just curious, read on.
     </para>
     <para>
       <application>GNOME Keyboard</application>  switches the keyboard
-    map by issuing a command to X Window 
+    map by issuing a command to X Window
     System. X Window System has two mechanisms for setting keyboard
     mapping: older one called "xmodmap" and a newer one, based on the
     so-called "Xkb extension". If you have Xkb enabled, you should use
     it and switch keyboard layouts by issuing a command
     <command>setxkbmap <replaceable>LC</replaceable></command>. It
     comes with a number of various keyboard layout files, usually in
-    directory <filename>/usr/X11R6/lib/X11/xkb/symbols</filename>. 
+    directory <filename>/usr/X11R6/lib/X11/xkb/symbols</filename>.
     </para>
     <para> If you do not have Xkb extension enabled, or if it just
     does not cover the language you need, you should use the older
@@ -197,12 +383,12 @@
     directory <filename>/usr/share/xmodmap</filename>; these files
     have names like <filename>xmodmap.de</filename>. To use one of
     these files, you can use the command <command>gkb_xmmap
-    <replaceable>LC</replaceable></command> 
+    <replaceable>LC</replaceable></command>
     which is equivalent to <command>xmodmap
     /usr/share/xmodmap/xmodmap.<replaceable>LC</replaceable></command>:
-    for example, 
+    for example,
       <command>gkb_xmmap hu</command> is the same as <command>xmodmap
-    /usr/share/xmodmap/xmodmap.hu</command>. 
+    /usr/share/xmodmap/xmodmap.hu</command>.
     </para>
   </sect2>
 
@@ -216,7 +402,31 @@
   <sect2 id="bugs">
    <title>Known Bugs and Limitations</title>
    <para>
-   None yet.
+   <itemizedlist>
+    <listitem>
+    <para>
+    Languages and countries showing up in the 
+    <interface>Select layout</interface> dialog are not sorted in 
+    alphabetical order. 
+    </para>      
+    </listitem>
+    <listitem>
+<para>    
+The program has very few error handling routines implemented. If you try to    feed it something unusual, it may crash.
+</para>    
+</listitem>
+    <listitem>
+<para>    
+If it does not crash, it returns the error: "The keymap switching 
+    returned an error". If the <interface>Edit</interface> window is open 
+    when this error appears and 
+    you press the <guibutton>OK</guibutton> button on this window, it is 
+    likely that nothing will happen. Try closing the 
+    <interface>Edit</interface> window first and 
+    then the error window.
+</para> 
+</listitem>  
+</itemizedlist>
    </para>
   </sect2>
 
@@ -228,7 +438,7 @@
    <para>
     <application>GNOME KeyBoard</application> was written by Szabolcs Ban
     (<email>shooby@gnome.hu</email>).  Please send all comments,
-    suggestions, and bug 
+    suggestions, and bug
     reports to the <ulink url="http://bugs.gnome.org" type="http">GNOME
     bug tracking database</ulink>. (Instructions for submitting bug
     reports can be found <ulink
@@ -240,9 +450,15 @@
    </para>
 
    <para>
-    This manual was written by Szabolcs (Shooby) Ban
+    This manual was originally written by Szabolcs (Shooby) Ban
     (<email>shooby@gnome.hu</email>) and Dan Mueth
-    (<email>d-mueth@uchicago.edu</email>). Please send all comments
+    (<email>d-mueth@uchicago.edu</email>). It has been rewritten 
+    (strongly based on the original) by Emese Kovacs 
+    (<email>emese@gnome.hu</email>) to reflect changes from v1.2 to v1.4. 
+    The <link  linkend="gkbappplet-technical">Technical Information</link> 
+    section has been added by 
+    Alexander Kirillov (<email>kirillov@math.sunysb.edu</email>).
+    Please send all comments
     and suggestions regarding this manual to the <ulink type="http"
     url="http://developer.gnome.org/projects/gdp/">GNOME Documentation
     Project</ulink> by sending an email to

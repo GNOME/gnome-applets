@@ -1,5 +1,7 @@
 figs = gkb_applet.png \
-       gkb_applet_settings.png
+	gkb_applet_settings.png \
+	gkb_add_list.png \
+	gkb_edit_keymap.png
 
 applet = gkb
 lang = C
