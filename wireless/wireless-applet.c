@@ -626,6 +626,8 @@ prefs_response_cb (GtkDialog *dialog, gint response, gpointer data)
 static void
 wireless_applet_destroy (WirelessApplet *applet, gpointer horse)
 {
+	int i;
+
 	g_free (applet->device);
 
 	g_list_foreach (applet->devices, (GFunc)g_free, NULL);
@@ -636,6 +638,9 @@ wireless_applet_destroy (WirelessApplet *applet, gpointer horse)
 		applet->timeout_handler_id = 0;
 	}
 
+	for (i = 0; i < PIX_NUMBER; i++)
+		g_object_unref (applet->pixmaps[i]);
+
 	if (applet->prefs) {
 		gtk_widget_destroy (applet->prefs);
 		applet->prefs = NULL;
@@ -643,6 +648,8 @@ wireless_applet_destroy (WirelessApplet *applet, gpointer horse)
 
 	if (applet->file)
 		fclose (applet->file);
+	if (applet->tips)
+		g_object_unref (applet->tips);
 }
 
 static void
@@ -736,6 +743,8 @@ wireless_applet_new (WirelessApplet *applet)
 	setup_widgets (applet);
 
 	applet->tips = gtk_tooltips_new ();
+	g_object_ref (applet->tips);
+	gtk_object_sink (GTK_OBJECT (applet->tips));
 	applet->prefs = NULL;
 
 	g_signal_connect (GTK_OBJECT (applet),"destroy",
