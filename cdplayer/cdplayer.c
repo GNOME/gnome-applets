@@ -55,6 +55,7 @@
 static gboolean applet_factory (PanelApplet *applet, const gchar *iid, gpointer data);
 static gboolean applet_fill (PanelApplet *applet);
 static void cdplayer_load_config(CDPlayerData *cd);
+static void show_error(CDPlayerData *cd);
 static void cdplayer_save_config(CDPlayerData *cd);
 
 static void cdplayer_destroy(GtkWidget * widget, gpointer data);
@@ -88,7 +89,7 @@ static void ref_and_remove(GtkWidget *w);
 static GtkWidget *pack_make_hbox(CDPlayerData* cd);
 static void pack_thing(GtkWidget *box, GtkWidget *w, gboolean expand);
 
-static gboolean cd_try_open(CDPlayerData *cd);
+static gboolean cd_try_open(CDPlayerData *cd, int *errcode);
 static void cd_close (CDPlayerData *cd);
 
 static void cd_panel_update(GtkWidget * cdplayer, CDPlayerData * cd);
@@ -216,6 +217,31 @@ applet_fill (PanelApplet *applet)
 }
 
 static void
+show_error (CDPlayerData *cd)
+{
+    static GtkWidget *dialog = NULL;
+    if (dialog) {
+        gtk_window_present (GTK_WINDOW (dialog));
+        return;
+    }
+    dialog = gtk_message_dialog_new (NULL,
+				     GTK_DIALOG_DESTROY_WITH_PARENT,
+				     GTK_MESSAGE_ERROR,
+				     GTK_BUTTONS_OK,
+				     _("You do not have permission to use the CD player."));
+
+    g_signal_connect (dialog, "response",
+		      G_CALLBACK (gtk_widget_destroy),
+		      NULL);
+    g_signal_connect (G_OBJECT(dialog), "destroy",
+                      G_CALLBACK(gtk_widget_destroyed), &dialog);
+    gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
+    gtk_window_set_screen (GTK_WINDOW (dialog),
+			   gtk_widget_get_screen (cd->panel.applet));
+    gtk_widget_show (dialog);
+}
+
+static void
 cdplayer_load_config(CDPlayerData *cd)
 {
     g_free(cd->devpath);
@@ -238,12 +264,13 @@ cdplayer_destroy(GtkWidget * widget, gpointer data)
 {
     CDPlayerData *cd = data;
     GtkTooltips *tooltips;
+    int err;
 
     if (cd->timeout != 0)
         gtk_timeout_remove(cd->timeout);
     cd->timeout = 0;
     /* Since the applet is being destroyed, stop playing cd */
-    if(cd_try_open(cd))
+    if(cd_try_open(cd, &err))
         cdrom_stop(cd->cdrom_device);
     cd_close (cd);
 
@@ -340,20 +367,22 @@ activate_cb (GtkEntry     *entry,
 	     CDPlayerData *cd)
 {
     gchar *newpath;
+    int err;
     
     newpath = gtk_editable_get_chars (GTK_EDITABLE (entry), 0, -1);
     if(newpath && strlen(newpath) > 2 && strcmp(cd->devpath, newpath))
             {
-		if(cd_try_open(cd))
+		if(cd_try_open(cd, &err))
 		    cdrom_stop(cd->cdrom_device);
                 cd_close(cd);
                 cd->devpath = g_strdup(newpath);
-                if (!cd_try_open(cd)) {
+                if (!cd_try_open(cd, &err)) {
                     GtkWidget *dialog;
+
                     dialog = gtk_message_dialog_new (NULL, GTK_DIALOG_DESTROY_WITH_PARENT,
                                   		     GTK_MESSAGE_ERROR,
                                   		     GTK_BUTTONS_OK,
-                                  		     "%s is not a proper device path",
+                                  		     _("%s does not seem to be a CD player"),
                                   		     cd->devpath, NULL);
 
 		    gtk_window_set_screen (GTK_WINDOW (dialog),
@@ -386,6 +415,7 @@ static void
 set_default_device (GtkButton *button, gpointer data)
 {
     CDPlayerData *cd = data;
+    int err;
     GtkWidget *entry = g_object_get_data (G_OBJECT (button), "entry");
     
     if (!strcmp(cd->devpath, DEV_PATH))
@@ -395,7 +425,7 @@ set_default_device (GtkButton *button, gpointer data)
     if (cd->devpath)
         g_free(cd->devpath);
     cd->devpath = g_strdup(DEV_PATH);
-    cd_try_open(cd);
+    cd_try_open(cd, &err);
     gtk_entry_set_text (GTK_ENTRY (entry), cd->devpath);
     cdplayer_save_config(cd);  
 }
@@ -717,11 +747,10 @@ pack_thing(GtkWidget *box, GtkWidget *w, gboolean expand)
 
 /* Deal with the hardware stuff */
 static gboolean
-cd_try_open(CDPlayerData *cd)
+cd_try_open(CDPlayerData *cd, int *err)
 {
-    int err;
     if(cd->cdrom_device == NULL) {
-        cd->cdrom_device = cdrom_open(cd->devpath, &err);
+        cd->cdrom_device = cdrom_open(cd->devpath, err);
         return cd->cdrom_device != NULL;
     }
     return TRUE;
@@ -741,8 +770,9 @@ cd_panel_update(GtkWidget * cdplayer, CDPlayerData * cd)
 {
     cdrom_device_status_t stat;
     gboolean description = FALSE;
+    int err;
 
-    if (cd_try_open(cd)) {
+    if (cd_try_open(cd, &err)) {
         if (cdrom_get_status(cd->cdrom_device, &stat) == DISC_NO_ERROR)
         {
             switch (stat.audio_status)
@@ -817,9 +847,13 @@ cdplayer_play_pause(GtkWidget * w, gpointer data)
     cdrom_device_status_t stat;
     int status;
     int ret;
+    int err;
 
-    if(!cd_try_open(cd))
+    if(!cd_try_open(cd, &err)) {
+        if (err == EACCES) 
+            show_error (cd);
         return;
+    }
 
     status = cdrom_get_status(cd->cdrom_device, &stat);
     if (status == DISC_NO_ERROR) {
@@ -870,8 +904,13 @@ static void
 cdplayer_stop(GtkWidget * w, gpointer data)
 {
     CDPlayerData *cd = data;
-    if(!cd_try_open(cd))
+    int err;
+    
+    if(!cd_try_open(cd, &err)) {
+        if (err == EACCES) 
+            show_error (cd);
         return;
+    }
     cdrom_stop(cd->cdrom_device);
 
 }
@@ -880,8 +919,12 @@ static void
 cdplayer_prev(GtkWidget * w, gpointer data)
 {
     CDPlayerData *cd = data;
-    if(!cd_try_open(cd))
+    int err;
+    if(!cd_try_open(cd, &err)) {
+        if (err == EACCES)
+            show_error (cd);
         return;
+    }
     cdrom_prev(cd->cdrom_device);
 
 }
@@ -890,8 +933,12 @@ static void
 cdplayer_next(GtkWidget * w, gpointer data)
 {
     CDPlayerData *cd = data;
-    if(!cd_try_open(cd))
+    int err;
+    if(!cd_try_open(cd, &err)) {
+        if (err == EACCES)
+            show_error (cd);
         return;
+    }
     cdrom_next(cd->cdrom_device);
 
 }
@@ -901,8 +948,12 @@ cdplayer_eject(GtkWidget * w, gpointer data)
 {
     cdrom_device_status_t stat;
     CDPlayerData *cd = data;
-    if(!cd_try_open(cd))
+    int err;
+    if(!cd_try_open(cd, &err)) {
+        if (err == EACCES)
+            show_error (cd);
         return;
+     }
     if(cdrom_get_status(cd->cdrom_device, &stat) == DISC_TRAY_OPEN)
         /*
           FIXME: if there is no disc, we get TRAY_OPEN even
