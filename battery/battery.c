@@ -46,6 +46,7 @@
 #include "read-battery.h"
 
 #include "bolt.xpm"
+#include "bolt-horiz.xpm"
 
 int
 main (int argc, char ** argv)
@@ -108,8 +109,14 @@ battery_update (gpointer data)
 
   time_t curr_time;
 
+  PanelOrientType panel_orient;
+  int panel_size;
+
   if (!bat->setup)
     return 0;
+
+  panel_orient = applet_widget_get_panel_orient (APPLET_WIDGET (bat->applet));
+  panel_size = applet_widget_get_panel_pixel_size (APPLET_WIDGET (bat->applet));
 
   /*
    * The battery change information that we grab here will be used by
@@ -118,18 +125,7 @@ battery_update (gpointer data)
   if (! battery_read_charge (&percentage, &ac_online, &hours_remaining,
 			     &minutes_remaining))
     {
-      gnome_error_dialog
-	(_("Error querying battery charge.  "
-	   "Make sure that your kernel was "
-	   "built with APM support."));
-
-      /*
-       * FIXME: What's the proper way to exit an applet?  If it's an
-       * in-process server, then exit() will kill the panel too!  So
-       * there should be some way for an applet to request that it be
-       * removed.
-       */
-      exit (1);
+      /*FIXME: somehow indicate that APM is not available on the display */
     }
 
   /*
@@ -270,6 +266,13 @@ battery_update (gpointer data)
       int height, y, body_perc;
       /* int i; */
       int nipple_width, nipple_height;
+      gboolean rotate;
+
+      if (bat->readout_area->allocation.width >
+	  bat->readout_area->allocation.height)
+        rotate = TRUE;
+      else
+        rotate = FALSE;
 
       /* Clear the readout pixmap to grey. */
       gdk_draw_rectangle (bat->readout_pixmap,
@@ -288,19 +291,32 @@ battery_update (gpointer data)
        * Determine the height of the body (everything but the nipple)
        * of the battery picture.
        */
-      height = bat->readout_batt_points[7].y - bat->readout_batt_points[0].y;
+      if (rotate)
+        height = bat->readout_batt_points[7].x - bat->readout_batt_points[0].x;
+      else
+        height = bat->readout_batt_points[7].y - bat->readout_batt_points[0].y;
 
       /*
        * Fill the battery in white.
        */
-      gdk_draw_rectangle (bat->readout_pixmap,
-			  bat->readout_area->style->white_gc,
-			  TRUE,
-			  bat->readout_batt_points[0].x + 1,
-			  bat->readout_batt_points[0].y + 1,
-			  bat->readout_batt_points[5].x -
-			  bat->readout_batt_points[0].x - 1,
-			  height - 1);
+      if (rotate)
+        gdk_draw_rectangle (bat->readout_pixmap,
+			    bat->readout_area->style->white_gc,
+			    TRUE,
+			    bat->readout_batt_points[0].x + 1,
+			    bat->readout_batt_points[0].y + 1,
+			    height - 1,
+			    bat->readout_batt_points[5].y -
+			    bat->readout_batt_points[0].y - 1);
+      else
+        gdk_draw_rectangle (bat->readout_pixmap,
+			    bat->readout_area->style->white_gc,
+			    TRUE,
+			    bat->readout_batt_points[0].x + 1,
+			    bat->readout_batt_points[0].y + 1,
+			    bat->readout_batt_points[5].x -
+			    bat->readout_batt_points[0].x - 1,
+			    height - 1);
 
       /*
        * Now fill in the main battery chamber.  If the battery charge
@@ -313,8 +329,12 @@ battery_update (gpointer data)
 	body_perc = 99;
 
       /* The number of pixels of the main chamber that we fill in. */
-      y =  bat->readout_batt_points[0].y +
-	(height - ( (body_perc * height) / 100));
+      if (rotate)
+        y =  bat->readout_batt_points[0].x +
+	  (height - ( (body_perc * height) / 100));
+      else
+        y =  bat->readout_batt_points[0].y +
+	  (height - ( (body_perc * height) / 100));
 
       if (ac_online)
 	gdk_gc_set_foreground (bat->readout_gc,
@@ -327,20 +347,40 @@ battery_update (gpointer data)
 	gdk_gc_set_foreground (bat->readout_gc,
 			       & (bat->readout_color_low));
     
-      gdk_draw_rectangle (bat->readout_pixmap,
-			  bat->readout_gc,
-			  TRUE,
-			  bat->readout_batt_points[0].x + 1,
-			  y,
-			  bat->readout_batt_points[5].x -
-			  bat->readout_batt_points[0].x - 1,
-			  (height * body_perc) / 100);
+      if (rotate)
+        gdk_draw_rectangle (bat->readout_pixmap,
+			    bat->readout_gc,
+			    TRUE,
+			    y,
+			    bat->readout_batt_points[0].y + 1,
+			    (height * body_perc) / 100,
+			    bat->readout_batt_points[5].y -
+			    bat->readout_batt_points[0].y - 1);
+      else
+        gdk_draw_rectangle (bat->readout_pixmap,
+			    bat->readout_gc,
+			    TRUE,
+			    bat->readout_batt_points[0].x + 1,
+			    y,
+			    bat->readout_batt_points[5].x -
+			    bat->readout_batt_points[0].x - 1,
+			    (height * body_perc) / 100);
 
       /* Fill in the nipple if appropriate. */
-      nipple_width = bat->readout_batt_points[3].x -
-	bat->readout_batt_points[2].x - 1;
-      nipple_height = bat->readout_batt_points[1].y -
-	bat->readout_batt_points[2].y;
+      if (rotate)
+        {
+          nipple_width = bat->readout_batt_points[1].x -
+	    bat->readout_batt_points[2].x - 1;
+          nipple_height = bat->readout_batt_points[3].y -
+	    bat->readout_batt_points[2].y;
+	}
+      else
+        {
+          nipple_width = bat->readout_batt_points[3].x -
+	    bat->readout_batt_points[2].x - 1;
+          nipple_height = bat->readout_batt_points[1].y -
+	    bat->readout_batt_points[2].y;
+	}
 
       gdk_draw_rectangle (bat->readout_pixmap,
 			  (percentage == 100) ? bat->readout_gc :
@@ -359,15 +399,30 @@ battery_update (gpointer data)
 	  GdkGC *gc;
 	  int dest_x, dest_y;
 
-	  dest_y =
-	    ((bat->readout_batt_points[0].y +
-	      bat->readout_batt_points[7].y) / 2) -
-	    (BOLT_HEIGHT / 2);
+	  if (rotate)
+	    {
+	      dest_y = 1 +
+	        ((bat->readout_batt_points[0].y +
+	          bat->readout_batt_points[5].y) / 2) -
+	        (BOLT_WIDTH / 2);
 
-	  dest_x = 1 + 
-	    ((bat->readout_batt_points[0].x +
-	      bat->readout_batt_points[5].x) / 2) -
-	    (BOLT_WIDTH / 2);
+	      dest_x =
+	        ((bat->readout_batt_points[0].x +
+	          bat->readout_batt_points[7].x) / 2) -
+	        (BOLT_HEIGHT / 2);
+	    }
+	  else
+	    {
+	      dest_y =
+	        ((bat->readout_batt_points[0].y +
+	          bat->readout_batt_points[7].y) / 2) -
+	        (BOLT_HEIGHT / 2);
+
+	      dest_x = 1 + 
+	        ((bat->readout_batt_points[0].x +
+	          bat->readout_batt_points[5].x) / 2) -
+	        (BOLT_WIDTH / 2);
+	    }
 
 	  gc = gdk_gc_new (bat->readout_area->window);
 
@@ -380,12 +435,22 @@ battery_update (gpointer data)
 	   * should REPLACE all transparent pixels in the pixmap, not
 	   * a color which should BECOME transparent.
 	   */
-	  gdk_gc_set_clip_mask (gc, bat->bolt_mask);
-	  gdk_gc_set_clip_origin (gc, dest_x, dest_y);
-
-	  gdk_draw_pixmap (bat->readout_pixmap, gc, bat->bolt_pixmap,
-			   0, 0, dest_x, dest_y,
-			   BOLT_WIDTH, BOLT_HEIGHT);
+	  if (rotate)
+	    {
+	      gdk_gc_set_clip_mask (gc, bat->bolt_mask_horiz);
+	      gdk_gc_set_clip_origin (gc, dest_x, dest_y);
+	      gdk_draw_pixmap (bat->readout_pixmap, gc, bat->bolt_pixmap_horiz,
+			       0, 0, dest_x, dest_y,
+			       BOLT_HEIGHT, BOLT_WIDTH);
+	    }
+	  else
+	    {
+	      gdk_gc_set_clip_mask (gc, bat->bolt_mask);
+	      gdk_gc_set_clip_origin (gc, dest_x, dest_y);
+	      gdk_draw_pixmap (bat->readout_pixmap, gc, bat->bolt_pixmap,
+			       0, 0, dest_x, dest_y,
+			       BOLT_WIDTH, BOLT_HEIGHT);
+	    }
 	}
     }
 
@@ -396,28 +461,38 @@ battery_update (gpointer data)
 
       /* Now update the labels in readout mode. */
 
-      strcpy (labelstr, "    ");
-
       /*
        * In order to fit the text into a small applet (e.g. 24x24), we
        * have to remove the '%' from the end of the percentage label.
        */
       if (bat->width < 28 && (percentage == 100))
-	snprintf (labelstr, sizeof (labelstr), "%d", percentage);
+	g_snprintf (labelstr, sizeof (labelstr), "%d", percentage);
       else
-	snprintf (labelstr, sizeof (labelstr), "%d%%", percentage);
+	g_snprintf (labelstr, sizeof (labelstr), "%d%%", percentage);
 
       /* Make sure it's 4 spaces long. */
-      if (labelstr [3] == '\0')
-	labelstr[3] = ' ';
+      /*if (labelstr [2] == '\0')
+        {
+	  labelstr[2] = ' ';
+	  labelstr[3] = ' ';
+	  labelstr[4] = '\0';
+	}
+      else if (labelstr [3] == '\0')
+        {
+	  labelstr[3] = ' ';
+	  labelstr[4] = '\0';
+	}*/
 
       gtk_label_set_text (GTK_LABEL (bat->readout_label_percentage), labelstr);
       gtk_label_set_text (GTK_LABEL (bat->readout_label_percentage_small),
 			  labelstr);
+      gtk_label_set_text (GTK_LABEL (bat->readout_label_percentage_vert),
+			  labelstr);
     }
 
   if (last_minutes_remaining != minutes_remaining ||
-      last_hours_remaining != hours_remaining)
+      last_hours_remaining != hours_remaining ||
+      bat->force_update)
     {
       char labelstr [256];
 
@@ -431,8 +506,8 @@ battery_update (gpointer data)
 	}
       else
 	{
-	  snprintf (labelstr, sizeof (labelstr), "%d:%02d", hours_remaining,
-		    minutes_remaining);
+	  g_snprintf (labelstr, sizeof (labelstr), "%d:%02d", hours_remaining,
+		      minutes_remaining);
 	  gtk_label_set_text (GTK_LABEL (bat->readout_label_time), labelstr);
 	}
     }
@@ -501,20 +576,68 @@ battery_expose_handler (GtkWidget * widget, GdkEventExpose * expose,
   expose = NULL;
 } /* battery_expose_handler */
 
+void
+battery_set_follow_size (BatteryData *bat)
+{
+  gint neww, newh;
+  PanelOrientType o;
+  gint size;
+
+  if (!bat->follow_panel_size)
+    return;
+
+  o = applet_widget_get_panel_orient (APPLET_WIDGET (bat->applet));
+  size = applet_widget_get_panel_pixel_size (APPLET_WIDGET (bat->applet));
+
+  if (size <= 36)
+    {
+      if (o == ORIENT_UP || o == ORIENT_DOWN)
+        {
+	  neww = 80;
+	  newh = size;
+        }
+      else
+        {
+	  neww = size;
+	  newh = 60;
+        }
+    }
+  else
+    {
+      neww = size;
+      newh = size;
+    }
+  if (neww != bat->width || newh != bat->height)
+    {
+      bat->width = neww;
+      bat->height = newh;
+      battery_set_size (bat);
+    }
+}
+
 /* This handler gets called whenever the panel changes orientations.
    When the applet is set up, we get an initial call, too. */
-gint
-battery_orient_handler (GtkWidget * w, PanelOrientType o, gpointer data)
+static void
+battery_change_orient (GtkWidget * w, PanelOrientType o, gpointer data)
 {
-  /* BatteryData * bat = data; */
+  BatteryData * bat = data;
 
-  /* FIXME: What do we do here? */
-
-  return FALSE;
+  battery_set_follow_size (bat);
+  return;
+  o = (PanelOrientType)0;
   w = NULL;
-  o = (PanelOrientType) 0;
-  data = NULL;
-} /* battery_orient_handler */
+} /* battery_change_orient */
+
+static void
+battery_change_pixel_size (GtkWidget * w, int size, gpointer data)
+{
+  BatteryData * bat = data;
+
+  battery_set_follow_size (bat);
+  return;
+  size = 0;
+  w = NULL;
+} /* battery_change_pixel_size */
 
 gint
 battery_configure_handler (GtkWidget *widget, GdkEventConfigure *event,
@@ -567,26 +690,9 @@ battery_set_mode (BatteryData * bat)
     }
 
   /*
-   * If the applet is small enough, we have to hide a few of the
-   * widgets to make it fit.
+   * setup the sizes and which things are hidden
    */
-  if ((bat->height < 28) || (bat->width < 28))
-    {
-      gtk_widget_hide (bat->readout_label_percentage);
-      gtk_widget_show (bat->readout_label_percentage_small);
-      gtk_widget_hide (bat->readout_area);
-    }
-  else
-    {
-      gtk_widget_show (bat->readout_label_percentage);
-      gtk_widget_hide (bat->readout_label_percentage_small);
-      gtk_widget_show (bat->readout_area);
-    }
-
-  if (bat->width < 48)
-    gtk_widget_hide (bat->readout_label_time);
-  else
-    gtk_widget_show (bat->readout_label_time);
+  battery_set_size (bat);
 
   /*
    * When we change modes, make sure there's not a fraction of a second
@@ -640,7 +746,8 @@ GtkWidget *
 make_new_battery_applet (const gchar *goad_id)
 {
   BatteryData * bat;
-  GtkWidget *root, *graph_box, *readout_box, *readout_text_table;
+  GtkWidget *root, *graph_box, *readout_box, *readout_ebox;
+  GtkWidget *readout_vbox, *readout_text_vbox;
   GtkWidget *readout_battery_frame;
   GtkStyle *label_style;
   /* gchar * param = "battery_applet"; */
@@ -656,13 +763,9 @@ make_new_battery_applet (const gchar *goad_id)
 
   if (! battery_read_charge (&p, &a, &h, &m))
     {
-      GtkWidget *d;
-      d = gnome_error_dialog (_("Error querying battery charge.\n\n"
-				"Make sure that your kernel was "
-				"built with APM support."));
-      gnome_dialog_run (GNOME_DIALOG (d));
-      applet_widget_remove (APPLET_WIDGET(bat->applet));
-      gtk_exit (1);
+      gnome_error_dialog (_("Error querying battery charge.\n\n"
+			    "Make sure that your kernel was "
+			    "built with APM support."));
     }
 
   bat->graph_values = NULL;
@@ -701,35 +804,44 @@ make_new_battery_applet (const gchar *goad_id)
   gtk_box_pack_start_defaults (GTK_BOX (root), bat->readout_frame);
 
   /*
+   * An event box to put the area into it's own X window
+   */
+  readout_ebox = gtk_event_box_new ();
+  /*
    * This is the horizontal box which will contain the picture of
    * the battery and the text labels.
    */
   readout_box = gtk_hbox_new (FALSE, 0);
 
-  /* The three labels go into this table. */
-  readout_text_table = gtk_table_new (3, 0, TRUE);
+  gtk_container_add (GTK_CONTAINER (readout_ebox), readout_box);
+
+  /* The three labels go into this vertical box. */
+  readout_text_vbox = gtk_vbox_new (FALSE, 0);
   
   bat->readout_label_percentage = gtk_label_new ("");  
   bat->readout_label_percentage_small = gtk_label_new ("");
+  bat->readout_label_percentage_vert = gtk_label_new ("");  
   bat->readout_label_time = gtk_label_new ("");
 
   label_style = gtk_style_copy (GTK_WIDGET (bat->readout_label_time)->style);
   label_style->font = gdk_font_load ("6x10");
-  GTK_WIDGET (bat->readout_label_time)->style = label_style;
-  GTK_WIDGET (bat->readout_label_percentage)->style = label_style;
+  gtk_widget_set_style (bat->readout_label_time, label_style);
+  gtk_widget_set_style (bat->readout_label_percentage, label_style);
 
   label_style = gtk_style_copy (GTK_WIDGET (bat->readout_label_time)->style);
   label_style->font = gdk_font_load ("5x8");
-  GTK_WIDGET (bat->readout_label_percentage_small)->style = label_style;
+  gtk_widget_set_style (bat->readout_label_percentage_small, label_style);
+  gtk_widget_set_style (bat->readout_label_percentage_vert, label_style);
 
-  gtk_table_attach (GTK_TABLE (readout_text_table),
-		    bat->readout_label_percentage_small,
-		    0, 1, 0, 1, 0, 0, 0, 0);
-  gtk_table_attach (GTK_TABLE (readout_text_table),
-		    bat->readout_label_percentage,
-		    0, 1, 1, 2, 0, 0, 0, 0);
-  gtk_table_attach (GTK_TABLE (readout_text_table), bat->readout_label_time,
-		    0, 1, 2, 3, 0, 0, 0, 0);
+  gtk_box_pack_start (GTK_BOX (readout_text_vbox),
+		      bat->readout_label_percentage_small,
+		      TRUE, TRUE, 0);
+  gtk_box_pack_start (GTK_BOX (readout_text_vbox),
+		      bat->readout_label_percentage,
+		      TRUE, TRUE, 0);
+  gtk_box_pack_start (GTK_BOX (readout_text_vbox),
+		      bat->readout_label_time,
+		      TRUE, TRUE, 0);
 
   /* This is the frame which contains the picture of the battery. */
   readout_battery_frame = gtk_frame_new (NULL);
@@ -744,8 +856,21 @@ make_new_battery_applet (const gchar *goad_id)
   gtk_container_add (GTK_CONTAINER (readout_battery_frame),
 		     bat->readout_area);
 
-  gtk_box_pack_start_defaults (GTK_BOX (readout_box), readout_battery_frame);
-  gtk_box_pack_start_defaults (GTK_BOX (readout_box), readout_text_table);
+  /*
+   * this is a vbox which will contain the battery and the vert labels
+   */
+  readout_vbox = gtk_vbox_new (FALSE, 0);
+
+  gtk_box_pack_start (GTK_BOX (readout_vbox), readout_battery_frame,
+		      TRUE, FALSE, 0);
+  gtk_box_pack_start (GTK_BOX (readout_vbox),
+		      bat->readout_label_percentage_vert,
+		      FALSE, TRUE, 0);
+
+  gtk_box_pack_start (GTK_BOX (readout_box), readout_vbox,
+		      TRUE, FALSE, 0);
+  gtk_box_pack_start (GTK_BOX (readout_box), readout_text_vbox,
+		      FALSE, TRUE, 0);
 
   graph_box = gtk_vbox_new (FALSE, 0);
 
@@ -757,7 +882,7 @@ make_new_battery_applet (const gchar *goad_id)
 
   gtk_box_pack_start_defaults (GTK_BOX (graph_box), bat->graph_area);
   gtk_container_add (GTK_CONTAINER (bat->graph_frame), graph_box);
-  gtk_container_add (GTK_CONTAINER (bat->readout_frame), readout_box);
+  gtk_container_add (GTK_CONTAINER (bat->readout_frame), readout_ebox);
 
   /* Set up the mode-changing callback */
   gtk_signal_connect (GTK_OBJECT (bat->applet), "button_press_event",
@@ -778,15 +903,16 @@ make_new_battery_applet (const gchar *goad_id)
 		      (GtkSignalFunc)battery_configure_handler, bat);
   gtk_widget_set_events (bat->readout_area, GDK_EXPOSURE_MASK | GDK_CONFIGURE);
 
-  /* This will let us know when the panel changes orientation */
-  gtk_signal_connect (GTK_OBJECT (bat->applet), "change_orient",
-		      GTK_SIGNAL_FUNC (battery_orient_handler),
-		      bat);
-
   applet_widget_add (APPLET_WIDGET (bat->applet), root);
 
   gtk_signal_connect (GTK_OBJECT (bat->applet), "save_session",
 		      GTK_SIGNAL_FUNC (battery_session_save),
+		      bat);
+  gtk_signal_connect (GTK_OBJECT (bat->applet), "change_orient",
+		      GTK_SIGNAL_FUNC (battery_change_orient),
+		      bat);
+  gtk_signal_connect (GTK_OBJECT (bat->applet), "change_pixel_size",
+		      GTK_SIGNAL_FUNC (battery_change_pixel_size),
 		      bat);
 
   applet_widget_register_stock_callback (APPLET_WIDGET (bat->applet),
@@ -816,6 +942,8 @@ make_new_battery_applet (const gchar *goad_id)
    */
   bat->bolt_pixmap = gdk_pixmap_create_from_xpm_d (bat->readout_area->window,
 		   & bat->bolt_mask, NULL, bolt_xpm);
+  bat->bolt_pixmap_horiz = gdk_pixmap_create_from_xpm_d (bat->readout_area->window,
+		   & bat->bolt_mask_horiz, NULL, bolt_horiz_xpm);
 						   
 
   /* Nothing is drawn until this is set. */
@@ -881,9 +1009,20 @@ void
 battery_setup_picture (BatteryData * bat)
 {
   gint readout_width, readout_height;
+  gboolean rotate;
 
   readout_width = bat->readout_area->allocation.width;
   readout_height = bat->readout_area->allocation.height;
+
+  if (readout_width > readout_height)
+    {
+      gint tmp = readout_width;
+      readout_width = readout_height;
+      readout_height = tmp;
+      rotate = TRUE;
+    }
+  else
+    rotate = FALSE;
 
   /*  Set up the line segments for the battery picture.  The points are
    *  numbered as follows:
@@ -933,34 +1072,86 @@ battery_setup_picture (BatteryData * bat)
   bat->readout_batt_points[8].x = readout_width * 0.10;
   bat->readout_batt_points[8].y = readout_height / 6;
 
+  if (rotate)
+    {
+      gint i;
+      for (i=0; i<9; i++)
+        {
+          int tmp = bat->readout_batt_points[i].x;
+          bat->readout_batt_points[i].x = bat->readout_batt_points[i].y;
+          bat->readout_batt_points[i].y = tmp;
+	}
+    }
+
 } /* battery_setup_picture */
 
 void
 battery_set_size (BatteryData * bat)
 {
-  gtk_widget_set_usize (bat->readout_area, bat->width * 0.35, bat->height);
+  if (bat->height <= 36 && bat->width >= 48)
+    gtk_widget_set_usize (bat->readout_area, 48, 17);
+  else if (bat->width <= 36 && bat->height >= 48)
+    gtk_widget_set_usize (bat->readout_area, 17, 48);
+  else
+    gtk_widget_set_usize (bat->readout_area, bat->width * 0.35, bat->height);
   gtk_widget_set_usize (bat->graph_frame, bat->width, bat->height);
   gtk_widget_set_usize (bat->readout_frame, bat->width, bat->height);
 
   /*
-   * If the applet is small enough, we have to hide a few of the
+   * For small sizes handle the geometry at least somewhat sane
    * display widgets so that things fit in a sane manner.  This is
    * important for PDA's, which won't have a lot of screen geometry.
    */
-  if (bat->height < 28 || bat->width < 28)
+  if (bat->height <= 36 && bat->width >= 48)
+    {
+      gtk_widget_hide (bat->readout_label_percentage_vert);
+      if (bat->width < 48+18)
+        {
+          gtk_widget_hide (bat->readout_label_percentage);
+          gtk_widget_hide (bat->readout_label_percentage_small);
+	}
+      if (bat->height < 18 || bat->width < 48+28)
+        {
+          gtk_widget_hide (bat->readout_label_percentage);
+          gtk_widget_show (bat->readout_label_percentage_small);
+	}
+      else
+        {
+          gtk_widget_show (bat->readout_label_percentage);
+          gtk_widget_hide (bat->readout_label_percentage_small);
+	}
+      gtk_widget_show (bat->readout_area);
+    }
+  else if (bat->width <= 36 && bat->height >= 48)
     {
       gtk_widget_hide (bat->readout_label_percentage);
+      gtk_widget_hide (bat->readout_label_percentage_small);
+      if (bat->height < 48+10)
+        {
+          gtk_widget_hide (bat->readout_label_percentage_vert);
+	}
+      else
+        {
+          gtk_widget_show (bat->readout_label_percentage_vert);
+	}
+      gtk_widget_show (bat->readout_area);
+    }
+  else if (bat->height < 28 || bat->width < 28)
+    {
+      gtk_widget_hide (bat->readout_label_percentage);
+      gtk_widget_hide (bat->readout_label_percentage_vert);
       gtk_widget_show (bat->readout_label_percentage_small);
       gtk_widget_hide (bat->readout_area);
     }
   else
     {
       gtk_widget_show (bat->readout_label_percentage);
+      gtk_widget_hide (bat->readout_label_percentage_vert);
       gtk_widget_hide (bat->readout_label_percentage_small);
       gtk_widget_show (bat->readout_area);
     }
 
-  if (bat->width < 48)
+  if (bat->width < 48 || bat->height < 48)
     gtk_widget_hide (bat->readout_label_time);
   else
     gtk_widget_show (bat->readout_label_time);

@@ -43,6 +43,8 @@ typedef struct BatteryData {
 
   gint width, height, old_width;
 
+  gboolean follow_panel_size;
+
   gint setup;
 
   gboolean force_update;
@@ -122,6 +124,7 @@ typedef struct BatteryData {
   GtkWidget *readout_frame;
   GtkWidget *readout_label_percentage;
   GtkWidget *readout_label_percentage_small;
+  GtkWidget *readout_label_percentage_vert;
   GtkWidget *readout_label_time;
   GtkWidget *readout_area;
   GdkPixmap *readout_pixmap;
@@ -132,6 +135,8 @@ typedef struct BatteryData {
   /* The bolt image */
   GdkPixmap *bolt_pixmap;
   GdkBitmap *bolt_mask;
+  GdkPixmap *bolt_pixmap_horiz;
+  GdkBitmap *bolt_mask_horiz;
 
   /*
    *
@@ -141,6 +146,7 @@ typedef struct BatteryData {
   GnomePropertyBox *prop_win;
 
   /* General */
+  GtkWidget *follow_toggle;
   GtkObject *height_adj, *width_adj;
   GtkWidget *mode_radio_graph, *mode_radio_readout;
   GtkObject *interval_adj,  *low_charge_adj;
@@ -174,6 +180,7 @@ typedef struct BatteryData {
 
 /* Global configuration parameters */
 #define BATTERY_DEFAULT_MODE_STRING     "readout"
+#define BATTERY_DEFAULT_FOLLOW_PANEL_SIZE "true"
 #define BATTERY_DEFAULT_HEIGHT          "48"
 #define BATTERY_DEFAULT_WIDTH           "48"
 #define BATTERY_DEFAULT_UPDATE_INTERVAL "2"
@@ -204,6 +211,7 @@ void about_cb (AppletWidget *widget, gpointer data);
 void destroy_about(GtkWidget *w, gpointer data);
 
 void battery_set_size(BatteryData *bat);
+void battery_set_follow_size (BatteryData *bat);
 gint battery_update(gpointer data);
 gint battery_orient_handler(GtkWidget *w, PanelOrientType o,
 				   gpointer data);

@@ -76,12 +76,19 @@ battery_properties_window (AppletWidget * applet, gpointer data)
   gnome_property_box_append_page (GNOME_PROPERTY_BOX (bat->prop_win), t,
 				  gtk_label_new (_("General")));
 
+  bat->follow_toggle = gtk_check_button_new_with_label (_("Follow panel size"));
+  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (bat->follow_toggle), 
+				bat->follow_panel_size);
+  gtk_signal_connect (GTK_OBJECT (bat->follow_toggle), "toggled",
+		      GTK_SIGNAL_FUNC (toggle_value_changed_cb), bat);
+  gtk_table_attach_defaults ( GTK_TABLE (t), bat->follow_toggle, 0, 2, 0, 1);
+
   /* Applet height */
   l = gtk_label_new (_("Applet Height:")); 
   bat->height_adj = gtk_adjustment_new ( bat->height, 1.0, 666, 1, 8, 8 );
   height_spin = gtk_spin_button_new ( GTK_ADJUSTMENT (bat->height_adj), 1, 0 );
-  gtk_table_attach_defaults ( GTK_TABLE (t), l, 0, 1, 0, 1 );
-  gtk_table_attach_defaults ( GTK_TABLE (t), height_spin, 1, 2, 0, 1 );
+  gtk_table_attach_defaults ( GTK_TABLE (t), l, 0, 1, 1, 2 );
+  gtk_table_attach_defaults ( GTK_TABLE (t), height_spin, 1, 2, 1, 2 );
   gtk_spin_button_set_update_policy ( GTK_SPIN_BUTTON (height_spin),
 				     GTK_UPDATE_ALWAYS );
   gtk_signal_connect (GTK_OBJECT (bat->height_adj), "value_changed",
@@ -89,11 +96,11 @@ battery_properties_window (AppletWidget * applet, gpointer data)
 
   /* Applet width */
   l = gtk_label_new (_("Applet Width:")); 
-  gtk_table_attach_defaults ( GTK_TABLE (t), l, 0, 1, 1, 2 ); 
+  gtk_table_attach_defaults ( GTK_TABLE (t), l, 0, 1, 2, 3 ); 
 
   bat->width_adj = gtk_adjustment_new ( bat->width, 1, 666, 1, 8, 8 );
   width_spin = gtk_spin_button_new ( GTK_ADJUSTMENT (bat->width_adj), 1, 0 );
-  gtk_table_attach_defaults ( GTK_TABLE (t), width_spin, 1, 2, 1, 2 );
+  gtk_table_attach_defaults ( GTK_TABLE (t), width_spin, 1, 2, 2, 3 );
   gtk_spin_button_set_update_policy ( GTK_SPIN_BUTTON (width_spin),
 				     GTK_UPDATE_ALWAYS );
   gtk_signal_connect (GTK_OBJECT (bat->width_adj), "value_changed",
@@ -110,8 +117,8 @@ battery_properties_window (AppletWidget * applet, gpointer data)
   gtk_spin_button_set_update_policy (GTK_SPIN_BUTTON (interval_spin),
 				     GTK_UPDATE_ALWAYS);
   
-  gtk_table_attach_defaults (GTK_TABLE (t), l, 0, 1, 2, 3);
-  gtk_table_attach_defaults (GTK_TABLE (t), interval_spin, 1, 2, 2, 3);
+  gtk_table_attach_defaults (GTK_TABLE (t), l, 0, 1, 3, 4);
+  gtk_table_attach_defaults (GTK_TABLE (t), interval_spin, 1, 2, 3, 4);
 
   /* Low battery value */
   l = gtk_label_new (_("Low Charge Threshold:"));
@@ -124,8 +131,8 @@ battery_properties_window (AppletWidget * applet, gpointer data)
   gtk_spin_button_set_update_policy (GTK_SPIN_BUTTON (low_charge_spin),
 				     GTK_UPDATE_ALWAYS);
   
-  gtk_table_attach_defaults (GTK_TABLE (t), l, 0, 1, 3, 4);
-  gtk_table_attach_defaults (GTK_TABLE (t), low_charge_spin, 1, 2, 3, 4);
+  gtk_table_attach_defaults (GTK_TABLE (t), l, 0, 1, 4, 5);
+  gtk_table_attach_defaults (GTK_TABLE (t), low_charge_spin, 1, 2, 4, 5);
 
   /* Applet mode label */
   l = gtk_label_new (_("Applet Mode:"));
@@ -143,11 +150,11 @@ battery_properties_window (AppletWidget * applet, gpointer data)
   gtk_signal_connect (GTK_OBJECT (bat->mode_radio_graph), "toggled",
 		      GTK_SIGNAL_FUNC (toggle_value_changed_cb), bat);
 	
-  gtk_table_attach ( GTK_TABLE (t), l,  4, 5, 0, 1, GTK_FILL | GTK_EXPAND,
+  gtk_table_attach ( GTK_TABLE (t), l,  4, 5, 1, 2, GTK_FILL | GTK_EXPAND,
 		     GTK_EXPAND, 10, 0); 
-  gtk_table_attach ( GTK_TABLE (t), bat->mode_radio_readout, 4, 5, 1, 2,
+  gtk_table_attach ( GTK_TABLE (t), bat->mode_radio_readout, 4, 5, 2, 3,
 		     GTK_FILL | GTK_EXPAND, GTK_EXPAND, 10, 0); 
-  gtk_table_attach ( GTK_TABLE (t), bat->mode_radio_graph, 4, 5, 2, 3,
+  gtk_table_attach ( GTK_TABLE (t), bat->mode_radio_graph, 4, 5, 3, 4,
 		     GTK_FILL | GTK_EXPAND, GTK_EXPAND, 10, 0); 
 
   /*
@@ -430,14 +437,20 @@ prop_apply (GtkWidget *w, int page, gpointer data)
   /*
    * Update the size
    */
-  height = GTK_ADJUSTMENT (bat->height_adj)->value;
-  width = GTK_ADJUSTMENT (bat->width_adj)->value;
 
-  if ( (height != bat->height) || (width != bat->width))
+  bat->follow_panel_size = GTK_TOGGLE_BUTTON (bat->follow_toggle)->active;
+
+  if (!bat->follow_panel_size)
     {
-      size_changed = TRUE;
-      bat->height = height;
-      bat->width = width;
+      height = GTK_ADJUSTMENT (bat->height_adj)->value;
+      width = GTK_ADJUSTMENT (bat->width_adj)->value;
+
+      if ( (height != bat->height) || (width != bat->width) )
+        {
+          size_changed = TRUE;
+          bat->height = height;
+          bat->width = width;
+        }
     }
 
   gnome_color_picker_get_i8 (bat->graph_ac_on_color_sel,
@@ -480,7 +493,9 @@ prop_apply (GtkWidget *w, int page, gpointer data)
     strdup (GTK_TOGGLE_BUTTON (bat->mode_radio_graph)->active ?
 	    BATTERY_MODE_GRAPH : BATTERY_MODE_READOUT);
 
-  if (size_changed)
+  if (bat->follow_panel_size)
+    battery_set_follow_size (bat);
+  else if (size_changed)
     battery_set_size (bat);
 
   bat->setup = TRUE;

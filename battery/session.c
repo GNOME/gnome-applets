@@ -51,68 +51,71 @@ battery_session_load(gchar * cfgpath, BatteryData * bat)
   gnome_config_push_prefix (cfgpath);
 
   /* Global configurable parameters */
-  bat->mode_string = gnome_config_get_string_with_default
-    ("battery/mode=" BATTERY_DEFAULT_MODE_STRING, NULL);
+  bat->mode_string = gnome_config_get_string
+    ("battery/mode=" BATTERY_DEFAULT_MODE_STRING);
 
-  bat->width = gnome_config_get_int_with_default
-    ("battery/width=" BATTERY_DEFAULT_WIDTH, NULL);
+  bat->follow_panel_size = gnome_config_get_bool
+    ("battery/follow_panel_size=" BATTERY_DEFAULT_FOLLOW_PANEL_SIZE);
 
-  bat->height = gnome_config_get_int_with_default
-    ("battery/height=" BATTERY_DEFAULT_HEIGHT, NULL);
+  bat->width = gnome_config_get_int
+    ("battery/width=" BATTERY_DEFAULT_WIDTH);
 
-  bat->update_interval = gnome_config_get_int_with_default
-    ("battery/interval=" BATTERY_DEFAULT_UPDATE_INTERVAL, NULL);
+  bat->height = gnome_config_get_int
+    ("battery/height=" BATTERY_DEFAULT_HEIGHT);
 
-  bat->low_charge_val = gnome_config_get_int_with_default
-    ("battery/low_charge_val=" BATTERY_DEFAULT_LOW_VAL, NULL);
+  bat->update_interval = gnome_config_get_int
+    ("battery/interval=" BATTERY_DEFAULT_UPDATE_INTERVAL);
 
-  bat->low_warn_val = gnome_config_get_int_with_default
-    ("battery/low_warn_val=" BATTERY_DEFAULT_LOW_WARN_VAL, NULL);
+  bat->low_charge_val = gnome_config_get_int
+    ("battery/low_charge_val=" BATTERY_DEFAULT_LOW_VAL);
 
-  bat->low_warn_enable = gnome_config_get_bool_with_default
-    ("battery/low_warn_enable=" BATTERY_DEFAULT_LOW_WARN_ENABLE, NULL);
+  bat->low_warn_val = gnome_config_get_int
+    ("battery/low_warn_val=" BATTERY_DEFAULT_LOW_WARN_VAL);
 
-  bat->full_notify_enable = gnome_config_get_bool_with_default
-    ("battery/full_notify_enable=" BATTERY_DEFAULT_FULL_NOTIFY_ENABLE, NULL);
+  bat->low_warn_enable = gnome_config_get_bool
+    ("battery/low_warn_enable=" BATTERY_DEFAULT_LOW_WARN_ENABLE);
+
+  bat->full_notify_enable = gnome_config_get_bool
+    ("battery/full_notify_enable=" BATTERY_DEFAULT_FULL_NOTIFY_ENABLE);
 
   /* The graph */
-  bat->graph_direction = gnome_config_get_int_with_default
-    ("graph/direction=" BATTERY_DEFAULT_GRAPH_DIRECTION, NULL);
+  bat->graph_direction = gnome_config_get_int
+    ("graph/direction=" BATTERY_DEFAULT_GRAPH_DIRECTION);
 
   strncpy(bat->graph_color_ac_on_s,
-	  gnome_config_get_string_with_default
-	  ("graph/ac_on_color=" BATTERY_DEFAULT_GRAPH_ACON_COLOR, NULL),
+	  gnome_config_get_string
+	  ("graph/ac_on_color=" BATTERY_DEFAULT_GRAPH_ACON_COLOR),
 	  sizeof(bat->graph_color_ac_on_s));
 
   strncpy(bat->graph_color_ac_off_s,
-	  gnome_config_get_string_with_default
-	  ("graph/ac_off_color="  BATTERY_DEFAULT_GRAPH_ACOFF_COLOR, NULL),
+	  gnome_config_get_string
+	  ("graph/ac_off_color="  BATTERY_DEFAULT_GRAPH_ACOFF_COLOR),
 	  sizeof(bat->graph_color_ac_off_s));
 
   strncpy(bat->graph_color_line_s,
-	  gnome_config_get_string_with_default
-	  ("graph/line_color="  BATTERY_DEFAULT_GRAPH_LINE_COLOR, NULL),
+	  gnome_config_get_string
+	  ("graph/line_color="  BATTERY_DEFAULT_GRAPH_LINE_COLOR),
 	  sizeof(bat->graph_color_line_s));
 
   strncpy(bat->graph_color_low_s,
-	  gnome_config_get_string_with_default
-	  ("graph/low_color="  BATTERY_DEFAULT_GRAPH_LOW_COLOR, NULL),
+	  gnome_config_get_string
+	  ("graph/low_color="  BATTERY_DEFAULT_GRAPH_LOW_COLOR),
 	  sizeof(bat->graph_color_low_s));
 
   /* The readout */
   strncpy(bat->readout_color_ac_on_s,
-	  gnome_config_get_string_with_default
-	  ("readout/ac_on_color="  BATTERY_DEFAULT_READOUT_ACON_COLOR, NULL),
+	  gnome_config_get_string
+	  ("readout/ac_on_color="  BATTERY_DEFAULT_READOUT_ACON_COLOR),
 	  sizeof(bat->readout_color_ac_on_s));
 
   strncpy (bat->readout_color_ac_off_s,
-	   gnome_config_get_string_with_default
-	   ("readout/ac_off_color=" BATTERY_DEFAULT_READOUT_ACOFF_COLOR, NULL),
+	   gnome_config_get_string
+	   ("readout/ac_off_color=" BATTERY_DEFAULT_READOUT_ACOFF_COLOR),
 	   sizeof(bat->readout_color_ac_off_s));
 
   strncpy (bat->readout_color_low_s,
-	   gnome_config_get_string_with_default
-	   ("readout/low_color=" BATTERY_DEFAULT_READOUT_LOW_COLOR, NULL),
+	   gnome_config_get_string
+	   ("readout/low_color=" BATTERY_DEFAULT_READOUT_LOW_COLOR),
 	   sizeof(bat->readout_color_low_s));
 
   gnome_config_pop_prefix ();
@@ -131,6 +134,7 @@ battery_session_save(GtkWidget * w,
 
   /* Global configurable parameters */
   gnome_config_set_string ("battery/mode", bat->mode_string);
+  gnome_config_set_bool ("battery/follow_panel_size", bat->follow_panel_size);
   gnome_config_set_int ("battery/width", bat->width);
   gnome_config_set_int ("battery/height", bat->height);
   gnome_config_set_int ("battery/interval", bat->update_interval);
