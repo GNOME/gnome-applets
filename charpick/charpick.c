@@ -8,7 +8,7 @@
 
 
 static charpick_button_cb_data button_cb_data[MAX_BUTTONS_WITH_BUFFER];
-charpick_data curr_data;
+
 
 /* This stuff assumes that this program is being run in an environment
  * that uses ISO-8859-1 (latin-1) as its native character code.
@@ -96,7 +96,7 @@ charpick_selection_handler(GtkWidget *widget,
 		           gpointer data)
 {
   charpick_data *p_curr_data = data;
-
+g_print ("selection set \n");
   gtk_selection_data_set(selection_data,
 			 GDK_SELECTION_TYPE_STRING,
 			 8,
@@ -108,10 +108,12 @@ charpick_selection_handler(GtkWidget *widget,
 /* untoggles the active toggle_button when we lose the selection */
 static gint
 selection_clear_cb (GtkWidget *widget, GdkEventSelection *event,
-                 gint *have_selection)
+                 gint *have_selection, gpointer data)
 {
-  gint * last_index = &curr_data.last_index;
-  GtkWidget *toggle_button = curr_data.toggle_buttons[*last_index];
+  charpick_data *curr_data = data;
+  
+  gint * last_index = &curr_data->last_index;
+  GtkWidget *toggle_button = curr_data->toggle_buttons[*last_index];
   gtk_toggle_button_set_state (GTK_TOGGLE_BUTTON(toggle_button), FALSE);
   *last_index = NO_LAST_INDEX;
   return TRUE;
@@ -182,7 +184,9 @@ display_charlist (charpick_data *data)
   {
     currstr[0] = charlist[i];
     currstr[1] = '\0';
+#ifdef FIXME
     gtk_label_set_text(GTK_LABEL(data->labels[i]), currstr);
+#endif
     gtk_widget_show_all(data->toggle_buttons[i]);
   }
   /* extra buttons? hide em */
@@ -195,25 +199,29 @@ display_charlist (charpick_data *data)
 static gint
 toggle_button_toggled_cb(GtkWidget *widget, gpointer data)
 {
-  charpick_button_cb_data *cb_data = data;
-  gint button_index = cb_data->button_index;
-  gint last_index = cb_data->p_curr_data->last_index;
-  if ((GTK_TOGGLE_BUTTON (cb_data->p_curr_data->toggle_buttons[button_index])->active))
+  charpick_data *curr_data = data;
+  GtkClipboard *clipboard;
+  gint button_index;
+  gint last_index = curr_data->last_index;
+   
+  button_index = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (widget), "index"));  
+
+  if ((GTK_TOGGLE_BUTTON (curr_data->toggle_buttons[button_index])->active))
   {
     if ((last_index != NO_LAST_INDEX) && (last_index != button_index))
       gtk_toggle_button_set_state
-        (GTK_TOGGLE_BUTTON (cb_data->p_curr_data->toggle_buttons[last_index]), 
-         FALSE);    
-    gtk_widget_grab_focus(cb_data->p_curr_data->event_box);
+       (GTK_TOGGLE_BUTTON (curr_data->toggle_buttons[last_index]), FALSE);   
+        
+    gtk_widget_grab_focus(curr_data->event_box);
     /* set selected_char */
-    cb_data->p_curr_data->selected_char = 
-    cb_data->p_curr_data->charlist[button_index];
+    curr_data->selected_char = curr_data->charlist[button_index];
     /* set this? widget as the selection owner */
-    gtk_selection_owner_set (cb_data->p_curr_data->event_box,
+    gtk_selection_owner_set (curr_data->event_box,
 	  		     GDK_SELECTION_PRIMARY,
-                             GDK_CURRENT_TIME);
-  cb_data->p_curr_data->last_index = button_index;
-  }		     
+                             GDK_CURRENT_TIME); 
+    curr_data->last_index = button_index;
+  }	
+	     
   return TRUE;
 }
 
@@ -221,15 +229,16 @@ toggle_button_toggled_cb(GtkWidget *widget, gpointer data)
    applet */
 
 static int
-button_press_cb (GtkWidget *widget, GdkEventButton *event)
+button_press_cb (GtkWidget *widget, GdkEventButton *event, gpointer data)
 {
-
+  charpick_data *curr_data = data;
+g_print ("button press \n");  
   if (event->button > 1)
   {
-    return gtk_widget_event (curr_data.applet, (GdkEvent *)event);
+    return gtk_widget_event (curr_data->applet, (GdkEvent *)event);
   }
 
-  return TRUE;
+  return FALSE;
 }
 
 static gint
@@ -334,14 +343,13 @@ key_press_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
 void
 build_table(charpick_data *p_curr_data)
 {
-  GtkWidget *event_box = p_curr_data->event_box;
   GtkWidget *table = p_curr_data->table;
   GtkWidget * *toggle_button;
   GtkWidget * *label;
   gint rows, cols, size;
   gint i;
   size = p_curr_data->properties->size;
-
+g_print ("build table \n");
   setup_rows_cols (p_curr_data, &rows, &cols);
 
   toggle_button = p_curr_data->toggle_buttons;
@@ -372,14 +380,17 @@ build_table(charpick_data *p_curr_data)
     button_cb_data[i].p_curr_data = p_curr_data;
     gtk_button_set_relief(GTK_BUTTON(toggle_button[i]), GTK_RELIEF_NONE);
     /* connect toggle signal for button to handler */
+    g_object_set_data (G_OBJECT (toggle_button[i]), "index", GINT_TO_POINTER (i));
     gtk_signal_connect (GTK_OBJECT (toggle_button[i]), "toggled",
                         (GtkSignalFunc) toggle_button_toggled_cb,
-                        &button_cb_data[i]);
+                        p_curr_data);
     gtk_signal_connect (GTK_OBJECT (toggle_button[i]), "button_press_event", 
-                        (GtkSignalFunc) button_press_cb, NULL);
+                        (GtkSignalFunc) button_press_cb, p_curr_data);
   }
-  gtk_container_add (GTK_CONTAINER(event_box), table);
-  gtk_widget_show (event_box);
+  
+  gtk_container_add (GTK_CONTAINER(p_curr_data->event_box), table);
+  gtk_widget_show (p_curr_data->event_box);
+  
   /* a fudge factor is applied to make less space wasted.
      this is needed now that we have capital letters and the new 
      2 x 4 default layout with larger cells that required.
@@ -393,32 +404,24 @@ build_table(charpick_data *p_curr_data)
   display_charlist(p_curr_data);
 }
 
-#ifdef FIXME
-static gint applet_save_session(GtkWidget *widget, char *privcfgpath, 
-                                char *globcfgpath, gpointer data)
-{
-  /*charpick_persistant_properties *properties = data;*/
-  property_save(privcfgpath, curr_data.properties);
-  return FALSE;
-}
-#endif
-
 static void applet_change_pixel_size(PanelApplet *applet, gint size, gpointer data)
 {
-  curr_data.panel_size = size;
+  charpick_data *curr_data = data;
+  curr_data->panel_size = size;
 
-  build_table (&curr_data);
+  build_table (curr_data);
   return;
 }
 
 static void applet_change_orient(PanelApplet *applet, PanelAppletOrient o, gpointer data)
 {
+  charpick_data *curr_data = data;
   if (o == PANEL_APPLET_ORIENT_UP ||
       o == PANEL_APPLET_ORIENT_DOWN)
-    curr_data.panel_vertical = FALSE;
+    curr_data->panel_vertical = FALSE;
   else
-    curr_data.panel_vertical = TRUE;
-  build_table (&curr_data);
+    curr_data->panel_vertical = TRUE;
+  build_table (curr_data);
   return;
 }
 
@@ -474,79 +477,51 @@ static const BonoboUIVerb charpick_applet_menu_verbs [] = {
 
 static const char charpick_applet_menu_xml [] =
 	"<popup name=\"button3\">\n"
-	"   <menuitem name=\"Item 1\" verb=\"Props\" _label=\"Properties\"/>\n"
-	"   <menuitem name=\"Item 2\" verb=\"Help\" _label=\"Help\"/>\n"
-	"   <menuitem name=\"Item 3\" verb=\"About\" _label=\"About\"/>\n"
+	"   <menuitem name=\"Item 1\" verb=\"Props\" _label=\"Properties\"\n"
+	"             pixtype=\"stock\" pixname=\"gtk-properties\"/>\n"
+	"   <menuitem name=\"Item 2\" verb=\"Help\" _label=\"Help\"\n"
+	"             pixtype=\"stock\" pixname=\"gtk-help\"/>\n"
+	"   <menuitem name=\"Item 3\" verb=\"About\" _label=\"About\"\n"
+	"             pixtype=\"stock\" pixname=\"gnome-stock-about\"/>\n"
 	"</popup>\n";
 
 
 static gboolean
 charpicker_applet_fill (PanelApplet *applet)
 {
-  GtkWidget *frame = NULL;
+  charpick_data *curr_data;
   GtkWidget *event_box = NULL;
   GtkWidget *table = NULL;
-  GtkWidget *toggle_button[MAX_BUTTONS_WITH_BUFFER];
-  GtkWidget *label[MAX_BUTTONS_WITH_BUFFER];
-  /* initialize properties. when sm is added, these will be loaded
-   * rather than simply copied from the defaults.
-   */
-
-  charpick_persistant_properties default_properties = 
-  {
-    NULL, /* will use def_list */
-    TRUE,
-    8,
-    2,
-    2,
-    17,
-
-  };
-  /*
-  charpick_data curr_data =
-  {
-    default_properties.default_charlist,
-    ' ',
-    NO_LAST_INDEX,
-    toggle_button,
-    label,
-    table,
-    event_box,
-    applet,
-    &default_properties
-  };
-  */
-
-  default_properties.default_charlist = def_list;
-  curr_data.charlist = default_properties.default_charlist;
-  curr_data.selected_char = ' ';
-  curr_data.last_index = NO_LAST_INDEX;
-  curr_data.toggle_buttons = toggle_button;
-  curr_data.labels = label;
-  curr_data.table = table;
-  curr_data.event_box = event_box;
-  curr_data.frame = frame;
-  curr_data.properties = &default_properties;
-
+   
+  curr_data = g_new0 (charpick_data, 1);
+  curr_data->properties = g_new0 (charpick_persistant_properties, 1);
+  curr_data->charlist = def_list;
+  curr_data->selected_char = ' ';
+  curr_data->last_index = NO_LAST_INDEX;
+  curr_data->toggle_buttons = g_new0 (GtkWidget *, MAX_BUTTONS_WITH_BUFFER);
+  curr_data->labels = g_new0 (GtkWidget *, MAX_BUTTONS_WITH_BUFFER);
+  curr_data->table = table;
+  curr_data->event_box = event_box;
+  
 /* FIXME: hook up to gconf */
-  property_load(NULL, &default_properties);
+  property_load(curr_data);
 
-  curr_data.charlist = default_properties.default_charlist;
   /* Create the event_box (needed to catch keypress and focus change events) */
 
   event_box = gtk_event_box_new ();
-  curr_data.event_box = event_box; 
+  curr_data->event_box = event_box; 
   GTK_WIDGET_SET_FLAGS (event_box, GTK_CAN_FOCUS);
 
   /* Create table */
-  build_table (&curr_data);
-  frame = gtk_frame_new (NULL);
-  gtk_container_add (GTK_CONTAINER(frame), event_box);
-  gtk_frame_set_shadow_type (GTK_FRAME(frame), GTK_SHADOW_IN);
+  curr_data->frame = gtk_frame_new (NULL);
+  gtk_container_add (GTK_CONTAINER (curr_data->frame), event_box);
+  build_table (curr_data);
+  
+  gtk_frame_set_shadow_type (GTK_FRAME(curr_data->frame), GTK_SHADOW_IN);
 
   /* Event signals */
   gtk_signal_connect (GTK_OBJECT (event_box), "key_press_event",
-		      (GtkSignalFunc) key_press_event, &curr_data);
+		      (GtkSignalFunc) key_press_event, curr_data);
   /*
   gtk_signal_connect (GTK_OBJECT (applet), "focus_in_event",
 		      (GtkSignalFunc) focus_in_event, NULL);
@@ -554,56 +529,39 @@ charpicker_applet_fill (PanelApplet *applet)
   gtk_signal_connect (GTK_OBJECT (applet), "focus_out_event",
 		      (GtkSignalFunc) focus_out_event, NULL);
   */
-  gtk_widget_set_events (event_box, /*GDK_EXPOSURE_MASK
-			 | */ GDK_FOCUS_CHANGE_MASK
-			 | GDK_KEY_PRESS_MASK);
+
+  gtk_widget_set_events (curr_data->event_box, GDK_FOCUS_CHANGE_MASK|GDK_KEY_PRESS_MASK);
+
   /* selection handling for selected character */
-  gtk_selection_add_target (event_box, 
+  gtk_selection_add_target (curr_data->event_box, 
 			    GDK_SELECTION_PRIMARY,
                             GDK_SELECTION_TYPE_STRING,
 			    0);
-  gtk_signal_connect (GTK_OBJECT (event_box), "selection_get",
+  gtk_signal_connect (GTK_OBJECT (curr_data->event_box), "selection_get",
 		      GTK_SIGNAL_FUNC (charpick_selection_handler),
-		      &curr_data);
-  gtk_signal_connect (GTK_OBJECT (event_box), "selection_clear_event",
+		      curr_data);
+  gtk_signal_connect (GTK_OBJECT (curr_data->event_box), "selection_clear_event",
 		      GTK_SIGNAL_FUNC (selection_clear_cb),
-		      &curr_data);
+		      curr_data);
  
-		    
-#ifdef FIXME
-  gtk_signal_connect(GTK_OBJECT(applet),"save_session",
-		     GTK_SIGNAL_FUNC(applet_save_session), 
-                     &default_properties);
 
-#endif
-  curr_data.applet = GTK_WIDGET (applet);
+  curr_data->applet = GTK_WIDGET (applet);
 
-  gtk_container_add (GTK_CONTAINER (applet), frame);
+  gtk_container_add (GTK_CONTAINER (applet), curr_data->frame);
   
   /* session save signal */ 
   g_signal_connect (G_OBJECT (applet), "change_orient",
-		    G_CALLBACK (applet_change_orient), NULL);
+		    G_CALLBACK (applet_change_orient), curr_data);
 
   g_signal_connect (G_OBJECT (applet), "change_size",
-		    G_CALLBACK (applet_change_pixel_size), NULL);
+		    G_CALLBACK (applet_change_pixel_size), curr_data);
   
   gtk_widget_show_all (GTK_WIDGET (applet));
   
   panel_applet_setup_menu (PANEL_APPLET (applet),
 			   charpick_applet_menu_xml,
 			   charpick_applet_menu_verbs,
-			   &curr_data);
-
-#ifdef FIXME
-	
-
-	test_applet_setup_tooltips (GTK_WIDGET (applet));
-
-	g_signal_connect (G_OBJECT (applet),
-			  "save_yourself",
-			  G_CALLBACK (test_applet_handle_save_yourself),
-			  label);
-#endif		
+			   curr_data);
 
   return TRUE;
 }

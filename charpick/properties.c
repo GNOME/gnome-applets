@@ -6,19 +6,14 @@
 
 static GtkWidget *propwindow = NULL;
 
-/* temporary variable modified by the properties dialog.  they get
-   copied to the permanent variables when the users selects Apply or
-   Ok */
-charpick_persistant_properties temp_properties;
-
-void property_load (char *path, gpointer data)
+void property_load (charpick_data *curr_data)
 {
 #ifdef FIXME
   /* charpick_persistant_properties * properties = data; */
   /* default charlist is not yet handled by sm.(this is now done in main) */
   /*  properties->default_charlist = a_list; */
   /*  gnome_config_push_prefix(APPLET_WIDGET(applet)->privcfgpath); */
-  gnome_config_push_prefix(path);
+  
   /* FIXME: sprintf() these strings so I can use the #defines
    */
   curr_data.properties->follow_panel_size = gnome_config_get_bool("charpick/follow_panel_size=true");
@@ -29,39 +24,36 @@ void property_load (char *path, gpointer data)
   curr_data.properties->default_charlist = 
     gnome_config_get_string("charpick/deflist=байнсуЅ©");
 #endif
-  curr_data.properties->follow_panel_size = TRUE;
-  curr_data.properties->min_cells = 8;
-  curr_data.properties->rows = 2;
-  curr_data.properties->cols = 4;
-  curr_data.properties->size = 22;
-  curr_data.properties->default_charlist = g_strdup ("байнсуЅ©");
+  curr_data->properties->follow_panel_size = TRUE;
+  curr_data->properties->min_cells = 8;
+  curr_data->properties->rows = 2;
+  curr_data->properties->cols = 4;
+  curr_data->properties->size = 22;
+  curr_data->properties->default_charlist = g_strdup ("байнсуЅ©");
   
   /* sanity check the properties read from config */
-  if (curr_data.properties->rows < 1)
+  if (curr_data->properties->rows < 1)
   {
-    curr_data.properties->rows = DEFAULT_ROWS; 
+    curr_data->properties->rows = DEFAULT_ROWS; 
   }
-  if (curr_data.properties->cols < 1)
+  if (curr_data->properties->cols < 1)
   {
-    curr_data.properties->cols =  DEFAULT_COLS; 
+    curr_data->properties->cols =  DEFAULT_COLS; 
   }
-  if (curr_data.properties->size < 1)
+  if (curr_data->properties->size < 1)
   {
-    curr_data.properties->size = DEFAULT_SIZE; 
-  }
-
-  if (curr_data.properties->min_cells < 1)
-  {
-    curr_data.properties->min_cells = DEFAULT_ROWS; 
-  }
-  else if (curr_data.properties->min_cells > MAX_BUTTONS)
-  {
-    curr_data.properties->min_cells = DEFAULT_ROWS; 
+    curr_data->properties->size = DEFAULT_SIZE; 
   }
 
-#ifdef FIXME
-  gnome_config_pop_prefix();
-#endif
+  if (curr_data->properties->min_cells < 1)
+  {
+    curr_data->properties->min_cells = DEFAULT_ROWS; 
+  }
+  else if (curr_data->properties->min_cells > MAX_BUTTONS)
+  {
+    curr_data->properties->min_cells = DEFAULT_ROWS; 
+  }
+
   return;
 }
 
@@ -98,13 +90,16 @@ static void update_bool_cb( GtkWidget *cb, gboolean *data)
 
 static void update_default_list_cb( GtkWidget *entry, gpointer data)
 {
+#ifdef FIXME
   temp_properties.default_charlist = g_strdup(gtk_entry_get_text(GTK_ENTRY(entry)));
+#endif
    gnome_property_box_changed(GNOME_PROPERTY_BOX(propwindow));
   return;
 }
 
 static void property_apply_cb (GtkWidget *widget, void *data)
 {
+#ifdef FIXME
   /*charpick_data * curr_data = data;*/
   curr_data.properties->follow_panel_size = temp_properties.follow_panel_size;
   curr_data.properties->min_cells = temp_properties.min_cells;
@@ -113,12 +108,10 @@ static void property_apply_cb (GtkWidget *widget, void *data)
   curr_data.properties->size = temp_properties.size;
   curr_data.properties->default_charlist = 
     g_strdup(temp_properties.default_charlist);
-#ifdef FIXME
-  applet_widget_sync_config(APPLET_WIDGET(curr_data.applet));
-  /* set applet to applied state */
-#endif
+
   curr_data.charlist = curr_data.properties->default_charlist;
   build_table(&curr_data);
+#endif
   return;
 }
 
@@ -162,7 +155,7 @@ static void size_frame_create()
   GtkWidget *rows_sb;
   GtkWidget *cols_sb;
   GtkWidget *follow_cb;
-
+#ifdef FIXME
   /* make some widgets */
   frame = gtk_vbox_new(FALSE, 5);
   min_cells_hbox = gtk_hbox_new(FALSE, 5);
@@ -176,8 +169,10 @@ static void size_frame_create()
 
   /* the follow_panel_size check button */
   follow_cb = gtk_check_button_new_with_label(_("Follow panel size"));
+
   gtk_toggle_button_set_state (GTK_TOGGLE_BUTTON (follow_cb),
 			       temp_properties.follow_panel_size);
+
   gtk_signal_connect (GTK_OBJECT (follow_cb), "toggled",
 		      GTK_SIGNAL_FUNC (update_bool_cb),
 		      &temp_properties.follow_panel_size);
@@ -264,6 +259,7 @@ static void size_frame_create()
   gtk_widget_show(frame);
   gnome_property_box_append_page (GNOME_PROPERTY_BOX(propwindow), 
                                   frame , tab_label);
+#endif
   return;
 }
 
@@ -275,7 +271,7 @@ static void default_chars_frame_create(void)
   GtkWidget *default_list_label;
   GtkWidget *default_list_entry;
   GtkWidget *explain_label;
-  
+#ifdef FIXME  
   /* init widgets */
   frame = gtk_vbox_new(FALSE, 5);
   default_list_hbox = gtk_hbox_new(FALSE, 5);
@@ -303,6 +299,7 @@ static void default_chars_frame_create(void)
   gtk_widget_show_all(frame);
   gnome_property_box_append_page (GNOME_PROPERTY_BOX(propwindow), 
                                   frame, tab_label);
+#endif
   return;
 }
 
@@ -319,6 +316,7 @@ phelp_cb (GtkWidget *w, gint tab, gpointer data)
 void
 property_show(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 {
+#ifdef FIXME
   temp_properties.default_charlist = 
     g_strdup(curr_data.properties->default_charlist);
   temp_properties.follow_panel_size = curr_data.properties->follow_panel_size;
@@ -347,6 +345,7 @@ property_show(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
   gtk_signal_connect( GTK_OBJECT(propwindow), "help",
 		      GTK_SIGNAL_FUNC(phelp_cb), NULL);
   gtk_widget_show_all(propwindow);
+#endif
   return;
 }
 

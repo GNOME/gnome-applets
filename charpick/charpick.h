@@ -44,9 +44,6 @@ struct _charpick_data {
   charpick_persistant_properties * properties;
 };
 
-/* typedef struct _prop_sb_cb_data prop_sb_cb_data; */
-
-
 
 typedef struct _charpick_button_cb_data charpick_button_cb_data;
 /* This is the data type for the button callback function. */
@@ -56,14 +53,11 @@ struct _charpick_button_cb_data {
   charpick_data * p_curr_data;
 };
 
-/*static const gchar *def_list = "áâãñæª";*/
-
-extern charpick_data curr_data;
 
 void start_callback_update();
 
 void build_table(charpick_data *curr_data);
-void property_load(char *path, gpointer data);
+void property_load(charpick_data *curr_data);
 void property_save(char *path, charpick_persistant_properties *properties);
 void property_show(BonoboUIComponent *uic, gpointer data, const gchar *verbname);
 
