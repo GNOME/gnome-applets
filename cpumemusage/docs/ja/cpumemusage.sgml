@@ -1,0 +1,246 @@
+<!-- Permission is granted to make and distribute verbatim copies of -->
+<!-- this manual provided the copyright notice and this permission -->
+<!-- notice are  preserved on all copies. -->
+<!-- -->
+<!-- Permission is granted to copy and distribute modified versions of -->
+<!-- this manual under the conditions for verbatim copying, provided -->
+<!-- that the entire resulting derived work is distributed under the -->
+<!-- terms of a permission notice identical to this one. -->
+<!-- -->
+<!-- Permission is granted to copy and distribute translations of this -->
+<!-- manual into another language, under the above conditions for -->
+<!-- modified versions, except that this permission notice may be -->
+<!-- stated in a translation approved by the Foundation. -->
+
+<sect1 id="cpumemusage-applet">
+<!--
+  <title>The CPU and memory usage applet</title> 
+-->
+  <title>CPU/メモリ使用状況アプレット</title>
+
+  <para> 
+<!--
+    The <application>cpumemusage_applet</application> is a small monitor
+    applet which sits in your panel and tells you about your machine's
+    use of CPU, memory and swap.  To add this
+    applet to a <interface>Panel</interface>, 
+    right-click on the <interface>Panel</interface> and choose
+-->
+    <application>CPU/メモリ使用状況</application>アプレットは、パネル上でCPU、メモリ、スワップの使用状況を表示する小さなモニタです。このアプレットを<interface>パネル</interface>に追加するには、<interface>パネル</interface>を右クリックして、
+    <menuchoice>
+<!--
+      <guimenu>Panel</guimenu>
+      <guisubmenu>Add to panel</guisubmenu>
+      <guisubmenu>Applet</guisubmenu>
+      <guisubmenu>Monitors</guisubmenu>
+      <guimenuitem>CPU/MEM usage</guimenuitem>
+-->
+      <guimenu>パネル</guimenu>
+      <guisubmenu>パネルに追加</guisubmenu>
+      <guisubmenu>アプレット</guisubmenu>
+      <guisubmenu>ユーティリティ</guisubmenu>
+      <guimenuitem>CPU/メモリ使用状況</guimenuitem>
+      </menuchoice>
+    と選択します。
+  </para>  
+ 
+   <sect2 id="cpumemusage-usage">
+<!--
+    <title>Usage</title>
+-->
+    <title>使い方</title>
+    <para>
+<!--
+      You don't need to do anything to this applet. It will sit and
+      run in your panel.
+-->
+      このアプレットについて行なうべきことはありません。パネル上で実行されます。
+    </para>
+    <para>
+<!--
+      The applet shows three bar charts, for CPU, memory and swap space. 
+      If your panel is horizontal, the top bar is CPU, the middle is
+      memory, and the bottom is swap. If your panel is vertical, the left
+      bar is CPU, the middle is memory, and the right is swap.
+-->
+      このアプレットは、CPU、メモリ、スワップのそれぞれを示す三本のバーチャートを表示します。パネルが水平なら上から順にCPU、メモリ、スワップ、パネルが垂直なら左から順にCPU、メモリ、スワップを示します。
+    </para>
+
+    <figure id="cpumemusage-applet-fig">
+<!--
+      <title>CPU/MEM Applet</title>
+-->
+      <title>CPU/メモリ使用状況アプレット</title>
+     <screenshot>
+<!--
+      <screeninfo>CPU/MEM applet</screeninfo>
+-->
+      <screeninfo>CPU/メモリ使用状況アプレット</screeninfo>
+      <graphic format="png" fileref="figures/cpumemusage-applet"
+      srccredit="Eric Baudais">
+      </graphic>
+     </screenshot>
+    </figure>
+  
+    <variablelist>
+     <varlistentry>
+      <term>CPU</term>
+      <listitem>
+       <para>
+<!--
+         Three colours are used here. Yellow is used for CPU activity 
+         which does not need the kernel. Grey is used for CPU activity 
+         by programs talking to the kernel (typically, lots of I/O such
+         as moving things between memory and disk). Black is the background
+         and represents unused CPU. 
+-->
+         ここでは表示に三色が利用されます。黄色はカーネルを必要としないCPU動作を示します。グレーはカーネルと通信しているプログラム(典型的には、メモリとディスクの間で行われるような多くの入出力)を示します。黒は背景で、CPUが利用されていないことを示します。
+       </para>
+      </listitem>
+     </varlistentry>
+     <varlistentry>
+<!--
+      <term>Memory</term>
+-->
+      <term>メモリ</term>
+      <listitem>
+       <para>
+<!--
+         Four colours are used here. Yellow is used for shared memory
+         (memory more than one program is using). Grey is used for
+         buffer use (memory containing data not yet written to disk).
+         The greenish-yellow is used for other memory use. Green
+         represents unused memory.
+-->
+         ここでは四色が利用されます。黄色は共有メモリ(複数のプログラムが利用しているメモリ)を示します。グレーはバッファ(ディスクにまだ記録していないデータを格納しているメモリ)として使用されていることを示します。黄緑色はこれら以外のメモリ使用を示します。緑は使用されていないメモリを示します。
+       </para>
+      </listitem>
+     </varlistentry>
+     <varlistentry>
+      <term>Swap</term>
+      <listitem>
+       <para>
+<!--
+         Two colours are used here. Red is used for swap space in use.
+         Green is for unused swap. Swap is a section of the hard-drive
+         where the kernel puts parts of programs which are not currently
+         being used so that it can retrieve them easily when it needs to.
+-->
+         ここでは二色が利用されます。赤は使用されているスワップ領域を示します。緑は未使用のスワップ領域を示します。カーネルは、現在使用されていないプログラムの一部をスワップ領域に移動させ、必要になったとき簡単に取り出せるようにしています。
+       </para>
+      </listitem>
+     </varlistentry>
+    </variablelist>
+   </sect2>
+<!--  When there are Right-Click Pop-Up Menu Items uncomment this section.
+   <sect2 id="cpumemusage-right-click">
+    <title>Right-Click Pop-Up Menu Items</title>
+    <para> 
+      There are no extra menu items in the applet. 
+    </para>
+   </sect2>
+-->  
+   <sect2 id="cpumemusage-bugs">
+<!--
+    <title> Known Bugs and Limitations</title>
+-->
+    <title>既知のバグと制限</title>
+    <para>
+<!--
+      There are no known bugs for this applet.
+-->
+      このアプレットには既知のバグはありません。
+    </para>
+   </sect2>
+
+   <sect2 id="cpumemusage-authors">
+<!--
+    <title>Authors</title>
+-->
+    <title>作者</title>
+    <para>
+<!--
+      This applet was writen by Radek Doulik (<email>rodo@ucw.cz</email>).
+      Please report problems with it to the
+      <ulink type="http" url="http://bugs.gnome.org">GNOME bug
+      tracking system</ulink>. You can do this by following the
+      guidelines on that site or by using <application>bug-buddy</application>
+      from the command-line. For the package, put gnome-applets.
+-->
+      このアプレットはRadek Doulik (<email>rodo@ucw.cz</email>)によって書かれました。バグレポートは<ulink url="http://bugs.gnome.org" type="http">GNOMEバグ追跡システム</ulink>へお願いします。このサイトにあるガイドラインに従って、もしくは<command>bug-buddy</command>)をコマンドラインから利用して下さい。このパッケージを利用するために、gnome-appletsと入力します。
+    </para>
+    <para>
+<!--
+      This guide was written by Telsa Gwynne 
+      (<email>telsa@linuxchix.org</email>) and Eric Baudais 
+      (<email>baudais@okstate.edu</email>) and is almost entirely based on 
+      the earlier documentation from the GNOME 1.0.53 User's Guide by David 
+      Mason (<email>dcm@redhat.com</email>) and David Wheeler. Please
+      report problems with or suggestions for it to the GNOME Documentation
+      Project (<email>docs@gnome.org</email>). You can also
+      submit comments online by using the <ulink type="http"
+      url="http://www.gnome.org/gdp/doctable/">GNOME Documentation Status
+      Table</ulink>.
+-->
+      このマニュアルはTelsa Gywnne (<email>telsa@linuxchix.org</email>)とEric Baudais (<email>baudais@okstate.edu</email>)によって書かれました。このマニュアルに関するコメントや提案は<ulink type="http" url="http://developer.gnome.org/projects/gdp/">GNOMEドキュメンテーションプロジェクト</ulink>へ<email>docs@gnome.org</email>宛にお寄せください。また、<ulink type="http" url="http://www.gnome.org/gdp/doctable/">GNOMEドキュメンテーションステータステーブル</ulink>を利用してあなたのコメントをオンラインで加えることもできます。
+    </para>
+
+   <para>
+     この日本語翻訳は鎌ヶ迫正俊(<email>emerald@gnome.gr.jp</email>)によるものです。この翻訳に関するコメントや提案はすべて<email>emerald@gnome.gr.jp</email>へお寄せください。
+   </para>
+
+  </sect2>
+  
+  <sect2 id="license">
+<!--
+   <title>License</title>
+-->
+   <title>ライセンス</title>
+   <para>
+<!--
+    This program is free software; you can redistribute it and/or
+    modify it under the terms of the <citetitle>GNU General Public
+    License</citetitle> as published by the Free Software Foundation;
+    either version 2 of the License, or (at your option) any later
+    version.
+-->
+    このプログラムはフリーソフトウェアです。フリーソフトウェア財団発行の<citetitle>GNU 一般公有使用許諾契約書</citetitle>第二版あるいは(あなたの選択で)後の版の下おいて再配布や改変することができます。
+   </para>
+   <para>
+<!--
+    This program is distributed in the hope that it will be useful, but
+    WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    <citetitle>GNU General Public License</citetitle> for more details.
+-->
+    このプログラムは有用であることを期待して配布していますが、無保証です。商業目的や特定の目的に適合した場合の暗黙の保証すら含まれておりません。詳細は<citetitle>GNU 一般公有使用許諾契約書</citetitle>をご覧ください。
+   </para>
+   <para>
+<!--
+    A copy of the <citetitle>GNU General Public License</citetitle> is
+    included as an appendix to the <citetitle>GNOME Users
+    Guide</citetitle>.  You may also obtain a copy of the
+    <citetitle>GNU General Public License</citetitle> from the Free
+    Software Foundation by visiting <ulink type="http"
+    url="http://www.fsf.org">their Web site</ulink> or by writing to
+-->
+    <citetitle>GNU 一般公有使用許諾契約書</citetitle>の複写は<citetitle>GNOMEユーザーズガイド</citetitle>の付録として収録されています。<citetitle>GNU 一般公有使用許諾契約書</citetitle>の複写はフリーソフトウェア財団から、彼らの<ulink type="http" url="http://www.fsf.org">ウェブサイト</ulink>を訪れることにより、また、以下の住所に手紙を書くことによっても入手することも可能です。
+    <address>
+     Free Software Foundation, Inc.
+     <street>59 Temple Place</street> - Suite 330
+     <city>Boston</city>, <state>MA</state> <postcode>02111-1307</postcode>
+     <country>USA</country>
+    </address>
+   </para>
+  </sect2>
+</sect1>
+
+
+
+
+
+
+
+
+
+
