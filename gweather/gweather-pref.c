@@ -217,6 +217,35 @@ response_cb (GtkDialog *dialog, gint id, gpointer data)
 
 }
 
+static GtkWidget *
+create_hig_category (GtkWidget *main_box, gchar *title)
+{
+	GtkWidget *vbox, *vbox2, *hbox;
+	GtkWidget *label;
+	gchar *tmp;
+	
+	vbox = gtk_vbox_new (FALSE, 6);
+	gtk_box_pack_start (GTK_BOX (main_box), vbox, FALSE, FALSE, 0);
+
+	tmp = g_strdup_printf ("<b>%s</b>", title);
+	label = gtk_label_new (NULL);
+	gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+	gtk_label_set_markup (GTK_LABEL (label), tmp);
+	g_free (tmp);
+	gtk_box_pack_start (GTK_BOX (vbox), label, TRUE, FALSE, 0);
+
+	hbox = gtk_hbox_new (FALSE, 0);
+	gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, FALSE, 0);
+
+	label = gtk_label_new ("    ");
+	gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
+
+	vbox2 = gtk_vbox_new (FALSE, 6);
+	gtk_box_pack_start (GTK_BOX (hbox), vbox2, TRUE, TRUE, 0);
+
+	return vbox2;
+}
+
 static void gweather_pref_create (GWeatherApplet *gw_applet)
 {
     GtkWidget *pref_vbox;
@@ -231,7 +260,6 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     GtkWidget *vbox, *vbox2, *vbox3;
     GtkWidget *spin, *label;
     GtkWidget *scrolled, *check;
-    GtkSizeGroup *size;
     gchar *tmp;
     
     gw_applet->pref = gtk_dialog_new_with_buttons (_("Weather Preferences"), NULL,
@@ -240,6 +268,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
 				      		   GTK_STOCK_HELP, GTK_RESPONSE_HELP,
 				      		   NULL);
     gtk_dialog_set_default_response (GTK_DIALOG (gw_applet->pref), GTK_RESPONSE_CLOSE);
+    gtk_dialog_set_has_separator (GTK_DIALOG (gw_applet->pref), FALSE);
     gtk_window_set_default_size(GTK_WINDOW (gw_applet->pref), 400,400);
     gtk_window_set_policy (GTK_WINDOW (gw_applet->pref), TRUE, TRUE, FALSE);
     gtk_window_set_screen (GTK_WINDOW (gw_applet->pref),
@@ -251,9 +280,9 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
 
     pref_notebook = gtk_notebook_new ();
     gtk_widget_show (pref_notebook);
+    gtk_container_set_border_width (GTK_CONTAINER (pref_notebook), 12);
     gtk_box_pack_start (GTK_BOX (pref_vbox), pref_notebook, TRUE, TRUE, 0);
 
-    size = gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
 
    
   /*
@@ -266,36 +295,20 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
 							 pref_basic_note_lbl);
     gtk_container_set_border_width (GTK_CONTAINER (vbox), 12);
 
-    frame = gtk_frame_new (NULL);
-    gtk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_NONE);
-    gtk_box_pack_start (GTK_BOX (vbox), frame, FALSE, FALSE, 0);	
-    label = gtk_label_new (NULL);
-    tmp = g_strdup_printf ("<b>%s</b>", _("Update"));
-    gtk_label_set_markup (GTK_LABEL (label), tmp);
-    g_free (tmp);
-    gtk_frame_set_label_widget (GTK_FRAME (frame), label);
-
-    vbox2 = gtk_vbox_new (FALSE, 6);
-    gtk_container_add (GTK_CONTAINER (frame), vbox2);
-    gtk_container_set_border_width (GTK_CONTAINER (vbox2), 12);
-
-    hbox = gtk_hbox_new (FALSE, 6);
+    vbox2 = create_hig_category (vbox, _("Update"));
+    hbox = gtk_hbox_new (FALSE, 12);
     gtk_box_pack_start (GTK_BOX (vbox2), hbox, FALSE, FALSE, 0);
 
-    gw_applet->pref_basic_update_btn = gtk_check_button_new_with_mnemonic (_("_Automatically update every"));
+    gw_applet->pref_basic_update_btn = gtk_check_button_new_with_mnemonic (_("_Automatically update every:"));
     gtk_widget_show (gw_applet->pref_basic_update_btn);
-    gtk_box_pack_start (GTK_BOX (hbox), gw_applet->pref_basic_update_btn, TRUE, TRUE, 0);
+    gtk_box_pack_start (GTK_BOX (hbox), gw_applet->pref_basic_update_btn, FALSE, FALSE, 0);
     g_signal_connect (G_OBJECT (gw_applet->pref_basic_update_btn), "toggled",
     		      G_CALLBACK (auto_update_toggled), gw_applet);
-
-    hbox2 = gtk_hbox_new (FALSE, 6);
-    gtk_box_pack_end (GTK_BOX (hbox), hbox2, FALSE, FALSE, 0);
-    gtk_size_group_add_widget (size, hbox2);
     
     pref_basic_update_spin_adj = gtk_adjustment_new (30, 30, 3600, 5, 25, 1);
     gw_applet->pref_basic_update_spin = gtk_spin_button_new (GTK_ADJUSTMENT (pref_basic_update_spin_adj), 1, 0);
     gtk_widget_show (gw_applet->pref_basic_update_spin);
-    gtk_box_pack_start (GTK_BOX (hbox2), gw_applet->pref_basic_update_spin,
+    gtk_box_pack_start (GTK_BOX (hbox), gw_applet->pref_basic_update_spin,
 					  FALSE, FALSE, 0);
     gtk_spin_button_set_numeric (GTK_SPIN_BUTTON (gw_applet->pref_basic_update_spin), TRUE);
     gtk_spin_button_set_update_policy (GTK_SPIN_BUTTON (gw_applet->pref_basic_update_spin), GTK_UPDATE_IF_VALID);
@@ -309,25 +322,12 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(gw_applet->pref_basic_update_btn), 
     				 gw_applet->gweather_pref.update_enabled);
 
-    pref_basic_update_sec_lbl = gtk_label_new (_("minute(s)"));
+    pref_basic_update_sec_lbl = gtk_label_new (_("minutes"));
     gtk_widget_show (pref_basic_update_sec_lbl);
-    gtk_box_pack_start (GTK_BOX (hbox2), pref_basic_update_sec_lbl, FALSE, FALSE, 0);
+    gtk_box_pack_start (GTK_BOX (hbox), pref_basic_update_sec_lbl, FALSE, FALSE, 0);
 
-    frame = gtk_frame_new (NULL);
-    gtk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_NONE);
-    gtk_box_pack_start (GTK_BOX (vbox), frame, FALSE, FALSE, 0);	
-    label = gtk_label_new (NULL);
-    tmp = g_strdup_printf ("<b>%s</b>", _("Display"));
-    gtk_label_set_markup (GTK_LABEL (label), tmp);
-    g_free (tmp);
-    gtk_frame_set_label_widget (GTK_FRAME (frame), label);
+    vbox2 = create_hig_category (vbox, _("Display"));
 
-    vbox2 = gtk_vbox_new (FALSE, 6);
-    gtk_container_add (GTK_CONTAINER (frame), vbox2);
-    gtk_container_set_border_width (GTK_CONTAINER (vbox2), 12);
-
-    hbox = gtk_hbox_new (FALSE, 6);
-    gtk_box_pack_start (GTK_BOX (vbox2), hbox, FALSE, FALSE, 0);
     gw_applet->pref_basic_metric_btn = gtk_check_button_new_with_mnemonic (_("Use _metric system units"));
     gtk_box_pack_start (GTK_BOX (vbox2), gw_applet->pref_basic_metric_btn, FALSE, FALSE, 0);
     gtk_widget_show (gw_applet->pref_basic_metric_btn);
@@ -336,9 +336,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(gw_applet->pref_basic_metric_btn), 
     				 gw_applet->gweather_pref.use_metric);
 
-    hbox = gtk_hbox_new (FALSE, 6);
-    gtk_box_pack_start (GTK_BOX (vbox2), hbox, FALSE, FALSE, 0);
-    check = gtk_check_button_new_with_mnemonic (_("Display daily average temperatures"));
+    check = gtk_check_button_new_with_mnemonic (_("_Display daily average temperatures"));
     gtk_box_pack_start (GTK_BOX (vbox2), check, FALSE, FALSE, 0);
     gtk_widget_show (gw_applet->pref_basic_metric_btn);
     g_signal_connect (G_OBJECT (check), "toggled",
@@ -346,10 +344,10 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check), 
     				 gw_applet->gweather_pref.show_labels);
     
-    hbox = gtk_hbox_new (FALSE, 6);
+    hbox = gtk_hbox_new (FALSE, 12);
     gtk_box_pack_start (GTK_BOX (vbox2), hbox, FALSE, FALSE, 0);
 
-    label = gtk_label_new_with_mnemonic (_("Number of _forecast days to display:"));
+    label = gtk_label_new_with_mnemonic (_("Number of _forecasts to display:"));
     gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
     
     spin = gtk_spin_button_new_with_range (0, 5, 1);
@@ -357,8 +355,10 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     g_signal_connect (G_OBJECT (spin), "value_changed",
     		      G_CALLBACK (num_forecasts_changed), gw_applet);
     gtk_label_set_mnemonic_widget (GTK_LABEL (label), spin);
-    gtk_box_pack_end	(GTK_BOX (hbox), spin, FALSE, FALSE, 0);
-    gtk_size_group_add_widget (size, spin);
+    gtk_box_pack_start (GTK_BOX (hbox), spin, FALSE, FALSE, 0);
+    
+    label = gtk_label_new_with_mnemonic (_("days"));
+    gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, TRUE, 0);
 
   /*
    * Location page.
@@ -382,7 +382,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     gtk_container_add (GTK_CONTAINER (frame), vbox2);
     gtk_container_set_border_width (GTK_CONTAINER (vbox2), 12);
 
-    hbox = gtk_hbox_new (FALSE, 6);
+    hbox = gtk_hbox_new (FALSE, 12);
     gtk_box_pack_start (GTK_BOX (vbox2), hbox, FALSE, FALSE, 0);
     label = gtk_label_new (_("Current city:"));
     gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
