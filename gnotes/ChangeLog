@@ -3,6 +3,16 @@
 	* Makefile.am (gnotes_applet_LDFLAGS): don't explicitly
 	link against -lpanel_applet
 
+1999-07-30  James LewisMoss  <dres@ioa.com>
+        * src/gnote.c (gnote_load_xml_v10): Fix all the places where we
+        can print, scan and otherwise use null pointers (hopefully).
+        (make_gnote_filename_string): Add and cleanup
+        (gnote_destroy): Make this do all the required things.
+        remove resize, motion and change callbacks.
+        (gnote_motion_cb): speed up function.
+        (gnote_new): set text text to empty and text size to 0.
+        * src/gnotes_applet.c (main): Doh.  Put the chdir back.
+
 1999-07-28  Jacob Berkman  <jberkman@andrew.cmu.edu>
 
 	* *.c: #include <config.h>
