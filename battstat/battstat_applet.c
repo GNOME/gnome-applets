@@ -1119,6 +1119,7 @@ change_orient (GtkWidget *w, PanelOrientType o, gpointer data)
 			    NULL);
     }
   }
+
   return;
 }
 
@@ -1394,7 +1395,7 @@ create_layout(int argc, char *argv[], gpointer data)
 
   battstat->framestatus = gtk_frame_new(NULL);
   gtk_widget_set_usize( battstat->framestatus, 20, 24);
-  gtk_frame_set_shadow_type ( GTK_FRAME (battstat->framestatus), GTK_SHADOW_ETCHED_IN);
+  gtk_frame_set_shadow_type ( GTK_FRAME (battstat->framestatus), GTK_SHADOW_NONE);
   gtk_widget_show(battstat->framestatus);
   gtk_box_pack_start( GTK_BOX(battstat->hbox1), battstat->framestatus, FALSE, TRUE, 0);
  
@@ -1408,7 +1409,7 @@ create_layout(int argc, char *argv[], gpointer data)
 
   battstat->framebattery = gtk_frame_new(NULL);
   gtk_widget_set_usize( battstat->framebattery, -1, 24);
-  gtk_frame_set_shadow_type ( GTK_FRAME (battstat->framebattery), GTK_SHADOW_ETCHED_IN);
+  gtk_frame_set_shadow_type ( GTK_FRAME (battstat->framebattery), GTK_SHADOW_NONE);
   gtk_widget_show(battstat->framebattery);
   gtk_box_pack_start(GTK_BOX(battstat->hbox1), battstat->framebattery, FALSE, TRUE, 0);
 
@@ -1452,7 +1453,7 @@ create_layout(int argc, char *argv[], gpointer data)
 
   battstat->frameybattery = gtk_frame_new(NULL);
   gtk_widget_set_usize( battstat->frameybattery, 24, 46);
-  gtk_frame_set_shadow_type ( GTK_FRAME (battstat->frameybattery), GTK_SHADOW_ETCHED_IN);
+  gtk_frame_set_shadow_type ( GTK_FRAME (battstat->frameybattery), GTK_SHADOW_NONE);
   gtk_box_pack_start(GTK_BOX(battstat->hbox1), battstat->frameybattery, FALSE, TRUE, 0);
   battstat->eventybattery = gtk_event_box_new();
   gtk_widget_show (battstat->eventybattery);
