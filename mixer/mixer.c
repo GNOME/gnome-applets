@@ -906,7 +906,7 @@ mixer_applet_create (PanelApplet *applet)
 	/* Try to find some mixers - sdtaudiocontrol is on Solaris and is needed
 	** because gnome-volume-meter doesn't work */
 	if (run_mixer_cmd == NULL) 
-		run_mixer_cmd = g_find_program_in_path ("gnome-volume-meter");
+		run_mixer_cmd = g_find_program_in_path ("gnome-volume-control");
 	if (run_mixer_cmd == NULL) 
 		run_mixer_cmd = g_find_program_in_path ("gmix");
 	if (run_mixer_cmd == NULL) 
