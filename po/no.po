@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 1.4.1\n"
-"POT-Creation-Date: 2002-03-12 18:50+0100\n"
-"PO-Revision-Date: 2002-03-12 18:51+0100\n"
+"POT-Creation-Date: 2002-03-14 22:11+0100\n"
+"PO-Revision-Date: 2002-03-14 22:14+0100\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian <no@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -433,7 +433,11 @@ msgstr ""
 "Gnome Panel applet for å velge rare tegn som ikke er på mitt tastatur. "
 "Utgitt under GNU General Puclic License."
 
-#: charpick/GNOME_CharpickerApplet.server.in.h:1
+#: charpick/charpick.c:442
+msgid "Insert special characters"
+msgstr "Sett inn spesielle tegn"
+
+#: charpick/GNOME_CharpickerApplet.server.in.h:1 charpick/charpick.c:443
 msgid "Character Palette"
 msgstr "Tegnpalett"
 
@@ -445,11 +449,19 @@ msgstr "Factory for tegnvelger"
 msgid "Insert characters"
 msgstr "Sett inn tegn"
 
-#: charpick/properties.c:52
+#: charpick/properties.c:79
 msgid "Default character list:"
 msgstr "Standard tegnliste:"
 
-#: charpick/properties.c:60
+#: charpick/properties.c:87
+msgid "Default list of characters"
+msgstr "Forvalgt tegnliste"
+
+#: charpick/properties.c:88
+msgid "Set the default character list here"
+msgstr "Sett forvalgt tegnliste her"
+
+#: charpick/properties.c:90
 msgid ""
 "These characters will appear when the panel is started. To return to this "
 "list, hit <space> while the applet has focus."
@@ -457,39 +469,39 @@ msgstr ""
 "Disse tegnene til komme til syne når panelet startes. For å returnere til "
 "denne listen, trykk <mellomrom> mens appleten har fokus."
 
-#: charpick/properties.c:113
+#: charpick/properties.c:143
 msgid "Character Palette Properties"
 msgstr "Egenskaper for tegnpalett"
 
-#: drivemount/drivemount.c:418
+#: drivemount/drivemount.c:419
 msgid "Drive Mount Applet"
 msgstr "Diskmonteringsapplet"
 
-#: drivemount/drivemount.c:419
+#: drivemount/drivemount.c:420
 msgid "(C) 1999-2001 The GNOME Hackers\n"
 msgstr "© 1999-2001 GNOME-hackerene\n"
 
-#: drivemount/drivemount.c:421
+#: drivemount/drivemount.c:422
 msgid "Applet for mounting and unmounting block volumes."
 msgstr "Applet for montering og avmontering av blokkvolumer."
 
-#: drivemount/drivemount.c:611
+#: drivemount/drivemount.c:612
 msgid " mounted"
 msgstr " montert"
 
-#: drivemount/drivemount.c:613
+#: drivemount/drivemount.c:614
 msgid " not mounted"
 msgstr " ikke montert"
 
-#: drivemount/drivemount.c:724
+#: drivemount/drivemount.c:725
 msgid "Drive Mount Applet Warning"
 msgstr "Advarsel fra diskmonteringsapplet"
 
-#: drivemount/drivemount.c:732
+#: drivemount/drivemount.c:733
 msgid "\" reported:\n"
 msgstr "\" rapportert:\n"
 
-#: drivemount/drivemount.c:734
+#: drivemount/drivemount.c:735
 msgid ""
 "Drivemount command failed.\n"
 "\""
@@ -517,75 +529,75 @@ msgstr "Monter lokale disker og enheter"
 msgid "Browse..."
 msgstr "Se på..."
 
-#: drivemount/properties.c:240
+#: drivemount/properties.c:241
 msgid "Disk Mounter Properties"
 msgstr "Egenskaper for diskmontering"
 
-#: drivemount/properties.c:259
+#: drivemount/properties.c:260
 msgid "Mount point:"
 msgstr "Monteringspunkt:"
 
-#: drivemount/properties.c:276
+#: drivemount/properties.c:277
 msgid "Update interval (seconds):"
 msgstr "Oppdateringsintervall (sekunder):"
 
-#: drivemount/properties.c:291
+#: drivemount/properties.c:292
 msgid "Icon :"
 msgstr "Ikon :"
 
-#: drivemount/properties.c:308
+#: drivemount/properties.c:309
 msgid "Floppy"
 msgstr "Diskett"
 
-#: drivemount/properties.c:311
+#: drivemount/properties.c:312
 msgid "Cdrom"
 msgstr "Cdrom"
 
-#: drivemount/properties.c:314
+#: drivemount/properties.c:315
 msgid "Cd Recorder"
 msgstr "CD-R"
 
-#: drivemount/properties.c:317
+#: drivemount/properties.c:318
 msgid "Zip Drive"
 msgstr "Zip-disk"
 
-#: drivemount/properties.c:320
+#: drivemount/properties.c:321
 msgid "Hard Disk"
 msgstr "Harddisk"
 
-#: drivemount/properties.c:323
+#: drivemount/properties.c:324
 msgid "Jaz Drive"
 msgstr "Jaz-disk"
 
-#: drivemount/properties.c:326
+#: drivemount/properties.c:327
 msgid "Custom"
 msgstr "Egendefinert"
 
-#: drivemount/properties.c:339
+#: drivemount/properties.c:340
 msgid "Select icon for mounted"
 msgstr "Velg ikon for montert"
 
-#: drivemount/properties.c:346
+#: drivemount/properties.c:347
 msgid "Custom icon for mounted:"
 msgstr "Egendefinert ikon for montert:"
 
-#: drivemount/properties.c:354
+#: drivemount/properties.c:355
 msgid "Select icon for unmounted"
 msgstr "Velg ikon for ikke montert"
 
-#: drivemount/properties.c:361
+#: drivemount/properties.c:362
 msgid "Custom icon for not mounted:"
 msgstr "Egendefinert ikon for ikke montert:"
 
-#: drivemount/properties.c:370
+#: drivemount/properties.c:371
 msgid "Scale size to panel"
 msgstr "Skaler til panelets størrelse"
 
-#: drivemount/properties.c:377
+#: drivemount/properties.c:378
 msgid "Eject on unmount"
 msgstr "Utløs ved avmontering"
 
-#: drivemount/properties.c:384
+#: drivemount/properties.c:385
 msgid "Use automount friendly status test"
 msgstr "Bruk automount-vennlig statustest"
 
@@ -629,44 +641,50 @@ msgstr "Navn på tema"
 msgid "Properties"
 msgstr "Egenskaper"
 
-#: gkb-new/gkb.c:402
+#: gkb-new/gkb.c:114
+msgid ""
+"Press the hotkey to switch between layouts. The hotkey can be set through "
+"Properties dialog"
+msgstr "Trykk hurtigtasten for å bytte utseende. Denne hurtigtasten kan settes i egenskaper-dialogen"
+
+#: gkb-new/gkb.c:404
 #, c-format
 msgid "name_%d"
 msgstr "navn_%d"
 
-#: gkb-new/gkb.c:406
+#: gkb-new/gkb.c:408
 #, c-format
 msgid "label_%d"
 msgstr "etikett_%d"
 
-#: gkb-new/gkb.c:410
+#: gkb-new/gkb.c:412
 #, c-format
 msgid "country_%d"
 msgstr "land_%d"
 
-#: gkb-new/gkb.c:414
+#: gkb-new/gkb.c:416
 #, c-format
 msgid "lang_%d"
 msgstr "språk_%d"
 
-#: gkb-new/gkb.c:422
+#: gkb-new/gkb.c:424
 #, c-format
 msgid "command_%d"
 msgstr "kommando_%d"
 
-#: gkb-new/gkb.c:525 gkb-new/gkb.c:532
+#: gkb-new/gkb.c:527 gkb-new/gkb.c:534
 msgid "GKB"
 msgstr "GKB"
 
-#: gkb-new/gkb.c:574
+#: gkb-new/gkb.c:576
 msgid "The GNOME KeyBoard Switcher Applet"
 msgstr "GNOME tastatur-applet"
 
-#: gkb-new/gkb.c:576
+#: gkb-new/gkb.c:578
 msgid "(C) 1998-2000 Free Software Foundation"
 msgstr "© 1998-2000 Free Software Foundation"
 
-#: gkb-new/gkb.c:577
+#: gkb-new/gkb.c:579
 msgid ""
 "This applet switches between keyboard maps using setxkbmap, or xmodmap.\n"
 "Mail me your flag and keyboard layout if you want support for your locale "
@@ -684,7 +702,7 @@ msgstr ""
 "<emese@gnome.hu> for hennes solidaritet, takk også til KevinV.\n"
 "Shooby Ban <shooby@gnome.hu>"
 
-#: gkb-new/gkb.c:594
+#: gkb-new/gkb.c:596
 msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
 msgstr "GKB hjemmeside (http://projects.gnome.hu/gkb)"
 
@@ -720,387 +738,390 @@ msgstr "Tastaturkart (velg og trykk legg til)"
 msgid "Select layout"
 msgstr "Velg plassering"
 
-#: gkb-new/prop.c:120 gkb-new/prop.c:188
+#: gkb-new/prop.c:121 gkb-new/prop.c:189
 msgid "Normal"
 msgstr "Normal"
 
-#: gkb-new/prop.c:121 gkb-new/prop.c:192
+#: gkb-new/prop.c:122 gkb-new/prop.c:193
 msgid "Big"
 msgstr "Stor"
 
-#: gkb-new/prop.c:139 gkb-new/util.c:41 gkb-new/util.c:48 gkb-new/util.c:74
+#: gkb-new/prop.c:140 gkb-new/util.c:41 gkb-new/util.c:48 gkb-new/util.c:74
 msgid "Flag"
 msgstr "Flagg"
 
-#: gkb-new/prop-map.c:585 gkb-new/prop.c:140 gkb-new/util.c:38
-#: gkb-new/util.c:71
+#: gkb-new/prop.c:141 gkb-new/util.c:38 gkb-new/util.c:71
 msgid "Label"
 msgstr "Etikett"
 
-#: gkb-new/prop.c:141 gkb-new/util.c:44 gkb-new/util.c:77
+#: gkb-new/prop.c:142 gkb-new/util.c:44 gkb-new/util.c:77
 msgid "Flag and Label"
 msgstr "Flagg og etikett"
 
-#: gkb-new/prop.c:273 modemlights/properties.c:371
+#: gkb-new/prop.c:278 modemlights/properties.c:371
 msgid "Display"
 msgstr "Vis"
 
-#. Labels
-#: gkb-new/prop.c:293
-msgid "Appearance "
-msgstr "Utseende "
+#. Labels and option Menus
+#: gkb-new/prop.c:298
+msgid "_Appearance "
+msgstr "_Utseende "
 
-#: gkb-new/prop.c:294
-msgid "Applet size "
-msgstr "Applet-størrelse "
+#: gkb-new/prop.c:305
+msgid "Applet _size "
+msgstr "_Størrelse på applet "
 
-#: gkb-new/prop.c:328
+#: gkb-new/prop.c:331
 msgid "Hotkey for switching between layouts"
 msgstr "Hurtigtast for bytte mellom plasseringer"
 
-#: gkb-new/prop.c:340
+#: gkb-new/prop.c:343
 msgid "Grab hotkey"
 msgstr "Hent hurtigtast"
 
 #. Create property box
-#: gkb-new/prop.c:392
+#: gkb-new/prop.c:405
 msgid "GKB Properties"
 msgstr "Egenskaper for GKB"
 
-#: gkb-new/prop.c:406
+#: gkb-new/prop.c:419
 msgid "_Keymaps"
 msgstr "Tastatur_kart"
 
-#: gkb-new/prop.c:418
+#: gkb-new/prop.c:431
 msgid "_Options"
 msgstr "_Alternativer"
 
-#: gkb-new/prop-list.c:383
-msgid "Add"
-msgstr "Legg til"
+#: gkb-new/prop-list.c:389 gtik/gtik.c:1036
+msgid "_Add"
+msgstr "_Legg til"
 
-#: gkb-new/prop-list.c:384
-msgid "Edit"
-msgstr "Rediger"
+#: gkb-new/prop-list.c:390
+msgid "_Edit"
+msgstr "R_ediger"
 
-#: gkb-new/prop-list.c:385
-msgid "Up"
-msgstr "Opp"
+#: gkb-new/prop-list.c:391
+msgid "_Up"
+msgstr "_Opp"
 
-#: gkb-new/prop-list.c:386
-msgid "Down"
-msgstr "Ned"
+#: gkb-new/prop-list.c:392
+msgid "Dow_n"
+msgstr "_Ned"
 
-#: gkb-new/prop-list.c:387
-msgid "Delete"
-msgstr "Slett"
+#: gkb-new/prop-list.c:393
+msgid "_Delete"
+msgstr "_Slett"
 
-#: gkb-new/prop-map.c:190
+#: gkb-new/prop-map.c:193
 msgid "Armenia"
 msgstr "Armenia"
 
-#: gkb-new/prop-map.c:191
+#: gkb-new/prop-map.c:194
 msgid "Australia"
 msgstr "Australia"
 
-#: gkb-new/prop-map.c:192
+#: gkb-new/prop-map.c:195
 msgid "Austria"
 msgstr "Østerrike"
 
-#: gkb-new/prop-map.c:193
+#: gkb-new/prop-map.c:196
 msgid "Belgium"
 msgstr "Belgia"
 
-#: gkb-new/prop-map.c:194
+#: gkb-new/prop-map.c:197
 msgid "Brazil"
 msgstr "Brasil"
 
-#: gkb-new/prop-map.c:195
+#: gkb-new/prop-map.c:198
 msgid "Bulgaria"
 msgstr "Bulgaria"
 
-#: gkb-new/prop-map.c:196
+#: gkb-new/prop-map.c:199
 msgid "Canada"
 msgstr "Kanada"
 
-#: gkb-new/prop-map.c:197
+#: gkb-new/prop-map.c:200
 msgid "Caribic"
 msgstr "Karibien"
 
-#: gkb-new/prop-map.c:198
+#: gkb-new/prop-map.c:201
 msgid "France"
 msgstr "Frankrike"
 
-#: gkb-new/prop-map.c:199
+#: gkb-new/prop-map.c:202
 msgid "Georgia"
 msgstr "Georgia"
 
-#: gkb-new/prop-map.c:200
+#: gkb-new/prop-map.c:203
 msgid "Germany"
 msgstr "Tyskland"
 
-#: gkb-new/prop-map.c:201
+#: gkb-new/prop-map.c:204
 msgid "Great Britain"
 msgstr "Storbritania"
 
-#: gkb-new/prop-map.c:202
+#: gkb-new/prop-map.c:205
 msgid "Hungary"
 msgstr "Ungarn"
 
-#: gkb-new/prop-map.c:203
+#: gkb-new/prop-map.c:206
 msgid "Jamaica"
 msgstr "Jamaica"
 
-#: gkb-new/prop-map.c:204
+#: gkb-new/prop-map.c:207
 msgid "New Zealand"
 msgstr "New Zealand"
 
-#: gkb-new/prop-map.c:205
+#: gkb-new/prop-map.c:208
 msgid "Norway"
 msgstr "Norge"
 
-#: gkb-new/prop-map.c:206
+#: gkb-new/prop-map.c:209
 msgid "Poland"
 msgstr "Polen"
 
-#: gkb-new/prop-map.c:207
+#: gkb-new/prop-map.c:210
 msgid "Portugal"
 msgstr "Portugal"
 
-#: gkb-new/prop-map.c:208
+#: gkb-new/prop-map.c:211
 msgid "Russia"
 msgstr "Russland"
 
-#: gkb-new/prop-map.c:209
+#: gkb-new/prop-map.c:212
 msgid "Slovak Republic"
 msgstr "Slovakiske republikk"
 
-#: gkb-new/prop-map.c:210
+#: gkb-new/prop-map.c:213
 msgid "Slovenia"
 msgstr "Slovenia"
 
-#: gkb-new/prop-map.c:211
+#: gkb-new/prop-map.c:214
 msgid "South Africa"
 msgstr "Sør Afrika"
 
-#: gkb-new/prop-map.c:212
+#: gkb-new/prop-map.c:215
 msgid "Spain"
 msgstr "Spania"
 
-#: gkb-new/prop-map.c:213
+#: gkb-new/prop-map.c:216
 msgid "Sweden"
 msgstr "Sverige"
 
-#: gkb-new/prop-map.c:214
+#: gkb-new/prop-map.c:217
 msgid "Switzerland"
 msgstr "Sveits"
 
-#: gkb-new/prop-map.c:215
+#: gkb-new/prop-map.c:218
 msgid "Thailand"
 msgstr "Thailand"
 
-#: gkb-new/prop-map.c:216
+#: gkb-new/prop-map.c:219
 msgid "Turkey"
 msgstr "Tyrkia"
 
-#: gkb-new/prop-map.c:217
+#: gkb-new/prop-map.c:220
 msgid "United Kingdom"
 msgstr "England"
 
-#: gkb-new/prop-map.c:218
+#: gkb-new/prop-map.c:221
 msgid "United States"
 msgstr "De forente stater"
 
-#: gkb-new/prop-map.c:219
+#: gkb-new/prop-map.c:222
 msgid "Yugoslavia"
 msgstr "Jugoslavia"
 
-#: gkb-new/prop-map.c:239
+#: gkb-new/prop-map.c:242
 msgid "Armenian"
 msgstr "Armensk"
 
-#: gkb-new/prop-map.c:240
+#: gkb-new/prop-map.c:243
 msgid "Basque"
 msgstr "Baskisk"
 
-#: gkb-new/prop-map.c:241
+#: gkb-new/prop-map.c:244
 msgid "Bulgarian"
 msgstr "Bulgarsk"
 
-#: gkb-new/prop-map.c:242
+#: gkb-new/prop-map.c:245
 msgid "Dutch"
 msgstr "Belgisk"
 
-#: gkb-new/prop-map.c:243
+#: gkb-new/prop-map.c:246
 msgid "English"
 msgstr "Engelsk"
 
-#: gkb-new/prop-map.c:244
+#: gkb-new/prop-map.c:247
 msgid "French"
 msgstr "Fransk"
 
-#: gkb-new/prop-map.c:245
+#: gkb-new/prop-map.c:248
 msgid "Georgian"
 msgstr "Georgisk"
 
-#: gkb-new/prop-map.c:246
+#: gkb-new/prop-map.c:249
 msgid "German"
 msgstr "Tysk"
 
-#: gkb-new/prop-map.c:247
+#: gkb-new/prop-map.c:250
 msgid "Hungarian"
 msgstr "Ungarsk"
 
-#: gkb-new/prop-map.c:248
+#: gkb-new/prop-map.c:251
 msgid "Norwegian"
 msgstr "Norsk"
 
-#: gkb-new/prop-map.c:249
+#: gkb-new/prop-map.c:252
 msgid "Polish"
 msgstr "Polsk"
 
-#: gkb-new/prop-map.c:250
+#: gkb-new/prop-map.c:253
 msgid "Portuguese"
 msgstr "Portugisisk"
 
-#: gkb-new/prop-map.c:251
+#: gkb-new/prop-map.c:254
 msgid "Russian"
 msgstr "Russisk"
 
-#: gkb-new/prop-map.c:252
+#: gkb-new/prop-map.c:255
 msgid "Slovak"
 msgstr "Slovakisk"
 
-#: gkb-new/prop-map.c:253
+#: gkb-new/prop-map.c:256
 msgid "Slovenian"
 msgstr "Slovensk"
 
-#: gkb-new/prop-map.c:254
+#: gkb-new/prop-map.c:257
 msgid "Swedish"
 msgstr "Svensk"
 
-#: gkb-new/prop-map.c:255
+#: gkb-new/prop-map.c:258
 msgid "Thai"
 msgstr "Thai"
 
-#: gkb-new/prop-map.c:256
+#: gkb-new/prop-map.c:259
 msgid "Turkish"
 msgstr "Tyrkisk"
 
-#: gkb-new/prop-map.c:257
+#: gkb-new/prop-map.c:260
 msgid "Wallon"
 msgstr "Wallon"
 
-#: gkb-new/prop-map.c:258
+#: gkb-new/prop-map.c:261
 msgid "Yugoslavian"
 msgstr "Serbisk"
 
-#: gkb-new/prop-map.c:276
+#: gkb-new/prop-map.c:279
 msgid "105"
 msgstr "105"
 
-#: gkb-new/prop-map.c:277
+#: gkb-new/prop-map.c:280
 msgid "101"
 msgstr "101"
 
-#: gkb-new/prop-map.c:278
+#: gkb-new/prop-map.c:281
 msgid "102"
 msgstr "102"
 
-#: gkb-new/prop-map.c:279
+#: gkb-new/prop-map.c:282
 msgid "450"
 msgstr "450"
 
-#: gkb-new/prop-map.c:280
+#: gkb-new/prop-map.c:283
 msgid "84"
 msgstr "84"
 
-#: gkb-new/prop-map.c:281
+#: gkb-new/prop-map.c:284
 msgid "mklinux"
 msgstr "mklinux"
 
-#: gkb-new/prop-map.c:282
+#: gkb-new/prop-map.c:285
 msgid "type5"
 msgstr "type5"
 
-#: gkb-new/prop-map.c:302
+#: gkb-new/prop-map.c:305
 msgid "iso-8859-1"
 msgstr "iso-8859-1"
 
-#: gkb-new/prop-map.c:303
+#: gkb-new/prop-map.c:306
 msgid "iso-8859-2"
 msgstr "iso-8859-2"
 
-#: gkb-new/prop-map.c:304
+#: gkb-new/prop-map.c:307
 msgid "iso-8859-9"
 msgstr "iso-8859-9"
 
-#: gkb-new/prop-map.c:305
+#: gkb-new/prop-map.c:308
 msgid "am-armscii8"
 msgstr "am-armscii8"
 
-#: gkb-new/prop-map.c:306
+#: gkb-new/prop-map.c:309
 msgid "be-latin1"
 msgstr "be-latin1"
 
-#: gkb-new/prop-map.c:307
+#: gkb-new/prop-map.c:310
 msgid "cp1251"
 msgstr "cp1251"
 
-#: gkb-new/prop-map.c:308
+#: gkb-new/prop-map.c:311
 msgid "georgian-academy"
 msgstr "georgian-academy"
 
-#: gkb-new/prop-map.c:309
+#: gkb-new/prop-map.c:312
 msgid "koi8-r"
 msgstr "koi8-r"
 
-#: gkb-new/prop-map.c:310
+#: gkb-new/prop-map.c:313
 msgid "tis620"
 msgstr "tis620"
 
-#: gkb-new/prop-map.c:328
+#: gkb-new/prop-map.c:331
 msgid "ix86"
 msgstr "ix86"
 
-#: gkb-new/prop-map.c:329
+#: gkb-new/prop-map.c:332
 msgid "sun"
 msgstr "sun"
 
-#: gkb-new/prop-map.c:330
+#: gkb-new/prop-map.c:333
 msgid "mac"
 msgstr "mac"
 
-#: gkb-new/prop-map.c:331
+#: gkb-new/prop-map.c:334
 msgid "sgi"
 msgstr "sgi"
 
-#: gkb-new/prop-map.c:332
+#: gkb-new/prop-map.c:335
 msgid "dec"
 msgstr "dec"
 
-#: gkb-new/prop-map.c:333
+#: gkb-new/prop-map.c:336
 msgid "ibm"
 msgstr "ibm"
 
-#: gkb-new/prop-map.c:556
+#: gkb-new/prop-map.c:573
 msgid "Edit keymap"
 msgstr "Rediger tastaturkart"
 
-#. Add the labels
-#: gkb-new/prop-map.c:584
-msgid "Name"
-msgstr "Navn"
+#. Add the labels  and entries/combos/icon_entry
+#: gkb-new/prop-map.c:601
+msgid "_Name"
+msgstr "_Navn"
 
-#: gkb-new/prop-map.c:586
-msgid "Language"
-msgstr "Språk"
+#: gkb-new/prop-map.c:605
+msgid "_Label"
+msgstr "_Etikett"
 
-#: gkb-new/prop-map.c:587
-msgid "Country"
-msgstr "Land"
+#: gkb-new/prop-map.c:609
+msgid "Lan_guage"
+msgstr "_Språk"
 
-#: gkb-new/prop-map.c:588
+#: gkb-new/prop-map.c:615
+msgid "Count_ry"
+msgstr "_Land"
+
+#: gkb-new/prop-map.c:622
 msgid ""
 "Flag\n"
 "Pixmap"
@@ -1108,23 +1129,23 @@ msgstr ""
 "Flagg\n"
 "Bilde"
 
-#: gkb-new/prop-map.c:590
-msgid "Architecture"
-msgstr "Arkitektur"
+#: gkb-new/prop-map.c:626
+msgid "Arc_hitecture"
+msgstr "Ar_kitektur"
 
-#: gkb-new/prop-map.c:591
-msgid "Type"
-msgstr "Type"
-
-#: gkb-new/prop-map.c:592
-msgid "Codepage"
-msgstr "Codepage"
-
-#: gkb-new/prop-map.c:593
-msgid "Command"
-msgstr "Kommando"
+#: gkb-new/prop-map.c:632
+msgid "_Type"
+msgstr "_Type"
 
 #: gkb-new/prop-map.c:638
+msgid "Code_page"
+msgstr "Code_page"
+
+#: gkb-new/prop-map.c:645
+msgid "Co_mmand"
+msgstr "Ko_mmando"
+
+#: gkb-new/prop-map.c:652
 msgid ""
 "Where command can be:\n"
 "* xmodmap /full/path/xmodmap.hu\n"
@@ -1184,10 +1205,6 @@ msgstr ""
 #: gtik/gtik.c:1026
 msgid "New Symbol:"
 msgstr "Nytt symbol:"
-
-#: gtik/gtik.c:1036
-msgid "_Add"
-msgstr "_Legg til"
 
 #: gtik/gtik.c:1047
 msgid "_Remove Selected"
@@ -1412,8 +1429,7 @@ msgstr ""
 "Advarsel: Ditt passord vil bli lagret som\n"
 "klartekst i en privat konfigurasjonsfil."
 
-#: gweather/gweather-pref.c:688
-#: modemlights/GNOME_ModemLightsApplet.server.in.h:2 multiload/main.c:181
+#: gweather/gweather-pref.c:688 multiload/main.c:181
 #: multiload/properties.c:381
 msgid "Network"
 msgstr "Nettverk"
@@ -2916,7 +2932,7 @@ msgstr "_Makroer"
 msgid "Adjust the sound volume"
 msgstr "Justering av lydvolum"
 
-#: mixer/GNOME_MixerApplet.server.in.h:3 mixer/mixer.c:714
+#: mixer/GNOME_MixerApplet.server.in.h:3 mixer/mixer.c:723
 msgid "Volume Control"
 msgstr "Volumkontroll"
 
@@ -2929,12 +2945,12 @@ msgid "Run Audio Mixer..."
 msgstr "Kjør lydmikser..."
 
 #. probably should die more gracefully
-#: mixer/mixer.c:167
+#: mixer/mixer.c:168
 #, c-format
 msgid "Couldn't open mixer device %s\n"
 msgstr "Klarte ikke å åpne mikser-enheten %s\n"
 
-#: mixer/mixer.c:181
+#: mixer/mixer.c:182
 msgid ""
 "warning: this version of gmix was compiled with a different version of\n"
 "soundcard.h.\n"
@@ -2942,29 +2958,33 @@ msgstr ""
 "advarsel: denne versjonen av gmix ble kompilert med en annen versjon av\n"
 "soundcard.h\n"
 
-#: mixer/mixer.c:192
+#: mixer/mixer.c:193
 #, c-format
 msgid "Querying available channels of mixer device %s failed\n"
 msgstr "Spørring etter tilgjengelige kanaler på mikserenhet %s feilet\n"
 
-#: mixer/mixer.c:199
+#: mixer/mixer.c:200
 msgid "warning: mixer has no volume channel - using PCM instead.\n"
 msgstr "advarsel: mikseren har ingen volum-kanal - bruker PCM i stedet.\n"
 
-#: mixer/mixer.c:202
+#: mixer/mixer.c:203
 #, c-format
 msgid "Mixer device %s has neither volume nor PCM channels.\n"
 msgstr "Mikserenhet %s har verken volum- eller PCM-kanaler.\n"
 
-#: mixer/mixer.c:715
+#: mixer/mixer.c:724
 msgid "(C) 2001 Richard Hult"
 msgstr "© 2001 Richard Hult"
 
-#: mixer/mixer.c:716
+#: mixer/mixer.c:725
 msgid "The volume control lets you set the volume level for your desktop."
 msgstr "Volumkontroll lar deg sette volumnivå for ditt skrivebord."
 
 #: modemlights/GNOME_ModemLightsApplet.server.in.h:1
+msgid "Internet"
+msgstr "Internett"
+
+#: modemlights/GNOME_ModemLightsApplet.server.in.h:2
 msgid "Modem Lights"
 msgstr "Modemlys"
 
@@ -3442,6 +3462,9 @@ msgstr "Vinduer"
 #: panel-menu/panel-menu-workspaces.c:80
 msgid "Workspaces"
 msgstr "Arbeidsområder"
+
+#~ msgid "Add"
+#~ msgstr "Legg til"
 
 #~ msgid ""
 #~ "Proxy URL is not of the form http://host:port/\n"
