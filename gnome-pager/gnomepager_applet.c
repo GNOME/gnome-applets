@@ -311,12 +311,13 @@ cb_prop_apply(GtkWidget *widget, gpointer data)
 void 
 cb_applet_properties(AppletWidget * widget, gpointer data)
 {
-  static GnomeHelpMenuEntry help_entry = { "gnome-pager_applet",
-					   "properties" };
+  static GnomeHelpMenuEntry help_entry = { NULL, "properties" };
   GtkWidget *prop = NULL;
   GtkWidget *table, *label, *spin, *check;
   GtkAdjustment *adj;
-  
+
+  help_entry.name = gnome_app_id;
+
   if (!prop) 
     {
       prop = gnome_property_box_new();
