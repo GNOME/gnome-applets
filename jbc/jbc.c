@@ -52,27 +52,25 @@ GdkBitmap *mask, *mask2;
  */
 GtkStyle *style;
 
-gint jbc_about() {
-    GtkWidget *dialog;
-    GtkWidget *label;
-    GtkWidget *button;
-
-    dialog = gtk_dialog_new();
-
-    label = gtk_label_new("Jon's BCD Clock\n(C) 1998 Jon Anhold\n<jon@snoopy.net>");
-    gtk_box_pack_start(GTK_BOX(GTK_DIALOG(dialog)->vbox), label, TRUE, TRUE, 10);
-    gtk_widget_show(label);
-
-    button = gtk_button_new_with_label (("Ok"));
-    gtk_box_pack_start (GTK_BOX (GTK_DIALOG(dialog)->action_area), button, TRUE, TRUE, 10);
-    gtk_signal_connect_object (GTK_OBJECT (button), "clicked",
-                               GTK_SIGNAL_FUNC (gtk_widget_destroy), GTK_OBJECT(dialog));
-    GTK_WIDGET_SET_FLAGS (button, GTK_CAN_DEFAULT);
-    gtk_widget_grab_default (button);
-    gtk_widget_show (button);
-
-    gtk_widget_show(dialog);
-
+static void about_cb(AppletWidget *widget, gpointer data)
+{
+		GtkWidget *about;
+		const gchar *authors[8];
+		gchar version[32];
+		
+		sprintf(version,_("%d.%d.%d"),APPLET_VERSION_MAJ,
+			APPLET_VERSION_MIN, APPLET_VERSION_REV);
+			
+		authors[0] = _("Jon Anhold <jon@snoopy.net>");
+		authors[1] = _("Roger Gulbranson <rlg@qual.net>");
+		authors[2] = NULL;
+		
+		about = gnome_about_new( _("Jon's Binary Clock"), version,
+				_("(C) 1998"),
+				authors,
+				_("A binary clock for your panel\n"),
+				NULL);
+		gtk_widget_show (about);
 }
 
 gint jbc_menu() {
@@ -80,7 +78,7 @@ gint jbc_menu() {
 	menu_about = gtk_menu_item_new_with_label("About..");
 	gtk_menu_append(GTK_MENU(menu), menu_about);
 	gtk_signal_connect_object(GTK_OBJECT(menu_about), "activate",
-		GTK_SIGNAL_FUNC(jbc_about), (gpointer) g_strdup("About.."));
+		GTK_SIGNAL_FUNC(about_cb), (gpointer) g_strdup("About.."));
 	menu_quit = gtk_menu_item_new_with_label("Quit");
 	gtk_menu_append(GTK_MENU(menu), menu_quit);
 	gtk_signal_connect_object(GTK_OBJECT(menu_quit), "activate",
@@ -167,8 +165,12 @@ main (int argc, char *argv[])
 	if (!applet) 
 		g_error("Can't create applet!\n");					
 				
+        applet_widget_register_stock_callback(APPLET_WIDGET(applet),
+                                                      "about",
+                                                      GNOME_STOCK_MENU_ABOUT,
+                                                      _("About..."),
+                                                      about_cb, applet);
 
- 
   /* ??? */
 /*  style = gtk_widget_get_style (applet); */
 

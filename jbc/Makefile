@@ -11,8 +11,6 @@
 # even the implied warranty of MERCHANTABILITY or FITNESS FOR A
 # PARTICULAR PURPOSE.
 
-# trick Automake into defining $(CXXLINK)
-
 
 SHELL = /bin/sh
 
@@ -47,7 +45,7 @@ AUTOCONF = autoconf
 AUTOMAKE = automake
 AUTOHEADER = autoheader
 
-INSTALL = /usr/bin/install -c
+INSTALL = /usr/local/gnu/bin/install -c
 INSTALL_PROGRAM = ${INSTALL}
 INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_SCRIPT = ${INSTALL_PROGRAM}
@@ -59,70 +57,94 @@ POST_INSTALL = :
 NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
-host_alias = i686-pc-linux-gnu
-host_triplet = i686-pc-linux-gnu
-CATALOGS =  it.gmo ko.gmo fr.gmo de.gmo es.gmo no.gmo ga.gmo sv.gmo pt.gmo ja.gmo fi.gmo
-CATOBJEXT = .gmo
+host_alias = sparc-sun-solaris2.6
+host_triplet = sparc-sun-solaris2.6
+CATALOGS = 
+CATOBJEXT = 
 CC = gcc
-CDROM_HOST = linux
-CFLAGS = -g -O2
-CPPFLAGS =  -I/usr/X11R6/include -I/usr/local/lib/glib/include -I/usr/local/include
+CDROM_HOST = solaris
+CFLAGS = -g -O2 -Wall -Wno-unused -Wmissing-prototypes -Wmissing-declarations -Wpointer-arith 
+CPPFLAGS =  -I/usr/openwin/include -I/usr/local/lib/glib/include -I/usr/local/include
 CXX = c++
 DATADIRNAME = share
 DL_LIB = -ldl
+FVWM2INCLUDE = 
+FVWM2LIBS = 
 GENCAT = 
-GMOFILES =  it.gmo ko.gmo fr.gmo de.gmo es.gmo no.gmo ga.gmo sv.gmo pt.gmo ja.gmo fi.gmo
-GMSGFMT = /usr/bin/msgfmt
-GNOMEUI_LIBS = -rdynamic -lgnomeui -lgdk_imlib -ltiff -lgif -ljpeg -lpng -lz -lSM -lICE -lgtk-1.1 -lgdk-1.1 -lgmodule-1.1 -lXext -lX11 -lm -lgnome -lgnomesupport -lglib-1.1 -ldl
+GHTTP_LIB = -lnsl -lsocket 
+GMOFILES =  it.gmo ko.gmo fr.gmo de.gmo es.gmo no.gmo ga.gmo sv.gmo pt.gmo ja.gmo fi.gmo cs.gmo
+GMSGFMT = 
+GNOMEUI_LIBS = -lgnomeui -lgdk_imlib -lungif -lpng -lz -lSM -lICE -lgtk -lgdk -lgmodule -lXext -lX11 -lsocket -lnsl -lm -lgnome -lgnomesupport -ldb -lglib -ldl
 GNOME_CONFIG = /usr/local/bin/gnome-config
-GNOME_INCLUDEDIR = -I/usr/local/include -DNEED_GNOMESUPPORT_H -I/usr/local/lib/gnome-libs/include -I/usr/X11R6/include -I/usr/local/lib/glib/include
-GNOME_LIBDIR = -rdynamic -L/usr/local/lib -L/usr/X11R6/lib
-GNOME_LIBS = -lgnome -lgnomesupport -lglib-1.1 -ldl
-GTKXMHTML_LIBS = -rdynamic -lgtkxmhtml -lXpm -ljpeg -lpng -lz -lSM -lICE -lgtk-1.1 -lgdk-1.1 -lgmodule-1.1 -lglib-1.1 -ldl -lXext -lX11 -lm
-GTK_CFLAGS = -I/usr/X11R6/include -I/usr/local/lib/glib/include -I/usr/local/include
+GNOME_INCLUDEDIR = -I/usr/local/include -DNEED_GNOMESUPPORT_H -I/usr/local/lib/gnome-libs/include -I/usr/openwin/include -I/usr/local/lib/glib/include
+GNOME_LIBDIR = -L/usr/local/lib -L/usr/openwin/lib -R/usr/openwin/lib
+GNOME_LIBS = -lgnome -lgnomesupport -ldb -lglib -ldl
+GTKXMHTML_LIBS = -lgtkxmhtml -lXpm -lpng -lz -lSM -lICE -lgtk -lgdk -lgmodule -lglib -ldl -lXext -lX11 -lsocket -lnsl -lm
+GTK_CFLAGS = -I/usr/openwin/include -I/usr/local/lib/glib/include -I/usr/local/include
 GTK_CONFIG = /usr/local/bin/gtk-config
-GTK_LIBS = -lSM -lICE -L/usr/local/lib -L/usr/X11R6/lib -lgtk-1.1 -lgdk-1.1 -rdynamic -lgmodule-1.1 -lglib-1.1 -ldl -lXext -lX11 -lm
+GTK_LIBS = -lSM -lICE -L/usr/local/lib -L/usr/openwin/lib -R/usr/openwin/lib -lgtk -lgdk -lgmodule -lglib -ldl -lXext -lX11 -lsocket -lnsl -lm
 GT_NO = 
 GT_YES = #YES#
 INCLUDE_LOCALE_H = #include <locale.h>
-INSTOBJEXT = .mo
+INSTOBJEXT = 
 INTLDEPS = 
 INTLLIBS = 
 INTLOBJS = 
-LD = /usr/bin/ld
+LD = /usr/ccs/bin/ld
 LDFLAGS = 
 LEX = flex
+LIBGTOP_BINARY_AGE = 
+LIBGTOP_BINDIR = /usr/local/bin
+LIBGTOP_CONFIG = /usr/local/bin/libgtop-config
+LIBGTOP_EXTRA_LIBS = -L/usr/openwin/lib -R/usr/openwin/lib -lXau -L/usr/local/lib  -lglib
+LIBGTOP_GUILE_INCS = -I/usr/local/include  -I/usr/local/lib/glib/include -I/usr/local/include -I/usr/local/include -DNEED_GNOMESUPPORT_H -I/usr/local/lib/gnome-libs/include -I/usr/openwin/include -I/usr/local/lib/glib/include -DGLIBTOP_GUILE
+LIBGTOP_GUILE_LIBS = -L/usr/local/lib -lgtop_common -lgtop -lgtop_sysdeps -lguile -ldl -lqt -L/usr/local/lib -L/usr/openwin/lib -R/usr/openwin/lib -lnsl -lsocket  -lreadline -ltermcap
+LIBGTOP_GUILE_NAMES_INCS = -I/usr/local/include  -I/usr/local/lib/glib/include -I/usr/local/include -I/usr/local/include -DNEED_GNOMESUPPORT_H -I/usr/local/lib/gnome-libs/include -I/usr/openwin/include -I/usr/local/lib/glib/include -DGLIBTOP_GUILE -DGLIBTOP_NAMES
+LIBGTOP_GUILE_NAMES_LIBS = -L/usr/local/lib -lgtop_common -lgtop -lgtop_sysdeps -lgtop_guile_names -lgtop_names
+LIBGTOP_INCLUDEDIR = /usr/local/include
+LIBGTOP_INCS = -I/usr/local/include  -I/usr/local/lib/glib/include -I/usr/local/include
+LIBGTOP_INTERFACE_AGE = 
+LIBGTOP_LIBDIR = /usr/local/lib
+LIBGTOP_LIBS = -L/usr/local/lib -lgtop_common -lgtop -lgtop_sysdeps
+LIBGTOP_MAJOR_VERSION = 0
+LIBGTOP_MICRO_VERSION = 3
+LIBGTOP_MINOR_VERSION = 26
+LIBGTOP_NAMES_INCS = -I/usr/local/include  -I/usr/local/lib/glib/include -I/usr/local/include -DGLIBTOP_NAMES
+LIBGTOP_NAMES_LIBS = -L/usr/local/lib -lgtop_common -lgtop -lgtop_sysdeps -lgtop_names
+LIBGTOP_SERVER = /usr/local/bin/libgtop_server
+LIBGTOP_SERVER_VERSION = 1
+LIBGTOP_VERSION = 0.26.3
+LIBGTOP_VERSION_CODE = 0*1000000+26*1000+3
 LIBTOOL = $(SHELL) $(top_builddir)/libtool
 LN_S = ln -s
 MAINT = 
 MAKEINFO = makeinfo
 MKINSTALLDIRS = ./mkinstalldirs
-MSGFMT = /usr/bin/msgfmt
-NM = /usr/bin/nm -B
+MSGFMT = 
+NM = /usr/ccs/bin/nm -p
 ORBIT_CFLAGS = -I/usr/local/lib/glib/include -I/usr/local/include
-ORBIT_CONFIG = orbit-config
-ORBIT_LIBS = -L/usr/local/lib -lORBit -lIIOP -lORBitutil -lglib-1.1 -lm
+ORBIT_CONFIG = /usr/local/bin/orbit-config
+ORBIT_IDL = /usr/local/bin/orbit-idl
+ORBIT_LIBS = -L/usr/local/lib -lORBit -lIIOP -lORBitutil -lglib -lresolv -lnsl -lsocket -lm
 ORB_CFLAGS = -I/usr/local/lib/glib/include -I/usr/local/include
-ORB_LIBS = -L/usr/local/lib -lORBit -lIIOP -lORBitutil -lglib-1.1 -lm
+ORB_LIBS = -L/usr/local/lib -lORBit -lIIOP -lORBitutil -lglib -lresolv -lnsl -lsocket -lm
 PACKAGE = gnome-core
-POFILES =  it.po ko.po fr.po de.po es.po no.po ga.po sv.po pt.po ja.po fi.po
-POSUB = po
+POFILES =  it.po ko.po fr.po de.po es.po no.po ga.po sv.po pt.po ja.po fi.po cs.po
+POSUB = 
 PTHREAD_LIB = -lpthread
 RANLIB = ranlib
-RES_LIBS = 
-SMPROXY_DEFS = -Dlinux -D__i386__ -D_POSIX_C_SOURCE=199309L -D_POSIX_SOURCE -D_XOPEN_SOURCE=500L -D_BSD_SOURCE -D_SVID_SOURCE 
+RES_LIBS = -lresolv
 USE_INCLUDED_LIBINTL = no
-USE_NLS = yes
-VERSION = 0.25
+USE_NLS = no
+VERSION = 0.30
 WINDOW_MANAGER = icewm
-XF86MISC_LIBS = -lXxf86misc
+XF86MISC_LIBS = 
 XPM_LIBS = -lXpm
 YACC = bison -y
 l = 
 
-#BUILT_SOURCES = dummy.cc
-
 INCLUDES = -I. -I$(srcdir) 				\
+	-I$(top_srcdir)/intl -I$(top_builddir)/intl	\
 	-I$(srcdir)/../../panel				\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
 	-I$(includedir) $(GNOME_INCLUDEDIR)
@@ -135,12 +157,10 @@ jbc_applet_LDADD = ../../panel/libpanel_applet.la \
 		     $(GNOME_LIBDIR) $(ORB_LIBS) \
 		     $(GNOMEUI_LIBS) $(INTLLIBS) 
 
-jbc_applet_LINK = $(CXXLINK)
-
 EXTRA_DIST = \
-	jbc_applet.desktop	\
-sysdir = $(datadir)/applets/Amusements
+	jbc_applet.desktop 
 
+sysdir = $(datadir)/applets/Amusements
 sys_DATA = jbc_applet.desktop
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = ../../config.h
@@ -153,13 +173,11 @@ LIBS =
 jbc_applet_OBJECTS =  jbc.o
 jbc_applet_DEPENDENCIES =  ../../panel/libpanel_applet.la
 jbc_applet_LDFLAGS = 
-CXXFLAGS = -g -O2
-CXXCOMPILE = $(CXX) $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CXXFLAGS)
-LTCXXCOMPILE = $(LIBTOOL) --mode=compile $(CXX) $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CXXFLAGS)
-CXXLINK = $(LIBTOOL) --mode=link $(CXX) $(CXXFLAGS) $(LDFLAGS) -o $@
 COMPILE = $(CC) $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CFLAGS)
 LTCOMPILE = $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CFLAGS)
 LINK = $(LIBTOOL) --mode=link $(CC) $(CFLAGS) $(LDFLAGS) -o $@
+DATA =  $(sys_DATA)
+
 DIST_COMMON =  README ChangeLog Makefile.am Makefile.in
 
 
@@ -167,15 +185,14 @@ DISTFILES = $(DIST_COMMON) $(SOURCES) $(HEADERS) $(TEXINFOS) $(EXTRA_DIST)
 
 TAR = tar
 GZIP = --best
-DEP_FILES =  .deps/dummy .deps/jbc.P
-CXXMKDEP = $(CXX) -M $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CXXFLAGS)
+DEP_FILES =  .deps/jbc.P
 SOURCES = $(jbc_applet_SOURCES)
 OBJECTS = $(jbc_applet_OBJECTS)
 
-all: Makefile $(PROGRAMS)
+all: Makefile $(PROGRAMS) $(DATA)
 
 .SUFFIXES:
-.SUFFIXES: .S .c .cc .lo .o .s
+.SUFFIXES: .S .c .lo .o .s
 $(srcdir)/Makefile.in:  Makefile.am $(top_srcdir)/configure.in $(ACLOCAL_M4)
 	cd $(top_srcdir) && $(AUTOMAKE) --gnu applets/jbc/Makefile
 
@@ -243,11 +260,26 @@ maintainer-clean-libtool:
 
 jbc_applet: $(jbc_applet_OBJECTS) $(jbc_applet_DEPENDENCIES)
 	@rm -f jbc_applet
-	$(jbc_applet_LINK) $(jbc_applet_LDFLAGS) $(jbc_applet_OBJECTS) $(jbc_applet_LDADD) $(LIBS)
-.cc.o:
-	$(CXXCOMPILE) -c $<
-.cc.lo:
-	$(LTCXXCOMPILE) -c $<
+	$(LINK) $(jbc_applet_LDFLAGS) $(jbc_applet_OBJECTS) $(jbc_applet_LDADD) $(LIBS)
+
+install-sysDATA: $(sys_DATA)
+	@$(NORMAL_INSTALL)
+	$(mkinstalldirs) $(DESTDIR)$(sysdir)
+	@list='$(sys_DATA)'; for p in $$list; do \
+	  if test -f $(srcdir)/$$p; then \
+	    echo " $(INSTALL_DATA) $(srcdir)/$$p $(DESTDIR)$(sysdir)/$$p"; \
+	    $(INSTALL_DATA) $(srcdir)/$$p $(DESTDIR)$(sysdir)/$$p; \
+	  else if test -f $$p; then \
+	    echo " $(INSTALL_DATA) $$p $(DESTDIR)$(sysdir)/$$p"; \
+	    $(INSTALL_DATA) $$p $(DESTDIR)$(sysdir)/$$p; \
+	  fi; fi; \
+	done
+
+uninstall-sysDATA:
+	@$(NORMAL_UNINSTALL)
+	list='$(sys_DATA)'; for p in $$list; do \
+	  rm -f $(DESTDIR)$(sysdir)/$$p; \
+	done
 
 tags: TAGS
 
@@ -284,7 +316,6 @@ distdir: $(DISTFILES)
 	distdir=`cd $(distdir) && pwd`; \
 	cd $(top_srcdir) \
 	  && $(AUTOMAKE) --include-deps --build-dir=$$here --srcdir-name=$(top_srcdir) --output-dir=$$top_distdir --gnu applets/jbc/Makefile
-	$(mkinstalldirs) $(distdir)/$(datadir)/applets
 	@for file in $(DISTFILES); do \
 	  d=$(srcdir); \
 	  test -f $(distdir)/$$file \
@@ -315,17 +346,6 @@ maintainer-clean-depend:
 	@-sed -e 's/^\([^:]*\)\.o:/\1.lo \1.o:/' \
 	  < .deps/$(*F).p > .deps/$(*F).P
 	@-rm -f .deps/$(*F).p
-
-%.o: %.cc
-	@echo '$(CXXCOMPILE) -c $<'; \
-	$(CXXCOMPILE) -Wp,-MD,.deps/$(*F).P -c $<
-
-%.lo: %.cc
-	@echo '$(LTCXXCOMPILE) -c $<'; \
-	$(LTCXXCOMPILE) -Wp,-MD,.deps/$(*F).p -c $<
-	@-sed -e 's/^\([^:]*\)\.o:/\1.lo \1.o:/' \
-	  < .deps/$(*F).p > .deps/$(*F).P
-	@-rm -f .deps/$(*F).p
 info:
 dvi:
 check: all
@@ -334,18 +354,18 @@ installcheck:
 install-exec: install-binPROGRAMS
 	@$(NORMAL_INSTALL)
 
-install-data: 
+install-data: install-sysDATA
 	@$(NORMAL_INSTALL)
 
 install: install-exec install-data all
 	@:
 
-uninstall: uninstall-binPROGRAMS
+uninstall: uninstall-binPROGRAMS uninstall-sysDATA
 
 install-strip:
 	$(MAKE) INSTALL_PROGRAM='$(INSTALL_PROGRAM) -s' INSTALL_SCRIPT='$(INSTALL_PROGRAM)' install
 installdirs:
-	$(mkinstalldirs)  $(DATADIR)$(bindir)
+	$(mkinstalldirs)  $(DATADIR)$(bindir) $(DATADIR)$(sysdir)
 
 
 mostlyclean-generic:
@@ -385,17 +405,14 @@ maintainer-clean:  maintainer-clean-binPROGRAMS maintainer-clean-compile \
 maintainer-clean-binPROGRAMS uninstall-binPROGRAMS install-binPROGRAMS \
 mostlyclean-compile distclean-compile clean-compile \
 maintainer-clean-compile mostlyclean-libtool distclean-libtool \
-clean-libtool maintainer-clean-libtool tags mostlyclean-tags \
-distclean-tags clean-tags maintainer-clean-tags distdir \
-mostlyclean-depend distclean-depend clean-depend \
-maintainer-clean-depend info dvi installcheck install-exec install-data \
-install uninstall all installdirs mostlyclean-generic distclean-generic \
-clean-generic maintainer-clean-generic clean mostlyclean distclean \
-maintainer-clean
+clean-libtool maintainer-clean-libtool uninstall-sysDATA \
+install-sysDATA tags mostlyclean-tags distclean-tags clean-tags \
+maintainer-clean-tags distdir mostlyclean-depend distclean-depend \
+clean-depend maintainer-clean-depend info dvi installcheck install-exec \
+install-data install uninstall all installdirs mostlyclean-generic \
+distclean-generic clean-generic maintainer-clean-generic clean \
+mostlyclean distclean maintainer-clean
 
-
-#dummy.cc:
-#	@touch dummy.cc
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
