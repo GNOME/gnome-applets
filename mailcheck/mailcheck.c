@@ -651,8 +651,9 @@ mailcheck_execute_shell (MailCheck  *mailcheck,
 {
 	GError *error = NULL;
 
-	egg_screen_execute_command_line_async (
-		gtk_widget_get_screen (GTK_WIDGET (mailcheck->applet)), command, &error);
+	gdk_spawn_command_line_on_screen (gtk_widget_get_screen (GTK_WIDGET (mailcheck->applet)),
+					  command, &error); 
+
 	if (error) {
 		GtkWidget *dialog;
 		char *msg;

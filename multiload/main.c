@@ -126,10 +126,11 @@ start_procman (MultiloadApplet *ma)
 	GError *error = NULL;
 
 	g_return_if_fail (ma != NULL);
-	
-	egg_screen_execute_command_line_async (
+
+	gdk_spawn_command_line_on_screen (
 			gtk_widget_get_screen (GTK_WIDGET (ma->applet)),
 			"gnome-system-monitor", &error);
+
 	if (error) {
 		GtkWidget *dialog;
 

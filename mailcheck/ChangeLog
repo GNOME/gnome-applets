@@ -1,3 +1,11 @@
+2004-02-22  Dennis Smit  <ds@nerds-incorporated.org>
+
+	* mailcheck.c (mailcheck_execute_shell):
+	Move from egg_screen_execute_command_line_async to
+	gdk_spawn_command_line_on_screen.
+
+	Fixes bug #135158.
+
 2004-02-19  Kevin Vandersloot
 
 	* mailcheck.c: fix updating when user doesn't want auto update. Patch

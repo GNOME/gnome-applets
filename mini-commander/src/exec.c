@@ -25,6 +25,9 @@
 #include <libgnome/gnome-exec.h>
 #include <egg-screen-exec.h>
 
+#include <glib.h>
+#include <gdk/gdk.h>
+
 #include "exec.h"
 #include "macro.h"
 #include "preferences.h"
@@ -33,14 +36,30 @@ void
 mc_exec_command (MCData     *mc,
 		 const char *cmd)
 {
+	GError *error;
 	char command [1000];
+	char **argv = NULL;
 
 	strncpy (command, cmd, sizeof (command));
 	command [sizeof (command) - 1] = '\0';
 
 	mc_macro_expand_command (mc, command);
 
-	egg_screen_execute_shell (
-			gtk_widget_get_screen (GTK_WIDGET (mc->applet)),
-			g_get_home_dir (), command);
+	if (!g_shell_parse_argv (command, NULL, &argv, &error)) {
+		if (error != NULL)
+			g_error_free (error);
+
+		return;
+	}
+
+	gdk_spawn_on_screen (gtk_widget_get_screen (GTK_WIDGET (mc->applet)),
+			     g_get_home_dir (), argv, NULL,
+			     G_SPAWN_SEARCH_PATH,
+			     NULL, NULL, NULL,
+			     &error);
+	
+	g_strfreev (argv);
+
+	if (error != NULL)
+		g_error_free (error);
 }

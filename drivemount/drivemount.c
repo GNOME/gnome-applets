@@ -434,9 +434,12 @@ browse_cb (BonoboUIComponent *uic,
 		return;
 
 	command = g_strdup_printf ("nautilus %s", drivemount->mount_point);
-	egg_screen_execute_command_line_async (
-		gtk_widget_get_screen (drivemount->applet), command, &error);
+
+	gdk_spawn_command_line_on_screen (gtk_widget_get_screen (GTK_WIDGET (drivemount->applet)),
+			command, &error); 
+
 	g_free (command);
+
 	if (error) {
 		GtkWidget *dialog;
 		char *msg;

@@ -471,16 +471,30 @@ void
 GSwitchItAppletCmdCapplet(BonoboUIComponent *
 			   uic, GSwitchItApplet * sia, const gchar * verb)
 {
-	egg_screen_execute_shell (gtk_widget_get_screen (GTK_WIDGET (sia->applet)),
-				  NULL, "gnome-keyboard-properties");
+	GError *error = NULL;
+	
+	gdk_spawn_command_line_on_screen (gtk_widget_get_screen (GTK_WIDGET (sia->applet)),
+					  "gnome-keyboard-properties", &error);
+
+	if (error != NULL) {
+		/* FIXME: After string ui freeze are over, we want to show an error message here */
+		g_error_free (error);
+	}
 }
 
 void
 GSwitchItAppletCmdPlugins (BonoboUIComponent *
 			   uic, GSwitchItApplet * sia, const gchar * verb)
 {
- 	egg_screen_execute_shell (gtk_widget_get_screen (GTK_WIDGET (sia->applet)),
-				  NULL, "gswitchit-plugins-capplet");
+	GError *error = NULL;
+
+	gdk_spawn_command_line_on_screen (gtk_widget_get_screen (GTK_WIDGET (sia->applet)),
+					  "gswitchit-plugins-capplet", &error);
+
+	if (error != NULL) {
+		/* FIXME: after string ui freeze are over, we want to show an error message here */
+		g_error_free (error);
+	}
 }
 
 static void

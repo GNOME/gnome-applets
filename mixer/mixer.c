@@ -1284,8 +1284,11 @@ mixer_start_gmix_cb (BonoboUIComponent *uic,
 	if (!run_mixer_cmd)
 		return;
 
-	egg_screen_execute_command_line_async (
-			gtk_widget_get_screen (data->applet), run_mixer_cmd, &error);
+	gdk_spawn_command_line_on_screen (
+			gtk_widget_get_screen (GTK_WIDGET (data->applet)),
+			run_mixer_cmd,
+			&error);
+
 	if (error) {
 		GtkWidget *dialog;
 
