@@ -112,8 +112,10 @@ CappletActivePluginsSelectionChanged (GtkTreeSelection *
 	GtkWidget *lblDescription =
 	    CappletGetGladeWidget (gswic, "lblDescription");
 
-	gtk_label_set_text (GTK_LABEL (lblDescription), 
-	                    g_strconcat ("<small><i>", _("No description."), "</i></small>", NULL));
+	gtk_label_set_text (GTK_LABEL (lblDescription),
+			    g_strconcat ("<small><i>",
+					 _("No description."),
+					 "</i></small>", NULL));
 	gtk_label_set_use_markup (GTK_LABEL (lblDescription), TRUE);
 
 	if (gtk_tree_selection_get_selected
@@ -137,8 +139,13 @@ CappletActivePluginsSelectionChanged (GtkTreeSelection *
 			hasConfigurationUi =
 			    (plugin->configurePropertiesCallback != NULL);
 			gtk_label_set_text (GTK_LABEL (lblDescription),
-					    g_strconcat ("<small><i>", plugin->description, "</i></small>", NULL));
-			gtk_label_set_use_markup (GTK_LABEL (lblDescription), TRUE);
+					    g_strconcat ("<small><i>",
+							 plugin->
+							 description,
+							 "</i></small>",
+							 NULL));
+			gtk_label_set_use_markup (GTK_LABEL
+						  (lblDescription), TRUE);
 		}
 		g_free (fullPath);
 
@@ -220,6 +227,18 @@ CappletConfigurePlugin (GtkWidget * btnRemove,
 }
 
 static void
+CappletResponse (GtkDialog * dialog, gint response)
+{
+	if (response == GTK_RESPONSE_HELP) {
+		GSwitchItHelp (GTK_WIDGET (dialog),
+			       "gswitchitAppletPlugins");
+		return;
+	}
+
+	bonobo_main_quit ();
+}
+
+static void
 CappletSetup (GSwitchItPluginsCapplet * gswic)
 {
 	GladeXML *data;
@@ -253,7 +272,7 @@ CappletSetup (GSwitchItPluginsCapplet * gswic)
 			  G_CALLBACK (bonobo_main_quit), data);
 
 	g_signal_connect (GTK_OBJECT (capplet),
-			  "response", G_CALLBACK (bonobo_main_quit), NULL);
+			  "response", G_CALLBACK (CappletResponse), NULL);
 
 	glade_xml_signal_connect_data (data, "on_btnUp_clicked",
 				       GTK_SIGNAL_FUNC
