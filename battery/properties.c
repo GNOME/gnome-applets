@@ -41,7 +41,7 @@ static void
 phelp_cb (GtkWidget *w, gint tab, gpointer data)
 {
 	GnomeHelpMenuEntry help_entry = { 
-		"battery_applet", "index.html#Battery-Charge-Monitor-properties"
+		"battery_applet", "index.html#BATTERY-CHARGE-MONITOR-PROPERTIES"
 	};
 	gnome_help_display (NULL, &help_entry);
 }
