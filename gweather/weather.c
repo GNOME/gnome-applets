@@ -1,0 +1,1492 @@
+/* $Id$ */
+
+/*
+ *  Papadimitriou Spiros <spapadim+@cs.cmu.edu>
+ *
+ *  This code released under the GNU GPL.
+ *  Read the file COPYING for more information.
+ *
+ *  Weather server functions (METAR and IWIN)
+ *
+ */
+
+#ifdef HAVE_CONFIG_H
+#  include <config.h>
+#endif
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <assert.h>
+#include <string.h>
+#include <ctype.h>
+#include <math.h>
+
+#include <regex.h>
+#include <time.h>
+#include <unistd.h>
+
+#include <gnome.h>
+#include <ghttp.h>
+
+#include "weather.h"
+
+static WeatherUnits weather_units = UNITS_IMPERIAL;
+static WeatherForecastType weather_forecast = FORECAST_STATE;
+
+static gchar *weather_proxy_url = NULL;
+static gchar *weather_proxy_user = NULL;
+static gchar *weather_proxy_passwd = NULL;
+
+/* Unit conversions and names */
+
+#define TEMP_F_TO_C(f)  (((f) - 32.0) * 0.555556)
+#define TEMP_C_TO_F(c)  (((c) * 1.8) + 32.0)
+#define TEMP_UNIT_STR(units)  (((units) == UNITS_IMPERIAL) ? "\260F" : "\260C")
+
+#define WINDSPEED_KNOTS_TO_KPH(knots)  ((knots) * 1.851965)
+#define WINDSPEED_KPH_TO_KNOTS(kph)    ((kph) * 0.539967)
+#define WINDSPEED_UNIT_STR(units) (((units) == UNITS_IMPERIAL) ? "knots" : "kph")
+
+#define PRESSURE_INCH_TO_MM(inch)   ((inch) * 25.4)
+#define PRESSURE_MM_TO_INCH(mm)     ((mm) * 0.03937)
+#define PRESSURE_MBAR_TO_INCH(mbar) ((mbar) * 0.02963742)
+#define PRESSURE_UNIT_STR(units) (((units) == UNITS_IMPERIAL) ? "inHg" : "mmHg")
+
+#define VISIBILITY_SM_TO_KM(sm)  ((sm) * 1.609344)
+#define VISIBILITY_KM_TO_SM(km)  ((km) * 0.621371)
+#define VISIBILITY_UNIT_STR(units) (((units) == UNITS_IMPERIAL) ? "miles" : "kilometers")
+
+
+WeatherLocation *weather_location_new (const gchar *name, const gchar *code, const gchar *zone, const gchar *radar)
+{
+    WeatherLocation *location;
+
+    g_return_val_if_fail(strlen(name) <= WEATHER_LOCATION_NAME_MAX_LEN, NULL);
+    g_return_val_if_fail(strlen(code) == WEATHER_LOCATION_CODE_LEN, NULL);
+    g_return_val_if_fail(strlen(zone) == WEATHER_LOCATION_ZONE_LEN, NULL);
+    g_return_val_if_fail(strlen(radar) == WEATHER_LOCATION_RADAR_LEN, NULL);
+
+    location = g_new(WeatherLocation, 1);
+    strcpy(location->name, name);
+    strcpy(location->code, code);
+    strcpy(location->zone, zone);
+    strcpy(location->radar, radar);
+
+    return location;
+}
+
+void weather_location_config_write (gchar *prefix, WeatherLocation *location)
+{
+    gchar **locdata;
+
+    g_return_if_fail(prefix != NULL);
+
+    locdata = g_new(char *, 4);
+    locdata[0] = location->name;
+    locdata[1] = location->code;
+    locdata[2] = location->zone;
+    locdata[3] = location->radar;
+    gnome_config_set_vector(prefix, 4, locdata);
+    g_free(locdata);
+}
+
+WeatherLocation *weather_location_config_read (gchar *prefix)
+{
+    WeatherLocation *location;
+    gchar **locdata;
+    gint nlocdata;
+    gchar *prefix_with_default;
+
+    g_return_val_if_fail(prefix != NULL, NULL);
+
+    prefix_with_default = g_strconcat(prefix, "=Pittsburgh KPIT PAZ021 PBZ", NULL);
+
+    gnome_config_get_vector(prefix_with_default, &nlocdata, &locdata);
+    g_return_val_if_fail(nlocdata == 4, NULL);
+    location = weather_location_new(locdata[0], locdata[1], locdata[2], locdata[3]);
+    g_strfreev(locdata);
+
+    g_free(prefix_with_default);
+
+    return location;
+}
+
+WeatherLocation *weather_location_clone (const WeatherLocation *location)
+{
+    WeatherLocation *clone;
+
+    g_return_val_if_fail(location != NULL, NULL);
+    clone = g_new(WeatherLocation, 1);
+    g_memmove(clone, location, sizeof(WeatherLocation));
+    return clone;
+}
+
+void weather_location_free (WeatherLocation *location)
+{
+    g_free(location);
+}
+
+gboolean weather_location_equal (const WeatherLocation *location1, const WeatherLocation *location2)
+{
+    return (strcmp(location1->code, location2->code) == 0);
+}
+
+static gchar *wind_direction_str[] = {
+    "Variable",
+    "North", "North - NorthEast", "Northeast", "East - NorthEast",
+    "East", "East - Southeast", "Southeast", "South - Southeast",
+    "South", "South - Southwest", "Southwest", "West - Southwest",
+    "West", "West - Northwest", "Northwest", "North - Northwest"
+};
+
+gchar *weather_wind_direction_string (WeatherWindDirection wind)
+{
+    return wind_direction_str[(int)wind];
+}
+
+static gchar *sky_str[] = {
+    "Clear",
+    "Broken clouds",
+    "Scattered clouds",
+    "Few clouds",
+    "Overcast"
+};
+
+gchar *weather_sky_string (WeatherSky sky)
+{
+    return sky_str[(int)sky];
+}
+
+static gchar *phenomenon_str[] = {
+    "",
+
+    "drizzle",
+    "rain",
+    "snow",
+    "snow grains",
+    "ice crystals",
+    "ice pellets",
+    "hail",
+    "small hail",
+    "precipitation",
+
+    "mist",
+    "fog",
+    "smoke",
+    "volcanic ash",
+    "sand",
+    "haze",
+    "spray",
+    "dust",
+
+    "squall",
+    "sandstorm",
+    "duststorm",
+    "funnel cloud",
+    "tornado",
+    "dust whirls"
+};
+
+static gchar *qualifier_str[] = {
+    "",
+    "in vicinity, ",
+    "light ",
+    "moderate ",
+    "heavy ",
+    "shallow ",
+    "patches of ",
+    "partial ",
+    "thunderous ",
+    "blowing ",
+    "showers ",
+    "drifting ",
+    "freezing "
+};
+
+gchar *weather_conditions_string (WeatherConditions cond)
+{
+    static gchar buf[200];
+    if (!cond.significant) {
+        strcpy(buf, "-");
+    } else {
+        sprintf(buf, "%s%s", qualifier_str[(int)cond.qualifier],
+                             phenomenon_str[(int)cond.phenomenon]);
+        if (strlen(buf) > 0)
+            buf[0] = toupper(buf[0]);
+        else
+            strcpy(buf, "-");
+    }
+    return buf;
+}
+
+#define TIME_RE_STR  "^([0-9]{6})Z$"
+#define WIND_RE_STR  "^(([0-9]{3})|VRB)([0-9]?[0-9]{2})(G[0-9]?[0-9]{2})?KT$"
+#define VIS_RE_STR   "^(([0-9]?[0-9])|(M?1/[0-9]?[0-9]))SM$"
+#define CLOUD_RE_STR "^(CLR|BKN|SCT|FEW|OVC)([0-9]{3})?$"
+#define TEMP_RE_STR  "^(M?[0-9][0-9])/(M?[0-9][0-9])$"
+#define PRES_RE_STR  "^(A|Q)([0-9]{4})$"
+#define COND_RE_STR  "^(-|\\+)?(VC|MI|BC|PR|TS|BL|SH|DR|FZ)?(DZ|RA|SN|SG|IC|PE|GR|GS|UP|BR|FG|FU|VA|SA|HZ|PY|DU|SQ|SS|DS|PO|\\+?FC)$"
+
+#define TIME_RE   0
+#define WIND_RE   1
+#define VIS_RE    2
+#define CLOUD_RE  3
+#define TEMP_RE   4
+#define PRES_RE   5
+#define COND_RE   6
+
+#define RE_NUM   7
+
+static regex_t metar_re[RE_NUM];
+
+static void metar_init_re (void)
+{
+    static gboolean initialized = FALSE;
+    if (initialized)
+        return;
+    initialized = TRUE;
+
+    regcomp(&metar_re[TIME_RE], TIME_RE_STR, REG_EXTENDED);
+    regcomp(&metar_re[WIND_RE], WIND_RE_STR, REG_EXTENDED);
+    regcomp(&metar_re[VIS_RE], VIS_RE_STR, REG_EXTENDED);
+    regcomp(&metar_re[CLOUD_RE], CLOUD_RE_STR, REG_EXTENDED);
+    regcomp(&metar_re[TEMP_RE], TEMP_RE_STR, REG_EXTENDED);
+    regcomp(&metar_re[PRES_RE], PRES_RE_STR, REG_EXTENDED);
+    regcomp(&metar_re[COND_RE], COND_RE_STR, REG_EXTENDED);
+}
+
+static __inline gint days_in_month (gint month, gint year)
+{
+    if (month == 1)
+        return ((year % 4) == 0) ? 29 : 28;
+    else if (((month <= 6) && (month % 2 == 0)) || ((month >=7) && (month % 2 != 0)))
+        return 31;
+    else
+        return 30;
+}
+
+/* FIX - there *must* be a simpler, less stupid way to do this!... */
+time_t make_time (gint date, gint hour, gint min)
+{
+    struct tm *tm;
+    struct tm tms;
+    time_t now;
+    gint loc_mday, loc_hour, gm_mday, gm_hour;
+    gint hour_diff;  /* local time = UTC - hour_diff */
+    gint is_dst;
+
+    now = time(NULL);
+
+    tm = gmtime(&now);
+    gm_mday = tm->tm_mday;
+    gm_hour = tm->tm_hour;
+    memcpy(&tms, tm, sizeof(struct tm));
+
+    tm = localtime(&now);
+    loc_mday = tm->tm_mday;
+    loc_hour = tm->tm_hour;
+    is_dst = tm->tm_isdst;
+
+    /* Estimate timezone */
+    if (gm_mday == loc_mday)
+        hour_diff = gm_hour - loc_hour;
+    else
+        if ((gm_mday == loc_mday + 1) || ((gm_mday == 1) && (loc_mday >= 27)))
+            hour_diff = gm_hour + (24 - loc_hour);
+        else
+            hour_diff = -((24 - gm_hour) + loc_hour);
+
+    /* Make time */
+    tms.tm_min  = min;
+    tms.tm_sec  = 0;
+    tms.tm_hour = hour - hour_diff;
+    tms.tm_mday = date;
+    tms.tm_isdst = is_dst;
+    if (tms.tm_hour < 0) {
+        tms.tm_hour += 24;
+        --tms.tm_mday;
+        if (tms.tm_mday < 1) {
+            --tms.tm_mon;
+            if (tms.tm_mon < 0) {
+                tms.tm_mon = 11;
+                --tms.tm_year;
+            }
+            tms.tm_mday = days_in_month(tms.tm_mon, tms.tm_year + 1900);
+        }
+    } else if (tms.tm_hour > 23) {
+        tms.tm_hour -= 24;
+        ++tms.tm_mday;
+        if (tms.tm_mday > days_in_month(tms.tm_mon, tms.tm_year + 1900)) {
+            ++tms.tm_mon;
+            if (tms.tm_mon > 11) {
+                tms.tm_mon = 0;
+                ++tms.tm_year;
+            }
+            tms.tm_mday = 1;
+        }
+    }
+
+    return mktime(&tms);
+}
+
+static gboolean metar_tok_time (gchar *tokp, WeatherInfo *info)
+{
+    gchar sday[3], shr[3], smin[3];
+    gint day, hr, min;
+
+    if (regexec(&metar_re[TIME_RE], tokp, 0, NULL, 0) == REG_NOMATCH)
+        return FALSE;
+
+    strncpy(sday, tokp, 2);
+    sday[2] = 0;
+    day = atoi(sday);
+
+    strncpy(shr, tokp+2, 2);
+    shr[2] = 0;
+    hr = atoi(shr);
+
+    strncpy(smin, tokp+4, 2);
+    smin[2] = 0;
+    min = atoi(smin);
+
+    info->update = make_time(day, hr, min);
+
+    return TRUE;
+}
+
+#define CONST_DIGITS "0123456789"
+
+static gboolean metar_tok_wind (gchar *tokp, WeatherInfo *info)
+{
+    gchar sdir[4], sspd[4], sgust[4];
+    gint dir, spd, gust = -1;
+    gchar *gustp;
+
+    if (regexec(&metar_re[WIND_RE], tokp, 0, NULL, 0) == REG_NOMATCH)
+        return FALSE;
+
+    strncpy(sdir, tokp, 3);
+    sdir[3] = 0;
+    dir = (!strcmp(sdir, "VRB")) ? -1 : atoi(sdir);
+
+    bzero(sspd, sizeof(sspd));
+    strncpy(sspd, tokp+3, strspn(tokp+3, CONST_DIGITS));
+    spd = atoi(sspd);
+
+    gustp = strchr(tokp, 'G');
+    if (gustp) {
+        bzero(sgust, sizeof(sgust));
+        strncpy(sgust, gustp+1, strspn(gustp+1, CONST_DIGITS));
+        gust = atoi(sgust);
+    }
+
+    if ((349 <= dir) && (dir <= 11))
+        info->wind = WIND_N;
+    else if ((12 <= dir) && (dir <= 33))
+        info->wind = WIND_NNE;
+    else if ((34 <= dir) && (dir <= 56))
+        info->wind = WIND_NE;
+    else if ((57 <= dir) && (dir <= 78))
+        info->wind = WIND_ENE;
+    else if ((79 <= dir) && (dir <= 101))
+        info->wind = WIND_E;
+    else if ((102 <= dir) && (dir <= 123))
+        info->wind = WIND_ESE;
+    else if ((124 <= dir) && (dir <= 146))
+        info->wind = WIND_SE;
+    else if ((147 <= dir) && (dir <= 168))
+        info->wind = WIND_SSE;
+    else if ((169 <= dir) && (dir <= 191))
+        info->wind = WIND_S;
+    else if ((192 <= dir) && (dir <= 213))
+        info->wind = WIND_SSW;
+    else if ((214 <= dir) && (dir <= 236))
+        info->wind = WIND_SW;
+    else if ((247 <= dir) && (dir <= 258))
+        info->wind = WIND_WSW;
+    else if ((259 <= dir) && (dir <= 281))
+        info->wind = WIND_W;
+    else if ((282 <= dir) && (dir <= 303))
+        info->wind = WIND_WNW;
+    else if ((304 <= dir) && (dir <= 326))
+        info->wind = WIND_NW;
+    else if ((327 <= dir) && (dir <= 348))
+        info->wind = WIND_NNW;
+    
+    info->windspeed = (WeatherWindSpeed)spd;
+
+    return TRUE;
+}
+
+static gboolean metar_tok_vis (gchar *tokp, WeatherInfo *info)
+{
+    gchar *pfrac, *pend;
+    gchar sval[4];
+    gint val;
+
+    if (regexec(&metar_re[VIS_RE], tokp, 0, NULL, 0) == REG_NOMATCH)
+        return FALSE;
+
+    pfrac = strchr(tokp, '/');
+    pend = strstr(tokp, "SM");
+    bzero(sval, sizeof(sval));
+
+    if (pfrac) {
+        strncpy(sval, pfrac + 1, pend - pfrac - 1);
+        val = atoi(sval);
+        info->visibility = (*tokp == 'M') ? 0.001 : (1.0 / ((WeatherVisibility)val));
+    } else {
+        strncpy(sval, tokp, pend - tokp);
+        val = atoi(sval);
+        info->visibility = (WeatherVisibility)val;
+    }
+
+    return TRUE;
+}
+
+static gboolean metar_tok_cloud (gchar *tokp, WeatherInfo *info)
+{
+    gchar stype[4], salt[4];
+    gint alt = -1;
+
+    if (regexec(&metar_re[CLOUD_RE], tokp, 0, NULL, 0) == REG_NOMATCH)
+        return FALSE;
+
+    strncpy(stype, tokp, 3);
+    stype[3] = 0;
+    if (strlen(tokp) == 6) {
+        strncpy(salt, tokp+3, 3);
+        salt[3] = 0;
+        alt = atoi(salt);  /* Altitude - currently unused */
+    }
+
+    if (!strcmp(stype, "CLR")) {
+        info->sky = SKY_CLEAR;
+    } else if (!strcmp(stype, "BKN")) {
+        info->sky = SKY_BROKEN;
+    } else if (!strcmp(stype, "SCT")) {
+        info->sky = SKY_SCATTERED;
+    } else if (!strcmp(stype, "FEW")) {
+        info->sky = SKY_FEW;
+    } else if (!strcmp(stype, "OVC")) {
+        info->sky = SKY_OVERCAST;
+    }
+
+    return TRUE;
+}
+
+static gboolean metar_tok_pres (gchar *tokp, WeatherInfo *info)
+{
+    if (regexec(&metar_re[PRES_RE], tokp, 0, NULL, 0) == REG_NOMATCH)
+        return FALSE;
+
+    if (*tokp == 'A') {
+        gchar sintg[3], sfract[3];
+        gint intg, fract;
+
+        strncpy(sintg, tokp+1, 2);
+        sintg[2] = 0;
+        intg = atoi(sintg);
+
+        strncpy(sfract, tokp+3, 2);
+        sfract[2] = 0;
+        fract = atoi(sfract);
+
+        info->pressure = (WeatherPressure)intg + (((WeatherPressure)fract)/100.0);
+    } else {  /* *tokp == 'Q' */
+        gchar spres[5];
+        gint pres;
+
+        strncpy(spres, tokp+1, 4);
+        spres[4] = 0;
+        pres = atoi(spres);
+
+        info->pressure = PRESSURE_MBAR_TO_INCH((WeatherPressure)pres);
+    }
+
+    return TRUE;
+}
+
+/* Relative humidity computation - thanks to <Olof.Oberg@modopaper.modogroup.com> */
+
+
+static __inline gint calc_humidity(gdouble temp, gdouble dewp)
+{
+    gdouble esat, esurf;
+
+    temp = TEMP_F_TO_C(temp);
+    dewp = TEMP_F_TO_C(dewp);
+
+    esat = 6.11 * pow(10.0, (7.5 * temp) / (237.7 + temp));
+    esurf = 6.11 * pow(10.0, (7.5 * dewp) / (237.7 + dewp));
+
+    return (gint)((esurf/esat) * 100.0);
+}
+
+static gboolean metar_tok_temp (gchar *tokp, WeatherInfo *info)
+{
+    gchar *ptemp, *pdew, *psep;
+
+    if (regexec(&metar_re[TEMP_RE], tokp, 0, NULL, 0) == REG_NOMATCH)
+        return FALSE;
+
+    psep = strchr(tokp, '/');
+    *psep = 0;
+    ptemp = tokp;
+    pdew = psep + 1;
+
+    info->temp = (*ptemp == 'M') ? TEMP_C_TO_F(-atoi(ptemp+1)) :
+                                   TEMP_C_TO_F(atoi(ptemp));
+    info->dew = (*pdew == 'M') ? TEMP_C_TO_F(-atoi(pdew+1)) :
+                                 TEMP_C_TO_F(atoi(pdew));
+    info->humidity = calc_humidity(info->temp, info->dew);
+    return TRUE;
+}
+
+static gboolean metar_tok_cond (gchar *tokp, WeatherInfo *info)
+{
+    gchar squal[3], sphen[4];
+    gchar *pphen;
+
+    if (regexec(&metar_re[COND_RE], tokp, 0, NULL, 0) == REG_NOMATCH)
+        return FALSE;
+
+    if ((strlen(tokp) > 3) && ((*tokp == '+') || (*tokp == '-')))
+        ++tokp;   /* FIX */
+
+    if ((*tokp == '+') || (*tokp == '-'))
+        pphen = tokp + 1;
+    else if (strlen(tokp) < 4)
+        pphen = tokp;
+    else
+        pphen = tokp + 2;
+
+    bzero(squal, sizeof(squal));
+    strncpy(squal, tokp, pphen - tokp);
+    squal[pphen - tokp] = 0;
+
+    bzero(sphen, sizeof(sphen));
+    strcpy(sphen, pphen);
+
+    /* Defaults */
+    info->cond.qualifier = QUALIFIER_NONE;
+    info->cond.phenomenon = PHENOMENON_NONE;
+    info->cond.significant = FALSE;
+
+    if (!strcmp(squal, "")) {
+        info->cond.qualifier = QUALIFIER_MODERATE;
+    } else if (!strcmp(squal, "-")) {
+        info->cond.qualifier = QUALIFIER_LIGHT;
+    } else if (!strcmp(squal, "+")) {
+        info->cond.qualifier = QUALIFIER_HEAVY;
+    } else if (!strcmp(squal, "VC")) {
+        info->cond.qualifier = QUALIFIER_VICINITY;
+    } else if (!strcmp(squal, "MI")) {
+        info->cond.qualifier = QUALIFIER_SHALLOW;
+    } else if (!strcmp(squal, "BC")) {
+        info->cond.qualifier = QUALIFIER_PATCHES;
+    } else if (!strcmp(squal, "PR")) {
+        info->cond.qualifier = QUALIFIER_PARTIAL;
+    } else if (!strcmp(squal, "TS")) {
+        info->cond.qualifier = QUALIFIER_THUNDERSTORM;
+    } else if (!strcmp(squal, "BL")) {
+        info->cond.qualifier = QUALIFIER_BLOWING;
+    } else if (!strcmp(squal, "SH")) {
+        info->cond.qualifier = QUALIFIER_SHOWERS;
+    } else if (!strcmp(squal, "DR")) {
+        info->cond.qualifier = QUALIFIER_DRIFTING;
+    } else if (!strcmp(squal, "FZ")) {
+        info->cond.qualifier = QUALIFIER_FREEZING;
+    } else {
+        g_return_val_if_fail(FALSE, FALSE);
+    }
+
+    if (!strcmp(sphen, "DZ")) {
+        info->cond.phenomenon = PHENOMENON_DRIZZLE;
+    } else if (!strcmp(sphen, "RA")) {
+        info->cond.phenomenon = PHENOMENON_RAIN;
+    } else if (!strcmp(sphen, "SN")) {
+        info->cond.phenomenon = PHENOMENON_SNOW;
+    } else if (!strcmp(sphen, "SG")) {
+        info->cond.phenomenon = PHENOMENON_SNOW_GRAINS;
+    } else if (!strcmp(sphen, "IC")) {
+        info->cond.phenomenon = PHENOMENON_ICE_CRYSTALS;
+    } else if (!strcmp(sphen, "PE")) {
+        info->cond.phenomenon = PHENOMENON_ICE_PELLETS;
+    } else if (!strcmp(sphen, "GR")) {
+        info->cond.phenomenon = PHENOMENON_HAIL;
+    } else if (!strcmp(sphen, "GS")) {
+        info->cond.phenomenon = PHENOMENON_SMALL_HAIL;
+    } else if (!strcmp(sphen, "UP")) {
+        info->cond.phenomenon = PHENOMENON_UNKNOWN_PRECIPITATION;
+    } else if (!strcmp(sphen, "BR")) {
+        info->cond.phenomenon = PHENOMENON_MIST;
+    } else if (!strcmp(sphen, "FG")) {
+        info->cond.phenomenon = PHENOMENON_FOG;
+    } else if (!strcmp(sphen, "FU")) {
+        info->cond.phenomenon = PHENOMENON_SMOKE;
+    } else if (!strcmp(sphen, "VA")) {
+        info->cond.phenomenon = PHENOMENON_VOLCANIC_ASH;
+    } else if (!strcmp(sphen, "SA")) {
+        info->cond.phenomenon = PHENOMENON_SAND;
+    } else if (!strcmp(sphen, "HZ")) {
+        info->cond.phenomenon = PHENOMENON_HAZE;
+    } else if (!strcmp(sphen, "PY")) {
+        info->cond.phenomenon = PHENOMENON_SPRAY;
+    } else if (!strcmp(sphen, "DU")) {
+        info->cond.phenomenon = PHENOMENON_DUST;
+    } else if (!strcmp(sphen, "SQ")) {
+        info->cond.phenomenon = PHENOMENON_SQUALL;
+    } else if (!strcmp(sphen, "SS")) {
+        info->cond.phenomenon = PHENOMENON_SANDSTORM;
+    } else if (!strcmp(sphen, "DS")) {
+        info->cond.phenomenon = PHENOMENON_DUSTSTORM;
+    } else if (!strcmp(sphen, "PO")) {
+        info->cond.phenomenon = PHENOMENON_DUST_WHIRLS;
+    } else if (!strcmp(sphen, "+FC")) {
+        info->cond.phenomenon = PHENOMENON_TORNADO;
+    } else if (!strcmp(sphen, "FC")) {
+        info->cond.phenomenon = PHENOMENON_FUNNEL_CLOUD;
+    } else {
+        g_return_val_if_fail(FALSE, FALSE);
+    }
+
+    if ((info->cond.qualifier != QUALIFIER_NONE) || (info->cond.phenomenon != PHENOMENON_NONE))
+        info->cond.significant = TRUE;
+
+    return TRUE;
+}
+
+static void metar_parse_token (gchar *tokp, gboolean in_remark, WeatherInfo *info)
+{
+    if (!in_remark) {
+        if (metar_tok_time(tokp, info))
+            return;
+        else if (metar_tok_wind(tokp, info))
+            return;
+        else if (metar_tok_vis(tokp, info))
+            return;
+        else if (metar_tok_cloud(tokp, info))
+            return;
+        else if (metar_tok_temp(tokp, info))
+            return;
+        else if (metar_tok_pres(tokp, info))
+            return;
+        else if (metar_tok_cond(tokp, info))
+            return;
+    }
+}
+
+static gboolean metar_parse (gchar *metar, WeatherInfo *info)
+{
+    gchar **toks;
+    gint ntoks;
+    gint i;
+    gboolean in_remark = FALSE;
+
+    g_return_val_if_fail(info != NULL, FALSE);
+    g_return_val_if_fail(metar != NULL, FALSE);
+
+    metar_init_re();
+
+    /* fprintf(stderr, "metar_parse: %s\n", metar); */
+
+    toks = g_strsplit(metar, " ", 0);
+
+    for (ntoks = 0;  toks[ntoks];  ntoks++)
+        if (!strcmp(toks[ntoks], "RMK"))
+            in_remark = TRUE;
+
+    for (i = ntoks-1; i >= 0;  i--)
+        if (strlen(toks[i]) > 0) {
+            if (!strcmp(toks[i], "RMK"))
+                in_remark = FALSE;
+            else
+                metar_parse_token(toks[i], in_remark, info);
+        }
+
+    g_strfreev(toks);
+
+    return TRUE;
+}
+
+/* Read current conditions and fill in info structure */
+static gboolean metar_get (WeatherLocation *loc, WeatherInfo *info)
+{
+    gchar *url;
+    ghttp_request *request = NULL;
+    gchar *body;
+    int body_len;
+    gchar *metar, *eoln;
+    gboolean success = FALSE;
+    gchar searchkey[WEATHER_LOCATION_CODE_LEN + 2];
+
+    g_return_val_if_fail(loc != NULL, FALSE);
+    g_return_val_if_fail(info != NULL, FALSE);
+
+    request = ghttp_request_new();
+    url = g_strdup_printf("http://weather.noaa.gov/cgi-bin/mgetmetar.pl?cccc=%s", loc->code);
+    ghttp_set_uri(request, url);
+    g_free(url);
+    ghttp_set_proxy(request, weather_proxy_url);
+    ghttp_set_authinfo(request, weather_proxy_user, weather_proxy_passwd);
+    ghttp_set_header(request, http_hdr_Connection, "close");
+    ghttp_prepare(request);
+
+    if (ghttp_process(request) == ghttp_error) {
+        g_warning(_("Failed to get METAR data.\n"));
+        ghttp_request_destroy(request);
+        return FALSE;
+    }
+
+    body = ghttp_get_body(request);
+    body_len = ghttp_get_body_len(request);
+    g_return_val_if_fail(body != NULL, FALSE);
+    g_return_val_if_fail(body_len > 0, FALSE);
+    body[body_len-1] = 0;  /* quick hack */
+
+    sprintf(searchkey, "\n%s", loc->code);
+    metar = strstr(body, searchkey);
+    if (metar == NULL) {
+        success = FALSE;
+    } else {
+        metar += WEATHER_LOCATION_CODE_LEN + 2;
+        eoln = strchr(metar, '\n');
+        g_return_val_if_fail(eoln !=  NULL, FALSE);
+
+        *eoln = 0;
+        success = metar_parse(metar, info);
+        *eoln = '\n';
+    }
+
+    ghttp_request_destroy(request);
+
+    return success;
+}
+
+#define IWIN_RE_STR "([A-Z][A-Z]Z(([0-9]{3}>[0-9]{3}-)|([0-9]{3}-))+)+[0-9]{6}-"
+
+static regex_t iwin_re;
+
+static void iwin_init_re (void)
+{
+    static gboolean initialized = FALSE;
+    if (initialized)
+        return;
+    initialized = TRUE;
+
+    regcomp(&iwin_re, IWIN_RE_STR, REG_EXTENDED);
+}
+
+#define CONST_ALPHABET "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+static gboolean iwin_range_match (gchar *range, WeatherLocation *loc)
+{
+    gchar *zonep;
+    gchar *endp;
+    gchar zone_state[4], zone_num_str[4];
+    gint zone_num;
+
+    endp = range + strcspn(range, " \t\r\n") - 2;
+    while (*endp != '-')
+        --endp;
+    assert(range <= endp);
+
+    strncpy(zone_state, loc->zone, 3);
+    zone_state[3] = 0;
+    strncpy(zone_num_str, loc->zone + 3, 3);
+    zone_num_str[3] = 0;
+    zone_num = atoi(zone_num_str);
+
+    zonep = range;
+    while (zonep < endp) {
+        gchar from_str[4], to_str[4];
+        gint from, to;
+
+        if (strncmp(zonep, zone_state, 3) != 0) {
+            zonep += 3;
+            zonep += strcspn(zonep, CONST_ALPHABET "\n");
+            continue;
+        }
+
+        zonep += 3;
+
+        do {
+            strncpy(from_str, zonep, 3);
+            from_str[3] = 0;
+            from = atoi(from_str);
+
+            zonep += 3;
+
+            if (*zonep == '-') {
+                ++zonep;
+                to = from;
+            } else if (*zonep == '>') {
+                ++zonep;
+                strncpy(to_str, zonep, 3);
+                to_str[3] = 0;
+                to = atoi(to_str);
+                zonep += 4;
+            } else {
+                assert(FALSE);
+            }
+
+            if ((from <= zone_num) && (zone_num <= to))
+                return TRUE;
+
+        } while (!isupper(*zonep) && (zonep < endp));
+    }
+
+    return FALSE;
+}
+
+static gchar *iwin_parse (gchar *iwin, WeatherLocation *loc)
+{
+    gchar *p, *rangep = NULL;
+    regmatch_t match[1];
+    gint ret;
+
+    g_return_val_if_fail(iwin != NULL, NULL);
+    g_return_val_if_fail(loc != NULL, NULL);
+    g_return_val_if_fail(loc->name[0] != '-', NULL);
+
+    /* fprintf(stderr, "iwin_parse\n"); */
+
+    iwin_init_re();
+
+    p = iwin;
+    while ((ret = regexec(&iwin_re, p, 1, match, 0)) != REG_NOMATCH) {
+        rangep = p + match[0].rm_so;
+        p = strchr(rangep, '\n');
+        if (iwin_range_match(rangep, loc)) 
+            break;
+    }
+
+    if (ret != REG_NOMATCH) {
+        gchar *end = strstr(p, "\n</PRE>");
+        if ((regexec(&iwin_re, p, 1, match, 0) != REG_NOMATCH) &&
+            (end - p > match[0].rm_so))
+            end = p + match[0].rm_so - 1;
+        *end = 0;
+        return g_strdup(rangep);
+    } else {
+        return NULL;
+    }
+
+}
+
+/* Get forecast and return it into a newly alloc'ed string */
+static gchar *iwin_get (WeatherLocation *loc)
+{
+    gchar state[WEATHER_LOCATION_ZONE_LEN];
+    gchar *url;
+    ghttp_request *request = NULL;
+    gchar *body;
+    gint body_len;
+    gchar *forecast;
+
+    g_return_val_if_fail(loc != NULL, NULL);
+
+    if (loc->zone[0] == '-')
+        return NULL;
+
+    strncpy(state, loc->zone, 2);
+    state[2] = 0;
+    request = ghttp_request_new();
+    if (weather_forecast == FORECAST_ZONE)
+        url = g_strdup_printf("http://iwin.nws.noaa.gov/iwin/%s/zone.html", state);
+    else
+        url = g_strdup_printf("http://iwin.nws.noaa.gov/iwin/%s/state.html", state);
+    ghttp_set_uri(request, url);
+    g_free(url);
+    ghttp_set_proxy(request, weather_proxy_url);
+    ghttp_set_authinfo(request, weather_proxy_user, weather_proxy_passwd);
+    ghttp_set_header(request, http_hdr_Connection, "close");
+    ghttp_prepare(request);
+    if (ghttp_process(request) == ghttp_error) {
+        g_warning(_("Failed to get IWIN forecast data.\n"));
+        ghttp_request_destroy(request);
+        return NULL;
+    }
+
+    body = ghttp_get_body(request);
+    body_len = ghttp_get_body_len(request);
+    g_return_val_if_fail(body != NULL, NULL);
+    g_return_val_if_fail(body_len > 0, NULL);
+    body[body_len-1] = 0;  /* quick hack */
+
+    forecast = iwin_parse(body, loc);
+
+    ghttp_request_destroy(request);
+
+    return forecast;
+}
+
+#ifdef ENABLE_RADAR
+static GdkPixmap *wx_construct (gpointer data, gint data_len)
+{
+    GdkPixmap *pixmap;
+    char *tmpname = g_strdup(tmpnam(NULL));
+    FILE *fp;
+
+    /* fprintf(stderr, "wx_get\n"); */
+    /* fprintf(stderr, "tmpname: %s\n", tmpname); */
+
+    fp = fopen(tmpname, "wb");
+    g_return_val_if_fail(fp != NULL, NULL);
+    fwrite(data, data_len, 1, fp);
+    fclose(fp);
+
+    gdk_imlib_load_file_to_pixmap(tmpname, &pixmap, NULL);
+
+    unlink(tmpname);
+    g_free(tmpname);
+
+    return pixmap;
+}
+
+/* Get radar map and return in in a newly allocated pixmap */
+static GdkPixmap *wx_get (WeatherLocation *loc)
+{
+    gchar *url;
+    ghttp_request *request = NULL;
+    gchar *body;
+    gint body_len;
+    GdkPixmap *pixmap = NULL;
+
+    g_return_val_if_fail(loc != NULL, NULL);
+
+    if (loc->radar[0] == '-')
+        return NULL;
+
+    url = g_strdup_printf("http://www.wx.com/nbr/ss2.cfm?radar=%s", loc->radar);
+    request = ghttp_request_new();
+    ghttp_set_uri(request, url);
+    g_free(url);
+    ghttp_set_proxy(request, weather_proxy_url);
+    ghttp_set_authinfo(request, weather_proxy_user, weather_proxy_passwd);
+    ghttp_set_header(request, http_hdr_Connection, "close");
+    ghttp_prepare(request);
+
+    if (ghttp_process(request) == ghttp_error) {
+        g_warning(_("Failed to get radar map image.\n"));
+        ghttp_request_destroy(request);
+        return NULL;
+    }
+
+    body = ghttp_get_body(request);
+    body_len = ghttp_get_body_len(request);
+    g_return_val_if_fail(body != NULL, NULL);
+    g_return_val_if_fail(body_len > 0, NULL);
+
+    pixmap = wx_construct(body, body_len);
+
+    ghttp_request_destroy(request);
+
+    return pixmap;
+}
+#endif /* ENABLE_RADAR */
+
+WeatherInfo *_weather_info_fill (WeatherInfo *info, WeatherLocation *location)
+{
+    if (!info) {
+        g_return_val_if_fail(location != NULL, NULL);
+        info = g_new(WeatherInfo, 1);
+        info->location = weather_location_clone(location);
+    } else {
+        g_return_val_if_fail(location == NULL, NULL);
+        location = info->location;
+        g_free(info->forecast);
+        gdk_imlib_free_pixmap(info->radar);
+    }
+
+    /* Defaults (just in case...) */
+    info->units = UNITS_IMPERIAL;
+    info->update = 0;
+    info->sky = SKY_CLEAR;
+    info->cond.significant = FALSE;
+    info->cond.phenomenon = PHENOMENON_NONE;
+    info->cond.qualifier = QUALIFIER_NONE;
+    info->temp = 0;
+    info->dew = 0;
+    info->humidity = 0;
+    info->wind = WIND_VARIABLE;
+    info->windspeed = 0;
+    info->pressure = 0.0;
+    info->visibility = 0.0;
+    info->forecast = NULL;
+    info->radar = NULL;
+
+    info->valid = metar_get(location, info);
+ 
+    info->forecast = iwin_get(location);
+
+#ifdef ENABLE_RADAR
+    info->radar = wx_get(location);
+#endif /* ENABLE_RADAR */
+
+    if (weather_units == UNITS_METRIC)
+        weather_info_to_metric(info);
+
+    return info;
+}
+
+void weather_info_config_write (WeatherInfo *info)
+{
+    g_return_if_fail(info != NULL);
+
+    gnome_config_set_bool("valid", info->valid);
+    weather_location_config_write("location", info->location);
+    gnome_config_set_int("units", (gint)info->units);
+    gnome_config_set_int("update", info->update);
+    gnome_config_set_int("sky", (gint)info->sky);
+    gnome_config_set_bool("cond_significant", info->cond.significant);
+    gnome_config_set_int("cond_phenomenon", (gint)info->cond.phenomenon);
+    gnome_config_set_int("cond_qualifier", (gint)info->cond.qualifier);
+    gnome_config_set_float("temp", info->temp);
+    gnome_config_set_float("dew", info->dew);
+    gnome_config_set_int("humidity", info->humidity);
+    gnome_config_set_int("wind", (gint)info->wind);
+    gnome_config_set_int("windspeed", info->windspeed);
+    gnome_config_set_float("pressure", info->pressure);
+    gnome_config_set_float("visibility", info->visibility);
+    if (info->forecast)
+        gnome_config_set_string("forecast", info->forecast);
+    /* info->radar = NULL; */
+}
+
+WeatherInfo *weather_info_config_read (void)
+{
+    WeatherInfo *info = g_new(WeatherInfo, 1);
+
+    info->valid = gnome_config_get_bool("valid=FALSE");
+    info->location = weather_location_config_read("location");
+    info->units = (WeatherUnits)gnome_config_get_int("units=0");
+    info->update = (WeatherUpdate)gnome_config_get_int("update=0");
+    info->sky = (WeatherSky)gnome_config_get_int("sky=0");
+    info->cond.significant = gnome_config_get_bool("cond_significant=FALSE");
+    info->cond.phenomenon = (WeatherConditionPhenomenon)gnome_config_get_int("cond_phenomenon=0");
+    info->cond.qualifier = (WeatherConditionQualifier)gnome_config_get_int("cond_qualifier=0");
+    info->temp = gnome_config_get_float("temp=0");
+    info->dew = gnome_config_get_float("dew=0");
+    info->humidity = gnome_config_get_int("humidity=0");
+    info->wind = (WeatherWindDirection)gnome_config_get_int("wind=0");
+    info->windspeed = gnome_config_get_int("windspeed=0");
+    info->pressure = gnome_config_get_float("pressure=0");
+    info->visibility = gnome_config_get_float("visibility=0");
+    info->forecast = gnome_config_get_string("forecast=None");
+    info->radar = NULL;  /* FIX */
+
+    return info;
+}
+
+WeatherInfo *weather_info_clone (const WeatherInfo *info)
+{
+    WeatherInfo *clone;
+    
+    g_return_val_if_fail(info != NULL, NULL);
+    clone = g_new(WeatherInfo, 1);
+    g_memmove(clone, info, sizeof(WeatherInfo));
+    clone->location = weather_location_clone(info->location);
+    if (info->forecast)
+        clone->forecast = g_strdup(info->forecast);
+    return clone;
+}
+
+void weather_info_free (WeatherInfo *info)
+{
+    if (info) {
+        g_free(info->location);
+        g_free(info->forecast);
+        gdk_imlib_free_pixmap(info->radar);
+    }
+    g_free(info);
+}
+
+
+void weather_units_set (WeatherUnits units)
+{
+    weather_units = units;
+}
+
+WeatherUnits weather_units_get (void)
+{
+    return weather_units;
+}
+
+void weather_forecast_set (WeatherForecastType forecast)
+{
+    weather_forecast = forecast;
+}
+
+WeatherForecastType weather_forecast_get (void)
+{
+    return weather_forecast;
+}
+
+void weather_proxy_set (const gchar *url, const gchar *user, const gchar *passwd)
+{
+    g_free(weather_proxy_url);    weather_proxy_url = NULL;
+    g_free(weather_proxy_user);   weather_proxy_user = NULL;
+    g_free(weather_proxy_passwd); weather_proxy_passwd = NULL;
+
+    if (url && (strlen(url) > 0))
+        weather_proxy_url = strdup(url);
+    if (user && (strlen(user) > 0))
+        weather_proxy_user = strdup(user);
+    if (passwd && (strlen(passwd) > 0))
+        weather_proxy_passwd = strdup(passwd);
+}
+
+void weather_info_to_metric (WeatherInfo *info)
+{
+    g_return_if_fail(info != NULL);
+
+    if (info->units == UNITS_METRIC)
+        return;
+
+    /* Do conversion */
+    info->temp = TEMP_F_TO_C(info->temp);
+    info->dew = TEMP_F_TO_C(info->dew);
+    info->windspeed = WINDSPEED_KNOTS_TO_KPH(info->windspeed);
+    info->pressure = PRESSURE_INCH_TO_MM(info->pressure);
+    info->visibility = VISIBILITY_SM_TO_KM(info->visibility);
+
+    /* Change units flag */
+    info->units = UNITS_METRIC;
+}
+
+void weather_info_to_imperial (WeatherInfo *info)
+{
+    g_return_if_fail(info != NULL);
+
+    if (info->units == UNITS_IMPERIAL)
+        return;
+
+    /* Do conversion */
+    info->temp = TEMP_C_TO_F(info->temp);
+    info->dew = TEMP_C_TO_F(info->dew);
+    info->windspeed = WINDSPEED_KPH_TO_KNOTS(info->windspeed);
+    info->pressure = PRESSURE_MM_TO_INCH(info->pressure);
+    info->visibility = VISIBILITY_KM_TO_SM(info->visibility);
+
+    /* Change units flag */
+    info->units = UNITS_IMPERIAL;
+}
+
+
+gchar *weather_info_get_location (WeatherInfo *info)
+{
+    g_return_val_if_fail(info != NULL, NULL);
+    g_return_val_if_fail(info->location != NULL, NULL);
+    return info->location->name;
+}
+
+gchar *weather_info_get_update (WeatherInfo *info)
+{
+    static gchar buf[200];
+
+    g_return_val_if_fail(info != NULL, NULL);
+
+    if (!info->valid)
+        return "-";
+
+    if (info->update != 0) {
+        struct tm *tm;
+        tm = localtime(&info->update);
+        strftime(buf, 90, "%a, %b %d / %H:%M", tm);
+    } else {
+        strcpy(buf, "Unknown observation time");
+    }
+
+    return buf;
+}
+
+gchar *weather_info_get_sky (WeatherInfo *info)
+{
+    g_return_val_if_fail(info != NULL, NULL);
+    if (!info->valid)
+        return "-";
+    return weather_sky_string(info->sky);
+}
+
+gchar *weather_info_get_conditions (WeatherInfo *info)
+{
+    g_return_val_if_fail(info != NULL, NULL);
+    if (!info->valid)
+        return "-";
+    return weather_conditions_string(info->cond);
+}
+
+gchar *weather_info_get_temp (WeatherInfo *info)
+{
+    static gchar buf[10];
+    g_return_val_if_fail(info != NULL, NULL);
+    if (!info->valid)
+        return "-";
+    sprintf(buf, "%.1f%s", info->temp, TEMP_UNIT_STR(info->units));
+    return buf;
+}
+
+gchar *weather_info_get_dew (WeatherInfo *info)
+{
+    static gchar buf[10];
+    g_return_val_if_fail(info != NULL, NULL);
+    if (!info->valid)
+        return "-";
+    sprintf(buf, "%.1f%s", info->dew, TEMP_UNIT_STR(info->units));
+    return buf;
+}
+
+gchar *weather_info_get_humidity (WeatherInfo *info)
+{
+    static gchar buf[10];
+    g_return_val_if_fail(info != NULL, NULL);
+    if (!info->valid)
+        return "-";
+    sprintf(buf, "%d%%", info->humidity);
+    return buf;
+}
+
+gchar *weather_info_get_wind (WeatherInfo *info)
+{
+    static gchar buf[100];
+    g_return_val_if_fail(info != NULL, NULL);
+    if (!info->valid)
+        return "-";
+    if (info->windspeed == 0.00)
+        strcpy(buf, "Calm");
+    else
+        sprintf(buf, "%s / %d %s", weather_wind_direction_string(info->wind),
+                                   info->windspeed, WINDSPEED_UNIT_STR(info->units));
+    return buf;
+}
+
+gchar *weather_info_get_pressure (WeatherInfo *info)
+{
+    static gchar buf[30];
+    g_return_val_if_fail(info != NULL, NULL);
+    if (!info->valid)
+        return "-";
+    sprintf(buf, "%.2f %s", info->pressure, PRESSURE_UNIT_STR(info->units));
+    return buf;
+}
+
+gchar *weather_info_get_visibility (WeatherInfo *info)
+{
+    static gchar buf[40];
+    g_return_val_if_fail(info != NULL, NULL);
+    if (!info->valid)
+        return "-";
+    sprintf(buf, "%.1f %s", info->visibility, VISIBILITY_UNIT_STR(info->units));
+    return buf;
+}
+
+gchar *weather_info_get_forecast (WeatherInfo *info)
+{
+    g_return_val_if_fail(info != NULL, NULL);
+    return info->forecast;
+}
+
+GdkPixmap *weather_info_get_radar (WeatherInfo *info)
+{
+    g_return_val_if_fail(info != NULL, NULL);
+    return info->radar;
+}
+
+gchar *weather_info_get_temp_summary (WeatherInfo *info)
+{
+    static gchar buf[10];
+    g_return_val_if_fail(info != NULL, NULL);
+    if (!info->valid)
+        return "--";
+    sprintf(buf, "%d\260", (int)info->temp);
+    return buf;
+}
+
+gchar *weather_info_get_weather_summary (WeatherInfo *info)
+{
+    static gchar buf[200];
+    g_return_val_if_fail(info != NULL, NULL);
+    if (!info->valid)
+        return "----";
+    strcpy(buf, weather_info_get_conditions(info));
+    if (!strcmp(buf, "-"))
+        strcpy(buf, weather_info_get_sky(info));
+    return buf;
+}
+
+
+static GdkPixmap **weather_pixmaps_mini;
+static GdkBitmap **weather_pixmaps_mini_mask;
+static GdkPixmap **weather_pixmaps;
+static GdkBitmap **weather_pixmaps_mask;
+
+#include "unknown-mini.xpm"
+#include "sun-mini.xpm"
+#include "suncloud-mini.xpm"
+#include "cloud-mini.xpm"
+#include "rain-mini.xpm"
+#include "tstorm-mini.xpm"
+#include "snow-mini.xpm"
+#include "fog-mini.xpm"
+
+#include "unknown.xpm"
+#include "sun.xpm"
+#include "suncloud.xpm"
+#include "cloud.xpm"
+#include "rain.xpm"
+#include "tstorm.xpm"
+#include "snow.xpm"
+#include "fog.xpm"
+
+#define PIX_UNKNOWN   0
+#define PIX_SUN       1
+#define PIX_SUNCLOUD  2
+#define PIX_CLOUD     3
+#define PIX_RAIN      4
+#define PIX_TSTORM    5
+#define PIX_SNOW      6
+#define PIX_FOG       7
+
+#define NUM_PIX       8
+
+static void init_pixmaps (void)
+{
+    static gboolean initialized = FALSE;
+
+    if (initialized)
+       return;
+    initialized = TRUE;
+
+    weather_pixmaps_mini = g_new(GdkPixmap *, NUM_PIX);
+    weather_pixmaps_mini_mask = g_new(GdkBitmap *, NUM_PIX);
+    gdk_imlib_data_to_pixmap(unknown_mini_xpm, &weather_pixmaps_mini[PIX_UNKNOWN], &weather_pixmaps_mini_mask[PIX_UNKNOWN]);
+    gdk_imlib_data_to_pixmap(sun_mini_xpm, &weather_pixmaps_mini[PIX_SUN], &weather_pixmaps_mini_mask[PIX_SUN]);
+    gdk_imlib_data_to_pixmap(suncloud_mini_xpm, &weather_pixmaps_mini[PIX_SUNCLOUD], &weather_pixmaps_mini_mask[PIX_SUNCLOUD]);
+    gdk_imlib_data_to_pixmap(cloud_mini_xpm, &weather_pixmaps_mini[PIX_CLOUD], &weather_pixmaps_mini_mask[PIX_CLOUD]);
+    gdk_imlib_data_to_pixmap(rain_mini_xpm, &weather_pixmaps_mini[PIX_RAIN], &weather_pixmaps_mini_mask[PIX_RAIN]);
+    gdk_imlib_data_to_pixmap(tstorm_mini_xpm, &weather_pixmaps_mini[PIX_TSTORM], &weather_pixmaps_mini_mask[PIX_TSTORM]);
+    gdk_imlib_data_to_pixmap(snow_mini_xpm, &weather_pixmaps_mini[PIX_SNOW], &weather_pixmaps_mini_mask[PIX_SNOW]);
+    gdk_imlib_data_to_pixmap(fog_mini_xpm, &weather_pixmaps_mini[PIX_FOG], &weather_pixmaps_mini_mask[PIX_FOG]);
+
+    weather_pixmaps = g_new(GdkPixmap *, NUM_PIX);
+    weather_pixmaps_mask = g_new(GdkBitmap *, NUM_PIX);
+    gdk_imlib_data_to_pixmap(unknown_xpm, &weather_pixmaps[PIX_UNKNOWN], &weather_pixmaps_mask[PIX_UNKNOWN]);
+    gdk_imlib_data_to_pixmap(sun_xpm, &weather_pixmaps[PIX_SUN], &weather_pixmaps_mask[PIX_SUN]);
+    gdk_imlib_data_to_pixmap(suncloud_xpm, &weather_pixmaps[PIX_SUNCLOUD], &weather_pixmaps_mask[PIX_SUNCLOUD]);
+    gdk_imlib_data_to_pixmap(cloud_xpm, &weather_pixmaps[PIX_CLOUD], &weather_pixmaps_mask[PIX_CLOUD]);
+    gdk_imlib_data_to_pixmap(rain_xpm, &weather_pixmaps[PIX_RAIN], &weather_pixmaps_mask[PIX_RAIN]);
+    gdk_imlib_data_to_pixmap(tstorm_xpm, &weather_pixmaps[PIX_TSTORM], &weather_pixmaps_mask[PIX_TSTORM]);
+    gdk_imlib_data_to_pixmap(snow_xpm, &weather_pixmaps[PIX_SNOW], &weather_pixmaps_mask[PIX_SNOW]);
+    gdk_imlib_data_to_pixmap(fog_xpm, &weather_pixmaps[PIX_FOG], &weather_pixmaps_mask[PIX_FOG]);
+}
+
+void _weather_info_get_pixmap (WeatherInfo *info, gboolean mini, GdkPixmap **pixmap, GdkBitmap **mask)
+{
+    GdkPixmap **pixmaps;
+    GdkBitmap **masks;
+    gint idx = -1;
+
+    g_return_if_fail(pixmap != NULL);
+
+    init_pixmaps();
+    pixmaps = mini ? weather_pixmaps_mini : weather_pixmaps;
+    masks = mini ? weather_pixmaps_mini_mask : weather_pixmaps_mask;
+
+    if (!info || !info->valid) {
+        idx = PIX_UNKNOWN;
+    } else {
+        WeatherConditions cond = info->cond;
+        WeatherSky sky = info->sky;
+
+        if (cond.significant && (cond.phenomenon != PHENOMENON_NONE)) {
+            switch (cond.qualifier) {
+            case QUALIFIER_NONE:
+                break;
+            case QUALIFIER_THUNDERSTORM:
+                idx = PIX_TSTORM;
+                break;
+            case QUALIFIER_SHALLOW:
+            case QUALIFIER_PATCHES:
+            case QUALIFIER_PARTIAL:
+            case QUALIFIER_BLOWING:
+            case QUALIFIER_SHOWERS:
+            case QUALIFIER_DRIFTING:
+            case QUALIFIER_FREEZING:
+                break;
+            case QUALIFIER_LIGHT:
+            case QUALIFIER_MODERATE:
+            case QUALIFIER_HEAVY:
+                break;
+            default:
+                assert(FALSE);
+            }
+
+            if (idx < 0)
+                switch (cond.phenomenon) {
+                case PHENOMENON_DRIZZLE:
+                case PHENOMENON_RAIN:
+                case PHENOMENON_UNKNOWN_PRECIPITATION:
+                    if ((cond.qualifier == QUALIFIER_SHALLOW) ||
+                        (cond.qualifier == QUALIFIER_PATCHES) ||
+                        (cond.qualifier == QUALIFIER_PARTIAL))
+                        idx = PIX_RAIN;
+                    else
+                        idx = PIX_RAIN;
+                    break;
+                case PHENOMENON_SNOW:
+                case PHENOMENON_ICE_PELLETS:
+                    idx = PIX_SNOW;
+                    break;
+                case PHENOMENON_HAIL:
+                case PHENOMENON_SMALL_HAIL:
+                    idx = PIX_RAIN;
+                    break;
+                case PHENOMENON_TORNADO:
+                case PHENOMENON_SQUALL:
+                    idx = PIX_TSTORM;
+                    break;
+                case PHENOMENON_MIST:
+                case PHENOMENON_FOG:
+                case PHENOMENON_SMOKE:
+                case PHENOMENON_VOLCANIC_ASH:
+                case PHENOMENON_SAND:
+                case PHENOMENON_HAZE:
+                case PHENOMENON_SPRAY:
+                case PHENOMENON_DUST:
+                case PHENOMENON_SANDSTORM:
+                case PHENOMENON_DUSTSTORM:
+                case PHENOMENON_FUNNEL_CLOUD:
+                case PHENOMENON_DUST_WHIRLS:
+                    idx = PIX_FOG;
+                    break;
+                default:
+                    assert(FALSE);
+                }
+        } else {
+            switch (sky) {
+            case SKY_CLEAR:
+                idx = PIX_SUN;
+                break;
+            case SKY_BROKEN:
+            case SKY_SCATTERED:
+            case SKY_FEW:
+                idx = PIX_SUNCLOUD;
+                break;
+            case SKY_OVERCAST:
+                idx = PIX_CLOUD;
+                break;
+            default:
+                assert(FALSE);
+            }
+        }
+    }
+
+    *pixmap = pixmaps[idx];
+    if (mask)
+        *mask = masks[idx];
+}
+
+
+

@@ -1,0 +1,32 @@
+1999-07-18  Jacob Berkman  <jberkman@andrew.cmu.edu>
+
+	* Makefile.am: added pixmaps directory, set up for building
+	from gnome CVS
+
+	* gweather-pref.c (load_locations): use gnome_datadir_file()
+	instead of confdefs.h
+
+7/7/99
+------
+- Fixed bug ocurring when METAR information is unavailable.
+- Replaced the gnome_less widget with a gtk_text + scrollbar, because
+  it did strange things, so I worked around it.
+- Removed all regexps but one (got an occasional coredump when calling
+  regcomp from metar_init_re that I couldn't figure out, so I worked
+  around it).  The current C code isn't as comprehensive as the regexps
+  were, but it should suffice (unless the METAR format contains any
+  unexpected tokens).
+- Fixed a bug in the UTC to localtime conversion function (near midnight,
+  would get time one hour early).  There should be a much simpler and
+  less stupid way to do this, though! :-)
+- Changed the humidity formula.
+- Fixed a bug in the IWIN parser to handle a more general form of inputs
+  (the old one would fail an assertion and dump core in forecasts where
+  SFPxx was not used as expected) -- now uses regexps.
+- Fixed the layout for horizontal orientation (still need to take care
+  of three digit temps).
+
+7/6/99
+------
+- Began ChangeLog
+
