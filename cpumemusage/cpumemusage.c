@@ -22,6 +22,15 @@
 #include "proc.h"
 #include "procbar.h"
 
+
+/* Milliseconds between updates */
+#define CPU_UPDATE_MSEC 200
+#define MEM_UPDATE_MSEC 1000
+
+/* Nice value to avoid eating CPU when it is needed */
+#define NICE_VALUE 5
+
+
 static GdkColor bar_cpu_colors [PROC_CPU_SIZE-1] = {
 	{0, 0xffff, 0xffff, 0x4fff},
 	{0, 0xdfff, 0xdfff, 0xdfff},
@@ -47,13 +56,19 @@ static GtkWidget *cpumemusage;
 static GtkWidget *applet;
 
 static gint
-update_values ()
+update_cpu_values (void)
 {
 	/* printf ("update\n"); */
 
 	proc_read_cpu (&summary_info);
 	procbar_set_values (cpu, summary_info.cpu);
 
+	return TRUE;
+}
+
+static gint
+update_mem_values (void)
+{
 	proc_read_mem (&summary_info);
 	procbar_set_values (mem, summary_info.mem);
 
@@ -99,16 +114,17 @@ cpumemusage_widget ()
 	proc_read_mem (&summary_info);
 
 	cpu  = procbar_new (NULL, PROC_CPU_SIZE-1, bar_cpu_colors,
-			    update_values);
+			    update_cpu_values);
 	mem  = procbar_new (NULL, PROC_MEM_SIZE-2, bar_mem_colors,
-			    NULL);
+			    update_mem_values);
 
 	if (summary_info.swap [PROC_SWAP_TOTAL])
 		swap = procbar_new (NULL, PROC_SWAP_SIZE-1, bar_swap_colors,
 				    NULL);
 
 	box = pack_procbars (FALSE);
-	procbar_start (cpu, 200);
+	procbar_start (cpu, CPU_UPDATE_MSEC);
+	procbar_start (mem, MEM_UPDATE_MSEC);
 
 	return box;
 }
@@ -168,7 +184,9 @@ int main(int argc, char **argv)
         cpumemusage = cpumemusage_widget();
         applet_widget_add( APPLET_WIDGET(applet), cpumemusage );
         gtk_widget_show(applet);
-	
+
+	/* Be nice */
+	nice (NICE_VALUE);
 	applet_widget_gtk_main();
 
         return 0;

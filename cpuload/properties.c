@@ -18,9 +18,6 @@ static cpuload_properties temp_props;
 extern GtkWidget *disp;
 extern cpuload_properties props;
 
-void setup_colors(void);
-void start_timer( void );
-
 void load_properties( char *path, cpuload_properties *prop )
 {
 	gnome_config_push_prefix (path);
@@ -47,7 +44,7 @@ void save_properties( char *path, cpuload_properties *prop )
 	gnome_config_drop_all();
 }
 
-void 
+static void 
 ucolor_changed_cb( GnomeColorPicker *widget)
 {
  	guint8 r,g,b;
@@ -61,7 +58,7 @@ ucolor_changed_cb( GnomeColorPicker *widget)
         gnome_property_box_changed(GNOME_PROPERTY_BOX(propbox));
 }          
 
-void 
+static void 
 scolor_changed_cb( GnomeColorPicker *widget)
 {
  	guint8 r,g,b;
@@ -75,23 +72,29 @@ scolor_changed_cb( GnomeColorPicker *widget)
         gnome_property_box_changed(GNOME_PROPERTY_BOX(propbox));
 }
 
-void height_cb( GtkWidget *widget, GtkWidget *spin )
+static void
+height_cb( GtkWidget *widget, GtkWidget *spin )
 {
 	temp_props.height = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spin));
         gnome_property_box_changed(GNOME_PROPERTY_BOX(propbox));
 }
-void width_cb( GtkWidget *widget, GtkWidget *spin )
+
+static void
+width_cb( GtkWidget *widget, GtkWidget *spin )
 {
 	temp_props.width = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spin));
         gnome_property_box_changed(GNOME_PROPERTY_BOX(propbox));
 }
-void freq_cb( GtkWidget *widget, GtkWidget *spin )
+
+static void
+freq_cb( GtkWidget *widget, GtkWidget *spin )
 {
 	temp_props.speed = gtk_spin_button_get_value_as_float(GTK_SPIN_BUTTON(spin))*1000;
         gnome_property_box_changed(GNOME_PROPERTY_BOX(propbox));
 }	
 
-GtkWidget *create_frame(void)
+static GtkWidget *
+create_frame(void)
 {
 	GtkWidget *label;
 	GtkWidget *box, *color, *size, *speed;
@@ -173,7 +176,8 @@ GtkWidget *create_frame(void)
 	return box;
 }
 
-void apply_cb( GtkWidget *widget, void *data )
+static void
+apply_cb( GtkWidget *widget, void *data )
 {
 	memcpy( &props, &temp_props, sizeof(cpuload_properties) );
 
@@ -184,13 +188,15 @@ void apply_cb( GtkWidget *widget, void *data )
 	gtk_widget_set_usize( disp, props.width, props.height );
 }
 
-gint destroy_cb( GtkWidget *widget, void *data )
+static gint
+destroy_cb( GtkWidget *widget, void *data )
 {
 	propbox = NULL;
 	return FALSE;
 }
 
-void properties(AppletWidget *applet, gpointer data)
+void
+properties(AppletWidget *applet, gpointer data)
 {
 	GtkWidget *frame, *label;
 

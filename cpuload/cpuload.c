@@ -21,7 +21,7 @@
 #include "linux-proc.h"
 #include "properties.h"
 
-void start_timer( void );
+#define NICE_VALUE 5
 
 GtkWidget *cpuload;
 GdkPixmap *pixmap = NULL;
@@ -36,7 +36,7 @@ guchar oudata[128];
 guchar sdata[128];
 guchar osdata[128];
 
-int draw(void)
+static int draw(void)
 {
 	int usr=0, sys=0, nice=0, free=0, i;
 
@@ -126,7 +126,15 @@ static gint cpuload_expose(GtkWidget *widget, GdkEventExpose *event)
         return FALSE;
 }
 
-GtkWidget *cpuload_new( void )
+void start_timer( void )
+{
+	if( timer_index != -1 )
+		gtk_timeout_remove(timer_index);
+
+	timer_index = gtk_timeout_add(props.speed, (GtkFunction)draw, NULL);
+}
+
+static GtkWidget *cpuload_new( void )
 {
 	GtkWidget *frame, *box;
 
@@ -154,14 +162,6 @@ GtkWidget *cpuload_new( void )
 	return frame;
 }
 
-void start_timer( void )
-{
-	if( timer_index != -1 )
-		gtk_timeout_remove(timer_index);
-
-	timer_index = gtk_timeout_add(props.speed, (GtkFunction)draw, NULL);
-}
-
 void setup_colors(void)
 {
 	GdkColormap *colormap;
@@ -175,7 +175,7 @@ void setup_colors(void)
         gdk_color_alloc(colormap, &scolor);
 }
 	        
-void create_gc(void)
+static void create_gc(void)
 {
         gc = gdk_gc_new( disp->window );
         gdk_gc_copy( gc, disp->style->white_gc );
@@ -222,6 +222,8 @@ int main(int argc, char **argv)
 					      properties,
 					      NULL);
 
+	/* Be nice */
+	nice (NICE_VALUE);
 	applet_widget_gtk_main();
         return 0;
 }

@@ -56,6 +56,8 @@ procbar_configure (GtkWidget *w, GdkEventConfigure *e, ProcBar *pb)
 		pb->colors_allocated = 1;
 	}
 
+	if (!pb->gc)
+		pb->gc = gdk_gc_new (pb->bar->window);
 
 	if (pb->bs) {
 		gdk_pixmap_unref (pb->bs);
@@ -75,7 +77,7 @@ procbar_configure (GtkWidget *w, GdkEventConfigure *e, ProcBar *pb)
 #undef A
 
 ProcBar *
-procbar_new (GtkWidget *label, gint n, GdkColor *colors, gint (*cb)())
+procbar_new (GtkWidget *label, gint n, GdkColor *colors, gint (*cb)(void))
 {
 	ProcBar *pb;
 
@@ -87,6 +89,7 @@ procbar_new (GtkWidget *label, gint n, GdkColor *colors, gint (*cb)())
 	pb->first_request = 1;
 	pb->colors = colors;
 	pb->colors_allocated = 0;
+	pb->gc = NULL;
 	pb->vertical = FALSE;
 
 	pb->last = g_new (unsigned, n+1);
@@ -142,7 +145,6 @@ procbar_set_values (ProcBar *pb, unsigned val [])
 	gint change = 0;
 	gint offset;
 	gint lengthr, length;
-	GdkGC *gc;
 
 	if (!GTK_WIDGET_REALIZED (pb->bar) ||
 	    A.width == 0 || A.height == 0)
@@ -164,8 +166,6 @@ procbar_set_values (ProcBar *pb, unsigned val [])
 	length = pb->vertical ? A.height : A.width;
 	offset = 0;
 
-	gc = gdk_gc_new (pb->bar->window);
-
 	/* printf ("procbar_set_values %d\n", pb->bar->window); */
 
 	for (i=0; i<pb->n; i++) {
@@ -178,18 +178,18 @@ procbar_set_values (ProcBar *pb, unsigned val [])
 		printf ("%u ", val[i+1]);
 		printf ("%d ", lengthr); */
 
-		gdk_gc_set_foreground (gc,
+		gdk_gc_set_foreground (pb->gc,
 				       &pb->colors [i]);
 
 		if (pb->vertical)
 			gdk_draw_rectangle (pb->bs,
-					    gc,
+					    pb->gc,
 					    TRUE,
 					    0, A.height - offset - lengthr,
 					    A.width, lengthr);
 		else
 			gdk_draw_rectangle (pb->bs,
-					    gc,
+					    pb->gc,
 					    TRUE,
 					    offset, 0,
 					    lengthr, A.height);
@@ -199,13 +199,11 @@ procbar_set_values (ProcBar *pb, unsigned val [])
 	/* printf ("\n"); */
 		
 	gdk_window_copy_area (pb->bar->window,
-			      gc,
+			      pb->gc,
 			      0, 0,
 			      pb->bs,
 			      0, 0,
 			      A.width, A.height);
-
-	gdk_gc_destroy (gc);
 }
 
 #undef W
@@ -213,10 +211,9 @@ procbar_set_values (ProcBar *pb, unsigned val [])
 
 void
 procbar_start (ProcBar *pb, gint time)
-
 {
 	if (pb->cb)
-		pb->tag = gtk_timeout_add (time, pb->cb, NULL);
+		pb->tag = gtk_timeout_add (time, (GtkFunction) pb->cb, NULL);
 }
 
 void

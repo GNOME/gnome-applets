@@ -15,6 +15,7 @@ struct _ProcBar {
 
 	GdkPixmap *bs;
 	GdkColor *colors;
+	GdkGC *gc;
 
 	gint colors_allocated;
 	gint first_request;
@@ -23,12 +24,12 @@ struct _ProcBar {
 
 	unsigned *last;
 
-	gint (*cb)();
+	gint (*cb)(void);
 };
 
 ProcBar * procbar_new         (GtkWidget *label,
 			       gint n, GdkColor *colors,
-			       gint (*cb)());
+			       gint (*cb)(void));
 void      procbar_set_values  (ProcBar *pb, unsigned val []);
 void      procbar_set_orient  (ProcBar *pb, gboolean vertical);
 void      procbar_start       (ProcBar *pb, gint time);
