@@ -112,6 +112,8 @@ int main(int argc, char **argv)
   /* set up the usual stuff */
   panel_corba_register_arguments();
   gnome_init("bussign_applet", NULL, argc, argv, 0, NULL);
+  gtk_widget_push_visual(gdk_imlib_get_visual());
+  gtk_widget_push_colormap(gdk_imlib_get_colormap());
   l_applet = applet_widget_new(argv[0]);
   if (!l_applet)
     g_error("Can't create applet!\n");
@@ -138,20 +140,20 @@ int main(int argc, char **argv)
   /* attach the about window */
   applet_widget_register_callback(APPLET_WIDGET(l_applet),
 				  "about",
-				  "About...",
+				  _("About..."),
 				  about_window,
 				  NULL);
 
   /* attach the properties dialog */
   applet_widget_register_callback(APPLET_WIDGET(l_applet),
 				  "properties",
-				  "Properties...",
+				  _("Properties..."),
 				  properties_window,
 				  NULL);
   /* attach a refresh button */
   applet_widget_register_callback(APPLET_WIDGET(l_applet),
 				  "refresh",
-				  "Refresh Image",
+				  _("Refresh Image"),
 				  bussign_refresh_widget_dummy,
 				  NULL);
 
@@ -166,8 +168,6 @@ create_bussign_widget(GtkWidget *a_parent)
   GtkWidget              *l_frame = NULL;
   GtkStyle               *l_style = NULL;
 
-  gtk_widget_push_visual(gdk_imlib_get_visual());
-  gtk_widget_push_colormap(gdk_imlib_get_colormap());
   l_style = gtk_widget_get_style(a_parent);
   
   /* refresh the image */
@@ -194,8 +194,6 @@ create_bussign_widget(GtkWidget *a_parent)
   gtk_frame_set_shadow_type(GTK_FRAME(l_frame), GTK_SHADOW_IN);
   /* add the pixmap to the frame */
   gtk_container_add(GTK_CONTAINER(l_frame), sg_pixmap);
-  gtk_widget_pop_colormap();
-  gtk_widget_pop_visual();
   return l_frame;
 }
   
@@ -226,9 +224,24 @@ refresh_imagefile(void)
     }
   fclose(l_file);
   /*
+<<<<<<< bussign.c
+    l_image_location = g_malloc(strlen(sg_properties.url) + 5 + 2);
+    strcpy(l_image_location, "wget ");
+    strcat(l_image_location, sg_properties.url);
+=======
     l_return = system("wget -q http://www1.netscape.com/fishcam/livefishcamsmall.cgi?livesigncamsmall");
+>>>>>>> 1.5
   */
+<<<<<<< bussign.c
+  
+  unlink (IMAGE_FILENAME);
+  l_return = system("wget -q http://www1.netscape.com/fishcam/livefishcamsmall.cgi?livesigncamsmall");
+  /* 
+     g_free(l_image_location);
+  */
+=======
  ec:
+>>>>>>> 1.5
   return l_return;
 }
 
@@ -264,13 +277,13 @@ about_window(AppletWidget *a_widget, gpointer a_data)
   l_author[0] = "Christopher Blizzard";
   l_author[1] = NULL;
 
-  l_about = gnome_about_new ( "The Bus Sign Applet", "1.0",
-			      "(c) 1998 the Free Software Foundation",
+  l_about = gnome_about_new ( _("The Bus Sign Applet", "1.0"),
+			      _("(c) 1998 the Free Software Foundation"),
 			      l_author,
-			      "This applet is a total waste of time. "
-			      "Get back to work!\n\n"
-			      "To fill in the sign please see:\n\n"
-			      "http://people.netscape.com/mtoy/sign/index.html",
+			      _("This applet is a total waste of time. "
+				"Get back to work!\n\n"
+				"To fill in the sign please see:\n\n"
+				"http://people.netscape.com/mtoy/sign/index.html"),
 			      NULL);
   gtk_widget_show(l_about);
   return;
@@ -287,7 +300,7 @@ properties_window(AppletWidget *a_widget, gpointer a_data)
   /* new box.. */
   l_property_box = gnome_property_box_new();
   /* set the title */
-  gtk_window_set_title(GTK_WINDOW(l_property_box), "GNOME Bus Sign Applet Properties");
+  gtk_window_set_title(GTK_WINDOW(l_property_box), _("GNOME Bus Sign Applet Properties"));
   /* set up a new vbox */
   l_vbox = gtk_vbox_new(GNOME_PAD, FALSE);
   gtk_container_border_width(GTK_CONTAINER(l_vbox), GNOME_PAD);
