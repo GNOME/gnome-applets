@@ -968,6 +968,10 @@ properties_box(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
     gtk_container_set_border_width(GTK_CONTAINER(vbox1), GNOME_PAD_SMALL);
     /* gtk_container_add(GTK_CONTAINER(scrolled_window), vbox1); does not work */
     gtk_scrolled_window_add_with_viewport(GTK_SCROLLED_WINDOW(scrolled_window), vbox1);
+    gtk_container_set_focus_hadjustment (GTK_CONTAINER (vbox1),
+        gtk_scrolled_window_get_hadjustment (GTK_SCROLLED_WINDOW (scrolled_window)));
+    gtk_container_set_focus_vadjustment (GTK_CONTAINER (vbox1),
+        gtk_scrolled_window_get_vadjustment (GTK_SCROLLED_WINDOW (scrolled_window)));
 
     for(i=0; i < MAX_NUM_MACROS; i++)
 	{
