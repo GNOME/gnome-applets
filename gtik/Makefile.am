@@ -14,6 +14,9 @@ serverdir       = $(libdir)/bonobo/servers
 server_in_files = GNOME_GtikApplet.server.in
 server_DATA     = $(server_in_files:.server.in=.server)
 
+uidir = $(datadir)/gnome-2.0/ui
+ui_DATA = GNOME_GtikApplet.xml
+
 @INTLTOOL_SERVER_RULE@
 
 schemadir 	= @GCONF_SCHEMA_FILE_DIR@
@@ -22,6 +25,7 @@ schema_DATA	= gtik.schemas
 EXTRA_DIST = \
 	README AUTHORS ChangeLog \
 	$(server_in_files)	\
+	$(ui_DATA)		\
 	$(schema_DATA)
 	
 install-data-local:

@@ -1304,17 +1304,6 @@ g_print ("configured \n");
         	BONOBO_UI_VERB_END
 	};
 
-	static const char gtik_applet_menu_xml [] =
-		"<popup name=\"button3\">\n"
-		"   <menuitem name=\"Item 1\" verb=\"Props\" _label=\"Properties\"\n"
-		"             pixtype=\"stock\" pixname=\"gtk-properties\"/>\n"
-		"   <menuitem name=\"Item 2\" verb=\"Refresh\" _label=\"Refresh\"\n"
-		"             pixtype=\"stock\" pixname=\"gtk-refresh\"/>\n"
-		"   <menuitem name=\"Item 3\" verb=\"About\" _label=\"About\"\n"
-		"             pixtype=\"stock\" pixname=\"gnome-stock-about\"/>\n"
-		"</popup>\n";
-
-
 	/*-----------------------------------------------------------------*/
 	static gboolean gtik_applet_fill (PanelApplet *applet){
 		StockData *stockdata;
@@ -1383,10 +1372,12 @@ g_print ("configured \n");
 		properties_load(stockdata);
 		properties_set(stockdata,FALSE);
 		
-		panel_applet_setup_menu (PANEL_APPLET (applet),
-				         gtik_applet_menu_xml,
-				         gtik_applet_menu_verbs,
-				         stockdata);
+		panel_applet_setup_menu_from_file (PANEL_APPLET (applet),
+                                                   NULL,
+				                   "GNOME_GtikApplet.xml",
+                                                   NULL,
+				                   gtik_applet_menu_verbs,
+				                   stockdata);
 
 		/* KEEPING TIMER ID FOR CLEANUP IN DESTROY */
 		stockdata->drawTimeID = gtk_timeout_add(100,Repaint,stockdata);
