@@ -253,7 +253,7 @@ launcher_table_update (void)
 		button = gtk_button_new();
 		gtk_button_set_relief (GTK_BUTTON (button), GTK_RELIEF_NONE);
 		pixmap = gnome_stock_pixmap_widget_at_size (
-			NULL, dentry->icon, 16, 16);
+			NULL, dentry->icon, 18, 18);
 		gtk_container_set_border_width (GTK_CONTAINER (button), 0);
 		gtk_container_add (GTK_CONTAINER (button), pixmap);
 		gtk_widget_show (pixmap);
