@@ -75,20 +75,23 @@ start_procman_cb (BonoboUIComponent *uic, gpointer data, const gchar *name)
 }
               
 void
-multiload_change_size_cb(PanelApplet *applet, gint arg1, gpointer data)
+multiload_change_size_cb(PanelApplet *applet, gint size, gpointer data)
 {
 	gint i;
 	MultiloadApplet *ma = (MultiloadApplet *)data;
 
-	for (i = 0; i < 5; i++)
-		if (ma->graphs[i]->visible)
-		{
-  	  	if (ma->graphs[i]->orient)
-				gtk_widget_set_size_request (ma->graphs[i]->main_widget, ma->graphs[i]->pixel_size, ma->graphs[i]->size);
-			else
-				gtk_widget_set_size_request (ma->graphs[i]->main_widget, ma->graphs[i]->size, ma->graphs[i]->pixel_size);
-		}
-		
+	for (i = 0; i < 5; i++) {
+		ma->graphs[i]->pixel_size = size;
+  	  	if (ma->graphs[i]->orient) 
+  	  		gtk_widget_set_size_request (ma->graphs[i]->main_widget, 
+					             ma->graphs[i]->pixel_size, 
+						     ma->graphs[i]->size);
+		else
+			gtk_widget_set_size_request (ma->graphs[i]->main_widget, 
+							     ma->graphs[i]->size, 
+							     ma->graphs[i]->pixel_size);
+	}
+	
 	return;
 }
 
@@ -100,7 +103,6 @@ multiload_change_orient_cb(PanelApplet *applet, gint arg1, gpointer data)
 	return;
 }
 
-/* FIXME: i'm not sure if this is setup wrong or libpanel is broken.  this doesn't work at all. */
 void
 multiload_destroy_cb(GtkWidget *widget, gpointer data)
 {
@@ -206,7 +208,7 @@ multiload_applet_refresh(MultiloadApplet *ma)
 {
 	gint i;
 	PanelAppletOrient orientation;
-		
+	
 	/* stop and free the old graphs */
 	for (i = 0; i < 5; i++)
 	{
@@ -224,8 +226,11 @@ multiload_applet_refresh(MultiloadApplet *ma)
 	
 	orientation = panel_applet_get_orient(ma->applet);
 	
-	if ( (orientation == PANEL_APPLET_ORIENT_UP) || (orientation == PANEL_APPLET_ORIENT_DOWN) )
+	if ( (orientation == PANEL_APPLET_ORIENT_UP) || 
+	     (orientation == PANEL_APPLET_ORIENT_DOWN) ) {
+	     	g_print ("hbox \n");
 		ma->box = gtk_hbox_new(FALSE, 0);
+	}
 	else
 		ma->box = gtk_vbox_new(FALSE, 0);
 	
@@ -241,15 +246,17 @@ multiload_applet_refresh(MultiloadApplet *ma)
 	
 	/* only start and display the graphs the user has turned on */
 
-	for (i = 0; i < 5; i++)
-		if (ma->graphs[i]->visible)
-		{
-			gtk_box_pack_start(GTK_BOX(ma->box), ma->graphs[i]->main_widget, FALSE, FALSE, 1);
-			load_graph_start(ma->graphs[i]);
-		}
-	
-	gtk_widget_show_all(GTK_WIDGET(ma->applet));
-		
+	for (i = 0; i < 5; i++) {
+	    gtk_box_pack_start(GTK_BOX(ma->box), 
+			       ma->graphs[i]->main_widget, 
+			       FALSE, FALSE, 1);
+	    if (ma->graphs[i]->visible) {
+	    	gtk_widget_show_all (ma->graphs[i]->main_widget);
+		load_graph_start(ma->graphs[i]);
+	    }
+	}
+	gtk_widget_show (ma->box);
+			
 	return;
 }
 
@@ -285,12 +292,15 @@ multiload_applet_new(PanelApplet *applet, const gchar *iid, gpointer data)
 	ma->graphs[4] = loadavg_applet_new(applet, NULL);
 
 	/* only start and display the graphs the user has turned on */
-	for (i = 0; i < 5; i++)
-		if (ma->graphs[i]->visible)
-		{
-			gtk_box_pack_start(GTK_BOX(box), ma->graphs[i]->main_widget, FALSE, FALSE, 1);
-			load_graph_start(ma->graphs[i]);
-		}
+	for (i = 0; i < 5; i++) {
+	    gtk_box_pack_start(GTK_BOX(box), 
+			       ma->graphs[i]->main_widget, 
+			       FALSE, FALSE, 1);
+	    if (ma->graphs[i]->visible) {
+	    	gtk_widget_show_all (ma->graphs[i]->main_widget);
+		load_graph_start(ma->graphs[i]);
+	    }
+	}
 
 	{
 		/* we need to pass 'ma' into the properties_cb or else every instance of multiload will use the same properties dialog*/
@@ -319,8 +329,11 @@ multiload_applet_new(PanelApplet *applet, const gchar *iid, gpointer data)
 				G_CALLBACK(multiload_destroy_cb), ma);
 	g_signal_connect(G_OBJECT(applet), "enter_notify_event",
 				G_CALLBACK(multiload_enter_cb), ma);
-					
-	gtk_widget_show_all(GTK_WIDGET(applet));
+	multiload_change_size_cb (ma->applet,
+				  panel_applet_get_size (ma->applet),
+				  ma);	
+	gtk_widget_show (box);			
+	gtk_widget_show(GTK_WIDGET(applet));
 			
 	return TRUE;
 }

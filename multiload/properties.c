@@ -77,50 +77,16 @@ property_toggled_cb(GtkWidget *widget, gpointer name)
 	if (active)
 	{
 		for (i = 0; i < 5; i++)
-			gtk_widget_set_sensitive(ma->check_boxes[i], TRUE);
-		
-		switch(prop_type)
-		{
-			case PROP_CPU:
-			{
-				ma->graphs[prop_type] = cpuload_applet_new(ma->applet, NULL);
-				break;
-			}
-			case PROP_MEM:
-			{
-				ma->graphs[prop_type] = memload_applet_new(ma->applet, NULL);
-				break;
-			}
-			case PROP_NET:
-			{
-				ma->graphs[prop_type] = netload_applet_new(ma->applet, NULL);
-				break;
-			}
-			case PROP_SWAP:
-			{
-				ma->graphs[prop_type] = swapload_applet_new(ma->applet, NULL);
-				break;
-			}
-			case PROP_AVG:
-			{
-				ma->graphs[prop_type] = loadavg_applet_new(ma->applet, NULL);
-				break;
-			}
-			default:
-				g_assert_not_reached();
-		}
-		
-		gtk_box_pack_start(GTK_BOX(ma->box), ma->graphs[prop_type]->main_widget, FALSE, FALSE, 1);
-		gtk_widget_show_all(ma->box);
+			gtk_widget_set_sensitive(ma->check_boxes[i], TRUE);	
+		gtk_widget_show_all (ma->graphs[prop_type]->main_widget);
+		ma->graphs[prop_type]->visible = TRUE;
 		load_graph_start(ma->graphs[prop_type]);
 	}
 	else
 	{
 		load_graph_stop(ma->graphs[prop_type]);
-		gtk_widget_destroy(ma->graphs[prop_type]->main_widget);
-		load_graph_unalloc(ma->graphs[prop_type]);
-		ma->graphs[prop_type]->visible = FALSE;;
-		
+		gtk_widget_hide (ma->graphs[prop_type]->main_widget);
+		ma->graphs[prop_type]->visible = FALSE;
 		properties_set_insensitive(ma);
 	}
 	
@@ -150,12 +116,10 @@ spin_button_changed_cb(GtkWidget *widget, gpointer name)
 		{
 			for (i = 0; i < 5; i++)
 			{
-				if (!ma->graphs[i]->visible)
-					continue;
-					
 				load_graph_stop(ma->graphs[i]);
 				ma->graphs[i]->speed = value;
-				load_graph_start(ma->graphs[i]);
+				if (ma->graphs[i]->visible)
+					load_graph_start(ma->graphs[i]);
 			}
 			
 			break;
@@ -164,16 +128,18 @@ spin_button_changed_cb(GtkWidget *widget, gpointer name)
 		{
 			for (i = 0; i < 5; i++)
 			{
-				if (!ma->graphs[i]->visible)
-					continue;
-				
-				/* the panel includes a 1 pixel border and the frame is 1 pixel wide */
-				ma->graphs[i]->size = value - 4;
+				ma->graphs[i]->size = value ;
 				
 				if (ma->graphs[i]->orient)
-					gtk_widget_set_size_request (ma->graphs[i]->main_widget, ma->graphs[i]->pixel_size, ma->graphs[i]->size);
+					gtk_widget_set_size_request (
+						ma->graphs[i]->main_widget, 
+						ma->graphs[i]->pixel_size, 
+						ma->graphs[i]->size);
 			    else
-					gtk_widget_set_size_request (ma->graphs[i]->main_widget, ma->graphs[i]->size, ma->graphs[i]->pixel_size);
+					gtk_widget_set_size_request (
+						ma->graphs[i]->main_widget, 
+						ma->graphs[i]->size, 
+						ma->graphs[i]->pixel_size);
 			}
 			
 			break;
@@ -361,7 +327,7 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	
 	label = gtk_label_new(label_text);
 	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 3);
-	spin_button = gtk_spin_button_new_with_range(0, 1000, 5);
+	spin_button = gtk_spin_button_new_with_range(10, 1000, 5);
 	g_object_set_data(G_OBJECT(spin_button), "user_data", ma);
 	g_object_set_data(G_OBJECT(spin_button), "prop_type",
 				GINT_TO_POINTER(PROP_SIZE));
@@ -378,7 +344,7 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	
 	label = gtk_label_new(_("System monitor speed: "));
 	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 3);
-	spin_button = gtk_spin_button_new_with_range(0, 9999, 10);
+	spin_button = gtk_spin_button_new_with_range(50, 10000, 50);
 	g_object_set_data(G_OBJECT(spin_button), "user_data", ma);
 	g_object_set_data(G_OBJECT(spin_button), "prop_type",
 				GINT_TO_POINTER(PROP_SPEED));
@@ -397,7 +363,6 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	gtk_box_pack_start(GTK_BOX(GTK_DIALOG(dialog)->vbox), frame, FALSE, FALSE, 0);
 	
 	notebook = gtk_notebook_new();
-	gtk_notebook_set_homogeneous_tabs(GTK_NOTEBOOK(notebook), TRUE);
 	gtk_container_set_border_width(GTK_CONTAINER(notebook), 5);
 	gtk_container_add(GTK_CONTAINER(frame), notebook);
 	
@@ -435,8 +400,7 @@ multiload_properties_cb(BonoboUIComponent *uic, gpointer data, const gchar *name
 	
 	if (dialog != NULL)
 	{
-	    gdk_window_show(dialog->window);
-	    gdk_window_raise(dialog->window);
+	    gtk_window_present (GTK_WINDOW (dialog));
 	    return;
 	}
 	

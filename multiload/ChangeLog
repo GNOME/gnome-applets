@@ -1,3 +1,17 @@
+2002-02-19  Kevin Vandersloot <kfv101@psu.edu>
+
+	* clean up a lot of this applet wrt sizing and adding
+	removing graphs.
+
+	* main.c, load-graph.c: create the graphs and add all of them
+	to the box, but only show the visible ones.
+
+	* properties.c: make the spin buttons have lower bounds
+	so the user can't make the size 0 for instance. Hide or
+	show the graph when the user makes a change.
+
+	* load-graph.c: size the drawing area only on configure
+
 2002-02-17  Kevin Vandersloot <kfv101@psu.edu>
 
 	* multiload.c: pass ma not the applet to the right click 
