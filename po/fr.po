@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 2.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-03-27 23:25+0100\n"
+"POT-Creation-Date: 2004-07-21 18:33+0100\n"
 "PO-Revision-Date: 2004-03-27 23:17+0100\n"
 "Last-Translator: Christophe Merlet (RedFox) <redfox@redfoxcenter.org>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
@@ -61,7 +61,7 @@ msgid "AccessX Status Applet Factory"
 msgstr "Fabrique pour l'applet d'état AccessX"
 
 #: accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:2
-#: accessx-status/applet.c:1245
+#: accessx-status/applet.c:1332
 msgid "Keyboard Accessibility Status"
 msgstr "État d'accessibilité du clavier"
 
@@ -84,14 +84,14 @@ msgstr "Affiche l'état des fonctionnalités d'accessibilité du clavier"
 msgid "Utility"
 msgstr "Utilitaire"
 
-#: accessx-status/applet.c:134 battstat/battstat_applet.c:898
+#: accessx-status/applet.c:136 battstat/battstat_applet.c:909
 #: cdplayer/cdplayer.c:603 charpick/charpick.c:556 drivemount/drivemount.c:553
-#: geyes/geyes.c:202 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:570
-#: gtik/gtik.c:719 gweather/gweather-about.c:47 mailcheck/mailcheck.c:2461
+#: geyes/geyes.c:202 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:608
+#: gtik/gtik.c:719 gweather/gweather-about.c:47 mailcheck/mailcheck.c:2462
 #: mini-commander/src/about.c:50 mixer/mixer.c:1332
 #: modemlights/modemlights.c:115 multiload/main.c:60
 #: stickynotes/stickynotes_applet_callbacks.c:230
-#: wireless/wireless-applet.c:572
+#: wireless/wireless-applet.c:574
 msgid "translator_credits"
 msgstr ""
 "Mainteneur :\n"
@@ -100,47 +100,47 @@ msgstr ""
 "Contributeur :\n"
 "Christophe Fergeau <teuf@users.sourceforge.net>"
 
-#: accessx-status/applet.c:155 accessx-status/applet.c:983
-#: accessx-status/applet.c:1081 accessx-status/applet.c:1248
+#: accessx-status/applet.c:157 accessx-status/applet.c:992
+#: accessx-status/applet.c:1132 accessx-status/applet.c:1335
 msgid "AccessX Status"
 msgstr "État AccessX"
 
-#: accessx-status/applet.c:156
+#: accessx-status/applet.c:158
 msgid "Copyright (C) 2003 Sun Microsystems"
 msgstr "Copyright © 2003 Sun Microsystems"
 
-#: accessx-status/applet.c:157
+#: accessx-status/applet.c:159
 msgid "Shows the state of AccessX features such as latched modifiers"
 msgstr "Affiche l'état des fonctionnalités AccessX tel que les modificateurs"
 
-#: accessx-status/applet.c:193
+#: accessx-status/applet.c:195
 #, c-format
 msgid "There was an error launching the help viewer : %s"
 msgstr "Il y a eu une erreur au lancement du visionneur d'aide : %s"
 
-#: accessx-status/applet.c:228
+#: accessx-status/applet.c:234
 #, c-format
 msgid "There was an error launching the keyboard capplet : %s"
 msgstr "Il y a eu une erreur au lancement de la capplet clavier : %s"
 
 #. Note to translators: the first letter of the alphabet, not the indefinite article
-#: accessx-status/applet.c:474 accessx-status/applet.c:512
+#: accessx-status/applet.c:483 accessx-status/applet.c:521
 msgid "a"
 msgstr "a"
 
-#: accessx-status/applet.c:984 accessx-status/applet.c:1082
+#: accessx-status/applet.c:993 accessx-status/applet.c:1133
 msgid "Shows keyboard status when accessibility features are used."
 msgstr ""
 "Affiche l'état du clavier lorsque les fonctionnalités d'accessibilité sont "
 "utilisées."
 
-#: accessx-status/applet.c:1250
+#: accessx-status/applet.c:1337
 msgid "Displays current state of keyboard accessibility features"
 msgstr "Affiche l'état courant des fonctionnalités d'accessibilité du clavier"
 
 #. The long name of the applet in the About dialog.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:919 battstat/battstat_applet.c:1671
+#: battstat/battstat_applet.c:930 battstat/battstat_applet.c:1682
 msgid "Battery Charge Monitor"
 msgstr "Moniteur de charge de batterie"
 
@@ -149,7 +149,7 @@ msgid "Battstat Factory"
 msgstr "Fabrique pour Battstat"
 
 #: battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: battstat/battstat_applet.c:1672
+#: battstat/battstat_applet.c:1683
 msgid "Monitor a laptop's remaining power"
 msgstr "Surveille la puissance restante d'un portable"
 
@@ -264,22 +264,22 @@ msgstr "Cette applet ne fonctionne pas correctement (si elle fonctionne).\n"
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:370 battstat/battstat_applet.c:956
+#: battstat/battstat_applet.c:370 battstat/battstat_applet.c:967
 msgid "High"
 msgstr "Haut"
 
 #. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:372 battstat/battstat_applet.c:958
+#: battstat/battstat_applet.c:372 battstat/battstat_applet.c:969
 msgid "Low"
 msgstr "Faible"
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:374 battstat/battstat_applet.c:960
+#: battstat/battstat_applet.c:374 battstat/battstat_applet.c:971
 msgid "Critical"
 msgstr "Critique"
 
 #. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:376 battstat/battstat_applet.c:962
+#: battstat/battstat_applet.c:376 battstat/battstat_applet.c:973
 msgid "Charging"
 msgstr "Changement"
 
@@ -297,7 +297,7 @@ msgstr "La batterie est totalement rechargée"
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:500 battstat/battstat_applet.c:1120
+#: battstat/battstat_applet.c:511 battstat/battstat_applet.c:1131
 #, c-format
 msgid ""
 "System is running on battery power\n"
@@ -309,7 +309,7 @@ msgstr ""
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:504 battstat/battstat_applet.c:1128
+#: battstat/battstat_applet.c:515 battstat/battstat_applet.c:1139
 #, c-format
 msgid ""
 "System is running on AC power\n"
@@ -320,21 +320,21 @@ msgstr ""
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:510 battstat/battstat_applet.c:1052
-#: battstat/battstat_applet.c:1141
+#: battstat/battstat_applet.c:521 battstat/battstat_applet.c:1063
+#: battstat/battstat_applet.c:1152
 #, c-format
 msgid "System is running on battery power"
 msgstr "Le système utilise sur sa batterie"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:513 battstat/battstat_applet.c:1058
-#: battstat/battstat_applet.c:1147
+#: battstat/battstat_applet.c:524 battstat/battstat_applet.c:1069
+#: battstat/battstat_applet.c:1158
 #, c-format
 msgid "System is running on AC power"
 msgstr "Le système utilise le courant du secteur"
 
-#: battstat/battstat_applet.c:527 wireless/wireless-applet.c:146
+#: battstat/battstat_applet.c:538 wireless/wireless-applet.c:146
 #, c-format
 msgid "N/A"
 msgstr "N/D"
@@ -344,7 +344,7 @@ msgstr "N/D"
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:651 battstat/battstat_applet.c:1032
+#: battstat/battstat_applet.c:662 battstat/battstat_applet.c:1043
 #, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
 msgstr "Le système fonctionne sur la batterie. Batterie : %d%% (%s)"
@@ -354,7 +354,7 @@ msgstr "Le système fonctionne sur la batterie. Batterie : %d%% (%s)"
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:658 battstat/battstat_applet.c:1039
+#: battstat/battstat_applet.c:669 battstat/battstat_applet.c:1050
 #, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
 msgstr "Le système fonctionne sur le secteur. Batterie : %d%% (%s)"
@@ -363,7 +363,7 @@ msgstr "Le système fonctionne sur le secteur. Batterie : %d%% (%s)"
 #. battery frame when the computer is using battery
 #. power and the battery isn't present. Not a
 #. possible combination, I guess... :)
-#: battstat/battstat_applet.c:669
+#: battstat/battstat_applet.c:680
 #, c-format
 msgid "System is running on battery power. Battery: Not present"
 msgstr "Le système fonctionne sur la batterie. Batterie : Non présente"
@@ -371,7 +371,7 @@ msgstr "Le système fonctionne sur la batterie. Batterie : Non présente"
 #. This string will display as a tooltip over the
 #. battery frame when the computer is using AC
 #. power and the battery isn't present.
-#: battstat/battstat_applet.c:675
+#: battstat/battstat_applet.c:686
 #, c-format
 msgid "System is running on AC power. Battery: Not present"
 msgstr "Le système fonctionne sur le secteur. Batterie : Non présente"
@@ -379,19 +379,20 @@ msgstr "Le système fonctionne sur le secteur. Batterie : Non présente"
 #. Displayed as a tooltip over the battery meter when there is
 #. a battery present. %d will hold the current charge and %s will
 #. hold the status of the battery, (High, Low, Critical, Charging.
-#: battstat/battstat_applet.c:684
+#: battstat/battstat_applet.c:695
 #, c-format
 msgid "Battery: %d%% (%s)"
 msgstr "Batterie : %d%% (%s)"
 
 #. Displayed as a tooltip over the battery meter when no
 #. battery is present.
-#: battstat/battstat_applet.c:691
+#: battstat/battstat_applet.c:702
 #, c-format
 msgid "Battery: Not present"
 msgstr "Batterie : absente"
 
-#: battstat/battstat_applet.c:789
+#. Displayed if the APM device couldn't be opened. (Used under *BSD)
+#: battstat/battstat_applet.c:800
 msgid ""
 "Can't open the APM device!\n"
 "\n"
@@ -402,7 +403,8 @@ msgstr ""
 "\n"
 "Vérifiez que vous avez les droits de lecture sur ce périphérique."
 
-#: battstat/battstat_applet.c:798
+#. Displayed if the APM system is disabled (Used under *BSD)
+#: battstat/battstat_applet.c:809
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
@@ -411,7 +413,7 @@ msgstr ""
 "Le système de gestion APM est apparemment desactivé.\n"
 "Essayez de lancer « apm -e 1 » (FreeBSD).\n"
 
-#: battstat/battstat_applet.c:854
+#: battstat/battstat_applet.c:865
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -421,16 +423,16 @@ msgstr ""
 "s\n"
 "Veuillez essayer de corriger cette erreur"
 
-#: battstat/battstat_applet.c:858
+#: battstat/battstat_applet.c:869
 #, c-format
 msgid "The Suspend command '%s' was unsuccessful."
 msgstr "La commande de suspension « %s » n'a pas été fructueuse."
 
-#: battstat/battstat_applet.c:860
+#: battstat/battstat_applet.c:871
 msgid "The Suspend command was unsuccessful."
 msgstr "La commande de suspension n'a pas été fructueuse."
 
-#: battstat/battstat_applet.c:868
+#: battstat/battstat_applet.c:879
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -441,20 +443,20 @@ msgstr ""
 
 #. if your charset supports it, please replace the "o" in
 #. * "Jorgen" into U00F6
-#: battstat/battstat_applet.c:886
+#: battstat/battstat_applet.c:897
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jorgen Pehrson <jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:921
+#: battstat/battstat_applet.c:932
 msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 msgstr "© 2000 The Gnulix Society, © 2002 Free Software Foundation"
 
-#: battstat/battstat_applet.c:922
+#: battstat/battstat_applet.c:933
 msgid "This utility shows the status of your laptop battery."
 msgstr ""
 "Cet utilitaire affiche l'état de la batterie de votre ordinateur portable."
 
-#: battstat/battstat_applet.c:1597
+#: battstat/battstat_applet.c:1608
 msgid ""
 "Can't access ACPI events in /var/run/acpid.socket! Make sure the ACPI "
 "subsystem is working and the acpid daemon is running."
@@ -510,7 +512,7 @@ msgid "Battery Charge Monitor Preferences"
 msgstr "Préférences du moniteur de charge de batterie"
 
 #: battstat/battstat_applet.glade.h:13 drivemount/properties.c:358
-#: gweather/gweather-pref.c:753 mailcheck/mailcheck.c:2047
+#: gweather/gweather-pref.c:753 mailcheck/mailcheck.c:2048
 #: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:563
 msgid "General"
 msgstr "Général"
@@ -568,11 +570,11 @@ msgid "_Yellow:"
 msgstr "_Jaune :"
 
 #: battstat/properties.c:297 drivemount/drivemount.c:510
-#: drivemount/properties.c:604 mailcheck/mailcheck.c:2314
-#: mailcheck/mailcheck.c:2602 mini-commander/src/preferences.c:393
+#: drivemount/properties.c:604 mailcheck/mailcheck.c:2315
+#: mailcheck/mailcheck.c:2603 mini-commander/src/preferences.c:393
 #: mixer/mixer.c:1445 stickynotes/stickynotes_applet_callbacks.c:207
 #: stickynotes/stickynotes_applet_callbacks.c:371
-#: wireless/wireless-applet.c:542 wireless/wireless-applet.c:626
+#: wireless/wireless-applet.c:544 wireless/wireless-applet.c:628
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Il y a eu une erreur lors de l'affichage de l'aide : %s"
@@ -879,7 +881,7 @@ msgstr "_Parcourir..."
 msgid "_Eject"
 msgstr "É_jecter"
 
-#: drivemount/drivemount.c:451 mailcheck/mailcheck.c:661
+#: drivemount/drivemount.c:451 mailcheck/mailcheck.c:662
 #, c-format
 msgid "There was an error executing %s: %s"
 msgstr "Il y a eu une erreur à l'exécution de « %s » : %s"
@@ -889,7 +891,7 @@ msgid "Cannot browse device"
 msgstr "Ne peut parcourir le périphérique"
 
 #: drivemount/drivemount.c:516 drivemount/properties.c:610
-#: mailcheck/mailcheck.c:2320 mailcheck/mailcheck.c:2608
+#: mailcheck/mailcheck.c:2321 mailcheck/mailcheck.c:2609
 msgid "Error displaying help"
 msgstr "Erreur lors de l'affichage de l'aide"
 
@@ -949,8 +951,8 @@ msgstr "Sélecionnez le répertoire de montage"
 msgid "_Update interval:"
 msgstr "_Intervalle de mise à jour :"
 
-#: drivemount/properties.c:415 mailcheck/mailcheck.c:2118
-#: mailcheck/mailcheck.c:2124 modemlights/properties.c:468
+#: drivemount/properties.c:415 mailcheck/mailcheck.c:2119
+#: mailcheck/mailcheck.c:2125 modemlights/properties.c:468
 msgid "seconds"
 msgstr "secondes"
 
@@ -2358,7 +2360,7 @@ msgstr "Désactivé"
 msgid "Press a key or press Esc to cancel"
 msgstr "Pressez une touche ou appuyez sur Echap pour annuler"
 
-#: gkb-new/preset.c:155 gkb-new/preset.c:158
+#: gkb-new/preset.c:154 gkb-new/preset.c:157
 msgid "Undefined"
 msgstr "Non défini"
 
@@ -2516,7 +2518,7 @@ msgid "GNOME keyboard layout indicator"
 msgstr "Indicateur d'agencements clavier GNOME"
 
 #: gswitchit/GNOME_KeyboardApplet.server.in.in.h:3
-#: gswitchit/gswitchit-applet.c:575
+#: gswitchit/gswitchit-applet.c:613
 msgid "Keyboard Indicator"
 msgstr "Indicateur de claviers"
 
@@ -2529,19 +2531,19 @@ msgstr "Fabrique de l'applet Clavier"
 msgid "Keyboard Indicator (%s)"
 msgstr "Indicateur de claviers (%s)"
 
-#: gswitchit/gswitchit-applet.c:578
+#: gswitchit/gswitchit-applet.c:616
 msgid "Copyright (c) Sergey V. Oudaltsov 1999-2004"
 msgstr "Copyright © Sergey V. Oudaltsov 1999-2004"
 
-#: gswitchit/gswitchit-applet.c:580
+#: gswitchit/gswitchit-applet.c:618
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "Applet GNOME d'indication d'agencements clavier"
 
-#: gswitchit/gswitchit-applet.c:734
+#: gswitchit/gswitchit-applet.c:772
 msgid "XKB initialization error"
 msgstr "Erreur d'initialisation de XKB"
 
-#: gswitchit/gswitchit-applet.c:742
+#: gswitchit/gswitchit-applet.c:780
 msgid "Error loading XKB configuration registry"
 msgstr "Erreur de chargement du registre de configuration de XKB"
 
@@ -2734,7 +2736,7 @@ msgstr "_Mettre à jour"
 msgid "Could not retrieve the stock data."
 msgstr "Ne peut récupérer les données boursières."
 
-#: gtik/gtik.c:309 gweather/gweather-applet.c:426
+#: gtik/gtik.c:309 gweather/gweather-applet.c:456
 msgid "Updating..."
 msgstr "Mise à jour..."
 
@@ -2776,7 +2778,7 @@ msgstr "Préférences du téléscripteur de valeurs boursières"
 msgid "Symbols"
 msgstr "Symboles"
 
-#: gtik/gtik.c:1395 mailcheck/mailcheck.c:2389
+#: gtik/gtik.c:1395 mailcheck/mailcheck.c:2390
 msgid "Behavior"
 msgstr "Comportement"
 
@@ -2788,8 +2790,8 @@ msgstr "Mettre à jour"
 msgid "Stock update fre_quency:"
 msgstr "Fré_quence de mise à jour des valeurs :"
 
-#: gtik/gtik.c:1414 gweather/gweather-pref.c:723 mailcheck/mailcheck.c:2095
-#: mailcheck/mailcheck.c:2101
+#: gtik/gtik.c:1414 gweather/gweather-pref.c:723 mailcheck/mailcheck.c:2096
+#: mailcheck/mailcheck.c:2102
 msgid "minutes"
 msgstr "minutes"
 
@@ -3071,11 +3073,11 @@ msgstr ""
 "\n"
 "Une applet pour surveiller les conditions météo locales"
 
-#: gweather/gweather-applet.c:306
+#: gweather/gweather-applet.c:336
 msgid "GNOME Weather"
 msgstr "Applet GNOME Météo"
 
-#: gweather/gweather-dialog.c:73 gweather/gweather-dialog.c:300
+#: gweather/gweather-dialog.c:73 gweather/gweather-dialog.c:302
 msgid "Forecast"
 msgstr "Prévisions"
 
@@ -3123,31 +3125,31 @@ msgstr "Visibilité :"
 msgid "Current Conditions"
 msgstr "Conditions actuelles"
 
-#: gweather/gweather-dialog.c:290
+#: gweather/gweather-dialog.c:292
 msgid "Forecast Report"
 msgstr "Rapport météorologique prévisionel"
 
-#: gweather/gweather-dialog.c:290
+#: gweather/gweather-dialog.c:292
 msgid "See the ForeCast Details"
 msgstr "Voir les détails de la prévision"
 
-#: gweather/gweather-dialog.c:325
+#: gweather/gweather-dialog.c:327
 msgid "_Visit Weather.com"
 msgstr "_Visiter Weather.com"
 
-#: gweather/gweather-dialog.c:326
+#: gweather/gweather-dialog.c:328
 msgid "URL link Button"
 msgstr "Bouton de lien URL"
 
-#: gweather/gweather-dialog.c:326
+#: gweather/gweather-dialog.c:328
 msgid "Click to Enter Weather.com"
 msgstr "Cliquer pour visualiser Weather.com"
 
-#: gweather/gweather-dialog.c:334
+#: gweather/gweather-dialog.c:336
 msgid "Radar Map"
 msgstr "Carte radar"
 
-#: gweather/gweather-dialog.c:410
+#: gweather/gweather-dialog.c:412
 msgid ""
 "Detailed forecast not available for this location.\n"
 "Please try the state forecast; note that IWIN forecasts are available only "
@@ -3157,7 +3159,7 @@ msgstr ""
 "Essayez les prévisions par état ; notez que les prévisions IWIN ne sont "
 "disponibles que pour les villes américaines."
 
-#: gweather/gweather-dialog.c:412
+#: gweather/gweather-dialog.c:414
 msgid ""
 "State forecast not available for this location.\n"
 "Please try the detailed forecast; note that IWIN forecasts are available "
@@ -3377,9 +3379,9 @@ msgstr "Nord-Ouest"
 msgid "North - Northwest"
 msgstr "Nord - Nord-Ouest"
 
-#: gweather/weather.c:143 gweather/weather.c:1967 gweather/weather.c:1979
-#: gweather/weather.c:1991 gweather/weather.c:2003 gweather/weather.c:2021
-#: gweather/weather.c:2033
+#: gweather/weather.c:143 gweather/weather.c:2011 gweather/weather.c:2023
+#: gweather/weather.c:2035 gweather/weather.c:2047 gweather/weather.c:2065
+#: gweather/weather.c:2077
 msgid "Unknown"
 msgstr "Inconnu"
 
@@ -3698,27 +3700,27 @@ msgstr "Tourbillons de poussière"
 msgid "Dust whirls in the vicinity"
 msgstr "Tourbillons de poussière dans les environs"
 
-#: gweather/weather.c:836 gweather/weather.c:876 gweather/weather.c:1593
+#: gweather/weather.c:846 gweather/weather.c:886 gweather/weather.c:1603
 msgid "Failed to get METAR data.\n"
 msgstr "Impossible d'obtenir les données METAR.\n"
 
-#: gweather/weather.c:868 gweather/weather.c:896 gweather/weather.c:1134
+#: gweather/weather.c:878 gweather/weather.c:906 gweather/weather.c:1144
 msgid "WeatherInfo missing location"
 msgstr "Emplacement de WeatherInfo manquant"
 
-#: gweather/weather.c:1931
+#: gweather/weather.c:1975
 msgid "%a, %b %d / %H:%M"
 msgstr "%a %d %b / %H:%M"
 
-#: gweather/weather.c:1935
+#: gweather/weather.c:1979
 msgid "Unknown observation time"
 msgstr "Date d'observation inconnue"
 
-#: gweather/weather.c:2005
+#: gweather/weather.c:2049
 msgid "Calm"
 msgstr "Calme"
 
-#: gweather/weather.c:2078
+#: gweather/weather.c:2122
 msgid "Retrieval failed"
 msgstr "La récupération a échoué"
 
@@ -3731,7 +3733,7 @@ msgid "Factory for creating inbox monitors."
 msgstr "Fabrique pour créer des moniteurs de boîtes de réception."
 
 #: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:3
-#: mailcheck/mailcheck.c:805 mailcheck/mailcheck.c:2475
+#: mailcheck/mailcheck.c:806 mailcheck/mailcheck.c:2476
 msgid "Inbox Monitor"
 msgstr "Moniteur de boîte de réception"
 
@@ -3745,11 +3747,11 @@ msgstr "Fabrique de moniteur de boîte de réception"
 msgid "Internet"
 msgstr "Internet"
 
-#: mailcheck/mailcheck.c:668
+#: mailcheck/mailcheck.c:669
 msgid "Error checking mail"
 msgstr "Erreur lors de la vérification du courrier"
 
-#: mailcheck/mailcheck.c:811
+#: mailcheck/mailcheck.c:812
 msgid ""
 "You didn't set a password in the preferences for the Inbox Monitor,\n"
 "so you have to enter it each time it starts up."
@@ -3757,54 +3759,54 @@ msgstr ""
 "Vous n'avez pas défini de mot de passe dans les préférences du moniteur de "
 "boîte de réception, vous devez le saisir à chaque démarrage."
 
-#: mailcheck/mailcheck.c:819
+#: mailcheck/mailcheck.c:820
 msgid "Please enter your mailserver's _password:"
 msgstr "Veuillez saisir votre _mot de passe du serveur de messagerie :"
 
-#: mailcheck/mailcheck.c:824 mailcheck/mailcheck.c:1948
+#: mailcheck/mailcheck.c:825 mailcheck/mailcheck.c:1949
 msgid "Password Entry box"
 msgstr "Boîte de saisie du mot de passe"
 
-#: mailcheck/mailcheck.c:839 mailcheck/mailcheck.c:1975
+#: mailcheck/mailcheck.c:840 mailcheck/mailcheck.c:1976
 msgid "_Save password to disk"
 msgstr "_Enregistrer le mot de passe sur le disque"
 
-#: mailcheck/mailcheck.c:895
+#: mailcheck/mailcheck.c:896
 msgid "Could not connect to the Internet."
 msgstr "Ne peut se connecter à Internet"
 
-#: mailcheck/mailcheck.c:899
+#: mailcheck/mailcheck.c:900
 msgid "The username or password is incorrect."
 msgstr "L'identifiant ou le mot de passe n'est pas correct."
 
-#: mailcheck/mailcheck.c:902
+#: mailcheck/mailcheck.c:903
 msgid "The server name is incorrect."
 msgstr "Le nom du serveur n'est pas correct."
 
-#: mailcheck/mailcheck.c:906
+#: mailcheck/mailcheck.c:907
 msgid "Error connecting to mail server."
 msgstr "Erreur lors de la connexion au serveur de messagerie."
 
-#: mailcheck/mailcheck.c:911
+#: mailcheck/mailcheck.c:912
 msgid "Error"
 msgstr "Erreur"
 
-#: mailcheck/mailcheck.c:1087
+#: mailcheck/mailcheck.c:1088
 msgid "You have new mail."
 msgstr "Vous avez un nouveau message."
 
-#: mailcheck/mailcheck.c:1089
+#: mailcheck/mailcheck.c:1090
 msgid "You have mail."
 msgstr "Vous avez un message."
 
-#: mailcheck/mailcheck.c:1093
+#: mailcheck/mailcheck.c:1094
 #, c-format
 msgid "%d unread"
 msgid_plural "%d unread"
 msgstr[0] "%d non lu"
 msgstr[1] "%d non lus"
 
-#: mailcheck/mailcheck.c:1094 mailcheck/mailcheck.c:1103
+#: mailcheck/mailcheck.c:1095 mailcheck/mailcheck.c:1104
 #, c-format
 msgid "%d message"
 msgid_plural "%d messages"
@@ -3812,156 +3814,156 @@ msgstr[0] "%d message"
 msgstr[1] "%d messages"
 
 #. translators: this is of the form "%d unread/%d messages"
-#: mailcheck/mailcheck.c:1097
+#: mailcheck/mailcheck.c:1098
 #, c-format
 msgid "%s/%s"
 msgstr "%s/%s"
 
-#: mailcheck/mailcheck.c:1110
+#: mailcheck/mailcheck.c:1111
 msgid "No mail."
 msgstr "Aucun message."
 
-#: mailcheck/mailcheck.c:1564 mailcheck/mailcheck.c:1565
-#: mailcheck/mailcheck.c:2886 mailcheck/mailcheck.c:2887
+#: mailcheck/mailcheck.c:1565 mailcheck/mailcheck.c:1566
+#: mailcheck/mailcheck.c:2889 mailcheck/mailcheck.c:2890
 msgid "Status not updated"
 msgstr "État non mis à jour"
 
-#: mailcheck/mailcheck.c:1767 mailcheck/mailcheck.c:2393
+#: mailcheck/mailcheck.c:1768 mailcheck/mailcheck.c:2394
 msgid "Inbox Settings"
 msgstr "Paramètres de la boîte de réception"
 
-#: mailcheck/mailcheck.c:1793
+#: mailcheck/mailcheck.c:1794
 msgid "Mailbox _resides on:"
 msgstr "La boîte à lettres _réside sur :"
 
-#: mailcheck/mailcheck.c:1804
+#: mailcheck/mailcheck.c:1805
 msgid "Local mailspool"
 msgstr "Spool local"
 
-#: mailcheck/mailcheck.c:1812
+#: mailcheck/mailcheck.c:1813
 msgid "Local maildir"
 msgstr "Répertoire local"
 
-#: mailcheck/mailcheck.c:1820
+#: mailcheck/mailcheck.c:1821
 msgid "Remote POP3-server"
 msgstr "Serveur distant POP3"
 
-#: mailcheck/mailcheck.c:1828
+#: mailcheck/mailcheck.c:1829
 msgid "Remote IMAP-server"
 msgstr "Serveur distant IMAP"
 
-#: mailcheck/mailcheck.c:1853
+#: mailcheck/mailcheck.c:1854
 msgid "Mail _spool file:"
 msgstr "Fichier de _spool de courrier :"
 
-#: mailcheck/mailcheck.c:1860
+#: mailcheck/mailcheck.c:1861
 msgid "Browse"
 msgstr "Parcourir"
 
-#: mailcheck/mailcheck.c:1880
+#: mailcheck/mailcheck.c:1881
 msgid "Mail s_erver:"
 msgstr "_serveur de messagerie :"
 
-#: mailcheck/mailcheck.c:1889
+#: mailcheck/mailcheck.c:1890
 msgid "Mail Server Entry box"
 msgstr "Boîte de saisie du serveur de messagerie"
 
-#: mailcheck/mailcheck.c:1908
+#: mailcheck/mailcheck.c:1909
 msgid "_Username:"
 msgstr "Nom d'_utilisateur :"
 
-#: mailcheck/mailcheck.c:1919
+#: mailcheck/mailcheck.c:1920
 msgid "Username Entry box"
 msgstr "Boîte de saisie de l'identifiant"
 
-#: mailcheck/mailcheck.c:1937
+#: mailcheck/mailcheck.c:1938
 msgid "_Password:"
 msgstr "_Mot de passe :"
 
-#: mailcheck/mailcheck.c:1990
+#: mailcheck/mailcheck.c:1991
 msgid "_Folder:"
 msgstr "_Dossier :"
 
-#: mailcheck/mailcheck.c:2001
+#: mailcheck/mailcheck.c:2002
 msgid "Folder Entry box"
 msgstr "Boîte de saisie du dossier"
 
-#: mailcheck/mailcheck.c:2073
+#: mailcheck/mailcheck.c:2074
 msgid "Check for mail _every:"
 msgstr "Vérifier le courrier _toutes les :"
 
-#: mailcheck/mailcheck.c:2095
+#: mailcheck/mailcheck.c:2096
 msgid "Choose time interval in minutes to check mail"
 msgstr ""
 "Choisissez l'intervalle de temps en minutes entre chaque vérification du "
 "courrier"
 
-#: mailcheck/mailcheck.c:2118
+#: mailcheck/mailcheck.c:2119
 msgid "Choose time interval in seconds to check mail"
 msgstr ""
 "Choisissez l'intervalle de temps en secondes entre chaque vérification du "
 "courrier"
 
-#: mailcheck/mailcheck.c:2135
+#: mailcheck/mailcheck.c:2136
 msgid "Play a _sound when new mail arrives"
 msgstr "Jouer un _son lorsque de nouveaux messages arrive"
 
 #. l = gtk_check_button_new_with_mnemonic (_("Set the number of unread mails to _zero when clicked"));
-#: mailcheck/mailcheck.c:2145
+#: mailcheck/mailcheck.c:2146
 msgid "Sto_p animation when double clicked"
 msgstr "A_rrêter l'animation lorsque cliqué"
 
-#: mailcheck/mailcheck.c:2158
+#: mailcheck/mailcheck.c:2159
 msgid "Select a_nimation:"
 msgstr "Sélectionner une a_nimation :"
 
-#: mailcheck/mailcheck.c:2176
+#: mailcheck/mailcheck.c:2177
 msgid "Commands"
 msgstr "Commandes"
 
-#: mailcheck/mailcheck.c:2205
+#: mailcheck/mailcheck.c:2206
 msgid "Before each _update:"
 msgstr "Avant chaque _mise à jour :"
 
-#: mailcheck/mailcheck.c:2222
+#: mailcheck/mailcheck.c:2223
 msgid "Command to execute before each update"
 msgstr "Commande à exécuter avant chaque mise à jour"
 
-#: mailcheck/mailcheck.c:2234
+#: mailcheck/mailcheck.c:2235
 msgid "When new mail _arrives:"
 msgstr "Lorsqu'un nouveau message est _reçu :"
 
-#: mailcheck/mailcheck.c:2249 mailcheck/mailcheck.schemas.in.h:2
+#: mailcheck/mailcheck.c:2250 mailcheck/mailcheck.schemas.in.h:2
 msgid "Command to execute when new mail arrives"
 msgstr "Commande à exécuter lorsque de nouveaux messages arrive"
 
-#: mailcheck/mailcheck.c:2261
+#: mailcheck/mailcheck.c:2262
 msgid "When double clicke_d:"
 msgstr "Lorsque _double-cliqué :"
 
-#: mailcheck/mailcheck.c:2276
+#: mailcheck/mailcheck.c:2277
 msgid "Command to execute when clicked"
 msgstr "Commande à exécuter lorsque cliqué"
 
-#: mailcheck/mailcheck.c:2362
+#: mailcheck/mailcheck.c:2363
 msgid "Inbox Monitor Preferences"
 msgstr "Préférences du moniteur de boîte de réception"
 
-#: mailcheck/mailcheck.c:2477
+#: mailcheck/mailcheck.c:2478
 msgid "Inbox Monitor notifies you when new mail arrives in your mailbox"
 msgstr ""
 "Le moniteur de boîte de réception vous alerte lorsque de nouveaux messages "
 "arrive dans votre boîte à lettres"
 
-#: mailcheck/mailcheck.c:2839
+#: mailcheck/mailcheck.c:2842
 msgid "Text only"
 msgstr "Seulement du texte"
 
-#: mailcheck/mailcheck.c:2888
+#: mailcheck/mailcheck.c:2891
 msgid "Mail check"
 msgstr "Vérification du courrier"
 
-#: mailcheck/mailcheck.c:2889
+#: mailcheck/mailcheck.c:2892
 msgid "Mail check notifies you when new mail arrives in your mailbox"
 msgstr ""
 "Le vérificateur de courrier vous prévient lorsque de nouveaux messages "
@@ -4614,7 +4616,7 @@ msgstr "Canaux audio"
 msgid "_Select channel to control:"
 msgstr "_Sélectionnez le canal à contrôler :"
 
-#: mixer/mixer.c:1874
+#: mixer/mixer.c:1871
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr ""
 "Le contrôleur de volume vous permet de régler le volume sonore de votre "
@@ -5641,15 +5643,15 @@ msgid "Monitor the quality of a wireless network link"
 msgstr "Surveille la qualité d'un lien de réseau sans fil"
 
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:3
-#: wireless/wireless-applet.c:588 wireless/wireless-applet.c:835
+#: wireless/wireless-applet.c:590 wireless/wireless-applet.c:837
 msgid "Wireless Link Monitor"
 msgstr "Moniteur de réseau sans fil"
 
-#: wireless/wireless-applet.c:365 wireless/wireless-applet.c:502
+#: wireless/wireless-applet.c:367 wireless/wireless-applet.c:504
 msgid "No Wireless Devices"
 msgstr "Aucun périphériques sans fil"
 
-#: wireless/wireless-applet.c:367
+#: wireless/wireless-applet.c:369
 msgid ""
 "There doesn't seem to be any wireless devices configured on your system.\n"
 "Please verify your configuration if you think this is incorrect."
@@ -5658,15 +5660,15 @@ msgstr ""
 "système.\n"
 "Veuillez vérifier votre configuration si vous pensez que cela est incorrect."
 
-#: wireless/wireless-applet.c:590
+#: wireless/wireless-applet.c:592
 msgid "(C) 2001, 2002 Free Software Foundation "
 msgstr "© 2001, 2002 Free Software Foundation"
 
-#: wireless/wireless-applet.c:591
+#: wireless/wireless-applet.c:593
 msgid "This utility shows the status of a wireless link."
 msgstr "Cet utilitaire affiche l'état d'un lien de réseau sans fil."
 
-#: wireless/wireless-applet.c:836
+#: wireless/wireless-applet.c:838
 msgid "This utility shows the status of a wireless link"
 msgstr "Cet utilitaire affiche l'état d'un lien de réseau sans fil"
 

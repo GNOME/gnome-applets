@@ -12,14 +12,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 2.3.6\n"
-"POT-Creation-Date: 2004-03-17 11:48+1300\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-07-21 18:33+0100\n"
 "PO-Revision-Date: 2003-09-01 21:15+0800\n"
 "Last-Translator: Abel Cheung <maddog@linux.org.hk>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Report-Msgid-Bugs-To: \n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: accessx-status/GNOME_AccessxApplet.xml.h:1
@@ -63,7 +63,7 @@ msgid "AccessX Status Applet Factory"
 msgstr "AccessX 狀態面板程式工廠"
 
 #: accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:2
-#: accessx-status/applet.c:1245
+#: accessx-status/applet.c:1332
 msgid "Keyboard Accessibility Status"
 msgstr "無障礙環境鍵盤狀態"
 
@@ -86,14 +86,14 @@ msgstr "顯示無障礙環境鍵盤狀態"
 msgid "Utility"
 msgstr "公用程式"
 
-#: accessx-status/applet.c:134 battstat/battstat_applet.c:898
+#: accessx-status/applet.c:136 battstat/battstat_applet.c:909
 #: cdplayer/cdplayer.c:603 charpick/charpick.c:556 drivemount/drivemount.c:553
-#: geyes/geyes.c:202 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:570
-#: gtik/gtik.c:717 gweather/gweather-about.c:47 mailcheck/mailcheck.c:2461
+#: geyes/geyes.c:202 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:608
+#: gtik/gtik.c:719 gweather/gweather-about.c:47 mailcheck/mailcheck.c:2462
 #: mini-commander/src/about.c:50 mixer/mixer.c:1332
 #: modemlights/modemlights.c:115 multiload/main.c:60
 #: stickynotes/stickynotes_applet_callbacks.c:230
-#: wireless/wireless-applet.c:572
+#: wireless/wireless-applet.c:574
 msgid "translator_credits"
 msgstr ""
 "i18n 程式中文化計劃\n"
@@ -103,46 +103,46 @@ msgstr ""
 "Jing-Jong Shyue <shyue@sonoma.com.tw>, 2000\n"
 "Yuan-Chung Cheng <platin@linux.org.tw>, 1999"
 
-#: accessx-status/applet.c:155 accessx-status/applet.c:983
-#: accessx-status/applet.c:1081 accessx-status/applet.c:1248
+#: accessx-status/applet.c:157 accessx-status/applet.c:992
+#: accessx-status/applet.c:1132 accessx-status/applet.c:1335
 msgid "AccessX Status"
 msgstr "無障礙環境狀態"
 
-#: accessx-status/applet.c:156
+#: accessx-status/applet.c:158
 msgid "Copyright (C) 2003 Sun Microsystems"
 msgstr "版權所有 © 2003 Sun Microsystems"
 
-#: accessx-status/applet.c:157
+#: accessx-status/applet.c:159
 msgid "Shows the state of AccessX features such as latched modifiers"
 msgstr ""
 
-#: accessx-status/applet.c:193
+#: accessx-status/applet.c:195
 #, c-format
 msgid "There was an error launching the help viewer : %s"
 msgstr "顯示說明文件瀏覽程式時出現錯誤：%s"
 
-#: accessx-status/applet.c:228
+#: accessx-status/applet.c:234
 #, c-format
 msgid "There was an error launching the keyboard capplet : %s"
 msgstr "啟動鍵盤 capplet 時出現錯誤：%s"
 
 #. Note to translators: the first letter of the alphabet, not the indefinite article
-#: accessx-status/applet.c:474 accessx-status/applet.c:512
+#: accessx-status/applet.c:483 accessx-status/applet.c:521
 msgid "a"
 msgstr "a"
 
-#: accessx-status/applet.c:984 accessx-status/applet.c:1082
+#: accessx-status/applet.c:993 accessx-status/applet.c:1133
 #, fuzzy
 msgid "Shows keyboard status when accessibility features are used."
 msgstr "顯示無障礙環境鍵盤狀態"
 
-#: accessx-status/applet.c:1250
+#: accessx-status/applet.c:1337
 msgid "Displays current state of keyboard accessibility features"
 msgstr "顯示目前的無障礙環境鍵盤狀態"
 
 #. The long name of the applet in the About dialog.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:919 battstat/battstat_applet.c:1671
+#: battstat/battstat_applet.c:930 battstat/battstat_applet.c:1682
 msgid "Battery Charge Monitor"
 msgstr "電池電量監控"
 
@@ -151,7 +151,7 @@ msgid "Battstat Factory"
 msgstr "Battstat 工廠"
 
 #: battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: battstat/battstat_applet.c:1672
+#: battstat/battstat_applet.c:1683
 msgid "Monitor a laptop's remaining power"
 msgstr "監控攜帶型電腦的剩餘電量"
 
@@ -263,22 +263,22 @@ msgstr "本面板程式即使可以啟動也不能正常運作。\n"
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:370 battstat/battstat_applet.c:956
+#: battstat/battstat_applet.c:370 battstat/battstat_applet.c:967
 msgid "High"
 msgstr "高"
 
 #. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:372 battstat/battstat_applet.c:958
+#: battstat/battstat_applet.c:372 battstat/battstat_applet.c:969
 msgid "Low"
 msgstr "低"
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:374 battstat/battstat_applet.c:960
+#: battstat/battstat_applet.c:374 battstat/battstat_applet.c:971
 msgid "Critical"
 msgstr "極低"
 
 #. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:376 battstat/battstat_applet.c:962
+#: battstat/battstat_applet.c:376 battstat/battstat_applet.c:973
 msgid "Charging"
 msgstr "充電中"
 
@@ -294,7 +294,7 @@ msgstr "電池已完成充電！"
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:500 battstat/battstat_applet.c:1120
+#: battstat/battstat_applet.c:511 battstat/battstat_applet.c:1131
 #, c-format
 msgid ""
 "System is running on battery power\n"
@@ -306,7 +306,7 @@ msgstr ""
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:504 battstat/battstat_applet.c:1128
+#: battstat/battstat_applet.c:515 battstat/battstat_applet.c:1139
 #, c-format
 msgid ""
 "System is running on AC power\n"
@@ -317,32 +317,41 @@ msgstr ""
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:510 battstat/battstat_applet.c:1052
-#: battstat/battstat_applet.c:1141
+#: battstat/battstat_applet.c:521 battstat/battstat_applet.c:1063
+#: battstat/battstat_applet.c:1152
+#, c-format
 msgid "System is running on battery power"
 msgstr "系統正在使用電池"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:513 battstat/battstat_applet.c:1058
-#: battstat/battstat_applet.c:1147
+#: battstat/battstat_applet.c:524 battstat/battstat_applet.c:1069
+#: battstat/battstat_applet.c:1158
+#, c-format
 msgid "System is running on AC power"
 msgstr "系統正在使用交流電"
 
-#: battstat/battstat_applet.c:527 wireless/wireless-applet.c:146
+#: battstat/battstat_applet.c:538 wireless/wireless-applet.c:146
+#, c-format
 msgid "N/A"
 msgstr "不適用"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:651 battstat/battstat_applet.c:1032
+#. This string will display as a tooltip over the status frame
+#. when the computer is using battery power and the battery meter
+#. and percent meter is hidden by the user.
+#: battstat/battstat_applet.c:662 battstat/battstat_applet.c:1043
 #, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
 msgstr "系統正在使用電池。電池︰%d%% (%s)"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:658 battstat/battstat_applet.c:1039
+#. This string will display as a tooltip over the status frame
+#. when the computer is using AC power and the battery meter
+#. and percent meter is hidden by the user.
+#: battstat/battstat_applet.c:669 battstat/battstat_applet.c:1050
 #, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
 msgstr "系統正在使用交流電。電池︰%d%% (%s)"
@@ -351,33 +360,36 @@ msgstr "系統正在使用交流電。電池︰%d%% (%s)"
 #. battery frame when the computer is using battery
 #. power and the battery isn't present. Not a
 #. possible combination, I guess... :)
-#: battstat/battstat_applet.c:669
+#: battstat/battstat_applet.c:680
+#, c-format
 msgid "System is running on battery power. Battery: Not present"
 msgstr "系統正在使用電池。電池︰不存在"
 
 #. This string will display as a tooltip over the
 #. battery frame when the computer is using AC
 #. power and the battery isn't present.
-#: battstat/battstat_applet.c:675
+#: battstat/battstat_applet.c:686
+#, c-format
 msgid "System is running on AC power. Battery: Not present"
 msgstr "系統正在使用交流電。電池︰不存在"
 
 #. Displayed as a tooltip over the battery meter when there is
 #. a battery present. %d will hold the current charge and %s will
 #. hold the status of the battery, (High, Low, Critical, Charging.
-#: battstat/battstat_applet.c:684
+#: battstat/battstat_applet.c:695
 #, c-format
 msgid "Battery: %d%% (%s)"
 msgstr "電池︰%d%% (%s)"
 
 #. Displayed as a tooltip over the battery meter when no
 #. battery is present.
-#: battstat/battstat_applet.c:691
+#: battstat/battstat_applet.c:702
+#, c-format
 msgid "Battery: Not present"
 msgstr "電池︰不存在"
 
 #. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: battstat/battstat_applet.c:789
+#: battstat/battstat_applet.c:800
 msgid ""
 "Can't open the APM device!\n"
 "\n"
@@ -389,7 +401,7 @@ msgstr ""
 "請確定您有讀取 APM 裝置的權限。"
 
 #. Displayed if the APM system is disabled (Used under *BSD)
-#: battstat/battstat_applet.c:798
+#: battstat/battstat_applet.c:809
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
@@ -399,7 +411,7 @@ msgstr ""
 "請執行“apm -e 1”(FreeBSD)\n"
 "看看有沒有效。\n"
 
-#: battstat/battstat_applet.c:854
+#: battstat/battstat_applet.c:865
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -408,16 +420,16 @@ msgstr ""
 "當執行暫停模式指令時出現錯誤：%s\n"
 "請先修正此錯誤"
 
-#: battstat/battstat_applet.c:858
+#: battstat/battstat_applet.c:869
 #, c-format
 msgid "The Suspend command '%s' was unsuccessful."
 msgstr ""
 
-#: battstat/battstat_applet.c:860
+#: battstat/battstat_applet.c:871
 msgid "The Suspend command was unsuccessful."
 msgstr ""
 
-#: battstat/battstat_applet.c:868
+#: battstat/battstat_applet.c:879
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -427,19 +439,19 @@ msgstr ""
 
 #. if your charset supports it, please replace the "o" in
 #. * "Jorgen" into U00F6
-#: battstat/battstat_applet.c:886
+#: battstat/battstat_applet.c:897
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jörgen Pehrson <jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:921
+#: battstat/battstat_applet.c:932
 msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 msgstr "© 2000 The Gnulix Society, © 2002 Free Software Foundation"
 
-#: battstat/battstat_applet.c:922
+#: battstat/battstat_applet.c:933
 msgid "This utility shows the status of your laptop battery."
 msgstr "本公用程式可以顯示攜帶型電腦的電池狀態。"
 
-#: battstat/battstat_applet.c:1597
+#: battstat/battstat_applet.c:1608
 msgid ""
 "Can't access ACPI events in /var/run/acpid.socket! Make sure the ACPI "
 "subsystem is working and the acpid daemon is running."
@@ -483,7 +495,7 @@ msgstr "<b>暫停模式</b>"
 msgid "<b>Warnings</b>"
 msgstr "<b>警告</b>"
 
-#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1476
+#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1478
 msgid "Appearance"
 msgstr "外觀"
 
@@ -492,7 +504,7 @@ msgid "Battery Charge Monitor Preferences"
 msgstr "電池電量監控偏好設定"
 
 #: battstat/battstat_applet.glade.h:13 drivemount/properties.c:358
-#: gweather/gweather-pref.c:753 mailcheck/mailcheck.c:2047
+#: gweather/gweather-pref.c:753 mailcheck/mailcheck.c:2048
 #: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:563
 msgid "General"
 msgstr "一般"
@@ -550,11 +562,11 @@ msgid "_Yellow:"
 msgstr "黃(_Y)︰"
 
 #: battstat/properties.c:297 drivemount/drivemount.c:510
-#: drivemount/properties.c:604 mailcheck/mailcheck.c:2314
-#: mailcheck/mailcheck.c:2602 mini-commander/src/preferences.c:393
+#: drivemount/properties.c:604 mailcheck/mailcheck.c:2315
+#: mailcheck/mailcheck.c:2603 mini-commander/src/preferences.c:393
 #: mixer/mixer.c:1445 stickynotes/stickynotes_applet_callbacks.c:207
 #: stickynotes/stickynotes_applet_callbacks.c:371
-#: wireless/wireless-applet.c:542 wireless/wireless-applet.c:626
+#: wireless/wireless-applet.c:544 wireless/wireless-applet.c:628
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "顯示說明文件時出現錯誤：%s"
@@ -854,7 +866,7 @@ msgstr "瀏覽(_B)..."
 msgid "_Eject"
 msgstr "退出碟片(_E)"
 
-#: drivemount/drivemount.c:451 mailcheck/mailcheck.c:661
+#: drivemount/drivemount.c:451 mailcheck/mailcheck.c:662
 #, c-format
 msgid "There was an error executing %s: %s"
 msgstr "執行 %s 時出現錯誤：%s"
@@ -864,7 +876,7 @@ msgid "Cannot browse device"
 msgstr "無法瀏覽該裝置的內容"
 
 #: drivemount/drivemount.c:516 drivemount/properties.c:610
-#: mailcheck/mailcheck.c:2320 mailcheck/mailcheck.c:2608
+#: mailcheck/mailcheck.c:2321 mailcheck/mailcheck.c:2609
 msgid "Error displaying help"
 msgstr "顯示說明文件時出現錯誤"
 
@@ -924,8 +936,8 @@ msgstr "選取掛載目錄"
 msgid "_Update interval:"
 msgstr "更新周期(_U)："
 
-#: drivemount/properties.c:415 mailcheck/mailcheck.c:2118
-#: mailcheck/mailcheck.c:2124 modemlights/properties.c:468
+#: drivemount/properties.c:415 mailcheck/mailcheck.c:2119
+#: mailcheck/mailcheck.c:2125 modemlights/properties.c:468
 msgid "seconds"
 msgstr "秒"
 
@@ -2334,7 +2346,7 @@ msgstr "停用"
 msgid "Press a key or press Esc to cancel"
 msgstr "按任何一鍵，或按 Esc 鍵取消"
 
-#: gkb-new/preset.c:155 gkb-new/preset.c:158
+#: gkb-new/preset.c:154 gkb-new/preset.c:157
 msgid "Undefined"
 msgstr "未定義"
 
@@ -2395,7 +2407,7 @@ msgstr "標籤"
 msgid "Flag and Label"
 msgstr "國旗及標籤"
 
-#: gkb-new/prop.c:257 gtik/gtik.c:1483 gweather/gweather-pref.c:739
+#: gkb-new/prop.c:257 gtik/gtik.c:1485 gweather/gweather-pref.c:739
 #: modemlights/properties.c:444
 msgid "Display"
 msgstr "顯示"
@@ -2493,7 +2505,7 @@ msgid "GNOME keyboard layout indicator"
 msgstr "鍵盤配置選擇程式"
 
 #: gswitchit/GNOME_KeyboardApplet.server.in.in.h:3
-#: gswitchit/gswitchit-applet.c:575
+#: gswitchit/gswitchit-applet.c:613
 #, fuzzy
 msgid "Keyboard Indicator"
 msgstr "系統負載指示器"
@@ -2508,20 +2520,20 @@ msgstr "Geyes 面板程式工廠"
 msgid "Keyboard Indicator (%s)"
 msgstr ""
 
-#: gswitchit/gswitchit-applet.c:578
+#: gswitchit/gswitchit-applet.c:616
 msgid "Copyright (c) Sergey V. Oudaltsov 1999-2004"
 msgstr ""
 
-#: gswitchit/gswitchit-applet.c:580
+#: gswitchit/gswitchit-applet.c:618
 #, fuzzy
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "鍵盤配置選擇程式"
 
-#: gswitchit/gswitchit-applet.c:734
+#: gswitchit/gswitchit-applet.c:772
 msgid "XKB initialization error"
 msgstr ""
 
-#: gswitchit/gswitchit-applet.c:742
+#: gswitchit/gswitchit-applet.c:780
 msgid "Error loading XKB configuration registry"
 msgstr ""
 
@@ -2698,7 +2710,7 @@ msgstr "獲取不斷更新的股市行情"
 msgid "Gtik Applet Factory"
 msgstr "Gtik 面板程式工廠"
 
-#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:740
+#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:742
 msgid "Stock Ticker"
 msgstr "股市行情"
 
@@ -2711,11 +2723,11 @@ msgstr "更新(_U)"
 msgid "Could not retrieve the stock data."
 msgstr "無法擷取股市數據。"
 
-#: gtik/gtik.c:307 gweather/gweather-applet.c:426
+#: gtik/gtik.c:309 gweather/gweather-applet.c:456
 msgid "Updating..."
 msgstr "更新中..."
 
-#: gtik/gtik.c:742
+#: gtik/gtik.c:744
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.  "
 "The GNOME Stock Ticker is a free Internet-based application.  It comes with "
@@ -2725,126 +2737,126 @@ msgstr ""
 "本程式會接駁某個著名網站並下載現時的股價。「GNOME 股市行情」是一個可自由使用"
 "的軟體。它沒有使用擔保。不要使用它作投資的決定；所有資訊只可作為參考資料。"
 
-#: gtik/gtik.c:1232
+#: gtik/gtik.c:1234
 msgid "Current _stocks:"
 msgstr "目前的股市情況(_S)："
 
-#: gtik/gtik.c:1240
+#: gtik/gtik.c:1242
 msgid "_New symbol:"
 msgstr "新增股票代碼(_N)："
 
-#: gtik/gtik.c:1249
+#: gtik/gtik.c:1251
 msgid "_Add"
 msgstr "新增(_A)"
 
-#: gtik/gtik.c:1258
+#: gtik/gtik.c:1260
 msgid "_Remove"
 msgstr "移除(_R)"
 
-#: gtik/gtik.c:1364
+#: gtik/gtik.c:1366
 msgid "Stock Ticker Preferences"
 msgstr "「股市行情」偏好設定"
 
-#: gtik/gtik.c:1386
+#: gtik/gtik.c:1388
 msgid "Symbols"
 msgstr "股票代碼"
 
-#: gtik/gtik.c:1393 mailcheck/mailcheck.c:2389
+#: gtik/gtik.c:1395 mailcheck/mailcheck.c:2390
 msgid "Behavior"
 msgstr "運作方式"
 
-#: gtik/gtik.c:1396 gweather/gweather-pref.c:699
+#: gtik/gtik.c:1398 gweather/gweather-pref.c:699
 msgid "Update"
 msgstr "更新"
 
-#: gtik/gtik.c:1400
+#: gtik/gtik.c:1402
 msgid "Stock update fre_quency:"
 msgstr "股市行情更新周期(_Q)："
 
-#: gtik/gtik.c:1412 gweather/gweather-pref.c:723 mailcheck/mailcheck.c:2095
-#: mailcheck/mailcheck.c:2101
+#: gtik/gtik.c:1414 gweather/gweather-pref.c:723 mailcheck/mailcheck.c:2096
+#: mailcheck/mailcheck.c:2102
 msgid "minutes"
 msgstr "分"
 
-#: gtik/gtik.c:1418
+#: gtik/gtik.c:1420
 msgid "Scrolling"
 msgstr "捲動顯示"
 
-#: gtik/gtik.c:1422
+#: gtik/gtik.c:1424
 msgid "_Scroll speed:"
 msgstr "捲動速度(_S)："
 
-#: gtik/gtik.c:1426
+#: gtik/gtik.c:1428
 msgid "Slow"
 msgstr "慢"
 
-#: gtik/gtik.c:1428
+#: gtik/gtik.c:1430
 msgid "Medium"
 msgstr "中"
 
-#: gtik/gtik.c:1430
+#: gtik/gtik.c:1432
 msgid "Fast"
 msgstr "快"
 
-#: gtik/gtik.c:1450
+#: gtik/gtik.c:1452
 msgid "_Enable scroll buttons"
 msgstr "顯示捲動按紐(_E)"
 
-#: gtik/gtik.c:1462
+#: gtik/gtik.c:1464
 msgid "Scroll _left to right"
 msgstr "由左至右捲動(_L)"
 
-#: gtik/gtik.c:1488
+#: gtik/gtik.c:1490
 msgid "Displa_y only symbols and price"
 msgstr "只顯示股票代碼及股價(_Y)"
 
-#: gtik/gtik.c:1501 mini-commander/src/mini-commander.glade.h:23
+#: gtik/gtik.c:1503 mini-commander/src/mini-commander.glade.h:23
 #: stickynotes/stickynotes.glade.h:48
 msgid "_Width:"
 msgstr "寬度(_W)："
 
-#: gtik/gtik.c:1515 mini-commander/src/mini-commander.glade.h:24
+#: gtik/gtik.c:1517 mini-commander/src/mini-commander.glade.h:24
 #: multiload/properties.c:489
 msgid "pixels"
 msgstr "像素"
 
-#: gtik/gtik.c:1524
+#: gtik/gtik.c:1526
 msgid "Font and Colors"
 msgstr "字型及色彩"
 
-#: gtik/gtik.c:1530
+#: gtik/gtik.c:1532
 msgid "Use _default theme font and colors"
 msgstr "使用預設的佈景主題字型及色彩(_D)"
 
-#: gtik/gtik.c:1545 stickynotes/stickynotes.glade.h:42
+#: gtik/gtik.c:1547 stickynotes/stickynotes.glade.h:42
 msgid "_Font:"
 msgstr "字型(_F)："
 
-#: gtik/gtik.c:1569
+#: gtik/gtik.c:1571
 msgid "Stock _raised:"
 msgstr "股值上升(_R)："
 
-#: gtik/gtik.c:1588
+#: gtik/gtik.c:1590
 msgid "Stock _lowered:"
 msgstr "股值下降(_L)："
 
-#: gtik/gtik.c:1607
+#: gtik/gtik.c:1609
 msgid "Stock _unchanged:"
 msgstr "股值保持不變(_U)："
 
-#: gtik/gtik.c:1626 modemlights/properties.c:580
+#: gtik/gtik.c:1628 modemlights/properties.c:580
 msgid "_Background:"
 msgstr "背景顏色(_B)："
 
-#: gtik/gtik.c:1769
+#: gtik/gtik.c:1771
 msgid "Skip forward"
 msgstr "向前捲動"
 
-#: gtik/gtik.c:1770
+#: gtik/gtik.c:1772
 msgid "Skip backward"
 msgstr "向後捲動"
 
-#: gtik/gtik.c:1778
+#: gtik/gtik.c:1780
 msgid ""
 "Stock Ticker\n"
 "Get continuously updated stock quotes"
@@ -2852,11 +2864,11 @@ msgstr ""
 "股市行情\n"
 "獲取不斷更新的股市行情"
 
-#: gtik/gtik.c:1990
+#: gtik/gtik.c:1992
 msgid "(No"
 msgstr "(沒有"
 
-#: gtik/gtik.c:1991
+#: gtik/gtik.c:1993
 msgid "Change "
 msgstr "改變"
 
@@ -3020,11 +3032,11 @@ msgstr ""
 "\n"
 "監控本地天氣情況的面板程式。"
 
-#: gweather/gweather-applet.c:306
+#: gweather/gweather-applet.c:336
 msgid "GNOME Weather"
 msgstr "GNOME 天氣預報"
 
-#: gweather/gweather-dialog.c:73 gweather/gweather-dialog.c:300
+#: gweather/gweather-dialog.c:73 gweather/gweather-dialog.c:302
 msgid "Forecast"
 msgstr "預報"
 
@@ -3072,31 +3084,31 @@ msgstr "能見度："
 msgid "Current Conditions"
 msgstr "目前的天氣情況"
 
-#: gweather/gweather-dialog.c:290
+#: gweather/gweather-dialog.c:292
 msgid "Forecast Report"
 msgstr "天氣預報"
 
-#: gweather/gweather-dialog.c:290
+#: gweather/gweather-dialog.c:292
 msgid "See the ForeCast Details"
 msgstr "收看天氣預報"
 
-#: gweather/gweather-dialog.c:325
+#: gweather/gweather-dialog.c:327
 msgid "_Visit Weather.com"
 msgstr "瀏覽 _Weather.com"
 
-#: gweather/gweather-dialog.c:326
+#: gweather/gweather-dialog.c:328
 msgid "URL link Button"
 msgstr "網頁鏈結按鈕"
 
-#: gweather/gweather-dialog.c:326
+#: gweather/gweather-dialog.c:328
 msgid "Click to Enter Weather.com"
 msgstr "請按這裡進入 Weather.com"
 
-#: gweather/gweather-dialog.c:334
+#: gweather/gweather-dialog.c:336
 msgid "Radar Map"
 msgstr "雷達圖"
 
-#: gweather/gweather-dialog.c:410
+#: gweather/gweather-dialog.c:412
 msgid ""
 "Detailed forecast not available for this location.\n"
 "Please try the state forecast; note that IWIN forecasts are available only "
@@ -3105,7 +3117,7 @@ msgstr ""
 "該地點不存在任何天氣預報。\n"
 "請嘗試每州的預報，注意 IWIN 預報只提供美國城市的資訊。"
 
-#: gweather/gweather-dialog.c:412
+#: gweather/gweather-dialog.c:414
 msgid ""
 "State forecast not available for this location.\n"
 "Please try the detailed forecast; note that IWIN forecasts are available "
@@ -3320,9 +3332,9 @@ msgstr "西北"
 msgid "North - Northwest"
 msgstr "西北偏北"
 
-#: gweather/weather.c:143 gweather/weather.c:1967 gweather/weather.c:1979
-#: gweather/weather.c:1991 gweather/weather.c:2003 gweather/weather.c:2021
-#: gweather/weather.c:2033
+#: gweather/weather.c:143 gweather/weather.c:2011 gweather/weather.c:2023
+#: gweather/weather.c:2035 gweather/weather.c:2047 gweather/weather.c:2065
+#: gweather/weather.c:2077
 msgid "Unknown"
 msgstr "不明"
 
@@ -3641,27 +3653,27 @@ msgstr "塵旋風"
 msgid "Dust whirls in the vicinity"
 msgstr "鄰近地區有塵旋風"
 
-#: gweather/weather.c:836 gweather/weather.c:876 gweather/weather.c:1593
+#: gweather/weather.c:846 gweather/weather.c:886 gweather/weather.c:1603
 msgid "Failed to get METAR data.\n"
 msgstr "無法獲取 METAR 資料。\n"
 
-#: gweather/weather.c:868 gweather/weather.c:896 gweather/weather.c:1134
+#: gweather/weather.c:878 gweather/weather.c:906 gweather/weather.c:1144
 msgid "WeatherInfo missing location"
 msgstr "WeatherInfo 中沒有指定位置"
 
-#: gweather/weather.c:1931
+#: gweather/weather.c:1975
 msgid "%a, %b %d / %H:%M"
 msgstr "%b %d(%a)/ %H:%M"
 
-#: gweather/weather.c:1935
+#: gweather/weather.c:1979
 msgid "Unknown observation time"
 msgstr "觀測時間不詳"
 
-#: gweather/weather.c:2005
+#: gweather/weather.c:2049
 msgid "Calm"
 msgstr "平靜"
 
-#: gweather/weather.c:2078
+#: gweather/weather.c:2122
 msgid "Retrieval failed"
 msgstr "接收失敗"
 
@@ -3674,7 +3686,7 @@ msgid "Factory for creating inbox monitors."
 msgstr ""
 
 #: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:3
-#: mailcheck/mailcheck.c:805 mailcheck/mailcheck.c:2475
+#: mailcheck/mailcheck.c:806 mailcheck/mailcheck.c:2476
 msgid "Inbox Monitor"
 msgstr "郵箱檢查"
 
@@ -3688,11 +3700,11 @@ msgstr ""
 msgid "Internet"
 msgstr "網際網路"
 
-#: mailcheck/mailcheck.c:668
+#: mailcheck/mailcheck.c:669
 msgid "Error checking mail"
 msgstr "檢查郵件時發生錯誤"
 
-#: mailcheck/mailcheck.c:811
+#: mailcheck/mailcheck.c:812
 msgid ""
 "You didn't set a password in the preferences for the Inbox Monitor,\n"
 "so you have to enter it each time it starts up."
@@ -3700,204 +3712,204 @@ msgstr ""
 "您沒有在「郵箱檢查」偏好設定中輸入密碼，\n"
 "因此每次啟動時都要自行輸入。"
 
-#: mailcheck/mailcheck.c:819
+#: mailcheck/mailcheck.c:820
 msgid "Please enter your mailserver's _password:"
 msgstr "請輸入郵件伺服器的密碼(_P)："
 
-#: mailcheck/mailcheck.c:824 mailcheck/mailcheck.c:1948
+#: mailcheck/mailcheck.c:825 mailcheck/mailcheck.c:1949
 msgid "Password Entry box"
 msgstr "密碼輸入欄位"
 
-#: mailcheck/mailcheck.c:839 mailcheck/mailcheck.c:1975
+#: mailcheck/mailcheck.c:840 mailcheck/mailcheck.c:1976
 msgid "_Save password to disk"
 msgstr "將密碼儲存至磁碟(_S)"
 
-#: mailcheck/mailcheck.c:895
+#: mailcheck/mailcheck.c:896
 msgid "Could not connect to the Internet."
 msgstr "無法連線至網際網路。"
 
-#: mailcheck/mailcheck.c:899
+#: mailcheck/mailcheck.c:900
 msgid "The username or password is incorrect."
 msgstr "帳號或密碼不正確。"
 
-#: mailcheck/mailcheck.c:902
+#: mailcheck/mailcheck.c:903
 msgid "The server name is incorrect."
 msgstr "伺服器名稱不正確。"
 
-#: mailcheck/mailcheck.c:906
+#: mailcheck/mailcheck.c:907
 msgid "Error connecting to mail server."
 msgstr "連接至郵件伺服器時發生錯誤。"
 
-#: mailcheck/mailcheck.c:911
+#: mailcheck/mailcheck.c:912
 msgid "Error"
 msgstr "錯誤"
 
-#: mailcheck/mailcheck.c:1087
+#: mailcheck/mailcheck.c:1088
 msgid "You have new mail."
 msgstr "您有新郵件。"
 
-#: mailcheck/mailcheck.c:1089
+#: mailcheck/mailcheck.c:1090
 msgid "You have mail."
 msgstr "您有郵件。"
 
-#: mailcheck/mailcheck.c:1093
+#: mailcheck/mailcheck.c:1094
 #, c-format
 msgid "%d unread"
 msgid_plural "%d unread"
 msgstr[0] ""
 msgstr[1] ""
 
-#: mailcheck/mailcheck.c:1094 mailcheck/mailcheck.c:1103
+#: mailcheck/mailcheck.c:1095 mailcheck/mailcheck.c:1104
 #, fuzzy, c-format
 msgid "%d message"
 msgid_plural "%d messages"
 msgstr[0] "%d 封郵件"
 
 #. translators: this is of the form "%d unread/%d messages"
-#: mailcheck/mailcheck.c:1097
+#: mailcheck/mailcheck.c:1098
 #, c-format
 msgid "%s/%s"
 msgstr ""
 
-#: mailcheck/mailcheck.c:1110
+#: mailcheck/mailcheck.c:1111
 msgid "No mail."
 msgstr "沒有郵件。"
 
-#: mailcheck/mailcheck.c:1564 mailcheck/mailcheck.c:1565
-#: mailcheck/mailcheck.c:2886 mailcheck/mailcheck.c:2887
+#: mailcheck/mailcheck.c:1565 mailcheck/mailcheck.c:1566
+#: mailcheck/mailcheck.c:2889 mailcheck/mailcheck.c:2890
 msgid "Status not updated"
 msgstr "狀態並未更新"
 
-#: mailcheck/mailcheck.c:1767 mailcheck/mailcheck.c:2393
+#: mailcheck/mailcheck.c:1768 mailcheck/mailcheck.c:2394
 msgid "Inbox Settings"
 msgstr "郵箱設定"
 
-#: mailcheck/mailcheck.c:1793
+#: mailcheck/mailcheck.c:1794
 msgid "Mailbox _resides on:"
 msgstr "郵箱的位置(_R)："
 
-#: mailcheck/mailcheck.c:1804
+#: mailcheck/mailcheck.c:1805
 msgid "Local mailspool"
 msgstr "本機的郵箱"
 
-#: mailcheck/mailcheck.c:1812
+#: mailcheck/mailcheck.c:1813
 msgid "Local maildir"
 msgstr "本機的 maildir 目錄"
 
-#: mailcheck/mailcheck.c:1820
+#: mailcheck/mailcheck.c:1821
 msgid "Remote POP3-server"
 msgstr "遠端 POP3 伺服器"
 
-#: mailcheck/mailcheck.c:1828
+#: mailcheck/mailcheck.c:1829
 msgid "Remote IMAP-server"
 msgstr "遠端 IMAP 伺服器"
 
-#: mailcheck/mailcheck.c:1853
+#: mailcheck/mailcheck.c:1854
 msgid "Mail _spool file:"
 msgstr "儲存新郵件的檔案(_S)："
 
-#: mailcheck/mailcheck.c:1860
+#: mailcheck/mailcheck.c:1861
 msgid "Browse"
 msgstr "瀏覽"
 
-#: mailcheck/mailcheck.c:1880
+#: mailcheck/mailcheck.c:1881
 msgid "Mail s_erver:"
 msgstr "郵件伺服器(_E)："
 
-#: mailcheck/mailcheck.c:1889
+#: mailcheck/mailcheck.c:1890
 msgid "Mail Server Entry box"
 msgstr "郵件伺服器輸入欄位"
 
-#: mailcheck/mailcheck.c:1908
+#: mailcheck/mailcheck.c:1909
 msgid "_Username:"
 msgstr "帳號名稱(_U)："
 
-#: mailcheck/mailcheck.c:1919
+#: mailcheck/mailcheck.c:1920
 msgid "Username Entry box"
 msgstr "帳號名稱輸入欄位"
 
-#: mailcheck/mailcheck.c:1937
+#: mailcheck/mailcheck.c:1938
 msgid "_Password:"
 msgstr "密碼(_P)："
 
-#: mailcheck/mailcheck.c:1990
+#: mailcheck/mailcheck.c:1991
 msgid "_Folder:"
 msgstr "資料夾(_F)："
 
-#: mailcheck/mailcheck.c:2001
+#: mailcheck/mailcheck.c:2002
 msgid "Folder Entry box"
 msgstr "資料夾輸入欄位"
 
-#: mailcheck/mailcheck.c:2073
+#: mailcheck/mailcheck.c:2074
 msgid "Check for mail _every:"
 msgstr "檢查郵件的周期(_E)："
 
-#: mailcheck/mailcheck.c:2095
+#: mailcheck/mailcheck.c:2096
 msgid "Choose time interval in minutes to check mail"
 msgstr "選擇檢查郵件相隔的分鐘數目"
 
-#: mailcheck/mailcheck.c:2118
+#: mailcheck/mailcheck.c:2119
 msgid "Choose time interval in seconds to check mail"
 msgstr "選擇檢查郵件相隔的秒數"
 
-#: mailcheck/mailcheck.c:2135
+#: mailcheck/mailcheck.c:2136
 msgid "Play a _sound when new mail arrives"
 msgstr "有新郵件的時候播放音效(_S)"
 
 #. l = gtk_check_button_new_with_mnemonic (_("Set the number of unread mails to _zero when clicked"));
-#: mailcheck/mailcheck.c:2145
+#: mailcheck/mailcheck.c:2146
 msgid "Sto_p animation when double clicked"
 msgstr "雙擊後動畫圖示會停止活動(_P)"
 
-#: mailcheck/mailcheck.c:2158
+#: mailcheck/mailcheck.c:2159
 msgid "Select a_nimation:"
 msgstr "選取動畫(_N)"
 
-#: mailcheck/mailcheck.c:2176
+#: mailcheck/mailcheck.c:2177
 msgid "Commands"
 msgstr "指令"
 
-#: mailcheck/mailcheck.c:2205
+#: mailcheck/mailcheck.c:2206
 msgid "Before each _update:"
 msgstr "每次更新之前(_U)："
 
-#: mailcheck/mailcheck.c:2222
+#: mailcheck/mailcheck.c:2223
 msgid "Command to execute before each update"
 msgstr "每次更新前執行的指令"
 
-#: mailcheck/mailcheck.c:2234
+#: mailcheck/mailcheck.c:2235
 msgid "When new mail _arrives:"
 msgstr "當收到新郵件的時候(_A)："
 
-#: mailcheck/mailcheck.c:2249 mailcheck/mailcheck.schemas.in.h:2
+#: mailcheck/mailcheck.c:2250 mailcheck/mailcheck.schemas.in.h:2
 msgid "Command to execute when new mail arrives"
 msgstr "收到新郵件時執行的指令"
 
-#: mailcheck/mailcheck.c:2261
+#: mailcheck/mailcheck.c:2262
 msgid "When double clicke_d:"
 msgstr "當雙擊的時候(_D)："
 
-#: mailcheck/mailcheck.c:2276
+#: mailcheck/mailcheck.c:2277
 msgid "Command to execute when clicked"
 msgstr "當按下的時候執行的指令"
 
-#: mailcheck/mailcheck.c:2362
+#: mailcheck/mailcheck.c:2363
 msgid "Inbox Monitor Preferences"
 msgstr "「郵箱檢查」偏好設定"
 
-#: mailcheck/mailcheck.c:2477
+#: mailcheck/mailcheck.c:2478
 msgid "Inbox Monitor notifies you when new mail arrives in your mailbox"
 msgstr "「郵箱檢查」會在收到新電郵的時候發出通知"
 
-#: mailcheck/mailcheck.c:2839
+#: mailcheck/mailcheck.c:2842
 msgid "Text only"
 msgstr "只顯示文字"
 
-#: mailcheck/mailcheck.c:2888
+#: mailcheck/mailcheck.c:2891
 msgid "Mail check"
 msgstr "「郵箱檢查」"
 
-#: mailcheck/mailcheck.c:2889
+#: mailcheck/mailcheck.c:2892
 msgid "Mail check notifies you when new mail arrives in your mailbox"
 msgstr "「郵箱檢查」會在收到新電郵的時候通知您"
 
@@ -4099,10 +4111,12 @@ msgid "Set default list value for %s\n"
 msgstr "設定 %s 的預設值\n"
 
 #: mini-commander/src/mc-install-default-macros.c:117
+#, c-format
 msgid "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL is set, not installing schemas\n"
 msgstr "設定了 GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL 變數，不會安裝 schemas\n"
 
 #: mini-commander/src/mc-install-default-macros.c:125
+#, c-format
 msgid "Must set the GCONF_CONFIG_SOURCE environment variable\n"
 msgstr "必須設定 GCONF_CONFIG_SOURCE 環境變數\n"
 
@@ -4531,7 +4545,7 @@ msgstr "聲道"
 msgid "_Select channel to control:"
 msgstr "請選取準備控制的聲道(_S)："
 
-#: mixer/mixer.c:1874
+#: mixer/mixer.c:1871
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr "音量控制可設定系統的音量"
 
@@ -5522,15 +5536,15 @@ msgid "Monitor the quality of a wireless network link"
 msgstr "監控無線網路連線的訊號品質"
 
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:3
-#: wireless/wireless-applet.c:588 wireless/wireless-applet.c:835
+#: wireless/wireless-applet.c:590 wireless/wireless-applet.c:837
 msgid "Wireless Link Monitor"
 msgstr "無線網路連線監控"
 
-#: wireless/wireless-applet.c:365 wireless/wireless-applet.c:502
+#: wireless/wireless-applet.c:367 wireless/wireless-applet.c:504
 msgid "No Wireless Devices"
 msgstr "沒有任何無線網路裝置"
 
-#: wireless/wireless-applet.c:367
+#: wireless/wireless-applet.c:369
 msgid ""
 "There doesn't seem to be any wireless devices configured on your system.\n"
 "Please verify your configuration if you think this is incorrect."
@@ -5538,15 +5552,15 @@ msgstr ""
 "似乎系統中並沒有設定任何無線網路裝置。\n"
 "如果以上的推斷和事實不符，請確認組態是否出錯。"
 
-#: wireless/wireless-applet.c:590
+#: wireless/wireless-applet.c:592
 msgid "(C) 2001, 2002 Free Software Foundation "
 msgstr "版權所有 © 2001, 2002 Free Software Foundation"
 
-#: wireless/wireless-applet.c:591
+#: wireless/wireless-applet.c:593
 msgid "This utility shows the status of a wireless link."
 msgstr "此公用程式能顯示無線網路的連線狀態。"
 
-#: wireless/wireless-applet.c:836
+#: wireless/wireless-applet.c:838
 #, fuzzy
 msgid "This utility shows the status of a wireless link"
 msgstr "此公用程式能顯示無線網路的連線狀態。"
