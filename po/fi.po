@@ -8,8 +8,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
-"POT-Creation-Date: 2003-01-28 00:56+0000\n"
-"PO-Revision-Date: 2003-01-23 15:46+0300\n"
+"POT-Creation-Date: 2003-04-10 17:19+0300\n"
+"PO-Revision-Date: 2003-04-10 15:46+0300\n"
 "Last-Translator: Jarkko Ranta <jjranta@cc.joensuu.fi>\n"
 "Language-Team: Finnish <gnome-fi-laatu@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -265,10 +265,10 @@ msgstr "Jörgen Pehrson <jp@spektr.eu.org>"
 
 #: battstat/battstat_applet.c:838 cdplayer/cdplayer.c:517
 #: charpick/charpick.c:374 drivemount/drivemount.c:453 geyes/geyes.c:217
-#: gkb-new/gkb.c:594 gtik/gtik.c:704 gweather/gweather-about.c:43
-#: mini-commander/src/about.c:48 mixer/mixer.c:817
+#: gkb-new/gkb.c:624 gtik/gtik.c:704 gweather/gweather-about.c:43
+#: mini-commander/src/about.c:48 mixer/mixer.c:887
 #: modemlights/modemlights.c:209 multiload/main.c:57
-#: panel-menu/panel-menu.c:674 wireless/wireless-applet.c:703
+#: panel-menu/panel-menu.c:674 wireless/wireless-applet.c:712
 msgid "translator_credits"
 msgstr ""
 "Jarkko Ranta <jjranta@cc.joensuu.fi> Suomennos: http://gnome-fi.sourceforge."
@@ -383,7 +383,7 @@ msgid "Battery power low"
 msgstr "Virta vähissä"
 
 #: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:189
-#: cdplayer/cdplayer.c:535 cdplayer/cdplayer.c:926
+#: cdplayer/cdplayer.c:535 cdplayer/cdplayer.c:944
 msgid "CD Player"
 msgstr "CD-soitin"
 
@@ -408,27 +408,27 @@ msgstr "Paneelisovelma CD-äänilevyjen soittamiseen"
 msgid "_Run External CD Player"
 msgstr "Käynnistä ulkoinen _CD-soitin"
 
-#: cdplayer/cdplayer.c:169 cdplayer/cdplayer.c:916
+#: cdplayer/cdplayer.c:169 cdplayer/cdplayer.c:934
 msgid "Stop"
 msgstr "Pysäytä"
 
-#: cdplayer/cdplayer.c:173 cdplayer/cdplayer.c:918
+#: cdplayer/cdplayer.c:173 cdplayer/cdplayer.c:936
 msgid "Play / Pause"
 msgstr "Soita / Tauko"
 
-#: cdplayer/cdplayer.c:177 cdplayer/cdplayer.c:920
+#: cdplayer/cdplayer.c:177 cdplayer/cdplayer.c:938
 msgid "Eject"
 msgstr "Levy ulos"
 
-#: cdplayer/cdplayer.c:181 cdplayer/cdplayer.c:922
+#: cdplayer/cdplayer.c:181 cdplayer/cdplayer.c:940
 msgid "Previous Track"
 msgstr "Edellinen raita"
 
-#: cdplayer/cdplayer.c:185 cdplayer/cdplayer.c:924
+#: cdplayer/cdplayer.c:185 cdplayer/cdplayer.c:942
 msgid "Next Track"
 msgstr "Seuraava raita"
 
-#: cdplayer/cdplayer.c:307 drivemount/drivemount.c:399 mixer/mixer.c:783
+#: cdplayer/cdplayer.c:307 drivemount/drivemount.c:399 mixer/mixer.c:853
 #: multiload/main.c:118
 #, c-format
 msgid "There was an error executing '%s' : %s"
@@ -470,7 +470,7 @@ msgstr ""
 "© 1997 The Free Software Foundation\n"
 "© 2001 Chris Phelps (GNOME 2 -siirros)"
 
-#: cdplayer/cdplayer.c:538 cdplayer/cdplayer.c:927
+#: cdplayer/cdplayer.c:538 cdplayer/cdplayer.c:945
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr "CD-soitinsovelma on yksinkertainen CD-äänilevyjen soitin paneeliin"
 
@@ -482,23 +482,27 @@ msgstr "Aikaa kulunut"
 msgid "Track number"
 msgstr "Raidan numero"
 
-#: cdplayer/cdplayer.c:917
+#: cdplayer/cdplayer.c:860
+msgid "Audio device is busy, or being used by another application"
+msgstr "Äänilaite on varattu tai joku toinen ohjelma käyttää sitä"
+
+#: cdplayer/cdplayer.c:935
 msgid "Click this button to Stop playing the CD"
 msgstr "Napsauta tätä lopettaaksesi CD:n soiton"
 
-#: cdplayer/cdplayer.c:919
+#: cdplayer/cdplayer.c:937
 msgid "Click this button to Play or Pause the CD"
 msgstr "Napsauta tätä keskeyttääksesi soiton tai jatkaaksesi sitä"
 
-#: cdplayer/cdplayer.c:921
+#: cdplayer/cdplayer.c:939
 msgid "Click this button to eject the CD"
 msgstr "Napsauta tätä poistaaksesi CD:n asemasta"
 
-#: cdplayer/cdplayer.c:923
+#: cdplayer/cdplayer.c:941
 msgid "Click this button to Play the previous track in the CD"
 msgstr "Napsauta tätä siirtyäksesi edelliseen raitaan CD:llä"
 
-#: cdplayer/cdplayer.c:925
+#: cdplayer/cdplayer.c:943
 msgid "Click this button to Play the next track in the CD"
 msgstr "Napsauta tätä siirtyäksesi seuraavaan raitaan CD:llä"
 
@@ -602,15 +606,15 @@ msgstr " liitetty"
 msgid " not mounted"
 msgstr " irti"
 
-#: drivemount/drivemount.c:786
+#: drivemount/drivemount.c:791
 msgid "Drive Mount Applet Warning"
 msgstr "Levynliittimen varoitus"
 
-#: drivemount/drivemount.c:796
+#: drivemount/drivemount.c:801
 msgid "\" reported:\n"
 msgstr "\" ilmoitti:\n"
 
-#: drivemount/drivemount.c:798
+#: drivemount/drivemount.c:803
 msgid ""
 "Drivemount command failed.\n"
 "\""
@@ -735,7 +739,7 @@ msgstr "Muuta näppäinasettelua"
 msgid "GKB Factory"
 msgstr "GKB-tehdas"
 
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:3 gkb-new/gkb.c:605
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:3 gkb-new/gkb.c:635
 msgid "Keyboard Layout Switcher"
 msgstr "Näppäimistönvaihtaja"
 
@@ -751,15 +755,15 @@ msgstr ""
 "Käytä pikanäppäintä näppäinkarttojen välillä liikkumiseen. Pikanäppäinen voi "
 "vaihtaa Asetukset-ikkunasta"
 
-#: gkb-new/gkb.c:552 gkb-new/gkb.c:559
+#: gkb-new/gkb.c:582 gkb-new/gkb.c:589
 msgid "GKB"
 msgstr "GKB"
 
-#: gkb-new/gkb.c:607
+#: gkb-new/gkb.c:637
 msgid "(C) 1998-2000 Free Software Foundation"
 msgstr "© 1998-2000 Free Software Foundation"
 
-#: gkb-new/gkb.c:608
+#: gkb-new/gkb.c:638
 msgid ""
 "This applet switches between keyboard maps using setxkbmap or xmodmap.\n"
 "Mail me your flag and keyboard layout if you want support for your locale "
@@ -777,7 +781,7 @@ msgstr ""
 "<emese@gnome.hu> solidaarisuudesta.\n"
 "Shooby Ban <shooby@gnome.hu>"
 
-#: gkb-new/gkb.c:625
+#: gkb-new/gkb.c:655
 msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
 msgstr "GKB:n kotisivu (http://projects.gnome.hu/gkb)"
 
@@ -785,7 +789,7 @@ msgstr "GKB:n kotisivu (http://projects.gnome.hu/gkb)"
 msgid "Disabled"
 msgstr "Ei käytössä"
 
-#: gkb-new/keygrab.c:313
+#: gkb-new/keygrab.c:384
 msgid "Press a key or press Esc to cancel"
 msgstr "Paina mitä tahansa näppäintä, tai paina Esc:iä peruuttaaksesi"
 
@@ -797,25 +801,25 @@ msgstr "Näppäinkartat (valitse ja napsauta lisää)"
 msgid "Select Keyboard"
 msgstr "Valitse asettelu"
 
-#: gkb-new/prop-map.c:213
+#: gkb-new/prop-map.c:232
 msgid "Edit Keyboard"
 msgstr "Muokkaa näppäimistöä"
 
-#: gkb-new/prop-map.c:232 panel-menu/panel-menu-directory.c:674
+#: gkb-new/prop-map.c:251 panel-menu/panel-menu-directory.c:674
 #: panel-menu/panel-menu-documents.c:398 panel-menu/panel-menu-documents.c:435
 #: panel-menu/panel-menu-links.c:404 panel-menu/panel-menu-links.c:440
 msgid "_Name:"
 msgstr "_Nimi:"
 
-#: gkb-new/prop-map.c:235
+#: gkb-new/prop-map.c:254
 msgid "_Label:"
 msgstr "_Otsikko:"
 
-#: gkb-new/prop-map.c:238
+#: gkb-new/prop-map.c:257
 msgid "Co_mmand:"
 msgstr "_Komento:"
 
-#: gkb-new/prop-map.c:246
+#: gkb-new/prop-map.c:265
 msgid ""
 "Where command can be:\n"
 " * xmodmap /full/path/xmodmap.hu\n"
@@ -827,7 +831,7 @@ msgstr ""
 " * gkb_xmmap fi\n"
 " * setxkbmap fi"
 
-#: gkb-new/prop-map.c:279
+#: gkb-new/prop-map.c:298
 msgid "_Flag"
 msgstr "_Lippu"
 
@@ -873,11 +877,11 @@ msgid "_Grab hotkey"
 msgstr "_Aseta pikavalinta"
 
 #. Create property box
-#: gkb-new/prop.c:423
+#: gkb-new/prop.c:424
 msgid "Keyboard Layout Switcher Preferences"
 msgstr "Näppäimistönvaihtajan asetukset"
 
-#: gkb-new/prop.c:440
+#: gkb-new/prop.c:441
 msgid "Keymaps"
 msgstr "Näppäinkartat"
 
@@ -887,7 +891,7 @@ msgstr "Näppäinkartat"
 #. panel_applet_gconf_get_bool(multiload_applet->applet, "view_loadavg", NULL));
 #. gtk_box_pack_start(GTK_BOX(hbox), check_box, FALSE, FALSE, 0);
 #.
-#: gkb-new/prop.c:452 multiload/properties.c:313
+#: gkb-new/prop.c:453 multiload/properties.c:313
 msgid "Options"
 msgstr "Asetukset"
 
@@ -1167,7 +1171,7 @@ msgstr "Vieraile Weather.com:ssa"
 msgid "_Radar map"
 msgstr "_Tutkakartta"
 
-#: gweather/gweather-dialog.c:410
+#: gweather/gweather-dialog.c:411
 msgid ""
 "Detailed forecast not available for this location.\n"
 "Please try the state forecast; note that IWIN forecasts are available only "
@@ -1177,7 +1181,7 @@ msgstr ""
 "Kokeile valtionlaajuista ennustetta. Huomaa, että IWIN-ennuste on saatavana "
 "vain Yhdysvaltojen kaupungeille."
 
-#: gweather/gweather-dialog.c:412
+#: gweather/gweather-dialog.c:413
 msgid ""
 "State forecast not available for this location.\n"
 "Please try the detailed forecast; note that IWIN forecasts are available "
@@ -2486,7 +2490,7 @@ msgstr "Haku epäonnistui"
 
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:1
 #: mini-commander/src/about.c:66
-#: mini-commander/src/mini-commander_applet.c:353
+#: mini-commander/src/mini-commander_applet.c:356
 msgid "Command Line"
 msgstr "Komentorivi"
 
@@ -2515,15 +2519,15 @@ msgstr ""
 "Julkaistu GNU:n GPL-lisenssillä."
 
 #. build file select dialog
-#: mini-commander/src/command_line.c:430
+#: mini-commander/src/command_line.c:440
 msgid "Start program"
 msgstr "Käynnistettävä ohjelma"
 
-#: mini-commander/src/command_line.c:473
+#: mini-commander/src/command_line.c:483
 msgid "Command line"
 msgstr "Komentorivi"
 
-#: mini-commander/src/command_line.c:474
+#: mini-commander/src/command_line.c:484
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "Kirjoita komento tähän ja Gnome suorittaa sen sinulle"
 
@@ -2656,11 +2660,11 @@ msgstr "Historia"
 msgid "Click this button for the list of previous commands"
 msgstr "Napsauta saadaksesi listan viimeisimmistä komennoista"
 
-#: mini-commander/src/mini-commander_applet.c:351
+#: mini-commander/src/mini-commander_applet.c:354
 msgid "Mini-Commander applet"
 msgstr "Pienoiskomentotulkki"
 
-#: mini-commander/src/mini-commander_applet.c:352
+#: mini-commander/src/mini-commander_applet.c:355
 msgid "This applet adds a command line to the panel"
 msgstr "Tämä sovelma lisää komentorivin paneeliin"
 
@@ -2685,7 +2689,7 @@ msgid "Adjust the sound volume"
 msgstr "Säädä äänenvoimakkuutta"
 
 #: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:143
-#: mixer/mixer.c:830
+#: mixer/mixer.c:900
 msgid "Volume Control"
 msgstr "Äänenvoimakkuuden hallinta"
 
@@ -2724,23 +2728,23 @@ msgstr ""
 msgid "Mixer device %s has neither volume nor PCM channels.\n"
 msgstr "Miksauslaitteella %s ei ole äänenvoimakkuus- eikä PCM-kanavaa.\n"
 
-#: mixer/mixer.c:575
+#: mixer/mixer.c:645
 msgid "Volume Controller"
 msgstr "Äänenvoimakkuuden säädin"
 
-#: mixer/mixer.c:576
+#: mixer/mixer.c:646
 msgid "Use Up/Down arrow keys to change volume"
 msgstr "Käytä nuolinäppäimiä muuttaaksesi äänenvoimakkuutta"
 
-#: mixer/mixer.c:831
+#: mixer/mixer.c:901
 msgid "(C) 2001 Richard Hult"
 msgstr "© 2001 Richard Hult"
 
-#: mixer/mixer.c:832
+#: mixer/mixer.c:902
 msgid "The volume control lets you set the volume level for your desktop."
 msgstr "Äänenhallinta antaa sinun asettaa työpöytäsi äänenvoimakkuuden tason."
 
-#: mixer/mixer.c:1077
+#: mixer/mixer.c:1155
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr "Äänenhallinta antaa sinun asettaa työpöytäsi äänenvoimakkuuden tason."
 
@@ -3291,11 +3295,11 @@ msgstr ""
 "Langattoman yhteyden valvontaohjelman ajamiseen tarvittavat kuvat\n"
 "puuttuvat. Varmista että ohjelma on asennettu oikein."
 
-#: wireless/wireless-applet.c:524
+#: wireless/wireless-applet.c:529
 msgid "No Wireless Devices"
 msgstr "Ei langattomia laitteita"
 
-#: wireless/wireless-applet.c:526
+#: wireless/wireless-applet.c:531
 msgid ""
 "There doesn't seem to be any wireless devices configured on your system.\n"
 "Please verify your configuration if you think this is incorrect."
@@ -3303,16 +3307,16 @@ msgstr ""
 "Järjestelmässäsi ei näy olevan asennettuna langattomia laitteita.\n"
 "Tarkista asetuksesi jos tämä ei mielestäsi ole oikein."
 
-#: wireless/wireless-applet.c:718
+#: wireless/wireless-applet.c:727
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:2
 msgid "Wireless Link Monitor"
 msgstr "Langattomien laitteiden valvonta"
 
-#: wireless/wireless-applet.c:720
+#: wireless/wireless-applet.c:729
 msgid "(C) 2001, 2002 Free Software Foundation "
 msgstr "© 2001, 2002 Free Software Foundation"
 
-#: wireless/wireless-applet.c:721
+#: wireless/wireless-applet.c:730
 msgid "This utility shows the status of a wireless link."
 msgstr "Tämä ohjelma näyttää kannettavan koneesi akun latauksen."
 
