@@ -1,0 +1,375 @@
+<?xml version="1.0"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "2.0">
+  <!ENTITY manrevision "2.0">
+  <!ENTITY date "March 2002">
+  <!ENTITY applet "Battstat">
+]>
+
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Feb 12, 2002
+-->
+
+<!-- =============Document Header ============================= -->
+<article id="index" lang="en">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo> 
+	 <title>&applet; Applet Manual V&manrevision;</title> 
+	 <copyright> 
+		<year>1999</year> 
+		<year>2000</year> 
+		<holder>Jorgen Pehrson</holder> 
+	 </copyright>
+<!-- translators: uncomment this:
+
+  <copyright>
+   <year>2002</year>
+   <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+  </copyright>
+
+   -->
+
+	 <publisher> 
+		<publishername> GNOME Documentation Project </publishername> 
+	 </publisher> 
+
+&legal;
+<!-- This file  contains link to license for the documentation (GNU FDL), and 
+     other legal stuff such as "NO WARRANTY" statement. Please do not change 
+     any of this. -->
+
+	 <authorgroup> 
+		<author> 
+		  <firstname>Jorgen </firstname> 
+		  <surname> Pehrson</surname> 
+		  <affiliation> 
+			 <orgname>GNOME Documentation Project</orgname> 
+			 <address> <email>jp@spektr.eu.org</email> </address> 
+		  </affiliation> 
+		</author> 
+      <!-- This is appropriate place for other contributors: translators,
+           maintainers,  etc. Commented out by default.
+           <othercredit role="translator">
+	     <firstname>Latin</firstname> 
+	     <surname>Translator 1</surname> 
+	     <affiliation> 
+	       <orgname>Latin Translation Team</orgname> 
+	       <address> <email>translator@gnome.org</email> </address> 
+	     </affiliation>
+	     <contrib>Latin translation</contrib>
+           </othercredit>
+-->
+
+	 </authorgroup>
+
+    <!-- The following feedback information only applies to applets
+    listed in bugzilla.gnome.org and bugzilla.ximian.com. For other
+    applets, please provide your own feedback info or remove thsi
+    section altogether -->
+    <legalnotice> 
+      <title>Feedback</title> 
+      <para> To report a bug or make a suggestion regarding
+	the &applet; applet or this manual, follow the directions in the 
+	<ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>. 
+      </para> 
+    </legalnotice> 
+  </articleinfo> 
+
+  <indexterm zone="index"> 
+	 <primary>MY-GNOME-APPLET</primary> 
+  </indexterm> 
+  <indexterm zone="index"> 
+	 <primary>mygnomeapplet</primary> 
+  </indexterm>
+
+<!-- ============= Document Body ============================= -->
+<!-- ============= Introduction ============================== -->
+  <sect1 id="battsatt-introduction"> 
+	 <title>Introduction</title> 
+
+    <para> The <application>&applet;</application> applet, shown in Figure 1, shows the status of the
+      power subsystem in your laptop. To add this applet to your Panel,
+      right click on the <guimenuitem>Panel and select Panel->Add to
+      panel->Applet->Monitors->Battery Status Utility</guimenuitem>.
+    </para>
+
+</sect1>
+
+<!-- ================ Usage ================================ -->
+
+  <sect1 id="battstat-usage">
+    <title>Usage</title>
+    <para>&applet; applet requires no user input. You can, if you so
+    desire, configure it to some degree as described below. 
+    </para>
+
+<!-- SCREENSHOT -->
+ 
+    <para>  The figure above is shown when the laptop battery is fully
+    charged. 
+    </para>
+
+<!-- SCREENSHOT -->
+
+    <para> The little flash over the power cord is shown when the laptop
+    battery is recharging. It's flashing on and off until the battery is
+    fully recharged. 
+    </para>
+
+<!-- SCREENSHOT -->
+
+    <para> When you are running your laptop on battery it will display
+    this image. 
+    </para>
+
+<!-- SCREENSHOT -->
+
+    <para> Right-clicking on the applet brings up a menu containing the
+    following items: 
+      <variablelist>
+	<varlistentry>
+	  <term><guimenuitem>Properties</guimenuitem></term>
+	  <listitem>
+	    <para>
+	      Opens the Properties dialog window.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><guimenuitem>About</guimenuitem></term>
+	  <listitem>
+	    <para>
+	      Shows basic information about this applet.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><guimenuitem>Help</guimenuitem></term>
+	  <listitem>
+	    <para>
+	      Displays this document.
+	    </para>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	  <term><guimenuitem>Suspend laptop</guimenuitem></term>
+	  <listitem>
+	    <para>
+	      Executes the command specified in
+	      the Properties dialog. This entry will be ghosted out
+	      if you haven't specified what command to run. 
+	    </para>
+	  </listitem>
+	</varlistentry>
+      </variablelist>
+    </para>
+  </sect1>
+
+  <!-- ============= Customization ============================= -->
+
+  <sect1 id="battstatt-prefs">
+    <title>Customization</title>
+    <para> You can customize the Battstat applet somewhat by
+    right-clicking on it and choose Properties.... This will bring up
+    the preferences dialog window. 
+    </para>
+
+<!-- SCREENSHOT -->
+
+    <para>The properties are:
+    
+      <itemizedlist>
+	<listitem>
+	  <para>Yellow: sets the battery level where the progress bar will switch
+	    from green to yellow. Default: 40. 
+	  </para>
+	</listitem>
+        <listitem>
+	  <para>Orange: sets the battery level where the progress bar
+	  will switch from yellow to orange. Default: 25. 
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>Red: sets the battery level where the progress bar will
+	  switch from orange to red. Default: 15. 
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>The preview frame contains the battery progress bar and
+	  a draggable slider. By dragging the slider you can preview how
+	  it will look when the battery level actually changes. It
+	  doesn't affect the battery in any way. 
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>Notify me when battery charge is low: By selecting this,
+	  a warning dialog will appear when the power falls below the
+	  value in the Red entry box. 
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>Notify me when battery is fully re-charged: By selecting
+	  this, a dialog window will appear when the battery is fully
+	  re-charged. 
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>Beep when either of the above is tru: If you select
+	  this, your laptop will make an audible beep when any of the
+	  two above happens. 
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>Percentage text: If you click on this button, a font
+	  selection dialog window will appear. You can then select the
+	  font of your choice for the percentage text. 
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>Suspend command: Whatever you enter here will be
+	  executed when you click on the Suspend laptop in the applet
+	  menu. If you clear this entry field, the Suspend laptop entry
+	  will be unselectable. For example, if you are using FreeBSD
+	  you could enter apm -z or zzz here. Before you enter anything
+	  though, first make sure that you can safely suspend your
+	  laptop by testing the command in a shell. 
+	  </para>
+	</listitem>
+      </itemizedlist>
+    </para>
+
+<!-- SCREENSHOT -->
+
+      <para>The properties on this page are:
+        <variablelist>
+	  <varlistentry>
+	    <term>Move towards top:</term>
+	    <listitem>
+	      <para>If you select this radio button, the battery charge
+	      level meter will drain towards the positive terminal on
+	      the battery. 
+<!-- SCREENSHOT -->
+	      </para>
+	    </listitem>
+	  </varlistentry>
+	  <varlistentry>
+	    <term>Move towards bottom:</term>
+	    <listitem>
+	      <para>If you select this radio button, the battery charge
+	      level meter will drain towards the negative terminal on
+	      the battery. 
+	      </para>
+<!-- SCREENSHOT -->
+	    </listitem>
+	  </varlistentry>
+	  <varlistentry>
+	    <term>Horizontal:</term>
+	    <listitem>
+	      <para>By selecting this mode the applet will have a
+	      horizontal layout. (This is the default mode). 
+	      </para>
+	    </listitem>
+	  </varlistentry>
+	  <varlistentry>
+	    <term>Square:</term>
+	    <listitem>
+	      <para>In square mode the applet will be layout in a square
+	      formed shape. 
+<!-- SCREENSHOT -->
+	      </para>
+	    </listitem>
+	  </varlistentry>
+	  <varlistentry>
+	    <term>Square:</term>
+	    <listitem>
+	      <para>In square mode the applet will be layout in a square
+	      formed shape. 
+<!-- SCREENSHOT -->
+	      </para>
+	    </listitem>
+	  </varlistentry>
+	  <varlistentry>
+	    <term>Applet Layout:</term>
+	    <listitem>
+	      <para>Here you can select which parts of the applets you
+	      want to have visible. 
+<!-- SCREENSHOT -->
+<!-- SCREENSHOT -->
+	      </para>
+	    </listitem>
+	  </varlistentry>
+	  <varlistentry>
+	    <term>Use the status dock:</term>
+	    <listitem>
+	      <para> If you enable this toggle button the applet will
+	      use the status docklet if it is available.  
+<!-- SCREENSHOT -->
+	      </para>
+	    </listitem>
+	  </varlistentry>
+	</variablelist>
+      </para>
+    
+    <sect2 id="sound">
+      <title>Sound</title>
+
+      <para> To enable the sound support for this applet you need have
+      sound support enabled for GNOME. To select the samples that should
+      be played when the battery reach certain levels right-click on the
+      Panel and select: Programs->Settings->Multimedia->Sound. Make sure
+      you have both the Enable sound server startup and the Sounds for
+      events check buttons enabled. Next click on the Sound Events tab
+      and scroll down to the Battery Status Utility field. Here you can
+      assign samples to the different battery events. 
+      </para>
+    </sect2>
+  </sect1>
+  
+<!-- This section contains info about the program (not docs), such as
+     author's name(s), web page, license, feedback address. This
+     section is optional: primary place for this info is "About.." box of
+     the program. However, if you do wish to include this info in the
+     manual, this is the place to put it. Alternatively, you can put this 
+     information in the title page.-->
+
+<sect1 id="battstat-about">
+  <title>About &applet;</title>
+
+    <!-- The following feedback information only applies to applets
+    listed in bugzilla.gnome.org and bugzilla.ximian.com. For other
+    applets, please provide your own feedback info or remove thsi
+    section altogether -->
+ 
+     <para> To report a bug or make a suggestion regarding
+	the &applet; applet or this manual, follow the directions in the 
+	<ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>. 
+      </para> 
+
+  <!-- For translations: uncomment this:
+
+  <para>
+   Latin translation was done by ME
+   (<email>MYNAME@MYADDRESS</email>). Please send all  comments  and
+   suggestions regarding this translation to SOMEWHERE.
+  </para>
+
+  -->
+
+    <para>
+      This program is distributed under the terms of the GNU General
+      Public license as published by the Free Software Foundation;
+      either version 2 of the License, or (at your option) any later
+      version. A copy of this license can be found at this <ulink
+      type="help" url="ghelp:gpl">link</ulink>, or in the file COPYING
+      included with the source code of this program. 
+   </para>
+   </sect1> 
+
+</article> 
