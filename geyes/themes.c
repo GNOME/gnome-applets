@@ -87,7 +87,7 @@ load_theme (gchar *theme_dir)
         gchar *file_name;
 
         eyes_applet.theme_dir = g_strdup_printf ("%s/", theme_dir);
-        
+
         file_name = g_malloc (strlen (theme_dir) + strlen ("/config") + 1);
         strcpy (file_name, theme_dir);
         strcat (file_name, "/config");
@@ -101,18 +101,10 @@ load_theme (gchar *theme_dir)
         
         eyes_applet.theme_name = g_strdup (theme_dir);
         
-        eyes_applet.eye_image = gdk_pixbuf_new_from_file (eyes_applet.eye_filename);
-        eyes_applet.pupil_image = gdk_pixbuf_new_from_file (eyes_applet.pupil_filename);
+        eyes_applet.eye_image = gdk_pixbuf_new_from_file (eyes_applet.eye_filename, NULL);
+        eyes_applet.pupil_image = gdk_pixbuf_new_from_file (eyes_applet.pupil_filename, NULL);
 
-	/* We now have to replace these calls - actually I don't think we need them 
-        gdk_imlib_render (eyes_applet.eye_image,            
-                          eyes_applet.eye_image->rgb_width,
-                          eyes_applet.eye_image->rgb_height);
-        gdk_imlib_render (eyes_applet.pupil_image,            
-                          eyes_applet.pupil_image->rgb_width,
-                          eyes_applet.pupil_image->rgb_height);
-        */
-        eyes_applet.eye_height = gdk_pixbuf_get_height (eyes_applet.eye_image);
+	eyes_applet.eye_height = gdk_pixbuf_get_height (eyes_applet.eye_image);
         eyes_applet.eye_width = gdk_pixbuf_get_width (eyes_applet.eye_image);
         eyes_applet.pupil_height = gdk_pixbuf_get_height (eyes_applet.pupil_image);
         eyes_applet.pupil_width = gdk_pixbuf_get_width (eyes_applet.pupil_image);
@@ -125,9 +117,15 @@ static void
 destroy_theme ()
 {
 	/* Dunno about this - to unref or not to unref? */
-        gdk_pixbuf_unref (eyes_applet.eye_image); 
-        gdk_pixbuf_unref (eyes_applet.pupil_image); 
-
+	if (eyes_applet.eye_image != NULL) {
+        	gdk_pixbuf_unref (eyes_applet.eye_image); 
+        	eyes_applet.eye_image = NULL;
+        }
+        if (eyes_applet.pupil_image != NULL) {
+        	gdk_pixbuf_unref (eyes_applet.pupil_image); 
+        	eyes_applet.pupil_image = NULL;
+	}
+	
         g_free (eyes_applet.theme_dir);
         g_free (eyes_applet.theme_name);
 }
@@ -168,13 +166,15 @@ static void
 phelp_cb (GtkWidget *w, gint tab, gpointer data)
 {
 	/* Ported */
+#ifdef FIXME
 	GnomeHelpMenuEntry help_entry = { "geyes_applet",
 					  "index.html#GEYES-PREFS" };
 	gnome_help_display(NULL, &help_entry);
+#endif
 }
 
 void
-properties_cb (AppletWidget *applet, gpointer data)
+properties_cb (BonoboUIComponent *uic, gpointer user_data, const gchar *verbname)
 {
 	/* Half ported - ugly etc, etc.. */
         GtkWidget *pbox;
@@ -245,3 +245,5 @@ properties_cb (AppletWidget *applet, gpointer data)
 	eyes_applet.prop_box.clist = clist;
 	return;
 }
+
+

@@ -20,7 +20,7 @@
 #ifndef __GEYES_H__
 #define __GEYES_H__
 #include <gnome.h>
-
+#include <panel-applet.h>
 
 #define MAX_EYES 5
 typedef struct
@@ -38,7 +38,6 @@ typedef struct
     GtkWidget *fixed;
     GtkWidget *hbox;
     GtkWidget *eyes[MAX_EYES];
-    GdkPixmap *pixmap[MAX_EYES];
 
     /* Theme */
     GdkPixbuf *eye_image;
@@ -62,7 +61,6 @@ void create_eyes (void);
 void destroy_eyes (void);
 
 void load_theme (gchar *theme_name);
-#ifdef FIXME
-void properties_cb (AppletWidget *applet, gpointer data);
-#endif
+void properties_cb (BonoboUIComponent *uic, gpointer user_data, const gchar *verbname);
+
 #endif

@@ -30,52 +30,62 @@ EyesApplet eyes_applet = {0};
 guint timeout_handle = -1;
 GConfClient *client;
 
+
+#ifdef THIS_IS_NOT_NEEDED_I_THINK /* gdk_pixbuf now handles the transparency */
 /* Applet transparency - Taken (and modified a bit) from Miguel's gen-util
  * printer applet (thanks to Inigo Serna who pointed this code out to me)
  * But that code was wrong - George */
 static void 
 applet_set_default_back (GtkWidget *dest, GtkWidget *src)
 {
+
 	/* Not ported */
 	/* Deprecated - now use gtk_widget_set_style (GtkWidget *widget, GtkStyle *style) */
 	gtk_widget_set_rc_style(dest);
         gtk_widget_queue_draw (dest);
 	return;
 	src = NULL;
+
 }
 
 static void
 applet_set_back_color (GtkWidget *widget, GdkColor *color)
 {
         GtkStyle *new_style;
+
         new_style = gtk_style_copy (widget->style);
         gtk_style_ref (new_style);
         new_style->bg[GTK_STATE_NORMAL] = *color;
         new_style->bg[GTK_STATE_NORMAL].pixel = 1; /* bogus */
         
         if (new_style->bg_pixmap [GTK_STATE_NORMAL]) {
+
                 gdk_imlib_free_pixmap (new_style->bg_pixmap [GTK_STATE_NORMAL]);
+
                 new_style->bg_pixmap [GTK_STATE_NORMAL] = NULL;
         }
         
         gtk_widget_set_style (widget, new_style);
         gtk_style_unref (new_style);
         gtk_widget_queue_draw (widget);
+
 }
 
 static void
 applet_set_back_pixmap (GtkWidget *widget, gchar *pixmap)
 {
-        GdkImlibImage *imlib_image;
+        GdkPixbuf *pixbuf;
         GdkPixmap *pm;
         GtkStyle *new_style;
-        
+     
         if (!pixmap || strcmp (pixmap, "") == 0) {
                 new_style = gtk_style_copy (widget->style);
                 gtk_style_ref (new_style);
                 pm = new_style->bg_pixmap [GTK_STATE_NORMAL];
+
                 if (pm) 
                         gdk_imlib_free_pixmap (pm);
+
                 new_style->bg_pixmap [GTK_STATE_NORMAL] = NULL;
                 gtk_widget_set_style (widget, new_style);
                 gtk_style_unref (new_style);
@@ -84,22 +94,27 @@ applet_set_back_pixmap (GtkWidget *widget, gchar *pixmap)
         if (!g_file_exists (pixmap)) 
                 return;
         
-        imlib_image = gdk_imlib_load_image (pixmap);
-        if (!imlib_image)
+        pixbuf = gdk_pixbuf_new_from_file (pixmap, NULL);
+        //imlib_image = gdk_imlib_load_image (pixmap);
+        if (!pixbuf)
                 return;
         
-        gdk_imlib_render (imlib_image, 
+        /*gdk_imlib_render (imlib_image, 
                           imlib_image->rgb_width,
-                          imlib_image->rgb_height);
-        pm = gdk_imlib_move_image (imlib_image);
+                          imlib_image->rgb_height);*/
+        //pm = gdk_imlib_move_image (imlib_image);
+        gdk_pixbuf_render_pixmap_and_mask (pixbuf,&pm,NULL,0);
         new_style = gtk_style_copy (widget->style);
         gtk_style_ref (new_style);
+
         if (new_style->bg_pixmap [GTK_STATE_NORMAL]) 
                 gdk_imlib_free_pixmap (new_style->bg_pixmap [GTK_STATE_NORMAL]);
+
         new_style->bg_pixmap [GTK_STATE_NORMAL] = pm;
         gtk_widget_set_style (widget, new_style);
         gtk_style_unref (new_style);
-        gdk_imlib_destroy_image (imlib_image);
+        gdk_pixbuf_unref (pixbuf);
+
 }
 
 static void
@@ -122,6 +137,7 @@ applet_back_change (PanelApplet *a,
 	}
 	return;
 }
+#endif
 
 /* TODO - Optimize this a bit */
 static void 
@@ -165,51 +181,30 @@ draw_eye (gint eye_num,
           gint pupil_x, 
           gint pupil_y)
 {
-	/* Currently porting */
-	GdkPixmap *eyes, *pupils;
-	
-	gdk_pixbuf_render_pixmap_and_mask (eyes_applet.eye_image,
-					   &eyes,
-					   NULL,
-					   0);
-	gdk_pixbuf_render_pixmap_and_mask (eyes_applet.pupil_image,
-					   &pupils,
-					   NULL,
-					   0);
-
-        gdk_draw_pixmap (eyes_applet.pixmap [eye_num],
-                         eyes_applet.applet->style->black_gc,
-                         eyes,
-                         0, 0, 
-                         0, 0,
-                         eyes_applet.eye_width, 
-                         eyes_applet.eye_height);
-        gdk_draw_pixmap (eyes_applet.pixmap [eye_num],
-                         eyes_applet.applet->style->black_gc,
-                         pupils,
-                         0, 0, 
-                         pupil_x - eyes_applet.pupil_width / 2, 
-                         pupil_y - eyes_applet.pupil_height / 2,
-                         -1, -1);
-       
-	/* Needs to be converted - although this code doesn't make much sense
-	
-        if (eyes_applet.pupil_image->shape_mask) {
-                gdk_gc_set_clip_mask (eyes_applet.applet->style->black_gc, 
-                                      eyes_applet.pupil_image->shape_mask);
-                gdk_gc_set_clip_origin (eyes_applet.applet->style->black_gc, 
-                                        pupil_x - eyes_applet.pupil_width / 2, 
-                                        pupil_y - eyes_applet.pupil_height / 2);
-        }
-
-        if (eyes_applet.pupil_image->shape_mask) {
-                gdk_gc_set_clip_mask (eyes_applet.applet->style->black_gc, 
-                                      NULL);
-                gdk_gc_set_clip_origin (eyes_applet.applet->style->black_gc, 
-                                        0, 0);
-        }
-	*/
+	gdk_pixbuf_render_to_drawable_alpha (eyes_applet.eye_image, 
+					     eyes_applet.eyes[eye_num]->window,
+					     0, 0, 
+                         		     0, 0,
+                         		     eyes_applet.eye_width, 
+                         		     eyes_applet.eye_height,
+                         		     GDK_PIXBUF_ALPHA_BILEVEL,
+                         		     128,
+                         		     GDK_RGB_DITHER_NONE,
+                         		     0,
+                         		     0);
         
+	gdk_pixbuf_render_to_drawable_alpha (eyes_applet.pupil_image, 
+					     eyes_applet.eyes[eye_num]->window,
+					     0, 0, 
+                         		     pupil_x - eyes_applet.pupil_width / 2, 
+                         		     pupil_y - eyes_applet.pupil_height / 2,
+                         		     -1, -1,
+                         		     GDK_PIXBUF_ALPHA_BILEVEL,
+                         		     128,
+                         		     GDK_RGB_DITHER_NONE,
+                         		     0,
+                         		     0);
+ 
 }
 
 static gint 
@@ -226,23 +221,11 @@ timer_cb (void)
                 draw_eye (i, pupil_x, pupil_y);
         }
         
-        for (i = 0; i < eyes_applet.num_eyes; i++) {
-                gdk_draw_pixmap(eyes_applet.eyes[i]->window,
-                                eyes_applet.eyes[i]->style->fg_gc[GTK_WIDGET_STATE (eyes_applet.eyes[i])],
-                                eyes_applet.pixmap[i],
-                                0, 0,
-                                0, 0,
-                                eyes_applet.eye_width, eyes_applet.eye_height);
-                gdk_window_shape_combine_mask (eyes_applet.eyes[i]->window,
-                                               eyes_applet.eye_image->shape_mask,
-                                               0, 
-                                               0);
-        }
         return TRUE;
 }
 
 static void
-about_cb (void)
+about_cb (BonoboUIComponent *uic, gpointer user_data, const gchar *verbname)
 {
         static GtkWidget *about = NULL;
         const gchar *authors [] = {N_("Dave Camp <campd@oit.edu>"), NULL};
@@ -270,17 +253,11 @@ void
 destroy_eyes (void)
 {
         int i;
-        g_signal_handlers_disconnect_by_func (G_OBJECT (eyes_applet.applet),
-                                       G_CALLBACK (applet_back_change),
-                                       &eyes_applet);
-		
-		
+        
         for (i = 0; i < eyes_applet.num_eyes; i++) {
-                gdk_pixmap_unref (eyes_applet.pixmap[i]);
                 gtk_widget_destroy (eyes_applet.eyes[i]);
         }
         gtk_widget_destroy (eyes_applet.hbox);
-        gtk_widget_destroy (eyes_applet.fixed);
 }
 
 static void
@@ -295,9 +272,10 @@ properties_load ()
         gchar *theme_path = NULL;
 
 	theme_path = gconf_client_get_string(client, "/applets/gEyes/theme-path", NULL);
-	/* FIXME: should install gconf schemas */
+	/* FIXME: should install gconf schemas to get defaults*/
 	if (theme_path == NULL)
-		theme_path = g_strdup (GEYES_THEMES_DIR);
+		theme_path = g_strdup (GEYES_THEMES_DIR"Default");
+	
         load_theme (theme_path);
         g_free (theme_path);
 }
@@ -321,14 +299,8 @@ create_eyes (void)
         gint i;
         gint color_depth; 
         
-        eyes_applet.fixed = gtk_fixed_new ();
-        
-	g_signal_connect (G_OBJECT (eyes_applet.applet), 
-				    "back_change",
-				    G_CALLBACK (applet_back_change),
-				    &eyes_applet);
-				    
         eyes_applet.hbox = gtk_hbox_new (FALSE, 0);
+        gtk_fixed_put (GTK_FIXED (eyes_applet.fixed), eyes_applet.hbox, 0, 0);
         
         for (i = 0; i < eyes_applet.num_eyes; i++) {
                 eyes_applet.eyes[i] = gtk_drawing_area_new ();
@@ -343,31 +315,29 @@ create_eyes (void)
 					     eyes_applet.eye_height);
  
                 gtk_widget_show (eyes_applet.eyes[i]);
-
+                
                 color_depth = (gdk_window_get_visual (eyes_applet.applet->window))->depth;
                 
-		eyes_applet.pixmap[i] = gdk_pixmap_new (eyes_applet.eyes[i]->window,
-                                                        eyes_applet.eye_width,
-                                                        eyes_applet.eye_height,
-                                                        color_depth);
-                draw_eye (i, eyes_applet.eye_width / 2,
-                          eyes_applet.eye_height / 2);
-                
-                gtk_box_pack_start (GTK_BOX (eyes_applet.hbox), 
+		gtk_box_pack_start (GTK_BOX (eyes_applet.hbox), 
                                     eyes_applet.eyes [i],
                                     TRUE,
                                     TRUE,
                                     0);
+                
+                gtk_widget_realize (eyes_applet.eyes[i]);
+		draw_eye (i, eyes_applet.eye_width / 2,
+                          eyes_applet.eye_height / 2);
+                
         }
-        gtk_fixed_put (GTK_FIXED (eyes_applet.fixed), eyes_applet.hbox, 0, 0);
         gtk_widget_show (eyes_applet.hbox);
-        gtk_widget_show (eyes_applet.fixed);
+        
 }
 
-#ifdef FIXME
+
 static gint
 delete_cb (GtkWidget *widget, GdkEvent *event, gpointer data)
 {
+
 	gtk_timeout_remove (timeout_handle);
 	timeout_handle = -1;
 	return FALSE;
@@ -378,92 +348,68 @@ delete_cb (GtkWidget *widget, GdkEvent *event, gpointer data)
 
 
 static void
-help_cb (AppletWidget *applet, gpointer data)
-{
-    static GnomeHelpMenuEntry help_entry = { "geyes_applet", "index.html"};
-    gnome_help_display(NULL, &help_entry);
-}
-#endif
-
-static void
-create_eyes_applet (void)
+help_cb (BonoboUIComponent *uic, gpointer user_data, const gchar *verbname)
 {
 #ifdef FIXME
-	g_object_connect (G_OBJECT (eyes_applet.applet),
-                            "save_session",
-                            G_CALLBACK (save_session_cb), 
-                            NULL);
-	g_object_connect (G_OBJECT (eyes_applet.applet),
-			    "delete_event",
-			    G_CALLBACK (delete_cb),
-			    NULL);
-
-	/* I guess these could be changed for 2.0 ? */
-        applet_widget_register_stock_callback (APPLET_WIDGET (eyes_applet.applet),
-                                               "properties",
-                                               GNOME_STOCK_MENU_PROP,
-                                               _("Properties..."),
-                                               (AppletCallbackFunc)properties_cb,
-                                               NULL);        
-	applet_widget_register_stock_callback (APPLET_WIDGET (eyes_applet.applet),
-					       "help",
-					       GNOME_STOCK_PIXMAP_HELP,
-					       _("Help"),
-					       help_cb, NULL);
-        applet_widget_register_stock_callback (APPLET_WIDGET (eyes_applet.applet),
-                                               "about",
-                                               GNOME_STOCK_MENU_ABOUT,
-                                               _("About..."),
-                                               (AppletCallbackFunc)about_cb,
-                                               NULL);
-        
-        gtk_widget_realize (eyes_applet.applet);
+    static GnomeHelpMenuEntry help_entry = { "geyes_applet", "index.html"};
+    gnome_help_display(NULL, &help_entry);
 #endif
 }
+
+
+static const BonoboUIVerb geyes_applet_menu_verbs [] = {
+        BONOBO_UI_VERB ("Props", properties_cb),
+        BONOBO_UI_VERB ("Help", help_cb),
+        BONOBO_UI_VERB ("About", about_cb),
+
+        BONOBO_UI_VERB_END
+};
+
+static const char geyes_applet_menu_xml [] =
+	"<popup name=\"button3\">\n"
+	"   <menuitem name=\"Item 1\" verb=\"Props\" _label=\"Properties\"/>\n"
+	"             pixtype=\"stock\" pixname=\"gtk-properties\"/>\n"
+	"   <menuitem name=\"Item 2\" verb=\"Help\" _label=\"Help\"/>\n"
+	"             pixtype=\"stock\" pixname=\"gtk-help\"/>\n"
+	"   <menuitem name=\"Item 3\" verb=\"About\" _label=\"About\"/>\n"
+	"             pixtype=\"stock\" pixname=\"gnome-stock-about\"/>\n"
+	"</popup>\n";
 
 static BonoboObject *
 geyes_applet_new (void)
 {
-	GtkWidget *applet;
 	
-	client = gconf_client_new ();
+	client = gconf_client_get_default ();
 	gconf_client_add_dir(client,
                         "/extra/test/directory",
                         GCONF_CLIENT_PRELOAD_NONE,
                         NULL);
-      
-        create_eyes_applet ();
+       	
+       	gdk_rgb_init ();
+       	
         properties_load ();
-        create_eyes ();
+        
+        eyes_applet.fixed = gtk_fixed_new ();
+        eyes_applet.applet = panel_applet_new (eyes_applet.fixed);        
+	
+        create_eyes ();        
         
         timeout_handle = gtk_timeout_add (UPDATE_TIMEOUT,
 			(GtkFunction)timer_cb, NULL);
+			
+	panel_applet_setup_menu (PANEL_APPLET (eyes_applet.applet),
+				 geyes_applet_menu_xml,
+				 geyes_applet_menu_verbs,
+				 NULL);
 	
-	eyes_applet.applet = panel_applet_new (eyes_applet.fixed);
+	gtk_widget_show_all (eyes_applet.applet);
 
-	gtk_widget_show_all (applet);
-#ifdef FIXME
-	g_signal_connect (G_OBJECT (applet),
-			  "change_orient",
-			  G_CALLBACK (test_applet_handle_orient_change),
-			  label);
-
-	g_signal_connect (G_OBJECT (applet),
-			  "change_size",
-			  G_CALLBACK (test_applet_handle_size_change),
-			  label);
-#endif
-	g_signal_connect (G_OBJECT (applet),
-			  "change_background",
-			  G_CALLBACK (applet_back_change),
-			  &eyes_applet);
-#ifdef FIXME
-	g_signal_connect (G_OBJECT (applet),
-			  "save_yourself",
-			  G_CALLBACK (test_applet_handle_save_yourself),
-			  label);
-#endif		  
-	return BONOBO_OBJECT (panel_applet_get_control (PANEL_APPLET (applet)));
+	g_signal_connect (G_OBJECT (eyes_applet.applet),
+			    "destroy_event",
+			    G_CALLBACK (delete_cb),
+			    NULL);
+	  
+	return BONOBO_OBJECT (panel_applet_get_control (PANEL_APPLET (eyes_applet.applet)));
 	
 }
 
@@ -474,7 +420,7 @@ geyes_applet_factory (BonoboGenericFactory *this,
 {
 	BonoboObject *applet = NULL;
     
-	if (!strcmp (iid, "OAFIID:GNOME_Panel_TestBonoboApplet"))
+	if (!strcmp (iid, "OAFIID:GNOME_GeyesApplet"))
 		applet = geyes_applet_new (); 
     
 	return applet;
