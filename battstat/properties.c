@@ -120,7 +120,7 @@ prop_apply (GtkWidget *w, int page, gpointer data)
 			 /* Message in a Gnome warning dialog window
 			    when the user enables the suspend
 			    function.*/
-			 _("You have chosen to enable the Suspend function. This can potentionally be a security risc."));
+			 _("You have chosen to enable the Suspend function. This can potentially be a security risk."));
   } else {
     applet_widget_callback_set_sensitive (APPLET_WIDGET (battstat->applet),
 					  "suspend",
@@ -192,75 +192,69 @@ prop_cb (AppletWidget *applet, gpointer data)
   
   battstat->eyellow_adj = GTK_OBJECT (gtk_spin_button_get_adjustment (GTK_SPIN_BUTTON (widget)));
 
-  gtk_signal_connect (GTK_OBJECT (battstat->eyellow_adj), "value_changed",
-											GTK_SIGNAL_FUNC (adj_value_changed_cb), battstat);
+   gtk_signal_connect (GTK_OBJECT (battstat->eyellow_adj), "value_changed",
+		       GTK_SIGNAL_FUNC (adj_value_changed_cb), battstat);
 
   widget = glade_xml_get_widget (glade_xml, "orange_spin");
   
   battstat->eorange_adj = GTK_OBJECT (gtk_spin_button_get_adjustment (GTK_SPIN_BUTTON (widget)));
 	
   gtk_signal_connect (GTK_OBJECT (battstat->eorange_adj), "value_changed",
-											GTK_SIGNAL_FUNC (adj_value_changed_cb), battstat);
+		      GTK_SIGNAL_FUNC (adj_value_changed_cb), battstat);
 
   widget = glade_xml_get_widget (glade_xml, "red_spin");
   
   battstat->ered_adj = GTK_OBJECT (gtk_spin_button_get_adjustment (GTK_SPIN_BUTTON (widget)));
 	
   gtk_signal_connect (GTK_OBJECT (battstat->ered_adj), "value_changed",
-											GTK_SIGNAL_FUNC (adj_value_changed_cb), battstat);
+		      GTK_SIGNAL_FUNC (adj_value_changed_cb), battstat);
 
   preview_hbox = glade_xml_get_widget (glade_xml, "preview_hbox");
   
   teststyle = gtk_widget_get_style( GTK_WIDGET (battstat->prop_win) );
 
-  battstat->testpixmap = 
-		gdk_pixmap_create_from_xpm_d (battstat->applet->window,
-																	&battstat->testmask,
-																	&teststyle->bg[GTK_STATE_NORMAL],
-																	battery_gray_xpm); 
+  battstat->testpixmap = gdk_pixmap_create_from_xpm_d (battstat->applet->window,
+						       &battstat->testmask,
+						       &teststyle->bg[GTK_STATE_NORMAL],
+						       battery_gray_xpm); 
 
-  battstat->testpixbuffer = 
-		gdk_pixmap_create_from_xpm_d (battstat->applet->window,
-																	&battstat->testpixmask,
-																	&teststyle->bg[GTK_STATE_NORMAL],
-																	battery_gray_xpm); 
+  battstat->testpixbuffer = gdk_pixmap_create_from_xpm_d (battstat->applet->window,
+							  &battstat->testpixmask,
+							  &teststyle->bg[GTK_STATE_NORMAL],
+							  battery_gray_xpm); 
 
   battstat->testpixgc = gdk_gc_new (battstat->testpixmap);
 
   battstat->testpixmapwid = gtk_pixmap_new (battstat->testpixmap, 
-																						battstat->testmask );
+					    battstat->testmask );
 
   gtk_box_pack_start (GTK_BOX (preview_hbox), 
-											GTK_WIDGET (battstat->testpixmapwid),
-											FALSE, TRUE, 0);
+		      GTK_WIDGET (battstat->testpixmapwid),
+		      FALSE, TRUE, 0);
 	
 	battstat->testpercent = glade_xml_get_widget (glade_xml, "preview_label");
   
   widget = glade_xml_get_widget (glade_xml, "preview_hscale");
 
-  battstat->testadj = 
-		GTK_OBJECT (gtk_range_get_adjustment (GTK_RANGE (widget)));
+  battstat->testadj = GTK_OBJECT (gtk_range_get_adjustment (GTK_RANGE (widget)));
   
   gtk_signal_connect (battstat->testadj, "value_changed",
-											(GtkSignalFunc)simul_cb, battstat);
+		      (GtkSignalFunc)simul_cb, battstat);
 	
-  battstat->lowbatt_toggle = glade_xml_get_widget (glade_xml, 
-                                                   "lowbatt_toggle");
+  battstat->lowbatt_toggle = glade_xml_get_widget (glade_xml, "lowbatt_toggle");
 
   battstat->full_toggle = glade_xml_get_widget (glade_xml, "full_toggle");
   battstat->beep_toggle = glade_xml_get_widget (glade_xml, "beep_toggle");
   
   if(battstat->beep) {
-    gtk_toggle_button_set_state (GTK_TOGGLE_BUTTON (battstat->beep_toggle), 
-																 TRUE);
+    gtk_toggle_button_set_state (GTK_TOGGLE_BUTTON (battstat->beep_toggle), TRUE);
   }
+   
   if(battstat->fullbattnot) {
-    gtk_toggle_button_set_state (GTK_TOGGLE_BUTTON (battstat->full_toggle), 
-																 TRUE);
+     gtk_toggle_button_set_state (GTK_TOGGLE_BUTTON (battstat->full_toggle), TRUE);
   }
   if(battstat->lowbattnotification) {
-    gtk_toggle_button_set_state (GTK_TOGGLE_BUTTON (battstat->lowbatt_toggle), 
-																 TRUE);
+    gtk_toggle_button_set_state (GTK_TOGGLE_BUTTON (battstat->lowbatt_toggle), TRUE);
   }
   if(battstat->lowbattnotification == 0 && battstat->fullbattnot == 0) {
     gtk_widget_set_sensitive(GTK_WIDGET (battstat->beep_toggle), FALSE);
@@ -279,25 +273,22 @@ prop_cb (AppletWidget *applet, gpointer data)
 
   battstat->fontpicker = glade_xml_get_widget (glade_xml, "font_picker");
  
-  gnome_font_picker_set_font_name (GNOME_FONT_PICKER (battstat->fontpicker),
-																	 battstat->fontname);
+  gnome_font_picker_set_font_name (GNOME_FONT_PICKER (battstat->fontpicker), battstat->fontname);
 
   if(battstat->own_font == 0) {
     gtk_widget_set_sensitive(GTK_WIDGET (battstat->fontpicker), FALSE);
   }
 
   gtk_signal_connect (GTK_OBJECT (battstat->fontpicker), "font_set",
-											GTK_SIGNAL_FUNC (font_set_cb), battstat);
-
-  battstat->suspend_entry = glade_xml_get_widget (glade_xml,
-																									"suspend_entry");
+		      GTK_SIGNAL_FUNC (font_set_cb), battstat);
+   
+  battstat->suspend_entry = glade_xml_get_widget (glade_xml, "suspend_entry");
 
   battstat->progdir_radio = glade_xml_get_widget (glade_xml, "dir_radio_top");
 	widget = glade_xml_get_widget (glade_xml, "dir_radio_bottom");
 	
   if(battstat->draintop) {
-    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (battstat->progdir_radio), 
-																	1);
+    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (battstat->progdir_radio), 1);
   } else {
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), 1);
   }
@@ -306,8 +297,7 @@ prop_cb (AppletWidget *applet, gpointer data)
 
 	layout_table = glade_xml_get_widget (glade_xml, "layout_table");
 	
-  battstat->radio_lay_batt_on = glade_xml_get_widget (glade_xml, 
-																											"show_batt_radio");
+  battstat->radio_lay_batt_on = glade_xml_get_widget (glade_xml, "show_batt_radio");
 
 	widget = glade_xml_get_widget (glade_xml, "hide_batt_radio");
 	
@@ -317,8 +307,7 @@ prop_cb (AppletWidget *applet, gpointer data)
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), 1);
   }
 
-  battstat->radio_lay_status_on = glade_xml_get_widget (glade_xml, 
-																												"show_status_radio");
+  battstat->radio_lay_status_on = glade_xml_get_widget (glade_xml, "show_status_radio");
 	
   widget = glade_xml_get_widget (glade_xml, "hide_status_radio");
 
@@ -328,8 +317,7 @@ prop_cb (AppletWidget *applet, gpointer data)
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), 1);   
   }
 
-  battstat->radio_lay_percent_on = glade_xml_get_widget (glade_xml,
-																												 "show_percent_radio");
+  battstat->radio_lay_percent_on = glade_xml_get_widget (glade_xml, "show_percent_radio");
 
   widget = glade_xml_get_widget (glade_xml, "hide_percent_radio");
 
@@ -351,44 +339,43 @@ prop_cb (AppletWidget *applet, gpointer data)
                     (GtkAttachOptions) (GTK_EXPAND), 0, 0);
 
   if(battstat->usedock) {
-    gtk_toggle_button_set_state (GTK_TOGGLE_BUTTON (battstat->dock_toggle), 
-																 TRUE);
+    gtk_toggle_button_set_state (GTK_TOGGLE_BUTTON (battstat->dock_toggle), TRUE);
   }
 
-  gtk_signal_connect (GTK_OBJECT (battstat->dock_toggle), "toggled",
-                      GTK_SIGNAL_FUNC (toggle_value_changed_cb), battstat);
-
-  gtk_signal_connect (GTK_OBJECT (battstat->font_toggle), "toggled",
-                      GTK_SIGNAL_FUNC (toggle_value_changed_cb), battstat);
-
-	gtk_signal_connect (GTK_OBJECT(battstat->suspend_entry), "changed",
-											GTK_SIGNAL_FUNC( toggle_value_changed_cb), battstat);
-
-  gtk_signal_connect (GTK_OBJECT (battstat->progdir_radio), "toggled",
-											GTK_SIGNAL_FUNC (toggle_value_changed_cb), battstat);
-
-  gtk_signal_connect (GTK_OBJECT (battstat->radio_lay_batt_on), "toggled",
-											GTK_SIGNAL_FUNC (toggle_value_changed_cb), battstat);
-
-  gtk_signal_connect (GTK_OBJECT (battstat->radio_lay_status_on), "toggled",
-											GTK_SIGNAL_FUNC (toggle_value_changed_cb), battstat);
-
-  gtk_signal_connect (GTK_OBJECT (battstat->radio_lay_percent_on), "toggled",
-											GTK_SIGNAL_FUNC (toggle_value_changed_cb), battstat);
-
-  gtk_signal_connect (GTK_OBJECT (battstat->prop_win), "apply",
-                      GTK_SIGNAL_FUNC (prop_apply), battstat);
-
-  gtk_signal_connect (GTK_OBJECT (battstat->prop_win), "destroy",
-                      GTK_SIGNAL_FUNC (prop_cancel), battstat);
-
-  gtk_signal_connect (GTK_OBJECT (battstat->prop_win), "delete_event",
-                      GTK_SIGNAL_FUNC (prop_cancel), battstat); 
-
-  gtk_signal_connect (GTK_OBJECT (battstat->prop_win), "help",
-                      GTK_SIGNAL_FUNC (helppref_cb), battstat);
-
-  gtk_widget_show_all (GTK_WIDGET (battstat->prop_win));
-
-  gtk_adjustment_value_changed(GTK_ADJUSTMENT (battstat->testadj));
+   gtk_signal_connect (GTK_OBJECT (battstat->dock_toggle), "toggled",
+		       GTK_SIGNAL_FUNC (toggle_value_changed_cb), battstat);
+   
+   gtk_signal_connect (GTK_OBJECT (battstat->font_toggle), "toggled",
+		       GTK_SIGNAL_FUNC (toggle_value_changed_cb), battstat);
+   
+   gtk_signal_connect (GTK_OBJECT(battstat->suspend_entry), "changed",
+		       GTK_SIGNAL_FUNC( toggle_value_changed_cb), battstat);
+   
+   gtk_signal_connect (GTK_OBJECT (battstat->progdir_radio), "toggled",
+		       GTK_SIGNAL_FUNC (toggle_value_changed_cb), battstat);
+   
+   gtk_signal_connect (GTK_OBJECT (battstat->radio_lay_batt_on), "toggled",
+		       GTK_SIGNAL_FUNC (toggle_value_changed_cb), battstat);
+   
+   gtk_signal_connect (GTK_OBJECT (battstat->radio_lay_status_on), "toggled",
+		       GTK_SIGNAL_FUNC (toggle_value_changed_cb), battstat);
+   
+   gtk_signal_connect (GTK_OBJECT (battstat->radio_lay_percent_on), "toggled",
+		       GTK_SIGNAL_FUNC (toggle_value_changed_cb), battstat);
+   
+   gtk_signal_connect (GTK_OBJECT (battstat->prop_win), "apply",
+		       GTK_SIGNAL_FUNC (prop_apply), battstat);
+   
+   gtk_signal_connect (GTK_OBJECT (battstat->prop_win), "destroy",
+		       GTK_SIGNAL_FUNC (prop_cancel), battstat);
+   
+   gtk_signal_connect (GTK_OBJECT (battstat->prop_win), "delete_event",
+		       GTK_SIGNAL_FUNC (prop_cancel), battstat); 
+   
+   gtk_signal_connect (GTK_OBJECT (battstat->prop_win), "help",
+		       GTK_SIGNAL_FUNC (helppref_cb), battstat);
+   
+   gtk_widget_show_all (GTK_WIDGET (battstat->prop_win));
+   
+   gtk_adjustment_value_changed(GTK_ADJUSTMENT (battstat->testadj));
 }
