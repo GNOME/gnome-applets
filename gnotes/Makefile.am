@@ -1,3 +1,5 @@
+CFLAGS = -g -O
+
 INCLUDES = -I. -I$(srcdir)                              \
         -I$(top_srcdir)/intl -I$(top_builddir)/intl     \
         -DGNOMELOCALEDIR=\""$(datadir)/locale"\"        \
@@ -9,9 +11,8 @@ gnotes_applet_SOURCES = \
         gnotes_applet.c \
         gnote.c \
         gnotes.xpm \
-        gnotes_session.c
-
-#        properties.c
+        gnotes_session.c \
+        properties.c
 
 gnotes_applet_LDADD = \
 	$(GNOME_LIBDIR) \
