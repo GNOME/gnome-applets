@@ -1171,6 +1171,17 @@ accessx_status_applet_fill (PanelApplet *applet)
 				           accessx_status_applet_menu_verbs,
 				           sapplet);
 
+	if (panel_applet_get_locked_down (sapplet->applet)) {
+		BonoboUIComponent *popup_component;
+
+		popup_component = panel_applet_get_popup_component (sapplet->applet);
+
+		bonobo_ui_component_set_prop (popup_component,
+					      "/commands/Dialog",
+					      "hidden", "1",
+					      NULL);
+	}
+
 	sapplet->tooltips = gtk_tooltips_new ();
 	g_object_ref (sapplet->tooltips);
 	gtk_object_sink (GTK_OBJECT (sapplet->tooltips));
