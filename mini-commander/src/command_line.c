@@ -39,14 +39,9 @@ static gint history_popup_clicked_cb(GtkWidget *widget, gpointer data);
 static gint history_popup_clicked_inside_cb(GtkWidget *widget, gpointer data);
 static void history_selection_made_cb (GtkTreeView *treeview, GtkTreePath *arg1,
                                        GtkTreeViewColumn *arg2, gpointer data);
-static gchar* history_auto_complete(GtkWidget *widget, GdkEventKey *event);
+static gchar* history_auto_complete(GtkWidget *widget, GdkEventKey *event, MCData *mcdata);
 
-
-static int history_position = LENGTH_HISTORY_LIST;
 static char browsed_filename[300] = "";
-
-static GtkWidget *entry_command;
-
 
 static gint
 command_key_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
@@ -90,14 +85,14 @@ command_key_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
 	    || key == GDK_Pointer_Up)
 	{
 	    /* up key pressed */
-	    if(history_position == LENGTH_HISTORY_LIST)
+	    if(mcdata->history_position == LENGTH_HISTORY_LIST)
 		{	    
 		    /* store current command line */
 		    strcpy(current_command, (char *) gtk_entry_get_text(GTK_ENTRY(widget)));
 		}
-	    if(history_position > 0 && exists_history_entry(history_position - 1))
+	    if(mcdata->history_position > 0 && exists_history_entry(mcdata, mcdata->history_position - 1))
 		{
-		    gtk_entry_set_text(GTK_ENTRY(widget), (gchar *) get_history_entry(--history_position));
+		    gtk_entry_set_text(GTK_ENTRY(widget), (gchar *) get_history_entry(mcdata, --mcdata->history_position));
 		}
 	    else
 		show_message((gchar *) _("end of history list"));
@@ -110,14 +105,14 @@ command_key_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
 	    || key == GDK_Pointer_Down)
 	{
 	    /* down key pressed */
-	    if(history_position <  LENGTH_HISTORY_LIST - 1)
+	    if(mcdata->history_position <  LENGTH_HISTORY_LIST - 1)
 		{
-		    gtk_entry_set_text(GTK_ENTRY(widget), (gchar *) get_history_entry(++history_position));
+		    gtk_entry_set_text(GTK_ENTRY(widget), (gchar *) get_history_entry(mcdata, ++mcdata->history_position));
 		}
-	    else if(history_position == LENGTH_HISTORY_LIST - 1)
+	    else if(mcdata->history_position == LENGTH_HISTORY_LIST - 1)
 		{	    
 		    gtk_entry_set_text(GTK_ENTRY(widget), (gchar *) current_command);
-		    ++history_position;
+		    ++mcdata->history_position;
 		}
 	    else
 		show_message((gchar *) _("end of history list"));
@@ -137,7 +132,7 @@ command_key_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
 	    exec_command(command, applet);
 
 	    append_history_entry(mcdata, (char *) command, FALSE);
-	    history_position = LENGTH_HISTORY_LIST;		   
+	    mcdata->history_position = LENGTH_HISTORY_LIST;		   
 	    free(command);
 
 	    strcpy(current_command, "");
@@ -152,7 +147,7 @@ command_key_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
 	    if(current_position != 0)
 		{
 		    gtk_editable_delete_text( GTK_EDITABLE(widget), current_position, -1 );
-		    completed_command = history_auto_complete(widget, event);
+		    completed_command = history_auto_complete(widget, event, mcdata);
 		    
 		    if(completed_command != NULL)
 			{
@@ -326,8 +321,9 @@ history_list_button_press_cb (GtkWidget *widget, GdkEventButton *event, gpointer
 
 int 
 show_history_signal (GtkWidget   *widget,
-		     PanelApplet *applet)
+		     MCData      *mcdata)
 {
+     PanelApplet *applet = mcdata->applet;
      properties *prop = g_object_get_data (G_OBJECT (applet), "prop");
      GtkWidget *window;
      GtkWidget *frame;
@@ -345,7 +341,7 @@ show_history_signal (GtkWidget   *widget,
 
      /* count commands stored in history list */
      for(i = 0, j = 0; i < LENGTH_HISTORY_LIST; i++)
-	 if(exists_history_entry(i))
+	 if(exists_history_entry(mcdata, i))
 	     j++;
 
      window = gtk_window_new(GTK_WINDOW_POPUP); 
@@ -392,11 +388,11 @@ show_history_signal (GtkWidget   *widget,
      else {	
           for(i = 0; i < LENGTH_HISTORY_LIST; i++)
 	      {
-     	     if(exists_history_entry(i))
+     	     if(exists_history_entry(mcdata, i))
 	     	 {
-     		      command_list[0] = get_history_entry(i);
+     		      command_list[0] = get_history_entry(mcdata, i);
                       gtk_list_store_prepend (store, &iter);
-                      gtk_list_store_set (store, &iter,0,command_list[0],-1);
+                      gtk_list_store_set (store, &iter, 0, command_list[0], -1);
 		 }
 	      }
      } 
@@ -530,41 +526,41 @@ init_command_entry(MCData *mcdata)
     PanelApplet *applet = mcdata->applet;
     properties *prop = mcdata->prop;
     
-    if(entry_command)
-    	gtk_widget_destroy(GTK_WIDGET(entry_command));    
+    if(mcdata->entry_command)
+    	gtk_widget_destroy(GTK_WIDGET(mcdata->entry_command));    
     
     /* create the widget we are going to put on the applet */
-    entry_command = gtk_entry_new_with_max_length((guint16) MAX_COMMAND_LENGTH); 
-    set_atk_name_description (entry_command, _("Command line"), 
+    mcdata->entry_command = gtk_entry_new_with_max_length((guint16) MAX_COMMAND_LENGTH); 
+    set_atk_name_description (mcdata->entry_command, _("Command line"), 
         _("Type a command here and Gnome will execute it for you"));
         
     /* in case we get destroyed elsewhere */
-    gtk_signal_connect(GTK_OBJECT(entry_command),"destroy",
+    gtk_signal_connect(GTK_OBJECT(mcdata->entry_command),"destroy",
 		       GTK_SIGNAL_FUNC(gtk_widget_destroyed),
-		       &entry_command);
+		       &mcdata->entry_command);
     
-    gtk_signal_connect(GTK_OBJECT(entry_command), "key_press_event",
+    gtk_signal_connect(GTK_OBJECT(mcdata->entry_command), "key_press_event",
 		       GTK_SIGNAL_FUNC(command_key_event),
 		       mcdata);
 
 #if 0
-    gtk_signal_connect(GTK_OBJECT(entry_command), "focus_out_event",
+    gtk_signal_connect(GTK_OBJECT(mcdata->entry_command), "focus_out_event",
 		       GTK_SIGNAL_FUNC(command_line_focus_out_cb),
 		       NULL);
-    gtk_signal_connect(GTK_OBJECT(entry_command), "focus_in_event",
+    gtk_signal_connect(GTK_OBJECT(mcdata->entry_command), "focus_in_event",
 		       GTK_SIGNAL_FUNC(command_line_focus_in_cb),
 		       NULL);
 #endif
 #if 0
-    gtk_signal_connect(GTK_OBJECT(entry_command), "button_press_event",
+    gtk_signal_connect(GTK_OBJECT(mcdata->entry_command), "button_press_event",
 		       GTK_SIGNAL_FUNC(command_line_activate_cb),
 		       mcdata);
 #endif   
     if (prop->show_default_theme != TRUE)
-        command_entry_update_color(entry_command, prop); 
-    command_entry_update_size(entry_command, prop);
+        command_entry_update_color(mcdata->entry_command, prop); 
+    command_entry_update_size(mcdata->entry_command, prop);
     
-    return entry_command;
+    return mcdata->entry_command;
 }
 
 
@@ -609,7 +605,7 @@ command_entry_update_size(GtkWidget *entry_command,properties *prop)
 /* Thanks to Halfline <halfline@hawaii.rr.com> for his initial version
    of history_auto_complete */
 gchar *
-history_auto_complete(GtkWidget *widget, GdkEventKey *event)
+history_auto_complete(GtkWidget *widget, GdkEventKey *event, MCData *mcdata)
 {
     gchar current_command[MAX_COMMAND_LENGTH];
     gchar* completed_command;
@@ -619,9 +615,9 @@ history_auto_complete(GtkWidget *widget, GdkEventKey *event)
 	       gtk_entry_get_text(GTK_ENTRY(widget)), event->string); 
     for(i = LENGTH_HISTORY_LIST - 1; i >= 0; i--) 
   	{
-	    if(!exists_history_entry(i))
+	    if(!exists_history_entry(mcdata, i))
 		break;
-  	    completed_command = get_history_entry(i); 
+  	    completed_command = get_history_entry(mcdata, i); 
   	    if(!strncmp(completed_command, current_command, strlen(current_command))) 
 		return completed_command; 
   	} 

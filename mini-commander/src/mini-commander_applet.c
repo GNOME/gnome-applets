@@ -177,9 +177,9 @@ const gchar *description)
  * propogate button presses on button2/3.
  */
 static gboolean
-button_press_hack (GtkWidget *widget, GdkEventButton *event, gpointer data)
+button_press_hack (GtkWidget *widget, GdkEventButton *event, MCData *mcdata)
 {
-    GtkWidget *applet = GTK_WIDGET (data);
+    GtkWidget *applet = GTK_WIDGET (mcdata->applet);
 
     if (event->button == 3 || event->button == 2) {
 	gtk_propagate_event (applet, (GdkEvent *) event);
@@ -258,7 +258,7 @@ redraw_applet(MCData *mcdata)
     /* add command line; position: top */
     mcdata->entry = init_command_entry(mcdata);
 
-/*     gtk_box_pack_start(GTK_BOX(vbox), entry_command, FALSE, FALSE, 0); */
+/*     gtk_box_pack_start(GTK_BOX(vbox), mcdata->entry_command, FALSE, FALSE, 0); */
 
     /* hbox for message label and buttons */
     hbox = gtk_hbox_new(FALSE, 0);
@@ -281,7 +281,7 @@ redraw_applet(MCData *mcdata)
 		       GTK_SIGNAL_FUNC(show_file_browser_signal),
 		       applet);
     g_signal_connect (G_OBJECT (button), "button_press_event",
-		      G_CALLBACK (button_press_hack), applet);
+		      G_CALLBACK (button_press_hack), mcdata);
     gtk_widget_set_usize(GTK_WIDGET(button), 13, 10);
     image = gdk_pixbuf_new_from_xpm_data (browser_mini_xpm);
     icon = gtk_image_new_from_pixbuf (image);
@@ -295,11 +295,12 @@ redraw_applet(MCData *mcdata)
 
     /* add history button */
     button = gtk_button_new();
+
     gtk_signal_connect(GTK_OBJECT(button), "clicked",
 		       GTK_SIGNAL_FUNC(show_history_signal),
-		       applet);
+		       mcdata);
     g_signal_connect (G_OBJECT (button), "button_press_event",
-		      G_CALLBACK (button_press_hack), applet);
+		      G_CALLBACK (button_press_hack), mcdata);
     gtk_widget_set_usize(GTK_WIDGET(button), 13, 10);
     image = gdk_pixbuf_new_from_xpm_data (history_mini_xpm);
     icon = gtk_image_new_from_pixbuf (image);
@@ -405,7 +406,9 @@ static gboolean
 mini_commander_applet_fill(PanelApplet *applet)
 {
     MCData *mcdata;
-    
+
+    mcdata->history_position = LENGTH_HISTORY_LIST;
+            
     gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gnome-mini-commander.png");
     
     panel_applet_add_preferences (applet, "/schemas/apps/mini-commander/prefs", NULL);
@@ -454,9 +457,9 @@ mini_commander_applet_factory(PanelApplet *applet,
 			      gpointer     data)
 {
         gboolean retval = FALSE;
-
+        
         if (!strcmp (iid, "OAFIID:GNOME_MiniCommanderApplet"))
-                retval = mini_commander_applet_fill(applet); 
+                retval = mini_commander_applet_fill(applet);
     
         return retval;
 }

@@ -1,9 +1,9 @@
 #ifndef _MC_APPLET_H_
 #define _MC_APPLET_H_
 
+#define LENGTH_HISTORY_LIST	  50
 #include <panel-applet.h>
 
-extern GtkWidget *applet;
 typedef struct _MCData MCData;
 typedef struct struct_properties properties;
 
@@ -16,6 +16,12 @@ struct _MCData
     GtkWidget *applet_inner_vbox;
     GtkWidget *properties_box;
     gint label_timeout;
+    GtkWidget *entry_command;
+    GtkWidget *label_message;
+    int message_locked;
+
+    char *history_command[LENGTH_HISTORY_LIST];
+    int history_position;
 };
 
 void redraw_applet(MCData *mcdata);

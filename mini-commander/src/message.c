@@ -29,14 +29,8 @@
 #include "mini-commander_applet.h"
 #include "preferences.h"
 
-GtkWidget *label_message;
-static int message_locked = FALSE;
-
 static gint hide_message(gpointer data);
 static gint show_interesting_information(gpointer data);
-static GtkWidget *message_window = NULL;
-static GtkWidget *window_message_label;
-
 
 void
 init_message_label(MCData *mcdata)

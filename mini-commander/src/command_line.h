@@ -7,7 +7,7 @@
 
 GtkWidget *init_command_entry         (MCData      *mcdata);
 int        show_history_signal        (GtkWidget   *widget,
-				       PanelApplet *applet);
+				       MCData      *mcdata);
 int        show_file_browser_signal   (GtkWidget   *widget,
 				       PanelApplet *applet);
 void       command_entry_update_color (GtkWidget   *entry_command,

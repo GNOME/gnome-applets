@@ -6,13 +6,10 @@
 #include <panel-applet.h>
 #include "mini-commander_applet.h"
 
-#define LENGTH_HISTORY_LIST       50
 #define MAX_COMMAND_LENGTH        500
 #define MAX_NUM_MACROS            99
 #define MAX_NUM_MACRO_PARAMETERS  100
 #define MAX_MACRO_PATTERN_LENGTH  25
-
-
 
 struct struct_properties
 {
@@ -38,9 +35,6 @@ struct struct_properties
     char *macro_command[MAX_NUM_MACROS];
     regex_t *macro_regex[MAX_NUM_MACROS];
 };
-
-
-extern GtkWidget *applet;
 
 properties * load_session(MCData *mcdata);
 
