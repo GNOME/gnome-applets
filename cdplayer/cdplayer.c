@@ -328,6 +328,7 @@ main(int argc, char **argv)
 	g_free(cfgpath);
 
 	plug = gtk_plug_new (winid);
+	gtk_widget_realize(plug);
 
 	cdplayer = create_cdplayer_widget (plug);
 	gtk_widget_show(cdplayer);

@@ -12,18 +12,17 @@
 #include <stdio.h>
 #include <string.h>
 #include "gnome.h"
-#include "../panel_cmds.h"
-#include "../applet_cmds.h"
-#include "../panel.h"
-
-
-#define APPLET_ID "Battery Monitor"
+#include "applet-lib.h"
+#include "panel.h"
+#include "mico-parse.h"
 
 #define TIMEOUT 5000  /* ms */
 
 #define PROC_APM "/proc/apm"
 
-static PanelCmdFunc panel_cmd_func;
+GtkWidget *plug = NULL;
+
+int applet_id = (-1); /*this is our id we use to comunicate with the panel */
 
 static GtkTooltips *tooltips;
 
@@ -377,49 +376,67 @@ create_instance (PanelWidget *panel, char *params, int pos)
 	(*panel_cmd_func) (&cmd);
 }
 
-gpointer
-applet_cmd_func (AppletCommand *cmd)
+
+int
+main(int argc, char **argv)
 {
-	g_assert(cmd != NULL);
-	
-	switch (cmd->cmd) {
-		case APPLET_CMD_QUERY:
-			return APPLET_ID;
-			
-		case APPLET_CMD_INIT_MODULE:
-			panel_cmd_func = cmd->params.init_module.cmd_func;
-			init_module();
-			break;
-			
-		case APPLET_CMD_DESTROY_MODULE:
-			destroy_module();
-			break;
+	GtkWidget *batmon;
+	char *result;
+	char *cfgpath;
+	char *globcfgpath;
 
-		case APPLET_CMD_GET_DEFAULT_PARAMS:
-			return g_strdup("");
+	char *myinvoc;
+	guint32 winid;
 
-		case APPLET_CMD_CREATE_INSTANCE:
-			create_instance(cmd->panel,
-					cmd->params.create_instance.params,
-					cmd->params.create_instance.pos);
-			break;
+	myinvoc = get_which_output(argv[0]);
+	if(!myinvoc)
+		return 1;
 
-		case APPLET_CMD_GET_INSTANCE_PARAMS:
-			return g_strdup("");
+	panel_corba_register_arguments();
+	gnome_init("batmon_applet", NULL, argc, argv, 0, NULL);
 
-		case APPLET_CMD_ORIENTATION_CHANGE_NOTIFY:
-			break;
+	if (!gnome_panel_applet_init_corba())
+		g_error("Could not comunicate with the panel\n");
 
-		case APPLET_CMD_PROPERTIES:
-			fprintf(stderr, "Battery monitor properties not yet implemented\n");
-			break;
+	result = gnome_panel_applet_request_id(myinvoc, &applet_id,
+					       &cfgpath, &globcfgpath,
+					       &winid);
 
-		default:
-			fprintf(stderr,
-				APPLET_ID " applet_cmd_func: Oops, unknown command type %d\n",
-				(int) cmd->cmd);
-			break;
-	}
+	g_free(myinvoc);
+	if (result)
+		g_error("Could not talk to the Panel: %s\n", result);
+	/*use cfg path for loading up data! */
 
-	return NULL;
+	g_free(globcfgpath);
+	g_free(cfgpath);
+
+	plug = gtk_plug_new(winid);
+
+
+	batmon = create_batmon_widget (GTK_WIDGET(panel));
+
+	batmon_timeout = gtk_timeout_add(TIMEOUT,
+					 (GtkFunction) batmon_timeout_callback,
+					 batmon);
+
+	gtk_widget_show(batmon);
+	gtk_container_add(GTK_CONTAINER(plug), batmon);
+	gtk_widget_show(plug);
+
+
+	result = gnome_panel_applet_register(plug, applet_id);
+	if (result)
+		g_error("Could not talk to the Panel: %s\n", result);
+
+/*
+	gnome_panel_applet_register_callback(applet_id,
+					     "test",
+					     "TEST CALLBACK",
+					     test_callback,
+					     NULL);
+*/
+
+	applet_corba_gtk_main("IDL:GNOME/Applet:1.0");
+
+	return 0;
 }
