@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 2.3.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-07-27 02:53+0900\n"
-"PO-Revision-Date: 2003-07-27 03:25+0900\n"
+"POT-Creation-Date: 2003-08-10 21:55+0900\n"
+"PO-Revision-Date: 2003-08-10 21:57+0900\n"
 "Last-Translator: Changwoo Ryu <cwryu@debian.org>\n"
 "Language-Team: GTP Korean <gnome-kr-translation@gnome.or.kr>\n"
 "MIME-Version: 1.0\n"
@@ -82,7 +82,7 @@ msgstr "유틸리티"
 #: mini-commander/src/about.c:48 mixer/mixer.c:1060
 #: modemlights/modemlights.c:115 multiload/main.c:57
 #: stickynotes/stickynotes_applet_callbacks.c:178
-#: wireless/wireless-applet.c:709
+#: wireless/wireless-applet.c:532
 msgid "translator_credits"
 msgstr ""
 "류창우 <cwryu@debian.org>, 1998, 2002-2003\n"
@@ -752,7 +752,9 @@ msgstr "사용 가능한 팔레트가 들어 있는 스트링 목록"
 msgid ""
 "The string that the user had selected when the applet was last used. This "
 "string will be displayed when the user starts the applet."
-msgstr "애플릿이 마지막으로 사용되었을 때 선택한 스트링. 애플릿을 시작할 때 이 스트링이 보여집니다."
+msgstr ""
+"애플릿이 마지막으로 사용되었을 때 선택한 스트링. 애플릿을 시작할 때 이 스트링"
+"이 보여집니다."
 
 #: charpick/properties.c:88
 msgid "_Palette:"
@@ -1511,7 +1513,9 @@ msgstr "화살표 단추 보이기"
 msgid ""
 "Show arrow buttons on the side of the display so that the user can scroll "
 "forward or backward."
-msgstr "가장자리에 화살표 단추를 보여줍니다. 이 단추를 눌러 앞뒤로 스크롤할 수 있습니다."
+msgstr ""
+"가장자리에 화살표 단추를 보여줍니다. 이 단추를 눌러 앞뒤로 스크롤할 수 있습니"
+"다."
 
 #: gtik/gtik.schemas.in.h:13
 msgid "Stocks to monitor - must be seperated by a +"
@@ -1521,31 +1525,41 @@ msgstr "감시할 주식 - 각각은 +로 구분합니다"
 msgid ""
 "The color of the background of the display. Has no effect when the user "
 "chooses to use the default theme fonts and colors."
-msgstr "보여줄 바탕 색. 사용자가 기본 테마의 글꼴과 색을 사용한다고 설정한 경우 아무 효과가 없습니다."
+msgstr ""
+"보여줄 바탕 색. 사용자가 기본 테마의 글꼴과 색을 사용한다고 설정한 경우 아무 "
+"효과가 없습니다."
 
 #: gtik/gtik.schemas.in.h:15
 msgid ""
 "The color used when the stock's values has lowered. Has no effect when the "
 "user chooses to use the default theme fonts and colors."
-msgstr "주식 가격이 내려갔을 때 사용할 색. 사용자가 기본 테마의 글꼴과 색을 사용한다고 설정한 경우 아무 효과가 없습니다."
+msgstr ""
+"주식 가격이 내려갔을 때 사용할 색. 사용자가 기본 테마의 글꼴과 색을 사용한다"
+"고 설정한 경우 아무 효과가 없습니다."
 
 #: gtik/gtik.schemas.in.h:16
 msgid ""
 "The color used when the stock's values has not changed. Has no effect when "
 "the user chooses to use the default theme fonts and colors."
-msgstr "주식 가격이 변화가 없을 때 사용할 색. 사용자가 기본 테마의 글꼴과 색을 사용한다고 설정한 경우 아무 효과가 없습니다."
+msgstr ""
+"주식 가격이 변화가 없을 때 사용할 색. 사용자가 기본 테마의 글꼴과 색을 사용한"
+"다고 설정한 경우 아무 효과가 없습니다."
 
 #: gtik/gtik.schemas.in.h:17
 msgid ""
 "The color used when the stock's values has raised. Has no effect when the "
 "user chooses to use the default theme fonts and colors."
-msgstr "주식 가격이 올랐을 때 사용할 색. 사용자가 기본 테마의 글꼴과 색을 사용한다고 설정한 경우 아무 효과가 없습니다."
+msgstr ""
+"주식 가격이 올랐을 때 사용할 색. 사용자가 기본 테마의 글꼴과 색을 사용한다고 "
+"설정한 경우 아무 효과가 없습니다."
 
 #: gtik/gtik.schemas.in.h:18
 msgid ""
 "The font used for the display. Has no effect when the user chooses to use "
 "the default theme fonts and colors."
-msgstr "보여줄 때 사용할 글꼴. 사용자가 기본 테마의 글꼴과 색을 사용한다고 설정한 경우 아무 효과가 없습니다."
+msgstr ""
+"보여줄 때 사용할 글꼴. 사용자가 기본 테마의 글꼴과 색을 사용한다고 설정한 경"
+"우 아무 효과가 없습니다."
 
 #: gtik/gtik.schemas.in.h:19
 msgid "The time interval until when the applet updates the stock data."
@@ -3481,114 +3495,112 @@ msgid "Memory Load"
 msgstr "메모리 사용량"
 
 #: multiload/multiload.schemas.in.h:1
+msgid "Applet refresh rate in milliseconds"
+msgstr "애플릿의 갱신 단위 (천분의 일초)"
+
+#: multiload/multiload.schemas.in.h:2
+msgid "CPU graph background color"
+msgstr "CPU 그래프 바탕 색"
+
+#: multiload/multiload.schemas.in.h:3
+msgid "Enable CPU load graph"
+msgstr "CPU 사용량 그래프 사용"
+
+#: multiload/multiload.schemas.in.h:4
+msgid "Enable load average graph"
+msgstr "사용량 평균 그래프 사용"
+
+#: multiload/multiload.schemas.in.h:5
+msgid "Enable memory load graph"
+msgstr "메모리 사용량 그래프 사용"
+
+#: multiload/multiload.schemas.in.h:6
+msgid "Enable network load graph"
+msgstr "네트워크 사용량 그래프 사용"
+
+#: multiload/multiload.schemas.in.h:7
+msgid "Enable swap load graph"
+msgstr "스왑 사용량 그래프 사용"
+
+#: multiload/multiload.schemas.in.h:8
 msgid ""
 "For horizontal panels, the width of the graphs in pixels. For vertical "
 "panels, this is the height of the graphs."
-msgstr "가로 패널의 경우 그래프의 너비(픽셀수)이고, 세로 패널의 경우 그래프의 높이입니다."
+msgstr ""
+"가로 패널의 경우 그래프의 너비(픽셀수)이고, 세로 패널의 경우 그래프의 높이입"
+"니다."
 
-#: multiload/multiload.schemas.in.h:2
+#: multiload/multiload.schemas.in.h:9
+msgid "Graph color for Ethernet network activity"
+msgstr "이더넷 네트워크 사용량에 대한 그래프의 색"
+
+#: multiload/multiload.schemas.in.h:10
+msgid "Graph color for PLIP network activity"
+msgstr "PLIP 네트워크 사용량에 대한 그래프의 색"
+
+#: multiload/multiload.schemas.in.h:11
+msgid "Graph color for SLIP network activity"
+msgstr "SLIP 네트워크 사용량에 대한 그래프의 색"
+
+#: multiload/multiload.schemas.in.h:12
+msgid "Graph color for buffer memory"
+msgstr "버퍼 메모리에 대한 그래프의 색"
+
+#: multiload/multiload.schemas.in.h:13
+msgid "Graph color for cached memory"
+msgstr "캐시 메모리에 대한 그래프의 색"
+
+#: multiload/multiload.schemas.in.h:14
+msgid "Graph color for load average"
+msgstr "로드 평균에 대한 그래프의 색"
+
+#: multiload/multiload.schemas.in.h:15
+msgid "Graph color for nice-related CPU activity"
+msgstr "nice 관련 CPU 활동의 그래프의 색"
+
+#: multiload/multiload.schemas.in.h:16
+msgid "Graph color for other network usage"
+msgstr "이더넷 네트워크 사용량에 대한 그래프의 색"
+
+#: multiload/multiload.schemas.in.h:17
+msgid "Graph color for shared memory"
+msgstr "공유 메모리에 대한 그래프의 색"
+
+#: multiload/multiload.schemas.in.h:18
+msgid "Graph color for system-related CPU activity"
+msgstr "시스템 관련 CPU 동작에 대한 그래프의 색"
+
+#: multiload/multiload.schemas.in.h:19
+msgid "Graph color for user-related CPU activity"
+msgstr "사용자 관련 CPU 동작에 대한 그래프의 색"
+
+#: multiload/multiload.schemas.in.h:20
+msgid "Graph color for user-related memory usage"
+msgstr "사용자 관련 메모리 사용에 대한 그래프의 색"
+
+#: multiload/multiload.schemas.in.h:21
+msgid "Graph color for user-related swap usage"
+msgstr "사용자 관련 스왑 사용에 대한 그래프의 색"
+
+#: multiload/multiload.schemas.in.h:22
 msgid "Graph size"
 msgstr "그래프 크기"
 
-#: multiload/multiload.schemas.in.h:3
+#: multiload/multiload.schemas.in.h:23
+msgid "Load graph background color"
+msgstr "사용량 그래프의 바탕 색"
+
+#: multiload/multiload.schemas.in.h:24
+msgid "Memory graph background color"
+msgstr "메모리 그래프의 바탕 색"
+
+#: multiload/multiload.schemas.in.h:25
 msgid "Network graph background color"
 msgstr "네트워크 그래프 바탕 색"
 
-#: multiload/multiload.schemas.in.h:4
-msgid "Network other usage"
-msgstr "네트워크 그 외 사용"
-
-#: multiload/multiload.schemas.in.h:5
-msgid "The cpu graph background color."
-msgstr "CPU 그래프의 바탕 색."
-
-#: multiload/multiload.schemas.in.h:6
-msgid "The load graph background color."
-msgstr "로드 그래프의 바탕 색."
-
-#: multiload/multiload.schemas.in.h:7
-msgid "The memory graph background color."
-msgstr "메모리 그래프의 바탕 색."
-
-#: multiload/multiload.schemas.in.h:8
-msgid "The swap graph background color."
-msgstr "스왑 그래프의 바탕 색."
-
-#: multiload/multiload.schemas.in.h:9
-msgid "enable the cpuload graph in multiload."
-msgstr "multiload에서 CPU사용량 그래프를 사용합니다."
-
-#: multiload/multiload.schemas.in.h:10
-msgid "enable the loadavg graph in multiload."
-msgstr "multiload에서 평균사용량 그래프를 사용합니다."
-
-#: multiload/multiload.schemas.in.h:11
-msgid "enable the memload graph in multiload."
-msgstr "multiload에서 메모리 사용량 그래프를 사용합니다."
-
-#: multiload/multiload.schemas.in.h:12
-msgid "enable the netload graph in multiload."
-msgstr "multiload에서 네트워크 사용량 그래프를 사용합니다."
-
-#: multiload/multiload.schemas.in.h:13
-msgid "enable the swapload graph in multiload."
-msgstr "multiload에서 스왑 사용량 그래프를 사용합니다."
-
-#: multiload/multiload.schemas.in.h:14
-msgid "the graph color for Ethernet network activity."
-msgstr "이더넷 네트워크 사용량에 대한 그래프의 색."
-
-#: multiload/multiload.schemas.in.h:15
-msgid "the graph color for PLIP network activity."
-msgstr "PLIP 네트워크 사용량에 대한 그래프 색."
-
-#: multiload/multiload.schemas.in.h:16
-msgid "the graph color for SLIP network activity."
-msgstr "SLIP 네트워크 사용량에 대한 그래프 색."
-
-#: multiload/multiload.schemas.in.h:17
-msgid "the graph color for buffer memory."
-msgstr "버퍼 메모리에 대한 그래프 색."
-
-#: multiload/multiload.schemas.in.h:18
-msgid "the graph color for cached memory."
-msgstr "캐시 메모리에 대한 그래프 색."
-
-#: multiload/multiload.schemas.in.h:19
-msgid "the graph color for load average."
-msgstr "로드 평균에 대한 그래프의 색."
-
-#: multiload/multiload.schemas.in.h:20
-msgid "the graph color for nice-related cpu activity."
-msgstr "nice 관련 CPU 활동의 그래프 색."
-
-#: multiload/multiload.schemas.in.h:21
-msgid "the graph color for shared memory."
-msgstr "공유 메모리에 대한 그래프 색."
-
-#: multiload/multiload.schemas.in.h:22
-msgid "the graph color for system-related cpu activity."
-msgstr "시스템 관련 CPU 동작에 대한 그래프 색."
-
-#: multiload/multiload.schemas.in.h:23
-msgid "the graph color for user-related cpu activity."
-msgstr "사용자 관련 CPU 동작에 대한 그래프 색."
-
-#: multiload/multiload.schemas.in.h:24
-msgid "the graph color for user-related memory usage."
-msgstr "사용자 관련 메모리 사용에 대한 그래프의 색."
-
-#: multiload/multiload.schemas.in.h:25
-msgid "the graph color for user-related swap usage."
-msgstr "사용자 관련 스왑 사용에 대한 그래프 색."
-
 #: multiload/multiload.schemas.in.h:26
-msgid "the refresh rate of the applets in milliseconds"
-msgstr "애플릿의 갱신 단위 (천분의 일초)"
-
-#: multiload/multiload.schemas.in.h:27
-msgid "the refresh rate of the applets in milliseconds."
-msgstr "애플릿의 갱신 단위 (천분의 일초)."
+msgid "Swap graph background color"
+msgstr "스왑 그래프의 바탕 색"
 
 #: multiload/netload.c:49
 msgid "Net Load"
@@ -4094,23 +4106,15 @@ msgid "Monitor the quality of a wireless network link"
 msgstr "무선통신 장치의 감도를 감시합니다"
 
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:3
-#: wireless/wireless-applet.c:724
+#: wireless/wireless-applet.c:547
 msgid "Wireless Link Monitor"
 msgstr "무선통신 장치 감시기"
 
-#: wireless/wireless-applet.c:351
-msgid ""
-"The images necessary to run the wireless monitor are missing.\n"
-"Please make sure that it is correctly installed."
-msgstr ""
-"무선통신 감시기를 실행하는데 필요한 그림이 없습니다.\n"
-"설치가 올바르게 되었는지 확인하십시오."
-
-#: wireless/wireless-applet.c:532 wireless/wireless-applet.c:669
+#: wireless/wireless-applet.c:355 wireless/wireless-applet.c:492
 msgid "No Wireless Devices"
 msgstr "무선통신 장치 없음"
 
-#: wireless/wireless-applet.c:534
+#: wireless/wireless-applet.c:357
 msgid ""
 "There doesn't seem to be any wireless devices configured on your system.\n"
 "Please verify your configuration if you think this is incorrect."
@@ -4118,11 +4122,11 @@ msgstr ""
 "시스템에서 설정할 수 있는 무선장치가 없는 것 같습니다.\n"
 "잘못되었다고 생각되면 설정을 확인하십시오."
 
-#: wireless/wireless-applet.c:726
+#: wireless/wireless-applet.c:549
 msgid "(C) 2001, 2002 Free Software Foundation "
 msgstr "(C) 2001, 2002 Free Software Foundation "
 
-#: wireless/wireless-applet.c:727
+#: wireless/wireless-applet.c:550
 msgid "This utility shows the status of a wireless link."
 msgstr "무선통신 장치의 상태를 보여주는 도구입니다."
 
