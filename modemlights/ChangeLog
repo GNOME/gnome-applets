@@ -1,3 +1,9 @@
+2003-06-10  Shailesh Mittal <shailesh.mittal@wipro.com>
+
+	* modemlights.c: (modemlights_applet_fill): Modified to create
+	AF_INET6 socket, if AF_INET6 is defined on the system. If AF_INET6
+	socket can not be created, then we are falling back to AF_INET socket.
+
 2003-06-06  Paolo Borelli <pborelli@katamail.com>
 
 	* modemlights.c: gnome_question_dialog -> gtk_message_dialog conversion;

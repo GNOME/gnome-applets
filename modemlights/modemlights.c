@@ -1429,10 +1429,15 @@ modemlights_applet_fill (PanelApplet *applet)
 	mldata->orient = panel_applet_get_orient (applet);
 
 	/* open ip socket */
-	if ((mldata->ip_socket = socket(AF_INET, SOCK_DGRAM, 0)) < 0)
+#ifdef AF_INET6
+	if ((mldata->ip_socket = socket(AF_INET6, SOCK_DGRAM, 0)) < 0)
+#endif
 		{
-		g_print("could not open an ip socket\n");
-		return FALSE;
+		if ((mldata->ip_socket = socket(AF_INET, SOCK_DGRAM, 0)) < 0)
+			{
+			g_print("could not open an ip socket\n");
+			return FALSE;
+			}
 		}
 
 
