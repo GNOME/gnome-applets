@@ -983,6 +983,8 @@ gkb_prop_list_up_down_clicked (GkbPropertyBoxInfo *pbi, gboolean up)
 
   gkb_prop_list_reload (pbi);
 
+  gnome_property_box_changed (GNOME_PROPERTY_BOX (gkb->propbox));
+
   return;
 }
 

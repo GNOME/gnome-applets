@@ -144,7 +144,8 @@ apply_cb (GtkWidget * pb, gint page, GkbPropertyBoxInfo * pbi)
   convert_string_to_keysym_state(gkb->key,
                                 &gkb->keysym,
                                 &gkb->state);
-                                                                                                               
+
+  gkb_sized_render (gkb);
   gkb_update (gkb, FALSE);
   gkb_update (gkb, TRUE);
 
@@ -393,7 +394,6 @@ properties_dialog (AppletWidget * applet)
   pbi->hotkey_entry  = NULL;
   pbi->selected_keymap = NULL;
   
-  gkb->tn = gkb->n;
   gkb->propbox = gkb_prop_create_property_box (pbi);
   
   pbi->box    = gkb->propbox;

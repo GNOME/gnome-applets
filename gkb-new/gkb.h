@@ -101,7 +101,6 @@ struct _GKB
   GtkWidget *propbox;
 
   gint n;
-  gint tn;
   gint cur;
   gint size;
   gint w;
@@ -146,8 +145,10 @@ struct _GkbKeymapWg
 /* gkb.c */
 void gkb_update (GKB *gkb, gboolean set_command);
 
+
 /* prop.c */
 void properties_dialog (AppletWidget * applet);
+void gkb_sized_render (GKB * gkb);
 
 /* presets.c */
 GList * find_presets (void);

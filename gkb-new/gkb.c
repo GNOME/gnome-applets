@@ -108,6 +108,8 @@ gkb_draw (GKB * gkb)
   debug (FALSE, "");
 
   g_return_if_fail (gkb->darea != NULL);
+  g_return_if_fail (gkb->dact != NULL);
+  g_return_if_fail (gkb->dact->pix != NULL);
   g_return_if_fail (GTK_WIDGET_REALIZED (gkb->darea));
 
   gdk_draw_pixmap (gkb->darea->window,
@@ -169,7 +171,7 @@ gkb_set_system_keymap (GKB * gkb)
  * When a size request is made, we need to redraw the pixbufs with the
  * new size. This function updates all the pixmaps with the new param.
  **/
-static void
+void
 gkb_sized_render (GKB * gkb)
 {
   GkbKeymap *actdata;
@@ -223,7 +225,8 @@ gkb_sized_render (GKB * gkb)
 
 /**
  * gkb_update:
- * @gkb: 
+ * @gkb: the GKB. global, so redundant
+ * @set_command: do the command, or no
  * 
  * The size or orientation has been changed, update the widget
  **/
