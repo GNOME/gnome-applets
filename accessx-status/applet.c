@@ -1,5 +1,5 @@
 /* Keyboard Accessibility Status Applet
- * Copyright 2003 Sun Microsystems Inc.
+ * Copyright 2003, 2004 Sun Microsystems Inc.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
@@ -318,9 +318,7 @@ accessx_status_applet_init_modifiers (AccessxStatusApplet *sapplet)
 	alt_gr_mask = XkbKeysymToModifiers (sapplet->xkb_display, XK_Mode_switch) | 
 	    XkbKeysymToModifiers (sapplet->xkb_display, XK_ISO_Level3_Shift) |
 	    XkbKeysymToModifiers (sapplet->xkb_display, XK_ISO_Level3_Latch) | 
-	    XkbKeysymToModifiers (sapplet->xkb_display, XK_ISO_Level3_Lock) | 
-	    XkbKeysymToModifiers (sapplet->xkb_display, XK_ISO_Group_Shift) |
-	    XkbKeysymToModifiers (sapplet->xkb_display, XK_ISO_Group_Latch);
+	    XkbKeysymToModifiers (sapplet->xkb_display, XK_ISO_Level3_Lock);
 
 	if (alt_gr_mask) gtk_widget_show (sapplet->alt_graph_indicator);
 	else gtk_widget_hide (sapplet->alt_graph_indicator);
@@ -1160,7 +1158,7 @@ accessx_status_applet_background (PanelApplet *a, PanelAppletBackgroundType type
 static gboolean
 button_press_cb (GtkWidget *widget, GdkEventButton *event, AccessxStatusApplet *sapplet)
 {
-	if (event->button == 1 && event->type == GDK_2BUTTON_PRESS) 
+	if (event->button == 1 && event->type == GDK_BUTTON_PRESS) 
 		dialog_cb (NULL, sapplet, NULL);
 
 	return FALSE;

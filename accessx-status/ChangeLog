@@ -1,3 +1,12 @@
+2004-03-04  Bill Haneman <billh@gnome.org>
+
+	* applet.c:
+	(accessx_status_applet_init_modifiers): Don't include
+	ISO_Group_Shift and ISO_Group_Latch/Lock in alt_gr_mask;
+	if present these probably deserve their own icon (TBD).
+	(button_press_callback): Invoke on button-press, not double-click.
+	Fix for bug #124018.
+	
 2004-02-29  Dennis Smit  <ds@nerds-incorporated.org>
 
 	* applet.c (accessx_status_applet_background):
