@@ -19,11 +19,11 @@
 #   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 */
 
-#ifndef _GNOTE_H_
-#define _GNOTE_H_
+#ifndef _GNOTES_APPLET_H_
+#define _GNOTES_APPLET_H_
 
 /* uncomment this to turn on debugging */
-/* #define GNOTE_DEBUG (1) */
+#define GNOTE_DEBUG (1)
 
 #ifdef GNOTE_DEBUG
 #  define g_debug(format, args...) \
@@ -58,25 +58,19 @@
 
 #define GNOTES_DIR    ".gnome/gnotes.d"
 
-typedef struct _Gnote
-{
-    GtkWidget *window;
-    GtkWidget *hbox;
-    GtkWidget *handle_box;
-    GtkWidget *text;
-    gboolean  hidden;
-    time_t    timestamp;
-    gchar    *title;
-    gboolean  already_saved;
-    gchar    *type;
-} GNote;
+typedef struct _gnotes_prefs {
+    gint height;
+    gint width;
+    gint x;
+    gint y;
+    gboolean onbottom;
+    gboolean sticky;
+} gnotes_prefs;
 
 struct _GNotes
 {
     GtkWidget *applet;
-    gint default_height;
-    gint default_width;
-    gboolean onbottom;
+    gnotes_prefs defaults;
 };
 
 typedef struct _GNotes GNotes;
@@ -86,28 +80,11 @@ GNotes *gnotes_get_main_info(void);
 void gnotes_init(void);
 
 const gchar *get_gnotes_dir();
-void gnote_action(GtkWidget *, gpointer);
-void gnote_menu(GtkWidget *, GdkEventButton *);
-gint gnote_handle_button_cb(GtkWidget *, GdkEventButton *, gpointer);
-void gnote_new(gint, gint, gint, gint, gboolean, const gchar *,
-               time_t, const gchar *, gboolean, const gchar *);
-void gnote_new_cb(AppletWidget *, gpointer);
-gint gnote_delete_cb(GtkWidget *, gpointer);
-gint gnote_motion_cb(GtkWidget *, GdkEventButton *event, gpointer);
-gint gnote_handle_button_cb(GtkWidget *, GdkEventButton *event, gpointer);
 
-void gnotes_raise(AppletWidget*, gpointer);
-void gnote_raise(gpointer);
-void gnotes_lower(AppletWidget*, gpointer);
-void gnote_lower(gpointer);
-void gnotes_show(AppletWidget*, gpointer);
-void gnote_show(gpointer);
-void gnotes_hide(AppletWidget*, gpointer);
-void gnote_hide(gpointer);
-void gnotes_save(AppletWidget*, gpointer);
-void gnote_save(gpointer);
-void gnotes_load(AppletWidget*, gpointer);
+void properties_show(AppletWidget*, gpointer);
+void gnotes_preferences_save(const char *, GNotes *);
+void gnotes_preferences_load(const char *, GNotes *);
+void gnotes_copy_defaults_to_defaults(gnotes_prefs *from, gnotes_prefs *to);
 
-
-#endif /* _GNOTE_H_ */
+#endif /* _GNOTES_APPLET_H_ */
 
