@@ -7,8 +7,8 @@
 # Revision by Sarantis/Simos.
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-applets 1.1.0\n"
-"POT-Creation-Date: 2000-01-31 18:03+0100\n"
+"Project-Id-Version: gnome-applets 1.1.2\n"
+"POT-Creation-Date: 2000-02-03 23:18+0100\n"
 "PO-Revision-Date: 2000-01-24 17:57+0000\n"
 "Last-Translator: Spiros Papadimitriou <spapadim+@cs.cmu.edu>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
@@ -104,15 +104,15 @@ msgstr "Ρυθμίσεις ρολογιού"
 #: another_clock/another_clock.c:239 asclock/dialogs.c:359
 #: battery/properties.c:77 charpick/properties.c:257
 #: clockmail/properties.c:411 diskusage/properties.c:325
-#: drivemount/properties.c:339 mini-commander/src/preferences.c:755
+#: drivemount/properties.c:339 mini-commander/src/preferences.c:778
 #: modemlights/properties.c:292 odometer/properties.c:283
-#: slashapp/properties.c:351 sound-monitor/properties.c:426
-#: tickastat/properties.c:416
+#: screenshooter/screenshooter_applet.c:480 slashapp/properties.c:351
+#: sound-monitor/properties.c:426 tickastat/properties.c:416
 msgid "General"
 msgstr "Γενικά"
 
 #. frame for colors
-#: another_clock/another_clock.c:249 mini-commander/src/preferences.c:677
+#: another_clock/another_clock.c:249 mini-commander/src/preferences.c:700
 #: multiload/load-graph.c:197
 msgid "Colors"
 msgstr "Χρώματα"
@@ -161,11 +161,11 @@ msgstr "Αναλογικό ρολόι παρόμοιο με αυτό στο ταμπλώ του CDE."
 #: clockmail/clockmail.c:553 drivemount/drivemount.c:653 fifteen/fifteen.c:346
 #: geyes/geyes.c:374 gkb/gkb.c:731 gnotes/gnotes_applet.c:164
 #: gumma/gumma.c:588 gweather/gweather-applet.c:175 jbc/jbc-applet.c:180
-#: life/life.c:270 mini-commander/src/mini-commander_applet.c:404
+#: life/life.c:270 mini-commander/src/mini-commander_applet.c:412
 #: modemlights/modemlights.c:1214 odometer/odo.c:644
-#: quicklaunch/quicklaunch.c:452 slashapp/slashapp.c:58
-#: sound-monitor/main.c:347 tickastat/main.c:321 webcontrol/webcontrol.c:324
-#: whereami/whereami.c:219
+#: quicklaunch/quicklaunch.c:452 screenshooter/screenshooter_applet.c:1365
+#: slashapp/slashapp.c:58 sound-monitor/main.c:347 tickastat/main.c:321
+#: webcontrol/webcontrol.c:324 whereami/whereami.c:219
 msgid "About..."
 msgstr "Περί..."
 
@@ -173,11 +173,11 @@ msgstr "Περί..."
 #: charpick/charpick.c:568 clockmail/clockmail.c:546 diskusage/diskusage.c:812
 #: drivemount/drivemount.c:647 geyes/geyes.c:380 gkb/gkb.c:739
 #: gnotes/gnotes_applet.c:167 gweather/gweather-applet.c:178
-#: mini-commander/src/mini-commander_applet.c:391
+#: mini-commander/src/mini-commander_applet.c:399
 #: modemlights/modemlights.c:1208 multiload/cpuload.c:68
 #: multiload/memload.c:64 multiload/swapload.c:64 odometer/odo.c:641
-#: slashapp/slashapp.c:55 sound-monitor/main.c:340 tickastat/main.c:315
-#: webcontrol/webcontrol.c:332
+#: screenshooter/screenshooter_applet.c:1371 slashapp/slashapp.c:55
+#: sound-monitor/main.c:340 tickastat/main.c:315 webcontrol/webcontrol.c:332
 msgid "Properties..."
 msgstr "Ιδιότητες..."
 
@@ -251,6 +251,7 @@ msgid "Internal error: invalid mode in battery_set_mode"
 msgstr "Εσωτερικό σφάλμα: άκυρη κατάσταση (mode) στο battery_set_mode"
 
 #: battery/battery.c:655 jbc/jbc-applet.c:161
+#: screenshooter/screenshooter_applet.c:1267
 msgid "Can't create applet!\n"
 msgstr "Δημιουργία εφαρμογιδίου αδύνατη!\n"
 
@@ -384,7 +385,7 @@ msgstr "Αδυναμία κλήσης της dup() για τον περιγραφέα αρχείου APM: %s\n"
 
 #: battery/read-battery.c:163
 msgid "Cannot open /dev/apm; can't get data."
-msgstr "Άνοιγμα /dev/apm αδύνατο; ανάγνωση δεδομένων απέτυχε."
+msgstr "Άνοιγμα /dev/apm αδύνατο. Aνάγνωση δεδομένων απέτυχε."
 
 #: battery/read-battery.c:168
 msgid "ioctl failed on /dev/apm."
@@ -511,7 +512,7 @@ msgstr "Θέματα:"
 msgid "ClockMail Settings"
 msgstr "Ρυθμίσεις ClockMail"
 
-#: clockmail/properties.c:291 mini-commander/src/preferences.c:478
+#: clockmail/properties.c:291 mini-commander/src/preferences.c:501
 msgid "Clock"
 msgstr "Ρολόι"
 
@@ -846,6 +847,26 @@ msgstr "Δημιουργία κολλώδη σημειώματος στην οθόνη."
 #: gnotes/gnotes_applet.c:152
 msgid "Can't create GNotes applet!"
 msgstr "Δημιουργία εφαρμογιδίου GNotes αδύνατη!"
+
+#: gnotes/gnotes_applet.c:171
+#, fuzzy
+msgid "Raise Notes"
+msgstr "Ανασήκωση σημειώματος"
+
+#: gnotes/gnotes_applet.c:173
+#, fuzzy
+msgid "Lower Notes"
+msgstr "Χαμήλωμα σημειώματος"
+
+#: gnotes/gnotes_applet.c:175
+#, fuzzy
+msgid "Hide Notes"
+msgstr "Απόκρυψη σημειώματος"
+
+#: gnotes/gnotes_applet.c:177
+#, fuzzy
+msgid "Show Notes"
+msgstr "Εμφάνιση ώρας"
 
 #: gumma/gumma.c:314
 #, c-format
@@ -1264,7 +1285,7 @@ msgstr "Ελαφρά χιονόπτωση"
 
 #: gweather/weather.c:181
 msgid "Moderate snow"
-msgstr "Μέτριο χιόνι"
+msgstr "Μέτρια χιονόπτωση"
 
 #: gweather/weather.c:181
 msgid "Partial snowfall"
@@ -1346,48 +1367,48 @@ msgstr "Τοπικό παγωμένο χιόνι"
 
 #: gweather/weather.c:183
 msgid "Blowing ice crystals"
-msgstr "Άνεμος με κρύσταλλα πάγου"
+msgstr "Άνεμος με κρυστάλλους πάγου"
 
 #: gweather/weather.c:183
 msgid "Drifting ice crystals"
-msgstr "Μετακινούνα κρύσταλλα πάγου"
+msgstr "Μετακινούμενοι κρύσταλλοι πάγου"
 
 #: gweather/weather.c:183
 msgid "Few ice crystals"
-msgstr "Λίγα κρύσταλλα πάγου"
+msgstr "Λίγοι κρύσταλλοι πάγου"
 
 #: gweather/weather.c:183
 msgid "Freezing ice crystals"
-msgstr "Παγωμένα κρύσταλλα πάγου"
+msgstr "Παγωμένοι κρύσταλλοι πάγου"
 
 #: gweather/weather.c:183
 msgid "Heavy ice crystals"
-msgstr "Βαριά κρύσταλλα πάγου"
+msgstr "Βαριοί κρύσταλλοι πάγου"
 
 #: gweather/weather.c:183
 msgid "Ice crystal storm"
-msgstr "Καταιγίδα με κρύσταλλα πάγου"
+msgstr "Καταιγίδα με κρυστάλλους πάγου"
 
 #. ICE_CRYSTALS
 #: gweather/weather.c:183
 msgid "Ice crystals"
-msgstr "Κρύσταλα πάγου"
+msgstr "Κρύσταλλοι πάγου"
 
 #: gweather/weather.c:183
 msgid "Ice crystals in the vicinity"
-msgstr "Τοπικά κρύσταλλα πάγου"
+msgstr "Τοπικοί κρύσταλλοι πάγου"
 
 #: gweather/weather.c:183
 msgid "Moderate ice crystals"
-msgstr "Μέτρια κρύσταλλα πάγου"
+msgstr "Μέτριοι κρύσταλλοι πάγου"
 
 #: gweather/weather.c:183
 msgid "Partial ice crystals"
-msgstr "Μερικώς κρύσταλλα πάγου"
+msgstr "Μερικώς κρύσταλλοι πάγου"
 
 #: gweather/weather.c:183
 msgid "Patches of ice crystals"
-msgstr "Τμήματα με κρύσταλλα πάγου"
+msgstr "Τμήματα με κρυστάλλους πάγου"
 
 #: gweather/weather.c:183
 msgid "Showers of ice crystals"
@@ -1779,7 +1800,7 @@ msgstr "Ηφαιστιακή στάχτη"
 
 #: gweather/weather.c:191
 msgid "Volcanic ash in the vicinity"
-msgstr "Τοπική ηφαιστιακή στάχτη"
+msgstr "Τοπική ηφαιστειακή στάχτη"
 
 #: gweather/weather.c:191
 msgid "Volcanic ash w/ thunders"
@@ -2347,7 +2368,7 @@ msgstr "τερματισμός παιδιού"
 msgid "%H:%M - %d. %b"
 msgstr "%H:%M - %d. %b"
 
-#. timeFormat = _("%H:%M %Z");
+#. time_format = _("%H:%M %Z");
 #: mini-commander/src/message.c:105
 msgid "%H:%M"
 msgstr "%H:%M"
@@ -2364,19 +2385,19 @@ msgstr "νέος προσανατολισμος"
 msgid "size changed"
 msgstr "νέο μέγεθος"
 
-#: mini-commander/src/mini-commander_applet.c:220 slashapp/properties.c:253
+#: mini-commander/src/mini-commander_applet.c:228 slashapp/properties.c:253
 msgid "Browser"
 msgstr "Εξερεύνηση"
 
-#: mini-commander/src/mini-commander_applet.c:233
+#: mini-commander/src/mini-commander_applet.c:241
 msgid "History"
 msgstr "Ιστορικό"
 
-#: mini-commander/src/mini-commander_applet.c:397
+#: mini-commander/src/mini-commander_applet.c:405
 msgid "Help"
 msgstr "Βοήθεια"
 
-#: mini-commander/src/mini-commander_applet.c:408
+#: mini-commander/src/mini-commander_applet.c:416
 msgid "ready..."
 msgstr "έτοιμο..."
 
@@ -2396,92 +2417,92 @@ msgstr "ημερομηνία"
 msgid "clock off"
 msgstr "ρολόι ανενεργό"
 
-#: mini-commander/src/preferences.c:434
+#: mini-commander/src/preferences.c:454
 msgid "saving prefs..."
 msgstr "αποθήκευση προτιμήσεων..."
 
-#: mini-commander/src/preferences.c:472
+#: mini-commander/src/preferences.c:495
 msgid "Mini-Commander Properties"
 msgstr "Ιδιότητες Mini-Commander"
 
 #. show time check box
-#: mini-commander/src/preferences.c:486
+#: mini-commander/src/preferences.c:509
 msgid "Show time"
 msgstr "Εμφάνιση ώρας"
 
 #. show date check box
-#: mini-commander/src/preferences.c:498
+#: mini-commander/src/preferences.c:521
 msgid "Show date"
 msgstr "Εμφάνιση ημερομηνίας"
 
 #. appearance frame
-#: mini-commander/src/preferences.c:511
+#: mini-commander/src/preferences.c:534
 msgid "Appearance"
 msgstr "Εμφάνιση"
 
 #. show handle check box
-#: mini-commander/src/preferences.c:519
+#: mini-commander/src/preferences.c:542
 msgid "Show handle"
 msgstr "Εμφάνιση λαβής"
 
 #. show frame check box
-#: mini-commander/src/preferences.c:531
+#: mini-commander/src/preferences.c:554
 msgid "Show frame"
 msgstr "Εμφάνιση πλαισίου"
 
 #. auto complete frame
-#: mini-commander/src/preferences.c:545
+#: mini-commander/src/preferences.c:568
 msgid "Auto Completion"
 msgstr "Αυτόματη Συμπλήρωση"
 
 #. show history autocomplete
-#: mini-commander/src/preferences.c:553
+#: mini-commander/src/preferences.c:576
 msgid "Enable history based auto completion"
 msgstr "Ενεργοποίηση αυτόματης συμπληρωσης βασισμένης στο ιστορικό"
 
 #. Size
-#: mini-commander/src/preferences.c:565 tickastat/properties.c:492
+#: mini-commander/src/preferences.c:588 tickastat/properties.c:492
 msgid "Size"
 msgstr "Μέγεθος"
 
 #. applet width
-#: mini-commander/src/preferences.c:577
+#: mini-commander/src/preferences.c:600
 msgid "Applet width:"
 msgstr "Πλάτος εφαρμογιδίου:"
 
 #. applet height
-#: mini-commander/src/preferences.c:606
+#: mini-commander/src/preferences.c:629
 msgid "Applet height:"
 msgstr "Ύψος εφαρμογιδίου:"
 
 #. cmd line height
-#: mini-commander/src/preferences.c:635
+#: mini-commander/src/preferences.c:658
 msgid "Command line height:"
 msgstr "Ύψος γραμμής εντολών:"
 
 #. fg
-#: mini-commander/src/preferences.c:687
+#: mini-commander/src/preferences.c:710
 msgid "Command line foreground:"
 msgstr "Προσκήνιο γραμμής εντολών:"
 
 #. bg
-#: mini-commander/src/preferences.c:722
+#: mini-commander/src/preferences.c:745
 msgid "Command line background:"
 msgstr "Παρασκήνιο γραμμής εντολών:"
 
 #. prefix
-#: mini-commander/src/preferences.c:782
-#, c-format
-msgid "Prefix %.2d:"
+#: mini-commander/src/preferences.c:805
+#, fuzzy, c-format
+msgid "Regex %.2d:"
 msgstr "Πρόθεμα %.2d"
 
 #. command
-#: mini-commander/src/preferences.c:800
+#: mini-commander/src/preferences.c:823
 #, c-format
 msgid "   Macro %.2d:"
 msgstr "   Μάκρο %.2d:"
 
-#: mini-commander/src/preferences.c:819
+#: mini-commander/src/preferences.c:842
 msgid "Macros"
 msgstr "Μακροεντολές"
 
@@ -2767,6 +2788,336 @@ msgid ""
 "Cannot create directory:\n"
 "~/.gnome/quicklaunch.\n"
 "Aborting"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:44
+#, fuzzy
+msgid "Screen-Shooter Applet"
+msgstr "Δημιουργία εφαρμογιδίου οδομέτρου αδύνατη!"
+
+#: screenshooter/screenshooter_applet.c:46
+#, fuzzy
+msgid "Copyright (C) 1999 Tom Gilbert"
+msgstr "Πνευματικά δικαιώματα (C) 1999"
+
+#: screenshooter/screenshooter_applet.c:47
+msgid ""
+"A useful little screengrabber.\n"
+"The left/top button allows you to grab either:\n"
+"a window (click to select which one)\n"
+"or an area (click and drag to select a rectangle.)\n"
+"The right/bottom button will grab the entire desktop.\n"
+"Share and Enjoy ;)"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:383
+#, fuzzy
+msgid "Screen-Shooter Settings"
+msgstr "Ρυθμίσεις προσάρτησης δίσκων"
+
+#: screenshooter/screenshooter_applet.c:390
+msgid "Capture WM decorations when grabbing a window"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:399
+msgid "Give audio feedback using the keyboard bell"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:408
+msgid "Display Spurious Options (I got carried away)"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:417
+msgid "Delay (seconds) before taking shot (only for entire desktop shots)"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:439
+msgid "Compressed Quality (JPEG/MIFF/PNG mode) High: good quality/large file"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:464
+msgid "Create monochrome image"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:472
+msgid "Invert colours in image"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:493
+msgid "Directory to save images in:"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:517
+msgid "Image filename:"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:532
+#, fuzzy
+msgid "Show expanded filename"
+msgstr "Εμφάνιση λαβής"
+
+#: screenshooter/screenshooter_applet.c:552
+#, c-format
+msgid ""
+"Filetype is determined from filename suffix.\n"
+"Default filetype (if no extension or unrecognised extension) is miff.\n"
+"Recognised suffixes are:\n"
+"jpg, jpeg, bmp, cgm, cmyk, dib, eps, fig, fpx, gif, ico, map, miff, pcx,\n"
+"pict, pix, png, pnm, ppm, psd, rgb, rgba, rla, rle, tiff, tga, xbm, xpm,\n"
+"and several obscure ones. Try your luck with something interesting!\n"
+"Eg .html for a client-side image map. You'll get a .gif, .html, and a "
+".shtml\n"
+"\n"
+"Recommendations:\n"
+"Small file, pretty good quality:   jpg, 75% quality\n"
+"Slightly larger file but lossless: png, as much compression as you like.\n"
+"- compressing pngs takes longer at higher ratios, but is still lossless"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:569
+msgid "View screenshot after saving it"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:580
+msgid "App to use for displaying screenshots:"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:595
+msgid "Files, Apps"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:604
+msgid "Create thumbnail of image too"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:612
+msgid "Thumbnail Size (percentage of original)"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:633
+msgid ""
+"Thumbnail compression (JPEG/MIFF/PNG mode) High: good quality/large file"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:657
+msgid "Prefix to attach to thumbnail filename:"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:687
+msgid "Use high-quality intermediate for generating thumbnail"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:701
+msgid ""
+"(This'll chug loads of CPU, but will prevent compressing the image twice if "
+"a\n"
+"lossy file format is used)\n"
+"Don't use this if you're using a lossless compression format, or if you "
+"cherish\n"
+"speed and don't mind imperfection in your thumbnails."
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:708
+msgid "Thumbnails"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:731
+msgid ""
+"All post-processing, frill and spurious options will chug more CPU than a\n"
+"simple screenshot, due to the creation and then conversion of an "
+"intermediate\n"
+"image. Intensive operations may take some time on less spiffy CPUs."
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:744
+msgid "Normalize image (Span full range of color values to enhance contrast)"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:754
+msgid "Equalize image (Perform histogram equalization)"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:767
+msgid "Enhance image (reduce noise)"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:775
+msgid "Despeckle Image (reduce spots)"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:782
+msgid "Sharpen Image by what factor?"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:801
+msgid "Rotate image clockwise by how many degrees?"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:820
+msgid "Adjust gamma"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:827
+msgid "Gamma value"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:850
+msgid "Post Processing"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:858
+msgid "Create frame around image"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:865
+msgid "Frame Width (pixels)"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:888
+msgid "Mirror image vertically"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:895
+msgid "Mirror image horizontally"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:902
+msgid "Emboss image"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:921
+msgid ""
+"When finished, send image and thumbnail filenames to script/program below"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:933
+msgid "Script or program to launch:"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:954
+msgid ""
+"Script/program will be launched after image creation with the image "
+"filenames\n"
+"specified on the commandline as follows:\n"
+"{Script_Name} {Image_Filename} {Thumbnail_filename_if_specified}\n"
+"Hint: I use a script to update my website screenshot page.\n"
+"An example script should've been included in the tarball, or at my website."
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:963
+msgid "Frills"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:972
+msgid "Blur Image"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:980
+msgid "Blur image by what factor?"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:1001
+msgid "Create Charcoal Effect"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:1009
+msgid "Charcoal by what factor?"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:1030
+msgid "Find Edges in Image"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:1038
+msgid "Find edges by what factor?"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:1058
+msgid "Implode Image"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:1066
+msgid "Implode by what factor?"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:1087
+msgid "Spurious"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:1096
+msgid "Create Painted Effect"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:1104
+msgid "Paint what radius around each pixel?"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:1124
+msgid "Solarise Image"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:1132
+msgid "Solarize factor?"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:1152
+msgid "Spread image pixels"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:1160
+msgid "Radius to around each pixel to spread?"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:1181
+msgid "Swirl pixels. My favorite :-)"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:1189
+msgid "Radius to swirl pixels around?)"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:1209
+msgid "Spurious 2"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:1324
+#: screenshooter/screenshooter_applet.c:1327
+msgid "Grab a shot of a specific window or area"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:1325
+#: screenshooter/screenshooter_applet.c:1328
+msgid "Grab a shot of your entire desktop"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:1485
+msgid ""
+"There was a word expansion error\n"
+"I think you have stuck something funny in the directory box\n"
+"Screenshot aborted"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:1501
+msgid ""
+"There was a word expansion error\n"
+"I think you have stuck something funny in the filename box\n"
+"Screenshot aborted"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:1851
+msgid ""
+"There was a word expansion error\n"
+"I think you have stuck something funny in the filename box"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:1863
+#, c-format
+msgid ""
+"The specified filename:\n"
+"%s\n"
+"expands to:\n"
+"%s\n"
+"when passed to a shell"
 msgstr ""
 
 #: slashapp/properties.c:203 slashapp/slashapp.c:61
@@ -3341,29 +3692,3 @@ msgstr ""
 #: whereami/whereami.c:195
 msgid "whereami_applet"
 msgstr "εφαρμογίδιο_πού_είμαι"
-
-#~ msgid "I'm sorry, Dave, I can't let you do that."
-#~ msgstr "Συγνώμη Dave, δεν μπορώ να σε αφήσω να το κάνεις αυτό."
-
-#~ msgid "Dave, what are you doing?"
-#~ msgstr "Dave, τι κάνεις εκεί;"
-
-#~ msgid "I can feel my mind going, Dave...I can feel it."
-#~ msgstr "Νιώθω να φεύγει το μυαλό μου, Dave...Το νιώθω."
-
-#~ msgid "Daisy, daisy..."
-#~ msgstr "Μαργαρίατα, μαργαρίτα"
-
-#~ msgid "(with minor help from George Lebl and his amazing fish applet)"
-#~ msgstr ""
-#~ "(με μικρή βοήθεια από τον George Lebl και το εκπληκτικό του εφαρμογίδιο ψάρι"
-
-#~ msgid "The GNOME HAL"
-#~ msgstr "Ο HAL του GNOME"
-
-#~ msgid ""
-#~ "I am a HAL 9000 computer, Production Number 3. I became operational at the "
-#~ "Hal Plant in Urbana, Illinois, on January 12, 1997."
-#~ msgstr ""
-#~ "Είμαι ένας HAL 9000 υπολογιστής, Αριθμός Παραγωγής 3. Άρχισα να λειτουργώ "
-#~ "στο Hal Plant στην Urbana του Illinois, στις 12 Ιανουαρίου του 1997."
