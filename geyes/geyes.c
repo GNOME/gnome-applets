@@ -25,7 +25,7 @@
 #include <egg-screen-help.h>
 #include "geyes.h"
 
-#define UPDATE_TIMEOUT 75
+#define UPDATE_TIMEOUT 100
 
 static void
 applet_set_back_pixmap (GtkWidget *widget, const gchar *pixmap)
@@ -195,11 +195,14 @@ timer_cb (EyesApplet *eyes_applet)
 		if (GTK_WIDGET_REALIZED (eyes_applet->eyes[i])) {
 			gtk_widget_get_pointer (eyes_applet->eyes[i], 
 						&x, &y);
-			calculate_pupil_xy (eyes_applet, x, y, &pupil_x, &pupil_y);
-			draw_eye (eyes_applet, i, pupil_x, pupil_y);
+			if ((x != eyes_applet->pointer_last_x) || (y != eyes_applet->pointer_last_y)) { 
+				calculate_pupil_xy (eyes_applet, x, y, &pupil_x, &pupil_y);
+				draw_eye (eyes_applet, i, pupil_x, pupil_y);
+			}
 		}
         }
-        
+        eyes_applet->pointer_last_x = x;
+        eyes_applet->pointer_last_y = y;
         return TRUE;
 }
 
