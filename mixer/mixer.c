@@ -624,8 +624,15 @@ scale_button_release_event_cb (GtkWidget *widget, GdkEventButton *event, MixerDa
 }
 
 static gboolean
+scale_button_event  (GtkWidget *widget, GdkEventButton *event, MixerData *data)
+{
+	return TRUE;
+}
+
+static gboolean
 applet_button_release_event_cb (GtkWidget *widget, GdkEventButton *event, MixerData *data)
 {
+
 	if (event->button == 1) {
 		if (data->popup == NULL && device_present) {
 			mixer_popup_show (data);
@@ -738,8 +745,12 @@ mixer_popup_show (MixerData *data)
 				_("Volume Controller"),
 				_("Use Up/Down arrow keys to change volume"));
 	}
-	g_signal_connect (data->scale,
-			  "button-release-event",
+	/* This signal is to not let button press close the popup when the press is
+	** in the scale */
+	g_signal_connect_after (data->scale, "button_press_event",
+				  G_CALLBACK (scale_button_event), data);
+	g_signal_connect (data->popup,
+			  "button-press-event",
 			  (GCallback) scale_button_release_event_cb,
 			  data);
 
@@ -808,23 +819,23 @@ mixer_popup_show (MixerData *data)
 	/*
 	 * Grab focus and pointer.
 	 */
-	gtk_widget_grab_focus (data->scale);
-	gtk_grab_add (data->scale);
+	gtk_widget_grab_focus (data->popup);
+	gtk_grab_add (data->popup);
 
-	pointer = gdk_pointer_grab (data->scale->window,
+	pointer = gdk_pointer_grab (data->popup->window,
 				    TRUE,
-				    (GDK_BUTTON_PRESS_MASK
-				     | GDK_BUTTON_RELEASE_MASK
+				    (GDK_BUTTON_PRESS_MASK |
+				    GDK_BUTTON_RELEASE_MASK
 				     | GDK_POINTER_MOTION_MASK),
 				    NULL, NULL, GDK_CURRENT_TIME);
 	
-	keyboard = gdk_keyboard_grab (data->scale->window,
+	keyboard = gdk_keyboard_grab (data->popup->window,
 				      TRUE,
 				      GDK_CURRENT_TIME);
 	
 	if (pointer != GDK_GRAB_SUCCESS || keyboard != GDK_GRAB_SUCCESS) {
 		/* We could not grab. */
-		gtk_grab_remove (data->scale);
+		gtk_grab_remove (data->popup);
 		gtk_widget_destroy (data->popup);
 		data->popup = NULL;
 		data->scale = NULL;
@@ -1444,7 +1455,7 @@ mixer_applet_create (PanelApplet *applet)
 	} 
 	
 	g_signal_connect (data->applet,
-			  "button-release-event",
+			  "button-press-event",
 			  (GCallback) applet_button_release_event_cb,
 			  data);
 	
