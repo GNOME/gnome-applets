@@ -5,14 +5,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 2.0.0\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-10-18 02:42+0200\n"
-"PO-Revision-Date: 2003-10-20 12:37-0200\n"
+"POT-Creation-Date: 2003-10-28 18:02-0500\n"
+"PO-Revision-Date: 2003-10-28 18:04-0500\n"
 "Last-Translator: Gustavo Noronha Silva <kov@debian.org>\n"
 "Language-Team: GNOME-BR <gnome-l10n-br@listas.cipsga.org.br>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Report-Msgid-Bugs-To: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: accessx-status/GNOME_AccessxApplet.xml.h:1
@@ -77,11 +77,11 @@ msgstr "Mostra o estado das funções de acessibilidade do teclado"
 msgid "Utility"
 msgstr "Utilitário"
 
-#: accessx-status/applet.c:135 battstat/battstat_applet.c:844
-#: cdplayer/cdplayer.c:580 charpick/charpick.c:584 drivemount/drivemount.c:510
+#: accessx-status/applet.c:135 battstat/battstat_applet.c:895
+#: cdplayer/cdplayer.c:580 charpick/charpick.c:581 drivemount/drivemount.c:510
 #: geyes/geyes.c:228 gkb-new/gkb-applet.c:84 gtik/gtik.c:775
 #: gweather/gweather-about.c:44 mailcheck/mailcheck.c:2435
-#: mini-commander/src/about.c:48 mixer/mixer.c:1060
+#: mini-commander/src/about.c:48 mixer/mixer.c:1062
 #: modemlights/modemlights.c:115 multiload/main.c:57
 #: stickynotes/stickynotes_applet_callbacks.c:191
 #: wireless/wireless-applet.c:560
@@ -125,7 +125,7 @@ msgstr "Mostra o estado atual das funções de acessibilidade do teclado"
 
 #. The long name of the applet in the About dialog.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:857
+#: battstat/battstat_applet.c:908
 msgid "Battery Charge Monitor"
 msgstr "Monitor de Carga de Bateria"
 
@@ -238,45 +238,45 @@ msgstr "Nível de valor para amarelo"
 # SUN NEW TRANSLATION
 #. Message displayed if user tries to run applet
 #. on unsupported platform
-#: battstat/battstat_applet.c:286
+#: battstat/battstat_applet.c:329
 msgid "Your platform is not supported!\n"
 msgstr "Não há suporte para sua plataforma!\n"
 
 # SUN NEW TRANSLATION
-#: battstat/battstat_applet.c:287
+#: battstat/battstat_applet.c:330
 msgid "The applet will not work properly (if at all).\n"
 msgstr "O miniaplicativo não funcionará corretamente (se funcionar).\n"
 
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:888
+#: battstat/battstat_applet.c:361 battstat/battstat_applet.c:939
 msgid "High"
 msgstr "Alta"
 
 # SUN NEW TRANSLATION
 #. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:890
+#: battstat/battstat_applet.c:363 battstat/battstat_applet.c:941
 msgid "Low"
 msgstr "Fraca"
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:892
+#: battstat/battstat_applet.c:365 battstat/battstat_applet.c:943
 msgid "Critical"
 msgstr "Crítica"
 
 #. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:324 battstat/battstat_applet.c:894
+#: battstat/battstat_applet.c:367 battstat/battstat_applet.c:945
 msgid "Charging"
 msgstr "Carregando"
 
 # SUN NEW TRANSLATION
-#: battstat/battstat_applet.c:405
+#: battstat/battstat_applet.c:448
 #, c-format
 msgid "Battery low (%d%%) and AC is offline"
 msgstr "Bateria fraca (%d%%) e CA está off-line"
 
-#: battstat/battstat_applet.c:429
+#: battstat/battstat_applet.c:472
 msgid "Battery is now fully re-charged!"
 msgstr "A Bateria totalmente carregada."
 
@@ -284,7 +284,7 @@ msgstr "A Bateria totalmente carregada."
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:448 battstat/battstat_applet.c:1052
+#: battstat/battstat_applet.c:491 battstat/battstat_applet.c:1103
 #, c-format
 msgid ""
 "System is running on battery power\n"
@@ -297,7 +297,7 @@ msgstr ""
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:452 battstat/battstat_applet.c:1060
+#: battstat/battstat_applet.c:495 battstat/battstat_applet.c:1111
 #, c-format
 msgid ""
 "System is running on AC power\n"
@@ -309,28 +309,28 @@ msgstr ""
 # SUN NEW TRANSLATION
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:458 battstat/battstat_applet.c:984
-#: battstat/battstat_applet.c:1073
+#: battstat/battstat_applet.c:501 battstat/battstat_applet.c:1035
+#: battstat/battstat_applet.c:1124
 msgid "System is running on battery power"
 msgstr "O sistema está funcionando com bateria"
 
 # SUN NEW TRANSLATION
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:461 battstat/battstat_applet.c:990
-#: battstat/battstat_applet.c:1079
+#: battstat/battstat_applet.c:504 battstat/battstat_applet.c:1041
+#: battstat/battstat_applet.c:1130
 msgid "System is running on AC power"
 msgstr "O sistema está funcionando com energia CA"
 
 # SUN NEW TRANSLATION
-#: battstat/battstat_applet.c:475
+#: battstat/battstat_applet.c:518
 msgid "N/A"
 msgstr "N/A"
 
 # SUN NEW TRANSLATION
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:599 battstat/battstat_applet.c:964
+#: battstat/battstat_applet.c:642 battstat/battstat_applet.c:1015
 #, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
 msgstr "O sistema está funcionando com bateria. Bateria: %d%% (%s)"
@@ -338,7 +338,7 @@ msgstr "O sistema está funcionando com bateria. Bateria: %d%% (%s)"
 # SUN NEW TRANSLATION
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:606 battstat/battstat_applet.c:971
+#: battstat/battstat_applet.c:649 battstat/battstat_applet.c:1022
 #, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
 msgstr "O sistema está funcionando com energia CA. Bateria: %d%% (%s)"
@@ -348,7 +348,7 @@ msgstr "O sistema está funcionando com energia CA. Bateria: %d%% (%s)"
 #. battery frame when the computer is using battery
 #. power and the battery isn't present. Not a
 #. possible combination, I guess... :)
-#: battstat/battstat_applet.c:617
+#: battstat/battstat_applet.c:660
 msgid "System is running on battery power. Battery: Not present"
 msgstr "O sistema está funcionando com bateria. Bateria: Ausente"
 
@@ -356,7 +356,7 @@ msgstr "O sistema está funcionando com bateria. Bateria: Ausente"
 #. This string will display as a tooltip over the
 #. battery frame when the computer is using AC
 #. power and the battery isn't present.
-#: battstat/battstat_applet.c:623
+#: battstat/battstat_applet.c:666
 msgid "System is running on AC power. Battery: Not present"
 msgstr "O sistema está funcionando com energia CA. Bateria: Ausente"
 
@@ -364,7 +364,7 @@ msgstr "O sistema está funcionando com energia CA. Bateria: Ausente"
 #. Displayed as a tooltip over the battery meter when there is
 #. a battery present. %d will hold the current charge and %s will
 #. hold the status of the battery, (High, Low, Critical, Charging.
-#: battstat/battstat_applet.c:632
+#: battstat/battstat_applet.c:675
 #, c-format
 msgid "Battery: %d%% (%s)"
 msgstr "Bateria: %d%% (%s)"
@@ -372,13 +372,13 @@ msgstr "Bateria: %d%% (%s)"
 # SUN NEW TRANSLATION
 #. Displayed as a tooltip over the battery meter when no
 #. battery is present.
-#: battstat/battstat_applet.c:639
+#: battstat/battstat_applet.c:682
 msgid "Battery: Not present"
 msgstr "Bateria: Ausente"
 
 # SUN NEW TRANSLATION
 #. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: battstat/battstat_applet.c:727
+#: battstat/battstat_applet.c:778
 msgid ""
 "Can't open the APM device!\n"
 "\n"
@@ -392,7 +392,7 @@ msgstr ""
 
 # SUN NEW TRANSLATION
 #. Displayed if the APM system is disabled (Used under *BSD)
-#: battstat/battstat_applet.c:736
+#: battstat/battstat_applet.c:787
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
@@ -403,7 +403,7 @@ msgstr ""
 "isso ajuda.\n"
 
 # SUN NEW TRANSLATION
-#: battstat/battstat_applet.c:792
+#: battstat/battstat_applet.c:843
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -414,7 +414,7 @@ msgstr ""
 
 # SUN NEW TRANSLATION
 #. Probably because the shell_ret is != 0
-#: battstat/battstat_applet.c:795
+#: battstat/battstat_applet.c:846
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command, the command returned "
@@ -425,7 +425,7 @@ msgstr ""
 "Tente corrigir o erro"
 
 # SUN NEW TRANSLATION
-#: battstat/battstat_applet.c:803
+#: battstat/battstat_applet.c:854
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -435,16 +435,16 @@ msgstr ""
 
 #. if your charset supports it, please replace the "o" in
 #. * "Jorgen" into U00F6
-#: battstat/battstat_applet.c:834
+#: battstat/battstat_applet.c:885
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jorgen Pehrson <jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:859
+#: battstat/battstat_applet.c:910
 msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 msgstr "© 2000 The Gnulix Society, © 2002 Free Software Foundation"
 
 # SUN NEW TRANSLATION
-#: battstat/battstat_applet.c:860
+#: battstat/battstat_applet.c:911
 msgid "This utility shows the status of your laptop battery."
 msgstr "Esse utilitário mostra o estado da bateria do seu laptop."
 
@@ -555,7 +555,7 @@ msgstr "_Amarelo:"
 #: battstat/properties.c:296 drivemount/drivemount.c:468
 #: drivemount/properties.c:589 mailcheck/mailcheck.c:2291
 #: mailcheck/mailcheck.c:2540 mini-commander/src/preferences.c:393
-#: mixer/mixer.c:1167 stickynotes/stickynotes_applet_callbacks.c:169
+#: mixer/mixer.c:1170 stickynotes/stickynotes_applet_callbacks.c:169
 #: stickynotes/stickynotes_applet_callbacks.c:317
 #: wireless/wireless-applet.c:535 wireless/wireless-applet.c:609
 #, c-format
@@ -630,7 +630,7 @@ msgstr "Próxima Trilha"
 msgid "You do not have permission to use the CD player."
 msgstr "Você não tem permissão para usar o Toca-CD."
 
-#: cdplayer/cdplayer.c:362 mixer/mixer.c:1026 multiload/main.c:118
+#: cdplayer/cdplayer.c:362 mixer/mixer.c:1028 multiload/main.c:118
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "Houve um erro ao executar '%s': %s"
@@ -724,8 +724,8 @@ msgstr ""
 "Esse é o caminho completo para o dispositivo que será usado para tocar CD's "
 "com esse mini-aplicativo"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:602
-#: charpick/charpick.c:746 charpick/properties.c:333
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:599
+#: charpick/charpick.c:743 charpick/properties.c:333
 msgid "Character Palette"
 msgstr "Seletor de Caracteres"
 
@@ -738,38 +738,38 @@ msgstr "Gerador de Miniaplicativos de Selecionador de Caracteres"
 msgid "Insert characters"
 msgstr "Inserir caracteres"
 
-#: charpick/charpick.c:324 charpick/properties.c:125
+#: charpick/charpick.c:321 charpick/properties.c:125
 msgid "Add Palette"
 msgstr "Adicionar Paleta"
 
 # SUN NEW TRANSLATION
-#: charpick/charpick.c:365
+#: charpick/charpick.c:362
 msgid "Add a palette..."
 msgstr "Adicionar uma paleta..."
 
-#: charpick/charpick.c:448
+#: charpick/charpick.c:445
 msgid "Available palettes"
 msgstr "Paletas disponíveis"
 
-#: charpick/charpick.c:485
+#: charpick/charpick.c:482
 msgid "Insert special characters"
 msgstr "Inserir caracteres especiais"
 
 #. If your charset supports it, please use U00F1 to replace the "n"
 #. * in "Muniz".
-#: charpick/charpick.c:575
+#: charpick/charpick.c:572
 msgid "Alexandre Muniz <munizao@xprt.net>"
 msgstr "Alexandre Muniz <munizao@xprt.net>"
 
-#: charpick/charpick.c:576
+#: charpick/charpick.c:573
 msgid "Kevin Vandersloot"
 msgstr "Kevin Vandersloot"
 
-#: charpick/charpick.c:604
+#: charpick/charpick.c:601
 msgid "Copyright (C) 1998"
 msgstr "Copyright © 1998"
 
-#: charpick/charpick.c:605
+#: charpick/charpick.c:602
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -4210,7 +4210,7 @@ msgid "Adjust the sound volume"
 msgstr "Ajustar o volume do som"
 
 #: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:175
-#: mixer/mixer.c:1073
+#: mixer/mixer.c:1075
 msgid "Volume Control"
 msgstr "Controle de Volume"
 
@@ -4365,29 +4365,29 @@ msgid "-"
 msgstr "-"
 
 # SUN NEW TRANSLATION
-#: mixer/mixer.c:1074
+#: mixer/mixer.c:1076
 msgid "(C) 2001 Richard Hult"
 msgstr "© 2001 Richard Hult"
 
 # SUN NEW TRANSLATION
-#: mixer/mixer.c:1075
+#: mixer/mixer.c:1077
 msgid "The volume control lets you set the volume level for your desktop."
 msgstr "O controle de volume permite definir o nível de volume do desktop."
 
-#: mixer/mixer.c:1217
+#: mixer/mixer.c:1220
 msgid "Volume Control Preferences"
 msgstr "Preferências do Controle de Volume"
 
-#: mixer/mixer.c:1241
+#: mixer/mixer.c:1244
 msgid "Audio Channels"
 msgstr "Canais de Áudio"
 
-#: mixer/mixer.c:1257
+#: mixer/mixer.c:1260
 msgid "_Select channel to control:"
 msgstr "_Selecionar canal a ser controlado:"
 
 # SUN NEW TRANSLATION
-#: mixer/mixer.c:1587
+#: mixer/mixer.c:1592
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr "O controle de volume permite definir o nível de volume do desktop"
 
@@ -4423,12 +4423,12 @@ msgid ""
 "You are currently connected.\n"
 "Do you want to disconnect?"
 msgstr ""
-"Você já está conectado.\n"
+"Você está conectado.\n"
 "Deseja desconectar ?"
 
 #: modemlights/modemlights.c:489
 msgid "_Disconnect"
-msgstr "_Disconnectar"
+msgstr "_Desconectar"
 
 #: modemlights/modemlights.c:510
 msgid "Do you want to connect?"
@@ -4625,7 +4625,7 @@ msgstr "Comando de co_nexão:"
 
 #: modemlights/properties.c:522
 msgid "_Disconnection command:"
-msgstr "Comando de _disconexão:"
+msgstr "Comando de _desconexão:"
 
 #. confirmation checkbox
 #: modemlights/properties.c:542
@@ -4662,7 +4662,7 @@ msgstr "Co_nectado:"
 
 #: modemlights/properties.c:592
 msgid "Disconnec_ted:"
-msgstr "Disconec_tado:"
+msgstr "Desconec_tado:"
 
 #: modemlights/properties.c:595
 msgid "C_onnecting:"
@@ -5447,879 +5447,3 @@ msgstr "Preferências do Monitor de Redes sem fio"
 #: wireless/wireless-applet.glade.h:3
 msgid "_Monitored device:"
 msgstr "Dispositivo _monitorado:"
-
-#~ msgid "Applet layout"
-#~ msgstr "Layout do Mini Aplicativo"
-
-#~ msgid "Beep when either of the above is true"
-#~ msgstr "Emitir aviso sonoro quando um dos acima for verdadeiro"
-
-#~ msgid "_Run External CD Player"
-#~ msgstr "_Executar reprodutor de CD's externo"
-
-#~ msgid "Disc Image"
-#~ msgstr "Imagem do Disco"
-
-# SUN NEW TRANSLATION
-#~ msgid "An image of a cd-rom disc"
-#~ msgstr "Uma imagem de um disco CD-ROM"
-
-#~ msgid "_Default character list:"
-#~ msgstr "Lista de caracteres _padrão:"
-
-#~ msgid "Set the default character list here"
-#~ msgstr "Definir a lista padrão de caracteres aqui"
-
-#~ msgid ""
-#~ "These characters will appear when the panel is started. To return to this "
-#~ "list, hit <d> while the applet has focus."
-#~ msgstr ""
-#~ "Estes caracteres aparecerão quando o painel é iniciado. Para voltar a "
-#~ "esta lista, pressione <d> enquanto o mini aplicativo tem o foco."
-
-#~ msgid "Drive Mount Applet Warning"
-#~ msgstr "Aviso do Aplicativo de Montagem de Volumes"
-
-#~ msgid "Custom icon for moun_ted:"
-#~ msgstr "Ícone personalizado para quando mon_tado:"
-
-#~ msgid "Custom icon for not mou_nted:"
-#~ msgstr "Ícone personalizado para quando desmo_ntado:"
-
-#~ msgid "_Theme Name:"
-#~ msgstr "Nome do _Tema:"
-
-#~ msgid ""
-#~ "Where command can be:\n"
-#~ " * xmodmap /full/path/xmodmap.hu\n"
-#~ " * gkb_xmmap hu\n"
-#~ " * setxkbmap hu"
-#~ msgstr ""
-#~ "Onde comando pode ser:\n"
-#~ " * xmodmap /caminho/completo/xmodmap.hu\n"
-#~ " * gkb_xmmap hu\n"
-#~ " * setxkbmap hu"
-
-#~ msgid "Big"
-#~ msgstr "Grande"
-
-#~ msgid "Applet _size: "
-#~ msgstr "_Tamanho do mini aplicativo: "
-
-#~ msgid "Keymaps"
-#~ msgstr "Mapas de teclado"
-
-#~ msgid "No data available or properties not set"
-#~ msgstr "Sem dados disponíveis ou propriedades não configuradas"
-
-#~ msgid "- Colo_r:"
-#~ msgstr "Co_r para -:"
-
-#~ msgid "Location:"
-#~ msgstr "Localidade:"
-
-#~ msgid "Enable _detailed forecast"
-#~ msgstr "Ativar previsão _detalhada"
-
-#~ msgid "_Automatically update every "
-#~ msgstr "_Atualizar automaticamente a cada "
-
-#~ msgid "Miscellaneous"
-#~ msgstr "Diversos"
-
-#~ msgid "Failed to get IWIN data.\n"
-#~ msgstr "Falha ao obter dados de previsão IWIN.\n"
-
-#~ msgid "Failed to get IWIN forecast data.\n"
-#~ msgstr "Falha ao obter dados de previsão IWIN.\n"
-
-#~ msgid "Failed to get Met Office data.\n"
-#~ msgstr "Falha ao obter dados de previsão Met Office.\n"
-
-#~ msgid "Failed to get Met Office forecast data.\n"
-#~ msgstr "Falha ao obter dados de previsão Met Office.\n"
-
-#~ msgid "Failed to get radar map image.\n"
-#~ msgstr "Falha ao obter imagem do mapa de radar.\n"
-
-#~ msgid "Applet _width:"
-#~ msgstr "_Largura do mini aplicativo:"
-
-#~ msgid "Size"
-#~ msgstr "Tamanho"
-
-#~ msgid "_Run Volume Control..."
-#~ msgstr "_Executar o Controle de Volume..."
-
-#~ msgid "Querying available channels of mixer device %s failed\n"
-#~ msgstr ""
-#~ "Falhou a consulta de canais disponíveis no dispositivo de mixer %s\n"
-
-#~ msgid "warning: mixer has no volume channel - using PCM instead.\n"
-#~ msgstr "alerta: mixer não possui canal de volume - usando PCM no lugar.\n"
-
-#~ msgid "Mixer device %s has neither volume nor PCM channels.\n"
-#~ msgstr ""
-#~ "Dispositivo de mixer %s não possui nem canal de volume nem canal PCM.\n"
-
-#~ msgid "U_pdates per second"
-#~ msgstr "_Atualizações por segundo"
-
-#~ msgid "No_t connected"
-#~ msgstr "_Desconectado"
-
-#~ msgid "Set options as default"
-#~ msgstr "Utilizar opções como padrão"
-
-#~ msgid "_Run detailed system monitor"
-#~ msgstr "_Executar monitor detalhado de sistema"
-
-#~ msgid "Swap File"
-#~ msgstr "Swap"
-
-# MODIFIED SUN NEW TRANSLATION
-#~ msgid "_Swap File"
-#~ msgstr "_Swap"
-
-#~ msgid "_Other"
-#~ msgstr "_Outro"
-
-# SUN NEW TRANSLATION
-#~ msgid "Factory for Panel Menu Applet"
-#~ msgstr "Gerador de Miniaplicativos do Menu Painel"
-
-# SUN NEW TRANSLATION
-#~ msgid "Panel Menu Applet Factory"
-#~ msgstr "Gerador de Miniaplicativos do Menu Painel"
-
-#~ msgid "Panel applet for displaying menus"
-#~ msgstr "Aplicativo para mostrar menus"
-
-#~ msgid "Actions"
-#~ msgstr "Ações"
-
-# SUN NEW TRANSLATION
-#~ msgid "Actions Menu"
-#~ msgstr "Menu Ações"
-
-# SUN NEW TRANSLATION
-#~ msgid "Add items to the Menu Bar"
-#~ msgstr "Adicionar itens à barra de menus"
-
-# SUN NEW TRANSLATION
-#~ msgid "My Documents"
-#~ msgstr "Meus Documentos"
-
-# SUN NEW TRANSLATION
-#~ msgid "Documents"
-#~ msgstr "Documentos"
-
-#~ msgid "Applications"
-#~ msgstr "Aplicações"
-
-#~ msgid ""
-#~ "Removing this entry is not allowed as this will cause the Menu Bar applet "
-#~ "to be removed from GNOME Panel"
-#~ msgstr ""
-#~ "Remover essa entrada não é permitido porque isso vai causar a remoção do "
-#~ "aplicativo de menus do Painel do GNOME"
-
-# SUN CHANGED MESSAGE
-#~ msgid "Create directory item..."
-#~ msgstr "Criar item de diretório..."
-
-#~ msgid "Home"
-#~ msgstr "Pasta Pessoal"
-
-# SUN NEW TRANSLATION
-#~ msgid "Edit directory item..."
-#~ msgstr "Editar item de diretório..."
-
-# SUN NEW TRANSLATION
-#~ msgid "_Path:"
-#~ msgstr "_Caminho:"
-
-#~ msgid "..."
-#~ msgstr "..."
-
-# SUN NEW TRANSLATION
-#~ msgid "_Depth level:"
-#~ msgstr "Nível de profun_didade:"
-
-#~ msgid "Path specified is currently not a valid directory."
-#~ msgstr "O caminho especificado não é um diretório válido."
-
-# SUN NEW TRANSLATION
-#~ msgid "Create documents item..."
-#~ msgstr "Criar item de documentos..."
-
-# SUN NEW TRANSLATION
-#~ msgid "Rename documents item..."
-#~ msgstr "Renomear item de documentos..."
-
-# SUN NEW TRANSLATION
-#~ msgid "KDE Menus"
-#~ msgstr "Menus do KDE"
-
-# SUN NEW TRANSLATION
-#~ msgid "Programs"
-#~ msgstr "Programas"
-
-# SUN NEW TRANSLATION
-#~ msgid "Create links item..."
-#~ msgstr "Criar item de vínculos..."
-
-# SUN NEW TRANSLATION
-#~ msgid "Rename links item..."
-#~ msgstr "Renomear item de vínculos..."
-
-# SUN NEW TRANSLATION
-#~ msgid "KDE"
-#~ msgstr "KDE"
-
-# SUN NEW TRANSLATION
-#~ msgid "Create menu path item..."
-#~ msgstr "Criar item de caminho de menu..."
-
-# SUN NEW TRANSLATION
-#~ msgid "Preferences"
-#~ msgstr "Preferências"
-
-#~ msgid "Menu Bar Preferences"
-#~ msgstr "Preferência da Barra de Menus"
-
-#~ msgid "_Applications Menu"
-#~ msgstr "Menu de _Aplicações"
-
-#~ msgid "Select an icon for the Applications menu"
-#~ msgstr "Selecione ícone para o menu de Aplicações"
-
-# SUN NEW TRANSLATION
-#~ msgid "_Preferences Menu"
-#~ msgstr "Menu _Preferências"
-
-#~ msgid "Ac_tions Menu"
-#~ msgstr "Menu de Açõ_es"
-
-#~ msgid "_Windows Menu"
-#~ msgstr "Menu de _Janelas"
-
-# SUN NEW TRANSLATION
-#~ msgid "W_orkspaces Menu"
-#~ msgstr "Menu Á_reas de Trabalho"
-
-#~ msgid "Windows"
-#~ msgstr "Janelas"
-
-# SUN NEW TRANSLATION
-#~ msgid "Workspaces"
-#~ msgstr "Áreas de trabalho"
-
-#~ msgid "Menu Bar"
-#~ msgstr "Barra de Menu"
-
-# SUN NEW TRANSLATION
-#~ msgid "(c) 2001 Chris Phelps"
-#~ msgstr "© 2001 Chris Phelps"
-
-# SUN NEW TRANSLATION
-#~ msgid ""
-#~ "The Menu Bar allows you to display customized menubars on your panels."
-#~ msgstr ""
-#~ "A Barra de Menu permite que você mostre barras de menu customizadas nos "
-#~ "seus painéis."
-
-#~ msgid "Unable to find the GNOME_FILE_DOMAIN_APP_HELP domain"
-#~ msgstr "Não foi possível encontrar o domínio GNOME_FILE_DOMAIN_APP_HELP"
-
-#~ msgid "Unable to find the GNOME_FILE_DOMAIN_HELP domain."
-#~ msgstr "Não foi possível encontrar o domínio GNOME_FILE_DOMAIN_HELP"
-
-#~ msgid ""
-#~ "Unable to show help as %s is not a directory.  Please check your "
-#~ "installation."
-#~ msgstr ""
-#~ "Não foi possível exibir ajuda porque %s não é um diretório. Verifique sua "
-#~ "instalação."
-
-#~ msgid ""
-#~ "Unable to find the help files in either %s or %s.  Please check your "
-#~ "installation"
-#~ msgstr ""
-#~ "Não foi possível encontrar os arquivos de ajuda em %s ou %s. Verifique "
-#~ "sua instalação"
-
-#~ msgid "Unable to find doc_id %s in the help path"
-#~ msgstr "Não foi possível encontrar o doc_id %s no caminho da ajuda"
-
-#~ msgid "Help document %s/%s not found"
-#~ msgstr "Documento de ajuda %s/%s não encontrado"
-
-#~ msgid ""
-#~ "The images necessary to run the wireless monitor are missing.\n"
-#~ "Please make sure that it is correctly installed."
-#~ msgstr ""
-#~ "As imagens necessárias para executar o monitor de redes sem fio estão "
-#~ "faltando.\n"
-#~ " Verifique que estão instaladas corretamente."
-
-#~ msgid "Drizzle in the vicinity"
-#~ msgstr "Chuvisco na vizinhança"
-
-#~ msgid "Shallow drizzle"
-#~ msgstr "Chuvisco raso"
-
-#~ msgid "Patches of drizzle"
-#~ msgstr "Chuviscos isolados"
-
-#~ msgid "Partial drizzle"
-#~ msgstr "Chuvisco parcial"
-
-#~ msgid "Windy drizzle"
-#~ msgstr "Chuvisco com vento"
-
-#~ msgid "Drifting drizzle"
-#~ msgstr "Chuvisco móvel"
-
-#~ msgid "Rain in the vicinity"
-#~ msgstr "Chuva na vizinhança"
-
-#~ msgid "Shallow rain"
-#~ msgstr "Chuva rasa"
-
-#~ msgid "Patches of rain"
-#~ msgstr "Chuvas isoladas"
-
-#~ msgid "Partial rainfall"
-#~ msgstr "Chuva parcial"
-
-#~ msgid "Blowing rainfall"
-#~ msgstr "Chuva com vento"
-
-#~ msgid "Drifting rain"
-#~ msgstr "Chuva móvel"
-
-#~ msgid "Snow in the vicinity"
-#~ msgstr "Neve na vizinhança"
-
-#~ msgid "Shallow snow"
-#~ msgstr "Neve rasa"
-
-#~ msgid "Patches of snow"
-#~ msgstr "Neve isolada"
-
-#~ msgid "Partial snowfall"
-#~ msgstr "Neve parcial"
-
-#~ msgid "Freezing snow"
-#~ msgstr "Neve congelada"
-
-#~ msgid "Snow grains in the vicinity"
-#~ msgstr "Grãos de neve na vizinhança"
-
-#~ msgid "Shallow snow grains"
-#~ msgstr "Grãos de neve rasos"
-
-#~ msgid "Patches of snow grains"
-#~ msgstr "Grãos de neve isolados"
-
-#~ msgid "Partial snow grains"
-#~ msgstr "Grãos de neve parciais"
-
-#~ msgid "Blowing snow grains"
-#~ msgstr "Grãos de neve com vento"
-
-#~ msgid "Snow grain showers"
-#~ msgstr "Grãos de neve breves"
-
-#~ msgid "Drifting snow grains"
-#~ msgstr "Grãos de neve móveis"
-
-#~ msgid "Freezing snow grains"
-#~ msgstr "Grãos de neve congelados"
-
-#~ msgid "Ice crystals in the vicinity"
-#~ msgstr "Cristais de gelo na vizinhança"
-
-#~ msgid "Few ice crystals"
-#~ msgstr "Poucos cristais de gelo"
-
-#~ msgid "Moderate ice crystals"
-#~ msgstr "Cristais de gelo moderados"
-
-#~ msgid "Heavy ice crystals"
-#~ msgstr "Cristais de gelo fortes"
-
-#~ msgid "Patches of ice crystals"
-#~ msgstr "Cristais de gelo isolados"
-
-#~ msgid "Partial ice crystals"
-#~ msgstr "Cristais de gelo parciais"
-
-#~ msgid "Ice crystal storm"
-#~ msgstr "Tempestade de cristais de gelo"
-
-#~ msgid "Blowing ice crystals"
-#~ msgstr "Cristais de gelo com vento"
-
-#~ msgid "Showers of ice crystals"
-#~ msgstr "Cristais de gelo breves"
-
-#~ msgid "Drifting ice crystals"
-#~ msgstr "Cristais de gelo móveis"
-
-#~ msgid "Freezing ice crystals"
-#~ msgstr "Cristais de gelo congelados"
-
-#~ msgid "Ice pellets in the vicinity"
-#~ msgstr "Cápsulas de gelo na vizinhança"
-
-#~ msgid "Shallow ice pellets"
-#~ msgstr "Cápsulas de gelo rasas"
-
-#~ msgid "Patches of ice pellets"
-#~ msgstr "Cápsulas de gelo isoladas"
-
-#~ msgid "Partial ice pellets"
-#~ msgstr "Cápsulas de gelo parciais"
-
-#~ msgid "Blowing ice pellets"
-#~ msgstr "Cápsulas de gelo com vento"
-
-#~ msgid "Drifting ice pellets"
-#~ msgstr "Cápsulas de gelo móveis"
-
-#~ msgid "Freezing ice pellets"
-#~ msgstr "Cápsulas de gelo congeladas"
-
-#~ msgid "Hail in the vicinity"
-#~ msgstr "Granizo na vizinhança"
-
-#~ msgid "Moderate hail"
-#~ msgstr "Granizo moderado"
-
-#~ msgid "Heavy hail"
-#~ msgstr "Granizo forte"
-
-#~ msgid "Shallow hail"
-#~ msgstr "Granizo raso"
-
-#~ msgid "Patches of hail"
-#~ msgstr "Granizo isolado"
-
-#~ msgid "Partial hail"
-#~ msgstr "Granizo parcial"
-
-#~ msgid "Blowing hail"
-#~ msgstr "Granizo com vento"
-
-#~ msgid "Drifting hail"
-#~ msgstr "Granizo móvel"
-
-#~ msgid "Freezing hail"
-#~ msgstr "Granizo congelado"
-
-#~ msgid "Small hail in the vicinity"
-#~ msgstr "Granizo pequeno na vizinhança"
-
-#~ msgid "Moderate small hail"
-#~ msgstr "Granizo pequeno moderado"
-
-#~ msgid "Heavy small hail"
-#~ msgstr "Granizo pequeno forte"
-
-#~ msgid "Shallow small hail"
-#~ msgstr "Granizo pequeno raso"
-
-#~ msgid "Patches of small hail"
-#~ msgstr "Granizo pequeno isolado"
-
-#~ msgid "Partial small hail"
-#~ msgstr "Granizo pequeno parcial"
-
-#~ msgid "Blowing small hail"
-#~ msgstr "Granizo pequeno com vento"
-
-#~ msgid "Drifting small hail"
-#~ msgstr "Granizo pequeno móvel"
-
-#~ msgid "Freezing small hail"
-#~ msgstr "Granizo pequeno congelado"
-
-#~ msgid "Precipitation in the vicinity"
-#~ msgstr "Precipitação na vizinhança"
-
-#~ msgid "Light precipitation"
-#~ msgstr "Precipitação leve"
-
-#~ msgid "Moderate precipitation"
-#~ msgstr "Precipitação moderada"
-
-#~ msgid "Heavy precipitation"
-#~ msgstr "Precipitação forte"
-
-#~ msgid "Shallow precipitation"
-#~ msgstr "Precipitação rasa"
-
-#~ msgid "Patches of precipitation"
-#~ msgstr "Precipitação isolada"
-
-#~ msgid "Partial precipitation"
-#~ msgstr "Precipitação parcial"
-
-#~ msgid "Unknown thunderstorm"
-#~ msgstr "Trovoada desconhecida"
-
-#~ msgid "Blowing precipitation"
-#~ msgstr "Precipitação com vento"
-
-#~ msgid "Showers, type unknown"
-#~ msgstr "Precipitação breve, tipo desconhecido"
-
-#~ msgid "Drifting precipitation"
-#~ msgstr "Precipitação móvel"
-
-#~ msgid "Freezing precipitation"
-#~ msgstr "Precipitação congelada"
-
-#~ msgid "Mist in the vicinity"
-#~ msgstr "Neblina na vizinhança"
-
-#~ msgid "Light mist"
-#~ msgstr "Neblina leve"
-
-#~ msgid "Moderate mist"
-#~ msgstr "Neblina moderada"
-
-#~ msgid "Thick mist"
-#~ msgstr "Neblina densa"
-
-#~ msgid "Shallow mist"
-#~ msgstr "Neblina rasa"
-
-#~ msgid "Partial mist"
-#~ msgstr "Neblina parcial"
-
-#~ msgid "Mist with wind"
-#~ msgstr "Neblina com vento"
-
-#~ msgid "Drifting mist"
-#~ msgstr "Neblina móvel"
-
-#~ msgid "Freezing mist"
-#~ msgstr "Neblina congelada"
-
-#~ msgid "Light fog"
-#~ msgstr "Nevoeiro leve"
-
-#~ msgid "Moderate fog"
-#~ msgstr "Nevoeiro moderado"
-
-#~ msgid "Thick fog"
-#~ msgstr "Nevoeiro denso"
-
-#~ msgid "Fog with wind"
-#~ msgstr "Nevoeiro com vento"
-
-#~ msgid "Drifting fog"
-#~ msgstr "Nevoeiro móvel"
-
-#~ msgid "Smoke in the vicinity"
-#~ msgstr "Fumaça na vizinhança"
-
-#~ msgid "Thin smoke"
-#~ msgstr "Fumaça fina"
-
-#~ msgid "Moderate smoke"
-#~ msgstr "Fumaça moderada"
-
-#~ msgid "Thick smoke"
-#~ msgstr "Fumaça densa"
-
-#~ msgid "Shallow smoke"
-#~ msgstr "Fumaça rasa"
-
-#~ msgid "Patches of smoke"
-#~ msgstr "Fumaça isolada"
-
-#~ msgid "Partial smoke"
-#~ msgstr "Fumaça parcial"
-
-#~ msgid "Smoke w/ thunders"
-#~ msgstr "Fumaça com trovões"
-
-#~ msgid "Smoke with wind"
-#~ msgstr "Fumaça com vento"
-
-#~ msgid "Drifting smoke"
-#~ msgstr "Fumaça móvel"
-
-#~ msgid "Volcanic ash in the vicinity"
-#~ msgstr "Cinza vulcânica na vizinhança"
-
-#~ msgid "Moderate volcanic ash"
-#~ msgstr "Cinza vulcânica moderada"
-
-#~ msgid "Thick volcanic ash"
-#~ msgstr "Cinza vulcânica densa"
-
-#~ msgid "Shallow volcanic ash"
-#~ msgstr "Cinza vulcânica rasa"
-
-#~ msgid "Patches of volcanic ash"
-#~ msgstr "Cinza vulcânica isolada"
-
-#~ msgid "Partial volcanic ash"
-#~ msgstr "Cinza vulcânica parcial"
-
-#~ msgid "Volcanic ash w/ thunders"
-#~ msgstr "Cinza vulcânica com trovões"
-
-#~ msgid "Blowing volcanic ash"
-#~ msgstr "Cinza vulcânica com vento"
-
-#~ msgid "Showers of volcanic ash "
-#~ msgstr "Cinza vulcânica breve "
-
-#~ msgid "Drifting volcanic ash"
-#~ msgstr "Cinza vulcânica móvel"
-
-#~ msgid "Freezing volcanic ash"
-#~ msgstr "Cinza vulcânica congelada"
-
-#~ msgid "Sand in the vicinity"
-#~ msgstr "Areia na vizinhança"
-
-#~ msgid "Light sand"
-#~ msgstr "Areia leve"
-
-#~ msgid "Moderate sand"
-#~ msgstr "Areia moderada"
-
-#~ msgid "Heavy sand"
-#~ msgstr "Areia forte"
-
-#~ msgid "Patches of sand"
-#~ msgstr "Areia isolada"
-
-#~ msgid "Haze in the vicinity"
-#~ msgstr "Névoa na vizinhança"
-
-#~ msgid "Light haze"
-#~ msgstr "Névoa leve"
-
-#~ msgid "Moderate haze"
-#~ msgstr "Névoa moderada"
-
-#~ msgid "Thick haze"
-#~ msgstr "Névoa densa"
-
-#~ msgid "Shallow haze"
-#~ msgstr "Névoa rasa"
-
-#~ msgid "Patches of haze"
-#~ msgstr "Névoa isolada"
-
-#~ msgid "Partial haze"
-#~ msgstr "Névoa parcial"
-
-#~ msgid "Haze with wind"
-#~ msgstr "Névoa com vento"
-
-#~ msgid "Drifting haze"
-#~ msgstr "Névoa móvel"
-
-#~ msgid "Freezing haze"
-#~ msgstr "Névoa congelada"
-
-#~ msgid "Sprays in the vicinity"
-#~ msgstr "Maresia na vizinhança"
-
-#~ msgid "Light sprays"
-#~ msgstr "Maresia leve"
-
-#~ msgid "Moderate sprays"
-#~ msgstr "Maresia moderada"
-
-#~ msgid "Heavy sprays"
-#~ msgstr "Maresia forte"
-
-#~ msgid "Shallow sprays"
-#~ msgstr "Maresia rasa"
-
-#~ msgid "Patches of sprays"
-#~ msgstr "Maresia isolada"
-
-#~ msgid "Partial sprays"
-#~ msgstr "Maresia parcial"
-
-#~ msgid "Drifting sprays"
-#~ msgstr "Maresia móvel"
-
-#~ msgid "Freezing sprays"
-#~ msgstr "Maresia congelada"
-
-#~ msgid "Dust in the vicinity"
-#~ msgstr "Poeira na vizinhança"
-
-#~ msgid "Light dust"
-#~ msgstr "Poeira leve"
-
-#~ msgid "Moderate dust"
-#~ msgstr "Poeira moderada"
-
-#~ msgid "Heavy dust"
-#~ msgstr "Poeira forte"
-
-#~ msgid "Patches of dust"
-#~ msgstr "Poeira isolada"
-
-#~ msgid "Partial dust"
-#~ msgstr "Poeira parcial"
-
-#~ msgid "Squall in the vicinity"
-#~ msgstr "Ventania na vizinhança"
-
-#~ msgid "Light squall"
-#~ msgstr "Ventania leve"
-
-#~ msgid "Moderate squall"
-#~ msgstr "Ventania moderada"
-
-#~ msgid "Heavy squall"
-#~ msgstr "Ventania forte"
-
-#~ msgid "Partial squall"
-#~ msgstr "Ventania parcial"
-
-#~ msgid "Thunderous squall"
-#~ msgstr "Ventania com trovões"
-
-#~ msgid "Blowing squall"
-#~ msgstr "Ventania com vento"
-
-#~ msgid "Drifting squall"
-#~ msgstr "Ventania móvel"
-
-#~ msgid "Freezing squall"
-#~ msgstr "Ventania congelada"
-
-#~ msgid "Light standstorm"
-#~ msgstr "Tempestade de areia leve"
-
-#~ msgid "Moderate sandstorm"
-#~ msgstr "Tempestade de areia moderada"
-
-#~ msgid "Shallow sandstorm"
-#~ msgstr "Tempestade de areia rasa"
-
-#~ msgid "Partial sandstorm"
-#~ msgstr "Tempestade de areia parcial"
-
-#~ msgid "Thunderous sandstorm"
-#~ msgstr "Tempestade de areia com trovões"
-
-#~ msgid "Blowing sandstorm"
-#~ msgstr "Tempestade de areia com vento"
-
-#~ msgid "Drifting sandstorm"
-#~ msgstr "Tempestade de areia móvel"
-
-#~ msgid "Freezing sandstorm"
-#~ msgstr "Tempestade de areia congelada"
-
-#~ msgid "Light duststorm"
-#~ msgstr "Tempestade de poeira leve"
-
-#~ msgid "Moderate duststorm"
-#~ msgstr "Tempestade de poeira moderada"
-
-#~ msgid "Shallow duststorm"
-#~ msgstr "Tempestade de poeira rasa"
-
-#~ msgid "Partial duststorm"
-#~ msgstr "Tempestade de poeira parcial"
-
-#~ msgid "Thunderous duststorm"
-#~ msgstr "Tempestade de poeira com trovões"
-
-#~ msgid "Blowing duststorm"
-#~ msgstr "Tempestade de poeira com vento"
-
-#~ msgid "Drifting duststorm"
-#~ msgstr "Tempestade de poeira móvel"
-
-#~ msgid "Freezing duststorm"
-#~ msgstr "Tempestade de poeira congelada"
-
-#~ msgid "Funnel cloud in the vicinity"
-#~ msgstr "Nuvem em funil na vizinhança"
-
-#~ msgid "Light funnel cloud"
-#~ msgstr "Nuvem em funil leve"
-
-#~ msgid "Moderate funnel cloud"
-#~ msgstr "Nuvem em funil moderada"
-
-#~ msgid "Thick funnel cloud"
-#~ msgstr "Nuvem em funil densa"
-
-#~ msgid "Shallow funnel cloud"
-#~ msgstr "Nuvem em funil rasa"
-
-#~ msgid "Patches of funnel clouds"
-#~ msgstr "Nuvem em funil isolada"
-
-#~ msgid "Partial funnel clouds"
-#~ msgstr "Nuvem em funil parcial"
-
-#~ msgid "Funnel cloud w/ wind"
-#~ msgstr "Nuvem em funil com vento"
-
-#~ msgid "Drifting funnel cloud"
-#~ msgstr "Nuvem em funil móvel"
-
-#~ msgid "Tornado in the vicinity"
-#~ msgstr "Tornado na vizinhança"
-
-#~ msgid "Moderate tornado"
-#~ msgstr "Tornado moderado"
-
-#~ msgid "Raging tornado"
-#~ msgstr "Tornado violento"
-
-#~ msgid "Partial tornado"
-#~ msgstr "Tornado parcial"
-
-#~ msgid "Thunderous tornado"
-#~ msgstr "Tornado com trovões"
-
-#~ msgid "Drifting tornado"
-#~ msgstr "Tornado móvel"
-
-#~ msgid "Freezing tornado"
-#~ msgstr "Tornado congelado"
-
-#~ msgid "Light dust whirls"
-#~ msgstr "Redemoinho de poeira leve"
-
-#~ msgid "Moderate dust whirls"
-#~ msgstr "Redemoinho de poeira moderado"
-
-#~ msgid "Heavy dust whirls"
-#~ msgstr "Redemoinho de poeira forte"
-
-#~ msgid "Shallow dust whirls"
-#~ msgstr "Redemoinho de poeira raso"
-
-#~ msgid "Patches of dust whirls"
-#~ msgstr "Redemoinho de poeira isolado"
-
-#~ msgid "Partial dust whirls"
-#~ msgstr "Redemoinho de poeira parcial"
-
-#~ msgid "Blowing dust whirls"
-#~ msgstr "Redemoinho de poeira com vento"
-
-#~ msgid "Drifting dust whirls"
-#~ msgstr "Redemoinho de poeira móvel"
