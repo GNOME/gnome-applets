@@ -47,6 +47,11 @@
 #define BOUNCEKEYS_ICON     "ax-bouncekeys"
 
 #define STATUS_APPLET_ICON_SIZE GTK_ICON_SIZE_LARGE_TOOLBAR
+typedef enum {
+	ACCESSX_STATUS_ERROR_NONE = 0,
+	ACCESSX_STATUS_ERROR_XKB_DISABLED,
+	ACCESSX_STATUS_ERROR_UNKNOWN
+}AccessxStatusErrorType;
 
 typedef struct 
 {
@@ -71,6 +76,7 @@ typedef struct
 	gboolean          initialized; 
 	XkbDescRec       *xkb;
 	Display          *xkb_display;
+	AccessxStatusErrorType error_type;
 } AccessxStatusApplet;
 
 typedef enum

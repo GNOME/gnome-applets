@@ -1,3 +1,13 @@
+2004-06-18  Arvind Samptur  <arvind.samptur@wipro.com>
+
+	* applet.h: Add AccessxStatusErrorType enum.
+	* applet.c: (accessx_status_applet_realize):
+	(accessx_status_applet_xkb_select): Set the error flag
+	if XKB support is not there.
+	(popup_error_dialog): pop up the appropriate error message
+	based on the error flag.
+	Fixes bug #140281
+
 2004-05-20  Padraig O'Briain <padraig.obriain@sun.com>
 
 	* applet.c:

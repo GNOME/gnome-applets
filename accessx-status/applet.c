@@ -109,6 +109,8 @@ static ButtonIconStruct button_icons [] = {
 	{Button3Mask, MOUSEKEYS_BUTTON_RIGHT}
 };
 
+static void popup_error_dialog (AccessxStatusApplet        *sapplet);
+
 /* cribbed from geyes */
 static void
 about_cb (BonoboUIComponent          *uic,
@@ -215,6 +217,10 @@ dialog_cb (BonoboUIComponent *component,
 	int ret;
 
 
+	if (sapplet->error_type != ACCESSX_STATUS_ERROR_NONE) {
+		popup_error_dialog (sapplet);
+		return;
+	}
 
 	gdk_spawn_command_line_on_screen (gtk_widget_get_screen (GTK_WIDGET (sapplet->applet)),
 			"gnome-accessibility-keyboard-properties", &error);
@@ -292,7 +298,10 @@ accessx_status_applet_xkb_select (AccessxStatusApplet *sapplet)
 					  XkbAllEventsMask, 
 					  XkbAllEventsMask);
 		sapplet->xkb = accessx_status_applet_get_xkb_desc (sapplet);
+	} else {
+		sapplet->error_type = ACCESSX_STATUS_ERROR_XKB_DISABLED;
 	}
+
 	return retval;
 }
 
@@ -990,6 +999,60 @@ accessx_status_applet_layout_box (AccessxStatusApplet *sapplet, GtkWidget *box, 
 		accessx_status_applet_update (sapplet, ACCESSX_STATUS_ALL, NULL);
 }
 
+static void 
+disable_applet (AccessxStatusApplet* sapplet)
+{
+	gtk_widget_hide (sapplet->meta_indicator);
+	gtk_widget_hide (sapplet->hyper_indicator);
+	gtk_widget_hide (sapplet->super_indicator);
+	gtk_widget_hide (sapplet->alt_graph_indicator);
+	gtk_widget_hide (sapplet->shift_indicator);
+	gtk_widget_hide (sapplet->ctrl_indicator);
+	gtk_widget_hide (sapplet->alt_indicator);
+	gtk_widget_hide (sapplet->meta_indicator);
+	gtk_widget_hide (sapplet->mousefoo);
+	gtk_widget_hide (sapplet->stickyfoo);
+	gtk_widget_hide (sapplet->slowfoo);
+	gtk_widget_hide (sapplet->bouncefoo);
+}
+
+static void 
+popup_error_dialog (AccessxStatusApplet* sapplet)
+{
+	GtkWidget *dialog;
+	gchar *error_txt;
+
+	switch (sapplet->error_type) {
+		case ACCESSX_STATUS_ERROR_XKB_DISABLED : 
+			error_txt = g_strdup ("XKB Extenstion is not enabled");
+			break;
+
+		case ACCESSX_STATUS_ERROR_UNKNOWN :
+
+		default	: error_txt = g_strdup ("Unknown error");
+			  break;				
+	}
+
+	dialog = gtk_message_dialog_new (NULL,
+				   	 GTK_DIALOG_DESTROY_WITH_PARENT,
+					 GTK_MESSAGE_ERROR,
+					 GTK_BUTTONS_CLOSE,
+					 ("Error: %s"),
+					 error_txt);
+
+	g_signal_connect (G_OBJECT (dialog),
+			  "response",
+			  G_CALLBACK (gtk_widget_destroy), NULL);
+
+	gtk_window_set_screen (GTK_WINDOW (dialog),
+	gtk_widget_get_screen (GTK_WIDGET (sapplet->applet)));
+
+	gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
+
+	gtk_widget_show (dialog);
+	g_free (error_txt);
+}
+
 static AccessxStatusApplet *
 create_applet (PanelApplet *applet)
 {
@@ -1003,6 +1066,7 @@ create_applet (PanelApplet *applet)
 	sapplet->xkb_display = NULL;
 	sapplet->box = NULL;
 	sapplet->initialized = False; /* there must be a better way */
+	sapplet->error_type = ACCESSX_STATUS_ERROR_NONE;
 	sapplet->applet = applet;
 	panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);
 	sapplet->orient = panel_applet_get_orient (applet);
@@ -1181,16 +1245,22 @@ accessx_status_applet_reset (gpointer user_data)
 	return FALSE;
 }
 
-static void
+static gboolean 
 accessx_status_applet_initialize (AccessxStatusApplet *sapplet)
 {
 	if (!sapplet->initialized) {
 		sapplet->initialized = True;
-		accessx_status_applet_xkb_select (sapplet);
+		if (!accessx_status_applet_xkb_select (sapplet)) {
+			disable_applet (sapplet);
+			popup_error_dialog (sapplet);
+			return FALSE ;
+		}
 		gdk_window_add_filter (NULL, accessx_status_xkb_filter, sapplet);
 	}
 	accessx_status_applet_init_modifiers (sapplet);
 	accessx_status_applet_update (sapplet, ACCESSX_STATUS_ALL, NULL);
+
+	return TRUE;
 }
 
 static void
@@ -1198,7 +1268,9 @@ accessx_status_applet_realize (GtkWidget *widget, gpointer user_data)
 {
 	AccessxStatusApplet *sapplet = user_data;
 
-	accessx_status_applet_initialize (sapplet);
+	if (!accessx_status_applet_initialize (sapplet))
+		return;
+
 	g_idle_add (accessx_status_applet_reset, sapplet);
 	return;
 }
