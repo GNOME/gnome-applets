@@ -330,7 +330,7 @@ static void gweather_pref_create (void)
 
   g_return_if_fail(pref == NULL);
 
-  pref = gnome_dialog_new (_("Properties"), NULL);
+  pref = gnome_dialog_new (_("Gweather Properties"), NULL);
   gtk_widget_set_usize (pref, -2, 280);
   gtk_window_set_policy (GTK_WINDOW (pref), FALSE, FALSE, FALSE);
   gnome_dialog_close_hides(GNOME_DIALOG(pref), TRUE);

@@ -302,12 +302,11 @@ create_frame (diskusage_properties *props)
 			  4, 0);
 
 
-	label = gtk_label_new(_("Horizontal Size:"));
+	label = gtk_label_new(_("Applet Width:"));
 	applet_size_a = gtk_adjustment_new (temp_props.size, 0.5, 256, 1, 8, 8);
 	applet_size  = gtk_spin_button_new (GTK_ADJUSTMENT(applet_size_a), 1, 0);
 	gtk_box_pack_start (GTK_BOX (size), label, FALSE, FALSE, GNOME_PAD_SMALL);
 	gtk_box_pack_start (GTK_BOX (size), applet_size, FALSE, FALSE, GNOME_PAD_SMALL);
-
 
 	best_size_button = gtk_check_button_new_with_label(_("Automatically pick best applet size"));
 

@@ -60,15 +60,13 @@ struct _GKB {
       	int height;
 };
 
-static void gkb_draw(GtkWidget *, GKB *);
 static void do_that_command(GKB *);
-static void gkb_draw(GtkWidget *darea, GKB *gkb);
 static void gkb_cb(GtkWidget * widget, GdkEventButton * e, GKB * gkb);
 static void gkb_draw(GtkWidget *darea, GKB *gkb);                        
 static int  gkb_expose(GtkWidget *darea, GdkEventExpose *event, GKB *gkb);
 static int  gkb_empty(GtkWidget *darea, GdkEventExpose *event, GKB *gkb);
 void        properties_dialog(AppletWidget *applet, gpointer gkbx);
-void        about_cb (AppletWidget *widget, gpointer gkbx);
+static void about_cb (AppletWidget *widget, gpointer gkbx);
 
 static GtkWidget *
 gkb_create_icon_entry(GtkWidget *table,
@@ -250,20 +248,17 @@ ch_xkb_cb(GtkWidget *widget,
         gnome_property_box_changed(GNOME_PROPERTY_BOX(gkb->propbox)); 
 }
 static void 
-ch_xmodmap_cb(GtkWidget *widget,
-	GKB * gkb)
+ch_xmodmap_cb (GtkWidget *widget,
+	       GKB * gkb)
 {
-
         gkb->temp_props.command = g_strdup("xmodmap");
         gnome_property_box_changed(GNOME_PROPERTY_BOX(gkb->propbox));
 }
 
 static void
-destroy_cb(GtkWidget *widget,
-	GKB * gkb )
+destroy_cb (GtkWidget *widget,
+	    GKB * gkb)
 {
-
-
     	gkb->propbox=NULL;
 }
 
@@ -367,7 +362,7 @@ static	char *basemaps[]= {
    
         gkb->propbox = gnome_property_box_new();
         gtk_window_set_title(GTK_WINDOW(gkb->propbox), 
-           _("GKB settings")
+           _("GKB Properties")
         );
         gtk_window_set_policy(GTK_WINDOW(gkb->propbox), FALSE, FALSE, TRUE);
    
@@ -380,9 +375,9 @@ static	char *basemaps[]= {
         gtk_container_set_border_width(GTK_CONTAINER (table1), 3);
    
         gkb->entry_1 = gkb_create_icon_entry(table1,"tile_file1",1,2,
-            			_("Flag One"),
-                         		gkb->temp_props.image[0],
-                         		GTK_WIDGET(gkb->propbox));
+					     _("Flag One"),
+					     gkb->temp_props.image[0],
+					     GTK_WIDGET(gkb->propbox));
         
         gtk_box_pack_start (GTK_BOX (hbox6), table1, TRUE, TRUE, 0);
    
@@ -412,9 +407,9 @@ static	char *basemaps[]= {
         gtk_container_set_border_width(GTK_CONTAINER (table2), 3);
    
         gkb->entry_2 = gkb_create_icon_entry(table2,"tile_file2",1,2,
-                                	        _("Flag Two"),
-                     			gkb->temp_props.image[1],
-                         		gkb->propbox);
+					     _("Flag Two"),
+					     gkb->temp_props.image[1],
+					     gkb->propbox);
         
         gtk_box_pack_start (GTK_BOX (hbox8), table2, TRUE, TRUE, 0);
    
@@ -479,18 +474,18 @@ static	char *basemaps[]= {
 }
 
 static void
-gkb_draw(GtkWidget * darea,
-	GKB *gkb)
+gkb_draw (GtkWidget *darea,
+	  GKB *gkb)
 {
 	if(gkb->darea!=NULL ||
 	   !GTK_WIDGET_REALIZED(gkb->darea) ||
 	   !gkb->pix[gkb->properties.curpix]->pixmap)
 		return;
 
-	gdk_draw_pixmap(gkb->darea->window,
-		gkb->darea->style->fg_gc[GTK_WIDGET_STATE(gkb->darea)],
-		gkb->pix[gkb->properties.curpix]->pixmap,
-		0, 0, 0, 0, -1, -1);
+	gdk_draw_pixmap (gkb->darea->window,
+			 gkb->darea->style->fg_gc[GTK_WIDGET_STATE(gkb->darea)],
+			 gkb->pix[gkb->properties.curpix]->pixmap,
+			 0, 0, 0, 0, -1, -1);
 }
 
 static void
@@ -499,9 +494,7 @@ do_that_command(GKB *gkb)
        char comm[100];
        int len; 
 
-
-
-	len=(strlen(gkb->properties.command)+(strcmp(gkb->properties.command,"xmodmap")?11:                                    
+       len=(strlen(gkb->properties.command)+(strcmp(gkb->properties.command,"xmodmap")?11:                                    
            strlen(gnome_datadir_file(g_strconcat ("xmodmap/",
            "xmodmap.", gkb->properties.dmap[gkb->properties.curpix], NULL)) )+7));
 	g_snprintf(comm, len, "%s %s%c", gkb->properties.command,
@@ -512,18 +505,16 @@ do_that_command(GKB *gkb)
 }
 
 static void 
-gkb_cb(GtkWidget * widget,
-	GdkEventButton * e, 
-	GKB * gkb)
+gkb_cb (GtkWidget *widget,
+	GdkEventButton *event, 
+	GKB *gkb)
 {
-
-
-        if (e->button != 1) {
+        if (event->button != 1) {
 		/* Ignore buttons 2 and 3 */
 		return; 
 	}
-	gkb->properties.curpix++;
-	if(gkb->properties.curpix>=2) gkb->properties.curpix=0;
+
+	gkb->properties.curpix = gkb->properties.curpix ? 0 : 1;
 	sized_render(gkb);
 	gkb_draw(GTK_WIDGET(gkb->darea),gkb);
 
@@ -592,23 +583,14 @@ create_gkb_widget(GKB *gkb)
 }
 
 static void
-destroy_about(GtkWidget *widget,
-	GKB * gkb )
-{
-
-    	gkb->aboutbox=NULL;
-}
-
-void
 about_cb (AppletWidget *widget,
-	gpointer gkbx)
+	  gpointer gkbx)
 {
 	GKB *gkb = (GKB*)gkbx;
-	static const char *authors[] = 
-			{ "Szabolcs Ban (Shooby) <bansz@szif.hu>",
-			   NULL };
-
-
+	static const char *authors[] = {
+		"Szabolcs Ban (Shooby) <bansz@szif.hu>",
+		NULL
+	};
 
         if(gkb->aboutbox) {
 		gtk_widget_show(gkb->aboutbox);
@@ -634,7 +616,7 @@ about_cb (AppletWidget *widget,
                         _("gkb.xpm"));
 
 	gtk_signal_connect(GTK_OBJECT(gkb->aboutbox),"destroy",
-			   GTK_SIGNAL_FUNC(destroy_about),gkb);
+			   GTK_SIGNAL_FUNC(gtk_widget_destroyed), &gkb->aboutbox);
 	gtk_widget_show (gkb->aboutbox);
 
         return;
@@ -703,7 +685,6 @@ gkb_activator(PortableServer_POA poa,
                        				about_cb,
                      				gkb);
       
-      
         applet_widget_register_stock_callback(APPLET_WIDGET(gkb->applet),
                       				"properties",
                      				GNOME_STOCK_MENU_PROP,
@@ -722,8 +703,6 @@ gkb_deactivator(PortableServer_POA poa,
 	gpointer impl_ptr,
 	CORBA_Environment *ev)
 {
-
-
         applet_widget_corba_deactivate(poa, goad_id, impl_ptr, ev);
 }
 
