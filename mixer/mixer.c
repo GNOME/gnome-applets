@@ -62,7 +62,7 @@
 #ifdef OSS_API
 #define VOLUME_MAX 100
 #endif
-#ifdef SUN_API
+#ifde SUN_API
 #define VOLUME_MAX 255
 #endif
 
@@ -686,7 +686,12 @@ main(int argc, char **argv)
 	applet_widget_init("mixer_applet", VERSION, argc, argv,
 				    NULL, 0, NULL);
 
+#ifdef OSS_API
 	openMixer("/dev/mixer");
+#endif
+#ifdef SUN_API
+	openMixer("/dev/audioctl");
+#endif
 
 	applet = applet_widget_new("mixer_applet");
 	if (!applet)
