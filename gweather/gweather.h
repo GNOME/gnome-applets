@@ -66,7 +66,9 @@ struct _GWeatherApplet
 #endif /* RADARMAP */
 	GtkWidget *pref_basic_update_spin;
 	GtkWidget *pref_basic_update_btn;
+	GtkWidget *pref_net_proxy_auth_btn;
 	GtkWidget *pref_net_proxy_btn;
+	GtkWidget *pref_net_proxy_port_entry;
 	GtkWidget *pref_net_proxy_url_entry;
 	GtkWidget *pref_net_proxy_user_entry;
 	GtkWidget *pref_net_proxy_passwd_entry;

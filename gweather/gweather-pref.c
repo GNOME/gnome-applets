@@ -48,7 +48,9 @@ static gboolean update_dialog (GWeatherApplet *gw_applet)
 {
     GtkCTreeNode *node;
     GConfClient *client = gconf_client_get_default ();
-    gboolean use_proxy;
+    gboolean use_proxy, use_proxy_auth;
+    gint proxy_port;
+    gchar *string;
     gchar *proxy_url, *proxy_user, *proxy_psswd;
 
     g_return_val_if_fail(gw_applet->gweather_pref.location != NULL, FALSE);
@@ -80,11 +82,15 @@ static gboolean update_dialog (GWeatherApplet *gw_applet)
 #endif /* RADARMAP */
 
     use_proxy = gconf_client_get_bool (client, "/system/gnome-vfs/use-http-proxy", NULL);
+    use_proxy_auth = gconf_client_get_bool (client, 
+    			"/system/gnome-vfs/use-http-proxy-authorization", NULL);
     proxy_url = gconf_client_get_string (client, "/system/gnome-vfs/http-proxy-host", NULL);
     proxy_user = gconf_client_get_string (client, 
     		 	"/system/gnome-vfs/http-proxy-authorization-user", NULL);
     proxy_psswd = gconf_client_get_string (client, 
     		 	"/system/gnome-vfs/http-proxy-authorization-password", NULL);
+    proxy_port = gconf_client_get_int (client, 
+    		 	"/system/gnome-vfs/http-proxy-port", NULL);
 
     gtk_entry_set_text(GTK_ENTRY(gw_applet->pref_net_proxy_url_entry), 
     		       proxy_url ? 
@@ -95,8 +101,14 @@ static gboolean update_dialog (GWeatherApplet *gw_applet)
     gtk_entry_set_text(GTK_ENTRY(gw_applet->pref_net_proxy_user_entry), 
     		       proxy_user ? 
     		       proxy_user : "");
+    string = g_strdup_printf ("%d", proxy_port);
+    gtk_entry_set_text(GTK_ENTRY(gw_applet->pref_net_proxy_port_entry), 
+    		       string);
+    g_free (string);
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(gw_applet->pref_net_proxy_btn), 
     				 use_proxy);
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(gw_applet->pref_net_proxy_auth_btn), 
+    				 use_proxy_auth);
     
     gtk_widget_set_sensitive (gw_applet->pref_net_proxy_url_entry,
     			      use_proxy);
@@ -104,7 +116,9 @@ static gboolean update_dialog (GWeatherApplet *gw_applet)
     			      use_proxy);
     gtk_widget_set_sensitive (gw_applet->pref_net_proxy_user_entry,
     			      use_proxy);
-    
+    gtk_widget_set_sensitive (gw_applet->pref_net_proxy_port_entry,
+    			      use_proxy);
+    			      
     if (proxy_url)
         g_free (proxy_url);
     if (proxy_user)
@@ -329,11 +343,42 @@ proxy_toggled (GtkToggleButton *button, gpointer data)
     toggled = gtk_toggle_button_get_active(button);
     gtk_widget_set_sensitive(gw_applet->pref_net_proxy_url_entry, toggled);
     gtk_widget_set_sensitive(gw_applet->pref_net_proxy_user_entry, toggled);
+    gtk_widget_set_sensitive(gw_applet->pref_net_proxy_port_entry, toggled);
     gtk_widget_set_sensitive(gw_applet->pref_net_proxy_passwd_entry, toggled);
 
-    /* FIXME: should there be an option to specify whether authorization is needed ?
-    */
     gconf_client_set_bool (client, "/system/gnome-vfs/use-http-proxy", 
+    			   toggled, NULL);
+}
+
+static void
+proxy_port_changed (GtkWidget *entry, GdkEventFocus *event, gpointer data)
+{
+    GWeatherApplet *gw_applet = data;
+    GConfClient *client = gconf_client_get_default ();
+    gchar *text;
+    gint port;
+
+    text = gtk_editable_get_chars (GTK_EDITABLE (entry), 0, -1);
+    
+    if (!text) 
+    	return;
+    port = atoi (text);
+    g_free (text);
+    
+    gconf_client_set_int (client, "/system/gnome-vfs/http-proxy-port", 
+    			  port, NULL);
+
+}
+
+static void
+proxy_auth_toggled (GtkToggleButton *button, gpointer data)
+{
+    GWeatherApplet *gw_applet = data;
+    GConfClient *client = gconf_client_get_default ();
+    gboolean toggled;
+	
+    toggled = gtk_toggle_button_get_active(button);
+    gconf_client_set_bool (client, "/system/gnome-vfs/use-http-proxy-authorization", 
     			   toggled, NULL);
 }
 
@@ -369,10 +414,7 @@ proxy_user_changed (GtkWidget *entry, GdkEventFocus *event, gpointer data)
     gconf_client_set_string (client, "/system/gnome-vfs/http-proxy-authorization-user", 
     			     text, NULL); 
     g_free (text);
-#if 0
-    gconf_client_set_bool (client, "/system/gnome-vfs/use-http-proxy-authorization", 
-    			   TRUE, NULL); 
-#endif
+
 }
 
 static void
@@ -540,17 +582,15 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     GtkObject *pref_basic_update_spin_adj;
     GtkWidget *pref_basic_update_sec_lbl;
     GtkWidget *pref_basic_note_lbl;
-    GtkWidget *pref_net_table;
+    GtkWidget *proxy_box;
     GtkWidget *pref_net_note_lbl;
     GtkWidget *pref_net_proxy_url_lbl;
     GtkWidget *pref_net_proxy_user_lbl;
     GtkWidget *pref_net_proxy_passwd_lbl;
-    GtkWidget *pref_net_proxy_alignment;
-    GtkWidget *pref_net_caveat_lbl;
     GtkWidget *pref_loc_hbox;
     GtkWidget *pref_loc_note_lbl;
     GtkWidget *scrolled_window;
-    GtkWidget *label;
+    GtkWidget *label, *hbox;
     GtkTreeStore *model;
     GtkTreeSelection *selection;
     GtkWidget *pref_basic_vbox;
@@ -602,90 +642,99 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     gtk_box_pack_start (GTK_BOX (pref_loc_hbox), scrolled_window, TRUE, TRUE, 0);
     load_locations(gw_applet);
 
-    pref_loc_note_lbl = gtk_label_new (_("Location"));
+    pref_loc_note_lbl = gtk_label_new_with_mnemonic (_("_Location"));
     gtk_widget_show (pref_loc_note_lbl);
     gtk_notebook_set_tab_label (GTK_NOTEBOOK (pref_notebook), gtk_notebook_get_nth_page (GTK_NOTEBOOK (pref_notebook), 0), pref_loc_note_lbl);
 
     /*
    * Network settings page.
    */
-    pref_net_table = gtk_table_new (5, 2, FALSE);
-    gtk_widget_show (pref_net_table);
-    gtk_container_add (GTK_CONTAINER (pref_notebook), pref_net_table);
-    gtk_container_set_border_width (GTK_CONTAINER (pref_net_table), 8);
-    gtk_table_set_row_spacings (GTK_TABLE (pref_net_table), 4);
-    gtk_table_set_col_spacings (GTK_TABLE (pref_net_table), 4);
-
-    pref_net_proxy_alignment = gtk_alignment_new (0, 0.5, 0, 1);
-    gtk_widget_show (pref_net_proxy_alignment);
-    gtk_table_attach (GTK_TABLE (pref_net_table), pref_net_proxy_alignment, 0, 2, 0, 1,
-		      (GtkAttachOptions) (GTK_FILL),
-		      (GtkAttachOptions) (0), 0, 0);
-
-    gw_applet->pref_net_proxy_btn = gtk_check_button_new_with_label (_("Use proxy"));
+    proxy_box = gtk_vbox_new (FALSE, 2);
+    gtk_widget_show (proxy_box);
+    gtk_container_set_border_width (GTK_CONTAINER (proxy_box), 8);
+    gtk_container_add (GTK_CONTAINER (pref_notebook), proxy_box);
+    gtk_container_set_border_width (GTK_CONTAINER (proxy_box), 8);
+    
+    gw_applet->pref_net_proxy_btn = gtk_check_button_new_with_label (_("Use HTTP proxy"));
     gtk_widget_show (gw_applet->pref_net_proxy_btn);
-    gtk_container_add (GTK_CONTAINER (pref_net_proxy_alignment), gw_applet->pref_net_proxy_btn);
+    gtk_box_pack_start (GTK_BOX (proxy_box), gw_applet->pref_net_proxy_btn, 
+    			FALSE, FALSE, 0);
     g_signal_connect (G_OBJECT (gw_applet->pref_net_proxy_btn), "toggled",
     		       G_CALLBACK (proxy_toggled), gw_applet);
 
-    pref_net_proxy_url_lbl = gtk_label_new (_("Proxy URL:"));
+    hbox = gtk_hbox_new (FALSE, 2);
+    gtk_widget_show (hbox);
+    gtk_box_pack_start (GTK_BOX (proxy_box), hbox, FALSE, FALSE, 0);
+    
+    pref_net_proxy_url_lbl = gtk_label_new (_("Location :"));
     gtk_widget_show (pref_net_proxy_url_lbl);
-    gtk_table_attach (GTK_TABLE (pref_net_table), pref_net_proxy_url_lbl, 0, 1, 1, 2,
-		      (GtkAttachOptions) (GTK_FILL),
-		      (GtkAttachOptions) (0), 0, 0);
-    gtk_label_set_justify (GTK_LABEL (pref_net_proxy_url_lbl), GTK_JUSTIFY_RIGHT);
-    gtk_misc_set_alignment (GTK_MISC (pref_net_proxy_url_lbl), 1, 0.5);
+    gtk_box_pack_start (GTK_BOX (hbox), pref_net_proxy_url_lbl, 
+    			FALSE, FALSE, 0);
     
     gw_applet->pref_net_proxy_url_entry = gtk_entry_new ();
     gtk_widget_show (gw_applet->pref_net_proxy_url_entry);
-    gtk_table_attach (GTK_TABLE (pref_net_table), gw_applet->pref_net_proxy_url_entry, 1, 2, 1, 2,
-		      (GtkAttachOptions) (GTK_FILL),
-		      (GtkAttachOptions) (GTK_FILL), 0, 0);
+    gtk_box_pack_start (GTK_BOX (hbox), gw_applet->pref_net_proxy_url_entry, 
+    			FALSE, FALSE, 0);
     g_signal_connect (G_OBJECT (gw_applet->pref_net_proxy_url_entry), "focus_out_event",
     		      G_CALLBACK (proxy_url_changed), gw_applet);
 
+    hbox = gtk_hbox_new (FALSE, 2);
+    gtk_widget_show (hbox);
+    gtk_box_pack_start (GTK_BOX (proxy_box), hbox, FALSE, FALSE, 0);
+    
+    label = gtk_label_new (_("Port :"));
+    gtk_widget_show (label);
+    gtk_box_pack_start (GTK_BOX (hbox), label, 
+    			FALSE, FALSE, 0);
+    			
+    gw_applet->pref_net_proxy_port_entry = gtk_entry_new ();
+    gtk_widget_show (gw_applet->pref_net_proxy_port_entry);
+    gtk_box_pack_start (GTK_BOX (hbox), gw_applet->pref_net_proxy_port_entry, 
+    			FALSE, FALSE, 0);
+    g_signal_connect (G_OBJECT (gw_applet->pref_net_proxy_port_entry), "focus_out_event",
+    		      G_CALLBACK (proxy_port_changed), gw_applet);
+    
+    gw_applet->pref_net_proxy_auth_btn = gtk_check_button_new_with_label (_("Proxy requires a uername and password"));
+    gtk_widget_show (gw_applet->pref_net_proxy_auth_btn);
+    gtk_box_pack_start (GTK_BOX (proxy_box), gw_applet->pref_net_proxy_auth_btn, 
+    			FALSE, FALSE, 0);
+    g_signal_connect (G_OBJECT (gw_applet->pref_net_proxy_auth_btn), "toggled",
+    		       G_CALLBACK (proxy_auth_toggled), gw_applet);
+    		       
+    hbox = gtk_hbox_new (FALSE, 2);
+    gtk_widget_show (hbox);
+    gtk_box_pack_start (GTK_BOX (proxy_box), hbox, FALSE, FALSE, 0);
+    
     pref_net_proxy_user_lbl = gtk_label_new (_("Username:"));
     gtk_widget_show (pref_net_proxy_user_lbl);
-    gtk_table_attach (GTK_TABLE (pref_net_table), pref_net_proxy_user_lbl, 0, 1, 2, 3,
-		      (GtkAttachOptions) (GTK_FILL),
-		      (GtkAttachOptions) (0), 0, 0);
-    gtk_label_set_justify (GTK_LABEL (pref_net_proxy_user_lbl), GTK_JUSTIFY_RIGHT);
-    gtk_misc_set_alignment (GTK_MISC (pref_net_proxy_user_lbl), 1, 0.5);
-
+    gtk_box_pack_start (GTK_BOX (hbox), pref_net_proxy_user_lbl, 
+    			FALSE, FALSE, 0);
+    
     gw_applet->pref_net_proxy_user_entry = gtk_entry_new ();
     gtk_widget_show (gw_applet->pref_net_proxy_user_entry);
-    gtk_table_attach (GTK_TABLE (pref_net_table), gw_applet->pref_net_proxy_user_entry, 1, 2, 2, 3,
-		      (GtkAttachOptions) (GTK_FILL),
-		      (GtkAttachOptions) (GTK_FILL), 0, 0);
+    gtk_box_pack_start (GTK_BOX (hbox), gw_applet->pref_net_proxy_user_entry, 
+    			FALSE, FALSE, 0);
     g_signal_connect (G_OBJECT (gw_applet->pref_net_proxy_user_entry), "focus_out_event",
     		      G_CALLBACK (proxy_user_changed), gw_applet);
 
+    hbox = gtk_hbox_new (FALSE, 2);
+    gtk_widget_show (hbox);
+    gtk_box_pack_start (GTK_BOX (proxy_box), hbox, FALSE, FALSE, 0);
+    
     pref_net_proxy_passwd_lbl = gtk_label_new (_("Password:"));
     gtk_widget_show (pref_net_proxy_passwd_lbl);
-    gtk_table_attach (GTK_TABLE (pref_net_table), pref_net_proxy_passwd_lbl, 0, 1, 3, 4,
-		      (GtkAttachOptions) (GTK_FILL),
-		      (GtkAttachOptions) (0), 0, 0);
-    gtk_label_set_justify (GTK_LABEL (pref_net_proxy_passwd_lbl), GTK_JUSTIFY_RIGHT);
-    gtk_misc_set_alignment (GTK_MISC (pref_net_proxy_passwd_lbl), 1, 0.5);
+    gtk_box_pack_start (GTK_BOX (hbox), pref_net_proxy_passwd_lbl, 
+    			FALSE, FALSE, 0);
 
     gw_applet->pref_net_proxy_passwd_entry = gtk_entry_new ();
     gtk_entry_set_visibility (GTK_ENTRY (gw_applet->pref_net_proxy_passwd_entry), FALSE);
     gtk_widget_show (gw_applet->pref_net_proxy_passwd_entry);
-    gtk_table_attach (GTK_TABLE (pref_net_table), gw_applet->pref_net_proxy_passwd_entry, 1, 2, 3, 4,
-		      (GtkAttachOptions) (GTK_FILL),
-		      (GtkAttachOptions) (GTK_FILL), 0, 0);
+    gtk_box_pack_start (GTK_BOX (hbox), gw_applet->pref_net_proxy_passwd_entry, 
+    			FALSE, FALSE, 0);
     g_signal_connect (G_OBJECT (gw_applet->pref_net_proxy_passwd_entry), "focus_out_event",
     		      G_CALLBACK (proxy_password_changed), gw_applet);
 
-    pref_net_caveat_lbl = gtk_label_new (_("Warning: Your password will be saved as\nunencrypted text in a private configuration\nfile."));
-    gtk_widget_show (pref_net_caveat_lbl);
-    gtk_table_attach (GTK_TABLE (pref_net_table), pref_net_caveat_lbl, 0, 2, 4, 5,
-		      (GtkAttachOptions) (GTK_FILL),
-		      (GtkAttachOptions) (0), 0, 0);
-    gtk_label_set_justify (GTK_LABEL (pref_net_caveat_lbl), GTK_JUSTIFY_LEFT);
-    gtk_misc_set_alignment (GTK_MISC (pref_net_caveat_lbl), 1, 0.5);
-
-    pref_net_note_lbl = gtk_label_new (_("Network"));
+    pref_net_note_lbl = gtk_label_new_with_mnemonic (_("_Proxy"));
     gtk_widget_show (pref_net_note_lbl);
     gtk_notebook_set_tab_label (GTK_NOTEBOOK (pref_notebook), gtk_notebook_get_nth_page (GTK_NOTEBOOK (pref_notebook), 1), pref_net_note_lbl);
 
@@ -817,7 +866,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     gtk_container_add (GTK_CONTAINER (frame), vbox);
     gtk_box_pack_start (GTK_BOX (pref_basic_vbox), frame, FALSE, TRUE, 0);
 
-    pref_basic_note_lbl = gtk_label_new (_("General"));
+    pref_basic_note_lbl = gtk_label_new_with_mnemonic (_("_General"));
     gtk_widget_show (pref_basic_note_lbl);
     gtk_notebook_set_tab_label (GTK_NOTEBOOK (pref_notebook), 
     				gtk_notebook_get_nth_page (GTK_NOTEBOOK (pref_notebook), 2),
