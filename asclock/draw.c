@@ -1,6 +1,3 @@
-#include <gtk/gtk.h>
-#include <time.h>
-
 #include "asclock.h"
 
 extern GdkPixmap *month_pixmap;
@@ -10,11 +7,71 @@ extern GdkPixmap *month_pixmap;
 extern GdkPixmap *date_pixmap;
 extern GdkPixmap *clock_pixmap;
 
-int ampm_posx[11] = {4, 8, 17, 22, 31, 45, 21, 21, 26, 31, 19};
-int mil_posx[11] = {5+5, 5+14, 5+24, 5+28, 5+37, 45, 21, 21, 26, 31, 19};
-int posy[4]  = {7, 25, 34, 49};
+void analog(asclock *my, GdkPixmap *p, GdkGC *gc, struct tm *clk)
+{
+  double t;
+  if(clock_img)
+    gdk_image_destroy(clock_img); 
+  
+  clock_img = gdk_image_get(clock_pixmap, 0, 0,
+			    ((GdkWindowPrivate *)clock_pixmap)->width, 
+			    ((GdkWindowPrivate *)clock_pixmap)->height);
+  
+  if(hour_visible) {
+    t = ((clk->tm_hour)*60 + clk->tm_min)/2;
+    rotate(hour_img, hour_map, hour_center_x, hour_center_y, hour_rot_x, hour_rot_y, t);
+  }
+  
+  if(min_visible) {
+    t = (clk->tm_min*60 + clk->tm_sec)/10;
+    rotate(min_img, min_map, min_center_x, min_center_y, min_rot_x, min_rot_y, t);
+  }
+  
+  if(sec_visible) {
+    t = clk->tm_sec * 6;
+    rotate(sec_img, sec_map, sec_center_x, sec_center_y, sec_rot_x, sec_rot_y, t);
+  }
+  
+  gdk_draw_image(p, gc, clock_img, 0, 0, 0, 0, clock_img->width, clock_img->height);
+}
 
-void Twelve(GdkPixmap *p, GdkGC *gc , struct tm *clk)
+void swatch_beats(asclock *my, GdkPixmap *p, GdkGC *gc, struct tm *clk, int beats)
+{
+  int pos1, pos2, pos3;
+
+  pos1 = (beats/100) % 10;
+  pos2 = (beats /10 ) % 10;
+  pos3 = beats % 10;
+
+   if (!my->itblinks || ((clk->tm_sec) % 2) )
+    gdk_draw_pixmap(p, gc, beats_pixmap,
+			10*beats_elem_width, 0,
+			beats_at_x, beats_y,
+			beats_at_width, beats_elem_height);
+  else
+    gdk_draw_pixmap(p, gc, clock_pixmap,
+			beats_at_x, beats_y,
+                        beats_at_x, beats_y,
+                        beats_at_width, beats_elem_height);
+
+  gdk_draw_pixmap(p, gc, beats_pixmap,
+			pos1*beats_elem_width, 0,
+			beats1_x, beats_y,
+			beats_elem_width, beats_elem_height);
+
+  gdk_draw_pixmap(p, gc, beats_pixmap,
+			pos2*beats_elem_width, 0,
+			beats2_x, beats_y,
+			beats_elem_width, beats_elem_height);
+
+  gdk_draw_pixmap(p, gc, beats_pixmap,
+			pos3*beats_elem_width, 0,
+			beats3_x, beats_y,
+			beats_elem_width, beats_elem_height);
+
+}
+
+void Twelve(asclock *my, GdkPixmap *p, GdkGC *gc , struct tm *clk)
 {
   int thishour;
   /* Stunde ohne am/pm */
@@ -22,78 +79,173 @@ void Twelve(GdkPixmap *p, GdkGC *gc , struct tm *clk)
   if (thishour == 0 )
     thishour = 12;
 
-  gdk_draw_pixmap(p, gc, clock_pixmap, 0, 0, 0, 0, 64, 64);
-
-  if (clk->tm_hour >= 12)
-    /* PM */
-    gdk_draw_pixmap(p, gc, led_pixmap, 107, 5,ampm_posx[5],posy[0]+5, 11, 6);
-  else
-    /* AM */
-    gdk_draw_pixmap(p, gc, led_pixmap, 94, 5, ampm_posx[5],posy[0]+5, 12, 6);
-  
-  if (thishour>9)
-    gdk_draw_pixmap(p, gc, led_pixmap, 13,0,ampm_posx[0], posy[0], 5, 11);
-
-  gdk_draw_pixmap(p, gc, led_pixmap, 9*(thishour % 10),0,ampm_posx[1], posy[0], 9, 11);
-  
-  /* Minute, drawn first, so am/pm won't be overwritten */
-  gdk_draw_pixmap(p, gc, led_pixmap, 9*(clk->tm_min / 10),0,ampm_posx[3],posy[0], 9, 11);
-  gdk_draw_pixmap(p, gc, led_pixmap, 9*(clk->tm_min % 10),0,ampm_posx[4],posy[0], 9, 11);
+  if(led_visible) {
+    if (clk->tm_hour >= 12)
+      /* PM */
+      gdk_draw_pixmap(p, gc, led_pixmap, 
+		      13*led_elem_width, 0, 
+		      led_ampm_x, led_ampm_y,
+		      led_ampm_width, led_elem_height);
+    else
+      /* AM */
+      gdk_draw_pixmap(p, gc, led_pixmap,
+		      11*led_elem_width, 0, 
+		      led_ampm_x, led_ampm_y,
+		      led_ampm_width, led_elem_height);
+    
+    if (thishour>9)
+      gdk_draw_pixmap(p, gc, led_pixmap,
+		      led_elem_width, 0, 
+		      led_12h_hour1_x, led_12h_y,
+		      led_elem_width, led_elem_height);
+    
+    gdk_draw_pixmap(p, gc, led_pixmap,
+		    led_elem_width * (thishour % 10), 0, 
+		    led_12h_hour2_x, led_12h_y,
+		    led_elem_width, led_elem_height);
+    
+    /* Minute, drawn first, so am/pm won't be overwritten */
+    gdk_draw_pixmap(p, gc, led_pixmap,
+		    led_elem_width * (clk->tm_min / 10),  0,  
+		    led_12h_min1_x, led_12h_y,
+		    led_elem_width, led_elem_height);
+    
+    gdk_draw_pixmap(p, gc, led_pixmap, 
+		    led_elem_width * (clk->tm_min % 10), 0, 
+		    led_12h_min2_x, led_12h_y,
+		    led_elem_width, led_elem_height);
+  }
 
   /* Date */
-  if (clk->tm_mday>9)
-    {
-      gdk_draw_pixmap(p, gc, date_pixmap, 9*((clk->tm_mday / 10 +9) % 10),0,ampm_posx[7],posy[2], 9, 13);
-      gdk_draw_pixmap(p, gc, date_pixmap, 9*((clk->tm_mday % 10 +9) % 10),0,ampm_posx[9],posy[2], 9, 13);
-    }
-  else
-      gdk_draw_pixmap(p, gc, date_pixmap, 9*(clk->tm_mday -1),0, ampm_posx[8], posy[2], 9, 13);
-    
+  if(day_visible) {
+    if (clk->tm_mday>9)
+      {
+	gdk_draw_pixmap(p, gc, date_pixmap, 
+			day_elem_width * ((clk->tm_mday / 10 +9) % 10), 0, 
+			day1_x, day_y,
+			day_elem_width, day_elem_height);
+	
+	gdk_draw_pixmap(p, gc, date_pixmap, 
+			day_elem_width * ((clk->tm_mday % 10 +9) % 10), 0, 
+			day2_x, day_y,
+			day_elem_width, day_elem_height);
+      }
+    else
+      gdk_draw_pixmap(p, gc, date_pixmap,
+		      day_elem_width * (clk->tm_mday -1), 0, 
+		      day_x, day_y,
+		      day_elem_width, day_elem_height);
+  }
+
   /* weekday */
-  gdk_draw_pixmap(p, gc, weekday_pixmap, 0,6*((clk->tm_wday +6) % 7),ampm_posx[6], posy[1], 21, 7); 
+  if(week_visible) {
+    gdk_draw_pixmap(p, gc, weekday_pixmap, 
+		    0, week_elem_height * ((clk->tm_wday +6) % 7), 
+		    week_x, week_y,
+		    week_elem_width, week_elem_height);
+  }
 
-  /* month */
-  gdk_draw_pixmap(p, gc, month_pixmap, 0,6*(clk->tm_mon ),ampm_posx[10], posy[3], 22, 6);
-
+    /* month */
+  if(month_visible) {
+    gdk_draw_pixmap(p, gc, month_pixmap,
+		    0, month_elem_height*(clk->tm_mon ), 
+		    month_x, month_y,
+		    month_elem_width, month_elem_height); 
+  }
+ 
   /* blinking second colon */
-  if ((clk->tm_sec) % 2 ) 
-    gdk_draw_pixmap(p, gc, led_pixmap, 90,0, ampm_posx[2], posy[0], 3,11);
-  else
-    gdk_draw_pixmap(p, gc, clock_pixmap, 27,6, ampm_posx[2], posy[0], 3,11);
-
+  if(led_visible) {
+    if (!my->itblinks || ((clk->tm_sec) % 2) ) 
+      gdk_draw_pixmap(p, gc, led_pixmap, 
+		      10*led_elem_width, 0,
+		      led_12h_colon_x, led_12h_y,
+		      (led_elem_width)/2, led_elem_height);
+    else
+      gdk_draw_pixmap(p, gc, clock_pixmap, 
+		      led_12h_colon_x, led_12h_y,
+		      led_12h_colon_x, led_12h_y,
+		      (led_elem_width)/2, led_elem_height);
+  }
 }
 
-void TwentyFour(GdkPixmap *p, GdkGC *gc , struct tm *clk)
+void TwentyFour(asclock *my, GdkPixmap *p, GdkGC *gc , struct tm *clk)
 {
-  gdk_draw_pixmap(p, gc, clock_pixmap, 0, 0, 0, 0, 64, 64);
+  /* create the image to get data from and draw to */
 
-  gdk_draw_pixmap(p, gc, led_pixmap, 9*(clk->tm_hour / 10),0,mil_posx[0],posy[0], 9, 11);
-  gdk_draw_pixmap(p, gc, led_pixmap, 9*(clk->tm_hour % 10),0,mil_posx[1],posy[0], 9, 11);
+  if(led_visible) {
+    gdk_draw_pixmap(p, gc, led_pixmap,
+		    led_elem_width * (clk->tm_hour / 10), 0, 
+		    led_24h_hour1_x, led_24h_y,
+		    led_elem_width, led_elem_height);
+    
+    gdk_draw_pixmap(p, gc, led_pixmap,
+		    led_elem_width * (clk->tm_hour % 10), 0, 
+		    led_24h_hour2_x, led_24h_y,
+		    led_elem_width, led_elem_height);
+    
+    /* Minute */
+    gdk_draw_pixmap(p, gc, led_pixmap, 
+		    led_elem_width * (clk->tm_min / 10), 0, 
+		    led_24h_min1_x, led_24h_y,
+		    led_elem_width, led_elem_height);
+    
+    gdk_draw_pixmap(p, gc, led_pixmap, 
+		    led_elem_width * (clk->tm_min % 10), 0, 
+		    led_24h_min2_x, led_24h_y,
+		    led_elem_width, led_elem_height);
+  }
 
-  /* Minute */
-  gdk_draw_pixmap(p, gc, led_pixmap, 9*(clk->tm_min / 10),0,mil_posx[3],posy[0], 9, 11);
-  gdk_draw_pixmap(p, gc, led_pixmap, 9*(clk->tm_min % 10),0,mil_posx[4],posy[0], 9, 11);
-  
   /* Date */
-  if (clk->tm_mday>9)
+  if(day_visible)
     {
-      gdk_draw_pixmap(p, gc, date_pixmap, 9*((clk->tm_mday / 10 +9) % 10),0,mil_posx[7],posy[2], 9, 13);
-      gdk_draw_pixmap(p, gc, date_pixmap, 9*((clk->tm_mday % 10 +9) % 10),0,mil_posx[9],posy[2], 9, 13);
+      if (clk->tm_mday>9)
+	{
+	  gdk_draw_pixmap(p, gc, date_pixmap, 
+			  day_elem_width * ((clk->tm_mday / 10 +9) % 10), 0, 
+			  day1_x, day_y,
+			  day_elem_width, day_elem_height); 
+	  
+	  gdk_draw_pixmap(p, gc, date_pixmap, 
+			  day_elem_width * ((clk->tm_mday % 10 +9) % 10), 0, 
+			  day2_x, day_y,
+			  day_elem_width, day_elem_height);
+	}
+      else
+	gdk_draw_pixmap(p, gc, date_pixmap,
+			day_elem_width * (clk->tm_mday -1), 0, 
+			day_x, day_y,
+			day_elem_width, day_elem_height);
     }
-  else
-      gdk_draw_pixmap(p, gc, date_pixmap, 9*(clk->tm_mday -1),0,mil_posx[8], posy[2], 9, 13);
     
   /* weekday */
-  gdk_draw_pixmap(p, gc, weekday_pixmap, 0,6*((clk->tm_wday +6) % 7),mil_posx[6], posy[1], 21, 7); 
+  if(week_visible) {
+    gdk_draw_pixmap(p, gc, weekday_pixmap, 
+		    0, week_elem_height * ((clk->tm_wday +6) % 7),
+		    week_x, week_y,
+		    week_elem_width, week_elem_height);
+  }
 
   /* month */
-  gdk_draw_pixmap(p, gc, month_pixmap, 0,6*(clk->tm_mon ),mil_posx[10],posy[3], 22, 6);
+  if(month_visible) {
+    gdk_draw_pixmap(p, gc, month_pixmap,
+		    0, month_elem_height*(clk->tm_mon ), 
+		    month_x, month_y,
+		    month_elem_width, month_elem_height);
+  }
 
-  /* blinking second colon */
-  if ( (clk->tm_sec) % 2 ) 
-    gdk_draw_pixmap(p, gc, led_pixmap, 90,0, mil_posx[2], posy[0], 3,11);
-  else
-    gdk_draw_pixmap(p, gc, clock_pixmap, 27,6, mil_posx[2], posy[0], 3,11);
+    /* blinking second colon */
+  if(led_visible) {
+    if (!my->itblinks || ((clk->tm_sec) % 2) ) 
+      gdk_draw_pixmap(p, gc, led_pixmap, 
+		      10*led_elem_width, 0,
+		      led_24h_colon_x, led_24h_y,
+		      (led_elem_width)/2, led_elem_height);
+    else
+      gdk_draw_pixmap(p, gc, clock_pixmap, 
+		      led_24h_colon_x, led_24h_y,
+		      led_24h_colon_x, led_24h_y,
+		      (led_elem_width)/2, led_elem_height);
+  }
 
 }
 
