@@ -86,12 +86,6 @@
 #define VOLUME_MAX 255
 #endif
 
-#include "volume-zero.xpm"
-#include "volume-min.xpm"
-#include "volume-medium.xpm"
-#include "volume-max.xpm"
-#include "volume-mute.xpm"
-
 #define IS_PANEL_HORIZONTAL(o) (o == PANEL_APPLET_ORIENT_UP || o == PANEL_APPLET_ORIENT_DOWN)
 
 typedef struct {
@@ -127,7 +121,10 @@ static void mixer_start_gmix_cb (BonoboUIComponent *uic,
 void add_atk_namedesc (GtkWidget *widget, const gchar *name, const gchar *desc);
 
 static gint mixerfd = -1;
-static GdkPixbuf *zero_pixbuf = NULL, *min_pixbuf, *medium_pixbuf, *max_pixbuf, *mute_pixbuf;
+static GdkPixbuf *zero_pixbuf = NULL, *min_pixbuf, 
+		 *medium_pixbuf, *max_pixbuf, *mute_pixbuf;
+static GdkPixbuf *zero_pixbuf_small = NULL, *min_pixbuf_small, 
+		 *medium_pixbuf_small, *max_pixbuf_small, *mute_pixbuf_small;
 static gchar *run_mixer_cmd = NULL;
 
 static const gchar *access_name = N_("Volume Control");     
@@ -346,33 +343,39 @@ static void
 mixer_update_image (MixerData *data)
 {
 	gint vol, size;
+	gboolean small;
 	GdkPixbuf *pixbuf, *copy = NULL, *new_pixbuf;
 
 	vol = data->vol;
 	size = panel_applet_get_size (PANEL_APPLET (data->applet));
+	if (size > GNOME_Vertigo_PANEL_X_SMALL)
+		small = FALSE;
+	else
+		small = TRUE;
 	
 	if (vol <= 0) {
-		pixbuf = zero_pixbuf;
+		pixbuf = small ? zero_pixbuf_small : zero_pixbuf;
 	}
 	else if (vol <= VOLUME_MAX / 3) {
-		pixbuf = min_pixbuf;
+		pixbuf = small ? min_pixbuf_small : min_pixbuf;
 	}
 	else if (vol <= 2 * VOLUME_MAX / 3) {
-		pixbuf = medium_pixbuf;
+		pixbuf = small ? medium_pixbuf_small : medium_pixbuf;
 	}
 	else {
-		pixbuf = max_pixbuf;
+		pixbuf = small ? max_pixbuf_small : max_pixbuf;
 	}
 
 	if (data->mute) {
+		GdkPixbuf *mute = small ? mute_pixbuf_small : mute_pixbuf;
 		copy = gdk_pixbuf_copy (pixbuf);
 
-		gdk_pixbuf_composite (mute_pixbuf,
+		gdk_pixbuf_composite (mute,
 				      copy,
 				      0,
 				      0,
-				      gdk_pixbuf_get_width (mute_pixbuf),
-				      gdk_pixbuf_get_height (mute_pixbuf),
+				      gdk_pixbuf_get_width (mute),
+				      gdk_pixbuf_get_height (mute),
 				      0,
 				      0,
 				      1.0,
@@ -382,7 +385,7 @@ mixer_update_image (MixerData *data)
 		pixbuf = copy;
 	}
 
-	if (size == GNOME_Vertigo_PANEL_X_SMALL) {
+	if (size == GNOME_Vertigo_PANEL_X_SMALL || size == GNOME_Vertigo_PANEL_MEDIUM) {
 		/* Don't need to scale for this size */
 		gtk_image_set_from_pixbuf (GTK_IMAGE (data->image), pixbuf);
 		
@@ -807,7 +810,7 @@ mixer_about_cb (BonoboUIComponent *uic,
                 return;
         }
         
-        file = gnome_program_locate_file (NULL, GNOME_FILE_DOMAIN_PIXMAP, "gnome-mixer-applet.png", TRUE, NULL);
+        file = gnome_program_locate_file (NULL, GNOME_FILE_DOMAIN_PIXMAP, "mixer/gnome-mixer-applet.png", TRUE, NULL);
         pixbuf = gdk_pixbuf_new_from_file (file, NULL);
         g_free (file);
 
@@ -824,7 +827,7 @@ mixer_about_cb (BonoboUIComponent *uic,
 			       gtk_widget_get_screen (data->applet));
 #endif
 	gtk_window_set_wmclass (GTK_WINDOW(about), "volume control", "Volume Control");
-	gnome_window_icon_set_from_file (GTK_WINDOW (about), GNOME_ICONDIR"/gnome-mixer-applet.png");
+	gnome_window_icon_set_from_file (GTK_WINDOW (about), GNOME_ICONDIR"/mixer/gnome-mixer-applet.png");
         g_signal_connect (G_OBJECT (about), "destroy",
                           G_CALLBACK (gtk_widget_destroyed),
 	                  &about);
@@ -917,6 +920,34 @@ mixer_ui_component_event (BonoboUIComponent            *comp,
 	}
 }
 
+static void
+initialize_pixbufs ()
+{
+	zero_pixbuf = gdk_pixbuf_new_from_file (GNOME_ICONDIR"/mixer/volume-zero.png",
+						NULL);
+	min_pixbuf = gdk_pixbuf_new_from_file (GNOME_ICONDIR"/mixer/volume-min.png",
+						   NULL);
+	medium_pixbuf = gdk_pixbuf_new_from_file (GNOME_ICONDIR"/mixer/volume-medium.png",
+						      NULL);
+	max_pixbuf = gdk_pixbuf_new_from_file (GNOME_ICONDIR"/mixer/volume-max.png",
+						   NULL);
+	mute_pixbuf = gdk_pixbuf_new_from_file (GNOME_ICONDIR"/mixer/volume-mute.png",
+						    NULL);
+						    
+	zero_pixbuf_small = gdk_pixbuf_new_from_file (GNOME_ICONDIR"/mixer/volume-zero-small.png",
+						NULL);
+	min_pixbuf_small = gdk_pixbuf_new_from_file (GNOME_ICONDIR"/mixer/volume-min-small.png",
+						   NULL);
+	medium_pixbuf_small = gdk_pixbuf_new_from_file (GNOME_ICONDIR"/mixer/volume-medium-small.png",
+						      NULL);
+	max_pixbuf_small = gdk_pixbuf_new_from_file (GNOME_ICONDIR"/mixer/volume-max-small.png",
+						   NULL);
+	mute_pixbuf_small = gdk_pixbuf_new_from_file (GNOME_ICONDIR"/mixer/volume-mute-small.png",
+						    NULL);
+
+
+}
+
 const BonoboUIVerb mixer_applet_menu_verbs [] = {
 	BONOBO_UI_UNSAFE_VERB ("RunMixer", mixer_start_gmix_cb),
 	BONOBO_UI_UNSAFE_VERB ("Mute",     mixer_mute_cb),
@@ -974,11 +1005,7 @@ mixer_applet_create (PanelApplet *applet)
 	data = g_new0 (MixerData, 1);
 
 	if (zero_pixbuf == NULL) {
-		zero_pixbuf = gdk_pixbuf_new_from_xpm_data (volume_zero_xpm);
-		min_pixbuf = gdk_pixbuf_new_from_xpm_data (volume_min_xpm);
-		medium_pixbuf = gdk_pixbuf_new_from_xpm_data (volume_medium_xpm);
-		max_pixbuf = gdk_pixbuf_new_from_xpm_data (volume_max_xpm);
-		mute_pixbuf = gdk_pixbuf_new_from_xpm_data (volume_mute_xpm);
+		initialize_pixbufs ();
 	}
 	
 	/* Try to find some mixers - sdtaudiocontrol is on Solaris and is needed
