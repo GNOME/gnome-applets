@@ -10,7 +10,7 @@ dummy.cc:
 
 bin_PROGRAMS = diskusage_applet
 
-diskusage_applet_SOURCES = diskusage.c diskusage_read.c ../cpumemusage/procbar.c \
+diskusage_applet_SOURCES = diskusage.c diskusage_read.c procbar.c \
 	fsusage.c fsusage.h mountlist.c mountlist.h properties.c
 
 MICO_VERS = 2.0.5
