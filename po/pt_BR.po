@@ -4,9 +4,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-applets 1.3\n"
-"POT-Creation-Date: 2001-09-03 19:31+0200\n"
-"PO-Revision-Date: 2001-02-17 17:27-02:00\n"
+"Project-Id-Version: gnome-applets 1.4.0.4\n"
+"POT-Creation-Date: 2001-09-17 15:30-0300\n"
+"PO-Revision-Date: 2001-09-21 17:24-03:00\n"
 "Last-Translator: Gustavo Maciel Dias Vieira <gdvieira@zaz.com.br>\n"
 "Language-Team: Brazilian Portuguese <ldp-br@bazar.conectiva.com.br>\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 msgid "Clock Settings"
 msgstr "Configurações do relógio"
 
-#: another_clock/another_clock.c:261 asclock/dialogs.c:379
+#: another_clock/another_clock.c:261 asclock/dialogs.c:376
 #: battery/properties.c:83 clockmail/properties.c:417
 #: diskusage/properties.c:463 drivemount/properties.c:391
 #: gnotes/properties.c:190 gweather/gweather-pref.c:524
@@ -77,7 +77,7 @@ msgstr "Um relógio analógico parecido com o relógio do painel do CDE."
 #: another_clock/another_clock.c:710 asclock/asclock.c:609
 #: battery/battery.c:951 charpick/charpick.c:573 clockmail/clockmail.c:324
 #: diskusage/diskusage.c:1050 drivemount/drivemount.c:742 geyes/geyes.c:393
-#: gkb-new/gkb.c:757 gnotes/gnotes_applet.c:198 gtik/gtik.c:1416
+#: gkb-new/gkb.c:757 gnotes/gnotes_applet.c:198 gtik/gtik.c:1380
 #: gweather/gweather-applet.c:198
 #: mini-commander/src/mini-commander_applet.c:401
 #: modemlights/modemlights.c:1499 multiload/cpuload.c:95
@@ -109,7 +109,7 @@ msgstr "Ajuda"
 #: clipboard/clipboard.c:324 clockmail/clockmail.c:336
 #: cpumemusage/cpumemusage.c:303 diskusage/diskusage.c:1080
 #: drivemount/drivemount.c:753 fifteen/fifteen.c:389 geyes/geyes.c:404
-#: gkb-new/gkb.c:768 gnotes/gnotes_applet.c:205 gtik/gtik.c:1425
+#: gkb-new/gkb.c:768 gnotes/gnotes_applet.c:205 gtik/gtik.c:1389
 #: gweather/gweather-applet.c:208 jbc/jbc-applet.c:209 life/life.c:283
 #: mini-commander/src/mini-commander_applet.c:415 mixer/mixer.c:841
 #: modemlights/modemlights.c:1512 multiload/cpuload.c:115
@@ -133,35 +133,42 @@ msgstr "(C) 1998 the Free Software Foundation"
 msgid "Who said NeXT is dead?"
 msgstr "Quem disse que o NeXT está morto?"
 
-#: asclock/dialogs.c:164
+#: asclock/dialogs.c:161
 msgid ""
 "Since you are root, would you like to set the system's default timezone?"
 msgstr ""
 "Como superusuário, você gostaria de configurar o fuso horário padrão do "
 "sistema?"
 
-#: asclock/dialogs.c:166
+#: asclock/dialogs.c:163
 msgid "My Title"
 msgstr "Meu título"
 
-#. gchar *timezone_titles[2] = { N_("Continent/City") , NULL};
-#: asclock/dialogs.c:268
+#: asclock/dialogs.c:264
+msgid "Continent/City"
+msgstr "Continente/Cidade"
+
+#: asclock/dialogs.c:265
 msgid "Clock Theme"
 msgstr "Tema do relógio"
 
-#: asclock/dialogs.c:300
+#: asclock/dialogs.c:297
 msgid "ASClock Settings"
 msgstr "Configurações do Relógio AS"
 
 #. show ampm toggle button
-#: asclock/dialogs.c:332 clockmail/properties.c:306
+#: asclock/dialogs.c:329 clockmail/properties.c:306
 msgid "Display time in 12 hour format (AM/PM)"
 msgstr "Mostrar horário no formato AM/PM"
 
 #. show ampm toggle button
-#: asclock/dialogs.c:340
+#: asclock/dialogs.c:337
 msgid "Blinking elements in clock"
 msgstr "Elementos piscantes no relógio"
+
+#: asclock/dialogs.c:381
+msgid "Timezone"
+msgstr "Fuso horário"
 
 #: battery/battery.c:150
 msgid "The battery is low."
@@ -531,7 +538,7 @@ msgstr ""
 #: diskusage/diskusage.c:171 diskusage/diskusage.c:283
 #, c-format
 msgid "MP: %s"
-msgstr ""
+msgstr "PM: %s"
 
 #: diskusage/diskusage.c:746
 msgid "File Systems"
@@ -932,7 +939,7 @@ msgstr "Opções"
 msgid "Select layout"
 msgstr "Selecionar configuração"
 
-#: gkb-new/prop-add.c:277 gkb-new/prop-list.c:378 gtik/gtik.c:1081
+#: gkb-new/prop-add.c:277 gkb-new/prop-list.c:378 gtik/gtik.c:1056
 #: webcontrol/properties.c:574
 msgid "Add"
 msgstr "Adicionar"
@@ -1320,9 +1327,8 @@ msgid "GNotes!"
 msgstr "GNotes!"
 
 #: gnotes/gnotes_applet.c:103
-#, fuzzy
 msgid "Copyright (C) 1998-1999"
-msgstr "Copyright (C) 1999"
+msgstr "Copyright (C) 1998-1999"
 
 #: gnotes/gnotes_applet.c:105
 msgid "Create sticky notes on your screen."
@@ -1360,15 +1366,15 @@ msgstr "Altura padrão"
 msgid "Default Width"
 msgstr "Largura padrão"
 
-#: gtik/gtik.c:209
+#: gtik/gtik.c:214
 msgid "No data available or properties not set"
-msgstr ""
+msgstr "Sem dados disponíveis ou propriedades não configuradas"
 
-#: gtik/gtik.c:704
+#: gtik/gtik.c:672
 msgid "The GNOME Stock Ticker"
 msgstr "O Monitor de Ações GNOME"
 
-#: gtik/gtik.c:707
+#: gtik/gtik.c:675
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.  "
 "The GNOME Stock Ticker is a free Internet-based application.  It comes with "
@@ -1380,86 +1386,86 @@ msgstr ""
 "ABSOLUTAMENTE SEM GARANTIA. Não use o Monitor de Ações GNOME para tomar "
 "decisões de investimento; ele é apenas para fins informativos."
 
-#: gtik/gtik.c:1070
+#: gtik/gtik.c:1045
 msgid "New Symbol:"
 msgstr "Novo símbolo:"
 
-#: gtik/gtik.c:1092
+#: gtik/gtik.c:1067
 msgid "Remove Selected"
 msgstr "Remover selecionados"
 
-#: gtik/gtik.c:1141
+#: gtik/gtik.c:1116
 msgid "Gnome Stock Ticker Properties"
 msgstr "Propriedades do Monitor de Ações GNOME"
 
-#: gtik/gtik.c:1153
+#: gtik/gtik.c:1128
 msgid "Update Frequency in minutes:"
 msgstr "Freqüência de atualização em minutos:"
 
-#: gtik/gtik.c:1172
+#: gtik/gtik.c:1147
 msgid "Enter symbols delimited with \"+\" in the box below."
 msgstr "Entre símbolos delimitados com \"+\" na caixa abaixo."
 
-#: gtik/gtik.c:1180
+#: gtik/gtik.c:1155
 msgid "Display only symbols and price"
 msgstr "Exibir apenas símbolos e preço"
 
-#: gtik/gtik.c:1181
+#: gtik/gtik.c:1156
 msgid "Scroll left to right"
 msgstr "Mover da esquerda para direita"
 
-#: gtik/gtik.c:1182
+#: gtik/gtik.c:1157
 msgid "Display arrows instead of -/+"
 msgstr "Exibir setas no lugar de -/+"
 
-#: gtik/gtik.c:1183
+#: gtik/gtik.c:1158
 msgid "Enable scroll buttons"
 msgstr "Ativar botões de movimentação"
 
 #. COLOR
-#: gtik/gtik.c:1227
+#: gtik/gtik.c:1202
 msgid "+ Color"
 msgstr "Cor para +"
 
-#: gtik/gtik.c:1244
+#: gtik/gtik.c:1219
 msgid "- Color"
 msgstr "Cor para -"
 
-#: gtik/gtik.c:1264
+#: gtik/gtik.c:1239
 msgid "Stock Symbol:"
 msgstr "Símbolo de ação:"
 
-#: gtik/gtik.c:1265 gtik/gtik.c:1276
+#: gtik/gtik.c:1240 gtik/gtik.c:1251
 msgid "Select Font"
 msgstr "Selecionar fonte"
 
-#: gtik/gtik.c:1275
+#: gtik/gtik.c:1250
 msgid "Stock Change:"
 msgstr "Mudança de ação:"
 
-#: gtik/gtik.c:1298
+#: gtik/gtik.c:1273
 msgid "Symbols"
 msgstr "Símbolos"
 
-#: gtik/gtik.c:1300 webcontrol/properties.c:668
+#: gtik/gtik.c:1275 webcontrol/properties.c:668
 msgid "Behavior"
 msgstr "Comportamento"
 
 #. appearance frame
-#: gtik/gtik.c:1302 mini-commander/src/preferences.c:557
+#: gtik/gtik.c:1277 mini-commander/src/preferences.c:557
 #: webcontrol/properties.c:487
 msgid "Appearance"
 msgstr "Aparência"
 
-#: gtik/gtik.c:1406 slashapp/slashapp.c:103
+#: gtik/gtik.c:1370 slashapp/slashapp.c:103
 msgid "Refresh"
 msgstr "Atualizar"
 
-#: gtik/gtik.c:1544
+#: gtik/gtik.c:1508
 msgid "(No"
 msgstr "(Não"
 
-#: gtik/gtik.c:1545
+#: gtik/gtik.c:1509
 msgid "Change "
 msgstr "Troca "
 
@@ -1497,9 +1503,8 @@ msgid "Updating..."
 msgstr "Atualizando..."
 
 #: gweather/gweather-applet.c:388
-#, fuzzy
 msgid "Update failed! Maybe another update was already in progress?"
-msgstr "Uma outra atualização já está em curso!\n"
+msgstr "Falhou a atualização! Talvez uma outra atualização já estava em curso?"
 
 #: gweather/gweather-dialog.c:125
 msgid "Location:"
@@ -1622,86 +1627,51 @@ msgid "Password:"
 msgstr "Senha:"
 
 #: gweather/gweather-pref.c:423
-#, fuzzy
 msgid ""
 "Warning: Your password will be saved as\n"
 "unencrypted text in a private configuration\n"
 "file."
 msgstr ""
-"Alerta: A sua senha será salva no arquivo\n"
-"de configuração particular, porém ela será\n"
-"armazenada em claro!"
+"Alerta: A sua senha será salva como\n"
+"texto não cifrado em um arquivo de \n"
+"configuração particular."
 
 #: gweather/gweather-pref.c:431
 msgid "Network"
 msgstr "Rede"
 
 #: gweather/gweather-pref.c:456
-#, fuzzy
 msgid "Automatically update every"
-msgstr "Escolher automaticamente melhor tamanho"
+msgstr "Atualizar automaticamente a cada"
 
 #: gweather/gweather-pref.c:460
-#, fuzzy
 msgid "Use metric system units"
-msgstr "Usar sistema métrico"
+msgstr "Usar unidades do sistema métrico"
 
 #: gweather/gweather-pref.c:464
-#, fuzzy
 msgid "Enable detailed forecast"
-msgstr "Previsão detalhada"
+msgstr "Ativar previsão detalhada"
 
 #: gweather/gweather-pref.c:469
-#, fuzzy
 msgid "Enable radar map"
-msgstr "Ativar mapas de radar"
+msgstr "Ativar mapa de radar"
 
 #: gweather/gweather-pref.c:474
-#, fuzzy
 msgid "Updates"
-msgstr "Atualizar"
+msgstr "Atualizações"
 
 #: gweather/gweather-pref.c:480
-#, fuzzy
 msgid "Automatically update every "
-msgstr "Escolher automaticamente melhor tamanho"
+msgstr "Atualizar automaticamente a cada "
 
 #: gweather/gweather-pref.c:498
-#, fuzzy
 msgid "minute(s)"
-msgstr "Linha (s):"
+msgstr "minuto(s)"
 
 #. The Miscellaneous frame
 #: gweather/gweather-pref.c:509
 msgid "Miscellaneous"
-msgstr ""
-
-#: gweather/weather.c:55
-#, fuzzy
-msgid "knots"
-msgstr "Gnotices"
-
-#: gweather/weather.c:55
-msgid "kph"
-msgstr ""
-
-#: gweather/weather.c:60
-msgid "inHg"
-msgstr ""
-
-#: gweather/weather.c:60
-msgid "mmHg"
-msgstr ""
-
-#: gweather/weather.c:64
-#, fuzzy
-msgid "miles"
-msgstr "Artigos"
-
-#: gweather/weather.c:64
-#, fuzzy
-msgid "kilometers"
-msgstr "Odômetro"
+msgstr "Diversos"
 
 #: gweather/weather.c:113
 msgid "Location vector needs to be 4 elements long"
@@ -3166,16 +3136,16 @@ msgstr ""
 #: mixer/mixer.c:186
 #, c-format
 msgid "Querying available channels of mixer device %s failed\n"
-msgstr ""
+msgstr "Falhou a consulta de canais disponíveis no dispositivo de mixer %s\n"
 
 #: mixer/mixer.c:193
 msgid "warning: mixer has no volume channel - using PCM instead.\n"
-msgstr ""
+msgstr "alerta: mixer não possui canal de volume - usando PCM no lugar.\n"
 
 #: mixer/mixer.c:196
 #, c-format
 msgid "Mixer device %s has neither volume nor PCM channels.\n"
-msgstr ""
+msgstr "Dispositivo de mixer %s não possui nem canal de volume nem canal PCM.\n"
 
 #: mixer/mixer.c:559
 msgid "Main Volume and Mute"
@@ -3409,9 +3379,8 @@ msgid "Load Graph"
 msgstr "Gráfico de carga"
 
 #: multiload/load-graph.c:574
-#, fuzzy
 msgid "Interval:"
-msgstr "Geral"
+msgstr "Intervalo:"
 
 #: multiload/load-graph.c:574 multiload/load-graph.c:766
 msgid "Size:"
@@ -3580,7 +3549,6 @@ msgid "Digits number"
 msgstr "Número de dígitos"
 
 #: odometer/properties.c:308
-#, fuzzy
 msgid "Theme file:"
 msgstr "Arquivo de tema:"
 
@@ -3721,8 +3689,8 @@ msgid ""
 "jpg, jpeg, bmp, cgm, cmyk, dib, eps, fig, fpx, gif, ico, map, miff, pcx,\n"
 "pict, pix, png, pnm, ppm, psd, rgb, rgba, rla, rle, tiff, tga, xbm, xpm,\n"
 "and several obscure ones. Try your luck with something interesting!\n"
-"Eg .html for a client-side image map. You'll get a .gif, .html, and a ."
-"shtml\n"
+"Eg .html for a client-side image map. You'll get a .gif, .html, and a "
+".shtml\n"
 "\n"
 "Recommendations:\n"
 "Small file, pretty good quality:   jpg, 75% quality\n"
@@ -4193,31 +4161,27 @@ msgstr "Gerenciador..."
 
 #: sound-monitor/manager.c:934 sound-monitor/manager.c:1151
 msgid "Length"
-msgstr ""
+msgstr "Duração"
 
 #: sound-monitor/manager.c:939
-#, fuzzy
 msgid "Time"
-msgstr "imagem"
+msgstr "Tempo"
 
 #: sound-monitor/manager.c:1150 sound-monitor/manager.c:1151
-#, fuzzy
 msgid "Id"
-msgstr "I"
+msgstr "Id"
 
 #: sound-monitor/manager.c:1150 sound-monitor/manager.c:1151
-#, fuzzy
 msgid "Rate"
-msgstr "data"
+msgstr "Taxa"
 
 #: sound-monitor/manager.c:1150 sound-monitor/manager.c:1151
 msgid "Bits"
-msgstr ""
+msgstr "Bits"
 
 #: sound-monitor/manager.c:1150 sound-monitor/manager.c:1151
-#, fuzzy
 msgid "Format"
-msgstr "Previsão"
+msgstr "Formato"
 
 #: sound-monitor/manager.c:1150 sound-monitor/manager.c:1151
 #: sound-monitor/manager.c:1283 sound-monitor/manager.c:1371
@@ -4226,36 +4190,33 @@ msgstr "Volume"
 
 #: sound-monitor/manager.c:1151
 msgid "P"
-msgstr ""
+msgstr "P"
 
 #: sound-monitor/manager.c:1151
 msgid "L"
-msgstr ""
+msgstr "L"
 
 #: sound-monitor/manager.c:1175
-#, fuzzy
 msgid "Sound Monitor - Manager"
-msgstr "Monitor de Som"
+msgstr "Monitor de Som - Gerenciador"
 
 #. server info
 #: sound-monitor/manager.c:1200
 msgid "Server information:"
-msgstr ""
+msgstr "Informação do servidor:"
 
 #: sound-monitor/manager.c:1203
 msgid "Server"
-msgstr ""
+msgstr "Servidor"
 
 #. stream info
 #: sound-monitor/manager.c:1223
-#, fuzzy
 msgid "Connected streams:"
-msgstr "Estado da conexão"
+msgstr "Streams conectadas:"
 
 #: sound-monitor/manager.c:1226
-#, fuzzy
 msgid "Streams"
-msgstr "Sudeste"
+msgstr "Streams"
 
 #: sound-monitor/manager.c:1299 sound-monitor/manager.c:1387
 msgid "Balance"
@@ -4264,11 +4225,11 @@ msgstr "Balanço"
 #. sample info
 #: sound-monitor/manager.c:1305
 msgid "Cached samples: (select to play)"
-msgstr ""
+msgstr "Amostras cacheadas: (selecione para tocar)"
 
 #: sound-monitor/manager.c:1308
 msgid "Samples"
-msgstr ""
+msgstr "Amostras"
 
 #: sound-monitor/properties.c:135
 msgid ""
@@ -4284,16 +4245,15 @@ msgstr ""
 "\n"
 "Se a sua placa de som não é totalmente 100% FULL DUPLEX (pode trabalhar com "
 "entrada e saída \n"
-"ao mesmo tempo), então esta opção pode ativar erros nos drivers de som/"
-"esound\n"
+"ao mesmo tempo), então esta opção pode ativar erros nos drivers de "
+"som/esound\n"
 "que podem travar a sua máquina.\n"
 "\n"
 "Você foi avisado!"
 
 #: sound-monitor/properties.c:333
-#, fuzzy
 msgid "Sound Monitor Applet Settings"
-msgstr "Mini aplicativo Monitor de Som"
+msgstr "Configuracoes do Mini aplicativo Monitor de Som"
 
 #: sound-monitor/properties.c:338
 msgid "Peak indicator"
@@ -4599,11 +4559,11 @@ msgstr ""
 
 #: tickastat/mod_test.c:57
 msgid "Testing line from test module :)"
-msgstr ""
+msgstr "Testando linha do modulo de teste :)"
 
 #: tickastat/mod_test.c:58
 msgid "You clicked on me"
-msgstr ""
+msgstr "Você me clicou"
 
 #: tickastat/mod_test.c:126 tickastat/mod_test.c:218
 msgid "Test Module"
@@ -4737,8 +4697,8 @@ msgid "Drive Mount"
 msgstr "Montagem de Volumes"
 
 #: drivemount/drivemount_applet.desktop.in.h:2
-msgid "Mounts and unmount drives"
-msgstr "Monta e desmonta discos"
+msgid "Mount and unmount drives"
+msgstr "Monta e desmonta unidades"
 
 #: cpumemusage/cpumemusage_applet.desktop.in.h:1
 msgid "CPU/MEM usage"
@@ -4765,9 +4725,8 @@ msgid "GKB Keyboard Switcher"
 msgstr "GKB Alternador de Teclado"
 
 #: gkb-new/gkb_applet.desktop.in.h:2
-#, fuzzy
 msgid "GKB, the Gnome Keyboard Layout Switcher Applet"
-msgstr "GKB Alternador de Teclado Gnome"
+msgstr "GKB, O Mini aplicativo Alternador de Desenho de Teclado Gnome"
 
 #: clockmail/clockmail_applet.desktop.in.h:1
 msgid "Clock and Mailcheck"
@@ -4838,8 +4797,8 @@ msgid "Fifteen cells game"
 msgstr "Jogo das quinze peças"
 
 #: charpick/charpick_applet.desktop.in.h:2
-msgid "character picker"
-msgstr "Seletor de Caracteres"
+msgid "Character picker"
+msgstr "Seletor de caracteres"
 
 #: sound-monitor/sound-monitor_applet.desktop.in.h:1
 msgid "Sound Monitor"
@@ -4855,11 +4814,11 @@ msgstr "Controle Web"
 
 #: mixer/mixer_applet.desktop.in.h:1
 msgid "Audio Mixer"
-msgstr "Mixador de áudio"
+msgstr "Mixer de áudio"
 
 #: mixer/mixer_applet.desktop.in.h:2
 msgid "Mixer"
-msgstr "Mixador"
+msgstr "Mixer"
 
 #: geyes/geyes_applet.desktop.in.h:1
 msgid "An applet that watches your mouse."
@@ -4910,7 +4869,7 @@ msgid "GNOME Stock Ticker Panel Applet"
 msgstr "O miniaplicativo Monitor de Ações GNOME"
 
 #: jbc/jbc_applet.desktop.in.h:1
-msgid "Displays the time whith in binary representation"
+msgid "Displays the time in binary representation"
 msgstr "Exibe a hora em uma representação binária"
 
 #: jbc/jbc_applet.desktop.in.h:2
@@ -4928,35 +4887,32 @@ msgid "options:\n"
 msgstr "opções:\n"
 
 #: sound-monitor/pvd/esdpvd.c:461
-#, fuzzy
 msgid "  -n, --noX     Allow to run without X server\n"
-msgstr "  -n, --noX     Permite executar com servidor X\n"
+msgstr "  -n, --noX     Permite executar sem servidor X\n"
 
 #: webcontrol/properties.c:205
 msgid "Are you sure you want to remove this browser?"
-msgstr ""
+msgstr "Você tem certeza que deseja remover este navegador?"
 
 #: webcontrol/properties.c:245
 msgid "Configure Browser"
-msgstr ""
+msgstr "Configurar navegador"
 
 #: webcontrol/properties.c:253
-#, fuzzy
 msgid "Browser Name:"
-msgstr "Navegador"
+msgstr "Nome do navegador:"
 
 #: webcontrol/properties.c:270
-#, fuzzy
 msgid "Browser Command:"
-msgstr "Comando de conexão:"
+msgstr "Comando do navegador:"
 
 #: webcontrol/properties.c:287
 msgid "New Window Option:"
-msgstr ""
+msgstr "Opção de nova janela:"
 
 #: webcontrol/properties.c:304
 msgid "No New Window Option:"
-msgstr ""
+msgstr "Opção de sem nova janela:"
 
 #: webcontrol/properties.c:396
 msgid "WebControl Properties"
@@ -5019,44 +4975,3 @@ msgstr "Limpar"
 #: webcontrol/properties.c:656
 msgid "all entries in URL history"
 msgstr "todas as entradas no histórico de URLs"
-
-#~ msgid "Continent/City"
-#~ msgstr "Continente/Cidade"
-
-#~ msgid "Timezone"
-#~ msgstr "Fuso horário"
-
-#~ msgid "keymap_%d/flag=us.png"
-#~ msgstr "keymap_%d/flag=us.png"
-
-#, fuzzy
-#~ msgid "In"
-#~ msgstr "I"
-
-#, fuzzy
-#~ msgid "Out"
-#~ msgstr "Borda"
-
-#, fuzzy
-#~ msgid "Page Load"
-#~ msgstr "Carga de CPU"
-
-#, fuzzy
-#~ msgid "PAGE Load"
-#~ msgstr "Carga de CPU"
-
-#~ msgid ""
-#~ "Copyright (C) 1998-1999 spoon <spoon@ix.netcom.com> \n"
-#~ "Copyright (C) 1999 dres <dres@debian.org>"
-#~ msgstr ""
-#~ "Copyright (C) 1998-1999 spoon <spoon@ix.netcom.com> \n"
-#~ "Copyright (C) 1999 dres <dres@debian.org>"
-
-#~ msgid "Update enabled"
-#~ msgstr "Atualização ativada"
-
-#~ msgid "(sec)"
-#~ msgstr "(seg)"
-
-#~ msgid "Basic"
-#~ msgstr "Básico"
