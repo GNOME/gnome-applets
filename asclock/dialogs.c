@@ -4,6 +4,7 @@
 #include <applet-widget.h>
 #include <stdio.h>
 #include <math.h>
+#include <fcntl.h>
 #include "asclock.h"
 
 void about_dialog(AppletWidget *applet, gpointer data)
@@ -34,9 +35,9 @@ static GtkWidget * properties_timezone_render(asclock *my_asclock, GtkWidget *pa
   char *fname;
   float yloc;
   char cmd[1024];
+  int fd;
 
   do {
-	  int fd;
 	  
 	  fname = tempnam(NULL, "asclock_globe");
 	  fd = open (fname, O_CREAT | O_EXCL, 0777);
