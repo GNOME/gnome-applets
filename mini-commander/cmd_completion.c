@@ -37,17 +37,17 @@
 #include "message.h"
 
 static char shellScript[] = 
-"
-for dir in `echo $PATH|sed \"s/^:/. /; s/:$/ ./; s/::/ . /g; s/:/ /g\"`
-do
-   for file in $dir/$cmd*
-   do
-      if test -x $file -a ! -d $file
-      then
-         echo `basename $file`
-      fi
-   done
-done
+"\n\
+for dir in `echo $PATH|sed \"s/^:/. /; s/:$/ ./; s/::/ . /g; s/:/ /g\"`\n\
+do\n\
+   for file in $dir/$cmd*\n\
+   do\n\
+      if test -x $file -a ! -d $file\n\
+      then\n\
+         echo `basename $file`\n\
+      fi\n\
+   done\n\
+done\n\
 ";
 
 void cmdCompletion(char *cmd)

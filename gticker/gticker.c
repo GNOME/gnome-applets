@@ -413,7 +413,7 @@ static gchar *check_for_dir(char *d)
 		       g_print(_("creating user directory: %s\n"), d);
 		       if (mkdir( d, 0755 ) < 0)
 		         {
-		            g_print(_("unable to create user directory: 
+		            g_print(_("unable to create user directory: \n\
 					    %s\n"), d);
 			    g_free(d);
 			    d = NULL;

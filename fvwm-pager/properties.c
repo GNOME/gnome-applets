@@ -167,7 +167,7 @@ create_properties_frame (void)
   gtk_box_pack_start_defaults(GTK_BOX(wcolor), label);
   gtk_box_pack_start_defaults(GTK_BOX(wcolor), inactwin_gcs);
 
-  label = gtk_label_new (_("Active Dekstop Color"));
+  label = gtk_label_new (_("Active Desktop Color"));
   gtk_box_pack_start_defaults(GTK_BOX (dcolor), label);
   gtk_box_pack_start_defaults(GTK_BOX (dcolor), actdesk_gcs);
   
