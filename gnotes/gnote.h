@@ -43,7 +43,8 @@ gint gnote_handle_button_cb(GtkWidget *, GdkEventButton *, gpointer);
 void gnote_new(gint, gint, gint, gint, gboolean, const gchar *,
                time_t, const gchar *, gboolean, const gchar *);
 void gnote_new_cb(AppletWidget *, gpointer);
-gint gnote_delete_cb(GtkWidget *, gpointer);
+void gnote_destroy_cb(GtkWidget *, gpointer);
+void gnote_delete_cb(GtkWidget *, gpointer);
 void gnote_signal_handler(int);
 gint gnote_motion_cb(GtkWidget *, GdkEventButton *event, gpointer);
 gint gnote_handle_button_cb(GtkWidget *, GdkEventButton *event, gpointer);

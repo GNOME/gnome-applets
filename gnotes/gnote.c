@@ -68,8 +68,8 @@ gchar *save_dir_name = 0;
 typedef void (*GPtrOperator)(gpointer);
 
 void gnotes_init(void);
-void gnote_destroy(gpointer);
-gint gnote_delete_cb(GtkWidget *, gpointer);
+void gnote_destroy_cb(GtkWidget *, gpointer);
+void gnote_delete_cb(GtkWidget *, gpointer);
 void gnotes_raise(AppletWidget*, gpointer);
 void gnote_raise(gpointer);
 gint gnote_raise_cb(GtkWidget *, gpointer);
@@ -440,7 +440,7 @@ void gnote_new(gint width, gint height, gint x, gint y, gboolean hidden,
                        GTK_SIGNAL_FUNC(gnote_handle_button_cb), NULL);
     gtk_signal_connect(GTK_OBJECT(the_note->handle_box),
                        "destroy",
-                       GTK_SIGNAL_FUNC(gnote_delete_cb),
+                       GTK_SIGNAL_FUNC(gnote_destroy_cb),
                        the_note->handle_box);
     gtk_widget_set_usize(the_note->handle_box, 10, 0);
 
@@ -527,31 +527,34 @@ void gnote_new_cb(AppletWidget *applet, gpointer data)
 /*----------------------------------------------------------------------*/
 void gnote_destroy(gpointer prenote)
 {
-    GNote *the_note; 
+}
+
+void gnote_delete_cb(GtkWidget *widget, gpointer handle_boxptr)
+{
+    GNote *the_note = get_gnote_based_on_boxptr(handle_boxptr);
+    /* the window's desctruction handler will take care of everything */
+    if(the_note->window)
+	    gtk_widget_destroy(the_note->window);
+}
+
+
+void gnote_destroy_cb(GtkWidget *widget, gpointer handle_boxptr)
+{
+    GNote *the_note = get_gnote_based_on_boxptr(handle_boxptr);
     char *fname; 
 
-    the_note = (GNote*)prenote;
     fname = make_gnote_filename(the_note);
     
     g_debug("  deleted [%s]", fname);
     unlink(fname);
     free(fname);
 
-    gtk_widget_hide(the_note->window);
-    
-    gtk_widget_destroy(the_note->window);
     if(the_note->menu)
 	    gtk_widget_destroy(GTK_WIDGET(the_note->menu));
     
     g_free(the_note->title);
     g_ptr_array_remove(note_list, the_note);
     g_free(the_note);
-}
-
-gint gnote_delete_cb(GtkWidget *widget, gpointer handle_boxptr)
-{
-    gnote_destroy(get_gnote_based_on_boxptr(handle_boxptr));
-    return(TRUE);
 }
 
 /*----------------------------------------------------------------------*/
