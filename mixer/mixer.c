@@ -797,7 +797,13 @@ mixer_help_cb (BonoboUIComponent *uic,
 	       const gchar       *verbname)
 {
         GError *error = NULL;
-	gnome_help_display("mixer",NULL,&error);
+        
+	gnome_help_display("mixer_applet2",NULL,&error);
+	if (error) {
+		g_print ("%s \n", error->message);
+		g_error_free (error);
+		error = NULL;
+	}
 }
 
 /* Dummy callback to get rid of a warning, for now. */
@@ -1054,7 +1060,7 @@ mixer_applet_factory (PanelApplet *applet,
 
 PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_MixerApplet_Factory",
 			     PANEL_TYPE_APPLET,
-			     "mixer",
+			     "mixer_applet2",
 			     "0",
 			     mixer_applet_factory,
 			     NULL)
