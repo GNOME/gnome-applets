@@ -36,8 +36,11 @@ static GnomeUIInfo popup_menu[] =
 /* Create a new (empty) Sticky Note */
 StickyNote * stickynote_new(StickyNotesApplet *stickynotes)
 {
+	/* Sticky Note instance */
+	StickyNote *note;
+	
 	/* Create and initialize a Sticky Note */
-	StickyNote *note = g_new(StickyNote, 1);
+	note = g_new(StickyNote, 1);
 	note->glade = glade_xml_new(GLADE_PATH, "stickynote_window", NULL);
 	note->window = glade_xml_get_widget(note->glade, "stickynote_window");
 	note->title = glade_xml_get_widget(note->glade, "title_label");
