@@ -704,8 +704,9 @@ panel_menu_common_demerge_ui (PanelApplet *applet)
 	component = panel_applet_get_popup_component (applet);
 	if (bonobo_ui_component_path_exists (component,
 		"/popups/button3/ChildMerge/ChildItem", NULL)) {
-		bonobo_ui_component_remove_verb (component, "Remove");
 		bonobo_ui_component_remove_verb (component, "Action");
+		bonobo_ui_component_remove_verb (component, "Regenerate");
+		bonobo_ui_component_remove_verb (component, "Remove");
 		bonobo_ui_component_rm (component, "/popups/button3/ChildMerge/ChildItem", NULL);
 	}
 }

@@ -43,6 +43,8 @@ static const gchar *directory_menu_xml =
 	"    <placeholder name=\"ChildItem\">\n"
 	"        <menuitem name=\"Action\" verb=\"Action\" label=\"%s Properties...\"\n"
 	"                  pixtype=\"stock\" pixname=\"gtk-close\"/>\n"
+	"        <menuitem name=\"Regenerate\" verb=\"Regenerate\" label=\"Regenerate %s\"\n"
+	"                  pixtype=\"stock\" pixname=\"gtk-refresh\"/>\n"
 	"        <menuitem name=\"Remove\" verb=\"Remove\" label=\"Remove %s\"\n"
 	"                  pixtype=\"stock\" pixname=\"gtk-close\"/>\n"
 	"        <separator/>"
@@ -51,7 +53,6 @@ static const gchar *directory_menu_xml =
 typedef struct _PanelMenuDocuments {
 	gint id;
 	GtkWidget *directory;
-	GtkWidget *regenitem;
 	GtkWidget *menu;
 	gchar *name;
 	gchar *path;
@@ -62,7 +63,8 @@ typedef struct _PanelMenuDocuments {
 
 static gint check_update_directory (PanelMenuEntry *entry);
 static time_t get_directory_mtime (gchar *uri);
-static void regenerate_menus_cb (GtkWidget *menuitem, PanelMenuEntry *entry);
+static void regenerate_menus_cb (GtkWidget *menuitem, PanelMenuEntry *entry,
+				 const gchar *verb);
 static void panel_menu_directory_load (const gchar *uri, GtkMenuShell *parent,
 				       gint level);
 static void directory_load_cb (GnomeVFSAsyncHandle *handle,
@@ -104,7 +106,6 @@ panel_menu_directory_new_with_id (PanelMenu *parent, gint id)
 	PanelMenuDirectory *directory;
 	GtkWidget *tearoff;
 	GtkWidget *image;
-	GtkWidget *sep;
 	gchar *base_key;
 	gchar *dir_key;
 	GConfClient *client;
@@ -132,20 +133,6 @@ panel_menu_directory_new_with_id (PanelMenu *parent, gint id)
 		gtk_widget_show (tearoff);
 	}
 
-	directory->regenitem =
-		gtk_image_menu_item_new_with_label (_("Regenerate Menus"));
-	image = gtk_image_new_from_stock ("gtk-refresh", GTK_ICON_SIZE_MENU);
-	gtk_widget_show (image);
-	gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM
-				       (directory->regenitem), image);
-	gtk_menu_shell_append (GTK_MENU_SHELL (directory->menu),
-			       directory->regenitem);
-	g_signal_connect (G_OBJECT (directory->regenitem), "activate",
-			  G_CALLBACK (regenerate_menus_cb), entry);
-	gtk_widget_show (directory->regenitem);
-	sep = gtk_menu_item_new ();
-	gtk_menu_shell_append (GTK_MENU_SHELL (directory->menu), sep);
-	gtk_widget_show (sep);
 	gtk_menu_item_set_submenu (GTK_MENU_ITEM (directory->directory),
 				   directory->menu);
 
@@ -212,7 +199,7 @@ panel_menu_directory_set_path (PanelMenuEntry *entry, gchar *path)
 	if (directory->path)
 		g_free (directory->path);
 	directory->path = g_strdup (path);
-	regenerate_menus_cb (NULL, entry);
+	regenerate_menus_cb (NULL, entry, NULL);
 	directory->mtime = get_directory_mtime (directory->path);
 	panel_menu_directory_start_timeout (entry);
 }
@@ -266,7 +253,7 @@ check_update_directory (PanelMenuEntry *entry)
 		time = get_directory_mtime (directory->path);
 		if (time > directory->mtime) {
 			g_print ("directory modified, updating menu contents.\n");
-			regenerate_menus_cb (NULL, entry);
+			regenerate_menus_cb (NULL, entry, NULL);
 			directory->mtime = time;
 		}
 		retval = TRUE;
@@ -290,7 +277,8 @@ get_directory_mtime (gchar *uri)
 }
 
 static void
-regenerate_menus_cb (GtkWidget *menuitem, PanelMenuEntry *entry)
+regenerate_menus_cb (GtkWidget *menuitem, PanelMenuEntry *entry,
+		     const gchar *verb)
 {
 	PanelMenuDirectory *directory;
 	GList *list;
@@ -328,9 +316,14 @@ panel_menu_directory_merge_ui (PanelMenuEntry *entry)
 
 	bonobo_ui_component_add_verb (component, "Action",
 				     (BonoboUIVerbFn)change_directory_cb, entry);
+	bonobo_ui_component_add_verb (component, "Regenerate",
+				     (BonoboUIVerbFn)regenerate_menus_cb, entry);
 	bonobo_ui_component_add_verb (component, "Remove",
 				     (BonoboUIVerbFn)panel_menu_common_remove_entry, entry);
-	xml = g_strdup_printf (directory_menu_xml, directory->name, directory->name);
+	xml = g_strdup_printf (directory_menu_xml,
+			       directory->name,
+			       directory->name,
+			       directory->name);
 	bonobo_ui_component_set (component, "/popups/button3/ChildMerge/",
 				 xml, NULL);
 	g_free (xml);

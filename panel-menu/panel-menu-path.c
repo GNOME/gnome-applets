@@ -45,6 +45,8 @@ static const gchar *path_menu_xml =
 	"    <placeholder name=\"ChildItem\">\n"
 	"        <menuitem name=\"Action\" verb=\"Action\" label=\"Set Path...\"\n"
 	"                  pixtype=\"stock\" pixname=\"gtk-convert\"/>\n"
+	"        <menuitem name=\"Remove\" verb=\"Remove\" label=\"Regenerate %s\"\n"
+	"                  pixtype=\"stock\" pixname=\"gtk-refresh\"/>\n"
 	"        <menuitem name=\"Remove\" verb=\"Remove\" label=\"Remove %s\"\n"
 	"                  pixtype=\"stock\" pixname=\"gtk-close\"/>\n"
 	"        <separator/>"
@@ -54,14 +56,14 @@ typedef struct _PanelMenuPath {
 	gint id;
 	GtkWidget *path;
 	GtkWidget *menu;
-	GtkWidget *regenitem;
 	gchar *base_path;
 	GList *items_list;
 	GList *paths_list;
 } PanelMenuPath;
 
 static void panel_menu_path_set_list (PanelMenuEntry *entry, GList *list);
-static void regenerate_menus_cb (GtkWidget *menuitem, PanelMenuEntry *entry);
+static void regenerate_menus_cb (GtkWidget *menuitem, PanelMenuEntry *entry,
+				 const gchar *verb);
 static void directory_load_cb (GnomeVFSAsyncHandle *handle,
 			       GnomeVFSResult result, GList *list,
 			       guint entries_read, GtkMenuShell *parent);
@@ -97,8 +99,8 @@ panel_menu_path_new_with_id (PanelMenu *parent, gint id)
 	PanelMenuEntry *entry;
 	PanelMenuPath *path;
 	GtkWidget *tearoff;
-	GtkWidget *image;
 	GtkWidget *sep;
+	GtkWidget *image;
 	gchar *base_key;
 	gchar *dir_key;
 	GConfClient *client;
@@ -123,19 +125,7 @@ panel_menu_path_new_with_id (PanelMenu *parent, gint id)
 	if (parent->menu_tearoffs) {
 		gtk_widget_show (tearoff);
 	}
-	path->regenitem =
-		gtk_image_menu_item_new_with_label (_("Regenerate Menus"));
-	image = gtk_image_new_from_stock ("gtk-refresh", GTK_ICON_SIZE_MENU);
-	gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (path->regenitem),
-				       image);
-	gtk_widget_show (image);
-	gtk_menu_shell_append (GTK_MENU_SHELL (path->menu), path->regenitem);
-	g_signal_connect (G_OBJECT (path->regenitem), "activate",
-			  G_CALLBACK (regenerate_menus_cb), entry);
-	gtk_widget_show (path->regenitem);
-	sep = gtk_menu_item_new ();
-	gtk_menu_shell_append (GTK_MENU_SHELL (path->menu), sep);
-	gtk_widget_show (sep);
+
 	sep = gtk_menu_item_new ();
 	g_object_set_data (G_OBJECT (sep), "append-before",
 			   GINT_TO_POINTER (TRUE));
@@ -230,11 +220,12 @@ panel_menu_path_set_uri (PanelMenuEntry *entry, gchar *uri)
 		label = g_strdup (_("Programs"));
 	gtk_label_set_text (GTK_LABEL (GTK_BIN (path->path)->child), label);
 	g_free (label);
-	regenerate_menus_cb (NULL, entry);
+	regenerate_menus_cb (NULL, entry, NULL);
 }
 
 static void
-regenerate_menus_cb (GtkWidget *menuitem, PanelMenuEntry *entry)
+regenerate_menus_cb (GtkWidget *menuitem, PanelMenuEntry *entry,
+		     const gchar *verb)
 {
 	PanelMenuPath *path;
 	GList *list;
@@ -277,6 +268,7 @@ panel_menu_path_merge_ui (PanelMenuEntry *entry)
 {
 	PanelMenuPath *path;
 	BonoboUIComponent  *component;
+	const gchar *name;
 	gchar *xml;
 
 	g_return_if_fail (entry != NULL);
@@ -287,10 +279,12 @@ panel_menu_path_merge_ui (PanelMenuEntry *entry)
 
 	bonobo_ui_component_add_verb (component, "Action",
 				     (BonoboUIVerbFn)change_path_cb, entry);
+	bonobo_ui_component_add_verb (component, "Regenerate",
+				     (BonoboUIVerbFn)regenerate_menus_cb, entry);
 	bonobo_ui_component_add_verb (component, "Remove",
 				     (BonoboUIVerbFn)panel_menu_common_remove_entry, entry);
-	xml = g_strdup_printf (path_menu_xml, gtk_label_get_text (
-		GTK_LABEL (GTK_BIN (path->path)->child)));
+	name = gtk_label_get_text (GTK_LABEL (GTK_BIN (path->path)->child));
+	xml = g_strdup_printf (path_menu_xml, name, name);
 	bonobo_ui_component_set (component, "/popups/button3/ChildMerge/",
 				 xml, NULL);
 	g_free (xml);

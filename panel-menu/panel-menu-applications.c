@@ -40,6 +40,8 @@
 
 static const gchar *applications_menu_xml =
 	"    <placeholder name=\"ChildItem\">\n"
+	"        <menuitem name=\"Regenerate\" verb=\"Regenerate\" label=\"Regenerate Applications\"\n"
+	"                  pixtype=\"stock\" pixname=\"gtk-refresh\"/>\n"
 	"        <menuitem name=\"Remove\" verb=\"Remove\" label=\"Remove Applications\"\n"
 	"                  pixtype=\"stock\" pixname=\"gtk-close\"/>\n"
 	"        <separator/>"
@@ -51,7 +53,8 @@ typedef struct _PanelMenuApplications {
 	gchar *icon;
 } PanelMenuApplications;
 
-static void regenerate_menus_cb (GtkWidget *menuitem, PanelMenuEntry *entry);
+static void regenerate_menus_cb (GtkWidget *menuitem, PanelMenuEntry *entry,
+				 const gchar *verb);
 
 PanelMenuEntry *
 panel_menu_applications_new (PanelMenu *parent)
@@ -129,7 +132,8 @@ panel_menu_applications_get_icon (PanelMenuEntry *entry)
 }
 
 static void
-regenerate_menus_cb (GtkWidget *menuitem, PanelMenuEntry *entry)
+regenerate_menus_cb (GtkWidget *menuitem, PanelMenuEntry *entry,
+		     const gchar *verb)
 {
 	PanelMenuApplications *applications;
 	GList *list;
@@ -148,7 +152,7 @@ regenerate_menus_cb (GtkWidget *menuitem, PanelMenuEntry *entry)
 	g_list_free (list);
 
 	panel_menu_path_load ("applications:///",
-				      GTK_MENU_SHELL (applications->menu));
+			      GTK_MENU_SHELL (applications->menu));
 }
 
 void
@@ -163,6 +167,8 @@ panel_menu_applications_merge_ui (PanelMenuEntry *entry)
 	applications = (PanelMenuApplications *) entry->data;
 	component = panel_applet_get_popup_component (entry->parent->applet);
 
+	bonobo_ui_component_add_verb (component, "Regenerate",
+				     (BonoboUIVerbFn)regenerate_menus_cb, entry);
 	bonobo_ui_component_add_verb (component, "Remove",
 				     (BonoboUIVerbFn)panel_menu_common_remove_entry, entry);
 	bonobo_ui_component_set (component, "/popups/button3/ChildMerge/",
