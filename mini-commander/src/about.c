@@ -56,12 +56,12 @@ void about_box (BonoboUIComponent *uic,
 	
 	file = gnome_program_locate_file (NULL, GNOME_FILE_DOMAIN_PIXMAP, "gnome-mini-commander.png", FALSE, NULL);
    	pixbuf = gdk_pixbuf_new_from_file (file, &error);
-   	g_free (file);
    
    	if (error) {
    		g_warning (G_STRLOC ": cannot open %s: %s", file, error->message);
 		g_error_free (error);
    	}
+   	g_free (file);
    
         about_box = gnome_about_new (_("Command Line"), 
 				     VERSION,
