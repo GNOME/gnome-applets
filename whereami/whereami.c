@@ -34,9 +34,15 @@ static GtkWidget *msg;
 static void
 about(AppletWidget *applet, gpointer data)
 {
-  GtkWidget *about_box;
+  static GtkWidget *about_box = NULL;
   static const char *authors[] = { "John Kodis <kodis@jagunet.com>", NULL };
 
+  if (about_box != NULL)
+  {
+  	gdk_window_show(about_box->window);
+	gdk_window_raise(about_box->window);
+	return;
+  }
   about_box = gnome_about_new(
     _("Where Am I?"), VERSION,
     _("Copyright 1999 John Kodis"), authors,
@@ -45,6 +51,8 @@ about(AppletWidget *applet, gpointer data)
       "= Dragging with mouse button 1 held down "
       "shows the size of the region."),
     NULL);
+  gtk_signal_connect( GTK_OBJECT(about_box), "destroy",
+		      GTK_SIGNAL_FUNC(gtk_widget_destroyed), &about_box );
 
   gtk_widget_show(about_box);
   return;
