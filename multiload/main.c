@@ -306,7 +306,7 @@ multiload_applet_new(PanelApplet *applet, const gchar *iid, gpointer data)
 						   "GNOME_MultiloadApplet.xml",
 						   NULL,
 						   multiload_menu_verbs,
-						   applet);	
+						   ma);	
 	}
 
 	ma->box = box;
