@@ -216,6 +216,7 @@ gkb_prop_map_edit (GkbPropertyBoxInfo * pbi)
   				GTK_STOCK_OK, GTK_RESPONSE_OK,
   				NULL);
 
+  gtk_window_set_transient_for (mdi->dialog, pbi->box);
   gtk_window_set_modal (GTK_WINDOW (mdi->dialog), TRUE);
 
   vbox2 = gtk_vbox_new (FALSE, 0);
