@@ -22,5 +22,9 @@ server_DATA     = $(server_in_files:.server.in=.server)
 
 EXTRA_DIST = 						\
 	$(server_DATA) 					\
-	$(server_in_files)
-
+	$(server_in_files)				\
+	volume-max.xpm					\
+	volume-medium.xpm				\
+	volume-min.xpm					\
+	volume-mute.xpm					\
+	volume-zero.xpm

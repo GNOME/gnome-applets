@@ -38,6 +38,7 @@ images/cdplayer-next.xpm \
 images/cdplayer-play-pause.xpm \
 images/cdplayer-prev.xpm \
 images/cdplayer-prev.xpm \
+images/cdplayer-stop.xpm \
 images/led.xpm \
 cdrom-irix.c \
 cdrom-linux.c \

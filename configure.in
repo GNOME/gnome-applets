@@ -1,6 +1,6 @@
-AC_INIT(gnome-applets, 2.0,
+AC_INIT(gnome-applets, 1.90.0,
         http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-applets)
-AC_CONFIG_SRCDIR(battery/battery.c)
+AC_CONFIG_SRCDIR(drivemount/drivemount.c)
 AM_INIT_AUTOMAKE(AC_PACKAGE_NAME, AC_PACKAGE_VERSION)
 
 AM_CONFIG_HEADER(config.h)
@@ -26,14 +26,14 @@ AC_PATH_PROGS(PATH_TO_XRDB, "xrdb")
 
 dnl Stuff we might need, not quite sure yet
 
-GTK_REQUIRED=1.3.1
-LIBGNOME_REQUIRED=1.96.0
-LIBGNOMEUI_REQUIRED=1.96.0
-LIBXML_REQUIRED=2.2.8
-GNOME_VFS_REQUIRED=1.1
+GTK_REQUIRED=1.3.11
+LIBGNOME_REQUIRED=1.108.0
+LIBGNOMEUI_REQUIRED=1.108.0
+LIBXML_REQUIRED=2.4.12
+GNOME_VFS_REQUIRED=1.9.4
 GCONF_REQUIRED=1.1.5
-GDK_PIXBUF_REQUIRED=1.3.1
-LIBGNOMECANVAS_REQUIRED=1.102.0
+GDK_PIXBUF_REQUIRED=1.3.11
+LIBGNOMECANVAS_REQUIRED=1.108.0
 SCROLLKEEPER_REQUIRED=0.1.4
 LIBGTOP_REQUIRED=1.90.0
 
@@ -150,22 +150,6 @@ AC_SUBST(HAVE_JW)
 dnl ******************************************
 dnl ******************************************
 
-
-dnl possibly have something like this
-dnl AM_ARG_ENABLE(old-applets,
-dnl[  --enable-old-applets            Build old applets],
-dnl        if test x$withval = xyes; then
-dnl                enable_old_applets=yes
-dnl        else
-dnl                if test "x$withval" = xno; then
-dnl                        enable_old_applets=no
-dnl                else
-dnl                        enable_old_applets=yes
-dnl                fi
-dnl        fi,
-dnl        enable_old_applets=yes)
-
-
 dnl ******************************************
 dnl ** ESound Library                       **
 dnl ******************************************
@@ -178,24 +162,6 @@ AM_CONDITIONAL(HAVE_LIBESD, test yes = $have_libesd)
 dnl ******************************************
 dnl ******************************************
 
-
-dnl gumma
-dnl have_xmms=false
-dnl CPPFLAGS_save=$CPPFLAGS
-dnl LDFLAGS_save=$LDFLAGS
-dnl CPPFLAGS=`gnome-config --cflags gnomeui`
-dnl LDFLAGS=`gnome-config --libs gnomeui`
-
-dnl AC_CHECK_HEADER(xmms/xmmsctrl.h,
-dnl [AC_CHECK_LIB(xmms, xmms_remote_is_running,have_xmms=true)])
-dnl AM_CONDITIONAL(HAVE_XMMS,$have_xmms)
-dnl CPPFLAGS=$CPPFLAGS_save
-dnl LDFLAGS=$LDFLAGS_save
-
-dnl AM_CONDITIONAL(HAVE_XMMS,test $have_xmms)
-dnl if test x$HAVE_XMMS != x$yes; then
-dnl   AC_MSG_WARN([*** \`xmms' plugin for gumma will not be built ***])
-dnl fi
 
 dnl ******************************************
 dnl ** screenshooter applet check           **
@@ -340,46 +306,6 @@ dnl AC_SUBST(VFS_CFLAGS)
 dnl AM_CONDITIONAL(HAVE_GNOME_VFS, $HAVE_GNOME_VFS)
 
 
-
-dnl ******************************************
-dnl ** Fvwm pager                           **
-dnl ******************************************
-
-AC_CHECK_HEADER(fvwm.h, fvwm=true, fvwm=false)
-AM_CONDITIONAL(HAVE_FVWM, $fvwm)
-
-dnl ******************************************
-dnl ******************************************
-
-dnl
-dnl GdkPixBuf
-dnl
-dnl AC_MSG_CHECKING(for GdkPixbuf library >= 0.7.0)
-dnl PIXBUF_CFLAGS=`$GNOME_CONFIG --cflags gdk_pixbuf`
-dnl PIXBUF_LIBS=`$GNOME_CONFIG --libs gdk_pixbuf`
-dnl if test "x$PIXBUF_CFLAGS" != x ; then
-dnl     vers=`gdk-pixbuf-config --version | awk 'BEGIN { FS = "."; } { printf "%d", ($1 * 1000 + $2) * 1000 + $3;}'`
-dnl     if test "$vers" -ge 0007000; then
-dnl         AC_MSG_RESULT(found)
-dnl     else
-dnl        AC_MSG_ERROR(You need at least GdkPixbuf version 0.7.0 for the panel)
-dnl     fi
-dnl else
-dnl     AC_MSG_ERROR(Did not find GdkPixbuf installed)
-dnl fi
-dnl AC_SUBST(PIXBUF_CFLAGS)
-dnl AC_SUBST(PIXBUF_LIBS)
-
-dnl
-dnl GdkPixBuf canvas stuff
-dnl No need to check, we know we have these
-dnl
-dnl CANVAS_PIXBUF_CFLAGS=`$GNOME_CONFIG --cflags gnomecanvaspixbuf`
-dnl CANVAS_PIXBUF_LIBS=`$GNOME_CONFIG --libs gnomecanvaspixbuf`
-dnl AC_SUBST(CANVAS_PIXBUF_CFLAGS)
-dnl AC_SUBST(CANVAS_PIXBUF_LIBS)
-
-
 AC_SUBST(CFLAGS)
 AC_SUBST(CPPFLAGS)
 AC_SUBST(LDFLAGS)
@@ -392,22 +318,14 @@ AC_OUTPUT([
 gnome-applets.spec
 Makefile
 po/Makefile.in
-omf-install/Makefile
 mini-commander/Makefile
 mini-commander/src/Makefile
 mixer/Makefile
 drivemount/Makefile
 screenshooter/Makefile
 modemlights/Makefile
-fifteen/Makefile
-whereami/Makefile
-odometer/Makefile
-odometer/themes/Makefile
-geyes/Makefile
-geyes/themes/Makefile
 cdplayer/Makefile
 multiload/Makefile
-life/Makefile
 gkb-new/Makefile
 gkb-new/gkb/Makefile
 gkb-new/xmodmap/Makefile
@@ -416,10 +334,17 @@ gkb-new/gkb_xmmap.in
 ])
 
 dnl Mostly Ported Applets
+dnl life/Makefile
+dnl whereami/Makefile
+dnl odometer/Makefile
+dnl odometer/themes/Makefile
+dnl geyes/Makefile
+dnl geyes/themes/Makefile
 dnl geyes/docs/Makefile
 dnl geyes/docs/C/Makefile
 dnl geyes/docs/it/Makefile
 dnl geyes/docs/es/Makefile
+dnl fifteen/Makefile
 dnl fifteen/docs/Makefile
 dnl fifteen/docs/C/Makefile
 dnl fifteen/docs/it/Makefile

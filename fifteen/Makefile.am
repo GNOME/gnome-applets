@@ -10,7 +10,7 @@ bin_PROGRAMS = fifteen_applet2
 fifteen_applet2_SOURCES = fifteen.c
 
 fifteen_applet2_LDADD = \
-		       $(GNOME_APPLETS_LIBS) $(INTLLIBS) 
+		       $(GNOME_APPLETS_LIBS)
 
 
 

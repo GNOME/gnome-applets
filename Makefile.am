@@ -1,9 +1,6 @@
 ## Again, remove the comments on an applet you want to work on
 
-gtop_applets = \
-##	cpumemusage	\
-## 	diskusage	\
- 	multiload
+gtop_applets = multiload
 if BUILD_GTOP_APPLETS
 gtop_SUBDIRS = $(gtop_applets)
 endif
@@ -49,13 +46,13 @@ endif
 
 always_built_SUBDIRS = \
 	drivemount	\
-	fifteen		\
-	odometer	\
-	geyes		\
+##	fifteen		\
+##	odometer	\
+##	geyes		\
 	mini-commander	\
-	life		\
-	gkb-new		\
-	whereami	
+##	life		\
+	gkb-new		
+##	whereami	
 ## 	another_clock	\
 ## 	asclock		\
 ## 	charpick	\
@@ -80,8 +77,8 @@ SUBDIRS = \
 ## 	$(esd_SUBDIRS)		\
 ## 	omf-install
 ## 
-DIST_SUBDIRS = \
-	po 			\
+## DIST_SUBDIRS = \
+##	po 			\
 ## 	$(always_built_SUBDIRS)	\
 ## 	clipboard		\
 ## 	$(gtop_applets)		\
@@ -90,8 +87,8 @@ DIST_SUBDIRS = \
 ## 	$(mixer_applets)	\
 ## 	$(modemlights_applets)	\
 ## 	$(esd_applets)		\
-## 	$(wordexp_applets)      \
-	omf-install
+## 	$(wordexp_applets)      
+##	omf-install
 
 EXTRA_DIST = \
 	COPYING-DOCS		\
@@ -99,7 +96,8 @@ EXTRA_DIST = \
 	gnome-applets.spec	\
 	applet-docs.make	\
 	sgmldocs.make		\
-	xml-i18n-update.in	\
-	xml-i18n-extract.in	\
-	xml-i18n-merge.in
+	intltool-update.in	\
+	intltool-extract.in	\
+	intltool-merge.in	\
+	message-of-doom
 
