@@ -783,8 +783,7 @@ wireless_applet_new (WirelessApplet *applet)
 
 	if (GTK_IS_ACCESSIBLE (atk_obj)) {
 		atk_object_set_name (atk_obj, _("Wireless Link Monitor"));
-		atk_object_set_description (atk_obj, _("This utility shows the s
-tatus of a wireless link"));
+		atk_object_set_description (atk_obj, _("This utility shows the status of a wireless link"));
 	}
 		 
 	g_signal_connect (G_OBJECT (applet), "change_size",
