@@ -93,7 +93,7 @@ run_edit_dialog (gchar *string, gchar *title)
 	gtk_entry_set_activates_default (GTK_ENTRY (entry), TRUE);
 	gtk_box_pack_start (GTK_BOX (hbox), entry, TRUE, TRUE, 0);
 	set_access_namedesc (entry, _("Palette entry"),
-				         _("Modify a palette by adding or removing chacters"));
+				         _("Modify a palette by adding or removing characters"));
 	if (string)
 		gtk_entry_set_text (GTK_ENTRY (entry), string);
 	gtk_widget_show_all (dialog);
