@@ -91,8 +91,12 @@ openMixer( gchar *device_name )
 	mixerfd = open(device_name, O_RDWR, 0);
 	if (mixerfd < 0) {
 		/* probably should die more gracefully */
-		g_message(_("Couldn't open mixer device %s\n"),device_name);
-		exit(1);
+		char *s = g_strdup_printf(_("Couldn't open mixer device %s\n"),
+					  device_name);
+		gnome_error_dialog(s);
+		g_warning(s);
+		g_free(s);
+		return;
 	}
 
         /*
@@ -113,6 +117,9 @@ readMixer(void)
 {
 	gint vol, r, l;
 
+	/* if we couldn't open the mixer */
+	if (mixerfd < 0) return 0;
+
 	ioctl(mixerfd, MIXER_READ(SOUND_MIXER_VOLUME), &vol);
 
 	l = vol & 0xff;
@@ -126,6 +133,9 @@ static void
 setMixer(gint vol)
 {
 	gint tvol;
+
+	/* if we couldn't open the mixer */
+	if (mixerfd < 0) return;
 
 	tvol = (vol << 8) + vol;
 /*g_message("Saving mixer value of %d",tvol);*/
@@ -375,11 +385,11 @@ create_computer_mixer_widget(GtkWidget ** mixer,
         gtk_scale_set_draw_value(GTK_SCALE(vscale), FALSE);
         gtk_scale_set_draw_value(GTK_SCALE(hscale), FALSE);
 
-	gtk_widget_set_usize(GTK_WIDGET(vscale), 18, 32);
-	gtk_widget_set_usize(GTK_WIDGET(hscale), 36, 20);
+	gtk_widget_set_usize(GTK_WIDGET(vscale), 20, 36);
+	gtk_widget_set_usize(GTK_WIDGET(vbutton),20, 15);
 
-	gtk_widget_set_usize(GTK_WIDGET(vbutton),12 , 15);
-	gtk_widget_set_usize(GTK_WIDGET(hbutton),12 , 20);
+	gtk_widget_set_usize(GTK_WIDGET(hscale), 36, 20);
+	gtk_widget_set_usize(GTK_WIDGET(hbutton),15, 20);
 
 	
 	/* pack the widgets */
@@ -625,9 +635,10 @@ main(int argc, char **argv)
 	bindtextdomain(PACKAGE, GNOMELOCALEDIR);
 	textdomain(PACKAGE);
 
-	openMixer("/dev/mixer");
 	applet_widget_init("mixer_applet", VERSION, argc, argv,
 				    NULL, 0, NULL);
+
+	openMixer("/dev/mixer");
 
 	applet = applet_widget_new("mixer_applet");
 	if (!applet)
