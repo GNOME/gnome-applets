@@ -1,3 +1,11 @@
+Fri Apr 30 12:46:35 1999  George Lebl  <jirka@5z.com>
+
+        * src/exec.c: based on a patch from "Brandon S. Allbery"
+          <allbery@ece.cmu.edu>, I added a SA_NOMASK define if it's
+          not defined (set it to SA_NODEFER in that case) and initialize
+          the whole sigaction structure to 0 instead of setting the
+          sa_restorer
+
 1999-04-19  Oliver Maruhn  <om@linuxhq.com>
 
 	* src/exec.c (sighandle_sigchld): Using waitpid() instead of
