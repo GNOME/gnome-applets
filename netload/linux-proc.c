@@ -5,6 +5,7 @@
 #include <ctype.h>
 
 #include "linux-proc.h"
+#include "netload.h"
 
 static char *skip_token(const char *p)
 {
@@ -27,7 +28,7 @@ Device_Info *ReadProc()
 	if (!fp){
 		/* Read /proc/net/ip_acct. */
 		if (!(fp = fopen("/proc/net/ip_acct", "r"))){
-			fprintf(stderr, "Failed to open ip_acct file.");
+			error_dialog("Failed to open ip_acct file. Please ensure IP Accounting is enabled in this kernel.");
 			return NULL;
 		}
 	}
@@ -79,16 +80,6 @@ GetTraffic(int refresh, char *device)
 		}
 		d++;
 	}
+	error_dialog("IP accounting is enabled, but not activated for the specified device. Either activate it (with a command like \nipfwadm -A -i -P all -W <device name>\nwhere device name is something like ppp0 or eth0.\nNetload will now exit.");
 	return 0;
 }
-
-/*
- * Find out what we have available.
- */
-
-#if 0
-void main()
-{
-	printf("Got %ld\n", GetTraffic(1, "ppp0"));
-}
-#endif

@@ -33,7 +33,6 @@ GdkColor gcolor, bcolor;
 netload_properties props;
 int applet_id = 0xdeadbeef, timer_index=-1;
 
-
 /*
  * Use a circular buffer for storing the values.
  */
@@ -67,7 +66,7 @@ int draw(void)
 	}
 
 	/* The MAX is in case the stats get reset or wrap. It'll get one wrong sample. */
-	data[front] = MAX(0, (bytes - old_bytes) / (props.speed/1000));
+	data[front] = MAX(0, ((signed int)(bytes - old_bytes))/ (props.speed/1000));
 
 	if (front == max_delta_pos){
 		/* The maximum has scrolled off. Rescale. */
@@ -241,7 +240,52 @@ static gint destroy_plug(GtkWidget *widget, gpointer data)
         return FALSE;
 }
 
+
 void
+error_close_cb(GtkWidget *widget, void *data)
+{
+	gnome_panel_applet_remove_from_panel(applet_id);
+	g_print("Hello!\n");
+}
+
+/*
+ * An error occured.
+ */
+void
+error_dialog(char *message)
+{
+	static GtkWidget	*error = NULL;
+	GtkWidget	*less, *label;
+
+	if (error){
+		return;
+	}
+
+	error = gnome_dialog_new(_("Netload Error"), GNOME_STOCK_BUTTON_CLOSE, NULL);
+	gnome_dialog_set_close(GNOME_DIALOG(error), TRUE);
+	gnome_dialog_close_hides(GNOME_DIALOG(error), TRUE);
+
+	less = gnome_less_new();
+	label = gtk_label_new(_("An error occured in the Netload Applet:"));
+
+	gtk_box_pack_start(GTK_BOX(GNOME_DIALOG(error)->vbox), label,
+		FALSE, FALSE, GNOME_PAD);
+	gtk_box_pack_start(GTK_BOX(GNOME_DIALOG(error)->vbox), less,
+		TRUE, TRUE, GNOME_PAD);
+
+	gnome_less_fixed_font(GNOME_LESS(less));
+	gnome_dialog_set_modal(GNOME_DIALOG(error));
+
+	gtk_signal_connect( GTK_OBJECT(error),
+		"clicked", GTK_SIGNAL_FUNC(error_close_cb), NULL );
+
+	gtk_widget_show(less);
+	gtk_widget_show(label);
+	gtk_widget_show(error);
+	gnome_less_show_string(GNOME_LESS(less), message);
+}
+
+static void
 about_cb (AppletWidget *widget, gpointer data)
 {
 	GtkWidget *about;
@@ -316,6 +360,7 @@ int main(int argc, char **argv)
                                              NULL);
 
 	applet_corba_gtk_main("IDL:GNOME/Applet:1.0");
+
         return 0;
 }
 
