@@ -1,14 +1,18 @@
 # Danish translation of the gnome-applets.
-# Copyright (C) 1998 Free Software Foundation, Inc.
+# Copyright (C) 1998, 2001 Free Software Foundation, Inc.
 # Kenneth Christiansen <kenneth@ripen.dk>, 1998-2000.
 # Birger Langkjer <birger.langkjer@image.dk>, 2000.
 # Keld Simonsen <keld@dkuug.dk>, 2000.
 # Ole Laursen <olau@hardworking.dk>, 2001.
 #
+# Konventioner:
+# applet -> panelprogram
+# settings -> indstillinger
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 1.2.0\n"
-"POT-Creation-Date: 2001-07-08 21:50+0200\n"
+"POT-Creation-Date: 2001-07-12 21:19+0200\n"
 "PO-Revision-Date: 2001-06-26 21:01+02:00\n"
 "Last-Translator: Ole Laursen <olau@hardworking.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
@@ -538,11 +542,11 @@ msgstr ""
 #: diskusage/diskusage.c:171 diskusage/diskusage.c:283
 #, c-format
 msgid "MP: %s"
-msgstr ""
+msgstr "Mpkt.: %s"
 
 #: diskusage/diskusage.c:746
 msgid "File Systems"
-msgstr "Filsystem"
+msgstr "Filsystemer"
 
 #: diskusage/diskusage.c:800
 msgid "File System Changed!\n"
@@ -1328,9 +1332,8 @@ msgid "GNotes!"
 msgstr "Noter"
 
 #: gnotes/gnotes_applet.c:103
-#, fuzzy
 msgid "Copyright (C) 1998-1999)"
-msgstr "Copyright © 1999"
+msgstr "Copyright © 1999-1999"
 
 #: gnotes/gnotes_applet.c:105
 msgid "Create sticky notes on your screen."
@@ -1370,7 +1373,7 @@ msgstr "Standard-bredde"
 
 #: gtik/gtik.c:209
 msgid "No data available or properties not set"
-msgstr ""
+msgstr "Ingen data tilgængelig eller indstillingerne er ikke sat"
 
 #: gtik/gtik.c:704
 msgid "The GNOME Stock Ticker"
@@ -1505,9 +1508,8 @@ msgid "Updating..."
 msgstr "Opdaterer..."
 
 #: gweather/gweather-applet.c:388
-#, fuzzy
 msgid "Update failed! Maybe another update was already in progress?"
-msgstr "En ny opdatering er allerede på vej!\n"
+msgstr "Opdatering mislykkedes! Måske var en anden opdatering allerede i gang?"
 
 #: gweather/gweather-dialog.c:125
 msgid "Location:"
@@ -1665,9 +1667,8 @@ msgstr "Opdateringer"
 
 # hvert hænger sammen med minut
 #: gweather/gweather-pref.c:480
-#, fuzzy
 msgid "Automatically update every "
-msgstr "Opdatér automatisk hvert"
+msgstr "Opdatér automatisk hvert "
 
 #: gweather/gweather-pref.c:498
 msgid "minute(s)"
@@ -1677,33 +1678,6 @@ msgstr "minut"
 #: gweather/gweather-pref.c:509
 msgid "Miscellaneous"
 msgstr "Diverse"
-
-#: gweather/weather.c:55
-#, fuzzy
-msgid "knots"
-msgstr "Gnotices"
-
-#: gweather/weather.c:55
-msgid "kph"
-msgstr ""
-
-#: gweather/weather.c:60
-msgid "inHg"
-msgstr ""
-
-#: gweather/weather.c:60
-msgid "mmHg"
-msgstr ""
-
-#: gweather/weather.c:64
-#, fuzzy
-msgid "miles"
-msgstr "Artikler"
-
-#: gweather/weather.c:64
-#, fuzzy
-msgid "kilometers"
-msgstr "Kilometertæller"
 
 #: gweather/weather.c:113
 msgid "Location vector needs to be 4 elements long"
@@ -3399,9 +3373,8 @@ msgid "Load Graph"
 msgstr "Belastningsgraf"
 
 #: multiload/load-graph.c:574
-#, fuzzy
 msgid "Interval:"
-msgstr "Generelt"
+msgstr "Interval"
 
 #: multiload/load-graph.c:574 multiload/load-graph.c:766
 msgid "Size:"
@@ -3436,14 +3409,12 @@ msgid "Idle"
 msgstr "Inaktiv"
 
 #: multiload/main.c:32
-#, fuzzy
 msgid "In"
-msgstr "I"
+msgstr "Ind"
 
 #: multiload/main.c:32
-#, fuzzy
 msgid "Out"
-msgstr "Sammendrag"
+msgstr "Ud"
 
 #: multiload/main.c:36 multiload/main.c:44
 msgid "Other"
@@ -3478,9 +3449,8 @@ msgid "ETH"
 msgstr "ETH"
 
 #: multiload/main.c:250
-#, fuzzy
 msgid "Page Load"
-msgstr "Processorbelastning"
+msgstr "Sidebelastning"
 
 #: multiload/main.c:254 multiload/memload.c:77 multiload/memload.c:121
 msgid "Memory Load"
@@ -3527,9 +3497,8 @@ msgid "Network Load"
 msgstr "Netværksbelastning"
 
 #: multiload/pageload.c:51
-#, fuzzy
 msgid "PAGE Load"
-msgstr "Processorbelastning"
+msgstr "Sidebelastning"
 
 #: multiload/swapload.c:44
 msgid "Swap Load Applet"
@@ -3726,8 +3695,8 @@ msgid ""
 "jpg, jpeg, bmp, cgm, cmyk, dib, eps, fig, fpx, gif, ico, map, miff, pcx,\n"
 "pict, pix, png, pnm, ppm, psd, rgb, rgba, rla, rle, tiff, tga, xbm, xpm,\n"
 "and several obscure ones. Try your luck with something interesting!\n"
-"Eg .html for a client-side image map. You'll get a .gif, .html, and a ."
-"shtml\n"
+"Eg .html for a client-side image map. You'll get a .gif, .html, and a "
+".shtml\n"
 "\n"
 "Recommendations:\n"
 "Small file, pretty good quality:   jpg, 75% quality\n"
@@ -4197,29 +4166,26 @@ msgid "Manager..."
 msgstr "Håndtering..."
 
 #: sound-monitor/manager.c:1168
-#, fuzzy
 msgid "Sound Monitor - Manager"
-msgstr "Lydovervåger"
+msgstr "Lydovervåger - håndtering"
 
 #. server info
 #: sound-monitor/manager.c:1193
 msgid "Server information:"
-msgstr ""
+msgstr "Serverinformation:"
 
 #: sound-monitor/manager.c:1196
 msgid "Server"
-msgstr ""
+msgstr "Server"
 
 #. stream info
 #: sound-monitor/manager.c:1216
-#, fuzzy
 msgid "Connected streams:"
-msgstr "Forbindelsesstatus"
+msgstr "Forbundne strømme:"
 
 #: sound-monitor/manager.c:1219
-#, fuzzy
 msgid "Streams"
-msgstr "Sydøst"
+msgstr "Strømme"
 
 #: sound-monitor/manager.c:1276 sound-monitor/manager.c:1364
 msgid "Volume"
@@ -4232,11 +4198,11 @@ msgstr "Balance"
 #. sample info
 #: sound-monitor/manager.c:1298
 msgid "Cached samples: (select to play)"
-msgstr ""
+msgstr "Mellemlagrede lyde (vælg for at afspille):"
 
 #: sound-monitor/manager.c:1301
 msgid "Samples"
-msgstr ""
+msgstr "Lyde"
 
 #: sound-monitor/properties.c:135
 msgid ""
@@ -4258,9 +4224,8 @@ msgstr ""
 "Du er hermed advaret!"
 
 #: sound-monitor/properties.c:333
-#, fuzzy
 msgid "Sound Monitor Applet Settings"
-msgstr "Lydovervågningspanelprogram"
+msgstr "Indstillinger for lydovervågningspanelprogram"
 
 #: sound-monitor/properties.c:338
 msgid "Peak indicator"
@@ -4568,11 +4533,11 @@ msgstr ""
 
 #: tickastat/mod_test.c:57
 msgid "Testing line from test module :)"
-msgstr ""
+msgstr "Tester linje fra testmodulet :)"
 
 #: tickastat/mod_test.c:58
 msgid "You clicked on me"
-msgstr ""
+msgstr "Du klikkede på mig"
 
 #: tickastat/mod_test.c:126 tickastat/mod_test.c:218
 msgid "Test Module"
@@ -4900,7 +4865,7 @@ msgstr "  -n, --noX     Tillad kørsel med en X-server\n"
 
 #: webcontrol/properties.c:205
 msgid "Are you sure you want to remove this browser?"
-msgstr ""
+msgstr "Er du sikker på at du vil fjerne dette surfningsprogram?"
 
 #: webcontrol/properties.c:245
 msgid "Configure Browser"
@@ -4983,13 +4948,3 @@ msgstr "Ryd"
 #: webcontrol/properties.c:656
 msgid "all entries in URL history"
 msgstr "alle elementer i adressehistorik"
-
-#~ msgid ""
-#~ "Copyright (C) 1998-1999 spoon <spoon@ix.netcom.com> \n"
-#~ "Copyright (C) 1999 dres <dres@debian.org>"
-#~ msgstr ""
-#~ "Copyright © 1998-1999 spoon <spoon@ix.netcom.com> \n"
-#~ "Copyright © 1999 dres <dres@debian.org>"
-
-#~ msgid "Autmatically update every "
-#~ msgstr "Opdatér automatisk hvert"
