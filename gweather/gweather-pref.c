@@ -851,7 +851,7 @@ static void help_cb (GtkDialog *dialog)
     GError *error = NULL;
 
     egg_help_display_on_screen (
-		"gweather", "gweather-prefs",
+		"gweather", "gweather-settings",
 		gtk_window_get_screen (GTK_WINDOW (dialog)),
 		&error);
 
