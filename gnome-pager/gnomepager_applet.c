@@ -39,6 +39,8 @@ typedef struct {
 	gint                show_icons; /*bool*/
 	gint		    show_arrow; /*bool*/
 	gint                fixed_tasklist; /*bool*/
+	gint                pager_w_0, pager_h_0;
+	gint                pager_w_1, pager_h_1;
 } Config;
 
 /*note: no need for defaults as they will be read in*/
@@ -248,6 +250,55 @@ cb_applet_properties(AppletWidget * widget, gpointer data)
   gtk_signal_connect(GTK_OBJECT(adj), "value_changed",
 		     GTK_SIGNAL_FUNC(cb_adj), &o_config.pager_rows);
   gtk_object_set_data(GTK_OBJECT(adj), "prop", prop);
+
+  adj = (GtkAdjustment *)gtk_adjustment_new((gfloat)config.pager_w_0, 1, 
+					    100, 1, 1, 1 );
+  label = gtk_label_new(_("Width of small pagers"));
+  spin = gtk_spin_button_new(adj, 1, 0);
+  hbox = gtk_hbox_new(FALSE,GNOME_PAD_SMALL);
+  gtk_box_pack_start(GTK_BOX(vbox),hbox,FALSE,FALSE,0);
+  gtk_box_pack_start(GTK_BOX(hbox),label,FALSE,FALSE,0);
+  gtk_box_pack_start(GTK_BOX(hbox),spin,FALSE,FALSE,0);
+  gtk_signal_connect(GTK_OBJECT(adj), "value_changed",
+		     GTK_SIGNAL_FUNC(cb_adj), &o_config.pager_w_0);
+  gtk_object_set_data(GTK_OBJECT(adj), "prop", prop);
+
+  adj = (GtkAdjustment *)gtk_adjustment_new((gfloat)config.pager_h_0, 1, 
+					    100, 1, 1, 1 );
+  label = gtk_label_new(_("Height of small pagers"));
+  spin = gtk_spin_button_new(adj, 1, 0);
+  hbox = gtk_hbox_new(FALSE,GNOME_PAD_SMALL);
+  gtk_box_pack_start(GTK_BOX(vbox),hbox,FALSE,FALSE,0);
+  gtk_box_pack_start(GTK_BOX(hbox),label,FALSE,FALSE,0);
+  gtk_box_pack_start(GTK_BOX(hbox),spin,FALSE,FALSE,0);
+  gtk_signal_connect(GTK_OBJECT(adj), "value_changed",
+		     GTK_SIGNAL_FUNC(cb_adj), &o_config.pager_h_0);
+  gtk_object_set_data(GTK_OBJECT(adj), "prop", prop);
+
+  adj = (GtkAdjustment *)gtk_adjustment_new((gfloat)config.pager_w_1, 1, 
+					    100, 1, 1, 1 );
+  label = gtk_label_new(_("Width of large pagers"));
+  spin = gtk_spin_button_new(adj, 1, 0);
+  hbox = gtk_hbox_new(FALSE,GNOME_PAD_SMALL);
+  gtk_box_pack_start(GTK_BOX(vbox),hbox,FALSE,FALSE,0);
+  gtk_box_pack_start(GTK_BOX(hbox),label,FALSE,FALSE,0);
+  gtk_box_pack_start(GTK_BOX(hbox),spin,FALSE,FALSE,0);
+  gtk_signal_connect(GTK_OBJECT(adj), "value_changed",
+		     GTK_SIGNAL_FUNC(cb_adj), &o_config.pager_w_1);
+  gtk_object_set_data(GTK_OBJECT(adj), "prop", prop);
+
+  adj = (GtkAdjustment *)gtk_adjustment_new((gfloat)config.pager_h_1, 1, 
+					    100, 1, 1, 1 );
+  label = gtk_label_new(_("Height of large pagers"));
+  spin = gtk_spin_button_new(adj, 1, 0);
+  hbox = gtk_hbox_new(FALSE,GNOME_PAD_SMALL);
+  gtk_box_pack_start(GTK_BOX(vbox),hbox,FALSE,FALSE,0);
+  gtk_box_pack_start(GTK_BOX(hbox),label,FALSE,FALSE,0);
+  gtk_box_pack_start(GTK_BOX(hbox),spin,FALSE,FALSE,0);
+  gtk_signal_connect(GTK_OBJECT(adj), "value_changed",
+		     GTK_SIGNAL_FUNC(cb_adj), &o_config.pager_h_1);
+  gtk_object_set_data(GTK_OBJECT(adj), "prop", prop);
+
   gtk_signal_connect(GTK_OBJECT(sh), "toggled",
 		     GTK_SIGNAL_FUNC(cb_check_enable), hbox);
   cb_check_enable(sh,hbox);
@@ -1358,6 +1409,10 @@ cb_applet_save_session(GtkWidget *w,
   gnome_config_set_int("stuff/show_icons", config.show_icons);
   gnome_config_set_int("stuff/show_arrow", config.show_arrow);
   gnome_config_set_int("stuff/fixed_tasklist", config.fixed_tasklist);
+  gnome_config_set_int("stuff/pager_w_0", config.pager_w_0);
+  gnome_config_set_int("stuff/pager_h_0", config.pager_h_0);
+  gnome_config_set_int("stuff/pager_w_0", config.pager_w_1);
+  gnome_config_set_int("stuff/pager_h_0", config.pager_h_1);
   gnome_config_pop_prefix();
   gnome_config_sync();
   gnome_config_drop_all();
@@ -1438,6 +1493,11 @@ main(int argc, char *argv[])
   config.show_pager = gnome_config_get_int("gnome_pager/stuff/show_pager=1");
   config.show_icons = gnome_config_get_int("gnome_pager/stuff/show_icons=1");
   config.show_arrow = gnome_config_get_int("gnome_pager/stuff/show_arrow=1");
+  config.pager_w_0 = gnome_config_get_int("gnome_pager/stuff/pager_w_0=31");
+  config.pager_h_0 = gnome_config_get_int("gnome_pager/stuff/pager_h_0=22");
+  config.pager_w_1 = gnome_config_get_int("gnome_pager/stuff/pager_w_1=62");
+  config.pager_h_1 = gnome_config_get_int("gnome_pager/stuff/pager_h_1=44");
+
   /*make sure these are not done next time*/
   gnome_config_clean_file("gnome_pager");
 
@@ -1788,21 +1848,21 @@ actual_redraw(gpointer data)
 
   if (config.pager_size)
     {
-      if (widget->allocation.width != (area_w * PAGER_W_0))
-	gtk_widget_set_usize(widget, (area_w * PAGER_W_0), 
+      if (widget->allocation.width != (area_w * config.pager_w_0))
+	gtk_widget_set_usize(widget, (area_w * config.pager_w_0), 
 			 widget->allocation.height);
-      if (widget->allocation.height != (area_h * PAGER_H_0))
+      if (widget->allocation.height != (area_h * config.pager_h_0))
 	gtk_widget_set_usize(widget, widget->allocation.width, 
-			 (area_h * PAGER_H_0));
+			 (area_h * config.pager_h_0));
     }
   else
     {
-      if (widget->allocation.width != (area_w * PAGER_W_1))
-	gtk_widget_set_usize(widget, (area_w * PAGER_W_1), 
+      if (widget->allocation.width != (area_w * config.pager_w_1))
+	gtk_widget_set_usize(widget, (area_w * config.pager_w_1), 
 			 widget->allocation.height);
-      if (widget->allocation.height != (area_h * PAGER_H_1))
+      if (widget->allocation.height != (area_h * config.pager_h_1))
 	gtk_widget_set_usize(widget, widget->allocation.width, 
-			 (area_h * PAGER_H_1));
+			 (area_h * config.pager_h_1));
     }
   w = widget->allocation.width - 4;
   h = widget->allocation.height - 4;
@@ -2032,9 +2092,9 @@ init_applet_gui(int horizontal)
   for (i = 0; i < num_desk; i++)
     {
       if (config.pager_size)
-	desk = make_desktop_pane(i, PAGER_W_0, PAGER_H_0);
+	desk = make_desktop_pane(i, config.pager_w_0, config.pager_h_0);
       else
-	desk = make_desktop_pane(i, PAGER_W_1, PAGER_H_1);
+	desk = make_desktop_pane(i, config.pager_w_1, config.pager_h_1);
       desk_widget[i] = desk;
       gtk_widget_show(desk);
       gtk_table_attach_defaults(GTK_TABLE(table), desk,
