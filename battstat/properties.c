@@ -260,13 +260,13 @@ progdir_toggled (GtkToggleButton *button, gpointer data)
   change_orient ( NULL, battstat->orienttype, battstat );				 
 }
 
-int
-prop_cancel (GtkWidget *w, gpointer data)
+static void
+response_cb (GtkDialog *dialog, gint id, gpointer data)
 {
-  if (DEBUG) g_print("prop_cancel()\n");
-
-  return FALSE;
-  w = NULL;
+  ProgressData   *battstat = data;
+  
+  gtk_widget_hide (GTK_WIDGET (battstat->prop_win));
+  
 }
 
 void
@@ -300,13 +300,13 @@ prop_cb (PanelApplet *applet, gpointer data)
 
    if (battstat->prop_win) { 
      gtk_window_present (GTK_WINDOW (battstat->prop_win));
-     //return;
+     return;
    } 
 
   glade_xml = glade_xml_new (GLADE_DIR "/battstat_applet.glade", 
                              "battstat_properties", NULL);
   
-  battstat->prop_win = GNOME_DIALOG (glade_xml_get_widget (glade_xml, 
+  battstat->prop_win = GTK_DIALOG (glade_xml_get_widget (glade_xml, 
   				   "battstat_properties"));
 	
   widget = glade_xml_get_widget (glade_xml, "yellow_spin");
@@ -462,19 +462,9 @@ prop_cb (PanelApplet *applet, gpointer data)
 		       GTK_SIGNAL_FUNC (toggle_value_changed_cb), battstat);
 #endif
    
-#if 1
-   gtk_signal_connect (GTK_OBJECT (battstat->prop_win), "apply",
-		       GTK_SIGNAL_FUNC (prop_apply), battstat);
-   
-   gtk_signal_connect (GTK_OBJECT (battstat->prop_win), "destroy",
-		       GTK_SIGNAL_FUNC (prop_cancel), battstat);
-   
-   gtk_signal_connect (GTK_OBJECT (battstat->prop_win), "delete_event",
-		       GTK_SIGNAL_FUNC (prop_cancel), battstat); 
-   
-   gtk_signal_connect (GTK_OBJECT (battstat->prop_win), "help",
-		       GTK_SIGNAL_FUNC (helppref_cb), battstat);
-#endif   
+   gtk_dialog_add_button (battstat->prop_win, GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE);
+   g_signal_connect (G_OBJECT (battstat->prop_win), "response",
+   		     G_CALLBACK (response_cb), battstat);
    gtk_widget_show_all (GTK_WIDGET (battstat->prop_win));
    
    gtk_adjustment_value_changed(GTK_ADJUSTMENT (battstat->testadj));

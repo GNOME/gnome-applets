@@ -4,15 +4,17 @@
 <glade-interface>
   <requires lib="gnome" />
 
-  <widget class="GnomePropertyBox" id="battstat_properties">
+  <widget class="GtkDialog" id="battstat_properties">
     <property name="title" translatable="yes">Battstat Settings</property>
-    <property name="modal">no</property>
     <property name="allow_shrink">no</property>
     <property name="allow_grow">no</property>
     <property name="visible">no</property>
-    <property name="window-position">GTK_WIN_POS_NONE</property>
-
-    <child internal-child="notebook">
+    
+    <child internal-child="vbox">
+      <widget class="GtkVbox" id="dialog_vbox">
+        <property name="visible">yes</property>
+        
+    <child>
       <widget class="GtkNotebook" id="notebook1">
         <property name="can_focus">yes</property>
         <property name="show_tabs">yes</property>
@@ -840,6 +842,8 @@
         <property name="expand">yes</property>
         <property name="fill">yes</property>
       </packing>
+    </child>
+    </widget>
     </child>
   </widget>
 </glade-interface>
