@@ -40,6 +40,7 @@
 #include <linux/if_ppp.h>
 #include <linux/isdn.h>
 #include <sys/ioctl.h>
+#include <sys/types.h>
 #include <fcntl.h>
 
 static unsigned long *isdn_stats = NULL;
@@ -281,31 +282,60 @@ static int is_ISDN_on(void)
 	 * for Linux use.
 	 *
 	 * Martin
+	 *
+	 * ---
+	 *
+	 * With Linux kernel 2.4, glibc 2.2 (*) and certain providers with
+	 * long phone numbers, the contents of /dev/isdninfo can be more than
+	 * 1024 bytes and not be properly processed by multiple subsequent
+	 * fgets()'s, so we (try to atomically) read() BUFSIZE bytes into
+	 * buffer[] and process this instead of /dev/isdninfo directly.
+	 *
+	 * (*): dont't nail me on this combination
+	 *
+	 * Nils
 	 */
 
-	FILE *f = 0;
 	char buffer [BUFSIZ], *p;
 	int i;
+	int fd;
+	int length;
 
-	f = fopen("/dev/isdninfo", "r");
+	fd = open ("/dev/isdninfo", O_RDONLY | O_NDELAY);
 
-	if (!f) return FALSE;
-
-	for (i = 0; i < 5; i++) {
-		if (fgets (buffer, BUFSIZ, f) == NULL) {
-			fclose (f);
-			return FALSE;
-		}
-	}
-
-	if (strncmp (buffer, "flags:", 6)) {
-		fclose (f);
+	if (fd < 0) {
+		perror ("/dev/isdninfo");
 		return FALSE;
 	}
 
-	p = buffer+6;
+	if ((length = read (fd, buffer, BUFSIZ - 1)) < 0) {
+		perror ("/dev/isdninfo");
+		close (fd);
+		return FALSE;
+	}
 
-	while (*p) {
+	buffer[length+1] = (char)0;
+
+	p = buffer;
+
+	/* Seek for the fifth line */
+	for (i = 1; i < 5; i++) {
+		if ((p = strchr (p, '\n')) == NULL) {
+			close (fd);
+			return FALSE;
+		}
+		p++;
+	}
+
+	/* *p is the first character of the fifth line now */
+	if (strncmp (p, "flags:", 6)) {
+		close (fd);
+		return FALSE;
+	}
+
+	p += 6;
+
+	while (*p && (*p != '\n')) {
 		char *end = p;
 
 		if (isspace (*p)) {
@@ -326,12 +356,11 @@ static int is_ISDN_on(void)
 			continue;
 		}
 
-		fclose (f);
-
+		close (fd);
 		return TRUE;
 	}
 
-	fclose (f);
+	close (fd);
 
 	return FALSE;
 #else
@@ -1100,8 +1129,8 @@ static void pixmap_set_colors(GdkPixmap *pixmap, GdkColor *bg, GdkColor *fg, Gdk
 	gint h;
 	gint x, y;
 	GdkImage *image;
-	guint32 bg_pixel;
-	guint32 fg_pixel;
+	guint32 bg_pixel = 0x00000000;
+	guint32 fg_pixel = 0x00000000;
 	gint have_fg = FALSE;
 
 	gdk_window_get_size(pixmap, &w, &h);
