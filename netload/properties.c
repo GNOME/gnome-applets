@@ -20,8 +20,9 @@ static netload_properties new_props;
 void setup_colors(void);
 void start_timer( void );
 
-void load_properties( netload_properties *prop )
+void load_properties(char *path, netload_properties *prop )
 {
+	gnome_config_push_prefix(path);
 	prop->gcolor	= gnome_config_get_string ("/netload_applet/all/gcolor=#20b2aa");
 	prop->bcolor	= gnome_config_get_string ("/netload_applet/all/bcolor=#188982");
 	prop->speed	= gnome_config_get_int    ("/netload_applet/all/speed=2000");
@@ -30,10 +31,12 @@ void load_properties( netload_properties *prop )
 	prop->look	= gnome_config_get_bool   ("/netload_applet/all/look=1");
 	prop->device	= gnome_config_get_string ("/netload_applet/all/device=ppp0");
 	prop->line_spacing	= gnome_config_get_int	  ("/netload_applet/all/line_spacing=1024");	
+	gnome_config_pop_prefix();
 }
 
-void save_properties( netload_properties *prop )
+void save_properties(char *path, netload_properties *prop )
 {
+	gnome_config_push_prefix(path);
 	gnome_config_set_string( "/netload_applet/all/gcolor", prop->gcolor );
 	gnome_config_set_string( "/netload_applet/all/bcolor", prop->bcolor );
 	gnome_config_set_int   ( "/netload_applet/all/speed", prop->speed );
@@ -43,6 +46,7 @@ void save_properties( netload_properties *prop )
 	gnome_config_set_string( "/netload_applet/all/device", prop->device );
 	gnome_config_set_int   ( "/netload_applet/all/line_spacing", prop->line_spacing );
 	gnome_config_sync();
+	gnome_config_pop_prefix();
 }
 
 void color_changed_cb( GnomeColorSelector *widget, gchar **color )
@@ -180,7 +184,8 @@ void line_cb( GtkWidget *widget, GtkWidget *spin )
 
 GtkWidget *create_device_frame(void)
 {
-	GtkWidget *box, *label, *device_box, *device, *line_box, *line_a, *line;
+	GtkWidget *box, *label, *device_box, *device, *line_box, *line;
+	GtkObject *line_a;
 
 	box = gtk_vbox_new( 5, TRUE );
 
@@ -213,10 +218,11 @@ GtkWidget *create_device_frame(void)
 
 void apply_cb( GtkWidget *widget, void *data )
 {
-	save_properties(&new_props);
-	load_properties(&props);
+	memcpy(&props, &new_props, sizeof(netload_properties));
         setup_colors();
 	start_timer();
+	
+	/* FIXME: Need to resize. */
 }
 
 void close_cb( GtkWidget *widget, void *data )
@@ -231,9 +237,8 @@ void properties(int id, gpointer data)
 	if( propbox )
 		return;
 
-	load_properties(&new_props);
-	load_properties(&props);
-	
+	memcpy(&new_props, &props, sizeof(netload_properties));
+		
         if (!(propbox = gnome_property_box_new())){
 		fprintf(stderr, "properties.c: gnome_property_box_new() failed.\n");
 		return;

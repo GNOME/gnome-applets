@@ -12,7 +12,7 @@ typedef struct
 } netload_properties;
 
 void properties(int id, gpointer data);
-void load_properties( netload_properties *prop );
-void save_properties( netload_properties *prop );
+void load_properties(char *path, netload_properties *prop );
+void save_properties(char *path, netload_properties *prop );
 
 #endif
