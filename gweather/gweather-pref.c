@@ -340,7 +340,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(gw_applet->pref_basic_metric_btn), 
     				 gw_applet->gweather_pref.use_metric);
 
-    check = gtk_check_button_new_with_mnemonic (_("_Display temperatures"));
+    check = gtk_check_button_new_with_mnemonic (_("Display _temperatures"));
     gtk_box_pack_start (GTK_BOX (vbox2), check, FALSE, FALSE, 0);
     gtk_widget_show (gw_applet->pref_basic_metric_btn);
     g_signal_connect (G_OBJECT (check), "toggled",
