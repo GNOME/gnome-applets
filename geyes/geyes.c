@@ -1,4 +1,5 @@
-/* geyes.c - A cheap xeyes ripoff.
+/* -*- Mode: C++; c-basic-offset: 8 -*-
+ * geyes.c - A cheap xeyes ripoff.
  * Copyright (C) 1999 Dave Camp
  *
  * This program is free software; you can redistribute it and/or modify
@@ -26,6 +27,7 @@
 #define UPDATE_TIMEOUT 75
 
 EyesApplet eyes_applet = {0};
+guint timeout_handle = -1;
 
 /* Applet transparency - Taken (and modified a bit) from Miguel's gen-util
  * printer applet (thanks to Inigo Serna who pointed this code out to me)
@@ -33,7 +35,7 @@ EyesApplet eyes_applet = {0};
 static void 
 applet_set_default_back (GtkWidget *dest, GtkWidget *src)
 {
-	gtk_widget_set_rc_style(dest);
+		gtk_widget_set_rc_style(dest);
         gtk_widget_queue_draw (dest);
 }
 
@@ -237,7 +239,8 @@ destroy_eyes (void)
         gtk_signal_disconnect_by_func (GTK_OBJECT (eyes_applet.applet),
                                        GTK_SIGNAL_FUNC (applet_back_change),
                                        eyes_applet.fixed);
-        
+		
+		
         for (i = 0; i < eyes_applet.num_eyes; i++) {
                 gdk_pixmap_unref (eyes_applet.pixmap[i]);
                 gtk_widget_destroy (eyes_applet.eyes[i]);
@@ -331,18 +334,30 @@ create_eyes (void)
         gtk_widget_show (eyes_applet.fixed);
 }
 
+static gint
+delete_cb (GtkWidget *widget, GdkEvent *event, gpointer data)
+{
+	    gtk_timeout_remove (timeout_handle);
+	    timeout_handle = -1;
+		return FALSE;
+}
+
 static void
 create_eyes_applet (void)
 {
-        eyes_applet.applet = applet_widget_new ("geyes_applet");
-        
-        if (!eyes_applet.applet)
-                g_error ("Can't create applet!\n");
+	    eyes_applet.applet = applet_widget_new ("geyes_applet");
+	
+	    if (!eyes_applet.applet)
+				g_error ("Can't create applet!\n");
         
         gtk_signal_connect (GTK_OBJECT (eyes_applet.applet),
                             "save_session",
                             GTK_SIGNAL_FUNC (save_session_cb), 
                             NULL);
+		gtk_signal_connect (GTK_OBJECT (eyes_applet.applet),
+							"delete_event",
+							GTK_SIGNAL_FUNC (delete_cb),
+							NULL);
         
         applet_widget_register_stock_callback (APPLET_WIDGET (eyes_applet.applet),
                                                "about",
@@ -373,7 +388,8 @@ main (int argc, char *argv[])
         properties_load (APPLET_WIDGET (eyes_applet.applet)->privcfgpath);
         create_eyes ();
         
-        gtk_timeout_add (UPDATE_TIMEOUT, (void *) timer_cb, NULL);
+        timeout_handle = gtk_timeout_add (UPDATE_TIMEOUT, 
+										  (void *) timer_cb, NULL);
         
         gtk_widget_show (eyes_applet.applet);
         
