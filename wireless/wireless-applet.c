@@ -126,6 +126,12 @@ wireless_applet_get_type (void)
 	return type;
 }
 
+/* FIXME: The icon used by this applet when there's no signal is impossible
+ * to localise as it says N/A in the icon itself. Need to swap the icon
+ * with something more l10n friendly. Also, localising the label makes it
+ * necessary to ditch g_strcasecmp() in favor of something else.
+ */
+
 static void 
 wireless_applet_draw (WirelessApplet *applet, int percent)
 {
@@ -137,7 +143,7 @@ wireless_applet_draw (WirelessApplet *applet, int percent)
 	if (percent > 0) {
 		tmp = g_strdup_printf ("%2.0d%%", percent);
 	} else {
-		tmp = g_strdup_printf ("N/A");
+		tmp = g_strdup_printf (_("N/A"));
 	}
 
 	label_text = gtk_label_get_text (GTK_LABEL (applet->pct_label));
@@ -271,7 +277,7 @@ wireless_applet_read_device_state (WirelessApplet *applet)
 			applet->devices = g_list_prepend (applet->devices, g_strdup (device));
 
 			/* is it the one we're supposed to monitor ? */
-			if (g_strcasecmp (applet->device, device)==0) {
+			if (g_ascii_strcasecmp (applet->device, device)==0) {
 				link = strtod (ptr, &ptr);
 				ptr++;
 
