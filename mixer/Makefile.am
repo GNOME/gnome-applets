@@ -47,6 +47,7 @@ EXTRA_DIST = 						\
 	GNOME_MixerApplet.server.in.in			\
 	$(ui_DATA) 					\
 	$(pixmaps_DATA)					\
+	$(icons_DATA)					\
 	$(schemas_in_files)
 
 CLEANFILES = $(server_in_files) $(server_DATA)
