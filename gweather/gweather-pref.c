@@ -840,7 +840,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
 	    hard_set_sensitive (gw_applet->pref_basic_update_btn, FALSE);
 
     /* Temperature Unit */
-    temp_label = gtk_label_new_with_mnemonic (_("_Temperature Unit:"));
+    temp_label = gtk_label_new_with_mnemonic (_("_Temperature unit:"));
     gtk_label_set_use_markup (GTK_LABEL (temp_label), TRUE);
     gtk_label_set_justify (GTK_LABEL (temp_label), GTK_JUSTIFY_LEFT);
     gtk_misc_set_alignment (GTK_MISC (temp_label), 0, 0.5);
@@ -860,7 +860,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
         hard_set_sensitive (gw_applet->pref_basic_temp_combo, FALSE);
 	
     /* Speed Unit */
-    speed_label = gtk_label_new_with_mnemonic (_("_Wind Speed Unit:"));
+    speed_label = gtk_label_new_with_mnemonic (_("_Wind speed unit:"));
     gtk_label_set_use_markup (GTK_LABEL (speed_label), TRUE);
     gtk_label_set_justify (GTK_LABEL (speed_label), GTK_JUSTIFY_LEFT);
     gtk_misc_set_alignment (GTK_MISC (speed_label), 0, 0.5);
@@ -884,7 +884,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
         hard_set_sensitive (gw_applet->pref_basic_speed_combo, FALSE);
 
     /* Pressure Unit */
-    pres_label = gtk_label_new_with_mnemonic (_("_Pressure Unit:"));
+    pres_label = gtk_label_new_with_mnemonic (_("_Pressure unit:"));
     gtk_label_set_use_markup (GTK_LABEL (pres_label), TRUE);
     gtk_label_set_justify (GTK_LABEL (pres_label), GTK_JUSTIFY_LEFT);
     gtk_misc_set_alignment (GTK_MISC (pres_label), 0, 0.5);
@@ -910,7 +910,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
         hard_set_sensitive (gw_applet->pref_basic_pres_combo, FALSE);
 
     /* Distance Unit */
-    dist_label = gtk_label_new_with_mnemonic (_("_Visibility Unit:"));
+    dist_label = gtk_label_new_with_mnemonic (_("_Visibility unit:"));
     gtk_label_set_use_markup (GTK_LABEL (dist_label), TRUE);
     gtk_label_set_justify (GTK_LABEL (dist_label), GTK_JUSTIFY_LEFT);
     gtk_misc_set_alignment (GTK_MISC (dist_label), 0, 0.5);
@@ -931,15 +931,24 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     if ( ! key_writable (gw_applet->applet, GCONF_DISTANCE_UNIT))
         hard_set_sensitive (gw_applet->pref_basic_dist_combo, FALSE);
 	
-	unit_table = gtk_table_new(5, 3, FALSE);
+	unit_table = gtk_table_new(5, 2, FALSE);
 	gtk_table_set_row_spacings(GTK_TABLE(unit_table), 6);
-	gtk_table_attach_defaults(GTK_TABLE(unit_table), temp_label,  0, 1, 0, 1);
+	gtk_table_set_col_spacings(GTK_TABLE(unit_table), 12);
+	gtk_table_attach(GTK_TABLE(unit_table), temp_label, 0, 1, 0, 1,
+	                 (GtkAttachOptions) (GTK_FILL),
+	                 (GtkAttachOptions) (0), 0, 0);
 	gtk_table_attach_defaults(GTK_TABLE(unit_table), temp_combo,  1, 2, 0, 1);
-	gtk_table_attach_defaults(GTK_TABLE(unit_table), speed_label, 0, 1, 1, 2);
+	gtk_table_attach(GTK_TABLE(unit_table), speed_label, 0, 1, 1, 2,
+	                 (GtkAttachOptions) (GTK_FILL),
+	                 (GtkAttachOptions) (0), 0, 0);
 	gtk_table_attach_defaults(GTK_TABLE(unit_table), speed_combo, 1, 2, 1, 2);
-	gtk_table_attach_defaults(GTK_TABLE(unit_table), pres_label,  0, 1, 2, 3);
+	gtk_table_attach(GTK_TABLE(unit_table), pres_label, 0, 1, 2, 3,
+	                 (GtkAttachOptions) (GTK_FILL),
+	                 (GtkAttachOptions) (0), 0, 0);	
 	gtk_table_attach_defaults(GTK_TABLE(unit_table), pres_combo,  1, 2, 2, 3);
-	gtk_table_attach_defaults(GTK_TABLE(unit_table), dist_label,  0, 1, 3, 4);
+	gtk_table_attach(GTK_TABLE(unit_table), dist_label, 0, 1, 3, 4,
+	                 (GtkAttachOptions) (GTK_FILL),
+	                 (GtkAttachOptions) (0), 0, 0);	
 	gtk_table_attach_defaults(GTK_TABLE(unit_table), dist_combo,  1, 2, 3, 4);
 	gtk_widget_show(unit_table);
 	
