@@ -160,6 +160,8 @@ void property_show(AppletWidget *applet, gpointer data)
         static GnomeHelpMenuEntry help_entry = { NULL, "properties" };
 	GtkWidget *frame;
 	GtkWidget *hbox;
+	GtkWidget *vbox;
+	GtkWidget *vbox1;
 	GtkWidget *label;
 	GtkWidget *delay_w;
 	GtkObject *delay_adj;
@@ -182,31 +184,25 @@ void property_show(AppletWidget *applet, gpointer data)
 	gtk_window_set_title(GTK_WINDOW(&GNOME_PROPERTY_BOX(propwindow)->dialog.window),
 		_("Modem Lights Settings"));
 	
-	frame = gtk_vbox_new(FALSE, 5);
+	vbox = gtk_vbox_new(FALSE, GNOME_PAD_SMALL);
+	gtk_container_border_width(GTK_CONTAINER(vbox), GNOME_PAD_SMALL);
 
-	hbox = gtk_hbox_new(FALSE, 5);
-        gtk_box_pack_start( GTK_BOX(frame), hbox, FALSE, FALSE, 5);
-	gtk_widget_show(hbox);
+	frame = gtk_frame_new(_("Connecting"));
+	gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
+	gtk_widget_show(frame);
 
-        label = gtk_label_new(_("Updates per second"));
-        gtk_box_pack_start( GTK_BOX(hbox), label, FALSE, FALSE, 5);
-	gtk_widget_show(label);
-
-	delay_adj = gtk_adjustment_new( P_UPDATE_DELAY, 1.0, 20.0, 1, 1, 1 );
-        delay_w  = gtk_spin_button_new( GTK_ADJUSTMENT(delay_adj), 1, 0 );
-        gtk_box_pack_start( GTK_BOX(hbox), delay_w, FALSE, FALSE, 5);
-	gtk_signal_connect( GTK_OBJECT(delay_adj),"value_changed",GTK_SIGNAL_FUNC(update_delay_cb), delay_w);
-	gtk_signal_connect( GTK_OBJECT(delay_w),"changed",GTK_SIGNAL_FUNC(update_delay_cb), delay_w);
-        gtk_spin_button_set_update_policy( GTK_SPIN_BUTTON(delay_w),GTK_UPDATE_ALWAYS );
-	gtk_widget_show(delay_w);
+	vbox1 = gtk_vbox_new(FALSE, 0);
+	gtk_container_border_width(GTK_CONTAINER(vbox1), GNOME_PAD_SMALL);
+	gtk_container_add(GTK_CONTAINER(frame), vbox1);
+	gtk_widget_show(vbox1);
 
 	/* connect entry */
-	hbox = gtk_hbox_new(FALSE, 5);
-        gtk_box_pack_start( GTK_BOX(frame), hbox, FALSE, FALSE, 5);
+	hbox = gtk_hbox_new(FALSE, GNOME_PAD_SMALL);
+        gtk_box_pack_start(GTK_BOX(vbox1), hbox, FALSE, FALSE, 0);
 	gtk_widget_show(hbox);
 
         label = gtk_label_new(_("Connect command:"));
-        gtk_box_pack_start( GTK_BOX(hbox), label, FALSE, FALSE, 5);
+        gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
 	gtk_widget_show(label);
 
 	connect_entry = gtk_entry_new_with_max_length(255);
@@ -214,16 +210,16 @@ void property_show(AppletWidget *applet, gpointer data)
 	gtk_signal_connect_object(GTK_OBJECT(connect_entry), "changed",
                             GTK_SIGNAL_FUNC(gnome_property_box_changed),
                             GTK_OBJECT(propwindow));
-        gtk_box_pack_start( GTK_BOX(hbox),connect_entry , TRUE, TRUE, 5);
+        gtk_box_pack_start(GTK_BOX(hbox), connect_entry , TRUE, TRUE, 0);
 	gtk_widget_show(connect_entry);
 
 	/* disconnect entry */
-	hbox = gtk_hbox_new(FALSE, 5);
-        gtk_box_pack_start( GTK_BOX(frame), hbox, FALSE, FALSE, 5);
+	hbox = gtk_hbox_new(FALSE, GNOME_PAD_SMALL);
+        gtk_box_pack_start(GTK_BOX(vbox1), hbox, FALSE, FALSE, 0);
 	gtk_widget_show(hbox);
 
         label = gtk_label_new(_("Disconnect command:"));
-        gtk_box_pack_start( GTK_BOX(hbox), label, FALSE, FALSE, 5);
+        gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
 	gtk_widget_show(label);
 
 	disconnect_entry = gtk_entry_new_with_max_length(255);
@@ -231,40 +227,76 @@ void property_show(AppletWidget *applet, gpointer data)
 	gtk_signal_connect_object(GTK_OBJECT(disconnect_entry), "changed",
                             GTK_SIGNAL_FUNC(gnome_property_box_changed),
                             GTK_OBJECT(propwindow));
-        gtk_box_pack_start( GTK_BOX(hbox),disconnect_entry , TRUE, TRUE, 5);
+        gtk_box_pack_start(GTK_BOX(hbox), disconnect_entry, TRUE, TRUE, 0);
 	gtk_widget_show(disconnect_entry);
 
 	/* confirmation checkbox */
 	checkbox = gtk_check_button_new_with_label(_("Confirm connection"));
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (checkbox), ask_for_confirmation);
-	gtk_signal_connect( GTK_OBJECT(checkbox), "toggled",
-			    GTK_SIGNAL_FUNC(confirm_checkbox_cb), NULL);
-        gtk_box_pack_start( GTK_BOX(frame), checkbox, FALSE, FALSE, 5);
+	gtk_signal_connect(GTK_OBJECT(checkbox), "toggled",
+			   GTK_SIGNAL_FUNC(confirm_checkbox_cb), NULL);
+        gtk_box_pack_start(GTK_BOX(vbox1), checkbox, FALSE, FALSE, 0);
 	gtk_widget_show(checkbox);
+
+	frame = gtk_frame_new(_("Display"));
+	gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
+	gtk_widget_show(frame);
+
+	vbox1 = gtk_vbox_new(FALSE, 0);
+	gtk_container_border_width(GTK_CONTAINER(vbox1), GNOME_PAD_SMALL);
+	gtk_container_add(GTK_CONTAINER(frame), vbox1);
+	gtk_widget_show(vbox1);
+
+	/* update adjustment */
+	hbox = gtk_hbox_new(FALSE, GNOME_PAD_SMALL);
+        gtk_box_pack_start(GTK_BOX(vbox1), hbox, FALSE, FALSE, 0);
+	gtk_widget_show(hbox);
+
+        label = gtk_label_new(_("Updates per second"));
+        gtk_box_pack_start( GTK_BOX(hbox), label, FALSE, FALSE, 0);
+	gtk_widget_show(label);
+
+	delay_adj = gtk_adjustment_new( P_UPDATE_DELAY, 1.0, 20.0, 1, 1, 1 );
+        delay_w  = gtk_spin_button_new( GTK_ADJUSTMENT(delay_adj), 1, 0 );
+        gtk_box_pack_start(GTK_BOX(hbox), delay_w, FALSE, FALSE, 0);
+	gtk_signal_connect(GTK_OBJECT(delay_adj),"value_changed",GTK_SIGNAL_FUNC(update_delay_cb), delay_w);
+	gtk_signal_connect(GTK_OBJECT(delay_w),"changed",GTK_SIGNAL_FUNC(update_delay_cb), delay_w);
+        gtk_spin_button_set_update_policy( GTK_SPIN_BUTTON(delay_w),GTK_UPDATE_ALWAYS );
+	gtk_widget_show(delay_w);
 
 	/* extra info checkbox */
 	checkbox = gtk_check_button_new_with_label(_("Show connect time and throughput"));
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (checkbox), show_extra_info);
-	gtk_signal_connect( GTK_OBJECT(checkbox), "toggled",
-			    GTK_SIGNAL_FUNC(show_extra_info_cb), NULL);
-        gtk_box_pack_start( GTK_BOX(frame), checkbox, FALSE, FALSE, 5);
+	gtk_signal_connect(GTK_OBJECT(checkbox), "toggled",
+			   GTK_SIGNAL_FUNC(show_extra_info_cb), NULL);
+        gtk_box_pack_start(GTK_BOX(vbox1), checkbox, FALSE, FALSE, 0);
 	gtk_widget_show(checkbox);
 
         label = gtk_label_new(_("General"));
-        gtk_widget_show(frame);
-        gnome_property_box_append_page( GNOME_PROPERTY_BOX(propwindow),frame ,label);
+        gtk_widget_show(vbox);
+        gnome_property_box_append_page( GNOME_PROPERTY_BOX(propwindow), vbox, label);
 
 	/* advanced settings */
 
-	frame = gtk_vbox_new(FALSE, 5);
+	vbox = gtk_vbox_new(FALSE, GNOME_PAD_SMALL);
+	gtk_container_border_width(GTK_CONTAINER(vbox), GNOME_PAD_SMALL);
+
+	frame = gtk_frame_new(_("Modem options"));
+	gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
+	gtk_widget_show(frame);
+
+	vbox1 = gtk_vbox_new(FALSE, 0);
+	gtk_container_border_width(GTK_CONTAINER(vbox1), GNOME_PAD_SMALL);
+	gtk_container_add(GTK_CONTAINER(frame), vbox1);
+	gtk_widget_show(vbox1);
 
 	/* lock file entry */
-	hbox = gtk_hbox_new(FALSE, 5);
-        gtk_box_pack_start( GTK_BOX(frame), hbox, FALSE, FALSE, 5);
+	hbox = gtk_hbox_new(FALSE, GNOME_PAD_SMALL);
+        gtk_box_pack_start(GTK_BOX(vbox1), hbox, FALSE, FALSE, 0);
 	gtk_widget_show(hbox);
 
         label = gtk_label_new(_("Modem lock file:"));
-        gtk_box_pack_start( GTK_BOX(hbox), label, FALSE, FALSE, 5);
+        gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
 	gtk_widget_show(label);
 
 	lockfile_entry = gtk_entry_new_with_max_length(255);
@@ -272,23 +304,23 @@ void property_show(AppletWidget *applet, gpointer data)
 	gtk_signal_connect_object(GTK_OBJECT(lockfile_entry), "changed",
                             GTK_SIGNAL_FUNC(gnome_property_box_changed),
                             GTK_OBJECT(propwindow));
-        gtk_box_pack_start( GTK_BOX(hbox),lockfile_entry , TRUE, TRUE, 5);
+        gtk_box_pack_start(GTK_BOX(hbox), lockfile_entry, TRUE, TRUE, 0);
 	gtk_widget_show(lockfile_entry);
 
 	verify_checkbox = gtk_check_button_new_with_label(_("Verify owner of lock file"));
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (verify_checkbox), verify_lock_file);
-	gtk_signal_connect( GTK_OBJECT(verify_checkbox), "toggled",
-			    GTK_SIGNAL_FUNC(verify_lock_file_cb), NULL);
-        gtk_box_pack_start( GTK_BOX(frame), verify_checkbox, FALSE, FALSE, 5);
+	gtk_signal_connect(GTK_OBJECT(verify_checkbox), "toggled",
+			   GTK_SIGNAL_FUNC(verify_lock_file_cb), NULL);
+        gtk_box_pack_start(GTK_BOX(vbox1), verify_checkbox, FALSE, FALSE, 0);
 	gtk_widget_show(verify_checkbox);
 
 	/* device entry */
-	hbox = gtk_hbox_new(FALSE, 5);
-        gtk_box_pack_start( GTK_BOX(frame), hbox, FALSE, FALSE, 5);
+	hbox = gtk_hbox_new(FALSE, GNOME_PAD_SMALL);
+        gtk_box_pack_start(GTK_BOX(vbox1), hbox, FALSE, FALSE, 0);
 	gtk_widget_show(hbox);
 
         label = gtk_label_new(_("Device:"));
-        gtk_box_pack_start( GTK_BOX(hbox), label, FALSE, FALSE, 5);
+        gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
 	gtk_widget_show(label);
 
 	device_entry = gtk_entry_new_with_max_length(16);
@@ -296,15 +328,15 @@ void property_show(AppletWidget *applet, gpointer data)
 	gtk_signal_connect_object(GTK_OBJECT(device_entry), "changed",
                             GTK_SIGNAL_FUNC(gnome_property_box_changed),
                             GTK_OBJECT(propwindow));
-        gtk_box_pack_start( GTK_BOX(hbox),device_entry , TRUE, TRUE, 5);
+        gtk_box_pack_start(GTK_BOX(hbox), device_entry, TRUE, TRUE, 0);
 	gtk_widget_show(device_entry);
 
 	/* ISDN checkbox */
 	checkbox = gtk_check_button_new_with_label(_("Use ISDN"));
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (checkbox), use_ISDN);
-	gtk_signal_connect( GTK_OBJECT(checkbox), "toggled",
-			    GTK_SIGNAL_FUNC(isdn_checkbox_cb), NULL);
-        gtk_box_pack_start( GTK_BOX(frame), checkbox, FALSE, FALSE, 5);
+	gtk_signal_connect(GTK_OBJECT(checkbox), "toggled",
+			   GTK_SIGNAL_FUNC(isdn_checkbox_cb), NULL);
+        gtk_box_pack_start(GTK_BOX(vbox), checkbox, FALSE, FALSE, 0);
 	gtk_widget_show(checkbox);
 
 	if (use_ISDN)
@@ -315,8 +347,8 @@ void property_show(AppletWidget *applet, gpointer data)
 		}
 
         label = gtk_label_new(_("Advanced"));
-        gtk_widget_show(frame);
-        gnome_property_box_append_page( GNOME_PROPERTY_BOX(propwindow),frame ,label);
+        gtk_widget_show(vbox);
+        gnome_property_box_append_page( GNOME_PROPERTY_BOX(propwindow), vbox, label);
 
 	gtk_signal_connect( GTK_OBJECT(propwindow), "apply",
 			    GTK_SIGNAL_FUNC(property_apply_cb), NULL );
