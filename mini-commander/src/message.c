@@ -35,6 +35,7 @@ static int message_locked = FALSE;
 static gint hide_message(gpointer data);
 static gint show_interesting_information(gpointer data);
 static GtkWidget *message_window = NULL;
+static GtkWidget *window_message_label;
 
 
 void
@@ -51,11 +52,10 @@ void show_message(gchar *message)
 	    gtk_label_set_text(GTK_LABEL(label_message), message);   
 	    message_locked = TRUE;
 	}
-    else if(prop.flat_layout)
+    else
 	{
 	    /* FIXME: cleanup needed */
 	    GtkWidget *frame;
-	    GtkWidget *message_label;
 	    gint x, y, yy;
 	    
 	    if(message_window != NULL)
@@ -81,9 +81,9 @@ void show_message(gchar *message)
 	    gtk_widget_show(frame);
 	    gtk_container_add(GTK_CONTAINER(message_window), frame);	
 	    /* label */
-	    message_label = gtk_label_new((gchar *) message);
-	    gtk_widget_show(message_label);
-	    gtk_container_add(GTK_CONTAINER(frame), message_label);
+	    window_message_label = gtk_label_new((gchar *) message);
+	    gtk_widget_show(window_message_label);
+	    gtk_container_add(GTK_CONTAINER(frame), window_message_label);
 	}
 
     gtk_timeout_add(2000, (GtkFunction) hide_message, (gpointer) message);
@@ -95,21 +95,28 @@ hide_message(gpointer data)
     gchar *message = (char *) data;
     gchar *current_message;
 
-    gtk_label_get(GTK_LABEL(label_message), &current_message);
-    if(!prop.flat_layout && strcmp((char *) message, (char *) current_message) == 0)
+    if(!prop.flat_layout)
 	{
-	    /* this is the message which has to be removed;
-	       otherwise don't hide this message */
-	    /* gtk_widget_hide (applet); */
-	    gtk_label_set_text(GTK_LABEL(label_message), " "); 
-	    /* gtk_widget_show (applet); */
-	    message_locked = FALSE;
+	    gtk_label_get(GTK_LABEL(label_message), &current_message);
+	    if(strcmp((char *) message, (char *) current_message) == 0)
+		{
+		    /* this is the message which has to be removed;
+		       otherwise don't hide this message */
+		    /* gtk_widget_hide (applet); */
+		    gtk_label_set_text(GTK_LABEL(label_message), " "); 
+		    /* gtk_widget_show (applet); */
+		    message_locked = FALSE;
+		}
 	}
 
     if(message_window != NULL)
 	{
-	    gtk_widget_destroy(message_window);
-	    message_window = NULL;
+	    gtk_label_get(GTK_LABEL(window_message_label), &current_message);
+	    if(strcmp((char *) message, (char *) current_message) == 0)
+		{
+		    gtk_widget_destroy(message_window);
+		    message_window = NULL;
+		}
 	}
 
     /* stop timeout function */
