@@ -119,6 +119,7 @@ void stickynotes_applet_init_icons()
 	}
 
 	gtk_icon_factory_add_default(icon_factory);
+	gtk_icon_size_register(STICKYNOTES_ICON_SIZE_NAME, STICKYNOTES_ICON_SIZE_VALUE, STICKYNOTES_ICON_SIZE_VALUE);
 
 	g_object_unref(G_OBJECT(icon_factory));
 }

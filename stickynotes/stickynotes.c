@@ -61,9 +61,9 @@ StickyNote * stickynote_new()
 						      gconf_client_get_int(stickynotes->gconf, GCONF_PATH "/defaults/height", NULL));
 
 	/* Set the button images */
-	gtk_image_set_from_stock(GTK_IMAGE(glade_xml_get_widget(note->window, "close_img")), STICKYNOTES_STOCK_CLOSE, GTK_ICON_SIZE_MENU);
-	gtk_image_set_from_stock(GTK_IMAGE(glade_xml_get_widget(note->window, "resize_se_img")), STICKYNOTES_STOCK_RESIZE_SE, GTK_ICON_SIZE_MENU);
-	gtk_image_set_from_stock(GTK_IMAGE(glade_xml_get_widget(note->window, "resize_sw_img")), STICKYNOTES_STOCK_RESIZE_SW, GTK_ICON_SIZE_MENU);
+	gtk_image_set_from_stock(GTK_IMAGE(glade_xml_get_widget(note->window, "close_img")), STICKYNOTES_STOCK_CLOSE, STICKYNOTES_ICON_SIZE);
+	gtk_image_set_from_stock(GTK_IMAGE(glade_xml_get_widget(note->window, "resize_se_img")), STICKYNOTES_STOCK_RESIZE_SE, STICKYNOTES_ICON_SIZE);
+	gtk_image_set_from_stock(GTK_IMAGE(glade_xml_get_widget(note->window, "resize_sw_img")), STICKYNOTES_STOCK_RESIZE_SW, STICKYNOTES_ICON_SIZE);
 	
 	/* Customize the title and colors, hide and unlock */
 	stickynote_set_title(note, NULL);
@@ -195,19 +195,23 @@ void stickynote_set_color(StickyNote *note, const gchar *color_str, gboolean sav
 	/* Do not use custom colors if "use_system_color" is enabled */
 	if (color_str_actual) {
 		/* Custom colors */
-		GdkColor colors[4];
+		GdkColor colors[6];
+		gboolean success[6];
 
-		/* Make 4 shades of the color, getting darker from the original. */
+		/* Make 4 shades of the color, getting darker from the original, plus black and white */
 		gint i;
-		for (i = 0; i < 4; i++) {
+		for (i = 0; i <= 3; i++) {
 			gdk_color_parse(color_str_actual, &colors[i]);
-
+			
 			colors[i].red = (colors[i].red * (10 - i)) / 10;
 			colors[i].green = (colors[i].green * (10 - i)) / 10;
 			colors[i].blue = (colors[i].blue * (10 - i)) / 10;
-
-			gdk_colormap_alloc_color(gtk_widget_get_colormap(note->w_window), &colors[i], FALSE, TRUE);
 		}
+		gdk_color_parse("black", &colors[4]);
+		gdk_color_parse("white", &colors[5]);
+
+		/* Allocate these colors */
+		gdk_colormap_alloc_colors(gtk_widget_get_colormap(note->w_window), colors, 6, FALSE, TRUE, success);
 
 		/* Apply colors to style */
 		rc_style->base[GTK_STATE_NORMAL] = colors[0];
@@ -244,11 +248,11 @@ void stickynote_set_locked(StickyNote *note, gboolean locked)
 
 	/* Show appropriate icon and tooltip */
 	if (locked) {
-		gtk_image_set_from_stock(GTK_IMAGE(glade_xml_get_widget(note->window, "lock_img")), STICKYNOTES_STOCK_LOCK, GTK_ICON_SIZE_MENU);
+		gtk_image_set_from_stock(GTK_IMAGE(glade_xml_get_widget(note->window, "lock_img")), STICKYNOTES_STOCK_LOCK, STICKYNOTES_ICON_SIZE);
 		gtk_tooltips_set_tip(stickynotes->tooltips, note->w_lock, _("Locked note"), NULL);
 	}
 	else {
-		gtk_image_set_from_stock(GTK_IMAGE(glade_xml_get_widget(note->window, "lock_img")), STICKYNOTES_STOCK_UNLOCK, GTK_ICON_SIZE_MENU);
+		gtk_image_set_from_stock(GTK_IMAGE(glade_xml_get_widget(note->window, "lock_img")), STICKYNOTES_STOCK_UNLOCK, STICKYNOTES_ICON_SIZE);
 		gtk_tooltips_set_tip(stickynotes->tooltips, note->w_lock, _("Unlocked note"), NULL);
 	}
 
