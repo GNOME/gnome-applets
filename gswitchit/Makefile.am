@@ -7,7 +7,8 @@ EXTRA_DIST = \
 
 libexec_PROGRAMS = gswitchit-applet
 
-gswitchit_applet_SOURCES = gswitchit-applet.c \
+gswitchit_applet_SOURCES = switch.c \
+                           gswitchit-applet.c \
                            gswitchit-capplet.c \
                            gswitchit-applet.h
 
@@ -33,7 +34,7 @@ gswitchit_applet_LDADD = $(COMMON_LIBS) \
                          $(GNOME_APPLETS_LIBS)
 
 serverdir       = $(libdir)/bonobo/servers
-server_in_files = GNOME_GSwitchItApplet.server.in
+server_in_files = GNOME_KeyboardApplet.server.in
 server_in_in_files = $(server_in_files:.server.in=.server.in.in) 
 server_DATA     = $(server_in_files:.server.in=.server)
 

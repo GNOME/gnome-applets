@@ -17,6 +17,8 @@
 #ifndef __GSWITCHIT_APPLET_H__
 #define __GSWITCHIT_APPLET_H__
 
+#include <panel-applet.h>
+
 #include "libgswitchit/gswitchit_applet_config.h"
 #include "libgswitchit/gswitchit_plugin_manager.h"
 
@@ -45,5 +47,8 @@ extern GdkFilterReturn GSwitchItAppletFilterXEvt (GdkXEvent * xevent,
 						  GSwitchItApplet * sia);
 
 extern void GSwitchItAppletPropsCreate (GSwitchItApplet * sia);
+
+extern gboolean GSwitchItAppletNew (PanelApplet * applet);
+
 
 #endif

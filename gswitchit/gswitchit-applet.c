@@ -16,7 +16,6 @@
 
 #include "config.h"
 
-#include <panel-applet.h>
 #include <gdk/gdkscreen.h>
 #include <gdk/gdkx.h>
 #include <gnome.h>
@@ -737,7 +736,7 @@ GSwitchItAppletTerm (PanelApplet * applet, GSwitchItApplet * sia)
 	XklDebug (100, "The applet successfully terminated\n");
 }
 
-static gboolean
+gboolean
 GSwitchItAppletNew (PanelApplet * applet)
 {
 	static GSwitchItApplet *sia = NULL;
@@ -759,58 +758,6 @@ GSwitchItAppletNew (PanelApplet * applet)
 	return rv;
 }
 
-static gboolean
-GKBAppletNew (PanelApplet * applet)
-{
-	fprintf (stderr, "No xkb found, fallback to gkb\n");
-	return FALSE;
-}
-
-static gboolean
-CheckXKB (void)
-{
-	gboolean have_xkb = FALSE;
-	int opcode, errorBase, major, minor, xkbEventBase;
-
-	gdk_error_trap_push ();
-	have_xkb = XkbQueryExtension (GDK_DISPLAY (),
-				      &opcode, &xkbEventBase, &errorBase,
-				      &major, &minor)
-	    && XkbUseExtension (GDK_DISPLAY (), &major, &minor);
-	XSync (GDK_DISPLAY (), FALSE);
-	gdk_error_trap_pop ();
-
-	return have_xkb;
-}
-
-static gboolean
-GSwitchItAppletFactory (PanelApplet * applet,
-			const gchar * iid, gpointer data)
-{
-#if 0
-//shit...
-//#define O_FLAGS ( O_CREAT | O_WRONLY | O_TRUNC | O_SYNC,)
-#define O_FLAGS ( O_CREAT | O_WRONLY | O_TRUNC )
-	int stdout2 = open ("/tmp/gswout",
-			    O_FLAGS,
-			    0666);
-	int stderr2 = open ("/tmp/gswerr",
-			    O_FLAGS,
-			    0666);
-	dup2 (stdout2, 1);
-	dup2 (stderr2, 2);
-	setlinebuf (stdout);
-	setlinebuf (stderr);
-#endif
-	if (!strcmp (iid, "OAFIID:GNOME_GSwitchItApplet")) {
-		if (CheckXKB ())
-			return GSwitchItAppletNew (applet);
-		else
-			return GKBAppletNew (applet);
-	}
-	return TRUE;
-}
-
 // Plugins support
 void
 GSwitchItPluginContainerReinitUi (GSwitchItPluginContainer * pc)
@@ -828,5 +775,3 @@ GSwitchItPluginLoadLocalizedGroupNames (GSwitchItPluginContainer
 	    (const GroupDescriptionsBuffer
 	     *) (&(((GSwitchItApplet *) pc)->groupNames));
 }
-
-PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_GSwitchItApplet_Factory", PANEL_TYPE_APPLET, "command-line", "0", GSwitchItAppletFactory, NULL)	//data
