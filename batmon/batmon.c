@@ -334,6 +334,8 @@ static void
 init_module(void)
 {
 	tooltips = gtk_tooltips_new();
+	gtk_object_ref (GTK_OBJECT (tooltips));
+	gtk_object_sink (GTK_OBJECT (tooltips));
 	ac_pixmap_filename = gnome_unconditional_pixmap_file ("batmon-ac.xpm");
 	bat_pixmap_filename = gnome_unconditional_pixmap_file ("batmon-bat.xpm");
 
@@ -343,7 +345,7 @@ init_module(void)
 static void
 destroy_module(void)
 {
-	gtk_tooltips_unref(tooltips);
+	gtk_object_unref(GTK_OBJECT (tooltips));
 
 	g_free(ac_pixmap_filename);
 	g_free(bat_pixmap_filename);
