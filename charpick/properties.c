@@ -9,21 +9,33 @@ static GtkWidget *propwindow = NULL;
 /* temporary variable modified by the properties dialog.  they get
    copied to the permanent variables when the users selects Apply or
    Ok */
-static charpick_persistant_properties temp_properties;
+charpick_persistant_properties temp_properties;
 
 void property_load (char *path, gpointer data)
 {
-  charpick_persistant_properties * properties = data;
+  /* charpick_persistant_properties * properties = data; */
   /* default charlist is not yet handled by sm.(this is now done in main) */
   /*  properties->default_charlist = a_list; */
   /*  gnome_config_push_prefix(APPLET_WIDGET(applet)->privcfgpath); */
   gnome_config_push_prefix(path);
-  /* c sucks because defines don't work in string literals.
-   * which seems to be the only place I ever need them.
+  /* FIXME: sprintf() these strings so I can use the #defines
    */
-  properties->rows = gnome_config_get_int("charpick/rows=2");
-  properties->cols = gnome_config_get_int("charpick/cols=4");
-  properties->size = gnome_config_get_int("charpick/buttonsize=24");
+  curr_data.properties->rows = gnome_config_get_int("charpick/rows=2");
+  curr_data.properties->cols = gnome_config_get_int("charpick/cols=4");
+  curr_data.properties->size = gnome_config_get_int("charpick/buttonsize=22");
+  /* sanity check the properties read from config */
+  if (curr_data.properties->rows < 1)
+  {
+  curr_data.properties->rows = DEFAULT_ROWS; 
+  }
+  if (curr_data.properties->cols < 1)
+  {
+  curr_data.properties->cols =  DEFAULT_COLS; 
+  }
+  if (curr_data.properties->size < 1)
+  {
+  curr_data.properties->size = DEFAULT_SIZE; 
+  }
   gnome_config_pop_prefix();
 }
 
