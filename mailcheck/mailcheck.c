@@ -2008,6 +2008,11 @@ mailcheck_properties_page (MailCheck *mc)
 	GtkObject *freq_a;
 	gchar *title;
 	gboolean writable;
+	GConfClient *client;
+	gboolean inhibit_command_line;
+
+	client = gconf_client_get_default ();
+	inhibit_command_line = gconf_client_get_bool (client, "/desktop/gnome/lockdown/inhibit_command_line", NULL);
 
 	mc->type = 0;
 
@@ -2146,122 +2151,124 @@ mailcheck_properties_page (MailCheck *mc)
 		hard_set_sensitive (l, FALSE);
 		hard_set_sensitive (animation_option_menu, FALSE);
 	}
-	
-	category_vbox = gtk_vbox_new (FALSE, 6);
-	gtk_box_pack_start (GTK_BOX (categories_vbox), category_vbox, TRUE, TRUE, 0);
-	gtk_widget_show (category_vbox);
 
-	title = g_strconcat ("<span weight=\"bold\">", _("Commands"), "</span>", NULL);
-	label = gtk_label_new (title);
-	gtk_label_set_use_markup (GTK_LABEL (label), TRUE);
-	gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
-	gtk_misc_set_alignment (GTK_MISC (label), 0, 0.5);
-	gtk_box_pack_start (GTK_BOX (category_vbox), label, FALSE, FALSE, 0);
-	gtk_widget_show (label);
-	g_free (title);
+	if ( ! inhibit_command_line) {
+		category_vbox = gtk_vbox_new (FALSE, 6);
+		gtk_box_pack_start (GTK_BOX (categories_vbox), category_vbox, TRUE, TRUE, 0);
+		gtk_widget_show (category_vbox);
 
-	hbox = gtk_hbox_new (FALSE, 0);
-        gtk_box_pack_start (GTK_BOX (category_vbox), hbox, TRUE, TRUE, 0);
-        gtk_widget_show (hbox);
+		title = g_strconcat ("<span weight=\"bold\">", _("Commands"), "</span>", NULL);
+		label = gtk_label_new (title);
+		gtk_label_set_use_markup (GTK_LABEL (label), TRUE);
+		gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
+		gtk_misc_set_alignment (GTK_MISC (label), 0, 0.5);
+		gtk_box_pack_start (GTK_BOX (category_vbox), label, FALSE, FALSE, 0);
+		gtk_widget_show (label);
+		g_free (title);
 
-	indent = gtk_label_new (HIG_IDENTATION);
-	gtk_label_set_justify (GTK_LABEL (indent), GTK_JUSTIFY_LEFT);
-	gtk_box_pack_start (GTK_BOX (hbox), indent, FALSE, FALSE, 0);
-	gtk_widget_show (indent);
+		hbox = gtk_hbox_new (FALSE, 0);
+		gtk_box_pack_start (GTK_BOX (category_vbox), hbox, TRUE, TRUE, 0);
+		gtk_widget_show (hbox);
 
-	control_vbox = gtk_vbox_new (FALSE, 6);
-	gtk_box_pack_start (GTK_BOX (hbox), control_vbox, TRUE, TRUE, 0);
-	gtk_widget_show (control_vbox);
+		indent = gtk_label_new (HIG_IDENTATION);
+		gtk_label_set_justify (GTK_LABEL (indent), GTK_JUSTIFY_LEFT);
+		gtk_box_pack_start (GTK_BOX (hbox), indent, FALSE, FALSE, 0);
+		gtk_widget_show (indent);
 
-	table = gtk_table_new (3, 2, FALSE);
-	gtk_table_set_col_spacings (GTK_TABLE (table), 12);
-	gtk_table_set_row_spacings (GTK_TABLE (table), 6);
-	gtk_container_set_border_width (GTK_CONTAINER (table), 0);
-	gtk_widget_show(table);
-	gtk_container_add (GTK_CONTAINER (control_vbox), table);
+		control_vbox = gtk_vbox_new (FALSE, 6);
+		gtk_box_pack_start (GTK_BOX (hbox), control_vbox, TRUE, TRUE, 0);
+		gtk_widget_show (control_vbox);
 
-	l = gtk_check_button_new_with_mnemonic(_("Before each _update:"));
-	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(l), mc->pre_check_enabled);
-	g_signal_connect(G_OBJECT(l), "toggled",
-			   G_CALLBACK(pre_check_toggled), mc);
-	gtk_widget_show(l);
-	mc->pre_check_cmd_check = l;
-	if ( ! key_writable (mc->applet, "exec_enabled"))
-		hard_set_sensitive (l, FALSE);
+		table = gtk_table_new (3, 2, FALSE);
+		gtk_table_set_col_spacings (GTK_TABLE (table), 12);
+		gtk_table_set_row_spacings (GTK_TABLE (table), 6);
+		gtk_container_set_border_width (GTK_CONTAINER (table), 0);
+		gtk_widget_show(table);
+		gtk_container_add (GTK_CONTAINER (control_vbox), table);
 
-	gtk_table_attach (GTK_TABLE (table), mc->pre_check_cmd_check, 
-			  0, 1, 0, 1, GTK_FILL, 0, 0, 0);
-			   
+		l = gtk_check_button_new_with_mnemonic(_("Before each _update:"));
+		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(l), mc->pre_check_enabled);
+		g_signal_connect(G_OBJECT(l), "toggled",
+				 G_CALLBACK(pre_check_toggled), mc);
+		gtk_widget_show(l);
+		mc->pre_check_cmd_check = l;
+		if ( ! key_writable (mc->applet, "exec_enabled"))
+			hard_set_sensitive (l, FALSE);
 
-	mc->pre_check_cmd_entry = gtk_entry_new();
-	if(mc->pre_check_cmd)
-		gtk_entry_set_text(GTK_ENTRY(mc->pre_check_cmd_entry), 
-				   mc->pre_check_cmd);
-	set_atk_name_description (mc->pre_check_cmd_entry, _("Command to execute before each update"), "");
-	set_atk_relation (mc->pre_check_cmd_entry, mc->pre_check_cmd_check, ATK_RELATION_CONTROLLED_BY);
-	set_atk_relation (mc->pre_check_cmd_check, mc->pre_check_cmd_entry, ATK_RELATION_CONTROLLER_FOR);
-	soft_set_sensitive (mc->pre_check_cmd_entry, mc->pre_check_enabled);
-	g_signal_connect(G_OBJECT(mc->pre_check_cmd_entry), "changed",
-			   G_CALLBACK(pre_check_changed), mc);
-	gtk_widget_show(mc->pre_check_cmd_entry);
-	gtk_table_attach_defaults (GTK_TABLE (table), mc->pre_check_cmd_entry,
-				   1, 2, 0, 1);
-	if ( ! key_writable (mc->applet, "exec_command"))
-		hard_set_sensitive (mc->pre_check_cmd_entry, FALSE);
+		gtk_table_attach (GTK_TABLE (table), mc->pre_check_cmd_check, 
+				  0, 1, 0, 1, GTK_FILL, 0, 0, 0);
 
-	l = gtk_check_button_new_with_mnemonic (_("When new mail _arrives:"));
-	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(l), mc->newmail_enabled);
-	g_signal_connect(G_OBJECT(l), "toggled",
-			   G_CALLBACK(newmail_toggled), mc);
-	gtk_widget_show(l);
-	gtk_table_attach (GTK_TABLE (table), l, 0, 1, 1, 2, GTK_FILL, 0, 0, 0);
-	mc->newmail_cmd_check = l;
-	if ( ! key_writable (mc->applet, "newmail_enabled"))
-		hard_set_sensitive (l, FALSE);
 
-	mc->newmail_cmd_entry = gtk_entry_new();
-	if (mc->newmail_cmd) {
-		gtk_entry_set_text(GTK_ENTRY(mc->newmail_cmd_entry),
-				   mc->newmail_cmd);
-	}
-	set_atk_name_description (mc->newmail_cmd_entry, _("Command to execute when new mail arrives"), "");
-	set_atk_relation (mc->newmail_cmd_entry, mc->newmail_cmd_check, ATK_RELATION_CONTROLLED_BY);
-	set_atk_relation (mc->newmail_cmd_check, mc->newmail_cmd_entry, ATK_RELATION_CONTROLLER_FOR);
-	soft_set_sensitive (mc->newmail_cmd_entry, mc->newmail_enabled);
-	g_signal_connect(G_OBJECT (mc->newmail_cmd_entry), "changed",
-			   G_CALLBACK(newmail_changed), mc);
-	gtk_widget_show(mc->newmail_cmd_entry);
-	gtk_table_attach_defaults (GTK_TABLE (table), mc->newmail_cmd_entry,
-				    1, 2, 1, 2);
-	if ( ! key_writable (mc->applet, "newmail_command"))
-		hard_set_sensitive (mc->newmail_cmd_entry, FALSE);
+		mc->pre_check_cmd_entry = gtk_entry_new();
+		if(mc->pre_check_cmd)
+			gtk_entry_set_text(GTK_ENTRY(mc->pre_check_cmd_entry), 
+					   mc->pre_check_cmd);
+		set_atk_name_description (mc->pre_check_cmd_entry, _("Command to execute before each update"), "");
+		set_atk_relation (mc->pre_check_cmd_entry, mc->pre_check_cmd_check, ATK_RELATION_CONTROLLED_BY);
+		set_atk_relation (mc->pre_check_cmd_check, mc->pre_check_cmd_entry, ATK_RELATION_CONTROLLER_FOR);
+		soft_set_sensitive (mc->pre_check_cmd_entry, mc->pre_check_enabled);
+		g_signal_connect(G_OBJECT(mc->pre_check_cmd_entry), "changed",
+				 G_CALLBACK(pre_check_changed), mc);
+		gtk_widget_show(mc->pre_check_cmd_entry);
+		gtk_table_attach_defaults (GTK_TABLE (table), mc->pre_check_cmd_entry,
+					   1, 2, 0, 1);
+		if ( ! key_writable (mc->applet, "exec_command"))
+			hard_set_sensitive (mc->pre_check_cmd_entry, FALSE);
 
-        l = gtk_check_button_new_with_mnemonic (_("When double clicke_d:"));
-	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(l), mc->clicked_enabled);
-	g_signal_connect(G_OBJECT(l), "toggled",
-			   G_CALLBACK(clicked_toggled), mc);
-        gtk_widget_show(l);
-	gtk_table_attach (GTK_TABLE (table), l, 0, 1, 2, 3, GTK_FILL, 0, 0, 0);
-	mc->clicked_cmd_check = l;
-	if ( ! key_writable (mc->applet, "clicked_enabled"))
-		hard_set_sensitive (l, FALSE);
+		l = gtk_check_button_new_with_mnemonic (_("When new mail _arrives:"));
+		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(l), mc->newmail_enabled);
+		g_signal_connect(G_OBJECT(l), "toggled",
+				 G_CALLBACK(newmail_toggled), mc);
+		gtk_widget_show(l);
+		gtk_table_attach (GTK_TABLE (table), l, 0, 1, 1, 2, GTK_FILL, 0, 0, 0);
+		mc->newmail_cmd_check = l;
+		if ( ! key_writable (mc->applet, "newmail_enabled"))
+			hard_set_sensitive (l, FALSE);
 
-        mc->clicked_cmd_entry = gtk_entry_new();
-        if(mc->clicked_cmd) {
-		gtk_entry_set_text(GTK_ENTRY(mc->clicked_cmd_entry), 
-				   mc->clicked_cmd);
-        }
+		mc->newmail_cmd_entry = gtk_entry_new();
+		if (mc->newmail_cmd) {
+			gtk_entry_set_text(GTK_ENTRY(mc->newmail_cmd_entry),
+					   mc->newmail_cmd);
+		}
+		set_atk_name_description (mc->newmail_cmd_entry, _("Command to execute when new mail arrives"), "");
+		set_atk_relation (mc->newmail_cmd_entry, mc->newmail_cmd_check, ATK_RELATION_CONTROLLED_BY);
+		set_atk_relation (mc->newmail_cmd_check, mc->newmail_cmd_entry, ATK_RELATION_CONTROLLER_FOR);
+		soft_set_sensitive (mc->newmail_cmd_entry, mc->newmail_enabled);
+		g_signal_connect(G_OBJECT (mc->newmail_cmd_entry), "changed",
+				 G_CALLBACK(newmail_changed), mc);
+		gtk_widget_show(mc->newmail_cmd_entry);
+		gtk_table_attach_defaults (GTK_TABLE (table), mc->newmail_cmd_entry,
+					   1, 2, 1, 2);
+		if ( ! key_writable (mc->applet, "newmail_command"))
+			hard_set_sensitive (mc->newmail_cmd_entry, FALSE);
+
+		l = gtk_check_button_new_with_mnemonic (_("When double clicke_d:"));
+		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(l), mc->clicked_enabled);
+		g_signal_connect(G_OBJECT(l), "toggled",
+				 G_CALLBACK(clicked_toggled), mc);
+		gtk_widget_show(l);
+		gtk_table_attach (GTK_TABLE (table), l, 0, 1, 2, 3, GTK_FILL, 0, 0, 0);
+		mc->clicked_cmd_check = l;
+		if ( ! key_writable (mc->applet, "clicked_enabled"))
+			hard_set_sensitive (l, FALSE);
+
+		mc->clicked_cmd_entry = gtk_entry_new();
+		if(mc->clicked_cmd) {
+			gtk_entry_set_text(GTK_ENTRY(mc->clicked_cmd_entry), 
+					   mc->clicked_cmd);
+		}
 		set_atk_name_description (mc->clicked_cmd_entry, _("Command to execute when clicked"), "");
 		set_atk_relation (mc->clicked_cmd_entry, mc->clicked_cmd_check, ATK_RELATION_CONTROLLED_BY);
 		set_atk_relation (mc->clicked_cmd_check, mc->clicked_cmd_entry, ATK_RELATION_CONTROLLER_FOR);
 		soft_set_sensitive (mc->clicked_cmd_entry, mc->clicked_enabled);
-        g_signal_connect(G_OBJECT(mc->clicked_cmd_entry), "changed",
-                           G_CALLBACK(clicked_changed), mc);
-        gtk_widget_show(mc->clicked_cmd_entry);
-	gtk_table_attach_defaults (GTK_TABLE (table), mc->clicked_cmd_entry,
-				   1, 2, 2, 3);
-	if ( ! key_writable (mc->applet, "clicked_command"))
-		hard_set_sensitive (mc->clicked_cmd_entry, FALSE);
+		g_signal_connect(G_OBJECT(mc->clicked_cmd_entry), "changed",
+				 G_CALLBACK(clicked_changed), mc);
+		gtk_widget_show(mc->clicked_cmd_entry);
+		gtk_table_attach_defaults (GTK_TABLE (table), mc->clicked_cmd_entry,
+					   1, 2, 2, 3);
+		if ( ! key_writable (mc->applet, "clicked_command"))
+			hard_set_sensitive (mc->clicked_cmd_entry, FALSE);
+	}
 
 	return vbox;
 }
