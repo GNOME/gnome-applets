@@ -52,20 +52,16 @@ static gboolean stickynotes_applet_fill(PanelApplet *applet)
 	stickynotes->notes = NULL;
 	stickynotes->pixbuf_normal = gdk_pixbuf_new_from_file(STICKYNOTES_ICONDIR "/stickynotes.png", NULL);
 	stickynotes->pixbuf_prelight = gdk_pixbuf_new_from_file(STICKYNOTES_ICONDIR "/stickynotes_prelight.png", NULL);
-	stickynotes->image = NULL;
+	stickynotes->image = gtk_image_new();
 	stickynotes->gconf_client = gconf_client_get_default();
 	stickynotes->tooltips = gtk_tooltips_new();
 
 	/* Create the applet */
-	{
-		gint size = panel_applet_get_size(applet);
-		GdkPixbuf *pixbuf = gdk_pixbuf_scale_simple(stickynotes->pixbuf_normal, size, size, GDK_INTERP_BILINEAR);
-		stickynotes->image = gtk_image_new_from_pixbuf(pixbuf);
-		g_object_unref(pixbuf);
-	}
 	gtk_container_add(GTK_CONTAINER(applet), stickynotes->image);
 	panel_applet_setup_menu_from_file(applet, NULL, "GNOME_StickyNotesApplet.xml", NULL, stickynotes_applet_menu_verbs, stickynotes);
-	gtk_tooltips_set_tip(stickynotes->tooltips, GTK_WIDGET(applet), _("Sticky Notes"), NULL);
+	stickynotes_applet_update_icon(stickynotes, FALSE);
+
+	gtk_widget_add_events(GTK_WIDGET(applet), GDK_KEY_PRESS_MASK | GDK_KEY_RELEASE_MASK);
 
 	/* Connect all signals for applet management */
 	g_signal_connect(G_OBJECT(applet), "button-press-event", G_CALLBACK(applet_button_cb), stickynotes);

@@ -178,6 +178,8 @@ void stickynotes_add(StickyNotesApplet *stickynotes)
 {
 	StickyNote *note = stickynote_new(stickynotes);
 
+	gtk_widget_show(note->window);
+
 	/* Add the note to the linked-list of all notes */
 	stickynotes->notes = g_list_append(stickynotes->notes, note);
 	
