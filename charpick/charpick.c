@@ -640,7 +640,10 @@ applet_destroy (GtkWidget *widget, gpointer data)
     gtk_widget_destroy (curr_data->about_dialog);   
   if (curr_data->propwindow)
     gtk_widget_destroy (curr_data->propwindow);
-
+  if (curr_data->box)
+    gtk_widget_destroy (curr_data->box);
+  if (curr_data->menu)
+    gtk_widget_destroy (curr_data->menu);
   g_free (curr_data);
   
 }
