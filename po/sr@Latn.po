@@ -7,9 +7,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-applets 2.2\n"
-"POT-Creation-Date: 2003-07-14 08:05+0200\n"
-"PO-Revision-Date: 2003-07-14 08:04+0200\n"
+"Project-Id-Version: gnome-applets 2.4\n"
+"POT-Creation-Date: 2003-07-26 14:24+0200\n"
+"PO-Revision-Date: 2003-07-26 14:23+0200\n"
 "Last-Translator: Danilo Šegan <danilo@prevod.org>\n"
 "Language-Team: Serbian (sr) <serbiangnome-lista@nongnu.org>\n"
 "MIME-Version: 1.0\n"
@@ -78,15 +78,18 @@ msgid "Utility"
 msgstr "Pomoćni alati"
 
 #: accessx-status/applet.c:135 battstat/battstat_applet.c:839
-#: cdplayer/cdplayer.c:574 charpick/charpick.c:582 drivemount/drivemount.c:515
+#: cdplayer/cdplayer.c:575 charpick/charpick.c:582 drivemount/drivemount.c:515
 #: geyes/geyes.c:228 gkb-new/gkb-applet.c:84 gtik/gtik.c:774
-#: gweather/gweather-about.c:44 mailcheck/mailcheck.c:2432
+#: gweather/gweather-about.c:44 mailcheck/mailcheck.c:2435
 #: mini-commander/src/about.c:48 mixer/mixer.c:1060
 #: modemlights/modemlights.c:115 multiload/main.c:57
 #: stickynotes/stickynotes_applet_callbacks.c:178
-#: wireless/wireless-applet.c:735
+#: wireless/wireless-applet.c:709
 msgid "translator_credits"
-msgstr "Danilo Šegan <danilo@prevod.org>"
+msgstr ""
+"Danilo Šegan <danilo@prevod.org>\n"
+"\n"
+"http://www.Prevod.org/"
 
 #: accessx-status/applet.c:157 accessx-status/applet.c:1181
 msgid "AccessX Status"
@@ -154,24 +157,24 @@ msgid "_Suspend Computer..."
 msgstr "_Suspenduj računar..."
 
 #: battstat/battstat.schemas.in.h:1
-msgid "Beep?"
-msgstr "Sviraj?"
+msgid "Beep for warnings"
+msgstr "Sviraj radi upozorenja"
 
 #: battstat/battstat.schemas.in.h:2
+msgid "Beep when displaying a warning"
+msgstr "Sviraj pri prikazivanju upozorenja"
+
+#: battstat/battstat.schemas.in.h:3
 msgid "Command to send to suspend the computer"
 msgstr "Naredba kojom se suspenduje računar"
 
-#: battstat/battstat.schemas.in.h:3
+#: battstat/battstat.schemas.in.h:4
 msgid "Drain from top"
 msgstr "Prazni od vrha"
 
-#: battstat/battstat.schemas.in.h:4
+#: battstat/battstat.schemas.in.h:5
 msgid "Full Battery Notification"
 msgstr "Obaveštenje o punoj bateriji"
-
-#: battstat/battstat.schemas.in.h:5
-msgid "Horizontal"
-msgstr "Vodoravno"
 
 #: battstat/battstat.schemas.in.h:6
 msgid "Low Battery Notification"
@@ -186,11 +189,11 @@ msgid "Notify user when the battery is low"
 msgstr "Obavesti korisnika kada je baterija slaba"
 
 #: battstat/battstat.schemas.in.h:9
-msgid "Orange Value"
+msgid "Orange value level"
 msgstr "Vrednost za narandžasto"
 
 #: battstat/battstat.schemas.in.h:10
-msgid "Red Value"
+msgid "Red value level"
 msgstr "Vrednost za crveno"
 
 #: battstat/battstat.schemas.in.h:11
@@ -214,11 +217,19 @@ msgid "Suspend Command"
 msgstr "Naredba za suspenziju"
 
 #: battstat/battstat.schemas.in.h:16
-msgid "Use dock"
-msgstr "Prikači"
+msgid "The battery level below which the battery is displayed as orange."
+msgstr "Stanje baterije ispod kojeg se baterija prikazuje u narandžastoj boji."
 
 #: battstat/battstat.schemas.in.h:17
-msgid "Yellow Value"
+msgid "The battery level below which the battery is displayed as red."
+msgstr "Stanje baterije ispod kojeg se baterija prikazuje u crvenoj boji."
+
+#: battstat/battstat.schemas.in.h:18
+msgid "The battery level below which the battery is displayed as yellow."
+msgstr "Stanje baterije ispod kojeg se baterija prikazuje u žutoj boji."
+
+#: battstat/battstat.schemas.in.h:19
+msgid "Yellow value level"
 msgstr "Vrednost za žuto"
 
 #. Message displayed if user tries to run applet
@@ -387,8 +398,8 @@ msgid ""
 "\"%d\"\n"
 "Please try to correct this error"
 msgstr ""
-"Došlo je do greške pri pokretanju naredbe za suspenziju. Naredba je vratila "
-"„%d“\n"
+"Došlo je do greške pri pokretanju naredbe za suspenziju. Naredba je vratila „%"
+"d“\n"
 "Pokušajte da ispravite ovu grešku"
 
 #: battstat/battstat_applet.c:798
@@ -451,7 +462,7 @@ msgstr "<b>Suspenzija</b>"
 msgid "<b>Warnings</b>"
 msgstr "<b>Upozorenja</b>"
 
-#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1521
+#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1522
 msgid "Appearance"
 msgstr "Izgled"
 
@@ -459,9 +470,9 @@ msgstr "Izgled"
 msgid "Battery Charge Monitor Preferences"
 msgstr "Postavke praćenja stanja baterije"
 
-#: battstat/battstat_applet.glade.h:13 drivemount/properties.c:348
-#: gweather/gweather-pref.c:766 mailcheck/mailcheck.c:2026
-#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:552
+#: battstat/battstat_applet.glade.h:13 drivemount/properties.c:349
+#: gweather/gweather-pref.c:761 mailcheck/mailcheck.c:2026
+#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:553
 msgid "General"
 msgstr "Opšte"
 
@@ -518,8 +529,8 @@ msgid "_Yellow:"
 msgstr "_Žuto:"
 
 #: battstat/properties.c:296 drivemount/drivemount.c:473
-#: drivemount/properties.c:588 mailcheck/mailcheck.c:2289
-#: mailcheck/mailcheck.c:2537 mini-commander/src/preferences.c:393
+#: drivemount/properties.c:589 mailcheck/mailcheck.c:2291
+#: mailcheck/mailcheck.c:2540 mini-commander/src/preferences.c:393
 #: mixer/mixer.c:1167
 #, c-format
 msgid "There was an error displaying help: %s"
@@ -537,8 +548,8 @@ msgstr "Baterija u potpunosti napunjena"
 msgid "Battery power low"
 msgstr "Baterija slaba"
 
-#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:592
-#: cdplayer/cdplayer.c:1040
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:593
+#: cdplayer/cdplayer.c:1041
 msgid "CD Player"
 msgstr "Puštanje CD-a"
 
@@ -563,23 +574,23 @@ msgstr "Aplet panela za puštanje muzičkih CD-a"
 msgid "_Open CD Player"
 msgstr "P_okreni puštanje CD-a"
 
-#: cdplayer/cdplayer.c:171 cdplayer/cdplayer.c:1030
+#: cdplayer/cdplayer.c:171 cdplayer/cdplayer.c:1031
 msgid "Stop"
 msgstr "Zaustavi"
 
-#: cdplayer/cdplayer.c:175 cdplayer/cdplayer.c:1032
+#: cdplayer/cdplayer.c:175 cdplayer/cdplayer.c:1033
 msgid "Play / Pause"
 msgstr "Pusti / Pauza"
 
-#: cdplayer/cdplayer.c:179 cdplayer/cdplayer.c:1034
+#: cdplayer/cdplayer.c:179 cdplayer/cdplayer.c:1035
 msgid "Eject"
 msgstr "Izbaci"
 
-#: cdplayer/cdplayer.c:183 cdplayer/cdplayer.c:1036
+#: cdplayer/cdplayer.c:183 cdplayer/cdplayer.c:1037
 msgid "Previous Track"
 msgstr "Prethodna pesma"
 
-#: cdplayer/cdplayer.c:187 cdplayer/cdplayer.c:1038
+#: cdplayer/cdplayer.c:187 cdplayer/cdplayer.c:1039
 msgid "Next Track"
 msgstr "Sledeća pesma"
 
@@ -601,23 +612,23 @@ msgstr "Čini se da %s ne predstavlja CD uređaj"
 msgid "CD Player Preferences"
 msgstr "Postavke za puštanje CD-a"
 
-#: cdplayer/cdplayer.c:494
+#: cdplayer/cdplayer.c:495
 msgid "Device _path:"
 msgstr "_Putanja uređaja:"
 
-#: cdplayer/cdplayer.c:503
+#: cdplayer/cdplayer.c:504
 msgid "Device Path"
 msgstr "Putanja do uređaja"
 
-#: cdplayer/cdplayer.c:503
+#: cdplayer/cdplayer.c:504
 msgid "Set the device path here"
 msgstr "Ovde postavite putanju do uređaja"
 
-#: cdplayer/cdplayer.c:506
+#: cdplayer/cdplayer.c:507
 msgid "Use _Default"
 msgstr "Koristiti _podrazumevano"
 
-#: cdplayer/cdplayer.c:593
+#: cdplayer/cdplayer.c:594
 msgid ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
@@ -625,39 +636,39 @@ msgstr ""
 "© 1997 Zadužbina za Slobodni Softver\n"
 "© 2001 Kris Felps (GNOME 2 izdanje)"
 
-#: cdplayer/cdplayer.c:595 cdplayer/cdplayer.c:1041
+#: cdplayer/cdplayer.c:596 cdplayer/cdplayer.c:1042
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr "Aplet za puštanje CD-a je jednostavan program za vaš panel"
 
-#: cdplayer/cdplayer.c:870 cdplayer/cdplayer.c:881
+#: cdplayer/cdplayer.c:871 cdplayer/cdplayer.c:882
 msgid "Elapsed time"
 msgstr "Proteklo vreme"
 
-#: cdplayer/cdplayer.c:873 cdplayer/cdplayer.c:883
+#: cdplayer/cdplayer.c:874 cdplayer/cdplayer.c:884
 msgid "Track number"
 msgstr "Broj pesme"
 
-#: cdplayer/cdplayer.c:939
+#: cdplayer/cdplayer.c:940
 msgid "Audio device is busy, or being used by another application"
 msgstr "Uređaj za zvuk je zauzet, ili ga koristi neki drugi program"
 
-#: cdplayer/cdplayer.c:1031
+#: cdplayer/cdplayer.c:1032
 msgid "Click this button to Stop playing the CD"
 msgstr "Pritisnite ovo dugme da zaustavite puštanje CD-a"
 
-#: cdplayer/cdplayer.c:1033
+#: cdplayer/cdplayer.c:1034
 msgid "Click this button to Play or Pause the CD"
 msgstr "Pritisnite ovo dugme da pustite ili pauzirate CD"
 
-#: cdplayer/cdplayer.c:1035
+#: cdplayer/cdplayer.c:1036
 msgid "Click this button to eject the CD"
 msgstr "Pritisnite ovo dugme da izbacite CD"
 
-#: cdplayer/cdplayer.c:1037
+#: cdplayer/cdplayer.c:1038
 msgid "Click this button to Play the previous track in the CD"
 msgstr "Pritisnite ovo dugme da pustite prethodnu pesmu sa CD-a"
 
-#: cdplayer/cdplayer.c:1039
+#: cdplayer/cdplayer.c:1040
 msgid "Click this button to Play the next track in the CD"
 msgstr "Pritisnite ovo dugme da pustite sledeću pesmu sa CD-a"
 
@@ -674,7 +685,7 @@ msgstr ""
 "programčeta"
 
 #: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:600
-#: charpick/charpick.c:744 charpick/properties.c:332
+#: charpick/charpick.c:744 charpick/properties.c:333
 msgid "Character Palette"
 msgstr "Paleta znakova"
 
@@ -686,7 +697,7 @@ msgstr "Fabrika za aplet za izbor znakova"
 msgid "Insert characters"
 msgstr "Unesite znakove"
 
-#: charpick/charpick.c:322 charpick/properties.c:124
+#: charpick/charpick.c:322 charpick/properties.c:125
 msgid "Add Palette"
 msgstr "Dodaj paletu"
 
@@ -732,59 +743,71 @@ msgstr "Znakovi koji se prikazuju po pokretanju programčeta"
 msgid "DEPRECATED - Characters shown on applet startup"
 msgstr "ZASTARELO — Znakovi koji se prikazuju po pokretanju programčeta"
 
-#: charpick/charpick.schemas.in.h:3 charpick/properties.c:259
+#: charpick/charpick.schemas.in.h:3 charpick/properties.c:260
 msgid "List of available palettes"
 msgstr "Spisak dostupnih paleta"
 
-#: charpick/properties.c:87
+#: charpick/charpick.schemas.in.h:4
+msgid "List of strings containing the available palettes"
+msgstr "Spisak niski koje sadrže dostupne palete"
+
+#: charpick/charpick.schemas.in.h:5
+msgid ""
+"The string that the user had selected when the applet was last used. This "
+"string will be displayed when the user starts the applet."
+msgstr ""
+"Niska koju je izabrao korisnik pri poslednjoj upotrebi programčeta. Ova niska "
+"će biti prikazana kada korisnik pokrene programče."
+
+#: charpick/properties.c:88
 msgid "_Palette:"
 msgstr "_Paleta:"
 
-#: charpick/properties.c:94
+#: charpick/properties.c:95
 msgid "Palette entry"
 msgstr "Unos u paleti"
 
-#: charpick/properties.c:95
+#: charpick/properties.c:96
 msgid "Modify a palette by adding or removing chacters"
 msgstr "Izmenite paletu dodavanjem ili uklanjanjem znakova"
 
-#: charpick/properties.c:159
+#: charpick/properties.c:160
 msgid "Edit Palette"
 msgstr "Uredite paletu"
 
-#: charpick/properties.c:258
+#: charpick/properties.c:259
 msgid "Palettes list"
 msgstr "Spisak paleta"
 
-#: charpick/properties.c:337
+#: charpick/properties.c:338
 msgid "Pal_ettes:"
 msgstr "Palete:"
 
-#: charpick/properties.c:353
+#: charpick/properties.c:354
 msgid "Add button"
 msgstr "Dodaj dugme"
 
-#: charpick/properties.c:354
+#: charpick/properties.c:355
 msgid "Click to add a new palette"
 msgstr "Kliknite da dodate novu paletu"
 
-#: charpick/properties.c:361
+#: charpick/properties.c:362
 msgid "Edit button"
 msgstr "Uredi dugme"
 
-#: charpick/properties.c:362
+#: charpick/properties.c:363
 msgid "Click to edit the selected palette"
 msgstr "Kliknite da uredite izabranu paletu"
 
-#: charpick/properties.c:369
+#: charpick/properties.c:370
 msgid "Delete button"
 msgstr "Ukloni dugme"
 
-#: charpick/properties.c:370
+#: charpick/properties.c:371
 msgid "Click to delete the selected palette"
 msgstr "Kliknite da uklonite izabranu paletu"
 
-#: charpick/properties.c:422
+#: charpick/properties.c:423
 msgid "Character Palette Preferences"
 msgstr "Postavke palete znakova"
 
@@ -822,8 +845,8 @@ msgstr "Došlo je do greške pri izvršavanju „%s“: %s"
 msgid "Cannot browse device"
 msgstr "Ne može da razgleda uređaj"
 
-#: drivemount/drivemount.c:479 drivemount/properties.c:594
-#: mailcheck/mailcheck.c:2295 mailcheck/mailcheck.c:2543
+#: drivemount/drivemount.c:479 drivemount/properties.c:595
+#: mailcheck/mailcheck.c:2297 mailcheck/mailcheck.c:2546
 msgid "Error displaying help"
 msgstr "Greška pri prikazu pomoći"
 
@@ -871,81 +894,81 @@ msgstr "Vreme u sekundama između dve provere stanja"
 msgid "Disk Mounter Preferences"
 msgstr "Postavke priključenja diska"
 
-#: drivemount/properties.c:354
+#: drivemount/properties.c:355
 msgid "_Mount directory:"
 msgstr "Direktorijum _priključenja:"
 
-#: drivemount/properties.c:360
+#: drivemount/properties.c:361
 msgid "Select Mount Directory"
 msgstr "Izaberite direktorijum priključenja"
 
-#: drivemount/properties.c:382
+#: drivemount/properties.c:383
 msgid "_Update interval:"
 msgstr "_Vreme između provera:"
 
-#: drivemount/properties.c:405 mailcheck/mailcheck.c:2095
-#: mailcheck/mailcheck.c:2101 modemlights/properties.c:461
+#: drivemount/properties.c:406 mailcheck/mailcheck.c:2097
+#: mailcheck/mailcheck.c:2103 modemlights/properties.c:462
 msgid "seconds"
 msgstr "sekundi"
 
-#: drivemount/properties.c:418
+#: drivemount/properties.c:419
 msgid "_Icon:"
 msgstr "_Ikonica:"
 
-#: drivemount/properties.c:444
+#: drivemount/properties.c:445
 msgid "Floppy"
 msgstr "Meki disk"
 
-#: drivemount/properties.c:447
+#: drivemount/properties.c:448
 msgid "Cdrom"
 msgstr "CD-ROM"
 
-#: drivemount/properties.c:450
+#: drivemount/properties.c:451
 msgid "Cd Recorder"
 msgstr "CD pisač"
 
-#: drivemount/properties.c:453
+#: drivemount/properties.c:454
 msgid "Zip Drive"
 msgstr "Zip uređaj"
 
-#: drivemount/properties.c:456
+#: drivemount/properties.c:457
 msgid "Hard Disk"
 msgstr "Tvrdi disk"
 
 # Ovo nije slucajno! Ko jos ima i koristi Iomega Jazz? ;)
-#: drivemount/properties.c:459
+#: drivemount/properties.c:460
 msgid "Jaz Drive"
 msgstr "Džez uređaj"
 
-#: drivemount/properties.c:462
+#: drivemount/properties.c:463
 msgid "Custom"
 msgstr "Prilagođeno"
 
-#: drivemount/properties.c:481
+#: drivemount/properties.c:482
 msgid "Select icon for mounted"
 msgstr "Izaberite ikonicu za priključeni uređaj"
 
-#: drivemount/properties.c:488
+#: drivemount/properties.c:489
 msgid "Moun_ted icon:"
 msgstr "Ikona za pri_ključen:"
 
-#: drivemount/properties.c:509
+#: drivemount/properties.c:510
 msgid "Select icon for unmounted"
 msgstr "Izaberite ikonicu za nepriključeni uređaj"
 
-#: drivemount/properties.c:516
+#: drivemount/properties.c:517
 msgid "Unmou_nted icon:"
 msgstr "Ikona za nepri_ključen:"
 
-#: drivemount/properties.c:532
+#: drivemount/properties.c:533
 msgid "_Scale size to panel"
 msgstr "_Uvećajte na veličinu panela"
 
-#: drivemount/properties.c:539
+#: drivemount/properties.c:540
 msgid "_Eject disk when unmounting"
 msgstr "_Izbaci disk po odvajanju"
 
-#: drivemount/properties.c:549
+#: drivemount/properties.c:550
 msgid "Use _automount friendly status test"
 msgstr "_Koristiti jednostavnu probu stanja za samopriključivanje"
 
@@ -986,11 +1009,11 @@ msgstr "Direktorijum u kom se nalazi tema"
 msgid "Geyes Preferences"
 msgstr "Postavke GOčiju"
 
-#: geyes/themes.c:288
+#: geyes/themes.c:289
 msgid "Themes"
 msgstr "Teme"
 
-#: geyes/themes.c:309
+#: geyes/themes.c:310
 msgid "_Select a theme:"
 msgstr "_Izaberite temu:"
 
@@ -1026,8 +1049,8 @@ msgid ""
 "Shooby Ban <shooby@gnome.hu>"
 msgstr ""
 "Ovo programče menja mape tastatura pomoću setxkbmap-a ili xmodmap-a.\n"
-"Pošaljite vašu zastavu i mapu tasture ako želite podršku za vaš jezik (moja "
-"e-adresa je shooby@gnome.hu).\n"
+"Pošaljite vašu zastavu i mapu tasture ako želite podršku za vaš jezik (moja e-"
+"adresa je shooby@gnome.hu).\n"
 "Zbogom, i hvala na svoj ribi.\n"
 "Hvala Balašu Nagiju (Kevin) <julian7@iksz.hu> za njegovu pomoć i Emeze Kovač "
 "<emese@gnome.hu> za njenu solidarnost, i pomoć od onih kao što je KevinV.\n"
@@ -1058,16 +1081,16 @@ msgid "Flag image for the keyboard layout"
 msgstr "Zastava za raspored na tastaturi"
 
 #: gkb-new/gkb.schemas.in.h:3
-msgid "Is the applet size small?"
-msgstr "Da li je veličina programčeta mala?"
-
-#: gkb-new/gkb.schemas.in.h:4
-msgid "It can be \"Flag and Label\", \"Label\" and \"Flag\""
+msgid "It can be \"Flag and Label\", \"Label\" or \"Flag\""
 msgstr "Može biti „Zastava i oznaka“, „Oznaka“ ili „Zastava“"
 
+#: gkb-new/gkb.schemas.in.h:4
+msgid "Keybinding for switching layout"
+msgstr "Prečica za prebacivanje rasporeda"
+
 #: gkb-new/gkb.schemas.in.h:5
-msgid "Keybinding for switch by keypress"
-msgstr "Prečica za prebacivanje pomoću tastature"
+msgid "No longer used"
+msgstr "Više se ne koristi"
 
 #: gkb-new/gkb.schemas.in.h:6
 msgid "Number of configured keymaps"
@@ -1078,38 +1101,34 @@ msgid "The command that switches your keymap to this layout"
 msgstr "Naredba koja prebacuje na vaš raspored tastera na ovaj raspored"
 
 #: gkb-new/gkb.schemas.in.h:8
-msgid "The command what switch your keymap tho this layout"
-msgstr "Naredba koja prebacuje na ovaj raspored"
-
-#: gkb-new/gkb.schemas.in.h:9
 msgid "The country of the keyboard layout"
 msgstr "Država za raspored na tastaturi"
 
-#: gkb-new/gkb.schemas.in.h:10
+#: gkb-new/gkb.schemas.in.h:9
 msgid "The label of the keyboard layout"
 msgstr "Oznaka za raspored na tastaturi"
 
-#: gkb-new/gkb.schemas.in.h:11
+#: gkb-new/gkb.schemas.in.h:10
 msgid "The language of the keyboard layout"
 msgstr "Jezik za raspored na tastaturi"
 
-#: gkb-new/gkb.schemas.in.h:12
+#: gkb-new/gkb.schemas.in.h:11
 msgid "The name of the keyboard layout"
 msgstr "Ime za raspored na tastaturi"
 
-#: gkb-new/gkb.schemas.in.h:13
+#: gkb-new/gkb.schemas.in.h:12
 msgid "This flag will appear in flag field of the applet"
 msgstr "Ova zastava će se pojaviti u polju programčeta za zastavu"
 
-#: gkb-new/gkb.schemas.in.h:14
+#: gkb-new/gkb.schemas.in.h:13
 msgid "This information helps you to identify your keyboard layout"
 msgstr "Ovi podaci pomažu pri raspoznavanju vašeg rasporeda na tastaturi"
 
-#: gkb-new/gkb.schemas.in.h:15
+#: gkb-new/gkb.schemas.in.h:14
 msgid "This is the binding for keypress-based layout change"
 msgstr "Ovo je prečica za izmenu rasporeda pomoću tastature"
 
-#: gkb-new/gkb.schemas.in.h:16
+#: gkb-new/gkb.schemas.in.h:15
 msgid ""
 "This should be like \"gkb_xmmap us\", \"setxkbmap us\" or \"xmodmap "
 "something.xmm\""
@@ -1117,17 +1136,13 @@ msgstr ""
 "Ovo treba da bude nešto kao „gkb_xmmap sr“, „setxkbmap sr“ ili „xmodmap "
 "nešto.xmm“"
 
-#: gkb-new/gkb.schemas.in.h:17
+#: gkb-new/gkb.schemas.in.h:16
 msgid "This will appear in the label box of the applet"
 msgstr "Ovo će se pojaviti u oznaci programčeta"
 
-#: gkb-new/gkb.schemas.in.h:18
+#: gkb-new/gkb.schemas.in.h:17
 msgid "This will identify the layout in the list"
 msgstr "Ovo služi za raspoznavanje rasporeda u spisku"
-
-#: gkb-new/gkb.schemas.in.h:19
-msgid "When this is true, the applet will be half size"
-msgstr "Kada je ovo postavljeno, programče će biti upola manje"
 
 #: gkb-new/keygrab.c:69 gkb-new/keygrab.c:148
 msgid "Disabled"
@@ -1154,7 +1169,7 @@ msgstr "Već postoji raspored „%s“ za državu %s."
 msgid "Select Keyboard"
 msgstr "Izaberite tastaturu"
 
-#: gkb-new/prop-add.c:352
+#: gkb-new/prop-add.c:353
 msgid "_Keyboards (select and press add):"
 msgstr "_Tastature (izaberite i pritisnite „Dodati“)"
 
@@ -1170,19 +1185,19 @@ msgstr "?"
 msgid "Edit Keyboard"
 msgstr "Uredite tastaturu"
 
-#: gkb-new/prop-map.c:296
+#: gkb-new/prop-map.c:297
 msgid "_Name:"
 msgstr "_Ime:"
 
-#: gkb-new/prop-map.c:300
+#: gkb-new/prop-map.c:301
 msgid "_Label:"
 msgstr "_Oznaka:"
 
-#: gkb-new/prop-map.c:303 mini-commander/src/mini-commander.glade.h:8
+#: gkb-new/prop-map.c:304 mini-commander/src/mini-commander.glade.h:8
 msgid "Co_mmand:"
 msgstr "_Naredba:"
 
-#: gkb-new/prop-map.c:306
+#: gkb-new/prop-map.c:307
 msgid "_Flag:"
 msgstr "_Zastava:"
 
@@ -1198,7 +1213,8 @@ msgstr "Oznaka"
 msgid "Flag and Label"
 msgstr "Zastava i oznaka"
 
-#: gkb-new/prop.c:257 gtik/gtik.c:1528 modemlights/properties.c:437
+#: gkb-new/prop.c:257 gtik/gtik.c:1529 gweather/gweather-pref.c:746
+#: modemlights/properties.c:438
 msgid "Display"
 msgstr "Prikaz"
 
@@ -1227,16 +1243,16 @@ msgstr "Postavke za izmenjivač tastatura"
 msgid "Keyboard Layout Selector"
 msgstr "Izmenjivač rasporeda na tastaturi"
 
-#: gkb-new/prop.c:433
+#: gkb-new/prop.c:434
 msgid "Keyboards"
 msgstr "Tastature"
 
 #. Page 1 Frame
-#: gkb-new/prop.c:437
+#: gkb-new/prop.c:438
 msgid "_Keyboards:"
 msgstr "_Tastature:"
 
-#: gkb-new/prop.c:456 multiload/properties.c:420
+#: gkb-new/prop.c:457 multiload/properties.c:420
 msgid "Options"
 msgstr "Opcije"
 
@@ -1299,7 +1315,7 @@ msgstr "_Osveži"
 msgid "Could not retrieve the stock data."
 msgstr "Ne može da preuzme podatke sa berze."
 
-#: gtik/gtik.c:289 gweather/gweather-applet.c:357
+#: gtik/gtik.c:289 gweather/gweather-applet.c:346
 msgid "Updating..."
 msgstr "Osvežava..."
 
@@ -1312,8 +1328,8 @@ msgid ""
 msgstr ""
 "Ovaj program se povezuje na popularnu stranicu i preuzima trenutno stanje "
 "akcija na berzi.  GNOME Praćenje berze je slobodan program zasnovan na "
-"Internetu.  Nema nikakvu garanciju. Ne koristite Praćenje berze za "
-"pravljenje odluka o ulaganju; namena mu je samo obaveštajne prirode."
+"Internetu.  Nema nikakvu garanciju. Ne koristite Praćenje berze za pravljenje "
+"odluka o ulaganju; namena mu je samo obaveštajne prirode."
 
 #: gtik/gtik.c:1278
 msgid "Current _stocks:"
@@ -1335,107 +1351,108 @@ msgstr "_Ukloni"
 msgid "Stock Ticker Preferences"
 msgstr "Postavke za praćenje berze"
 
-#: gtik/gtik.c:1431
+#: gtik/gtik.c:1432
 msgid "Symbols"
 msgstr "Simboli"
 
-#: gtik/gtik.c:1438 mailcheck/mailcheck.c:2363
+#: gtik/gtik.c:1439 mailcheck/mailcheck.c:2366
 msgid "Behavior"
 msgstr "Ponašanje"
 
-#: gtik/gtik.c:1441
+#: gtik/gtik.c:1442 gweather/gweather-pref.c:705
 msgid "Update"
 msgstr "Osveži"
 
-#: gtik/gtik.c:1445
+#: gtik/gtik.c:1446
 msgid "Stock update fre_quency:"
 msgstr "U_čestalost osvežavanja berze:"
 
 # bug:plural-forms
-#: gtik/gtik.c:1457 mailcheck/mailcheck.c:2073 mailcheck/mailcheck.c:2079
+#: gtik/gtik.c:1458 gweather/gweather-pref.c:729 mailcheck/mailcheck.c:2074
+#: mailcheck/mailcheck.c:2080
 msgid "minutes"
 msgstr "minuta"
 
-#: gtik/gtik.c:1463
+#: gtik/gtik.c:1464
 msgid "Scrolling"
 msgstr "Kretanje"
 
-#: gtik/gtik.c:1467
+#: gtik/gtik.c:1468
 msgid "_Scroll speed:"
 msgstr "Brzina _kretanja:"
 
-#: gtik/gtik.c:1471
+#: gtik/gtik.c:1472
 msgid "Slow"
 msgstr "Sporo"
 
-#: gtik/gtik.c:1473
+#: gtik/gtik.c:1474
 msgid "Medium"
 msgstr "Srednje"
 
-#: gtik/gtik.c:1475
+#: gtik/gtik.c:1476
 msgid "Fast"
 msgstr "Brzo"
 
-#: gtik/gtik.c:1495
+#: gtik/gtik.c:1496
 msgid "_Enable scroll buttons"
 msgstr "_Omogući dugmiće za pomeranje sadržaja"
 
-#: gtik/gtik.c:1507
+#: gtik/gtik.c:1508
 msgid "Scroll _left to right"
 msgstr "Kretanje sa _leva na desno"
 
-#: gtik/gtik.c:1533
+#: gtik/gtik.c:1534
 msgid "Displa_y only symbols and price"
 msgstr "Prikaži samo simbole i cenu"
 
-#: gtik/gtik.c:1546 mini-commander/src/mini-commander.glade.h:23
+#: gtik/gtik.c:1547 mini-commander/src/mini-commander.glade.h:23
 #: stickynotes/stickynotes.glade.h:48
 msgid "_Width:"
 msgstr "_Širina:"
 
 # Ja bih stavio "tacaka", ali...
-#: gtik/gtik.c:1560 mini-commander/src/mini-commander.glade.h:24
+#: gtik/gtik.c:1561 mini-commander/src/mini-commander.glade.h:24
 #: multiload/properties.c:483
 msgid "pixels"
 msgstr "tačaka"
 
-#: gtik/gtik.c:1569
+#: gtik/gtik.c:1570
 msgid "Font and Colors"
 msgstr "Fontovi i boje"
 
-#: gtik/gtik.c:1575
+#: gtik/gtik.c:1576
 msgid "Use _default theme font and colors"
 msgstr "_Koristite podrazumevane boje i fontove teme"
 
-#: gtik/gtik.c:1590 stickynotes/stickynotes.glade.h:42
+#: gtik/gtik.c:1591 stickynotes/stickynotes.glade.h:42
 msgid "_Font:"
 msgstr "_Pismo:"
 
-#: gtik/gtik.c:1614
+#: gtik/gtik.c:1615
 msgid "Stock _raised:"
 msgstr "Akcija _narasla:"
 
-#: gtik/gtik.c:1633
+#: gtik/gtik.c:1634
 msgid "Stock _lowered:"
 msgstr "Akcija _opala:"
 
-#: gtik/gtik.c:1652
+#: gtik/gtik.c:1653
 msgid "Stock _unchanged:"
 msgstr "Akcija ne_izmenjena:"
 
-#: gtik/gtik.c:1671 modemlights/properties.c:569
+#: gtik/gtik.c:1672 modemlights/properties.c:570
 msgid "_Background:"
 msgstr "_Pozadina:"
 
-#: gtik/gtik.c:1804
+#: gtik/gtik.c:1805
 msgid "Skip forward"
 msgstr "Preskoči unapred"
 
-#: gtik/gtik.c:1805
+#: gtik/gtik.c:1806
 msgid "Skip backward"
 msgstr "Preskoči unazad"
 
-#: gtik/gtik.c:1813
+#: gtik/gtik.c:1814
 msgid ""
 "Stock Ticker\n"
 "Get continuously updated stock quotes"
@@ -1443,67 +1460,156 @@ msgstr ""
 "Praćenje berze\n"
 "Neprekidno osvežavanje stanja na berzi"
 
-#: gtik/gtik.c:2004
+#: gtik/gtik.c:2005
 msgid "(No"
 msgstr "(Nema"
 
-#: gtik/gtik.c:2005
+#: gtik/gtik.c:2006
 msgid "Change "
 msgstr "Promena "
 
 #: gtik/gtik.schemas.in.h:1
+msgid "Applet scrolls right to left when this key is set to true."
+msgstr "Programče vrti sa desna na levo kada je ovo postavljeno."
+
+#: gtik/gtik.schemas.in.h:2
+msgid "Background color"
+msgstr "Boja pozadine"
+
+#: gtik/gtik.schemas.in.h:3
+msgid ""
+"Display only stock symbols along with their value. Do not diplay changes in "
+"value."
+msgstr ""
+"Prikaži samo simbole akcija uz njihove vrednosti. Ne prikazuj izmene "
+"vrednosti."
+
+#: gtik/gtik.schemas.in.h:4
 msgid "Display only symbols and price"
 msgstr "Prikaži samo simbole i cenu"
 
-#: gtik/gtik.schemas.in.h:2
+#: gtik/gtik.schemas.in.h:5
+msgid "Font"
+msgstr "Font"
+
+#: gtik/gtik.schemas.in.h:6
+msgid ""
+"List containing the stocks to be displayed. Consists of the stock id "
+"separated by \"+\""
+msgstr ""
+"Spisak akcija koje treba prikazati. Sastoji se od ID-a akcija razdvojenih sa "
+"„+“"
+
+#: gtik/gtik.schemas.in.h:7
+msgid "Lowered color"
+msgstr "Boja za smanjenje"
+
+#: gtik/gtik.schemas.in.h:8
+msgid "Raised color"
+msgstr "Boja za povećanje"
+
+#: gtik/gtik.schemas.in.h:9
+msgid "Right to left scrolling"
+msgstr "Kretanje sa desna na levo"
+
+#: gtik/gtik.schemas.in.h:10
+msgid "Shorter time means the stocks scroll by faster."
+msgstr "Kraće vreme znači da je kretanje brže."
+
+#: gtik/gtik.schemas.in.h:11
+msgid "Show arrow buttons"
+msgstr "Prikaži dugmiće sa strelicama"
+
+#: gtik/gtik.schemas.in.h:12
+msgid ""
+"Show arrow buttons on the side of the display so that the user can scroll "
+"forward or backward."
+msgstr ""
+"Prikaži dugmiće sa strelicama sa strane prikaza kako bi korisnik mogao da "
+"pomera napred ili nazad."
+
+#: gtik/gtik.schemas.in.h:13
 msgid "Stocks to monitor - must be seperated by a +"
-msgstr "Akcije na ekran — mora biti razdvojeno pomoću +"
+msgstr "Koje akcije da prati — mora biti razdvojeno pomoću +"
 
-#: gtik/gtik.schemas.in.h:3
+#: gtik/gtik.schemas.in.h:14
+msgid ""
+"The color of the background of the display. Has no effect when the user "
+"chooses to use the default theme fonts and colors."
+msgstr ""
+"Boja pozadine. Nema značaja ako korisnik izabere da koristi uobičajene "
+"fontove i boje."
+
+#: gtik/gtik.schemas.in.h:15
+msgid ""
+"The color used when the stock's values has lowered. Has no effect when the "
+"user chooses to use the default theme fonts and colors."
+msgstr ""
+"Boja kada se smanji vrednost akcije. Nema značaja ako korisnik izabere da "
+"koristi uobičajene fontove i boje."
+
+#: gtik/gtik.schemas.in.h:16
+msgid ""
+"The color used when the stock's values has not changed. Has no effect when "
+"the user chooses to use the default theme fonts and colors."
+msgstr ""
+"Boja kada se ne menja vrednost akcije. Nema značaja ako korisnik izabere da "
+"koristi uobičajene fontove i boje."
+
+#: gtik/gtik.schemas.in.h:17
+msgid ""
+"The color used when the stock's values has raised. Has no effect when the "
+"user chooses to use the default theme fonts and colors."
+msgstr ""
+"Boja kada se poveća vrednost akcije. Nema značaja ako korisnik izabere da "
+"koristi uobičajene fontove i boje."
+
+#: gtik/gtik.schemas.in.h:18
+msgid ""
+"The font used for the display. Has no effect when the user chooses to use "
+"the default theme fonts and colors."
+msgstr ""
+"Font koji se koristi za prikaz. Nema značaja ako korisnik izabere da koristi "
+"uobičajene fontove i boje."
+
+#: gtik/gtik.schemas.in.h:19
+msgid "The time interval until when the applet updates the stock data."
+msgstr "Vremenski razmak između dve dopune podataka o akcijama."
+
+#: gtik/gtik.schemas.in.h:20
+msgid "The width in pixels of the applet."
+msgstr "Širina programčeta u tačkama."
+
+#: gtik/gtik.schemas.in.h:21
+msgid "Time in milliseconds for display update"
+msgstr "Vreme u milisekundama između dve dopune prikaza"
+
+#: gtik/gtik.schemas.in.h:22
+msgid "Unchanged color"
+msgstr "Boja za neizmenjeno"
+
+#: gtik/gtik.schemas.in.h:23 gweather/gweather.schemas.in.h:8
+#: modemlights/modemlights.schemas.in.h:31
+msgid "Update interval"
+msgstr "Vreme između dopuna"
+
+#: gtik/gtik.schemas.in.h:24
+msgid "Use default theme fonts and colors"
+msgstr "Koristite uobičajene boje i fontove teme"
+
+#: gtik/gtik.schemas.in.h:25
 msgid "Use default theme fonts and colors instead of custom ones"
-msgstr "Koristi podrazumevane fontove i boje iz teme umesto izabranih"
+msgstr "Koristi uobičajene fontove i boje iz teme umesto izabranih"
 
-#: gtik/gtik.schemas.in.h:4 mini-commander/src/mini-commander.schemas.in.h:7
+#: gtik/gtik.schemas.in.h:26 mini-commander/src/mini-commander.schemas.in.h:29
 msgid "Width of the applet"
 msgstr "Širina programčeta"
 
-#: gtik/gtik.schemas.in.h:5
-msgid "bg color"
-msgstr "boja pozadine"
-
-#: gtik/gtik.schemas.in.h:6
-msgid "color"
-msgstr "boja"
-
-#: gtik/gtik.schemas.in.h:7
-msgid "color for no change text"
-msgstr "boja kada nema izmena"
-
-#: gtik/gtik.schemas.in.h:8
-msgid "font"
-msgstr "font"
-
-#: gtik/gtik.schemas.in.h:9
+#: gtik/gtik.schemas.in.h:27
 msgid "font 2 - No Longer used"
 msgstr "font 2 — više se ne koristi"
 
-#: gtik/gtik.schemas.in.h:10
-msgid "set to true for right to left scrolling"
-msgstr "postavljeno za kretanje sa desna na levo"
-
-#: gtik/gtik.schemas.in.h:11
-msgid "show buttons"
-msgstr "prikaži dugmiće"
-
-#: gtik/gtik.schemas.in.h:12
-msgid "time in miliseconds for display update"
-msgstr "vreme u milisekundama za osvežavanje prikaza"
-
-#: gtik/gtik.schemas.in.h:13
-msgid "timeout"
-msgstr "čekanje"
-
-#: gweather/GNOME_GWeatherApplet.xml.h:2 gweather/gweather-dialog.c:304
+#: gweather/GNOME_GWeatherApplet.xml.h:2
 msgid "_Forecast"
 msgstr "_Prognoza"
 
@@ -1538,83 +1644,83 @@ msgstr ""
 "\n"
 "Aplet za praćenje lokalnih vremenskih prilika."
 
-#: gweather/gweather-applet.c:246
+#: gweather/gweather-applet.c:237
 msgid "GNOME Weather"
 msgstr "GNOME Vreme"
 
-#: gweather/gweather-dialog.c:75
+#: gweather/gweather-dialog.c:73 gweather/gweather-dialog.c:300
 msgid "Forecast"
 msgstr "Prognoza"
 
-#: gweather/gweather-dialog.c:110
-msgid "Location:"
-msgstr "Mesto:"
+#: gweather/gweather-dialog.c:109
+msgid "City:"
+msgstr "Grad:"
 
-#: gweather/gweather-dialog.c:118
-msgid "Update:"
-msgstr "Osveži:"
+#: gweather/gweather-dialog.c:117
+msgid "Last update:"
+msgstr "Poslednja dopuna:"
 
-#: gweather/gweather-dialog.c:126
+#: gweather/gweather-dialog.c:125
 msgid "Conditions:"
 msgstr "Prilike:"
 
-#: gweather/gweather-dialog.c:134
+#: gweather/gweather-dialog.c:133
 msgid "Sky:"
 msgstr "Nebo:"
 
-#: gweather/gweather-dialog.c:142
+#: gweather/gweather-dialog.c:141
 msgid "Temperature:"
 msgstr "Temperatura:"
 
-#: gweather/gweather-dialog.c:150
+#: gweather/gweather-dialog.c:149
 msgid "Dew point:"
 msgstr "Tačka rose:"
 
-#: gweather/gweather-dialog.c:158
+#: gweather/gweather-dialog.c:157
 msgid "Humidity:"
 msgstr "Vlažnost:"
 
-#: gweather/gweather-dialog.c:166
+#: gweather/gweather-dialog.c:165
 msgid "Wind:"
 msgstr "Vetar:"
 
-#: gweather/gweather-dialog.c:174
+#: gweather/gweather-dialog.c:173
 msgid "Pressure:"
 msgstr "Pritisak:"
 
-#: gweather/gweather-dialog.c:182
+#: gweather/gweather-dialog.c:181
 msgid "Visibility:"
 msgstr "Vidljivost:"
 
-#: gweather/gweather-dialog.c:281
-msgid "C_urrent conditions"
-msgstr "Tek_uće prilike"
+#: gweather/gweather-dialog.c:276
+msgid "Current Conditions"
+msgstr "Tekuće prilike"
 
-#: gweather/gweather-dialog.c:294
-msgid "ForeCast Report"
+#: gweather/gweather-dialog.c:290
+msgid "Forecast Report"
 msgstr "Vremenska prognoza"
 
-#: gweather/gweather-dialog.c:294
+#: gweather/gweather-dialog.c:290
 msgid "See the ForeCast Details"
 msgstr "Pogledajte detaljnu prognozu"
 
-#: gweather/gweather-dialog.c:329
+#: gweather/gweather-dialog.c:325
 msgid "_Visit Weather.com"
 msgstr "_Posetite Weather.com"
 
-#: gweather/gweather-dialog.c:330
+#: gweather/gweather-dialog.c:326
 msgid "URL link Button"
 msgstr "Dugme sa vezom na adresu"
 
-#: gweather/gweather-dialog.c:330
+#: gweather/gweather-dialog.c:326
 msgid "Click to Enter Weather.com"
 msgstr "Kliknite da posetite Weather.com"
 
-#: gweather/gweather-dialog.c:338
-msgid "_Radar map"
-msgstr "_Radarska mapa"
+#: gweather/gweather-dialog.c:334
+msgid "Radar Map"
+msgstr "Radarska mapa"
 
-#: gweather/gweather-dialog.c:411
+#: gweather/gweather-dialog.c:410
 msgid ""
 "Detailed forecast not available for this location.\n"
 "Please try the state forecast; note that IWIN forecasts are available only "
@@ -1624,15 +1730,15 @@ msgstr ""
 "Molim probajte državnu prognozu; obratite pažnju na to da IWIN prognoze nisu "
 "dostupne van Amerike."
 
-#: gweather/gweather-dialog.c:413
+#: gweather/gweather-dialog.c:412
 msgid ""
 "State forecast not available for this location.\n"
 "Please try the detailed forecast; note that IWIN forecasts are available "
 "only for US cities."
 msgstr ""
 "Državna prognoza nije dostupna za ovo mesto.\n"
-"Molim probajte detaljnu prognozu; obratite pažnju na to da IWIN prognoze "
-"nisu dostupne van Amerike."
+"Molim probajte detaljnu prognozu; obratite pažnju na to da IWIN prognoze nisu "
+"dostupne van Amerike."
 
 #. Accessible Name and Description for the components in Preference Dialog
 #: gweather/gweather-pref.c:149
@@ -1659,125 +1765,96 @@ msgstr "Unos adrese"
 msgid "Enter the URL"
 msgstr "Unesite adresu"
 
-#: gweather/gweather-pref.c:604
+#: gweather/gweather-pref.c:611
 msgid "Weather Preferences"
 msgstr "Postavke vremena"
 
-#: gweather/gweather-pref.c:647
-msgid "_Automatically update every"
-msgstr "_Automatsko osvežavanje svakih"
+#: gweather/gweather-pref.c:644 gweather/gweather-pref.c:709
+msgid "_Automatically update every:"
+msgstr "_Automatsko osvežavanje svakih:"
 
-#: gweather/gweather-pref.c:655
+#: gweather/gweather-pref.c:652
 msgid "Use _metric system units"
 msgstr "Koristiti _metrički sistem jedinica"
 
-#: gweather/gweather-pref.c:663
-msgid "Enable _detailed forecast"
-msgstr "Uključi _detaljnu prognozu"
-
-#: gweather/gweather-pref.c:672
+#: gweather/gweather-pref.c:660
 msgid "Enable _radar map"
 msgstr "Uključi _radarsku mapu"
 
-#: gweather/gweather-pref.c:680
+#: gweather/gweather-pref.c:674
 msgid "Use cus_tom address for radar map"
 msgstr "Koristi adresu po izboru za radarsku mapu"
 
-#: gweather/gweather-pref.c:693
-msgid "A_ddress :"
+#: gweather/gweather-pref.c:691
+msgid "A_ddress:"
 msgstr "A_dresa:"
 
-#: gweather/gweather-pref.c:707
-msgid "Updates"
-msgstr "Osvežava"
+#: gweather/gweather-pref.c:774
+msgid "_Select a location:"
+msgstr "Izaberite _mesto:"
 
-#: gweather/gweather-pref.c:713
-msgid "_Automatically update every "
-msgstr "_Automatsko osvežavanje svakih "
-
-# bug:plural-forms
-#: gweather/gweather-pref.c:733
-msgid "minute(s)"
-msgstr "minuta"
-
-#. The Miscellaneous frame
-#: gweather/gweather-pref.c:748
-msgid "Miscellaneous"
-msgstr "Razno"
-
-#: gweather/gweather-pref.c:806 gweather/location.c:360
+#: gweather/gweather-pref.c:803
 msgid "Location"
 msgstr "Mesto"
 
 #: gweather/gweather.schemas.in.h:1
 msgid ""
-"determines whether the applet automatically updates its weather statistics "
+"Determines whether the applet automatically updates its weather statistics "
 "or not."
-msgstr "određuje da li programče automatski osvežava prognozu ili ne."
+msgstr "Određuje da li programče automatski osvežava prognozu ili ne."
 
 #: gweather/gweather.schemas.in.h:2
-msgid "fetch a detailed forecast on each update."
-msgstr "preuzmi detaljnu prognozu pri svakom osvežavanju."
+msgid "Display radar map"
+msgstr "Prikaži radarsku mapu"
 
 #: gweather/gweather.schemas.in.h:3
-msgid "fetch a radar map on each update."
-msgstr "preuzmi radarsku mapu pri svakom osvežavanju."
+msgid "Fetch a radar map on each update."
+msgstr "Preuzmi radarsku mapu pri svakom osvežavanju."
 
 #: gweather/gweather.schemas.in.h:4
-msgid "the interval, in seconds, between automatic updates."
-msgstr "razmak, u sekundama, između dva osvežavanja."
+msgid ""
+"If true, then retreive a radar map from a location specified by the \"radar"
+"\" key."
+msgstr ""
+"Ukoliko je postavljeno, dovlači radarsku mapu sa adrese navedene pomoću ključa "
+"„radar“."
 
 #: gweather/gweather.schemas.in.h:5
-msgid "url for the radar map"
-msgstr "adresa za radarsku mapu"
+#: mini-commander/src/mini-commander.schemas.in.h:14
+msgid "Not used anymore"
+msgstr "Više se ne koristi"
 
 #: gweather/gweather.schemas.in.h:6
-msgid "use custom url for the radar map"
-msgstr "koristi adresu po izboru za radarsku mapu"
+msgid "The custom url from where to retrieve a radar map."
+msgstr "Adresa po izboru odakle se dovlači radarska mapa."
 
 #: gweather/gweather.schemas.in.h:7
-msgid "use metric units instead of english units."
-msgstr "koristi metrički sistem jedinica umesto engleskog sistema."
+msgid "The interval, in seconds, between automatic updates."
+msgstr "Razmak, u sekundama, između dva osvežavanja."
 
-#: gweather/gweather.schemas.in.h:8
+#: gweather/gweather.schemas.in.h:9
+msgid "Update the data automatically"
+msgstr "Osveži podatke automatski"
+
+#: gweather/gweather.schemas.in.h:10
+msgid "Url for the radar map"
+msgstr "Adresa za radarsku mapu"
+
+#: gweather/gweather.schemas.in.h:11
+msgid "Use custom url for the radar map"
+msgstr "Koristi adresu po izboru za radarsku mapu"
+
+#: gweather/gweather.schemas.in.h:12
+msgid "Use metric units"
+msgstr "Koristiti metrički sistem jedinica"
+
+#: gweather/gweather.schemas.in.h:13
+msgid "Use metric units instead of english units."
+msgstr "Koristi metrički sistem jedinica umesto engleskog sistema."
+
+#: gweather/gweather.schemas.in.h:14
 msgid "weather location information."
 msgstr "podaci o mestu za prognozu."
-
-#: gweather/location.c:184
-msgid "Could not download countries"
-msgstr "Ne može da preuzme države"
-
-#: gweather/location.c:186
-msgid "Could not download cities"
-msgstr "Ne može da preuzme gradove"
-
-#: gweather/location.c:243
-msgid "Downloading Cities..."
-msgstr "Preuzima gradove..."
-
-#: gweather/location.c:304
-msgid "Countries list"
-msgstr "Spisak država"
-
-#: gweather/location.c:305
-msgid "Select the country from the list"
-msgstr "Izaberite državu iz spiska"
-
-#: gweather/location.c:308
-msgid "Country"
-msgstr "Država"
-
-#: gweather/location.c:356
-msgid "Cities list"
-msgstr "Spisak gradova"
-
-#: gweather/location.c:357
-msgid "Select the city from the list"
-msgstr "Izaberite grad iz spiska"
-
-#: gweather/location.c:394
-msgid "Downloading Countries..."
-msgstr "Preuzima države..."
 
 #: gweather/weather.c:57
 msgid "knots"
@@ -1873,7 +1950,7 @@ msgstr "Severozapadni"
 msgid "North - Northwest"
 msgstr "Severno-Severozapadni"
 
-#: gweather/weather.c:143 gweather/weather.c:160 gweather/weather.c:224
+#: gweather/weather.c:143 gweather/weather.c:160 gweather/weather.c:231
 msgid "Invalid"
 msgstr "Neispravno"
 
@@ -1897,1116 +1974,326 @@ msgstr "Mestimično oblačno"
 msgid "Overcast"
 msgstr "Oblačno"
 
-# Ovo kaze Morton-Benson :)
-#. NONE                         VICINITY                             LIGHT                      MODERATE                      HEAVY                      SHALLOW                      PATCHES                         PARTIAL                      THUNDERSTORM                    BLOWING                      SHOWERS                         DRIFTING                      FREEZING
-#. ******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
+#. TRANSLATOR: If you want to know what "blowing" "shallow" "partial"
+#. * etc means, you can go to http://www.weather.com/glossary/ and
+#. * http://www.crh.noaa.gov/arx/wx.tbl.html
 #. NONE
-#. DRIZZLE
-#: gweather/weather.c:186
-msgid "Drizzle"
-msgstr "Rominjanje"
-
-#: gweather/weather.c:186
-msgid "Drizzle in the vicinity"
-msgstr "Slaba kiša u blizini"
-
-#: gweather/weather.c:186
-msgid "Light drizzle"
-msgstr "Slabo rominjanje"
-
-#: gweather/weather.c:186
-msgid "Moderate drizzle"
-msgstr "Umereno rominjanje"
-
-#: gweather/weather.c:186
-msgid "Heavy drizzle"
-msgstr "Jako rominjanje"
-
-#: gweather/weather.c:186
-msgid "Shallow drizzle"
-msgstr "Slabašno rominjanje"
-
-#: gweather/weather.c:186
-msgid "Patches of drizzle"
-msgstr "Tragovi rominjanja"
-
-#: gweather/weather.c:186
-msgid "Partial drizzle"
-msgstr "Delimično rominjanje"
-
-#: gweather/weather.c:186 gweather/weather.c:187
+#: gweather/weather.c:192 gweather/weather.c:194
 msgid "Thunderstorm"
 msgstr "Pljusak sa grmljavinom"
 
-#: gweather/weather.c:186
-msgid "Windy drizzle"
-msgstr "Vetrovito rominjanje"
+# Ovo kaze Morton-Benson :)
+#. DRIZZLE
+#: gweather/weather.c:193
+msgid "Drizzle"
+msgstr "Rominjanje"
 
-#: gweather/weather.c:186
-msgid "Showers"
-msgstr "Pljusak"
+#: gweather/weather.c:193
+msgid "Light drizzle"
+msgstr "Slabo rominjanje"
 
-#: gweather/weather.c:186
-msgid "Drifting drizzle"
-msgstr "Rominjanje se lagano premešta"
+#: gweather/weather.c:193
+msgid "Moderate drizzle"
+msgstr "Umereno rominjanje"
 
-#: gweather/weather.c:186
+#: gweather/weather.c:193
+msgid "Heavy drizzle"
+msgstr "Jako rominjanje"
+
+#: gweather/weather.c:193
 msgid "Freezing drizzle"
 msgstr "Ledeno rominjanje"
 
 #. RAIN
-#: gweather/weather.c:187
+#: gweather/weather.c:194
 msgid "Rain"
 msgstr "Kiša"
 
-#: gweather/weather.c:187
-msgid "Rain in the vicinity"
-msgstr "Kiša u blizini"
-
-#: gweather/weather.c:187
+#: gweather/weather.c:194
 msgid "Light rain"
 msgstr "Kišica"
 
-#: gweather/weather.c:187
+#: gweather/weather.c:194
 msgid "Moderate rain"
 msgstr "Umerena kiša"
 
-#: gweather/weather.c:187
+#: gweather/weather.c:194
 msgid "Heavy rain"
 msgstr "Jaka kiša"
 
-#: gweather/weather.c:187
-msgid "Shallow rain"
-msgstr "Slabašna kiša"
-
-#: gweather/weather.c:187
-msgid "Patches of rain"
-msgstr "Tragovi kiše"
-
-#: gweather/weather.c:187
-msgid "Partial rainfall"
-msgstr "Delimično kiša"
-
-#: gweather/weather.c:187
-msgid "Blowing rainfall"
-msgstr "Razorna kiša"
-
-#: gweather/weather.c:187
+#: gweather/weather.c:194
 msgid "Rain showers"
 msgstr "Pljusak"
 
-#: gweather/weather.c:187
-msgid "Drifting rain"
-msgstr "Kiša se lagano premešta"
-
-#: gweather/weather.c:187
+#: gweather/weather.c:194
 msgid "Freezing rain"
 msgstr "Ledena kiša"
 
 #. SNOW
-#: gweather/weather.c:188
+#: gweather/weather.c:195
 msgid "Snow"
 msgstr "Sneg"
 
-#: gweather/weather.c:188
-msgid "Snow in the vicinity"
-msgstr "Sneg u blizini"
-
-#: gweather/weather.c:188
+#: gweather/weather.c:195
 msgid "Light snow"
 msgstr "Slab sneg"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:195
 msgid "Moderate snow"
 msgstr "Umeren sneg"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:195
 msgid "Heavy snow"
 msgstr "Jak sneg"
 
-#: gweather/weather.c:188
-msgid "Shallow snow"
-msgstr "Slabašan sneg"
-
-#: gweather/weather.c:188
-msgid "Patches of snow"
-msgstr "Tragovi snega"
-
-#: gweather/weather.c:188
-msgid "Partial snowfall"
-msgstr "Delimično snežno"
-
-#: gweather/weather.c:188 gweather/weather.c:189
+#: gweather/weather.c:195
 msgid "Snowstorm"
 msgstr "Snežna oluja"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:195
 msgid "Blowing snowfall"
 msgstr "Razarajući sneg"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:195
 msgid "Snow showers"
 msgstr "Snežni pljusak"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:195
 msgid "Drifting snow"
 msgstr "Sneg se lagano premešta"
 
-#: gweather/weather.c:188
-msgid "Freezing snow"
-msgstr "Ledeni sneg"
-
 #. SNOW_GRAINS
-#: gweather/weather.c:189
+#: gweather/weather.c:196
 msgid "Snow grains"
 msgstr "Trunke snega"
 
-#: gweather/weather.c:189
-msgid "Snow grains in the vicinity"
-msgstr "Trunke snega u blizini"
-
-#: gweather/weather.c:189
+#: gweather/weather.c:196
 msgid "Light snow grains"
 msgstr "Slabe trunke snega"
 
-#: gweather/weather.c:189
+#: gweather/weather.c:196
 msgid "Moderate snow grains"
 msgstr "Umerene trunke snega"
 
-#: gweather/weather.c:189
+#: gweather/weather.c:196
 msgid "Heavy snow grains"
 msgstr "Jake trunke snega"
 
-#: gweather/weather.c:189
-msgid "Shallow snow grains"
-msgstr "Slabašne trunke snega"
-
-#: gweather/weather.c:189
-msgid "Patches of snow grains"
-msgstr "Tragovi trunki snega"
-
-#: gweather/weather.c:189
-msgid "Partial snow grains"
-msgstr "Delimične trunke snega"
-
-#: gweather/weather.c:189
-msgid "Blowing snow grains"
-msgstr "Razarajuće trunke snega"
-
-#: gweather/weather.c:189
-msgid "Snow grain showers"
-msgstr "Pljusak trunki snega"
-
-#: gweather/weather.c:189
-msgid "Drifting snow grains"
-msgstr "Trunke snega se lagano premeštaju"
-
-#: gweather/weather.c:189
-msgid "Freezing snow grains"
-msgstr "Ledene trunke snega"
-
 #. ICE_CRYSTALS
-#: gweather/weather.c:190
+#: gweather/weather.c:197
 msgid "Ice crystals"
 msgstr "Ledenice"
 
-#: gweather/weather.c:190
-msgid "Ice crystals in the vicinity"
-msgstr "Ledenice u blizini"
-
-#: gweather/weather.c:190
-msgid "Few ice crystals"
-msgstr "Ponešto ledenica"
-
-#: gweather/weather.c:190
-msgid "Moderate ice crystals"
-msgstr "Umerene ledenice"
-
-#: gweather/weather.c:190
-msgid "Heavy ice crystals"
-msgstr "Mnogo ledenica"
-
-#: gweather/weather.c:190
-msgid "Patches of ice crystals"
-msgstr "Tragovi ledenica"
-
-#: gweather/weather.c:190
-msgid "Partial ice crystals"
-msgstr "Delimično ledenice"
-
-#: gweather/weather.c:190
-msgid "Ice crystal storm"
-msgstr "Oluja ledenica"
-
-#: gweather/weather.c:190
-msgid "Blowing ice crystals"
-msgstr "Razarajuće ledenice"
-
-#: gweather/weather.c:190
-msgid "Showers of ice crystals"
-msgstr "Pljusak ledenica"
-
-#: gweather/weather.c:190
-msgid "Drifting ice crystals"
-msgstr "Ledenice se lagano premeštaju"
-
-#: gweather/weather.c:190
-msgid "Freezing ice crystals"
-msgstr "Smrzavajuće ledenice"
-
 #. ICE_PELLETS
-#: gweather/weather.c:191
+#: gweather/weather.c:198
 msgid "Ice pellets"
 msgstr "Ledene kuglice"
 
-#: gweather/weather.c:191
-msgid "Ice pellets in the vicinity"
-msgstr "Ledene kuglice u blizini"
-
-#: gweather/weather.c:191
+#: gweather/weather.c:198
 msgid "Few ice pellets"
 msgstr "Ponešto ledenih kuglica"
 
-#: gweather/weather.c:191
+#: gweather/weather.c:198
 msgid "Moderate ice pellets"
 msgstr "Umereno ledene kuglice"
 
-#: gweather/weather.c:191
+#: gweather/weather.c:198
 msgid "Heavy ice pellets"
 msgstr "Mnogo ledenih kuglica"
 
-#: gweather/weather.c:191
-msgid "Shallow ice pellets"
-msgstr "Slabašne ledene kuglice"
-
-#: gweather/weather.c:191
-msgid "Patches of ice pellets"
-msgstr "Tragovi ledenih kuglica"
-
-#: gweather/weather.c:191
-msgid "Partial ice pellets"
-msgstr "Delimično ledenih kuglica"
-
-#: gweather/weather.c:191
+#: gweather/weather.c:198
 msgid "Ice pellet storm"
 msgstr "Oluja ledenih kuglica"
 
-#: gweather/weather.c:191
-msgid "Blowing ice pellets"
-msgstr "Razarajuće ledene kuglice"
-
-#: gweather/weather.c:191
+#: gweather/weather.c:198
 msgid "Showers of ice pellets"
 msgstr "Pljusak ledenih kuglica"
 
-#: gweather/weather.c:191
-msgid "Drifting ice pellets"
-msgstr "Ledene kuglice se lagano premeštaju"
-
-#: gweather/weather.c:191
-msgid "Freezing ice pellets"
-msgstr "Smrzavajuće ledene kuglice"
-
 #. HAIL
-#: gweather/weather.c:192
+#: gweather/weather.c:199
 msgid "Hail"
 msgstr "Grad"
 
-#: gweather/weather.c:192
-msgid "Hail in the vicinity"
-msgstr "Grad u blizini"
-
-#: gweather/weather.c:192 gweather/weather.c:193
-msgid "Light hail"
-msgstr "Slab grad"
-
-#: gweather/weather.c:192
-msgid "Moderate hail"
-msgstr "Umeren grad"
-
-#: gweather/weather.c:192
-msgid "Heavy hail"
-msgstr "Jak grad"
-
-#: gweather/weather.c:192
-msgid "Shallow hail"
-msgstr "Slabašan grad"
-
-#: gweather/weather.c:192
-msgid "Patches of hail"
-msgstr "Tragovi grada"
-
-#: gweather/weather.c:192
-msgid "Partial hail"
-msgstr "Delimično grad"
-
-#: gweather/weather.c:192
+#: gweather/weather.c:199
 msgid "Hailstorm"
 msgstr "Olujni grad"
 
-#: gweather/weather.c:192
-msgid "Blowing hail"
-msgstr "Razarajući grad"
-
-#: gweather/weather.c:192
+#: gweather/weather.c:199
 msgid "Hail showers"
 msgstr "Pljusak grada"
 
-#: gweather/weather.c:192
-msgid "Drifting hail"
-msgstr "Grad se lagano premešta"
-
-#: gweather/weather.c:192
-msgid "Freezing hail"
-msgstr "Ledeni grad"
-
 #. SMALL_HAIL
-#: gweather/weather.c:193
+#: gweather/weather.c:200
 msgid "Small hail"
 msgstr "Manji grad"
 
-#: gweather/weather.c:193
-msgid "Small hail in the vicinity"
-msgstr "Manji grad u blizini"
-
-#: gweather/weather.c:193
-msgid "Moderate small hail"
-msgstr "Umeren manji grad"
-
-#: gweather/weather.c:193
-msgid "Heavy small hail"
-msgstr "Jaki manji grad"
-
-#: gweather/weather.c:193
-msgid "Shallow small hail"
-msgstr "Slabašni manji grad"
-
-#: gweather/weather.c:193
-msgid "Patches of small hail"
-msgstr "Tragovi manjeg grada"
-
-#: gweather/weather.c:193
-msgid "Partial small hail"
-msgstr "Delimično manji grad"
-
-#: gweather/weather.c:193
+#: gweather/weather.c:200
 msgid "Small hailstorm"
 msgstr "Manja oluja grada"
 
-#: gweather/weather.c:193
-msgid "Blowing small hail"
-msgstr "Razarajući manji grad"
-
-#: gweather/weather.c:193
+#: gweather/weather.c:200
 msgid "Showers of small hail"
 msgstr "Pljusak manjeg grada"
 
-#: gweather/weather.c:193
-msgid "Drifting small hail"
-msgstr "Manji grad se lagano premešta"
-
-#: gweather/weather.c:193
-msgid "Freezing small hail"
-msgstr "Ledeni manji grad"
-
 #. PRECIPITATION
-#: gweather/weather.c:194
+#: gweather/weather.c:201
 msgid "Unknown precipitation"
 msgstr "Nepoznate padavine"
 
-#: gweather/weather.c:194
-msgid "Precipitation in the vicinity"
-msgstr "Padavine u blizini"
-
-#: gweather/weather.c:194
-msgid "Light precipitation"
-msgstr "Slabe padavine"
-
-#: gweather/weather.c:194
-msgid "Moderate precipitation"
-msgstr "Umerene padavine"
-
-#: gweather/weather.c:194
-msgid "Heavy precipitation"
-msgstr "Jake padavine"
-
-#: gweather/weather.c:194
-msgid "Shallow precipitation"
-msgstr "Slabašne padavine"
-
-#: gweather/weather.c:194
-msgid "Patches of precipitation"
-msgstr "Tragovi padavina"
-
-#: gweather/weather.c:194
-msgid "Partial precipitation"
-msgstr "Delimično padavine"
-
-#: gweather/weather.c:194
-msgid "Unknown thunderstorm"
-msgstr "Nepoznata oluja sa grmljavinom"
-
-#: gweather/weather.c:194
-msgid "Blowing precipitation"
-msgstr "Razarajuće padavine"
-
-#: gweather/weather.c:194
-msgid "Showers, type unknown"
-msgstr "Pljusak nepoznate vrste"
-
-#: gweather/weather.c:194
-msgid "Drifting precipitation"
-msgstr "Padavine"
-
-#: gweather/weather.c:194
-msgid "Freezing precipitation"
-msgstr "Ledene padavine"
-
 #. MIST
-#: gweather/weather.c:195
+#: gweather/weather.c:202
 msgid "Mist"
 msgstr "Izmaglica"
 
-#: gweather/weather.c:195
-msgid "Mist in the vicinity"
-msgstr "Izmaglica u blizini"
-
-#: gweather/weather.c:195
-msgid "Light mist"
-msgstr "Slaba izmaglica"
-
-#: gweather/weather.c:195
-msgid "Moderate mist"
-msgstr "Umerena izmaglica"
-
-#: gweather/weather.c:195
-msgid "Thick mist"
-msgstr "Jaka izmaglica"
-
-#: gweather/weather.c:195
-msgid "Shallow mist"
-msgstr "Slabašna izmaglica"
-
-#: gweather/weather.c:195
-msgid "Patches of mist"
-msgstr "Tragovi izmaglice"
-
-#: gweather/weather.c:195
-msgid "Partial mist"
-msgstr "Delimično izmaglica"
-
-# Ovo je moguce? Zar vetar ne rastera maglu, a?
-#: gweather/weather.c:195
-msgid "Mist with wind"
-msgstr "Izmaglica sa vetrom"
-
-#: gweather/weather.c:195
-msgid "Drifting mist"
-msgstr "Izmaglica se lagano premešta"
-
-#: gweather/weather.c:195
-msgid "Freezing mist"
-msgstr "Ledena izmaglica"
-
 #. FOG
-#: gweather/weather.c:196
+#: gweather/weather.c:203
 msgid "Fog"
 msgstr "Magla"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:203
 msgid "Fog in the vicinity"
 msgstr "Magla u blizini"
 
-#: gweather/weather.c:196
-msgid "Light fog"
-msgstr "Slaba magla"
-
-#: gweather/weather.c:196
-msgid "Moderate fog"
-msgstr "Umerena magla"
-
-#: gweather/weather.c:196
-msgid "Thick fog"
-msgstr "Jaka magla"
-
-#: gweather/weather.c:196
+#: gweather/weather.c:203
 msgid "Shallow fog"
 msgstr "Slabašna magla"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:203
 msgid "Patches of fog"
 msgstr "Tragovi magle"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:203
 msgid "Partial fog"
 msgstr "Delimično magla"
 
-#: gweather/weather.c:196
-msgid "Fog with wind"
-msgstr "Magla sa vetrom"
-
-#: gweather/weather.c:196
-msgid "Drifting fog"
-msgstr "Magla se lagano premešta"
-
-#: gweather/weather.c:196
+#: gweather/weather.c:203
 msgid "Freezing fog"
 msgstr "Ledena magla"
 
 #. SMOKE
-#: gweather/weather.c:197
+#: gweather/weather.c:204
 msgid "Smoke"
 msgstr "Smog"
 
-#: gweather/weather.c:197
-msgid "Smoke in the vicinity"
-msgstr "Smog u blizini"
-
-#: gweather/weather.c:197
-msgid "Thin smoke"
-msgstr "Malo smoga"
-
-#: gweather/weather.c:197
-msgid "Moderate smoke"
-msgstr "Umereno smoga"
-
-#: gweather/weather.c:197
-msgid "Thick smoke"
-msgstr "Mnogo smoga"
-
-#: gweather/weather.c:197
-msgid "Shallow smoke"
-msgstr "Slabašan smog"
-
-#: gweather/weather.c:197
-msgid "Patches of smoke"
-msgstr "Tragovi smoga"
-
-#: gweather/weather.c:197
-msgid "Partial smoke"
-msgstr "Delimični smog"
-
-#: gweather/weather.c:197
-msgid "Smoke w/ thunders"
-msgstr "Smog sa grmljavinom"
-
-#: gweather/weather.c:197
-msgid "Smoke with wind"
-msgstr "Smog sa vetrom"
-
-#: gweather/weather.c:197
-msgid "Drifting smoke"
-msgstr "Smog se lagano premešta"
-
 #. VOLCANIC_ASH
-#: gweather/weather.c:198
+#: gweather/weather.c:205
 msgid "Volcanic ash"
 msgstr "Vulkanski pepeo"
 
-#: gweather/weather.c:198
-msgid "Volcanic ash in the vicinity"
-msgstr "Vulkanski pepeo u blizini"
-
-#: gweather/weather.c:198
-msgid "Moderate volcanic ash"
-msgstr "Umeren vulkanski pepeo"
-
-#: gweather/weather.c:198
-msgid "Thick volcanic ash"
-msgstr "Mnogo vulkanskog pepela"
-
-#: gweather/weather.c:198
-msgid "Shallow volcanic ash"
-msgstr "Malo vulkanskog pepela"
-
-#: gweather/weather.c:198
-msgid "Patches of volcanic ash"
-msgstr "Tragovi vulkanskog pepela"
-
-#: gweather/weather.c:198
-msgid "Partial volcanic ash"
-msgstr "Delimično vulkanski pepeo"
-
-#: gweather/weather.c:198
-msgid "Volcanic ash w/ thunders"
-msgstr "Vulkanski pepeo uz grmljavinu"
-
-#: gweather/weather.c:198
-msgid "Blowing volcanic ash"
-msgstr "Razarajući vulkanski pepeo"
-
-#: gweather/weather.c:198
-msgid "Showers of volcanic ash "
-msgstr "Pljusak vulkanskog pepela"
-
-#: gweather/weather.c:198
-msgid "Drifting volcanic ash"
-msgstr "Vulkanski pepeo se lagano premešta"
-
-#: gweather/weather.c:198
-msgid "Freezing volcanic ash"
-msgstr "Ledeni vulkanski pepeo"
-
 #. SAND
-#: gweather/weather.c:199
+#: gweather/weather.c:206
 msgid "Sand"
 msgstr "Pesak"
 
-#: gweather/weather.c:199
-msgid "Sand in the vicinity"
-msgstr "Pesak u blizini"
-
-#: gweather/weather.c:199
-msgid "Light sand"
-msgstr "Malo peska"
-
-#: gweather/weather.c:199
-msgid "Moderate sand"
-msgstr "Umerno peska"
-
-#: gweather/weather.c:199
-msgid "Heavy sand"
-msgstr "Puno peska"
-
-#: gweather/weather.c:199
-msgid "Patches of sand"
-msgstr "Tragovi peska"
-
-#: gweather/weather.c:199
-msgid "Partial sand"
-msgstr "Delimični pesak"
-
-#: gweather/weather.c:199
+#: gweather/weather.c:206
 msgid "Blowing sand"
 msgstr "Razarajući pesak"
 
-#: gweather/weather.c:199
+#: gweather/weather.c:206
 msgid "Drifting sand"
 msgstr "Pesak se lagano premešta"
 
 # I ovo je sumaglica, izmaglica kao i Mist, pa neka ovo bude sumaglica ;)
 #. HAZE
-#: gweather/weather.c:200
+#: gweather/weather.c:207
 msgid "Haze"
 msgstr "Sumaglica"
 
-#: gweather/weather.c:200
-msgid "Haze in the vicinity"
-msgstr "Sumaglica u blizini"
-
-#: gweather/weather.c:200
-msgid "Light haze"
-msgstr "Slaba sumaglica"
-
-#: gweather/weather.c:200
-msgid "Moderate haze"
-msgstr "Umerena sumaglica"
-
-#: gweather/weather.c:200
-msgid "Thick haze"
-msgstr "Jaka sumaglica"
-
-#: gweather/weather.c:200
-msgid "Shallow haze"
-msgstr "Slabašna sumaglica"
-
-#: gweather/weather.c:200
-msgid "Patches of haze"
-msgstr "Tragovi sumaglice"
-
-#: gweather/weather.c:200
-msgid "Partial haze"
-msgstr "Delimična sumaglica"
-
-#: gweather/weather.c:200
-msgid "Haze with wind"
-msgstr "Sumaglica sa vetrom"
-
-#: gweather/weather.c:200
-msgid "Drifting haze"
-msgstr "Sumaglica se lagano premešta"
-
-#: gweather/weather.c:200
-msgid "Freezing haze"
-msgstr "Ledena sumaglica"
-
-# Sta je "spray"? Zapraseno?
 #. SPRAY
-#: gweather/weather.c:201
-msgid "Sprays"
-msgstr "Zaprašeno"
-
-#: gweather/weather.c:201
-msgid "Sprays in the vicinity"
-msgstr "Zaprašeno u blizini"
-
-#: gweather/weather.c:201
-msgid "Light sprays"
-msgstr "Lagano zaprašeno"
-
-#: gweather/weather.c:201
-msgid "Moderate sprays"
-msgstr "Umereno zaprašeno"
-
-#: gweather/weather.c:201
-msgid "Heavy sprays"
-msgstr "Jako zaprašeno"
-
-#: gweather/weather.c:201
-msgid "Shallow sprays"
-msgstr "Slabašno zaprašeno"
-
-#: gweather/weather.c:201
-msgid "Patches of sprays"
-msgstr "U tragovima zaprašeno"
-
-#: gweather/weather.c:201
-msgid "Partial sprays"
-msgstr "Delimično zaprašeno"
-
-#: gweather/weather.c:201
+#: gweather/weather.c:208
 msgid "Blowing sprays"
 msgstr "Razarajuće zaprašeno"
 
-#: gweather/weather.c:201
-msgid "Drifting sprays"
-msgstr "Zaprašeno se lagano premešta"
-
-#: gweather/weather.c:201
-msgid "Freezing sprays"
-msgstr "Ledeno zaprašeno"
-
 #. DUST
-#: gweather/weather.c:202
+#: gweather/weather.c:209
 msgid "Dust"
 msgstr "Prašina"
 
-#: gweather/weather.c:202
-msgid "Dust in the vicinity"
-msgstr "Prašina u blizini"
-
-#: gweather/weather.c:202
-msgid "Light dust"
-msgstr "Lagana prašina"
-
-#: gweather/weather.c:202
-msgid "Moderate dust"
-msgstr "Umerena prašina"
-
-#: gweather/weather.c:202
-msgid "Heavy dust"
-msgstr "Teška prašina"
-
-#: gweather/weather.c:202
-msgid "Patches of dust"
-msgstr "Tragovi prašine"
-
-#: gweather/weather.c:202
-msgid "Partial dust"
-msgstr "Delimišno prašnjavo"
-
 # Da li mozda "Blowing" u svima ovima kao "Vetrovito"?
-#: gweather/weather.c:202
+#: gweather/weather.c:209
 msgid "Blowing dust"
 msgstr "Razarajuća prašina"
 
-#: gweather/weather.c:202
+#: gweather/weather.c:209
 msgid "Drifting dust"
 msgstr "Prašina se lagano premešta"
 
 #. SQUALL
-#: gweather/weather.c:203
+#: gweather/weather.c:210
 msgid "Squall"
 msgstr "Udar vetra"
 
-#: gweather/weather.c:203
-msgid "Squall in the vicinity"
-msgstr "Udar vetra u blizini"
-
-#: gweather/weather.c:203
-msgid "Light squall"
-msgstr "Slab udar vetra"
-
-#: gweather/weather.c:203
-msgid "Moderate squall"
-msgstr "Umeren udar vetra"
-
-#: gweather/weather.c:203
-msgid "Heavy squall"
-msgstr "Jak udar vetra"
-
-#: gweather/weather.c:203
-msgid "Partial squall"
-msgstr "Delimični udar vetra"
-
-#: gweather/weather.c:203
-msgid "Thunderous squall"
-msgstr "Udar vetra sa grmljavinom"
-
-#: gweather/weather.c:203
-msgid "Blowing squall"
-msgstr "Razarajući udar vetra"
-
-#: gweather/weather.c:203
-msgid "Drifting squall"
-msgstr "Udar vetra se lagano premešta"
-
-#: gweather/weather.c:203
-msgid "Freezing squall"
-msgstr "Ledeni udar vetra"
-
 #. SANDSTORM
-#: gweather/weather.c:204
+#: gweather/weather.c:211
 msgid "Sandstorm"
 msgstr "Peščana oluja"
 
-#: gweather/weather.c:204
+#: gweather/weather.c:211
 msgid "Sandstorm in the vicinity"
 msgstr "Peščana oluja u blizini"
 
-#: gweather/weather.c:204
-msgid "Light standstorm"
-msgstr "Slaba peščana oluja"
-
-#: gweather/weather.c:204
-msgid "Moderate sandstorm"
-msgstr "Umerena peščana oluja"
-
-#: gweather/weather.c:204
+#: gweather/weather.c:211
 msgid "Heavy sandstorm"
 msgstr "Jaka peščana oluja"
 
-#: gweather/weather.c:204
-msgid "Shallow sandstorm"
-msgstr "Slabašna peščana oluja"
-
-#: gweather/weather.c:204
-msgid "Partial sandstorm"
-msgstr "Delimična peščana oluja"
-
-#: gweather/weather.c:204
-msgid "Thunderous sandstorm"
-msgstr "Peščana oluja uz grmljavinu"
-
-#: gweather/weather.c:204
-msgid "Blowing sandstorm"
-msgstr "Razarajuća peščana oluja"
-
-#: gweather/weather.c:204
-msgid "Drifting sandstorm"
-msgstr "Peščana oluja se lagano premešta"
-
-#: gweather/weather.c:204
-msgid "Freezing sandstorm"
-msgstr "Ledena peščana oluja"
-
 # Zalite se Mortonu i Bensonu, ili Morton-Bensonu ;)
 #. DUSTSTORM
-#: gweather/weather.c:205
+#: gweather/weather.c:212
 msgid "Duststorm"
 msgstr "Vrtlog od prašine"
 
-#: gweather/weather.c:205
+#: gweather/weather.c:212
 msgid "Duststorm in the vicinity"
 msgstr "Vrtlog od prašine u blizini"
 
-#: gweather/weather.c:205
-msgid "Light duststorm"
-msgstr "Slab vrtlog od prašine"
-
-#: gweather/weather.c:205
-msgid "Moderate duststorm"
-msgstr "Umeren vrtlog od prašine"
-
-#: gweather/weather.c:205
+#: gweather/weather.c:212
 msgid "Heavy duststorm"
 msgstr "Jak vrtlog od prašine"
 
-#: gweather/weather.c:205
-msgid "Shallow duststorm"
-msgstr "Slabašan vrtlog od prašine"
-
-#: gweather/weather.c:205
-msgid "Partial duststorm"
-msgstr "Delimičan vrtlog od prašine"
-
-#: gweather/weather.c:205
-msgid "Thunderous duststorm"
-msgstr "Vrtlog od prašine sa grmljavinom"
-
-#: gweather/weather.c:205
-msgid "Blowing duststorm"
-msgstr "Razarajući vrtlog od prašine"
-
-#: gweather/weather.c:205
-msgid "Drifting duststorm"
-msgstr "Vrtlog od prašine se lagano premešta"
-
-#: gweather/weather.c:205
-msgid "Freezing duststorm"
-msgstr "Ledeni vrtlog od prašine"
-
 #. FUNNEL_CLOUD
-#: gweather/weather.c:206
+#: gweather/weather.c:213
 msgid "Funnel cloud"
 msgstr "Oblak ki dimnjak"
 
-#: gweather/weather.c:206
-msgid "Funnel cloud in the vicinity"
-msgstr "Oblak ki dimnjak u blizini"
-
-#: gweather/weather.c:206
-msgid "Light funnel cloud"
-msgstr "Lagani oblak ki dimnjak"
-
-#: gweather/weather.c:206
-msgid "Moderate funnel cloud"
-msgstr "Umereni oblak ki dimnjak"
-
-#: gweather/weather.c:206
-msgid "Thick funnel cloud"
-msgstr "Debeli oblak ki dimnjak"
-
-#: gweather/weather.c:206
-msgid "Shallow funnel cloud"
-msgstr "Žgoljavi oblak ki dimnjak"
-
-#: gweather/weather.c:206
-msgid "Patches of funnel clouds"
-msgstr "Tragovi oblaka ki dimnjaka"
-
-#: gweather/weather.c:206
-msgid "Partial funnel clouds"
-msgstr "Delimični oblak ki dimnjak"
-
-#: gweather/weather.c:206
-msgid "Funnel cloud w/ wind"
-msgstr "Oblak ki dimnjak, i još vetar"
-
-#: gweather/weather.c:206
-msgid "Drifting funnel cloud"
-msgstr "Oblak ki dimnjak se lagano premešta"
-
 #. TORNADO
-#: gweather/weather.c:207
+#: gweather/weather.c:214
 msgid "Tornado"
 msgstr "Tornado"
 
-#: gweather/weather.c:207
-msgid "Tornado in the vicinity"
-msgstr "Tornado u blizini"
-
-#: gweather/weather.c:207
-msgid "Moderate tornado"
-msgstr "Umereni tornado"
-
-#: gweather/weather.c:207
-msgid "Raging tornado"
-msgstr "Besni tornado"
-
-#: gweather/weather.c:207
-msgid "Partial tornado"
-msgstr "Delimični tornado"
-
-#: gweather/weather.c:207
-msgid "Thunderous tornado"
-msgstr "Tornado uz grmljavinu"
-
-#: gweather/weather.c:207
-msgid "Drifting tornado"
-msgstr "Tornado se lagano premešta"
-
-#: gweather/weather.c:207
-msgid "Freezing tornado"
-msgstr "Ledeni tornado"
-
 #. DUST_WHIRLS
-#: gweather/weather.c:208
+#: gweather/weather.c:215
 msgid "Dust whirls"
 msgstr "Kovitlaci prašine"
 
-#: gweather/weather.c:208
+#: gweather/weather.c:215
 msgid "Dust whirls in the vicinity"
 msgstr "Kovitlaci prašine u blizini"
 
-#: gweather/weather.c:208
-msgid "Light dust whirls"
-msgstr "Lagani kovitlaci prašine"
-
-#: gweather/weather.c:208
-msgid "Moderate dust whirls"
-msgstr "Umereni kovitlaci prašine"
-
-#: gweather/weather.c:208
-msgid "Heavy dust whirls"
-msgstr "Jaki kovitlaci prašine"
-
-#: gweather/weather.c:208
-msgid "Shallow dust whirls"
-msgstr "Slabašni kovitlaci prašine"
-
-#: gweather/weather.c:208
-msgid "Patches of dust whirls"
-msgstr "Tragovi kovitlaca prašine"
-
-#: gweather/weather.c:208
-msgid "Partial dust whirls"
-msgstr "Delimični kovitlaci prašine"
-
-#: gweather/weather.c:208
-msgid "Blowing dust whirls"
-msgstr "Razarajući kovitlaci prašine"
-
-#: gweather/weather.c:208
-msgid "Drifting dust whirls"
-msgstr "Kovitlaci prašine se lagano premeštaju"
-
-#: gweather/weather.c:824 gweather/weather.c:864 gweather/weather.c:1437
+#: gweather/weather.c:831 gweather/weather.c:871 gweather/weather.c:1444
 msgid "Failed to get METAR data.\n"
 msgstr "Neuspešno dobavljanje METAR podataka.\n"
 
-#: gweather/weather.c:856 gweather/weather.c:884 gweather/weather.c:1081
+#: gweather/weather.c:863 gweather/weather.c:891 gweather/weather.c:1088
 msgid "WeatherInfo missing location"
 msgstr "Nedostaje mesto za podatke o vremenu"
 
-#: gweather/weather.c:1047
-msgid "Failed to get IWIN data.\n"
-msgstr "Neuspešno dobavljanje IWIN podataka.\n"
-
-#. forecast data is not really interesting anyway ;)
-#: gweather/weather.c:1091
-msgid "Failed to get IWIN forecast data.\n"
-msgstr "Neuspešno dobavljanje IWIN podataka za prognoze.\n"
-
-#: gweather/weather.c:1290
-msgid "Failed to get Met Office data.\n"
-msgstr "Neuspešno dobavljanje podataka iz Met kancelarije.\n"
-
-#: gweather/weather.c:1324
-msgid "Failed to get Met Office forecast data.\n"
-msgstr "Neuspešno dobavljanje podataka za prognozu iz Met kancelarije.\n"
-
-#: gweather/weather.c:1468
-msgid "Failed to get radar map image.\n"
-msgstr "Neuspešno dobavljanje radarske mape.\n"
-
-#: gweather/weather.c:1771
+#: gweather/weather.c:1778
 msgid "%a, %b %d / %H:%M"
 msgstr "%a, %b %d / %H:%M"
 
-#: gweather/weather.c:1775
+#: gweather/weather.c:1782
 msgid "Unknown observation time"
 msgstr "Nepoznato vreme posmatranja"
 
-#: gweather/weather.c:1835
+#: gweather/weather.c:1842
 msgid "Calm"
 msgstr "Mirno"
 
-#: gweather/weather.c:1861
+#: gweather/weather.c:1868
 msgid "Unknown"
 msgstr "Nepoznato"
 
-#: gweather/weather.c:1905
+#: gweather/weather.c:1912
 msgid "Retrieval failed"
 msgstr "Neuspešno dobavljanje podataka"
 
@@ -3019,7 +2306,7 @@ msgid "Factory for creating inbox monitors."
 msgstr "Proizvodnja programčeta za praćenje sandučeta."
 
 #: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:3
-#: mailcheck/mailcheck.c:791 mailcheck/mailcheck.c:2445
+#: mailcheck/mailcheck.c:791 mailcheck/mailcheck.c:2448
 msgid "Inbox Monitor"
 msgstr "Praćenje sandučeta"
 
@@ -3102,11 +2389,11 @@ msgid "No mail."
 msgstr "Nema pošte."
 
 #: mailcheck/mailcheck.c:1548 mailcheck/mailcheck.c:1549
-#: mailcheck/mailcheck.c:2800 mailcheck/mailcheck.c:2801
+#: mailcheck/mailcheck.c:2805 mailcheck/mailcheck.c:2806
 msgid "Status not updated"
 msgstr "Stanje nije osveženo"
 
-#: mailcheck/mailcheck.c:1751 mailcheck/mailcheck.c:2367
+#: mailcheck/mailcheck.c:1751 mailcheck/mailcheck.c:2370
 msgid "Inbox Settings"
 msgstr "Podešavanja sandučeta"
 
@@ -3170,73 +2457,72 @@ msgstr "Polje za unos direktorijuma"
 msgid "Check for mail _every:"
 msgstr "Proveravaj poštu _svakih:"
 
-#: mailcheck/mailcheck.c:2073
+#: mailcheck/mailcheck.c:2074
 msgid "Choose time interval in minutes to check mail"
 msgstr "Izaberite razmak u minutima između dve provere pošte"
 
-#: mailcheck/mailcheck.c:2095
+#: mailcheck/mailcheck.c:2097
 msgid "Choose time interval in seconds to check mail"
 msgstr "Izaberite razmak u sekundama između dve provere pošte"
 
-#: mailcheck/mailcheck.c:2112
+#: mailcheck/mailcheck.c:2114
 msgid "Play a _sound when new mail arrives"
 msgstr "Pusti _zvuk kada stigne nova pošta"
 
 #. l = gtk_check_button_new_with_mnemonic (_("Set the number of unread mails to _zero when clicked"));
-#: mailcheck/mailcheck.c:2122
+#: mailcheck/mailcheck.c:2124
 msgid "Sto_p animation when double clicked"
 msgstr "Zaus_tavi animaciju po dvostrukom kliku"
 
-#: mailcheck/mailcheck.c:2135
+#: mailcheck/mailcheck.c:2137
 msgid "Select a_nimation:"
 msgstr "Izaberite a_nimaciju:"
 
-#: mailcheck/mailcheck.c:2152
+#: mailcheck/mailcheck.c:2154
 msgid "Commands"
 msgstr "Naredbe"
 
-#: mailcheck/mailcheck.c:2181
+#: mailcheck/mailcheck.c:2183
 msgid "Before each _update:"
 msgstr "Pre svakog _osvežavanja:"
 
-#: mailcheck/mailcheck.c:2198
+#: mailcheck/mailcheck.c:2200
 msgid "Command to execute before each update"
 msgstr "Naredba koju treba izvršiti pre svakog osvežavanja stanja"
 
-#: mailcheck/mailcheck.c:2210
+#: mailcheck/mailcheck.c:2212
 msgid "When new mail _arrives:"
 msgstr "Kada stigne nova _pošta:"
 
-#: mailcheck/mailcheck.c:2225 mailcheck/mailcheck.schemas.in.h:2
+#: mailcheck/mailcheck.c:2227 mailcheck/mailcheck.schemas.in.h:2
 msgid "Command to execute when new mail arrives"
 msgstr "Naredba koju treba izvršiti kada stigne nova pošta"
 
-#: mailcheck/mailcheck.c:2237
+#: mailcheck/mailcheck.c:2239
 msgid "When double clicke_d:"
 msgstr "Po dvostrukom _kliku:"
 
-#: mailcheck/mailcheck.c:2252
+#: mailcheck/mailcheck.c:2254
 msgid "Command to execute when clicked"
 msgstr "Naredba koju treba izvršiti po kliku"
 
-#: mailcheck/mailcheck.c:2337
+#: mailcheck/mailcheck.c:2339
 msgid "Inbox Monitor Preferences"
 msgstr "Postavke praćenja sandučeta"
 
-#: mailcheck/mailcheck.c:2447
+#: mailcheck/mailcheck.c:2450
 msgid "Inbox Monitor notifies you when new mail arrives in your mailbox"
-msgstr ""
-"Praćenje sandučeta vas obaveštava kada stigne nova pošta u vaše sanduče"
+msgstr "Praćenje sandučeta vas obaveštava kada stigne nova pošta u vaše sanduče"
 
-#: mailcheck/mailcheck.c:2771
+#: mailcheck/mailcheck.c:2776
 msgid "Text only"
 msgstr "Samo tekst"
 
-#: mailcheck/mailcheck.c:2802
+#: mailcheck/mailcheck.c:2807
 msgid "Mail check"
 msgstr "Provera pošte"
 
-#: mailcheck/mailcheck.c:2803
+#: mailcheck/mailcheck.c:2808
 msgid "Mail check notifies you when new mail arrives in your mailbox"
 msgstr "Provera pošte vas obaveštava kada stigne nova pošta u vaše sanduče"
 
@@ -3523,62 +2809,113 @@ msgstr "O_brazac:"
 msgid "_Use default theme colors"
 msgstr "_Koristite podrazumevane boje teme"
 
-# bug: Autcomplete -> autocomplete
 #: mini-commander/src/mini-commander.schemas.in.h:1
-msgid "Autocomplete history"
-msgstr "Prethodna samodopunjavanja"
+msgid "Attempt to autocomplete a command from the history of commands entered."
+msgstr "Pokušaj da samodopuniš naredbu iz spiska već korišćenih naredbi."
 
 #: mini-commander/src/mini-commander.schemas.in.h:2
-msgid "Height of the applet"
-msgstr "Visina programčeta"
+msgid "Color background blue component"
+msgstr "Plava komponenta boje pozadine"
 
 #: mini-commander/src/mini-commander.schemas.in.h:3
-msgid "Height of the entry"
-msgstr "Visina unosa"
+msgid "Color background green component"
+msgstr "Zelena komponenta boje pozadine"
 
 #: mini-commander/src/mini-commander.schemas.in.h:4
-msgid "Show an ugly frame around the whole applet wasting useful space"
-msgstr "Prikaži ružan ram oko celog programčeta i tako baci koristan prostor"
+msgid "Color background red component"
+msgstr "Crvena komponenta boje pozadine"
 
 #: mini-commander/src/mini-commander.schemas.in.h:5
-msgid "Show the handle thingy so you can detach the command thingy"
-msgstr "Prikaži onu ručku kako biste mogli da odvojite ovo za naredbe"
+msgid "Color foreground blue component"
+msgstr "Plava komponenta boje"
 
 #: mini-commander/src/mini-commander.schemas.in.h:6
-msgid "Use the default theme colors for entry fg and bg"
-msgstr "Koristi podrazumevane boje teme za boju i pozadinu polja"
+msgid "Color foreground green component"
+msgstr "Zelena komponenta boje"
+
+#: mini-commander/src/mini-commander.schemas.in.h:7
+msgid "Color foreground red component"
+msgstr "Crvena komponenta boje"
 
 #: mini-commander/src/mini-commander.schemas.in.h:8
-msgid "bg blue"
-msgstr "plava poz."
+msgid "History list"
+msgstr "Prethodne naredbe"
 
 #: mini-commander/src/mini-commander.schemas.in.h:9
-msgid "bg red"
-msgstr "crvena poz."
+msgid "List of GConfValue entries containing strings for history entries."
+msgstr "Spisak GConfValue unosa koji sadrže prethodne naredbe."
 
 #: mini-commander/src/mini-commander.schemas.in.h:10
-msgid "fg blue"
-msgstr "plava"
+msgid "List of GConfValue entries containing strings for the macro commands."
+msgstr "Spisak GConfValue unosa koji sadrže makro naredbe."
 
 #: mini-commander/src/mini-commander.schemas.in.h:11
-msgid "fg green"
-msgstr "zelena"
+msgid "List of GConfValue entries containing strings for the macro patterns."
+msgstr "Spisak GConfValue unosa koji sadrže makro obrasce."
 
 #: mini-commander/src/mini-commander.schemas.in.h:12
-msgid "fg red"
-msgstr "crvena"
+msgid "Macro command list"
+msgstr "Spisak složenih naredbi"
 
 #: mini-commander/src/mini-commander.schemas.in.h:13
-msgid "list of GConfValue entries containing strings for history entries"
-msgstr "spisak GConfValue unosa koji sadrže prethodne naredbe"
-
-#: mini-commander/src/mini-commander.schemas.in.h:14
-msgid "list of GConfValue entries containing strings for the macro commands"
-msgstr "spisak GConfValue unosa koji sadrže makro naredbe"
+msgid "Macro pattern list"
+msgstr "Spisak složenih obrazaca"
 
 #: mini-commander/src/mini-commander.schemas.in.h:15
-msgid "list of GConfValue entries containing strings for the macro patterns"
-msgstr "spisak GConfValue unosa koji sadrže makro obrasce"
+msgid "Perform history autocompletion"
+msgstr "Omogući samodopunjavanje zasnovano na prethodnim naredbama"
+
+#: mini-commander/src/mini-commander.schemas.in.h:16
+msgid "Show a frame surrounding the applet."
+msgstr "Prikaži okvir oko programčeta."
+
+#: mini-commander/src/mini-commander.schemas.in.h:17
+msgid "Show a handle so the applet can be detached from the panel."
+msgstr "Prikaži ručku kako bi se programče moglo odvojiti od panela."
+
+#: mini-commander/src/mini-commander.schemas.in.h:18
+msgid "Show frame"
+msgstr "Prikaži okvir"
+
+#: mini-commander/src/mini-commander.schemas.in.h:19
+msgid "Show handle"
+msgstr "Prikaži ručku za premeštanje apleta"
+
+#: mini-commander/src/mini-commander.schemas.in.h:20
+msgid "The blue component of the background color."
+msgstr "Plava komponenta boje pozadine."
+
+#: mini-commander/src/mini-commander.schemas.in.h:21
+msgid "The blue component of the foreground color."
+msgstr "Plava komponenta boje."
+
+#: mini-commander/src/mini-commander.schemas.in.h:22
+msgid "The green component of the background color."
+msgstr "Zelena komponenta boje pozadine."
+
+#: mini-commander/src/mini-commander.schemas.in.h:23
+msgid "The green component of the foreground color."
+msgstr "Zelena komponenta boje."
+
+#: mini-commander/src/mini-commander.schemas.in.h:24
+msgid "The red component of the background color."
+msgstr "Crvena komponenta boje pozadine."
+
+#: mini-commander/src/mini-commander.schemas.in.h:25
+msgid "The red component of the foreground color."
+msgstr "Crvena komponenta boje."
+
+#: mini-commander/src/mini-commander.schemas.in.h:26
+msgid "Use the default theme colors"
+msgstr "Koristite podrazumevane boje teme"
+
+#: mini-commander/src/mini-commander.schemas.in.h:27
+msgid "Use theme colors instead of custom ones."
+msgstr "Koristi uobičajene boje iz teme umesto izabranih."
+
+#: mini-commander/src/mini-commander.schemas.in.h:28
+msgid "Width"
+msgstr "Širina"
 
 #: mini-commander/src/mini-commander_applet.c:222
 #: mini-commander/src/mini-commander_applet.c:226
@@ -3788,15 +3125,15 @@ msgstr ""
 msgid "Volume Control Preferences"
 msgstr "Postavke za upravljanje jačinom zvuka"
 
-#: mixer/mixer.c:1240
+#: mixer/mixer.c:1241
 msgid "Audio Channels"
 msgstr "Zvučni kanali"
 
-#: mixer/mixer.c:1256
+#: mixer/mixer.c:1257
 msgid "_Select channel to control:"
 msgstr "_Izaberite kanal koji želite da podesite:"
 
-#: mixer/mixer.c:1586
+#: mixer/mixer.c:1587
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr ""
 "Upravljanje jačinom zvuka vam omogućava da postavite jačinu zvuka za vaš "
@@ -3859,84 +3196,152 @@ msgid "not connected"
 msgstr "veza nije uspostavljena"
 
 #: modemlights/modemlights.schemas.in.h:1
-msgid "Ask for confirmation when connecting"
-msgstr "Traži odobrenje pri povezivanju"
+msgid "Ask for confirmation when connecting/disconnecting"
+msgstr "Traži odobrenje pri povezivanju/raskidu veze"
 
 #: modemlights/modemlights.schemas.in.h:2
+msgid "Blink when connecting"
+msgstr "Treperi pri povezivanju"
+
+#: modemlights/modemlights.schemas.in.h:3
 msgid "Command executed when connecting"
 msgstr "Naredba koja se izvršava pri povezivanju"
 
-#: modemlights/modemlights.schemas.in.h:3
+#: modemlights/modemlights.schemas.in.h:4
 msgid "Command executed when disconnecting"
 msgstr "Naredba koja se izvršava pri raskidu veze"
 
-#: modemlights/modemlights.schemas.in.h:4
-msgid "Delay"
-msgstr "Čekanje"
-
 #: modemlights/modemlights.schemas.in.h:5
-msgid "Device name of modem"
-msgstr "Ime modemskog uređaja"
+msgid "Display a confirmation dialog when connecting or disconnecting."
+msgstr "Prikaži prozorče za odobrenje pri uspostavljanju ili raskidu veze."
 
 #: modemlights/modemlights.schemas.in.h:6
-msgid "Make it blink baby"
-msgstr "Treperi, sestro!"
+msgid "Make the applet blink when the modem is connecting."
+msgstr "Neka programče treperi pri povezivanju."
 
 #: modemlights/modemlights.schemas.in.h:7
+msgid "Modem device name"
+msgstr "Ime modemskog uređaja"
+
+#: modemlights/modemlights.schemas.in.h:8
 msgid "Modem lock file"
 msgstr "Dato_teka za zaključavanje modema"
 
-#: modemlights/modemlights.schemas.in.h:8
+#: modemlights/modemlights.schemas.in.h:9
 msgid "Receive background color"
 msgstr "Boja pozadine za primanje"
 
-#: modemlights/modemlights.schemas.in.h:9
+#: modemlights/modemlights.schemas.in.h:10
 msgid "Receive foreground color"
 msgstr "Boja za primanje"
 
-#: modemlights/modemlights.schemas.in.h:10
+#: modemlights/modemlights.schemas.in.h:11
 msgid "Send background color"
 msgstr "Boja pozadine za slanje"
 
-#: modemlights/modemlights.schemas.in.h:11
+#: modemlights/modemlights.schemas.in.h:12
 msgid "Send foreground color"
 msgstr "Boja za slanje"
 
 # "protok" vise odgovara za "bandwidth", ali zasto da ne i ovako?
-#: modemlights/modemlights.schemas.in.h:12
+#: modemlights/modemlights.schemas.in.h:13
 msgid "Show connect time and throughput"
 msgstr "Prikaži vreme trajanja veze i protok"
 
-#: modemlights/modemlights.schemas.in.h:13
-msgid "Status connect color"
+#: modemlights/modemlights.schemas.in.h:14
+msgid ""
+"Show extra information about the connect time and amount of data transmitted "
+"and received."
+msgstr ""
+"Prikaži dodatne podatke o dužini veze i količini prenetih i primljenih "
+"podataka."
+
+#: modemlights/modemlights.schemas.in.h:15
+msgid "Status connected color"
 msgstr "Boja kada je povezan"
 
-#: modemlights/modemlights.schemas.in.h:14
+#: modemlights/modemlights.schemas.in.h:16
 msgid "Status not connected color"
 msgstr "Boja kada nije povezan"
 
-# bug: wating -> waiting
-#: modemlights/modemlights.schemas.in.h:15
+#: modemlights/modemlights.schemas.in.h:17
 msgid "Status waiting connection color"
 msgstr "Boja kada je povezivanje u toku"
 
-#: modemlights/modemlights.schemas.in.h:16
+#: modemlights/modemlights.schemas.in.h:18
 msgid "Text background color"
 msgstr "Boja pozadine"
 
-#: modemlights/modemlights.schemas.in.h:17
+#: modemlights/modemlights.schemas.in.h:19
 msgid "Text foreground color"
 msgstr "Boja teksta"
 
-#: modemlights/modemlights.schemas.in.h:18
+#: modemlights/modemlights.schemas.in.h:20
 msgid "Text outline color"
 msgstr "Boja za uokviravanje teksta"
 
-#: modemlights/modemlights.schemas.in.h:19
+# bug: inidcate -> indicate
+#: modemlights/modemlights.schemas.in.h:21
+msgid "The background color of the button used to inidcate data received."
+msgstr "Boja pozadine dugmeta kojim se označavaju primljeni podaci."
+
+# bug: inidcate
+#: modemlights/modemlights.schemas.in.h:22
+msgid "The background color of the button used to inidcate data sent."
+msgstr "Boja pozadine dugmeta kojim se označavaju poslati podaci."
+
+#: modemlights/modemlights.schemas.in.h:23
+msgid ""
+"The color used to display the status button when the modem is connected."
+msgstr "Boja kojom se prikazuje stanje kada je modem povezan."
+
+#: modemlights/modemlights.schemas.in.h:24
+msgid ""
+"The color used to display the status button when the modem is connecting."
+msgstr "Boja kojom se prikazuje stanje dok se modem povezuje."
+
+#: modemlights/modemlights.schemas.in.h:25
+msgid ""
+"The color used to display the status button when the modem is not connected."
+msgstr "Boja kojom se prikazuje stanje kada modem nije povezan."
+
+#: modemlights/modemlights.schemas.in.h:26
+msgid "The color used to indicate that data has been received."
+msgstr "Boja kojom se označava da su primljeni podaci."
+
+#: modemlights/modemlights.schemas.in.h:27
+msgid "The color used to indicate that data has been sent."
+msgstr "Boja kojom se označava da su poslati podaci."
+
+#: modemlights/modemlights.schemas.in.h:28
+msgid "The fraction of a second until the applet updates."
+msgstr "Deo sekunde između osvežavanja programčeta."
+
+#: modemlights/modemlights.schemas.in.h:29
+msgid "The name of the modem device."
+msgstr "Ime modemskog uređaja na sistemu."
+
+#: modemlights/modemlights.schemas.in.h:30
+msgid "The name of the modem lock file."
+msgstr "Ime datoteke za zaključavanje modema."
+
+#: modemlights/modemlights.schemas.in.h:32
 msgid "Use isdn"
 msgstr "Koristi ISDN"
 
-#: modemlights/modemlights.schemas.in.h:20
+#: modemlights/modemlights.schemas.in.h:33
+msgid "Use isdn instead of ppp to connect the modem."
+msgstr "Koristi ISDN umesto PPP za povezivanje modema."
+
+#: modemlights/modemlights.schemas.in.h:34
+msgid "Use this command to connect the modem."
+msgstr "Koristi ovu naredbu za povezivanje modema."
+
+#: modemlights/modemlights.schemas.in.h:35
+msgid "Use this command to disconnect the modem."
+msgstr "Koristi ovu naredbu za raskid veze modemom."
+
+#: modemlights/modemlights.schemas.in.h:36
 msgid "Verify owner of lock file"
 msgstr "Proveri vlasnika datoteke za zaključavanje"
 
@@ -3944,115 +3349,115 @@ msgstr "Proveri vlasnika datoteke za zaključavanje"
 msgid "Modem Lights Preferences"
 msgstr "Postavke lampica modema"
 
-#: modemlights/properties.c:444
+#: modemlights/properties.c:445
 msgid "U_pdate every:"
 msgstr "O_sveži svakih:"
 
 # "protok" vise odgovara za "bandwidth", ali zasto da ne i ovako?
 #. extra info checkbox
-#: modemlights/properties.c:469
+#: modemlights/properties.c:470
 msgid "Sho_w connect time and throughput"
 msgstr "Pri_kaži vreme trajanja veze i protok"
 
-#: modemlights/properties.c:479
+#: modemlights/properties.c:480
 msgid "B_link connection status when connecting"
 msgstr "Sta_nje veze treperi pri povezivanju"
 
-#: modemlights/properties.c:489
+#: modemlights/properties.c:490
 msgid "Connections"
 msgstr "Veze"
 
-#: modemlights/properties.c:498
+#: modemlights/properties.c:499
 msgid "Co_nnection command:"
 msgstr "_Naredba za povezivanje:"
 
-#: modemlights/properties.c:522
+#: modemlights/properties.c:523
 msgid "_Disconnection command:"
 msgstr "Naredba za _raskid veze:"
 
 #. confirmation checkbox
-#: modemlights/properties.c:542
+#: modemlights/properties.c:543
 msgid "Con_firm connection"
 msgstr "_Potvrditi uspostavljanje veze"
 
-#: modemlights/properties.c:561
+#: modemlights/properties.c:562
 msgid "Receive Data"
 msgstr "Primljeni podaci"
 
-#: modemlights/properties.c:567
+#: modemlights/properties.c:568
 msgid "_Foreground:"
 msgstr "_Boja:"
 
-#: modemlights/properties.c:572
+#: modemlights/properties.c:573
 msgid "Send Data"
 msgstr "Poslati podaci"
 
-#: modemlights/properties.c:577
+#: modemlights/properties.c:578
 msgid "Foregroun_d:"
 msgstr "Bo_ja:"
 
-#: modemlights/properties.c:579
+#: modemlights/properties.c:580
 msgid "Backg_round:"
 msgstr "Pozad_ina:"
 
-#: modemlights/properties.c:582
+#: modemlights/properties.c:583
 msgid "Connection Status"
 msgstr "Stanje veze"
 
-#: modemlights/properties.c:590
+#: modemlights/properties.c:591
 msgid "Co_nnected:"
 msgstr "Po_vezan:"
 
-#: modemlights/properties.c:592
+#: modemlights/properties.c:593
 msgid "Disconnec_ted:"
 msgstr "Veza _raskinuta:"
 
-#: modemlights/properties.c:595
+#: modemlights/properties.c:596
 msgid "C_onnecting:"
 msgstr "Usp_ostavlja vezu:"
 
-#: modemlights/properties.c:598
+#: modemlights/properties.c:599
 msgid "Text"
 msgstr "Tekst"
 
-#: modemlights/properties.c:606
+#: modemlights/properties.c:607
 msgid "For_eground:"
 msgstr "_Boja:"
 
-#: modemlights/properties.c:608
+#: modemlights/properties.c:609
 msgid "Bac_kground:"
 msgstr "Po_zadina:"
 
-#: modemlights/properties.c:610
+#: modemlights/properties.c:611
 msgid "O_utline"
 msgstr "U_gašene brojke"
 
-#: modemlights/properties.c:613 multiload/properties.c:528
+#: modemlights/properties.c:614 multiload/properties.c:528
 msgid "Colors"
 msgstr "Boje"
 
-#: modemlights/properties.c:622
+#: modemlights/properties.c:623
 msgid "Modem Options"
 msgstr "Podešavanje modema"
 
-#: modemlights/properties.c:631
+#: modemlights/properties.c:632
 msgid "_Device:"
 msgstr "_Uređaj:"
 
-#: modemlights/properties.c:655
+#: modemlights/properties.c:656
 msgid "_Lock file:"
 msgstr "Dato_teka za zaključavanje:"
 
-#: modemlights/properties.c:674
+#: modemlights/properties.c:675
 msgid "_Verify owner of lock file"
 msgstr "_Proveri vlasnika datoteke za zaključavanje"
 
 #. ISDN checkbox
-#: modemlights/properties.c:685
+#: modemlights/properties.c:686
 msgid "U_se ISDN"
 msgstr "_Koristi ISDN"
 
-#: modemlights/properties.c:702
+#: modemlights/properties.c:703
 msgid "Advanced"
 msgstr "Napredno"
 
@@ -4086,8 +3491,8 @@ msgid ""
 msgstr ""
 "Objavljeno pod Gnuovom Opštom javnom licencom.\n"
 "\n"
-"Praćenje opterećenja sistema omogućava prikaz grafika za procesor, memoriju, "
-"i memoriju na disku, a uz to i mrežni saobraćaj."
+"Praćenje opterećenja sistema omogućava prikaz grafika za procesor, memoriju, i "
+"memoriju na disku, a uz to i mrežni saobraćaj."
 
 #: multiload/main.c:272 multiload/properties.c:553
 msgid "Processor"
@@ -4123,92 +3528,118 @@ msgid "Memory Load"
 msgstr "Opterećenje memorije"
 
 #: multiload/multiload.schemas.in.h:1
-msgid "Network background"
-msgstr "Mreža u pozadini"
+msgid ""
+"For horizontal panels, the width of the graphs in pixels. For vertical "
+"panels, this is the height of the graphs."
+msgstr ""
+"Za vodoravne panele, širina grafika u tačkama. Za uspravne panele, ovo je "
+"visina grafika."
 
 #: multiload/multiload.schemas.in.h:2
+msgid "Graph size"
+msgstr "Veličina grafika"
+
+#: multiload/multiload.schemas.in.h:3
+msgid "Network graph background color"
+msgstr "Boja pozadine za praćenje mreže"
+
+#: multiload/multiload.schemas.in.h:4
 msgid "Network other usage"
 msgstr "Ostala upotreba mreže"
 
-#: multiload/multiload.schemas.in.h:3
+#: multiload/multiload.schemas.in.h:5
+msgid "The cpu graph background color."
+msgstr "Boja pozadine za praćenje procesora."
+
+#: multiload/multiload.schemas.in.h:6
+msgid "The load graph background color."
+msgstr "Boja pozadine za praćenje opterećenja."
+
+#: multiload/multiload.schemas.in.h:7
+msgid "The memory graph background color."
+msgstr "Boja pozadine za praćenje memorije."
+
+#: multiload/multiload.schemas.in.h:8
+msgid "The swap graph background color."
+msgstr "Boja pozadine za praćenje zamene za memoriju."
+
+#: multiload/multiload.schemas.in.h:9
 msgid "enable the cpuload graph in multiload."
 msgstr "uključi praćenje procesora pri višestrukom praćenju."
 
-#: multiload/multiload.schemas.in.h:4
+#: multiload/multiload.schemas.in.h:10
 msgid "enable the loadavg graph in multiload."
 msgstr "uključi srednje opterećenje pri višestrukom praćenju."
 
-#: multiload/multiload.schemas.in.h:5
+#: multiload/multiload.schemas.in.h:11
 msgid "enable the memload graph in multiload."
 msgstr "uključi praćenje memorije pri višestrukom praćenju."
 
-#: multiload/multiload.schemas.in.h:6
+#: multiload/multiload.schemas.in.h:12
 msgid "enable the netload graph in multiload."
 msgstr "uključi praćenje mreže pri višestrukom praćenju."
 
-#: multiload/multiload.schemas.in.h:7
+#: multiload/multiload.schemas.in.h:13
 msgid "enable the swapload graph in multiload."
 msgstr "uključi praćenje zamene za memoriju pri višestrukom praćenju."
 
-#: multiload/multiload.schemas.in.h:8
-msgid ""
-"for horizontal panels, the width of the applets in pixels. for verticle "
-"panels, this is the height of the applets."
-msgstr ""
-"za vodoravne panele, širina programčeta u tačkama. za uspravne panele, ovo "
-"je visina programčeta."
-
-#: multiload/multiload.schemas.in.h:9
-msgid "the applet's background color."
-msgstr "boja pozadine programčeta."
-
-# bug: memor -> memory
-#: multiload/multiload.schemas.in.h:10
-msgid "the graph color for buffer memor."
-msgstr "boja na grafiku za baferisanu memoriju."
-
-#: multiload/multiload.schemas.in.h:11
-msgid "the graph color for buffer memory."
-msgstr "boja na grafiku za baferisanu memoriju."
-
-# bug: memor -> memory
-#: multiload/multiload.schemas.in.h:12
-msgid "the graph color for cached memor."
-msgstr "boja na grafiku za keš memoriju."
-
-#: multiload/multiload.schemas.in.h:13
-msgid "the graph color for cached memory."
-msgstr "boja na grafiku za keš memoriju."
-
 #: multiload/multiload.schemas.in.h:14
-msgid "the graph color for nice-related cpu activity."
-msgstr "boja na grafiku za aktivnosti procesora sa manjim prioritetom."
+msgid "the graph color for Ethernet network activity."
+msgstr "boja grafika za praćenje Eternet aktivnosti u mreži."
 
 #: multiload/multiload.schemas.in.h:15
-msgid "the graph color for shared memory."
-msgstr "boja na grafiku za deljenu memoriju."
+msgid "the graph color for PLIP network activity."
+msgstr "boja grafika za praćenje PLIP aktivnosti u mreži."
 
 #: multiload/multiload.schemas.in.h:16
-msgid "the graph color for system-related cpu activity."
-msgstr "boja na grafiku za sistemske aktivnosti procesora."
+msgid "the graph color for SLIP network activity."
+msgstr "boja grafika za praćenje SLIP aktivnosti u mreži."
 
 #: multiload/multiload.schemas.in.h:17
-msgid "the graph color for user-related cpu activity."
-msgstr "boja na grafiku za korisničke aktivnosti procesora."
+msgid "the graph color for buffer memory."
+msgstr "boja grafika za baferisanu memoriju."
 
 #: multiload/multiload.schemas.in.h:18
-msgid "the graph color for user-related mem usage."
-msgstr "boja na grafiku za korisničku upotrebu memorije."
+msgid "the graph color for cached memory."
+msgstr "boja grafika za keš memoriju."
 
 #: multiload/multiload.schemas.in.h:19
+msgid "the graph color for load average."
+msgstr "boja grafika za prosečno opterećenje."
+
+#: multiload/multiload.schemas.in.h:20
+msgid "the graph color for nice-related cpu activity."
+msgstr "boja grafika za aktivnosti procesora sa manjim prioritetom."
+
+#: multiload/multiload.schemas.in.h:21
+msgid "the graph color for shared memory."
+msgstr "boja grafika za deljenu memoriju."
+
+#: multiload/multiload.schemas.in.h:22
+msgid "the graph color for system-related cpu activity."
+msgstr "boja grafika za sistemske aktivnosti procesora."
+
+#: multiload/multiload.schemas.in.h:23
+msgid "the graph color for user-related cpu activity."
+msgstr "boja grafika za korisničke aktivnosti procesora."
+
+#: multiload/multiload.schemas.in.h:24
+msgid "the graph color for user-related memory usage."
+msgstr "boja grafika za korisničku upotrebu memorije."
+
+#: multiload/multiload.schemas.in.h:25
+msgid "the graph color for user-related swap usage."
+msgstr "boja grafika za korisničku upotrebu zamene za memorije."
+
+#: multiload/multiload.schemas.in.h:26
 msgid "the refresh rate of the applets in milliseconds"
 msgstr "brzina osvežavanja programčeta u milisekundama"
 
-#: multiload/multiload.schemas.in.h:20
+#: multiload/multiload.schemas.in.h:27
 msgid "the refresh rate of the applets in milliseconds."
 msgstr "brzina osvežavanja programčeta u milisekundama."
 
-# Ili je ovo "net" kao "ukupno"?
+# bug: Ili je ovo "net" kao "ukupno"?
 #: multiload/netload.c:49
 msgid "Net Load"
 msgstr "Opterećenje mreže"
@@ -4334,7 +3765,7 @@ msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "Napravite, gledajte i upravljajte kratkim beleškama na radnoj površini"
 
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:3
-#: stickynotes/stickynotes_applet.c:364
+#: stickynotes/stickynotes_applet.c:339
 #: stickynotes/stickynotes_applet_callbacks.c:180
 msgid "Sticky Notes"
 msgstr "Kratke beleške"
@@ -4642,8 +4073,8 @@ msgid ""
 "If this option is enabled, the custom colors and fonts that have been "
 "assigned to individual notes will be ignored."
 msgstr ""
-"Ukoliko je ova opcija uključena, neće se koristiti podešavanja boja i "
-"fontova za pojedinačne beleške."
+"Ukoliko je ova opcija uključena, neće se koristiti podešavanja boja i fontova "
+"za pojedinačne beleške."
 
 #: stickynotes/stickynotes.schemas.in.h:18
 msgid ""
@@ -4699,7 +4130,7 @@ msgstr "Da li se koristi uobičajena boja na sistemu"
 msgid "Whether to use the default system font"
 msgstr "Da li se koristi uobičajeni font na sistemu"
 
-#: stickynotes/stickynotes_applet.c:364
+#: stickynotes/stickynotes_applet.c:339
 #, c-format
 msgid ""
 "%s\n"
@@ -4730,7 +4161,7 @@ msgid "Monitor the quality of a wireless network link"
 msgstr "Praćenje kvaliteta bežične mrežne veze"
 
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:3
-#: wireless/wireless-applet.c:750
+#: wireless/wireless-applet.c:724
 msgid "Wireless Link Monitor"
 msgstr "Praćenje bežične veze"
 
@@ -4742,11 +4173,11 @@ msgstr ""
 "Slike neophodne za pokretanje praćenja bežične veze nedostaju.\n"
 "Proverite da su ispravno postavljene na sistem."
 
-#: wireless/wireless-applet.c:537 wireless/wireless-applet.c:695
+#: wireless/wireless-applet.c:532 wireless/wireless-applet.c:669
 msgid "No Wireless Devices"
 msgstr "Nema bežičnih uređaja"
 
-#: wireless/wireless-applet.c:539
+#: wireless/wireless-applet.c:534
 msgid ""
 "There doesn't seem to be any wireless devices configured on your system.\n"
 "Please verify your configuration if you think this is incorrect."
@@ -4754,27 +4185,749 @@ msgstr ""
 "Čini se da nema nijednog podešenog bežičnog uređaja na vašem sistemu.\n"
 "Proverite vaša podešavanja ukoliko ovo smatrate netačnim."
 
-#: wireless/wireless-applet.c:752
+#: wireless/wireless-applet.c:726
 msgid "(C) 2001, 2002 Free Software Foundation "
 msgstr "©2001, 2002 — Zadužbina za Slobodni Softver"
 
-#: wireless/wireless-applet.c:753
+#: wireless/wireless-applet.c:727
 msgid "This utility shows the status of a wireless link."
 msgstr "Ova alatka prikazuje stanje bežične veze"
 
-#: wireless/wireless-applet.glade.h:1
-msgid "Show _dialog boxes"
-msgstr "Prikaži svako _prozorče"
-
 # procenti -> postotci?
-#: wireless/wireless-applet.glade.h:2
+#: wireless/wireless-applet.glade.h:1
 msgid "Show signal strength in _percentage"
 msgstr "Prikaži jačinu signala u _procentima"
 
-#: wireless/wireless-applet.glade.h:3
+#: wireless/wireless-applet.glade.h:2
 msgid "Wireless Link Monitor Preferences"
 msgstr "Postavke praćenja bežične veze"
 
-#: wireless/wireless-applet.glade.h:4
+#: wireless/wireless-applet.glade.h:3
 msgid "_Monitored device:"
 msgstr "_Praćeni uređaj:"
+
+#~ msgid "Beep?"
+#~ msgstr "Sviraj?"
+
+#~ msgid "Horizontal"
+#~ msgstr "Vodoravno"
+
+#~ msgid "Use dock"
+#~ msgstr "Prikači"
+
+#~ msgid "Is the applet size small?"
+#~ msgstr "Da li je veličina programčeta mala?"
+
+#~ msgid "The command what switch your keymap tho this layout"
+#~ msgstr "Naredba koja prebacuje na ovaj raspored"
+
+#~ msgid "When this is true, the applet will be half size"
+#~ msgstr "Kada je ovo postavljeno, programče će biti upola manje"
+
+#~ msgid "color"
+#~ msgstr "boja"
+
+#~ msgid "color for no change text"
+#~ msgstr "boja kada nema izmena"
+
+#~ msgid "font"
+#~ msgstr "font"
+
+#~ msgid "timeout"
+#~ msgstr "čekanje"
+
+#~ msgid "Location:"
+#~ msgstr "Mesto:"
+
+#~ msgid "Update:"
+#~ msgstr "Osveži:"
+
+#~ msgid "Enable _detailed forecast"
+#~ msgstr "Uključi _detaljnu prognozu"
+
+#~ msgid "Updates"
+#~ msgstr "Osvežava"
+
+#~ msgid "_Automatically update every "
+#~ msgstr "_Automatsko osvežavanje svakih "
+
+# bug:plural-forms
+#~ msgid "minute(s)"
+#~ msgstr "minuta"
+
+#~ msgid "Miscellaneous"
+#~ msgstr "Razno"
+
+#~ msgid "fetch a detailed forecast on each update."
+#~ msgstr "preuzmi detaljnu prognozu pri svakom osvežavanju."
+
+#~ msgid "Could not download countries"
+#~ msgstr "Ne može da preuzme države"
+
+#~ msgid "Could not download cities"
+#~ msgstr "Ne može da preuzme gradove"
+
+#~ msgid "Downloading Cities..."
+#~ msgstr "Preuzima gradove..."
+
+#~ msgid "Countries list"
+#~ msgstr "Spisak država"
+
+#~ msgid "Select the country from the list"
+#~ msgstr "Izaberite državu iz spiska"
+
+#~ msgid "Country"
+#~ msgstr "Država"
+
+#~ msgid "Cities list"
+#~ msgstr "Spisak gradova"
+
+#~ msgid "Select the city from the list"
+#~ msgstr "Izaberite grad iz spiska"
+
+#~ msgid "Downloading Countries..."
+#~ msgstr "Preuzima države..."
+
+#~ msgid "Drizzle in the vicinity"
+#~ msgstr "Slaba kiša u blizini"
+
+#~ msgid "Shallow drizzle"
+#~ msgstr "Slabašno rominjanje"
+
+#~ msgid "Patches of drizzle"
+#~ msgstr "Tragovi rominjanja"
+
+#~ msgid "Partial drizzle"
+#~ msgstr "Delimično rominjanje"
+
+#~ msgid "Windy drizzle"
+#~ msgstr "Vetrovito rominjanje"
+
+#~ msgid "Showers"
+#~ msgstr "Pljusak"
+
+#~ msgid "Drifting drizzle"
+#~ msgstr "Rominjanje se lagano premešta"
+
+#~ msgid "Rain in the vicinity"
+#~ msgstr "Kiša u blizini"
+
+#~ msgid "Shallow rain"
+#~ msgstr "Slabašna kiša"
+
+#~ msgid "Patches of rain"
+#~ msgstr "Tragovi kiše"
+
+#~ msgid "Partial rainfall"
+#~ msgstr "Delimično kiša"
+
+#~ msgid "Blowing rainfall"
+#~ msgstr "Razorna kiša"
+
+#~ msgid "Drifting rain"
+#~ msgstr "Kiša se lagano premešta"
+
+#~ msgid "Snow in the vicinity"
+#~ msgstr "Sneg u blizini"
+
+#~ msgid "Shallow snow"
+#~ msgstr "Slabašan sneg"
+
+#~ msgid "Patches of snow"
+#~ msgstr "Tragovi snega"
+
+#~ msgid "Partial snowfall"
+#~ msgstr "Delimično snežno"
+
+#~ msgid "Freezing snow"
+#~ msgstr "Ledeni sneg"
+
+#~ msgid "Snow grains in the vicinity"
+#~ msgstr "Trunke snega u blizini"
+
+#~ msgid "Shallow snow grains"
+#~ msgstr "Slabašne trunke snega"
+
+#~ msgid "Patches of snow grains"
+#~ msgstr "Tragovi trunki snega"
+
+#~ msgid "Partial snow grains"
+#~ msgstr "Delimične trunke snega"
+
+#~ msgid "Blowing snow grains"
+#~ msgstr "Razarajuće trunke snega"
+
+#~ msgid "Snow grain showers"
+#~ msgstr "Pljusak trunki snega"
+
+#~ msgid "Drifting snow grains"
+#~ msgstr "Trunke snega se lagano premeštaju"
+
+#~ msgid "Freezing snow grains"
+#~ msgstr "Ledene trunke snega"
+
+#~ msgid "Ice crystals in the vicinity"
+#~ msgstr "Ledenice u blizini"
+
+#~ msgid "Few ice crystals"
+#~ msgstr "Ponešto ledenica"
+
+#~ msgid "Moderate ice crystals"
+#~ msgstr "Umerene ledenice"
+
+#~ msgid "Heavy ice crystals"
+#~ msgstr "Mnogo ledenica"
+
+#~ msgid "Patches of ice crystals"
+#~ msgstr "Tragovi ledenica"
+
+#~ msgid "Partial ice crystals"
+#~ msgstr "Delimično ledenice"
+
+#~ msgid "Ice crystal storm"
+#~ msgstr "Oluja ledenica"
+
+#~ msgid "Blowing ice crystals"
+#~ msgstr "Razarajuće ledenice"
+
+#~ msgid "Showers of ice crystals"
+#~ msgstr "Pljusak ledenica"
+
+#~ msgid "Drifting ice crystals"
+#~ msgstr "Ledenice se lagano premeštaju"
+
+#~ msgid "Freezing ice crystals"
+#~ msgstr "Smrzavajuće ledenice"
+
+#~ msgid "Ice pellets in the vicinity"
+#~ msgstr "Ledene kuglice u blizini"
+
+#~ msgid "Shallow ice pellets"
+#~ msgstr "Slabašne ledene kuglice"
+
+#~ msgid "Patches of ice pellets"
+#~ msgstr "Tragovi ledenih kuglica"
+
+#~ msgid "Partial ice pellets"
+#~ msgstr "Delimično ledenih kuglica"
+
+#~ msgid "Blowing ice pellets"
+#~ msgstr "Razarajuće ledene kuglice"
+
+#~ msgid "Drifting ice pellets"
+#~ msgstr "Ledene kuglice se lagano premeštaju"
+
+#~ msgid "Freezing ice pellets"
+#~ msgstr "Smrzavajuće ledene kuglice"
+
+#~ msgid "Hail in the vicinity"
+#~ msgstr "Grad u blizini"
+
+#~ msgid "Light hail"
+#~ msgstr "Slab grad"
+
+#~ msgid "Moderate hail"
+#~ msgstr "Umeren grad"
+
+#~ msgid "Heavy hail"
+#~ msgstr "Jak grad"
+
+#~ msgid "Shallow hail"
+#~ msgstr "Slabašan grad"
+
+#~ msgid "Patches of hail"
+#~ msgstr "Tragovi grada"
+
+#~ msgid "Partial hail"
+#~ msgstr "Delimično grad"
+
+#~ msgid "Blowing hail"
+#~ msgstr "Razarajući grad"
+
+#~ msgid "Drifting hail"
+#~ msgstr "Grad se lagano premešta"
+
+#~ msgid "Freezing hail"
+#~ msgstr "Ledeni grad"
+
+#~ msgid "Small hail in the vicinity"
+#~ msgstr "Manji grad u blizini"
+
+#~ msgid "Moderate small hail"
+#~ msgstr "Umeren manji grad"
+
+#~ msgid "Heavy small hail"
+#~ msgstr "Jaki manji grad"
+
+#~ msgid "Shallow small hail"
+#~ msgstr "Slabašni manji grad"
+
+#~ msgid "Patches of small hail"
+#~ msgstr "Tragovi manjeg grada"
+
+#~ msgid "Partial small hail"
+#~ msgstr "Delimično manji grad"
+
+#~ msgid "Blowing small hail"
+#~ msgstr "Razarajući manji grad"
+
+#~ msgid "Drifting small hail"
+#~ msgstr "Manji grad se lagano premešta"
+
+#~ msgid "Freezing small hail"
+#~ msgstr "Ledeni manji grad"
+
+#~ msgid "Precipitation in the vicinity"
+#~ msgstr "Padavine u blizini"
+
+#~ msgid "Light precipitation"
+#~ msgstr "Slabe padavine"
+
+#~ msgid "Moderate precipitation"
+#~ msgstr "Umerene padavine"
+
+#~ msgid "Heavy precipitation"
+#~ msgstr "Jake padavine"
+
+#~ msgid "Shallow precipitation"
+#~ msgstr "Slabašne padavine"
+
+#~ msgid "Patches of precipitation"
+#~ msgstr "Tragovi padavina"
+
+#~ msgid "Partial precipitation"
+#~ msgstr "Delimično padavine"
+
+#~ msgid "Unknown thunderstorm"
+#~ msgstr "Nepoznata oluja sa grmljavinom"
+
+#~ msgid "Blowing precipitation"
+#~ msgstr "Razarajuće padavine"
+
+#~ msgid "Showers, type unknown"
+#~ msgstr "Pljusak nepoznate vrste"
+
+#~ msgid "Drifting precipitation"
+#~ msgstr "Padavine"
+
+#~ msgid "Freezing precipitation"
+#~ msgstr "Ledene padavine"
+
+#~ msgid "Mist in the vicinity"
+#~ msgstr "Izmaglica u blizini"
+
+#~ msgid "Light mist"
+#~ msgstr "Slaba izmaglica"
+
+#~ msgid "Moderate mist"
+#~ msgstr "Umerena izmaglica"
+
+#~ msgid "Thick mist"
+#~ msgstr "Jaka izmaglica"
+
+#~ msgid "Shallow mist"
+#~ msgstr "Slabašna izmaglica"
+
+#~ msgid "Patches of mist"
+#~ msgstr "Tragovi izmaglice"
+
+#~ msgid "Partial mist"
+#~ msgstr "Delimično izmaglica"
+
+# Ovo je moguce? Zar vetar ne rastera maglu, a?
+#~ msgid "Mist with wind"
+#~ msgstr "Izmaglica sa vetrom"
+
+#~ msgid "Drifting mist"
+#~ msgstr "Izmaglica se lagano premešta"
+
+#~ msgid "Freezing mist"
+#~ msgstr "Ledena izmaglica"
+
+#~ msgid "Light fog"
+#~ msgstr "Slaba magla"
+
+#~ msgid "Moderate fog"
+#~ msgstr "Umerena magla"
+
+#~ msgid "Thick fog"
+#~ msgstr "Jaka magla"
+
+#~ msgid "Fog with wind"
+#~ msgstr "Magla sa vetrom"
+
+#~ msgid "Drifting fog"
+#~ msgstr "Magla se lagano premešta"
+
+#~ msgid "Smoke in the vicinity"
+#~ msgstr "Smog u blizini"
+
+#~ msgid "Thin smoke"
+#~ msgstr "Malo smoga"
+
+#~ msgid "Moderate smoke"
+#~ msgstr "Umereno smoga"
+
+#~ msgid "Thick smoke"
+#~ msgstr "Mnogo smoga"
+
+#~ msgid "Shallow smoke"
+#~ msgstr "Slabašan smog"
+
+#~ msgid "Patches of smoke"
+#~ msgstr "Tragovi smoga"
+
+#~ msgid "Partial smoke"
+#~ msgstr "Delimični smog"
+
+#~ msgid "Smoke w/ thunders"
+#~ msgstr "Smog sa grmljavinom"
+
+#~ msgid "Smoke with wind"
+#~ msgstr "Smog sa vetrom"
+
+#~ msgid "Drifting smoke"
+#~ msgstr "Smog se lagano premešta"
+
+#~ msgid "Volcanic ash in the vicinity"
+#~ msgstr "Vulkanski pepeo u blizini"
+
+#~ msgid "Moderate volcanic ash"
+#~ msgstr "Umeren vulkanski pepeo"
+
+#~ msgid "Thick volcanic ash"
+#~ msgstr "Mnogo vulkanskog pepela"
+
+#~ msgid "Shallow volcanic ash"
+#~ msgstr "Malo vulkanskog pepela"
+
+#~ msgid "Patches of volcanic ash"
+#~ msgstr "Tragovi vulkanskog pepela"
+
+#~ msgid "Partial volcanic ash"
+#~ msgstr "Delimično vulkanski pepeo"
+
+#~ msgid "Volcanic ash w/ thunders"
+#~ msgstr "Vulkanski pepeo uz grmljavinu"
+
+#~ msgid "Blowing volcanic ash"
+#~ msgstr "Razarajući vulkanski pepeo"
+
+#~ msgid "Showers of volcanic ash "
+#~ msgstr "Pljusak vulkanskog pepela"
+
+#~ msgid "Drifting volcanic ash"
+#~ msgstr "Vulkanski pepeo se lagano premešta"
+
+#~ msgid "Freezing volcanic ash"
+#~ msgstr "Ledeni vulkanski pepeo"
+
+#~ msgid "Sand in the vicinity"
+#~ msgstr "Pesak u blizini"
+
+#~ msgid "Light sand"
+#~ msgstr "Malo peska"
+
+#~ msgid "Moderate sand"
+#~ msgstr "Umerno peska"
+
+#~ msgid "Heavy sand"
+#~ msgstr "Puno peska"
+
+#~ msgid "Patches of sand"
+#~ msgstr "Tragovi peska"
+
+#~ msgid "Partial sand"
+#~ msgstr "Delimični pesak"
+
+#~ msgid "Haze in the vicinity"
+#~ msgstr "Sumaglica u blizini"
+
+#~ msgid "Light haze"
+#~ msgstr "Slaba sumaglica"
+
+#~ msgid "Moderate haze"
+#~ msgstr "Umerena sumaglica"
+
+#~ msgid "Thick haze"
+#~ msgstr "Jaka sumaglica"
+
+#~ msgid "Shallow haze"
+#~ msgstr "Slabašna sumaglica"
+
+#~ msgid "Patches of haze"
+#~ msgstr "Tragovi sumaglice"
+
+#~ msgid "Partial haze"
+#~ msgstr "Delimična sumaglica"
+
+#~ msgid "Haze with wind"
+#~ msgstr "Sumaglica sa vetrom"
+
+#~ msgid "Drifting haze"
+#~ msgstr "Sumaglica se lagano premešta"
+
+#~ msgid "Freezing haze"
+#~ msgstr "Ledena sumaglica"
+
+# Sta je "spray"? Zapraseno?
+#~ msgid "Sprays"
+#~ msgstr "Zaprašeno"
+
+#~ msgid "Sprays in the vicinity"
+#~ msgstr "Zaprašeno u blizini"
+
+#~ msgid "Light sprays"
+#~ msgstr "Lagano zaprašeno"
+
+#~ msgid "Moderate sprays"
+#~ msgstr "Umereno zaprašeno"
+
+#~ msgid "Heavy sprays"
+#~ msgstr "Jako zaprašeno"
+
+#~ msgid "Shallow sprays"
+#~ msgstr "Slabašno zaprašeno"
+
+#~ msgid "Patches of sprays"
+#~ msgstr "U tragovima zaprašeno"
+
+#~ msgid "Partial sprays"
+#~ msgstr "Delimično zaprašeno"
+
+#~ msgid "Drifting sprays"
+#~ msgstr "Zaprašeno se lagano premešta"
+
+#~ msgid "Freezing sprays"
+#~ msgstr "Ledeno zaprašeno"
+
+#~ msgid "Dust in the vicinity"
+#~ msgstr "Prašina u blizini"
+
+#~ msgid "Light dust"
+#~ msgstr "Lagana prašina"
+
+#~ msgid "Moderate dust"
+#~ msgstr "Umerena prašina"
+
+#~ msgid "Heavy dust"
+#~ msgstr "Teška prašina"
+
+#~ msgid "Patches of dust"
+#~ msgstr "Tragovi prašine"
+
+#~ msgid "Partial dust"
+#~ msgstr "Delimišno prašnjavo"
+
+#~ msgid "Squall in the vicinity"
+#~ msgstr "Udar vetra u blizini"
+
+#~ msgid "Light squall"
+#~ msgstr "Slab udar vetra"
+
+#~ msgid "Moderate squall"
+#~ msgstr "Umeren udar vetra"
+
+#~ msgid "Heavy squall"
+#~ msgstr "Jak udar vetra"
+
+#~ msgid "Partial squall"
+#~ msgstr "Delimični udar vetra"
+
+#~ msgid "Thunderous squall"
+#~ msgstr "Udar vetra sa grmljavinom"
+
+#~ msgid "Blowing squall"
+#~ msgstr "Razarajući udar vetra"
+
+#~ msgid "Drifting squall"
+#~ msgstr "Udar vetra se lagano premešta"
+
+#~ msgid "Freezing squall"
+#~ msgstr "Ledeni udar vetra"
+
+#~ msgid "Light standstorm"
+#~ msgstr "Slaba peščana oluja"
+
+#~ msgid "Moderate sandstorm"
+#~ msgstr "Umerena peščana oluja"
+
+#~ msgid "Shallow sandstorm"
+#~ msgstr "Slabašna peščana oluja"
+
+#~ msgid "Partial sandstorm"
+#~ msgstr "Delimična peščana oluja"
+
+#~ msgid "Thunderous sandstorm"
+#~ msgstr "Peščana oluja uz grmljavinu"
+
+#~ msgid "Blowing sandstorm"
+#~ msgstr "Razarajuća peščana oluja"
+
+#~ msgid "Drifting sandstorm"
+#~ msgstr "Peščana oluja se lagano premešta"
+
+#~ msgid "Freezing sandstorm"
+#~ msgstr "Ledena peščana oluja"
+
+#~ msgid "Light duststorm"
+#~ msgstr "Slab vrtlog od prašine"
+
+#~ msgid "Moderate duststorm"
+#~ msgstr "Umeren vrtlog od prašine"
+
+#~ msgid "Shallow duststorm"
+#~ msgstr "Slabašan vrtlog od prašine"
+
+#~ msgid "Partial duststorm"
+#~ msgstr "Delimičan vrtlog od prašine"
+
+#~ msgid "Thunderous duststorm"
+#~ msgstr "Vrtlog od prašine sa grmljavinom"
+
+#~ msgid "Blowing duststorm"
+#~ msgstr "Razarajući vrtlog od prašine"
+
+#~ msgid "Drifting duststorm"
+#~ msgstr "Vrtlog od prašine se lagano premešta"
+
+#~ msgid "Freezing duststorm"
+#~ msgstr "Ledeni vrtlog od prašine"
+
+#~ msgid "Funnel cloud in the vicinity"
+#~ msgstr "Oblak ki dimnjak u blizini"
+
+#~ msgid "Light funnel cloud"
+#~ msgstr "Lagani oblak ki dimnjak"
+
+#~ msgid "Moderate funnel cloud"
+#~ msgstr "Umereni oblak ki dimnjak"
+
+#~ msgid "Thick funnel cloud"
+#~ msgstr "Debeli oblak ki dimnjak"
+
+#~ msgid "Shallow funnel cloud"
+#~ msgstr "Žgoljavi oblak ki dimnjak"
+
+#~ msgid "Patches of funnel clouds"
+#~ msgstr "Tragovi oblaka ki dimnjaka"
+
+#~ msgid "Partial funnel clouds"
+#~ msgstr "Delimični oblak ki dimnjak"
+
+#~ msgid "Funnel cloud w/ wind"
+#~ msgstr "Oblak ki dimnjak, i još vetar"
+
+#~ msgid "Drifting funnel cloud"
+#~ msgstr "Oblak ki dimnjak se lagano premešta"
+
+#~ msgid "Tornado in the vicinity"
+#~ msgstr "Tornado u blizini"
+
+#~ msgid "Moderate tornado"
+#~ msgstr "Umereni tornado"
+
+#~ msgid "Raging tornado"
+#~ msgstr "Besni tornado"
+
+#~ msgid "Partial tornado"
+#~ msgstr "Delimični tornado"
+
+#~ msgid "Thunderous tornado"
+#~ msgstr "Tornado uz grmljavinu"
+
+#~ msgid "Drifting tornado"
+#~ msgstr "Tornado se lagano premešta"
+
+#~ msgid "Freezing tornado"
+#~ msgstr "Ledeni tornado"
+
+#~ msgid "Light dust whirls"
+#~ msgstr "Lagani kovitlaci prašine"
+
+#~ msgid "Moderate dust whirls"
+#~ msgstr "Umereni kovitlaci prašine"
+
+#~ msgid "Heavy dust whirls"
+#~ msgstr "Jaki kovitlaci prašine"
+
+#~ msgid "Shallow dust whirls"
+#~ msgstr "Slabašni kovitlaci prašine"
+
+#~ msgid "Patches of dust whirls"
+#~ msgstr "Tragovi kovitlaca prašine"
+
+#~ msgid "Partial dust whirls"
+#~ msgstr "Delimični kovitlaci prašine"
+
+#~ msgid "Blowing dust whirls"
+#~ msgstr "Razarajući kovitlaci prašine"
+
+#~ msgid "Drifting dust whirls"
+#~ msgstr "Kovitlaci prašine se lagano premeštaju"
+
+#~ msgid "Failed to get IWIN data.\n"
+#~ msgstr "Neuspešno dobavljanje IWIN podataka.\n"
+
+#~ msgid "Failed to get IWIN forecast data.\n"
+#~ msgstr "Neuspešno dobavljanje IWIN podataka za prognoze.\n"
+
+#~ msgid "Failed to get Met Office data.\n"
+#~ msgstr "Neuspešno dobavljanje podataka iz Met kancelarije.\n"
+
+#~ msgid "Failed to get Met Office forecast data.\n"
+#~ msgstr "Neuspešno dobavljanje podataka za prognozu iz Met kancelarije.\n"
+
+#~ msgid "Failed to get radar map image.\n"
+#~ msgstr "Neuspešno dobavljanje radarske mape.\n"
+
+# bug: Autcomplete -> autocomplete
+#~ msgid "Autocomplete history"
+#~ msgstr "Prethodna samodopunjavanja"
+
+#~ msgid "Height of the applet"
+#~ msgstr "Visina programčeta"
+
+#~ msgid "Height of the entry"
+#~ msgstr "Visina unosa"
+
+#~ msgid "Show an ugly frame around the whole applet wasting useful space"
+#~ msgstr ""
+#~ "Prikaži ružan ram oko celog programčeta i tako baci koristan prostor"
+
+#~ msgid "Show the handle thingy so you can detach the command thingy"
+#~ msgstr "Prikaži onu ručku kako biste mogli da odvojite ovo za naredbe"
+
+#~ msgid "Use the default theme colors for entry fg and bg"
+#~ msgstr "Koristi podrazumevane boje teme za boju i pozadinu polja"
+
+#~ msgid "bg blue"
+#~ msgstr "plava poz."
+
+#~ msgid "bg red"
+#~ msgstr "crvena poz."
+
+#~ msgid "fg blue"
+#~ msgstr "plava"
+
+#~ msgid "fg green"
+#~ msgstr "zelena"
+
+#~ msgid "fg red"
+#~ msgstr "crvena"
+
+#~ msgid "Delay"
+#~ msgstr "Čekanje"
+
+#~ msgid "Device name of modem"
+#~ msgstr "Ime modemskog uređaja"
+
+#~ msgid "Make it blink baby"
+#~ msgstr "Treperi, sestro!"
+
+# bug: memor -> memory
+#~ msgid "the graph color for buffer memor."
+#~ msgstr "boja na grafiku za baferisanu memoriju."
+
+#~ msgid "Show _dialog boxes"
+#~ msgstr "Prikaži svako _prozorče"
