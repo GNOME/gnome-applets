@@ -67,6 +67,7 @@ typedef struct {
 
 	GtkWidget *pct_label;
 	GtkWidget *pixmap;
+	GtkWidget *box;
 	AnimationState state;
 	guint animate_timer;
 	guint timeout_handler_id;
@@ -801,34 +802,99 @@ wireless_applet_destroy (WirelessApplet *applet, gpointer horse)
 		fclose (applet->file);
 }
 
+static void
+setup_widgets (WirelessApplet *applet)
+{
+	GtkRequisition req;
+	gint total_size = 0;
+	gboolean horizontal = FALSE;
+	gint panel_size;
+	
+	panel_size = panel_applet_get_size (PANEL_APPLET (applet));
+	
+	switch (panel_applet_get_orient(PANEL_APPLET (applet))) {
+	case PANEL_APPLET_ORIENT_LEFT:
+	case PANEL_APPLET_ORIENT_RIGHT:
+		horizontal = FALSE;
+		break;
+	case PANEL_APPLET_ORIENT_UP:
+	case PANEL_APPLET_ORIENT_DOWN:
+		horizontal = TRUE;
+		break;
+	}
+
+	/* construct pixmap widget */
+	applet->pixmap = gtk_image_new ();
+	gtk_image_set_from_pixbuf (GTK_IMAGE (applet->pixmap), (GdkPixbuf *)applet->broken_images->data);
+	gtk_widget_size_request (applet->pixmap, &req);
+	gtk_widget_show (applet->pixmap);
+	
+	if (horizontal)
+		total_size += req.height;
+	else
+		total_size += req.width;
+
+	/* construct pct widget */
+	applet->pct_label = gtk_label_new ("N/A");
+
+	if (applet->show_percent == TRUE) {
+		gtk_widget_show (applet->pct_label);
+		gtk_widget_size_request (applet->pct_label, &req);
+		if (horizontal)
+			total_size += req.height;
+		else
+			total_size += req.width;
+	}
+
+	/* pack */
+	if (applet->box)
+		gtk_widget_destroy (applet->box);
+		
+	if (horizontal && (total_size <= panel_size))
+		applet->box = gtk_vbox_new (FALSE, 0);
+	else if (horizontal && (total_size > panel_size))
+		applet->box = gtk_hbox_new (FALSE, 0);
+	else if (!horizontal && (total_size <= panel_size))
+		applet->box = gtk_hbox_new (FALSE, 0);
+	else 
+		applet->box = gtk_vbox_new (FALSE, 0);
+	
+	gtk_box_pack_start (GTK_BOX (applet->box), applet->pixmap, TRUE, TRUE, 0);
+	gtk_box_pack_start (GTK_BOX (applet->box), applet->pct_label, TRUE, TRUE, 0);
+	/* note, I don't use show_all, because this way the percent label is
+	 * only realised if it's enabled */
+	gtk_widget_show (applet->box);
+	gtk_container_add (GTK_CONTAINER (applet), applet->box);
+
+
+}
+
+static void change_size_cb(PanelApplet *pa, gint s, WirelessApplet *applet)
+{
+
+	setup_widgets (applet);
+	wireless_applet_timeout_handler (applet);
+}
+
+static void change_orient_cb(PanelApplet *pa, gint s, WirelessApplet *applet)
+{
+
+	setup_widgets (applet);
+	wireless_applet_timeout_handler (applet);
+
+}
+
 static GtkWidget *
 wireless_applet_new (WirelessApplet *applet)
 {
-	GtkWidget *box;
-
+	
+	panel_applet_set_flags (PANEL_APPLET (applet), PANEL_APPLET_EXPAND_MINOR);
+	
 	/* this ensures that properties are loaded */
 	wireless_applet_load_properties (applet);
 	wireless_applet_load_theme (applet);
 
-	/* construct pixmap widget */
-	applet->pixmap = gtk_image_new_from_pixbuf (applet->pixmaps[0]);
-	gtk_widget_show (applet->pixmap);
-
-	/* construct pct widget */
-	applet->pct_label = gtk_label_new (NULL);
-
-	if (applet->show_percent == TRUE) {
-		gtk_widget_show (applet->pct_label);
-	}
-
-	/* pack */
-	box = gtk_hbox_new (FALSE, 0);
-	gtk_box_pack_start (GTK_BOX (box), applet->pixmap, FALSE, FALSE, 0);
-	gtk_box_pack_start (GTK_BOX (box), applet->pct_label, FALSE, FALSE, 0);
-	/* note, I don't use show_all, because this way the percent label is
-	 * only realised if it's enabled */
-	gtk_widget_show (box);
-	gtk_container_add (GTK_CONTAINER (applet), box);
+	setup_widgets (applet);
 
 	applet->tips = gtk_tooltips_new ();
 	applet->prefs = NULL;
@@ -851,6 +917,11 @@ wireless_applet_new (WirelessApplet *applet)
 		(CFG_UPDATE_INTERVAL * 1000,
 		 (GtkFunction)wireless_applet_timeout_handler,
 		 applet);
+		 
+	g_signal_connect (G_OBJECT (applet), "change_size",
+				  G_CALLBACK (change_size_cb), applet);
+	g_signal_connect (G_OBJECT (applet), "change_orient",
+				  G_CALLBACK (change_orient_cb), applet);
   
 	return GTK_WIDGET (applet);
 }
