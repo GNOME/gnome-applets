@@ -99,8 +99,6 @@ gkb_prop_map_apply_clicked (GkbMapDialogInfo * mdi)
 
   gkb_prop_list_reload (mdi->pbi);
 
-  gnome_property_box_changed (GNOME_PROPERTY_BOX (mdi->pbi->box));
-
   gtk_widget_set_sensitive (mdi->apply_button, FALSE);
   mdi->changed = FALSE;
 }

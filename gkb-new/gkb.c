@@ -44,6 +44,7 @@
 
 int NumLockMask, CapsLockMask, ScrollLockMask;
 
+GtkTooltips *panel_tooltips;
 GtkWidget *bah_window = NULL;
 
 gchar *
@@ -164,9 +165,10 @@ gkb_draw (GKB * gkb)
       gtk_label_set_text (GTK_LABEL (gkb->label2), gkb->keymap->label);
     }
 
- /* TODO: tooltip support
-  applet_widget_set_tooltip (PANEL_APPLET (gkb->applet), gkb->keymap->name);
-  */
+  gtk_tooltips_disable (panel_tooltips);
+  gtk_tooltips_set_tip (panel_tooltips, gkb->applet, gkb->keymap->name, NULL);
+  gtk_tooltips_enable (panel_tooltips);
+
 }
 
 

@@ -291,8 +291,6 @@ addwadd_cb (GtkWidget * addbutton, GkbPropertyBoxInfo * pbi)
 
   gkb_prop_list_reload (pbi);
 
-  if (g_list_length (pbi->keymaps) > 1)
-    gnome_property_box_changed (GNOME_PROPERTY_BOX (pbi->box));
   return FALSE;
 }
 
