@@ -1,3 +1,12 @@
+1998-08-31  Christopher Blizzard  <blizzard@appliedtheory.com>
+
+	* bussign.c (post_message): This works now.  Lord help us, you can
+ 	now send messages to the bussign from this app.  The problem was
+ 	two fold; You had to set the content-type to
+ 	application/x-www-form-urlencoded and the code that was supposed
+ 	to set headers in the gnome-http module was broken.  That was
+ 	fixed and this now works.
+
 1998-08-30  Christopher Blizzard  <blizzard@appliedtheory.com>
 
 	* bussign.c: You're really close to being able to post messages

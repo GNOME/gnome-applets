@@ -159,7 +159,8 @@ refresh_imagefile(void)
   int   l_return = 0;
   FILE *l_file = NULL;
   ghttp_request *l_req = NULL;
-  
+
+  printf("Refreshing image.\n");
   l_req = ghttp_request_new();
   if (ghttp_set_uri(l_req, "http://www1.netscape.com/fishcam/livefishcamsmall.cgi?livesigncamsmall") < 0)
     {
@@ -192,7 +193,9 @@ refresh_imagefile(void)
       goto ec;
     }
   fclose(l_file);
+  ghttp_close(l_req);
   ghttp_request_destroy(l_req);
+  printf("Done refresing image.\n");
  ec:
   return l_return;
 }
@@ -267,10 +270,12 @@ post_message(GtkWidget *a_widget, gpointer a_data)
   char          *l_post_body = NULL;
   int            l_post_len = 0;
   char          *l_post_text = NULL;
-  
+
+  printf("Sending new message.\n");
   l_post_text = gtk_entry_get_text(GTK_ENTRY(sg_post_text));
   l_req = ghttp_request_new();
   ghttp_set_uri(l_req, "http://people.netscape.com/mtoy/sign/sign.cgi");
+  /*ghttp_set_uri(l_req, "http://odin.appliedtheory.com/testing/test.cgi"); */
   l_post_len = 5 + strlen(l_post_text);
   l_post_body = malloc(l_post_len);
   memset(l_post_body, 0, l_post_len);
@@ -278,10 +283,16 @@ post_message(GtkWidget *a_widget, gpointer a_data)
   memcpy(l_post_body + 5, l_post_text, strlen(l_post_text));
   ghttp_set_type(l_req, ghttp_type_post);
   ghttp_set_body(l_req, l_post_body, l_post_len);
+  ghttp_set_header(l_req, http_hdr_Content_Type,
+                   "application/x-www-form-urlencoded");
+  ghttp_set_header(l_req, http_hdr_Connection,
+		   "close");
   ghttp_prepare(l_req);
-  ghttp_process(l_req);
+  if (ghttp_process(l_req) == ghttp_error)
+    printf("Failed to send new message.\n");
   ghttp_close(l_req);
   ghttp_request_destroy(l_req);
   free(l_post_body);
+  printf("Message sent.\n");
   hide_post_window(NULL, NULL);
 }
