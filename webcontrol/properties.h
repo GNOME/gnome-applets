@@ -8,14 +8,29 @@
 
 #include "webcontrol.h"
 
+#define B_LIST_NAME(b) ((browser *) b->data)->name
+#define B_LIST_COMMAND(b) ((browser *) b->data)->command
+#define B_LIST_NEWWIN(b) ((browser *) b->data)->newwin
+
+typedef struct _browser
+{
+	gchar *name;
+	gchar *command;
+	gchar *newwin;
+} browser;
+
 typedef struct _webcontrol_properties 
 {
-	gint newwindow;			/* do we launch a new window */
-	gint show_url;			/* do we show the url label in front */
-	gint show_check;		/* do we show "launch new window" */
+	gboolean newwindow;		/* do we launch a new window */
+	gboolean show_check;		/* do we show "launch new window" */
+	gboolean show_go;               /* show the "GO" button */
         gint width;                     /* horizontal size of applet */
-	gint show_clear;                /* show the "Clear" button */
+	gboolean show_clear;            /* show the "Clear" button */
+	gboolean clear_top;             /* clear button on top? */
 	gint hist_len;                  /* length of URL history */
+	gboolean use_mime;              /* use MIME handler or custom */
+	GSList *curr_browser;           /* current browser to launch */
+	GSList *browsers;               /* list of installed browsers */
 } webcontrol_properties;
 
 extern void
@@ -25,7 +40,6 @@ extern void
 check_box_toggled (GtkWidget *check, int *data);
 
 #endif
-
 
 
 

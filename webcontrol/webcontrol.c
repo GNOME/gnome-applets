@@ -12,9 +12,12 @@
  */
 
 #include "webcontrol.h"
+#include "session.h"
 
-static WebControl WC = 
+
+WebControl WC = 
 {
+	NULL,
 	NULL,
 	NULL,
 	NULL,
@@ -44,8 +47,9 @@ about_cb (AppletWidget *widget, gpointer data)
 				 VERSION,
 				 _("(C) 2000 the Free Software Foundation"),
 				 authors,
-				 _("This applet sends typed in URLs to "
-				   "the browser of your choice."),
+				 _("An applet to launch URLs in a web browser, "
+				   "search using various web sites and "
+				   "have a ton of fun!"),
 				 NULL);
 						
 	gtk_signal_connect (GTK_OBJECT (about), "destroy",
@@ -61,24 +65,27 @@ clear_cb (GtkWidget *button, GtkWidget *input)
     gtk_entry_set_text (GTK_ENTRY (GTK_COMBO (WC.input)->entry), "");
 }
 
-static void 
-goto_cb (GtkWidget *entry, gpointer data)
-{
-	gchar *url;
-	int status;
 
-        url = gtk_editable_get_chars (GTK_EDITABLE (GTK_COMBO (WC.input)->entry), 
-				      0, -1);	
-        
-        if (fork () == 0) {
+/* function to open a URL in the currently selected browser */
+static void
+open_url (gchar *url)
+{
+	gchar *b_command, *b_newwin;
+	gint status;
+
+	b_command = B_LIST_COMMAND (props.curr_browser);
+	b_newwin = B_LIST_NEWWIN (props.curr_browser);
+
+        if (fork () == 0) 
+	{
         	/* child  */
 		if (props.newwindow) 
 		{
-			execlp ("gnome-moz-remote", "gnome-moz-remote", "--newwin", url, NULL);
+			execlp (b_command, b_command, b_newwin, url, NULL);
 		} 
 		else 
-		{
-			execlp ("gnome-moz-remote", "gnome-moz-remote", url, NULL);
+		{			
+			execlp (b_command, b_command, url, NULL);
 		}
 		g_warning (_("gnome-moz-remote not found or unable to launch it"));
 		/* something went wrong, perhaps gnome-moz-remote was not found */
@@ -86,13 +93,32 @@ goto_cb (GtkWidget *entry, gpointer data)
         } 
 	else 
 	{
-        	wait (&status);
-        	if (WEXITSTATUS (status) != 0)  /* command didn't work, use normal url show */
+        	wait (&status); 
+		/* command didn't work, use normal url show */
+        	if (WEXITSTATUS (status) != 0)  
 		{				/* routine */
 			gnome_url_show (url);
+			g_print ("doing gnome_url_show!\n");
         	}
 	}
 
+	return;
+}
+
+
+static void 
+goto_cb (GtkWidget *entry, GtkWidget *check)
+{
+	gchar *url;
+
+	url = gtk_editable_get_chars (GTK_EDITABLE (GTK_COMBO (WC.input)->entry), 
+				      0, -1);	
+        
+	if (props.use_mime)
+		gnome_url_show (url);
+	else
+		open_url (url);
+	
 	g_free (url);
 
 	return;
@@ -104,8 +130,8 @@ goto_cb (GtkWidget *entry, gpointer data)
 static void
 add_url_to_history (GtkWidget *entry, GtkWidget *combo)
 {
-	char *url, 
-	     *str_t = NULL;
+	gchar *url, 
+	      *str_t = NULL;
 	GList *ptr;
 	GtkWidget *list, *child, *lbl;
 
@@ -146,7 +172,7 @@ add_url_to_history (GtkWidget *entry, GtkWidget *combo)
 				      GTK_WIDGET (ptr->data));		
 	}
 
-	gtk_entry_set_text (GTK_ENTRY(entry), str_t);
+	gtk_entry_set_text (GTK_ENTRY (entry), str_t);
    
 	g_free (str_t); 
 
@@ -154,7 +180,16 @@ add_url_to_history (GtkWidget *entry, GtkWidget *combo)
 }
 
 
-extern void 
+void
+clear_url_history (GtkButton *button, gpointer combo)
+{
+	gtk_list_clear_items (GTK_LIST (GTK_COMBO (combo)->list), 0, -1);
+	
+	return;
+}
+
+
+void 
 draw_applet (void)
 {
 	static GtkWidget *topbox = NULL;
@@ -187,15 +222,7 @@ draw_applet (void)
 		WC.label = gtk_label_new (_("URL:"));
 		gtk_box_pack_start (GTK_BOX (topbox), WC.label, 
 				    FALSE, FALSE, 3);
-	}
-
-	if (props.show_url)
-	{
 		gtk_widget_show (WC.label);
-	}
-	else
-	{
-		gtk_widget_hide (WC.label);
 	}
 
 	/* URL combo box */
@@ -210,13 +237,59 @@ draw_applet (void)
 				    GTK_COMBO (WC.input));
 		gtk_signal_connect (GTK_OBJECT (GTK_COMBO (WC.input)->entry), 
 				    "activate", GTK_SIGNAL_FUNC (goto_cb),
-				    NULL);
+				    (gpointer) props.newwindow);	     
 	}
 
 	gtk_widget_set_usize (GTK_WIDGET (GTK_COMBO (WC.input)->entry), 
 			      props.width, 0);
 
-
+	/* "GO" Button */
+	if (WC.go == NULL)
+	{
+		WC.go = gtk_button_new_with_label (_(" GO "));
+		gtk_widget_show (WC.go);
+		gtk_signal_connect (GTK_OBJECT (WC.go), 
+				    "clicked", GTK_SIGNAL_FUNC (goto_cb),
+				    (gpointer) props.newwindow);	
+		gtk_box_pack_end (GTK_BOX (topbox), WC.go, FALSE, FALSE, 2);
+	}
+	if (props.show_go)
+	{
+		gtk_widget_show (WC.go);
+	}
+	else
+	{
+		gtk_widget_hide (WC.go);
+	}
+	
+	/* Clear button */
+	if (WC.clear == NULL)
+	{
+		WC.clear = gtk_button_new_with_label (_(" Clear "));
+		gtk_signal_connect (GTK_OBJECT (WC.clear), "clicked",
+				    GTK_SIGNAL_FUNC (clear_cb),
+				    WC.input);		
+		if (props.clear_top)
+		{
+			gtk_box_pack_end (GTK_BOX (topbox), WC.clear, FALSE, 
+					    FALSE, 2);
+		}
+		else
+		{
+			gtk_box_pack_start (GTK_BOX (bottombox), WC.clear, FALSE, 
+					    FALSE, 2);
+		}
+	}
+	       
+	if (props.show_clear)
+	{
+		gtk_widget_show (WC.clear);	       
+	}
+	else
+	{
+		gtk_widget_hide (WC.clear);
+	}
+	
 	/* Show new window check box */
 	if (WC.check == NULL)
 	{
@@ -227,7 +300,6 @@ draw_applet (void)
 		gtk_box_pack_start (GTK_BOX (bottombox), WC.check, FALSE, 
 				    FALSE, 3);
 	}
-
 	if (props.show_check)
 	{
 		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (WC.check), 
@@ -239,25 +311,6 @@ draw_applet (void)
 		gtk_widget_hide (WC.check);
 	}
 
-	/* Clear button */
-	if (WC.clear == NULL)
-	{
-		WC.clear = gtk_button_new_with_label (_(" Clear "));
-		gtk_signal_connect (GTK_OBJECT (WC.clear), "clicked",
-				    GTK_SIGNAL_FUNC (clear_cb),
-				    WC.input);		
-		gtk_box_pack_start (GTK_BOX (bottombox), WC.clear, FALSE, 
-				    FALSE, 3);
-	}
-	if (props.show_clear)
-	{
-		gtk_widget_show (WC.clear);	       
-	}
-	else
-	{
-		gtk_widget_hide (WC.clear);
-	}
-	
 	/* if this is the first time drawing the applet, put all widgets on 
            the applet together and add it to the panel, then indicate that
            that applet has actually been drawn once before. */
@@ -291,32 +344,6 @@ show_help_cb (AppletWidget *applet, gpointer data)
 	gnome_help_display (NULL, &help_entry);
 }
 
-static gint
-applet_save_session (GtkWidget *w,
-		     const char *privcfgpath,
-		     const char *globcfgpath)
-{	
-	gnome_config_push_prefix (privcfgpath);
-	gnome_config_set_bool ("web/newwindow", props.newwindow);
-	gnome_config_set_bool ("web/show_url", props.show_url);
-	gnome_config_set_bool ("web/show_check", props.show_check);
-	gnome_config_pop_prefix ();
-
-	gnome_config_sync ();
-	/* you need to use the drop_all here since we're all writing to
-	   one file, without it, things might not work too well */
-	gnome_config_drop_all ();
-		
-	/* make sure you return FALSE, otherwise your applet might not
-	   work compeltely, there are very few circumstances where you
-	   want to return TRUE. This behaves similiar to GTK events, in
-	   that if you return FALSE it means that you haven't done
-	   everything yourself, meaning you want the panel to save your
-	   other state such as the panel you are on, position,
-	   parameter, etc ... */
-	return FALSE;
-}
-
 int
 main (int argc, char **argv)
 {
@@ -336,18 +363,16 @@ main (int argc, char **argv)
 	   failed, error out */
 	if (!WC.applet)
 		g_error ("Can't create applet!\n");
-	
-	gnome_config_push_prefix (APPLET_WIDGET (WC.applet)->privcfgpath);
-	props.newwindow = gnome_config_get_bool ("web/newwindow=false");
-	props.show_url = gnome_config_get_bool ("web/show_url=true");
-	/* props.show_check = gnome_config_get_bool ("web/show_check=true"); */
-	gnome_config_pop_prefix ();
-	
+
+	wc_load_session ();
+
 	draw_applet ();
-	
+
+	wc_load_history (GTK_COMBO (WC.input));
+
 	/* bind the session save signal */
-	gtk_signal_connect (GTK_OBJECT (WC.applet),"save_session",
-			    GTK_SIGNAL_FUNC (applet_save_session),
+	gtk_signal_connect (GTK_OBJECT (WC.applet), "save_session",
+			    GTK_SIGNAL_FUNC (wc_save_session),
 			    NULL);
 
 	/* add an item to the applet menu */

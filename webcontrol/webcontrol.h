@@ -32,10 +32,12 @@ struct _WebControl
 	GtkWidget *label;
 	GtkWidget *check;
 	GtkWidget *clear;
+	GtkWidget *go;
 };
 
-extern void
-draw_applet (void);
+void draw_applet (void);
+
+void clear_url_history (GtkButton *button, gpointer combo);
 
 #endif
 
