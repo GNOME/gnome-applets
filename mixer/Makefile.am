@@ -3,15 +3,10 @@ SUBDIRS = docs
 pixmapsdir = $(datadir)/pixmaps/mixer
 pixmaps_DATA =  gnome-mixer-applet.png \
 		volume-max.png \
-		volume-max-small.png \
 		volume-medium.png \
-		volume-medium-small.png \
 		volume-min.png \
-		volume-min-small.png \
 		volume-mute.png \
-		volume-mute-small.png \
-		volume-zero.png \
-		volume-zero-small.png 
+		volume-zero.png
 
 INCLUDES = -I. -I$(srcdir) 				\
 	-DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\" 	\
