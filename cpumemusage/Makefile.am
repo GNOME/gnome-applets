@@ -11,9 +11,7 @@ bin_PROGRAMS = cpumemusage_applet
 cpumemusage_applet_SOURCES = \
 	cpumemusage.c	\
 	proc.c		\
-	proc.h		\
-	procbar.c	\
-	procbar.h
+	proc.h
 
 
 cpumemusage_applet_LDADD = ../../panel/libpanel_applet.la \
