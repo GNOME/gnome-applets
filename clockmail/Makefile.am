@@ -10,7 +10,7 @@ dummy.cc:
 
 bin_PROGRAMS = clockmail_applet
 
-clockmail_applet_SOURCES = clockmail.c properties.c globals.c
+clockmail_applet_SOURCES = clockmail.c properties.c
 
 MICO_VERS = 2.0.5
 MICO_LIBS = -lmicocoss$(MICO_VERS) -lmicoaux$(MICO_VERS) -lmico$(MICO_VERS)

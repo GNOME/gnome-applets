@@ -1,0 +1,10 @@
+1998-05-28  John Ellis  <johne@bellatlantic.net>
+
+	* globals.c: added to clockmail.c, removed.
+	* clockmail.c (update_display): changed date to use
+	strftime to work with locales.
+	* clockmail.c (set_tooltip): changed to work with longer
+	date strings.
+	* clockmail.[ch], properties.c: changed MILIT_TIME to
+	AM_PM_ENABLE and set the default to 24 hour clock.
+

@@ -1,20 +1,17 @@
 /*###################################################################*/
-/*##                         clock & mail applet 0.2.0 alpha       ##*/
-/*##       This software is Copyright (C) 1998 by John Ellis.      ##*/
-/*## This software falls under the GNU Public License. Please read ##*/
-/*##              the COPYING file for more information            ##*/
+/*##                         clock & mail applet 0.1.1 alpha       ##*/
 /*###################################################################*/
 
 #include "clockmail.h"
 
 GtkWidget *propwindow = NULL;
-gint P_MILIT_TIME;
+gint P_AM_PM_ENABLE;
 gint P_ALWAYS_BLINK;
 
 void property_load(char *path)
 {
         gnome_config_push_prefix (path);
-        MILIT_TIME   = gnome_config_get_int("hour=0");
+        AM_PM_ENABLE = gnome_config_get_int("12hour=0");
 	ALWAYS_BLINK = gnome_config_get_int("blink=0");
         gnome_config_pop_prefix ();
 }
@@ -22,15 +19,15 @@ void property_load(char *path)
 void property_save(char *path)
 {
         gnome_config_push_prefix(path);
-        gnome_config_set_int("hour", MILIT_TIME);
+        gnome_config_set_int("12hour", AM_PM_ENABLE);
         gnome_config_set_int("blink", ALWAYS_BLINK);
 	gnome_config_sync();
         gnome_config_pop_prefix();
 }
 
-void military_time_cb(GtkWidget *w)
+void am_pm_time_cb(GtkWidget *w)
 {
-	P_MILIT_TIME = GTK_TOGGLE_BUTTON (w)->active;
+	P_AM_PM_ENABLE = GTK_TOGGLE_BUTTON (w)->active;
 	gnome_property_box_changed(GNOME_PROPERTY_BOX(propwindow));
 }
 
@@ -42,7 +39,7 @@ void always_blink_cb(GtkWidget *w)
 
 void property_apply_cb( GtkWidget *widget, void *data )
 {
-        MILIT_TIME = P_MILIT_TIME;
+        AM_PM_ENABLE = P_AM_PM_ENABLE;
 	ALWAYS_BLINK = P_ALWAYS_BLINK;
 }
 
@@ -65,7 +62,7 @@ void property_show(AppletWidget *applet, gpointer data)
                 return;
 		}
 
-	P_MILIT_TIME=MILIT_TIME;
+	P_AM_PM_ENABLE=AM_PM_ENABLE;
 	P_ALWAYS_BLINK = ALWAYS_BLINK;
 
 	propwindow = gnome_property_box_new();
@@ -74,10 +71,10 @@ void property_show(AppletWidget *applet, gpointer data)
 	
 	frame = gtk_vbox_new(5, TRUE);
 
-	button = gtk_check_button_new_with_label (_("Display time in 24 hour format"));
+	button = gtk_check_button_new_with_label (_("Display time in 12 hour format (AM/PM)"));
 	gtk_box_pack_start(GTK_BOX(frame), button, FALSE, FALSE, 0);
-	gtk_toggle_button_set_state(GTK_TOGGLE_BUTTON(button), P_MILIT_TIME);
-	gtk_signal_connect (GTK_OBJECT(button),"clicked",(GtkSignalFunc) military_time_cb, NULL);
+	gtk_toggle_button_set_state(GTK_TOGGLE_BUTTON(button), P_AM_PM_ENABLE);
+	gtk_signal_connect (GTK_OBJECT(button),"clicked",(GtkSignalFunc) am_pm_time_cb, NULL);
 	gtk_widget_show(button);
 
 	button = gtk_check_button_new_with_label (_("Blink when any mail is waiting. (Not just when mail arrives)"));

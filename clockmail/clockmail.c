@@ -1,5 +1,5 @@
 /*###################################################################*/
-/*##                         clock & mail applet 0.1.0 alpha       ##*/
+/*##                         clock & mail applet 0.1.1 alpha       ##*/
 /*###################################################################*/
 
 #include "clockmail.h"
@@ -7,6 +7,13 @@
 #include "backgrnd.xpm"
 #include "digmed.xpm"
 #include "mailpics.xpm"
+
+/* new mail blink information (duration = BLINK_DELAY / 1000 * BLINK_TIMES) */
+int BLINK_DELAY = 750;
+int BLINK_TIMES = 20;
+
+int AM_PM_ENABLE = FALSE;
+int ALWAYS_BLINK = FALSE;
 
 static GtkWidget *applet;
 static GtkWidget *frame;
@@ -88,19 +95,18 @@ static void check_mail_file_status ()
 	oldsize = newsize;
 }
 
-static void set_tooltip(gchar *t)
+static void set_tooltip(gchar *newtext)
 {
-	static gchar text[64];
-	gchar newtext[64];
+	static char *oldtext = NULL;
 
-	/* does this work for i18n? */
-	sprintf(newtext,_("%s"),t);
 
-	if (strcmp(newtext,text) != 0)
-		{
-		strcpy (text,newtext);
-		gtk_tooltips_set_tip (tooltips, applet, text, NULL);
-		}
+	if (!oldtext)
+		gtk_tooltips_set_tip (tooltips, applet, newtext, NULL);
+	else if (strcmp(newtext,oldtext) != 0)
+		gtk_tooltips_set_tip (tooltips, applet, newtext, NULL);
+
+	if (oldtext) free (oldtext);
+	oldtext = strdup(newtext);
 }
 
 static void redraw_display()
@@ -151,7 +157,7 @@ static void update_time_count(int h, int m)
 	int hl,hr;
 	int ml,mr;
 
-	if (!MILIT_TIME)
+	if (AM_PM_ENABLE)
 		{
 		if (h > 12) h -= 12;
 		if (h == 0) h = 12;
@@ -215,11 +221,11 @@ static gint update_display()
 	time_t current_time;
 	struct tm *time_data;
 	char *strtime;
-	char date[20];
+	char date[128];
 
 	time(&current_time);
 	time_data = localtime(&current_time);
-	strtime = ctime(&current_time);
+	strftime(date, 128, "%a, %b %d", time_data);
 
 	/* update time */
 	update_time_count(time_data->tm_hour,time_data->tm_min);
@@ -247,10 +253,7 @@ static gint update_display()
 		redraw_display();
 		}
 
-	/* chack date */
-	strncpy(date, strtime, 10);
-	date[10] = '\0';
-
+	/* set tooltip to the date */
 	set_tooltip(date);
 
 	return TRUE;
