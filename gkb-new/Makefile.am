@@ -8,7 +8,12 @@ bin_PROGRAMS = gkb_applet
 
 bin_SCRIPTS = gkb_xmmap
 
-gkb_applet_SOURCES = gkb.c gkb.h prop.c preset.c
+gkb_applet_SOURCES = \
+		gkb.c 		\
+		gkb.h		\
+		prop.c 		\
+		prop-list.c	\
+		preset.c
 
 #lib_LTLIBRARIES=libgkb_applet.la
 

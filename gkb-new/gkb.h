@@ -43,6 +43,7 @@
 #define debug(section,str) /*if (debug_turned_on) */ g_print ("%s:%d (%s) %s\n", __FILE__, __LINE__, __FUNCTION__, str); 
 
 typedef struct _GkbKeymap GkbKeymap;
+typedef struct _GkbKeymapWg GkbKeymapWg;
 typedef struct _GKB GKB;
 
 GKB * gkb;
@@ -96,6 +97,32 @@ struct _GKB
 
 };
 
+struct _GkbKeymapWg
+{
+  GdkPixmap *pix;
+
+  char *name;
+  char *command;
+  char *flag;
+
+  GtkWidget *diff_ch;
+  GtkWidget *propbox;
+  GtkWidget *notebook;
+  GtkWidget *label1;
+  GtkWidget *iconentry;
+  GtkWidget *keymapname;
+  GtkWidget *commandinput;
+  GtkWidget *iconpathinput;
+  GtkWidget *scrolledwin, *scrolledwinl;
+  GtkWidget *hidebox, *hfa, *hfn;
+  GtkWidget *frame21, *frame22, *label25, *entry21;
+  GtkWidget *vbox1, *hbox1, *vbox2, *hbox2, *hbox3, *hboxmap;
+  GtkWidget *frame1, *frame2, *frame3, *frame4, *frame6;
+  GtkWidget *vbox21, *hbox21;
+  GtkWidget *list, *tree, *iconentry21;
+  GtkWidget *newkeymap, *delkeymap;
+};
+
 void gkb_update (GKB *gkb, gboolean set_command);
 
 void properties_dialog (AppletWidget * applet);
@@ -109,4 +136,9 @@ char * convert_keysym_state_to_string(guint keysym,
 GList * find_presets ();
 GList * gkb_preset_load (GList * list);
 
-static gchar *prefixdir;
+/* prop-list.c */
+void        gkb_prop_list_init (void);
+GtkWidget * gkb_prop_create_buttons_vbox (void);
+GtkWidget * gkb_prop_create_scrolled_window (void);
+
+gchar * prefixdir;

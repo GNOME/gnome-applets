@@ -1,3 +1,16 @@
+2000-12-07  Chema Celorio  <chema@celorio.com>
+
+	* prop-list.c: new file, moved all the list functions from
+	prop.c to here. Remove from prop.c all the lists functions.
+
+	* Makefile.am (gkb_applet_SOURCES): add prop-list.c
+
+	* prop.c (gkb_prop_create_property_box): clean.
+
+	* preset.c (find_presets): make static to avoid compile warning
+
+	* prop.c (gkb_prop_create_scrolled_window): implement.
+
 2000-12-07  Szabolcs Ban  <shooby@gnome.hu>
 
 	* prop.c: stat for flag file (like in gkb.c)
