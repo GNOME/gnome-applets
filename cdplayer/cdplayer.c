@@ -103,20 +103,6 @@ static const BonoboUIVerb applet_menu_verbs [] = {
     BONOBO_UI_VERB_END
 };
 
-/* and the XML definition for the popup menu */
-static const char applet_menu_xml [] =
-"<popup name=\"button3\">\n"
-"   <menuitem name=\"RunGTCD\" verb=\"RunGTCD\" _label=\"Run External CD Player\"\n"
-"             pixtype=\"stock\" pixname=\"gtk-cdrom\"/>\n"
-"   <menuitem name=\"Properties\" verb=\"Properties\" _label=\"Properties...\"\n"
-"             pixtype=\"stock\" pixname=\"gtk-properties\"/>\n"
-"   <menuitem name=\"Help\" verb=\"Help\" _label=\"Help\"\n"
-"             pixtype=\"stock\" pixname=\"gtk-help\"/>\n"
-"   <menuitem name=\"About\" verb=\"About\" _label=\"About ...\"\n"
-"             pixtype=\"stock\" pixname=\"gnome-stock-about\"/>\n"
-"</popup>\n";
-
-
 PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_CDPlayerApplet_Factory",
 			     PANEL_TYPE_APPLET,
                              "CD-Player-Applet",
@@ -178,10 +164,12 @@ applet_fill (PanelApplet *applet)
     g_signal_connect (applet, "change_orient", G_CALLBACK (applet_change_orient), cd);
     g_signal_connect (applet, "change_size", G_CALLBACK (applet_change_size), cd);
 
-    panel_applet_setup_menu (PANEL_APPLET (applet),
-                             applet_menu_xml,
-                             applet_menu_verbs,
-                             cd);
+    panel_applet_setup_menu_from_file (PANEL_APPLET (applet),
+                                       NULL,
+                                       "GNOME_CDPlayerApplet.xml",
+                                       NULL,
+                                       applet_menu_verbs,
+                                       cd);
 
     component = panel_applet_get_popup_component (PANEL_APPLET (applet));
 

@@ -33,6 +33,9 @@ server_DATA     = $(server_in_files:.server.in=.server)
 schemadir   = @GCONF_SCHEMA_FILE_DIR@
 schema_DATA = cdplayer.schemas
 
+uidir = $(datadir)/gnome-2.0/ui
+ui_DATA = GNOME_CDPlayerApplet.xml
+
 EXTRA_DIST = \
 images/cdplayer-backward.xpm \
 images/cdplayer-eject.xpm \
@@ -48,7 +51,8 @@ cdrom-linux.c \
 cdrom-solaris.c \
 $(icon_DATA) \
 $(server_in_files) \
-$(schema_DATA)
+$(schema_DATA)	\
+$(ui_DATA)
 
 install-data-local:
 	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schema_DATA)
