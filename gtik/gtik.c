@@ -973,24 +973,49 @@ static gint updateOutput(gpointer data)
 		GtkTreeModel *model;
 		GtkTreeIter row;
 		gchar *symbol;
+		gchar *temp_symbol;
+		gchar *full_symbol;
 		gchar *tmp;
+		gint symbol_len;
+		gint i, j=0;
+		gboolean flag = FALSE;
 		
 		symbol = gtk_editable_get_chars (GTK_EDITABLE (entry), 0, -1);
+		symbol_len = strlen (symbol);
+
+		full_symbol = (char *) malloc ((symbol_len + 1) * sizeof (char));
 		if (!symbol)
 			return;
-		
-		g_strstrip (symbol);
-		
+
 		if (strlen (symbol) < 1) {
 			g_free (symbol);
 			return;
 		}
 		
+		for (i=0; i<symbol_len; i++) {
+			if (symbol[i] == ' ' || symbol[i] == ',') {
+				if (flag) {
+					full_symbol[j]='+';
+					j++;
+					flag = FALSE;
+				}
+				else 
+					continue;
+			}
+			else {
+				full_symbol[j] = symbol[i];
+				j++;
+				flag = TRUE;
+			}
+		}
+
+		full_symbol[j]= '\0';
+		
 		tmp = stockdata->props.tik_syms;
 		if (tmp)
-			stockdata->props.tik_syms = g_strconcat (tmp, "+", symbol, NULL);
+			stockdata->props.tik_syms = g_strconcat (tmp, "+", full_symbol, NULL);
 		else
-			stockdata->props.tik_syms = g_strdup (symbol);
+			stockdata->props.tik_syms = g_strdup (full_symbol);
 		
 		panel_applet_gconf_set_string (applet, "tik_syms", 
 					       stockdata->props.tik_syms, NULL);
@@ -1000,12 +1025,18 @@ static gint updateOutput(gpointer data)
 		
 		list = g_object_get_data (G_OBJECT (entry), "list");
 		model = gtk_tree_view_get_model (GTK_TREE_VIEW (list));
-		gtk_list_store_append (GTK_LIST_STORE (model), &row);
-		gtk_list_store_set (GTK_LIST_STORE (model), &row, 
-					    0, symbol, -1);
+
+		temp_symbol = strtok (full_symbol, "+");
+		for (; temp_symbol;) {
+			gtk_list_store_append (GTK_LIST_STORE (model), &row);
+			gtk_list_store_set (GTK_LIST_STORE (model), &row, 
+					    0, temp_symbol, -1);
+			temp_symbol = strtok (NULL, "+");
+		}
 					    
 		gtk_entry_set_text (entry, "");
 		g_free (symbol);
+		g_free (full_symbol);
 		updateOutput(stockdata);
 		
 	}
