@@ -6,13 +6,13 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-applets 1.4.0.2\n"
-"POT-Creation-Date: 2001-07-27 15:16+0800\n"
-"PO-Revision-Date: 2001-07-27 15:36+0800\n"
+"Project-Id-Version: gnome-applets 1.4.0.3\n"
+"POT-Creation-Date: 2001-08-03 02:08+0800\n"
+"PO-Revision-Date: 2001-08-03 02:31+0800\n"
 "Last-Translator: Abel Cheung <maddog@linux.org.hk>\n"
 "Language-Team: traditional chinese <zh-l10n@linux.org.tw>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=big5\n"
+"Content-Type: text/plain; charset=Big5\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: another_clock/another_clock.c:253
@@ -84,7 +84,7 @@ msgstr "一個跟 CDE 面板上的時鐘相似的時鐘"
 #: mini-commander/src/mini-commander_applet.c:401
 #: modemlights/modemlights.c:1499 multiload/cpuload.c:95
 #: multiload/loadavg.c:170 multiload/memload.c:98 multiload/netload.c:94
-#: multiload/pageload.c:69 multiload/swapload.c:98 odometer/odo.c:683
+#: multiload/swapload.c:98 odometer/odo.c:683
 #: screenshooter/screenshooter_applet.c:1017 slashapp/slashapp.c:94
 #: sound-monitor/main.c:269 tickastat/main.c:349 webcontrol/webcontrol.c:398
 msgid "Properties..."
@@ -196,7 +196,7 @@ msgid ""
 msgstr ""
 "查詢電池電量時發生錯誤。\n"
 "\n"
-"請確定你的系統核心有支援 APM 功能。"
+"請確定你的系統核心有支援 APM。"
 
 #: battery/battery.c:1038
 msgid "The GNOME Battery Monitor Applet"
@@ -310,7 +310,7 @@ msgstr "電量滿格時發出通知"
 msgid ""
 "Cannot open /proc/apm!  Make sure that you built APM support into your "
 "kernel.\n"
-msgstr "無法開啟 /proc/apm！請確定你的系統核心支援 APM 功能。\n"
+msgstr "無法開啟 /proc/apm！請確定你的系統核心支援 APM。\n"
 
 #: battery/read-battery.c:103
 #, c-format
@@ -327,7 +327,7 @@ msgstr "/dev/apm 輸出入控制失敗。"
 
 #: battery/read-battery.c:192
 msgid "APM is disabled!  Cannot read battery charge information."
-msgstr "APM 功能關閉了！無法獲得關於電池電量的資料。"
+msgstr "APM 已停止使用！無法讀入電池的電量資料。"
 
 #: cdplayer/cdplayer.c:176
 msgid "CD Player Applet"
@@ -1323,8 +1323,8 @@ msgid "GNotes!"
 msgstr "GNotes!"
 
 #: gnotes/gnotes_applet.c:103
-msgid "Copyright (C) 1998-1999)"
-msgstr "版權所有 (C) 1998-1999)"
+msgid "Copyright (C) 1998-1999"
+msgstr "版權 (C) 1998-1999"
 
 #: gnotes/gnotes_applet.c:105
 msgid "Create sticky notes on your screen."
@@ -2936,8 +2936,8 @@ msgid ""
 "any later version."
 msgstr ""
 "這個 GNOME 面板程式會在面板上加入一個指令窗\n"
-"供你輸入指令，它的功能有指令自動補齊、指令\n"
-"紀錄、可變換的巨集以及可選擇的內建時鐘。\n"
+"供你輸入指令，還有指令自動補齊、指令紀錄、可\n"
+"變換的巨集以及可選擇的內建時鐘。\n"
 "\n"
 "本程式屬自由軟體，你可以依自由軟件協會頒佈的\n"
 "GPL 第二版或以後版本的使用條款來散佈/修改這\n"
@@ -3327,7 +3327,7 @@ msgstr ""
 "\n"
 "CPU 負載監測面板程式。"
 
-#: multiload/cpuload.c:74 multiload/cpuload.c:118 multiload/main.c:246
+#: multiload/cpuload.c:74 multiload/cpuload.c:118 multiload/main.c:220
 msgid "CPU Load"
 msgstr "CPU 負載"
 
@@ -3337,7 +3337,7 @@ msgid "Default Properties..."
 msgstr "預設內容..."
 
 #: multiload/cpuload.c:102 multiload/loadavg.c:177 multiload/memload.c:105
-#: multiload/netload.c:101 multiload/pageload.c:75 multiload/swapload.c:105
+#: multiload/netload.c:101 multiload/swapload.c:105
 msgid "Run gtop..."
 msgstr "執行 gtop..."
 
@@ -3368,7 +3368,7 @@ msgstr ""
 "平均負載監測程式。"
 
 #: multiload/loadavg.c:134 multiload/loadavg.c:146
-#: multiload/loadavg_applet.desktop.in.h:1 multiload/main.c:266
+#: multiload/loadavg_applet.desktop.in.h:1 multiload/main.c:236
 msgid "Load Average"
 msgstr "平均負載"
 
@@ -3408,63 +3408,51 @@ msgstr "系統"
 msgid "Nice"
 msgstr "優先值"
 
-#: multiload/main.c:28 multiload/main.c:32
+#: multiload/main.c:28
 msgid "Idle"
 msgstr "閑置"
 
-#: multiload/main.c:32
-msgid "In"
-msgstr "入"
-
-#: multiload/main.c:32
-msgid "Out"
-msgstr "出"
-
-#: multiload/main.c:36 multiload/main.c:44
+#: multiload/main.c:32 multiload/main.c:40
 msgid "Other"
 msgstr "其它"
 
-#: multiload/main.c:36
+#: multiload/main.c:32
 msgid "Shared"
 msgstr "共用"
 
-#: multiload/main.c:36
+#: multiload/main.c:32
 msgid "Buffers"
 msgstr "緩衝"
 
-#: multiload/main.c:36 multiload/main.c:40 multiload/main.c:48
+#: multiload/main.c:32 multiload/main.c:36 multiload/main.c:44
 msgid "Free"
 msgstr "未使用"
 
-#: multiload/main.c:40 multiload/main.c:48
+#: multiload/main.c:36 multiload/main.c:44
 msgid "Used"
 msgstr "使用中"
 
-#: multiload/main.c:44
+#: multiload/main.c:40
 msgid "SLIP"
 msgstr "SLIP"
 
-#: multiload/main.c:44
+#: multiload/main.c:40
 msgid "PPP"
 msgstr "PPP"
 
-#: multiload/main.c:44
+#: multiload/main.c:40
 msgid "ETH"
 msgstr "ETH"
 
-#: multiload/main.c:250
-msgid "Page Load"
-msgstr "記憶體分頁負載"
-
-#: multiload/main.c:254 multiload/memload.c:77 multiload/memload.c:121
+#: multiload/main.c:224 multiload/memload.c:77 multiload/memload.c:121
 msgid "Memory Load"
 msgstr "記憶體負載"
 
-#: multiload/main.c:258 multiload/swapload.c:77 multiload/swapload.c:121
+#: multiload/main.c:228 multiload/swapload.c:77 multiload/swapload.c:121
 msgid "Swap Load"
 msgstr "交換檔負載"
 
-#: multiload/main.c:262 multiload/netload.c:73
+#: multiload/main.c:232 multiload/netload.c:73
 msgid "Net Load"
 msgstr "網絡負載"
 
@@ -3499,10 +3487,6 @@ msgstr ""
 #: multiload/netload.c:117
 msgid "Network Load"
 msgstr "網絡負載"
-
-#: multiload/pageload.c:51
-msgid "PAGE Load"
-msgstr "記憶體分頁負載"
 
 #: multiload/swapload.c:44
 msgid "Swap Load Applet"
@@ -3954,8 +3938,8 @@ msgid ""
 "Screenshot aborted"
 msgstr ""
 "發生文字擴展錯誤\n"
-"也許你在目錄對話盒中填入了奇怪的東西\n"
-"放棄抓取畫面"
+"可能你在目錄對話盒中填入了奇怪的東西\n"
+"放棄擷取畫面"
 
 #: screenshooter/screenshooter_applet.c:1145
 msgid ""
@@ -3964,8 +3948,8 @@ msgid ""
 "Screenshot aborted"
 msgstr ""
 "發生文字擴展錯誤\n"
-"也許你在檔案名稱對話盒中填入了奇怪的東西\n"
-"放棄抓取畫面"
+"可能你在檔案名稱對話盒中填入了奇怪的東西\n"
+"放棄擷取畫面"
 
 #: screenshooter/screenshooter_applet.c:1493
 msgid ""
@@ -3973,7 +3957,7 @@ msgid ""
 "I think you have stuck something funny in the filename box"
 msgstr ""
 "發生文字擴展錯誤\n"
-"也許你在檔案名稱對話盒中填入了奇怪的東西"
+"可能你在檔案名稱對話盒中填入了奇怪的東西"
 
 #: screenshooter/screenshooter_applet.c:1505
 #, c-format
@@ -4284,7 +4268,7 @@ msgstr "(C) 1999 John Ellis"
 
 #: tickastat/main.c:197
 msgid "A ticker to display various information and statistics.\n"
-msgstr "顯示許多資訊與統計的顯示器。\n"
+msgstr "顯示不同資訊與統計的顯示器。\n"
 
 #: tickastat/main.c:289
 #, c-format
@@ -4854,7 +4838,7 @@ msgid "options:\n"
 msgstr "選項：\n"
 
 #: sound-monitor/pvd/esdpvd.c:461
-msgid "  -n, --noX     Allow to run with X server\n"
+msgid "  -n, --noX     Allow to run without X server\n"
 msgstr "  -n, --noX     可在沒有 X 的情況下執行\n"
 
 #: webcontrol/properties.c:205
@@ -4942,6 +4926,12 @@ msgstr "清除"
 #: webcontrol/properties.c:656
 msgid "all entries in URL history"
 msgstr "所有 URL 紀錄"
+
+#~ msgid "Page Load"
+#~ msgstr "記憶體分頁負載"
+
+#~ msgid "PAGE Load"
+#~ msgstr "記憶體分頁負載"
 
 #~ msgid "Shade / Unshade"
 #~ msgstr "遮蓋 / 顯露"
