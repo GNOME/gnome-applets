@@ -220,7 +220,7 @@ applet_change_background(PanelApplet *applet, PanelAppletBackgroundType type, Gd
         case PANEL_COLOR_BACKGROUND:
             if(color) panel_menu->bg_color = *color;
             break;
-        case PANEL_PIXMAP_BACKGOUND:
+        case PANEL_PIXMAP_BACKGROUND:
             if(panel_menu->bg_pixbuf)
                 g_object_unref(G_OBJECT(panel_menu->bg_pixbuf));
             panel_menu->bg_pixbuf = gdk_pixbuf_new_from_file(pixmap, NULL);
@@ -259,7 +259,7 @@ panel_menu_setup_background(PanelMenu *panel_menu)
             panel_menu_background_restore(panel_menu);
             gtk_widget_modify_bg(panel_menu->menubar, GTK_STATE_NORMAL, &panel_menu->bg_color);
             break;
-        case PANEL_PIXMAP_BACKGOUND:
+        case PANEL_PIXMAP_BACKGROUND:
             if(panel_menu->bg_pixbuf)
             {
                 GtkStyle *new_style;
