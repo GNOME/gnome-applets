@@ -2480,7 +2480,10 @@ mailcheck_about(BonoboUIComponent *uic, MailCheck *mc, const gchar *verbname)
 				     documenters,
    				     strcmp (translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
 				     pixbuf);
-				     
+
+	if (pixbuf)
+		g_object_unref (pixbuf);
+
 	gtk_window_set_wmclass (GTK_WINDOW (mc->about), "mailcheck", "Mailcheck");
 
 	gtk_window_set_screen (GTK_WINDOW (mc->about),
