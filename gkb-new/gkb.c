@@ -40,11 +40,11 @@
                                lw=pw*x3; lh=pw*x4; am=x5;
 #else
 #define COUNT1(x1,x2,x3,x4,x5) applet_width = pannel_height*x1; applet_height = pannel_height*x2; \
-						 flag_width   = pannel_height*x3; flag_height   = pannel_height*x4; \
+				flag_width   = pannel_height*x3; flag_height   = pannel_height*x4; \
                                label_width  = pannel_height*x3; label_height  = pannel_height*x4; am=x5;
 
 #define COUNT2(x1,x2,x3,x4,x5) applet_width = pannel_width*x1; applet_height = pannel_width*x2; \
-						 flag_width   = pannel_width*x3; flag_height   = pannel_width*x4; \
+				flag_width   = pannel_width*x3; flag_height   = pannel_width*x4; \
                                label_width  = pannel_width*x3; label_height  = pannel_width*x4; am=x5;
 #endif
 
@@ -132,15 +132,16 @@ gkb_draw (GKB * gkb)
   g_return_if_fail (gkb->keymap != NULL);
   g_return_if_fail (GTK_WIDGET_REALIZED (gkb->darea));
 
+  g_print ("draw ....................\n");
   if ((gkb->mode == GKB_FLAG) || 
       (gkb->mode == GKB_FLAG_AND_LABEL))
   {
     g_return_if_fail (gkb->keymap->pix != NULL);
     gdk_draw_pixmap (gkb->darea->window,
-		   gkb->darea->style->fg_gc [GTK_WIDGET_STATE (gkb->darea)],
-		   gkb->keymap->pix, 0, 0, 0, 0, gkb->w, gkb->h);
-    gtk_label_set_text(GTK_LABEL(gkb->label1),gkb->keymap->label);
-    gtk_label_set_text(GTK_LABEL(gkb->label2),gkb->keymap->label);
+		     gkb->darea->style->fg_gc [GTK_WIDGET_STATE (gkb->darea)],
+		     gkb->keymap->pix, 0, 0, 0, 0, gkb->w, gkb->h);
+    gtk_label_set_text (GTK_LABEL(gkb->label1),gkb->keymap->label);
+    gtk_label_set_text (GTK_LABEL(gkb->label2),gkb->keymap->label);
    }
   applet_widget_set_tooltip (APPLET_WIDGET (gkb->applet), gkb->keymap->name);
 }
@@ -177,7 +178,7 @@ gkb_count_sizes (GKB * gkb)
 
   size = applet_widget_get_panel_pixel_size (APPLET_WIDGET (gkb->applet));
 
-  /* Determine if this pannel requires different handling because it is smaller */
+  /* Determine if this pannel requires different handling because it is very small */
   switch (gkb->orient)
   {
   case ORIENT_UP:
@@ -222,13 +223,15 @@ gkb_count_sizes (GKB * gkb)
   applet_width  = flag_width  + label_width;
   applet_height = flag_height + label_height;
 
-#if 0
+#if 1
   gtk_widget_set_usize (GTK_WIDGET (gkb->applet), applet_width, applet_height);
 #endif	
 
   if (flag_width > 0) {
-    gtk_drawing_area_size (GTK_DRAWING_AREA (gkb->darea), flag_width, flag_height);
+#if 0
     gtk_widget_set_usize (GTK_WIDGET (gkb->darea),  flag_width, flag_height);
+#endif	
+    gtk_drawing_area_size (GTK_DRAWING_AREA (gkb->darea), flag_width, flag_height);
   }
 
   gtk_widget_set_usize (GTK_WIDGET (gkb->label1), flag_width, flag_height);
@@ -260,10 +263,6 @@ gkb_sized_render (GKB * gkb)
 
   label_in_vbox = gkb_count_sizes (gkb);
             
-  gtk_widget_queue_resize (gkb->darea);
-  gtk_widget_queue_resize (gkb->darea->parent);
-  gtk_widget_queue_resize (gkb->darea->parent->parent);
-
   /* Hide or show the flag */
   if (gkb->mode == GKB_LABEL)
     gtk_widget_hide (gkb->darea_frame);
@@ -295,7 +294,11 @@ gkb_sized_render (GKB * gkb)
     name = g_strdup_printf ("gkb/%s", keymap->flag);
     real_name = gnome_unconditional_pixmap_file (name);
     if (g_file_exists (real_name)) {
+#if 0      
       makepix (keymap, real_name, gkb->w - 4, gkb->h - 4);
+#else	
+      makepix (keymap, real_name, gkb->w, gkb->h);
+#endif	
     } else {
       g_free (real_name);
       real_name = gnome_unconditional_pixmap_file ("gkb/gkb-foot.png");
@@ -304,6 +307,12 @@ gkb_sized_render (GKB * gkb)
     g_free (name);
     g_free (real_name);
   }
+
+#if 0	
+  gtk_widget_queue_resize (gkb->darea);
+  gtk_widget_queue_resize (gkb->darea->parent);
+  gtk_widget_queue_resize (gkb->darea->parent->parent);
+#endif	
 }
 
 /**
@@ -512,11 +521,19 @@ loadprop (int i)
   if (stat (pixmapname, &tempbuf))
     {
       pixmapname = gnome_unconditional_pixmap_file ("gkb/gkb-foot.png");
+#if 0	
       makepix (actdata, pixmapname, gkb->w - 4, gkb->h - 4);
+#else	
+      makepix (actdata, pixmapname, gkb->w, gkb->h);
+#endif	
     }
   else
     {
+#if 0	
       makepix (actdata, pixmapname, gkb->w - 4, gkb->h - 4);
+#else	
+      makepix (actdata, pixmapname, gkb->w, gkb->h);
+#endif	
     }
   g_free (pixmapname);
 
@@ -597,9 +614,18 @@ gkb_expose (GtkWidget * darea, GdkEventExpose * event)
 
   debug (FALSE, "");
 
+  g_print ("Expose x.y[%i,%i] w:h[%i,%i]\n",
+	   event->area.x, event->area.y,
+	   event->area.width, event->area.height);
+#if 0	
+  gdk_draw_pixmap (gkb->darea->window,
+		   gkb->darea->style->fg_gc [GTK_WIDGET_STATE (gkb->darea)],
+		   gkb->keymap->pix, 0, 0, 0, 0, gkb->w, gkb->h);
+#endif	
+  
   gdk_draw_pixmap (gkb->darea->window,
 		   gkb->darea->style->fg_gc[GTK_WIDGET_STATE (gkb->darea)],
-		   d->pix, event->area.x, event->area.y, event->area.x,
+		   gkb->keymap->pix, event->area.x, event->area.y, event->area.x,
 		   event->area.y, event->area.width, event->area.height);
 
   return FALSE;

@@ -42,7 +42,7 @@
 #include <dirent.h>		/* for opendir() et al. */
 #include <string.h>		/* for strncmp() */
 
-#if 0
+#if 1
 #define debug(section,str) /*if (debug_turned_on) */ g_print ("%s:%d (%s) %s\n", __FILE__, __LINE__, __FUNCTION__, str);
 #else
 #define debug(section,str) /*if (debug_turned_on) */ ;
