@@ -1,5 +1,6 @@
 #include <gnome.h>
 #include <ghttp.h>
+#include <errno.h>
 #include "gticker.h"
 #include "gticker.xpm"
 
