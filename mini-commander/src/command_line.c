@@ -34,8 +34,10 @@
 GtkWidget *entryCommand;
 static int historyPosition = HISTORY_DEPTH;
 static char *historyCommand[HISTORY_DEPTH];
+static char browsedFilename[300] = "";
 
-static gint commandKey_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
+static gint
+commandKey_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
 {
     guint key = event->keyval;
     char *command;
@@ -125,7 +127,8 @@ static gint commandKey_event(GtkWidget *widget, GdkEventKey *event, gpointer dat
     return (propagateEvent == FALSE);
 }
 
-static gint commandFocusOut_event(GtkWidget *widget, GdkEvent *event, gpointer data)
+static gint
+commandFocusOut_event(GtkWidget *widget, GdkEvent *event, gpointer data)
 {
     /*
       printf("focusOut\n");
@@ -134,16 +137,90 @@ static gint commandFocusOut_event(GtkWidget *widget, GdkEvent *event, gpointer d
     return (FALSE);
 }
 
-static gint activateCommandLine_signal(GtkWidget *widget, gpointer data)
+static gint
+activateCommandLine_signal(GtkWidget *widget, gpointer data)
 {
-      printf("focusIn\n");
-      /*      gtk_widget_grab_focus(GTK_WIDGET(entryCommand)); */
-
-      /* go on */
-      return (FALSE);
+    printf("focusIn\n");
+    /*      gtk_widget_grab_focus(GTK_WIDGET(entryCommand)); */
+    
+    /* go on */
+    return (FALSE);
 }
 
-void initCommandEntry(void)
+int 
+showHistory_signal(GtkWidget *widget, gpointer data)
+{
+    /* FIXME: write this routine */
+    gnome_dialog_run
+	(GNOME_DIALOG
+	 (gnome_message_box_new((gchar *) _("The history list comes later."),
+				GNOME_MESSAGE_BOX_INFO,
+				GNOME_STOCK_BUTTON_OK,
+				NULL)
+	  )
+	 );
+    
+    /* go on */
+    return FALSE;  
+}
+
+int 
+fileBrowserOK_signal(GtkWidget *widget, gpointer fileSelect)
+{
+    
+    /* get selected file name */
+    strcpy(browsedFilename, (char *) gtk_file_selection_get_filename(GTK_FILE_SELECTION(fileSelect)));
+
+    /* destroy file select dialog */
+    gtk_widget_destroy(GTK_WIDGET(fileSelect));
+    
+    printf("Filename: %s\n", (char *)  browsedFilename);
+
+    /* execute command */
+    execCommand(browsedFilename);
+
+    /* go on */
+    return FALSE;  
+}
+
+int 
+showFileBrowser_signal(GtkWidget *widget, gpointer data)
+{
+    /* FIXME: write this routine */
+    
+    GtkWidget *fileSelect;
+
+    
+
+
+    /* build file select dialog */
+    fileSelect = gtk_file_selection_new((gchar *) _("Start program"));
+    gtk_signal_connect(GTK_OBJECT(GTK_FILE_SELECTION(fileSelect)->ok_button),
+		       "clicked",
+		       GTK_SIGNAL_FUNC(fileBrowserOK_signal),
+		       GTK_OBJECT(fileSelect));
+    gtk_signal_connect_object(GTK_OBJECT(GTK_FILE_SELECTION(fileSelect)->cancel_button),
+			      "clicked",
+			      GTK_SIGNAL_FUNC(gtk_widget_destroy),
+			      GTK_OBJECT (fileSelect));
+
+    /* set path to last selected path */
+    gtk_file_selection_set_filename(GTK_FILE_SELECTION(fileSelect),
+				    (gchar *) browsedFilename);
+
+    /* Set as modal */
+    gtk_window_set_modal(GTK_WINDOW(fileSelect),TRUE);
+
+    gtk_window_position(GTK_WINDOW (fileSelect), GTK_WIN_POS_MOUSE);
+
+    gtk_widget_show(fileSelect);
+
+    /* go on */
+    return FALSE;  
+}
+
+void
+initCommandEntry(void)
 {
         GtkStyle *style;
         GdkColor color;

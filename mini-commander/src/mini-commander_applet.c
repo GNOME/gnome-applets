@@ -84,6 +84,8 @@ int
 main(int argc, char **argv)
 {
     GtkWidget *vbox;
+    GtkWidget *hbox, *hboxButtons;
+    GtkWidget *button;
     GtkWidget *frame;
     GtkWidget *frame2;
     GtkWidget *handle;
@@ -141,13 +143,48 @@ main(int argc, char **argv)
     /* add command line; position: top */
     initCommandEntry();
     gtk_box_pack_start(GTK_BOX(vbox), entryCommand, FALSE, FALSE, 0);
+
+    /* hbox for message label and buttons */
+    hbox = gtk_hbox_new(FALSE, 0);
     
     /* add message label */
     initMessageLabel();
-    /* do not center text but put it to bottom */
+    /* do not center text but put it to bottom instead */
     gtk_misc_set_alignment(GTK_MISC(labelMessage), 0.0, 1.0);
-    gtk_box_pack_end(GTK_BOX(vbox), labelMessage, TRUE, TRUE, 0);
-    
+    gtk_box_pack_start(GTK_BOX(hbox), labelMessage, TRUE, TRUE, 0);
+
+    hboxButtons = gtk_hbox_new(TRUE, 0);
+
+    /* add file-browser button */
+    /* FIXME: icon needed */
+    button = gtk_button_new();
+    gtk_signal_connect(GTK_OBJECT(button), "clicked",
+		       GTK_SIGNAL_FUNC(showFileBrowser_signal),
+		       NULL);
+    gtk_widget_set_usize(GTK_WIDGET(button), 12, 10);
+    gtk_box_pack_start(GTK_BOX(hboxButtons), button, TRUE, TRUE, 0);
+
+    /* add history button */
+    /* FIXME: icon needed */
+    button = gtk_button_new();
+    gtk_signal_connect(GTK_OBJECT(button), "clicked",
+		       GTK_SIGNAL_FUNC(showHistory_signal),
+		       NULL);
+    gtk_widget_set_usize(GTK_WIDGET(button), 12, 10);
+    gtk_box_pack_end(GTK_BOX(hboxButtons), button, TRUE, TRUE, 0);
+
+    /* add buttons into frame */
+    frame = gtk_frame_new(NULL);
+    gtk_container_border_width(GTK_CONTAINER(frame), 1);
+    gtk_frame_set_shadow_type(GTK_FRAME(frame), GTK_SHADOW_IN);
+    gtk_container_add(GTK_CONTAINER(frame), hboxButtons);
+    gtk_box_pack_start(GTK_BOX(hbox), frame, FALSE, FALSE, 0);
+
+    /* put message label and history/file-browser button into vbox */
+    gtk_box_pack_end(GTK_BOX(vbox), hbox, TRUE, TRUE, 0);
+
+
+    /* inner frame */
     frame = gtk_frame_new(NULL);
     gtk_frame_set_shadow_type(GTK_FRAME(frame), GTK_SHADOW_OUT);
     gtk_container_add(GTK_CONTAINER(frame), vbox);
@@ -163,6 +200,7 @@ main(int argc, char **argv)
 		       NULL);
     gtk_container_add(GTK_CONTAINER(handle), frame);
     
+    /* outer frame */
     frame2 = gtk_frame_new(NULL);
     gtk_frame_set_shadow_type(GTK_FRAME(frame2), GTK_SHADOW_IN);
     gtk_container_add(GTK_CONTAINER(frame2), handle);
