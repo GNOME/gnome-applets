@@ -1,6 +1,6 @@
 SUBDIRS = 57chevy A bbldotg o smplst
 
-_57ChevyDir = $(datadir)/odometer/57Chevy
+57ChevyDir = $(datadir)/odometer/57Chevy
 ADir = $(datadir)/odometer/A
 BbldotgDir = $(datadir)/odometer/bbldotg
 ODir = $(datadir)/odometer/o
