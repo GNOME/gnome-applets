@@ -273,29 +273,6 @@ gkb_expose (GtkWidget * darea, GdkEventExpose * event, GKB * gkb)
 }
 
 static void
-switch_normal(AppletWidget * applet, gpointer gkbx)
-{
- GKB *gkb = (GKB *) gkbx;
-
- gkb->small = 0; 
- gkb->size =
-    applet_widget_get_panel_pixel_size (APPLET_WIDGET (gkb->applet));
- sized_render (gkb);
- gkb_draw (gkb);
-}
-
-static void
-switch_small(AppletWidget * applet, gpointer gkbx)
-{
- GKB *gkb = (GKB *) gkbx;
-
- gkb->small = 1;
-  sized_render (gkb);
-  gkb_draw (gkb);
- 
-}
-
-static void
 create_gkb_widget (GKB * gkb)
 {
   GtkStyle *style;
@@ -470,23 +447,6 @@ gkb_activator (PortableServer_POA poa,
 					 GNOME_STOCK_MENU_PROP,
 					 _("Properties..."),
 					 properties_dialog, gkb);
-
- applet_widget_register_callback_dir( APPLET_WIDGET(gkb->applet),
-                                      "size",
-                                      "Size"
-                                       );
-
- applet_widget_register_stock_callback (APPLET_WIDGET (gkb->applet),
-					 "size/normal",
-					 GNOME_STOCK_MENU_UP,
-					 _("Normal"),
-					 switch_normal, gkb);
-
- applet_widget_register_stock_callback (APPLET_WIDGET (gkb->applet),
-					 "size/small",
-					 GNOME_STOCK_MENU_DOWN,
-					 _("Small"),
-					 switch_small, gkb);
 
   applet_widget_register_stock_callback (APPLET_WIDGET (gkb->applet),
 					 "help",

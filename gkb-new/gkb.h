@@ -62,9 +62,9 @@ struct _GKB
   GtkWidget *propbox;
   GtkWidget *notebook;
 
-  int n, tn, cur, size, w, h;
+  int n, tn, cur, size, tempsize, w, h;
 
-  int small;
+  int small, tempsmall;
 
   GList *maps;
   GList *tempmaps;

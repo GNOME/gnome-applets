@@ -36,6 +36,7 @@ struct _PropWg
   char *command;
   char *iconpath;
   
+  GtkWidget *diff_ch;
   GtkWidget *propbox; 
   GtkWidget *notebook;
   GtkWidget *label1;
@@ -43,8 +44,12 @@ struct _PropWg
   GtkWidget *keymapname;
   GtkWidget *commandinput;
   GtkWidget *iconpathinput;
+  GtkWidget *hidebox;
+  GtkWidget *frame21, *frame22, *label24, *label25, *entry21;
   GtkWidget *vbox1, *hbox1, *vbox2, *hbox2, *hbox3, *hboxmap;
   GtkWidget *frame1, *frame2, *frame3, *frame4, *frame6;
+  GtkWidget *vbox21, *hbox21, *hbox22;
+  GtkWidget *list, *tree, *iconentry21, *button21;
   GtkWidget *newkeymap, *delkeymap;
 };
 
@@ -86,7 +91,7 @@ copy_propwgs (GKB * gkb)
 	  }
   }
   return g_list_reverse(tempmaps);
-}
+ }
 
 static PropWg *
 cp_prop (Prop * data)
@@ -123,7 +128,8 @@ delmap_cb (GnomePropertyBox * pb,GKB * gkb)
   if (gkb->tempmaps->next == NULL) return;
 
   page = gtk_notebook_get_current_page(GTK_NOTEBOOK(gkb->notebook));
-  gtk_notebook_remove_page (GTK_NOTEBOOK(gkb->notebook), page);
+  page--;
+  gtk_notebook_remove_page (GTK_NOTEBOOK(gkb->notebook), page+1);
   actdata = g_list_nth_data(gkb->tempmaps, page);
   gkb->tempmaps = g_list_remove(gkb->tempmaps, actdata);
   g_free(actdata->name);
@@ -136,6 +142,24 @@ delmap_cb (GnomePropertyBox * pb,GKB * gkb)
   
   gnome_property_box_changed (GNOME_PROPERTY_BOX (gkb->propbox));
   
+}
+
+static void
+newmap_cb (GnomePropertyBox * pb, GKB * gkb)
+{
+  PropWg *actdata;
+
+  gnome_config_push_prefix (APPLET_WIDGET (gkb->applet)->privcfgpath);
+  actdata = cp_prop(loadprop (gkb, 0));
+  gnome_config_pop_prefix ();
+
+  makenotebook (gkb, actdata, gkb->tn);
+
+  gkb->tempmaps = g_list_append (gkb->tempmaps, actdata);
+  gkb->tn ++;
+
+  gnome_property_box_changed (GNOME_PROPERTY_BOX (gkb->propbox));
+
 }
 
 static void
@@ -177,21 +201,19 @@ pathtoicon_cb (GnomePropertyBox * pb, PropWg * actdata)
 }
 
 static void
-newmap_cb (GnomePropertyBox * pb, GKB * gkb)
+switch_normal(GnomePropertyBox * pb, GKB * gkb)
 {
-  PropWg *actdata;
+ gkb->tempsmall = 0;         
+ gkb->tempsize =
+    applet_widget_get_panel_pixel_size (APPLET_WIDGET (gkb->applet));
+ gnome_property_box_changed (GNOME_PROPERTY_BOX (gkb->propbox));
+}
 
-  gnome_config_push_prefix (APPLET_WIDGET (gkb->applet)->privcfgpath);
-  actdata = cp_prop(loadprop (gkb, 0));
-  gnome_config_pop_prefix ();
-
-  makenotebook (gkb, actdata, gkb->tn);
-
-  gkb->tempmaps = g_list_append (gkb->tempmaps, actdata);
-  gkb->tn ++;
-
-  gnome_property_box_changed (GNOME_PROPERTY_BOX (gkb->propbox));
-
+static void
+switch_small(GnomePropertyBox * pb, GKB * gkb)
+{
+ gkb->tempsmall = 1;
+ gnome_property_box_changed (GNOME_PROPERTY_BOX (gkb->propbox));
 }
 
 static void
@@ -230,7 +252,7 @@ apply_cb (GtkWidget * pb, gint page, GKB * gkb)
 	  gtk_entry_get_text (GTK_ENTRY (actdata->commandinput)));
 
         gtk_notebook_set_tab_label_text (GTK_NOTEBOOK (actdata->notebook),
-             gtk_notebook_get_nth_page (GTK_NOTEBOOK (actdata->notebook), i++),
+             gtk_notebook_get_nth_page (GTK_NOTEBOOK (actdata->notebook), (i++)+1),
 	       gtk_entry_get_text (GTK_ENTRY(actdata->keymapname)));
 
         gtk_widget_show (actdata->notebook);
@@ -254,6 +276,9 @@ apply_cb (GtkWidget * pb, gint page, GKB * gkb)
 
   gkb->dact = g_list_nth_data (gkb->maps, gkb->cur);
 
+  gkb->small = gkb->tempsmall;
+  gkb->size = gkb->tempsize;
+
   sized_render (gkb);
   gkb_draw (gkb);
 
@@ -270,11 +295,142 @@ destroy_cb (GtkWidget * widget, GKB * gkb)
   gkb->propbox = NULL;
 }
 
+GtkWidget *
+defpage_create (GKB * gkb)
+{
+  GtkWidget *frame1;
+  GtkWidget *vbox1;
+  GtkWidget *table1;
+  GtkWidget *label5;
+  GtkWidget *label6;
+  GtkWidget *optionmenu2;
+  GtkWidget *optionmenu2_menu;
+  GtkWidget *menuitem;
+  GtkWidget *optionmenu3;
+  GtkWidget *optionmenu3_menu;
+  GtkWidget *hbox1;
+  gchar *pixmap1_filename;
+  GtkWidget *pixmap1;
+  GtkWidget *label4;
+  GtkWidget *advanced;
+  GtkAccelGroup *accel_group;
+  GtkTooltips *tooltips;
+
+  tooltips = gtk_tooltips_new ();
+  accel_group = gtk_accel_group_new ();
+
+  frame1 = gtk_frame_new (_("Settings"));
+  gtk_widget_ref (frame1);
+  gtk_widget_show (frame1);
+
+  vbox1 = gtk_vbox_new (FALSE, 0);
+  gtk_widget_ref (vbox1);
+  gtk_widget_show (vbox1);
+  gtk_container_add (GTK_CONTAINER (frame1), vbox1);
+
+  table1 = gtk_table_new (2, 2, FALSE);
+  gtk_widget_ref (table1);
+  gtk_widget_show (table1);
+  gtk_box_pack_start (GTK_BOX (vbox1), table1, TRUE, TRUE, 0);
+
+  label5 = gtk_label_new (_("Applet size:"));
+  gtk_widget_ref (label5);
+  gtk_widget_show (label5);
+  gtk_table_attach (GTK_TABLE (table1), label5, 0, 1, 0, 1,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_label_set_justify (GTK_LABEL (label5), GTK_JUSTIFY_RIGHT);
+  gtk_misc_set_alignment (GTK_MISC (label5), 0.95, 0.0100004);
+
+  label6 = gtk_label_new (_("Applet style:"));
+  gtk_widget_ref (label6);
+  gtk_widget_show (label6);
+  gtk_table_attach (GTK_TABLE (table1), label6, 0, 1, 1, 2,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_label_set_justify (GTK_LABEL (label6), GTK_JUSTIFY_RIGHT);
+  gtk_misc_set_alignment (GTK_MISC (label6), 0.95, 0.5);
+
+  optionmenu2 = gtk_option_menu_new ();
+  gtk_widget_ref (optionmenu2);
+  gtk_widget_show (optionmenu2);
+  gtk_table_attach (GTK_TABLE (table1), optionmenu2, 1, 2, 0, 1,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (GTK_EXPAND), 0, 0);
+  gtk_tooltips_set_tip (tooltips, optionmenu2, _("Normal: Panel size. Small: Half panel size."), NULL);
+  optionmenu2_menu = gtk_menu_new ();
+  menuitem = gtk_menu_item_new_with_label (_("Normal"));
+  gtk_signal_connect (GTK_OBJECT (menuitem), "activate",
+                (GtkSignalFunc) switch_normal, gkb);
+  gtk_widget_show (menuitem);
+  gtk_menu_append (GTK_MENU (optionmenu2_menu), menuitem);
+  menuitem = gtk_menu_item_new_with_label (_("Small"));
+  gtk_signal_connect (GTK_OBJECT (menuitem), "activate",
+                (GtkSignalFunc) switch_small, gkb);
+  gtk_widget_show (menuitem);
+  gtk_menu_append (GTK_MENU (optionmenu2_menu), menuitem);
+  gtk_option_menu_set_menu (GTK_OPTION_MENU (optionmenu2), optionmenu2_menu);
+
+  optionmenu3 = gtk_option_menu_new ();
+  gtk_widget_ref (optionmenu3);
+  gtk_widget_show (optionmenu3);
+  gtk_table_attach (GTK_TABLE (table1), optionmenu3, 1, 2, 1, 2,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (GTK_EXPAND), 0, 0);
+  gtk_tooltips_set_tip (tooltips, optionmenu3, _("Flag: Your flag. Label: Do not display flag."), NULL);
+  optionmenu3_menu = gtk_menu_new ();
+  menuitem = gtk_menu_item_new_with_label (_("Flag"));
+  gtk_widget_show (menuitem);
+  gtk_menu_append (GTK_MENU (optionmenu3_menu), menuitem);
+  menuitem = gtk_menu_item_new_with_label (_("Label"));
+  gtk_widget_show (menuitem);
+  gtk_menu_append (GTK_MENU (optionmenu3_menu), menuitem);
+  gtk_option_menu_set_menu (GTK_OPTION_MENU (optionmenu3), optionmenu3_menu);
+
+  hbox1 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_ref (hbox1);
+  gtk_widget_show (hbox1);
+  gtk_box_pack_start (GTK_BOX (vbox1), hbox1, TRUE, TRUE, 0);
+
+  pixmap1 = gtk_type_new (gnome_pixmap_get_type ());
+  pixmap1_filename = gnome_pixmap_file ("gkb.png");
+  if (pixmap1_filename)
+    gnome_pixmap_load_file (GNOME_PIXMAP (pixmap1), pixmap1_filename);
+  else
+    g_warning (_("Couldn't find pixmap file: %s"), "gkb.png");
+  g_free (pixmap1_filename);
+  gtk_widget_ref (pixmap1);
+  gtk_widget_show (pixmap1);
+  gtk_box_pack_start (GTK_BOX (hbox1), pixmap1, FALSE, FALSE, 15);
+
+  label4 = gtk_label_new (_("If you cannot set something and you are power user, click \nthis checkbox. You will able to set the commands manually."));
+  gtk_widget_ref (label4);
+  gtk_widget_show (label4);
+  gtk_box_pack_start (GTK_BOX (hbox1), label4, FALSE, FALSE, 3);
+  gtk_label_set_justify (GTK_LABEL (label4), GTK_JUSTIFY_FILL);
+  gtk_misc_set_alignment (GTK_MISC (label4), 0.0500001, 0.5);
+
+  advanced = gtk_check_button_new_with_label (_("Advanced settings"));
+  gtk_widget_ref (advanced);
+  gtk_widget_show (advanced);
+  gtk_box_pack_start (GTK_BOX (vbox1), advanced, TRUE, TRUE, 0);
+  gtk_tooltips_set_tip (tooltips, advanced, _("Advanced settings: Check this if  you really know what you gonna do!"), NULL);
+  gtk_widget_add_accelerator (advanced, "toggled", accel_group,
+                              GDK_a, GDK_MOD1_MASK,
+                              GTK_ACCEL_VISIBLE);
+
+  return frame1;
+}
+
 static void
 makenotebook (GKB * gkb, PropWg * actdata, int i)
 {
   actdata->notebook = gkb->notebook;
   actdata->propbox = gkb->propbox;
+
+  actdata->hidebox = gtk_vbox_new (FALSE, 0);
+  gtk_container_add (GTK_CONTAINER (gkb->notebook), actdata->hidebox);
+
   actdata->vbox1 = gtk_vbox_new (FALSE, 0);
 
   gtk_widget_ref (actdata->vbox1);
@@ -282,7 +438,7 @@ makenotebook (GKB * gkb, PropWg * actdata, int i)
 			    actdata->vbox1,
 			    (GtkDestroyNotify) gtk_widget_unref);
   gtk_widget_show (actdata->vbox1);
-  gtk_container_add (GTK_CONTAINER (gkb->notebook), actdata->vbox1);
+  gtk_box_pack_start (GTK_BOX (actdata->hidebox), actdata->vbox1,FALSE,FALSE,0);
 
   actdata->hbox1 = gtk_hbox_new (FALSE, 0);
   gtk_widget_ref (actdata->hbox1);
@@ -326,7 +482,6 @@ makenotebook (GKB * gkb, PropWg * actdata, int i)
   gtk_box_pack_start (GTK_BOX (actdata->hbox1), actdata->frame6, TRUE, TRUE,
 		      0);
   gtk_container_set_border_width (GTK_CONTAINER (actdata->frame6), 2);
-
 
   actdata->hboxmap = gtk_hbox_new (FALSE, 0);
 
@@ -440,6 +595,81 @@ makenotebook (GKB * gkb, PropWg * actdata, int i)
   gtk_widget_show (actdata->commandinput);
   gtk_container_add (GTK_CONTAINER (actdata->frame2), actdata->commandinput);
 
+
+  actdata->hbox21 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_ref (actdata->hbox21);
+  gtk_widget_show (actdata->hbox21);
+
+  gtk_box_pack_start (GTK_BOX (actdata->hidebox), actdata->hbox21, FALSE, FALSE, 0);
+
+  actdata->frame21 = gtk_frame_new (_("Language/Country"));
+  gtk_widget_ref (actdata->frame21);
+  gtk_widget_show (actdata->frame21);
+  gtk_box_pack_start (GTK_BOX (actdata->hbox21), actdata->frame21, TRUE, TRUE, 0);
+  gtk_widget_set_usize (actdata->frame21, 130, -2);
+  gtk_container_set_border_width (GTK_CONTAINER (actdata->frame21), 1);
+  actdata->tree = gtk_tree_new ();
+  gtk_widget_ref (actdata->tree); 
+  gtk_widget_show (actdata->tree);
+  gtk_container_add (GTK_CONTAINER (actdata->frame21), actdata->tree);
+  gtk_tree_set_view_mode (GTK_TREE (actdata->tree), GTK_TREE_VIEW_ITEM);
+
+  actdata->frame22 = gtk_frame_new (_("Keymap"));
+  gtk_widget_ref (actdata->frame22);
+
+  gtk_widget_show (actdata->frame22);
+  gtk_box_pack_start (GTK_BOX (actdata->hbox21), actdata->frame22, TRUE, TRUE, 0);
+  gtk_widget_set_usize (actdata->frame22, 124, -2);
+  gtk_container_set_border_width (GTK_CONTAINER (actdata->frame22), 1);
+
+  actdata->list = gtk_list_new ();
+  gtk_widget_ref (actdata->list);
+
+  gtk_widget_show (actdata->list);
+  gtk_container_add (GTK_CONTAINER (actdata->frame22), actdata->list);
+
+  actdata->vbox21 = gtk_vbox_new (FALSE, 0);
+  gtk_widget_ref (actdata->vbox21);
+
+  gtk_widget_show (actdata->vbox21);
+  gtk_box_pack_start (GTK_BOX (actdata->hbox21), actdata->vbox21, TRUE, TRUE, 0);
+
+  actdata->hbox22 = gtk_hbox_new (FALSE, 0);
+  gtk_widget_ref (actdata->hbox22);
+
+  gtk_widget_show (actdata->hbox22);
+  gtk_box_pack_start (GTK_BOX (actdata->vbox21), actdata->hbox22, FALSE, FALSE, 0);
+
+  actdata->label24 = gtk_label_new (_("Label:"));
+  gtk_widget_ref (actdata->label24);
+
+  gtk_widget_show (actdata->label24);
+  gtk_box_pack_start (GTK_BOX (actdata->hbox22), actdata->label24, FALSE, FALSE, 2);
+
+  actdata->entry21 = gtk_entry_new ();
+  gtk_widget_ref (actdata->entry21);
+  gtk_widget_show (actdata->entry21);
+  gtk_box_pack_start (GTK_BOX (actdata->hbox22), actdata->entry21, FALSE, FALSE, 0);
+  gtk_widget_set_usize (actdata->entry21, 89, -2);
+
+  actdata->button21 = gtk_button_new_with_label (_("Set label"));
+  gtk_widget_ref (actdata->button21);
+
+  gtk_widget_show (actdata->button21);
+  gtk_box_pack_start (GTK_BOX (actdata->hbox22), actdata->button21, FALSE, FALSE, 0);
+
+  actdata->iconentry21 = gnome_icon_entry_new (NULL, NULL);
+  gtk_widget_ref (actdata->iconentry21);
+
+  gtk_widget_show (actdata->iconentry21);
+  gtk_box_pack_start (GTK_BOX (actdata->vbox21), actdata->iconentry21, FALSE, FALSE, 0);
+
+  actdata->label25 = gtk_label_new (_("Gnome Keyboard layout applet"));
+  gtk_widget_ref (actdata->label25);
+
+  gtk_widget_show (actdata->label25);
+  gtk_box_pack_start (GTK_BOX (actdata->vbox21), actdata->label25, TRUE, TRUE, 0);
+
   actdata->label1 = gtk_label_new (actdata->name);
   gtk_widget_ref (actdata->label1);
   gtk_object_set_data_full (GTK_OBJECT (gkb->propbox), "label1",
@@ -449,7 +679,10 @@ makenotebook (GKB * gkb, PropWg * actdata, int i)
 
   gtk_notebook_set_tab_label (GTK_NOTEBOOK (gkb->notebook),
 			      gtk_notebook_get_nth_page (GTK_NOTEBOOK
-		              (gkb->notebook), i), actdata->label1);
+		              (gkb->notebook), i+1), actdata->label1);
+
+  gtk_widget_hide (actdata->vbox1);
+
 }
 
 void
@@ -458,6 +691,8 @@ properties_dialog (AppletWidget * applet, gpointer gkbx)
 
   GKB *gkb = (GKB *) gkbx;
   int i = 0;
+
+  GtkWidget * defpage;
 
   GList * list;
 
@@ -494,6 +729,10 @@ properties_dialog (AppletWidget * applet, gpointer gkbx)
   gtk_notebook_set_scrollable (GTK_NOTEBOOK (gkb->notebook), TRUE);
   gtk_notebook_popup_enable (GTK_NOTEBOOK (gkb->notebook));
   gtk_widget_show_all (gkb->propbox);
+
+  defpage = defpage_create (gkb);
+
+  gtk_notebook_append_page (GTK_NOTEBOOK (gkb->notebook), defpage, gtk_label_new (_("General")));
 
   list = gkb->tempmaps;
   while (list)
