@@ -341,6 +341,7 @@ static gboolean
 mini_commander_applet_fill (PanelApplet *applet)
 {
     MCData *mc;
+    GConfClient *client;
     
     gnome_window_icon_set_default_from_file (GNOME_ICONDIR "/gnome-mini-commander.png");
     
@@ -374,6 +375,25 @@ mini_commander_applet_fill (PanelApplet *applet)
 				       NULL,
 				       mini_commander_menu_verbs,
 				       mc);
+
+    if (panel_applet_get_locked_down (mc->applet)) {
+	    BonoboUIComponent *popup_component;
+
+	    popup_component = panel_applet_get_popup_component (mc->applet);
+
+	    bonobo_ui_component_set_prop (popup_component,
+					  "/commands/Props",
+					  "hidden", "1",
+					  NULL);
+    }
+
+    client = gconf_client_get_default ();
+    if (gconf_client_get_bool (client, "/desktop/gnome/lockdown/inhibit_command_line", NULL)) {
+	    /* What would be the correct way to handle this?
+	       Really if the sysadmin doesn't allow command line, this applet
+	       should somehow be not addable */
+	    gtk_widget_set_sensitive (GTK_WIDGET (mc->applet), FALSE);
+    }
 
     set_atk_name_description (GTK_WIDGET (applet),
 			      _("Mini-Commander applet"),
