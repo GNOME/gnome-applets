@@ -37,8 +37,6 @@
 #define CY		20
 #define NEEDLE_SIZE	12
 
-
-
 struct clock_props_t {
    gboolean	secneedle;
    gchar	*bg, *hour, *min, *sec;
@@ -48,7 +46,6 @@ struct clock_applet_t{
    GtkWidget		*area;
    GtkWidget		*clock;
    GtkWidget		*pixmap;
-   GdkPixmap		*xpm;
    GdkGC		*gc[4];		/* bg, hour, min, sec */
    struct clock_props_t	props;
 };
@@ -59,19 +56,38 @@ static GtkWidget 	*props_window = NULL;
 struct clock_applet_t 	clk;
 struct clock_props_t	props_tmp;
 
+static int applet_width = APPLET_WIDTH;
+static int applet_height = APPLET_HEIGHT;
+static int cx = CX;
+static int cy = CY;
+static int needle_size = NEEDLE_SIZE;
+
+
 
 /**************
  * Prototypes *
  **************/
 static gint update_clock (gpointer data);
-void set_colors (GtkWidget *widget);
+static void set_colors (GtkWidget *widget);
 
+/****************
+ * setup_sizes *
+ ****************/
+static void
+setup_sizes (int size)
+{
+    applet_width = (APPLET_WIDTH*size)/48;
+    applet_height = (APPLET_HEIGHT*size)/48;
+    cx = (CX*size)/48;
+    cy = (CY*size)/48;
+    needle_size = (NEEDLE_SIZE*size)/48;
+}
 
 
 /**************
  * Properties *
  **************/
-void properties_load (char *path)
+static void properties_load (char *path)
 {
     gnome_config_push_prefix (path);
     clk.props.secneedle	= gnome_config_get_bool_with_default ("another_clock/sec_needle=TRUE", NULL);
@@ -83,7 +99,7 @@ void properties_load (char *path)
 }
 
 
-int properties_save (char *path)
+static int properties_save (char *path)
 {
     gnome_config_push_prefix (path);
     gnome_config_set_bool ("another_clock/sec_needle", clk.props.secneedle);
@@ -99,7 +115,7 @@ int properties_save (char *path)
 }
 
 
-void props_ok (GtkWidget *wid, int page, gpointer *data)
+static void props_ok (GtkWidget *wid, int page, gpointer *data)
 {
     memcpy (&clk.props, &props_tmp, sizeof(struct clock_props_t));
     applet_widget_sync_config (APPLET_WIDGET(applet));
@@ -108,13 +124,13 @@ void props_ok (GtkWidget *wid, int page, gpointer *data)
 }
 
 
-void props_cancel (GtkWidget *widget, GtkWidget **win)
+static void props_cancel (GtkWidget *widget, GtkWidget **win)
 {
     *win = NULL;
 }
 
 
-void bg_color_changed (GnomeColorPicker *cp)
+static void bg_color_changed (GnomeColorPicker *cp)
 {
     guint8 r, g, b;
     gchar  buf[24];
@@ -126,7 +142,7 @@ void bg_color_changed (GnomeColorPicker *cp)
 }
 
 
-void hour_color_changed (GnomeColorPicker *cp)
+static void hour_color_changed (GnomeColorPicker *cp)
 {
     guint8 r, g, b;
     gchar  buf[24];
@@ -138,7 +154,7 @@ void hour_color_changed (GnomeColorPicker *cp)
 }
 
 
-void min_color_changed (GnomeColorPicker *cp)
+static void min_color_changed (GnomeColorPicker *cp)
 {
     guint8 r, g, b;
     gchar  buf[24];
@@ -150,7 +166,7 @@ void min_color_changed (GnomeColorPicker *cp)
 }
 
 
-void sec_color_changed (GnomeColorPicker *cp)
+static void sec_color_changed (GnomeColorPicker *cp)
 {
     guint8 r, g, b;
     gchar  buf[24];
@@ -162,7 +178,7 @@ void sec_color_changed (GnomeColorPicker *cp)
 }
 
 
-void sec_needle_changed (GtkWidget *widget, GtkWidget **sec)
+static void sec_needle_changed (GtkWidget *widget, GtkWidget **sec)
 {
     props_tmp.secneedle = props_tmp.secneedle ? FALSE : TRUE;
     gtk_widget_set_sensitive (GTK_WIDGET(sec), props_tmp.secneedle);
@@ -173,7 +189,7 @@ void sec_needle_changed (GtkWidget *widget, GtkWidget **sec)
 /*************
  * Callbacks *
  *************/
-void cb_properties (AppletWidget *applet, gpointer data)
+static void cb_properties (AppletWidget *applet, gpointer data)
 {
     static GnomeHelpMenuEntry help_entry = { NULL, "properties" };
     GtkWidget *label;
@@ -302,7 +318,7 @@ gtk_widget_set_sensitive (colorpicker, FALSE);
 }
 
 
-void cb_about (AppletWidget *applet, gpointer data)
+static void cb_about (AppletWidget *applet, gpointer data)
 {
     GtkWidget *about;
     static const gchar *authors[] = {
@@ -338,6 +354,40 @@ static gint save_session (GtkWidget *widget, char *privcfgpath,
 {
     properties_save (privcfgpath);
     return FALSE;
+}
+
+static void
+change_pixel_size(GtkWidget *w, int size, gpointer data)
+{
+    char *fname;
+
+    setup_sizes (size);
+
+
+    gtk_widget_set_usize (clk.area, applet_width, applet_height);
+
+    gtk_widget_destroy (clk.clock);
+    gtk_widget_destroy (clk.pixmap);
+
+    /* load clock pixmap  */
+    fname = gnome_unconditional_pixmap_file (CLOCK_XPM_FILE);
+    if (!fname)
+	g_error ("Can't find another_clock applet pixmap");
+    clk.clock = gnome_pixmap_new_from_file_at_size (fname,
+						    applet_width,
+						    applet_height);
+    g_free (fname);
+    gtk_widget_show (clk.clock);
+
+    /* create a pixmap for clock */
+    clk.pixmap = gnome_pixmap_new_from_gnome_pixmap (GNOME_PIXMAP(clk.clock));
+    gtk_fixed_put (GTK_FIXED(clk.area), clk.pixmap, 0, 0);
+    gtk_widget_show (clk.pixmap);
+    gtk_widget_show (clk.area);
+
+    gdk_flush();
+
+    update_clock (NULL);
 }
 
 
@@ -436,7 +486,7 @@ static void applet_back_change (GtkWidget *widget, PanelBackType type,
 /**********
  * Colors *
  **********/
-void set_gc_color(GdkColorContext *cc, int n)
+static void set_gc_color(GdkColorContext *cc, int n)
 {
     GdkColor    *c;
     gint	z;
@@ -480,7 +530,7 @@ void set_gc_color(GdkColorContext *cc, int n)
 }
 
 
-void set_colors (GtkWidget *widget)
+static void set_colors (GtkWidget *widget)
 {
     GdkColorContext *cc;
 
@@ -506,56 +556,59 @@ static gint update_clock (gpointer data)
     time_t	curtime;
     struct tm 	*tm;
     double	ang;
+    GdkGC       *gc;
 
-    GdkRectangle r;
+    if (!GTK_WIDGET_REALIZED (clk.pixmap))
+      return TRUE;
 
     /* Get hour, minute and second */    
     curtime = time (NULL);
     tm = localtime (&curtime);
 
     /* draw clock */
-    gdk_draw_pixmap (clk.xpm,
+    gdk_draw_pixmap (GNOME_PIXMAP(clk.pixmap)->pixmap,
 	             clk.gc[0],
                      GNOME_PIXMAP(clk.clock)->pixmap,
                      0, 0, 0, 0,
-		     APPLET_WIDTH, APPLET_HEIGHT);
+		     applet_width, applet_height);
 
     /* draw needles */
     ang = ((tm->tm_hour > 12) ? tm->tm_hour-12 : tm->tm_hour) * M_PI / 6;
     ang += tm->tm_min * M_PI / 360;
-    gdk_draw_line (clk.xpm, clk.gc[1], CX, CY,
-		   (int) (CX + (NEEDLE_SIZE-3) * sin(ang)),
-		   (int) (CY - (NEEDLE_SIZE-3) * cos(ang)));
+    gdk_draw_line (GNOME_PIXMAP(clk.pixmap)->pixmap, clk.gc[1], cx, cy,
+		   (int) (cx + (needle_size-3) * sin(ang)),
+		   (int) (cy - (needle_size-3) * cos(ang)));
     ang = tm->tm_min * M_PI / 30;
-    gdk_draw_line (clk.xpm, clk.gc[2], CX, CY,
-		   (int) (CX + NEEDLE_SIZE * sin(ang)),
-		   (int) (CY - NEEDLE_SIZE * cos(ang)));
+    gdk_draw_line (GNOME_PIXMAP(clk.pixmap)->pixmap, clk.gc[2], cx, cy,
+		   (int) (cx + needle_size * sin(ang)),
+		   (int) (cy - needle_size * cos(ang)));
     if (clk.props.secneedle)
     {
        ang = tm->tm_sec * M_PI / 30;
-       gdk_draw_line (clk.xpm, clk.gc[3], CX, CY,
-		      (int) (CX + NEEDLE_SIZE * sin(ang)),
-		      (int) (CY - NEEDLE_SIZE * cos(ang)));
+       gdk_draw_line (GNOME_PIXMAP(clk.pixmap)->pixmap, clk.gc[3], cx, cy,
+		      (int) (cx + needle_size * sin(ang)),
+		      (int) (cy - needle_size * cos(ang)));
     }
 
-    r.x = 0;
-    r.y = 0;
-    r.width = APPLET_WIDTH;
-    r.height = APPLET_HEIGHT;
-    GNOME_PIXMAP(clk.pixmap)->pixmap = clk.xpm;
-    gtk_widget_draw (clk.area, &r);
+    /* draw clock */
+    gc = gdk_gc_new(clk.pixmap->window);
+    gdk_gc_set_clip_mask (gc, GNOME_PIXMAP(clk.pixmap)->mask);
+    gdk_draw_pixmap (clk.pixmap->window,
+		     gc,
+                     GNOME_PIXMAP(clk.pixmap)->pixmap,
+                     0, 0, 0, 0,
+		     applet_width, applet_height);
+    gdk_gc_destroy(gc);
 
     return TRUE;
 }
-
-
 
 /*****************
  * Main function *
  *****************/
 int main (int argc, char *argv[])
 {
-    char	*tmp, *fname;
+    char *fname;
 
     /* Initialize the i18n stuff */
     bindtextdomain (PACKAGE, GNOMELOCALEDIR);
@@ -569,17 +622,19 @@ int main (int argc, char *argv[])
        g_error ("Can't create another_clock applet!\n");
     gtk_widget_realize (applet);
 
+    setup_sizes (applet_widget_get_panel_pixel_size (APPLET_WIDGET (applet)));
+
     /* create fixed area for clock pixmap */
     clk.area = gtk_fixed_new();
-    gtk_widget_set_usize (clk.area, APPLET_WIDTH, APPLET_HEIGHT);
+    gtk_widget_set_usize (clk.area, applet_width, applet_height);
 
     /* load clock pixmap  */
     fname = gnome_unconditional_pixmap_file (CLOCK_XPM_FILE);
     if (!fname)
 	g_error ("Can't find another_clock applet pixmap");
     clk.clock = gnome_pixmap_new_from_file_at_size (fname,
-						    APPLET_WIDTH,
-						    APPLET_HEIGHT);
+						    applet_width,
+						    applet_height);
     g_free (fname);
     gtk_widget_show (clk.clock);
 
@@ -588,9 +643,6 @@ int main (int argc, char *argv[])
     gtk_fixed_put (GTK_FIXED(clk.area), clk.pixmap, 0, 0);
     gtk_widget_show (clk.pixmap);
     gtk_widget_show (clk.area);
-
-    /* create a gdk_pixmap for buffer operations */
-    clk.xpm = gdk_pixmap_new (applet->window, APPLET_WIDTH, APPLET_HEIGHT, -1);
 
     /* load background and needles' colors */
     properties_load (APPLET_WIDGET(applet)->privcfgpath);
@@ -609,6 +661,8 @@ int main (int argc, char *argv[])
 			GTK_SIGNAL_FUNC(save_session), NULL);
     gtk_signal_connect (GTK_OBJECT(applet), "back_change",
 	                GTK_SIGNAL_FUNC(applet_back_change), clk.area);
+    gtk_signal_connect(GTK_OBJECT(applet),"change_pixel_size",
+		       GTK_SIGNAL_FUNC(change_pixel_size), NULL);
     applet_widget_register_stock_callback (APPLET_WIDGET(applet),
 					   "about",
 					   GNOME_STOCK_MENU_ABOUT,
