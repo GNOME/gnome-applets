@@ -149,6 +149,7 @@ void show_article_window(AppletWidget *applet, gpointer data)
 	ad->article_window = gnome_dialog_new(_("SlashApp Article List"), 
 			GNOME_STOCK_BUTTON_CLOSE, NULL);
 	gtk_widget_set_usize(ad->article_window, 400, 350);
+	gnome_dialog_set_close(GNOME_DIALOG(ad->article_window), TRUE);
 	
 	ad->article_list = gtk_scrolled_window_new(NULL, NULL);
 	gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(ad->article_list),
