@@ -18,6 +18,12 @@
 typedef struct _AppData AppData;
 typedef struct _InfoData InfoData;
 
+/* some standard RDF sites, FIXME: add custom one some time */
+enum {
+	RDFSITE_SLASHDOT,
+	RDFSITE_GNOTICES
+};
+
 struct _InfoData
 {
         gchar *text;            /* any length, but be reasonable */
@@ -94,6 +100,9 @@ struct _AppData
 	/* properties stuff */
 
 	GtkWidget *propwindow;
+
+	int rdf_site;
+	int p_rdf_site;
 
 	gint p_smooth_scroll;
 	gint p_smooth_type;

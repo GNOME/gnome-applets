@@ -15,7 +15,7 @@ slash_applet_LDADD = \
                      $(GHTTP_LIB) $(GNOME_XML_LIB)
 
 EXTRA_DIST = \
-	slash_applet.desktop slashsplash.xpm \
+	slash_applet.desktop slashsplash.xpm gnotices.xpm \
 	slash_applet.gnorba noimage.xpm back.xpm \
 	slashapp.png
 

@@ -5,6 +5,8 @@
 #include "slashapp.h"
 
 static void article_delay_cb(GtkObject *adj, gpointer data);
+static void slashdot_cb(GtkWidget *w, gpointer data);
+static void gnotices_cb(GtkWidget *w, gpointer data);
 /* static void browser_window_cb(GtkWidget *w, gpointer data); */
 /* static void show_images_cb(GtkWidget *w, gpointer data); */
 /* static void show_info_cb(GtkWidget *w, gpointer data); */
@@ -32,6 +34,7 @@ void property_load(gchar *path, AppData *ad)
 	ad->proxy_enabled = gnome_config_get_int("slashapp/proxy_enabled=0");
 	ad->proxy_host = gnome_config_get_string("slashapp/proxy_host=localhost");
 	ad->proxy_port = gnome_config_get_string("slashapp/proxy_port=8080");
+	ad->rdf_site = gnome_config_get_int("slashapp/rdf_site=1");
 
         gnome_config_pop_prefix ();
 }
@@ -54,6 +57,7 @@ void property_save(gchar *path, AppData *ad)
 	gnome_config_set_int("slashapp/proxy_enabled", ad->proxy_enabled);
 	gnome_config_set_string("slashapp/proxy_host", ad->proxy_host);
 	gnome_config_set_string("slashapp/proxy_port", ad->proxy_port);
+        gnome_config_set_int("slashapp/rdf_site", ad->rdf_site);
 
 	gnome_config_pop_prefix();
 	gnome_config_sync();
@@ -98,6 +102,23 @@ static void proxy_enable_cb(GtkWidget *w, gpointer data)
 		gtk_widget_set_sensitive(ad->proxy_port_widget, FALSE);
 	}
         gnome_property_box_changed(GNOME_PROPERTY_BOX(ad->propwindow));
+}
+
+static void slashdot_cb(GtkWidget *w, gpointer data)
+{
+	AppData *ad = data;
+	if (GTK_TOGGLE_BUTTON (w)->active)
+		ad->p_rdf_site = RDFSITE_SLASHDOT;
+	gnome_property_box_changed(GNOME_PROPERTY_BOX(ad->propwindow));
+}
+
+
+static void gnotices_cb(GtkWidget *w, gpointer data)
+{
+	AppData *ad = data;
+	if (GTK_TOGGLE_BUTTON (w)->active)
+		ad->p_rdf_site = RDFSITE_GNOTICES;
+	gnome_property_box_changed(GNOME_PROPERTY_BOX(ad->propwindow));
 }
 
 /* *** unused ***
@@ -177,6 +198,7 @@ static void scroll_speed_cb(GtkObject *adj, gpointer data)
 static void property_apply_cb(GtkWidget *widget, void *nodata, gpointer data)
 {
 	AppData *ad = data;
+	gboolean refresh = FALSE;
 
 	ad->smooth_scroll = ad->p_smooth_scroll;
 	ad->smooth_type = ad->p_smooth_type;
@@ -189,11 +211,21 @@ static void property_apply_cb(GtkWidget *widget, void *nodata, gpointer data)
 	ad->article_delay = ad->p_article_delay;
 	ad->new_browser_window = ad->p_new_browser_window;
 
-	ad->proxy_host = g_strdup(ad->p_proxy_host);
-	ad->proxy_port = g_strdup(ad->p_proxy_port);
+	g_free (ad->proxy_host);
+	g_free (ad->proxy_port);
+	ad->proxy_host = g_strdup (ad->p_proxy_host);
+	ad->proxy_port = g_strdup (ad->p_proxy_port);
 	ad->proxy_enabled = ad->p_proxy_enabled;
 
+	if (ad->rdf_site != ad->p_rdf_site)
+		refresh = TRUE;
+	ad->rdf_site = ad->p_rdf_site;
+
 	applet_widget_sync_config(APPLET_WIDGET(ad->applet));
+
+	if (refresh)
+		refresh_cb (NULL, ad);
+
 	return;
 	widget = NULL;
 	nodata = NULL;
@@ -221,6 +253,7 @@ void property_show(AppletWidget *applet, gpointer data)
 	GtkWidget *button;
 	GtkObject *adj;
 	GtkWidget *spin;
+	GSList *list;
 
 	if(ad->propwindow)
 		{
@@ -239,8 +272,11 @@ void property_show(AppletWidget *applet, gpointer data)
 	ad->p_article_delay = ad->article_delay;
 
 	ad->p_new_browser_window = ad->new_browser_window;
-	ad->p_proxy_host = ad->proxy_host;
-	ad->p_proxy_port = ad->proxy_port;
+	g_free (ad->p_proxy_host);
+	g_free (ad->p_proxy_port);
+	ad->p_proxy_host = g_strdup (ad->proxy_host);
+	ad->p_proxy_port = g_strdup (ad->proxy_port);
+	ad->p_rdf_site = ad->rdf_site;
 	ad->p_proxy_enabled = ad->proxy_enabled;
 
 	ad->propwindow = gnome_property_box_new();
@@ -251,6 +287,37 @@ void property_show(AppletWidget *applet, gpointer data)
 
 	vbox = gtk_vbox_new(FALSE,0);
 	gtk_widget_show(vbox);
+
+
+
+	frame = gtk_frame_new(_("Site"));
+	gtk_container_set_border_width (GTK_CONTAINER (frame), 5);
+	gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
+	gtk_widget_show(frame);
+
+	hbox = gtk_hbox_new(FALSE, 1);
+	gtk_container_add(GTK_CONTAINER(frame), hbox);
+	gtk_widget_show(hbox);
+
+	button = gtk_radio_button_new_with_label (NULL, _("Slashdot"));
+	gtk_box_pack_start(GTK_BOX(hbox), button, FALSE, FALSE, 0);
+	if (ad->p_rdf_site == RDFSITE_SLASHDOT)
+		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(button), TRUE);
+	else
+		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(button), FALSE);
+	gtk_signal_connect (GTK_OBJECT(button),"clicked",(GtkSignalFunc) slashdot_cb, ad);
+	gtk_widget_show(button);
+
+	list = gtk_radio_button_group (GTK_RADIO_BUTTON (button));
+	button = gtk_radio_button_new_with_label (list, _("Gnotices"));
+	gtk_box_pack_start(GTK_BOX(hbox), button, FALSE, FALSE, 0);
+	if (ad->p_rdf_site == RDFSITE_GNOTICES)
+		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(button), TRUE);
+	else
+		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(button), FALSE);
+	gtk_signal_connect (GTK_OBJECT(button),"clicked",(GtkSignalFunc) gnotices_cb, ad);
+	gtk_widget_show(button);
+
 
 	frame = gtk_frame_new(_("Articles"));
 	gtk_container_set_border_width (GTK_CONTAINER (frame), 5);

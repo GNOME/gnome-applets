@@ -7,6 +7,7 @@
 #include "slashapp.h"
 #include <ghttp.h>
 #include "slashsplash.xpm"
+#include "gnotices.xpm"
 #include <errno.h>
 #include <ctype.h>
 
@@ -25,10 +26,6 @@ int main(int argc, char *argv[])
 	textdomain(PACKAGE);
 
 	applet_widget_init("slash_applet", VERSION, argc, argv, NULL, 0, NULL);
-
-	/* We just push rgb visual and colormap for the entire applet */
-	gtk_widget_push_visual (gdk_rgb_get_visual ());
-	gtk_widget_push_colormap (gdk_rgb_get_cmap ());
 
 	applet = applet_widget_new("slash_applet");
 
@@ -108,7 +105,10 @@ AppData *create_new_app(GtkWidget *applet)
 	property_load(APPLET_WIDGET(applet)->privcfgpath, ad);
 	gtk_timeout_add(refresh_time, get_current_headlines, ad);
 
-	icon = gnome_pixmap_new_from_xpm_d(slashsplash_xpm);
+	if (ad->rdf_site == RDFSITE_SLASHDOT)
+		icon = gnome_pixmap_new_from_xpm_d(slashsplash_xpm);
+	else
+		icon = gnome_pixmap_new_from_xpm_d(gnotices_xpm);
 	add_info_line_with_pixmap(ad, "", icon, 0, FALSE, 1, 0);
 	add_info_line(ad, "SlashApp\n", NULL, 0, TRUE, 1, 0);
 	add_info_line(ad, _("Loading headlines..."), NULL, 0, FALSE, 1, 20);
@@ -337,7 +337,10 @@ void refresh_cb(AppletWidget *widget, gpointer data)
 	GtkWidget *icon;
 	
 	remove_all_lines(ad);
-	icon = gnome_pixmap_new_from_xpm_d(slashsplash_xpm);
+	if (ad->rdf_site == RDFSITE_SLASHDOT)
+		icon = gnome_pixmap_new_from_xpm_d(slashsplash_xpm);
+	else
+		icon = gnome_pixmap_new_from_xpm_d(gnotices_xpm);
         add_info_line_with_pixmap(ad, "", icon, 0, FALSE, 1, 0);
 			
 	if(ad->startup_timeout_id > 0)
@@ -405,6 +408,7 @@ int http_get_to_file(gchar *host, gint port, gchar *resource, FILE *file, gpoint
 	gchar s_port[8];
 	gchar *body, *uri = NULL;
 	gchar *proxy_uri = NULL;
+	char *rdf_uri;
 	AppData *ad = data;
 
 	g_snprintf(s_port, 8, "%d", port); /* int to (g)char */
@@ -436,7 +440,12 @@ int http_get_to_file(gchar *host, gint port, gchar *resource, FILE *file, gpoint
 		return length;
 	} */
 	
-	ghttp_set_uri(request, "http://gnotices.gnome.org/gnome-news/rdf");
+	if (ad->rdf_site == RDFSITE_SLASHDOT)
+		rdf_uri = "http://slashdot.org:80/slashdot.rdf";
+	else
+		rdf_uri = "http://gnotices.gnome.org/gnome-news/rdf";
+	ghttp_set_uri(request, rdf_uri);
+	
 	ghttp_set_header(request, http_hdr_Connection, "close");
 	
 	if(ghttp_prepare(request) != 0) {
