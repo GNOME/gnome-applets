@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-06-25 03:47+0200\n"
-"PO-Revision-Date: 2004-06-25 14:39+0200\n"
+"POT-Creation-Date: 2004-06-28 15:08+0200\n"
+"PO-Revision-Date: 2004-06-28 16:48+0200\n"
 "Last-Translator: Miloslav Trmac <mitr@volny.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -90,7 +90,7 @@ msgstr "Nástroj"
 #: cdplayer/cdplayer.c:598 charpick/charpick.c:559 drivemount/drivemount.c:553
 #: geyes/geyes.c:202 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:608
 #: gtik/gtik.c:723 gweather/gweather-about.c:47 mailcheck/mailcheck.c:2470
-#: mini-commander/src/about.c:50 mixer/mixer.c:1330
+#: mini-commander/src/about.c:50 mixer/mixer.c:1348
 #: modemlights/modemlights.c:118 multiload/main.c:60
 #: stickynotes/stickynotes_applet_callbacks.c:243
 #: wireless/wireless-applet.c:570
@@ -598,7 +598,7 @@ msgstr "_Žlutá:"
 #: battstat/properties.c:297 drivemount/drivemount.c:510
 #: drivemount/properties.c:604 mailcheck/mailcheck.c:2323
 #: mailcheck/mailcheck.c:2611 mini-commander/src/preferences.c:365
-#: mixer/mixer.c:1443 stickynotes/stickynotes_applet_callbacks.c:220
+#: mixer/mixer.c:1461 stickynotes/stickynotes_applet_callbacks.c:220
 #: stickynotes/stickynotes_applet_callbacks.c:384
 #: wireless/wireless-applet.c:540 wireless/wireless-applet.c:624
 #, c-format
@@ -675,7 +675,7 @@ msgstr "Následující skladba"
 msgid "You do not have permission to use the CD player."
 msgstr "Nemáte oprávnění používat přehrávač CD."
 
-#: cdplayer/cdplayer.c:380 mixer/mixer.c:1297 multiload/main.c:144
+#: cdplayer/cdplayer.c:380 mixer/mixer.c:1315 multiload/main.c:144
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "Při spuštění '%s' došlo k chybě: %s"
@@ -2760,7 +2760,7 @@ msgid "Stock Ticker"
 msgstr "Sledování burzy"
 
 #: gtik/GNOME_GtikApplet.xml.h:4 gweather/GNOME_GWeatherApplet.xml.h:5
-#: gweather/gweather-dialog.c:84 mailcheck/GNOME_MailCheckApplet.xml.h:4
+#: gweather/gweather-dialog.c:85 mailcheck/GNOME_MailCheckApplet.xml.h:4
 msgid "_Update"
 msgstr "_Aktualizovat"
 
@@ -3099,79 +3099,83 @@ msgstr ""
 msgid "GNOME Weather"
 msgstr "GNOME Počasí"
 
-#: gweather/gweather-dialog.c:82 gweather/gweather-dialog.c:316
+#: gweather/gweather-dialog.c:83 gweather/gweather-dialog.c:336
 msgid "Forecast"
 msgstr "Předpověď"
 
-#: gweather/gweather-dialog.c:122
+#: gweather/gweather-dialog.c:123
 msgid "City:"
 msgstr "Město:"
 
-#: gweather/gweather-dialog.c:130
+#: gweather/gweather-dialog.c:131
 msgid "Last update:"
 msgstr "Poslední aktualizace:"
 
-#: gweather/gweather-dialog.c:138
+#: gweather/gweather-dialog.c:139
 msgid "Conditions:"
 msgstr "Podmínky:"
 
-#: gweather/gweather-dialog.c:146
+#: gweather/gweather-dialog.c:147
 msgid "Sky:"
 msgstr "Obloha:"
 
-#: gweather/gweather-dialog.c:154
+#: gweather/gweather-dialog.c:155
 msgid "Temperature:"
 msgstr "Teplota:"
 
-#: gweather/gweather-dialog.c:162
+#: gweather/gweather-dialog.c:163
+msgid "Feels like:"
+msgstr "Připadá jako:"
+
+#: gweather/gweather-dialog.c:171
 msgid "Dew point:"
 msgstr "Rosný bod:"
 
-#: gweather/gweather-dialog.c:170
+#: gweather/gweather-dialog.c:179
 msgid "Humidity:"
 msgstr "Vlhkost:"
 
-#: gweather/gweather-dialog.c:178
+#: gweather/gweather-dialog.c:187
 msgid "Wind:"
 msgstr "Vítr:"
 
-#: gweather/gweather-dialog.c:186
+#: gweather/gweather-dialog.c:195
 msgid "Pressure:"
 msgstr "Tlak:"
 
-#: gweather/gweather-dialog.c:194
+#: gweather/gweather-dialog.c:203
 msgid "Visibility:"
 msgstr "Viditelnost:"
 
-#: gweather/gweather-dialog.c:289
+#: gweather/gweather-dialog.c:309
 msgid "Current Conditions"
 msgstr "Aktuální podmínky"
 
-#: gweather/gweather-dialog.c:306
+#: gweather/gweather-dialog.c:326
 msgid "Forecast Report"
 msgstr "Předpověď počasí"
 
-#: gweather/gweather-dialog.c:306
+#: gweather/gweather-dialog.c:326
 msgid "See the ForeCast Details"
 msgstr "Zobrazit detaily předpovědi"
 
-#: gweather/gweather-dialog.c:324
+#: gweather/gweather-dialog.c:344
 msgid "Radar Map"
 msgstr "Mapa radaru"
 
-#: gweather/gweather-dialog.c:355
+#: gweather/gweather-dialog.c:375
 msgid "_Visit Weather.com"
 msgstr "_Navštívit weather.com"
 
-#: gweather/gweather-dialog.c:356
+#: gweather/gweather-dialog.c:376
 msgid "Visit Weather.com"
 msgstr "Navštívit weather.com"
 
-#: gweather/gweather-dialog.c:356
+#: gweather/gweather-dialog.c:376
 msgid "Click to Enter Weather.com"
 msgstr "Vstupte do weather.com kliknutím"
 
-#: gweather/gweather-dialog.c:444
+#: gweather/gweather-dialog.c:465
 msgid "Forecast not currently available for this location."
 msgstr "Pro toto umístění momentálně není předpověď k dispozici."
 
@@ -3544,10 +3548,10 @@ msgstr "Severozápad"
 msgid "North - Northwest"
 msgstr "Sever - Severozápad"
 
-#: gweather/weather.c:231 gweather/weather.c:2163 gweather/weather.c:2177
-#: gweather/weather.c:2189 gweather/weather.c:2201 gweather/weather.c:2234
-#: gweather/weather.c:2246 gweather/weather.c:2265 gweather/weather.c:2289
-#: gweather/weather.c:2302 gweather/weather.c:2322
+#: gweather/weather.c:231 gweather/weather.c:2233 gweather/weather.c:2247
+#: gweather/weather.c:2259 gweather/weather.c:2273 gweather/weather.c:2288
+#: gweather/weather.c:2319 gweather/weather.c:2331 gweather/weather.c:2350
+#: gweather/weather.c:2374 gweather/weather.c:2387 gweather/weather.c:2407
 msgid "Unknown"
 msgstr "Neznámý"
 
@@ -3866,145 +3870,145 @@ msgstr "Prachová smršť"
 msgid "Dust whirls in the vicinity"
 msgstr "Prachová smršť v blízkosti"
 
-#: gweather/weather.c:947 gweather/weather.c:989 gweather/weather.c:1741
+#: gweather/weather.c:1021 gweather/weather.c:1063 gweather/weather.c:1815
 msgid "Failed to get METAR data.\n"
 msgstr "Nemohu získat data METAR.\n"
 
-#: gweather/weather.c:981 gweather/weather.c:1009 gweather/weather.c:1256
+#: gweather/weather.c:1055 gweather/weather.c:1083 gweather/weather.c:1330
 msgid "WeatherInfo missing location"
 msgstr "Chybí umístění WeatherInfo"
 
-#: gweather/weather.c:2077
+#: gweather/weather.c:2147
 msgid "%a, %b %d / %H:%M"
 msgstr "%a %d. %b, %H:%M"
 
-#: gweather/weather.c:2081
+#: gweather/weather.c:2151
 msgid "Unknown observation time"
 msgstr "Neznámý čas pozorování"
 
 #. TRANSLATOR: This is the temperature in degrees fahrenheit, use the degree
 #. symbol Unicode 00B0 if possible
-#: gweather/weather.c:2113 gweather/weather.c:2116
+#: gweather/weather.c:2183 gweather/weather.c:2186
 #, c-format
 msgid "%.1f F"
 msgstr "%.1f °F"
 
 #. TRANSLATOR: This is the temperature in degrees fahrenheit, use the degree
 #. symbol Unicode 00B0 if possible
-#: gweather/weather.c:2121 gweather/weather.c:2124
+#: gweather/weather.c:2191 gweather/weather.c:2194
 #, c-format
 msgid "%dF"
 msgstr "%d °F"
 
 #. TRANSLATOR: This is the temperature in degrees centigrade , use the degree
 #. symbol Unicode 00B0 if possible
-#: gweather/weather.c:2132 gweather/weather.c:2135
+#: gweather/weather.c:2202 gweather/weather.c:2205
 #, c-format
 msgid "%.1f C"
 msgstr "%.1f °C"
 
 #. TRANSLATOR: This is the temperature in degrees centigrade , use the degree
 #. symbol Unicode 00B0 if possible
-#: gweather/weather.c:2140 gweather/weather.c:2143
+#: gweather/weather.c:2210 gweather/weather.c:2213
 #, c-format
 msgid "%dC"
 msgstr "%d °C"
 
 #. TRANSLATOR: This is the temperature in Kelvin
-#: gweather/weather.c:2152
+#: gweather/weather.c:2222
 #, c-format
 msgid "%.1f K"
 msgstr "%.1f K"
 
 #. TRANSLATOR: This is the temperature in Kelvin
-#: gweather/weather.c:2155
+#: gweather/weather.c:2225
 #, c-format
 msgid "%dK"
 msgstr "%d K"
 
 #. TRANSLATOR: This is the humidity in percent
-#: gweather/weather.c:2204
+#: gweather/weather.c:2276
 #, c-format
-msgid "%d%%"
-msgstr "%d%%"
+msgid "%.f%%"
+msgstr "%.f%%"
 
 #. TRANSLATOR: This is the wind speed in knots
-#: gweather/weather.c:2215
+#: gweather/weather.c:2300
 #, c-format
 msgid "%0.1f knots"
 msgstr "%0.1f uzlů"
 
 #. TRANSLATOR: This is the wind speed in miles per hour
-#: gweather/weather.c:2219
+#: gweather/weather.c:2304
 #, c-format
 msgid "%.1f mph"
 msgstr "%.1f mph"
 
 #. TRANSLATOR: This is the wind speed in kilometers per hour
-#: gweather/weather.c:2223
+#: gweather/weather.c:2308
 #, c-format
 msgid "%.1f km/h"
 msgstr "%.1f km/h"
 
 #. TRANSLATOR: This is the wind speed in miles per hour
-#: gweather/weather.c:2227
+#: gweather/weather.c:2312
 #, c-format
 msgid "%.1f m/s"
 msgstr "%.1f m/s"
 
-#: gweather/weather.c:2248
+#: gweather/weather.c:2333
 msgid "Calm"
 msgstr "Bezvětří"
 
 #. TRANSLATOR: This is 'wind direction' / 'wind speed'
-#: gweather/weather.c:2252
+#: gweather/weather.c:2337
 #, c-format
 msgid "%s / %s"
 msgstr "%s / %s"
 
 #. TRANSLATOR: This is pressure in inches of mercury
-#: gweather/weather.c:2270
+#: gweather/weather.c:2355
 #, c-format
 msgid "%.2f inHg"
 msgstr "%.2f inHg"
 
 #. TRANSLATOR: This is pressure in millimeters of mercury
-#: gweather/weather.c:2274
+#: gweather/weather.c:2359
 #, c-format
 msgid "%.1f mmHg"
 msgstr "%.1f mmHg"
 
 #. TRANSLATOR: This is pressure in hectoPascals
-#: gweather/weather.c:2278
+#: gweather/weather.c:2363
 #, c-format
 msgid "%.2f hPa"
 msgstr "%.2f hPa"
 
 #. TRANSLATOR: This is pressure in millibars
-#: gweather/weather.c:2282
+#: gweather/weather.c:2367
 #, c-format
 msgid "%.2f mb"
 msgstr "%.2f mb"
 
 #. TRANSLATOR: This is the visibility in miles
-#: gweather/weather.c:2307
+#: gweather/weather.c:2392
 #, c-format
 msgid "%.1f miles"
 msgstr "%.1f miles"
 
 #. TRANSLATOR: This is the visibility in kilometers
-#: gweather/weather.c:2311
+#: gweather/weather.c:2396
 #, c-format
 msgid "%.1f km"
 msgstr "%.1f km"
 
 #. TRANSLATOR: This is the visibility in meters
-#: gweather/weather.c:2315
+#: gweather/weather.c:2400
 #, c-format
 msgid "%.0fm"
 msgstr "%.0f m"
 
-#: gweather/weather.c:2356
+#: gweather/weather.c:2441
 msgid "Retrieval failed"
 msgstr "Stahování selhalo"
 
@@ -4694,8 +4698,8 @@ msgstr "Příkaz"
 msgid "Adjust the sound volume"
 msgstr "Upravit hlasitost zvuku"
 
-#: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:199
-#: mixer/mixer.c:1344
+#: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:200
+#: mixer/mixer.c:1362
 msgid "Volume Control"
 msgstr "Ovládání hlasitosti"
 
@@ -4807,15 +4811,15 @@ msgstr "Rádio"
 msgid "Monitor"
 msgstr "Monitor"
 
-#: mixer/mixer.c:200
+#: mixer/mixer.c:201
 msgid "Volume Control (muted)"
 msgstr "Ovládání hlasitosti (umlčeno)"
 
-#: mixer/mixer.c:201
+#: mixer/mixer.c:202
 msgid "No audio device"
 msgstr "Žádné zvukové zařízení"
 
-#: mixer/mixer.c:518
+#: mixer/mixer.c:519
 msgid ""
 "warning: this version of gmix was compiled with a different version of\n"
 "soundcard.h.\n"
@@ -4823,51 +4827,51 @@ msgstr ""
 "varování: tato verze programu gmix byla přeložena s jinou verzí\n"
 "soundcard.h.\n"
 
-#: mixer/mixer.c:876
+#: mixer/mixer.c:894
 #, c-format
 msgid "Couldn't open mixer device %s\n"
 msgstr "Nemohu otevřít zařízení mixéru %s\n"
 
-#: mixer/mixer.c:1045
+#: mixer/mixer.c:1063
 msgid "Volume Controller"
 msgstr "Ovladač hlasitosti"
 
-#: mixer/mixer.c:1046
+#: mixer/mixer.c:1064
 msgid "Use Up/Down arrow keys to change volume"
 msgstr "Hlasitost změníte pomocí kláves s šipkami Nahoru/Dolů"
 
 #. Translators - The + and - refer to increasing and decreasing the volume.
 #. ** I don't know if there are sensible alternatives in other languages
-#: mixer/mixer.c:1070
+#: mixer/mixer.c:1088
 msgid "+"
 msgstr "+"
 
-#: mixer/mixer.c:1071
+#: mixer/mixer.c:1089
 msgid "-"
 msgstr "-"
 
-#: mixer/mixer.c:1345
+#: mixer/mixer.c:1363
 msgid "(C) 2001 Richard Hult"
 msgstr "© 2001 Richard Hult"
 
-#: mixer/mixer.c:1346
+#: mixer/mixer.c:1364
 msgid "The volume control lets you set the volume level for your desktop."
 msgstr ""
 "Ovládání hlasitosti vám umožní nastavit úroveň hlasitosti vašeho počítače."
 
-#: mixer/mixer.c:1493
+#: mixer/mixer.c:1511
 msgid "Volume Control Preferences"
 msgstr "Nastavení ovládání hlasitosti"
 
-#: mixer/mixer.c:1517
+#: mixer/mixer.c:1535
 msgid "Audio Channels"
 msgstr "Zvukové kanály"
 
-#: mixer/mixer.c:1533
+#: mixer/mixer.c:1551
 msgid "_Select channel to control:"
 msgstr "_Vyberte kanál, který ovládat:"
 
-#: mixer/mixer.c:1869
+#: mixer/mixer.c:1887
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr ""
 "Ovládání hlasitosti vám umožní nastavit úroveň hlasitosti vašeho počítače"
