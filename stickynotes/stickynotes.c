@@ -176,9 +176,11 @@ void stickynote_set_title(StickyNote *note, const gchar *title)
 	gtk_window_set_title(GTK_WINDOW(note->w_window), title);
 
 	{
-		gchar *bold_title = g_strdup_printf("<b>%s</b>", title);
+		gchar *escaped_title = g_markup_escape_text (title, strlen (title));
+		gchar *bold_title = g_strdup_printf("<b>%s</b>", escaped_title);
 		gtk_label_set_markup(GTK_LABEL(note->w_title), bold_title);
 		g_free(bold_title);
+		g_free(escaped_title);
 	}
 }
 
