@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-core 1.2.0\n"
-"POT-Creation-Date: 2001-12-05 18:55+0100\n"
+"POT-Creation-Date: 2002-02-03 01:06+0100\n"
 "PO-Revision-Date: 1999-05-09 20:40+02:00\n"
 "Last-Translator: Softcatala <linux@softcatala.org>\n"
 "Language-Team: linux-ca@chanae.alphanet.ch\n"
@@ -80,7 +80,7 @@ msgstr "Un rellotge analògic similar a aquest al panell CDE"
 #: another_clock/another_clock.c:710 asclock/asclock.c:598
 #: battery/battery.c:951 charpick/charpick.c:573 clockmail/clockmail.c:324
 #: diskusage/diskusage.c:1050 drivemount/drivemount.c:743 geyes/geyes.c:393
-#: gkb-new/gkb.c:757 gnotes/gnotes_applet.c:198 gtik/gtik.c:1355
+#: gkb-new/gkb.c:758 gnotes/gnotes_applet.c:198 gtik/gtik.c:1355
 #: gweather/gweather-applet.c:198
 #: mini-commander/src/mini-commander_applet.c:401
 #: modemlights/modemlights.c:1499 multiload/cpuload.c:95
@@ -95,7 +95,7 @@ msgstr "Propietats..."
 #: battery/battery.c:957 cdplayer/cdplayer.c:603 charpick/charpick.c:580
 #: clockmail/clockmail.c:331 cpumemusage/cpumemusage.c:297
 #: diskusage/diskusage.c:1073 drivemount/drivemount.c:749
-#: fifteen/fifteen.c:384 geyes/geyes.c:399 gkb-new/gkb.c:763
+#: fifteen/fifteen.c:384 geyes/geyes.c:399 gkb-new/gkb.c:764
 #: gnotes/gnotes_applet.c:202 gweather/gweather-applet.c:203
 #: jbc/jbc-applet.c:204 life/life.c:279
 #: mini-commander/src/mini-commander_applet.c:408 mixer/mixer.c:836
@@ -112,7 +112,7 @@ msgstr "Ajuda"
 #: clipboard/clipboard.c:324 clockmail/clockmail.c:336
 #: cpumemusage/cpumemusage.c:303 diskusage/diskusage.c:1080
 #: drivemount/drivemount.c:754 fifteen/fifteen.c:389 geyes/geyes.c:404
-#: gkb-new/gkb.c:768 gnotes/gnotes_applet.c:205 gtik/gtik.c:1364
+#: gkb-new/gkb.c:769 gnotes/gnotes_applet.c:205 gtik/gtik.c:1364
 #: gweather/gweather-applet.c:208 jbc/jbc-applet.c:209 life/life.c:283
 #: mini-commander/src/mini-commander_applet.c:415 mixer/mixer.c:841
 #: modemlights/modemlights.c:1512 multiload/cpuload.c:115
@@ -123,6 +123,22 @@ msgstr "Ajuda"
 #: whereami/whereami.c:243
 msgid "About..."
 msgstr "Quant a..."
+
+#: another_clock/another_clock_applet.desktop.in.h:1
+msgid "An analog clock similar to that in CDE panel"
+msgstr "Un rellotge analògic similar al del plafó de l'entorn CDE"
+
+#: another_clock/another_clock_applet.desktop.in.h:2
+msgid "Another Clock"
+msgstr "Altre rellotge"
+
+#: asclock/asclock_applet.desktop.in.h:1
+msgid "AfterStep Clock"
+msgstr "Rellotge AfterStep"
+
+#: asclock/asclock_applet.desktop.in.h:2
+msgid "Just another clock"
+msgstr "Un altre rellotge, amb aparença NeXT Step"
 
 #: asclock/dialogs.c:27
 msgid "ASClock"
@@ -223,6 +239,11 @@ msgstr ""
 #: battery/battery.c:1241
 msgid "Could not allocate space for graph values"
 msgstr "No s'ha pogut assignar l'espai pels valors del gràfic"
+
+#. battery_setup_colors
+#: battery/battery_applet.desktop.in.h:1
+msgid "Battery Charge Monitor"
+msgstr "Monitor de Bateria"
 
 #: battery/properties.c:74
 msgid "Battery Monitor Settings"
@@ -358,6 +379,10 @@ msgstr ""
 msgid "Run CD Player..."
 msgstr ""
 
+#: cdplayer/cdplayer_applet.desktop.in.h:1
+msgid "CD Player"
+msgstr "Reproductor de CD"
+
 #: charpick/charpick.c:433 charpick/charpick_applet.desktop.in.h:1
 msgid "Character Picker"
 msgstr "Capturador de caràcters"
@@ -373,6 +398,11 @@ msgid ""
 msgstr ""
 "Applet del quadre de GNOME per seleccionar caràcters estranys que no són al "
 "meu teclat. Lliurat sota la llicència pública general GNU."
+
+#: charpick/charpick_applet.desktop.in.h:2
+#, fuzzy
+msgid "Character picker"
+msgstr "Capturador de caràcters"
 
 #: charpick/properties.c:158
 msgid "Minimum number of cells: (for autosize)"
@@ -479,6 +509,15 @@ msgstr " (GMT)"
 msgid " (GMT %+d)"
 msgstr " (GMT %+d)"
 
+#: clockmail/clockmail_applet.desktop.in.h:1
+msgid "Clock and Mailcheck"
+msgstr "Rellotge i Correu"
+
+#: clockmail/clockmail_applet.desktop.in.h:2
+#, fuzzy
+msgid "Displays new mail and time"
+msgstr "Avisa de l'arribada de nou correu i mostra l'hora"
+
 #. add default theme
 #: clockmail/properties.c:139 odometer/properties.c:151
 #: sound-monitor/properties.c:167
@@ -555,6 +594,14 @@ msgid ""
 "stacked bar graphs (processor, memory, swap)"
 msgstr ""
 
+#: cpumemusage/cpumemusage_applet.desktop.in.h:1
+msgid "CPU/MEM usage"
+msgstr "Ús d'UCP i Memòria"
+
+#: cpumemusage/cpumemusage_applet.desktop.in.h:2
+msgid "CPU/MEM usage meter"
+msgstr "Mostra l'ús de memòria i de processador"
+
 #: diskusage/diskusage.c:171 diskusage/diskusage.c:283
 #, c-format
 msgid "MP: %s"
@@ -592,6 +639,14 @@ msgstr "Ves a..."
 #, fuzzy
 msgid "Update..."
 msgstr "Actualitza"
+
+#: diskusage/diskusage_applet.desktop.in.h:1
+msgid "Disk Usage"
+msgstr "Ús de Disc"
+
+#: diskusage/diskusage_applet.desktop.in.h:2
+msgid "Disk usage meter"
+msgstr "Mostra quant de disc hi ha usat"
 
 #: diskusage/properties.c:242
 #, fuzzy
@@ -674,6 +729,15 @@ msgstr ""
 #: drivemount/drivemount.c:734
 msgid "Eject"
 msgstr "Ejecta"
+
+#: drivemount/drivemount_applet.desktop.in.h:1
+msgid "Drive Mount"
+msgstr "Muntador d'Unitats"
+
+#: drivemount/drivemount_applet.desktop.in.h:2
+#, fuzzy
+msgid "Mount and unmount drives"
+msgstr "Munta i desmunta unitats de disc"
 
 #: drivemount/properties.c:256
 #, fuzzy
@@ -780,6 +844,14 @@ msgstr "No es pot crear l'applet Quinze!"
 msgid "Scramble pieces"
 msgstr "Barreja les peces"
 
+#: fifteen/fifteen_applet.desktop.in.h:1
+msgid "Fifteen"
+msgstr "Quinze"
+
+#: fifteen/fifteen_applet.desktop.in.h:2
+msgid "Fifteen cells game"
+msgstr "Joc de les quinze peces lliscants"
+
 #: geyes/geyes.c:231
 msgid "Dave Camp <campd@oit.edu>"
 msgstr "Dave Camp <campd@oit.edu>"
@@ -797,6 +869,10 @@ msgstr "Copyright (C) 1999 Dave Camp"
 msgid "A goofy little xeyes clone for the GNOME panel."
 msgstr "Un petit clònic de l'xeyes al quadre de GNOME."
 
+#: geyes/geyes_applet.desktop.in.h:1
+msgid "An applet that watches your mouse."
+msgstr ""
+
 #: geyes/themes.c:173
 #, fuzzy
 msgid "Theme Name"
@@ -812,62 +888,62 @@ msgstr "Paràmetres del gEyes"
 msgid "Themes"
 msgstr "Temes"
 
-#: gkb-new/gkb.c:439
+#: gkb-new/gkb.c:440
 #, c-format
 msgid "keymap_%d/name=US 105 key keyboard (with windows keys)"
 msgstr ""
 
-#: gkb-new/gkb.c:442
+#: gkb-new/gkb.c:443
 #, c-format
 msgid "keymap_%d/label=us"
 msgstr ""
 
-#: gkb-new/gkb.c:445
+#: gkb-new/gkb.c:446
 #, c-format
 msgid "keymap_%d/country=United States"
 msgstr ""
 
-#: gkb-new/gkb.c:448
+#: gkb-new/gkb.c:449
 #, c-format
 msgid "keymap_%d/lang=English"
 msgstr ""
 
-#: gkb-new/gkb.c:454
+#: gkb-new/gkb.c:455
 #, c-format
 msgid "keymap_%d/command=gkb_xmmap us"
 msgstr ""
 
-#: gkb-new/gkb.c:460
+#: gkb-new/gkb.c:461
 #, c-format
 msgid "keymap_%d/name=Hungarian 105 keys latin2"
 msgstr ""
 
-#: gkb-new/gkb.c:463
+#: gkb-new/gkb.c:464
 #, c-format
 msgid "keymap_%d/label=hu"
 msgstr ""
 
-#: gkb-new/gkb.c:466
+#: gkb-new/gkb.c:467
 #, c-format
 msgid "keymap_%d/country=Hungary"
 msgstr ""
 
-#: gkb-new/gkb.c:469
+#: gkb-new/gkb.c:470
 #, c-format
 msgid "keymap_%d/lang=Hungarian"
 msgstr ""
 
-#: gkb-new/gkb.c:472
+#: gkb-new/gkb.c:473
 #, c-format
 msgid "keymap_%d/flag=hu.png"
 msgstr ""
 
-#: gkb-new/gkb.c:475
+#: gkb-new/gkb.c:476
 #, c-format
 msgid "keymap_%d/command=gkb_xmmap hu"
 msgstr ""
 
-#: gkb-new/gkb.c:613 gkb-new/gkb.c:620
+#: gkb-new/gkb.c:614 gkb-new/gkb.c:621
 msgid "GKB"
 msgstr ""
 
@@ -879,25 +955,25 @@ msgstr ""
 #. return;
 #. }
 #.
-#: gkb-new/gkb.c:650
+#: gkb-new/gkb.c:651
 msgid "Szabolcs BAN <shooby@gnome.hu>"
 msgstr ""
 
-#: gkb-new/gkb.c:651
+#: gkb-new/gkb.c:652
 msgid "Chema Celorio <chema@celorio.com>"
 msgstr ""
 
-#: gkb-new/gkb.c:654
+#: gkb-new/gkb.c:655
 #, fuzzy
 msgid "The GNOME KeyBoard Switcher Applet"
 msgstr "Applet del teclat de GNOME"
 
-#: gkb-new/gkb.c:657
+#: gkb-new/gkb.c:658
 #, fuzzy
 msgid "(C) 1998-2000 Free Software Foundation"
 msgstr "(C) 1998 de la Free Software Foundation"
 
-#: gkb-new/gkb.c:660
+#: gkb-new/gkb.c:661
 #, fuzzy
 msgid ""
 "This applet switches between keyboard maps. It uses setxkbmap, or xmodmap.\n"
@@ -912,9 +988,18 @@ msgstr ""
 "60x40), i la posaré al CVS. Fins aviat, i gràcies per tots els peixos.\n"
 "Gràcies a Balazs Nagy (Kevin)<julian7@kva.hu> per les ajudetes."
 
-#: gkb-new/gkb.c:671
+#: gkb-new/gkb.c:672
 msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
 msgstr ""
+
+#: gkb-new/gkb_applet.desktop.in.h:1
+msgid "GKB Keyboard Switcher"
+msgstr "GKB permet el canvi entre mapes de teclat"
+
+#: gkb-new/gkb_applet.desktop.in.h:2
+#, fuzzy
+msgid "GKB, the Gnome Keyboard Layout Switcher Applet"
+msgstr "Teclat Internacional GKB"
 
 #: gkb-new/keygrab.c:59 gkb-new/keygrab.c:134
 #, fuzzy
@@ -925,67 +1010,6 @@ msgstr "habilitat"
 #, fuzzy
 msgid "Press a key..."
 msgstr "preparat..."
-
-#: gkb-new/prop.c:155 gkb-new/prop.c:219
-msgid "Normal"
-msgstr ""
-
-#: gkb-new/prop.c:156 gkb-new/prop.c:223
-msgid "Big"
-msgstr ""
-
-#: gkb-new/prop.c:174 gkb-new/util.c:37 gkb-new/util.c:44 gkb-new/util.c:70
-#, fuzzy
-msgid "Flag"
-msgstr "Bandera u"
-
-#: gkb-new/prop-map.c:581 gkb-new/prop.c:175 gkb-new/util.c:34
-#: gkb-new/util.c:67
-msgid "Label"
-msgstr ""
-
-#: gkb-new/prop.c:176 gkb-new/util.c:40 gkb-new/util.c:73
-#, fuzzy
-msgid "Flag and Label"
-msgstr "Bandera u"
-
-#: gkb-new/prop.c:301 modemlights/properties.c:452 slashapp/properties.c:487
-#: tickastat/properties.c:565
-msgid "Display"
-msgstr "Pantalla"
-
-#. Labels
-#: gkb-new/prop.c:321
-#, fuzzy
-msgid "Appearance "
-msgstr "Aparença"
-
-#: gkb-new/prop.c:322
-#, fuzzy
-msgid "Applet size "
-msgstr "Mode de l'applet:"
-
-#: gkb-new/prop.c:355
-msgid "Hotkey for switching between layouts"
-msgstr ""
-
-#: gkb-new/prop.c:367
-msgid "Grab hotkey"
-msgstr ""
-
-#: gkb-new/prop.c:409
-#, fuzzy
-msgid "GKB Properties"
-msgstr "Propietats"
-
-#: gkb-new/prop.c:420
-msgid "Keymaps"
-msgstr ""
-
-#: gkb-new/prop.c:435
-#, fuzzy
-msgid "Options"
-msgstr "Opcions del mòdem"
 
 #: gkb-new/prop-add.c:249
 msgid "Select layout"
@@ -1326,6 +1350,11 @@ msgstr ""
 msgid "Name"
 msgstr "Nom"
 
+#: gkb-new/prop-map.c:581 gkb-new/prop.c:175 gkb-new/util.c:34
+#: gkb-new/util.c:67
+msgid "Label"
+msgstr ""
+
 #: gkb-new/prop-map.c:582
 msgid "Language"
 msgstr ""
@@ -1365,6 +1394,62 @@ msgid ""
 "* gkb__xmmap hu\n"
 "* setxkbmap hu"
 msgstr ""
+
+#: gkb-new/prop.c:155 gkb-new/prop.c:219
+msgid "Normal"
+msgstr ""
+
+#: gkb-new/prop.c:156 gkb-new/prop.c:223
+msgid "Big"
+msgstr ""
+
+#: gkb-new/prop.c:174 gkb-new/util.c:37 gkb-new/util.c:44 gkb-new/util.c:70
+#, fuzzy
+msgid "Flag"
+msgstr "Bandera u"
+
+#: gkb-new/prop.c:176 gkb-new/util.c:40 gkb-new/util.c:73
+#, fuzzy
+msgid "Flag and Label"
+msgstr "Bandera u"
+
+#: gkb-new/prop.c:301 modemlights/properties.c:452 slashapp/properties.c:487
+#: tickastat/properties.c:565
+msgid "Display"
+msgstr "Pantalla"
+
+#. Labels
+#: gkb-new/prop.c:321
+#, fuzzy
+msgid "Appearance "
+msgstr "Aparença"
+
+#: gkb-new/prop.c:322
+#, fuzzy
+msgid "Applet size "
+msgstr "Mode de l'applet:"
+
+#: gkb-new/prop.c:355
+msgid "Hotkey for switching between layouts"
+msgstr ""
+
+#: gkb-new/prop.c:367
+msgid "Grab hotkey"
+msgstr ""
+
+#: gkb-new/prop.c:409
+#, fuzzy
+msgid "GKB Properties"
+msgstr "Propietats"
+
+#: gkb-new/prop.c:420
+msgid "Keymaps"
+msgstr ""
+
+#: gkb-new/prop.c:435
+#, fuzzy
+msgid "Options"
+msgstr "Opcions del mòdem"
 
 #: gkb-new/system.c:45
 msgid "The keymap switching command returned with error!"
@@ -1543,6 +1628,15 @@ msgstr ""
 msgid "Change "
 msgstr ""
 
+#: gtik/gtik2_applet.desktop.in.h:1
+msgid "GNOME Stock Ticker"
+msgstr ""
+
+#: gtik/gtik2_applet.desktop.in.h:2
+#, fuzzy
+msgid "GNOME Stock Ticker Panel Applet"
+msgstr "Paràmetres del llançador"
+
 #: gweather/gweather-about.c:41
 #, fuzzy
 msgid "Copyright (c)1999 by S. Papadimitriou"
@@ -1698,7 +1792,8 @@ msgid "Use proxy"
 msgstr "Utilitza un proxy"
 
 #: gweather/gweather-pref.c:380
-msgid "Proxy host:"
+#, fuzzy
+msgid "Proxy URL:"
 msgstr "Ordinador central proxy:"
 
 #: gweather/gweather-pref.c:394
@@ -1763,6 +1858,11 @@ msgstr "Línia (s)"
 #: gweather/gweather-pref.c:509
 msgid "Miscellaneous"
 msgstr ""
+
+#: gweather/gweather.desktop.in.h:2
+#, fuzzy
+msgid "GNOME weather monitor applet"
+msgstr "Applet del Monitor de Bateria de GNOME"
 
 #: gweather/weather.c:55
 #, fuzzy
@@ -3030,6 +3130,15 @@ msgstr ""
 "Mostra l'hora en codi binari decimal.\n"
 "http://snoopy.net/~jon/jbc/."
 
+#: jbc/jbc_applet.desktop.in.h:1
+#, fuzzy
+msgid "Displays the time in binary representation"
+msgstr "Mostra una representació binària de l'hora"
+
+#: jbc/jbc_applet.desktop.in.h:2
+msgid "JBC Binary Clock"
+msgstr "Rellotge Binari JBC"
+
 #: life/life.c:202
 msgid "The Game of Life"
 msgstr "El joc de la vida"
@@ -3046,6 +3155,14 @@ msgstr "No es pot crear l'applet vida!"
 #: life/life.c:273
 msgid "Randomize"
 msgstr "Aleatori"
+
+#: life/life_applet.desktop.in.h:1
+msgid "Game of Life"
+msgstr "El Joc de la Vida"
+
+#: life/life_applet.desktop.in.h:2
+msgid "The Game of Life (to waste your time)"
+msgstr "El joc de la vida en applet (per perdre el temps)"
 
 #: mini-commander/src/about.c:38
 msgid "Mini-Commander Applet"
@@ -3169,6 +3286,11 @@ msgstr "Historial"
 msgid "ready..."
 msgstr "preparat..."
 
+#: mini-commander/src/mini-commander_applet.desktop.in.h:1
+#, fuzzy
+msgid "Mini-Commander"
+msgstr "Applet mini-comandant"
+
 #: mini-commander/src/preferences.c:139
 msgid "time & date on"
 msgstr "hora i data activades"
@@ -3217,12 +3339,14 @@ msgstr "Mostra el marc"
 
 #. auto complete frame
 #: mini-commander/src/preferences.c:591
-msgid "Auto Completion"
+#, fuzzy
+msgid "Autocompletion"
 msgstr "Complert automàtic"
 
 #. show history autocomplete
 #: mini-commander/src/preferences.c:599
-msgid "Enable history based auto completion"
+#, fuzzy
+msgid "Enable history based autocompletion"
 msgstr "Habilita l'historial basat en l'acabat complert"
 
 #. applet width
@@ -3320,6 +3444,14 @@ msgstr ""
 msgid "Run Audio Mixer..."
 msgstr "Executa el gmix..."
 
+#: mixer/mixer_applet.desktop.in.h:1
+msgid "Audio Mixer"
+msgstr "Applet mesclador d'àudio"
+
+#: mixer/mixer_applet.desktop.in.h:2
+msgid "Mixer"
+msgstr "Mesclador"
+
 #: modemlights/modemlights.c:205
 msgid "Modem Lights Applet"
 msgstr "Applet dels llums del mòdem"
@@ -3361,6 +3493,14 @@ msgstr "desconnectat"
 #, fuzzy
 msgid "Help..."
 msgstr "Ajuda"
+
+#: modemlights/modemlights_applet.desktop.in.h:1
+msgid "Modem Lights"
+msgstr "Llums de Mòdem"
+
+#: modemlights/modemlights_applet.desktop.in.h:2
+msgid "Show modem status"
+msgstr "Mostra l'estat del mòdem"
 
 #: modemlights/properties.c:396
 msgid "Modem Lights Settings"
@@ -3507,6 +3647,41 @@ msgstr "Propietats..."
 msgid "Run gtop..."
 msgstr "Executa el gtop..."
 
+#: multiload/cpuload_applet.desktop.in.h:1
+msgid "CPU Load Meter"
+msgstr "Mostra la càrrega del processador"
+
+#: multiload/cpuload_applet.desktop.in.h:2
+#, fuzzy
+msgid "CPULoad"
+msgstr "Carrega la CPU"
+
+#: multiload/load-graph.c:35 multiload/load-graph.c:53
+msgid "Load Graph"
+msgstr "Carrega el gràfic"
+
+#: multiload/load-graph.c:574
+#, fuzzy
+msgid "Interval:"
+msgstr "General"
+
+#: multiload/load-graph.c:574 multiload/load-graph.c:766
+#, fuzzy
+msgid "Size:"
+msgstr "Mida"
+
+#: multiload/load-graph.c:574 multiload/load-graph.c:766
+msgid "Maximum:"
+msgstr ""
+
+#: multiload/load-graph.c:766
+msgid "Speed:"
+msgstr "Velocitat:"
+
+#: multiload/load-graph.c:805
+msgid "Use default properties"
+msgstr ""
+
 #: multiload/loadavg.c:27
 #, fuzzy
 msgid "Load average over 1 minute"
@@ -3543,32 +3718,6 @@ msgstr ""
 #, fuzzy
 msgid "Load Average"
 msgstr "Mòdul de la càrrega mitja"
-
-#: multiload/load-graph.c:35 multiload/load-graph.c:53
-msgid "Load Graph"
-msgstr "Carrega el gràfic"
-
-#: multiload/load-graph.c:574
-#, fuzzy
-msgid "Interval:"
-msgstr "General"
-
-#: multiload/load-graph.c:574 multiload/load-graph.c:766
-#, fuzzy
-msgid "Size:"
-msgstr "Mida"
-
-#: multiload/load-graph.c:574 multiload/load-graph.c:766
-msgid "Maximum:"
-msgstr ""
-
-#: multiload/load-graph.c:766
-msgid "Speed:"
-msgstr "Velocitat:"
-
-#: multiload/load-graph.c:805
-msgid "Use default properties"
-msgstr ""
 
 #: multiload/main.c:28
 msgid "User"
@@ -3647,6 +3796,14 @@ msgstr ""
 "Lliurat sota la llicència pública general GNU.\n"
 "Munta i desmunta les unitats.."
 
+#: multiload/memload_applet.desktop.in.h:1
+msgid "MemLoad"
+msgstr "Càrrega de Memòria"
+
+#: multiload/memload_applet.desktop.in.h:2
+msgid "Memory Load Meter"
+msgstr "Mostra la càrrega de la memòria"
+
 #: multiload/netload.c:42
 #, fuzzy
 msgid "Network Load Applet"
@@ -3668,6 +3825,14 @@ msgstr ""
 msgid "Network Load"
 msgstr "Càrrega de xarxa"
 
+#: multiload/netload_applet.desktop.in.h:1
+msgid "NetLoad"
+msgstr "Càrrega de Xarxa"
+
+#: multiload/netload_applet.desktop.in.h:2
+msgid "Network Activity Meter"
+msgstr "Mostra la càrrega de la xarxa"
+
 #: multiload/swapload.c:44
 #, fuzzy
 msgid "Swap Load Applet"
@@ -3683,6 +3848,14 @@ msgid ""
 msgstr ""
 "Lliurat sota la llicència pública general GNU.\n"
 "Munta i desmunta les unitats.."
+
+#: multiload/swapload_applet.desktop.in.h:1
+msgid "Swap Load Meter"
+msgstr "Mostra la càrrega dels dispositius d'intercanvi"
+
+#: multiload/swapload_applet.desktop.in.h:2
+msgid "SwapLoad"
+msgstr "Càrrega d'Intercanvi"
 
 #: odometer/odo.c:142 odometer/odometer_applet.desktop.in.h:2
 #, fuzzy
@@ -3710,6 +3883,10 @@ msgstr "No es pot crear l'applet Quinze!"
 #: odometer/odo.c:680
 msgid "Reset"
 msgstr "Reinicialitza"
+
+#: odometer/odometer_applet.desktop.in.h:1
+msgid "Mouse movements counter"
+msgstr ""
 
 # odometer/properties.c:234										0000000
 #: odometer/properties.c:244
@@ -3793,6 +3970,15 @@ msgstr ""
 "No es pot crear el directori:\n"
 "~/.gnome/quicklaunch.\n"
 "S'està avortant"
+
+#: quicklaunch/quicklaunch_applet.desktop.in.h:1
+#, fuzzy
+msgid "QuickLaunch"
+msgstr "Applet del QuickLaunch"
+
+#: quicklaunch/quicklaunch_applet.desktop.in.h:2
+msgid "Small Launchers "
+msgstr ""
 
 #: screenshooter/screenshooter_applet.c:48
 #, fuzzy
@@ -4173,6 +4359,15 @@ msgstr ""
 "%s\n"
 "quan hagi pasat al shell"
 
+#: screenshooter/screenshooter_applet.desktop.in.h:1
+msgid "Screen Shooter is a screenshot grabber"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.desktop.in.h:2
+#, fuzzy
+msgid "ScreenShooter"
+msgstr "Applet del capturador de pantalla"
+
 #: slashapp/properties.c:293
 #, fuzzy
 msgid "Site"
@@ -4239,6 +4434,14 @@ msgstr "Retard en ajustar el text:"
 msgid "Scroll speed between lines (Smooth scroll):"
 msgstr "Velocitat de desplaçament entre línies (desplaçament suau):"
 
+#: slashapp/slash_applet.desktop.in.h:1
+msgid "Show last news from slashdot.org"
+msgstr "Mostra les últimes notícies d'slashdot.org"
+
+#: slashapp/slash_applet.desktop.in.h:2 slashapp/slashapp.c:231
+msgid "SlashApp"
+msgstr "SlashApp"
+
 #: slashapp/slashapp.c:114
 #, fuzzy
 msgid "Loading headlines..."
@@ -4271,10 +4474,6 @@ msgstr "Craig Small <csmall@eye-net.com.au>"
 #: slashapp/slashapp.c:228
 msgid "Frederic Devernay <devernay@istar.fr>"
 msgstr "Frédéric Devernay <devernay@istar.fr>"
-
-#: slashapp/slash_applet.desktop.in.h:2 slashapp/slashapp.c:231
-msgid "SlashApp"
-msgstr "SlashApp"
 
 #: slashapp/slashapp.c:232
 #, fuzzy
@@ -4503,6 +4702,31 @@ msgid "Monitor sound input (only use if sound card is FULL DUPLEX)"
 msgstr ""
 "Monitor de l'entrada de só (només s'utilitza si la tarja de só és FULL "
 "DUPLEX)"
+
+#. help
+#: sound-monitor/pvd/esdpvd.c:459
+#, c-format
+msgid "ESounD Persistent Volume Daemon version %s\n"
+msgstr ""
+
+#: sound-monitor/pvd/esdpvd.c:460
+#, fuzzy
+msgid "options:\n"
+msgstr "Condicions:"
+
+#: sound-monitor/pvd/esdpvd.c:461
+msgid "  -n, --noX     Allow to run without X server\n"
+msgstr ""
+
+#: sound-monitor/sound-monitor_applet.desktop.in.h:1
+#, fuzzy
+msgid "Sound Monitor"
+msgstr "Applet Gestor de l'Esound"
+
+#: sound-monitor/sound-monitor_applet.desktop.in.h:2
+#, fuzzy
+msgid "Sound Monitor for Esound"
+msgstr "Applet Gestor de l'Esound"
 
 #: tickastat/main.c:46
 msgid "Tick-a-Stat event log"
@@ -4832,303 +5056,10 @@ msgstr "Alçada:"
 msgid "Use panel size hint"
 msgstr "Utilitza la mida del panell indirecte"
 
-#: webcontrol/webcontrol.c:47
-msgid "The Web Browser Controller"
-msgstr "El controlador de navegadors web"
-
-#: webcontrol/webcontrol.c:49
-#, fuzzy
-msgid "(C) 2000 the Free Software Foundation"
-msgstr "(C) 1999 de la Free Software Foundation"
-
-#: webcontrol/webcontrol.c:51
-msgid ""
-"An applet to launch URLs in a web browser, search using various web sites "
-"and have a ton of fun!"
-msgstr ""
-
-#: webcontrol/webcontrol.c:242
-msgid "URL:"
-msgstr ""
-
-#: webcontrol/webcontrol.c:265
-msgid " GO "
-msgstr ""
-
-#: webcontrol/webcontrol.c:284
-#, fuzzy
-msgid " Clear "
-msgstr "Esborra"
-
-#: webcontrol/webcontrol.c:312
-msgid "Launch new window"
-msgstr "Crea una nova finestra"
-
-#: whereami/whereami.c:47 whereami/whereami_applet.desktop.in.h:2
-msgid "Where Am I?"
-msgstr "On sóc?"
-
-#: whereami/whereami.c:48
-#, fuzzy
-msgid "Copyright 1999 John Kodis"
-msgstr "Copyright 1999 John Kodis"
-
-#: whereami/whereami.c:49
-msgid ""
-"A cursor position reporting applet.\n"
-"= Clicking mouse button 1 grabs the cursor.\n"
-"= Dragging with mouse button 1 held down shows the size of the region."
-msgstr ""
-"Un applet de report de la posició del ratolí.\n"
-"= Si feu clic al botó 1 del ratolí s'agafa el cursor.\n"
-"= Si feu clic al botó 1 i arrossegueu el ratoli, us mostrarà la mida de la "
-"regió."
-
-#: whereami/whereami.c:210
-msgid "whereami_applet"
-msgstr "whereami_applet"
-
-#: cdplayer/cdplayer_applet.desktop.in.h:1
-msgid "CD Player"
-msgstr "Reproductor de CD"
-
-#: gweather/gweather.desktop.in.h:2
-#, fuzzy
-msgid "GNOME weather monitor applet"
-msgstr "Applet del Monitor de Bateria de GNOME"
-
 #: tickastat/tickastat_applet.desktop.in.h:1
 #, fuzzy
 msgid "Info and status ticker"
 msgstr "L'únic senyal d'informació i estat."
-
-#: clipboard/clipboard_applet.desktop.in.h:1
-#, fuzzy
-msgid "Clipboard"
-msgstr "Applet del porta-retalls"
-
-#: clipboard/clipboard_applet.desktop.in.h:2
-msgid "Copy multiple selections into a persistant clipboard"
-msgstr ""
-
-#: asclock/asclock_applet.desktop.in.h:1
-msgid "AfterStep Clock"
-msgstr "Rellotge AfterStep"
-
-#: asclock/asclock_applet.desktop.in.h:2
-msgid "Just another clock"
-msgstr "Un altre rellotge, amb aparença NeXT Step"
-
-#: drivemount/drivemount_applet.desktop.in.h:1
-msgid "Drive Mount"
-msgstr "Muntador d'Unitats"
-
-#: drivemount/drivemount_applet.desktop.in.h:2
-#, fuzzy
-msgid "Mount and unmount drives"
-msgstr "Munta i desmunta unitats de disc"
-
-#: cpumemusage/cpumemusage_applet.desktop.in.h:1
-msgid "CPU/MEM usage"
-msgstr "Ús d'UCP i Memòria"
-
-#: cpumemusage/cpumemusage_applet.desktop.in.h:2
-msgid "CPU/MEM usage meter"
-msgstr "Mostra l'ús de memòria i de processador"
-
-#: battery/battery_applet.desktop.in.h:1
-msgid "Battery Charge Monitor"
-msgstr "Monitor de Bateria"
-
-#: another_clock/another_clock_applet.desktop.in.h:1
-msgid "An analog clock similar to that in CDE panel"
-msgstr "Un rellotge analògic similar al del plafó de l'entorn CDE"
-
-#: another_clock/another_clock_applet.desktop.in.h:2
-msgid "Another Clock"
-msgstr "Altre rellotge"
-
-#: gkb-new/gkb_applet.desktop.in.h:1
-msgid "GKB Keyboard Switcher"
-msgstr "GKB permet el canvi entre mapes de teclat"
-
-#: gkb-new/gkb_applet.desktop.in.h:2
-#, fuzzy
-msgid "GKB, the Gnome Keyboard Layout Switcher Applet"
-msgstr "Teclat Internacional GKB"
-
-#: clockmail/clockmail_applet.desktop.in.h:1
-msgid "Clock and Mailcheck"
-msgstr "Rellotge i Correu"
-
-#: clockmail/clockmail_applet.desktop.in.h:2
-#, fuzzy
-msgid "Displays new mail and time"
-msgstr "Avisa de l'arribada de nou correu i mostra l'hora"
-
-#: slashapp/slash_applet.desktop.in.h:1
-msgid "Show last news from slashdot.org"
-msgstr "Mostra les últimes notícies d'slashdot.org"
-
-#: multiload/netload_applet.desktop.in.h:1
-msgid "NetLoad"
-msgstr "Càrrega de Xarxa"
-
-#: multiload/netload_applet.desktop.in.h:2
-msgid "Network Activity Meter"
-msgstr "Mostra la càrrega de la xarxa"
-
-#: multiload/memload_applet.desktop.in.h:1
-msgid "MemLoad"
-msgstr "Càrrega de Memòria"
-
-#: multiload/memload_applet.desktop.in.h:2
-msgid "Memory Load Meter"
-msgstr "Mostra la càrrega de la memòria"
-
-#: multiload/swapload_applet.desktop.in.h:1
-msgid "Swap Load Meter"
-msgstr "Mostra la càrrega dels dispositius d'intercanvi"
-
-#: multiload/swapload_applet.desktop.in.h:2
-msgid "SwapLoad"
-msgstr "Càrrega d'Intercanvi"
-
-#: multiload/cpuload_applet.desktop.in.h:1
-msgid "CPU Load Meter"
-msgstr "Mostra la càrrega del processador"
-
-#: multiload/cpuload_applet.desktop.in.h:2
-#, fuzzy
-msgid "CPULoad"
-msgstr "Carrega la CPU"
-
-#: mini-commander/src/mini-commander_applet.desktop.in.h:1
-#, fuzzy
-msgid "Mini-Commander"
-msgstr "Applet mini-comandant"
-
-#: whereami/whereami_applet.desktop.in.h:1
-msgid "Shows Cursor Position"
-msgstr ""
-
-#: modemlights/modemlights_applet.desktop.in.h:1
-msgid "Modem Lights"
-msgstr "Llums de Mòdem"
-
-#: modemlights/modemlights_applet.desktop.in.h:2
-msgid "Show modem status"
-msgstr "Mostra l'estat del mòdem"
-
-#: fifteen/fifteen_applet.desktop.in.h:1
-msgid "Fifteen"
-msgstr "Quinze"
-
-#: fifteen/fifteen_applet.desktop.in.h:2
-msgid "Fifteen cells game"
-msgstr "Joc de les quinze peces lliscants"
-
-#: charpick/charpick_applet.desktop.in.h:2
-#, fuzzy
-msgid "Character picker"
-msgstr "Capturador de caràcters"
-
-#: sound-monitor/sound-monitor_applet.desktop.in.h:1
-#, fuzzy
-msgid "Sound Monitor"
-msgstr "Applet Gestor de l'Esound"
-
-#: sound-monitor/sound-monitor_applet.desktop.in.h:2
-#, fuzzy
-msgid "Sound Monitor for Esound"
-msgstr "Applet Gestor de l'Esound"
-
-#: webcontrol/webcontrol_applet.desktop.in.h:1
-msgid "WebControl"
-msgstr "Control Web"
-
-#: mixer/mixer_applet.desktop.in.h:1
-msgid "Audio Mixer"
-msgstr "Applet mesclador d'àudio"
-
-#: mixer/mixer_applet.desktop.in.h:2
-msgid "Mixer"
-msgstr "Mesclador"
-
-#: geyes/geyes_applet.desktop.in.h:1
-msgid "An applet that watches your mouse."
-msgstr ""
-
-#: quicklaunch/quicklaunch_applet.desktop.in.h:1
-#, fuzzy
-msgid "QuickLaunch"
-msgstr "Applet del QuickLaunch"
-
-#: quicklaunch/quicklaunch_applet.desktop.in.h:2
-msgid "Small Launchers "
-msgstr ""
-
-#: odometer/odometer_applet.desktop.in.h:1
-msgid "Mouse movements counter"
-msgstr ""
-
-#: screenshooter/screenshooter_applet.desktop.in.h:1
-msgid "Screen Shooter is a screenshot grabber"
-msgstr ""
-
-#: screenshooter/screenshooter_applet.desktop.in.h:2
-#, fuzzy
-msgid "ScreenShooter"
-msgstr "Applet del capturador de pantalla"
-
-#: diskusage/diskusage_applet.desktop.in.h:1
-msgid "Disk Usage"
-msgstr "Ús de Disc"
-
-#: diskusage/diskusage_applet.desktop.in.h:2
-msgid "Disk usage meter"
-msgstr "Mostra quant de disc hi ha usat"
-
-#: life/life_applet.desktop.in.h:1
-msgid "Game of Life"
-msgstr "El Joc de la Vida"
-
-#: life/life_applet.desktop.in.h:2
-msgid "The Game of Life (to waste your time)"
-msgstr "El joc de la vida en applet (per perdre el temps)"
-
-#: gtik/gtik2_applet.desktop.in.h:1
-msgid "GNOME Stock Ticker"
-msgstr ""
-
-#: gtik/gtik2_applet.desktop.in.h:2
-#, fuzzy
-msgid "GNOME Stock Ticker Panel Applet"
-msgstr "Paràmetres del llançador"
-
-#: jbc/jbc_applet.desktop.in.h:1
-#, fuzzy
-msgid "Displays the time in binary representation"
-msgstr "Mostra una representació binària de l'hora"
-
-#: jbc/jbc_applet.desktop.in.h:2
-msgid "JBC Binary Clock"
-msgstr "Rellotge Binari JBC"
-
-#. help
-#: sound-monitor/pvd/esdpvd.c:459
-#, c-format
-msgid "ESounD Persistent Volume Daemon version %s\n"
-msgstr ""
-
-#: sound-monitor/pvd/esdpvd.c:460
-#, fuzzy
-msgid "options:\n"
-msgstr "Condicions:"
-
-#: sound-monitor/pvd/esdpvd.c:461
-msgid "  -n, --noX     Allow to run without X server\n"
-msgstr ""
 
 #: webcontrol/properties.c:205
 msgid "Are you sure you want to remove this browser?"
@@ -5219,6 +5150,74 @@ msgstr "Esborra"
 #: webcontrol/properties.c:656
 msgid "all entries in URL history"
 msgstr ""
+
+#: webcontrol/webcontrol.c:47
+msgid "The Web Browser Controller"
+msgstr "El controlador de navegadors web"
+
+#: webcontrol/webcontrol.c:49
+#, fuzzy
+msgid "(C) 2000 the Free Software Foundation"
+msgstr "(C) 1999 de la Free Software Foundation"
+
+#: webcontrol/webcontrol.c:51
+msgid ""
+"An applet to launch URLs in a web browser, search using various web sites "
+"and have a ton of fun!"
+msgstr ""
+
+#: webcontrol/webcontrol.c:242
+msgid "URL:"
+msgstr ""
+
+#: webcontrol/webcontrol.c:265
+msgid " GO "
+msgstr ""
+
+#: webcontrol/webcontrol.c:284
+#, fuzzy
+msgid " Clear "
+msgstr "Esborra"
+
+#: webcontrol/webcontrol.c:312
+msgid "Launch new window"
+msgstr "Crea una nova finestra"
+
+#: webcontrol/webcontrol_applet.desktop.in.h:1
+msgid "WebControl"
+msgstr "Control Web"
+
+#: whereami/whereami.c:47 whereami/whereami_applet.desktop.in.h:2
+msgid "Where Am I?"
+msgstr "On sóc?"
+
+#: whereami/whereami.c:48
+#, fuzzy
+msgid "Copyright 1999 John Kodis"
+msgstr "Copyright 1999 John Kodis"
+
+#: whereami/whereami.c:49
+msgid ""
+"A cursor position reporting applet.\n"
+"= Clicking mouse button 1 grabs the cursor.\n"
+"= Dragging with mouse button 1 held down shows the size of the region."
+msgstr ""
+"Un applet de report de la posició del ratolí.\n"
+"= Si feu clic al botó 1 del ratolí s'agafa el cursor.\n"
+"= Si feu clic al botó 1 i arrossegueu el ratoli, us mostrarà la mida de la "
+"regió."
+
+#: whereami/whereami.c:210
+msgid "whereami_applet"
+msgstr "whereami_applet"
+
+#: whereami/whereami_applet.desktop.in.h:1
+msgid "Shows Cursor Position"
+msgstr ""
+
+#, fuzzy
+#~ msgid "Clipboard"
+#~ msgstr "Applet del porta-retalls"
 
 #~ msgid "character picker"
 #~ msgstr "Permet triar caràcters no accessibles directament des de teclat"

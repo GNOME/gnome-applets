@@ -11,7 +11,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 1.4.0\n"
-"POT-Creation-Date: 2001-12-05 18:55+0100\n"
+"POT-Creation-Date: 2002-02-03 01:06+0100\n"
 "PO-Revision-Date: 2001-10-22 11:41+0900\n"
 "Last-Translator: Takayuki KUSANO <AE5T-KSN@asahi-net.or.jp>\n"
 "Language-Team: Japanese <translation@gnome.gr.jp>\n"
@@ -83,7 +83,7 @@ msgstr "CDEパネルにあるものに似たアナログ時計です。"
 #: another_clock/another_clock.c:710 asclock/asclock.c:598
 #: battery/battery.c:951 charpick/charpick.c:573 clockmail/clockmail.c:324
 #: diskusage/diskusage.c:1050 drivemount/drivemount.c:743 geyes/geyes.c:393
-#: gkb-new/gkb.c:757 gnotes/gnotes_applet.c:198 gtik/gtik.c:1355
+#: gkb-new/gkb.c:758 gnotes/gnotes_applet.c:198 gtik/gtik.c:1355
 #: gweather/gweather-applet.c:198
 #: mini-commander/src/mini-commander_applet.c:401
 #: modemlights/modemlights.c:1499 multiload/cpuload.c:95
@@ -98,7 +98,7 @@ msgstr "設定..."
 #: battery/battery.c:957 cdplayer/cdplayer.c:603 charpick/charpick.c:580
 #: clockmail/clockmail.c:331 cpumemusage/cpumemusage.c:297
 #: diskusage/diskusage.c:1073 drivemount/drivemount.c:749
-#: fifteen/fifteen.c:384 geyes/geyes.c:399 gkb-new/gkb.c:763
+#: fifteen/fifteen.c:384 geyes/geyes.c:399 gkb-new/gkb.c:764
 #: gnotes/gnotes_applet.c:202 gweather/gweather-applet.c:203
 #: jbc/jbc-applet.c:204 life/life.c:279
 #: mini-commander/src/mini-commander_applet.c:408 mixer/mixer.c:836
@@ -115,7 +115,7 @@ msgstr "ヘルプ"
 #: clipboard/clipboard.c:324 clockmail/clockmail.c:336
 #: cpumemusage/cpumemusage.c:303 diskusage/diskusage.c:1080
 #: drivemount/drivemount.c:754 fifteen/fifteen.c:389 geyes/geyes.c:404
-#: gkb-new/gkb.c:768 gnotes/gnotes_applet.c:205 gtik/gtik.c:1364
+#: gkb-new/gkb.c:769 gnotes/gnotes_applet.c:205 gtik/gtik.c:1364
 #: gweather/gweather-applet.c:208 jbc/jbc-applet.c:209 life/life.c:283
 #: mini-commander/src/mini-commander_applet.c:415 mixer/mixer.c:841
 #: modemlights/modemlights.c:1512 multiload/cpuload.c:115
@@ -126,6 +126,22 @@ msgstr "ヘルプ"
 #: whereami/whereami.c:243
 msgid "About..."
 msgstr "情報..."
+
+#: another_clock/another_clock_applet.desktop.in.h:1
+msgid "An analog clock similar to that in CDE panel"
+msgstr "CDE パネルの風アナログ時計"
+
+#: another_clock/another_clock_applet.desktop.in.h:2
+msgid "Another Clock"
+msgstr "もう一つの時計"
+
+#: asclock/asclock_applet.desktop.in.h:1
+msgid "AfterStep Clock"
+msgstr "AfterStep 時計"
+
+#: asclock/asclock_applet.desktop.in.h:2
+msgid "Just another clock"
+msgstr "AfterStep 風の時計"
 
 #: asclock/dialogs.c:27
 msgid "ASClock"
@@ -222,6 +238,11 @@ msgstr ""
 #: battery/battery.c:1241
 msgid "Could not allocate space for graph values"
 msgstr "グラフ値の領域を確保できませんでした"
+
+#. battery_setup_colors
+#: battery/battery_applet.desktop.in.h:1
+msgid "Battery Charge Monitor"
+msgstr "バッテリ充電モニタ"
 
 #: battery/properties.c:74
 msgid "Battery Monitor Settings"
@@ -354,6 +375,10 @@ msgstr "CD プレーヤーアプレットはパネル用のシンプルな CD プレーヤーです"
 msgid "Run CD Player..."
 msgstr "CD プレーヤーを実行..."
 
+#: cdplayer/cdplayer_applet.desktop.in.h:1
+msgid "CD Player"
+msgstr "CD プレーヤー"
+
 #: charpick/charpick.c:433 charpick/charpick_applet.desktop.in.h:1
 msgid "Character Picker"
 msgstr "キャラクタピッカー"
@@ -369,6 +394,10 @@ msgid ""
 msgstr ""
 "私のキーボードからは打てない変わった文字を入力する ためのパネルアプレットで"
 "す。GNU一般公有使用許諾書の 下にリリースされています。"
+
+#: charpick/charpick_applet.desktop.in.h:2
+msgid "Character picker"
+msgstr "キャラクタピッカー"
 
 #: charpick/properties.c:158
 msgid "Minimum number of cells: (for autosize)"
@@ -469,6 +498,14 @@ msgstr " (GMT)"
 msgid " (GMT %+d)"
 msgstr " (GMT %+d)"
 
+#: clockmail/clockmail_applet.desktop.in.h:1
+msgid "Clock and Mailcheck"
+msgstr "メールチェック時計"
+
+#: clockmail/clockmail_applet.desktop.in.h:2
+msgid "Displays new mail and time"
+msgstr "新着メールと時間の表示"
+
 #. add default theme
 #: clockmail/properties.c:139 odometer/properties.c:151
 #: sound-monitor/properties.c:167
@@ -540,6 +577,14 @@ msgstr ""
 "CPU・メモリ使用量表示アプレットは、3色の積 算グラフを使ってシステムの資源(プ"
 "ロセッサ、 メモリ、スワップ)の状況を表示 します。"
 
+#: cpumemusage/cpumemusage_applet.desktop.in.h:1
+msgid "CPU/MEM usage"
+msgstr "CPU・メモリ使用状況"
+
+#: cpumemusage/cpumemusage_applet.desktop.in.h:2
+msgid "CPU/MEM usage meter"
+msgstr "CPU・メモリ使用状況メーター"
+
 #: diskusage/diskusage.c:171 diskusage/diskusage.c:283
 #, c-format
 msgid "MP: %s"
@@ -572,6 +617,14 @@ msgstr "参照..."
 #: diskusage/diskusage.c:1066
 msgid "Update..."
 msgstr "更新..."
+
+#: diskusage/diskusage_applet.desktop.in.h:1
+msgid "Disk Usage"
+msgstr "ディスク使用状況"
+
+#: diskusage/diskusage_applet.desktop.in.h:2
+msgid "Disk usage meter"
+msgstr "ディスク使用状況メーター"
 
 #: diskusage/properties.c:242
 msgid "Used Diskspace:"
@@ -646,6 +699,14 @@ msgstr ""
 #: drivemount/drivemount.c:734
 msgid "Eject"
 msgstr "取り出し"
+
+#: drivemount/drivemount_applet.desktop.in.h:1
+msgid "Drive Mount"
+msgstr "ドライブマウント"
+
+#: drivemount/drivemount_applet.desktop.in.h:2
+msgid "Mount and unmount drives"
+msgstr "ドライブのマウントとアンマウント"
 
 #: drivemount/properties.c:256
 msgid "Drive Mount Applet Properties"
@@ -747,6 +808,14 @@ msgstr "15 パズルアプレットを生成できません!"
 msgid "Scramble pieces"
 msgstr "ピースをバラバラにする"
 
+#: fifteen/fifteen_applet.desktop.in.h:1
+msgid "Fifteen"
+msgstr "15 パズル"
+
+#: fifteen/fifteen_applet.desktop.in.h:2
+msgid "Fifteen cells game"
+msgstr "15パ ズルゲーム"
+
 #: geyes/geyes.c:231
 msgid "Dave Camp <campd@oit.edu>"
 msgstr "Dave Camp <campd@oit.edu>"
@@ -763,6 +832,10 @@ msgstr "Copyright (C) 1999 Dave Camp"
 msgid "A goofy little xeyes clone for the GNOME panel."
 msgstr "GNOME パネル用のキュートなお目々"
 
+#: geyes/geyes_applet.desktop.in.h:1
+msgid "An applet that watches your mouse."
+msgstr "マウスの位置を知らせるアプレット"
+
 #: geyes/themes.c:173
 msgid "Theme Name"
 msgstr "テーマ名"
@@ -775,62 +848,62 @@ msgstr "目玉の設定"
 msgid "Themes"
 msgstr "テーマ"
 
-#: gkb-new/gkb.c:439
+#: gkb-new/gkb.c:440
 #, c-format
 msgid "keymap_%d/name=US 105 key keyboard (with windows keys)"
 msgstr "eymap_%d/name=日本語 109 キーボード"
 
-#: gkb-new/gkb.c:442
+#: gkb-new/gkb.c:443
 #, c-format
 msgid "keymap_%d/label=us"
 msgstr "keymap_%d/label=jp"
 
-#: gkb-new/gkb.c:445
+#: gkb-new/gkb.c:446
 #, c-format
 msgid "keymap_%d/country=United States"
 msgstr "keymap_%d/country=日本"
 
-#: gkb-new/gkb.c:448
+#: gkb-new/gkb.c:449
 #, c-format
 msgid "keymap_%d/lang=English"
 msgstr "keymap_%d/lang=日本語"
 
-#: gkb-new/gkb.c:454
+#: gkb-new/gkb.c:455
 #, c-format
 msgid "keymap_%d/command=gkb_xmmap us"
 msgstr "keymap_%d/command=gkb_xmmap jp"
 
-#: gkb-new/gkb.c:460
+#: gkb-new/gkb.c:461
 #, c-format
 msgid "keymap_%d/name=Hungarian 105 keys latin2"
 msgstr "keymap_%d/name=US 105 key keyboard (with windows keys)"
 
-#: gkb-new/gkb.c:463
+#: gkb-new/gkb.c:464
 #, c-format
 msgid "keymap_%d/label=hu"
 msgstr "keymap_%d/label=us"
 
-#: gkb-new/gkb.c:466
+#: gkb-new/gkb.c:467
 #, c-format
 msgid "keymap_%d/country=Hungary"
 msgstr "keymap_%d/country=アメリカ"
 
-#: gkb-new/gkb.c:469
+#: gkb-new/gkb.c:470
 #, c-format
 msgid "keymap_%d/lang=Hungarian"
 msgstr "keymap_%d/lang=英語"
 
-#: gkb-new/gkb.c:472
+#: gkb-new/gkb.c:473
 #, c-format
 msgid "keymap_%d/flag=hu.png"
 msgstr "keymap_%d/flag=us.png"
 
-#: gkb-new/gkb.c:475
+#: gkb-new/gkb.c:476
 #, c-format
 msgid "keymap_%d/command=gkb_xmmap hu"
 msgstr "keymap_%d/command=gkb_xmmap us"
 
-#: gkb-new/gkb.c:613 gkb-new/gkb.c:620
+#: gkb-new/gkb.c:614 gkb-new/gkb.c:621
 msgid "GKB"
 msgstr "GKB"
 
@@ -842,23 +915,23 @@ msgstr "GKB"
 #. return;
 #. }
 #.
-#: gkb-new/gkb.c:650
+#: gkb-new/gkb.c:651
 msgid "Szabolcs BAN <shooby@gnome.hu>"
 msgstr "Szabolcs BAN <shooby@gnome.hu>"
 
-#: gkb-new/gkb.c:651
+#: gkb-new/gkb.c:652
 msgid "Chema Celorio <chema@celorio.com>"
 msgstr "Chema Celorio <chema@celorio.com>"
 
-#: gkb-new/gkb.c:654
+#: gkb-new/gkb.c:655
 msgid "The GNOME KeyBoard Switcher Applet"
 msgstr "GNOMEキーボード切替アプレット"
 
-#: gkb-new/gkb.c:657
+#: gkb-new/gkb.c:658
 msgid "(C) 1998-2000 Free Software Foundation"
 msgstr "(C) 1998-2000 Free Software Foundation"
 
-#: gkb-new/gkb.c:660
+#: gkb-new/gkb.c:661
 msgid ""
 "This applet switches between keyboard maps. It uses setxkbmap, or xmodmap.\n"
 "Mail me your flag, please (60x40 size), I will put it to CVS.\n"
@@ -874,9 +947,17 @@ msgstr ""
 "Balazs Nagy (Kevin) <julian7@kva.hu> の手助けと Emese Kovacs <emese@eik.bme."
 "hu> の協力に感謝します。"
 
-#: gkb-new/gkb.c:671
+#: gkb-new/gkb.c:672
 msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
 msgstr "GKB ホームページ (http://projects.gnome.hu/gkb)"
+
+#: gkb-new/gkb_applet.desktop.in.h:1
+msgid "GKB Keyboard Switcher"
+msgstr "GKB キーボードスイッチャ"
+
+#: gkb-new/gkb_applet.desktop.in.h:2
+msgid "GKB, the Gnome Keyboard Layout Switcher Applet"
+msgstr "GKB - GNOME キーボード配列切替アプレット"
 
 #: gkb-new/keygrab.c:59 gkb-new/keygrab.c:134
 msgid "Disabled"
@@ -885,61 +966,6 @@ msgstr "無効"
 #: gkb-new/keygrab.c:261
 msgid "Press a key..."
 msgstr "何かキーを押してください..."
-
-#: gkb-new/prop.c:155 gkb-new/prop.c:219
-msgid "Normal"
-msgstr "普通"
-
-#: gkb-new/prop.c:156 gkb-new/prop.c:223
-msgid "Big"
-msgstr "大"
-
-#: gkb-new/prop.c:174 gkb-new/util.c:37 gkb-new/util.c:44 gkb-new/util.c:70
-msgid "Flag"
-msgstr "国旗"
-
-#: gkb-new/prop-map.c:581 gkb-new/prop.c:175 gkb-new/util.c:34
-#: gkb-new/util.c:67
-msgid "Label"
-msgstr "ラベル"
-
-#: gkb-new/prop.c:176 gkb-new/util.c:40 gkb-new/util.c:73
-msgid "Flag and Label"
-msgstr "国旗とラベル"
-
-#: gkb-new/prop.c:301 modemlights/properties.c:452 slashapp/properties.c:487
-#: tickastat/properties.c:565
-msgid "Display"
-msgstr "表示"
-
-#. Labels
-#: gkb-new/prop.c:321
-msgid "Appearance "
-msgstr "外観 "
-
-#: gkb-new/prop.c:322
-msgid "Applet size "
-msgstr "アプレットサイズ "
-
-#: gkb-new/prop.c:355
-msgid "Hotkey for switching between layouts"
-msgstr "配列を切りかえるホットキー"
-
-#: gkb-new/prop.c:367
-msgid "Grab hotkey"
-msgstr "ホットキーを取得"
-
-#: gkb-new/prop.c:409
-msgid "GKB Properties"
-msgstr "GKB の設定"
-
-#: gkb-new/prop.c:420
-msgid "Keymaps"
-msgstr "キーマップ"
-
-#: gkb-new/prop.c:435
-msgid "Options"
-msgstr "オプション"
 
 #: gkb-new/prop-add.c:249
 msgid "Select layout"
@@ -1264,6 +1290,11 @@ msgstr "キーマップの編集"
 msgid "Name"
 msgstr "名前"
 
+#: gkb-new/prop-map.c:581 gkb-new/prop.c:175 gkb-new/util.c:34
+#: gkb-new/util.c:67
+msgid "Label"
+msgstr "ラベル"
+
 #: gkb-new/prop-map.c:582
 msgid "Language"
 msgstr "言語"
@@ -1307,6 +1338,56 @@ msgstr ""
 "* xmodmap /full/path/xmodmap.jp\n"
 "* gkb__xmmap jp\n"
 "* setxkbmap jp"
+
+#: gkb-new/prop.c:155 gkb-new/prop.c:219
+msgid "Normal"
+msgstr "普通"
+
+#: gkb-new/prop.c:156 gkb-new/prop.c:223
+msgid "Big"
+msgstr "大"
+
+#: gkb-new/prop.c:174 gkb-new/util.c:37 gkb-new/util.c:44 gkb-new/util.c:70
+msgid "Flag"
+msgstr "国旗"
+
+#: gkb-new/prop.c:176 gkb-new/util.c:40 gkb-new/util.c:73
+msgid "Flag and Label"
+msgstr "国旗とラベル"
+
+#: gkb-new/prop.c:301 modemlights/properties.c:452 slashapp/properties.c:487
+#: tickastat/properties.c:565
+msgid "Display"
+msgstr "表示"
+
+#. Labels
+#: gkb-new/prop.c:321
+msgid "Appearance "
+msgstr "外観 "
+
+#: gkb-new/prop.c:322
+msgid "Applet size "
+msgstr "アプレットサイズ "
+
+#: gkb-new/prop.c:355
+msgid "Hotkey for switching between layouts"
+msgstr "配列を切りかえるホットキー"
+
+#: gkb-new/prop.c:367
+msgid "Grab hotkey"
+msgstr "ホットキーを取得"
+
+#: gkb-new/prop.c:409
+msgid "GKB Properties"
+msgstr "GKB の設定"
+
+#: gkb-new/prop.c:420
+msgid "Keymaps"
+msgstr "キーマップ"
+
+#: gkb-new/prop.c:435
+msgid "Options"
+msgstr "オプション"
 
 #: gkb-new/system.c:45
 msgid "The keymap switching command returned with error!"
@@ -1475,6 +1556,14 @@ msgstr "(いいえ"
 msgid "Change "
 msgstr "変更 "
 
+#: gtik/gtik2_applet.desktop.in.h:1
+msgid "GNOME Stock Ticker"
+msgstr "GNOME ストックティッカー"
+
+#: gtik/gtik2_applet.desktop.in.h:2
+msgid "GNOME Stock Ticker Panel Applet"
+msgstr "GNOME ストックティッカーパネルアプレット"
+
 #: gweather/gweather-about.c:41
 msgid "Copyright (c)1999 by S. Papadimitriou"
 msgstr "Copyright (c)1999 by S. Papadimitriou"
@@ -1621,7 +1710,8 @@ msgid "Use proxy"
 msgstr "プロクシを使う"
 
 #: gweather/gweather-pref.c:380
-msgid "Proxy host:"
+#, fuzzy
+msgid "Proxy URL:"
 msgstr "プロクシホスト:"
 
 #: gweather/gweather-pref.c:394
@@ -1678,6 +1768,10 @@ msgstr "秒"
 #: gweather/gweather-pref.c:509
 msgid "Miscellaneous"
 msgstr "その他"
+
+#: gweather/gweather.desktop.in.h:2
+msgid "GNOME weather monitor applet"
+msgstr "天気情報アプレット"
 
 #: gweather/weather.c:55
 msgid "knots"
@@ -2919,6 +3013,14 @@ msgstr ""
 "時刻を二進コードで表示します。\n"
 "http://snoopy.net/~jon/jbc/"
 
+#: jbc/jbc_applet.desktop.in.h:1
+msgid "Displays the time in binary representation"
+msgstr "時間を 2 進数表示します"
+
+#: jbc/jbc_applet.desktop.in.h:2
+msgid "JBC Binary Clock"
+msgstr "JBC 2 進数クロック"
+
 #: life/life.c:202
 msgid "The Game of Life"
 msgstr "ライフゲーム"
@@ -2934,6 +3036,14 @@ msgstr "ライフアプレットを生成できません!"
 #: life/life.c:273
 msgid "Randomize"
 msgstr "バラバラにする"
+
+#: life/life_applet.desktop.in.h:1
+msgid "Game of Life"
+msgstr "ライフゲーム"
+
+#: life/life_applet.desktop.in.h:2
+msgid "The Game of Life (to waste your time)"
+msgstr "(あなたの時間を浪費する)ライフゲーム"
 
 #: mini-commander/src/about.c:38
 msgid "Mini-Commander Applet"
@@ -3052,6 +3162,10 @@ msgstr "履歴"
 msgid "ready..."
 msgstr "準備中..."
 
+#: mini-commander/src/mini-commander_applet.desktop.in.h:1
+msgid "Mini-Commander"
+msgstr "ミニコマンダー"
+
 #: mini-commander/src/preferences.c:139
 msgid "time & date on"
 msgstr "時間&日付オン"
@@ -3098,12 +3212,14 @@ msgstr "枠を表示"
 
 #. auto complete frame
 #: mini-commander/src/preferences.c:591
-msgid "Auto Completion"
+#, fuzzy
+msgid "Autocompletion"
 msgstr "自動補完"
 
 #. show history autocomplete
 #: mini-commander/src/preferences.c:599
-msgid "Enable history based auto completion"
+#, fuzzy
+msgid "Enable history based autocompletion"
 msgstr "履歴による自動補完を使用する"
 
 #. applet width
@@ -3199,6 +3315,14 @@ msgstr "このミキサーアプレットで サウンドカードの主音量を簡単に調節できます"
 msgid "Run Audio Mixer..."
 msgstr "オーディオミキサを実行..."
 
+#: mixer/mixer_applet.desktop.in.h:1
+msgid "Audio Mixer"
+msgstr "オーディオミキサー"
+
+#: mixer/mixer_applet.desktop.in.h:2
+msgid "Mixer"
+msgstr "ミキサー"
+
 #: modemlights/modemlights.c:205
 msgid "Modem Lights Applet"
 msgstr "モデムライト・アプレット"
@@ -3237,6 +3361,14 @@ msgstr "接続されていません。"
 #: modemlights/modemlights.c:1506
 msgid "Help..."
 msgstr "ヘルプ..."
+
+#: modemlights/modemlights_applet.desktop.in.h:1
+msgid "Modem Lights"
+msgstr "モデムモニタ"
+
+#: modemlights/modemlights_applet.desktop.in.h:2
+msgid "Show modem status"
+msgstr "モデムの使用状況表示"
 
 #: modemlights/properties.c:396
 msgid "Modem Lights Settings"
@@ -3371,6 +3503,38 @@ msgstr "デフォルトの設定..."
 msgid "Run gtop..."
 msgstr "gtop を実行..."
 
+#: multiload/cpuload_applet.desktop.in.h:1
+msgid "CPU Load Meter"
+msgstr "CPU 負荷メーター"
+
+#: multiload/cpuload_applet.desktop.in.h:2
+msgid "CPULoad"
+msgstr "CPU 負荷"
+
+#: multiload/load-graph.c:35 multiload/load-graph.c:53
+msgid "Load Graph"
+msgstr "負荷グラフ"
+
+#: multiload/load-graph.c:574
+msgid "Interval:"
+msgstr "間隔:"
+
+#: multiload/load-graph.c:574 multiload/load-graph.c:766
+msgid "Size:"
+msgstr "サイズ:"
+
+#: multiload/load-graph.c:574 multiload/load-graph.c:766
+msgid "Maximum:"
+msgstr "最大:"
+
+#: multiload/load-graph.c:766
+msgid "Speed:"
+msgstr "速さ:"
+
+#: multiload/load-graph.c:805
+msgid "Use default properties"
+msgstr "デフォルトの設定を使う"
+
 #: multiload/loadavg.c:27
 msgid "Load average over 1 minute"
 msgstr "1 分間の負荷平均"
@@ -3401,30 +3565,6 @@ msgstr ""
 #: multiload/loadavg_applet.desktop.in.h:1 multiload/main.c:236
 msgid "Load Average"
 msgstr "負荷平均"
-
-#: multiload/load-graph.c:35 multiload/load-graph.c:53
-msgid "Load Graph"
-msgstr "負荷グラフ"
-
-#: multiload/load-graph.c:574
-msgid "Interval:"
-msgstr "間隔:"
-
-#: multiload/load-graph.c:574 multiload/load-graph.c:766
-msgid "Size:"
-msgstr "サイズ:"
-
-#: multiload/load-graph.c:574 multiload/load-graph.c:766
-msgid "Maximum:"
-msgstr "最大:"
-
-#: multiload/load-graph.c:766
-msgid "Speed:"
-msgstr "速さ:"
-
-#: multiload/load-graph.c:805
-msgid "Use default properties"
-msgstr "デフォルトの設定を使う"
 
 #: multiload/main.c:28
 msgid "User"
@@ -3499,6 +3639,14 @@ msgstr ""
 "GNU 一般公有使用許諾書の下にリリースされています。\n"
 "メモリの負荷計を表示します。"
 
+#: multiload/memload_applet.desktop.in.h:1
+msgid "MemLoad"
+msgstr "メモリ負荷"
+
+#: multiload/memload_applet.desktop.in.h:2
+msgid "Memory Load Meter"
+msgstr "メモリ負荷メーター"
+
 #: multiload/netload.c:42
 msgid "Network Load Applet"
 msgstr "ネットワーク負荷アプレット"
@@ -3517,6 +3665,14 @@ msgstr ""
 msgid "Network Load"
 msgstr "ネット負荷"
 
+#: multiload/netload_applet.desktop.in.h:1
+msgid "NetLoad"
+msgstr "ネットワーク負荷"
+
+#: multiload/netload_applet.desktop.in.h:2
+msgid "Network Activity Meter"
+msgstr "ネットワーク負荷モニタ"
+
 #: multiload/swapload.c:44
 msgid "Swap Load Applet"
 msgstr "スワップ負荷アプレット"
@@ -3529,6 +3685,14 @@ msgid ""
 msgstr ""
 "GNU 一般公有使用許諾書の下にリリースされています。\n"
 "スワップ負荷計を表示します。"
+
+#: multiload/swapload_applet.desktop.in.h:1
+msgid "Swap Load Meter"
+msgstr "スワップ負荷メーター"
+
+#: multiload/swapload_applet.desktop.in.h:2
+msgid "SwapLoad"
+msgstr "スワップ負荷"
 
 #: odometer/odo.c:142 odometer/odometer_applet.desktop.in.h:2
 msgid "Odometer"
@@ -3551,6 +3715,10 @@ msgstr "距離計アプレットを生成できません!"
 #: odometer/odo.c:680
 msgid "Reset"
 msgstr "リセット"
+
+#: odometer/odometer_applet.desktop.in.h:1
+msgid "Mouse movements counter"
+msgstr "マウスの移動距離計"
 
 #: odometer/properties.c:244
 msgid "Odometer setting"
@@ -3629,6 +3797,14 @@ msgstr ""
 "ディレクトリが作れません:\n"
 "~/.gnome/quicklaunch\n"
 "終了します"
+
+#: quicklaunch/quicklaunch_applet.desktop.in.h:1
+msgid "QuickLaunch"
+msgstr "クイックランチャー"
+
+#: quicklaunch/quicklaunch_applet.desktop.in.h:2
+msgid "Small Launchers "
+msgstr "小さなランチャ"
 
 #: screenshooter/screenshooter_applet.c:48
 msgid "Screen-Shooter Applet"
@@ -4007,6 +4183,14 @@ msgstr ""
 "%s\n"
 "でシェルに渡されます"
 
+#: screenshooter/screenshooter_applet.desktop.in.h:1
+msgid "Screen Shooter is a screenshot grabber"
+msgstr "画面を撮影するアプレット"
+
+#: screenshooter/screenshooter_applet.desktop.in.h:2
+msgid "ScreenShooter"
+msgstr "スクリーンショット"
+
 #: slashapp/properties.c:293
 msgid "Site"
 msgstr "サイト"
@@ -4067,6 +4251,14 @@ msgstr "折り返し行の表示速度:"
 msgid "Scroll speed between lines (Smooth scroll):"
 msgstr "各行のスクロール速度(滑らかスクロール):"
 
+#: slashapp/slash_applet.desktop.in.h:1
+msgid "Show last news from slashdot.org"
+msgstr "slashdot.org の最新ニュースを表示"
+
+#: slashapp/slash_applet.desktop.in.h:2 slashapp/slashapp.c:231
+msgid "SlashApp"
+msgstr "スラッシュドット"
+
 #: slashapp/slashapp.c:114
 msgid "Loading headlines..."
 msgstr "見出しを読み込み中…"
@@ -4097,10 +4289,6 @@ msgstr "Craig Small <csmall@eye-net.com.au>"
 #: slashapp/slashapp.c:228
 msgid "Frederic Devernay <devernay@istar.fr>"
 msgstr "Frederic Devernay <devernay@istar.fr>"
-
-#: slashapp/slash_applet.desktop.in.h:2 slashapp/slashapp.c:231
-msgid "SlashApp"
-msgstr "スラッシュドット"
 
 #: slashapp/slashapp.c:232
 msgid "(C) 1998-2000"
@@ -4314,6 +4502,28 @@ msgstr "モニタする ESD ホスト:"
 #: sound-monitor/properties.c:502
 msgid "Monitor sound input (only use if sound card is FULL DUPLEX)"
 msgstr "サウンド入力モニタ(サウンドカードが全二重の場合以外使わないこと)"
+
+#. help
+#: sound-monitor/pvd/esdpvd.c:459
+#, c-format
+msgid "ESounD Persistent Volume Daemon version %s\n"
+msgstr "ESounD Persistent Volume Daemon バージョン %s\n"
+
+#: sound-monitor/pvd/esdpvd.c:460
+msgid "options:\n"
+msgstr "オプション:\n"
+
+#: sound-monitor/pvd/esdpvd.c:461
+msgid "  -n, --noX     Allow to run without X server\n"
+msgstr "  -n, --noX     X サーバなしでの実行を許可\n"
+
+#: sound-monitor/sound-monitor_applet.desktop.in.h:1
+msgid "Sound Monitor"
+msgstr "サウンドモニタ"
+
+#: sound-monitor/sound-monitor_applet.desktop.in.h:2
+msgid "Sound Monitor for Esound"
+msgstr "Esound のサウンドモニタ"
 
 #: tickastat/main.c:46
 msgid "Tick-a-Stat event log"
@@ -4630,285 +4840,9 @@ msgstr "高さ:"
 msgid "Use panel size hint"
 msgstr "パネルサイズ情報を使う"
 
-#: webcontrol/webcontrol.c:47
-msgid "The Web Browser Controller"
-msgstr "ウェブブラウザコントローラ"
-
-#: webcontrol/webcontrol.c:49
-msgid "(C) 2000 the Free Software Foundation"
-msgstr "(C) 2000 the Free Software Foundation"
-
-#: webcontrol/webcontrol.c:51
-msgid ""
-"An applet to launch URLs in a web browser, search using various web sites "
-"and have a ton of fun!"
-msgstr ""
-"ウェブブラウザで URL を開いたり、いろんなウェブサイトを検索したり、 などなど"
-"楽しいアプレットです。"
-
-#: webcontrol/webcontrol.c:242
-msgid "URL:"
-msgstr "URL:"
-
-#: webcontrol/webcontrol.c:265
-msgid " GO "
-msgstr " GO "
-
-#: webcontrol/webcontrol.c:284
-msgid " Clear "
-msgstr " 消去 "
-
-#: webcontrol/webcontrol.c:312
-msgid "Launch new window"
-msgstr "新しいウィンドウで開く"
-
-#: whereami/whereami.c:47 whereami/whereami_applet.desktop.in.h:2
-msgid "Where Am I?"
-msgstr "私はどこ?"
-
-#: whereami/whereami.c:48
-msgid "Copyright 1999 John Kodis"
-msgstr "Copyright 1999 John Kodis"
-
-#: whereami/whereami.c:49
-msgid ""
-"A cursor position reporting applet.\n"
-"= Clicking mouse button 1 grabs the cursor.\n"
-"= Dragging with mouse button 1 held down shows the size of the region."
-msgstr ""
-"マウスカーソルの位置を知らせるアプレットです。\n"
-"・アプレットをマウスボタン１でクリックすると カーソルの形が変わります。\n"
-"・そのままマウスをドラッグすると、指定した 範囲の大きさが表示されます。"
-
-#: whereami/whereami.c:210
-msgid "whereami_applet"
-msgstr "私はどこ?アプレット"
-
-#: cdplayer/cdplayer_applet.desktop.in.h:1
-msgid "CD Player"
-msgstr "CD プレーヤー"
-
-#: gweather/gweather.desktop.in.h:2
-msgid "GNOME weather monitor applet"
-msgstr "天気情報アプレット"
-
 #: tickastat/tickastat_applet.desktop.in.h:1
 msgid "Info and status ticker"
 msgstr "情報と状態のチェッカー"
-
-#: clipboard/clipboard_applet.desktop.in.h:1
-msgid "Clipboard"
-msgstr "クリップボード"
-
-#: clipboard/clipboard_applet.desktop.in.h:2
-msgid "Copy multiple selections into a persistant clipboard"
-msgstr "複数のセレクションを永続クリップボードに保存"
-
-#: asclock/asclock_applet.desktop.in.h:1
-msgid "AfterStep Clock"
-msgstr "AfterStep 時計"
-
-#: asclock/asclock_applet.desktop.in.h:2
-msgid "Just another clock"
-msgstr "AfterStep 風の時計"
-
-#: drivemount/drivemount_applet.desktop.in.h:1
-msgid "Drive Mount"
-msgstr "ドライブマウント"
-
-#: drivemount/drivemount_applet.desktop.in.h:2
-msgid "Mount and unmount drives"
-msgstr "ドライブのマウントとアンマウント"
-
-#: cpumemusage/cpumemusage_applet.desktop.in.h:1
-msgid "CPU/MEM usage"
-msgstr "CPU・メモリ使用状況"
-
-#: cpumemusage/cpumemusage_applet.desktop.in.h:2
-msgid "CPU/MEM usage meter"
-msgstr "CPU・メモリ使用状況メーター"
-
-#: battery/battery_applet.desktop.in.h:1
-msgid "Battery Charge Monitor"
-msgstr "バッテリ充電モニタ"
-
-#: another_clock/another_clock_applet.desktop.in.h:1
-msgid "An analog clock similar to that in CDE panel"
-msgstr "CDE パネルの風アナログ時計"
-
-#: another_clock/another_clock_applet.desktop.in.h:2
-msgid "Another Clock"
-msgstr "もう一つの時計"
-
-#: gkb-new/gkb_applet.desktop.in.h:1
-msgid "GKB Keyboard Switcher"
-msgstr "GKB キーボードスイッチャ"
-
-#: gkb-new/gkb_applet.desktop.in.h:2
-msgid "GKB, the Gnome Keyboard Layout Switcher Applet"
-msgstr "GKB - GNOME キーボード配列切替アプレット"
-
-#: clockmail/clockmail_applet.desktop.in.h:1
-msgid "Clock and Mailcheck"
-msgstr "メールチェック時計"
-
-#: clockmail/clockmail_applet.desktop.in.h:2
-msgid "Displays new mail and time"
-msgstr "新着メールと時間の表示"
-
-#: slashapp/slash_applet.desktop.in.h:1
-msgid "Show last news from slashdot.org"
-msgstr "slashdot.org の最新ニュースを表示"
-
-#: multiload/netload_applet.desktop.in.h:1
-msgid "NetLoad"
-msgstr "ネットワーク負荷"
-
-#: multiload/netload_applet.desktop.in.h:2
-msgid "Network Activity Meter"
-msgstr "ネットワーク負荷モニタ"
-
-#: multiload/memload_applet.desktop.in.h:1
-msgid "MemLoad"
-msgstr "メモリ負荷"
-
-#: multiload/memload_applet.desktop.in.h:2
-msgid "Memory Load Meter"
-msgstr "メモリ負荷メーター"
-
-#: multiload/swapload_applet.desktop.in.h:1
-msgid "Swap Load Meter"
-msgstr "スワップ負荷メーター"
-
-#: multiload/swapload_applet.desktop.in.h:2
-msgid "SwapLoad"
-msgstr "スワップ負荷"
-
-#: multiload/cpuload_applet.desktop.in.h:1
-msgid "CPU Load Meter"
-msgstr "CPU 負荷メーター"
-
-#: multiload/cpuload_applet.desktop.in.h:2
-msgid "CPULoad"
-msgstr "CPU 負荷"
-
-#: mini-commander/src/mini-commander_applet.desktop.in.h:1
-msgid "Mini-Commander"
-msgstr "ミニコマンダー"
-
-#: whereami/whereami_applet.desktop.in.h:1
-msgid "Shows Cursor Position"
-msgstr "カーソル位置を表示"
-
-#: modemlights/modemlights_applet.desktop.in.h:1
-msgid "Modem Lights"
-msgstr "モデムモニタ"
-
-#: modemlights/modemlights_applet.desktop.in.h:2
-msgid "Show modem status"
-msgstr "モデムの使用状況表示"
-
-#: fifteen/fifteen_applet.desktop.in.h:1
-msgid "Fifteen"
-msgstr "15 パズル"
-
-#: fifteen/fifteen_applet.desktop.in.h:2
-msgid "Fifteen cells game"
-msgstr "15パ ズルゲーム"
-
-#: charpick/charpick_applet.desktop.in.h:2
-msgid "Character picker"
-msgstr "キャラクタピッカー"
-
-#: sound-monitor/sound-monitor_applet.desktop.in.h:1
-msgid "Sound Monitor"
-msgstr "サウンドモニタ"
-
-#: sound-monitor/sound-monitor_applet.desktop.in.h:2
-msgid "Sound Monitor for Esound"
-msgstr "Esound のサウンドモニタ"
-
-#: webcontrol/webcontrol_applet.desktop.in.h:1
-msgid "WebControl"
-msgstr "ウェブコントロール"
-
-#: mixer/mixer_applet.desktop.in.h:1
-msgid "Audio Mixer"
-msgstr "オーディオミキサー"
-
-#: mixer/mixer_applet.desktop.in.h:2
-msgid "Mixer"
-msgstr "ミキサー"
-
-#: geyes/geyes_applet.desktop.in.h:1
-msgid "An applet that watches your mouse."
-msgstr "マウスの位置を知らせるアプレット"
-
-#: quicklaunch/quicklaunch_applet.desktop.in.h:1
-msgid "QuickLaunch"
-msgstr "クイックランチャー"
-
-#: quicklaunch/quicklaunch_applet.desktop.in.h:2
-msgid "Small Launchers "
-msgstr "小さなランチャ"
-
-#: odometer/odometer_applet.desktop.in.h:1
-msgid "Mouse movements counter"
-msgstr "マウスの移動距離計"
-
-#: screenshooter/screenshooter_applet.desktop.in.h:1
-msgid "Screen Shooter is a screenshot grabber"
-msgstr "画面を撮影するアプレット"
-
-#: screenshooter/screenshooter_applet.desktop.in.h:2
-msgid "ScreenShooter"
-msgstr "スクリーンショット"
-
-#: diskusage/diskusage_applet.desktop.in.h:1
-msgid "Disk Usage"
-msgstr "ディスク使用状況"
-
-#: diskusage/diskusage_applet.desktop.in.h:2
-msgid "Disk usage meter"
-msgstr "ディスク使用状況メーター"
-
-#: life/life_applet.desktop.in.h:1
-msgid "Game of Life"
-msgstr "ライフゲーム"
-
-#: life/life_applet.desktop.in.h:2
-msgid "The Game of Life (to waste your time)"
-msgstr "(あなたの時間を浪費する)ライフゲーム"
-
-#: gtik/gtik2_applet.desktop.in.h:1
-msgid "GNOME Stock Ticker"
-msgstr "GNOME ストックティッカー"
-
-#: gtik/gtik2_applet.desktop.in.h:2
-msgid "GNOME Stock Ticker Panel Applet"
-msgstr "GNOME ストックティッカーパネルアプレット"
-
-#: jbc/jbc_applet.desktop.in.h:1
-msgid "Displays the time in binary representation"
-msgstr "時間を 2 進数表示します"
-
-#: jbc/jbc_applet.desktop.in.h:2
-msgid "JBC Binary Clock"
-msgstr "JBC 2 進数クロック"
-
-#. help
-#: sound-monitor/pvd/esdpvd.c:459
-#, c-format
-msgid "ESounD Persistent Volume Daemon version %s\n"
-msgstr "ESounD Persistent Volume Daemon バージョン %s\n"
-
-#: sound-monitor/pvd/esdpvd.c:460
-msgid "options:\n"
-msgstr "オプション:\n"
-
-#: sound-monitor/pvd/esdpvd.c:461
-msgid "  -n, --noX     Allow to run without X server\n"
-msgstr "  -n, --noX     X サーバなしでの実行を許可\n"
 
 #: webcontrol/properties.c:205
 msgid "Are you sure you want to remove this browser?"
@@ -4995,6 +4929,74 @@ msgstr "消去"
 #: webcontrol/properties.c:656
 msgid "all entries in URL history"
 msgstr "URL 履歴のすべてのエントリ"
+
+#: webcontrol/webcontrol.c:47
+msgid "The Web Browser Controller"
+msgstr "ウェブブラウザコントローラ"
+
+#: webcontrol/webcontrol.c:49
+msgid "(C) 2000 the Free Software Foundation"
+msgstr "(C) 2000 the Free Software Foundation"
+
+#: webcontrol/webcontrol.c:51
+msgid ""
+"An applet to launch URLs in a web browser, search using various web sites "
+"and have a ton of fun!"
+msgstr ""
+"ウェブブラウザで URL を開いたり、いろんなウェブサイトを検索したり、 などなど"
+"楽しいアプレットです。"
+
+#: webcontrol/webcontrol.c:242
+msgid "URL:"
+msgstr "URL:"
+
+#: webcontrol/webcontrol.c:265
+msgid " GO "
+msgstr " GO "
+
+#: webcontrol/webcontrol.c:284
+msgid " Clear "
+msgstr " 消去 "
+
+#: webcontrol/webcontrol.c:312
+msgid "Launch new window"
+msgstr "新しいウィンドウで開く"
+
+#: webcontrol/webcontrol_applet.desktop.in.h:1
+msgid "WebControl"
+msgstr "ウェブコントロール"
+
+#: whereami/whereami.c:47 whereami/whereami_applet.desktop.in.h:2
+msgid "Where Am I?"
+msgstr "私はどこ?"
+
+#: whereami/whereami.c:48
+msgid "Copyright 1999 John Kodis"
+msgstr "Copyright 1999 John Kodis"
+
+#: whereami/whereami.c:49
+msgid ""
+"A cursor position reporting applet.\n"
+"= Clicking mouse button 1 grabs the cursor.\n"
+"= Dragging with mouse button 1 held down shows the size of the region."
+msgstr ""
+"マウスカーソルの位置を知らせるアプレットです。\n"
+"・アプレットをマウスボタン１でクリックすると カーソルの形が変わります。\n"
+"・そのままマウスをドラッグすると、指定した 範囲の大きさが表示されます。"
+
+#: whereami/whereami.c:210
+msgid "whereami_applet"
+msgstr "私はどこ?アプレット"
+
+#: whereami/whereami_applet.desktop.in.h:1
+msgid "Shows Cursor Position"
+msgstr "カーソル位置を表示"
+
+#~ msgid "Clipboard"
+#~ msgstr "クリップボード"
+
+#~ msgid "Copy multiple selections into a persistant clipboard"
+#~ msgstr "複数のセレクションを永続クリップボードに保存"
 
 #~ msgid "character picker"
 #~ msgstr "キーボードから直接打鍵できない文字を入力するツールです"
