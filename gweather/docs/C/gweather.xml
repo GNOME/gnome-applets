@@ -2,9 +2,9 @@
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "2.5.5">
-  <!ENTITY manrevision "2.4">
-  <!ENTITY date "February 2004">
+  <!ENTITY appletversion "2.8">
+  <!ENTITY manrevision "2.8">
+  <!ENTITY date "September 2004">
   <!ENTITY applet "Weather Report">
 ]>
 <!-- 
@@ -20,7 +20,11 @@
    <!-- appropriate code -->
      
    <articleinfo>
-      <title>&applet; Applet Manual V&manrevision;</title>  	 
+      <title>&applet; Applet Manual V2.4</title>  	 
+      <copyright>
+	<year>2004</year>
+	<holder>Angela Boyle</holder>
+      </copyright>
       <copyright>
 		<year>2002</year>
 		<year>2003</year>
@@ -58,6 +62,10 @@
            any of this. -->
       	 
       <authorgroup>
+	<author>
+	  <firstname>Anglea</firstname>
+	  <surname>Boyle</surname>
+	</author>
            		
 	<author>
 	<firstname>Sun </firstname>  		  
@@ -107,9 +115,17 @@
       </authorgroup>
       	 
       <revhistory>
+	<revision>
+	  <revnumber>Version &manrevision;</revnumber>
+	  <date>&date;</date>
+	  <revdescription>
+	    <para role="author">Angela Boyle</para>
+	    <para role="publisher">GNOME Documentation Project</para>
+	  </revdescription>
+	</revision>
         <revision>
-          <revnumber>&applet; Applet Manual V&manrevision;</revnumber>  		
-          <date>&date;</date>  		  
+          <revnumber>&applet; Applet Manual V2.4</revnumber>  		
+          <date>February 2004</date>  		  
           <revdescription>
 	    <para role="author">Sun GNOME Documentation Team</para>
 	    <para role="publisher">GNOME Documentation Project</para>
@@ -208,7 +224,7 @@
       </para>
       <note id="proxies-note-1">
          <para>
-            If your computer is located behind a firewall, you must use a proxy server to access the weather servers. For more information about how to specify a proxy server, see <xref linkend="gweather-set-proxy"/>.        
+            If your computer is located behind a firewall, you must use a proxy server to access the weather servers. To configure the GNOME Desktop to use a proxy server, use your preference tools to specify the network proxy server for Internet connections.       
          </para>
       </note>   
       <para>
@@ -229,20 +245,22 @@
 
     <sect2 id="gweather-introduction-add">
       <title>To Add &applet; to a Panel</title>
-      <para>
-        To add &applet; to a panel, right-click on the panel, then choose <menuchoice><guimenu>Add to Panel</guimenu><guisubmenu>Accessories</guisubmenu><guimenuitem>&applet;</guimenuitem></menuchoice>.
-      </para>
+      <para>To add <application>&applet;</application> to a panel,
+      right-click on the panel, then choose <guimenuitem>Add to
+      Panel</guimenuitem>.  Select <application>&applet;</application>
+      in the <application>Add to the panel</application> dialog, then
+      click <guibutton>OK</guibutton>.</para>
     </sect2>
 
       
    </sect1>
    <!-- ============= Usage ===================================== -->
    <sect1 id="gweather-usage">
-      <title>Usage</title>
+      <title>Customizing &applet;</title>
       <sect2 id="gweather-change-location">
-         <title>To View Weather Information for a Particular Location</title>
+         <title>Changing to Particular Location</title>
          <para>
-            When you add the <application>&applet;</application> applet to a panel for the first time, the applet displays the weather for a location based on your local. For example, for the en_US locale the weather for Pittsburg, Pennsylvania will be displayed. To display the weather for a different location, perform the following steps:
+            When you add the <application>&applet;</application> applet to a panel for the first time, the applet displays the weather for Pittsburg, Pennsylvania by default. To display the weather for a different location, perform the following steps:
          </para>
          <orderedlist>
             <listitem>
@@ -283,18 +301,127 @@
          </orderedlist>
       </sect2>
       <sect2 id="gweather-update">
-         <title>To Update the Weather Information</title>
+         <title>Updating Weather Information</title>
          <para>
             To update the weather information that the applet displays in the panel, right-click on the applet, then choose <guimenuitem>Update</guimenuitem>.
          </para>
+         <para>To automatically update the weather information at regular intervals, perform the following steps:</para>
+	    <orderedlist>
+                  <listitem><para>Go to the right-click menu and select <guimenuitem>Preferences</guimenuitem>.</para></listitem>
+                   <listitem><para>In the <guilabel>Weather Preferences</guilabel> dialog under the <guilabel>General</guilabel> tab, select the <guilabel>Automatically update every ... minutes</guilabel> option.</para></listitem>
+		<listitem><para>Use the spin box to specify the interval at which the applet retrieves updated information from the weather server. The default is to check every thirty minutes.</para></listitem>
+                    <listitem><para>Click <guibutton>Close</guibutton> to close the <guilabel>Weather Preferences</guilabel> dialog.</para></listitem>
+	      </orderedlist>
+         </sect2>
+        <sect2 id="gweather-metric"> 
+               <title>Changing to the Metric System</title>
+                     <para>
+                        Go to the right-click menu and select <guimenuitem>Preferences</guimenuitem>. In the <guilabel>Weather Preferences</guilabel> dialog under the <guilabel>General</guilabel> tab, select the <guilabel>Use metric system units</guilabel> option to use metric units of measurement instead of imperial units of measurement in the applet. This option affects the following parameters:
+                     </para>
+                     <informaltable>
+                        <tgroup cols="3">
+                           <colspec colname="COLSPEC0" colwidth="1.00*"/><colspec
+                           colname="col1"/><colspec colname="col2"/>
+                           <thead>
+                              <row valign="top">
+                                 <entry colname="COLSPEC0">
+                                    <para>
+                                       Parameter
+                                    </para>
+                                 </entry>
+                                 <entry colname="col1">
+                                    <para>
+                                       Imperial System
+                                    </para>
+                                 </entry>
+                                 <entry colname="col2">
+                                    <para>
+                                       Metric System
+                                    </para>
+                                 </entry>
+                              </row>
+                           </thead>
+                           <tbody>
+                              <row valign="top">
+                                 <entry colname="COLSPEC0">
+                                    <para>
+                                       Temperature and dew point
+                                    </para>
+                                 </entry>
+                                 <entry colname="col1">
+                                    <para>
+                                       degrees Fahrenheit
+                                    </para>
+                                 </entry>
+                                 <entry colname="col2">
+                                    <para>
+                                       degrees Celsius
+                                    </para>
+                                 </entry>
+                              </row>
+                              <row valign="top">
+                                 <entry colname="COLSPEC0">
+                                    <para>
+                                       Wind speed
+                                    </para>
+                                 </entry>
+                                 <entry colname="col1">
+                                    <para>
+                                       miles per hour (mph)
+                                    </para>
+                                 </entry>
+                                 <entry colname="col2">
+                                    <para>
+                                       kilometers per hour (kph)
+                                    </para>
+                                 </entry>
+                              </row>
+                              <row valign="top">
+                                 <entry colname="COLSPEC0">
+                                    <para>
+                                       Pressure
+                                    </para>
+                                 </entry>
+                                 <entry colname="col1">
+                                    <para>
+                                       inches of mercury (inHg)
+                                    </para>
+                                 </entry>
+                                 <entry colname="col2">
+                                    <para>
+                                       millimeters of mercury (mmHg)
+                                    </para>
+                                 </entry>
+                              </row>
+                              <row valign="top">
+                                 <entry colname="COLSPEC0">
+                                    <para>
+                                       Visibility
+                                    </para>
+                                 </entry>
+                                 <entry colname="col1">
+                                    <para>
+                                       miles
+                                    </para>
+                                 </entry>
+                                 <entry colname="col2">
+                                    <para>
+                                       kilometers
+                                    </para>
+                                 </entry>
+                              </row>
+                           </tbody>
+                        </tgroup>
+                     </informaltable>
+          </sect2>
+         
+   </sect1>
+   <!-- ============= Preferences ================================== -->
+   <sect1 id="gweather-settings">
+      <title>Viewing Detailed Information</title>
+
          <para>
-            You can configure the applet to automatically update the information at regular intervals. See <xref linkend="gweather-configure"/> for more information about how to configure the applet. 
-         </para>
-      </sect2>
-      <sect2 id="gweather-detailed">
-         <title>To View Detailed Weather Information</title>
-         <para>
-            To view detailed weather information, either single-click on the applet or right-click on the applet and then choose <guimenuitem>Forecast</guimenuitem>. The applet displays the <guilabel>Forecast</guilabel> dialog. The <guilabel>Forecast</guilabel> dialog contains the following tabbed sections:
+            To view detailed weather information, right-click on the applet, then choose <guimenuitem>Forecast</guimenuitem>. The applet displays the <guilabel>Forecast</guilabel> dialog. The <guilabel>Forecast</guilabel> dialog contains the following default tabbed sections:
          </para>
          <itemizedlist>
             <listitem>
@@ -309,11 +436,11 @@
             </listitem>
             <listitem>
                <para>
-                  <guilabel>Radar Map</guilabel>
+                  <guilabel>Radar Map (optional)</guilabel>
                </para>
             </listitem>
          </itemizedlist>
-         <sect3 id="gweather-current-conditions">
+         <sect2 id="gweather-current-conditions">
             <title>Current Conditions</title>
             <para>
                The <guilabel>Current Conditions</guilabel> tabbed section displays the following information:
@@ -386,18 +513,6 @@
                      <row valign="top">
                         <entry colname="col1">
                            <para>
-                              Feels like
-                           </para>
-                        </entry>
-                        <entry colname="col2">
-                           <para>
-                              The wind chill factor, heat index or current temperature (depending upon local conditions).
-                           </para>
-                        </entry>
-                     </row>
-                     <row valign="top">
-                        <entry colname="col1">
-                           <para>
                               Dew point
                            </para>
                         </entry>
@@ -439,7 +554,7 @@
                         </entry>
                         <entry colname="col2">
                            <para>
-                              Atmospheric pressure
+                              Atmospheric pressure in inches of mercury. 
                            </para>
                         </entry>
                      </row>
@@ -458,229 +573,30 @@
                   </tbody>
                </tgroup>
             </informaltable>
-         </sect3>
-         <sect3 id="gweather-forecast">
+         </sect2>
+         <sect2 id="gweather-forecast">
             <title>Forecast</title>
             <para>
-               The <guilabel>Forecast</guilabel> tabbed section displays a forecast for the location for the immediate future, usually the next five days. This tab is only displayed if forecast information is available.
+               The <guilabel>Forecast</guilabel> tabbed section displays a forecast for the location for the immediate future, usually the next five days. 
             </para>
             <note>
                <para>
-                  Forecasts are only available for some locations in Australia, the United Kingdom and the U.S.A.
+                  Forecasts are only available for some locations in the U.S.A.
                </para>
             </note>
-         </sect3>
-         <sect3 id="gweather-radar-map">
+         </sect2>
+         <sect2 id="gweather-radar-map">
             <title>Radar Map</title>
             <para>
-               By default, the <guilabel>Radar Map</guilabel> tabbed section is not displayed in the <guilabel>Forecast</guilabel> dialog. See <xref linkend="gweather-configure"/> for more  information about how to configure the applet to display radar maps. <application>&applet;</application>  downloads the radar maps from www.weather.com. If the radar map is not available from www.weather.com, the applet displays a question mark. To go to the www.weather.com web site, click on the <guibutton>Visit Weather.com</guibutton> button.
+               By default, the <guilabel>Radar Map</guilabel> tabbed section is not displayed in the <guilabel>Forecast</guilabel> dialog. <application>&applet;</application>  downloads the radar maps from www.weather.com. If the radar map is not available from www.weather.com, the applet displays a question mark. To go to the www.weather.com web site, click on the <guibutton>Visit Weather.com</guibutton> button.
             </para>
-         </sect3>
-      </sect2>
-   </sect1>
-   <!-- ============= Preferences ================================== -->
-   <sect1 id="gweather-settings">
-      <title>Preferences</title>
-      
-      <sect2 id="gweather-set-proxy">
-      <title>To Set a Proxy Server</title>
-      <para>If your computer is located behind a firewall you must use a proxy server to run <application>&applet;</application> successfully. To configure the GNOME Desktop to use a proxy server, use your preference tools to specify the network proxy server for Internet connections.
-      </para>
-      </sect2>
-      
-      <sect2 id="gweather-configure">
-      <title>To Configure &applet;</title>
-      <para>
-         To configure <application>&applet;</application>, right-click on the applet, then choose <guimenuitem>Preferences</guimenuitem>. The <guilabel>Weather Preferences</guilabel> dialog contains the following tabbed sections:
-      </para>
-      <itemizedlist>
-         <listitem>
-            <para>
-               <link linkend="gweather-general">General</link>
-            </para>
-         </listitem>
-         <listitem>
-            <para>
-               <link linkend="gweather-location">Location</link>
-            </para>
-         </listitem>
-      </itemizedlist>
-            
-      
-      <sect3 id="gweather-general">
-         <title>General</title>
-           <variablelist>
-               <varlistentry>
-                  <term><guilabel>Automatically update every ... minutes</guilabel>
-                  </term>
-                  <listitem>
-                     <para>
-                        Select this option to enable the applet to automatically retrieve updated information from the weather server at regular intervals. Use the spin box to specify the interval at which the applet retrieves updated information from the weather server. 
+            <para>To enable the radar map, perform the following steps:
+	     <orderedlist>
+		<listitem><para>Go to the <guilabel>Weather Preferences</guilabel> dialog by selecting <guilabel>Preferences</guilabel> in the right-click menu.</para></listitem>
+ 		<listitem><para>In the <guilabel>General</guilabel> tab, select the <guilabel>Enable radar map</guilabel> option. </para></listitem>
+		<listitem><para>By default, <application>&applet;</application> downloads the radar maps from www.weather.com. Select the <guilabel>Use custom address for radar map</guilabel> option to display radar maps from an alternative Internet address. You must type the address in the <guilabel>Address</guilabel> text box.</para></listitem>
+	      </orderedlist>
                      </para>
-                  </listitem>
-               </varlistentry>
-	       <varlistentry>
-                  <term><guilabel>Temperature Unit</guilabel></term>
-		  <listitem>
-                    <para>
-                       Use this drop-down list to specify the unit to use for all temperature measurements in the applet. This affects the temperature, feels like and dew point parameters.  The possible values are:
-                    </para>
-		    <informaltable>
-                       <tgroup cols="2">
-			       <colspec colname="col1"/><colspec colname="col2"/>
-			  <tbody>
-                             <row valign="top">
-                                <entry colname="col1"><para>Default</para></entry>
-                                <entry colname="col2"><para>Default temperature unit for the current locale</para></entry>
-                             </row>
-                             <row valign="top">
-                                <entry colname="col1"><para>Kelvin</para></entry>
-                                <entry colname="col2"><para>Kelvin</para></entry>
-                             </row>
-                             <row valign="top">
-                                <entry colname="col1"><para>Celsius</para></entry>
-                                <entry colname="col2"><para>degrees Celsius</para></entry>
-                             </row>
-                             <row valign="top">
-                                <entry colname="col1"><para>Fahrenheit</para></entry>
-                                <entry colname="col2"><para>degrees Fahrenheit</para></entry>
-                             </row>
-                            </tbody>
-                       </tgroup>
-                    </informaltable>
-                 </listitem>
-               </varlistentry>
-	       <varlistentry>
-                  <term><guilabel>Wind Speed Unit</guilabel></term>
-		  <listitem>
-                    <para>
-                       Use this drop-down list to specify the unit to use for wind speed in the applet. The possible values are:
-                    </para>
-		    <informaltable>
-                       <tgroup cols="2">
-			       <colspec colname="col1"/><colspec colname="col2"/>
-			  <tbody>
-                             <row valign="top">
-                                <entry colname="col1"><para>Default</para></entry>
-                                <entry colname="col2"><para>Default wind speed unit for the current locale</para></entry>
-                             </row>
-                             <row valign="top">
-				     <entry colname="col1"><para>m/s</para></entry>
-                                <entry colname="col2"><para>Meters per second</para></entry>
-                             </row>
-                             <row valign="top">
-				     <entry colname="col1"><para>km/h</para></entry>
-                                <entry colname="col2"><para>Kilometers per hour</para></entry>
-                             </row>
-                             <row valign="top">
-                                <entry colname="col1"><para>mph</para></entry>
-                                <entry colname="col2"><para>Miles per hour</para></entry>
-                             </row>
-                              <row valign="top">
-                                <entry colname="col1"><para>knots</para></entry>
-                                <entry colname="col2"><para>Knots</para></entry>
-                             </row>
-                            </tbody>
-                       </tgroup>
-                    </informaltable>
-                 </listitem>
-               </varlistentry>
-	       <varlistentry>
-                  <term><guilabel>Pressure Unit</guilabel></term>
-		  <listitem>
-                    <para>
-                       Use this drop-down list to specify the unit to use for atmospheric pressure. The possible values are:
-                    </para>
-		    <informaltable>
-                       <tgroup cols="2">
-			       <colspec colname="col1"/><colspec colname="col2"/>
-			  <tbody>
-                             <row valign="top">
-                                <entry colname="col1"><para>Default</para></entry>
-                                <entry colname="col2"><para>Default temperature unit for the current locale</para></entry>
-                             </row>
-                             <row valign="top">
-                                <entry colname="col1"><para>hPa</para></entry>
-                                <entry colname="col2"><para>Hectopascals</para></entry>
-                             </row>
-			     <row valign="top">
-			        <entry colname="col1"><para>kPa</para></entry>
-				<entry colname="col2"><para>Kilopascals</para></entry>
-			     </row>
-                             <row valign="top">
-                                <entry colname="col1"><para>mb</para></entry>
-                                <entry colname="col2"><para>Milibars</para></entry>
-                             </row>
-                             <row valign="top">
-                                <entry colname="col1"><para>mmHg</para></entry>
-                                <entry colname="col2"><para>Milimeters of mercury</para></entry>
-                             </row>
-                              <row valign="top">
-                                <entry colname="col1"><para>inHg</para></entry>
-                                <entry colname="col2"><para>Inches of mercury</para></entry>
-                             </row>
-                            </tbody>
-                       </tgroup>
-                    </informaltable>
-                 </listitem>
-               </varlistentry>
-	       <varlistentry>
-                  <term><guilabel>Visibility Unit</guilabel></term>
-		  <listitem>
-                    <para>
-                       Use this drop-down list to specify the unit to use for visibility measurements in the applet. The possible values are:
-                    </para>
-		    <informaltable>
-                       <tgroup cols="2">
-                          <colspec colname="col1"/><colspec colname="col2"/>
-			  <tbody>
-                             <row valign="top">
-                                <entry colname="col1"><para>Default</para></entry>
-                                <entry colname="col2"><para>Default visibility unit for the current locale</para></entry>
-                             </row>
-                             <row valign="top">
-                                <entry colname="col1"><para>meters</para></entry>
-                                <entry colname="col2"><para>Meters</para></entry>
-                             </row>
-                             <row valign="top">
-                                <entry colname="col1"><para>km</para></entry>
-                                <entry colname="col2"><para>Kilometers</para></entry>
-                             </row>
-                             <row valign="top">
-                                <entry colname="col1"><para>miles</para></entry>
-                                <entry colname="col2"><para>Miles</para></entry>
-                             </row>
-                            </tbody>
-                       </tgroup>
-                    </informaltable>
-                 </listitem>
-               </varlistentry>
-               <varlistentry>
-                  <term><guilabel>Enable radar map</guilabel> </term>
-                  <listitem>
-                     <para>
-                        Select this option to enable the applet to display radar maps in a <guilabel>Radar Map</guilabel> tabbed section of the <guilabel>Forecast</guilabel> dialog.
-                     </para>
-                  </listitem>
-               </varlistentry>
-               <varlistentry>
-                  <term><guilabel>Use custom address for radar map</guilabel> </term>
-                  <listitem>
-                     <para>
-                        By default, <application>&applet;</application> downloads the radar maps from www.weather.com. Select this option to display radar maps from an alternative Internet address. Type the address in the <guilabel>Address</guilabel> text box.
-                     </para>
-                  </listitem>
-               </varlistentry>
-            </variablelist>
-      </sect3>
-      
-      <sect3 id="gweather-location">
-         <title>Location</title>
-         <para>
-            The <guilabel>Location</guilabel> tabbed section enables you to select the location for which you want to display the current and forecast weather conditions. See <xref linkend="gweather-change-location"/> for information about how to select a location.
-         </para>
-      </sect3>
-
       </sect2>
    </sect1>
 </article>
