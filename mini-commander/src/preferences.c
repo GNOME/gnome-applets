@@ -38,6 +38,11 @@
 #include "history.h"
 #include "mc-default-macros.h"
 
+enum {
+	COLUMN_PATTERN,
+	COLUMN_COMMAND
+};
+
 static GSList *mc_load_macros (MCData *mc);
 
 /* GConf notfication handlers
@@ -364,7 +369,9 @@ add_response (GtkWidget *window,
 
 	gtk_list_store_append (dialog->macros_store, &iter);
 	gtk_list_store_set (dialog->macros_store, &iter,
-			    0, pattern, 1, command, -1);
+			    COLUMN_PATTERN, pattern, 
+			    COLUMN_COMMAND, command,
+			    -1);
 
 	gtk_tree_view_columns_autosize (GTK_TREE_VIEW (dialog->macros_tree));
 
@@ -465,8 +472,8 @@ show_macros_list (MCData *mc)
 
 	gtk_list_store_append (dialog->macros_store, &iter);
 	gtk_list_store_set (dialog->macros_store, &iter,
-			    0, macro->pattern,
-			    1, macro->command,
+			    COLUMN_PATTERN, macro->pattern,
+			    COLUMN_COMMAND, macro->command,
 			    -1);
     }
 
@@ -481,11 +488,14 @@ macro_edited (GtkCellRendererText *renderer,
 {
     MCPrefsDialog *dialog;
     GtkTreeIter    iter;
+    int            col;
 
     dialog = &mc->prefs_dialog;
 
+    col = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (renderer), "column"));
+
     if (gtk_tree_model_get_iter_from_string (GTK_TREE_MODEL (dialog->macros_store), &iter, path))
-	gtk_list_store_set (dialog->macros_store, &iter, 0, new_text, -1);
+	gtk_list_store_set (dialog->macros_store, &iter, col, new_text, -1);
 
     save_macros_to_gconf (mc);
 }
@@ -631,9 +641,8 @@ static void
 mc_preferences_setup_dialog (GladeXML *xml,
 			     MCData   *mc)
 {
-    MCPrefsDialog     *dialog;
-    GtkTreeViewColumn *column;
-    GtkCellRenderer   *renderer;
+    MCPrefsDialog   *dialog;
+    GtkCellRenderer *renderer;
 
     dialog = &mc->prefs_dialog;
 
@@ -714,17 +723,24 @@ mc_preferences_setup_dialog (GladeXML *xml,
 			     GTK_TREE_MODEL (dialog->macros_store));
 
     renderer = g_object_new (GTK_TYPE_CELL_RENDERER_TEXT, "editable", TRUE, NULL);
+    g_object_set_data (G_OBJECT (renderer), "column", GINT_TO_POINTER (COLUMN_PATTERN));
     g_signal_connect (renderer, "edited", G_CALLBACK (macro_edited), mc);
 
-    column = gtk_tree_view_column_new_with_attributes ("Pattern", renderer,
-						       "text", 0,
-						       NULL);
-    gtk_tree_view_append_column (GTK_TREE_VIEW (dialog->macros_tree), column);
+    gtk_tree_view_insert_column_with_attributes (
+			GTK_TREE_VIEW (dialog->macros_tree), -1,
+			"Pattern", renderer,
+			"text", COLUMN_PATTERN,
+			NULL);
 
-    column = gtk_tree_view_column_new_with_attributes ("Command", renderer,
-						       "text", 1,
-						       NULL);
-    gtk_tree_view_append_column (GTK_TREE_VIEW (dialog->macros_tree), column);
+    renderer = g_object_new (GTK_TYPE_CELL_RENDERER_TEXT, "editable", TRUE, NULL);
+    g_object_set_data (G_OBJECT (renderer), "column", GINT_TO_POINTER (COLUMN_COMMAND));
+    g_signal_connect (renderer, "edited", G_CALLBACK (macro_edited), mc);
+
+    gtk_tree_view_insert_column_with_attributes (
+			GTK_TREE_VIEW (dialog->macros_tree), -1,
+			"Command", renderer,
+			"text", COLUMN_COMMAND,
+			NULL);
 
     show_macros_list (mc);
 }
