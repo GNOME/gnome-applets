@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets cvs\n"
-"POT-Creation-Date: 2003-06-05 12:14+0200\n"
-"PO-Revision-Date: 2003-06-05 21:00+0100\n"
+"POT-Creation-Date: 2003-06-15 12:28+0200\n"
+"PO-Revision-Date: 2003-06-15 15:14+0100\n"
 "Last-Translator: Vincent van Adrighem <V.vanAdrighem@dirck.mine.nu>\n"
 "Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -68,9 +68,9 @@ msgid "Shows the status of keyboard accessibility features"
 msgstr "Toont de status van de toegankelijkheidsmogelijkheden"
 
 #: accessx-status/applet.c:135 battstat/battstat_applet.c:839
-#: cdplayer/cdplayer.c:548 charpick/charpick.c:534 drivemount/drivemount.c:491
-#: geyes/geyes.c:228 gkb-new/gkb.c:622 gtik/gtik.c:708
-#: gweather/gweather-about.c:44 mailcheck/mailcheck.c:2263
+#: cdplayer/cdplayer.c:548 charpick/charpick.c:561 drivemount/drivemount.c:491
+#: geyes/geyes.c:228 gkb-new/gkb-applet.c:84 gtik/gtik.c:724
+#: gweather/gweather-about.c:44 mailcheck/mailcheck.c:2268
 #: mini-commander/src/about.c:48 mixer/mixer.c:1012
 #: modemlights/modemlights.c:115 multiload/main.c:57
 #: stickynotes/stickynotes.glade.h:53 stickynotes/stickynotes_applet.c:142
@@ -389,7 +389,7 @@ msgstr "<b>Ruststand</b>"
 msgid "<b>Warnings</b>"
 msgstr "<b>Waarschuwingen</b>"
 
-#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1409
+#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1452
 msgid "Appearance"
 msgstr "Uiterlijk"
 
@@ -398,7 +398,7 @@ msgid "Battery Charge Monitor Preferences"
 msgstr "Voorkeuren Batterij-meter"
 
 #: battstat/battstat_applet.glade.h:13 drivemount/properties.c:305
-#: gweather/gweather-pref.c:294 mailcheck/mailcheck.c:1895
+#: gweather/gweather-pref.c:295 mailcheck/mailcheck.c:1900
 #: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:488
 msgid "General"
 msgstr "Algemeen"
@@ -456,8 +456,8 @@ msgid "_Yellow:"
 msgstr "_Geel:"
 
 #: battstat/properties.c:256 drivemount/drivemount.c:456
-#: drivemount/properties.c:513 mailcheck/mailcheck.c:2127
-#: mailcheck/mailcheck.c:2341 mini-commander/src/preferences.c:352
+#: drivemount/properties.c:513 mailcheck/mailcheck.c:2132
+#: mailcheck/mailcheck.c:2346 mini-commander/src/preferences.c:352
 #: mixer/mixer.c:1119
 #, c-format
 msgid "There was an error displaying help: %s"
@@ -600,8 +600,8 @@ msgstr "Klik op deze knop om het vorige nummer op de CD af te spelen"
 msgid "Click this button to Play the next track in the CD"
 msgstr "Klik op deze knop om het volgende nummer op de CD af te spelen"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:552
-#: charpick/charpick.c:695 charpick/properties.c:287
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:579
+#: charpick/charpick.c:722 charpick/properties.c:287
 msgid "Character Palette"
 msgstr "Karakterpalet"
 
@@ -613,29 +613,37 @@ msgstr "Karakterkiezer Applet Fabriek"
 msgid "Insert characters"
 msgstr "Karakters invoegen"
 
-#: charpick/charpick.c:399
+#: charpick/charpick.c:303 charpick/properties.c:105
+msgid "Add Palette"
+msgstr "Palet toevoegen"
+
+#: charpick/charpick.c:344
+msgid "Add a palette..."
+msgstr "Palet toevoegen..."
+
+#: charpick/charpick.c:425
 msgid "Available palettes"
 msgstr "Beschikbare paletten"
 
-#: charpick/charpick.c:435
+#: charpick/charpick.c:462
 msgid "Insert special characters"
 msgstr "Speciale karakters invoegen"
 
 #. If your charset supports it, please use U00F1 to replace the "n"
 #. * in "Muniz".
-#: charpick/charpick.c:525
+#: charpick/charpick.c:552
 msgid "Alexandre Muniz <munizao@xprt.net>"
 msgstr "Alexandre MuÃ±iz <munizao@xprt.net>"
 
-#: charpick/charpick.c:526
+#: charpick/charpick.c:553
 msgid "Kevin Vandersloot"
 msgstr "Kevin Vandersloot"
 
-#: charpick/charpick.c:554
+#: charpick/charpick.c:581
 msgid "Copyright (C) 1998"
 msgstr "Copyright © 1998"
 
-#: charpick/charpick.c:555
+#: charpick/charpick.c:582
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -646,10 +654,6 @@ msgstr ""
 #: charpick/properties.c:70
 msgid "_Palette:"
 msgstr "_Palet:"
-
-#: charpick/properties.c:105
-msgid "Add Palette"
-msgstr "Palet toevoegen"
 
 #: charpick/properties.c:140
 msgid "Edit Palette"
@@ -736,8 +740,8 @@ msgstr "Kies het koppelpunt"
 msgid "_Update interval:"
 msgstr "_Verversingstijd:"
 
-#: drivemount/properties.c:352 mailcheck/mailcheck.c:1955
-#: mailcheck/mailcheck.c:1959 modemlights/properties.c:419
+#: drivemount/properties.c:352 mailcheck/mailcheck.c:1960
+#: mailcheck/mailcheck.c:1964 modemlights/properties.c:419
 msgid "seconds"
 msgstr "seconden"
 
@@ -850,7 +854,8 @@ msgstr "Verander de toetsenbordopmaak"
 msgid "GKB Factory"
 msgstr "GKB Fabriek"
 
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:3 gkb-new/gkb.c:633
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:3
+#: gkb-new/gkb-applet.c:95
 msgid "Keyboard Layout Switcher"
 msgstr "Toetsenbordwisselaar"
 
@@ -858,7 +863,7 @@ msgstr "Toetsenbordwisselaar"
 msgid "Produces keyboard layout switcher applets."
 msgstr "Maakt toetsenbordopmaak wisselaar applets aan"
 
-#: gkb-new/gkb.c:113
+#: gkb-new/gkb.c:275
 msgid ""
 "Press the hotkey to switch between layouts. The hotkey can be set through "
 "Properties dialog"
@@ -866,15 +871,11 @@ msgstr ""
 "Druk de sneltoets in om te wisselen van opmaak. De sneltoets kan ingesteld "
 "worden in de Eigenschappen"
 
-#: gkb-new/gkb.c:580 gkb-new/gkb.c:587
-msgid "GKB"
-msgstr "GKB"
-
-#: gkb-new/gkb.c:635
+#: gkb-new/gkb-applet.c:97
 msgid "(C) 1998-2000 Free Software Foundation"
 msgstr "© 1998-2000 Free Software Foundation"
 
-#: gkb-new/gkb.c:636
+#: gkb-new/gkb-applet.c:98
 msgid ""
 "This applet switches between keyboard maps using setxkbmap or xmodmap.\n"
 "Mail me your flag and keyboard layout if you want support for your locale "
@@ -894,9 +895,13 @@ msgstr ""
 "KevinV.\n"
 "Shooby Ban <shooby@gnome.hu>"
 
-#: gkb-new/gkb.c:653
+#: gkb-new/gkb-applet.c:115
 msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
 msgstr "GKB Web Pagina (http://projects.gnome.hu/gkb)"
+
+#: gkb-new/gkb-applet.c:203 gkb-new/gkb-applet.c:210
+msgid "GKB"
+msgstr "GKB"
 
 #: gkb-new/keygrab.c:69 gkb-new/keygrab.c:148
 msgid "Disabled"
@@ -906,112 +911,103 @@ msgstr "Uitgeschakeld"
 msgid "Press a key or press Esc to cancel"
 msgstr "Druk op een toets of druk op Esc om te annuleren"
 
-#: gkb-new/preset.c:153 gkb-new/preset.c:156
+#: gkb-new/preset.c:155 gkb-new/preset.c:158
 msgid "Undefined"
 msgstr "Ongedefinieerd"
 
-#: gkb-new/prop-add.c:88
+#: gkb-new/prop-add.c:87
 msgid "Keyboards (select and press add)"
 msgstr "Toetsenborden (selecteer en klik op Toevoegen)"
 
-#: gkb-new/prop-add.c:315
+#: gkb-new/prop-add.c:222
 #, c-format
 msgid "Keymap `%s' for the country %s already exists"
 msgstr " toetsenbord mapping '%s' voor het land %s bestaat al"
 
-#: gkb-new/prop-add.c:426
+#: gkb-new/prop-add.c:323
 msgid "Select Keyboard"
 msgstr "Selecteer Toetsenbord"
 
-#: gkb-new/prop-add.c:450
+#: gkb-new/prop-add.c:347
 msgid "_Keyboards (select and press add):"
 msgstr "_Toetsenborden (selecteer en klik op toevoegen)"
 
-#: gkb-new/prop-map.c:267
+#: gkb-new/prop-map.c:262
 msgid "Edit Keyboard"
 msgstr "Toetsenbord bewerken"
 
-#: gkb-new/prop-map.c:291
+#: gkb-new/prop-map.c:286
 msgid "_Name:"
 msgstr "_Naam:"
 
-#: gkb-new/prop-map.c:295
+#: gkb-new/prop-map.c:290
 msgid "_Label:"
 msgstr "La_bel:"
 
-#: gkb-new/prop-map.c:298 mini-commander/src/mini-commander.glade.h:8
+#: gkb-new/prop-map.c:293 mini-commander/src/mini-commander.glade.h:8
 msgid "Co_mmand:"
 msgstr "O_pdracht:"
 
-#: gkb-new/prop-map.c:301
+#: gkb-new/prop-map.c:296
 msgid "_Flag:"
 msgstr "_Vlag:"
 
-#: gkb-new/prop.c:129 gkb-new/prop.c:199
-msgid "Normal"
-msgstr "Normaal"
-
-#: gkb-new/prop.c:130 gkb-new/prop.c:203
-msgid "Big"
-msgstr "Groot"
-
-#: gkb-new/prop.c:148 gkb-new/util.c:41 gkb-new/util.c:48 gkb-new/util.c:74
+#: gkb-new/prop.c:126 gkb-new/util.c:41 gkb-new/util.c:48 gkb-new/util.c:74
 msgid "Flag"
 msgstr "Vlag"
 
-#: gkb-new/prop.c:149 gkb-new/util.c:38 gkb-new/util.c:71
+#: gkb-new/prop.c:127 gkb-new/util.c:38 gkb-new/util.c:71
 msgid "Label"
 msgstr "Label"
 
-#: gkb-new/prop.c:150 gkb-new/util.c:44 gkb-new/util.c:77
+#: gkb-new/prop.c:128 gkb-new/util.c:44 gkb-new/util.c:77
 msgid "Flag and Label"
 msgstr "Vlag en Label"
 
-#: gkb-new/prop.c:323 gtik/gtik.c:1414 gweather/gweather-pref.c:333
+#: gkb-new/prop.c:257 gtik/gtik.c:1459 gweather/gweather-pref.c:334
 #: modemlights/properties.c:395
 msgid "Display"
 msgstr "Weergeven"
 
 #. Labels and option Menus
-#: gkb-new/prop.c:336
+#: gkb-new/prop.c:270
 msgid "_Appearance: "
 msgstr "_Uiterlijk:"
 
-#: gkb-new/prop.c:347
-msgid "_Size: "
-msgstr "_Afmetingen:"
-
-#: gkb-new/prop.c:381
+#: gkb-new/prop.c:304
 msgid "Keyboard Shortcuts"
 msgstr "Toetsenbord snelkoppelingen"
 
-#: gkb-new/prop.c:387
+#: gkb-new/prop.c:310
 msgid "S_witch layout:"
 msgstr "Layout _wisselen:"
 
-#: gkb-new/prop.c:400
+#: gkb-new/prop.c:323
 msgid "_Grab keys"
 msgstr "_Sneltoetsen grijpen"
 
-#. Create property box
-#: gkb-new/prop.c:471
+#: gkb-new/prop.c:399
 msgid "Keyboard Layout Switcher Preferences"
 msgstr "Voorkeuren Toetsenbordwisselaar"
 
-#: gkb-new/prop.c:493
+#: gkb-new/prop.c:400
+msgid "Keyboard Layout Selector"
+msgstr "Toetsenbordwisselaar"
+
+#: gkb-new/prop.c:426
 msgid "Keyboards"
 msgstr "Toetsenborden"
 
 #. Page 1 Frame
-#: gkb-new/prop.c:497
+#: gkb-new/prop.c:430
 msgid "_Keyboards:"
 msgstr "_Toetsenborden:"
 
-#: gkb-new/prop.c:512 multiload/properties.c:360
+#: gkb-new/prop.c:446 multiload/properties.c:362
 msgid "Options"
 msgstr "Opties"
 
-#: gkb-new/system.c:46
+#: gkb-new/system.c:44
 #, c-format
 msgid ""
 "An error occured.\n"
@@ -1027,7 +1023,7 @@ msgstr ""
 "\n"
 "De opdracht was: %s"
 
-#: gkb-new/system.c:51
+#: gkb-new/system.c:49
 #, c-format
 msgid ""
 "An error occured.\n"
@@ -1052,7 +1048,7 @@ msgstr "Verkrijg voortdurend bijgewerkte aandelenkoersen"
 msgid "Gtik Applet Factory"
 msgstr "Gtik Applet Fabriek"
 
-#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:724
+#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:740
 msgid "Stock Ticker"
 msgstr "Aandelenticker"
 
@@ -1061,15 +1057,15 @@ msgstr "Aandelenticker"
 msgid "_Update"
 msgstr "_Verversen"
 
-#: gtik/gtik.c:202
+#: gtik/gtik.c:214
 msgid "Could not retrieve the stock data."
 msgstr "Kon info van aandeel niet ophalen."
 
-#: gtik/gtik.c:236 gweather/gweather-applet.c:338
+#: gtik/gtik.c:248 gweather/gweather-applet.c:351
 msgid "Updating..."
 msgstr "Bezig met verversen..."
 
-#: gtik/gtik.c:726
+#: gtik/gtik.c:742
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.  "
 "The GNOME Stock Ticker is a free Internet-based application.  It comes with "
@@ -1082,122 +1078,126 @@ msgstr ""
 "Aandelenticker niet om investeringskeuzes te maken. Het is alleen voor "
 "informatieve doeleinden."
 
-#: gtik/gtik.c:1187
+#: gtik/gtik.c:1225
 msgid "Current _stocks:"
 msgstr "H_uidige aandelen:"
 
-#: gtik/gtik.c:1195
+#: gtik/gtik.c:1233
 msgid "_New symbol:"
 msgstr "_Nieuw symbool:"
 
-#: gtik/gtik.c:1204
+#: gtik/gtik.c:1242
 msgid "_Add"
 msgstr "_Toevoegen"
 
-#: gtik/gtik.c:1213
+#: gtik/gtik.c:1251
 msgid "_Remove"
 msgstr "_Verwijderen"
 
-#: gtik/gtik.c:1315
+#: gtik/gtik.c:1353
 msgid "Stock Ticker Preferences"
 msgstr "Voorkeuren Aandelenticker"
 
-#: gtik/gtik.c:1334
+#: gtik/gtik.c:1374
 msgid "Symbols"
 msgstr "Symbolen"
 
-#: gtik/gtik.c:1340 mailcheck/mailcheck.c:2194
+#: gtik/gtik.c:1381 mailcheck/mailcheck.c:2199
 msgid "Behavior"
 msgstr "Gedrag"
 
-#: gtik/gtik.c:1343 gweather/gweather-pref.c:299
+#: gtik/gtik.c:1384 gweather/gweather-pref.c:300
 msgid "Update"
 msgstr "Verversen"
 
-#: gtik/gtik.c:1347
+#: gtik/gtik.c:1388
 msgid "Stock update fre_quency:"
 msgstr "Verversingsfre_quentie van aandelen:"
 
-#: gtik/gtik.c:1359 gweather/gweather-pref.c:329 mailcheck/mailcheck.c:1937
-#: mailcheck/mailcheck.c:1941
+#: gtik/gtik.c:1400 gweather/gweather-pref.c:330 mailcheck/mailcheck.c:1942
+#: mailcheck/mailcheck.c:1946
 msgid "minutes"
 msgstr "minuten"
 
-#: gtik/gtik.c:1362
+#: gtik/gtik.c:1403
 msgid "Scrolling"
 msgstr "Schuiven"
 
-#: gtik/gtik.c:1366
+#: gtik/gtik.c:1407
 msgid "_Scroll speed:"
 msgstr "_Schuifsnelheid:"
 
-#: gtik/gtik.c:1370
+#: gtik/gtik.c:1411
 msgid "Slow"
 msgstr "Langzaam"
 
-#: gtik/gtik.c:1372
+#: gtik/gtik.c:1413
 msgid "Medium"
 msgstr "Gemiddeld"
 
-#: gtik/gtik.c:1374
+#: gtik/gtik.c:1415
 msgid "Fast"
 msgstr "Snel"
 
-#: gtik/gtik.c:1391
+#: gtik/gtik.c:1432
 msgid "_Enable scroll buttons"
 msgstr "_Gebruik schuifknoppen"
 
-#: gtik/gtik.c:1400
+#: gtik/gtik.c:1441
 msgid "Scroll _left to right"
 msgstr "Schuif van _links naar rechts"
 
-#: gtik/gtik.c:1418
+#: gtik/gtik.c:1464
 msgid "Displa_y only symbols and price"
 msgstr "All_een symbolen en prijzen laten zien"
 
-#: gtik/gtik.c:1427 mini-commander/src/mini-commander.glade.h:23
+#: gtik/gtik.c:1474 mini-commander/src/mini-commander.glade.h:23
 #: stickynotes/stickynotes.glade.h:49
 msgid "_Width:"
 msgstr "_Breedte:"
 
-#: gtik/gtik.c:1440 mini-commander/src/mini-commander.glade.h:24
-#: multiload/properties.c:418
+#: gtik/gtik.c:1488 mini-commander/src/mini-commander.glade.h:24
+#: multiload/properties.c:420
 msgid "pixels"
 msgstr "pixels"
 
-#: gtik/gtik.c:1445 stickynotes/stickynotes.glade.h:42
+#: gtik/gtik.c:1494
+msgid "Use _default theme font"
+msgstr "Stan_daardlettertype van thema gebruiken"
+
+#: gtik/gtik.c:1506 stickynotes/stickynotes.glade.h:42
 msgid "_Font:"
 msgstr "_Lettertype:"
 
-#: gtik/gtik.c:1459 modemlights/properties.c:549 multiload/properties.c:458
+#: gtik/gtik.c:1522 modemlights/properties.c:549 multiload/properties.c:460
 msgid "Colors"
 msgstr "Kleuren"
 
-#: gtik/gtik.c:1464
+#: gtik/gtik.c:1527
 msgid "Stock _raised:"
 msgstr "Aandeel _gestegen:"
 
-#: gtik/gtik.c:1479
+#: gtik/gtik.c:1542
 msgid "Stock _lowered:"
 msgstr "Aandeel ge_daald:"
 
-#: gtik/gtik.c:1494
+#: gtik/gtik.c:1557
 msgid "Stock _unchanged:"
 msgstr "Aandeel _onveranderd:"
 
-#: gtik/gtik.c:1509 modemlights/properties.c:505
+#: gtik/gtik.c:1572 modemlights/properties.c:505
 msgid "_Background:"
 msgstr "_Achtergrond:"
 
-#: gtik/gtik.c:1606
+#: gtik/gtik.c:1684
 msgid "Skip forward"
 msgstr "Ga vooruit"
 
-#: gtik/gtik.c:1607
+#: gtik/gtik.c:1685
 msgid "Skip backward"
 msgstr "Ga achteruit"
 
-#: gtik/gtik.c:1608
+#: gtik/gtik.c:1693
 msgid ""
 "Stock Ticker\n"
 "Get continuously updated stock quotes"
@@ -1205,11 +1205,11 @@ msgstr ""
 "Aandelenkoersen\n"
 "Toont doorlopend bijgewerkte aandelenkoersen"
 
-#: gtik/gtik.c:1797
+#: gtik/gtik.c:1881
 msgid "(No"
 msgstr "(Nee"
 
-#: gtik/gtik.c:1798
+#: gtik/gtik.c:1882
 msgid "Change "
 msgstr "Veranderen "
 
@@ -1248,29 +1248,29 @@ msgstr ""
 "\n"
 "Een applet om de lokale weerscondities te bekijken."
 
-#: gweather/gweather-applet.c:54
+#: gweather/gweather-applet.c:60
 #, c-format
 msgid ""
 "%s\n"
 "Today: %s\n"
-"Current temperature %d"
+"Current temperature %d%s%s"
 msgstr ""
 "%s\n"
 "Vandaag: %s\n"
-"Huidige temperatuur %d"
+"Huidige temperatuur %d%s%s"
 
-#: gweather/gweather-applet.c:75
+#: gweather/gweather-applet.c:82
 #, c-format
 msgid ""
 "%s\n"
 "%s: %s\n"
-"Low %d, High %d"
+"Low %d%s, High %d%s"
 msgstr ""
 "%s\n"
 "%s: %s\n"
-"Laag %d, Hoog %d"
+"Laag %d, Hoog %d%s"
 
-#: gweather/gweather-applet.c:95
+#: gweather/gweather-applet.c:102
 msgid "There was an error retrieving the forecast"
 msgstr "Er is een fout opgetreden bij het ophalen van de vooruitzichten"
 
@@ -1286,102 +1286,102 @@ msgstr "Neerslag"
 msgid "Condition"
 msgstr "Omstandigheden"
 
-#: gweather/gweather-dialog.c:86 gweather/gweather-dialog.c:192
+#: gweather/gweather-dialog.c:86 gweather/gweather-dialog.c:182
 msgid "Forecast"
 msgstr "Voorspelling"
 
-#: gweather/gweather-dialog.c:110
+#: gweather/gweather-dialog.c:108
 msgid "Current Conditions"
 msgstr "Huidige omstandigheden"
 
-#: gweather/gweather-dialog.c:121
+#: gweather/gweather-dialog.c:115
 msgid "City:"
 msgstr "Stad:"
 
-#: gweather/gweather-dialog.c:128
+#: gweather/gweather-dialog.c:122
 msgid "Last update:"
 msgstr "Laatste update:"
 
-#: gweather/gweather-dialog.c:135
+#: gweather/gweather-dialog.c:129
 msgid "Conditions:"
 msgstr "Omstandigheden:"
 
-#: gweather/gweather-dialog.c:146
+#: gweather/gweather-dialog.c:140
 msgid "Temperature:"
 msgstr "Temperatuur:"
 
-#: gweather/gweather-dialog.c:153
+#: gweather/gweather-dialog.c:147
 msgid "Feels like:"
 msgstr "Voelt als:"
 
-#: gweather/gweather-dialog.c:160
+#: gweather/gweather-dialog.c:154
 msgid "Humidity:"
 msgstr "Vochtigheid:"
 
-#: gweather/gweather-dialog.c:167
+#: gweather/gweather-dialog.c:161
 msgid "Wind:"
 msgstr "Wind:"
 
-#: gweather/gweather-dialog.c:174
+#: gweather/gweather-dialog.c:168
 msgid "Visibility:"
 msgstr "Zicht:"
 
-#: gweather/gweather-dialog.c:181
+#: gweather/gweather-dialog.c:175
 msgid "Pressure:"
 msgstr "Luchtdruk:"
 
-#: gweather/gweather-dialog.c:307
+#: gweather/gweather-dialog.c:293
 #, c-format
 msgid "%s / %.1f %s"
 msgstr "%s / %.1f %s"
 
 #. Accessible Name and Description for the components in Preference Dialog
-#: gweather/gweather-pref.c:95
+#: gweather/gweather-pref.c:124
 msgid "Update spin button"
 msgstr "Verversing instelknop"
 
-#: gweather/gweather-pref.c:95
+#: gweather/gweather-pref.c:124
 msgid "Spinbutton for updating"
 msgstr "Draaiknop voor verversen"
 
-#: gweather/gweather-pref.c:265
+#: gweather/gweather-pref.c:266
 msgid "Weather Preferences"
 msgstr "Voorkeuren Weerbericht"
 
-#: gweather/gweather-pref.c:303
+#: gweather/gweather-pref.c:304
 msgid "_Automatically update every:"
 msgstr "Automatisch verversen na _iedere:"
 
-#: gweather/gweather-pref.c:335
+#: gweather/gweather-pref.c:336
 msgid "Use _metric system units"
 msgstr "Gebruik _metrische eenheden"
 
-#: gweather/gweather-pref.c:343
+#: gweather/gweather-pref.c:344
 msgid "Display _temperatures"
 msgstr "_Temperaturen weergeven"
 
-#: gweather/gweather-pref.c:354
+#: gweather/gweather-pref.c:355
 msgid "Number of _days to display:"
 msgstr "Aantal _weer te geven dagen:"
 
-#: gweather/gweather-pref.c:367
+#: gweather/gweather-pref.c:368
 msgid "days"
 msgstr "dagen"
 
-#: gweather/gweather-pref.c:374 gweather/gweather-pref.c:383
+#: gweather/gweather-pref.c:375 gweather/gweather-pref.c:380
 #: gweather/location.c:354
 msgid "Location"
 msgstr "Locatie"
 
-#: gweather/gweather-pref.c:394
+#: gweather/gweather-pref.c:384
 msgid "Current city:"
 msgstr "Huidige stad:"
 
-#: gweather/gweather-pref.c:406
+#: gweather/gweather-pref.c:395
 msgid "Available c_ountries:"
 msgstr "Beschikbare l_anden:"
 
-#: gweather/gweather-pref.c:418
+#: gweather/gweather-pref.c:409
 msgid "Available c_ities:"
 msgstr "Beschikbare _steden:"
 
@@ -1618,7 +1618,7 @@ msgid "Factory for creating inbox monitors."
 msgstr "Fabriek om het e-mailmonitors te maken"
 
 #: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:3
-#: mailcheck/mailcheck.c:637 mailcheck/mailcheck.c:2276
+#: mailcheck/mailcheck.c:637 mailcheck/mailcheck.c:2281
 msgid "Inbox Monitor"
 msgstr "Postbus-monitor"
 
@@ -1649,11 +1649,11 @@ msgstr ""
 msgid "Please enter your mailserver's _password:"
 msgstr "Geef alstublieft het _wachtwoord van uw e-mailserver:"
 
-#: mailcheck/mailcheck.c:656 mailcheck/mailcheck.c:1815
+#: mailcheck/mailcheck.c:656 mailcheck/mailcheck.c:1820
 msgid "Password Entry box"
 msgstr "Wachtwoord tekstingang"
 
-#: mailcheck/mailcheck.c:676 mailcheck/mailcheck.c:1837
+#: mailcheck/mailcheck.c:676 mailcheck/mailcheck.c:1842
 msgid "_Save password to disk"
 msgstr "Wachtwoord _opslaan op schijf"
 
@@ -1699,141 +1699,141 @@ msgstr "%d berichten"
 msgid "No mail."
 msgstr "Geen e-mail."
 
-#: mailcheck/mailcheck.c:1455 mailcheck/mailcheck.c:1456
-#: mailcheck/mailcheck.c:2466 mailcheck/mailcheck.c:2467
+#: mailcheck/mailcheck.c:1460 mailcheck/mailcheck.c:1461
+#: mailcheck/mailcheck.c:2472 mailcheck/mailcheck.c:2473
 msgid "Status not updated"
 msgstr "Status niet bijgewerkt"
 
-#: mailcheck/mailcheck.c:1654 mailcheck/mailcheck.c:2198
+#: mailcheck/mailcheck.c:1659 mailcheck/mailcheck.c:2203
 msgid "Inbox Settings"
 msgstr "Postbus-instellingen"
 
-#: mailcheck/mailcheck.c:1680
+#: mailcheck/mailcheck.c:1685
 msgid "Mailbox _resides on:"
 msgstr "E-mail postbus be_vindt zich:"
 
-#: mailcheck/mailcheck.c:1691
+#: mailcheck/mailcheck.c:1696
 msgid "Local mailspool"
 msgstr "Lokale e-mailbuffer"
 
-#: mailcheck/mailcheck.c:1699
+#: mailcheck/mailcheck.c:1704
 msgid "Local maildir"
 msgstr "Lokale e-mailmap"
 
-#: mailcheck/mailcheck.c:1707
+#: mailcheck/mailcheck.c:1712
 msgid "Remote POP3-server"
 msgstr "POP3-server"
 
-#: mailcheck/mailcheck.c:1715
+#: mailcheck/mailcheck.c:1720
 msgid "Remote IMAP-server"
 msgstr "IMAP-server"
 
-#: mailcheck/mailcheck.c:1735
+#: mailcheck/mailcheck.c:1740
 msgid "Mail _spool file:"
 msgstr "E-mail b_ufferbestand:"
 
-#: mailcheck/mailcheck.c:1742
+#: mailcheck/mailcheck.c:1747
 msgid "Browse"
 msgstr "Bladeren"
 
-#: mailcheck/mailcheck.c:1757
+#: mailcheck/mailcheck.c:1762
 msgid "Mail s_erver:"
 msgstr "E-mails_erver:"
 
-#: mailcheck/mailcheck.c:1766
+#: mailcheck/mailcheck.c:1771
 msgid "Mail Server Entry box"
 msgstr "Mail Server Entry box"
 
-#: mailcheck/mailcheck.c:1780
+#: mailcheck/mailcheck.c:1785
 msgid "_Username:"
 msgstr "Gebr_uiker:"
 
-#: mailcheck/mailcheck.c:1791
+#: mailcheck/mailcheck.c:1796
 msgid "Username Entry box"
 msgstr "Username Entry box"
 
-#: mailcheck/mailcheck.c:1804
+#: mailcheck/mailcheck.c:1809
 msgid "_Password:"
 msgstr "_Wachtwoord:"
 
-#: mailcheck/mailcheck.c:1849
+#: mailcheck/mailcheck.c:1854
 msgid "_Folder:"
 msgstr "_Map:"
 
-#: mailcheck/mailcheck.c:1860
+#: mailcheck/mailcheck.c:1865
 msgid "Folder Entry box"
 msgstr "Folder Entry box"
 
-#: mailcheck/mailcheck.c:1921
+#: mailcheck/mailcheck.c:1926
 msgid "Check for mail _every:"
 msgstr "Op nieuwe e-mail controleren, i_edere:"
 
-#: mailcheck/mailcheck.c:1937
+#: mailcheck/mailcheck.c:1942
 msgid "Choose time interval in minutes to check mail"
 msgstr "Kies het interval om e-mail te controleren in minuten"
 
-#: mailcheck/mailcheck.c:1955
+#: mailcheck/mailcheck.c:1960
 msgid "Choose time interval in seconds to check mail"
 msgstr "Kies het interval om e-mail te controleren in seconden"
 
-#: mailcheck/mailcheck.c:1968
+#: mailcheck/mailcheck.c:1973
 msgid "Play a _sound when new mail arrives"
 msgstr "Geluid _afspelen bij nieuwe e-mail"
 
 #. l = gtk_check_button_new_with_mnemonic (_("Set the number of unread mails to _zero when clicked"));
-#: mailcheck/mailcheck.c:1976
+#: mailcheck/mailcheck.c:1981
 msgid "Sto_p animation when double clicked"
 msgstr "Animatie _stoppen bij dubbelklikken"
 
-#: mailcheck/mailcheck.c:1987
+#: mailcheck/mailcheck.c:1992
 msgid "Select a_nimation:"
 msgstr "Kies a_nimatie:"
 
-#: mailcheck/mailcheck.c:2000
+#: mailcheck/mailcheck.c:2005
 msgid "Commands"
 msgstr "Opdrachten"
 
-#: mailcheck/mailcheck.c:2029
+#: mailcheck/mailcheck.c:2034
 msgid "Before each _update:"
 msgstr "Voor iedere verversing:"
 
-#: mailcheck/mailcheck.c:2044
+#: mailcheck/mailcheck.c:2049
 msgid "Command to execute before each update"
 msgstr "Opdracht om uit te voeren voor elke verversing"
 
-#: mailcheck/mailcheck.c:2054
+#: mailcheck/mailcheck.c:2059
 msgid "When new mail _arrives:"
 msgstr "Als nieuwe e-mail _binnenkomt:"
 
-#: mailcheck/mailcheck.c:2067 mailcheck/mailcheck.schemas.in.h:2
+#: mailcheck/mailcheck.c:2072 mailcheck/mailcheck.schemas.in.h:2
 msgid "Command to execute when new mail arrives"
 msgstr "Opdracht om uit te voeren als er nieuwe post binnenkomt"
 
-#: mailcheck/mailcheck.c:2077
+#: mailcheck/mailcheck.c:2082
 msgid "When double clicke_d:"
 msgstr "Bij dubbel_klikken:"
 
-#: mailcheck/mailcheck.c:2090
+#: mailcheck/mailcheck.c:2095
 msgid "Command to execute when clicked"
 msgstr "Opdracht om uit te voeren bij aanklikken"
 
-#: mailcheck/mailcheck.c:2168
+#: mailcheck/mailcheck.c:2173
 msgid "Inbox Monitor Preferences"
 msgstr "Voorkeuren e-mailmonitor"
 
-#: mailcheck/mailcheck.c:2278
+#: mailcheck/mailcheck.c:2283
 msgid "Inbox Monitor notifies you when new mail arrives in your mailbox"
 msgstr "Postbus-monitor waarschuwt u wanneer er nieuwe berichten binnenkomen"
 
-#: mailcheck/mailcheck.c:2442
+#: mailcheck/mailcheck.c:2448
 msgid "Text only"
 msgstr "Alleen tekst"
 
-#: mailcheck/mailcheck.c:2468
+#: mailcheck/mailcheck.c:2474
 msgid "Mail check"
 msgstr "E-mailcontrole"
 
-#: mailcheck/mailcheck.c:2469
+#: mailcheck/mailcheck.c:2475
 msgid "Mail check notifies you when new mail arrives in your mailbox"
 msgstr "E-mailcontrole waarschuwt u wanneer er nieuwe berichten binnenkomen"
 
@@ -1972,7 +1972,6 @@ msgstr "Nieuwe e-mail"
 
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:1
 #: mini-commander/src/about.c:66
-#: mini-commander/src/mini-commander_applet.c:328
 msgid "Command Line"
 msgstr "Opdrachtregel"
 
@@ -2007,11 +2006,11 @@ msgstr ""
 msgid "Start program"
 msgstr "Programma uitvoeren"
 
-#: mini-commander/src/command_line.c:482
+#: mini-commander/src/command_line.c:483
 msgid "Command line"
 msgstr "Opdrachtregel"
 
-#: mini-commander/src/command_line.c:483
+#: mini-commander/src/command_line.c:484
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "Type hier een commando en Gnome zal dit voor u uitvoeren"
 
@@ -2122,29 +2121,29 @@ msgstr "_Patroon:"
 msgid "_Use default theme colors"
 msgstr "_Gebruik standaard themakleuren"
 
-#: mini-commander/src/mini-commander_applet.c:174
-#: mini-commander/src/mini-commander_applet.c:178
+#: mini-commander/src/mini-commander_applet.c:198
+#: mini-commander/src/mini-commander_applet.c:202
 msgid "Browser"
 msgstr "Bladeren"
 
-#: mini-commander/src/mini-commander_applet.c:179
+#: mini-commander/src/mini-commander_applet.c:203
 msgid "Click this button to start the browser"
 msgstr "Klik op deze knop om te bladeren"
 
-#: mini-commander/src/mini-commander_applet.c:192
-#: mini-commander/src/mini-commander_applet.c:196
+#: mini-commander/src/mini-commander_applet.c:216
+#: mini-commander/src/mini-commander_applet.c:220
 msgid "History"
 msgstr "Geschiedenis"
 
-#: mini-commander/src/mini-commander_applet.c:197
+#: mini-commander/src/mini-commander_applet.c:221
 msgid "Click this button for the list of previous commands"
 msgstr "Klik op deze knop voor de lijst van vorige opdrachten"
 
-#: mini-commander/src/mini-commander_applet.c:326
+#: mini-commander/src/mini-commander_applet.c:353
 msgid "Mini-Commander applet"
 msgstr "Mini-Commander Applet"
 
-#: mini-commander/src/mini-commander_applet.c:327
+#: mini-commander/src/mini-commander_applet.c:354
 msgid "This applet adds a command line to the panel"
 msgstr "Dit applet voegt een opdrachtregel toe aan het paneel"
 
@@ -2307,6 +2306,8 @@ msgstr "Gebruik de pijltjestoetsen om het volume te veranderen"
 
 #  Translators - The + and - refer to increasing and decreasing the volume.
 #  ** I don't know if there are sensible alternatives in other languages
+#. Translators - The + and - refer to increasing and decreasing the volume.
+#. ** I don't know if there are sensible alternatives in other languages
 #: mixer/mixer.c:778
 msgid "+"
 msgstr "+"
@@ -2355,7 +2356,7 @@ msgstr ""
 "De lichtjes boven of aan de zijkant betekenen Ontvangen en Verstuurde "
 "informatie."
 
-#: modemlights/modemlights.c:464
+#: modemlights/modemlights.c:485
 msgid ""
 "You are currently connected.\n"
 "Do you want to disconnect?"
@@ -2363,16 +2364,24 @@ msgstr ""
 "U heeft momenteel verbinding.\n"
 "Wilt u de verbinding verbreken?"
 
-#: modemlights/modemlights.c:479
+#: modemlights/modemlights.c:489
+msgid "_Disconnect"
+msgstr "Verbinding ver_breken"
+
+#: modemlights/modemlights.c:510
 msgid "Do you want to connect?"
 msgstr "Wilt u verbinding maken?"
 
-#: modemlights/modemlights.c:506
+#: modemlights/modemlights.c:513
+msgid "C_onnect"
+msgstr "Verbindingen _maken"
+
+#: modemlights/modemlights.c:536
 #, c-format
 msgid "%#.1fMb received / %#.1fMb sent / time: %.1d:%.2d"
 msgstr "%#.1fMb verkregen / %#.1fMb verzonden / tijd: %.1d:%.2d"
 
-#: modemlights/modemlights.c:511
+#: modemlights/modemlights.c:541
 msgid "not connected"
 msgstr "niet verbonden"
 
@@ -2520,19 +2529,19 @@ msgstr ""
 "Een applet om de systeembelasting te bekijken. Dit programma kan grafieken "
 "maken van het netwerkverkeer, CPU-, RAM- en wisselbestandgebruik."
 
-#: multiload/main.c:272 multiload/properties.c:483
+#: multiload/main.c:272 multiload/properties.c:485
 msgid "Processor"
 msgstr "Processor"
 
-#: multiload/main.c:274 multiload/properties.c:490
+#: multiload/main.c:274 multiload/properties.c:492
 msgid "Memory"
 msgstr "Geheugen"
 
-#: multiload/main.c:276 multiload/properties.c:498
+#: multiload/main.c:276 multiload/properties.c:500
 msgid "Network"
 msgstr "Netwerk"
 
-#: multiload/main.c:278 multiload/properties.c:506
+#: multiload/main.c:278 multiload/properties.c:508
 msgid "Swap Space"
 msgstr "Wisselbestand"
 
@@ -2557,115 +2566,115 @@ msgstr "Geheugenbelasting"
 msgid "Net Load"
 msgstr "Netwerkbelasting"
 
-#: multiload/properties.c:281
+#: multiload/properties.c:283
 msgid "Monitored Resources"
 msgstr "Gemeten bronnen"
 
-#: multiload/properties.c:306
+#: multiload/properties.c:308
 msgid "_Processor"
 msgstr "_Processor"
 
-#: multiload/properties.c:316
+#: multiload/properties.c:318
 msgid "_Memory"
 msgstr "_Geheugen"
 
-#: multiload/properties.c:326
+#: multiload/properties.c:328
 msgid "_Network"
 msgstr "_Netwerk"
 
-#: multiload/properties.c:336
+#: multiload/properties.c:338
 msgid "S_wap Space"
 msgstr "_Wisselbestand"
 
-#: multiload/properties.c:346
+#: multiload/properties.c:348
 msgid "_Load"
 msgstr "_Belasting"
 
-#: multiload/properties.c:390
+#: multiload/properties.c:392
 msgid "System m_onitor width: "
 msgstr "Systeembelasting _breedte:"
 
-#: multiload/properties.c:392
+#: multiload/properties.c:394
 msgid "System m_onitor height: "
 msgstr "Systeembelasting h_oogte:"
 
-#: multiload/properties.c:426
+#: multiload/properties.c:428
 msgid "Sys_tem monitor update interval: "
 msgstr "Sys_teembelasting verversingsinterval"
 
-#: multiload/properties.c:447
+#: multiload/properties.c:449
 msgid "milliseconds"
 msgstr "milliseconden"
 
-#: multiload/properties.c:485 multiload/properties.c:492
+#: multiload/properties.c:487 multiload/properties.c:494
 msgid "_User"
 msgstr "Gebr_uiker"
 
-#: multiload/properties.c:486
+#: multiload/properties.c:488
 msgid "S_ystem"
 msgstr "S_ysteem"
 
-#: multiload/properties.c:487
+#: multiload/properties.c:489
 msgid "N_ice"
 msgstr "_Achtergrond"
 
-#: multiload/properties.c:488
+#: multiload/properties.c:490
 msgid "I_dle"
 msgstr "_Ongebruikt"
 
-#: multiload/properties.c:493
+#: multiload/properties.c:495
 msgid "Sh_ared"
 msgstr "Ge_deeld"
 
-#: multiload/properties.c:494
+#: multiload/properties.c:496
 msgid "_Buffers"
 msgstr "B_uffers"
 
-#: multiload/properties.c:495
+#: multiload/properties.c:497
 msgid "Cach_ed"
 msgstr "_Gebufferd"
 
-#: multiload/properties.c:496
+#: multiload/properties.c:498
 msgid "F_ree"
 msgstr "V_rij"
 
-#: multiload/properties.c:500
+#: multiload/properties.c:502
 msgid "_SLIP"
 msgstr "_SLIP"
 
-#: multiload/properties.c:501
+#: multiload/properties.c:503
 msgid "PL_IP"
 msgstr "PL_IP"
 
-#: multiload/properties.c:502
+#: multiload/properties.c:504
 msgid "_Ethernet"
 msgstr "_Ethernet"
 
-#: multiload/properties.c:503
+#: multiload/properties.c:505
 msgid "Othe_r"
 msgstr "A_nders"
 
-#: multiload/properties.c:504 multiload/properties.c:514
+#: multiload/properties.c:506 multiload/properties.c:516
 msgid "_Background"
 msgstr "_Achtergrond"
 
-#: multiload/properties.c:508
+#: multiload/properties.c:510
 msgid "_Used"
 msgstr "Gebr_uikt"
 
-#: multiload/properties.c:509
+#: multiload/properties.c:511
 msgid "_Free"
 msgstr "_Vrij"
 
-#: multiload/properties.c:511
+#: multiload/properties.c:513
 msgid "Load"
 msgstr "Belasting"
 
-#: multiload/properties.c:513
+#: multiload/properties.c:515
 msgid "_Average"
 msgstr "_Gemiddeld"
 
-#: multiload/properties.c:534
+#: multiload/properties.c:536
 msgid "System Monitor Preferences"
 msgstr "Voorkeuren Systeembelasting"
 
@@ -2679,7 +2688,7 @@ msgstr "Maak, bekijk en beheer memo's op uw bureaublad"
 
 #. FIXME : Hack because libglade does not properly set these
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:3
-#: stickynotes/stickynotes_applet.c:134 stickynotes/stickynotes_applet.c:305
+#: stickynotes/stickynotes_applet.c:134 stickynotes/stickynotes_applet.c:318
 msgid "Sticky Notes"
 msgstr "Memo's"
 
@@ -2781,7 +2790,7 @@ msgid "Close note"
 msgstr "Memo sluiten"
 
 #: stickynotes/stickynotes.glade.h:21
-msgid "Force _default color & font on all notes"
+msgid "Force _default color and font on notes"
 msgstr "_Standaardkleur en lettertype gebruiken voor alle memo's"
 
 #: stickynotes/stickynotes.glade.h:22
@@ -3024,10 +3033,6 @@ msgid "Sticky notes' locked state"
 msgstr "Memo's vastgezet of niet"
 
 #: stickynotes/stickynotes.schemas.in.h:23
-msgid "Sticky notes' visiblity"
-msgstr "Memo's zichtbaarheid"
-
-#: stickynotes/stickynotes.schemas.in.h:23
 msgid "Sticky notes' visibility"
 msgstr "Memo's zichtbaarheid"
 
@@ -3051,7 +3056,7 @@ msgstr "Standaard themakleuren gebruiken"
 msgid "Whether to use the default system font"
 msgstr "Standaardlettertype gebruiken"
 
-#: stickynotes/stickynotes_applet.c:305
+#: stickynotes/stickynotes_applet.c:318
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:2
 #, c-format
 msgid "Monitor the quality of a wireless network link"
