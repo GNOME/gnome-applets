@@ -132,10 +132,13 @@ gkb_count_sizes (GKB * gkb)
     }
 
   /* Flag has either the with or the height set */
-  if (flag_width == 0)
-    flag_width = (gint) flag_height *1.5;
-  else
+  if (flag_width == 0) {
+    flag_height -= 4;
+    flag_width = (gint) flag_height * 1.5;
+  } else {
+    flag_width -= 4;
     flag_height = (gint) flag_width / 1.5;
+  }
 
   label_width = flag_width;
   label_height = flag_height;
@@ -154,9 +157,9 @@ gkb_count_sizes (GKB * gkb)
 	applet_width += label_width;
     }
 
-  gkb->w = flag_width - 1;
-  /* FIXME the applet is just a little bigger than panel, so I add the -2 here*/
-  gkb->h = flag_height - 1;
+  gkb->w = flag_width;
+  gkb->h = flag_height;
+
   if (horizontal) {
     gtk_widget_set_size_request (gkb->label_frame1, -1, gkb->h);
     gtk_widget_set_size_request (gkb->label_frame2, -1, gkb->h);
@@ -348,7 +351,6 @@ loadprop (GKB *gkb, int i)
 
   actdata = g_new0 (GkbKeymap, 1);
 
-
   buf = g_strdup_printf ("name_%d",i);
   actdata->name = gkb_load_pref (gkb, buf, (i?_("US 105 key keyboard"):_("Gnome Keyboard Default")));
   g_free (buf);
@@ -419,7 +421,7 @@ load_properties (GKB * gkb)
   gkb->old_state = gkb->state;
 
   gkb->is_small = gconf_applet_get_bool ("small");
-  text = gkb_load_pref (gkb, "mode", "Flag and Label");
+  text = gkb_load_pref (gkb, "mode", "Label");
   gkb->mode = gkb_util_get_mode_from_text (text);
   g_free (text);
 
