@@ -47,7 +47,7 @@ typedef enum {
 typedef struct {
 	PanelApplet base;
 	gchar *device;
-	gboolean show_percent, show_dialogs;
+	gboolean show_percent;
 
 	GList *devices;
 
@@ -390,11 +390,6 @@ wireless_applet_set_show_percent (WirelessApplet *applet, gboolean show) {
 	}
 }
 
-static void
-wireless_applet_set_show_dialogs (WirelessApplet *applet, gboolean show) {
-	applet->show_dialogs = show;
-}
-
 /* check stats, modify the state attribute */
 static void
 wireless_applet_read_device_state (WirelessApplet *applet)
@@ -551,14 +546,11 @@ wireless_applet_load_properties (WirelessApplet *applet)
 	{
 		applet->device = g_strdup (CFG_DEVICE);
 		applet->show_percent = TRUE;
-		applet->show_dialogs = TRUE;
 		return;
 	}
 
 	applet->show_percent = panel_applet_gconf_get_bool
 		(PANEL_APPLET (applet), "percent", NULL);
-	applet->show_dialogs = panel_applet_gconf_get_bool
-		(PANEL_APPLET (applet), "dialog", NULL);
 }
 
 static void
@@ -569,8 +561,6 @@ wireless_applet_save_properties (WirelessApplet *applet)
 			"device", applet->device, NULL);
 	panel_applet_gconf_set_bool (PANEL_APPLET (applet),
 			"percent", applet->show_percent, NULL);
-	panel_applet_gconf_set_bool (PANEL_APPLET (applet),
-			"dialog", applet->show_dialogs, NULL);
 }
 
 static void
@@ -585,12 +575,6 @@ wireless_applet_option_change (GtkWidget *widget, gpointer user_data)
 	entry = g_object_get_data (G_OBJECT (applet->prefs),
 			"show-percent-button");
 	wireless_applet_set_show_percent (applet,
-			gtk_toggle_button_get_active
-			(GTK_TOGGLE_BUTTON (entry)));
-
-	entry = g_object_get_data (G_OBJECT (applet->prefs),
-			"show-dialog-button");
-	wireless_applet_set_show_dialogs (applet, 
 			gtk_toggle_button_get_active
 			(GTK_TOGGLE_BUTTON (entry)));
 
@@ -645,16 +629,6 @@ wireless_applet_properties_dialog (BonoboUIComponent *uic,
 			applet);
 	gtk_object_set_data (GTK_OBJECT (applet->prefs),
 			"show-percent-button", pct);
-
-	/* Set the show-dialog thingy */
-	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog),
-			applet->show_dialogs);
-	g_signal_connect (GTK_OBJECT (dialog),
-			"toggled",
-			GTK_SIGNAL_FUNC (wireless_applet_option_change),
-			applet);
-	gtk_object_set_data (GTK_OBJECT (applet->prefs),
-			"show-dialog-button", dialog);
 
         /* Set the device menu */
 	gtk_option_menu_remove_menu (GTK_OPTION_MENU (device));
