@@ -13,10 +13,10 @@ cdplayer.h \
 cdrom-interface.h \
 led.c \
 led.h \
-cdrom-$(CDROM_HOST).c 
+cdrom-@CDROM_HOST@.c 
 
 cdplayer_applet2_DEPENDS = \
-cdrom-$(CDROM_HOST).c 
+cdrom-@CDROM_HOST@.c 
 
 cdplayer_applet2_LDADD = \
 $(GNOME_APPLETS_LIBS) \
