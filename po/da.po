@@ -21,8 +21,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 1.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-08-23 22:31+0200\n"
-"PO-Revision-Date: 2004-08-23 22:30+0200\n"
+"POT-Creation-Date: 2004-08-30 12:09+0200\n"
+"PO-Revision-Date: 2004-08-30 12:07+0200\n"
 "Last-Translator: Martin Willemoes Hansen <mwh@sysrq.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
 "MIME-Version: 1.0\n"
@@ -132,8 +132,8 @@ msgid "Shows keyboard status when accessibility features are used."
 msgstr "Viser tastaturstatus når tilgængelighedsfaciliteter benyttes."
 
 #: accessx-status/applet.c:1027
-msgid "XKB Extenstion is not enabled"
-msgstr "XKB-udvidelse er ikke aktiveret"
+msgid "XKB Extension is not enabled"
+msgstr "XKB-udvidelsen er ikke aktiveret"
 
 #: accessx-status/applet.c:1032
 msgid "Unknown error"
@@ -1447,6 +1447,7 @@ msgid "Czech and Slovak xkb keymap"
 msgstr "Tjekkisk og slovakisk xkb-tastaturlayout"
 
 #: gkb-new/descs/CZ_Czech_Slovak.keyprop.desktop.in.h:4
+#: gkb-new/descs/SK__x.keyprop.desktop.in.h:2
 #: gkb-new/descs/Slovak.keyprop.desktop.in.h:1
 #: gkb-new/descs/presets.xml.in.h:166 gkb-new/descs.sun/presets.xml.in.h:96
 msgid "Slovak"
@@ -1563,8 +1564,9 @@ msgid "Spanish"
 msgstr "Spansk"
 
 #: gkb-new/descs/ES_Spanish-x86.keyprop.desktop.in.h:3
-msgid "Spanish PC/AT 101 keyboard "
-msgstr "Spansk PC/AT 101-tastatur "
+#: gkb-new/descs/presets.xml.in.h:176
+msgid "Spanish PC/AT 101 keyboard"
+msgstr "Spansk PC/AT 101-tastatur"
 
 #: gkb-new/descs/ES_Spanish.keyprop.desktop.in.h:3
 #: gkb-new/descs/presets.xml.in.h:178
@@ -1756,8 +1758,9 @@ msgid "Sun (!not PC!) type5 Hungarian latin 2"
 msgstr "Sun (ikke pc!) Type-5 Ungarnsk Latin-2"
 
 #: gkb-new/descs/Hungarian-x86.keyprop.desktop.in.h:2
-msgid "Hungarian PC/AT 101 keyboard "
-msgstr "Ungarnsk PC/AT 101-tastatur "
+#: gkb-new/descs/presets.xml.in.h:93
+msgid "Hungarian PC/AT 101 keyboard"
+msgstr "Ungarnsk PC/AT 101-tastatur"
 
 #: gkb-new/descs/Hungarian.keyprop.desktop.in.h:2
 #: gkb-new/descs/presets.xml.in.h:92
@@ -2174,10 +2177,6 @@ msgstr "Serbisk standard xkb-tastaturlayout"
 msgid " keymap"
 msgstr " tastaturlayout"
 
-#: gkb-new/descs/SK__x.keyprop.desktop.in.h:2
-msgid "***FIXME***"
-msgstr "***RETMIG***"
-
 #: gkb-new/descs/Syriac.keyprop.desktop.in.h:1
 #: gkb-new/descs/Syriac_Phonetic.keyprop.desktop.in.h:1
 #: gkb-new/descs/presets.xml.in.h:188
@@ -2290,8 +2289,9 @@ msgid "United Kingdom"
 msgstr "Storbritannien"
 
 #: gkb-new/descs/UK-x86.keyprop.desktop.in.h:2
-msgid "UK PC/AT keyboard "
-msgstr "UK PC/AT-tastatur "
+#: gkb-new/descs/presets.xml.in.h:203
+msgid "UK PC/AT keyboard"
+msgstr "UK PC/AT-tastatur"
 
 #: gkb-new/descs/UK.keyprop.desktop.in.h:2 gkb-new/descs/presets.xml.in.h:202
 msgid "UK 105-key"
@@ -2425,10 +2425,6 @@ msgstr "Aserbadjansk-tyrkisk xkb-tastaturlayout"
 msgid "Former Czechoslovakia"
 msgstr "Tidligere Tjekkoslovakiet"
 
-#: gkb-new/descs/presets.xml.in.h:93
-msgid "Hungarian PC/AT 101 keyboard"
-msgstr "Ungarnsk PC/AT 101-tastatur"
-
 #: gkb-new/descs/presets.xml.in.h:131
 msgid "Mongolian alt keymap"
 msgstr "Mongolsk alternativt tastaturlayout"
@@ -2457,17 +2453,9 @@ msgstr "Serbisk tastaturlayout"
 msgid "Slovak keymap"
 msgstr "Slovakisk tastaturlayout"
 
-#: gkb-new/descs/presets.xml.in.h:176
-msgid "Spanish PC/AT 101 keyboard"
-msgstr "Spansk PC/AT 101-tastatur"
-
 #: gkb-new/descs/presets.xml.in.h:189
 msgid "Syriac Phonetic"
 msgstr "Syrisk fonetisk"
-
-#: gkb-new/descs/presets.xml.in.h:203
-msgid "UK PC/AT keyboard"
-msgstr "UK PC/AT-tastatur"
 
 #: gkb-new/descs.sun/presets.xml.in.h:3
 msgid "Armenian Sun keymap"
@@ -3361,7 +3349,10 @@ msgid ""
 "Get continuously updated stock quotes"
 msgstr "Få løbende opdaterede børsnoteringer"
 
-#: gtik/gtik.c:2026
+#. TRANSLATOR: This forms part of a sentance
+#. * "(No Change)". FIXME: string composition is bad.
+#.
+#: gtik/gtik.c:2029
 msgid "(No Change"
 msgstr "(Ingen ændring"
 
@@ -4403,7 +4394,7 @@ msgstr "%.1f mpt"
 msgid "%.1f km/h"
 msgstr "%.1f km/t"
 
-#. TRANSLATOR: This is the wind speed in miles per hour
+#. TRANSLATOR: This is the wind speed in meters per second
 #: gweather/weather.c:2281
 #, c-format
 msgid "%.1f m/s"
@@ -6386,6 +6377,18 @@ msgstr "Indstillinger for trådløs forbindelse"
 #: wireless/wireless-applet.glade.h:3
 msgid "_Monitored device:"
 msgstr "_Overvåget enhed:"
+
+#~ msgid "Spanish PC/AT 101 keyboard "
+#~ msgstr "Spansk PC/AT 101-tastatur "
+
+#~ msgid "Hungarian PC/AT 101 keyboard "
+#~ msgstr "Ungarnsk PC/AT 101-tastatur "
+
+#~ msgid "***FIXME***"
+#~ msgstr "***RETMIG***"
+
+#~ msgid "UK PC/AT keyboard "
+#~ msgstr "UK PC/AT-tastatur "
 
 #~ msgid "_Forecast"
 #~ msgstr "_Prognose"
