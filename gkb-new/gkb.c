@@ -158,10 +158,6 @@ gkb_sized_render (GKB * gkb)
       gkb->h = (int) gkb->w / 1.5;
     }
 
-  gtk_widget_set_usize (GTK_WIDGET (gkb->applet), gkb->w, gkb->h);
-  gtk_widget_set_usize (GTK_WIDGET (gkb->frame), gkb->w, gkb->h);
-  gtk_drawing_area_size (GTK_DRAWING_AREA (gkb->darea), gkb->w, gkb->h);
-  gtk_widget_set_usize (GTK_WIDGET (gkb->darea), gkb->w, gkb->h);
 
   gtk_widget_queue_resize (gkb->darea);
   gtk_widget_queue_resize (gkb->darea->parent);
@@ -204,13 +200,56 @@ gkb_update (GKB * gkb, gboolean set_command)
    * keymap, so when the set_commadn is false, it means that we
    * have changed size. In other words, we can't change size &
    * keymap at the same time */
-  if (!set_command)
-    gkb_sized_render (gkb);
-  
-  gkb_draw (gkb);
-  
+  if (gkb->is_small)
+   {
+    if (gkb->appearance == GKB_FLAG)
+     {
+      gtk_widget_show_all (gkb->darea_frame);
+      gtk_widget_hide (gkb->label_frame);
+      if (!set_command)
+       gkb_sized_render (gkb);  
+      gtk_widget_set_usize (GTK_WIDGET (gkb->applet), gkb->w, gkb->h);
+      gtk_drawing_area_size (GTK_DRAWING_AREA (gkb->darea), gkb->w, gkb->h);
+      gtk_widget_set_usize (GTK_WIDGET (gkb->darea), gkb->w, gkb->h);
+      gkb_draw (gkb);
+     }
+    else if (gkb->appearance == GKB_LABEL)
+     {
+      gtk_widget_set_usize (GTK_WIDGET (gkb->applet), gkb->w, gkb->h);
+      gtk_widget_set_usize (GTK_WIDGET (gkb->label), gkb->w, gkb->h);
+      gtk_widget_show_all (gkb->label_frame);
+      gtk_widget_hide (gkb->darea_frame);
+      gtk_label_set_text(GTK_LABEL(gkb->label),g_strdup(gkb->keymap->label));
+     } 
+   else 
+    {
+     gtk_widget_show_all (gkb->label_frame);
+     gtk_widget_show_all (gkb->darea_frame);
+     gtk_widget_set_usize (GTK_WIDGET (gkb->label), gkb->w, gkb->h);
+     gtk_widget_set_usize (GTK_WIDGET (gkb->applet), gkb->w, gkb->h * 2);
+     gtk_drawing_area_size (GTK_DRAWING_AREA (gkb->darea), gkb->w, gkb->h);
+     gtk_widget_set_usize (GTK_WIDGET (gkb->darea), gkb->w, gkb->h);
+     gtk_label_set_text(GTK_LABEL(gkb->label),g_strdup(gkb->keymap->label));
+     if (!set_command)
+      gkb_sized_render (gkb); 
+     gkb_draw (gkb);
+    }
+   }
+  else
+   {
+     gtk_widget_show_all (gkb->darea_frame);
+     gtk_widget_hide (gkb->label_frame);
+     if (!set_command)
+      gkb_sized_render (gkb);  
+     gtk_widget_set_usize (GTK_WIDGET (gkb->applet), gkb->w, gkb->h);
+     gtk_drawing_area_size (GTK_DRAWING_AREA (gkb->darea), gkb->w, gkb->h);
+     gtk_widget_set_usize (GTK_WIDGET (gkb->darea), gkb->w, gkb->h);
+     gkb_draw (gkb);
+   }
+ 
   if (set_command)
-    gkb_system_set_keymap (gkb);
+     gkb_system_set_keymap (gkb);
+
 }
 
 static void
@@ -294,8 +333,8 @@ applet_save_session (GtkWidget * w,
   gnome_config_set_int ("gkb/num", gkb->n);
   gnome_config_set_int ("gkb/small", gkb->is_small);
   gnome_config_set_string ("gkb/key", gkb->key);
-  text = gkb_util_get_text_from_appeareance (gkb->appeareance);
-  gnome_config_set_string ("gkb/appeareance", text);
+  text = gkb_util_get_text_from_appearance (gkb->appearance);
+  gnome_config_set_string ("gkb/appearance", text);
 
   while (list)
     {
@@ -440,8 +479,8 @@ load_properties ()
   convert_string_to_keysym_state (gkb->key, &gkb->keysym, &gkb->state);
 
   gkb->is_small = gnome_config_get_int ("gkb/small=0");
-  text = gnome_config_get_string ("gkb/appeareance=Flag");
-  gkb->appeareance = gkb_util_get_appeareance_from_text (text);
+  text = gnome_config_get_string ("gkb/appearance=Flag");
+  gkb->appearance = gkb_util_get_appearance_from_text (text);
   g_free (text);
 
   if (gkb->n == 0)
@@ -514,6 +553,14 @@ create_gkb_widget ()
 
   style = gtk_widget_get_style (gkb->applet);
 
+  gkb->eventbox = gtk_event_box_new ();
+  gtk_widget_show (gkb->eventbox);
+
+  gkb->box = gtk_vbox_new (FALSE, 0);
+  gtk_widget_show(gkb->box);
+
+  gtk_container_add (GTK_CONTAINER (gkb->eventbox), gkb->box);
+
   gkb->darea = gtk_drawing_area_new ();
 
   gtk_drawing_area_size (GTK_DRAWING_AREA (gkb->darea), gkb->w, gkb->h);
@@ -522,21 +569,28 @@ create_gkb_widget ()
 			 gtk_widget_get_events (gkb->darea) |
 			 GDK_BUTTON_PRESS_MASK);
 
-  gtk_signal_connect (GTK_OBJECT (gkb->darea), "button_press_event",
+  gtk_signal_connect (GTK_OBJECT (gkb->eventbox), "button_press_event",
 		      GTK_SIGNAL_FUNC (gkb_button_press_event_cb), NULL);
-  gtk_signal_connect (GTK_OBJECT (gkb->darea), "expose_event",
+  gtk_signal_connect (GTK_OBJECT (gkb->eventbox), "expose_event",
 		      GTK_SIGNAL_FUNC (gkb_expose), NULL);
 
   gtk_widget_show (gkb->darea);
 
-  gkb->keymap = g_list_nth_data (gkb->maps, 0);
+  gkb->darea_frame = gtk_frame_new (NULL);
+  gtk_frame_set_shadow_type (GTK_FRAME (gkb->darea_frame), GTK_SHADOW_IN);
+  gtk_container_add (GTK_CONTAINER (gkb->darea_frame), gkb->darea);
 
-  gkb->frame = gtk_frame_new (NULL);
-  gtk_frame_set_shadow_type (GTK_FRAME (gkb->frame), GTK_SHADOW_IN);
-  gtk_container_add (GTK_CONTAINER (gkb->frame), gkb->darea);
+  gtk_box_pack_start (GTK_BOX (gkb->box), gkb->darea_frame, TRUE, TRUE, 0);
+
+  gkb->label = gtk_label_new (_("GKB"));
+
+  gkb->label_frame = gtk_frame_new (NULL);
+  gtk_frame_set_shadow_type (GTK_FRAME (gkb->label_frame), GTK_SHADOW_IN);
+  gtk_container_add (GTK_CONTAINER (gkb->label_frame), gkb->label);
+  gtk_container_add (GTK_CONTAINER (gkb->box), gkb->label_frame);
+
   gtk_widget_pop_colormap ();
   gtk_widget_pop_visual ();
-
 
 }
 
@@ -729,8 +783,9 @@ gkb_activator (CORBA_Object poa_in,
 
   gkb_activator_register_callbacks (gkb);
 
-  gtk_widget_show (gkb->frame);
-  applet_widget_add (APPLET_WIDGET (gkb->applet), gkb->frame);
+  gtk_widget_show (gkb->darea_frame);
+
+  applet_widget_add (APPLET_WIDGET (gkb->applet), gkb->eventbox);
   gtk_widget_show (gkb->applet);
 
   gdk_window_add_filter (GDK_ROOT_PARENT (), event_filter, NULL);

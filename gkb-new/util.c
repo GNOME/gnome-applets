@@ -28,24 +28,41 @@
 #include <gkb.h>
 
 const gchar *
-gkb_util_get_text_from_appeareance (GkbAppeareance appeareance)
+gkb_util_get_text_from_appearance (GkbAppeareance appearance)
 {
-  if (appeareance == GKB_LABEL)
+  if (appearance == GKB_LABEL)
     return _("Label");
   
-  if (appeareance == GKB_FLAG)
+  if (appearance == GKB_FLAG)
     return _("Flag");
 
-  if (appeareance == GKB_FLAG_AND_LABEL)
+  if (appearance == GKB_FLAG_AND_LABEL)
     return _("Flag and Label");
 
-  g_warning ("Invalid appeareance [%i]\n", appeareance);
+  g_warning ("Invalid appearance [%i]\n", appearance);
   
   return _("Flag");
 }
+
+gint
+gkb_util_get_int_from_appearance (GkbAppeareance appearance)
+{
+  if (appearance == GKB_LABEL)
+    return 1;
+  
+  if (appearance == GKB_FLAG)
+    return 0;
+
+  if (appearance == GKB_FLAG_AND_LABEL)
+    return 2;
+
+  g_warning ("Invalid appearance [%i]\n", appearance);
+  
+  return 0;
+}
   
 GkbAppeareance
-gkb_util_get_appeareance_from_text (const gchar *text)
+gkb_util_get_appearance_from_text (const gchar *text)
 {
   g_return_val_if_fail (text != NULL, GKB_FLAG);
   

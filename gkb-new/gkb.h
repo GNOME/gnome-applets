@@ -84,8 +84,7 @@ struct _GkbPropertyBoxInfo
   
   /* Other properties */
   gint is_small;
-  gint mode;
-  GkbAppeareance appeareance;
+  GkbAppeareance appearance;
 };
 
 struct _GkbKeymap
@@ -113,20 +112,23 @@ struct _GKB
   
   /* Properties */
   PanelOrientType orient;
-  GkbAppeareance appeareance;
+  GkbAppeareance appearance;
   gint is_small;
   gint w;
   gint h;
 
   /* Widgets */
   GtkWidget *applet;
-  GtkWidget *frame;
+  GtkWidget *eventbox;
+  GtkWidget *box;
+  GtkWidget *label;
+  GtkWidget *label_frame;
   GtkWidget *darea;
+  GtkWidget *darea_frame;
   GtkWidget *addwindow;
 
   gint n;
   gint cur;
-  gint mode;
 
   gchar *key;
   guint keysym, state;
@@ -193,8 +195,9 @@ void gkb_prop_map_add (GkbPropertyBoxInfo *pbi);
 
 
 /* util.c */
-const gchar *  gkb_util_get_text_from_appeareance (GkbAppeareance appeareance);
-GkbAppeareance gkb_util_get_appeareance_from_text (const gchar *text);
+const gchar *  gkb_util_get_text_from_appearance (GkbAppeareance appearance);
+gint  gkb_util_get_int_from_appearance (GkbAppeareance appearance);
+GkbAppeareance gkb_util_get_appearance_from_text (const gchar *text);
 
 /* keygrab.c */
 gboolean convert_string_to_keysym_state(const char *string,
