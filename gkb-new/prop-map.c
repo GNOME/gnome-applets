@@ -256,12 +256,17 @@ gkb_prop_map_edit (GkbPropertyBoxInfo * pbi)
   GtkWidget *vbox1;
   GtkWidget *table1;
   GkbKeymap *keymap;
+  GConfClient *client;
+  gboolean inhibit_command_line;
 
   if (pbi->selected_keymap == NULL)
     {
       g_warning ("Why is the edit button active");
       return;
     }
+
+  client = gconf_client_get_default ();
+  inhibit_command_line = gconf_client_get_bool (client, "/desktop/gnome/lockdown/inhibit_command_line", NULL);
 
   mdi = g_new0 (GkbMapDialogInfo, 1);
   mdi->pbi = pbi;
@@ -303,6 +308,8 @@ gkb_prop_map_edit (GkbPropertyBoxInfo * pbi)
 
   gkb_prop_map_label_at (table1, 0, 2, _("Co_mmand:"));
   mdi->command_entry = gkb_prop_map_entry_at (table1, 1, 2, mdi, keymap->command);
+  if (inhibit_command_line)
+	  gtk_widget_set_sensitive (mdi->command_entry, FALSE);
 
   gkb_prop_map_label_at (table1, 0, 3, _("_Flag:"));
   mdi->flag_entry = gkb_prop_map_icon_entry_at (table1, 1, 3, mdi, keymap->flag);
