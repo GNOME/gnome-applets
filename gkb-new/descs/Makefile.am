@@ -41,7 +41,7 @@ preset_data_predata = AM_Armenian.keyprop.in \
 		RU_Russian.keyprop.in RU_Russian_x.keyprop.in \
 		RussianCyril.keyprop.in SE_Swedish.keyprop.in \
 		SI_Slovenian.keyprop.in SR_Dutch.keyprop.in \
-		Slovak.keyprop.in Slovene.keyprop.in Swedish.keyprop.in \
+		Slovak.keyprop.in Slovenian.keyprop.in Swedish.keyprop.in \
 		TH_Thai.keyprop.in TH_Thai_x.keyprop.in TR-f.keyprop.in \
 		TR-q.keyprop.in TR_Turkish.keyprop.in \
 		TR_Turkish_x.keyprop.in Thai.keyprop.in Thai2.keyprop.in \
