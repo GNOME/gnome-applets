@@ -105,6 +105,24 @@ odometer_stuff = \
 	odometer/mail.png		\
 	odometer/clockmaildata
 
+radar_bluedir = $(datadir)/clockmail/radar-blue
+radar_blue_DATA =
+radar_blue_stuff = \
+	radar-blue/clockmaildata	\
+	radar-blue/hour_hand.png	\
+	radar-blue/minute_hand.png	\
+	radar-blue/second_hand.png	\
+	radar-blue/back.png
+
+radar_greendir = $(datadir)/clockmail/radar-green
+radar_green_DATA =
+radar_green_stuff = \
+	radar-green/clockmaildata	\
+	radar-green/hour_hand.png	\
+	radar-green/minute_hand.png	\
+	radar-green/second_hand.png	\
+	radar-green/back.png	
+
 zclockmaildir = $(datadir)/clockmail
 zclockmail_DATA = \
 	$(analog_stuff)		\
@@ -117,6 +135,8 @@ zclockmail_DATA = \
 	$(mailflap_stuff)	\
 	$(fuelgauge_stuff)	\
 	$(counter_stuff)	\
-	$(odometer_stuff)
+	$(odometer_stuff)	\
+	$(radar_blue_stuff)	\
+	$(radar_green_stuff)
 
 EXTRA_DIST = $(zclockmail_DATA)
