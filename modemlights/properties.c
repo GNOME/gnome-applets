@@ -95,7 +95,7 @@ void property_load(PanelApplet *applet)
 
 }
 
-static void connect_changed_cb(GtkEntry *entry, gpointer data)
+static void connect_changed_cb(GtkEntry *entry, GdkEventFocus *event, gpointer data)
 {
 	PanelApplet *applet = data;
 	
@@ -104,7 +104,7 @@ static void connect_changed_cb(GtkEntry *entry, gpointer data)
 	panel_applet_gconf_set_string (applet, "connect", command_connect, NULL);
 }
 
-static void disconnect_changed_cb(GtkEntry *entry, gpointer data)
+static void disconnect_changed_cb(GtkEntry *entry, GdkEventFocus *event, gpointer data)
 {
 	PanelApplet *applet = data;
 	
@@ -113,7 +113,7 @@ static void disconnect_changed_cb(GtkEntry *entry, gpointer data)
 	panel_applet_gconf_set_string (applet, "disconnect", command_disconnect, NULL);
 }
 
-static void lockfile_changed_cb(GtkEntry *entry, gpointer data)
+static void lockfile_changed_cb(GtkEntry *entry, GdkEventFocus *event, gpointer data)
 {
 	PanelApplet *applet = data;
 	
@@ -122,7 +122,7 @@ static void lockfile_changed_cb(GtkEntry *entry, gpointer data)
 	panel_applet_gconf_set_string (applet, "lockfile", lock_file, NULL);
 }
 
-static void device_changed_cb(GtkEntry *entry, gpointer data)
+static void device_changed_cb(GtkEntry *entry, GdkEventFocus *event, gpointer data)
 {
 	PanelApplet *applet = data;
 	
@@ -339,7 +339,7 @@ void property_show(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 
 	connect_entry = gtk_entry_new_with_max_length(255);
 	gtk_entry_set_text(GTK_ENTRY(connect_entry), command_connect);
-	g_signal_connect (G_OBJECT (connect_entry), "activate",
+	g_signal_connect (G_OBJECT (connect_entry), "focus_out_event",
 			  G_CALLBACK (connect_changed_cb), applet);			  
         gtk_box_pack_start(GTK_BOX(hbox), connect_entry , TRUE, TRUE, 0);
 	gtk_widget_show(connect_entry);
@@ -355,7 +355,7 @@ void property_show(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 
 	disconnect_entry = gtk_entry_new_with_max_length(255);
 	gtk_entry_set_text(GTK_ENTRY(disconnect_entry), command_disconnect);
-	g_signal_connect (G_OBJECT (disconnect_entry), "activate",
+	g_signal_connect (G_OBJECT (disconnect_entry), "focus_out_event",
 			  G_CALLBACK (disconnect_changed_cb), applet);
         gtk_box_pack_start(GTK_BOX(hbox), disconnect_entry, TRUE, TRUE, 0);
 	gtk_widget_show(disconnect_entry);
@@ -471,7 +471,7 @@ void property_show(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 
 	lockfile_entry = gtk_entry_new_with_max_length(255);
 	gtk_entry_set_text(GTK_ENTRY(lockfile_entry), lock_file);
-	g_signal_connect (G_OBJECT (lockfile_entry), "activate",
+	g_signal_connect (G_OBJECT (lockfile_entry), "focus_out_event",
 			  G_CALLBACK (lockfile_changed_cb), applet);
         gtk_box_pack_start(GTK_BOX(hbox), lockfile_entry, TRUE, TRUE, 0);
 	gtk_widget_show(lockfile_entry);
@@ -494,7 +494,7 @@ void property_show(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 
 	device_entry = gtk_entry_new_with_max_length(16);
 	gtk_entry_set_text(GTK_ENTRY(device_entry), device_name);
-	g_signal_connect (G_OBJECT (device_entry), "activate",
+	g_signal_connect (G_OBJECT (device_entry), "focus_out_event",
 			  G_CALLBACK (device_changed_cb), applet);
         gtk_box_pack_start(GTK_BOX(hbox), device_entry, TRUE, TRUE, 0);
 	gtk_widget_show(device_entry);
@@ -503,7 +503,7 @@ void property_show(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 	checkbox = gtk_check_button_new_with_label(_("Use ISDN"));
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (checkbox), use_ISDN);
 	g_signal_connect(G_OBJECT(checkbox), "toggled",
-			   G_CALLBACK(isdn_checkbox_cb), NULL);
+			   G_CALLBACK(isdn_checkbox_cb), applet);
         gtk_box_pack_start(GTK_BOX(vbox), checkbox, FALSE, FALSE, 0);
 	gtk_widget_show(checkbox);
 
