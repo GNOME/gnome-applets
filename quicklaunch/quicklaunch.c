@@ -35,19 +35,12 @@
 
 static void reload_data(void);
 
-GList *launcher_widgets = NULL;
-GList *launchers = NULL;
-GtkWidget *label;
-GtkWidget *launcher_table;
-GtkWidget *wnd;
-GtkObject *dedit;
-GtkWidget *handlebox;
-
-gint rows=2;
-gint cols=2;
-gint appcount=0;
-gint orientation=0;
-gint panel_size=48;
+static GList *launcher_widgets = NULL;
+static GList *launchers = NULL;
+static GtkWidget *label;
+static GtkWidget *launcher_table;
+static GtkWidget *wnd;
+static GtkWidget *handlebox;
 
 char *directory = NULL;
 
@@ -61,8 +54,9 @@ cb_about (AppletWidget *widget, gpointer data)
 	};
 
 	if (about) {
-		gdk_window_show  (about->window);
-		gdk_window_raise (about->window);
+		gtk_widget_show (about);
+		if(about->window)
+			gdk_window_raise (about->window);
 		return;
 	}
 
@@ -73,6 +67,10 @@ cb_about (AppletWidget *widget, gpointer data)
 				  "windowish QuickLaunch toolbar, avoiding "
 				  "that annoying huge GNOME launchers."),
 				NULL);
+	/* null about when the box gets destroyed */
+	gtk_signal_connect (GTK_OBJECT (about), "destroy",
+			    GTK_SIGNAL_FUNC (gtk_widget_destroyed),
+			    &about);
 
 	gtk_widget_show (about);
 }
@@ -80,23 +78,17 @@ cb_about (AppletWidget *widget, gpointer data)
 static void 
 launch_app_cb (GtkWidget *widget, gpointer data)
 {
-	static gint i;
-	GnomeDesktopEntry *dentry;
-
-	i = GPOINTER_TO_INT (gtk_object_get_data (GTK_OBJECT (widget), "index"));
-	dentry = g_list_nth (launchers, i)->data;
-	gnome_desktop_entry_launch (dentry);
+	GnomeDesktopEntry *dentry = data;
+	if(dentry) gnome_desktop_entry_launch (dentry);
 }
 
 static void
-destroy_launcher_widgets ()
+destroy_launcher_widgets (void)
 {
 	GList *p;
 	p = launcher_widgets;
 
 	while (p) {
-		gtk_container_remove (GTK_CONTAINER (launcher_table),
-				      GTK_WIDGET (p->data));
 		gtk_widget_destroy (GTK_WIDGET (p->data));
 		p = p->next;
 	}
@@ -111,37 +103,29 @@ destroy_launcher_widgets ()
 }
 
 static void 
-cb_properties_apply (GtkWidget *widget, int page, gpointer index)
+cb_properties_apply (GtkWidget *widget, int page, gpointer data)
 {
 	GnomeDesktopEntry *dentry;
-	GnomeDesktopEntry *old_dentry;
-	static gint i;
+	char *location = data;
+	GtkWidget *dedit;
 
-	i = GPOINTER_TO_INT (index);
-	old_dentry = g_list_nth (launchers, i)->data;
+	dedit = gtk_object_get_data(GTK_OBJECT(widget), "dedit");
+
 	dentry = gnome_dentry_get_dentry (GNOME_DENTRY_EDIT (dedit));
 	if (dentry) {
-		dentry->location = old_dentry->location;
+		g_free(dentry->location);
+		dentry->location = g_strdup(location);
+
 		gnome_desktop_entry_save (dentry);
 		reload_data ();
 	}
 }
 
-static void
-cb_properties_close (GtkWidget *widget, int page, gpointer data)
-{
-	gtk_widget_destroy (widget);
-	gtk_object_destroy (dedit);
-	dedit = NULL;
-}
-
 static GtkWidget *
-create_properties_dialog (gint idx)
+create_properties_dialog (GnomeDesktopEntry *dentry)
 {
-	GnomeDesktopEntry *dentry;
 	GtkWidget *dialog;
-
-	dentry = g_list_nth (launchers, idx)->data;  
+	GtkObject *dedit;
 
 	dialog = gnome_property_box_new ();
 	gtk_window_set_title (GTK_WINDOW (dialog), _("Launcher Properties"));
@@ -149,6 +133,7 @@ create_properties_dialog (gint idx)
   
 	dedit = gnome_dentry_edit_new_notebook (
 		GTK_NOTEBOOK (GNOME_PROPERTY_BOX (dialog)->notebook));
+	gtk_object_set_data(GTK_OBJECT(dialog), "dedit", dedit);
 
 	gnome_dentry_edit_set_dentry (GNOME_DENTRY_EDIT (dedit), dentry);
 
@@ -156,53 +141,54 @@ create_properties_dialog (gint idx)
 				   GTK_SIGNAL_FUNC (gnome_property_box_changed),
 				   GTK_OBJECT (dialog));
 
-	gtk_signal_connect (GTK_OBJECT (dialog), "apply",
-			    GTK_SIGNAL_FUNC (cb_properties_apply),
-			    GINT_TO_POINTER (index));
-	gtk_signal_connect (GTK_OBJECT (dialog), "destroy",
-			    GTK_SIGNAL_FUNC (cb_properties_close),
-			    NULL);
+	gtk_signal_connect_full (GTK_OBJECT (dialog), "apply",
+				 GTK_SIGNAL_FUNC (cb_properties_apply), NULL,
+				 g_strdup(dentry->location),
+				 (GtkDestroyNotify)g_free,
+				 FALSE, FALSE);
+	gtk_signal_connect_object (GTK_OBJECT (dialog), "destroy",
+				   GTK_SIGNAL_FUNC (gtk_object_destroy),
+				   GTK_OBJECT(dedit));
 	return dialog;
 }
 
 static void
-cb_launcher_properties (GtkWidget *widget, gpointer index)
+cb_launcher_properties (GtkWidget *widget, gpointer data)
 {
-	gint i;
 	GtkWidget *dialog;
-	GtkWidget *button;
+	GtkWidget *button = data;
 
-	if (dedit) 
-		return;
-	
-	i = GPOINTER_TO_INT (index);
-	button = g_list_nth (launcher_widgets, i)->data;
 	dialog = gtk_object_get_data (GTK_OBJECT (button), "properties-box");
+	if(!dialog) {
+		GnomeDesktopEntry *dentry;
+		dentry = gtk_object_get_data (GTK_OBJECT (button), "dentry");
 
-	dialog = create_properties_dialog (GPOINTER_TO_INT (index));
-	gtk_object_set_data (GTK_OBJECT (button), "properties-box", dialog);
+		dialog = create_properties_dialog (dentry);
+		gtk_object_set_data (GTK_OBJECT (button),
+				     "properties-box", dialog);
+	}
 	gtk_widget_show_all (dialog);
 }
 
 static void
-cb_launcher_delete (GtkWidget *widget, gpointer index)
+cb_launcher_delete (GtkWidget *widget, gpointer data)
 {
-	gint i;
+	GtkWidget *button = data;
 	GnomeDesktopEntry *dentry;
+	dentry = gtk_object_get_data (GTK_OBJECT (button), "dentry");
   
-	i = GPOINTER_TO_INT (index);
-	dentry=g_list_nth (launchers, i)->data;  
 	unlink (dentry->location);
 	reload_data ();
 }
 
 static void
-launcher_table_update ()
+launcher_table_update (void)
 {
 	gint x=0;
 	gint y=0;
-	gint c,i;
-	gint rows;
+	gint c,i,rows;
+	gboolean vertical;
+	GList *li;
 	GtkWidget *button;
 	GtkWidget *pixmap;
 	GtkWidget *menu;
@@ -215,12 +201,21 @@ launcher_table_update ()
 		GNOMEUIINFO_END,
 	};
 
-	rows = panel_size/24;
+	switch(applet_widget_get_panel_orient(APPLET_WIDGET(wnd))) {
+	case ORIENT_UP:
+	case ORIENT_DOWN:
+		vertical = FALSE;
+		break;
+	default:
+		vertical = TRUE;
+		break;
+	}
+	rows = applet_widget_get_panel_pixel_size(APPLET_WIDGET(wnd))/24;
 	if(rows<1) rows = 1;
 
 	destroy_launcher_widgets ();
 	c = g_list_length (launchers);
-	if (orientation) {
+	if (vertical) {
 		gtk_table_resize (GTK_TABLE (launcher_table), c/rows, 1);
 		gtk_handle_box_set_handle_position (GTK_HANDLE_BOX (handlebox),
 						    GTK_POS_TOP);
@@ -238,8 +233,8 @@ launcher_table_update ()
 		gtk_widget_show (label);
 		return;
 	}
-	for (i=0; i < c; i++) {
-		dentry = (g_list_nth (launchers, i))->data;
+	for (li = launchers, i=0; li && i < c; li = li->next, i++) {
+		dentry = li->data;
 
 		if (!dentry->icon)
 			dentry->icon = gnome_pixmap_file (UNKNOWN_ICON);
@@ -250,7 +245,7 @@ launcher_table_update ()
 		gtk_container_set_border_width (GTK_CONTAINER (button), 0);
 		gtk_container_add (GTK_CONTAINER (button), pixmap);
 		gtk_widget_show (pixmap);
-		if (!orientation)
+		if (!vertical)
 			gtk_table_attach_defaults (GTK_TABLE (launcher_table),
 						   button, x, x+1, y, y+1);
 		else
@@ -261,10 +256,9 @@ launcher_table_update ()
 		gtk_container_clear_resize_widgets (
 			GTK_CONTAINER (launcher_table));
 		gtk_widget_show (button);
-		gtk_object_set_data (GTK_OBJECT (button), "index", 
-				     GINT_TO_POINTER (i));
+		gtk_object_set_data (GTK_OBJECT(button),"dentry", dentry);
 		gtk_signal_connect (GTK_OBJECT(button),"clicked",
-				    GTK_SIGNAL_FUNC (launch_app_cb), NULL);
+				    GTK_SIGNAL_FUNC (launch_app_cb), dentry);
 		applet_widget_set_widget_tooltip (APPLET_WIDGET(wnd),
 						  button, dentry->name);
 		launcher_widgets = g_list_append (launcher_widgets, button);
@@ -273,7 +267,7 @@ launcher_table_update ()
 		uinfo[0].label           = _("Launcher properties...");
 		uinfo[0].hint            = NULL;
 		uinfo[0].moreinfo        = cb_launcher_properties;
-		uinfo[0].user_data       = GINT_TO_POINTER(i);
+		uinfo[0].user_data       = NULL;
 		uinfo[0].unused_data     = NULL;
 		uinfo[0].pixmap_type     = GNOME_APP_PIXMAP_NONE;
 		uinfo[0].pixmap_info     = GNOME_STOCK_MENU_OPEN;
@@ -285,7 +279,7 @@ launcher_table_update ()
 		uinfo[1].label           = _("Delete launcher");
 		uinfo[1].hint            = NULL;
 		uinfo[1].moreinfo        = cb_launcher_delete;
-		uinfo[1].user_data       = GINT_TO_POINTER(i);
+		uinfo[1].user_data       = NULL;
 		uinfo[1].unused_data     = NULL;
 		uinfo[1].pixmap_type     = GNOME_APP_PIXMAP_NONE;
 		uinfo[1].pixmap_info     = GNOME_STOCK_MENU_OPEN;
@@ -294,7 +288,7 @@ launcher_table_update ()
 		uinfo[1].widget          = NULL;
 
 		menu = gnome_popup_menu_new (uinfo);
-		gnome_popup_menu_attach (menu, button, GINT_TO_POINTER(i));
+		gnome_popup_menu_attach (menu, button, button);
 
 		if (y == rows-1) {
 			y=0;
@@ -309,7 +303,6 @@ add_launcher(const char *filename)
 {
 	GnomeDesktopEntry *dentry;
 
-	appcount++;
 	dentry = gnome_desktop_entry_load (filename);
 	if (dentry == NULL)
 		return;
@@ -323,16 +316,18 @@ scan_dir (char *dirname)
 	struct dirent *dent;
 	DIR *dir;
   
-	directory=dirname;
 	dir=opendir(dirname);
 	if (dir == NULL) 
 		return;
 	while ((dent = readdir(dir)) != NULL) 
 	{
+		char *file;
 		if (dent->d_name[0] == '.') 
 			continue;
 
-		add_launcher (g_concat_dir_and_file (dirname, dent->d_name));
+		file = g_concat_dir_and_file (dirname, dent->d_name);
+		add_launcher (file);
+		g_free(file);
 	}
 	closedir (dir);
 	launcher_table_update ();
@@ -340,9 +335,10 @@ scan_dir (char *dirname)
 }
 
 static void
-reload_data ()
+reload_data (void)
 {
 	destroy_launcher_widgets ();
+	g_list_foreach (launchers, (GFunc)gnome_desktop_entry_free, NULL);
 	g_list_free (launchers);
 	launchers = NULL;
 	scan_dir (directory);
@@ -364,10 +360,11 @@ drop_launcher (gchar *filename)
 	dentry = gnome_desktop_entry_load (filename);
 	if (dentry == NULL)
 		return;  
+	g_free(dentry->location);
 	dentry->location = g_concat_dir_and_file (directory, 
 						  g_basename (filename));
 	gnome_desktop_entry_save (dentry);
-  
+	gnome_desktop_entry_free (dentry);
 }
 
 static void
@@ -384,37 +381,8 @@ drag_data_received (GtkWidget *widget,
   
 	names = gnome_uri_list_extract_filenames ((char *)selection_data->data);
 	g_list_foreach (names, (GFunc)drop_launcher, NULL);
-	g_list_free (names);
+	gnome_uri_list_free_strings (names);
 	reload_data ();
-}
-
-static void
-msg_destroy (GtkWidget *widget, gpointer data)
-{
-	gtk_main_quit ();
-}
-
-static void
-cb_change_orient (GtkWidget *widget, PanelOrientType orient, gpointer data)
-{
-	switch(orient) {
-	case ORIENT_UP:
-	case ORIENT_DOWN:
-		orientation = 0;
-		break;
-	case ORIENT_LEFT:
-	case ORIENT_RIGHT:
-		orientation = 1;
-		break;
-	}	
-	launcher_table_update ();
-}
-
-static void
-cb_change_pixel_size (GtkWidget *widget, int size, gpointer data)
-{
-	panel_size = size;
-	launcher_table_update ();
 }
 
 /* ignore first button click and translate it into a second button slick */
@@ -432,8 +400,6 @@ ignore_1st_click(GtkWidget *widget, GdkEvent *event)
 	 
 	return FALSE;
 }
-
-
 
 static void
 init_quicklaunch (void)
@@ -457,7 +423,7 @@ init_quicklaunch (void)
 						     GNOME_MESSAGE_BOX_ERROR);
 			gtk_widget_show (msg);
 			gtk_signal_connect (GTK_OBJECT(msg),"destroy",
-					    GTK_SIGNAL_FUNC (msg_destroy),
+					    GTK_SIGNAL_FUNC (gtk_main_quit),
 					    NULL);
 		}
 	}
@@ -466,10 +432,10 @@ init_quicklaunch (void)
 	gtk_signal_connect( GTK_OBJECT (wnd), "destroy",
 			    GTK_SIGNAL_FUNC (cb_applet_destroy), NULL);
 	gtk_signal_connect (GTK_OBJECT (wnd), "change_orient",
-			    GTK_SIGNAL_FUNC (cb_change_orient), NULL);
+			    GTK_SIGNAL_FUNC (launcher_table_update), NULL);
 	gtk_signal_connect (GTK_OBJECT (wnd), "change_pixel_size",
-			    GTK_SIGNAL_FUNC (cb_change_pixel_size), NULL);
-	launcher_table=gtk_table_new (rows, cols, FALSE);
+			    GTK_SIGNAL_FUNC (launcher_table_update), NULL);
+	launcher_table=gtk_table_new (0, 0, FALSE);
 	gtk_container_set_resize_mode (GTK_CONTAINER (launcher_table),
 				       GTK_RESIZE_QUEUE);
 	frame = gtk_frame_new (NULL);
