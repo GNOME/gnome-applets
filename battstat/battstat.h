@@ -118,6 +118,7 @@ typedef struct _ProgressData {
   GtkObject *eorange_adj;
   GtkObject *eyellow_adj;
   int pixtimer;
+  int acpiwatch;
   GtkWidget *font_toggle;
   GtkWidget *lowbatt_toggle;
   GtkWidget *dock_toggle;
@@ -154,7 +155,7 @@ extern char * battery_gray_xpm[];
 void prop_cb (BonoboUIComponent *, ProgressData *, const char *);
 int prop_cancel (GtkWidget *, gpointer);
 
-void apm_readinfo(PanelApplet *);
+void apm_readinfo(PanelApplet *, ProgressData *);
 void adj_value_changed_cb(GtkAdjustment *, gpointer);
 void font_set_cb(GtkWidget *, int, gpointer);
 void simul_cb(GtkWidget *, gpointer);

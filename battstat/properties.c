@@ -339,7 +339,7 @@ prop_cb (BonoboUIComponent *uic,
   client = gconf_client_get_default ();
   inhibit_command_line = gconf_client_get_bool (client, "/desktop/gnome/lockdown/inhibit_command_line", NULL);
 
-  apm_readinfo (PANEL_APPLET (battstat->applet));
+  apm_readinfo (PANEL_APPLET (battstat->applet), battstat);
 
 #ifdef __FreeBSD__
   percentage = apminfo.ai_batt_life;

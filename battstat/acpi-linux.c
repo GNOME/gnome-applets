@@ -36,6 +36,8 @@
 #include <stdlib.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <sys/socket.h>
+#include <sys/un.h>
 #include <fcntl.h>
 #include <errno.h>
 #include <unistd.h>
@@ -136,38 +138,59 @@ read_string (GHashTable *hash, const char *key)
   return g_hash_table_lookup (hash, key);
 }
 
-/*
- * Fills out a classic apm_info structure with the data gathered from
- * the ACPI kernel interface in /proc
- */
-gboolean acpi_linux_read(struct apm_info *apminfo)
+/* Reads the current status of the AC adapter and stores the
+ * result in acpiinfo->ac_online. */
+static gboolean update_ac_info(struct acpi_info * acpiinfo)
 {
-  guint32 max_capacity, low_capacity, critical_capacity, remain;
-  gboolean charging, ac_online;
-  gulong acpi_ver;
-  char buf[BUFSIZ];
-  GHashTable *hash;
-  const char *ac_state_state, *charging_state;
-  const char *batt_state_state;
-  char batt_info[60], batt_state[60], ac_state[60];
+  char ac_state[60];
   DIR * procdir;
   struct dirent * procdirentry;
+  char buf[BUFSIZ];
+  GHashTable *hash;
 
-  /*
-   * apminfo.ac_line_status must be one when on ac power
-   * apminfo.battery_status must be 0 for high, 1 for low, 2 for critical, 3 for charging
-   * apminfo.battery_percentage must contain batter charge percentage
-   * apminfo.battery_flags & 0x8 must be nonzero when charging
-   */
-  
-  g_assert(apminfo);
+  acpiinfo->ac_online = FALSE;
 
-  max_capacity = 0;
-  low_capacity = 0;
-  critical_capacity = 0;
-  charging = FALSE;
-  remain = 0;
-  ac_online = FALSE;
+  procdir=opendir("/proc/acpi/ac_adapter/");
+  if (!procdir)
+    return FALSE;
+
+  while ((procdirentry=readdir(procdir)))
+   {
+    if (procdirentry->d_name[0]!='.')
+     {
+      strcpy(ac_state,"/proc/acpi/ac_adapter/");
+      strcat(ac_state,procdirentry->d_name);
+      strcat(ac_state,"/");
+      strcat(ac_state,acpiinfo->ac_state_state);
+      hash = read_file (ac_state, buf, sizeof (buf));
+      if (hash && !acpiinfo->ac_online)
+       {
+        const char *s;
+        s = read_string (hash, acpiinfo->ac_state_state);
+        acpiinfo->ac_online = s ? (strcmp (s, "on-line") == 0) : 0;
+        g_hash_table_destroy (hash);
+       }
+     }
+   }
+  closedir(procdir);
+
+  return TRUE;
+}
+
+/* Reads the ACPI info for the system batteries, and finds
+ * the total capacity, which is stored in acpiinfo. */
+static gboolean update_battery_info(struct acpi_info * acpiinfo)
+{
+  char batt_info[60];
+  gulong acpi_ver;
+  GHashTable *hash;
+  DIR * procdir;
+  struct dirent * procdirentry;
+  char buf[BUFSIZ];
+
+  acpiinfo->max_capacity = 0;
+  acpiinfo->low_capacity = 0;
+  acpiinfo->critical_capacity = 0;
 
   hash = read_file ("/proc/acpi/info", buf, sizeof (buf));
   if (!hash)
@@ -177,13 +200,13 @@ gboolean acpi_linux_read(struct apm_info *apminfo)
   g_hash_table_destroy (hash);
 
   if (acpi_ver < (gulong)20020208) {
-    ac_state_state = "status";
-    batt_state_state = "status";
-    charging_state = "state";
+    acpiinfo->ac_state_state = "status";
+    acpiinfo->batt_state_state = "status";
+    acpiinfo->charging_state = "state";
   } else {
-    ac_state_state = "state";
-    batt_state_state = "state";
-    charging_state = "charging state";
+    acpiinfo->ac_state_state = "state";
+    acpiinfo->batt_state_state = "state";
+    acpiinfo->charging_state = "charging state";
   }
 
   procdir=opendir("/proc/acpi/battery/");
@@ -200,22 +223,188 @@ gboolean acpi_linux_read(struct apm_info *apminfo)
       hash = read_file (batt_info, buf, sizeof (buf));
       if (hash)
        {
-        max_capacity += read_long (hash, "last full capacity");
-        low_capacity += read_long (hash, "design capacity warning");
-        critical_capacity += read_long (hash, "design capacity low");
+        acpiinfo->max_capacity += read_long (hash, "last full capacity");
+        acpiinfo->low_capacity += read_long (hash, "design capacity warning");
+        acpiinfo->critical_capacity += read_long (hash, "design capacity low");
         g_hash_table_destroy (hash);
        }
+     }
+   }
+  closedir(procdir);
+
+  return TRUE;
+}
+
+
+/* Initializes the ACPI-reading subsystem by opening a file
+ * descriptor to the ACPI event file.  This can either be the
+ * /proc/acpi/event exported by the kernel, or if it's already
+ * in use, the /var/run/acpid.socket maintained by acpid.  Also
+ * initializes the stored battery and AC adapter information. */
+gboolean acpi_linux_init(struct acpi_info * acpiinfo)
+{
+  int fd;
+
+  g_assert(acpiinfo);
+  
+  fd = open("/proc/acpi/event", 0);
+  if (fd >= 0) {
+    acpiinfo->event_fd = fd;
+    acpiinfo->channel = g_io_channel_unix_new(fd);
+    update_battery_info(acpiinfo);
+    update_ac_info(acpiinfo);
+    return TRUE;
+  }
+
+  fd = socket(PF_UNIX, SOCK_STREAM, 0);
+  if (fd >= 0) {
+    struct sockaddr_un addr;
+    addr.sun_family = AF_UNIX;
+    strcpy(addr.sun_path, "/var/run/acpid.socket");
+    if (connect(fd, (struct sockaddr *) &addr, sizeof(addr)) == 0) {
+      acpiinfo->event_fd = fd;
+      acpiinfo->channel = g_io_channel_unix_new(fd);
+      update_battery_info(acpiinfo);
+      update_ac_info(acpiinfo);
+      return TRUE;
+    }
+  }
+
+  acpiinfo->event_fd = -1;
+  return FALSE;
+}
+
+/* Cleans up ACPI */
+void acpi_linux_cleanup(struct acpi_info * acpiinfo)
+{
+  g_assert(acpiinfo);
+
+  if (acpiinfo->event_fd >= 0) {
+    g_io_channel_unref(acpiinfo->channel);
+    close(acpiinfo->event_fd);
+    acpiinfo->event_fd = -1;
+  }
+}
+
+#define ACPI_EVENT_IGNORE       0
+#define ACPI_EVENT_DONE         1
+#define ACPI_EVENT_AC           2
+#define ACPI_EVENT_BATTERY_INFO 3
+
+/* Given a string event from the ACPI system, returns the type
+ * of event if we're interested in it.  str is updated to point
+ * to the next event. */
+static int parse_acpi_event(char * event, char ** str)
+{
+  char * end;
+  char * tok[4];
+  int i;
+
+  end = strchr(event, '\n');
+  if (!end)
+    return ACPI_EVENT_DONE;
+
+  *end = '\0';
+  *str = end + 1;
+
+  tok[0] = event;
+  for (i=0; i < 3; i++) {
+    tok[i+1] = strchr(tok[i], ' ');
+    if (!tok[i+1])
+      return ACPI_EVENT_IGNORE;
+    *(tok[i+1]) = '\0';
+    tok[i+1]++;
+  }
+  
+  if (!strcmp(tok[0], "ac_adapter"))
+    return ACPI_EVENT_AC;
+  if (!strcmp(tok[0], "battery") && atoi(tok[2]) == 81)
+    return ACPI_EVENT_BATTERY_INFO;
+
+  return ACPI_EVENT_IGNORE;
+}
+
+/* Handles a new ACPI event by reading it from the event file
+ * and calling any handlers.  Since this does a blocking read,
+ * it should only be called when there is a new event as indicated
+ * by select(). */
+gboolean acpi_process_event(struct acpi_info * acpiinfo)
+{
+    int i;
+    int evt;
+    char * s;
+    char str[256];
+    gboolean result = FALSE;
+
+    i = read(acpiinfo->event_fd, str, sizeof(str)-1);
+    str[i] = '\0';
+    s = str;
+    while ((evt = parse_acpi_event(s, &s)) != ACPI_EVENT_DONE) {
+      switch (evt) {
+        case ACPI_EVENT_AC:
+          update_ac_info(acpiinfo);
+          result = TRUE;
+          break;
+        case ACPI_EVENT_BATTERY_INFO:
+          update_battery_info(acpiinfo);
+          result = TRUE;
+          break;
+      }
+    }
+
+    return result;
+}
+
+/*
+ * Fills out a classic apm_info structure with the data gathered from
+ * the ACPI kernel interface in /proc
+ */
+gboolean acpi_linux_read(struct apm_info *apminfo, struct acpi_info * acpiinfo)
+{
+  guint32 remain;
+  gboolean charging;
+  GHashTable *hash;
+  char batt_state[60];
+  DIR * procdir;
+  struct dirent * procdirentry;
+  char buf[BUFSIZ];
+
+  g_assert(acpiinfo);
+
+  /*
+   * apminfo.ac_line_status must be one when on ac power
+   * apminfo.battery_status must be 0 for high, 1 for low, 2 for critical, 3 for charging
+   * apminfo.battery_percentage must contain batter charge percentage
+   * apminfo.battery_flags & 0x8 must be nonzero when charging
+   */
+  
+  g_assert(apminfo);
+
+  charging = FALSE;
+  remain = 0;
+
+  procdir=opendir("/proc/acpi/battery/");
+  if (!procdir)
+    return FALSE;
+
+  /* Get the remaining capacity for the batteries.  Other information
+   * such as AC state and battery max capacity are read only when they
+   * change using acpi_process_event(). */
+  while ((procdirentry=readdir(procdir)))
+   {
+    if (procdirentry->d_name[0]!='.')
+     {
       strcpy(batt_state,"/proc/acpi/battery/");
       strcat(batt_state,procdirentry->d_name);
       strcat(batt_state,"/");
-      strcat(batt_state,batt_state_state);
+      strcat(batt_state,acpiinfo->batt_state_state);
       hash = read_file (batt_state, buf, sizeof (buf));
       if (hash)
        {
         const char *s;
         if (!charging)
          {
-          s = read_string (hash, charging_state);
+          s = read_string (hash, acpiinfo->charging_state);
           charging = s ? (strcmp (s, "charging") == 0) : 0;
          }
         remain += read_long (hash, "remaining capacity");
@@ -225,39 +414,16 @@ gboolean acpi_linux_read(struct apm_info *apminfo)
    }
   closedir(procdir);
 
-  if (!max_capacity)
-    return FALSE;
-
-  procdir=opendir("/proc/acpi/ac_adapter/");
-  if (!procdir)
-    return FALSE;
-
-  while ((procdirentry=readdir(procdir)))
-   {
-    if (procdirentry->d_name[0]!='.')
-     {
-      strcpy(ac_state,"/proc/acpi/ac_adapter/");
-      strcat(ac_state,procdirentry->d_name);
-      strcat(ac_state,"/");
-      strcat(ac_state,ac_state_state);
-      hash = read_file (ac_state, buf, sizeof (buf));
-      if (hash && !ac_online)
-       {
-        const char *s;
-        s = read_string (hash, ac_state_state);
-        ac_online = s ? (strcmp (s, "on-line") == 0) : 0;
-        g_hash_table_destroy (hash);
-       }
-     }
-   }
-  closedir(procdir);
-
-  apminfo->ac_line_status = ac_online ? 1 : 0;
-  apminfo->battery_status = remain < low_capacity ? 1 : remain < critical_capacity ? 2 : 0;
-  apminfo->battery_percentage = (int) (remain/(float)max_capacity*100);
+  apminfo->ac_line_status = acpiinfo->ac_online ? 1 : 0;
+  apminfo->battery_status = remain < acpiinfo->low_capacity ? 1 : remain < acpiinfo->critical_capacity ? 2 : 0;
+  if (!acpiinfo->max_capacity)
+    apminfo->battery_percentage = -1;
+  else
+    apminfo->battery_percentage = (int) (remain/(float)acpiinfo->max_capacity*100);
   apminfo->battery_flags = charging ? 0x8 : 0;
 
   return TRUE;
 }
+
 
 #endif
