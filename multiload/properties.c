@@ -10,8 +10,17 @@
 #include <gnome.h>
 #include <panel-applet.h>
 #include <panel-applet-gconf.h>
+#include <string.h>
 
 #include "global.h"
+
+#define PROP_CPU		0
+#define PROP_MEM		1
+#define PROP_NET		2
+#define PROP_SWAP		3
+#define PROP_AVG		4
+#define PROP_SPEED		5
+#define PROP_SIZE		6
 
 void
 properties_close_cb(GtkWidget *widget, gint arg, gpointer data)
@@ -27,9 +36,11 @@ void
 property_toggled_cb(GtkWidget *widget, gpointer name)
 {
 	MultiloadApplet *ma;
+	gint prop_type;
 	gboolean active = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget));
 	
 	ma = g_object_get_data(G_OBJECT(widget), "user_data");
+	prop_type = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), "prop_type"));
 	
 	/* FIXME: the first toggle button to be checked/dechecked does not work, but after that everything is cool.  what gives? */
 	panel_applet_gconf_set_bool(ma->applet, (gchar *)name, 
@@ -37,8 +48,51 @@ property_toggled_cb(GtkWidget *widget, gpointer name)
 	
 	panel_applet_gconf_set_bool(ma->applet, (gchar *)name, 
 			active, NULL);
-			
-	multiload_applet_refresh(ma);
+	
+	if (active)
+	{
+		switch(prop_type)
+		{
+			case PROP_CPU:
+			{
+				ma->graphs[prop_type] = cpuload_applet_new(ma->applet, NULL);
+				break;
+			}
+			case PROP_MEM:
+			{
+				ma->graphs[prop_type] = memload_applet_new(ma->applet, NULL);
+				break;
+			}
+			case PROP_NET:
+			{
+				ma->graphs[prop_type] = netload_applet_new(ma->applet, NULL);
+				break;
+			}
+			case PROP_SWAP:
+			{
+				ma->graphs[prop_type] = swapload_applet_new(ma->applet, NULL);
+				break;
+			}
+			case PROP_AVG:
+			{
+				ma->graphs[prop_type] = loadavg_applet_new(ma->applet, NULL);
+				break;
+			}
+			default:
+				g_assert_not_reached();
+		}
+		
+		gtk_box_pack_start(GTK_BOX(ma->box), ma->graphs[prop_type]->main_widget, FALSE, FALSE, 1);
+		gtk_widget_show_all(ma->box);
+		load_graph_start(ma->graphs[prop_type]);
+	}
+	else
+	{
+		load_graph_stop(ma->graphs[prop_type]);
+		gtk_widget_destroy(ma->graphs[prop_type]->main_widget);
+		load_graph_unalloc(ma->graphs[prop_type]);
+		g_free(ma->graphs[prop_type]);
+	}
 	
 	return;
 }
@@ -47,9 +101,10 @@ void
 spin_button_changed_cb(GtkWidget *widget, gpointer name)
 {
 	MultiloadApplet *ma;
-	gint value;
+	gint value, prop_type, i;
 	
 	ma = g_object_get_data(G_OBJECT(widget), "user_data");
+	prop_type = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(widget), "prop_type"));
 	value = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(widget));
 	
 	/* FIXME: the first toggle button to be checked/dechecked does not work, but after that everything is cool.  what gives? */
@@ -59,7 +114,42 @@ spin_button_changed_cb(GtkWidget *widget, gpointer name)
 	panel_applet_gconf_set_int(ma->applet, (gchar *)name, 
 			value, NULL);
 	
-	multiload_applet_refresh(ma);
+	switch(prop_type)
+	{
+		case PROP_SPEED:
+		{
+			for (i = 0; i < 5; i++)
+			{
+				if (!ma->graphs[i]->visible)
+					continue;
+					
+				load_graph_stop(ma->graphs[i]);
+				ma->graphs[i]->speed = value;
+				load_graph_start(ma->graphs[i]);
+			}
+			
+			break;
+		}
+		case PROP_SIZE:
+		{
+			for (i = 0; i < 5; i++)
+			{
+				if (!ma->graphs[i]->visible)
+					continue;
+					
+				ma->graphs[i]->size = value;
+				
+				if (ma->graphs[i]->orient)
+					gtk_widget_set_size_request (ma->graphs[i]->main_widget, ma->graphs[i]->pixel_size, ma->graphs[i]->size);
+			    else
+					gtk_widget_set_size_request (ma->graphs[i]->main_widget, ma->graphs[i]->size, ma->graphs[i]->pixel_size);
+			}
+			
+			break;
+		}
+		default:
+			g_assert_not_reached();
+	}
 	
 	return;
 }
@@ -92,6 +182,7 @@ color_selector_close_cb(GtkWidget *widget, gpointer dialog)
 void
 color_selector_ok_cb(GtkWidget *widget, gpointer dialog)
 {
+	gint prop_type, i;
 	GdkColor *color;
 	gchar color_string[8], *gconf_path;
 	MultiloadApplet *ma;
@@ -99,13 +190,27 @@ color_selector_ok_cb(GtkWidget *widget, gpointer dialog)
 	ma = g_object_get_data(G_OBJECT(dialog), "applet");	
 	gconf_path = g_object_get_data(G_OBJECT(dialog), "gconf_path");
 	
+	if (strstr(gconf_path, "cpuload"))
+		prop_type = PROP_CPU;
+	else if (strstr(gconf_path, "memload"))
+		prop_type = PROP_MEM;
+	else if (strstr(gconf_path, "netload"))
+		prop_type = PROP_NET;
+	else if (strstr(gconf_path, "swapload"))
+		prop_type = PROP_SWAP;
+	else
+		prop_type = PROP_AVG;
+		
 	color = g_new0(GdkColor, 1);
 	
 	gtk_color_selection_get_current_color(GTK_COLOR_SELECTION(GTK_COLOR_SELECTION_DIALOG(dialog)->colorsel), color);
 	snprintf(color_string, 8, "#%02X%02X%02X", (guint)color->red / 256, (guint)color->green / 256, (guint)color->blue / 256);
 	panel_applet_gconf_set_string(PANEL_APPLET(ma->applet), gconf_path, color_string, NULL);
 	
-	multiload_applet_refresh(ma);
+	for (i = 0; i < ma->graphs[prop_type]->n; i++)
+		gdk_color_parse(color_string, &(ma->graphs[prop_type]->colors[i]));
+	
+	ma->graphs[prop_type]->colors_allocated = FALSE;	
 	
 	color_selector_close_cb(NULL, dialog);
 		
@@ -207,6 +312,7 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_box),
 				panel_applet_gconf_get_bool(ma->applet, "view_cpuload", NULL));
 	g_object_set_data(G_OBJECT(check_box), "user_data", ma);
+	g_object_set_data(G_OBJECT(check_box), "prop_type", GINT_TO_POINTER(PROP_CPU));
 	g_signal_connect(G_OBJECT(check_box), "toggled",
 				G_CALLBACK(property_toggled_cb), "view_cpuload");
 	gtk_box_pack_start(GTK_BOX(hbox), check_box, FALSE, FALSE, 2);
@@ -215,6 +321,7 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_box),
 				panel_applet_gconf_get_bool(ma->applet, "view_memload", NULL));
 	g_object_set_data(G_OBJECT(check_box), "user_data", ma);
+	g_object_set_data(G_OBJECT(check_box), "prop_type", GINT_TO_POINTER(PROP_MEM));
 	g_signal_connect(G_OBJECT(check_box), "toggled",
 				G_CALLBACK(property_toggled_cb), "view_memload");
 	gtk_box_pack_start(GTK_BOX(hbox), check_box, FALSE, FALSE, 2);
@@ -223,6 +330,7 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_box),
 				panel_applet_gconf_get_bool(ma->applet, "view_netload", NULL));
 	g_object_set_data(G_OBJECT(check_box), "user_data", ma);
+	g_object_set_data(G_OBJECT(check_box), "prop_type", GINT_TO_POINTER(PROP_NET));
 	g_signal_connect(G_OBJECT(check_box), "toggled",
 				G_CALLBACK(property_toggled_cb), "view_netload");
 	gtk_box_pack_start(GTK_BOX(hbox), check_box, FALSE, FALSE, 2);
@@ -231,6 +339,7 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_box),
 				panel_applet_gconf_get_bool(ma->applet, "view_swapload", NULL));
 	g_object_set_data(G_OBJECT(check_box), "user_data", ma);
+	g_object_set_data(G_OBJECT(check_box), "prop_type", GINT_TO_POINTER(PROP_SWAP));
 	g_signal_connect(G_OBJECT(check_box), "toggled",
 				G_CALLBACK(property_toggled_cb), "view_swapload");
 	gtk_box_pack_start(GTK_BOX(hbox), check_box, FALSE, FALSE, 2);
@@ -263,6 +372,8 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 3);
 	spin_button = gtk_spin_button_new_with_range(0, 1000, 5);
 	g_object_set_data(G_OBJECT(spin_button), "user_data", ma);
+	g_object_set_data(G_OBJECT(spin_button), "prop_type",
+				GINT_TO_POINTER(PROP_SIZE));
 	gtk_spin_button_set_value(GTK_SPIN_BUTTON(spin_button),
 				(gdouble)panel_applet_gconf_get_int(ma->applet, "size", NULL));
 	g_signal_connect(G_OBJECT(spin_button), "value_changed",
@@ -278,6 +389,8 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 3);
 	spin_button = gtk_spin_button_new_with_range(0, 9999, 10);
 	g_object_set_data(G_OBJECT(spin_button), "user_data", ma);
+	g_object_set_data(G_OBJECT(spin_button), "prop_type",
+				GINT_TO_POINTER(PROP_SPEED));
 	gtk_spin_button_set_value(GTK_SPIN_BUTTON(spin_button),
 				(gdouble)panel_applet_gconf_get_int(ma->applet, "speed", NULL));
 	g_signal_connect(G_OBJECT(spin_button), "value_changed",

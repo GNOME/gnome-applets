@@ -87,8 +87,20 @@ start_procman_cb (BonoboUIComponent *uic, gpointer data, const gchar *name)
 void
 multiload_change_size_cb(PanelApplet *applet, gint arg1, gpointer data)
 {
-	multiload_applet_refresh((MultiloadApplet *)data);
+	gint i;
+	MultiloadApplet *ma = (MultiloadApplet *)data;
 	
+	for (i = 0; i < 5; i++)
+		if (ma->graphs[i]->visible)
+		{
+			ma->graphs[i]->pixel_size = panel_applet_get_size (applet);
+    
+  	  	if (ma->graphs[i]->orient)
+				gtk_widget_set_size_request (ma->graphs[i]->main_widget, ma->graphs[i]->pixel_size, ma->graphs[i]->size);
+			else
+				gtk_widget_set_size_request (ma->graphs[i]->main_widget, ma->graphs[i]->size, ma->graphs[i]->pixel_size);
+		}
+		
 	return;
 }
 
@@ -96,7 +108,7 @@ void
 multiload_change_orient_cb(PanelApplet *applet, gint arg1, gpointer data)
 {
 	multiload_applet_refresh((MultiloadApplet *)data);
-	
+		
 	return;
 }
 

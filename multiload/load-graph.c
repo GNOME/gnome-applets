@@ -198,12 +198,12 @@ load_graph_alloc (LoadGraph *g)
     g->allocated = TRUE;
 }
 
-static gint
+gint
 load_graph_configure (GtkWidget *widget, GdkEventConfigure *event,
 		      gpointer data_ptr)
 {
     LoadGraph *c = (LoadGraph *) data_ptr;
-    
+
     load_graph_unalloc (c);
     load_graph_alloc (c);
 
@@ -257,8 +257,8 @@ load_graph_destroy (GtkWidget *widget, gpointer data_ptr)
     widget = NULL;
 }
 
-static void
-applet_load_config (LoadGraph *g)
+void
+load_graph_load_config (LoadGraph *g)
 {
 	
     gchar name [BUFSIZ], *temp;
@@ -321,7 +321,7 @@ load_graph_new (PanelApplet *applet, guint n, gchar *label,
 		gtk_container_add (GTK_CONTAINER (g->main_widget), g->box);
     }
 
-    applet_load_config (g);
+    load_graph_load_config (g);
 
 /*
     if (g->global_prop_data == &multiload_properties.cpuload)
