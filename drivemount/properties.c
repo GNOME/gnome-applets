@@ -337,6 +337,7 @@ properties_show (BonoboUIComponent *uic,
 	gtk_dialog_set_has_separator (GTK_DIALOG (dialog), FALSE);
 
 	box = GTK_DIALOG(dialog)->vbox;
+	gtk_box_set_spacing (GTK_BOX (box), 2);
 	
 	size = gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
 	

@@ -989,7 +989,7 @@ hig_dialog_new (GtkWindow      *parent,
 	gtk_window_set_title (GTK_WINDOW (dialog), "");
   
 	dialog_vbox = GTK_DIALOG (dialog)->vbox;
-	gtk_box_set_spacing (GTK_BOX (dialog_vbox), 12);
+	gtk_box_set_spacing (GTK_BOX (dialog_vbox), 14);
 
 	hbox = gtk_hbox_new (FALSE, 12);
 	gtk_box_pack_start (GTK_BOX (dialog_vbox), hbox, FALSE, FALSE, 0);
