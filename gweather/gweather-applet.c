@@ -160,6 +160,16 @@ static const BonoboUIVerb weather_applet_menu_verbs [] = {
         BONOBO_UI_VERB_END
 };
 
+static void
+applet_destroy (GtkWidget *widget, GWeatherApplet *gw_applet)
+{
+    if (gw_applet->pref)
+       gtk_widget_destroy (gw_applet->pref);
+
+    if (gw_applet->gweather_dialog)
+       gtk_widget_destroy (gw_applet->gweather_dialog);
+}
+
 void gweather_applet_create (GWeatherApplet *gw_applet)
 {
     GtkWidget *label;
@@ -189,7 +199,8 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
                        G_CALLBACK(change_orient_cb), gw_applet);
     g_signal_connect (G_OBJECT(gw_applet->applet), "change_size",
                        G_CALLBACK(change_size_cb), gw_applet);
-
+    g_signal_connect (G_OBJECT(gw_applet->applet), "destroy", 
+                       G_CALLBACK (applet_destroy), gw_applet);
     gtk_signal_connect (GTK_OBJECT(gw_applet->applet), "button_press_event",
                        GTK_SIGNAL_FUNC(clicked_cb), gw_applet);
                      

@@ -357,6 +357,9 @@ destroy_cb (GtkObject *object, EyesApplet *eyes_applet)
 		g_free (eyes_applet->pupil_filename);
 	eyes_applet->pupil_filename = NULL;
 	
+	if (eyes_applet->prop_box.pbox)
+	  gtk_widget_destroy (eyes_applet->prop_box.pbox);
+
 	g_free (eyes_applet);
 }
 

@@ -668,7 +668,10 @@ destroy_applet (GtkWidget *widget, gpointer data)
    ProgressData *pdata = data;
    
    if (DEBUG) g_print("destroy_applet()\n");
-   
+
+   if (pdata->prop_win)
+	gtk_widget_destroy (GTK_WIDGET (pdata->prop_win));
+
    gtk_timeout_remove (pdata->pixtimer);
    pdata->pixtimer = 0;
    pdata->applet = NULL;

@@ -260,6 +260,9 @@ cdplayer_destroy(GtkWidget * widget, gpointer data)
 
     g_free (cd->devpath);
  
+    if (cd->prefs_dialog)
+      gtk_widget_destroy (cd->prefs_dialog);
+
     cd->devpath = NULL;
     g_free(cd);
 }
@@ -322,11 +325,14 @@ start_gtcd_cb (BonoboUIComponent *component,
 static void
 response_cb (GtkDialog *dialog, gint id, gpointer data)
 {
+    CDPlayerData *cd = data;
+
     if(id == GTK_RESPONSE_HELP){
          phelp_cb (dialog,data);
 	 return;
     }
     gtk_widget_destroy (GTK_WIDGET (dialog));
+    cd->prefs_dialog = NULL;
 }
 
 static void
@@ -408,11 +414,18 @@ preferences_cb (BonoboUIComponent *component,
     GtkWidget *entry;
     gint response;
 
+    if (cd->prefs_dialog) {
+      gtk_window_present (GTK_WINDOW (cd->prefs_dialog));
+      return;
+    }
+
     dialog = gtk_dialog_new_with_buttons(_("CD Player Preferences"),
                                          NULL, GTK_DIALOG_DESTROY_WITH_PARENT,
                                          GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
                                          GTK_STOCK_HELP, GTK_RESPONSE_HELP,
                                          NULL);
+    cd->prefs_dialog = dialog;
+
     gtk_window_set_screen (GTK_WINDOW (dialog),
 			   gtk_widget_get_screen (cd->panel.applet));
     gtk_dialog_set_default_response(GTK_DIALOG (dialog), GTK_RESPONSE_CLOSE);
@@ -453,7 +466,7 @@ preferences_cb (BonoboUIComponent *component,
     		      G_CALLBACK (set_default_device), cd);
     
     g_signal_connect (G_OBJECT (dialog), "response",
-    		      G_CALLBACK (response_cb), NULL);
+    		      G_CALLBACK (response_cb), cd);
 
     gtk_widget_show_all(dialog);
 }

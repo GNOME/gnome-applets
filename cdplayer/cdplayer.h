@@ -42,6 +42,7 @@ typedef struct
     gchar *time_description;
     gchar *track_description;
     GtkWidget *play_image, *pause_image, *current_image;
+    GtkWidget *prefs_dialog;
     struct
     {
         GtkWidget *applet;

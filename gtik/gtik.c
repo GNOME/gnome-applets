@@ -1657,6 +1657,8 @@ static gint updateOutput(gpointer data)
 		if (stockdata->my_font)
 			pango_font_description_free (stockdata->my_font);
 		
+		if (stockdata->pb)
+			gtk_widget_destroy (stockdata->pb);
 	}
 
 

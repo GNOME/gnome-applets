@@ -751,6 +751,21 @@ wireless_applet_destroy (WirelessApplet *applet, gpointer horse)
 	g_list_foreach (applet->devices, (GFunc)g_free, NULL);
 	g_list_free (applet->devices);
 
+	if (applet->animate_timer > 0) {
+		gtk_timeout_remove (applet->animate_timer);
+		applet->animate_timer = 0;
+	}
+
+	if (applet->timeout_handler_id > 0) {
+		gtk_timeout_remove (applet->timeout_handler_id);
+		applet->timeout_handler_id = 0;
+	}
+
+	if (applet->prefs) {
+		gtk_widget_destroy (applet->prefs);
+		applet->prefs = NULL;
+	}
+
 	fclose (applet->file);
 }
 

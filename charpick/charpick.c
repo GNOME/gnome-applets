@@ -452,6 +452,9 @@ applet_destroy (GtkWidget *widget, gpointer data)
       g_object_set_data (G_OBJECT (applet), "tooltips", NULL);
   }
   
+  if (curr_data->propwindow)
+    gtk_widget_destroy (curr_data->propwindow);
+
   g_free (curr_data);
   
 }
