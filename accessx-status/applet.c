@@ -1056,6 +1056,9 @@ accessx_status_applet_destroy (GtkWidget *widget, gpointer user_data)
 {
 	AccessxStatusApplet *sapplet = user_data;
 	/* do we need to free the icon factory ? */
+
+	gdk_window_remove_filter (NULL, accessx_status_xkb_filter, sapplet);
+
 	if (sapplet->xkb)
 		XkbFreeKeyboard (sapplet->xkb, 0, True);
 	if (sapplet->xkb_display) 
