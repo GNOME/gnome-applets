@@ -7,6 +7,7 @@
  */
 
 #include "modemlights.h"
+#include <panel-applet.h>
 
 #define DEFAULT_PATH "/modemlights/"
 
@@ -86,6 +87,7 @@ void property_load(const char *path)
 	g_free(command_disconnect);
 	g_free(device_name);
 
+#ifdef FIXME
 	gnome_config_push_prefix(path);
 
 	if (gnome_config_get_int("modem/delay=0") == 0)
@@ -124,12 +126,42 @@ void property_load(const char *path)
 		}
 
 	gnome_config_pop_prefix ();
+#endif
+	
+	UPDATE_DELAY = 5;
+
+	buf = "";
+	if (buf && strlen(buf) > 0)
+		{
+		g_free(lock_file);
+		lock_file = g_strdup(buf);
+		}
+	/*g_free(buf);*/
+
+	command_connect    = g_strdup ("pppon");
+	command_disconnect = g_strdup ("pppoff");
+	ask_for_confirmation = 1;
+	device_name          = g_strdup ("ppp0");
+        use_ISDN	   = 0;
+	verify_lock_file   = 1;
+	show_extra_info    = 1;
+	status_wait_blink  = 0;
+
+	for (i = 0; i < COLOR_COUNT; i++)
+		{
+		buf = g_strconcat("modem/", color_rc_names[i], "=", color_defaults[i], NULL);
+		g_free(display_color_text[i]);
+		display_color_text[i] = g_strdup (color_defaults[i]);
+
+		g_free(buf);
+		}
 }
+
 
 void property_save(const char *path, gint to_default)
 {
 	gint i;
-
+#ifdef FIXME
 	if (path && !to_default)
 		{
 	        gnome_config_push_prefix(path);
@@ -162,6 +194,7 @@ void property_save(const char *path, gint to_default)
 	gnome_config_sync();
 	gnome_config_drop_all();
         gnome_config_pop_prefix();
+#endif
 }
 
 static void show_extra_info_cb(GtkWidget *widget, gpointer data)
@@ -224,7 +257,7 @@ static void set_default_cb(GtkWidget *widget, gpointer data)
 	gnome_property_box_set_modified((GnomePropertyBox *)propwindow, FALSE);
 }
 
-static void box_color_cb(GtkWidget *cp, guint nopr, guint nopg, guint nopb, guint nopa, gpointer data)
+static void box_color_cb(GnomeColorPicker *cp, guint nopr, guint nopg, guint nopb, guint nopa, gpointer data)
 {
 	ColorType color	= (ColorType)GPOINTER_TO_INT(data);
 	guint8 r, g, b, a;
@@ -344,8 +377,9 @@ static void property_apply_cb(GtkWidget *widget, gint page_num, gpointer data)
 	if (c_changed) reset_colors();
 
 	start_callback_update();
-
+#ifdef FIXME
 	applet_widget_sync_config(APPLET_WIDGET(applet));
+#endif
 	return;
 	widget = NULL;
 	data = NULL;
@@ -362,12 +396,14 @@ static gint property_destroy_cb(GtkWidget *widget, gpointer data)
 static void
 phelp_cb (GtkWidget *w, gint tab, gpointer data)
 {
+#ifdef FIXME
 	GnomeHelpMenuEntry help_entry = { "modemlights_applet",
 					  "index.html#MODEMLIGHTS-PREFS" };
 	gnome_help_display(NULL, &help_entry);
+#endif
 }
 
-void property_show(AppletWidget *applet, gpointer data)
+void property_show(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 {
 	GtkWidget *frame;
 	GtkWidget *hbox;
@@ -378,7 +414,7 @@ void property_show(AppletWidget *applet, gpointer data)
 	GtkObject *delay_adj;
 	GtkWidget *checkbox;
 	GtkWidget *button;
-
+#ifdef FIXME
 	if(propwindow)
 		{
                 gdk_window_raise(propwindow->window);
@@ -623,6 +659,8 @@ void property_show(AppletWidget *applet, gpointer data)
         return;
         applet = NULL;
         data = NULL;
+        
+        #endif
 } 
 
 

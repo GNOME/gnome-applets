@@ -22,8 +22,7 @@
  */
 
 #include "modemlights.h"
-#include <libgnomeui/gnome-window-icon.h>
-
+#include <panel-applet.h>
 #include "digits.xpm"
 
 #include <stdlib.h>
@@ -174,19 +173,16 @@ static int load_hist_tx[20];
 
 static int confirm_dialog = FALSE;
 
-static PanelOrientType orient;
+static PanelAppletOrient orient;
 
-#ifdef HAVE_PANEL_PIXEL_SIZE
 static gint sizehint;
-#endif
 
 static DisplayLayout layout = LAYOUT_HORIZONTAL;
 static DisplayData *layout_current = NULL;
 
 static gint setup_done = FALSE;
 
-
-static void about_cb (AppletWidget *widget, gpointer data)
+static void about_cb (BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 {
 	static GtkWidget *about = NULL;
 	const gchar *authors[8];
@@ -204,16 +200,17 @@ static void about_cb (AppletWidget *widget, gpointer data)
 
         about = gnome_about_new ( _("Modem Lights Applet"), VERSION,
 			"(C) 2000",
-			authors,
 			_("Released under the GNU general public license.\n"
 			"A modem status indicator and dialer.\n"
 			"Lights in order from the top or left are Send data and Receive data."),
+			authors,
+			NULL,
+			NULL,
 			NULL);
 	gtk_signal_connect( GTK_OBJECT(about), "destroy",
 			    GTK_SIGNAL_FUNC(gtk_widget_destroyed), &about );
 	gtk_widget_show (about);
 	return;
-	widget = NULL;
 	data = NULL;
 }
 
@@ -558,6 +555,8 @@ static void dial_cb(GtkWidget *widget, gpointer data)
 static void update_tooltip(int connected, int rx, int tx)
 {
 	gchar *text;
+#ifdef FIXME
+
 	if (connected)
 		{
 		gint t;
@@ -578,7 +577,9 @@ static void update_tooltip(int connected, int rx, int tx)
 
 	applet_widget_set_widget_tooltip(APPLET_WIDGET(applet), button, text);
 	g_free(text);
+#endif
 }
+
 
 /*
  *-------------------------------------
@@ -589,7 +590,9 @@ static void update_tooltip(int connected, int rx, int tx)
 static void redraw_display(void)
 {
 	gdk_window_set_back_pixmap(display_area->window,display,FALSE);
+
 	gdk_window_clear(display_area->window);
+
 }
 
 static void draw_digit(gint n, gint x, gint y)
@@ -1057,6 +1060,7 @@ static void draw_shadow_box(GdkPixmap *window, gint x, gint y, gint w, gint h,
 		{
 		gdk_draw_rectangle(window, bgc, TRUE, x + 1, y + 1, w - 2, h - 2);
 		}
+
 }
 
 static void create_background_pixmap(void)
@@ -1260,17 +1264,18 @@ static void setup_colors(void)
 		gc = gdk_gc_new( display_area->window );
         	gdk_gc_copy( gc, display_area->style->white_gc );
 		}
+
 }
 
 void reset_orientation(void)
 {
-	if (sizehint >= PIXEL_SIZE_STANDARD)
+	if (sizehint >= GNOME_PANEL_MEDIUM)
 		{
 		if (show_extra_info)
 			{
 			layout = LAYOUT_SQUARE;
 			}
-		else if (orient == ORIENT_LEFT || orient == ORIENT_RIGHT)
+		else if (orient == PANEL_APPLET_ORIENT_LEFT || orient == PANEL_APPLET_ORIENT_RIGHT)
 			{
 			layout = LAYOUT_HORIZONTAL;
 			}
@@ -1281,7 +1286,7 @@ void reset_orientation(void)
 		}
 	else
 		{
-		if (orient == ORIENT_LEFT || orient == ORIENT_RIGHT)
+		if (orient == PANEL_APPLET_ORIENT_LEFT || orient == PANEL_APPLET_ORIENT_RIGHT)
 			{
 			if (show_extra_info)
 				{
@@ -1311,7 +1316,7 @@ void reset_orientation(void)
 #if 0
 	printf("Test layout = %d\n", layout_current->layout);
 #endif
-
+	
 	create_background_pixmap();
 	update_pixmaps();
 
@@ -1347,35 +1352,35 @@ static void applet_style_change_cb(GtkWidget *widget, GtkStyle *previous_style, 
 	data = NULL;
 }
 
-static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
+static void applet_change_orient(PanelApplet *applet, PanelAppletOrient o, gpointer data)
 {
 	orient = o;
 	if (setup_done) reset_orientation();
 	return;
-	w = NULL;
 	data = NULL;
 }
 
-#ifdef HAVE_PANEL_PIXEL_SIZE
-static void applet_change_pixel_size(GtkWidget *w, int s, gpointer data)
+
+static void applet_change_pixel_size(PanelApplet *applet, gint size, gpointer data)
 {
-	sizehint = s;
+	sizehint = size;
 	if (setup_done) reset_orientation();
         return;
-        w = NULL;
         data = NULL;
 }
-#endif
 
-static void show_help_cb(AppletWidget *applet, gpointer data)
+static void show_help_cb(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 {
+#ifdef FIXME
 	static GnomeHelpMenuEntry help_entry = { NULL, "index.html"};
 
 	help_entry.name = gnome_app_id;
     
 	gnome_help_display (NULL, &help_entry);
+#endif
 }
 
+#ifdef FIXME
 static gint applet_save_session(GtkWidget *widget, char *privcfgpath, char *globcfgpath)
 {
 	property_save(privcfgpath, FALSE);
@@ -1383,14 +1388,27 @@ static gint applet_save_session(GtkWidget *widget, char *privcfgpath, char *glob
         widget = NULL;
         globcfgpath = NULL;
 }
+#endif
 
-int main (int argc, char *argv[])
+static const BonoboUIVerb modem_applet_menu_verbs [] = {
+        BONOBO_UI_VERB ("Props", property_show),
+        BONOBO_UI_VERB ("Help", show_help_cb),
+        BONOBO_UI_VERB ("About", about_cb),
+
+        BONOBO_UI_VERB_END
+};
+
+static const char modem_applet_menu_xml [] =
+	"<popup name=\"button3\">\n"
+	"   <menuitem name=\"Item 1\" verb=\"Props\" _label=\"Properties\"/>\n"
+	"   <menuitem name=\"Item 2\" verb=\"Help\" _label=\"Help\"/>\n"
+	"   <menuitem name=\"Item 3\" verb=\"About\" _label=\"About\"/>\n"
+	"</popup>\n";
+
+static BonoboObject *
+modemlights_applet_new (void)
 {
 	gint i;
-
-        /* Initialize the i18n stuff */
-        bindtextdomain (PACKAGE, GNOMELOCALEDIR);
-        textdomain (PACKAGE);
 
 	for (i=0;i<119;i++)
 		load_hist[i] = 0;
@@ -1407,12 +1425,7 @@ int main (int argc, char *argv[])
 		}
 
 	layout_current = &layout_data[LAYOUT_HORIZONTAL];
-
-	applet_widget_init("modemlights_applet", VERSION, argc, argv,
-				    NULL, 0, NULL);
-
-	gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gnome-modem.png");
-
+	
 	if (g_file_exists("/dev/modem"))
 		{
 		lock_file = g_strdup("/var/lock/LCK..modem");
@@ -1425,29 +1438,23 @@ int main (int argc, char *argv[])
 	device_name = g_strdup("ppp0");
 	command_connect = g_strdup("pppon");
 	command_disconnect = g_strdup("pppoff");
-	orient = ORIENT_UP;
+	orient = PANEL_APPLET_ORIENT_UP;
 
 	/* open ip socket */
 	if ((ip_socket = socket(AF_INET, SOCK_DGRAM, 0)) < 0)
 		{
 		g_print("could not open an ip socket\n");
-		return 1;
+		return NULL;
 		}
 
 
-	applet = applet_widget_new("modemlights_applet");
-	if (!applet)
-		g_error("Can't create applet!\n");
-
-#ifdef HAVE_PANEL_PIXEL_SIZE
-	sizehint = applet_widget_get_panel_pixel_size(APPLET_WIDGET(applet));
-#endif
-
-	property_load(APPLET_WIDGET(applet)->privcfgpath);
+	property_load(NULL);
 
 	/* frame for all widgets */
 	frame = gtk_fixed_new();
 	gtk_widget_show(frame);
+	
+	applet = panel_applet_new (frame);	
 
 	display_area = gtk_drawing_area_new();
 	gtk_drawing_area_size(GTK_DRAWING_AREA(display_area),5,5);
@@ -1460,61 +1467,77 @@ int main (int argc, char *argv[])
 	gtk_signal_connect(GTK_OBJECT(button),"clicked",GTK_SIGNAL_FUNC(dial_cb),NULL);
 	gtk_widget_show(button);
 
-	gtk_signal_connect(GTK_OBJECT(applet),"change_orient",
-				GTK_SIGNAL_FUNC(applet_change_orient),
-				NULL);
-#ifdef HAVE_PANEL_PIXEL_SIZE
-	gtk_signal_connect(GTK_OBJECT(applet),"change_pixel_size",
-				GTK_SIGNAL_FUNC(applet_change_pixel_size),
-				NULL);
-#endif
-
-	applet_widget_add(APPLET_WIDGET(applet), frame);
 	gtk_widget_realize(applet);
 	gtk_widget_realize(display_area);
-
+	
 	setup_colors();
-	update_pixmaps();
+	update_pixmaps();	
 
 	button_pixmap = gtk_pixmap_new(button_off, button_mask);
 	gtk_container_add(GTK_CONTAINER(button), button_pixmap);
 	gtk_widget_show(button_pixmap);
-
+	
+	
+#ifdef FIXME
 	update_tooltip(FALSE,0,0);
-
-	/* by now we know the geometry */
-	setup_done = TRUE;
-	reset_orientation();
-	gtk_widget_show(applet);
-
-	gtk_signal_connect(GTK_OBJECT(applet),"style_set",
-		GTK_SIGNAL_FUNC(applet_style_change_cb), NULL);
 
 	gtk_signal_connect(GTK_OBJECT(applet),"save_session",
 		GTK_SIGNAL_FUNC(applet_save_session), NULL);
 
-	applet_widget_register_stock_callback(APPLET_WIDGET(applet),
-					      "properties",
-					      GNOME_STOCK_MENU_PROP,
-					      _("Properties..."),
-					      property_show,
-					      NULL);
+	
+#endif					      
+	
 
-	applet_widget_register_stock_callback(APPLET_WIDGET(applet),
-					      "help",
-					      GNOME_STOCK_PIXMAP_HELP,
-					      _("Help..."),
-					      show_help_cb, NULL);
+	gtk_signal_connect(GTK_OBJECT(applet),"change_orient",
+				GTK_SIGNAL_FUNC(applet_change_orient),
+				NULL);
 
-	applet_widget_register_stock_callback(APPLET_WIDGET(applet),
-					      "about",
-					      GNOME_STOCK_MENU_ABOUT,
-					      _("About..."),
-					      about_cb, NULL);
+	gtk_signal_connect(GTK_OBJECT(applet),"change_size",
+				GTK_SIGNAL_FUNC(applet_change_pixel_size),
+				NULL);
+
+	gtk_signal_connect(GTK_OBJECT(applet),"style_set",
+		GTK_SIGNAL_FUNC(applet_style_change_cb), NULL);
+				
+	sizehint = panel_applet_get_size (PANEL_APPLET (applet));
+	
+	panel_applet_setup_menu (PANEL_APPLET (applet),
+				 modem_applet_menu_xml,
+				 modem_applet_menu_verbs,
+				 NULL);
+				 
+	/* by now we know the geometry */
+	setup_done = TRUE;
+
+	reset_orientation();
+	
 	start_callback_update();
 
-	applet_widget_gtk_main();
-	return 0;
+	gtk_widget_show_all (applet);
+	  
+	return BONOBO_OBJECT (panel_applet_get_control (PANEL_APPLET (applet)));
 }
+
+
+static BonoboObject *
+modemlights_applet_factory (BonoboGenericFactory *this,
+		     const gchar          *iid,
+		     gpointer              data)
+{
+	BonoboObject *applet = NULL;
+    
+	if (!strcmp (iid, "OAFIID:GNOME_ModemLightsApplet"))
+		applet = modemlights_applet_new (); 
+    
+	return applet;
+}
+
+PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_ModemLightsApplet_Factory",
+			     "Modemlights applet",
+			     "0",
+			     modemlights_applet_factory,
+			     NULL)
+			     
+			     
 
 

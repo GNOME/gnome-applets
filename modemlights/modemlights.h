@@ -8,6 +8,7 @@
 
 #include <config.h>
 
+#include <panel-applet.h>
 #include <stdio.h>
 #include <string.h>
 #include <sys/stat.h>
@@ -29,7 +30,6 @@
 #include <net/ppp_defs.h>
 
 #include <gnome.h>
-#include <applet-widget.h>
 
 typedef enum {
 	COLOR_RX = 0,
@@ -67,7 +67,7 @@ void reset_colors(void);
 
 void property_load(const char *path);
 void property_save(const char *path, gint to_default);
-void property_show(AppletWidget *applet, gpointer data);
+void property_show(BonoboUIComponent *uic, gpointer data, const gchar *verbname);
 
 
 
