@@ -213,8 +213,10 @@ static gint updateOutput(gpointer data)
 	char *source_text_uri, *dest_text_uri;
 	GnomeVFSAsyncHandle *vfshandle;
 
-	if (stockdata->vfshandle != NULL)
-		return FALSE;
+	if (stockdata->vfshandle != NULL) {
+		gnome_vfs_async_cancel (stockdata->vfshandle);
+		stockdata->vfshandle = NULL;
+	}
 		
 	source_text_uri = g_strconcat("http://finance.yahoo.com/q?s=",
 				      stockdata->props.tik_syms,
@@ -645,7 +647,7 @@ static gint updateOutput(gpointer data)
 					       STOCK_QUOTE(quotes->data)[i].price,
 					       -1);	
 				gdk_draw_layout (stockdata->pixmap, gc,
-					 start , 3,
+					 start , 0,
 					 layout);
 			}
 			totalLoc += STOCK_QUOTE(quotes->data)[i].pricelen + 10;
@@ -659,7 +661,7 @@ static gint updateOutput(gpointer data)
 						STOCK_QUOTE(quotes->data)[i].change, -1);
 					gdk_draw_layout (stockdata->pixmap,
 					     		gc, stockdata->location + totalLoc,
-					     		3, layout);
+					     		0, layout);
 				}
 				totalLoc += STOCK_QUOTE(quotes->data)[i].changelen + 10;
 			}
@@ -953,6 +955,7 @@ static gint updateOutput(gpointer data)
 					    
 		gtk_entry_set_text (entry, "");
 		g_free (symbol);
+		updateOutput(stockdata);
 		
 	}
 	
@@ -1036,6 +1039,7 @@ static gint updateOutput(gpointer data)
 		else
 			panel_applet_gconf_set_string (applet, "tik_syms",
 					               "", NULL);
+		updateOutput(stockdata);
 		
 	}
 
@@ -1123,7 +1127,7 @@ static gint updateOutput(gpointer data)
 
 		model = gtk_list_store_new (1, G_TYPE_STRING);
 		list = gtk_tree_view_new_with_model (GTK_TREE_MODEL (model));
-		gtk_widget_set_size_request (list, 70, -1);
+		/*gtk_widget_set_size_request (list, 70, -1);*/
 		g_object_unref (G_OBJECT (model));
 		
 		/*selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (tree));
