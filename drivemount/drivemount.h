@@ -60,7 +60,7 @@ struct _DriveData
 void redraw_pixmap(DriveData *dd);
 void start_callback_update(DriveData *dd);
 
-void property_load(gchar *path, DriveData *dd);
-void property_save(gchar *path, DriveData *dd);
+void property_load(const gchar *path, DriveData *dd);
+void property_save(const gchar *path, DriveData *dd);
 void property_show(AppletWidget *applet, gpointer data);
 

@@ -200,7 +200,7 @@ static gint device_is_in_mountlist(DriveData *dd)
 	return found;
 }
 
-static gint get_device(gchar *file)
+static gint get_device(const gchar *file)
 {
 	struct stat file_info;
 	gint t;

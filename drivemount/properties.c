@@ -7,7 +7,32 @@
 
 #include "drivemount.h"
 
-void property_load(gchar *path, DriveData *dd)
+static gchar *remove_level_from_path(const gchar *path)
+{
+	gchar *new_path;
+	const gchar *ptr;
+	gint p;
+
+	if (!path) return NULL;
+
+	p = strlen(path) - 1;
+	if (p < 0) return NULL;
+
+	ptr = path;
+	while(ptr[p] != '/' && p > 0) p--;
+
+	if (p == 0 && ptr[p] == '/') p++;
+	new_path = g_strndup(path, (guint)p);
+	return new_path;
+}
+
+static void sync_mount_base(DriveData *dd)
+{
+	g_free(dd->mount_base);
+	dd->mount_base = remove_level_from_path(dd->mount_point);
+}
+
+void property_load(const gchar *path, DriveData *dd)
 {
         gnome_config_push_prefix (path);
 
@@ -17,6 +42,7 @@ void property_load(gchar *path, DriveData *dd)
 
 	g_free(dd->mount_point);
 	dd->mount_point = gnome_config_get_string("mount/mountpoint=/mnt/floppy");
+	sync_mount_base(dd);
 	dd->autofs_friendly = gnome_config_get_int("mount/autofs_friendly=0");
 
 	g_free(dd->custom_icon_in);
@@ -38,7 +64,7 @@ void property_load(gchar *path, DriveData *dd)
 	gnome_config_pop_prefix ();
 }
 
-void property_save(gchar *path, DriveData *dd)
+void property_save(const gchar *path, DriveData *dd)
 {
         gnome_config_push_prefix(path);
 
@@ -137,7 +163,7 @@ static void pixmap_custom_cb(GtkWidget *widget, gpointer data)
         widget = NULL;
 }
 
-static void update_delay_cb( GtkWidget *widget, gpointer data)
+static void update_delay_cb(GtkWidget *widget, gpointer data)
 {
 	DriveData *dd = data;
         dd->prop_interval = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(dd->prop_spin));
@@ -146,15 +172,18 @@ static void update_delay_cb( GtkWidget *widget, gpointer data)
         widget = NULL;
 }
 
-static void property_apply_cb( GtkWidget *widget, void *data, DriveData *dd)
+static void property_apply_cb(GtkWidget *propertybox, gint page_num, DriveData *dd)
 {
 	gchar *new_file;
+
+	if(page_num != -1) return;	/* only do this once, on global signal */
 
 	dd->scale_applet = dd->prop_scale_applet;
 	dd->autofs_friendly = dd->prop_autofs_friendly;
 	new_file = gtk_entry_get_text(GTK_ENTRY(dd->mount_point_entry));
 	if (dd->mount_point) g_free(dd->mount_point);
 	dd->mount_point = g_strdup(new_file);
+	sync_mount_base(dd);
         dd->interval = dd->prop_interval;
 	if (dd->device_pixmap != dd->prop_device_pixmap)
 		{
@@ -172,8 +201,7 @@ static void property_apply_cb( GtkWidget *widget, void *data, DriveData *dd)
 	/*make the panel save our config*/
 	applet_widget_sync_config(APPLET_WIDGET(dd->applet));
         return;
-        widget = NULL;
-	data = NULL;
+        propertybox = NULL;
 }
 
 static gint property_destroy_cb( GtkWidget *w, DriveData *dd)
