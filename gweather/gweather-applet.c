@@ -110,11 +110,20 @@ static void change_orient_cb (PanelApplet *w, PanelAppletOrient o, gpointer data
     return;
 }
 
-static void change_size_cb(PanelApplet *w, gint s, gpointer data)
+static void size_allocate_cb(PanelApplet *w, GtkAllocation *allocation, gpointer data)
 {
     GWeatherApplet *gw_applet = (GWeatherApplet *)data;
 	
-    gw_applet->size = s;
+    if ((gw_applet->orient == PANEL_APPLET_ORIENT_LEFT) || (gw_applet->orient == PANEL_APPLET_ORIENT_RIGHT)) {
+      if (gw_applet->size == allocation->width)
+	return;
+      gw_applet->size = allocation->width;
+    } else {
+      if (gw_applet->size == allocation->height)
+	return;
+      gw_applet->size = allocation->height;
+    }
+	
     place_widgets(gw_applet);
     return;
 }
@@ -332,8 +341,8 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
 
     g_signal_connect (G_OBJECT(gw_applet->applet), "change_orient",
                        G_CALLBACK(change_orient_cb), gw_applet);
-    g_signal_connect (G_OBJECT(gw_applet->applet), "change_size",
-                       G_CALLBACK(change_size_cb), gw_applet);
+    g_signal_connect (G_OBJECT(gw_applet->applet), "size_allocate",
+                       G_CALLBACK(size_allocate_cb), gw_applet);
     g_signal_connect (G_OBJECT(gw_applet->applet), "change_background",
 		       G_CALLBACK(change_background_cb), gw_applet);
     g_signal_connect (G_OBJECT(gw_applet->applet), "destroy", 
