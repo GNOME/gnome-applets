@@ -8,7 +8,7 @@ Amusementsdir    = $(appletdir)/Amusements
 
 Directory_files = \
 	Utility.directory \
-	Monitor.directory \
+	Monitors.directory \
 	Multimedia.directory \
 	Amusements.directory \
 	Network.directory
