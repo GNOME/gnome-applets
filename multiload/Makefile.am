@@ -2,8 +2,6 @@ INCLUDES =						\
 	-I$(srcdir)					\
 	-I$(top_srcdir)/screen-exec			\
 	-DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\"	\
-	-DGNOME_DISABLE_DEPRECATED=1	\
-	-DGTK_DISABLE_DEPRECATED=1	\
 	$(GNOME_APPLETS_CFLAGS)                         \
 	$(GTOP_APPLETS_CFLAGS)				\
 	-Wall
@@ -42,7 +40,7 @@ schemas_DATA = $(schemas_in_files:.schemas.in=.schemas)
 
 
 install-data-local:
-	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schemas_DATA) ;
+	-GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schemas_DATA) ;
 		
 EXTRA_DIST =	\
 		GNOME_MultiLoadApplet_Factory.server.in.in \

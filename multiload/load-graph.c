@@ -221,10 +221,10 @@ load_graph_destroy (GtkWidget *widget, gpointer data_ptr)
 	
     load_graph_stop (g);
 
+    g_free (g->colors);
     gtk_widget_destroy(widget);
     object_list = g_list_remove (object_list, g);
     return;
-    widget = NULL;
 }
 
 void
