@@ -80,9 +80,7 @@ void start_callback_update(void);
 void reset_orientation(void);
 void reset_colors(void);
 
-void property_load(PanelApplet *applet);
-void property_show(BonoboUIComponent *uic, gpointer data, const gchar *verbname);
-
-
-
-
+void property_load (PanelApplet       *applet);
+void property_show (BonoboUIComponent *uic,
+		    PanelApplet       *applet,
+		    const gchar       *verbname);

@@ -186,7 +186,9 @@ static DisplayData *layout_current = NULL;
 
 static gint setup_done = FALSE;
 
-static void about_cb (BonoboUIComponent *uic, gpointer data, const gchar *verbname)
+static void about_cb (BonoboUIComponent *uic,
+		      PanelApplet       *applet,
+		      const gchar       *verbname)
 {
 	static GtkWidget *about = NULL;
 	GdkPixbuf 	 *pixbuf;
@@ -205,10 +207,8 @@ static void about_cb (BonoboUIComponent *uic, gpointer data, const gchar *verbna
 
 	const gchar *translator_credits = _("translator_credits");
 
-	if (about != NULL)
-	{
-		gdk_window_show(about->window);
-		gdk_window_raise(about->window);
+	if (about) {
+		gtk_window_present (GTK_WINDOW (about));
 		return;
 	}
 
@@ -238,8 +238,6 @@ static void about_cb (BonoboUIComponent *uic, gpointer data, const gchar *verbna
 	gtk_signal_connect( GTK_OBJECT(about), "destroy",
 			    GTK_SIGNAL_FUNC(gtk_widget_destroyed), &about );
 	gtk_widget_show (about);
-	return;
-	data = NULL;
 }
 
 static int is_Modem_on(void)
@@ -1231,7 +1229,7 @@ static void update_pixmaps(void)
 		{
 		GdkGC *mask_gc = NULL;
 
-		button_mask = gdk_pixmap_new(NULL, 10, 10, 1);
+		button_mask = gdk_pixmap_new(display_area->window, 10, 10, 1);
 
 		mask_gc = gdk_gc_new(button_mask);
 
@@ -1421,9 +1419,9 @@ static void show_help_cb(BonoboUIComponent *uic, gpointer data, const gchar *ver
 }
 
 static const BonoboUIVerb modem_applet_menu_verbs [] = {
-        BONOBO_UI_VERB ("Props", property_show),
-        BONOBO_UI_VERB ("Help", show_help_cb),
-        BONOBO_UI_VERB ("About", about_cb),
+        BONOBO_UI_UNSAFE_VERB ("Props", property_show),
+        BONOBO_UI_UNSAFE_VERB ("Help", show_help_cb),
+        BONOBO_UI_UNSAFE_VERB ("About", about_cb),
 
         BONOBO_UI_VERB_END
 };
