@@ -316,9 +316,9 @@ applet_pixel_size_changed_cb (GtkWidget *applet, int size, LoadGraph *g)
     gtk_widget_unref (g->box);
 
     if (g->orient)
-	gtk_widget_set_usize (g->disp, g->pixel_size, g->size);
+	gtk_widget_set_usize (g->main_widget, g->pixel_size, g->size);
     else
-	gtk_widget_set_usize (g->disp, g->size, g->pixel_size);
+	gtk_widget_set_usize (g->main_widget, g->size, g->pixel_size);
 }
 
 static gint
@@ -328,9 +328,9 @@ applet_orient_changed_cb (GtkWidget *applet, gpointer data, LoadGraph *g)
     load_graph_alloc (g);
 
     if (g->orient)
-	gtk_widget_set_usize (g->disp, g->pixel_size, g->size);
+	gtk_widget_set_usize (g->main_widget, g->pixel_size, g->size);
     else
-	gtk_widget_set_usize (g->disp, g->size, g->pixel_size);
+	gtk_widget_set_usize (g->main_widget, g->size, g->pixel_size);
 
     return FALSE;
 }
@@ -529,9 +529,9 @@ load_graph_new (AppletWidget *applet, guint n, gchar *label,
 			(gpointer) g);
 
     if (g->orient)
-	gtk_widget_set_usize (g->disp, g->pixel_size, g->size);
+	gtk_widget_set_usize (g->main_widget, g->pixel_size, g->size);
     else
-	gtk_widget_set_usize (g->disp, g->size, g->pixel_size);
+	gtk_widget_set_usize (g->main_widget, g->size, g->pixel_size);
 
     object_list = g_list_append (object_list, g);
 
@@ -729,9 +729,9 @@ load_graph_properties_update (GnomePropertyObject *object)
 	load_graph_alloc (g);
 
 	if (g->orient)
-	    gtk_widget_set_usize (g->disp, g->pixel_size, g->size);
+	    gtk_widget_set_usize (g->main_widget, g->pixel_size, g->size);
 	else
-	    gtk_widget_set_usize (g->disp, g->size, g->pixel_size);
+	    gtk_widget_set_usize (g->main_widget, g->size, g->pixel_size);
 
 	load_graph_draw (g);
     }
@@ -886,9 +886,9 @@ load_graph_local_properties_update (GnomePropertyObject *object)
 	load_graph_alloc (g);
 
 	if (g->orient)
-	    gtk_widget_set_usize (g->disp, g->pixel_size, g->size);
+	    gtk_widget_set_usize (g->main_widget, g->pixel_size, g->size);
 	else
-	    gtk_widget_set_usize (g->disp, g->size, g->pixel_size);
+	    gtk_widget_set_usize (g->main_widget, g->size, g->pixel_size);
 
 	load_graph_draw (g);
     }
