@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-06-10 14:48+0200\n"
-"PO-Revision-Date: 2004-06-10 17:35+0200\n"
+"POT-Creation-Date: 2004-06-14 14:47+0200\n"
+"PO-Revision-Date: 2004-06-14 19:33+0200\n"
 "Last-Translator: Miloslav Trmac <mitr@volny.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -35,8 +35,8 @@ msgstr ""
 #: multiload/GNOME_MultiloadApplet.xml.h:1
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:1
 #: wireless/GNOME_WirelessApplet.xml.h:1
-msgid "_About..."
-msgstr "O _aplikaci..."
+msgid "_About"
+msgstr "O _aplikaci"
 
 #: accessx-status/GNOME_AccessxApplet.xml.h:2
 #: battstat/GNOME_BattstatApplet.xml.h:2 cdplayer/GNOME_CDPlayerApplet.xml.h:2
@@ -87,13 +87,13 @@ msgid "Utility"
 msgstr "Nástroj"
 
 #: accessx-status/applet.c:134 battstat/battstat_applet.c:987
-#: cdplayer/cdplayer.c:598 charpick/charpick.c:556 drivemount/drivemount.c:553
+#: cdplayer/cdplayer.c:598 charpick/charpick.c:559 drivemount/drivemount.c:553
 #: geyes/geyes.c:202 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:608
 #: gtik/gtik.c:721 gweather/gweather-about.c:47 mailcheck/mailcheck.c:2462
-#: mini-commander/src/about.c:50 mixer/mixer.c:1332
-#: modemlights/modemlights.c:115 multiload/main.c:60
+#: mini-commander/src/about.c:50 mixer/mixer.c:1330
+#: modemlights/modemlights.c:118 multiload/main.c:60
 #: stickynotes/stickynotes_applet_callbacks.c:243
-#: wireless/wireless-applet.c:574
+#: wireless/wireless-applet.c:570
 msgid "translator_credits"
 msgstr ""
 "David Šauer <davids@penguin.cz>\n"
@@ -166,8 +166,8 @@ msgstr "Sledovat zbývající napájení notebooku"
 #: multiload/GNOME_MultiloadApplet.xml.h:4
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:6
 #: wireless/GNOME_WirelessApplet.xml.h:3
-msgid "_Preferences..."
-msgstr "_Nastavení..."
+msgid "_Preferences"
+msgstr "_Nastavení"
 
 #: battstat/GNOME_BattstatApplet.xml.h:4
 msgid "_Suspend Computer..."
@@ -585,12 +585,20 @@ msgstr "_Žlutá:"
 #: battstat/properties.c:297 drivemount/drivemount.c:510
 #: drivemount/properties.c:604 mailcheck/mailcheck.c:2315
 #: mailcheck/mailcheck.c:2603 mini-commander/src/preferences.c:365
-#: mixer/mixer.c:1445 stickynotes/stickynotes_applet_callbacks.c:220
+#: mixer/mixer.c:1443 stickynotes/stickynotes_applet_callbacks.c:220
 #: stickynotes/stickynotes_applet_callbacks.c:384
-#: wireless/wireless-applet.c:544 wireless/wireless-applet.c:628
+#: wireless/wireless-applet.c:540 wireless/wireless-applet.c:624
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Při zobrazování nápovědy došlo k chybě: %s"
+
+#: battstat/properties.c:500
+msgid "Probress Bar Direction Moves towards top"
+msgstr "Ukazatel postupu se pohybuje směrem nahoru"
+
+#: battstat/properties.c:510
+msgid "Probress Bar Direction Moves towards bottom"
+msgstr "Ukazatel postupu se pohybuje směrem dolů"
 
 #: battstat/sounds/battstat_applet.soundlist.in.h:1
 msgid "Battery Status Utility"
@@ -654,7 +662,7 @@ msgstr "Následující skladba"
 msgid "You do not have permission to use the CD player."
 msgstr "Nemáte oprávnění používat přehrávač CD."
 
-#: cdplayer/cdplayer.c:380 mixer/mixer.c:1299 multiload/main.c:144
+#: cdplayer/cdplayer.c:380 mixer/mixer.c:1297 multiload/main.c:144
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "Při spuštění '%s' došlo k chybě: %s"
@@ -746,8 +754,8 @@ msgstr ""
 "Toto je úplná cesta zařízení, které bude použito pro přehrávání cd z tohoto "
 "apletu"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:576
-#: charpick/charpick.c:727 charpick/properties.c:426
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:579
+#: charpick/charpick.c:730 charpick/properties.c:449
 msgid "Character Palette"
 msgstr "Paleta znaků"
 
@@ -755,7 +763,7 @@ msgstr "Paleta znaků"
 msgid "Charpicker Applet Factory"
 msgstr "Generátor pro Paletu znaků"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:3 charpick/charpick.c:727
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:3 charpick/charpick.c:730
 msgid "Insert characters"
 msgstr "Vkládání znaků"
 
@@ -763,25 +771,30 @@ msgstr "Vkládání znaků"
 msgid "Available palettes"
 msgstr "Dostupné palety"
 
-#: charpick/charpick.c:456
+#: charpick/charpick.c:454
+#, c-format
+msgid "insert special character %s"
+msgstr "vložit speciální znak %s"
+
+#: charpick/charpick.c:459
 msgid "Insert special characters"
 msgstr "Vkládání speciálních znaků"
 
 #. If your charset supports it, please use U00F1 to replace the "n"
 #. * in "Muniz".
-#: charpick/charpick.c:545
+#: charpick/charpick.c:548
 msgid "Alexandre Muniz <munizao@xprt.net>"
 msgstr "Alexandre Muñiz <munizao@xprt.net>"
 
-#: charpick/charpick.c:546
+#: charpick/charpick.c:549
 msgid "Kevin Vandersloot"
 msgstr "Kevin Vandersloot"
 
-#: charpick/charpick.c:578
+#: charpick/charpick.c:581
 msgid "Copyright (C) 1998"
 msgstr "Copyright © 1998"
 
-#: charpick/charpick.c:579
+#: charpick/charpick.c:582
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -797,7 +810,7 @@ msgstr "Znaky zobrazované při spuštění apletu"
 msgid "DEPRECATED - Characters shown on applet startup"
 msgstr "ZASTARALÉ - Znaky zobrazované při spuštění apletu"
 
-#: charpick/charpick.schemas.in.h:3 charpick/properties.c:353
+#: charpick/charpick.schemas.in.h:3 charpick/properties.c:376
 msgid "List of available palettes"
 msgstr "Seznam dostupných palet"
 
@@ -813,59 +826,63 @@ msgstr ""
 "Řetězec, který uživatel vybral, když byl aplet naposledy použit. Tento "
 "řetězec bude zobrazen, když uživatel aplet spustí."
 
-#: charpick/properties.c:90
+#: charpick/properties.c:24
+msgid "_Edit"
+msgstr "_Upravit"
+
+#: charpick/properties.c:113
 msgid "_Palette:"
 msgstr "_Paleta:"
 
-#: charpick/properties.c:98
+#: charpick/properties.c:121
 msgid "Palette entry"
 msgstr "Položka palety"
 
-#: charpick/properties.c:99
+#: charpick/properties.c:122
 msgid "Modify a palette by adding or removing characters"
 msgstr "Upravte paletu přidáním nebo odstraněním znaků"
 
-#: charpick/properties.c:213
+#: charpick/properties.c:236
 msgid "Add Palette"
 msgstr "Přidat paletu"
 
-#: charpick/properties.c:250
+#: charpick/properties.c:273
 msgid "Edit Palette"
 msgstr "Upravit paletu"
 
-#: charpick/properties.c:352
+#: charpick/properties.c:375
 msgid "Palettes list"
 msgstr "Seznam palet"
 
-#: charpick/properties.c:431
-msgid "Pal_ettes:"
-msgstr "Pa_lety:"
+#: charpick/properties.c:454
+msgid "_Palettes:"
+msgstr "_Palety:"
 
-#: charpick/properties.c:447
+#: charpick/properties.c:470
 msgid "Add button"
 msgstr "Přidat tlačítko"
 
-#: charpick/properties.c:448
+#: charpick/properties.c:471
 msgid "Click to add a new palette"
 msgstr "Kliknutím přidáte novou paletu"
 
-#: charpick/properties.c:455
+#: charpick/properties.c:478
 msgid "Edit button"
 msgstr "Upravit tlačítko"
 
-#: charpick/properties.c:456
+#: charpick/properties.c:479
 msgid "Click to edit the selected palette"
 msgstr "Kliknutím upravíte vybranou paletu"
 
-#: charpick/properties.c:463
+#: charpick/properties.c:486
 msgid "Delete button"
 msgstr "Odstranit tlačítko"
 
-#: charpick/properties.c:464
+#: charpick/properties.c:487
 msgid "Click to delete the selected palette"
 msgstr "Kliknutím odstraníte vybranou paletu"
 
-#: charpick/properties.c:516
+#: charpick/properties.c:539
 msgid "Character Palette Preferences"
 msgstr "Nastavení Palety znaků"
 
@@ -887,8 +904,8 @@ msgid "Mount local disks and devices"
 msgstr "Připojování lokálních disků a zařízení"
 
 #: drivemount/GNOME_DriveMountApplet.xml.h:2
-msgid "_Browse..."
-msgstr "Pro_bírat..."
+msgid "_Browse"
+msgstr "_Procházet"
 
 #: drivemount/GNOME_DriveMountApplet.xml.h:3
 msgid "_Eject"
@@ -978,11 +995,11 @@ msgid "Floppy"
 msgstr "Disketa"
 
 #: drivemount/properties.c:457
-msgid "Cdrom"
+msgid "CD-ROM"
 msgstr "CD-ROM"
 
 #: drivemount/properties.c:460
-msgid "Cd Recorder"
+msgid "CD Recorder"
 msgstr "CD zapisovač"
 
 #: drivemount/properties.c:463
@@ -1026,11 +1043,11 @@ msgid "_Scale size to panel"
 msgstr "Změnit veliko_st dle panelu"
 
 #: drivemount/properties.c:552
-msgid "_Eject disk when unmounting"
+msgid "_Eject disk when unmounted"
 msgstr "Vysunout disk při _odpojování"
 
 #: drivemount/properties.c:562
-msgid "Use _automount friendly status test"
+msgid "Use _automount-friendly status test"
 msgstr "Používat _testování stavu přátelské k programu automount"
 
 #: geyes/GNOME_GeyesApplet.server.in.in.h:1
@@ -2509,8 +2526,8 @@ msgstr ""
 "Příkaz zněl: %s"
 
 #: gswitchit/GNOME_GSwitchItApplet.xml.h:1
-msgid "Pl_ugins..."
-msgstr "_Moduly..."
+msgid "Pl_ugins"
+msgstr "_Moduly"
 
 #: gswitchit/GNOME_GSwitchItApplet.xml.h:3
 msgid "_Groups"
@@ -2742,7 +2759,7 @@ msgstr "Nemohu získat předdefinovaná data."
 msgid "No stock list"
 msgstr "Žádný seznam akcií"
 
-#: gtik/gtik.c:311 gweather/gweather-applet.c:466
+#: gtik/gtik.c:311 gweather/gweather-applet.c:468
 msgid "Updating..."
 msgstr "Aktualizuji..."
 
@@ -3069,7 +3086,7 @@ msgstr ""
 "\n"
 "Aplet pro sledování místního počasí."
 
-#: gweather/gweather-applet.c:343 gweather/gweather-applet.c:347
+#: gweather/gweather-applet.c:345 gweather/gweather-applet.c:349
 msgid "GNOME Weather"
 msgstr "GNOME Počasí"
 
@@ -3138,8 +3155,8 @@ msgid "_Visit Weather.com"
 msgstr "_Navštívit weather.com"
 
 #: gweather/gweather-dialog.c:345
-msgid "URL link Button"
-msgstr "Tlačítko odkazu na URL"
+msgid "Visit Weather.com"
+msgstr "Navštívit weather.com"
 
 #: gweather/gweather-dialog.c:345
 msgid "Click to Enter Weather.com"
@@ -3921,8 +3938,8 @@ msgstr "Pře_hrát zvuk, když přijde nová pošta"
 
 #. l = gtk_check_button_new_with_mnemonic (_("Set the number of unread mails to _zero when clicked"));
 #: mailcheck/mailcheck.c:2146
-msgid "Sto_p animation when double clicked"
-msgstr "Zastavit animace po _dvojitém kliknutí"
+msgid "Sto_p animation when clicked"
+msgstr "Zastavit animace po _kliknutí"
 
 #: mailcheck/mailcheck.c:2159
 msgid "Select a_nimation:"
@@ -3949,8 +3966,8 @@ msgid "Command to execute when new mail arrives"
 msgstr "Příkaz, který spustit, když přijde nová pošta"
 
 #: mailcheck/mailcheck.c:2262
-msgid "When double clicke_d:"
-msgstr "Při d_vojitém kliknutí:"
+msgid "When clicke_d:"
+msgstr "Při _kliknutí:"
 
 #: mailcheck/mailcheck.c:2277
 msgid "Command to execute when clicked"
@@ -4424,7 +4441,7 @@ msgid "Adjust the sound volume"
 msgstr "Upravit hlasitost zvuku"
 
 #: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:199
-#: mixer/mixer.c:1346
+#: mixer/mixer.c:1344
 msgid "Volume Control"
 msgstr "Ovládání hlasitosti"
 
@@ -4552,51 +4569,51 @@ msgstr ""
 "varování: tato verze programu gmix byla přeložena s jinou verzí\n"
 "soundcard.h.\n"
 
-#: mixer/mixer.c:878
+#: mixer/mixer.c:876
 #, c-format
 msgid "Couldn't open mixer device %s\n"
 msgstr "Nemohu otevřít zařízení mixéru %s\n"
 
-#: mixer/mixer.c:1047
+#: mixer/mixer.c:1045
 msgid "Volume Controller"
 msgstr "Ovladač hlasitosti"
 
-#: mixer/mixer.c:1048
+#: mixer/mixer.c:1046
 msgid "Use Up/Down arrow keys to change volume"
 msgstr "Hlasitost změníte pomocí kláves s šipkami Nahoru/Dolů"
 
 #. Translators - The + and - refer to increasing and decreasing the volume.
 #. ** I don't know if there are sensible alternatives in other languages
-#: mixer/mixer.c:1072
+#: mixer/mixer.c:1070
 msgid "+"
 msgstr "+"
 
-#: mixer/mixer.c:1073
+#: mixer/mixer.c:1071
 msgid "-"
 msgstr "-"
 
-#: mixer/mixer.c:1347
+#: mixer/mixer.c:1345
 msgid "(C) 2001 Richard Hult"
 msgstr "© 2001 Richard Hult"
 
-#: mixer/mixer.c:1348
+#: mixer/mixer.c:1346
 msgid "The volume control lets you set the volume level for your desktop."
 msgstr ""
 "Ovládání hlasitosti vám umožní nastavit úroveň hlasitosti vašeho počítače."
 
-#: mixer/mixer.c:1495
+#: mixer/mixer.c:1493
 msgid "Volume Control Preferences"
 msgstr "Nastavení ovládání hlasitosti"
 
-#: mixer/mixer.c:1519
+#: mixer/mixer.c:1517
 msgid "Audio Channels"
 msgstr "Zvukové kanály"
 
-#: mixer/mixer.c:1535
+#: mixer/mixer.c:1533
 msgid "_Select channel to control:"
 msgstr "_Vyberte kanál, který ovládat:"
 
-#: mixer/mixer.c:1871
+#: mixer/mixer.c:1869
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr ""
 "Ovládání hlasitosti vám umožní nastavit úroveň hlasitosti vašeho počítače"
@@ -4614,11 +4631,11 @@ msgid "Saved volume to restore on startup"
 msgstr "Uložená hlasitost, kterou obnovit při startu"
 
 #: modemlights/GNOME_ModemLightsApplet.server.in.in.h:2
-#: modemlights/modemlights.c:135 modemlights/modemlights.c:1582
+#: modemlights/modemlights.c:138 modemlights/modemlights.c:1583
 msgid "Modem Lights"
 msgstr "Kontrolky modemu"
 
-#: modemlights/modemlights.c:137
+#: modemlights/modemlights.c:140
 msgid ""
 "Released under the GNU general public license.\n"
 "A modem status indicator and dialer.\n"
@@ -4628,7 +4645,7 @@ msgstr ""
 "Aplet zobrazuje stav modemu a vytáčí připojení.\n"
 "Kontrolky v pořadí shora nebo zleva znamenají Posílání dat a Příjem dat."
 
-#: modemlights/modemlights.c:518
+#: modemlights/modemlights.c:521
 msgid ""
 "You are currently connected.\n"
 "Do you want to disconnect?"
@@ -4636,24 +4653,24 @@ msgstr ""
 "Právě jste připojeni.\n"
 "Chcete se odpojit?"
 
-#: modemlights/modemlights.c:526
+#: modemlights/modemlights.c:529
 msgid "_Disconnect"
 msgstr "O_dpojit"
 
-#: modemlights/modemlights.c:553
+#: modemlights/modemlights.c:556
 msgid "Do you want to connect?"
 msgstr "Chcete se připojit?"
 
-#: modemlights/modemlights.c:560
+#: modemlights/modemlights.c:563
 msgid "C_onnect"
 msgstr "Přip_ojit"
 
-#: modemlights/modemlights.c:584
+#: modemlights/modemlights.c:587
 #, c-format
 msgid "%#.1fMb received / %#.1fMb sent / time: %.1d:%.2d"
 msgstr "přijato %#.1fMb / odesláno %#.1fMb / čas: %.1d:%.2d"
 
-#: modemlights/modemlights.c:589
+#: modemlights/modemlights.c:592
 msgid "not connected"
 msgstr "nepřipojeno"
 
@@ -4890,8 +4907,8 @@ msgid "Bac_kground:"
 msgstr "Pozad_í:"
 
 #: modemlights/properties.c:621
-msgid "O_utline"
-msgstr "_Obrysy"
+msgid "O_utline:"
+msgstr "_Obrysy:"
 
 #: modemlights/properties.c:624 multiload/properties.c:534
 msgid "Colors"
@@ -4975,7 +4992,18 @@ msgstr "Odkládací prostor"
 msgid "Resource"
 msgstr "Zdroj"
 
-#: multiload/main.c:358
+#: multiload/main.c:363
+#, c-format
+msgid ""
+"%s:\n"
+"%d%% in use of which\n"
+"%d%% is cache"
+msgstr ""
+"%s:\n"
+"Používá se %d%%, z čehož\n"
+"%d%% je cache"
+
+#: multiload/main.c:366
 #, c-format
 msgid ""
 "%s:\n"
@@ -5231,8 +5259,8 @@ msgid "Sticky Notes Applet Factory"
 msgstr "Generátor apletu Lepící poznámky"
 
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:2
-msgid "_Delete Notes..."
-msgstr "O_dstranit poznámky..."
+msgid "_Delete Notes"
+msgstr "O_dstranit poznámky"
 
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:4
 msgid "_Lock Notes"
@@ -5420,8 +5448,8 @@ msgid "_Lock Note"
 msgstr "_Zamknout poznámku"
 
 #: stickynotes/stickynotes.glade.h:48
-msgid "_Properties..."
-msgstr "_Vlastnosti..."
+msgid "_Properties"
+msgstr "_Vlastnosti"
 
 #: stickynotes/stickynotes.glade.h:49
 msgid "_Put notes on all workspaces"
@@ -5614,15 +5642,16 @@ msgid "Monitor the quality of a wireless network link"
 msgstr "Sledování kvality bezdrátového síťového spojení"
 
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:3
-#: wireless/wireless-applet.c:590 wireless/wireless-applet.c:837
+#: wireless/wireless-applet.c:586 wireless/wireless-applet.c:838
 msgid "Wireless Link Monitor"
 msgstr "Sledování bezdrátového spojení"
 
-#: wireless/wireless-applet.c:367 wireless/wireless-applet.c:504
-msgid "No Wireless Devices"
-msgstr "Žádná bezdrátová zařízení"
+#: wireless/wireless-applet.c:144
+#, c-format
+msgid "Link Strength: %2.0d%%"
+msgstr "Síla signálu: %2.0d%%"
 
-#: wireless/wireless-applet.c:369
+#: wireless/wireless-applet.c:365
 msgid ""
 "There doesn't seem to be any wireless devices configured on your system.\n"
 "Please verify your configuration if you think this is incorrect."
@@ -5630,15 +5659,19 @@ msgstr ""
 "Zdá se, že na vašem systému nejsou nastavena žádná bezdrátová zařízení.\n"
 "Zkontrolujte prosím vaše nastavení, pokud si myslíte, že to není správně."
 
-#: wireless/wireless-applet.c:592
+#: wireless/wireless-applet.c:500 wireless/wireless-applet.c:827
+msgid "No Wireless Devices"
+msgstr "Žádná bezdrátová zařízení"
+
+#: wireless/wireless-applet.c:588
 msgid "(C) 2001, 2002 Free Software Foundation "
 msgstr "© 2001, 2002 Free Software Foundation"
 
-#: wireless/wireless-applet.c:593
+#: wireless/wireless-applet.c:589
 msgid "This utility shows the status of a wireless link."
 msgstr "Tento nástroj zobrazuje stav bezdrátového spojení."
 
-#: wireless/wireless-applet.c:838
+#: wireless/wireless-applet.c:839
 msgid "This utility shows the status of a wireless link"
 msgstr "Tento nástroj zobrazuje stav bezdrátového spojení"
 
@@ -5653,6 +5686,9 @@ msgstr "Nastavení Sledování bezdrátového spojení"
 #: wireless/wireless-applet.glade.h:3
 msgid "_Monitored device:"
 msgstr "_Sledované zařízení:"
+
+#~ msgid "URL link Button"
+#~ msgstr "Tlačítko odkazu na URL"
 
 #~ msgid ""
 #~ "Detailed forecast not available for this location.\n"
@@ -6496,9 +6532,6 @@ msgstr "_Sledované zařízení:"
 
 #~ msgid "_Delete All Notes"
 #~ msgstr "_Odstranit všechny poznámky"
-
-#~ msgid "_Edit Title"
-#~ msgstr "_Upravit nadpis"
 
 #~ msgid "<b>New Note Size</b>"
 #~ msgstr "<b>Velikost nové poznámky</b>"
