@@ -72,8 +72,7 @@ This program is free software; you can redistribute it and/or modify it under th
    		gdk_pixbuf_unref (pixbuf);
    
    	gtk_window_set_wmclass (GTK_WINDOW (about_box), "command line", "Command Line");
-   	gnome_window_icon_set_from_file (GTK_WINDOW (about_box), GNOME_ICONDIR"/gnome-mini-commander.png");
-	gtk_signal_connect( GTK_OBJECT(about_box), "destroy",
+   	gtk_signal_connect( GTK_OBJECT(about_box), "destroy",
 			    GTK_SIGNAL_FUNC(gtk_widget_destroyed), &about_box );
         gtk_widget_show (about_box);
 	return;

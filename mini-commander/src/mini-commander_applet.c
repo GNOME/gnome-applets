@@ -403,6 +403,8 @@ mini_commander_applet_fill(PanelApplet *applet)
 {
     MCData *mcdata;
     
+    gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gnome-mini-commander.png");
+    
     panel_applet_add_preferences (applet, "/schemas/apps/mini-commander/prefs", NULL);
     
     mcdata = g_new0 (MCData, 1);
