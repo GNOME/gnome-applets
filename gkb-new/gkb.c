@@ -34,6 +34,8 @@
 #include <sys/stat.h>
 #include "gkb.h"
 
+int NumLockMask, CapsLockMask, ScrollLockMask;
+
 GtkWidget *bah_window = NULL;
 
 static void gkb_button_press_event_cb (GtkWidget * widget,
@@ -387,8 +389,7 @@ applet_save_session (GtkWidget * w,
   gchar str[100];
   int i = 0;
 
-  gnome_config_push_prefix (privcfgpath);
-  g_print ("Pushing prefix .. [%s]\n", privcfgpath);
+  gnome_config_push_prefix ("/gkb/main");
   gnome_config_set_int ("gkb/num", gkb->n);
   gnome_config_set_bool ("gkb/small", gkb->is_small);
   gnome_config_set_string ("gkb/key", gkb->key);
@@ -492,7 +493,7 @@ load_properties (GKB * gkb)
 
   gkb->maps = NULL;
 
-  gnome_config_push_prefix (APPLET_WIDGET (gkb->applet)->privcfgpath);
+  gnome_config_push_prefix ("/gkb/main");
 
   gkb->n = gnome_config_get_int ("gkb/num=0");
 
@@ -711,10 +712,13 @@ event_filter (GdkXEvent * gdk_xevent, GdkEvent * event, gpointer data)
 {
   XEvent *xevent;
 
+  printf(".");fflush(stdout);
+
   xevent = (XEvent *) gdk_xevent;
 
   if (xevent->type == KeyRelease)
     {
+      printf("k");fflush(stdout);
       return global_key_filter (gdk_xevent, event);
     }
   return GDK_FILTER_CONTINUE;
@@ -883,18 +887,7 @@ gkb_activator (CORBA_Object poa_in,
   gtk_signal_connect (GTK_OBJECT (gkb->applet), "save_session",
 		      GTK_SIGNAL_FUNC (applet_save_session), NULL);
 
-  XGetWindowAttributes (GDK_DISPLAY (), GDK_ROOT_WINDOW (), &attribs);
-  XSelectInput (GDK_DISPLAY (),
-		GDK_ROOT_WINDOW (),
-		attribs.your_event_mask |
-		StructureNotifyMask | FocusChangeMask | PropertyChangeMask);
-
   gdk_window_add_filter (GDK_ROOT_PARENT (), event_filter, NULL);
-
-  key = XKeysymToKeycode (GDK_DISPLAY (), gkb->keysym);
-
-  XGrabKey (GDK_DISPLAY (), key, gkb->state,
-	    GDK_ROOT_WINDOW (), True, GrabModeAsync, GrabModeAsync);
 
   gkb_activator_register_callbacks (gkb);
 
@@ -931,7 +924,10 @@ int
 main (int argc, char *argv[])
 {
   gpointer gkb_impl;
-
+  XModifierKeymap *xmk=NULL;
+  KeyCode *map;
+  int m, k;
+      
   /* Initialize the i18n stuff */
 
   bindtextdomain (PACKAGE, GNOMELOCALEDIR);
@@ -940,6 +936,22 @@ main (int argc, char *argv[])
   applet_widget_init ("gkb_applet", VERSION, argc, argv, NULL, 0, NULL);
 
   APPLET_ACTIVATE (gkb_activator, "gkb_applet", &gkb_impl);
+
+  if(xmk)
+    {
+      map=xmk->modifiermap;
+          for(m=0;m<8;m++)
+          	for(k=0;k<xmk->max_keypermod; k++, map++)
+          	{
+                  if(*map==XKeysymToKeycode(GDK_DISPLAY (), XK_Num_Lock))
+                  	  NumLockMask=(1<<m);
+                  if(*map==XKeysymToKeycode(GDK_DISPLAY (), XK_Caps_Lock))
+                  	  CapsLockMask=(1<<m);
+                  if(*map==XKeysymToKeycode(GDK_DISPLAY (), XK_Scroll_Lock))
+                  	  ScrollLockMask=(1<<m);
+                }
+    XFreeModifiermap(xmk);
+   }
 
   applet_widget_gtk_main ();
 
