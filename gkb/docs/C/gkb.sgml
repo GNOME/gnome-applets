@@ -1,13 +1,13 @@
  <sect1 id="gkbapplet">
-  <title>GNOME KeyBoard Applet</title> 
+  <title>GNOME KeyBoard Applet</title>
 
-  <para> 
+  <para>
    <application>GNOME KeyBoard Applet</application>, shown with its
    default configuration in <xref
    linkend="gkbapplet-fig">, allows you to easily and quickly change
    the keyboard map to those used in various different countries. To
-   add this applet to a 
-   <interface>Panel</interface>, 
+   add this applet to a
+   <interface>Panel</interface>,
    right-click on the <interface>Panel</interface> and choose
    <menuchoice>
     <guimenu>Panel</guimenu>
@@ -17,8 +17,7 @@
     <guimenuitem>GKB International KeyBoard</guimenuitem>
    </menuchoice>.
   </para>
-  
- 
+
   <figure id="gkbapplet-fig">
    <title>GNOME KeyBoard Applet</title>
    <screenshot>
@@ -29,59 +28,64 @@
    </screenshot>
   </figure>
 
-  <sect2 id="gkbapplet-usage">
+
+  <!-- ============= Usage  ================================ -->
+  <sect2 id="gkb-usage">
    <title>Usage</title>
    <para>
     Once configured, the <application>GNOME Keyboard</application>
     applet allows you to switch the keyboard mapping between any two
     countries. Just left-click on the applet to switch the keyboard
-    mapping. 
+    mapping.
    </para>
-   <para> 
-    If you right-click on the applet, it brings up a
-    menu, containing the following commands: 
-      <itemizedlist> 
 
-	<listitem>
-	  <para>
-	    <guimenuitem>About&hellip;</guimenuitem> &mdash; shows info about
-            the <application>Drive Mount Applet</application>, inluding
-            version and author's name. 
-	    </para>
-	</listitem>
+   <para>
+    Right-clicking on the applet brings up a menu containing the
+    following items:
+    <itemizedlist>
 
-	<listitem>
-	  <para>
-	    <guimenuitem>Help&hellip;</guimenuitem> &mdash; brings up this
-            document. 
-	    </para>
-	</listitem>
+     <listitem>
+      <para>
+       <guimenuitem>Properties&hellip;</guimenuitem> &mdash;
+       opens the <link linkend="gkbapplet-prefs">
+       <guilabel>Properties</guilabel></link> dialog.
+      </para>
+     </listitem>
 
-        <listitem>
-          <para>
-            <guimenuitem>Properties&hellip;</guimenuitem>&mdash; brings up
-            the <link linkend="gkbapplet-prefs">
-                <guilabel>Properties</guilabel>
-            </link> dialog
-            </para>
-        </listitem>
+     <listitem>
+      <para>
+       <guimenuitem>Help</guimenuitem> &mdash;
+       displays this document.
+      </para>
+     </listitem>
 
-      </itemizedlist>
-    </para>
+     <listitem>
+      <para>
+       <guimenuitem>About&hellip;</guimenuitem> &mdash;
+       shows basic information about <application>GNOME KeyBoard
+       Applet</application>, inluding the applet's version and the
+       author's name.
+      </para>
+     </listitem>
+
+    </itemizedlist>
+   </para>
   </sect2>
 
+
+  <!-- ============= Customization ============================= -->
   <sect2 id="gkbapplet-prefs">
     <title>Customization</title>
     <para>
       You can customize <application>GNOME KeyBoard</application>
-      applet by
-      right-clicking on it and choosing
+      applet by right-clicking on it and choosing
       <guimenuitem>Properties&hellip;</guimenuitem>. This will open the
       <interface>Properties</interface> dialog(shown in <xref
-      linkend="gkbappletsettings-fig">), which allows you to
+      linkend="gkbapplet-settings-fig">), which allows you to
       change various settings.
     </para>
-    <figure id="gkbappletsettings-fig">
+
+    <figure id="gkbapplet-settings-fig">
      <title>Properties dialog</title>
      <screenshot>
       <screeninfo>Properties dialog</screeninfo>
@@ -92,7 +96,7 @@
     </figure>
 
     <para>
-     The properties are as follows:
+     The properties are:
      <itemizedlist>
 
       <listitem>
@@ -129,7 +133,6 @@
        </para>
       </listitem>
 
-
       <listitem>
        <para>
         Program &mdash; Select which program <application>GNOME
@@ -138,11 +141,13 @@
         one does not work, use the other.
        </para>
       </listitem>
+
      </itemizedlist>
     </para>
 
-    <para> After you made all the choices you want, click on
-      <guibutton>OK</guibutton> to make the changes and close the
+    <para> 
+      After you have made all the changes you want, click on
+      <guibutton>OK</guibutton> to apply the changes and close the
       <interface>Properties</interface> dialog. To cancel the changes
       and return to previous values, click the
       <guibutton>Cancel</guibutton> button.
@@ -150,24 +155,96 @@
   </sect2>
 
 
-  <sect2 id="gkbapplet-bugs">
-   <title>Known bugs and limitations</title>
+  <!-- ============= Bugs ================================== -->
+  <!-- This section should describe known bugs and limitations of
+       the program if there are any - please be frank and list all
+       problems you know of -->
+  <sect2 id="bugs">
+   <title>Known Bugs and Limitations</title>
    <para>
-    There are no known bugs.
+    This applet has no known bugs.
    </para>
   </sect2>
 
-  <sect2 id="gkbapplet-authors">
+
+  <!-- ============= Authors ================================ -->
+
+  <sect2 id="authors">
    <title>Authors</title>
    <para>
-    This applet was writen by Szabolcs Ban <email>bansz@szif.hu</email>.
-    To submit suggestions and
-    bug reports, use <ulink type="http"
-    url="http://bugs.gnome.org">The GNOME Bug Tracking System</ulink>
-    or the <application>bug-buddy</application> utility in the
-    <interface>Main Menu</interface>.
+    <application>GNOME KeyBoard</application> was written by Szabolcs Ban
+    (<email>bansz@szif.hu</email>).  Please send all comments,
+    suggestions, and bug 
+    reports to the <ulink url="http://bugs.gnome.org" type="http">GNOME
+    bug tracking database</ulink>. (Instructions for submitting bug
+    reports can be found <ulink
+    url="http://bugs.gnome.org/Reporting.html" type="http">
+    on-line</ulink>. If you are using
+    GNOME 1.1 or later, you can also use <application>Bug Report
+    Tool</application> (<command>bug-buddy</command>), available in the
+    <guisubmenu>Utilities</guisubmenu> submenu of <guimenu>Main
+    Menu</guimenu>, for submitting bug reports.
+   </para>
+
+   <para>
+    This manual was written by Dan Mueth
+    (<email>d-mueth@uchicago.edu</email>). Please send all comments and
+    suggestions regarding this manual to the <ulink type="http"
+    url="http://www.gnome.org/gdp">GNOME Documentation Project</ulink> 
+    by sending an email to <email>docs@gnome.org</email>. You can also
+    submit comments online by using the <ulink type="http"
+    url="http://www.gnome.org/gdp/doctable/">GNOME Documentation Status
+    Table</ulink>.
+   </para>
+
+   <!-- For translations: uncomment this:
+
+   <para>
+    Latin translation was done by ME
+    (<email>MYNAME@MYADDRESS</email>). Please send all  comments  and
+    suggestions regarding this translation to SOMEWHERE.
+   </para>
+
+   -->
+
+  </sect2>
+
+
+  <!-- ============= Application License ============================= -->
+
+  <sect2 id="license">
+   <title>License</title>
+   <para>
+    This program is free software; you can redistribute it and/or
+    modify it under the terms of the <citetitle>GNU General Public
+    License</citetitle> as published by the Free Software Foundation;
+    either version 2 of the License, or (at your option) any later
+    version.
+   </para>
+   <para>
+    This program is distributed in the hope that it will be useful, but
+    WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    <citetitle>GNU General Public License</citetitle> for more details.
+   </para>
+   <para>
+    A copy of the <citetitle>GNU General Public License</citetitle> is
+    included as an appendix to the <citetitle>GNOME Users
+    Guide</citetitle>.  You may also obtain a copy of the
+    <citetitle>GNU General Public License</citetitle> from the Free
+    Software Foundation by visiting <ulink type="http"
+    url="http://www.fsf.org">their Web site</ulink> or by writing to
+    <address>
+     Free Software Foundation, Inc.
+     <street>59 Temple Place</street> - Suite 330
+     <city>Boston</city>, <state>MA</state> <postcode>02111-1307</postcode>
+     <country>USA</country>
+    </address>
    </para>
   </sect2>
 
  </sect1>
+
+
+
 
