@@ -573,12 +573,12 @@ ui_component_event (BonoboUIComponent *comp,
 static void
 setup_box(CDPlayerData* cd)
 {
-    GtkWidget *hbox;
+    GtkWidget *hbox, *vbox;
 
     if(cd->panel.box)
         destroy_box(cd);
 
-    if ((cd->orient == PANEL_APPLET_ORIENT_DOWN || cd->orient == PANEL_APPLET_ORIENT_UP) && cd->size < 36  )
+    if ((cd->orient == PANEL_APPLET_ORIENT_DOWN || cd->orient == PANEL_APPLET_ORIENT_UP) && cd->size < 48  )
     {
         /* tiny horizontal panel */
         cd->panel.box = gtk_hbox_new(FALSE, 0);
@@ -593,7 +593,7 @@ setup_box(CDPlayerData* cd)
         gtk_widget_show(cd->panel.box);
 
     }
-    else if ((cd->orient == PANEL_APPLET_ORIENT_DOWN || cd->orient == PANEL_APPLET_ORIENT_UP) && cd->size < 48  )
+    else if ((cd->orient == PANEL_APPLET_ORIENT_DOWN || cd->orient == PANEL_APPLET_ORIENT_UP) && cd->size < 80  )
     {
         /* small horizontal panel */
         cd->panel.box = gtk_vbox_new(FALSE, 0);
@@ -609,20 +609,18 @@ setup_box(CDPlayerData* cd)
         pack_thing(hbox, cd->panel.track_control.next, FALSE);
         gtk_widget_show(cd->panel.box);
     }
-    else if ((cd->orient == PANEL_APPLET_ORIENT_LEFT || cd->orient == PANEL_APPLET_ORIENT_RIGHT) && cd->size < 48  )
+    else if ((cd->orient == PANEL_APPLET_ORIENT_LEFT || cd->orient == PANEL_APPLET_ORIENT_RIGHT) && cd->size < 128  )
     {
         cd->panel.box = gtk_vbox_new(FALSE, 0);
+	vbox = cd->panel.box;
         gtk_container_add(GTK_CONTAINER(cd->panel.frame), cd->panel.box);
         pack_thing(cd->panel.box, cd->panel.time, TRUE);
-        hbox = pack_make_hbox(cd);
-        pack_thing(hbox, cd->panel.play_control.play_pause, TRUE);
-        pack_thing(hbox, cd->panel.play_control.stop, FALSE);
-        hbox = pack_make_hbox(cd);
-        pack_thing(hbox, cd->panel.play_control.eject, FALSE);
-        pack_thing(hbox, cd->panel.track_control.display, TRUE);
-        hbox = pack_make_hbox(cd);
-        pack_thing(hbox, cd->panel.track_control.prev, TRUE);
-        pack_thing(hbox, cd->panel.track_control.next, TRUE);
+        pack_thing(vbox, cd->panel.track_control.display, TRUE);
+        pack_thing(vbox, cd->panel.play_control.play_pause, TRUE);
+        pack_thing(vbox, cd->panel.track_control.prev, TRUE);
+        pack_thing(vbox, cd->panel.track_control.next, TRUE);
+        pack_thing(vbox, cd->panel.play_control.stop, FALSE);
+        pack_thing(vbox, cd->panel.play_control.eject, FALSE);
         gtk_widget_show(cd->panel.box);
     }
     else
