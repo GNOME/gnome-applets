@@ -29,7 +29,6 @@
  * USA
  */
 
-#include <dirent.h>
 #include "gkb.h"
 
 static char *prefixdir = NULL;
