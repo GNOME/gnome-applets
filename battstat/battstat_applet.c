@@ -441,6 +441,10 @@ battery_full_dialog( void )
   gtk_label_set_use_markup (GTK_LABEL (label), TRUE);
   gtk_box_pack_start (GTK_BOX (hbox), label, TRUE, TRUE, 6);
   gtk_container_add (GTK_CONTAINER (GTK_DIALOG (dialog)->vbox), hbox);
+  gtk_window_set_keep_above (GTK_WINDOW (dialog), TRUE);
+  gtk_window_stick (GTK_WINDOW (dialog));
+  gtk_window_set_skip_pager_hint (GTK_WINDOW (dialog), TRUE);
+  gtk_window_set_focus_on_map (GTK_WINDOW (dialog), FALSE);
   gtk_widget_show_all (dialog);
 }
 
@@ -500,7 +504,11 @@ battery_low_dialog( ProgressData *battery, BatteryStatus *info )
 	 
   gtk_window_set_keep_above (GTK_WINDOW (battery->lowbattnotificationdialog), TRUE);
   gtk_window_stick (GTK_WINDOW (battery->lowbattnotificationdialog));
-			
+  gtk_window_set_focus_on_map (GTK_WINDOW (battery->lowbattnotificationdialog),
+		  FALSE);
+  gtk_window_set_skip_pager_hint (GTK_WINDOW (
+			  battery->lowbattnotificationdialog),
+		  TRUE);
   gtk_widget_show_all (battery->lowbattnotificationdialog);
   battery->lowbattnotification=FALSE;
 }
@@ -739,11 +747,11 @@ check_for_updates( gpointer data )
 
   possibly_update_status_icon( battstat, &info );
 
-  if( !info.on_ac_power &&
+  if (!info.on_ac_power &&
       battstat->last_batt_life != 1000 &&
       battstat->last_batt_life > battstat->red_val &&
       info.percent <= battstat->red_val &&
-      info.present )
+      info.present)
   {
     /* Warn that battery dropped below red_val */
     if(battstat->lowbattnotification)
