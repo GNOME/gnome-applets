@@ -1,142 +1,57 @@
-<!DOCTYPE article PUBLIC "-//GNOME//DTD DocBook PNG Variant V1.0//EN"[
+<!DOCTYPE Article PUBLIC "-//GNOME//DTD DocBook PNG Variant V1.1//EN"[
+ <!entity gkb.sgml SYSTEM "gkb.sgml">
+
 ]>
 
-<article id="index">
- <artheader>
-  <title>A GNOME billentyûzet átkapcsoló</title>
+
+<article id="index"> <!-- please do not change the id -->
+
+ <!-- ============= Document Header ============================= -->
+ <artheader> 
+  <title>GNOME Billentyûzet átkapcsoló</title>
+  <copyright>
+   <year>2000</year>
+   <holder>Bán Szabolcs (Shooby) és Dan Mueth</holder>
+  </copyright>
 
   <copyright>
    <year>2000</year>
-   <holder>Bán Szabolcs (Shooby)</holder>
+   <holder>Bán Szabolcs (Hungarian translation)</holder>
   </copyright>
+
+
+  <!-- do not put authorname in the header except in copyright - use
+  section "authors" below -->
 
   <legalnotice>
    <para>
-     Permission is granted to make and distribute verbatim copies of this
-     manual provided the copyright notice and this permission notice are
-     preserved on all copies.
+    Permission is granted to copy, distribute and/or modify this
+    document under the terms of the <citetitle>GNU Free Documentation
+    License</citetitle>, Version 1.1 or any later version published
+    by the Free Software Foundation with no Invariant Sections, no
+    Front-Cover Texts, and no Back-Cover Texts. You may obtain a copy
+    of the <citetitle>GNU Free Documentation License</citetitle> from
+    the Free Software Foundation by visiting <ulink type="http"
+    url="http://www.fsf.org">their Web site</ulink> or by writing to:
+    Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+    Boston, MA 02111-1307, USA.
    </para>
    <para>
-     Permission is granted to copy and distribute modified versions of
-     this manual under the conditions for verbatim copying, provided that
-     the entire resulting derived work is distributed under the terms of a
-     permission notice identical to this one.
-   </para>
-   <para>
-     Permission is granted to copy and distribute translations of this
-     manual into another language, under the above conditions for modified
-     versions, except that this permission notice may be stated in a
-     translation approved by the Foundation.
+    Many of the names used by companies to distinguish their products and
+    services are claimed as trademarks. Where those names appear in any
+    GNOME documentation, and those trademarks are made aware to the members
+    of the GNOME Documentation Project, the names have been printed in caps
+    or initial caps.
    </para>
   </legalnotice>
 
   <releaseinfo>
-     This is version 1.0 of this document: first release.
+   Ez az 1.0-ás verziója a GNOME billentyûzet átkapcsoló kézikönyvének.
   </releaseinfo>
  </artheader>
 
+ <!-- ============= Document Body ============================= -->
 
- <sect1 id="gkb-intro">
-  <title>A GNOME billentyûzet-átkapcsoló applet</title>
+ &gkb.sgml;
 
-  <para>
-    A <application>GNOME gkb applet</application> egy kis zászlót jelenít
-    meg a <interface>panel</interface>odon és semmi hasznosat nem csinál 
-    vele. Mindezen felül, ha rákattintassz a zászlóra, meg tudod változtatni
-    a billentyûzeted kiosztását. Ez a gnome-applets csomag része. A dokumentum 
-    a gnome-applets-1.2 csomagban megjelenõ verzió leírása.
-  </para>
-  <para>
-    It is occasionally found in the <interface>panel</interface> anyway, 
-    but if you don't see it, you can start it by clicking <mousebutton>button
-    3</mousebutton> on an empty part of the <interface>panel</interface>
-    and following the sequence
-   <menuchoice>
-   <guimenu>Applets</guimenu>
-    <guisubmenu>Tools</guisubmenu>
-    <guimenuitem>gkb</guimenuitem>
-   </menuchoice>
-  </para>
-  <para>
-    The gkb applet was written by Szabolcs Ban (<email>shooby@gnome.hu</email>). 
-    Please report bugs in it to the
-    <ulink type="http" url="http://bugs.gnome.org">GNOME bug tracking 
-    system</ulink>. You can do this by following the guidelines on that site 
-    or by using <command>bug-buddy</command> from the command-line. 
-    For the package, put gnome-core.
-  </para>
-
-  <sect2 id="gkb-usage">
-   <title>Usage</title>
-
-   <para>
-    First, you need to start the properties window... TODO
-   </para>
-
-   <orderedlist>
-    <listitem>
-     <para>
-       If you have the <application>fortune</application> package installed,
-       pressing <mousebutton>mouse button 1</mousebutton> brings up a
-       a <guilabel>dialogue box</guilabel> with a fortune in it. 
-     </para>
-    </listitem>
-    <listitem>
-     <para>
-      Pressing <mousebutton>mouse button 2</mousebutton> and holding it
-      down allows you to drag your gkb about.
-     </para>
-    </listitem>
-    <listitem>
-     <para>
-       Pressing <mousebutton>mouse button 3</mousebutton> brings up a
-       menu which includes a <guisubmenu>preferences menu</guisubmenu> and
-       an <guimenuitem>About</guimenuitem> box. 
-     </para>
-    </listitem>
-   </orderedlist>
-
-  </sect2>
-
-  <sect2 id="gkb-prefs">
-   <title>Preferences</title>
-   <para>
-     The <guilabel>preferences dialogue box</guilabel> (called
-     GNOME gkb Properties) is simple, with five options you can
-     configure.
-   </para>
-
-   <variablelist>
-    <varlistentry>
-     <term>Your GNOME gkb's keymap name</term>
-     <listitem>
-      <para>
-        You can change your gkb's keymap name here. The default name is us.
-      </para>
-     </listitem>
-    </varlistentry>
-
-    <varlistentry>
-     <term>The icon filename</term>
-     <listitem>
-      <para>
-        You can select a different set of pictures here. By default, 
-        the list of pictures is in <filename>$PREFIX/pixmaps/gkb/</filename>,
-        which you can browse and choose from. You may also put a different
-        pathname in pointing to your own pictures.
-      </para>
-     </listitem>
-    </varlistentry>
-
-   </variablelist>
-  </sect2>
-
-  <sect2 id="gkb-bugs">
-   <title>Bugs and Limitations</title>
-   <para>
-     No bugs known. The applet goesn't work at all.
-   </para>
-  </sect2>
- 
- </sect1>
 </article>

@@ -1,4 +1,6 @@
-figs =
+figs = gkb_applet.png \
+       gkb_applet_settings.png
+
 applet = gkb
 lang = hu
 sgml_ents = 
