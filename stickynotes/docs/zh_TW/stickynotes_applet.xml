@@ -1,0 +1,265 @@
+﻿<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "2.3.6">
+  <!ENTITY manrevision "2.1.1">
+  <!ENTITY date "August 2003">
+  <!ENTITY applet "Sticky Notes">
+]>
+
+<!-- (Do not remove this comment block.)
+Maintained by the GNOME Documentation Project
+http://developer.gnome.org/projects/gdp
+Template version: 2.0 beta
+Template last modified Mar 12, 2002
+-->
+
+<article id="index" lang="zh_tw">
+<!-- please do not change the id; for translations, change lang to appropriate code -->
+    
+    <articleinfo>
+	<title>&applet; Applet 手冊 V&manrevision;</title>
+	
+	<copyright> 
+	    <year>2003 年</year>  
+	    <holder>Sun Microsystems</holder> 
+	</copyright> 
+	<copyright> 
+	    <year>2003 年</year>  
+	    <holder>Loban A Rahman</holder> 
+	</copyright> 
+
+	<!-- Translators: uncomment this:
+	<copyright>
+	    <year>2002</year>
+	    <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+	</copyright>
+	-->
+
+	<publisher> 
+	    <publishername>GNOME 文件專案</publishername> 
+	</publisher> 
+	
+	&legal;
+
+	<authorgroup> 
+            <author>
+               <firstname>Sun</firstname>
+               <surname>GNOME 文件小組</surname>
+               <affiliation>
+                  <orgname>Sun Microsystems</orgname>
+              </affiliation>
+            </author>
+	    <author> 
+		<firstname>Loban</firstname> 
+		<surname>Rahman</surname> 
+		<affiliation> 
+		    <!-- <orgname></orgname> --> 
+		    <address> <email>loban@earthling.net</email> </address>
+		</affiliation>
+	    </author>
+
+	    <!-- This is appropriate place for other contributors: translators, maintainers, etc. Commented out by default.
+	    <othercredit role="translator">
+		<firstname>Latin</firstname> 
+		<surname>Translator 1</surname> 
+		<affiliation> 
+		    <orgname>Latin Translation Team</orgname> 
+		    <address> <email>translator@gnome.org</email> </address> 
+		</affiliation>
+		<contrib>Latin translation</contrib>
+	    </othercredit>
+	    -->
+	</authorgroup>
+
+	<revhistory>
+	    <revision> 
+		<revnumber>&applet; Applet 手冊 V&manrevision;</revnumber> 
+		<date>&date;</date> 
+		<revdescription> 
+                    <para role="author">Sun GNOME 文件小組</para>
+                    <para role="publisher">GNOME 文件專案</para>
+		</revdescription>
+	    </revision>
+	    <revision> 
+		<revnumber>&applet; Applet 手冊 V2.1</revnumber> 
+		<date>2003 年 8 月</date> 
+		<revdescription> 
+                    <para role="author">Sun GNOME 文件小組</para>
+                    <para role="publisher">GNOME 文件專案</para>
+		</revdescription>
+	    </revision>
+	    <revision> 
+		<revnumber>&applet; Applet 手冊 V2.0</revnumber> 
+		<date>2003 年 5 月</date> 
+		<revdescription> 
+		    <para role="author">Loban A Rahman
+			<email>loban@earthling.net</email></para>
+		    <para role="publisher"></para>
+		</revdescription>
+	    </revision>
+	</revhistory>
+	
+	<releaseinfo>本手冊的內容是說明 &appletversion; 版的 &applet;。</releaseinfo>
+	
+	<legalnotice> 
+	    <title>建議</title>
+	    <para>關於本<application>&applet;</application> Applet 或本手冊。如果要報告錯誤或提出建議。請遵照 <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>的指示。</para>
+	</legalnotice>
+    </articleinfo>
+    
+    <indexterm> 
+	<primary>黏貼式便條紙</primary> 
+    </indexterm> 
+
+    <!-- ============= Document Body ============================= -->
+    
+    <!-- ============= Introduction ============================== -->
+    <sect1 id="stickynotes-introduction">
+	<title>介紹</title>
+	<figure id="stickynotes-fig"> 
+	    <title>&applet; Applet</title>
+	    <screenshot>
+		<mediaobject>
+		    <imageobject><imagedata fileref="figures/stickynotes_applet.png" format="PNG"/></imageobject>
+		    <textobject><phrase>顯示黏貼式便條紙 Applet。</phrase></textobject>
+		</mediaobject>
+	    </screenshot>
+	</figure>
+	<para>您可以使用 <application>&applet;</application> Applet 來建立、檢視和管理 GNOME 桌面上的黏貼式便條紙。您可以編輯黏貼式便條紙的標題、內容 、維數和樣式。例如，當您登出再登入而重新啟動 Applet 後，即會在同一位置以相同的維數和樣式重新開啟所有儲存的黏貼式便條紙。</para>
+        <para>如果要將 <application>&applet;</application> 加入面板，請在面板上按滑鼠右鍵，然後選擇
+            <menuchoice>
+                <guimenu>加入面板</guimenu>
+                <guisubmenu>周邊裝置</guisubmenu>
+                <guimenuitem>黏貼式便條紙</guimenuitem>
+            </menuchoice>。
+        </para>
+    </sect1>
+    
+    <!-- ============= Basic Usage ============================ -->
+    <sect1 id="stickynotes-usage"> 
+	<title>使用</title>
+    <sect2 id="stickynotes-create-note">
+        <title>建立黏貼式便條紙</title>
+	    <para>您可以使用下列方式建立黏貼式便條紙：</para>
+             <itemizedlist>
+               <listitem><para>選擇 Applet 功能表上的<guimenuitem>新增便條紙</guimenuitem>。</para></listitem>
+               <listitem><para>在現有便條紙的標題上按滑鼠右鍵，然後選擇 Applet 功能表上的<guimenuitem>新增便條紙</guimenuitem>。 </para></listitem>
+             </itemizedlist>
+    </sect2>
+    <sect2 id="stickynotes-show-notes">
+        <title>顯示或隱藏黏貼式便條紙</title>
+	    <para>如果要隱藏所有的黏貼式便條紙，請選擇 Applet 功能表上的<guimenuitem>顯示黏貼式便條紙</guimenuitem>。</para>
+	    <para>如果要顯示所有的黏貼式便條紙，請選擇 Applet 功能表上的<guimenuitem>顯示便條紙</guimenuitem>。</para>
+    </sect2>
+    <sect2 id="stickynotes-lock-notes">
+        <title>鎖定或解除鎖定黏貼式便條紙</title>
+            <para>您可以同時鎖定或解除鎖定所有的黏貼式便條紙，或是鎖定或解除鎖定個別的黏貼式便條紙。</para>
+    <sect3 id="stickynotes-lock-notes-all">
+        <title>鎖定或解除鎖定所有的黏貼式便條紙</title>
+	    <para>如果要鎖定所有的黏貼式便條紙使其無法被編輯，請選擇 Applet 功能表上的<guimenuitem>鎖定便條紙</guimenuitem>。</para>
+            <para>如果要解除鎖定所有的黏貼式便條紙，請選擇 Applet 功能表上的<guimenuitem>解除鎖定便條紙</guimenuitem>。</para>
+    </sect3>
+    <sect3 id="stickynotes-lock-notes-individual">
+        <title>鎖定或解除鎖定個別的黏貼式便條紙</title>
+	    <para>如果要鎖定個別的黏貼式便條紙，請在便條紙標題上按滑鼠右鍵，然後選擇快顯能表上的<guimenuitem>鎖定便條紙</guimenuitem>。</para>
+            <para>如果要解除鎖定個別的黏貼式便條紙，請在便條紙標題上按滑鼠右鍵，然後選擇快顯能表上的<guimenuitem>鎖定便條紙</guimenuitem>。</para>
+    </sect3>
+    </sect2>
+    <sect2 id="stickynotes-delete-notes">
+        <title>刪除黏貼式便條紙</title>
+            <para>您可以同時刪除所有的黏貼式便條紙，或刪除個別的黏貼式便條紙。</para>
+    <sect3 id="stickynotes-delete-notes-all">
+        <title>刪除所有的黏貼式便條紙</title>
+	    <para>如果要刪除所有的黏貼式便條紙，請執行下列的步驟：</para>
+              <orderedlist>
+                <listitem><para>選擇 Applet 功能表上的<guimenuitem>刪除便條紙</guimenuitem>。</para></listitem>
+                <listitem><para>按一下<guibutton>全部刪除</guibutton>按鈕，確認刪除。</para></listitem>
+              </orderedlist>
+    </sect3>
+    <sect3 id="stickynotes-delete-notes-individual">
+        <title>刪除個別的黏貼式便條紙</title>
+	    <para>如果要刪除個別的黏貼式便條紙，請在便條紙標題上按滑鼠右鍵，然後選擇快顯能表上的<guimenuitem>刪除便條紙</guimenuitem>。</para>
+    </sect3>
+    </sect2>
+    </sect1>
+
+    <!-- ============= Advanced Settings ============================ -->
+    <sect1 id="stickynotes-advanced-settings"> 
+	<title>偏好設定</title>
+    <sect2 id="stickynotes-settings-all"> 
+	<title>一般偏好設定</title>
+	<para>如果要配置所有黏貼式便條紙的設定，請在 Applet 上按滑鼠右鍵，然後選擇 Applet 能表上的<guimenu>偏好設定</guimenu>。</para>
+	<variablelist>
+	    <varlistentry> 
+		<term>寬度</term> 
+		<listitem><para>使用這個旋轉方塊可以像素為單位指定新黏貼式便條紙的預設寬度。</para></listitem>
+	    </varlistentry>
+	    <varlistentry> 
+		<term>高度</term> 
+		<listitem><para>使用這個旋轉方塊可以像素為單位指定新黏貼式便條紙的預設高度。</para></listitem>
+	    </varlistentry>
+	    <varlistentry> 
+		<term>色彩</term> 
+		<listitem><para>按一下顏色選擇器按鈕可以顯示顏色選擇器對話方塊。在顏色選擇器對話方塊中，請使用色輪或旋轉方塊來選擇未自訂黏貼式便條紙的預設基底色彩。</para></listitem>
+	    </varlistentry>
+	    <varlistentry> 
+		<term>使用系統配色的色彩</term> 
+		<listitem><para>選取這個選項可以使用目前系統配色的色彩，決定未自訂黏貼式便條紙的預設基底色彩。</para></listitem>
+	    </varlistentry>
+	    <varlistentry> 
+		<term>字型</term> 
+		<listitem><para>按一下字型選擇器按鈕可以顯示字型選擇器對話方塊。在字型選擇器對話方塊中，請使用清單方塊來選擇未自訂黏貼式便條紙的預設字型。</para></listitem>
+	    </varlistentry>
+	    <varlistentry> 
+		<term>使用系統配色的字型</term> 
+		<listitem><para>選取這個選項可以使用目前系統的配色，決定未自訂黏貼式便條紙的預設字型。</para></listitem>
+	    </varlistentry>
+	    <varlistentry> 
+		<term>按一下</term> 
+		<listitem><para>選取下列任一選項可以指定當您按一下 Applet 時會產生的動作：</para>
+                  <itemizedlist>
+                    <listitem><para>建立新的便條紙</para></listitem>
+                    <listitem><para>顯示/隱藏所有的便條紙</para></listitem>
+                    <listitem><para>鎖定/解除鎖定所有的便條紙</para></listitem>
+                  </itemizedlist>
+               </listitem>
+	    </varlistentry>
+	    <varlistentry> 
+		<term>將便條紙放在所有工作區上</term> 
+		<listitem><para>選取這個選項可以指定在桌面上的所有工作區中都可以看到黏貼式便條紙。</para></listitem>
+	    </varlistentry>
+	    <varlistentry> 
+		<term>強迫所有便條紙使用預設的色彩和字型</term> 
+		<listitem><para>選取這個選項可以指定所有的黏貼式便條紙 (包括自訂的便條紙) 都必須使用預設的樣式。</para></listitem>
+	    </varlistentry>
+	</variablelist>
+    </sect2>
+    <sect2 id="stickynotes-settings-individual"> 
+	<title>個 人喜好</title>
+	<para>如果要配置個別黏貼式便條紙的設定，請在便條紙 上按滑鼠右鍵，然後選擇快顯能表上的<guimenu>屬性</guimenu>。</para>
+	<variablelist>
+	    <varlistentry> 
+		<term>標題</term> 
+		<listitem><para>使用這個文字方塊可以指定黏貼式便條紙的標題。</para></listitem>
+	    </varlistentry>
+	    <varlistentry> 
+		<term>色彩</term> 
+		<listitem><para>按一下顏色選擇器按鈕可以顯示顏色選擇器對話方塊。在顏色選擇器對話方塊中，請使用色輪或旋轉方塊來選擇這個黏貼式便條紙的基底色彩。</para></listitem>
+	    </varlistentry>
+	    <varlistentry> 
+		<term>使用預設色彩</term> 
+		<listitem><para>選取這個選項可以使用這個黏貼式便條紙的基底色彩。</para></listitem>
+	    </varlistentry>
+	    <varlistentry> 
+		<term>字型</term> 
+		<listitem><para>按一下字型選擇器按鈕可以顯示字型選擇器對話方塊。在字型選擇器對話方塊中，請使用清單方塊來選擇這個黏貼式便條紙的字型。</para></listitem>
+	    </varlistentry>
+	    <varlistentry> 
+		<term>使用預設字型</term> 
+		<listitem><para>選取這個選項可以使用這個黏貼式便條紙的預設字型。</para></listitem>
+	    </varlistentry>
+	</variablelist>
+    </sect2>
+    </sect1>
+</article>

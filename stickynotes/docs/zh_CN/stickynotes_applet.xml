@@ -1,0 +1,265 @@
+﻿<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "2.3.6">
+  <!ENTITY manrevision "2.1.1">
+  <!ENTITY date "August 2003">
+  <!ENTITY applet "Sticky Notes">
+]>
+
+<!-- (Do not remove this comment block.)
+Maintained by the GNOME Documentation Project
+http://developer.gnome.org/projects/gdp
+Template version: 2.0 beta
+Template last modified Mar 12, 2002
+-->
+
+<article id="index" lang="zh_cn">
+<!-- please do not change the id; for translations, change lang to appropriate code -->
+    
+    <articleinfo>
+	 <title>&applet; 小程序手册 V&manrevision;</title>
+	
+	<copyright> 
+	    <year>2003</year>  
+	    <holder>Sun Microsystems</holder> 
+	</copyright> 
+	<copyright> 
+	    <year>2003</year>  
+	    <holder>Loban A Rahman</holder> 
+	</copyright> 
+
+	<!-- Translators: uncomment this:
+	<copyright>
+	    <year>2002</year>
+	    <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+	</copyright>
+	-->
+
+	<publisher> 
+	    <publishername>GNOME Documentation Project</publishername> 
+	</publisher> 
+	
+	&legal;
+
+	<authorgroup> 
+            <author>
+               <firstname>Sun</firstname>
+               <surname>GNOME Documentation Team</surname>
+               <affiliation>
+                  <orgname>Sun Microsystems</orgname>
+              </affiliation>
+            </author>
+	    <author> 
+		<firstname>Loban</firstname> 
+		<surname>Rahman</surname> 
+		<affiliation> 
+		    <!-- <orgname></orgname> --> 
+		    <address> <email>loban@earthling.net</email> </address>
+		</affiliation>
+	    </author>
+
+	    <!-- This is appropriate place for other contributors: translators, maintainers, etc. Commented out by default.
+	    <othercredit role="translator">
+		<firstname>Latin</firstname> 
+		<surname>Translator 1</surname> 
+		<affiliation> 
+		    <orgname>Latin Translation Team</orgname> 
+		    <address> <email>translator@gnome.org</email> </address> 
+		</affiliation>
+		<contrib>Latin translation</contrib>
+	    </othercredit>
+	    -->
+	</authorgroup>
+
+	<revhistory>
+	    <revision> 
+		<revnumber>&applet; 小程序手册 V&manrevision;</revnumber> 
+		<date>&date;</date> 
+		<revdescription> 
+                    <para role="author">Sun GNOME Documentation Team</para>
+                    <para role="publisher">GNOME Documentation Project</para>
+		</revdescription>
+	    </revision>
+	    <revision> 
+		<revnumber>&applet; 小程序手册 V2.1</revnumber> 
+		<date>2003 年 8 月</date> 
+		<revdescription> 
+                    <para role="author">Sun GNOME Documentation Team</para>
+                    <para role="publisher">GNOME Documentation Project</para>
+		</revdescription>
+	    </revision>
+	    <revision> 
+		<revnumber>&applet; 小程序手册 V2.0</revnumber> 
+		<date>2003 年 5 月</date> 
+		<revdescription> 
+		    <para role="author">Loban A Rahman
+			<email>loban@earthling.net</email></para>
+		    <para role="publisher"></para>
+		</revdescription>
+	    </revision>
+	</revhistory>
+	
+	<releaseinfo>本手册介绍 &applet; &appletversion; 版。</releaseinfo>
+	
+	<legalnotice> 
+      <title>反馈</title>
+	    <para>要报告关于 &applet; 小程序或本手册的错误或提出建议，请遵循 <ulink url="ghelp:gnome-feedback" type="help">GNOME 反馈页</ulink>中的指导。</para>
+	</legalnotice>
+    </articleinfo>
+    
+    <indexterm> 
+	<primary>粘贴提示</primary> 
+    </indexterm> 
+
+    <!-- ============= Document Body ============================= -->
+    
+    <!-- ============= Introduction ============================== -->
+    <sect1 id="stickynotes-introduction">
+<title>简介</title>
+	<figure id="stickynotes-fig"> 
+	    <title>&applet; 小程序</title>
+	    <screenshot>
+		<mediaobject>
+		    <imageobject><imagedata fileref="figures/stickynotes_applet.png" format="PNG"/></imageobject>
+		    <textobject><phrase>显示粘贴提示小程序。</phrase></textobject>
+		</mediaobject>
+	    </screenshot>
+	</figure>
+	<para><application>&applet;</application> 小程序使您可以在 GNOME 桌面上创建、查看和管理粘贴提示。您可以编辑粘贴提示的标题、内容、尺寸和风格。当重启该小程序时（例如注销后再登录时），所有粘贴提示都会得以保存并以相同的尺寸和风格在同一位置再次打开。</para>
+        <para>要向面板添加 <application>&applet;</application>，请单击该面板，然后选择           <menuchoice>
+                <guimenu>&ldquo;添加到面板&rdquo;</guimenu>
+                <guisubmenu>&ldquo;附件&rdquo;</guisubmenu>
+                <guimenuitem>&ldquo;粘贴提示&rdquo;</guimenuitem>
+            </menuchoice>。
+        </para>
+    </sect1>
+    
+    <!-- ============= Basic Usage ============================ -->
+    <sect1 id="stickynotes-usage"> 
+	<title>用法</title>
+    <sect2 id="stickynotes-create-note">
+        <title>创建粘贴提示</title>
+	    <para>您可用以下方式创建粘贴提示：</para>
+             <itemizedlist>
+               <listitem><para>从该小程序菜单中选择<guimenuitem>&ldquo;新建提示&rdquo;</guimenuitem> 。</para></listitem>
+               <listitem><para>右击一个现存提示的标题，然后从弹出菜单中选择<guimenuitem>&ldquo;新建提示&rdquo;</guimenuitem>。</para></listitem>
+             </itemizedlist>
+    </sect2>
+    <sect2 id="stickynotes-show-notes">
+        <title>显示或隐藏粘贴提示</title>
+	    <para>要隐藏所有粘贴提示，请从该小程序菜单中选择<guimenuitem>&ldquo;显示提示&rdquo;</guimenuitem> 。</para>
+	    <para>要显示所有粘贴提示，请再次从该小程序菜单中选择<guimenuitem>&ldquo;显示提示&rdquo;</guimenuitem> 。</para>
+    </sect2>
+    <sect2 id="stickynotes-lock-notes">
+        <title>锁定或取消锁定粘贴提示</title>
+            <para>可以同时锁定或取消锁定所有粘贴提示，或者锁定或取消锁定个别粘贴提示。</para>
+    <sect3 id="stickynotes-lock-notes-all">
+        <title>锁定或取消锁定所有粘贴提示</title>
+	    <para>要锁定所有粘贴提示使其无法编辑，请从该小程序菜单中选择<guimenuitem>&ldquo;锁定提示&rdquo;</guimenuitem>。</para>
+            <para>要取消锁定所有粘贴提示，请再次从该小程序菜单中选择<guimenuitem>&ldquo;锁定提示&rdquo;</guimenuitem>。</para>
+    </sect3>
+    <sect3 id="stickynotes-lock-notes-individual">
+        <title>锁定或取消锁定个别粘贴提示</title>
+	    <para>要锁定单个粘贴提示，请右击该提示的标题，然后从弹出菜单中选择<guimenuitem>&ldquo;锁定提示&rdquo;</guimenuitem>。</para>
+            <para>要取消锁定单个提示，请右击该提示的标题，然后再次从弹出菜单中选择<guimenuitem>&ldquo;锁定提示&rdquo;</guimenuitem>。</para>
+    </sect3>
+    </sect2>
+    <sect2 id="stickynotes-delete-notes">
+        <title>删除粘贴提示</title>
+            <para>可以同时删除所有粘贴提示，或者删除个别粘贴提示。</para>
+    <sect3 id="stickynotes-delete-notes-all">
+        <title>删除所有粘贴提示</title>
+	    <para>要删除所有粘贴提示，请执行以下步骤：</para>
+              <orderedlist>
+                <listitem><para>从该小程序菜单中选择<guimenuitem>&ldquo;删除提示&rdquo;</guimenuitem> 。</para></listitem>
+                <listitem><para>单击<guibutton>&ldquo;删除所有&rdquo;</guibutton>按钮确认删除操作。</para></listitem>
+              </orderedlist>
+    </sect3>
+    <sect3 id="stickynotes-delete-notes-individual">
+        <title>删除个别粘贴提示</title>
+	    <para>要删除单个粘贴提示，请右击该提示的标题，然后从弹出菜单中选择<guimenuitem>&ldquo;删除提示&rdquo;</guimenuitem>。</para>
+    </sect3>
+    </sect2>
+    </sect1>
+
+    <!-- ============= Advanced Settings ============================ -->
+    <sect1 id="stickynotes-advanced-settings"> 
+	 <title>首选项</title>
+    <sect2 id="stickynotes-settings-all"> 
+	<title>常规首选项</title>
+	<para>要配置所有粘贴提示的设置，请右击该小程序，然后从该小程序菜单中选择<guimenu>&ldquo;首选项&rdquo;</guimenu>。</para>
+	<variablelist>
+	    <varlistentry> 
+		<term>宽度</term> 
+		<listitem><para>使用此旋转框指定新建粘贴提示的默认宽度（以像素为单位）。</para></listitem>
+	    </varlistentry>
+	    <varlistentry> 
+		<term>高度</term> 
+		<listitem><para>
+使用此旋转框指定新建粘贴提示的默认高度（以像素为单位）。</para></listitem>
+	    </varlistentry>
+	    <varlistentry> 
+		<term>颜色</term> 
+		<listitem><para>单击颜色选择器按钮可以显示颜色选择器对话框。使用颜色选择器对话框上的颜色盘或旋转框可为未定制的粘贴提示选择默认基准颜色。</para></listitem>
+	    </varlistentry>
+	    <varlistentry> 
+		<term>使用系统主题中的颜色</term> 
+		<listitem><para>选择该选项可以使用当前系统主题来决定未定制粘贴提示的默认基准颜色。</para></listitem>
+	    </varlistentry>
+	    <varlistentry> 
+		<term>字体</term> 
+		<listitem><para>单击字体选择器按钮可以显示字体选择器对话框。使用字体选择器对话框上的列表框可为未定制的粘贴提示选择默认字体。</para></listitem>
+	    </varlistentry>
+	    <varlistentry> 
+		<term>使用系统主题中的字体</term> 
+		<listitem><para>选择该选项可以使用当前系统主题来决定未定制粘贴提示的默认字体。</para></listitem>
+	    </varlistentry>
+	    <varlistentry> 
+		<term>单击</term> 
+		<listitem><para>选择下列选项之一可以指定单击该小程序时的操作：</para>
+                  <itemizedlist>
+                    <listitem><para>创建新提示</para></listitem>
+                    <listitem><para>显示/隐藏所有提示</para></listitem>
+                    <listitem><para>锁定/取消锁定所有提示</para></listitem>
+                  </itemizedlist>
+               </listitem>
+	    </varlistentry>
+	    <varlistentry> 
+		<term>将提示置于所有工作区</term> 
+		<listitem><para>选择该选项可以指定粘贴提示在桌面上的所有工作区都可见。</para></listitem>
+	    </varlistentry>
+	    <varlistentry> 
+		<term>强制所有提示使用默认颜色和字体</term> 
+		<listitem><para>选择该选项可以指定所有粘贴提示（包括定制的提示）都必须使用默认风格。</para></listitem>
+	    </varlistentry>
+	</variablelist>
+    </sect2>
+    <sect2 id="stickynotes-settings-individual"> 
+	<title>个别首选项</title>
+	<para>要配置单个粘贴提示的设置，请右击该提示，然后从弹出菜单中选择<guimenu>&ldquo;属性&rdquo;</guimenu>。</para>
+	<variablelist>
+	    <varlistentry> 
+		<term>标题</term> 
+		<listitem><para>使用该文本框可以指定粘贴提示的标题。</para></listitem>
+	    </varlistentry>
+	    <varlistentry> 
+		<term>颜色</term> 
+		<listitem><para>单击颜色选择器按钮可以显示颜色选择器对话框。使用颜色选择器对话框上的颜色盘或旋转框可为粘贴提示选择基准颜色。</para></listitem>
+	    </varlistentry>
+	    <varlistentry> 
+		<term>使用默认颜色</term> 
+		<listitem><para>选择该选项可以使用此粘贴提示的默认基准颜色。</para></listitem>
+	    </varlistentry>
+	    <varlistentry> 
+		<term>字体</term> 
+		<listitem><para>单击字体选择器按钮可以显示字体选择器对话框。使用字体选择器对话框上的列表框可以为粘贴提示选择字体。</para></listitem>
+	    </varlistentry>
+	    <varlistentry> 
+		<term>使用默认字体</term> 
+		<listitem><para>选择该选项可以使用此粘贴提示的默认字体。</para></listitem>
+	    </varlistentry>
+	</variablelist>
+    </sect2>
+    </sect1>
+</article>

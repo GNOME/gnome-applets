@@ -1,0 +1,265 @@
+<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "2.3.6">
+  <!ENTITY manrevision "2.1.1">
+  <!ENTITY date "August 2003">
+  <!ENTITY applet "Klebezettel">
+]>
+
+<!-- (Do not remove this comment block.)
+Maintained by the GNOME Documentation Project
+http://developer.gnome.org/projects/gdp
+Template version: 2.0 beta
+Template last modified Mar 12, 2002
+-->
+
+<article id="index" lang="de">
+<!-- please do not change the id; for translations, change lang to appropriate code -->
+    
+    <articleinfo>
+	<title>&applet;-Applet Handbuch V&manrevision;</title>
+	
+	<copyright> 
+	    <year>2003</year>  
+	    <holder>Sun Microsystems</holder> 
+	</copyright> 
+	<copyright> 
+	    <year>2003</year>  
+	    <holder>Loban A Rahman</holder> 
+	</copyright> 
+
+	<!-- Translators: uncomment this:
+	<copyright>
+	    <year>2002</year>
+	    <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+	</copyright>
+	-->
+
+	<publisher> 
+	    <publishername>GNOME-Dokumentationsprojekt</publishername> 
+	</publisher> 
+	
+	&legal;
+
+	<authorgroup> 
+            <author>
+               <firstname>Sun</firstname>
+               <surname>GNOME-Dokumentationsteam</surname>
+               <affiliation>
+                  <orgname>Sun Microsystems</orgname>
+              </affiliation>
+            </author>
+	    <author> 
+		<firstname>Loban</firstname> 
+		<surname>Rahman</surname> 
+		<affiliation> 
+		    <!-- <orgname></orgname> --> 
+		    <address> <email>loban@earthling.net</email> </address>
+		</affiliation>
+	    </author>
+
+	    <!-- This is appropriate place for other contributors: translators, maintainers, etc. Commented out by default.
+	    <othercredit role="translator">
+		<firstname>Latin</firstname> 
+		<surname>Translator 1</surname> 
+		<affiliation> 
+		    <orgname>Latin Translation Team</orgname> 
+		    <address> <email>translator@gnome.org</email> </address> 
+		</affiliation>
+		<contrib>Latin translation</contrib>
+	    </othercredit>
+	    -->
+	</authorgroup>
+
+	<revhistory>
+	    <revision> 
+		<revnumber>&applet;-Applet Handbuch V&manrevision;</revnumber> 
+		<date>&date;</date> 
+		<revdescription> 
+                    <para role="author">Sun GNOME Dokumentationsteam</para>
+                    <para role="publisher">GNOME-Dokumentationsprojekt</para>
+		</revdescription>
+	    </revision>
+	    <revision> 
+		<revnumber>&applet;-Applet Handbuch V2.1</revnumber> 
+		<date>August 2003</date> 
+		<revdescription> 
+                    <para role="author">Sun GNOME Dokumentationsteam</para>
+                    <para role="publisher">GNOME-Dokumentationsprojekt</para>
+		</revdescription>
+	    </revision>
+	    <revision> 
+		<revnumber>&applet;-Applet Handbuch V2.0</revnumber> 
+		<date>Mai 2003</date> 
+		<revdescription> 
+		    <para role="author">Loban A Rahman
+			<email>loban@earthling.net</email></para>
+		    <para role="publisher"></para>
+		</revdescription>
+	    </revision>
+	</revhistory>
+	
+	<releaseinfo>In diesem Handbuch wird Version &appletversion; von &applet; beschrieben.</releaseinfo>
+	
+	<legalnotice> 
+	    <title>Feedback</title>
+	    <para>Wenn Sie Fehler finden oder Vorschl&auml;ge zum Applet <application>&applet;</application> oder diesem Handbuch haben, befolgen Sie bitte die Anweisungen auf der <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>. </para>
+	</legalnotice>
+    </articleinfo>
+    
+    <indexterm> 
+	<primary>Sticky Notes</primary> 
+    </indexterm> 
+
+    <!-- ============= Document Body ============================= -->
+    
+    <!-- ============= Introduction ============================== -->
+    <sect1 id="stickynotes-introduction">
+	<title>Einf&uuml;hrung</title>
+	<figure id="stickynotes-fig"> 
+	    <title>&applet;-Applet</title>
+	    <screenshot>
+		<mediaobject>
+		    <imageobject><imagedata fileref="figures/stickynotes_applet.png" format="PNG"/></imageobject>
+		    <textobject><phrase>Zeigt das Applet "Sticky Notes".</phrase></textobject>
+		</mediaobject>
+	    </screenshot>
+	</figure>
+	<para>Das Applet <application>&applet;</application> dient zum Erzeugen, Anzeigen und Verwalten von Haftnotizen auf dem GNOME-Desktop. Sie k&ouml;nnen den Titel, den Inhalt sowie die Gr&ouml;&szlig;e und das Format der Haftnotizen bearbeiten. Bei einem Neustart des Applets, beispielsweise wenn Sie sich ab- und wieder anmelden, werden alle Haftnotizen gespeichert und an derselben Position, in Gr&ouml;&szlig;e und Format unver&auml;ndert wieder angezeigt.</para>
+        <para>Um <application>&applet;</application> zu einem Panel hinzuzuf&uuml;gen, klicken Sie mit der rechten Maustaste auf das Panel und w&auml;hlen dann
+            <menuchoice>
+                <guimenu>Zum Panel hinzuf&uuml;gen</guimenu>
+                <guisubmenu>Zubeh&ouml;r</guisubmenu>
+                <guimenuitem>Klebezettel</guimenuitem>
+            </menuchoice>.
+        </para>
+    </sect1>
+    
+    <!-- ============= Basic Usage ============================ -->
+    <sect1 id="stickynotes-usage"> 
+	<title>Verwendung</title>
+    <sect2 id="stickynotes-create-note">
+        <title>So erzeugen Sie eine Haftnotiz</title>
+	    <para>Haftnotizen k&ouml;nnen Sie auf folgende Arten erzeugen:</para>
+             <itemizedlist>
+               <listitem><para>W&auml;hlen Sie im Appletmen&uuml; <guimenuitem>Zettel anlegen</guimenuitem>. </para></listitem>
+               <listitem><para>Klicken Sie mit der rechten Maustaste auf den Titel einer vorhandenen Notiz, und w&auml;hlen Sie im Kontextmen&uuml; den Eintrag <guimenuitem>Zettel anlegen</guimenuitem>. </para></listitem>
+             </itemizedlist>
+    </sect2>
+    <sect2 id="stickynotes-show-notes">
+        <title>So blenden Sie Haftnotizen ein oder aus</title>
+	    <para>Zum Ausblenden aller Haftnotizen w&auml;hlen Sie im Appletmen&uuml; den Eintrag <guimenuitem>Zettel anzeigen</guimenuitem>.</para>
+	    <para>Um alle Haftnotizen einzublenden, w&auml;hlen Sie <guimenuitem>Zettel anzeigen</guimenuitem> erneut.</para>
+    </sect2>
+    <sect2 id="stickynotes-lock-notes">
+        <title>So sperren oder entsperren Sie Haftnotizen</title>
+            <para>Sie k&ouml;nnen entweder alle oder einzelne Haftnotizen sperren oder entsperren.</para>
+    <sect3 id="stickynotes-lock-notes-all">
+        <title>So sperren oder entsperren Sie alle Haftnotizen</title>
+	    <para>Wenn Sie alle Haftnotizen sperren m&ouml;chten, um sie vor &Auml;nderungen zu sch&uuml;tzen, w&auml;hlen Sie im Appletmen&uuml; den Eintrag <guimenuitem>Zettel sperren</guimenuitem>. </para>
+            <para>Um alle Haftnotizen zu entsperren, w&auml;hlen Sie <guimenuitem>Zettel sperren</guimenuitem> erneut.</para>
+    </sect3>
+    <sect3 id="stickynotes-lock-notes-individual">
+        <title>So sperren oder entsperren Sie einzelne Haftnotizen</title>
+	    <para>Zum Sperren einer einzelnen Haftnotiz klicken Sie mit der rechten Maustaste auf den Titel der Notiz und w&auml;hlen dann im Kontextmen&uuml; den Eintrag <guimenuitem>Zettel sperren</guimenuitem>. </para>
+            <para>Zum Entsperren einer einzelnen Notiz klicken Sie mit der rechten Maustaste auf ihren Titel und w&auml;hlen erneut <guimenuitem>Zettel sperren</guimenuitem>. </para>
+    </sect3>
+    </sect2>
+    <sect2 id="stickynotes-delete-notes">
+        <title>So l&ouml;schen Sie Haftnotizen</title>
+            <para>Sie k&ouml;nnen entweder alle oder einzelne Haftnotizen l&ouml;schen.</para>
+    <sect3 id="stickynotes-delete-notes-all">
+        <title>So l&ouml;schen Sie alle Haftnotizen</title>
+	    <para>Gehen Sie wie folgt vor, um alle Haftnotizen zu l&ouml;schen:</para>
+              <orderedlist>
+                <listitem><para>W&auml;hlen Sie im Appletmen&uuml; <guimenuitem>Zettel l&ouml;schen</guimenuitem>. </para></listitem>
+                <listitem><para>Klicken Sie zur Best&auml;tigung des L&ouml;schvorgangs auf die Schaltfl&auml;che <guibutton>ALLE l&ouml;schen</guibutton>.</para></listitem>
+              </orderedlist>
+    </sect3>
+    <sect3 id="stickynotes-delete-notes-individual">
+        <title>So l&ouml;schen Sie einzelne Haftnotizen</title>
+	    <para>Zum L&ouml;schen einer einzelnen Haftnotiz klicken Sie mit der rechten Maustaste auf den Titel der Notiz und w&auml;hlen dann im Kontextmen&uuml; den Eintrag <guimenuitem>Zettel l&ouml;schen</guimenuitem>. </para>
+    </sect3>
+    </sect2>
+    </sect1>
+
+    <!-- ============= Advanced Settings ============================ -->
+    <sect1 id="stickynotes-advanced-settings"> 
+	<title>Einstellungen</title>
+    <sect2 id="stickynotes-settings-all"> 
+	<title>Allgemeine Einstellungen</title>
+	<para>Zum Konfigurieren der Einstellungen f&uuml;r alle Haftnotizen klicken Sie mit der rechten Maustaste auf das Applet und w&auml;hlen dann im Appletmen&uuml; den Eintrag <guimenu>Einstellungen</guimenu>.</para>
+	<variablelist>
+	    <varlistentry> 
+		<term>Breite</term> 
+		<listitem><para>&Uuml;ber dieses Drehfeld legen Sie die Standardbreite f&uuml;r neue Haftnotizen in Pixeln fest.</para></listitem>
+	    </varlistentry>
+	    <varlistentry> 
+		<term>H&ouml;he</term> 
+		<listitem><para>&Uuml;ber dieses Drehfeld legen Sie die Standardh&ouml;he f&uuml;r neue Haftnotizen in Pixeln fest.</para></listitem>
+	    </varlistentry>
+	    <varlistentry> 
+		<term>Farbe</term> 
+		<listitem><para>Klicken Sie zum Aufrufen eines Dialogfelds zur Farbauswahl auf die Farbauswahlschaltfl&auml;che. Im Dialogfeld f&uuml;r die Farbauswahl legen Sie &uuml;ber das Farbrad oder die Drehfelder die Standardgrundfarbe f&uuml;r Haftnotizen fest, die nicht weiter angepasst werden.</para></listitem>
+	    </varlistentry>
+	    <varlistentry> 
+		<term>Farbe vom Systemthema beziehen</term> 
+		<listitem><para>W&auml;hlen Sie diese Option aus, um die Standardgrundfarbe f&uuml;r nicht weiter angepasste Haftnotizen aus dem aktuellen Systemmotiv zu &uuml;bernehmen.</para></listitem>
+	    </varlistentry>
+	    <varlistentry> 
+		<term>Schrift</term> 
+		<listitem><para>Klicken Sie zum Aufrufen eines Dialogfelds zur Schriftauswahl auf die Schriftauswahlschaltfl&auml;che. &Uuml;ber die Listenfelder im Dialogfeld f&uuml;r die Schriftauswahl w&auml;hlen Sie die Standardschrift f&uuml;r Haftnotizen aus, die nicht weiter angepasst werden.</para></listitem>
+	    </varlistentry>
+	    <varlistentry> 
+		<term>Schrift vom Systemthema beziehen</term> 
+		<listitem><para>W&auml;hlen Sie diese Option aus, um die Standardschrift f&uuml;r nicht weiter angepasste Haftnotizen aus dem aktuellen Systemmotiv zu &uuml;bernehmen.</para></listitem>
+	    </varlistentry>
+	    <varlistentry> 
+		<term>Klicken</term> 
+		<listitem><para>W&auml;hlen Sie eine der folgenden Optionen aus, um festzulegen, was beim Klicken auf das Applet geschieht:</para>
+                  <itemizedlist>
+                    <listitem><para>Einen neuen Zettel anlegen</para></listitem>
+                    <listitem><para>Alle Zettel anzeigen/verbergen</para></listitem>
+                    <listitem><para>Alle Zettel sperren/freigeben</para></listitem>
+                  </itemizedlist>
+               </listitem>
+	    </varlistentry>
+	    <varlistentry> 
+		<term>Zettel auf alle Arbeitsfl&auml;chen</term> 
+		<listitem><para>W&auml;hlen Sie diese Option aus, wenn Haftnotizen in allen Arbeitsbereichen auf dem Desktop sichtbar sein sollen.</para></listitem>
+	    </varlistentry>
+	    <varlistentry> 
+		<term>Vorgabefarbe und -schrift f&uuml;r alle Zettel erzwingen</term> 
+		<listitem><para>W&auml;hlen Sie diese Option aus, um festzulegen, dass die Standardformatforlage auf alle Haftnotizen, einschlie&szlig;lich die angepassten, anzuwenden ist.</para></listitem>
+	    </varlistentry>
+	</variablelist>
+    </sect2>
+    <sect2 id="stickynotes-settings-individual"> 
+	<title>Einzeleinstellungen</title>
+	<para>Zum Konfigurieren der Einstellungen f&uuml;r eine einzelne Haftnotiz klicken Sie mit der rechten Maustaste auf die gew&uuml;nschte Notiz und w&auml;hlen dann im Kontextmen&uuml; den Eintrag <guimenu>Eigenschaften</guimenu>.</para>
+	<variablelist>
+	    <varlistentry> 
+		<term>Titel</term> 
+		<listitem><para>In dieses Textfeld geben Sie den Titel f&uuml;r die Haftnotiz ein.</para></listitem>
+	    </varlistentry>
+	    <varlistentry> 
+		<term>Farbe</term> 
+		<listitem><para>Klicken Sie zum Aufrufen eines Dialogfelds zur Farbauswahl auf die Farbauswahlschaltfl&auml;che. Im Dialogfeld f&uuml;r die Farbauswahl legen Sie &uuml;ber das Farbrad oder die Drehfelder die Grundfarbe f&uuml;r diese Haftnotiz fest.</para></listitem>
+	    </varlistentry>
+	    <varlistentry> 
+		<term>Vorgabefarbe verwenden</term> 
+		<listitem><para>W&auml;hlen Sie diese Option aus, um die Standardgrundfarbe auf die Haftnotiz anzuwenden.</para></listitem>
+	    </varlistentry>
+	    <varlistentry> 
+		<term>Schrift</term> 
+		<listitem><para>Klicken Sie zum Aufrufen eines Dialogfelds zur Schriftauswahl auf die Schriftauswahlschaltfl&auml;che. &Uuml;ber die Listenfelder im Dialogfeld f&uuml;r die Schriftauswahl w&auml;hlen Sie die Schrift f&uuml;r diese Haftnotiz aus.</para></listitem>
+	    </varlistentry>
+	    <varlistentry> 
+		<term>Vorgabeschrift verwenden</term> 
+		<listitem><para>W&auml;hlen Sie diese Option aus, um die Standardschrift auf die Haftnotiz anzuwenden.</para></listitem>
+	    </varlistentry>
+	</variablelist>
+    </sect2>
+    </sect1>
+</article>
