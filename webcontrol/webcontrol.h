@@ -40,6 +40,3 @@ void draw_applet (void);
 void clear_url_history (GtkButton *button, gpointer combo);
 
 #endif
-
-
-

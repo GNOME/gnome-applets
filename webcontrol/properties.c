@@ -202,7 +202,7 @@ reply_cb (gint button, gpointer data)
 static void
 remove_browser_cb (GtkWidget *b, gpointer data)
 {
-	gnome_question_dialog ("Are you sure you want to remove this browser?",
+	gnome_question_dialog (_("Are you sure you want to remove this browser?"),
 			       reply_cb, data);      
 }
 

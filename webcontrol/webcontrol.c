@@ -151,7 +151,7 @@ add_url_to_history (const gchar *url)
       
 		str_t = GTK_LABEL (lbl)->label;
       
-		if (!strcmp (str_t, url))
+		if (str_t && !strcmp (str_t, url))
 			return;
 	}
 	
@@ -418,35 +418,3 @@ main (int argc, char **argv)
 
 	return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
