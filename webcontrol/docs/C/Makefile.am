@@ -6,7 +6,7 @@ doc_DATA =	\
 	topic.dat
 
 # automake does not know anything about .sgml files yet -> EXTRA_DIST
-EXTRA_DIST = webcontrol-applet.sgml topic.dat
+EXTRA_DIST = webcontrol-applet.sgml webcontrol.sgml topic.dat
 
 # this is taken from gnome-core/gnome-terminal/C/Makefile.am
 all: index.html
