@@ -195,25 +195,25 @@ void stickynote_set_color(StickyNote *note, const gchar *color_str, gboolean sav
 	/* Do not use custom colors if "use_system_color" is enabled */
 	if (color_str_actual) {
 		/* Custom colors */
-		GdkColor color[4];
+		GdkColor colors[4];
 
 		/* Make 4 shades of the color, getting darker from the original. */
 		gint i;
 		for (i = 0; i < 4; i++) {
-			gdk_color_parse(color_str_actual, &color[i]);
+			gdk_color_parse(color_str_actual, &colors[i]);
 
-			color[i].red = (color[i].red * (10 - i)) / 10;
-			color[i].green = (color[i].green * (10 - i)) / 10;
-			color[i].blue = (color[i].blue * (10 - i)) / 10;
+			colors[i].red = (colors[i].red * (10 - i)) / 10;
+			colors[i].green = (colors[i].green * (10 - i)) / 10;
+			colors[i].blue = (colors[i].blue * (10 - i)) / 10;
 
-			gdk_colormap_alloc_color(gtk_widget_get_colormap(note->w_window), &color[i], FALSE, TRUE);
+			gdk_colormap_alloc_color(gtk_widget_get_colormap(note->w_window), &colors[i], FALSE, TRUE);
 		}
 
 		/* Apply colors to style */
-		rc_style->base[GTK_STATE_NORMAL] = color[0];
-		rc_style->bg[GTK_STATE_PRELIGHT] = color[1];
-		rc_style->bg[GTK_STATE_NORMAL] = color[2];
-		rc_style->bg[GTK_STATE_ACTIVE] = color[3];
+		rc_style->base[GTK_STATE_NORMAL] = colors[0];
+		rc_style->bg[GTK_STATE_PRELIGHT] = colors[1];
+		rc_style->bg[GTK_STATE_NORMAL] = colors[2];
+		rc_style->bg[GTK_STATE_ACTIVE] = colors[3];
 
 		rc_style->color_flags[GTK_STATE_PRELIGHT] = GTK_RC_BG;
 		rc_style->color_flags[GTK_STATE_NORMAL] = GTK_RC_BG | GTK_RC_BASE;
