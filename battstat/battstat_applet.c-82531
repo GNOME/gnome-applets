@@ -379,19 +379,14 @@ pixmap_timeout( gpointer data )
     flash^=-1;
     if(flash) {
       pixmap_type=FLASH;
-      gtk_pixmap_set(GTK_PIXMAP (battery->statuspixmapwid),
-		     statusimage[FLASH], statusmask[FLASH]);
-      gtk_pixmap_set(GTK_PIXMAP (battery->pixmapdockwid),
-		     statusimage[FLASH], statusmask[FLASH]);
-
     } else {
       pixmap_type=AC;
-      gtk_pixmap_set(GTK_PIXMAP (battery->statuspixmapwid),
-		     statusimage[AC], statusmask[AC]);
-      gtk_pixmap_set(GTK_PIXMAP (battery->pixmapdockwid),
-		     statusimage[AC], statusmask[AC]);
-
     }
+    gtk_pixmap_set(GTK_PIXMAP (battery->statuspixmapwid),
+		   statusimage[pixmap_type], statusmask[pixmap_type]);
+    gtk_pixmap_set(GTK_PIXMAP (battery->pixmapdockwid),
+		   statusimage[pixmap_type], statusmask[pixmap_type]);
+
   } else if (ac_status != 3 && pixmap_type == FLASH) {
     pixmap_type=AC;
     gtk_pixmap_set(GTK_PIXMAP (battery->statuspixmapwid),
@@ -1579,8 +1574,8 @@ load_preferences(gpointer data)
   battstat->yellow_val=gnome_config_get_int("batt/yellow_val=40");
   battstat->fontname=gnome_config_get_string("batt/fontname=-adobe-helvetica-medium-r-normal-*-*-100-*-*-p-*-*-*");
   battstat->lowbattnotification=gnome_config_get_bool("batt/lowbattnotification=true");
-  battstat->fullbattnot=gnome_config_get_bool("batt/fullbattnot=false");
-  battstat->beep=gnome_config_get_bool("batt/beep=true");
+  battstat->fullbattnot=gnome_config_get_bool("batt/fullbattnot=true");
+  battstat->beep=gnome_config_get_bool("batt/beep=false");
   battstat->draintop=gnome_config_get_bool("batt/draintop=false");
   battstat->horizont=gnome_config_get_bool("batt/horizont=true");
   battstat->showstatus=gnome_config_get_bool("batt/showstatus=true");
@@ -1606,8 +1601,6 @@ init_applet(int argc, char *argv[], gpointer data)
     destroy_applet(battstat->applet, battstat);
   }
   battstat->font_changed=TRUE;
-  load_preferences(battstat);
- 
   return FALSE;
 }
 
