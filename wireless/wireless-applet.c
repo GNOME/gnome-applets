@@ -551,7 +551,8 @@ wireless_applet_load_properties (WirelessApplet *applet)
 static void
 wireless_applet_save_properties (WirelessApplet *applet)
 {
-	panel_applet_gconf_set_string (PANEL_APPLET (applet),
+	if (applet->device)
+		panel_applet_gconf_set_string (PANEL_APPLET (applet),
 			"device", applet->device, NULL);
 	panel_applet_gconf_set_bool (PANEL_APPLET (applet),
 			"percent", applet->show_percent, NULL);
@@ -563,7 +564,7 @@ static void
 wireless_applet_option_change (GtkWidget *widget, gpointer user_data)
 {
 	GtkWidget *entry;
-	GtkWidget *menu;
+	GtkWidget *menu = NULL;
 	char *str;
 	WirelessApplet *applet = (WirelessApplet *)user_data;
 
@@ -581,10 +582,13 @@ wireless_applet_option_change (GtkWidget *widget, gpointer user_data)
 			(GTK_TOGGLE_BUTTON (entry)));
 
 	entry = g_object_get_data (G_OBJECT (applet->prefs), "device-menu");
+
 	menu = gtk_menu_get_active
 		(GTK_MENU (gtk_option_menu_get_menu (GTK_OPTION_MENU (entry))));
-	str = g_object_get_data (G_OBJECT (menu), "device-selected");
-	wireless_applet_set_device (applet, str);
+	if (menu) {
+		str = g_object_get_data (G_OBJECT (menu), "device-selected");
+		wireless_applet_set_device (applet, str);
+	}
 
 	/* Save the properties */
 	wireless_applet_save_properties (applet);

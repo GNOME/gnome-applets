@@ -1,4 +1,9 @@
-2002-01-21  Arvind Samptur <arvind.samptur@wipro.com>
+2003-03-10  Kevin Vandersloot <kfv101@psu.edu>
+
+	* wireless-applet.c: don't set gconf string if it's NULL. Also if there's no devices then
+	there's no menuitems so don't try to get data from them. Should fix bug #107722
+
+2003-01-21  Arvind Samptur <arvind.samptur@wipro.com>
 	* wireless-applet.c (wireless_applet_destroy): Destroy
 	the prefs dialog on destroying the applet.
 
