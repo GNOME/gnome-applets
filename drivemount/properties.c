@@ -454,10 +454,10 @@ properties_show (BonoboUIComponent *uic,
 	item = gtk_menu_item_new_with_label(_("Floppy"));
 	gtk_menu_append (GTK_MENU (menu), item);
 	g_signal_connect(G_OBJECT(item), "activate", G_CALLBACK(set_widget_sensitivity_false_cb), fbox);
-	item = gtk_menu_item_new_with_label(_("Cdrom"));
+	item = gtk_menu_item_new_with_label(_("CD-ROM"));
 	gtk_menu_append (GTK_MENU (menu), item);
 	g_signal_connect(G_OBJECT(item), "activate", G_CALLBACK(set_widget_sensitivity_false_cb), fbox);
-	item = gtk_menu_item_new_with_label(_("Cd Recorder"));
+	item = gtk_menu_item_new_with_label(_("CD Recorder"));
 	gtk_menu_append (GTK_MENU (menu), item);
 	g_signal_connect(G_OBJECT(item), "activate", G_CALLBACK(set_widget_sensitivity_false_cb), fbox);
 	item = gtk_menu_item_new_with_label(_("Zip Drive"));
@@ -549,7 +549,7 @@ properties_show (BonoboUIComponent *uic,
 	g_signal_connect (G_OBJECT (widgets->scale_toggle), "toggled",
 			  G_CALLBACK (scale_toggled), dd);
 #endif
-	widgets->eject_toggle = gtk_check_button_new_with_mnemonic (_("_Eject disk when unmounting"));
+	widgets->eject_toggle = gtk_check_button_new_with_mnemonic (_("_Eject disk when unmounted"));
 	gtk_box_pack_start(GTK_BOX(vbox1), widgets->eject_toggle, FALSE, FALSE, 0);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widgets->eject_toggle), dd->auto_eject);
 	gtk_widget_show(widgets->eject_toggle);
@@ -559,7 +559,7 @@ properties_show (BonoboUIComponent *uic,
 	if ( ! key_writable (PANEL_APPLET (dd->applet), "auto_eject"))
 		hard_set_sensitive (widgets->eject_toggle, FALSE);
 
-	widgets->automount_toggle = gtk_check_button_new_with_mnemonic (_("Use _automount friendly status test"));
+	widgets->automount_toggle = gtk_check_button_new_with_mnemonic (_("Use _automount-friendly status test"));
 	gtk_box_pack_start(GTK_BOX(vbox1), widgets->automount_toggle, FALSE, FALSE, 0);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widgets->automount_toggle), dd->autofs_friendly);
 	gtk_widget_show(widgets->automount_toggle);
