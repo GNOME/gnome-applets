@@ -312,9 +312,12 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
     gw_applet->gweather_pref.location = NULL;
     gw_applet->gweather_pref.update_interval = 1800;
     gw_applet->gweather_pref.update_enabled = TRUE;
-    gw_applet->gweather_pref.use_metric = FALSE;
     gw_applet->gweather_pref.detailed = FALSE;
     gw_applet->gweather_pref.radar_enabled = TRUE;
+	gw_applet->gweather_pref.temperature_unit = TEMP_UNIT_INVALID;
+	gw_applet->gweather_pref.speed_unit = SPEED_UNIT_INVALID;
+	gw_applet->gweather_pref.pressure_unit = PRESSURE_UNIT_INVALID;
+	gw_applet->gweather_pref.distance_unit = DISTANCE_UNIT_INVALID;
     
     panel_applet_set_flags (gw_applet->applet, PANEL_APPLET_EXPAND_MINOR);
     
@@ -431,9 +434,6 @@ void update_finish (WeatherInfo *info)
     				 &(gw_applet->applet_pixbuf));
     gtk_image_set_from_pixbuf (GTK_IMAGE (gw_applet->image), 
     			       gw_applet->applet_pixbuf);
-
-    if (gw_applet->gweather_pref.use_metric)
-        weather_info_to_metric (gw_applet->gweather_info);
       
     gtk_label_set_text(GTK_LABEL(gw_applet->label), 
 			weather_info_get_temp_summary(gw_applet->gweather_info));

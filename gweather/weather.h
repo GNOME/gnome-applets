@@ -136,13 +136,6 @@ typedef struct _WeatherConditions WeatherConditions;
 
 extern const gchar *weather_conditions_string (WeatherConditions cond);
 
-enum _WeatherUnits {
-    UNITS_IMPERIAL,
-    UNITS_METRIC
-};
-
-typedef enum _WeatherUnits WeatherUnits;
-
 enum _WeatherForecastType {
     FORECAST_STATE,
     FORECAST_ZONE
@@ -156,8 +149,6 @@ typedef gint WeatherWindSpeed;
 typedef gdouble WeatherPressure;
 typedef gdouble WeatherVisibility;
 
-extern void weather_units_set (WeatherUnits units);
-extern WeatherUnits weather_units_get (void);
 
 extern void weather_forecast_set (WeatherForecastType forecast);
 extern WeatherForecastType weather_forecast_get (void);
@@ -172,7 +163,6 @@ typedef time_t WeatherUpdate;
 struct _WeatherInfo {
     gboolean valid;
     WeatherLocation *location;
-    WeatherUnits units;
     WeatherUpdate update;
     WeatherSky sky;
     WeatherConditions cond;

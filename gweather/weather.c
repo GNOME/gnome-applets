@@ -50,21 +50,20 @@ static gboolean weather_radar = FALSE;
 /* Unit conversions and names */
 
 #define TEMP_F_TO_C(f)  (((f) - 32.0) * 0.555556)
+#define TEMP_F_TO_K(f)  (TEMP_F_TO_C(f) + 273.15)
 #define TEMP_C_TO_F(c)  (((c) * 1.8) + 32.0)
-#define TEMP_UNIT_STR(units)  (((units) == UNITS_IMPERIAL) ? "\302\260 F" : "\302\260 C")
 
 #define WINDSPEED_KNOTS_TO_KPH(knots)  ((knots) * 1.851965)
-#define WINDSPEED_KPH_TO_KNOTS(kph)    ((kph) * 0.539967)
-#define WINDSPEED_UNIT_STR(units) (((units) == UNITS_IMPERIAL) ? _("knots") : _("km/h"))
+#define WINDSPEED_KNOTS_TO_MPH(knots)  ((knots) * 1.150779)
+#define WINDSPEED_KNOTS_TO_MS(knots)   ((knots) * 0.514444)
 
 #define PRESSURE_INCH_TO_HPA(inch)   ((inch) * 33.86)
-#define PRESSURE_HPA_TO_INCH(mm)     ((mm) / 33.86)
+#define PRESSURE_INCH_TO_MM(inch)    ((inch) * 25.40005)
+#define PRESSURE_INCH_TO_MB(inch)    (PRESSURE_INCH_TO_HPA(inch))
 #define PRESSURE_MBAR_TO_INCH(mbar) ((mbar) * 0.02963742)
-#define PRESSURE_UNIT_STR(units) (((units) == UNITS_IMPERIAL) ? _("inHg") : _("hPa"))
 
 #define VISIBILITY_SM_TO_KM(sm)  ((sm) * 1.609344)
-#define VISIBILITY_KM_TO_SM(km)  ((km) * 0.621371)
-#define VISIBILITY_UNIT_STR(units) (((units) == UNITS_IMPERIAL) ? _("miles") : _("kilometers"))
+#define VISIBILITY_SM_TO_M(sm)   (VISIBILITY_SM_TO_KM(sm) * 1000)
 
 
 WeatherLocation *weather_location_new (const gchar *name, const gchar *code, const gchar *zone, const gchar *radar)
@@ -1818,7 +1817,6 @@ gboolean _weather_info_fill (GWeatherApplet *applet, WeatherInfo *info, WeatherL
     /* Defaults (just in case...) */
     /* Well, no just in case anymore.  We may actually fail to fetch some
      * fields. */
-    info->units = UNITS_IMPERIAL;
     info->update = 0;
     info->sky = -1;
     info->cond.significant = FALSE;
@@ -1860,7 +1858,6 @@ void weather_info_config_write (WeatherInfo *info)
     g_return_if_fail(info != NULL);
 
     gnome_config_set_bool("valid", info->valid);
-    gnome_config_set_int("units", (gint)info->units);
     gnome_config_set_int("update", info->update);
     gnome_config_set_int("sky", (gint)info->sky);
     gnome_config_set_bool("cond_significant", info->cond.significant);
@@ -1886,7 +1883,6 @@ WeatherInfo *weather_info_config_read (PanelApplet *applet)
 #if 0
     info->valid = gnome_config_get_bool("valid=FALSE");
     info->location = weather_location_config_read("location");
-    info->units = (WeatherUnits)gnome_config_get_int("units=0");
     info->update = (WeatherUpdate)gnome_config_get_int("update=0");
     info->sky = (WeatherSky)gnome_config_get_int("sky=0");
     info->cond.significant = gnome_config_get_bool("cond_significant=FALSE");
@@ -1904,7 +1900,6 @@ WeatherInfo *weather_info_config_read (PanelApplet *applet)
 #endif
     info->valid = FALSE;
     info->location = weather_location_config_read(applet);
-    info->units = (WeatherUnits)0;
     info->update = (WeatherUpdate)0;
     info->sky = -1;
     info->cond.significant = FALSE;
@@ -2026,42 +2021,6 @@ gboolean weather_radar_get (void)
     return weather_radar;
 }
 
-void weather_info_to_metric (WeatherInfo *info)
-{
-    g_return_if_fail(info != NULL);
-
-    if (info->units == UNITS_METRIC)
-        return;
-
-    /* Do conversion */
-    info->temp = TEMP_F_TO_C(info->temp);
-    info->dew = TEMP_F_TO_C(info->dew);
-    info->windspeed = WINDSPEED_KNOTS_TO_KPH(info->windspeed);
-    info->pressure = PRESSURE_INCH_TO_HPA(info->pressure);
-    info->visibility = VISIBILITY_SM_TO_KM(info->visibility);
-
-    /* Change units flag */
-    info->units = UNITS_METRIC;
-}
-
-void weather_info_to_imperial (WeatherInfo *info)
-{
-    g_return_if_fail(info != NULL);
-
-    if (info->units == UNITS_IMPERIAL)
-        return;
-
-    /* Do conversion */
-    info->temp = TEMP_C_TO_F(info->temp);
-    info->dew = TEMP_C_TO_F(info->dew);
-    info->windspeed = WINDSPEED_KPH_TO_KNOTS(info->windspeed);
-    info->pressure = PRESSURE_HPA_TO_INCH(info->pressure);
-    info->visibility = VISIBILITY_KM_TO_SM(info->visibility);
-
-    /* Change units flag */
-    info->units = UNITS_IMPERIAL;
-}
-
 
 const gchar *weather_info_get_location (WeatherInfo *info)
 {
@@ -2111,42 +2070,139 @@ const gchar *weather_info_get_conditions (WeatherInfo *info)
     return weather_conditions_string(info->cond);
 }
 
+static const gchar *temperature_string (gfloat far, TempUnit to_unit, gboolean round)
+{
+	static gchar buf[100];
+
+    switch (to_unit) {
+        case TEMP_UNIT_FAHRENHEIT:
+			if (!round) {
+                if ( strcmp (_("%.1f F"), "%.1f F") != 0 ) {
+                    /* TRANSLATOR: This is the temperature in degrees fahrenheit, use the degree */
+                    /* symbol Unicode 00B0 if possible */
+                    g_snprintf(buf, sizeof (buf), _("%.1f F"), far);
+                } else {
+                    g_snprintf(buf, sizeof (buf), "%.1f \302\260F", far);
+                }
+            } else {
+                if ( strcmp (_("%dF"), "%dF") != 0 ) {
+                    /* TRANSLATOR: This is the temperature in degrees fahrenheit, use the degree */
+                    /* symbol Unicode 00B0 if possible */
+                    g_snprintf(buf, sizeof (buf), _("%dF"), (int)floor(far + 0.5));
+                } else {
+                    g_snprintf(buf, sizeof (buf), "%d\302\260F", (int)floor(far + 0.5));
+                }
+            }
+            break;
+        case TEMP_UNIT_CENTIGRADE:
+            if (!round) {
+                if ( strcmp (_("%.1f C"), "%.1f C") != 0 ) {
+                    /* TRANSLATOR: This is the temperature in degrees centigrade , use the degree */
+                    /* symbol Unicode 00B0 if possible */
+                    g_snprintf (buf, sizeof (buf), _("%.1f C"), TEMP_F_TO_C(far));
+                } else { 
+                    g_snprintf (buf, sizeof (buf), "%.1f \302\260C", TEMP_F_TO_C(far));
+                }
+            } else {
+                if ( strcmp (_("%dC"), "%dC") != 0 ) {
+                    /* TRANSLATOR: This is the temperature in degrees centigrade , use the degree */
+                    /* symbol Unicode 00B0 if possible */
+                    g_snprintf (buf, sizeof (buf), _("%dC"), (int)floor(TEMP_F_TO_C(far) + 0.5));
+                } else { 
+                    g_snprintf (buf, sizeof (buf), "%d\302\260C", (int)floor(TEMP_F_TO_C(far) + 0.5));
+				}
+            }
+            break;
+        case TEMP_UNIT_KELVIN:
+            if (!round) {
+                /* TRANSLATOR: This is the temperature in Kelvin */
+                g_snprintf (buf, sizeof (buf), _("%.1f K"), TEMP_F_TO_K(far));
+            } else {
+                /* TRANSLATOR: This is the temperature in Kelvin */
+                g_snprintf (buf, sizeof (buf), _("%dK"), (int)floor(TEMP_F_TO_K(far)));
+            } 
+            break;
+
+        case TEMP_UNIT_INVALID:
+        case TEMP_UNIT_DEFAULT:
+        default:
+            g_warning("Conversion to illegal temperature unit: %d", to_unit);
+            return (_("Unknown"));
+            break;
+    }
+
+    return buf;
+}
+
 const gchar *weather_info_get_temp (WeatherInfo *info)
 {
-    static gchar buf[10];
     g_return_val_if_fail(info != NULL, NULL);
+
     if (!info->valid)
         return "-";
     if (info->temp < -500.0)
         return _("Unknown");
-    g_snprintf(buf, sizeof (buf), "%.1f%s", info->temp, TEMP_UNIT_STR(info->units));
-    return buf;
+    
+    return temperature_string (info->temp, info->applet->gweather_pref.temperature_unit, FALSE);
 }
 
 const gchar *weather_info_get_dew (WeatherInfo *info)
 {
-    static gchar buf[10];
     g_return_val_if_fail(info != NULL, NULL);
+
     if (!info->valid)
         return "-";
     if (info->dew < -500.0)
         return _("Unknown");
-    g_snprintf(buf, sizeof (buf), "%.1f%s", info->dew, TEMP_UNIT_STR(info->units));
-    return buf;
+
+    return temperature_string (info->dew, info->applet->gweather_pref.temperature_unit, FALSE);
 }
 
 const gchar *weather_info_get_humidity (WeatherInfo *info)
 {
-    static gchar buf[10];
+    static gchar buf[20];
     g_return_val_if_fail(info != NULL, NULL);
     if (!info->valid)
         return "-";
     if (info->humidity < 0.0)
         return _("Unknown");
-    g_snprintf(buf, sizeof (buf), "%d%%", info->humidity);
+
+    /* TRANSLATOR: This is the humidity in percent */
+    g_snprintf(buf, sizeof (buf), _("%d%%"), info->humidity);
     return buf;
 }
 
+static const gchar *windspeed_string (gfloat knots, SpeedUnit to_unit)
+{
+    static gchar buf[100];
+
+    switch (to_unit) {
+        case SPEED_UNIT_KNOTS:
+            /* TRANSLATOR: This is the wind speed in knots */
+            g_snprintf(buf, sizeof (buf), _("%0.1f knots"), knots);
+            break;
+        case SPEED_UNIT_MPH:
+            /* TRANSLATOR: This is the wind speed in miles per hour */
+            g_snprintf(buf, sizeof (buf), _("%.1f mph"), WINDSPEED_KNOTS_TO_MPH(knots));
+            break;
+        case SPEED_UNIT_KPH:
+            /* TRANSLATOR: This is the wind speed in kilometers per hour */
+            g_snprintf(buf, sizeof (buf), _("%.1f km/h"), WINDSPEED_KNOTS_TO_KPH(knots));
+            break;
+        case SPEED_UNIT_MS:
+            /* TRANSLATOR: This is the wind speed in miles per hour */
+            g_snprintf(buf, sizeof (buf), _("%.1f m/s"), WINDSPEED_KNOTS_TO_MS(knots));
+            break;
+
+        case SPEED_UNIT_INVALID:
+        case SPEED_UNIT_DEFAULT:
+        default:
+            g_warning("Conversion to illegal speed unit: %d", to_unit);
+            return _("Unknown");
+    }
+
+    return buf;
+}
 const gchar *weather_info_get_wind (WeatherInfo *info)
 {
     static gchar buf[200];
@@ -2159,9 +2215,10 @@ const gchar *weather_info_get_wind (WeatherInfo *info)
         strncpy(buf, _("Calm"), sizeof(buf));
 	buf[sizeof(buf)-1] = '\0';
     } else
-        g_snprintf(buf, sizeof(buf), "%s / %d %s",
+        /* TRANSLATOR: This is 'wind direction' / 'wind speed' */
+        g_snprintf(buf, sizeof(buf), _("%s / %s"),
 		   weather_wind_direction_string(info->wind),
-		   info->windspeed, WINDSPEED_UNIT_STR(info->units));
+		   windspeed_string(info->windspeed, info->applet->gweather_pref.speed_unit));
     return buf;
 }
 
@@ -2173,7 +2230,32 @@ const gchar *weather_info_get_pressure (WeatherInfo *info)
         return "-";
     if (info->pressure < 0.0)
         return _("Unknown");
-    g_snprintf(buf, sizeof (buf), "%.2f %s", info->pressure, PRESSURE_UNIT_STR(info->units));
+
+    switch (info->applet->gweather_pref.pressure_unit) {
+        case PRESSURE_UNIT_INCH_HG:
+            /* TRANSLATOR: This is pressure in inches of mercury */
+            g_snprintf (buf, sizeof (buf), _("%.2f inHg"), info->pressure);
+            break;
+        case PRESSURE_UNIT_MM_HG:
+            /* TRANSLATOR: This is pressure in millimeters of mercury */
+            g_snprintf (buf, sizeof (buf), _("%.1f mmHg"), PRESSURE_INCH_TO_MM(info->pressure));
+            break;
+        case PRESSURE_UNIT_HPA:
+            /* TRANSLATOR: This is pressure in hectoPascals */
+            g_snprintf (buf, sizeof (buf), _("%.2f hPa"), PRESSURE_INCH_TO_HPA(info->pressure));
+            break;
+        case PRESSURE_UNIT_MB:
+            /* TRANSLATOR: This is pressure in millibars */
+            g_snprintf (buf, sizeof (buf), _("%.2f mb"), PRESSURE_INCH_TO_MB(info->pressure));
+            break;
+
+        case PRESSURE_UNIT_INVALID:
+        case PRESSURE_UNIT_DEFAULT:
+        default:
+            g_warning("Conversion to illegal pressure unit: %d", info->applet->gweather_pref.pressure_unit);
+            return _("Unknown");
+    }
+
     return buf;
 }
 
@@ -2185,7 +2267,28 @@ const gchar *weather_info_get_visibility (WeatherInfo *info)
         return "-";
     if (info->visibility < 0.0)
         return _("Unknown");
-    g_snprintf(buf, sizeof (buf), "%.1f %s", info->visibility, VISIBILITY_UNIT_STR(info->units));
+
+    switch (info->applet->gweather_pref.distance_unit) {
+        case DISTANCE_UNIT_MILES:
+            /* TRANSLATOR: This is the visibility in miles */
+            g_snprintf(buf, sizeof (buf), _("%.1f miles"), info->visibility);
+            break;
+        case DISTANCE_UNIT_KM:
+            /* TRANSLATOR: This is the visibility in kilometers */
+            g_snprintf(buf, sizeof (buf), _("%.1f km"), VISIBILITY_SM_TO_KM(info->visibility));
+            break;
+        case DISTANCE_UNIT_METERS:
+            /* TRANSLATOR: This is the visibility in meters */
+            g_snprintf(buf, sizeof (buf), _("%.0fm"), VISIBILITY_SM_TO_M(info->visibility));
+            break;
+
+        case DISTANCE_UNIT_INVALID:
+        case DISTANCE_UNIT_DEFAULT:
+        default:
+            g_warning("Conversion to illegal visibility unit: %d", info->applet->gweather_pref.pressure_unit);
+            return _("Unknown");
+    }
+
     return buf;
 }
 
@@ -2203,25 +2306,13 @@ GdkPixmap *weather_info_get_radar (WeatherInfo *info)
 
 const gchar *weather_info_get_temp_summary (WeatherInfo *info)
 {
-    static gchar buf[10];
-    const gchar *degree="h";
-    
     if (!info)
         return NULL;
     if (!info->valid || info->temp < -500.0)
         return "--";
+          
+    return temperature_string (info->temp, info->applet->gweather_pref.temperature_unit, TRUE);
     
-    if (!info->applet)
-      degree = "F";
-    else if (info->applet->gweather_pref.use_metric)                                   
-      degree = "C";                                               
-    else                                                                    
-      degree = "F";
-      
-   g_snprintf(buf, sizeof (buf), "%d\302\260%s",
-	      (int)floor(info->temp + 0.5), degree);
-    
-    return buf;
 }
 
 gchar *weather_info_get_weather_summary (WeatherInfo *info)

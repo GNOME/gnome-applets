@@ -1,3 +1,50 @@
+2004-06-19  Dennis Smit  <ds@nerds-incorporated.org>
+
+	* gweather-applet.c (gweather_create_applet): Added setting default
+	values for new unit variables.  Removed old metric variable.
+
+	(update_finish): Removed call to change the units of stored weather
+	readings.
+
+	* gweather-pref.c: Added #defines and arrays for the different units
+	and functions for handle changing the unit values via the combo boxes.
+
+	(update_dialog): Added code to set the unit combo box values
+
+	(metric_toggled): Removed function
+
+	(gweather_pref_create): Added combo boxes for selecting the units to
+	use.
+
+	(gweather_pref_load): Added loading of units from gconf.
+
+	* gweather.h: Added unit related enums.  Added variables for storing
+	current unit selections in the preference structure.  Added unit combo
+	boxes to the applet structure.
+	
+	* gweather.schemas.in: Added keys for each unit variable (distance,
+	speed, temp and pressure)
+
+	* weather.c: Added more unit conversion macros.
+
+	(weather_info_to_metric, weather_info_to_imperial): Removed unused
+	functions.
+
+	(temperature_string), windspeed_string, : New function to display
+	temperature/windspeed in the current unit.
+	
+	(weather_info_get_temp, weather_info_get_humitdy,
+	weather_info_get_wind, weather_info_get_pressure,
+	weather_info_get_visibility, weather_info_get_temp_summary): Changed
+	to display the variable in the currently selected unit.
+
+	* weather.h: Removed unused enums, function declarations and structure
+	members.
+
+	Fantastic patch by: Gareth Owen  <gowen72@yahoo.com>
+
+	Fixes bug #50595.
+
 2004-06-16  Dennis Smit  <ds@nerds-incorporated.org>
 
 	* gweather-dialog.c (gweather_dialog_create):
