@@ -1493,7 +1493,7 @@ static gint updateOutput(gpointer data)
 				  G_CALLBACK (button_press_hack), stockdata);
 		stockdata->tooltips = gtk_tooltips_new ();
 		gtk_tooltips_set_tip(stockdata->tooltips, stockdata->leftButton, _("Skip forward"), NULL);
-		gtk_tooltips_set_tip(stockdata->tooltips, stockdata->rightButton, _("Skip backword"), NULL);
+		gtk_tooltips_set_tip(stockdata->tooltips, stockdata->rightButton, _("Skip backward"), NULL);
 		gtk_tooltips_set_tip(stockdata->tooltips, stockdata->applet, _("Stock Ticker\nGet continuously updated stock quotes"), NULL);
 
 
