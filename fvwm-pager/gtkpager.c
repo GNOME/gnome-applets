@@ -19,10 +19,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <strings.h>
-#include <fvwm/module.h>
-#include <fvwm/fvwm.h>
-#include <libs/fvwmlib.h>
-
+#include "fvwmlib.h"
+#if 0
+#include "fvwm/module.h"
+#include "fvwm/fvwm.h"
+#endif
 #include <X11/X.h>
 #include <gdk/gdkx.h>
 

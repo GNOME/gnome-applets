@@ -18,9 +18,11 @@
  */
 #include <stdio.h>
 #include <signal.h>
-#include <fvwm/module.h>
-#include <fvwm/fvwm.h>
-#include <libs/fvwmlib.h>
+
+#include "module.h"
+#include "fvwm.h"
+#include "fvwmlib.h"
+
 #include <gnome.h>
 #include <gdk/gdkx.h>
 #include <X11/Xatom.h>
@@ -34,7 +36,7 @@
 
 void        DeadPipe             (int);
 static void ParseOptions         (void);
-static void switch_to_desktop    (GtkFvwmPager* unused, int desktop_offset);
+static void switch_to_desktop    (GtkFvwmPager* unused, int desktop_offset, gpointer sendit);
 #if 0
 static void move_window          (GtkFvwmPager* pager, unsigned long xid, int desktop, int x, int y);
 #endif
@@ -73,6 +75,9 @@ void configure_icon     (GtkFvwmPager* pager, unsigned long* body);
 void destroy_window     (GtkFvwmPager* pager, unsigned long* body);
 void deiconify_window   (GtkFvwmPager* pager, unsigned long* body);
 void add_window         (GtkFvwmPager* pager, unsigned long* body);
+
+
+GtkWidget* root_widget = 0;
 
 void destroy(GtkWidget* w, gpointer data)
 {
@@ -139,7 +144,7 @@ about_cb(AppletWidget* widget, gpointer data)
   gchar* authors[] ={"M. Lausch", NULL};
 
   about = gnome_about_new( _("Fvwm Pager Applet"),
-			   "0.2",
+			   "0.4",
 			   _("Copyright (C) 1998 M. Lausch"),
 			   (const gchar**)authors,
 			   "Pager for Fvwm2 window manager",
@@ -156,6 +161,42 @@ save_session (GtkWidget* widget, char* privcfgpath,
 }
 
 volatile int wfd = 1;
+
+static void
+substruct_notify(GtkWidget* rw, GdkEvent* ev)
+{
+  GdkEventClient*  cev;
+  gint             desktop;
+  
+  if (ev->type != GDK_CLIENT_EVENT)
+    return ;
+  cev = (GdkEventClient*)ev;
+  if (cev->message_type != _XA_WIN_WORKSPACE)
+    return;
+  desktop = cev->data.l[0];
+  switch_to_desktop(0, desktop, 0);
+  XChangeProperty(GDK_DISPLAY(), GDK_ROOT_WINDOW(),
+		  _XA_WIN_WORKSPACE, XA_CARDINAL,
+		  32, PropModeReplace, (unsigned char*)&desktop,
+		  1);
+}
+
+GdkFilterReturn root_widget_filter(GdkXEvent* xevent,
+				   GdkEvent*  event,
+				   gpointer   data);
+
+
+GdkFilterReturn
+root_widget_filter(GdkXEvent* xevent, GdkEvent*  event, gpointer  data)
+{
+  XEvent* xev = (XEvent*) xevent;
+  if (xev->type == ClientMessage)
+    {
+      return GDK_FILTER_CONTINUE;
+    }
+  return GDK_FILTER_REMOVE;
+}
+    
 
 int
 main(int argc, char* argv[])
@@ -207,6 +248,30 @@ main(int argc, char* argv[])
   _XA_WIN_STATE               = XInternAtom(GDK_DISPLAY(), XA_WIN_STATE, False);
 
   root_window = GDK_ROOT_WINDOW();
+#if 1
+  root_widget = gtk_window_new(GTK_WINDOW_POPUP);
+  fprintf(stderr,"root_widget is at %p\n", root_widget);
+  gtk_widget_realize(root_widget);
+  fprintf(stderr,"root_widget realized\n");
+  gdk_window_set_user_data(GDK_ROOT_PARENT(), root_widget);
+  gdk_window_ref(GDK_ROOT_PARENT());
+  gdk_xid_table_insert(&(GDK_WINDOW_XWINDOW(GDK_ROOT_PARENT())), 
+		       GDK_ROOT_PARENT());
+  gdk_window_add_filter(GDK_ROOT_PARENT(), root_widget_filter, 0);
+#else
+  root_widget = gnome_rootwin_new();
+  if (!root_widget)
+    fprintf(stderr," * * * NO ROOT WIDGET HERE * * *\n");
+  gtk_widget_realize(root_widget);
+#endif  
+  gtk_signal_connect(GTK_OBJECT(root_widget), "event",
+		     GTK_SIGNAL_FUNC(substruct_notify), 0);
+  fprintf(stderr,"root_widget signal connected\n");
+
+  XSelectInput(GDK_DISPLAY(), GDK_WINDOW_XWINDOW(GDK_ROOT_PARENT()), 
+	       SubstructureNotifyMask | KeyPressMask);
+  fprintf(stderr,"root_widget event mask added\n");
+
   XChangeProperty(GDK_DISPLAY(), GDK_ROOT_WINDOW(),
 		  _XA_WIN_SUPPORTING_WM_CHECK, XA_CARDINAL,
 		  32, PropModeReplace, (unsigned char*)&root_window, 1);
@@ -308,7 +373,7 @@ main(int argc, char* argv[])
       gtk_widget_realize(window); 
       gtk_widget_set_usize(GTK_WIDGET(window), pager_props.width, pager_props.height); 
       gtk_signal_connect(GTK_OBJECT(pager), "switch_desktop",
-			 GTK_SIGNAL_FUNC(switch_to_desktop), NULL);
+			 GTK_SIGNAL_FUNC(switch_to_desktop), (gpointer)1);
       
       gtk_signal_connect(GTK_OBJECT(window), "delete_event",
 			 GTK_SIGNAL_FUNC(destroy), NULL);
@@ -357,23 +422,25 @@ main(int argc, char* argv[])
 }
 
 void
-switch_to_desktop(GtkFvwmPager* unused, int offset)
+switch_to_desktop(GtkFvwmPager* unused, int offset, gpointer data)
 {
   char    command[256];
   XEvent  xev;
   
   snprintf(command, sizeof(command), "Desk 0 %d\n", offset + desk1);
   SendInfo(fd,command, 0);
-  xev.type = ClientMessage;
-  xev.xclient.type = ClientMessage;
-  xev.xclient.window = GDK_ROOT_WINDOW();
-  xev.xclient.message_type = _XA_WIN_WORKSPACE;
-  xev.xclient.format = 32;
-  xev.xclient.data.l[0] = offset;
-  xev.xclient.data.l[1] = gdk_time_get();
-  XSendEvent(GDK_DISPLAY(), GDK_ROOT_WINDOW(), False,
-	     SubstructureNotifyMask, &xev);
-  
+  if (data)
+    {
+      xev.type = ClientMessage;
+      xev.xclient.type = ClientMessage;
+      xev.xclient.window = GDK_ROOT_WINDOW();
+      xev.xclient.message_type = _XA_WIN_WORKSPACE;
+      xev.xclient.format = 32;
+      xev.xclient.data.l[0] = offset;
+      xev.xclient.data.l[1] = gdk_time_get();
+      XSendEvent(GDK_DISPLAY(), GDK_ROOT_WINDOW(), False,
+		 SubstructureNotifyMask, &xev);
+    }
 }
 
 void
@@ -393,6 +460,7 @@ configure_window(GtkFvwmPager* pager, unsigned long* body)
   gint         new_window = 0;
 
   win = g_hash_table_lookup(pager->windows, (gconstpointer)xid);
+  fprintf(stderr,"configure_window: Found window ptr %p in window hash table\n", win);
   if (!win)
     {
       win = g_new0(PagerWindow, 1);
@@ -412,6 +480,7 @@ configure_window(GtkFvwmPager* pager, unsigned long* body)
       XChangeProperty(GDK_DISPLAY(), GDK_ROOT_WINDOW(),
 		      _XA_WIN_CLIENT_LIST, XA_CARDINAL,
 		      32,PropModeAppend, (unsigned char*)&xid, 1);
+      fprintf(stderr,"Added new window\n");
     }
   old           = *win;
   win->x        = body[3];
@@ -423,7 +492,6 @@ configure_window(GtkFvwmPager* pager, unsigned long* body)
   win->desk     = g_list_nth(pager->desktops, body[7])->data;
   win->flags    = 0;
   win->ixid     = body[20];
-  fprintf(stderr,"Setting workspaceof window %x[%d] to %ld\n", xid, xid, body[7]);
   XChangeProperty(GDK_DISPLAY(), xid,
 		  _XA_WIN_WORKSPACE, XA_CARDINAL,
 		  32, PropModeReplace, (unsigned char*)&body[7], 1);
@@ -435,14 +503,18 @@ configure_window(GtkFvwmPager* pager, unsigned long* body)
   if (body[8] & STICKY)
     {
       gint           size;
+      guint          new_state = 0;
+      
       GnomeWinState* win_state = util_get_atom(xid, "_WIN_STATE",
 					       XA_CARDINAL, &size);
       win->flags |= GTKPAGER_WINDOW_STICKY;
-      win_state   = WIN_STATE_STICKY;
+      if (win_state)
+	new_state = *win_state;
+      new_state  = WIN_STATE_STICKY;
       
       XChangeProperty(GDK_DISPLAY(), xid,
 		      _XA_WIN_STATE, XA_CARDINAL,
-		      32, PropModeReplace, &win_state, 1);
+		      32, PropModeReplace, &new_state, 1);
     }
   if (!noapplet)
     gtk_fvwmpager_display_window(GTK_FVWMPAGER(pager), new_window ? 0 : &old, xid);
@@ -481,11 +553,22 @@ destroy_window(GtkFvwmPager* pager, unsigned long* body)
   gint          size;
   gint          nelems;
   gint          current = 0;
+  PagerWindow*  win;
   
   xid = body[0];
   if (!noapplet)
     gtk_fvwmpager_destroy_window(GTK_FVWMPAGER(pager), xid);
-  winarray = util_get_atom(GDK_ROOT_WINDOW(), "WIN_CLIENT_LIST", XA_CARDINAL, &size);
+  win = g_hash_table_lookup(pager->windows, (gconstpointer)xid);
+  if (!win)
+    {
+      fprintf(stderr,"Warning: Deleting unknown window (not in hash table) %p\n", xid);
+    }
+  else
+    {
+      g_hash_table_remove(pager->windows, (gconstpointer)xid);
+      g_free(win);
+    }
+  winarray = util_get_atom(GDK_ROOT_WINDOW(), "_WIN_CLIENT_LIST", XA_CARDINAL, &size);
   nelems = size / sizeof(Window);
   ptr = winarray;
   while (current < nelems) {
@@ -564,7 +647,9 @@ void process_message(GtkFvwmPager* pager, unsigned long type,unsigned long *body
       destroy_window(pager, body);
       break;
     case M_FOCUS_CHANGE:
-      g_log("fvwm-pager", G_LOG_LEVEL_DEBUG, "message: unhandled M_FOCUS_CHANGE received\n");
+#if 0
+      g_log("fvwm-pager", G_LOG_LEVEL_DEBUG, "message: M_FOCUS_CHANGE received\n");
+#endif
       set_focus(pager, body);
       break;
     case M_NEW_PAGE:
@@ -577,7 +662,7 @@ void process_message(GtkFvwmPager* pager, unsigned long type,unsigned long *body
 	g_log("fvwm-pager", G_LOG_LEVEL_DEBUG, "message: M_NEW_DESK received, setting workspace prop to %ld\n", desktop);
 	if (!noapplet)
 	  gtk_fvwmpager_set_current_desk(GTK_FVWMPAGER(pager), desktop);
-	  switch_to_desktop(0, desktop);
+	  switch_to_desktop(0, desktop, 1);
 	XChangeProperty(GDK_DISPLAY(), GDK_ROOT_WINDOW(),
 			_XA_WIN_WORKSPACE, XA_CARDINAL,
 			32, PropModeReplace, (unsigned char*)&desktop,

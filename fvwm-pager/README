@@ -2,32 +2,36 @@ This is a rewrite of the FvwmPager Module, so that it can be used by
 the panel as an applet. It uses Gnome, Gtk, and Gdk functions instead
 of the raw Xlib functions of the original FvwmPager Module.
 
-To install it you have to have:
-1) the fvwm2 sources on your system.
+There's also a "headless" mode, so which emulates the gnome WM
+properties under fvwm2. This enables the use opf the gnomepager applet 
+and better application behaviour.
 
-2) compile fvwm2. I know this is clumsy, but as long as i don't have
-   ported the fvwm2 module lib and headers files, this is the only way 
-   to access them.
 
-3) go to the root directory of the gnome-core package and call
-   autogen.sh with the
-   `--with-fvwm2=<directory where the fvwm2 sources are>. In my setup
-   this is:
-   ./autgen.sh --prefix=/usr/local/gnome-cvs --with-fvwm2=/disk/compiles/fvwm-2.0.46 --with-included-gettext --with-window-manager=fvwm2
+1) go to the root directory of the gnome-core package and call
+   autogen.sh with the --with-window-manager=fvwm2 option
 
-4) after installation of the gnome-core package you can either
+   ./autgen.sh --with-included-gettext --with-window-manager=fvwm2
+
+2) after installation of the gnome-core package you can either
    a) make a symlink from the <prefix>/bin/fvwm-pager to your fvwm2
       module directory
    b) add the <prefix>/bin directory to the module path of fvwm2 in
       your fvwm2 setup file (usually ~/.fvwm2rc).
 
-5) I made an entry in one of the fvwm2 menus i'm using to start the
-   pager. I added the line
-   `+          "FvwmGnome"         Module fvwm-pager 0 4',
-   to give me 5 (0, 1, 2, 3, 4) virtual desktops, to my .fvwm2rc file.
+3) I'm using the fvwm-pager in headless mode. Therefore i have an entry
+   like
+   `AddToFunc InitFunction   "I"  Module fvwm-pager HeadLess 0 4'
+   and
+   `AddToFunc RestartFunction "I" Module fvwm-pager HeadLess 0 4'
+   in my ~/.fvwm2rc file which gives me  5 (0, 1, 2, 3, 4) virtual desktops.
 
-6) After starting the panel, you may add the pager to the panel by
-   activating this menu entry.
+4) After starting the panel, you may add the pager to the panel by
+   clickung on the gnomepager menu entry.
+
+
+This applies nonly to the fvwmpager GUI. if you're using the pager in
+headless mode, as i'm doing right now, you get the "native" gnomepager 
+applet.
 
 How to use it: Because the panel grabs the mouse button 2 and 3, we
 have to do everything with one mouse button.
@@ -39,7 +43,7 @@ Shift + Button1:       change desktop
 The look is not pretty now, and you can't change the colors
 or anything else, but i'm working on it. 
 
-With version 0.2 it's possible to start the module without connecting
+Since version 0.2 it's possible to start the module without connecting
 to the panel. This mode is indicated with the `HeadLess' parameter to
 the module.
 

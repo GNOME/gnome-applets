@@ -1,12 +1,12 @@
 Utilitiesdir = $(datadir)/apps/Utilities
 
 INCLUDES =                                              \
+	-Dsafemalloc=g_malloc                           \
 	-I. -I$(srcdir)                                 \
 	-I$(top_srcdir)/intl -I$(top_builddir)/intl	\
-	-I$(srcdir)/../../../panel				\
+	-I$(srcdir)/../../../panel			\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
-	-I$(includedir) $(GNOME_INCLUDEDIR)             \
-	@FVWM2INCLUDE@
+	-I$(includedir) $(GNOME_INCLUDEDIR)
 
 
 bin_PROGRAMS = fvwm-pager
@@ -17,11 +17,12 @@ fvwm_pager_SOURCES = fvwm-pager.c \
 		     pager-win.h \
 		     pager-win.c \
 		     properties.h \
-		     properties.c
+		     properties.c \
+		     Module.c     \
+		     Strings.c
 
 fvwm_pager_LDADD = \
 	../../panel/libpanel_applet.la \
-	@FVWM2LIBS@                    \
 	$(GNOME_LIBDIR) \
 	$(GNOMEGNORBA_LIBS)                \
 	$(INTLLIBS)

@@ -1,3 +1,30 @@
+1998-12-08  Michael Lausch  <mla@gams.at>
+
+	* gtkpager.c: change includes so that the local fvwm2 sources are
+	used. 
+
+	* fvwm-pager.c (substruct_notify): new function. Called whenever a 
+	client message is received on the root window. 
+	(root_widget_filter): new function. Filter out all events except
+	ClientMessage events. Used for the root window.
+	(main): create a GTK widget for the root window, which listens for 
+	SubStructurNotify events. These events are used for client
+	messages from gnomepager.
+	(main): Change the switch_to_desktop signal handling function.
+	(switch_to_desktop): Use the data parameter as an indicator if
+	called from out own pager or from the gnomepager applet. If called 
+	from our own pager, a client message with the current workspace is 
+	sent to the root window.
+	(configure_window): fix a 0 ptr reference if the WIN_STATE
+	property isn't set on a window.
+	(destroy_window): remove deleted windows from our hash table.
+	(process_message): if desktop is switched from within fvwm2, call
+	switch_to_desktop so that a client message is sent to the root
+	window, to inform the rest of GNOME that the desktop has changed.
+
+	* Makefile.am (Utilitiesdir): Add fvwm source files, so that the
+	applet is now self contained.
+
 1998-11-28  Michael Lausch  <mla@gams.at>
 
 	* Bumped version number to 0.3
