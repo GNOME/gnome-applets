@@ -9,9 +9,9 @@ doc_DATA =	\
 EXTRA_DIST =	\
 	mini-commander.sgml		\
 	topic.dat			\
-	figs/mini-commander.png		\
-	figs/mini-commander-prefs-1.png	\
-	figs/mini-commander-prefs-2.png
+	fig/mini-commander.png		\
+	fig/mini-commander-prefs-1.png	\
+	fig/mini-commander-prefs-2.png
 
 # this is taken from gnome-core/gnome-terminal/C/Makefile.am
 all: index.html
