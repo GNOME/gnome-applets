@@ -383,6 +383,7 @@ static int get_modem_stats(int *in, int *out)
 
 	memset(&ifreq, 0, sizeof(ifreq));
 	strncpy(ifreq.ifr_name, device_name, IFNAMSIZ);
+	ifreq.ifr_name[IFNAMSIZ-1] = '\0';
 	ifreq.ifr_ifru.ifru_data = (caddr_t)&stats;
 
 #ifdef SIOCGPPPSTATS
@@ -1422,10 +1423,6 @@ int main (int argc, char *argv[])
 	command_disconnect = g_strdup("pppoff");
 	orient = ORIENT_UP;
 
-#ifdef HAVE_PANEL_PIXEL_SIZE
-	sizehint = PIXEL_SIZE_STANDARD;
-#endif
-
 	/* open ip socket */
 	if ((ip_socket = socket(AF_INET, SOCK_DGRAM, 0)) < 0)
 		{
@@ -1437,6 +1434,10 @@ int main (int argc, char *argv[])
 	applet = applet_widget_new("modemlights_applet");
 	if (!applet)
 		g_error("Can't create applet!\n");
+
+#ifdef HAVE_PANEL_PIXEL_SIZE
+	sizehint = applet_widget_get_panel_pixel_size(APPLET_WIDGET(applet));
+#endif
 
 	property_load(APPLET_WIDGET(applet)->privcfgpath);
 
