@@ -117,6 +117,47 @@ gnome_volume_applet_get_type (void)
   return gnome_volume_applet_type;
 }
 
+/*
+ * Hi, I'm slow.
+ */
+
+static inline void
+flip_byte (gchar *one, gchar *two)
+{
+  gint temp;
+
+  temp = *one;
+  *one = *two;
+  *two = temp;
+}
+
+static inline void
+flip_pixel (gchar *line, gint pixel, gint width, gint bpp)
+{
+  gint n;
+
+  for (n = 0; n < bpp; n++) {
+    flip_byte (&line[pixel * bpp + n], &line[(width - 1 - pixel) * bpp + n]);
+  }
+}
+
+static void
+flip (GdkPixbuf *pix)
+{
+  gint w = gdk_pixbuf_get_width (pix),
+       h = gdk_pixbuf_get_height (pix),
+       x, y, stride = gdk_pixbuf_get_rowstride (pix),
+       bpp = gdk_pixbuf_get_n_channels (pix);
+  gchar *data = gdk_pixbuf_get_pixels (pix);
+
+  for (y = 0; y < h; y++) {
+    for (x = 0; x < (w / 2); x++) {
+      flip_pixel (data, x, w, bpp);
+    }
+    data += stride;
+  }
+}
+
 static void
 gnome_volume_applet_class_init (GnomeVolumeAppletClass *klass)
 {
@@ -141,6 +182,9 @@ gnome_volume_applet_class_init (GnomeVolumeAppletClass *klass)
   /* init pixbufs */
   for (n = 0; pix[n].filename != NULL; n++) {
     pix[n].pixbuf = gdk_pixbuf_new_from_file (pix[n].filename, NULL);
+    if (gtk_widget_get_default_direction () == GTK_TEXT_DIR_RTL) {
+      flip (pix[n].pixbuf);
+    }
   }
 }
 
