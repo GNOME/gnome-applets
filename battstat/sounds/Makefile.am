@@ -5,4 +5,4 @@ soundlist_DATA = $(soundlist_in_files:.soundlist.in=.soundlist)
 
 @INTLTOOL_SOUNDLIST_RULE@
 
-EXTRA_DIST = $(soundlist_DATA)
+EXTRA_DIST = $(soundlist_DATA) $(soundlist_in_files)
