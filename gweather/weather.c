@@ -44,10 +44,6 @@ close_cb (GnomeVFSAsyncHandle *handle, GnomeVFSResult result, gpointer data);
 static WeatherForecastType weather_forecast = FORECAST_STATE;
 static gboolean weather_radar = FALSE;
 
-static gchar *weather_proxy_url = NULL;
-static gchar *weather_proxy_user = NULL;
-static gchar *weather_proxy_passwd = NULL;
-
 #define DATA_SIZE 5000
 
 /* Unit conversions and names */
@@ -772,7 +768,6 @@ static void metar_finish_read(GnomeVFSAsyncHandle *handle, GnomeVFSResult result
     gboolean success = FALSE;
     gchar *searchkey;
 
-    info->forecast = NULL;
     loc = info->location;
     body = (gchar *)buffer;
 
@@ -839,7 +834,6 @@ static void metar_finish_open (GnomeVFSAsyncHandle *handle, GnomeVFSResult resul
     body = g_malloc0(DATA_SIZE);
     
     info->metar_buffer = NULL;
-    info->forecast = NULL;
     loc = info->location;
     if (loc == NULL) {
 	    g_warning (_("WeatherInfo missing location"));
@@ -988,15 +982,15 @@ static gchar *iwin_parse (gchar *iwin, WeatherLocation *loc)
         if (iwin_range_match(rangep, loc)) 
         {
             break;
-		}
+	}
     }
 
     if (ret != REG_NOMATCH) {
-        gchar *end = strstr(p, "\n</PRE>");
+        /*gchar *end = strstr(p, "\n</PRE>");
         if ((regexec(&iwin_re, p, 1, match, 0) != REG_NOMATCH) &&
             (end - p > match[0].rm_so))
             end = p + match[0].rm_so - 1;
-        *end = 0;
+        *end = 0;*/
         return g_strdup(rangep);
     } else {
         return NULL;
@@ -1011,8 +1005,7 @@ static void iwin_finish_read(GnomeVFSAsyncHandle *handle, GnomeVFSResult result,
     WeatherInfo *info = (WeatherInfo *)data;
     WeatherLocation *loc;
     gchar *body, *temp;
-    gchar *forecast;
-
+    
     info->forecast = NULL;
     loc = info->location;
     body = (gchar *)buffer;
@@ -1030,8 +1023,7 @@ static void iwin_finish_read(GnomeVFSAsyncHandle *handle, GnomeVFSResult result,
 	
     if (result == GNOME_VFS_ERROR_EOF)
     {
-	forecast = iwin_parse(info->iwin_buffer, loc);
-	info->forecast = forecast;
+        info->forecast = g_strdup (info->iwin_buffer);
     }
     else if (result != GNOME_VFS_OK) {
 	g_print("%s", gnome_vfs_result_to_string(result));
@@ -1076,8 +1068,8 @@ static void iwin_finish_open (GnomeVFSAsyncHandle *handle, GnomeVFSResult result
     }
 
     if (result != GNOME_VFS_OK) {
-        /* forecast data is not really interesting anyway ;)
-	 * g_warning(_("Failed to get IWIN forecast data.\n")); */
+        /* forecast data is not really interesting anyway ;) */
+	  g_warning(_("Failed to get IWIN forecast data.\n")); 
         info->iwin_handle = NULL;
         requests_done_check (info);
         g_free (body);
@@ -1336,7 +1328,7 @@ static void metoffice_start_open (WeatherInfo *info)
 /* Get forecast into newly alloc'ed string */
 static void iwin_start_open (WeatherInfo *info)
 {
-    gchar *url;
+    gchar *url, *state, *zone;
     WeatherLocation *loc;
 
     g_return_if_fail(info != NULL);
@@ -1352,13 +1344,28 @@ static void iwin_start_open (WeatherInfo *info)
     	metoffice_start_open (info);
     	return;
     }
-
+    
+#if 0
     if (weather_forecast == FORECAST_ZONE)
         url = g_strdup_printf("http://iwin.nws.noaa.gov/iwin/%s/zone.html",
 			loc->zone);
     else
         url = g_strdup_printf("http://iwin.nws.noaa.gov/iwin/%s/state.html",
 			loc->zone);
+#endif
+    /* The zone for Pittsburgh (for example) is given as PAZ021 in the locations
+    ** file (the PA stands for the state pennsylvania). The url used wants the state
+    ** as pa, and the zone as lower case paz021.
+    */
+    zone = g_strdup (loc->zone);
+    g_strdown (zone);
+    state = g_strdup (zone);
+    state[2] = '\0';
+    url = g_strdup_printf ("http://weather.noaa.gov/pub/data/forecasts/zone/%s/%s.txt",
+        		   state, zone); 
+    g_free (zone);   
+    g_free (state);
+
     gnome_vfs_async_open(&info->iwin_handle, url, GNOME_VFS_OPEN_READ, 
     			 0, iwin_finish_open, info);
     g_free(url);
@@ -1373,7 +1380,6 @@ static void wx_finish_read(GnomeVFSAsyncHandle *handle, GnomeVFSResult result,
     WeatherLocation *loc;
     GdkPixmap *pixmap = NULL;
 	
-    info->forecast = NULL;
     info->radar = NULL;
     loc = info->location;
 
@@ -1661,21 +1667,6 @@ void weather_radar_set (gboolean enable)
 gboolean weather_radar_get (void)
 {
     return weather_radar;
-}
-
-
-void weather_proxy_set (const gchar *url, const gchar *user, const gchar *passwd)
-{
-    g_free(weather_proxy_url);    weather_proxy_url = NULL;
-    g_free(weather_proxy_user);   weather_proxy_user = NULL;
-    g_free(weather_proxy_passwd); weather_proxy_passwd = NULL;
-
-    if (url && (strlen(url) > 0))
-        weather_proxy_url = g_strdup(url);
-    if (user && (strlen(user) > 0))
-        weather_proxy_user = g_strdup(user);
-    if (passwd && (strlen(passwd) > 0))
-        weather_proxy_passwd = g_strdup(passwd);
 }
 
 void weather_info_to_metric (WeatherInfo *info)

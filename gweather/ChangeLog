@@ -1,3 +1,18 @@
+2002-03-09  Kevin Vandersloot <kfv101@psu.edu>
+
+	* weather.c: update the iwin url. Make forecasts work - bug #52518.
+
+	* gweather-dialog.c: port forecast text to GtkTextView
+
+	* gweather-pref.c: restart the timeout when user changes the
+	pref for it. Hook up proxy prefs to gnome-vfs gconf values.
+	First attempt at fixing bug #73578. Also remove the detailed
+	forecast for now as local forecast are retrieved as a result
+	of the previous fix.
+
+	* gweather.schemas: remove the proxy stuff - they're handled
+	by gnome-vfs automatically
+
 2002-03-06  Kevin Vandersloot <kfv101@psu.edu>
 
 	* gweather-applet.c: don't call gnome_window_icon_ since

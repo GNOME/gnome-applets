@@ -286,8 +286,10 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
 				  GTK_POLICY_AUTOMATIC,
 				  GTK_POLICY_AUTOMATIC);
 
-  gw_applet->forecast_text = gtk_text_new (NULL, NULL);
+  gw_applet->forecast_text = gtk_text_view_new ();
   gtk_container_add (GTK_CONTAINER (scrolled_window), gw_applet->forecast_text);
+  gtk_text_view_set_editable (GTK_TEXT_VIEW (gw_applet->forecast_text), FALSE);
+  gtk_text_view_set_left_margin (GTK_TEXT_VIEW (gw_applet->forecast_text), GNOME_PAD);
   gtk_widget_show (gw_applet->forecast_text);
   gtk_widget_show (scrolled_window);
   gtk_box_pack_start (GTK_BOX (forecast_hbox), scrolled_window, TRUE, TRUE, 0);
@@ -299,7 +301,7 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
   gtk_notebook_set_tab_label (GTK_NOTEBOOK (weather_notebook), gtk_notebook_get_nth_page (GTK_NOTEBOOK (weather_notebook), 1), forecast_note_lbl);
 
   if (gw_applet->gweather_pref.radar_enabled) {
-g_print ("draw radar \n");
+
       radar_vbox = gtk_vbox_new (FALSE, 6);
       gtk_widget_show (radar_vbox);
       gtk_container_add (GTK_CONTAINER (weather_notebook), radar_vbox);
@@ -371,6 +373,7 @@ void gweather_dialog_display_toggle (GWeatherApplet *gw_applet)
 void gweather_dialog_update (GWeatherApplet *gw_applet)
 {
     const gchar *forecast;
+    GtkTextBuffer *buffer;
     /*GdkFont* detailed_forecast_font = gdk_fontset_load ( "fixed" );*/
 
     /* Check for parallel network update in progress */
@@ -397,16 +400,15 @@ void gweather_dialog_update (GWeatherApplet *gw_applet)
     gtk_label_set_text(GTK_LABEL(gw_applet->cond_vis), weather_info_get_visibility(gw_applet->gweather_info));
 
     /* Update forecast */
-    gtk_text_set_point(GTK_TEXT(gw_applet->forecast_text), 0);
-    gtk_text_forward_delete(GTK_TEXT(gw_applet->forecast_text), gtk_text_get_length(GTK_TEXT(gw_applet->forecast_text)));
+    buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (gw_applet->forecast_text));
     forecast = weather_info_get_forecast(gw_applet->gweather_info);
     if (forecast) {
-        gtk_text_insert(GTK_TEXT(gw_applet->forecast_text), NULL, NULL, NULL, forecast, strlen(forecast));
+        gtk_text_buffer_set_text(buffer, forecast, -1);
     } else {
         if (gw_applet->gweather_pref.detailed)
-            gtk_text_insert(GTK_TEXT(gw_applet->forecast_text), NULL, NULL, NULL, _("Detailed forecast not available for this location.\nPlease try the state forecast; note that IWIN forecasts are available only for US cities."), -1);
+            gtk_text_buffer_set_text(buffer, _("Detailed forecast not available for this location.\nPlease try the state forecast; note that IWIN forecasts are available only for US cities."), -1);
         else
-            gtk_text_insert(GTK_TEXT(gw_applet->forecast_text), NULL, NULL, NULL, _("State forecast not available for this location.\nPlease try the detailed forecast; note that IWIN forecasts are available only for US cities."), -1);
+            gtk_text_buffer_set_text(buffer, _("State forecast not available for this location.\nPlease try the detailed forecast; note that IWIN forecasts are available only for US cities."), -1);
     }
 
     /* Update radar map */

@@ -24,6 +24,7 @@
 
 #include <gnome.h>
 #include <panel-applet.h>
+#include <gconf/gconf-client.h>
 
 #include "gweather.h"
 #include "gweather-pref.h"
@@ -46,6 +47,9 @@ static gint cmp_loc (const WeatherLocation *l1, const WeatherLocation *l2)
 static gboolean update_dialog (GWeatherApplet *gw_applet)
 {
     GtkCTreeNode *node;
+    GConfClient *client = gconf_client_get_default ();
+    gboolean use_proxy;
+    gchar *proxy_url, *proxy_user, *proxy_psswd;
 
     g_return_val_if_fail(gw_applet->gweather_pref.location != NULL, FALSE);
 
@@ -57,32 +61,47 @@ static gboolean update_dialog (GWeatherApplet *gw_applet)
     			     gw_applet->gweather_pref.update_enabled);
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(gw_applet->pref_basic_metric_btn), 
     				 gw_applet->gweather_pref.use_metric);
+#if 0
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(gw_applet->pref_basic_detailed_btn), 
     				 gw_applet->gweather_pref.detailed);
+#endif
 #ifdef RADARMAP
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(gw_applet->pref_basic_radar_btn),
     				 gw_applet->gweather_pref.radar_enabled);
 #endif /* RADARMAP */
 
+    use_proxy = gconf_client_get_bool (client, "/system/gnome-vfs/use-http-proxy", NULL);
+    proxy_url = gconf_client_get_string (client, "/system/gnome-vfs/http-proxy-host", NULL);
+    proxy_user = gconf_client_get_string (client, 
+    		 	"/system/gnome-vfs/http-proxy-authorization-user", NULL);
+    proxy_psswd = gconf_client_get_string (client, 
+    		 	"/system/gnome-vfs/http-proxy-authorization-password", NULL);
+
     gtk_entry_set_text(GTK_ENTRY(gw_applet->pref_net_proxy_url_entry), 
-    		       gw_applet->gweather_pref.proxy_url ? 
-    		       gw_applet->gweather_pref.proxy_url : "");
+    		       proxy_url ? 
+    		       proxy_url : "");
     gtk_entry_set_text(GTK_ENTRY(gw_applet->pref_net_proxy_passwd_entry), 
-    		       gw_applet->gweather_pref.proxy_passwd ? 
-    		       gw_applet->gweather_pref.proxy_passwd : "");
+    		       proxy_psswd ? 
+    		       proxy_psswd : "");
     gtk_entry_set_text(GTK_ENTRY(gw_applet->pref_net_proxy_user_entry), 
-    		       gw_applet->gweather_pref.proxy_user ? 
-    		       gw_applet->gweather_pref.proxy_user : "");
+    		       proxy_user ? 
+    		       proxy_user : "");
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(gw_applet->pref_net_proxy_btn), 
-    				 gw_applet->gweather_pref.use_proxy);
+    				 use_proxy);
     
     gtk_widget_set_sensitive (gw_applet->pref_net_proxy_url_entry,
-    			      gw_applet->gweather_pref.use_proxy);
+    			      use_proxy);
     gtk_widget_set_sensitive (gw_applet->pref_net_proxy_passwd_entry,
-    			      gw_applet->gweather_pref.use_proxy);
+    			      use_proxy);
     gtk_widget_set_sensitive (gw_applet->pref_net_proxy_user_entry,
-    			      gw_applet->gweather_pref.use_proxy);
+    			      use_proxy);
     
+    if (proxy_url)
+        g_free (proxy_url);
+    if (proxy_user)
+        g_free (proxy_user);
+    if (proxy_psswd)
+        g_free (proxy_psswd);
     return TRUE;
 }
 
@@ -120,34 +139,6 @@ static gboolean check_proxy_uri (const gchar *uri)
                 break;
         return (!strcmp(pcolon, "") || !strcmp(pcolon, "/"));
     }
-
-    return TRUE;
-}
-
-/* Update gweather_pref from pref dialog */
-static gboolean update_pref (GWeatherApplet *gw_applet)
-{
-    gchar *proxy_url;
-    
-    proxy_url = (gchar *)gtk_entry_get_text(GTK_ENTRY(gw_applet->pref_net_proxy_url_entry));
-
-   if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(gw_applet->pref_net_proxy_btn))
-	&& proxy_url && strlen(proxy_url) && !check_proxy_uri(proxy_url)) {
-        gnome_error_dialog(_("Proxy URL is not of the form http://host:port/\nProperties remain unchanged."));
-        return FALSE;
-    }
-
-    
-#ifdef RADARMAP
-    
-#endif /* RADARMAP */
-
-    
-    update_string(proxy_url, &(gw_applet->gweather_pref.proxy_url));
-    update_string((gchar *)gtk_entry_get_text(GTK_ENTRY(gw_applet->pref_net_proxy_passwd_entry)), &(gw_applet->gweather_pref.proxy_passwd));
-    update_string((gchar *)gtk_entry_get_text(GTK_ENTRY(gw_applet->pref_net_proxy_user_entry)), &(gw_applet->gweather_pref.proxy_user));
-
-    /* fprintf(stderr, "Set location to: %s\n", loc->name); */
 
     return TRUE;
 }
@@ -323,66 +314,73 @@ static void
 proxy_toggled (GtkToggleButton *button, gpointer data)
 {
     GWeatherApplet *gw_applet = data;
+    GConfClient *client = gconf_client_get_default ();
     gboolean toggled;
 	
     toggled = gtk_toggle_button_get_active(button);
-    gw_applet->gweather_pref.use_proxy = toggled;
     gtk_widget_set_sensitive(gw_applet->pref_net_proxy_url_entry, toggled);
     gtk_widget_set_sensitive(gw_applet->pref_net_proxy_user_entry, toggled);
     gtk_widget_set_sensitive(gw_applet->pref_net_proxy_passwd_entry, toggled);
-    
-    panel_applet_gconf_set_bool(gw_applet->applet, "enable_proxy", toggled, NULL);
+
+    /* FIXME: should there be an option to specify whether authorization is needed ?
+    */
+    gconf_client_set_bool (client, "/system/gnome-vfs/use-http-proxy", 
+    			   toggled, NULL);
 }
 
 static void
 proxy_url_changed (GtkWidget *entry, GdkEventFocus *event, gpointer data)
 {
     GWeatherApplet *gw_applet = data;
+    GConfClient *client = gconf_client_get_default ();
     gchar *text;
-	
+
     text = gtk_editable_get_chars (GTK_EDITABLE (entry), 0, -1);
     
-    if (!text)
-   	return;
-   
-    panel_applet_gconf_set_string(gw_applet->applet, "proxy_url", text, NULL);
-    if (gw_applet->gweather_pref.proxy_url)
-    	g_free(gw_applet->gweather_pref.proxy_url);
-    gw_applet->gweather_pref.proxy_url = text;   	
+    if (!text) 
+    	return;
+    
+    gconf_client_set_string (client, "/system/gnome-vfs/http-proxy-host", 
+    			     text, NULL);
+    g_free (text);
 }
 
 static void
 proxy_user_changed (GtkWidget *entry, GdkEventFocus *event, gpointer data)
 {
     GWeatherApplet *gw_applet = data;
+    GConfClient *client = gconf_client_get_default ();
     gchar *text;
-    
+   
     text = gtk_editable_get_chars (GTK_EDITABLE (entry), 0, -1);
     
     if (!text)
    	return;
-   
-    panel_applet_gconf_set_string(gw_applet->applet, "proxy_user", text, NULL);
-    if (gw_applet->gweather_pref.proxy_user)
-   	g_free(gw_applet->gweather_pref.proxy_user);
-    gw_applet->gweather_pref.proxy_user = text;   
+
+    gconf_client_set_string (client, "/system/gnome-vfs/http-proxy-authorization-user", 
+    			     text, NULL); 
+    g_free (text);
+#if 0
+    gconf_client_set_bool (client, "/system/gnome-vfs/use-http-proxy-authorization", 
+    			   TRUE, NULL); 
+#endif
 }
 
 static void
 proxy_password_changed (GtkWidget *entry, GdkEventFocus *event, gpointer data)
 {
     GWeatherApplet *gw_applet = data;
+    GConfClient *client = gconf_client_get_default ();
     gchar *text;
-    
+   
     text = gtk_editable_get_chars (GTK_EDITABLE (entry), 0, -1);
     
     if (!text)
    	return;
 
-    panel_applet_gconf_set_string(gw_applet->applet, "proxy_passwd", text, NULL);
-    if (gw_applet->gweather_pref.proxy_passwd)
-	g_free(gw_applet->gweather_pref.proxy_passwd);
-    gw_applet->gweather_pref.proxy_passwd = text;      	
+    gconf_client_set_string (client, "/system/gnome-vfs/http-proxy-authorization-password", 
+    			     text, NULL);
+    g_free (text);
 }
 
 static void
@@ -395,6 +393,12 @@ auto_update_toggled (GtkToggleButton *button, gpointer data)
     gw_applet->gweather_pref.update_enabled = toggled;
     gtk_widget_set_sensitive (gw_applet->pref_basic_update_spin, toggled);
     panel_applet_gconf_set_bool(gw_applet->applet, "auto_update", toggled, NULL);
+    if (gw_applet->timeout_tag > 0)
+        gtk_timeout_remove(gw_applet->timeout_tag);
+    if (gw_applet->gweather_pref.update_enabled)
+        gw_applet->timeout_tag =  
+        	gtk_timeout_add (gw_applet->gweather_pref.update_interval * 1000,
+                                 timeout_cb, gw_applet);
 }
 
 static void
@@ -455,6 +459,12 @@ update_interval_changed (GtkSpinButton *button, gpointer data)
     gw_applet->gweather_pref.update_interval = gtk_spin_button_get_value_as_int(button)*60;
     panel_applet_gconf_set_int(gw_applet->applet, "auto_update_interval", 
     		               gw_applet->gweather_pref.update_interval, NULL);
+    if (gw_applet->timeout_tag > 0)
+        gtk_timeout_remove(gw_applet->timeout_tag);
+    if (gw_applet->gweather_pref.update_enabled)
+        gw_applet->timeout_tag =  
+        	gtk_timeout_add (gw_applet->gweather_pref.update_interval * 1000,
+                                 timeout_cb, gw_applet);
 }
 
 static void
@@ -498,7 +508,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     GtkWidget *pref_basic_vbox;
     GtkWidget *vbox;
     GtkWidget *frame;
-
+    
     gw_applet->pref = gtk_dialog_new_with_buttons (_("Weather Properties"), NULL,
 				      		   GTK_DIALOG_DESTROY_WITH_PARENT,
 				      		   GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
@@ -663,13 +673,13 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     gtk_container_add (GTK_CONTAINER (pref_basic_metric_alignment), gw_applet->pref_basic_metric_btn);
     g_signal_connect (G_OBJECT (gw_applet->pref_basic_metric_btn), "toggled",
     		      G_CALLBACK (metric_toggled), gw_applet);
-    		      
+#if 0   		      
     gw_applet->pref_basic_detailed_btn = gtk_check_button_new_with_label (_("Enable detailed forecast"));
     gtk_widget_show (gw_applet->pref_basic_detailed_btn);
     gtk_container_add (GTK_CONTAINER (pref_basic_detailed_alignment), gw_applet->pref_basic_detailed_btn);
     g_signal_connect (G_OBJECT (gw_applet->pref_basic_detailed_btn), "toggled",
     		      G_CALLBACK (detailed_toggled), gw_applet);
-
+#endif
 #ifdef RADARMAP
     gw_applet->pref_basic_radar_btn = gtk_check_button_new_with_label (_("Enable radar map"));
     gtk_widget_show (gw_applet->pref_basic_radar_btn);
@@ -744,7 +754,6 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
 
 void gweather_pref_load (GWeatherApplet *gw_applet)
 {
-
     gw_applet->gweather_pref.update_interval = 
     	panel_applet_gconf_get_int(gw_applet->applet, "auto_update_interval", NULL);
     gw_applet->gweather_pref.update_enabled =
@@ -755,17 +764,9 @@ void gweather_pref_load (GWeatherApplet *gw_applet)
     	panel_applet_gconf_get_bool(gw_applet->applet, "enable_detailed_forecast", NULL);
     gw_applet->gweather_pref.radar_enabled =
     	panel_applet_gconf_get_bool(gw_applet->applet, "enable_radar_map", NULL);
-    gw_applet->gweather_pref.proxy_url =
-    	panel_applet_gconf_get_string(gw_applet->applet, "proxy_url", NULL);
-    gw_applet->gweather_pref.proxy_user =
-    	panel_applet_gconf_get_string(gw_applet->applet, "proxy_user", NULL);
-    gw_applet->gweather_pref.proxy_passwd =
-    	panel_applet_gconf_get_string(gw_applet->applet, "proxy_passwd", NULL);
-    gw_applet->gweather_pref.use_proxy =
-    	panel_applet_gconf_get_bool(gw_applet->applet, "enable_proxy", NULL);
     gw_applet->gweather_pref.location = weather_location_config_read(gw_applet->applet);
-
-	return;
+    
+    return;
 }
 
 static void help_cb (void)

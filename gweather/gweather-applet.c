@@ -169,10 +169,7 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
     gw_applet->gweather_pref.use_metric = FALSE;
     gw_applet->gweather_pref.detailed = FALSE;
     gw_applet->gweather_pref.radar_enabled = TRUE;
-    gw_applet->gweather_pref.proxy_url = NULL;
-    gw_applet->gweather_pref.proxy_user = NULL;
-    gw_applet->gweather_pref.proxy_passwd = NULL;
-    gw_applet->gweather_pref.use_proxy = FALSE;
+    
 #if 0   
     gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gweather/tstorm.xpm");
 #endif
@@ -257,7 +254,7 @@ void gweather_info_load (const gchar *path, GWeatherApplet *gw_applet)
     gnome_config_pop_prefix();
 }
 
-static gint timeout_cb (gpointer data)
+gint timeout_cb (gpointer data)
 {
     GWeatherApplet *gw_applet = (GWeatherApplet *)data;
 	
@@ -338,12 +335,6 @@ void gweather_update (GWeatherApplet *gw_applet)
 
     /* Set radar map retrieval option */
     weather_radar_set(gw_applet->gweather_pref.radar_enabled);
-
-    /* Set proxy */
-    if (gw_applet->gweather_pref.use_proxy)
-        weather_proxy_set(gw_applet->gweather_pref.proxy_url, 
-        		  gw_applet->gweather_pref.proxy_user, 
-        		  gw_applet->gweather_pref.proxy_passwd);
 
     /* Update current conditions */
     if (gw_applet->gweather_info && 
