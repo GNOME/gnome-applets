@@ -10,8 +10,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
-"POT-Creation-Date: 2003-07-14 12:48+0200\n"
-"PO-Revision-Date: 2003-07-14 12:49+0200\n"
+"POT-Creation-Date: 2003-07-16 19:26+0200\n"
+"PO-Revision-Date: 2003-07-16 19:28+0200\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -466,7 +466,7 @@ msgid "Battery Charge Monitor Preferences"
 msgstr "Inställningar för batteriladdningsövervakare"
 
 #: battstat/battstat_applet.glade.h:13 drivemount/properties.c:348
-#: gweather/gweather-pref.c:766 mailcheck/mailcheck.c:2026
+#: gweather/gweather-pref.c:738 mailcheck/mailcheck.c:2026
 #: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:552
 msgid "General"
 msgstr "Allmänt"
@@ -1206,7 +1206,9 @@ msgstr "Etikett"
 msgid "Flag and Label"
 msgstr "Flagga och etikett"
 
-#: gkb-new/prop.c:257 gtik/gtik.c:1528 modemlights/properties.c:437
+#. The Miscellaneous frame
+#: gkb-new/prop.c:257 gtik/gtik.c:1528 gweather/gweather-pref.c:720
+#: modemlights/properties.c:437
 msgid "Display"
 msgstr "Visa"
 
@@ -1308,7 +1310,7 @@ msgstr "_Uppdatera"
 msgid "Could not retrieve the stock data."
 msgstr "Kunde inte hämta aktiedata."
 
-#: gtik/gtik.c:289 gweather/gweather-applet.c:357
+#: gtik/gtik.c:289 gweather/gweather-applet.c:346
 msgid "Updating..."
 msgstr "Uppdaterar..."
 
@@ -1353,7 +1355,7 @@ msgstr "Symboler"
 msgid "Behavior"
 msgstr "Beteende"
 
-#: gtik/gtik.c:1441
+#: gtik/gtik.c:1441 gweather/gweather-pref.c:679
 msgid "Update"
 msgstr "Uppdatera"
 
@@ -1361,7 +1363,8 @@ msgstr "Uppdatera"
 msgid "Stock update fre_quency:"
 msgstr "Aktieuppdateringsfre_kvens:"
 
-#: gtik/gtik.c:1457 mailcheck/mailcheck.c:2073 mailcheck/mailcheck.c:2079
+#: gtik/gtik.c:1457 gweather/gweather-pref.c:705 mailcheck/mailcheck.c:2073
+#: mailcheck/mailcheck.c:2079
 msgid "minutes"
 msgstr "minuter"
 
@@ -1514,7 +1517,7 @@ msgstr "tid i millisekunder för uppdatering av visningen"
 msgid "timeout"
 msgstr "time-out"
 
-#: gweather/GNOME_GWeatherApplet.xml.h:2 gweather/gweather-dialog.c:304
+#: gweather/GNOME_GWeatherApplet.xml.h:2
 msgid "_Forecast"
 msgstr "_Prognos"
 
@@ -1549,21 +1552,21 @@ msgstr ""
 "\n"
 "Panelprogram för övervakning av lokala väderförhållanden."
 
-#: gweather/gweather-applet.c:246
+#: gweather/gweather-applet.c:237
 msgid "GNOME Weather"
 msgstr "GNOME Weather"
 
-#: gweather/gweather-dialog.c:75
+#: gweather/gweather-dialog.c:75 gweather/gweather-dialog.c:304
 msgid "Forecast"
 msgstr "Prognos"
 
 #: gweather/gweather-dialog.c:110
-msgid "Location:"
-msgstr "Plats:"
+msgid "City:"
+msgstr "Ort:"
 
 #: gweather/gweather-dialog.c:118
-msgid "Update:"
-msgstr "Uppdatering:"
+msgid "Last update:"
+msgstr "Senaste uppdatering:"
 
 #: gweather/gweather-dialog.c:126
 msgid "Conditions:"
@@ -1598,11 +1601,11 @@ msgid "Visibility:"
 msgstr "Sikt:"
 
 #: gweather/gweather-dialog.c:281
-msgid "C_urrent conditions"
-msgstr "_Nuvarande förhållanden"
+msgid "Current Conditions"
+msgstr "Nuvarande förhållanden"
 
 #: gweather/gweather-dialog.c:294
-msgid "ForeCast Report"
+msgid "Forecast Report"
 msgstr "Väderrapport"
 
 #: gweather/gweather-dialog.c:294
@@ -1670,52 +1673,35 @@ msgstr "Adressfält"
 msgid "Enter the URL"
 msgstr "Ange URL:en"
 
-#: gweather/gweather-pref.c:604
+#: gweather/gweather-pref.c:584
 msgid "Weather Preferences"
 msgstr "Väderinställningar"
 
-#: gweather/gweather-pref.c:647
+#: gweather/gweather-pref.c:627
 msgid "_Automatically update every"
 msgstr "_Uppdatera automatiskt var"
 
-#: gweather/gweather-pref.c:655
+#: gweather/gweather-pref.c:635
 msgid "Use _metric system units"
 msgstr "Använd _metriska enheter"
 
-#: gweather/gweather-pref.c:663
-msgid "Enable _detailed forecast"
-msgstr "Använd _detaljerad prognos"
-
-#: gweather/gweather-pref.c:672
+#: gweather/gweather-pref.c:644
 msgid "Enable _radar map"
 msgstr "Aktivera _radarkarta"
 
-#: gweather/gweather-pref.c:680
+#: gweather/gweather-pref.c:652
 msgid "Use cus_tom address for radar map"
 msgstr "Använd _anpassad adress för radarkartan"
 
-#: gweather/gweather-pref.c:693
+#: gweather/gweather-pref.c:665
 msgid "A_ddress :"
 msgstr "A_dress:"
 
-#: gweather/gweather-pref.c:707
-msgid "Updates"
-msgstr "Uppdateringar"
+#: gweather/gweather-pref.c:685
+msgid "_Automatically update every:"
+msgstr "_Uppdatera automatiskt var:"
 
-#: gweather/gweather-pref.c:713
-msgid "_Automatically update every "
-msgstr "_Uppdatera automatiskt var "
-
-#: gweather/gweather-pref.c:733
-msgid "minute(s)"
-msgstr "minut"
-
-#. The Miscellaneous frame
-#: gweather/gweather-pref.c:748
-msgid "Miscellaneous"
-msgstr "Diverse"
-
-#: gweather/gweather-pref.c:806 gweather/location.c:360
+#: gweather/gweather-pref.c:775
 msgid "Location"
 msgstr "Plats"
 
@@ -1754,42 +1740,6 @@ msgstr "Använd metriska enheter istället för engelska enheter."
 #: gweather/gweather.schemas.in.h:8
 msgid "weather location information."
 msgstr "väderplatsinformation."
-
-#: gweather/location.c:184
-msgid "Could not download countries"
-msgstr "Kunde inte hämta länder"
-
-#: gweather/location.c:186
-msgid "Could not download cities"
-msgstr "Kunde inte hämta städer"
-
-#: gweather/location.c:243
-msgid "Downloading Cities..."
-msgstr "Hämtar städer..."
-
-#: gweather/location.c:304
-msgid "Countries list"
-msgstr "Landlista"
-
-#: gweather/location.c:305
-msgid "Select the country from the list"
-msgstr "Välj landet från listan"
-
-#: gweather/location.c:308
-msgid "Country"
-msgstr "Land"
-
-#: gweather/location.c:356
-msgid "Cities list"
-msgstr "Stadlista"
-
-#: gweather/location.c:357
-msgid "Select the city from the list"
-msgstr "Välj staden från listan"
-
-#: gweather/location.c:394
-msgid "Downloading Countries..."
-msgstr "Hämtar länder..."
 
 #: gweather/weather.c:57
 msgid "knots"
@@ -2972,27 +2922,6 @@ msgstr "Misslyckades med att hämta METAR-data.\n"
 #: gweather/weather.c:856 gweather/weather.c:884 gweather/weather.c:1081
 msgid "WeatherInfo missing location"
 msgstr "Väderinformationen saknar plats"
-
-#: gweather/weather.c:1047
-msgid "Failed to get IWIN data.\n"
-msgstr "Misslyckades med att hämta IWIN-data.\n"
-
-#. forecast data is not really interesting anyway ;)
-#: gweather/weather.c:1091
-msgid "Failed to get IWIN forecast data.\n"
-msgstr "Misslyckades med att hämta IWIN-prognosdata.\n"
-
-#: gweather/weather.c:1290
-msgid "Failed to get Met Office data.\n"
-msgstr "Misslyckades med att hämta Met Office-data.\n"
-
-#: gweather/weather.c:1324
-msgid "Failed to get Met Office forecast data.\n"
-msgstr "Misslyckades med att hämta prognosdata från Met Office.\n"
-
-#: gweather/weather.c:1468
-msgid "Failed to get radar map image.\n"
-msgstr "Misslyckades med att hämta radarkartbild.\n"
 
 #: gweather/weather.c:1771
 msgid "%a, %b %d / %H:%M"
@@ -4335,7 +4264,7 @@ msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "Skapa, visa och hantera klisterlappar på skrivbordet"
 
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:3
-#: stickynotes/stickynotes_applet.c:364
+#: stickynotes/stickynotes_applet.c:339
 #: stickynotes/stickynotes_applet_callbacks.c:180
 msgid "Sticky Notes"
 msgstr "Klisterlappar"
@@ -4701,7 +4630,7 @@ msgstr "Huruvida standardsystemfärgen ska användas"
 msgid "Whether to use the default system font"
 msgstr "Huruvida standardsystemtypsnittet ska användas"
 
-#: stickynotes/stickynotes_applet.c:364
+#: stickynotes/stickynotes_applet.c:339
 #, c-format
 msgid ""
 "%s\n"
@@ -4777,11 +4706,80 @@ msgstr "Inställningar för övervakare av trådlös länk"
 msgid "_Monitored device:"
 msgstr "_Övervakad enhet:"
 
+#~ msgid "_Current Conditions"
+#~ msgstr "_Nuvarande förhållanden"
+
+#~ msgid "Location:"
+#~ msgstr "Plats:"
+
+#~ msgid "Update:"
+#~ msgstr "Uppdatering:"
+
+#~ msgid "C_urrent conditions"
+#~ msgstr "_Nuvarande förhållanden"
+
+#~ msgid "ForeCast Report"
+#~ msgstr "Väderrapport"
+
+#~ msgid "Enable _detailed forecast"
+#~ msgstr "Använd _detaljerad prognos"
+
+#~ msgid "Updates"
+#~ msgstr "Uppdateringar"
+
+#~ msgid "_Automatically update every "
+#~ msgstr "_Uppdatera automatiskt var "
+
+#~ msgid "minute(s)"
+#~ msgstr "minut"
+
+#~ msgid "Miscellaneous"
+#~ msgstr "Diverse"
+
+#~ msgid "Could not download countries"
+#~ msgstr "Kunde inte hämta länder"
+
+#~ msgid "Could not download cities"
+#~ msgstr "Kunde inte hämta städer"
+
+#~ msgid "Downloading Cities..."
+#~ msgstr "Hämtar städer..."
+
+#~ msgid "Countries list"
+#~ msgstr "Landlista"
+
+#~ msgid "Select the country from the list"
+#~ msgstr "Välj landet från listan"
+
+#~ msgid "Country"
+#~ msgstr "Land"
+
+#~ msgid "Cities list"
+#~ msgstr "Stadlista"
+
+#~ msgid "Select the city from the list"
+#~ msgstr "Välj staden från listan"
+
+#~ msgid "Downloading Countries..."
+#~ msgstr "Hämtar länder..."
+
+#~ msgid "Failed to get IWIN data.\n"
+#~ msgstr "Misslyckades med att hämta IWIN-data.\n"
+
+#~ msgid "Failed to get IWIN forecast data.\n"
+#~ msgstr "Misslyckades med att hämta IWIN-prognosdata.\n"
+
+#~ msgid "Failed to get Met Office data.\n"
+#~ msgstr "Misslyckades med att hämta Met Office-data.\n"
+
+#~ msgid "Failed to get Met Office forecast data.\n"
+#~ msgstr "Misslyckades med att hämta prognosdata från Met Office.\n"
+
+#~ msgid "Failed to get radar map image.\n"
+#~ msgstr "Misslyckades med att hämta radarkartbild.\n"
+
 #~ msgid "Current conditions"
 #~ msgstr "Nuvarande förhållanden"
-
-#~ msgid "Forecast Report"
-#~ msgstr "Väderrapport"
 
 #~ msgid "See the Forecast Details"
 #~ msgstr "Se detaljerad väderrapport"
@@ -4822,12 +4820,6 @@ msgstr "_Övervakad enhet:"
 #~ msgid "Condition"
 #~ msgstr "Förhållande"
 
-#~ msgid "City:"
-#~ msgstr "Ort:"
-
-#~ msgid "Last update:"
-#~ msgstr "Senaste uppdatering:"
-
 #~ msgid "Feels like:"
 #~ msgstr "Känns som:"
 
@@ -4839,9 +4831,6 @@ msgstr "_Övervakad enhet:"
 
 #~ msgid "%s / %.1f %s"
 #~ msgstr "%s / %.1f %s"
-
-#~ msgid "_Automatically update every:"
-#~ msgstr "_Uppdatera automatiskt var:"
 
 #~ msgid "Display _temperatures"
 #~ msgstr "Visa _temperaturer"
@@ -5289,9 +5278,6 @@ msgstr "_Övervakad enhet:"
 
 #~ msgid "Scroll speed:"
 #~ msgstr "Rullningshastighet:"
-
-#~ msgid "_Current Conditions"
-#~ msgstr "_Nuvarande förhållanden"
 
 #~ msgid "You have new mail"
 #~ msgstr "Du har ny e-post"
