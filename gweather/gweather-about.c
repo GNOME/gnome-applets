@@ -70,6 +70,8 @@ void gweather_about_run (GWeatherApplet *gw_applet)
     if (pixbuf)
     	gdk_pixbuf_unref (pixbuf);
 
+    gtk_window_set_screen (GTK_WINDOW (gw_applet->about_dialog),
+ 			   gtk_widget_get_screen (GTK_WIDGET (gw_applet->applet)));                            
     gtk_window_set_wmclass (GTK_WINDOW (gw_applet->about_dialog), "weather report", "Weather Report");	
     gnome_window_icon_set_from_file (GTK_WINDOW (gw_applet->about_dialog), gtk_icon_info_get_filename (icon_info));	
     
