@@ -237,7 +237,7 @@ batmon_timeout_callback (gpointer *data)
 		(gfloat) batpct / 100);
 	if (batmin == -1)
 	  {
-		strncpy(str, sizeof(str), _("unknown minutes of battery."));
+		strncpy(str, _("unknown minutes of battery."), sizeof(str));
 		str[sizeof(str) - 1] = 0;
 		g_snprintf(tipstr, sizeof(tipstr),
 			   _("unknown minutes of battery (%d%%)"),
