@@ -51,5 +51,7 @@ EXTRA_DIST = 						\
 
 CLEANFILES = $(server_in_files) $(server_DATA)
 
+if GCONF_SCHEMAS_INSTALL
 install-data-local:
 	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(schemas_DATA) ;
+endif

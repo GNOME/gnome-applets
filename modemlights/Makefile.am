@@ -43,8 +43,9 @@ EXTRA_DIST =					\
 	$(schemas_in_files)				\
 	$(ui_DATA)
 
+if GCONF_SCHEMAS_INSTALL
 install-data-local:
 	for p in $(schemas_DATA); do \
 		GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $$p ; \
 	done
-
+endif

@@ -40,10 +40,6 @@ schemas_DATA = $(schemas_in_files:.schemas.in=.schemas)
 
 @INTLTOOL_SCHEMAS_RULE@
 
-
-install-data-local:
-	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(schemas_DATA) ;
-
 EXTRA_DIST =	\
 		GNOME_MultiLoadApplet_Factory.server.in.in \
 		$(schemas_in_files) \
@@ -63,3 +59,8 @@ $(server_in_files): $(server_in_files:.server.in=.server.in.in)
 CLEANFILES = $(server_in_files) $(server_DATA)
 
 @INTLTOOL_SERVER_RULE@
+
+if GCONF_SCHEMAS_INSTALL
+install-data-local:
+	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(schemas_DATA) ;
+endif

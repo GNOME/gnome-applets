@@ -35,9 +35,6 @@ schemas_DATA = $(schemas_in_files:.schemas.in=.schemas)
 uidir = $(datadir)/gnome-2.0/ui
 ui_DATA = GNOME_GWeatherApplet.xml
 
-install-data-local:
-	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(schemas_DATA) ;
-
 serverdir       = $(libdir)/bonobo/servers
 server_in_files = GNOME_GWeatherApplet_Factory.server.in
 server_DATA     = $(server_in_files:.server.in=.server)
@@ -57,3 +54,8 @@ EXTRA_DIST = \
 	Locations
 
 @INTLTOOL_SERVER_RULE@
+
+if GCONF_SCHEMAS_INSTALL
+install-data-local:
+	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(schemas_DATA) ;
+endif

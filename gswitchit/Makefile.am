@@ -64,10 +64,12 @@ schemas_DATA     = $(schemas_in_files:.schemas.in=.schemas)
 
 @INTLTOOL_SCHEMAS_RULE@
 
+if GCONF_SCHEMAS_INSTALL
 install-data-local:
 	if test -z "$(DESTDIR)" ; then \
           GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(schemas_DATA); \
         fi
+endif
 
 pixmapdir = $(datadir)/pixmaps
 pixmap_DATA = gswitchit-applet.png gswitchit-properties-capplet.png

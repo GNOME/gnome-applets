@@ -31,7 +31,6 @@ INCLUDES = \
 
 
 
-
 libexec_PROGRAMS = battstat-applet-2
 
 
@@ -56,8 +55,10 @@ schemas_DATA = $(schemas_in_files:.schemas.in=.schemas)
 
 @INTLTOOL_SCHEMAS_RULE@
 
+if GCONF_SCHEMAS_INSTALL
 install-data-local:
 	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(schemas_DATA) ;
+endif
 
 serverdir       = $(libdir)/bonobo/servers
 server_in_files = GNOME_BattstatApplet.server.in
@@ -71,12 +72,13 @@ CLEANFILES = $(server_in_files) $(server_DATA)
 uidir = $(datadir)/gnome-2.0/ui
 ui_DATA = GNOME_BattstatApplet.xml
 
-EXTRA_DIST = 					\
-	$(glade_DATA)				\
-	GNOME_BattstatApplet.server.in.in	\
-	$(ui_DATA)				\
-	$(schemas_in_files)		\
-	battstat.png
+EXTRA_DIST = 			\
+	$(pixmaps_DATA)		\
+	$(glade_DATA)		\
+	$(ui_DATA)		\
+	$(server_in_files)	\
+	$(schemas_in_files)
+
 
 @INTLTOOL_SERVER_RULE@
 

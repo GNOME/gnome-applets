@@ -60,6 +60,7 @@ gkb_xmmap: gkb_xmmap.in
 	< gkb_xmmap.in >gkb_xmmap.tmp \
 	&& mv gkb_xmmap.tmp gkb_xmmap
 
+if GCONF_SCHEMAS_INSTALL
 install-data-local:
 	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(schemas_DATA) ;
-
+endif

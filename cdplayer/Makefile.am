@@ -93,5 +93,7 @@ $(schemas_in_files)	\
 $(ui_DATA) \
 $(IMAGES)
 
+if GCONF_SCHEMAS_INSTALL
 install-data-local:
 	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(schemas_DATA);
+endif
