@@ -253,6 +253,7 @@ create_interface_by_name(gchar *devname)
    * like pop up a window with stats on the device?
    */
   dev->button = gtk_button_new();
+  gtk_widget_show(dev->button);
   gtk_widget_set_usize(dev->button, 24, 48);
   set_interface_status(dev);
 
