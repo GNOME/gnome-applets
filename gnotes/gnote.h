@@ -22,53 +22,6 @@
 #ifndef _GNOTE_H_
 #define _GNOTE_H_
 
-/* uncomment this to turn on debugging */
-/* #define GNOTE_DEBUG (1) */
-
-#ifdef GNOTE_DEBUG
-#  define g_debug(format, args...) \
-    g_log(G_LOG_DOMAIN, G_LOG_LEVEL_DEBUG, "GNotes: "format, ##args)
-#else
-#  define g_debug(format, args...) 
-#endif
-
-#define g_critical(format, args...) \
-  g_log(G_LOG_DOMAIN, G_LOG_LEVEL_CRITICAL, "GNotes: "format, ##args)
-
-#define g_info(format, args...) \
-  g_log(G_LOG_DOMAIN, G_LOG_LEVEL_INFO, "GNotes: "format, ##args)
-
-
-#include <gnome.h>
-#include <applet-widget.h>
-#include "config.h"
-
-/* various actions */
-#define GNOTES_SAVE    "Save Notes"
-#define GNOTES_LOAD    "Load Notes"
-#define GNOTES_RAISE   "Raise Notes"
-#define GNOTES_LOWER   "Lower Notes"
-#define GNOTES_HIDE    "Hide Notes"
-#define GNOTES_SHOW    "Show Notes"
-#define GNOTE_RESIZE   "Resize Note"
-#define GNOTE_HIDE     "Hide Note"
-#define GNOTE_DELETE   "Delete Note"
-#define GNOTE_NEW_DEFAULT  "Default Note"
-#define GNOTE_NEW_1x1  "1x1 Note"
-#define GNOTE_NEW_1x2  "1x2 Note"
-#define GNOTE_NEW_2x2  "2x2 Note"
-#define GNOTE_NEW_2x3  "2x3 Note"
-#define GNOTE_NEW_3x3  "3x3 Note"
-#define GNOTE_NEW_3x4  "3x4 Note"
-#define GNOTE_NEW_4x4  "4x4 Note"
-#define GNOTE_NEW_4x5  "4x5 Note"
-
-#define TITLE_LEN (20)
-
-#define GNOTE_FORMAT "#GNOTE-1"
-
-#define GNOTES_DIR    ".gnome/gnotes.d"
-
 typedef struct _Gnote
 {
     GtkWidget *window;
@@ -81,15 +34,6 @@ typedef struct _Gnote
     gboolean  already_saved;
     gchar    *type;
 } GNote;
-
-struct _GNotes
-{
-    GtkWidget *applet;
-    gint default_height;
-    gint default_width;
-};
-
-typedef struct _GNotes GNotes;
 
 void gnotes_init();
 
