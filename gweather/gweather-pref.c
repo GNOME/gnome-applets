@@ -477,7 +477,7 @@ static void gweather_pref_create (void)
     pref_basic_update_hbox = gtk_hbox_new (FALSE, GNOME_PAD_SMALL);
     gtk_container_border_width (GTK_CONTAINER (pref_basic_update_hbox), GNOME_PAD_SMALL);
 
-    pref_basic_update_lbl = gtk_label_new (_("Autmatically update every "));
+    pref_basic_update_lbl = gtk_label_new (_("Automatically update every "));
     gtk_widget_show (pref_basic_update_lbl);
 
 /*
