@@ -90,17 +90,20 @@ static void change_size_cb(PanelApplet *w, gint s, gpointer data)
     return;
 }
 
-#ifdef FIXME
-static void clicked_cb (GtkWidget *widget, GdkEventButton *ev, gpointer data)
+
+static gboolean clicked_cb (GtkWidget *widget, GdkEventButton *ev, gpointer data)
 {
+    GWeatherApplet *gw_applet = data;
     if ((ev == NULL) || (ev->button != 1))
-	    return;
-
-    gweather_pref_run ();
-
-    return;
+	    return FALSE;
+    if (ev->type == GDK_2BUTTON_PRESS) {
+	gweather_dialog_display_toggle(gw_applet);
+	return TRUE;
+    }
+    
+    return FALSE;
 }
-#endif
+
 static void about_cb (BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 {
 
@@ -186,10 +189,10 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
                        G_CALLBACK(change_orient_cb), gw_applet);
     g_signal_connect (G_OBJECT(gw_applet->applet), "change_size",
                        G_CALLBACK(change_size_cb), gw_applet);
-/*
-    gtk_signal_connect (GTK_OBJECT(gweather_applet), "button_press_event",
-                       GTK_SIGNAL_FUNC(clicked_cb), NULL);
-*/
+
+    gtk_signal_connect (GTK_OBJECT(gw_applet->applet), "button_press_event",
+                       GTK_SIGNAL_FUNC(clicked_cb), gw_applet);
+
     g_signal_connect (G_OBJECT(gw_applet->applet), "destroy",
                         G_CALLBACK(gtk_main_quit), NULL);
                         
