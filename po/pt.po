@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.0\n"
-"POT-Creation-Date: 2003-02-01 00:33+0000\n"
-"PO-Revision-Date: 2003-02-01 00:37+0100\n"
+"POT-Creation-Date: 2003-04-04 23:30+0100\n"
+"PO-Revision-Date: 2003-04-04 23:31+0100\n"
 "Last-Translator: Duarte Loreto <happyguy_pt@hotmail.com>\n"
 "Language-Team: Portuguese <gnome_pt@yahoogroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -262,10 +262,10 @@ msgstr "Jorgen Pehrson <jp@spektr.edu.org>"
 
 #: battstat/battstat_applet.c:838 cdplayer/cdplayer.c:517
 #: charpick/charpick.c:374 drivemount/drivemount.c:453 geyes/geyes.c:217
-#: gkb-new/gkb.c:594 gtik/gtik.c:704 gweather/gweather-about.c:43
-#: mini-commander/src/about.c:48 mixer/mixer.c:817
+#: gkb-new/gkb.c:624 gtik/gtik.c:704 gweather/gweather-about.c:43
+#: mini-commander/src/about.c:48 mixer/mixer.c:887
 #: modemlights/modemlights.c:209 multiload/main.c:57
-#: panel-menu/panel-menu.c:674 wireless/wireless-applet.c:703
+#: panel-menu/panel-menu.c:674 wireless/wireless-applet.c:712
 msgid "translator_credits"
 msgstr "Duarte Loreto <happyguy_pt@hotmail.com>"
 
@@ -378,7 +378,7 @@ msgid "Battery power low"
 msgstr "Bateria fraca"
 
 #: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:189
-#: cdplayer/cdplayer.c:535 cdplayer/cdplayer.c:926
+#: cdplayer/cdplayer.c:535 cdplayer/cdplayer.c:944
 msgid "CD Player"
 msgstr "Leitor de CD"
 
@@ -403,27 +403,27 @@ msgstr "Applet de painel para tocar CDs audio"
 msgid "_Run External CD Player"
 msgstr "Executa_r Leitor de CD Externo"
 
-#: cdplayer/cdplayer.c:169 cdplayer/cdplayer.c:916
+#: cdplayer/cdplayer.c:169 cdplayer/cdplayer.c:934
 msgid "Stop"
 msgstr "Parar"
 
-#: cdplayer/cdplayer.c:173 cdplayer/cdplayer.c:918
+#: cdplayer/cdplayer.c:173 cdplayer/cdplayer.c:936
 msgid "Play / Pause"
 msgstr "Tocar / Pausar"
 
-#: cdplayer/cdplayer.c:177 cdplayer/cdplayer.c:920
+#: cdplayer/cdplayer.c:177 cdplayer/cdplayer.c:938
 msgid "Eject"
 msgstr "Ejectar"
 
-#: cdplayer/cdplayer.c:181 cdplayer/cdplayer.c:922
+#: cdplayer/cdplayer.c:181 cdplayer/cdplayer.c:940
 msgid "Previous Track"
 msgstr "Pista Anterior"
 
-#: cdplayer/cdplayer.c:185 cdplayer/cdplayer.c:924
+#: cdplayer/cdplayer.c:185 cdplayer/cdplayer.c:942
 msgid "Next Track"
 msgstr "Pista Seguinte"
 
-#: cdplayer/cdplayer.c:307 drivemount/drivemount.c:399 mixer/mixer.c:783
+#: cdplayer/cdplayer.c:307 drivemount/drivemount.c:399 mixer/mixer.c:853
 #: multiload/main.c:118
 #, c-format
 msgid "There was an error executing '%s' : %s"
@@ -465,7 +465,7 @@ msgstr ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (Porte GNOME 2)"
 
-#: cdplayer/cdplayer.c:538 cdplayer/cdplayer.c:927
+#: cdplayer/cdplayer.c:538 cdplayer/cdplayer.c:945
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr ""
 "A applet de leitor de CD é uma simples applet de leitor de CD audio para o "
@@ -479,23 +479,27 @@ msgstr "Tempo decorrido"
 msgid "Track number"
 msgstr "Número pista"
 
-#: cdplayer/cdplayer.c:917
+#: cdplayer/cdplayer.c:860
+msgid "Audio device is busy, or being used by another application"
+msgstr "Dispositivo audio está ocupado ou a ser utilizado por outra aplicação"
+
+#: cdplayer/cdplayer.c:935
 msgid "Click this button to Stop playing the CD"
 msgstr "Prima este botão para Parar de tocar o CD"
 
-#: cdplayer/cdplayer.c:919
+#: cdplayer/cdplayer.c:937
 msgid "Click this button to Play or Pause the CD"
 msgstr "Prima este botão para Tocar ou Pausar o CD"
 
-#: cdplayer/cdplayer.c:921
+#: cdplayer/cdplayer.c:939
 msgid "Click this button to eject the CD"
 msgstr "Prima este botão para Ejectar o CD"
 
-#: cdplayer/cdplayer.c:923
+#: cdplayer/cdplayer.c:941
 msgid "Click this button to Play the previous track in the CD"
 msgstr "Prima este botão para Tocar a pista anterior no CD"
 
-#: cdplayer/cdplayer.c:925
+#: cdplayer/cdplayer.c:943
 msgid "Click this button to Play the next track in the CD"
 msgstr "Prima este botão para Tocar a pista seguinte no CD"
 
@@ -599,15 +603,15 @@ msgstr " montado"
 msgid " not mounted"
 msgstr " não montado"
 
-#: drivemount/drivemount.c:786
+#: drivemount/drivemount.c:791
 msgid "Drive Mount Applet Warning"
 msgstr "Aviso de Applet Montar Dispositivos"
 
-#: drivemount/drivemount.c:796
+#: drivemount/drivemount.c:801
 msgid "\" reported:\n"
 msgstr "\" relatado:\n"
 
-#: drivemount/drivemount.c:798
+#: drivemount/drivemount.c:803
 msgid ""
 "Drivemount command failed.\n"
 "\""
@@ -732,7 +736,7 @@ msgstr "Alterar o mapeamento do teclado"
 msgid "GKB Factory"
 msgstr "Fábrica GKB"
 
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:3 gkb-new/gkb.c:605
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:3 gkb-new/gkb.c:635
 msgid "Keyboard Layout Switcher"
 msgstr "Alternador de Mapas de Teclado"
 
@@ -748,15 +752,15 @@ msgstr ""
 "Prima a tecla de atalho para alternar entre disposições. A tecla de atalho "
 "pode ser definida no diálogo de propriedades"
 
-#: gkb-new/gkb.c:552 gkb-new/gkb.c:559
+#: gkb-new/gkb.c:582 gkb-new/gkb.c:589
 msgid "GKB"
 msgstr "GKB"
 
-#: gkb-new/gkb.c:607
+#: gkb-new/gkb.c:637
 msgid "(C) 1998-2000 Free Software Foundation"
 msgstr "(C) 1998-2000 Free Software Foundation"
 
-#: gkb-new/gkb.c:608
+#: gkb-new/gkb.c:638
 msgid ""
 "This applet switches between keyboard maps using setxkbmap or xmodmap.\n"
 "Mail me your flag and keyboard layout if you want support for your locale "
@@ -776,7 +780,7 @@ msgstr ""
 "o KevinV.\n"
 "Shooby Ban <shooby@gnome.hu>"
 
-#: gkb-new/gkb.c:625
+#: gkb-new/gkb.c:655
 msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
 msgstr "Página Web do GKB (http://projects.gnome.hu/gkb)"
 
@@ -784,7 +788,7 @@ msgstr "Página Web do GKB (http://projects.gnome.hu/gkb)"
 msgid "Disabled"
 msgstr "Desactivado"
 
-#: gkb-new/keygrab.c:313
+#: gkb-new/keygrab.c:384
 msgid "Press a key or press Esc to cancel"
 msgstr "Prima uma tecla ou prima Esc para cancelar"
 
@@ -796,25 +800,25 @@ msgstr "Teclados (seleccione e prima adicionar)"
 msgid "Select Keyboard"
 msgstr "Seleccione Teclado"
 
-#: gkb-new/prop-map.c:213
+#: gkb-new/prop-map.c:232
 msgid "Edit Keyboard"
 msgstr "Editar Teclado"
 
-#: gkb-new/prop-map.c:232 panel-menu/panel-menu-directory.c:674
+#: gkb-new/prop-map.c:251 panel-menu/panel-menu-directory.c:674
 #: panel-menu/panel-menu-documents.c:398 panel-menu/panel-menu-documents.c:435
 #: panel-menu/panel-menu-links.c:404 panel-menu/panel-menu-links.c:440
 msgid "_Name:"
 msgstr "_Nome:"
 
-#: gkb-new/prop-map.c:235
+#: gkb-new/prop-map.c:254
 msgid "_Label:"
 msgstr "Eti_queta:"
 
-#: gkb-new/prop-map.c:238
+#: gkb-new/prop-map.c:257
 msgid "Co_mmand:"
 msgstr "Co_mando:"
 
-#: gkb-new/prop-map.c:246
+#: gkb-new/prop-map.c:265
 msgid ""
 "Where command can be:\n"
 " * xmodmap /full/path/xmodmap.hu\n"
@@ -826,7 +830,7 @@ msgstr ""
 "* gkb_xmmap pt\n"
 "* setxkbmap pt"
 
-#: gkb-new/prop-map.c:279
+#: gkb-new/prop-map.c:298
 msgid "_Flag"
 msgstr "_Bandeira"
 
@@ -872,11 +876,11 @@ msgid "_Grab hotkey"
 msgstr "_Gravar atalho de teclado"
 
 #. Create property box
-#: gkb-new/prop.c:423
+#: gkb-new/prop.c:424
 msgid "Keyboard Layout Switcher Preferences"
 msgstr "Preferências do Alternador de Mapas de Teclado"
 
-#: gkb-new/prop.c:440
+#: gkb-new/prop.c:441
 msgid "Keymaps"
 msgstr "Mapas de Teclas"
 
@@ -886,7 +890,7 @@ msgstr "Mapas de Teclas"
 #. panel_applet_gconf_get_bool(multiload_applet->applet, "view_loadavg", NULL));
 #. gtk_box_pack_start(GTK_BOX(hbox), check_box, FALSE, FALSE, 0);
 #.
-#: gkb-new/prop.c:452 multiload/properties.c:313
+#: gkb-new/prop.c:453 multiload/properties.c:313
 msgid "Options"
 msgstr "Opções"
 
@@ -917,8 +921,8 @@ msgid ""
 msgstr ""
 "Ocorreu um erro.\n"
 "\n"
-"Incapaz de ler mapa de teclado `%s', provavelmente porque o comando `xmodmap' "
-"não foi encontrado na sua PATH.\n"
+"Incapaz de ler mapa de teclado `%s', provavelmente porque o comando "
+"`xmodmap' não foi encontrado na sua PATH.\n"
 "\n"
 "O comando foi: %s"
 
@@ -1167,7 +1171,7 @@ msgstr "Clicar para Entrar em Weather.com"
 msgid "_Radar map"
 msgstr "Mapa de _radar"
 
-#: gweather/gweather-dialog.c:410
+#: gweather/gweather-dialog.c:411
 msgid ""
 "Detailed forecast not available for this location.\n"
 "Please try the state forecast; note that IWIN forecasts are available only "
@@ -1177,7 +1181,7 @@ msgstr ""
 "Tente a previsão para o estado; note que previsões da IWIN estão disponíveis "
 "apenas para cidades Norte Americanas."
 
-#: gweather/gweather-dialog.c:412
+#: gweather/gweather-dialog.c:413
 msgid ""
 "State forecast not available for this location.\n"
 "Please try the detailed forecast; note that IWIN forecasts are available "
@@ -2486,7 +2490,7 @@ msgstr "Obtenção falhou"
 
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:1
 #: mini-commander/src/about.c:66
-#: mini-commander/src/mini-commander_applet.c:353
+#: mini-commander/src/mini-commander_applet.c:356
 msgid "Command Line"
 msgstr "Linha Comando"
 
@@ -2519,15 +2523,15 @@ msgstr ""
 "posterior."
 
 #. build file select dialog
-#: mini-commander/src/command_line.c:430
+#: mini-commander/src/command_line.c:440
 msgid "Start program"
 msgstr "Executar aplicação"
 
-#: mini-commander/src/command_line.c:473
+#: mini-commander/src/command_line.c:483
 msgid "Command line"
 msgstr "Linha comando"
 
-#: mini-commander/src/command_line.c:474
+#: mini-commander/src/command_line.c:484
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "Introduza aqui um comando e o Gnome executa-lo-á por si"
 
@@ -2548,7 +2552,9 @@ msgstr "Definir lista de valores por omissão para %s\n"
 
 #: mini-commander/src/mc-install-default-macros.c:117
 msgid "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL is set, not installing schemas\n"
-msgstr "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL está definido, a não instalar esquemas\n"
+msgstr ""
+"GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL está definido, a não instalar "
+"esquemas\n"
 
 #: mini-commander/src/mc-install-default-macros.c:125
 msgid "Must set the GCONF_CONFIG_SOURCE environment variable\n"
@@ -2659,11 +2665,11 @@ msgstr "Histórico"
 msgid "Click this button for the list of previous commands"
 msgstr "Prima este botão para a lista de comandos anteriores"
 
-#: mini-commander/src/mini-commander_applet.c:351
+#: mini-commander/src/mini-commander_applet.c:354
 msgid "Mini-Commander applet"
 msgstr "Applet Mini-Comando"
 
-#: mini-commander/src/mini-commander_applet.c:352
+#: mini-commander/src/mini-commander_applet.c:355
 msgid "This applet adds a command line to the panel"
 msgstr "Esta applet adiciona uma linha de comando ao painel"
 
@@ -2688,7 +2694,7 @@ msgid "Adjust the sound volume"
 msgstr "Ajustar o volume de som"
 
 #: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:143
-#: mixer/mixer.c:830
+#: mixer/mixer.c:900
 msgid "Volume Control"
 msgstr "Controlo Volume"
 
@@ -2727,25 +2733,25 @@ msgstr ""
 msgid "Mixer device %s has neither volume nor PCM channels.\n"
 msgstr "Dispositivo de mistura %s não tem canais de volume nem PCM.\n"
 
-#: mixer/mixer.c:575
+#: mixer/mixer.c:645
 msgid "Volume Controller"
 msgstr "Controlador Volume"
 
-#: mixer/mixer.c:576
+#: mixer/mixer.c:646
 msgid "Use Up/Down arrow keys to change volume"
 msgstr "Utilize as setas Cima/Baixo para alterar o volume"
 
-#: mixer/mixer.c:831
+#: mixer/mixer.c:901
 msgid "(C) 2001 Richard Hult"
 msgstr "(C) 2001 Richard Hult"
 
-#: mixer/mixer.c:832
+#: mixer/mixer.c:902
 msgid "The volume control lets you set the volume level for your desktop."
 msgstr ""
 "O controlo de volume permite-lhe definir o nível de som para o seu ambiente "
 "de trabalho."
 
-#: mixer/mixer.c:1077
+#: mixer/mixer.c:1155
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr ""
 "O controlo de volume permite-lhe definir o nível de som para o seu ambiente "
@@ -3271,8 +3277,8 @@ msgid ""
 "Unable to show help as %s is not a directory.  Please check your "
 "installation."
 msgstr ""
-"Incapaz de mostrar ajuda pois %s não é um directório. Verifique "
-"a sua instalação."
+"Incapaz de mostrar ajuda pois %s não é um directório. Verifique a sua "
+"instalação."
 
 #: screen-exec/egg-screen-help.c:224 screen-exec/egg-screen-help.c:240
 #, c-format
@@ -3280,8 +3286,8 @@ msgid ""
 "Unable to find the help files in either %s or %s.  Please check your "
 "installation"
 msgstr ""
-"Incapaz de encontrar os ficheiros de ajuda em %s ou %s. Verifique "
-"a sua instalação"
+"Incapaz de encontrar os ficheiros de ajuda em %s ou %s. Verifique a sua "
+"instalação"
 
 #: screen-exec/egg-screen-help.c:315
 #, c-format
@@ -3298,32 +3304,33 @@ msgid ""
 "The images necessary to run the wireless monitor are missing.\n"
 "Please make sure that it is correctly installed."
 msgstr ""
-"Não foram encontradas as imagens necessárias para executar o monitor "
-"de ligações sem fios.\n"
+"Não foram encontradas as imagens necessárias para executar o monitor de "
+"ligações sem fios.\n"
 "Certifique-se de que está correctamente instalado."
 
-#: wireless/wireless-applet.c:524
+#: wireless/wireless-applet.c:529
 msgid "No Wireless Devices"
 msgstr "Nenhum Dispositivo Sem Fios"
 
-#: wireless/wireless-applet.c:526
+#: wireless/wireless-applet.c:531
 msgid ""
 "There doesn't seem to be any wireless devices configured on your system.\n"
 "Please verify your configuration if you think this is incorrect."
 msgstr ""
-"Parece que não existe nenhum dispositivo sem fios configurado no seu sistema.\n"
+"Parece que não existe nenhum dispositivo sem fios configurado no seu "
+"sistema.\n"
 "Verifique a sua configuração caso considere esta detecção incorrecta."
 
-#: wireless/wireless-applet.c:718
+#: wireless/wireless-applet.c:727
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:2
 msgid "Wireless Link Monitor"
 msgstr "Monitor de Ligação sem Fios"
 
-#: wireless/wireless-applet.c:720
+#: wireless/wireless-applet.c:729
 msgid "(C) 2001, 2002 Free Software Foundation "
 msgstr "(C) 2001, 2002 Free Software Foundation"
 
-#: wireless/wireless-applet.c:721
+#: wireless/wireless-applet.c:730
 msgid "This utility shows the status of a wireless link."
 msgstr "Este utilitário mostra o estado de uma ligação sem fios."
 
@@ -3731,9 +3738,6 @@ msgstr "Monitoriza a qualidade de uma ligação de rede sem fios"
 
 #~ msgid "command_%d"
 #~ msgstr "comando_%d"
-
-#~ msgid "Ícon_e :"
-#~ msgstr "Ícon_e :"
 
 #~ msgid "_Use HTTP proxy"
 #~ msgstr "_Utilizar proxy HTTP"
