@@ -253,11 +253,11 @@ preadd_cb (GtkTreeSelection *selection,
   tdata->command = g_strdup (value);
 
   gtk_tree_model_get (GTK_TREE_MODEL(pbi->model), &iter,
-                              NAME_COL, &value, -1);
+                              COUNTRY_COL, &value, -1);
   tdata->country = g_strdup (value);
 
   gtk_tree_model_get (GTK_TREE_MODEL(pbi->model), &iter,
-                              COUNTRY_COL, &value, -1);
+                              LABEL_COL, &value, -1);
   tdata->label = g_strdup (value);
 
   gtk_tree_model_get (GTK_TREE_MODEL(pbi->model), &iter,

@@ -500,14 +500,12 @@ gkb_prop_map_pixmap_at (GtkWidget * table, gint row, gint col,
 		    (GtkAttachOptions) (GTK_FILL),
 		    (GtkAttachOptions) (GTK_FILL), 0, 0);
 
-  gnome_icon_entry_set_icon (GNOME_ICON_ENTRY (icon_entry), flag);
+  gnome_icon_entry_set_filename (GNOME_ICON_ENTRY (icon_entry), flag);
 
-/* TODO:
-  g_signal_connect (GNOME_ICON_ENTRY (icon_entry)->pickbutton,
-		      "clicked", G_CALLBACK (gkb_prop_map_data_changed),
+  g_signal_connect (icon_entry,
+		      "changed", G_CALLBACK (gkb_prop_map_data_changed),
 		      mdi);
 
-*/
   return icon_entry;
 }
 

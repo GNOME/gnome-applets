@@ -294,8 +294,8 @@ gkb_prop_list_selection_changed (GtkWidget * list, GkbPropertyBoxInfo * pbi)
       keymap = gtk_object_get_data (GTK_OBJECT (list_item), GKB_KEYMAP_TAG);
       g_return_if_fail (keymap != NULL);
       pbi->selected_keymap = keymap;
-      gkb->keymap = keymap->parent;
-      gkb_update (gkb, TRUE);
+/*      gkb->keymap = keymap->parent;
+      gkb_update (gkb, TRUE); */
     }
   else
     {

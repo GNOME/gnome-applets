@@ -47,6 +47,9 @@ int NumLockMask, CapsLockMask, ScrollLockMask;
 
 GtkWidget *bah_window = NULL;
 
+gchar *
+gkb_load_pref(const gchar * key, const gchar * defaultv);
+
 static gint gkb_button_press_event_cb (GtkWidget * widget,
 				       GdkEventButton * e);
 static void about_cb (BonoboUIComponent *uic,
@@ -193,8 +196,6 @@ gkb_count_sizes (GKB * gkb)
 
   size = panel_applet_get_size (PANEL_APPLET (gkb->applet));
   size = panel_applet_get_size (PANEL_APPLET (gkb->applet));
-
-  printf(" a %d size panel",size);fflush(stdout);
 
   /* Determine if this pannel requires different handling because it is very small */
   switch (gkb->orient)
@@ -408,7 +409,7 @@ gkb_change_pixel_size (GtkWidget * w, gint new_size, gpointer data)
 }
 
 void
-applet_save_session()
+applet_save_session ()
 {
   const gchar *text;
   GkbKeymap *actdata;
@@ -416,42 +417,48 @@ applet_save_session()
   gchar str[100];
   int i = 0;
 
-  gnome_config_push_prefix ("/gkb/main");
-  gnome_config_set_int ("gkb/num", gkb->n);
-  gnome_config_set_bool ("gkb/small", gkb->is_small);
-  gnome_config_set_string ("gkb/key", gkb->key);
+  panel_applet_gconf_set_int (PANEL_APPLET (gkb->applet), "num", gkb->n, NULL);
+  panel_applet_gconf_set_bool (PANEL_APPLET (gkb->applet), "small", gkb->is_small, NULL);
+  panel_applet_gconf_set_string (PANEL_APPLET (gkb->applet), "key", gkb->key, NULL);
   text = gkb_util_get_text_from_mode (gkb->mode);
-  gnome_config_set_string ("gkb/mode", text);
+  panel_applet_gconf_set_string (PANEL_APPLET (gkb->applet), "mode", text, NULL);
 
   while (list)
     {
       actdata = list->data;
       if (actdata)
 	{
-	  g_snprintf (str, sizeof (str), "keymap_%d/name", i);
-	  gnome_config_set_string (str, actdata->name);
-	  g_snprintf (str, sizeof (str), "keymap_%d/country", i);
-	  gnome_config_set_string (str, actdata->country);
-	  g_snprintf (str, sizeof (str), "keymap_%d/lang", i);
-	  gnome_config_set_string (str, actdata->lang);
-	  g_snprintf (str, sizeof (str), "keymap_%d/label", i);
-	  gnome_config_set_string (str, actdata->label);
-	  g_snprintf (str, sizeof (str), "keymap_%d/flag", i);
-	  gnome_config_set_string (str, actdata->flag);
-	  g_snprintf (str, sizeof (str), "keymap_%d/command", i);
-	  gnome_config_set_string (str, actdata->command);
+	  g_snprintf (str, sizeof (str), "name_%d", i);
+	  panel_applet_gconf_set_string (PANEL_APPLET (gkb->applet), str, actdata->name, NULL);
+	  g_snprintf (str, sizeof (str), "country_%d", i);
+	  panel_applet_gconf_set_string (PANEL_APPLET (gkb->applet), str, actdata->country, NULL);
+	  g_snprintf (str, sizeof (str), "lang_%d", i);
+	  panel_applet_gconf_set_string (PANEL_APPLET (gkb->applet), str, actdata->lang, NULL);
+	  g_snprintf (str, sizeof (str), "label_%d", i);
+	  panel_applet_gconf_set_string (PANEL_APPLET (gkb->applet), str, actdata->label, NULL);
+	  g_snprintf (str, sizeof (str), "flag_%d", i);
+	  panel_applet_gconf_set_string (PANEL_APPLET (gkb->applet), str, actdata->flag, NULL);
+	  g_snprintf (str, sizeof (str), "command_%d", i);
+	  panel_applet_gconf_set_string (PANEL_APPLET (gkb->applet), str, actdata->command, NULL);
 	}
 
       list = list->next;
 
       i++;
     }
+}
 
-  gnome_config_pop_prefix ();
-  gnome_config_sync ();
-  gnome_config_drop_all ();
+gchar *
+gkb_load_pref(const gchar * key, const gchar * defaultv)
+{
+ gchar * value;
 
-  return FALSE;
+ value = panel_applet_gconf_get_string (PANEL_APPLET(gkb->applet), key, NULL);
+ 
+ if (value == NULL) {
+  value = g_strdup (defaultv);
+ }
+ return value;
 }
 
 GkbKeymap *
@@ -462,48 +469,25 @@ loadprop (int i)
 
   actdata = g_new0 (GkbKeymap, 1);
 
-  if (i == 0)
-    {
-      buf = g_strdup_printf (_("keymap_%d/name=US 105 key keyboard (with windows keys)"),i);
-      actdata->name = gnome_config_get_string (buf);
+  buf = g_strdup_printf (_("name_%d"),i);
+  actdata->name = gkb_load_pref (buf, (i?"Hungarian 105 keys keyboard":"US 105 key keyboard"));
 
-      buf = g_strdup_printf (_("keymap_%d/label=us"), i);
-      actdata->label = gnome_config_get_string (buf);
+  buf = g_strdup_printf (_("label_%d"), i);
+  actdata->label = gkb_load_pref (buf, (i?"hu":"us"));
 
-      buf = g_strdup_printf (_("keymap_%d/country=United States"), i);
-      actdata->country = gnome_config_get_string (buf);
+  buf = g_strdup_printf (_("country_%d"), i);
+  actdata->country = gkb_load_pref (buf, (i?"Hungary":"United States"));
 
-      buf = g_strdup_printf (_("keymap_%d/lang=English"), i);
-      actdata->lang = gnome_config_get_string (buf);
+  buf = g_strdup_printf (_("lang_%d"), i);
+  actdata->lang = gkb_load_pref (buf, (i?"Hungarian":"English"));
 
-      buf = g_strdup_printf (("keymap_%d/flag=us.png"), i);
-      actdata->flag = gnome_config_get_string (buf);
+  buf = g_strdup_printf (("flag_%d"), i);
+  actdata->flag = gkb_load_pref (buf, (i?"hu.png":"us.png"));
 
-      buf = g_strdup_printf (_("keymap_%d/command=gkb_xmmap us"), i);
-      actdata->command = gnome_config_get_string (buf);
-      g_free(buf);
-    }
-  else
-    {
-      buf = g_strdup_printf (_("keymap_%d/name=Hungarian 105 keys latin2"), i);
-      actdata->name = gnome_config_get_string (buf);
+  buf = g_strdup_printf (_("command_%d"), i);
+  actdata->command = gkb_load_pref (buf, (i?"gkb_xmmap hu":"gkb_xmmap us"));
 
-      buf = g_strdup_printf (_("keymap_%d/label=hu"), i);
-      actdata->label = gnome_config_get_string (buf);
-
-      buf = g_strdup_printf (_("keymap_%d/country=Hungary"), i);
-      actdata->country = gnome_config_get_string (buf);
-
-      buf = g_strdup_printf (_("keymap_%d/lang=Hungarian"), i);
-      actdata->lang = gnome_config_get_string (buf);
-
-      buf = g_strdup_printf (_("keymap_%d/flag=hu.png"), i);
-      actdata->flag = gnome_config_get_string (buf);
-
-      buf = g_strdup_printf (_("keymap_%d/command=gkb_xmmap hu"), i);
-      actdata->command = gnome_config_get_string (buf);
-      g_free(buf);
-    }
+  g_free(buf);
 
   actdata->pix = NULL;
   gkb->orient = panel_applet_get_orient (PANEL_APPLET (gkb->applet));
@@ -520,16 +504,14 @@ load_properties (GKB * gkb)
 
   gkb->maps = NULL;
 
-  gnome_config_push_prefix ("/gkb/main");
+  gkb->n = panel_applet_gconf_get_int (PANEL_APPLET(gkb->applet), "num", NULL);
 
-  gkb->n = gnome_config_get_int ("gkb/num=0");
-
-  gkb->key = gnome_config_get_string ("gkb/key=Mod1-Shift_L");
+  gkb->key = gkb_load_pref ("key", "Mod1-Shift_L");
   convert_string_to_keysym_state (gkb->key, &gkb->keysym, &gkb->state);
 
-  gkb->is_small = gnome_config_get_bool ("gkb/small=true");
+  gkb->is_small = panel_applet_gconf_get_bool (PANEL_APPLET(gkb->applet), "small", NULL);
 
-  text = gnome_config_get_string ("gkb/mode=Flag and Label");
+  text = gkb_load_pref ("mode", "Flag and Label");
   gkb->mode = gkb_util_get_mode_from_text (text);
   g_free (text);
 
@@ -549,8 +531,6 @@ load_properties (GKB * gkb)
 	actdata = loadprop (i);
 	gkb->maps = g_list_append (gkb->maps, actdata);
       }
-
-  gnome_config_pop_prefix ();
 
   applet_save_session ();
 }

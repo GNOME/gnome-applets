@@ -167,8 +167,8 @@ struct _GkbKeymapWg
 
 /* gkb.c */
 void gkb_update (GKB *gkb, gboolean set_command);
-void alert(const gchar * str);
-void applet_save_session();
+void alert (const gchar * str);
+void applet_save_session ();
 
 /* prop.c */
 void properties_dialog (BonoboUIComponent *uic,
