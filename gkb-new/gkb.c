@@ -229,7 +229,7 @@ gkb_update (GKB * gkb, gboolean set_command)
      gtk_widget_set_usize (GTK_WIDGET (gkb->applet), gkb->w, gkb->h * 2);
      gtk_drawing_area_size (GTK_DRAWING_AREA (gkb->darea), gkb->w, gkb->h);
      gtk_widget_set_usize (GTK_WIDGET (gkb->darea), gkb->w, gkb->h);
-     gtk_label_set_text(GTK_LABEL(gkb->label),g_strdup(gkb->keymap->label));
+     gtk_label_set_text (GTK_LABEL(gkb->label),g_strdup(gkb->keymap->label));
      if (!set_command)
       gkb_sized_render (gkb); 
      gkb_draw (gkb);

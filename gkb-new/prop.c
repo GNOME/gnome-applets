@@ -14,7 +14,7 @@
  * Balazs Nagy <js@lsc.hu>, Charles Levert <charles@comm.polymtl.ca>
  * and Emese Kovacs <emese@gnome.hu> for her docs and ideas.
  *
- * This program is free software; you can redistribute it and/or
+ * This program is free software; yo!@@u can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
  * published by the Free Software Foundation; either version 2 of the
  * License, or (at your option) any later version.
@@ -390,8 +390,8 @@ gkb_prop_create_property_box (GkbPropertyBoxInfo *pbi)
   GtkWidget *display_frame;
   GtkWidget *hotkey_frame;
   GtkWidget *buttons_vbox;
-  GtkWidget *page_1_vbox;
-  GtkWidget *page_2_hbox;
+  GtkWidget *page_1_hbox;
+  GtkWidget *page_2_vbox;
   GtkWidget *page;
   GtkWidget *scrolled_window;
   GtkWidget *page_1_label;
@@ -409,32 +409,32 @@ gkb_prop_create_property_box (GkbPropertyBoxInfo *pbi)
   gtk_widget_show (propnotebook);
 
   /* Add page 1 */
-  page_1_vbox = gtk_vbox_new (FALSE, 0);
-  gtk_widget_show (page_1_vbox);
-  gtk_container_add (GTK_CONTAINER (propnotebook), page_1_vbox);
-  page_1_label = gtk_label_new (_("General"));
+  page_1_hbox = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show (page_1_hbox);
+  gtk_container_add (GTK_CONTAINER (propnotebook), page_1_hbox);
+  page_1_label = gtk_label_new (_("Keymaps"));
   page = gtk_notebook_get_nth_page (GTK_NOTEBOOK (propnotebook), 0);
   gtk_notebook_set_tab_label (GTK_NOTEBOOK (propnotebook), page, page_1_label);
 
-  /* Page 1 Frames */
-  display_frame = gkb_prop_create_display_frame (pbi);
-  hotkey_frame  = gkb_prop_create_hotkey_frame (pbi, GNOME_PROPERTY_BOX (propbox));
-  gtk_box_pack_start (GTK_BOX (page_1_vbox), display_frame, TRUE, TRUE, 0);
-  gtk_box_pack_start (GTK_BOX (page_1_vbox), hotkey_frame, TRUE, FALSE, 2);
-
+  /* Page 1 Frame */
+  scrolled_window = gkb_prop_create_scrolled_window (pbi);
+  buttons_vbox    = gkb_prop_create_buttons_vbox (pbi);
+  gtk_box_pack_start (GTK_BOX (page_1_hbox), scrolled_window, TRUE, TRUE, 0);
+  gtk_box_pack_start (GTK_BOX (page_1_hbox), buttons_vbox, FALSE, TRUE, 0);
+  
   /* Add page 2 */
-  page_2_hbox = gtk_hbox_new (FALSE, 0);
-  gtk_widget_show (page_2_hbox);
-  gtk_container_add (GTK_CONTAINER (propnotebook), page_2_hbox);
-  page_2_label = gtk_label_new (_("Keymaps"));
+  page_2_vbox = gtk_vbox_new (FALSE, 0);
+  gtk_widget_show (page_2_vbox);
+  gtk_container_add (GTK_CONTAINER (propnotebook), page_2_vbox);
+  page_2_label = gtk_label_new (_("Options"));
   page = gtk_notebook_get_nth_page (GTK_NOTEBOOK (propnotebook), 1);
   gtk_notebook_set_tab_label (GTK_NOTEBOOK (propnotebook), page, page_2_label);
 
-  /* Page 2 Frame */
-  scrolled_window = gkb_prop_create_scrolled_window (pbi);
-  buttons_vbox    = gkb_prop_create_buttons_vbox (pbi);
-  gtk_box_pack_start (GTK_BOX (page_2_hbox), scrolled_window, TRUE, TRUE, 0);
-  gtk_box_pack_start (GTK_BOX (page_2_hbox), buttons_vbox, FALSE, TRUE, 0);
+  /* Page 2 Frames */
+  display_frame = gkb_prop_create_display_frame (pbi);
+  hotkey_frame  = gkb_prop_create_hotkey_frame (pbi, GNOME_PROPERTY_BOX (propbox));
+  gtk_box_pack_start (GTK_BOX (page_2_vbox), display_frame, TRUE, TRUE, 0);
+  gtk_box_pack_start (GTK_BOX (page_2_vbox), hotkey_frame, TRUE, FALSE, 2);
 
   /* Connect the signals */
   gtk_signal_connect (GTK_OBJECT (propbox), "apply",
