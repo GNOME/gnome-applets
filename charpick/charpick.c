@@ -293,6 +293,22 @@ menuitem_activated (GtkMenuItem *menuitem, charpick_data *curr_data)
 	panel_applet_gconf_set_string (applet, "current_list", curr_data->charlist, NULL);
 }
 
+static void
+add_palette (GtkMenuItem *menuitem, charpick_data *curr_data)
+{
+	PanelApplet *applet = PANEL_APPLET (curr_data->applet);
+	GList *list = curr_data->chartable;
+	gchar *new;
+	
+	new = run_edit_dialog (NULL, _("Add Palette"));
+	if (!new)
+		return;
+		
+	list = g_list_append (list, new);
+	save_chartable (curr_data);
+  	populate_menu (curr_data);
+}
+
 void
 populate_menu (charpick_data *curr_data)
 {
@@ -320,6 +336,16 @@ populate_menu (charpick_data *curr_data)
 			gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (menuitem), TRUE);
 		list = g_list_next (list);
 	}
+	
+	menuitem = gtk_separator_menu_item_new ();
+	gtk_widget_show (menuitem);
+	gtk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);
+	
+	menuitem = gtk_menu_item_new_with_label (_("Add a palette..."));
+	gtk_widget_show (menuitem);
+	g_signal_connect (G_OBJECT (menuitem), "activate",
+				   G_CALLBACK (add_palette), curr_data);
+	gtk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);
 	
 }
 
@@ -413,6 +439,7 @@ build_table(charpick_data *p_curr_data)
 		break;
   }
   gtk_container_add (GTK_CONTAINER (button), arrow);
+  gtk_button_set_relief(GTK_BUTTON(button), GTK_RELIEF_NONE);
   gtk_box_pack_start (GTK_BOX (box), button, TRUE, TRUE, 0);
   g_signal_connect (G_OBJECT (button), "clicked",
                             G_CALLBACK (chooser_button_clicked), p_curr_data);
@@ -478,7 +505,7 @@ build_table(charpick_data *p_curr_data)
 	index = CLAMP (index, 0, size_ratio-1);	
   	gtk_box_pack_start (GTK_BOX (row_box[index]), toggle_button[i], TRUE, TRUE, 0);
   }
-  
+ 
   gtk_container_add (GTK_CONTAINER(p_curr_data->applet), box);
   gtk_widget_show_all (p_curr_data->box);
 

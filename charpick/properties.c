@@ -36,7 +36,7 @@ set_atk_relation (GtkWidget *label, GtkWidget *widget)
   g_object_unref (G_OBJECT (relation)); 
 }
 
-static gchar *
+gchar *
 run_edit_dialog (gchar *string, gchar *title)
 {
 	GtkWidget *dialog;
