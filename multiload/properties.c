@@ -51,8 +51,7 @@ void
 properties_close_cb(GtkWidget *widget, gint arg, gpointer data)
 {
 	
-	if (arg == GTK_RESPONSE_CLOSE)
-		gtk_widget_destroy(widget);
+	gtk_widget_destroy(widget);
 	
 	return;
 }
@@ -159,7 +158,7 @@ add_page(GtkWidget *notebook, gchar *label)
 	GtkWidget *page_label;
 	
 	page = gtk_hbox_new(TRUE, 0);
-	page_label = gtk_label_new(label);
+	page_label = gtk_label_new_with_mnemonic(label);
 	gtk_container_set_border_width(GTK_CONTAINER(page), 3);
 		
 	gtk_notebook_append_page(GTK_NOTEBOOK(notebook), page, page_label);
@@ -222,9 +221,10 @@ add_color_selector(GtkWidget *page, gchar *name, gchar *gconf_path, MultiloadApp
 		
 	object = gtk_label_new("I will never be seen"); /* this is used instead of a structure */
 	vbox = gtk_vbox_new(FALSE, 0);
-	label = gtk_label_new(name);
+	label = gtk_label_new_with_mnemonic(name);
 	color_picker = gnome_color_picker_new();
-	
+	gtk_label_set_mnemonic_widget (GTK_LABEL (label), color_picker);
+		
 	gtk_box_pack_start(GTK_BOX(vbox), color_picker, FALSE, FALSE, 0);
 	gtk_box_pack_start(GTK_BOX(vbox), label, FALSE, FALSE, 2);
 	
@@ -321,13 +321,14 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	
 	orient = panel_applet_get_orient(ma->applet);
 	if ( (orient == PANEL_APPLET_ORIENT_UP) || (orient == PANEL_APPLET_ORIENT_DOWN) )
-		label_text = g_strdup(_("System monitor width: "));
+		label_text = g_strdup(_("System m_onitor width: "));
 	else
-		label_text = g_strdup(_("System monitor height: "));
+		label_text = g_strdup(_("System m_onitor height: "));
 	
-	label = gtk_label_new(label_text);
+	label = gtk_label_new_with_mnemonic(label_text);
 	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 3);
 	spin_button = gtk_spin_button_new_with_range(10, 1000, 5);
+	gtk_label_set_mnemonic_widget (GTK_LABEL (label), spin_button);
 	g_object_set_data(G_OBJECT(spin_button), "user_data", ma);
 	g_object_set_data(G_OBJECT(spin_button), "prop_type",
 				GINT_TO_POINTER(PROP_SIZE));
@@ -342,9 +343,10 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	hbox = gtk_hbox_new(FALSE, 0);
 	gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 1);
 	
-	label = gtk_label_new(_("System monitor speed: "));
+	label = gtk_label_new_with_mnemonic(_("Sys_tem monitor update interval: "));
 	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 3);
 	spin_button = gtk_spin_button_new_with_range(50, 10000, 50);
+	gtk_label_set_mnemonic_widget (GTK_LABEL (label), spin_button);
 	g_object_set_data(G_OBJECT(spin_button), "user_data", ma);
 	g_object_set_data(G_OBJECT(spin_button), "prop_type",
 				GINT_TO_POINTER(PROP_SPEED));
@@ -366,27 +368,27 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	gtk_container_set_border_width(GTK_CONTAINER(notebook), 5);
 	gtk_container_add(GTK_CONTAINER(frame), notebook);
 	
-	page = add_page(notebook,  _("Processor"));
-	add_color_selector(page, _("User"), "cpuload_color0", ma);
-	add_color_selector(page, _("System"), "cpuload_color1", ma);
-	add_color_selector(page, _("Nice"), "cpuload_color2", ma);
-	add_color_selector(page, _("Idle"), "cpuload_color3", ma);
+	page = add_page(notebook,  _("P_rocessor"));
+	add_color_selector(page, _("_User"), "cpuload_color0", ma);
+	add_color_selector(page, _("S_ystem"), "cpuload_color1", ma);
+	add_color_selector(page, _("N_ice"), "cpuload_color2", ma);
+	add_color_selector(page, _("I_dle"), "cpuload_color3", ma);
 	
-	page = add_page(notebook,  _("Memory"));
-	add_color_selector(page, _("Other"), "memload_color0", ma);
-	add_color_selector(page, _("Shared"), "memload_color1", ma);
-	add_color_selector(page, _("Buffers"), "memload_color2", ma);
-	add_color_selector(page, _("Free"), "memload_color3", ma);
+	page = add_page(notebook,  _("M_emory"));
+	add_color_selector(page, _("Ot_her"), "memload_color0", ma);
+	add_color_selector(page, _("Sh_ared"), "memload_color1", ma);
+	add_color_selector(page, _("_Buffers"), "memload_color2", ma);
+	add_color_selector(page, _("F_ree"), "memload_color3", ma);
 	
-	page = add_page(notebook,  _("Network"));
-	add_color_selector(page, _("SLIP"), "netload_color0", ma);
-	add_color_selector(page, _("PLIP"), "netload_color1", ma);
-	add_color_selector(page, _("Ethernet"), "netload_color2", ma);
-	add_color_selector(page, _("Other"), "netload_color3", ma);
+	page = add_page(notebook,  _("Net_work"));
+	add_color_selector(page, _("S_LIP"), "netload_color0", ma);
+	add_color_selector(page, _("PL_IP"), "netload_color1", ma);
+	add_color_selector(page, _("Et_hernet"), "netload_color2", ma);
+	add_color_selector(page, _("_Other"), "netload_color3", ma);
 	
-	page = add_page(notebook,  _("Swap File"));
-	add_color_selector(page, _("Used"), "swapload_color0", ma);
-	add_color_selector(page, _("Free"), "swapload_color1", ma);
+	page = add_page(notebook,  _("Swap _File"));
+	add_color_selector(page, _("_Used"), "swapload_color0", ma);
+	add_color_selector(page, _("_Free"), "swapload_color1", ma);
 	
 	return;
 }
@@ -406,14 +408,14 @@ multiload_properties_cb(BonoboUIComponent *uic, gpointer data, const gchar *name
 	
 	ma = (MultiloadApplet *)data;
 	
-	dialog = gtk_dialog_new_with_buttons(_("System Monitor Properties"), NULL, 0, GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE, NULL);
+	dialog = gtk_dialog_new_with_buttons(_("System Monitor Preferences"), NULL, 0, GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE, NULL);
 				
 	fill_properties(dialog, ma);
 
 	properties_set_insensitive(ma);
-				
+	
 	g_signal_connect (G_OBJECT(dialog), "destroy",
-			G_CALLBACK(gtk_widget_destroyed), &dialog);
+			  G_CALLBACK(gtk_widget_destroyed), &dialog);			
 	g_signal_connect(G_OBJECT(dialog), "response",
 			G_CALLBACK(properties_close_cb), NULL);
 			
