@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-11-01 20:55+0100\n"
-"PO-Revision-Date: 2004-11-01 22:01+0100\n"
+"POT-Creation-Date: 2004-11-03 03:46+0100\n"
+"PO-Revision-Date: 2004-11-03 13:21+0100\n"
 "Last-Translator: Miloslav Trmac <mitr@volny.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -81,7 +81,7 @@ msgstr "Zobrazí stav vlastností zpřístupnění klávesnice"
 #: gtik/gtik.c:722 gweather/gweather-about.c:48 mini-commander/src/about.c:48
 #: modemlights/modemlights.c:116 multiload/main.c:56
 #: stickynotes/stickynotes_applet_callbacks.c:261
-#: wireless/wireless-applet.c:574 trashapplet/src/trashapplet.c:434
+#: wireless/wireless-applet.c:574 trashapplet/src/trashapplet.c:647
 msgid "translator_credits"
 msgstr ""
 "David Šauer <davids@penguin.cz>\n"
@@ -505,7 +505,7 @@ msgstr "_Varovat, když je nabití baterie nízké"
 #: stickynotes/stickynotes_applet_callbacks.c:238
 #: stickynotes/stickynotes_applet_callbacks.c:402
 #: wireless/wireless-applet.c:544 wireless/wireless-applet.c:628
-#: trashapplet/src/trashapplet.c:421
+#: trashapplet/src/trashapplet.c:614
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Při zobrazování nápovědy došlo k chybě: %s"
@@ -5773,37 +5773,37 @@ msgstr "Jít do koše"
 msgid "Trash"
 msgstr "Koš"
 
-#: trashapplet/src/trashapplet.c:122
+#: trashapplet/src/trashapplet.c:155
 #, c-format
 msgid "Unable to find the Trash directory: %s"
 msgstr "Nemohu najít adresář koše: %s"
 
-#: trashapplet/src/trashapplet.c:231
+#: trashapplet/src/trashapplet.c:356
 msgid "No Items in Trash"
 msgstr "Žádná položka v koši"
 
-#: trashapplet/src/trashapplet.c:234
+#: trashapplet/src/trashapplet.c:359
 msgid "1 Item in Trash"
 msgstr "1 položka v koši"
 
-#: trashapplet/src/trashapplet.c:237
+#: trashapplet/src/trashapplet.c:362
 #, c-format
 msgid "%d Items in Trash"
 msgstr "%d položek v koši"
 
-#: trashapplet/src/trashapplet.c:317
+#: trashapplet/src/trashapplet.c:509
 msgid "Are you sure you want to empty all of the items from the trash?"
 msgstr "Opravdu chcete odstranit všechny položky z koše?"
 
-#: trashapplet/src/trashapplet.c:331
+#: trashapplet/src/trashapplet.c:523
 msgid "If you empty the trash, items will be permanently deleted."
 msgstr "Pokud vyprázdníte koš, položky budou natrvalo odstraněny."
 
-#: trashapplet/src/trashapplet.c:343
+#: trashapplet/src/trashapplet.c:535
 msgid "_Empty"
 msgstr "_Vyprázdnit"
 
-#: trashapplet/src/trashapplet.c:400
+#: trashapplet/src/trashapplet.c:592
 #, c-format
 msgid ""
 "Error while spawing nautilus:\n"
@@ -5812,31 +5812,33 @@ msgstr ""
 "Chyba při spouštění nautilus:\n"
 "%s"
 
-#: trashapplet/src/trashapplet.c:453
-msgid "Copyright (c) 2004 Michiel Sikkes"
-msgstr "Copyright © 2004 Michiel Sikkes"
+#: trashapplet/src/trashapplet.c:639
+msgid "Trash Applet"
+msgstr "Aplet koše"
 
-#: trashapplet/src/trashapplet.c:454
+#: trashapplet/src/trashapplet.c:642
 msgid ""
 "A GNOME trash bin that lives in your panel. You can use it to view the trash "
 "or drag and drop items into the trash."
-msgstr "Koš GNOME, který žije na vašem panelu. Můžete jej používat pro zobrazení koše nebo do něj přetahovat položky."
+msgstr ""
+"Koš GNOME, který žije na vašem panelu. Můžete jej používat pro zobrazení "
+"koše nebo do něj přetahovat položky."
 
-#: trashapplet/src/trashapplet.c:518
+#: trashapplet/src/trashapplet.c:667
 msgid "Delete Immediately?"
 msgstr "Hned odstranit?"
 
-#: trashapplet/src/trashapplet.c:547
+#: trashapplet/src/trashapplet.c:696
 msgid "Cannot move items to trash, do you want to delete them immediately?"
 msgstr "Nemohu přesunout položky do koše, chcete je odstranit okamžitě?"
 
-#: trashapplet/src/trashapplet.c:550
+#: trashapplet/src/trashapplet.c:699
 msgid ""
 "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr ""
 "Nemohu přesunout některé položky do koše, chcete je odstranit okamžitě?"
 
-#: trashapplet/src/trashapplet.c:648 trashapplet/src/trashapplet.c:665
+#: trashapplet/src/trashapplet.c:800 trashapplet/src/trashapplet.c:817
 #, c-format
 msgid ""
 "Unable to move to trash:\n"
