@@ -32,7 +32,7 @@
 #define NUM_THEME_DIRECTORIES 2
 #define HIG_IDENTATION  "    "
 
-gchar *theme_directories[NUM_THEME_DIRECTORIES];
+static char *theme_directories[NUM_THEME_DIRECTORIES];
 
 void
 theme_dirs_create (void)
