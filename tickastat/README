@@ -1,0 +1,56 @@
+###################################################################
+##                  GNOME Tick-a-Stat applet 0.2.1               ##
+##   This software is Copyright (C) 1999 by John Ellis.          ##
+##  Use this software at your own risk. I am not responsible for ##
+##        anything this software may do to your computer.        ##
+## This software falls under the GNU Public License. Please read ##
+##              the COPYING file for more information            ##
+###################################################################
+
+Author: John Ellis
+e-mail: gqview@email.com
+homepage: gqview.netpedia.net
+       or www.geocities.com/SiliconValley/Haven/5235/ (alternate site)
+
+Sound Monitor is a GNOME panel applet, it contains modules that display
+various messages to the user to alert of problems or events. It also
+(optionally)logs all the events to a log file.
+
+Current Modules include:
+  - Test Module: A module to test the applet and/or use as a template.
+  - Core dump catcher: Monitors a path for core dumps, when one is found the
+      core is renamed with a time stamp and a gdb backtrace is logged
+      or (optionally) displayed.
+  - Load average monitor: (optionally) Displays warning messages when the
+      system load average rises above a user defined threshhold.
+  - File Tailer: Can print additions to a file similar to 'tail -f'
+
+Requirements:
+  - GNOME version 1.0.1 or higher. (http://www.gnome.org)
+
+  Module requirements (needed to run properly, but not compile):
+
+    - Core dump catcher:       gdb
+    - Load average monitor:    uptime
+
+Notes for this release:
+  0.2.1 contains these changes over 0.2.0:
+  > Display code largely re-written, it no longer scrolls the last line of
+    output, (caused a blank line). The display also uses the default background
+    color, and senses when the theme/color/fonts change.
+  > Now clicking a line from the tail module opens a window containing the
+    tailed file.
+  - Size hint buttons (porperties) are only enabled when using a panel
+    that supports size hints, implemented 'use all room on panel' option
+
+Installation:
+  basically make ; make install should do it.
+
+  The applet can then be run by selecting:
+   'Panel'->'Add applet'->'Utility'->'Tick-a-Stat'
+
+Note:
+  - No autoconf scripts, so there.
+
+Eventually, complete module specs will be in the MODULE-SPEC file.
+

@@ -1,0 +1,90 @@
+Tue Jul  6 15:35:42 1999  John Ellis  <johne@bellatlantic.net>
+
+	* AUTHORS: Added file, then added me.
+	* COPYING: Removed, since it is in the top level of the gnome-applets
+	package.
+
+Tue Jul  6 06:27:13 1999  John Ellis  <johne@bellatlantic.net>
+
+	* mod_coredump.c, mod_loadavg.c, mod_tail.c, mod_test.c: Include
+	modules.h to remove compile warnings.
+
+Tue Jun  8 02:01:58 1999  John Ellis  <johne@bellatlantic.net>
+
+	* README, tickastat.h: Release 0.2.1
+
+Tue Jun  8 01:44:39 1999  John Ellis  <johne@bellatlantic.net>
+
+	* display.c: Create pixmaps blank, instead of using gnome_pixmap...
+	update display colors and text size when these change (for instance
+	when the theme is changed). Background now follows the gtkrc/theme
+	preferences.
+	* tickastat.h, main.c, properties.c: Small changes to work with above.
+	* back.xpm: Removed, no longer used.
+
+Fri Jun  4 18:23:38 1999  John Ellis  <johne@bellatlantic.net>
+
+	* mod_tail.c: Keep the window that opens on a line is click updated.
+
+Fri Jun  4 17:50:49 1999  John Ellis  <johne@bellatlantic.net>
+
+	* mod_tail.c: Add ability to click on a line and have a window open
+	with the contents of the monitored file.
+
+Fri Jun  4 03:21:58 1999  John Ellis  <johne@bellatlantic.net>
+
+	* display.c, tickastat.h: Rewrote the display loop and drawing, it
+	appears to be working. The rewrite was necessary to remove some
+	spaghetti code, and to make it not scroll the last line until another
+	is available.
+
+Thu Jun  3 16:30:24 1999  John Ellis  <johne@bellatlantic.net>
+
+	* properties.c: Disable size hint buttons when panel does not support
+	them.
+	* display.c: Implement the 'use all room on panel' option.
+
+Wed Jun  2 23:02:21 1999  John Ellis  <johne@bellatlantic.net>
+
+	* README, tickastat.h: Release 0.2.0
+	* tickastat.spec: Start of a RPM spec file, untested.
+
+Wed Jun  2 22:52:21 1999  John Ellis  <johne@bellatlantic.net>
+
+	* mod_tail.c: Add optional pop-up dialog for this module when new lines
+	sre detected.
+
+Wed Jun  2 21:35:09 1999  John Ellis  <johne@bellatlantic.net>
+
+	* tickastat.h, main.c, display.c, properties.c: Added configurable
+	size, conditionally build in size hint support.
+
+Wed Jun  2 19:45:11 1999  John Ellis  <johne@bellatlantic.net>
+
+	* properties.c, mod_*.c: Fix crashes when applying properties?
+
+Wed Jun  2 00:30:38 1999  John Ellis  <johne@bellatlantic.net>
+
+	* mod_tail.c, modules.[ch]: Add File tail module.
+	* properties.c: Fix bug when applying (was checking for wrong page_num)
+
+Mon Apr 12 12:41:20 1999  John Ellis  <johne@bellatlantic.net>
+
+	* tickastat.h, README: Release 0.1.1
+
+Thu Apr  1 19:45:42 1999  John Ellis  <johne@bellatlantic.net>
+
+	* mod_coredump.c ({new, free}_list_info): Strdup the strings on
+	creation so when latering freeing, random data is not freed.
+	* mod_loadavg.c (line_data_free): Free the structure contents before
+	the structure itself.
+
+	I can't believe these bugs did not cause more crashes (like before
+	the release) !.
+
+Thu Apr  1 10:55:03 1999  John Ellis  <johne@bellatlantic.net>
+
+	* all files: Started a ChangeLog, release 0.1.0
+
+	
+
