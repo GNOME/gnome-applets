@@ -16,6 +16,36 @@
 #define UPDATE_DELAY 70
 
 typedef struct _AppData AppData;
+typedef struct _InfoData InfoData;
+
+struct _InfoData
+{
+        gchar *text;            /* any length, but be reasonable */
+        gint length;
+        gchar *icon_path;       /* location of icon */
+        GtkWidget *icon;        /* maximum 24 x 24 please (or be reasonable)*/
+        gint icon_w;
+        gint icon_h;
+        gint offset;            /* offset of text from left, set to line text up even with no icon */
+        gint center;            /* Center text, only has effect if text fits on one line */
+        gint shown;
+        gint show_count;        /* when 0 show forever, other wise times to show (1 or +) */
+        gint end_delay;         /* time to delay after displaying last character of text
+                                   this number is calculated from tenths of a second */
+
+        /* click callback stuff */
+
+        void (*click_func)(gpointer data, InfoData *id, AppData *ad);
+        gpointer data;
+        void (*free_func)(gpointer data);
+
+	/* from tick-a-stat */
+	gint priority;
+	void(*pre_func)(gpointer data, InfoData *id, AppData *ad);
+	void(*end_func)(gpointer data, InfoData *id, AppData *ad);
+};
+
+
 struct _AppData
 {
 	GtkWidget *applet;
@@ -92,32 +122,34 @@ struct _AppData
 	GtkWidget *article_list;
 
 	gchar *host;
-	gchar *proxy;
+	gchar *proxy_url;
+	gchar *proxy_user;
+	gchar *proxy_passwd;
+	gboolean use_proxy;
 	gchar *resource;
 	gint port;
-};
 
-typedef struct _InfoData InfoData;
-struct _InfoData
-{
-	gchar *text;		/* any length, but be reasonable */
-	gint length;
-	gchar *icon_path;	/* location of icon */
-	GtkWidget *icon;	/* maximum 24 x 24 please (or be reasonable)*/
-	gint icon_w;
-	gint icon_h;
-	gint offset;		/* offset of text from left, set to line text up even with no icon */
-	gint center;		/* Center text, only has effect if text fits on one line */
-	gint shown;
-	gint show_count;	/* when 0 show forever, other wise times to show (1 or +) */
-	gint end_delay;		/* time to delay after displaying last character of text
-				   this number is calculated from tenths of a second */
+	/* from tick-a-stat */
 
-	/* click callback stuff */
+	PanelOrientType orient;
+	gint sizehint;
+	gint width_hint;
 
-	void (*click_func)(AppData *ad, gpointer data);
-	gpointer data;
-	void (*free_func)(gpointer data);
+	gint win_height;
+	gint win_width;
+	gint follow_hint_height;
+	gint follow_hint_width;
+	gint user_width;
+	
+	gint user_height;
+
+	InfoData *info_next;
+	InfoData *info_current;
+
+	gint free_current;
+
+	GList *info_list;
+	gint y_pos;
 };
 
 typedef struct _ClickData ClickData;
@@ -128,20 +160,23 @@ struct _ClickData
 	gint y;
 	gint w;
 	gint h;
-	void (*click_func)(AppData *ad, gpointer data);
 	gpointer data;
+
+	/* from tick-a-stat */
+	gint free_id;
+	void (*click_func)(gpointer data, InfoData *id, AppData *ad);
 	
 };
 
 	/* display.c */
 void free_all_info_lines(AppData *ad);
 InfoData *add_info_line(AppData *ad, gchar *text, gchar *icon_path, gint offset, gint center,
-		   gint show_count, gint delay);
+                   gint show_count, gint delay, gint priority);
 InfoData *add_info_line_with_pixmap(AppData *ad, gchar *text, GtkWidget *icon, gint offset, gint center,
-		   gint show_count, gint delay);
+		   gint show_count, gint delay, gint priority);
 void remove_info_line(AppData *ad, InfoData *id);
 void remove_all_lines(AppData *ad);
-void set_info_click_signal(InfoData *id, void (*click_func)(AppData *ad, gpointer data),
+void set_info_click_signal(InfoData *id, void (*click_func)(gpointer data, InfoData *id, AppData *ad),
 		gpointer data, void (*free_func)(gpointer data));
 void set_mouse_cursor (AppData *ad, gint icon);
 void init_app_display(AppData *ad);
@@ -152,6 +187,8 @@ void property_save(gchar *path, AppData *ad);
 void property_show(AppletWidget *applet, gpointer data);
 
 /* slashapp.c */
+static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data);
+static void applet_change_pixel_size(GtkWidget *w, int size, gpointer data);
 AppData *create_new_app(GtkWidget *applet);
 gchar *check_for_dir(char *d);
 void destroy_applet(GtkWidget *widget, gpointer data);

@@ -43,8 +43,30 @@ AppData *create_new_app(GtkWidget *applet)
 	if(!ad->slashapp_dir)
 		g_error("Can't create slashapp dir in .gnome/\n");
 
+	ad->orient = ORIENT_UP;
+	ad->sizehint = 48;
+	ad->width_hint = 200;
+
+	ad->win_width = 200;
+	ad->win_height = 48;
+	ad->follow_hint_width = FALSE;
+	ad->follow_hint_height = TRUE;
+	ad->user_width = 200;
+	ad->user_height = 48;
+	ad->draw_area = NULL;
+
 	init_app_display(ad);
 
+	/* from tick-a-stat */
+        gtk_signal_connect(GTK_OBJECT(ad->applet),"change_orient",
+                GTK_SIGNAL_FUNC(applet_change_orient), ad);
+#ifdef HAVE_PANEL_PIXEL_SIZE
+        gtk_signal_connect(GTK_OBJECT(ad->applet),"change_pixel_size",
+                GTK_SIGNAL_FUNC(applet_change_pixel_size), ad);
+#endif
+
+        gtk_widget_set_usize(ad->applet, 10, 10);
+	
 	/* connect all the signals to handlers */
 	gtk_signal_connect(GTK_OBJECT(ad->applet), "destroy",
 			GTK_SIGNAL_FUNC(destroy_applet), ad);
@@ -67,15 +89,42 @@ AppData *create_new_app(GtkWidget *applet)
 	gtk_timeout_add(refresh_time, get_current_headlines, ad);
 
 	icon = gnome_pixmap_new_from_xpm_d(slashsplash_xpm);
-	add_info_line_with_pixmap(ad, "", icon, 0, FALSE, 1, 0);
-	add_info_line(ad, "SlashApp\n", NULL, 0, TRUE, 1, 0);
-	add_info_line(ad, _("Loading headlines..."), NULL, 0, FALSE, 1, 20);
+	add_info_line_with_pixmap(ad, "", icon, 0, FALSE, 1, 0, 10);
+	add_info_line(ad, "SlashApp\n", NULL, 0, TRUE, 1, 0, 10);
+	add_info_line(ad, _("Loading headlines..."), NULL, 0, FALSE, 1, 20, 10);
 	
 	gtk_widget_show(ad->applet);
 	ad->startup_timeout_id = gtk_timeout_add(5000, startup_delay_cb, ad);
 
 	return ad;
 }
+
+static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data){
+        AppData *ad = data;
+        ad->orient = o;
+
+        if (!ad->draw_area) return; /* we are done if in startup */
+
+        resized_app_display(ad, FALSE);
+        return;
+        w = NULL;
+}
+
+#ifdef HAVE_PANEL_PIXEL_SIZE
+static void applet_change_pixel_size(GtkWidget *w, int size, gpointer data)
+{
+        AppData *ad = data;
+
+        ad->sizehint = size;
+
+        if (!ad->draw_area) return; /* we are done if in startup */
+
+        resized_app_display(ad, FALSE);
+        return;
+        w = NULL;
+}
+#endif
+
 
 gchar *check_for_dir(char *d)
 {
@@ -133,14 +182,14 @@ void about_cb(AppletWidget *widget, gpointer data)
 
 	sprintf(version, _("%d.%d.%d"), APPLET_VERSION_MAJ, 
 			APPLET_VERSION_MIN, APPLET_VERSION_REV);
-	authors[0] = _("Justin Maurer <justin@slashdot.org>");
+	authors[0] = _("Justin Maurer <justin@helixcode.com>");
 	authors[1] = _("John Ellis <johne@bellatlantic.net>");
 	authors[2] = _("Craig Small <csmall@eye-net.com.au>");
 	authors[3] = _("Frederic Devernay <devernay@istar.fr>");
 	authors[4] = NULL;
 
 	about = gnome_about_new(_("SlashApp"), version,
-			_("(C) 1998-1999"),
+			_("(C) 1998-2000"),
 			authors,
 			_("A stock ticker-like applet\n"),
 			NULL);
@@ -264,7 +313,7 @@ void refresh_cb(AppletWidget *widget, gpointer data)
 	
 	remove_all_lines(ad);
 	icon = gnome_pixmap_new_from_xpm_d(slashsplash_xpm);
-        add_info_line_with_pixmap(ad, "", icon, 0, FALSE, 1, 0);
+        add_info_line_with_pixmap(ad, "", icon, 0, FALSE, 1, 0, 5);
 			
 	if(ad->startup_timeout_id > 0)
 		return;
@@ -290,7 +339,7 @@ int get_current_headlines(gpointer data)
 	filename = g_strconcat(ad->slashapp_dir, "/", "headlines", NULL);
 	file = fopen(filename, "w");
 	if(file) {
-		http_get_to_file(ad->host, ad->port, ad->proxy, ad->resource, 
+		http_get_to_file(ad->host, ad->port, ad->proxy_url, ad->resource, 
 				file, data);
 		fclose(file);
 		parse_headlines(data);
@@ -309,7 +358,7 @@ void parse_headlines(gpointer data)
 	if (s.st_size == 0) {
 		g_warning(_("Unable to parse document\n"));
 		add_info_line(ad, "Can't parse XML. Net connection down?",
-			      NULL, 0, FALSE, FALSE, delay);
+			      NULL, 0, FALSE, FALSE, delay, 5);
 		return;
 	}
 						
@@ -318,7 +367,7 @@ void parse_headlines(gpointer data)
 	if (doc==NULL) {
 		g_warning(_("Unable to parse document\n"));
 		add_info_line(ad, "Can't parse XML. Net connection down?", 
-				NULL, 0, FALSE, FALSE, delay);
+				NULL, 0, FALSE, FALSE, delay, 5);
 		return;
 	}
 
@@ -412,10 +461,14 @@ void tree_walk(xmlNodePtr root, gpointer data)
 		char *image = layer_find(item[i]->childs, "iamge", "No image");
 */
 		char *temp = g_strconcat(title, NULL);
-                id = add_info_line(ad, temp, NULL, 0, FALSE, FALSE, delay); 
+                id = add_info_line(ad, temp, NULL, 0, FALSE, FALSE, delay, 10); 
+/*		set_info_signals(id, click_headline_cb, g_free, NULL, NULL, url);
+ */
+
 		set_info_click_signal(id, click_headline_cb, g_strdup(url), 
 				g_free);
-		add_info_line(ad, "", NULL, 0, FALSE, FALSE, delay);
+
+		add_info_line(ad, "", NULL, 0, FALSE, FALSE, delay, 10);
 	}
 }
 
@@ -453,7 +506,8 @@ char *layer_find(xmlNodePtr node, char *match, char *fail)
 
 void click_headline_cb(AppData *ad, gpointer data)
 {
-	gchar *url = data;
+	InfoData *id = data;
+	gchar *url = id->data;
 	if(url)
 	      gnome_url_show(url);
 	return;

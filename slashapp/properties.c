@@ -49,8 +49,9 @@ void property_save(gchar *path, AppData *ad)
 
         gnome_config_set_int("slashapp/new_browser_window", ad->new_browser_window);
 
+	gnome_config_pop_prefix();
 	gnome_config_sync();
-        gnome_config_pop_prefix();
+	gnome_config_drop_all();
 }
 
 static void article_delay_cb(GtkObject *adj, gpointer data)
@@ -171,7 +172,7 @@ void property_show(AppletWidget *applet, gpointer data)
 	GtkWidget *button;
 	GtkObject *adj;
 	GtkWidget *spin;
-	/* GtkWidget *entry; */
+	GtkWidget *text;
 
 	if(ad->propwindow)
 		{
@@ -209,12 +210,12 @@ void property_show(AppletWidget *applet, gpointer data)
 	gtk_container_add(GTK_CONTAINER(frame), vbox1);
 	gtk_widget_show(vbox1);
 
-	button = gtk_check_button_new_with_label (_("Show topic images"));
+/*	button = gtk_check_button_new_with_label (_("Show topic images"));
 	gtk_box_pack_start(GTK_BOX(vbox1), button, FALSE, FALSE, 0);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(button), ad->p_show_images);
 	gtk_signal_connect (GTK_OBJECT(button),"clicked",(GtkSignalFunc) show_images_cb, ad);
 	gtk_widget_show(button);
-
+	
 	button = gtk_check_button_new_with_label (_("Show department"));
 	gtk_box_pack_start(GTK_BOX(vbox1), button, FALSE, FALSE, 0);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(button), ad->p_show_department);
@@ -226,7 +227,7 @@ void property_show(AppletWidget *applet, gpointer data)
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(button), ad->p_show_info);
 	gtk_signal_connect (GTK_OBJECT(button),"clicked",(GtkSignalFunc) show_info_cb, ad);
 	gtk_widget_show(button);
-
+*/
 	hbox = gtk_hbox_new(FALSE, 0);
 	gtk_box_pack_start(GTK_BOX(vbox1), hbox, FALSE, FALSE, 0);
 	gtk_widget_show(hbox);
