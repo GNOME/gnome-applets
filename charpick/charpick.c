@@ -464,7 +464,7 @@ charpicker_applet_fill (PanelApplet *applet)
   
   panel_applet_setup_menu_from_file (PANEL_APPLET (applet),
                                      NULL,
-			             "GNOME_CDPlayerApplet.xml",
+			             "GNOME_CharpickerApplet.xml",
                                      NULL,
 			             charpick_applet_menu_verbs,
 			             curr_data);
