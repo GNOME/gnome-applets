@@ -34,13 +34,22 @@ static gint property_destroy_cb( GtkWidget *widget, void *data );
 
 void property_load(char *path)
 {
-	if (lock_file) g_free(lock_file);
+	gchar *buf;
+
 	if (command_connect) g_free(command_connect);
 	if (command_disconnect) g_free(command_disconnect);
 	if (device_name) g_free(device_name);
         gnome_config_push_prefix (path);
         UPDATE_DELAY       = gnome_config_get_int("modem/delay=5");
-	lock_file          = gnome_config_get_string("modem/lockfile=/var/lock/LCK..modem");
+
+	buf                = gnome_config_get_string("modem/lockfile=");
+	if (buf && strlen(buf) > 0)
+		{
+		g_free(lock_file);
+		lock_file = g_strdup(buf);
+		}
+	g_free(buf);
+
 	command_connect    = gnome_config_get_string("modem/connect=pppon");
 	command_disconnect = gnome_config_get_string("modem/disconnect=pppoff");
 	ask_for_confirmation = gnome_config_get_int("modem/confirmation=1");

@@ -127,16 +127,12 @@ static void about_cb (AppletWidget *widget, gpointer data)
 {
 	GtkWidget *about;
 	const gchar *authors[8];
-	gchar version[32];
-
-	g_snprintf(version,sizeof(version),"%d.%d.%d",MODEMLIGHTS_APPLET_VERSION_MAJ,
-		MODEMLIGHTS_APPLET_VERSION_MIN, MODEMLIGHTS_APPLET_VERSION_REV);
 
 	authors[0] = "John Ellis <johne@bellatlantic.net>";
 	authors[1] = "Martin Baulig <martin@home-of-linux.org> - ISDN";
 	authors[2] = NULL;
 
-        about = gnome_about_new ( _("Modem Lights Applet"), version,
+        about = gnome_about_new ( _("Modem Lights Applet"), VERSION,
 			"(C) 1999",
 			authors,
 			_("Released under the GNU general public license.\n"
@@ -941,7 +937,15 @@ int main (int argc, char *argv[])
 	applet_widget_init("modemlights_applet", VERSION, argc, argv,
 				    NULL, 0, NULL);
 
-	lock_file = g_strdup("/var/lock/LCK..modem");
+	if (g_file_exists("/dev/modem"))
+		{
+		lock_file = g_strdup("/var/lock/LCK..modem");
+		}
+	else
+		{
+		lock_file = g_strdup("/var/lock/LCK..ttyS0");
+		}
+
 	device_name = g_strdup("ppp0");
 	command_connect = g_strdup("pppon");
 	command_disconnect = g_strdup("pppoff");

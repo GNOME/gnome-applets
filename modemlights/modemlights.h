@@ -31,10 +31,6 @@
 #include <gnome.h>
 #include <applet-widget.h>
 
-#define MODEMLIGHTS_APPLET_VERSION_MAJ 1
-#define MODEMLIGHTS_APPLET_VERSION_MIN 0
-#define MODEMLIGHTS_APPLET_VERSION_REV 3
-
 extern gint UPDATE_DELAY;
 extern gchar *lock_file;
 extern gint verify_lock_file;
