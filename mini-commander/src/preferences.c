@@ -284,7 +284,7 @@ load_session(void)
 		    strcpy(default_macro_command, "netscape -remote openURL\\(http://\\1\\) || netscape http://\\1");
 		    break;
 		case 4:
-		    strcpy(default_macro_pattern, "(ftp\\..*)");
+		    strcpy(default_macro_pattern, "^(ftp\\..*)$");
 		    strcpy(default_macro_command, "netscape -remote openURL\\(ftp://\\1\\) || netscape ftp://\\1");
 		    break;
 		case 5:
