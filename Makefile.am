@@ -72,7 +72,8 @@ always_built_SUBDIRS = \
 	mini-commander	\
 	tickastat	\
 	webcontrol	\
-	whereami
+	whereami	\
+	odometer
 
 not_built_SUBDIRS = \
 	batmon		\
