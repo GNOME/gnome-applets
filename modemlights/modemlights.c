@@ -79,7 +79,11 @@ static int load_hist_tx[20];
 static int confirm_dialog = FALSE;
 
 static PanelOrientType orient;
+
+#ifdef HAVE_PANEL_SIZE
 static PanelSizeType sizehint;
+#endif
+
 static gint panel_verticle = FALSE;
 static gint setup_done = FALSE;
 
@@ -109,7 +113,11 @@ static gint update_display();
 static void update_pixmaps();
 static void setup_colors();
 static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data);
+
+#ifdef HAVE_PANEL_SIZE
 static void applet_change_size(GtkWidget *w, PanelSizeType s, gpointer data);
+#endif
+
 static gint applet_save_session(GtkWidget *widget, char *privcfgpath, char *globcfgpath);
 
 static int get_modem_stats(int *in, int *out);
@@ -982,8 +990,12 @@ static void setup_colors()
 
 void reset_orientation(void)
 {
+#ifdef HAVE_PANEL_SIZE
 	if (((orient == ORIENT_LEFT || orient == ORIENT_RIGHT) && sizehint != SIZE_TINY) ||
 	    ((orient == ORIENT_UP || orient == ORIENT_DOWN) && sizehint == SIZE_TINY))
+#else
+	if (orient == ORIENT_LEFT || orient == ORIENT_RIGHT)
+#endif
 		{
 		panel_verticle = TRUE;
 		}
@@ -1037,11 +1049,13 @@ static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
 	if (setup_done) reset_orientation();
 }
 
+#ifdef HAVE_PANEL_SIZE
 static void applet_change_size(GtkWidget *w, PanelSizeType s, gpointer data)
 {
 	sizehint = s;
 	if (setup_done) reset_orientation();
 }
+#endif
 
 static gint applet_save_session(GtkWidget *widget, char *privcfgpath, char *globcfgpath)
 {
@@ -1082,7 +1096,10 @@ int main (int argc, char *argv[])
 	command_connect = g_strdup("pppon");
 	command_disconnect = g_strdup("pppoff");
 	orient = ORIENT_UP;
+
+#ifdef HAVE_PANEL_SIZE
 	sizehint = SIZE_STANDARD;
+#endif
 
 	/* open ip socket */
 	if ((ip_socket = socket(AF_INET, SOCK_DGRAM, 0)) < 0)
@@ -1122,9 +1139,11 @@ int main (int argc, char *argv[])
 	gtk_signal_connect(GTK_OBJECT(applet),"change_orient",
 				GTK_SIGNAL_FUNC(applet_change_orient),
 				NULL);
+#ifdef HAVE_PANEL_SIZE
 	gtk_signal_connect(GTK_OBJECT(applet),"change_size",
 				GTK_SIGNAL_FUNC(applet_change_size),
 				NULL);
+#endif
 
 	button_pixmap = gtk_pixmap_new(button_off, button_mask);
 	gtk_container_add(GTK_CONTAINER(button), button_pixmap);
