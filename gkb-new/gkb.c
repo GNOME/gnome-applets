@@ -406,6 +406,7 @@ gkb_change_pixel_size (GtkWidget * w, gint new_size, gpointer data)
 #endif
 }
 
+#ifdef FIXME /* Config options should be saved when they are changed by the user */
 static gboolean
 applet_save_session (GtkWidget * w,
 		     const char *privcfgpath, const char *globcfgpath)
@@ -453,6 +454,7 @@ applet_save_session (GtkWidget * w,
 
   return FALSE;
 }
+#endif
 
 GkbKeymap *
 loadprop (int i)
@@ -903,9 +905,6 @@ gboolean fill_gkb_applet(PanelApplet *applet)
 
   gtk_widget_show (gkb->darea_frame);
   gtk_container_add (GTK_CONTAINER (gkb->applet), gkb->eventbox);
-
-  g_signal_connect (gkb->applet, "save_session",
-		      G_CALLBACK (applet_save_session), NULL);
 
   keycode = XKeysymToKeycode(GDK_DISPLAY(), gkb->keysym);
 
