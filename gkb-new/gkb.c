@@ -387,8 +387,7 @@ applet_save_session (GtkWidget * w,
   gchar str[100];
   int i = 0;
 
-  gnome_config_push_prefix (privcfgpath);
-  g_print ("Pushing prefix .. [%s]\n", privcfgpath);
+  gnome_config_push_prefix ("/gkb/main");
   gnome_config_set_int ("gkb/num", gkb->n);
   gnome_config_set_bool ("gkb/small", gkb->is_small);
   gnome_config_set_string ("gkb/key", gkb->key);
@@ -492,7 +491,7 @@ load_properties (GKB * gkb)
 
   gkb->maps = NULL;
 
-  gnome_config_push_prefix (APPLET_WIDGET (gkb->applet)->privcfgpath);
+  gnome_config_push_prefix ("/gkb/main");
 
   gkb->n = gnome_config_get_int ("gkb/num=0");
 
