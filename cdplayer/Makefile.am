@@ -10,6 +10,5 @@ libpanel_cdplayer_la_SOURCES = 	\
 	cdplayer.c led.c cdrom-linux.c
 
 dist-hook:
-        mkdir $(distdir)/images
+	mkdir $(distdir)/images
 	cp $(srcdir)/images/*.xpm $(distdir)/images
-		
