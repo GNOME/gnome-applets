@@ -204,27 +204,36 @@ dnl ******************************************
 dnl ** battstat check			    **
 dnl ******************************************
 
+dnl --disable-battstat=(yes|no)
+AC_ARG_ENABLE(battstat,
+	      [  --disable-battstat=[no/yes] don't build battery monitor applet [default=no]],,
+	      disable_battstat=no)
+
 HAVE_LIBAPM=no
 NEED_LIBAPM=no
-build_battstat_applet=yes
-case "${host}" in
-  powerpc-*-linux*)
-  	NEED_LIBAPM=yes
-	AC_CHECK_LIB(apm,apm_read,[HAVE_LIBAPM=yes],[HAVE_LIBAPM=no])
-	;;
-  # list of supported OS cores that use libapm
-  *-*-linux*)
-	NEED_LIBAPM=yes
-	AC_CHECK_LIB(apm,apm_read,[HAVE_LIBAPM=yes],[HAVE_LIBAPM=no])
-	;;
-  # list of supported OS cores that do not use libapm
-  *-*-freebsd*|*-*-netbsd*|*-*-openbsd*)
-	;;
-  *)
-	echo "warning: ${host} is not supported by battstat_applet, not building" >&2
-	build_battstat_applet=no
-	;;
-esac
+build_battstat_applet=no
+
+if test x$disable_battstat = xno; then
+   build_battstat_applet=yes
+   case "${host}" in
+       powerpc-*-linux*)
+           NEED_LIBAPM=yes
+           AC_CHECK_LIB(apm,apm_read,[HAVE_LIBAPM=yes],[HAVE_LIBAPM=no])
+	   ;;
+       # list of supported OS cores that use libapm
+       *-*-linux*)
+	   NEED_LIBAPM=yes
+	   AC_CHECK_LIB(apm,apm_read,[HAVE_LIBAPM=yes],[HAVE_LIBAPM=no])
+	   ;;
+       # list of supported OS cores that do not use libapm
+       *-*-freebsd*|*-*-netbsd*|*-*-openbsd*)
+	   ;;
+       *)
+	   echo "warning: ${host} is not supported by battstat_applet, not building" >&2
+	   build_battstat_applet=no
+	   ;;
+    esac
+fi
 
 AC_SUBST(HAVE_LIBAPM)
 AC_SUBST(NEED_LIBAPM)
