@@ -1402,6 +1402,13 @@ static const BonoboUIVerb modem_applet_menu_verbs [] = {
         BONOBO_UI_VERB_END
 };
 
+static void
+destroy_cb (GtkWidget *widget, gpointer data)
+{
+	gtk_timeout_remove (update_timeout_id);
+	
+}
+
 static gboolean
 modemlights_applet_fill (PanelApplet *applet)
 {
@@ -1489,6 +1496,9 @@ modemlights_applet_fill (PanelApplet *applet)
 
 	gtk_signal_connect(GTK_OBJECT(applet),"style_set",
 		GTK_SIGNAL_FUNC(applet_style_change_cb), NULL);
+		
+	g_signal_connect (G_OBJECT (applet), "destroy",
+			  G_CALLBACK (destroy_cb), NULL);
 				
 	sizehint = panel_applet_get_size (PANEL_APPLET (applet));
 	
