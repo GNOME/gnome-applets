@@ -61,6 +61,12 @@ struct _DriveData
 
 void redraw_pixmap(DriveData *dd);
 void start_callback_update(DriveData *dd);
+GtkWidget* hig_dialog_new (GtkWindow      *parent,
+			   GtkDialogFlags flags,
+			   GtkMessageType type,
+			   GtkButtonsType buttons,
+			   const gchar    *header,
+			   const gchar    *message);
 
 G_END_DECLS
 #endif

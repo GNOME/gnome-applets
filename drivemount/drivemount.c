@@ -396,14 +396,18 @@ browse_cb (BonoboUIComponent *uic,
 	g_free (command);
 	if (error) {
 		GtkWidget *dialog;
+		char *msg;
 
-		dialog = gtk_message_dialog_new (NULL,
-						 GTK_DIALOG_DESTROY_WITH_PARENT,
-						 GTK_MESSAGE_ERROR,
-						 GTK_BUTTONS_OK,
-						 _("There was an error executing '%s': %s"),
-						 command,
-						 error->message);
+		msg = g_strdup_printf (_("There was an error executing %s: %s"),
+				       command,
+				       error->message);
+		dialog = hig_dialog_new (NULL /* parent */,
+					 0 /* flags */,
+					 GTK_MESSAGE_ERROR,
+					 GTK_BUTTONS_OK,
+					 _("Cannot browse device"),
+					 msg);
+		g_free (msg);
 
 		g_signal_connect (dialog, "response",
 				  G_CALLBACK (gtk_widget_destroy),
@@ -451,14 +455,17 @@ help_cb (BonoboUIComponent *uic,
 
 	if (error) {
 		GtkWidget *error_dialog;
+		char *msg;
 
-		error_dialog = gtk_message_dialog_new (
-				NULL,
-				GTK_DIALOG_DESTROY_WITH_PARENT,
-				GTK_MESSAGE_ERROR,
-				GTK_BUTTONS_OK,
-				_("There was an error displaying help: %s"),
-				error->message);
+		msg = g_strdup_printf (_("There was an error displaying help: %s"),
+				       error->message);
+		error_dialog = hig_dialog_new (NULL /* parent */,
+					       0 /* flags */,
+					       GTK_MESSAGE_ERROR,
+					       GTK_BUTTONS_OK,
+					       _("Error displaying help"),
+					       msg);
+		g_free (msg);
 
 		g_signal_connect (error_dialog, "response",
 				  G_CALLBACK (gtk_widget_destroy),
@@ -776,9 +783,6 @@ mount_cb (GtkWidget *widget,
 	FILE *fp;
 	GString *str;
 	gint check = device_is_mounted (dd);
-	GtkWidget *hbox;
-	GtkWidget *label;
-	GtkWidget *image;
 
 	/* Stop the user from displaying zillions of error messages */
 	if (dd->error_dialog) {
@@ -830,26 +834,19 @@ mount_cb (GtkWidget *widget,
 			eject (dd);
 		}
 	} else {
-		dd->error_dialog =
-			gtk_dialog_new_with_buttons (_
-						     ("Drive Mount Applet Warning"),
-						     NULL, GTK_DIALOG_MODAL,
-						     GTK_STOCK_OK,
-						     GTK_RESPONSE_OK, NULL);
-		gtk_window_set_screen (GTK_WINDOW (dd->error_dialog),
-				       gtk_widget_get_screen (dd->applet));
-		hbox = gtk_hbox_new (FALSE, 0);
-		gtk_box_pack_start (GTK_BOX
-				    (GTK_DIALOG (dd->error_dialog)->vbox), hbox,
-				    FALSE, FALSE, 10);
 		g_string_prepend (str, _("\" reported:\n"));
 		g_string_prepend (str, command_line);
 		g_string_prepend (str, _("Drivemount command failed.\n\""));
-		image = gtk_image_new_from_stock (GTK_STOCK_DIALOG_ERROR,
-						  GTK_ICON_SIZE_DIALOG);
-		gtk_box_pack_start (GTK_BOX (hbox), image, FALSE, FALSE, 10);
-		label = gtk_label_new (str->str);
-		gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 10);
+
+		dd->error_dialog = hig_dialog_new (NULL /* parent */,
+						   GTK_DIALOG_MODAL /* flags */,
+						   GTK_MESSAGE_ERROR,
+						   GTK_BUTTONS_OK,
+						   _("Cannot mount device"),
+						   str->str);
+		gtk_window_set_screen (GTK_WINDOW (dd->error_dialog),
+				       gtk_widget_get_screen (dd->applet));
+
 		gtk_widget_show_all (dd->error_dialog);
 		gtk_dialog_run (GTK_DIALOG (dd->error_dialog));
 		gtk_widget_destroy (dd->error_dialog);
@@ -951,3 +948,113 @@ key_press_cb (GtkWidget *widget, GdkEventKey *event, DriveData *dd)
 
 
 }
+
+/* stolen from gsearchtool */
+GtkWidget*
+hig_dialog_new (GtkWindow      *parent,
+		GtkDialogFlags flags,
+		GtkMessageType type,
+		GtkButtonsType buttons,
+		const gchar    *header,
+		const gchar    *message)
+{
+	GtkWidget *dialog;
+	GtkWidget *dialog_vbox;
+	GtkWidget *dialog_action_area;
+	GtkWidget *hbox;
+	GtkWidget *vbox;
+	GtkWidget *label;
+	GtkWidget *button;
+	GtkWidget *image;
+	gchar     *title;
+
+	dialog = gtk_dialog_new ();
+	
+	gtk_dialog_set_has_separator (GTK_DIALOG (dialog), FALSE);
+	gtk_container_set_border_width (GTK_CONTAINER (dialog), 5);
+	gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
+	gtk_window_set_title (GTK_WINDOW (dialog), "");
+  
+	dialog_vbox = GTK_DIALOG (dialog)->vbox;
+	gtk_box_set_spacing (GTK_BOX (dialog_vbox), 12);
+
+	hbox = gtk_hbox_new (FALSE, 12);
+	gtk_box_pack_start (GTK_BOX (dialog_vbox), hbox, FALSE, FALSE, 0);
+	gtk_container_set_border_width (GTK_CONTAINER (hbox), 5);
+	gtk_widget_show (hbox);
+
+	if (type == GTK_MESSAGE_ERROR) {
+		image = gtk_image_new_from_stock ("gtk-dialog-error", GTK_ICON_SIZE_DIALOG);
+	} else if (type == GTK_MESSAGE_QUESTION) {
+		image = gtk_image_new_from_stock ("gtk-dialog-question", GTK_ICON_SIZE_DIALOG);
+	} else {
+		g_assert_not_reached ();
+	}
+	gtk_box_pack_start (GTK_BOX (hbox), image, FALSE, FALSE, 0);
+	gtk_widget_show (image);
+
+	vbox = gtk_vbox_new (FALSE, 6);
+	gtk_box_pack_start (GTK_BOX (hbox), vbox, TRUE, TRUE, 0);
+	gtk_widget_show (vbox);
+	
+	title = g_strconcat ("<b>", header, "</b>", NULL);
+	label = gtk_label_new (title);  
+	gtk_box_pack_start (GTK_BOX (vbox), label, FALSE, FALSE, 0);
+	gtk_label_set_use_markup (GTK_LABEL (label), TRUE);
+	gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
+	gtk_label_set_line_wrap (GTK_LABEL (label), TRUE);
+	gtk_misc_set_alignment (GTK_MISC (label), 0, 0.5);
+	gtk_widget_show (label);
+	g_free (title);
+	
+	label = gtk_label_new (message);
+	gtk_box_pack_start (GTK_BOX (vbox), label, FALSE, FALSE, 0);
+	gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
+	gtk_label_set_line_wrap (GTK_LABEL (label), TRUE);
+	gtk_misc_set_alignment (GTK_MISC (label), 0, 0.5);
+	gtk_widget_show (label);
+	
+	dialog_action_area = GTK_DIALOG (dialog)->action_area;
+	gtk_button_box_set_layout (GTK_BUTTON_BOX (dialog_action_area), GTK_BUTTONBOX_END);
+
+	switch (buttons) 
+  	{		
+		case GTK_BUTTONS_OK_CANCEL:
+	
+			button = gtk_button_new_from_stock ("gtk-cancel");
+  			gtk_widget_show (button);
+  			gtk_dialog_add_action_widget (GTK_DIALOG (dialog), button, GTK_RESPONSE_CANCEL);
+  			GTK_WIDGET_SET_FLAGS (button, GTK_CAN_DEFAULT);
+
+		  	button = gtk_button_new_from_stock ("gtk-ok");
+  			gtk_widget_show (button);
+  			gtk_dialog_add_action_widget (GTK_DIALOG (dialog), button, GTK_RESPONSE_OK);
+  			GTK_WIDGET_SET_FLAGS (button, GTK_CAN_DEFAULT);
+			break;
+		
+		case GTK_BUTTONS_OK:
+		
+			button = gtk_button_new_from_stock ("gtk-ok");
+			gtk_dialog_add_action_widget (GTK_DIALOG (dialog), button, GTK_RESPONSE_OK);
+			GTK_WIDGET_SET_FLAGS (button, GTK_CAN_DEFAULT);
+			gtk_widget_show (button);
+			break;
+		
+		default:
+			g_warning ("Unhandled GtkButtonsType");
+			break;
+  	}
+
+	if (parent != NULL) {
+		gtk_window_set_transient_for (GTK_WINDOW (dialog), GTK_WINDOW (parent));
+	}
+	if (flags & GTK_DIALOG_MODAL) {
+		gtk_window_set_modal (GTK_WINDOW (dialog), TRUE);
+	}
+	if (flags & GTK_DIALOG_DESTROY_WITH_PARENT) {
+		gtk_window_set_destroy_with_parent (GTK_WINDOW (dialog), TRUE);
+	}
+	
+  	return dialog;
+}
+

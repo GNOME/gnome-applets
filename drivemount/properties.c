@@ -18,6 +18,7 @@
 #include <config.h>
 #endif
 
+#include <gconf/gconf-client.h>
 #include <panel-applet.h>
 #include <panel-applet-gconf.h>
 #include <gconf/gconf.h>
@@ -25,6 +26,8 @@
 
 #include "drivemount.h"
 #include "properties.h"
+
+#define NEVER_SENSITIVE "never_sensitive"
 
 typedef struct _ResponseWidgets
 {
@@ -44,6 +47,46 @@ static void set_widget_sensitivity_false_cb(GtkWidget *widget, GtkWidget *target
 static void set_widget_sensitivity_true_cb(GtkWidget *widget, GtkWidget *target);
 static gchar *remove_level_from_path(const gchar *path);
 static void sync_mount_base(DriveData *dd);
+
+/* set sensitive and setup NEVER_SENSITIVE appropriately */
+static void
+hard_set_sensitive (GtkWidget *w, gboolean sensitivity)
+{
+	gtk_widget_set_sensitive (w, sensitivity);
+	g_object_set_data (G_OBJECT (w), NEVER_SENSITIVE,
+			   GINT_TO_POINTER ( ! sensitivity));
+}
+
+
+/* set sensitive, but always insensitive if NEVER_SENSITIVE is set */
+static void
+soft_set_sensitive (GtkWidget *w, gboolean sensitivity)
+{
+	if (g_object_get_data (G_OBJECT (w), NEVER_SENSITIVE))
+		gtk_widget_set_sensitive (w, FALSE);
+	else
+		gtk_widget_set_sensitive (w, sensitivity);
+}
+
+
+static gboolean
+key_writable (PanelApplet *applet, const char *key)
+{
+	gboolean writable;
+	char *fullkey;
+	static GConfClient *client = NULL;
+	if (client == NULL)
+		client = gconf_client_get_default ();
+
+	fullkey = panel_applet_gconf_get_full_key (applet, key);
+
+	writable = gconf_client_key_is_writable (client, fullkey, NULL);
+
+	g_free (fullkey);
+
+	return writable;
+}
+
 
 void
 properties_load(DriveData *dd)
@@ -327,6 +370,11 @@ properties_show (BonoboUIComponent *uic,
 	g_signal_connect (G_OBJECT (entry), "changed",
 			  G_CALLBACK (cb_mount_activate), dd);
 
+	if ( ! key_writable (PANEL_APPLET (dd->applet), "mount_point")) {
+		hard_set_sensitive (label, FALSE);
+		hard_set_sensitive (widgets->mount_entry, FALSE);
+	}
+
 	hbox = gtk_hbox_new(FALSE, 12);
 	gtk_box_pack_start(GTK_BOX(vbox1), hbox, FALSE, FALSE, 0);
 	gtk_widget_show(hbox);
@@ -348,11 +396,20 @@ properties_show (BonoboUIComponent *uic,
 	gtk_widget_show(widgets->update_spin);
 	g_signal_connect (G_OBJECT (widgets->update_spin), "focus_out_event",
 				  G_CALLBACK (spin_changed), dd);
+
+	if ( ! key_writable (PANEL_APPLET (dd->applet), "interval")) {
+		hard_set_sensitive (label, FALSE);
+		hard_set_sensitive (widgets->update_spin, FALSE);
+	}
 	
 	label = gtk_label_new_with_mnemonic (_("seconds"));
 	gtk_box_pack_start (GTK_BOX (hbox2), label, FALSE, FALSE, 0);
 	gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
 	gtk_widget_show (label);
+
+	if ( ! key_writable (PANEL_APPLET (dd->applet), "interval")) {
+		hard_set_sensitive (label, FALSE);
+	}
 
 	hbox = gtk_hbox_new(FALSE, 12);
 	gtk_box_pack_start(GTK_BOX(vbox1), hbox, FALSE, FALSE, 0);
@@ -370,8 +427,14 @@ properties_show (BonoboUIComponent *uic,
 	gtk_widget_show(widgets->omenu);
 	menu = gtk_menu_new();
 	gtk_option_menu_set_menu(GTK_OPTION_MENU(widgets->omenu), menu);
-	g_signal_connect (G_OBJECT (widgets->omenu), "changed",
-			  G_CALLBACK (omenu_changed), dd);
+
+	if ( ! key_writable (PANEL_APPLET (dd->applet), "pixmap")) {
+		hard_set_sensitive (label, FALSE);
+		hard_set_sensitive (widgets->omenu, FALSE);
+	} else {
+		g_signal_connect (G_OBJECT (widgets->omenu), "changed",
+				  G_CALLBACK (omenu_changed), dd);
+	}
 	
 	/* This must be created before the menu items, so we can pass it to a callback */
 	fbox = gtk_vbox_new(FALSE, GNOME_PAD_SMALL);
@@ -428,6 +491,11 @@ properties_show (BonoboUIComponent *uic,
 	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
 	gtk_widget_show(label);
 
+	if ( ! key_writable (PANEL_APPLET (dd->applet), "custom_icon_mounted")) {
+		hard_set_sensitive (label, FALSE);
+		hard_set_sensitive (widgets->icon_entry_in, FALSE);
+	}
+
 	hbox = gtk_hbox_new(FALSE, 12);
 	gtk_box_pack_start(GTK_BOX(fbox), hbox, FALSE, FALSE, 0);
 	gtk_widget_show(hbox);
@@ -451,10 +519,15 @@ properties_show (BonoboUIComponent *uic,
 	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
 	gtk_widget_show(label);
 
+	if ( ! key_writable (PANEL_APPLET (dd->applet), "custom_icon_unmounted")) {
+		hard_set_sensitive (label, FALSE);
+		hard_set_sensitive (widgets->icon_entry_out, FALSE);
+	}
+
 	if(dd->device_pixmap < 0)
-		gtk_widget_set_sensitive(fbox, TRUE);
+		soft_set_sensitive(fbox, TRUE);
 	else
-		gtk_widget_set_sensitive(fbox, FALSE);
+		soft_set_sensitive(fbox, FALSE);
 #if 0
 	widgets->scale_toggle = gtk_check_button_new_with_mnemonic (_("_Scale size to panel"));
 	gtk_box_pack_start(GTK_BOX(vbox1), widgets->scale_toggle, FALSE, FALSE, 0);
@@ -470,6 +543,9 @@ properties_show (BonoboUIComponent *uic,
 	g_signal_connect (G_OBJECT (widgets->eject_toggle), "toggled",
 			  G_CALLBACK (eject_toggled), dd);
 
+	if ( ! key_writable (PANEL_APPLET (dd->applet), "auto_eject"))
+		hard_set_sensitive (widgets->eject_toggle, FALSE);
+
 	widgets->automount_toggle = gtk_check_button_new_with_mnemonic (_("Use _automount friendly status test"));
 	gtk_box_pack_start(GTK_BOX(vbox1), widgets->automount_toggle, FALSE, FALSE, 0);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widgets->automount_toggle), dd->autofs_friendly);
@@ -477,6 +553,9 @@ properties_show (BonoboUIComponent *uic,
 	g_signal_connect (G_OBJECT (widgets->automount_toggle), "toggled",
 			  G_CALLBACK (automount_toggled), dd);
 	gtk_widget_show_all(vbox);
+
+	if ( ! key_writable (PANEL_APPLET (dd->applet), "autofs_friendly"))
+		hard_set_sensitive (widgets->automount_toggle, FALSE);
 
 	widgets->dd = dd;
 	g_signal_connect(G_OBJECT(dialog), "response", G_CALLBACK(handle_response_cb), widgets);
@@ -504,14 +583,17 @@ help_cb (GtkDialog *dialog)
 
 	if (error) {
 		GtkWidget *error_dialog;
+		char *msg;
 
-		error_dialog = gtk_message_dialog_new (
-				NULL,
-				GTK_DIALOG_DESTROY_WITH_PARENT,
-				GTK_MESSAGE_ERROR,
-				GTK_BUTTONS_OK,
-				_("There was an error displaying help: %s"),
-				error->message);
+		msg = g_strdup_printf (_("There was an error displaying help: %s"),
+				       error->message);
+		error_dialog = hig_dialog_new (NULL /* parent */,
+					       GTK_DIALOG_DESTROY_WITH_PARENT,
+					       GTK_MESSAGE_ERROR,
+					       GTK_BUTTONS_OK,
+					       _("Error displaying help"),
+					       msg);
+		g_free (msg);
 
 		g_signal_connect (error_dialog, "response",
 				  G_CALLBACK (gtk_widget_destroy),
@@ -540,13 +622,13 @@ handle_response_cb(GtkDialog *dialog, gint response, ResponseWidgets *widgets)
 static void
 set_widget_sensitivity_false_cb(GtkWidget *widget, GtkWidget *target)
 {
-	gtk_widget_set_sensitive(target, FALSE);
+	soft_set_sensitive(target, FALSE);
 }
 
 static void
 set_widget_sensitivity_true_cb(GtkWidget *widget, GtkWidget *target)
 {
-	gtk_widget_set_sensitive(target, TRUE);
+	soft_set_sensitive(target, TRUE);
 }
 
 static gchar *
