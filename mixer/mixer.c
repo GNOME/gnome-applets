@@ -99,19 +99,41 @@ static gboolean icons_initialized = FALSE;
 
 #define IS_PANEL_HORIZONTAL(o) (o == PANEL_APPLET_ORIENT_UP || o == PANEL_APPLET_ORIENT_DOWN)
 
+#ifdef OSS_API
+
+typedef struct {
+	gint channel;
+	gchar *name;
+} ChannelData;
+
+static gchar *channel_names [] = {
+	N_("Main Volume"), N_("Bass"), N_("Treble"), N_("Synth"), 
+	N_("Pcm"), N_("Speaker"), N_("Line"), 
+	N_("Microphone"), N_("CD"), N_("Mix"), N_("Pcm2"), 
+	N_("Recording Level"), N_("Input Gain"), N_("Output Gain"), 
+	N_("Line1"), N_("Line2"), N_("Line3"), N_("Digital1"), 
+	N_("Digital2"), N_("Digital3"), 
+	N_("Phone Input"), N_("Phone Output"), N_("Video"), N_("Radio"), N_("Monitor")
+};
+#endif
+
 typedef struct {
 	PanelAppletOrient  orientation;
 
 	gint               timeout;
-	gboolean           mute;
+	gboolean       mute;
 	gint               vol;
 	gint               vol_before_popup;
+	gint		    channel;
+	int 		    mixerchannel;
+	GList		    *channels;
 
 	GtkAdjustment     *adj;
 
 	GtkWidget         *applet;
 	GtkWidget         *frame;
 	GtkWidget         *image;
+	GtkWidget 		*prefdialog;
 	
 	/* The popup window and scale. */
 	GtkWidget         *popup;
@@ -144,9 +166,6 @@ static const gchar *access_name = N_("Volume Control");
 static const gchar *access_name_mute = N_("Volume Control (muted)");
 gboolean gail_loaded = FALSE;  
 
-#ifdef OSS_API
-static int mixerchannel;
-#endif
 
 #ifdef IRIX_API
 /*
@@ -159,15 +178,48 @@ long pv_buf[MAX_PV_BUF] = {
 };
 #endif
 
+#ifdef OSS_API
+static void
+get_channels (MixerData *data)
+{
+	gint res, i;
+	int devmask;
+	gboolean valid = FALSE;
+	
+	res = ioctl(mixerfd, MIXER_READ(SOUND_MIXER_DEVMASK), &devmask);
+	if (res != 0) {
+		return;
+	} 
+	for (i = 0; i < SOUND_MIXER_NRDEVICES; i++) {
+		ChannelData *cdata;
+		if (devmask & (1 << i)) {
+			cdata = g_new0 (ChannelData, 1);
+			cdata->channel = i;
+			cdata->name = channel_names[i];
+			data->channels = g_list_append (data->channels, cdata);
+			if (data->mixerchannel == i)
+				valid = TRUE;
+		}
+	}
+	/* selected channel does not work. Set it to something that does */
+	if (!valid) {
+		ChannelData *cdata = data->channels->data;
+		data->mixerchannel = cdata->channel;
+		panel_applet_gconf_set_int (PANEL_APPLET (data->applet), "channel", 
+							  data->mixerchannel, NULL);
+	}
+}
+#endif
+
 /********************** Mixer related Code *******************/
 /*  Mostly based on the gmix code                            */
 /*************************************************************/
 static gboolean
-openMixer(const gchar *device_name ) 
+openMixer(const gchar *device_name, MixerData *data) 
 {
 	gint res, ver;
 #ifdef OSS_API
-	int devmask;
+	
 
 	mixerfd = open(device_name, O_RDWR, 0);
 #endif
@@ -202,37 +254,22 @@ openMixer(const gchar *device_name )
 	 * Check whether this mixer actually supports the channel
 	 * we're going to try to monitor.
 	 */
-	res = ioctl(mixerfd, MIXER_READ(SOUND_MIXER_DEVMASK), &devmask);
-	if (res != 0) {
-		char *s = g_strdup_printf(_("Querying available channels of mixer device %s failed\n"), device_name);
-		gnome_error_dialog(s);
-		g_free(s);
-		return TRUE;
-	} else if (devmask & SOUND_MASK_VOLUME) {
-		mixerchannel = SOUND_MIXER_VOLUME;
-	} else if (devmask & SOUND_MASK_PCM) {
-		g_message(_("warning: mixer has no volume channel - using PCM instead.\n"));
-		mixerchannel = SOUND_MIXER_PCM;
-	} else {
-		char *s = g_strdup_printf(_("Mixer device %s has neither volume nor PCM channels.\n"), device_name);
-		gnome_error_dialog(s);
-		g_free(s);
-		return TRUE;
-	}
+	 get_channels (data);
+
 #endif	
  	return TRUE;	
 }
 
 /* only works with master vol currently */
 static int
-readMixer(void)
+readMixer(MixerData *data)
 {
 	gint vol, r, l;
 #ifdef OSS_API
 	/* if we couldn't open the mixer */
 	if (mixerfd < 0) return 0;
 
-	ioctl(mixerfd, MIXER_READ(mixerchannel), &vol);
+	ioctl(mixerfd, MIXER_READ(data->mixerchannel), &vol);
 
 	l = vol & 0xff;
 	r = (vol & 0xff00) >> 8;
@@ -257,7 +294,7 @@ readMixer(void)
 }
 
 static void
-setMixer(gint vol)
+setMixer(gint vol, MixerData *data)
 {
 	gint tvol;
 #ifdef OSS_API
@@ -266,7 +303,8 @@ setMixer(gint vol)
 
 	tvol = (vol << 8) + vol;
 /*g_message("Saving mixer value of %d",tvol);*/
-	ioctl(mixerfd, MIXER_WRITE(mixerchannel), &tvol);
+	ioctl(mixerfd, MIXER_WRITE(data->mixerchannel), &tvol);
+	
 /* SOUND_MIXER_SPEAKER is output level on Mac, but input level on PC. #96639 */
 #ifdef __powerpc__
 	ioctl(mixerfd, MIXER_WRITE(SOUND_MIXER_SPEAKER), &tvol);
@@ -303,7 +341,7 @@ mixer_value_changed_cb (GtkAdjustment *adj, MixerData *data)
 	mixer_update_image (data);
 
 	if (!data->mute) {
-		setMixer (vol);
+		setMixer (vol, data);
 	}
 }
 
@@ -381,7 +419,7 @@ mixer_timeout_cb (MixerData *data)
 		}
 	}
 #endif
-	vol = readMixer ();
+	vol = readMixer (data);
 
 #ifndef SUN_API
 	/* Some external program changed the volume, get out of mute mode. */
@@ -619,7 +657,7 @@ mixer_popup_show (MixerData *data)
 	gtk_window_set_screen (GTK_WINDOW (data->popup),
 			       gtk_widget_get_screen (data->applet));
 
-	data->vol_before_popup = readMixer ();
+	data->vol_before_popup = readMixer (data);
 	
 	frame = gtk_frame_new (NULL);
 	gtk_container_set_border_width (GTK_CONTAINER (frame), 0);
@@ -772,7 +810,7 @@ mixer_popup_hide (MixerData *data, gboolean revert)
 
 		if (revert) {
 			vol = data->vol_before_popup;
-			setMixer (vol);
+			setMixer (vol, data);
 		} else {
 			/* Get a soft beep like sound to play here, like
 			 * on MacOS X :) */
@@ -943,6 +981,141 @@ mixer_mute_cb (BonoboUIComponent *uic,
 {
 }
 
+#ifdef OSS_API
+
+static gboolean
+cb_row_selected (GtkTreeSelection *selection, MixerData *data)
+{
+	PanelApplet *applet = PANEL_APPLET (data->applet);
+	GtkTreeIter iter;
+	GtkTreeModel *model;
+	ChannelData *cdata;
+	
+	if (!gtk_tree_selection_get_selected (selection, &model, &iter)) 
+		return FALSE;
+		
+	gtk_tree_model_get (model, &iter, 1, &cdata, -1);
+	if (cdata->channel == data->mixerchannel)
+		return FALSE;		
+	
+	data->mixerchannel = cdata->channel;
+	panel_applet_gconf_set_int (applet, "channel", data->mixerchannel, NULL);
+}
+
+static void
+dialog_response (GtkDialog *dialog, gint id, MixerData *data)
+{
+	if (id == GTK_RESPONSE_HELP) {
+		return;
+	}
+	
+	gtk_widget_destroy (GTK_WIDGET (dialog));
+	data->prefdialog = NULL;
+	
+}
+
+static void
+mixer_pref_cb (BonoboUIComponent *uic,
+	       MixerData         *data,
+	       const gchar       *verbname)
+{
+	GtkWidget *dialog;
+	GtkWidget *vbox, *vbox1, *vbox2, *vbox3;
+	GtkWidget *hbox, *hbox2;
+	GtkWidget *label;
+	GtkWidget *tree;
+	GtkListStore *model;
+	GtkWidget *scrolled;
+	GtkTreeViewColumn *column;
+	GtkCellRenderer *cell;
+	gchar *tmp;
+	GList *list = data->channels;
+	
+	if (data->prefdialog) {
+		gtk_window_present (GTK_WINDOW (data->prefdialog));
+		return;
+	}
+	
+	dialog = gtk_dialog_new_with_buttons (_("Volume Control Preferences"), NULL,
+                                                   GTK_DIALOG_DESTROY_WITH_PARENT,
+                                                   GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
+                                                   GTK_STOCK_HELP, GTK_RESPONSE_HELP,
+                                                   NULL);
+	gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_CLOSE);
+	gtk_window_set_screen (GTK_WINDOW (dialog),
+                           gtk_widget_get_screen (GTK_WIDGET (data->applet)));
+        gtk_window_set_default_size (GTK_WINDOW (dialog), 300, 300);
+        data->prefdialog = dialog;
+                           
+	vbox = GTK_DIALOG (dialog)->vbox;
+	
+	vbox1 = gtk_vbox_new (FALSE, 18);
+	gtk_container_set_border_width (GTK_CONTAINER (vbox1), 12);
+	gtk_box_pack_start (GTK_BOX (vbox), vbox1, TRUE, TRUE, 0);
+	
+	vbox2 = gtk_vbox_new (FALSE, 6);
+        gtk_box_pack_start (GTK_BOX (vbox1), vbox2, TRUE, TRUE, 0);
+        
+        tmp = g_strdup_printf ("<b>%s</b>", _("Channels"));
+        label = gtk_label_new (NULL);
+        gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+        gtk_label_set_markup (GTK_LABEL (label), tmp);
+        g_free (tmp);
+        gtk_box_pack_start (GTK_BOX (vbox2), label, FALSE, FALSE, 0);
+        
+        hbox = gtk_hbox_new (FALSE, 0);
+	gtk_box_pack_start (GTK_BOX (vbox2), hbox, TRUE, TRUE, 0);
+	
+	label = gtk_label_new ("    ");
+	gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
+	
+	vbox3 = gtk_vbox_new (FALSE, 6);
+	gtk_box_pack_start (GTK_BOX (hbox), vbox3, TRUE, TRUE, 0);
+	
+	scrolled = gtk_scrolled_window_new(NULL,NULL);
+	gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(scrolled),
+						GTK_POLICY_AUTOMATIC,
+						GTK_POLICY_AUTOMATIC);
+	gtk_box_pack_start (GTK_BOX (vbox3), scrolled, TRUE, TRUE, 0);
+	
+	model = gtk_list_store_new (2, G_TYPE_STRING, G_TYPE_POINTER);
+	tree = gtk_tree_view_new_with_model (GTK_TREE_MODEL (model));
+	gtk_container_add (GTK_CONTAINER (scrolled), tree);
+	g_object_unref (G_OBJECT (model));
+	cell = gtk_cell_renderer_text_new ();
+  	column = gtk_tree_view_column_new_with_attributes ("hello",
+						    	   cell,
+						     	   "text", 0,
+						     	   NULL);
+	gtk_tree_view_append_column (GTK_TREE_VIEW (tree), column);
+        gtk_tree_view_set_headers_visible (GTK_TREE_VIEW (tree), FALSE);
+        
+        while (list) {
+        	ChannelData *cdata = list->data;
+        	GtkTreeIter iter;
+        	
+		gtk_list_store_append (GTK_LIST_STORE (model), &iter);
+		gtk_list_store_set (GTK_LIST_STORE (model), &iter, 0, cdata->name, 1, cdata, -1);
+		if (cdata->channel == data->mixerchannel) {
+			GtkTreePath *path;
+			path = gtk_tree_model_get_path (GTK_TREE_MODEL (model), &iter);
+			gtk_tree_view_set_cursor (GTK_TREE_VIEW (tree), path, NULL, FALSE);
+		}
+        	list = g_list_next (list);
+        }
+        
+        g_signal_connect (G_OBJECT (gtk_tree_view_get_selection (GTK_TREE_VIEW (tree))), 
+			  	  "changed",
+			  	   G_CALLBACK (cb_row_selected), data);
+			  	   
+	g_signal_connect (G_OBJECT (dialog), "response",
+				  G_CALLBACK (dialog_response), data);
+        
+        gtk_widget_show_all (dialog);
+        
+}
+#endif
+
 static void
 mixer_ui_component_event (BonoboUIComponent            *comp,
 			  const gchar                  *path,
@@ -969,7 +1142,7 @@ mixer_ui_component_event (BonoboUIComponent            *comp,
 #ifdef SUN_API
 			set_mute_status (TRUE);
 #else
-			setMixer (0);
+			setMixer (0, data);
 #endif
 			mixer_update_image (data);
 		
@@ -988,7 +1161,7 @@ mixer_ui_component_event (BonoboUIComponent            *comp,
 #ifdef SUN_API
 			set_mute_status (FALSE);
 #else
-			setMixer (data->vol);
+			setMixer (data->vol, data);
 #endif
 			mixer_update_image (data);
 			
@@ -1004,6 +1177,18 @@ mixer_ui_component_event (BonoboUIComponent            *comp,
 			}
 		}
 	}
+}
+
+static void
+get_prefs (MixerData *data)
+{
+	PanelApplet *applet = PANEL_APPLET (data->applet);
+	gint num;
+#ifdef OSS_API
+	num = panel_applet_gconf_get_int (applet, "channel", NULL);
+	num = CLAMP (num, 0,  SOUND_MIXER_NRDEVICES-1);	
+	data->mixerchannel = num;
+#endif
 }
 
 typedef struct
@@ -1071,7 +1256,9 @@ const BonoboUIVerb mixer_applet_menu_verbs [] = {
 	BONOBO_UI_UNSAFE_VERB ("Mute",     mixer_mute_cb),
 	BONOBO_UI_UNSAFE_VERB ("Help",     mixer_help_cb),
 	BONOBO_UI_UNSAFE_VERB ("About",    mixer_about_cb),
-	
+#ifdef OSS_API
+	BONOBO_UI_UNSAFE_VERB ("Pref",    mixer_pref_cb),
+#endif
         BONOBO_UI_VERB_END
 };
 
@@ -1092,20 +1279,25 @@ mixer_applet_create (PanelApplet *applet)
 	gchar *ctl = NULL;
 #endif
 
+	data = g_new0 (MixerData, 1);
+	data->applet = GTK_WIDGET (applet);
+	
+	get_prefs (data);
+
 #ifdef OSS_API
 	/* /dev/sound/mixer for devfs */
 	device = "/dev/mixer";
-	retval = openMixer(device);
+	retval = openMixer(device, data);
 	if (!retval) {
 		device = "/dev/sound/mixer";
-		retval = openMixer (device);
+		retval = openMixer (device, data);
 	}
 #endif
 #ifdef SUN_API
 	if (!(ctl = g_getenv("AUDIODEV")))
 		ctl = "/dev/audio";
 	device = g_strdup_printf("%sctl",ctl);
-	retval = openMixer(device);
+	retval = openMixer(device, data);
 #endif
 	mixer_init_stock_icons ();
 	if (!retval) {
@@ -1124,8 +1316,6 @@ mixer_applet_create (PanelApplet *applet)
 		gail_loaded = TRUE;
 	}
 
-	data = g_new0 (MixerData, 1);
-
 	/* Try to find some mixers - sdtaudiocontrol is on Solaris and is needed
 	** because gnome-volume-meter doesn't work */
 	if (run_mixer_cmd == NULL) 
@@ -1142,7 +1332,6 @@ mixer_applet_create (PanelApplet *applet)
 	data->image = gtk_image_new ();
 	gtk_container_add (GTK_CONTAINER (data->frame), data->image);
 
-	data->applet = GTK_WIDGET (applet);
 	mixer_load_volume_images (data);
 
         data->tooltips = gtk_tooltips_new ();                                   
@@ -1190,7 +1379,7 @@ mixer_applet_create (PanelApplet *applet)
 			  data);
 
 	/* Get the initial volume. */
-	data->vol = readMixer ();
+	data->vol = readMixer (data);
 
 	/* Install timeout handler, that keeps the applet up-to-date if the
 	 * volume is changed somewhere else.
@@ -1236,6 +1425,10 @@ mixer_applet_create (PanelApplet *applet)
 
 	if (run_mixer_cmd == NULL)
 		bonobo_ui_component_rm (component, "/popups/popup/RunMixer", NULL);
+		
+#ifndef OSS_API
+	bonobo_ui_component_rm (component, "/popups/popup/Pref", NULL);
+#endif
 
 	applet_change_orient_cb (GTK_WIDGET (applet),
 				 panel_applet_get_orient (applet),

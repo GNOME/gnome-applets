@@ -37,7 +37,13 @@ $(server_in_files): $(server_in_files:.server.in=.server.in.in)
 uidir   = $(datadir)/gnome-2.0/ui
 ui_DATA = GNOME_MixerApplet.xml
 
+schemadir   = @GCONF_SCHEMA_FILE_DIR@
+schema_DATA = mixer.schemas
+
 EXTRA_DIST = 						\
 	GNOME_MixerApplet.server.in.in			\
 	$(ui_DATA) 					\
 	$(pixmaps_DATA)
+	
+install-data-local:
+        GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schema_DATA) ;
