@@ -175,6 +175,15 @@ int main(int argc, char **argv)
     gtk_widget_show(gnotes_button);
     gtk_widget_show(gnotes.applet);
 
+
+    applet_widget_register_callback(APPLET_WIDGET(gnotes.applet), "raise-notes",
+                                    _("Raise Notes"), gnotes_raise, 0);
+    applet_widget_register_callback(APPLET_WIDGET(gnotes.applet), "lower-notes",
+                                    _("Lower Notes"), gnotes_lower, 0);
+    applet_widget_register_callback(APPLET_WIDGET(gnotes.applet), "hide-notes",
+                                    _("Hide Notes"), gnotes_hide, 0);
+    applet_widget_register_callback(APPLET_WIDGET(gnotes.applet), "show-notes",
+                                    _("Show Notes"), gnotes_show, 0);
     applet_widget_register_stock_callback(APPLET_WIDGET(gnotes.applet),
                                           "properties", GNOME_STOCK_MENU_PROP,
                                           _("Properties..."), properties_show,
@@ -185,15 +194,6 @@ int main(int argc, char **argv)
     applet_widget_register_stock_callback(APPLET_WIDGET(gnotes.applet),
                                           "about", GNOME_STOCK_MENU_ABOUT,
                                           _("About..."), about, NULL);
-
-    applet_widget_register_callback(APPLET_WIDGET(gnotes.applet), "raise-notes",
-                                    _("Raise Notes"), gnotes_raise, 0);
-    applet_widget_register_callback(APPLET_WIDGET(gnotes.applet), "lower-notes",
-                                    _("Lower Notes"), gnotes_lower, 0);
-    applet_widget_register_callback(APPLET_WIDGET(gnotes.applet), "hide-notes",
-                                    _("Hide Notes"), gnotes_hide, 0);
-    applet_widget_register_callback(APPLET_WIDGET(gnotes.applet), "show-notes",
-                                    _("Show Notes"), gnotes_show, 0);
 
     /* let's load us some notes! */
     gnotes_load(0, 0);
