@@ -65,7 +65,7 @@ void about_box (BonoboUIComponent *uic,
    
 	mcdata->about_dialog = gnome_about_new (_("Command Line"), 
 						VERSION,
-						"(C) 1998-2002 Oliver Maruhn",
+						"\xc2\xa9 1998-2002 Oliver Maruhn",
 						_("This GNOME applet adds a command line to the panel. It features command completion, command history, and changeable macros.\n\n\ This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version."),
 						authors,
 						documenters,
