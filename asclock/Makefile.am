@@ -4,7 +4,7 @@ INCLUDES = -I. -I$(srcdir) 				\
 	-I$(top_builddir)/panel				\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
 	-I$(includedir) $(GNOME_INCLUDEDIR)		\
-	-DVERSION=\""$(VERSION)"\"
+	-DASCLOCK_GNOME -DVERSION=\""$(VERSION)"\"
 
 bin_PROGRAMS = asclock_applet
 
@@ -13,7 +13,12 @@ asclock_applet_SOURCES = \
 	asclock.h	\
 	draw.c          \
         timezone.c      \
-        dialogs.c
+        dialogs.c	\
+	config.c	\
+	gnome_config.c	\
+	rot.c		\
+	symbols.c	\
+	parser.c
 
 
 asclock_applet_LDADD = ../../panel/libpanel_applet.la \
@@ -22,11 +27,6 @@ asclock_applet_LDADD = ../../panel/libpanel_applet.la \
 
 EXTRA_DIST = \
 	asclock_applet.desktop	\
-	clk.xpm			\
-	led.xpm			\
-	weekday.xpm             \
-        month.xpm               \
-        date.xpm		\
 	asclock_applet.gnorba
 
 sysdir = $(datadir)/applets/Utility
