@@ -98,9 +98,10 @@ tree_create (GtkTreeStore *model)
 	    {
 	      /* There is country */
               GtkTreeIter iter;
-              
+
               gtk_tree_store_append (GTK_TREE_STORE(model), &iter, 
               				&cdata->iter);
+
 
 	      gtk_tree_store_set (GTK_TREE_STORE(model), &iter,
 				NAME_COL, item->name,
@@ -110,7 +111,7 @@ tree_create (GtkTreeStore *model)
 				LANG_COL, item->lang,
 				COUNTRY_COL, item->country,
 		                -1);
-              cdata->keymaps = g_list_append (cdata->keymaps, item);	    
+              cdata->keymaps = g_list_append (cdata->keymaps, item);
 	    }
 	  else
 	    {
@@ -118,7 +119,7 @@ tree_create (GtkTreeStore *model)
 
               GtkTreeIter citer;
               GtkTreeIter iter; 
-                           
+
               gtk_tree_store_append (GTK_TREE_STORE(model), &citer, 
               				&ldata->iter);
 
@@ -132,6 +133,11 @@ tree_create (GtkTreeStore *model)
 		                -1);
 	      
 	      cdata = g_new0 (CountryData, 1);
+
+	      cdata->keymaps = g_list_append (cdata->keymaps, item);
+
+	      memcpy(&cdata->iter,&citer,sizeof(GtkTreeIter));
+	      cdata->keymaps = NULL;
 
               gtk_tree_store_append (GTK_TREE_STORE(model), &iter, 
               				&cdata->iter);
@@ -179,6 +185,7 @@ tree_create (GtkTreeStore *model)
 	  memcpy(&ldata->iter,&liter,sizeof(GtkTreeIter));
 
 	  ldata->countries = g_hash_table_new (g_str_hash, g_str_equal);
+
           gtk_tree_store_append (GTK_TREE_STORE(model), &citer, 
               				&ldata->iter);
      

@@ -44,7 +44,6 @@
 
 int NumLockMask, CapsLockMask, ScrollLockMask;
 
-GtkTooltips *panel_tooltips;
 GtkWidget *bah_window = NULL;
 
 gchar *
@@ -62,6 +61,13 @@ static GdkFilterReturn
 event_filter (GdkXEvent * gdk_xevent, GdkEvent * event, gpointer data);
 
 static void gkb_destroy (GtkWidget * widget, gpointer data);
+
+void
+set_tooltip (GtkWidget * w, const gchar * tip)
+{
+  GtkTooltips *t = gtk_tooltips_new ();
+  gtk_tooltips_set_tip (t, w, tip, NULL);
+}
 
 void alert(const gchar * str){
  GtkWidget * window;
@@ -165,9 +171,7 @@ gkb_draw (GKB * gkb)
       gtk_label_set_text (GTK_LABEL (gkb->label2), gkb->keymap->label);
     }
 
-  gtk_tooltips_disable (panel_tooltips);
-  gtk_tooltips_set_tip (panel_tooltips, gkb->applet, gkb->keymap->name, NULL);
-  gtk_tooltips_enable (panel_tooltips);
+  set_tooltip (gkb->applet, gkb->keymap->name);
 
 }
 
