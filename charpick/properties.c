@@ -55,13 +55,14 @@ run_edit_dialog (gchar *string, gchar *title)
 							    NULL);
 
 	gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
+	gtk_container_set_border_width (GTK_CONTAINER (dialog), 5);
 	gtk_dialog_set_has_separator (GTK_DIALOG (dialog), FALSE);
 
 	dbox = GTK_DIALOG (dialog)->vbox;
 	
 	vbox = gtk_vbox_new (FALSE, 12);
 	gtk_box_pack_start (GTK_BOX (dbox), vbox, TRUE, TRUE, 0);
-	gtk_container_set_border_width (GTK_CONTAINER (vbox), 12);
+	gtk_container_set_border_width (GTK_CONTAINER (vbox), 5);
 	
 	hbox = gtk_hbox_new (FALSE, 12);
 	gtk_box_pack_start (GTK_BOX (vbox), hbox, TRUE, TRUE, 0);
@@ -280,7 +281,7 @@ static void default_chars_frame_create(charpick_data *curr_data)
   dbox = GTK_DIALOG (dialog)->vbox;
 
   vbox = gtk_vbox_new (FALSE, 18);
-  gtk_container_set_border_width (GTK_CONTAINER (vbox), 12);
+  gtk_container_set_border_width (GTK_CONTAINER (vbox), 5);
   gtk_box_pack_start (GTK_BOX (dbox), vbox, TRUE, TRUE, 0);
 
   vbox1 = create_hig_catagory (vbox, _("Character Palette")); 
@@ -369,6 +370,7 @@ show_preferences_dialog (BonoboUIComponent *uic,
   gtk_window_set_screen (GTK_WINDOW (curr_data->propwindow),
 			 gtk_widget_get_screen (curr_data->applet));
   gtk_window_set_default_size (GTK_WINDOW (curr_data->propwindow), 350, 350);
+  gtk_container_set_border_width (GTK_CONTAINER (curr_data->propwindow), 5);
   gtk_dialog_set_default_response (GTK_DIALOG (curr_data->propwindow), GTK_RESPONSE_CLOSE);
   gtk_dialog_set_has_separator (GTK_DIALOG (curr_data->propwindow), FALSE);
 
