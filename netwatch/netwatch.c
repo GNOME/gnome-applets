@@ -98,6 +98,7 @@ fork_exec(char *path, char *arg)
   }
 
   /* Hmm, I'm a parent.  Might as well wait and avoid zombies, eh? */
+
   wait4 (child, &status, 0, NULL);
   if (WIFEXITED(status) && (WEXITSTATUS(status) == 0)) {
     return 0;
@@ -361,7 +362,7 @@ create_netwatch (GtkWidget *window, char *parameters)
 #endif
 
 	/* update the network status every 10 seconds */
-	update_tag = gtk_timeout_add (10000, update_status, NULL);
+	update_tag = gtk_timeout_add (10000, (GtkFunction)update_status, NULL);
 
 	return parent_widget;
 }
