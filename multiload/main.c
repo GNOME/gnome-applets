@@ -287,7 +287,7 @@ multiload_button_press_event_cb (GtkWidget *widget, GdkEventButton *event, Multi
 	g_return_val_if_fail (event != NULL, FALSE);
 	g_return_val_if_fail (ma != NULL, FALSE);
 
-	if (event->button == 1 && event->type == GDK_2BUTTON_PRESS) {
+	if (event->button == 1 && event->type == GDK_BUTTON_PRESS) {
 		start_procman (ma);
 		return TRUE;
 	}
