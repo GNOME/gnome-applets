@@ -138,7 +138,6 @@ tree_create (GtkTreeStore *model)
 				LABEL_COL, item->label,
 		                -1);
 
-		/* TODO: fix */
 	      memcpy(&cdata->iter,&citer,sizeof(GtkTreeIter));
 	      cdata->keymaps = NULL;
 
@@ -198,7 +197,6 @@ tree_create (GtkTreeStore *model)
 				LABEL_COL, item->label,
 		                -1);
 
-		/* TODO: fix */
           memcpy(&cdata->iter,&citer,sizeof(GtkTreeIter));
 	  cdata->keymaps = NULL;
 

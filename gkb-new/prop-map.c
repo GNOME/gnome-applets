@@ -375,8 +375,8 @@ gkb_prop_map_load_stock_button (const gchar * stock_button,
 
   button = gtk_button_new_from_stock (stock_button);
 
-  gtk_signal_connect (GTK_OBJECT (button), "clicked",
-		      GTK_SIGNAL_FUNC (gkb_prop_map_button_clicked), mdi);
+  g_signal_connect (button, "clicked",
+		      G_CALLBACK (gkb_prop_map_button_clicked), mdi);
 
   gtk_container_add (GTK_CONTAINER (container), button);
   GTK_WIDGET_SET_FLAGS (button, GTK_CAN_DEFAULT);
@@ -430,8 +430,8 @@ gkb_prop_map_entry_at (GtkWidget * table, gint row, gint col,
 		    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
 		    (GtkAttachOptions) (0), 0, 0);
 
-  gtk_signal_connect (GTK_OBJECT (entry), "changed",
-		      GTK_SIGNAL_FUNC (gkb_prop_map_data_changed), mdi);
+  g_signal_connect (entry, "changed",
+		      G_CALLBACK (gkb_prop_map_data_changed), mdi);
 
   return entry;
 }
@@ -470,8 +470,8 @@ gkb_prop_map_combo_at (GtkWidget * table, gint row, gint col,
   if (text)
     gtk_entry_set_text (GTK_ENTRY (entry), text);
 
-  gtk_signal_connect (GTK_OBJECT (entry), "changed",
-		      GTK_SIGNAL_FUNC (gkb_prop_map_data_changed), mdi);
+  g_signal_connect (entry, "changed",
+		      G_CALLBACK (gkb_prop_map_data_changed), mdi);
 
   return entry;
 }
@@ -503,8 +503,8 @@ gkb_prop_map_pixmap_at (GtkWidget * table, gint row, gint col,
   gnome_icon_entry_set_icon (GNOME_ICON_ENTRY (icon_entry), flag);
 
 /* TODO:
-  gtk_signal_connect (GTK_OBJECT (GNOME_ICON_ENTRY (icon_entry)->pickbutton),
-		      "clicked", GTK_SIGNAL_FUNC (gkb_prop_map_data_changed),
+  g_signal_connect (GNOME_ICON_ENTRY (icon_entry)->pickbutton,
+		      "clicked", G_CALLBACK (gkb_prop_map_data_changed),
 		      mdi);
 
 */

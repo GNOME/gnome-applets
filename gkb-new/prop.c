@@ -262,7 +262,7 @@ gkb_prop_option_menu_at (GtkWidget * table, gint row, gint col,
       menu_item = gtk_menu_item_new_with_label ((gchar *) list->data);
       gtk_widget_show (menu_item);
       gtk_menu_append (GTK_MENU (menu), menu_item);
-      gtk_signal_connect (GTK_OBJECT (menu_item), "activate", function, pbi);
+      g_signal_connect (menu_item, "activate", function, pbi);
       gtk_object_set_data (GTK_OBJECT (menu_item), GKB_MENU_ITEM_TEXT,
 			   list->data);
     }
@@ -369,10 +369,10 @@ gkb_prop_create_hotkey_frame (GkbPropertyBoxInfo * pbi, GnomePropertyBox * pb)
   gtk_box_pack_start (GTK_BOX (hbox), button, TRUE, FALSE, 0);
   gtk_box_pack_start (GTK_BOX (hbox), pbi->hotkey_entry, FALSE, TRUE, 0);
 
-  gtk_signal_connect (GTK_OBJECT (pbi->hotkey_entry), "changed",
-		      GTK_SIGNAL_FUNC (changed_cb), pb);
-  gtk_signal_connect (GTK_OBJECT (button), "clicked",
-		      GTK_SIGNAL_FUNC (grab_button_pressed),
+  g_signal_connect (pbi->hotkey_entry, "changed",
+		      G_CALLBACK (changed_cb), pb);
+  g_signal_connect (button, "clicked",
+		      G_CALLBACK (grab_button_pressed),
 		      pbi->hotkey_entry);
 
   return frame;
@@ -447,10 +447,10 @@ gkb_prop_create_property_box (GkbPropertyBoxInfo * pbi)
   gtk_box_pack_start (GTK_BOX (page_2_vbox), hotkey_frame, TRUE, FALSE, 2);
 
   /* Connect the signals */
-  gtk_signal_connect (GTK_OBJECT (propbox), "apply",
-		      GTK_SIGNAL_FUNC (gkb_prop_apply_clicked), pbi);
-  gtk_signal_connect (GTK_OBJECT (propbox), "help",
-		      GTK_SIGNAL_FUNC (prophelp_cb), NULL);
+  g_signal_connect (propbox, "apply",
+		      G_CALLBACK (gkb_prop_apply_clicked), pbi);
+  g_signal_connect (propbox, "help",
+		      G_CALLBACK (prophelp_cb), NULL);
 
   return propbox;
 }
@@ -495,8 +495,8 @@ properties_dialog (BonoboUIComponent *uic,
 
   pbi->box = gkb_prop_create_property_box (pbi);
 
-  gtk_signal_connect (GTK_OBJECT (pbi->box), "destroy",
-		      GTK_SIGNAL_FUNC (gkb_prop_box_destroy), pbi);
+  g_signal_connect (pbi->box, "destroy",
+		      G_CALLBACK (gkb_prop_box_destroy), pbi);
 
   gtk_widget_show_all (pbi->box);
   gdk_window_raise (pbi->box->window);

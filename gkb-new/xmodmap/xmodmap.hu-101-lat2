@@ -1,27 +1,5 @@
-! xmodmap hungarian version, 
-! written by Zoltan Vorosbaranyi (vbzoli@tarki.hu) 1995
-! modified by Peter Soos (sp@osb.hu) 1996
-! for standard hungarian 102-key 'board (may be used for 101-key 'board too)
-!
-! Added mappings for 101-key keyboards: 
-!   AltGr E --> ^
-!   AltGr A --> <
-!   AltGr J --> í
-!   AltGr I --> í (it should be Í)
-!
-!   Note: AltGr Shift I --> Í
-!         AltGr Shift J --> Í
-!
-clear    shift
-clear    lock
-clear    control
-clear    mod1
-clear    mod2
-clear    mod3
-clear    mod4
-clear    mod5
-!
-keycode   8 =
+clear    Mod1
+clear    Mod2
 keycode   9 = Escape
 keycode  10 = 1 apostrophe asciitilde
 keycode  11 = 2 quotedbl
@@ -105,8 +83,6 @@ keycode  88 = KP_2
 keycode  89 = KP_3
 keycode  90 = KP_0
 keycode  91 = KP_Decimal
-keycode  92 =
-keycode  93 =
 keycode  94 = iacute Iacute less
 keycode  95 = F11
 keycode  96 = F12
@@ -114,7 +90,6 @@ keycode  97 = Home
 keycode  98 = Up
 keycode  99 = Prior
 keycode 100 = Left
-keycode 101 =
 keycode 102 = Right
 keycode 103 = End
 keycode 104 = Down
@@ -124,32 +99,8 @@ keycode 107 = Delete
 keycode 108 = KP_Enter
 keycode 109 = Control_R
 keycode 110 = Pause
-keycode 111 =
 keycode 112 = KP_Divide
 keycode 113 = Mode_switch
 keycode 114 = Break
-keycode 115 =
-keycode 116 =
-keycode 117 =
-keycode 118 =
-keycode 119 =
-keycode 120 =
-keycode 121 =
-keycode 122 =
-keycode 123 =
-keycode 124 =
-keycode 125 =
-keycode 126 =
-keycode 127 =
-keycode 128 =
-keycode 129 =
-keycode 130 =
-keycode 131 =
-keycode 132 =
-keycode 133 =
-keycode 134 =
-add     shift   = Shift_L Shift_R
-add     lock    = Caps_Lock
-add     control = Control_L Control_R
-add     mod1    = Alt_L Alt_R
+add     mod1    = Alt_L
 add     mod5    = Mode_switch

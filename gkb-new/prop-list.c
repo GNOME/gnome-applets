@@ -346,8 +346,8 @@ gkb_prop_list_create_button (const gchar * name, GkbPropertyBoxInfo * pbi)
   GtkWidget *button;
 
   button = gtk_button_new_with_label (name);
-  gtk_signal_connect (GTK_OBJECT (button), "clicked",
-		      GTK_SIGNAL_FUNC (gkb_prop_list_button_clicked_cb), pbi);
+  g_signal_connect (button, "clicked",
+		      G_CALLBACK (gkb_prop_list_button_clicked_cb), pbi);
   gtk_container_add (GTK_CONTAINER (pbi->buttons_vbox), button);
   /* FIXME, we don't want to flag the GTK_CAN_DEFAULT but if
    * we don't the widgets look ugly. This a hacky solution for
@@ -431,9 +431,9 @@ gkb_prop_create_scrolled_window (GkbPropertyBoxInfo * pbi)
 					 GTK_WIDGET (pbi->list));
   gkb_prop_list_load_keymaps (pbi);
 
-  gtk_signal_connect (GTK_OBJECT (pbi->list),
+  g_signal_connect (pbi->list,
 		      "selection_changed",
-		      GTK_SIGNAL_FUNC (gkb_prop_list_selection_changed), pbi);
+		      G_CALLBACK (gkb_prop_list_selection_changed), pbi);
 
   return scrolled_window;
 }

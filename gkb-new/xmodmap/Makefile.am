@@ -15,7 +15,7 @@ GKB_MAPS = \
 	xmodmap.lt xmodmap.lt_b xmodmap.lt_p xmodmap.nl xmodmap.no \
 	xmodmap.pl xmodmap.pl2 xmodmap.pt xmodmap.pt-dead xmodmap.qc \
 	xmodmap.qc-2 xmodmap.ru xmodmap.ru_yawerty xmodmap.se xmodmap.sf \
-	xmodmap.sg xmodmap.si xmodmap.sk xmodmap.th xmodmap.th2 xmodmap.tr_f \
+	xmodmap.sg xmodmap.si xmodmap.sk xmodmap.th xmodmap.tr_f \
 	xmodmap.tr_q xmodmap.uk xmodmap.us xmodmap.us-101 xmodmap.us-84 \
 	xmodmap.us-dec xmodmap.us-ibm xmodmap.us-int xmodmap.us-mac \
 	xmodmap.us-sgi-101 xmodmap.us-sun xmodmap.us.old xmodmap.us_intl \
