@@ -213,28 +213,31 @@ main(int argc, char **argv)
     gtk_frame_set_shadow_type(GTK_FRAME(frame), GTK_SHADOW_OUT);
     gtk_container_add(GTK_CONTAINER(frame), vbox);
 
-    /* add a handle box to allow moving away this appplet from the
+    if (prop.showHandle) {
+      /* add a handle box to allow moving away this appplet from the
        panel */
-    handle = gtk_handle_box_new();
-    gtk_signal_connect(GTK_OBJECT(handle), "child_detached",
-		       GTK_SIGNAL_FUNC(appletDetached_signal),
-		       NULL);
-    gtk_signal_connect(GTK_OBJECT(handle), "child_attached",
-		       GTK_SIGNAL_FUNC(appletAttached_signal),
-		       NULL);
-    gtk_container_add(GTK_CONTAINER(handle), frame);
+      handle = gtk_handle_box_new();
+      gtk_signal_connect(GTK_OBJECT(handle), "child_detached",
+		         GTK_SIGNAL_FUNC(appletDetached_signal),
+  		         NULL);
+      gtk_signal_connect(GTK_OBJECT(handle), "child_attached",
+		         GTK_SIGNAL_FUNC(appletAttached_signal),
+		         NULL);
+      gtk_container_add(GTK_CONTAINER(handle), frame);
     
-    /* outer frame */
-    frame2 = gtk_frame_new(NULL);
-    gtk_frame_set_shadow_type(GTK_FRAME(frame2), GTK_SHADOW_IN);
-    gtk_container_add(GTK_CONTAINER(frame2), handle);
+      /* outer frame */
+      frame2 = gtk_frame_new(NULL);
+      gtk_frame_set_shadow_type(GTK_FRAME(frame2), GTK_SHADOW_IN);
+      gtk_container_add(GTK_CONTAINER(frame2), handle);
 
-    /* there was trouble with thr tooltip */
-    /* applet_widget_set_tooltip(APPLET_WIDGET(applet),  _("Mini-Commander")); */
+      /* there was trouble with thr tooltip */
+      /* applet_widget_set_tooltip(APPLET_WIDGET(applet),  _("Mini-Commander")); */
 
+      applet_widget_add (APPLET_WIDGET (applet), frame2);
+    } else {
+      applet_widget_add (APPLET_WIDGET (applet), frame);
+    }
 
-
-    applet_widget_add (APPLET_WIDGET (applet), frame2);
     gtk_widget_set_usize(GTK_WIDGET(applet), prop.normalSizeX, prop.normalSizeY);
 
     /* allow pasting into the input box by packing it after

@@ -84,25 +84,37 @@ WIDTH="100%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->1999-04-16  Oliver Maruhn  &#60;om@linuxhq.com&#62;
+>1999-04-21  Oliver Maruhn  &#60;om@linuxhq.com&#62;
+
+	* src/preferences.c (propertiesBox): Added a patch from Nick Lamb
+ 	&#60;njl98r@ecs.soton.ac.uk&#62; which make the handle box optional.  When
+ 	I have more time I will make some modifications to these changes.
+
+1999-04-19  Oliver Maruhn  &#60;om@linuxhq.com&#62;
+
+	* src/exec.c (sighandle_sigchld): Using waitpid() instead of
+ 	wait().
+
+1999-04-16  Oliver Maruhn  &#60;om@linuxhq.com&#62;
 
 	* v1.0.0 released. This version has all basic features.
 	
-	* src/exec.c (initExecSignalHandler): Using sigaction instead of
- 	signal.  Now the signal handler has not to be reinstalled
+	* src/exec.c (initExecSignalHandler): Using sigaction() instead of
+ 	signal().  Now the signal handler has not to be reinstalled
  	everytime the signal is catched.  Hopefully this will fix the
  	"zombie" problem [reported by Charles Duffy &#60;cduffy@bigfoot.com&#62;
  	and Brian J. Murrell].
 
-	* src/preferences.c (loadSession): Two other very macros from Chad
- 	Powell &#60;pxpx@usa.net&#62; which allow searching yahoo and freshmeat have been
- 	added as an new default macro.  Also the "altavista" macro has been updated.
+	* src/preferences.c (loadSession): Two other macros from Chad
+ 	Powell &#60;pxpx@usa.net&#62; which allow searching yahoo and freshmeat
+ 	have been added as an new default macro.  The "altavista" macro
+ 	has been updated.
 
 1999-04-03  Oliver Maruhn  &#60;om@linuxhq.com&#62;
 
 	* src/preferences.c (loadSession): A very useful macro from Chad
  	Powell &#60;pxpx@usa.net&#62; which allows searches on altavista has been
- 	added as an new default macro.
+ 	added as a new default macro.
 
 	* src/macro.c (prefixNumber): prefix matching improved
 

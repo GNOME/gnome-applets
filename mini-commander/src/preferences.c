@@ -88,6 +88,7 @@ resetTemporaryPrefs(void)
     /* reset temporary prefereces */
     propTmp.showTime = -1;
     propTmp.showDate = -1;
+    propTmp.showHandle = -1;
     propTmp.normalSizeX = -1;
     propTmp.normalSizeY = -1;
     propTmp.reducedSizeX = -1;
@@ -115,6 +116,10 @@ propertiesBox_apply_signal(GnomePropertyBox *propertyBoxWidget, gint page, gpoin
     if(propTmp.showDate != -1)
 	/* checkbox has been changed */
 	prop.showDate = propTmp.showDate;
+
+    if(propTmp.showHandle != -1)
+	/* checkbox has been changed */
+        prop.showHandle = propTmp.showHandle;
 
     if(propTmp.showTime != -1 || propTmp.showDate != -1) {
 	/* checkbox has been changed */
@@ -227,6 +232,7 @@ loadSession(void)
 
     prop.showTime = gnome_config_get_bool("mini_commander/show_time=true");
     prop.showDate = gnome_config_get_bool("mini_commander/show_date=false");
+    prop.showHandle = gnome_config_get_bool("mini_commander/show_handle=true");
 
     /* size */
     prop.normalSizeX = gnome_config_get_int("mini_commander/normal_size_x=148");
@@ -359,6 +365,7 @@ saveSession(void)
     /* clock */
     gnome_config_set_bool("mini_commander/show_time", prop.showTime);
     gnome_config_set_bool("mini_commander/show_date", prop.showDate);
+    gnome_config_set_bool("mini_commander/show_handle", prop.showHandle);
 
     /* size */
     gnome_config_set_int("mini_commander/normal_size_x", prop.normalSizeX);
@@ -431,7 +438,7 @@ propertiesBox(AppletWidget *applet, gpointer data)
     GtkWidget *vbox, *vbox1, *frame;
     GtkWidget *hbox, *hbox1;
     GtkWidget *table;
-    GtkWidget *checkTime, *checkDate;
+    GtkWidget *checkTime, *checkDate, *checkHandle;
     GtkWidget *label;
     GtkWidget *entry;
     GtkWidget *colorPicker;
@@ -482,6 +489,19 @@ propertiesBox(AppletWidget *applet, gpointer data)
 			      GTK_SIGNAL_FUNC(gnome_property_box_changed),
 			      GTK_OBJECT(propertiesBox));
     gtk_box_pack_start(GTK_BOX(vbox1), checkDate, FALSE, TRUE, 0);
+
+    /* show handle check box */
+
+    checkHandle = gtk_check_button_new_with_label (_("Show handle (experimental, you have to restart the applet)"));
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(checkHandle), prop.showHandle);
+    gtk_signal_connect(GTK_OBJECT(checkHandle),
+                       "toggled",
+                       GTK_SIGNAL_FUNC(checkBoxToggled_signal),
+                       &propTmp.showHandle);
+    gtk_signal_connect_object(GTK_OBJECT(checkHandle), "toggled",
+                              GTK_SIGNAL_FUNC(gnome_property_box_changed),
+                              GTK_OBJECT(propertiesBox));
+    gtk_box_pack_start(GTK_BOX(vbox1), checkHandle, FALSE, TRUE, 0);
 
     /* Size */
     frame = gtk_frame_new(_("Size"));

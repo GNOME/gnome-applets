@@ -10,6 +10,7 @@ struct structProperties
 {
     int showTime;
     int showDate;
+    int showHandle;
     int normalSizeX;
     int normalSizeY;
     int reducedSizeX;
