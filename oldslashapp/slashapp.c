@@ -566,6 +566,7 @@ static void about_cb (AppletWidget *widget, gpointer data)
 	authors[0] = _("Justin Maurer <justin@openprojects.net>");
 	authors[3] = _("Craig Small <csmall@eye-net.com.au>");
 	authors[1] = _("John Ellis <johne@bellatlantic.net> - Display engine");
+	/* languages that can display "e with acute" can use "Frédéric" */
 	authors[2] = _("Frederic Devernay <devernay@istar.fr>");
 	authors[4] = NULL;
 
