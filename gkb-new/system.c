@@ -50,7 +50,7 @@ gkb_system_set_keymap_idle (GKB *gkb)
     else
     g_snprintf (str, sizeof (str), _("An error occured.\n\nUnable to load keymap"
     				     " `%s', probably because command `xmodmap'"
-    				     " is could not be located"
+    				     " could not be located"
     				     " in your PATH.\n\nThe command was: %s"),
     				     gkb->keymap->name, gkb->keymap->command);
     gnome_error_dialog (str);
