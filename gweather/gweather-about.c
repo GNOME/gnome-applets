@@ -23,29 +23,29 @@
 #include "gweather-about.h"
 
 
-static GtkWidget *gweather_about_new (void)
+void gweather_about_run (void)
 {
     const gchar *authors[] = {
         "Spiros Papadimitriou <spapadim+@cs.cmu.edu>",
         NULL
     };
-    GtkWidget *about_dialog;
+    static GtkWidget *about_dialog = NULL;
     
+    if (about_dialog != NULL)
+    {
+    	gdk_window_show(about_dialog->window);
+    	gdk_window_raise(about_dialog->window);
+	return;
+    }
     about_dialog = gnome_about_new ("GNOME Weather", "0.05",
                                     _("Copyright (c)1999 by S. Papadimitriou"),
                                     authors,
                                     _("GNOME weather monitor applet.\nWeb: http://gweather.dhs.org/"),
                                     NULL);
-    gtk_window_set_modal (GTK_WINDOW (about_dialog), TRUE);
+    gtk_signal_connect( GTK_OBJECT(about_dialog), "destroy",
+		        GTK_SIGNAL_FUNC(gtk_widget_destroyed), &about_dialog );
+    gtk_widget_show(about_dialog);
     
     
-    return about_dialog;
-}
-
-
-void gweather_about_run (void)
-{
-    GtkWidget *about = gweather_about_new();
-
-    gtk_widget_show(about);
+    return;
 }
