@@ -66,8 +66,8 @@ static gchar *color_rc_names[] = {
 static gchar *color_defaults[] = {
 	"#FF0000",
 	"#4D0000",
-	"#00FF00",
-	"#004D00",
+	"#FF0000",
+	"#4D0000",
 	"#004D00",
 	"#00FF00",
 	"#FEF06B",
