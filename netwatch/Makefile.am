@@ -5,18 +5,27 @@ INCLUDES = 			\
 	-I$(srcdir)/../../panel	\
 	-I$(includedir) $(GNOME_INCLUDEDIR)
 
-lib_LTLIBRARIES = libpanel_netwatch.la
+BUILT_SOURCES = dummy.cc
 
-libpanel_netwatch_la_SOURCES = 	\
-	netwatch.c
+dummy.cc:
+	@touch dummy.cc
 
-# See ../panelrc.in for where these xpms are reference from
 
-pixmap_DATA = \
-	netwatch-modem-up.xpm \
-	netwatch-modem-down.xpm \
-	netwatch-net-up.xpm \
-	netwatch-net-down.xpm
+bin_PROGRAMS = netwatch_applet
 
-EXTRA_DIST = $(pixmap_DATA)
+netwatch_applet_SOURCES = netwatch.c
+
+MICO_VERS = 2.0.5
+MICO_LIBS = -lmicocoss$(MICO_VERS) -lmicoaux$(MICO_VERS) -lmico$(MICO_VERS)
+
+netwatch_applet_LDADD = ../../panel/libpanel_applet.la \
+                     $(GNOME_LIBDIR) $(MICO_LIBS) -lXt \
+                     $(GNOMEUI_LIBS) $(INTLLIBS)
+
+netwatch_applet_LINK = $(CXXLINK)
+
+EXTRA_DIST = netwatch_applet.desktop
+
+sysdir = $(datadir)/applets/Network
+sys_DATA = netwatch_applet.desktop
 
