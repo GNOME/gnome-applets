@@ -1,0 +1,198 @@
+<!-- Permission is granted to make and distribute verbatim copies of -->
+<!-- this manual provided the copyright notice and this permission -->
+<!-- notice are  preserved on all copies. -->
+<!-- -->
+<!-- Permission is granted to copy and distribute modified versions of -->
+<!-- this manual under the conditions for verbatim copying, provided -->
+<!-- that the entire resulting derived work is distributed under the -->
+<!-- terms of a permission notice identical to this one. -->
+<!-- -->
+<!-- Permission is granted to copy and distribute translations of this -->
+<!-- manual into another language, under the above conditions for -->
+<!-- modified versions, except that this permission notice may be -->
+<!-- stated in a translation approved by the Foundation. -->
+
+  <sect1 id="loadavg-applet">
+   <title>El aplique de carga promedio</title> 
+
+   <para> 
+     El <application>aplique de carga promedio</application> es un pequeño aplique monitor situado en el panel que informa de la carga promedio actual.
+   </para>
+  
+   <para>
+     La carga promedio de una máquina es una medida arbitraria que representa lo "ocupada" que está. El cálculo es un promedio (muy aproximado) de cuántos procesos hay en ejecución o en espera de ser despertados por el kernel. Es muy útil para comparaciones de la carga de tu máquina en distintos momentos, pero no para comparar con otras máquinas. Normalmente es representado como un fracción.
+
+    <figure id="loadavg-applet-fig">
+      <title>Aplique de Carga Promedio</title>
+      <screenshot>
+	<screeninfo>Aplique de Carga Promedio</screeninfo>
+	<graphic format="png" fileref="figures/loadavg-applet" 
+		 srccredit="Eric Baudais">
+	</graphic>
+      </screenshot>
+    </figure>
+  </para>
+ 
+   <sect2 id="loadavg-usage">
+    <title>Uso</title>
+    <para>
+       No es necesario hacer nada a este aplique. Se situará y ejecutará  en su panel. Existen varias opciones para modificar su aspecto.  
+    </para>
+   </sect2>
+
+   <sect2 id="loadavg-right-click">
+    <title>Opciones de menu desplegables con el botón derecho</title>
+    <para> 
+      Además de las opciones del menú estándar, 
+      el menú desplegable con el botón derecho tiene las siguientes opciones: 
+     </para>   
+
+    <variablelist>
+     <varlistentry>
+      <term>Propiedades por omisión...</term>
+      <listitem>
+       <para>
+         Abre el <guilabel>cuadro de diálogo del aplique multicarga</guilabel>
+         <link linkend="loadavg-properties">descrito más adelante</link> que le permite modificar las propiedades por defecto de este aplique monitor y otros apliques relacionados.
+       </para>
+      </listitem>
+     </varlistentry>
+
+     <varlistentry>
+      <term>Propiedades...</term>
+      <listitem>
+       <para>
+        Abre el <guilabel>cuadro de diálogo del aplique multicarga</guilabel>
+         <link linkend="loadavg-properties">descrito más adelante</link> que afecta sólo a las propiedades del <application>aplique de carga promedio</application>.
+       </para>
+      </listitem>
+     </varlistentry>
+
+     <varlistentry>
+      <term>Ejecutar gtop...</term>
+      <listitem>
+       <para>
+         Esta opción ejecutará <command>gtop</command> que arranca el Monitor del Sistema de GNOME. <application>gtop</application> proporciona una visión mucho más detallada del sistema y de lo que en él ocurre.
+       </para>
+      </listitem>
+     </varlistentry>
+    </variablelist>
+   </sect2>
+  
+   <sect2 id="loadavg-properties">
+    <title>Propiedades</title>
+
+    <figure id="loadavg-default-fig">
+      <title>Diálogo de Propiedades por Omisión</title>
+      <screenshot>
+	<screeninfo>Diálogo de Propiedades por Omisión del Aplique de Carga Promedio</screeninfo>
+	<graphic format="png" fileref="figures/loadavg-applet-default" 
+		 srccredit="Eric Baudais">
+	</graphic>
+      </screenshot>
+    </figure>
+
+    <para>
+      Al igual que varios de los aplique monitores, el
+      <application>aplique de carga promedio</application> tiene dos modos de seleccionar preferencias. Puede hacer cambios que afectan a todo este grupo 
+      (<application>aplique de carga CPU</application>, <application>aplique de carga de memoria</application>,
+      <application>aplique de carga swap</application>, <application>aplique de carga de la red</application>
+      y <application>aplique de carga promedio</application>) en un amplio cuadro de diálogo. Esto es útil si ejecuta uno o más de ellos. Estos son los valores por defecto. Se llega a ellos desde la opción del menú 
+      <guimenuitem>Propiedades por omisión...</guimenuitem>
+    </para>
+    
+    <figure id="loadavg-greyed-fig">
+      <title>Diálogo de propiedades deshabilitado</title>
+      <screenshot>
+	<screeninfo>Diálogo de propiedades deshabilitado del Aplique de Carga Promedio</screeninfo>
+	<graphic format="png" fileref="figures/loadavg-applet-greyed" 
+	     srccredit="Eric Baudais">
+	</graphic>
+      </screenshot>
+    </figure>
+
+    <para>
+      O puede cambiar sólo las propiedades para el 
+      <application>aplique de carga promedio</application>. Esto es útil cuando sólo utiliza el <application>aplique de carga promedio</application> o cuando quiere probar nuevas combinaciones. Se llega a él desde la opción del menú  
+      <guimenuitem>Propiedades</guimenuitem>.
+    </para>
+    <note>
+     <para>
+      Si usa la opción del menú <guimenuitem>Propiedades...</guimenuitem>
+      y edita las preferencias para sólo este aplique, debe deshabilitar la casilla  <guibutton>Usar propiedades por omisión</guibutton> antes de cambiar la configuración.
+     </para>
+    </note>
+
+    <figure id="loadavg-properties-fig">
+      <title>Diálogo de Propiedades de Carga de Promedio</title>
+      <screenshot>
+	<screeninfo>Diálogo de Propiedades del Aplique de Carga Promedio</screeninfo>
+	<graphic format="png" fileref="figures/loadavg-applet-properties" 
+	     srccredit="Eric Baudais">
+	</graphic>
+      </screenshot>
+    </figure>
+
+    <para>
+      Los cambios que puede hacer a las propiedades son cuatro:
+    </para>
+
+    <variablelist>
+     <varlistentry>
+      <term>Colores</term>
+      <listitem>
+       <para>
+         Puede cambiar los colores usados para el aspecto del aplique
+         pulsando en las cajas de colores. Esto invoca la rueda de colores de GNOME.
+         Los títulos son un poco confusos. "Usada" es la carga promedio actual, y "libre" es el color de fondo.
+        </para>
+       </listitem>
+      </varlistentry>
+
+      <varlistentry>
+       <term>Velocidad</term>
+       <listitem>
+        <para>
+          Puede alterar la velocidad de actualización del gráfico.
+         Se mide en milisegundos. El valor por omisión es 500.
+        </para>
+       </listitem>
+      </varlistentry>
+
+      <varlistentry>
+       <term>Tamaño</term>
+       <listitem>
+        <para>
+          Puede cambiar el tamaño del aplique. La medida es en píxeles. El valor por defecto es 40, y el rango abarca desde 1 pixel hasta donde quiera. En un panel vertical, este valor hace referencia a la altura. En uno horizontal, a la anchura.
+        </para>
+       </listitem>
+      </varlistentry>
+
+      <varlistentry>
+       <term>Máximo</term>
+       <listitem>
+        <para>
+          El valor máximo en el eje Y (el valor de carga promedio máximo posible que el aplique muestra). El valor por defecto es 10.
+        </para>
+        <note>
+         <para>
+           Esta opción sólo está disponible desde la <guimenuitem>opción del menu Propiedades por omisión</guimenuitem>. No aparece en el cuadro de diálogo que se lanza desde la <guimenuitem>opción del menú Propiedades</guimenuitem>.
+         </para>
+        </note>
+       </listitem>
+      </varlistentry>
+     </variablelist>
+   </sect2>
+  
+   <sect2 id="loadavg-bugs">
+    <title> Errores Conocidos y Limitaciones</title>
+    <para>
+      Cambiar el tamaño del aplique y su orientación puede causar todavía problemas intermitentes, aunque ahora se corrigen por sí mismos al cabo de un corto período de tiempo.
+    </para>
+   </sect2>
+
+&authors;
+&license;
+&license-es;
+</sect1>
+

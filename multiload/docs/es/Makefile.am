@@ -1,1 +1,1 @@
-SUBDIRS = cpuload memload netload swapload
+SUBDIRS = cpuload loadavg memload netload swapload
