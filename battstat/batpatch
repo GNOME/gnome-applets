@@ -1,0 +1,14 @@
+void
+adj_value_changed_cb ( GtkAdjustment *ignored, gpointer data )
+{
+  ProgressData *battstat = data;
+
+  GTK_ADJUSTMENT (battstat->ered_adj)->upper=(int)GTK_ADJUSTMENT (battstat->eorange_adj)->value-1;
+  GTK_ADJUSTMENT (battstat->eorange_adj)->lower=(int)GTK_ADJUSTMENT (battstat->ered_adj)->value+1;
+  GTK_ADJUSTMENT (battstat->eorange_adj)->upper=(int)GTK_ADJUSTMENT (battstat->eyellow_adj)->value-1;
+  GTK_ADJUSTMENT (battstat->eyellow_adj)->lower=(int)GTK_ADJUSTMENT (battstat->eorange_adj)->value+1;
+  battstat->colors_changed = TRUE;
+  gnome_property_box_changed (GNOME_PROPERTY_BOX (battstat->prop_win));
+  simul_cb(ignored,battstat);
+  return;
+}

@@ -1,0 +1,137 @@
+#
+# configure.in
+#
+# Author: Jörgen Pehrson <jp@spektr.eu.org>
+#
+# Created: Sun May  7 19:13:52 CEST 2000
+#
+
+AC_INIT(battstat_applet.c)
+
+AM_CONFIG_HEADER(config.h)
+AC_CANONICAL_HOST
+AC_MSG_CHECKING(cached information)
+
+hostcheck="$host"
+AC_CACHE_VAL(ac_cv_hostcheck, [ ac_cv_hostcheck="$hostcheck" ])
+if test "$ac_cv_hostcheck" != "$hostcheck"; then
+  AC_MSG_RESULT(changed)
+  AC_MSG_WARN(config.cache exists!)
+  AC_MSG_ERROR(you must do 'make distclean' first to compile for different host or different parameters.)
+else
+  AC_MSG_RESULT(ok)
+fi
+
+AC_PROG_CC
+AC_PROG_INSTALL
+AC_ISC_POSIX
+AC_PROG_CPP
+AC_ARG_PROGRAM
+
+AM_INIT_AUTOMAKE(battstat_applet,2.0.6)
+
+AC_HEADER_STDC
+AM_PATH_GTK(1.2.0)
+CFLAGS="$CFLAGS"
+AM_MAINTAINER_MODE
+AM_ACLOCAL_INCLUDE(macros)
+GNOME_INIT(applets docklets)
+GNOME_COMPILE_WARNINGS
+
+AC_CHECK_HEADERS(unistd.h)
+AC_CHECK_FUNCS(getopt)
+
+case "${host}" in
+  *-*-freebsd*)
+	 LDFLAGS="$LDFLAGS $GTK_LIBS"
+	 ;;
+  *-*-linux*)
+	AC_CHECK_LIB(apm,apm_read,,[
+	AC_MSG_ERROR([*** libapm not found.])])
+	 LDFLAGS="$LDFLAGS $GTK_LIBS -lapm"
+	 ;;
+  *)
+	 AC_MSG_WARN($host is not supported. You are on your own!)
+	 LDFLAGS="$LDFLAGS $GTK_LIBS"
+         ;;
+esac
+
+if test -f $srcdir/MANIFEST
+then
+  AC_MSG_CHECKING(if all files are included in the distribution)
+  cat $srcdir/MANIFEST | while read afile
+  do
+    if test ! -f $srcdir/$afile
+    then
+      AC_MSG_WARN(file $afile missing from distribution)
+    fi
+  done
+  AC_MSG_RESULT(yes)
+fi
+
+dnl ######################################################################################
+dnl Install into gnome locations? (may require priveliges that we don't have)
+dnl ######################################################################################
+
+AC_ARG_ENABLE([system-install], [  --disable-system-install Don't install some files into Gnome's prefix],[
+        use_system_install=$enableval
+],[
+        if test x"$BALSA_DISTCHECK_HACK" = xyes ; then
+                use_system_install=no
+        else
+                use_system_install=yes
+        fi
+])
+
+AC_MSG_CHECKING([whether to install into Gnome's prefix])
+if test x"$use_system_install" = xyes ; then
+        AC_MSG_RESULT([yes])
+        gnomeprefix=`${GNOME_CONFIG} --prefix`
+        gnomebindir=`${GNOME_CONFIG} --bindir`
+        gnomedatadir=`${GNOME_CONFIG} --datadir`
+        gnomeconfdir=`${GNOME_CONFIG} --sysconfdir`
+	gnomelocaledir='${prefix}/${DATADIRNAME}/locale'
+else
+        AC_MSG_RESULT([no])
+        gnomeprefix=`eval "echo ${prefix}"`
+        gnomebindir=`eval "echo ${prefix}"/bin`
+        gnomedatadir=`eval "echo ${datadir}"`
+        gnomeconfdir=`eval "echo ${sysconfdir}"`
+	gnomelocaledir='${prefix}/${DATADIRNAME}/locale'
+fi
+
+AC_SUBST(gnomeprefix)
+AC_SUBST(gnomebindir)
+AC_SUBST(gnomedatadir)
+AC_SUBST(gnomeconfdir)
+AC_SUBST(gnomelocaledir)
+
+ALL_LINGUAS="sv pl"
+AM_GNU_GETTEXT
+USE_INCLUDED_LIBINTL="no"
+INTLDEPS=""
+INTLLIBS=""
+INTLOBJS=""
+AC_SUBST(USE_INCLUDED_LIBINTL)
+AC_SUBST(INTLDEPS)
+AC_SUBST(INTLLIBS)
+AC_SUBST(INTLOBJS)
+
+AC_DEFINE_UNQUOTED(GNOME_ICONDIR, "${GNOME_PREFIX}/share/gnome/pixmaps")
+
+AC_OUTPUT([
+Makefile
+macros/Makefile
+intl/Makefile
+po/Makefile.in
+docs/Makefile
+docs/C/Makefile
+docs/pl/Makefile
+sounds/Makefile
+])
+
+if test "$prefix" != "$gnomeprefix"; then
+  AC_MSG_WARN(\$prefix is different from where GNOME is installed)
+  AC_MSG_WARN(\$prefix = $prefix)
+  AC_MSG_WARN(GNOME prefix = $gnomeprefix)
+fi

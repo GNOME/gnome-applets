@@ -1,0 +1,340 @@
+# Makefile.in generated automatically by automake 1.4a from Makefile.am
+
+# Copyright (C) 1994, 1995-9, 2000 Free Software Foundation, Inc.
+# This Makefile.in is free software; the Free Software Foundation
+# gives unlimited permission to copy and/or distribute it,
+# with or without modifications, as long as this notice is preserved.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY, to the extent permitted by law; without
+# even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.
+
+SHELL = @SHELL@
+
+srcdir = @srcdir@
+top_srcdir = @top_srcdir@
+VPATH = @srcdir@
+prefix = @prefix@
+exec_prefix = @exec_prefix@
+
+bindir = @bindir@
+sbindir = @sbindir@
+libexecdir = @libexecdir@
+datadir = @datadir@
+sysconfdir = @sysconfdir@
+sharedstatedir = @sharedstatedir@
+localstatedir = @localstatedir@
+libdir = @libdir@
+infodir = @infodir@
+mandir = @mandir@
+includedir = @includedir@
+oldincludedir = /usr/include
+
+pkgdatadir = $(datadir)/@PACKAGE@
+pkglibdir = $(libdir)/@PACKAGE@
+pkgincludedir = $(includedir)/@PACKAGE@
+
+top_builddir = ../..
+
+ACLOCAL = @ACLOCAL@
+AUTOCONF = @AUTOCONF@
+AUTOMAKE = @AUTOMAKE@
+AUTOHEADER = @AUTOHEADER@
+
+INSTALL = @INSTALL@
+INSTALL_PROGRAM = @INSTALL_PROGRAM@
+INSTALL_DATA = @INSTALL_DATA@
+INSTALL_SCRIPT = @INSTALL_SCRIPT@
+INSTALL_STRIP_FLAG =
+transform = @program_transform_name@
+
+NORMAL_INSTALL = :
+PRE_INSTALL = :
+POST_INSTALL = :
+NORMAL_UNINSTALL = :
+PRE_UNINSTALL = :
+POST_UNINSTALL = :
+
+@SET_MAKE@
+host_alias = @host_alias@
+host_triplet = @host@
+AMDEP = @AMDEP@
+AMTAR = @AMTAR@
+AWK = @AWK@
+CATALOGS = @CATALOGS@
+CATOBJEXT = @CATOBJEXT@
+CC = @CC@
+CPP = @CPP@
+CXX = @CXX@
+CXXCPP = @CXXCPP@
+DATADIRNAME = @DATADIRNAME@
+DEPDIR = @DEPDIR@
+GENCAT = @GENCAT@
+GMOFILES = @GMOFILES@
+GMSGFMT = @GMSGFMT@
+GNOMEGNORBA_LIBS = @GNOMEGNORBA_LIBS@
+GNOMEUI_LIBS = @GNOMEUI_LIBS@
+GNOME_APPLETS_LIBS = @GNOME_APPLETS_LIBS@
+GNOME_CAPPLET_LIBS = @GNOME_CAPPLET_LIBS@
+GNOME_CONFIG = @GNOME_CONFIG@
+GNOME_DOCKLETS_LIBS = @GNOME_DOCKLETS_LIBS@
+GNOME_INCLUDEDIR = @GNOME_INCLUDEDIR@
+GNOME_LIBDIR = @GNOME_LIBDIR@
+GNOME_LIBS = @GNOME_LIBS@
+GNORBA_CFLAGS = @GNORBA_CFLAGS@
+GNORBA_LIBS = @GNORBA_LIBS@
+GTKXMHTML_LIBS = @GTKXMHTML_LIBS@
+GTK_CFLAGS = @GTK_CFLAGS@
+GTK_CONFIG = @GTK_CONFIG@
+GTK_LIBS = @GTK_LIBS@
+GT_NO = @GT_NO@
+GT_YES = @GT_YES@
+INCLUDE_LOCALE_H = @INCLUDE_LOCALE_H@
+INSTOBJEXT = @INSTOBJEXT@
+INTLDEPS = @INTLDEPS@
+INTLLIBS = @INTLLIBS@
+INTLOBJS = @INTLOBJS@
+MAINT = @MAINT@
+MAKEINFO = @MAKEINFO@
+MKINSTALLDIRS = @MKINSTALLDIRS@
+MSGFMT = @MSGFMT@
+ORBIT_CFLAGS = @ORBIT_CFLAGS@
+ORBIT_CONFIG = @ORBIT_CONFIG@
+ORBIT_IDL = @ORBIT_IDL@
+ORBIT_LIBS = @ORBIT_LIBS@
+PACKAGE = @PACKAGE@
+POFILES = @POFILES@
+POSUB = @POSUB@
+RANLIB = @RANLIB@
+USE_INCLUDED_LIBINTL = @USE_INCLUDED_LIBINTL@
+USE_NLS = @USE_NLS@
+VERSION = @VERSION@
+ZVT_LIBS = @ZVT_LIBS@
+cflags_set = @cflags_set@
+cxxflags_set = @cxxflags_set@
+gnomebindir = @gnomebindir@
+gnomeconfdir = @gnomeconfdir@
+gnomedatadir = @gnomedatadir@
+gnomelocaledir = @gnomelocaledir@
+gnomeprefix = @gnomeprefix@
+install_sh = @install_sh@
+l = @l@
+
+
+# This file gets included by the applets' Makefile.am
+# they should set $(applet) to their name, and $(figs)
+# to the images they reference
+#
+# Sample:
+#
+# applet = modemlights
+# lang = C
+# figs = modemlights-advpref.png  modemlights-prefs.png  modemlights.png
+# include $(top_srcdir)/applet-docs.make
+
+
+applet = battstat
+sgml_ents = $(applet).sgml
+figs = \
+	menu.gif \
+	general.gif \
+	appear.gif \
+	square.gif \
+	appear-hidden.gif \
+	square-hidden.gif \
+	top.gif \
+	bottom.gif \
+        screen-ac.gif \
+	screen-batt.gif \
+	screen-charge.gif \
+	dock.gif
+
+lang = C
+
+docdir = $(datadir)/gnome/help/$(applet)_applet/$(lang)
+doc_DATA = \
+	index.html	\
+	topic.dat	\
+	$(figs)
+
+
+sgml_files = \
+	$(sgml_ents)		\
+	$(applet)-applet.sgml
+
+
+# automake does not know anything about .sgml files yet -> EXTRA_DIST
+EXTRA_DIST = $(sgml_files) $(doc_DATA)
+subdir = docs/C
+mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
+CONFIG_HEADER = ../../config.h
+CONFIG_CLEAN_FILES = 
+DIST_SOURCES = 
+DATA =  $(doc_DATA)
+
+DIST_COMMON =  Makefile.am Makefile.in
+
+
+DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
+
+GZIP_ENV = --best
+all: all-redirect
+.SUFFIXES:
+$(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ Makefile.am $(top_srcdir)/configure.in $(ACLOCAL_M4) $(top_srcdir)/applet-docs.make
+	cd $(top_srcdir) && $(AUTOMAKE) --gnu docs/C/Makefile
+
+Makefile: $(srcdir)/Makefile.in  $(top_builddir)/config.status
+	cd $(top_builddir) \
+	  && CONFIG_FILES=$(subdir)/$@ CONFIG_HEADERS= $(SHELL) ./config.status
+
+
+install-docDATA: $(doc_DATA)
+	@$(NORMAL_INSTALL)
+	$(mkinstalldirs) $(DESTDIR)$(docdir)
+	@list='$(doc_DATA)'; for p in $$list; do \
+	  if test -f "$$p"; then d= ; else d="$(srcdir)/"; fi; \
+	  f="`echo $$p | sed -e 's|^.*/||'`"; \
+	  echo " $(INSTALL_DATA) $$d$$p $(DESTDIR)$(docdir)/$$f"; \
+	  $(INSTALL_DATA) $$d$$p $(DESTDIR)$(docdir)/$$f; \
+	done
+
+uninstall-docDATA:
+	@$(NORMAL_UNINSTALL)
+	@list='$(doc_DATA)'; for p in $$list; do \
+	  f="`echo $$p | sed -e 's|^.*/||'`"; \
+	  echo " rm -f $(DESTDIR)$(docdir)/$$f"; \
+	  rm -f $(DESTDIR)$(docdir)/$$f; \
+	done
+tags: TAGS
+TAGS:
+
+
+distdir = $(top_builddir)/$(PACKAGE)-$(VERSION)/$(subdir)
+
+distdir: $(DISTFILES)
+	@for file in $(DISTFILES); do \
+	  d=$(srcdir); \
+	  if test -d $$d/$$file; then \
+	    cp -pR $$d/$$file $(distdir) \
+	    || exit 1; \
+	  else \
+	    test -f $(distdir)/$$file \
+	    || cp -p $$d/$$file $(distdir)/$$file \
+	    || exit 1; \
+	  fi; \
+	done
+	$(MAKE) $(AM_MAKEFLAGS) top_distdir="$(top_distdir)" distdir="$(distdir)" dist-hook
+info-am:
+info: info-am
+dvi-am:
+dvi: dvi-am
+check-am: all-am
+check: check-am
+installcheck-am:
+installcheck: installcheck-am
+install-exec-am:
+install-exec: install-exec-am
+
+install-data-am: install-docDATA
+install-data: install-data-am
+
+install-am: all-am
+	@$(MAKE) $(AM_MAKEFLAGS) install-exec-am install-data-am
+install: install-am
+uninstall-am: uninstall-docDATA
+uninstall: uninstall-am
+all-am: Makefile $(DATA)
+all-redirect: all-am
+install-strip:
+	$(MAKE) $(AM_MAKEFLAGS) INSTALL_STRIP_FLAG=-s install
+installdirs:
+	$(mkinstalldirs)  $(DESTDIR)$(docdir)
+
+
+mostlyclean-generic:
+
+clean-generic:
+
+distclean-generic:
+	-rm -f Makefile $(CONFIG_CLEAN_FILES)
+	-rm -f config.cache config.log stamp-h stamp-h[0-9]*
+
+maintainer-clean-generic:
+	-rm -f Makefile.in
+mostlyclean-am:  mostlyclean-generic
+
+mostlyclean: mostlyclean-am
+
+clean-am:  clean-generic mostlyclean-am
+
+clean: clean-am
+
+distclean-am:  distclean-generic clean-am
+
+distclean: distclean-am
+
+maintainer-clean-am:  maintainer-clean-generic distclean-am
+	@echo "This command is intended for maintainers to use;"
+	@echo "it deletes files that may require special tools to rebuild."
+
+maintainer-clean: maintainer-clean-am
+
+.PHONY: uninstall-docDATA install-docDATA tags distdir info-am info \
+dvi-am dvi check check-am installcheck-am installcheck install-exec-am \
+install-exec install-data-am install-data install-am install \
+uninstall-am uninstall all-redirect all-am all install-strip \
+installdirs mostlyclean-generic distclean-generic clean-generic \
+maintainer-clean-generic clean mostlyclean distclean maintainer-clean
+
+
+all: index.html
+
+index.html: $(applet)-applet/index.html
+	-cp $(applet)-applet/index.html .
+
+$(applet)-applet.sgml: $(sgml_ents)
+	-ourdir=`pwd`; \
+	cd $(srcdir); \
+	cp $(sgml_ents) $$ourdir
+
+$(applet)-applet/index.html: $(applet)-applet.sgml
+	-srcdir=`cd $(srcdir) && pwd`; \
+	db2html $$srcdir/$(applet)-applet.sgml
+
+applet-dist-hook: index.html
+	-$(mkinstalldirs) $(distdir)/$(applet)-applet/stylesheet-images
+	-cp $(srcdir)/$(applet)-applet/*.html $(distdir)/$(applet)-applet
+	-cp $(srcdir)/$(applet)-applet/*.css  $(distdir)/$(applet)-applet
+	-cp $(srcdir)/$(applet)-applet/*.png  $(distdir)/$(applet)-applet
+	-cp $(srcdir)/$(applet)-applet/stylesheet-images/*.png \
+		$(distdir)/$(applet)-applet/stylesheet-images
+
+install-data-am: index.html
+	-$(mkinstalldirs) $(DESTDIR)$(docdir)/stylesheet-images
+	-cp $(srcdir)/topic.dat $(DESTDIR)$(helpdir)
+	-for file in \
+		$(applet)-applet/*.html	\
+		$(applet)-applet/*.css	\
+		$(srcdir)/*.png; do\
+	  basefile=`echo $$file | sed -e 's,^.*/,,'`; \
+	  $(INSTALL_DATA) $$file $(DESTDIR)$(docdir)/$$basefile; \
+	done
+	-for file in \
+		$(applet)-applet/stylesheet-images/*.png; do \
+	  basefile=`echo $$file | sed -e 's,^.*/,,'`; \
+	  $(INSTALL_DATA) $$file $(DESTDIR)$(docdir)/stylesheet-images/$$basefile; \
+	done
+
+$(applet)-applet.ps: $(srcdir)/$(applet)-applet.sgml $(srcdir)/$(applet).sgml
+	-srcdir=`cd $(srcdir) && pwd`; \
+	db2ps $$srcdir/$(applet)-applet.sgml
+
+$(applet)-applet.rtf: $(srcdir)/$(applet)-applet.sgml $(srcdir)/$(applet).sgml
+	-srcdir=`cd $(srcdir) && pwd`; \
+	db2ps $$srcdir/$(applet)-applet.sgml
+dist-hook: applet-dist-hook
+
+# Tell versions [3.59,3.63) of GNU make to not export all variables.
+# Otherwise a system limit (for SysV at least) may be exceeded.
+.NOEXPORT:

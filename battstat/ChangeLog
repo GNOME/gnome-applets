@@ -1,0 +1,77 @@
+1.0:
+	Initial version. Uses the GTK toolkit. Only works with FreeBSD for
+	now.
+
+1.1:
+	Added the flashing pixmap to the power cord image, showing when
+	laptop is recharging.  Added ToolTips.
+
+1.2:
+	Added Linux support. (Perhaps, it's untested). Uses the libapm
+	library under Linux.
+	Added the exclamation mark pixmap. Displayed when system power 
+	falls under a specified threshold.
+
+1.2.1:	
+	Added Gnome support. Application will now be compiled as a panel
+	applet as well as a normal GTK application. Now requires at least
+	automake 1.4a if you want to remake the Makefile.in.
+
+1.2.2:
+	Minor fixes. 
+
+2.0.0:
+	Complete change of appearance. Only works as an applet now. Does
+	not require automake 1.4a any longer to recreate Makefile.in.
+	Complete rewrite of the GUI.  Added a preferences window.  Added a
+	custom progress meter.  Added sound events for "battery almost
+	empty" and "battery fully re-charged" events.  Still only tested
+	under FreeBSD.
+
+2.0.1: 	
+	First public release.
+
+2.0.1a:	
+	Problem compiling under Linux reported by Matthias Saou. Added 
+	some #ifdefs to fix it.
+
+2.0.1b: 
+	Should really work under Linux now. (At least it works on my 
+	new Linux installation, Debian 2.2)
+
+2.0.2:
+	New configurable option. Now you have the choice of having the
+	battery charge meter shrink to the right or the left.
+
+2.0.3:
+	New configurable options. One can select if the applet should be
+	layout in a horizontal or a squarish fashion. You can also select
+	what parts of the applet that should be visible.
+
+2.0.4:
+	General code de-uglyfication. Good news, everyone. Two bugs found
+	and fixed.  
+	I was using 0 and 1 instead of false and true respectivly for some
+	options in the session management stuff. That worked fine on the
+	version of GNOME I have installed. But it will lead to a
+	segmentation fault when using older versions.  
+	The second bug caused the applet to crash if one removed the
+	battery while running the laptop on AC power.
+
+2.0.5:
+	New feature. You can now right click on the applet and suspend
+	your laptop by selecting "Suspend the laptop" from the menu. You
+	can configure what should happen then in the properties dialog.
+	The FreeBSD port Makefile has been cleaned up by Jim Mock.
+
+2.0.6:
+	2000-08-18 
+	The applet can now use the status dock (if available) to display
+	battery status. This part of the applet is not entierly finished
+	yet. Suggestions welcome.
+	Found a bug in the code where the APM BIOS potentially could
+	report 255 instead of 0-2 under Linux. This would result in a seg
+	fault.
+	Polish translation by Cezary Jackiewicz	<cjackiewicz@poczta.onet.pl>.
+	
+	
