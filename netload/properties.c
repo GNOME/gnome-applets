@@ -23,28 +23,28 @@ void start_timer( void );
 void load_properties(char *path, netload_properties *prop )
 {
 	gnome_config_push_prefix(path);
-	prop->gcolor	= gnome_config_get_string ("/netload_applet/all/gcolor=#20b2aa");
-	prop->bcolor	= gnome_config_get_string ("/netload_applet/all/bcolor=#188982");
-	prop->speed	= gnome_config_get_int    ("/netload_applet/all/speed=2000");
-	prop->height 	= gnome_config_get_int	  ("/netload_applet/all/height=40");
-	prop->width 	= gnome_config_get_int	  ("/netload_applet/all/width=40");
-	prop->look	= gnome_config_get_bool   ("/netload_applet/all/look=1");
-	prop->device	= gnome_config_get_string ("/netload_applet/all/device=ppp0");
-	prop->line_spacing	= gnome_config_get_int	  ("/netload_applet/all/line_spacing=1024");	
+	prop->gcolor	= gnome_config_get_string ("gcolor=#20b2aa");
+	prop->bcolor	= gnome_config_get_string ("bcolor=#188982");
+	prop->speed	= gnome_config_get_int    ("speed=2000");
+	prop->height 	= gnome_config_get_int	  ("height=40");
+	prop->width 	= gnome_config_get_int	  ("width=40");
+	prop->look	= gnome_config_get_bool   ("look=1");
+	prop->device	= gnome_config_get_string ("device=ppp0");
+	prop->line_spacing	= gnome_config_get_int	  ("line_spacing=1024");	
 	gnome_config_pop_prefix();
 }
 
 void save_properties(char *path, netload_properties *prop )
 {
 	gnome_config_push_prefix(path);
-	gnome_config_set_string( "/netload_applet/all/gcolor", prop->gcolor );
-	gnome_config_set_string( "/netload_applet/all/bcolor", prop->bcolor );
-	gnome_config_set_int   ( "/netload_applet/all/speed", prop->speed );
-	gnome_config_set_int   ( "/netload_applet/all/height", prop->height );
-	gnome_config_set_int   ( "/netload_applet/all/width", prop->width );
-	gnome_config_set_bool  ( "/netload_applet/all/look", prop->look );
-	gnome_config_set_string( "/netload_applet/all/device", prop->device );
-	gnome_config_set_int   ( "/netload_applet/all/line_spacing", prop->line_spacing );
+	gnome_config_set_string( "gcolor", prop->gcolor );
+	gnome_config_set_string( "bcolor", prop->bcolor );
+	gnome_config_set_int   ( "speed", prop->speed );
+	gnome_config_set_int   ( "height", prop->height );
+	gnome_config_set_int   ( "width", prop->width );
+	gnome_config_set_bool  ( "look", prop->look );
+	gnome_config_set_string( "device", prop->device );
+	gnome_config_set_int   ( "line_spacing", prop->line_spacing );
 	gnome_config_sync();
 	gnome_config_pop_prefix();
 }

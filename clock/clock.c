@@ -194,15 +194,6 @@ applet_start_new_applet(const gchar *param, gpointer data)
 	gtk_widget_show(applet);
 }
 
-/*
-void
-test_callback(GtkWidget *applet, gpointer data)
-{
-	puts("TEST");
-}
-*/
-
-
 int
 main(int argc, char **argv)
 {
@@ -228,14 +219,6 @@ main(int argc, char **argv)
 	gtk_widget_show(cd->clockw);
 	applet_widget_add(APPLET_WIDGET(applet), cd->clockw);
 	gtk_widget_show(applet);
-
-/*
-	gnome_panel_applet_register_callback(applet_id,
-					     "test",
-					     "TEST CALLBACK",
-					     test_callback,
-					     NULL);
-*/
 
 	applet_widget_gtk_main();
 
