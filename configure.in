@@ -95,7 +95,11 @@ fi
 
 dnl modemlights
 P_MODEMLIGHTS=
-AC_CHECK_HEADERS(net/ppp_defs.h,[P_MODEMLIGHTS=modemlights])
+case "$host_os" in
+linux*|freebsd*|netbsd*|openbsd*)
+  AC_CHECK_HEADERS(net/ppp_defs.h,[P_MODEMLIGHTS=modemlights])
+  ;;
+esac
 AM_CONDITIONAL(APPLET_MODEMLIGHTS, test "$P_MODEMLIGHTS" = "modemlights")
 if test "$P_MODEMLIGHTS" != "modemlights"; then
   AC_MSG_WARN([*** \`modemlights' applet will not be built ***])
