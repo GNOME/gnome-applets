@@ -1,5 +1,12 @@
 1999-09-10  Jacob Berkman  <jberkman@andrew.cmu.edu>
 
+	* xmms/Makefile.am (libgumma_xmms_la_LIBADD): it is
+	bad to remove the trailing '\' in these lines.
+	especially if your program is not robust in the
+	error handling area
+
+	* gumma.c (load_plugin): print a little note
+
 	* gumma.[ch]: 
 	cd/cdplayer.c: 
 	gqmpeg/gqmpeg.c:

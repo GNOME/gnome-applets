@@ -309,8 +309,10 @@ load_plugin (GummaPlayerData *gpd)
 	g_message (_("Loading plugin %s..."), gpd->module_path);
 	gpd->module = g_module_open (gpd->module_path, 0);
 
-	if (!gpd->module)
+	if (!gpd->module) {
+		g_warning ("Beware the Jaberwocky!\n%s!", g_module_error ());;
 		return;
+	}
 
 	g_module_symbol (gpd->module,
 			 "get_plugin",
