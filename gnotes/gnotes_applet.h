@@ -23,8 +23,9 @@
 #define _GNOTES_APPLET_H_
 
 /* uncomment this to turn on debugging */
-#define GNOTE_DEBUG (1)
+/* #define GNOTE_DEBUG (1) */
 
+#ifdef __GNUC__
 #ifdef GNOTE_DEBUG
 #  define g_debug(format, args...) \
     g_log(G_LOG_DOMAIN, G_LOG_LEVEL_DEBUG, "GNotes: "format, ##args)
@@ -37,6 +38,37 @@
 
 #define g_info(format, args...) \
   g_log(G_LOG_DOMAIN, G_LOG_LEVEL_INFO, "GNotes: "format, ##args)
+#else /* !__GNUC__ */
+static void
+g_debug (const gchar *format,
+	 ...)
+{
+#ifdef GNOTE_DEBUG
+  va_list args;
+  va_start (args, format);
+  g_logv (G_LOG_DOMAIN, G_LOG_LEVEL_DEBUG, "GNotes: "format, args);
+  va_end (args);
+#endif
+}
+static void
+g_critical (const gchar *format,
+	    ...)
+{
+  va_list args;
+  va_start (args, format);
+  g_logv (G_LOG_DOMAIN, G_LOG_LEVEL_CRITICAL, "GNotes: "format, args);
+  va_end (args);
+}
+static void
+g_info (const gchar *format,
+	...)
+{
+  va_list args;
+  va_start (args, format);
+  g_logv (G_LOG_DOMAIN, G_LOG_LEVEL_INFO, "GNotes: "format, args);
+  va_end (args);
+}
+#endif
 
 
 #include <gnome.h>
@@ -70,6 +102,8 @@ typedef struct _gnotes_prefs {
 struct _GNotes
 {
     GtkWidget *applet;
+    GtkWidget *pixmap;
+    GtkWidget *button;
     gnotes_prefs defaults;
 };
 

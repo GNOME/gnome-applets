@@ -54,12 +54,11 @@ static gint applet_button_press_cb(GtkWidget *widget, GdkEventButton *event,
     return(TRUE);
 };
 
-static GtkWidget *create_gnotes_button(void)
+static GtkWidget *create_gnotes_button(GNotes *gnotes)
 {
     GtkWidget *frame;
     GtkWidget *vbox;
-    GtkWidget *button;
-    GtkWidget *pixmap;
+    int size;
 
     frame = gtk_frame_new(NULL);
     gtk_frame_set_shadow_type(GTK_FRAME(frame), GTK_SHADOW_IN);
@@ -69,16 +68,19 @@ static GtkWidget *create_gnotes_button(void)
     gtk_container_add(GTK_CONTAINER(frame), vbox);
     gtk_widget_show(vbox);
 
-    button = gtk_button_new();
-    GTK_WIDGET_UNSET_FLAGS(button, GTK_CAN_DEFAULT);
-    GTK_WIDGET_UNSET_FLAGS(button, GTK_CAN_FOCUS);
-    pixmap = gnome_pixmap_new_from_xpm_d(gnotes_xpm);
-    gtk_box_pack_start(GTK_BOX(vbox), button, FALSE, TRUE, 0);
-    gtk_widget_show(pixmap);
-    gtk_container_add(GTK_CONTAINER(button), pixmap);
-    gtk_widget_show(button);
+    gnotes->button = gtk_button_new();
+    GTK_WIDGET_UNSET_FLAGS(gnotes->button, GTK_CAN_DEFAULT);
+    GTK_WIDGET_UNSET_FLAGS(gnotes->button, GTK_CAN_FOCUS);
+    size = applet_widget_get_panel_pixel_size(APPLET_WIDGET(gnotes->applet));
+    gnotes->pixmap = gnome_pixmap_new_from_xpm_d_at_size(gnotes_xpm, 
+							 (size*40)/48,
+							 (size*40)/48);
+    gtk_box_pack_start(GTK_BOX(vbox), gnotes->button, FALSE, TRUE, 0);
+    gtk_widget_show(gnotes->pixmap);
+    gtk_container_add(GTK_CONTAINER(gnotes->button), gnotes->pixmap);
+    gtk_widget_show(gnotes->button);
 
-    gtk_signal_connect(GTK_OBJECT(button), "button_press_event",
+    gtk_signal_connect(GTK_OBJECT(gnotes->button), "button_press_event",
                        GTK_SIGNAL_FUNC(applet_button_press_cb), NULL);
 
     return(frame);
@@ -100,12 +102,25 @@ static void about(AppletWidget *applet, gpointer data)
 
 
 static gint applet_save_session(GtkWidget *widget, char *privcfpath,
-                                char *globcfpath)
+                                char *globcfpath, gpointer data)
 {
     g_debug("Saving session\n");
     gnotes_preferences_save(privcfpath, &gnotes);
     gnotes_save(0, 0);
     return FALSE;
+}
+
+static void applet_change_pixel_size(GtkWidget *widget, int size,
+				     gpointer data)
+{
+    GNotes *gnotes = data;
+    g_debug("Changing pixel size to: %d\n", size);
+    gtk_widget_destroy(gnotes->pixmap);
+    gnotes->pixmap = gnome_pixmap_new_from_xpm_d_at_size(gnotes_xpm, 
+							 (size*40)/48,
+							 (size*40)/48);
+    gtk_widget_show(gnotes->pixmap);
+    gtk_container_add(GTK_CONTAINER(gnotes->button), gnotes->pixmap);
 }
 
 
@@ -140,7 +155,7 @@ int main(int argc, char **argv)
         exit(1);
     }
 
-    gnotes_button = create_gnotes_button();
+    gnotes_button = create_gnotes_button(&gnotes);
     applet_widget_add(APPLET_WIDGET(gnotes.applet), gnotes_button);
 
     gtk_widget_show(gnotes_button);
@@ -175,12 +190,10 @@ int main(int argc, char **argv)
     gnotes_preferences_load(APPLET_WIDGET(gnotes.applet)->privcfgpath,
                             &gnotes);
     
+    gtk_signal_connect(GTK_OBJECT(gnotes.applet), "change_pixel_size",
+                       GTK_SIGNAL_FUNC(applet_change_pixel_size), &gnotes);
     gtk_signal_connect(GTK_OBJECT(gnotes.applet), "save_session",
-                       GTK_SIGNAL_FUNC(applet_save_session),
-                       APPLET_WIDGET(gnotes.applet)->privcfgpath);
-    gtk_signal_connect(GTK_OBJECT(gnotes.applet), "destroy",
-                       GTK_SIGNAL_FUNC(applet_save_session),
-                       APPLET_WIDGET(gnotes.applet)->privcfgpath);
+                       GTK_SIGNAL_FUNC(applet_save_session), NULL);
 
     applet_widget_gtk_main ();
 

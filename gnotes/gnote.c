@@ -356,7 +356,7 @@ void gnote_new(gint width, gint height, gint x, gint y, gboolean hidden,
                const gchar *title, gboolean loaded_from_file,
                const gchar *type)
 {
-    GNote* the_note = (GNote*)g_malloc(sizeof(GNote));
+    GNote* the_note = g_new0(GNote,1);
 
     g_debug("gnote_new(%d, %d, %d, %d, %d, %s, %ld, %s, %d, %s) called.",
             width, height, x, y, hidden, text, timestamp, title,
@@ -369,6 +369,7 @@ void gnote_new(gint width, gint height, gint x, gint y, gboolean hidden,
     the_note->title = g_strdup(title);
     the_note->already_saved = loaded_from_file;
     the_note->type = g_strdup(type);
+    the_note->menu = NULL;
     
     /* create window */
     the_note->window = gtk_window_new(GTK_WINDOW_DIALOG);
@@ -454,7 +455,9 @@ void gnote_new(gint width, gint height, gint x, gint y, gboolean hidden,
     gtk_container_add(GTK_CONTAINER(the_note->window),
                       the_note->hbox);
 
-    gtk_widget_show_all(the_note->window);
+    gtk_widget_show_all(the_note->hbox);
+    gtk_widget_realize(the_note->window);
+
     /*
      * setup window parameters.
      */
@@ -481,6 +484,9 @@ void gnote_new(gint width, gint height, gint x, gint y, gboolean hidden,
     gtk_window_set_focus(GTK_WINDOW(the_note->window),
                          the_note->text);
 
+    /* make sure it will all be realized here */
+    gtk_widget_show_now(the_note->window);
+
     {
         GdkCursor *cursor;
 
@@ -488,18 +494,6 @@ void gnote_new(gint width, gint height, gint x, gint y, gboolean hidden,
         gdk_window_set_cursor(the_note->text->window, cursor);
         gdk_cursor_destroy(cursor);
     };
-
-    /* heinous hack follows... for some reason, even though I tell it
-       not to, the window manager gives the gnote a border... so I found
-       out that if I hide it then reshow it, the border goes away  :-O  */
-    /* and even this doesn't seem to work all the time */
-    gdk_window_hide(the_note->window->window);
-    sleep(1);
-    /* only reshow it if we're supposed to */
-    if (the_note->hidden == FALSE)
-    {
-        gdk_window_show(the_note->window->window);
-    }
 
     the_note->menu = gnote_create_menu(the_note);
     
@@ -545,8 +539,9 @@ void gnote_destroy(gpointer prenote)
 
     gtk_widget_hide(the_note->window);
     
-    gdk_window_destroy(the_note->window);
-    gtk_widget_unref(GTK_WIDGET(the_note->menu));
+    gtk_widget_destroy(the_note->window);
+    if(the_note->menu)
+	    gtk_widget_destroy(GTK_WIDGET(the_note->menu));
     
     g_free(the_note->title);
     g_ptr_array_remove(note_list, the_note);

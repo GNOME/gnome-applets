@@ -1,3 +1,18 @@
+Thu Jan 27 15:55:58 2000  George Lebl <jirka@5z.com>
+
+	* gnote.c: use gtk_widget_destroy instead of gdk_window_destroy,
+	  destroy the menu only if not NULL, and NULL the menu entry in the
+	  structure when creating it, realize the window before setting the
+	  hints, and then show it after, removes the henius hack and makes
+	  it work all the time
+
+	* gnotes_applet.h: for the g_debug, g_critical and g_info, use 
+	  a __GNUC__ wrapper and if not on GNUC, use static functions,
+	  also turn debugging off by default.
+
+	* gnotes_applet.[ch]: fixup weird signal connections and follow the
+	  sizehints
+
 2000-01-19  Jacob Berkman  <jacob@helixcode.com>
 
 	* Makefile.am (gnotes_applet_SOURCES): add headers to SOURCES
