@@ -44,8 +44,6 @@
 #include <panel-applet-gconf.h>
 #include "gkb.h"
 
-int NumLockMask, CapsLockMask, ScrollLockMask;
-
 /* Accessible name and description */                                           
 void                                                                            
 add_atk_namedesc(GtkWidget *widget, const gchar *name, const gchar *desc)       

@@ -41,27 +41,6 @@
 #include <egg-screen-help.h>
 #include "gkb.h"
  
-int NumLockMask, CapsLockMask, ScrollLockMask;
-
-gint
-gkb_button_press_event_cb (GtkWidget * widget, GdkEventButton * event, GKB *gkb)
-{
-   if (event->button != 1)	
-    return FALSE;
-
-
-  if (gkb->cur + 1 < gkb->n)
-    gkb->keymap = g_list_nth_data (gkb->maps, ++gkb->cur);
-  else
-    {
-      gkb->cur = 0;
-      gkb->keymap = g_list_nth_data (gkb->maps, gkb->cur);
-    }
-
-  gkb_update (gkb, TRUE);
-  return TRUE;
-}
-
 static GdkFilterReturn
 global_key_filter (GKB *gkb, GdkXEvent * gdk_xevent, GdkEvent * event)
 {
