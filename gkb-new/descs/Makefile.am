@@ -1,6 +1,5 @@
 %.keyprop: %.keyprop.in 
-		$(top_srcdir)/intltool-merge $(top_srcdir)/po/*.po
-		$(top_srcdir)/intltool-merge -d $(top_srcdir)/po $< $(srcdir)/$*.keyprop
+		$(top_srcdir)/intltool-merge -d -p $(top_srcdir)/po $< $(srcdir)/$*.keyprop
 
 preset_data_predata = AM_Armenian.keyprop.in \
 		AZ_Azerbaidjani_Turkic.keyprop.in Armenian.keyprop.in \
@@ -54,7 +53,7 @@ preset_data_predata = AM_Armenian.keyprop.in \
 		YU_Serbo-Croatian_x.keyprop.in Yugoslav.keyprop.in \
 		Macedonian.keyprop.in Basque.keyprop.in
 
-preset_datadir = $(datadir)/gnome/gkb
-preset_data_DATA = $(preset_data_predata:.keyprop.in=.keyprop)
-EXTRA_DIST = $(preset_data_DATA)
-
+presetdir = $(datadir)/gnome/gkb
+preset_in_files = $(preset_data_predata)
+preset_DATA = $(preset_in_files:.keyprop.in=.keyprop)
+EXTRA_DIST = $(preset_DATA)
