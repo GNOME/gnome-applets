@@ -136,6 +136,11 @@ batmon_timeout_callback (gpointer *data)
 	gtk_label_set (GTK_LABEL (bioslabel), string[1]);
 	
 	g_free (mempoint);
+#else
+	batflag = NOEXIST_MASK;
+	batpct = 100;
+	batmin = 99999999; /* some random number */
+	linestat = 1;
 #endif /* __linux__ */
 
 	/* I've never done this before; is there a better way to
