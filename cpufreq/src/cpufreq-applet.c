@@ -190,7 +190,6 @@ cpufreq_applet_help_cb (BonoboUIComponent *uic, CPUFreqApplet *applet, const gch
 static void
 cpufreq_applet_about_cb (BonoboUIComponent *uic, CPUFreqApplet *applet, const gchar *cname)
 {
-	   static GtkWidget   *about = NULL;
 	   static const gchar *authors[] = {
 			 "Carlos Garcia Campos <carlosgc@gnome.org>",
 			 NULL
@@ -207,41 +206,22 @@ cpufreq_applet_about_cb (BonoboUIComponent *uic, CPUFreqApplet *applet, const gc
 
 	   g_return_if_fail (PANEL_IS_APPLET (PANEL_APPLET (applet)));
 	   
-	   pixbuf = gdk_pixbuf_new_from_file_at_size (GNOME_PIXMAPSDIR"/cpufreq-applet/cpufreq-applet.png",
-										 48, 48, NULL);
+	   pixbuf = gdk_pixbuf_new_from_file_at_size (
+			  GNOME_PIXMAPSDIR "/cpufreq-applet/cpufreq-applet.png",
+			  48, 48, NULL);
 
-	   if (about != NULL) {
-			 gtk_window_set_transient_for (GTK_WINDOW (about),
-									 GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (applet))));
-			 gtk_window_set_screen (GTK_WINDOW (about),
-							    gtk_widget_get_screen (GTK_WIDGET (applet)));
-			 gtk_window_present (GTK_WINDOW (about));
-
-			 return;
-	   }
-
-	   about = g_object_new (GTK_TYPE_ABOUT_DIALOG,
-						"name", _("CPU Frequency Scaling Monitor"),
-						"version", VERSION,
-						"copyright", _("Copyright (C) 2004 Free Software Foundation. Inc."),
-						"comments", _("This utility shows the current CPU Frequency Scaling."),
-						"authors", authors,
-						"documenters", documenters,
-						"artists", artists, 
-						"translator-credits", _("translator_credits"),
-						"logo", pixbuf,
-						NULL);
-
-	   gtk_window_set_destroy_with_parent (GTK_WINDOW (about), TRUE);
-
-	   g_signal_connect (about, "response", G_CALLBACK (gtk_widget_destroy), NULL);
-	   g_signal_connect (about, "destroy", G_CALLBACK (gtk_widget_destroyed), &about);
-
-	   gtk_window_set_transient_for (GTK_WINDOW (about),
-							   GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (applet))));
-	   gtk_window_set_screen (GTK_WINDOW (about),
-						 gtk_widget_get_screen (GTK_WIDGET (applet)));
-	   gtk_window_present (GTK_WINDOW (about));
+	   gtk_show_about_dialog (NULL,
+		"name",		_("CPU Frequency Scaling Monitor"),
+		"version",	VERSION,
+		"copyright",	"\xC2\xA9 2004 Free Software Foundation. Inc.",
+		"comments",	_("This utility shows the current CPU "
+				  "Frequency Scaling."),
+		"authors",	authors,
+		"documenters",	documenters,
+		"artists",	artists, 
+		"translator-credits",	_("translator-credits"),
+		"logo",		pixbuf,
+		NULL);
 
 	   if (pixbuf)
 			 g_object_unref (pixbuf);
