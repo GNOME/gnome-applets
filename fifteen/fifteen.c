@@ -17,6 +17,8 @@
 #define PIECE_FONT "5x8"
 #define SCRAMBLE_MOVES 256
 
+unsigned moves = 0; /* player's moves so far */
+
 static void
 free_stuff (GtkObject *object, gpointer data)
 {
@@ -27,7 +29,7 @@ free_stuff (GtkObject *object, gpointer data)
 }
 
 static void
-test_win (GnomeCanvasItem **board, unsigned *moves)
+test_win (GnomeCanvasItem **board)
 {
         GtkWidget *dlg;
 	int i;
@@ -37,12 +39,12 @@ test_win (GnomeCanvasItem **board, unsigned *moves)
 		if (!board[i] || (GPOINTER_TO_INT (gtk_object_get_data (GTK_OBJECT (board[i]), "piece_num")) != i))
 			return;
 
-	buf = g_strdup_printf("%s : %u", _("You win!\nMoves"), *moves);
+	buf = g_strdup_printf("%s : %u", _("You win!\nMoves"), moves);
 	dlg = gnome_ok_dialog(buf);
 	gtk_window_set_modal(GTK_WINDOW(dlg),TRUE);
 	gnome_dialog_run (GNOME_DIALOG (dlg));
 	g_free(buf);
-	*moves = 0;
+	moves = 0;
 }
 
 static char *
@@ -67,7 +69,6 @@ get_piece_color (int piece)
 static gint
 piece_event (GnomeCanvasItem *item, GdkEvent *event, gpointer data)
 {
-	static unsigned moves = 0;
 	GnomeCanvas *canvas;
 	GnomeCanvasItem **board;
 	GnomeCanvasItem *text;
@@ -135,7 +136,7 @@ piece_event (GnomeCanvasItem *item, GdkEvent *event, gpointer data)
 			board[pos] = NULL;
 			blank = pos;
 		}
-		test_win (board, &moves);
+		test_win (board);
 
 		break;
 
@@ -278,6 +279,7 @@ scramble (AppletWidget *applet, gpointer data)
 		gnome_canvas_update_now (canvas);
 		pos = oldpos;
 	}
+	moves = 0;
 	return;
 	applet = NULL;
 }
