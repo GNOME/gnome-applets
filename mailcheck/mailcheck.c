@@ -1448,7 +1448,7 @@ mail_file_changed (GtkEntry *entry, gpointer data)
 	if (!text)
 		return;
 		
-	if (mc->mail_file);
+	if (mc->mail_file)
 		g_free (mc->mail_file);
 		
 	mc->mail_file = text;
@@ -1465,7 +1465,7 @@ remote_server_changed (GtkEntry *entry, gpointer data)
 	if (!text)
 		return;
 		
-	if (mc->remote_server);
+	if (mc->remote_server)
 		g_free (mc->remote_server);
 		
 	mc->remote_server = text;
@@ -1483,7 +1483,7 @@ remote_username_changed (GtkEntry *entry, gpointer data)
 	if (!text)
 		return;
 		
-	if (mc->remote_username);
+	if (mc->remote_username)
 		g_free (mc->remote_username);
 		
 	mc->remote_username = text;
@@ -1538,7 +1538,7 @@ remote_folder_changed (GtkEntry *entry, gpointer data)
 	if (!text)
 		return;
 		
-	if (mc->remote_folder);
+	if (mc->remote_folder)
 		g_free (mc->remote_folder);
 		
 	mc->remote_folder = text;
