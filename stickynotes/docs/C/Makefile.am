@@ -1,7 +1,8 @@
 ## Process this file with automake to produce Makefile.in
 
 figs = \
-    figures/stickynotes_applet.png
+    figures/stickynotes_applet.png \
+    figures/preferences_dialog.png
 
 figdir = figures
 docname = stickynotes_applet
