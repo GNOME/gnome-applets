@@ -28,6 +28,7 @@
 
 #include <gtk/gtk.h>
 #include <libgnomevfs/gnome-vfs.h>
+#include <libgnomeui/gnome-help.h>
 #include <panel-applet.h>
 
 #include "drive-list.h"
