@@ -1,5 +1,5 @@
 /*###################################################################*/
-/*##                         clock & mail applet 0.1.4             ##*/
+/*##                         clock & mail applet 0.1.5             ##*/
 /*###################################################################*/
 
 #include <sys/types.h>
@@ -19,24 +19,54 @@
 
 #define CLOCKMAIL_APPLET_VERSION_MAJ 0
 #define CLOCKMAIL_APPLET_VERSION_MIN 1
-#define CLOCKMAIL_APPLET_VERSION_REV 4
+#define CLOCKMAIL_APPLET_VERSION_REV 5
 
-extern int BLINK_DELAY;
-extern int BLINK_TIMES;
+typedef struct _AppData AppData;
+struct _AppData
+{
+	gint blink_delay;
+	gint blink_times;
+	gint am_pm_enable;
+	gint always_blink;
+	gchar *mail_file;
+	gchar *newmail_exec_cmd;
+	gint exec_cmd_on_newmail;
+	GtkWidget *applet;
+	GtkWidget *frame;
+	GtkWidget *display_area;
+	GtkTooltips *tooltips;
+	GdkPixmap *display;
+	GdkPixmap *display_back;
+	GdkPixmap *digmed;
+	GdkPixmap *mailpics;
+	gint update_timeout_id;
+	gint blink_timeout_id;
+	gint anymail;
+	gint newmail;
+	gint unreadmail;
+	gint mailcleared;
+	gint blinking;
 
-extern int AM_PM_ENABLE;
-extern int ALWAYS_BLINK;
+	/* the properties window widgets */
+	GtkWidget *propwindow;
+	GtkWidget *mail_file_entry;
+	GtkWidget *newmail_exec_cmd_entry;
+	gint p_am_pm_enable;
+	gint p_always_blink;
+	gint p_exec_cmd_on_newmail;
 
-extern char *mail_file;
+	/* variables for mail status and remebering past states */
+	off_t oldsize;
+	time_t oldtime;
+	gchar *tiptext;
+	gint old_n;
+	gint blink_lit;
+	gint blink_count;
+};
 
-extern char *newmail_exec_cmd;
-extern int EXEC_CMD_ON_NEWMAIL;
+void check_mail_file_status (int reset, AppData *ad);
 
-extern GtkWidget *applet;
-
-void check_mail_file_status (int reset);
-
-void property_load();
-void property_save();
-void property_show();
+void property_load(gchar *path, AppData *ad);
+void property_save(gchar *path, AppData *ad);
+void property_show(AppletWidget *applet, gpointer data);
 
