@@ -853,6 +853,7 @@ gkb_activator (CORBA_Object poa_in,
   static guint key = 0;
   PortableServer_POA poa = (PortableServer_POA) poa_in;
   XWindowAttributes attribs = { 0, };
+  int keycode, modifiers;
 
   gkb = g_new0 (GKB, 1);
 
@@ -886,6 +887,25 @@ gkb_activator (CORBA_Object poa_in,
 
   gtk_signal_connect (GTK_OBJECT (gkb->applet), "save_session",
 		      GTK_SIGNAL_FUNC (applet_save_session), NULL);
+
+  keycode = XKeysymToKeycode(GDK_DISPLAY(), gkb->keysym);
+
+  modifiers = gkb->state;
+  
+  XGrabKey (GDK_DISPLAY(), keycode, modifiers,
+            GDK_ROOT_WINDOW(), True, GrabModeAsync, GrabModeAsync);
+  XGrabKey (GDK_DISPLAY(), keycode, modifiers|NumLockMask,
+            GDK_ROOT_WINDOW(), True, GrabModeAsync, GrabModeAsync);
+  XGrabKey (GDK_DISPLAY(), keycode, modifiers|CapsLockMask,
+            GDK_ROOT_WINDOW(), True, GrabModeAsync, GrabModeAsync);
+  XGrabKey (GDK_DISPLAY(), keycode, modifiers|ScrollLockMask,
+            GDK_ROOT_WINDOW(), True, GrabModeAsync, GrabModeAsync);
+  XGrabKey (GDK_DISPLAY(), keycode, modifiers|NumLockMask|CapsLockMask,
+            GDK_ROOT_WINDOW(), True, GrabModeAsync, GrabModeAsync);
+  XGrabKey (GDK_DISPLAY(), keycode, modifiers|NumLockMask|ScrollLockMask,
+            GDK_ROOT_WINDOW(), True, GrabModeAsync, GrabModeAsync);
+  XGrabKey (GDK_DISPLAY(), keycode, modifiers|NumLockMask|CapsLockMask|ScrollLockMask,
+            GDK_ROOT_WINDOW(), True, GrabModeAsync, GrabModeAsync);
 
   gdk_window_add_filter (GDK_ROOT_PARENT (), event_filter, NULL);
 
