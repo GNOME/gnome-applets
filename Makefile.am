@@ -68,14 +68,15 @@ always_built_SUBDIRS = \
 	fifteen		\
 	geyes		\
 	gkb		\
-	gumma		\
 	jbc		\
 	life		\
 	mini-commander	\
+	quicklaunch	\
 	tickastat	\
 	webcontrol	\
 	whereami	\
 	odometer
+
 
 SUBDIRS = \
 	intl po macros		\
@@ -92,6 +93,7 @@ SUBDIRS = \
 
 DIST_SUBDIRS = \
 	intl po macros		\
+	gumma			\
 	$(always_built_SUBDIRS)	\
 	$(gtop_applets)		\
 	$(ghttp_applets)	\
