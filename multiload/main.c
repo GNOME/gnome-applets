@@ -30,6 +30,7 @@
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include <libart_lgpl/libart.h>
 #include <egg-screen-exec.h>
+#include <egg-screen-help.h>
 
 #include "global.h"
 
@@ -91,6 +92,28 @@ about_cb (BonoboUIComponent *uic,
 		      G_CALLBACK (gtk_widget_destroyed), &ma->about_dialog);
 
     gtk_widget_show (ma->about_dialog);
+}
+
+static void
+help_cb (BonoboUIComponent *uic,
+	  MultiloadApplet   *ma,
+	  const char        *name)
+{
+
+ 	GError *error = NULL;
+                                                                                
+    	egg_help_display_on_screen (
+                "multiload", NULL,
+                gtk_widget_get_screen (ma->applet),
+                &error);
+                                                                                
+    	if (error) { /* FIXME: the user needs to see this */
+        	g_warning ("help error: %s\n", error->message);
+        	g_error_free (error);
+        	error = NULL;
+    	}
+
+
 }
 
 /* run the full-scale system process monitor */
@@ -365,6 +388,7 @@ multiload_applet_refresh(MultiloadApplet *ma)
 static const BonoboUIVerb multiload_menu_verbs [] = {
 	BONOBO_UI_UNSAFE_VERB ("MultiLoadProperties", multiload_properties_cb),
 	BONOBO_UI_UNSAFE_VERB ("MultiLoadRunProcman", start_procman_cb),
+	BONOBO_UI_UNSAFE_VERB ("MultiLoadHelp", help_cb),
 	BONOBO_UI_UNSAFE_VERB ("MultiLoadAbout", about_cb),
 
 	BONOBO_UI_VERB_END
@@ -450,7 +474,7 @@ multiload_factory (PanelApplet *applet,
 
 PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_MultiLoadApplet_Factory",
 				   PANEL_TYPE_APPLET,
-				   "MultiLoad Applet factory",
+				   "multiload",
 				   "0",
 				   multiload_factory,
 				   NULL);
