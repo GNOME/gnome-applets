@@ -35,10 +35,21 @@ LoadGraph *
 memload_applet_new(PanelApplet *applet, gpointer data)
 {
 	LoadGraph *g;
+	gint speed, size;
+	GError *error = NULL;
 	
+	speed = panel_applet_gconf_get_int(applet, "speed", &error);
+	if (error) {
+		g_print ("%s \n", error->message);
+		g_error_free (error);
+		error = NULL;
+	}
+	speed = MAX (speed, 50);
+	size = panel_applet_gconf_get_int(applet, "size", NULL);
+	size = CLAMP (size, 10, 400); 
 	g = load_graph_new(applet, 4, N_("Memory Load"), 
-					panel_applet_gconf_get_int(applet, "speed", NULL), 
-					panel_applet_gconf_get_int(applet, "size", NULL), 
+					speed, 
+					size, 
 					panel_applet_gconf_get_bool(applet, "view_memload", NULL), 
 					"memload", 
 					GetMemory);
