@@ -298,8 +298,6 @@
       <sect2 id="blocking-io">
         <title>Blocking Input/Output</title>
 
-        <para>OUT OF DATE</para>
-
         <para>Even though &gweather; now uses non-blocking I/O to
         retrieve data from the network, there are still some steps
         that block execution.  Most notably, establishing a TCP
@@ -325,7 +323,10 @@
 
         <para>Unfortunately, as far as I can tell, there is not much
         that can be done about this in &gweather;.  Hopefully, future
-        versions of the panel will resolve this issue.</para>
+        versions of the panel will resolve this issue.  There is also
+        an experimental version of &gweather; that uses a separate
+        thread for HTTP processing, which may be incorporated in the
+        next release.</para>
       </sect2>
       
 <!--

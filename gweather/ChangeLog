@@ -1,12 +1,3 @@
-2000-02-16  Spiros Papadimitriou  <spapadim+@cs.cmu.edu>
-
-	* HTTP requests (and related UI updates) are now processed
-      by a separate thread; this should resolve remaining
-      panel freeze problems.  WARNING: Potentially unsafe
-      code (relies on the fact that HTTP requests take some
-      time to complete -- would be nice if there was at least
-      a way to check if the GTK mutex is locked or not...).
-
 2000-02-11  Jason Leach  <leach@wam.umd.edu>
 
 	* weather.c (_weather_info_get_pixmap): fix bug #4746

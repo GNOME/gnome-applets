@@ -29,6 +29,7 @@ typedef void (*HttpCallback) (ghttp_request *req,
  * Initialize asynchronous HTTP transfer functions.
  */
 extern void http_init (void);
+extern void http_done (void);
 
 /*
  * Set an HTTP request for background processing.

@@ -30,8 +30,10 @@ int main (int argc, char *argv[])
     bindtextdomain (PACKAGE, GNOMELOCALEDIR);
     textdomain (PACKAGE);
 
+#if 0
     g_thread_init(NULL);
     http_init();
+#endif
 
     gweather_applet_create(argc, argv);
 
