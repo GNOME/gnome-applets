@@ -6,7 +6,12 @@ doc_DATA =	\
 	topic.dat
 
 # automake does not know anything about .sgml files yet -> EXTRA_DIST
-EXTRA_DIST = mini-commander.sgml topic.dat
+EXTRA_DIST =	\
+	mini-commander.sgml		\
+	topic.dat			\
+	figs/mini-commander.png		\
+	figs/mini-commander-prefs-1.png	\
+	figs/mini-commander-prefs-2.png
 
 # this is taken from gnome-core/gnome-terminal/C/Makefile.am
 all: index.html
@@ -30,9 +35,14 @@ dist-hook: index.html
 	-cp $(srcdir)/mini-commander/*.css $(distcidr)/mini-commander
 
 install-data-local: index.html
+	-$(mkinstalldirs) $(DESTDIR)$(docdir)/fig
 	-for file in mini-commander/*.html mini-commander/*.css; do \
 	  basefile=`echo $$file | sed -e 's,^.*/,,'`; \
 	  $(INSTALL_DATA) $$file $(DESTDIR)$(docdir)/$$basefile; \
+	done
+	-for file in $(srcdir)/fig/*.png; do \
+	  basefile=`echo $$file | sed -e 's,^.*/,,'`; \
+	  $(INSTALL_DATA) $$file $(DESTDIR)$(docdir)/fig/$$basefile; \
 	done
 
 gnome-terminal.ps: gnome-terminal.sgml
