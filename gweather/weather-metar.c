@@ -426,12 +426,12 @@ static void metar_init_re (void)
 	}
 
 	if (i2 != RE_NUM) {
-	        tokp = g_strndup(p+rm2.rm_so, rm2.rm_eo-rm.rm_so);
+		tokp = g_strndup(p+rm2.rm_so, rm2.rm_eo-rm2.rm_so);
 		metar_f[i2](tokp, info);
 	        g_free (tokp);
 	}
 
-	p += rm.rm_eo;
+	p += rm2.rm_eo;
 	p += strspn(p, " ");
     }
     return TRUE;
