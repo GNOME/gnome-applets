@@ -65,6 +65,7 @@
 
 #include "weather.h"
 #include "gweather-pref.h"
+#include "gweather-xml.h"
 
 /* If you change the format of the Locations.xml file that would break the current
  * parsing then make sure you also add an extra define and maintain support for
@@ -135,7 +136,6 @@ static gint gweather_xml_compare_locale(gconstpointer a, gconstpointer b)
  */
 static xmlChar* gweather_xml_get_value (xmlTextReaderPtr reader)
 {
-    int ret, type;
     xmlChar* value;
 
     /* check for null node */
@@ -172,7 +172,7 @@ static xmlChar* gweather_xml_get_value (xmlTextReaderPtr reader)
 static void gweather_xml_parse_name (const GList *locale, GtkTreeStore *tree, GtkTreeIter* iter, xmlTextReaderPtr reader,
 				     xmlChar **untrans_name, xmlChar **trans_name, gint *pref)
 {
-    int ret, type;
+    int ret;
     xmlChar *lang;
     GList   *found_locale;
     gint    position;

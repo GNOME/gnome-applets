@@ -10,7 +10,6 @@ static void wx_finish_read(GnomeVFSAsyncHandle *handle, GnomeVFSResult result,
     GWeatherApplet * gw_applet = (GWeatherApplet *)data;
     WeatherInfo *info;
     WeatherLocation *loc;
-    GdkPixmap *pixmap = NULL;
 
     g_return_if_fail(gw_applet != NULL);
     g_return_if_fail(gw_applet->gweather_info != NULL);
@@ -67,8 +66,6 @@ static void wx_finish_open (GnomeVFSAsyncHandle *handle, GnomeVFSResult result, 
     WeatherInfo *info;
     WeatherLocation *loc;
     gchar *body;
-    gint body_len;
-    GdkPixmap *pixmap = NULL;
 
     g_return_if_fail(gw_applet != NULL);
     g_return_if_fail(gw_applet->gweather_info != NULL);

@@ -36,6 +36,7 @@
 #include "gweather-pref.h"
 #include "gweather-applet.h"
 #include "gweather-xml.h"
+#include "gweather-dialog.h"
 
 #define NEVER_SENSITIVE		"never_sensitive"
 
@@ -202,8 +203,6 @@ static gint cmp_loc (const WeatherLocation *l1, const WeatherLocation *l2)
 /* Update pref dialog from gweather_pref */
 static gboolean update_dialog (GWeatherApplet *gw_applet)
 {
-    GtkCTreeNode *node;
-    
     g_return_val_if_fail(gw_applet->gweather_pref.location != NULL, FALSE);
 
     gtk_spin_button_set_value(GTK_SPIN_BUTTON(gw_applet->pref_basic_update_spin), 
@@ -778,7 +777,6 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     GtkObject *pref_basic_update_spin_adj;
     GtkWidget *pref_basic_update_sec_lbl;
     GtkWidget *pref_basic_note_lbl;
-    GtkWidget *pref_net_note_lbl;    
     GtkWidget *pref_loc_hbox;
     GtkWidget *pref_loc_note_lbl;
     GtkWidget *scrolled_window;
@@ -1121,7 +1119,6 @@ void gweather_pref_load (GWeatherApplet *gw_applet)
 {
     GError *error = NULL;
 	gchar  *gconf_str = NULL;
-	gint   value = 0;
 	GWeatherPrefs *prefs = &(gw_applet->gweather_pref);
 
 	/* Assume we use unit defaults */

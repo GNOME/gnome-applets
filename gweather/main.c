@@ -21,7 +21,7 @@
 #include "gweather-applet.h"
 
 
-gboolean
+static gboolean
 gweather_applet_new(PanelApplet *applet, const gchar *iid, gpointer data)
 {
 	GWeatherApplet *gw_applet;

@@ -1,5 +1,7 @@
 /* $Id$ */
 
+#include <ctype.h>
+
 #include <gnome.h>
 #include "weather.h"
 
@@ -12,7 +14,6 @@ static char *met_reprocess(char *x, int len)
 	static gint buflen = 0;
 	gchar *lastspace = NULL;
 	int count = 0;
-	int lastcount = 0;
 	
 	if(buflen < len)
 	{
@@ -111,7 +112,6 @@ static gchar *met_parse (gchar *meto, WeatherLocation *loc)
     gchar *rp;
     gchar *r = g_strdup("Met Office Forecast\n");
     gchar *t;    
-    gint i=0;
 
     p = strstr(meto, "Summary: </b>");
     if(p == NULL)
@@ -183,8 +183,6 @@ static void met_finish_open (GnomeVFSAsyncHandle *handle, GnomeVFSResult result,
     WeatherInfo *info;
     WeatherLocation *loc;
     gchar *body;
-    gint body_len;
-    gchar *forecast;
 
     g_return_if_fail(gw_applet != NULL);
     g_return_if_fail(gw_applet->gweather_info != NULL);

@@ -326,8 +326,6 @@ applet_destroy (GtkWidget *widget, GWeatherApplet *gw_applet)
 
 void gweather_applet_create (GWeatherApplet *gw_applet)
 {
-    GtkWidget *label;
-    GtkWidget *pixmap;
     GtkTooltips *tooltips;
     GtkIconInfo *icon_info;
     AtkObject *atk_obj;
@@ -452,7 +450,7 @@ gint timeout_cb (gpointer data)
 
 void update_finish (WeatherInfo *info)
 {
-    static gw_fault_counter = 0;
+    static int gw_fault_counter = 0;
     
     char *s;
     GWeatherApplet *gw_applet = info->applet;

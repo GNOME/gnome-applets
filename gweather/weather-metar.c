@@ -385,7 +385,7 @@ static void metar_init_re (void)
     metar_f[PRES_RE] = metar_tok_pres;
 }
 
-/*static*/ gboolean metar_parse (gchar *metar, WeatherInfo *info)
+static gboolean metar_parse (gchar *metar, WeatherInfo *info)
 {
     gchar *p;
     //gchar *rmk;
@@ -509,9 +509,6 @@ static void metar_finish_open (GnomeVFSAsyncHandle *handle, GnomeVFSResult resul
     WeatherInfo *info;
     WeatherLocation *loc;
     gchar *body;
-    int body_len;
-    gchar *metar, *eoln;
-    gboolean success = FALSE;
 
     g_return_if_fail(gw_applet != NULL);
     g_return_if_fail(gw_applet->gweather_info != NULL);

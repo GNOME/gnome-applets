@@ -1,5 +1,6 @@
 /* $Id$ */
 
+#include <ctype.h>
 #include <sys/types.h>
 #include <regex.h>
 #include <gnome.h>
@@ -221,8 +222,6 @@ static void iwin_finish_open (GnomeVFSAsyncHandle *handle, GnomeVFSResult result
     WeatherInfo *info;
     WeatherLocation *loc;
     gchar *body;
-    gint body_len;
-    gchar *forecast;
 
     g_return_if_fail(gw_applet != NULL);
     g_return_if_fail(gw_applet->gweather_info != NULL);

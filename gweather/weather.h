@@ -279,7 +279,7 @@ extern void bom_start_open (WeatherInfo *info);
 extern void wx_start_open (WeatherInfo *info);
 
 extern gboolean requests_init (WeatherInfoFunc cb, WeatherInfo *info);
-extern void requests_done (GnomeVFSAsyncHandle *handle, WeatherInfo *info);
+extern void request_done (GnomeVFSAsyncHandle *handle, WeatherInfo *info);
 extern void requests_done_check (WeatherInfo *info);
 
 G_END_DECLS

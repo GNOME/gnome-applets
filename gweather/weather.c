@@ -38,7 +38,6 @@
 
 void
 close_cb (GnomeVFSAsyncHandle *handle, GnomeVFSResult result, gpointer data);
-static gchar* formatWeatherMsg (gchar* msg);
 static gboolean calc_sun (WeatherInfo *info);
 
 /* FIXME: these global variables will cause conflicts when multiple
@@ -53,7 +52,7 @@ static gboolean weather_radar = FALSE;
  * DD:degrees (to 3 digits), MM:minutes, SS:seconds H:hemisphere (NESW)
  * Return value is positive for N,E; negative for S,W.
  */
-gdouble dmsh2rad (const gchar *latlon)
+static gdouble dmsh2rad (const gchar *latlon)
 {
     char *p1, *p2;
     int deg, min, sec, dir;
@@ -141,6 +140,8 @@ WeatherLocation *weather_location_config_read (PanelApplet *applet)
     WeatherLocation *location;
     gchar *untrans_name, *trans_name, *code, *zone, *radar, *coordinates;
     
+    trans_name = NULL;
+
     untrans_name = panel_applet_gconf_get_string(applet, "location0", NULL);
     if (!untrans_name) {
         if ( g_strstr_len ("DEFAULT_LOCATION", 16, _("DEFAULT_LOCATION")) == NULL ) {
@@ -611,7 +612,7 @@ static gdouble t0(time_t date)
 
 
 
-gboolean sun (time_t t, gdouble obsLat, gdouble obsLon,
+static gboolean sun (time_t t, gdouble obsLat, gdouble obsLon,
 	  time_t *rise, time_t *set)
 {
     time_t gm_midn;

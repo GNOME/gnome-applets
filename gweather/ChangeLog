@@ -1,3 +1,24 @@
+2005-01-18  Benoît Dejean  <TazForEver@dlfp.org>
+
+	* gweather-about.c: (gweather_about_run):
+	* gweather-applet.c: (gweather_applet_create), (update_finish):
+	* gweather-pref.c: (update_dialog), (gweather_pref_create),
+	(gweather_pref_load):
+	* gweather-xml.c: (gweather_xml_get_value),
+	(gweather_xml_parse_name):
+	* main.c:
+	* weather-bom.c: (bom_finish_open):
+	* weather-iwin.c: (iwin_finish_open):
+	* weather-met.c: (met_reprocess), (met_parse), (met_finish_open):
+	* weather-metar.c: (metar_parse), (metar_finish_open):
+	* weather-wx.c: (wx_finish_read), (wx_finish_open):
+	* weather.c: (dmsh2rad), (weather_location_config_read), (sun):
+	* weather.h: Killed many warnings.
+	
+	* ChangeLog: utf-8-ified.
+	
+	Closes #164473.
+
 2005-01-17  Davyd Madeley  <davyd@madeley.id.au>
 
 	* weather.c: Mark string "Unknown" as translatable. Fixes #164278.
@@ -12,7 +33,7 @@
 
 2005-01-15  Dennis Cranston <dennis_cranston@yahoo.com>
 
-	Based on patches submitted by Michael Terry and Dami�n Viano.
+	Based on patches submitted by Michael Terry and Damián Viano.
 	
 	* gweather-dialog.c: (replace_multiple_new_lines):  New function.
 	(gweather_dialog_create):  Remove multiple new lines from the 

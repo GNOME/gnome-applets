@@ -26,9 +26,6 @@
 
 void gweather_about_run (GWeatherApplet *gw_applet)
 {
-    GtkIconInfo *icon_info;
-    GdkPixbuf   *pixbuf = NULL;
-    GError	*error = NULL;
     
     static const gchar *authors[] = {
 	"Kevin Vandersloot <kfv101@psu.edu>",
