@@ -598,21 +598,21 @@ gkb_prop_map_edit (GkbPropertyBoxInfo * pbi)
   gtk_table_set_col_spacings (GTK_TABLE (left_table), 5);
 
   /* Add the labels  and entries/combos/icon_entry */
-  gkb_prop_map_label_at (right_table, 0, 0, _("_Name"));
+  gkb_prop_map_label_at (right_table, 0, 0, _("_Name:"));
   mdi->name_entry =
     gkb_prop_map_entry_at (right_table, 1, 0, mdi, keymap->name);
 
-  gkb_prop_map_label_at (right_table, 0, 1, _("_Label"));
+  gkb_prop_map_label_at (right_table, 0, 1, _("_Label:"));
   mdi->label_entry =
     gkb_prop_map_entry_at (right_table, 1, 1, mdi, keymap->label);
 
-  gkb_prop_map_label_at (right_table, 0, 2, _("Lan_guage"));
+  gkb_prop_map_label_at (right_table, 0, 2, _("Lan_guage:"));
   list = gkb_prop_map_get_languages (pbi);
   entry = gkb_prop_map_combo_at (right_table, 1, 2, list, mdi, keymap->lang);
   mdi->language_entry = entry;
   g_list_free (list);
 
-  gkb_prop_map_label_at (right_table, 0, 3, _("Count_ry"));
+  gkb_prop_map_label_at (right_table, 0, 3, _("Count_ry:"));
   list = gkb_prop_map_get_countries (pbi);
   entry =
     gkb_prop_map_combo_at (right_table, 1, 3, list, mdi, keymap->country);
@@ -623,26 +623,26 @@ gkb_prop_map_edit (GkbPropertyBoxInfo * pbi)
   mdi->icon_entry =
     gkb_prop_map_pixmap_at (right_table, 1, 4, mdi, keymap->flag);
 
-  gkb_prop_map_label_at (left_table, 0, 0, _("Arc_hitecture"));
+  gkb_prop_map_label_at (left_table, 0, 0, _("Arc_hitecture:"));
   list = gkb_prop_map_get_arquitectures (pbi),
     entry = gkb_prop_map_combo_at (left_table, 1, 0, list, mdi, keymap->arch);
   mdi->arch_entry = entry;
   g_list_free (list);
 
-  gkb_prop_map_label_at (left_table, 0, 1, _("_Type"));
+  gkb_prop_map_label_at (left_table, 0, 1, _("_Type:"));
   list = gkb_prop_map_get_types (pbi);
   entry = gkb_prop_map_combo_at (left_table, 1, 1, list, mdi, keymap->type);
   mdi->type_entry = entry;
   g_list_free (list);
 
-  gkb_prop_map_label_at (left_table, 0, 2, _("Code_page"));
+  gkb_prop_map_label_at (left_table, 0, 2, _("Code_page:"));
   list = gkb_prop_map_get_codepages (pbi);
   entry =
     gkb_prop_map_combo_at (left_table, 1, 2, list, mdi, keymap->codepage);
   mdi->codepage_entry = entry;
   g_list_free (list);
 
-  gkb_prop_map_label_at (left_table, 0, 3, _("Co_mmand"));
+  gkb_prop_map_label_at (left_table, 0, 3, _("Co_mmand:"));
   mdi->command_entry =
     gkb_prop_map_entry_at (left_table, 1, 3, mdi, keymap->command);
 

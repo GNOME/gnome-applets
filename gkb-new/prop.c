@@ -295,14 +295,14 @@ gkb_prop_create_display_frame (GkbPropertyBoxInfo * pbi)
   gtk_table_set_row_spacings (GTK_TABLE (table), 15);
 
   /* Labels and option Menus */
-  gkb_prop_label_at (table, 0, 0, _("_Appearance "));
+  gkb_prop_label_at (table, 0, 0, _("_Appearance: "));
   mode = gkb_prop_get_mode ();
   gkb_prop_option_menu_at (table, 1, 0, mode,
 			   GTK_SIGNAL_FUNC (gkb_prop_mode_changed), pbi,
 			   gkb_util_get_int_from_mode (pbi->mode));
   g_list_free (mode);
   
-  gkb_prop_label_at (table, 0, 1, _("Applet _size "));
+  gkb_prop_label_at (table, 0, 1, _("Applet _size: "));
   sizes = gkb_prop_get_sizes ();
   gkb_prop_option_menu_at (table, 1, 1, sizes,
 			   GTK_SIGNAL_FUNC (gkb_prop_size_changed),
