@@ -21,8 +21,7 @@
 
 #include <config.h>
 #include "about.h"
-
-#define INTERNAL_VERSION "0.0.13"
+#include "mini-commander_applet.h"
 
 
 void aboutBox(AppletWidget *applet, gpointer data)

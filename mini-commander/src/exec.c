@@ -25,6 +25,7 @@
 #include <signal.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <unistd.h>
 
 #include "exec.h"
 #include "preferences.h"
@@ -37,7 +38,9 @@
 */
 
 
-void execCommand(char *cmd)
+
+void
+execCommand(char *cmd)
 {
     pid_t pid;
     char *argv[10];
@@ -48,7 +51,8 @@ void execCommand(char *cmd)
     char *substPtr;
     int prefixRecognized = FALSE;
     int i, j;
-
+    pid_t PID = getpid();
+	    
     /* make local copy of cmd; now we can minipulate command without
        changing cmd (important for history) */
     strcpy(command, cmd);
@@ -107,31 +111,63 @@ void execCommand(char *cmd)
 	    argv[0] = "sh";
 	    argv[1] = "-c";
 	    argv[2] = command;
-	    argv[3] = NULL;
+	    argv[3] = NULL;  
 	    execv("/bin/sh", argv);
-	    /* showMessage((gchar *) _("exec failed")); */
+
 	    /* if this line is reached there is really big trouble */
-	    showMessage((gchar *) _("no /bin/sh"));
-	    /* stop this process; I have to find a better solution here */
-	    execl("/bin/nice", "nice", NULL);
+
+	    /* send SIGALRM signal to parent process; this causes a
+               "no /bin/sh" message to be shown*/
+	    kill(PID, SIGALRM);
+
+	    /* terminate this forked process; exit(0) would kill the
+               parent process, too */
+	    _exit(0); 
 	} 
 }
 
-static void sighandle(int sig)
+static
+void sighandle_sigchld(int sig)
 {
     pid_t pid = 0;
     int status;
-    
-    /* showMessage((gchar *) _("signal...")); */  
-    /*if (sig == SIGCHLD) */
+
+    /* call waitpid to remove the child process and to prevent that it
+       becomes a zombie */
     if (waitpid(0, &status, WNOHANG ) > 0)
 	showMessage((gchar *) _("child exited")); 
-    signal(SIGCHLD, &sighandle);
-    return;
+
+    /* reinstall signal handler */
+    signal(SIGCHLD, &sighandle_sigchld);
 }
 
-void initExecSignalHandler(void)
+static
+void sighandle_sigalrm(int sig)
 {
-    /* install signal handler */
-    signal(SIGCHLD, &sighandle);
+    /* sleep a bit (or wait for the next signal) so that the following
+       message is not overwritten by the "child exited" message */
+    sleep(1);
+
+    showMessage((gchar *) _("no /bin/sh"));
+   
+    /*
+       gnome_dialog_run
+       (GNOME_DIALOG
+       (gnome_message_box_new((gchar *) _("No /bin/sh found!"),
+       GNOME_MESSAGE_BOX_WARNING,
+       GNOME_STOCK_BUTTON_CANCEL,
+       NULL)
+       )
+       ); */
+
+    /* reinstall signal handler */
+    signal(SIGALRM, &sighandle_sigalrm);
+}
+
+void
+initExecSignalHandler(void)
+{
+    /* install signal handlers */
+    signal(SIGCHLD, &sighandle_sigchld);
+    signal(SIGALRM, &sighandle_sigalrm);
 }

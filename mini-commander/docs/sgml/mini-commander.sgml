@@ -1,6 +1,8 @@
 <!doctype book PUBLIC "-//Davenport//DTD DocBook V3.0//EN"[
 <!entity gpl2 SYSTEM "gpl2.sgml">
-<!entity todo-txt SYSTEM "../../TODO">
+<!entity todo-txt SYSTEM "../todo.txt">
+<!entity news-txt SYSTEM "../news.txt">
+<!entity change-log-txt SYSTEM "../change-log.txt">
 <!ENTITY mini-c "<application>Mini-Commander</application>">
 ]>
 
@@ -152,6 +154,9 @@
       <keycap>arrow-up</keycap> or <keycap>arrow-down</keycap>
       keys. This works like the command history in most UNIX
       shells.</para>
+
+      <para>A command is not stored in the history when it is the same
+      as the command before.  This way dupes are prevented.</para>
     </sect1>
 
     <sect1 id="macros">
@@ -237,7 +242,7 @@ is a GtkPlug/GtkSocket bug, not sure. [1998-12-29]
     future. If you have a suggestion which is not on the list you are
     welcome to contact the author.</para>
 
-    <!-- Do someon know a better tag than "screen" for this purpose? -->
+    <!-- Does someone know a better tag than "screen" for this purpose? -->
     <screen>&todo-txt;</screen>
 
   </chapter>
@@ -252,7 +257,11 @@ is a GtkPlug/GtkSocket bug, not sure. [1998-12-29]
     linkend="change-log">) which shows modifications on source
     level.</para>
 
-    <variablelist>
+    <!-- Does someone know a better tag than "screen" for this purpose? -->
+    <screen>&news-txt;</screen>
+
+
+    <!-- variablelist>
 
       <varlistentry>
 	<term>Release 0.0.13:</term>
@@ -525,7 +534,7 @@ is a GtkPlug/GtkSocket bug, not sure. [1998-12-29]
 
       </varlistentry>
 
-    </variablelist>
+    </variablelist -->
 
   </chapter>
 
@@ -538,8 +547,11 @@ is a GtkPlug/GtkSocket bug, not sure. [1998-12-29]
     release of &mini-c; you should go to the history list (<xref
     linkend="history">).</para>
 
-    <para>The ChangeLog can be viewed <ulink
-    url="change-log.txt">here</ulink>.</para>
+    <!-- Does someone know a better tag than "screen" for this purpose? -->
+    <screen>&change-log-txt;</screen>
+
+    <!-- para>The ChangeLog can be viewed <ulink
+    url="change-log.txt">here</ulink>.</para -->
 
     <para></para>
 

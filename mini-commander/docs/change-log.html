@@ -76,12 +76,223 @@ CLASS="APPLICATION"
 HREF="history.html"
 >Chapter 6</A
 >).</P
-><P
->The ChangeLog can be viewed <A
-HREF="change-log.txt"
-TARGET="_top"
->here</A
->.</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>1999-01-05  Oliver Maruhn  &#60;om@linuxhq.com&#62;
+
+	* src/exec.c (execCommand): better handling when /bin/sh can not
+ 	be started
+
+	* TODO (TODO): updated
+
+	* docs/sgml/mini-commander.sgml (Section History): synchronized
+ 	with NEWS
+
+	* NEWS: file added
+
+1998-12-30  Oliver Maruhn  &#60;om@linuxhq.com&#62;
+
+	* docs/Makefile.am (%.html): .html files moved to docs/html/
+	(%.html): .html files moved back to docs/; .sgml files moved to
+ 	sgml/; now .html files are build automatically
+
+1998-12-29  Oliver Maruhn  &#60;om@linuxhq.com&#62;
+
+	* mini-commander_applet.c (main): removed wrong menu stock icon
+
+	* help.c (showHelp): added missing parameters
+
+	* about.c: help text deleted because it is now part of the
+ 	SGML/LinuxDoc documentation
+	(INTERNAL_VERSION): set to 0.0.13
+
+	* mini-commander_applet.c (main): "Help" menu item added
+
+	* docs/mini-commander.sgml: help file created
+
+	* Makefile.am (mini_commander_applet_SOURCES): help.c, help.h entries added
+
+	* help.h (showHelp_action): file created
+
+	* help.c (showHelp_action): file created
+
+	* Makefile.am (SUBDIRS): subdir docs/ added
+
+1998-12-27  Oliver Maruhn  &#60;om@linuxhq.com&#62;
+
+	* mini-commander_applet.c (main): layout fix: show command line at
+ 	the top
+
+1998-12-19  Oliver Maruhn  &#60;om@linuxhq.com&#62;
+
+	* message.c (hideMessage): fixed bug that the layout was wrong
+ 	when no status message was shown layout
+ 
+1998-12-15  Federico Mena Quintero  &#60;federico@nuclecu.unam.mx&#62;
+
+	* Makefile.am (mini_commander_applet_SOURCES): Added a billion
+	missing header files, sigh...
+
+1998-12-14  Oliver Maruhn  &#60;om@linuxhq.com&#62;
+
+	* command_line.c (commandKey_event): using key names from
+ 	gdk/gdkkeysyms.h instead of using hardcoded values
+	
+1998-12-13  Oliver Maruhn  &#60;om@linuxhq.com&#62;
+
+	* src/mini-commander_applet.desktop (Exec): added needed argument
+
+	(Type): changed from "Applet" to "Application"
+
+	* src/mini-commander_applet.gnorba: file created
+
+	* src/mini-commander_applet.c (main): fixed deprecated arguments
+ 	for applet_widget_init_defaults and applet_widget_new; now the
+ 	source is compileable again
+
+1998-10-21  Oliver Maruhn  &#60;om@linuxhq.com&#62;
+
+	* src/cmd_completion.c (cmdCompletion): first implemention of
+ 	command completion code
+
+1998-10-20  Oliver Maruhn  &#60;om@linuxhq.com&#62;
+
+	* src/cmd_completion.c (cmdCompletion): new file for command
+ 	completion code
+
+	* src/command_line.c: new file
+
+	* src/message.c: new file
+
+	* src/mini-commander_applet.c (showMessage): redrawing of frame
+ 	each time a message is displayed is no longe needed; this fixes
+ 	flickering of the applet
+
+1998-10-19  Oliver Maruhn  &#60;om@linuxhq.com&#62;
+
+	* mini-commander_applet.c splitted into mini-commander_applet.c,
+ 	preferences.c, about.c and exec.c
+
+	* src/mini-commander_applet.c (loadSession):
+ 	default-prefixes/commands routine rewritten and some defaults
+ 	changed [Kevin M Fox &#60;kmfox@mail.bhi-erc.com&#62; suggested to use
+ 	gnome-terminal instead of nxterm as default]
+
+1998-10-17  Oliver Maruhn  &#60;om@linuxhq.com&#62;
+
+	* src/mini-commander_applet.c (propertiesBox_apply_signal): colors
+ 	of command line now configurable
+
+	(saveSession): preferences-save-bug fixed
+
+1998-10-16  Oliver Maruhn  &#60;om@linuxhq.com&#62;
+
+	* src/mini-commander_applet.c (commandKey_event): bug in new
+ 	history feature fixed
+
+	(saveSession_signal): now using global properties instead of local
+
+	(propertiesBox): check if prefix and command strings don't point
+ 	to NULL before calling gtk_entry_set_text
+ 
+1998-10-14  Oliver Maruhn  &#60;om@linuxhq.com&#62;
+
+	* src/mini-commander_applet.c (propertiesBox_apply_signal): option
+ 	enable/disable date added
+
+	(commandKey_event): remember current command [even when you press
+ 	KeyUp, KeyDown] [suggested by "Itamar S.-T." &#60;itamars@ibm.net&#62;]
+
+	(execCommand): prefix support completely rewritten
+
+	prefixes are now configurable
+
+1998-10-13  Oliver Maruhn  &#60;om@linuxhq.com&#62;
+
+	* INSTALL: some more hints added
+
+	* po/de.po: german translation added
+
+	* po/*: support for internationalization [i18n] added
+
+	* acconfig.h: some lines added
+
+	* macros/*: all files updated [gnome-orbit-check added]
+
+	* support/*: all files updated
+
+1998-10-08  Oliver Maruhn  &#60;om@linuxhq.com&#62;
+
+	* src/mini-commander_applet.c (propertiesBox): properties dialog
+ 	box added (currently you can only enable/disable the clock)
+
+	(propertiesBox): prefix/command fields added
+
+	(saveSession_signal): session management added
+
+	* src/Makefile.am (mini_commander_applet_LDADD): fixed wrong name
+ 	of binary
+
+1998-10-06  Oliver Maruhn  &#60;om@linuxhq.com&#62;
+
+	* configure.in: now autoconf/automake is used for building (thanks
+ 	to Raja R Harinath &#60;harinath@cs.umn.edu&#62; for his gnome-standalone
+ 	example)
+
+	subdirectory support added
+
+1998-09-08  Oliver Maruhn  &#60;om@linuxhq.com&#62;
+
+	* mini-commander_applet.c (execCommand): don't start netscape
+ 	again if it is still running; use "-remote openURL(...)" instead
+
+1998-09-06  Oliver Maruhn  &#60;om@linuxhq.com&#62;
+
+	* mini-commander_applet.c: included patch from Jacob C. Berkman
+ 	&#60;jberk+@cmu.edu&#62; which adds a signal handler (no more zombies ;-))
+
+1998-09-05  Oliver Maruhn  &#60;om@linuxhq.com&#62;
+
+	* mini-commander_applet.c: new outfit
+	(execCommand): fixed bug with storing wrong URL in history
+
+1998-09-03  Oliver Maruhn  &#60;om@linuxhq.com&#62;
+
+	* mini-commander_applet.c: applet renamed to Mini Commander
+
+	* mini-commander_applet.c: support of URL's (suggested by Kevin M
+ 	Fox &#60;kmfox@mail.bhi-erc.com&#62;)
+
+	* mini-commander_applet.c: support of non-X programs
+
+	* mini-commander_applet.c: added clock
+
+	* mini-commander_applet.c (showMessage): added refresh of frame
+ 	when labelMessage changes
+
+1998-09-01  Oliver Maruhn  &#60;om@linuxhq.com&#62;
+
+	* history added
+
+	* frame added
+
+	* status line added
+
+	* about box added
+	
+
+1998-08-31  Oliver Maruhn  &#60;om@linuxhq.com&#62;
+
+	* very first version of Mini Command-line&#13;</PRE
+></TD
+></TR
+></TABLE
 ><P
 ></P
 ></DIV

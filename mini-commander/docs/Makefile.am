@@ -7,11 +7,11 @@ docdir = $(datadir)/gnome/help/mini-commander/C
 # can install these docs, too
 doc_DATA =	\
 change-log.html          faq.html                 legal-notice.html	\
-change-log.txt           features.html            macros.html		\
+features.html            macros.html					\
 clock.html               feedback.html            screenshot01.gif	\
 command-completion.html  gpl2.html                screenshots.html	\
 command-history.html     history.html             todo.html		\
-customization.html       index.html               todo.txt		\
+customization.html       index.html               			\
 docbook.css              introduction.html        download.html
 
 # the .sgml docs sources in DocBook format:
@@ -27,9 +27,10 @@ EXTRA_DIST = $(doc_DATA) $(doc_SGML)
 # If the output of db2html would change in future, this would brake
 # this Makefile.
 %.html:	$(doc_SGML)
-	cp -fv ../ChangeLog ./change-log.txt ;			\
-	cp -fv ../TODO ./todo.txt ;				\
-	cd sgml ;						\
-	db2html mini-commander.sgml ;				\
-        mv -fv mini-commander/*.html mini-commander/*.css .. ;	\
+	cat ../ChangeLog | sed 's/</\&lt;/g; s/>/\&gt;/g' > ./change-log.txt ;	\
+	cat ../TODO | sed 's/</\&lt;/g; s/>/\&gt;/g' > ./todo.txt ;	\
+	cat ../NEWS | sed 's/</\&lt;/g; s/>/\&gt;/g' > ./news.txt ;	\
+	cd sgml ;							\
+	db2html mini-commander.sgml ;					\
+        mv -fv mini-commander/*.html mini-commander/*.css .. ;		\
         rm -rf mini-commander/

@@ -61,7 +61,6 @@ main(int argc, char **argv)
     
     GtkStyle *style;
     GdkColor color;
-
     
     /* install signal handler */
     initExecSignalHandler();
@@ -156,7 +155,7 @@ main(int argc, char **argv)
 					  NULL);
     
     showMessage((gchar *) _("ready...")); 
-    
+ 
     /* special corba main loop */
     applet_widget_gtk_main ();
     

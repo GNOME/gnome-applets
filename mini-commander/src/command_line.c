@@ -93,15 +93,20 @@ static gint commandKey_event(GtkWidget *widget, GdkEventKey *event, gpointer dat
 	    /* printf("%s\n", command); */
 	    execCommand(command);
 
-	    /* update history */
-	    free(historyCommand[0]);
-	    for(pos = 0; pos < HISTORY_DEPTH - 1; pos++)
-		{
-		    historyCommand[pos] = historyCommand[pos+1];
-		    /* printf("%s\n", historyCommand[pos]); */
-		}
-	    historyCommand[HISTORY_DEPTH - 1] = command;   
-	    historyPosition = HISTORY_DEPTH;
+	    if(historyCommand[HISTORY_DEPTH - 1] == NULL
+	       || strcmp(command, historyCommand[HISTORY_DEPTH - 1]) != 0)
+	       {
+		   /* this command is no dupe -> update history */
+		   free(historyCommand[0]);
+		   for(pos = 0; pos < HISTORY_DEPTH - 1; pos++)
+		       {
+			   historyCommand[pos] = historyCommand[pos+1];
+			   /* printf("%s\n", historyCommand[pos]); */
+		       }
+		   historyCommand[HISTORY_DEPTH - 1] = command;   
+
+	       }
+	    historyPosition = HISTORY_DEPTH;		   
 
 	    strcpy(currentCommand, "");
 	    gtk_entry_set_text(GTK_ENTRY(widget), (gchar *) "");

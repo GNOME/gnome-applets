@@ -27,28 +27,33 @@
 #include "preferences.h"
 #include "command_line.h"
 #include "message.h"
+#include "mini-commander_applet.h"
 
 properties prop = { TRUE, TRUE, 11, 12, 13, 14, 15, 0, 0, 0, 50000, 50000, 50000 };
 properties propTmp = { -1, -1, -1, -1, -1, -1, -1 -1, -1, -1, -1, -1, -1};
 
-static void checkBoxToggled_signal(GtkWidget *checkBoxWidget, int *data)
+static void
+checkBoxToggled_signal(GtkWidget *checkBoxWidget, int *data)
 {
     *data = GTK_TOGGLE_BUTTON(checkBoxWidget)->active;
 }
 
-static void entryChanged_signal(GtkWidget *entryWidget, char **data)
+static void
+entryChanged_signal(GtkWidget *entryWidget, char **data)
 {
     free(*data);
     *data = (char *) malloc(sizeof(char) * (strlen(gtk_entry_get_text(GTK_ENTRY(entryWidget))) + 1));
     strcpy(*data, gtk_entry_get_text(GTK_ENTRY(entryWidget)));
 }
 
-static void entryIntChanged_signal(GtkWidget *entryWidget, int *data)
+static void
+entryIntChanged_signal(GtkWidget *entryWidget, int *data)
 {
     *data = atoi(gtk_entry_get_text(GTK_ENTRY(entryWidget)));
 }
 
-static void colorCmdFgChanged_signal(GtkWidget *colorPickerWidget, gpointer *data)
+static void
+colorCmdFgChanged_signal(GtkWidget *colorPickerWidget, gpointer *data)
 {
     gushort r, g, b;
 
@@ -59,7 +64,8 @@ static void colorCmdFgChanged_signal(GtkWidget *colorPickerWidget, gpointer *dat
     propTmp.cmdLineColorFgB = (int) b;
 }
 
-static void colorCmdBgChanged_signal(GtkWidget *colorPickerWidget, gpointer *data)
+static void
+colorCmdBgChanged_signal(GtkWidget *colorPickerWidget, gpointer *data)
 {
     gushort r, g, b;
 
@@ -70,7 +76,8 @@ static void colorCmdBgChanged_signal(GtkWidget *colorPickerWidget, gpointer *dat
     propTmp.cmdLineColorBgB = (int) b;
 }
 
-static void propertiesBox_apply_signal(GnomePropertyBox *propertyBoxWidget, gint page, gpointer data)
+static void
+propertiesBox_apply_signal(GnomePropertyBox *propertyBoxWidget, gint page, gpointer data)
 {
     GtkStyle *style;
     int i;
@@ -197,7 +204,8 @@ static void propertiesBox_apply_signal(GnomePropertyBox *propertyBoxWidget, gint
     /*    saveSession(); */
 }
 
-void loadSession(void)
+void
+loadSession(void)
 {
     int i;
     char section[100];
@@ -302,7 +310,8 @@ void loadSession(void)
 }
 
 
-void saveSession(void)
+void
+saveSession(void)
 {
     int i;
     char section[100];
@@ -311,7 +320,7 @@ void saveSession(void)
     gnome_config_push_prefix("/mini-commander/"); 
 
     /* version */
-    gnome_config_set_string("mini_commander/version", (gchar *) VERSION);
+    gnome_config_set_string("mini_commander/version", (gchar *) INTERNAL_VERSION);
 
     /* clock */
     gnome_config_set_bool("mini_commander/show_time", prop.showTime);
@@ -363,7 +372,8 @@ void saveSession(void)
     gnome_config_pop_prefix(); 
 }
 
-gint saveSession_signal(GtkWidget *widget, const char *privcfgpath, const char *globcfgpath)
+gint
+saveSession_signal(GtkWidget *widget, const char *privcfgpath, const char *globcfgpath)
 {       
     showMessage((gchar *) _("saving prefs...")); 	    
     saveSession();
@@ -371,7 +381,8 @@ gint saveSession_signal(GtkWidget *widget, const char *privcfgpath, const char *
     return FALSE;
 }
 
-void propertiesBox(AppletWidget *applet, gpointer data)
+void
+propertiesBox(AppletWidget *applet, gpointer data)
 {
     GtkWidget *propertiesBox;
     GtkWidget *vbox, *vbox1, *frame;

@@ -35,7 +35,8 @@ static gint hideMessage(gpointer data);
 static gint showInterestingInformation(gpointer data);
 
 
-void initMessageLabel(void)
+void
+initMessageLabel(void)
 {
     labelMessage = gtk_label_new((gchar *) "");
     gtk_timeout_add(15*1000, (GtkFunction) showInterestingInformation, (gpointer) NULL);
@@ -59,7 +60,8 @@ void showMessage(gchar *message)
     gtk_timeout_add(2000, (GtkFunction) hideMessage, (gpointer) message);
 }
 
-static gint hideMessage(gpointer data)
+static gint
+hideMessage(gpointer data)
 {
     gchar *message = (char *) data;
     gchar *currentMessage;
@@ -79,7 +81,8 @@ static gint hideMessage(gpointer data)
     return FALSE;
 }
 
-static gint showInterestingInformation(gpointer data)
+static gint
+showInterestingInformation(gpointer data)
 {
     /* shows intersting information while there is no text
        in the mesage label
