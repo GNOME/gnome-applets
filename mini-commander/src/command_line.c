@@ -32,6 +32,8 @@
 #include "message.h"
 
 static gint fileBrowserOK_signal(GtkWidget *widget, gpointer fileSelect);
+static void historySelectionMade_cb(GtkWidget *clist, gint row, gint column,
+				    GdkEventButton *event, gpointer data);
 
 GtkWidget *entryCommand;
 static int historyPosition = HISTORY_DEPTH;
@@ -149,10 +151,71 @@ activateCommandLine_signal(GtkWidget *widget, gpointer data)
     return (FALSE);
 }
 
+static void
+historySelectionMade_cb(GtkWidget *clist, gint row, gint column,
+			GdkEventButton *event, gpointer data)
+{
+    gchar *command;
+
+    gtk_clist_get_text(GTK_CLIST(clist), row, column, &command);
+    execCommand(command);
+
+    /* close history window */
+    gtk_widget_destroy(GTK_WIDGET(clist->parent->parent));
+}
+
+
 gint 
 showHistory_signal(GtkWidget *widget, gpointer data)
 {
+    GtkWidget *window;
+    GtkWidget *scrolled_window;
+    GtkWidget *clist;
+    gchar *commandList[1];
+    int i;
+
+    window = gtk_window_new(GTK_WINDOW_DIALOG);
+    /* position */
+    gtk_window_position(GTK_WINDOW (window), GTK_WIN_POS_MOUSE);
+    /* size */
+    gtk_widget_set_usize(GTK_WIDGET(window), 200,350);
+    /* border */
+    gtk_container_border_width(GTK_CONTAINER(window), 3);
+    /* title */
+    gtk_window_set_title(GTK_WINDOW(window), (gchar *) _("Command history"));
+
+    /* scrollbars */
+    /* create scrolled window to put the GtkList widget inside */
+    scrolled_window=gtk_scrolled_window_new(NULL, NULL);
+    gtk_container_add(GTK_CONTAINER(window), scrolled_window);
+    gtk_widget_show(scrolled_window);
+
+
+    clist = gtk_clist_new(1);
+    gtk_signal_connect(GTK_OBJECT(clist),
+		       "select_row",
+		       GTK_SIGNAL_FUNC(historySelectionMade_cb),
+		       NULL);
+    gtk_widget_show(window);
+
+    /* add history items */
+    for(i = 0; i < HISTORY_DEPTH; i++)
+	{
+	    if(historyCommand[i] != NULL)
+		{
+		    commandList[0] = (gchar *) malloc(sizeof(gchar) * (strlen(historyCommand[i]) + 1));
+		    /* commandList[0] = (gchar *) malloc(sizeof(gchar) * (MAX_COMMAND_LENGTH + 1)); */
+		    strcpy(commandList[0], historyCommand[i]);
+		    gtk_clist_append(GTK_CLIST(clist), commandList);
+		    free(commandList[0]);
+		}
+	}
+    gtk_container_add(GTK_CONTAINER(scrolled_window), clist);
+    gtk_widget_show(clist);    
+
+    
     /* FIXME: write this routine */
+    /*
     gnome_dialog_run
 	(GNOME_DIALOG
 	 (gnome_message_box_new((gchar *) _("The history list comes later."),
@@ -161,6 +224,7 @@ showHistory_signal(GtkWidget *widget, gpointer data)
 				NULL)
 	  )
 	 );
+    */
     
     /* go on */
     return FALSE;  
