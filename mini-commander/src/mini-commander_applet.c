@@ -176,6 +176,7 @@ redraw_applet(void)
     
     /* add message label */
     initMessageLabel();
+
     /* do not center text but put it to bottom instead */
     gtk_misc_set_alignment(GTK_MISC(labelMessage), 0.0, 1.0);
     gtk_box_pack_start(GTK_BOX(hbox), labelMessage, TRUE, TRUE, 0);
