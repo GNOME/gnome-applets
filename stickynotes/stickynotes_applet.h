@@ -84,7 +84,7 @@ StickyNotesApplet * stickynotes_applet_new(PanelApplet *panel_applet);
 
 void stickynotes_applet_update_icon(StickyNotesApplet *applet);
 void stickynotes_applet_update_prefs();
-void stickynotes_applet_update_menu();
+void stickynotes_applet_update_menus();
 void stickynotes_applet_update_tooltips();
 
 void stickynotes_applet_do_default_action();
