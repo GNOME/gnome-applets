@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
-"http://basil.ireland.sun.com:8080/docbook/docbookx.dtd" [
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "2.1.3">
-  <!ENTITY manrevision "2.4">
-  <!ENTITY date "April 2003">
+  <!ENTITY appletversion "2.3.6">
+  <!ENTITY manrevision "2.5">
+  <!ENTITY date "August 2003">
   <!ENTITY applet "Command Line">
 ]>
-<!-- http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd
+<!-- 
       (Do not remove this comment block.)
   Maintained by the GNOME Documentation Project
   http://developer.gnome.org/projects/gdp 
@@ -22,7 +22,8 @@
   <articleinfo> 
      <title>&applet; Applet Manual V&manrevision;</title> 
      <copyright> 
-        <year>2002-2003</year> 
+			<year>2002</year>
+        <year>2003</year> 
         <holder>Sun Microsystems</holder> 
      </copyright>    
       
@@ -81,6 +82,19 @@
         <revision> 
           <revnumber>&applet; Applet Manual V&manrevision;</revnumber> 
           <date>&date;</date> 
+          <revdescription> 
+             <para role="author">
+                Sun Microsystems
+             </para>
+             <para role="publisher">
+                GNOME Documentation Project
+             </para>
+          </revdescription> 
+        </revision>
+
+			<revision> 
+          <revnumber>Command Line Applet Manual V2.4</revnumber> 
+          <date>April 2003</date> 
           <revdescription> 
              <para role="author">
                 Sun Microsystems
@@ -215,35 +229,35 @@
         <variablelist>
           <varlistentry>
              <term>
-                <guilabel>Entry field</guilabel></term>
+                <guilabel>Entry</guilabel> field</term>
              <listitem>
                 <para>
                   You can enter commands, macros, and programs in the 
-                  <guilabel>Entry field</guilabel>.
+                  <guilabel>entry field</guilabel>.
                 </para>
              </listitem>
           </varlistentry>
           <varlistentry>
              <term>
-                <guilabel>Browser button</guilabel></term>
+                <guilabel>Browser</guilabel> button</term>
              <listitem>
                 <para>
                   You can use the 
-                  <guibutton>Browser button</guibutton> to look through your file
+                  <guibutton>Browser</guibutton> button to look through your file
                   system for programs. A solid circle icon identifies the 
-                  <guibutton>Browser button</guibutton>.
+                  <guibutton>Browser</guibutton> button.
                 </para>
              </listitem>
           </varlistentry>
           <varlistentry>
              <term>
-                <guibutton>History button</guibutton></term>
+                <guibutton>History</guibutton> button</term>
              <listitem>
                 <para>
                   You can use the 
-                  <guibutton>History button</guibutton> to recall previous
+                  <guibutton>History</guibutton> button to recall previous
                   commands. A down-arrow icon identifies the 
-                  <guibutton>History button</guibutton>.
+                  <guibutton>History</guibutton> button.
                 </para>
              </listitem>
           </varlistentry>
@@ -269,11 +283,11 @@
              <term>History-based autocompletion function</term>
              <listitem>
                 <para>
-                  <application> &applet;</application> uses the history-based
+                  <application>&applet;</application> uses the history-based
                   autocompletion function to complete commands in the 
-                  <guilabel> entry field</guilabel>. This function compares the
+                  <guilabel>entry field</guilabel>. This function compares the
                   contents of the 
-                  <guilabel> entry field</guilabel> with the history list. If
+                  <guilabel>entry field</guilabel> with the history list. If
                   <application>&applet;</application> finds a match then the applet completes the
                   command.
                 </para>
@@ -421,7 +435,7 @@
         <title>To Run a Program From Your File System</title> 
         <para>
           Click on the 
-          <guibutton>Browser button</guibutton> to display the file system, then
+          <guibutton>Browser</guibutton> button to display the file system, then
           double-click on the program you want to run. 
         </para>
         <para>
@@ -504,7 +518,7 @@
 		</listitem>
 		</varlistentry>
 		<varlistentry id="autocompletion">
-		<term><guilabel>Enable history based autocompletion</guilabel> </term>
+		<term><guilabel>Enable history-based autocompletion</guilabel></term>
 		<listitem>
 		<para>Select this option to instruct 
 		<application>&applet;</application> to compare the 
@@ -513,7 +527,7 @@
 		</listitem>
 		</varlistentry>
 		<varlistentry>
-		<term><guilabel>Applet width</guilabel> </term>
+		<term><guilabel>Width</guilabel> </term>
 		<listitem>
 		<para>Use this spin box to specify the applet width in pixels.</para>
 		</listitem>
@@ -549,10 +563,11 @@
         <para>
           This tabbed section contains a list of macros that you can use with
           <application>&applet;</application>. The list contains the following information: 
+			</para>
           <itemizedlist> 
              <listitem>
                 <para>
-                  A list of UNIX regular expressions in the left column. 
+                  A list of UNIX regular expressions in the <guilabel>Pattern</guilabel> column. 
                 </para>
                 <para>
                   A regular expression is a pattern of characters or numbers that
@@ -563,19 +578,21 @@
              </listitem> 
              <listitem>
                 <para>
-                  A list of macros in the right column. 
+                  A list of commands in the <guilabel>Command</guilabel> column. 
                 </para>
                 <para>
-                  A macro executes if the corresponding regular expression
-                  successfully matches the command that you type into the
+                  A command executes if the corresponding pattern
+                  successfully matches the text that you type into the
                   <application>&applet;</application> 
-                  <guilabel> entry field</guilabel>. The macros are commands that
+                  <guilabel>entry field</guilabel>. The macros are commands that
                   can take parameters parsed by the regular expression.
                 </para>
              </listitem> 
-          </itemizedlist> You can add or modify any of the regular expressions or
-          macros. 
-        </para>
+          </itemizedlist> 
+		<para>To add a new macro, click on the <guibutton>Add Macro</guibutton> button. 
+		To delete a macro, select the macro, then click on the 
+		<guibutton>Delete Macro</guibutton> button. 
+     </para>
      </sect2> 
   </sect1> 
 </article> 
