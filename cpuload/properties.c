@@ -199,7 +199,8 @@ void properties(AppletWidget *applet, gpointer data)
 	frame = create_frame();
 	label = gtk_label_new(_("General"));
         gtk_widget_show(frame);
-	gnome_property_box_append_page( GNOME_PROPERTY_BOX(propbox),
+	gtk_notebook_append_page(
+		GTK_NOTEBOOK(GNOME_PROPERTY_BOX(propbox)->notebook),
 		frame, label );
 
         gtk_signal_connect( GTK_OBJECT(propbox),
