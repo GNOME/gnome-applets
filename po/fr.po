@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets VERSION\n"
-"POT-Creation-Date: 1999-07-10 08:38+0200\n"
+"POT-Creation-Date: 1999-07-12 13:21+0200\n"
 "PO-Revision-Date: 1998-02-28 19:34+0100\n"
 "Last-Translator: Vincent Renardias <vincent@ldsol.com>\n"
 "Language-Team: Vincent Renardias <vincent@ldsol.com>\n"
@@ -98,11 +98,11 @@ msgstr "Paramétres de l'Horloge"
 #.
 #.
 #. ---
-#: another_clock/another_clock.c:215 asclock/dialogs.c:345
+#: another_clock/another_clock.c:215 asclock/dialogs.c:347
 #: battery/properties.c:77 charpick/properties.c:185
 #: clockmail/properties.c:403 diskusage/properties.c:315
 #: drivemount/properties.c:222 fvwm-pager/properties.c:247
-#: mini-commander/src/preferences.c:709 modemlights/properties.c:244
+#: mini-commander/src/preferences.c:709 modemlights/properties.c:253
 #: netload/properties.c:280 slashapp/properties.c:347
 msgid "General"
 msgstr "Général"
@@ -144,34 +144,34 @@ msgstr "Iñigo Serna <inigo@gaztelan.bi.ehu.es>"
 msgid "Another Clock Applet"
 msgstr "Encore une Applet Horloge"
 
-#: another_clock/another_clock.c:324
+#: another_clock/another_clock.c:325
 msgid "(C) 1999 the Free Software Foundation"
 msgstr "(C) 1999 the Free Software Foundation"
 
-#: another_clock/another_clock.c:326
+#: another_clock/another_clock.c:327
 msgid "An analog clock similar to that in CDE panel."
 msgstr "Une horloge analogique similaire a celle du panel CDE."
 
-#: another_clock/another_clock.c:614 asclock/asclock.c:595
-#: battery/battery.c:770 charpick/charpick.c:433 clockmail/clockmail.c:538
-#: drivemount/drivemount.c:558 esd-manager/esdmanager_applet.c:80
+#: another_clock/another_clock.c:615 asclock/asclock.c:595
+#: battery/battery.c:782 charpick/charpick.c:435 clockmail/clockmail.c:539
+#: drivemount/drivemount.c:552 esd-manager/esdmanager_applet.c:80
 #: fifteen/fifteen.c:309 fvwm-pager/fvwm-pager.c:406 geyes/geyes.c:350
-#: gkb/gkb.c:610 gnome-pager/gnomepager_applet.c:2550 jbc/jbc-applet.c:144
-#: life/life.c:198 mini-commander/src/mini-commander_applet.c:265
-#: modemlights/modemlights.c:1024 netload/netload.c:339 slashapp/slashapp.c:58
-#: webcontrol/webcontrol.c:307
+#: gkb/gkb.c:610 gnome-pager/gnomepager_applet.c:2550 jbc/jbc-applet.c:136
+#: life/life.c:197 mini-commander/src/mini-commander_applet.c:265
+#: modemlights/modemlights.c:1028 netload/netload.c:339 slashapp/slashapp.c:58
+#: webcontrol/webcontrol.c:308
 msgid "About..."
 msgstr "A Propos..."
 
-#: another_clock/another_clock.c:620 asclock/asclock.c:601
-#: charpick/charpick.c:440 clockmail/clockmail.c:545 diskusage/diskusage.c:799
-#: drivemount/drivemount.c:552 esd-manager/esdmanager_applet.c:87
+#: another_clock/another_clock.c:621 asclock/asclock.c:601
+#: charpick/charpick.c:442 clockmail/clockmail.c:532 diskusage/diskusage.c:799
+#: drivemount/drivemount.c:546 esd-manager/esdmanager_applet.c:87
 #: fvwm-pager/fvwm-pager.c:412 geyes/geyes.c:356 gkb/gkb.c:618
 #: gnome-pager/gnomepager_applet.c:2556
 #: mini-commander/src/mini-commander_applet.c:252
-#: modemlights/modemlights.c:1018 multiload/cpuload.c:64
+#: modemlights/modemlights.c:1022 multiload/cpuload.c:64
 #: multiload/memload.c:60 multiload/swapload.c:60 netload/netload.c:346
-#: slashapp/slashapp.c:55 webcontrol/webcontrol.c:315
+#: slashapp/slashapp.c:55 webcontrol/webcontrol.c:316
 msgid "Properties..."
 msgstr "Propriétés..."
 
@@ -211,16 +211,16 @@ msgid "ASClock Settings"
 msgstr "Paramétres ASClock"
 
 #. show ampm toggle button
-#: asclock/dialogs.c:298 clockmail/properties.c:292
+#: asclock/dialogs.c:300 clockmail/properties.c:292
 msgid "Display time in 12 hour format (AM/PM)"
 msgstr "Affichage au format ``12 heures'' (AM/PM)"
 
 #. show ampm toggle button
-#: asclock/dialogs.c:306
+#: asclock/dialogs.c:308
 msgid "Blinking elements in clock"
 msgstr "Éléments clignotants dans clock"
 
-#: asclock/dialogs.c:350
+#: asclock/dialogs.c:352
 msgid "Timezone"
 msgstr "Fuseau Horaire"
 
@@ -244,20 +244,29 @@ msgstr "La batterie est chargée à bloc."
 msgid "Internal error: invalid mode in battery_set_mode"
 msgstr "Erreur interne: mode invalide dans batterie_set_mode"
 
-#: battery/battery.c:641 esd-manager/esdmanager_applet.c:72
-#: jbc/jbc-applet.c:129 netload/netload.c:321
+#: battery/battery.c:641
+msgid ""
+"Error querying battery charge.\n"
+"\n"
+"Make sure that your kernel was built with APM support."
+msgstr ""
+"Erreur lors de l'interrogation de la charge de la batterie.\n"
+"Assurez-vous que votre noyau a été compilé avec support pour APM."
+
+#: battery/battery.c:653 esd-manager/esdmanager_applet.c:72
+#: jbc/jbc-applet.c:121 netload/netload.c:321
 msgid "Can't create applet!\n"
 msgstr "Impossible de créér l'applet!\n"
 
-#: battery/battery.c:837
+#: battery/battery.c:849
 msgid "The GNOME Battery Monitor Applet"
 msgstr "L'applet GNOME Moniteur de Batterie"
 
-#: battery/battery.c:838
+#: battery/battery.c:850
 msgid " (C) 1997-1998 The Free Software Foundation"
 msgstr "(C) 1997-1998 the Free Software Foundation"
 
-#: battery/battery.c:840
+#: battery/battery.c:852
 msgid ""
 "This applet monitors the charge of your laptop's battery.  Click on it to "
 "change display modes."
@@ -265,7 +274,7 @@ msgstr ""
 "Cette applet surveille la charge de la batterie de votre portable. Cliquez "
 "dessus pour changer les modes d'affichage."
 
-#: battery/battery.c:975
+#: battery/battery.c:987
 msgid "Could not allocate space for graph values"
 msgstr "Impossible d'allouer de l'espace pour les valeurs du graphe"
 
@@ -381,17 +390,13 @@ msgstr ""
 "APM est désactivé! Impossible d'obtenir lesinformations sur la charge de la "
 "batterie."
 
-#: cdplayer/cdplayer.c:345
+#: cdplayer/cdplayer.c:344
 msgid "Run gtcd..."
 msgstr "Lancer gtcd..."
 
 #: charpick/charpick.c:314
 msgid "Character Picker"
 msgstr "Sélecteur de caractéres"
-
-#: charpick/charpick.c:315
-msgid "0.03"
-msgstr "0.03"
 
 #: charpick/charpick.c:316
 msgid "Copyright (C) 1998"
@@ -407,40 +412,34 @@ msgstr ""
 "publique GNU."
 
 #: charpick/properties.c:124
-#, fuzzy
 msgid "Character Picker Settings"
-msgstr "Sélecteur de caractéres"
+msgstr "Paramétres du sélecteur de caractéres"
 
 #: charpick/properties.c:131
 msgid "Size of button: (pixels)"
-msgstr ""
+msgstr "Taille du bouton: (pixels)"
 
 #: charpick/properties.c:132
 msgid "Number of rows of buttons:"
-msgstr ""
+msgstr "Nombre de lignes de boutons:"
 
 #: charpick/properties.c:133
 msgid "Number of columns of buttons:"
-msgstr ""
+msgstr "Nombre de colonnes de boutons:"
 
-#: clockmail/clockmail.c:53 slashapp/slashapp.c:124
-#, c-format
-msgid "%d.%d.%d"
-msgstr "%d.%d.%d"
-
-#: clockmail/clockmail.c:58 slashapp/slashapp.c:127
+#: clockmail/clockmail.c:52 slashapp/slashapp.c:127
 msgid "John Ellis <johne@bellatlantic.net>"
 msgstr "John Ellis <johne@bellatlantic.net>"
 
-#: clockmail/clockmail.c:61
+#: clockmail/clockmail.c:55
 msgid "Clock and Mail Notify Applet"
 msgstr "Clock and Mail Notify Applet"
 
-#: clockmail/clockmail.c:62 jbc/jbc-applet.c:55
+#: clockmail/clockmail.c:56 jbc/jbc-applet.c:47
 msgid "(C) 1999"
 msgstr "(C) 1999"
 
-#: clockmail/clockmail.c:64
+#: clockmail/clockmail.c:58
 msgid ""
 "Released under the GNU general public license.\n"
 "Basic digital clock with date in a tooltip. Optional 12/24 time display. "
@@ -452,15 +451,15 @@ msgstr ""
 "clignotement peut être activé en cas de message non lu, ou "
 "seulementbriévement quand un nouveau message arrive."
 
-#: clockmail/clockmail.c:134
+#: clockmail/clockmail.c:128
 msgid "%a, %b %d"
 msgstr "%a, %b %d"
 
-#: clockmail/clockmail.c:141
+#: clockmail/clockmail.c:135
 msgid " (GMT)"
 msgstr " (GMT)"
 
-#: clockmail/clockmail.c:147
+#: clockmail/clockmail.c:141
 #, c-format
 msgid " (GMT %+d)"
 msgstr " (GMT %+d)"
@@ -528,7 +527,7 @@ msgstr "Systèmes de fichiers"
 msgid "File System Changed!\n"
 msgstr "Le système de fichies a changé!\n"
 
-#: diskusage/diskusage.c:806 drivemount/drivemount.c:576
+#: diskusage/diskusage.c:806 drivemount/drivemount.c:570
 msgid "Browse..."
 msgstr "Parcourir... "
 
@@ -566,11 +565,11 @@ msgstr "Fréquence de mise à jour"
 msgid "Diskusage Settings"
 msgstr "Paramétres de Diskusage"
 
-#: drivemount/drivemount.c:83
+#: drivemount/drivemount.c:77
 msgid "Drive Mount Applet"
 msgstr "Applet de montage de disques"
 
-#: drivemount/drivemount.c:86
+#: drivemount/drivemount.c:80
 msgid ""
 "Released under the GNU general public license.\n"
 "Mounts and Unmounts drives.."
@@ -578,19 +577,19 @@ msgstr ""
 "Logiciel distribué sous les termes de la Licence Générale GNU.\n"
 "Monte et démonte des lecteurs..."
 
-#: drivemount/drivemount.c:187
+#: drivemount/drivemount.c:181
 msgid " mounted"
 msgstr "mounté"
 
-#: drivemount/drivemount.c:192
+#: drivemount/drivemount.c:186
 msgid " not mounted"
 msgstr " démonté"
 
-#: drivemount/drivemount.c:264
+#: drivemount/drivemount.c:258
 msgid "\" reported:\n"
 msgstr "\" rapporté:\n"
 
-#: drivemount/drivemount.c:266
+#: drivemount/drivemount.c:260
 msgid ""
 "Drivemount command failed.\n"
 "\""
@@ -598,7 +597,7 @@ msgstr ""
 "Échec de la commande Drivemount.\n"
 "\""
 
-#: drivemount/drivemount.c:567
+#: drivemount/drivemount.c:561
 msgid "Eject"
 msgstr "Ejecter"
 
@@ -647,13 +646,12 @@ msgid "Esound MAnager Applet"
 msgstr ""
 
 #: esd-manager/esdmanager_applet.c:30
-#, fuzzy
 msgid "Copyright (C)1998 Red Hat Software"
-msgstr "Copyright (C) 1998 the Free Software Foundation"
+msgstr "Copyright (C)1998 Red Hat Software"
 
 #: esd-manager/esdmanager_applet.c:32
 msgid "This does nothing useful"
-msgstr ""
+msgstr "Ne fait rien d'utile"
 
 #: fifteen/fifteen.c:36
 msgid "You win!"
@@ -663,11 +661,7 @@ msgstr "Vous avez gagné!"
 msgid "Fifteen sliding pieces"
 msgstr "Jeu des 15 pièces coulissantes"
 
-#: fifteen/fifteen.c:267 life/life.c:141
-msgid "1.0"
-msgstr "1.0"
-
-#: fifteen/fifteen.c:268 life/life.c:142
+#: fifteen/fifteen.c:268 life/life.c:141
 msgid "Copyright (C) The Free Software Foundation"
 msgstr "Copyright (C) 1998 the Free Software Foundation"
 
@@ -689,70 +683,64 @@ msgstr "Mélanger les pièces"
 
 #: fvwm-pager/fvwm-pager.c:155
 msgid "Fvwm Pager Applet"
-msgstr ""
+msgstr "Applet de pagination Fvwm"
 
 #: fvwm-pager/fvwm-pager.c:157
-#, fuzzy
 msgid "Copyright (C) 1998 M. Lausch"
-msgstr "Copyright (C) 1998"
+msgstr "Copyright (C) 1998 M. Lausch"
 
 #: fvwm-pager/fvwm-pager.c:317
 #, c-format
 msgid "Desk %d"
-msgstr ""
+msgstr "Bureau %d"
 
 #: fvwm-pager/properties.c:134 fvwm-pager/properties.c:163
 msgid "Active Window Color"
-msgstr ""
+msgstr "Couleur de la fenêtre active"
 
 #: fvwm-pager/properties.c:138 fvwm-pager/properties.c:167
 msgid "Inactive Window Color"
-msgstr ""
+msgstr "Couleur des fenêtres inactives"
 
 #: fvwm-pager/properties.c:142 fvwm-pager/properties.c:171
 msgid "Active Desktop Color"
-msgstr ""
+msgstr "Couleur du bureau actif"
 
 #: fvwm-pager/properties.c:146 fvwm-pager/properties.c:175
 msgid "Inactive Desktop Color"
-msgstr ""
+msgstr "Couleur du bureau inactif"
 
 #: fvwm-pager/properties.c:243
-#, fuzzy
 msgid "Fvwm Pager Settings"
-msgstr "Paramétres de Diskusage"
+msgstr "Paramétres du pageur Fvwm"
 
 #: geyes/geyes.c:221
 msgid "Dave Camp <dave@davec.dhs.org>"
-msgstr ""
+msgstr "Dave Camp <dave@davec.dhs.org>"
 
 #: geyes/geyes.c:223
 msgid "gEyes"
-msgstr ""
+msgstr "gEyes"
 
 #: geyes/geyes.c:223
-#, fuzzy
 msgid "Copyright (C) 1999 Dave Camp"
-msgstr "Copyright (C) 1998"
+msgstr "Copyright (C) 199 Dave Camp"
 
 #: geyes/geyes.c:225
 msgid "A goofy little xeyes clone for the GNOME panel."
-msgstr ""
+msgstr "Un clone maladroit de xeyes pour le tableau de bord GNOME."
 
 #: geyes/themes.c:160
-#, fuzzy
 msgid "Theme Name"
-msgstr "Thème"
+msgstr "Nom du Thème"
 
 #: geyes/themes.c:173
-#, fuzzy
 msgid "gEyes Settings"
-msgstr "Paramétres de Diskusage"
+msgstr "Paramétres de gEyes"
 
 #: geyes/themes.c:195
-#, fuzzy
 msgid "Themes"
-msgstr "Thèmes:"
+msgstr "Thèmes"
 
 #: gkb/gkb.c:276
 msgid "GKB settings"
@@ -786,10 +774,6 @@ msgstr "Menu"
 msgid "The GNOME KeyBoard Applet"
 msgstr "L'Applet GNOME KeyBoard"
 
-#: gkb/gkb.c:528
-msgid "1.0.5"
-msgstr "1.0.5"
-
 #: gkb/gkb.c:529
 msgid "(C) 1998-99 LSC - Linux Supporting Center"
 msgstr "(C) 1998-99 LSC - Linux Supporting Center"
@@ -817,110 +801,105 @@ msgid "Desktop Pager Applet"
 msgstr ""
 
 #: gnome-pager/gnomepager_applet.c:198
-#, fuzzy
 msgid "Copyright (C)1998,1999 Red Hat Software, Free Software Foundation"
-msgstr "Copyright (C) 1998 the Free Software Foundation"
+msgstr "Copyright (C) 1998,1999 Red Hat Software, Free Software Foundation"
 
 #: gnome-pager/gnomepager_applet.c:200
 msgid "Pager for a GNOME compliant Window Manager"
-msgstr ""
+msgstr "Pageur pour un gestionnaire de fenêtre GNOME-compatible"
 
 #: gnome-pager/gnomepager_applet.c:327
-#, fuzzy
 msgid "Gnome Pager Settings"
-msgstr "Paramétres de Modem Lights"
+msgstr "Paramétres du pageur GNOME"
 
 #: gnome-pager/gnomepager_applet.c:333
 msgid "Pager"
-msgstr ""
+msgstr "Pageur"
 
 #: gnome-pager/gnomepager_applet.c:340
-#, fuzzy
 msgid "Show pager"
-msgstr "Afficher la date"
+msgstr "Afficher le pageur"
 
 #: gnome-pager/gnomepager_applet.c:343
 msgid "Place pagers after tasklist"
-msgstr ""
+msgstr "Placer les pageurs après la liste des tâches"
 
 #: gnome-pager/gnomepager_applet.c:349
 msgid "Use small pagers"
-msgstr ""
+msgstr "Utiliser de petits pageurs"
 
 #: gnome-pager/gnomepager_applet.c:355
 msgid "Enable pager tooltips"
-msgstr ""
+msgstr "Activer les bulles d'aide du pageur"
 
 #: gnome-pager/gnomepager_applet.c:361
 msgid "Rows of pagers"
-msgstr ""
+msgstr "Lignes de pageurs"
 
 #: gnome-pager/gnomepager_applet.c:364
 msgid "Width of small pagers"
-msgstr ""
+msgstr "Largeur des petits pageurs"
 
 #: gnome-pager/gnomepager_applet.c:367
 msgid "Height of small pagers"
-msgstr ""
+msgstr "Hauteur des petits pageurs"
 
 #: gnome-pager/gnomepager_applet.c:370
 msgid "Width of large pagers"
-msgstr ""
+msgstr "Largeur des grands pageurs"
 
 #: gnome-pager/gnomepager_applet.c:373
 msgid "Height of large pagers"
-msgstr ""
+msgstr "Hauteur des grands pageurs"
 
 #: gnome-pager/gnomepager_applet.c:386
 msgid "Tasklist"
-msgstr ""
+msgstr "Liste des tâches"
 
 #: gnome-pager/gnomepager_applet.c:388
 msgid "Show task list button"
-msgstr ""
+msgstr "Afficher le bouton de liste des tâches"
 
 #: gnome-pager/gnomepager_applet.c:391
-#, fuzzy
 msgid "Show task list"
-msgstr "Afficher l'heure"
+msgstr "Afficher la liste des tâches"
 
 #: gnome-pager/gnomepager_applet.c:394
 msgid "Show button icons"
-msgstr ""
+msgstr "Afficher les icônes des boutons"
 
 #. Radio buttons for which tasks to show
 #: gnome-pager/gnomepager_applet.c:406
 msgid "Which tasks to show"
-msgstr ""
+msgstr "Quelles tâches afficher"
 
 #: gnome-pager/gnomepager_applet.c:415
-#, fuzzy
 msgid "Show all tasks"
-msgstr "Afficher la date"
+msgstr "Afficher toutes les tâches"
 
 #: gnome-pager/gnomepager_applet.c:421
 msgid "Show normal tasks only"
-msgstr ""
+msgstr "Afficher les tâches normales seulement"
 
 #: gnome-pager/gnomepager_applet.c:427
 msgid "Show minimized tasks only"
-msgstr ""
+msgstr "Afficher seulement les tâches minimisées"
 
 #: gnome-pager/gnomepager_applet.c:440
 msgid "Show all tasks on all desktops"
-msgstr ""
+msgstr "Afficher toutes les tâches sur tous les bureaux"
 
 #: gnome-pager/gnomepager_applet.c:443
 msgid "Show minimized tasks on all desktops"
-msgstr ""
+msgstr "Afficher les tâches minimisées sur tous les bureaux"
 
 #: gnome-pager/gnomepager_applet.c:447
 msgid "Enable task list tooltips"
-msgstr ""
+msgstr "Activer les bulles d'aide sur la liste des tâches"
 
 #: gnome-pager/gnomepager_applet.c:450
 msgid "Geometry"
-msgstr ""
+msgstr "Géométrie"
 
 #: gnome-pager/gnomepager_applet.c:459
 msgid "Tasklist always maximum size"
@@ -951,9 +930,8 @@ msgid "Sticky"
 msgstr ""
 
 #: gnome-pager/gnomepager_applet.c:2213
-#, fuzzy
 msgid "Show / Hide"
-msgstr "Afficher l'heure"
+msgstr "Afficher / Masquer"
 
 #: gnome-pager/gnomepager_applet.c:2219
 msgid "Shade / Unshade"
@@ -961,12 +939,11 @@ msgstr ""
 
 #: gnome-pager/gnomepager_applet.c:2225
 msgid "Stick / Unstick"
-msgstr ""
+msgstr "Coller / Décoller"
 
 #: gnome-pager/gnomepager_applet.c:2231
-#, fuzzy
 msgid "Close"
-msgstr "Couleurs"
+msgstr "Fermer"
 
 #: gnome-pager/gnomepager_applet.c:2237
 msgid "Nuke"
@@ -974,7 +951,7 @@ msgstr ""
 
 #: gnome-pager/gnomepager_applet.c:2488
 msgid "Gnome Pager Error"
-msgstr ""
+msgstr "Erreur du pageur GNOME"
 
 #: gnome-pager/gnomepager_applet.c:2489
 msgid ""
@@ -992,11 +969,11 @@ msgstr ""
 msgid "?"
 msgstr ""
 
-#: jbc/jbc-applet.c:54
+#: jbc/jbc-applet.c:45
 msgid "Jon's Binary Clock"
 msgstr "L'horloge binaire de Jon"
 
-#: jbc/jbc-applet.c:57
+#: jbc/jbc-applet.c:49
 msgid ""
 "Released under the GNU general public license.\n"
 "Displays time in Binary Coded Decimal\n"
@@ -1006,19 +983,19 @@ msgstr ""
 "Affiche l'heure en Binaire Codé Décimal\n"
 "http://snoopy.net/~jon/jbc/."
 
-#: life/life.c:140
+#: life/life.c:139
 msgid "The Game of Life"
 msgstr "Le jeu de la vie"
 
-#: life/life.c:144
+#: life/life.c:143
 msgid "A complete waste of perfectly good CPU cycles."
 msgstr "Un parfait gaspillage de cycles CPU."
 
-#: life/life.c:173
+#: life/life.c:172
 msgid "Can't create life applet!"
 msgstr "Impossible de créér l'applet life!"
 
-#: life/life.c:191
+#: life/life.c:190
 msgid "Randomize"
 msgstr "Aléatoire"
 
@@ -1026,7 +1003,7 @@ msgstr "Aléatoire"
 msgid "Mini-Commander Applet"
 msgstr "Applet Mini-Commander"
 
-#: mini-commander/src/about.c:35
+#: mini-commander/src/about.c:36
 msgid ""
 "This GNOME applet adds a command line to the panel. It features command "
 "completion, command history, changeable macros and an optional built-in "
@@ -1259,11 +1236,11 @@ msgstr "Volume Principal et Sourdine"
 msgid "Run gmix..."
 msgstr "Lancer gmix..."
 
-#: modemlights/modemlights.c:139
+#: modemlights/modemlights.c:135
 msgid "Modem Lights Applet"
 msgstr "Applet Modem Lights"
 
-#: modemlights/modemlights.c:142
+#: modemlights/modemlights.c:138
 msgid ""
 "Released under the GNU general public license.\n"
 "A modem status indicator and dialer.Lights in order from the top or left are "
@@ -1273,7 +1250,7 @@ msgstr ""
 "Un indicateur d'état et composeur pour modem. Les lumières dans l'ordre à "
 "partirde gauche ou du haut sont RX et TX"
 
-#: modemlights/modemlights.c:417
+#: modemlights/modemlights.c:413
 msgid ""
 "You are currently connected.\n"
 "Do you want to disconnect?"
@@ -1281,58 +1258,58 @@ msgstr ""
 "Vous êtes actuellement connecté.\n"
 "Voulez-vous vous déconnecter?"
 
-#: modemlights/modemlights.c:428
+#: modemlights/modemlights.c:424
 msgid "Do you want to connect?"
 msgstr "Voulez-vous vous connecter?"
 
-#: modemlights/modemlights.c:447
+#: modemlights/modemlights.c:443
 msgid "not connected"
 msgstr "déconnecté"
 
-#: modemlights/properties.c:174
+#: modemlights/properties.c:183
 msgid "Modem Lights Settings"
 msgstr "Paramétres de Modem Lights"
 
-#: modemlights/properties.c:182
+#: modemlights/properties.c:191
 msgid "Updates per second"
 msgstr "Mises à jours par seconde"
 
-#: modemlights/properties.c:199
+#: modemlights/properties.c:208
 msgid "Connect command:"
 msgstr "Commande de connexion:"
 
-#: modemlights/properties.c:216
+#: modemlights/properties.c:225
 msgid "Disconnect command:"
 msgstr "Commande de déconnexion:"
 
 #. confirmation checkbox
-#: modemlights/properties.c:229
+#: modemlights/properties.c:238
 msgid "Confirm connection"
 msgstr "Confirmer la connexion"
 
 #. extra info checkbox
-#: modemlights/properties.c:237
+#: modemlights/properties.c:246
 msgid "Show connect time and throughput"
 msgstr "Afficher le temps de connexion et le débit"
 
-#: modemlights/properties.c:257
+#: modemlights/properties.c:266
 msgid "Modem lock file:"
 msgstr "Fichier de vérouillage du modem:"
 
-#: modemlights/properties.c:269
+#: modemlights/properties.c:278
 msgid "Verify owner of lock file"
 msgstr "Vérifier le propriètaire du fichier de vérouillage"
 
-#: modemlights/properties.c:281
+#: modemlights/properties.c:290
 msgid "Device:"
 msgstr "Interface:"
 
 #. ISDN checkbox
-#: modemlights/properties.c:294
+#: modemlights/properties.c:303
 msgid "Use ISDN"
 msgstr "Utiliser Numéris"
 
-#: modemlights/properties.c:308
+#: modemlights/properties.c:317
 msgid "Advanced"
 msgstr "Avancées"
 
@@ -1425,9 +1402,8 @@ msgid "An error occured in the Netload Applet:"
 msgstr ""
 
 #: netload/netload.c:295
-#, fuzzy
 msgid "The GNOME Network Load Applet"
-msgstr "L'Applet GNOME KeyBoard"
+msgstr "L'Applet Charge Réseau GNOME"
 
 #: netload/netload.c:298
 msgid ""
@@ -1435,11 +1411,13 @@ msgid ""
 "Licence.This applet shows the load on a network device. It requires the "
 "/proc/net/ip_acct interface to be present and set up correctly for the "
 "device."
-msgstr ""
+msgstr "Cette applet est distribuée sous les termes et conditions de la "
+"Licence Publique GNU. Elle montre la charge d'un périphérique réseau. "
+"Elle requiert la présence et la configuration correcte de l'interface /proc/net/ip_acct."
 
 #: netload/properties.c:133
 msgid "Network Traffic"
-msgstr ""
+msgstr "Trafic réseau"
 
 #: netload/properties.c:137
 msgid "Traffic bars"
@@ -1447,7 +1425,7 @@ msgstr ""
 
 #: netload/properties.c:215
 msgid "Device name (like ppp0 or eth0)"
-msgstr ""
+msgstr "Nom du périphérique (comme ppp0 ou eth0)"
 
 #: netload/properties.c:223
 msgid "Vertical spacing of bars (in kilobytes)"
@@ -1458,14 +1436,12 @@ msgid "properties.c: gnome_property_box_new() failed.\n"
 msgstr ""
 
 #: netload/properties.c:277
-#, fuzzy
 msgid "Network Load Settings"
-msgstr "Paramétres de l'Horloge"
+msgstr "Paramétres de la charge réseau"
 
 #: netload/properties.c:286
-#, fuzzy
 msgid "Device"
-msgstr "Interface:"
+msgstr "Interface"
 
 #: slashapp/properties.c:199 slashapp/slashapp.c:61
 msgid "Articles"
@@ -1542,6 +1518,11 @@ msgstr "Création du répertoire utilisateur: %s\n"
 msgid "Unable to create user directory: %s\n"
 msgstr "Impossible de créer le répertoire utilisateur: %s\n"
 
+#: slashapp/slashapp.c:124
+#, c-format
+msgid "%d.%d.%d"
+msgstr "%d.%d.%d"
+
 #: slashapp/slashapp.c:126
 msgid "Justin Maurer <justin@slashdot.org>"
 msgstr "Justin Maurer <justin@slashdot.org>"
@@ -1594,39 +1575,49 @@ msgstr ""
 msgid "The Web Browser Controller"
 msgstr ""
 
-#: webcontrol/webcontrol.c:59
+#: webcontrol/webcontrol.c:60
 msgid ""
 "This applet currently sends getURL commands to netscape throught the -remote "
 "interface.  Hopefully later more webrowsers will be supported."
 msgstr ""
 
 #. create the widget we are going to put on the applet
-#: webcontrol/webcontrol.c:117
+#: webcontrol/webcontrol.c:118
 msgid "Url:"
 msgstr ""
 
-#: webcontrol/webcontrol.c:120
+#: webcontrol/webcontrol.c:121
 msgid "Clear"
 msgstr ""
 
-#: webcontrol/webcontrol.c:136
-#, fuzzy
+#: webcontrol/webcontrol.c:137
 msgid "Launch new window"
 msgstr "Ouvrir une nouvelle fenêtre"
 
-#: webcontrol/webcontrol.c:204
-#, fuzzy
+#: webcontrol/webcontrol.c:205
 msgid "WebControl Properties"
-msgstr "Propriétés de Mini-Commander"
+msgstr "Propriétés de WebControl"
 
-#: webcontrol/webcontrol.c:209
+#: webcontrol/webcontrol.c:210
 msgid "Display URL label"
 msgstr ""
 
-#: webcontrol/webcontrol.c:218
+#: webcontrol/webcontrol.c:219
 msgid "Display \"launch new window\" option"
 msgstr ""
 
-#: webcontrol/webcontrol.c:231
+#: webcontrol/webcontrol.c:232
 msgid "Look"
 msgstr ""
+
+#~ msgid "About"
+#~ msgstr "A Propos"
+
+#~ msgid "0.03"
+#~ msgstr "0.03"
+
+#~ msgid "1.0"
+#~ msgstr "1.0"
+
+#~ msgid "1.0.5"
+#~ msgstr "1.0.5"
