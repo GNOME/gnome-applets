@@ -80,9 +80,9 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
   				   GTK_RESPONSE_CLOSE);
 
   if (gw_applet->gweather_pref.radar_enabled)
-      gtk_widget_set_usize (gw_applet->gweather_dialog, 570, 440);
+      gtk_window_set_default_size (GTK_WINDOW(gw_applet->gweather_dialog), 570,440);
   else
-      gtk_widget_set_usize (gw_applet->gweather_dialog, 590, 340);
+      gtk_window_set_default_size (GTK_WINDOW(gw_applet->gweather_dialog), 590, 340);
 
   gtk_window_set_screen (GTK_WINDOW (gw_applet->gweather_dialog),
 			 gtk_widget_get_screen (GTK_WIDGET (gw_applet->applet)));
