@@ -972,18 +972,32 @@
 	/* Thanks to Mike Oliphant for inspiration. */
 
 	static void addToClist(GtkWidget *widget_unused, gpointer entry) {
-		gchar *newsymbol[1];
-		gint row;
+		char *symbols, *symbol_start, *symbol_end;
+		gint row = -1;
 		GtkWidget *clist;
 
 		clist = GTK_WIDGET(gtk_object_get_data(GTK_OBJECT(entry),
 							"clist"));
 
-		newsymbol[0] = gtk_entry_get_text(GTK_ENTRY(entry));
-		row = gtk_clist_append(GTK_CLIST(clist),newsymbol);
-		gtk_entry_set_text(GTK_ENTRY(entry),"");
-		gtk_clist_moveto(GTK_CLIST(clist),row,0,0,0);
+		symbols = g_strdup(gtk_entry_get_text(GTK_ENTRY(entry)));
+		symbol_start = symbol_end = symbols;
 
+		while (*symbol_end) {
+			if (*symbol_end == ' ') {
+				*symbol_end = '\0';
+				if (symbol_start != symbol_end)
+					row = gtk_clist_append(GTK_CLIST(clist),&symbol_start);
+				symbol_start = symbol_end + 1;
+			}
+			symbol_end++;
+		}
+		if (symbol_start != symbol_end)
+			row = gtk_clist_append(GTK_CLIST(clist),&symbol_start);
+
+		gtk_entry_set_text(GTK_ENTRY(entry),"");
+		if (row != -1)
+			gtk_clist_moveto(GTK_CLIST(clist),row,0,0,0);
+		g_free(symbols);
 	}
 
 	static void remFromClist(GtkWidget *widget, gpointer data) {
