@@ -198,6 +198,8 @@ void stickynotes_applet_init_prefs()
 /* Create a Sticky Notes applet */
 StickyNotesApplet * stickynotes_applet_new(PanelApplet *panel_applet)
 {
+	AtkObject *atk_obj;
+
 	/* Create Sticky Notes Applet */
 	StickyNotesApplet *applet = g_new(StickyNotesApplet, 1);
 
@@ -242,6 +244,9 @@ StickyNotesApplet * stickynotes_applet_new(PanelApplet *panel_applet)
 	g_signal_connect(G_OBJECT(applet->w_applet), "change-size", G_CALLBACK(applet_change_size_cb), applet);
 	g_signal_connect(G_OBJECT(applet->w_applet), "change-background", G_CALLBACK(applet_change_bg_cb), applet);
 	g_signal_connect(G_OBJECT(applet->w_applet), "destroy", G_CALLBACK(applet_destroy_cb), applet);
+
+	atk_obj = gtk_widget_get_accessible (applet->w_applet);
+	atk_object_set_name (atk_obj, _("Sticky Notes"));
 
 	/* Show the applet */
 	gtk_widget_show_all(GTK_WIDGET(applet->w_applet));
