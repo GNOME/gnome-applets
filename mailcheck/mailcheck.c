@@ -19,6 +19,7 @@
 #include <string.h>
 #include <libgnome/libgnome.h>
 #include <libgnomeui/libgnomeui.h>
+#include <gconf/gconf-client.h>
 #include <panel-applet.h>
 #include <panel-applet-gconf.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
@@ -34,6 +35,8 @@
 
 #define ENCODE 1  
 #define DECODE 0
+
+#define NEVER_SENSITIVE "never_sensitive"
 
 static const char *to_b64 =
  "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
@@ -475,6 +478,153 @@ util_base64(char* data, int flag)
 	}
 }
 
+static gboolean
+key_writable (PanelApplet *applet, const char *key)
+{
+	gboolean writable;
+	char *fullkey;
+	static GConfClient *client = NULL;
+	if (client == NULL)
+		client = gconf_client_get_default ();
+
+	fullkey = panel_applet_gconf_get_full_key (applet, key);
+
+	writable = gconf_client_key_is_writable (client, fullkey, NULL);
+
+	g_free (fullkey);
+
+	return writable;
+}
+
+/* set sensitive and setup NEVER_SENSITIVE appropriately */
+static void
+hard_set_sensitive (GtkWidget *w, gboolean sensitivity)
+{
+	gtk_widget_set_sensitive (w, sensitivity);
+	g_object_set_data (G_OBJECT (w), NEVER_SENSITIVE,
+			   GINT_TO_POINTER ( ! sensitivity));
+}
+
+
+/* set sensitive, but always insensitive if NEVER_SENSITIVE is set */
+static void
+soft_set_sensitive (GtkWidget *w, gboolean sensitivity)
+{
+	if (g_object_get_data (G_OBJECT (w), NEVER_SENSITIVE))
+		gtk_widget_set_sensitive (w, FALSE);
+	else
+		gtk_widget_set_sensitive (w, sensitivity);
+}
+
+/* stolen from gsearchtool */
+GtkWidget*
+hig_dialog_new (GtkWindow      *parent,
+		GtkDialogFlags flags,
+		GtkMessageType type,
+		GtkButtonsType buttons,
+		const gchar    *header,
+		const gchar    *message)
+{
+	GtkWidget *dialog;
+	GtkWidget *dialog_vbox;
+	GtkWidget *dialog_action_area;
+	GtkWidget *hbox;
+	GtkWidget *vbox;
+	GtkWidget *label;
+	GtkWidget *button;
+	GtkWidget *image;
+	gchar     *title;
+
+	dialog = gtk_dialog_new ();
+	
+	gtk_dialog_set_has_separator (GTK_DIALOG (dialog), FALSE);
+	gtk_container_set_border_width (GTK_CONTAINER (dialog), 5);
+	gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
+	gtk_window_set_title (GTK_WINDOW (dialog), "");
+  
+	dialog_vbox = GTK_DIALOG (dialog)->vbox;
+	gtk_box_set_spacing (GTK_BOX (dialog_vbox), 12);
+
+	hbox = gtk_hbox_new (FALSE, 12);
+	gtk_box_pack_start (GTK_BOX (dialog_vbox), hbox, FALSE, FALSE, 0);
+	gtk_container_set_border_width (GTK_CONTAINER (hbox), 5);
+	gtk_widget_show (hbox);
+
+	if (type == GTK_MESSAGE_ERROR) {
+		image = gtk_image_new_from_stock ("gtk-dialog-error", GTK_ICON_SIZE_DIALOG);
+	} else if (type == GTK_MESSAGE_QUESTION) {
+		image = gtk_image_new_from_stock ("gtk-dialog-question", GTK_ICON_SIZE_DIALOG);
+	} else {
+		g_assert_not_reached ();
+	}
+	gtk_box_pack_start (GTK_BOX (hbox), image, FALSE, FALSE, 0);
+	gtk_widget_show (image);
+
+	vbox = gtk_vbox_new (FALSE, 6);
+	gtk_box_pack_start (GTK_BOX (hbox), vbox, TRUE, TRUE, 0);
+	gtk_widget_show (vbox);
+	
+	title = g_strconcat ("<b>", header, "</b>", NULL);
+	label = gtk_label_new (title);  
+	gtk_box_pack_start (GTK_BOX (vbox), label, FALSE, FALSE, 0);
+	gtk_label_set_use_markup (GTK_LABEL (label), TRUE);
+	gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
+	gtk_label_set_line_wrap (GTK_LABEL (label), TRUE);
+	gtk_misc_set_alignment (GTK_MISC (label), 0, 0.5);
+	gtk_widget_show (label);
+	g_free (title);
+	
+	label = gtk_label_new (message);
+	gtk_box_pack_start (GTK_BOX (vbox), label, FALSE, FALSE, 0);
+	gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
+	gtk_label_set_line_wrap (GTK_LABEL (label), TRUE);
+	gtk_misc_set_alignment (GTK_MISC (label), 0, 0.5);
+	gtk_widget_show (label);
+	
+	dialog_action_area = GTK_DIALOG (dialog)->action_area;
+	gtk_button_box_set_layout (GTK_BUTTON_BOX (dialog_action_area), GTK_BUTTONBOX_END);
+
+	switch (buttons) 
+  	{		
+		case GTK_BUTTONS_OK_CANCEL:
+	
+			button = gtk_button_new_from_stock ("gtk-cancel");
+  			gtk_widget_show (button);
+  			gtk_dialog_add_action_widget (GTK_DIALOG (dialog), button, GTK_RESPONSE_CANCEL);
+  			GTK_WIDGET_SET_FLAGS (button, GTK_CAN_DEFAULT);
+
+		  	button = gtk_button_new_from_stock ("gtk-ok");
+  			gtk_widget_show (button);
+  			gtk_dialog_add_action_widget (GTK_DIALOG (dialog), button, GTK_RESPONSE_OK);
+  			GTK_WIDGET_SET_FLAGS (button, GTK_CAN_DEFAULT);
+			break;
+		
+		case GTK_BUTTONS_OK:
+		
+			button = gtk_button_new_from_stock ("gtk-ok");
+			gtk_dialog_add_action_widget (GTK_DIALOG (dialog), button, GTK_RESPONSE_OK);
+			GTK_WIDGET_SET_FLAGS (button, GTK_CAN_DEFAULT);
+			gtk_widget_show (button);
+			break;
+		
+		default:
+			g_warning ("Unhandled GtkButtonsType");
+			break;
+  	}
+
+	if (parent != NULL) {
+		gtk_window_set_transient_for (GTK_WINDOW (dialog), GTK_WINDOW (parent));
+	}
+	if (flags & GTK_DIALOG_MODAL) {
+		gtk_window_set_modal (GTK_WINDOW (dialog), TRUE);
+	}
+	if (flags & GTK_DIALOG_DESTROY_WITH_PARENT) {
+		gtk_window_set_destroy_with_parent (GTK_WINDOW (dialog), TRUE);
+	}
+	
+  	return dialog;
+}
+
 static void
 set_tooltip (GtkWidget  *applet,
 	     const char *tip)
@@ -504,14 +654,18 @@ mailcheck_execute_shell (MailCheck  *mailcheck,
 		gtk_widget_get_screen (GTK_WIDGET (mailcheck->applet)), command, &error);
 	if (error) {
 		GtkWidget *dialog;
+		char *msg;
 
-		dialog = gtk_message_dialog_new (NULL,
-						 GTK_DIALOG_DESTROY_WITH_PARENT,
-						 GTK_MESSAGE_ERROR,
-						 GTK_BUTTONS_OK,
-						 _("There was an error executing %s: %s"),
-						 command,
-						 error->message);
+		msg = g_strdup_printf (_("There was an error executing %s: %s"),
+				       command,
+				       error->message);
+		dialog = hig_dialog_new (NULL /* parent */,
+					 0 /* flags */,
+					 GTK_MESSAGE_ERROR,
+					 GTK_BUTTONS_OK,
+					 _("Error checking mail"),
+					 msg);
+		g_free (msg);
 
 		g_signal_connect (dialog, "response",
 				  G_CALLBACK (gtk_widget_destroy),
@@ -674,8 +828,18 @@ get_remote_password (MailCheck *mc)
 	
 	save_password_checkbox = gtk_check_button_new_with_mnemonic (
 						_("_Save password to disk"));
-	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (save_password_checkbox), 
-				      mc->save_remote_password);
+	if ( ! key_writable (mc->applet, "remote_encrypted_password")) {
+		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (save_password_checkbox), 
+					      FALSE);
+		hard_set_sensitive (save_password_checkbox, FALSE);
+	} else {
+		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (save_password_checkbox), 
+					      mc->save_remote_password);
+	}
+
+	if ( ! key_writable (mc->applet, "save_password")) {
+		hard_set_sensitive (save_password_checkbox, FALSE);
+	}
 
 	gtk_widget_show (save_password_checkbox);
 	gtk_box_pack_start (GTK_BOX (hbox), save_password_checkbox, FALSE, FALSE, 0);
@@ -1233,8 +1397,8 @@ mailcheck_get_animation_menu (MailCheck *mc)
 static void
 make_check_widgets_sensitive(MailCheck *mc)
 {
-	gtk_widget_set_sensitive (GTK_WIDGET (mc->min_spin), mc->auto_update);
-	gtk_widget_set_sensitive (GTK_WIDGET (mc->sec_spin), mc->auto_update);
+	soft_set_sensitive (GTK_WIDGET (mc->min_spin), mc->auto_update);
+	soft_set_sensitive (GTK_WIDGET (mc->sec_spin), mc->auto_update);
 }
 
 static void
@@ -1244,18 +1408,18 @@ make_remote_widgets_sensitive(MailCheck *mc)
 	             mc->mailbox_type != MAILBOX_LOCALDIR;
         gboolean f = mc->mailbox_type == MAILBOX_IMAP;
 	
-	gtk_widget_set_sensitive (mc->mailfile_fentry, !b);
-	gtk_widget_set_sensitive (mc->mailfile_label, !b);
+	soft_set_sensitive (mc->mailfile_fentry, !b);
+	soft_set_sensitive (mc->mailfile_label, !b);
 	
-	gtk_widget_set_sensitive (mc->remote_server_entry, b);
-	gtk_widget_set_sensitive (mc->remote_password_entry, b);
-	gtk_widget_set_sensitive (mc->remote_password_checkbox, b);
-	gtk_widget_set_sensitive (mc->remote_username_entry, b);
-        gtk_widget_set_sensitive (mc->remote_folder_entry, f);
-	gtk_widget_set_sensitive (mc->remote_server_label, b);
-	gtk_widget_set_sensitive (mc->remote_password_label, b);
-	gtk_widget_set_sensitive (mc->remote_username_label, b);
-        gtk_widget_set_sensitive (mc->remote_folder_label, f);
+	soft_set_sensitive (mc->remote_server_entry, b);
+	soft_set_sensitive (mc->remote_password_entry, b);
+	soft_set_sensitive (mc->remote_password_checkbox, b);
+	soft_set_sensitive (mc->remote_username_entry, b);
+        soft_set_sensitive (mc->remote_folder_entry, f);
+	soft_set_sensitive (mc->remote_server_label, b);
+	soft_set_sensitive (mc->remote_password_label, b);
+	soft_set_sensitive (mc->remote_username_label, b);
+        soft_set_sensitive (mc->remote_folder_label, f);
 }
 
 static void
@@ -1329,12 +1493,14 @@ remote_password_changed (GtkEntry *entry, gpointer data)
 		g_free (mc->remote_encrypted_password);
 	mc->remote_encrypted_password = util_base64 (text, ENCODE);  
 
-	if (mc->save_remote_password)
-		panel_applet_gconf_set_string (mc->applet, "remote_encrypted_password", 
-				      mc->remote_encrypted_password, NULL);
-	else
-		panel_applet_gconf_set_string (mc->applet, "remote_encrypted_password",
-				      "", NULL);
+	if (key_writable (mc->applet, "remote_encrypted_password")) {
+		if (mc->save_remote_password)
+			panel_applet_gconf_set_string (mc->applet, "remote_encrypted_password", 
+						       mc->remote_encrypted_password, NULL);
+		else
+			panel_applet_gconf_set_string (mc->applet, "remote_encrypted_password",
+						       "", NULL);
+	}
 }
 
 static gboolean
@@ -1391,7 +1557,7 @@ pre_check_toggled (GtkToggleButton *button, gpointer data)
 	mc->pre_check_enabled = gtk_toggle_button_get_active (button);
 	panel_applet_gconf_set_bool(mc->applet, "exec_enabled", 
 				    mc->pre_check_enabled, NULL);
-	gtk_widget_set_sensitive (mc->pre_check_cmd_entry, mc->pre_check_enabled);
+	soft_set_sensitive (mc->pre_check_cmd_entry, mc->pre_check_enabled);
 
 }
 
@@ -1401,15 +1567,19 @@ remote_password_save_toggled (GtkToggleButton *button, gpointer data)
 	MailCheck *mc = data;
 
 	mc->save_remote_password = gtk_toggle_button_get_active (button);
-	panel_applet_gconf_set_bool (mc->applet, "save_password",
-				     mc->save_remote_password, NULL);
+	if (key_writable (mc->applet, "save_password")) {
+		panel_applet_gconf_set_bool (mc->applet, "save_password",
+					     mc->save_remote_password, NULL);
+	}
 
-	if (mc->save_remote_password)
-                panel_applet_gconf_set_string (mc->applet, "remote_encrypted_password",
-                                      mc->remote_encrypted_password, NULL);
-        else
-                panel_applet_gconf_set_string (mc->applet, "remote_encrypted_password",
-                                      "", NULL);
+	if (key_writable (mc->applet, "remote_encrypted_password")) {
+		if (mc->save_remote_password)
+			panel_applet_gconf_set_string (mc->applet, "remote_encrypted_password",
+						       mc->remote_encrypted_password, NULL);
+		else
+			panel_applet_gconf_set_string (mc->applet, "remote_encrypted_password",
+						       "", NULL);
+	}
 }
 
 static void
@@ -1439,7 +1609,7 @@ newmail_toggled (GtkToggleButton *button, gpointer data)
 	mc->newmail_enabled = gtk_toggle_button_get_active (button);
 	panel_applet_gconf_set_bool(mc->applet, "newmail_enabled", 
 				    mc->newmail_enabled, NULL);
-	gtk_widget_set_sensitive (mc->newmail_cmd_entry, mc->newmail_enabled);
+	soft_set_sensitive (mc->newmail_cmd_entry, mc->newmail_enabled);
 				    
 }
 
@@ -1470,7 +1640,7 @@ clicked_toggled (GtkToggleButton *button, gpointer data)
 	mc->clicked_enabled = gtk_toggle_button_get_active (button);
 	panel_applet_gconf_set_bool(mc->applet, "clicked_enabled", 
 				    mc->clicked_enabled, NULL);
-	gtk_widget_set_sensitive (mc->clicked_cmd_entry, mc->clicked_enabled);
+	soft_set_sensitive (mc->clicked_cmd_entry, mc->clicked_enabled);
 				    
 }
 
@@ -1648,12 +1818,17 @@ mailbox_properties_page(MailCheck *mc)
 	gtk_menu_shell_append (GTK_MENU_SHELL (l2), item);
 	
 	gtk_widget_show(l2);
-  
+
 	gtk_option_menu_set_menu(GTK_OPTION_MENU(l), l2);
 	gtk_option_menu_set_history(GTK_OPTION_MENU(l), mc->mailbox_type_temp = mc->mailbox_type);
 	gtk_widget_show(l);
   
 	gtk_box_pack_start (GTK_BOX (control_hbox), l, TRUE, TRUE, 0);
+
+	if ( ! key_writable (mc->applet, "mailbox_type")) {
+		hard_set_sensitive (l, FALSE);
+		hard_set_sensitive (label, FALSE);
+	}
 
 	control_hbox = gtk_hbox_new (FALSE, 12);
 	gtk_box_pack_start (GTK_BOX (control_vbox), control_hbox, TRUE, TRUE, 0);
@@ -1677,6 +1852,11 @@ mailbox_properties_page(MailCheck *mc)
 	g_signal_connect(G_OBJECT(l), "changed",
 			   G_CALLBACK(mail_file_changed), mc);
 
+	if ( ! key_writable (mc->applet, "mail_file")) {
+		hard_set_sensitive (mc->mailfile_label, FALSE);
+		hard_set_sensitive (mc->mailfile_fentry, FALSE);
+	}
+
 	control_hbox = gtk_hbox_new (FALSE, 12);
 	gtk_box_pack_start (GTK_BOX (control_vbox), control_hbox, TRUE, TRUE, 0);
 	gtk_widget_show (control_hbox);
@@ -1699,6 +1879,11 @@ mailbox_properties_page(MailCheck *mc)
 	
 	g_signal_connect(G_OBJECT(l), "changed",
 			   G_CALLBACK(remote_server_changed), mc);
+
+	if ( ! key_writable (mc->applet, "remote_server")) {
+		hard_set_sensitive (mc->remote_server_entry, FALSE);
+		hard_set_sensitive (mc->remote_server_label, FALSE);
+	}
 	
 	control_hbox = gtk_hbox_new (FALSE, 12);
 	gtk_box_pack_start (GTK_BOX (control_vbox), control_hbox, TRUE, TRUE, 0);
@@ -1724,6 +1909,11 @@ mailbox_properties_page(MailCheck *mc)
 	g_signal_connect(G_OBJECT(l), "changed",
 			   G_CALLBACK(remote_username_changed), mc);
 
+	if ( ! key_writable (mc->applet, "remote_username")) {
+		hard_set_sensitive (mc->remote_username_entry, FALSE);
+		hard_set_sensitive (mc->remote_username_label, FALSE);
+	}
+
 	control_hbox = gtk_hbox_new (FALSE, 12);
 	gtk_box_pack_start (GTK_BOX (control_vbox), control_hbox, TRUE, TRUE, 0);
 	gtk_widget_show (control_hbox);
@@ -1746,10 +1936,15 @@ mailbox_properties_page(MailCheck *mc)
 	gtk_box_pack_start (GTK_BOX (control_hbox), l, TRUE, TRUE, 0);      
 	
 	g_signal_connect(G_OBJECT(l), "focus_out_event",
-                     G_CALLBACK(focus_out_cb), mc);
+			 G_CALLBACK(focus_out_cb), mc);
 
 	g_signal_connect(G_OBJECT(l), "activate",
-                     G_CALLBACK(remote_password_changed), mc);  
+			 G_CALLBACK(remote_password_changed), mc);  
+
+	if ( ! key_writable (mc->applet, "remote_encrypted_password")) {
+		hard_set_sensitive (mc->remote_password_entry, FALSE);
+		hard_set_sensitive (mc->remote_password_label, FALSE);
+	}
 
 	control_hbox = gtk_hbox_new (FALSE, 12);
 	gtk_box_pack_start (GTK_BOX (control_vbox), control_hbox, TRUE, TRUE, 0);
@@ -1768,6 +1963,9 @@ mailbox_properties_page(MailCheck *mc)
 	
 	g_signal_connect (G_OBJECT (l), "toggled", 
 			  G_CALLBACK(remote_password_save_toggled), mc);
+
+	if ( ! key_writable (mc->applet, "save_password"))
+		hard_set_sensitive (mc->remote_password_checkbox, FALSE);
 
 	control_hbox = gtk_hbox_new (FALSE, 12);
 	gtk_box_pack_start (GTK_BOX (control_vbox), control_hbox, TRUE, TRUE, 0);
@@ -1791,6 +1989,11 @@ mailbox_properties_page(MailCheck *mc)
   
         g_signal_connect(G_OBJECT(l), "changed",
                            G_CALLBACK(remote_folder_changed), mc);
+
+	if ( ! key_writable (mc->applet, "remote_folder")) {
+		hard_set_sensitive (mc->remote_folder_entry, FALSE);
+		hard_set_sensitive (mc->remote_folder_label, FALSE);
+	}
   
 	make_remote_widgets_sensitive(mc);
 	
@@ -1804,6 +2007,7 @@ mailcheck_properties_page (MailCheck *mc)
 	GtkWidget *label, *indent, *categories_vbox, *category_vbox, *control_vbox, *control_hbox;
 	GtkObject *freq_a;
 	gchar *title;
+	gboolean writable;
 
 	mc->type = 0;
 
@@ -1851,10 +2055,15 @@ mailcheck_properties_page (MailCheck *mc)
 			 G_CALLBACK(auto_update_toggled), mc);
 	gtk_box_pack_start (GTK_BOX (control_hbox), l, FALSE, FALSE, 0);
 	gtk_widget_show(l);
+	if ( ! key_writable (mc->applet, "auto_update"))
+		hard_set_sensitive (l, FALSE);
 
         hbox2 = gtk_hbox_new (FALSE, 6);
 	gtk_box_pack_start(GTK_BOX(control_hbox), hbox2, FALSE, FALSE, 0);
 	gtk_widget_show(hbox2);
+
+
+	writable = key_writable (mc->applet, "update_frequency");
 	
 	freq_a = gtk_adjustment_new((float)((mc->update_freq/1000)/60), 0, 1440, 1, 5, 5);
 	mc->min_spin = gtk_spin_button_new( GTK_ADJUSTMENT (freq_a), 1, 0);
@@ -1864,11 +2073,15 @@ mailcheck_properties_page (MailCheck *mc)
 	set_atk_name_description (mc->min_spin, _("minutes"), _("Choose time interval in minutes to check mail"));
 	set_atk_relation (mc->min_spin, check_box, ATK_RELATION_CONTROLLED_BY);
 	gtk_widget_show(mc->min_spin);
+	if ( ! writable)
+		hard_set_sensitive (mc->min_spin, FALSE);
 
 	l = gtk_label_new (_("minutes"));
 	set_atk_relation (mc->min_spin, l, ATK_RELATION_LABELLED_BY);
 	gtk_widget_show(l);
 	gtk_box_pack_start (GTK_BOX (hbox2), l, FALSE, FALSE, 0);
+	if ( ! writable)
+		hard_set_sensitive (l, FALSE);
 
         hbox2 = gtk_hbox_new (FALSE, 6);
 	gtk_box_pack_start(GTK_BOX(control_hbox), hbox2, FALSE, FALSE, 0);
@@ -1882,12 +2095,16 @@ mailcheck_properties_page (MailCheck *mc)
 	set_atk_name_description (mc->sec_spin, _("seconds"), _("Choose time interval in seconds to check mail"));
 	set_atk_relation (mc->sec_spin, check_box, ATK_RELATION_CONTROLLED_BY);
 	gtk_widget_show(mc->sec_spin);
+	if ( ! writable)
+		hard_set_sensitive (mc->sec_spin, FALSE);
 
 	l = gtk_label_new (_("seconds"));
 	set_atk_relation (mc->sec_spin, l,  ATK_RELATION_LABELLED_BY);
 	gtk_widget_show(l);
 	gtk_misc_set_alignment (GTK_MISC (l), 0.0f, 0.5f);
 	gtk_box_pack_start (GTK_BOX (hbox2), l, TRUE, TRUE, 0);
+	if ( ! writable)
+		hard_set_sensitive (l, FALSE);
 
 	set_atk_relation (check_box, mc->min_spin, ATK_RELATION_CONTROLLER_FOR);
 	set_atk_relation (check_box, mc->sec_spin, ATK_RELATION_CONTROLLER_FOR);
@@ -1898,6 +2115,8 @@ mailcheck_properties_page (MailCheck *mc)
 			   G_CALLBACK(sound_toggled), mc);
 	gtk_widget_show(mc->play_sound_check);
 	gtk_box_pack_start(GTK_BOX (control_vbox), mc->play_sound_check, TRUE, TRUE, 0);
+	if ( ! key_writable (mc->applet, "play_sound"))
+		hard_set_sensitive (mc->play_sound_check, FALSE);
 
 	/*l = gtk_check_button_new_with_mnemonic (_("Set the number of unread mails to _zero when clicked"));*/
 	l = gtk_check_button_new_with_mnemonic (_("Sto_p animation when double clicked"));
@@ -1906,6 +2125,8 @@ mailcheck_properties_page (MailCheck *mc)
 			   G_CALLBACK(reset_on_clicked_toggled), mc);
 	gtk_widget_show(l);
 	gtk_box_pack_start(GTK_BOX (control_vbox), l, TRUE, TRUE, 0);
+	if ( ! key_writable (mc->applet, "reset_on_clicked"))
+		hard_set_sensitive (l, FALSE);
 
 	hbox = gtk_hbox_new (FALSE, 12);
 	gtk_box_pack_start (GTK_BOX (control_vbox), hbox, TRUE, TRUE, 0);
@@ -1919,6 +2140,10 @@ mailcheck_properties_page (MailCheck *mc)
 	gtk_box_pack_start (GTK_BOX (hbox), animation_option_menu, FALSE, FALSE, 0);
 	set_atk_relation (animation_option_menu, l, ATK_RELATION_LABELLED_BY);
 	make_check_widgets_sensitive(mc);
+	if ( ! key_writable (mc->applet, "animation_file")) {
+		hard_set_sensitive (l, FALSE);
+		hard_set_sensitive (animation_option_menu, FALSE);
+	}
 	
 	category_vbox = gtk_vbox_new (FALSE, 6);
 	gtk_box_pack_start (GTK_BOX (categories_vbox), category_vbox, TRUE, TRUE, 0);
@@ -1959,6 +2184,8 @@ mailcheck_properties_page (MailCheck *mc)
 			   G_CALLBACK(pre_check_toggled), mc);
 	gtk_widget_show(l);
 	mc->pre_check_cmd_check = l;
+	if ( ! key_writable (mc->applet, "exec_enabled"))
+		hard_set_sensitive (l, FALSE);
 
 	gtk_table_attach (GTK_TABLE (table), mc->pre_check_cmd_check, 
 			  0, 1, 0, 1, GTK_FILL, 0, 0, 0);
@@ -1971,12 +2198,14 @@ mailcheck_properties_page (MailCheck *mc)
 	set_atk_name_description (mc->pre_check_cmd_entry, _("Command to execute before each update"), "");
 	set_atk_relation (mc->pre_check_cmd_entry, mc->pre_check_cmd_check, ATK_RELATION_CONTROLLED_BY);
 	set_atk_relation (mc->pre_check_cmd_check, mc->pre_check_cmd_entry, ATK_RELATION_CONTROLLER_FOR);
-	gtk_widget_set_sensitive (mc->pre_check_cmd_entry, mc->pre_check_enabled);
+	soft_set_sensitive (mc->pre_check_cmd_entry, mc->pre_check_enabled);
 	g_signal_connect(G_OBJECT(mc->pre_check_cmd_entry), "changed",
 			   G_CALLBACK(pre_check_changed), mc);
 	gtk_widget_show(mc->pre_check_cmd_entry);
 	gtk_table_attach_defaults (GTK_TABLE (table), mc->pre_check_cmd_entry,
 				   1, 2, 0, 1);
+	if ( ! key_writable (mc->applet, "exec_command"))
+		hard_set_sensitive (mc->pre_check_cmd_entry, FALSE);
 
 	l = gtk_check_button_new_with_mnemonic (_("When new mail _arrives:"));
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(l), mc->newmail_enabled);
@@ -1985,6 +2214,8 @@ mailcheck_properties_page (MailCheck *mc)
 	gtk_widget_show(l);
 	gtk_table_attach (GTK_TABLE (table), l, 0, 1, 1, 2, GTK_FILL, 0, 0, 0);
 	mc->newmail_cmd_check = l;
+	if ( ! key_writable (mc->applet, "newmail_enabled"))
+		hard_set_sensitive (l, FALSE);
 
 	mc->newmail_cmd_entry = gtk_entry_new();
 	if (mc->newmail_cmd) {
@@ -1994,12 +2225,14 @@ mailcheck_properties_page (MailCheck *mc)
 	set_atk_name_description (mc->newmail_cmd_entry, _("Command to execute when new mail arrives"), "");
 	set_atk_relation (mc->newmail_cmd_entry, mc->newmail_cmd_check, ATK_RELATION_CONTROLLED_BY);
 	set_atk_relation (mc->newmail_cmd_check, mc->newmail_cmd_entry, ATK_RELATION_CONTROLLER_FOR);
-	gtk_widget_set_sensitive (mc->newmail_cmd_entry, mc->newmail_enabled);
+	soft_set_sensitive (mc->newmail_cmd_entry, mc->newmail_enabled);
 	g_signal_connect(G_OBJECT (mc->newmail_cmd_entry), "changed",
 			   G_CALLBACK(newmail_changed), mc);
 	gtk_widget_show(mc->newmail_cmd_entry);
 	gtk_table_attach_defaults (GTK_TABLE (table), mc->newmail_cmd_entry,
 				    1, 2, 1, 2);
+	if ( ! key_writable (mc->applet, "newmail_command"))
+		hard_set_sensitive (mc->newmail_cmd_entry, FALSE);
 
         l = gtk_check_button_new_with_mnemonic (_("When double clicke_d:"));
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(l), mc->clicked_enabled);
@@ -2008,6 +2241,8 @@ mailcheck_properties_page (MailCheck *mc)
         gtk_widget_show(l);
 	gtk_table_attach (GTK_TABLE (table), l, 0, 1, 2, 3, GTK_FILL, 0, 0, 0);
 	mc->clicked_cmd_check = l;
+	if ( ! key_writable (mc->applet, "clicked_enabled"))
+		hard_set_sensitive (l, FALSE);
 
         mc->clicked_cmd_entry = gtk_entry_new();
         if(mc->clicked_cmd) {
@@ -2017,12 +2252,14 @@ mailcheck_properties_page (MailCheck *mc)
 		set_atk_name_description (mc->clicked_cmd_entry, _("Command to execute when clicked"), "");
 		set_atk_relation (mc->clicked_cmd_entry, mc->clicked_cmd_check, ATK_RELATION_CONTROLLED_BY);
 		set_atk_relation (mc->clicked_cmd_check, mc->clicked_cmd_entry, ATK_RELATION_CONTROLLER_FOR);
-		gtk_widget_set_sensitive (mc->clicked_cmd_entry, mc->clicked_enabled);
+		soft_set_sensitive (mc->clicked_cmd_entry, mc->clicked_enabled);
         g_signal_connect(G_OBJECT(mc->clicked_cmd_entry), "changed",
                            G_CALLBACK(clicked_changed), mc);
         gtk_widget_show(mc->clicked_cmd_entry);
 	gtk_table_attach_defaults (GTK_TABLE (table), mc->clicked_cmd_entry,
 				   1, 2, 2, 3);
+	if ( ! key_writable (mc->applet, "clicked_command"))
+		hard_set_sensitive (mc->clicked_cmd_entry, FALSE);
 
 	return vbox;
 }
@@ -2047,12 +2284,17 @@ phelp_cb (GtkDialog *w, gint tab, MailCheck *mc)
 			&error);
 	if (error) {
 		GtkWidget *dialog;
-		dialog = gtk_message_dialog_new (GTK_WINDOW (w),
-						 GTK_DIALOG_DESTROY_WITH_PARENT,
-						 GTK_MESSAGE_ERROR,
-						 GTK_BUTTONS_OK,
-						  _("There was an error displaying help: %s"),
-						 error->message);
+		char *msg;
+
+		msg = g_strdup_printf (_("There was an error displaying help: %s"),
+				       error->message);
+		dialog = hig_dialog_new (GTK_WINDOW (w),
+					 GTK_DIALOG_DESTROY_WITH_PARENT,
+					 GTK_MESSAGE_ERROR,
+					 GTK_BUTTONS_OK,
+					 _("Error displaying help"),
+					 msg);
+		g_free (msg);
 
 		g_signal_connect (G_OBJECT (dialog), "response",
 				  G_CALLBACK (gtk_widget_destroy),
@@ -2290,12 +2532,17 @@ help_callback (BonoboUIComponent *uic, MailCheck *mc, const gchar *verbname)
 		&error);
 	if (error) {
 		GtkWidget *dialog;
-		dialog = gtk_message_dialog_new (NULL,
-						 GTK_DIALOG_MODAL,
-						 GTK_MESSAGE_ERROR,
-						 GTK_BUTTONS_OK,
-						  _("There was an error displaying help: %s"),
-						 error->message);
+		char *msg;
+
+		msg = g_strdup_printf (_("There was an error displaying help: %s"),
+				       error->message);
+		dialog = hig_dialog_new (NULL /* parent */,
+					 0 /* flags */,
+					 GTK_MESSAGE_ERROR,
+					 GTK_BUTTONS_OK,
+					 _("Error displaying help"),
+					 msg);
+		g_free (msg);
 
 		g_signal_connect (G_OBJECT (dialog), "response",
 				  G_CALLBACK (gtk_widget_destroy),
