@@ -324,11 +324,10 @@ static void row_selected_cb (GtkTreeSelection *selection, gpointer data)
     if (!loc)
     	return;
 
-    panel_applet_gconf_set_string(gw_applet->applet, "location0", loc->untrans_name, NULL);
     panel_applet_gconf_set_string(gw_applet->applet, "location1", loc->code, NULL);
     panel_applet_gconf_set_string(gw_applet->applet, "location2", loc->zone, NULL);
     panel_applet_gconf_set_string(gw_applet->applet, "location3", loc->radar, NULL);
-    panel_applet_gconf_set_string(gw_applet->applet, "location4", loc->trans_name, NULL);
+    panel_applet_gconf_set_string(gw_applet->applet, "location4", loc->name, NULL);
     panel_applet_gconf_set_string(gw_applet->applet, "coordinates", loc->coordinates, NULL);
     
     if (gw_applet->gweather_pref.location) {
@@ -354,9 +353,17 @@ static void load_locations (GWeatherApplet *gw_applet)
     gtk_tree_view_set_expander_column (GTK_TREE_VIEW (tree), column);
     
     /* load locations from xml file */
-    current_location = weather_location_clone (gw_applet->gweather_pref.location);
-    gweather_xml_load_locations(tree, current_location);
-    weather_location_free (current_location);
+    if (gweather_xml_load_locations (tree, gw_applet->gweather_pref.location))
+    {
+        GtkWidget *d;
+
+        d = gtk_message_dialog_new (NULL, 0, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
+                                    _("Failed to load the Locations XML "
+                                      "database.  Please report this as "
+                                      "a bug."));
+        gtk_dialog_run (GTK_DIALOG (d));
+	gtk_widget_destroy (d);
+    }
 }
 
 static void

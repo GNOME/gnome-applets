@@ -94,7 +94,7 @@ static gchar *iwin_parse (gchar *iwin, WeatherLocation *loc)
 
     g_return_val_if_fail(iwin != NULL, NULL);
     g_return_val_if_fail(loc != NULL, NULL);
-    if (loc->untrans_name[0] == '-')
+    if (loc->name[0] == '-')
         return NULL;
 	
     iwin_init_re();

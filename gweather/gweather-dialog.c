@@ -40,9 +40,6 @@ static void gweather_dialog_save_geometry (GWeatherApplet *gw_applet)
 	gtk_window_get_position (GTK_WINDOW (window), &x, &y);
 	gtk_window_get_size (GTK_WINDOW (window), &w, &h);
 
-	g_message ("gweather: saving spatial window location: %dx%d+%d+%d",
-			w, h, x, y);
-
 	panel_applet_gconf_set_int (gw_applet->applet,
 			"dialog_width", w, NULL);
 	panel_applet_gconf_set_int (gw_applet->applet,
@@ -95,9 +92,6 @@ static void gweather_dialog_load_geometry (GWeatherApplet *gw_applet)
 		return;
 	}
 	
-	g_message ("gweather: got spatial window location: %dx%d+%d+%d",
-			w, h, x, y);
-
 	gtk_window_resize (GTK_WINDOW (window), w, h);
 	gtk_window_move (GTK_WINDOW (window), x, y);
 }

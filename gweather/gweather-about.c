@@ -28,10 +28,11 @@ void gweather_about_run (GWeatherApplet *gw_applet)
 {
     
     static const gchar *authors[] = {
-	"Kevin Vandersloot <kfv101@psu.edu>",
-        "Spiros Papadimitriou <spapadim+@cs.cmu.edu>",
         "Todd Kulesza <fflewddur@dropline.net>",
+        "Ryan Lortie <desrt@desrt.ca",
 	"Davyd Madeley <davyd@madeley.id.au>",
+        "Spiros Papadimitriou <spapadim+@cs.cmu.edu>",
+	"Kevin Vandersloot <kfv101@psu.edu>",
         NULL
     };
 
