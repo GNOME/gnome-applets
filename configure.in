@@ -93,7 +93,8 @@ dnl Still need to decide on the checks for these
 build_gtop_applets=false
 PKG_CHECK_MODULES(GTOP_APPLETS,
                  [libgtop-2.0 >= $LIBGTOP_REQUIRED],
-                 build_gtop_applets=true,)
+                 build_gtop_applets=true,
+		 AC_MSG_WARN([libgtop not found. Not building gtop applets.]))
 AC_SUBST(GTOP_APPLETS_CFLAGS)
 AC_SUBST(GTOP_APPLETS_LIBS)
 AM_CONDITIONAL(BUILD_GTOP_APPLETS, $build_gtop_applets)
