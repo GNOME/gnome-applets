@@ -983,6 +983,7 @@ const gchar *weather_info_get_location (WeatherInfo *info)
 const gchar *weather_info_get_update (WeatherInfo *info)
 {
     static gchar buf[200];
+    char *utf8, *timeformat;
 
     g_return_val_if_fail(info != NULL, NULL);
 
@@ -991,10 +992,24 @@ const gchar *weather_info_get_update (WeatherInfo *info)
 
     if (info->update != 0) {
         struct tm tm;
-        localtime_r(&info->update, &tm);
-        if (strftime(buf, sizeof(buf), _("%a, %b %d / %H:%M"), &tm) <= 0)
+        localtime_r (&info->update, &tm);
+	/* TRANSLATOR: this is a format string for strftime
+	 *             see `man 3 strftime` for more details
+	 */
+	timeformat = g_locale_from_utf8 (_("%a, %b %d / %H:%M"), -1,
+			NULL, NULL, NULL);
+	if (!timeformat) {
 		strcpy (buf, "???");
-	buf[sizeof(buf)-1] = '\0';
+	}
+	else if (strftime(buf, sizeof(buf), timeformat, &tm) <= 0) {
+		strcpy (buf, "???");
+	}
+	g_free (timeformat);
+
+	/* Convert to UTF-8 */
+	utf8 = g_locale_to_utf8 (buf, -1, NULL, NULL, NULL);
+	strcpy (buf, utf8);
+	g_free (utf8);
     } else {
         strncpy(buf, _("Unknown observation time"), sizeof (buf));
 	buf[sizeof(buf)-1] = '\0';
