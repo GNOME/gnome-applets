@@ -42,7 +42,7 @@ dnl ******************************************
 dnl ** pkg-config dependacy checks          **
 dnl ******************************************
 
-PKG_CHECK_MODULES(GNOME_APPLETS, libapplet-2.0 >= $LIBAPPLET_REQUIRED)
+dnl PKG_CHECK_MODULES(GNOME_APPLETS, libapplet-2.0 >= $LIBAPPLET_REQUIRED)
 
 build_xml_applets=false
 PKG_CHECK_MODULES(GNOME_XML_APPLETS,
@@ -367,13 +367,15 @@ AC_SUBST(LDFLAGS)
 
 AC_DEFINE_UNQUOTED(GNOME_ICONDIR, "${prefix}/share/pixmaps")
 
-dnl Okay..uncomment the stuff you want to work on :)
+dnl Okay..uncomment the stuff and add in you want to work on :)
 
 AC_OUTPUT([
 gnome-applets.spec
 Makefile
 intl/Makefile
 po/Makefile.in
+omf-install/Makefile
+])
 dnl another_clock/Makefile
 dnl another_clock/docs/Makefile
 dnl another_clock/docs/C/Makefile
@@ -548,8 +550,6 @@ dnl whereami/docs/C/Makefile
 dnl whereami/docs/it/Makefile
 dnl whereami/docs/es/Makefile
 dnl gtik/Makefile
-omf-install/Makefile
-])
 
 
 dnl don't do these 2 for now
