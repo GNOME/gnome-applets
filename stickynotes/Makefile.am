@@ -63,7 +63,6 @@ EXTRA_DIST = \
 	     GNOME_StickyNotesApplet.server.in.in
 
 install-data-local:
-	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) \
+	-GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) \
 	$(GCONFTOOL) --makefile-install-rule $(schemas_DATA)
-	$(GCONFTOOL) --shutdown
 

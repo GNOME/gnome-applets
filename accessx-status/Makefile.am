@@ -23,13 +23,9 @@ uidir = $(datadir)/gnome-2.0/ui
 ui_DATA = GNOME_AccessxApplet.xml
 
 INCLUDES   = $(GNOME_APPLETS_CFLAGS)     \
-	     -DPREFIX=\""$(prefix)"\" \
 	     -DGLADEDIR=\""$(gladedir)"\" \
 	     -DPIXMAPDIR=\""$(datadir)/pixmaps/"\"\
-	     -DSYSCONFDIR=\""$(sysconfdir)"\"\
-	     -DDATADIR=\""$(datadir)"\"\
-	     -DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\"\
-	     -DLIBDIR=\""$(libdir)"\"
+	     -DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\"
 
 CLEANFILES = $(ACCESSX_STATUS_APPLET_CLEANFILES)
 
