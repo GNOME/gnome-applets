@@ -410,7 +410,6 @@ preferences_cb (BonoboUIComponent *component,
     GtkWidget *button;
     GtkWidget *hbox;
     GtkWidget *label;
-    GtkWidget *image;
     GtkWidget *entry;
     gint response;
 
@@ -429,25 +428,22 @@ preferences_cb (BonoboUIComponent *component,
     gtk_window_set_screen (GTK_WINDOW (dialog),
 			   gtk_widget_get_screen (cd->panel.applet));
     gtk_dialog_set_default_response(GTK_DIALOG (dialog), GTK_RESPONSE_CLOSE);
+    gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
+    gtk_dialog_set_has_separator (GTK_DIALOG (dialog), FALSE);
     box = GTK_DIALOG(dialog)->vbox;
     
-    hbox = gtk_hbox_new(FALSE, 0);
-    gtk_container_set_border_width (GTK_CONTAINER (hbox), GNOME_PAD);
+    hbox = gtk_hbox_new (FALSE, 12);
+    gtk_container_set_border_width (GTK_CONTAINER (hbox), 12);
     gtk_box_pack_start(GTK_BOX(box), hbox, TRUE, TRUE, 0);
     gtk_widget_show(hbox);
-    image = gtk_image_new_from_stock(GTK_STOCK_CDROM, GTK_ICON_SIZE_BUTTON);
-
-    gtk_box_pack_start(GTK_BOX(hbox), image, FALSE, FALSE, 10);
-    gtk_widget_show(image);
-    set_atk_name_description(image, _("Disc Image"), _("An image of a cd-rom disc"));
 
     label = gtk_label_new_with_mnemonic(_("Device _Path:"));
-    gtk_misc_set_padding (GTK_MISC (label), GNOME_PAD_SMALL, 0);
     gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
     gtk_widget_show(label);
 
     entry = gtk_entry_new();
-    gtk_box_pack_start(GTK_BOX(hbox), entry, TRUE, TRUE, 4);
+    gtk_entry_set_activates_default (GTK_ENTRY (entry), TRUE);
+    gtk_box_pack_start (GTK_BOX (hbox), entry, TRUE, TRUE, 0);
     gtk_widget_show(entry);
     gtk_entry_set_text(GTK_ENTRY(entry), cd->devpath);
     set_atk_name_description(entry, _("Device Path"), _("Set the device path here"));
