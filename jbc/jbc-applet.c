@@ -180,6 +180,15 @@ main (int argc, char **argv)
 					 _("About..."),
 					 (AppletCallbackFunc)about_jbc, NULL);
 
+  /* black background */
+  gnome_canvas_item_new (gnome_canvas_root (GNOME_CANVAS (canvas)),
+			 gnome_canvas_rect_get_type (),
+			 "x1", (double) 0.0,
+			 "y1", (double) 0.0,
+			 "x2", (double) CANVAS_WIDTH,
+			 "y2", (double) CANVAS_HEIGHT,
+			 "fill_color", "black",
+			 NULL);
 
   tpix[0] = gdk_imlib_create_image_from_xpm_data (tcolon_xpm);
   tpix[1] = gdk_imlib_create_image_from_xpm_data (tbcolon_xpm);
