@@ -1,0 +1,23 @@
+INCLUDES = -I. -I$(srcdir) 				\
+	-I$(top_srcdir)/intl -I$(top_builddir)/intl	\
+	-I$(srcdir)/../../panel				\
+	-I$(top_builddir)/panel \
+	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
+	-I$(includedir) $(GNOME_INCLUDEDIR)
+
+bin_PROGRAMS = life_applet
+
+life_applet_SOURCES = life.c
+
+life_applet_LDADD = ../../panel/libpanel_applet.la	\
+		       $(GNOME_LIBDIR) \
+		       $(GNOMEGNORBA_LIBS) $(INTLLIBS) 
+
+EXTRA_DIST = \
+	life_applet.desktop life_applet.gnorba
+
+sysdir = $(datadir)/applets/Amusements
+sys_DATA = life_applet.desktop
+
+gnorbadir  = $(sysconfdir)/CORBA/servers
+gnorba_DATA = life_applet.gnorba
