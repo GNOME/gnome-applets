@@ -329,7 +329,6 @@ GSwitchItAppletPrepareDrawing (GSwitchItApplet * sia, int group)
 		} else
 			layoutName = sia->groupNames[group];
 		align = gtk_alignment_new (0.5, 0.5, 1.0, 1.0);
-		XklDebug (0, "[[layoutname][%s]]\n", layoutName);
 		label = gtk_label_new (layoutName);
 		if (allocLayoutName != NULL)
 			g_free (allocLayoutName);
