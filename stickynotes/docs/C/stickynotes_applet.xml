@@ -2,9 +2,9 @@
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "1.0.0">
-  <!ENTITY manrevision "1.0">
-  <!ENTITY date "January 2003">
+  <!ENTITY appletversion "2.3.0">
+  <!ENTITY manrevision "2.0">
+  <!ENTITY date "May 2003">
   <!ENTITY applet "Sticky Notes">
 ]>
 
@@ -22,7 +22,7 @@ Template last modified Mar 12, 2002
 	<title>&applet; Applet Manual V&manrevision;</title> 
 	
 	<copyright> 
-	    <year>2002</year>  
+	    <year>2002-2003</year>  
 	    <holder>Loban A Rahman</holder> 
 	</copyright> 
 
@@ -103,8 +103,9 @@ Template last modified Mar 12, 2002
 	    </screenshot> 
 	</figure> 
 	<para>The <application>&applet;</application> applet enables you to create, view, and manage sticky-notes on your Gnome
-	    Desktop. The title, contents, and dimensions of sticky notes are easily editable. All sticky notes are saved and reopened
-	    in their exact postions and dimensions when the applet is restarted (e.g. when you log out and back in).</para>
+		Desktop. The title, contents, and dimensions, and style of sticky notes are easily editable. All sticky notes are
+		saved and reopened in their exact postions and dimensions when the applet is restarted (e.g. when you log out
+		and back in).</para>
 	<para>To add <application>&applet;</application> to a panel, right-click on the panel, then choose 
 	    <menuchoice>
 		<guimenu>Add to Panel</guimenu>
@@ -130,17 +131,13 @@ Template last modified Mar 12, 2002
 	    </figure> 
 	    <para>Right click on the applet to bring up a popup-menu. Along with the usual panel menu options, you can use this menu to:</para>
 	    <menuchoice><guimenuitem>New Note</guimenuitem></menuchoice>
-	    <para>Create a new sticky note. You can also left-click the applet to create a new sticky note.</para>
-	    <menuchoice><guimenuitem>Delete All Notes</guimenuitem></menuchoice>
+	    <para>Create a new sticky note.</para>
+	    <menuchoice><guimenuitem>Delete Notes...</guimenuitem></menuchoice>
 	    <para>Destroy all sticky notes.</para>
-	    <menuchoice><guimenuitem>Hide All Notes</guimenuitem></menuchoice>
-	    <para>Hide all sticky notes from the desktop.</para>
-	    <menuchoice><guimenuitem>Show All Notes</guimenuitem></menuchoice>
-	    <para>Show all hidden sticky notes on the desktop.</para>
-	    <menuchoice><guimenuitem>Lock All Notes</guimenuitem></menuchoice>
-	    <para>Lock all sticky notes from editing.</para>
-	    <menuchoice><guimenuitem>Unlock All Notes</guimenuitem></menuchoice>
-	    <para>Unlock all hidden sticky notes for editing.</para>
+	    <menuchoice><guimenuitem>Show Notes</guimenuitem></menuchoice>
+	    <para>Show/Hide all sticky notes from the desktop.</para>
+	    <menuchoice><guimenuitem>Lock Notes</guimenuitem></menuchoice>
+	    <para>Lock/Unlock all sticky notes from editing.</para>
 	    <menuchoice><guimenuitem>Preferences...</guimenuitem></menuchoice>
 	    <para>Customize sticky notes preferences.</para>
 	    <menuchoice><guimenuitem>Help</guimenuitem></menuchoice>
@@ -162,10 +159,13 @@ Template last modified Mar 12, 2002
 	    <para>Right click on the title of a sticky note to bring up another popup-menu. You can use this menu to:</para>
 	    <menuchoice><guimenuitem>New Note</guimenuitem></menuchoice>
 	    <para>Create a new sticky note.</para>
-	    <menuchoice><guimenuitem>Delete Note</guimenuitem></menuchoice>
+	    <menuchoice><guimenuitem>Delete Note...</guimenuitem></menuchoice>
 	    <para>Destroy this sticky note.</para>
-	    <menuchoice><guimenuitem>Edit Title</guimenuitem></menuchoice>
-	    <para>Edit the title of the sticky note. You can also double-click the title of a sticky note to edit it.</para>
+	    <menuchoice><guimenuitem>Lock Note</guimenuitem></menuchoice>
+	    <para>Lock/Unlock this sticky note from editiong.</para>
+	    <menuchoice><guimenuitem>Properties...</guimenuitem></menuchoice>
+	    <para>Edit the properties of the sticky note. This includes the title, color, and font. You can also double-click the 
+		    title of a sticky note to edit it.</para>
 	</sect2>
     </sect1>
 
@@ -200,17 +200,33 @@ Template last modified Mar 12, 2002
 		<listitem><para>The default height of new sticky notes, in pixels.</para></listitem>
 	    </varlistentry>
 	    <varlistentry> 
-		<term>Color</term> 
-		<listitem><para>The base color used to draw all sticky notes.</para></listitem>
+		<term>Default Color</term> 
+		<listitem><para>The default base color of uncustomized sticky notes.</para></listitem>
 	    </varlistentry>
 	    <varlistentry> 
-		<term>Default click behavior</term> 
+		<term>Use color from the system theme</term> 
+		<listitem><para>Use the current system theme to determine the default color.</para></listitem>
+	    </varlistentry>
+	    <varlistentry> 
+		<term>Default Font</term> 
+		<listitem><para>The default font of uncustomized sticky notes.</para></listitem>
+	    </varlistentry>
+	    <varlistentry> 
+		<term>Use font from the system theme</term> 
+		<listitem><para>Use the current system theme to determine the default font.</para></listitem>
+	    </varlistentry>
+	    <varlistentry> 
+		<term>Click Behavior</term> 
 		<listitem><para>What happens when one merely clicks the applet. You can set it to create a new note, toggle
 		between showing and hiding all notes, and toggle between locking and unlocking all notes.</para></listitem>
 	    </varlistentry>
 	    <varlistentry> 
-		<term>Put on all workspaces</term> 
+		<term>Put notes on all workspaces</term> 
 		<listitem><para>Whether sticky notes are visible on ALL workspaces on the desktop.</para></listitem>
+	    </varlistentry>
+	    <varlistentry> 
+		<term>Force default color & font on all notes</term> 
+		<listitem><para>Whether all sticky notes (even customized ones) are forced to use the default style.</para></listitem>
 	    </varlistentry>
 	</variablelist> 
     </sect1>
