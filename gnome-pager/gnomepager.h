@@ -22,6 +22,7 @@ typedef struct _task
 {
   gchar              *name;
   gint                x, y, w, h;
+  gint                ax, ay;
   Window              win;
   Window              frame; /* Window manager's frame window */
   Window              root;  /* Root or pseudo-root */
@@ -73,7 +74,7 @@ void            cb_root_prop_change(GtkWidget * widget, GdkEventProperty * ev);
 GdkFilterReturn cb_filter_intercept(GdkXEvent *gdk_xevent, GdkEvent *event, gpointer data);
 
 void task_get_info(Task *t);
-void task_add(Window win);
+gint task_add(Window win);
 void task_delete(Window win);
 Task *task_find(Window win);
 void tasks_match(Window * win, guint num);
