@@ -125,6 +125,9 @@ void stickynotes_applet_init(PanelApplet *panel_applet)
 
 	icon_theme = gnome_icon_theme_new ();
 	sticky_icon = gnome_icon_theme_lookup_icon (icon_theme, "stock_notes", 48, NULL, NULL);
+	/* Register size for icons */
+	gtk_icon_size_register ("stickynotes_icon_size", 8,8);
+	
 
 	if (sticky_icon) {
 		gnome_window_icon_set_default_from_file(sticky_icon);

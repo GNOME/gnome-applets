@@ -31,6 +31,7 @@ gboolean stickynote_toggle_lock_cb(GtkWidget *widget, StickyNote *note)
 /* Sticky Window Callback : Close the window. */
 gboolean stickynote_close_cb(GtkWidget *widget, StickyNote *note)
 {
+
 	stickynotes_remove(note);
 	
 	return TRUE;
@@ -94,60 +95,6 @@ gboolean stickynote_delete_cb(GtkWidget *widget, GdkEvent *event, StickyNote *no
 	stickynotes_remove(note);
 
 	return TRUE;
-}
-
-/* Sticky Window Callback : Cross (leave or enter) the window. */
-gboolean stickynote_cross_cb(GtkWidget *widget, GdkEventCrossing *event, StickyNote *note)
-{
-	GtkTextBuffer *buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(note->w_body));
-	GtkWindow *window = (GtkWindow *) widget;
-	
-	/* Show the resize bar on mouse-over */
-	if (event->type == GDK_ENTER_NOTIFY && event->detail != GDK_NOTIFY_INFERIOR) {
-		gtk_widget_show(note->w_lock);
-		gtk_widget_show(note->w_close);
-		gtk_widget_show(glade_xml_get_widget(note->window, "resize_bar"));
-	}
-
-	else if (event->type == GDK_LEAVE_NOTIFY && event->detail != GDK_NOTIFY_INFERIOR) {
-		/* Do not hide if still in focus */
-		if (!window->has_focus) {
-			gtk_widget_hide(note->w_lock);
-			gtk_widget_hide(note->w_close);
-			gtk_widget_hide(glade_xml_get_widget(note->window, "resize_bar"));
-		}
-
-		/* If the note was edited, save it. */
-		if (gtk_text_buffer_get_modified(buffer))
-			stickynotes_save();
-	}
-	
-	return FALSE;
-}
-
-/* Sticky Window Callback : On focus (in and out) of the window */
-gboolean stickynote_focus_cb(GtkWidget *widget, GdkEventFocus *event, StickyNote *note)
-{
-	GtkTextBuffer *buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(note->w_body));
-	
-	/* Show the resize bar if in focus */
-	if (event->in) {
-		gtk_widget_show(note->w_lock);
-		gtk_widget_show(note->w_close);
-		gtk_widget_show(glade_xml_get_widget(note->window, "resize_bar"));
-	}
-
-	else {
-		gtk_widget_hide(note->w_lock);
-		gtk_widget_hide(note->w_close);
-		gtk_widget_hide(glade_xml_get_widget(note->window, "resize_bar"));
-
-		/* If the note was edited, save it. */
-		if (gtk_text_buffer_get_modified(buffer))
-			stickynotes_save();
-	}
-
-	return FALSE;
 }
 
 /* Popup Menu Callback : Create a new sticky note */

@@ -113,6 +113,8 @@ gboolean applet_change_bg_cb(PanelApplet *panel_applet, PanelAppletBackgroundTyp
 /* Applet Callback : Deletes the applet. */
 void applet_destroy_cb (PanelApplet *panel_applet, StickyNotesApplet *applet)
 {
+	GList *notes;
+	
 	if (applet->destroy_all_dialog != NULL)
 		gtk_widget_destroy (applet->destroy_all_dialog);
 
@@ -121,6 +123,17 @@ void applet_destroy_cb (PanelApplet *panel_applet, StickyNotesApplet *applet)
 	
 	if (stickynotes->applets != NULL)
 		stickynotes->applets = g_list_remove (stickynotes->applets, applet);
+		
+	if (stickynotes->applets == NULL) {
+               notes = stickynotes->notes;
+               while (notes) {
+                       StickyNote *note = notes->data;
+                       stickynote_free (note);
+                       notes = g_list_next (notes);
+               }
+	}
+	
+	
 }		
 
 /* Menu Callback : Create a new sticky note */
