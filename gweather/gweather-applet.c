@@ -102,7 +102,8 @@ void update_display (GWeatherApplet *applet)
 
 void place_widgets (GWeatherApplet *gw_applet)
 {
-    gint i;
+    gint i, max_height = 0, max_width = 0;
+    gint numrows_or_columns = 1;
     gboolean horiz;
  
     if (gw_applet->box)
@@ -122,29 +123,55 @@ void place_widgets (GWeatherApplet *gw_applet)
 
     for (i=0; i<=gw_applet->gweather_info->numforecasts-1; i++) {
 		gchar *tmp;
+		GtkRequisition imagereq, labelreq;
 		gw_applet->events[i] = gtk_event_box_new ();
 		gtk_box_pack_start (GTK_BOX (gw_applet->box), 
 				                      gw_applet->events[i], FALSE, FALSE, 0);
-		if (horiz)
-			gw_applet->boxes[i] = gtk_hbox_new (FALSE, 2);
-		else
-			gw_applet->boxes[i] = gtk_vbox_new (FALSE, 2);
-		gtk_container_add (GTK_CONTAINER (gw_applet->events[i]),  gw_applet->boxes[i]);
-		gw_applet->images[i] = gtk_image_new ();
-		gtk_box_pack_start (GTK_BOX (gw_applet->boxes[i]), gw_applet->images[i], FALSE, FALSE, 0);
+		
+		gw_applet->images[i] = gtk_image_new ();		
 		gtk_image_set_from_pixbuf (GTK_IMAGE (gw_applet->images[i]),
 								     get_conditions_pixbuf (31));
+								     
+		gtk_widget_size_request (gw_applet->images[i], &imagereq);
+		
 		gw_applet->labels[i] = gtk_label_new (NULL);
-		gtk_box_pack_start (GTK_BOX (gw_applet->boxes[i]), 
-				                      gw_applet->labels[i], FALSE, FALSE, 0);
+		
 		if (i ==0)
 			tmp = g_strdup_printf ("%d\302\260", 0);
 		else
 			tmp = g_strdup_printf ("%d/%d\302\260", 0, 0);
 		gtk_label_set_text (GTK_LABEL (gw_applet->labels[i]), tmp);
+		gtk_widget_size_request (gw_applet->labels[i], &labelreq);
+		
+		max_width = MAX (max_width, imagereq.width+labelreq.width);
+		max_height = MAX (max_height, imagereq.height+labelreq.height);
 		g_free (tmp);
     }
-
+    
+    if (horiz) {
+    	if (max_height <= gw_applet->size)
+    		numrows_or_columns = 2;
+    } else {
+    	if (max_width <= gw_applet->size)
+    		numrows_or_columns = 2;
+    }
+    
+    for (i=0; i<=gw_applet->gweather_info->numforecasts-1; i++) {
+     	if (horiz && numrows_or_columns == 2)
+     		gw_applet->boxes[i] = gtk_vbox_new (FALSE, 0);
+     	else if (horiz && numrows_or_columns == 1)
+     		gw_applet->boxes[i] = gtk_hbox_new (FALSE, 0);
+     	else if (!horiz && numrows_or_columns == 2)
+     		gw_applet->boxes[i] = gtk_hbox_new (FALSE, 0);
+     	else
+     		gw_applet->boxes[i] = gtk_vbox_new (FALSE, 0);
+     		
+     	gtk_container_add (GTK_CONTAINER (gw_applet->events[i]),  gw_applet->boxes[i]);
+     	gtk_box_pack_start (GTK_BOX (gw_applet->boxes[i]), gw_applet->images[i], FALSE, FALSE, 0);
+	gtk_box_pack_start (GTK_BOX (gw_applet->boxes[i]), 
+				                      gw_applet->labels[i], FALSE, FALSE, 0);
+    }
+    
     gtk_widget_show_all (GTK_WIDGET (gw_applet->applet));
 
     if (!gw_applet->gweather_pref.show_labels) {
@@ -260,7 +287,8 @@ applet_destroy (GtkWidget *widget, GWeatherApplet *gw_applet)
 void gweather_applet_create (GWeatherApplet *gw_applet)
 {
    
-   gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gweather/tstorm.xpm");
+    gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gweather/tstorm.xpm");
+    panel_applet_set_flags (gw_applet->applet, PANEL_APPLET_EXPAND_MINOR);
 
     g_signal_connect (G_OBJECT(gw_applet->applet), "change_orient",
                        G_CALLBACK(change_orient_cb), gw_applet);
