@@ -622,6 +622,9 @@ about_cb (BonoboUIComponent *component,
     	gdk_pixbuf_unref (pixbuf);
 
     gtk_window_set_wmclass (GTK_WINDOW (cd->about_dialog), "cd player", "CD Player");
+    gtk_window_set_screen (GTK_WINDOW (cd->about_dialog),
+                           gtk_widget_get_screen (cd->panel.applet));
+
     g_signal_connect (G_OBJECT(cd->about_dialog), "destroy",
                       G_CALLBACK(gtk_widget_destroyed), &cd->about_dialog);
     gtk_widget_show (cd->about_dialog);
