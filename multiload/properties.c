@@ -158,7 +158,7 @@ add_page(GtkWidget *notebook, gchar *label)
 	GtkWidget *page_label;
 	
 	page = gtk_hbox_new(TRUE, 0);
-	page_label = gtk_label_new_with_mnemonic(label);
+	page_label = gtk_label_new(label);
 	gtk_container_set_border_width(GTK_CONTAINER(page), 3);
 		
 	gtk_notebook_append_page(GTK_NOTEBOOK(notebook), page, page_label);
@@ -370,25 +370,25 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	gtk_container_set_border_width(GTK_CONTAINER(notebook), 5);
 	gtk_container_add(GTK_CONTAINER(frame), notebook);
 	
-	page = add_page(notebook,  _("P_rocessor"));
+	page = add_page(notebook,  _("Processor"));
 	add_color_selector(page, _("_User"), "cpuload_color0", ma);
 	add_color_selector(page, _("S_ystem"), "cpuload_color1", ma);
 	add_color_selector(page, _("N_ice"), "cpuload_color2", ma);
 	add_color_selector(page, _("I_dle"), "cpuload_color3", ma);
 	
-	page = add_page(notebook,  _("M_emory"));
+	page = add_page(notebook,  _("Memory"));
 	add_color_selector(page, _("Ot_her"), "memload_color0", ma);
 	add_color_selector(page, _("Sh_ared"), "memload_color1", ma);
 	add_color_selector(page, _("_Buffers"), "memload_color2", ma);
 	add_color_selector(page, _("F_ree"), "memload_color3", ma);
 	
-	page = add_page(notebook,  _("Net_work"));
+	page = add_page(notebook,  _("Network"));
 	add_color_selector(page, _("S_LIP"), "netload_color0", ma);
 	add_color_selector(page, _("PL_IP"), "netload_color1", ma);
 	add_color_selector(page, _("Et_hernet"), "netload_color2", ma);
 	add_color_selector(page, _("_Other"), "netload_color3", ma);
 	
-	page = add_page(notebook,  _("Swap _File"));
+	page = add_page(notebook,  _("Swap File"));
 	add_color_selector(page, _("_Used"), "swapload_color0", ma);
 	add_color_selector(page, _("_Free"), "swapload_color1", ma);
 	

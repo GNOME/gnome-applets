@@ -1449,11 +1449,11 @@ static gint updateOutput(gpointer data)
 
 		hbox = symbolManager(stockdata);
 
-		label = gtk_label_new_with_mnemonic (_("_Symbols"));
+		label = gtk_label_new (_("Symbols"));
 		gtk_notebook_append_page (GTK_NOTEBOOK (notebook), hbox, label);
-		label = gtk_label_new_with_mnemonic (_("_Behavior"));
+		label = gtk_label_new (_("Behavior"));
 		gtk_notebook_append_page (GTK_NOTEBOOK (notebook), vbox, label);
-		label = gtk_label_new_with_mnemonic (_("_Appearance"));
+		label = gtk_label_new (_("Appearance"));
 		gtk_notebook_append_page (GTK_NOTEBOOK (notebook), vbox2, label);
 		
 		gtk_widget_show_all(stockdata->pb);

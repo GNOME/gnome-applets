@@ -437,7 +437,7 @@ gkb_prop_create_property_box (GkbPropertyBoxInfo * pbi)
   /* Add page 1 */
   page_1_hbox = gtk_hbox_new (FALSE, 0);
   gtk_widget_show (page_1_hbox);
-  page_1_label = gtk_label_new_with_mnemonic (_("_Keymaps"));
+  page_1_label = gtk_label_new (_("Keymaps"));
   gtk_notebook_append_page (GTK_NOTEBOOK (propnotebook), page_1_hbox, page_1_label);
 
   /* Page 1 Frame */
@@ -449,7 +449,7 @@ gkb_prop_create_property_box (GkbPropertyBoxInfo * pbi)
   /* Add page 2 */
   page_2_vbox = gtk_vbox_new (FALSE, 0);
   gtk_widget_show (page_2_vbox);
-  page_2_label = gtk_label_new_with_mnemonic (_("_Options"));
+  page_2_label = gtk_label_new (_("Options"));
   gtk_notebook_append_page (GTK_NOTEBOOK (propnotebook), page_2_vbox, page_2_label);
  
 
