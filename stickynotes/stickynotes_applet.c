@@ -22,8 +22,6 @@
 #include <stickynotes_applet_callbacks.h>
 #include <stickynotes.h>
 
-#define NEVER_SENSITIVE "never_sensitive"
-
 StickyNotes *stickynotes = NULL;
 
 /* Popup menu on the applet */
@@ -69,7 +67,8 @@ static gboolean stickynotes_applet_factory(PanelApplet *panel_applet, const gcha
 }
 
 /* Sticky Notes applet factory */
-PANEL_APPLET_BONOBO_FACTORY("OAFIID:GNOME_StickyNotesApplet_Factory", PANEL_TYPE_APPLET, PACKAGE, VERSION, stickynotes_applet_factory, NULL);
+PANEL_APPLET_BONOBO_FACTORY("OAFIID:GNOME_StickyNotesApplet_Factory", PANEL_TYPE_APPLET, "stickynotes_applet", VERSION,
+			    stickynotes_applet_factory, NULL);
 
 /* Create and initalize global sticky notes instance */
 void stickynotes_applet_init()
