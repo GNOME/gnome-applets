@@ -35,6 +35,33 @@ update_default_list_cb (GtkEditable *editable, gpointer data)
   
 }
 
+static void
+set_atk_relation (GtkWidget *label, GtkWidget *widget)
+{
+  AtkObject *atk_widget;
+  AtkObject *atk_label;
+  AtkRelationSet *relation_set;
+  AtkRelation *relation;
+  AtkObject *targets[1];
+
+  atk_widget = gtk_widget_get_accessible (widget);
+  atk_label = gtk_widget_get_accessible (label);
+  
+  /* return if gail is not loaded */
+  if (GTK_IS_ACCESSIBLE (atk_widget) == FALSE)
+    return;
+
+  /* set label-for relation */
+  gtk_label_set_mnemonic_widget (GTK_LABEL (label), widget);	
+  
+  /* set label-by relation */
+  relation_set = atk_object_ref_relation_set (atk_widget);
+  targets[0] = atk_label;
+  relation = atk_relation_new (targets, 1, ATK_RELATION_LABELLED_BY);
+  atk_relation_set_add (relation_set, relation);
+  g_object_unref (G_OBJECT (relation)); 
+}
+
 static void default_chars_frame_create(charpick_data *curr_data)
 {
   GtkWidget *propwindow = curr_data->propwindow;
@@ -56,6 +83,9 @@ static void default_chars_frame_create(charpick_data *curr_data)
   gtk_entry_set_text(GTK_ENTRY(default_list_entry), 
 		     text_utf8);
   g_free (text_utf8);
+  set_atk_relation (default_list_label, default_list_entry);
+  set_atk_name_description (default_list_entry, _("Default list of characters"), 
+              _("Set the default character list here"));
 
   explain_label = gtk_label_new(_("These characters will appear when the panel"
                                   " is started. To return to this list, hit"

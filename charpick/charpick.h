@@ -44,6 +44,8 @@ void start_callback_update();
 
 void build_table(charpick_data *curr_data);
 void property_show(BonoboUIComponent *uic, gpointer data, const gchar *verbname);
+void set_atk_name_description(GtkWidget *widget, const gchar *name,
+                              const gchar *description);
 
 
 

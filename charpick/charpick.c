@@ -390,12 +390,20 @@ static void
 applet_destroy (GtkWidget *widget, gpointer data)
 {
   charpick_data *curr_data = data;
-  
+  GtkTooltips *tooltips;
+  GtkWidget *applet = curr_data->applet;
+
   g_return_if_fail (curr_data);
   
   if (curr_data->default_charlist)
       g_free (curr_data->default_charlist);
   curr_data->default_charlist = NULL;
+  
+  tooltips = g_object_get_data (G_OBJECT (applet), "tooltips");
+  if (tooltips) {
+      g_object_unref (tooltips);
+      g_object_set_data (G_OBJECT (applet), "tooltips", NULL);
+  }
   
   g_free (curr_data);
   
@@ -408,6 +416,32 @@ static const BonoboUIVerb charpick_applet_menu_verbs [] = {
 
         BONOBO_UI_VERB_END
 };
+
+void
+set_atk_name_description (GtkWidget *widget, const gchar *name,
+                          const gchar *description)
+{
+  AtkObject *aobj;
+  aobj = gtk_widget_get_accessible (widget);
+  /* return if gail is not loaded */
+  if (GTK_IS_ACCESSIBLE (aobj) == FALSE)
+     return;
+  atk_object_set_name (aobj, name);
+  atk_object_set_description (aobj, description);
+}
+
+static void
+make_applet_accessible (GtkWidget *applet)
+{
+  GtkTooltips *tooltips;
+  tooltips = gtk_tooltips_new ();
+  g_object_ref (tooltips);
+  gtk_object_sink (GTK_OBJECT (tooltips));
+  g_object_set_data (G_OBJECT (applet), "tooltips", tooltips); 
+  gtk_tooltips_set_tip (tooltips, applet, 
+                      _("Insert special characters"), NULL);
+  set_atk_name_description (applet, _("Character Palette"), NULL);
+}
 
 static gboolean
 charpicker_applet_fill (PanelApplet *applet)
@@ -480,6 +514,7 @@ charpicker_applet_fill (PanelApplet *applet)
  
 
   gtk_container_add (GTK_CONTAINER (applet), curr_data->frame);
+  make_applet_accessible (GTK_WIDGET (applet));
   
   /* session save signal */ 
   g_signal_connect (G_OBJECT (applet), "change_orient",
