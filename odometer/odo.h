@@ -20,6 +20,8 @@
 #define ODO_VERSION "0.7"
 #define UPDATE_TIMEOUT 75
 
+#define SIZEHINT_DEFAULT 46
+
 #define INCH 0
 #define FOOT 1
 #define MILE 2
