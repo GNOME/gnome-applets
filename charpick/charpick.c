@@ -391,17 +391,6 @@ static const BonoboUIVerb charpick_applet_menu_verbs [] = {
         BONOBO_UI_VERB_END
 };
 
-static const char charpick_applet_menu_xml [] =
-	"<popup name=\"button3\">\n"
-	"   <menuitem name=\"Item 1\" verb=\"Props\" _label=\"Properties\"\n"
-	"             pixtype=\"stock\" pixname=\"gtk-properties\"/>\n"
-	"   <menuitem name=\"Item 2\" verb=\"Help\" _label=\"Help\"\n"
-	"             pixtype=\"stock\" pixname=\"gtk-help\"/>\n"
-	"   <menuitem name=\"Item 3\" verb=\"About\" _label=\"About\"\n"
-	"             pixtype=\"stock\" pixname=\"gnome-stock-about\"/>\n"
-	"</popup>\n";
-
-
 static gboolean
 charpicker_applet_fill (PanelApplet *applet)
 {
@@ -473,10 +462,12 @@ charpicker_applet_fill (PanelApplet *applet)
   
   gtk_widget_show_all (GTK_WIDGET (applet));
   
-  panel_applet_setup_menu (PANEL_APPLET (applet),
-			   charpick_applet_menu_xml,
-			   charpick_applet_menu_verbs,
-			   curr_data);
+  panel_applet_setup_menu_from_file (PANEL_APPLET (applet),
+                                     NULL,
+			             "GNOME_CDPlayerApplet.xml",
+                                     NULL,
+			             charpick_applet_menu_verbs,
+			             curr_data);
 
   return TRUE;
 }
