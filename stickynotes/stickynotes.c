@@ -176,10 +176,8 @@ void stickynote_set_title(StickyNote *note, const gchar *title)
 /* Set the sticky note color */
 void stickynote_set_color(StickyNote *note, const gchar *color_str)
 {
-	GtkStyle *style = gtk_style_new();
+	GtkRcStyle *rc_style = gtk_rc_style_new();
 	gchar *color_str_actual;
-
-	gint i;
 
 	/* If "force_default_color" is enabled or color_str is NULL, then we use the default color instead of color_str. */
 	if (!color_str || gconf_client_get_bool(stickynotes->gconf, GCONF_PATH "/settings/force_default_color", NULL)) {
@@ -197,6 +195,7 @@ void stickynote_set_color(StickyNote *note, const gchar *color_str)
 		GdkColor color[4];
 
 		/* Make 4 shades of the color, getting darker from the original. */
+		gint i;
 		for (i = 0; i < 4; i++) {
 			gdk_color_parse(color_str_actual, &color[i]);
 
@@ -208,22 +207,26 @@ void stickynote_set_color(StickyNote *note, const gchar *color_str)
 		}
 
 		/* Apply colors to style */
-		style->base[GTK_STATE_NORMAL] = color[0];
-		style->bg[GTK_STATE_PRELIGHT] = color[1];
-		style->bg[GTK_STATE_NORMAL] = color[2];
-		style->bg[GTK_STATE_ACTIVE] = color[3];
+		rc_style->base[GTK_STATE_NORMAL] = color[0];
+		rc_style->bg[GTK_STATE_PRELIGHT] = color[1];
+		rc_style->bg[GTK_STATE_NORMAL] = color[2];
+		rc_style->bg[GTK_STATE_ACTIVE] = color[3];
+
+		rc_style->color_flags[GTK_STATE_PRELIGHT] = GTK_RC_BG;
+		rc_style->color_flags[GTK_STATE_NORMAL] = GTK_RC_BG | GTK_RC_BASE;
+		rc_style->color_flags[GTK_STATE_ACTIVE] = GTK_RC_BG;
 	}
 
 	/* Apply the style to the widgets */
-	gtk_widget_set_style(note->w_window, style);
-	gtk_widget_set_style(note->w_body, style);
-	gtk_widget_set_style(note->w_lock, style);
-	gtk_widget_set_style(note->w_close, style);
-	gtk_widget_set_style(note->w_resize_se, style);
-	gtk_widget_set_style(note->w_resize_sw, style);
+	gtk_widget_modify_style(note->w_window, rc_style);
+	gtk_widget_modify_style(note->w_body, rc_style);
+	gtk_widget_modify_style(note->w_lock, rc_style);
+	gtk_widget_modify_style(note->w_close, rc_style);
+	gtk_widget_modify_style(note->w_resize_se, rc_style);
+	gtk_widget_modify_style(note->w_resize_sw, rc_style);
 
 	g_free(color_str_actual);
-	g_object_unref(G_OBJECT(style));
+	g_object_unref(G_OBJECT(rc_style));
 }
 
 /* Lock/Unlock a sticky note from editing */
