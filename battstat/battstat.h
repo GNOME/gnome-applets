@@ -115,6 +115,7 @@ typedef struct _ProgressData {
   GtkWidget *testpixmapwid;
   GtkObject *testadj;
   GtkWidget *beep_toggle;
+  GtkWidget *lowbattnotificationdialog;
 
   /* last_* for the benefit of the timeout functions */
   guint flash;

@@ -471,7 +471,7 @@ pixmap_timeout( gpointer data )
       if(battery->lowbattnotification) {
          snprintf(new_label, sizeof(new_label),_("Battery low (%d%%) and AC is offline"),
                   batt_life);
-         gnome_warning_dialog(new_label);
+         battery->lowbattnotificationdialog = gnome_warning_dialog(new_label);
     
          if(battery->beep)
             gdk_beep();
@@ -497,6 +497,15 @@ pixmap_timeout( gpointer data )
          if (battery->beep)
             gdk_beep();
        }
+   }
+
+   if (   !battery->last_charging
+       && charging
+       && acline_status
+       && batterypresent
+      ) {
+	   /* we can remove the battery warning dialog */
+	   gtk_widget_destroy (battery->lowbattnotificationdialog);
    }
 
    if(
