@@ -9,9 +9,12 @@ bin_PROGRAMS = gnotes_applet
 
 gnotes_applet_SOURCES = \
         gnotes_applet.c \
+	gnotes_applet.h \
         gnote.c \
+	gnote.h	\
         gnotes.xpm \
         gnotes_session.c \
+	gnotes_session.h \
         properties.c
 
 gnotes_applet_LDADD = \
