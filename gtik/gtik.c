@@ -271,9 +271,9 @@ static gint updateOutput(gpointer data)
 		stockdata->vfshandle = NULL;
 	}
 		
-	source_text_uri = g_strconcat("http://finance.yahoo.com/q?s=",
+	source_text_uri = g_strconcat("http://finance.yahoo.com/q/cq?s=",
 				      stockdata->props.tik_syms,
-				      "&d=v2",
+				      "&d=v1",
 				      NULL);
 
 	source_uri = gnome_vfs_uri_new(source_text_uri);
@@ -411,7 +411,7 @@ static gint updateOutput(gpointer data)
 
 		int  i=0;
 		int  j=0;
-		static char Text[256]="";
+		static char Text[1024]="";
 
 		if (line == NULL) {
 			Text[0] = '\0';
@@ -441,14 +441,14 @@ static gint updateOutput(gpointer data)
 	}
 
 	/*-----------------------------------------------------------------*/
-	static char *parseQuote(FILE *CONFIG, char line[512]) {
+	static char *parseQuote(FILE *CONFIG, char line[1024]) {
 		
-		char symbol[512];
-		char buff[512];
+		char symbol[1024];
+		char buff[1024];
 		char price[16];
 		char change[16];
 		char percent[16];
-		static char result[512]="";
+		static char result[1024]="";
 		int  linenum=0;
 		int AllOneLine=0;
 		int flag=0;
@@ -473,16 +473,16 @@ static gint updateOutput(gpointer data)
 		linenum++;
 
 		/* Skip the time... */
-		if (!AllOneLine) fgets(line,255,CONFIG);
+		if (!AllOneLine) fgets(line,1023,CONFIG);
 		else section = strtok(NULL,"|");
 		linenum++;
 
 		while (linenum < 8 ) {
 			if (!AllOneLine) {
-				fgets(line,255,CONFIG);
+				fgets(line,1023,CONFIG);
 			
 				if (strstr(line,
-			  	 "<td align=center nowrap colspan=2>")) {
+			  	 "td class=\"yfnc_tabledata1\" nowrap=\"nowrap\" align=\"center\">")) {
 					strcpy(change,"");
 					strcpy(percent,"");
 					linenum=100;
@@ -490,14 +490,14 @@ static gint updateOutput(gpointer data)
 			}
 			else {
 				section = strtok(NULL,"|");
-				if (strstr(section,
-			  	 "<td align=center nowrap colspan=2>")) {
+				if (section && strstr(section,
+			  	 "td class=\"yfnc_tabledata1\" nowrap=\"nowrap\" align=\"center\">")) {
 					strcpy(change,"");
 					strcpy(percent,"");
 					linenum=100;
 				}
 			}
-
+			
 			if (linenum == 2) { 
 				if (!AllOneLine) 
 					strcpy(price,extractText(line));
@@ -515,11 +515,12 @@ static gint updateOutput(gpointer data)
 					strcpy(percent,extractText(line));
 				else
 					strcpy(percent,extractText(section));
+				linenum = 100;
 			}
 			linenum++;
 		}
 		sprintf(result,"%s:%s:%s:%s",
-				symbol,price,change,percent);			
+				symbol,price,change,percent);		
 		return(result);
 
 	}
@@ -530,7 +531,7 @@ static gint updateOutput(gpointer data)
 	int configured(StockData *stockdata) {
 		int retVar;
 
-		char  buffer[512];
+		char  buffer[1024];
 		static FILE *CONFIG;
 
 		CONFIG = fopen((const char *)stockdata->configFileName,"r");
@@ -545,7 +546,7 @@ static gint updateOutput(gpointer data)
 				fgets(buffer, sizeof(buffer)-1, CONFIG);
 
 				if (strstr(buffer,
-				    "<td nowrap align=left><font face=arial size=-1><a href=\"/q\?s=")) {
+				    "<td class=\"yfnc_tabledata1\" nowrap=\"nowrap\" align=\"center\"><b><a href=\"/q?s=")) {
 
 				      setOutputArray(stockdata, parseQuote(CONFIG,buffer));
 				      retVar = 1;
@@ -1986,6 +1987,7 @@ static gint updateOutput(gpointer data)
 		char buff[128]="";
 		static char buff2[128]="";
 		char *var1, *var2, *var3, *var4;
+		char rise[1]="";
 
 		strcpy(buff,data);
 		var1 = strtok(buff,":");
@@ -1996,21 +1998,23 @@ static gint updateOutput(gpointer data)
 		if (!var3 || !var4)
 			return NULL;
 
-		if (var3[0] == '+') { 
+		if (var4[0] == '+') { 
 #if 0
 			if (stockdata->symbolfont)
 				var3[0] = 221;
 #endif
 			var4[0] = '(';
 			quote->color = GREEN;
+			sprintf (rise, "+");
 		}
-		else if (var3[0] == '-') {
+		else if (var4[0] == '-') {
 #if 0
 			if (stockdata->symbolfont)
 				var3[0] = 223;	
 #endif
 			var4[0] = '(';
 			quote->color = RED;
+			sprintf (rise, "-");
 		}
 		else {
 			var3 = g_strdup(_("(No"));
@@ -2018,7 +2022,7 @@ static gint updateOutput(gpointer data)
 			quote->color = WHITE;
 		}
 
-		sprintf(buff2,"%s %s)",var3,var4);
+		sprintf(buff2,"%s%s %s)",rise, var3,var4);
 		return(buff2);
 	}
 
@@ -2029,7 +2033,7 @@ static gint updateOutput(gpointer data)
 		char *change;
 		PangoRectangle rect;
 
-		price = splitPrice(param1);
+		price = splitPrice(param1);		
 		change = splitChange(stockdata, param1, &quote);
 
 		quote.price = g_strdup(price);
@@ -2049,7 +2053,7 @@ static gint updateOutput(gpointer data)
 			quote.changelen = 0;
 			quote.changeheight = 0;
 		}
-		
+		 
 
 #if 0
 		g_message("Param1: %s\nPrice: %s\nChange: %s\nColor: %d\n\n", param1, price, change, quote.color);
