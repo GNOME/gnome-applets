@@ -338,19 +338,16 @@ gnome_volume_applet_dispose (GObject *object)
 }
 
 /*
- * popup (show) or popdown (hide) the dock.
+ * get position that the dock should get based on applet position.
  */
 
 static void
-gnome_volume_applet_popup_dock (GnomeVolumeApplet *applet)
+gnome_volume_applet_get_dock_position (GnomeVolumeApplet *applet,
+				       gint *_x, gint *_y)
 {
   GtkWidget *widget = GTK_WIDGET (applet);
   gint x, y;
 
-  /* show (before reposition, so size allocation is done) */
-  gtk_widget_show (GTK_WIDGET (applet->dock));
-
-  /* reposition */
   gdk_window_get_origin (widget->window, &x, &y);
   switch (panel_applet_get_orient (PANEL_APPLET (applet))) {
     case PANEL_APPLET_ORIENT_DOWN:
@@ -382,6 +379,26 @@ gnome_volume_applet_popup_dock (GnomeVolumeApplet *applet)
     default:
       g_assert_not_reached ();
   }
+
+  *_x = x;
+  *_y = y;
+}
+
+/*
+ * popup (show) or popdown (hide) the dock.
+ */
+
+static void
+gnome_volume_applet_popup_dock (GnomeVolumeApplet *applet)
+{
+  GtkWidget *widget = GTK_WIDGET (applet);
+  gint x, y;
+
+  /* show (before reposition, so size allocation is done) */
+  gtk_widget_show (GTK_WIDGET (applet->dock));
+
+  /* reposition */
+  gnome_volume_applet_get_dock_position (applet, &x, &y);
   gtk_window_move (GTK_WINDOW (applet->dock), x, y);
 
   /* grab input */
@@ -543,7 +560,8 @@ gnome_volume_applet_button (GtkWidget      *widget,
             break;
         }
         break;
-      case 3:
+      case 2: /* move */
+      case 3: /* menu */
         if (applet->pop) {
           gnome_volume_applet_popdown_dock (applet);
           return TRUE;
@@ -554,7 +572,10 @@ gnome_volume_applet_button (GtkWidget      *widget,
     }
   }
 
-  return GTK_WIDGET_CLASS (parent_class)->button_press_event (widget, event);
+  if (GTK_WIDGET_CLASS (parent_class)->button_press_event)
+    return GTK_WIDGET_CLASS (parent_class)->button_press_event (widget, event);
+
+  return FALSE;
 }
 
 static gboolean
