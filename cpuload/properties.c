@@ -163,7 +163,7 @@ void apply_cb( GtkWidget *widget, void *data )
 	start_timer();
 }
 
-void properties(int id, gpointer data)
+void properties(AppletWidget *applet, gpointer data)
 {
 	GtkWidget *frame, *label;
 

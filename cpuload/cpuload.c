@@ -213,11 +213,11 @@ int main(int argc, char **argv)
                            GTK_SIGNAL_FUNC(destroy_applet),
                            NULL);
 
-       	gnome_panel_applet_register_callback(APPLET_WIDGET(applet)->applet_id,
-					     "properties",
-                                             _("Properties..."),
-                                             properties,
-                                             NULL);
+       	applet_widget_register_callback(APPLET_WIDGET(applet),
+					"properties",
+                                        _("Properties..."),
+                                        properties,
+                                        NULL);
 
 	applet_widget_gtk_main();
         return 0;

@@ -1,6 +1,8 @@
 #ifndef PROPERTIES_H__
 #define PROPERTIES_H__
 
+#include <applet-widget.h>
+
 typedef struct 
 {
 	gchar *ucolor;
@@ -9,7 +11,7 @@ typedef struct
 	gboolean look;
 } cpuload_properties;
 
-void properties(int id, gpointer data);
+void properties(AppletWidget *applet, gpointer data);
 void load_properties( cpuload_properties *prop );
 void save_properties( cpuload_properties *prop );
 
