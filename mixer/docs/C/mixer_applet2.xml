@@ -2,9 +2,9 @@
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "2.3.6">
-  <!ENTITY manrevision "2.5">
-  <!ENTITY date "September 2003">
+  <!ENTITY appletversion "2.5.5">
+  <!ENTITY manrevision "2.6">
+  <!ENTITY date "February 2004">
   <!ENTITY applet "Volume Control">
 ]>
 
@@ -25,6 +25,7 @@
 	 <copyright> 
 		<year>2002</year> 
 		<year>2003</year> 
+		<year>2004</year> 
 		<holder>Sun Microsystems</holder> 
 	 </copyright> 
 	 <copyright> 
@@ -88,6 +89,15 @@
 		  </revdescription> 
 		</revision>  
 		<revision> 
+		  <revnumber>Volume Control Applet Manual V2.5</revnumber> 
+		  <date>September 2003</date> 
+		  <revdescription> 
+			 <para role="author">Sun GNOME Documentation Team
+				</para> 
+			 <para role="publisher">GNOME Documentation Project</para> 
+		  </revdescription> 
+		</revision> 
+		<revision> 
 		  <revnumber>Volume Control Applet Manual V2.4</revnumber> 
 		  <date>August 2003</date> 
 		  <revdescription> 
@@ -146,9 +156,7 @@
 		</releaseinfo> 
 	 <legalnotice> 
 		<title>Feedback</title> 
-		<para> To report a bug or make a suggestion regarding the &applet; applet or this
-		  manual, follow the directions in the 
-		  <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>. </para>
+		<para> To report a bug or make a suggestion regarding the &applet; applet or this manual, follow the directions in the <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>. </para>
 		
 	 </legalnotice> 
   </articleinfo> 
@@ -174,14 +182,12 @@
 		</screenshot> 
 	 </figure> 
     <!-- ==== End of Figure ======================================= -->
-<para>The <application>&applet;</application> applet enables you to control the sound volume on your system. The applet icon changes
-depending on the volume level that you select. For example, if you select a low volume level, the icon displays one sound 
-wave emanating from the speaker in the applet icon. As you increase the volume, the icon changes to display more sound waves. </para>
-<para>To add <application>&applet;</application> to a panel, right-click on the panel, then choose  <menuchoice>
-<guimenu>Add to Panel</guimenu>
-<guisubmenu>Multimedia</guisubmenu>
-<guimenuitem>Volume Control</guimenuitem>
-</menuchoice>.</para>
+<para>The <application>&applet;</application> applet enables you to control the sound volume on your system. The applet icon changes depending on the volume level that you select. For example, if you select a low volume level, the icon displays one sound wave emanating from the speaker in the applet icon. As you increase the volume, the icon changes to display more sound waves. </para>
+
+    <sect2 id="volumecontrol-introduction-add">
+      <title>To Add &applet; to a Panel</title>
+<para>To add <application>&applet;</application> to a panel, right-click on the panel, then choose  <menuchoice><guimenu>Add to Panel</guimenu><guisubmenu>Multimedia</guisubmenu><guimenuitem>Volume Control</guimenuitem></menuchoice>.</para>
+    </sect2>
 </sect1>
 
 <sect1 id="volumecontrol-usage">
@@ -189,21 +195,17 @@ wave emanating from the speaker in the applet icon. As you increase the volume, 
 
 	<sect2 id="volumecontrol-adjust">
 	<title>To Adjust the Volume</title>
-	<para>Click on the applet to display a slider control. To increase the volume, move 
-	the slider upwards. To decrease the volume, move the slider downwards.</para>
+	<para>Click on the applet to display a slider control. To increase the volume, move the slider upwards. To decrease the volume, move the slider downwards.</para>
 	</sect2>
 	
 	<sect2 id="volumecontrol-off">
 	<title>To Switch the Volume Off</title>
-	<para>To switch the volume off, right-click on the applet, then 
-	choose <guimenuitem>Mute</guimenuitem>. </para>
+	<para>To switch the volume off, right-click on the applet, then choose <guimenuitem>Mute</guimenuitem>. </para>
 	</sect2>
 	
 	<sect2 id="volumecontrol-add">
 	<title>To Access Additional Features</title>
-	<para>To access additional functionality for working with volume, right-click on the applet, then choose 
-	<guimenuitem>Open Volume Control</guimenuitem>. A volume control application starts, which enables you to control the 
-	volume and balance levels for audio playback and recording.</para>
+	<para>To access additional functionality for working with volume, right-click on the applet, then choose <guimenuitem>Open Volume Control</guimenuitem>. A volume control application starts, which enables you to control the volume and balance levels for audio playback and recording.</para>
 	</sect2>
 
 </sect1>
@@ -211,13 +213,17 @@ wave emanating from the speaker in the applet icon. As you increase the volume, 
 <sect1 id="volumecontrol-prefs">
 <title>Preferences</title>
 <para>To configure <application>&applet;</application>, right-click on the applet, then choose <guimenuitem>Preferences</guimenuitem>.</para> 
+    <note>
+      <para>
+        <application>&applet;</application> populates the <guilabel>Volume Control Preferences</guilabel> dialog dynamically, based on the functionality supported by your sound card.
+      </para>
+    </note>
 
 <variablelist> 
 		  <varlistentry> 
 			 <term><guilabel>Audio Channels</guilabel></term> 
 			 <listitem> 
-			 <para>Select the audio output channel that you want to control using the 
-			 <application>&applet;</application> applet:</para> 
+			 <para>Select the audio output channel that you want to control:</para> 
 			 <itemizedlist>
 			 	<listitem><para><guilabel>Main Volume</guilabel></para></listitem>
 			 	<listitem><para><guilabel>Synth</guilabel></para></listitem>
@@ -226,12 +232,13 @@ wave emanating from the speaker in the applet icon. As you increase the volume, 
 				<listitem><para><guilabel>Line</guilabel></para></listitem>
 				<listitem><para><guilabel>Microphone</guilabel></para></listitem>
 				<listitem><para><guilabel>CD</guilabel></para></listitem>
+				<listitem><para><guilabel>Input Gain</guilabel></para></listitem>
 			 </itemizedlist>
 			 </listitem> 
 		  </varlistentry> 
 		</variablelist> 
-<para>Click <guibutton>Close</guibutton> to close the 
-<guilabel>Volume Control Preferences</guilabel> dialog.</para>
+
+<para>Click <guibutton>Close</guibutton> to close the <guilabel>Volume Control Preferences</guilabel> dialog.</para>
 
 </sect1>
 </article> 
