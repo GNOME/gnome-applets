@@ -510,6 +510,8 @@ control_button_factory(gchar * pixmap_data[], GCallback func, CDPlayerData * cd)
     GTK_WIDGET_UNSET_FLAGS(w, GTK_CAN_FOCUS);
     pixbuf = gdk_pixbuf_new_from_xpm_data ((const char **)pixmap_data);
     image = gtk_image_new_from_pixbuf(pixbuf);
+    if (pixbuf)
+    	g_object_unref (pixbuf);
     gtk_widget_show(image);
     gtk_container_add(GTK_CONTAINER(w), image);
     /* This is a hack to get the right click menu working with buttons

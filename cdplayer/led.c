@@ -47,12 +47,14 @@ led_create_widgets(GtkWidget **time, GtkWidget **track, gpointer data)
     pixbuf = gdk_pixbuf_new(GDK_COLORSPACE_RGB, FALSE, 8, LED_WIDTH, LED_HEIGHT + 2);
     gdk_pixbuf_fill(pixbuf, 0);
 	*time = gtk_image_new_from_pixbuf(pixbuf);
+    g_object_unref (pixbuf);
 	gtk_widget_set_size_request(*time, LED_WIDTH, LED_HEIGHT + 2);
 	g_object_ref(G_OBJECT(*time));
 	gtk_widget_show(*time);
     pixbuf = gdk_pixbuf_new(GDK_COLORSPACE_RGB, FALSE, 8, DIGIT_WIDTH * 2 + 2, LED_HEIGHT + 2);
     gdk_pixbuf_fill(pixbuf, 0);
 	*track = gtk_image_new_from_pixbuf(pixbuf);
+    g_object_unref (pixbuf);
 	gtk_widget_set_size_request(*track, DIGIT_WIDTH * 2 + 2, LED_HEIGHT + 2);
 	g_object_ref(G_OBJECT(*track));
 	gtk_widget_show(*track);
