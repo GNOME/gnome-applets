@@ -456,7 +456,7 @@ static gboolean metar_tok_wind (gchar *tokp, WeatherInfo *info)
         gust = atoi(sgust);
     }
 
-    if ((349 <= dir) && (dir <= 11))
+    if ((349 <= dir) || (dir <= 11))
         info->wind = WIND_N;
     else if ((12 <= dir) && (dir <= 33))
         info->wind = WIND_NNE;
