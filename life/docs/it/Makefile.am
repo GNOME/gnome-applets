@@ -1,6 +1,9 @@
-figs = life-applet.png
-applet = life
+figs = \
+	figures/life-applet.png
+docname = life_applet
 lang = it
-sgml_ents = $(applet).sgml
-include $(top_srcdir)/applet-docs.make
-dist-hook: applet-dist-hook
+omffile = life_applet-it.omf
+sgml_ents = life_applet.sgml
+include $(top_srcdir)/sgmldocs.make
+dist-hook: app-dist-hook
+

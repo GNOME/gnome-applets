@@ -1,6 +1,8 @@
 figs =
-applet = screenshooter
+docname = screenshooter_applet
 lang = C
-sgml_ents = 
-include $(top_srcdir)/applet-docs.make
-dist-hook: applet-dist-hook
+omffile = screenshooter_applet-C.omf
+sgml_ents = screenshooter.sgml
+include $(top_srcdir)/sgmldocs.make
+dist-hook: app-dist-hook
+
