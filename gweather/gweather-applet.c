@@ -299,7 +299,7 @@ static gint timeout_cb (gpointer data)
     return 0;  /* Do not repeat timeout (will be re-set by gweather_update) */
 }
 
-static void update_finish (WeatherInfo *info)
+void update_finish (WeatherInfo *info)
 {
     char *s;
     GWeatherApplet *gw_applet =evil_global_applet;

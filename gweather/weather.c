@@ -223,20 +223,16 @@ const gchar *weather_conditions_string (WeatherConditions cond)
 
 /* Locals turned global to facilitate asynchronous HTTP requests */
 
-static WeatherInfoFunc request_cb = NULL;
-static WeatherInfo *request_info = NULL;
 
 static inline gboolean requests_init (WeatherInfoFunc cb, WeatherInfo *info)
 {
-    if (info->requests_pending || request_info || request_cb)
+    if (info->requests_pending)
         return FALSE;
 
     /*g_assert(!metar_handle && !iwin_handle && !wx_handle && !met_handle);*/
 
     info->requests_pending = TRUE;
-    request_cb = cb;
-    request_info = info;
-	
+    	
     return TRUE;
 }
 
@@ -259,10 +255,8 @@ static inline void requests_done_check (WeatherInfo *info)
         info->requests_pending = FALSE;
         /* Next two lines temporarily here */
         if (weather_units == UNITS_METRIC)
-            weather_info_to_metric(request_info);
-        (*request_cb)(request_info);
-        request_cb = NULL;
-        request_info = NULL;
+            weather_info_to_metric(info);
+        update_finish(info);
     }
 }
 
