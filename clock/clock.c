@@ -177,12 +177,12 @@ create_clock_widget (GtkWidget *window, char *params)
 }
 
 static void
-create_instance (Panel *panel, char *params, int pos)
+create_instance (PanelWidget *panel, char *params, int pos)
 {
 	PanelCommand cmd;
 	GtkWidget *clock;
 
-	clock = create_clock_widget (panel->window, params);
+	clock = create_clock_widget (GTK_WIDGET(panel), params);
 	cmd.cmd = PANEL_CMD_REGISTER_TOY;
 	cmd.params.register_toy.applet = clock;
 	cmd.params.register_toy.id     = APPLET_ID;

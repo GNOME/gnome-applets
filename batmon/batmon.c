@@ -355,7 +355,7 @@ destroy_module(void)
 }
 
 static void
-create_instance (Panel *panel, char *params, int pos)
+create_instance (PanelWidget *panel, char *params, int pos)
 {
 	PanelCommand cmd;
 	GtkWidget *batmon;
@@ -363,7 +363,7 @@ create_instance (Panel *panel, char *params, int pos)
 	if (batmon_timeout != -1)
 		return; /* Only one instance allowed --- XXX: maybe should put up a dialog box */
 
-	batmon = create_batmon_widget (panel->window);
+	batmon = create_batmon_widget (GTK_WIDGET(panel));
 
 	batmon_timeout = gtk_timeout_add(TIMEOUT,
 					 (GtkFunction) batmon_timeout_callback,

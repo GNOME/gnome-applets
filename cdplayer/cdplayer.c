@@ -269,12 +269,12 @@ create_cdplayer_widget (GtkWidget *window, char *params)
 }
 
 static void
-create_instance (Panel *panel, char *params, int pos)
+create_instance (PanelWidget *panel, char *params, int pos)
 {
   PanelCommand cmd;
   GtkWidget *cdplayer;
 
-  cdplayer = create_cdplayer_widget (panel->window, params);
+  cdplayer = create_cdplayer_widget (GTK_WIDGET(panel), params);
   if (cdplayer == NULL)
     return;
   cmd.cmd = PANEL_CMD_REGISTER_TOY;
@@ -297,7 +297,7 @@ applet_cmd_func(AppletCommand *cmd)
 
   case APPLET_CMD_INIT_MODULE:
     panel_cmd_func = cmd->params.init_module.cmd_func;
-    led_init(cmd->panel->window);
+    led_init(GTK_WIDGET(cmd->panel));
     break;
 
   case APPLET_CMD_DESTROY_MODULE:

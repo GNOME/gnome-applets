@@ -400,14 +400,14 @@ get_interface_path(void)
 
 
 static void
-create_instance (Panel *panel, char *params, int pos)
+create_instance (PanelWidget *panel, char *params, int pos)
 {
 	GtkWidget *netwatch;
 	PanelCommand cmd;
 
 	/* for debugging */
 	/* sleep (600); */
-	netwatch = create_netwatch (panel->window, params);
+	netwatch = create_netwatch (GTK_WIDGET(panel), params);
 
 	if (!netwatch)
 		return;
