@@ -809,7 +809,7 @@ gkb_factory (PanelApplet *applet,
 		gpointer     data)
 {
  	gboolean retval = FALSE;
-	if ( GTK_IS_ACCESSIBLE(gtk_widget_get_accessible(applet)))
+	if ( GTK_IS_ACCESSIBLE(gtk_widget_get_accessible(GTK_WIDGET(applet))))
 	  {
             gail_loaded = TRUE;
           }
