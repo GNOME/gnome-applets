@@ -490,7 +490,7 @@ static void gweather_pref_create (void)
     pref_basic_update_spin_adj = gtk_adjustment_new (30, 1, 60, 1, 5, 1);
     pref_basic_update_spin = gtk_spin_button_new (GTK_ADJUSTMENT (pref_basic_update_spin_adj), 1, 0);
     gtk_widget_show (pref_basic_update_spin);
-//    gtk_box_pack_start (GTK_BOX (pref_basic_update_hbox), pref_basic_update_spin, TRUE, FALSE, 0);
+/*    gtk_box_pack_start (GTK_BOX (pref_basic_update_hbox), pref_basic_update_spin, TRUE, FALSE, 0); */
 /*    gtk_widget_set_usize (pref_basic_update_spin, 80, -2); */
     gtk_spin_button_set_numeric (GTK_SPIN_BUTTON (pref_basic_update_spin), TRUE);
     gtk_spin_button_set_update_policy (GTK_SPIN_BUTTON (pref_basic_update_spin), GTK_UPDATE_IF_VALID);

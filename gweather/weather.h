@@ -51,7 +51,7 @@ enum _WeatherWindDirection {
     WIND_N, WIND_NNE, WIND_NE, WIND_ENE,
     WIND_E, WIND_ESE, WIND_SE, WIND_SSE,
     WIND_S, WIND_SSW, WIND_SW, WIND_WSW,
-    WIND_W, WIND_WNW, WIND_NW, WIND_NNW,
+    WIND_W, WIND_WNW, WIND_NW, WIND_NNW
 };
 
 typedef enum _WeatherWindDirection WeatherWindDirection;
