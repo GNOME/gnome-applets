@@ -90,5 +90,6 @@ EXTRA_DIST = \
 	intltool-update.in	\
 	intltool-extract.in	\
 	intltool-merge.in	\
-	xmldocs.make
+	xmldocs.make		\
+	omf.make
 
