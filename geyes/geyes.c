@@ -196,7 +196,11 @@ timer_cb (EyesApplet *eyes_applet)
 static void
 about_cb (BonoboUIComponent *uic, gpointer user_data, const gchar *verbname)
 {
-        static GtkWidget *about = NULL;
+	static GtkWidget *about = NULL;
+	GdkPixbuf	 *pixbuf;
+	GError		 *error = NULL;
+	gchar		 *file;
+        
         static const gchar *authors [] = {
 		"Dave Camp <campd@oit.edu>",
 		NULL
@@ -214,14 +218,30 @@ about_cb (BonoboUIComponent *uic, gpointer user_data, const gchar *verbname)
 		return;
 	}
         
+	file = gnome_program_locate_file (NULL, GNOME_FILE_DOMAIN_PIXMAP, "gnome-eyes.png", FALSE, NULL);
+	pixbuf = gdk_pixbuf_new_from_file (file, &error);
+	g_free (file);
+	
+	if (error) {
+		g_warning (G_STRLOC ": cannot open %s: %s", file, error->message);
+		g_error_free (error);
+	}
+	
         about = gnome_about_new (
-		_("gEyes"), VERSION,
+		_("Geyes"), VERSION,
 		_("Copyright (C) 1999 Dave Camp"),
 		_("A goofy little xeyes clone for the GNOME panel."),
 		authors,
 		documenters,
 		strcmp (translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
-		NULL);
+		pixbuf);
+		
+	if (pixbuf)
+		gdk_pixbuf_unref (pixbuf);
+			
+	gtk_window_set_wmclass (GTK_WINDOW (about), "geyes", "Geyes");
+	gnome_window_icon_set_from_file (GTK_WINDOW (about),
+					 GNOME_ICONDIR"/gnome-eyes.png");	
 	g_signal_connect (about, "destroy",
 			  G_CALLBACK (gtk_widget_destroyed),
 			  &about);

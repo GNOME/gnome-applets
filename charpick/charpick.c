@@ -352,7 +352,10 @@ static void
 about (BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 {
   static GtkWidget *about_box = NULL;
-
+  GdkPixbuf   	   *pixbuf;
+  GError      	   *error     = NULL;
+  gchar            *file;
+   
   const char *authors[] = {
 	  /* If your charset supports it, please use U00F1 to replace the "n"
 	   * in "Muniz". */
@@ -372,7 +375,17 @@ about (BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 	  gdk_window_raise(about_box->window);
 	  return;
   }
-  about_box = gnome_about_new (_("Character Picker"),
+  
+  file = gnome_program_locate_file (NULL, GNOME_FILE_DOMAIN_PIXMAP, "charpick.png", FALSE, NULL);
+  pixbuf = gdk_pixbuf_new_from_file (file, &error);
+  g_free (file);
+   
+  if (error) {
+  	  g_warning (G_STRLOC ": cannot open %s: %s", file, error->message);
+	  g_error_free (error);
+  }
+  
+  about_box = gnome_about_new (_("Character Palette"),
 			       CHARPICK_VERSION,
 			       _("Copyright (C) 1998"),
 			       _("Gnome Panel applet for selecting strange "
@@ -381,7 +394,13 @@ about (BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 			       authors,
 			       documenters,
 			       strcmp (translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
-			       NULL);
+			       pixbuf);
+  
+  if (pixbuf) 
+  	gdk_pixbuf_unref (pixbuf);
+   
+  gtk_window_set_wmclass (GTK_WINDOW (about_box), "character palette", "Character Palette");
+  gnome_window_icon_set_from_file (GTK_WINDOW (about_box), GNOME_ICONDIR"/charpick.png");
 
   gtk_signal_connect(GTK_OBJECT(about_box), "destroy",
 		     GTK_SIGNAL_FUNC(gtk_widget_destroyed), &about_box);

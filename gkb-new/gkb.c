@@ -551,6 +551,7 @@ about_cb (BonoboUIComponent *uic,
   GtkWidget *link;
   gchar *file;	
   GdkPixbuf *pixbuf;
+  GError    *error = NULL;
 
   static const gchar *authors[] = {
 	        "Szabolcs Ban <shooby@gnome.hu>",
@@ -567,18 +568,20 @@ about_cb (BonoboUIComponent *uic,
 
   const gchar *translator_credits = _("translator_credits");
 
-  pixbuf = NULL;
-  file = gnome_program_locate_file (NULL, GNOME_FILE_DOMAIN_PIXMAP, "gkb-icon.png", TRUE, NULL);
-  if (!file) {
-         g_warning (G_STRLOC ": gkb-icon.png cannot be found");
-         pixbuf = gdk_pixbuf_new_from_file (file, NULL);
+  file = gnome_program_locate_file (NULL, GNOME_FILE_DOMAIN_PIXMAP, "gkb-icon.png", FALSE, NULL);
+  pixbuf = gdk_pixbuf_new_from_file (file, &error);
+  g_free (file);
+
+  if (error) {
+         g_warning (G_STRLOC ": cannot open %s: %s", file, error->message);
+         g_error_free (error);
   }
 
-  about = gnome_about_new (_("The GNOME KeyBoard Switcher Applet"),
+  about = gnome_about_new (_("Keyboard Layout Switcher"),
 			   VERSION,
 			   _("(C) 1998-2000 Free Software Foundation"),
                            _("This applet switches between keyboard maps "
-                             "using setxkbmap, or xmodmap.\n"
+                             "using setxkbmap or xmodmap.\n"
                              "Mail me your flag and keyboard layout "
                              "if you want support for your locale "
                              "(my email address is shooby@gnome.hu).\n"
@@ -599,13 +602,11 @@ about_cb (BonoboUIComponent *uic,
   gtk_box_pack_start (GTK_BOX (GNOME_DIALOG (about)->vbox), link, TRUE,
 		      FALSE, 0);
 
-  gtk_window_set_wmclass (GTK_WINDOW (about), "gkb", "Gkb");
+  if (pixbuf)
+  	g_object_unref (pixbuf);
 
-  if (pixbuf) {
-                gtk_window_set_icon (GTK_WINDOW (about), pixbuf);
-                g_object_unref (pixbuf);
-  }
-
+  gtk_window_set_wmclass (GTK_WINDOW (about), "keyboard layout switcher", "Keyboard Layout Switcher");
+  gnome_window_icon_set_from_file (GTK_WINDOW (about), GNOME_ICONDIR"/gkb.png");
   g_signal_connect (G_OBJECT(about), "destroy",
                           (GCallback)gtk_widget_destroyed, &about);
 

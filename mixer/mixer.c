@@ -767,6 +767,8 @@ mixer_about_cb (BonoboUIComponent *uic,
 				 strcmp (translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
                                  pixbuf);
 
+	gtk_window_set_wmclass (GTK_WINDOW(about), "volume control", "Volume Control");
+	gnome_window_icon_set_from_file (GTK_WINDOW (about), GNOME_ICONDIR"/gnome-mixer-applet.png");
         g_signal_connect (G_OBJECT (about), "destroy",
                           G_CALLBACK (gtk_widget_destroyed),
 	                  &about);

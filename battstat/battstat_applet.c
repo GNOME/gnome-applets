@@ -797,6 +797,10 @@ void
 about_cb (PanelApplet *widget, gpointer data)
 {
    GtkWidget   *about_box;
+   GdkPixbuf   *pixbuf;
+   GError      *error = NULL;
+   gchar       *file;
+   
    const gchar *authors[] = {
 	/* if your charset supports it, please replace the "o" in
 	 * "Jorgen" into U00F6 */
@@ -812,19 +816,31 @@ about_cb (PanelApplet *widget, gpointer data)
 
    const gchar *translator_credits = _("translator_credits");
    
+   file = gnome_program_locate_file (NULL, GNOME_FILE_DOMAIN_PIXMAP, "battstat.png", FALSE, NULL);
+   pixbuf = gdk_pixbuf_new_from_file (file, &error);
+   g_free (file);
+   
+   if (error) {
+   	g_warning (G_STRLOC ": cannot open %s: %s", file, error->message);
+	g_error_free (error);
+   }
+   
    about_box = gnome_about_new (
 				/* The long name of the applet in the About dialog.*/
-				_("Battery status utility"), 
+				_("Battery Charge Monitor"), 
 				VERSION,
 				_("(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"),
 				_("This utility show the status of your laptop battery."),
 				authors,
 				documenters,
 				strcmp (translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
-				NULL);
-   /* FIXME
-				"battstat-tesla.xpm");
-   */
+				pixbuf);
+   
+   if (pixbuf) 
+   	gdk_pixbuf_unref (pixbuf);
+   
+   gtk_window_set_wmclass (GTK_WINDOW (about_box), "battery charge monitor", "Batter Charge Monitor");
+   gnome_window_icon_set_from_file (GTK_WINDOW (about_box), GNOME_ICONDIR"/battstat.png");
    gtk_widget_show (about_box);
 }
 

@@ -35,6 +35,10 @@ void
 about_cb (BonoboUIComponent *uic, gpointer data, const gchar *name)
 {
     static GtkWidget *about = NULL;
+    GdkPixbuf        *pixbuf;
+    GError           *error = NULL;
+    gchar            *file;
+   
     static const gchar *authors[] =
 	{
 		"Martin Baulig <martin@home-of-linux.org>",
@@ -56,15 +60,32 @@ about_cb (BonoboUIComponent *uic, gpointer data, const gchar *name)
 	    return;
 	}
 	
+    file = gnome_program_locate_file (NULL, GNOME_FILE_DOMAIN_PIXMAP, "gnome-monitor.png", FALSE, NULL);
+    pixbuf = gdk_pixbuf_new_from_file (file, &error);
+    g_free (file);
+   
+    if (error) 
+    	{
+   	    g_warning (G_STRLOC ": cannot open %s: %s", file, error->message);
+	    g_error_free (error);
+   	}
+
+	
     about = gnome_about_new
-	(_("System Monitor Applet"), VERSION,
+	(_("System Monitor"), VERSION,
 	 "(C) 1999 - 2002 The Free Software Foundation",
 	 _("Released under the GNU General Public License.\n\n"
 	   "A system load monitor capable of displaying graphs for CPU, ram, and swap file use, plus network traffic."),
 	 authors,
 	 documenters,
 	 strcmp (translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
-	 NULL);
+	 pixbuf);
+
+    if (pixbuf) 
+   	gdk_pixbuf_unref (pixbuf);
+   
+    gtk_window_set_wmclass (GTK_WINDOW (about), "system monitor", "System Monitor");
+    gnome_window_icon_set_from_file (GTK_WINDOW (about), GNOME_ICONDIR"/gnome-monitor.png");
 
     g_signal_connect (G_OBJECT (about), "destroy",
 			G_CALLBACK (gtk_widget_destroyed), &about);

@@ -687,9 +687,9 @@ applet_about_cb (BonoboUIComponent *uic, PanelMenu *panel_menu,
 		pixbuf = gdk_pixbuf_new_from_file (file, NULL);
 	}
 
-	about = gnome_about_new (_("PanelMenu Applet"), "0.0.1",
+	about = gnome_about_new (_("Menu Bar"), "0.0.1",
 				 _("(c) 2001 Chris Phelps"),
-				 _("The Panel Menu Applet allows you to display customized menubars on your panels."),
+				 _("The Menu Bar allows you to display customized menubars on your panels."),
 				 authors,
 				 documenters,
 				 strcmp (translator_credits, "translator_credits") != 0 ? translator_credits : NULL,

@@ -28,6 +28,10 @@
 
 void about_box(BonoboUIComponent *uic, gpointer data, const gchar *verbname){
         static GtkWidget *about_box = NULL;
+	GdkPixbuf   	 *pixbuf;
+  	GError      	 *error     = NULL;
+   	gchar       	 *file;
+	
 	static const gchar *authors[] = {
 		"Oliver Maruhn <oliver@maruhn.com>",
 		NULL
@@ -45,7 +49,17 @@ void about_box(BonoboUIComponent *uic, gpointer data, const gchar *verbname){
 		gdk_window_raise(about_box->window);
 		return;
 	}
-        about_box = gnome_about_new (_("Mini-Commander Applet"), 
+	
+	file = gnome_program_locate_file (NULL, GNOME_FILE_DOMAIN_PIXMAP, "gnome-mini-commander.png", FALSE, NULL);
+   	pixbuf = gdk_pixbuf_new_from_file (file, &error);
+   	g_free (file);
+   
+   	if (error) {
+   		g_warning (G_STRLOC ": cannot open %s: %s", file, error->message);
+		g_error_free (error);
+   	}
+   
+        about_box = gnome_about_new (_("Command Line"), 
 				     VERSION,
 				     "(C) 1998-2002 Oliver Maruhn",
 _("This GNOME applet adds a command line to the panel. It features command completion, command history, changeable macros and an optional built-in clock.\n\n\
@@ -53,7 +67,12 @@ This program is free software; you can redistribute it and/or modify it under th
 				     authors,
 				     documenters,
 				     strcmp (translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
-				     NULL);
+				     pixbuf);
+        if (pixbuf) 
+   		gdk_pixbuf_unref (pixbuf);
+   
+   	gtk_window_set_wmclass (GTK_WINDOW (about_box), "command line", "Command Line");
+   	gnome_window_icon_set_from_file (GTK_WINDOW (about_box), GNOME_ICONDIR"/gnome-mini-commander.png");
 	gtk_signal_connect( GTK_OBJECT(about_box), "destroy",
 			    GTK_SIGNAL_FUNC(gtk_widget_destroyed), &about_box );
         gtk_widget_show (about_box);

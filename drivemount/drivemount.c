@@ -403,7 +403,10 @@ static void
 about_cb (PanelApplet *widget, gpointer data)
 {
 	static GtkWidget *about = NULL;
-
+   	GdkPixbuf        *pixbuf;
+   	GError           *error = NULL;
+   	gchar            *file;
+	
 	static const gchar *authors[] = {
 		"John Ellis <johne@bellatlantic.net>",
 		"Chris Phelps <chicane@renient.com>",
@@ -422,15 +425,28 @@ about_cb (PanelApplet *widget, gpointer data)
 		return;
 	}
 
-	about = gnome_about_new (_("Drive Mount Applet"), VERSION,
+	file = gnome_program_locate_file (NULL, GNOME_FILE_DOMAIN_PIXMAP, "drivemount-applet.png", FALSE, NULL);
+   	pixbuf = gdk_pixbuf_new_from_file (file, &error);
+   	g_free (file);
+   
+   	if (error) {
+   		g_warning (G_STRLOC ": cannot open %s: %s", file, error->message);
+		g_error_free (error);
+	}
+
+	about = gnome_about_new (_("Disk Mounter"), VERSION,
 				 _("(C) 1999-2001 The GNOME Hackers\n"),
 				 _
 				 ("Applet for mounting and unmounting block volumes."),
 				 authors,
 				 documenters,
 				 strcmp (translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
-				 NULL);
-
+				 pixbuf);
+	if (pixbuf) 
+   		gdk_pixbuf_unref (pixbuf);
+   
+   	gtk_window_set_wmclass (GTK_WINDOW (about), "disk mounter", "Disk Mounter");
+   	gnome_window_icon_set_from_file (GTK_WINDOW (about), GNOME_ICONDIR"/drivemount-applet.png");
 	g_signal_connect (G_OBJECT (about), "destroy",
 			  G_CALLBACK (gtk_widget_destroyed), &about);
 	gtk_widget_show (about);

@@ -685,6 +685,9 @@ static gint updateOutput(gpointer data)
 	static void about_cb (BonoboUIComponent *uic, gpointer data, 
 			      const gchar *verbname) {
 		GtkWidget *about;
+		GdkPixbuf *pixbuf;
+		GError    *error = NULL;
+		gchar     *file;
 		static const gchar *authors[] = {
 			"Jayson Lorenzen <jayson_lorenzen@yahoo.com>",
 			"Jim Garrison <garrison@users.sourceforge.net>",
@@ -698,7 +701,21 @@ static gint updateOutput(gpointer data)
 
 		const gchar *translator_credits = _("translator_credits");
 		
-		about = gnome_about_new (_("The GNOME Stock Ticker"), VERSION,
+		
+		file = gnome_program_locate_file (NULL, GNOME_FILE_DOMAIN_PIXMAP,
+			"gnome-money.png", FALSE, NULL);
+		
+		pixbuf = gdk_pixbuf_new_from_file (file, &error);
+		
+		g_free (file);
+		
+		if (error) {
+			g_warning (G_STRLOC ": cannot open %s: %s", file, error->message);
+			
+			g_error_free (error);
+		}
+		
+		about = gnome_about_new (_("Stock Ticker"), VERSION,
 		"(C) 2000 Jayson Lorenzen, Jim Garrison, Rached Blili",
 		_("This program connects to "
 		"a popular site and downloads current stock quotes.  "
@@ -709,7 +726,14 @@ static gint updateOutput(gpointer data)
 		authors,
 		documenters,
 		strcmp (translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
-		NULL);
+		pixbuf);
+		
+		if (pixbuf)
+			gdk_pixbuf_unref (pixbuf);
+		
+		gnome_window_icon_set_from_file (GTK_WINDOW (about),
+			GNOME_ICONDIR"/gnome-money.png");
+		
 		gtk_widget_show (about);
 
 		return;
