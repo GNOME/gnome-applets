@@ -125,7 +125,8 @@ AC_CHECK_HEADERS(linux/soundcard.h,[P_MIXER=mixer],[
       AC_CHECK_HEADERS(soundcard.h, [P_MIXER=mixer; MIXER_LIBS="-lossaudio"],[
         AC_CHECK_HEADERS(sys/audioio.h, [P_MIXER=mixer],[
           AC_CHECK_HEADERS(sys/audio.io.h, [P_MIXER=mixer],[
-            AC_CHECK_HEADERS(sun/audioio.h, [P_MIXER=mixer]) ]) ]) ]) ]) ]) ])
+            AC_CHECK_HEADERS(sun/audioio.h, [P_MIXER=mixer],[
+	      AC_CHECK_HEADERS(dmedia/audio.h, [P_MIXER=mixer]),]) ]) ]) ]) ]) ]) ])
 AC_SUBST(MIXER_LIBS)
 
 AM_CONDITIONAL(APPLET_MIXER, test "$P_MIXER" = "mixer")

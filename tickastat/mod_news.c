@@ -1200,8 +1200,17 @@ static GtkWidget *mod_news_config_show(gpointer data, AppData *ad)
 	GtkWidget *label;
 	GtkWidget *button;
 	GtkWidget *scrolled;
-	gchar *titles[] = { _("Enabled"), _("Name"), _("Line delay"), _("Update interval"),
-			    _("D"), _("T"), _("I"), _("B"), NULL };
+	gchar *titles[9];
+
+	titles[0] = _("Enabled");
+	titles[1] = _("Name");
+	titles[2] = _("Line delay");
+	titles[3] = _("Update interval");
+	titles[4] = _("D");
+	titles[5] = _("T");
+	titles[6] = _("I");
+	titles[7] = _("B");
+	titles[8] = NULL;
 
 	nd->C_row = -1;
 

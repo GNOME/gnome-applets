@@ -212,7 +212,8 @@ properties_cb (AppletWidget *applet, gpointer data)
                 if ((dfd = opendir (theme_directories[i])) != NULL) {
                         while ((dp = readdir (dfd)) != NULL) {
                                 if (dp->d_name[0] != '.') {
-                                        gchar *elems[2] = {filename, NULL };
+                                        gchar *elems[2] = {NULL, NULL };
+					elems[0] = filename;
                                         strcpy (filename, 
                                                 theme_directories[i]);
                                         strcat (filename, dp->d_name);
