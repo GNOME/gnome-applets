@@ -60,10 +60,13 @@ struct _GKB {
       	int height;
 };
 
+static void gkb_draw(GtkWidget *, GKB *);
 static void do_that_command(GKB *);
+static void gkb_draw(GtkWidget *darea, GKB *gkb);
 static void gkb_cb(GtkWidget * widget, GdkEventButton * e, GKB * gkb);
 static void gkb_draw(GtkWidget *darea, GKB *gkb);                        
 static int  gkb_expose(GtkWidget *darea, GdkEventExpose *event, GKB *gkb);
+static int  gkb_empty(GtkWidget *darea, GdkEventExpose *event, GKB *gkb);
 void        properties_dialog(AppletWidget *applet, gpointer gkbx);
 void        about_cb (AppletWidget *widget, gpointer gkbx);
 
@@ -137,8 +140,8 @@ sized_render(GKB * gkb)
 	gtk_widget_set_usize (GTK_WIDGET(gkb->frame),       gkb->width+2, gkb->height+2);
 	gtk_widget_set_usize (GTK_WIDGET(gkb->applet),      gkb->width+2, gkb->height+2);
 
-/*	gkb_draw(GTK_WIDGET(gkb->darea),gkb);
-*/
+	gkb_draw(GTK_WIDGET(gkb->darea),gkb);
+
 }
 
 static void
@@ -149,8 +152,6 @@ gkb_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
 
         gkb->orient = o;
 	sized_render(gkb);
-	return;
-	w = NULL;
 }
 
 static void
@@ -160,9 +161,7 @@ gkb_change_pixel_size(GtkWidget *w, int size, gpointer data)
 
 
         gkb->size = size;
-	sized_render(gkb);
-	return;
-        w = NULL;
+        sized_render(gkb);
 }
 
 
@@ -210,9 +209,7 @@ apply_cb(GnomePropertyBox * pb,
 {
 
 
-    gnome_property_box_changed(GNOME_PROPERTY_BOX(gkb->propbox));
-    return;
-    pb = NULL;
+    	gnome_property_box_changed(GNOME_PROPERTY_BOX(gkb->propbox));
 }
 
 static void
@@ -242,8 +239,6 @@ apply_callback(GtkWidget * pb,
 	gkb_draw(GTK_WIDGET(gkb->darea),gkb);
 	gkb->curpix=0;
 	do_that_command(gkb);
-	return;
-	pb = NULL;
 }
 
 static void
@@ -252,20 +247,15 @@ ch_xkb_cb(GtkWidget *widget,
 {
 
     	gkb->temp_props.command = g_strdup("setxkbmap");
-	gnome_property_box_changed(GNOME_PROPERTY_BOX(gkb->propbox)); 
-	return;
-	widget = NULL;
+        gnome_property_box_changed(GNOME_PROPERTY_BOX(gkb->propbox)); 
 }
-
 static void 
 ch_xmodmap_cb(GtkWidget *widget,
 	GKB * gkb)
 {
 
         gkb->temp_props.command = g_strdup("xmodmap");
-	gnome_property_box_changed(GNOME_PROPERTY_BOX(gkb->propbox));
-	return;
-	widget = NULL;
+        gnome_property_box_changed(GNOME_PROPERTY_BOX(gkb->propbox));
 }
 
 static void
@@ -275,8 +265,6 @@ destroy_cb(GtkWidget *widget,
 
 
     	gkb->propbox=NULL;
-	return;
-	widget = NULL;
 }
 
 static GList*
@@ -488,15 +476,13 @@ static	char *basemaps[]= {
              "help", GTK_SIGNAL_FUNC(gnome_help_pbox_display), & help_entry );
 	     
         gtk_widget_show_all(gkb->propbox);
-	return;
-	applet = NULL;
 }
 
 static void
 gkb_draw(GtkWidget * darea,
 	GKB *gkb)
 {
-	if(!gkb->darea ||
+	if(gkb->darea!=NULL ||
 	   !GTK_WIDGET_REALIZED(gkb->darea) ||
 	   !gkb->pix[gkb->properties.curpix]->pixmap)
 		return;
@@ -505,8 +491,6 @@ gkb_draw(GtkWidget * darea,
 		gkb->darea->style->fg_gc[GTK_WIDGET_STATE(gkb->darea)],
 		gkb->pix[gkb->properties.curpix]->pixmap,
 		0, 0, 0, 0, -1, -1);
-	return;
-	darea = NULL;
 }
 
 static void
@@ -532,17 +516,27 @@ gkb_cb(GtkWidget * widget,
 	GdkEventButton * e, 
 	GKB * gkb)
 {
+
+
         if (e->button != 1) {
 		/* Ignore buttons 2 and 3 */
 		return; 
 	}
 	gkb->properties.curpix++;
 	if(gkb->properties.curpix>=2) gkb->properties.curpix=0;
+	sized_render(gkb);
 	gkb_draw(GTK_WIDGET(gkb->darea),gkb);
 
 	do_that_command(gkb);
-	return;
-	widget = NULL;
+}
+
+static int
+gkb_empty(GtkWidget *darea,
+	GdkEventExpose *event,
+	GKB *gkb)
+{
+
+        return FALSE;
 }
 
 static int
@@ -558,8 +552,7 @@ gkb_expose(GtkWidget *darea,
 			event->area.x, event->area.y,
 			event->area.x, event->area.y,
 			gkb->width, gkb->height);
-	return FALSE;
-	darea = NULL;
+        return FALSE;
 }
 
 static void
@@ -584,6 +577,8 @@ create_gkb_widget(GKB *gkb)
 			   GTK_SIGNAL_FUNC(gkb_draw), gkb);
 	gtk_signal_connect(GTK_OBJECT(gkb->darea), "expose_event",
 			   GTK_SIGNAL_FUNC(gkb_expose), gkb);
+	gtk_signal_connect(GTK_OBJECT(gkb->darea), "event",
+			   GTK_SIGNAL_FUNC(gkb_empty), gkb);
 
         gtk_widget_show(gkb->darea);
         gkb->properties.curpix = 0;
@@ -601,9 +596,7 @@ destroy_about(GtkWidget *widget,
 	GKB * gkb )
 {
 
-    gkb->aboutbox=NULL;
-    return;
-    widget = NULL;
+    	gkb->aboutbox=NULL;
 }
 
 void
@@ -644,8 +637,7 @@ about_cb (AppletWidget *widget,
 			   GTK_SIGNAL_FUNC(destroy_about),gkb);
 	gtk_widget_show (gkb->aboutbox);
 
-	return;
-	widget = NULL;
+        return;
 }
 
 static int
@@ -667,8 +659,6 @@ applet_save_session(GtkWidget *w,
 	gnome_config_drop_all();
 
 	return FALSE;
-	w = NULL;
-	globcfgpath = NULL;
 }
 
 static CORBA_Object
