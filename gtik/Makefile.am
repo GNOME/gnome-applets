@@ -30,6 +30,9 @@ $(server_in_files): $(server_in_files:.server.in=.server.in.in)
 uidir = $(datadir)/gnome-2.0/ui
 ui_DATA = GNOME_GtikApplet.xml
 
+pixmapdir = $(datadir)/icons/hicolor/48x48/apps
+pixmap_DATA = gnome-money.png
+
 @INTLTOOL_SERVER_RULE@
 
 schemasdir   = @GCONF_SCHEMA_FILE_DIR@

@@ -872,15 +872,22 @@ cb_verb (BonoboUIComponent *uic,
     }
   } else if (!strcmp (verbname, "About")) {
     GtkWidget *about;
+    GdkPixbuf *pixbuf;
     const gchar *authors[] = { "Ronald Bultje <rbultje@ronald.bitfreak.net>",
 			     NULL };
 
+    pixbuf = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (),
+		    "gnome-mixer-applet", 48, 0, NULL);
+    
     about = gnome_about_new (_("Volume Applet"),
 			     VERSION,
 			     "(c) 2004 Ronald Bultje",
 			     _("A GNOME/GStreamer-based volume control applet"),
 			     authors, NULL, NULL,
-			     NULL);
+			     pixbuf);
+
+    if (pixbuf)
+	    g_object_unref (pixbuf);
 
     gtk_widget_show (about);
   } else if (!strcmp (verbname, "Pref")) {

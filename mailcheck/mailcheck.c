@@ -2381,8 +2381,7 @@ mailcheck_properties (BonoboUIComponent *uic, MailCheck *mc, const gchar *verbna
 	gtk_dialog_set_has_separator (GTK_DIALOG (mc->property_window), FALSE);
 	gtk_container_set_border_width (GTK_CONTAINER (mc->property_window), 5);
 	gtk_box_set_spacing (GTK_BOX (GTK_DIALOG (mc->property_window)->vbox), 2);
-	gnome_window_icon_set_from_file (GTK_WINDOW (mc->property_window),
-					 GNOME_ICONDIR"/gnome-mailcheck.png");
+	gtk_window_set_default_icon_name ("gnome-mailcheck");
 	gtk_window_set_screen (GTK_WINDOW (mc->property_window),
 			       gtk_widget_get_screen (GTK_WIDGET (mc->applet)));
 	
@@ -2449,7 +2448,6 @@ static void
 mailcheck_about(BonoboUIComponent *uic, MailCheck *mc, const gchar *verbname)
 {
 	GdkPixbuf *pixbuf = NULL;
-	gchar *file;
 
 	static const gchar     *authors [] =
 	{
@@ -2474,10 +2472,9 @@ mailcheck_about(BonoboUIComponent *uic, MailCheck *mc, const gchar *verbname)
 		gtk_window_present (GTK_WINDOW (mc->about));
 		return;
 	}
-	
-	file = gnome_program_locate_file (NULL, GNOME_FILE_DOMAIN_PIXMAP, "gnome-mailcheck.png", TRUE, NULL);
-	pixbuf = gdk_pixbuf_new_from_file (file, NULL);
-	g_free (file);
+
+	pixbuf = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (),
+			"gnome-clock", 48, 0, NULL);
 	
 	mc->about = gnome_about_new (_("Inbox Monitor"), VERSION,
 				     "Copyright \xc2\xa9 1998-2002 Free Software Foundation, Inc.",

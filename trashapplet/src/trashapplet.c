@@ -429,8 +429,10 @@ trash_applet_show_about (BonoboUIComponent *component,
 		    TrashApplet *ta,
 		    const gchar *cname)
 {
+	GdkPixbuf *pixbuf;
 	GtkWidget *about;
 	gchar *translator_credits = _("translator_credits");
+	
 	static const char *authors[] = {
 		"Michiel Sikkes <michiel@eyesopened.nl>",
 		"Emmanuele Bassi <ebassi@gmail.com>",
@@ -444,13 +446,21 @@ trash_applet_show_about (BonoboUIComponent *component,
 		NULL
 	};
 
+	pixbuf = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (),
+			"gnome-fs-trash-full", 48, 0, NULL);
+
 	about = gnome_about_new ("Trash Applet", VERSION,
 			_("Copyright (c) 2004 Michiel Sikkes"),
-			_("The GNOME Trash Applet"),
+			_("A GNOME trash bin that lives in your panel. You can "
+			  "use it to view the trash or drag and drop items "
+			  "into the trash."),
 			authors,
 			documenters,
 			strcmp (translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
-			NULL);
+			pixbuf);
+
+	if (pixbuf)
+		g_object_unref (pixbuf);
 
 	gtk_widget_show(about);
 

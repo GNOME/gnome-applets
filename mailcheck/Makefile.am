@@ -48,6 +48,9 @@ soundlist_DATA     = $(soundlist_in_files:.soundlist.in=.soundlist)
 uidir 	= $(datadir)/gnome-2.0/ui
 ui_DATA	= GNOME_MailCheckApplet.xml
 
+pixmapdir = $(datadir)/icons/hicolor/48x48/apps
+pixmap_DATA = gnome-mailcheck.png
+
 serverdir       = $(libdir)/bonobo/servers
 server_in_files = GNOME_MailcheckApplet_Factory.server.in
 server_DATA     = $(server_in_files:.server.in=.server)

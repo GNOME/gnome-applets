@@ -31,8 +31,6 @@ void about_box (BonoboUIComponent *uic,
 		const char        *verbname)
 {
 	GdkPixbuf   	 *pixbuf;
-	GError      	 *error     = NULL;
-	gchar       	 *file;
 	
 	static const gchar *authors[] = {
 		"Oliver Maruhn <oliver@maruhn.com>",
@@ -57,14 +55,8 @@ void about_box (BonoboUIComponent *uic,
 		return;
 	}
 	
-	file = gnome_program_locate_file (NULL, GNOME_FILE_DOMAIN_PIXMAP, "gnome-mini-commander.png", FALSE, NULL);
-	pixbuf = gdk_pixbuf_new_from_file (file, &error);
-   
-	if (error) {
-		g_warning (G_STRLOC ": cannot open %s: %s", file, error->message);
-		g_error_free (error);
-	}
-	g_free (file);
+	pixbuf = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (),
+			"gnome-mini-commander", 48, 0, NULL);
    
 	mcdata->about_dialog = gnome_about_new (_("Command Line"), 
 						VERSION,

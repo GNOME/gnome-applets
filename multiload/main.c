@@ -38,8 +38,6 @@ about_cb (BonoboUIComponent *uic,
 	  const char        *name)
 {
     GdkPixbuf        *pixbuf;
-    GError           *error = NULL;
-    gchar            *file;
    
     static const gchar *authors[] =
     {
@@ -65,15 +63,8 @@ about_cb (BonoboUIComponent *uic,
 	return;
     }
 	
-    file = gnome_program_locate_file (NULL, GNOME_FILE_DOMAIN_PIXMAP, "gnome-monitor.png", FALSE, NULL);
-    pixbuf = gdk_pixbuf_new_from_file (file, &error);
-    g_free (file);
-   
-    if (error) {
-	g_warning (G_STRLOC ": cannot open %s: %s", file, error->message);
-	g_error_free (error);
-    }
-
+    pixbuf = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (),
+		    "gnome-monitor", 48, 0, NULL);
 	
     ma->about_dialog = gnome_about_new (_("System Monitor"), VERSION,
 					"(C) 1999 - 2002 The Free Software Foundation",

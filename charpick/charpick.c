@@ -599,16 +599,9 @@ about (BonoboUIComponent *uic,
 	return;
   }
   
-  file = gnome_program_locate_file (NULL, GNOME_FILE_DOMAIN_PIXMAP,
-				    "charpick.png", FALSE, NULL);
-  pixbuf = gdk_pixbuf_new_from_file (file, &error);
-  g_free (file);
+  pixbuf = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (),
+		  "charpick", 48, 0, NULL);
    
-  if (error) {
-	g_warning (G_STRLOC ": cannot open %s: %s", file, error->message);
-	g_error_free (error);
-  }
-  
   curr_data->about_dialog = gnome_about_new (_("Character Palette"),
 					     VERSION,
 					     _("Copyright (C) 1998"),

@@ -101,8 +101,6 @@ static void about_cb (BonoboUIComponent *uic,
 {
 	PanelApplet *applet = PANEL_APPLET (mldata->applet);
 	GdkPixbuf 	 *pixbuf;
-	GError		 *error = NULL;
-	gchar		 *file;
 	
 	static const gchar *authors[] = {
 		"John Ellis <johne@bellatlantic.net>",
@@ -125,15 +123,8 @@ static void about_cb (BonoboUIComponent *uic,
 		return;
 	}
 
-	file = gnome_program_locate_file (NULL, GNOME_FILE_DOMAIN_PIXMAP,
-					  "gnome-modem.png", FALSE, NULL);
-	pixbuf = gdk_pixbuf_new_from_file (file, &error);
-	g_free (file);
-	
-	if (error) {
-		g_warning (G_STRLOC ": cannot open %s: %s", file, error->message);
-		g_error_free (error);
-	}
+	pixbuf = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (),
+			"gnome-modem", 48, 0, NULL);
 
 	mldata->about_dialog = gnome_about_new ( _("Modem Lights"), VERSION,
 						"(C) 2000",
