@@ -30,6 +30,8 @@
 #include <config.h>
 #endif
 
+#include <panel-applet-gconf.h>
+
 #include <X11/keysym.h>
 #include <X11/Xmd.h>
 #include <X11/Xlib.h>
@@ -244,7 +246,7 @@ grab_key_filter (GdkXEvent * gdk_xevent, GdkEvent * event, gpointer data)
   
   newkey = XKeysymToKeycode (GDK_DISPLAY (), gkb->keysym);
 
-  gkb_xungrab (key, gkb->state);
+  gkb_xungrab (*key, gkb->state);
 
   gkb->key = g_strdup (key);
   g_free (key);
@@ -294,7 +296,9 @@ grab_button_pressed (GtkButton * button, gpointer data)
   return;
 }
 
-init_xmaps () {
+static void
+init_xmaps ()
+{
   XModifierKeymap *xmk=NULL;
   KeyCode *map;
   int m, k;
