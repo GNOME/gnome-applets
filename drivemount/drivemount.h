@@ -1,5 +1,5 @@
 /*#####################################################*/
-/*##           drivemount applet 0.2.0               ##*/
+/*##           drivemount applet 0.2.1               ##*/
 /*#####################################################*/
 
 #include <config.h>
@@ -14,7 +14,7 @@
 
 #define DRIVEMOUNT_APPLET_VERSION_MAJ 0
 #define DRIVEMOUNT_APPLET_VERSION_MIN 2
-#define DRIVEMOUNT_APPLET_VERSION_REV 0
+#define DRIVEMOUNT_APPLET_VERSION_REV 1
 
 typedef struct _DriveData DriveData;
 struct _DriveData
@@ -28,6 +28,7 @@ struct _DriveData
 	int timeout_id;
 	int interval;
 	int mounted;
+	int autofs_friendly;
 	char *mount_base;
 	char *mount_point;
 	PanelOrientType orient;
@@ -38,6 +39,7 @@ struct _DriveData
 	GtkWidget *mount_point_entry;
 	int prop_interval;
 	int prop_device_pixmap;
+	int prop_autofs_friendly;
 };
 
 

@@ -1,5 +1,5 @@
 /*#####################################################*/
-/*##           drivemount applet 0.2.0               ##*/
+/*##           drivemount applet 0.2.1               ##*/
 /*#####################################################*/
 
 #include "drivemount.h"
@@ -22,6 +22,7 @@
 #include "harddisk_h_out.xpm"
 
 static void about_cb (AppletWidget *widget, gpointer data);
+static gint device_is_in_mountlist(DriveData *dd);
 static dev_t get_device(gchar *file);
 static gint device_is_mounted(DriveData *dd);
 static void update_pixmap(DriveData *dd, gint t);
@@ -57,6 +58,33 @@ static void about_cb (AppletWidget *widget, gpointer data)
 	gtk_widget_show (about);
 }
 
+static gint device_is_in_mountlist(DriveData *dd)
+{
+	FILE *fp;
+	gchar *command_line = "mount";
+	gchar buf[201];
+	gint found = FALSE;
+
+	buf[201] = '\0';
+
+	fp = popen(command_line, "r");
+
+	if (!fp)
+		{
+		printf("unable to run command: %s\n", command_line);
+		return FALSE;
+		}
+
+	while (fgets(buf, 200, fp) != NULL)
+		{
+		if (strstr(buf, dd->mount_point) != 0) found = TRUE;
+		}
+
+	pclose (fp);
+
+	return found;
+}
+
 static dev_t get_device(gchar *file)
 {
 	struct stat file_info;
@@ -72,10 +100,20 @@ static dev_t get_device(gchar *file)
 
 static gint device_is_mounted(DriveData *dd)
 {
-	if (get_device(dd->mount_base) == get_device(dd->mount_point))
-		return FALSE;
+	if (!dd->autofs_friendly)
+		{
+		if (get_device(dd->mount_base) == get_device(dd->mount_point))
+			return FALSE;
+		else
+			return TRUE;
+		}
 	else
-		return TRUE;
+		{
+		if (device_is_in_mountlist(dd))
+			return TRUE;
+		else
+			return FALSE;
+		}
 }
 
 static void update_pixmap(DriveData *dd, gint t)
@@ -138,8 +176,6 @@ static int mount_cb(GtkWidget *widget, gpointer data)
 		sprintf(command_line, "mount %s 2>&1", dd->mount_point);
 	else
 		sprintf(command_line, "umount %s 2>&1", dd->mount_point);
-
-	system (command_line);
 
 	fp = popen(command_line, "r");
 
@@ -320,7 +356,7 @@ void create_pixmaps(DriveData *dd)
 
 void redraw_pixmap(DriveData *dd)
 {
-	if (get_device(dd->mount_base) == get_device(dd->mount_point))
+	if (!device_is_mounted(dd))
 		{
 		update_pixmap(dd, FALSE);
 		dd->mounted = FALSE;
@@ -379,6 +415,7 @@ static DriveData * create_drive_widget(GtkWidget *applet)
 	dd->mount_point = NULL;
 	dd->propwindow = NULL;
 	dd->mount_base = g_strdup("/mnt");
+	dd->autofs_friendly = FALSE;
 
 	property_load(APPLET_WIDGET(applet)->privcfgpath, dd);
 

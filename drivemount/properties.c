@@ -1,10 +1,10 @@
 /*#####################################################*/
-/*##           drivemount applet 0.2.0               ##*/
+/*##           drivemount applet 0.2.1               ##*/
 /*#####################################################*/
 
 #include "drivemount.h"
 
-static void pixmap_floppy_cb(GtkWidget *widget, gpointer data);
+static void autofs_friendly_cb(GtkWidget *w, gpointer data);
 static void pixmap_cdrom_cb(GtkWidget *widget, gpointer data);
 static void pixmap_zipdrive_cb(GtkWidget *widget, gpointer data);
 static void pixmap_harddisk_cb(GtkWidget *widget, gpointer data);
@@ -20,6 +20,7 @@ void property_load(char *path, DriveData *dd)
         dd->interval = gnome_config_get_int("mount/interval=10");
 	dd->device_pixmap = gnome_config_get_int("mount/pixmap=0");
 	mount_text = gnome_config_get_string("mount/mountpoint=/mnt/floppy");
+	dd->autofs_friendly = gnome_config_get_int("mount/autofs_friendly=0");
 	gnome_config_pop_prefix ();
 
 	if (dd->mount_point) free(dd->mount_point);
@@ -32,12 +33,20 @@ void property_save(char *path, DriveData *dd)
         gnome_config_set_int("mount/interval", dd->interval);
         gnome_config_set_int("mount/pixmap", dd->device_pixmap);
         gnome_config_set_string("mount/mountpoint", dd->mount_point);
+        gnome_config_set_int("mount/autofs_friendly", dd->autofs_friendly);
         gnome_config_pop_prefix();
 	gnome_config_sync();
 	gnome_config_drop_all();
 }
 
-static void pixmap_floppy_cb(GtkWidget *widget, gpointer data)
+static void autofs_friendly_cb(GtkWidget *w, gpointer data)
+{
+	DriveData *dd = data;
+	dd->prop_autofs_friendly= GTK_TOGGLE_BUTTON (w)->active;
+	gnome_property_box_changed(GNOME_PROPERTY_BOX(dd->propwindow));
+}
+
+void pixmap_floppy_cb(GtkWidget *widget, gpointer data)
 {
 	DriveData *dd = data;
 	dd->prop_device_pixmap = 0;
@@ -75,6 +84,7 @@ static void update_delay_cb( GtkWidget *widget, gpointer data )
 static void property_apply_cb( GtkWidget *widget, void *data, DriveData *dd)
 {
 	gchar *new_file;
+	dd->autofs_friendly = dd->prop_autofs_friendly;
 	new_file = gtk_entry_get_text(GTK_ENTRY(dd->mount_point_entry));
 	if (dd->mount_point) free(dd->mount_point);
 	dd->mount_point = strdup(new_file);
@@ -107,6 +117,7 @@ void property_show(AppletWidget *applet, gpointer data)
 	GtkWidget *menu;
 	GtkWidget *item;
 	GtkObject *delay_adj;
+	GtkWidget *button;
 
 	if(dd->propwindow)
 		{
@@ -116,6 +127,7 @@ void property_show(AppletWidget *applet, gpointer data)
 
         dd->prop_interval = dd->interval;
 	dd->prop_device_pixmap = dd->device_pixmap;
+	dd->prop_autofs_friendly = dd->autofs_friendly;
 
 	dd->propwindow = gnome_property_box_new();
 	gtk_window_set_title(GTK_WINDOW(&GNOME_PROPERTY_BOX(dd->propwindow)->dialog.window),
@@ -181,6 +193,12 @@ void property_show(AppletWidget *applet, gpointer data)
                             GTK_OBJECT(dd->propwindow));
         gtk_box_pack_start( GTK_BOX(hbox),dd->mount_point_entry , TRUE, TRUE, 5);
 	gtk_widget_show(dd->mount_point_entry);
+
+	button = gtk_check_button_new_with_label (_("Use automount friendly status test"));
+        gtk_box_pack_start(GTK_BOX(frame), button, FALSE, FALSE, 5);
+        gtk_toggle_button_set_state(GTK_TOGGLE_BUTTON(button), dd->prop_autofs_friendly);
+        gtk_signal_connect (GTK_OBJECT(button),"clicked",(GtkSignalFunc) autofs_friendly_cb, dd);
+        gtk_widget_show(button);
 
         label = gtk_label_new(_("General"));
         gtk_widget_show(frame);
