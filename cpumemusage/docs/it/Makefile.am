@@ -1,6 +1,9 @@
-figs = cpumemusage-applet.png
-applet = cpumemusage
+figs = \
+	figures/cpumemusage-applet.png
+docname = cpumemusage_applet
 lang = it
-sgml_ents = $(applet).sgml
-include $(top_srcdir)/applet-docs.make
-dist-hook: applet-dist-hook
+omffile = cpumemusage_applet-it.omf
+sgml_ents = cpumemusage.sgml
+include $(top_srcdir)/sgmldocs.make
+dist-hook: app-dist-hook
+
