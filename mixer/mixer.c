@@ -119,7 +119,7 @@ static void mixer_popup_show    (MixerData *data);
 static void mixer_popup_hide    (MixerData *data, gboolean revert);
 
 static void mixer_start_gmix_cb (BonoboUIComponent *uic,
-				 gpointer           data,
+				 MixerData         *data,
 				 const gchar       *verbname);
 
 void add_atk_namedesc (GtkWidget *widget, const gchar *name, const gchar *desc);
@@ -732,23 +732,41 @@ applet_change_size_cb (GtkWidget *w, gint size, MixerData *data)
 
 static void
 mixer_start_gmix_cb (BonoboUIComponent *uic,
-		     gpointer           data,
+		     MixerData         *data,
 		     const gchar       *verbname)
 {
 	GError *error = NULL;
-	
-	if (run_mixer_cmd)
-		g_spawn_command_line_async (run_mixer_cmd, &error);
-		
+
+	if (!run_mixer_cmd)
+		return;
+
+	g_spawn_command_line_async (run_mixer_cmd, &error);
 	if (error) {
-		g_print ("%s \n", error->message);
+		GtkWidget *dialog;
+
+		dialog = gtk_message_dialog_new (NULL,
+						 GTK_DIALOG_DESTROY_WITH_PARENT,
+						 GTK_MESSAGE_ERROR,
+						 GTK_BUTTONS_CLOSE,
+						 _("There was an error executing %s : %s"),
+						 run_mixer_cmd,
+						 error->message);
+
+		g_signal_connect (dialog, "response",
+				  G_CALLBACK (gtk_widget_destroy),
+				  NULL);
+
+		gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
+
+		gtk_widget_show (dialog);
+
 		g_error_free (error);
 	}
 }
 
 static void
 mixer_about_cb (BonoboUIComponent *uic,
-		gpointer           data,
+		MixerData         *data,
 		const gchar       *verbname)
 {
         static GtkWidget   *about     = NULL;
@@ -765,7 +783,7 @@ mixer_about_cb (BonoboUIComponent *uic,
 
 	const gchar *translator_credits = _("translator_credits");
 	
-        if (about != NULL) {
+        if (about) {
                 gtk_window_present (GTK_WINDOW (about));
                 return;
         }
@@ -870,10 +888,10 @@ mixer_ui_component_event (BonoboUIComponent            *comp,
 }
 
 const BonoboUIVerb mixer_applet_menu_verbs [] = {
-	BONOBO_UI_VERB ("RunMixer", mixer_start_gmix_cb),
-	BONOBO_UI_VERB ("Mute",     mixer_mute_cb),
-	BONOBO_UI_VERB ("Help",     mixer_help_cb),
-	BONOBO_UI_VERB ("About",    mixer_about_cb),
+	BONOBO_UI_UNSAFE_VERB ("RunMixer", mixer_start_gmix_cb),
+	BONOBO_UI_UNSAFE_VERB ("Mute",     mixer_mute_cb),
+	BONOBO_UI_UNSAFE_VERB ("Help",     mixer_help_cb),
+	BONOBO_UI_UNSAFE_VERB ("About",    mixer_about_cb),
 	
         BONOBO_UI_VERB_END
 };
