@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 2.5\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-08-06 22:37+0200\n"
-"PO-Revision-Date: 2004-08-06 23:05+0200\n"
+"POT-Creation-Date: 2004-08-07 21:28+0200\n"
+"PO-Revision-Date: 2004-08-07 21:43+0200\n"
 "Last-Translator: Danilo Šegan <danilo@prevod.org>\n"
 "Language-Team: Serbian (sr) <gnom@prevod.org>\n"
 "MIME-Version: 1.0\n"
@@ -82,7 +82,7 @@ msgstr "Prikazuje stanje za mogućonosti u vezi sa upotrebljivošću tastature"
 msgid "Utility"
 msgstr "Pomoćni alati"
 
-#: accessx-status/applet.c:136 battstat/battstat_applet.c:996
+#: accessx-status/applet.c:136 battstat/battstat_applet.c:1058
 #: cdplayer/cdplayer.c:598 charpick/charpick.c:563 drivemount/drivemount.c:553
 #: geyes/geyes.c:202 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:608
 #: gtik/gtik.c:723 gweather/gweather-about.c:47 mailcheck/mailcheck.c:2470
@@ -153,7 +153,7 @@ msgstr "Prikazuje tekuće stanje mogućnosti u vezi sa upotrebljivošću tastatu
 
 #. The long name of the applet in the About dialog.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:1017 battstat/battstat_applet.c:1770
+#: battstat/battstat_applet.c:1079 battstat/battstat_applet.c:1840
 msgid "Battery Charge Monitor"
 msgstr "Praćenje stanja baterije"
 
@@ -162,7 +162,7 @@ msgid "Battstat Factory"
 msgstr "Fabrika apleta za praćenje stanja baterije"
 
 #: battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: battstat/battstat_applet.c:1771
+#: battstat/battstat_applet.c:1841
 msgid "Monitor a laptop's remaining power"
 msgstr "Pratite preostalu struju prenosnog računara"
 
@@ -271,157 +271,182 @@ msgstr "Vaša platforma nije podržana!\n"
 msgid "The applet will not work properly (if at all).\n"
 msgstr "Aplet neće ispravno raditi (ako uopšte radi).\n"
 
-#: battstat/battstat_applet.c:358
-msgid "charged"
-msgstr "puna"
-
 #: battstat/battstat_applet.c:360
-msgid "..."
-msgstr "..."
-
-# bug: plural-forms on both
-#: battstat/battstat_applet.c:362
 #, c-format
-msgid "%d hours %d minutes remaining"
-msgstr "preostalo je %d časova i %d minuta"
+msgid "%i minute"
+msgid_plural "%i minutes"
+msgstr[0] "%i minut"
+msgstr[1] "%i minuta"
+msgstr[2] "%i minuta"
+
+#: battstat/battstat_applet.c:361
+#, c-format
+msgid "%i hour"
+msgid_plural "%i hours"
+msgstr[0] "%i čas"
+msgstr[1] "%i časa"
+msgstr[2] "%i časova"
+
+# bug: bad
+#. Translation Note: as in "No time remaining" or "No time till charged"
+#: battstat/battstat_applet.c:365
+msgid "No time"
+msgstr "Nema vremena"
+
+# bug: bad, very bad
+#. Translation Note: as in "Unknown time remaining" or "Unknown time till charged"
+#. Translation Note: as in "Unknown time remaining"
+#: battstat/battstat_applet.c:368 battstat/battstat_applet.c:1145
+msgid "Unknown time"
+msgstr "Nepoznato vremena"
+
+#. Translation note:
+#. * The %s:s are the "%i hour" and "%i minute" messages translated elsewhere respectively.
+#. * Swap the order with "%2$s %1$s" if needed.
+#: battstat/battstat_applet.c:386
+#, c-format
+msgid "%s %s"
+msgstr "%s %s"
 
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:389 battstat/battstat_applet.c:1054
+#: battstat/battstat_applet.c:418 battstat/battstat_applet.c:1117
 msgid "High"
 msgstr "Puna"
 
 #. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:391 battstat/battstat_applet.c:1056
+#: battstat/battstat_applet.c:420 battstat/battstat_applet.c:1119
 msgid "Low"
 msgstr "Slaba"
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:393 battstat/battstat_applet.c:1058
+#: battstat/battstat_applet.c:422 battstat/battstat_applet.c:1121
 msgid "Critical"
 msgstr "Kritično"
 
 #. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:395 battstat/battstat_applet.c:1060
+#: battstat/battstat_applet.c:424 battstat/battstat_applet.c:1123
 msgid "Charging"
 msgstr "Punjenje"
 
-#: battstat/battstat_applet.c:482
+#: battstat/battstat_applet.c:515
 #, c-format
 msgid ""
-"Your battery is running low (%d%%, %s). You should recharge your battery to "
-"avoid losing your work."
-msgstr ""
-"Vaša baterija je gotovo prazna (%d%%, %s). Napunite bateriju kako biste "
-"izbegli da ostanete bez svog rada."
+"%s (%d%%) remaining. To avoid losing work please power off, suspend or plug "
+"your laptop in."
+msgstr "Preostalo %s (%d%%). Da izbegnete gubitak podataka isključite, suspendujte ili uključite u struju vaš računar."
 
-#: battstat/battstat_applet.c:485 battstat/battstat_applet.c:532
+#: battstat/battstat_applet.c:519
+msgid "Your battery is running low"
+msgstr "Baterija je gotovo prazna"
+
+#: battstat/battstat_applet.c:524 battstat/battstat_applet.c:577
 msgid "Battery Notice"
 msgstr "Obaveštenje o bateriji"
 
-#: battstat/battstat_applet.c:551
-msgid "Your battery is now fully recharged."
-msgstr "Baterija je sada u potpunosti napunjena."
+#: battstat/battstat_applet.c:597
+msgid "Your battery is now fully recharged"
+msgstr "Baterija je sada u potpunosti napunjena"
 
-#. 0 = Battery power
-#. This string will display as a tooltip over the status frame
-#. when the computer is using battery power and the battery meter
-#. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:595 battstat/battstat_applet.c:1211
+#. Translation note: %s is time in words (translated elsewhere)
+#: battstat/battstat_applet.c:651
 #, c-format
 msgid ""
 "System is running on battery power\n"
-"Battery: %d%% (%s)"
+"%s (%d%%) remaining"
 msgstr ""
 "Sistem radi na baterije\n"
-"Baterija: %d%% (%s)"
+"%s (%d%%) preostalo"
 
-#. 1 = AC power. I should really test it explicitly here.
-#. This string will display as a tooltip over the status frame
-#. when the computer is using AC power and the battery meter
-#. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:598 battstat/battstat_applet.c:1218
+#. Translation note: %s is time in words (translated elsewhere)
+#: battstat/battstat_applet.c:655
 #, c-format
 msgid ""
 "System is running on AC power\n"
-"Battery: %d%% (%s)"
+"%s (%d%%) till charged"
 msgstr ""
 "Sistem se napaja iz električne mreže\n"
-"Baterija: %d%% (%s)"
+"%s (%d%%) do pune baterije"
 
 #. 0 = Battery power
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:603 battstat/battstat_applet.c:1144
-#: battstat/battstat_applet.c:1231
+#: battstat/battstat_applet.c:661 battstat/battstat_applet.c:1211
+#: battstat/battstat_applet.c:1300
 msgid "System is running on battery power"
 msgstr "Sistem radi na baterije"
 
 #. 1 = AC power. I should really test it explicitly here.
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:605 battstat/battstat_applet.c:1149
-#: battstat/battstat_applet.c:1236
+#: battstat/battstat_applet.c:663 battstat/battstat_applet.c:1216
+#: battstat/battstat_applet.c:1305
 msgid "System is running on AC power"
 msgstr "Sistem se napaja iz električne mreže"
 
-#: battstat/battstat_applet.c:620 wireless/wireless-applet.c:148
+#: battstat/battstat_applet.c:678 wireless/wireless-applet.c:148
 #: wireless/wireless-applet.c:149
 msgid "N/A"
 msgstr "Nedostupno"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
+#. Translation note: %s is time in words (translated elsewhere)
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:753 battstat/battstat_applet.c:1125
+#. Translation note: %s is time in words (translated elsewhere)
+#: battstat/battstat_applet.c:812 battstat/battstat_applet.c:1190
 #, c-format
-msgid "System is running on battery power. Battery: %d%% (%s)"
-msgstr "Sistem radi na baterije. Baterija: %d%% (%s)"
+msgid "System is running on battery power. %s (%d%%) remaining."
+msgstr "Sistem radi na baterije. %s (%d%%) preostalo."
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
+#. Translation note: %s is time in words (translated elsewhere)
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:758 battstat/battstat_applet.c:1131
+#. Translation note: %s is time in words (translated elsewhere)
+#: battstat/battstat_applet.c:818 battstat/battstat_applet.c:1197
 #, c-format
-msgid "System is running on AC power. Battery: %d%% (%s)"
-msgstr "Sistem se napaja iz električne mreže. Baterija: %d%% (%s)"
+msgid "System is running on AC power. %s (%d%%) till charged."
+msgstr "Sistem se napaja iz električne mreže. %s (%d%%) dok se ne napuni."
 
 #. This string will display as a tooltip over the
 #. battery frame when the computer is using battery
 #. power and the battery isn't present. Not a
 #. possible combination, I guess... :)
-#: battstat/battstat_applet.c:767
-msgid "System is running on battery power. Battery: Not present"
-msgstr "Sistem radi na baterije. Baterija: pazi kad je nema!"
+#: battstat/battstat_applet.c:827
+msgid "System is running on battery power. Battery status unknown."
+msgstr "Sistem radi na baterije. Stanje baterije je nepoznato."
 
 #. This string will display as a tooltip over the
 #. battery frame when the computer is using AC
 #. power and the battery isn't present.
-#: battstat/battstat_applet.c:772
-msgid "System is running on AC power. Battery: Not present"
-msgstr "Sistem se napaja iz električne mreže. Baterija: Nije prisutna"
+#: battstat/battstat_applet.c:832
+msgid "System is running on AC power. No battery present."
+msgstr "Sistem se napaja iz električne mreže. Baterija nije prisutna."
 
+# bug: plural-forms on both
 #. Displayed as a tooltip over the battery meter when there is
 #. a battery present. %d will hold the current charge and %s will
 #. contains a string of the time remaining
-#: battstat/battstat_applet.c:780
+#. Translation note: %s is time in words (translated elsewhere)
+#: battstat/battstat_applet.c:841
 #, c-format
-msgid "Battery: %d%% (%s)"
-msgstr "Baterija: %d%% (%s)"
+msgid "%s (%d%%) remaining"
+msgstr "preostalo je %s (%d%%)"
 
 #. Displayed as a tooltip over the battery meter when no
 #. battery is present.
-#: battstat/battstat_applet.c:785
-msgid "Battery: Not present"
-msgstr "Baterija: nije prisutna"
+#: battstat/battstat_applet.c:846
+msgid "No battery present"
+msgstr "Baterija nije prisutna"
 
 #. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: battstat/battstat_applet.c:887
+#: battstat/battstat_applet.c:948
 msgid ""
 "Can't open the APM device!\n"
 "\n"
@@ -433,7 +458,7 @@ msgstr ""
 "Proverite da li imate dozvole za upotrebu APM uređaja."
 
 #. Displayed if the APM system is disabled (Used under *BSD)
-#: battstat/battstat_applet.c:896
+#: battstat/battstat_applet.c:957
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
@@ -443,7 +468,7 @@ msgstr ""
 "Pokušajte sa pokretanjem „apm -e 1“ (FreeBSD) i \n"
 "proverite da li je to pomoglo.\n"
 
-#: battstat/battstat_applet.c:952
+#: battstat/battstat_applet.c:1013
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -452,16 +477,16 @@ msgstr ""
 "Došlo je do greške pri pokretanju naredbe za suspenziju: %s\n"
 "Pokušajte da ispravite ovu grešku"
 
-#: battstat/battstat_applet.c:956
+#: battstat/battstat_applet.c:1017
 #, c-format
 msgid "The Suspend command '%s' was unsuccessful."
 msgstr "Naredba za suspenziju „%s“ nije uspešno izvršena."
 
-#: battstat/battstat_applet.c:958
+#: battstat/battstat_applet.c:1019
 msgid "The Suspend command was unsuccessful."
 msgstr "Naredba za suspenziju nije uspešno izvršena."
 
-#: battstat/battstat_applet.c:966
+#: battstat/battstat_applet.c:1027
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -471,19 +496,47 @@ msgstr ""
 
 #. if your charset supports it, please replace the "o" in
 #. * "Jorgen" into U00F6
-#: battstat/battstat_applet.c:984
+#: battstat/battstat_applet.c:1045
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jurgen Person <jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:1019
-msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
-msgstr "©2000 Gnuliks Društvo, ©2002 Zadužbina za Slobodni Softver"
+#: battstat/battstat_applet.c:1081
+msgid "(C) 2000 The Gnulix Society, (C) 2002-2004 Free Software Foundation"
+msgstr "©2000 Gnuliks Društvo, ©2002–2004 Zadužbina za Slobodni Softver"
 
-#: battstat/battstat_applet.c:1020
+#: battstat/battstat_applet.c:1082
 msgid "This utility shows the status of your laptop battery."
 msgstr "Ova alatka prikazuje stanje baterije vašeg prenosnog računara."
 
-#: battstat/battstat_applet.c:1696
+#. 0 = Battery power
+#. This string will display as a tooltip over the status frame
+#. when the computer is using battery power and the battery meter
+#. and percent meter is hidden by the user.
+#. Translation note: %s is time in words (translated elsewhere)
+#: battstat/battstat_applet.c:1279
+#, c-format
+msgid ""
+"System is running on battery power\n"
+"%s (%d%%) remaining."
+msgstr ""
+"Sistem radi na baterije\n"
+"preostalo %s (%d%%)."
+
+#. 1 = AC power. I should really test it explicitly here.
+#. This string will display as a tooltip over the status frame
+#. when the computer is using AC power and the battery meter
+#. and percent meter is hidden by the user.
+#. Translation note: %s is time in words (translated elsewhere)
+#: battstat/battstat_applet.c:1287
+#, c-format
+msgid ""
+"System is running on AC power\n"
+"%s (%d%%) till charged."
+msgstr ""
+"Sistem se napaja iz električne mreže\n"
+"%s (%d%%) dok se ne napuni."
+
+#: battstat/battstat_applet.c:1766
 msgid ""
 "Can't access ACPI events in /var/run/acpid.socket! Make sure the ACPI "
 "subsystem is working and the acpid daemon is running."
@@ -597,7 +650,7 @@ msgstr "_Žuto:"
 
 #: battstat/properties.c:291 drivemount/drivemount.c:510
 #: drivemount/properties.c:604 mailcheck/mailcheck.c:2323
-#: mailcheck/mailcheck.c:2614 mini-commander/src/preferences.c:365
+#: mailcheck/mailcheck.c:2617 mini-commander/src/preferences.c:365
 #: mixer/mixer.c:1463 stickynotes/stickynotes_applet_callbacks.c:220
 #: stickynotes/stickynotes_applet_callbacks.c:384
 #: wireless/wireless-applet.c:544 wireless/wireless-applet.c:628
@@ -932,7 +985,7 @@ msgid "Cannot browse device"
 msgstr "Ne može da razgleda uređaj"
 
 #: drivemount/drivemount.c:516 drivemount/properties.c:610
-#: mailcheck/mailcheck.c:2329 mailcheck/mailcheck.c:2620
+#: mailcheck/mailcheck.c:2329 mailcheck/mailcheck.c:2623
 msgid "Error displaying help"
 msgstr "Greška pri prikazu pomoći"
 
@@ -4363,7 +4416,7 @@ msgid "No mail."
 msgstr "Nema pošte."
 
 #: mailcheck/mailcheck.c:1573 mailcheck/mailcheck.c:1574
-#: mailcheck/mailcheck.c:2900 mailcheck/mailcheck.c:2901
+#: mailcheck/mailcheck.c:2903 mailcheck/mailcheck.c:2904
 msgid "Status not updated"
 msgstr "Stanje nije osveženo"
 
@@ -4488,15 +4541,15 @@ msgstr "Postavke praćenja sandučeta"
 msgid "Inbox Monitor notifies you when new mail arrives in your mailbox"
 msgstr "Praćenje sandučeta vas obaveštava kada stigne nova pošta u vaše sanduče"
 
-#: mailcheck/mailcheck.c:2853
+#: mailcheck/mailcheck.c:2856
 msgid "Text only"
 msgstr "Samo tekst"
 
-#: mailcheck/mailcheck.c:2902
+#: mailcheck/mailcheck.c:2905
 msgid "Mail check"
 msgstr "Provera pošte"
 
-#: mailcheck/mailcheck.c:2903
+#: mailcheck/mailcheck.c:2906
 msgid "Mail check notifies you when new mail arrives in your mailbox"
 msgstr "Provera pošte vas obaveštava kada stigne nova pošta u vaše sanduče"
 
@@ -6192,6 +6245,29 @@ msgstr "Postavke praćenja bežične veze"
 #: wireless/wireless-applet.glade.h:3
 msgid "_Monitored device:"
 msgstr "_Praćeni uređaj:"
+
+#~ msgid "charged"
+#~ msgstr "puna"
+
+#~ msgid "..."
+#~ msgstr "..."
+
+#~ msgid ""
+#~ "Your battery is running low (%d%%, %s). You should recharge your battery "
+#~ "to avoid losing your work."
+#~ msgstr ""
+#~ "Vaša baterija je gotovo prazna (%d%%, %s). Napunite bateriju kako biste "
+#~ "izbegli da ostanete bez svog rada."
+
+#~ msgid ""
+#~ "System is running on battery power\n"
+#~ "Battery: %d%% (%s)"
+#~ msgstr ""
+#~ "Sistem radi na baterije\n"
+#~ "Baterija: %d%% (%s)"
+
+#~ msgid "Battery: %d%% (%s)"
+#~ msgstr "Baterija: %d%% (%s)"
 
 #~ msgid "Change the keyboard layout"
 #~ msgstr "Izmenite izgled tastature"
