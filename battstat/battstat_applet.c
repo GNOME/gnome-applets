@@ -1463,7 +1463,8 @@ battstat_applet_fill (PanelApplet *applet)
   battstat = g_new0 (ProgressData, 1);
   
   battstat->applet = GTK_WIDGET (applet);
-  
+  gtk_widget_realize (battstat->applet);
+
   battstat->hbox1 = gtk_hbox_new (FALSE, 1);
   gtk_widget_show(battstat->hbox1);
 
@@ -1485,9 +1486,9 @@ battstat_applet_fill (PanelApplet *applet)
 
   pixmap_timeout(battstat);
   change_orient (applet, battstat->orienttype, battstat );
-#if 1
+
   battstat->pixtimer = gtk_timeout_add (1000, pixmap_timeout, battstat);
-#endif  
+
   gtk_container_add (GTK_CONTAINER (battstat->applet), battstat->hbox1);
 
   panel_applet_setup_menu_from_file (PANEL_APPLET (battstat->applet), 
