@@ -116,6 +116,7 @@ void stickynotes_applet_init(PanelApplet *panel_applet)
 {	
 	GnomeIconTheme *icon_theme;
 	gchar *sticky_icon;
+	GnomeClient *client;
 
 	stickynotes = g_new(StickyNotes, 1);
 
@@ -148,6 +149,13 @@ void stickynotes_applet_init(PanelApplet *panel_applet)
 	gconf_client_add_dir(stickynotes->gconf, GCONF_PATH, GCONF_CLIENT_PRELOAD_NONE, NULL);
 	gconf_client_notify_add(stickynotes->gconf, GCONF_PATH "/defaults", (GConfClientNotifyFunc) preferences_apply_cb, NULL, NULL, NULL);
 	gconf_client_notify_add(stickynotes->gconf, GCONF_PATH "/settings", (GConfClientNotifyFunc) preferences_apply_cb, NULL, NULL, NULL);
+
+	client = gnome_master_client ();
+	gnome_client_set_restart_style (client, GNOME_RESTART_NEVER);
+
+	/* The help suggests this is automatic, but that seems to not be the case here. */
+	gnome_client_connect (client);
+	gnome_client_flush (client);
 	
 	/* Load sticky notes */
 	stickynotes_load(gtk_widget_get_screen(GTK_WIDGET(panel_applet)));
