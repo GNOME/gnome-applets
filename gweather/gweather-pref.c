@@ -605,7 +605,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     gtk_dialog_set_default_response (GTK_DIALOG (gw_applet->pref), GTK_RESPONSE_CLOSE);
     gtk_dialog_set_has_separator (GTK_DIALOG (gw_applet->pref), FALSE);
     gtk_container_set_border_width (GTK_CONTAINER (gw_applet->pref), 5);
-    gtk_window_set_default_size(GTK_WINDOW (gw_applet->pref), -1, 325);
+    gtk_window_set_default_size (GTK_WINDOW (gw_applet->pref), -1, 325);
     gtk_window_set_policy (GTK_WINDOW (gw_applet->pref), TRUE, TRUE, FALSE);
     gtk_window_set_screen (GTK_WINDOW (gw_applet->pref),
 			   gtk_widget_get_screen (GTK_WIDGET (gw_applet->applet)));

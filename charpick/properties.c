@@ -337,9 +337,9 @@ create_palettes_tree (charpick_data *curr_data, GtkWidget *label)
 	GList *list = curr_data->chartable;
 	GtkTreeSelection *selection;
 	
-	scrolled = gtk_scrolled_window_new(NULL,NULL);
+	scrolled = gtk_scrolled_window_new (NULL,NULL);
 	gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolled), GTK_SHADOW_IN);
-	gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(scrolled),
+	gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled),
 						GTK_POLICY_AUTOMATIC,
 						GTK_POLICY_AUTOMATIC);
 	
