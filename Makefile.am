@@ -66,6 +66,7 @@ always_built_SUBDIRS = \
 	geyes		\
 	gkb		\
 	gnome-pager	\
+	gumma		\
 	hal		\
 	jbc		\
 	life		\

@@ -51,6 +51,24 @@ AM_PATH_ESD(,have_libesd=yes,
 [AC_MSG_WARN([*** \`sound-monitor' will not be built ***])])
 AM_CONDITIONAL(HAVE_LIBESD, test yes = $have_libesd)
 
+dnl gumma
+have_xmms=no
+CPPFLAGS_save=$CPPFLAGS
+LDFLAGS_save=$LDFLAGS
+CPPFLAGS=`gnome-config --cflags gnomeui`
+LDFLAGS=`gnome-config --libs gnomeui`
+
+AC_CHECK_HEADER(xmms/xmmsctrl.h,
+[AC_CHECK_LIB(xmms, xmms_remote_is_running,xmms=yes)])
+
+CPPFLAGS=$CPPFLAGS_save
+LDFLAGS=$LDFLAGS_save
+
+AM_CONDITIONAL(HAVE_XMMS,test x$have_xmms = x$yes)	
+if test x$HAVE_XMMS != x$yes; then
+  AC_MSG_WARN([*** \`xmms' plugin for gumma will not be build ***])
+fi
+
 dnl cdplayer
 AC_CANONICAL_HOST
 case "$host" in
@@ -60,6 +78,7 @@ esac
 AM_CONDITIONAL(APPLET_CDPLAYER, test -n "$CDROM_HOST")
 AC_SUBST(CDROM_HOST)
 if test -z "$CDROM_HOST"; then
+  AC_MSG_WARN([*** \`cd' plugin for gumma will not be build ***])
   AC_MSG_WARN([*** \`cdplayer' applet will not be built ***])
 fi
 
@@ -169,6 +188,10 @@ gkb/gkb/Makefile
 gkb/xmodmap/Makefile
 gnome-pager/Makefile
 gnotes/Makefile
+gumma/Makefile
+gumma/cd/Makefile
+gumma/gqmpeg/Makefile
+gumma/xmms/Makefile
 gweather/Makefile
 gweather/pixmaps/Makefile
 jbc/Makefile
