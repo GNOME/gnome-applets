@@ -4,7 +4,7 @@ INCLUDES =                                           \
 
 bin_PROGRAMS = gnome-keyboard-layout
 bin_SCRIPTS = gkb_xmmap
-libexec_PROGRAMS = gkb_applet2
+noinst_LIBRARIES = libgkb.a
 
 gkb_COMMON = \
 		gkb.c 		\
@@ -21,13 +21,10 @@ gkb_COMMON = \
 		gconf.c
 
 gnome_keyboard_layout_SOURCES	= $(gkb_COMMON) gnome-keyboard-layout.c
-
 gnome_keyboard_layout_LDADD	= \
 	$(GNOME_APPLETS_LIBS) $(X_LIBS) $(INTLLIBS)
 
-gkb_applet2_SOURCES = $(gkb_COMMON) gkb-applet.c
-gkb_applet2_LDADD = \
-                       $(GNOME_APPLETS_LIBS)
+libgkb_a_SOURCES		= $(gkb_COMMON) gkb-applet.c
 
 if GKB_SUN
 gkb_DDIRS= xmodmap.sun descs.sun
@@ -53,20 +50,8 @@ ui_DATA = GNOME_KeyboardApplet.xml
 
 EXTRA_DIST =						\
 	$(GKB_ICON)					\
-	$(schemas_in_files)				\
-	$(ui_DATA)					\
-	GNOME_CharpickerApplet.server.in.in
-
-serverdir       = $(libdir)/bonobo/servers
-server_in_files = GNOME_GKBApplet.server.in
-server_DATA     = $(server_in_files:.server.in=.server)
-
-$(server_in_files): $(server_in_files:.server.in=.server.in.in)
-	sed -e "s|\@LIBEXECDIR\@|$(libexecdir)|" $< > $@
-
-CLEANFILES = $(server_in_files) $(server_DATA)
-
-@INTLTOOL_SERVER_RULE@
+	$(schemas_in_files)					\
+	$(ui_DATA)
 
 gkb_xmmap: gkb_xmmap.in
 	sed "s,\$${prefix},$(prefix),g" \
@@ -77,4 +62,3 @@ if GCONF_SCHEMAS_INSTALL
 install-data-local:
 	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(schemas_DATA) ;
 endif
-

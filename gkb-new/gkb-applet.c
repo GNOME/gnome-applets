@@ -348,7 +348,7 @@ fill_gkb_applet (PanelApplet *applet)
 
 gboolean gail_loaded = FALSE;
 
-static gboolean
+gboolean
 gkb_factory (PanelApplet *applet,
 		const gchar *iid,
 		gpointer     data)
@@ -356,13 +356,6 @@ gkb_factory (PanelApplet *applet,
 	if (GTK_IS_ACCESSIBLE (gtk_widget_get_accessible (GTK_WIDGET (applet))))
 		gail_loaded = TRUE;
 
-	return !strcmp (iid, "OAFIID:GNOME_GKBApplet") &&
+	return !strcmp (iid, "OAFIID:GNOME_KeyboardApplet") &&
 		fill_gkb_applet (applet);
 }
-
-PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_GKBApplet_Factory", 
-			     PANEL_TYPE_APPLET, 
-			     "gkb_applet2", 
-			     "0", 
-			     gkb_factory, 
-			     NULL)
