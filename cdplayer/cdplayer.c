@@ -257,36 +257,41 @@ static void
 activate_cb (GtkEntry *entry, gpointer data)
 {
     CDPlayerData *cd = data;
-    gchar *newpath, *oldpath;
+    gchar *newpath;
     
     newpath = gtk_editable_get_chars (GTK_EDITABLE (entry), 0, -1);
     if(newpath && strlen(newpath) > 2 && strcmp(cd->devpath, newpath))
             {
                 cd_close(cd);
-                oldpath = cd->devpath;
                 cd->devpath = g_strdup(newpath);
-                if (cd_try_open(cd)) {
-                    cdplayer_save_config(cd);
-                    g_free (oldpath);
+                if (!cd_try_open(cd)) {
+                    GtkWidget *dialog;
+                    dialog = gtk_message_dialog_new (NULL, GTK_DIALOG_DESTROY_WITH_PARENT,
+                                  		     GTK_MESSAGE_ERROR,
+                                  		     GTK_BUTTONS_CLOSE,
+                                  		     "%s is not a proper device path",
+                                  		     cd->devpath, NULL);
+                    g_signal_connect_swapped (GTK_OBJECT (dialog), "response",
+                                              G_CALLBACK (gtk_widget_destroy),
+                                              GTK_OBJECT (dialog));
+
+		    gtk_widget_show_all (dialog);
+                   
                 }
-                else {
-                    g_free (cd->devpath);
-                    cd->devpath = oldpath;
-                    cd_try_open (cd);
-                    gtk_entry_set_text (entry, cd->devpath);
-                }
+                cdplayer_save_config(cd);  
             }
     if (newpath)
         g_free (newpath);
 }
 
-static void
+static gboolean
 focus_out_cb (GtkWidget *widget, GdkEventFocus *event, gpointer data)
 {
     CDPlayerData *cd = data;
    
     activate_cb (GTK_ENTRY (widget), cd);
     
+    return FALSE;
 }
 
 static void
@@ -304,7 +309,7 @@ properties_cb (GtkWidget *w, gpointer data)
     cd = (CDPlayerData *) data;
 
     dialog = gtk_dialog_new_with_buttons(_("CD Player Properties"),
-                                         NULL, GTK_DIALOG_MODAL,
+                                         NULL, GTK_DIALOG_DESTROY_WITH_PARENT,
                                          GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
                                          NULL);
     box = GTK_DIALOG(dialog)->vbox;
