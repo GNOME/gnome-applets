@@ -338,7 +338,7 @@ gkb_prop_map_get_arquitectures (GkbPropertyBoxInfo * pbi)
   GList *list = NULL;
 
   list = g_list_prepend (list, _("ix86"));
-  list = g_list_prepend (list, _("sun"));
+  list = g_list_prepend (list, _("Sun"));
   list = g_list_prepend (list, _("mac"));
   list = g_list_prepend (list, _("sgi"));
   list = g_list_prepend (list, _("dec"));
