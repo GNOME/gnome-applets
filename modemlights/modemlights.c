@@ -481,14 +481,14 @@ static void command_disconnect_cb( gint button, gpointer data)
         data = NULL;
 }
 
-static void confirm_dialog_destroy (GtkObject *o)
+static void confirm_dialog_destroy(GtkObject *o, gpointer data)
 {
  	confirm_dialog = FALSE;
         return;
         o = NULL;
 }
 
-static void dial_cb()
+static void dial_cb(GtkWidget *widget, gpointer data)
 {
 	GtkWidget *dialog;
 
@@ -504,7 +504,7 @@ static void dial_cb()
 				GTK_SIGNAL_FUNC (confirm_dialog_destroy),
 				NULL);
 	  } else {
-	    system(command_disconnect);
+	    gnome_execute_shell(NULL, command_disconnect);
 	    confirm_dialog = FALSE;
 	  }
 	} else {
@@ -518,7 +518,7 @@ static void dial_cb()
 				GTK_SIGNAL_FUNC (confirm_dialog_destroy),
 				NULL);
 	  } else {
-	    system(command_connect);
+	    gnome_execute_shell(NULL, command_connect);
 	    confirm_dialog = FALSE;
 	  }
 	}

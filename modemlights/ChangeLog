@@ -1,3 +1,9 @@
+Tue Sep 26 14:18:51 2000  John Ellis  <johne@bellatlantic.net>
+
+	* modemlights.c (dial_cb): Use gnome_execute_shell in place system()
+	call, which blocks on the call. Who used this? I sure hope it
+	wasn't me :O. Fixes BUG #16815
+
 Tue Sep 26 13:33:16 2000  John Ellis  <johne@bellatlantic.net>
 
 	* modemlights.c: Applet layout coordinates are now stored in a static
