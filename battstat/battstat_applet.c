@@ -712,6 +712,9 @@ destroy_applet (GtkWidget *widget, gpointer data)
    
    if (DEBUG) g_print("destroy_applet()\n");
 
+   if (pdata->about_dialog)
+	gtk_widget_destroy (pdata->about_dialog);
+
    if (pdata->prop_win)
 	gtk_widget_destroy (GTK_WIDGET (pdata->prop_win));
 
@@ -860,26 +863,22 @@ suspend_cb (BonoboUIComponent *uic,
 }
 
 void
-destroy_about (GtkWidget *w, gpointer data)
-{
-   ProgressData *battstat = data;
-   
-   if (DEBUG) g_print("destroy_about()\n");
-   
-   battstat->about_box = NULL;
-   
-   return;
-}
-
-void
 about_cb (BonoboUIComponent *uic,
 	  ProgressData      *battstat,
 	  const char        *verb)
 {
-   GtkWidget   *about_box;
    GdkPixbuf   *pixbuf;
    GError      *error = NULL;
    gchar       *file;
+  
+   if (battstat->about_dialog) 
+   {
+	gtk_window_set_screen (GTK_WINDOW (battstat->about_dialog),
+			       gtk_widget_get_screen (GTK_WIDGET (battstat->applet)));
+	   
+	gtk_window_present (GTK_WINDOW (battstat->about_dialog));
+	return;
+   }
    
    const gchar *authors[] = {
 	/* if your charset supports it, please replace the "o" in
@@ -905,7 +904,7 @@ about_cb (BonoboUIComponent *uic,
 	g_error_free (error);
    }
    
-   about_box = gnome_about_new (
+   battstat->about_dialog = gnome_about_new (
 				/* The long name of the applet in the About dialog.*/
 				_("Battery Charge Monitor"), 
 				VERSION,
@@ -919,10 +918,15 @@ about_cb (BonoboUIComponent *uic,
    if (pixbuf)
 	g_object_unref (pixbuf);
 
-   gtk_window_set_wmclass (GTK_WINDOW (about_box), "battery charge monitor", "Batter Charge Monitor");
-   gtk_window_set_screen (GTK_WINDOW (about_box),
+   gtk_window_set_wmclass (GTK_WINDOW (battstat->about_dialog), "battery charge monitor", "Batter Charge Monitor");
+   gtk_window_set_screen (GTK_WINDOW (battstat->about_dialog),
 			  gtk_widget_get_screen (battstat->applet));
-   gtk_widget_show (about_box);
+
+   g_signal_connect (battstat->about_dialog, "destroy",
+		     G_CALLBACK (gtk_widget_destroyed),
+		     &battstat->about_dialog);
+
+   gtk_widget_show (battstat->about_dialog);
 }
 
 void
@@ -1564,7 +1568,8 @@ battstat_applet_fill (PanelApplet *applet)
   battstat->orienttype = panel_applet_get_orient (applet);
   battstat->panelsize = panel_applet_get_size (applet);
   battstat->horizont = TRUE;
-  
+  battstat->about_dialog = NULL;
+
   glade_init ();
   
   load_preferences(battstat);

@@ -72,7 +72,7 @@ typedef struct _ProgressData {
   GtkWidget *pixmapwidy;
   GtkWidget *ac_event_box;
   GtkWidget *progress_event_box;
-  GtkWidget *about_box;
+  GtkWidget *about_dialog;
   GtkDialog *prop_win;
   GtkWidget *hbox;
   GtkWidget *hbox1;

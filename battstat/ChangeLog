@@ -1,3 +1,17 @@
+2004-01-30  Dennis Smit  <ds@nerds-incorporated.org>
+
+	* battstat/battstat.h: added about_box GtkWidget to the _ProgressData
+	structure.
+	* battstat/battstat_applet.c (destroy_applet): destroy the about
+	dialog when it's present.
+	(about_cb): check if there already is an about dialog for this
+	instance and if so present it to the user. Also make use of
+	the about box that is added to _ProgressData.
+	(battstat_applet_fill): initialize the about_box member of
+	_ProgressData with NULL.
+	(destroy_about): removed as it was bogus.
+	Fixes #132461
+
 2004-01-27  Jason Leach  <leach@wam.umd.edu>
 
 	* Makefile.am (APMINC): One last builddir != srcdir fix.
