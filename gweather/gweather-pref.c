@@ -622,6 +622,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
 			   gtk_widget_get_screen (GTK_WIDGET (gw_applet->applet)));
 
     pref_vbox = GTK_DIALOG (gw_applet->pref)->vbox;
+    gtk_box_set_spacing (GTK_BOX (pref_vbox), 2);
     gtk_widget_show (pref_vbox);
 
     pref_notebook = gtk_notebook_new ();

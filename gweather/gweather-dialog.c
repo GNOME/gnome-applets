@@ -348,6 +348,7 @@ void gweather_dialog_open (GWeatherApplet *gw_applet)
     gweather_dialog_update(gw_applet);
     gtk_dialog_set_has_separator (GTK_DIALOG (gw_applet->gweather_dialog), FALSE);
     gtk_container_set_border_width (GTK_CONTAINER (gw_applet->gweather_dialog), 5);
+    gtk_box_set_spacing (GTK_BOX (GTK_DIALOG (gw_applet->gweather_dialog)->vbox), 2);
     gtk_window_set_resizable(GTK_WINDOW(gw_applet->gweather_dialog), TRUE);
     gtk_widget_show(gw_applet->gweather_dialog);
 }
