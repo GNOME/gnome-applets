@@ -52,8 +52,9 @@ static gint      g_list_str_cmp( gconstpointer, gconstpointer );
 static GList *path_elements = NULL;
 
 void
-cmd_completion(char *cmd)
+cmd_completion(char *cmd, PanelApplet *applet)
 {
+    properties *prop = g_object_get_data (G_OBJECT (applet), "prop");
     char buffer[MAX_COMMAND_LENGTH] = "";
     char largest_possible_completion[MAX_COMMAND_LENGTH] = "";
     int completion_not_unique = FALSE;   
@@ -70,8 +71,8 @@ cmd_completion(char *cmd)
 	}
 
     show_message((gchar *) _("completing..."));
-    num_whitespaces = prefix_length_Including_whithespaces(cmd) - prefix_length(cmd);
-    possible_completions_list = cmdc(cmd + prefix_length_Including_whithespaces(cmd));
+    num_whitespaces = prefix_length_Including_whithespaces(cmd, prop) - prefix_length(cmd, prop);
+    possible_completions_list = cmdc(cmd + prefix_length_Including_whithespaces(cmd, prop));
 
     /* get first possible completion */
     completion_element = g_list_first(possible_completions_list);
@@ -97,8 +98,8 @@ cmd_completion(char *cmd)
       
     if(strlen(largest_possible_completion) > 0)
 	{
-	    if(get_prefix(cmd) != NULL)
-		strcpy(cmd, get_prefix(cmd));
+	    if(get_prefix(cmd, prop) != NULL)
+		strcpy(cmd, get_prefix(cmd, prop));
 	    else
 		strcpy(cmd, "");
 

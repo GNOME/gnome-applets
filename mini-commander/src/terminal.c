@@ -245,8 +245,9 @@ term_focus_in_cb(GtkWidget *widget, gpointer data)
 
 
 void
-terminal_init(void)
+terminal_init(PanelApplet *applet)
 {
+    properties *prop = g_object_get_data (G_OBJECT (applet), "prop");
     gushort red[18], green[18], blue[18];
     int i;
 
@@ -280,13 +281,13 @@ terminal_init(void)
 	}
 
     /*
-    red[16] = (gushort) prop.cmd_line_color_fg_r;
-    green[16] = (gushort) prop.cmd_line_color_fg_g;
-    blue[16] = (gushort) prop.cmd_line_color_fg_b;
+    red[16] = (gushort) prop->cmd_line_color_fg_r;
+    green[16] = (gushort) prop->cmd_line_color_fg_g;
+    blue[16] = (gushort) prop->cmd_line_color_fg_b;
     
-    red[17] = (gushort) prop.cmd_line_color_bg_r;
-    green[17] = (gushort) prop.cmd_line_color_bg_g;
-    blue[17] = (gushort) prop.cmd_line_color_bg_b;*/
+    red[17] = (gushort) prop->cmd_line_color_bg_r;
+    green[17] = (gushort) prop->cmd_line_color_bg_g;
+    blue[17] = (gushort) prop->cmd_line_color_bg_b;*/
 
     /* zvt_term_set_color_scheme(ZVT_TERM(terminal_zvt), red, green, blue); */
 

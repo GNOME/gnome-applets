@@ -39,15 +39,16 @@ static GtkWidget *window_message_label;
 
 
 void
-init_message_label(void)
+init_message_label(PanelApplet *applet)
 {
     label_message = gtk_label_new((gchar *) "");
-    gtk_timeout_add(15*1000, (GtkFunction) show_interesting_information, (gpointer) NULL);
+    gtk_timeout_add(15*1000, (GtkFunction) show_interesting_information, applet);
 }
 
 void show_message(gchar *message)
 {
-    if(!prop.flat_layout)
+#if 0
+    if(0/*!prop.flat_layout*/)
 	{
 	    gtk_label_set_text(GTK_LABEL(label_message), message);   
 	    message_locked = TRUE;
@@ -63,7 +64,7 @@ void show_message(gchar *message)
 	    
 	    message_window = gtk_window_new(GTK_WINDOW_POPUP); 
 	    /* gtk_window_set_policy(GTK_WINDOW(message_window), 0, 0, 1); */
-	    gtk_widget_set_usize(GTK_WIDGET(message_window), prop.normal_size_x, 20);
+	    gtk_widget_set_usize(GTK_WIDGET(message_window), 20 /*prop.normal_size_x*/, 20);
 	    gdk_window_get_origin (applet->window, &x, &y);
 	    y -= 20 + 6;
 	    if(y < 0)
@@ -87,15 +88,17 @@ void show_message(gchar *message)
 	}
 
     gtk_timeout_add(2000, (GtkFunction) hide_message, (gpointer) message);
+#endif
 }
 
 static gint
 hide_message(gpointer data)
 {
+#if 0
     gchar *message = (char *) data;
     gchar *current_message;
 
-    if(!prop.flat_layout)
+    if(0/*!prop.flat_layout*/)
 	{
 	    gtk_label_get(GTK_LABEL(label_message), &current_message);
 	    if(message && strcmp((char *) message, (char *) current_message) == 0)
@@ -121,11 +124,14 @@ hide_message(gpointer data)
 
     /* stop timeout function */
     return FALSE;
+#endif
 }
 
 static gint
 show_interesting_information(gpointer data)
 {
+    PanelApplet *applet = data;
+    properties *prop = g_object_get_data (G_OBJECT (applet), "prop");
     /* shows intersting information while there is no text
        in the mesage label
        currently only time is shown*/
@@ -135,14 +141,14 @@ show_interesting_information(gpointer data)
     time_t seconds = time((time_t *) 0);
     struct tm *tm;
 
-    if(!prop.flat_layout && message_locked == FALSE)
-	if(prop.show_time || prop.show_date)
+    if(!prop->flat_layout && message_locked == FALSE)
+	if(prop->show_time || prop->show_date)
 	    {
-		if(prop.show_time && prop.show_date)
+		if(prop->show_time && prop->show_date)
 		    time_format = _("%H:%M - %d. %b");
-		else if(prop.show_time && !prop.show_date)
+		else if(prop->show_time && !prop->show_date)
 		    time_format = _("%H:%M");
-		else if(!prop.show_time && prop.show_date)
+		else if(!prop->show_time && prop->show_date)
 		    time_format = _("%d. %b");
 		else
 		    time_format = "-";
@@ -178,3 +184,4 @@ show_interesting_information(gpointer data)
     return TRUE;
     data = NULL;
 }
+

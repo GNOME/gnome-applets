@@ -39,8 +39,9 @@
 */
 
 void
-exec_command(char *cmd)
+exec_command(char *cmd, PanelApplet *applet)
 {
+    properties *prop = g_object_get_data (G_OBJECT (applet), "prop");
     pid_t pid;
     char *argv[5];
     char command[1000];
@@ -52,7 +53,7 @@ exec_command(char *cmd)
     /* Add terminating \0 to the end */
     command[sizeof(command)-1] = '\0';
 
-    expand_command(command);
+    expand_command(command, prop);
 
     /* execute command */
     show_message((gchar *) _("starting...")); 	    

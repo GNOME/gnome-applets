@@ -31,50 +31,50 @@
 #include "message.h"
 
 
-static int prefix_number(char *command);
+static int prefix_number(char *command, properties *prop);
 
 
 /* search for the longest matching prefix */
 static int
-prefix_number(char *command)
+prefix_number(char *command, properties *prop)
 {
     int i;
     int found_prefix_no = -1;
     unsigned int found_prefix_len = 0;
 
     for(i=0; i<=MAX_NUM_MACROS-1; i++)
-	if (prop.macro_pattern[i] != NULL &&
- 	    strlen(prop.macro_pattern[i]) > found_prefix_len &&
-	    strncmp(command, prop.macro_pattern[i], strlen(prop.macro_pattern[i])) == 0 &&
-	    (strstr(prop.macro_command[i], "$1") != NULL || strlen(prop.macro_pattern[i]) == strlen(command)))
+	if (prop->macro_pattern[i] != NULL &&
+ 	    strlen(prop->macro_pattern[i]) > found_prefix_len &&
+	    strncmp(command, prop->macro_pattern[i], strlen(prop->macro_pattern[i])) == 0 &&
+	    (strstr(prop->macro_command[i], "$1") != NULL || strlen(prop->macro_pattern[i]) == strlen(command)))
 	    {
 		/* found a matching prefix;
 		   if macro does not contain "$1" then the prefix has
 		   to to have the same lenght as the command */
 		found_prefix_no = i; found_prefix_len =
-		strlen(prop.macro_pattern[i]); }
+		strlen(prop->macro_pattern[i]); }
 
     return(found_prefix_no);
 }
 
 int
-prefix_length(char *command)
+prefix_length(char *command, properties *prop)
 {
-    int pn = prefix_number(command);
+    int pn = prefix_number(command, prop);
 
     if(pn > -1)
-	return strlen(prop.macro_pattern[pn]);
+	return strlen(prop->macro_pattern[pn]);
 
     /* no prefix found */
     return(0);
 }
 
 int
-prefix_length_Including_whithespaces(char *command)
+prefix_length_Including_whithespaces(char *command, properties *prop)
 {
     char *c_ptr;
 
-    c_ptr = command + prefix_length(command);
+    c_ptr = command + prefix_length(command, prop);
 
     while(*c_ptr != '\000' && *c_ptr == ' ')
 	c_ptr++;
@@ -83,12 +83,12 @@ prefix_length_Including_whithespaces(char *command)
 }
 
 char *
-get_prefix(char *command)
+get_prefix(char *command, properties *prop)
 {
-    int pn = prefix_number(command);
+    int pn = prefix_number(command, prop);
 
     if(pn > -1)
-	return((char *) prop.macro_pattern[pn]);
+	return((char *) prop->macro_pattern[pn]);
 
     /* no prefix found */
     return((char *) NULL);
@@ -96,7 +96,7 @@ get_prefix(char *command)
 
 
 void
-expand_command(char *command)
+expand_command(char *command, properties *prop)
 {
     char command_exec[1000] = "";
     char placeholder[100];
@@ -108,13 +108,13 @@ expand_command(char *command)
     regmatch_t regex_matches[MAX_NUM_MACRO_PARAMETERS];
 
     for(i = 0; i < MAX_NUM_MACROS - 1; ++i)
-	if(prop.macro_regex[i] != NULL &&
-	   regexec(prop.macro_regex[i], command, MAX_NUM_MACRO_PARAMETERS, regex_matches, 0) != REG_NOMATCH)
+	if(prop->macro_regex[i] != NULL &&
+	   regexec(prop->macro_regex[i], command, MAX_NUM_MACRO_PARAMETERS, regex_matches, 0) != REG_NOMATCH)
 	    {
 		/* found a matching macro regex pattern; */
-		fprintf(stderr, "%u: %s\n", i, prop.macro_pattern[i]);
+		fprintf(stderr, "%u: %s\n", i, prop->macro_pattern[i]);
 
-		macro = prop.macro_command[i];
+		macro = prop->macro_command[i];
 
 		inside_placeholder = 0;
 		for(char_p = macro; *char_p != '\0'; ++char_p)

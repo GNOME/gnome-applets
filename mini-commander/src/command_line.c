@@ -49,6 +49,8 @@ static char browsed_filename[300] = "";
 static gint
 command_key_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
 {
+    PanelApplet *applet = data;
+    properties *prop = g_object_get_data (G_OBJECT (applet), "prop");
     guint key = event->keyval;
     char *command;
     static char current_command[MAX_COMMAND_LENGTH];
@@ -63,7 +65,7 @@ command_key_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
 	{
 	    /* tab key pressed */
 	    strcpy(buffer, (char *) gtk_entry_get_text(GTK_ENTRY(widget)));
-	    cmd_completion(buffer);
+	    cmd_completion(buffer, applet);
 	    gtk_entry_set_text(GTK_ENTRY(widget), (gchar *) buffer);
 
 	    propagate_event = FALSE;
@@ -118,7 +120,7 @@ command_key_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
 	    command = (char *) malloc(sizeof(char) * MAX_COMMAND_LENGTH);
 	    strcpy(command, (char *) gtk_entry_get_text(GTK_ENTRY(widget)));
 	    /* printf("%s\n", command); */
-	    exec_command(command);
+	    exec_command(command, applet);
 
 	    append_history_entry((char *) command);
 	    history_position = LENGTH_HISTORY_LIST;		   
@@ -128,7 +130,7 @@ command_key_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
 	    gtk_entry_set_text(GTK_ENTRY(widget), (gchar *) "");
 	    propagate_event = FALSE;
 	}
-    else if(prop.auto_complete_history && key >= GDK_space && key <= GDK_asciitilde )
+    else if(prop->auto_complete_history && key >= GDK_space && key <= GDK_asciitilde )
 	{
             char *completed_command;
 	    gint current_position = gtk_editable_get_position(GTK_EDITABLE(widget));
@@ -210,10 +212,11 @@ static void
 history_selection_made_cb(GtkWidget *clist, gint row, gint column,
 			GdkEventButton *event, gpointer data)
 {
+    PanelApplet *applet = data;
     gchar *command;
 
     gtk_clist_get_text(GTK_CLIST(clist), row, column, &command);
-    exec_command(command);
+    exec_command(command, applet);
 
     /* close history window */
     gtk_widget_destroy(GTK_WIDGET(clist->parent->parent->parent));
@@ -270,6 +273,8 @@ history_popup_clicked_inside_cb(GtkWidget *widget, gpointer data)
 gint 
 show_history_signal(GtkWidget *widget, gpointer data)
 {
+     PanelApplet *applet = data;
+     properties *prop = g_object_get_data (G_OBJECT (applet), "prop");
      GtkWidget *window;
      GtkWidget *frame;
      GtkWidget *scrolled_window;
@@ -332,13 +337,13 @@ show_history_signal(GtkWidget *widget, gpointer data)
      style = malloc(sizeof(Gtk_style));
      style = gtk_style_copy(gtk_widget_get_style(GTK_WIDGET(applet)));
 
-     style->fg[GTK_STATE_NORMAL].red = (gushort) prop.cmd_line_color_fg_r;
-     style->fg[GTK_STATE_NORMAL].green = (gushort) prop.cmd_line_color_fg_g;
-     style->fg[GTK_STATE_NORMAL].blue = (gushort) prop.cmd_line_color_fg_b;
+     style->fg[GTK_STATE_NORMAL].red = (gushort) prop->cmd_line_color_fg_r;
+     style->fg[GTK_STATE_NORMAL].green = (gushort) prop->cmd_line_color_fg_g;
+     style->fg[GTK_STATE_NORMAL].blue = (gushort) prop->cmd_line_color_fg_b;
 
-     style->base[GTK_STATE_NORMAL].red = (gushort) prop.cmd_line_color_bg_r;
-     style->base[GTK_STATE_NORMAL].green = (gushort) prop.cmd_line_color_bg_g;
-     style->base[GTK_STATE_NORMAL].blue = (gushort) prop.cmd_line_color_bg_b;
+     style->base[GTK_STATE_NORMAL].red = (gushort) prop->cmd_line_color_bg_r;
+     style->base[GTK_STATE_NORMAL].green = (gushort) prop->cmd_line_color_bg_g;
+     style->base[GTK_STATE_NORMAL].blue = (gushort) prop->cmd_line_color_bg_b;
      
      gtk_widget_push_style (style);
      */
@@ -347,7 +352,7 @@ show_history_signal(GtkWidget *widget, gpointer data)
      gtk_signal_connect(GTK_OBJECT(clist),
 			"select_row",
 			GTK_SIGNAL_FUNC(history_selection_made_cb),
-			NULL);
+			applet);
      
      
      /* add history entries to list */
@@ -396,6 +401,7 @@ show_history_signal(GtkWidget *widget, gpointer data)
 static gint 
 file_browser_ok_signal(GtkWidget *widget, gpointer file_select)
 {
+    PanelApplet *applet = g_object_get_data (G_OBJECT (file_select), "applet");
     /* get selected file name */
     strcpy(browsed_filename, (char *) gtk_file_selection_get_filename(GTK_FILE_SELECTION(file_select)));
 
@@ -405,7 +411,7 @@ file_browser_ok_signal(GtkWidget *widget, gpointer file_select)
     /* printf("Filename: %s\n", (char *)  browsed_filename); */
 
     /* execute command */
-    exec_command(browsed_filename);
+    exec_command(browsed_filename, applet);
 
     /* go on */
     return FALSE;  
@@ -416,11 +422,12 @@ gint
 show_file_browser_signal(GtkWidget *widget, gpointer data)
 {
     /* FIXME: write this routine */
-    
+    PanelApplet *applet;
     GtkWidget *file_select;
 
     /* build file select dialog */
     file_select = gtk_file_selection_new((gchar *) _("Start program"));
+    g_object_set_data (G_OBJECT (file_select), "applet", applet);
     gtk_signal_connect(GTK_OBJECT(GTK_FILE_SELECTION(file_select)->ok_button),
 		       "clicked",
 		       GTK_SIGNAL_FUNC(file_browser_ok_signal),
@@ -448,8 +455,9 @@ show_file_browser_signal(GtkWidget *widget, gpointer data)
 }
 
 void
-init_command_entry(void)
+init_command_entry(PanelApplet *applet)
 {
+    properties *prop = g_object_get_data (G_OBJECT (applet), "prop");
     if(entry_command)
     	gtk_widget_destroy(GTK_WIDGET(entry_command));    
     
@@ -462,7 +470,7 @@ init_command_entry(void)
     
     gtk_signal_connect(GTK_OBJECT(entry_command), "key_press_event",
 		       GTK_SIGNAL_FUNC(command_key_event),
-		       NULL);
+		       applet);
 
 #if 0
     gtk_signal_connect(GTK_OBJECT(entry_command), "focus_out_event",
@@ -475,15 +483,15 @@ init_command_entry(void)
 
     gtk_signal_connect(GTK_OBJECT(entry_command), "button_press_event",
 		       GTK_SIGNAL_FUNC(command_line_activate_cb),
-		       NULL);
+		       applet);
     
-    command_entry_update_color();
-    command_entry_update_size();
+    command_entry_update_color(prop);
+    command_entry_update_size(prop);
 }
 
 
 void
-command_entry_update_color(void)
+command_entry_update_color(properties *prop)
 {
     GtkStyle *style;
     
@@ -493,38 +501,38 @@ command_entry_update_color(void)
     style = gtk_style_copy(gtk_widget_get_style(entry_command));
     
     /* set text color */
-    style->text[GTK_STATE_NORMAL].red = (gushort) prop.cmd_line_color_fg_r;
-    style->text[GTK_STATE_NORMAL].green = (gushort) prop.cmd_line_color_fg_g;
-    style->text[GTK_STATE_NORMAL].blue = (gushort) prop.cmd_line_color_fg_b;
+    style->text[GTK_STATE_NORMAL].red = (gushort) prop->cmd_line_color_fg_r;
+    style->text[GTK_STATE_NORMAL].green = (gushort) prop->cmd_line_color_fg_g;
+    style->text[GTK_STATE_NORMAL].blue = (gushort) prop->cmd_line_color_fg_b;
 
     /* does someone know how to set the color of the cursor? */
 
     /* set background color */
-    style->base[GTK_STATE_NORMAL].red = (gushort) prop.cmd_line_color_bg_r;
-    style->base[GTK_STATE_NORMAL].green = (gushort) prop.cmd_line_color_bg_g;
-    style->base[GTK_STATE_NORMAL].blue = (gushort) prop.cmd_line_color_bg_b;
+    style->base[GTK_STATE_NORMAL].red = (gushort) prop->cmd_line_color_bg_r;
+    style->base[GTK_STATE_NORMAL].green = (gushort) prop->cmd_line_color_bg_g;
+    style->base[GTK_STATE_NORMAL].blue = (gushort) prop->cmd_line_color_bg_b;
     
     gtk_widget_set_style(entry_command, style);
 }
 
 
 void
-command_entry_update_size(void)
+command_entry_update_size(properties *prop)
 {
     int size_y = -1;
   
-    if(prop.flat_layout)  {
-	if(prop.show_handle && !prop.show_frame)
-	    size_y = prop.normal_size_x - 17 - 10;
-	else if(!prop.show_handle && !prop.show_frame)
-	    size_y = prop.normal_size_x - 17;
-	if(prop.show_handle && prop.show_frame)
-	    size_y = prop.normal_size_x - 17 - 10 - 10;
-	else if(!prop.show_handle && prop.show_frame)
-	    size_y = prop.normal_size_x - 17 - 10;
+    if(prop->flat_layout)  {
+	if(prop->show_handle && !prop->show_frame)
+	    size_y = prop->normal_size_x - 17 - 10;
+	else if(!prop->show_handle && !prop->show_frame)
+	    size_y = prop->normal_size_x - 17;
+	if(prop->show_handle && prop->show_frame)
+	    size_y = prop->normal_size_x - 17 - 10 - 10;
+	else if(!prop->show_handle && prop->show_frame)
+	    size_y = prop->normal_size_x - 17 - 10;
     }
 
-    gtk_widget_set_usize(GTK_WIDGET(entry_command), size_y, prop.cmd_line_size_y);
+    gtk_widget_set_usize(GTK_WIDGET(entry_command), size_y, prop->cmd_line_size_y);
 }
 
 

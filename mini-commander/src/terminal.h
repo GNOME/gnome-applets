@@ -1,3 +1,3 @@
 extern GtkWidget *terminal_zvt;
 
-void terminal_init(void);
+void terminal_init(PanelApplet *applet);

@@ -1,3 +1,6 @@
+#ifndef PREFERENCES_H__
+#define PREFERENCES_H__
+
 #include <sys/types.h>
 #include <regex.h>
 #include <panel-applet.h>
@@ -34,16 +37,12 @@ struct struct_properties
     regex_t *macro_regex[MAX_NUM_MACROS];
 };
 
-extern properties prop;
-extern properties prop_tmp;
 
 extern GtkWidget *applet;
 
-void load_session(void);
-
-void save_session(void);
+properties * load_session(void);
 
 gint save_session_signal(GtkWidget *widget, const char *privcfgpath, const char *globcfgpath);
 
 void properties_box(BonoboUIComponent *uic, gpointer data, const gchar *verbname);
-
+#endif
