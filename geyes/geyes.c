@@ -174,10 +174,6 @@ about_cb (BonoboUIComponent *uic,
 	  EyesApplet        *eyes_applet,
 	  const gchar       *verbname)
 {
-	GdkPixbuf	 *pixbuf;
-	GError		 *error = NULL;
-	gchar		 *file;
-        
         static const gchar *authors [] = {
 		"Dave Camp <campd@oit.edu>",
 		NULL
@@ -190,8 +186,6 @@ about_cb (BonoboUIComponent *uic,
 		NULL
 	};
 
-	const gchar *translator_credits = _("translator_credits");
-
 	if (eyes_applet->about_dialog) {
 		gtk_window_set_screen (GTK_WINDOW (eyes_applet->about_dialog),
 				       gtk_widget_get_screen (GTK_WIDGET (eyes_applet->applet)));
@@ -200,27 +194,19 @@ about_cb (BonoboUIComponent *uic,
 		return;
 	}
         
-	file = gnome_program_locate_file (NULL, GNOME_FILE_DOMAIN_PIXMAP, "gnome-eyes.png", FALSE, NULL);
-	pixbuf = gdk_pixbuf_new_from_file (file, &error);
-	g_free (file);
-	
-	if (error) {
-		g_warning (G_STRLOC ": cannot open %s: %s", file, error->message);
-		g_error_free (error);
-	}
-	
-        eyes_applet->about_dialog = gnome_about_new (
-		_("Geyes"), VERSION,
-		_("Copyright (C) 1999 Dave Camp"),
-		_("A goofy little xeyes clone for the GNOME panel."),
-		authors,
-		documenters,
-		strcmp (translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
-		pixbuf);
+        eyes_applet->about_dialog = gtk_about_dialog_new ();
+
+	g_object_set (eyes_applet->about_dialog,
+		      "name", _("Geyes"),
+		      "version", VERSION,
+		      "comments", _("A goofy little xeyes clone for the GNOME panel."),
+		      "copyright", _("Copyright (C) 1999 Dave Camp"),
+		      "authors", authors,
+		      "dokcumenters", documenters,
+		      "translation-credits", strcmp (_("translator_credits"), "translator_credits") != 0 ? _("translator_credits") : NULL,
+		      "logo-icon-name", "gnome-eyes",
+		      NULL);
 		
-	if (pixbuf)
-		gdk_pixbuf_unref (pixbuf);
-			
 	gtk_window_set_wmclass (GTK_WINDOW (eyes_applet->about_dialog), "geyes", "Geyes");
 	gtk_window_set_screen (GTK_WINDOW (eyes_applet->about_dialog),
 			       gtk_widget_get_screen (GTK_WIDGET (eyes_applet->applet)));

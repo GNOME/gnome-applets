@@ -18,11 +18,22 @@
  */
 
 #include <config.h>
-#include <gnome.h>
 #include <string.h>
 #include <dirent.h>
 #include <limits.h>
 #include <ctype.h>
+
+#include <gtk/gtkbox.h>
+#include <gtk/gtkcellrenderertext.h>
+#include <gtk/gtkhbox.h>
+#include <gtk/gtklabel.h>
+#include <gtk/gtkliststore.h>
+#include <gtk/gtkmessagedialog.h>
+#include <gtk/gtkscrolledwindow.h>
+#include <gtk/gtkstock.h>
+#include <gtk/gtktreemodel.h>
+#include <gtk/gtktreeselection.h>
+#include <gtk/gtkvbox.h>
 
 #include <gconf/gconf-client.h>
 #include <panel-applet-gconf.h>
@@ -302,7 +313,6 @@ properties_cb (BonoboUIComponent *uic,
 			       gtk_widget_get_screen (GTK_WIDGET (eyes_applet->applet)));
         
 	gtk_widget_set_size_request (GTK_WIDGET (pbox), 300, 200);
-	gtk_window_set_resizable (GTK_WINDOW (pbox), FALSE);
         gtk_dialog_set_default_response(GTK_DIALOG (pbox), GTK_RESPONSE_CLOSE);
         gtk_dialog_set_has_separator (GTK_DIALOG (pbox), FALSE);
         gtk_container_set_border_width (GTK_CONTAINER (pbox), 5);

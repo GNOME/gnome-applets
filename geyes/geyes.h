@@ -19,7 +19,11 @@
 
 #ifndef __GEYES_H__
 #define __GEYES_H__
-#include <gnome.h>
+
+#include <glib.h>
+#include <gdk-pixbuf/gdk-pixbuf.h>
+#include <gtk/gtktooltips.h>
+#include <gtk/gtkwidget.h>
 #include <panel-applet.h>
 
 #define MAX_EYES 1000
