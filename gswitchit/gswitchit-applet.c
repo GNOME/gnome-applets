@@ -197,20 +197,20 @@ GSwitchItAppletFilterXEvt (GdkXEvent * xev,
 	XEvent *xevent = (XEvent *) xev;
 	Display *display = xevent->xany.display;
 	XklFilterEvents (xevent);
-	switch ( xevent->type )
-	{
-		case ReparentNotify:
+	switch (xevent->type) {
+	case ReparentNotify:
 		{
-			XReparentEvent *rne = ( XReparentEvent * ) xev;
+			XReparentEvent *rne = (XReparentEvent *) xev;
 			GtkWidget *w1;
 			GdkWindow *w;
-			w1 = gtk_widget_get_ancestor( sia->applet, GTK_TYPE_WINDOW );
-			if( w1 == NULL )
+			w1 = gtk_widget_get_ancestor (sia->applet,
+						      GTK_TYPE_WINDOW);
+			if (w1 == NULL)
 				break;
 			w = w1->window;
-			if( w == NULL || GDK_WINDOW_XID( w ) != rne->window )
+			if (w == NULL || GDK_WINDOW_XID (w) != rne->window)
 				break;
-			XklSetTransparent( GDK_WINDOW_XID( w ), TRUE );
+			XklSetTransparent (GDK_WINDOW_XID (w), TRUE);
 		}
 		break;
 	}
@@ -300,6 +300,7 @@ GSwitchItAppletPrepareDrawing (GSwitchItApplet * sia, int group)
 		sia->ebox = NULL;	// not used in this case!
 	} else {
 		char *layoutName;
+		char *allocLayoutName = NULL;
 		XklConfigItem configItem;
 		GtkWidget *align, *label;
 
@@ -319,13 +320,19 @@ GSwitchItAppletPrepareDrawing (GSwitchItApplet * sia, int group)
 
 			if (XklConfigFindLayout (&configItem)) {
 				char *sd = configItem.shortDescription;
-				if (sd != NULL && *sd != '\0')
-					layoutName = sd;
+				if (sd != NULL && *sd != '\0') {
+					layoutName = allocLayoutName =
+					    g_locale_to_utf8 (sd, -1, NULL,
+							      NULL, NULL);
+				}
 			}
 		} else
 			layoutName = sia->groupNames[group];
 		align = gtk_alignment_new (0.5, 0.5, 1.0, 1.0);
+		XklDebug (0, "[[layoutname][%s]]\n", layoutName);
 		label = gtk_label_new (layoutName);
+		if (allocLayoutName != NULL)
+			g_free (allocLayoutName);
 		sia->ebox = gtk_event_box_new ();
 		groupDrawingArea = sia->ebox;
 		g_signal_connect (G_OBJECT (sia->ebox),
