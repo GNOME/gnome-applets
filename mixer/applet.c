@@ -29,8 +29,10 @@
 #include <glib-object.h>
 #include <gdk/gdkkeysyms.h>
 
+#include <gtk/gtkaboutdialog.h>
 #include <gtk/gtkbutton.h>
 #include <gtk/gtkicontheme.h>
+#include <gtk/gtkmain.h>
 #include <gtk/gtkmessagedialog.h>
 #include <gtk/gtkrange.h>
 #include <gtk/gtktooltips.h>
@@ -38,7 +40,7 @@
 
 #include <gconf/gconf-client.h>
 
-#include <libgnome/gnome-help.h>
+#include <libgnomeui/gnome-help.h>
 
 #include "applet.h"
 #include "keys.h"
@@ -359,7 +361,6 @@ gboolean
 gnome_volume_applet_setup (GnomeVolumeApplet *applet,
 			   GList *elements)
 {
-  GConfValue *value;
   GtkObject *adj;
   gint page;
   BonoboUIComponent *component;

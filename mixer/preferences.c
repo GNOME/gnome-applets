@@ -111,8 +111,7 @@ gnome_volume_applet_preferences_class_init (GnomeVolumeAppletPreferencesClass *k
 static void
 gnome_volume_applet_preferences_init (GnomeVolumeAppletPreferences *prefs)
 {
-  GtkWidget *box, *label, *view, *viewport;
-  GtkAdjustment *hadjustment, *vadjustment;
+  GtkWidget *box, *label, *view;
   GtkListStore *store;
   GtkTreeSelection *sel;
   GtkTreeViewColumn *col;
@@ -156,19 +155,14 @@ gnome_volume_applet_preferences_init (GnomeVolumeAppletPreferences *prefs)
   view = gtk_scrolled_window_new (NULL, NULL);
   gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (view),
 				  GTK_POLICY_NEVER, GTK_POLICY_AUTOMATIC);
+  gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (view),
+				       GTK_SHADOW_IN);
   gtk_widget_set_size_request (view, -1, 100);
 
-  hadjustment = gtk_scrolled_window_get_hadjustment (GTK_SCROLLED_WINDOW (view));
-  vadjustment = gtk_scrolled_window_get_vadjustment (GTK_SCROLLED_WINDOW (view));
-  viewport = gtk_viewport_new (hadjustment, vadjustment);
-  gtk_viewport_set_shadow_type (GTK_VIEWPORT (viewport), GTK_SHADOW_IN);
-
-  gtk_container_add (GTK_CONTAINER (viewport), prefs->treeview);
-  gtk_container_add (GTK_CONTAINER (view), viewport);
+  gtk_container_add (GTK_CONTAINER (view), prefs->treeview);
   gtk_box_pack_start (GTK_BOX (box), view, TRUE, TRUE, 0);
 
   gtk_widget_show (prefs->treeview);
-  gtk_widget_show (viewport);
   gtk_widget_show (view);
 
   /* treeview internals */
@@ -182,6 +176,7 @@ gnome_volume_applet_preferences_init (GnomeVolumeAppletPreferences *prefs)
 						  NULL);
   gtk_tree_view_column_set_clickable (col, TRUE);
   gtk_tree_view_append_column (GTK_TREE_VIEW (prefs->treeview), col);
+  gtk_tree_view_set_search_column (GTK_TREE_VIEW (prefs->treeview), COL_LABEL);
 
   /* and show */
   gtk_box_pack_start (GTK_BOX (GTK_DIALOG (prefs)->vbox), box,
