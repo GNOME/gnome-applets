@@ -56,6 +56,7 @@ $Id$
 #include <gtk/gtkspinbutton.h>
 
 #include <panel-applet.h>
+#include <panel-applet-gconf.h>
 /*#include <status-docklet.h>*/
 
 #include "battstat.h"
@@ -241,7 +242,6 @@ prop_cb (PanelApplet *applet, gpointer data)
   GladeXML       *glade_xml;
   GtkWidget      *layout_table;
   GtkWidget      *preview_hbox;
-  GtkStyle       *teststyle;
   GtkWidget      *widget;
   GtkWidget      *batterypixwid, *statuspixwid;
   guint           percentage;
@@ -296,17 +296,15 @@ prop_cb (PanelApplet *applet, gpointer data)
 		      GTK_SIGNAL_FUNC (adj_value_changed_cb), battstat);
 
   preview_hbox = glade_xml_get_widget (glade_xml, "preview_hbox");
-  
-  teststyle = gtk_widget_get_style( GTK_WIDGET (battstat->prop_win) );
 
   battstat->testpixmap = gdk_pixmap_create_from_xpm_d (battstat->applet->window,
 						       &battstat->testmask,
-						       &teststyle->bg[GTK_STATE_NORMAL],
+						       NULL,
 						       battery_gray_xpm); 
 
   battstat->testpixbuffer = gdk_pixmap_create_from_xpm_d (battstat->applet->window,
 							  &battstat->testpixmask,
-							  &teststyle->bg[GTK_STATE_NORMAL],
+							  NULL,
 							  battery_gray_xpm); 
 
   battstat->testpixgc = gdk_gc_new (battstat->testpixmap);
