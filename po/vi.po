@@ -2,17 +2,75 @@
 # This file is distributed under the same license as the gnome-applets package.
 # pclouds <pclouds@gmx.net>, 2002.
 #
-#: cdplayer/cdplayer.c:707 cdplayer/cdplayer.c:709
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets VERSION\n"
-"POT-Creation-Date: 2002-03-29 19:08-0500\n"
-"PO-Revision-Date: 2002-05-12 14:41-0400\n"
+"POT-Creation-Date: 2002-06-10 11:24+0200\n"
+"PO-Revision-Date: 2002-06-05 01:53+0700\n"
 "Last-Translator: pclouds <pclouds@gmx.net>\n"
 "Language-Team: GnomeVI <gnomevi-list@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#. The long name of the applet in the About dialog.
+#: battstat/GNOME_BattstatApplet.server.in.h:1 battstat/battstat_applet.c:831
+msgid "Battery Charge Monitor"
+msgstr "Trình theo dõi Pin"
+
+#: battstat/GNOME_BattstatApplet.server.in.h:2
+msgid "Battstat Factory"
+msgstr "Battstat Factory"
+
+#: battstat/GNOME_BattstatApplet.server.in.h:3
+msgid "Monitor a laptop's remaining power"
+msgstr "Theo dõi năng lượng còn lại của laptop"
+
+#: battstat/GNOME_BattstatApplet.server.in.h:4
+#: charpick/GNOME_CharpickerApplet.server.in.h:4
+#: drivemount/GNOME_DriveMountApplet.server.in.h:5
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:5
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:4
+#: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:3
+#: panel-menu/GNOME_PanelMenuApplet.server.in.h:4
+msgid "Utility"
+msgstr "Tiện ích"
+
+#: battstat/GNOME_BattstatApplet.xml.h:1 cdplayer/GNOME_CDPlayerApplet.xml.h:1
+#: charpick/GNOME_CharpickerApplet.xml.h:1
+#: drivemount/GNOME_DriveMountApplet.xml.h:1 geyes/GNOME_GeyesApplet.xml.h:1
+#: gkb-new/GNOME_KeyboardApplet.xml.h:1 gtik/GNOME_GtikApplet.xml.h:1
+#: gweather/GNOME_GWeatherApplet.xml.h:1
+#: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
+#: mixer/GNOME_MixerApplet.xml.h:1 modemlights/GNOME_ModemlightsApplet.xml.h:1
+#: multiload/GNOME_MultiloadApplet.xml.h:1
+msgid "_About..."
+msgstr "_Giới thiệu..."
+
+#: battstat/GNOME_BattstatApplet.xml.h:2 cdplayer/GNOME_CDPlayerApplet.xml.h:2
+#: charpick/GNOME_CharpickerApplet.xml.h:2
+#: drivemount/GNOME_DriveMountApplet.xml.h:4 geyes/GNOME_GeyesApplet.xml.h:2
+#: gkb-new/GNOME_KeyboardApplet.xml.h:2 gtik/GNOME_GtikApplet.xml.h:2
+#: gweather/GNOME_GWeatherApplet.xml.h:3
+#: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
+#: mixer/GNOME_MixerApplet.xml.h:2 modemlights/GNOME_ModemlightsApplet.xml.h:2
+msgid "_Help"
+msgstr "Trợ _giúp"
+
+#: battstat/GNOME_BattstatApplet.xml.h:3 cdplayer/GNOME_CDPlayerApplet.xml.h:3
+#: charpick/GNOME_CharpickerApplet.xml.h:3
+#: drivemount/GNOME_DriveMountApplet.xml.h:5 geyes/GNOME_GeyesApplet.xml.h:3
+#: gkb-new/GNOME_KeyboardApplet.xml.h:3 gtik/GNOME_GtikApplet.xml.h:3
+#: gweather/GNOME_GWeatherApplet.xml.h:4
+#: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
+#: modemlights/GNOME_ModemlightsApplet.xml.h:3
+#: multiload/GNOME_MultiloadApplet.xml.h:2
+msgid "_Preferences..."
+msgstr "_Thông số..."
+
+#: battstat/GNOME_BattstatApplet.xml.h:4
+msgid "_Suspend Computer..."
+msgstr "Tạm _dừng máy tính..."
 
 #. Message displayed if user tries to run applet
 #. on unsupported platform
@@ -27,22 +85,22 @@ msgstr "Applet này sẽ không hoạt động đúng hoàn toàn.\n"
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:316 battstat/battstat_applet.c:834
+#: battstat/battstat_applet.c:316 battstat/battstat_applet.c:859
 msgid "High"
 msgstr "Cao"
 
 #. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:836
+#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:861
 msgid "Low"
 msgstr "Thấp"
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:838
+#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:863
 msgid "Critical"
 msgstr "Nghiêm trọng"
 
 #. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:840
+#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:865
 msgid "Charging"
 msgstr "Đang sạc"
 
@@ -51,14 +109,14 @@ msgstr "Đang sạc"
 msgid "Battery low (%d%%) and AC is offline"
 msgstr "Pin yếu (%d%%) và không có nguồn xoay chiều"
 
-#: battstat/battstat_applet.c:426
+#: battstat/battstat_applet.c:427
 msgid "Battery is now fully re-charged!"
 msgstr "Pin đã được sạc đầy!"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:445 battstat/battstat_applet.c:997
+#: battstat/battstat_applet.c:446 battstat/battstat_applet.c:1022
 #, c-format
 msgid ""
 "System is running on battery power\n"
@@ -70,7 +128,7 @@ msgstr ""
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:449 battstat/battstat_applet.c:1005
+#: battstat/battstat_applet.c:450 battstat/battstat_applet.c:1030
 #, c-format
 msgid ""
 "System is running on AC power\n"
@@ -81,32 +139,32 @@ msgstr ""
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:455 battstat/battstat_applet.c:929
-#: battstat/battstat_applet.c:1018
+#: battstat/battstat_applet.c:456 battstat/battstat_applet.c:954
+#: battstat/battstat_applet.c:1043
 msgid "System is running on battery power"
 msgstr "Hệ thống đang chạy bằng pin"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:458 battstat/battstat_applet.c:935
-#: battstat/battstat_applet.c:1024
+#: battstat/battstat_applet.c:459 battstat/battstat_applet.c:960
+#: battstat/battstat_applet.c:1049
 msgid "System is running on AC power"
 msgstr "Hệ thống đang chạy bằng điện xoay chiều"
 
-#: battstat/battstat_applet.c:472
+#: battstat/battstat_applet.c:473
 msgid "N/A"
 msgstr "Không biết"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:596 battstat/battstat_applet.c:909
+#: battstat/battstat_applet.c:597 battstat/battstat_applet.c:934
 #, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
 msgstr "Hệ thống đang chạy bằng pin. Pin: %d%% (%s)"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:603 battstat/battstat_applet.c:916
+#: battstat/battstat_applet.c:604 battstat/battstat_applet.c:941
 #, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
 msgstr "Hệ thống đang chạy bằng điện xoay chiều. Pin: %d%% (%s)"
@@ -115,33 +173,33 @@ msgstr "Hệ thống đang chạy bằng điện xoay chiều. Pin: %d%% (%s)"
 #. battery frame when the computer is using battery
 #. power and the battery isn't present. Not a
 #. possible combination, I guess... :)
-#: battstat/battstat_applet.c:614
+#: battstat/battstat_applet.c:615
 msgid "System is running on battery power. Battery: Not present"
 msgstr "Hệ thống đang chạy bằng pin. Pin: không có"
 
 #. This string will display as a tooltip over the
 #. battery frame when the computer is using AC
 #. power and the battery isn't present.
-#: battstat/battstat_applet.c:620
+#: battstat/battstat_applet.c:621
 msgid "System is running on AC power. Battery: Not present"
 msgstr "Hệ thống đang chạy bằng điện xoay chiều. Pin: không có"
 
 #. Displayed as a tooltip over the battery meter when there is
 #. a battery present. %d will hold the current charge and %s will
 #. hold the status of the battery, (High, Low, Critical, Charging.
-#: battstat/battstat_applet.c:629
+#: battstat/battstat_applet.c:630
 #, c-format
 msgid "Battery: %d%% (%s)"
 msgstr "Pin: %d%% (%s)"
 
 #. Displayed as a tooltip over the battery meter when no
 #. battery is present.
-#: battstat/battstat_applet.c:636
+#: battstat/battstat_applet.c:637
 msgid "Battery: Not present"
 msgstr "Pin: không có"
 
 #. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: battstat/battstat_applet.c:711
+#: battstat/battstat_applet.c:712
 msgid ""
 "Can't open the APM device!\n"
 "\n"
@@ -153,7 +211,7 @@ msgstr ""
 "Hãy kiểm tra lại xem bạn có quyền đọc đối với thiết bị APM hay không."
 
 #. Displayed if the APM system is disabled (Used under *BSD)
-#: battstat/battstat_applet.c:719
+#: battstat/battstat_applet.c:720
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
@@ -163,7 +221,7 @@ msgstr ""
 "Hãy thử thực hiện lệnh \"apm -e 1\" (đối với FreeBSD) và\n"
 "xem những gì hiện ra.\n"
 
-#: battstat/battstat_applet.c:767
+#: battstat/battstat_applet.c:768
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -173,7 +231,7 @@ msgstr ""
 "Vui lòng sửa lỗi"
 
 #. Probably because the shell_ret is != 0
-#: battstat/battstat_applet.c:770
+#: battstat/battstat_applet.c:771
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command, the command returned "
@@ -183,7 +241,7 @@ msgstr ""
 "Xảy ra lỗi khi đang thực hiện lệnh \"Tạm ngừng\". Lệnh trả về \"%d\"\n"
 "Vui lòng sửa lỗi"
 
-#: battstat/battstat_applet.c:778
+#: battstat/battstat_applet.c:779
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -191,16 +249,26 @@ msgstr ""
 "Lệnh \"Tạm ngừng\" chưa được thiết lập đúng.\n"
 "Vui lòng chỉnh thông số và thử lại."
 
-#. The long name of the applet in the About dialog.
-#: battstat/battstat_applet.c:807
-msgid "Battery status utility"
-msgstr "Tiện ích xem trạng thái pin"
+#. if your charset supports it, please replace the "o" in
+#. * "Jorgen" into U00F6
+#: battstat/battstat_applet.c:808
+msgid "Jorgen Pehrson <jp@spektr.eu.org>"
+msgstr "Jorgen Pehrson <jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:809
+#: battstat/battstat_applet.c:818 cdplayer/cdplayer.c:438
+#: charpick/charpick.c:371 drivemount/drivemount.c:425 geyes/geyes.c:213
+#: gkb-new/gkb.c:593 gtik/gtik.c:714 gweather/gweather-about.c:43
+#: mini-commander/src/about.c:44 mixer/mixer.c:766
+#: modemlights/modemlights.c:206 multiload/main.c:54
+#: panel-menu/panel-menu.c:672
+msgid "translator_credits"
+msgstr "Nguyễn Thái Ngọc Duy"
+
+#: battstat/battstat_applet.c:833
 msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 msgstr "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 
-#: battstat/battstat_applet.c:810
+#: battstat/battstat_applet.c:834
 msgid "This utility show the status of your laptop battery."
 msgstr "Tiện ích này hiển thị trạng thái của pin trên máy laptop."
 
@@ -217,14 +285,14 @@ msgstr "Diện mạo"
 msgid "Applet layout"
 msgstr "Bố trí applet"
 
-#: battstat/battstat_applet.glade.h:6
+#: battstat/battstat_applet.glade.h:5
+msgid "Battery Charge Monitor Preferences"
+msgstr "Thông số trình theo dõi Pin"
+
+#: battstat/battstat_applet.glade.h:7
 #, no-c-format
 msgid "Battery color levels (%)"
 msgstr "Mức màu của pin (%)"
-
-#: battstat/battstat_applet.glade.h:7
-msgid "Battstat Settings"
-msgstr "Thông số Battstat"
 
 #: battstat/battstat_applet.glade.h:8
 msgid "Beep when either of the above is true"
@@ -290,160 +358,22 @@ msgstr "Cảnh báo"
 msgid "Yellow:"
 msgstr "Vàng:"
 
-#: battstat/GNOME_BattstatApplet.server.in.h:1
-msgid "Battery Charge Monitor"
-msgstr "Trình theo dõi Pin"
+#: battstat/sounds/battstat_applet.soundlist.in.h:1
+msgid "Battery Status Utility"
+msgstr "Tiện ích xem trạng thái pin"
 
-#: battstat/GNOME_BattstatApplet.server.in.h:2
-msgid "Battstat Factory"
-msgstr "Battstat Factory"
+#: battstat/sounds/battstat_applet.soundlist.in.h:2
+msgid "Battery fully re-charged"
+msgstr "Pin đã được sạc đầy!"
 
-#: battstat/GNOME_BattstatApplet.server.in.h:3
-msgid "Monitor a laptop's remaining power"
-msgstr "Theo dõi năng lượng còn lại của laptop"
+#: battstat/sounds/battstat_applet.soundlist.in.h:3
+msgid "Battery power low"
+msgstr "Pin thấp"
 
-#: battstat/GNOME_BattstatApplet.server.in.h:4
-#: charpick/GNOME_CharpickerApplet.server.in.h:4
-#: drivemount/GNOME_DriveMountApplet.server.in.h:5
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:5
-#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:4
-#: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:3
-#: panel-menu/GNOME_PanelMenuApplet.server.in.h:4
-msgid "Utility"
-msgstr "Tiện ích"
-
-#: battstat/GNOME_BattstatApplet.xml.h:1 cdplayer/GNOME_CDPlayerApplet.xml.h:1
-#: charpick/GNOME_CharpickerApplet.xml.h:1
-#: drivemount/GNOME_DriveMountApplet.xml.h:1 geyes/GNOME_GeyesApplet.xml.h:1
-#: gkb-new/GNOME_KeyboardApplet.xml.h:1 gtik/GNOME_GtikApplet.xml.h:1
-#: gweather/GNOME_GWeatherApplet.xml.h:1
-#: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
-#: mixer/GNOME_MixerApplet.xml.h:1 modemlights/GNOME_ModemlightsApplet.xml.h:1
-#: multiload/GNOME_MultiloadApplet.xml.h:1
-msgid "About..."
-msgstr "Giới thiệu..."
-
-#: battstat/GNOME_BattstatApplet.xml.h:2 cdplayer/GNOME_CDPlayerApplet.xml.h:2
-#: charpick/GNOME_CharpickerApplet.xml.h:2
-#: drivemount/GNOME_DriveMountApplet.xml.h:4 geyes/GNOME_GeyesApplet.xml.h:2
-#: gkb-new/GNOME_KeyboardApplet.xml.h:2
-#: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
-#: mixer/GNOME_MixerApplet.xml.h:2 modemlights/GNOME_ModemlightsApplet.xml.h:2
-msgid "Help"
-msgstr "Trợ giúp"
-
-#: battstat/GNOME_BattstatApplet.xml.h:3 cdplayer/GNOME_CDPlayerApplet.xml.h:3
-#: charpick/GNOME_CharpickerApplet.xml.h:3
-#: drivemount/GNOME_DriveMountApplet.xml.h:5 geyes/GNOME_GeyesApplet.xml.h:3
-#: gkb-new/GNOME_KeyboardApplet.xml.h:3 gtik/GNOME_GtikApplet.xml.h:2
-#: gweather/GNOME_GWeatherApplet.xml.h:3
-#: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
-#: modemlights/GNOME_ModemlightsApplet.xml.h:3
-#: multiload/GNOME_MultiloadApplet.xml.h:2
-msgid "Properties..."
-msgstr "Thuộc tính..."
-
-#: battstat/GNOME_BattstatApplet.xml.h:4
-msgid "Suspend Computer..."
-msgstr "Tạm dừng máy tính..."
-
-#: cdplayer/cdplayer.c:146 cdplayer/cdplayer.c:819
-msgid "Stop"
-msgstr "Dừng"
-
-#: cdplayer/cdplayer.c:148 cdplayer/cdplayer.c:821
-msgid "Play / Pause"
-msgstr "Chơi / Tạm ngừng"
-
-#: cdplayer/cdplayer.c:150 cdplayer/cdplayer.c:823
-#: drivemount/GNOME_DriveMountApplet.xml.h:3
-msgid "Eject"
-msgstr "Lấy đĩa"
-
-#: cdplayer/cdplayer.c:152 cdplayer/cdplayer.c:825
-msgid "Previous Track"
-msgstr "Rãnh trước"
-
-#: cdplayer/cdplayer.c:154 cdplayer/cdplayer.c:827
-msgid "Next Track"
-msgstr "Rãnh kế"
-
-#: cdplayer/cdplayer.c:159 cdplayer/cdplayer.c:829
-#: cdplayer/GNOME_CDPlayerApplet.server.in.h:1
+#: cdplayer/GNOME_CDPlayerApplet.server.in.h:1 cdplayer/cdplayer.c:161
+#: cdplayer/cdplayer.c:456 cdplayer/cdplayer.c:874
 msgid "CD Player"
 msgstr "CD Player"
-
-#: cdplayer/cdplayer.c:346
-msgid "CD Player Properties"
-msgstr "Thuộc tính CD Player"
-
-#: cdplayer/cdplayer.c:361
-msgid "Disc Image"
-msgstr "Ảnh đĩa"
-
-#: cdplayer/cdplayer.c:361
-msgid "An image of a cd-rom disc"
-msgstr "Ảnh của đĩa CD-ROM"
-
-#: cdplayer/cdplayer.c:363
-msgid "Device _Path:"
-msgstr "Đường _dẫn thiết bị:"
-
-#: cdplayer/cdplayer.c:372
-msgid "Device Path"
-msgstr "Đường dẫn thiết bị"
-
-#: cdplayer/cdplayer.c:372
-msgid "Set the device path here"
-msgstr "Chọn đường dẫn thiết bị ở đây"
-
-#: cdplayer/cdplayer.c:375
-msgid "Use _Default"
-msgstr "Dùng _mặc định"
-
-#: cdplayer/cdplayer.c:420
-msgid "CD Player Applet"
-msgstr "Applet CD Player"
-
-#: cdplayer/cdplayer.c:421
-msgid ""
-"(C) 1997 The Free Software Foundation\n"
-"(C) 2001 Chris Phelps (GNOME 2 Port)"
-msgstr ""
-"(C) 1997 The Free Software Foundation\n"
-"(C) 2001 Chris Phelps (GNOME 2 Port)"
-
-#: cdplayer/cdplayer.c:423 cdplayer/cdplayer.c:830
-msgid "The CD Player applet is a simple audio CD player for your panel"
-msgstr "Applet CD Player là một bộ chơi nhạc CD đơn giản trên panel"
-
-#: cdplayer/cdplayer.c:698 cdplayer/cdplayer.c:707
-msgid "Elapsed time"
-msgstr "Thời gian đã qua"
-
-#: cdplayer/cdplayer.c:701 cdplayer/cdplayer.c:709
-msgid "Track number"
-msgstr "Số thứ tự rãnh"
-
-#: cdplayer/cdplayer.c:820
-msgid "Click this button to Stop playing the CD"
-msgstr "Nhấn nút này để ngừng chơi nhạc"
-
-#: cdplayer/cdplayer.c:822
-msgid "Click this button to Play or Pause the CD"
-msgstr "Nhấn nút này để chơi nhạc hoặc tạm ngừng chơi nhạc"
-
-#: cdplayer/cdplayer.c:824
-msgid "Click this button to eject the CD"
-msgstr "Nhấn nút này để lấy CD"
-
-#: cdplayer/cdplayer.c:826
-msgid "Click this button to Play the previous track in the CD"
-msgstr "Nhấn nút này để chơi lại rãnh nhạc trước"
-
-#: cdplayer/cdplayer.c:828
-msgid "Click this button to Play the next track in the CD"
-msgstr "Nhấn nút này để chơi rãnh nhạc kế tiếp"
 
 #: cdplayer/GNOME_CDPlayerApplet.server.in.h:2
 msgid "CD Player Applet Factory"
@@ -463,32 +393,101 @@ msgid "Panel applet for playing audio CDs"
 msgstr "Applet chơi nhạc CD Audio"
 
 #: cdplayer/GNOME_CDPlayerApplet.xml.h:4
-msgid "Run External CD Player"
-msgstr "Chạy CD Player bên ngoài"
+msgid "_Run External CD Player"
+msgstr "_Chạy CD Player ngoại"
 
-#: charpick/charpick.c:363
-msgid "Character Picker"
-msgstr "Bộ chọn ký tự"
+#: cdplayer/cdplayer.c:149 cdplayer/cdplayer.c:864
+msgid "Stop"
+msgstr "Dừng"
 
-#: charpick/charpick.c:365
-msgid "Copyright (C) 1998"
-msgstr "Copyright (C) 1998"
+#: cdplayer/cdplayer.c:151 cdplayer/cdplayer.c:866
+msgid "Play / Pause"
+msgstr "Chơi / Tạm ngừng"
 
-#: charpick/charpick.c:366
+#: cdplayer/cdplayer.c:153 cdplayer/cdplayer.c:868
+msgid "Eject"
+msgstr "Lấy đĩa"
+
+#: cdplayer/cdplayer.c:155 cdplayer/cdplayer.c:870
+msgid "Previous Track"
+msgstr "Rãnh trước"
+
+#: cdplayer/cdplayer.c:157 cdplayer/cdplayer.c:872
+msgid "Next Track"
+msgstr "Rãnh kế"
+
+#: cdplayer/cdplayer.c:353
+msgid "CD Player Preferences"
+msgstr "Thông số CD Player"
+
+#: cdplayer/cdplayer.c:369
+msgid "Disc Image"
+msgstr "Ảnh đĩa"
+
+#: cdplayer/cdplayer.c:369
+msgid "An image of a cd-rom disc"
+msgstr "Ảnh của đĩa CD-ROM"
+
+#: cdplayer/cdplayer.c:371
+msgid "Device _Path:"
+msgstr "Đường _dẫn thiết bị:"
+
+#: cdplayer/cdplayer.c:380
+msgid "Device Path"
+msgstr "Đường dẫn thiết bị"
+
+#: cdplayer/cdplayer.c:380
+msgid "Set the device path here"
+msgstr "Chọn đường dẫn thiết bị ở đây"
+
+#: cdplayer/cdplayer.c:383
+msgid "Use _Default"
+msgstr "Dùng _mặc định"
+
+#: cdplayer/cdplayer.c:457
 msgid ""
-"Gnome Panel applet for selecting strange characters that are not on my "
-"keyboard. Released under GNU General Public Licence."
+"(C) 1997 The Free Software Foundation\n"
+"(C) 2001 Chris Phelps (GNOME 2 Port)"
 msgstr ""
-"Applet dùng để chọn ký tự lạ không có trên bàn phím. Được phát hành dưới bản "
-"quyền GNU GPL."
+"(C) 1997 The Free Software Foundation\n"
+"(C) 2001 Chris Phelps (GNOME 2 Port)"
 
-#: charpick/charpick.c:444
-msgid "Insert special characters"
-msgstr "Chèn ký tự đặc biệt"
+#: cdplayer/cdplayer.c:459 cdplayer/cdplayer.c:875
+msgid "The CD Player applet is a simple audio CD player for your panel"
+msgstr "Applet CD Player là một bộ chơi nhạc CD đơn giản trên panel"
 
-#: charpick/charpick.c:445 charpick/GNOME_CharpickerApplet.server.in.h:1
+#: cdplayer/cdplayer.c:741 cdplayer/cdplayer.c:752
+msgid "Elapsed time"
+msgstr "Thời gian đã qua"
+
+#: cdplayer/cdplayer.c:744 cdplayer/cdplayer.c:754
+msgid "Track number"
+msgstr "Số thứ tự rãnh"
+
+#: cdplayer/cdplayer.c:865
+msgid "Click this button to Stop playing the CD"
+msgstr "Nhấn nút này để ngừng chơi nhạc"
+
+#: cdplayer/cdplayer.c:867
+msgid "Click this button to Play or Pause the CD"
+msgstr "Nhấn nút này để chơi nhạc hoặc tạm ngừng chơi nhạc"
+
+#: cdplayer/cdplayer.c:869
+msgid "Click this button to eject the CD"
+msgstr "Nhấn nút này để lấy CD"
+
+#: cdplayer/cdplayer.c:871
+msgid "Click this button to Play the previous track in the CD"
+msgstr "Nhấn nút này để chơi lại rãnh nhạc trước"
+
+#: cdplayer/cdplayer.c:873
+msgid "Click this button to Play the next track in the CD"
+msgstr "Nhấn nút này để chơi rãnh nhạc kế tiếp"
+
+#: charpick/GNOME_CharpickerApplet.server.in.h:1 charpick/charpick.c:389
+#: charpick/charpick.c:480
 msgid "Character Palette"
-msgstr "Hộp ký tự"
+msgstr "Bảng ký tự"
 
 #: charpick/GNOME_CharpickerApplet.server.in.h:2
 msgid "Charpicker Applet Factory"
@@ -497,6 +496,28 @@ msgstr "Charpicker Applet Factory"
 #: charpick/GNOME_CharpickerApplet.server.in.h:3
 msgid "Insert characters"
 msgstr "Chèn ký tự"
+
+#. If your charset supports it, please use U00F1 to replace the "n"
+#. * in "Muniz".
+#: charpick/charpick.c:363
+msgid "Alexandre Muniz <munizao@xprt.net>"
+msgstr "Alexandre Muniz <munizao@xprt.net>"
+
+#: charpick/charpick.c:391
+msgid "Copyright (C) 1998"
+msgstr "Copyright (C) 1998"
+
+#: charpick/charpick.c:392
+msgid ""
+"Gnome Panel applet for selecting strange characters that are not on my "
+"keyboard. Released under GNU General Public Licence."
+msgstr ""
+"Applet dùng để chọn ký tự lạ không có trên bàn phím. Được phát hành dưới bản "
+"quyền GNU GPL."
+
+#: charpick/charpick.c:479
+msgid "Insert special characters"
+msgstr "Chèn ký tự đặc biệt"
 
 #: charpick/properties.c:79
 msgid "_Default character list:"
@@ -513,52 +534,16 @@ msgstr "Chọn danh sách ký tự mặc định ở đây"
 #: charpick/properties.c:91
 msgid ""
 "These characters will appear when the panel is started. To return to this "
-"list, hit <space> while the applet has focus."
+"list, hit <d> while the applet has focus."
 msgstr ""
 "Những ký tự này sẽ xuất hiện khi panel được khởi động. Để trả về danh sách "
-"này, nhấn <space> trong khi applet có focus."
+"này, nhấn <d> trong khi applet có focus."
 
-#: charpick/properties.c:143
-msgid "Character Palette Properties"
-msgstr "Thuộc tính Hộp ký tự"
+#: charpick/properties.c:152
+msgid "Character Palette Preferences"
+msgstr "Thông số Bảng ký tự"
 
-#: drivemount/drivemount.c:419
-msgid "Drive Mount Applet"
-msgstr "Applet gắn kết đĩa"
-
-#: drivemount/drivemount.c:420
-msgid "(C) 1999-2001 The GNOME Hackers\n"
-msgstr "(C) 1999-2001 The GNOME Hackers\n"
-
-#: drivemount/drivemount.c:422
-msgid "Applet for mounting and unmounting block volumes."
-msgstr "Applet dùng để mount/unmount các ổ đĩa."
-
-#: drivemount/drivemount.c:612
-msgid " mounted"
-msgstr " đã mount"
-
-#: drivemount/drivemount.c:614
-msgid " not mounted"
-msgstr " không mount"
-
-#: drivemount/drivemount.c:725
-msgid "Drive Mount Applet Warning"
-msgstr "Cảnh bảo Applet gắn kết đĩa"
-
-#: drivemount/drivemount.c:733
-msgid "\" reported:\n"
-msgstr "\" đã báo cáo:\n"
-
-#: drivemount/drivemount.c:735
-msgid ""
-"Drivemount command failed.\n"
-"\""
-msgstr ""
-"Lệnh gắn kết đĩa thất bại.\n"
-"\""
-
-#: drivemount/GNOME_DriveMountApplet.server.in.h:1
+#: drivemount/GNOME_DriveMountApplet.server.in.h:1 drivemount/drivemount.c:442
 msgid "Disk Mounter"
 msgstr "Bộ gắn kết đĩa"
 
@@ -574,97 +559,117 @@ msgstr "Factory cho drive mount applet"
 msgid "Mount local disks and devices"
 msgstr "Mount đĩa và thiết bị nội bộ"
 
-#: drivemount/GNOME_DriveMountApplet.xml.h:2 panel-menu/panel-menu-path.c:796
-msgid "Browse..."
-msgstr "Duyệt..."
+#: drivemount/GNOME_DriveMountApplet.xml.h:2
+msgid "_Browse..."
+msgstr "_Duyệt..."
 
-#: drivemount/properties.c:241
-msgid "Disk Mounter Properties"
-msgstr "Thuộc tính bộ gắn kết đĩa"
+#: drivemount/GNOME_DriveMountApplet.xml.h:3
+msgid "_Eject"
+msgstr "Đẩ_y ra"
 
-#: drivemount/properties.c:260
-msgid "Mount point:"
-msgstr "Điểm gắn:"
+#: drivemount/drivemount.c:443
+msgid "(C) 1999-2001 The GNOME Hackers\n"
+msgstr "(C) 1999-2001 The GNOME Hackers\n"
 
-#: drivemount/properties.c:277
-msgid "Update interval (seconds):"
-msgstr "Khoảng cập nhật (giây):"
+#: drivemount/drivemount.c:445
+msgid "Applet for mounting and unmounting block volumes."
+msgstr "Applet dùng để mount/unmount các ổ đĩa."
 
-#: drivemount/properties.c:292
-msgid "Icon :"
-msgstr "Biểu tượng :"
+#: drivemount/drivemount.c:641
+msgid " mounted"
+msgstr " đã mount"
 
-#: drivemount/properties.c:309
+#: drivemount/drivemount.c:643
+msgid " not mounted"
+msgstr " không mount"
+
+#: drivemount/drivemount.c:754
+msgid "Drive Mount Applet Warning"
+msgstr "Cảnh bảo Applet gắn kết đĩa"
+
+#: drivemount/drivemount.c:762
+msgid "\" reported:\n"
+msgstr "\" đã báo cáo:\n"
+
+#: drivemount/drivemount.c:764
+msgid ""
+"Drivemount command failed.\n"
+"\""
+msgstr ""
+"Lệnh gắn kết đĩa thất bại.\n"
+"\""
+
+#: drivemount/properties.c:251
+msgid "Disk Mounter Preferences"
+msgstr "Thông số Bộ gắn kết đĩa"
+
+#: drivemount/properties.c:270
+msgid "_Mount point:"
+msgstr "Điểm _gắn:"
+
+#: drivemount/properties.c:288
+msgid "_Update interval (seconds):"
+msgstr "_Khoảng cập nhật (giây):"
+
+#: drivemount/properties.c:304 panel-menu/panel-menu-properties.c:108
+msgid "_Icon :"
+msgstr "_Biểu tượng :"
+
+#: drivemount/properties.c:322
 msgid "Floppy"
 msgstr "Đĩa mềm"
 
-#: drivemount/properties.c:312
+#: drivemount/properties.c:325
 msgid "Cdrom"
 msgstr "CD-ROM"
 
-#: drivemount/properties.c:315
+#: drivemount/properties.c:328
 msgid "Cd Recorder"
 msgstr "Đầu thu CD"
 
-#: drivemount/properties.c:318
+#: drivemount/properties.c:331
 msgid "Zip Drive"
 msgstr "Ổ ZIP"
 
-#: drivemount/properties.c:321
+#: drivemount/properties.c:334
 msgid "Hard Disk"
 msgstr "Đĩa cứng"
 
-#: drivemount/properties.c:324
+#: drivemount/properties.c:337
 msgid "Jaz Drive"
 msgstr "Đĩa Jaz"
 
-#: drivemount/properties.c:327
+#: drivemount/properties.c:340
 msgid "Custom"
 msgstr "Riêng"
 
-#: drivemount/properties.c:340
+#: drivemount/properties.c:353
 msgid "Select icon for mounted"
-msgstr "Chọn biểu tượng mount:"
+msgstr "Chọn biểu tượng gắn kết:"
 
-#: drivemount/properties.c:347
-msgid "Custom icon for mounted:"
-msgstr "Biểu tượng mount riêng:"
+#: drivemount/properties.c:360
+msgid "Custom icon for moun_ted:"
+msgstr "Biểu tượng gắn kết _riêng:"
 
-#: drivemount/properties.c:355
+#: drivemount/properties.c:369
 msgid "Select icon for unmounted"
-msgstr "Chọn biểu tượng chưa mount"
+msgstr "Chọn biểu tượng chưa gắn kết"
 
-#: drivemount/properties.c:362
-msgid "Custom icon for not mounted:"
-msgstr "Biểu tượng chưa mount riêng:"
+#: drivemount/properties.c:376
+msgid "Custom icon for not mou_nted:"
+msgstr "Biểu tượng chưa gắn kế_t riêng:"
 
-#: drivemount/properties.c:371
-msgid "Scale size to panel"
-msgstr "Chỉnh kích thước khớp panel"
+#: drivemount/properties.c:386
+msgid "_Scale size to panel"
+msgstr "_Co dãn kích thước panel"
 
-#: drivemount/properties.c:378
-msgid "Eject on unmount"
-msgstr "Đẩy đĩa ra khi unmount"
+#: drivemount/properties.c:393
+msgid "_Eject on unmount"
+msgstr "Đẩ_y đĩa ra khi tháo gắn kết"
 
-#: drivemount/properties.c:385
-msgid "Use automount friendly status test"
-msgstr "Dùng kiểm tra trạng thái automount thân thiện"
-
-#: geyes/geyes.c:200
-msgid "Dave Camp <campd@oit.edu>"
-msgstr "Dave Camp <campd@oit.edu>"
-
-#: geyes/geyes.c:209
-msgid "gEyes"
-msgstr "gEyes"
-
-#: geyes/geyes.c:210
-msgid "Copyright (C) 1999 Dave Camp"
-msgstr "Copyright (C) 1999 Dave Camp"
-
-#: geyes/geyes.c:211
-msgid "A goofy little xeyes clone for the GNOME panel."
-msgstr "Một bản sao của xeyes trên panel."
+#: drivemount/properties.c:400
+msgid "Use _automount friendly status test"
+msgstr "Sử dụng _kiểm tra trạng thái automount"
 
 #: geyes/GNOME_GeyesApplet.server.in.h:1
 msgid "A set of eyeballs for your panel"
@@ -674,79 +679,34 @@ msgstr "Những con ngươi trên panel"
 msgid "Amusements"
 msgstr "Giải trí"
 
-#: geyes/GNOME_GeyesApplet.server.in.h:3
-msgid "Geyes Applet"
-msgstr "Applet Geyes"
+#: geyes/GNOME_GeyesApplet.server.in.h:3 geyes/geyes.c:231 geyes/geyes.c:416
+#: geyes/geyes.c:418
+msgid "Geyes"
+msgstr "Geyes"
 
 #: geyes/GNOME_GeyesApplet.server.in.h:4
 msgid "Geyes Applet Factory"
 msgstr "Geyes Applet Factory"
 
-#: geyes/themes.c:197
-msgid "Theme Name"
-msgstr "Tên theme"
+#: geyes/geyes.c:232
+msgid "Copyright (C) 1999 Dave Camp"
+msgstr "Copyright (C) 1999 Dave Camp"
 
-#: geyes/themes.c:210
-msgid "Properties"
-msgstr "Thuộc tính"
+#: geyes/geyes.c:233
+msgid "A goofy little xeyes clone for the GNOME panel."
+msgstr "Một bản sao của xeyes trên panel."
 
-#: gkb-new/gkb.c:114
-msgid ""
-"Press the hotkey to switch between layouts. The hotkey can be set through "
-"Properties dialog"
-msgstr "Nhấn phím nóng để chuyển layout. Phím nóng được chọn trong hộp thoại Thuộc tính"
+#: geyes/geyes.c:419
+msgid "The eyes look in the direction of the mouse pointer"
+msgstr "Những con mắt nhình theo hướng con chuột"
 
-#: gkb-new/gkb.c:404
-#, c-format
-msgid "name_%d"
-msgstr "name_%d"
+#: geyes/themes.c:215
+msgid "Geyes Preferences"
+msgstr "Thông số Geyes"
 
-#: gkb-new/gkb.c:408
-#, c-format
-msgid "label_%d"
-msgstr "label_%d"
-
-#: gkb-new/gkb.c:412
-#, c-format
-msgid "country_%d"
-msgstr "country_%d"
-
-#: gkb-new/gkb.c:416
-#, c-format
-msgid "lang_%d"
-msgstr "lang_%d"
-
-#: gkb-new/gkb.c:424
-#, c-format
-msgid "command_%d"
-msgstr "command_%d"
-
-#: gkb-new/gkb.c:527 gkb-new/gkb.c:534
-msgid "GKB"
-msgstr "GKB"
-
-#: gkb-new/gkb.c:576
-msgid "The GNOME KeyBoard Switcher Applet"
-msgstr "The GNOME KeyBoard Switcher Applet"
-
-#: gkb-new/gkb.c:578
-msgid "(C) 1998-2000 Free Software Foundation"
-msgstr "(C) 1998-2000 Free Software Foundation"
-
-#: gkb-new/gkb.c:579
-msgid ""
-"This applet switches between keyboard maps using setxkbmap, or xmodmap.\n"
-"Mail me your flag and keyboard layout if you want support for your locale "
-"(my email address is shooby@gnome.hu).\n"
-"So long, and thanks for all the fish.\n"
-"Thanks for Balazs Nagy (Kevin) <julian7@iksz.hu> for his help and Emese "
-"Kovacs <emese@gnome.hu> for her solidarity, help from guys like KevinV.\n"
-"Shooby Ban <shooby@gnome.hu>"
-msgstr ""
-
-#: gkb-new/gkb.c:596
-msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
-msgstr "GKB Home Page (http://projects.gnome.hu/gkb)"
+#: geyes/themes.c:229
+msgid "T_heme Name"
+msgstr "Tên t_heme"
 
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:1
 msgid "Change the keyboard layout"
@@ -756,13 +716,52 @@ msgstr "Đổi bố trí bàn phím"
 msgid "GKB Factory"
 msgstr "GKB Factory"
 
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:3
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:3 gkb-new/gkb.c:604
 msgid "Keyboard Layout Switcher"
 msgstr "Bộ đổi bố trí bàn phím"
 
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:4
 msgid "Produces keyboard layout switcher applets."
 msgstr "Tạo applet bộ đổi bố trí bàn phím"
+
+#: gkb-new/gkb.c:112
+msgid ""
+"Press the hotkey to switch between layouts. The hotkey can be set through "
+"Properties dialog"
+msgstr ""
+"Nhấn phím nóng để chuyển layout. Phím nóng được chọn trong hộp thoại Thuộc "
+"tính"
+
+#: gkb-new/gkb.c:551 gkb-new/gkb.c:558
+msgid "GKB"
+msgstr "GKB"
+
+#: gkb-new/gkb.c:606
+msgid "(C) 1998-2000 Free Software Foundation"
+msgstr "(C) 1998-2000 Free Software Foundation"
+
+#: gkb-new/gkb.c:607
+msgid ""
+"This applet switches between keyboard maps using setxkbmap or xmodmap.\n"
+"Mail me your flag and keyboard layout if you want support for your locale "
+"(my email address is shooby@gnome.hu).\n"
+"So long, and thanks for all the fish.\n"
+"Thanks for Balazs Nagy (Kevin) <julian7@iksz.hu> for his help and Emese "
+"Kovacs <emese@gnome.hu> for her solidarity, help from guys like KevinV.\n"
+"Shooby Ban <shooby@gnome.hu>"
+msgstr ""
+"Applet chuyển bật giữa các bản đồ bàn phím bằng cách dùng setxkbmap hoặc "
+"xmodmap.\n"
+"Hãy gửi thư cho tôi cho biết quốc kỳ và bố trí bàn phím của bạn nếu bạn muốn "
+"hỗ trợ cho locale của nước bạn (địa chỉ của tôi là shooby@gnome.hu).\n"
+"So long, and thanks for all the fish.\n"
+"Xin cám ơn sự giúp đỡ của Balazs Nagy (Kevin) <jưlian@iksz.hu> và Emese "
+"Kovacs <emese@gnome.hu>.\n"
+"Shooby Ban <shooby@gnome.hu>"
+
+#: gkb-new/gkb.c:624
+msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
+msgstr "GKB Home Page (http://projects.gnome.hu/gkb)"
 
 #: gkb-new/keygrab.c:69 gkb-new/keygrab.c:144
 msgid "Disabled"
@@ -773,397 +772,357 @@ msgid "Press a key or press Esc to cancel"
 msgstr "Nhấn một phím, hoặc nhấn Esc để ngừng"
 
 #: gkb-new/prop-add.c:86
-msgid "Keymaps (select and press add)"
-msgstr ""
+msgid "Keyboards (select and press add)"
+msgstr "Bàn phím (chọn và nhấn Thêm)"
 
-#: gkb-new/prop-add.c:367
-msgid "Select layout"
-msgstr "Chọn layout"
+#: gkb-new/prop-add.c:372
+msgid "Select Keyboard"
+msgstr "Chọn bàn phím"
 
-#: gkb-new/prop.c:121 gkb-new/prop.c:189
-msgid "Normal"
-msgstr "Bình thường"
-
-#: gkb-new/prop.c:122 gkb-new/prop.c:193
-msgid "Big"
-msgstr "Lớn"
-
-#: gkb-new/prop.c:140 gkb-new/util.c:41 gkb-new/util.c:48 gkb-new/util.c:74
-msgid "Flag"
-msgstr "Quốc kỳ"
-
-#: gkb-new/prop.c:141 gkb-new/util.c:38 gkb-new/util.c:71
-msgid "Label"
-msgstr "Tên nước"
-
-#: gkb-new/prop.c:142 gkb-new/util.c:44 gkb-new/util.c:77
-msgid "Flag and Label"
-msgstr "Cờ và tên nước"
-
-#: gkb-new/prop.c:278 modemlights/properties.c:371
-msgid "Display"
-msgstr "Hiển trị"
-
-#. Labels and option Menus
-#: gkb-new/prop.c:298
-msgid "_Appearance "
-msgstr "_Diện mạo "
-
-#: gkb-new/prop.c:305
-msgid "Applet _size "
-msgstr "_Kích thước applet "
-
-#: gkb-new/prop.c:331
-msgid "Hotkey for switching between layouts"
-msgstr "Phím nóng để đổi cách bố trí"
-
-#: gkb-new/prop.c:343
-msgid "Grab hotkey"
-msgstr "Bắt phím nóng"
-
-#. Create property box
-#: gkb-new/prop.c:405
-msgid "GKB Properties"
-msgstr "Thuộc tính GKB"
-
-#: gkb-new/prop.c:419
-msgid "_Keymaps"
-msgstr ""
-
-#: gkb-new/prop.c:431
-msgid "_Options"
-msgstr "_Tùy chọn"
-
-#: gkb-new/prop-list.c:389 gtik/gtik.c:1149
+#: gkb-new/prop-list.c:398 gtik/gtik.c:1137
 msgid "_Add"
 msgstr "_Thêm"
 
-#: gkb-new/prop-list.c:390
+#: gkb-new/prop-list.c:399
 msgid "_Edit"
 msgstr "_Sửa"
 
-#: gkb-new/prop-list.c:391
+#: gkb-new/prop-list.c:400
 msgid "_Up"
 msgstr "_Lên"
 
-#: gkb-new/prop-list.c:392
+#: gkb-new/prop-list.c:401
 msgid "Dow_n"
 msgstr "Xuố_ng"
 
-#: gkb-new/prop-list.c:393
+#: gkb-new/prop-list.c:402
 msgid "_Delete"
 msgstr "_Xóa"
 
-#: gkb-new/prop-map.c:193
+#: gkb-new/prop-map.c:199
 msgid "Armenia"
 msgstr "Armenia"
 
-#: gkb-new/prop-map.c:194
+#: gkb-new/prop-map.c:200
 msgid "Australia"
 msgstr "Úc"
 
-#: gkb-new/prop-map.c:195
+#: gkb-new/prop-map.c:201
 msgid "Austria"
 msgstr "Áo"
 
-#: gkb-new/prop-map.c:196
+#: gkb-new/prop-map.c:202
 msgid "Belgium"
 msgstr "Bỉ"
 
-#: gkb-new/prop-map.c:197
+#: gkb-new/prop-map.c:203
 msgid "Brazil"
 msgstr "Brazil"
 
-#: gkb-new/prop-map.c:198
+#: gkb-new/prop-map.c:204
 msgid "Bulgaria"
 msgstr "Bungari"
 
-#: gkb-new/prop-map.c:199
+#: gkb-new/prop-map.c:205
 msgid "Canada"
 msgstr "Canada"
 
-#: gkb-new/prop-map.c:200
+#: gkb-new/prop-map.c:206
 msgid "Caribic"
 msgstr "Caribê"
 
-#: gkb-new/prop-map.c:201
+#: gkb-new/prop-map.c:207
 msgid "France"
 msgstr "Pháp"
 
-#: gkb-new/prop-map.c:202
+#: gkb-new/prop-map.c:208
 msgid "Georgia"
 msgstr "Georgia"
 
-#: gkb-new/prop-map.c:203
+#: gkb-new/prop-map.c:209
 msgid "Germany"
 msgstr "Đức"
 
-#: gkb-new/prop-map.c:204
+#: gkb-new/prop-map.c:210
 msgid "Great Britain"
-msgstr ""
+msgstr "Vương Quốc Anh"
 
-#: gkb-new/prop-map.c:205
+#: gkb-new/prop-map.c:211
+msgid "Greece"
+msgstr "Hy Lạp"
+
+#: gkb-new/prop-map.c:212
 msgid "Hungary"
 msgstr "Hungari"
 
-#: gkb-new/prop-map.c:206
+#: gkb-new/prop-map.c:213
 msgid "Jamaica"
-msgstr ""
+msgstr "Jamaica"
 
-#: gkb-new/prop-map.c:207
+#: gkb-new/prop-map.c:214
 msgid "New Zealand"
 msgstr "New Zealand"
 
-#: gkb-new/prop-map.c:208
+#: gkb-new/prop-map.c:215
 msgid "Norway"
 msgstr "Na Uy"
 
-#: gkb-new/prop-map.c:209
+#: gkb-new/prop-map.c:216
 msgid "Poland"
 msgstr "Ba Lan"
 
-#: gkb-new/prop-map.c:210
+#: gkb-new/prop-map.c:217
 msgid "Portugal"
 msgstr "Bồ Đào Nha"
 
-#: gkb-new/prop-map.c:211
+#: gkb-new/prop-map.c:218
 msgid "Russia"
 msgstr "Nga"
 
-#: gkb-new/prop-map.c:212
+#: gkb-new/prop-map.c:219
 msgid "Slovak Republic"
-msgstr ""
+msgstr "Cộng hòa Slovak"
 
-#: gkb-new/prop-map.c:213
+#: gkb-new/prop-map.c:220
 msgid "Slovenia"
 msgstr "Slovenia"
 
-#: gkb-new/prop-map.c:214
+#: gkb-new/prop-map.c:221
 msgid "South Africa"
 msgstr "Nam Phi"
 
-#: gkb-new/prop-map.c:215
+#: gkb-new/prop-map.c:222
 msgid "Spain"
 msgstr "Tây Ban Nha"
 
-#: gkb-new/prop-map.c:216
+#: gkb-new/prop-map.c:223
 msgid "Sweden"
 msgstr "Thụy Điển"
 
-#: gkb-new/prop-map.c:217
+#: gkb-new/prop-map.c:224
 msgid "Switzerland"
-msgstr ""
+msgstr "Thụy Sĩ"
 
-#: gkb-new/prop-map.c:218
+#: gkb-new/prop-map.c:225
 msgid "Thailand"
 msgstr "Thái Lan"
 
-#: gkb-new/prop-map.c:219
+#: gkb-new/prop-map.c:226
 msgid "Turkey"
 msgstr "Thổ Nhĩ Kỳ"
 
-#: gkb-new/prop-map.c:220
+#: gkb-new/prop-map.c:227
 msgid "United Kingdom"
 msgstr "Vương quốc Anh"
 
-#: gkb-new/prop-map.c:221
+#: gkb-new/prop-map.c:228
 msgid "United States"
 msgstr "Mỹ"
 
-#: gkb-new/prop-map.c:222
+#: gkb-new/prop-map.c:229
 msgid "Yugoslavia"
 msgstr "Nam Tư"
 
-#: gkb-new/prop-map.c:242
+#: gkb-new/prop-map.c:249
 msgid "Armenian"
-msgstr ""
+msgstr "Armenia"
 
-#: gkb-new/prop-map.c:243
+#: gkb-new/prop-map.c:250
 msgid "Basque"
-msgstr ""
+msgstr "Basque"
 
-#: gkb-new/prop-map.c:244
+#: gkb-new/prop-map.c:251
 msgid "Bulgarian"
 msgstr "Bungari"
 
-#: gkb-new/prop-map.c:245
+#: gkb-new/prop-map.c:252
 msgid "Dutch"
 msgstr "Hà Lan"
 
-#: gkb-new/prop-map.c:246
+#: gkb-new/prop-map.c:253
 msgid "English"
 msgstr "Anh"
 
-#: gkb-new/prop-map.c:247
+#: gkb-new/prop-map.c:254
 msgid "French"
 msgstr "Pháp"
 
-#: gkb-new/prop-map.c:248
+#: gkb-new/prop-map.c:255
 msgid "Georgian"
-msgstr ""
+msgstr "Georgia"
 
-#: gkb-new/prop-map.c:249
+#: gkb-new/prop-map.c:256
 msgid "German"
 msgstr "Đức"
 
-#: gkb-new/prop-map.c:250
+#: gkb-new/prop-map.c:257
+msgid "Greek"
+msgstr "Hy Lạp"
+
+#: gkb-new/prop-map.c:258
 msgid "Hungarian"
 msgstr "Hungari"
 
-#: gkb-new/prop-map.c:251
+#: gkb-new/prop-map.c:259
 msgid "Norwegian"
 msgstr "Na Uy"
 
-#: gkb-new/prop-map.c:252
+#: gkb-new/prop-map.c:260
 msgid "Polish"
 msgstr "Ba Lan"
 
-#: gkb-new/prop-map.c:253
+#: gkb-new/prop-map.c:261
 msgid "Portuguese"
 msgstr "Bồ Đào Nha"
 
-#: gkb-new/prop-map.c:254
+#: gkb-new/prop-map.c:262
 msgid "Russian"
 msgstr "Nga"
 
-#: gkb-new/prop-map.c:255
+#: gkb-new/prop-map.c:263
 msgid "Slovak"
-msgstr ""
+msgstr "Slovak"
 
-#: gkb-new/prop-map.c:256
+#: gkb-new/prop-map.c:264
 msgid "Slovenian"
 msgstr "Slovenia"
 
-#: gkb-new/prop-map.c:257
+#: gkb-new/prop-map.c:265
 msgid "Swedish"
 msgstr "Thụy Điển"
 
-#: gkb-new/prop-map.c:258
+#: gkb-new/prop-map.c:266
 msgid "Thai"
 msgstr "Thái Lan"
 
-#: gkb-new/prop-map.c:259
+#: gkb-new/prop-map.c:267
 msgid "Turkish"
 msgstr "Thổ Nhĩ Kỳ"
 
-#: gkb-new/prop-map.c:260
+#: gkb-new/prop-map.c:268
 msgid "Wallon"
-msgstr ""
+msgstr "Wallon"
 
-#: gkb-new/prop-map.c:261
+#: gkb-new/prop-map.c:269
 msgid "Yugoslavian"
 msgstr "Nam Tư"
 
-#: gkb-new/prop-map.c:279
+#: gkb-new/prop-map.c:287
 msgid "105"
 msgstr "105"
 
-#: gkb-new/prop-map.c:280
+#: gkb-new/prop-map.c:288
 msgid "101"
 msgstr "101"
 
-#: gkb-new/prop-map.c:281
+#: gkb-new/prop-map.c:289
 msgid "102"
 msgstr "102"
 
-#: gkb-new/prop-map.c:282
+#: gkb-new/prop-map.c:290
 msgid "450"
 msgstr "450"
 
-#: gkb-new/prop-map.c:283
+#: gkb-new/prop-map.c:291
 msgid "84"
 msgstr "84"
 
-#: gkb-new/prop-map.c:284
+#: gkb-new/prop-map.c:292
 msgid "mklinux"
 msgstr "mklinux"
 
-#: gkb-new/prop-map.c:285
+#: gkb-new/prop-map.c:293
 msgid "type5"
 msgstr "type5"
 
-#: gkb-new/prop-map.c:305
+#: gkb-new/prop-map.c:313
 msgid "iso-8859-1"
 msgstr "iso-8859-1"
 
-#: gkb-new/prop-map.c:306
+#: gkb-new/prop-map.c:314
 msgid "iso-8859-2"
 msgstr "iso-8859-2"
 
-#: gkb-new/prop-map.c:307
+#: gkb-new/prop-map.c:315
+msgid "iso-8859-7"
+msgstr "iso-8859-7"
+
+#: gkb-new/prop-map.c:316
 msgid "iso-8859-9"
 msgstr "iso-8859-9"
 
-#: gkb-new/prop-map.c:308
+#: gkb-new/prop-map.c:317
 msgid "am-armscii8"
 msgstr "am-armscii8"
 
-#: gkb-new/prop-map.c:309
+#: gkb-new/prop-map.c:318
 msgid "be-latin1"
 msgstr "be-latin1"
 
-#: gkb-new/prop-map.c:310
+#: gkb-new/prop-map.c:319
 msgid "cp1251"
 msgstr "cp1251"
 
-#: gkb-new/prop-map.c:311
+#: gkb-new/prop-map.c:320
 msgid "georgian-academy"
 msgstr "georgian-academy"
 
-#: gkb-new/prop-map.c:312
+#: gkb-new/prop-map.c:321
 msgid "koi8-r"
 msgstr "koi8-r"
 
-#: gkb-new/prop-map.c:313
+#: gkb-new/prop-map.c:322
 msgid "tis620"
 msgstr "tis620"
 
-#: gkb-new/prop-map.c:331
+#: gkb-new/prop-map.c:340
 msgid "ix86"
 msgstr "ix86"
 
-#: gkb-new/prop-map.c:332
-msgid "sun"
-msgstr "sun"
+#: gkb-new/prop-map.c:341
+msgid "Sun"
+msgstr "Sun"
 
-#: gkb-new/prop-map.c:333
+#: gkb-new/prop-map.c:342
 msgid "mac"
 msgstr "mac"
 
-#: gkb-new/prop-map.c:334
+#: gkb-new/prop-map.c:343
 msgid "sgi"
 msgstr "sgi"
 
-#: gkb-new/prop-map.c:335
+#: gkb-new/prop-map.c:344
 msgid "dec"
 msgstr "dec"
 
-#: gkb-new/prop-map.c:336
+#: gkb-new/prop-map.c:345
 msgid "ibm"
 msgstr "ibm"
 
-#: gkb-new/prop-map.c:573
-msgid "Edit keymap"
-msgstr "Sửa keymap"
+#: gkb-new/prop-map.c:582
+msgid "Edit Keyboard"
+msgstr "Sửa bàn phím"
 
 #. Add the labels  and entries/combos/icon_entry
-#: gkb-new/prop-map.c:601
-msgid "_Name"
-msgstr "_Tên"
+#: gkb-new/prop-map.c:610 panel-menu/panel-menu-directory.c:668
+#: panel-menu/panel-menu-documents.c:398 panel-menu/panel-menu-documents.c:434
+#: panel-menu/panel-menu-links.c:404 panel-menu/panel-menu-links.c:440
+msgid "_Name:"
+msgstr "_Tên:"
 
-#: gkb-new/prop-map.c:605
-msgid "_Label"
-msgstr "_Tên nước"
+#: gkb-new/prop-map.c:614
+msgid "_Label:"
+msgstr "_Nhãn:"
 
-#: gkb-new/prop-map.c:609
-msgid "Lan_guage"
-msgstr "N_gôn ngữ"
+#: gkb-new/prop-map.c:618
+msgid "Lan_guage:"
+msgstr "N_gôn ngữ:"
 
-#: gkb-new/prop-map.c:615
-msgid "Count_ry"
-msgstr "_Quốc gia"
+#: gkb-new/prop-map.c:624
+msgid "Count_ry:"
+msgstr "_Quốc gia:"
 
-#: gkb-new/prop-map.c:622
+#: gkb-new/prop-map.c:631
 msgid ""
 "Flag\n"
 "Pixmap"
@@ -1171,23 +1130,23 @@ msgstr ""
 "Ảnh\n"
 "quốc kỳ"
 
-#: gkb-new/prop-map.c:626
-msgid "Arc_hitecture"
-msgstr "Kiến _trúc"
+#: gkb-new/prop-map.c:635
+msgid "Arc_hitecture:"
+msgstr "Kiến _trúc:"
 
-#: gkb-new/prop-map.c:632
-msgid "_Type"
-msgstr "_Kiểu"
+#: gkb-new/prop-map.c:641
+msgid "_Type:"
+msgstr "_Loại:"
 
-#: gkb-new/prop-map.c:638
-msgid "Code_page"
-msgstr "Trang _mã"
+#: gkb-new/prop-map.c:647
+msgid "Code_page:"
+msgstr "Bảng _mã:"
 
-#: gkb-new/prop-map.c:645
-msgid "Co_mmand"
-msgstr "_Lệnh"
+#: gkb-new/prop-map.c:654
+msgid "Co_mmand:"
+msgstr "_Lệnh:"
 
-#: gkb-new/prop-map.c:652
+#: gkb-new/prop-map.c:661
 msgid ""
 "Where command can be:\n"
 "* xmodmap /full/path/xmodmap.hu\n"
@@ -1199,9 +1158,63 @@ msgstr ""
 "gkb__xmmap hu\n"
 "setxkbmap hu"
 
+#: gkb-new/prop.c:130 gkb-new/prop.c:198
+msgid "Normal"
+msgstr "Bình thường"
+
+#: gkb-new/prop.c:131 gkb-new/prop.c:202
+msgid "Big"
+msgstr "Lớn"
+
+#: gkb-new/prop.c:149 gkb-new/util.c:41 gkb-new/util.c:48 gkb-new/util.c:74
+msgid "Flag"
+msgstr "Quốc kỳ"
+
+#: gkb-new/prop.c:150 gkb-new/util.c:38 gkb-new/util.c:71
+msgid "Label"
+msgstr "Tên nước"
+
+#: gkb-new/prop.c:151 gkb-new/util.c:44 gkb-new/util.c:77
+msgid "Flag and Label"
+msgstr "Cờ và tên nước"
+
+#: gkb-new/prop.c:287 modemlights/properties.c:382
+msgid "Display"
+msgstr "Hiển trị"
+
+#. Labels and option Menus
+#: gkb-new/prop.c:307
+msgid "_Appearance: "
+msgstr "_Diện mạo: "
+
+#: gkb-new/prop.c:314
+msgid "Applet _size: "
+msgstr "_Kích thước applet: "
+
+#: gkb-new/prop.c:340
+msgid "Hotkey for switching between layouts"
+msgstr "Phím nóng để đổi cách bố trí"
+
+#: gkb-new/prop.c:352
+msgid "Grab hotkey"
+msgstr "Bắt phím nóng"
+
+#. Create property box
+#: gkb-new/prop.c:412
+msgid "Keyboard Layout Switcher Preferences"
+msgstr "Thông số Bộ đổi bố trí bàn phím"
+
+#: gkb-new/prop.c:427
+msgid "_Keymaps"
+msgstr "_Bản đồ phím"
+
+#: gkb-new/prop.c:439
+msgid "_Options"
+msgstr "_Tùy chọn"
+
 #: gkb-new/system.c:45
 msgid "The keymap switching command returned with error!"
-msgstr ""
+msgstr "Lệnh chuyển bàn đồ phím trả về lỗi!"
 
 #: gtik/GNOME_GtikApplet.server.in.h:1
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.h:1
@@ -1210,140 +1223,139 @@ msgstr "Phụ tùng"
 
 #: gtik/GNOME_GtikApplet.server.in.h:2
 msgid "Get continuously updated stock quotes"
-msgstr ""
+msgstr "Cập nhật chỉ số chứng khoán liên tục"
 
 #: gtik/GNOME_GtikApplet.server.in.h:3
 msgid "Gtik Applet Factory"
 msgstr "Gtik Applet Factory"
 
-#: gtik/GNOME_GtikApplet.server.in.h:4
+#: gtik/GNOME_GtikApplet.server.in.h:4 gtik/gtik.c:730
 msgid "Stock Ticker"
-msgstr ""
+msgstr "Bộ theo dõi chỉ số chứng khoán"
 
-#: gtik/GNOME_GtikApplet.xml.h:3
-msgid "Refresh"
-msgstr "Cập nhật"
+#: gtik/GNOME_GtikApplet.xml.h:4
+msgid "_Refresh"
+msgstr "_Cập nhật"
 
-#: gtik/gtik.c:208 gtik/gtik.c:786
+#: gtik/gtik.c:202
 msgid "No data available or properties not set"
-msgstr ""
+msgstr "Chưa có dữ liệu hiện hữu hoặc chưa thiết lập thuộc tính"
 
-#: gtik/gtik.c:655
-msgid "The GNOME Stock Ticker"
-msgstr ""
-
-#: gtik/gtik.c:657
+#: gtik/gtik.c:732
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.  "
 "The GNOME Stock Ticker is a free Internet-based application.  It comes with "
 "ABSOLUTELY NO WARRANTY.  Do not use the GNOME Stock Ticker for making "
 "investment decisions; it is for informational purposes only."
 msgstr ""
+"Chương trình này kết nối tới các địa chỉ thông dụng và tải về bảng giá chứng "
+"khoán. GNOME Stock Ticker là ứng dụng tự do dự trên Internet. Nó KHÔNG HỀ CÓ "
+"BẤT KỲ BẢO ĐẢM NÀO. Đừng dùng GNOME Stock Ticker để quyết định đầu tư; nó "
+"chỉ được dùng cho mục đích cung cấp thông tin mà thôi."
 
-#: gtik/gtik.c:1139
-msgid "New Symbol:"
-msgstr "Ký hiệu mới:"
+#: gtik/gtik.c:1126
+msgid "_New Symbol:"
+msgstr "Ký hiệu mớ_i:"
 
-#: gtik/gtik.c:1160
+#: gtik/gtik.c:1148
 msgid "_Remove Selected"
 msgstr "_Loại bỏ cái đã chọn"
 
-#: gtik/gtik.c:1208 gweather/gweather-pref.c:764
-msgid "Use HTTP proxy"
-msgstr "Dùng HTTP Proxy"
+#: gtik/gtik.c:1224
+msgid "Stock Ticker Preferences"
+msgstr "Thông số Stock Ticker"
 
-#: gtik/gtik.c:1218 gweather/gweather-pref.c:775
-msgid "Location :"
-msgstr "Địa điểm :"
+#: gtik/gtik.c:1247
+msgid "Update Fre_quency in minutes:"
+msgstr "Tần số _cập nhật (phút):"
 
-#: gtik/gtik.c:1232 gweather/gweather-pref.c:791
-msgid "Port :"
-msgstr "Cổng :"
-
-#: gtik/gtik.c:1243 gweather/gweather-pref.c:803
-msgid "Proxy requires a uername and password"
-msgstr "Proxy yêu cầu tên người dùng và mật khẩu"
-
-#: gtik/gtik.c:1254 gweather/gweather-pref.c:814
-msgid "Username:"
-msgstr "Tên người dùng:"
-
-#: gtik/gtik.c:1267 gweather/gweather-pref.c:830
-msgid "Password:"
-msgstr "Mật khẩu:"
-
-#: gtik/gtik.c:1336
-msgid "Stock Ticker Properties"
-msgstr "Thuộc tính Stock Ticker"
-
-#: gtik/gtik.c:1357
-msgid "Update Frequency in minutes:"
-msgstr "Tần số cập nhật (phút):"
-
-#: gtik/gtik.c:1373
+#: gtik/gtik.c:1265
 msgid "Enter symbols delimited with \"+\" in the box below."
 msgstr "Nhập ký hiệu phân cách bởi \"+\" trong khung dưới"
 
-#: gtik/gtik.c:1383
-msgid "Display only symbols and price"
-msgstr "Chỉ hiện ký hiệu và giá"
+#: gtik/gtik.c:1272
+msgid "Displa_y only symbols and price"
+msgstr "Chỉ hiện _ký hiệu và giá"
 
-#: gtik/gtik.c:1386
-msgid "Scroll left to right"
-msgstr "Cuộn trái qua phải"
+#: gtik/gtik.c:1275
+msgid "Scroll _left to right"
+msgstr "Cuộn t_rái qua phải"
 
-#: gtik/gtik.c:1389
-msgid "Display arrows instead of -/+"
-msgstr "Hiển mũi tên thay vì -/+"
+#: gtik/gtik.c:1278
+msgid "_Enable scroll buttons"
+msgstr "_Bật nút cuộn"
+
+#: gtik/gtik.c:1302
+msgid "+ C_olor"
+msgstr "+ _Màu"
+
+#: gtik/gtik.c:1322
+msgid "- Colo_r"
+msgstr "- Mà_u"
+
+#: gtik/gtik.c:1339
+msgid "_Unchanged Color"
+msgstr "Màu _không đổi"
+
+#: gtik/gtik.c:1356
+msgid "Back_ground Color"
+msgstr "Màu _nền"
+
+#: gtik/gtik.c:1378
+msgid "Stock Sy_mbol:"
+msgstr "_Ký hiệu chứng khoán:"
 
 #: gtik/gtik.c:1392
-msgid "Enable scroll buttons"
-msgstr "Bật nút cuộn"
+msgid "Stock C_hange:"
+msgstr "_Thay đổi chứng khoán:"
 
-#. COLOR
-#: gtik/gtik.c:1418
-msgid "+ Color"
-msgstr "+ Màu"
-
-#: gtik/gtik.c:1435
-msgid "- Color"
-msgstr "- Màu"
-
-#: gtik/gtik.c:1455
-msgid "Stock Symbol:"
-msgstr "Ký hiệu chứng khoán:"
-
-#: gtik/gtik.c:1467
-msgid "Stock Change:"
-msgstr "Thay đổi chứng khoán:"
-
-#: gtik/gtik.c:1489
+#: gtik/gtik.c:1416
 msgid "_Symbols"
 msgstr "_Ký hiệu"
 
-#: gtik/gtik.c:1491
+#: gtik/gtik.c:1418
 msgid "_Behavior"
 msgstr "_Hành vi"
 
-#: gtik/gtik.c:1493
+#: gtik/gtik.c:1420
 msgid "_Appearance"
 msgstr "_Diện mạo"
 
-#: gtik/gtik.c:1495 gweather/gweather-pref.c:843
-msgid "_Proxy"
-msgstr "Đại _diện"
+#: gtik/gtik.c:1494
+msgid "Skip forward"
+msgstr "Đi tới"
 
-#: gtik/gtik.c:1714
+#: gtik/gtik.c:1495
+msgid "Skip backward"
+msgstr "Đi lùi"
+
+#: gtik/gtik.c:1496
+msgid ""
+"Stock Ticker\n"
+"Get continuously updated stock quotes"
+msgstr ""
+"Bộ theo dõi chỉ số chứng khoán\n"
+"Cập nhật chỉ số chứng khoán liên tục"
+
+#: gtik/gtik.c:1683
 msgid "(No"
 msgstr "(Không"
 
-#: gtik/gtik.c:1715
+#: gtik/gtik.c:1684
 msgid "Change "
 msgstr "Thay đổi "
 
+#: gweather/GNOME_GWeatherApplet.xml.h:2 gweather/gweather-dialog.c:302
+msgid "_Forecast"
+msgstr "_Dự báo"
+
+#: gweather/GNOME_GWeatherApplet.xml.h:5
+msgid "_Update"
+msgstr "_Cập nhật"
+
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.h:2
 msgid "Factory for creating the weather applet."
-msgstr ""
+msgstr "Factory để tạo applet thời tiết."
 
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.h:3
 msgid "Gweather Applet Factory"
@@ -1354,227 +1366,200 @@ msgid "Monitor the current weather conditions, and forecasts"
 msgstr "Theo dõi thời tiết, và dự đoán thời tiết"
 
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.h:5
+#: gweather/gweather-about.c:63
 msgid "Weather Report"
 msgstr "Báo cáo thời tiết"
 
-#: gweather/GNOME_GWeatherApplet.xml.h:2 gweather/gweather-dialog.c:75
-#: gweather/gweather-dialog.c:300
-msgid "Forecast"
-msgstr "Dự báo"
-
-#: gweather/GNOME_GWeatherApplet.xml.h:4
-msgid "Update"
-msgstr "Cập nhật"
-
-#: gweather/gweather-about.c:42 gweather/gweather-applet.c:196
-msgid "GNOME Weather"
-msgstr "GNOME Weather"
-
-#: gweather/gweather-about.c:43
+#: gweather/gweather-about.c:64
 msgid "Copyright (c)1999 by S. Papadimitriou"
 msgstr "Copyright (c)1999 by S. Papadimitriou"
 
-#: gweather/gweather-about.c:44
+#: gweather/gweather-about.c:65
 msgid ""
 "Released under the GNU General Public License.\n"
 "\n"
 "An applet for monitoring local weather conditions."
 msgstr ""
+"Phát hành dưới giấy phép GNU GPL.\n"
+"\n"
+"Applet dùng để theo dõi thời tiết."
+
+#: gweather/gweather-applet.c:196
+msgid "GNOME Weather"
+msgstr "GNOME Weather"
 
 #: gweather/gweather-applet.c:324
 msgid "Updating..."
 msgstr "Đang cập nhật..."
 
-#: gweather/gweather-dialog.c:106
+#: gweather/gweather-dialog.c:75
+msgid "Forecast"
+msgstr "Dự báo"
+
+#: gweather/gweather-dialog.c:108
 msgid "Location:"
 msgstr "Địa điểm:"
 
-#: gweather/gweather-dialog.c:114
+#: gweather/gweather-dialog.c:116
 msgid "Update:"
 msgstr "Cập nhật:"
 
-#: gweather/gweather-dialog.c:122
+#: gweather/gweather-dialog.c:124
 msgid "Conditions:"
 msgstr "Điều kiện:"
 
-#: gweather/gweather-dialog.c:130
+#: gweather/gweather-dialog.c:132
 msgid "Sky:"
 msgstr "Bầu trời:"
 
-#: gweather/gweather-dialog.c:138
+#: gweather/gweather-dialog.c:140
 msgid "Temperature:"
 msgstr "Nhiệt độ"
 
-#: gweather/gweather-dialog.c:146
+#: gweather/gweather-dialog.c:148
 msgid "Dew point:"
 msgstr "Điểm sương:"
 
-#: gweather/gweather-dialog.c:154
+#: gweather/gweather-dialog.c:156
 msgid "Humidity:"
 msgstr "Độ ẩm:"
 
-#: gweather/gweather-dialog.c:162
+#: gweather/gweather-dialog.c:164
 msgid "Wind:"
 msgstr "Gió:"
 
-#: gweather/gweather-dialog.c:170
+#: gweather/gweather-dialog.c:172
 msgid "Pressure:"
 msgstr "Áp suất:"
 
-#: gweather/gweather-dialog.c:178
+#: gweather/gweather-dialog.c:180
 msgid "Visibility:"
 msgstr "Tầm nhìn:"
 
-#: gweather/gweather-dialog.c:277
-msgid "Current conditions"
-msgstr "Điều kiện hiện thời"
+#: gweather/gweather-dialog.c:279
+msgid "C_urrent conditions"
+msgstr "Điều _kiện hiện thời"
 
-#: gweather/gweather-dialog.c:290
+#: gweather/gweather-dialog.c:292
 msgid "ForeCast Report"
 msgstr "Báo cáo dự báo thời tiết"
 
-#: gweather/gweather-dialog.c:290
+#: gweather/gweather-dialog.c:292
 msgid "See the ForeCast Details"
 msgstr "Xem dự báo chi tiết"
 
-#: gweather/gweather-dialog.c:332
-msgid "Visit Weather.com"
-msgstr "Thăm Weather.com"
+#: gweather/gweather-dialog.c:327
+msgid "_Visit Weather.com"
+msgstr "_Xem Weather.com"
 
-#: gweather/gweather-dialog.c:333
+#: gweather/gweather-dialog.c:328
 msgid "URL link Button"
 msgstr "Nút liên kết URL"
 
-#: gweather/gweather-dialog.c:333
+#: gweather/gweather-dialog.c:328
 msgid "Click to Enter Weather.com"
 msgstr "Nhấn để vào Weather.com"
 
-#: gweather/gweather-dialog.c:341
-msgid "Radar map"
-msgstr "Bản đồ ra đa"
+#: gweather/gweather-dialog.c:336
+msgid "_Radar map"
+msgstr "_Bản đồ ra đa"
 
-#: gweather/gweather-dialog.c:413
+#: gweather/gweather-dialog.c:408
 msgid ""
 "Detailed forecast not available for this location.\n"
 "Please try the state forecast; note that IWIN forecasts are available only "
 "for US cities."
 msgstr ""
+"Địa điểm này không có dự báo chi tiết.\n"
+"Vui lòng chọn dự báo thời tiết bang; chú ý là dự báo IWIN chỉ có đối với các "
+"thành phố Mỹ."
 
-#: gweather/gweather-dialog.c:415
+#: gweather/gweather-dialog.c:410
 msgid ""
 "State forecast not available for this location.\n"
 "Please try the detailed forecast; note that IWIN forecasts are available "
 "only for US cities."
 msgstr ""
+"Địa điểm này không có dự báo thời tiết bang.\n"
+"Vui lòng thử dự báo thời tiết chi tiết; chú ý là dự báo IWIN chỉ có đối với "
+"các thành phố Mỹ."
 
 #. Accessible Name and Description for the components in Preference Dialog
-#: gweather/gweather-pref.c:125
+#: gweather/gweather-pref.c:107
 msgid "Location view"
 msgstr "Khung địa điểm"
 
-#: gweather/gweather-pref.c:125
+#: gweather/gweather-pref.c:107
 msgid "Select Location from the list"
 msgstr "Chọn địa điểm từ danh sách"
 
-#: gweather/gweather-pref.c:126
-msgid "URL Entry"
-msgstr "URL"
-
-#: gweather/gweather-pref.c:126
-msgid "Enter the Location"
-msgstr "Nhập địa điểm"
-
-#: gweather/gweather-pref.c:127
-msgid "Port Entry"
-msgstr "Cổng"
-
-#: gweather/gweather-pref.c:127
-msgid "Enter the Port number"
-msgstr "Nhập số cổng"
-
-#: gweather/gweather-pref.c:128
-msgid "User Entry"
-msgstr "Người dùng"
-
-#: gweather/gweather-pref.c:128
-msgid "Enter the user name"
-msgstr "Nhập tên người dùng"
-
-#: gweather/gweather-pref.c:129
-msgid "Password Entry"
-msgstr "Mật khẩu"
-
-#: gweather/gweather-pref.c:129
-msgid "Enter the Password"
-msgstr "Nhập mật khẩu"
-
-#: gweather/gweather-pref.c:131
+#: gweather/gweather-pref.c:109
 msgid "Update spin button"
-msgstr ""
+msgstr "Nút chiều cập nhật"
 
-#: gweather/gweather-pref.c:131
+#: gweather/gweather-pref.c:109
 msgid "Spinbutton for updating"
-msgstr ""
+msgstr "Nút lên xuống để cập nhật"
 
-#: gweather/gweather-pref.c:132
+#: gweather/gweather-pref.c:110
 msgid "Address Entry"
 msgstr "Địa chỉ"
 
-#: gweather/gweather-pref.c:132
+#: gweather/gweather-pref.c:110
 msgid "Enter the URL"
 msgstr "Nhập URL"
 
-#: gweather/gweather-pref.c:707
-msgid "Weather Properties"
-msgstr "Thuộc tính Thời tiết"
+#: gweather/gweather-pref.c:559
+msgid "Weather Preferences"
+msgstr "Thông số Thời tiết"
 
-#: gweather/gweather-pref.c:752
+#: gweather/gweather-pref.c:606
 msgid "_Location"
 msgstr "Đị_a điểm"
 
-#: gweather/gweather-pref.c:872
-msgid "Automatically update every"
-msgstr "Tự cập nhật mỗi"
+#: gweather/gweather-pref.c:637
+msgid "_Automatically update every"
+msgstr "_Tự cập nhật mỗi"
 
-#: gweather/gweather-pref.c:878
-msgid "Use metric system units"
-msgstr "Dùng đơn vị đo hệ thống"
+#: gweather/gweather-pref.c:643
+msgid "Use _metric system units"
+msgstr "_Dùng đơn vị đo hệ thống"
 
-#: gweather/gweather-pref.c:884
-msgid "Enable detailed forecast"
-msgstr "Bật dự đoán chi tiết"
+#: gweather/gweather-pref.c:649
+msgid "Enable _detailed forecast"
+msgstr "Bật dự đoán _chi tiết"
 
-#: gweather/gweather-pref.c:891
-msgid "Enable radar map"
-msgstr "Bật bản đồ radar"
+#: gweather/gweather-pref.c:656
+msgid "Enable _radar map"
+msgstr "Bật bản đồ _radar"
 
-#: gweather/gweather-pref.c:897
-msgid "Use custom address for radar map"
-msgstr "Dùng địa chỉ tự chọn cho bản đồ radar"
+#: gweather/gweather-pref.c:662
+msgid "Use cus_tom address for radar map"
+msgstr "Dùng địa chỉ _tự chọn cho bản đồ radar"
 
-#: gweather/gweather-pref.c:908
-msgid "Address :"
-msgstr "Địa chỉ: "
+#: gweather/gweather-pref.c:673
+msgid "A_ddress :"
+msgstr "Đị_a chỉ :"
 
-#: gweather/gweather-pref.c:920
+#: gweather/gweather-pref.c:685
 msgid "Updates"
 msgstr "Cập nhật"
 
-#: gweather/gweather-pref.c:926
-msgid "Automatically update every "
-msgstr "Tự cập nhật mỗi "
+#: gweather/gweather-pref.c:691
+msgid "_Automatically update every "
+msgstr "Tự cập nhật _mỗi "
 
-#: gweather/gweather-pref.c:946
+#: gweather/gweather-pref.c:711
 msgid "minute(s)"
 msgstr "phút"
 
 #. The Miscellaneous frame
-#: gweather/gweather-pref.c:957
+#: gweather/gweather-pref.c:722
 msgid "Miscellaneous"
 msgstr "Linh tinh"
 
-#: gweather/gweather-pref.c:975 mini-commander/src/preferences.c:772
-#: modemlights/properties.c:405
+#: gweather/gweather-pref.c:740 mini-commander/src/preferences.c:971
+#: modemlights/properties.c:417
 msgid "_General"
 msgstr "_Chung"
 
@@ -1602,95 +1587,95 @@ msgstr "dặm"
 msgid "kilometers"
 msgstr "kilomét"
 
-#: gweather/weather.c:117
+#: gweather/weather.c:132
 msgid "Variable"
 msgstr "Biến"
 
-#: gweather/weather.c:118
+#: gweather/weather.c:133
 msgid "North"
 msgstr "Bắc"
 
-#: gweather/weather.c:118
+#: gweather/weather.c:133
 msgid "North - NorthEast"
 msgstr "Bắc - Đông Bắc"
 
-#: gweather/weather.c:118
+#: gweather/weather.c:133
 msgid "Northeast"
 msgstr "Đông Bắc"
 
-#: gweather/weather.c:118
+#: gweather/weather.c:133
 msgid "East - NorthEast"
 msgstr "Đông - Đông Bắc"
 
-#: gweather/weather.c:119
+#: gweather/weather.c:134
 msgid "East"
 msgstr "Đông"
 
-#: gweather/weather.c:119
+#: gweather/weather.c:134
 msgid "East - Southeast"
 msgstr "Đông - Đông Nam"
 
-#: gweather/weather.c:119
+#: gweather/weather.c:134
 msgid "Southeast"
 msgstr "Đông Nam"
 
-#: gweather/weather.c:119
+#: gweather/weather.c:134
 msgid "South - Southeast"
 msgstr "Nam - Đông Nam"
 
-#: gweather/weather.c:120
+#: gweather/weather.c:135
 msgid "South"
 msgstr "Nam"
 
-#: gweather/weather.c:120
+#: gweather/weather.c:135
 msgid "South - Southwest"
 msgstr "Nam - Tây Nam"
 
-#: gweather/weather.c:120
+#: gweather/weather.c:135
 msgid "Southwest"
 msgstr "Tây Nam"
 
-#: gweather/weather.c:120
+#: gweather/weather.c:135
 msgid "West - Southwest"
 msgstr "Tây - Tây Nam"
 
-#: gweather/weather.c:121
+#: gweather/weather.c:136
 msgid "West"
 msgstr "Tây"
 
-#: gweather/weather.c:121
+#: gweather/weather.c:136
 msgid "West - Northwest"
 msgstr "Tây - Tây Bắc"
 
-#: gweather/weather.c:121
+#: gweather/weather.c:136
 msgid "Northwest"
 msgstr "Tây Bắc"
 
-#: gweather/weather.c:121
+#: gweather/weather.c:136
 msgid "North - Northwest"
 msgstr "Bắc - Tây Bắc"
 
-#: gweather/weather.c:128 gweather/weather.c:145 gweather/weather.c:209
+#: gweather/weather.c:143 gweather/weather.c:160 gweather/weather.c:224
 msgid "Invalid"
 msgstr "Không hợp lệ"
 
-#: gweather/weather.c:134
+#: gweather/weather.c:149
 msgid "Clear Sky"
 msgstr "Trời trong"
 
-#: gweather/weather.c:135
+#: gweather/weather.c:150
 msgid "Broken clouds"
 msgstr "Mây tảng"
 
-#: gweather/weather.c:136
+#: gweather/weather.c:151
 msgid "Scattered clouds"
 msgstr "Nhiều mây"
 
-#: gweather/weather.c:137
+#: gweather/weather.c:152
 msgid "Few clouds"
 msgstr "Ít mây"
 
-#: gweather/weather.c:138
+#: gweather/weather.c:153
 msgid "Overcast"
 msgstr "U ám"
 
@@ -1698,1114 +1683,1124 @@ msgstr "U ám"
 #. ******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
 #. NONE
 #. DRIZZLE
-#: gweather/weather.c:171
+#: gweather/weather.c:186
 msgid "Drizzle"
 msgstr "Mưa phùn"
 
-#: gweather/weather.c:171
+#: gweather/weather.c:186
 msgid "Drizzle in the vicinity"
-msgstr "Mưa phùn trong vùng lân cận"
+msgstr "Mưa phùn trong vùng phụ cận"
 
-#: gweather/weather.c:171
+#: gweather/weather.c:186
 msgid "Light drizzle"
 msgstr "Mưa phùn nhẹ"
 
-#: gweather/weather.c:171
+#: gweather/weather.c:186
 msgid "Moderate drizzle"
 msgstr "Mưa phùn vừa"
 
-#: gweather/weather.c:171
+#: gweather/weather.c:186
 msgid "Heavy drizzle"
 msgstr "Mưa phùn nhiều"
 
-#: gweather/weather.c:171
+#: gweather/weather.c:186
 msgid "Shallow drizzle"
-msgstr ""
+msgstr "Mưa bụi"
 
-#: gweather/weather.c:171
+#: gweather/weather.c:186
 msgid "Patches of drizzle"
-msgstr ""
+msgstr "Mưa phùn diện rộng"
 
-#: gweather/weather.c:171
+#: gweather/weather.c:186
 msgid "Partial drizzle"
-msgstr ""
+msgstr "Mưa phùn rải rác"
 
-#: gweather/weather.c:171 gweather/weather.c:172
+#: gweather/weather.c:186 gweather/weather.c:187
 msgid "Thunderstorm"
 msgstr "Sấm chớp"
 
-#: gweather/weather.c:171
+#: gweather/weather.c:186
 msgid "Windy drizzle"
-msgstr ""
+msgstr "Mưa phùn kèm gió"
 
-#: gweather/weather.c:171
+#: gweather/weather.c:186
 msgid "Showers"
-msgstr ""
+msgstr "Mưa"
 
-#: gweather/weather.c:171
+#: gweather/weather.c:186
 msgid "Drifting drizzle"
-msgstr ""
+msgstr "Mưa phùn kèm gió xoáy"
 
-#: gweather/weather.c:171
+#: gweather/weather.c:186
 msgid "Freezing drizzle"
-msgstr ""
+msgstr "Mưa phùn kèm gió buốt"
 
 #. RAIN
-#: gweather/weather.c:172
+#: gweather/weather.c:187
 msgid "Rain"
 msgstr "Mưa"
 
-#: gweather/weather.c:172
+#: gweather/weather.c:187
 msgid "Rain in the vicinity"
-msgstr ""
+msgstr "Mưa trong vùng phụ cận"
 
-#: gweather/weather.c:172
+#: gweather/weather.c:187
 msgid "Light rain"
-msgstr ""
+msgstr "Mưa nhẹ"
 
-#: gweather/weather.c:172
+#: gweather/weather.c:187
 msgid "Moderate rain"
-msgstr ""
+msgstr "Mưa vừa"
 
-#: gweather/weather.c:172
+#: gweather/weather.c:187
 msgid "Heavy rain"
-msgstr ""
+msgstr "Mưa to"
 
-#: gweather/weather.c:172
+#: gweather/weather.c:187
 msgid "Shallow rain"
-msgstr ""
+msgstr "Mưa bụi"
 
-#: gweather/weather.c:172
+#: gweather/weather.c:187
 msgid "Patches of rain"
-msgstr ""
+msgstr "Mưa diện rộng"
 
-#: gweather/weather.c:172
+#: gweather/weather.c:187
 msgid "Partial rainfall"
-msgstr ""
+msgstr "Mưa rải rác"
 
-#: gweather/weather.c:172
+#: gweather/weather.c:187
 msgid "Blowing rainfall"
-msgstr ""
+msgstr "Mưa kèm gió mạnh"
 
-#: gweather/weather.c:172
+#: gweather/weather.c:187
 msgid "Rain showers"
-msgstr ""
+msgstr "Mưa rào"
 
-#: gweather/weather.c:172
+#: gweather/weather.c:187
 msgid "Drifting rain"
-msgstr ""
+msgstr "Mưa kèm gió xoáy"
 
-#: gweather/weather.c:172
+#: gweather/weather.c:187
 msgid "Freezing rain"
-msgstr ""
+msgstr "Mưa kèm gió buốt"
 
 #. SNOW
-#: gweather/weather.c:173
+#: gweather/weather.c:188
 msgid "Snow"
-msgstr ""
+msgstr "Tuyết"
 
-#: gweather/weather.c:173
+#: gweather/weather.c:188
 msgid "Snow in the vicinity"
-msgstr ""
+msgstr "Tuyết trong vùng phụ cận"
 
-#: gweather/weather.c:173
+#: gweather/weather.c:188
 msgid "Light snow"
-msgstr ""
+msgstr "Tuyết nhẹ"
 
-#: gweather/weather.c:173
+#: gweather/weather.c:188
 msgid "Moderate snow"
-msgstr ""
+msgstr "Tuyết vừa"
 
-#: gweather/weather.c:173
+#: gweather/weather.c:188
 msgid "Heavy snow"
-msgstr ""
+msgstr "Tuyết nhiều"
 
-#: gweather/weather.c:173
+#: gweather/weather.c:188
 msgid "Shallow snow"
-msgstr ""
+msgstr "Tuyết bụi"
 
-#: gweather/weather.c:173
+#: gweather/weather.c:188
 msgid "Patches of snow"
-msgstr ""
+msgstr "Tuyết trên diện rộng"
 
-#: gweather/weather.c:173
+#: gweather/weather.c:188
 msgid "Partial snowfall"
-msgstr ""
+msgstr "Tuyết rải rác"
 
-#: gweather/weather.c:173 gweather/weather.c:174
+#: gweather/weather.c:188 gweather/weather.c:189
 msgid "Snowstorm"
-msgstr ""
+msgstr "Bão tuyết"
 
-#: gweather/weather.c:173
+#: gweather/weather.c:188
 msgid "Blowing snowfall"
-msgstr ""
+msgstr "Bão tuyết kèm gió mạnh"
 
-#: gweather/weather.c:173
+#: gweather/weather.c:188
 msgid "Snow showers"
-msgstr ""
+msgstr "Mưa tuyết"
 
-#: gweather/weather.c:173
+#: gweather/weather.c:188
 msgid "Drifting snow"
-msgstr ""
+msgstr "Tuyết kèm gió xoáy"
 
-#: gweather/weather.c:173
+#: gweather/weather.c:188
 msgid "Freezing snow"
-msgstr ""
+msgstr "Tuyết kèm gió buốt"
 
 #. SNOW_GRAINS
-#: gweather/weather.c:174
+#: gweather/weather.c:189
 msgid "Snow grains"
-msgstr ""
+msgstr "Hoa tuyết"
 
-#: gweather/weather.c:174
+#: gweather/weather.c:189
 msgid "Snow grains in the vicinity"
-msgstr ""
+msgstr "Hoa tuyết trong vùng phụ cận"
 
-#: gweather/weather.c:174
+#: gweather/weather.c:189
 msgid "Light snow grains"
-msgstr ""
+msgstr "Hoa tuyết nhẹ"
 
-#: gweather/weather.c:174
+#: gweather/weather.c:189
 msgid "Moderate snow grains"
-msgstr ""
+msgstr "Hoa tuyết vừa"
 
-#: gweather/weather.c:174
+#: gweather/weather.c:189
 msgid "Heavy snow grains"
-msgstr ""
+msgstr "Hoa tuyết nhiều"
 
-#: gweather/weather.c:174
+#: gweather/weather.c:189
 msgid "Shallow snow grains"
-msgstr ""
+msgstr "Hoa tuyết loáng thoáng"
 
-#: gweather/weather.c:174
+#: gweather/weather.c:189
 msgid "Patches of snow grains"
-msgstr ""
+msgstr "Hoa tuyết trên diện rộng"
 
-#: gweather/weather.c:174
+#: gweather/weather.c:189
 msgid "Partial snow grains"
-msgstr ""
+msgstr "Hoa tuyết rải rác"
 
-#: gweather/weather.c:174
+#: gweather/weather.c:189
 msgid "Blowing snow grains"
-msgstr ""
+msgstr "Hoa tuyết kèm gió"
 
-#: gweather/weather.c:174
+#: gweather/weather.c:189
 msgid "Snow grain showers"
-msgstr ""
+msgstr "Hoa tuyết kèm mưa"
 
-#: gweather/weather.c:174
+#: gweather/weather.c:189
 msgid "Drifting snow grains"
-msgstr ""
+msgstr "Hoa tuyết kèm gió xoáy"
 
-#: gweather/weather.c:174
+#: gweather/weather.c:189
 msgid "Freezing snow grains"
-msgstr ""
+msgstr "Hoa tuyết kèm gió buốt"
 
 #. ICE_CRYSTALS
-#: gweather/weather.c:175
+#: gweather/weather.c:190
 msgid "Ice crystals"
-msgstr ""
+msgstr "Hạt băng"
 
-#: gweather/weather.c:175
+#: gweather/weather.c:190
 msgid "Ice crystals in the vicinity"
-msgstr ""
+msgstr "Hạt băng trong vùng phụ cận"
 
-#: gweather/weather.c:175
+#: gweather/weather.c:190
 msgid "Few ice crystals"
-msgstr ""
+msgstr "Hạt băng ít"
 
-#: gweather/weather.c:175
+#: gweather/weather.c:190
 msgid "Moderate ice crystals"
-msgstr ""
+msgstr "Hạt băng vừa"
 
-#: gweather/weather.c:175
+#: gweather/weather.c:190
 msgid "Heavy ice crystals"
-msgstr ""
+msgstr "Hạt băng nhiều"
 
-#: gweather/weather.c:175
+#: gweather/weather.c:190
 msgid "Patches of ice crystals"
-msgstr ""
+msgstr "Hạt băng trên diện rộng"
 
-#: gweather/weather.c:175
+#: gweather/weather.c:190
 msgid "Partial ice crystals"
-msgstr ""
+msgstr "Hạt băng rải rác"
 
-#: gweather/weather.c:175
+#: gweather/weather.c:190
 msgid "Ice crystal storm"
-msgstr ""
+msgstr "Hạt băng kèm giông"
 
-#: gweather/weather.c:175
+#: gweather/weather.c:190
 msgid "Blowing ice crystals"
-msgstr ""
+msgstr "Hạt băng kèm gió"
 
-#: gweather/weather.c:175
+#: gweather/weather.c:190
 msgid "Showers of ice crystals"
-msgstr ""
+msgstr "Hạt băng kèm mưa"
 
-#: gweather/weather.c:175
+#: gweather/weather.c:190
 msgid "Drifting ice crystals"
-msgstr ""
+msgstr "Hạt băng kèm gió xoáy"
 
-#: gweather/weather.c:175
+#: gweather/weather.c:190
 msgid "Freezing ice crystals"
-msgstr ""
+msgstr "Hạt băng kèm gió buốt"
 
 #. ICE_PELLETS
-#: gweather/weather.c:176
+#: gweather/weather.c:191
 msgid "Ice pellets"
-msgstr ""
+msgstr "Mảnh băng"
 
-#: gweather/weather.c:176
+#: gweather/weather.c:191
 msgid "Ice pellets in the vicinity"
-msgstr ""
+msgstr "Mảnh băng trong vùng phụ cận"
 
-#: gweather/weather.c:176
+#: gweather/weather.c:191
 msgid "Few ice pellets"
-msgstr ""
+msgstr "Ít mảnh băng"
 
-#: gweather/weather.c:176
+#: gweather/weather.c:191
 msgid "Moderate ice pellets"
-msgstr ""
+msgstr "Mảnh băng vừa"
 
-#: gweather/weather.c:176
+#: gweather/weather.c:191
 msgid "Heavy ice pellets"
-msgstr ""
+msgstr "Nhiều mảnh băng"
 
-#: gweather/weather.c:176
+#: gweather/weather.c:191
 msgid "Shallow ice pellets"
-msgstr ""
+msgstr "Mảnh băng loáng thoáng"
 
-#: gweather/weather.c:176
+#: gweather/weather.c:191
 msgid "Patches of ice pellets"
-msgstr ""
+msgstr "Mảnh băng trên diện rộng"
 
-#: gweather/weather.c:176
+#: gweather/weather.c:191
 msgid "Partial ice pellets"
-msgstr ""
+msgstr "Mảnh băng rải rác"
 
-#: gweather/weather.c:176
+#: gweather/weather.c:191
 msgid "Ice pellet storm"
-msgstr ""
+msgstr "Mảnh băng kèm giông"
 
-#: gweather/weather.c:176
+#: gweather/weather.c:191
 msgid "Blowing ice pellets"
-msgstr ""
+msgstr "Mảnh băng kèm gió"
 
-#: gweather/weather.c:176
+#: gweather/weather.c:191
 msgid "Showers of ice pellets"
-msgstr ""
+msgstr "Mảnh băng kèm mưa"
 
-#: gweather/weather.c:176
+#: gweather/weather.c:191
 msgid "Drifting ice pellets"
-msgstr ""
+msgstr "Mảnh băng kèm gió xoáy"
 
-#: gweather/weather.c:176
+#: gweather/weather.c:191
 msgid "Freezing ice pellets"
-msgstr ""
+msgstr "Mảnh băng kèm gió buốt"
 
 #. HAIL
-#: gweather/weather.c:177
+#: gweather/weather.c:192
 msgid "Hail"
-msgstr ""
+msgstr "Mưa đá"
 
-#: gweather/weather.c:177
+#: gweather/weather.c:192
 msgid "Hail in the vicinity"
-msgstr ""
+msgstr "Mưa đá trong vùng phụ cận"
 
-#: gweather/weather.c:177 gweather/weather.c:178
+#: gweather/weather.c:192 gweather/weather.c:193
 msgid "Light hail"
-msgstr ""
+msgstr "Mưa đá nhẹ"
 
-#: gweather/weather.c:177
+#: gweather/weather.c:192
 msgid "Moderate hail"
-msgstr ""
+msgstr "Mưa đá vừa"
 
-#: gweather/weather.c:177
+#: gweather/weather.c:192
 msgid "Heavy hail"
-msgstr ""
+msgstr "Mưa đá to"
 
-#: gweather/weather.c:177
+#: gweather/weather.c:192
 msgid "Shallow hail"
-msgstr ""
+msgstr "Mưa đá loáng thoáng"
 
-#: gweather/weather.c:177
+#: gweather/weather.c:192
 msgid "Patches of hail"
-msgstr ""
+msgstr "Mưa đá trên diện rộng"
 
-#: gweather/weather.c:177
+#: gweather/weather.c:192
 msgid "Partial hail"
-msgstr ""
+msgstr "Mưa đá rải rác"
 
-#: gweather/weather.c:177
+#: gweather/weather.c:192
 msgid "Hailstorm"
-msgstr ""
+msgstr "Mưa đá kèm giông"
 
-#: gweather/weather.c:177
+#: gweather/weather.c:192
 msgid "Blowing hail"
-msgstr ""
+msgstr "Mưa đá kèm gió"
 
-#: gweather/weather.c:177
+#: gweather/weather.c:192
 msgid "Hail showers"
-msgstr ""
+msgstr "Mưa đá rất to"
 
-#: gweather/weather.c:177
+#: gweather/weather.c:192
 msgid "Drifting hail"
-msgstr ""
+msgstr "Mưa đá kèm gió xoáy"
 
-#: gweather/weather.c:177
+#: gweather/weather.c:192
 msgid "Freezing hail"
-msgstr ""
+msgstr "Mưa đá kèm gió buốt"
 
 #. SMALL_HAIL
-#: gweather/weather.c:178
+#: gweather/weather.c:193
 msgid "Small hail"
-msgstr ""
+msgstr "Mưa đá-nhỏ"
 
-#: gweather/weather.c:178
+#: gweather/weather.c:193
 msgid "Small hail in the vicinity"
-msgstr ""
+msgstr "Mưa đá-nhỏ trong vùng phụ cận"
 
-#: gweather/weather.c:178
+#: gweather/weather.c:193
 msgid "Moderate small hail"
-msgstr ""
+msgstr "Mưa đá-nhỏ bình thường"
 
-#: gweather/weather.c:178
+#: gweather/weather.c:193
 msgid "Heavy small hail"
-msgstr ""
+msgstr "Mưa đá-nhỏ to"
 
-#: gweather/weather.c:178
+#: gweather/weather.c:193
 msgid "Shallow small hail"
-msgstr ""
+msgstr "Mưa đá-nhỏ loáng thoáng"
 
-#: gweather/weather.c:178
+#: gweather/weather.c:193
 msgid "Patches of small hail"
-msgstr ""
+msgstr "Mưa đá-nhỏ trên diện rộng"
 
-#: gweather/weather.c:178
+#: gweather/weather.c:193
 msgid "Partial small hail"
-msgstr ""
+msgstr "Mưa đá-nhỏ rải rác"
 
-#: gweather/weather.c:178
+#: gweather/weather.c:193
 msgid "Small hailstorm"
-msgstr ""
+msgstr "Mưa đá-nhỏ kèm giông"
 
-#: gweather/weather.c:178
+#: gweather/weather.c:193
 msgid "Blowing small hail"
-msgstr ""
+msgstr "Mưa đá-nhỏ kèm gió"
 
-#: gweather/weather.c:178
+#: gweather/weather.c:193
 msgid "Showers of small hail"
-msgstr ""
+msgstr "Mưa đá-nhỏ rất to"
 
-#: gweather/weather.c:178
+#: gweather/weather.c:193
 msgid "Drifting small hail"
-msgstr ""
+msgstr "Mưa đá-nhỏ kèm gió xoáy"
 
-#: gweather/weather.c:178
+#: gweather/weather.c:193
 msgid "Freezing small hail"
-msgstr ""
+msgstr "Mưa đá-nhỏ kèm gió buốt"
 
 #. PRECIPITATION
-#: gweather/weather.c:179
+#: gweather/weather.c:194
 msgid "Unknown precipitation"
-msgstr ""
+msgstr "Mưa rào không xác định"
 
-#: gweather/weather.c:179
+#: gweather/weather.c:194
 msgid "Precipitation in the vicinity"
-msgstr ""
+msgstr "Mưa rào trong vùng phụ cận"
 
-#: gweather/weather.c:179
+#: gweather/weather.c:194
 msgid "Light precipitation"
-msgstr ""
+msgstr "Mưa rào nhẹ"
 
-#: gweather/weather.c:179
+#: gweather/weather.c:194
 msgid "Moderate precipitation"
-msgstr ""
+msgstr "Mưa rào vừa phải"
 
-#: gweather/weather.c:179
+#: gweather/weather.c:194
 msgid "Heavy precipitation"
-msgstr ""
+msgstr "Mưa rào to"
 
-#: gweather/weather.c:179
+#: gweather/weather.c:194
 msgid "Shallow precipitation"
-msgstr ""
+msgstr "Mưa rào loáng thoáng"
 
-#: gweather/weather.c:179
+#: gweather/weather.c:194
 msgid "Patches of precipitation"
-msgstr ""
+msgstr "Mưa rào trên diện rộng"
 
-#: gweather/weather.c:179
+#: gweather/weather.c:194
 msgid "Partial precipitation"
-msgstr ""
+msgstr "Mưa rào rải rác"
 
-#: gweather/weather.c:179
+#: gweather/weather.c:194
 msgid "Unknown thunderstorm"
-msgstr ""
+msgstr "Giông không xác định"
 
-#: gweather/weather.c:179
+#: gweather/weather.c:194
 msgid "Blowing precipitation"
-msgstr ""
+msgstr "Giông gió"
 
-#: gweather/weather.c:179
+#: gweather/weather.c:194
 msgid "Showers, type unknown"
-msgstr ""
+msgstr "Mưa"
 
-#: gweather/weather.c:179
+#: gweather/weather.c:194
 msgid "Drifting precipitation"
-msgstr ""
+msgstr "Mưa rào kèm gió xoáy"
 
-#: gweather/weather.c:179
+#: gweather/weather.c:194
 msgid "Freezing precipitation"
-msgstr ""
+msgstr "Mưa rào kèm gió buốt"
 
 #. MIST
-#: gweather/weather.c:180
+#: gweather/weather.c:195
 msgid "Mist"
-msgstr ""
+msgstr "Mù"
 
-#: gweather/weather.c:180
+#: gweather/weather.c:195
 msgid "Mist in the vicinity"
-msgstr ""
+msgstr "Mù trong vùng phụ cận"
 
-#: gweather/weather.c:180
+#: gweather/weather.c:195
 msgid "Light mist"
-msgstr ""
+msgstr "Mù nhẹ"
 
-#: gweather/weather.c:180
+#: gweather/weather.c:195
 msgid "Moderate mist"
-msgstr ""
+msgstr "Mù vừa"
 
-#: gweather/weather.c:180
+#: gweather/weather.c:195
 msgid "Thick mist"
-msgstr ""
+msgstr "Mụ nặng"
 
-#: gweather/weather.c:180
+#: gweather/weather.c:195
 msgid "Shallow mist"
-msgstr ""
+msgstr "Mụ loáng thoáng"
 
-#: gweather/weather.c:180
+#: gweather/weather.c:195
 msgid "Patches of mist"
-msgstr ""
+msgstr "Mù trên diện rộng"
 
-#: gweather/weather.c:180
+#: gweather/weather.c:195
 msgid "Partial mist"
-msgstr ""
+msgstr "Mù rải rác"
 
-#: gweather/weather.c:180
+#: gweather/weather.c:195
 msgid "Mist with wind"
-msgstr ""
+msgstr "Mù kèm gió"
 
-#: gweather/weather.c:180
+#: gweather/weather.c:195
 msgid "Drifting mist"
-msgstr ""
+msgstr "Mù kèm gió xoáy"
 
-#: gweather/weather.c:180
+#: gweather/weather.c:195
 msgid "Freezing mist"
-msgstr ""
+msgstr "Mù kèm gió buốt"
 
 #. FOG
-#: gweather/weather.c:181
+#: gweather/weather.c:196
 msgid "Fog"
-msgstr ""
+msgstr "Sương mù"
 
-#: gweather/weather.c:181
+#: gweather/weather.c:196
 msgid "Fog in the vicinity"
-msgstr ""
+msgstr "Sương mù trong vùng phụ cận"
 
-#: gweather/weather.c:181
+#: gweather/weather.c:196
 msgid "Light fog"
-msgstr ""
+msgstr "Sương mù nhẹ"
 
-#: gweather/weather.c:181
+#: gweather/weather.c:196
 msgid "Moderate fog"
-msgstr ""
+msgstr "Sương mù vừa"
 
-#: gweather/weather.c:181
+#: gweather/weather.c:196
 msgid "Thick fog"
-msgstr ""
+msgstr "Sương mù nặng"
 
-#: gweather/weather.c:181
+#: gweather/weather.c:196
 msgid "Shallow fog"
-msgstr ""
+msgstr "Sương mù loáng thoáng"
 
-#: gweather/weather.c:181
+#: gweather/weather.c:196
 msgid "Patches of fog"
-msgstr ""
+msgstr "Sương mù trên diện rộng"
 
-#: gweather/weather.c:181
+#: gweather/weather.c:196
 msgid "Partial fog"
-msgstr ""
+msgstr "Sương mù rải rác"
 
-#: gweather/weather.c:181
+#: gweather/weather.c:196
 msgid "Fog with wind"
-msgstr ""
+msgstr "Sương mù kèm gió"
 
-#: gweather/weather.c:181
+#: gweather/weather.c:196
 msgid "Drifting fog"
-msgstr ""
+msgstr "Sương mù kèm gió xoáy"
 
-#: gweather/weather.c:181
+#: gweather/weather.c:196
 msgid "Freezing fog"
-msgstr ""
+msgstr "Sương mù kèm gió buốt"
 
 #. SMOKE
-#: gweather/weather.c:182
+#: gweather/weather.c:197
 msgid "Smoke"
-msgstr ""
+msgstr "Sương"
 
-#: gweather/weather.c:182
+#: gweather/weather.c:197
 msgid "Smoke in the vicinity"
-msgstr ""
+msgstr "Sương trong vùng phụ cận"
 
-#: gweather/weather.c:182
+#: gweather/weather.c:197
 msgid "Thin smoke"
-msgstr ""
+msgstr "Sương mỏng"
 
-#: gweather/weather.c:182
+#: gweather/weather.c:197
 msgid "Moderate smoke"
-msgstr ""
+msgstr "Sương vừa"
 
-#: gweather/weather.c:182
+#: gweather/weather.c:197
 msgid "Thick smoke"
-msgstr ""
+msgstr "Sương dày"
 
-#: gweather/weather.c:182
+#: gweather/weather.c:197
 msgid "Shallow smoke"
-msgstr ""
+msgstr "Sương loáng thoáng"
 
-#: gweather/weather.c:182
+#: gweather/weather.c:197
 msgid "Patches of smoke"
-msgstr ""
+msgstr "Sương trên diện rộng"
 
-#: gweather/weather.c:182
+#: gweather/weather.c:197
 msgid "Partial smoke"
-msgstr ""
+msgstr "Sương rải rác"
 
-#: gweather/weather.c:182
+#: gweather/weather.c:197
 msgid "Smoke w/ thunders"
-msgstr ""
+msgstr "Sương kèm sấm chấp"
 
-#: gweather/weather.c:182
+#: gweather/weather.c:197
 msgid "Smoke with wind"
-msgstr ""
+msgstr "Sương kèm gió"
 
-#: gweather/weather.c:182
+#: gweather/weather.c:197
 msgid "Drifting smoke"
-msgstr ""
+msgstr "Sương kèm gió xoáy"
 
 #. VOLCANIC_ASH
-#: gweather/weather.c:183
+#: gweather/weather.c:198
 msgid "Volcanic ash"
-msgstr ""
+msgstr "Bụi núi lửa"
 
-#: gweather/weather.c:183
+#: gweather/weather.c:198
 msgid "Volcanic ash in the vicinity"
-msgstr ""
+msgstr "Bụi núi lửa trong vùng phụ cận"
 
-#: gweather/weather.c:183
+#: gweather/weather.c:198
 msgid "Moderate volcanic ash"
-msgstr ""
+msgstr "Bụi núi lửa vừa"
 
-#: gweather/weather.c:183
+#: gweather/weather.c:198
 msgid "Thick volcanic ash"
-msgstr ""
+msgstr "Bụi núi lửa dày"
 
-#: gweather/weather.c:183
+#: gweather/weather.c:198
 msgid "Shallow volcanic ash"
-msgstr ""
+msgstr "Bụi núi lửa loáng thoáng"
 
-#: gweather/weather.c:183
+#: gweather/weather.c:198
 msgid "Patches of volcanic ash"
-msgstr ""
+msgstr "Bụi núi lửa trên diện rộng"
 
-#: gweather/weather.c:183
+#: gweather/weather.c:198
 msgid "Partial volcanic ash"
-msgstr ""
+msgstr "Bụi núi lửa rải rác"
 
-#: gweather/weather.c:183
+#: gweather/weather.c:198
 msgid "Volcanic ash w/ thunders"
-msgstr ""
+msgstr "Bụi núi lửa kèm sấm chớp"
 
-#: gweather/weather.c:183
+#: gweather/weather.c:198
 msgid "Blowing volcanic ash"
-msgstr ""
+msgstr "Bụi núi lửa kèm gió"
 
-#: gweather/weather.c:183
+#: gweather/weather.c:198
 msgid "Showers of volcanic ash "
-msgstr ""
+msgstr "Bụi núi lửa kèm mưa"
 
-#: gweather/weather.c:183
+#: gweather/weather.c:198
 msgid "Drifting volcanic ash"
-msgstr ""
+msgstr "Bụi núi lửa kèm gió xoáy"
 
-#: gweather/weather.c:183
+#: gweather/weather.c:198
 msgid "Freezing volcanic ash"
-msgstr ""
+msgstr "Bụi núi lửa kèm gió buốt"
 
 #. SAND
-#: gweather/weather.c:184
+#: gweather/weather.c:199
 msgid "Sand"
-msgstr ""
+msgstr "Cát bay"
 
-#: gweather/weather.c:184
+#: gweather/weather.c:199
 msgid "Sand in the vicinity"
-msgstr ""
+msgstr "Cát bay trong vùng phụ cận"
 
-#: gweather/weather.c:184
+#: gweather/weather.c:199
 msgid "Light sand"
-msgstr ""
+msgstr "Cát bay nhẹ"
 
-#: gweather/weather.c:184
+#: gweather/weather.c:199
 msgid "Moderate sand"
-msgstr ""
+msgstr "Cát bay vừa"
 
-#: gweather/weather.c:184
+#: gweather/weather.c:199
 msgid "Heavy sand"
-msgstr ""
+msgstr "Cát bay nhiều"
 
-#: gweather/weather.c:184
+#: gweather/weather.c:199
 msgid "Patches of sand"
-msgstr ""
+msgstr "Cát bay trên diện rộng"
 
-#: gweather/weather.c:184
+#: gweather/weather.c:199
 msgid "Partial sand"
-msgstr ""
+msgstr "Cát bay rải rác"
 
-#: gweather/weather.c:184
+#: gweather/weather.c:199
 msgid "Blowing sand"
-msgstr ""
+msgstr "Cát bay kèm gió"
 
-#: gweather/weather.c:184
+#: gweather/weather.c:199
 msgid "Drifting sand"
-msgstr ""
+msgstr "Cát bay kèm gió xoáy"
 
 #. HAZE
-#: gweather/weather.c:185
+#: gweather/weather.c:200
 msgid "Haze"
-msgstr ""
+msgstr "Mù"
 
-#: gweather/weather.c:185
+#: gweather/weather.c:200
 msgid "Haze in the vicinity"
-msgstr ""
+msgstr "Mù trong vùng phụ cận"
 
-#: gweather/weather.c:185
+#: gweather/weather.c:200
 msgid "Light haze"
-msgstr ""
+msgstr "Mù nhẹ"
 
-#: gweather/weather.c:185
+#: gweather/weather.c:200
 msgid "Moderate haze"
-msgstr ""
+msgstr "Mù vừa"
 
-#: gweather/weather.c:185
+#: gweather/weather.c:200
 msgid "Thick haze"
-msgstr ""
+msgstr "Mù dày"
 
-#: gweather/weather.c:185
+#: gweather/weather.c:200
 msgid "Shallow haze"
-msgstr ""
+msgstr "Mù loáng thoáng"
 
-#: gweather/weather.c:185
+#: gweather/weather.c:200
 msgid "Patches of haze"
-msgstr ""
+msgstr "Mù trên diện rộng"
 
-#: gweather/weather.c:185
+#: gweather/weather.c:200
 msgid "Partial haze"
-msgstr ""
+msgstr "Mù rải rác"
 
-#: gweather/weather.c:185
+#: gweather/weather.c:200
 msgid "Haze with wind"
-msgstr ""
+msgstr "Mù kèm gió"
 
-#: gweather/weather.c:185
+#: gweather/weather.c:200
 msgid "Drifting haze"
-msgstr ""
+msgstr "Mù kèm gió xoá"
 
-#: gweather/weather.c:185
+#: gweather/weather.c:200
 msgid "Freezing haze"
-msgstr ""
+msgstr "Mù kèm gió buốt"
 
 #. SPRAY
-#: gweather/weather.c:186
+#: gweather/weather.c:201
 msgid "Sprays"
-msgstr ""
+msgstr "Bụi nước"
 
-#: gweather/weather.c:186
+#: gweather/weather.c:201
 msgid "Sprays in the vicinity"
-msgstr ""
+msgstr "Bụi nước trong vùng phụ cận"
 
-#: gweather/weather.c:186
+#: gweather/weather.c:201
 msgid "Light sprays"
-msgstr ""
+msgstr "Bụi nước nhẹ"
 
-#: gweather/weather.c:186
+#: gweather/weather.c:201
 msgid "Moderate sprays"
-msgstr ""
+msgstr "Bụi nước vừa"
 
-#: gweather/weather.c:186
+#: gweather/weather.c:201
 msgid "Heavy sprays"
-msgstr ""
+msgstr "Bụi nước nặng"
 
-#: gweather/weather.c:186
+#: gweather/weather.c:201
 msgid "Shallow sprays"
-msgstr ""
+msgstr "Bụi nước loáng thoáng"
 
-#: gweather/weather.c:186
+#: gweather/weather.c:201
 msgid "Patches of sprays"
-msgstr ""
+msgstr "Bụi nước trên diện rộng"
 
-#: gweather/weather.c:186
+#: gweather/weather.c:201
 msgid "Partial sprays"
-msgstr ""
+msgstr "Bụi nước rải rác"
 
-#: gweather/weather.c:186
+#: gweather/weather.c:201
 msgid "Blowing sprays"
-msgstr ""
+msgstr "Bụi nước kèm gió"
 
-#: gweather/weather.c:186
+#: gweather/weather.c:201
 msgid "Drifting sprays"
-msgstr ""
+msgstr "Bụi nước kèm gió xoáy"
 
-#: gweather/weather.c:186
+#: gweather/weather.c:201
 msgid "Freezing sprays"
-msgstr ""
+msgstr "Bụi nước kèm gió buốt"
 
 #. DUST
-#: gweather/weather.c:187
+#: gweather/weather.c:202
 msgid "Dust"
-msgstr ""
+msgstr "Bụi"
 
-#: gweather/weather.c:187
+#: gweather/weather.c:202
 msgid "Dust in the vicinity"
-msgstr ""
+msgstr "Bụi trong vùng phụ cận"
 
-#: gweather/weather.c:187
+#: gweather/weather.c:202
 msgid "Light dust"
-msgstr ""
+msgstr "Bụi nhẹ"
 
-#: gweather/weather.c:187
+#: gweather/weather.c:202
 msgid "Moderate dust"
-msgstr ""
+msgstr "Bụi vừa"
 
-#: gweather/weather.c:187
+#: gweather/weather.c:202
 msgid "Heavy dust"
-msgstr ""
+msgstr "Bụi dày đặc"
 
-#: gweather/weather.c:187
+#: gweather/weather.c:202
 msgid "Patches of dust"
-msgstr ""
+msgstr "Bụi trên diện rộng"
 
-#: gweather/weather.c:187
+#: gweather/weather.c:202
 msgid "Partial dust"
-msgstr ""
+msgstr "Bụi rải rác"
 
-#: gweather/weather.c:187
+#: gweather/weather.c:202
 msgid "Blowing dust"
-msgstr ""
+msgstr "Bụi kèm gió"
 
-#: gweather/weather.c:187
+#: gweather/weather.c:202
 msgid "Drifting dust"
-msgstr ""
+msgstr "Bụi kèm gió xoáy"
 
 #. SQUALL
-#: gweather/weather.c:188
+#: gweather/weather.c:203
 msgid "Squall"
-msgstr ""
+msgstr "Gió giật"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:203
 msgid "Squall in the vicinity"
-msgstr ""
+msgstr "Gió giật trong vùng phụ cận"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:203
 msgid "Light squall"
-msgstr ""
+msgstr "Gió giật nhẹ"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:203
 msgid "Moderate squall"
-msgstr ""
+msgstr "Gió giật vừa"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:203
 msgid "Heavy squall"
-msgstr ""
+msgstr "Gió giật mạnh"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:203
 msgid "Partial squall"
-msgstr ""
+msgstr "Gió giật từng phần"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:203
 msgid "Thunderous squall"
-msgstr ""
+msgstr "Gió giật khủng khiếp"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:203
 msgid "Blowing squall"
-msgstr ""
+msgstr "Gió giật"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:203
 msgid "Drifting squall"
-msgstr ""
+msgstr "Gió giật xoáy"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:203
 msgid "Freezing squall"
-msgstr ""
+msgstr "Gió giật buốt"
 
 #. SANDSTORM
-#: gweather/weather.c:189
+#: gweather/weather.c:204
 msgid "Sandstorm"
-msgstr ""
+msgstr "Bão cát"
 
-#: gweather/weather.c:189
+#: gweather/weather.c:204
 msgid "Sandstorm in the vicinity"
-msgstr ""
+msgstr "Bão cát trong vùng phụ cận"
 
-#: gweather/weather.c:189
+#: gweather/weather.c:204
 msgid "Light standstorm"
-msgstr ""
+msgstr "Bão cát nhẹ"
 
-#: gweather/weather.c:189
+#: gweather/weather.c:204
 msgid "Moderate sandstorm"
-msgstr ""
+msgstr "Bão cát vừa"
 
-#: gweather/weather.c:189
+#: gweather/weather.c:204
 msgid "Heavy sandstorm"
-msgstr ""
+msgstr "Bão cát dữ dội"
 
-#: gweather/weather.c:189
+#: gweather/weather.c:204
 msgid "Shallow sandstorm"
-msgstr ""
+msgstr "Bão cát rất nhẹ"
 
-#: gweather/weather.c:189
+#: gweather/weather.c:204
 msgid "Partial sandstorm"
-msgstr ""
+msgstr "Bão cát trên diện rộng"
 
-#: gweather/weather.c:189
+#: gweather/weather.c:204
 msgid "Thunderous sandstorm"
-msgstr ""
+msgstr "Bão cát khủng khiếp"
 
-#: gweather/weather.c:189
+#: gweather/weather.c:204
 msgid "Blowing sandstorm"
-msgstr ""
+msgstr "Bão cát kèm gió mạnh"
 
-#: gweather/weather.c:189
+#: gweather/weather.c:204
 msgid "Drifting sandstorm"
-msgstr ""
+msgstr "Bão cát kèm gió xoáy"
 
-#: gweather/weather.c:189
+#: gweather/weather.c:204
 msgid "Freezing sandstorm"
-msgstr ""
+msgstr "Bão cát kèm gió buốt"
 
 #. DUSTSTORM
-#: gweather/weather.c:190
+#: gweather/weather.c:205
 msgid "Duststorm"
-msgstr ""
+msgstr "Bão bụi"
 
-#: gweather/weather.c:190
+#: gweather/weather.c:205
 msgid "Duststorm in the vicinity"
-msgstr ""
+msgstr "Bão bụi trong vùng phụ cận"
 
-#: gweather/weather.c:190
+#: gweather/weather.c:205
 msgid "Light duststorm"
-msgstr ""
+msgstr "Bão bụi nhẹ"
 
-#: gweather/weather.c:190
+#: gweather/weather.c:205
 msgid "Moderate duststorm"
-msgstr ""
+msgstr "Bão bụi vừa"
 
-#: gweather/weather.c:190
+#: gweather/weather.c:205
 msgid "Heavy duststorm"
-msgstr ""
+msgstr "Bão bụi nặng"
 
-#: gweather/weather.c:190
+#: gweather/weather.c:205
 msgid "Shallow duststorm"
-msgstr ""
+msgstr "Bão bụi rất nhẹ"
 
-#: gweather/weather.c:190
+#: gweather/weather.c:205
 msgid "Partial duststorm"
-msgstr ""
+msgstr "Bão bụi trên diện rộng"
 
-#: gweather/weather.c:190
+#: gweather/weather.c:205
 msgid "Thunderous duststorm"
-msgstr ""
+msgstr "Bão bụi khủng khiếp"
 
-#: gweather/weather.c:190
+#: gweather/weather.c:205
 msgid "Blowing duststorm"
-msgstr ""
+msgstr "Bão bụi kèm gió mạnh"
 
-#: gweather/weather.c:190
+#: gweather/weather.c:205
 msgid "Drifting duststorm"
-msgstr ""
+msgstr "Bão bụi kèm gió xoáy"
 
-#: gweather/weather.c:190
+#: gweather/weather.c:205
 msgid "Freezing duststorm"
-msgstr ""
+msgstr "Bão bụi kèm gió buốt"
 
 #. FUNNEL_CLOUD
-#: gweather/weather.c:191
+#: gweather/weather.c:206
 msgid "Funnel cloud"
-msgstr ""
+msgstr "Mây ống"
 
-#: gweather/weather.c:191
+#: gweather/weather.c:206
 msgid "Funnel cloud in the vicinity"
-msgstr ""
+msgstr "Mây ống trong vùng phụ cận"
 
-#: gweather/weather.c:191
+#: gweather/weather.c:206
 msgid "Light funnel cloud"
-msgstr ""
+msgstr "Mây ống nhẹ"
 
-#: gweather/weather.c:191
+#: gweather/weather.c:206
 msgid "Moderate funnel cloud"
-msgstr ""
+msgstr "Mây ống vừa"
 
-#: gweather/weather.c:191
+#: gweather/weather.c:206
 msgid "Thick funnel cloud"
-msgstr ""
+msgstr "Mây ống dày"
 
-#: gweather/weather.c:191
+#: gweather/weather.c:206
 msgid "Shallow funnel cloud"
-msgstr ""
+msgstr "Mây ông loáng thoáng"
 
-#: gweather/weather.c:191
+#: gweather/weather.c:206
 msgid "Patches of funnel clouds"
-msgstr ""
+msgstr "Mây ống trên diện rộng"
 
-#: gweather/weather.c:191
+#: gweather/weather.c:206
 msgid "Partial funnel clouds"
-msgstr ""
+msgstr "Mây ống rải rác"
 
-#: gweather/weather.c:191
+#: gweather/weather.c:206
 msgid "Funnel cloud w/ wind"
-msgstr ""
+msgstr "Mây ống kèm gió"
 
-#: gweather/weather.c:191
+#: gweather/weather.c:206
 msgid "Drifting funnel cloud"
-msgstr ""
+msgstr "Mây ống kèm gió xoáy"
 
 #. TORNADO
-#: gweather/weather.c:192
+#: gweather/weather.c:207
 msgid "Tornado"
-msgstr ""
+msgstr "Bão"
 
-#: gweather/weather.c:192
+#: gweather/weather.c:207
 msgid "Tornado in the vicinity"
-msgstr ""
+msgstr "Bão trong vùng phụ cận"
 
-#: gweather/weather.c:192
+#: gweather/weather.c:207
 msgid "Moderate tornado"
-msgstr ""
+msgstr "Bão vừa"
 
-#: gweather/weather.c:192
+#: gweather/weather.c:207
 msgid "Raging tornado"
-msgstr ""
+msgstr "Bão mạnh"
 
-#: gweather/weather.c:192
+#: gweather/weather.c:207
 msgid "Partial tornado"
-msgstr ""
+msgstr "Bão trên diện rộng"
 
-#: gweather/weather.c:192
+#: gweather/weather.c:207
 msgid "Thunderous tornado"
-msgstr ""
+msgstr "Bão dữ dội"
 
-#: gweather/weather.c:192
+#: gweather/weather.c:207
 msgid "Drifting tornado"
-msgstr ""
+msgstr "Bão xoáy"
 
-#: gweather/weather.c:192
+#: gweather/weather.c:207
 msgid "Freezing tornado"
-msgstr ""
+msgstr "Bão buốt"
 
 #. DUST_WHIRLS
-#: gweather/weather.c:193
+#: gweather/weather.c:208
 msgid "Dust whirls"
-msgstr ""
+msgstr "Gió lốc"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:208
 msgid "Dust whirls in the vicinity"
-msgstr ""
+msgstr "Gió lốc trong vùng phụ cận"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:208
 msgid "Light dust whirls"
-msgstr ""
+msgstr "Gió lốc nhẹ"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:208
 msgid "Moderate dust whirls"
-msgstr ""
+msgstr "Gió lốc vừa"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:208
 msgid "Heavy dust whirls"
-msgstr ""
+msgstr "Gió lốc mạnh"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:208
 msgid "Shallow dust whirls"
-msgstr ""
+msgstr "Gió lốc rất nhẹ"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:208
 msgid "Patches of dust whirls"
-msgstr ""
+msgstr "Gió lốc trên diện rộng"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:208
 msgid "Partial dust whirls"
-msgstr ""
+msgstr "Gió lốc rải rác"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:208
 msgid "Blowing dust whirls"
-msgstr ""
+msgstr "Gió lốc"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:208
 msgid "Drifting dust whirls"
-msgstr ""
+msgstr "Gió lốc xoáy"
 
-#: gweather/weather.c:809 gweather/weather.c:847 gweather/weather.c:1416
+#: gweather/weather.c:824 gweather/weather.c:864 gweather/weather.c:1436
 msgid "Failed to get METAR data.\n"
-msgstr ""
+msgstr "Lỗi lấy dữ liệu METAR.\n"
 
-#: gweather/weather.c:839 gweather/weather.c:867 gweather/weather.c:1062
+#: gweather/weather.c:856 gweather/weather.c:884 gweather/weather.c:1081
 msgid "WeatherInfo missing location"
-msgstr ""
+msgstr "WeatherInfo thiếu địa điểm"
 
-#: gweather/weather.c:1030
+#: gweather/weather.c:1047
 msgid "Failed to get IWIN data.\n"
-msgstr ""
+msgstr "Lỗi lấy dữ liệu IWIN.\n"
 
 #. forecast data is not really interesting anyway ;)
-#: gweather/weather.c:1072
+#: gweather/weather.c:1091
 msgid "Failed to get IWIN forecast data.\n"
-msgstr ""
+msgstr "Lỗi lấy dự liệu dự báo IWIN.\n"
 
-#: gweather/weather.c:1271
+#: gweather/weather.c:1290
 msgid "Failed to get Met Office data.\n"
-msgstr ""
+msgstr "Lỗi lấy dự liệu Met Office.\n"
 
-#: gweather/weather.c:1303
+#: gweather/weather.c:1324
 msgid "Failed to get Met Office forecast data.\n"
-msgstr ""
+msgstr "Lỗi lấy dự liệu dự báo Met Office.\n"
 
-#: gweather/weather.c:1446
+#: gweather/weather.c:1466
 msgid "Failed to get radar map image.\n"
-msgstr ""
+msgstr "Lỗi lấy ảnh radar.\n"
 
-#: gweather/weather.c:1739
+#: gweather/weather.c:1769
 msgid "%a, %b %d / %H:%M"
 msgstr "%a, %d %b / %H:%M"
 
-#: gweather/weather.c:1743
+#: gweather/weather.c:1773
 msgid "Unknown observation time"
-msgstr ""
+msgstr "Thời điểm quan sát không xác định"
 
-#: gweather/weather.c:1803
+#: gweather/weather.c:1833
 msgid "Calm"
-msgstr ""
+msgstr "Ôn hòa"
 
-#: gweather/weather.c:1829
+#: gweather/weather.c:1859
 msgid "Unknown"
 msgstr "Không biết"
 
-#: gweather/weather.c:1863
+#: gweather/weather.c:1893
 msgid "Retrieval failed"
-msgstr ""
+msgstr "Quá trình nhận thất bại"
 
-#: mini-commander/src/about.c:39
-msgid "Mini-Commander Applet"
-msgstr "Mini-Commander Applet"
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:1
+#: mini-commander/src/about.c:62
+#: mini-commander/src/mini-commander_applet.c:316
+msgid "Command Line"
+msgstr "Dòng Lệnh"
 
-#: mini-commander/src/about.c:42
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:2
+msgid "Mini-Commander"
+msgstr "Mini-Commander"
+
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:3
+msgid "MiniCommander Applet Factory"
+msgstr "MiniCommander Applet Factory"
+
+#: mini-commander/src/about.c:65
 msgid ""
 "This GNOME applet adds a command line to the panel. It features command "
 "completion, command history, changeable macros and an optional built-in "
@@ -2849,38 +2844,29 @@ msgstr "không thấy"
 msgid "no /bin/sh"
 msgstr "không có /bin/sh"
 
-#: mini-commander/src/command_line.c:93 mini-commander/src/command_line.c:113
+#: mini-commander/src/command_line.c:94 mini-commander/src/command_line.c:114
 msgid "end of history list"
 msgstr "hết nhật ký"
 
 #. enter pressed -> exec command
-#: mini-commander/src/command_line.c:123 mini-commander/src/exec.c:59
+#: mini-commander/src/command_line.c:124 mini-commander/src/exec.c:59
 msgid "starting..."
 msgstr "đang khởi động..."
 
-#: mini-commander/src/command_line.c:152
+#: mini-commander/src/command_line.c:153
 msgid "autocompleted"
 msgstr "đã tự động hoàn tất"
 
-#: mini-commander/src/command_line.c:312
-msgid "history list empty"
-msgstr "nhật ký rỗng"
-
-#. title
-#: mini-commander/src/command_line.c:330
-msgid "Command history"
-msgstr "Nhật ký lệnh"
-
 #. build file select dialog
-#: mini-commander/src/command_line.c:461
+#: mini-commander/src/command_line.c:514
 msgid "Start program"
 msgstr "Thực hiện chương trình"
 
-#: mini-commander/src/command_line.c:500
+#: mini-commander/src/command_line.c:553
 msgid "Command line"
 msgstr "Dòng lệnh"
 
-#: mini-commander/src/command_line.c:501
+#: mini-commander/src/command_line.c:554
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "Gõ một lệnh vào đây và Gnome sẽ thực hiện nó cho bạn"
 
@@ -2891,19 +2877,6 @@ msgstr "lỗi nhân đôi tiến trình"
 #: mini-commander/src/exec.c:105
 msgid "child exited"
 msgstr "tiến trình con đã kết thúc"
-
-#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:1
-#: mini-commander/src/mini-commander_applet.c:357
-msgid "Command Line"
-msgstr "Dòng Lệnh"
-
-#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:2
-msgid "Mini-Commander"
-msgstr "Mini-Commander"
-
-#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:3
-msgid "MiniCommander Applet Factory"
-msgstr "MiniCommander Applet Factory"
 
 #: mini-commander/src/message.c:155
 msgid "%H:%M - %d. %b"
@@ -2917,136 +2890,140 @@ msgstr "%H:%M"
 msgid "%d. %b"
 msgstr "%d. %b"
 
-#: mini-commander/src/mini-commander_applet.c:125
+#: mini-commander/src/mini-commander_applet.c:123
 msgid "orient. changed"
 msgstr "đã đổi hướng"
 
-#: mini-commander/src/mini-commander_applet.c:142
+#: mini-commander/src/mini-commander_applet.c:140
 msgid "size changed"
 msgstr "đã đổi kích thước"
 
-#: mini-commander/src/mini-commander_applet.c:289
-#: mini-commander/src/mini-commander_applet.c:292
+#: mini-commander/src/mini-commander_applet.c:290
+#: mini-commander/src/mini-commander_applet.c:293
 msgid "Browser"
 msgstr "Trình duyệt"
 
-#: mini-commander/src/mini-commander_applet.c:293
+#: mini-commander/src/mini-commander_applet.c:294
 msgid "Click this button to start the browser"
 msgstr "Nhấn vào để bắt đầu duyệt"
 
-#: mini-commander/src/mini-commander_applet.c:307
-#: mini-commander/src/mini-commander_applet.c:310
+#: mini-commander/src/mini-commander_applet.c:308
+#: mini-commander/src/mini-commander_applet.c:311
 msgid "History"
 msgstr "Nhật ký"
 
-#: mini-commander/src/mini-commander_applet.c:311
+#: mini-commander/src/mini-commander_applet.c:312
 msgid "Click this button for the list of previous commands"
 msgstr "Nhấn vào để hiện danh sách các lệnh đã thực hiện"
 
-#: mini-commander/src/mini-commander_applet.c:312
+#: mini-commander/src/mini-commander_applet.c:313
 msgid "Mini-Commander applet"
 msgstr "Applet Mini-Commander"
 
-#: mini-commander/src/mini-commander_applet.c:313
+#: mini-commander/src/mini-commander_applet.c:314
 msgid "This applet adds a command line to the panel"
 msgstr "Applet này thêm một dòng lệnh vào panel"
 
-#: mini-commander/src/mini-commander_applet.c:445
+#: mini-commander/src/mini-commander_applet.c:448
 msgid "ready..."
 msgstr "sẵn sàng..."
 
-#: mini-commander/src/preferences.c:520
-msgid "Command Line Properties"
-msgstr "Thuộc tính dòng lệnh"
+#: mini-commander/src/preferences.c:702
+msgid "Command Line Preferences"
+msgstr "Thông số dòng lệnh"
 
-#: mini-commander/src/preferences.c:536
+#: mini-commander/src/preferences.c:719
 msgid "Clock"
 msgstr "Đồng hồ"
 
 #. show time check box
-#: mini-commander/src/preferences.c:544
+#: mini-commander/src/preferences.c:727
 msgid "Show time"
 msgstr "Hiện giờ"
 
 #. show date check box
-#: mini-commander/src/preferences.c:551
+#: mini-commander/src/preferences.c:734
 msgid "Show date"
 msgstr "Hiện ngày"
 
 #. appearance frame
-#: mini-commander/src/preferences.c:559
+#: mini-commander/src/preferences.c:742
 msgid "Appearance"
 msgstr "Diện mạo"
 
 #. show handle check box
-#: mini-commander/src/preferences.c:567
+#: mini-commander/src/preferences.c:750
 msgid "Show han_dle"
 msgstr "Hiện han_dle"
 
 #. show frame check box
-#: mini-commander/src/preferences.c:574
+#: mini-commander/src/preferences.c:757
 msgid "Show fram_e"
 msgstr "Hiện _khung"
 
 #. auto complete frame
-#: mini-commander/src/preferences.c:583
+#: mini-commander/src/preferences.c:766
 msgid "Autocompletion"
 msgstr "Tự động hoàn thành"
 
 #. show history autocomplete
-#: mini-commander/src/preferences.c:591
+#: mini-commander/src/preferences.c:774
 msgid "Enable _history based autocompletion"
 msgstr "Bật tự động hoàn thành nhờ nhật ký"
 
 #. Size
-#: mini-commander/src/preferences.c:598
+#: mini-commander/src/preferences.c:781
 msgid "Size"
 msgstr "Kích thước"
 
 #. applet width
-#: mini-commander/src/preferences.c:610
+#: mini-commander/src/preferences.c:793
 msgid "Applet _width:"
 msgstr "Độ _rộng applet:"
 
 #. applet height
-#: mini-commander/src/preferences.c:644
+#: mini-commander/src/preferences.c:827
 msgid "Applet height:"
 msgstr "Độ _cao applet:"
 
 #. cmd line height
-#: mini-commander/src/preferences.c:666
+#: mini-commander/src/preferences.c:849
 msgid "Command line height:"
 msgstr "Độ cao dòng lệnh:"
 
 #. Color
-#: mini-commander/src/preferences.c:701 modemlights/properties.c:445
-#: multiload/properties.c:361
+#: mini-commander/src/preferences.c:884 multiload/properties.c:363
 msgid "Colors"
 msgstr "Mày sắc"
 
+#. default bg and fg theme
+#: mini-commander/src/preferences.c:894
+msgid "_Use default theme colors"
+msgstr ""
+
 #. fg
-#: mini-commander/src/preferences.c:711
+#: mini-commander/src/preferences.c:906
 msgid "Command line _foreground:"
 msgstr "Màu _chữ dòng lệnh:"
 
 #. bg
-#: mini-commander/src/preferences.c:743
+#: mini-commander/src/preferences.c:940
 msgid "Command line _background:"
 msgstr "Màu _nền dòng lệnh:"
 
 #. prefix
-#: mini-commander/src/preferences.c:797
+#: mini-commander/src/preferences.c:1000
 #, c-format
-msgid "Regex %.2d:"
-msgstr "Regex %.2d:"
+msgid "Regex _%.2d:"
+msgstr "Regex _%.2d:"
 
 #. command
-#: mini-commander/src/preferences.c:815
+#: mini-commander/src/preferences.c:1020
 #, c-format
-msgid "   Macro %.2d:"
-msgstr "   Macro %.2d:"
+msgid "   Macro _%.2d:"
+msgstr "   Macro _%.2d:"
 
-#: mini-commander/src/preferences.c:833
+#: mini-commander/src/preferences.c:1040
 msgid "_Macros"
 msgstr "_Macro"
 
@@ -3054,66 +3031,60 @@ msgstr "_Macro"
 msgid "Adjust the sound volume"
 msgstr "Chỉnh âm lượng"
 
-#: mixer/GNOME_MixerApplet.server.in.h:3 mixer/mixer.c:130 mixer/mixer.c:742
+#: mixer/GNOME_MixerApplet.server.in.h:3 mixer/mixer.c:131 mixer/mixer.c:777
 msgid "Volume Control"
 msgstr "Điều khiển âm lượng"
 
 #: mixer/GNOME_MixerApplet.xml.h:3
-msgid "Mute"
-msgstr "Câm"
+msgid "_Mute"
+msgstr "_Câm"
 
 #: mixer/GNOME_MixerApplet.xml.h:4
-msgid "Run Audio Mixer..."
-msgstr "Chạy Audio Mixer.."
+msgid "_Run Volume Control..."
+msgstr "_Chạy Bộ điều khiển âm lượng..."
 
-#: mixer/mixer.c:131
+#: mixer/mixer.c:132
 msgid "Volume Control (muted)"
 msgstr "Điều khiển âm lượng (câm)"
 
-#. probably should die more gracefully
-#: mixer/mixer.c:174
-#, c-format
-msgid "Couldn't open mixer device %s\n"
-msgstr "Không thể mở thiết bị mixer %s\n"
-
-#: mixer/mixer.c:188
+#: mixer/mixer.c:184
 msgid ""
 "warning: this version of gmix was compiled with a different version of\n"
 "soundcard.h.\n"
 msgstr ""
 "cảnh báo: phiên bản gmix được biên dịch có phiên bản khác với soundcard.h.\n"
 
-#: mixer/mixer.c:199
+#: mixer/mixer.c:195
 #, c-format
 msgid "Querying available channels of mixer device %s failed\n"
 msgstr "Truy vấn các kênh sẵn sàng của mixer %s thất bại\n"
 
-#: mixer/mixer.c:206
+#: mixer/mixer.c:202
 msgid "warning: mixer has no volume channel - using PCM instead.\n"
 msgstr "cảnh báo: mixer không có kênh âm lượng - dùng PCM thay thế.\n"
 
-#: mixer/mixer.c:209
+#: mixer/mixer.c:205
 #, c-format
 msgid "Mixer device %s has neither volume nor PCM channels.\n"
 msgstr "Thiết bị mixer %s không có kênh âm lượng cũng như kênh PCM.\n"
 
-#: mixer/mixer.c:508
+#: mixer/mixer.c:531
 msgid "Volume Controller"
 msgstr "Bộ điều khiển âm lượng"
 
-#: mixer/mixer.c:509
+#: mixer/mixer.c:532
 msgid "Use Up/Down arrow keys to change volume"
 msgstr "Dùng phím mũi tên lên/xuốn để điều khiển âm lượng"
 
-#: mixer/mixer.c:743
+#: mixer/mixer.c:778
 msgid "(C) 2001 Richard Hult"
 msgstr "(C) 2001 Richard Hult"
 
-#: mixer/mixer.c:744
+#: mixer/mixer.c:779
 msgid "The volume control lets you set the volume level for your desktop."
 msgstr "Bộ điều khiển âm lượng cho phép bản chỉnh âm lượng trên desktop."
 
-#: mixer/mixer.c:897
+#: mixer/mixer.c:958
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr "Bộ điều khiển âm lượng cho phép bản chỉnh âm lượng trên desktop."
 
@@ -3122,21 +3093,21 @@ msgid "Internet"
 msgstr "Internet"
 
 #: modemlights/GNOME_ModemLightsApplet.server.in.h:2
+#: modemlights/modemlights.c:224
 msgid "Modem Lights"
 msgstr "Đèn modem"
 
-#: modemlights/modemlights.c:205
-msgid "Modem Lights Applet"
-msgstr "Applet Modem Lights"
-
-#: modemlights/modemlights.c:207
+#: modemlights/modemlights.c:226
 msgid ""
 "Released under the GNU general public license.\n"
 "A modem status indicator and dialer.\n"
 "Lights in order from the top or left are Send data and Receive data."
 msgstr ""
+"Được phát hành dưới giấy phép GNU GPL.\n"
+"Bộ chỉ thị trạng thái modem và bộ gọi điện thoại.\n"
+"Các đèn từ trên xuống hoặc từ trái qua là đèn Dữ liệu gửi và Dữ liệu nhận."
 
-#: modemlights/modemlights.c:531
+#: modemlights/modemlights.c:555
 msgid ""
 "You are currently connected.\n"
 "Do you want to disconnect?"
@@ -3144,177 +3115,195 @@ msgstr ""
 "Bạn đang kết nối. \n"
 "Bạn có muốn ngắt kết nối không?"
 
-#: modemlights/modemlights.c:546
+#: modemlights/modemlights.c:570
 msgid "Do you want to connect?"
 msgstr "Bạn có muốn kết nối không?"
 
-#: modemlights/modemlights.c:574
+#: modemlights/modemlights.c:598
 #, c-format
 msgid "%#.1fMb received / %#.1fMb sent / time: %.1d:%.2d"
 msgstr "đã nhận %#.1fMb, đã gửi %#.1fMb. Thời gian: %.1d:%.2d"
 
-#: modemlights/modemlights.c:579
+#: modemlights/modemlights.c:603
 msgid "not connected"
 msgstr "chưa kết nối"
 
-#: modemlights/properties.c:310
-msgid "Modem Lights Properties"
-msgstr "Thuộc tính Modem Lights"
+#: modemlights/properties.c:319
+msgid "Modem Lights Preferences"
+msgstr "Thông số Đèn modem"
 
-#: modemlights/properties.c:322
+#: modemlights/properties.c:331
 msgid "Connecting"
 msgstr "Đang kết nối"
 
-#: modemlights/properties.c:336
-msgid "Connect command:"
-msgstr "Lệnh kết nối:"
+#: modemlights/properties.c:345
+msgid "Co_nnect command:"
+msgstr "Lệnh _kết nối:"
 
-#: modemlights/properties.c:352
-msgid "Disconnect command:"
-msgstr "Lệnh ngắt kết nối:"
+#: modemlights/properties.c:362
+msgid "_Disconnect command:"
+msgstr "Lệnh n_gắt kết nối:"
 
 #. confirmation checkbox
-#: modemlights/properties.c:364
-msgid "Confirm connection"
-msgstr "Xác nhận kết nối"
+#: modemlights/properties.c:375
+msgid "Con_firm connection"
+msgstr "_Xác nhận kết nối"
 
-#: modemlights/properties.c:385
-msgid "Updates per second"
-msgstr "Số lần cập nhật mỗi giây"
+#: modemlights/properties.c:396
+msgid "U_pdates per second"
+msgstr "Số lần _cập nhật mỗi giây"
 
 #. extra info checkbox
-#: modemlights/properties.c:398
-msgid "Show connect time and throughput"
-msgstr "Hiện thời gian kết nối và lượng tin trao đổi"
+#: modemlights/properties.c:410
+msgid "Sho_w connect time and throughput"
+msgstr "_Hiện thời gian kết nối và lưu lượng dữ liệu"
 
-#: modemlights/properties.c:415
+#: modemlights/properties.c:427
 msgid "Receive data"
 msgstr "Dữ liệu nhận"
 
-#: modemlights/properties.c:417 modemlights/properties.c:422
-#: modemlights/properties.c:441
-msgid "Foreground"
-msgstr "Chữ"
+#: modemlights/properties.c:429
+msgid "_Foreground"
+msgstr "_Cận cảnh"
 
-#: modemlights/properties.c:418 modemlights/properties.c:423
-#: modemlights/properties.c:442
-msgid "Background"
-msgstr "Nền"
+#: modemlights/properties.c:430
+msgid "_Background"
+msgstr "_Nền"
 
-#: modemlights/properties.c:420
+#: modemlights/properties.c:432
 msgid "Send data"
 msgstr "Dữ liệu gửi"
 
-#: modemlights/properties.c:425
+#: modemlights/properties.c:434
+msgid "Foregroun_d"
+msgstr "Cậ_n cảnh"
+
+#: modemlights/properties.c:435
+msgid "Backg_round"
+msgstr "Nền"
+
+#: modemlights/properties.c:437
 msgid "Connection status"
 msgstr "Tình trạng kết nối"
 
-#: modemlights/properties.c:427
-msgid "Connected"
-msgstr "Dã kết nối"
-
-#: modemlights/properties.c:428
-msgid "Not connected"
-msgstr "Chưa kết nối"
-
-#: modemlights/properties.c:429
-msgid "Awaiting connection"
-msgstr "Đang đợi kết nối"
-
-#: modemlights/properties.c:432
-msgid "Blink"
-msgstr "Nhấp nháy"
-
 #: modemlights/properties.c:439
+msgid "Co_nnected"
+msgstr "Dã _kết nối"
+
+#: modemlights/properties.c:440
+msgid "No_t connected"
+msgstr "_Chưa kết nối"
+
+#: modemlights/properties.c:441
+msgid "A_waiting connection"
+msgstr "Đan_g đợi kết nối"
+
+#: modemlights/properties.c:444
+msgid "B_link"
+msgstr "_Nhấp nháy"
+
+#: modemlights/properties.c:451
 msgid "Text"
 msgstr "Text"
 
-#: modemlights/properties.c:443
-msgid "Outline"
-msgstr "Phác thảo"
+#: modemlights/properties.c:453
+msgid "For_eground"
+msgstr "Cận cảnh"
 
 #: modemlights/properties.c:454
+msgid "Bac_kground"
+msgstr "Nền"
+
+#: modemlights/properties.c:455
+msgid "O_utline"
+msgstr "_Phác thảo"
+
+#: modemlights/properties.c:457
+msgid "C_olors"
+msgstr "_Màu sắc"
+
+#: modemlights/properties.c:466
 msgid "Modem options"
 msgstr "Tùy chọn modem"
 
-#: modemlights/properties.c:468
-msgid "Modem lock file:"
-msgstr "Tập tin khóa modem:"
+#: modemlights/properties.c:480
+msgid "_Modem lock file:"
+msgstr "Tập tin k_hóa modem:"
 
-#: modemlights/properties.c:479
-msgid "Verify owner of lock file"
-msgstr "Kiểm tra người sở hữu tập tin khóa"
+#: modemlights/properties.c:492
+msgid "_Verify owner of lock file"
+msgstr "_Kiểm tra người sở hữu tập tin khóa"
 
-#: modemlights/properties.c:491
-msgid "Device:"
-msgstr "Thiết bị:"
+#: modemlights/properties.c:504
+msgid "_Device:"
+msgstr "_Thiết bị:"
 
 #. ISDN checkbox
-#: modemlights/properties.c:503
-msgid "Use ISDN"
-msgstr "Dùng ISDN"
+#: modemlights/properties.c:517
+msgid "U_se ISDN"
+msgstr "_Dùng ISDN"
 
-#: modemlights/properties.c:523
+#: modemlights/properties.c:537
 msgid "Set options as default"
 msgstr "Chọn tùy chọn làm mặc định"
 
-#: modemlights/properties.c:529
-msgid "Advanced"
-msgstr "Nân cao"
-
-#: multiload/cpuload.c:39
-msgid "CPU Load"
-msgstr "Tải CPU"
+#: modemlights/properties.c:543
+msgid "_Advanced"
+msgstr "_Nâng cao"
 
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:1
 msgid "A system load indicator"
 msgstr "Bộ chỉ thị tải hệ thống"
 
-#: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:2
+#: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:2 multiload/main.c:75
 msgid "System Monitor"
 msgstr "System Monitor"
 
 #: multiload/GNOME_MultiloadApplet.xml.h:3
-msgid "Run detailed system monitor"
-msgstr "Chạy trình theo dõi hệ thống chi tiết"
+msgid "_Run detailed system monitor"
+msgstr "_Chạy trình theo dõi hệ thống chi tiết"
+
+#: multiload/cpuload.c:50
+msgid "CPU Load"
+msgstr "Tải CPU"
 
 #: multiload/loadavg.c:94
 msgid "Load Average"
 msgstr "Tải trung bình"
 
-#: multiload/main.c:53
-msgid "System Monitor Applet"
-msgstr "Applet Tải Trung bình"
-
-#: multiload/main.c:55
+#: multiload/main.c:77
 msgid ""
 "Released under the GNU General Public License.\n"
 "\n"
 "A system load monitor capable of displaying graphs for CPU, ram, and swap "
 "file use, plus network traffic."
 msgstr ""
+"Được phát hành dưới giấy phép GNU GPL.\n"
+"\n"
+"Bộ theo dõi tải hệ thống, có khả năng hiển thị đồ thị của CPU, RAM, bộ nhớ "
+"hoán đổi, sử dụng tập tin, và lưu thông mạng."
 
-#: multiload/main.c:177 multiload/properties.c:369
+#: multiload/main.c:203
 msgid "Processor"
 msgstr "Bộ xử lý"
 
-#: multiload/main.c:179 multiload/properties.c:375
+#: multiload/main.c:205
 msgid "Memory"
 msgstr "Bộ nhớ"
 
-#: multiload/main.c:181 multiload/properties.c:381
+#: multiload/main.c:207
 msgid "Network"
 msgstr "Mạng"
 
-#: multiload/main.c:183 multiload/properties.c:387
+#: multiload/main.c:209
 msgid "Swap File"
 msgstr "Tập tin tráo đổi"
 
-#: multiload/main.c:185
+#: multiload/main.c:211
 msgid "Resource"
 msgstr "Tài nguyên"
 
-#: multiload/main.c:197
+#: multiload/main.c:223
 #, c-format
 msgid ""
 "%s:\n"
@@ -3323,11 +3312,11 @@ msgstr ""
 "%s:\n"
 "%d%% đang dùng"
 
-#: multiload/memload.c:39
+#: multiload/memload.c:50
 msgid "Memory Load"
 msgstr "Tải của bộ nhớ"
 
-#: multiload/netload.c:38
+#: multiload/netload.c:49
 msgid "Net Load"
 msgstr "Tải của mạng"
 
@@ -3362,78 +3351,102 @@ msgid "Options"
 msgstr "Tùy chọn"
 
 #: multiload/properties.c:324
-msgid "System monitor width: "
-msgstr "Độ rộng trình theo dõi hệ thống: "
+msgid "System m_onitor width: "
+msgstr "Độ _rộng trình theo dõi hệ thống: "
 
 #: multiload/properties.c:326
-msgid "System monitor height: "
-msgstr "Chiều cao trình theo dõi hệ thống: "
+msgid "System m_onitor height: "
+msgstr "Chiều _cao trình theo dõi hệ thống: "
 
-#: multiload/properties.c:339
+#: multiload/properties.c:340
 msgid "pixels"
 msgstr "pixel"
 
-#: multiload/properties.c:345
-msgid "System monitor speed: "
-msgstr "Tốc độ theo dõi hệ thống: "
+#: multiload/properties.c:346
+msgid "Sys_tem monitor update interval: "
+msgstr "_Khoảng cập nhật theo dõi hệ thống: "
 
-#: multiload/properties.c:356
+#: multiload/properties.c:358
 msgid "milliseconds"
 msgstr "mili giây"
 
-#: multiload/properties.c:370
-msgid "User"
-msgstr "Người dùng"
-
 #: multiload/properties.c:371
-msgid "System"
-msgstr "Hệ thống"
+msgid "P_rocessor"
+msgstr "_Bộ xử lý"
 
 #: multiload/properties.c:372
-msgid "Nice"
-msgstr "Độ ưu tiên"
+msgid "_User"
+msgstr "N_gười dùng"
 
 #: multiload/properties.c:373
-msgid "Idle"
-msgstr "Rảnh"
+msgid "S_ystem"
+msgstr "_Hệ thống"
 
-#: multiload/properties.c:376 multiload/properties.c:385
-msgid "Other"
-msgstr "Khác"
+#: multiload/properties.c:374
+msgid "N_ice"
+msgstr "Độ ư_u tiên"
+
+#: multiload/properties.c:375
+msgid "I_dle"
+msgstr "_Rảnh"
 
 #: multiload/properties.c:377
-msgid "Shared"
-msgstr "Dùng chung"
+msgid "M_emory"
+msgstr "Bộ _nhớ"
 
 #: multiload/properties.c:378
-msgid "Buffers"
-msgstr "Buffer"
+msgid "Ot_her"
+msgstr "_Khác"
 
-#: multiload/properties.c:379 multiload/properties.c:389
-msgid "Free"
-msgstr "Trống"
+#: multiload/properties.c:379
+msgid "Sh_ared"
+msgstr "_Dùng chung"
 
-#: multiload/properties.c:382
-msgid "SLIP"
-msgstr "SLIP"
+#: multiload/properties.c:380
+msgid "_Buffers"
+msgstr "_Vùng đệm"
+
+#: multiload/properties.c:381
+msgid "F_ree"
+msgstr "T_rống"
 
 #: multiload/properties.c:383
-msgid "PLIP"
-msgstr "PLIP"
+msgid "Net_work"
+msgstr "_Mạng"
 
 #: multiload/properties.c:384
-msgid "Ethernet"
-msgstr "Ethernet"
+msgid "S_LIP"
+msgstr "S_LIP"
 
-#: multiload/properties.c:388
-msgid "Used"
-msgstr "Đã dùng"
+#: multiload/properties.c:385
+msgid "PL_IP"
+msgstr "PL_IP"
 
-#: multiload/properties.c:409
-msgid "System Monitor Properties"
-msgstr "Thuộc tính trình theo dõi hệ thống"
+#: multiload/properties.c:386
+msgid "Et_hernet"
+msgstr "Et_hernet"
 
-#: multiload/swapload.c:39
+#: multiload/properties.c:387
+msgid "_Other"
+msgstr "_Khác"
+
+#: multiload/properties.c:389
+msgid "Swap _File"
+msgstr "Tập tin t_ráo đổi"
+
+#: multiload/properties.c:390
+msgid "_Used"
+msgstr "Đã _dùng"
+
+#: multiload/properties.c:391
+msgid "_Free"
+msgstr "T_rống"
+
+#: multiload/properties.c:411
+msgid "System Monitor Preferences"
+msgstr "Thông số trình theo dõi hệ thống"
+
+#: multiload/swapload.c:51
 msgid "Swap Load"
 msgstr "Tải tráo đổi"
 
@@ -3453,7 +3466,7 @@ msgstr "Applet hiển thị menu"
 msgid "Actions"
 msgstr "Hành động"
 
-#: panel-menu/panel-menu-actions.c:100 panel-menu/panel-menu-properties.c:137
+#: panel-menu/panel-menu-actions.c:100
 msgid "Actions Menu"
 msgstr "Menu hành động"
 
@@ -3462,7 +3475,7 @@ msgid "Add items to the Menu Bar"
 msgstr "Thêm mục vào thanh menu"
 
 #: panel-menu/panel-menu-add.c:235 panel-menu/panel-menu-links.c:139
-#: panel-menu/panel-menu-links.c:403
+#: panel-menu/panel-menu-links.c:405
 msgid "Shortcuts"
 msgstr "Lối tắt"
 
@@ -3479,46 +3492,41 @@ msgstr "Tài liệu"
 msgid "Applications"
 msgstr "Ứng dụng"
 
-#: panel-menu/panel-menu.c:682
-msgid "PanelMenu Applet"
-msgstr "Applet PanelMenu"
-
-#: panel-menu/panel-menu.c:682
-msgid "(c) 2001 Chris Phelps"
-msgstr "(c) 2001 Chris Phelps"
-
-#: panel-menu/panel-menu.c:682
+#: panel-menu/panel-menu-common.c:727
 msgid ""
-"The Panel Menu Applet allows you to display customized menubars on your "
-"panels."
+"Removing this entry is not allowed as this will cause the Menu Bar applet to "
+"be removed from GNOME Panel"
 msgstr ""
-"Applet Panel Menu cho phép bạn hiển thị một thanh menu tự chọn trên panel"
+"Không thể loại bỏ mục này vì nó sẽ làm cho Applet Thanh menu bị loại bỏ khỏi "
+"GNOME panel."
 
-#: panel-menu/panel-menu-directory.c:496
+#: panel-menu/panel-menu-directory.c:515
 msgid "Create directory item..."
 msgstr "Tạo mục Thư mục..."
 
-#: panel-menu/panel-menu-directory.c:499
+#: panel-menu/panel-menu-directory.c:523
 msgid "Home"
 msgstr "Nhà"
 
-#: panel-menu/panel-menu-directory.c:542
+#: panel-menu/panel-menu-directory.c:594
 msgid "Edit directory item..."
 msgstr "Sửa mục Thư mục..."
 
-#: panel-menu/panel-menu-directory.c:601 panel-menu/panel-menu-documents.c:398
-#: panel-menu/panel-menu-documents.c:434 panel-menu/panel-menu-links.c:402
-#: panel-menu/panel-menu-links.c:438
-msgid "Name:"
-msgstr "Tên:"
+#: panel-menu/panel-menu-directory.c:680 panel-menu/panel-menu-path.c:728
+msgid "_Path:"
+msgstr "Đường _dẫn:"
 
-#: panel-menu/panel-menu-directory.c:611 panel-menu/panel-menu-path.c:785
-msgid "Path:"
-msgstr "Đường dẫn:"
+#: panel-menu/panel-menu-directory.c:688
+msgid "..."
+msgstr "..."
 
-#: panel-menu/panel-menu-directory.c:621
-msgid "Depth level:"
-msgstr "Mức sâu:"
+#: panel-menu/panel-menu-directory.c:698
+msgid "_Depth level:"
+msgstr "_Mức sâu:"
+
+#: panel-menu/panel-menu-directory.c:795
+msgid "Path specified is currently not a valid directory."
+msgstr "Đường dẫn xác định hiện thời không phải là thư mục hợp lệ."
 
 #: panel-menu/panel-menu-documents.c:397
 msgid "Create documents item..."
@@ -3528,32 +3536,32 @@ msgstr "Tạo mục Tài liệu..."
 msgid "Rename documents item..."
 msgstr "Đổi tên mục Tài liệu..."
 
-#: panel-menu/panel-menu-links.c:323 panel-menu/panel-menu-path.c:575
+#: panel-menu/panel-menu-links.c:323 panel-menu/panel-menu-path.c:554
 msgid "KDE Menus"
 msgstr "Menu KDE"
 
-#: panel-menu/panel-menu-links.c:326 panel-menu/panel-menu-path.c:236
-#: panel-menu/panel-menu-path.c:578
+#: panel-menu/panel-menu-links.c:326 panel-menu/panel-menu-path.c:237
+#: panel-menu/panel-menu-path.c:557
 msgid "Programs"
 msgstr "Chương trình"
 
-#: panel-menu/panel-menu-links.c:401
+#: panel-menu/panel-menu-links.c:403
 msgid "Create links item..."
 msgstr "Tạo mục Liên kết..."
 
-#: panel-menu/panel-menu-links.c:437
+#: panel-menu/panel-menu-links.c:439
 msgid "Rename links item..."
 msgstr "Đổi tên mục Liên kết..."
 
-#: panel-menu/panel-menu-path.c:227
+#: panel-menu/panel-menu-path.c:228
 msgid "KDE"
 msgstr "KDE"
 
-#: panel-menu/panel-menu-path.c:676
+#: panel-menu/panel-menu-path.c:655
 msgid "Create menu path item..."
 msgstr "Tạo mục Đường dẫn..."
 
-#: panel-menu/panel-menu-path.c:718
+#: panel-menu/panel-menu-path.c:697
 msgid "Edit path item..."
 msgstr "Đổi tên mục Đường dẫn..."
 
@@ -3562,32 +3570,36 @@ msgid "Preferences"
 msgstr "Thông số"
 
 #: panel-menu/panel-menu-properties.c:71
-msgid "Menu Bar Properties"
-msgstr "Thuộc tính thanh menu"
+msgid "Menu Bar Preferences"
+msgstr "Thông số thanh menu"
 
 #: panel-menu/panel-menu-properties.c:75
 msgid "Layout"
 msgstr "Bố trí"
 
 #: panel-menu/panel-menu-properties.c:90
-msgid "Applications Menu"
-msgstr "Menu ứng dụng"
+msgid "_Applications Menu"
+msgstr "Menu ứng _dụng"
 
-#: panel-menu/panel-menu-properties.c:110
+#: panel-menu/panel-menu-properties.c:114
 msgid "Select an icon for the Applications menu"
 msgstr "Chọn biểu tượng cho menu Ứng dụng"
 
-#: panel-menu/panel-menu-properties.c:126
-msgid "Preferences Menu"
-msgstr "Menu thông số"
+#: panel-menu/panel-menu-properties.c:131
+msgid "_Preferences Menu"
+msgstr "_Menu thông số"
 
-#: panel-menu/panel-menu-properties.c:148
-msgid "Windows Menu"
-msgstr "Menu cửa sổ"
+#: panel-menu/panel-menu-properties.c:142
+msgid "Ac_tions Menu"
+msgstr "Menu _hành động"
 
-#: panel-menu/panel-menu-properties.c:159
-msgid "Workspaces Menu"
-msgstr "Menu workspace"
+#: panel-menu/panel-menu-properties.c:153
+msgid "_Windows Menu"
+msgstr "Menu _cửa sổ"
+
+#: panel-menu/panel-menu-properties.c:164
+msgid "W_orkspaces Menu"
+msgstr "Menu _workspace"
 
 #: panel-menu/panel-menu-windows.c:99
 msgid "Windows"
@@ -3596,3 +3608,137 @@ msgstr "Cửa sổ"
 #: panel-menu/panel-menu-workspaces.c:80
 msgid "Workspaces"
 msgstr "Workspace"
+
+#: panel-menu/panel-menu.c:690
+msgid "Menu Bar"
+msgstr "Thanh menu"
+
+#: panel-menu/panel-menu.c:691
+msgid "(c) 2001 Chris Phelps"
+msgstr "(c) 2001 Chris Phelps"
+
+#: panel-menu/panel-menu.c:692
+msgid "The Menu Bar allows you to display customized menubars on your panels."
+msgstr ""
+"Applet Thanh menu cho phép bạn hiển thị một thanh menu tự chọn trên panel "
+"của bạn."
+
+#~ msgid "name_%d"
+#~ msgstr "name_%d"
+
+#~ msgid "label_%d"
+#~ msgstr "label_%d"
+
+#~ msgid "country_%d"
+#~ msgstr "country_%d"
+
+#~ msgid "lang_%d"
+#~ msgstr "lang_%d"
+
+#~ msgid "command_%d"
+#~ msgstr "command_%d"
+
+#~ msgid "Battstat Settings"
+#~ msgstr "Thông số Battstat"
+
+#~ msgid "Properties..."
+#~ msgstr "Thuộc tính..."
+
+#~ msgid "CD Player Applet"
+#~ msgstr "Applet CD Player"
+
+#~ msgid "Character Picker"
+#~ msgstr "Bộ chọn ký tự"
+
+#~ msgid "Drive Mount Applet"
+#~ msgstr "Applet gắn kết đĩa"
+
+#~ msgid "Dave Camp <campd@oit.edu>"
+#~ msgstr "Dave Camp <campd@oit.edu>"
+
+#~ msgid "Geyes Applet"
+#~ msgstr "Applet Geyes"
+
+#~ msgid "Properties"
+#~ msgstr "Thuộc tính"
+
+#~ msgid "The GNOME KeyBoard Switcher Applet"
+#~ msgstr "The GNOME KeyBoard Switcher Applet"
+
+#~ msgid "GKB Properties"
+#~ msgstr "Thuộc tính GKB"
+
+#~ msgid "_Name"
+#~ msgstr "_Tên"
+
+#~ msgid "Use HTTP proxy"
+#~ msgstr "Dùng HTTP Proxy"
+
+#~ msgid "Location :"
+#~ msgstr "Địa điểm :"
+
+#~ msgid "Port :"
+#~ msgstr "Cổng :"
+
+#~ msgid "Proxy requires a uername and password"
+#~ msgstr "Proxy yêu cầu tên người dùng và mật khẩu"
+
+#~ msgid "Username:"
+#~ msgstr "Tên người dùng:"
+
+#~ msgid "Password:"
+#~ msgstr "Mật khẩu:"
+
+#~ msgid "Display arrows instead of -/+"
+#~ msgstr "Hiển mũi tên thay vì -/+"
+
+#~ msgid "_Proxy"
+#~ msgstr "Đại _diện"
+
+#~ msgid "URL Entry"
+#~ msgstr "URL"
+
+#~ msgid "Enter the Location"
+#~ msgstr "Nhập địa điểm"
+
+#~ msgid "Port Entry"
+#~ msgstr "Cổng"
+
+#~ msgid "Enter the Port number"
+#~ msgstr "Nhập số cổng"
+
+#~ msgid "User Entry"
+#~ msgstr "Người dùng"
+
+#~ msgid "Enter the user name"
+#~ msgstr "Nhập tên người dùng"
+
+#~ msgid "Password Entry"
+#~ msgstr "Mật khẩu"
+
+#~ msgid "Enter the Password"
+#~ msgstr "Nhập mật khẩu"
+
+#~ msgid "Mini-Commander Applet"
+#~ msgstr "Mini-Commander Applet"
+
+#~ msgid "history list empty"
+#~ msgstr "nhật ký rỗng"
+
+#~ msgid "Command history"
+#~ msgstr "Nhật ký lệnh"
+
+#~ msgid "Run Audio Mixer..."
+#~ msgstr "Chạy Audio Mixer.."
+
+#~ msgid "Couldn't open mixer device %s\n"
+#~ msgstr "Không thể mở thiết bị mixer %s\n"
+
+#~ msgid "Modem Lights Applet"
+#~ msgstr "Applet Modem Lights"
+
+#~ msgid "System Monitor Applet"
+#~ msgstr "Applet Tải Trung bình"
+
+#~ msgid "PanelMenu Applet"
+#~ msgstr "Applet PanelMenu"
