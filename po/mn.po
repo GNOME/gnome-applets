@@ -10,21 +10,22 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets.gnome-2-4\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-11-09 02:43+0100\n"
+"POT-Creation-Date: 2004-03-17 11:48+1300\n"
 "PO-Revision-Date: 2003-12-27 02:11+0100\n"
 "Last-Translator: Sanlig Badral <badral@openmn.org>\n"
 "Language-Team: Mongolian <openmn-core@lists.sf.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Report-Msgid-Bugs-To: \n"
 "X-Generator: KBabel 1.0.2\n"
 
 #: accessx-status/GNOME_AccessxApplet.xml.h:1
 #: battstat/GNOME_BattstatApplet.xml.h:1 cdplayer/GNOME_CDPlayerApplet.xml.h:1
 #: charpick/GNOME_CharpickerApplet.xml.h:1
 #: drivemount/GNOME_DriveMountApplet.xml.h:1 geyes/GNOME_GeyesApplet.xml.h:1
-#: gkb-new/GNOME_KeyboardApplet.xml.h:1 gtik/GNOME_GtikApplet.xml.h:1
+#: gkb-new/GNOME_KeyboardApplet.xml.h:1
+#: gswitchit/GNOME_GSwitchItApplet.xml.h:2 gtik/GNOME_GtikApplet.xml.h:1
 #: gweather/GNOME_GWeatherApplet.xml.h:1
 #: mailcheck/GNOME_MailCheckApplet.xml.h:1
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
@@ -39,11 +40,13 @@ msgstr "_Апплетийн тухай..."
 #: battstat/GNOME_BattstatApplet.xml.h:2 cdplayer/GNOME_CDPlayerApplet.xml.h:2
 #: charpick/GNOME_CharpickerApplet.xml.h:2
 #: drivemount/GNOME_DriveMountApplet.xml.h:4 geyes/GNOME_GeyesApplet.xml.h:2
-#: gkb-new/GNOME_KeyboardApplet.xml.h:2 gtik/GNOME_GtikApplet.xml.h:2
+#: gkb-new/GNOME_KeyboardApplet.xml.h:2
+#: gswitchit/GNOME_GSwitchItApplet.xml.h:4 gtik/GNOME_GtikApplet.xml.h:2
 #: gweather/GNOME_GWeatherApplet.xml.h:3
 #: mailcheck/GNOME_MailCheckApplet.xml.h:2
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
 #: mixer/GNOME_MixerApplet.xml.h:2 modemlights/GNOME_ModemlightsApplet.xml.h:2
+#: multiload/GNOME_MultiloadApplet.xml.h:2
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:3
 #: wireless/GNOME_WirelessApplet.xml.h:2
 msgid "_Help"
@@ -58,7 +61,7 @@ msgid "AccessX Status Applet Factory"
 msgstr "AccessX статус Апплет байгуулагч"
 
 #: accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:2
-#: accessx-status/applet.c:1166
+#: accessx-status/applet.c:1245
 msgid "Keyboard Accessibility Status"
 msgstr "Гар орлуулагчийн Статус"
 
@@ -75,19 +78,20 @@ msgstr "Гар орлуулагчийн тохиргооны статусыг х
 #: charpick/GNOME_CharpickerApplet.server.in.in.h:4
 #: drivemount/GNOME_DriveMountApplet.server.in.in.h:5
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:5
+#: gswitchit/GNOME_KeyboardApplet.server.in.in.h:5
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:4
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:3
 msgid "Utility"
 msgstr "Хэрэгсэл"
 
-#: accessx-status/applet.c:135 battstat/battstat_applet.c:895
-#: cdplayer/cdplayer.c:580 charpick/charpick.c:581 drivemount/drivemount.c:510
-#: geyes/geyes.c:228 gkb-new/gkb-applet.c:84 gtik/gtik.c:775
-#: gweather/gweather-about.c:44 mailcheck/mailcheck.c:2435
-#: mini-commander/src/about.c:48 mixer/mixer.c:1062
-#: modemlights/modemlights.c:115 multiload/main.c:57
-#: stickynotes/stickynotes_applet_callbacks.c:191
-#: wireless/wireless-applet.c:560
+#: accessx-status/applet.c:134 battstat/battstat_applet.c:898
+#: cdplayer/cdplayer.c:603 charpick/charpick.c:556 drivemount/drivemount.c:553
+#: geyes/geyes.c:202 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:570
+#: gtik/gtik.c:717 gweather/gweather-about.c:47 mailcheck/mailcheck.c:2461
+#: mini-commander/src/about.c:50 mixer/mixer.c:1332
+#: modemlights/modemlights.c:115 multiload/main.c:60
+#: stickynotes/stickynotes_applet_callbacks.c:230
+#: wireless/wireless-applet.c:572
 msgid "translator_credits"
 msgstr ""
 "Тэгшбаяр <developer@openmn.org>\n"
@@ -98,39 +102,46 @@ msgstr ""
 "Самбуу <a_sambuu@yahoo.com>\n"
 "Батпүрэв <bapuka1229@yahoo.com>"
 
-#: accessx-status/applet.c:157 accessx-status/applet.c:1169
+#: accessx-status/applet.c:155 accessx-status/applet.c:983
+#: accessx-status/applet.c:1081 accessx-status/applet.c:1248
 msgid "AccessX Status"
 msgstr "AccessX Статус"
 
-#: accessx-status/applet.c:158
+#: accessx-status/applet.c:156
 msgid "Copyright (C) 2003 Sun Microsystems"
 msgstr "Зохиогчийн эрх хуулиар хамгаалагдсан (C) 2003 Sun Microsystems"
 
-#: accessx-status/applet.c:159
+#: accessx-status/applet.c:157
 msgid "Shows the state of AccessX features such as latched modifiers"
 msgstr "AccessX статусыг цоожлогдсон бүрдүүлэмжтэйгээр харуулах"
 
-#: accessx-status/applet.c:198
+#: accessx-status/applet.c:193
 #, c-format
 msgid "There was an error launching the help viewer : %s"
 msgstr "Тусламж үзүүлэгчийг дуудахад алдаа гарав %s:"
 
-#: accessx-status/applet.c:221
+#: accessx-status/applet.c:228
 #, c-format
 msgid "There was an error launching the keyboard capplet : %s"
 msgstr "Гарны Аплетийг дуудаж байхад алдаа гарав %s:"
 
-#: accessx-status/applet.c:463 accessx-status/applet.c:496
+#. Note to translators: the first letter of the alphabet, not the indefinite article
+#: accessx-status/applet.c:474 accessx-status/applet.c:512
 msgid "a"
 msgstr "а"
 
-#: accessx-status/applet.c:1171
+#: accessx-status/applet.c:984 accessx-status/applet.c:1082
+#, fuzzy
+msgid "Shows keyboard status when accessibility features are used."
+msgstr "Гар орлуулагчийн тохиргооны статусыг харуулах"
+
+#: accessx-status/applet.c:1250
 msgid "Displays current state of keyboard accessibility features"
 msgstr "Гарны тохируулгын идэвхтэй байгаа статусыг харуулах"
 
 #. The long name of the applet in the About dialog.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:908
+#: battstat/battstat_applet.c:919 battstat/battstat_applet.c:1671
 msgid "Battery Charge Monitor"
 msgstr "Цэнэглэж буй зайн хэмжээ"
 
@@ -139,18 +150,20 @@ msgid "Battstat Factory"
 msgstr "Зайг үйлдвэрлэсэн үйлдвэр"
 
 #: battstat/GNOME_BattstatApplet.server.in.in.h:3
+#: battstat/battstat_applet.c:1672
 msgid "Monitor a laptop's remaining power"
 msgstr "Лаптопын зайн үлдсэн цэнэгийн хэмжээ"
 
 #: battstat/GNOME_BattstatApplet.xml.h:3 cdplayer/GNOME_CDPlayerApplet.xml.h:4
 #: charpick/GNOME_CharpickerApplet.xml.h:3
 #: drivemount/GNOME_DriveMountApplet.xml.h:5 geyes/GNOME_GeyesApplet.xml.h:3
-#: gkb-new/GNOME_KeyboardApplet.xml.h:3 gtik/GNOME_GtikApplet.xml.h:3
+#: gkb-new/GNOME_KeyboardApplet.xml.h:3
+#: gswitchit/GNOME_GSwitchItApplet.xml.h:6 gtik/GNOME_GtikApplet.xml.h:3
 #: gweather/GNOME_GWeatherApplet.xml.h:4
 #: mailcheck/GNOME_MailCheckApplet.xml.h:3
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
 #: mixer/GNOME_MixerApplet.xml.h:5 modemlights/GNOME_ModemlightsApplet.xml.h:3
-#: multiload/GNOME_MultiloadApplet.xml.h:3
+#: multiload/GNOME_MultiloadApplet.xml.h:4
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:6
 #: wireless/GNOME_WirelessApplet.xml.h:3
 msgid "_Preferences..."
@@ -238,49 +251,49 @@ msgstr "Шар түвшин"
 
 #. Message displayed if user tries to run applet
 #. on unsupported platform
-#: battstat/battstat_applet.c:329
+#: battstat/battstat_applet.c:338
 msgid "Your platform is not supported!\n"
 msgstr "Таны платформ тохирохгүй байна\n"
 
-#: battstat/battstat_applet.c:330
+#: battstat/battstat_applet.c:339
 msgid "The applet will not work properly (if at all).\n"
 msgstr "Апплет бүрэн ажиллаж чадахгүй(If at all).\n"
 
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:361 battstat/battstat_applet.c:939
+#: battstat/battstat_applet.c:370 battstat/battstat_applet.c:956
 msgid "High"
 msgstr "Бүрэн цэнэглэгдсэн"
 
 #. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:363 battstat/battstat_applet.c:941
+#: battstat/battstat_applet.c:372 battstat/battstat_applet.c:958
 msgid "Low"
 msgstr "Бага цэнэглэгдсэн"
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:365 battstat/battstat_applet.c:943
+#: battstat/battstat_applet.c:374 battstat/battstat_applet.c:960
 msgid "Critical"
 msgstr "Хэт бага түвшин"
 
 #. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:367 battstat/battstat_applet.c:945
+#: battstat/battstat_applet.c:376 battstat/battstat_applet.c:962
 msgid "Charging"
 msgstr "Цэнэглэж байна"
 
-#: battstat/battstat_applet.c:448
+#: battstat/battstat_applet.c:457
 #, c-format
 msgid "Battery low (%d%%) and AC is offline"
 msgstr "Цэнглэгч цахилгаанд холбогдоогүй учир цэнэг дуусаж байна (%d%%), "
 
-#: battstat/battstat_applet.c:472
+#: battstat/battstat_applet.c:481
 msgid "Battery is now fully re-charged!"
 msgstr "Зай бүрэн цэнэглэгдсэн!"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:491 battstat/battstat_applet.c:1103
+#: battstat/battstat_applet.c:500 battstat/battstat_applet.c:1120
 #, c-format
 msgid ""
 "System is running on battery power\n"
@@ -292,7 +305,7 @@ msgstr ""
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:495 battstat/battstat_applet.c:1111
+#: battstat/battstat_applet.c:504 battstat/battstat_applet.c:1128
 #, c-format
 msgid ""
 "System is running on AC power\n"
@@ -303,32 +316,32 @@ msgstr ""
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:501 battstat/battstat_applet.c:1035
-#: battstat/battstat_applet.c:1124
+#: battstat/battstat_applet.c:510 battstat/battstat_applet.c:1052
+#: battstat/battstat_applet.c:1141
 msgid "System is running on battery power"
 msgstr "Систем зайгаар ажиллаж байна"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:504 battstat/battstat_applet.c:1041
-#: battstat/battstat_applet.c:1130
+#: battstat/battstat_applet.c:513 battstat/battstat_applet.c:1058
+#: battstat/battstat_applet.c:1147
 msgid "System is running on AC power"
 msgstr "Систем тэжээлээр ажиллаж байна"
 
-#: battstat/battstat_applet.c:518
+#: battstat/battstat_applet.c:527 wireless/wireless-applet.c:146
 msgid "N/A"
 msgstr "Н/Д"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:642 battstat/battstat_applet.c:1015
+#: battstat/battstat_applet.c:651 battstat/battstat_applet.c:1032
 #, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
 msgstr "Систем зайгаар ажиллаж байна. Зай: %d%% (%s)"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:649 battstat/battstat_applet.c:1022
+#: battstat/battstat_applet.c:658 battstat/battstat_applet.c:1039
 #, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
 msgstr "Систем тэжээлээр ажиллаж байна. Зай: %d%% (%s)"
@@ -337,33 +350,33 @@ msgstr "Систем тэжээлээр ажиллаж байна. Зай: %d%% 
 #. battery frame when the computer is using battery
 #. power and the battery isn't present. Not a
 #. possible combination, I guess... :)
-#: battstat/battstat_applet.c:660
+#: battstat/battstat_applet.c:669
 msgid "System is running on battery power. Battery: Not present"
 msgstr "Систем зайгаар ажиллаж байна. Зай: тодорхойгүй"
 
 #. This string will display as a tooltip over the
 #. battery frame when the computer is using AC
 #. power and the battery isn't present.
-#: battstat/battstat_applet.c:666
+#: battstat/battstat_applet.c:675
 msgid "System is running on AC power. Battery: Not present"
 msgstr "Систем тэжээлээр  ажиллаж байна. Зай: тодорхойгүй"
 
 #. Displayed as a tooltip over the battery meter when there is
 #. a battery present. %d will hold the current charge and %s will
 #. hold the status of the battery, (High, Low, Critical, Charging.
-#: battstat/battstat_applet.c:675
+#: battstat/battstat_applet.c:684
 #, c-format
 msgid "Battery: %d%% (%s)"
 msgstr "Зай: %d%% (%s)"
 
 #. Displayed as a tooltip over the battery meter when no
 #. battery is present.
-#: battstat/battstat_applet.c:682
+#: battstat/battstat_applet.c:691
 msgid "Battery: Not present"
 msgstr "Зай: тодорхойгүй"
 
 #. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: battstat/battstat_applet.c:778
+#: battstat/battstat_applet.c:789
 msgid ""
 "Can't open the APM device!\n"
 "\n"
@@ -376,7 +389,7 @@ msgstr ""
 "үзнэ үү."
 
 #. Displayed if the APM system is disabled (Used under *BSD)
-#: battstat/battstat_applet.c:787
+#: battstat/battstat_applet.c:798
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
@@ -386,7 +399,7 @@ msgstr ""
 " \"apm -e 1\" (FreeBSD)-г ажиллуулахыг оролд, Энэ \n"
 "танд тусална.\n"
 
-#: battstat/battstat_applet.c:843
+#: battstat/battstat_applet.c:854
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -395,18 +408,16 @@ msgstr ""
 "Амраах горимийн командыг биелүүлэхэд алдаа гарлаа: %s\n"
 "Энэ алдааг засахыг оролдоно уу"
 
-#. Probably because the shell_ret is != 0
-#: battstat/battstat_applet.c:846
+#: battstat/battstat_applet.c:858
 #, c-format
-msgid ""
-"An error occured while launching the Suspend command, the command returned "
-"\"%d\"\n"
-"Please try to correct this error"
+msgid "The Suspend command '%s' was unsuccessful."
 msgstr ""
-"Амраах горимийн командыг биелүүлэхэд алдаа гарлаа \"%d\"-буцсан\n"
-"Энэ алдааг засахыг ордоно уу"
 
-#: battstat/battstat_applet.c:854
+#: battstat/battstat_applet.c:860
+msgid "The Suspend command was unsuccessful."
+msgstr ""
+
+#: battstat/battstat_applet.c:868
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -416,19 +427,25 @@ msgstr ""
 
 #. if your charset supports it, please replace the "o" in
 #. * "Jorgen" into U00F6
-#: battstat/battstat_applet.c:885
+#: battstat/battstat_applet.c:886
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jorgen Pehrson <jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:910
+#: battstat/battstat_applet.c:921
 msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 msgstr "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 
-#: battstat/battstat_applet.c:911
+#: battstat/battstat_applet.c:922
 msgid "This utility shows the status of your laptop battery."
 msgstr "Энэ хэрэгсэл нь таны лаптопын зайн цэнэгийн хэмжээг үзүүлнэ."
 
-#: battstat/battstat_applet.glade.h:1
+#: battstat/battstat_applet.c:1597
+msgid ""
+"Can't access ACPI events in /var/run/acpid.socket! Make sure the ACPI "
+"subsystem is working and the acpid daemon is running."
+msgstr ""
+
+#: battstat/battstat_applet.glade.h:1 gswitchit/gswitchit-properties.glade.h:1
 #: mini-commander/src/mini-commander.glade.h:1
 #: stickynotes/stickynotes.glade.h:1
 msgid "    "
@@ -466,7 +483,7 @@ msgstr "<b>Амраах горим</b>"
 msgid "<b>Warnings</b>"
 msgstr "<b>Сануулгууд</b>"
 
-#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1523
+#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1476
 msgid "Appearance"
 msgstr "Гаднах байдал"
 
@@ -474,9 +491,9 @@ msgstr "Гаднах байдал"
 msgid "Battery Charge Monitor Preferences"
 msgstr "Цэнэглэж буй зайн хэмжээн тохиргоо"
 
-#: battstat/battstat_applet.glade.h:13 drivemount/properties.c:349
-#: gweather/gweather-pref.c:761 mailcheck/mailcheck.c:2026
-#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:552
+#: battstat/battstat_applet.glade.h:13 drivemount/properties.c:358
+#: gweather/gweather-pref.c:753 mailcheck/mailcheck.c:2047
+#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:563
 msgid "General"
 msgstr "Ерөнхий"
 
@@ -532,12 +549,12 @@ msgstr "Зайн цэнэг _хэт багсахад надад сануул"
 msgid "_Yellow:"
 msgstr "_Шар:"
 
-#: battstat/properties.c:296 drivemount/drivemount.c:468
-#: drivemount/properties.c:589 mailcheck/mailcheck.c:2291
-#: mailcheck/mailcheck.c:2540 mini-commander/src/preferences.c:393
-#: mixer/mixer.c:1170 stickynotes/stickynotes_applet_callbacks.c:169
-#: stickynotes/stickynotes_applet_callbacks.c:317
-#: wireless/wireless-applet.c:535 wireless/wireless-applet.c:609
+#: battstat/properties.c:297 drivemount/drivemount.c:510
+#: drivemount/properties.c:604 mailcheck/mailcheck.c:2314
+#: mailcheck/mailcheck.c:2602 mini-commander/src/preferences.c:393
+#: mixer/mixer.c:1445 stickynotes/stickynotes_applet_callbacks.c:207
+#: stickynotes/stickynotes_applet_callbacks.c:371
+#: wireless/wireless-applet.c:542 wireless/wireless-applet.c:626
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Тусламжийг харуулах үед алдаа гарав %s:"
@@ -554,8 +571,8 @@ msgstr "Зай дахин бүрэн цэнэглэгдлээ!"
 msgid "Battery power low"
 msgstr "Зай цэнэг хэт бага байна"
 
-#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:598
-#: cdplayer/cdplayer.c:1046
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:620
+#: cdplayer/cdplayer.c:1084
 msgid "CD Player"
 msgstr "КД Тоглуулагч"
 
@@ -580,61 +597,61 @@ msgstr "КД дуунд зориулагдсан апплет"
 msgid "_Open CD Player"
 msgstr "КД Тоглуулагч"
 
-#: cdplayer/cdplayer.c:171 cdplayer/cdplayer.c:1036
+#: cdplayer/cdplayer.c:178 cdplayer/cdplayer.c:1074
 msgid "Stop"
 msgstr "Зогс"
 
-#: cdplayer/cdplayer.c:175 cdplayer/cdplayer.c:1038
+#: cdplayer/cdplayer.c:182 cdplayer/cdplayer.c:1076
 msgid "Play / Pause"
 msgstr "Тогло. / Хүлээ"
 
-#: cdplayer/cdplayer.c:179 cdplayer/cdplayer.c:1040
+#: cdplayer/cdplayer.c:186 cdplayer/cdplayer.c:1078
 msgid "Eject"
 msgstr "Гаргах"
 
-#: cdplayer/cdplayer.c:183 cdplayer/cdplayer.c:1042
+#: cdplayer/cdplayer.c:190 cdplayer/cdplayer.c:1080
 msgid "Previous Track"
 msgstr "Өмнөх дуу"
 
-#: cdplayer/cdplayer.c:187 cdplayer/cdplayer.c:1044
+#: cdplayer/cdplayer.c:194 cdplayer/cdplayer.c:1082
 msgid "Next Track"
 msgstr "Дараах дуу"
 
-#: cdplayer/cdplayer.c:235
+#: cdplayer/cdplayer.c:253
 msgid "You do not have permission to use the CD player."
 msgstr "Та КД тоглуулагчыг ашиглах эрхгүй байна"
 
-#: cdplayer/cdplayer.c:362 mixer/mixer.c:1028 multiload/main.c:118
+#: cdplayer/cdplayer.c:385 mixer/mixer.c:1299 multiload/main.c:144
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "%s: %s ажиллуулахад алдаатай байна"
 
-#: cdplayer/cdplayer.c:413
+#: cdplayer/cdplayer.c:436
 #, c-format
 msgid "%s does not seem to be a CD player"
 msgstr "%s КД тоглуулагчыг олохгүй байна"
 
-#: cdplayer/cdplayer.c:479
+#: cdplayer/cdplayer.c:502
 msgid "CD Player Preferences"
 msgstr "КД тоглуулагчийн тохиргоо"
 
-#: cdplayer/cdplayer.c:500
+#: cdplayer/cdplayer.c:523
 msgid "Device _path:"
 msgstr "Төхөөрөмжийн _зам:"
 
-#: cdplayer/cdplayer.c:509
+#: cdplayer/cdplayer.c:532
 msgid "Device Path"
 msgstr "Төхөөрөмжийн зам:"
 
-#: cdplayer/cdplayer.c:509
+#: cdplayer/cdplayer.c:532
 msgid "Set the device path here"
 msgstr "Төхөөрөмжийн замыг энд оруул"
 
-#: cdplayer/cdplayer.c:512
+#: cdplayer/cdplayer.c:535
 msgid "Use _Default"
 msgstr "Анхдагч утгыг ашиглах"
 
-#: cdplayer/cdplayer.c:599
+#: cdplayer/cdplayer.c:621
 msgid ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
@@ -642,39 +659,39 @@ msgstr ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
 
-#: cdplayer/cdplayer.c:601 cdplayer/cdplayer.c:1047
+#: cdplayer/cdplayer.c:623 cdplayer/cdplayer.c:1085
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr "Энгийн КД тоглуулагчийн апплетд зориулсан самбар"
 
-#: cdplayer/cdplayer.c:876 cdplayer/cdplayer.c:887
+#: cdplayer/cdplayer.c:899 cdplayer/cdplayer.c:910
 msgid "Elapsed time"
 msgstr "Үлдсэн хугацаа"
 
-#: cdplayer/cdplayer.c:879 cdplayer/cdplayer.c:889
+#: cdplayer/cdplayer.c:902 cdplayer/cdplayer.c:912
 msgid "Track number"
 msgstr "Дууны дугаар"
 
-#: cdplayer/cdplayer.c:945
+#: cdplayer/cdplayer.c:973
 msgid "Audio device is busy, or being used by another application"
 msgstr "Аудио төхөөрөмж завгүй эсвэл өөр Х.Програм ашиглаж байна"
 
-#: cdplayer/cdplayer.c:1037
+#: cdplayer/cdplayer.c:1075
 msgid "Click this button to Stop playing the CD"
 msgstr "Энд дарж тоглож байна CD тоглуулагчийг зогсоо"
 
-#: cdplayer/cdplayer.c:1039
+#: cdplayer/cdplayer.c:1077
 msgid "Click this button to Play or Pause the CD"
 msgstr "Энд дарж CD-г тоглуулах ба хүлээлгэ"
 
-#: cdplayer/cdplayer.c:1041
+#: cdplayer/cdplayer.c:1079
 msgid "Click this button to eject the CD"
 msgstr "Энд дарж CD-г гара"
 
-#: cdplayer/cdplayer.c:1043
+#: cdplayer/cdplayer.c:1081
 msgid "Click this button to Play the previous track in the CD"
 msgstr "Энд дарж өмнөх дууг тоглуул"
 
-#: cdplayer/cdplayer.c:1045
+#: cdplayer/cdplayer.c:1083
 msgid "Click this button to Play the next track in the CD"
 msgstr "Энд дарж дараах дууг тоглуул"
 
@@ -687,11 +704,11 @@ msgid ""
 "This is the full path of the device that will be used to play cd's from this "
 "applet"
 msgstr ""
-"Энэ бол төхөөрөмжийн бүтэн зам бөгөөд энэ нь КДискийг "
-"энэ аплетаар тоглуулахад хэрэгтэй"
+"Энэ бол төхөөрөмжийн бүтэн зам бөгөөд энэ нь КДискийг энэ аплетаар "
+"тоглуулахад хэрэгтэй"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:599
-#: charpick/charpick.c:743 charpick/properties.c:333
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:576
+#: charpick/charpick.c:727 charpick/properties.c:425
 msgid "Character Palette"
 msgstr "Тэмдэгтийн цуглуулагч"
 
@@ -699,41 +716,33 @@ msgstr "Тэмдэгтийн цуглуулагч"
 msgid "Charpicker Applet Factory"
 msgstr "Тэмдэгт сонгогч апплетыг үндсэлэгч"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:3
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:3 charpick/charpick.c:727
 msgid "Insert characters"
 msgstr "Тэмдэгтийг оруулах"
 
-#: charpick/charpick.c:321 charpick/properties.c:125
-msgid "Add Palette"
-msgstr "Палет нэмэх"
-
-#: charpick/charpick.c:362
-msgid "Add a palette..."
-msgstr "палетаар нэмэх"
-
-#: charpick/charpick.c:445
+#: charpick/charpick.c:419
 msgid "Available palettes"
 msgstr "Боломжтой палетууд"
 
-#: charpick/charpick.c:482
+#: charpick/charpick.c:456
 msgid "Insert special characters"
 msgstr "Тусгай тэмдэгтийг оруулах"
 
 #. If your charset supports it, please use U00F1 to replace the "n"
 #. * in "Muniz".
-#: charpick/charpick.c:572
+#: charpick/charpick.c:545
 msgid "Alexandre Muniz <munizao@xprt.net>"
 msgstr "Alexandre Muniz <munizao@xprt.net>"
 
-#: charpick/charpick.c:573
+#: charpick/charpick.c:546
 msgid "Kevin Vandersloot"
 msgstr "Kevin Vandersloot"
 
-#: charpick/charpick.c:601
+#: charpick/charpick.c:578
 msgid "Copyright (C) 1998"
 msgstr "Зохиогчийн эрх (C) 1998"
 
-#: charpick/charpick.c:602
+#: charpick/charpick.c:579
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -749,7 +758,7 @@ msgstr "Тэмдэгтүүд аплет эхлэхэд үзүүлэгдэнэ"
 msgid "DEPRECATED - Characters shown on applet startup"
 msgstr "DEPRECATED Тэмдэгтүүд аплет эхлэхэд үзүүлэгдэнэ"
 
-#: charpick/charpick.schemas.in.h:3 charpick/properties.c:260
+#: charpick/charpick.schemas.in.h:3 charpick/properties.c:352
 msgid "List of available palettes"
 msgstr "Боломжтой палетуудын жагсаалт"
 
@@ -762,63 +771,68 @@ msgid ""
 "The string that the user had selected when the applet was last used. This "
 "string will be displayed when the user starts the applet."
 msgstr ""
-"Хэрэглэгчийн хамгийн сүүлд аплетийг ашиглахдаа сонгосон мөр. Энэ нь хэрэглэгч "
-"аплетийг эхлүүлэх үед үзүүлэгдэнэ."
+"Хэрэглэгчийн хамгийн сүүлд аплетийг ашиглахдаа сонгосон мөр. Энэ нь "
+"хэрэглэгч аплетийг эхлүүлэх үед үзүүлэгдэнэ."
 
-#: charpick/properties.c:88
+#: charpick/properties.c:90
 msgid "_Palette:"
 msgstr "Загвар:"
 
-#: charpick/properties.c:95
+#: charpick/properties.c:98
 msgid "Palette entry"
 msgstr "Загварын бичиглэл"
 
-#: charpick/properties.c:96
-msgid "Modify a palette by adding or removing chacters"
+#: charpick/properties.c:99
+#, fuzzy
+msgid "Modify a palette by adding or removing characters"
 msgstr "Загварыг нэмэх буюу хасаж өөрчлөх"
 
-#: charpick/properties.c:160
+#: charpick/properties.c:213
+msgid "Add Palette"
+msgstr "Палет нэмэх"
+
+#: charpick/properties.c:250
 msgid "Edit Palette"
 msgstr "Дүрслэлийн засах зам"
 
-#: charpick/properties.c:259
+#: charpick/properties.c:351
 msgid "Palettes list"
 msgstr "Заримдаа манантай."
 
-#: charpick/properties.c:338
+#: charpick/properties.c:430
 msgid "Pal_ettes:"
 msgstr "Заг_вар:"
 
-#: charpick/properties.c:354
+#: charpick/properties.c:446
 msgid "Add button"
 msgstr "Нэмэх товчлуур"
 
-#: charpick/properties.c:355
+#: charpick/properties.c:447
 msgid "Click to add a new palette"
 msgstr "Шинэ загварыг нэмэхээр дарах"
 
-#: charpick/properties.c:362
+#: charpick/properties.c:454
 msgid "Edit button"
 msgstr "Дүрслэлийн засах зам"
 
-#: charpick/properties.c:363
+#: charpick/properties.c:455
 msgid "Click to edit the selected palette"
 msgstr "Сонгогдсон загварыг өөрчлөхөөр дарах"
 
-#: charpick/properties.c:370
+#: charpick/properties.c:462
 msgid "Delete button"
 msgstr "Устгах товчлуур"
 
-#: charpick/properties.c:371
+#: charpick/properties.c:463
 msgid "Click to delete the selected palette"
 msgstr "Сонгогдсон загварыг устгахаар дарах"
 
-#: charpick/properties.c:423
+#: charpick/properties.c:515
 msgid "Character Palette Preferences"
 msgstr "Тэмдэгт цуглуулагчийн тохиргоо"
 
 #: drivemount/GNOME_DriveMountApplet.server.in.in.h:1
-#: drivemount/drivemount.c:528
+#: drivemount/drivemount.c:268 drivemount/drivemount.c:572
 msgid "Disk Mounter"
 msgstr "Диск үүсгэгч"
 
@@ -842,41 +856,41 @@ msgstr "_Сонгох..."
 msgid "_Eject"
 msgstr "_Гаргах"
 
-#: drivemount/drivemount.c:409 mailcheck/mailcheck.c:659
+#: drivemount/drivemount.c:451 mailcheck/mailcheck.c:661
 #, c-format
 msgid "There was an error executing %s: %s"
 msgstr "Дараахийг биелүүлэхэд алдаа гарав %s: %s "
 
-#: drivemount/drivemount.c:416
+#: drivemount/drivemount.c:458
 msgid "Cannot browse device"
 msgstr "Төхөөрөмжийг илрүүлэгдээгүй"
 
-#: drivemount/drivemount.c:474 drivemount/properties.c:595
-#: mailcheck/mailcheck.c:2297 mailcheck/mailcheck.c:2546
+#: drivemount/drivemount.c:516 drivemount/properties.c:610
+#: mailcheck/mailcheck.c:2320 mailcheck/mailcheck.c:2608
 msgid "Error displaying help"
 msgstr "Тусламжыг үзүүлэхэд алдаатай"
 
-#: drivemount/drivemount.c:529
+#: drivemount/drivemount.c:573
 msgid "(C) 1999-2001 The GNOME Hackers\n"
 msgstr "(C) 1999-2001 The GNOME Hackers\n"
 
-#: drivemount/drivemount.c:531
+#: drivemount/drivemount.c:575
 msgid "Applet for mounting and unmounting block volumes."
 msgstr "Блоктын нэрүүдийг үүсгэх ба устгахад зориулагдсан апплет."
 
-#: drivemount/drivemount.c:731
+#: drivemount/drivemount.c:777
 msgid " mounted"
 msgstr " үүгэгдсэн"
 
-#: drivemount/drivemount.c:733
+#: drivemount/drivemount.c:779
 msgid " not mounted"
 msgstr " үүсгэгдээгүй"
 
-#: drivemount/drivemount.c:845
+#: drivemount/drivemount.c:891
 msgid "\" reported:\n"
 msgstr "\" тайлагнасан:\n"
 
-#: drivemount/drivemount.c:847
+#: drivemount/drivemount.c:893
 msgid ""
 "Drivemount command failed.\n"
 "\""
@@ -884,7 +898,7 @@ msgstr ""
 "Диск үүсгэгч команд биелсэнгүй.\n"
 "\""
 
-#: drivemount/drivemount.c:853
+#: drivemount/drivemount.c:899
 msgid "Cannot mount device"
 msgstr "Төхөөрөмж моунтлагдаагүй"
 
@@ -896,84 +910,88 @@ msgstr "Моунт заагчийн статусыг шалгах Цагийн �
 msgid "Time in seconds between status updates"
 msgstr "Статусыг шинэчлэх хугацаа секундээр"
 
-#: drivemount/properties.c:327
+#: drivemount/properties.c:336
 msgid "Disk Mounter Preferences"
 msgstr "Диск үүсгэгчийн тохиргоо"
 
-#: drivemount/properties.c:355
+#: drivemount/properties.c:364
 msgid "_Mount directory:"
 msgstr "_Үүсгэгчийн заагч:"
 
-#: drivemount/properties.c:361
+#: drivemount/properties.c:370
 msgid "Select Mount Directory"
 msgstr "Моунт хийх хавтасыг сонгох"
 
-#: drivemount/properties.c:383
+#: drivemount/properties.c:392
 msgid "_Update interval:"
 msgstr "Шинэчлэх _завсар (секундэнд):"
 
-#: drivemount/properties.c:406 mailcheck/mailcheck.c:2097
-#: mailcheck/mailcheck.c:2103 modemlights/properties.c:461
+#: drivemount/properties.c:415 mailcheck/mailcheck.c:2118
+#: mailcheck/mailcheck.c:2124 modemlights/properties.c:468
 msgid "seconds"
 msgstr "секунд"
 
-#: drivemount/properties.c:419
+#: drivemount/properties.c:428
 msgid "_Icon:"
 msgstr "_Дүрслэл:"
 
-#: drivemount/properties.c:445
+#: drivemount/properties.c:454
 msgid "Floppy"
 msgstr "Уян диск"
 
-#: drivemount/properties.c:448
+#: drivemount/properties.c:457
 msgid "Cdrom"
 msgstr "CD уншигч"
 
-#: drivemount/properties.c:451
+#: drivemount/properties.c:460
 msgid "Cd Recorder"
 msgstr "CD бичигч"
 
-#: drivemount/properties.c:454
+#: drivemount/properties.c:463
 msgid "Zip Drive"
 msgstr "Зип диск"
 
-#: drivemount/properties.c:457
+#: drivemount/properties.c:466
 msgid "Hard Disk"
 msgstr "Хатуу диск"
 
-#: drivemount/properties.c:460
+#: drivemount/properties.c:469
 msgid "Jaz Drive"
 msgstr "Жаз диск"
 
-#: drivemount/properties.c:463
+#: drivemount/properties.c:472
+msgid "USB Stick"
+msgstr ""
+
+#: drivemount/properties.c:475
 msgid "Custom"
 msgstr "Хэрэглэгчийн"
 
-#: drivemount/properties.c:482
+#: drivemount/properties.c:494
 msgid "Select icon for mounted"
 msgstr "Моунтад зориулж дарцагийг сонго"
 
-#: drivemount/properties.c:489
+#: drivemount/properties.c:501
 msgid "Moun_ted icon:"
 msgstr "Үүсгэгч_ийн заагч:"
 
-#: drivemount/properties.c:510
+#: drivemount/properties.c:522
 msgid "Select icon for unmounted"
 msgstr "Устгасанд зориулж дүрслэлээ сонго"
 
-#: drivemount/properties.c:517
+#: drivemount/properties.c:529
 msgid "Unmou_nted icon:"
 msgstr "Устгагчи_йн Заагч"
 
-#: drivemount/properties.c:533
+#: drivemount/properties.c:545
 msgid "_Scale size to panel"
 msgstr "Самбар хүртэл хэмжээг өөрчлөх"
 
-#: drivemount/properties.c:540
+#: drivemount/properties.c:552
 msgid "_Eject disk when unmounting"
 msgstr "Үүсгэгдээгүй дискийг г_аргах"
 
-#: drivemount/properties.c:550
+#: drivemount/properties.c:562
 msgid "Use _automount friendly status test"
 msgstr "Тохиромтой төлөвийг шалгаж _automount -г ашигла"
 
@@ -985,8 +1003,8 @@ msgstr "Самбар дээр \"Нүдүүд\" байрлуулах"
 msgid "Amusements"
 msgstr "Зугаа цэнгэлүүд"
 
-#: geyes/GNOME_GeyesApplet.server.in.in.h:3 geyes/geyes.c:248
-#: geyes/geyes.c:454 geyes/geyes.c:456
+#: geyes/GNOME_GeyesApplet.server.in.in.h:3 geyes/geyes.c:222
+#: geyes/geyes.c:452 geyes/geyes.c:454
 msgid "Geyes"
 msgstr "Нүднүүд"
 
@@ -994,15 +1012,15 @@ msgstr "Нүднүүд"
 msgid "Geyes Applet Factory"
 msgstr " \"Нүдүүд\" -г үндэслэгч"
 
-#: geyes/geyes.c:249
+#: geyes/geyes.c:223
 msgid "Copyright (C) 1999 Dave Camp"
 msgstr "Зохиогчийн эрх (С) 1999 Dave Camp"
 
-#: geyes/geyes.c:250
+#: geyes/geyes.c:224
 msgid "A goofy little xeyes clone for the GNOME panel."
 msgstr "GNOME самбарт зориуплагдсан чөтгөрын жижиг клон xeyes"
 
-#: geyes/geyes.c:457
+#: geyes/geyes.c:455
 msgid "The eyes look in the direction of the mouse pointer"
 msgstr "Нүднүүд хулганы заагчийг харж байна"
 
@@ -1010,15 +1028,24 @@ msgstr "Нүднүүд хулганы заагчийг харж байна"
 msgid "Directory in which the theme is located"
 msgstr "Гадаргуун Арьс байрласан хавтас "
 
-#: geyes/themes.c:257
+#: geyes/themes.c:123
+msgid "Can not launch the eyes applet."
+msgstr ""
+
+#: geyes/themes.c:124
+#, fuzzy
+msgid "There was a fatal error while trying to load the theme."
+msgstr "Тусламжийг харуулах үед алдаа гарав %s:"
+
+#: geyes/themes.c:294
 msgid "Geyes Preferences"
 msgstr "Нүднүүдийн тохиргоо"
 
-#: geyes/themes.c:289
+#: geyes/themes.c:326
 msgid "Themes"
 msgstr "Гадаргуун Арьс"
 
-#: geyes/themes.c:310
+#: geyes/themes.c:347
 msgid "_Select a theme:"
 msgstr "Гадаргуун Арьсыг _сонгох"
 
@@ -1052,15 +1079,18 @@ msgid "Armenian Sun keymap"
 msgstr "Армен "
 
 #: gkb-new/descs.sun/presets.xml.in.h:4 gkb-new/descs/presets.xml.in.h:9
-msgid "Azerbaidjan"
+#, fuzzy
+msgid "Azerbaijan"
 msgstr "Азербайджан"
 
 #: gkb-new/descs.sun/presets.xml.in.h:5 gkb-new/descs/presets.xml.in.h:10
-msgid "Azerbaidjani Turkic"
+#, fuzzy
+msgid "Azerbaijani Turkish"
 msgstr "Азербайджан Түрэг"
 
 #: gkb-new/descs.sun/presets.xml.in.h:6
-msgid "Azerbaidjani Turkic Sun keymap"
+#, fuzzy
+msgid "Azerbaijani Turkish Sun keymap"
 msgstr "Азербайджан Түрэг Sun гарын зураг"
 
 #: gkb-new/descs.sun/presets.xml.in.h:7 gkb-new/descs/presets.xml.in.h:14
@@ -1347,11 +1377,11 @@ msgstr "Македон"
 msgid "Macedonian Sun keymap"
 msgstr "Македон Sun гарын зураг"
 
-#: gkb-new/descs.sun/presets.xml.in.h:78 gkb-new/descs/presets.xml.in.h:135
+#: gkb-new/descs.sun/presets.xml.in.h:78 gkb-new/descs/presets.xml.in.h:136
 msgid "Norway"
 msgstr "Норвег"
 
-#: gkb-new/descs.sun/presets.xml.in.h:79 gkb-new/descs/presets.xml.in.h:136
+#: gkb-new/descs.sun/presets.xml.in.h:79 gkb-new/descs/presets.xml.in.h:137
 msgid "Norwegian"
 msgstr "Норвег"
 
@@ -1359,11 +1389,11 @@ msgstr "Норвег"
 msgid "Norwegian Sun keymap"
 msgstr "Норвег Sun гарын зураг"
 
-#: gkb-new/descs.sun/presets.xml.in.h:81 gkb-new/descs/presets.xml.in.h:141
+#: gkb-new/descs.sun/presets.xml.in.h:81 gkb-new/descs/presets.xml.in.h:142
 msgid "Poland"
 msgstr "Польш"
 
-#: gkb-new/descs.sun/presets.xml.in.h:82 gkb-new/descs/presets.xml.in.h:142
+#: gkb-new/descs.sun/presets.xml.in.h:82 gkb-new/descs/presets.xml.in.h:143
 msgid "Polish"
 msgstr "Польш"
 
@@ -1371,7 +1401,7 @@ msgstr "Польш"
 msgid "Polish Sun keymap"
 msgstr "Польш Sun гарын зураг"
 
-#: gkb-new/descs.sun/presets.xml.in.h:84 gkb-new/descs/presets.xml.in.h:145
+#: gkb-new/descs.sun/presets.xml.in.h:84 gkb-new/descs/presets.xml.in.h:146
 msgid "Portugal"
 msgstr "Португал"
 
@@ -1419,11 +1449,11 @@ msgstr "Серб стандарт Sun гарын зураг"
 msgid "Serbo-Croatian"
 msgstr "Серб Хорват"
 
-#: gkb-new/descs.sun/presets.xml.in.h:96 gkb-new/descs/presets.xml.in.h:165
+#: gkb-new/descs.sun/presets.xml.in.h:96 gkb-new/descs/presets.xml.in.h:166
 msgid "Slovak"
 msgstr "Словак"
 
-#: gkb-new/descs.sun/presets.xml.in.h:97 gkb-new/descs/presets.xml.in.h:166
+#: gkb-new/descs.sun/presets.xml.in.h:97 gkb-new/descs/presets.xml.in.h:167
 msgid "Slovak Republic"
 msgstr "Словак Улс"
 
@@ -1431,11 +1461,11 @@ msgstr "Словак Улс"
 msgid "Slovak Sun keymap"
 msgstr "Словак Sun гарын зураг"
 
-#: gkb-new/descs.sun/presets.xml.in.h:99 gkb-new/descs/presets.xml.in.h:168
+#: gkb-new/descs.sun/presets.xml.in.h:99 gkb-new/descs/presets.xml.in.h:169
 msgid "Slovenia"
 msgstr "Словен"
 
-#: gkb-new/descs.sun/presets.xml.in.h:100 gkb-new/descs/presets.xml.in.h:169
+#: gkb-new/descs.sun/presets.xml.in.h:100 gkb-new/descs/presets.xml.in.h:170
 msgid "Slovenian"
 msgstr "Словен"
 
@@ -1443,11 +1473,11 @@ msgstr "Словен"
 msgid "Slovenian Sun keymap"
 msgstr "Словен Sun гарын зураг"
 
-#: gkb-new/descs.sun/presets.xml.in.h:102 gkb-new/descs/presets.xml.in.h:173
+#: gkb-new/descs.sun/presets.xml.in.h:102 gkb-new/descs/presets.xml.in.h:174
 msgid "Spain"
 msgstr "Испани"
 
-#: gkb-new/descs.sun/presets.xml.in.h:103 gkb-new/descs/presets.xml.in.h:174
+#: gkb-new/descs.sun/presets.xml.in.h:103 gkb-new/descs/presets.xml.in.h:175
 msgid "Spanish"
 msgstr "Испани"
 
@@ -1463,11 +1493,11 @@ msgstr "Испани Sun USB гарын зураг"
 msgid "Spanish Sun keymap"
 msgstr "Испани Sun гарын зураг"
 
-#: gkb-new/descs.sun/presets.xml.in.h:107 gkb-new/descs/presets.xml.in.h:180
+#: gkb-new/descs.sun/presets.xml.in.h:107 gkb-new/descs/presets.xml.in.h:181
 msgid "Sweden"
 msgstr "Швед"
 
-#: gkb-new/descs.sun/presets.xml.in.h:108 gkb-new/descs/presets.xml.in.h:181
+#: gkb-new/descs.sun/presets.xml.in.h:108 gkb-new/descs/presets.xml.in.h:182
 msgid "Swedish"
 msgstr "Швед"
 
@@ -1487,11 +1517,11 @@ msgstr "Швед Sun гарын зураг"
 msgid "Swiss German Sun keymap"
 msgstr "Швейцарь Немц Sun гарын зураг"
 
-#: gkb-new/descs.sun/presets.xml.in.h:113 gkb-new/descs/presets.xml.in.h:185
+#: gkb-new/descs.sun/presets.xml.in.h:113 gkb-new/descs/presets.xml.in.h:186
 msgid "Switzerland"
 msgstr "Швейцарь"
 
-#: gkb-new/descs.sun/presets.xml.in.h:114 gkb-new/descs/presets.xml.in.h:189
+#: gkb-new/descs.sun/presets.xml.in.h:114 gkb-new/descs/presets.xml.in.h:190
 msgid "Thai"
 msgstr "Тай"
 
@@ -1499,15 +1529,15 @@ msgstr "Тай"
 msgid "Thai Sun keymap"
 msgstr "Тай Sun гар"
 
-#: gkb-new/descs.sun/presets.xml.in.h:116 gkb-new/descs/presets.xml.in.h:193
+#: gkb-new/descs.sun/presets.xml.in.h:116 gkb-new/descs/presets.xml.in.h:194
 msgid "Thailand"
 msgstr "Тайланд"
 
-#: gkb-new/descs.sun/presets.xml.in.h:117 gkb-new/descs/presets.xml.in.h:195
+#: gkb-new/descs.sun/presets.xml.in.h:117 gkb-new/descs/presets.xml.in.h:196
 msgid "Turkey"
 msgstr "Түрэг"
 
-#: gkb-new/descs.sun/presets.xml.in.h:118 gkb-new/descs/presets.xml.in.h:196
+#: gkb-new/descs.sun/presets.xml.in.h:118 gkb-new/descs/presets.xml.in.h:197
 msgid "Turkish"
 msgstr "Түрэг"
 
@@ -1527,11 +1557,11 @@ msgstr "АНУ Sun USB гар"
 msgid "US Sun type5 keyboard"
 msgstr "АНУ Sun type5 гар"
 
-#: gkb-new/descs.sun/presets.xml.in.h:123 gkb-new/descs/presets.xml.in.h:215
+#: gkb-new/descs.sun/presets.xml.in.h:123 gkb-new/descs/presets.xml.in.h:216
 msgid "Ukraine"
 msgstr "Украйн"
 
-#: gkb-new/descs.sun/presets.xml.in.h:124 gkb-new/descs/presets.xml.in.h:216
+#: gkb-new/descs.sun/presets.xml.in.h:124 gkb-new/descs/presets.xml.in.h:217
 msgid "Ukrainian"
 msgstr "Украйн"
 
@@ -1539,19 +1569,19 @@ msgstr "Украйн"
 msgid "Ukrainian Sun keymap"
 msgstr "Украйн Sun гарын зураг"
 
-#: gkb-new/descs.sun/presets.xml.in.h:126 gkb-new/descs/presets.xml.in.h:219
+#: gkb-new/descs.sun/presets.xml.in.h:126 gkb-new/descs/presets.xml.in.h:220
 msgid "United Kingdom"
 msgstr "Нэгдсэн Вант улс"
 
-#: gkb-new/descs.sun/presets.xml.in.h:127 gkb-new/descs/presets.xml.in.h:221
+#: gkb-new/descs.sun/presets.xml.in.h:127 gkb-new/descs/presets.xml.in.h:222
 msgid "United States"
 msgstr "Нэгдсэн Улс"
 
-#: gkb-new/descs.sun/presets.xml.in.h:128 gkb-new/descs/presets.xml.in.h:224
+#: gkb-new/descs.sun/presets.xml.in.h:128 gkb-new/descs/presets.xml.in.h:223
 msgid "Vietnam"
 msgstr "Вьетнам"
 
-#: gkb-new/descs.sun/presets.xml.in.h:129
+#: gkb-new/descs.sun/presets.xml.in.h:129 gkb-new/descs/presets.xml.in.h:224
 msgid "Vietnamese"
 msgstr "Вьетнам"
 
@@ -1588,7 +1618,8 @@ msgid "Austria"
 msgstr "Австри"
 
 #: gkb-new/descs/presets.xml.in.h:11
-msgid "Azerbaidjani Turkic xkb keymap"
+#, fuzzy
+msgid "Azerbaijani Turkish xkb keymap"
 msgstr "Азербайжани Түрк xkb гарын зураг"
 
 #: gkb-new/descs/presets.xml.in.h:12
@@ -1932,40 +1963,41 @@ msgid "Mongolian phonetic keymap"
 msgstr "Монголын фонетик гарны зураг"
 
 #: gkb-new/descs/presets.xml.in.h:134
+#, fuzzy
+msgid "Morocco"
+msgstr "Марокко"
+
+#: gkb-new/descs/presets.xml.in.h:135
 msgid "Netherlands"
 msgstr "Швейцар"
 
-#: gkb-new/descs/presets.xml.in.h:137
+#: gkb-new/descs/presets.xml.in.h:138
 msgid "Norwegian xkb keymap"
 msgstr "Норвег xkb гарын зураг"
 
-#: gkb-new/descs/presets.xml.in.h:138
+#: gkb-new/descs/presets.xml.in.h:139
 msgid "Oman"
 msgstr "Оман"
 
-#: gkb-new/descs/presets.xml.in.h:139
+#: gkb-new/descs/presets.xml.in.h:140
 msgid "Palestinian Territory"
 msgstr "Палестиний тусгай муж"
 
-#: gkb-new/descs/presets.xml.in.h:140
+#: gkb-new/descs/presets.xml.in.h:141
 msgid "Plain Russian keymap"
 msgstr "Орос гарын зураг"
 
-#: gkb-new/descs/presets.xml.in.h:143
+#: gkb-new/descs/presets.xml.in.h:144
 msgid "Polish deadkeys"
 msgstr "Польш deadkeys"
 
-#: gkb-new/descs/presets.xml.in.h:144
+#: gkb-new/descs/presets.xml.in.h:145
 msgid "Polish xkb keymap"
 msgstr "Польш xkb гарын зураг"
 
-#: gkb-new/descs/presets.xml.in.h:146
+#: gkb-new/descs/presets.xml.in.h:147
 msgid "Portugal Deadkeys"
 msgstr "Португаль Deadkeys"
-
-#: gkb-new/descs/presets.xml.in.h:147
-msgid "Portuglese"
-msgstr "Португаль"
 
 #: gkb-new/descs/presets.xml.in.h:149
 msgid "Portuguese keymap"
@@ -2004,186 +2036,189 @@ msgid "Serb"
 msgstr "Серб"
 
 #: gkb-new/descs/presets.xml.in.h:162
-msgid "Serb keymap"
-msgstr "Серб гарын зураг"
-
-#: gkb-new/descs/presets.xml.in.h:163
 msgid "Serb standard xkb keymap"
 msgstr "Серб стандарт xkb гарын зураг"
 
-#: gkb-new/descs/presets.xml.in.h:164
+#: gkb-new/descs/presets.xml.in.h:163
 msgid "Serbia and Montenegro"
 msgstr "Серб ба Монтенегро"
 
-#: gkb-new/descs/presets.xml.in.h:167
+#: gkb-new/descs/presets.xml.in.h:164
+#, fuzzy
+msgid "Serbian"
+msgstr "Серб"
+
+#: gkb-new/descs/presets.xml.in.h:165
+#, fuzzy
+msgid "Serbian keymap"
+msgstr "Серб гарын зураг"
+
+#: gkb-new/descs/presets.xml.in.h:168
 msgid "Slovak keymap"
 msgstr "Словак гарын зураг"
 
-#: gkb-new/descs/presets.xml.in.h:170
+#: gkb-new/descs/presets.xml.in.h:171
 msgid "Slovenian keymap"
 msgstr "Словак"
 
-#: gkb-new/descs/presets.xml.in.h:171
+#: gkb-new/descs/presets.xml.in.h:172
 msgid "Slovenian xkb keymap"
 msgstr "Словак xkb гарын зураг"
 
-#: gkb-new/descs/presets.xml.in.h:172
+#: gkb-new/descs/presets.xml.in.h:173
 msgid "Somalia"
 msgstr "Сомали"
 
-#: gkb-new/descs/presets.xml.in.h:175
+#: gkb-new/descs/presets.xml.in.h:176
 msgid "Spanish PC/AT 101 keyboard"
 msgstr "Испани PC/AT 101 гар"
 
-#: gkb-new/descs/presets.xml.in.h:176
+#: gkb-new/descs/presets.xml.in.h:177
 msgid "Spanish keymap"
 msgstr "Испани гарын зураг"
 
-#: gkb-new/descs/presets.xml.in.h:177
+#: gkb-new/descs/presets.xml.in.h:178
 msgid "Spanish xkb keymap"
 msgstr "Испани xkb гарын зураг"
 
-#: gkb-new/descs/presets.xml.in.h:178
+#: gkb-new/descs/presets.xml.in.h:179
 msgid "Sudan"
 msgstr "Судан"
 
-#: gkb-new/descs/presets.xml.in.h:179
+#: gkb-new/descs/presets.xml.in.h:180
 msgid "Sun (!not PC!) type5 Hungarian latin 2"
 msgstr "Sun (!not PC!) type5 Унгар latin 2"
 
-#: gkb-new/descs/presets.xml.in.h:182
+#: gkb-new/descs/presets.xml.in.h:183
 msgid "Swedish keymap"
 msgstr "Швед гарын зураг"
 
-#: gkb-new/descs/presets.xml.in.h:183
+#: gkb-new/descs/presets.xml.in.h:184
 msgid "Swedish xkb keymap"
 msgstr "Швед xkb гарын зураг"
 
-#: gkb-new/descs/presets.xml.in.h:184
+#: gkb-new/descs/presets.xml.in.h:185
 msgid "Swiss keymap"
 msgstr "Швейцари гарын зураг"
 
-#: gkb-new/descs/presets.xml.in.h:186
+#: gkb-new/descs/presets.xml.in.h:187
 msgid "Syria"
 msgstr "Сири"
 
-#: gkb-new/descs/presets.xml.in.h:187
+#: gkb-new/descs/presets.xml.in.h:188
 msgid "Syriac"
 msgstr "Сири"
 
-#: gkb-new/descs/presets.xml.in.h:188
+#: gkb-new/descs/presets.xml.in.h:189
 msgid "Syriac Phonetic"
 msgstr "Сири Фонетик"
 
-#: gkb-new/descs/presets.xml.in.h:190
+#: gkb-new/descs/presets.xml.in.h:191
 msgid "Thai Kedmanee"
 msgstr "Тай Кедман"
 
-#: gkb-new/descs/presets.xml.in.h:191
+#: gkb-new/descs/presets.xml.in.h:192
 msgid "Thai keymap"
 msgstr "Тай гарын зураг"
 
-#: gkb-new/descs/presets.xml.in.h:192
+#: gkb-new/descs/presets.xml.in.h:193
 msgid "Thai xkb keymap"
 msgstr "Тай xkb гарын зураг"
 
-#: gkb-new/descs/presets.xml.in.h:194
+#: gkb-new/descs/presets.xml.in.h:195
 msgid "Tunisia"
 msgstr "Тунисс"
 
-#: gkb-new/descs/presets.xml.in.h:197
+#: gkb-new/descs/presets.xml.in.h:198
 msgid "Turkish \"F\" keyboard"
 msgstr "Түрэг \"F\" гар"
 
-#: gkb-new/descs/presets.xml.in.h:198
+#: gkb-new/descs/presets.xml.in.h:199
 msgid "Turkish \"Q\" keyboard"
 msgstr "Түрэг \"Q\" гар"
 
-#: gkb-new/descs/presets.xml.in.h:199
+#: gkb-new/descs/presets.xml.in.h:200
 msgid "Turkish keymap"
 msgstr "Түрэг гарын зураг"
 
-#: gkb-new/descs/presets.xml.in.h:200
+#: gkb-new/descs/presets.xml.in.h:201
 msgid "Turkish xkb keymap"
 msgstr "Түрэг xkb гарын зураг"
 
-#: gkb-new/descs/presets.xml.in.h:201
+#: gkb-new/descs/presets.xml.in.h:202
 msgid "UK 105-key"
 msgstr "UK 105-товчлуурт"
 
-#: gkb-new/descs/presets.xml.in.h:202
+#: gkb-new/descs/presets.xml.in.h:203
 msgid "UK PC/AT keyboard"
 msgstr "UK PC/AT гар"
 
-#: gkb-new/descs/presets.xml.in.h:203
+#: gkb-new/descs/presets.xml.in.h:204
 msgid "US 101-key keyboard"
 msgstr "US 101-товчлуурт гар"
 
-#: gkb-new/descs/presets.xml.in.h:204
+#: gkb-new/descs/presets.xml.in.h:205
 msgid "US 105-key keyboard (with windows keys)"
 msgstr "US 105-товчлууртай гар (Виндовс товчлуурнуудтай)"
 
-#: gkb-new/descs/presets.xml.in.h:205
+#: gkb-new/descs/presets.xml.in.h:206
 msgid "US 84-key"
 msgstr "US 84-товчлуурт"
 
-#: gkb-new/descs/presets.xml.in.h:206
+#: gkb-new/descs/presets.xml.in.h:207
 msgid "US DEC 450"
 msgstr "US DEC 450"
 
-#: gkb-new/descs/presets.xml.in.h:207
+#: gkb-new/descs/presets.xml.in.h:208
 msgid "US IBM RS/6000"
 msgstr "US IBM RS/6000"
 
-#: gkb-new/descs/presets.xml.in.h:208
+#: gkb-new/descs/presets.xml.in.h:209
 msgid "US International"
 msgstr "US Интернациональ"
 
-#: gkb-new/descs/presets.xml.in.h:209
+#: gkb-new/descs/presets.xml.in.h:210
 msgid "US International xkb keymap"
 msgstr "US Интернациональ xkb гарын зураг"
 
-#: gkb-new/descs/presets.xml.in.h:210
+#: gkb-new/descs/presets.xml.in.h:211
 msgid "US Macintosh"
 msgstr "US Макинтош"
 
-#: gkb-new/descs/presets.xml.in.h:211
+#: gkb-new/descs/presets.xml.in.h:212
 msgid "US PC/AT 101 keyboard"
 msgstr "US PC/AT 101 гар"
 
-#: gkb-new/descs/presets.xml.in.h:212
+#: gkb-new/descs/presets.xml.in.h:213
 msgid "US Silicon Graphics 101-key"
 msgstr "US Silicon Graphics 101-товчлуурт"
 
-#: gkb-new/descs/presets.xml.in.h:213
+#: gkb-new/descs/presets.xml.in.h:214
 msgid "US Sun type5"
 msgstr "US Sun type5"
 
-#: gkb-new/descs/presets.xml.in.h:214
+#: gkb-new/descs/presets.xml.in.h:215
 msgid "US xkb keymap"
 msgstr "US xkb гарын зураг"
 
-#: gkb-new/descs/presets.xml.in.h:217
+#: gkb-new/descs/presets.xml.in.h:218
 msgid "Ukrainian xkb keymap"
 msgstr "Украйн xkb гарын зураг"
 
-#: gkb-new/descs/presets.xml.in.h:218
+#: gkb-new/descs/presets.xml.in.h:219
 msgid "United Arab Emirates"
 msgstr "Арабын Нэгдсэн Эмират"
 
-#: gkb-new/descs/presets.xml.in.h:220
+#: gkb-new/descs/presets.xml.in.h:221
 msgid "United Kingdom xkb keymap"
 msgstr "Нэгдсэн Вант Улсын xkb гарын зураг"
 
-#: gkb-new/descs/presets.xml.in.h:222
-msgid "Viet_namese"
-msgstr "Вьетнам"
-
-#: gkb-new/descs/presets.xml.in.h:223
-msgid "Viet_namese xkb keymap"
+#: gkb-new/descs/presets.xml.in.h:225
+#, fuzzy
+msgid "Vietnamese xkb keymap"
 msgstr "Вьетнам xkb гарын зураг"
 
-#: gkb-new/descs/presets.xml.in.h:225
+#: gkb-new/descs/presets.xml.in.h:226
 msgid "Yemen"
 msgstr "Йемен"
 
@@ -2235,7 +2270,9 @@ msgstr "Гарны хэвний Туг зураг"
 
 #: gkb-new/gkb.schemas.in.h:3
 msgid "It can be \"Flag and Label\", \"Label\" or \"Flag\""
-msgstr "Энэ нь дараахуудаас нэг нь байж болно. Үүнд : \"Flag and Label\", \"Label\" or \"Flag\""
+msgstr ""
+"Энэ нь дараахуудаас нэг нь байж болно. Үүнд : \"Flag and Label\", \"Label\" "
+"or \"Flag\""
 
 #: gkb-new/gkb.schemas.in.h:4
 msgid "Keybinding for switching layout"
@@ -2286,8 +2323,8 @@ msgid ""
 "This should be like \"gkb_xmmap us\", \"setxkbmap us\" or \"xmodmap "
 "something.xmm\""
 msgstr ""
-"Дараах нь \"gkb_xmmap us\", \"setxkbmap us\" or \"xmodmap something.xmm\""
-"байж болно."
+"Дараах нь \"gkb_xmmap us\", \"setxkbmap us\" or \"xmodmap something.xmm"
+"\"байж болно."
 
 #: gkb-new/gkb.schemas.in.h:16
 msgid "This will appear in the label box of the applet"
@@ -2305,7 +2342,7 @@ msgstr "Хориглосон"
 msgid "Press a key or press Esc to cancel"
 msgstr " \"Esc\" товч дар болиул"
 
-#: gkb-new/preset.c:154 gkb-new/preset.c:157
+#: gkb-new/preset.c:155 gkb-new/preset.c:158
 msgid "Undefined"
 msgstr "Эс тодорхойлсон"
 
@@ -2334,23 +2371,23 @@ msgstr "Үл мэдэгдэх гар"
 msgid "?"
 msgstr "?"
 
-#: gkb-new/prop-map.c:272
+#: gkb-new/prop-map.c:278
 msgid "Edit Keyboard"
 msgstr "Гарны байрлал засах"
 
-#: gkb-new/prop-map.c:297
+#: gkb-new/prop-map.c:303
 msgid "_Name:"
 msgstr "Нэр:"
 
-#: gkb-new/prop-map.c:301
+#: gkb-new/prop-map.c:307
 msgid "_Label:"
 msgstr "Тэмдэг:"
 
-#: gkb-new/prop-map.c:304 mini-commander/src/mini-commander.glade.h:8
+#: gkb-new/prop-map.c:310 mini-commander/src/mini-commander.glade.h:8
 msgid "Co_mmand:"
 msgstr "Команд"
 
-#: gkb-new/prop-map.c:307
+#: gkb-new/prop-map.c:315
 msgid "_Flag:"
 msgstr "Туг:"
 
@@ -2366,8 +2403,8 @@ msgstr "Тэмдэг"
 msgid "Flag and Label"
 msgstr "Тэмдэг ба туг"
 
-#: gkb-new/prop.c:257 gtik/gtik.c:1530 gweather/gweather-pref.c:746
-#: modemlights/properties.c:437
+#: gkb-new/prop.c:257 gtik/gtik.c:1483 gweather/gweather-pref.c:739
+#: modemlights/properties.c:444
 msgid "Display"
 msgstr "Дэлгэц"
 
@@ -2405,7 +2442,7 @@ msgstr "Гарнууд"
 msgid "_Keyboards:"
 msgstr "Гарнууд:"
 
-#: gkb-new/prop.c:457 multiload/properties.c:420
+#: gkb-new/prop.c:457 multiload/properties.c:426
 msgid "Options"
 msgstr "Параметрууд"
 
@@ -2441,6 +2478,221 @@ msgstr ""
 "\n"
 "Тушаал: %s"
 
+#: gswitchit/GNOME_GSwitchItApplet.xml.h:1
+msgid "Pl_ugins..."
+msgstr ""
+
+#: gswitchit/GNOME_GSwitchItApplet.xml.h:3
+msgid "_Groups"
+msgstr ""
+
+#: gswitchit/GNOME_GSwitchItApplet.xml.h:5
+#, fuzzy
+msgid "_Open Keyboard Preferences"
+msgstr "Цэсийн мөрийн тохиргоо"
+
+#: gswitchit/GNOME_KeyboardApplet.server.in.in.h:1
+#, fuzzy
+msgid "GNOME keyboard applet factory"
+msgstr "Gweather апплетийн үдсэлэгч"
+
+#: gswitchit/GNOME_KeyboardApplet.server.in.in.h:2
+#, fuzzy
+msgid "GNOME keyboard layout indicator"
+msgstr "Гарны хэв солигч"
+
+#: gswitchit/GNOME_KeyboardApplet.server.in.in.h:3
+#: gswitchit/gswitchit-applet.c:575
+#, fuzzy
+msgid "Keyboard Indicator"
+msgstr "Индикатор систем ачаалж байна."
+
+#: gswitchit/GNOME_KeyboardApplet.server.in.in.h:4
+#, fuzzy
+msgid "Keyboard applet factory"
+msgstr " \"Нүдүүд\" -г үндэслэгч"
+
+#: gswitchit/gswitchit-applet.c:110
+#, c-format
+msgid "Keyboard Indicator (%s)"
+msgstr ""
+
+#: gswitchit/gswitchit-applet.c:578
+msgid "Copyright (c) Sergey V. Oudaltsov 1999-2004"
+msgstr ""
+
+#: gswitchit/gswitchit-applet.c:580
+#, fuzzy
+msgid "Keyboard layout indicator applet for GNOME"
+msgstr "Гарны хэв солигч"
+
+#: gswitchit/gswitchit-applet.c:734
+msgid "XKB initialization error"
+msgstr ""
+
+#: gswitchit/gswitchit-applet.c:742
+msgid "Error loading XKB configuration registry"
+msgstr ""
+
+#: gswitchit/gswitchit-capplet.c:185
+msgid ""
+"Make the layout accessible from the applet popup menu ONLY.\n"
+"No way to switch to this layout using the keyboard."
+msgstr ""
+
+#: gswitchit/gswitchit-capplet.c:265
+msgid "_Exclude from keyboard switching"
+msgstr ""
+
+#: gswitchit/gswitchit-capplet.c:296
+#, fuzzy
+msgid "Not used"
+msgstr "Хэрэглэгдэхээ больсон."
+
+#: gswitchit/gswitchit-plugins-add.c:105 gswitchit/gswitchit-plugins.c:117
+msgid "No description."
+msgstr ""
+
+#: gswitchit/gswitchit-plugins.c:331
+#, c-format
+msgid "Failed to init GConf: %s\n"
+msgstr ""
+
+#: gswitchit/gswitchit-plugins.glade.h:1
+msgid "Activate more plugins"
+msgstr ""
+
+#: gswitchit/gswitchit-plugins.glade.h:2
+msgid "Active _plugins:"
+msgstr ""
+
+#: gswitchit/gswitchit-plugins.glade.h:3
+#, fuzzy
+msgid "Add Plugin"
+msgstr "Нэмэх товчлуур"
+
+#: gswitchit/gswitchit-plugins.glade.h:4
+#, fuzzy
+msgid "Close the dialog"
+msgstr "Тэмдэглэгээг Хаах"
+
+#: gswitchit/gswitchit-plugins.glade.h:5
+#, fuzzy
+msgid "Configure the selected plugin"
+msgstr "Сонгогдсон загварыг өөрчлөхөөр дарах"
+
+#: gswitchit/gswitchit-plugins.glade.h:6
+msgid "Deactivate selected plugin"
+msgstr ""
+
+#: gswitchit/gswitchit-plugins.glade.h:7
+msgid "Decrease the plugin priority"
+msgstr ""
+
+#: gswitchit/gswitchit-plugins.glade.h:8
+msgid "Increase the plugin priority"
+msgstr ""
+
+#: gswitchit/gswitchit-plugins.glade.h:9
+msgid "Keyboard Indicator Plugins"
+msgstr ""
+
+#: gswitchit/gswitchit-plugins.glade.h:10
+msgid "The list of active plugins"
+msgstr ""
+
+#: gswitchit/gswitchit-plugins.glade.h:11
+#, fuzzy
+msgid "_Available plugins:"
+msgstr "Боломжтой палетууд"
+
+#: gswitchit/gswitchit-properties.glade.h:2 stickynotes/stickynotes.glade.h:3
+msgid "<b>Behavior</b>"
+msgstr "<b>Үйл явц</b>"
+
+#: gswitchit/gswitchit-properties.glade.h:3
+#, fuzzy
+msgid "Choose the default group (for newly created windows)."
+msgstr "Бүх тэмдэглэгээнд үндсэн загварыг хүчээр сонгох"
+
+#: gswitchit/gswitchit-properties.glade.h:4
+msgid "Keep separate group for each application window."
+msgstr ""
+
+#: gswitchit/gswitchit-properties.glade.h:5
+msgid "Keep the state of indicators separately for each application window."
+msgstr ""
+
+#: gswitchit/gswitchit-properties.glade.h:6
+#, fuzzy
+msgid "Keyboard Indicator Preferences"
+msgstr "Гарны байрлалыг солигчийн тохиргоо"
+
+#: gswitchit/gswitchit-properties.glade.h:7
+msgid "Save/restore _indicators with group"
+msgstr ""
+
+#: gswitchit/gswitchit-properties.glade.h:8
+msgid "Separate _group for each window"
+msgstr ""
+
+#: gswitchit/gswitchit-properties.glade.h:9
+msgid "Show national flags as indicators of corresponding layouts"
+msgstr ""
+
+#: gswitchit/gswitchit-properties.glade.h:10
+#, fuzzy
+msgid "Use _flags as indicators"
+msgstr "Индикатор систем ачаалж байна."
+
+#: gswitchit/gswitchit-properties.glade.h:11
+msgid "_Default group:"
+msgstr ""
+
+#: gswitchit/gswitchit.schemas.in.h:1
+msgid "Beep on group switch"
+msgstr ""
+
+#: gswitchit/gswitchit.schemas.in.h:2
+#, fuzzy
+msgid "Debug level"
+msgstr "Оролтын түвшин:"
+
+#: gswitchit/gswitchit.schemas.in.h:3
+msgid "Default group, assigned on window creation"
+msgstr ""
+
+#: gswitchit/gswitchit.schemas.in.h:4
+msgid "Keep and manage separate group per window"
+msgstr ""
+
+#: gswitchit/gswitchit.schemas.in.h:5
+msgid "Save/restore indicators together with layout groups"
+msgstr ""
+
+#: gswitchit/gswitchit.schemas.in.h:6
+msgid "Secondary groups"
+msgstr ""
+
+#: gswitchit/gswitchit.schemas.in.h:7
+#, fuzzy
+msgid "Show flags in the applet"
+msgstr "Ширүүн мөндөртэй"
+
+#: gswitchit/gswitchit.schemas.in.h:8
+msgid "Show flags in the applet to indicate the current layout"
+msgstr ""
+
+#: gswitchit/gswitchit.schemas.in.h:9
+msgid "Show layout names instead of group names"
+msgstr ""
+
+#: gswitchit/gswitchit.schemas.in.h:10
+msgid ""
+"Show layout names instead of group names (only for versions of XFree "
+"supporting multiple layouts)"
+msgstr ""
+
 #: gtik/GNOME_GtikApplet.server.in.in.h:1
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:1
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:1
@@ -2455,7 +2707,7 @@ msgstr "Тасралтгүй хэсэг хэсгээр нь шинэчлэлт �
 msgid "Gtik Applet Factory"
 msgstr "Gtik апплетийг үндэслэгч"
 
-#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:791
+#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:740
 msgid "Stock Ticker"
 msgstr "Үнэт Цаас Мэдээлэгч"
 
@@ -2464,15 +2716,15 @@ msgstr "Үнэт Цаас Мэдээлэгч"
 msgid "_Update"
 msgstr "Шинэчлэх"
 
-#: gtik/gtik.c:255
+#: gtik/gtik.c:258
 msgid "Could not retrieve the stock data."
 msgstr "Үнэт цаасны мэдээллийг авч чадахгүй"
 
-#: gtik/gtik.c:289 gweather/gweather-applet.c:346
+#: gtik/gtik.c:307 gweather/gweather-applet.c:426
 msgid "Updating..."
 msgstr "Шинэчлэл..."
 
-#: gtik/gtik.c:793
+#: gtik/gtik.c:742
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.  "
 "The GNOME Stock Ticker is a free Internet-based application.  It comes with "
@@ -2480,131 +2732,130 @@ msgid ""
 "investment decisions; it is for informational purposes only."
 msgstr ""
 "Энэ програм нь Нийтэд дэлгэрсэн вебд холбогдож Үнэт цаасны мэдээллийг авна. "
-"Гноме Үнэт Цаас Мэдээлэгч нь Интернетд суурилсан Х.Програм. "
-"Энэ нь ямар нэг төлбөргүй "
-"Та энийг хөрөнгө оруулалтын шийдвэр гаргахад бүү ашиглаарай. "
-"Энэ нь зөвхөн Мэдээллийн үүрэгтэй юм."
+"Гноме Үнэт Цаас Мэдээлэгч нь Интернетд суурилсан Х.Програм. Энэ нь ямар нэг "
+"төлбөргүй Та энийг хөрөнгө оруулалтын шийдвэр гаргахад бүү ашиглаарай. Энэ "
+"нь зөвхөн Мэдээллийн үүрэгтэй юм."
 
-#: gtik/gtik.c:1279
+#: gtik/gtik.c:1232
 msgid "Current _stocks:"
 msgstr "Идэвхтэй Үнэт цаас:"
 
-#: gtik/gtik.c:1287
+#: gtik/gtik.c:1240
 msgid "_New symbol:"
 msgstr "_Шинэ тэмдэгт:"
 
-#: gtik/gtik.c:1296
+#: gtik/gtik.c:1249
 msgid "_Add"
 msgstr "_Нэмэх"
 
-#: gtik/gtik.c:1305
+#: gtik/gtik.c:1258
 msgid "_Remove"
 msgstr "Сонгогдсоныг _хасах"
 
-#: gtik/gtik.c:1411
+#: gtik/gtik.c:1364
 msgid "Stock Ticker Preferences"
 msgstr "Үнэт цаасны Мэдээлэгчийн тохиргоо"
 
-#: gtik/gtik.c:1433
+#: gtik/gtik.c:1386
 msgid "Symbols"
 msgstr "Тусгай тэмдэгтүүд"
 
-#: gtik/gtik.c:1440 mailcheck/mailcheck.c:2366
+#: gtik/gtik.c:1393 mailcheck/mailcheck.c:2389
 msgid "Behavior"
 msgstr "Үйл явц"
 
-#: gtik/gtik.c:1443 gweather/gweather-pref.c:705
+#: gtik/gtik.c:1396 gweather/gweather-pref.c:699
 msgid "Update"
 msgstr "Шинэчлэх"
 
-#: gtik/gtik.c:1447
+#: gtik/gtik.c:1400
 msgid "Stock update fre_quency:"
 msgstr "Үнэт цаасны эргэлтийг шинэчлэх"
 
-#: gtik/gtik.c:1459 gweather/gweather-pref.c:729 mailcheck/mailcheck.c:2074
-#: mailcheck/mailcheck.c:2080
+#: gtik/gtik.c:1412 gweather/gweather-pref.c:723 mailcheck/mailcheck.c:2095
+#: mailcheck/mailcheck.c:2101
 msgid "minutes"
 msgstr "минут"
 
-#: gtik/gtik.c:1465
+#: gtik/gtik.c:1418
 msgid "Scrolling"
 msgstr "Дэлгэц гүйлгэгч"
 
-#: gtik/gtik.c:1469
+#: gtik/gtik.c:1422
 msgid "_Scroll speed:"
 msgstr "Дэлгэц гүйлгэгчийн х_урд:"
 
-#: gtik/gtik.c:1473
+#: gtik/gtik.c:1426
 msgid "Slow"
 msgstr "Үзүүлэх"
 
-#: gtik/gtik.c:1475
+#: gtik/gtik.c:1428
 msgid "Medium"
 msgstr "Дунд"
 
-#: gtik/gtik.c:1477
+#: gtik/gtik.c:1430
 msgid "Fast"
 msgstr "Хурдан"
 
-#: gtik/gtik.c:1497
+#: gtik/gtik.c:1450
 msgid "_Enable scroll buttons"
 msgstr "Дэлгэц гүйлгэгч товчийг идвэх_жүүлэх"
 
-#: gtik/gtik.c:1509
+#: gtik/gtik.c:1462
 msgid "Scroll _left to right"
 msgstr "Зүүнээс баруун зүг дэлгэцийг гүйлгэ"
 
-#: gtik/gtik.c:1535
+#: gtik/gtik.c:1488
 msgid "Displa_y only symbols and price"
 msgstr "Зөвхөн үнэ ба тусгай тэмдэгтийг үзүүл"
 
-#: gtik/gtik.c:1548 mini-commander/src/mini-commander.glade.h:23
+#: gtik/gtik.c:1501 mini-commander/src/mini-commander.glade.h:23
 #: stickynotes/stickynotes.glade.h:48
 msgid "_Width:"
 msgstr "_Өргөн:"
 
-#: gtik/gtik.c:1562 mini-commander/src/mini-commander.glade.h:24
-#: multiload/properties.c:483
+#: gtik/gtik.c:1515 mini-commander/src/mini-commander.glade.h:24
+#: multiload/properties.c:489
 msgid "pixels"
 msgstr "цэгүүд"
 
-#: gtik/gtik.c:1571
+#: gtik/gtik.c:1524
 msgid "Font and Colors"
 msgstr "Фонт ба Өнгөнүүд"
 
-#: gtik/gtik.c:1577
+#: gtik/gtik.c:1530
 msgid "Use _default theme font and colors"
 msgstr "_Анхдагч өнгийг ашиглах"
 
-#: gtik/gtik.c:1592 stickynotes/stickynotes.glade.h:42
+#: gtik/gtik.c:1545 stickynotes/stickynotes.glade.h:42
 msgid "_Font:"
 msgstr "_Фонт:"
 
-#: gtik/gtik.c:1616
+#: gtik/gtik.c:1569
 msgid "Stock _raised:"
 msgstr "Үнэт цаас өссөн"
 
-#: gtik/gtik.c:1635
+#: gtik/gtik.c:1588
 msgid "Stock _lowered:"
 msgstr "Үнэт цаас буурсан"
 
-#: gtik/gtik.c:1654
+#: gtik/gtik.c:1607
 msgid "Stock _unchanged:"
 msgstr "Үнэт цаас өөрчлөгдөөгүй"
 
-#: gtik/gtik.c:1673 modemlights/properties.c:569
+#: gtik/gtik.c:1626 modemlights/properties.c:580
 msgid "_Background:"
 msgstr "А_р"
 
-#: gtik/gtik.c:1806
+#: gtik/gtik.c:1769
 msgid "Skip forward"
 msgstr "Өмнөх алхамыг алгасах"
 
-#: gtik/gtik.c:1807
+#: gtik/gtik.c:1770
 msgid "Skip backward"
 msgstr "Дараах алхамыг алгасах"
 
-#: gtik/gtik.c:1815
+#: gtik/gtik.c:1778
 msgid ""
 "Stock Ticker\n"
 "Get continuously updated stock quotes"
@@ -2612,17 +2863,19 @@ msgstr ""
 "Эх мэдээ түгээгчr\n"
 "Тасралтгүй хэсэг хэсгээр нь шинэчлэлт хийх"
 
-#: gtik/gtik.c:2009
+#: gtik/gtik.c:1990
 msgid "(No"
 msgstr "(Үгүй"
 
-#: gtik/gtik.c:2010
+#: gtik/gtik.c:1991
 msgid "Change "
 msgstr "Солих "
 
 #: gtik/gtik.schemas.in.h:1
 msgid "Applet scrolls right to left when this key is set to true."
-msgstr "Энэ түлхүүр үнэн байхаар тохируулагдсан бол аплетийн гүйлгэгч баруунаас зүүн чиглэлтэй"
+msgstr ""
+"Энэ түлхүүр үнэн байхаар тохируулагдсан бол аплетийн гүйлгэгч баруунаас зүүн "
+"чиглэлтэй"
 
 #: gtik/gtik.schemas.in.h:2
 msgid "Background color"
@@ -2632,7 +2885,8 @@ msgstr "Арын өнгө:"
 msgid ""
 "Display only stock symbols along with their value. Do not diplay changes in "
 "value."
-msgstr "Зөвхөн Үнэт цаасны тэмдэгтийг ханштай нь үзүүлнэ. Ханшны өөрчлөлт харагдахгүй"
+msgstr ""
+"Зөвхөн Үнэт цаасны тэмдэгтийг ханштай нь үзүүлнэ. Ханшны өөрчлөлт харагдахгүй"
 
 #: gtik/gtik.schemas.in.h:4
 msgid "Display only symbols and price"
@@ -2674,7 +2928,9 @@ msgstr "Харилцах цонхуудыг үзүүлэх"
 msgid ""
 "Show arrow buttons on the side of the display so that the user can scroll "
 "forward or backward."
-msgstr "Дэлгэцэнд байгаа сумыг үзүүлээд хэрэглэгч урагшаа юмуу хойшоо гүйлгэх боломжтой."
+msgstr ""
+"Дэлгэцэнд байгаа сумыг үзүүлээд хэрэглэгч урагшаа юмуу хойшоо гүйлгэх "
+"боломжтой."
 
 #: gtik/gtik.schemas.in.h:13
 msgid "Stocks to monitor - must be seperated by a +"
@@ -2765,15 +3021,15 @@ msgid "Monitor the current weather conditions, and forecasts"
 msgstr "Одоогын Цаг агаар болон таамаглалыг харах"
 
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:5
-#: gweather/gweather-about.c:64
+#: gweather/gweather-about.c:68
 msgid "Weather Report"
 msgstr "Цаг агаарийн мэдээлэл"
 
-#: gweather/gweather-about.c:65
+#: gweather/gweather-about.c:69
 msgid "Copyright (c)1999 by S. Papadimitriou"
 msgstr "Зохиогчийн эрх (С) 1999 S. Papadimitriou"
 
-#: gweather/gweather-about.c:66
+#: gweather/gweather-about.c:70
 msgid ""
 "Released under the GNU General Public License.\n"
 "\n"
@@ -2783,7 +3039,7 @@ msgstr ""
 "\n"
 "An applet for monitoring local weather conditions."
 
-#: gweather/gweather-applet.c:237
+#: gweather/gweather-applet.c:306
 msgid "GNOME Weather"
 msgstr "GNOME Цаг агаар"
 
@@ -2903,36 +3159,36 @@ msgstr "Хаяг оруулах"
 msgid "Enter the URL"
 msgstr "URL оруул"
 
-#: gweather/gweather-pref.c:611
+#: gweather/gweather-pref.c:605
 msgid "Weather Preferences"
 msgstr " \"Цаг агаар\" тохиргоо"
 
-#: gweather/gweather-pref.c:644 gweather/gweather-pref.c:709
+#: gweather/gweather-pref.c:638 gweather/gweather-pref.c:703
 #, fuzzy
 msgid "_Automatically update every:"
 msgstr "Автоматаар шинэчлэх минут"
 
-#: gweather/gweather-pref.c:652
+#: gweather/gweather-pref.c:646
 msgid "Use _metric system units"
 msgstr "Хэмжигч системийг ашиглах"
 
-#: gweather/gweather-pref.c:660
+#: gweather/gweather-pref.c:654
 msgid "Enable _radar map"
 msgstr "Радар зүргийг идвэхзүүлэх"
 
-#: gweather/gweather-pref.c:674
+#: gweather/gweather-pref.c:668
 msgid "Use cus_tom address for radar map"
 msgstr "Радар зурагын хэрэглэгчийн хаяг"
 
-#: gweather/gweather-pref.c:691
+#: gweather/gweather-pref.c:685
 msgid "A_ddress:"
 msgstr "Х_аяг:"
 
-#: gweather/gweather-pref.c:774
+#: gweather/gweather-pref.c:766
 msgid "_Select a location:"
 msgstr "_Байрлал сонго:"
 
-#: gweather/gweather-pref.c:803
+#: gweather/gweather-pref.c:795
 msgid "Location"
 msgstr "Байрлал"
 
@@ -2998,119 +3254,125 @@ msgstr "Хэмжигч системийг ашиглах"
 msgid "weather location information."
 msgstr ""
 
-#: gweather/weather.c:57
+#: gweather/weather.c:58
 msgid "knots"
 msgstr "холболт (1.87 км/ч)"
 
-#: gweather/weather.c:57
+#: gweather/weather.c:58
 msgid "kph"
 msgstr "км/ц"
 
-#: gweather/weather.c:62
+#: gweather/weather.c:63
 msgid "inHg"
 msgstr "ямх"
 
-#: gweather/weather.c:62
+#: gweather/weather.c:63
 msgid "hPa"
 msgstr "hPa"
 
-#: gweather/weather.c:66
+#: gweather/weather.c:67
 msgid "miles"
 msgstr "миль"
 
-#: gweather/weather.c:66
+#: gweather/weather.c:67
 msgid "kilometers"
 msgstr "километр"
 
-#: gweather/weather.c:132
+#: gweather/weather.c:133
 msgid "Variable"
 msgstr "Хувсагч"
 
-#: gweather/weather.c:133
+#: gweather/weather.c:134
 msgid "North"
 msgstr "Зүүн"
 
-#: gweather/weather.c:133
+#: gweather/weather.c:134
 msgid "North - NorthEast"
 msgstr "Зүүн- Зүүн хойт"
 
-#: gweather/weather.c:133
+#: gweather/weather.c:134
 msgid "Northeast"
 msgstr "Зүүн хойт"
 
-#: gweather/weather.c:133
+#: gweather/weather.c:134
 msgid "East - NorthEast"
 msgstr "Зүүн - Зүүн хойт"
 
-#: gweather/weather.c:134
+#: gweather/weather.c:135
 msgid "East"
 msgstr "Зүүн"
 
-#: gweather/weather.c:134
+#: gweather/weather.c:135
 msgid "East - Southeast"
 msgstr "Дорно - Зүүн өмнө"
 
-#: gweather/weather.c:134
+#: gweather/weather.c:135
 msgid "Southeast"
 msgstr "Зүүн өмнө"
 
-#: gweather/weather.c:134
+#: gweather/weather.c:135
 msgid "South - Southeast"
 msgstr "Өмнө - Зүүн өмнө"
 
-#: gweather/weather.c:135
+#: gweather/weather.c:136
 msgid "South"
 msgstr "Өмнө"
 
-#: gweather/weather.c:135
+#: gweather/weather.c:136
 msgid "South - Southwest"
 msgstr "Өмнө - Баруун урд"
 
-#: gweather/weather.c:135
+#: gweather/weather.c:136
 msgid "Southwest"
 msgstr "Баруун урд"
 
-#: gweather/weather.c:135
+#: gweather/weather.c:136
 msgid "West - Southwest"
 msgstr "Баруун - Бруун урд"
 
-#: gweather/weather.c:136
+#: gweather/weather.c:137
 msgid "West"
 msgstr "Баруун"
 
-#: gweather/weather.c:136
+#: gweather/weather.c:137
 msgid "West - Northwest"
 msgstr "Баруун - Баруун хойт"
 
-#: gweather/weather.c:136
+#: gweather/weather.c:137
 msgid "Northwest"
 msgstr "Баруун хойт"
 
-#: gweather/weather.c:136
+#: gweather/weather.c:137
 msgid "North - Northwest"
 msgstr "Баруун - Баруун хойт"
 
-#: gweather/weather.c:143 gweather/weather.c:160 gweather/weather.c:231
+#: gweather/weather.c:143 gweather/weather.c:1967 gweather/weather.c:1979
+#: gweather/weather.c:1991 gweather/weather.c:2003 gweather/weather.c:2021
+#: gweather/weather.c:2033
+msgid "Unknown"
+msgstr "Тодорхойлогдоогүй"
+
+#: gweather/weather.c:145 gweather/weather.c:162 gweather/weather.c:233
 msgid "Invalid"
 msgstr "Буруу"
 
-#: gweather/weather.c:149
+#: gweather/weather.c:151
 msgid "Clear Sky"
 msgstr "Тэнгэр цэлмэг"
 
-#: gweather/weather.c:150
+#: gweather/weather.c:152
 msgid "Broken clouds"
 msgstr "Үүлтэй бүрхэг"
 
-#: gweather/weather.c:151
+#: gweather/weather.c:153
 msgid "Scattered clouds"
 msgstr "Заармаг үүлтэй"
 
-#: gweather/weather.c:152
+#: gweather/weather.c:154
 msgid "Few clouds"
 msgstr "Хэсэг үүлтэй"
 
-#: gweather/weather.c:153
+#: gweather/weather.c:155
 msgid "Overcast"
 msgstr "Цэлмэг"
 
@@ -3118,322 +3380,318 @@ msgstr "Цэлмэг"
 #. * etc means, you can go to http://www.weather.com/glossary/ and
 #. * http://www.crh.noaa.gov/arx/wx.tbl.html
 #. NONE
-#: gweather/weather.c:192 gweather/weather.c:194
+#: gweather/weather.c:194 gweather/weather.c:196
 #, fuzzy
 msgid "Thunderstorm"
 msgstr "Ширүүн шиврээ бороотой"
 
 #. DRIZZLE
-#: gweather/weather.c:193
+#: gweather/weather.c:195
 msgid "Drizzle"
 msgstr "Шиврээ бороотой"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:195
 #, fuzzy
 msgid "Light drizzle"
 msgstr "Багахан бороотой"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:195
 msgid "Moderate drizzle"
 msgstr "Дунд зэрэг шиврээ бороотой"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:195
 msgid "Heavy drizzle"
 msgstr "Их шиврээ бороотой"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:195
 msgid "Freezing drizzle"
 msgstr "Хүтэн шиврээ бороотой"
 
 #. RAIN
-#: gweather/weather.c:194
+#: gweather/weather.c:196
 msgid "Rain"
 msgstr "Бороотой"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:196
 msgid "Light rain"
 msgstr "Багахан бороотой"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:196
 msgid "Moderate rain"
 msgstr "Дунд зэрэг бороотой"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:196
 #, fuzzy
 msgid "Heavy rain"
 msgstr "Ширүүн бороотой"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:196
 msgid "Rain showers"
 msgstr "Ширүүн бороотой"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:196
 msgid "Freezing rain"
 msgstr "Хүйтэн бороотой"
 
 #. SNOW
-#: gweather/weather.c:195
+#: gweather/weather.c:197
 msgid "Snow"
 msgstr "Цастай"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:197
 msgid "Light snow"
 msgstr "Багаахан цастай"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:197
 msgid "Moderate snow"
 msgstr "Дунд зэрэг цастай"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:197
 msgid "Heavy snow"
 msgstr "Их цастай"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:197
 msgid "Snowstorm"
 msgstr "Цасан шуургатай"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:197
 msgid "Blowing snowfall"
 msgstr "Цасан шуургатай"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:197
 msgid "Snow showers"
 msgstr "Ширүүн цастай"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:197
 msgid "Drifting snow"
 msgstr "Цастай"
 
 #. SNOW_GRAINS
-#: gweather/weather.c:196
+#: gweather/weather.c:198
 #, fuzzy
 msgid "Snow grains"
 msgstr "Ширүүн мөндөртэй"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:198
 msgid "Light snow grains"
 msgstr "Багаахан мөндөртэй"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:198
 msgid "Moderate snow grains"
 msgstr "Дун зэрэг мөндөртэй"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:198
 msgid "Heavy snow grains"
 msgstr "Ширүүн мөндөртэй"
 
 #. ICE_CRYSTALS
-#: gweather/weather.c:197
+#: gweather/weather.c:199
 msgid "Ice crystals"
 msgstr "Мөндөртэй"
 
 #. ICE_PELLETS
-#: gweather/weather.c:198
+#: gweather/weather.c:200
 msgid "Ice pellets"
 msgstr "Мөндөртэй"
 
-#: gweather/weather.c:198
+#: gweather/weather.c:200
 msgid "Few ice pellets"
 msgstr "Хэдхэн мөндөртэй"
 
-#: gweather/weather.c:198
+#: gweather/weather.c:200
 msgid "Moderate ice pellets"
 msgstr "Дун зэрэг мөндөртэй"
 
-#: gweather/weather.c:198
+#: gweather/weather.c:200
 msgid "Heavy ice pellets"
 msgstr "Ширүүн мөндөртэй"
 
-#: gweather/weather.c:198
+#: gweather/weather.c:200
 msgid "Ice pellet storm"
 msgstr "Мөсөн шуургатай"
 
-#: gweather/weather.c:198
+#: gweather/weather.c:200
 msgid "Showers of ice pellets"
 msgstr "Ширүүн мөндөртэй"
 
 #. HAIL
-#: gweather/weather.c:199
+#: gweather/weather.c:201
 msgid "Hail"
 msgstr "Мөндөртэй"
 
-#: gweather/weather.c:199
+#: gweather/weather.c:201
 msgid "Hailstorm"
 msgstr "Мөсөн шуургатай"
 
-#: gweather/weather.c:199
+#: gweather/weather.c:201
 msgid "Hail showers"
 msgstr "Ширүүн мөндөртэй"
 
 #. SMALL_HAIL
-#: gweather/weather.c:200
+#: gweather/weather.c:202
 msgid "Small hail"
 msgstr "Жижигхэн мөндөртэй"
 
-#: gweather/weather.c:200
+#: gweather/weather.c:202
 msgid "Small hailstorm"
 msgstr "Мөсөн шуургатай"
 
-#: gweather/weather.c:200
+#: gweather/weather.c:202
 msgid "Showers of small hail"
 msgstr "Ширүүн мөндөртэй"
 
 #. PRECIPITATION
-#: gweather/weather.c:201
+#: gweather/weather.c:203
 msgid "Unknown precipitation"
 msgstr "Тодорхойгүй тундастай"
 
 #. MIST
-#: gweather/weather.c:202
+#: gweather/weather.c:204
 msgid "Mist"
 msgstr "Манантай"
 
 #. FOG
-#: gweather/weather.c:203
+#: gweather/weather.c:205
 msgid "Fog"
 msgstr "Манантай"
 
-#: gweather/weather.c:203
+#: gweather/weather.c:205
 msgid "Fog in the vicinity"
 msgstr "Ойр ойрхон манантай"
 
-#: gweather/weather.c:203
+#: gweather/weather.c:205
 msgid "Shallow fog"
 msgstr "Өнгөцхөн манантай"
 
-#: gweather/weather.c:203
+#: gweather/weather.c:205
 msgid "Patches of fog"
 msgstr "Заримдаа манантай"
 
-#: gweather/weather.c:203
+#: gweather/weather.c:205
 msgid "Partial fog"
 msgstr "Заримдаа манантай"
 
-#: gweather/weather.c:203
+#: gweather/weather.c:205
 msgid "Freezing fog"
 msgstr "Манантай"
 
 #. SMOKE
-#: gweather/weather.c:204
+#: gweather/weather.c:206
 msgid "Smoke"
 msgstr "Утаатай"
 
 #. VOLCANIC_ASH
-#: gweather/weather.c:205
+#: gweather/weather.c:207
 msgid "Volcanic ash"
 msgstr "Галт уулын үнстэй"
 
 #. SAND
-#: gweather/weather.c:206
+#: gweather/weather.c:208
 msgid "Sand"
 msgstr "Элтэй"
 
-#: gweather/weather.c:206
+#: gweather/weather.c:208
 msgid "Blowing sand"
 msgstr "Элстэй"
 
-#: gweather/weather.c:206
+#: gweather/weather.c:208
 msgid "Drifting sand"
 msgstr "Элстэй"
 
 #. HAZE
-#: gweather/weather.c:207
+#: gweather/weather.c:209
 msgid "Haze"
 msgstr "Манантай"
 
 #. SPRAY
-#: gweather/weather.c:208
+#: gweather/weather.c:210
 msgid "Blowing sprays"
 msgstr "Бороотой"
 
 #. DUST
-#: gweather/weather.c:209
+#: gweather/weather.c:211
 msgid "Dust"
 msgstr "Шороотой"
 
-#: gweather/weather.c:209
+#: gweather/weather.c:211
 msgid "Blowing dust"
 msgstr "Шороотой"
 
-#: gweather/weather.c:209
+#: gweather/weather.c:211
 msgid "Drifting dust"
 msgstr "Шороотой"
 
 #. SQUALL
-#: gweather/weather.c:210
+#: gweather/weather.c:212
 msgid "Squall"
 msgstr "Хуй салхитай"
 
 #. SANDSTORM
-#: gweather/weather.c:211
+#: gweather/weather.c:213
 msgid "Sandstorm"
 msgstr "Элсэн шуургатай"
 
-#: gweather/weather.c:211
+#: gweather/weather.c:213
 msgid "Sandstorm in the vicinity"
 msgstr "Ойр ойрхон элсэн шуургатай"
 
-#: gweather/weather.c:211
+#: gweather/weather.c:213
 msgid "Heavy sandstorm"
 msgstr "Их элсэн шуургатай"
 
 #. DUSTSTORM
-#: gweather/weather.c:212
+#: gweather/weather.c:214
 msgid "Duststorm"
 msgstr "Шороон шуургатай"
 
-#: gweather/weather.c:212
+#: gweather/weather.c:214
 msgid "Duststorm in the vicinity"
 msgstr "Ойр ойрхон шороон шуургатай"
 
-#: gweather/weather.c:212
+#: gweather/weather.c:214
 msgid "Heavy duststorm"
 msgstr "Их шороон шуургатай"
 
 #. FUNNEL_CLOUD
-#: gweather/weather.c:213
+#: gweather/weather.c:215
 msgid "Funnel cloud"
 msgstr "Үүлтэй"
 
 #. TORNADO
-#: gweather/weather.c:214
+#: gweather/weather.c:216
 msgid "Tornado"
 msgstr "Хар салхитай"
 
 #. DUST_WHIRLS
-#: gweather/weather.c:215
+#: gweather/weather.c:217
 msgid "Dust whirls"
 msgstr "Шороотой "
 
-#: gweather/weather.c:215
+#: gweather/weather.c:217
 msgid "Dust whirls in the vicinity"
 msgstr "Ойр ойрхон шороотой"
 
-#: gweather/weather.c:831 gweather/weather.c:871 gweather/weather.c:1444
+#: gweather/weather.c:836 gweather/weather.c:876 gweather/weather.c:1593
 msgid "Failed to get METAR data.\n"
 msgstr "METAR.өгөгдөлийг авч чадсангүй \n"
 
-#: gweather/weather.c:863 gweather/weather.c:891 gweather/weather.c:1088
+#: gweather/weather.c:868 gweather/weather.c:896 gweather/weather.c:1134
 msgid "WeatherInfo missing location"
 msgstr "WeatherInfo -н байрлал алдагдсан"
 
-#: gweather/weather.c:1778
+#: gweather/weather.c:1931
 msgid "%a, %b %d / %H:%M"
 msgstr "%a, %d %b / %H:%M"
 
-#: gweather/weather.c:1782
+#: gweather/weather.c:1935
 msgid "Unknown observation time"
 msgstr "Хяналтын хугацаа тодорхойгүй байна"
 
-#: gweather/weather.c:1842
+#: gweather/weather.c:2005
 msgid "Calm"
 msgstr "Багана"
 
-#: gweather/weather.c:1868
-msgid "Unknown"
-msgstr "Тодорхойлогдоогүй"
-
-#: gweather/weather.c:1912
+#: gweather/weather.c:2078
 msgid "Retrieval failed"
 msgstr "Засахад алдаа гарлаа"
 
@@ -3447,7 +3705,7 @@ msgid "Factory for creating inbox monitors."
 msgstr "\"Цаг агаар\" апплетийг үдсэлэгч."
 
 #: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:3
-#: mailcheck/mailcheck.c:791 mailcheck/mailcheck.c:2448
+#: mailcheck/mailcheck.c:805 mailcheck/mailcheck.c:2475
 msgid "Inbox Monitor"
 msgstr "Шуудан харуулагч"
 
@@ -3461,205 +3719,215 @@ msgstr "Шуудан харуулагчийн үйлдвэр"
 msgid "Internet"
 msgstr "Интернет"
 
-#: mailcheck/mailcheck.c:666
+#: mailcheck/mailcheck.c:668
 msgid "Error checking mail"
 msgstr ""
 
-#: mailcheck/mailcheck.c:797
+#: mailcheck/mailcheck.c:811
 msgid ""
 "You didn't set a password in the preferences for the Inbox Monitor,\n"
 "so you have to enter it each time it starts up."
 msgstr ""
 
-#: mailcheck/mailcheck.c:805
+#: mailcheck/mailcheck.c:819
 msgid "Please enter your mailserver's _password:"
 msgstr ""
 
-#: mailcheck/mailcheck.c:810 mailcheck/mailcheck.c:1932
+#: mailcheck/mailcheck.c:824 mailcheck/mailcheck.c:1948
 msgid "Password Entry box"
 msgstr "Нууц үгийн нүд"
 
-#: mailcheck/mailcheck.c:830 mailcheck/mailcheck.c:1959
+#: mailcheck/mailcheck.c:839 mailcheck/mailcheck.c:1975
 msgid "_Save password to disk"
 msgstr "_Нууц үгийг дискэнд хадгалах"
 
-#: mailcheck/mailcheck.c:888
+#: mailcheck/mailcheck.c:895
 msgid "Could not connect to the Internet."
 msgstr ""
 
-#: mailcheck/mailcheck.c:892
+#: mailcheck/mailcheck.c:899
 msgid "The username or password is incorrect."
 msgstr "Хэрэглэгчийн нэр эсвэл нууц үг худал."
 
-#: mailcheck/mailcheck.c:895
+#: mailcheck/mailcheck.c:902
 msgid "The server name is incorrect."
 msgstr ""
 
-#: mailcheck/mailcheck.c:899
+#: mailcheck/mailcheck.c:906
 msgid "Error connecting to mail server."
 msgstr ""
 
-#: mailcheck/mailcheck.c:904
+#: mailcheck/mailcheck.c:911
 msgid "Error"
 msgstr "Алдаа"
 
-#: mailcheck/mailcheck.c:1083
+#: mailcheck/mailcheck.c:1087
 msgid "You have new mail."
 msgstr "Танд шинэ э-захиа ирлээ."
 
-#: mailcheck/mailcheck.c:1085
+#: mailcheck/mailcheck.c:1089
 msgid "You have mail."
 msgstr "Танд э-захиа байна."
 
-#: mailcheck/mailcheck.c:1089
+#: mailcheck/mailcheck.c:1093
 #, c-format
-msgid "%d unread/ %d messages"
-msgstr "%d уншаагүй/ %d зурвас"
+msgid "%d unread"
+msgid_plural "%d unread"
+msgstr[0] ""
+msgstr[1] ""
 
-#: mailcheck/mailcheck.c:1091
+#: mailcheck/mailcheck.c:1094 mailcheck/mailcheck.c:1103
+#, fuzzy, c-format
+msgid "%d message"
+msgid_plural "%d messages"
+msgstr[0] "%d зурвас"
+msgstr[1] "%d зурвас"
+
+#. translators: this is of the form "%d unread/%d messages"
+#: mailcheck/mailcheck.c:1097
 #, c-format
-msgid "%d messages"
-msgstr "%d зурвас"
+msgid "%s/%s"
+msgstr ""
 
-#: mailcheck/mailcheck.c:1095
+#: mailcheck/mailcheck.c:1110
 msgid "No mail."
 msgstr "Э-захиа алга."
 
-#: mailcheck/mailcheck.c:1548 mailcheck/mailcheck.c:1549
-#: mailcheck/mailcheck.c:2805 mailcheck/mailcheck.c:2806
+#: mailcheck/mailcheck.c:1564 mailcheck/mailcheck.c:1565
+#: mailcheck/mailcheck.c:2886 mailcheck/mailcheck.c:2887
 msgid "Status not updated"
 msgstr "Төлөв шинэчлэгдээгүй."
 
-#: mailcheck/mailcheck.c:1751 mailcheck/mailcheck.c:2370
+#: mailcheck/mailcheck.c:1767 mailcheck/mailcheck.c:2393
 msgid "Inbox Settings"
 msgstr "Шуудангийн тохиргоо"
 
-#: mailcheck/mailcheck.c:1777
+#: mailcheck/mailcheck.c:1793
 msgid "Mailbox _resides on:"
 msgstr ""
 
-#: mailcheck/mailcheck.c:1788
+#: mailcheck/mailcheck.c:1804
 msgid "Local mailspool"
 msgstr ""
 
-#: mailcheck/mailcheck.c:1796
+#: mailcheck/mailcheck.c:1812
 msgid "Local maildir"
 msgstr ""
 
-#: mailcheck/mailcheck.c:1804
+#: mailcheck/mailcheck.c:1820
 msgid "Remote POP3-server"
 msgstr ""
 
-#: mailcheck/mailcheck.c:1812
+#: mailcheck/mailcheck.c:1828
 msgid "Remote IMAP-server"
 msgstr ""
 
-#: mailcheck/mailcheck.c:1837
+#: mailcheck/mailcheck.c:1853
 msgid "Mail _spool file:"
 msgstr ""
 
-#: mailcheck/mailcheck.c:1844
+#: mailcheck/mailcheck.c:1860
 msgid "Browse"
 msgstr "Нэгжих"
 
-#: mailcheck/mailcheck.c:1864
+#: mailcheck/mailcheck.c:1880
 msgid "Mail s_erver:"
 msgstr ""
 
-#: mailcheck/mailcheck.c:1873
+#: mailcheck/mailcheck.c:1889
 msgid "Mail Server Entry box"
 msgstr ""
 
-#: mailcheck/mailcheck.c:1892
+#: mailcheck/mailcheck.c:1908
 msgid "_Username:"
 msgstr "_Хэрэглэгчийн нэр:"
 
-#: mailcheck/mailcheck.c:1903
+#: mailcheck/mailcheck.c:1919
 msgid "Username Entry box"
 msgstr "Хэрэглэгчийн нэрийн бичлэгийн нүд"
 
-#: mailcheck/mailcheck.c:1921
+#: mailcheck/mailcheck.c:1937
 msgid "_Password:"
 msgstr "_Нууц үг:"
 
-#: mailcheck/mailcheck.c:1974
+#: mailcheck/mailcheck.c:1990
 msgid "_Folder:"
 msgstr "Х_автас:"
 
-#: mailcheck/mailcheck.c:1985
+#: mailcheck/mailcheck.c:2001
 msgid "Folder Entry box"
 msgstr ""
 
-#: mailcheck/mailcheck.c:2052
+#: mailcheck/mailcheck.c:2073
 msgid "Check for mail _every:"
 msgstr ""
 
-#: mailcheck/mailcheck.c:2074
+#: mailcheck/mailcheck.c:2095
 msgid "Choose time interval in minutes to check mail"
 msgstr ""
 
-#: mailcheck/mailcheck.c:2097
+#: mailcheck/mailcheck.c:2118
 msgid "Choose time interval in seconds to check mail"
 msgstr ""
 
-#: mailcheck/mailcheck.c:2114
+#: mailcheck/mailcheck.c:2135
 msgid "Play a _sound when new mail arrives"
 msgstr ""
 
 #. l = gtk_check_button_new_with_mnemonic (_("Set the number of unread mails to _zero when clicked"));
-#: mailcheck/mailcheck.c:2124
+#: mailcheck/mailcheck.c:2145
 msgid "Sto_p animation when double clicked"
 msgstr ""
 
-#: mailcheck/mailcheck.c:2137
+#: mailcheck/mailcheck.c:2158
 msgid "Select a_nimation:"
 msgstr "Хөдөлгөөн _сонгох:"
 
-#: mailcheck/mailcheck.c:2154
+#: mailcheck/mailcheck.c:2176
 msgid "Commands"
 msgstr "Тушаал"
 
-#: mailcheck/mailcheck.c:2183
+#: mailcheck/mailcheck.c:2205
 msgid "Before each _update:"
 msgstr ""
 
-#: mailcheck/mailcheck.c:2200
+#: mailcheck/mailcheck.c:2222
 msgid "Command to execute before each update"
 msgstr ""
 
-#: mailcheck/mailcheck.c:2212
+#: mailcheck/mailcheck.c:2234
 msgid "When new mail _arrives:"
 msgstr "Шинэ э-захиа ирвэл:"
 
-#: mailcheck/mailcheck.c:2227 mailcheck/mailcheck.schemas.in.h:2
+#: mailcheck/mailcheck.c:2249 mailcheck/mailcheck.schemas.in.h:2
 msgid "Command to execute when new mail arrives"
 msgstr ""
 
-#: mailcheck/mailcheck.c:2239
+#: mailcheck/mailcheck.c:2261
 msgid "When double clicke_d:"
 msgstr ""
 
-#: mailcheck/mailcheck.c:2254
+#: mailcheck/mailcheck.c:2276
 msgid "Command to execute when clicked"
 msgstr ""
 
-#: mailcheck/mailcheck.c:2339
+#: mailcheck/mailcheck.c:2362
 msgid "Inbox Monitor Preferences"
 msgstr "Шуудан харуулагчийн тохиргоо"
 
-#: mailcheck/mailcheck.c:2450
+#: mailcheck/mailcheck.c:2477
 msgid "Inbox Monitor notifies you when new mail arrives in your mailbox"
 msgstr ""
 
-#: mailcheck/mailcheck.c:2776
+#: mailcheck/mailcheck.c:2839
 msgid "Text only"
 msgstr "Зөвхөн текст"
 
-#: mailcheck/mailcheck.c:2807
+#: mailcheck/mailcheck.c:2888
 msgid "Mail check"
 msgstr "Э-захиа шалгах"
 
-#: mailcheck/mailcheck.c:2808
+#: mailcheck/mailcheck.c:2889
 msgid "Mail check notifies you when new mail arrives in your mailbox"
 msgstr ""
 
@@ -3794,7 +4062,7 @@ msgid "New Mail"
 msgstr "Шинэ э-захиа"
 
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:1
-#: mini-commander/src/about.c:66
+#: mini-commander/src/about.c:69
 msgid "Command Line"
 msgstr "Тушаалын мөр"
 
@@ -3806,13 +4074,13 @@ msgstr "Мини-Коммандер"
 msgid "MiniCommander Applet Factory"
 msgstr "Мини-Коммандер апплетийг үүсгүүр"
 
-#: mini-commander/src/about.c:69
+#: mini-commander/src/about.c:72
 #, fuzzy
 msgid ""
 "This GNOME applet adds a command line to the panel. It features command "
 "completion, command history, and changeable macros.\n"
 "\n"
-"This program is free software; you can redistribute it and/or modify it "
+"\\ This program is free software; you can redistribute it and/or modify it "
 "under the terms of the GNU General Public License as published by the Free "
 "Software Foundation; either version 2 of the License, or (at your option) "
 "any later version."
@@ -3825,16 +4093,20 @@ msgstr ""
 "Software Foundation; either version 2 of the License, or (at your option) "
 "any later version."
 
+#: mini-commander/src/command_line.c:315
+msgid "No items in history"
+msgstr ""
+
 #. build file select dialog
-#: mini-commander/src/command_line.c:440
+#: mini-commander/src/command_line.c:439
 msgid "Start program"
 msgstr "Програм эхлэх"
 
-#: mini-commander/src/command_line.c:483
+#: mini-commander/src/command_line.c:482
 msgid "Command line"
 msgstr "Тушаалын мөр"
 
-#: mini-commander/src/command_line.c:484
+#: mini-commander/src/command_line.c:483
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "Энд командаа бичихэд Gnome таны коммандыг ажиллуулна."
 
@@ -3855,7 +4127,8 @@ msgstr "%s -н стандарт жигсаалт утгыг тогтоох.\n"
 
 #: mini-commander/src/mc-install-default-macros.c:117
 msgid "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL is set, not installing schemas\n"
-msgstr "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL бол олонлог, схемүүд суухгүй байна.\n"
+msgstr ""
+"GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL бол олонлог, схемүүд суухгүй байна.\n"
 
 #: mini-commander/src/mc-install-default-macros.c:125
 msgid "Must set the GCONF_CONFIG_SOURCE environment variable\n"
@@ -3948,27 +4221,30 @@ msgid "Attempt to autocomplete a command from the history of commands entered."
 msgstr ""
 
 #: mini-commander/src/mini-commander.schemas.in.h:2
-msgid "Color background blue component"
-msgstr ""
+#, fuzzy
+msgid "Background color, blue component"
+msgstr "Арын өнгө:"
 
 #: mini-commander/src/mini-commander.schemas.in.h:3
-msgid "Color background green component"
-msgstr ""
+#, fuzzy
+msgid "Background color, green component"
+msgstr "Арын өнгө:"
 
 #: mini-commander/src/mini-commander.schemas.in.h:4
-msgid "Color background red component"
-msgstr ""
+#, fuzzy
+msgid "Background color, red component"
+msgstr "Арын өнгө:"
 
 #: mini-commander/src/mini-commander.schemas.in.h:5
-msgid "Color foreground blue component"
+msgid "Foreground color, blue component"
 msgstr ""
 
 #: mini-commander/src/mini-commander.schemas.in.h:6
-msgid "Color foreground green component"
+msgid "Foreground color, green component"
 msgstr ""
 
 #: mini-commander/src/mini-commander.schemas.in.h:7
-msgid "Color foreground red component"
+msgid "Foreground color, red component"
 msgstr ""
 
 #: mini-commander/src/mini-commander.schemas.in.h:8
@@ -4051,29 +4327,33 @@ msgstr "Гадаргуун арьсны өнгөнүүдээс нэгийг со
 msgid "Width"
 msgstr "Өргөн"
 
-#: mini-commander/src/mini-commander_applet.c:222
-#: mini-commander/src/mini-commander_applet.c:226
+#: mini-commander/src/mini-commander_applet.c:228
+#: mini-commander/src/mini-commander_applet.c:232
 msgid "Browser"
 msgstr "Хөтөч"
 
-#: mini-commander/src/mini-commander_applet.c:227
+#: mini-commander/src/mini-commander_applet.c:233
 msgid "Click this button to start the browser"
 msgstr "Хөтөч эхлүүлэхдээ энэ товчийг дар"
 
-#: mini-commander/src/mini-commander_applet.c:240
-#: mini-commander/src/mini-commander_applet.c:244
+#: mini-commander/src/mini-commander_applet.c:246
+#: mini-commander/src/mini-commander_applet.c:250
 msgid "History"
 msgstr "Түүх"
 
-#: mini-commander/src/mini-commander_applet.c:245
+#: mini-commander/src/mini-commander_applet.c:251
 msgid "Click this button for the list of previous commands"
 msgstr "Өмнөх командын цуваа руу шилжих энэ товчийг дар"
 
-#: mini-commander/src/mini-commander_applet.c:379
+#: mini-commander/src/mini-commander_applet.c:363
+msgid "Command line has been disabled by your system administrator"
+msgstr ""
+
+#: mini-commander/src/mini-commander_applet.c:426
 msgid "Mini-Commander applet"
 msgstr "Мини-Коммандер апплет"
 
-#: mini-commander/src/mini-commander_applet.c:380
+#: mini-commander/src/mini-commander_applet.c:427
 msgid "This applet adds a command line to the panel"
 msgstr "Энэ апплет нь коммандын мөрийг самбарт нэмэх"
 
@@ -4093,12 +4373,22 @@ msgstr "Та тушаал өгөх ёстой"
 msgid "You may not specify duplicate patterns"
 msgstr "Та давхар хэв тодорхойлж болохгүй"
 
+#: mini-commander/src/preferences.c:850
+#, fuzzy
+msgid "Pattern"
+msgstr "_Загвар:"
+
+#: mini-commander/src/preferences.c:860
+#, fuzzy
+msgid "Command"
+msgstr "Тушаал"
+
 #: mixer/GNOME_MixerApplet.server.in.in.h:1
 msgid "Adjust the sound volume"
 msgstr "Дууны төхөөрөмжийг тохируулах"
 
-#: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:175
-#: mixer/mixer.c:1075
+#: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:199
+#: mixer/mixer.c:1346
 msgid "Volume Control"
 msgstr "Дууны хянагч"
 
@@ -4110,116 +4400,116 @@ msgstr "_Дууг хаах"
 msgid "_Open Volume Control"
 msgstr "Дууны хянагч _нээх"
 
-#: mixer/mixer.c:113
+#: mixer/mixer.c:125
 msgid "Main Volume"
 msgstr "Үндсэн _Дуу"
 
-#: mixer/mixer.c:113
+#: mixer/mixer.c:125
 msgid "Bass"
 msgstr "Басс"
 
-#: mixer/mixer.c:113
+#: mixer/mixer.c:125
 msgid "Treble"
 msgstr "Гурвал"
 
-#: mixer/mixer.c:113
+#: mixer/mixer.c:125
 msgid "Synth"
 msgstr "Нийлм"
 
-#: mixer/mixer.c:114
+#: mixer/mixer.c:126
 msgid "Pcm"
 msgstr "Pcm"
 
-#: mixer/mixer.c:114
+#: mixer/mixer.c:126
 msgid "Speaker"
 msgstr "Яригч"
 
-#: mixer/mixer.c:114
+#: mixer/mixer.c:126
 msgid "Line"
 msgstr "Шугам"
 
-#: mixer/mixer.c:115
+#: mixer/mixer.c:127
 msgid "Microphone"
 msgstr "Микрофон"
 
-#: mixer/mixer.c:115
+#: mixer/mixer.c:127
 msgid "CD"
 msgstr "КД"
 
-#: mixer/mixer.c:115
+#: mixer/mixer.c:127
 msgid "Mix"
 msgstr "Найруулах"
 
-#: mixer/mixer.c:115
+#: mixer/mixer.c:127
 msgid "Pcm2"
 msgstr "Pcm2"
 
-#: mixer/mixer.c:116
+#: mixer/mixer.c:128
 msgid "Recording Level"
 msgstr "Бичих түвшин"
 
-#: mixer/mixer.c:116
+#: mixer/mixer.c:128
 msgid "Input Gain"
 msgstr "Оролтын шон"
 
-#: mixer/mixer.c:116
+#: mixer/mixer.c:128
 msgid "Output Gain"
 msgstr "Гаралтын шон"
 
-#: mixer/mixer.c:117
+#: mixer/mixer.c:129
 msgid "Line1"
 msgstr "Шугам1"
 
-#: mixer/mixer.c:117
+#: mixer/mixer.c:129
 msgid "Line2"
 msgstr "Шугам2"
 
-#: mixer/mixer.c:117
+#: mixer/mixer.c:129
 msgid "Line3"
 msgstr "Шугам3"
 
-#: mixer/mixer.c:117
+#: mixer/mixer.c:129
 msgid "Digital1"
 msgstr "Тоон1"
 
-#: mixer/mixer.c:118
+#: mixer/mixer.c:130
 msgid "Digital2"
 msgstr "Тоон2"
 
-#: mixer/mixer.c:118
+#: mixer/mixer.c:130
 msgid "Digital3"
 msgstr "Тоон3"
 
-#: mixer/mixer.c:119
+#: mixer/mixer.c:131
 msgid "Phone Input"
 msgstr "Утасны оролт"
 
-#: mixer/mixer.c:119
+#: mixer/mixer.c:131
 msgid "Phone Output"
 msgstr "Утасны гаралт"
 
-#: mixer/mixer.c:119
+#: mixer/mixer.c:131
 msgid "Video"
 msgstr "Видео"
 
-#: mixer/mixer.c:119
+#: mixer/mixer.c:131
 msgid "Radio"
 msgstr "Радио"
 
 #
-#: mixer/mixer.c:119
+#: mixer/mixer.c:131
 msgid "Monitor"
 msgstr "Систем хэмжигч"
 
-#: mixer/mixer.c:176
+#: mixer/mixer.c:200
 msgid "Volume Control (muted)"
 msgstr "Дууны хянагч (дуу хаагдсан)"
 
-#: mixer/mixer.c:177
+#: mixer/mixer.c:201
 msgid "No audio device"
 msgstr "Дууны төхөөрөмж алга"
 
-#: mixer/mixer.c:278
+#: mixer/mixer.c:518
 msgid ""
 "warning: this version of gmix was compiled with a different version of\n"
 "soundcard.h.\n"
@@ -4227,50 +4517,50 @@ msgstr ""
 "Анхаар: gmix-ийн энэ хувилбар нь дууны төхөөрөмжийн\n"
 " өөр хувилбартай хамт суусан байна\n"
 
-#: mixer/mixer.c:632
+#: mixer/mixer.c:878
 #, c-format
 msgid "Couldn't open mixer device %s\n"
 msgstr "%s дууны төхөөрөмжийг нээх боломжгүй.\n"
 
-#: mixer/mixer.c:801
+#: mixer/mixer.c:1047
 msgid "Volume Controller"
 msgstr "Дуу хянагч"
 
-#: mixer/mixer.c:802
+#: mixer/mixer.c:1048
 msgid "Use Up/Down arrow keys to change volume"
 msgstr "Дээш/Доош товчоор дууны өнгийг өөрчил"
 
 #. Translators - The + and - refer to increasing and decreasing the volume.
 #. ** I don't know if there are sensible alternatives in other languages
-#: mixer/mixer.c:826
+#: mixer/mixer.c:1072
 msgid "+"
 msgstr "+"
 
-#: mixer/mixer.c:827
+#: mixer/mixer.c:1073
 msgid "-"
 msgstr "-"
 
-#: mixer/mixer.c:1076
+#: mixer/mixer.c:1347
 msgid "(C) 2001 Richard Hult"
 msgstr "(C) 2001 Richard Hult"
 
-#: mixer/mixer.c:1077
+#: mixer/mixer.c:1348
 msgid "The volume control lets you set the volume level for your desktop."
 msgstr "Өөрийн хэрэглээндээ тохируулж дууний өнгийг тогтоох апплет"
 
-#: mixer/mixer.c:1220
+#: mixer/mixer.c:1495
 msgid "Volume Control Preferences"
 msgstr "Дууны хянагч"
 
-#: mixer/mixer.c:1244
+#: mixer/mixer.c:1519
 msgid "Audio Channels"
 msgstr "Дууны сувгууд"
 
-#: mixer/mixer.c:1260
+#: mixer/mixer.c:1535
 msgid "_Select channel to control:"
 msgstr ""
 
-#: mixer/mixer.c:1592
+#: mixer/mixer.c:1874
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr "Өөрийн хэрэглээндээ тохируулж дууний өнгийг тогтоох апплет"
 
@@ -4287,11 +4577,11 @@ msgid "Saved volume to restore on startup"
 msgstr "Эхлэхэд хадгалагдсан нэр сэргээгдэх"
 
 #: modemlights/GNOME_ModemLightsApplet.server.in.in.h:2
-#: modemlights/modemlights.c:133
+#: modemlights/modemlights.c:135 modemlights/modemlights.c:1582
 msgid "Modem Lights"
 msgstr "Модемийн гэрэл"
 
-#: modemlights/modemlights.c:135
+#: modemlights/modemlights.c:137
 msgid ""
 "Released under the GNU general public license.\n"
 "A modem status indicator and dialer.\n"
@@ -4301,7 +4591,7 @@ msgstr ""
 "Модемийн төлөвийн индикатор. Гэрлүүд нь зүүнээсээ бол өгөгдөл хүлээж авах. "
 "дээрээсээ бол өгөгдөл илгээх"
 
-#: modemlights/modemlights.c:485
+#: modemlights/modemlights.c:518
 msgid ""
 "You are currently connected.\n"
 "Do you want to disconnect?"
@@ -4309,24 +4599,24 @@ msgstr ""
 "Та холбогдсон.\n"
 "Холболтыг салгах уу?"
 
-#: modemlights/modemlights.c:489
+#: modemlights/modemlights.c:526
 msgid "_Disconnect"
 msgstr "Салгах:"
 
-#: modemlights/modemlights.c:510
+#: modemlights/modemlights.c:553
 msgid "Do you want to connect?"
 msgstr "Холбох уу?"
 
-#: modemlights/modemlights.c:513
+#: modemlights/modemlights.c:560
 msgid "C_onnect"
 msgstr "Холбож байна"
 
-#: modemlights/modemlights.c:536
+#: modemlights/modemlights.c:584
 #, c-format
 msgid "%#.1fMb received / %#.1fMb sent / time: %.1d:%.2d"
 msgstr "%#.1fMb хүлээн авсан / %#.1fMb илгээсэн / хугацаа: %.1d:%.2d"
 
-#: modemlights/modemlights.c:541
+#: modemlights/modemlights.c:589
 msgid "not connected"
 msgstr "Холбогдсонгүй"
 
@@ -4422,20 +4712,30 @@ msgid "The background color of the button used to indicate data sent."
 msgstr "Өгөгдөл илгээгдсэнийг илэрхийлэх товчлуурын ар өнгө"
 
 #: modemlights/modemlights.schemas.in.h:23
-msgid "The color used to display the status button when the modem is connected."
-msgstr "Энэ өнгө нь модем холбогдсон байгааг илэрхийлэх төлөвийн товчлуурт хэрэглэгдэнэ"
+msgid ""
+"The color used to display the status button when the modem is connected."
+msgstr ""
+"Энэ өнгө нь модем холбогдсон байгааг илэрхийлэх төлөвийн товчлуурт "
+"хэрэглэгдэнэ"
 
 #: modemlights/modemlights.schemas.in.h:24
-msgid "The color used to display the status button when the modem is connecting."
-msgstr "Энэ өнгө нь модем холбогдож байгааг илэрхийлэх төлөвийн товчлуурт хэрэглэгдэнэ"
+msgid ""
+"The color used to display the status button when the modem is connecting."
+msgstr ""
+"Энэ өнгө нь модем холбогдож байгааг илэрхийлэх төлөвийн товчлуурт "
+"хэрэглэгдэнэ"
 
 #: modemlights/modemlights.schemas.in.h:25
-msgid "The color used to display the status button when the modem is not connected."
-msgstr "Энэ өнгө нь модем холбохгүй байгааг илэрхийлэх төлөвийн товчлуурт хэрэглэгдэнэ"
+msgid ""
+"The color used to display the status button when the modem is not connected."
+msgstr ""
+"Энэ өнгө нь модем холбохгүй байгааг илэрхийлэх төлөвийн товчлуурт "
+"хэрэглэгдэнэ"
 
 #: modemlights/modemlights.schemas.in.h:26
 msgid "The color used to indicate that data has been received."
-msgstr "Энэ өнгө нь тухайн өгөгдөлийг хүлээн авсан болохыг илэрхийлэхэд хэрэглэгдэнэ"
+msgstr ""
+"Энэ өнгө нь тухайн өгөгдөлийг хүлээн авсан болохыг илэрхийлэхэд хэрэглэгдэнэ"
 
 #: modemlights/modemlights.schemas.in.h:27
 msgid "The color used to indicate that data has been sent."
@@ -4473,118 +4773,118 @@ msgstr "Модемийг салгахдаа энийг хэрэглэнэ."
 msgid "Verify owner of lock file"
 msgstr "Өөрийн хаалттай файлуудаа шалгах"
 
-#: modemlights/properties.c:416
+#: modemlights/properties.c:423
 msgid "Modem Lights Preferences"
 msgstr "Модемын гэрлийн тохиргоо"
 
-#: modemlights/properties.c:444
+#: modemlights/properties.c:451
 msgid "U_pdate every:"
 msgstr "Секундэнд зөөх чадвар:"
 
 #. extra info checkbox
-#: modemlights/properties.c:469
+#: modemlights/properties.c:476
 msgid "Sho_w connect time and throughput"
 msgstr "Холболтын хугацаа ба гарах чадалыг үзүүлэх"
 
-#: modemlights/properties.c:479
+#: modemlights/properties.c:486
 msgid "B_link connection status when connecting"
 msgstr "Холбогдож байх үеийн анивчсан төлө_в"
 
-#: modemlights/properties.c:489
+#: modemlights/properties.c:496
 msgid "Connections"
 msgstr "Холбож байна"
 
-#: modemlights/properties.c:498
+#: modemlights/properties.c:505
 msgid "Co_nnection command:"
 msgstr "Холбох команд:"
 
-#: modemlights/properties.c:522
+#: modemlights/properties.c:531
 msgid "_Disconnection command:"
 msgstr "Холболтыг салах команд:"
 
 #. confirmation checkbox
-#: modemlights/properties.c:542
+#: modemlights/properties.c:553
 msgid "Con_firm connection"
 msgstr "Холболтыг шалгах"
 
-#: modemlights/properties.c:561
+#: modemlights/properties.c:572
 msgid "Receive Data"
 msgstr "Өгөгдөл хүлээн авах"
 
-#: modemlights/properties.c:567
+#: modemlights/properties.c:578
 msgid "_Foreground:"
 msgstr "Техтийн өнгө:"
 
-#: modemlights/properties.c:572
+#: modemlights/properties.c:583
 msgid "Send Data"
 msgstr "Өгөгдөл илгээх"
 
-#: modemlights/properties.c:577
+#: modemlights/properties.c:588
 msgid "Foregroun_d:"
 msgstr "Текстийн өнгө:"
 
-#: modemlights/properties.c:579
+#: modemlights/properties.c:590
 msgid "Backg_round:"
 msgstr "_Дэвсгэр:"
 
-#: modemlights/properties.c:582
+#: modemlights/properties.c:593
 msgid "Connection Status"
 msgstr "Холболтын үзүүлэлт:"
 
-#: modemlights/properties.c:590
+#: modemlights/properties.c:601
 msgid "Co_nnected:"
 msgstr "Холбогдсон:"
 
-#: modemlights/properties.c:592
+#: modemlights/properties.c:603
 msgid "Disconnec_ted:"
 msgstr "Холболтыг салах команд::"
 
-#: modemlights/properties.c:595
+#: modemlights/properties.c:606
 msgid "C_onnecting:"
 msgstr "Холбож байна:"
 
-#: modemlights/properties.c:598
+#: modemlights/properties.c:609
 msgid "Text"
 msgstr "Текст"
 
-#: modemlights/properties.c:606
+#: modemlights/properties.c:617
 msgid "For_eground:"
 msgstr "текстийн өнгө :"
 
-#: modemlights/properties.c:608
+#: modemlights/properties.c:619
 msgid "Bac_kground:"
 msgstr "_Дэвсгэр:"
 
-#: modemlights/properties.c:610
+#: modemlights/properties.c:621
 msgid "O_utline"
 msgstr "Доогуур зураас"
 
-#: modemlights/properties.c:613 multiload/properties.c:528
+#: modemlights/properties.c:624 multiload/properties.c:534
 msgid "Colors"
 msgstr "Өнгөнүүд"
 
-#: modemlights/properties.c:622
+#: modemlights/properties.c:633
 msgid "Modem Options"
 msgstr "Модемын параметруу_д"
 
-#: modemlights/properties.c:631
+#: modemlights/properties.c:642
 msgid "_Device:"
 msgstr "_Төхөөрөмж:"
 
-#: modemlights/properties.c:655
+#: modemlights/properties.c:668
 msgid "_Lock file:"
 msgstr "Файлыг тү_гжих:"
 
-#: modemlights/properties.c:674
+#: modemlights/properties.c:689
 msgid "_Verify owner of lock file"
 msgstr "Өөрийн хаалттай файлуудаа шалгах"
 
 #. ISDN checkbox
-#: modemlights/properties.c:685
+#: modemlights/properties.c:700
 msgid "U_se ISDN"
 msgstr "ISDN Ашиглах"
 
-#: modemlights/properties.c:702
+#: modemlights/properties.c:717
 msgid "Advanced"
 msgstr "Нэмэлт"
 
@@ -4594,12 +4894,12 @@ msgstr "Индикатор систем ачаалж байна."
 
 #
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:2
-#: multiload/main.c:78
+#: multiload/main.c:80
 msgid "System Monitor"
 msgstr "Систем хэмжигч"
 
 #
-#: multiload/GNOME_MultiloadApplet.xml.h:2
+#: multiload/GNOME_MultiloadApplet.xml.h:3
 msgid "_Open System Monitor"
 msgstr "Систем хэмжигчийг _нээх"
 
@@ -4607,11 +4907,11 @@ msgstr "Систем хэмжигчийг _нээх"
 msgid "CPU Load"
 msgstr "Процессор ачаалж байна"
 
-#: multiload/loadavg.c:107 multiload/main.c:280
+#: multiload/loadavg.c:107 multiload/main.c:345
 msgid "Load Average"
 msgstr "Дундаж ачаалах "
 
-#: multiload/main.c:80
+#: multiload/main.c:82
 msgid ""
 "Released under the GNU General Public License.\n"
 "\n"
@@ -4623,27 +4923,27 @@ msgstr ""
 "Процессор ,шуурхай санах ой, файл солих болон сүлжээний гэмтэл зэргийг "
 "дэлгэцэнд дурслэхээр систем ачаалж байна."
 
-#: multiload/main.c:272 multiload/properties.c:553
+#: multiload/main.c:337 multiload/properties.c:559
 msgid "Processor"
 msgstr "Процессор"
 
-#: multiload/main.c:274 multiload/properties.c:560
+#: multiload/main.c:339 multiload/properties.c:566
 msgid "Memory"
 msgstr "Санах ой"
 
-#: multiload/main.c:276 multiload/properties.c:568
+#: multiload/main.c:341 multiload/properties.c:574
 msgid "Network"
 msgstr "Сүлжээ"
 
-#: multiload/main.c:278 multiload/properties.c:576
+#: multiload/main.c:343 multiload/properties.c:582
 msgid "Swap Space"
 msgstr "Суап хийх зай"
 
-#: multiload/main.c:282
+#: multiload/main.c:347
 msgid "Resource"
 msgstr "Ресурс"
 
-#: multiload/main.c:293
+#: multiload/main.c:358
 #, c-format
 msgid ""
 "%s:\n"
@@ -4766,115 +5066,115 @@ msgstr "Суап графикийн арын өнгө"
 msgid "Net Load"
 msgstr "Сүлжээ ачаалж байна"
 
-#: multiload/properties.c:326
+#: multiload/properties.c:332
 msgid "Monitored Resources"
 msgstr "Ресурсыг хэмжигдлээ"
 
-#: multiload/properties.c:351
+#: multiload/properties.c:357
 msgid "_Processor"
 msgstr "Процессор"
 
-#: multiload/properties.c:364
+#: multiload/properties.c:370
 msgid "_Memory"
 msgstr "Санах ой"
 
-#: multiload/properties.c:377
+#: multiload/properties.c:383
 msgid "_Network"
 msgstr "Сүлжээ"
 
-#: multiload/properties.c:390
+#: multiload/properties.c:396
 msgid "S_wap Space"
 msgstr "Файл соли_х"
 
-#: multiload/properties.c:403
+#: multiload/properties.c:409
 msgid "_Load"
 msgstr "_Ачаалах"
 
-#: multiload/properties.c:450
+#: multiload/properties.c:456
 msgid "System m_onitor width: "
 msgstr "_Систем хэмжигчийн өргөн"
 
-#: multiload/properties.c:452
+#: multiload/properties.c:458
 msgid "System m_onitor height: "
 msgstr "Систем хэмжигчийн өндөр"
 
-#: multiload/properties.c:491
+#: multiload/properties.c:497
 msgid "Sys_tem monitor update interval: "
 msgstr "Систем хэмжигчийн сэргээх хурд: "
 
-#: multiload/properties.c:517
+#: multiload/properties.c:523
 msgid "milliseconds"
 msgstr "миллисекунд"
 
-#: multiload/properties.c:555 multiload/properties.c:562
+#: multiload/properties.c:561 multiload/properties.c:568
 msgid "_User"
 msgstr "Хэрэглэгч"
 
-#: multiload/properties.c:556
+#: multiload/properties.c:562
 msgid "S_ystem"
 msgstr "Систем"
 
-#: multiload/properties.c:557
+#: multiload/properties.c:563
 msgid "N_ice"
 msgstr "Хандалт"
 
-#: multiload/properties.c:558
+#: multiload/properties.c:564
 msgid "I_dle"
 msgstr "Энгийн"
 
-#: multiload/properties.c:563
+#: multiload/properties.c:569
 msgid "Sh_ared"
 msgstr "Нийтийн"
 
-#: multiload/properties.c:564
+#: multiload/properties.c:570
 msgid "_Buffers"
 msgstr "Буфер"
 
-#: multiload/properties.c:565
+#: multiload/properties.c:571
 msgid "Cach_ed"
 msgstr "_Кешлэгдсэн"
 
-#: multiload/properties.c:566
+#: multiload/properties.c:572
 msgid "F_ree"
 msgstr "Чөлөөт"
 
-#: multiload/properties.c:570
+#: multiload/properties.c:576
 msgid "_SLIP"
 msgstr "S_LIP"
 
-#: multiload/properties.c:571
+#: multiload/properties.c:577
 msgid "PL_IP"
 msgstr "PL_IP"
 
-#: multiload/properties.c:572
+#: multiload/properties.c:578
 msgid "_Ethernet"
 msgstr "Et_hernet"
 
-#: multiload/properties.c:573
+#: multiload/properties.c:579
 msgid "Othe_r"
 msgstr "Буса_д"
 
-#: multiload/properties.c:574 multiload/properties.c:584
+#: multiload/properties.c:580 multiload/properties.c:590
 msgid "_Background"
 msgstr "Ар"
 
-#: multiload/properties.c:578
+#: multiload/properties.c:584
 msgid "_Used"
 msgstr "Ашиглагдсан"
 
-#: multiload/properties.c:579
+#: multiload/properties.c:585
 msgid "_Free"
 msgstr "Чөлөөт"
 
-#: multiload/properties.c:581
+#: multiload/properties.c:587
 msgid "Load"
 msgstr "Процессор ачаалж байна"
 
-#: multiload/properties.c:583
+#: multiload/properties.c:589
 msgid "_Average"
 msgstr "Дундаж ачаала_х"
 
-#: multiload/properties.c:604
+#: multiload/properties.c:613
 msgid "System Monitor Preferences"
 msgstr "Систем хэмжигчийн тохиргоо"
 
@@ -4887,8 +5187,8 @@ msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "Дэлгэцэн дэхь наалттай тэмдэглэгээг үүсгэх, харах, зохицуулах"
 
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:3
-#: stickynotes/stickynotes_applet.c:338
-#: stickynotes/stickynotes_applet_callbacks.c:193
+#: stickynotes/stickynotes_applet.c:315 stickynotes/stickynotes_applet.c:433
+#: stickynotes/stickynotes_applet_callbacks.c:240
 msgid "Sticky Notes"
 msgstr "Наалттай тэмдэглэгээ"
 
@@ -4913,17 +5213,13 @@ msgstr "_Шинэ тэмдэглэгээ"
 msgid "_Show Notes"
 msgstr "Харилцах цонхуудыг _үзүүлэх"
 
-#: stickynotes/stickynotes.c:314
+#: stickynotes/stickynotes.c:334
 msgid "Locked note"
 msgstr "Түгжигдсэн тэмдэглэгээ"
 
-#: stickynotes/stickynotes.c:319
+#: stickynotes/stickynotes.c:339
 msgid "Unlocked note"
 msgstr "Түгжигдээгүй тэмдэглэгээ"
-
-#: stickynotes/stickynotes.glade.h:3
-msgid "<b>Behavior</b>"
-msgstr "<b>Үйл явц</b>"
 
 #: stickynotes/stickynotes.glade.h:4
 msgid "<b>Default Note Properties</b>"
@@ -5233,7 +5529,7 @@ msgstr "Үндсэн системийн өнгийг ашиглах эсэх"
 msgid "Whether to use the default system font"
 msgstr "Үндсэн системийн фонтийг ашиглах эсэх"
 
-#: stickynotes/stickynotes_applet.c:338
+#: stickynotes/stickynotes_applet.c:433
 #, fuzzy, c-format
 msgid ""
 "%s\n"
@@ -5248,11 +5544,11 @@ msgstr[1] ""
 "%s:\n"
 "Ашиглалтанд %d%%"
 
-#: stickynotes/stickynotes_applet_callbacks.c:195
+#: stickynotes/stickynotes_applet_callbacks.c:242
 msgid "(c) 2002-2003 Loban A Rahman"
 msgstr "(c) 2002-2003 Loban A Rahman"
 
-#: stickynotes/stickynotes_applet_callbacks.c:196
+#: stickynotes/stickynotes_applet_callbacks.c:243
 msgid "Sticky Notes for the Gnome Desktop Environment"
 msgstr ""
 
@@ -5261,26 +5557,31 @@ msgid "Monitor the quality of a wireless network link"
 msgstr "Утасгүй сүлжээний чанарыг үзүүлэх"
 
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:3
-#: wireless/wireless-applet.c:575
+#: wireless/wireless-applet.c:588 wireless/wireless-applet.c:835
 msgid "Wireless Link Monitor"
 msgstr "Утасгүй сүлжээ "
 
-#: wireless/wireless-applet.c:358 wireless/wireless-applet.c:495
+#: wireless/wireless-applet.c:365 wireless/wireless-applet.c:502
 msgid "No Wireless Devices"
 msgstr "Утасгүй төхөөрөмжүүд алга"
 
-#: wireless/wireless-applet.c:360
+#: wireless/wireless-applet.c:367
 msgid ""
 "There doesn't seem to be any wireless devices configured on your system.\n"
 "Please verify your configuration if you think this is incorrect."
 msgstr "Магадгүй, таны системд аль нэг утасгүй төхөөрөмж тохироогүй байна."
 
-#: wireless/wireless-applet.c:577
+#: wireless/wireless-applet.c:590
 msgid "(C) 2001, 2002 Free Software Foundation "
 msgstr "(C) 2001, 2002 Free Software Foundation "
 
-#: wireless/wireless-applet.c:578
+#: wireless/wireless-applet.c:591
 msgid "This utility shows the status of a wireless link."
+msgstr "Энэ хэрэгсэл нь утасгүй сүлжээний үзүүлэлтийг харуулна."
+
+#: wireless/wireless-applet.c:836
+#, fuzzy
+msgid "This utility shows the status of a wireless link"
 msgstr "Энэ хэрэгсэл нь утасгүй сүлжээний үзүүлэлтийг харуулна."
 
 #: wireless/wireless-applet.glade.h:1
@@ -5294,6 +5595,26 @@ msgstr "Утасгүй сүлжээний тохиргоо"
 #: wireless/wireless-applet.glade.h:3
 msgid "_Monitored device:"
 msgstr "_Харагдсан төхөөрөмж: "
+
+#~ msgid ""
+#~ "An error occured while launching the Suspend command, the command "
+#~ "returned \"%d\"\n"
+#~ "Please try to correct this error"
+#~ msgstr ""
+#~ "Амраах горимийн командыг биелүүлэхэд алдаа гарлаа \"%d\"-буцсан\n"
+#~ "Энэ алдааг засахыг ордоно уу"
+
+#~ msgid "Add a palette..."
+#~ msgstr "палетаар нэмэх"
+
+#~ msgid "Portuglese"
+#~ msgstr "Португаль"
+
+#~ msgid "Viet_namese"
+#~ msgstr "Вьетнам"
+
+#~ msgid "%d unread/ %d messages"
+#~ msgstr "%d уншаагүй/ %d зурвас"
 
 #~ msgid "Applet layout"
 #~ msgstr "Апплетийн дараалал"
@@ -5441,10 +5762,6 @@ msgstr "_Харагдсан төхөөрөмж: "
 
 #~ msgid "_Other"
 #~ msgstr "Бусад "
-
-#, fuzzy
-#~ msgid "Background color of title"
-#~ msgstr "Арын өнгө:"
 
 #~ msgid ""
 #~ "The images necessary to run the wireless monitor are missing.\n"
@@ -6108,9 +6425,6 @@ msgstr "_Харагдсан төхөөрөмж: "
 #~ msgid "..."
 #~ msgstr "..."
 
-#~ msgid "_Depth level:"
-#~ msgstr "Оролтын түвшин:"
-
 #~ msgid "Path specified is currently not a valid directory."
 #~ msgstr "Энэ замд тохирох хавтас одоогоор байхгүй байна."
 
@@ -6140,9 +6454,6 @@ msgstr "_Харагдсан төхөөрөмж: "
 
 #~ msgid "Preferences"
 #~ msgstr "Тохиргоо"
-
-#~ msgid "Menu Bar Preferences"
-#~ msgstr "Цэсийн мөрийн тохиргоо"
 
 #~ msgid "_Applications Menu"
 #~ msgstr "Програмын цэс"
@@ -6511,4 +6822,3 @@ msgstr "_Харагдсан төхөөрөмж: "
 
 #~ msgid "Name:"
 #~ msgstr "Название:"
-

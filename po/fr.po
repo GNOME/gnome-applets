@@ -10,14 +10,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 2.5.6\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-02-27 11:50+0100\n"
+"POT-Creation-Date: 2004-03-17 11:48+1300\n"
 "PO-Revision-Date: 2004-02-27 11:37+0100\n"
 "Last-Translator: Christophe Merlet (RedFox) <redfox@redfoxcenter.org>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Report-Msgid-Bugs-To: \n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 
 #: accessx-status/GNOME_AccessxApplet.xml.h:1
@@ -61,7 +61,7 @@ msgid "AccessX Status Applet Factory"
 msgstr "Fabrique pour l'applet d'état AccessX"
 
 #: accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:2
-#: accessx-status/applet.c:1249
+#: accessx-status/applet.c:1245
 msgid "Keyboard Accessibility Status"
 msgstr "État d'accessibilité du clavier"
 
@@ -86,7 +86,7 @@ msgstr "Utilitaire"
 
 #: accessx-status/applet.c:134 battstat/battstat_applet.c:898
 #: cdplayer/cdplayer.c:603 charpick/charpick.c:556 drivemount/drivemount.c:553
-#: geyes/geyes.c:204 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:564
+#: geyes/geyes.c:202 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:570
 #: gtik/gtik.c:717 gweather/gweather-about.c:47 mailcheck/mailcheck.c:2461
 #: mini-commander/src/about.c:50 mixer/mixer.c:1332
 #: modemlights/modemlights.c:115 multiload/main.c:60
@@ -100,8 +100,8 @@ msgstr ""
 "Contributeur :\n"
 "Christophe Fergeau <teuf@users.sourceforge.net>"
 
-#: accessx-status/applet.c:155 accessx-status/applet.c:985
-#: accessx-status/applet.c:1083 accessx-status/applet.c:1252
+#: accessx-status/applet.c:155 accessx-status/applet.c:983
+#: accessx-status/applet.c:1081 accessx-status/applet.c:1248
 msgid "AccessX Status"
 msgstr "État AccessX"
 
@@ -124,23 +124,23 @@ msgid "There was an error launching the keyboard capplet : %s"
 msgstr "Il y a eu une erreur au lancement de la capplet clavier : %s"
 
 #. Note to translators: the first letter of the alphabet, not the indefinite article
-#: accessx-status/applet.c:476 accessx-status/applet.c:514
+#: accessx-status/applet.c:474 accessx-status/applet.c:512
 msgid "a"
 msgstr "a"
 
-#: accessx-status/applet.c:986 accessx-status/applet.c:1084
+#: accessx-status/applet.c:984 accessx-status/applet.c:1082
 msgid "Shows keyboard status when accessibility features are used."
 msgstr ""
 "Affiche l'état du clavier lorsque les fonctionnalités d'accessibilité sont "
 "utilisées."
 
-#: accessx-status/applet.c:1254
+#: accessx-status/applet.c:1250
 msgid "Displays current state of keyboard accessibility features"
 msgstr "Affiche l'état courant des fonctionnalités d'accessibilité du clavier"
 
 #. The long name of the applet in the About dialog.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:919 battstat/battstat_applet.c:1673
+#: battstat/battstat_applet.c:919 battstat/battstat_applet.c:1671
 msgid "Battery Charge Monitor"
 msgstr "Moniteur de charge de batterie"
 
@@ -149,7 +149,7 @@ msgid "Battstat Factory"
 msgstr "Fabrique pour Battstat"
 
 #: battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: battstat/battstat_applet.c:1674
+#: battstat/battstat_applet.c:1672
 msgid "Monitor a laptop's remaining power"
 msgstr "Surveille la puissance restante d'un portable"
 
@@ -322,7 +322,6 @@ msgstr ""
 #. when the computer is using battery power.
 #: battstat/battstat_applet.c:510 battstat/battstat_applet.c:1052
 #: battstat/battstat_applet.c:1141
-#, c-format
 msgid "System is running on battery power"
 msgstr "Le système utilise sur sa batterie"
 
@@ -330,20 +329,15 @@ msgstr "Le système utilise sur sa batterie"
 #. when the computer is using AC power.
 #: battstat/battstat_applet.c:513 battstat/battstat_applet.c:1058
 #: battstat/battstat_applet.c:1147
-#, c-format
 msgid "System is running on AC power"
 msgstr "Le système utilise le courant du secteur"
 
 #: battstat/battstat_applet.c:527 wireless/wireless-applet.c:146
-#, c-format
 msgid "N/A"
 msgstr "N/D"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
-#. This string will display as a tooltip over the status frame
-#. when the computer is using battery power and the battery meter
-#. and percent meter is hidden by the user.
 #: battstat/battstat_applet.c:651 battstat/battstat_applet.c:1032
 #, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
@@ -351,9 +345,6 @@ msgstr "Le système fonctionne sur la batterie. Batterie : %d%% (%s)"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
-#. This string will display as a tooltip over the status frame
-#. when the computer is using AC power and the battery meter
-#. and percent meter is hidden by the user.
 #: battstat/battstat_applet.c:658 battstat/battstat_applet.c:1039
 #, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
@@ -364,7 +355,6 @@ msgstr "Le système fonctionne sur le secteur. Batterie : %d%% (%s)"
 #. power and the battery isn't present. Not a
 #. possible combination, I guess... :)
 #: battstat/battstat_applet.c:669
-#, c-format
 msgid "System is running on battery power. Battery: Not present"
 msgstr "Le système fonctionne sur la batterie. Batterie : Non présente"
 
@@ -372,7 +362,6 @@ msgstr "Le système fonctionne sur la batterie. Batterie : Non présente"
 #. battery frame when the computer is using AC
 #. power and the battery isn't present.
 #: battstat/battstat_applet.c:675
-#, c-format
 msgid "System is running on AC power. Battery: Not present"
 msgstr "Le système fonctionne sur le secteur. Batterie : Non présente"
 
@@ -387,10 +376,10 @@ msgstr "Batterie : %d%% (%s)"
 #. Displayed as a tooltip over the battery meter when no
 #. battery is present.
 #: battstat/battstat_applet.c:691
-#, c-format
 msgid "Battery: Not present"
 msgstr "Batterie : absente"
 
+#. Displayed if the APM device couldn't be opened. (Used under *BSD)
 #: battstat/battstat_applet.c:789
 msgid ""
 "Can't open the APM device!\n"
@@ -402,6 +391,7 @@ msgstr ""
 "\n"
 "Vérifiez que vous avez les droits de lecture sur ce périphérique."
 
+#. Displayed if the APM system is disabled (Used under *BSD)
 #: battstat/battstat_applet.c:798
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
@@ -454,7 +444,7 @@ msgid "This utility shows the status of your laptop battery."
 msgstr ""
 "Cet utilitaire affiche l'état de la batterie de votre ordinateur portable."
 
-#: battstat/battstat_applet.c:1599
+#: battstat/battstat_applet.c:1597
 msgid ""
 "Can't access ACPI events in /var/run/acpid.socket! Make sure the ACPI "
 "subsystem is working and the acpid daemon is running."
@@ -569,7 +559,7 @@ msgstr "_Jaune :"
 
 #: battstat/properties.c:297 drivemount/drivemount.c:510
 #: drivemount/properties.c:604 mailcheck/mailcheck.c:2314
-#: mailcheck/mailcheck.c:2569 mini-commander/src/preferences.c:393
+#: mailcheck/mailcheck.c:2602 mini-commander/src/preferences.c:393
 #: mixer/mixer.c:1445 stickynotes/stickynotes_applet_callbacks.c:207
 #: stickynotes/stickynotes_applet_callbacks.c:371
 #: wireless/wireless-applet.c:542 wireless/wireless-applet.c:626
@@ -889,7 +879,7 @@ msgid "Cannot browse device"
 msgstr "Ne peut parcourir le périphérique"
 
 #: drivemount/drivemount.c:516 drivemount/properties.c:610
-#: mailcheck/mailcheck.c:2320 mailcheck/mailcheck.c:2575
+#: mailcheck/mailcheck.c:2320 mailcheck/mailcheck.c:2608
 msgid "Error displaying help"
 msgstr "Erreur lors de l'affichage de l'aide"
 
@@ -1026,8 +1016,8 @@ msgstr "Deux globes oculaires pour votre tableau de bord"
 msgid "Amusements"
 msgstr "Divertissement"
 
-#: geyes/GNOME_GeyesApplet.server.in.in.h:3 geyes/geyes.c:224
-#: geyes/geyes.c:454 geyes/geyes.c:456
+#: geyes/GNOME_GeyesApplet.server.in.in.h:3 geyes/geyes.c:222
+#: geyes/geyes.c:452 geyes/geyes.c:454
 msgid "Geyes"
 msgstr "Geyes"
 
@@ -1035,17 +1025,17 @@ msgstr "Geyes"
 msgid "Geyes Applet Factory"
 msgstr "Fabrique pour l'applet Geyes"
 
-#: geyes/geyes.c:225
+#: geyes/geyes.c:223
 msgid "Copyright (C) 1999 Dave Camp"
 msgstr "Copyright © 1999 Dave Camp"
 
-#: geyes/geyes.c:226
+#: geyes/geyes.c:224
 msgid "A goofy little xeyes clone for the GNOME panel."
 msgstr ""
 "Un clone maladroit de xeyes pour le tableau de bord GNOME.\n"
 "Distribué sous les termes de la Licence Publique Générale GNU."
 
-#: geyes/geyes.c:457
+#: geyes/geyes.c:455
 msgid "The eyes look in the direction of the mouse pointer"
 msgstr "Les yeux regardent dans la direction de votre pointeur de souris"
 
@@ -2516,7 +2506,7 @@ msgid "GNOME keyboard layout indicator"
 msgstr "Indicateur d'agencements clavier GNOME"
 
 #: gswitchit/GNOME_KeyboardApplet.server.in.in.h:3
-#: gswitchit/gswitchit-applet.c:569
+#: gswitchit/gswitchit-applet.c:575
 msgid "Keyboard Indicator"
 msgstr "Indicateur de claviers"
 
@@ -2524,24 +2514,24 @@ msgstr "Indicateur de claviers"
 msgid "Keyboard applet factory"
 msgstr "Fabrique de l'applet Clavier"
 
-#: gswitchit/gswitchit-applet.c:107
+#: gswitchit/gswitchit-applet.c:110
 #, c-format
 msgid "Keyboard Indicator (%s)"
 msgstr "Indicateur de claviers (%s)"
 
-#: gswitchit/gswitchit-applet.c:572
+#: gswitchit/gswitchit-applet.c:578
 msgid "Copyright (c) Sergey V. Oudaltsov 1999-2004"
 msgstr "Copyright © Sergey V. Oudaltsov 1999-2004"
 
-#: gswitchit/gswitchit-applet.c:574
+#: gswitchit/gswitchit-applet.c:580
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "Applet GNOME d'indication d'agencements clavier"
 
-#: gswitchit/gswitchit-applet.c:728
+#: gswitchit/gswitchit-applet.c:734
 msgid "XKB initialization error"
 msgstr "Erreur d'initialisation de XKB"
 
-#: gswitchit/gswitchit-applet.c:736
+#: gswitchit/gswitchit-applet.c:742
 msgid "Error loading XKB configuration registry"
 msgstr "Erreur de chargement du registre de configuration de XKB"
 
@@ -2734,7 +2724,7 @@ msgstr "_Mettre à jour"
 msgid "Could not retrieve the stock data."
 msgstr "Ne peut récupérer les données boursières."
 
-#: gtik/gtik.c:307 gweather/gweather-applet.c:419
+#: gtik/gtik.c:307 gweather/gweather-applet.c:426
 msgid "Updating..."
 msgstr "Mise à jour..."
 
@@ -3071,7 +3061,7 @@ msgstr ""
 "\n"
 "Une applet pour surveiller les conditions météo locales"
 
-#: gweather/gweather-applet.c:299
+#: gweather/gweather-applet.c:306
 msgid "GNOME Weather"
 msgstr "Applet GNOME Météo"
 
@@ -3377,9 +3367,9 @@ msgstr "Nord-Ouest"
 msgid "North - Northwest"
 msgstr "Nord - Nord-Ouest"
 
-#: gweather/weather.c:143 gweather/weather.c:1971 gweather/weather.c:1983
-#: gweather/weather.c:1995 gweather/weather.c:2007 gweather/weather.c:2025
-#: gweather/weather.c:2037
+#: gweather/weather.c:143 gweather/weather.c:1967 gweather/weather.c:1979
+#: gweather/weather.c:1991 gweather/weather.c:2003 gweather/weather.c:2021
+#: gweather/weather.c:2033
 msgid "Unknown"
 msgstr "Inconnu"
 
@@ -3698,7 +3688,7 @@ msgstr "Tourbillons de poussière"
 msgid "Dust whirls in the vicinity"
 msgstr "Tourbillons de poussière dans les environs"
 
-#: gweather/weather.c:836 gweather/weather.c:876 gweather/weather.c:1597
+#: gweather/weather.c:836 gweather/weather.c:876 gweather/weather.c:1593
 msgid "Failed to get METAR data.\n"
 msgstr "Impossible d'obtenir les données METAR.\n"
 
@@ -3706,19 +3696,19 @@ msgstr "Impossible d'obtenir les données METAR.\n"
 msgid "WeatherInfo missing location"
 msgstr "Emplacement de WeatherInfo manquant"
 
-#: gweather/weather.c:1935
+#: gweather/weather.c:1931
 msgid "%a, %b %d / %H:%M"
 msgstr "%a %d %b / %H:%M"
 
-#: gweather/weather.c:1939
+#: gweather/weather.c:1935
 msgid "Unknown observation time"
 msgstr "Date d'observation inconnue"
 
-#: gweather/weather.c:2009
+#: gweather/weather.c:2005
 msgid "Calm"
 msgstr "Calme"
 
-#: gweather/weather.c:2082
+#: gweather/weather.c:2078
 msgid "Retrieval failed"
 msgstr "La récupération a échoué"
 
@@ -3822,7 +3812,7 @@ msgid "No mail."
 msgstr "Aucun message."
 
 #: mailcheck/mailcheck.c:1564 mailcheck/mailcheck.c:1565
-#: mailcheck/mailcheck.c:2845 mailcheck/mailcheck.c:2846
+#: mailcheck/mailcheck.c:2886 mailcheck/mailcheck.c:2887
 msgid "Status not updated"
 msgstr "État non mis à jour"
 
@@ -3953,15 +3943,15 @@ msgstr ""
 "Le moniteur de boîte de réception vous alerte lorsque de nouveaux messages "
 "arrive dans votre boîte à lettres"
 
-#: mailcheck/mailcheck.c:2805
+#: mailcheck/mailcheck.c:2839
 msgid "Text only"
 msgstr "Seulement du texte"
 
-#: mailcheck/mailcheck.c:2847
+#: mailcheck/mailcheck.c:2888
 msgid "Mail check"
 msgstr "Vérification du courrier"
 
-#: mailcheck/mailcheck.c:2848
+#: mailcheck/mailcheck.c:2889
 msgid "Mail check notifies you when new mail arrives in your mailbox"
 msgstr ""
 "Le vérificateur de courrier vous prévient lorsque de nouveaux messages "
@@ -4172,14 +4162,12 @@ msgid "Set default list value for %s\n"
 msgstr "Définit la liste de valeur par défaut pour %s\n"
 
 #: mini-commander/src/mc-install-default-macros.c:117
-#, c-format
 msgid "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL is set, not installing schemas\n"
 msgstr ""
 "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL est définit, n'installe pas les "
 "schémas\n"
 
 #: mini-commander/src/mc-install-default-macros.c:125
-#, c-format
 msgid "Must set the GCONF_CONFIG_SOURCE environment variable\n"
 msgstr "Vous devez définir la vavriable d'environnement GCONF_CONFIG_SOURCE\n"
 
@@ -4967,7 +4955,7 @@ msgstr "_Ouvrir le moniteur système"
 msgid "CPU Load"
 msgstr "Charge processeur"
 
-#: multiload/loadavg.c:107 multiload/main.c:347
+#: multiload/loadavg.c:107 multiload/main.c:345
 msgid "Load Average"
 msgstr "Charge moyenne"
 
@@ -4983,27 +4971,27 @@ msgstr ""
 "Un moniteur de charge système capable d'afficher des graphiques pour le CPU, "
 "la RAM, l'utilisation du fichier d'échanges, et le trafic réseau."
 
-#: multiload/main.c:339 multiload/properties.c:559
+#: multiload/main.c:337 multiload/properties.c:559
 msgid "Processor"
 msgstr "Processeur"
 
-#: multiload/main.c:341 multiload/properties.c:566
+#: multiload/main.c:339 multiload/properties.c:566
 msgid "Memory"
 msgstr "Mémoire"
 
-#: multiload/main.c:343 multiload/properties.c:574
+#: multiload/main.c:341 multiload/properties.c:574
 msgid "Network"
 msgstr "Réseau"
 
-#: multiload/main.c:345 multiload/properties.c:582
+#: multiload/main.c:343 multiload/properties.c:582
 msgid "Swap Space"
 msgstr "Fichier d'échanges"
 
-#: multiload/main.c:349
+#: multiload/main.c:347
 msgid "Resource"
 msgstr "Ressource"
 
-#: multiload/main.c:360
+#: multiload/main.c:358
 #, c-format
 msgid ""
 "%s:\n"
@@ -5250,7 +5238,7 @@ msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "Crée, affiche et gère les pense-bêtes du bureau"
 
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:3
-#: stickynotes/stickynotes_applet.c:307 stickynotes/stickynotes_applet.c:419
+#: stickynotes/stickynotes_applet.c:315 stickynotes/stickynotes_applet.c:433
 #: stickynotes/stickynotes_applet_callbacks.c:240
 msgid "Sticky Notes"
 msgstr "Pense-bêtes"
@@ -5613,7 +5601,7 @@ msgstr "Si il faut utiliser la couleur par défaut du système"
 msgid "Whether to use the default system font"
 msgstr "Si il faut utiliser la police par défaut du système"
 
-#: stickynotes/stickynotes_applet.c:419
+#: stickynotes/stickynotes_applet.c:433
 #, c-format
 msgid ""
 "%s\n"
@@ -5641,7 +5629,7 @@ msgid "Monitor the quality of a wireless network link"
 msgstr "Surveille la qualité d'un lien de réseau sans fil"
 
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:3
-#: wireless/wireless-applet.c:588 wireless/wireless-applet.c:837
+#: wireless/wireless-applet.c:588 wireless/wireless-applet.c:835
 msgid "Wireless Link Monitor"
 msgstr "Moniteur de réseau sans fil"
 
@@ -5666,7 +5654,7 @@ msgstr "© 2001, 2002 Free Software Foundation"
 msgid "This utility shows the status of a wireless link."
 msgstr "Cet utilitaire affiche l'état d'un lien de réseau sans fil."
 
-#: wireless/wireless-applet.c:838
+#: wireless/wireless-applet.c:836
 msgid "This utility shows the status of a wireless link"
 msgstr "Cet utilitaire affiche l'état d'un lien de réseau sans fil"
 

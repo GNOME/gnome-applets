@@ -9,14 +9,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-02-29 15:19+0100\n"
+"POT-Creation-Date: 2004-03-17 11:48+1300\n"
 "PO-Revision-Date: 2004-03-01 00:41+0800\n"
 "Last-Translator: Funda Wang <fundawang@linux.net.cn>\n"
 "Language-Team: zh_CN <i18n-translation@lists.linux.net.cn>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Report-Msgid-Bugs-To: \n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 # battstat/GNOME_BattstatApplet.xml.h:1 cdplayer/GNOME_CDPlayerApplet.xml.h:1
@@ -76,7 +76,7 @@ msgid "AccessX Status Applet Factory"
 msgstr "AccessX 状态小程序工厂"
 
 #: accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:2
-#: accessx-status/applet.c:1247
+#: accessx-status/applet.c:1245
 msgid "Keyboard Accessibility Status"
 msgstr "键盘辅助功能状态"
 
@@ -108,7 +108,7 @@ msgstr "工具"
 
 #: accessx-status/applet.c:134 battstat/battstat_applet.c:898
 #: cdplayer/cdplayer.c:603 charpick/charpick.c:556 drivemount/drivemount.c:553
-#: geyes/geyes.c:202 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:562
+#: geyes/geyes.c:202 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:570
 #: gtik/gtik.c:717 gweather/gweather-about.c:47 mailcheck/mailcheck.c:2461
 #: mini-commander/src/about.c:50 mixer/mixer.c:1332
 #: modemlights/modemlights.c:115 multiload/main.c:60
@@ -117,8 +117,8 @@ msgstr "工具"
 msgid "translator_credits"
 msgstr "开源软件国际化简体中文组(http://i18n.linux.net.cn)"
 
-#: accessx-status/applet.c:155 accessx-status/applet.c:985
-#: accessx-status/applet.c:1083 accessx-status/applet.c:1250
+#: accessx-status/applet.c:155 accessx-status/applet.c:983
+#: accessx-status/applet.c:1081 accessx-status/applet.c:1248
 msgid "AccessX Status"
 msgstr "AccessX 状态"
 
@@ -141,15 +141,15 @@ msgid "There was an error launching the keyboard capplet : %s"
 msgstr "调用键盘小程序时出错：%s"
 
 #. Note to translators: the first letter of the alphabet, not the indefinite article
-#: accessx-status/applet.c:476 accessx-status/applet.c:514
+#: accessx-status/applet.c:474 accessx-status/applet.c:512
 msgid "a"
 msgstr "a"
 
-#: accessx-status/applet.c:986 accessx-status/applet.c:1084
+#: accessx-status/applet.c:984 accessx-status/applet.c:1082
 msgid "Shows keyboard status when accessibility features are used."
 msgstr "显示使用辅助功能时键盘的状态。"
 
-#: accessx-status/applet.c:1252
+#: accessx-status/applet.c:1250
 msgid "Displays current state of keyboard accessibility features"
 msgstr "显示键盘辅助功能特性的当前状态"
 
@@ -350,7 +350,6 @@ msgstr ""
 #. when the computer is using battery power.
 #: battstat/battstat_applet.c:510 battstat/battstat_applet.c:1052
 #: battstat/battstat_applet.c:1141
-#, c-format
 msgid "System is running on battery power"
 msgstr "系统正使用电池运行"
 
@@ -360,22 +359,17 @@ msgstr "系统正使用电池运行"
 #. when the computer is using AC power.
 #: battstat/battstat_applet.c:513 battstat/battstat_applet.c:1058
 #: battstat/battstat_applet.c:1147
-#, c-format
 msgid "System is running on AC power"
 msgstr "系统正使用交流电源运行"
 
 # battstat/battstat_applet.c:472
 #: battstat/battstat_applet.c:527 wireless/wireless-applet.c:146
-#, c-format
 msgid "N/A"
 msgstr "不可用"
 
 # battstat/battstat_applet.c:596 battstat/battstat_applet.c:909
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
-#. This string will display as a tooltip over the status frame
-#. when the computer is using battery power and the battery meter
-#. and percent meter is hidden by the user.
 #: battstat/battstat_applet.c:651 battstat/battstat_applet.c:1032
 #, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
@@ -384,9 +378,6 @@ msgstr "系统正使用电池运行。电池：%d%% (%s)"
 # battstat/battstat_applet.c:603 battstat/battstat_applet.c:916
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
-#. This string will display as a tooltip over the status frame
-#. when the computer is using AC power and the battery meter
-#. and percent meter is hidden by the user.
 #: battstat/battstat_applet.c:658 battstat/battstat_applet.c:1039
 #, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
@@ -398,7 +389,6 @@ msgstr "系统正使用交流电源运行。电池：%d%% (%s)"
 #. power and the battery isn't present. Not a
 #. possible combination, I guess... :)
 #: battstat/battstat_applet.c:669
-#, c-format
 msgid "System is running on battery power. Battery: Not present"
 msgstr "系统正使用电池运行。电池：不存在"
 
@@ -407,7 +397,6 @@ msgstr "系统正使用电池运行。电池：不存在"
 #. battery frame when the computer is using AC
 #. power and the battery isn't present.
 #: battstat/battstat_applet.c:675
-#, c-format
 msgid "System is running on AC power. Battery: Not present"
 msgstr "系统正使用交流电源运行。电池：不存在"
 
@@ -424,7 +413,6 @@ msgstr "电池：%d%% (%s)"
 #. Displayed as a tooltip over the battery meter when no
 #. battery is present.
 #: battstat/battstat_applet.c:691
-#, c-format
 msgid "Battery: Not present"
 msgstr "电池：不存在"
 
@@ -502,8 +490,8 @@ msgid ""
 "Can't access ACPI events in /var/run/acpid.socket! Make sure the ACPI "
 "subsystem is working and the acpid daemon is running."
 msgstr ""
-"无法访问 /var/run/acpid.socket 中的 ACPI 事件！请确定 ACPI 子系统"
-"工作正常，且 acpid 守护程序正在运行。"
+"无法访问 /var/run/acpid.socket 中的 ACPI 事件！请确定 ACPI 子系统工作正常，"
+"且 acpid 守护程序正在运行。"
 
 #: battstat/battstat_applet.glade.h:1 gswitchit/gswitchit-properties.glade.h:1
 #: mini-commander/src/mini-commander.glade.h:1
@@ -2658,7 +2646,7 @@ msgid "GNOME keyboard layout indicator"
 msgstr "GNOME 键盘布局标识器"
 
 #: gswitchit/GNOME_KeyboardApplet.server.in.in.h:3
-#: gswitchit/gswitchit-applet.c:567
+#: gswitchit/gswitchit-applet.c:575
 msgid "Keyboard Indicator"
 msgstr "键盘标识器"
 
@@ -2668,25 +2656,25 @@ msgid "Keyboard applet factory"
 msgstr "键盘小程序工厂"
 
 # gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:3
-#: gswitchit/gswitchit-applet.c:107
+#: gswitchit/gswitchit-applet.c:110
 #, c-format
 msgid "Keyboard Indicator (%s)"
 msgstr "键盘标识器(%s)"
 
-#: gswitchit/gswitchit-applet.c:570
+#: gswitchit/gswitchit-applet.c:578
 msgid "Copyright (c) Sergey V. Oudaltsov 1999-2004"
 msgstr "版权 (c) Sergey V. Oudaltsov 1999-2004"
 
 # gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:3
-#: gswitchit/gswitchit-applet.c:572
+#: gswitchit/gswitchit-applet.c:580
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "GNOME 的键盘布局标识器小程序"
 
-#: gswitchit/gswitchit-applet.c:726
+#: gswitchit/gswitchit-applet.c:734
 msgid "XKB initialization error"
 msgstr "XKB 初始化错误"
 
-#: gswitchit/gswitchit-applet.c:734
+#: gswitchit/gswitchit-applet.c:742
 msgid "Error loading XKB configuration registry"
 msgstr "装入 XKB 配置注册表错误"
 
@@ -2841,8 +2829,7 @@ msgstr "显示布局名称而非群组名称"
 msgid ""
 "Show layout names instead of group names (only for versions of XFree "
 "supporting multiple layouts)"
-msgstr ""
-"显示布局名称而非群组名称(仅对支持多布局的 XFree 版本而言)"
+msgstr "显示布局名称而非群组名称(仅对支持多布局的 XFree 版本而言)"
 
 # gtik/GNOME_GtikApplet.server.in.h:1
 # gweather/GNOME_GWeatherApplet_Factory.server.in.h:1
@@ -3569,9 +3556,9 @@ msgstr "西北"
 msgid "North - Northwest"
 msgstr "西北偏北"
 
-#: gweather/weather.c:143 gweather/weather.c:1971 gweather/weather.c:1983
-#: gweather/weather.c:1995 gweather/weather.c:2007 gweather/weather.c:2025
-#: gweather/weather.c:2037
+#: gweather/weather.c:143 gweather/weather.c:1967 gweather/weather.c:1979
+#: gweather/weather.c:1991 gweather/weather.c:2003 gweather/weather.c:2021
+#: gweather/weather.c:2033
 msgid "Unknown"
 msgstr "未知"
 
@@ -3912,7 +3899,7 @@ msgstr "尘卷风"
 msgid "Dust whirls in the vicinity"
 msgstr "邻近有尘卷风"
 
-#: gweather/weather.c:836 gweather/weather.c:876 gweather/weather.c:1597
+#: gweather/weather.c:836 gweather/weather.c:876 gweather/weather.c:1593
 msgid "Failed to get METAR data.\n"
 msgstr "获取 METAR 数据失败。\n"
 
@@ -3920,20 +3907,20 @@ msgstr "获取 METAR 数据失败。\n"
 msgid "WeatherInfo missing location"
 msgstr "天气信息缺少位置"
 
-#: gweather/weather.c:1935
+#: gweather/weather.c:1931
 msgid "%a, %b %d / %H:%M"
 msgstr "%-m月%-d日%A %H:%M"
 
-#: gweather/weather.c:1939
+#: gweather/weather.c:1935
 msgid "Unknown observation time"
 msgstr "未知的观测时间"
 
 # gweather/weather.c:1803
-#: gweather/weather.c:2009
+#: gweather/weather.c:2005
 msgid "Calm"
 msgstr "平静"
 
-#: gweather/weather.c:2082
+#: gweather/weather.c:2078
 msgid "Retrieval failed"
 msgstr "获取失败"
 
@@ -4337,8 +4324,8 @@ msgid ""
 msgstr ""
 "本 GNOME 小程序为面板添加了一个命令行。它有命令补齐、命令历史、可修改的宏。\n"
 "\n"
-"\\ 本程序是自由软件；您可以依照由自由软件基金会出版的 GNU 通用公共许可证的条款发"
-"行以及/或者修改它；您可以采用该许可证的第二版或更新的版本。"
+"\\ 本程序是自由软件；您可以依照由自由软件基金会出版的 GNU 通用公共许可证的条"
+"款发行以及/或者修改它；您可以采用该许可证的第二版或更新的版本。"
 
 #: mini-commander/src/command_line.c:315
 msgid "No items in history"
@@ -4374,12 +4361,10 @@ msgid "Set default list value for %s\n"
 msgstr "设置 %s 的默认列表值\n"
 
 #: mini-commander/src/mc-install-default-macros.c:117
-#, c-format
 msgid "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL is set, not installing schemas\n"
 msgstr "已设置 GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL，将不安装模式\n"
 
 #: mini-commander/src/mc-install-default-macros.c:125
-#, c-format
 msgid "Must set the GCONF_CONFIG_SOURCE environment variable\n"
 msgstr "必须设置 GCONF_CONFIG_SOURCE 环境变量\n"
 
@@ -5543,7 +5528,7 @@ msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "在桌面上创建、查看和管理置顶备忘录"
 
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:3
-#: stickynotes/stickynotes_applet.c:307 stickynotes/stickynotes_applet.c:419
+#: stickynotes/stickynotes_applet.c:315 stickynotes/stickynotes_applet.c:433
 #: stickynotes/stickynotes_applet_callbacks.c:240
 msgid "Sticky Notes"
 msgstr "置顶备忘录"
@@ -5906,7 +5891,7 @@ msgid "Whether to use the default system font"
 msgstr "是否使用系统默认字体"
 
 # multiload/main.c:197
-#: stickynotes/stickynotes_applet.c:419
+#: stickynotes/stickynotes_applet.c:433
 #, c-format
 msgid ""
 "%s\n"
@@ -5975,4 +5960,3 @@ msgstr "无线网络链路监视器首选项"
 #: wireless/wireless-applet.glade.h:3
 msgid "_Monitored device:"
 msgstr "监视的设备(_M)："
-
