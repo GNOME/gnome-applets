@@ -11,8 +11,8 @@ wordexp_SUBDIRS = $(wordexp_applets)
 endif
 
 vfs_applets = \
-	gtik
-## 	gweather 
+	gtik	\
+ 	gweather 
 if BUILD_GNOME_VFS_APPLETS
 vfs_SUBDIRS = $(vfs_applets)
 endif
@@ -46,7 +46,7 @@ always_built_SUBDIRS = \
 	drivemount	\
 	panel-menu	\
 	charpick	\
-##	geyes		\
+	geyes		\
 	mini-commander	\
 	gkb-new		
 ##	whereami	

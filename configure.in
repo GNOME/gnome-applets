@@ -1,4 +1,4 @@
-AC_INIT(gnome-applets, 1.90.1,
+AC_INIT(gnome-applets, 1.91.0,
         http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-applets)
 AC_CONFIG_SRCDIR(drivemount/drivemount.c)
 AM_INIT_AUTOMAKE(AC_PACKAGE_NAME, AC_PACKAGE_VERSION)
@@ -36,7 +36,7 @@ GDK_PIXBUF_REQUIRED=1.3.11
 LIBGNOMECANVAS_REQUIRED=1.108.0
 SCROLLKEEPER_REQUIRED=0.1.4
 LIBGTOP_REQUIRED=1.90.0
-LIBPANEL_REQUIRED=1.5.3
+LIBPANEL_REQUIRED=1.5.4
 LIBWNCK_REQUIRED=0.1
 
 dnl configure argument fo disable schema install
@@ -332,12 +332,14 @@ charpick/Makefile
 gtik/Makefile
 gweather/Makefile
 gweather/pixmaps/Makefile
+geyes/Makefile
+geyes/themes/Makefile
 ])
 
 dnl Mostly Ported Applets
 dnl whereami/Makefile
-dnl geyes/Makefile
-dnl geyes/themes/Makefile
+
+
 dnl geyes/docs/Makefile
 dnl geyes/docs/C/Makefile
 dnl geyes/docs/it/Makefile
@@ -528,4 +530,3 @@ dnl netwatch/Makefile
 dnl oldslashapp/Makefile
 dnl winlist/Makefile
 
-cat $srcdir/message-of-doom
