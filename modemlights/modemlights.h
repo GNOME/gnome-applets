@@ -46,8 +46,8 @@ extern GtkWidget *applet;
 void start_callback_update(void);
 void reset_orientation(void);
 
-void property_load(char *path);
-void property_save(char *path, gint to_default);
+void property_load(const char *path);
+void property_save(const char *path, gint to_default);
 void property_show(AppletWidget *applet, gpointer data);
 
 

@@ -18,7 +18,7 @@ static GtkWidget *device_entry = NULL;
 static GtkWidget *verify_checkbox = NULL;
 
 /* temporary variables modified by the properties dialog.  they get
-   compied to the permanent variables when the users selects Apply or
+   copied to the permanent variables when the users selects Apply or
    Ok */
 static gint P_UPDATE_DELAY = 10;
 static gint P_ask_for_confirmation = TRUE;
@@ -26,15 +26,15 @@ static gint P_use_ISDN = FALSE;
 static gint P_verify_lock_file = TRUE;
 static gint P_show_extra_info = FALSE;
 
-static void show_extra_info_cb( GtkWidget *widget, gpointer data );
-static void verify_lock_file_cb( GtkWidget *widget, gpointer data );
-static void update_delay_cb( GtkWidget *widget, GtkWidget *spin );
-static void confirm_checkbox_cb( GtkWidget *widget, gpointer data );
-static void isdn_checkbox_cb( GtkWidget *widget, gpointer data );
-static void property_apply_cb(GtkWidget *widget, gint pagenum);
+static void show_extra_info_cb(GtkWidget *widget, gpointer data);
+static void verify_lock_file_cb(GtkWidget *widget, gpointer data);
+static void update_delay_cb(GtkWidget *widget, GtkWidget *spin);
+static void confirm_checkbox_cb(GtkWidget *widget, gpointer data);
+static void isdn_checkbox_cb(GtkWidget *widget, gpointer data);
+static void property_apply_cb(GtkWidget *widget, gint page_num, gpointer data);
 static gint property_destroy_cb(GtkWidget *widget, gpointer data);
 
-void property_load(char *path)
+void property_load(const char *path)
 {
 	gchar *buf;
 
@@ -71,7 +71,7 @@ void property_load(char *path)
 	gnome_config_pop_prefix ();
 }
 
-void property_save(char *path, gint to_default)
+void property_save(const char *path, gint to_default)
 {
 	if (path && !to_default)
 		{
@@ -96,7 +96,7 @@ void property_save(char *path, gint to_default)
         gnome_config_pop_prefix();
 }
 
-static void show_extra_info_cb( GtkWidget *widget, gpointer data )
+static void show_extra_info_cb(GtkWidget *widget, gpointer data)
 {
 	P_show_extra_info = GTK_TOGGLE_BUTTON (widget)->active;
 	gnome_property_box_changed(GNOME_PROPERTY_BOX(propwindow));
@@ -104,7 +104,7 @@ static void show_extra_info_cb( GtkWidget *widget, gpointer data )
 	data = NULL;
 }
 
-static void verify_lock_file_cb( GtkWidget *widget, gpointer data )
+static void verify_lock_file_cb(GtkWidget *widget, gpointer data)
 {
 	P_verify_lock_file = GTK_TOGGLE_BUTTON (widget)->active;
 	gnome_property_box_changed(GNOME_PROPERTY_BOX(propwindow));
@@ -112,7 +112,7 @@ static void verify_lock_file_cb( GtkWidget *widget, gpointer data )
         data = NULL;
 }
 
-static void update_delay_cb( GtkWidget *widget, GtkWidget *spin )
+static void update_delay_cb(GtkWidget *widget, GtkWidget *spin)
 {
         P_UPDATE_DELAY = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spin));
         gnome_property_box_changed(GNOME_PROPERTY_BOX(propwindow));
@@ -120,7 +120,7 @@ static void update_delay_cb( GtkWidget *widget, GtkWidget *spin )
         widget = NULL;
 }
 
-static void confirm_checkbox_cb( GtkWidget *widget, gpointer data )
+static void confirm_checkbox_cb(GtkWidget *widget, gpointer data)
 {
 	P_ask_for_confirmation = GTK_TOGGLE_BUTTON (widget)->active;
 	gnome_property_box_changed(GNOME_PROPERTY_BOX(propwindow));
@@ -128,7 +128,7 @@ static void confirm_checkbox_cb( GtkWidget *widget, gpointer data )
         data = NULL;
 }
 
-static void isdn_checkbox_cb( GtkWidget *widget, gpointer data )
+static void isdn_checkbox_cb(GtkWidget *widget, gpointer data)
 {
 	P_use_ISDN = GTK_TOGGLE_BUTTON (widget)->active;
 
@@ -143,14 +143,16 @@ static void isdn_checkbox_cb( GtkWidget *widget, gpointer data )
 
 static void set_default_cb(GtkWidget *widget, gpointer data)
 {
-	property_apply_cb(propwindow, 0);
+	property_apply_cb(propwindow, -1, NULL);
 	property_save(NULL, TRUE);
 	gnome_property_box_set_modified((GnomePropertyBox *)propwindow, FALSE);
 }
 
-static void property_apply_cb(GtkWidget *widget, gint pagenum)
+static void property_apply_cb(GtkWidget *widget, gint page_num, gpointer data)
 {
 	gchar *new_text;
+
+	if (page_num != -1) return;
 
 	if (lock_file) g_free(lock_file);
 	new_text = gtk_entry_get_text(GTK_ENTRY(lockfile_entry));
@@ -185,7 +187,7 @@ static void property_apply_cb(GtkWidget *widget, gint pagenum)
 	applet_widget_sync_config(APPLET_WIDGET(applet));
 	return;
 	widget = NULL;
-	pagenum = 0;
+	data = NULL;
 }
 
 static gint property_destroy_cb(GtkWidget *widget, gpointer data)

@@ -205,7 +205,7 @@ static void about_cb (AppletWidget *widget, gpointer data)
 	data = NULL;
 }
 
-static int is_Modem_on()
+static int is_Modem_on(void)
 {
 	FILE *f = 0;
 	gchar buf[64];
@@ -235,9 +235,7 @@ static int is_Modem_on()
 	return TRUE;
 }
 
-/* FIX ME!** this is a slot for checking if isdn is connected,
- * add code please */
-static int is_ISDN_on()
+static int is_ISDN_on(void)
 {
 #ifdef __linux__
 
@@ -334,7 +332,7 @@ static int is_ISDN_on()
 #endif
 }
 
-static int is_connected()
+static int is_connected(void)
 {
 	if (use_ISDN)
 		return is_ISDN_on();
@@ -465,7 +463,7 @@ static gint get_connect_time(gint recalc_start)
 		return get_modem_connect_time(recalc_start);
 }
 
-static void command_connect_cb( gint button, gpointer data)
+static void command_connect_cb(gint button, gpointer data)
 {
 	confirm_dialog = FALSE;
 	if (!button) gnome_execute_shell(NULL, command_connect);
@@ -473,7 +471,7 @@ static void command_connect_cb( gint button, gpointer data)
         data = NULL;
 }
 
-static void command_disconnect_cb( gint button, gpointer data)
+static void command_disconnect_cb(gint button, gpointer data)
 {
 	confirm_dialog = FALSE;
 	if (!button) gnome_execute_shell(NULL, command_disconnect);
@@ -546,7 +544,7 @@ static void update_tooltip(int connected, int rx, int tx)
  *-------------------------------------
  */
 
-static void redraw_display()
+static void redraw_display(void)
 {
 	gdk_window_set_back_pixmap(display_area->window,display,FALSE);
 	gdk_window_clear(display_area->window);
@@ -824,7 +822,7 @@ static void update_lights(int rx, int tx, int cd, int rx_bytes, gint force)
  *-------------------------------------
  */
 
-static gint update_display()
+static gint update_display(void)
 {
 	static int old_rx,old_tx;
 	static int load_count;
@@ -953,7 +951,7 @@ static void draw_shadow_box(GdkPixmap *window, gint x, gint y, gint w, gint h,
 		}
 }
 
-static void create_background_pixmap()
+static void create_background_pixmap(void)
 {
 	if (!layout_current) return;
 
@@ -1031,7 +1029,7 @@ static void draw_button_light(GdkPixmap *pixmap, gint x, gint y, gint s, gint et
 	gdk_draw_rectangle(pixmap, gc, TRUE, x + 2, y + 2, 4 + s, 4 + s);
 }
 
-static void update_pixmaps()
+static void update_pixmaps(void)
 {
 	GtkStyle *style;
 	style = gtk_widget_get_style(applet);
@@ -1075,7 +1073,7 @@ static void update_pixmaps()
 	draw_button_light(lights, 0, 27, 9, FALSE, COLOR_RX);
 }
 
-static void setup_colors()
+static void setup_colors(void)
 {
 	GdkColormap *colormap;
 
