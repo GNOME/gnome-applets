@@ -613,7 +613,7 @@ GSwitchItAppletCmdAbout (BonoboUIComponent *
 	    gnome_about_new (_("Keyboard Indicator"), VERSION,
 /* Translators: Please replace (C) with the proper copyright character. */
 			     _
-			     ("Copyright (c) Sergey V. Oudaltsov 1999-2004"),
+			     ("Copyright (c) Sergey V. Udaltsov 1999-2004"),
 			     _
 			     ("Keyboard layout indicator applet for GNOME"),
 			     authors, documenters, translatorCredits,
