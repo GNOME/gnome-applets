@@ -1,3 +1,10 @@
+2002-04-04  Kevin Vandersloot <kfv101@psu.edu>
+
+	* weather.c: check for NULL string when comparing and
+	make sure we have sane defaults if gconf returns notghin. 
+	Also, don't leak the strings returned from gconf. Should
+	fix bug #74535
+
 2002-04-02  Kevin Vandersloot <kfv101@psu.edu>
 
 	* *.xml: change properties to preferences

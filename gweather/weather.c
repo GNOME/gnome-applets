@@ -82,13 +82,26 @@ WeatherLocation *weather_location_new (const gchar *name, const gchar *code, con
 WeatherLocation *weather_location_config_read (PanelApplet *applet)
 {
     WeatherLocation *location;
-
-	location = weather_location_new(
-			panel_applet_gconf_get_string(applet, "location0", NULL),
-			panel_applet_gconf_get_string(applet, "location1", NULL),
-			panel_applet_gconf_get_string(applet, "location2", NULL),
-			panel_applet_gconf_get_string(applet, "location3", NULL)
-		);
+    gchar *name, *code, *zone, *radar;
+    
+    name = panel_applet_gconf_get_string(applet, "location0", NULL);
+    if (!name)
+    	name = g_strdup ("Pittsburgh");
+    code = panel_applet_gconf_get_string(applet, "location1", NULL);
+    if (!code)
+    	code = g_strdup ("KPIT");
+    zone = panel_applet_gconf_get_string(applet, "location2", NULL);
+    if (!zone)
+    	zone = g_strdup ("PAZ021");
+    radar = panel_applet_gconf_get_string(applet, "location3", NULL);
+    if (!radar)
+        radar = g_strdup ("pit");
+        
+    location = weather_location_new(name, code, zone, radar);
+    g_free (name);
+    g_free (code);
+    g_free (zone);
+    g_free (radar);
 
     return location;
 }
@@ -110,6 +123,8 @@ void weather_location_free (WeatherLocation *location)
 
 gboolean weather_location_equal (const WeatherLocation *location1, const WeatherLocation *location2)
 {
+    if (!location1->code || !location2->code)
+        return 1;
     return (strcmp(location1->code, location2->code) == 0);
 }
 
@@ -1575,7 +1590,7 @@ void weather_info_config_write (WeatherInfo *info)
 WeatherInfo *weather_info_config_read (PanelApplet *applet)
 {
     WeatherInfo *info = g_new(WeatherInfo, 1);
-/*
+#if 0
     info->valid = gnome_config_get_bool("valid=FALSE");
     info->location = weather_location_config_read("location");
     info->units = (WeatherUnits)gnome_config_get_int("units=0");
@@ -1593,8 +1608,8 @@ WeatherInfo *weather_info_config_read (PanelApplet *applet)
     info->visibility = gnome_config_get_float("visibility=0");
     info->forecast = gnome_config_get_string("forecast=None");
     info->radar = NULL;
-*/
-	info->valid = FALSE;
+#endif
+    info->valid = FALSE;
     info->location = weather_location_config_read(applet);
     info->units = (WeatherUnits)0;
     info->update = (WeatherUpdate)0;
