@@ -243,6 +243,7 @@ GtkWidget *create_device_frame(void)
 void apply_cb( GtkWidget *widget, void *data )
 {
 	memcpy(&props, &new_props, sizeof(netload_properties));
+	props.device=strdup(new_props.device);
         setup_colors();
 	start_timer();
 	
