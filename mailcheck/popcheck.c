@@ -5,7 +5,7 @@
  *
  */
 
-#include "config.h"
+#include <config.h>
 
 #include <netdb.h>
 #include <string.h>
@@ -79,7 +79,7 @@ static char* get_server_hostname(const char *h)
  {
   const char *e, *n;
   int cnt;
-  if (!h) return 0;
+  if (!h) return NULL;
   
   for (cnt = 0, n = h; *n; n++) {
    if (*n == ':')
@@ -241,7 +241,7 @@ static char *read_line(int s)
     t.tv_sec = TIMEOUT;
     t.tv_usec = 0;
     
-    if (select(FD_SETSIZE, &fs, 0, 0, &t) <= 0) 
+    if (select(FD_SETSIZE, &fs, NULL, NULL, &t) <= 0) 
      return NULL;
      
     if (read(s, &ch, sizeof(ch)) != sizeof(ch)) 
@@ -370,11 +370,11 @@ static char *wait_for_imap_answer(int s, char *tag)
   while (i--)
    {
     p = read_line(s);
-    if (!p) return 0;
+    if (!p) return NULL;
     if (strncmp(p, tag, strlen(tag)) == 0) return p;
    }
    
-  return 0; 
+  return NULL; 
  }
 
 int 

@@ -216,7 +216,7 @@ memchunkAlloc(int size)
 
 		if (tmp->data == (char *) 0) {
 			free(tmp);
-			tmp = 0;
+			tmp = NULL;
 		}
 	}
 
@@ -310,7 +310,7 @@ b64dec(const char *string)
 
 /* return a decoded memchunk, or a null pointer in case of failure */
 
-	memchunk *rc = 0;
+	memchunk *rc = NULL;
 
 	if (string) {
 	register int length = strlen(string);
@@ -344,7 +344,7 @@ b64dec(const char *string)
 							 * no '=' should be
 							 * here */
 							if (rem < 2)
-								return 0;
+								return NULL;
 
 							/* end-of-message
 							 * recognized */
@@ -352,7 +352,7 @@ b64dec(const char *string)
 						} else {
 							/* Transmission error */
 
-							return 0;
+							return NULL;
 						}
 					}
 
