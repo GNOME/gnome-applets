@@ -120,6 +120,8 @@ trash_applet_init (TrashApplet *applet)
 	GnomeVFSResult res;
 	GnomeVFSURI *trash_uri;
 
+	gtk_window_set_default_icon_name (TRASH_ICON_FULL);
+
 	panel_applet_set_flags (PANEL_APPLET (applet),
 				PANEL_APPLET_EXPAND_MINOR);
 	/* get the default gconf client */
