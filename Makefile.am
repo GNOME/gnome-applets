@@ -45,7 +45,7 @@ endif
 
 always_built_SUBDIRS = \
 	drivemount	\
-	panel-menu
+	panel-menu	\
 ##	fifteen		\
 ##	odometer	\
 ##	geyes		\
