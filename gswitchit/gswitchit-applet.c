@@ -237,16 +237,19 @@ GSwitchItAppletCleanupNotebook (GSwitchItApplet * sia)
 static GtkWidget *
 GSwitchItAppletPrepareDrawing (GSwitchItApplet * sia, int group)
 {
-	GdkPixbuf *image = sia->appletConfig.images[group];
+	gpointer pimage;
+	GdkPixbuf *image;
 	GdkPixbuf *scaled;
 	PanelAppletOrient orient;
 	int psize, xsize = 0, ysize = 0;
 	double xyratio;
+	pimage = g_slist_nth_data (sia->appletConfig.images, group);
 	sia->ebox = gtk_event_box_new ();
 	if (sia->appletConfig.showFlags) {
 		GtkWidget *flagImg;
-		if (image == NULL)
+		if (pimage == NULL)
 			return NULL;
+		image = GDK_PIXBUF (pimage);
 		orient =
 		    panel_applet_get_orient (PANEL_APPLET (sia->applet));
 		psize =
@@ -642,15 +645,18 @@ GSwitchItAppletSetupGroupsSubmenu (GSwitchItApplet * sia)
 		bonobo_ui_node_set_attr (node, "label", pname);
 		bonobo_ui_node_set_attr (node, "pixtype", "filename");
 		if (sia->appletConfig.showFlags) {
-			const char *imageFile =
+			char *imageFile =
 			    GSwitchItAppletConfigGetImagesFile (&sia->
 								appletConfig,
 								&sia->
 								xkbConfig,
 								i);
 			if (imageFile != NULL)
+			{
 				bonobo_ui_node_set_attr (node, "pixname",
 							 imageFile);
+				g_free (imageFile);
+			}
 		}
 		bonobo_ui_component_set_tree (popup, GROUPS_SUBMENU_PATH,
 					      node, NULL);
