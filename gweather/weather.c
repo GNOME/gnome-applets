@@ -1488,7 +1488,7 @@ static void wx_start_open (WeatherInfo *info)
     else {
 	 url = g_strdup_printf ("http://image.weather.com/web/radar/us_%s_closeradar_medium_usen.jpg", loc->radar);
     }
-  
+ 
     gnome_vfs_async_open(&info->wx_handle, url, GNOME_VFS_OPEN_READ, 
     			 0, wx_finish_open, info);
     				 
