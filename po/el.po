@@ -41,14 +41,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: el\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-02 12:48+0200\n"
-"PO-Revision-Date: 2005-02-02 13:12+0200\n"
+"POT-Creation-Date: 2005-02-18 14:47+0200\n"
+"PO-Revision-Date: 2005-02-18 14:49+0200\n"
 "Last-Translator: Kostas Papadimas <pkst@gnome.org>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms:  nplurals=2; plural=(n != 1);"
+"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
+"X-Generator: KBabel 1.3.1\n"
 
 #: accessx-status/GNOME_AccessxApplet.xml.h:1
 #: battstat/GNOME_BattstatApplet.xml.h:1
@@ -100,10 +101,9 @@ msgid "Shows the status of keyboard accessibility features"
 msgstr "Εμφανίζει την κατάσταση των λειτουργιών της προσβασιμότητας πληκτρολογίου"
 
 #. "documenters",        documenters,
-#: accessx-status/applet.c:136 charpick/charpick.c:607
+#: accessx-status/applet.c:136 charpick/charpick.c:605
 #: drivemount/drivemount.c:132 geyes/geyes.c:192
 #: gswitchit/gswitchit-applet.c:602 modemlights/modem-applet.c:1031
-#: trashapplet/src/trashapplet.c:681
 msgid "translator_credits"
 msgstr ""
 "Σπύρος Παπαδημητρίου <spapadim+@cs.cmu.edu>\n"
@@ -414,11 +414,12 @@ msgstr ""
 "Αυτή η εφαρμογή προβάλλει την κατάσταση της μπαταρίας του φορητού σας "
 "υπολογιστή."
 
-#: battstat/battstat_applet.c:975 charpick/charpick.c:619
-#: cpufreq/src/cpufreq-applet.c:222 gtik/gtik.c:738
+#: battstat/battstat_applet.c:975 charpick/charpick.c:617
+#: cpufreq/src/cpufreq-applet.c:223 gtik/gtik.c:738
 #: gweather/gweather-about.c:53 mini-commander/src/about.c:54
-#: mixer/applet.c:1056 multiload/main.c:66
+#: mixer/applet.c:1110 multiload/main.c:66
 #: stickynotes/stickynotes_applet_callbacks.c:442
+#: trashapplet/src/trashapplet.c:647
 msgid "translator-credits"
 msgstr ""
 "Σπύρος Παπαδημητρίου <spapadim+@cs.cmu.edu>\n"
@@ -486,7 +487,7 @@ msgstr "Ει_δοποίηση όταν το φορτίο της μπαταρία
 #: mini-commander/src/preferences.c:368
 #: stickynotes/stickynotes_applet_callbacks.c:406
 #: stickynotes/stickynotes_applet_callbacks.c:625
-#: trashapplet/src/trashapplet.c:648
+#: trashapplet/src/trashapplet.c:614
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Σφάλμα κατά την εμφάνιση βοήθειας: %s"
@@ -503,8 +504,8 @@ msgstr "Η μπαταρία είναι πλήρως φορτισμένη"
 msgid "Battery power low"
 msgstr "Χαμηλό φορτίο μπαταρίας"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:610
-#: charpick/charpick.c:750 charpick/properties.c:449
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:608
+#: charpick/charpick.c:748 charpick/properties.c:449
 msgid "Character Palette"
 msgstr "Επιλογέας Χαρακτήρων"
 
@@ -512,7 +513,7 @@ msgstr "Επιλογέας Χαρακτήρων"
 msgid "Charpicker Applet Factory"
 msgstr "Εργοστάσιο Εφαρμογιδίου Επιλογέα Χαρακτήρων"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:3 charpick/charpick.c:750
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:3 charpick/charpick.c:748
 msgid "Insert characters"
 msgstr "Εισαγωγή χαρακτήρων"
 
@@ -538,13 +539,7 @@ msgstr "Εισαγωγή ειδικού χαρακτήρα"
 msgid "insert special character %s"
 msgstr "εισαγωγή ειδικού χαρακτήρα %s"
 
-#. If your charset supports it, please use U00F1 to replace the "n"
-#. * in "Muniz".
-#: charpick/charpick.c:596
-msgid "Alexandre Muniz <munizao@xprt.net>"
-msgstr "Alexandre Muniz <munizao@xprt.net>"
-
-#: charpick/charpick.c:614
+#: charpick/charpick.c:612
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -639,7 +634,7 @@ msgid "Character Palette Preferences"
 msgstr "Προτιμήσεις Επιλογέα Χαρακτήρων"
 
 #: cpufreq/GNOME_CPUFreqApplet.server.in.in.h:1
-#: cpufreq/src/cpufreq-applet.c:214 cpufreq/src/cpufreq-applet.c:766
+#: cpufreq/src/cpufreq-applet.c:215 cpufreq/src/cpufreq-applet.c:767
 msgid "CPU Frequency Scaling Monitor"
 msgstr "Παρακολούθηση κλιμάκωσης συχνότητας CPU "
 
@@ -723,31 +718,31 @@ msgstr "Παρα_κολουθούμενη CPU:"
 msgid "_Show in mode:"
 msgstr "Εμ_φάνιση σε λειτουργία:"
 
-#: cpufreq/src/cpufreq-applet.c:184 cpufreq/src/cpufreq-prefs.c:246
+#: cpufreq/src/cpufreq-applet.c:185 cpufreq/src/cpufreq-prefs.c:247
 msgid "Could not open help document"
 msgstr "Αποτυχία ανοίγματος εγγράφου βοήθειας"
 
-#: cpufreq/src/cpufreq-applet.c:217
+#: cpufreq/src/cpufreq-applet.c:218
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr "Αυτή η εφαρμογή προβάλλει την τρέχουσα κλιμάκωση συχνότητας της CPU"
 
-#: cpufreq/src/cpufreq-applet.c:767
+#: cpufreq/src/cpufreq-applet.c:768
 msgid "This utility shows the current CPU Frequency"
 msgstr "Αυτή η εφαρμογή προβάλλει την τρέχουσα συχνότητα της CPU"
 
-#: cpufreq/src/cpufreq-prefs.c:310
+#: cpufreq/src/cpufreq-prefs.c:311
 msgid "Graphic"
 msgstr "Γραφικό"
 
-#: cpufreq/src/cpufreq-prefs.c:315
+#: cpufreq/src/cpufreq-prefs.c:316
 msgid "Text"
 msgstr "Κείμενο"
 
-#: cpufreq/src/cpufreq-prefs.c:320
+#: cpufreq/src/cpufreq-prefs.c:321
 msgid "Graphic and Text"
 msgstr "Γραφικό και κείμενο"
 
-#: cpufreq/src/cpufreq-monitor-cpuinfo.c:182
+#: cpufreq/src/cpufreq-monitor-cpuinfo.c:183
 msgid "Frequency Scaling Unsupported"
 msgstr "Δεν υποστηρίζεται η κλιμάκωση συχνότητας"
 
@@ -755,11 +750,11 @@ msgstr "Δεν υποστηρίζεται η κλιμάκωση συχνότητ
 #. * I thi nk is better than do nothing. I have to notify it to the user, because
 #. * he could think   that cpufreq is supported but it doesn't work succesfully
 #.
-#: cpufreq/src/cpufreq-monitor-factory.c:44
+#: cpufreq/src/cpufreq-monitor-factory.c:45
 msgid "CPU frequency scaling unsupported"
 msgstr "Δεν υποστηρίζεται η  κλιμάκωση συχνότητας CPU "
 
-#: cpufreq/src/cpufreq-monitor-factory.c:45
+#: cpufreq/src/cpufreq-monitor-factory.c:46
 msgid ""
 "You will not be able to modify the frequency of your machine.  Your machine "
 "may be misconfigured or not have hardware support for CPU frequency scaling."
@@ -768,7 +763,7 @@ msgstr ""
 "σας μπορεί να μην έχει ρυθμιστεί σωστά ή να μην έχετε υποστήριξη υλικού για "
 "κλιμάκωση συχνότητας CPU."
 
-#: cpufreq/src/cpufreq-monitor-procfs.c:249 cpufreq/src/cpufreq-popup.c:215
+#: cpufreq/src/cpufreq-monitor-procfs.c:250 cpufreq/src/cpufreq-popup.c:216
 #: gweather/weather.c:278 gweather/weather.c:1028 gweather/weather.c:1097
 #: gweather/weather.c:1111 gweather/weather.c:1123 gweather/weather.c:1138
 #: gweather/weather.c:1154 gweather/weather.c:1185 gweather/weather.c:1197
@@ -1746,10 +1741,9 @@ msgid ""
 msgstr ""
 "Αυτό το πρόγραμμα συνδέεται σε ένα δημοφιλές δικτυακό τόπο και λαμβάνει "
 "χρηματιστηριακές πληροφορίες.\n"
-"\n "
-"Το Stock Ticker του GNOME είναι είναι μια "
-"ελεύθερη εφαρμογή βασισμένη στο Ίντερνετ. Το gtik δεν παρέχει ΚΑΜΙΑ ΑΠΟΛΥΤΩΣ "
-"ΕΓΓΥΗΣΗ.\n"
+"\n"
+" Το Stock Ticker του GNOME είναι είναι μια ελεύθερη εφαρμογή βασισμένη στο "
+"Ίντερνετ. Το gtik δεν παρέχει ΚΑΜΙΑ ΑΠΟΛΥΤΩΣ ΕΓΓΥΗΣΗ.\n"
 "\n"
 "Μη χρησιμοποιήσετε το Τηλέτυπο Χρηματιστηρίου του GNOME για τη λήψη "
 "επενδυτικών αποφάσεων, παρέχεται μόνο για πληροφοριακή χρήση."
@@ -3051,8 +3045,9 @@ msgid ""
 "This GNOME applet adds a command line to the panel. It features command "
 "completion, command history, and changeable macros."
 msgstr ""
-"Αυτό το εφαρμογίδιο προσθέτει μια γραμμή εντολών στο ταμπλώ. Παρέχει λειτουργίες όπως"
-"συμπλήρωση εντολής, ιστορικό εντολών, και παραμετροποιήσιμες μακροεντολές."
+"Αυτό το εφαρμογίδιο προσθέτει μια γραμμή εντολών στο ταμπλώ. Παρέχει "
+"λειτουργίες όπωςσυμπλήρωση εντολής, ιστορικό εντολών, και παραμετροποιήσιμες "
+"μακροεντολές."
 
 #: mini-commander/src/command_line.c:337
 msgid "No items in history"
@@ -3374,21 +3369,25 @@ msgstr "_Σίγαση"
 msgid "_Open Volume Control"
 msgstr "Ά_νοιγμα ελεγκτή ήχου"
 
-#: mixer/applet.c:582
+#: mixer/applet.c:384
+msgid "No volume control elements and/or devices found."
+msgstr "Δεν βρέθηκαν στοιχεία ελέγχου ή/και συσκευές."
+
+#: mixer/applet.c:636
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "Αποτυχία εκκίνησης ελεγκτή ήχου: %s"
 
-#: mixer/applet.c:1037
+#: mixer/applet.c:1091
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "Αποτυχία εμφάνισης βοήθειας: %s"
 
-#: mixer/applet.c:1050
+#: mixer/applet.c:1104
 msgid "Volume Applet"
 msgstr "Εφαρμογίδιο έντασης ήχου"
 
-#: mixer/applet.c:1053
+#: mixer/applet.c:1107
 msgid "A GNOME/GStreamer-based volume control applet"
 msgstr "Ένα εφαρμογίδιο ελέγχου ήχου του GNOME, βασισμένο στο GStreamer"
 
@@ -3410,10 +3409,6 @@ msgstr "-"
 #, c-format
 msgid "Unknown Volume Control %d"
 msgstr "Άγνωστος έλεγχος έντασης ήχου  %d"
-
-#: mixer/load.c:165
-msgid "No volume control elements and/or devices found."
-msgstr "Δεν βρέθηκαν στοιχεία ελέγχου ή/και συσκευές."
 
 #: mixer/mixer.schemas.in.h:1
 msgid "Channel controlled by applet. Only for OSS setups"
@@ -3489,7 +3484,9 @@ msgstr "Ο κωδικός που εισάγατε δεν είναι έγκυρο
 msgid ""
 "Check that you have typed it correctly and that you haven't activated the "
 "\"caps lock\" key"
-msgstr "Ελέγξτε ότι το έχετε πληκτρολογήσει σωστά και ότι δεν έχετε ενεργό το πλήκτρο \"caps·lock\"·"
+msgstr ""
+"Ελέγξτε ότι το έχετε πληκτρολογήσει σωστά και ότι δεν έχετε ενεργό το "
+"πλήκτρο \"caps·lock\"·"
 
 #: modemlights/modem-applet.c:935
 msgid "Do you want to connect?"
@@ -3515,7 +3512,9 @@ msgstr "Αδυναμία εκκίνησης εργαλείου ρύθμισης 
 msgid ""
 "Check that it's installed in the correct path and that it has the correct "
 "permissions"
-msgstr "Ελέγξτε ότι έχει εγκατασταθεί στην σωστή διαδρομή και έχει τα σωστά δικαιώματα."
+msgstr ""
+"Ελέγξτε ότι έχει εγκατασταθεί στην σωστή διαδρομή και έχει τα σωστά "
+"δικαιώματα."
 
 #: modemlights/modem-applet.c:1025
 msgid "Modem monitor"
@@ -4202,8 +4201,8 @@ msgid ""
 "Default font color for new sticky notes. This should be in html hex "
 "specification, for example \"#000000\"."
 msgstr ""
-"Προεπιλεγμένο χρώμα για νέα sticky·notes..Θα πρέπει να είναι σε html hex όπως "
-"·\"#000000\"."
+"Προεπιλεγμένο χρώμα για νέα sticky·notes..Θα πρέπει να είναι σε html hex "
+"όπως ·\"#000000\"."
 
 #: stickynotes/stickynotes.schemas.in.h:8
 msgid "Default font for new notes"
@@ -4336,6 +4335,7 @@ msgid "Trash"
 msgstr "Απορρίματα"
 
 #: trashapplet/GNOME_Panel_TrashApplet.xml.h:2
+#: trashapplet/src/trashapplet.c:536
 msgid "_Empty Trash"
 msgstr "Ά_δειαμα απορριμάτων"
 
@@ -4343,37 +4343,35 @@ msgstr "Ά_δειαμα απορριμάτων"
 msgid "_Open"
 msgstr "Ά_νοιγμα"
 
-#: trashapplet/src/trashapplet.c:160
+#: trashapplet/src/trashapplet.c:162
 #, c-format
 msgid "Unable to find the Trash directory: %s"
 msgstr "Αδυναμία εύρεσης του καταλόγου απορριμάτων: %s"
 
-#: trashapplet/src/trashapplet.c:391
+#: trashapplet/src/trashapplet.c:393
 msgid "No Items in Trash"
 msgstr "Δεν υπάρχουν αντικείμενα στα απορρίματα"
 
-#: trashapplet/src/trashapplet.c:394
-msgid "1 Item in Trash"
-msgstr "1 αντικείμενα στα απορρίματα"
-
 #: trashapplet/src/trashapplet.c:397
 #, c-format
-msgid "%d Items in Trash"
-msgstr "%d αντικείμενα στα απορρίματα"
+msgid "%d Item in Trash"
+msgid_plural "%d Items in Trash"
+msgstr[0] "%d αντικείμενο στα απορρίματα"
+msgstr[1] "%d αντικείμενα στα απορρίματα"
 
-#: trashapplet/src/trashapplet.c:543
-msgid "Are you sure you want to empty all of the items from the trash?"
-msgstr "Είστε σίγουροι ότι θέλετε να αδειάσετε όλα τα αντικείμενα από τον κάδο;"
+#: trashapplet/src/trashapplet.c:513
+msgid "Empty all of the items from the trash?"
+msgstr "Άδειασμα όλων των αντικειμένων από τον κάδο;"
 
-#: trashapplet/src/trashapplet.c:557
-msgid "If you empty the trash, items will be permanently deleted."
-msgstr "Αν αδειάσετε τα απορρίματα, τα αντικείμενα θα διαγραφούν μόνιμα."
+#: trashapplet/src/trashapplet.c:516
+msgid ""
+"If you choose to empty the trash, all items in it will be permanently lost. "
+"Please note that you can also delete them separately."
+msgstr ""
+"Αν αδειάσετε τα απορρίματα, τα αντικείμενα θα διαγραφούν μόνιμα. "
+"Σημειώστε ότι μπορείτε να τα διαγράψετε και το καθένα ξεχωριστά."
 
-#: trashapplet/src/trashapplet.c:569
-msgid "_Empty"
-msgstr "Ά_δειασμα"
-
-#: trashapplet/src/trashapplet.c:626
+#: trashapplet/src/trashapplet.c:592
 #, c-format
 msgid ""
 "Error while spawning nautilus:\n"
@@ -4382,11 +4380,11 @@ msgstr ""
 "Error while spawning nautilus:\n"
 "%s"
 
-#: trashapplet/src/trashapplet.c:673
+#: trashapplet/src/trashapplet.c:639
 msgid "Trash Applet"
 msgstr "Εφαρμογίδιο απορριμάτων"
 
-#: trashapplet/src/trashapplet.c:676
+#: trashapplet/src/trashapplet.c:642
 msgid ""
 "A GNOME trash bin that lives in your panel. You can use it to view the trash "
 "or drag and drop items into the trash."
@@ -4395,23 +4393,23 @@ msgstr ""
 "χρησιμοποιήσετε για να δείτε τα απορρίματα ή και να σύρετε αντικείμεμενα στα "
 "απορρίματα."
 
-#: trashapplet/src/trashapplet.c:701
+#: trashapplet/src/trashapplet.c:667
 msgid "Delete Immediately?"
 msgstr "Άμεση διαγραφή;"
 
-#: trashapplet/src/trashapplet.c:730
+#: trashapplet/src/trashapplet.c:696
 msgid "Cannot move items to trash, do you want to delete them immediately?"
 msgstr ""
 "Αδυναμία μετακίνησης αντικειμένων στα απορρίματα, θέλετε αυτά να διαγραφούν "
 "άμεσα;"
 
-#: trashapplet/src/trashapplet.c:733
+#: trashapplet/src/trashapplet.c:699
 msgid "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr ""
 "Αδυναμία μετακίνησης μερικών αντικειμένων στα απορρίματα, θέλετε αυτά να "
 "διαγραφούν άμεσα;"
 
-#: trashapplet/src/trashapplet.c:834 trashapplet/src/trashapplet.c:851
+#: trashapplet/src/trashapplet.c:800 trashapplet/src/trashapplet.c:817
 #, c-format
 msgid ""
 "Unable to move to trash:\n"
