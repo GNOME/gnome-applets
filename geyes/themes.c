@@ -174,12 +174,20 @@ properties_cb (AppletWidget *applet, gpointer data)
         int i;
         gchar filename [PATH_MAX];
         
+	if (eyes_applet.prop_box.pbox) {
+		gdk_window_show (eyes_applet.prop_box.pbox->window);
+		gdk_window_raise (eyes_applet.prop_box.pbox->window);
+		return;
+	}
+
         pbox = gnome_property_box_new ();
         gtk_signal_connect (GTK_OBJECT (pbox),
                             "apply",
                             GTK_SIGNAL_FUNC (apply_cb),
                             NULL);
-        
+        gtk_signal_connect (GTK_OBJECT (pbox), "destroy",
+			    GTK_SIGNAL_FUNC (gtk_widget_destroyed),
+			    &eyes_applet.prop_box.pbox);
         gtk_window_set_title (GTK_WINDOW (pbox),
                               _("gEyes Settings"));
         
