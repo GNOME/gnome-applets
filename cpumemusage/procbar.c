@@ -39,6 +39,9 @@ static gint
 procbar_configure (GtkWidget *w, GdkEventConfigure *e, ProcBar *pb)
 {
 	gint i;
+	
+	if(w->allocation.width == 0 || w->allocation.height == 0)
+		return TRUE;
 
 	/* printf ("procbar allocate %d %d\n",
 	w->allocation.width, w->allocation.height); */
@@ -141,7 +144,8 @@ procbar_set_values (ProcBar *pb, unsigned val [])
 	gint lengthr, length;
 	GdkGC *gc;
 
-	if (!GTK_WIDGET_REALIZED (pb->bar))
+	if (!GTK_WIDGET_REALIZED (pb->bar) ||
+	    A.width == 0 || A.height == 0)
 		return;
 
 	/* check if values changed */
