@@ -195,6 +195,7 @@ gkb_update (GKB *gkb, gboolean set_command)
     if (gkb->update != NULL)
       (gkb->update) (gkb, TRUE);
     gkb_system_set_keymap (gkb);
+    gconf_applet_set_int ("current", gkb->cur);
   }
 
   /* When a size request is made, we need to redraw the pixbufs with the new
@@ -459,13 +460,17 @@ gkb_new (void)
 
 	gkb = g_new0 (GKB, 1);
 	gkb->n = 0;
-	  gkb->cur = 0;
+	gkb->cur = gconf_applet_get_int ("current");
 
 	do_at_first_run ();
 	load_properties (gkb);
 	gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gkb.png");
 
-	gkb->keymap = g_list_nth_data (gkb->maps, 0);
+	gkb->keymap = g_list_nth_data (gkb->maps, gkb->cur);
+	if (!gkb->keymap) {
+		gkb->keymap = g_list_nth_data (gkb->maps, 0);
+		gkb->cur = 0;
+	}
 
 	gconf_client_notify_add (gconf_client_get_default (),
 		GKB_GCONF_ROOT, config_notify, gkb, NULL, NULL);
