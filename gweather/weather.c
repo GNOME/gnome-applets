@@ -1065,7 +1065,7 @@ static void wx_get_start (WeatherInfo *info)
     if (loc->radar[0] == '-')
         return;
 
-    url = g_strdup_printf("http://image.weather.com/images/radar/single_site/%sloc_450x284.gif", loc->radar);
+    url = g_strdup_printf("http://image.weather.com/images/radar/single_site/%sloc_450x284.jpg", loc->radar);
     wx_request = ghttp_request_new();
     ghttp_set_uri(wx_request, url);
     g_free(url);
