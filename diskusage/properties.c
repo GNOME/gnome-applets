@@ -26,6 +26,14 @@ extern DiskusageInfo   summary_info;
 	
 extern void diskusage_resize(void);
 
+typedef struct	_RadioButtonCbData		RadioButtonCbData;
+
+struct _RadioButtonCbData
+{
+	GtkWidget *button, *size;
+	diskusage_properties *props;
+};
+
 void setup_colors(void);
 void start_timer( void );
 void ucolor_set_cb(GnomeColorPicker *cp);
@@ -34,9 +42,10 @@ void tcolor_set_cb(GnomeColorPicker *cp);
 void bcolor_set_cb(GnomeColorPicker *cp);
 void size_cb( GtkWidget *widget, GtkWidget *spin );
 void freq_cb( GtkWidget *widget, GtkWidget *spin );
+void best_size_cb( GtkWidget *widget, RadioButtonCbData *cb_data );
 void apply_cb( GtkWidget *widget, int page_num, AppletWidget *applet );
 gint destroy_cb( GtkWidget *widget, void *data );
-GtkWidget *create_frame(void);
+GtkWidget *create_frame(diskusage_properties *props);
 
 void load_properties( const char *path, diskusage_properties *prop )
 {
@@ -61,6 +70,7 @@ void load_properties( const char *path, diskusage_properties *prop )
 	prop->speed	= gnome_config_get_int    ("disk/speed=2000");
 	prop->size 	= gnome_config_get_int	  ("disk/size=120");
 	prop->look	= gnome_config_get_bool   ("disk/look=1");
+	prop->best_size	= gnome_config_get_bool   ("disk/best_size=1");
 	gnome_config_pop_prefix ();
 }
 
@@ -77,6 +87,7 @@ void save_properties( const char *path, diskusage_properties *prop )
 	gnome_config_set_int   ( "disk/speed", prop->speed );
 	gnome_config_set_int   ( "disk/size", prop->size );
 	gnome_config_set_bool  ( "disk/look", prop->look );
+	gnome_config_set_bool  ( "disk/best_size", prop->best_size );
 	gnome_config_pop_prefix ();
         gnome_config_sync();
 	gnome_config_drop_all();
@@ -145,15 +156,29 @@ void freq_cb( GtkWidget *widget, GtkWidget *spin )
         widget = NULL;
 }	
 
-GtkWidget *create_frame(void)
+void best_size_cb( GtkWidget *widget, RadioButtonCbData *cb_data )
+{
+	cb_data->props->best_size = GTK_TOGGLE_BUTTON (cb_data->button)->active;
+
+	if (cb_data->props->best_size)
+		gtk_widget_set_sensitive (cb_data->size, FALSE);
+	else
+		gtk_widget_set_sensitive (cb_data->size, TRUE);
+
+        gnome_property_box_changed(GNOME_PROPERTY_BOX(propbox));
+}
+
+GtkWidget *create_frame(diskusage_properties *props)
 {
 	GtkWidget *label;
+	GtkWidget *best_size_button, *best_size;
 	GtkWidget *box, *color, *size, *speed;
 	GtkWidget *color1, *color2;
 	GtkWidget *applet_size, *freq;
 	GtkObject *applet_size_a, *freq_a;
 	GtkWidget *ucolor_gcp, *fcolor_gcp, *tcolor_gcp, *bcolor_gcp;
         int ur,ug,ub, fr,fg,fb, tr,tg,tb, br, bg, bb;
+	RadioButtonCbData *cb_data;
 
 	        
 	sscanf( temp_props.ucolor, "#%02x%02x%02x", &ur,&ug,&ub );
@@ -165,6 +190,7 @@ GtkWidget *create_frame(void)
 	color=gtk_vbox_new( 5, TRUE );
 	size =gtk_hbox_new( 5, TRUE );
 	speed=gtk_hbox_new( 5, TRUE );
+	best_size =gtk_hbox_new( 5, TRUE );
 	gtk_container_set_border_width( GTK_CONTAINER(box), 5 );
 	        
 	color1=gtk_hbox_new( 5, TRUE );
@@ -220,7 +246,23 @@ GtkWidget *create_frame(void)
 	applet_size  = gtk_spin_button_new( GTK_ADJUSTMENT(applet_size_a), 1, 0 );
 	gtk_box_pack_start_defaults( GTK_BOX(size), label );
 	gtk_box_pack_start_defaults( GTK_BOX(size), applet_size );
-	
+
+
+	best_size_button = gtk_check_button_new_with_label(_("Automatically pick best applet size"));
+
+	cb_data = g_new0 (RadioButtonCbData, 1);
+	cb_data->button = best_size_button;
+	cb_data->size = size;
+	cb_data->props = props;
+
+	gtk_signal_connect (GTK_OBJECT (best_size_button), "toggled", best_size_cb, cb_data);
+
+	if (props->best_size) {
+		gtk_toggle_button_set_state (GTK_TOGGLE_BUTTON (best_size_button), TRUE);
+		gtk_widget_set_sensitive (size, FALSE);
+	}
+
+	gtk_box_pack_start_defaults( GTK_BOX(best_size), best_size_button );
 
         gtk_signal_connect( GTK_OBJECT(applet_size_a),"value_changed",
 		GTK_SIGNAL_FUNC(size_cb), applet_size );
@@ -243,13 +285,14 @@ GtkWidget *create_frame(void)
 		GTK_SIGNAL_FUNC(freq_cb), freq );
         gtk_spin_button_set_update_policy( GTK_SPIN_BUTTON(freq),
         	GTK_UPDATE_ALWAYS );
-        
+
 	gtk_box_pack_start_defaults( GTK_BOX(color), color1 );
         gtk_box_pack_start_defaults( GTK_BOX(color), color2 );
         
         gtk_box_pack_start_defaults( GTK_BOX(box), color );
 	gtk_box_pack_start_defaults( GTK_BOX(box), size );
 	gtk_box_pack_start_defaults( GTK_BOX(box), speed );
+	gtk_box_pack_start_defaults( GTK_BOX(box), best_size );
 	
 	gtk_widget_show_all(box);
 	return box;
@@ -295,7 +338,7 @@ void properties(AppletWidget *applet, gpointer data)
 		_("Diskusage Settings"));
 
 	
-	frame = create_frame();
+	frame = create_frame(&temp_props);
 	label = gtk_label_new(_("General"));
         gtk_widget_show(frame);
 

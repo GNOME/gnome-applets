@@ -1,3 +1,16 @@
+2000-02-22  Martin Baulig  <martin@home-of-linux.org>
+
+	* diskusage/diskusage.c (diskusage_get_best_size_v): Calculate best
+	height for a vertical applet.
+	(diskusage_resize): Use diskusage_get_best_size_v () to determine the
+	applet height for vertical applets when the corresponding options was
+	set in the preferences dialog. Call gtk_widget_set_usize () on
+	`my_applet', not on `disp' so we don't make the panel larger.
+
+	* diskusage/properties.h (diskusage_properties): Added `best_size'.
+	* diskusage/properties.c (properties): Added "Automatically pick best
+	applet size" option to the preferences dialog.
+
 Mon Feb 21 04:18:41 2000  George Lebl <jirka@5z.com>
 
 	* gkb/gkb.c: fixed redrawing after switching the layout

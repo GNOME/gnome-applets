@@ -76,6 +76,7 @@ void start_timer(void);
 void change_filesystem_cb (AppletWidget *applet, gpointer data);
 void add_mount_list_menu_items (void);
 static void browse_cb (AppletWidget *widget, gpointer data);
+int diskusage_get_best_size_v (void);
 
 GtkWidget *diskusage_widget(void);
 
@@ -85,13 +86,54 @@ guint num_mpoints;
 
 int timer_index=-1;
 
+int diskusage_get_best_size_v ()
+{
+	GdkFont* my_font;
+	int string_height;
+	int du_pie_gap;
+	int du_mountpoint_x;
+	int du_freespace_x;
+	int total_height;
+	int pie_width;		/* width+height of piechart */
+
+
+	my_font = gdk_font_load      ("fixed");
+
+	if (summary_info.pixel_size <= PIXEL_SIZE_TINY) {
+		du_pie_gap = du_mountpoint_x = du_freespace_x = 0;
+	} else if (summary_info.pixel_size <= PIXEL_SIZE_SMALL) {
+		du_pie_gap = du_mountpoint_x = du_freespace_x = 1;
+	} else {
+		du_pie_gap = DU_PIE_GAP;
+		du_mountpoint_x = DU_MOUNTPOINT_X;
+		du_freespace_x = DU_FREESPACE_X;
+	}
+	
+	pie_width = disp->allocation.width - du_pie_gap;
+
+	string_height = gdk_string_height (my_font, "MP: ");
+
+	total_height = DU_FREESPACE2_Y_VERT + pie_width + du_pie_gap +
+		string_height * 4;
+
+	fprintf (stderr, "TOTAL HEIGHT: %d\n", total_height);
+
+	return total_height;
+}
+
+
 void diskusage_resize ()
 {
 	if ((summary_info.orient == ORIENT_LEFT) ||
 	    (summary_info.orient == ORIENT_RIGHT))
-		gtk_widget_set_usize (disp, summary_info.pixel_size, props.size);
+		if (props.best_size)
+			gtk_widget_set_usize (my_applet, summary_info.pixel_size,
+					      diskusage_get_best_size_v ());
+		else
+			gtk_widget_set_usize (my_applet, summary_info.pixel_size,
+					      props.size);
 	else
-		gtk_widget_set_usize (disp, props.size, summary_info.pixel_size);
+		gtk_widget_set_usize (my_applet, props.size, summary_info.pixel_size);
 }
 
 /* Get list of currently mounted filesystems. */
