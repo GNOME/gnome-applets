@@ -387,7 +387,6 @@ static void
 error_handler (int error, gpointer data)
 {
 	MailCheck *mc = data;
-	GtkWidget *dialog;
 	gchar *details;
 	
 	switch (error) {
@@ -1233,9 +1232,9 @@ update_spin_changed (GtkSpinButton *spin, gpointer data)
 	mc->update_freq = 1000 * (guint)(gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (mc->sec_spin)) + 60 * gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (mc->min_spin)));
 	
 	if (mc->update_freq == 0) {
-		gtk_spin_button_set_value(GTK_SPIN_BUTTON (mc->sec_spin), 0.0);
-		gtk_spin_button_set_value(GTK_SPIN_BUTTON (mc->min_spin), 1.0);
-		mc->update_freq = 60*1000;
+		gtk_spin_button_set_value(GTK_SPIN_BUTTON (mc->sec_spin), 1.0);
+		gtk_spin_button_set_value(GTK_SPIN_BUTTON (mc->min_spin), 0.0);
+		mc->update_freq = 1000;
 	}
 	if(mc->mail_timeout != 0)
 		gtk_timeout_remove (mc->mail_timeout);
