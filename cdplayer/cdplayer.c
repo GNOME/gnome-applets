@@ -263,7 +263,12 @@ cdplayer_timeout_callback(gpointer data)
 static void
 start_gtcd_cb(GtkWidget *w, gpointer data)
 {
-    g_spawn_command_line_async ("gnome-cd", NULL);
+    GError *err = NULL;
+    g_spawn_command_line_async ("gnome-cd", &err);
+    if (err) {
+      g_print ("%s\n", err->message);
+      g_error_free (err);
+    }
 }
 
 static void
