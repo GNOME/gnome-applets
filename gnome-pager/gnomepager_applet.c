@@ -1411,8 +1411,8 @@ cb_applet_save_session(GtkWidget *w,
   gnome_config_set_int("stuff/fixed_tasklist", config.fixed_tasklist);
   gnome_config_set_int("stuff/pager_w_0", config.pager_w_0);
   gnome_config_set_int("stuff/pager_h_0", config.pager_h_0);
-  gnome_config_set_int("stuff/pager_w_0", config.pager_w_1);
-  gnome_config_set_int("stuff/pager_h_0", config.pager_h_1);
+  gnome_config_set_int("stuff/pager_w_1", config.pager_w_1);
+  gnome_config_set_int("stuff/pager_h_1", config.pager_h_1);
   gnome_config_pop_prefix();
   gnome_config_sync();
   gnome_config_drop_all();
