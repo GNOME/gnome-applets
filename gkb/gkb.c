@@ -2,6 +2,7 @@
  * Purpose: GNOME Keyboard switcher
  * Written by Shooby Ban <bansz@szif.hu>, 1998-1999
  * with the aid of Balazs Nagy <julian7@kva.hu>
+ * and Charles Levert <charles@comm.polymtl.ca>
  */
 
 #include <config.h>
@@ -9,6 +10,17 @@
 #include <gnome.h>
 #include <gdk_imlib.h>
 #include <applet-widget.h>
+#include <gdk/gdkx.h>		/* for GDK_DISPLAY() */
+#include <X11/Xlib.h>		/* for XFree() */
+#include <X11/extensions/XKBrules.h>
+				/* for XkbRF_RulesPtr, XkbRF_VarDefsRec,
+				 * XkbRF_GetNamesProp(),XkbRF_Create(),
+				 * XkbRF_LoadDescriptionsByName(),
+				 * and XkbRF_Free().
+				 */
+#include <sys/types.h>
+#include <dirent.h>		/* for opendir() et al. */
+#include <string.h>		/* for strncmp() */
 
 #define FSIZE1 20
 #define FSIZE2 44
@@ -225,6 +237,56 @@ destroy_cb(GtkWidget *widget,
     	gkb->propbox=NULL;
 }
 
+static GList*
+append_xkb_items(GList *list)
+{
+	int i;
+	char *rules_file;
+	XkbRF_RulesPtr rules;
+	XkbRF_VarDefsRec var_defs;
+
+	if (XkbRF_GetNamesProp(GDK_DISPLAY(), &rules_file, &var_defs)) {
+	  if ((rules = XkbRF_Create(0,0))) {
+	    if (XkbRF_LoadDescriptionsByName(rules_file, NULL, rules)) {
+	      for (i=0; i < rules->layouts.num_desc, i++)
+		/* Find a way to use desc in addition to name.  */
+		list = g_list_append(list, rules->layouts.desc[i].name);
+	    }
+	    XkbRF_Free(rules, TRUE);
+	  }
+	  if (rules_file)	XFree(rules_file);
+	  if (var_defs.model)	XFree(var_defs.model);
+	  if (var_defs.variant)	XFree(var_defs.variant);
+	  if (var_defs.options)	XFree(var_defs.options);
+	  if (var_defs.layout) {
+	    /* This value could be used for initialisation. */
+	    XFree(var_defs.layout);
+	  }
+	}
+
+	return list;
+}
+
+static GList*
+append_xmodmap_items(GList *list)
+{
+	char *c;
+	DIR *dir;
+	struct dirent *dir_ent;
+
+	if ((dir = opendir(gnome_datadir_file("xmodmap")))) {
+	  while ((dir_ent = readdir(dir)))
+	    if (strncmp(dir_ent->d_name, "xmodmap.", 8)) {
+	      c = dir_ent->d_name + 8;
+	      if (*c)
+		list = g_list_append(list, c);
+	    }
+	  closedir(dir);
+	}
+
+	return list;
+}
+
 /*
  * That's the prop-dialog ,,,
  * */
@@ -301,12 +363,11 @@ static	char *basemaps[]= {
 
 
 	combo1_items = g_list_append (combo1_items, gkb->temp_props.dmap[0]);
-	
- 	i=0;
-	while ( basemaps[i] ){
-	combo1_items = g_list_append (combo1_items, basemaps[i]);
-	i++;
-	}
+	combo1_items = append_xkb_items (combo1_items);
+	combo1_items = append_xmodmap_items (combo1_items);
+
+	for (i=0; basemaps[i]; i++)
+	  combo1_items = g_list_append (combo1_items, basemaps[i]);
         
 	gtk_combo_set_popdown_strings (GTK_COMBO (gkb->combo1), combo1_items);
         gtk_signal_connect (GTK_OBJECT (GTK_COMBO(gkb->combo1)->entry),
@@ -331,12 +392,11 @@ static	char *basemaps[]= {
         GTK_WIDGET_SET_FLAGS (gkb->combo2, GTK_CAN_FOCUS);
    
 	combo2_items = g_list_append (combo2_items, gkb->temp_props.dmap[1]);
- 	
-	i=0;
-	while ( basemaps[i] ){
-	combo2_items = g_list_append (combo2_items, basemaps[i]);
-	i++;
-	}
+	combo2_items = append_xkb_items (combo2_items);
+	combo2_items = append_xmodmap_items (combo2_items);
+
+	for (i=0; basemaps[i]; i++)
+	  combo2_items = g_list_append (combo2_items, basemaps[i]);
    
         gtk_combo_set_popdown_strings (GTK_COMBO(gkb->combo2), combo2_items);
         gtk_signal_connect (GTK_OBJECT (GTK_COMBO(gkb->combo2)->entry),
