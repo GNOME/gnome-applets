@@ -11,7 +11,9 @@ clockmail_applet_SOURCES = \
 	clockmail.c	\
 	clockmail.h	\
 	properties.c	\
-	theme.c
+	theme.c		\
+	rotate.c	\
+	rotate.h
 
 
 clockmail_applet_LDADD = ../../panel/libpanel_applet.la \

@@ -240,6 +240,9 @@ static void update_time_count(gint h, gint m, gint s, AppData *ad)
 	draw_number(ad->skin->hour, h, ad);
 	draw_number(ad->skin->min, m, ad);
 	draw_number(ad->skin->sec, s, ad);
+
+	if (h > 12) h -= 12;
+	draw_clock(ad->skin->clock, h, m, s, ad);
 }
 
 static void update_date_displays(gint year, gint month, gint day, gint weekday, AppData *ad, gint force)

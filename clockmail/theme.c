@@ -6,6 +6,7 @@
  */
 
 #include "clockmail.h"
+#include "rotate.h"
 
 #include "backgrnd.xpm"
 #include "digmed.xpm"
@@ -39,13 +40,27 @@ static void display_pressed(GtkWidget *w, GdkEventButton *event, gpointer data);
 static void display_released(GtkWidget *w, GdkEventButton *event, gpointer data);
 static void display_leave(GtkWidget *w, GdkEventCrossing *event, gpointer data);
 
+static void free_hand(HandData *hd);
+static HandData *new_hand(GdkPixmap *p, GdkBitmap *m, gint xo, gint yo);
+static HandData *new_hand_from_data(gchar **data, gint xo, gint yo);
+static HandData *new_hand_from_file(gchar *file, gint xo, gint yo);
+static void free_clock(AnalogData *c);
+static AnalogData *new_clock(HandData *h, HandData *m, HandData *s,
+			     GdkPixmap *back, gint x, gint y);
+static AnalogData *new_clock_from_data(HandData *h, HandData *m, HandData *s,
+			gchar **data, gint x, gint y, gint width, gint height,
+			AppData *ad, GdkPixmap *large_back);
+static void draw_hand(HandData *h, gint x, gint y, gint r_deg, GdkImage *img, AppData *ad);
+static AnalogData *new_clock_from_file(HandData *h, HandData *m, HandData *s,
+				       gchar *file, gint x, gint y);
+
 static SkinData *load_default_skin(AppData *ad);
 static ItemData *get_item(gchar *path, gchar *name, gint sections);
 static DigitData *get_digit(gchar *path, gchar *name);
 static NumberData *get_number(gchar *path, gchar *name, gint count, gint zeros, SkinData *skin);
 static GtkWidget *get_background(gchar *path);
-static SkinData *load_skin(gchar *skin_path, gint vertical, gint size);
-static SkinData *load_best_skin_match(gchar *path, gint vertical, gint size);
+static SkinData *load_skin(gchar *skin_path, gint vertical, gint size, AppData *ad);
+static SkinData *load_best_skin_match(gchar *path, gint vertical, gint size, AppData *ad);
 
 static GdkPixmap *get_pixmap_from_data(gchar **data)
 {
@@ -236,6 +251,7 @@ void free_skin(SkinData *s)
 	free_item(s->mail_amount);
 	free_item(s->button_pix);
 	free_button(s->button);
+	free_clock(s->clock);
 	g_free(s);
 }
 
@@ -289,7 +305,6 @@ void draw_item(ItemData *item, gint section, AppData *ad)
 	gdk_draw_pixmap (ad->skin->background,
 		ad->display_area->style->fg_gc[GTK_WIDGET_STATE(ad->display_area)],
 		item->pixmap, 0, item->height * section, item->x, item->y, item->width, item->height);
-	
 }
 
 /*
@@ -469,6 +484,173 @@ void skin_event_init(AppData *ad)
 	gtk_signal_connect(GTK_OBJECT(ad->display_area),"leave_notify_event",(GtkSignalFunc) display_leave, ad);
 }
 
+/*
+ *--------------------------------------------------------------------
+ * analog clock functions
+ *--------------------------------------------------------------------
+ */
+
+static void free_hand(HandData *hd)
+{
+	if (!hd) return;
+
+	gdk_image_destroy(hd->image);
+	if (hd->mask) free(hd->mask);
+
+	g_free(hd);
+}
+
+static HandData *new_hand(GdkPixmap *p, GdkBitmap *m, gint xo, gint yo)
+{
+	HandData *hd;
+	gint width, height;
+
+	if (!p) return NULL;
+
+	hd = g_new0(HandData, 1);
+
+	gdk_window_get_size(p, &width, &height);
+	hd->image = gdk_image_get(p, 0, 0, width, height);
+
+	if (m)
+		{
+		GdkImage *mi = NULL;
+		gdk_window_get_size(m, &width, &height);
+		mi = gdk_image_get(m, 0, 0, width, height);
+		hd->mask = get_map(mi);
+		gdk_image_destroy(mi);
+		}
+	else
+		{
+		hd->mask = NULL;
+		}
+
+	hd->xo = xo;
+	hd->yo = yo;
+
+	if (p) gdk_imlib_free_pixmap(p);
+	if (m) gdk_imlib_free_bitmap(m);
+
+	return hd;
+}
+
+static HandData *new_hand_from_data(gchar **data, gint xo, gint yo)
+{
+	GdkPixmap *p = NULL;
+	GdkBitmap *m = NULL;
+
+	gdk_imlib_data_to_pixmap(data, &p, &m);
+
+	return new_hand(p, m, xo, yo);
+}
+
+static HandData *new_hand_from_file(gchar *file, gint xo, gint yo)
+{
+	GdkPixmap *p = NULL;
+	GdkBitmap *m = NULL;
+
+	gdk_imlib_load_file_to_pixmap(file, &p, &m);
+
+	return new_hand(p, m, xo, yo);
+}
+
+static void free_clock(AnalogData *c)
+{
+	if (!c) return;
+
+	free_hand(c->hour);
+	free_hand(c->minute);
+	free_hand(c->second);
+	gdk_imlib_free_pixmap(c->back);
+	g_free(c);
+}
+
+static AnalogData *new_clock(HandData *h, HandData *m, HandData *s,
+			     GdkPixmap *back, gint x, gint y)
+{
+	AnalogData *c;
+	gint width;
+	gint height;
+
+	if (!back) return NULL;
+	gdk_window_get_size(back, &width, &height);
+
+	c = g_new0(AnalogData, 1);
+
+	c->hour = h;
+	c->minute = m;
+	c->second = s;
+
+	c->back = back;
+	c->width = width;
+	c->height = height;
+	c->x = x;
+	c->y = y;
+	c->cx = width / 2;
+	c->cy = height / 2;
+
+	return c;
+}
+
+static AnalogData *new_clock_from_data(HandData *h, HandData *m, HandData *s,
+			gchar **data, gint x, gint y, gint width, gint height,
+			AppData *ad, GdkPixmap *large_back)
+{
+	GdkPixmap *back = NULL;
+
+	if (data)
+		{
+		back = get_pixmap_from_data(data);
+		if (back) gdk_window_get_size(back, &width, &height);
+		}
+	else
+		{
+		back = gdk_pixmap_new (ad->applet->window, width, height, -1);
+		gdk_draw_pixmap(back,
+			ad->display_area->style->fg_gc[GTK_WIDGET_STATE(ad->display_area)],
+			large_back, 0, 0, x, y, width, height);
+		}
+
+	return new_clock(h, m, s, back, x, y);
+}
+
+static AnalogData *new_clock_from_file(HandData *h, HandData *m, HandData *s,
+				       gchar *file, gint x, gint y)
+{
+	GdkPixmap *back;
+
+	back = get_pixmap_from_file(file);
+	if (!back) return NULL;
+
+	return new_clock(h, m, s, back, x, y);
+}
+
+static void draw_hand(HandData *h, gint x, gint y, gint r_deg, GdkImage *img, AppData *ad)
+{
+	if (!h) return;
+
+	draw_image_rotated(img, h->image, h->mask,
+			    x, y, h->xo, h->yo, r_deg, ad->display_area->window);
+}
+
+void draw_clock(AnalogData *c, gint h, gint m, gint s, AppData *ad)
+{
+	GdkImage *img = NULL;
+
+	if (!c) return;
+
+	img = gdk_image_get(c->back, 0, 0, c->width, c->height);
+
+	draw_hand(c->hour, c->x + c->cx, c->y + c->cy, (float)h / 12 * 360, img, ad);
+	draw_hand(c->minute, c->x + c->cx, c->y + c->cy, (float)m / 60 * 360, img, ad);
+	draw_hand(c->second, c->x + c->cx, c->y + c->cy, (float)s / 60 * 360, img, ad);
+
+	gdk_draw_image (ad->skin->background,
+		ad->display_area->style->fg_gc[GTK_WIDGET_STATE(ad->display_area)],
+		img, 0, 0, c->x, c->y, c->width, c->height);
+
+	gdk_image_destroy(img);
+}
 
 /*
  *--------------------------------------------------------------------
@@ -540,6 +722,91 @@ static SkinData *load_default_skin(AppData *ad)
 }
 
 /* the following are functions for loading external skins */
+
+static HandData *get_hand(gchar *path, gchar *name)
+{
+	HandData *h;
+	gchar **vector = NULL;
+	gint length;
+	gchar *filename;
+	gint xo, yo;
+
+	gnome_config_get_vector(name, &length, &vector);
+
+	if (!vector || length < 3)
+		{
+		g_strfreev (vector);
+		return NULL;
+		}
+
+	filename = g_strconcat(path, "/", vector[0], NULL);
+	xo = strtol(vector[1], NULL, 10);
+	yo = strtol(vector[2], NULL, 10);
+
+	g_strfreev (vector);
+	
+	h = new_hand_from_file(filename, xo, yo);
+	g_free(filename);
+
+	return h;
+}
+
+static AnalogData *get_clock(gchar *path, SkinData *s, AppData *ad)
+{
+	AnalogData *c;
+	HandData *hd;
+	HandData *md;
+	HandData *sd;
+	gchar **vector = NULL;
+	gint length;
+	gchar *filename;
+	gint x, y, w, h;
+
+	gnome_config_get_vector("Clock_Back=", &length, &vector);
+
+	if (!vector || length < 5)
+		{
+		g_strfreev (vector);
+		return NULL;
+		}
+
+	filename = g_strdup(vector[0]);
+	w = strtol(vector[1], NULL, 10);
+	h = strtol(vector[2], NULL, 10);
+	x = strtol(vector[3], NULL, 10);
+	y = strtol(vector[4], NULL, 10);
+
+	g_strfreev (vector);
+
+	if (filename && strcmp(filename, "none") == 0)
+		{
+		g_free(filename);
+		filename = NULL;
+		}
+	else
+		{
+		gchar *buf = g_strconcat(path, "/", filename, NULL);
+		g_free(filename);
+		filename = buf;
+		}
+
+	hd = get_hand(path, "Clock_Hour_Hand=");
+	md = get_hand(path, "Clock_Minute_Hand=");
+	sd = get_hand(path, "Clock_Second_Hand=");
+
+	if (filename)
+		{
+		c = new_clock_from_file(hd, md, sd, filename, x, y);
+		g_free(filename);
+		}
+	else
+		{
+		c = new_clock_from_data(hd, md, sd, NULL, x, y, w, h, ad, s->background);
+		}
+
+	return c;
+
+}
 
 static ItemData *get_item(gchar *path, gchar *name, gint sections)
 {
@@ -708,7 +975,7 @@ static GtkWidget *get_background(gchar *path)
 	return pixmap;
 }
 
-static SkinData *load_skin(gchar *skin_path, gint vertical, gint size)
+static SkinData *load_skin(gchar *skin_path, gint vertical, gint size, AppData *ad)
 {
 	SkinData *s;
 	gchar *datafile = g_strconcat(skin_path, "/clockmaildata", NULL);
@@ -792,30 +1059,32 @@ static SkinData *load_skin(gchar *skin_path, gint vertical, gint size)
 
 	s->button = new_button(s, s->button_pix, launch_mail_reader, redraw_all);
 
+	s->clock = get_clock(skin_path, s, ad);
+
 	g_free(datafile);
 	gnome_config_pop_prefix();
 	return s;
 }
 
-static SkinData *load_best_skin_match(gchar *path, gint vertical, gint size)
+static SkinData *load_best_skin_match(gchar *path, gint vertical, gint size, AppData *ad)
 {
 	SkinData *s = NULL;
 
-	s = load_skin(path, vertical, size);
+	s = load_skin(path, vertical, size, ad);
 	if (s) return s;
 
 	/* huge falls back to large, then standard */
 	if (size == SIZEHINT_HUGE)
 		{
-		s = load_skin(path, vertical, SIZEHINT_LARGE);
+		s = load_skin(path, vertical, SIZEHINT_LARGE, ad);
 		if (s) return s;
-		return load_skin(path, vertical, SIZEHINT_STANDARD);
+		return load_skin(path, vertical, SIZEHINT_STANDARD, ad);
 		}
 
 	if (size == SIZEHINT_STANDARD) return NULL;
 
 	/* if not standard and failed so far, try to fall back to it */
-	return load_skin(path, vertical, SIZEHINT_STANDARD);
+	return load_skin(path, vertical, SIZEHINT_STANDARD, ad);
 }
 
 gint change_to_skin(gchar *path, AppData *ad)
@@ -831,12 +1100,12 @@ gint change_to_skin(gchar *path, AppData *ad)
 		{
 		new_s = load_best_skin_match(path,
 					     (ad->orient == ORIENT_LEFT || ad->orient == ORIENT_RIGHT),
-					     ad->sizehint);
+					     ad->sizehint, ad);
 		if (!new_s)
 			{
 			new_s = load_skin(path,
 					  !(ad->orient == ORIENT_LEFT || ad->orient == ORIENT_RIGHT),
-					  SIZE_STANDARD);
+					  SIZE_STANDARD, ad);
 			}
 		}
 

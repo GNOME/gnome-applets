@@ -74,6 +74,31 @@ struct _ButtonData
 	void (*redraw_func)(gpointer);
 };
 
+typedef struct _HandData HandData;
+struct _HandData
+{
+	GdkImage *image;
+	char *mask;
+	gint xo;
+	gint yo;
+};
+
+typedef struct _AnalogData AnalogData;
+struct _AnalogData
+{
+	HandData *hour;
+	HandData *minute;
+	HandData *second;
+
+	GdkPixmap *back;
+	gint width;
+	gint height;
+	gint x;
+	gint y;
+	gint cx;
+	gint cy;
+};
+
 typedef struct _SkinData SkinData;
 struct _SkinData
 {
@@ -98,6 +123,7 @@ struct _SkinData
 	NumberData *messages;
 	ItemData *button_pix;
 	ButtonData *button;
+	AnalogData *clock;
 };
 
 typedef struct _AppData AppData;
@@ -178,6 +204,7 @@ void redraw_skin(AppData *ad);
 void draw_number(NumberData *number, gint n, AppData *ad);
 void draw_item(ItemData *item, gint section, AppData *ad);
 void draw_button(ButtonData *button, gint prelight, gint pressed, gint force, AppData *ad);
+void draw_clock(AnalogData *c, gint h, gint m, gint s, AppData *ad);
 void skin_event_init(AppData *ad);
 gint change_to_skin(gchar *path, AppData *ad);
 
