@@ -501,6 +501,8 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
   pref_hbox = gtk_hbox_new (FALSE, GNOME_PAD_SMALL);
   gtk_box_pack_start (GTK_BOX (pref_vbox_2), pref_hbox, FALSE, FALSE, 0);
   gtk_widget_show (pref_hbox);
+  /* The % sign screws overt xgettext ;) */
+  /* xgettext:no-c-format */
   label = gtk_label_new (_
 			 ("Filetype is determined from filename suffix.\n"
 			  "Default filetype (if no extension or unrecognised extension) "
