@@ -1375,6 +1375,7 @@ modemlights_applet_fill (PanelApplet *applet)
 {
 	MLData *mldata;
 	gint i;
+	AtkObject *atk_obj;
 
 	mldata = g_new0 (MLData, 1);
 	
@@ -1519,6 +1520,10 @@ modemlights_applet_fill (PanelApplet *applet)
 	reset_orientation(mldata);
 	
 	start_callback_update(mldata);
+
+	atk_obj = gtk_widget_get_accessible (mldata->button);
+	if (GTK_IS_ACCESSIBLE (atk_obj))
+		atk_object_set_name (atk_obj, _("Modem Lights"));
 
 	gtk_widget_show_all (GTK_WIDGET (applet));
 	  
