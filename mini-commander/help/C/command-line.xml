@@ -2,11 +2,10 @@
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "1.91.0">
-  <!ENTITY manrevision "2.0">
-  <!ENTITY date "March 2002">
+  <!ENTITY appletversion "1.104.0">
+  <!ENTITY manrevision "2.2">
+  <!ENTITY date "August 2002">
   <!ENTITY applet "Command Line">
-  <!-- Information about the entities. The legal.xml file contains legal information, there is no need to edit the file. Use the appletversion entity to specify the version of the applet. Use the manrevision entity to specify the revision number of this manual. Use the date entity to specify the release date of this manual. Use the applet entity to specify the name of the applet. -->
 ]>
 <!-- 
       (Do not remove this comment block.)
@@ -14,6 +13,7 @@
   http://developer.gnome.org/projects/gdp 
   Template version: 2.0 beta
   Template last modified Feb 12, 2002
+  
 -->
 <!-- =============Document Header ============================= -->
 <article id="index" lang="en">
@@ -90,6 +90,30 @@
           </revdescription> 
         </revision> 
         <revision> 
+          <revnumber>Command Line Applet Manual V2.1</revnumber> 
+          <date>July 2002</date> 
+          <revdescription> 
+             <para role="author">
+                Sun Microsystems <email>gdocteam@sun.com</email>
+             </para>
+             <para role="publisher">
+                GNOME Documentation Project
+             </para>
+          </revdescription> 
+        </revision> 
+        <revision> 
+          <revnumber>Command Line Applet Manual V2.0</revnumber> 
+          <date>March 2002</date> 
+          <revdescription> 
+             <para role="author">
+                Sun Microsystems <email>gdocteam@sun.com</email>
+             </para>
+             <para role="publisher">
+                GNOME Documentation Project
+             </para>
+          </revdescription> 
+        </revision> 
+        <revision> 
           <revnumber>Mini-Commander Applet Manual</revnumber> 
           <date>1998</date> 
           <revdescription> 
@@ -126,12 +150,12 @@
   <indexterm zone="index"> 
      <primary>command line applet</primary> 
   </indexterm>
-<!-- ============= Document Body ==-->
+
 <!-- ============= Introduction =====-->
   <sect1 id="command-line-introduction"> 
      <title>Introduction</title> 
      
-<!-- ==== Figure ==================-->
+     <!-- ==== Figure ==================-->
      <figure id="applet-fig"> 
         <title>&applet; Applet</title> 
         <screenshot> 
@@ -140,26 +164,25 @@
                 format="PNG"/> 
              </imageobject> 
              <textobject> 
-                <phrase>Screenshot of the &applet; applet.</phrase> 
+                <phrase>Shows &applet; applet.</phrase> 
              </textobject> 
           </mediaobject> 
         </screenshot> 
      </figure> 
      <para>
         The <application>&applet;</application> applet provides a command line
-        that you can use within any panel on the desktop. To add
-        <application>&applet;</application> to a panel right-click on the panel 
-        to open the 
-        <guimenu>Panel</guimenu> menu, then choose 
+        that you can use within any panel on the desktop. </para>
+        <para>To add <application>&applet;</application> to a panel, right-click on the panel, then choose 
         <menuchoice> 
-          <guimenu>Add to panel</guimenu> 
+          <guimenu>Add to Panel</guimenu> 
           <guisubmenu>Utility</guisubmenu> 
           <guimenuitem>&applet;</guimenuitem> 
         </menuchoice>.
      </para>
      <para>
         <application>&applet;</application> contains the following interactive
-        elements: 
+        elements: </para>
+        
         <variablelist>
           <varlistentry>
              <term>
@@ -167,12 +190,10 @@
              <listitem>
                 <para>
                   You can enter commands, macros, and programs in the 
-                  <guilabel>Entry field.</guilabel>.
+                  <guilabel>Entry field</guilabel>.
                 </para>
              </listitem>
           </varlistentry>
-        </variablelist>
-        <variablelist>
           <varlistentry>
              <term>
                 <guilabel>Browser button</guilabel></term>
@@ -185,8 +206,6 @@
                 </para>
              </listitem>
           </varlistentry>
-        </variablelist>
-        <variablelist>
           <varlistentry>
              <term>
                 <guibutton>History button</guibutton></term>
@@ -199,8 +218,11 @@
                 </para>
              </listitem>
           </varlistentry>
-        </variablelist> <application>&applet;</application> provides the
-        following features:
+        </variablelist> 
+        
+        <para><application>&applet;</application> provides the
+        following features: </para>
+        
         <variablelist>
           <varlistentry>
              <term>History list of previously executed commands</term>
@@ -216,8 +238,6 @@
                 </para>
              </listitem>
           </varlistentry>
-        </variablelist>
-        <variablelist>
           <varlistentry>
              <term>History-based autocompletion function</term>
              <listitem>
@@ -232,10 +252,8 @@
                 </para>
              </listitem>
           </varlistentry>
-        </variablelist>
-        <variablelist>
           <varlistentry>
-             <term> User-requestable command completion function</term>
+             <term>User-requestable command completion function</term>
              <listitem>
                 <para>
                   This command completion function compares character strings in
@@ -250,54 +268,22 @@
                 </para>
              </listitem>
           </varlistentry>
-        </variablelist>
-        <variablelist>
           <varlistentry>
              <term>Macro facility</term>
              <listitem>
                 <para>
-                  The macro facility provides up to 99 short-cut commands. In
+                  The macro facility provides up to 99 shortcut commands. In
                   addition to predefined commands you can create your own commands for use with
                   <application>&applet;</application>.
                 </para>
              </listitem>
           </varlistentry>
         </variablelist>
-     </para>
   </sect1>
 <!-- ================ Usage =======-->
   <sect1 id="command-line-usage"> 
      <title>Usage</title> 
-     <para>
-        You can use <application>&applet;</application> to perform the following
-        actions:
-        <itemizedlist> 
-          <listitem>
-             <para>
-                <link linkend="command-line-run">To run a command from the 
-                  <guilabel> entry field</guilabel></link>. 
-             </para>
-          </listitem> 
-          <listitem>
-             <para>
-                <link linkend="command-line-runmacro">To run a macro from the 
-                  <guilabel>entry field</guilabel></link>.
-             </para>
-          </listitem> 
-          <listitem>
-             <para>
-                <link linkend="command-line-filesys">To run a program from your
-                  file system</link>. 
-             </para>
-          </listitem> 
-          <listitem>
-             <para>
-                <link linkend="command-line-histlist">To run a previous command,
-                  macro, or program from the history list</link>. 
-             </para>
-          </listitem> 
-        </itemizedlist>
-     </para>
+     
      <sect2 id="command-line-run">
         <title>To Run a Command From the Entry Field</title>
         <para>
@@ -313,7 +299,7 @@
           </listitem> 
           <listitem>
              <para>
-                If you want, you can instruct <application>Mini-Commander
+                If you want, you can instruct <application>&applet;
                 </application> to try to complete the command name. Press the 
                 <keycap>Tab</keycap> key to give this instruction.
              </para>
@@ -333,15 +319,12 @@
         </orderedlist> 
         <para>
           If the 
-          <link linkend="autocompletion">Enable history based autocompletion
-             </link> option is selected then during steps 1 to 3
+          <xref linkend="autocompletion"/> option is selected then during steps 1 to 3,
           <application>&applet;</application> searches for a match in the history list.
-          If there is a match in the history list, then
-          <application>&applet;</application> completes the command. If you want to
-          accept the command, then press 
+          If there is a match in the history list, <application>&applet;</application> 
+          completes the command. To accept the command, press 
           <keycap>Return</keycap>. Alternatively, if you do not want to accept
-          the command then type more characters in the 
-          <guilabel> entry field</guilabel>.
+          the command, type more characters in the <guilabel>entry field</guilabel>.
         </para>
      </sect2>
      <sect2 id="command-line-runmacro"> 
@@ -349,15 +332,14 @@
         <para>
           To run a macro that is defined in the
           <application>&applet;</application> 
-          <link linkend="command-line-prefs-2">Macros</link> list, type the macro
+          <xref linkend="command-line-prefs-2"/> list, type the macro
           in the 
-          <guilabel> entry field</guilabel> and press 
+          <guilabel> entry field</guilabel>, then press 
           <keycap>Return</keycap>. 
         </para>
         <para>
           The 
-          <link linkend="autocompletion">history based autocompletion</link>
-          function also works for macros. 
+          <xref linkend="autocompletion"/> function also works for macros. 
         </para>
         <para>
           The following list shows some examples of
@@ -367,7 +349,7 @@
           <tgroup cols="2" colsep="0" rowsep="0"><colspec
              colwidth="29.29*"/><colspec colwidth="70.71*"/> 
              <tbody> 
-                <row> 
+                <row valign="top"> 
                   <entry>
                      <para>
                         <userinput>t</userinput>
@@ -379,7 +361,7 @@
                      </para>
                   </entry> 
                 </row> 
-                <row> 
+                <row valign="top"> 
                   <entry>
                      <para>
                         <userinput>n</userinput>
@@ -391,7 +373,7 @@
                      </para>
                   </entry> 
                 </row> 
-                <row> 
+                <row valign="top"> 
                   <entry>
                      <para>
                         <userinput>dictionary</userinput>
@@ -413,7 +395,7 @@
         <para>
           Click on the 
           <guibutton>Browser button</guibutton> to display the file system, then
-          double click on the program you want to run. 
+          double-click on the program you want to run. 
         </para>
         <para>
           You can use <application>&applet;</application> to run scripts,
@@ -430,7 +412,7 @@
              <listitem>
                 <para>
                   Click on the 
-                  <guibutton>History button</guibutton> to display the history
+                  <guibutton>History</guibutton> button to display the history
                   list. Click on a history list item to run the command, macro, or program that
                   you require.
                 </para>
@@ -449,139 +431,104 @@
         </para>
      </sect2> 
   </sect1>
-<!-- ============= Customization ============================= -->
+<!-- ============= Preferences ============================= -->
   <sect1 id="command-line-prefs-0"> 
-     <title>Settings</title> 
+     <title>Preferences</title> 
      <para>
         To configure <application>&applet;</application>, right-click on an area
         of the applet outside the interactive elements, then choose 
-        <guimenuitem> Properties</guimenuitem> from the popup menu.
+        <guimenuitem>Preferences</guimenuitem>.
      </para>
      <para>
         The 
-        <guilabel>Properties</guilabel> dialog contains the following tabbed
+        <guilabel>Preferences</guilabel> dialog contains the following tabbed
         sections:
      </para>
      <itemizedlist> 
         <listitem>
           <para>
-             <link linkend="command-line-prefs-1">General</link>
+             <xref linkend="command-line-prefs-1"/>
           </para>
         </listitem> 
         <listitem>
           <para>
-             <link linkend="command-line-prefs-2">Macros</link>
+             <xref linkend="command-line-prefs-2"/>
           </para>
         </listitem> 
      </itemizedlist> 
+     
      <sect2 id="command-line-prefs-1"> 
+     
         <title>General</title> 
-        <para>
-          <guilabel>Show time</guilabel>
-        </para>
-        <para>
-          Select this option to display the time in the lower part of the applet.
-          
-        </para>
-        <para>
-          Default: selected.
-        </para>
-        <para>
-          <guilabel>Show date </guilabel>
-        </para>
-        <para>
-          Select this option to display the date in the lower part of the applet.
-          
-        </para>
-        <para>
-          Default: unselected.
-        </para>
-        <para>
-          <guilabel>Show handle</guilabel>
-        </para>
-        <para>
-          Select this option to attach a handle to the edge of the applet. You
-          can use the handle to drag the <application>&applet;</application> display to
-          any location on your desktop. 
-        </para>
-        <para>
-          Default: unselected.
-        </para>
-        <para>
-          <guilabel>Show frame</guilabel>
-        </para>
-        <para>
-          Select this option to show a frame around the
-          <application>&applet;</application>.
-        </para>
-        <para>
-          Default: selected.
-        </para>
-        <para id="autocompletion">
-          <guilabel>Enable history based autocompletion</guilabel>
-        </para>
-        <para>
-          Select this option to instruct <application>&applet;</application> to
-          compare the 
-          <guilabel>entry field</guilabel> with the history list, and complete
-          commands when there is a match. 
-        </para>
-        <para>
-          Default: selected.
-        </para>
-        <para>
-          <guilabel>Applet width</guilabel>
-        </para>
-        <para>
-          Use this text box to specify the applet width in pixels.
-        </para>
-        <para>
-          Default: 148 pixels.
-        </para>
-        <para>
-          <guilabel>Applet height</guilabel>
-        </para>
-        <para>
-          Use this text box to specify the applet height in pixels.
-        </para>
-        <para>
-          Default: 48 pixels.
-        </para>
-        <para>
-          <guilabel>Command line height</guilabel>
-        </para>
-        <para>
-          Use this text box to specify the height of the entry field in pixels. 
-        </para>
-        <para>
-          Default: 24 pixels.
-        </para>
-        <para>
-          <guilabel>Command line foreground</guilabel>
-        </para>
-        <para>
-          Click on this button to display a color selection dialog for the
-          command line text. 
-        </para>
-        <para>
-          Default: light gray. 
-        </para>
-        <para>
-          <guilabel>Command line background</guilabel>
-        </para>
-        <para>
-          Click on this button to display a color selection dialog for the 
-          <interface> entry field</interface> background.
-        </para>
-        <para>
-          Default: black.
-        </para>
+        
+        <variablelist>
+		<varlistentry>
+		<term><guilabel>Show handle</guilabel> </term>
+		<listitem>
+		<para>Select this option to attach a handle to the edge of the applet. You
+		can use the handle to drag the <application>&applet;</application> display to 
+		any location on your desktop. </para>
+		<para>Default: unselected.</para>
+		</listitem>
+		</varlistentry>
+		<varlistentry>
+		<term><guilabel>Show frame</guilabel> </term>
+		<listitem>
+		<para>Select this option to show a frame around the <application>&applet;</application>.</para>
+		<para>Default: unselected.</para>
+		</listitem>
+		</varlistentry>
+		<varlistentry>
+		<term><guilabel>Enable history based autocompletion</guilabel> </term>
+		<listitem>
+		<para id="autocompletion">Select this option to instruct 
+		<application>&applet;</application> to compare the 
+		<guilabel>entry field</guilabel> with the history list, and complete 
+		commands when there is a match. </para>
+		<para>Default: selected.</para>
+		</listitem>
+		</varlistentry>
+		<varlistentry>
+		<term><guilabel>Applet width</guilabel> </term>
+		<listitem>
+		<para>Use this spin box to specify the applet width in pixels.</para>
+		<para>Default: 150 pixels.</para>
+		</listitem>
+		</varlistentry>
+		<varlistentry>
+		<term><guilabel>Use default theme colors</guilabel> </term>
+		<listitem>
+		<para>Select this option to use the colors from the default GNOME theme.</para>
+		<para>Default: selected.</para>
+		</listitem>
+		</varlistentry>
+		<varlistentry>
+		<term><guilabel>Command line foreground</guilabel> </term>
+		<listitem>
+		<para>Click on this button to select a color for the 
+		command line text. This button is unavailable if the <guilabel>Use default theme colors</guilabel>
+		check box is selected.</para>
+		<para>Default: white.</para>
+		</listitem>
+		</varlistentry>
+		<varlistentry>
+		<term><guilabel>Command line background</guilabel> </term>
+		<listitem>
+		<para>Click on this button to select a color for the 
+		<guilabel>entry field</guilabel> background. This button is unavailable if the 
+		<guilabel>Use default theme colors</guilabel> check box is selected.</para>
+		<para>Default: black.</para>
+		</listitem>
+		</varlistentry>	
+	</variablelist>
+        
      </sect2> 
+     
      <sect2 id="command-line-prefs-2"> 
         <title>Macros</title> 
         <para>
           This tabbed section contains a list of macros that you can use with
-          <application>&applet;</application>. The list contains the following columns: 
+          <application>&applet;</application>. The list contains the following information: 
           <itemizedlist> 
              <listitem>
                 <para>
