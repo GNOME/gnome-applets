@@ -18,15 +18,16 @@
 #define __GSWITCHIT_PLUGINS_H__
 
 #include "gtk/gtk.h"
-#include "libgswitchit/gswitchit_applet_config.h"
+#include "libgswitchit/gswitchit_config.h"
 #include "libgswitchit/gswitchit_plugin_manager.h"
 #include "libgswitchit/gswitchit_util.h"
 
 typedef struct _GSwitchItPluginsCapplet {
 	GSwitchItPluginContainer pluginContainer;
 	GtkWidget *capplet;
+	GSwitchItConfig config;
 	GSwitchItAppletConfig appletConfig;
-	GSwitchItXkbConfig xkbConfig;
+	GSwitchItKbdConfig kbdConfig;
 	GSwitchItPluginManager pluginManager;
 } GSwitchItPluginsCapplet;
 

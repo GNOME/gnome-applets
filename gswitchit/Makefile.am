@@ -14,7 +14,6 @@ noinst_LIBRARIES = libgswitchit-applet.a
 gnome_keyboard_applet_SOURCES = switch.c
 
 libgswitchit_applet_a_SOURCES = gswitchit-applet.c \
-                         gswitchit-capplet.c \
                          gswitchit-applet.h
 
 if ENABLE_FLAGS

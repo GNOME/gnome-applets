@@ -171,8 +171,7 @@ CappletPromotePlugin (GtkWidget * btnUp, GSwitchItPluginsCapplet * gswic)
 						     fullPath);
 		g_free (fullPath);
 		CappletFillActivePluginList (gswic);
-		GSwitchItAppletConfigSave (&gswic->appletConfig,
-					   &gswic->xkbConfig);
+		GSwitchItAppletConfigSave (&gswic->appletConfig);
 	}
 }
 
@@ -187,8 +186,7 @@ CappletDemotePlugin (GtkWidget * btnUp, GSwitchItPluginsCapplet * gswic)
 						    fullPath);
 		g_free (fullPath);
 		CappletFillActivePluginList (gswic);
-		GSwitchItAppletConfigSave (&gswic->appletConfig,
-					   &gswic->xkbConfig);
+		GSwitchItAppletConfigSave (&gswic->appletConfig);
 	}
 }
 
@@ -204,8 +202,7 @@ CappletDisablePlugin (GtkWidget * btnRemove,
 						     fullPath);
 		g_free (fullPath);
 		CappletFillActivePluginList (gswic);
-		GSwitchItAppletConfigSave (&gswic->appletConfig,
-					   &gswic->xkbConfig);
+		GSwitchItAppletConfigSave (&gswic->appletConfig);
 	}
 }
 
@@ -343,18 +340,16 @@ main (int argc, char **argv)
 	GSwitchItPluginContainerInit (&gswic.pluginContainer, confClient);
 	g_object_unref (confClient);
 
-	GSwitchItXkbConfigInit (&gswic.xkbConfig, confClient);
+	GSwitchItKbdConfigInit (&gswic.kbdConfig, confClient);
 	GSwitchItAppletConfigInit (&gswic.appletConfig, confClient);
 	GSwitchItPluginManagerInit (&gswic.pluginManager);
-	GSwitchItXkbConfigLoad (&gswic.xkbConfig);
+	GSwitchItKbdConfigLoad (&gswic.kbdConfig);
 	GSwitchItAppletConfigLoad (&gswic.appletConfig);
-	if (gswic.appletConfig.debugLevel != -1)
-		XklSetDebugLevel (gswic.appletConfig.debugLevel);
 	CappletSetup (&gswic);
 	bonobo_main ();
 	GSwitchItPluginManagerTerm (&gswic.pluginManager);
 	GSwitchItAppletConfigTerm (&gswic.appletConfig);
-	GSwitchItXkbConfigTerm (&gswic.xkbConfig);
+	GSwitchItKbdConfigTerm (&gswic.kbdConfig);
 	GSwitchItPluginContainerTerm (&gswic.pluginContainer);
 	XklConfigFreeRegistry ();
 	XklConfigTerm ();
@@ -368,14 +363,8 @@ GSwitchItPluginContainerReinitUi (GSwitchItPluginContainer * pc)
 {
 }
 
-void
-GSwitchItPluginLoadLocalizedGroupNames (GSwitchItPluginContainer
-					* pc,
-					const GroupDescriptionsBuffer
-					** outDescr)
+GSList *
+GSwitchItPluginLoadLocalizedGroupNames (GSwitchItPluginContainer * pc)
 {
-	static GroupDescriptionsBuffer namesToFill;
-	GSwitchItAppletConfigLoadGroupDescriptionsUtf8 (&
-							(((GSwitchItPluginsCapplet *) pc)->appletConfig), namesToFill);
-	*outDescr = (const GroupDescriptionsBuffer *) (&namesToFill);
+	return GSwitchItConfigLoadGroupDescriptionsUtf8 (&(((GSwitchItPluginsCapplet *) pc)->config));
 }

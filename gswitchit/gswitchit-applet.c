@@ -40,10 +40,6 @@
 static gboolean terminatedOnce = FALSE;
 static GSwitchItApplet *theAppletInstance = NULL;
 
-static void GSwitchItAppletCmdProps (BonoboUIComponent * uic,
-				     GSwitchItApplet * sia,
-				     const gchar * verb);
-
 static void GSwitchItAppletCmdCapplet (BonoboUIComponent * uic,
 				       GSwitchItApplet * sia,
 				       const gchar * verb);
@@ -82,7 +78,6 @@ static gboolean GSwitchItAppletKeyPressed (GtkWidget * widget,
 					   GSwitchItAppletConfig * config);
 
 static const BonoboUIVerb gswitchitAppletMenuVerbs[] = {
-	BONOBO_UI_UNSAFE_VERB ("Props", GSwitchItAppletCmdProps),
 	BONOBO_UI_UNSAFE_VERB ("Capplet", GSwitchItAppletCmdCapplet),
 	BONOBO_UI_UNSAFE_VERB ("Plugins", GSwitchItAppletCmdPlugins),
 	BONOBO_UI_UNSAFE_VERB ("About", GSwitchItAppletCmdAbout),
@@ -124,7 +119,7 @@ GSwitchItAppletReinitUi (GSwitchItApplet * sia)
 	/* also, update tooltips */
 	currentState = XklGetCurrentState ();
 	if (currentState->group >= 0) {
-		pname = sia->groupNames[currentState->group];
+		pname = g_slist_nth_data (sia->groupNames, currentState->group);
 		GSwitchItAppletSetTooltip (sia, pname);
 	}
 }
@@ -139,7 +134,7 @@ GSwitchItAppletConfigChanged (GConfClient * client,
 
 	GSwitchItAppletConfigLoad (&sia->appletConfig);
 	GSwitchItAppletConfigUpdateImages (&sia->appletConfig,
-					   &sia->xkbConfig);
+					   &sia->kbdConfig);
 	GSwitchItAppletConfigActivate (&sia->appletConfig);
 	GSwitchItPluginManagerTogglePlugins (&sia->pluginManager,
 					     &sia->pluginContainer,
@@ -157,15 +152,22 @@ GSwitchItAppletWindowCallback (Window win, Window parent,
 }
 
 static void
-GSwitchItAppletXkbConfigCallback (GSwitchItApplet * sia)
+GSwitchItAppletKbdConfigCallback (GSwitchItApplet * sia)
 {
 	XklDebug (100,
 		  "XKB configuration changed on X Server - reiniting...\n");
-	GSwitchItXkbConfigLoadCurrent (&sia->xkbConfig);
+	GSwitchItKbdConfigLoadCurrent (&sia->kbdConfig);
 	GSwitchItAppletConfigUpdateImages (&sia->appletConfig,
-					   &sia->xkbConfig);
-	GSwitchItAppletConfigLoadGroupDescriptionsUtf8 (&sia->appletConfig,
-							sia->groupNames);
+					   &sia->kbdConfig);
+	while (sia->groupNames != NULL)
+	{
+		GSList * nn = sia->groupNames;
+		sia->groupNames = g_slist_remove_link (sia->groupNames, nn);
+		g_free (nn->data);
+		g_slist_free_1 (nn);
+		
+	}
+	sia->groupNames = GSwitchItConfigLoadGroupDescriptionsUtf8 (&sia->config);
 
 	GSwitchItAppletReinitUi (sia);
 }
@@ -284,10 +286,10 @@ GSwitchItAppletPrepareDrawing (GSwitchItApplet * sia, int group)
 
 		if (XklGetBackendFeatures() & XKLF_MULTIPLE_LAYOUTS_SUPPORTED) {
 			char *fullLayoutName =
-			    (char *) g_slist_nth_data (sia->xkbConfig.
+			    (char *) g_slist_nth_data (sia->kbdConfig.
 						       layouts, group);
 			char *variantName;
-			if (!GSwitchItConfigSplitItems
+			if (!GSwitchItKbdConfigSplitItems
 			    (fullLayoutName, &layoutName, &variantName))
 				/* just in case */
 				layoutName = fullLayoutName;
@@ -305,7 +307,7 @@ GSwitchItAppletPrepareDrawing (GSwitchItApplet * sia, int group)
 				}
 			}
 		} else
-			layoutName = sia->groupNames[group];
+			layoutName = g_slist_nth_data (sia->groupNames, group);
 		align = gtk_alignment_new (0.5, 0.5, 1.0, 1.0);
 		label = gtk_label_new (layoutName);
 		if (allocLayoutName != NULL)
@@ -346,9 +348,10 @@ GSwitchItAppletFillNotebook (GSwitchItApplet * sia)
 		    GSwitchItPluginManagerDecorateWidget (&sia->
 							  pluginManager,
 							  page, grp,
-							  sia->
-							  groupNames[grp],
-							  &sia->xkbConfig);
+							  g_slist_nth_data (
+								sia->groupNames,
+								grp),
+							  &sia->kbdConfig);
 
 		gtk_notebook_append_page (notebook,
 					  decoratedPage ==
@@ -367,7 +370,7 @@ GSwitchItAppletRevalidateGroup (GSwitchItApplet * sia, int group)
 
 	gtk_notebook_set_current_page (GTK_NOTEBOOK (sia->notebook), group + 1);
 
-	pname = sia->groupNames[group];
+	pname = g_slist_nth_data (sia->groupNames, group);
 	GSwitchItAppletSetTooltip (sia, pname);
 }
 
@@ -435,7 +438,7 @@ GSwitchItAppletKeyPressed (GtkWidget *
 	case GDK_Return:
 	case GDK_space:
 	case GDK_KP_Space:
-		GSwitchItAppletConfigLockNextGroup ();
+		GSwitchItConfigLockNextGroup ();
 		return TRUE;
 	default:
 		break;
@@ -451,28 +454,10 @@ GSwitchItAppletButtonPressed (GtkWidget *
 {
 	if (event->button == 1 && event->type == GDK_BUTTON_PRESS) {
 		XklDebug (150, "Mouse button pressed on applet\n");
-		GSwitchItAppletConfigLockNextGroup ();
+		GSwitchItConfigLockNextGroup ();
 		return TRUE;
 	}
 	return FALSE;
-}
-
-void
-GSwitchItAppletCmdProps (BonoboUIComponent *
-			 uic, GSwitchItApplet * sia, const gchar * verb)
-{
-	/* Only one preferences window at a time */
-	if (sia->propsDialog) {
-		gtk_window_set_screen (GTK_WINDOW (sia->propsDialog),
-				       gtk_widget_get_screen (GTK_WIDGET
-							      (sia->
-							       applet)));
-
-		gtk_window_present (GTK_WINDOW (sia->propsDialog));
-		return;
-	}
-
-	GSwitchItAppletPropsCreate (sia);
 }
 
 void
@@ -607,7 +592,7 @@ GSwitchItAppletCleanupGroupsSubmenu (GSwitchItApplet * sia)
 	BonoboUIComponent *popup;
 	popup =
 	    panel_applet_get_popup_component (PANEL_APPLET (sia->applet));
-	for (i = XkbNumKbdGroups; --i >= 0;) {
+	for (i = 0;;i++) {
 		char path[80];
 		g_snprintf (path, sizeof (path),
 			    GROUPS_SUBMENU_PATH "/Group_%d", i);
@@ -616,7 +601,8 @@ GSwitchItAppletCleanupGroupsSubmenu (GSwitchItApplet * sia)
 			XklDebug (160,
 				  "Unregistered group menu item \'%s\'\n",
 				  path);
-		}
+		} else
+			break;
 	}
 
 	XklDebug (160, "Unregistered group submenu\n");
@@ -626,15 +612,14 @@ static void
 GSwitchItAppletSetupGroupsSubmenu (GSwitchItApplet * sia)
 {
 	unsigned i, nGroups;
-	char *pname;
+	GSList *nameNode = sia->groupNames;
 	BonoboUIComponent *popup;
 	GSList *layout;
 	popup =
 	    panel_applet_get_popup_component (PANEL_APPLET (sia->applet));
 	XklDebug (160, "Registered group submenu\n");
 	nGroups = XklGetNumGroups ();
-	pname = (char *) sia->groupNames;
-	layout = sia->xkbConfig.layouts;
+	layout = sia->kbdConfig.layouts;
 	for (i = 0; i < nGroups; i++) {
 		char verb[40];
 		BonoboUINode *node;
@@ -642,14 +627,14 @@ GSwitchItAppletSetupGroupsSubmenu (GSwitchItApplet * sia)
 		node = bonobo_ui_node_new ("menuitem");
 		bonobo_ui_node_set_attr (node, "name", verb);
 		bonobo_ui_node_set_attr (node, "verb", verb);
-		bonobo_ui_node_set_attr (node, "label", pname);
+		bonobo_ui_node_set_attr (node, "label", nameNode->data);
 		bonobo_ui_node_set_attr (node, "pixtype", "filename");
 		if (sia->appletConfig.showFlags) {
 			char *imageFile =
 			    GSwitchItAppletConfigGetImagesFile (&sia->
 								appletConfig,
 								&sia->
-								xkbConfig,
+								kbdConfig,
 								i);
 			if (imageFile != NULL)
 			{
@@ -665,8 +650,8 @@ GSwitchItAppletSetupGroupsSubmenu (GSwitchItApplet * sia)
 					      sia);
 		XklDebug (160,
 			  "Registered group menu item \'%s\' as \'%s\'\n",
-			  verb, pname);
-		pname += sizeof (sia->groupNames[0]);
+			  verb, nameNode->data);
+		nameNode = g_slist_next (nameNode);
 		layout = g_slist_next (layout);
 	}
 }
@@ -760,23 +745,23 @@ GSwitchItAppletInit (GSwitchItApplet * sia, PanelApplet * applet)
 				  GSwitchItAppletStateCallback,
 				  (void *) sia);
 	XklRegisterConfigCallback ((XklConfigCallback)
-				   GSwitchItAppletXkbConfigCallback,
+				   GSwitchItAppletKbdConfigCallback,
 				   (void *) sia);
 
 	confClient = gconf_client_get_default ();
 	GSwitchItPluginContainerInit (&sia->pluginContainer, confClient);
 	g_object_unref (confClient);
 
-	GSwitchItXkbConfigInit (&sia->xkbConfig, confClient);
+	GSwitchItConfigInit (&sia->config, confClient);
+	GSwitchItKbdConfigInit (&sia->kbdConfig, confClient);
 	GSwitchItAppletConfigInit (&sia->appletConfig, confClient);
 	GSwitchItPluginManagerInit (&sia->pluginManager);
-	GSwitchItXkbConfigLoadCurrent (&sia->xkbConfig);
+	GSwitchItKbdConfigLoadCurrent (&sia->kbdConfig);
 	GSwitchItAppletConfigLoad (&sia->appletConfig);
 	GSwitchItAppletConfigUpdateImages (&sia->appletConfig,
-					   &sia->xkbConfig);
+					   &sia->kbdConfig);
 	GSwitchItAppletConfigActivate (&sia->appletConfig);
-	GSwitchItAppletConfigLoadGroupDescriptionsUtf8 (&sia->appletConfig,
-							sia->groupNames);
+	sia->groupNames = GSwitchItConfigLoadGroupDescriptionsUtf8 (&sia->config);
 	GSwitchItPluginManagerInitEnabledPlugins (&sia->pluginManager,
 						  &sia->pluginContainer,
 						  sia->appletConfig.
@@ -822,7 +807,8 @@ GSwitchItAppletTerm (PanelApplet * applet, GSwitchItApplet * sia)
 	GSwitchItPluginManagerTermInitializedPlugins (&sia->pluginManager);
 	GSwitchItPluginManagerTerm (&sia->pluginManager);
 	GSwitchItAppletConfigTerm (&sia->appletConfig);
-	GSwitchItXkbConfigTerm (&sia->xkbConfig);
+	GSwitchItKbdConfigTerm (&sia->kbdConfig);
+	GSwitchItConfigTerm (&sia->config);
 	GSwitchItPluginContainerTerm (&sia->pluginContainer);
 	GSwitchItAppletCleanupNotebook (sia);
 
@@ -864,13 +850,8 @@ GSwitchItPluginContainerReinitUi (GSwitchItPluginContainer * pc)
 	GSwitchItAppletReinitUi ((GSwitchItApplet *) pc);
 }
 
-void
-GSwitchItPluginLoadLocalizedGroupNames (GSwitchItPluginContainer
-					* pc,
-					const GroupDescriptionsBuffer
-					** outDescr)
+GSList *
+GSwitchItPluginLoadLocalizedGroupNames (GSwitchItPluginContainer * pc)
 {
-	*outDescr =
-	    (const GroupDescriptionsBuffer
-	     *) (&(((GSwitchItApplet *) pc)->groupNames));
+	return (((GSwitchItApplet *) pc)->groupNames);
 }

@@ -19,23 +19,23 @@
 
 #include <panel-applet.h>
 
-#include "libgswitchit/gswitchit_applet_config.h"
+#include "libgswitchit/gswitchit_config.h"
 #include "libgswitchit/gswitchit_plugin_manager.h"
 
 typedef struct _GSwitchItApplet {
 	GSwitchItPluginContainer pluginContainer;
 
+	GSwitchItConfig config;
 	GSwitchItAppletConfig appletConfig;
-	GSwitchItXkbConfig xkbConfig;
+	GSwitchItKbdConfig kbdConfig;
 	GSwitchItPluginManager pluginManager;
 
 	GtkWidget *applet;
 	GtkWidget *notebook;
 	GtkWidget *ebox;
 	GtkWidget *aboutDialog;
-	GtkWidget *propsDialog;
 
-	GroupDescriptionsBuffer groupNames;
+	GSList *groupNames;
 } GSwitchItApplet;
 
 extern void GSwitchItAppletRevalidate (GSwitchItApplet * sia);
@@ -47,8 +47,6 @@ extern void GSwitchItAppletReinitUi (GSwitchItApplet * sia);
 extern GdkFilterReturn GSwitchItAppletFilterXEvt (GdkXEvent * xevent,
 						  GdkEvent * event,
 						  GSwitchItApplet * sia);
-
-extern void GSwitchItAppletPropsCreate (GSwitchItApplet * sia);
 
 extern gboolean GSwitchItAppletNew (PanelApplet * applet);
 
