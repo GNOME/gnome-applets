@@ -1,1 +1,1 @@
-SUBDIRS = C it
+SUBDIRS = C hu it
