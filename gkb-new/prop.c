@@ -54,6 +54,19 @@ struct _PropWg
   GtkWidget *newkeymap, *delkeymap;
 };
 
+typedef struct _GKBpreset GKBpreset;
+struct _GKBpreset
+{
+  GtkWidget *country_item, *lang_item, *keymap_item; /* Tree and list items */
+  GHashTable *name, *lang, *country; /* Names for items */
+  gchar *command; /* Full switching command */
+  gchar *codepage; /* Codepage, information only */
+  gchar *flag; /* Flag filename */
+  gchar *label; /* Label for label mode */
+  gchar *arch; /* Sun, IBM, i386, or DEC */
+  gchar *type; /* 101, 102, 105, microsoft, or any type */
+};
+
 static void prophelp_cb (AppletWidget * widget, gpointer data);
 static void makenotebook (GKB * gkb, PropWg * actdata, int i);
 static void advanced_show (GKB * gkb);
@@ -61,13 +74,107 @@ static PropWg *cp_prop (Prop * data);
 static GList *copy_props (GKB * gkb);
 static Prop *cp_propwg (PropWg * data);
 static GList *copy_propwgs (GKB * gkb);
+static GKBpreset * gkbpreset_load (const char *filename);
 
 #include "prop_copy.h"
 #include "prop_show.h"
 #include "prop_cb.h"
 
+static GList *
+gkbpresets ()
+{
+ GList *list;
+ GSList *dir_list = NULL;
+ GSList *li;
+ for(li = dir_list; li != NULL; li = li->next) {
+ }
+}
+
+static GKBpreset *
+gkbpreset_load (const char *filename)
+{
+        GKBpreset *retval = retval = g_new0(GKBpreset, 1);
+        char confpath[PATH_MAX];
+        char *key, *value;
+        void *iter;
+
+        g_snprintf(confpath, sizeof(confpath), "=%s=/Desktop Entry", filename);
+
+        retval->name = g_hash_table_new(g_str_hash, g_str_equal);
+        retval->lang = g_hash_table_new(g_str_hash, g_str_equal);
+        retval->country = g_hash_table_new(g_str_hash, g_str_equal);
+
+        iter = gnome_config_init_iterator(confpath);
+        while((iter = gnome_config_iterator_next(iter, &key, &value))) {
+		/* we need to keep things where the value is empty however */
+                if(!*key) {
+                        g_free(key);
+                        g_free(value);
+                        continue;
+                }
+                if(!strcmp(key, "Name")) {
+                        g_hash_table_insert(retval->name, g_strdup("C"), value);
+                } else if(!strncmp(key, "Name[", 5)) {
+                        char *mylang, *ctmp;
+
+                        mylang = key + strlen("Name[");
+                        ctmp = strchr(mylang, ']');
+                        if(ctmp) *ctmp = '\0';
+
+                        g_hash_table_insert(retval->name, g_strdup(mylang), value);
+                        g_free(key);
+                } else if(!strcmp(key, "Language")) {
+                        g_hash_table_insert(retval->lang, g_strdup("C"), value);
+                } else if(!strncmp(key, "Language[", strlen("Language["))) {
+                        char *mylang, *ctmp;
+
+                        mylang = key + strlen("Language[");
+                        ctmp = strchr(mylang, ']');
+                        if(ctmp) *ctmp = '\0';
+
+                        g_hash_table_insert(retval->lang, g_strdup(mylang), value);
+                        g_free(key);
+                } else if(!strcmp(key, "Country")) {
+                        g_hash_table_insert(retval->country, g_strdup("C"), value);
+                } else if(!strncmp(key, "Country[", strlen("Country["))) {
+                        char *mylang, *ctmp;
+
+                        mylang = key + strlen("Country[");
+                        ctmp = strchr(mylang, ']');
+                        if(ctmp) *ctmp = '\0';
+
+                        g_hash_table_insert(retval->country, g_strdup(mylang), value);
+                        g_free(key);
+                } else if(!strcmp(key, "Codepage")) {
+                        retval->codepage = value;
+                        g_free(key);
+                } else if(!strcmp(key, "Flag")) {
+                        retval->flag = value;
+                        g_free(key);
+                } else if(!strcmp(key, "Label")) {
+                        retval->label = value;
+                        g_free(key);
+                } else if(!strcmp(key, "Type")) {
+                        retval->type = value;
+                        g_free(key);
+                } else if(!strcmp(key, "Arch")) {
+                        retval->arch = value;
+                        g_free(key);
+                } else if(!strcmp(key, "Command")) {
+                        retval->command = value;
+                        g_free(key);
+                } else {
+                        g_free(key);
+                        g_free(value);
+                }
+        }
+
+        return retval;
+}
+
+
 static void
-genitems(GtkWidget *tree)
+treeitems_create(GtkWidget *tree, GtkWidget *list)
 {
 	gchar *langnames[] = { N_("English"), N_("Spanish"), N_("German"), N_("French"),
                                N_("Hungarian")};
@@ -417,7 +524,6 @@ makenotebook (GKB * gkb, PropWg * actdata, int i)
   actdata->tree = gtk_tree_new ();
   gtk_widget_ref (actdata->tree);
 
-  genitems(actdata->tree);
 
   gtk_widget_show (actdata->tree);
 
@@ -441,6 +547,8 @@ makenotebook (GKB * gkb, PropWg * actdata, int i)
 
   actdata->list = gtk_list_new ();
   gtk_widget_ref (actdata->list);
+
+  treeitems_create(actdata->tree,actdata->list);
 
   gtk_widget_show (actdata->list);
   gtk_scrolled_window_add_with_viewport (GTK_SCROLLED_WINDOW(actdata->scrolledwinl), actdata->list);
