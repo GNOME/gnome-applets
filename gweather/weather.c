@@ -20,6 +20,7 @@
 #include <string.h>
 #include <ctype.h>
 #include <math.h>
+#include <values.h>
 
 #ifdef __FreeBSD__
 #include <sys/types.h>
@@ -38,6 +39,7 @@
 void
 close_cb (GnomeVFSAsyncHandle *handle, GnomeVFSResult result, gpointer data);
 static gchar* formatWeatherMsg (gchar* msg);
+static gboolean calc_sun (WeatherInfo *info);
 
 /* FIXME: these global variables will cause conflicts when multiple
 ** instances of the applets update at the same time
@@ -66,8 +68,49 @@ static gboolean weather_radar = FALSE;
 #define VISIBILITY_SM_TO_KM(sm)  ((sm) * 1.609344)
 #define VISIBILITY_SM_TO_M(sm)   (VISIBILITY_SM_TO_KM(sm) * 1000)
 
+#define DEGREES_TO_RADIANS(deg)   ((fmod(deg,360.) / 180.) * M_PI)
+#define RADIANS_TO_DEGREES(rad)   ((rad) * 180. / M_PI)
+#define RADIANS_TO_HOURS(rad)     ((rad) * 12. / M_PI)
 
-WeatherLocation *weather_location_new (const gchar *untrans_name, const gchar *trans_name, const gchar *code, const gchar *zone, const gchar *radar)
+/*
+ * Convert string of the form "DD-MM-SSH" to radians
+ * DD:degrees (to 3 digits), MM:minutes, SS:seconds H:hemisphere (NESW)
+ * Return value is positive for N,E; negative for S,W.
+ */
+gdouble dmsh2rad (const gchar *latlon)
+{
+    char *p1, *p2;
+    int deg, min, sec, dir;
+    gdouble value;
+    
+    if (latlon == NULL)
+	return DBL_MAX;
+    p1 = strchr(latlon, '-');
+    p2 = strrchr(latlon, '-');
+    if (p1 == NULL || p1 == latlon) {
+        return DBL_MAX;
+    } else if (p1 == p2) {
+	sscanf (latlon, "%u-%u", &deg, &min);
+	sec = 0;
+    } else if (p2 == 1 + p1) {
+	return DBL_MAX;
+    } else {
+	sscanf (latlon, "%u-%u-%u", &deg, &min, &sec);
+    }
+    if (deg > 180 || min >= 60 || sec >= 60)
+	return DBL_MAX;
+    value = (gdouble)((deg * 60 + min) * 60 + sec) * M_PI / 648000.;
+
+    dir = toupper(latlon[strlen(latlon) - 1]);
+    if (dir == 'W' || dir == 'S')
+	value = -value;
+    else if (dir != 'E' && dir != 'N' && (value != 0.0 || dir != '0'))
+	value = DBL_MAX;
+    return value;
+}
+
+WeatherLocation *weather_location_new (const gchar *untrans_name, const gchar *trans_name, const gchar *code,
+				       const gchar *zone, const gchar *radar, const gchar *coordinates)
 {
     WeatherLocation *location;
 
@@ -102,13 +145,25 @@ WeatherLocation *weather_location_new (const gchar *untrans_name, const gchar *t
         location->zone_valid = TRUE;
     }
 
+    char lat[12], lon[12];
+    if (coordinates && sscanf(coordinates, "%s %s", lat, lon) == 2) {
+        location->coordinates = g_strdup(coordinates);
+        location->latitude = dmsh2rad (lat);
+	location->longitude = dmsh2rad (lon);
+    } else {
+        location->coordinates = g_strdup("---");
+        location->latitude = DBL_MAX;
+        location->longitude = DBL_MAX;
+    }
+    location->latlon_valid = (location->latitude < DBL_MAX && location->longitude < DBL_MAX);
+    
     return location;
 }
 
 WeatherLocation *weather_location_config_read (PanelApplet *applet)
 {
     WeatherLocation *location;
-    gchar *untrans_name, *trans_name, *code, *zone, *radar;
+    gchar *untrans_name, *trans_name, *code, *zone, *radar, *coordinates;
     
     untrans_name = panel_applet_gconf_get_string(applet, "location0", NULL);
     if (!untrans_name) {
@@ -162,6 +217,7 @@ WeatherLocation *weather_location_config_read (PanelApplet *applet)
         g_free (zone);
 		zone = g_strdup ("PAZ021");
     }
+
     radar = panel_applet_gconf_get_string(applet, "location3", NULL);
     if (!radar) {
         if (g_strstr_len("DEFAULT_RADAR", 13, N_("DEFAULT_RADAR")) == NULL) {
@@ -178,13 +234,22 @@ WeatherLocation *weather_location_config_read (PanelApplet *applet)
         radar = g_strdup ("pit");
     }
 
-    location = weather_location_new(untrans_name, trans_name, code, zone, radar);
+    coordinates = panel_applet_gconf_get_string(applet, "coordinates", NULL);
+    if (coordinates && g_strstr_len ("DEFAULT_COORDINATES", 19, coordinates) ) {
+        g_free (coordinates);
+	coordinates = NULL;
+    }
+    
+    
+    location = weather_location_new(untrans_name, trans_name, code, zone, radar, coordinates);
+    
     g_free (untrans_name);
     g_free (trans_name);
     g_free (code);
     g_free (zone);
     g_free (radar);
-
+    g_free (coordinates);
+    
     return location;
 }
 
@@ -193,7 +258,11 @@ WeatherLocation *weather_location_clone (const WeatherLocation *location)
     WeatherLocation *clone;
 
     clone = weather_location_new (location->untrans_name, location->trans_name, 
-                                                   location->code, location->zone, location->radar);
+				  location->code, location->zone,
+				  location->radar, location->coordinates);
+    clone->latitude = location->latitude;
+    clone->longitude = location->longitude;
+    clone->latlon_valid = location->latlon_valid;
     return clone;
 }
 
@@ -345,7 +414,8 @@ static inline void request_done (GnomeVFSAsyncHandle *handle, WeatherInfo *info)
     	return;
 
     gnome_vfs_async_close(handle, close_cb, info->applet);
-    
+
+    info->sunValid = info->valid && calc_sun(info);
     return;
 }
 
@@ -427,100 +497,38 @@ static void metar_init_re (void)
     regcomp(&metar_re[COND_RE], COND_RE_STR, REG_EXTENDED);
 }
 
-static inline gint days_in_month (gint month, gint year)
+/* Return time of weather report as secs since epoch UTC */
+static time_t make_time (gint utcDate, gint utcHour, gint utcMin)
 {
-    if (month == 1)
-        return ((year % 4) == 0) ? 29 : 28;
-    else if (((month <= 6) && (month % 2 == 0)) || ((month >=7) && (month % 2 != 0)))
-        return 31;
-    else
-        return 30;
-}
+    const time_t now = time(NULL);
+    struct tm tm;
 
-/* FIX - there *must* be a simpler, less stupid way to do this!... */
-time_t make_time (gint date, gint hour, gint min)
-{
-    struct tm *tm;
-    struct tm tms;
-    time_t now;
-    gint loc_mday, loc_hour, gm_mday, gm_hour;
-    gint hour_diff;  /* local time = UTC - hour_diff */
-    gint is_dst;
+    gmtime_r (&now, &tm);
 
-    now = time(NULL);
-
-    tm = gmtime(&now);
-    gm_mday = tm->tm_mday;
-    gm_hour = tm->tm_hour;
-    memcpy(&tms, tm, sizeof(struct tm));
-
-    tm = localtime(&now);
-    loc_mday = tm->tm_mday;
-    loc_hour = tm->tm_hour;
-    is_dst = tm->tm_isdst;
-
-    /* Estimate timezone */
-    if (gm_mday == loc_mday)
-        hour_diff = gm_hour - loc_hour;
-    else
-        if ((gm_mday == loc_mday + 1) || ((gm_mday == 1) && (loc_mday >= 27)))
-            hour_diff = gm_hour + (24 - loc_hour);
-        else
-            hour_diff = -((24 - gm_hour) + loc_hour);
-
-    /* Make time */
-    tms.tm_min  = min;
-    tms.tm_sec  = 0;
-    tms.tm_hour = hour - hour_diff;
-    tms.tm_mday = date;
-    tms.tm_isdst = is_dst;
-    if (tms.tm_hour < 0) {
-        tms.tm_hour += 24;
-        --tms.tm_mday;
-        if (tms.tm_mday < 1) {
-            --tms.tm_mon;
-            if (tms.tm_mon < 0) {
-                tms.tm_mon = 11;
-                --tms.tm_year;
-            }
-            tms.tm_mday = days_in_month(tms.tm_mon, tms.tm_year + 1900);
-        }
-    } else if (tms.tm_hour > 23) {
-        tms.tm_hour -= 24;
-        ++tms.tm_mday;
-        if (tms.tm_mday > days_in_month(tms.tm_mon, tms.tm_year + 1900)) {
-            ++tms.tm_mon;
-            if (tms.tm_mon > 11) {
-                tms.tm_mon = 0;
-                ++tms.tm_year;
-            }
-            tms.tm_mday = 1;
-        }
+    /* If last reading took place just before midnight UTC on the first, adjust the
+     * date downward.  This ASSUMES that the reading won't be more than 24 hrs old! */
+    if (utcDate > tm.tm_mday) {
+        tm.tm_mday--;
+    } else {
+        tm.tm_mday = utcDate;
     }
+    tm.tm_hour = utcHour;
+    tm.tm_min  = utcMin;
+    tm.tm_sec  = 0;
 
-    return mktime(&tms);
+    /* mktime() assumes value is local, not UTC.  Use tm_gmtoff to compensate */
+   return tm.tm_gmtoff + mktime(&tm);
 }
 
 static gboolean metar_tok_time (gchar *tokp, WeatherInfo *info)
 {
-    gchar sday[3], shr[3], smin[3];
     gint day, hr, min;
 
     if (regexec(&metar_re[TIME_RE], tokp, 0, NULL, 0) == REG_NOMATCH)
         return FALSE;
 
-    strncpy(sday, tokp, 2);
-    sday[2] = 0;
-    day = atoi(sday);
-
-    strncpy(shr, tokp+2, 2);
-    shr[2] = 0;
-    hr = atoi(shr);
-
-    strncpy(smin, tokp+4, 2);
-    smin[2] = 0;
-    min = atoi(smin);
-
+    sscanf(tokp, "%2u%2u%2u", &day, &hr, &min);
+    
     info->update = make_time(day, hr, min);
 
     return TRUE;
@@ -779,6 +787,198 @@ static inline gdouble calc_apparent (WeatherInfo *info)
     return apparent;
 }
 
+
+/*
+ * Formulas from:
+ * "Practical Astronomy With Your Calculator" (3e), Peter Duffett-Smith
+ * Cambridge University Press 1988
+ *
+ * Planetary Mean Orbit parameters from http://ssd.jpl.nasa.gov/elem_planets.html,
+ * converting longitudes from heliocentric to geocentric coordinates
+ * epoch J2000 (2000 Jan 1 12:00:00 UTC)
+ */
+
+#define EPOCH_TO_J2000(t)       (t-946728000)
+#define MEAN_ECLIPTIC_LONGITUDE 280.46435
+#define PERIGEE_LONGITUDE       282.94719
+#define ECCENTRICITY            0.01671002
+#define MEAN_ECLIPTIC_OBLIQUITY 
+#define SOL_PROGRESSION         (360./365.242191)
+
+/*
+ * Convert ecliptic longitude (radians) to equitorial coordinates,
+ * expressed as right ascension (hours) and declination (radians)
+ * Assume ecliptic latitude is 0.0
+ */
+static void ecl2equ (gdouble time, gdouble eclipLon,
+		     gdouble *ra, gdouble *decl)
+{
+    gdouble jc = EPOCH_TO_J2000(time) / (36525. * 86400.);
+    gdouble mEclipObliq = DEGREES_TO_RADIANS(23.439291667
+					     - .013004166 * jc
+					     - 1.666667e-7 * jc * jc
+					     + 5.027777e-7 * jc * jc * jc);
+    *ra = RADIANS_TO_HOURS(atan2 ( sin(eclipLon) * cos(mEclipObliq), cos(eclipLon)));
+    if (*ra < 0.)
+        *ra += 24.;
+    *decl = asin ( sin(mEclipObliq) * sin(eclipLon) );
+}
+
+/*
+ * Calculate rising and setting times of an object
+ * based on it equitorial coordinates
+ */
+static void gstObsv (gdouble ra, gdouble decl,
+		     gdouble obsLat, gdouble obsLon,
+		     gdouble *rise, gdouble *set)
+{
+    double a = acos(-tan(obsLat) * tan(decl));
+    double b;
+
+    if (isnan(a)) {
+	*set = *rise = a;
+	return;
+    }
+    a = RADIANS_TO_HOURS(a);
+    b = 24. - a + ra;
+    a += ra;
+    a -= RADIANS_TO_HOURS(obsLon);
+    b -= RADIANS_TO_HOURS(obsLon);
+    if ((a = fmod(a, 24.)) < 0)
+      a += 24.;
+    if ((b = fmod(b, 24.)) < 0)
+      b += 24.;
+
+    *set = a;
+    *rise = b;
+}
+
+
+static gdouble t0(time_t date)
+{
+    register gdouble t = ((gdouble)(EPOCH_TO_J2000(date) / 86400)) / 36525.0;
+    gdouble t0 = fmod( 6.697374558 + 2400.051366 * t + 2.5862e-5 * t * t, 24.);
+    if (t0 < 0.)
+        t0 += 24.;
+    return t0;
+}
+
+
+
+gboolean sun (time_t t, gdouble obsLat, gdouble obsLon,
+	  time_t *rise, time_t *set)
+{
+    time_t gm_midn;
+    time_t lcl_midn;
+    gdouble gm_hoff;
+    
+    /* Approximate preceding local midnight at observer's longitude */
+    gm_midn = t - (t % 86400);
+    gm_hoff = floor((RADIANS_TO_DEGREES(obsLon) + 7.5) / 15.);
+    lcl_midn = gm_midn - 3600. * gm_hoff;
+    if (t - lcl_midn >= 86400)
+        lcl_midn += 86400;
+    else if (lcl_midn > t)
+        lcl_midn -= 86400;
+    
+    /* 
+     * Ecliptic longitude of the sun at midnight local time
+     * Start with an estimate based on a fixed daily rate
+     */
+    gdouble ndays = EPOCH_TO_J2000(lcl_midn) / 86400.;
+    gdouble meanAnom = DEGREES_TO_RADIANS(ndays * SOL_PROGRESSION
+					  + MEAN_ECLIPTIC_LONGITUDE - PERIGEE_LONGITUDE);
+    
+    /*
+     * Approximate solution of Kepler's equation:
+     * Find E which satisfies  E - e sin(E) = M (mean anomaly)
+     */
+    gdouble eccenAnom = meanAnom;
+    gdouble delta;
+    gdouble lambda;
+    
+    while (1e-12 < fabs( delta = eccenAnom - ECCENTRICITY * sin(eccenAnom) - meanAnom))
+    {
+	eccenAnom -= delta / (1.- ECCENTRICITY * cos(eccenAnom));
+    }
+
+    /* Sun's longitude on the ecliptic */
+    lambda = fmod( DEGREES_TO_RADIANS ( PERIGEE_LONGITUDE )
+		   + 2. * atan( sqrt((1.+ECCENTRICITY)/(1.-ECCENTRICITY))
+				* tan ( eccenAnom / 2. ) ),
+		   2. * M_PI);
+    
+    /* Calculate equitorial coordinates of sun at previous and next local midnights */
+
+    gdouble ra1, ra2, decl1, decl2;
+    
+    ecl2equ (lcl_midn, lambda, &ra1, &decl1);
+    ecl2equ (lcl_midn + 86400., lambda + DEGREES_TO_RADIANS(SOL_PROGRESSION), &ra2, &decl2);
+    
+    /* Convert to rise and set times assuming the earth were to stay in its position
+     * in its orbit around the sun.  This will soon be followed by interpolating
+     * between the two
+     */
+
+    gdouble rise1, rise2, set1, set2;
+    gstObsv (ra1, decl1, obsLat, obsLon - (gm_hoff * M_PI / 12.), &rise1, &set1);
+    gstObsv (ra2, decl2, obsLat, obsLon - (gm_hoff * M_PI / 12.), &rise2, &set2);
+    
+    /* TODO: include calculations for regions near the poles. */
+    if (isnan(rise1) || isnan(rise2))
+        return FALSE;
+
+    gdouble tt = t0(lcl_midn);
+    gdouble t00 = tt - (gm_hoff + RADIANS_TO_HOURS(obsLon)) * 1.002737909;
+
+    if (t00 < 0.)
+	t00 += 24.;
+
+    if (rise1 < t00) {
+        rise1 += 24.;
+        rise2 += 24.;
+    }
+    if (set1 < t00) {
+        set1  += 24.;
+        set2  += 24.;
+    }
+    
+    /*
+     * Interpolate between the two
+     */
+    rise1 = (24.07 * rise1 - t00 * (rise2 - rise1)) / (24.07 + rise1 - rise2);
+    set1 = (24.07 * set1 - t00 * (set2 - set1)) / (24.07 + set1 - set2);
+
+    decl2 = (decl1 + decl2) / 2.;
+    gdouble x = DEGREES_TO_RADIANS(0.830725);
+    gdouble u = acos ( sin(obsLat) / cos(decl2) );
+    gdouble dt =  RADIANS_TO_HOURS ( asin ( sin(x) / sin(u) )
+				     / cos(decl2) );
+    
+    rise1 = (rise1 - dt - tt) * 0.9972695661;
+    set1  = (set1 + dt - tt) * 0.9972695661;
+    if (rise1 < 0.)
+      rise1 += 24;
+    else if (rise1 >= 24.)
+      rise1 -= 24.;
+    if (set1 < 0.)
+      set1 += 24;
+    else if (set1 >= 24.)
+      set1 -= 24.;
+    
+    *rise = (rise1 * 3600.) + lcl_midn;
+    *set = (set1 * 3600.) + lcl_midn;
+    return TRUE;
+}
+
+
+static gboolean calc_sun (WeatherInfo *info)
+{
+  return info->location->latlon_valid
+    && sun(info->update,
+	   info->location->latitude, info->location->longitude,
+	   &info->sunrise, &info->sunset);
+}
 
 static gboolean metar_tok_temp (gchar *tokp, WeatherInfo *info)
 {
@@ -1250,7 +1450,7 @@ static void iwin_finish_read(GnomeVFSAsyncHandle *handle, GnomeVFSResult result,
         info->forecast = formatWeatherMsg(g_strdup (info->iwin_buffer));
     }
     else if (result != GNOME_VFS_OK) {
-	 g_print("%s", gnome_vfs_result_to_string(result));
+	g_print("%s", gnome_vfs_result_to_string(result));
         g_warning("Failed to get IWIN data.\n");
     } else {
         gnome_vfs_async_read(handle, body, DATA_SIZE - 1, iwin_finish_read, gw_applet);
@@ -1874,13 +2074,14 @@ gboolean _weather_info_fill (GWeatherApplet *applet, WeatherInfo *info, WeatherL
     	info->location = weather_location_clone(location);
     } else {
         location = info->location;
-	    if (info->forecast)
-	    	g_free (info->forecast);
-	    info->forecast = NULL;
-		if (info->radar != NULL) {
-			gdk_pixmap_unref (info->radar);
-			info->radar = NULL;
-		}
+	if (info->forecast)
+	    g_free (info->forecast);
+
+	info->forecast = NULL;
+	if (info->radar != NULL) {
+	    gdk_pixmap_unref (info->radar);
+	    info->radar = NULL;
+	}
     }
 
     /* Update in progress */
@@ -1902,6 +2103,9 @@ gboolean _weather_info_fill (GWeatherApplet *applet, WeatherInfo *info, WeatherL
     info->windspeed = -1;
     info->pressure = -1.0;
     info->visibility = -1.0;
+    info->sunValid = FALSE;
+    info->sunrise = 0;
+    info->sunset = 0;
     info->forecast = NULL;
     info->radar = NULL;
     info->radar_url = NULL;
@@ -1982,6 +2186,9 @@ WeatherInfo *weather_info_config_read (PanelApplet *applet)
     info->windspeed = -1;
     info->pressure = -1.0;
     info->visibility = -1.0;
+    info->sunValid = FALSE;
+    info->sunrise = 0;
+    info->sunset = 0;
     info->forecast = g_strdup ("None");
     info->radar = NULL;  /* FIX */
     info->requests_pending = FALSE;
@@ -2109,9 +2316,9 @@ const gchar *weather_info_get_update (WeatherInfo *info)
         return "-";
 
     if (info->update != 0) {
-        struct tm *tm;
-        tm = localtime(&info->update);
-        if (strftime(buf, sizeof(buf), _("%a, %b %d / %H:%M"), tm) <= 0)
+        struct tm tm;
+        localtime_r(&info->update, &tm);
+        if (strftime(buf, sizeof(buf), _("%a, %b %d / %H:%M"), &tm) <= 0)
 		strcpy (buf, "???");
 	buf[sizeof(buf)-1] = '\0';
     } else {
@@ -2383,6 +2590,46 @@ const gchar *weather_info_get_visibility (WeatherInfo *info)
     return buf;
 }
 
+const gchar *weather_info_get_sunrise (WeatherInfo *info)
+{
+    static gchar buf[200];
+    struct tm tm;
+    
+    g_return_val_if_fail(info && info->location, NULL);
+    
+    if (!info->location->latlon_valid)
+        return "-";
+    if (!info->valid)
+        return "-";
+    if (!calc_sun (info))
+        return "-";
+
+    localtime_r(&info->sunrise, &tm);
+    if (strftime(buf, sizeof(buf), _("%H:%M"), &tm) <= 0)
+        return "-";
+    return buf;
+}
+
+const gchar *weather_info_get_sunset (WeatherInfo *info)
+{
+    static gchar buf[200];
+    struct tm tm;
+    
+    g_return_val_if_fail(info && info->location, NULL);
+    
+    if (!info->location->latlon_valid)
+        return "-";
+    if (!info->valid)
+        return "-";
+    if (!calc_sun (info))
+        return "-";
+
+    localtime_r(&info->sunset, &tm);
+    if (strftime(buf, sizeof(buf), _("%H:%M"), &tm) <= 0)
+        return "-";
+    return buf;
+}
+
 const gchar *weather_info_get_forecast (WeatherInfo *info)
 {
     g_return_val_if_fail(info != NULL, NULL);
@@ -2422,16 +2669,21 @@ gchar *weather_info_get_weather_summary (WeatherInfo *info)
 static GdkPixbuf **weather_pixbufs_mini = NULL;
 static GdkPixbuf **weather_pixbufs = NULL;
 
-#define PIX_UNKNOWN   0
-#define PIX_SUN       1
-#define PIX_SUNCLOUD  2
-#define PIX_CLOUD     3
-#define PIX_RAIN      4
-#define PIX_TSTORM    5
-#define PIX_SNOW      6
-#define PIX_FOG       7
+enum
+{
+	PIX_UNKNOWN,
+	PIX_SUN,
+	PIX_SUNCLOUD,
+	PIX_CLOUD,
+	PIX_RAIN,
+	PIX_TSTORM,
+	PIX_SNOW,
+	PIX_FOG,
+	PIX_MOON,
+	PIX_MOONCLOUD,
 
-#define NUM_PIX       8
+	NUM_PIX
+};
 
 #if 0
 static void
@@ -2454,7 +2706,20 @@ static void init_pixbufs (void)
 {
     static gboolean initialized = FALSE;
     GtkIconTheme *icon_theme;
-
+    static char *icons[NUM_PIX] = {
+      "stock_unknown",
+      "stock_weather-sunny",
+      "stock_weather-few-clouds",
+      "stock_weather-cloudy",
+      "stock_weather-showers",
+      "stock_weather-storm",
+      "stock_weahter-snow",
+      "stock_weather-fog",
+      "stock_weather-night-clear",
+      "stock_weather-night-few-clouds"
+    };
+    int idx;
+    
     if (initialized)
        return;
     initialized = TRUE;
@@ -2462,24 +2727,12 @@ static void init_pixbufs (void)
     icon_theme = gtk_icon_theme_get_default ();
 
     weather_pixbufs_mini = g_new(GdkPixbuf *, NUM_PIX);
-    weather_pixbufs_mini[PIX_UNKNOWN] = gtk_icon_theme_load_icon (icon_theme, "stock_unknown", 16, 0, NULL);
-    weather_pixbufs_mini[PIX_SUN] = gtk_icon_theme_load_icon (icon_theme, "stock_weather-sunny", 16, 0, NULL);
-    weather_pixbufs_mini[PIX_SUNCLOUD] = gtk_icon_theme_load_icon (icon_theme, "stock_weather-few-clouds", 16, 0, NULL);
-    weather_pixbufs_mini[PIX_CLOUD] = gtk_icon_theme_load_icon (icon_theme, "stock_weather-cloudy", 16, 0, NULL);
-    weather_pixbufs_mini[PIX_RAIN] = gtk_icon_theme_load_icon (icon_theme, "stock_weather-showers", 16, 0, NULL);
-    weather_pixbufs_mini[PIX_TSTORM] = gtk_icon_theme_load_icon (icon_theme, "stock_weather-storm", 16, 0, NULL);
-    weather_pixbufs_mini[PIX_SNOW] = gtk_icon_theme_load_icon (icon_theme, "stock_weather-snow", 16, 0, NULL);
-    weather_pixbufs_mini[PIX_FOG] = gtk_icon_theme_load_icon (icon_theme, "stock_weather-fog", 16, 0, NULL);
-
     weather_pixbufs = g_new(GdkPixbuf *, NUM_PIX);
-    weather_pixbufs[PIX_UNKNOWN] = gtk_icon_theme_load_icon (icon_theme, "stock_unknown", 48, 0, NULL);
-    weather_pixbufs[PIX_SUN] = gtk_icon_theme_load_icon (icon_theme, "stock_weather-sunny", 48, 0, NULL);
-    weather_pixbufs[PIX_SUNCLOUD] = gtk_icon_theme_load_icon (icon_theme, "stock_weather-few-clouds", 48, 0, NULL);
-    weather_pixbufs[PIX_CLOUD] = gtk_icon_theme_load_icon (icon_theme, "stock_weather-cloudy", 48, 0, NULL);
-    weather_pixbufs[PIX_RAIN] = gtk_icon_theme_load_icon (icon_theme, "stock_weather-showers", 48, 0, NULL);
-    weather_pixbufs[PIX_TSTORM] = gtk_icon_theme_load_icon (icon_theme, "stock_weather-storm", 48, 0, NULL);
-    weather_pixbufs[PIX_SNOW] = gtk_icon_theme_load_icon (icon_theme, "stock_weather-snow", 48, 0, NULL);
-    weather_pixbufs[PIX_FOG] = gtk_icon_theme_load_icon (icon_theme, "stock_weather-fog", 48, 0, NULL);
+
+    for (idx = 0; idx < NUM_PIX; idx++) {
+        weather_pixbufs_mini[idx] = gtk_icon_theme_load_icon (icon_theme, icons[idx], 16, 0, NULL);
+        weather_pixbufs[idx] = gtk_icon_theme_load_icon (icon_theme, icons[idx], 48, 0, NULL);
+    }
 }
 
 void _weather_info_get_pixbuf (WeatherInfo *info, gboolean mini, GdkPixbuf **pixbuf)
@@ -2567,14 +2820,19 @@ void _weather_info_get_pixbuf (WeatherInfo *info, gboolean mini, GdkPixbuf **pix
 	            idx = PIX_UNKNOWN;
                 }
         } else {
+	    time_t current_time;
+	    current_time = time (NULL);
+	    gboolean useSun = (! info->sunValid )
+	                      || (current_time >= info->sunrise &&
+				  current_time < info->sunset);
             switch (sky) {
             case SKY_CLEAR:
-                idx = PIX_SUN;
+	        idx = useSun ? PIX_SUN : PIX_MOON;
                 break;
             case SKY_BROKEN:
             case SKY_SCATTERED:
             case SKY_FEW:
-                idx = PIX_SUNCLOUD;
+	        idx = useSun ? PIX_SUNCLOUD : PIX_MOONCLOUD;
                 break;
             case SKY_OVERCAST:
                 idx = PIX_CLOUD;

@@ -68,16 +68,16 @@ static GConfEnumStringPair speed_unit_enum_map [] = {
     { SPEED_UNIT_KPH,     "km/h"    },
     { SPEED_UNIT_MPH,     "mph"     },
     { SPEED_UNIT_KNOTS,   "knots"   },
-	{ 0, NULL }
+    { 0, NULL }
 };
 
 static GConfEnumStringPair pressure_unit_enum_map [] = {
     { PRESSURE_UNIT_DEFAULT, "Default" },
-	{ PRESSURE_UNIT_KPA,     "kPa"     },
-	{ PRESSURE_UNIT_HPA,     "hPa"     },
-	{ PRESSURE_UNIT_MB,      "mb"      },
+    { PRESSURE_UNIT_KPA,     "kPa"     },
+    { PRESSURE_UNIT_HPA,     "hPa"     },
+    { PRESSURE_UNIT_MB,      "mb"      },
     { PRESSURE_UNIT_MM_HG,   "mmHg"    },
-	{ PRESSURE_UNIT_INCH_HG, "inHg"    },
+    { PRESSURE_UNIT_INCH_HG, "inHg"    },
     { 0, NULL }
 };
 
@@ -178,20 +178,19 @@ static void gweather_pref_set_accessibility (GWeatherApplet *gw_applet)
 
     /* Relation between components in General page */
 
-    add_atk_relation (gw_applet->pref_basic_update_btn, gw_applet->pref_basic_update_spin,                                             ATK_RELATION_CONTROLLER_FOR);
-    add_atk_relation (gw_applet->pref_basic_radar_btn, gw_applet->pref_basic_radar_url_btn,                                            ATK_RELATION_CONTROLLER_FOR);
-    add_atk_relation (gw_applet->pref_basic_radar_btn, gw_applet->pref_basic_radar_url_entry                                            , ATK_RELATION_CONTROLLER_FOR);
+    add_atk_relation (gw_applet->pref_basic_update_btn, gw_applet->pref_basic_update_spin, ATK_RELATION_CONTROLLER_FOR);
+    add_atk_relation (gw_applet->pref_basic_radar_btn, gw_applet->pref_basic_radar_url_btn, ATK_RELATION_CONTROLLER_FOR);
+    add_atk_relation (gw_applet->pref_basic_radar_btn, gw_applet->pref_basic_radar_url_entry, ATK_RELATION_CONTROLLER_FOR);
 
-    add_atk_relation (gw_applet->pref_basic_update_spin, gw_applet->pref_basic_update_btn,                                             ATK_RELATION_CONTROLLED_BY);
-    add_atk_relation (gw_applet->pref_basic_radar_url_btn, gw_applet->pref_basic_radar_btn,                                            ATK_RELATION_CONTROLLED_BY);
-    add_atk_relation (gw_applet->pref_basic_radar_url_entry, gw_applet->pref_basic_radar_btn                                            , ATK_RELATION_CONTROLLED_BY);
+    add_atk_relation (gw_applet->pref_basic_update_spin, gw_applet->pref_basic_update_btn, ATK_RELATION_CONTROLLED_BY);
+    add_atk_relation (gw_applet->pref_basic_radar_url_btn, gw_applet->pref_basic_radar_btn, ATK_RELATION_CONTROLLED_BY);
+    add_atk_relation (gw_applet->pref_basic_radar_url_entry, gw_applet->pref_basic_radar_btn, ATK_RELATION_CONTROLLED_BY);
 
     /* Accessible Name and Description for the components in Preference Dialog */
    
-    set_access_namedesc (gw_applet->pref_tree, _("Location view"),                                                       _("Select Location from the list"));
-    
-    set_access_namedesc (gw_applet->pref_basic_update_spin, _("Update spin button"),                                      _("Spinbutton for updating"));
-    set_access_namedesc (gw_applet->pref_basic_radar_url_entry, _("Address Entry"),                                        _("Enter the URL"));
+    set_access_namedesc (gw_applet->pref_tree, _("Location view"), _("Select Location from the list"));
+    set_access_namedesc (gw_applet->pref_basic_update_spin, _("Update spin button"), _("Spinbutton for updating"));
+    set_access_namedesc (gw_applet->pref_basic_radar_url_entry, _("Address Entry"), _("Enter the URL"));
 
 }
 
@@ -217,28 +216,28 @@ static gboolean update_dialog (GWeatherApplet *gw_applet)
     if ( gw_applet->gweather_pref.use_temperature_default) {
         gtk_combo_box_set_active (GTK_COMBO_BOX(gw_applet->pref_basic_temp_combo), 0);
     } else {
-		gtk_combo_box_set_active (GTK_COMBO_BOX(gw_applet->pref_basic_temp_combo), 
-	                 gw_applet->gweather_pref.temperature_unit -1);
+        gtk_combo_box_set_active (GTK_COMBO_BOX(gw_applet->pref_basic_temp_combo), 
+				  gw_applet->gweather_pref.temperature_unit -1);
     }
 	
     if ( gw_applet->gweather_pref.use_speed_default) {
         gtk_combo_box_set_active (GTK_COMBO_BOX(gw_applet->pref_basic_speed_combo), 0);
     } else {
         gtk_combo_box_set_active (GTK_COMBO_BOX(gw_applet->pref_basic_speed_combo), 
-	                 gw_applet->gweather_pref.speed_unit -1);
+				  gw_applet->gweather_pref.speed_unit -1);
     }
 	
     if ( gw_applet->gweather_pref.use_pressure_default) {
         gtk_combo_box_set_active (GTK_COMBO_BOX(gw_applet->pref_basic_pres_combo), 0);
     } else {
         gtk_combo_box_set_active (GTK_COMBO_BOX(gw_applet->pref_basic_pres_combo), 
-	                 gw_applet->gweather_pref.pressure_unit -1);
+				  gw_applet->gweather_pref.pressure_unit -1);
     }
     if ( gw_applet->gweather_pref.use_distance_default) {
         gtk_combo_box_set_active (GTK_COMBO_BOX(gw_applet->pref_basic_dist_combo), 0);
     } else {
         gtk_combo_box_set_active (GTK_COMBO_BOX(gw_applet->pref_basic_dist_combo), 
-	                 gw_applet->gweather_pref.distance_unit -1);
+				  gw_applet->gweather_pref.distance_unit -1);
     }
 
 #if 0
@@ -306,8 +305,8 @@ static void change_cb (GtkButton *button, gpointer user_data)
 {
     GWeatherApplet *gw_applet = user_data;
     
-    soft_set_sensitive(gw_applet->pref_basic_update_spin, gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(gw_applet->pref_basic_update_btn)));
-    
+    soft_set_sensitive(gw_applet->pref_basic_update_spin,
+		       gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(gw_applet->pref_basic_update_btn)));
     return;
 }
 
@@ -331,11 +330,13 @@ static void row_selected_cb (GtkTreeSelection *selection, gpointer data)
     panel_applet_gconf_set_string(gw_applet->applet, "location2", loc->zone, NULL);
     panel_applet_gconf_set_string(gw_applet->applet, "location3", loc->radar, NULL);
     panel_applet_gconf_set_string(gw_applet->applet, "location4", loc->trans_name, NULL);
+    panel_applet_gconf_set_string(gw_applet->applet, "coordinates", loc->coordinates, NULL);
+    
     if (gw_applet->gweather_pref.location) {
        weather_location_free (gw_applet->gweather_pref.location);
     }
-    
     gw_applet->gweather_pref.location = weather_location_config_read (gw_applet->applet);
+    
     gweather_update (gw_applet);
 } 
 

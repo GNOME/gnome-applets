@@ -34,6 +34,7 @@
  *    <code>IWIN code</code>
  *    <zone>Forecast code (North America, Australia, UK only)</zone>
  *    <radar>Weather.com radar map code (North America only)</radar>
+ *    <coordinates>Latitude and longitude as DD-MM[-SS][H] pair</coordinates>
  *   </location>
  *   <state>
  *     <location>
@@ -87,6 +88,7 @@
 #define GWEATHER_XML_NODE_CODE       "code"
 #define GWEATHER_XML_NODE_ZONE       "zone"
 #define GWEATHER_XML_NODE_RADAR      "radar"
+#define GWEATHER_XML_NODE_COORD      "coordinates"
 
 /* XML Attributes */
 #define GWEATHER_XML_ATTR_FORMAT    "format"
@@ -241,8 +243,8 @@ static void gweather_xml_parse_location (const GList* locale, GtkTreeView *tree,
 					 GtkTreeIter* iter, GtkTreeIter* r_iter, GtkTreeIter* c_iter,
 					 xmlChar *dfltZone, xmlChar *dfltRadar, xmlChar *untransCity, xmlChar *transCity)
 {
-    int ret, type;
-    xmlChar *name, *untrans_name, *trans_name, *code, *zone, *radar;
+    int type;
+    xmlChar *name, *untrans_name, *trans_name, *code, *zone, *radar, *coordinates;
     GtkTreeStore *store;
     WeatherLocation* new_loc;
     gint pref;
@@ -259,6 +261,7 @@ static void gweather_xml_parse_location (const GList* locale, GtkTreeView *tree,
     code = NULL;
     zone = dfltZone;
     radar = dfltRadar;
+    coordinates = NULL;
     pref = -1;
 
     /* create a node in the tree for this region */
@@ -279,9 +282,11 @@ static void gweather_xml_parse_location (const GList* locale, GtkTreeView *tree,
             } else if ( code == NULL && strcmp (name, GWEATHER_XML_NODE_CODE) == 0 ) {
                 code = gweather_xml_get_value (reader);
             } else if ( strcmp (name, GWEATHER_XML_NODE_ZONE) == 0 ) {
-                zone = gweather_xml_get_value (reader);
+	        zone = gweather_xml_get_value (reader);
             } else if ( strcmp (name, GWEATHER_XML_NODE_RADAR) == 0 ) {
                 radar = gweather_xml_get_value (reader);
+	    } else if ( strcmp (name, GWEATHER_XML_NODE_COORD) == 0 ) {
+		coordinates = gweather_xml_get_value (reader);
 	    } else {
 	        xmlFree (gweather_xml_get_value (reader) );
 	    }
@@ -292,7 +297,7 @@ static void gweather_xml_parse_location (const GList* locale, GtkTreeView *tree,
     
     /* Add an entry in the tree for the location */
     new_loc = weather_location_new((untransCity ? untransCity : untrans_name), (transCity ? transCity : trans_name),
-				   code, zone, radar);
+				   code, zone, radar, coordinates);
     gtk_tree_store_set (store, iter, GWEATHER_PREF_COL_POINTER, new_loc, -1);
 
     /* Free xml attributes */
@@ -303,6 +308,7 @@ static void gweather_xml_parse_location (const GList* locale, GtkTreeView *tree,
         xmlFree(zone);
     if (radar != dfltRadar)
         xmlFree(radar);
+    xmlFree(coordinates);
 
     /* If this location is actually the currently selected one, select it */
     if ( loc && weather_location_equal (new_loc, loc) ) {

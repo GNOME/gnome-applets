@@ -139,6 +139,8 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
   GtkWidget *cond_vis_lbl;
   GtkWidget *cond_dew_lbl;
   GtkWidget *cond_apparent_lbl;
+  GtkWidget *cond_sunrise_lbl;
+  GtkWidget *cond_sunset_lbl;
   GtkWidget *cond_frame_alignment;
   GtkWidget *current_note_lbl;
   GtkWidget *forecast_note_lbl;
@@ -185,7 +187,7 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
   gtk_container_add (GTK_CONTAINER (weather_notebook), cond_hbox);
   gtk_container_set_border_width (GTK_CONTAINER (cond_hbox), 4);
 
-  cond_table = gtk_table_new (11, 2, FALSE);
+  cond_table = gtk_table_new (13, 2, FALSE);
   gtk_widget_show (cond_table);
   gtk_box_pack_start (GTK_BOX (cond_hbox), cond_table, TRUE, TRUE, 0);
   gtk_container_set_border_width (GTK_CONTAINER (cond_table), 12);
@@ -279,6 +281,22 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
                     (GtkAttachOptions) (0), 0, 0);
   gtk_label_set_justify (GTK_LABEL (cond_vis_lbl), GTK_JUSTIFY_LEFT);
   gtk_misc_set_alignment (GTK_MISC (cond_vis_lbl), 0, 0.5);
+
+  cond_sunrise_lbl = gtk_label_new (_("Sunrise:"));
+  gtk_widget_show (cond_sunrise_lbl);
+  gtk_table_attach (GTK_TABLE (cond_table), cond_sunrise_lbl, 0, 1, 11, 12,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_label_set_justify (GTK_LABEL (cond_sunrise_lbl), GTK_JUSTIFY_LEFT);
+  gtk_misc_set_alignment (GTK_MISC (cond_sunrise_lbl), 0, 0.5);
+
+  cond_sunset_lbl = gtk_label_new (_("Sunset:"));
+  gtk_widget_show (cond_sunset_lbl);
+  gtk_table_attach (GTK_TABLE (cond_table), cond_sunset_lbl, 0, 1, 12, 13,
+                    (GtkAttachOptions) (GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_label_set_justify (GTK_LABEL (cond_sunset_lbl), GTK_JUSTIFY_LEFT);
+  gtk_misc_set_alignment (GTK_MISC (cond_sunset_lbl), 0, 0.5);
 
   gw_applet->cond_location = gtk_label_new ("");
   gtk_widget_show (gw_applet->cond_location);
@@ -378,6 +396,24 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
   gtk_label_set_selectable (GTK_LABEL (gw_applet->cond_vis), TRUE);
   gtk_label_set_justify (GTK_LABEL (gw_applet->cond_vis), GTK_JUSTIFY_LEFT);
   gtk_misc_set_alignment (GTK_MISC (gw_applet->cond_vis), 0, 0.5);
+
+  gw_applet->cond_sunrise = gtk_label_new ("");
+  gtk_widget_show (gw_applet->cond_sunrise);
+  gtk_table_attach (GTK_TABLE (cond_table), gw_applet->cond_sunrise, 1, 2, 11, 12,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_label_set_selectable (GTK_LABEL (gw_applet->cond_sunrise), TRUE);
+  gtk_label_set_justify (GTK_LABEL (gw_applet->cond_sunrise), GTK_JUSTIFY_LEFT);
+  gtk_misc_set_alignment (GTK_MISC (gw_applet->cond_sunrise), 0, 0.5);
+
+  gw_applet->cond_sunset = gtk_label_new ("");
+  gtk_widget_show (gw_applet->cond_sunset);
+  gtk_table_attach (GTK_TABLE (cond_table), gw_applet->cond_sunset, 1, 2, 12, 13,
+                    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+                    (GtkAttachOptions) (0), 0, 0);
+  gtk_label_set_selectable (GTK_LABEL (gw_applet->cond_sunset), TRUE);
+  gtk_label_set_justify (GTK_LABEL (gw_applet->cond_sunset), GTK_JUSTIFY_LEFT);
+  gtk_misc_set_alignment (GTK_MISC (gw_applet->cond_sunset), 0, 0.5);
 
   cond_frame_alignment = gtk_alignment_new (0.5, 0, 1, 0);
   gtk_widget_show (cond_frame_alignment);
@@ -539,6 +575,8 @@ void gweather_dialog_update (GWeatherApplet *gw_applet)
     gtk_label_set_text(GTK_LABEL(gw_applet->cond_wind), weather_info_get_wind(gw_applet->gweather_info));
     gtk_label_set_text(GTK_LABEL(gw_applet->cond_pressure), weather_info_get_pressure(gw_applet->gweather_info));
     gtk_label_set_text(GTK_LABEL(gw_applet->cond_vis), weather_info_get_visibility(gw_applet->gweather_info));
+    gtk_label_set_text(GTK_LABEL(gw_applet->cond_sunrise), weather_info_get_sunrise(gw_applet->gweather_info));
+    gtk_label_set_text(GTK_LABEL(gw_applet->cond_sunset), weather_info_get_sunset(gw_applet->gweather_info));
 
     /* Update forecast */
     if (gw_applet->gweather_pref.location->zone_valid) {

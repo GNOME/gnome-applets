@@ -133,6 +133,8 @@ struct _GWeatherApplet
 	GtkWidget *cond_pressure;
 	GtkWidget *cond_vis;
 	GtkWidget *cond_apparent;
+	GtkWidget *cond_sunrise;
+	GtkWidget *cond_sunset;
 	GtkWidget *cond_image;
 	GtkWidget *forecast_text;
 	GtkWidget *radar_image;

@@ -34,11 +34,16 @@ struct _WeatherLocation {
     gchar *zone;
     gchar *radar;
     gboolean zone_valid;
+    gchar *coordinates;
+    gdouble  latitude;
+    gdouble  longitude;
+    gboolean latlon_valid;
 };
 
 
 
-extern WeatherLocation *weather_location_new (const gchar *untrans_name, const gchar *trans_name, const gchar *code, const gchar *zone, const gchar *radar);
+extern WeatherLocation *weather_location_new (const gchar *untrans_name, const gchar *trans_name, const gchar *code,
+					      const gchar *zone, const gchar *radar, const gchar *coordinates);
 extern WeatherLocation *weather_location_clone (const WeatherLocation *location);
 extern void weather_location_free (WeatherLocation *location);
 extern gboolean weather_location_equal (const WeatherLocation *location1, const WeatherLocation *location2);
@@ -163,6 +168,7 @@ typedef time_t WeatherUpdate;
 
 struct _WeatherInfo {
     gboolean valid;
+    gboolean sunValid;
     WeatherLocation *location;
     WeatherUpdate update;
     WeatherSky sky;
@@ -173,6 +179,8 @@ struct _WeatherInfo {
     WeatherWindSpeed windspeed;
     WeatherPressure pressure;
     WeatherVisibility visibility;
+    WeatherUpdate sunrise;
+    WeatherUpdate sunset;
     gchar *forecast;
     gchar *metar_buffer;
     gchar *iwin_buffer;
@@ -219,6 +227,8 @@ extern const gchar *weather_info_get_wind (WeatherInfo *info);
 extern const gchar *weather_info_get_pressure (WeatherInfo *info);
 extern const gchar *weather_info_get_visibility (WeatherInfo *info);
 extern const gchar *weather_info_get_apparent (WeatherInfo *info);
+extern const gchar *weather_info_get_sunrise(WeatherInfo *info);
+extern const gchar *weather_info_get_sunset(WeatherInfo *info);
 extern const gchar *weather_info_get_forecast (WeatherInfo *info);
 extern GdkPixmap *weather_info_get_radar (WeatherInfo *info);
 
@@ -227,7 +237,6 @@ extern gchar *weather_info_get_weather_summary (WeatherInfo *info);
 
 extern void update_finish (WeatherInfo *info);
 
-extern time_t make_time (gint date, gint hour, gint min);
 
 extern void _weather_info_get_pixbuf (WeatherInfo *info, gboolean mini, GdkPixbuf **pixbuf);
 #define weather_info_get_pixbuf_mini(info,pixbuf) _weather_info_get_pixbuf((info), TRUE, (pixbuf))

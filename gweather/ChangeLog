@@ -1,3 +1,31 @@
+2004-11-28  Frank Solensky  <frank@solensky.org>
+
+	reviewed by: Davyd Madeley <davyd@madeley.id.au>
+
+	* gweather-dialog.c: (gweather_dialog_create),
+	(gweather_dialog_update): Display local sunrise, sunset times
+	* gweather-pref.c: (gweather_pref_set_accessibility),
+	(update_dialog), (change_cb), (row_selected_cb):
+	save coordinates of preferred location
+	* gweather-xml.c: (gweather_xml_parse_location):
+	parse coordinate strings
+	* gweather.h: add local sunrise, sunset times to GWeatherApplet
+	* weather.c: (dmsh2rad), (weather_location_new),
+	(weather_location_config_read), (weather_location_clone),
+	(request_done), (make_time), (metar_tok_time), (ecl2equ),
+	(gstObsv), (t0), (sun), (calc_sun), (_weather_info_fill),
+	(weather_info_config_read), (weather_info_get_update),
+	(weather_info_get_sunrise), (weather_info_get_sunset),
+	(init_pixbufs), (_weather_info_get_pixbuf): calculations for
+	and pixmax selection based on times of local sunrise and sunset;
+	make_time simplified
+	* weather.h: store latitute, longitude in WeatherLocation;
+	additional entry points
+	* Locations.xml.in: Add examples of coordinates for "city"
+	locations plus Perth
+
+	Closes #68616.
+	
 2004-11-25  Davyd Madeley  <davyd@madeley.id.au>
 
 	* Locations.xml.in: New weather locations (EBBR, CYSC, CYVO, CYMT,
