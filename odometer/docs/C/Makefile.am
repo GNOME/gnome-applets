@@ -1,4 +1,4 @@
-figs =
+figs = odometer_applet.png odometer_settings.png odometer_themes.png
 applet = odometer
 lang = C
 sgml_ents = $(applet).sgml
