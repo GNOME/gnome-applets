@@ -10,9 +10,10 @@
 #include <gdk_imlib.h>
 #include <applet-widget.h>
 
-#define FWIDTH 60
-
-#define FHEIGHT 40
+#define FSIZE1 20
+#define FSIZE2 44
+#define FSIZE3 60
+#define FSIZE4 76
 
 typedef struct _gkb_properties gkb_properties;
 struct _gkb_properties {
@@ -35,16 +36,80 @@ struct _GKB {
 	GtkWidget *darea;
 	GtkWidget *aboutbox;
         GdkImlibImage *pix[2];
-	GtkWidget *propbox;                                               
-	int curpix;
+	GtkWidget *propbox;
+        PanelOrientType orient;
+      	int curpix;
+      	int width;
+      	int height;
 };
 
 static void gkb_draw(GtkWidget *, GKB *);
 static void do_that_command(GKB *);
 
 static void
+sized_render(GKB * gkb, PanelSizeType size)
+{
+
+	if(gkb->pix[0])
+		gdk_imlib_destroy_image(gkb->pix[0]);
+	if(gkb->pix[1])
+		gdk_imlib_destroy_image(gkb->pix[1]);
+	
+	
+	if((gkb->orient==ORIENT_LEFT) || (gkb->orient==ORIENT_RIGHT))
+ 	 switch (size) {
+	   case SIZE_TINY    : gkb->width=FSIZE1; gkb->height=FSIZE1/1.5; break;
+	   case SIZE_STANDARD: gkb->width=FSIZE2; gkb->height=FSIZE2/1.5; break;
+	   case SIZE_LARGE   : gkb->width=FSIZE3; gkb->height=FSIZE3/1.5; break;
+	   case SIZE_HUGE    : gkb->width=FSIZE4; gkb->height=FSIZE4/1.5; break;
+	   default           : gkb->width=FSIZE1; gkb->height=FSIZE1/1.5; break;
+	 }
+	else
+	 switch (size) {
+	   case SIZE_TINY    : gkb->width=FSIZE1*1.5; gkb->height=FSIZE1; break;
+	   case SIZE_STANDARD: gkb->width=FSIZE2*1.5; gkb->height=FSIZE2; break;
+	   case SIZE_LARGE   : gkb->width=FSIZE3*1.5; gkb->height=FSIZE3; break;
+	   case SIZE_HUGE    : gkb->width=FSIZE4*1.5; gkb->height=FSIZE4; break;
+	   default           : gkb->width=FSIZE1*1.5; gkb->height=FSIZE1; break;
+	 }
+	
+	gkb->pix[0] = gdk_imlib_load_image(gkb->properties.image[0]);
+	gkb->pix[1] = gdk_imlib_load_image(gkb->properties.image[1]);
+        gdk_imlib_render (gkb->pix[0], gkb->width, gkb->height);
+        gdk_imlib_render (gkb->pix[1], gkb->width, gkb->height);
+
+}
+
+static void
+gkb_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
+{
+        GKB *gkb = data;
+
+        gkb->orient = o;
+	sized_render(gkb,applet_widget_get_panel_size(APPLET_WIDGET(gkb->applet)));
+	gtk_widget_set_usize(GTK_WIDGET(gkb->darea),gkb->width,gkb->height);
+	gtk_widget_set_usize(GTK_WIDGET(gkb->frame),gkb->width,gkb->height);
+
+}
+
+static void
+gkb_change_size(GtkWidget *w, PanelSizeType o, gpointer data)
+{
+	PanelSizeType size;
+        GKB *gkb = data;
+
+        size = o;
+        sized_render(gkb,size);
+	gtk_widget_set_usize(GTK_WIDGET(gkb->darea),gkb->width,gkb->height);
+	gtk_widget_set_usize(GTK_WIDGET(gkb->frame),gkb->width,gkb->height);
+
+}
+
+
+static void
 load_properties(GKB *gkb)
 {
+        PanelSizeType size;	
 	char buf[256];
 static  gkb_properties defaults = {
 	 "setxkbmap",
@@ -71,15 +136,10 @@ static  gkb_properties defaults = {
 	gkb->properties.dmap[1] = gnome_config_get_string(buf);
 	gnome_config_pop_prefix();
 
-	if(gkb->pix[0])
-		gdk_imlib_destroy_image(gkb->pix[0]);
-	if(gkb->pix[1])
-		gdk_imlib_destroy_image(gkb->pix[1]);
-	
-	gkb->pix[0] = gdk_imlib_load_image(gkb->properties.image[0]);
-	gkb->pix[1] = gdk_imlib_load_image(gkb->properties.image[1]);
-        gdk_imlib_render (gkb->pix[0], FWIDTH, FHEIGHT);
-        gdk_imlib_render (gkb->pix[1], FWIDTH, FHEIGHT);
+        gkb->orient = applet_widget_get_panel_orient(APPLET_WIDGET(gkb->applet));
+        size = applet_widget_get_panel_size(APPLET_WIDGET(gkb->applet));
+
+	sized_render(gkb,size);
 }
 
 static void
@@ -109,8 +169,8 @@ apply_callback(GtkWidget * pb,
         gkb->properties.dmap[1]= malloc(sizeof(char) * (strlen(gtk_entry_get_text(GTK_ENTRY(GTK_COMBO(gkb->combo2)->entry))) + 1));
         strcpy(gkb->properties.dmap[1], gtk_entry_get_text(GTK_ENTRY(GTK_COMBO(gkb->combo2)->entry)));
 	
-        gdk_imlib_render (gkb->pix[0], FWIDTH, FHEIGHT);
-	    gdk_imlib_render (gkb->pix[1], FWIDTH, FHEIGHT);
+        gdk_imlib_render (gkb->pix[0], gkb->width, gkb->height);
+	    gdk_imlib_render (gkb->pix[1], gkb->width, gkb->height);
 	gkb_draw(GTK_WIDGET(gkb->darea),gkb);
 	gkb->curpix=0;
 	do_that_command(gkb);
@@ -361,7 +421,7 @@ gkb_expose(GtkWidget *darea,
 			gkb->pix[gkb->properties.curpix]->pixmap,
 			event->area.x, event->area.y,
 			event->area.x, event->area.y,
-			FWIDTH, FHEIGHT);
+			gkb->width, gkb->height);
         return FALSE;
 }
 
@@ -376,8 +436,8 @@ create_gkb_widget(GKB *gkb)
 	
 	gkb->darea = gtk_drawing_area_new();
 	gtk_drawing_area_size(GTK_DRAWING_AREA(gkb->darea),
-			      FWIDTH,
-			      FHEIGHT);
+			      gkb->width,
+			      gkb->height);
 	gtk_widget_set_events(gkb->darea, 
 			      gtk_widget_get_events(gkb->darea) |
 			      GDK_BUTTON_PRESS_MASK);
@@ -491,6 +551,14 @@ gkb_activator(PortableServer_POA poa,
         gtk_signal_connect(GTK_OBJECT(gkb->applet),"save_session",
                                	     GTK_SIGNAL_FUNC(applet_save_session),
                              	     gkb);
+
+        gtk_signal_connect(GTK_OBJECT(gkb->applet),"change_orient",
+                                     GTK_SIGNAL_FUNC(gkb_change_orient),
+                                     gkb);
+        gtk_signal_connect(GTK_OBJECT(gkb->applet),"change_size",
+                                     GTK_SIGNAL_FUNC(gkb_change_size),
+                                     gkb);
+
         do_that_command(gkb);
 	applet_widget_register_stock_callback(APPLET_WIDGET(gkb->applet),
                       				"about",
