@@ -1,9 +1,9 @@
 ## Process this file with automake to produce Makefile.in
 
-SUBDIRS = pixmaps docs
+SUBDIRS = docs
 
 INCLUDES = \
-	-I$(srcdir)	-I$(srcdir)/pixmaps	\
+	-I$(srcdir)	\
 	-I$(top_srcdir)/screen-exec		\
 	-DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\" \
 	-DGTK_ENABLE_BROKEN	\

@@ -210,6 +210,7 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
     GtkWidget *label;
     GtkWidget *pixmap;
     GtkTooltips *tooltips;
+    GtkIconInfo *icon_info;
  
     gw_applet->gweather_pref.location = NULL;
     gw_applet->gweather_pref.update_interval = 1800;
@@ -219,7 +220,12 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
     gw_applet->gweather_pref.radar_enabled = TRUE;
     
     panel_applet_set_flags (gw_applet->applet, PANEL_APPLET_EXPAND_MINOR);
-    gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gweather/tstorm.xpm");
+    
+    icon_info = gtk_icon_theme_lookup_icon (gtk_icon_theme_get_default (), "stock_weather-storm", 48, 0);
+    if (icon_info) {
+        gnome_window_icon_set_default_from_file (gtk_icon_info_get_filename (icon_info));
+        gtk_icon_info_free (icon_info);
+    }
     
     g_signal_connect (G_OBJECT(gw_applet->applet), "change_orient",
                        G_CALLBACK(change_orient_cb), gw_applet);

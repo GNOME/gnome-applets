@@ -1936,24 +1936,6 @@ gchar *weather_info_get_weather_summary (WeatherInfo *info)
 static GdkPixbuf **weather_pixbufs_mini = NULL;
 static GdkPixbuf **weather_pixbufs = NULL;
 
-#include "pixmaps/unknown-mini.xpm"
-#include "pixmaps/sun-mini.xpm"
-#include "pixmaps/suncloud-mini.xpm"
-#include "pixmaps/cloud-mini.xpm"
-#include "pixmaps/rain-mini.xpm"
-#include "pixmaps/tstorm-mini.xpm"
-#include "pixmaps/snow-mini.xpm"
-#include "pixmaps/fog-mini.xpm"
-
-#include "pixmaps/unknown.xpm"
-#include "pixmaps/sun.xpm"
-#include "pixmaps/suncloud.xpm"
-#include "pixmaps/cloud.xpm"
-#include "pixmaps/rain.xpm"
-#include "pixmaps/tstorm.xpm"
-#include "pixmaps/snow.xpm"
-#include "pixmaps/fog.xpm"
-
 #define PIX_UNKNOWN   0
 #define PIX_SUN       1
 #define PIX_SUNCLOUD  2
@@ -1985,30 +1967,33 @@ xpm_to_pixmap (char **xpm_data, GdkPixmap **pixmap, GdkBitmap **mask)
 static void init_pixbufs (void)
 {
     static gboolean initialized = FALSE;
+    GtkIconTheme *icon_theme;
 
     if (initialized)
        return;
     initialized = TRUE;
 
+    icon_theme = gtk_icon_theme_get_default ();
+
     weather_pixbufs_mini = g_new(GdkPixbuf *, NUM_PIX);
-    weather_pixbufs_mini[PIX_UNKNOWN] = gdk_pixbuf_new_from_xpm_data ((const char **)unknown_mini_xpm);	
-    weather_pixbufs_mini[PIX_SUN] = gdk_pixbuf_new_from_xpm_data ((const char **)sun_mini_xpm);	
-    weather_pixbufs_mini[PIX_SUNCLOUD] = gdk_pixbuf_new_from_xpm_data ((const char **)suncloud_mini_xpm);	
-    weather_pixbufs_mini[PIX_CLOUD] = gdk_pixbuf_new_from_xpm_data ((const char **)cloud_mini_xpm);	
-    weather_pixbufs_mini[PIX_RAIN] = gdk_pixbuf_new_from_xpm_data ((const char **)rain_mini_xpm);	
-    weather_pixbufs_mini[PIX_TSTORM] = gdk_pixbuf_new_from_xpm_data ((const char **)tstorm_mini_xpm);	
-    weather_pixbufs_mini[PIX_SNOW] = gdk_pixbuf_new_from_xpm_data ((const char **)snow_mini_xpm);	
-    weather_pixbufs_mini[PIX_FOG] = gdk_pixbuf_new_from_xpm_data ((const char **)fog_mini_xpm);	
+    weather_pixbufs_mini[PIX_UNKNOWN] = gtk_icon_theme_load_icon (icon_theme, "stock_unknown", 16, 0, NULL);
+    weather_pixbufs_mini[PIX_SUN] = gtk_icon_theme_load_icon (icon_theme, "stock_weather-sunny", 16, 0, NULL);
+    weather_pixbufs_mini[PIX_SUNCLOUD] = gtk_icon_theme_load_icon (icon_theme, "stock_weather-few-clouds", 16, 0, NULL);
+    weather_pixbufs_mini[PIX_CLOUD] = gtk_icon_theme_load_icon (icon_theme, "stock_weather-cloudy", 16, 0, NULL);
+    weather_pixbufs_mini[PIX_RAIN] = gtk_icon_theme_load_icon (icon_theme, "stock_weather-showers", 16, 0, NULL);
+    weather_pixbufs_mini[PIX_TSTORM] = gtk_icon_theme_load_icon (icon_theme, "stock_weather-storm", 16, 0, NULL);
+    weather_pixbufs_mini[PIX_SNOW] = gtk_icon_theme_load_icon (icon_theme, "stock_weather-snow", 16, 0, NULL);
+    weather_pixbufs_mini[PIX_FOG] = gtk_icon_theme_load_icon (icon_theme, "stock_weather-fog", 16, 0, NULL);
 
     weather_pixbufs = g_new(GdkPixbuf *, NUM_PIX);
-    weather_pixbufs[PIX_UNKNOWN] = gdk_pixbuf_new_from_xpm_data ((const char **)unknown_xpm);
-    weather_pixbufs[PIX_SUN] = gdk_pixbuf_new_from_xpm_data ((const char **)sun_xpm);
-    weather_pixbufs[PIX_SUNCLOUD] = gdk_pixbuf_new_from_xpm_data ((const char **)suncloud_xpm);
-    weather_pixbufs[PIX_CLOUD] = gdk_pixbuf_new_from_xpm_data ((const char **)cloud_xpm);
-    weather_pixbufs[PIX_RAIN] = gdk_pixbuf_new_from_xpm_data ((const char **)rain_xpm);
-    weather_pixbufs[PIX_TSTORM] = gdk_pixbuf_new_from_xpm_data ((const char **)tstorm_xpm);
-    weather_pixbufs[PIX_SNOW] = gdk_pixbuf_new_from_xpm_data ((const char **)snow_xpm);
-    weather_pixbufs[PIX_FOG] = gdk_pixbuf_new_from_xpm_data ((const char **)fog_xpm);
+    weather_pixbufs[PIX_UNKNOWN] = gtk_icon_theme_load_icon (icon_theme, "stock_unknown", 48, 0, NULL);
+    weather_pixbufs[PIX_SUN] = gtk_icon_theme_load_icon (icon_theme, "stock_weather-sunny", 48, 0, NULL);
+    weather_pixbufs[PIX_SUNCLOUD] = gtk_icon_theme_load_icon (icon_theme, "stock_weather-few-clouds", 48, 0, NULL);
+    weather_pixbufs[PIX_CLOUD] = gtk_icon_theme_load_icon (icon_theme, "stock_weather-cloudy", 48, 0, NULL);
+    weather_pixbufs[PIX_RAIN] = gtk_icon_theme_load_icon (icon_theme, "stock_weather-showers", 48, 0, NULL);
+    weather_pixbufs[PIX_TSTORM] = gtk_icon_theme_load_icon (icon_theme, "stock_weather-storm", 48, 0, NULL);
+    weather_pixbufs[PIX_SNOW] = gtk_icon_theme_load_icon (icon_theme, "stock_weather-snow", 48, 0, NULL);
+    weather_pixbufs[PIX_FOG] = gtk_icon_theme_load_icon (icon_theme, "stock_weather-fog", 48, 0, NULL);
 }
 
 void _weather_info_get_pixbuf (WeatherInfo *info, gboolean mini, GdkPixbuf **pixbuf)

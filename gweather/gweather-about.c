@@ -26,9 +26,9 @@
 
 void gweather_about_run (GWeatherApplet *gw_applet)
 {
-    GdkPixbuf   *pixbuf;
+    GtkIconInfo *icon_info;
+    GdkPixbuf   *pixbuf = NULL;
     GError	*error = NULL;
-    gchar	*file;
     
     static const gchar *authors[] = {
 	"Kevin Vandersloot <kfv101@psu.edu>",
@@ -52,13 +52,14 @@ void gweather_about_run (GWeatherApplet *gw_applet)
 	return;
     }
     
-    file = gnome_program_locate_file (NULL, GNOME_FILE_DOMAIN_PIXMAP, "gweather/tstorm.xpm", FALSE, NULL);
-    pixbuf = gdk_pixbuf_new_from_file (file, &error);
-    g_free (file);
-    
-    if (error) {
-    	g_warning (G_STRLOC ": cannot open %s: %s", file, error->message);
-	g_error_free (error);
+    icon_info = gtk_icon_theme_lookup_icon (gtk_icon_theme_get_default (), "stock_weather-storm", 48, 0);
+    if (icon_info) {
+        pixbuf = gtk_icon_info_load_icon (icon_info, &error);
+
+        if (error) {
+    	    g_warning (G_STRLOC ": cannot open %s: %s", gtk_icon_info_get_filename (icon_info), error->message);
+	    g_error_free (error);
+        }
     }
     
     about_dialog = gnome_about_new (_("Weather Report"), VERSION,
@@ -75,11 +76,14 @@ void gweather_about_run (GWeatherApplet *gw_applet)
     gtk_window_set_screen (GTK_WINDOW (about_dialog),
 			   gtk_widget_get_screen (GTK_WIDGET (gw_applet->applet)));
     gtk_window_set_wmclass (GTK_WINDOW (about_dialog), "weather report", "Weather Report");	
-    gnome_window_icon_set_from_file (GTK_WINDOW (about_dialog), GNOME_ICONDIR"/gweather/tstorm.xpm");	
+    gnome_window_icon_set_from_file (GTK_WINDOW (about_dialog), gtk_icon_info_get_filename (icon_info));	
     
     gtk_signal_connect( GTK_OBJECT(about_dialog), "destroy",
 		        GTK_SIGNAL_FUNC(gtk_widget_destroyed), &about_dialog );
     gtk_widget_show(about_dialog);
+    
+    if (icon_info)
+        gtk_icon_info_free (icon_info);
     
     return;
 }
