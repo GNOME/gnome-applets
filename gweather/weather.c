@@ -282,8 +282,8 @@ static inline void requests_done_check (void)
     if (!metar_request && !iwin_request && !wx_request && !met_request) {
         requests_pending = FALSE;
         /* Next two lines temporarily here */
-        if (weather_units == UNITS_IMPERIAL)
-            weather_info_to_imperial(request_info);
+        if (weather_units == UNITS_METRIC)
+            weather_info_to_metric(request_info);
         (*request_cb)(request_info);
         request_cb = NULL;
         request_info = NULL;
