@@ -45,10 +45,10 @@
    </para>
    <para>
     The "root
-    file system" is the main file system on your computer starting with
-    "/" (root).  Other file systems are associated with directories inside
-    the root file system.  These are called "mount points", which are
-    just empty directories.  When a file system is mounted, its
+    filesystem" is the main filesystem on your computer starting with
+    "/" (root).  Other filesystems are associated with directories inside
+    the root filesystem.  These are called "mount points", which are
+    just empty directories.  When a filesystem is mounted, its
     contents appear inside this directory.  As an example, most
     systems create a mount point "/mnt/floppy" which is just an empty
     directory if your floppy drive is not mounted.  It contains
@@ -169,7 +169,7 @@
         point used when mounting the drive.  This is
         an empty directory which will hold the contents of the drive
         whenever the drive is mounted.  Mount points can occur
-        anywhere in your file system, but the convention is to put all
+        anywhere in your filesystem, but the convention is to put all
         mount points for removable drives in the  <filename
         class="directory">/mnt</filename>
         directory.
@@ -308,20 +308,20 @@
    </para>
 
    <para>
-    Information describing the mount point and file system type of each
+    Information describing the mount point and filesystem type of each
     drive is kept in <filename>/etc/fstab</filename>.  This can be
     configured by hand or by using the
     <application>linuxconf</application> application. For drives which
-    do not always have a single file system type (such as a floppy
-    drive which may have msdos or ext2 file systems), you should use
-    "auto" for the file system type.  Each device has a single line in
+    do not always have a single filesystem type (such as a floppy
+    drive which may have msdos or ext2 filesystems), you should use
+    "auto" for the filesystem type.  Each device has a single line in
     /etc/fstab of the following form:
     <programlisting>
     /dev/fd0        /mnt/floppy      auto    noauto,rw,user  0 0
     </programlisting>
     This entry describes the first floppy device (/dev/fd0) as having
     a mount point of <filename>/mnt/floppy</filename>, a variable
-    file system type which should be automatically detected, and the
+    filesystem type which should be automatically detected, and the
     following configurations: "noauto"&mdash; Do not automatically
     mount the drive when the computer is booted, "rw"&mdash; The drive
     is readable and writable, and "user"&mdash; Users have permission
@@ -338,7 +338,7 @@
     root). Select 
     <menuchoice>
      <guimenu>Config</guimenu>
-     <guisubmenu>File systems</guisubmenu>
+     <guisubmenu>filesystems</guisubmenu>
      <guimenuitem>Access local drive</guimenuitem>
     </menuchoice>. 
     To edit an entry, just select
@@ -384,7 +384,7 @@
         <guilabel>Local volume</guilabel> tab in  
        <menuchoice>
         <guimenu>Config</guimenu>
-        <guisubmenu>File systems</guisubmenu>
+        <guisubmenu>Filesystems</guisubmenu>
         <guimenuitem>Access local drive</guimenuitem>
        </menuchoice>. After you select the correct drive from the list,
         it will show you the <guilabel>Volume
@@ -399,7 +399,7 @@
        <quote>mount: wrong fs type, bad option, bad superblock on
        /dev/cdrom, or too many mounted file systems</quote>&mdash;
        This error can be caused by several problems.  It is most
-       commonly caused by not having the right file system type, such as
+       commonly caused by not having the right filesystem type, such as
        trying to mount a music CDROM as if it held data, or trying to
        mount an msdos formatted floppy as ext2.
       </para>
@@ -437,7 +437,7 @@
       <note>
        <title>Note for Advanced Users</title>
        <para>
-        Each device (file system or drive) which can be mounted should
+        Each device (filesystem or drive) which can be mounted should
         be listed in the <filename>/etc/fstab</filename> configuration
         file. Reading this file will tell you which devices are
         configured for your system.  To add or modify entries, you can
