@@ -1,3 +1,9 @@
+1999-09-26  Oliver Maruhn  <oliver@maruhn.com>
+
+	* src/cmd_completion.c (cmdc): The path environment variable was
+ 	modified by this function.  This caused bugs in other functions.
+  	Now a local copy of the path environment variable is made first.
+
 1999-09-25  Oliver Maruhn  <oliver@maruhn.com>
 
 	* src/Makefile.am (mini_commander_applet_SOURCES): terminal.[ch] added
