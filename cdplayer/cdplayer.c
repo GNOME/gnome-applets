@@ -922,7 +922,7 @@ static void
 phelp_cb (GtkWidget *w, gpointer data)
 {
     GError *error = NULL;
-    gnome_help_display ("cdplayer", "cdplayer-usage", &error);
+    gnome_help_display ("cdplayer", "cdplayer_applet_prefs", &error);
     
     if (error) {
         g_warning ("help error: %s\n", error->message);
