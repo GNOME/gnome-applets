@@ -763,6 +763,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     gtk_box_pack_start (GTK_BOX (pref_loc_hbox), tree_label, FALSE, FALSE, 0);
 
     scrolled_window = gtk_scrolled_window_new (NULL, NULL);
+    gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolled_window), GTK_SHADOW_IN);
     gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled_window),
 				    GTK_POLICY_AUTOMATIC,
 				    GTK_POLICY_AUTOMATIC);
