@@ -3,7 +3,7 @@ blue_DATA =
 blue_stuff = \
 	blue/back_h.png	\
 	blue/back_v.png	\
-	blue/
+	blue/themedata
 
 metersdir = $(datadir)/sound-monitor/meters
 meters_DATA =
