@@ -71,6 +71,8 @@
 #define APMDEVICE "/dev/apm"
 #endif
 
+#define GCONF_PATH ""
+
 GtkObject *statusdock;
 
 static const BonoboUIVerb battstat_menu_verbs [] = {
@@ -377,6 +379,8 @@ pixmap_timeout( gpointer data )
   gchar new_label[80];
   gchar new_string[80];
   gchar *rem_time = NULL;
+  GtkWidget *hbox, *image, *label, *dialog;
+  GdkPixbuf *pixbuf;
   
   gchar *status[]={
     /* The following four messages will be displayed as tooltips over
@@ -466,12 +470,36 @@ pixmap_timeout( gpointer data )
      && battery->last_batt_life != 1000
      && battery->last_batt_life > battery->red_val
      && batt_life <= battery->red_val
+     && batterypresent
    ) {
       /* Warn that battery dropped below red_val */
       if(battery->lowbattnotification) {
          snprintf(new_label, sizeof(new_label),_("Battery low (%d%%) and AC is offline"),
                   batt_life);
-         battery->lowbattnotificationdialog = gnome_warning_dialog(new_label);
+	 battery->lowbattnotificationdialog = gtk_dialog_new_with_buttons (
+			 _("Battery Notice"),
+			 NULL,
+			 GTK_DIALOG_DESTROY_WITH_PARENT,
+			 GTK_STOCK_OK,
+			 GTK_RESPONSE_ACCEPT,
+			 NULL);
+	 g_signal_connect_swapped (GTK_OBJECT (battery->lowbattnotificationdialog), "response",
+			 G_CALLBACK (gtk_widget_destroy), GTK_OBJECT (battery->lowbattnotificationdialog));
+	 gtk_container_set_border_width (GTK_CONTAINER (battery->lowbattnotificationdialog), 6);
+	 gtk_dialog_set_has_separator (GTK_DIALOG (battery->lowbattnotificationdialog), FALSE);
+	 hbox = gtk_hbox_new (FALSE, 6);
+	 pixbuf = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (),
+			 "gnome-dev-battery",
+			 48,
+			 GTK_ICON_LOOKUP_USE_BUILTIN,
+			 NULL);
+	 image = gtk_image_new_from_pixbuf (pixbuf);
+	 g_object_unref (pixbuf);
+	 gtk_box_pack_start (GTK_BOX (hbox), image, TRUE, TRUE, 6);
+	 label = gtk_label_new (new_label);
+	 gtk_box_pack_start (GTK_BOX (hbox), label, TRUE, TRUE, 6);
+	 gtk_container_add (GTK_CONTAINER (GTK_DIALOG (battery->lowbattnotificationdialog)->vbox), hbox);
+	 gtk_widget_show_all (battery->lowbattnotificationdialog);
     
          if(battery->beep)
             gdk_beep();
@@ -493,7 +521,31 @@ pixmap_timeout( gpointer data )
       /* Inform that battery now fully charged */
       gnome_triggers_do ("", NULL, "battstat_applet", "BatteryFull", NULL);
       if(battery->fullbattnot) {
-         gnome_ok_dialog( _("Battery is now fully re-charged!"));
+	 dialog = gtk_dialog_new_with_buttons (
+			 _("Battery Notice"),
+			 NULL,
+			 GTK_DIALOG_DESTROY_WITH_PARENT,
+			 GTK_STOCK_OK,
+			 GTK_RESPONSE_ACCEPT,
+			 NULL);
+	 g_signal_connect_swapped (GTK_OBJECT (dialog), "reponse",
+			 G_CALLBACK (gtk_widget_destroy), GTK_OBJECT (dialog));
+	 gtk_container_set_border_width (GTK_CONTAINER (dialog), 6);
+	 gtk_dialog_set_has_separator (GTK_DIALOG (dialog), FALSE);
+	 hbox = gtk_hbox_new (FALSE, 6);
+	 pixbuf = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (),
+			 "gnome-dev-battery",
+			 48,
+			 GTK_ICON_LOOKUP_USE_BUILTIN,
+			 NULL);
+	 image = gtk_image_new_from_pixbuf (pixbuf);
+	 g_object_unref (pixbuf);
+	 gtk_box_pack_start (GTK_BOX (hbox), image, TRUE, TRUE, 6);
+	 label = gtk_label_new (_("Battery is now fully re-charged!"));
+	 gtk_box_pack_start (GTK_BOX (hbox), label, TRUE, TRUE, 6);
+	 gtk_container_add (GTK_CONTAINER (GTK_DIALOG (dialog)->vbox), hbox);
+	 gtk_widget_show_all (dialog);
+	 
          if (battery->beep)
             gdk_beep();
        }
@@ -503,11 +555,21 @@ pixmap_timeout( gpointer data )
        && charging
        && acline_status
        && batterypresent
-       && battery->lowbattnotificationdialog
       ) {
-	   /* we can remove the battery warning dialog */
-	   gtk_widget_destroy (battery->lowbattnotificationdialog);
-	   battery->lowbattnotificationdialog = NULL;
+	   /*
+	    * the battery is charging again, reset the dialog display flag
+	    * Thanks to Richard Kinder <r_kinder@yahoo.com> for this patch.
+	    */
+	   battery->lowbattnotification = panel_applet_gconf_get_bool (
+			   PANEL_APPLET(battery->applet),
+			   GCONF_PATH "low_battery_notification", NULL);
+
+	   if (battery->lowbattnotificationdialog)
+	   {
+		   /* we can remove the battery warning dialog */
+		   gtk_widget_destroy (battery->lowbattnotificationdialog);
+		   battery->lowbattnotificationdialog = NULL;
+	   }
    }
 
    if(
@@ -1367,9 +1429,6 @@ key_press_cb (GtkWidget *widget, GdkEventKey *event, ProgressData *battstat)
 
 	return FALSE;
 }
-
-
-#define GCONF_PATH ""
 
 void
 load_preferences(ProgressData *battstat)

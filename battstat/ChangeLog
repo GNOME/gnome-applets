@@ -1,3 +1,14 @@
+2004-05-23  Davyd Madeley  <davyd@ucc.asn.au>
+
+	* battstat_applet.c:
+	- Improve and apply a fix from Richard Kinder <r_kinder@yahoo.com> to
+	make the battery warning dialog appear every time the battery power
+	drops below the "red-line". Closes #138235.
+	- Require the battery to be present to display the low power warning.
+	This means if ACPId stops, the warning dialog will not be displayed.
+	- Update the warning dialogs to use gtk_dialog, rather then the
+	deprecated GNOME dialogs. This adds the string "Battery Notice".
+
 2004-05-22  Davyd Madeley  <davyd@ucc.asn.au>
 
 	* battstat_applet.c: Ensure that when the widget is destroyed the
