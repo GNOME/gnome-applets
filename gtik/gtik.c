@@ -1815,6 +1815,7 @@ static gint updateOutput(gpointer data)
 		gtk_tooltips_set_tip(stockdata->tooltips, event, _("Stock Ticker\nGet continuously updated stock quotes"), NULL);
 
 		access_drawing_area = stockdata->drawing_area = GTK_WIDGET (custom_drawing_area_new());
+		g_object_add_weak_pointer (G_OBJECT (access_drawing_area), (gpointer *)&access_drawing_area);
 		gtk_drawing_area_size(GTK_DRAWING_AREA (stockdata->drawing_area),
 						stockdata->props.width,-1);
 
@@ -2219,7 +2220,11 @@ static gint updateOutput(gpointer data)
 	}
 
 	static AtkObject* gtik_vbox_accessible_ref_child(AtkObject *obj, gint i){
-		return (gtk_widget_get_accessible(access_drawing_area));
+		if (i == 0 && access_drawing_area)
+			return g_object_ref (gtk_widget_get_accessible(access_drawing_area));
+		else
+			return NULL;
+		
 	}
 
 	gchar* gtik_get_text(void) {

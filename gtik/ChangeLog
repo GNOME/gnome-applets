@@ -1,3 +1,15 @@
+2003-12-12  Padraig O'Briain <padraig.obriain@sun.com>
+
+	* Makefile.am:
+	Add CLEANFILES so that make clean deletes $(server_DATA) and
+	$(server_DATA).in.
+
+	* gtik.c (updateOutput): Add weak pointer so that access_drawing_area
+	is set to NULL when widget is destroyed,
+	(gik_vbox_accessible_ref_child): Add check that index is valid and
+	access_drawing_area is not NULL. Call g_object_ref on AtkObject being
+	returned. Fixes bug #128593.
+
 2003-09-18  Kevin Vandersloot
 
 	* gtik.c: Fix for new yahoo html changes. Fixes bug #121926
