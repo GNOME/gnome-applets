@@ -235,7 +235,6 @@ create_drive_widget()
 	dd->button_pixmap = NULL;
 	dd->mount_point = g_strdup("/mnt/floppy");
 	dd->mount_base = g_strdup("/mnt");
-	dd->propwindow = NULL;
 	dd->autofs_friendly = FALSE;
 	dd->custom_icon_in = NULL;
 	dd->custom_icon_out = NULL;
