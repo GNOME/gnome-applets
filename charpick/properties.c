@@ -53,28 +53,30 @@ set_access_namedesc (GtkWidget *widget, const gchar *name, const gchar *desc)
        atk_object_set_name (obj, name);
 }
 
-gchar *
-run_edit_dialog (gchar *string, gchar *title)
+void
+add_edit_dialog_create (charpick_data *curr_data, gchar *string, gchar *title)
 {
 	GtkWidget *dialog;
+	GtkWidget *entry;
 	GtkWidget *dbox;
 	GtkWidget *vbox, *hbox;
-	GtkWidget *entry;
 	GtkWidget *label;
 	gint retval;
 	gchar *new;
-	
-	dialog = gtk_dialog_new_with_buttons (_(title), NULL,
+
+	dialog = gtk_dialog_new_with_buttons (_(title), GTK_WINDOW (curr_data->propwindow),
 							    GTK_DIALOG_DESTROY_WITH_PARENT |
-							    GTK_DIALOG_MODAL, 
+							    GTK_DIALOG_NO_SEPARATOR, 
 							    GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
 							    GTK_STOCK_OK, GTK_RESPONSE_OK,
 							    NULL);
 
+	gtk_window_set_transient_for (GTK_WINDOW (dialog), GTK_WINDOW (curr_data->propwindow));
+	gtk_widget_set_sensitive (curr_data->propwindow, FALSE);
+
 	gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
 	gtk_container_set_border_width (GTK_CONTAINER (dialog), 5);
 	gtk_box_set_spacing (GTK_BOX (GTK_DIALOG (dialog)->vbox), 2);
-	gtk_dialog_set_has_separator (GTK_DIALOG (dialog), FALSE);
 
 	dbox = GTK_DIALOG (dialog)->vbox;
 	
@@ -90,48 +92,49 @@ run_edit_dialog (gchar *string, gchar *title)
 		
 	entry = gtk_entry_new ();
 	gtk_label_set_mnemonic_widget (GTK_LABEL (label), entry);
-	gtk_entry_set_activates_default (GTK_ENTRY (entry), TRUE);
+	 gtk_entry_set_activates_default (GTK_ENTRY (entry), TRUE);
 	gtk_box_pack_start (GTK_BOX (hbox), entry, TRUE, TRUE, 0);
+
 	set_access_namedesc (entry, _("Palette entry"),
 				         _("Modify a palette by adding or removing characters"));
 	if (string)
 		gtk_entry_set_text (GTK_ENTRY (entry), string);
-	gtk_widget_show_all (dialog);
-	retval = gtk_dialog_run (GTK_DIALOG (dialog));
-	
-	if (retval != GTK_RESPONSE_OK) {
-		gtk_widget_destroy (dialog);
-		return NULL;
-	}
-	
-	new = gtk_editable_get_chars (GTK_EDITABLE (entry), 0, -1);
-	gtk_widget_destroy (dialog);
-	
-	if (!new || (strlen(new)==0))
-		return NULL;
-	return new;
+
+	curr_data->add_edit_dialog = dialog;
+	curr_data->add_edit_entry = entry;
 }
 
 static void
-add_palette (GtkButton *buttonk, charpick_data *curr_data)
+add_palette_cb (GtkDialog *dialog, int response_id, charpick_data *curr_data)
 {
 	GList *list = curr_data->chartable;
-	gchar *new;
 	GtkTreeModel *model;
 	GtkTreeIter iter;
 	GtkTreeSelection *selection;
 	GtkTreePath *path;
-		
-	new = run_edit_dialog (NULL, _("Add Palette"));
-	if (!new)
+	char *new;
+
+	gtk_widget_set_sensitive (curr_data->propwindow, TRUE);
+
+	if (response_id != GTK_RESPONSE_OK) {
+		gtk_widget_destroy (curr_data->add_edit_dialog);
 		return;
-		
+	}
+	
+	new = gtk_editable_get_chars (GTK_EDITABLE (curr_data->add_edit_entry), 0, -1);
+
+	gtk_widget_destroy (curr_data->add_edit_dialog);
+
+	if (!new || strlen (new) == 0)
+		return;
+	
 	list = g_list_append (list, new);
 
 	if (curr_data->chartable == NULL) {
 		curr_data->chartable = list;
 		curr_data->charlist = curr_data->chartable->data;
 		build_table (curr_data);
+
 		if (key_writable (PANEL_APPLET (curr_data->applet), "current_list"))
 			panel_applet_gconf_set_string (PANEL_APPLET (curr_data->applet),
 						      "current_list", 
@@ -142,33 +145,47 @@ add_palette (GtkButton *buttonk, charpick_data *curr_data)
   	populate_menu (curr_data);
   	
   	model = gtk_tree_view_get_model (GTK_TREE_VIEW (curr_data->pref_tree));
-  	gtk_list_store_append (GTK_LIST_STORE (model), &iter);
+
+	gtk_list_store_append (GTK_LIST_STORE (model), &iter);
 	gtk_list_store_set (GTK_LIST_STORE (model), &iter, 0, new, 1, new, -1);
+
 	selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (curr_data->pref_tree));
 	gtk_tree_selection_select_iter (selection, &iter);
+
 	path = gtk_tree_model_get_path (model, &iter);
 	gtk_tree_view_scroll_to_cell (GTK_TREE_VIEW (curr_data->pref_tree), path,
 						  NULL, FALSE, 0.0, 0.0);
+
 	gtk_tree_path_free (path);
 }
 
 static void
-edit_palette (GtkButton *button, charpick_data *curr_data)
+edit_palette_cb (GtkDialog *dialog, int response_id, charpick_data *curr_data)
 {
 	GtkTreeSelection *selection;
 	GtkTreeIter iter;
 	GtkTreeModel *model;
-	gchar *charlist, *new;
 	GList *list;
+	char *new, *charlist;
+
+	gtk_widget_set_sensitive (curr_data->propwindow, TRUE);
+
+        if (response_id != GTK_RESPONSE_OK) {
+		gtk_widget_destroy (curr_data->add_edit_dialog);
+		return;
+	}
 
 	selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (curr_data->pref_tree));
-	
+
 	if (!gtk_tree_selection_get_selected (selection, &model, &iter))
 		return;
-		
+
 	gtk_tree_model_get (model, &iter, 1, &charlist, -1);
+
+	new = gtk_editable_get_chars (GTK_EDITABLE (curr_data->add_edit_entry), 0, -1);
+
+	gtk_widget_destroy (curr_data->add_edit_dialog);
 	
-	new = run_edit_dialog (charlist, _("Edit Palette"));
 	if (!new || (g_ascii_strcasecmp (new, charlist) == 0))
 		return;
 		
@@ -181,11 +198,74 @@ edit_palette (GtkButton *button, charpick_data *curr_data)
 	if (g_ascii_strcasecmp (curr_data->charlist, charlist) == 0) {
 		curr_data->charlist = new;
 		build_table (curr_data);
+
 		if (key_writable (PANEL_APPLET (curr_data->applet), "current_list"))
 			panel_applet_gconf_set_string (PANEL_APPLET (curr_data->applet), "current_list", curr_data->charlist, NULL);
 	}
-	g_free (charlist);
 	
+	g_free (charlist);
+}
+
+static void
+add_palette (GtkButton *buttonk, charpick_data *curr_data)
+{
+	if (curr_data->add_edit_dialog == NULL) {
+		add_edit_dialog_create (curr_data, NULL, _("Add Palette"));
+
+		g_signal_connect (curr_data->add_edit_dialog, 
+				  "response", 
+				  G_CALLBACK (add_palette_cb),
+				  curr_data);
+
+		g_signal_connect (curr_data->add_edit_dialog,
+				  "destroy",
+				  G_CALLBACK (gtk_widget_destroyed),
+				  &curr_data->add_edit_dialog);
+
+		gtk_widget_show_all (curr_data->add_edit_dialog);
+	} else {
+		gtk_window_set_screen (GTK_WINDOW (curr_data->add_edit_dialog),
+				       gtk_widget_get_screen (GTK_WIDGET (curr_data->applet)));
+
+		gtk_window_present (GTK_WINDOW (curr_data->add_edit_dialog));
+	}
+}
+
+static void
+edit_palette (GtkButton *button, charpick_data *curr_data)
+{
+	GtkTreeSelection *selection;
+	GtkTreeIter iter;
+	GtkTreeModel *model;
+	char *charlist;
+
+	if (curr_data->add_edit_dialog == NULL) {
+		selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (curr_data->pref_tree));
+
+		if (!gtk_tree_selection_get_selected (selection, &model, &iter))
+			return;
+
+		gtk_tree_model_get (model, &iter, 1, &charlist, -1);
+		
+		add_edit_dialog_create (curr_data, charlist, _("Edit Palette"));
+
+		g_signal_connect (curr_data->add_edit_dialog, 
+				  "response", 
+				  G_CALLBACK (edit_palette_cb),
+				  curr_data);
+
+		g_signal_connect (curr_data->add_edit_dialog,
+				  "destroy",
+				  G_CALLBACK (gtk_widget_destroyed),
+				  &curr_data->add_edit_dialog);
+
+		gtk_widget_show_all (curr_data->add_edit_dialog);
+	} else {
+		gtk_window_set_screen (GTK_WINDOW (curr_data->add_edit_dialog),
+				       gtk_widget_get_screen (GTK_WIDGET (curr_data->applet)));
+
+		gtk_window_present (GTK_WINDOW (curr_data->add_edit_dialog));
+	}
 }
 
 static void

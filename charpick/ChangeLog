@@ -1,3 +1,23 @@
+2004-02-01  Dennis Smit  <ds@nerds-incorporated.org>
+
+	* charpick.h: Added an add_edit_dialog and add_edit_entry
+	entry to _charpick_data.
+	
+	* properties.c: Renamed run_edit_dialog to add_edit_dialog_create
+	and changed the function to make use of the privates.
+	(add_palette): Changed to use the event driven dialogs.
+	
+	(add_palette_cb): Added function.
+
+	(edit_palette): Changed to use the event driven dialogs.
+
+	(edit_palette_cb): Added function.
+
+	* charpick.c (charpicker_applet_fill): initialize
+	the add_edit_dialog member to NULL.
+
+	Fixes: #133087 and #131889.
+
 2004-01-31  Michael Terry  <mterry@fastmail.fm>
 
 	* charpick.c: Remove "Add a palette..." popup menu item.  Fixes bug 

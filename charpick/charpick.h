@@ -24,6 +24,8 @@ struct _charpick_data {
   GtkWidget *about_dialog;
   GtkWidget *pref_tree;
   GtkWidget *menu;
+  GtkWidget *add_edit_dialog;
+  GtkWidget *add_edit_entry;
 };
 
 
@@ -45,7 +47,10 @@ void save_chartable (charpick_data *curr_data);
 void show_preferences_dialog  (BonoboUIComponent *uic,
 			       charpick_data     *curr_data,
 			       const char        *verbname);
-gchar *run_edit_dialog  (gchar *string, gchar *title);
+
+void add_edit_dialog_create (charpick_data	 *curr_data,
+			     gchar		 *string,
+			     gchar		 *title);
 void set_atk_name_description (GtkWidget         *widget,
 			       const char        *name,
 			       const char        *description);

@@ -737,7 +737,8 @@ charpicker_applet_fill (PanelApplet *applet)
   curr_data->last_index = NO_LAST_INDEX;
   curr_data->applet = GTK_WIDGET (applet);
   curr_data->about_dialog = NULL;
-  
+  curr_data->add_edit_dialog = NULL;
+ 
   get_chartable (curr_data);
   
   string  = panel_applet_gconf_get_string (applet, "current_list", NULL);
