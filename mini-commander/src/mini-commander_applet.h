@@ -1,3 +1,3 @@
-#define INTERNAL_VERSION "0.0.15pre"
+#define INTERNAL_VERSION "1.0.0pre"
 
 extern GtkWidget *applet;

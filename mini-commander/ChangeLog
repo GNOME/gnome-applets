@@ -1,9 +1,12 @@
 1999-04-16  Oliver Maruhn  <om@linuxhq.com>
 
+	* v1.0.0 released. This version has all basic features.
+	
 	* src/exec.c (initExecSignalHandler): Using sigaction instead of
  	signal.  Now the signal handler has not to be reinstalled
  	everytime the signal is catched.  Hopefully this will fix the
- 	"zombie" problem.
+ 	"zombie" problem [reported by Charles Duffy <cduffy@bigfoot.com>
+ 	and Brian J. Murrell].
 
 	* src/preferences.c (loadSession): Two other very macros from Chad
  	Powell <pxpx@usa.net> which allow searching yahoo and freshmeat have been

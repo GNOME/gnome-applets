@@ -101,6 +101,7 @@ showInterestingInformation(gpointer data)
 		    if(prop.showTime && prop.showDate)
 			timeFormat = _("%H:%M - %d. %b");
 		    else if(prop.showTime && !prop.showDate)
+/* 			timeFormat = _("%H:%M %Z"); */
 			timeFormat = _("%H:%M");
 		    else if(!prop.showTime && prop.showDate)
 			timeFormat = _("%d. %b");
@@ -108,6 +109,19 @@ showInterestingInformation(gpointer data)
 			timeFormat = "-";
 		    
 		    /* sprintf(message, "%s", ctime(&seconds)); */
+
+		    /* Reset stored timezone information.  If the
+		       local timezone has been changed (for example
+		       because the system is running on a laptop and
+		       the user is traveling) the time display gets
+		       updated to reflect the new time zone.  I wonder
+		       if it is OK to call tzset() four times per
+		       minute. */
+/* 		    strcpy(tzname, "\0\0"); */
+/* 		    tzname[0] = '\0'; */
+/* 		    tzname[1] = '\0'; */
+/* 		    unsetenv("TZ"); */
+/*  		    tzset();  */
 		    tm = localtime(&seconds);
 		    strftime(message, 20, timeFormat, tm);
 		    gtk_label_get(GTK_LABEL(labelMessage), &currentMessage);

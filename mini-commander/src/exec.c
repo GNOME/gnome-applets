@@ -44,7 +44,7 @@ void
 execCommand(char *cmd)
 {
     pid_t pid;
-    char *argv[10];
+    char *argv[5];
     char command[1000];
     pid_t PID = getpid();
 	    
@@ -62,6 +62,15 @@ execCommand(char *cmd)
     else if (pid == 0) 
 	{
 	    /* child */
+	    /* try the bash as interactive login so that personal prolfiles are reflected */
+/* 	    argv[0] = "bash"; */
+/* 	    argv[1] = "--login"; */
+/* 	    argv[2] = "-c"; */
+/* 	    argv[3] = command; */
+/* 	    argv[4] = NULL;   */
+/* 	    execv("/bin/sh", argv); */
+
+	    /* looks like there is no bash -> try sh */
 	    argv[0] = "sh";
 	    argv[1] = "-c";
 	    argv[2] = command;
