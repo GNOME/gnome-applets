@@ -675,6 +675,11 @@ destroy_applet (GtkWidget *widget, gpointer data)
    gtk_timeout_remove (pdata->pixtimer);
    pdata->pixtimer = 0;
    pdata->applet = NULL;
+   g_object_unref(G_OBJECT (pdata->pixgc));
+   g_object_unref(pdata->ac_tip);
+   g_object_unref(pdata->progress_tip);
+   g_object_unref(pdata->progressy_tip);
+   g_object_unref(pdata->testpixgc);
    gdk_pixmap_unref(pdata->pixmap);
    gdk_pixmap_unref(pdata->pixmapy);
    gdk_pixmap_unref(pdata->pixbuffer);
@@ -858,8 +863,8 @@ about_cb (BonoboUIComponent *uic,
 				strcmp (translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
 				pixbuf);
    
-   if (pixbuf) 
-   	gdk_pixbuf_unref (pixbuf);
+   if (pixbuf)
+	g_object_unref (pixbuf);
 
    gtk_window_set_wmclass (GTK_WINDOW (about_box), "battery charge monitor", "Batter Charge Monitor");
    gtk_window_set_screen (GTK_WINDOW (about_box),
@@ -1424,16 +1429,22 @@ create_layout(ProgressData *battstat)
    
    /* Set the default tooltips.. */
    battstat->ac_tip = gtk_tooltips_new ();
+   g_object_ref (battstat->ac_tip);
+   gtk_object_sink (GTK_OBJECT (battstat->ac_tip));
    gtk_tooltips_set_tip (battstat->ac_tip,
 			 battstat->eventstatus,
 			 "",
 			 NULL);
    battstat->progress_tip = gtk_tooltips_new ();
+   g_object_ref (battstat->progress_tip);
+   gtk_object_sink (GTK_OBJECT (battstat->progress_tip));
    gtk_tooltips_set_tip (battstat->progress_tip,
 			 battstat->eventbattery,
 			 "",
 			 NULL);
    battstat->progressy_tip = gtk_tooltips_new ();
+   g_object_ref (battstat->progressy_tip);
+   gtk_object_sink (GTK_OBJECT (battstat->progressy_tip));
    gtk_tooltips_set_tip (battstat->progressy_tip,
 			 battstat->eventybattery,
 			 "",
