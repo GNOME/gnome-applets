@@ -7,9 +7,6 @@
 #include "charpick.h"
 
 
-static charpick_button_cb_data button_cb_data[MAX_BUTTONS_WITH_BUFFER];
-
-
 /* This stuff assumes that this program is being run in an environment
  * that uses ISO-8859-1 (latin-1) as its native character code.
  */
@@ -96,7 +93,7 @@ charpick_selection_handler(GtkWidget *widget,
 		           gpointer data)
 {
   charpick_data *p_curr_data = data;
-g_print ("selection set \n");
+
   gtk_selection_data_set(selection_data,
 			 GDK_SELECTION_TYPE_STRING,
 			 8,
@@ -108,14 +105,16 @@ g_print ("selection set \n");
 /* untoggles the active toggle_button when we lose the selection */
 static gint
 selection_clear_cb (GtkWidget *widget, GdkEventSelection *event,
-                 gint *have_selection, gpointer data)
+                    gpointer data)
 {
   charpick_data *curr_data = data;
   
-  gint * last_index = &curr_data->last_index;
-  GtkWidget *toggle_button = curr_data->toggle_buttons[*last_index];
+  gint last_index = curr_data->last_index;
+  GtkWidget *toggle_button;
+
+  toggle_button = curr_data->toggle_buttons[last_index];
   gtk_toggle_button_set_state (GTK_TOGGLE_BUTTON(toggle_button), FALSE);
-  *last_index = NO_LAST_INDEX;
+  curr_data->last_index = NO_LAST_INDEX;
   return TRUE;
 }
 
@@ -182,12 +181,17 @@ display_charlist (charpick_data *data)
   /* reset the characters on the labels and reshow the buttons */
   for (i=0;i<numtoshow;i++)
   {
+    gchar *str_utf8;
     currstr[0] = charlist[i];
     currstr[1] = '\0';
-#ifdef FIXME
-    gtk_label_set_text(GTK_LABEL(data->labels[i]), currstr);
-#endif
+    
+    str_utf8 = g_locale_to_utf8 (currstr, -1, NULL, NULL, NULL);
+    if (str_utf8) {
+      gtk_label_set_text(GTK_LABEL(data->labels[i]), str_utf8);
+      g_free (str_utf8);
+    }
     gtk_widget_show_all(data->toggle_buttons[i]);
+    
   }
   /* extra buttons? hide em */
   if ((rows * cols) > strlen(charlist))
@@ -376,8 +380,6 @@ g_print ("build table \n");
                               (i % cols + 1),
                               (i / cols),
                               (i / cols + 1));
-    button_cb_data[i].button_index = i;
-    button_cb_data[i].p_curr_data = p_curr_data;
     gtk_button_set_relief(GTK_BUTTON(toggle_button[i]), GTK_RELIEF_NONE);
     /* connect toggle signal for button to handler */
     g_object_set_data (G_OBJECT (toggle_button[i]), "index", GINT_TO_POINTER (i));
