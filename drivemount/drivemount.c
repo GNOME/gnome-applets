@@ -122,7 +122,7 @@ display_about_dialog (BonoboUIComponent *uic,
 	NULL
     };
 
-    gtk_show_about_dialog (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (drive_list))),
+    gtk_show_about_dialog (NULL,
 	"name",        _("Disk Mounter"),
 	"version",     VERSION,
 	"copyright",   "Copyright \xC2\xA9 2004 Canonical Ltd",
