@@ -28,10 +28,6 @@ static const gchar *cpu_texts [4] = {
     N_("User"),  N_("System"),   N_("Nice"),  N_("Idle")
 };
 
-static const gchar *page_texts [3] = {
-    N_("In"),  N_("Out"), N_("Idle")
-};
-
 static const gchar *mem_texts [4] =  {
     N_("Other"), N_("Shared"), N_("Buffers"), N_("Free")
 };
@@ -51,11 +47,6 @@ static const gchar *loadavg_texts [2] = {
 static const gchar *cpu_color_defs [4] = {
     "#ffffffff4fff", "#dfffdfffdfff",
     "#afffafffafff", "#000000000000"
-};
-
-static const gchar *page_color_defs [3] = {
-    "#ffffffff4fff", "#afffafffafff",
-    "#000000000000"
 };
 
 static const gchar *mem_color_defs [4] = {
@@ -230,22 +221,18 @@ main (int argc, char **argv)
     gtk_widget_ref (((GnomePropertyObject *) c->data)->label);
 
     c = g_list_nth (multiload_property_object_list, 1);
-    ((GnomePropertyObject *) c->data)->label = gtk_label_new (_("Page Load"));
-    gtk_widget_ref (((GnomePropertyObject *) c->data)->label);
-
-    c = g_list_nth (multiload_property_object_list, 2);
     ((GnomePropertyObject *) c->data)->label = gtk_label_new (_("Memory Load"));
     gtk_widget_ref (((GnomePropertyObject *) c->data)->label);
 
-    c = g_list_nth (multiload_property_object_list, 3);
+    c = g_list_nth (multiload_property_object_list, 2);
     ((GnomePropertyObject *) c->data)->label = gtk_label_new (_("Swap Load"));
     gtk_widget_ref (((GnomePropertyObject *) c->data)->label);
 
-    c = g_list_nth (multiload_property_object_list, 4);
+    c = g_list_nth (multiload_property_object_list, 3);
     ((GnomePropertyObject *) c->data)->label = gtk_label_new (_("Net Load"));
     gtk_widget_ref (((GnomePropertyObject *) c->data)->label);
 
-    c = g_list_nth (multiload_property_object_list, 5);
+    c = g_list_nth (multiload_property_object_list, 4);
     ((GnomePropertyObject *) c->data)->label = gtk_label_new (_("Load Average"));
     gtk_widget_ref (((GnomePropertyObject *) c->data)->label);
 
