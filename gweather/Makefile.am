@@ -19,6 +19,8 @@ gweather_applet_2_SOURCES = \
 	gweather-dialog.c gweather-dialog.h \
 	gweather-applet.c gweather-applet.h \
 	weather.c weather.h \
+	weather-metar.c weather-iwin.c weather-met.c \
+	weather-bom.c weather-wx.c \
 	gweather-xml.c gweather-xml.h
 
 gweather_applet_2_LDADD = \

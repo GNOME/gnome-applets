@@ -242,6 +242,46 @@ extern void _weather_info_get_pixbuf (WeatherInfo *info, gboolean mini, GdkPixbu
 #define weather_info_get_pixbuf_mini(info,pixbuf) _weather_info_get_pixbuf((info), TRUE, (pixbuf))
 #define weather_info_get_pixbuf(info,pixbuf) _weather_info_get_pixbuf((info), FALSE, (pixbuf))
 
+/* Values common to the parsing source files */
+
+#define DATA_SIZE 5000
+
+#define CONST_DIGITS "0123456789"
+#define CONST_ALPHABET "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+/* Units conversions and names */
+
+#define TEMP_F_TO_C(f)  (((f) - 32.0) * 0.555556)
+#define TEMP_F_TO_K(f)  (TEMP_F_TO_C(f) + 273.15)
+#define TEMP_C_TO_F(c)  (((c) * 1.8) + 32.0)
+
+#define WINDSPEED_KNOTS_TO_KPH(knots)  ((knots) * 1.851965)
+#define WINDSPEED_KNOTS_TO_MPH(knots)  ((knots) * 1.150779)
+#define WINDSPEED_KNOTS_TO_MS(knots)   ((knots) * 0.514444)
+
+#define PRESSURE_INCH_TO_KPA(inch)   ((inch) * 3.386)
+#define PRESSURE_INCH_TO_HPA(inch)   ((inch) * 33.86)
+#define PRESSURE_INCH_TO_MM(inch)    ((inch) * 25.40005)
+#define PRESSURE_INCH_TO_MB(inch)    (PRESSURE_INCH_TO_HPA(inch))
+#define PRESSURE_MBAR_TO_INCH(mbar) ((mbar) * 0.02963742)
+
+#define VISIBILITY_SM_TO_KM(sm)  ((sm) * 1.609344)
+#define VISIBILITY_SM_TO_M(sm)   (VISIBILITY_SM_TO_KM(sm) * 1000)
+
+#define DEGREES_TO_RADIANS(deg)   ((fmod(deg,360.) / 180.) * M_PI)
+#define RADIANS_TO_DEGREES(rad)   ((rad) * 180. / M_PI)
+#define RADIANS_TO_HOURS(rad)     ((rad) * 12. / M_PI)
+
+extern void metar_start_open (WeatherInfo *info);
+extern void iwin_start_open (WeatherInfo *info);
+extern void metoffice_start_open (WeatherInfo *info);
+extern void bom_start_open (WeatherInfo *info);
+extern void wx_start_open (WeatherInfo *info);
+
+extern gboolean requests_init (WeatherInfoFunc cb, WeatherInfo *info);
+extern void requests_done (GnomeVFSAsyncHandle *handle, WeatherInfo *info);
+extern void requests_done_check (WeatherInfo *info);
+
 G_END_DECLS
 
 #endif /* __WEATHER_H_ */

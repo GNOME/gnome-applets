@@ -1,10 +1,15 @@
-2004-12-10  Frank Solensky  <frank@solensky.org>
+2004-12-12  Frank Solensky  <frank@solensky.org>
 
 	reviewed by: Davyd Madeley <davyd@madeley.id.au>
 
-	* weather.c: (metar_init_re), (metar_parse): Modified again to
-	fix problems when fields (conditions, clouds) can repeat.
-	Move "conditions" earlier since it appear earlier
+	* Makefile.am: add new files
+	* weather.c: (requests_init), (request_done),
+	(requests_done_check): remove "static" for new files
+	(calc_apparent): fix bug in wind-chill calculations (#160572)
+	* weather.h: add defines, entry points needed for new files
+	* weather-metar.c, weather-iwin.c, weather-bom.c, weather-met.c,
+	weather-wx.c (Added): break out parsing of weather conditions
+	out into separate files
 
 2004-12-11  Simos Xenitellis  <simos@gnome.org>
 
