@@ -20,7 +20,8 @@ update_default_list_cb (GtkEditable *editable, gpointer data)
   	return;
   	
   if (g_utf8_strlen (text, -1) == 0) {
-    gchar *old_text = g_locale_to_utf8 (curr_data->charlist, -1, NULL, NULL, NULL);
+    gchar *old_text = g_convert(curr_data->default_charlist, -1, "UTF-8", 
+  		                "ISO-8859-1", NULL, NULL, NULL);
     gint pos;
     gtk_editable_insert_text (editable, old_text, -1, &pos);
     g_free (old_text);
@@ -29,7 +30,8 @@ update_default_list_cb (GtkEditable *editable, gpointer data)
   
   if (curr_data->default_charlist)
     g_free (curr_data->default_charlist	);
-  curr_data->default_charlist = g_locale_from_utf8 (text, -1, NULL, NULL, NULL);
+  curr_data->default_charlist = g_convert (text, -1, "ISO-8859-1", "UTF-8", 
+  					   NULL, NULL, NULL);
   
   panel_applet_gconf_set_string (applet, "default_list", text, NULL);
   g_free (text);
@@ -52,8 +54,8 @@ static void default_chars_frame_create(charpick_data *curr_data)
   default_list_hbox = gtk_hbox_new(FALSE, 5);
   default_list_label = gtk_label_new(_("Default character list:"));
   default_list_entry = gtk_entry_new_with_max_length (MAX_BUTTONS);
-  text_utf8 = g_locale_to_utf8 (curr_data->default_charlist, -1,
-  				NULL, NULL, NULL);
+  text_utf8 = g_convert (curr_data->default_charlist, -1, "UTF-8", 
+  			 "ISO-8859-1", NULL, NULL, NULL);
   gtk_entry_set_text(GTK_ENTRY(default_list_entry), 
 		     text_utf8);
   g_free (text_utf8);

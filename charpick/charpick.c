@@ -171,6 +171,7 @@ key_press_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
 {
   charpick_data *p_curr_data = data;
   gchar inputchar = event->keyval;
+
   switch (inputchar)
     {
     case 'a' : p_curr_data->charlist = a_list;
@@ -287,7 +288,7 @@ build_table(charpick_data *p_curr_data)
     currstr[0] = p_curr_data->charlist[i];
     currstr[1] = '\0';
  
-    str_utf8 = g_locale_to_utf8 (currstr, -1, NULL, NULL, NULL);
+    str_utf8 = g_convert (currstr, -1, "UTF-8", "ISO-8859-1", NULL, NULL, NULL);
     toggle_button = gtk_toggle_button_new_with_label (str_utf8);
     g_free (str_utf8);
     gtk_box_pack_start (GTK_BOX (box), toggle_button, TRUE, TRUE, 0);
@@ -417,6 +418,7 @@ charpicker_applet_fill (PanelApplet *applet)
   event_box = gtk_event_box_new ();
   curr_data->event_box = event_box; 
   GTK_WIDGET_SET_FLAGS (event_box, GTK_CAN_FOCUS);
+  gtk_widget_set_events (curr_data->event_box, GDK_FOCUS_CHANGE_MASK|GDK_KEY_PRESS_MASK);
 
   /* Create table */
   curr_data->frame = gtk_frame_new (NULL);
@@ -426,7 +428,7 @@ charpicker_applet_fill (PanelApplet *applet)
   gtk_frame_set_shadow_type (GTK_FRAME(curr_data->frame), GTK_SHADOW_IN);
 
   /* Event signals */
-  gtk_signal_connect (GTK_OBJECT (event_box), "key_press_event",
+  gtk_signal_connect (GTK_OBJECT (curr_data->applet), "key_press_event",
 		      (GtkSignalFunc) key_press_event, curr_data);
   /*
   gtk_signal_connect (GTK_OBJECT (applet), "focus_in_event",
@@ -435,8 +437,6 @@ charpicker_applet_fill (PanelApplet *applet)
   gtk_signal_connect (GTK_OBJECT (applet), "focus_out_event",
 		      (GtkSignalFunc) focus_out_event, NULL);
   */
-
-  gtk_widget_set_events (curr_data->event_box, GDK_FOCUS_CHANGE_MASK|GDK_KEY_PRESS_MASK);
 
   /* selection handling for selected character */
   gtk_selection_add_target (curr_data->event_box, 
