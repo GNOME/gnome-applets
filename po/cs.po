@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-06 13:52+0100\n"
-"PO-Revision-Date: 2005-02-06 16:57+0100\n"
+"POT-Creation-Date: 2005-02-08 14:09+0100\n"
+"PO-Revision-Date: 2005-02-08 15:13+0100\n"
 "Last-Translator: Miloslav Trmac <mitr@volny.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -75,7 +75,6 @@ msgstr "Zobrazí stav vlastností zpřístupnění klávesnice"
 #: accessx-status/applet.c:136 charpick/charpick.c:607
 #: drivemount/drivemount.c:132 geyes/geyes.c:192
 #: gswitchit/gswitchit-applet.c:602 modemlights/modem-applet.c:1031
-#: trashapplet/src/trashapplet.c:681
 msgid "translator_credits"
 msgstr ""
 "David Šauer <davids@penguin.cz>\n"
@@ -392,6 +391,7 @@ msgstr "Tento nástroj zobrazuje stav baterie vašeho notebooku."
 #: gweather/gweather-about.c:53 mini-commander/src/about.c:54
 #: mixer/applet.c:1056 multiload/main.c:66
 #: stickynotes/stickynotes_applet_callbacks.c:442
+#: trashapplet/src/trashapplet.c:647
 msgid "translator-credits"
 msgstr ""
 "David Šauer <davids@penguin.cz>\n"
@@ -460,7 +460,7 @@ msgstr "_Varovat, když je nabití baterie nízké"
 #: mini-commander/src/preferences.c:368
 #: stickynotes/stickynotes_applet_callbacks.c:406
 #: stickynotes/stickynotes_applet_callbacks.c:625
-#: trashapplet/src/trashapplet.c:648
+#: trashapplet/src/trashapplet.c:614
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Při zobrazování nápovědy došlo k chybě: %s"
@@ -4296,6 +4296,7 @@ msgid "Trash"
 msgstr "Koš"
 
 #: trashapplet/GNOME_Panel_TrashApplet.xml.h:2
+#: trashapplet/src/trashapplet.c:536
 msgid "_Empty Trash"
 msgstr "_Vyprázdnit koš"
 
@@ -4303,16 +4304,16 @@ msgstr "_Vyprázdnit koš"
 msgid "_Open"
 msgstr "_Otevřít"
 
-#: trashapplet/src/trashapplet.c:160
+#: trashapplet/src/trashapplet.c:162
 #, c-format
 msgid "Unable to find the Trash directory: %s"
 msgstr "Nemohu najít adresář koše: %s"
 
-#: trashapplet/src/trashapplet.c:391
+#: trashapplet/src/trashapplet.c:393
 msgid "No Items in Trash"
 msgstr "Žádná položka v koši"
 
-#: trashapplet/src/trashapplet.c:395
+#: trashapplet/src/trashapplet.c:397
 #, c-format
 msgid "%d Item in Trash"
 msgid_plural "%d Items in Trash"
@@ -4320,19 +4321,17 @@ msgstr[0] "%d položka v koši"
 msgstr[1] "%d položky v koši"
 msgstr[2] "%d položek v koši"
 
-#: trashapplet/src/trashapplet.c:543
-msgid "Are you sure you want to empty all of the items from the trash?"
-msgstr "Opravdu chcete odstranit všechny položky z koše?"
+#: trashapplet/src/trashapplet.c:513
+msgid "Empty all of the items from the trash?"
+msgstr "Odstranit všechny položky z koše?"
 
-#: trashapplet/src/trashapplet.c:557
-msgid "If you empty the trash, items will be permanently deleted."
-msgstr "Pokud vyprázdníte koš, položky budou natrvalo odstraněny."
+#: trashapplet/src/trashapplet.c:516
+msgid ""
+"If you choose to empty the trash, all items in it will be permanently lost. "
+"Please note that you can also delete them separately."
+msgstr "Pokud se rozhodnete vyprázdnit koš, všechny položky v něm budou natrvalo odstraněny. Můžete je také odstraňovat po jedné."
 
-#: trashapplet/src/trashapplet.c:569
-msgid "_Empty"
-msgstr "_Vyprázdnit"
-
-#: trashapplet/src/trashapplet.c:626
+#: trashapplet/src/trashapplet.c:592
 #, c-format
 msgid ""
 "Error while spawning nautilus:\n"
@@ -4341,11 +4340,11 @@ msgstr ""
 "Chyba při spouštění nautila:\n"
 "%s"
 
-#: trashapplet/src/trashapplet.c:673
+#: trashapplet/src/trashapplet.c:639
 msgid "Trash Applet"
 msgstr "Aplet koše"
 
-#: trashapplet/src/trashapplet.c:676
+#: trashapplet/src/trashapplet.c:642
 msgid ""
 "A GNOME trash bin that lives in your panel. You can use it to view the trash "
 "or drag and drop items into the trash."
@@ -4353,21 +4352,21 @@ msgstr ""
 "Koš GNOME, který žije na vašem panelu. Můžete jej používat pro zobrazení "
 "koše nebo do něj přetahovat položky."
 
-#: trashapplet/src/trashapplet.c:701
+#: trashapplet/src/trashapplet.c:667
 msgid "Delete Immediately?"
 msgstr "Hned odstranit?"
 
-#: trashapplet/src/trashapplet.c:730
+#: trashapplet/src/trashapplet.c:696
 msgid "Cannot move items to trash, do you want to delete them immediately?"
 msgstr "Nemohu přesunout položky do koše, chcete je odstranit okamžitě?"
 
-#: trashapplet/src/trashapplet.c:733
+#: trashapplet/src/trashapplet.c:699
 msgid ""
 "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr ""
 "Nemohu přesunout některé položky do koše, chcete je odstranit okamžitě?"
 
-#: trashapplet/src/trashapplet.c:834 trashapplet/src/trashapplet.c:851
+#: trashapplet/src/trashapplet.c:800 trashapplet/src/trashapplet.c:817
 #, c-format
 msgid ""
 "Unable to move to trash:\n"
@@ -4375,3 +4374,6 @@ msgid ""
 msgstr ""
 "Nemohu přesunout do koše:\n"
 "%s"
+
+#~ msgid "_Empty"
+#~ msgstr "_Vyprázdnit"
