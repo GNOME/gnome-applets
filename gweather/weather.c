@@ -1995,7 +1995,7 @@ const gchar *weather_info_get_humidity (WeatherInfo *info)
 
 const gchar *weather_info_get_wind (WeatherInfo *info)
 {
-    static gchar buf[100];
+    static gchar buf[200];
     g_return_val_if_fail(info != NULL, NULL);
     if (!info->valid)
         return "-";
