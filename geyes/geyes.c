@@ -253,6 +253,8 @@ about_cb (BonoboUIComponent *uic,
 		gdk_pixbuf_unref (pixbuf);
 			
 	gtk_window_set_wmclass (GTK_WINDOW (eyes_applet->about_dialog), "geyes", "Geyes");
+	gtk_window_set_screen (GTK_WINDOW (eyes_applet->about_dialog),
+			       gtk_widget_get_screen (GTK_WIDGET (eyes_applet->applet)));
 	g_signal_connect (eyes_applet->about_dialog, "destroy",
 			  G_CALLBACK (gtk_widget_destroyed),
 			  &eyes_applet->about_dialog);
