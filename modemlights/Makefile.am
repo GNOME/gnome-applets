@@ -5,7 +5,7 @@ INCLUDES = -I. -I$(srcdir) 				\
 	-DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\" 	\
 	-DVERSION=\""$(VERSION)"\"
 
-bin_PROGRAMS = modemlights_applet2
+libexec_PROGRAMS = modemlights_applet2
 
 modemlights_applet2_SOURCES = \
 	modemlights.c	\
@@ -22,14 +22,19 @@ serverdir       = $(libdir)/bonobo/servers
 server_in_files = GNOME_ModemLightsApplet.server.in
 server_DATA     = $(server_in_files:.server.in=.server)
 
+$(server_in_files): $(server_in_files:.server.in=.server.in.in)
+	sed -e "s|\@LIBEXECDIR\@|$(libexecdir)|" $< > $@
+
 @INTLTOOL_SERVER_RULE@
 
 schemadir 	= @GCONF_SCHEMA_FILE_DIR@
 schema_DATA	= modemlights.schemas
 
-EXTRA_DIST = \
-	digits.xpm $(server_in_files)	\
-	$(schema_DATA) $(ui_DATA)
+EXTRA_DIST =					\
+	GNOME_ModemLightsApplet.server.in.in	\
+	digits.xpm 				\
+	$(schema_DATA)				\
+	$(ui_DATA)
 
 install-data-local:
 	for p in $(schema_DATA); do \

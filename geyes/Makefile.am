@@ -6,7 +6,7 @@ INCLUDES = -I. -I$(srcdir) 				\
 	-I$(includedir) 				\
 	-DGEYES_THEMES_DIR=\""$(datadir)/geyes/"\"
 
-bin_PROGRAMS = geyes_applet2
+libexec_PROGRAMS = geyes_applet2
 
 geyes_applet2_SOURCES =	\
         geyes.c \
@@ -20,6 +20,9 @@ geyes_applet2_LDADD = \
 serverdir       = $(libdir)/bonobo/servers
 server_in_files = GNOME_GeyesApplet.server.in
 server_DATA     = $(server_in_files:.server.in=.server)
+
+$(server_in_files): $(server_in_files:.server.in=.server.in.in)
+	sed -e "s|\@LIBEXECDIR\@|$(libexecdir)|" $< > $@
 
 uidir = $(datadir)/gnome-2.0/ui
 ui_DATA = GNOME_GeyesApplet.xml
@@ -39,7 +42,7 @@ EXTRA_DIST = \
 	     gnome-eyes.png \
 	     README.themes \
 	     $(pixmap_DATA) \
-	     $(server_in_files) \
+	     GNOME_GeyesApplet.server.in.in \
 	     $(schema_DATA) \
 	     $(ui_DATA)
 

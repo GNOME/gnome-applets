@@ -7,7 +7,7 @@ INCLUDES = 						\
 	-DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\"	\
 	$(GNOME_INCLUDEDIR)
 
-bin_PROGRAMS = mini_commander_applet
+libexec_PROGRAMS = mini_commander_applet
 
 mini_commander_applet_SOURCES =			\
 	about.c					\
@@ -45,6 +45,9 @@ serverdir       = $(libdir)/bonobo/servers
 server_in_files = GNOME_MiniCommanderApplet.server.in
 server_DATA     = $(server_in_files:.server.in=.server)
 
+$(server_in_files): $(server_in_files:.server.in=.server.in.in)
+	sed -e "s|\@LIBEXECDIR\@|$(libexecdir)|" $< > $@
+
 schemadir 	= @GCONF_SCHEMA_FILE_DIR@
 schema_DATA	= mini-commander.schemas
 
@@ -56,9 +59,10 @@ install-data-local:
 
 @INTLTOOL_SERVER_RULE@
 
-EXTRA_DIST =			\
-	$(server_in_files)	\
-	$(pixmap_DATA)		\
-	$(bitmaps_DATA)		\
-	$(ui_DATA)		\
+EXTRA_DIST =					\
+	update-from-egg.sh			\
+	GNOME_MiniCommanderApplet.server.in.in	\
+	$(pixmap_DATA)				\
+	$(bitmaps_DATA)				\
+	$(ui_DATA)				\
 	$(schema_DATA)

@@ -7,7 +7,7 @@ INCLUDES =						\
 	$(GTOP_APPLETS_CFLAGS)				\
 	-Wall
 
-bin_PROGRAMS = multiload-applet-2
+libexec_PROGRAMS = multiload-applet-2
 
 multiload_applet_2_SOURCES = \
 			global.h	\
@@ -39,7 +39,7 @@ install-data-local:
 	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schema_DATA) ;
 		
 EXTRA_DIST =	\
-		GNOME_MultiLoadApplet_Factory.server.in \
+		GNOME_MultiLoadApplet_Factory.server.in.in \
 		multiload.schemas \
 		$(pixmaps) \
 		$(ui_DATA)
@@ -50,5 +50,8 @@ ui_DATA		= GNOME_MultiloadApplet.xml
 serverdir       = $(libdir)/bonobo/servers
 server_in_files = GNOME_MultiLoadApplet_Factory.server.in
 server_DATA     = $(server_in_files:.server.in=.server)
+
+$(server_in_files): $(server_in_files:.server.in=.server.in.in)
+	sed -e "s|\@LIBEXECDIR\@|$(libexecdir)|" $< > $@
 
 @INTLTOOL_SERVER_RULE@

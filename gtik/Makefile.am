@@ -5,7 +5,7 @@ INCLUDES =  -I$(srcdir)  -DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\" 
 		 -DGTIK_APPLET_NAME=\"gtik2_applet\" \
 		 -I access/
 
-bin_PROGRAMS = gtik2_applet2
+libexec_PROGRAMS = gtik2_applet2
 
 gtik2_applet2_SOURCES = gtik.c 
 
@@ -20,6 +20,9 @@ serverdir       = $(libdir)/bonobo/servers
 server_in_files = GNOME_GtikApplet.server.in
 server_DATA     = $(server_in_files:.server.in=.server)
 
+$(server_in_files): $(server_in_files:.server.in=.server.in.in)
+	sed -e "s|\@LIBEXECDIR\@|$(libexecdir)|" $< > $@
+
 uidir = $(datadir)/gnome-2.0/ui
 ui_DATA = GNOME_GtikApplet.xml
 
@@ -30,7 +33,7 @@ schema_DATA	= gtik.schemas
 
 EXTRA_DIST = \
 	README AUTHORS ChangeLog \
-	$(server_in_files)	\
+	GNOME_GtikApplet.server.in.in \
 	$(ui_DATA)		\
 	$(schema_DATA)
 	

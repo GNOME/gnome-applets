@@ -15,7 +15,7 @@ CDROM_CDDA_DEPS = \
 	writer-solaris.c
 endif
 
-bin_PROGRAMS = cdplayer_applet2
+libexec_PROGRAMS = cdplayer_applet2
 
 cdplayer_applet2_SOURCES = \
 cdplayer.c \
@@ -44,6 +44,9 @@ serverdir       = $(libdir)/bonobo/servers
 server_in_files = GNOME_CDPlayerApplet.server.in
 server_DATA     = $(server_in_files:.server.in=.server)
 
+$(server_in_files): $(server_in_files:.server.in=.server.in.in)
+	sed -e "s|\@LIBEXECDIR\@|$(libexecdir)|" $< > $@
+
 @INTLTOOL_SERVER_RULE@
 
 schemadir   = @GCONF_SCHEMA_FILE_DIR@
@@ -67,7 +70,7 @@ cdrom-solaris.c \
 reader-solaris.c \
 writer-solaris.c \
 $(icon_DATA) \
-$(server_in_files) \
+GNOME_CDPlayerApplet.server.in.in \
 $(schema_DATA)	\
 $(ui_DATA)
 
