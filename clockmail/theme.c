@@ -1002,6 +1002,11 @@ static NumberData *get_number(gchar *path, gchar *name, gint count, gint zeros, 
 		centered = TRUE;
 		}
 
+	if (length > 4)
+		{
+		count = strtol(vector[4], NULL, 0);;
+		}
+
 	g_strfreev (vector);
 
 	if (!strcasecmp(filename, "Large"))
