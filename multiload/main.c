@@ -85,8 +85,6 @@ about_cb (BonoboUIComponent *uic, gpointer data, const gchar *name)
    	gdk_pixbuf_unref (pixbuf);
    
     gtk_window_set_wmclass (GTK_WINDOW (about), "system monitor", "System Monitor");
-    gnome_window_icon_set_from_file (GTK_WINDOW (about), GNOME_ICONDIR"/gnome-monitor.png");
-
     g_signal_connect (G_OBJECT (about), "destroy",
 			G_CALLBACK (gtk_widget_destroyed), &about);
 
@@ -257,8 +255,7 @@ multiload_applet_refresh(MultiloadApplet *ma)
 	
 	if ( (orientation == PANEL_APPLET_ORIENT_UP) || 
 	     (orientation == PANEL_APPLET_ORIENT_DOWN) ) {
-	     	g_print ("hbox \n");
-		ma->box = gtk_hbox_new(FALSE, 0);
+	     	ma->box = gtk_hbox_new(FALSE, 0);
 	}
 	else
 		ma->box = gtk_vbox_new(FALSE, 0);
@@ -301,6 +298,8 @@ multiload_applet_new(PanelApplet *applet, const gchar *iid, gpointer data)
 	ma = g_new0(MultiloadApplet, 1);
 	
 	ma->applet = applet;
+	
+	gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gnome-monitor.png");
 	
 	panel_applet_add_preferences (applet, "/schemas/apps/multiload/prefs", NULL);
 	
