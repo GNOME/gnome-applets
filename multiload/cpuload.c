@@ -45,3 +45,4 @@ cpuload_applet_new(PanelApplet *applet, gpointer data)
 	
 	return g;
 }
+

@@ -28,7 +28,16 @@
 
 void about_box(BonoboUIComponent *uic, gpointer data, const gchar *verbname){
         static GtkWidget *about_box = NULL;
-	const gchar *authors[] = {(gchar *) "Oliver Maruhn <oliver@maruhn.com>", (gchar *) NULL};
+	static const gchar *authors[] = {
+		"Oliver Maruhn <oliver@maruhn.com>",
+		NULL
+	};
+
+	const gchar *documenters[] = {
+		NULL
+	};
+
+	const gchar *translator_credits = _("translator_credits");
 
 	if (about_box != NULL)
 	{
@@ -42,8 +51,8 @@ void about_box(BonoboUIComponent *uic, gpointer data, const gchar *verbname){
 _("This GNOME applet adds a command line to the panel. It features command completion, command history, changeable macros and an optional built-in clock.\n\n\
 This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version."),
 				     authors,
-				     NULL,
-				     NULL,
+				     documenters,
+				     strcmp (translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
 				     NULL);
 	gtk_signal_connect( GTK_OBJECT(about_box), "destroy",
 			    GTK_SIGNAL_FUNC(gtk_widget_destroyed), &about_box );

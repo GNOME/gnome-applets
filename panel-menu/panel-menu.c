@@ -665,6 +665,12 @@ applet_about_cb (BonoboUIComponent *uic, PanelMenu *panel_menu,
 		NULL
 	};
 
+	const gchar *documenters[] = {
+		NULL
+	};
+
+	const gchar *translator_credits = _("translator_credits");
+
 	if (about != NULL) {
 		gtk_widget_show (about);
 		gtk_window_present (GTK_WINDOW (about));
@@ -684,8 +690,9 @@ applet_about_cb (BonoboUIComponent *uic, PanelMenu *panel_menu,
 	about = gnome_about_new (_("PanelMenu Applet"), "0.0.1",
 				 _("(c) 2001 Chris Phelps"),
 				 _("The Panel Menu Applet allows you to display customized menubars on your panels."),
-				 authors, NULL,	/* documenters */
-				 NULL,	/* translator_credits */
+				 authors,
+				 documenters,
+				 strcmp (translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
 				 pixbuf);
 
 	gtk_window_set_wmclass (GTK_WINDOW (about), "panel-menu", "PanelMenu");

@@ -742,6 +742,12 @@ mixer_about_cb (BonoboUIComponent *uic,
                 NULL
         };
 
+	const gchar *documenters[] = {
+		NULL
+	};
+
+	const gchar *translator_credits = _("translator_credits");
+	
         if (about != NULL) {
                 gtk_window_present (GTK_WINDOW (about));
                 return;
@@ -751,8 +757,8 @@ mixer_about_cb (BonoboUIComponent *uic,
                                  _("(C) 2001 Richard Hult"),
                                  _("The volume control lets you set the volume level for your desktop."),
 				 authors,
-				 NULL,
-				 NULL,
+				 documenters,
+				 strcmp (translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
                                  NULL);
 
         g_signal_connect (G_OBJECT (about), "destroy",

@@ -42,6 +42,13 @@ about_cb (BonoboUIComponent *uic, gpointer data, const gchar *name)
 		NULL
 	};
 
+    const gchar *documenters[] =
+	{
+		NULL
+	};
+
+    const gchar *translator_credits = _("translator_credits");
+
     if (about != NULL)
 	{
 	    gdk_window_show(about->window);
@@ -55,8 +62,8 @@ about_cb (BonoboUIComponent *uic, gpointer data, const gchar *name)
 	 _("Released under the GNU General Public License.\n\n"
 	   "A system load monitor capable of displaying graphs for CPU, ram, and swap file use, plus network traffic."),
 	 authors,
-	 NULL,
-	 NULL,
+	 documenters,
+	 strcmp (translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
 	 NULL);
 
     g_signal_connect (G_OBJECT (about), "destroy",

@@ -189,7 +189,18 @@ static gint setup_done = FALSE;
 static void about_cb (BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 {
 	static GtkWidget *about = NULL;
-	const gchar *authors[8];
+
+	static const gchar *authors[] = {
+		"John Ellis <johne@bellatlantic.net>",
+		"Martin Baulig <martin@home-of-linux.org> - ISDN",
+		NULL
+	};
+
+	const gchar *documenters[] = {
+		NULL
+	};
+
+	const gchar *translator_credits = _("translator_credits");
 
 	if (about != NULL)
 	{
@@ -198,19 +209,16 @@ static void about_cb (BonoboUIComponent *uic, gpointer data, const gchar *verbna
 		return;
 	}
 
-	authors[0] = "John Ellis <johne@bellatlantic.net>";
-	authors[1] = "Martin Baulig <martin@home-of-linux.org> - ISDN";
-	authors[2] = NULL;
-
         about = gnome_about_new ( _("Modem Lights Applet"), VERSION,
 			"(C) 2000",
 			_("Released under the GNU general public license.\n"
 			"A modem status indicator and dialer.\n"
 			"Lights in order from the top or left are Send data and Receive data."),
 			authors,
-			NULL,
-			NULL,
+			documenters,
+			strcmp (translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
 			NULL);
+
 	gtk_signal_connect( GTK_OBJECT(about), "destroy",
 			    GTK_SIGNAL_FUNC(gtk_widget_destroyed), &about );
 	gtk_widget_show (about);
