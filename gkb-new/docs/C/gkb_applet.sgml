@@ -51,7 +51,7 @@
     The <application>GNOME gkb applet</application> displays a small
     flag in your <interface>panel</interface> and does nothing useful 
     whatsoever beyond that. After all, if you click on this flag, you can
-    change your keyboard map. It is part of the gnome-core package. This 
+    change your keyboard map. It is part of the gnome-applets package. This 
     description of it refers to the gkb as displayed in gnome-applets-1.2.
   </para>
   <para>
@@ -138,10 +138,6 @@
    <para>
    You can do new keymap and delete the actual.
    </para>
-   <para>
-   The commad sould be like this: "gkb_xmmap us" or "setxkbmap fr" or
-   "/usr/local/bin/Xmodmap ru".
-   </para> 
  <figure id="GKB-Prefs-fig1">
   <title>GKB Properties dialog box</title>
   <screenshot>
@@ -153,7 +149,7 @@
 
    <variablelist>
     <varlistentry>
-     <term>Your GNOME gkb's keymap name</term>
+     <term>Keymap name</term>
      <listitem>
       <para>
         You can change your gkb's keymap name here. The default name is us.
@@ -162,21 +158,31 @@
     </varlistentry>
 
     <varlistentry>
+     <term>Full command</term>
+     <listitem>
+      <para>
+       The commad sould be like this: "gkb_xmmap us" or "setxkbmap fr" or
+       "/usr/local/bin/Xmodmap ru". The default command is "setxkbmap us".
+      </para>
+     </listitem>
+    </varlistentry>
+
+    <varlistentry>
      <term>The icon filename</term>
      <listitem>
       <para>
-        You can select a different set of pictures here. By default, 
-        the list of pictures is in <filename>$PREFIX/pixmaps/gkb/</filename>,
-        which you can browse and choose from. 
+        You can select a different flags here. By default, 
+        the list of flags are in <filename>$PREFIX/pixmaps/gkb/</filename>,
+        which you can browse and choose from.
 
- <figure id="GKB-icons-fig1">
-  <title>GKB iconselector</title>
-  <screenshot>
-   <screeninfo>GKB iconselector</screeninfo>
-   <graphic format="png" fileref="iconselector" srccredit="Szabolcs BAN">
-   </graphic>
-  </screenshot>
- </figure>
+       <figure id="GKB-icons-fig1">
+        <title>GKB iconselector</title>
+        <screenshot>
+         <screeninfo>GKB iconselector</screeninfo>
+         <graphic format="png" fileref="iconselector" srccredit="Szabolcs BAN">
+         </graphic>
+        </screenshot>
+       </figure>
 
       </para>
      </listitem>
