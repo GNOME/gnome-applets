@@ -158,7 +158,7 @@ main(int argc, char **argv)
     
     /* add command line; position: top */
     initCommandEntry();
-    gtk_box_pack_start(GTK_BOX(vbox), entryCommand, FALSE, FALSE, 0);
+/*     gtk_box_pack_start(GTK_BOX(vbox), entryCommand, FALSE, FALSE, 0); */
 
     /* hbox for message label and buttons */
     hbox = gtk_hbox_new(FALSE, 0);
@@ -236,7 +236,12 @@ main(int argc, char **argv)
 
     applet_widget_add (APPLET_WIDGET (applet), frame2);
     gtk_widget_set_usize(GTK_WIDGET(applet), prop.normalSizeX, prop.normalSizeY);
-    
+
+    /* allow pasting into the input box by packing it after
+       applet_widdget_add has bound the middle mouse button (idea taken
+       from the applet WebControl by Garrett Smith) */
+    gtk_box_pack_start(GTK_BOX(vbox), entryCommand, FALSE, FALSE, 0);
+  
     gtk_widget_show_all(applet);
     
     /* add items to applet menu */
