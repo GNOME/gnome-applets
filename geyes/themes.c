@@ -24,6 +24,7 @@
 #include <limits.h>
 #include <ctype.h>
 
+#include <gconf/gconf-client.h>
 #include <panel-applet-gconf.h>
 #include <egg-screen-help.h>
 #include "geyes.h"
@@ -132,6 +133,25 @@ destroy_theme (EyesApplet *eyes_applet)
 	
         g_free (eyes_applet->theme_dir);
         g_free (eyes_applet->theme_name);
+}
+
+static gboolean
+key_writable (PanelApplet *applet, const char *key)
+{
+	gboolean writable;
+	char *fullkey;
+	static GConfClient *client = NULL;
+
+	if (client == NULL)
+		client = gconf_client_get_default ();
+
+	fullkey = panel_applet_gconf_get_full_key (applet, key);
+
+	writable = gconf_client_key_is_writable (client, fullkey, NULL);
+
+	g_free (fullkey);
+
+	return writable;
 }
 
 static void
@@ -302,10 +322,15 @@ properties_cb (BonoboUIComponent *uic,
         gtk_tree_view_append_column (GTK_TREE_VIEW (tree), column);
                                                            
         selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (tree));
-        g_signal_connect (selection, "changed",
-        		  G_CALLBACK (theme_selected_cb),
+	g_signal_connect (selection, "changed",
+			  G_CALLBACK (theme_selected_cb),
 			  eyes_applet);
-        
+
+	if ( ! key_writable (eyes_applet->applet, "theme_path")) {
+		gtk_widget_set_sensitive (tree, FALSE);
+		gtk_widget_set_sensitive (label, FALSE);
+	}
+
         for (i = 0; i < NUM_THEME_DIRECTORIES; i++) {
                 if ((dfd = opendir (theme_directories[i])) != NULL) {
                         while ((dp = readdir (dfd)) != NULL) {
