@@ -1488,11 +1488,11 @@ static void wx_start_open (WeatherInfo *info)
     loc = info->location;
     g_return_if_fail(loc != NULL);
 
-    if (loc->radar[0] == '-')
-        return;
+    
     if (info->radar_url)
     	url = g_strdup (info->radar_url);
     else {
+    	 if (loc->radar[0] == '-') return;
 	 url = g_strdup_printf ("http://image.weather.com/web/radar/us_%s_closeradar_medium_usen.jpg", loc->radar);
     }
  
