@@ -1,23 +1,22 @@
-# translation of gnome-applets.gnome-2-4.hu.po to Hungarian
-# gnome-applets hu.po
-# Copyright (C) 1998, 2003 Free Software Foundation, Inc.
+# Hungarian translation of gnome-applets.
+# Copyright (C) 1998-2004 Free Software Foundation, Inc.
 # Szabolcs Ban <shooby@gnome.hu>, 2000.
 # Andras Timar <timar@gnome.hu>, 2003.
 # Gabor Sari <saga@chello.hu>, 2003.
+# Laszlo Dvornik <dvornikl@mailbox.hu>, 2004.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-applets.gnome-2-4.hu\n"
-"POT-Creation-Date: 2004-03-17 11:48+1300\n"
-"PO-Revision-Date: 2003-12-01 16:58+0100\n"
-"Last-Translator: Andras Timar <timar@gnome.hu>\n"
-"Language-Team: Hungarian <hu@gnome.hu>\n"
+"Project-Id-Version: gnome-applets\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-03-19 03:47+0100\n"
+"PO-Revision-Date: 2004-03-19 19:54+0100\n"
+"Last-Translator: Laszlo Dvornik <dvornikl@mailbox.hu>\n"
+"Language-Team: Hungarian <translation-team-hu@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Report-Msgid-Bugs-To: \n"
 "Plural-Forms: nplurals=1; plural=0\n"
-"X-Generator: KBabel 1.2\n"
 
 #: accessx-status/GNOME_AccessxApplet.xml.h:1
 #: battstat/GNOME_BattstatApplet.xml.h:1 cdplayer/GNOME_CDPlayerApplet.xml.h:1
@@ -248,7 +247,7 @@ msgstr "Sárga szín szintje"
 #. on unsupported platform
 #: battstat/battstat_applet.c:338
 msgid "Your platform is not supported!\n"
-msgstr "Az általad használt platform nem támogatott!\n"
+msgstr "Az ön által használt platform nem támogatott!\n"
 
 #: battstat/battstat_applet.c:339
 msgid "The applet will not work properly (if at all).\n"
@@ -313,6 +312,7 @@ msgstr ""
 #. when the computer is using battery power.
 #: battstat/battstat_applet.c:510 battstat/battstat_applet.c:1052
 #: battstat/battstat_applet.c:1141
+#, c-format
 msgid "System is running on battery power"
 msgstr "A rendszer akkumulátorról üzemel."
 
@@ -320,15 +320,20 @@ msgstr "A rendszer akkumulátorról üzemel."
 #. when the computer is using AC power.
 #: battstat/battstat_applet.c:513 battstat/battstat_applet.c:1058
 #: battstat/battstat_applet.c:1147
+#, c-format
 msgid "System is running on AC power"
 msgstr "A rendszer hálózati feszültségről üzemel."
 
 #: battstat/battstat_applet.c:527 wireless/wireless-applet.c:146
+#, c-format
 msgid "N/A"
 msgstr "N/A"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
+#. This string will display as a tooltip over the status frame
+#. when the computer is using battery power and the battery meter
+#. and percent meter is hidden by the user.
 #: battstat/battstat_applet.c:651 battstat/battstat_applet.c:1032
 #, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
@@ -336,6 +341,9 @@ msgstr "A rendszer akkumulátorról üzemel. Töltöttség: %d%% (%s)"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
+#. This string will display as a tooltip over the status frame
+#. when the computer is using AC power and the battery meter
+#. and percent meter is hidden by the user.
 #: battstat/battstat_applet.c:658 battstat/battstat_applet.c:1039
 #, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
@@ -346,13 +354,15 @@ msgstr "A rendszer hálózati feszültségről üzemel. Töltöttség: %d%% (%s)
 #. power and the battery isn't present. Not a
 #. possible combination, I guess... :)
 #: battstat/battstat_applet.c:669
+#, c-format
 msgid "System is running on battery power. Battery: Not present"
-msgstr "A rendszer akkumulátorról üzemel. Nincs akkumulátor..."
+msgstr "A rendszer akkumulátorról üzemel. Nincs akkumulátor."
 
 #. This string will display as a tooltip over the
 #. battery frame when the computer is using AC
 #. power and the battery isn't present.
 #: battstat/battstat_applet.c:675
+#, c-format
 msgid "System is running on AC power. Battery: Not present"
 msgstr "A rendszer hálózati feszültségről üzemel. Nincs akkumulátor."
 
@@ -367,6 +377,7 @@ msgstr "Töltöttség: %d%% (%s)"
 #. Displayed as a tooltip over the battery meter when no
 #. battery is present.
 #: battstat/battstat_applet.c:691
+#, c-format
 msgid "Battery: Not present"
 msgstr "Nincs akkumulátor."
 
@@ -378,9 +389,9 @@ msgid ""
 "Make sure you have read permission to the\n"
 "APM device."
 msgstr ""
-"Nem tudom megnyitni az APM eszközt!\n"
+"Nem lehet megnyitni az APM eszközt!\n"
 "\n"
-"Ellenőrizd, hogy van-e jogod az\n"
+"Ellenőrizze, hogy van-e joga az\n"
 "APM eszköz olvasására."
 
 #. Displayed if the APM system is disabled (Used under *BSD)
@@ -391,7 +402,7 @@ msgid ""
 "that helps.\n"
 msgstr ""
 "Az APM-kezelő alrendszer ki van kapcsolva.\n"
-"Próbáld az \"apm -e 1\" (FreeBSD) parancsot, \n"
+"Próbálja meg az \"apm -e 1\" (FreeBSD) parancsot, \n"
 "hátha segít.\n"
 
 #: battstat/battstat_applet.c:854
@@ -401,7 +412,7 @@ msgid ""
 "Please try to correct this error"
 msgstr ""
 "Hiba lépett fel az altatás parancs futtatásakor: %s\n"
-"Próbáld kijavítani a hibát!"
+"Próbálja kijavítani a hibát!"
 
 #: battstat/battstat_applet.c:858
 #, c-format
@@ -418,7 +429,7 @@ msgid ""
 "Please change the preferences and try again."
 msgstr ""
 "Az altatás parancs nincs megfelelően beállítva.\n"
-"Változtasd meg a beállításokat, és próbáld újra!"
+"Változtassa meg a beállításokat, és próbálja újra!"
 
 #. if your charset supports it, please replace the "o" in
 #. * "Jorgen" into U00F6
@@ -614,7 +625,7 @@ msgstr "Következő sáv"
 
 #: cdplayer/cdplayer.c:253
 msgid "You do not have permission to use the CD player."
-msgstr "Nincs jogod a CD-lejátszó használatához."
+msgstr "Nincs joga a CD-lejátszó használatához."
 
 #: cdplayer/cdplayer.c:385 mixer/mixer.c:1299 multiload/main.c:144
 #, c-format
@@ -640,7 +651,7 @@ msgstr "Eszköz elérési útja"
 
 #: cdplayer/cdplayer.c:532
 msgid "Set the device path here"
-msgstr "Itt állítsd be az elérési utat"
+msgstr "Itt állítsa be az elérési utat"
 
 #: cdplayer/cdplayer.c:535
 msgid "Use _Default"
@@ -672,23 +683,23 @@ msgstr "A hangeszköz foglalt, vagy más alkalmazás használja"
 
 #: cdplayer/cdplayer.c:1075
 msgid "Click this button to Stop playing the CD"
-msgstr "A lejátszás leállításához nyomd meg ezt a gombot"
+msgstr "A lejátszás leállításához nyomja meg ezt a gombot"
 
 #: cdplayer/cdplayer.c:1077
 msgid "Click this button to Play or Pause the CD"
-msgstr "A CD elindításához vagy megállításához nyomd meg ezt a gombot"
+msgstr "A CD elindításához vagy megállításához nyomja meg ezt a gombot"
 
 #: cdplayer/cdplayer.c:1079
 msgid "Click this button to eject the CD"
-msgstr "Nyomd meg a gombot, hogy a CD-t kiadja a lejátszó"
+msgstr "A CD kiadásához nyomja meg ezt a gombot"
 
 #: cdplayer/cdplayer.c:1081
 msgid "Click this button to Play the previous track in the CD"
-msgstr "Az előző szám lejátszásához nyomd meg ezt a gombot"
+msgstr "Az előző szám lejátszásához nyomja meg ezt a gombot"
 
 #: cdplayer/cdplayer.c:1083
 msgid "Click this button to Play the next track in the CD"
-msgstr "A következő szám lejátszásához nyomd meg ezt a gombot"
+msgstr "A következő szám lejátszásához nyomja meg ezt a gombot"
 
 #: cdplayer/cdplayer.schemas.in.h:1
 msgid "Path to the device"
@@ -725,7 +736,7 @@ msgstr "Speciális karakterek beszúrása"
 #. * in "Muniz".
 #: charpick/charpick.c:545
 msgid "Alexandre Muniz <munizao@xprt.net>"
-msgstr "Alexandre Muniz <munizao@xprt.net>"
+msgstr "Alexandre Muñiz <munizao@xprt.net>"
 
 #: charpick/charpick.c:546
 msgid "Kevin Vandersloot"
@@ -741,7 +752,7 @@ msgid ""
 "keyboard. Released under GNU General Public Licence."
 msgstr ""
 "GNOME panelapplet azon karakterek kiválasztására, amelyek nincsenek a "
-"billentyűzeteden. GNU GPL-es."
+"billentyűzetén. GNU GPL-es."
 
 #: charpick/charpick.schemas.in.h:1
 msgid "Characters shown on applet startup"
@@ -774,7 +785,6 @@ msgid "Palette entry"
 msgstr "Palettabejegyzés"
 
 #: charpick/properties.c:99
-#, fuzzy
 msgid "Modify a palette by adding or removing characters"
 msgstr "Paletta módosítása karakterek hozzáadásával vagy eltávolításával"
 
@@ -800,7 +810,7 @@ msgstr "Gomb hozzáadása"
 
 #: charpick/properties.c:447
 msgid "Click to add a new palette"
-msgstr "Kattints egy új paletta hozzáadásához"
+msgstr "Kattintson egy új paletta hozzáadásához"
 
 #: charpick/properties.c:454
 msgid "Edit button"
@@ -808,7 +818,7 @@ msgstr "Gomb szerkesztése"
 
 #: charpick/properties.c:455
 msgid "Click to edit the selected palette"
-msgstr "Kattints a kijelölt paletta szerkesztéséhez"
+msgstr "Kattintson a kijelölt paletta szerkesztéséhez"
 
 #: charpick/properties.c:462
 msgid "Delete button"
@@ -816,7 +826,7 @@ msgstr "Gomb törlése"
 
 #: charpick/properties.c:463
 msgid "Click to delete the selected palette"
-msgstr "Kattints a kijelölt paletta törléséhez"
+msgstr "Kattintson a kijelölt paletta törléséhez"
 
 #: charpick/properties.c:515
 msgid "Character Palette Preferences"
@@ -1024,9 +1034,8 @@ msgid "Can not launch the eyes applet."
 msgstr ""
 
 #: geyes/themes.c:124
-#, fuzzy
 msgid "There was a fatal error while trying to load the theme."
-msgstr "Hiba történt a súgó megjelenítésekor: %s"
+msgstr "Végzetes hiba történt a téma betöltése közben."
 
 #: geyes/themes.c:294
 msgid "Geyes Preferences"
@@ -1042,7 +1051,7 @@ msgstr "_Téma kiválasztása:"
 
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:1
 msgid "Change the keyboard layout"
-msgstr "A billentyűzet-kiosztást kapcsolja"
+msgstr "Billentyűzet-kiosztás megváltoztatása"
 
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:2
 msgid "GKB Factory"
@@ -1055,7 +1064,7 @@ msgstr "GKB billentyűzetkiosztás-kapcsoló"
 
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:4
 msgid "Produces keyboard layout switcher applets."
-msgstr "GKB billentyűzetkiosztás-kapcsoló appletet generál"
+msgstr "GKB billentyűzetkiosztás-kapcsoló appletet állít elő"
 
 #: gkb-new/descs.sun/presets.xml.in.h:1 gkb-new/descs/presets.xml.in.h:5
 msgid "Armenia"
@@ -1070,17 +1079,14 @@ msgid "Armenian Sun keymap"
 msgstr "Örmény Sun billentyűzetkiosztás"
 
 #: gkb-new/descs.sun/presets.xml.in.h:4 gkb-new/descs/presets.xml.in.h:9
-#, fuzzy
 msgid "Azerbaijan"
 msgstr "Azerbajdzsán"
 
 #: gkb-new/descs.sun/presets.xml.in.h:5 gkb-new/descs/presets.xml.in.h:10
-#, fuzzy
 msgid "Azerbaijani Turkish"
 msgstr "Azerbajdzsáni török"
 
 #: gkb-new/descs.sun/presets.xml.in.h:6
-#, fuzzy
 msgid "Azerbaijani Turkish Sun keymap"
 msgstr "Azerbajdzsáni török Sun billentyűzetkiosztás"
 
@@ -1094,7 +1100,7 @@ msgstr "Fehérorosz"
 
 #: gkb-new/descs.sun/presets.xml.in.h:9
 msgid "Belarussian Sun keymap"
-msgstr ""
+msgstr "Fehérorosz Sun billentyűzetkiosztás"
 
 #: gkb-new/descs.sun/presets.xml.in.h:10 gkb-new/descs/presets.xml.in.h:18
 msgid "Belgium"
@@ -1106,11 +1112,11 @@ msgstr "Brazília"
 
 #: gkb-new/descs.sun/presets.xml.in.h:12
 msgid "Brazil Portuguese Sun USB keymap"
-msgstr ""
+msgstr "Brazíliai portugál Sun USB billentyűzetkiosztás"
 
 #: gkb-new/descs.sun/presets.xml.in.h:13
 msgid "Brazil Portuguese Sun keymap"
-msgstr ""
+msgstr "Brazíliai portugál Sun billentyűzetkiosztás"
 
 #: gkb-new/descs.sun/presets.xml.in.h:14 gkb-new/descs/presets.xml.in.h:22
 msgid "Bulgaria"
@@ -1122,7 +1128,7 @@ msgstr "Bolgár"
 
 #: gkb-new/descs.sun/presets.xml.in.h:16
 msgid "Bulgarian Sun keymap"
-msgstr ""
+msgstr "Bolgár Sun billentyűzetkiosztás"
 
 #: gkb-new/descs.sun/presets.xml.in.h:17 gkb-new/descs/presets.xml.in.h:27
 msgid "Canada"
@@ -1130,7 +1136,7 @@ msgstr "Kanada"
 
 #: gkb-new/descs.sun/presets.xml.in.h:18
 msgid "Canadian Sun keymap"
-msgstr ""
+msgstr "Kanadai Sun billentyűzetkiosztás"
 
 #: gkb-new/descs.sun/presets.xml.in.h:19 gkb-new/descs/presets.xml.in.h:33
 msgid "Czech"
@@ -1142,7 +1148,7 @@ msgstr "Csehország"
 
 #: gkb-new/descs.sun/presets.xml.in.h:21
 msgid "Czech Sun keymap"
-msgstr ""
+msgstr "Cseh Sun billentyűzetkiosztás"
 
 #: gkb-new/descs.sun/presets.xml.in.h:22 gkb-new/descs/presets.xml.in.h:38
 msgid "Danish"
@@ -1150,15 +1156,15 @@ msgstr "Dán"
 
 #: gkb-new/descs.sun/presets.xml.in.h:23
 msgid "Danish Sun Type-4 keymap"
-msgstr ""
+msgstr "Dán Sun Type-4 billentyűzetkiosztás"
 
 #: gkb-new/descs.sun/presets.xml.in.h:24
 msgid "Danish Sun USB keymap"
-msgstr ""
+msgstr "Dán Sun USB billentyűzetkiosztás"
 
 #: gkb-new/descs.sun/presets.xml.in.h:25
 msgid "Danish Sun keymap"
-msgstr ""
+msgstr "Dán Sun billentyűzetkiosztás"
 
 #: gkb-new/descs.sun/presets.xml.in.h:26 gkb-new/descs/presets.xml.in.h:41
 msgid "Denmark"
@@ -1170,7 +1176,7 @@ msgstr "Holland"
 
 #: gkb-new/descs.sun/presets.xml.in.h:28
 msgid "Dutch Sun keymap"
-msgstr ""
+msgstr "Holland Sun billentyűzetkiosztás"
 
 #: gkb-new/descs.sun/presets.xml.in.h:29 gkb-new/descs/presets.xml.in.h:48
 msgid "English"
@@ -1178,15 +1184,15 @@ msgstr "Angol"
 
 #: gkb-new/descs.sun/presets.xml.in.h:30
 msgid "English Sun Type-4 keymap"
-msgstr ""
+msgstr "Angol Sun Type-4 billentyűzetkiosztás"
 
 #: gkb-new/descs.sun/presets.xml.in.h:31
 msgid "English Sun USB keymap"
-msgstr ""
+msgstr "Angol Sun USB billentyűzetkiosztás"
 
 #: gkb-new/descs.sun/presets.xml.in.h:32
 msgid "English Sun keymap"
-msgstr ""
+msgstr "Angol Sun billentyűzetkiosztás"
 
 #: gkb-new/descs.sun/presets.xml.in.h:33 gkb-new/descs/presets.xml.in.h:50
 msgid "Estonia"
@@ -1198,7 +1204,7 @@ msgstr "Észt"
 
 #: gkb-new/descs.sun/presets.xml.in.h:35
 msgid "Estonian Sun keymap"
-msgstr ""
+msgstr "Észt Sun billentyűzetkiosztás"
 
 #: gkb-new/descs.sun/presets.xml.in.h:36 gkb-new/descs/presets.xml.in.h:55
 msgid "Finland"
@@ -1210,7 +1216,7 @@ msgstr "Finn"
 
 #: gkb-new/descs.sun/presets.xml.in.h:38
 msgid "Finnish Sun keymap"
-msgstr ""
+msgstr "Finn Sun billentyűzetkiosztás"
 
 #: gkb-new/descs.sun/presets.xml.in.h:39 gkb-new/descs/presets.xml.in.h:60
 msgid "France"
@@ -1222,11 +1228,11 @@ msgstr "Francia"
 
 #: gkb-new/descs.sun/presets.xml.in.h:41
 msgid "French Sun USB keymap"
-msgstr ""
+msgstr "Francia Sun USB billentyűzetkiosztás"
 
 #: gkb-new/descs.sun/presets.xml.in.h:42
 msgid "French Sun keymap"
-msgstr ""
+msgstr "Francia Sun billentyűzetkiosztás"
 
 #: gkb-new/descs.sun/presets.xml.in.h:43 gkb-new/descs/presets.xml.in.h:75
 msgid "German"
@@ -1234,15 +1240,15 @@ msgstr "Német"
 
 #: gkb-new/descs.sun/presets.xml.in.h:44
 msgid "German Sun Type-4 keymap"
-msgstr ""
+msgstr "Német Sun Type-4 billentyűzetkiosztás"
 
 #: gkb-new/descs.sun/presets.xml.in.h:45
 msgid "German Sun USB keymap"
-msgstr ""
+msgstr "Német Sun USB billentyűzetkiosztás"
 
 #: gkb-new/descs.sun/presets.xml.in.h:46
 msgid "German Sun keymap"
-msgstr ""
+msgstr "Német Sun billentyűzetkiosztás"
 
 #: gkb-new/descs.sun/presets.xml.in.h:47 gkb-new/descs/presets.xml.in.h:79
 msgid "Germany"
@@ -1250,7 +1256,7 @@ msgstr "Németország"
 
 #: gkb-new/descs.sun/presets.xml.in.h:48 gkb-new/descs/presets.xml.in.h:80
 msgid "Gnome Keyboard default"
-msgstr ""
+msgstr "Alapértelmezett Gnome billentyűzet"
 
 #: gkb-new/descs.sun/presets.xml.in.h:49 gkb-new/descs/presets.xml.in.h:85
 msgid "Hebrew"
@@ -1258,7 +1264,7 @@ msgstr "Héber"
 
 #: gkb-new/descs.sun/presets.xml.in.h:50
 msgid "Hebrew Sun keymap"
-msgstr ""
+msgstr "Héber Sun billentyűzetkiosztás"
 
 #: gkb-new/descs.sun/presets.xml.in.h:51 gkb-new/descs/presets.xml.in.h:88
 msgid "Hungarian"
@@ -1266,11 +1272,11 @@ msgstr "Magyar"
 
 #: gkb-new/descs.sun/presets.xml.in.h:52
 msgid "Hungarian latin2 Sun keymap"
-msgstr ""
+msgstr "Magyar latin2 Sun billentyűzetkiosztás"
 
 #: gkb-new/descs.sun/presets.xml.in.h:53
 msgid "Hungarian type5 latin 1 keymap"
-msgstr ""
+msgstr "Magyar type5 latin 1 billentyűzetkiosztás"
 
 #: gkb-new/descs.sun/presets.xml.in.h:54 gkb-new/descs/presets.xml.in.h:96
 msgid "Hungary"
@@ -1286,7 +1292,7 @@ msgstr "Izlandi"
 
 #: gkb-new/descs.sun/presets.xml.in.h:57
 msgid "Icelandic Sun keymap"
-msgstr ""
+msgstr "Izlandi Sun billentyűzetkiosztás"
 
 #: gkb-new/descs.sun/presets.xml.in.h:58 gkb-new/descs/presets.xml.in.h:101
 msgid "International"
@@ -1302,15 +1308,15 @@ msgstr "Olasz"
 
 #: gkb-new/descs.sun/presets.xml.in.h:61
 msgid "Italian Sun Type-4 keymap"
-msgstr ""
+msgstr "Olasz Sun Type-4 billentyűzetkiosztás"
 
 #: gkb-new/descs.sun/presets.xml.in.h:62
 msgid "Italian Sun USB keymap"
-msgstr ""
+msgstr "Olasz Sun USB billentyűzetkiosztás"
 
 #: gkb-new/descs.sun/presets.xml.in.h:63
 msgid "Italian Sun keymap"
-msgstr ""
+msgstr "Olasz Sun billentyűzetkiosztás"
 
 #: gkb-new/descs.sun/presets.xml.in.h:64 gkb-new/descs/presets.xml.in.h:107
 msgid "Italy"
@@ -1326,11 +1332,11 @@ msgstr "Japán"
 
 #: gkb-new/descs.sun/presets.xml.in.h:67
 msgid "Japanese Sun Type-4 keymap"
-msgstr ""
+msgstr "Japán Sun Type-4 billentyűzetkiosztás"
 
 #: gkb-new/descs.sun/presets.xml.in.h:68
 msgid "Japanese Sun keymap"
-msgstr ""
+msgstr "Japán Sun billentyűzetkiosztás"
 
 #: gkb-new/descs.sun/presets.xml.in.h:69
 msgid "Latvia"
@@ -1342,7 +1348,7 @@ msgstr "Lett"
 
 #: gkb-new/descs.sun/presets.xml.in.h:71
 msgid "Latvian Sun keymap"
-msgstr ""
+msgstr "Lett Sun billentyűzetkiosztás"
 
 #: gkb-new/descs.sun/presets.xml.in.h:72 gkb-new/descs/presets.xml.in.h:119
 msgid "Lithuania"
@@ -1354,7 +1360,7 @@ msgstr "Litván"
 
 #: gkb-new/descs.sun/presets.xml.in.h:74
 msgid "Lithuanian Sun keymap"
-msgstr ""
+msgstr "Litván Sun billentyűzetkiosztás"
 
 #: gkb-new/descs.sun/presets.xml.in.h:75 gkb-new/descs/presets.xml.in.h:125
 msgid "Macedonia"
@@ -1366,7 +1372,7 @@ msgstr "Macedón"
 
 #: gkb-new/descs.sun/presets.xml.in.h:77
 msgid "Macedonian Sun keymap"
-msgstr ""
+msgstr "Macedón Sun billentyűzetkiosztás"
 
 #: gkb-new/descs.sun/presets.xml.in.h:78 gkb-new/descs/presets.xml.in.h:136
 msgid "Norway"
@@ -1378,7 +1384,7 @@ msgstr "Norvég"
 
 #: gkb-new/descs.sun/presets.xml.in.h:80
 msgid "Norwegian Sun keymap"
-msgstr ""
+msgstr "Norvég Sun billentyűzetkiosztás"
 
 #: gkb-new/descs.sun/presets.xml.in.h:81 gkb-new/descs/presets.xml.in.h:142
 msgid "Poland"
@@ -1390,7 +1396,7 @@ msgstr "Lengyel"
 
 #: gkb-new/descs.sun/presets.xml.in.h:83
 msgid "Polish Sun keymap"
-msgstr ""
+msgstr "Lengyel Sun billentyűzetkiosztás"
 
 #: gkb-new/descs.sun/presets.xml.in.h:84 gkb-new/descs/presets.xml.in.h:146
 msgid "Portugal"
@@ -1402,11 +1408,11 @@ msgstr "Portugál"
 
 #: gkb-new/descs.sun/presets.xml.in.h:86
 msgid "Portuguese Sun Type-4 keymap"
-msgstr ""
+msgstr "Portugál Sun Type-4 billentyűzetkiosztás"
 
 #: gkb-new/descs.sun/presets.xml.in.h:87
 msgid "Portuguese Sun keymap"
-msgstr ""
+msgstr "Portugál Sun billentyűzetkiosztás"
 
 #: gkb-new/descs.sun/presets.xml.in.h:88 gkb-new/descs/presets.xml.in.h:152
 msgid "Romania"
@@ -1418,7 +1424,7 @@ msgstr "Román"
 
 #: gkb-new/descs.sun/presets.xml.in.h:90
 msgid "Romanian Sun keymap"
-msgstr ""
+msgstr "Román Sun billentyűzetkiosztás"
 
 #: gkb-new/descs.sun/presets.xml.in.h:91 gkb-new/descs/presets.xml.in.h:155
 msgid "Russia"
@@ -1430,11 +1436,11 @@ msgstr "Orosz"
 
 #: gkb-new/descs.sun/presets.xml.in.h:93
 msgid "Russian Sun keymap"
-msgstr ""
+msgstr "Orosz Sun billentyűzetkiosztás"
 
 #: gkb-new/descs.sun/presets.xml.in.h:94
 msgid "Serbian Sun standard keymap"
-msgstr ""
+msgstr "Szerb Sun szabványos billentyűzetkiosztás"
 
 #: gkb-new/descs.sun/presets.xml.in.h:95
 msgid "Serbo-Croatian"
@@ -1446,11 +1452,11 @@ msgstr "Szlovák"
 
 #: gkb-new/descs.sun/presets.xml.in.h:97 gkb-new/descs/presets.xml.in.h:167
 msgid "Slovak Republic"
-msgstr ""
+msgstr "Szlovák Köztársaság"
 
 #: gkb-new/descs.sun/presets.xml.in.h:98
 msgid "Slovak Sun keymap"
-msgstr ""
+msgstr "Szlovák Sun billentyűzetkiosztás"
 
 #: gkb-new/descs.sun/presets.xml.in.h:99 gkb-new/descs/presets.xml.in.h:169
 msgid "Slovenia"
@@ -1462,7 +1468,7 @@ msgstr "Szlovén"
 
 #: gkb-new/descs.sun/presets.xml.in.h:101
 msgid "Slovenian Sun keymap"
-msgstr ""
+msgstr "Szlovén Sun billentyűzetkiosztás"
 
 #: gkb-new/descs.sun/presets.xml.in.h:102 gkb-new/descs/presets.xml.in.h:174
 msgid "Spain"
@@ -1474,15 +1480,15 @@ msgstr "Spanyol"
 
 #: gkb-new/descs.sun/presets.xml.in.h:104
 msgid "Spanish Sun Type-4 keymap"
-msgstr ""
+msgstr "Spanyol Sun Type-4 billentyűzetkiosztás"
 
 #: gkb-new/descs.sun/presets.xml.in.h:105
 msgid "Spanish Sun USB keymap"
-msgstr ""
+msgstr "Spanyol Sun USB billentyűzetkiosztás"
 
 #: gkb-new/descs.sun/presets.xml.in.h:106
 msgid "Spanish Sun keymap"
-msgstr ""
+msgstr "Spanyol Sun billentyűzetkiosztás"
 
 #: gkb-new/descs.sun/presets.xml.in.h:107 gkb-new/descs/presets.xml.in.h:181
 msgid "Sweden"
@@ -1494,19 +1500,19 @@ msgstr "Svéd"
 
 #: gkb-new/descs.sun/presets.xml.in.h:109
 msgid "Swedish Sun Type-4 keymap"
-msgstr ""
+msgstr "Svéd Sun Type-4 billentyűzetkiosztás"
 
 #: gkb-new/descs.sun/presets.xml.in.h:110
 msgid "Swedish Sun USB keymap"
-msgstr ""
+msgstr "Svéd Sun USB billentyűzetkiosztás"
 
 #: gkb-new/descs.sun/presets.xml.in.h:111
 msgid "Swedish Sun keymap"
-msgstr ""
+msgstr "Svéd Sun billentyűzetkiosztás"
 
 #: gkb-new/descs.sun/presets.xml.in.h:112
 msgid "Swiss German Sun keymap"
-msgstr ""
+msgstr "Svájci német Sun billentyűzetkiosztás"
 
 #: gkb-new/descs.sun/presets.xml.in.h:113 gkb-new/descs/presets.xml.in.h:186
 msgid "Switzerland"
@@ -1518,7 +1524,7 @@ msgstr "Thai"
 
 #: gkb-new/descs.sun/presets.xml.in.h:115
 msgid "Thai Sun keymap"
-msgstr ""
+msgstr "Thai Sun billentyűzetkiosztás"
 
 #: gkb-new/descs.sun/presets.xml.in.h:116 gkb-new/descs/presets.xml.in.h:194
 msgid "Thailand"
@@ -1534,19 +1540,19 @@ msgstr "Török"
 
 #: gkb-new/descs.sun/presets.xml.in.h:119
 msgid "Turkish Sun keymap"
-msgstr ""
+msgstr "Török Sun billentyűzetkiosztás"
 
 #: gkb-new/descs.sun/presets.xml.in.h:120
 msgid "US Sun Type-4 keyboard"
-msgstr ""
+msgstr "Egyesült Államok Sun Type-4 billentyűzetkiosztás"
 
 #: gkb-new/descs.sun/presets.xml.in.h:121
 msgid "US Sun USB keyboard"
-msgstr ""
+msgstr "Egyesült Államok Sun USB billentyűzetkiosztás"
 
 #: gkb-new/descs.sun/presets.xml.in.h:122
 msgid "US Sun type5 keyboard"
-msgstr ""
+msgstr "Egyesült Államok Sun type5 billentyűzetkiosztás"
 
 #: gkb-new/descs.sun/presets.xml.in.h:123 gkb-new/descs/presets.xml.in.h:216
 msgid "Ukraine"
@@ -1558,7 +1564,7 @@ msgstr "Ukrán"
 
 #: gkb-new/descs.sun/presets.xml.in.h:125
 msgid "Ukrainian Sun keymap"
-msgstr ""
+msgstr "Ukrán Sun billentyűzetkiosztás"
 
 #: gkb-new/descs.sun/presets.xml.in.h:126 gkb-new/descs/presets.xml.in.h:220
 msgid "United Kingdom"
@@ -1570,7 +1576,7 @@ msgstr "Egyesült Államok"
 
 #: gkb-new/descs.sun/presets.xml.in.h:128 gkb-new/descs/presets.xml.in.h:223
 msgid "Vietnam"
-msgstr ""
+msgstr "Vietnam"
 
 #: gkb-new/descs.sun/presets.xml.in.h:129 gkb-new/descs/presets.xml.in.h:224
 msgid "Vietnamese"
@@ -1578,7 +1584,7 @@ msgstr "Vietnami"
 
 #: gkb-new/descs.sun/presets.xml.in.h:130
 msgid "Vietnamese Sun keymap"
-msgstr ""
+msgstr "Vietnami Sun billentyűzetkiosztás"
 
 #: gkb-new/descs.sun/presets.xml.in.h:131
 msgid "Yugoslavia"
@@ -1609,9 +1615,8 @@ msgid "Austria"
 msgstr "Ausztria"
 
 #: gkb-new/descs/presets.xml.in.h:11
-#, fuzzy
 msgid "Azerbaijani Turkish xkb keymap"
-msgstr "Azerbajdzsáni török Sun billentyűzetkiosztás"
+msgstr "Azerbajdzsáni török xkb billentyűzetkiosztás"
 
 #: gkb-new/descs/presets.xml.in.h:12
 msgid "Bahrain"
@@ -1954,9 +1959,8 @@ msgid "Mongolian phonetic keymap"
 msgstr ""
 
 #: gkb-new/descs/presets.xml.in.h:134
-#, fuzzy
 msgid "Morocco"
-msgstr "Marokkó"
+msgstr ""
 
 #: gkb-new/descs/presets.xml.in.h:135
 msgid "Netherlands"
@@ -2035,14 +2039,12 @@ msgid "Serbia and Montenegro"
 msgstr ""
 
 #: gkb-new/descs/presets.xml.in.h:164
-#, fuzzy
 msgid "Serbian"
-msgstr "Grúz"
+msgstr "Szerb"
 
 #: gkb-new/descs/presets.xml.in.h:165
-#, fuzzy
 msgid "Serbian keymap"
-msgstr "Német billentyűzetkiosztás"
+msgstr "Szerb billentyűzetkiosztás"
 
 #: gkb-new/descs/presets.xml.in.h:168
 msgid "Slovak keymap"
@@ -2205,9 +2207,8 @@ msgid "United Kingdom xkb keymap"
 msgstr ""
 
 #: gkb-new/descs/presets.xml.in.h:225
-#, fuzzy
 msgid "Vietnamese xkb keymap"
-msgstr "Görög xkb-billentyűzetkiosztás"
+msgstr "Vietnami xkb-billentyűzetkiosztás"
 
 #: gkb-new/descs/presets.xml.in.h:226
 msgid "Yemen"
@@ -2229,11 +2230,11 @@ msgid ""
 msgstr ""
 "Ez az applet a billentyűzet-kiosztások között kapcsol, setxkbmap-ot és "
 "xmodmap-ot használ.\n"
-"Küldhetsz még zászlókat a shooby@gnome.hu címre.\n"
-"Viszlát, és kösz a halakat.\n"
-"Köszönöm Nagy Balázsnak (js@iksz.hu) segítségét, Kovács Emesének "
-"(emese@gnome.hu) a szolidaritást, és a sok segítséget az olyan srácoknak, "
-"mint KevinV.\n"
+"Küldhet még zászlókat a shooby@gnome.hu címre.\n"
+"Viszlát, és köszönöm a halakat.\n"
+"Köszönöm Nagy Balázsnak (Kevin) <julian7@iksz.hu> a segítségét, Kovács "
+"Emesének <emese@gnome.hu> a szolidaritást, és a sok segítséget az olyan "
+"srácoknak, mint KevinV.\n"
 "Bán Szabolcs <shooby@gnome.hu>"
 
 #: gkb-new/gkb-applet.c:115
@@ -2249,8 +2250,8 @@ msgid ""
 "Press the hotkey to switch between layouts. The hotkey can be set through "
 "Properties dialog"
 msgstr ""
-"Nyomd meg azt a billentyűkombinációt, amivel a billentyűzetkiosztások között "
-"váltasz. A beállítások párbeszédablakban tudod megváltoztatni"
+"Nyomja meg azt a billentyűkombinációt, amivel a billentyűzetkiosztások között "
+"vált. A beállítások párbeszédablakban tudja megváltoztatni"
 
 #: gkb-new/gkb.schemas.in.h:1
 msgid "Appearance mode of the applet"
@@ -2294,7 +2295,7 @@ msgstr "A billentyűzet-kiosztás nyelve"
 
 #: gkb-new/gkb.schemas.in.h:11
 msgid "The name of the keyboard layout"
-msgstr "A billentyűzet-kiosztást megnevezése"
+msgstr "A billentyűzet-kiosztás megnevezése"
 
 #: gkb-new/gkb.schemas.in.h:12
 msgid "This flag will appear in flag field of the applet"
@@ -2329,7 +2330,7 @@ msgstr "Tiltva"
 #: gkb-new/keygrab.c:384
 msgid "Press a key or press Esc to cancel"
 msgstr ""
-"Nyomj meg egy billentyűzet-kombinációt, vagy Esc-et, ha mégsem változtatod "
+"Nyomjon meg egy billentyűzet-kombinációt, vagy Esc-et, ha mégsem változtatja "
 "meg!"
 
 #: gkb-new/preset.c:155 gkb-new/preset.c:158
@@ -2338,7 +2339,7 @@ msgstr "Nem megadott"
 
 #: gkb-new/prop-add.c:87
 msgid "Keyboards (select and press add)"
-msgstr "Billentyűzet kiosztások (válaszd ki, majd nyomd meg a hozzáadást)"
+msgstr "Billentyűzet kiosztások (válassza ki, majd nyomja meg a hozzáadást)"
 
 #: gkb-new/prop-add.c:229
 #, c-format
@@ -2347,11 +2348,11 @@ msgstr "A(z) `%s' billentyűzetkiosztás már létezik ehhez az országhoz: %s"
 
 #: gkb-new/prop-add.c:328
 msgid "Select Keyboard"
-msgstr "Válassz kiosztást"
+msgstr "Válasszon kiosztást"
 
 #: gkb-new/prop-add.c:353
 msgid "_Keyboards (select and press add):"
-msgstr "Billentyűzetkiosztások (válaszd ki, majd nyomd meg a hozzáadást)"
+msgstr "Billentyűzetkiosztások (válassza ki, majd nyomja meg a hozzáadást)"
 
 #: gkb-new/prop-map.c:80
 msgid "Unknown Keyboard"
@@ -2447,7 +2448,8 @@ msgid ""
 msgstr ""
 "Hiba történt.\n"
 "\n"
-"A(z) `%s' keymap nem támogatott ezen a rendszeren. Válassz másik keymapot.\n"
+"A(z) `%s' keymap nem támogatott ezen a rendszeren. Válasszon másik "
+"billentyűzetkiosztást.\n"
 "\n"
 "A parancs ez volt: %s"
 
@@ -2463,8 +2465,8 @@ msgid ""
 msgstr ""
 "Hiba történt.\n"
 "\n"
-"Nem sikerült betölteni a következő keymapot: `%s'. A lehetséges ok az, hogy "
-"az 'xmodmap' nincs benne a rendszer elérési útjában (PATH).\n"
+"Nem sikerült betölteni a következő billentyűzetkiosztást: `%s'. A lehetséges "
+"ok az, hogy az 'xmodmap' nincs benne a rendszer elérési útjában (PATH).\n"
 "\n"
 "A parancs ez volt: %s"
 
@@ -2477,30 +2479,25 @@ msgid "_Groups"
 msgstr ""
 
 #: gswitchit/GNOME_GSwitchItApplet.xml.h:5
-#, fuzzy
 msgid "_Open Keyboard Preferences"
-msgstr "_Billentyűzet kisegítő lehetőségeinek beállítása"
+msgstr ""
 
 #: gswitchit/GNOME_KeyboardApplet.server.in.in.h:1
-#, fuzzy
 msgid "GNOME keyboard applet factory"
-msgstr "Gweather Applet Factory"
+msgstr "GNOME billentyűzet applet factory"
 
 #: gswitchit/GNOME_KeyboardApplet.server.in.in.h:2
-#, fuzzy
 msgid "GNOME keyboard layout indicator"
-msgstr "Billentyűzetkiosztás kiválasztása"
+msgstr ""
 
 #: gswitchit/GNOME_KeyboardApplet.server.in.in.h:3
 #: gswitchit/gswitchit-applet.c:575
-#, fuzzy
 msgid "Keyboard Indicator"
-msgstr "Rendszerfigyelő"
+msgstr ""
 
 #: gswitchit/GNOME_KeyboardApplet.server.in.in.h:4
-#, fuzzy
 msgid "Keyboard applet factory"
-msgstr "Geyes Applet factory"
+msgstr "Billentyűzet applet factory"
 
 #: gswitchit/gswitchit-applet.c:110
 #, c-format
@@ -2509,12 +2506,11 @@ msgstr ""
 
 #: gswitchit/gswitchit-applet.c:578
 msgid "Copyright (c) Sergey V. Oudaltsov 1999-2004"
-msgstr ""
+msgstr "Copyright © Sergey V. Oudaltsov 1999-2004"
 
 #: gswitchit/gswitchit-applet.c:580
-#, fuzzy
 msgid "Keyboard layout indicator applet for GNOME"
-msgstr "Billentyűzetkiosztás kiválasztása"
+msgstr ""
 
 #: gswitchit/gswitchit-applet.c:734
 msgid "XKB initialization error"
@@ -2535,13 +2531,12 @@ msgid "_Exclude from keyboard switching"
 msgstr ""
 
 #: gswitchit/gswitchit-capplet.c:296
-#, fuzzy
 msgid "Not used"
-msgstr " nincs befűzve"
+msgstr "Nincs használva"
 
 #: gswitchit/gswitchit-plugins-add.c:105 gswitchit/gswitchit-plugins.c:117
 msgid "No description."
-msgstr ""
+msgstr "Nincs leírás."
 
 #: gswitchit/gswitchit-plugins.c:331
 #, c-format
@@ -2557,19 +2552,16 @@ msgid "Active _plugins:"
 msgstr ""
 
 #: gswitchit/gswitchit-plugins.glade.h:3
-#, fuzzy
 msgid "Add Plugin"
-msgstr "Gomb hozzáadása"
+msgstr "Bővítmény hozzáadása"
 
 #: gswitchit/gswitchit-plugins.glade.h:4
-#, fuzzy
 msgid "Close the dialog"
-msgstr "Cetli bezárása"
+msgstr "Párbeszédablak bezárása"
 
 #: gswitchit/gswitchit-plugins.glade.h:5
-#, fuzzy
 msgid "Configure the selected plugin"
-msgstr "Kattints a kijelölt paletta szerkesztéséhez"
+msgstr "A kiválasztott bővítmény beállítása"
 
 #: gswitchit/gswitchit-plugins.glade.h:6
 msgid "Deactivate selected plugin"
@@ -2592,19 +2584,16 @@ msgid "The list of active plugins"
 msgstr ""
 
 #: gswitchit/gswitchit-plugins.glade.h:11
-#, fuzzy
 msgid "_Available plugins:"
-msgstr "Elérhető paletták"
+msgstr "_Elérhető bővítmények:"
 
 #: gswitchit/gswitchit-properties.glade.h:2 stickynotes/stickynotes.glade.h:3
 msgid "<b>Behavior</b>"
 msgstr "<b>Viselkedés</b>"
 
 #: gswitchit/gswitchit-properties.glade.h:3
-#, fuzzy
 msgid "Choose the default group (for newly created windows)."
 msgstr ""
-"Jelöld be, ha az alapértelmezett stílust akarod használni minden cetlin"
 
 #: gswitchit/gswitchit-properties.glade.h:4
 msgid "Keep separate group for each application window."
@@ -2615,9 +2604,8 @@ msgid "Keep the state of indicators separately for each application window."
 msgstr ""
 
 #: gswitchit/gswitchit-properties.glade.h:6
-#, fuzzy
 msgid "Keyboard Indicator Preferences"
-msgstr "Billentyűzetkiosztás-kapcsoló beállítások"
+msgstr ""
 
 #: gswitchit/gswitchit-properties.glade.h:7
 msgid "Save/restore _indicators with group"
@@ -2632,9 +2620,8 @@ msgid "Show national flags as indicators of corresponding layouts"
 msgstr ""
 
 #: gswitchit/gswitchit-properties.glade.h:10
-#, fuzzy
 msgid "Use _flags as indicators"
-msgstr "Rendszerfigyelő"
+msgstr ""
 
 #: gswitchit/gswitchit-properties.glade.h:11
 msgid "_Default group:"
@@ -2645,9 +2632,8 @@ msgid "Beep on group switch"
 msgstr ""
 
 #: gswitchit/gswitchit.schemas.in.h:2
-#, fuzzy
 msgid "Debug level"
-msgstr "Piros szín szintje"
+msgstr ""
 
 #: gswitchit/gswitchit.schemas.in.h:3
 msgid "Default group, assigned on window creation"
@@ -2666,9 +2652,8 @@ msgid "Secondary groups"
 msgstr ""
 
 #: gswitchit/gswitchit.schemas.in.h:7
-#, fuzzy
 msgid "Show flags in the applet"
-msgstr "Jéggolyó zuhany"
+msgstr "Zászlók megjelenítése az appletben"
 
 #: gswitchit/gswitchit.schemas.in.h:8
 msgid "Show flags in the applet to indicate the current layout"
@@ -2724,8 +2709,8 @@ msgid ""
 msgstr ""
 "Ez a program ismert webkiszolgálókhoz csatlakozik és letölti onnan a "
 "részvényárfolyamokat. A GNOME Tőzsdekövető egy szabadon terjeszthető és "
-"ingyenes Internet-alapú alkalmazás. SEMMILYEN GARANCIÁT SEM VÁLLALUNK. Ne "
-"használd a GNOME Tőzsdekövetőt a pénzügyi döntések meghozatalához. A program "
+"ingyenes internet-alapú alkalmazás. SEMMILYEN GARANCIÁT SEM VÁLLALUNK. Ne "
+"használja a GNOME Tőzsdekövetőt a pénzügyi döntések meghozatalához. A program "
 "csak információs célt szolgál."
 
 #: gtik/gtik.c:1232
@@ -3106,7 +3091,7 @@ msgid ""
 "for US cities."
 msgstr ""
 "Ehhez a helyhez nem érhető el részletes előrejelzés.\n"
-"Próbáld az államhoz tartozó előrejelzést megnézni.\n"
+"Próbálja megnézni az államhoz tartozó előrejelzést.\n"
 "IWIN-előrejelzések csak az amerikai városokhoz vannak."
 
 #: gweather/gweather-dialog.c:412
@@ -3116,7 +3101,7 @@ msgid ""
 "only for US cities."
 msgstr ""
 "Ehhez a helyhez nem érhető el az államhoz tartozó előrejelzés.\n"
-"Próbáld az államhoz tartozó előrejelzést megnézni. IWIN-előrejelzések csak "
+"Próbálja megnézni az államhoz tartozó előrejelzést. IWIN-előrejelzések csak "
 "az amerikai városokhoz vannak."
 
 #. Accessible Name and Description for the components in Preference Dialog
@@ -3126,7 +3111,7 @@ msgstr "Hely nézet"
 
 #: gweather/gweather-pref.c:149
 msgid "Select Location from the list"
-msgstr "Válaszd ki a helyet a listából"
+msgstr "Válassza ki a helyet a listából"
 
 #: gweather/gweather-pref.c:151
 msgid "Update spin button"
@@ -3134,7 +3119,7 @@ msgstr "Pörgetőgomb frissítése"
 
 #: gweather/gweather-pref.c:151
 msgid "Spinbutton for updating"
-msgstr "Pörgetőgomb a frissítéséhez"
+msgstr "Pörgetőgomb a frissítéshez"
 
 #: gweather/gweather-pref.c:152
 msgid "Address Entry"
@@ -3702,12 +3687,12 @@ msgid ""
 "You didn't set a password in the preferences for the Inbox Monitor,\n"
 "so you have to enter it each time it starts up."
 msgstr ""
-"Nem adtad meg a jelszavad a Postaláda-figyelő beállíŧásainál,\n"
-"ezért mindig be kell írnod az applat indulásakor."
+"Nem adta meg a jelszavát a Postaláda-figyelő beállításainál,\n"
+"ezért mindig be kell írnia az applet indulásakor."
 
 #: mailcheck/mailcheck.c:819
 msgid "Please enter your mailserver's _password:"
-msgstr "Írd be a _levélkiszolgálóhoz való jelszavad:"
+msgstr "Írja be a _levélkiszolgálóhoz való jelszavát:"
 
 #: mailcheck/mailcheck.c:824 mailcheck/mailcheck.c:1948
 msgid "Password Entry box"
@@ -3739,34 +3724,35 @@ msgstr "Hiba"
 
 #: mailcheck/mailcheck.c:1087
 msgid "You have new mail."
-msgstr "Új leveled jött."
+msgstr "Új levele jött."
 
 #: mailcheck/mailcheck.c:1089
 msgid "You have mail."
-msgstr "Levelet kaptál."
+msgstr "Levelet kapott."
 
 #: mailcheck/mailcheck.c:1093
 #, c-format
 msgid "%d unread"
 msgid_plural "%d unread"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d olvasatlan"
+msgstr[1] "%d olvasatlan"
 
 #: mailcheck/mailcheck.c:1094 mailcheck/mailcheck.c:1103
-#, fuzzy, c-format
+#, c-format
 msgid "%d message"
 msgid_plural "%d messages"
 msgstr[0] "%d üzenet"
+msgstr[1] "%d üzenet"
 
 #. translators: this is of the form "%d unread/%d messages"
 #: mailcheck/mailcheck.c:1097
 #, c-format
 msgid "%s/%s"
-msgstr ""
+msgstr "%s/%s"
 
 #: mailcheck/mailcheck.c:1110
 msgid "No mail."
-msgstr "Nincs leveled."
+msgstr "Nincs levele."
 
 #: mailcheck/mailcheck.c:1564 mailcheck/mailcheck.c:1565
 #: mailcheck/mailcheck.c:2886 mailcheck/mailcheck.c:2887
@@ -3892,7 +3878,7 @@ msgstr "Postaláda-figyelő beállításai"
 
 #: mailcheck/mailcheck.c:2477
 msgid "Inbox Monitor notifies you when new mail arrives in your mailbox"
-msgstr "A Postaláda-figyelő értesít, ha új levél érkezik a postaládádba"
+msgstr "A Postaláda-figyelő értesíti, ha új levél érkezik a postaládájába"
 
 #: mailcheck/mailcheck.c:2839
 msgid "Text only"
@@ -3904,7 +3890,7 @@ msgstr "Levélellenőrző"
 
 #: mailcheck/mailcheck.c:2889
 msgid "Mail check notifies you when new mail arrives in your mailbox"
-msgstr "A Levélellenőrző értesít, ha új levél érkezik a postaládádba"
+msgstr "A Levélellenőrző értesíti, ha új levél érkezik a postaládájába"
 
 #: mailcheck/mailcheck.schemas.in.h:1
 msgid "Command to execute when checking mail"
@@ -4050,7 +4036,6 @@ msgid "MiniCommander Applet Factory"
 msgstr "Minicommander Applet factory"
 
 #: mini-commander/src/about.c:72
-#, fuzzy
 msgid ""
 "This GNOME applet adds a command line to the panel. It features command "
 "completion, command history, and changeable macros.\n"
@@ -4063,8 +4048,8 @@ msgstr ""
 "Ez a GNOME applet egy parancssort ad a panelhoz. Parancskiegészítés, "
 "előzmények és módosítható makrók vannak beleépítve.\n"
 "\n"
-"Ez a program szabad szoftver. Továbbadhatod, illetve módosíthatod a Free "
-"Software Foundation által kiadott GNU GPL második vagy (választásod szerint) "
+"\\ Ez a program szabad szoftver. Továbbadhatja, illetve módosíthatja a Free "
+"Software Foundation által kiadott GNU GPL második vagy (választása szerint) "
 "bármelyik későbbi változatában foglaltak betartásával."
 
 #: mini-commander/src/command_line.c:315
@@ -4082,7 +4067,7 @@ msgstr "Parancssor"
 
 #: mini-commander/src/command_line.c:483
 msgid "Type a command here and Gnome will execute it for you"
-msgstr "Írj be egy parancsot ide, a Gnome elindítja neked"
+msgstr "Írjon be egy parancsot ide, a Gnome elindítja önnek"
 
 #: mini-commander/src/mc-install-default-macros.c:71
 #, c-format
@@ -4100,14 +4085,16 @@ msgid "Set default list value for %s\n"
 msgstr "Alapértelmezett listaérték beállítása %s számára\n"
 
 #: mini-commander/src/mc-install-default-macros.c:117
+#, c-format
 msgid "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL is set, not installing schemas\n"
 msgstr ""
 "A GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL nincs beállítva, a sémák nem lesznek "
 "telepítve\n"
 
 #: mini-commander/src/mc-install-default-macros.c:125
+#, c-format
 msgid "Must set the GCONF_CONFIG_SOURCE environment variable\n"
-msgstr "Muszáj beállítani a GCONF_CONFIG_SOURCE környezeti változót\n"
+msgstr "Kötelező beállítani a GCONF_CONFIG_SOURCE környezeti változót\n"
 
 #: mini-commander/src/mc-install-default-macros.c:142
 #, c-format
@@ -4196,19 +4183,16 @@ msgid "Attempt to autocomplete a command from the history of commands entered."
 msgstr ""
 
 #: mini-commander/src/mini-commander.schemas.in.h:2
-#, fuzzy
 msgid "Background color, blue component"
-msgstr "Háttérszín:"
+msgstr ""
 
 #: mini-commander/src/mini-commander.schemas.in.h:3
-#, fuzzy
 msgid "Background color, green component"
-msgstr "Háttérszín:"
+msgstr ""
 
 #: mini-commander/src/mini-commander.schemas.in.h:4
-#, fuzzy
 msgid "Background color, red component"
-msgstr "Háttérszín:"
+msgstr ""
 
 #: mini-commander/src/mini-commander.schemas.in.h:5
 msgid "Foreground color, blue component"
@@ -4309,7 +4293,7 @@ msgstr "Böngésző"
 
 #: mini-commander/src/mini-commander_applet.c:233
 msgid "Click this button to start the browser"
-msgstr "Kattints erre a gombra böngésző indításához"
+msgstr "Kattintson erre a gombra a böngésző indításához"
 
 #: mini-commander/src/mini-commander_applet.c:246
 #: mini-commander/src/mini-commander_applet.c:250
@@ -4318,7 +4302,7 @@ msgstr "Előzmények"
 
 #: mini-commander/src/mini-commander_applet.c:251
 msgid "Click this button for the list of previous commands"
-msgstr "Ezzel a gombbal az előző parancsokat tudod listázni"
+msgstr "Ezzel a gombbal az előző parancsokat tudja listázni"
 
 #: mini-commander/src/mini-commander_applet.c:363
 msgid "Command line has been disabled by your system administrator"
@@ -4334,27 +4318,25 @@ msgstr "Ez az applet egy parancssort ad a panelhez"
 
 #: mini-commander/src/preferences.c:428
 msgid "You must specify a pattern"
-msgstr "Meg kell adni egy mintát"
+msgstr "Meg kell adnia egy mintát"
 
 #: mini-commander/src/preferences.c:432
 msgid "You must specify a pattern and a command"
-msgstr "Meg kell adni egy mintát és egy parancsot"
+msgstr "Meg kell adnia egy mintát és egy parancsot"
 
 #: mini-commander/src/preferences.c:433
 msgid "You must specify a command"
-msgstr "Meg kell adni egy parancsot"
+msgstr "Meg kell adnia egy parancsot"
 
 #: mini-commander/src/preferences.c:436
 msgid "You may not specify duplicate patterns"
 msgstr "Nem lehet többször megadni egy mintát"
 
 #: mini-commander/src/preferences.c:850
-#, fuzzy
 msgid "Pattern"
-msgstr "_Minta:"
+msgstr "Minta"
 
 #: mini-commander/src/preferences.c:860
-#, fuzzy
 msgid "Command"
 msgstr "Parancs"
 
@@ -4421,7 +4403,7 @@ msgstr "PCM2"
 
 #: mixer/mixer.c:128
 msgid "Recording Level"
-msgstr "Felvéteki szint"
+msgstr "Felvételi szint"
 
 #: mixer/mixer.c:128
 msgid "Input Gain"
@@ -4502,7 +4484,7 @@ msgstr "Hangerőszabályozó"
 
 #: mixer/mixer.c:1048
 msgid "Use Up/Down arrow keys to change volume"
-msgstr "Használd a fel-le nyilakat a hangerő változtatásához"
+msgstr "Használja a fel-le nyilakat a hangerő változtatásához"
 
 #. Translators - The + and - refer to increasing and decreasing the volume.
 #. ** I don't know if there are sensible alternatives in other languages
@@ -4570,8 +4552,8 @@ msgid ""
 "You are currently connected.\n"
 "Do you want to disconnect?"
 msgstr ""
-"Kapcsolódva vagy.\n"
-"Le akarsz bontani?"
+"Kapcsolódva van.\n"
+"Le akar bontani?"
 
 #: modemlights/modemlights.c:526
 msgid "_Disconnect"
@@ -4579,7 +4561,7 @@ msgstr "_Bontás"
 
 #: modemlights/modemlights.c:553
 msgid "Do you want to connect?"
-msgstr "Kapcsolódni akarsz?"
+msgstr "Kapcsolódni akar?"
 
 #: modemlights/modemlights.c:560
 msgid "C_onnect"
@@ -5199,7 +5181,7 @@ msgid ""
 "\n"
 "Changes will be saved instantly."
 msgstr ""
-"<b>Minden ragadós cetlit törölsz?</b>\n"
+"<b>Minden ragadós cetlit töröl?</b>\n"
 "\n"
 "A változás azonnal érvénybe lép!"
 
@@ -5209,7 +5191,7 @@ msgid ""
 "\n"
 "Changes will be saved instantly."
 msgstr ""
-"<b>Törlöd ezt a ragadós cetlit?</b>\n"
+"<b>Törli ezt a ragadós cetlit?</b>\n"
 "\n"
 "A változás azonnal érvénybe lép!"
 
@@ -5239,12 +5221,12 @@ msgstr "A cetlik alapértelmezett betűkészletének meghatározása"
 
 #: stickynotes/stickynotes.glade.h:17
 msgid "Choose if notes are visible on ALL workspaces"
-msgstr "Jelöld be, ha a cetliket minden munkaterületen látni akarod"
+msgstr "Jelölje be, ha a cetliket minden munkaterületen látni akarja"
 
 #: stickynotes/stickynotes.glade.h:18
 msgid "Choose if the default style is forced on all notes"
 msgstr ""
-"Jelöld be, ha az alapértelmezett stílust akarod használni minden cetlin"
+"Jelölje be, ha az alapértelmezett stílust akarja használni minden cetlin"
 
 #: stickynotes/stickynotes.glade.h:19
 msgid "Clic_k:"
@@ -5471,18 +5453,16 @@ msgid "Specifies whether the sticky notes are visible or not."
 msgstr ""
 
 #: stickynotes/stickynotes.schemas.in.h:22
-#, fuzzy
 msgid "Sticky notes' locked state"
-msgstr "Gtik Applet factory"
+msgstr ""
 
 #: stickynotes/stickynotes.schemas.in.h:23
 msgid "Sticky notes' visibility"
 msgstr ""
 
 #: stickynotes/stickynotes.schemas.in.h:24
-#, fuzzy
 msgid "Sticky notes' workspace stickyness"
-msgstr "Munkaterületek"
+msgstr ""
 
 #: stickynotes/stickynotes.schemas.in.h:25
 msgid "Whether to ask for confirmation when deleting a note"
@@ -5542,7 +5522,7 @@ msgid ""
 "Please verify your configuration if you think this is incorrect."
 msgstr ""
 "Úgy tűnik, hogy nincsenek beállítva vezeték nélküli eszközök a rendszerben.\n"
-"Ellenőrizd a beállításokat, ha szerinted ennek nem így kellene lennie."
+"Ellenőrizze a beállításokat, ha ön szerint ennek nem így kellene lennie."
 
 #: wireless/wireless-applet.c:590
 msgid "(C) 2001, 2002 Free Software Foundation "
@@ -5553,9 +5533,8 @@ msgid "This utility shows the status of a wireless link."
 msgstr "Ez az applet a vezeték nélküli kapcsolat állapotát jelzi."
 
 #: wireless/wireless-applet.c:836
-#, fuzzy
 msgid "This utility shows the status of a wireless link"
-msgstr "Ez az applet a vezeték nélküli kapcsolat állapotát jelzi."
+msgstr "Ez az applet a vezeték nélküli kapcsolat állapotát jelzi"
 
 #: wireless/wireless-applet.glade.h:1
 msgid "Show signal strength in _percentage"
@@ -5568,18 +5547,3 @@ msgstr "Vezeték nélküli kapcsolat megfigyelőjének beállításai"
 #: wireless/wireless-applet.glade.h:3
 msgid "_Monitored device:"
 msgstr "_Monitorozott eszköz:"
-
-#~ msgid ""
-#~ "An error occured while launching the Suspend command, the command "
-#~ "returned \"%d\"\n"
-#~ "Please try to correct this error"
-#~ msgstr ""
-#~ "Hiba lépett fel az altatás parancs futtatásakor, a parancs visszatérési "
-#~ "értéke: \"%d\".\n"
-#~ "Próbáld kijavítani a hibát!"
-
-#~ msgid "Add a palette..."
-#~ msgstr "Paletta hozzáadása..."
-
-#~ msgid "%d unread/ %d messages"
-#~ msgstr "%d olvasatlan / %d üzenet"
