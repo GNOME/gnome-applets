@@ -25,6 +25,7 @@
  * USA
  */
 
+#include <dirent.h>
 #include "gkb.h"
 
 typedef struct _PropWg PropWg;
@@ -57,14 +58,27 @@ struct _PropWg
 typedef struct _GKBpreset GKBpreset;
 struct _GKBpreset
 {
-  GtkWidget *country_item, *lang_item, *keymap_item; /* Tree and list items */
-  GHashTable *name, *lang, *country; /* Names for items */
+  gchar *name, *lang, *country; /* Names for items */
   gchar *command; /* Full switching command */
   gchar *codepage; /* Codepage, information only */
   gchar *flag; /* Flag filename */
   gchar *label; /* Label for label mode */
   gchar *arch; /* Sun, IBM, i386, or DEC */
   gchar *type; /* 101, 102, 105, microsoft, or any type */
+};
+
+typedef struct _CountryData CountryData;
+struct _CountryData
+{
+  GtkWidget * widget, * listwg;
+  GList * keymaps;
+};
+
+typedef struct _LangData LangData;
+struct _LangData
+{
+  GtkWidget * widget, * listwg;
+  GHashTable * countries;
 };
 
 static void prophelp_cb (AppletWidget * widget, gpointer data);
@@ -75,137 +89,109 @@ static GList *copy_props (GKB * gkb);
 static Prop *cp_propwg (PropWg * data);
 static GList *copy_propwgs (GKB * gkb);
 static GKBpreset * gkbpreset_load (const char *filename);
+GtkWidget * defpage_create (GKB * gkb);
+
+static gchar *prefixdir;
 
 #include "prop_copy.h"
 #include "prop_show.h"
 #include "prop_cb.h"
+#include "prop_preset.h"
 
-static GList *
-gkbpresets ()
+
+static gint
+country_select_cb(GtkWidget * widget, CountryData * cdata)
 {
- GList *list;
- GSList *dir_list = NULL;
- GSList *li;
- for(li = dir_list; li != NULL; li = li->next) {
- }
+ /* TODO: Write this... */
 }
-
-static GKBpreset *
-gkbpreset_load (const char *filename)
-{
-        GKBpreset *retval = retval = g_new0(GKBpreset, 1);
-        char confpath[PATH_MAX];
-        char *key, *value;
-        void *iter;
-
-        g_snprintf(confpath, sizeof(confpath), "=%s=/Desktop Entry", filename);
-
-        retval->name = g_hash_table_new(g_str_hash, g_str_equal);
-        retval->lang = g_hash_table_new(g_str_hash, g_str_equal);
-        retval->country = g_hash_table_new(g_str_hash, g_str_equal);
-
-        iter = gnome_config_init_iterator(confpath);
-        while((iter = gnome_config_iterator_next(iter, &key, &value))) {
-		/* we need to keep things where the value is empty however */
-                if(!*key) {
-                        g_free(key);
-                        g_free(value);
-                        continue;
-                }
-                if(!strcmp(key, "Name")) {
-                        g_hash_table_insert(retval->name, g_strdup("C"), value);
-                } else if(!strncmp(key, "Name[", 5)) {
-                        char *mylang, *ctmp;
-
-                        mylang = key + strlen("Name[");
-                        ctmp = strchr(mylang, ']');
-                        if(ctmp) *ctmp = '\0';
-
-                        g_hash_table_insert(retval->name, g_strdup(mylang), value);
-                        g_free(key);
-                } else if(!strcmp(key, "Language")) {
-                        g_hash_table_insert(retval->lang, g_strdup("C"), value);
-                } else if(!strncmp(key, "Language[", strlen("Language["))) {
-                        char *mylang, *ctmp;
-
-                        mylang = key + strlen("Language[");
-                        ctmp = strchr(mylang, ']');
-                        if(ctmp) *ctmp = '\0';
-
-                        g_hash_table_insert(retval->lang, g_strdup(mylang), value);
-                        g_free(key);
-                } else if(!strcmp(key, "Country")) {
-                        g_hash_table_insert(retval->country, g_strdup("C"), value);
-                } else if(!strncmp(key, "Country[", strlen("Country["))) {
-                        char *mylang, *ctmp;
-
-                        mylang = key + strlen("Country[");
-                        ctmp = strchr(mylang, ']');
-                        if(ctmp) *ctmp = '\0';
-
-                        g_hash_table_insert(retval->country, g_strdup(mylang), value);
-                        g_free(key);
-                } else if(!strcmp(key, "Codepage")) {
-                        retval->codepage = value;
-                        g_free(key);
-                } else if(!strcmp(key, "Flag")) {
-                        retval->flag = value;
-                        g_free(key);
-                } else if(!strcmp(key, "Label")) {
-                        retval->label = value;
-                        g_free(key);
-                } else if(!strcmp(key, "Type")) {
-                        retval->type = value;
-                        g_free(key);
-                } else if(!strcmp(key, "Arch")) {
-                        retval->arch = value;
-                        g_free(key);
-                } else if(!strcmp(key, "Command")) {
-                        retval->command = value;
-                        g_free(key);
-                } else {
-                        g_free(key);
-                        g_free(value);
-                }
-        }
-
-        return retval;
-}
-
 
 static void
-treeitems_create(GtkWidget *tree, GtkWidget *list)
+treeitems_create(GtkWidget *tree, GtkWidget *listwg)
 {
-	gchar *langnames[] = { N_("English"), N_("Spanish"), N_("German"), N_("French"),
-                               N_("Hungarian")};
-	gchar *countnames[5][8] = {{N_("United Kingdom"), N_("United States"), N_("Jamaica"), N_("Australia"),
-                               N_("New Zealand"), N_("India"), N_("Ireland"), NULL}, 
-                               {N_("Mexico"), N_("Spain"), N_("Nicaragua"), NULL},
-                               {N_("Germany"), N_("Austria"), N_("Switzerland"), N_("Luxemburg"), N_("Lichtenstein"), NULL},
-                               {N_("France"), N_("Belgium"), N_("Switzerland"), N_("Algeria"), NULL},
-                               {N_("Hungary"), NULL}
-                               };
-	int i,k;
-	GtkWidget *country, *lang, *subitem;
+	GList * list, * presets = NULL;
+	GHashTable * langs = g_hash_table_new(g_str_hash, g_str_equal);
+	LangData * ldata;
+	CountryData * cdata;
 
-	for (i = 0; i < 5; i++){
+	/* TODO: Error checking... */
+	list=find_presets();
 
-		lang = gtk_tree_item_new_with_label (langnames[i]);
-    		gtk_tree_append (GTK_TREE(tree), lang);
-		gtk_widget_show (lang);
-		country = gtk_tree_new();
-		gtk_tree_set_selection_mode (GTK_TREE(country),
-		                                 GTK_SELECTION_SINGLE);
-		gtk_tree_set_view_mode (GTK_TREE(country), GTK_TREE_VIEW_ITEM);
-		gtk_tree_item_set_subtree (GTK_TREE_ITEM(lang), country);
+	while (list = g_list_next(list))
+	{
+	  GKBpreset * item = item = g_new0(GKBpreset, 1);
 
-		k = 0;
-		while (countnames[i][k])
-		 {
-		   subitem = gtk_tree_item_new_with_label (countnames[i][k++]);
-		   gtk_tree_append (GTK_TREE(country), subitem);
-		   gtk_widget_show (subitem);
-		 }
+	  item = gkb_preset_load((gchar *)list->data);
+
+	  if (ldata = g_hash_table_lookup (langs,item->lang))
+	   {
+	    /* There is lang */
+	    if (cdata = g_hash_table_lookup (ldata->countries,item->country))
+	     {
+	      /* There is country */
+	      g_list_append(cdata->keymaps,item);
+	     }
+	     else
+	     {
+	      /* There is no country */
+	      GtkWidget * subtree, *subitem;
+
+	      subtree = gtk_tree_new();
+	      gtk_tree_set_selection_mode (GTK_TREE(subtree),                             
+	                                       GTK_SELECTION_SINGLE);
+	      gtk_tree_set_view_mode (GTK_TREE(subtree), GTK_TREE_VIEW_ITEM);
+	      gtk_tree_item_set_subtree (GTK_TREE_ITEM(ldata->widget), subtree);
+	      subitem = gtk_tree_item_new_with_label (item->country);
+	      gtk_signal_connect (GTK_OBJECT(subitem), "select",                        
+	                                GTK_SIGNAL_FUNC(country_select_cb), 
+	                                cdata);
+	      gtk_tree_append (GTK_TREE(subtree), subitem);
+	      gtk_widget_show (subitem);
+
+	      cdata = g_new0 (CountryData,1);
+
+	      cdata->widget = subitem;
+	      cdata->listwg = listwg;
+	      cdata->keymaps = NULL;
+
+	      g_hash_table_insert (ldata->countries, item->country, cdata);
+	     }
+	   }
+	  else
+	   {
+	    /* There is no lang */
+	    GtkWidget *titem, *subtree, *subitem;
+
+	    titem = gtk_tree_item_new_with_label (item->lang);
+	    gtk_tree_append (GTK_TREE(tree), titem);
+	    gtk_widget_show (titem);
+	    subtree = gtk_tree_new();
+	    gtk_tree_set_selection_mode (GTK_TREE(subtree),                             
+                                 GTK_SELECTION_SINGLE);
+	    gtk_tree_set_view_mode (GTK_TREE(subtree), GTK_TREE_VIEW_ITEM);
+	    gtk_tree_item_set_subtree (GTK_TREE_ITEM(titem), subtree);
+	    subitem = gtk_tree_item_new_with_label (item->country);
+            gtk_signal_connect (GTK_OBJECT(subitem), "select",     
+                                  GTK_SIGNAL_FUNC(country_select_cb),
+                                  cdata);
+	    gtk_tree_append (GTK_TREE(subtree), subitem);
+	    gtk_widget_show (subitem);
+	    
+	    ldata = g_new0 (LangData, 1);
+            cdata = g_new0 (CountryData,1);
+
+            cdata->widget = subitem;
+            cdata->listwg = listwg; 
+            cdata->keymaps = NULL;  
+	    
+	    ldata->listwg = listwg;
+	    ldata->widget = titem;
+
+	    ldata->countries = g_hash_table_new (g_str_hash, g_str_equal);
+	    g_hash_table_insert (ldata->countries, item->country, cdata);
+
+            g_hash_table_insert (langs, item->lang, ldata);
+	   }
+	  
 	}
 }
 
