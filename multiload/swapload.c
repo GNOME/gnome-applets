@@ -38,7 +38,8 @@ make_swapload_applet (const gchar *goad_id)
     if (!applet)
 	g_error ("Can't create applet!\n");
 
-    prop_data = g_memdup (&multiload_properties, sizeof (LoadGraphProperties));
+    prop_data = g_memdup (&multiload_properties.swapload,
+			  sizeof (LoadGraphProperties));
 
     g = load_graph_new (APPLET_WIDGET (applet), 2, N_("Swap Load"),
 			&multiload_properties.swapload, prop_data,

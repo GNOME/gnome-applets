@@ -38,7 +38,8 @@ make_memload_applet (const gchar *goad_id)
     if (!applet)
 	g_error ("Can't create applet!\n");
 
-    prop_data = g_memdup (&multiload_properties, sizeof (LoadGraphProperties));
+    prop_data = g_memdup (&multiload_properties.memload,
+			  sizeof (LoadGraphProperties));
 
     g = load_graph_new (APPLET_WIDGET (applet), 4, N_("Memory Load"),
 			&multiload_properties.memload, prop_data,
