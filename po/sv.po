@@ -10,8 +10,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
-"POT-Creation-Date: 2003-08-02 00:45+0200\n"
-"PO-Revision-Date: 2003-08-02 00:49+0200\n"
+"POT-Creation-Date: 2003-08-08 17:12+0200\n"
+"PO-Revision-Date: 2003-08-08 17:13+0200\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -86,7 +86,7 @@ msgstr "Verktyg"
 #: mini-commander/src/about.c:48 mixer/mixer.c:1060
 #: modemlights/modemlights.c:115 multiload/main.c:57
 #: stickynotes/stickynotes_applet_callbacks.c:178
-#: wireless/wireless-applet.c:709
+#: wireless/wireless-applet.c:532
 msgid "translator_credits"
 msgstr ""
 "Christian Rose\n"
@@ -3545,6 +3545,34 @@ msgid "Memory Load"
 msgstr "Minnesbelastning"
 
 #: multiload/multiload.schemas.in.h:1
+msgid "Applet refresh rate in milliseconds"
+msgstr "Uppdateringshastigheten för panelprogrammet i millisekunder"
+
+#: multiload/multiload.schemas.in.h:2
+msgid "CPU graph background color"
+msgstr "Bakgrundsfärg för processorgraf"
+
+#: multiload/multiload.schemas.in.h:3
+msgid "Enable CPU load graph"
+msgstr "Aktivera processorbelastningsgraf"
+
+#: multiload/multiload.schemas.in.h:4
+msgid "Enable load average graph"
+msgstr "Aktivera medelbelastningsgraf"
+
+#: multiload/multiload.schemas.in.h:5
+msgid "Enable memory load graph"
+msgstr "Aktivera minnesbelastningsgraf"
+
+#: multiload/multiload.schemas.in.h:6
+msgid "Enable network load graph"
+msgstr "Aktivera nätverksbelastningsgraf"
+
+#: multiload/multiload.schemas.in.h:7
+msgid "Enable swap load graph"
+msgstr "Aktivera växelutrymmesbelastningsgraf"
+
+#: multiload/multiload.schemas.in.h:8
 msgid ""
 "For horizontal panels, the width of the graphs in pixels. For vertical "
 "panels, this is the height of the graphs."
@@ -3552,109 +3580,77 @@ msgstr ""
 "För horisontella paneler är detta bredden på graferna i bildpunkter. För "
 "vertikala paneler är detta höjden på graferna."
 
-#: multiload/multiload.schemas.in.h:2
+#: multiload/multiload.schemas.in.h:9
+msgid "Graph color for Ethernet network activity"
+msgstr "Graffärg för Ethernet-nätverksaktivitet"
+
+#: multiload/multiload.schemas.in.h:10
+msgid "Graph color for PLIP network activity"
+msgstr "Graffärg för PLIP-nätverksaktivitet"
+
+#: multiload/multiload.schemas.in.h:11
+msgid "Graph color for SLIP network activity"
+msgstr "Graffärg för SLIP-nätverksaktivitet"
+
+#: multiload/multiload.schemas.in.h:12
+msgid "Graph color for buffer memory"
+msgstr "Graffärg för buffertminne"
+
+#: multiload/multiload.schemas.in.h:13
+msgid "Graph color for cached memory"
+msgstr "Graffärg för cachat minne"
+
+#: multiload/multiload.schemas.in.h:14
+msgid "Graph color for load average"
+msgstr "Graffärg för medelbelastning"
+
+#: multiload/multiload.schemas.in.h:15
+msgid "Graph color for nice-related CPU activity"
+msgstr "Graffärg för nice-relaterad processoraktivitet"
+
+#: multiload/multiload.schemas.in.h:16
+msgid "Graph color for other network usage"
+msgstr "Graffärg för annan nätverksanvändning"
+
+#: multiload/multiload.schemas.in.h:17
+msgid "Graph color for shared memory"
+msgstr "Graffärg för delat minne"
+
+#: multiload/multiload.schemas.in.h:18
+msgid "Graph color for system-related CPU activity"
+msgstr "Graffärg för systemrelaterad processoraktivitet"
+
+#: multiload/multiload.schemas.in.h:19
+msgid "Graph color for user-related CPU activity"
+msgstr "Graffärg för användarrelaterad processoraktivitet"
+
+#: multiload/multiload.schemas.in.h:20
+msgid "Graph color for user-related memory usage"
+msgstr "Graffärgen för användarrelaterad minnesanvändning"
+
+#: multiload/multiload.schemas.in.h:21
+msgid "Graph color for user-related swap usage"
+msgstr "Graffärg för användarrelaterad växlingsutrymmesanvändning"
+
+#: multiload/multiload.schemas.in.h:22
 msgid "Graph size"
 msgstr "Grafstorlek"
 
-#: multiload/multiload.schemas.in.h:3
+#: multiload/multiload.schemas.in.h:23
+msgid "Load graph background color"
+msgstr "Bakgrundsfärg för belastningsgraf"
+
+#: multiload/multiload.schemas.in.h:24
+msgid "Memory graph background color"
+msgstr "Bakgrundsfärg för minnesgraf"
+
+#: multiload/multiload.schemas.in.h:25
 msgid "Network graph background color"
 msgstr "Bakgrundsfärg för nätverksgraf"
 
-#: multiload/multiload.schemas.in.h:4
-msgid "Network other usage"
-msgstr "Nätverk annan användning"
-
-#: multiload/multiload.schemas.in.h:5
-msgid "The cpu graph background color."
-msgstr "Bakgrundsfärgen för processorgrafen."
-
-#: multiload/multiload.schemas.in.h:6
-msgid "The load graph background color."
-msgstr "Bakgrundsfärgen för belastningsgrafen."
-
-#: multiload/multiload.schemas.in.h:7
-msgid "The memory graph background color."
-msgstr "Bakgrundsfärgen för minnesgrafen."
-
-#: multiload/multiload.schemas.in.h:8
-msgid "The swap graph background color."
-msgstr "Bakgrundsfärgen för växlingsutrymmesgrafen."
-
-#: multiload/multiload.schemas.in.h:9
-msgid "enable the cpuload graph in multiload."
-msgstr "aktivera processorbelastningsgrafen i multiload."
-
-#: multiload/multiload.schemas.in.h:10
-msgid "enable the loadavg graph in multiload."
-msgstr "aktivera belastningsmedelgrafen i multiload."
-
-#: multiload/multiload.schemas.in.h:11
-msgid "enable the memload graph in multiload."
-msgstr "aktivera minnesbelastningsgrafen i multiload."
-
-#: multiload/multiload.schemas.in.h:12
-msgid "enable the netload graph in multiload."
-msgstr "aktivera nätverksbelastningsgrafen i multiload."
-
-#: multiload/multiload.schemas.in.h:13
-msgid "enable the swapload graph in multiload."
-msgstr "aktivera växelutrymmesbelastningsgrafen i multiload."
-
-#: multiload/multiload.schemas.in.h:14
-msgid "the graph color for Ethernet network activity."
-msgstr "graffärgen för Ethernet-nätverksaktivitet."
-
-#: multiload/multiload.schemas.in.h:15
-msgid "the graph color for PLIP network activity."
-msgstr "graffärgen för PLIP-nätverksaktivitet."
-
-#: multiload/multiload.schemas.in.h:16
-msgid "the graph color for SLIP network activity."
-msgstr "graffärgen för SLIP-nätverksaktivitet."
-
-#: multiload/multiload.schemas.in.h:17
-msgid "the graph color for buffer memory."
-msgstr "graffärgen för buffertminne."
-
-#: multiload/multiload.schemas.in.h:18
-msgid "the graph color for cached memory."
-msgstr "graffärgen för cachat minne."
-
-#: multiload/multiload.schemas.in.h:19
-msgid "the graph color for load average."
-msgstr "graffärgen för medelbelastning."
-
-#: multiload/multiload.schemas.in.h:20
-msgid "the graph color for nice-related cpu activity."
-msgstr "graffärgen för nice-relaterad processoraktivitet."
-
-#: multiload/multiload.schemas.in.h:21
-msgid "the graph color for shared memory."
-msgstr "graffärgen för delat minne."
-
-#: multiload/multiload.schemas.in.h:22
-msgid "the graph color for system-related cpu activity."
-msgstr "graffärgen för systemrelaterad processoraktivitet."
-
-#: multiload/multiload.schemas.in.h:23
-msgid "the graph color for user-related cpu activity."
-msgstr "graffärgen för användarrelaterad processoraktivitet."
-
-#: multiload/multiload.schemas.in.h:24
-msgid "the graph color for user-related memory usage."
-msgstr "graffärgen för användarrelaterad minnesaktivitet."
-
-#: multiload/multiload.schemas.in.h:25
-msgid "the graph color for user-related swap usage."
-msgstr "graffärgen för användarrelaterad växlingsutrymmesaktivitet."
-
 #: multiload/multiload.schemas.in.h:26
-msgid "the refresh rate of the applets in milliseconds"
-msgstr "uppdateringshastigheten för panelprogrammen i millisekunder"
-
-#: multiload/multiload.schemas.in.h:27
-msgid "the refresh rate of the applets in milliseconds."
-msgstr "uppdateringshastigheten för panelprogrammen i millisekunder."
+msgid "Swap graph background color"
+msgstr "Bakgrundsfärg för växlingsutrymmesgraf"
 
 #: multiload/netload.c:49
 msgid "Net Load"
@@ -4175,23 +4171,15 @@ msgid "Monitor the quality of a wireless network link"
 msgstr "Övervaka kvaliteten på en trådlös nätverkslänk"
 
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:3
-#: wireless/wireless-applet.c:724
+#: wireless/wireless-applet.c:547
 msgid "Wireless Link Monitor"
 msgstr "Övervakare av trådlös länk"
 
-#: wireless/wireless-applet.c:351
-msgid ""
-"The images necessary to run the wireless monitor are missing.\n"
-"Please make sure that it is correctly installed."
-msgstr ""
-"Bilderna som krävs för att köra den trådlösa övervakaren saknas.\n"
-"Försäkra dig om att det är korrekt installerat."
-
-#: wireless/wireless-applet.c:532 wireless/wireless-applet.c:669
+#: wireless/wireless-applet.c:355 wireless/wireless-applet.c:492
 msgid "No Wireless Devices"
 msgstr "Inga trådlösa enheter"
 
-#: wireless/wireless-applet.c:534
+#: wireless/wireless-applet.c:357
 msgid ""
 "There doesn't seem to be any wireless devices configured on your system.\n"
 "Please verify your configuration if you think this is incorrect."
@@ -4199,11 +4187,11 @@ msgstr ""
 "Det verkar inte finnas några trådlösa enheter konfigurerade på ditt system.\n"
 "Verifiera din konfiguration om du tror den är felaktig."
 
-#: wireless/wireless-applet.c:726
+#: wireless/wireless-applet.c:549
 msgid "(C) 2001, 2002 Free Software Foundation "
 msgstr "© 2001, 2002 Free Software Foundation "
 
-#: wireless/wireless-applet.c:727
+#: wireless/wireless-applet.c:550
 msgid "This utility shows the status of a wireless link."
 msgstr "Detta verktyg visar statusen på en trådlös länk."
 
@@ -4218,6 +4206,34 @@ msgstr "Inställningar för övervakare av trådlös länk"
 #: wireless/wireless-applet.glade.h:3
 msgid "_Monitored device:"
 msgstr "_Övervakad enhet:"
+
+#~ msgid "Network other usage"
+#~ msgstr "Nätverk annan användning"
+
+#~ msgid "The cpu graph background color."
+#~ msgstr "Bakgrundsfärgen för processorgrafen."
+
+#~ msgid "enable the cpuload graph in multiload."
+#~ msgstr "aktivera processorbelastningsgrafen i multiload."
+
+#~ msgid "enable the loadavg graph in multiload."
+#~ msgstr "aktivera belastningsmedelgrafen i multiload."
+
+#~ msgid "enable the memload graph in multiload."
+#~ msgstr "aktivera minnesbelastningsgrafen i multiload."
+
+#~ msgid "enable the netload graph in multiload."
+#~ msgstr "aktivera nätverksbelastningsgrafen i multiload."
+
+#~ msgid "the refresh rate of the applets in milliseconds."
+#~ msgstr "uppdateringshastigheten för panelprogrammen i millisekunder."
+
+#~ msgid ""
+#~ "The images necessary to run the wireless monitor are missing.\n"
+#~ "Please make sure that it is correctly installed."
+#~ msgstr ""
+#~ "Bilderna som krävs för att köra den trådlösa övervakaren saknas.\n"
+#~ "Försäkra dig om att det är korrekt installerat."
 
 #~ msgid "_Radar Map"
 #~ msgstr "_Radarkarta"
