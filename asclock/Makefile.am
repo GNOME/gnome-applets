@@ -1,7 +1,10 @@
+SUBDIRS = themes
+
 INCLUDES = -I. -I$(srcdir) 				\
 	-I$(top_srcdir)/intl -I$(top_builddir)/intl	\
 	-I$(srcdir)/../../panel				\
 	-I$(top_builddir)/panel				\
+	-DASCLOCK_THEMES_DIR=\""$(datadir)/asclock/"\"   \
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
 	-I$(includedir) $(GNOME_INCLUDEDIR)		\
 	-DASCLOCK_GNOME -DVERSION=\""$(VERSION)"\"
@@ -35,3 +38,6 @@ sys_DATA = asclock_applet.desktop
 
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = asclock_applet.gnorba
+
+themesdir    = $(datadir)/asclock/
+ 

@@ -26,8 +26,7 @@ NULL
  
 char *themes_directories[] = {
   "./themes/",
-  "/usr/local/share/asclock/",
-  "/usr/share/asclock/",
+  ASCLOCK_THEMES_DIR ,
   "",
   NULL
 };
@@ -199,7 +198,7 @@ void parseArgs(asclock *my, int argc, char **argv)
 
   my->itblinks=TRUE;
   itdocks=FALSE;
-#ifndef ASCLOCK_GNOME
+#ifdef ASCLOCK_GTK
   for(i=1;i<argc;i++) {
     char *arg= argv[i];
 

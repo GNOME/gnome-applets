@@ -228,6 +228,7 @@ void properties_dialog(AppletWidget *applet, gpointer data)
   gtk_signal_connect( GTK_OBJECT(list), "select_row", GTK_SIGNAL_FUNC(theme_selected), my_asclock);
   for (cpp= themes_directories; *cpp; cpp++)
     {
+
       if((dfd = opendir(*cpp)) != NULL)
         while((dp = readdir(dfd)) != NULL)
           if ( dp->d_name[0]!='.' ) {
