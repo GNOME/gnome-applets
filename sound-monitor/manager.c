@@ -931,12 +931,12 @@ static void sample_time_clicked_cb(GtkWidget *widget, gint col, gpointer data)
 	MgrData *md = data;
 	if (md->samples_show_time)
 		{
-		gtk_clist_set_column_title (GTK_CLIST(md->sample_clist), col, "Length");
+		gtk_clist_set_column_title (GTK_CLIST(md->sample_clist), col, _("Length"));
 		md->samples_show_time = FALSE;
 		}
 	else
 		{
-		gtk_clist_set_column_title (GTK_CLIST(md->sample_clist), col, "Time");
+		gtk_clist_set_column_title (GTK_CLIST(md->sample_clist), col, _("Time"));
 		md->samples_show_time = TRUE;
 		}
 	sample_list_mark_updated(md->samples);
@@ -1134,6 +1134,7 @@ void manager_window_close(AppData *ad)
 
 void manager_window_show(AppData *ad)
 {
+	gint i;
 	MgrData *md;
 	GtkWidget *main_vbox;
 	GtkWidget *vbox;
@@ -1146,9 +1147,15 @@ void manager_window_show(AppData *ad)
 
 	GtkObject *adj;
 
-	gchar *stream_titles [] = { "Id", "Name", "Type", "Rate", "Bits", "Format", "Volume", };
-	gchar *sample_titles [] = { "P", "Id", "Name", "Length", "Rate", "Bits", "Format", "Volume", "L", };
+	gchar *stream_titles [] = { N_("Id"), N_("Name"), N_("Type"), N_("Rate"), N_("Bits"), N_("Format"), N_("Volume"), };
+	gchar *sample_titles [] = { N_("P"), N_("Id"), N_("Name"), N_("Length"), N_("Rate"), N_("Bits"), N_("Format"), N_("Volume"), N_("L"), };
 
+	for (i = 0; i < 6; i++)
+	    stream_titles[i] = _(stream_titles[i]);
+	
+	for (i = 0; i < 9; i++)
+	    sample_titles[i] = _(sample_titles[i]);
+    
 	if (ad->manager)
 		{
 		md = ad->manager;
