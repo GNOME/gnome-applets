@@ -18,6 +18,7 @@
 #include <stdlib.h>
 #include <assert.h>
 
+#include <gconf/gconf-client.h>
 #include <gnome.h>
 
 #include "weather.h"
@@ -25,6 +26,9 @@
 #include "gweather-applet.h"
 #include "gweather-pref.h"
 #include "gweather-dialog.h"
+
+#define MONOSPACE_FONT_DIR "/desktop/gnome/interface"
+#define MONOSPACE_FONT_KEY MONOSPACE_FONT_DIR "/monospace_font_name"
 
 static void gweather_dialog_save_geometry (GWeatherApplet *gw_applet)
 {
@@ -573,11 +577,27 @@ void gweather_dialog_display_toggle (GWeatherApplet *gw_applet)
         gweather_dialog_close(gw_applet);
 }
 
+PangoFontDescription *get_system_monospace_font (void)
+{
+    PangoFontDescription *desc = NULL;
+    GConfClient *conf;
+    char *name;
+
+    conf = gconf_client_get_default ();
+    name = gconf_client_get_string (conf, MONOSPACE_FONT_KEY, NULL);
+
+    if (name) {
+    	desc = pango_font_description_from_string (name);
+    	g_free (name);
+    }
+    return desc;
+}
+
 void gweather_dialog_update (GWeatherApplet *gw_applet)
 {
     gchar *forecast;
     GtkTextBuffer *buffer;
-    /*GdkFont* detailed_forecast_font = gdk_fontset_load ( "fixed" );*/
+    PangoFontDescription *font_desc;
 
     /* Check for parallel network update in progress */
     if(gw_applet->gweather_info == NULL)
@@ -609,6 +629,12 @@ void gweather_dialog_update (GWeatherApplet *gw_applet)
 
     /* Update forecast */
     if (gw_applet->gweather_pref.location->zone_valid) {
+	font_desc = get_system_monospace_font ();
+	if (font_desc) {
+            gtk_widget_modify_font (gw_applet->forecast_text, font_desc);
+            pango_font_description_free (font_desc);
+	}
+	
         buffer = gtk_text_view_get_buffer (GTK_TEXT_VIEW (gw_applet->forecast_text));
         forecast = g_strdup(weather_info_get_forecast(gw_applet->gweather_info));
         if (forecast) {
