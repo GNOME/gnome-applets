@@ -229,21 +229,20 @@ preadd_cb (GtkTreeSelection *selection,
   if (!pbi->keymap_for_add) g_free(pbi->keymap_for_add); 
   /* TODO: free them all */
 
-  gtk_tree_model_get_value (GTK_TREE_STORE(pbi->model), &iter,
+  gtk_tree_model_get_value (GTK_TREE_MODEL(pbi->model), &iter,
                               NAME_COL,
                               &value);
   if (g_value_get_string (&value))
   tdata->name = 
       g_strdup (g_value_get_string (&value));
-  alert(g_value_get_string(&value));
   g_value_unset (&value);
-  gtk_tree_model_get_value (GTK_TREE_STORE(pbi->model), &iter,
+  gtk_tree_model_get_value (GTK_TREE_MODEL(pbi->model), &iter,
                               FLAG_COL,
                               &value);
   tdata->flag = 
       g_strdup (g_value_get_string (&value));
   g_value_unset (&value);
-  gtk_tree_model_get_value (GTK_TREE_STORE(pbi->model), &iter,
+  gtk_tree_model_get_value (GTK_TREE_MODEL(pbi->model), &iter,
                               COMMAND_COL,
                               &value);
   tdata->command = 
@@ -252,20 +251,20 @@ preadd_cb (GtkTreeSelection *selection,
 
   /* TODO: get the parent info for...  */
 
-  gtk_tree_model_get_value (GTK_TREE_STORE(pbi->model), &iter,
+  gtk_tree_model_get_value (GTK_TREE_MODEL(pbi->model), &iter,
                               NAME_COL,
                               &value);
   tdata->country = 
       g_strdup (g_value_get_string (&value));
   g_value_unset (&value);
-  gtk_tree_model_get_value (GTK_TREE_STORE(pbi->model), &iter,
-                              NAME_COL,
+  gtk_tree_model_get_value (GTK_TREE_MODEL(pbi->model), &iter,
+                              LABEL_COL,
                               &value);
   tdata->label = 
       g_strdup (g_value_get_string (&value));
   g_value_unset (&value);
-  gtk_tree_model_get_value (GTK_TREE_STORE(pbi->model), &iter,
-                              NAME_COL,
+  gtk_tree_model_get_value (GTK_TREE_MODEL(pbi->model), &iter,
+                              LABEL_COL,
                               &value); 
   tdata->lang = 
       g_strdup (g_value_get_string (&value));

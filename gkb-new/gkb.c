@@ -188,15 +188,9 @@ gkb_count_sizes (GKB * gkb)
   gint label_height = 0;
   gint label_width = 0;
 
-  gchar asd[23];
-
   gint size;
 
   size = panel_applet_get_size (PANEL_APPLET (gkb->applet));
-
-  /* sprintf(asd,"%d",size);
-
-  alert (asd); */
 
   /* Determine if this pannel requires different handling because it is very small */
   switch (gkb->orient)
@@ -622,15 +616,15 @@ create_gkb_widget ()
 			 gtk_widget_get_events (gkb->darea) |
 			 GDK_BUTTON_PRESS_MASK);
 
-  gtk_signal_connect (GTK_OBJECT (gkb->eventbox), "button_press_event",
-		      GTK_SIGNAL_FUNC (gkb_button_press_event_cb), NULL);
+  g_signal_connect (gkb->eventbox, "button_press_event",
+		      G_CALLBACK (gkb_button_press_event_cb), NULL);
 	      
 #if 0
-  gtk_signal_connect (GTK_OBJECT (gkb->eventbox), "expose_event",
-		      GTK_SIGNAL_FUNC (gkb_expose), NULL);
+  g_signal_connect (gkb->eventbox, "expose_event",
+		      G_CALLBACK (gkb_expose), NULL);
 #else
-  gtk_signal_connect (GTK_OBJECT (gkb->darea), "expose_event",
-		      GTK_SIGNAL_FUNC (gkb_expose), NULL);
+  g_signal_connect (gkb->darea, "expose_event",
+		      G_CALLBACK (gkb_expose), NULL);
 #endif
 
   gtk_widget_show (gkb->darea);
@@ -706,11 +700,11 @@ about_cb (BonoboUIComponent *uic,
  			   _("This applet switches between keyboard maps. "
 			    "It uses setxkbmap, or xmodmap.\n"
 			    "Mail me your flag, please (60x40 size), "
-			    "I will put it to CVS.\n"
+			    "I will put it into CVS.\n"
 			    "So long, and thanks for all the fish.\n"
 			    "Thanks for Balazs Nagy (Kevin) "
-			    "<julian7@kva.hu> for his help "
-			    "and Emese Kovacs <emese@eik.bme.hu> for "
+			    "<julian7@iksz.hu> for his help "
+			    "and Emese Kovacs <emese@gnome.hu> for "
 			    "her solidarity."),
 			    authors,
 			    docauthors,
@@ -907,8 +901,8 @@ gboolean fill_gkb_applet(PanelApplet *applet)
   gtk_widget_show (gkb->darea_frame);
   gtk_container_add (GTK_CONTAINER (gkb->applet), gkb->eventbox);
 
-  gtk_signal_connect (GTK_OBJECT (gkb->applet), "save_session",
-		      GTK_SIGNAL_FUNC (applet_save_session), NULL);
+  g_signal_connect (gkb->applet, "save_session",
+		      G_CALLBACK (applet_save_session), NULL);
 
   keycode = XKeysymToKeycode(GDK_DISPLAY(), gkb->keysym);
 
@@ -953,7 +947,7 @@ gboolean fill_gkb_applet(PanelApplet *applet)
 
   gtk_widget_show (GTK_WIDGET(gkb->applet));
 
-  alert(_("Welcome at GKB! Please visit my preferences!")); 
+  alert(_("Welcome at GKB! Please visit my preferences!"));
 
   return TRUE;
 }
