@@ -111,7 +111,7 @@ expand_command(char *command)
 	   regexec(prop.macro_regex[i], command, MAX_NUM_MACRO_PARAMETERS, regex_matches, 0) != REG_NOMATCH)
 	    {
 		/* found a matching macro regex pattern; */
-		/* fprintf(stderr, "%u: %s\n", i, prop.macro_pattern[i]); */
+		fprintf(stderr, "%u: %s\n", i, prop.macro_pattern[i]);
 
 		macro = prop.macro_command[i];
 
@@ -160,7 +160,12 @@ expand_command(char *command)
 		    }
 		break;
 	    }
-    fprintf(stderr, "command_exec: %s\n", command_exec);
+
+    if(command_exec[0] == '\0')
+	/* no macro found */
+	strcpy(command_exec, command);
+
+    /* fprintf(stderr, "command_exec: %s\n", command_exec); */
     
     strcpy(command, command_exec);
 }
