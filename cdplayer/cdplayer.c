@@ -135,6 +135,14 @@ start_gtcd_cb(void)
 }
 
 static void
+help_cb (GtkWidget *w, gpointer data)
+{
+        GnomeHelpMenuEntry help_entry = { "cdplayer_applet",
+                                          "index.html" };
+        gnome_help_display(NULL, &help_entry);
+}
+
+static void
 about_cb(void)
 {
         static GtkWidget   *about     = NULL;
@@ -380,18 +388,25 @@ main(int argc, char **argv)
 		return 1;
 	}
 
-	applet_widget_register_stock_callback (APPLET_WIDGET(applet),
-					       "about",
-					       GNOME_STOCK_MENU_ABOUT,
-					       _("About..."),
-					       about_cb,
-					       NULL);
-
         applet_widget_register_stock_callback (APPLET_WIDGET(applet),
 					       "run_gtcd",         
 					       GNOME_STOCK_MENU_CDROM,
 					       _("Run CD Player..."),
 					       start_gtcd_cb,
+					       NULL);
+
+	applet_widget_register_stock_callback (APPLET_WIDGET(applet),
+					       "help",
+					       GNOME_STOCK_PIXMAP_HELP,
+					       _("Help"),
+					       help_cb,
+					       NULL);
+
+	applet_widget_register_stock_callback (APPLET_WIDGET(applet),
+					       "about",
+					       GNOME_STOCK_MENU_ABOUT,
+					       _("About..."),
+					       about_cb,
 					       NULL);
 
 	gtk_widget_show(cdplayer);
