@@ -1,5 +1,5 @@
 /*#####################################################*/
-/*##           modemlights applet 0.3.1 beta         ##*/
+/*##           modemlights applet 0.3.2              ##*/
 /*#####################################################*/
 
 #include "modemlights.h"
@@ -10,18 +10,13 @@
 #include "button_off.xpm"
 #include "button_on.xpm"
 
-/* how many times per second to update the lights (1 - 20) */
-gint UPDATE_DELAY = 10;
-
-/* the modem lock file */
-gchar *lock_file;
-
-/* connection commands */
-gchar *command_connect;
+gint UPDATE_DELAY = 5;		/* status lights update interval in Hz (1 - 20) */
+gchar *lock_file;		/* the modem lock file */
+gchar *device_name;		/* the device name eg:ppp0 */
+gchar *command_connect;		/* connection commands */
 gchar *command_disconnect;
-
-/* do we ask for confirmation? */
-gint ask_for_confirmation = TRUE;
+gint ask_for_confirmation = TRUE;	/* do we ask for confirmation? */
+gint use_ISDN = FALSE;		/* do we use ISDN? */
 
 GtkWidget *applet;
 static GtkWidget *frame;
@@ -49,6 +44,24 @@ static int confirm_dialog = FALSE;
 
 static PanelOrientType orient;
 
+static void about_cb (AppletWidget *widget, gpointer data);
+static int is_Modem_on();
+static int is_ISDN_on();
+static int is_connected();
+static void command_connect_cb( gint button, gpointer data);
+static void command_disconnect_cb( gint button, gpointer data);
+static void dial_cb();
+static void update_tooltip(int connected, int rx, int tx);
+static void redraw_display();
+static void draw_load(int rxbytes,int txbytes);
+static void draw_light(int lit,int x,int y);
+static void update_lights(int rx,int tx,int cd);
+static gint update_display();
+static void create_pixmaps();
+static void setup_colors();
+static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data);
+static gint applet_save_session(GtkWidget *widget, char *privcfgpath, char *globcfgpath);
+
 static void about_cb (AppletWidget *widget, gpointer data)
 {
 	GtkWidget *about;
@@ -71,7 +84,7 @@ static void about_cb (AppletWidget *widget, gpointer data)
 	gtk_widget_show (about);
 }
 
-static int Modem_on()
+static int is_Modem_on()
 {
 	FILE *f = 0;
 
@@ -82,6 +95,26 @@ static int Modem_on()
 	fclose(f);
 	return TRUE;
 }
+
+/* FIX ME!** this is a slot for checking if isdn is connected,
+ * add code please */
+static int is_ISDN_on()
+{
+	if (FALSE)
+		{
+		return TRUE;
+		}
+	return FALSE;
+}
+
+static int is_connected()
+{
+	if (use_ISDN)
+		return is_ISDN_on();
+	else
+		return is_Modem_on();
+}
+
 
 static void command_connect_cb( gint button, gpointer data)
 {
@@ -97,7 +130,7 @@ static void command_disconnect_cb( gint button, gpointer data)
 
 static void dial_cb()
 {
-	if (Modem_on()) {
+	if (is_connected()) {
 	  if (ask_for_confirmation) {
 	    if (confirm_dialog) return;
 	    confirm_dialog = TRUE;
@@ -268,13 +301,13 @@ static gint update_display()
 
 	load_count++;
 
-	if (Modem_on())
+	if (is_connected())
 		{
 		memset(&ifreq, 0, sizeof(ifreq));
 #ifndef __FreeBSD__
-		strcpy(ifreq.ifr_ifrn.ifrn_name, "ppp0");
+		strncpy(ifreq.ifr_ifrn.ifrn_name, device_name, IFNAMSIZ);
 #else
-		strcpy(ifreq.ifr_name, "ppp0");
+		strncpy(ifreq.ifr_name, device_name, IFNAMSIZ);
 #endif /* __FreeBSD__ */
 		ifreq.ifr_ifru.ifru_data = (caddr_t)&stats;
 #ifndef __FreeBSD__
@@ -458,9 +491,10 @@ int main (int argc, char *argv[])
 	applet_widget_init_defaults("modemlights_applet", NULL, argc, argv, 0,
 				    NULL,argv[0]);
 
-	lock_file = strdup("/var/lock/LCK..modem");
-	command_connect = strdup("pppon");
-	command_disconnect = strdup("pppoff");
+	lock_file = g_strdup("/var/lock/LCK..modem");
+	device_name = g_strdup("ppp0");
+	command_connect = g_strdup("pppon");
+	command_disconnect = g_strdup("pppoff");
 	orient = ORIENT_UP;
 
 	/* open ip socket */

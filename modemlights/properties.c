@@ -1,33 +1,42 @@
 /*#####################################################*/
-/*##           modemlights applet 0.3.1 beta         ##*/
+/*##           modemlights applet 0.3.2              ##*/
 /*#####################################################*/
 
 #include "modemlights.h"
 
-GtkWidget *propwindow = NULL;
-GtkWidget *lockfile_entry = NULL;
-GtkWidget *connect_entry = NULL;
-GtkWidget *disconnect_entry = NULL;
-GtkWidget *confirm_checkbox = NULL;
+static GtkWidget *propwindow = NULL;
+static GtkWidget *connect_entry = NULL;
+static GtkWidget *disconnect_entry = NULL;
+static GtkWidget *lockfile_entry = NULL;
+static GtkWidget *device_entry = NULL;
 
 /* temporary variables modified by the properties dialog.  they get
    compied to the permanent variables when the users selects Apply or
    Ok */
-gint P_UPDATE_DELAY = 10;
-gint P_ask_for_confirmation = TRUE;
+static gint P_UPDATE_DELAY = 10;
+static gint P_ask_for_confirmation = TRUE;
+static gint P_use_ISDN = FALSE;
 
+static void update_delay_cb( GtkWidget *widget, GtkWidget *spin );
+static void confirm_checkbox_cb( GtkWidget *widget, gpointer data );
+static void isdn_checkbox_cb( GtkWidget *widget, gpointer data );
+static void property_apply_cb( GtkWidget *widget, void *data );
+static gint property_destroy_cb( GtkWidget *widget, void *data );
 
 void property_load(char *path)
 {
 	if (lock_file) g_free(lock_file);
 	if (command_connect) g_free(command_connect);
 	if (command_disconnect) g_free(command_disconnect);
+	if (device_name) g_free(device_name);
         gnome_config_push_prefix (path);
-        UPDATE_DELAY       = gnome_config_get_int("modem/delay=10");
+        UPDATE_DELAY       = gnome_config_get_int("modem/delay=5");
 	lock_file          = gnome_config_get_string("modem/lockfile=/var/lock/LCK..modem");
 	command_connect    = gnome_config_get_string("modem/connect=pppon");
 	command_disconnect = gnome_config_get_string("modem/disconnect=pppoff");
 	ask_for_confirmation = gnome_config_get_int("modem/confirmation=1");
+	device_name          = gnome_config_get_string("modem/device=ppp0");
+        use_ISDN	   = gnome_config_get_int("modem/isdn=0");
 	gnome_config_pop_prefix ();
 }
 
@@ -39,47 +48,61 @@ void property_save(char *path)
         gnome_config_set_string("modem/connect", command_connect);
         gnome_config_set_string("modem/disconnect", command_disconnect);
         gnome_config_set_int("modem/confirmation", ask_for_confirmation);
+        gnome_config_set_string("modem/device", device_name);
+        gnome_config_set_int("modem/isdn", use_ISDN);
 	gnome_config_sync();
 	gnome_config_drop_all();
         gnome_config_pop_prefix();
 }
 
-void update_delay_cb( GtkWidget *widget, GtkWidget *spin )
+static void update_delay_cb( GtkWidget *widget, GtkWidget *spin )
 {
         P_UPDATE_DELAY = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spin));
         gnome_property_box_changed(GNOME_PROPERTY_BOX(propwindow));
 }
 
-void confirm_checkbox_cb( GtkWidget *widget, GtkWidget *spin )
+static void confirm_checkbox_cb( GtkWidget *widget, gpointer data )
 {
-  P_ask_for_confirmation = !P_ask_for_confirmation;
-  gnome_property_box_changed(GNOME_PROPERTY_BOX(propwindow));
+	P_ask_for_confirmation = GTK_TOGGLE_BUTTON (widget)->active;
+	gnome_property_box_changed(GNOME_PROPERTY_BOX(propwindow));
 }
 
-void property_apply_cb( GtkWidget *widget, void *data )
+static void isdn_checkbox_cb( GtkWidget *widget, gpointer data )
+{
+	P_use_ISDN = GTK_TOGGLE_BUTTON (widget)->active;
+	gnome_property_box_changed(GNOME_PROPERTY_BOX(propwindow));
+}
+
+static void property_apply_cb( GtkWidget *widget, void *data )
 {
 	gchar *new_text;
 
-	if (lock_file) free(lock_file);
+	if (lock_file) g_free(lock_file);
 	new_text = gtk_entry_get_text(GTK_ENTRY(lockfile_entry));
-	lock_file = strdup(new_text);
+	lock_file = g_strdup(new_text);
 
-	if (command_connect) free(command_connect);
+	if (command_connect) g_free(command_connect);
 	new_text = gtk_entry_get_text(GTK_ENTRY(connect_entry));
-	command_connect = strdup(new_text);
+	command_connect = g_strdup(new_text);
 
-	if (command_disconnect) free(command_disconnect);
+	if (command_disconnect) g_free(command_disconnect);
 	new_text = gtk_entry_get_text(GTK_ENTRY(disconnect_entry));
-	command_disconnect = strdup(new_text);
+	command_disconnect = g_strdup(new_text);
+
+	if (device_name) g_free(device_name);
+	new_text = gtk_entry_get_text(GTK_ENTRY(device_entry));
+	device_name = g_strdup(new_text);
 
         UPDATE_DELAY = P_UPDATE_DELAY;
 	ask_for_confirmation = P_ask_for_confirmation;
+	use_ISDN = P_use_ISDN;
+
 	start_callback_update();
 
 	applet_widget_sync_config(APPLET_WIDGET(applet));
 }
 
-gint property_destroy_cb( GtkWidget *widget, void *data )
+static gint property_destroy_cb( GtkWidget *widget, void *data )
 {
         propwindow = NULL;
 	return FALSE;
@@ -92,6 +115,7 @@ void property_show(AppletWidget *applet, gpointer data)
 	GtkWidget *label;
 	GtkWidget *delay_w;
 	GtkObject *delay_adj;
+	GtkWidget *checkbox;
 
 	if(propwindow)
 		{
@@ -122,23 +146,6 @@ void property_show(AppletWidget *applet, gpointer data)
 	gtk_signal_connect( GTK_OBJECT(delay_adj),"value_changed",GTK_SIGNAL_FUNC(update_delay_cb), delay_w);
         gtk_spin_button_set_update_policy( GTK_SPIN_BUTTON(delay_w),GTK_UPDATE_ALWAYS );
 	gtk_widget_show(delay_w);
-
-	/* lock file entry */
-	hbox = gtk_hbox_new(FALSE, 5);
-        gtk_box_pack_start( GTK_BOX(frame), hbox, FALSE, FALSE, 5);
-	gtk_widget_show(hbox);
-
-        label = gtk_label_new(_("Modem lock file:"));
-        gtk_box_pack_start( GTK_BOX(hbox), label, FALSE, FALSE, 5);
-	gtk_widget_show(label);
-
-	lockfile_entry = gtk_entry_new_with_max_length(255);
-	gtk_entry_set_text(GTK_ENTRY(lockfile_entry), lock_file);
-	gtk_signal_connect_object(GTK_OBJECT(lockfile_entry), "changed",
-                            GTK_SIGNAL_FUNC(gnome_property_box_changed),
-                            GTK_OBJECT(propwindow));
-        gtk_box_pack_start( GTK_BOX(hbox),lockfile_entry , TRUE, TRUE, 5);
-	gtk_widget_show(lockfile_entry);
 
 	/* connect entry */
 	hbox = gtk_hbox_new(FALSE, 5);
@@ -175,22 +182,64 @@ void property_show(AppletWidget *applet, gpointer data)
 	gtk_widget_show(disconnect_entry);
 
 	/* confirmation checkbox */
-	confirm_checkbox = gtk_check_button_new_with_label(_("Confirm connection?"));
-	if (ask_for_confirmation) {
-	  gtk_toggle_button_set_state (GTK_TOGGLE_BUTTON (confirm_checkbox),
-				       TRUE);
-	} else {
-	  gtk_toggle_button_set_state (GTK_TOGGLE_BUTTON (confirm_checkbox),
-				       FALSE);
-	}
-	gtk_signal_connect( GTK_OBJECT(confirm_checkbox), "toggled",
-			    GTK_SIGNAL_FUNC(confirm_checkbox_cb),
-			    confirm_checkbox);
-        gtk_box_pack_start( GTK_BOX(frame), confirm_checkbox, FALSE, FALSE, 5);
-	gtk_widget_show(confirm_checkbox);
-
+	checkbox = gtk_check_button_new_with_label(_("Confirm connection"));
+	gtk_toggle_button_set_state (GTK_TOGGLE_BUTTON (checkbox), ask_for_confirmation);
+	gtk_signal_connect( GTK_OBJECT(checkbox), "toggled",
+			    GTK_SIGNAL_FUNC(confirm_checkbox_cb), NULL);
+        gtk_box_pack_start( GTK_BOX(frame), checkbox, FALSE, FALSE, 5);
+	gtk_widget_show(checkbox);
 
         label = gtk_label_new(_("General"));
+        gtk_widget_show(frame);
+        gnome_property_box_append_page( GNOME_PROPERTY_BOX(propwindow),frame ,label);
+
+	/* advanced settings */
+
+	frame = gtk_vbox_new(FALSE, 5);
+
+	/* lock file entry */
+	hbox = gtk_hbox_new(FALSE, 5);
+        gtk_box_pack_start( GTK_BOX(frame), hbox, FALSE, FALSE, 5);
+	gtk_widget_show(hbox);
+
+        label = gtk_label_new(_("Modem lock file:"));
+        gtk_box_pack_start( GTK_BOX(hbox), label, FALSE, FALSE, 5);
+	gtk_widget_show(label);
+
+	lockfile_entry = gtk_entry_new_with_max_length(255);
+	gtk_entry_set_text(GTK_ENTRY(lockfile_entry), lock_file);
+	gtk_signal_connect_object(GTK_OBJECT(lockfile_entry), "changed",
+                            GTK_SIGNAL_FUNC(gnome_property_box_changed),
+                            GTK_OBJECT(propwindow));
+        gtk_box_pack_start( GTK_BOX(hbox),lockfile_entry , TRUE, TRUE, 5);
+	gtk_widget_show(lockfile_entry);
+
+	/* device entry */
+	hbox = gtk_hbox_new(FALSE, 5);
+        gtk_box_pack_start( GTK_BOX(frame), hbox, FALSE, FALSE, 5);
+	gtk_widget_show(hbox);
+
+        label = gtk_label_new(_("Device:"));
+        gtk_box_pack_start( GTK_BOX(hbox), label, FALSE, FALSE, 5);
+	gtk_widget_show(label);
+
+	device_entry = gtk_entry_new_with_max_length(16);
+	gtk_entry_set_text(GTK_ENTRY(device_entry), device_name);
+	gtk_signal_connect_object(GTK_OBJECT(device_entry), "changed",
+                            GTK_SIGNAL_FUNC(gnome_property_box_changed),
+                            GTK_OBJECT(propwindow));
+        gtk_box_pack_start( GTK_BOX(hbox),device_entry , TRUE, TRUE, 5);
+	gtk_widget_show(device_entry);
+
+	/* ISDN checkbox */
+	checkbox = gtk_check_button_new_with_label(_("Use ISDN"));
+	gtk_toggle_button_set_state (GTK_TOGGLE_BUTTON (checkbox), use_ISDN);
+	gtk_signal_connect( GTK_OBJECT(checkbox), "toggled",
+			    GTK_SIGNAL_FUNC(isdn_checkbox_cb), NULL);
+        gtk_box_pack_start( GTK_BOX(frame), checkbox, FALSE, FALSE, 5);
+	gtk_widget_show(checkbox);
+
+        label = gtk_label_new(_("Advanced"));
         gtk_widget_show(frame);
         gnome_property_box_append_page( GNOME_PROPERTY_BOX(propwindow),frame ,label);
 
