@@ -1136,10 +1136,11 @@ static gint updateOutput(gpointer data)
 		hbox = gtk_hbox_new(FALSE,5);
 		vbox = gtk_vbox_new(FALSE,5);
 
-		label = gtk_label_new(_("New Symbol:"));
+		label = gtk_label_new_with_mnemonic(_("_New Symbol:"));
 		gtk_box_pack_start(GTK_BOX(hbox),label,TRUE,TRUE,0);
 
 		entry = gtk_entry_new();
+		gtk_label_set_mnemonic_widget (GTK_LABEL (label), entry);
 		g_object_set_data(G_OBJECT(entry),"list",(gpointer)list);
 		gtk_box_pack_start(GTK_BOX(hbox),entry,TRUE,TRUE,0);
 		g_signal_connect (G_OBJECT (entry), "activate",
@@ -1205,7 +1206,7 @@ static gint updateOutput(gpointer data)
 		vbox = gtk_vbox_new (FALSE, 4);
 		gtk_container_set_border_width (GTK_CONTAINER (vbox), 8);
 		
-		button = gtk_check_button_new_with_label (_("Use HTTP proxy"));
+		button = gtk_check_button_new_with_mnemonic (_("_Use HTTP proxy"));
     		gtk_box_pack_start (GTK_BOX (vbox), button, 
     				    FALSE, FALSE, 0);
     		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), use_proxy);
@@ -1215,11 +1216,13 @@ static gint updateOutput(gpointer data)
     		hbox = gtk_hbox_new (FALSE, 2);
     		gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, FALSE, 0);
     
-    		label = gtk_label_new (_("Location :"));
+    		label = gtk_label_new_with_mnemonic (_("_Location :"));
     		gtk_box_pack_start (GTK_BOX (hbox), label, 
     			    FALSE, FALSE, 0);
     
     		stockdata->proxy_url_entry = gtk_entry_new ();
+    		gtk_label_set_mnemonic_widget (GTK_LABEL (label), 
+    					       stockdata->proxy_url_entry);
     		gtk_widget_show (stockdata->proxy_url_entry);
     		gtk_box_pack_start (GTK_BOX (hbox), stockdata->proxy_url_entry, 
     			    FALSE, FALSE, 0);
@@ -1229,18 +1232,20 @@ static gint updateOutput(gpointer data)
     		hbox = gtk_hbox_new (FALSE, 2);
     		gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, FALSE, 0);
     
-    		label = gtk_label_new (_("Port :"));
+    		label = gtk_label_new_with_mnemonic (_("P_ort :"));
     		gtk_widget_show (label);
     		gtk_box_pack_start (GTK_BOX (hbox), label, 
     			    FALSE, FALSE, 0);
     			
     		stockdata->proxy_port_entry = gtk_entry_new ();
+    		gtk_label_set_mnemonic_widget (GTK_LABEL (label), 
+    					       stockdata->proxy_port_entry);
     		gtk_box_pack_start (GTK_BOX (hbox), stockdata->proxy_port_entry, 
     				    FALSE, FALSE, 0);
     		g_signal_connect (G_OBJECT (stockdata->proxy_port_entry), "focus_out_event",
     		          G_CALLBACK (proxy_port_changed), stockdata);
     
-    		stockdata->proxy_auth_button = gtk_check_button_new_with_label (_("Proxy requires a uername and password"));
+    		stockdata->proxy_auth_button = gtk_check_button_new_with_mnemonic (_("Pro_xy requires a uername and password"));
     		gtk_box_pack_start (GTK_BOX (vbox), stockdata->proxy_auth_button, 
     				    FALSE, FALSE, 0);
     		gtk_toggle_button_set_active 
@@ -1251,11 +1256,13 @@ static gint updateOutput(gpointer data)
     		hbox = gtk_hbox_new (FALSE, 2);
     		gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, FALSE, 0);
     
-    		label = gtk_label_new (_("Username:"));
+    		label = gtk_label_new_with_mnemonic (_("Us_ername:"));
     		gtk_box_pack_start (GTK_BOX (hbox), label, 
     			    FALSE, FALSE, 0);
     
     		stockdata->proxy_user_entry = gtk_entry_new ();
+    		gtk_label_set_mnemonic_widget (GTK_LABEL (label),
+    					       stockdata->proxy_user_entry);
     		gtk_box_pack_start (GTK_BOX (hbox), stockdata->proxy_user_entry, 
     			    FALSE, FALSE, 0);
     		g_signal_connect (G_OBJECT (stockdata->proxy_user_entry), "focus_out_event",
@@ -1264,10 +1271,12 @@ static gint updateOutput(gpointer data)
     		hbox = gtk_hbox_new (FALSE, 2);
     		gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, FALSE, 0);
     
-    		label = gtk_label_new (_("Password:"));
+    		label = gtk_label_new_with_mnemonic (_("Pass_word:"));
     		gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
 
     		stockdata->proxy_passwd_entry = gtk_entry_new ();
+    		gtk_label_set_mnemonic_widget (GTK_LABEL (label),
+    					       stockdata->proxy_passwd_entry);
     		gtk_entry_set_visibility (GTK_ENTRY (stockdata->proxy_passwd_entry), FALSE);
     		gtk_box_pack_start (GTK_BOX (hbox), stockdata->proxy_passwd_entry, 
     			    FALSE, FALSE, 0);
@@ -1333,7 +1342,7 @@ static gint updateOutput(gpointer data)
 			return;
 		}
 
-		stockdata->pb = gtk_dialog_new_with_buttons (_("Stock Ticker Properties"), 
+		stockdata->pb = gtk_dialog_new_with_buttons (_("Stock Ticker Preferences"), 
 							     NULL,
 						  	     GTK_DIALOG_DESTROY_WITH_PARENT,
 						             GTK_STOCK_CLOSE, 
@@ -1354,10 +1363,11 @@ static gint updateOutput(gpointer data)
 		gtk_container_set_border_width(GTK_CONTAINER(vbox), GNOME_PAD);
 		gtk_container_set_border_width(GTK_CONTAINER(vbox2), GNOME_PAD);
 
-		timeout_label = gtk_label_new(_("Update Frequency in minutes:"));
+		timeout_label = gtk_label_new_with_mnemonic(_("Update Fre_quency in minutes:"));
 		timeout_a = gtk_adjustment_new( stockdata->props.timeout, 0.5, 128, 
 					       1, 8, 8 );
 		timeout_c  = gtk_spin_button_new( GTK_ADJUSTMENT(timeout_a), 1, 0 );
+		gtk_label_set_mnemonic_widget (GTK_LABEL (timeout_label), timeout_c);
 		gtk_widget_set_usize(timeout_c,60,-1);
 
 		gtk_box_pack_start_defaults( GTK_BOX(panel2), timeout_label );
@@ -1380,16 +1390,16 @@ static gint updateOutput(gpointer data)
 					  "changed",GTK_SIGNAL_FUNC(changed_cb),
 					  GTK_OBJECT(stockdata->pb));
 
-		check = gtk_check_button_new_with_label(_("Display only symbols and price"));
+		check = gtk_check_button_new_with_mnemonic(_("Displa_y only symbols and price"));
 		g_signal_connect (G_OBJECT (check), "toggled",
 				  G_CALLBACK (output_toggled), stockdata);
-		check2 = gtk_check_button_new_with_label(_("Scroll left to right"));
+		check2 = gtk_check_button_new_with_mnemonic(_("Scroll _left to right"));
 		g_signal_connect (G_OBJECT (check2), "toggled",
 				  G_CALLBACK (rtl_toggled), stockdata);
-		check3 = gtk_check_button_new_with_label(_("Display arrows instead of -/+"));
+		check3 = gtk_check_button_new_with_mnemonic(_("Display a_rrows instead of -/+"));
 		g_signal_connect (G_OBJECT (check3), "toggled",
 				  G_CALLBACK (arrows_toggled), stockdata);
-		check4 = gtk_check_button_new_with_label(_("Enable scroll buttons"));
+		check4 = gtk_check_button_new_with_mnemonic(_("_Enable scroll buttons"));
 		g_signal_connect (G_OBJECT (check4), "toggled",
 				  G_CALLBACK (scroll_toggled), stockdata);
 
@@ -1415,8 +1425,9 @@ static gint updateOutput(gpointer data)
 							TRUE);
 
 		/* COLOR */
-		upLabel = gtk_label_new(_("+ Color"));
+		upLabel = gtk_label_new_with_mnemonic(_("+ C_olor"));
 		upColor = gnome_color_picker_new();
+		gtk_label_set_mnemonic_widget (GTK_LABEL (upLabel), upColor);
 	
 		sscanf( stockdata->props.ucolor, "#%02x%02x%02x", &ur,&ug,&ub );
 	
@@ -1432,8 +1443,9 @@ static gint updateOutput(gpointer data)
 		gtk_box_pack_start_defaults( GTK_BOX(hbox3), upColor );
 		gtk_box_pack_start_defaults(GTK_BOX(vbox3),hbox3);
 
-		downLabel = gtk_label_new(_("- Color"));
+		downLabel = gtk_label_new_with_mnemonic(_("- Colo_r"));
 		downColor = gnome_color_picker_new();
+		gtk_label_set_mnemonic_widget (GTK_LABEL (downLabel), downColor);
 
 		sscanf( stockdata->props.dcolor, "#%02x%02x%02x", &dr,&dg,&db );
 
@@ -1452,9 +1464,10 @@ static gint updateOutput(gpointer data)
                 /* For FONTS */
 		vbox3 = gtk_vbox_new(FALSE, 5); 
 		hbox3 = gtk_hbox_new(FALSE, 5);
-		label5 = gtk_label_new(_("Stock Symbol:"));
+		label5 = gtk_label_new_with_mnemonic(_("Stock Sy_mbol:"));
 
 		font_picker = gnome_font_picker_new ();
+		gtk_label_set_mnemonic_widget (GTK_LABEL (label5), font_picker);
 		gnome_font_picker_set_font_name (GNOME_FONT_PICKER (font_picker),
 						 stockdata->props.font);
 		gtk_box_pack_start_defaults(GTK_BOX(hbox3),label5);
@@ -1464,8 +1477,9 @@ static gint updateOutput(gpointer data)
                 		  G_CALLBACK (font_cb), stockdata);
                                 
 		hbox3 = gtk_hbox_new(FALSE, 5);
-		label5 = gtk_label_new(_("Stock Change:"));
+		label5 = gtk_label_new_with_mnemonic(_("Stock C_hange:"));
                 font_picker = gnome_font_picker_new ();
+                gtk_label_set_mnemonic_widget (GTK_LABEL (label5), font_picker);
                 gnome_font_picker_set_font_name (GNOME_FONT_PICKER (font_picker),
 						 stockdata->props.font2);
                 gtk_box_pack_start_defaults(GTK_BOX(hbox3),label5);
