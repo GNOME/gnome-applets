@@ -58,7 +58,7 @@ enum {
  NUM_COLS
 };
 
-GtkWidget* 
+static GtkWidget* 
 tree_create (GtkTreeStore *model)
 {
   GList *sets = NULL;
@@ -304,14 +304,35 @@ addwadd_cb (GtkWidget * addbutton, GkbPropertyBoxInfo * pbi)
   return FALSE;
 }
 
-static gint
-wdestroy_cb (GtkWidget * closebutton, GtkWidget * window)
+static void
+row_activated_cb (GtkTreeView *tree, GtkTreePath *path, 
+		  GtkTreeViewColumn *column, gpointer data)
 {
-  if (window == gkb->addwindow)
-    gkb->addwindow = NULL;
-  gtk_widget_destroy (window);
+  GkbPropertyBoxInfo * pbi = data;
+  
+  addwadd_cb (NULL, pbi);
+  
+}
 
-  return FALSE;
+static void
+response_cb (GtkDialog *dialog, gint id, gpointer data)
+{
+  GkbPropertyBoxInfo * pbi = data;
+
+  switch (id) {
+  case 100:
+    /* Add response */
+    addwadd_cb (NULL, pbi);
+    break;
+  case GTK_RESPONSE_HELP:
+    addhelp_cb (NULL, NULL);
+    break;
+  default:
+    gtk_widget_destroy (GTK_WIDGET (dialog));
+    gkb->addwindow = NULL;
+    break;
+  }
+ 
 }
 
 
@@ -321,29 +342,26 @@ gkb_prop_map_add (GkbPropertyBoxInfo * pbi)
   GtkWidget *vbox1;
   GtkWidget *tree1;
   GtkWidget *scrolled1;
-  GtkWidget *hbuttonbox1;
   GtkTreeSelection *selection;
-  GtkWidget *button4;
-  GtkWidget *button5;
-  GtkWidget *button6;
-
+ 
   if (gkb->addwindow)
     {
-      gtk_widget_show_now (gkb->addwindow);
-      gdk_window_raise (gkb->addwindow->window);
+      gtk_window_present (GTK_WINDOW (gkb->addwindow));
       return;
     }
 
-  gkb->addwindow = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_window_set_modal (GTK_WINDOW (gkb->addwindow), TRUE);
+  gkb->addwindow = gtk_dialog_new_with_buttons (_("Select layout"), NULL,
+						GTK_DIALOG_DESTROY_WITH_PARENT,
+						GTK_STOCK_HELP, GTK_RESPONSE_HELP,
+						GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
+						GTK_STOCK_ADD, 100,
+						NULL);
   gtk_object_set_data (GTK_OBJECT (gkb->addwindow), "addwindow",
 		       gkb->addwindow);
-  gtk_window_set_title (GTK_WINDOW (gkb->addwindow), _("Select layout"));
-
-  vbox1 = gtk_vbox_new (FALSE, 0);
+  
+  vbox1 = GTK_DIALOG (gkb->addwindow)->vbox;
   gtk_widget_show (vbox1);
-  gtk_container_add (GTK_CONTAINER (gkb->addwindow), vbox1);
-
+  
   scrolled1 = gtk_scrolled_window_new (NULL, NULL);
   gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled1),
 				  GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
@@ -362,30 +380,7 @@ gkb_prop_map_add (GkbPropertyBoxInfo * pbi)
   gtk_scrolled_window_add_with_viewport (GTK_SCROLLED_WINDOW (scrolled1),
 					 tree1);
 
-  hbuttonbox1 = gtk_hbutton_box_new ();
-  gtk_widget_show (hbuttonbox1);
-  gtk_box_pack_start (GTK_BOX (vbox1), hbuttonbox1, FALSE, TRUE, 0);
-  gtk_button_box_set_layout (GTK_BUTTON_BOX (hbuttonbox1),
-			     GTK_BUTTONBOX_SPREAD);
-
-  button4 = gtk_button_new_from_stock (GTK_STOCK_ADD);
-
-  gtk_widget_show (button4);
-  GTK_WIDGET_SET_FLAGS (button4, GTK_CAN_DEFAULT);
-
-  button5 = gtk_button_new_from_stock (GNOME_STOCK_BUTTON_CLOSE);
-  gtk_widget_show (button5);
-  GTK_WIDGET_SET_FLAGS (button5, GTK_CAN_DEFAULT);
-
-  button6 = gtk_button_new_from_stock (GNOME_STOCK_BUTTON_HELP);
-  gtk_widget_show (button6);
-  GTK_WIDGET_SET_FLAGS (button6, GTK_CAN_DEFAULT);
-
-  /* ability suxx :) */
-  gtk_container_add (GTK_CONTAINER (hbuttonbox1), button6);
-  gtk_container_add (GTK_CONTAINER (hbuttonbox1), button5);
-  gtk_container_add (GTK_CONTAINER (hbuttonbox1), button4);
-
+  
   selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (tree1));
 
   gtk_tree_selection_set_mode (GTK_TREE_SELECTION (selection),
@@ -393,15 +388,13 @@ gkb_prop_map_add (GkbPropertyBoxInfo * pbi)
 
   g_signal_connect (selection, "changed",
 		      G_CALLBACK (preadd_cb), pbi);
-  g_signal_connect (button4, "clicked",
-		      G_CALLBACK (addwadd_cb), pbi);
-  g_signal_connect (button5, "clicked",
-		      G_CALLBACK (wdestroy_cb),
-		      GTK_OBJECT (gkb->addwindow));
-  g_signal_connect (button6, "clicked",
-		      G_CALLBACK (addhelp_cb), 
-	              GTK_OBJECT (tree1));
-
+  /* Signal for double clicks or user pressing space */
+  g_signal_connect (G_OBJECT (tree1), "row_activated",
+                    G_CALLBACK (row_activated_cb), pbi);
+       
+  g_signal_connect (G_OBJECT (gkb->addwindow), "response",
+  		    G_CALLBACK (response_cb), pbi);
+  		    
   gtk_widget_show (gkb->addwindow);
 
   return;
