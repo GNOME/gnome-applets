@@ -6,12 +6,13 @@
 #include <gnome.h>
 #include <applet-widget.h>
 
-#include "webcontrol.h"
-
 #define B_LIST_NAME(b) ((browser *) b->data)->name
 #define B_LIST_COMMAND(b) ((browser *) b->data)->command
 #define B_LIST_NEWWIN(b) ((browser *) b->data)->newwin
 #define B_LIST_NO_NEWWIN(b) ((browser *) b->data)->no_newwin
+
+#define WC_CFG_OP_ADD 0
+#define WC_CFG_OP_EDIT 1
 
 typedef struct _browser
 {
@@ -20,6 +21,12 @@ typedef struct _browser
 	gchar *newwin;
 	gchar *no_newwin;
 } browser;
+
+typedef struct _cfg_op
+{
+	gint operation;
+	GtkWidget *list;
+} cfg_op;
 
 typedef struct _webcontrol_properties 
 {

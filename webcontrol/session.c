@@ -210,7 +210,7 @@ wc_save_session (GtkWidget *w, gpointer data)
 		g_free (b_key);
 	}
 
-	gnome_config_sync_file ("/webcontrol_applet/");
+	gnome_config_sync ();
 
 	/* you need to use the drop_all here since we're all writing to
 	   one file, without it, things might not work too well */

@@ -2,6 +2,7 @@
 
 #include "properties.h"
 #include "webcontrol.h"
+#include "session.h"
 
 webcontrol_properties props;
 
@@ -100,6 +101,7 @@ browser_list_row_selected (GtkCList *list, gint row, gint column,
 	return;
 }
 
+
 static void
 entry_changed_int (GtkWidget *entry, int *data)
 {
@@ -147,6 +149,217 @@ fill_browser_list (GtkCList *list)
 }
 
 
+static void
+reply_cb (gint button, gpointer data)
+{
+	GtkWidget *list;
+	GSList *curr_b;
+	gint row;
+	gchar *path;
+
+	list = (GtkWidget *) data;
+
+	if (button == 0)
+	{
+		if (GTK_CLIST (list)->selection)
+		{
+			row = (gint) GTK_CLIST (list)->selection->data;
+			curr_b = (GSList *) gtk_clist_get_row_data (GTK_CLIST (list), row);
+		}
+		else
+			return;
+            
+		path = g_strjoin (" ", "webcontrol_applet/Browser:", 
+				     B_LIST_NAME (curr_b), NULL);
+		gnome_config_clean_section (path);
+
+		if (curr_b == props.curr_browser)
+			props.curr_browser = props.browsers;
+
+		props.browsers = g_slist_remove (props.browsers, 	
+						 (gpointer) curr_b->data);
+
+		if (props.browsers == NULL)
+		{
+			props.curr_browser = NULL;
+			props.use_mime = TRUE;
+		}
+
+		gtk_clist_clear (GTK_CLIST (list));
+		fill_browser_list (GTK_CLIST (list));
+		wc_save_session (NULL, NULL);	
+
+		g_free (path);
+	}
+	
+	return;	
+
+}
+
+
+/* callback to remove a browser */
+static void
+remove_browser_cb (GtkWidget *b, gpointer data)
+{
+	gnome_question_dialog ("Are you sure you want to remove this browser?",
+			       reply_cb, data);      
+}
+
+
+/* callback to open browser config box */
+static void
+open_browser_config (GtkWidget *b, gpointer user_data)
+{
+	browser *new_b;
+	GtkWidget *browser_edit;
+	gint row, result;
+	GSList *curr_b;
+	gchar *t, *path;
+	GtkWidget *hbox;
+	GtkWidget *label;
+	GtkWidget *b_name_entry;
+	GtkWidget *b_command_entry;
+	GtkWidget *b_newwin_entry;
+	GtkWidget *b_no_newwin_entry;
+	cfg_op *op;
+
+	op = (cfg_op *) user_data;
+
+	if (op->operation == WC_CFG_OP_EDIT)
+	{
+		if (GTK_CLIST (op->list)->selection)
+		{
+			row = (gint) GTK_CLIST (op->list)->selection->data;
+			curr_b = (GSList *) gtk_clist_get_row_data (GTK_CLIST (op->list), row);
+		}
+		else
+			return;
+		
+	}
+	else
+	{
+		curr_b = NULL;
+	}
+				
+	browser_edit = gnome_dialog_new (_("Configure Browser"), GNOME_STOCK_BUTTON_OK,
+					 GNOME_STOCK_BUTTON_CANCEL, NULL);
+	gnome_dialog_set_close (GNOME_DIALOG (browser_edit), TRUE);
+	gnome_dialog_close_hides (GNOME_DIALOG (browser_edit), TRUE);
+
+	hbox = gtk_hbox_new (FALSE, 2);
+	gtk_widget_show (hbox);
+
+	label = gtk_label_new (_("Browser Name:"));
+	gtk_widget_show (label);
+	gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 2);
+	
+	b_name_entry = gtk_entry_new ();
+	if (curr_b && B_LIST_NAME (curr_b))
+		gtk_entry_set_text (GTK_ENTRY (b_name_entry),
+				    B_LIST_NAME (curr_b));
+	gtk_widget_show (b_name_entry);
+	gtk_box_pack_start (GTK_BOX (hbox), b_name_entry, TRUE, TRUE, 2);
+
+	gtk_box_pack_start (GTK_BOX (GNOME_DIALOG (browser_edit)->vbox), hbox, 
+			    FALSE, FALSE, 2);
+
+	hbox = gtk_hbox_new (FALSE, 2);
+	gtk_widget_show (hbox);
+
+	label = gtk_label_new (_("Browser Command:"));
+	gtk_widget_show (label);
+	gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 2);
+	
+	b_command_entry = gtk_entry_new ();
+	if (curr_b && B_LIST_COMMAND (curr_b))
+		gtk_entry_set_text (GTK_ENTRY (b_command_entry),
+				    B_LIST_COMMAND (curr_b));
+	gtk_widget_show (b_command_entry);
+	gtk_box_pack_start (GTK_BOX (hbox), b_command_entry, TRUE, TRUE, 2);
+
+	gtk_box_pack_start (GTK_BOX (GNOME_DIALOG (browser_edit)->vbox), hbox, 
+			    FALSE, FALSE, 2);
+
+	hbox = gtk_hbox_new (FALSE, 2);
+	gtk_widget_show (hbox);
+
+	label = gtk_label_new (_("New Window Option:"));
+	gtk_widget_show (label);
+	gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 2);
+	
+	b_newwin_entry = gtk_entry_new ();
+	if (curr_b && B_LIST_NEWWIN (curr_b))
+		gtk_entry_set_text (GTK_ENTRY (b_newwin_entry),
+				    B_LIST_NEWWIN (curr_b));
+	gtk_widget_show (b_newwin_entry);
+	gtk_box_pack_start (GTK_BOX (hbox), b_newwin_entry, TRUE, TRUE, 2);
+
+	gtk_box_pack_start (GTK_BOX (GNOME_DIALOG (browser_edit)->vbox), hbox, 
+			    FALSE, FALSE, 2);
+
+	hbox = gtk_hbox_new (FALSE, 2);
+	gtk_widget_show (hbox);
+
+	label = gtk_label_new (_("No New Window Option:"));
+	gtk_widget_show (label);
+	gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 2);
+	
+	b_no_newwin_entry = gtk_entry_new ();
+	if (curr_b && B_LIST_NO_NEWWIN (curr_b))
+		gtk_entry_set_text (GTK_ENTRY (b_no_newwin_entry),
+				    B_LIST_NO_NEWWIN (curr_b));
+	gtk_widget_show (b_no_newwin_entry);
+	gtk_box_pack_start (GTK_BOX (hbox), b_no_newwin_entry, TRUE, TRUE, 2);
+
+	gtk_box_pack_start (GTK_BOX (GNOME_DIALOG (browser_edit)->vbox), hbox, 
+			    FALSE, FALSE, 2);
+
+	result = gnome_dialog_run (GNOME_DIALOG (browser_edit));
+
+	if (result == 0) /* OK has been hit */
+	{
+		if (curr_b)
+		{
+			path = g_strjoin (" ", "webcontrol_applet/Browser:", 
+					  B_LIST_NAME (curr_b), NULL);
+			gnome_config_clean_section (path);
+
+			t = gtk_editable_get_chars (GTK_EDITABLE (b_name_entry), 0, -1);
+			B_LIST_NAME (curr_b) = g_strdup (t);
+			t = gtk_editable_get_chars (GTK_EDITABLE (b_command_entry), 0, -1);
+			B_LIST_COMMAND (curr_b) = g_strdup (t);
+			t = gtk_editable_get_chars (GTK_EDITABLE (b_newwin_entry), 0, -1);
+			B_LIST_NEWWIN (curr_b) = g_strdup (t);
+			t = gtk_editable_get_chars (GTK_EDITABLE (b_no_newwin_entry), 0, -1);
+			B_LIST_NO_NEWWIN (curr_b) = g_strdup (t);			
+
+			g_free (path);
+		}
+		else
+		{
+			new_b = (browser *) g_malloc (sizeof (browser));
+			t = gtk_editable_get_chars (GTK_EDITABLE (b_name_entry), 0, -1);
+			new_b->name = g_strdup (t);
+			t = gtk_editable_get_chars (GTK_EDITABLE (b_command_entry), 0, -1);
+			new_b->command = g_strdup (t);
+			t = gtk_editable_get_chars (GTK_EDITABLE (b_newwin_entry), 0, -1);
+			new_b->newwin = g_strdup (t);
+			t = gtk_editable_get_chars (GTK_EDITABLE (b_no_newwin_entry), 0, -1);
+			new_b->no_newwin = g_strdup (t);
+			props.browsers = g_slist_append (props.browsers, (gpointer) new_b);
+		}
+
+		gtk_clist_clear (GTK_CLIST (op->list));
+		fill_browser_list (GTK_CLIST (op->list));
+	}
+	   
+	gtk_widget_destroy (browser_edit);
+
+	/* save the changes */
+	wc_save_session (NULL, NULL);
+}
+
+
 extern void
 properties_box (AppletWidget *widget, gpointer data)
 {
@@ -166,6 +379,8 @@ properties_box (AppletWidget *widget, gpointer data)
 	GtkWidget *browser_list;
 	GSList *url_act_group;
 	char str_t[10];
+	static cfg_op *add_op = NULL;
+	static cfg_op *edit_op = NULL;
 
 	/* Stop the property box from being opened multiple times */
 	if (pb != NULL)
@@ -340,19 +555,46 @@ properties_box (AppletWidget *widget, gpointer data)
 
 	gtk_box_pack_start (GTK_BOX (hbox), sw, FALSE, FALSE, 2);
 
+	/* set up parameters for browser config callbacks */
+	if (!add_op && !edit_op)
+	{
+		add_op = g_malloc (sizeof (cfg_op));
+		edit_op = g_malloc (sizeof (cfg_op));
+		add_op->operation = WC_CFG_OP_ADD;
+		edit_op->operation = WC_CFG_OP_EDIT;
+	}
+
+	add_op->list = browser_list;
+	edit_op->list = browser_list;
+
 	vbox3 = gtk_vbox_new (FALSE, GNOME_PAD);
 	gtk_widget_show (vbox3);
 
 	button = gtk_button_new_with_label (_("Add"));
 	gtk_widget_show (button);
+
+	gtk_signal_connect (GTK_OBJECT (button), "clicked",
+			    GTK_SIGNAL_FUNC (open_browser_config),
+			    (gpointer) add_op);
+
 	gtk_box_pack_start (GTK_BOX (vbox3), button, FALSE, FALSE, 2);
 
 	button = gtk_button_new_with_label (_("Edit"));
 	gtk_widget_show (button);
+
+	gtk_signal_connect (GTK_OBJECT (button), "clicked",
+			    GTK_SIGNAL_FUNC (open_browser_config),
+			    (gpointer) edit_op);
+
 	gtk_box_pack_start (GTK_BOX (vbox3), button, FALSE, FALSE, 2);
 
 	button = gtk_button_new_with_label (_("Remove"));
 	gtk_widget_show (button);
+
+	gtk_signal_connect (GTK_OBJECT (button), "clicked",
+			    GTK_SIGNAL_FUNC (remove_browser_cb),
+			    (gpointer) browser_list);
+
 	gtk_box_pack_start (GTK_BOX (vbox3), button, FALSE, FALSE, 2);
 
 	gtk_box_pack_start (GTK_BOX (hbox), vbox3, FALSE, FALSE, 10);

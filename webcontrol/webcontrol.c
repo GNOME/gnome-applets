@@ -110,11 +110,6 @@ open_url (gchar *url)
 	command = g_ptr_array_new ();
 	build_browser_command (command, url);
 
-	g_print ("length=%d\n", command->len);
-	for (status = 0; status < command->len; status++)
-		g_print ("%s ", (char *) command->pdata[status]);
-	g_print ("\n");
-
 	status = gnome_execute_async (NULL, command->len, (char **) command->pdata);
 	
 	if (status == -1)
