@@ -172,7 +172,7 @@ void setup()
         button = gtk_toggle_button_new_with_label(ws_name);
         button_list = g_list_append(button_list, button);
         gtk_signal_connect(GTK_OBJECT(button), "clicked",
-                           GTK_SIGNAL_FUNC(switch_cb), (int*)i);
+                           GTK_SIGNAL_FUNC(switch_cb), GINT_TO_POINTER (i));
         gtk_box_pack_start(GTK_BOX(hb), button, TRUE, TRUE, 0);
         gtk_widget_show(button);
     }
@@ -188,7 +188,7 @@ void setup()
         button = gtk_toggle_button_new_with_label((gchar*)(workspace_list->data));
         button_list = g_list_append(button_list, button);
         gtk_signal_connect(GTK_OBJECT(button), "clicked",
-                           GTK_SIGNAL_FUNC(switch_cb), (int*)i);
+                           GTK_SIGNAL_FUNC(switch_cb), GINT_TO_POINTER (i));
         gtk_box_pack_start(GTK_BOX(hb), button, TRUE, TRUE, 0);
         gtk_widget_show(button);
     }
@@ -199,7 +199,7 @@ void setup()
         gtk_box_pack_start(GTK_BOX(hb), label, TRUE, TRUE, 0);
         button_list = g_list_append(button_list, button);
         gtk_signal_connect(GTK_OBJECT(button), "clicked",
-                           GTK_SIGNAL_FUNC(switch_cb), (int*)i);
+                           GTK_SIGNAL_FUNC(switch_cb), GINT_TO_POINTER (i));
         gtk_widget_show(label);
     }
 
@@ -238,7 +238,7 @@ void switch_cb(GtkWidget *widget, gpointer data)
     gint tmp_ws;
 
     tmp_ws = get_current_workspace();
-    button_num = (int)data;
+    button_num = GPOINTER_TO_INT (data);
     if(GTK_TOGGLE_BUTTON(widget)->active)
     {
         if(button_num != tmp_ws)

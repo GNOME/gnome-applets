@@ -1283,7 +1283,7 @@ desktop_cb_button_down(GtkWidget * widget, GdkEventButton *event)
   gint desk, selm, button;
   
   button = event->button;  
-  desk = (gint)gtk_object_get_data(GTK_OBJECT(widget), "desktop");
+  desk = GPOINTER_TO_INT (gtk_object_get_data(GTK_OBJECT(widget), "desktop"));
   
   if (button == 1)
     gnome_win_hints_set_current_workspace(desk);
@@ -1295,7 +1295,7 @@ desktop_cb_button_up(GtkWidget * widget, GdkEventButton *event)
   gint desk, selm, button;
   
   button = event->button;  
-  desk = (gint)gtk_object_get_data(GTK_OBJECT(widget), "desktop");
+  desk = GPOINTER_TO_INT (gtk_object_get_data(GTK_OBJECT(widget), "desktop"));
 }
 
 void
@@ -1315,8 +1315,8 @@ desktop_cb_redraw(GtkWidget *widget, gpointer data)
     return;
   if (!(show_pager))
     return;
-  desk = (gint)gtk_object_get_data(GTK_OBJECT(widget), "desktop");
-  sel = (gint)gtk_object_get_data(GTK_OBJECT(widget), "select");
+  desk = GPOINTER_TO_INT (gtk_object_get_data(GTK_OBJECT(widget), "desktop"));
+  sel = GPOINTER_TO_INT (gtk_object_get_data(GTK_OBJECT(widget), "select"));
   w = widget->allocation.width - 4;
   h = widget->allocation.height - 4;
   s = widget->style;
@@ -1359,7 +1359,7 @@ make_desktop_pane(gint desktop, gint width, gint height)
   
   area = gtk_drawing_area_new();
   gtk_drawing_area_size(GTK_DRAWING_AREA(area), width, height);
-  gtk_object_set_data(GTK_OBJECT(area), "desktop", (gpointer)desktop);
+  gtk_object_set_data(GTK_OBJECT(area), "desktop", GINT_TO_POINTER (desktop));
   gtk_object_set_data(GTK_OBJECT(area), "select", (gpointer)0);
   gtk_widget_set_events(area, GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK |
 			GDK_EXPOSURE_MASK | GDK_ENTER_NOTIFY_MASK |
