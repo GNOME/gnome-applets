@@ -263,6 +263,8 @@ gnome_volume_applet_setup (GnomeVolumeApplet *applet,
 			    applet->track->max_volume,
 			    (page / 5 > 0) ? page / 5 : 1,
 			    page, 0);
+  gnome_volume_applet_orientation (PANEL_APPLET (applet),
+				   panel_applet_get_orient (PANEL_APPLET (applet)));
   gnome_volume_applet_dock_change (applet->dock,
 				   GTK_ADJUSTMENT (adj));
   g_signal_connect (adj, "value-changed",
