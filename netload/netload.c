@@ -291,13 +291,13 @@ about_cb (AppletWidget *widget, gpointer data)
 	  NULL
 	  };
 
-	about = gnome_about_new ( "The GNOME Network Load Applet", "0.0.3",
+	about = gnome_about_new (_("The GNOME Network Load Applet"), "0.0.3",
 			"(C) 1998 Stephen Norris",
 			authors,
-			"This applet is released under the terms and conditions of the GNU Public Licence."
+			_("This applet is released under the terms and conditions of the GNU Public Licence."
 			"This applet shows the load on a network device. "
 			"It requires the /proc/net/ip_acct interface to be present and "
-			"set up correctly for the device.",
+			"set up correctly for the device."),
 			NULL);
 	gtk_widget_show (about);
 
@@ -308,12 +308,16 @@ int main(int argc, char **argv)
 {
 	GtkWidget *applet;
 
+	/* Initialize the i18n stuff */
+        bindtextdomain (PACKAGE, GNOMELOCALEDIR);
+	textdomain (PACKAGE);
+
 	applet_widget_init_defaults("netload_applet", NULL, argc, argv, 0,
 				    NULL,argv[0]);
 
 	applet = applet_widget_new();
 	if (!applet)
-		g_error("Can't create applet!\n");
+		g_error(_("Can't create applet!\n"));
 
 	load_properties(APPLET_WIDGET(applet)->cfgpath, &props);
 	
