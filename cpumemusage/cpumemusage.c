@@ -25,6 +25,8 @@
 #define CPU_UPDATE_MSEC 200
 #define MEM_UPDATE_MSEC 1000
 
+#define WIDTH 80
+
 /* Nice value to avoid eating CPU when it is needed */
 #define NICE_VALUE 5
 
@@ -52,6 +54,9 @@ static ProcInfo  summary_info;
 static GtkWidget *cpu, *mem, *swap = NULL;
 static GtkWidget *cpumemusage;
 static GtkWidget *applet;
+
+static gint size;
+static gint spacing;
 
 static gint
 update_cpu_values (void)
@@ -84,10 +89,10 @@ pack_procbars(gboolean vertical)
 	
 	if (vertical) {
 		box = gtk_hbox_new (TRUE, GNOME_PAD_SMALL >> 1);
-		gtk_widget_set_usize (box, 40, 80);
+		//gtk_widget_set_usize (box, 40, 80);
 	} else {
 		box = gtk_vbox_new (TRUE, GNOME_PAD_SMALL >> 1);
-		gtk_widget_set_usize (box, 80, 40);
+		//gtk_widget_set_usize (box, 80, 40);
 	}
 
 	gnome_proc_bar_set_orient (GNOME_PROC_BAR (cpu), vertical);
@@ -149,7 +154,7 @@ static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
 {
 	GtkWidget *box;
 	gboolean vertical;
-	
+
 	switch (o) {
 	case ORIENT_LEFT:
 	case ORIENT_RIGHT:
@@ -159,7 +164,7 @@ static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
 		vertical = FALSE;
 		break;
 	}
-		
+
 	if (swap) {
 		gtk_widget_ref (swap);
 		gtk_container_remove (GTK_CONTAINER(cpumemusage), swap);
@@ -179,6 +184,45 @@ static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
 	gtk_container_remove (GTK_CONTAINER (applet), cpumemusage);
 	gtk_container_add (GTK_CONTAINER (applet), box);
 	cpumemusage = box;
+
+	gtk_box_set_spacing (GTK_BOX (cpumemusage), spacing);
+	if (o == ORIENT_LEFT || o == ORIENT_RIGHT)
+		gtk_widget_set_usize (cpumemusage, size, WIDTH);
+	else
+		gtk_widget_set_usize (cpumemusage, WIDTH, size);
+}
+
+static void applet_change_size(GtkWidget *widget, PanelSizeType o)
+{
+	GNOME_Panel_OrientType orient;
+
+	switch (o) {
+	case SIZE_TINY:
+		size = 24;
+		spacing = 0;
+		break;
+	case SIZE_STANDARD:
+		size = 44;
+		spacing = 1;
+		break;
+	case SIZE_LARGE:
+		size = 58;
+		spacing = 2;
+		break;
+	case SIZE_HUGE:
+		size = 72;
+		spacing = 3;
+		break;
+	}
+
+		
+	orient = applet_widget_get_panel_orient (APPLET_WIDGET (applet));
+
+	gtk_box_set_spacing (GTK_BOX (cpumemusage), spacing);
+	if (orient == GNOME_Panel_ORIENT_LEFT || orient == GNOME_Panel_ORIENT_RIGHT)
+		gtk_widget_set_usize (cpumemusage, size, WIDTH);
+	else
+		gtk_widget_set_usize (cpumemusage, WIDTH, size);
 }
 
 int main(int argc, char **argv)
@@ -192,6 +236,9 @@ int main(int argc, char **argv)
 
 	gtk_signal_connect(GTK_OBJECT(applet),"change_orient",
 			   GTK_SIGNAL_FUNC(applet_change_orient),
+			   NULL);
+	gtk_signal_connect(GTK_OBJECT(applet),"change_size",
+			   GTK_SIGNAL_FUNC(applet_change_size),
 			   NULL);
 
         cpumemusage = cpumemusage_widget();
