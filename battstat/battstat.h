@@ -134,6 +134,13 @@ typedef struct _ProgressData {
   GtkWidget *testhscale;
   GtkObject *testadj;
   GtkWidget *beep_toggle;
+  /* last_* for the benefit of the timeout functions */
+  guint flash;
+  guint last_batt_life;
+  guint last_acline_status;
+  guint last_batt_state;
+  guint last_pixmap_index;
+  guint last_charging;
 } ProgressData;
 
 enum statusimagename {BATTERY,AC,FLASH,WARNING};

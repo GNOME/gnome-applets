@@ -1,3 +1,13 @@
+2002-02-24  Bastien Nocera  <hadess@hadess.net>
+
+	* battstat.h:
+	* battstat_applet.c: (pixmap_timeout), (battstat_applet_fill):
+	put the last_* battery information in the global data rather than
+	using static as this breaks when we have multiple instances
+	or restart the applet and stuff like that. Fixes:#72388
+	Looking at it, this applet *must* leak, there's no way
+	to destroy it. Need to investigate that
+
 2002-02-18  Bastien Nocera  <hadess@hadess.net>
 
 	* battstat_applet.c: (battstat_error_dialog), (cleanup),

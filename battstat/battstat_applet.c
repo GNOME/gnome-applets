@@ -299,12 +299,6 @@ pixmap_timeout( gpointer data )
   ProgressData *battery = data;
 /*   MeterData *meter; */
   GdkColor *color, *darkcolor;
-  static guint flash=FALSE;
-  static guint last_batt_life=1000;
-  static guint last_acline_status=1000;
-  static guint last_batt_state=1000;
-  static guint last_pixmap_index=1000;
-  static guint last_charging=1000;
   guint batt_life;
   guint acline_status;
   guint batt_state;
@@ -382,14 +376,14 @@ pixmap_timeout( gpointer data )
   if(batt_life == 100) charging = FALSE;
   if(!acline_status) charging = FALSE;
  
-   flash = flash ? FALSE : TRUE;
+   battery->flash = battery->flash ? FALSE : TRUE;
 
    pixmap_index = (acline_status) ?
-              (charging && flash ? FLASH : AC) :
+              (charging && battery->flash ? FLASH : AC) :
               (batt_life <= battery->red_val ? WARNING : BATTERY)
    ;
 
-   if ( pixmap_index != last_pixmap_index ) {
+   if ( pixmap_index != battery->last_pixmap_index ) {
       gtk_pixmap_set(GTK_PIXMAP (battery->statuspixmapwid),
                      statusimage[pixmap_index], statusmask[pixmap_index]);
 #ifdef FIXME
@@ -400,8 +394,8 @@ pixmap_timeout( gpointer data )
 
    if(
      !acline_status
-     && last_batt_life != 1000
-     && last_batt_life > battery->red_val
+     && battery->last_batt_life != 1000
+     && battery->last_batt_life > battery->red_val
      && batt_life <= battery->red_val
    ) {
       /* Warn that battery dropped below red_val */
@@ -419,9 +413,9 @@ pixmap_timeout( gpointer data )
    }
 
    if(
-      last_charging
-      && last_acline_status
-      && last_acline_status!=1000
+      battery->last_charging
+      && battery->last_acline_status
+      && battery->last_acline_status!=1000
       && !charging 
       && acline_status
       && batterypresent
@@ -436,9 +430,9 @@ pixmap_timeout( gpointer data )
    }
 
    if(
-      acline_status != last_acline_status
-      || batt_life != last_batt_life
-      || batt_state != last_batt_state
+      acline_status != battery->last_acline_status
+      || batt_life != battery->last_batt_life
+      || batt_state != battery->last_batt_state
       || battery->colors_changed )
    {
       /* Something changed */
@@ -655,11 +649,11 @@ pixmap_timeout( gpointer data )
       if (DEBUG) printf("Percent: %d, Status: %s\n", batt_life, status[batt_state]);
    }
 
-   last_charging = charging;
-   last_batt_state = batt_state;
-   last_batt_life=batt_life;
-   last_acline_status = acline_status;
-   last_pixmap_index = pixmap_index;
+   battery->last_charging = charging;
+   battery->last_batt_state = batt_state;
+   battery->last_batt_life = batt_life;
+   battery->last_acline_status = acline_status;
+   battery->last_pixmap_index = pixmap_index;
 
    
    return TRUE;
@@ -1428,7 +1422,13 @@ battstat_applet_fill (PanelApplet *applet)
   
   battstat->hbox1 = gtk_hbox_new (FALSE, 1);
   gtk_widget_show(battstat->hbox1);
-  
+
+  battstat->flash = FALSE;
+  battstat->last_batt_life = 1000;
+  battstat->last_acline_status = 1000;
+  battstat->last_batt_state = 1000;
+  battstat->last_pixmap_index = 1000;
+  battstat->last_charging = 1000;
   battstat->colors_changed = TRUE;
   battstat->suspend_cmd = FALSE;
   battstat->orienttype = panel_applet_get_orient (applet);
