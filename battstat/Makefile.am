@@ -45,12 +45,6 @@ battstat_applet_2_LDADD = \
 		     $(GNOME_APPLETS_LIBS) \
 		     $(LIBGLADE_LIBS) \
 		     $(APMLIB)
-EXTRA_DIST = 				\
-	$(glade_DATA)			\
-	GNOME_BattstatApplet.server.in  \
-	GNOME_BattstatApplet.xml	\
-	battstat.schemas		\
-	battstat.png
 
 schemadir   = @GCONF_SCHEMA_FILE_DIR@
 schema_DATA = battstat.schemas
@@ -64,6 +58,13 @@ server_DATA     = $(server_in_files:.server.in=.server)
 
 uidir = $(datadir)/gnome-2.0/ui
 ui_DATA = GNOME_BattstatApplet.xml
+
+EXTRA_DIST = 				\
+	$(glade_DATA)			\
+	GNOME_BattstatApplet.server.in  \
+	$(ui_DATA)			\
+	battstat.schemas		\
+	battstat.png
 
 @INTLTOOL_SERVER_RULE@
 
