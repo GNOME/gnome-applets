@@ -26,4 +26,4 @@ gnorba_DATA = geyes_applet.gnorba
 
 themesdir = $(datadir)/geyes/
 
-EXTRA_DIST = README.themes $(man_MANS) $(sys_DATA) $(gnorba_DATA)
+EXTRA_DIST = README.themes $(sys_DATA) $(gnorba_DATA)
