@@ -1509,6 +1509,7 @@ battstat_applet_fill (PanelApplet *applet)
 {
   ProgressData *battstat;
   struct stat statbuf;
+  AtkObject *atk_widget;
 
   if (DEBUG) g_print("main()\n");
   
@@ -1602,6 +1603,11 @@ battstat_applet_fill (PanelApplet *applet)
 					NULL);
   }
 
+  atk_widget = gtk_widget_get_accessible (battstat->applet);
+  if (GTK_IS_ACCESSIBLE (atk_widget)) {
+	  atk_object_set_name (atk_widget, _("Battery Charge Monitor"));
+	  atk_object_set_description(atk_widget, _("Monitor a laptop's remaining power"));
+  }
 
   return TRUE;
 }
