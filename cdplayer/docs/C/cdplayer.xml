@@ -2,19 +2,29 @@
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "2.0">
+  <!ENTITY appletversion "1.100.0">
   <!ENTITY manrevision "2.0">
-  <!ENTITY date "March 2002">
-  <!ENTITY applet "CDPlayer">
+  <!ENTITY date "May 2002">
+  <!ENTITY applet "CD Player">
 ]>
-
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Apr 11, 2002
+-->
 <!-- =============Document Header ============================= -->
 <article id="index" lang="en">
 <!-- please do not change the id; for translations, change lang to -->
 <!-- appropriate code -->
   <articleinfo> 
 	 <title>&applet; Applet Manual V&manrevision;</title> 
-	 <copyright>
+	 <copyright> 
+		<year>2002</year> 
+		<holder>Sun Microsystems</holder> 
+	 </copyright> 
+	 <copyright> 
 		<year>2000</year> 
 		<holder>Chris Lyttle</holder> 
 	 </copyright>
@@ -26,22 +36,23 @@
   </copyright>
 
    -->
-<!-- An address can be added to the publisher information.  If a role is 
-     not specified, the publisher/author is the same for all versions of the 
-     document.  -->
 	 <publisher> 
-		<publishername> GNOME Documentation Project </publishername> 
+		<publishername>GNOME Documentation Project</publishername> 
 	 </publisher> 
 
 &legal;
-<!-- This file  contains link to license for the documentation (GNU FDL), and 
-     other legal stuff such as "NO WARRANTY" statement. Please do not change 
-     any of this. -->
-
 	 <authorgroup> 
 		<author> 
-		  <firstname>Chris </firstname> 
-		  <surname> Lyttle</surname> 
+		  <firstname>Sun</firstname> 
+		  <surname>GNOME Documentation Team</surname> 
+		  <affiliation> 
+			 <orgname>Sun Microsystems</orgname> 
+			 <address> <email>gdocteam@sun.com</email> </address> 
+		  </affiliation> 
+		</author> 
+		<author> 
+		  <firstname>Chris</firstname> 
+		  <surname>Lyttle</surname> 
 		  <affiliation> 
 			 <orgname>GNOME Documentation Project</orgname> 
 			 <address> <email>chris@wilddev.net</email> </address> 
@@ -61,150 +72,180 @@
 -->
 	 </authorgroup>
 
-    <!-- The following feedback information only applies to applets
-    listed in bugzilla.gnome.org and bugzilla.ximian.com. For other
-    applets, please provide your own feedback info or remove thsi
-    section altogether -->
- 
-
-    <legalnotice> 
-      <title>Feedback</title> 
-      <para> To report a bug or make a suggestion regarding
-	the &applet; applet or this manual, follow the directions in the 
-	<ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>. 
-      </para> 
-    </legalnotice> 
+	 <revhistory>
+		<revision> 
+		  <revnumber>&applet; Applet Manual V&manrevision;</revnumber> 
+		  <date>&date;</date> 
+		  <revdescription> 
+			 <para role="author">Sun GNOME Documentation Team
+				<email>gdocteam@sun.com</email></para> 
+			 <para role="publisher">GNOME Documentation Project</para> 
+		  </revdescription> 
+		</revision> 
+		<revision> 
+		  <revnumber>CD Player Applet</revnumber> 
+		  <date>2000</date> 
+		  <revdescription> 
+			 <para role="author">Chris Lyttle
+				<email>chris@wilddev.net</email></para> 
+			 <para role="publisher">GNOME Documentation Project</para> 
+		  </revdescription> 
+		</revision> 
+	 </revhistory> 
+	 <releaseinfo> This manual describes version &appletversion; of &applet;.
+		</releaseinfo> 
+	 <legalnotice> 
+		<title>Feedback</title> 
+		<para> To report a bug or make a suggestion regarding the &applet; applet or this
+		  manual, follow the directions in the 
+		  <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>. </para>
+		
+	 </legalnotice> 
   </articleinfo> 
-
-  <indexterm zone="index"> 
-	 <primary>CDPlayer Applet</primary> 
+  <indexterm> 
+	 <primary>CD Player Applet</primary> 
   </indexterm> 
-  <indexterm zone="index"> 
-	 <primary>cdplayerapplet</primary> 
-  </indexterm>
 
+<!-- ============= Document Body ============================= -->
+<!-- ============= Introduction ============================== -->
+  <sect1 id="cdplayer_applet_introduction"> 
+	 <title>Introduction</title> 
+	 <!-- ==== Figure ============================================= -->
+	 <figure id="applet-fig"> 
+		<title>&applet; Applet</title> 
+		<screenshot> 
+		  <mediaobject> 
+			 <imageobject><imagedata fileref="figures/cdplayer_applet.png"
+				format="PNG"/> 
+			 </imageobject>
+			 <textobject> 
+				<phrase>Shows &applet; applet. Contains Stop, Play/Pause, Eject, Previous Track, and Next Track buttons.
+				</phrase> 
+			 </textobject> 
+		  </mediaobject> 
+		</screenshot> 
+	 </figure> 
+    	<!-- ==== End of Figure ======================================= -->
+	<para>The <application>&applet;</application> applet enables you to play
+	audio Compact Discs (CDs) on your computer. </para>
+	<para>To add <application>&applet;</application> to a panel, right-click on the panel to open
+	the panel popup menu, then choose <menuchoice>
+	<guimenu>Add to Panel </guimenu>
+	<guisubmenu> Multimedia </guisubmenu>
+	<guimenuitem> CD Player</guimenuitem>
+	</menuchoice>.
+	The layout of the <application>&applet;</application> applet varies depending on the size and type
+	of panel in which the applet resides.</para>
+  </sect1>
 
-<sect1 id="cdplayerapplet">
-  <title>CD Player Applet</title>
+  <sect1 id="cdplayer_applet_usage">
+	<title>Usage</title>
 
-   <para>
-   <application>CD Player Applet</application>, shown in
-<!-- xref -->
-   , allows you to play CD's from a
-   <interface>Panel</interface>.  To add this
-   applet to a <interface>Panel</interface>, 
-   right-click on the <interface>Panel</interface> and choose
-   <menuchoice>
-    <guimenu>Panel</guimenu>
-    <guisubmenu>Add to panel</guisubmenu>
-    <guisubmenu>Applet</guisubmenu>
-    <guisubmenu>Multimedia</guisubmenu>
-    <guimenuitem>CD Player</guimenuitem>
-   </menuchoice>.
-  </para>
-</sect1>
+	<sect2 id="cdplayer_applet_play">
+	<title>To Play a CD</title>
+	<para>To play a CD, insert the CD in the CD drive of your computer, then click on the 
+	<inlinemediaobject>
+	<imageobject><imagedata fileref="figures/cdplayer_applet_playpause.png" format="PNG"/></imageobject>
+	<textobject><phrase>Shows Play/Pause button. </phrase></textobject>
+	</inlinemediaobject> button. </para>
+	<figure id="fig-cd-playing"> 
+		<title>&applet; Applet While a CD is Playing</title> 
+		<screenshot> 
+		  <mediaobject> 
+			 <imageobject><imagedata fileref="figures/cdplayer_applet_playing.png" format="PNG"/> 
+			 </imageobject>
+			 <textobject> 
+				<phrase>Shows &applet; applet with a CD playing.
+				</phrase> 
+			 </textobject> 
+		  </mediaobject> 
+		</screenshot> 
+	 </figure> 
+	<para>The applet displays the following information, as shown in <xref linkend="fig-cd-playing"/>: </para>
+	<itemizedlist>
+		<listitem><para>The time elapsed on the current track.</para></listitem>
+		<listitem><para>The number of the track that is currently playing.</para></listitem>
+	</itemizedlist>
+	</sect2>
 
-<!--
-  <figure id="cdplayerapplet-fig">
-   <title>CD Player Applet</title>
-   <screenshot>
-    <screeninfo>CD Player Applet</screeninfo>
-    <graphic format="png" fileref="figures/cdplayer_applet" 
-    srccredit="muet">
-    </graphic>
-   </screenshot>
-  </figure>
--->
-  <!-- ============= Usage  ================================ -->
-<sect1 id="cdplayer-usage">
-   <title>Usage</title>
-   <para>
-    This applet is used to unobtrusively play and control CD's while you 
-    get real work done or play
-    <application>FreeCell</application>. To use it, just press the
-    small buttons in the applet like you would on any CD player.
-   </para>
+	<sect2 id="cdplayer_applet_pause">
+	<title>To Pause a CD</title>
+	<para>To pause a CD that is playing, click on the 
+	<inlinemediaobject>
+	<imageobject><imagedata fileref="figures/cdplayer_applet_playpause.png" format="PNG"/></imageobject>
+	<textobject><phrase>Shows Play/Pause button. </phrase></textobject>	
+	</inlinemediaobject> button. 
+	When you pause a CD, the time elapsed on the current track flashes until you resume playing the CD. To resume playing the CD, click on the 
+	<inlinemediaobject>
+	<imageobject><imagedata fileref="figures/cdplayer_applet_playpause.png" format="PNG"/></imageobject>
+	<textobject><phrase>Shows Play/Pause button. </phrase></textobject>	
+	</inlinemediaobject> button again. </para>
+	</sect2>
 
-   <para>
-    Right-clicking on the applet brings up a menu containing the
-    following items:
-    <itemizedlist>
+	<sect2 id="cdplayer_applet_movetracks">
+	<title>To Move Through Tracks</title>
+	<para>To move to the next track on the CD, click on the 
+	<inlinemediaobject>
+	<imageobject><imagedata fileref="figures/cdplayer_applet_nexttrack.png" format="PNG"/></imageobject>
+	<textobject><phrase>Shows Next Track button. </phrase></textobject>	
+	</inlinemediaobject> button. 
+	To continue moving through the next tracks on the CD, continue to click on the 
+	<inlinemediaobject>
+	<imageobject><imagedata fileref="figures/cdplayer_applet_nexttrack.png" format="PNG"/></imageobject>
+	<textobject><phrase>Shows Next Track button. </phrase></textobject>	
+	</inlinemediaobject> button.</para>
+	<para>To move to the previous track on the CD, click on the 
+	<inlinemediaobject>
+	<imageobject><imagedata fileref="figures/cdplayer_applet_prevtrack.png" format="PNG"/></imageobject>
+	<textobject><phrase>Shows Previous Track button. </phrase></textobject>	
+	</inlinemediaobject> button. To continue moving through the previous tracks on the CD, continue to click on the 
+	<inlinemediaobject>
+	<imageobject><imagedata fileref="figures/cdplayer_applet_prevtrack.png" format="PNG"/></imageobject>
+	<textobject><phrase>Shows Previous Track button. </phrase></textobject>	
+	</inlinemediaobject> button.</para>
+	</sect2>
 
-     <listitem>
-      <para>
-       <guimenuitem>Run CD Player&hellip;</guimenuitem> &mdash;
-       starts the <application>GNOME CD Player</application>, which
-       has more features than the <application>CD Player
-       Applet</application> such as automatically downloading CD track
-       information from a CDDB server, volume control, and title/track
-       display.  
-      </para>
-     </listitem>
+	<sect2 id="cdplayer_applet_stop">
+	<title>To Stop a CD</title>
+	<para>To stop a CD, click on the 
+	<inlinemediaobject>
+	<imageobject><imagedata fileref="figures/cdplayer_applet_stop.png" format="PNG"/></imageobject>
+	<textobject><phrase>Shows Stop button. </phrase></textobject>	
+	</inlinemediaobject> button.</para>
+	</sect2>
 
-     <listitem>
-      <para>
-       <guimenuitem>Help</guimenuitem> &mdash;
-       displays this document.
-      </para>
-     </listitem>
+	<sect2 id="cdplayer_applet_eject">
+	<title>To Eject a CD</title>
+	<para>To eject the CD, click on the 
+	<inlinemediaobject>
+	<imageobject><imagedata fileref="figures/cdplayer_applet_eject.png" format="PNG"/></imageobject>
+	<textobject><phrase>Shows Eject button. </phrase></textobject>	
+	</inlinemediaobject> button. 
+	The applet ejects the CD from the CD drive. Remove the CD, then close the drive. </para>
+	</sect2>
 
-     <listitem>
-      <para>
-       <guimenuitem>About&hellip;</guimenuitem> &mdash;
-       shows basic information about <application>CD Player
-       Applet</application>, inluding the applet's version and the
-       author's name.
-      </para>
-     </listitem>
+	<sect2 id="cdplayer_additional_features">
+	<title>To Access Additional Features</title>
+	<para>To access additional features for playing audio CDs, such as to edit
+	track information or to adjust the volume, you can start
+	the <application>CD Player</application> application. To start the <application>
+	CD Player</application> application from the CD Player, right-click on the
+	applet, then choose <guimenuitem>Run External CD Player</guimenuitem>. </para>
+	</sect2>
 
-    </itemizedlist>
-   </para>
-</sect1>
+  </sect1>
 
-<!-- ============= About ================================== -->
-<!-- This section contains info about the program (not docs), such as
-     author's name(s), web page, license, feedback address. This
-     section is optional: primary place for this info is "About.." box of
-     the program. However, if you do wish to include this info in the
-     manual, this is the place to put it. Alternatively, you can put this 
-     information in the title page.-->
+<!-- ============= Customization ============================= -->
+  <sect1 id="cdplayer_applet_prefs"> 
+	 <title>Settings</title> 
 
-<sect1 id="cdplayer-about">
-  <title>About &applet;</title>
-     <para>
-        <application>&applet;</application> was written by Tim Gerla
-        (<email>timg@means.net</email>). 
-     </para>  
+	 <sect2 id="cdplayer-applet_specify_cd">
+	 <title>To Specify the CD Device</title>
+	 <para>To specify the CD device that the applet accesses, right-click on the applet, then choose <guimenuitem>Preferences</guimenuitem>.
+	 Type the path to the CD device in the <guilabel>Device Path</guilabel> text box. To use the default CD device for the system, click <guibutton>Use Default</guibutton>.
+	 To save the change and close the <guilabel>CD Player Preferences</guilabel> dialog, click <guibutton>Close</guibutton>.  </para>
+	 </sect2> 
+	 
+  </sect1> 
 
-    <!-- The following feedback information only applies to applets
-    listed in bugzilla.gnome.org and bugzilla.ximian.com. For other
-    applets, please provide your own feedback info or remove thsi
-    section altogether -->
- 
-     <para> To report a bug or make a suggestion regarding
-	the &applet; applet or this manual, follow the directions in the 
-	<ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>. 
-      </para> 
-
-  <!-- For translations: uncomment this:
-
-  <para>
-   Latin translation was done by ME
-   (<email>MYNAME@MYADDRESS</email>). Please send all  comments  and
-   suggestions regarding this translation to SOMEWHERE.
-  </para>
-
-  -->
-
-    <para>
-      This program is distributed under the terms of the GNU General
-      Public license as published by the Free Software Foundation;
-      either version 2 of the License, or (at your option) any later
-      version. A copy of this license can be found at this <ulink
-      type="help" url="ghelp:gpl">link</ulink>, or in the file COPYING
-      included with the source code of this program. 
-   </para>
-
-</sect1> 
-
-</article>
+</article> 
