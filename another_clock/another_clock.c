@@ -360,9 +360,9 @@ static void cb_about (AppletWidget *applet, gpointer data)
 {
     static GtkWidget *about = NULL;
     static const gchar *authors[] = {
-			    /* languages which use font encodings that can't
-			     * display spanish 'ñ' should use 'n' instead */
-			    N_("Iñigo Serna <inigo@gaztelan.bi.ehu.es>"),
+			    /* if your encoding allows it, use ntilde (U00F1)
+			     * instead of the 'n' of 'Inigo' */
+			    N_("Inigo Serna <inigo@gaztelan.bi.ehu.es>"),
 			    NULL
     };
 
