@@ -12,14 +12,23 @@
 <!-- modified versions, except that this permission notice may be -->
 <!-- stated in a translation approved by the Foundation. -->
 
-  <sect1 id="cpumemusage-applet">
-   <title>The CPU and memory usage applet</title> 
+<sect1 id="cpumemusage-applet">
+  <title>The CPU and memory usage applet</title> 
 
-   <para> 
-     The <application>cpumemusage_applet</application> is a small monitor
-     applet which sits in your panel and tells you about your machine's
-     use of CPU, memory and swap. 
-   </para>  
+  <para> 
+    The <application>cpumemusage_applet</application> is a small monitor
+    applet which sits in your panel and tells you about your machine's
+    use of CPU, memory and swap.  To add this
+    applet to a <interface>Panel</interface>, 
+    right-click on the <interface>Panel</interface> and choose
+    <menuchoice>
+      <guimenu>Panel</guimenu>
+      <guisubmenu>Add to panel</guisubmenu>
+      <guisubmenu>Applet</guisubmenu>
+      <guisubmenu>Monitors</guisubmenu>
+      <guimenuitem>CPU/MEM usage</guimenuitem>
+    </menuchoice>. 
+  </para>  
  
    <sect2 id="cpumemusage-usage">
     <title>Usage</title>
@@ -33,6 +42,17 @@
       memory, and the bottom is swap. If your panel is vertical, the left
       bar is CPU, the middle is memory, and the right is swap.
     </para>
+
+    <figure id="cpumemusage-applet-fig">
+      <title>CPU/MEM Applet</title>
+     <screenshot>
+      <screeninfo>CPU/MEM applet</screeninfo>
+      <graphic format="png" fileref="cpumemusage-applet"
+      srccredit="Eric Baudais">
+      </graphic>
+     </screenshot>
+    </figure>
+  
     <variablelist>
      <varlistentry>
       <term>CPU</term>
@@ -98,7 +118,8 @@
     </para>
     <para>
       This guide was written by Telsa Gwynne 
-      (<email>telsa@linuxchix.org</email>) and is almost entirely based on 
+      (<email>telsa@linuxchix.org</email>) and Eric Baudais 
+      (<email>baudais@okstate.edu</email>) and is almost entirely based on 
       the earlier documentation from the GNOME 1.0.53 User's Guide by David 
       Mason (<email>dcm@redhat.com</email>) and David Wheeler. Please
       report problems with or suggestions for it to the GNOME Documentation
@@ -107,8 +128,41 @@
       url="http://www.gnome.org/gdp/doctable/">GNOME Documentation Status
       Table</ulink>.
     </para>
-   </sect2>
-  </sect1>
+  </sect2>
+  
+  <sect2 id="license">
+   <title>License</title>
+   <para>
+    This program is free software; you can redistribute it and/or
+    modify it under the terms of the <citetitle>GNU General Public
+    License</citetitle> as published by the Free Software Foundation;
+    either version 2 of the License, or (at your option) any later
+    version.
+   </para>
+   <para>
+    This program is distributed in the hope that it will be useful, but
+    WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    <citetitle>GNU General Public License</citetitle> for more details.
+   </para>
+   <para>
+    A copy of the <citetitle>GNU General Public License</citetitle> is
+    included as an appendix to the <citetitle>GNOME Users
+    Guide</citetitle>.  You may also obtain a copy of the
+    <citetitle>GNU General Public License</citetitle> from the Free
+    Software Foundation by visiting <ulink type="http"
+    url="http://www.fsf.org">their Web site</ulink> or by writing to
+    <address>
+     Free Software Foundation, Inc.
+     <street>59 Temple Place</street> - Suite 330
+     <city>Boston</city>, <state>MA</state> <postcode>02111-1307</postcode>
+     <country>USA</country>
+    </address>
+   </para>
+  </sect2>
+</sect1>
+
+
 
 
 
