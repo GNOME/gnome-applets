@@ -378,23 +378,13 @@ void gweather_update (void)
         weather_proxy_set(gweather_pref.proxy_url, gweather_pref.proxy_user, gweather_pref.proxy_passwd);
 
     /* Update current conditions */
-    if (gweather_pref.update_enabled) {
-        if (gweather_info && weather_location_equal(gweather_info->location, gweather_pref.location)) {
-            update_success = weather_info_update(gweather_info, update_finish);
-        } else {
-            weather_info_free(gweather_info);
-            gweather_info = NULL;
-            update_success = weather_info_new(gweather_pref.location, update_finish);
-        }
-        if (!update_success)
-            gnome_error_dialog("Update failed! Maybe another already in progress?");  /* FIX */
+    if (gweather_info && weather_location_equal(gweather_info->location, gweather_pref.location)) {
+        update_success = weather_info_update(gweather_info, update_finish);
     } else {
-        if (gweather_info) {
-            if (gweather_pref.use_metric)
-                weather_info_to_metric(gweather_info);
-            else
-		  weather_info_to_imperial(gweather_info);
-	}
-        update_finish(gweather_info);
+        weather_info_free(gweather_info);
+        gweather_info = NULL;
+        update_success = weather_info_new(gweather_pref.location, update_finish);
     }
+    if (!update_success)
+        gnome_error_dialog("Update failed! Maybe another already in progress?");  /* FIX */
 }
