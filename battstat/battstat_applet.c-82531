@@ -15,7 +15,7 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Street #330, Boston, MA 02111-1307, USA.
  *
- * May, 2000. Implemented on FreeBSD 4.0R (Compaq Armada M700)
+ * May, 2000. Implemented on FreeBSD 4.0-RELEASE (Compaq Armada M700)
  *
 $Id$
  */
@@ -209,9 +209,9 @@ struct apm_info apminfo;
 void
 apm_readinfo(void)
 {
-  /* This is how I read the information from the APM subsystem under FreeBSD.
-     Each time this functions is called (once every second) the APM device is
-     opened, read from and the closed.
+  /* This is how I read the information from the APM subsystem under
+     FreeBSD.  Each time this functions is called (once every second)
+     the APM device is opened, read from and then closed.
   */
   int fd;
   if (DEBUG) g_print("apm_readinfo() (FreeBSD)\n");
@@ -228,8 +228,8 @@ apm_readinfo(void)
 void
 apm_readinfo(void)
 {
-  /* Code for OpenBSD by Joe Ammond <jra@twinight.org>. Using the same procedure
-     as for FreeBSD.
+  /* Code for OpenBSD by Joe Ammond <jra@twinight.org>. Using the same
+     procedure as for FreeBSD.
   */
   int fd;
   if (DEBUG) g_print("apm_readinfo() (OpenBSD)\n");
@@ -244,8 +244,9 @@ apm_readinfo(void)
 void
 apm_readinfo(void)
 {
-  /* Code for Linux by Thomas Hood <jdthood@mail.com>. apm_read() will read from 
-     /proc/... instead and here we do not need to open the device ourselves.
+  /* Code for Linux by Thomas Hood <jdthood@mail.com>. apm_read() will
+     read from /proc/... instead and we do not need to open the device
+     ourselves.
   */
   if (DEBUG) g_print("apm_readinfo() (Linux)\n");
   apm_read(&apminfo);
@@ -601,7 +602,7 @@ pixmap_timeout( gpointer data )
       gdk_beep();
     gnome_triggers_do ("", NULL, "battstat_applet", "BatteryFull", NULL);
 
-    gnome_ok_dialog("Battery is now fully re-charged!");
+    gnome_ok_dialog(_("Battery is now fully re-charged!"));
     lastacstatus=ac_status;
   }
 
