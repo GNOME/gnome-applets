@@ -21,4 +21,5 @@ GKB_MAPS = \
 	xmodmap.us-sgi-101 xmodmap.us-sun xmodmap.us.old xmodmap.us_intl \
 	xmodmap.yu xmodmap.ro xmodmap.mk xmodmap.ru-rev xmodmap.es_x86 \
 	xmodmap.fr_x86 xmodmap.uk_x86 xmodmap.us101A_x86 xmodmap.hu_x86 \
-	xmodmap.ar xmodmap.kr xmodmap.mn-rev xmodmap.mn xmodmap.mn-phonet
+	xmodmap.ar xmodmap.kr xmodmap.mn-rev xmodmap.mn xmodmap.mn-phonet \
+	xmodmap.mn-uni

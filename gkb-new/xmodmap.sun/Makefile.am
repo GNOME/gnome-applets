@@ -29,6 +29,7 @@ GKB_MAPS = \
 		xmodmap.lt \
 		xmodmap.lv \
 		xmodmap.mk \
+		xmodmap.mn \
 		xmodmap.no \
 		xmodmap.pl \
 		xmodmap.pt \

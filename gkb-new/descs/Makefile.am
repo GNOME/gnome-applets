@@ -37,18 +37,20 @@ preset_data_predata = \
 		LT_Lithuanian.keyprop.in LT_Lithuanian_x.keyprop.in \
 		LT_Prog.keyprop.in LT_Standard.keyprop.in \
 		Macedonian.keyprop.in MK_Macedonian.keyprop.in \
-		MN_Mongolian.keyprop.in NL_Dutch_x.keyprop.in \
-		NO_Norwegian.keyprop.in Norwegian.keyprop.in \
-		PL_Polish.keyprop.in PolishDeadkeys.keyprop.in \
-		Polish.keyprop.in PortugalDeadkeys.keyprop.in \
-		Portugal.keyprop.in PT_Portuguese.keyprop.in \
-		PT_Portuguese_x.keyprop.in RO_Romanian.keyprop.in \
-		RU_Russian.keyprop.in RU_Russian_x.keyprop.in \
-		RU_Russian_x_rev.keyprop.in RussianCyril.keyprop.in \
-		SE_Swedish.keyprop.in SE_Swedish_x.keyprop.in \
-		SI_Slovenian.keyprop.in SI_Slovenian_x.keyprop.in \
-		Slovak.keyprop.in Slovene.keyprop.in \
-		Slovenian.keyprop.in SR_Dutch.keyprop.in Swedish.keyprop.in \
+		MN_Mongolian.keyprop.in MN_Mongolian_x.keyprop.in \
+		MN_Mongolian_x_rev.keyprop.in MN_Mongolian_x_uni.keyprop.in \
+		NL_Dutch_x.keyprop.in NO_Norwegian.keyprop.in \
+		Norwegian.keyprop.in PL_Polish.keyprop.in \
+		PolishDeadkeys.keyprop.in Polish.keyprop.in \
+		PortugalDeadkeys.keyprop.in Portugal.keyprop.in \
+		PT_Portuguese.keyprop.in PT_Portuguese_x.keyprop.in \
+		RO_Romanian.keyprop.in RU_Russian.keyprop.in \
+		RU_Russian_x.keyprop.in RU_Russian_x_rev.keyprop.in \
+		RussianCyril.keyprop.in SE_Swedish.keyprop.in \
+		SE_Swedish_x.keyprop.in SI_Slovenian.keyprop.in \
+		SI_Slovenian_x.keyprop.in Slovak.keyprop.in \
+		Slovene.keyprop.in Slovenian.keyprop.in \
+		SR_Dutch.keyprop.in Swedish.keyprop.in \
 		Thai2.keyprop.in Thai.keyprop.in TH_Thai.keyprop.in \
 		TH_Thai_x.keyprop.in TR-f.keyprop.in TR-q.keyprop.in \
 		TR_Turkish.keyprop.in TR_Turkish_x.keyprop.in \
