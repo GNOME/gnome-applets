@@ -31,8 +31,10 @@
 
 #include "global.h"
 
-void
-about_cb (BonoboUIComponent *uic, gpointer data, const gchar *name)
+static void
+about_cb (BonoboUIComponent *uic,
+	  MultiloadApplet   *ma,
+	  const char        *name)
 {
     static GtkWidget *about = NULL;
     GdkPixbuf        *pixbuf;
@@ -53,12 +55,10 @@ about_cb (BonoboUIComponent *uic, gpointer data, const gchar *name)
 
     const gchar *translator_credits = _("translator_credits");
 
-    if (about != NULL)
-	{
-	    gdk_window_show(about->window);
-	    gdk_window_raise(about->window);
-	    return;
-	}
+    if (about) {
+	gtk_window_present (GTK_WINDOW (about));
+	return;
+    }
 	
     file = gnome_program_locate_file (NULL, GNOME_FILE_DOMAIN_PIXMAP, "gnome-monitor.png", FALSE, NULL);
     pixbuf = gdk_pixbuf_new_from_file (file, &error);
@@ -93,11 +93,34 @@ about_cb (BonoboUIComponent *uic, gpointer data, const gchar *name)
 
 /* run the full-scale system process monitor */
 
-void
-start_procman_cb (BonoboUIComponent *uic, gpointer data, const gchar *name)
+static void
+start_procman_cb (BonoboUIComponent *uic,
+		  MultiloadApplet   *ma,
+		  const char        *name)
 {
-	gnome_execute_shell(NULL, "gnome-system-monitor");
-	return;
+	GError *error = NULL;
+
+	g_spawn_command_line_async ("gnome-system-monitor", &error);
+	if (error) {
+		GtkWidget *dialog;
+
+		dialog = gtk_message_dialog_new (NULL,
+						 GTK_DIALOG_DESTROY_WITH_PARENT,
+						 GTK_MESSAGE_ERROR,
+						 GTK_BUTTONS_CLOSE,
+						 _("There was an error executing 'gnome-system-monitor' : %s"),
+						 error->message);
+
+		g_signal_connect (dialog, "response",
+				  G_CALLBACK (gtk_widget_destroy),
+				  NULL);
+
+		gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
+
+		gtk_widget_show (dialog);
+
+		g_error_free (error);
+	}
 }
               
 void
@@ -286,6 +309,14 @@ multiload_applet_refresh(MultiloadApplet *ma)
 	return;
 }
 
+static const BonoboUIVerb multiload_menu_verbs [] = {
+	BONOBO_UI_UNSAFE_VERB ("MultiLoadProperties", multiload_properties_cb),
+	BONOBO_UI_UNSAFE_VERB ("MultiLoadRunProcman", start_procman_cb),
+	BONOBO_UI_UNSAFE_VERB ("MultiLoadAbout", about_cb),
+
+	BONOBO_UI_VERB_END
+};		
+
 /* create a box and stuff the load graphs inside of it */
 gboolean
 multiload_applet_new(PanelApplet *applet, const gchar *iid, gpointer data)
@@ -341,22 +372,12 @@ multiload_applet_new(PanelApplet *applet, const gchar *iid, gpointer data)
 			                    TRUE, NULL);
 	}
 
-	{
-		/* we need to pass 'ma' into the properties_cb or else every instance of multiload will use the same properties dialog*/
-		const BonoboUIVerb multiload_menu_verbs [] = {
-			BONOBO_UI_VERB_DATA ("MultiLoadProperties", multiload_properties_cb, ma),
-			BONOBO_UI_VERB ("MultiLoadRunProcman", start_procman_cb),
-	        BONOBO_UI_VERB ("MultiLoadAbout", about_cb),
-
-  	      BONOBO_UI_VERB_END
-		};		
-		panel_applet_setup_menu_from_file (applet,
-						   NULL,
-						   "GNOME_MultiloadApplet.xml",
-						   NULL,
-						   multiload_menu_verbs,
-						   ma);	
-	}
+	panel_applet_setup_menu_from_file (applet,
+					   NULL,
+					   "GNOME_MultiloadApplet.xml",
+					   NULL,
+					   multiload_menu_verbs,
+					  ma);	
 
 	ma->box = box;
 	

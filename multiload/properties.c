@@ -397,21 +397,22 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 
 /* show properties dialog */
 void
-multiload_properties_cb(BonoboUIComponent *uic, gpointer data, const gchar *name)
+multiload_properties_cb (BonoboUIComponent *uic,
+			 MultiloadApplet   *ma,
+			 const char        *name)
 {
-	MultiloadApplet *ma;
 	static GtkWidget *dialog = NULL;
 	
-	if (dialog != NULL)
-	{
+	if (dialog) {
 	    gtk_window_present (GTK_WINDOW (dialog));
 	    return;
 	}
 	
-	ma = (MultiloadApplet *)data;
-	
-	dialog = gtk_dialog_new_with_buttons(_("System Monitor Preferences"), NULL, 0, GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE, NULL);
-				
+	dialog = gtk_dialog_new_with_buttons (_("System Monitor Preferences"),
+					      NULL, 0,
+					      GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
+					      NULL);
+
 	fill_properties(dialog, ma);
 
 	properties_set_insensitive(ma);

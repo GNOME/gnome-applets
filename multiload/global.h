@@ -95,13 +95,11 @@ netload_applet_new(PanelApplet *applet, gpointer data);
 LoadGraph *
 loadavg_applet_new(PanelApplet *applet, gpointer data);
 
-/* run procman, gtop's replacement */
-void
-start_procman_cb (BonoboUIComponent *uic, gpointer data, const gchar *name);
-
 /* show properties dialog */
 void
-multiload_properties_cb(BonoboUIComponent *uic, gpointer data, const gchar *name);
+multiload_properties_cb (BonoboUIComponent *uic,
+			 MultiloadApplet   *ma,	
+			 const char        *name);
 
 /* remove the old graphs and rebuild them */
 void
