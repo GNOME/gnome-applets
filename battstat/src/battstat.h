@@ -27,7 +27,7 @@ enum statusimagename {BATTERY,AC,FLASH,WARNING};
 #endif /* __FreeBSD__ */
 
 #ifdef __OpenBSD__
-#define APMDEVICE                "/dev/apm"
+#define APMDEVICE       "/dev/apm"
 #endif /* __OpenBSD__ */
 
 #define PROGLEN 33.0
@@ -35,6 +35,9 @@ enum statusimagename {BATTERY,AC,FLASH,WARNING};
 GdkPixmap *statusimage[4];
 GdkBitmap *statusmask[4];
 
+
+/* Not used yet... 
+ */
 typedef struct _MeterData {
   GdkPixmap *pixbuffer;
   GdkBitmap *pixmask;
@@ -136,4 +139,29 @@ typedef struct _ProgressData {
   GtkObject *testadj;
   GtkWidget *beep_toggle;
 } ProgressData;
+
+void prop_cb (AppletWidget *, gpointer);
+int prop_cancel (GtkWidget *, gpointer);
+void prop_apply (GtkWidget *, int, gpointer);
+
+void apm_readinfo(void);
+void adj_value_changed_cb(GtkAdjustment *, gpointer);
+void toggle_value_changed_cb(GtkToggleButton *, gpointer);
+void font_set_cb(GtkWidget *, int, gpointer);
+void simul_cb(GtkWidget *, gpointer);
+void helppref_cb(AppletWidget *, gpointer);
+void load_font(gpointer);
+gint pixmap_timeout(gpointer);
+void change_orient(GtkWidget *, PanelOrientType, gpointer);
+void destroy_applet( GtkWidget *, gpointer);
+void cleanup(int);
+void help_cb (AppletWidget *, gpointer);
+void suspend_cb (AppletWidget *, gpointer);
+void destroy_about (GtkWidget *, gpointer);
+void about_cb (AppletWidget *, gpointer);
+gint applet_save_session(GtkWidget *, char *, char *, gpointer);
+void applet_change_pixel_size(GtkWidget *, int, gpointer);
+gint init_applet(int, char *[], gpointer);
+gint create_layout(int, char *[], gpointer);
+
 

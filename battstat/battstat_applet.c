@@ -200,10 +200,6 @@ GdkColor darkred[] = {
   {-1,0x0000,0x0000,0x0000}
 };
 
-extern void prop_cb (AppletWidget *, gpointer);
-extern int prop_cancel (GtkWidget *, gpointer);
-extern void prop_apply (GtkWidget *, int, gpointer);
-
 #ifdef __OpenBSD__
 struct apm_power_info apminfo;
 #else
@@ -304,6 +300,7 @@ pixmap_timeout( gpointer data )
   guint pix_type_new=1000;
   guint progress_value;
   gint batt_life;
+  gint batt_time;
   gint ac_status;
   gint i, x;
   gboolean batterypresent=FALSE;
@@ -347,6 +344,8 @@ pixmap_timeout( gpointer data )
   pix_type_new = apminfo.ac_line_status;
   batt_life = apminfo.battery_percentage;
   ac_status = apminfo.battery_status;
+  batt_time = apminfo.battery_time;
+
   if(pix_type_new == 255) pix_type_new = 0;
   if(batt_life < 0) batt_life = 0;
   if(ac_status == 255) {
@@ -1444,7 +1443,7 @@ main(int argc, char *argv[])
 
   battstat->colors_changed = TRUE;
   battstat->suspend_cmd = FALSE;
-  battstat->panelsize = 16;
+  battstat->panelsize = 48;
   init_applet(argc, argv, battstat);
   load_preferences(battstat);
   create_layout(argc, argv, battstat);
