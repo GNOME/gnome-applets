@@ -29,6 +29,7 @@
 #include "preferences.h"
 #include "exec.h"
 #include "cmd_completion.h"
+#include "history.h"
 #include "message.h"
 
 static gint fileBrowserOK_signal(GtkWidget *widget, gpointer fileSelect);
@@ -41,7 +42,6 @@ static void historySelectionMade_cb(GtkWidget *clist, gint row, gint column,
 
 GtkWidget *entryCommand;
 static int historyPosition = HISTORY_DEPTH;
-static char *historyCommand[HISTORY_DEPTH];
 static char browsedFilename[300] = "";
 
 static gint
@@ -73,11 +73,13 @@ commandKey_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
 		    /* store current command line */
 		    strcpy(currentCommand, (char *) gtk_entry_get_text(GTK_ENTRY(widget)));
 		}
-	    if(historyPosition > 0 && historyCommand[historyPosition - 1] != NULL)
+	    if(historyPosition > 0 && existsHistoryEntry(historyPosition - 1))
 		{
-		    gtk_entry_set_text(GTK_ENTRY(widget), (gchar *) historyCommand[--historyPosition]);
+		    gtk_entry_set_text(GTK_ENTRY(widget), (gchar *) getHistoryEntry(--historyPosition));
 		}
-	    event->keyval = (gchar) -175;
+	    else
+		showMessage((gchar *) _("end of history list"));
+
 	    propagateEvent = FALSE;
 	}
     else if(key == GDK_Down)
@@ -85,13 +87,16 @@ commandKey_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
 	    /* down key pressed */
 	    if(historyPosition <  HISTORY_DEPTH - 1)
 		{
-		    gtk_entry_set_text(GTK_ENTRY(widget), (gchar *) historyCommand[++historyPosition]);
+		    gtk_entry_set_text(GTK_ENTRY(widget), (gchar *) getHistoryEntry(++historyPosition));
 		}
 	    else if(historyPosition == HISTORY_DEPTH - 1)
 		{	    
 		    gtk_entry_set_text(GTK_ENTRY(widget), (gchar *) currentCommand);
 		    ++historyPosition;
 		}
+	    else
+		showMessage((gchar *) _("end of history list"));
+
 	    propagateEvent = FALSE;
 	}
     else if(key == GDK_Return)
@@ -103,20 +108,9 @@ commandKey_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
 	    /* printf("%s\n", command); */
 	    execCommand(command);
 
-	    if(historyCommand[HISTORY_DEPTH - 1] == NULL
-	       || strcmp(command, historyCommand[HISTORY_DEPTH - 1]) != 0)
-	       {
-		   /* this command is no dupe -> update history */
-		   free(historyCommand[0]);
-		   for(pos = 0; pos < HISTORY_DEPTH - 1; pos++)
-		       {
-			   historyCommand[pos] = historyCommand[pos+1];
-			   /* printf("%s\n", historyCommand[pos]); */
-		       }
-		   historyCommand[HISTORY_DEPTH - 1] = command;   
-
-	       }
+	    appendHistoryEntry((char *) command);
 	    historyPosition = HISTORY_DEPTH;		   
+	    free(command);
 
 	    strcpy(currentCommand, "");
 	    gtk_entry_set_text(GTK_ENTRY(widget), (gchar *) "");
@@ -128,7 +122,7 @@ commandKey_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
 	{
 	    /* I have to do this to stop gtk from propagating this event;
 	       error in gtk? */
-	    event->keyval = (gchar) -173;
+	    event->keyval = GDK_Right;
 	    event->state = 0;
 	    event->length = 0;  
 	}
@@ -216,9 +210,24 @@ showHistory_signal(GtkWidget *widget, gpointer data)
      GtkWidget *frame;
      GtkWidget *scrolled_window;
      GtkWidget *clist;
+     GtkStyle *style;
+     GdkColor color;
      gchar *commandList[1];
      int i, j;
 
+     /* count commands stored in history list */
+     for(i = 0, j = 0; i < HISTORY_DEPTH; i++)
+	 if(existsHistoryEntry(i))
+	     j++;
+
+     if(j == 0)
+	 {
+	     showMessage((gchar *) _("history list empty"));
+
+	     /* don't show history popup window; go on */
+	     return FALSE;  	     
+	 }
+     
      window = gtk_window_new(GTK_WINDOW_POPUP); 
      gtk_window_set_policy(GTK_WINDOW(window), 0, 0, 1);
      /* cb */
@@ -232,6 +241,7 @@ showHistory_signal(GtkWidget *widget, gpointer data)
      gtk_widget_set_usize(GTK_WIDGET(window), 200, 350);
      /* title */
      gtk_window_set_title(GTK_WINDOW(window), (gchar *) _("Command history"));
+     gtk_widget_show(window);
 
      /* frame */
      frame = gtk_frame_new(NULL);
@@ -250,22 +260,38 @@ showHistory_signal(GtkWidget *widget, gpointer data)
      gtk_container_border_width(GTK_CONTAINER(scrolled_window), 2);
      gtk_widget_show(scrolled_window);
      
+
+     /* the history list */
+     /* style 
+     style = malloc(sizeof(GtkStyle));
+     style = gtk_style_copy(gtk_widget_get_style(GTK_WIDGET(applet)));
+
+     style->fg[GTK_STATE_NORMAL].red = (gushort) prop.cmdLineColorFgR;
+     style->fg[GTK_STATE_NORMAL].green = (gushort) prop.cmdLineColorFgG;
+     style->fg[GTK_STATE_NORMAL].blue = (gushort) prop.cmdLineColorFgB;
+
+     style->base[GTK_STATE_NORMAL].red = (gushort) prop.cmdLineColorBgR;
+     style->base[GTK_STATE_NORMAL].green = (gushort) prop.cmdLineColorBgG;
+     style->base[GTK_STATE_NORMAL].blue = (gushort) prop.cmdLineColorBgB;
      
+     gtk_widget_push_style (style);
+     */
      clist = gtk_clist_new(1);
+     /*      gtk_widget_pop_style (); */
      gtk_signal_connect(GTK_OBJECT(clist),
 			"select_row",
 			GTK_SIGNAL_FUNC(historySelectionMade_cb),
 			NULL);
-     gtk_widget_show(window);
      
-     /* add history items */
+     
+     /* add history items to list */
      for(i = 0; i < HISTORY_DEPTH; i++)
 	 {
-	     if(historyCommand[i] != NULL)
+	     if(existsHistoryEntry(i))
 		 {
-		     commandList[0] = (gchar *) malloc(sizeof(gchar) * (strlen(historyCommand[i]) + 1));
+		     commandList[0] = (gchar *) malloc(sizeof(gchar) * (strlen(getHistoryEntry(i)) + 1));
 		     /* commandList[0] = (gchar *) malloc(sizeof(gchar) * (MAX_COMMAND_LENGTH + 1)); */
-		     strcpy(commandList[0], historyCommand[i]);
+		     strcpy(commandList[0], getHistoryEntry(i));
 		     gtk_clist_append(GTK_CLIST(clist), commandList);
 		     free(commandList[0]);
 		 }

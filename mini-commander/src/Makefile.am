@@ -25,6 +25,8 @@ mini_commander_applet_SOURCES =			\
 	mini-commander_applet.h			\
 	help.c					\
 	help.h					\
+	history.c				\
+	history.h				\
 	preferences.c				\
 	preferences.h
 

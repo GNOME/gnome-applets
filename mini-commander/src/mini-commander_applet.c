@@ -37,12 +37,12 @@
 
 GtkWidget *applet;
 
-static int appletDestroy_signal(GtkWidget *widget, gpointer data);
-static int appletDetached_signal(GtkWidget *widget, gpointer data);
-static int appletAttached_signal(GtkWidget *widget, gpointer data);
+static gint appletDestroy_signal(GtkWidget *widget, gpointer data);
+static gint appletDetached_signal(GtkWidget *widget, gpointer data);
+static gint appletAttached_signal(GtkWidget *widget, gpointer data);
+static gint appletOrientChanged_cb(GtkWidget *widget, gpointer data);
 
-
-int 
+static gint
 appletDestroy_signal(GtkWidget *widget, gpointer data)
 {
     /* applet will be destroyed; save settings now */
@@ -51,7 +51,7 @@ appletDestroy_signal(GtkWidget *widget, gpointer data)
     return FALSE;  
 }
 
-int 
+static gint
 appletDetached_signal(GtkWidget *widget, gpointer data)
 {
     /* applet has been detached; make it smaller */
@@ -64,7 +64,7 @@ appletDetached_signal(GtkWidget *widget, gpointer data)
     return FALSE;  
 }
 
-int 
+static gint
 appletAttached_signal(GtkWidget *widget, gpointer data)
 {
     /* applet has been detached; restore original size */
@@ -77,10 +77,22 @@ appletAttached_signal(GtkWidget *widget, gpointer data)
     return FALSE;  
 }
 
+static gint
+appletOrientChanged_cb(GtkWidget *widget, gpointer data)
+{
+    static int counter = 0;
+
+    if(counter++ > 0)
+	showMessage((gchar *) _("orient. changed")); 
+
+    /* go on */
+    return FALSE;  
+}
+
 static void
 drawApplet(void)
 {
-    /* not needed yet */
+    /* currently not needed yet */
 }
 
 int 
@@ -116,11 +128,7 @@ main(int argc, char **argv)
       style->bg_pixmap[GTK_STATE_NORMAL] = bgPixmap;
       gtk_widget_push_style (style);
     */
-    applet = applet_widget_new("mini-commander_applet");
-    /*
-      gtk_widget_pop_style ();
-    */
-    
+    applet = applet_widget_new("mini-commander_applet");   
     /* in the rare case that the communication with the panel
        failed, error out */
     if (!applet)
@@ -128,6 +136,10 @@ main(int argc, char **argv)
 	    g_error("Can't create applet!\n");
 	    exit(1);
 	}
+    gtk_signal_connect(GTK_OBJECT(applet),
+		       "change_orient",
+		       GTK_SIGNAL_FUNC(appletOrientChanged_cb),
+		       NULL);
     
     loadSession();
     
@@ -171,7 +183,7 @@ main(int argc, char **argv)
 
     /* add history button */
     button = gtk_button_new();
-    gtk_signal_connect(GTK_OBJECT(button), "clicked",
+    gtk_signal_connect(GTK_OBJECT(button), "button_press_event",
 		       GTK_SIGNAL_FUNC(showHistory_signal),
 		       NULL);
     gtk_widget_set_usize(GTK_WIDGET(button), 13, 10);

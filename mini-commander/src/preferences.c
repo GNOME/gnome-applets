@@ -25,7 +25,8 @@
 #include <string.h>
 
 #include "preferences.h"
-#include "command_line.h"
+#include "command_line.h" /* needed for style changes */
+#include "history.h"
 #include "message.h"
 #include "mini-commander_applet.h"
 
@@ -239,6 +240,7 @@ loadSession(void)
     prop.cmdLineColorBgB = gnome_config_get_int("mini_commander/cmd_line_color_bg_b=0");
 
 
+    /* macros */
     for(i=0; i<=MAX_PREFIXES-1; i++)
 	{
 	    switch (i+1) 
@@ -309,6 +311,14 @@ loadSession(void)
 	    propTmp.command[i] = (char *) NULL;
 	}    
 
+    /* history */
+    for(i = 0; i < HISTORY_DEPTH; i++)
+	{
+	    g_snprintf(section, sizeof(section), "mini_commander/history_%d=%s", i, "");
+	    if(strcmp("", (char *) gnome_config_get_string((gchar *) section)) != 0)
+	       appendHistoryEntry(gnome_config_get_string((gchar *) section));
+	}
+
     gnome_config_pop_prefix();
 }
 
@@ -345,7 +355,7 @@ saveSession(void)
     gnome_config_set_int("mini_commander/cmd_line_color_bg_g", prop.cmdLineColorBgG);
     gnome_config_set_int("mini_commander/cmd_line_color_bg_b", prop.cmdLineColorBgB);
 
-    /* prefix & command */
+    /* macros */
     for(i=0; i<=MAX_PREFIXES-1; i++)
 	{
 	    g_snprintf(section, sizeof(section), "mini_commander/prefix_%d", i+1);
@@ -358,20 +368,21 @@ saveSession(void)
 	    propTmp.command[i] = (char *) NULL;
 	}    
 
+    /* history */
+    for(i = 0; i < HISTORY_DEPTH; i++)
+	{
+	    g_snprintf(section, sizeof(section), "mini_commander/history_%d", i);
+	    if(existsHistoryEntry(i))
+		gnome_config_set_string((gchar *) section, (gchar *) getHistoryEntry(i));
+	    else
+		gnome_config_set_string((gchar *) section, (gchar *) "");
+	}
   
     gnome_config_sync();
     /* you need to use the drop_all here since we're all writing to
        one file, without it, things might not work too well */
     gnome_config_drop_all();
     
-    /* make sure you return FALSE, otherwise your applet might not
-       work compeltely, there are very few circumstances where you
-       want to return TRUE. This behaves similiar to GTK events, in
-       that if you return FALSE it means that you haven't done
-       everything yourself, meaning you want the panel to save your
-       other state such as the panel you are on, position,
-       parameter, etc ... */
-
     gnome_config_pop_prefix(); 
 }
 
@@ -381,6 +392,13 @@ saveSession_signal(GtkWidget *widget, const char *privcfgpath, const char *globc
     showMessage((gchar *) _("saving prefs...")); 	    
     saveSession();
 
+    /* make sure you return FALSE, otherwise your applet might not
+       work compeltely, there are very few circumstances where you
+       want to return TRUE. This behaves similiar to GTK events, in
+       that if you return FALSE it means that you haven't done
+       everything yourself, meaning you want the panel to save your
+       other state such as the panel you are on, position,
+       parameter, etc ... */
     return FALSE;
 }
 
