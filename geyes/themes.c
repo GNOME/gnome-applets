@@ -236,7 +236,7 @@ properties_cb (BonoboUIComponent *uic,
 	hbox = gtk_hbox_new (FALSE, 0);
 	gtk_box_pack_start (GTK_BOX (GTK_DIALOG (pbox)->vbox), hbox, FALSE, FALSE, 2);
 	
-	label = gtk_label_new_with_mnemonic (_("T_heme Name"));
+	label = gtk_label_new_with_mnemonic (_("T_heme Name:"));
 	gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
 	gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
 
