@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-07-17 23:57+0200\n"
+"POT-Creation-Date: 2003-07-24 18:36+0200\n"
 "PO-Revision-Date: 2003-07-15 11:47+0100\n"
 "Last-Translator: Gnome PL Team <translators@gnome.pl>\n"
 "Language-Team: Polish <pl@li.org>\n"
@@ -83,13 +83,13 @@ msgid "Utility"
 msgstr "Narzędzia"
 
 #: accessx-status/applet.c:135 battstat/battstat_applet.c:839
-#: cdplayer/cdplayer.c:574 charpick/charpick.c:582 drivemount/drivemount.c:515
+#: cdplayer/cdplayer.c:575 charpick/charpick.c:582 drivemount/drivemount.c:515
 #: geyes/geyes.c:228 gkb-new/gkb-applet.c:84 gtik/gtik.c:774
-#: gweather/gweather-about.c:44 mailcheck/mailcheck.c:2432
+#: gweather/gweather-about.c:44 mailcheck/mailcheck.c:2435
 #: mini-commander/src/about.c:48 mixer/mixer.c:1060
 #: modemlights/modemlights.c:115 multiload/main.c:57
 #: stickynotes/stickynotes_applet_callbacks.c:178
-#: wireless/wireless-applet.c:735
+#: wireless/wireless-applet.c:709
 msgid "translator_credits"
 msgstr "GNOME PL Team <translators@gnome.pl>"
 
@@ -156,24 +156,24 @@ msgid "_Suspend Computer..."
 msgstr "_Uśpij komputer..."
 
 #: battstat/battstat.schemas.in.h:1
-msgid "Beep?"
-msgstr "Sygnał dźwiękowy?"
+msgid "Beep for warnings"
+msgstr "Dźwięk przy ostrzeżeniach"
 
 #: battstat/battstat.schemas.in.h:2
+msgid "Beep when displaying a warning"
+msgstr "Sygnał dźwiękowy podczas wyświetlania ostrzeżenia"
+
+#: battstat/battstat.schemas.in.h:3
 msgid "Command to send to suspend the computer"
 msgstr "Komenda usypiająca komputer"
 
-#: battstat/battstat.schemas.in.h:3
+#: battstat/battstat.schemas.in.h:4
 msgid "Drain from top"
 msgstr "Wyczerpywanie od góry"
 
-#: battstat/battstat.schemas.in.h:4
+#: battstat/battstat.schemas.in.h:5
 msgid "Full Battery Notification"
 msgstr "Powiadomienie o naładowanym akumulatorze"
-
-#: battstat/battstat.schemas.in.h:5
-msgid "Horizontal"
-msgstr "Poziomo"
 
 #: battstat/battstat.schemas.in.h:6
 msgid "Low Battery Notification"
@@ -188,12 +188,12 @@ msgid "Notify user when the battery is low"
 msgstr "Powiadomienie użytkownika o niskim poziomie naładowania akumulatora"
 
 #: battstat/battstat.schemas.in.h:9
-msgid "Orange Value"
-msgstr "Wartość pomarańczowego"
+msgid "Orange value level"
+msgstr "Wartość poziomu pomarańczowego"
 
 #: battstat/battstat.schemas.in.h:10
-msgid "Red Value"
-msgstr "Wartość czerwonego"
+msgid "Red value level"
+msgstr "Wartość poziomu czerwonego"
 
 #: battstat/battstat.schemas.in.h:11
 msgid "Show battery status"
@@ -216,12 +216,26 @@ msgid "Suspend Command"
 msgstr "Polecenie uśpienia"
 
 #: battstat/battstat.schemas.in.h:16
-msgid "Use dock"
-msgstr "Używanie stacji dokującej"
+msgid "The battery level below which the battery is displayed as orange."
+msgstr ""
+"Poziom naładowania akumulatora, poniźej którego jego symbol jest wyświetlany "
+"na pomarańczowo."
 
 #: battstat/battstat.schemas.in.h:17
-msgid "Yellow Value"
-msgstr "Wartość żółtego"
+msgid "The battery level below which the battery is displayed as red."
+msgstr ""
+"Poziom naładowania akumulatora, poniźej którego jego symbol jest wyświetlany "
+"na czerwono."
+
+#: battstat/battstat.schemas.in.h:18
+msgid "The battery level below which the battery is displayed as yellow."
+msgstr ""
+"Poziom naładowania akumulatora, poniźej którego jego symbol jest wyświetlany "
+"na żółto."
+
+#: battstat/battstat.schemas.in.h:19
+msgid "Yellow value level"
+msgstr "Wartość poziomu żółtego"
 
 #. Message displayed if user tries to run applet
 #. on unsupported platform
@@ -456,7 +470,7 @@ msgstr "<b>Uśpienie</b>"
 msgid "<b>Warnings</b>"
 msgstr "<b>Ostrzeżenia</b>"
 
-#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1521
+#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1522
 msgid "Appearance"
 msgstr "Wygląd"
 
@@ -464,9 +478,9 @@ msgstr "Wygląd"
 msgid "Battery Charge Monitor Preferences"
 msgstr "Preferencje monitora poziomu naładowania akumulatora"
 
-#: battstat/battstat_applet.glade.h:13 drivemount/properties.c:348
-#: gweather/gweather-pref.c:760 mailcheck/mailcheck.c:2026
-#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:552
+#: battstat/battstat_applet.glade.h:13 drivemount/properties.c:349
+#: gweather/gweather-pref.c:761 mailcheck/mailcheck.c:2026
+#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:553
 msgid "General"
 msgstr "Ogólne"
 
@@ -523,8 +537,8 @@ msgid "_Yellow:"
 msgstr "Żół_ty:"
 
 #: battstat/properties.c:296 drivemount/drivemount.c:473
-#: drivemount/properties.c:588 mailcheck/mailcheck.c:2289
-#: mailcheck/mailcheck.c:2537 mini-commander/src/preferences.c:393
+#: drivemount/properties.c:589 mailcheck/mailcheck.c:2291
+#: mailcheck/mailcheck.c:2540 mini-commander/src/preferences.c:393
 #: mixer/mixer.c:1167
 #, c-format
 msgid "There was an error displaying help: %s"
@@ -542,8 +556,8 @@ msgstr "Akumulator jest w pełni naładowany"
 msgid "Battery power low"
 msgstr "Akumulator jest na wyczerpaniu"
 
-#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:592
-#: cdplayer/cdplayer.c:1040
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:593
+#: cdplayer/cdplayer.c:1041
 msgid "CD Player"
 msgstr "Odtwarzacz CD"
 
@@ -568,23 +582,23 @@ msgstr "Aplet panelu służący do odtwarzania płyt CD"
 msgid "_Open CD Player"
 msgstr "Uruchom _odtwarzacz CD"
 
-#: cdplayer/cdplayer.c:171 cdplayer/cdplayer.c:1030
+#: cdplayer/cdplayer.c:171 cdplayer/cdplayer.c:1031
 msgid "Stop"
 msgstr "Zatrzymuje"
 
-#: cdplayer/cdplayer.c:175 cdplayer/cdplayer.c:1032
+#: cdplayer/cdplayer.c:175 cdplayer/cdplayer.c:1033
 msgid "Play / Pause"
 msgstr "Odtwarza / Wstrzymuje"
 
-#: cdplayer/cdplayer.c:179 cdplayer/cdplayer.c:1034
+#: cdplayer/cdplayer.c:179 cdplayer/cdplayer.c:1035
 msgid "Eject"
 msgstr "Wysuń"
 
-#: cdplayer/cdplayer.c:183 cdplayer/cdplayer.c:1036
+#: cdplayer/cdplayer.c:183 cdplayer/cdplayer.c:1037
 msgid "Previous Track"
 msgstr "Poprzednia ścieżka"
 
-#: cdplayer/cdplayer.c:187 cdplayer/cdplayer.c:1038
+#: cdplayer/cdplayer.c:187 cdplayer/cdplayer.c:1039
 msgid "Next Track"
 msgstr "Następna ścieżka"
 
@@ -606,23 +620,23 @@ msgstr "%s nie wygląda na odtwarzacz CD"
 msgid "CD Player Preferences"
 msgstr "Ustawienia odtwarzacza CD"
 
-#: cdplayer/cdplayer.c:494
+#: cdplayer/cdplayer.c:495
 msgid "Device _path:"
 msgstr "Ścieżka _urządzenia:"
 
-#: cdplayer/cdplayer.c:503
+#: cdplayer/cdplayer.c:504
 msgid "Device Path"
 msgstr "Ścieżka urządzenia"
 
-#: cdplayer/cdplayer.c:503
+#: cdplayer/cdplayer.c:504
 msgid "Set the device path here"
 msgstr "Ustaw tutaj ścieżkę urządzenia"
 
-#: cdplayer/cdplayer.c:506
+#: cdplayer/cdplayer.c:507
 msgid "Use _Default"
 msgstr "Użycie _domyślnej"
 
-#: cdplayer/cdplayer.c:593
+#: cdplayer/cdplayer.c:594
 msgid ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
@@ -630,41 +644,41 @@ msgstr ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (przeniesienie na GNOME 2)"
 
-#: cdplayer/cdplayer.c:595 cdplayer/cdplayer.c:1041
+#: cdplayer/cdplayer.c:596 cdplayer/cdplayer.c:1042
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr ""
 "Aplet odtwarzacza CD jest prostym odtwarzaczem płyt CD umiejscowionym na "
 "panelu"
 
-#: cdplayer/cdplayer.c:870 cdplayer/cdplayer.c:881
+#: cdplayer/cdplayer.c:871 cdplayer/cdplayer.c:882
 msgid "Elapsed time"
 msgstr "Czas odtwarzania"
 
-#: cdplayer/cdplayer.c:873 cdplayer/cdplayer.c:883
+#: cdplayer/cdplayer.c:874 cdplayer/cdplayer.c:884
 msgid "Track number"
 msgstr "Numer ścieżki"
 
-#: cdplayer/cdplayer.c:939
+#: cdplayer/cdplayer.c:940
 msgid "Audio device is busy, or being used by another application"
 msgstr "Urządzenie dźwiękowe jest zajęte lub używa go inna aplikacja."
 
-#: cdplayer/cdplayer.c:1031
+#: cdplayer/cdplayer.c:1032
 msgid "Click this button to Stop playing the CD"
 msgstr "Kliknij ten przycisk, aby zatrzymać odtwarzanie płyty CD"
 
-#: cdplayer/cdplayer.c:1033
+#: cdplayer/cdplayer.c:1034
 msgid "Click this button to Play or Pause the CD"
 msgstr "Kliknij ten przycisk, aby odtworzyć lub wstrzymać odtwarzanie płyty CD"
 
-#: cdplayer/cdplayer.c:1035
+#: cdplayer/cdplayer.c:1036
 msgid "Click this button to eject the CD"
 msgstr "Kliknij ten przycisk, aby wysunąć płytę CD"
 
-#: cdplayer/cdplayer.c:1037
+#: cdplayer/cdplayer.c:1038
 msgid "Click this button to Play the previous track in the CD"
 msgstr "Kliknij ten przycisk, aby odtworzyć poprzednią ścieżkę na płycie CD"
 
-#: cdplayer/cdplayer.c:1039
+#: cdplayer/cdplayer.c:1040
 msgid "Click this button to Play the next track in the CD"
 msgstr "Kliknij ten przycisk, aby odtworzyć następną ścieżkę na płycie CD"
 
@@ -679,7 +693,7 @@ msgid ""
 msgstr "Pełna ścieżka do urządzenia, które będzie użyte do odtwarzania płyt CD"
 
 #: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:600
-#: charpick/charpick.c:744 charpick/properties.c:332
+#: charpick/charpick.c:744 charpick/properties.c:333
 msgid "Character Palette"
 msgstr "Paleta znaków"
 
@@ -691,7 +705,7 @@ msgstr "Generator apletu wybieraczki znaków"
 msgid "Insert characters"
 msgstr "Narzędzie do wstawiania znaków"
 
-#: charpick/charpick.c:322 charpick/properties.c:124
+#: charpick/charpick.c:322 charpick/properties.c:125
 msgid "Add Palette"
 msgstr "Dodawanie palety"
 
@@ -737,59 +751,71 @@ msgstr "Znaki widoczne przy uruchamianiu apletu"
 msgid "DEPRECATED - Characters shown on applet startup"
 msgstr "PRZESTARZAŁE - Znaki widoczne przy uruchamianiu apletu"
 
-#: charpick/charpick.schemas.in.h:3 charpick/properties.c:259
+#: charpick/charpick.schemas.in.h:3 charpick/properties.c:260
 msgid "List of available palettes"
 msgstr "Lista dostępnych palet"
 
-#: charpick/properties.c:87
+#: charpick/charpick.schemas.in.h:4
+msgid "List of strings containing the available palettes"
+msgstr "Lista ciągów znaków zawierających dostępne palety"
+
+#: charpick/charpick.schemas.in.h:5
+msgid ""
+"The string that the user had selected when the applet was last used. This "
+"string will be displayed when the user starts the applet."
+msgstr ""
+"Ciąg znaków, jaki użytkownik wybrał podczas ostatniego użycia apletu. Ciąg "
+"ten zostanie wyświetlony przy uruchomieniu apletu."
+
+#: charpick/properties.c:88
 msgid "_Palette:"
 msgstr "_Paleta:"
 
-#: charpick/properties.c:94
+#: charpick/properties.c:95
 msgid "Palette entry"
 msgstr "Element palety"
 
-#: charpick/properties.c:95
+#: charpick/properties.c:96
 msgid "Modify a palette by adding or removing chacters"
 msgstr "Modyfikacja palety poprzez dodawanie lub usuwanie znaków"
 
-#: charpick/properties.c:159
+#: charpick/properties.c:160
 msgid "Edit Palette"
 msgstr "Edycja palety"
 
-#: charpick/properties.c:258
+#: charpick/properties.c:259
 msgid "Palettes list"
 msgstr "Lista palet"
 
-#: charpick/properties.c:337
+#: charpick/properties.c:338
 msgid "Pal_ettes:"
 msgstr "Pal_ety:"
 
-#: charpick/properties.c:353
+#: charpick/properties.c:354
 msgid "Add button"
 msgstr "Przycisk dodawania"
 
-#: charpick/properties.c:354
+#: charpick/properties.c:355
 msgid "Click to add a new palette"
 msgstr "Kliknij by dodać nową paletę"
 
-#: charpick/properties.c:361
+#: charpick/properties.c:362
 msgid "Edit button"
 msgstr "Przycisk edycji"
 
-#: charpick/properties.c:362
+#: charpick/properties.c:363
 msgid "Click to edit the selected palette"
 msgstr "Kliknij by edytować wybraną paletę"
 
-#: charpick/properties.c:369
+#: charpick/properties.c:370
 msgid "Delete button"
 msgstr "Przycisk usuwania"
 
-#: charpick/properties.c:370
+#: charpick/properties.c:371
 msgid "Click to delete the selected palette"
 msgstr "Kliknij by usunąć wybraną paletę"
 
-#: charpick/properties.c:422
+#: charpick/properties.c:423
 msgid "Character Palette Preferences"
 msgstr "Ustawienia palety znaków"
 
@@ -827,8 +853,8 @@ msgstr "Przy uruchamianiu %s wystąpił błąd: %s"
 msgid "Cannot browse device"
 msgstr "Nie można przeglądać urządzenia"
 
-#: drivemount/drivemount.c:479 drivemount/properties.c:594
-#: mailcheck/mailcheck.c:2295 mailcheck/mailcheck.c:2543
+#: drivemount/drivemount.c:479 drivemount/properties.c:595
+#: mailcheck/mailcheck.c:2297 mailcheck/mailcheck.c:2546
 msgid "Error displaying help"
 msgstr "Błąd podczas wyświetlania pomocy"
 
@@ -876,80 +902,80 @@ msgstr "Czas w sekundach pomiędzy uaktualnieniami stanu"
 msgid "Disk Mounter Preferences"
 msgstr "Właściwości montera dysków"
 
-#: drivemount/properties.c:354
+#: drivemount/properties.c:355
 msgid "_Mount directory:"
 msgstr "Punkt _montowania:"
 
-#: drivemount/properties.c:360
+#: drivemount/properties.c:361
 msgid "Select Mount Directory"
 msgstr "Wybór punktu montowania"
 
-#: drivemount/properties.c:382
+#: drivemount/properties.c:383
 msgid "_Update interval:"
 msgstr "_Okres odświeżania:"
 
-#: drivemount/properties.c:405 mailcheck/mailcheck.c:2095
-#: mailcheck/mailcheck.c:2101 modemlights/properties.c:461
+#: drivemount/properties.c:406 mailcheck/mailcheck.c:2097
+#: mailcheck/mailcheck.c:2103 modemlights/properties.c:462
 msgid "seconds"
 msgstr "sekund"
 
-#: drivemount/properties.c:418
+#: drivemount/properties.c:419
 msgid "_Icon:"
 msgstr "_Ikona:"
 
-#: drivemount/properties.c:444
+#: drivemount/properties.c:445
 msgid "Floppy"
 msgstr "Dyskietka"
 
-#: drivemount/properties.c:447
+#: drivemount/properties.c:448
 msgid "Cdrom"
 msgstr "CD-ROM"
 
-#: drivemount/properties.c:450
+#: drivemount/properties.c:451
 msgid "Cd Recorder"
 msgstr "Nagrywarka CD"
 
-#: drivemount/properties.c:453
+#: drivemount/properties.c:454
 msgid "Zip Drive"
 msgstr "Napęd Zip"
 
-#: drivemount/properties.c:456
+#: drivemount/properties.c:457
 msgid "Hard Disk"
 msgstr "Dysk niewymienny"
 
-#: drivemount/properties.c:459
+#: drivemount/properties.c:460
 msgid "Jaz Drive"
 msgstr "Napęd Jaz"
 
-#: drivemount/properties.c:462
+#: drivemount/properties.c:463
 msgid "Custom"
 msgstr "Wybrany"
 
-#: drivemount/properties.c:481
+#: drivemount/properties.c:482
 msgid "Select icon for mounted"
 msgstr "Wybór ikony zamontowanego urządzenia"
 
-#: drivemount/properties.c:488
+#: drivemount/properties.c:489
 msgid "Moun_ted icon:"
 msgstr "Ikona urządzenia zamon_towanego:"
 
-#: drivemount/properties.c:509
+#: drivemount/properties.c:510
 msgid "Select icon for unmounted"
 msgstr "Wybór ikony odmontowanego urządzenia"
 
-#: drivemount/properties.c:516
+#: drivemount/properties.c:517
 msgid "Unmou_nted icon:"
 msgstr "Ikona urządzenia odmo_ntowanego:"
 
-#: drivemount/properties.c:532
+#: drivemount/properties.c:533
 msgid "_Scale size to panel"
 msgstr "_Skalowanie do rozmiarów panelu"
 
-#: drivemount/properties.c:539
+#: drivemount/properties.c:540
 msgid "_Eject disk when unmounting"
 msgstr "_Wysuwanie po odmontowaniu"
 
-#: drivemount/properties.c:549
+#: drivemount/properties.c:550
 msgid "Use _automount friendly status test"
 msgstr "Wykorzystanie testu przyjaznego dla _automount"
 
@@ -990,11 +1016,11 @@ msgstr "Katalog, w którym znajduje się motyw"
 msgid "Geyes Preferences"
 msgstr "Preferencje Geyes"
 
-#: geyes/themes.c:288
+#: geyes/themes.c:289
 msgid "Themes"
 msgstr "Motywy"
 
-#: geyes/themes.c:309
+#: geyes/themes.c:310
 msgid "_Select a theme:"
 msgstr "_Wybór motywu:"
 
@@ -1061,17 +1087,16 @@ msgid "Flag image for the keyboard layout"
 msgstr "Obraz flagi dla układu klawiatury"
 
 #: gkb-new/gkb.schemas.in.h:3
-msgid "Is the applet size small?"
-msgstr "Czy rozmiar apletu jest niewielki?"
+msgid "It can be \"Flag and Label\", \"Label\" or \"Flag\""
+msgstr "Mogą to być wartości \"flaga i etykieta\", \"Etykieta\" lub \"flaga\""
 
 #: gkb-new/gkb.schemas.in.h:4
-msgid "It can be \"Flag and Label\", \"Label\" and \"Flag\""
-msgstr ""
-"Mogą to być wartości \"Znacznik i etykieta\", \"Etykieta\" i \"Znacznik\""
+msgid "Keybinding for switching layout"
+msgstr "Przypisany skrót zmiany układu klawiatury"
 
 #: gkb-new/gkb.schemas.in.h:5
-msgid "Keybinding for switch by keypress"
-msgstr "Przypisany skrót zmiany układu klawiatury"
+msgid "No longer used"
+msgstr "Dłużej nie używana"
 
 #: gkb-new/gkb.schemas.in.h:6
 msgid "Number of configured keymaps"
@@ -1082,38 +1107,34 @@ msgid "The command that switches your keymap to this layout"
 msgstr "Polecenie przełączające na ten układ klawiatury"
 
 #: gkb-new/gkb.schemas.in.h:8
-msgid "The command what switch your keymap tho this layout"
-msgstr "Polecenie przełączające na ten układ klawiatury"
-
-#: gkb-new/gkb.schemas.in.h:9
 msgid "The country of the keyboard layout"
 msgstr "Kraj układu klawiatury"
 
-#: gkb-new/gkb.schemas.in.h:10
+#: gkb-new/gkb.schemas.in.h:9
 msgid "The label of the keyboard layout"
 msgstr "Etykieta układu klawiatury"
 
-#: gkb-new/gkb.schemas.in.h:11
+#: gkb-new/gkb.schemas.in.h:10
 msgid "The language of the keyboard layout"
 msgstr "Język układu klawiatury"
 
-#: gkb-new/gkb.schemas.in.h:12
+#: gkb-new/gkb.schemas.in.h:11
 msgid "The name of the keyboard layout"
 msgstr "Nazwa układu klawiatury"
 
-#: gkb-new/gkb.schemas.in.h:13
+#: gkb-new/gkb.schemas.in.h:12
 msgid "This flag will appear in flag field of the applet"
 msgstr "Ten znacznik pojawi się w polu znacznika apletu"
 
-#: gkb-new/gkb.schemas.in.h:14
+#: gkb-new/gkb.schemas.in.h:13
 msgid "This information helps you to identify your keyboard layout"
 msgstr "Ta informacja pomaga zidentyfikować układ klawiatury"
 
-#: gkb-new/gkb.schemas.in.h:15
+#: gkb-new/gkb.schemas.in.h:14
 msgid "This is the binding for keypress-based layout change"
 msgstr "Przypisany skrót klawiaturowy do zmiany układu klawiatury"
 
-#: gkb-new/gkb.schemas.in.h:16
+#: gkb-new/gkb.schemas.in.h:15
 msgid ""
 "This should be like \"gkb_xmmap us\", \"setxkbmap us\" or \"xmodmap "
 "something.xmm\""
@@ -1121,17 +1142,13 @@ msgstr ""
 "Powinno to być coś w rodzaju \"gkb_xmmap us\", \"setxkbmap us\" lib "
 "\"xmodmap cośtam.xmm\""
 
-#: gkb-new/gkb.schemas.in.h:17
+#: gkb-new/gkb.schemas.in.h:16
 msgid "This will appear in the label box of the applet"
 msgstr "Zawartość pola etykiety apletu"
 
-#: gkb-new/gkb.schemas.in.h:18
+#: gkb-new/gkb.schemas.in.h:17
 msgid "This will identify the layout in the list"
 msgstr "Identyfikacja układu klawiatury na liście"
-
-#: gkb-new/gkb.schemas.in.h:19
-msgid "When this is true, the applet will be half size"
-msgstr "Jeżeli prawdziwe, aplet będzie o połowę mniejszy"
 
 #: gkb-new/keygrab.c:69 gkb-new/keygrab.c:148
 msgid "Disabled"
@@ -1158,7 +1175,7 @@ msgstr "Układ klawiatury \"%s\" dla kraju %s już istnieje"
 msgid "Select Keyboard"
 msgstr "Wybór klawiatury"
 
-#: gkb-new/prop-add.c:352
+#: gkb-new/prop-add.c:353
 msgid "_Keyboards (select and press add):"
 msgstr "_Klawiatury (wybierz i wciśnij Dodaj):"
 
@@ -1174,19 +1191,19 @@ msgstr "?"
 msgid "Edit Keyboard"
 msgstr "Modyfikacja układu klawiatury"
 
-#: gkb-new/prop-map.c:296
+#: gkb-new/prop-map.c:297
 msgid "_Name:"
 msgstr "_Nazwa:"
 
-#: gkb-new/prop-map.c:300
+#: gkb-new/prop-map.c:301
 msgid "_Label:"
 msgstr "_Etykieta:"
 
-#: gkb-new/prop-map.c:303 mini-commander/src/mini-commander.glade.h:8
+#: gkb-new/prop-map.c:304 mini-commander/src/mini-commander.glade.h:8
 msgid "Co_mmand:"
 msgstr "_Polecenie:"
 
-#: gkb-new/prop-map.c:306
+#: gkb-new/prop-map.c:307
 msgid "_Flag:"
 msgstr "_Flaga:"
 
@@ -1202,8 +1219,8 @@ msgstr "Etykieta"
 msgid "Flag and Label"
 msgstr "Flaga i etykieta"
 
-#: gkb-new/prop.c:257 gtik/gtik.c:1528 gweather/gweather-pref.c:745
-#: modemlights/properties.c:437
+#: gkb-new/prop.c:257 gtik/gtik.c:1529 gweather/gweather-pref.c:746
+#: modemlights/properties.c:438
 msgid "Display"
 msgstr "Wyświetlanie"
 
@@ -1232,17 +1249,17 @@ msgstr "Preferencje przełącznika układów klawiatury"
 msgid "Keyboard Layout Selector"
 msgstr "Przełącznik układów klawiatury"
 
-#: gkb-new/prop.c:433
+#: gkb-new/prop.c:434
 msgid "Keyboards"
 msgstr "Klawiatury"
 
 #  Page 1 Frame
 #. Page 1 Frame
-#: gkb-new/prop.c:437
+#: gkb-new/prop.c:438
 msgid "_Keyboards:"
 msgstr "_Klawiatury:"
 
-#: gkb-new/prop.c:456 multiload/properties.c:420
+#: gkb-new/prop.c:457 multiload/properties.c:420
 msgid "Options"
 msgstr "Opcje"
 
@@ -1325,7 +1342,7 @@ msgstr ""
 
 #: gtik/gtik.c:1278
 msgid "Current _stocks:"
-msgstr "_Aktualne akcje:"
+msgstr "_Aktualne indeksy giełdowe:"
 
 #: gtik/gtik.c:1286
 msgid "_New symbol:"
@@ -1343,170 +1360,258 @@ msgstr "_Usuń"
 msgid "Stock Ticker Preferences"
 msgstr "Ustawienia wskaźnika giełdowego"
 
-#: gtik/gtik.c:1431
+#: gtik/gtik.c:1432
 msgid "Symbols"
 msgstr "Symbole"
 
-#: gtik/gtik.c:1438 mailcheck/mailcheck.c:2363
+#: gtik/gtik.c:1439 mailcheck/mailcheck.c:2366
 msgid "Behavior"
 msgstr "Zachowanie"
 
-#: gtik/gtik.c:1441 gweather/gweather-pref.c:704
+#: gtik/gtik.c:1442 gweather/gweather-pref.c:705
 msgid "Update"
 msgstr "Odświeżanie"
 
-#: gtik/gtik.c:1445
+#: gtik/gtik.c:1446
 msgid "Stock update fre_quency:"
 msgstr "Częstotliwość _odświeżania:"
 
-#: gtik/gtik.c:1457 gweather/gweather-pref.c:728 mailcheck/mailcheck.c:2073
-#: mailcheck/mailcheck.c:2079
+#: gtik/gtik.c:1458 gweather/gweather-pref.c:729 mailcheck/mailcheck.c:2074
+#: mailcheck/mailcheck.c:2080
 msgid "minutes"
 msgstr "minut"
 
-#: gtik/gtik.c:1463
+#: gtik/gtik.c:1464
 msgid "Scrolling"
 msgstr "Przewijanie"
 
-#: gtik/gtik.c:1467
+#: gtik/gtik.c:1468
 msgid "_Scroll speed:"
 msgstr "Szybkość prz_ewijania :"
 
-#: gtik/gtik.c:1471
+#: gtik/gtik.c:1472
 msgid "Slow"
 msgstr "Wolno"
 
-#: gtik/gtik.c:1473
+#: gtik/gtik.c:1474
 msgid "Medium"
 msgstr "Średnio"
 
-#: gtik/gtik.c:1475
+#: gtik/gtik.c:1476
 msgid "Fast"
 msgstr "Szybko"
 
-#: gtik/gtik.c:1495
+#: gtik/gtik.c:1496
 msgid "_Enable scroll buttons"
 msgstr "_Przyciski przewijania"
 
-#: gtik/gtik.c:1507
+#: gtik/gtik.c:1508
 msgid "Scroll _left to right"
 msgstr "Przewijanie od _lewej do prawej"
 
-#: gtik/gtik.c:1533
+#: gtik/gtik.c:1534
 msgid "Displa_y only symbols and price"
 msgstr "Wyświetlanie _tylko symboli oraz cen"
 
-#: gtik/gtik.c:1546 mini-commander/src/mini-commander.glade.h:23
+#: gtik/gtik.c:1547 mini-commander/src/mini-commander.glade.h:23
 #: stickynotes/stickynotes.glade.h:48
 msgid "_Width:"
 msgstr "_Szerokość:"
 
-#: gtik/gtik.c:1560 mini-commander/src/mini-commander.glade.h:24
+#: gtik/gtik.c:1561 mini-commander/src/mini-commander.glade.h:24
 #: multiload/properties.c:483
 msgid "pixels"
 msgstr "pikseli"
 
-#: gtik/gtik.c:1569
+#: gtik/gtik.c:1570
 msgid "Font and Colors"
 msgstr "Czcionka i kolory"
 
-#: gtik/gtik.c:1575
+#: gtik/gtik.c:1576
 msgid "Use _default theme font and colors"
 msgstr "_Domyślne kolory i czcionka motywu"
 
-#: gtik/gtik.c:1590 stickynotes/stickynotes.glade.h:42
+#: gtik/gtik.c:1591 stickynotes/stickynotes.glade.h:42
 msgid "_Font:"
 msgstr "_Czcionka:"
 
-#: gtik/gtik.c:1614
+#: gtik/gtik.c:1615
 msgid "Stock _raised:"
 msgstr "Wz_rost akcji:"
 
-#: gtik/gtik.c:1633
+#: gtik/gtik.c:1634
 msgid "Stock _lowered:"
 msgstr "Spadek _akcji:"
 
-#: gtik/gtik.c:1652
+#: gtik/gtik.c:1653
 msgid "Stock _unchanged:"
 msgstr "Brak _zmian akcji:"
 
-#: gtik/gtik.c:1671 modemlights/properties.c:569
+#: gtik/gtik.c:1672 modemlights/properties.c:570
 msgid "_Background:"
 msgstr "_Tło:"
 
-#: gtik/gtik.c:1804
+#: gtik/gtik.c:1805
 msgid "Skip forward"
 msgstr "Przeskocz naprzód"
 
-#: gtik/gtik.c:1805
+#: gtik/gtik.c:1806
 msgid "Skip backward"
 msgstr "Przeskocz wstecz"
 
-#: gtik/gtik.c:1813
+#: gtik/gtik.c:1814
 msgid ""
 "Stock Ticker\n"
 "Get continuously updated stock quotes"
 msgstr "Aktualizowane na bieżąco notowania giełdowe"
 
-#: gtik/gtik.c:2004
+#: gtik/gtik.c:2005
 msgid "(No"
 msgstr "(Nie"
 
-#: gtik/gtik.c:2005
+#: gtik/gtik.c:2006
 msgid "Change "
 msgstr "Zmiana "
 
 #: gtik/gtik.schemas.in.h:1
+msgid "Applet scrolls right to left when this key is set to true."
+msgstr "Określa, czy aplet ma przwijać zawartość od prawej do lewej."
+
+#: gtik/gtik.schemas.in.h:2
+msgid "Background color"
+msgstr "Kolor tła"
+
+#: gtik/gtik.schemas.in.h:3
+msgid ""
+"Display only stock symbols along with their value. Do not diplay changes in "
+"value."
+msgstr ""
+"Określa czy wyświetlać tylko symbole i ceny akcji, bez wyswietlania zmian "
+"wartości"
+
+#: gtik/gtik.schemas.in.h:4
 msgid "Display only symbols and price"
 msgstr "Wyświetlanie tylko symboli i cen"
 
-#: gtik/gtik.schemas.in.h:2
+#: gtik/gtik.schemas.in.h:5
+msgid "Font"
+msgstr "Czcionka"
+
+#: gtik/gtik.schemas.in.h:6
+msgid ""
+"List containing the stocks to be displayed. Consists of the stock id "
+"separated by \"+\""
+msgstr ""
+"Lista zawierająca wyświetlane akcje. Składa się ona z identyfikatorów akcji "
+"oddzielonych znakiem \"+\""
+
+#: gtik/gtik.schemas.in.h:7
+msgid "Lowered color"
+msgstr "Kolor spadku"
+
+#: gtik/gtik.schemas.in.h:8
+msgid "Raised color"
+msgstr "Kolor wzrostu"
+
+#: gtik/gtik.schemas.in.h:9
+msgid "Right to left scrolling"
+msgstr "Przewijanie od prawej do lewej"
+
+#: gtik/gtik.schemas.in.h:10
+msgid "Shorter time means the stocks scroll by faster."
+msgstr "Mniejsza wartość czasu oznacza szybsze przewijanie."
+
+#: gtik/gtik.schemas.in.h:11
+msgid "Show arrow buttons"
+msgstr "Wyświetlanie przycisków strzałek"
+
+#: gtik/gtik.schemas.in.h:12
+msgid ""
+"Show arrow buttons on the side of the display so that the user can scroll "
+"forward or backward."
+msgstr ""
+"Wyświetlanie klawiszy ze strzałkami, umożliwiającymi przwijanie zawrtości "
+"okna w obie strony."
+
+#: gtik/gtik.schemas.in.h:13
 msgid "Stocks to monitor - must be seperated by a +"
 msgstr "Giełdy do monitorowania - muszą być rozdzielone znakiem +"
 
-#: gtik/gtik.schemas.in.h:3
+#: gtik/gtik.schemas.in.h:14
+msgid ""
+"The color of the background of the display. Has no effect when the user "
+"chooses to use the default theme fonts and colors."
+msgstr ""
+"Kolor tła wyświetlacza. Ignorowany, kiedy użytkownik wybrał użycie czcionek "
+"i kolorów domyślnego motywu."
+
+#: gtik/gtik.schemas.in.h:15
+msgid ""
+"The color used when the stock's values has lowered. Has no effect when the "
+"user chooses to use the default theme fonts and colors."
+msgstr ""
+"Kolor używany przy spadku akcji. Ignorowany, kiedy użytkownik wybrał użycie "
+"czcionek i kolorów domyślnego motywu."
+
+#: gtik/gtik.schemas.in.h:16
+msgid ""
+"The color used when the stock's values has not changed. Has no effect when "
+"the user chooses to use the default theme fonts and colors."
+msgstr ""
+"Kolor używany przy braku zmiany wartości akcji. Ignorowany, kiedy użytkownik "
+"wybrał użycie czcionek i kolorów domyślnego motywu."
+
+#: gtik/gtik.schemas.in.h:17
+msgid ""
+"The color used when the stock's values has raised. Has no effect when the "
+"user chooses to use the default theme fonts and colors."
+msgstr ""
+"Kolor używany przy wzroście akcji. Ignorowany, kiedy użytkownik wybrał "
+"użycie czcionek i kolorów domyślnego motywu."
+
+#: gtik/gtik.schemas.in.h:18
+msgid ""
+"The font used for the display. Has no effect when the user chooses to use "
+"the default theme fonts and colors."
+msgstr ""
+"Czcionka używana przez wyświetlacz. Ignorowana, kiedy użytkownik wybrał "
+"użycie czcionek i kolorów domyślnego motywu."
+
+#: gtik/gtik.schemas.in.h:19
+msgid "The time interval until when the applet updates the stock data."
+msgstr "Czas po którym aplet odświeża dane wartości akcji."
+
+#: gtik/gtik.schemas.in.h:20
+msgid "The width in pixels of the applet."
+msgstr "Szerokość apletu w pikselach"
+
+#: gtik/gtik.schemas.in.h:21
+msgid "Time in milliseconds for display update"
+msgstr "Czas odświeżania wyświetlacza w milisekundach"
+
+#: gtik/gtik.schemas.in.h:22
+msgid "Unchanged color"
+msgstr "Kolor braku zmian"
+
+#: gtik/gtik.schemas.in.h:23
+msgid "Update interval"
+msgstr "Okres odświeżania"
+
+#: gtik/gtik.schemas.in.h:24
+msgid "Use default theme fonts and colors"
+msgstr "Uzycie domyślnych kolorów i czcionki motywu"
+
+#: gtik/gtik.schemas.in.h:25
 msgid "Use default theme fonts and colors instead of custom ones"
 msgstr "Użycie domyślnych kolorów i czcionek motywu"
 
-#: gtik/gtik.schemas.in.h:4 mini-commander/src/mini-commander.schemas.in.h:7
+#: gtik/gtik.schemas.in.h:26 mini-commander/src/mini-commander.schemas.in.h:7
 msgid "Width of the applet"
 msgstr "Szerokość apletu"
 
-#: gtik/gtik.schemas.in.h:5
-msgid "bg color"
-msgstr "koloru tła"
-
-#: gtik/gtik.schemas.in.h:6
-msgid "color"
-msgstr "kolor"
-
-#: gtik/gtik.schemas.in.h:7
-msgid "color for no change text"
-msgstr "kolor tekstu dla akcji bez zmian"
-
-#: gtik/gtik.schemas.in.h:8
-msgid "font"
-msgstr "czcionka"
-
-#: gtik/gtik.schemas.in.h:9
+#: gtik/gtik.schemas.in.h:27
 msgid "font 2 - No Longer used"
 msgstr "czcionka 2 - dłużej nie używana"
-
-#: gtik/gtik.schemas.in.h:10
-msgid "set to true for right to left scrolling"
-msgstr "określa czy przesuwać tekst od prawej do lewej"
-
-#: gtik/gtik.schemas.in.h:11
-msgid "show buttons"
-msgstr "wyświetlenie przycisków"
-
-#: gtik/gtik.schemas.in.h:12
-msgid "time in miliseconds for display update"
-msgstr "czas odświeżania w milisekundach"
-
-#: gtik/gtik.schemas.in.h:13
-msgid "timeout"
-msgstr "czas oczekiwania"
 
 #: gweather/GNOME_GWeatherApplet.xml.h:2
 msgid "_Forecast"
@@ -1619,7 +1724,7 @@ msgstr "Kliknij, aby odwiedzić Weather.com"
 msgid "Radar Map"
 msgstr "Mapa radarowa"
 
-#: gweather/gweather-dialog.c:409
+#: gweather/gweather-dialog.c:410
 msgid ""
 "Detailed forecast not available for this location.\n"
 "Please try the state forecast; note that IWIN forecasts are available only "
@@ -1629,7 +1734,7 @@ msgstr ""
 "Spróbuj wybrać stanową prognozę pogody; Zauważ że prognozy pogody IWIN są "
 "dostępne tylko dla miast USA."
 
-#: gweather/gweather-dialog.c:411
+#: gweather/gweather-dialog.c:412
 msgid ""
 "State forecast not available for this location.\n"
 "Please try the detailed forecast; note that IWIN forecasts are available "
@@ -1668,31 +1773,31 @@ msgstr "Wprowadź URL"
 msgid "Weather Preferences"
 msgstr "Ustawienia panelu pogodowego"
 
-#: gweather/gweather-pref.c:643 gweather/gweather-pref.c:708
+#: gweather/gweather-pref.c:644 gweather/gweather-pref.c:709
 msgid "_Automatically update every:"
 msgstr "_Automatyczna aktualizacja co:"
 
-#: gweather/gweather-pref.c:651
+#: gweather/gweather-pref.c:652
 msgid "Use _metric system units"
 msgstr "Wykorzystanie systemu m_etrycznego"
 
-#: gweather/gweather-pref.c:659
+#: gweather/gweather-pref.c:660
 msgid "Enable _radar map"
 msgstr "Mapa _radarowa"
 
-#: gweather/gweather-pref.c:673
+#: gweather/gweather-pref.c:674
 msgid "Use cus_tom address for radar map"
 msgstr "Użycie _własnego adresu mapy radarowej"
 
-#: gweather/gweather-pref.c:690
+#: gweather/gweather-pref.c:691
 msgid "A_ddress:"
 msgstr "Adr_es:"
 
-#: gweather/gweather-pref.c:773
+#: gweather/gweather-pref.c:774
 msgid "_Select a location:"
 msgstr "Wybór p_ołożenia:"
 
-#: gweather/gweather-pref.c:802
+#: gweather/gweather-pref.c:803
 msgid "Location"
 msgstr "Położenie"
 
@@ -2174,7 +2279,7 @@ msgid "Factory for creating inbox monitors."
 msgstr "Generator tworzący monitory skrzynki odbiorczej."
 
 #: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:3
-#: mailcheck/mailcheck.c:791 mailcheck/mailcheck.c:2445
+#: mailcheck/mailcheck.c:791 mailcheck/mailcheck.c:2448
 msgid "Inbox Monitor"
 msgstr "Monitor poczty"
 
@@ -2255,11 +2360,11 @@ msgid "No mail."
 msgstr "Brak poczty."
 
 #: mailcheck/mailcheck.c:1548 mailcheck/mailcheck.c:1549
-#: mailcheck/mailcheck.c:2802 mailcheck/mailcheck.c:2803
+#: mailcheck/mailcheck.c:2805 mailcheck/mailcheck.c:2806
 msgid "Status not updated"
 msgstr "Stan nie uaktualniony"
 
-#: mailcheck/mailcheck.c:1751 mailcheck/mailcheck.c:2367
+#: mailcheck/mailcheck.c:1751 mailcheck/mailcheck.c:2370
 msgid "Inbox Settings"
 msgstr "Ustawienia skrzynki"
 
@@ -2323,72 +2428,72 @@ msgstr "Pole wprowadzania nazwy folderu"
 msgid "Check for mail _every:"
 msgstr "Sp_rawdzanie poczty co:"
 
-#: mailcheck/mailcheck.c:2073
+#: mailcheck/mailcheck.c:2074
 msgid "Choose time interval in minutes to check mail"
 msgstr "Wybór okresu czasu (w minutach) sprawdzania poczty"
 
-#: mailcheck/mailcheck.c:2095
+#: mailcheck/mailcheck.c:2097
 msgid "Choose time interval in seconds to check mail"
 msgstr "Wybór okresu czasu (w sekundach) sprawdzania poczty"
 
-#: mailcheck/mailcheck.c:2112
+#: mailcheck/mailcheck.c:2114
 msgid "Play a _sound when new mail arrives"
 msgstr "Odt_worzenie dźwięku po otrzymaniu wiadomości"
 
 #. l = gtk_check_button_new_with_mnemonic (_("Set the number of unread mails to _zero when clicked"));
-#: mailcheck/mailcheck.c:2122
+#: mailcheck/mailcheck.c:2124
 msgid "Sto_p animation when double clicked"
 msgstr "Za_trzymanie animacji po podwójnym kliknięciu"
 
-#: mailcheck/mailcheck.c:2135
+#: mailcheck/mailcheck.c:2137
 msgid "Select a_nimation:"
 msgstr "Wybór a_nimacji:"
 
-#: mailcheck/mailcheck.c:2152
+#: mailcheck/mailcheck.c:2154
 msgid "Commands"
 msgstr "Polecenia"
 
-#: mailcheck/mailcheck.c:2181
+#: mailcheck/mailcheck.c:2183
 msgid "Before each _update:"
 msgstr "Przed każdą akt_ualizacją:"
 
-#: mailcheck/mailcheck.c:2198
+#: mailcheck/mailcheck.c:2200
 msgid "Command to execute before each update"
 msgstr "Polecenie wykonywane przed każdą aktualizacją"
 
-#: mailcheck/mailcheck.c:2210
+#: mailcheck/mailcheck.c:2212
 msgid "When new mail _arrives:"
 msgstr "N_adejście nowych wiadomości:"
 
-#: mailcheck/mailcheck.c:2225 mailcheck/mailcheck.schemas.in.h:2
+#: mailcheck/mailcheck.c:2227 mailcheck/mailcheck.schemas.in.h:2
 msgid "Command to execute when new mail arrives"
 msgstr "Polecenie wykonywane po otrzymaniu nowej wiadomości"
 
-#: mailcheck/mailcheck.c:2237
+#: mailcheck/mailcheck.c:2239
 msgid "When double clicke_d:"
 msgstr "Po_dwójne kliknięcie:"
 
-#: mailcheck/mailcheck.c:2252
+#: mailcheck/mailcheck.c:2254
 msgid "Command to execute when clicked"
 msgstr "Polecenie wykonywane po kliknięciu"
 
-#: mailcheck/mailcheck.c:2337
+#: mailcheck/mailcheck.c:2339
 msgid "Inbox Monitor Preferences"
 msgstr "Ustawienia monitora poczty"
 
-#: mailcheck/mailcheck.c:2447
+#: mailcheck/mailcheck.c:2450
 msgid "Inbox Monitor notifies you when new mail arrives in your mailbox"
 msgstr "Monitor poczty powiadamia o nadejściu nowych wiadomości"
 
-#: mailcheck/mailcheck.c:2773
+#: mailcheck/mailcheck.c:2776
 msgid "Text only"
 msgstr "Sam napis"
 
-#: mailcheck/mailcheck.c:2804
+#: mailcheck/mailcheck.c:2807
 msgid "Mail check"
 msgstr "Sprawdzenie poczty"
 
-#: mailcheck/mailcheck.c:2805
+#: mailcheck/mailcheck.c:2808
 msgid "Mail check notifies you when new mail arrives in your mailbox"
 msgstr "Sprawdzanie poczty powiadamia o nadejściu nowych wiadomości"
 
@@ -2943,15 +3048,15 @@ msgstr ""
 msgid "Volume Control Preferences"
 msgstr "Preferencje regulacji głośności"
 
-#: mixer/mixer.c:1240
+#: mixer/mixer.c:1241
 msgid "Audio Channels"
 msgstr "Kanały dźwiękowe"
 
-#: mixer/mixer.c:1256
+#: mixer/mixer.c:1257
 msgid "_Select channel to control:"
 msgstr "_Wybór kontrolowanego kanału:"
 
-#: mixer/mixer.c:1586
+#: mixer/mixer.c:1587
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr ""
 "Aplet regulacji głośności pozwala na ustawienie poziomu dźwięku w systemie."
@@ -3097,114 +3202,114 @@ msgstr "Sprawdzanie właściciela pliku blokującego"
 msgid "Modem Lights Preferences"
 msgstr "Ustawienia kontrolek modemu"
 
-#: modemlights/properties.c:444
+#: modemlights/properties.c:445
 msgid "U_pdate every:"
 msgstr "_Odświeżanie co:"
 
 #. extra info checkbox
-#: modemlights/properties.c:469
+#: modemlights/properties.c:470
 msgid "Sho_w connect time and throughput"
 msgstr "_Wyświetlanie czasu i szybkości połączenia"
 
-#: modemlights/properties.c:479
+#: modemlights/properties.c:480
 msgid "B_link connection status when connecting"
 msgstr "Mr_uganie stanu połączenia podczas łączenia"
 
-#: modemlights/properties.c:489
+#: modemlights/properties.c:490
 msgid "Connections"
 msgstr "Łączenie"
 
-#: modemlights/properties.c:498
+#: modemlights/properties.c:499
 msgid "Co_nnection command:"
 msgstr "Polecenie _nawiązania połączenia:"
 
-#: modemlights/properties.c:522
+#: modemlights/properties.c:523
 msgid "_Disconnection command:"
 msgstr "Polecenie p_rzerwania połączenia:"
 
 #. confirmation checkbox
-#: modemlights/properties.c:542
+#: modemlights/properties.c:543
 msgid "Con_firm connection"
 msgstr "Po_twierdzenie połączenia"
 
-#: modemlights/properties.c:561
+#: modemlights/properties.c:562
 msgid "Receive Data"
 msgstr "Otrzymywanie danych"
 
-#: modemlights/properties.c:567
+#: modemlights/properties.c:568
 msgid "_Foreground:"
 msgstr "_Pierwszy plan:"
 
-#: modemlights/properties.c:572
+#: modemlights/properties.c:573
 msgid "Send Data"
 msgstr "Wysyłanie danych"
 
-#: modemlights/properties.c:577
+#: modemlights/properties.c:578
 msgid "Foregroun_d:"
 msgstr "P_ierwszy plan:"
 
-#: modemlights/properties.c:579
+#: modemlights/properties.c:580
 msgid "Backg_round:"
 msgstr "Tł_o:"
 
-#: modemlights/properties.c:582
+#: modemlights/properties.c:583
 msgid "Connection Status"
 msgstr "Stan połączenia"
 
-#: modemlights/properties.c:590
+#: modemlights/properties.c:591
 msgid "Co_nnected:"
 msgstr "Połą_czony:"
 
-#: modemlights/properties.c:592
+#: modemlights/properties.c:593
 msgid "Disconnec_ted:"
 msgstr "_Rozłączony:"
 
-#: modemlights/properties.c:595
+#: modemlights/properties.c:596
 msgid "C_onnecting:"
 msgstr "Łącze_nie:"
 
-#: modemlights/properties.c:598
+#: modemlights/properties.c:599
 msgid "Text"
 msgstr "Napis"
 
-#: modemlights/properties.c:606
+#: modemlights/properties.c:607
 msgid "For_eground:"
 msgstr "Pi_erwszy plan:"
 
-#: modemlights/properties.c:608
+#: modemlights/properties.c:609
 msgid "Bac_kground:"
 msgstr "Tł_o:"
 
-#: modemlights/properties.c:610
+#: modemlights/properties.c:611
 msgid "O_utline"
 msgstr "_Ramka"
 
-#: modemlights/properties.c:613 multiload/properties.c:528
+#: modemlights/properties.c:614 multiload/properties.c:528
 msgid "Colors"
 msgstr "Kolory"
 
-#: modemlights/properties.c:622
+#: modemlights/properties.c:623
 msgid "Modem Options"
 msgstr "Opcje modemu"
 
-#: modemlights/properties.c:631
+#: modemlights/properties.c:632
 msgid "_Device:"
 msgstr "_Urządzenie:"
 
-#: modemlights/properties.c:655
+#: modemlights/properties.c:656
 msgid "_Lock file:"
 msgstr "Plik _blokowania:"
 
-#: modemlights/properties.c:674
+#: modemlights/properties.c:675
 msgid "_Verify owner of lock file"
 msgstr "_Sprawdzanie właściciela pliku blokującego"
 
 #. ISDN checkbox
-#: modemlights/properties.c:685
+#: modemlights/properties.c:686
 msgid "U_se ISDN"
 msgstr "Wykorzystanie _ISDN-a"
 
-#: modemlights/properties.c:702
+#: modemlights/properties.c:703
 msgid "Advanced"
 msgstr "Zaawansowane"
 
@@ -3881,7 +3986,7 @@ msgid "Monitor the quality of a wireless network link"
 msgstr "Monitor jakości bezprzewodowego połączenia sieciowego"
 
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:3
-#: wireless/wireless-applet.c:750
+#: wireless/wireless-applet.c:724
 msgid "Wireless Link Monitor"
 msgstr "Monitor połączenia bezprzewodowego"
 
@@ -3894,11 +3999,11 @@ msgstr ""
 "bezprzewodowego.\n"
 "Upewnij się, że program jest poprawnie zainstalowany."
 
-#: wireless/wireless-applet.c:537 wireless/wireless-applet.c:695
+#: wireless/wireless-applet.c:532 wireless/wireless-applet.c:669
 msgid "No Wireless Devices"
 msgstr "Brak urządzeń bezprzewodowych"
 
-#: wireless/wireless-applet.c:539
+#: wireless/wireless-applet.c:534
 msgid ""
 "There doesn't seem to be any wireless devices configured on your system.\n"
 "Please verify your configuration if you think this is incorrect."
@@ -3907,29 +4012,58 @@ msgstr ""
 "bezprzewodowych.\n"
 "Jeśli uważasz, że diagnoza jest nieprawidłowa, zweryfikuj konfigurację."
 
-#: wireless/wireless-applet.c:752
+#: wireless/wireless-applet.c:726
 msgid "(C) 2001, 2002 Free Software Foundation "
 msgstr "(C) 2001, 2002 Free Software Foundation "
 
-#: wireless/wireless-applet.c:753
+#: wireless/wireless-applet.c:727
 msgid "This utility shows the status of a wireless link."
 msgstr "Narzędzie wyświetlające stan połączenia bezprzewodowego."
 
 #: wireless/wireless-applet.glade.h:1
-msgid "Show _dialog boxes"
-msgstr "Wyświetlanie okien _dialogowych"
-
-#: wireless/wireless-applet.glade.h:2
 msgid "Show signal strength in _percentage"
 msgstr "Wyświetlanie siły sygnału w p_rocentach"
 
-#: wireless/wireless-applet.glade.h:3
+#: wireless/wireless-applet.glade.h:2
 msgid "Wireless Link Monitor Preferences"
 msgstr "Ustawienia monitora połączenia bezprzewodowego"
 
-#: wireless/wireless-applet.glade.h:4
+#: wireless/wireless-applet.glade.h:3
 msgid "_Monitored device:"
 msgstr "M_onitorowane urządzenie:"
+
+#~ msgid "Beep?"
+#~ msgstr "Sygnał dźwiękowy?"
+
+#~ msgid "Horizontal"
+#~ msgstr "Poziomo"
+
+#~ msgid "Use dock"
+#~ msgstr "Używanie stacji dokującej"
+
+#~ msgid "Is the applet size small?"
+#~ msgstr "Czy rozmiar apletu jest niewielki?"
+
+#~ msgid "The command what switch your keymap tho this layout"
+#~ msgstr "Polecenie przełączające na ten układ klawiatury"
+
+#~ msgid "When this is true, the applet will be half size"
+#~ msgstr "Jeżeli prawdziwe, aplet będzie o połowę mniejszy"
+
+#~ msgid "color"
+#~ msgstr "kolor"
+
+#~ msgid "color for no change text"
+#~ msgstr "kolor tekstu dla akcji bez zmian"
+
+#~ msgid "font"
+#~ msgstr "czcionka"
+
+#~ msgid "timeout"
+#~ msgstr "czas oczekiwania"
+
+#~ msgid "Show _dialog boxes"
+#~ msgstr "Wyświetlanie okien _dialogowych"
 
 #~ msgid "_Automatically update every"
 #~ msgstr "_Automatyczna aktualizacja co"
