@@ -322,7 +322,7 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
         gtk_icon_info_free (icon_info);
     }
 
-    gw_applet->container = gtk_hbox_new (FALSE, 0);
+    gw_applet->container = gtk_alignment_new (0.5, 0.5, 0, 0);
     gtk_container_add (GTK_CONTAINER (gw_applet->applet), gw_applet->container);
 
     g_signal_connect (G_OBJECT(gw_applet->applet), "change_orient",
