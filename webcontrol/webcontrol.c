@@ -13,6 +13,8 @@
 #include <config.h>
 #include <gnome.h>
 #include <applet-widget.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 
 typedef struct _webcontrol_properties webcontrol_properties;
 
@@ -74,6 +76,7 @@ void goto_callback(GtkWidget *entry, GtkWidget *check)
 {
 	gchar *url;
 	gchar *command;
+	int status;
 	
         url = gtk_entry_get_text(GTK_ENTRY(entry));
         
@@ -89,7 +92,14 @@ void goto_callback(GtkWidget *entry, GtkWidget *check)
         	/* child  */
         	execlp("netscape", "netscape", "-remote", command, NULL);
         } else {
-        	wait();
+        	wait(&status);
+        	if(WEXITSTATUS(status) != 0) {  /* command didn't work */
+        		char *argv[3];
+        		argv[0] = "netscape";
+        		argv[1] = url;
+        		argv[2] = NULL;
+        		gnome_execute_async (NULL, 2, argv);
+        	}
         }
 }
 
@@ -223,9 +233,7 @@ applet_session_save(GtkWidget *w,
 	/* you need to use the drop_all here since we're all writing to
 	   one file, without it, things might not work too well */
 	gnome_config_drop_all();
-	
-	printf("GnomeSave session called for webctl\n");
-	
+		
 	/* make sure you return FALSE, otherwise your applet might not
 	   work compeltely, there are very few circumstances where you
 	   want to return TRUE. This behaves similiar to GTK events, in
@@ -243,7 +251,7 @@ main(int argc, char **argv)
 	GtkWidget *input;
 	GtkWidget *hbox, *vbox;
 	GtkWidget *check;
-
+		
 	/* Initialize the i18n stuff */
         bindtextdomain (PACKAGE, GNOMELOCALEDIR);
 	textdomain (PACKAGE);
