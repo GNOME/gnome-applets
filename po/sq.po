@@ -9,15 +9,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets.HEAD.sq\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-05 13:55+0100\n"
-"PO-Revision-Date: 2005-02-06 19:34+0100\n"
+"POT-Creation-Date: 2005-02-20 11:17+0100\n"
+"PO-Revision-Date: 2005-02-20 13:42+0100\n"
 "Last-Translator: Elian Myftiu <elian@alblinux.net>\n"
 "Language-Team: Albanian <gnome-albanian-perkthyesit@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: KBabel 1.9.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);"
 
 #: accessx-status/GNOME_AccessxApplet.xml.h:1
 #: battstat/GNOME_BattstatApplet.xml.h:1
@@ -69,10 +68,9 @@ msgid "Shows the status of keyboard accessibility features"
 msgstr "Tregon gjendjen e tastierës së thjeshtuar"
 
 #. "documenters",        documenters,
-#: accessx-status/applet.c:136 charpick/charpick.c:607
+#: accessx-status/applet.c:136 charpick/charpick.c:605
 #: drivemount/drivemount.c:132 geyes/geyes.c:192
 #: gswitchit/gswitchit-applet.c:602 modemlights/modem-applet.c:1031
-#: trashapplet/src/trashapplet.c:681
 msgid "translator_credits"
 msgstr "Elian Myftiu <elian@alblinux.net>"
 
@@ -106,7 +104,8 @@ msgstr "a"
 
 #: accessx-status/applet.c:999 accessx-status/applet.c:1139
 msgid "Shows keyboard status when accessibility features are used."
-msgstr "Tregon gjendjen e tastierës kur përdoren karakteristikat e açesibilitetit."
+msgstr ""
+"Tregon gjendjen e tastierës kur përdoren karakteristikat e açesibilitetit."
 
 #: accessx-status/applet.c:1033
 msgid "XKB Extension is not enabled"
@@ -372,11 +371,12 @@ msgstr "Jorgen·Pehrson·<jp@spektr.eu.org>"
 msgid "This utility shows the status of your laptop battery."
 msgstr "Kjo vegël tregon statusin e baterisë së laptopit tuaj."
 
-#: battstat/battstat_applet.c:975 charpick/charpick.c:619
-#: cpufreq/src/cpufreq-applet.c:222 gtik/gtik.c:738
+#: battstat/battstat_applet.c:975 charpick/charpick.c:617
+#: cpufreq/src/cpufreq-applet.c:223 gtik/gtik.c:738
 #: gweather/gweather-about.c:53 mini-commander/src/about.c:54
-#: mixer/applet.c:1056 multiload/main.c:66
+#: mixer/applet.c:1110 multiload/main.c:66
 #: stickynotes/stickynotes_applet_callbacks.c:442
+#: trashapplet/src/trashapplet.c:647
 msgid "translator-credits"
 msgstr "Elian Myftiu <elian@alblinux.net>"
 
@@ -439,7 +439,7 @@ msgstr "_Lajmëro kur ngarkesa e baterisë është e ulët"
 #: mini-commander/src/preferences.c:368
 #: stickynotes/stickynotes_applet_callbacks.c:406
 #: stickynotes/stickynotes_applet_callbacks.c:625
-#: trashapplet/src/trashapplet.c:648
+#: trashapplet/src/trashapplet.c:614
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "U verifikua një gabim gjatë shfaqjes së ndihmës: %s"
@@ -456,8 +456,8 @@ msgstr "Bateria e ringarkuar plot"
 msgid "Battery power low"
 msgstr "Ngarkesë e ulët e baterisë"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:610
-#: charpick/charpick.c:750 charpick/properties.c:449
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:608
+#: charpick/charpick.c:748 charpick/properties.c:449
 msgid "Character Palette"
 msgstr "Zgjedhësi i Simboleve"
 
@@ -465,7 +465,7 @@ msgstr "Zgjedhësi i Simboleve"
 msgid "Charpicker Applet Factory"
 msgstr "Fabrika e Applet për Zgjedhësin e Shkronjave"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:3 charpick/charpick.c:750
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:3 charpick/charpick.c:748
 msgid "Insert characters"
 msgstr "Fut shkronja"
 
@@ -491,13 +491,7 @@ msgstr "Fut gërmë speciale"
 msgid "insert special character %s"
 msgstr "fut shkronja të veçanta %s"
 
-#. If your charset supports it, please use U00F1 to replace the "n"
-#. * in "Muniz".
-#: charpick/charpick.c:596
-msgid "Alexandre Muniz <munizao@xprt.net>"
-msgstr "Alexandre·Muniz·<munizao@xprt.net>"
-
-#: charpick/charpick.c:614
+#: charpick/charpick.c:612
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -590,7 +584,7 @@ msgid "Character Palette Preferences"
 msgstr "Preferimet e Paletës së Shkronjave"
 
 #: cpufreq/GNOME_CPUFreqApplet.server.in.in.h:1
-#: cpufreq/src/cpufreq-applet.c:214 cpufreq/src/cpufreq-applet.c:766
+#: cpufreq/src/cpufreq-applet.c:215 cpufreq/src/cpufreq-applet.c:767
 msgid "CPU Frequency Scaling Monitor"
 msgstr "Mbikqyrësi i Shkallëzimit të Frekuencës së CPU-së"
 
@@ -672,31 +666,31 @@ msgstr "CPU e _mbikqyrur:"
 msgid "_Show in mode:"
 msgstr "_Shfaqe si:"
 
-#: cpufreq/src/cpufreq-applet.c:184 cpufreq/src/cpufreq-prefs.c:246
+#: cpufreq/src/cpufreq-applet.c:185 cpufreq/src/cpufreq-prefs.c:247
 msgid "Could not open help document"
 msgstr "E pamundur hapja e dokumentit ndihmë"
 
-#: cpufreq/src/cpufreq-applet.c:217
+#: cpufreq/src/cpufreq-applet.c:218
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr "Kjo vegël shfaq shkallëzimin e frekuencës aktuale të CPU-së"
 
-#: cpufreq/src/cpufreq-applet.c:767
+#: cpufreq/src/cpufreq-applet.c:768
 msgid "This utility shows the current CPU Frequency"
 msgstr "Kjo vegël shfaq Frekuencën aktuale të CPU-së"
 
-#: cpufreq/src/cpufreq-prefs.c:310
+#: cpufreq/src/cpufreq-prefs.c:311
 msgid "Graphic"
 msgstr "Grafiku"
 
-#: cpufreq/src/cpufreq-prefs.c:315
+#: cpufreq/src/cpufreq-prefs.c:316
 msgid "Text"
 msgstr "Teksti"
 
-#: cpufreq/src/cpufreq-prefs.c:320
+#: cpufreq/src/cpufreq-prefs.c:321
 msgid "Graphic and Text"
 msgstr "Grafik dhe Tekst"
 
-#: cpufreq/src/cpufreq-monitor-cpuinfo.c:182
+#: cpufreq/src/cpufreq-monitor-cpuinfo.c:183
 msgid "Frequency Scaling Unsupported"
 msgstr "Shkallëzim i Frekuencës i Pambështetur"
 
@@ -704,11 +698,11 @@ msgstr "Shkallëzim i Frekuencës i Pambështetur"
 #. * I thi nk is better than do nothing. I have to notify it to the user, because
 #. * he could think   that cpufreq is supported but it doesn't work succesfully
 #.
-#: cpufreq/src/cpufreq-monitor-factory.c:44
+#: cpufreq/src/cpufreq-monitor-factory.c:45
 msgid "CPU frequency scaling unsupported"
 msgstr "Shkallëzim i frekuencës së CPU-së i pambështetur"
 
-#: cpufreq/src/cpufreq-monitor-factory.c:45
+#: cpufreq/src/cpufreq-monitor-factory.c:46
 msgid ""
 "You will not be able to modify the frequency of your machine.  Your machine "
 "may be misconfigured or not have hardware support for CPU frequency scaling."
@@ -717,7 +711,7 @@ msgstr ""
 "Kompjuteri yt mund të jetë konfiguruar keq ose mund të mos ketë mbështetjen "
 "e duhur për shkallëzimin e frekuencës së CPU-së."
 
-#: cpufreq/src/cpufreq-monitor-procfs.c:249 cpufreq/src/cpufreq-popup.c:215
+#: cpufreq/src/cpufreq-monitor-procfs.c:250 cpufreq/src/cpufreq-popup.c:216
 #: gweather/weather.c:278 gweather/weather.c:1028 gweather/weather.c:1097
 #: gweather/weather.c:1111 gweather/weather.c:1123 gweather/weather.c:1138
 #: gweather/weather.c:1154 gweather/weather.c:1185 gweather/weather.c:1197
@@ -1625,7 +1619,8 @@ msgstr "_Grupe të ndarë për çdo dritare"
 
 #: gswitchit/gswitchit-properties.glade.h:9
 msgid "Show national flags as indicators of corresponding layouts"
-msgstr "Shfaq flamujt kombëtarë si tregues të layout të tastierave korrisponduese"
+msgstr ""
+"Shfaq flamujt kombëtarë si tregues të layout të tastierave korrisponduese"
 
 #: gswitchit/gswitchit-properties.glade.h:10
 msgid "Use _flags as indicators"
@@ -1841,7 +1836,8 @@ msgstr "(Asnjë Ndryshim)"
 
 #: gtik/gtik.schemas.in.h:1
 msgid "Applet scrolls right to left when this key is set to true."
-msgstr "Applet shfleton nga e djathta në të majtë nëse ky buton është i vërtetë."
+msgstr ""
+"Applet shfleton nga e djathta në të majtë nëse ky buton është i vërtetë."
 
 #: gtik/gtik.schemas.in.h:2
 msgid "Background color"
@@ -2431,7 +2427,8 @@ msgstr "Përdor sistemin metrik kundrejt atij anglez."
 msgid ""
 "latitude and longitude of your location expressed in DD-MM-SS[NS] DD-MM-SS"
 "[EW]"
-msgstr "gjerësia dhe gjatësia e vendndodhjes e shprehur në DD MM SS[NS] DD MM SS[EW]"
+msgstr ""
+"gjerësia dhe gjatësia e vendndodhjes e shprehur në DD MM SS[NS] DD MM SS[EW]"
 
 #: gweather/gweather.schemas.in.h:28
 msgid "location coordinates"
@@ -3038,7 +3035,8 @@ msgstr ""
 #: mini-commander/src/mc-install-default-macros.c:132
 #, c-format
 msgid "Must set the GCONF_CONFIG_SOURCE environment variable\n"
-msgstr "E ndryshueshmja e ambientit GCONF_CONFIG_SOURCE duhet të jetë e përcaktuar\n"
+msgstr ""
+"E ndryshueshmja e ambientit GCONF_CONFIG_SOURCE duhet të jetë e përcaktuar\n"
 
 #: mini-commander/src/mc-install-default-macros.c:149
 #, c-format
@@ -3258,7 +3256,8 @@ msgstr "Kliko këtë buton për listën e komandave të mëparshme"
 
 #: mini-commander/src/mini-commander_applet.c:343
 msgid "Command line has been disabled by your system administrator"
-msgstr "Rreshti i komandës është ç'aktivizuar nga administratori juaj i sistemit"
+msgstr ""
+"Rreshti i komandës është ç'aktivizuar nga administratori juaj i sistemit"
 
 #: mini-commander/src/mini-commander_applet.c:410
 msgid "Mini-Commander applet"
@@ -3308,21 +3307,25 @@ msgstr "_Pa Zë"
 msgid "_Open Volume Control"
 msgstr "_Hap Kontrollin e Zërit"
 
-#: mixer/applet.c:582
+#: mixer/applet.c:384
+msgid "No volume control elements and/or devices found."
+msgstr "Nuk u gjet asnjë element dhe/apo dispozitiv kontrolli volumi."
+
+#: mixer/applet.c:636
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "Gabim gjatë nisjes së Kontrollit të Volumit: %s"
 
-#: mixer/applet.c:1037
+#: mixer/applet.c:1091
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "Gabim gjatë nisjes së ndihmës: %s"
 
-#: mixer/applet.c:1050
+#: mixer/applet.c:1104
 msgid "Volume Applet"
 msgstr "Applet i Volumit"
 
-#: mixer/applet.c:1053
+#: mixer/applet.c:1107
 msgid "A GNOME/GStreamer-based volume control applet"
 msgstr "Një applet kontrolli volumi për GNOME/GStreamer"
 
@@ -3344,10 +3347,6 @@ msgstr "-"
 #, c-format
 msgid "Unknown Volume Control %d"
 msgstr "Kontroll Volumi i Panjohur %d"
-
-#: mixer/load.c:165
-msgid "No volume control elements and/or devices found."
-msgstr "Nuk u gjet asnjë element dhe/apo dispozitiv kontrolli volumi."
 
 #: mixer/mixer.schemas.in.h:1
 msgid "Channel controlled by applet. Only for OSS setups"
@@ -3455,7 +3454,8 @@ msgstr "Nuk munda të ekzekutoj programin e konfigurimit të rrjetit"
 msgid ""
 "Check that it's installed in the correct path and that it has the correct "
 "permissions"
-msgstr "Kontrollo që është instaluar në shtegun e saktë dhe që ka lejet e duhura"
+msgstr ""
+"Kontrollo që është instaluar në shtegun e saktë dhe që ka lejet e duhura"
 
 #: modemlights/modem-applet.c:1025
 msgid "Modem monitor"
@@ -3477,7 +3477,8 @@ msgstr ""
 
 #: modemlights/modemlights.glade.h:2
 msgid "<span weight=\"bold\" size=\"larger\">Root password required</span>"
-msgstr "<span weight=\"bold\" size=\"larger\">Kërkohet fjalëkalimi për root</span>"
+msgstr ""
+"<span weight=\"bold\" size=\"larger\">Kërkohet fjalëkalimi për root</span>"
 
 #: modemlights/modemlights.glade.h:3
 msgid "Enter password"
@@ -4002,7 +4003,8 @@ msgstr "Zgjidh nëse shënimet duhet të shfaqen në të gjitha hapësirat e pun
 
 #: stickynotes/stickynotes.glade.h:21
 msgid "Choose if the default style is forced on all notes"
-msgstr "Zgjidh nëse stili i paracaktuar duhet ti përshtatet të gjitha shënimeve"
+msgstr ""
+"Zgjidh nëse stili i paracaktuar duhet ti përshtatet të gjitha shënimeve"
 
 #: stickynotes/stickynotes.glade.h:22
 msgid "Close note"
@@ -4184,7 +4186,8 @@ msgstr "Shënimet bosh do fshihen gjithmonë pa konfirmim."
 msgid ""
 "Every time the specified number of minutes pass, the sticky notes are "
 "automatically saved."
-msgstr "Sa herë që kalon numri i caktuar i minutave, shënimet ruhen automatikisht."
+msgstr ""
+"Sa herë që kalon numri i caktuar i minutave, shënimet ruhen automatikisht."
 
 #: stickynotes/stickynotes.schemas.in.h:16
 msgid ""
@@ -4283,6 +4286,7 @@ msgid "Trash"
 msgstr "Koshi"
 
 #: trashapplet/GNOME_Panel_TrashApplet.xml.h:2
+#: trashapplet/src/trashapplet.c:536
 msgid "_Empty Trash"
 msgstr "_Zbraz Koshin"
 
@@ -4290,35 +4294,35 @@ msgstr "_Zbraz Koshin"
 msgid "_Open"
 msgstr "_Hap"
 
-#: trashapplet/src/trashapplet.c:160
+#: trashapplet/src/trashapplet.c:162
 #, c-format
 msgid "Unable to find the Trash directory: %s"
 msgstr "Nuk arrita të gjej dosjen e Koshit: %s"
 
-#: trashapplet/src/trashapplet.c:391
+#: trashapplet/src/trashapplet.c:393
 msgid "No Items in Trash"
 msgstr "Asnjë Element në Kosh"
 
-#: trashapplet/src/trashapplet.c:395
+#: trashapplet/src/trashapplet.c:397
 #, c-format
 msgid "%d Item in Trash"
 msgid_plural "%d Items in Trash"
 msgstr[0] "%d Element në Kosh"
 msgstr[1] "%d Elementë në Kosh"
 
-#: trashapplet/src/trashapplet.c:543
-msgid "Are you sure you want to empty all of the items from the trash?"
-msgstr "Vërtet dëshiron ta zbrazësh koshin nga të gjithë elementët?"
+#: trashapplet/src/trashapplet.c:513
+msgid "Empty all of the items from the trash?"
+msgstr "Ta zbraz koshin nga të gjithë elementët?"
 
-#: trashapplet/src/trashapplet.c:557
-msgid "If you empty the trash, items will be permanently deleted."
-msgstr "Nëse e zbraz koshin, elementët do fshihen përfundimisht."
+#: trashapplet/src/trashapplet.c:516
+msgid ""
+"If you choose to empty the trash, all items in it will be permanently lost. "
+"Please note that you can also delete them separately."
+msgstr ""
+"Nëse e zbraz koshin, të gjithë elementët do humbasin përfundimisht. "
+"Të lutem vër re që mundesh gjithashtu ti fshish veças."
 
-#: trashapplet/src/trashapplet.c:569
-msgid "_Empty"
-msgstr "_Bosh"
-
-#: trashapplet/src/trashapplet.c:626
+#: trashapplet/src/trashapplet.c:592
 #, c-format
 msgid ""
 "Error while spawning nautilus:\n"
@@ -4327,11 +4331,11 @@ msgstr ""
 "Gabim në e qarkullimin e nautilus-it:\n"
 "%s"
 
-#: trashapplet/src/trashapplet.c:673
+#: trashapplet/src/trashapplet.c:639
 msgid "Trash Applet"
 msgstr "Applet i Koshit"
 
-#: trashapplet/src/trashapplet.c:676
+#: trashapplet/src/trashapplet.c:642
 msgid ""
 "A GNOME trash bin that lives in your panel. You can use it to view the trash "
 "or drag and drop items into the trash."
@@ -4339,21 +4343,23 @@ msgstr ""
 "Një kosh plehrash që ndodhet në panel. Mund ta përdorësh për të kontrolluar "
 "kartelat e fshira ose të zhvendosësh elementë brenda tij."
 
-#: trashapplet/src/trashapplet.c:701
+#: trashapplet/src/trashapplet.c:667
 msgid "Delete Immediately?"
 msgstr "Ta Fshij Menjëherë?"
 
-#: trashapplet/src/trashapplet.c:730
+#: trashapplet/src/trashapplet.c:696
 msgid "Cannot move items to trash, do you want to delete them immediately?"
-msgstr "E pamundur zhvendosja e elementëve në kosh, dëshiron ti fshish menjëherë?"
+msgstr ""
+"E pamundur zhvendosja e elementëve në kosh, dëshiron ti fshish menjëherë?"
 
-#: trashapplet/src/trashapplet.c:733
-msgid "Cannot move some items to trash, do you want to delete these immediately?"
+#: trashapplet/src/trashapplet.c:699
+msgid ""
+"Cannot move some items to trash, do you want to delete these immediately?"
 msgstr ""
 "E pamundur zhvendosja e disa elementëve në kosh, dëshiron ti fshish "
 "menjëherë?"
 
-#: trashapplet/src/trashapplet.c:834 trashapplet/src/trashapplet.c:851
+#: trashapplet/src/trashapplet.c:800 trashapplet/src/trashapplet.c:817
 #, c-format
 msgid ""
 "Unable to move to trash:\n"
@@ -4362,3 +4368,8 @@ msgstr ""
 "Nuk mund të zhvendos në kosh:\n"
 "%s"
 
+#~ msgid "Alexandre Muniz <munizao@xprt.net>"
+#~ msgstr "Alexandre·Muniz·<munizao@xprt.net>"
+
+#~ msgid "_Empty"
+#~ msgstr "_Bosh"
