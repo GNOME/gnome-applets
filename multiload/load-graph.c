@@ -181,8 +181,8 @@ load_graph_properties_init (GnomePropertyObject *object)
     };
 
     static glong adj_data_descr [3*8] = {
-	1, 0, 0, 0, INT_MAX, 1, 256, 256,
-	1, 0, 0, 0, INT_MAX, 1, 256, 256,
+	1, 0, 0, 1, INT_MAX, 1, 256, 256,
+	1, 0, 0, 1, INT_MAX, 1, 256, 256,
 	1, 0, 0, 0, INT_MAX, 1, 256, 256
     };
 
