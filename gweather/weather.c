@@ -251,6 +251,7 @@ void weather_location_free (WeatherLocation *location)
         g_free (location->code);
         g_free (location->zone);
         g_free (location->radar);
+        g_free (location->coordinates);
     
         g_free (location);
     }
