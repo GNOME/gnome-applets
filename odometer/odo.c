@@ -104,6 +104,7 @@
 #include <ctype.h>		/* needed for isdigit() */
 #include <math.h>
 #include <config.h>
+#include <locale.h>             /* needed for setlocale () */
 #include "odo.h"
 #include <libgnomeui/gnome-window-icon.h>
 
@@ -342,6 +343,12 @@ format_distance(gdouble in_dist,gchar **tag,gchar *string,OdoApplet *oa)
    Units unit=INCH;
    gushort l;
 
+   /* 
+    * FIXME: Remove this declaration after transition to Gnome 2.0.
+    * More information below in the call to g_snprintf.
+    */
+   gchar *temp_locale_str;
+
    if (oa->use_metric)
    {
    	/*
@@ -384,7 +391,22 @@ format_distance(gdouble in_dist,gchar **tag,gchar *string,OdoApplet *oa)
 
    string2 = g_malloc0 (digits_nb+1);
    precision = conversion_table[unit].print_precision;
+
+   /* 
+    * We have to make the call to g_snprintf in the C locale to parse the
+    * string correctly later.
+    * FIXME: Whem we move to Gnome 2.0, it is better to use the functions
+    *   gnome_i18n_push_c_numeric_locale ()
+    *   gnome_i18n_pop_c_numeric_locale ()
+    */
+   temp_locale_str = g_strdup (setlocale (LC_NUMERIC, NULL));
+   setlocale (LC_NUMERIC, "C");
+
    g_snprintf (string2,digits_nb+1,"%.*f", precision, out_dist);
+
+   setlocale (LC_NUMERIC, temp_locale_str);
+   g_free (temp_locale_str);
+
    l=strlen(string2);
    strcpy  (string+digits_nb-l,string2);
    g_free (string2);
