@@ -1,3 +1,18 @@
+2000-02-17  Jason Leach  <leach@wam.umd.edu>
+
+	(closing bug #2613)
+
+	* configure.in: if $host is *irix*, set CDROM_HOST accordingly
+	(and define CDROM_LIBS as irix needs it)
+
+	* cdplayer/Makefile.am: LDADD needs CDROM_LIBS
+	
+	* cdplayer/cdrom-irix.c: new file, submitted via patch from David
+	Kaelbling <drk@sgi.com>
+
+	* cdplayer/cdrom-interface.h: appropriate changes for sgi cd-rom
+	devices
+
 2000-02-16  Fatih Demir <kabalak@gmx.net>
 
 	* configure.in : Added tr to ALL_LINGUAS .

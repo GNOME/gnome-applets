@@ -15,7 +15,7 @@ cdplayer_applet_SOURCES =	\
 
 cdplayer_applet_LDADD = \
 		     $(GNOME_LIBDIR) \
-		     $(GNOME_APPLETS_LIBS) $(INTLLIBS)
+		     $(GNOME_APPLETS_LIBS) $(INTLLIBS) $(CDROM_LIBS)
 
 EXTRA_DIST = cdplayer_applet.desktop cdrom-linux.c cdrom-solaris.c \
 	     cdplayer_applet.gnorba

@@ -73,11 +73,13 @@ fi
 dnl cdplayer
 AC_CANONICAL_HOST
 case "$host" in
+*irix*) CDROM_HOST=iric; CDROM_LIBS="-lcdaudio -lmediad -lds";;
 *linux*) CDROM_HOST=linux;;
 *solaris*) CDROM_HOST=solaris;;
 esac
 AM_CONDITIONAL(APPLET_CDPLAYER, test -n "$CDROM_HOST")
 AC_SUBST(CDROM_HOST)
+AC_SUBST(CDROM_LIBS)
 if test -z "$CDROM_HOST"; then
 dnl  AC_MSG_WARN([*** \`cd' plugin for gumma will not be built ***])
   AC_MSG_WARN([*** \`cdplayer' applet will not be built ***])

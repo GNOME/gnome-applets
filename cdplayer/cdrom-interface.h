@@ -42,7 +42,11 @@ typedef struct {
 } cdrom_device_status_t;
 
 typedef struct cdrom_device {
+#ifdef __sgi
+	struct cdplayer *device;
+#else
 	int device;
+#endif
 	int nr_track;
 	unsigned char track0, track1;
 	track_info_t *track_info;
