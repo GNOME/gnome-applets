@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2004-03-04 14:46+0100\n"
-"PO-Revision-Date: 2004-03-09 23:42-0600\n"
+"PO-Revision-Date: 2004-03-11 01:19-0600\n"
 "Last-Translator: Paisa Seeluangsawat <paisa@users.sf.net>\n"
 "Language-Team: Thai <L10n@opentle.org>\n"
 "MIME-Version: 1.0\n"
@@ -2857,7 +2857,7 @@ msgstr "หุ้น_ตก:"
 
 #: gtik/gtik.c:1607
 msgid "Stock _unchanged:"
-msgstr "หุ้นไ_ม่เปลี่ยนราคา:"
+msgstr "หุ้นราคา_คงที่:"
 
 #: gtik/gtik.c:1626 modemlights/properties.c:580
 msgid "_Background:"
@@ -2865,11 +2865,11 @@ msgstr "_พื้นหลัง"
 
 #: gtik/gtik.c:1769
 msgid "Skip forward"
-msgstr "เดินหน้าข้ามไป"
+msgstr "ข้ามไปข้างหน้า"
 
 #: gtik/gtik.c:1770
 msgid "Skip backward"
-msgstr "ถอยข้ามไป"
+msgstr "ถอยหลัง"
 
 #: gtik/gtik.c:1778
 msgid ""
@@ -2879,17 +2879,17 @@ msgstr ""
 "ตัวแสดงราคาหลักทรัพย์\n"
 "แสดงราคาหลักทรัพย์ปัจจุบัน"
 
-# Should change this and the next entry to "คงที่" once I can test it out
+# Bug filed for this weird i18n work.
 #: gtik/gtik.c:1990
 msgid "(No"
-msgstr "(ไม่"
+msgstr "("
 
 # Looking at the code, it doesn't look like the trailing space is needed.
 # (No Change )
 # ไม่เปลี่ยน ไม่เปลี่ยนแปลง
 #: gtik/gtik.c:1991
 msgid "Change "
-msgstr "เปลี่ยน"
+msgstr "คงที่"
 
 #: gtik/gtik.schemas.in.h:1
 msgid "Applet scrolls right to left when this key is set to true."
@@ -3298,7 +3298,7 @@ msgstr "กิโลเมตร"
 
 #: gweather/weather.c:133
 msgid "Variable"
-msgstr "ไม่คงที่"
+msgstr "ไม่คงทิศ"
 
 #: gweather/weather.c:134
 msgid "North"
@@ -3726,20 +3726,20 @@ msgstr "เรียกอ่านข้อมูลไม่สำเร็จ
 
 #: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:1
 msgid "Alert you when new mail arrives"
-msgstr ""
+msgstr "แจ้งเมื่อมีอีเมล์ใหม่"
 
 #: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:2
 msgid "Factory for creating inbox monitors."
-msgstr ""
+msgstr "โรงงานสำหรับสร้างตัวติดตามอีเมล์ใหม่"
 
 #: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:3
 #: mailcheck/mailcheck.c:805 mailcheck/mailcheck.c:2475
 msgid "Inbox Monitor"
-msgstr ""
+msgstr "ติดตามอีเมล์ใหม่"
 
 #: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:4
 msgid "Inbox Monitor Factory"
-msgstr ""
+msgstr "โรงงานติดตามอีเมล์ใหม่"
 
 #: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:5
 #: modemlights/GNOME_ModemLightsApplet.server.in.in.h:1
@@ -3749,41 +3749,43 @@ msgstr "อินเทอร์เน็ต"
 
 #: mailcheck/mailcheck.c:668
 msgid "Error checking mail"
-msgstr ""
+msgstr "ไม่สามารถเช็กอีเมล์"
 
 #: mailcheck/mailcheck.c:811
 msgid ""
 "You didn't set a password in the preferences for the Inbox Monitor,\n"
 "so you have to enter it each time it starts up."
 msgstr ""
+"คุณยังไม่ได้ตั้งรหัสผ่านในหน้าต่างปรับแต่งของตัวติดตามอีเมล์ใหม่\n"
+"คุณจึงต้องใส่รหัสผ่านทุกครั้งที่เริ่มใช้"
 
 #: mailcheck/mailcheck.c:819
 msgid "Please enter your mailserver's _password:"
-msgstr ""
+msgstr "โ_ปรดป้อนรหัสผ่านเซิร์ฟเวอร์อีเมล์:"
 
 #: mailcheck/mailcheck.c:824 mailcheck/mailcheck.c:1948
 msgid "Password Entry box"
-msgstr ""
+msgstr "กล่องป้อนรหัสผ่าน"
 
 #: mailcheck/mailcheck.c:839 mailcheck/mailcheck.c:1975
 msgid "_Save password to disk"
-msgstr ""
+msgstr "_บันทึกรหัสผ่านไว้ใช้ภายหลัง"
 
 #: mailcheck/mailcheck.c:895
 msgid "Could not connect to the Internet."
-msgstr ""
+msgstr "เชื่อมต่อไปอินเทอร์เน็ตไม่สำเร็จ"
 
 #: mailcheck/mailcheck.c:899
 msgid "The username or password is incorrect."
-msgstr ""
+msgstr "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง"
 
 #: mailcheck/mailcheck.c:902
 msgid "The server name is incorrect."
-msgstr ""
+msgstr "ชื่อเซิร์ฟเวอร์ไม่ถูกต้อง"
 
 #: mailcheck/mailcheck.c:906
 msgid "Error connecting to mail server."
-msgstr ""
+msgstr "ไม่สามารถเชื่อมต่อไปเซิร์ฟเวอร์อีเมล์"
 
 #: mailcheck/mailcheck.c:911
 msgid "Error"
@@ -3791,68 +3793,69 @@ msgstr "ผิดพลาด"
 
 #: mailcheck/mailcheck.c:1087
 msgid "You have new mail."
-msgstr ""
+msgstr "คุณมีอีเมล์ใหม่"
 
 #: mailcheck/mailcheck.c:1089
 msgid "You have mail."
-msgstr ""
+msgstr "คุณมีอีเมล์"
 
 #: mailcheck/mailcheck.c:1093
 #, c-format
 msgid "%d unread"
 msgid_plural "%d unread"
-msgstr[0] ""
+msgstr[0] "%d ยังไม่ได้อ่าน"
 msgstr[1] ""
 
 #: mailcheck/mailcheck.c:1094 mailcheck/mailcheck.c:1103
 #, c-format
 msgid "%d message"
 msgid_plural "%d messages"
-msgstr[0] ""
+msgstr[0] "%d ข้อความ"
 msgstr[1] ""
 
 #. translators: this is of the form "%d unread/%d messages"
 #: mailcheck/mailcheck.c:1097
 #, c-format
 msgid "%s/%s"
-msgstr ""
+msgstr "%s/%s"
 
 #: mailcheck/mailcheck.c:1110
 msgid "No mail."
-msgstr ""
+msgstr "ไม่มีอีเมล์"
 
+# Not a direct translation, but it is what the applet means.
 #: mailcheck/mailcheck.c:1564 mailcheck/mailcheck.c:1565
 #: mailcheck/mailcheck.c:2886 mailcheck/mailcheck.c:2887
 msgid "Status not updated"
-msgstr ""
+msgstr "ยังไม่ได้เช็กอีเมล์"
 
 #: mailcheck/mailcheck.c:1767 mailcheck/mailcheck.c:2393
 msgid "Inbox Settings"
-msgstr ""
+msgstr "ค่าตั้งกล่องอีเมล์"
 
 #: mailcheck/mailcheck.c:1793
 msgid "Mailbox _resides on:"
-msgstr ""
+msgstr "_กล่องอีเมล์อยู่ที่:"
 
 #: mailcheck/mailcheck.c:1804
 msgid "Local mailspool"
-msgstr ""
+msgstr "mailspool บนเครื่อง"
 
 #: mailcheck/mailcheck.c:1812
 msgid "Local maildir"
-msgstr ""
+msgstr "maildir บนเครื่อง"
 
 #: mailcheck/mailcheck.c:1820
 msgid "Remote POP3-server"
-msgstr ""
+msgstr "เซิร์ฟเวอร์ POP3"
 
 #: mailcheck/mailcheck.c:1828
 msgid "Remote IMAP-server"
-msgstr ""
+msgstr "เซิร์ฟเวอร์ IMAP"
 
 #: mailcheck/mailcheck.c:1853
 msgid "Mail _spool file:"
-msgstr ""
+msgstr "แ_ฟ้ม mail spool:"
 
 #: mailcheck/mailcheck.c:1860
 msgid "Browse"
@@ -3860,11 +3863,11 @@ msgstr "เรียกดู"
 
 #: mailcheck/mailcheck.c:1880
 msgid "Mail s_erver:"
-msgstr ""
+msgstr "_เซิร์ฟเวอร์อีเมล์:"
 
 #: mailcheck/mailcheck.c:1889
 msgid "Mail Server Entry box"
-msgstr ""
+msgstr "กล่องป้อนเซิร์ฟเวอร์อีเมล์"
 
 #: mailcheck/mailcheck.c:1908
 msgid "_Username:"
@@ -3872,7 +3875,7 @@ msgstr "_ชื่อบัญชีผู้ใช้:"
 
 #: mailcheck/mailcheck.c:1919
 msgid "Username Entry box"
-msgstr ""
+msgstr "กล่องป้อนชื่อบัญชีผู้ใช้"
 
 #: mailcheck/mailcheck.c:1937
 msgid "_Password:"
@@ -3880,96 +3883,98 @@ msgstr "_รหัสผ่าน"
 
 #: mailcheck/mailcheck.c:1990
 msgid "_Folder:"
-msgstr ""
+msgstr "โฟ_ลเดอร์:"
 
 #: mailcheck/mailcheck.c:2001
 msgid "Folder Entry box"
-msgstr ""
+msgstr "กล่องป้อนโฟลเดอร์"
 
+# Use เช็ก instead of ตรวจ because เช็กเมล์ has become a mainstream phrase.
 #: mailcheck/mailcheck.c:2073
 msgid "Check for mail _every:"
-msgstr ""
+msgstr "เ_ช็กอีเมล์ทุกๆ:"
 
 #: mailcheck/mailcheck.c:2095
 msgid "Choose time interval in minutes to check mail"
-msgstr ""
+msgstr "เลือกจำนวนนาทีระหว่างการเช็กเมล์"
 
 #: mailcheck/mailcheck.c:2118
 msgid "Choose time interval in seconds to check mail"
-msgstr ""
+msgstr "เลือกจำนวนวินาทีระหว่างการเช็กเมล์"
 
 #: mailcheck/mailcheck.c:2135
 msgid "Play a _sound when new mail arrives"
-msgstr ""
+msgstr "เ_ล่นเสียงเวลามีอีเมล์ใหม่เข้ามา"
 
 #. l = gtk_check_button_new_with_mnemonic (_("Set the number of unread mails to _zero when clicked"));
 #: mailcheck/mailcheck.c:2145
 msgid "Sto_p animation when double clicked"
-msgstr ""
+msgstr "_หยุดภาพเคลื่อนไหวเมื่อถูกดับเบิ้ลคลิก"
 
 #: mailcheck/mailcheck.c:2158
 msgid "Select a_nimation:"
-msgstr ""
+msgstr "เลือก_ภาพเคลื่อนไหว:"
 
 #: mailcheck/mailcheck.c:2176
 msgid "Commands"
-msgstr ""
+msgstr "คำสั่ง"
 
 #: mailcheck/mailcheck.c:2205
 msgid "Before each _update:"
-msgstr ""
+msgstr "_ก่อนอัพเดตแต่ละครั้ง:"
 
 #: mailcheck/mailcheck.c:2222
 msgid "Command to execute before each update"
-msgstr ""
+msgstr "คำสั่งที่ควรเรียกใช้ก่อนการอัพเดตแต่ละครั้ง"
 
 #: mailcheck/mailcheck.c:2234
 msgid "When new mail _arrives:"
-msgstr ""
+msgstr "เมื่อได้_รับอีเมล์ใหม่:"
 
 #: mailcheck/mailcheck.c:2249 mailcheck/mailcheck.schemas.in.h:2
 msgid "Command to execute when new mail arrives"
-msgstr ""
+msgstr "คำสั่งที่ควรเรียกใช้เมื่อได้รับอีเมล์ใหม่"
 
 #: mailcheck/mailcheck.c:2261
 msgid "When double clicke_d:"
-msgstr ""
+msgstr "เมื่อถู_กดับเบิ้ลคลิก:"
 
 #: mailcheck/mailcheck.c:2276
 msgid "Command to execute when clicked"
-msgstr ""
+msgstr "คำสั่งที่ควรเรียกใช้เมื่อถูกดับเบิ้ลคลิก"
 
 #: mailcheck/mailcheck.c:2362
 msgid "Inbox Monitor Preferences"
-msgstr ""
+msgstr "ปรับแต่งตัวติดตามอีเมล์ใหม่"
 
 #: mailcheck/mailcheck.c:2477
 msgid "Inbox Monitor notifies you when new mail arrives in your mailbox"
-msgstr ""
+msgstr "ตัวติดตามอีเมล์ใหม่ แจ้งให้คุณทราบเวลามีอีเมล์ใหม่"
 
 #: mailcheck/mailcheck.c:2839
 msgid "Text only"
-msgstr "ข้อความเท่านั้น"
+msgstr "แสดงแต่ข้อความ"
 
 #: mailcheck/mailcheck.c:2888
 msgid "Mail check"
-msgstr ""
+msgstr "เช็กอีเมล์"
 
 #: mailcheck/mailcheck.c:2889
+#, fuzzy
 msgid "Mail check notifies you when new mail arrives in your mailbox"
-msgstr ""
+msgstr "ตัวติดตามอีเมล์ใหม่ แจ้งให้คุณทราบเวลามีอีเมล์ใหม่"
 
 #: mailcheck/mailcheck.schemas.in.h:1
 msgid "Command to execute when checking mail"
-msgstr ""
+msgstr "คำสั่งสำหรับเช็กอีเมล์"
 
 #: mailcheck/mailcheck.schemas.in.h:3
 msgid "Command to execute when you click on the Inbox Monitor"
-msgstr ""
+msgstr "คำสั่งที่ควรเรียกใช้เมื่อคุณคลิกบนตัวติดตามอีเมล์ใหม่"
 
 #: mailcheck/mailcheck.schemas.in.h:4
 msgid "Command to run before checking mail"
-msgstr ""
+msgstr "คำสั่งที่ควรเรียกใช้ก่อนเช็กเมล์"
 
 #: mailcheck/mailcheck.schemas.in.h:5
 msgid "Do we run the exec-command"
@@ -3985,71 +3990,71 @@ msgstr ""
 
 #: mailcheck/mailcheck.schemas.in.h:8
 msgid "Encrypted password"
-msgstr ""
+msgstr "เข้ารหัสรหัสผ่าน"
 
 #: mailcheck/mailcheck.schemas.in.h:9
 msgid "How often (in milliseconds) we check the mail"
-msgstr ""
+msgstr "จำนวนมิลลิวินาทีระหว่างการเช็กอีเมล์"
 
 #: mailcheck/mailcheck.schemas.in.h:10
 msgid "If mail should be checked automatically"
-msgstr ""
+msgstr "ว่าควรจะเช็กอีเมล์ใหม่โดยอัตโนมัติหรือไม่"
 
 #: mailcheck/mailcheck.schemas.in.h:11
 msgid "If this is enabled, we save the password in gconf"
-msgstr ""
+msgstr "ถ้าตั้ง จะจำรหัสผ่านไว้ใน gconf"
 
 #: mailcheck/mailcheck.schemas.in.h:12
 msgid "If this is set mail will be checked every update-freq milliseconds"
-msgstr ""
+msgstr "ถ้าตั้ง จะเช็กอีเมล์ทุกๆ update-freq มิลลิวินาที"
 
 #: mailcheck/mailcheck.schemas.in.h:13
 msgid "If this is set, we should run the exec-command"
-msgstr ""
+msgstr "ถ้าตั้ง จะเรียกใช้ exec-command"
 
 #: mailcheck/mailcheck.schemas.in.h:14
 msgid "If this is set, we should run the newmail-command"
-msgstr ""
+msgstr "ถ้าตั้ง จะเรียกใช้ newmail-command"
 
 #: mailcheck/mailcheck.schemas.in.h:15
 msgid "Interval for checking mail"
-msgstr ""
+msgstr "ระยะเวลาสำหรับเช็กอีเมล์"
 
 #: mailcheck/mailcheck.schemas.in.h:16
 msgid "Path to the animation file"
-msgstr ""
+msgstr "ตำแหน่งแฟ้มภาพเคลื่อนไหว"
 
 #: mailcheck/mailcheck.schemas.in.h:17
 msgid "Play a sound when mail is recieved"
-msgstr ""
+msgstr "เล่นเสียงเวลามีอีเมล์ใหม่"
 
 #: mailcheck/mailcheck.schemas.in.h:18
 msgid "Remote folder for mail retrieval"
-msgstr ""
+msgstr "โฟลเดอร์บนเซิร์ฟเวอร์ที่เก็บอีเมล์อยู่"
 
 #: mailcheck/mailcheck.schemas.in.h:19
 msgid "Remote server to connect to for our mail"
-msgstr ""
+msgstr "เซิร์ฟเวอร์ที่จะให้ไปดึงเมล์มา"
 
 #: mailcheck/mailcheck.schemas.in.h:20
 msgid "Run this command before we check the mail"
-msgstr ""
+msgstr "เรียกคำสั่งนี้ก่อนเช็กเมล์"
 
 #: mailcheck/mailcheck.schemas.in.h:21
 msgid "The mail server"
-msgstr ""
+msgstr "เซิร์ฟเวอร์อีเมล์"
 
 #: mailcheck/mailcheck.schemas.in.h:22
 msgid "The user's encrypted password for the remote server"
-msgstr ""
+msgstr "รหัสผ่านของผู้ใช้ที่ถูกเข้ารหัสแล้วสำหรับเซิร์ฟเวอร์อีเมล์"
 
 #: mailcheck/mailcheck.schemas.in.h:23
 msgid "The user's password"
-msgstr ""
+msgstr "รหัสผ่านของผู้ใช้"
 
 #: mailcheck/mailcheck.schemas.in.h:24
 msgid "The user's password for the remote server"
-msgstr ""
+msgstr "รหัสผ่านของผู้ใช้สำหรับเซิร์ฟเวอร์อีเมล์"
 
 #: mailcheck/mailcheck.schemas.in.h:25
 msgid "This is how we check the mail, check the mail, check the mail..."
@@ -4067,40 +4072,41 @@ msgstr ""
 
 #: mailcheck/mailcheck.schemas.in.h:28
 msgid "Username on the remote server"
-msgstr ""
+msgstr "ชื่อผู้ใช้บนเซิร์ฟเวอร์อีเมล์"
 
 #: mailcheck/mailcheck.schemas.in.h:29
 msgid "We run this command when the user clicks on Inbox Monitor"
-msgstr ""
+msgstr "เรียกใช้คำสั่งนี้เมื่อผู้ใช้คลิกบนตัวติดตามอีเมล์ใหม่"
 
 #: mailcheck/mailcheck.schemas.in.h:30
+#, fuzzy
 msgid "Whether to reset mail status when you click on Inbox Monitor"
-msgstr ""
+msgstr "ว่าควรจะ"
 
 #: mailcheck/mailcheck.schemas.in.h:31
 msgid "You've got mail!"
-msgstr ""
+msgstr "คุณมีอีเมล์ใหม่"
 
 #: mailcheck/mailcheck.soundlist.in.h:1
 msgid "Mailcheck"
-msgstr ""
+msgstr "เช็กอีเมล์"
 
 #: mailcheck/mailcheck.soundlist.in.h:2
 msgid "New Mail"
-msgstr ""
+msgstr "มีอีเมล์ใหม่"
 
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:1
 #: mini-commander/src/about.c:69
 msgid "Command Line"
-msgstr ""
+msgstr "บรรทัดคำสั่ง"
 
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:2
 msgid "Mini-Commander"
-msgstr ""
+msgstr "แอ็พเพล็ตบรรทัดคำสั่ง"
 
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:3
 msgid "MiniCommander Applet Factory"
-msgstr ""
+msgstr "โรงงานแอ็พเพล็ตบรรทัดคำสั่ง"
 
 #: mini-commander/src/about.c:72
 msgid ""
@@ -4112,34 +4118,38 @@ msgid ""
 "Software Foundation; either version 2 of the License, or (at your option) "
 "any later version."
 msgstr ""
+"แอพเพล็ตนี้แสดงบรรทัดคำสั่งในพาเนล พร้อมด้วยประวัติคำสั่ง การคำสั่งโดยอัตโนมัติ "
+"และยอมให้คุณตั้งมาโครได้\n"
+"\n"
+"นี่เป็นโปรแกรมเสรี คุณสามารถคัดลอก จัดแจก แก้ไข มันได้ภายใต้ GNU General Public License "
+"รุ่น 2 หรือใหม่กว่า ตามที่ตีพิมพ์โดย Free Software Foundation"
 
 #: mini-commander/src/command_line.c:315
 msgid "No items in history"
-msgstr ""
+msgstr "ประวัติคำสั่งว่างอยู่"
 
 #. build file select dialog
 #: mini-commander/src/command_line.c:439
 msgid "Start program"
-msgstr ""
+msgstr "เริ่มโปรแกรม"
 
 #: mini-commander/src/command_line.c:482
-#, fuzzy
 msgid "Command line"
 msgstr "บรรทัดคำสั่ง"
 
 #: mini-commander/src/command_line.c:483
 msgid "Type a command here and Gnome will execute it for you"
-msgstr ""
+msgstr "ป้อนคำสั่งลงในนี้แล้ว Gnome จะเรียกใช้มันให้คุณ"
 
 #: mini-commander/src/mc-install-default-macros.c:71
 #, c-format
 msgid "Cannot get schema for %s: %s"
-msgstr ""
+msgstr "ไม่สามารถอ่าน schema สำหรับ %s: %s"
 
 #: mini-commander/src/mc-install-default-macros.c:99
 #, c-format
 msgid "Cannot set schema for %s: %s"
-msgstr ""
+msgstr "ไม่สามารถตั้ง schema สำหรับ %s: %s"
 
 #: mini-commander/src/mc-install-default-macros.c:105
 #, c-format
@@ -4149,12 +4159,12 @@ msgstr ""
 #: mini-commander/src/mc-install-default-macros.c:117
 #, c-format
 msgid "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL is set, not installing schemas\n"
-msgstr ""
+msgstr "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL ถูกตั้ง ดังนั้นจะไม่ติดตั้ง schemas\n"
 
 #: mini-commander/src/mc-install-default-macros.c:125
 #, c-format
 msgid "Must set the GCONF_CONFIG_SOURCE environment variable\n"
-msgstr ""
+msgstr "ต้องตั้งตัวแปลสภาวะแวดล้อม GCONF_CONFIG_SOURCE\n"
 
 #: mini-commander/src/mc-install-default-macros.c:142
 #, c-format
@@ -4168,43 +4178,43 @@ msgstr ""
 
 #: mini-commander/src/mini-commander.glade.h:3
 msgid "<b>Appearance</b>"
-msgstr ""
+msgstr "<b>รูปโฉม</b>"
 
 #: mini-commander/src/mini-commander.glade.h:4
 msgid "<b>Auto Completion</b>"
-msgstr ""
+msgstr "<b>เติมเต็มคำสั่งโดยอัตโนมัติ</b>"
 
 #: mini-commander/src/mini-commander.glade.h:5
 msgid "<b>Colors</b>"
-msgstr ""
+msgstr "<b>สี</b>"
 
 #: mini-commander/src/mini-commander.glade.h:6
 msgid "<b>Size</b>"
-msgstr ""
+msgstr "<b>ขนาด</b>"
 
 #: mini-commander/src/mini-commander.glade.h:7
 msgid "Add New Macro"
-msgstr ""
+msgstr "เพิ่มมาโครใหม่"
 
 #: mini-commander/src/mini-commander.glade.h:9
 msgid "Command Line Preferences"
-msgstr ""
+msgstr "ปรับแต่งบรรทัดคำสั่ง"
 
 #: mini-commander/src/mini-commander.glade.h:10
 msgid "Command line _background:"
-msgstr ""
+msgstr "_พื้นหลังบรรทัดคำสั่ง:"
 
 #: mini-commander/src/mini-commander.glade.h:11
 msgid "Command line _foreground:"
-msgstr ""
+msgstr "เ_บื้องหน้าบรรทัดคำสั่ง:"
 
 #: mini-commander/src/mini-commander.glade.h:12
 msgid "E_nable history-based auto completion"
-msgstr ""
+msgstr "เ_ปิดใช้การเติมเต็มคำสั่งจากประวัติการใช้งาน"
 
 #: mini-commander/src/mini-commander.glade.h:14
 msgid "Macros"
-msgstr ""
+msgstr "มาโคร"
 
 #: mini-commander/src/mini-commander.glade.h:15
 msgid "Pick a color"
@@ -4212,23 +4222,23 @@ msgstr "เลือกสี"
 
 #: mini-commander/src/mini-commander.glade.h:16
 msgid "Show fram_e"
-msgstr ""
+msgstr "แ_สดงกรอบ"
 
 #: mini-commander/src/mini-commander.glade.h:17
 msgid "Show han_dle"
-msgstr ""
+msgstr "_แสดงที่จับ"
 
 #: mini-commander/src/mini-commander.glade.h:18
 msgid "_Add Macro..."
-msgstr ""
+msgstr "เ_พิ่มมาโคร..."
 
 #: mini-commander/src/mini-commander.glade.h:19
 msgid "_Delete Macro"
-msgstr ""
+msgstr "_ลบมาโคร..."
 
 #: mini-commander/src/mini-commander.glade.h:20
 msgid "_Macros:"
-msgstr ""
+msgstr "_มาโคร:"
 
 #: mini-commander/src/mini-commander.glade.h:21
 msgid "_Pattern:"
@@ -4236,124 +4246,127 @@ msgstr "รูปแ_บบ:"
 
 #: mini-commander/src/mini-commander.glade.h:22
 msgid "_Use default theme colors"
-msgstr ""
+msgstr "ใ_ช้สีปริยายจากชุดตกแต่ง"
 
 #: mini-commander/src/mini-commander.schemas.in.h:1
 msgid "Attempt to autocomplete a command from the history of commands entered."
-msgstr ""
+msgstr "พยายามเติมคำสั่งจากประวัติการใช้งาน"
 
 #: mini-commander/src/mini-commander.schemas.in.h:2
 msgid "Background color, blue component"
-msgstr ""
+msgstr "ค่าสีน้ำเงินของสีพื้นหลัง"
 
 #: mini-commander/src/mini-commander.schemas.in.h:3
 msgid "Background color, green component"
-msgstr ""
+msgstr "ค่าสีเขียวของสีพื้นหลัง"
 
 #: mini-commander/src/mini-commander.schemas.in.h:4
 msgid "Background color, red component"
-msgstr ""
+msgstr "ค่าสีแดงของสีพื้นหลัง"
 
+# Guess the foreground is mainly (solely?) the text.
 #: mini-commander/src/mini-commander.schemas.in.h:5
 msgid "Foreground color, blue component"
-msgstr ""
+msgstr "ค่าสีน้ำเงินของสีอักษร"
 
 #: mini-commander/src/mini-commander.schemas.in.h:6
 msgid "Foreground color, green component"
-msgstr ""
+msgstr "ค่าสีเขียวของสีอักษร"
 
 #: mini-commander/src/mini-commander.schemas.in.h:7
 msgid "Foreground color, red component"
-msgstr ""
+msgstr "ค่าสีแดงของสีอักษร"
 
 #: mini-commander/src/mini-commander.schemas.in.h:8
 msgid "History list"
-msgstr ""
+msgstr "รายการประวัติคำสั่ง"
 
 #: mini-commander/src/mini-commander.schemas.in.h:9
 msgid "List of GConfValue entries containing strings for history entries."
-msgstr ""
+msgstr "รายการ GConfValue ที่มีข้อความสำหรับประวัติคำสั่ง"
 
 #: mini-commander/src/mini-commander.schemas.in.h:10
 msgid "List of GConfValue entries containing strings for the macro commands."
-msgstr ""
+msgstr "รายการ GConfValue ที่มีข้อความสำหรับคำสั่งมาโคร"
 
+# FIXME: What is this?
 #: mini-commander/src/mini-commander.schemas.in.h:11
 msgid "List of GConfValue entries containing strings for the macro patterns."
-msgstr ""
+msgstr "รายการ GConfValue ที่มีข้อความสำหรับรูปแบบมาโคร"
 
 #: mini-commander/src/mini-commander.schemas.in.h:12
 msgid "Macro command list"
-msgstr ""
+msgstr "ลิสต์คำสั่งมาโคร"
 
 #: mini-commander/src/mini-commander.schemas.in.h:13
 msgid "Macro pattern list"
-msgstr ""
+msgstr "ลิสต์รูปแบบมาโคร"
 
 #: mini-commander/src/mini-commander.schemas.in.h:15
 msgid "Perform history autocompletion"
-msgstr ""
+msgstr "เปิดใช้การเติมเต็มคำสั่งจากประวัติใช้งาน"
 
 #: mini-commander/src/mini-commander.schemas.in.h:16
 msgid "Show a frame surrounding the applet."
-msgstr ""
+msgstr "แสดงกรอบรอบๆ แอพเพล็ต"
 
 #: mini-commander/src/mini-commander.schemas.in.h:17
 msgid "Show a handle so the applet can be detached from the panel."
-msgstr ""
+msgstr "แสดงที่จับจะได้ใช้ดึงแอพเพล็ตออกมาจากพาเนลได้"
 
 #: mini-commander/src/mini-commander.schemas.in.h:18
 msgid "Show frame"
-msgstr ""
+msgstr "แสดงกรอบ"
 
 #: mini-commander/src/mini-commander.schemas.in.h:19
 msgid "Show handle"
-msgstr ""
+msgstr "แสดงที่จับ"
 
 #: mini-commander/src/mini-commander.schemas.in.h:20
 msgid "The blue component of the background color."
-msgstr ""
+msgstr "ค่าสีน้ำเงินของสีพื้นหลัง"
 
 #: mini-commander/src/mini-commander.schemas.in.h:21
 msgid "The blue component of the foreground color."
-msgstr ""
+msgstr "ค่าสีน้ำเงินของสีอักษร"
 
 #: mini-commander/src/mini-commander.schemas.in.h:22
 msgid "The green component of the background color."
-msgstr ""
+msgstr "ค่าสีเขียวของสีพื้นหลัง"
 
 #: mini-commander/src/mini-commander.schemas.in.h:23
 msgid "The green component of the foreground color."
-msgstr ""
+msgstr "ค่าสีเขียวของสีอักษร"
 
 #: mini-commander/src/mini-commander.schemas.in.h:24
 msgid "The red component of the background color."
-msgstr ""
+msgstr "ค่าสีแดงของสีพื้นหลัง"
 
 #: mini-commander/src/mini-commander.schemas.in.h:25
 msgid "The red component of the foreground color."
-msgstr ""
+msgstr "ค่าสีแดงของสีอักษร"
 
 #: mini-commander/src/mini-commander.schemas.in.h:26
 msgid "Use the default theme colors"
-msgstr ""
+msgstr "ใช้สีปริยายจากชุดตกแต่ง"
 
 #: mini-commander/src/mini-commander.schemas.in.h:27
 msgid "Use theme colors instead of custom ones."
-msgstr ""
+msgstr "ใช้สีปริยายจากชุดตกแต่งแทนที่จะตั้งสีเอง"
 
 #: mini-commander/src/mini-commander.schemas.in.h:28
 msgid "Width"
 msgstr "กว้าง"
 
+# Verb is better than noun in describing a button.
 #: mini-commander/src/mini-commander_applet.c:228
 #: mini-commander/src/mini-commander_applet.c:232
 msgid "Browser"
-msgstr ""
+msgstr "เรียกหา"
 
 #: mini-commander/src/mini-commander_applet.c:233
 msgid "Click this button to start the browser"
-msgstr ""
+msgstr "เรียกหาโปรแกรมที่จะใช้"
 
 #: mini-commander/src/mini-commander_applet.c:246
 #: mini-commander/src/mini-commander_applet.c:250
@@ -4362,39 +4375,39 @@ msgstr "ประวัติ"
 
 #: mini-commander/src/mini-commander_applet.c:251
 msgid "Click this button for the list of previous commands"
-msgstr ""
+msgstr "ปุ่มนี้ใช้แสดงรายการคำสั่งที่เคยใช้มา"
 
 #: mini-commander/src/mini-commander_applet.c:363
 msgid "Command line has been disabled by your system administrator"
-msgstr ""
+msgstr "ผู้ดูแลระบบปิดไม่ให้ใช้บรรทัดคำสั่งไว้"
 
 #: mini-commander/src/mini-commander_applet.c:426
 msgid "Mini-Commander applet"
-msgstr ""
+msgstr "แอพเพล็ตบันทัดคำสั่ง"
 
 #: mini-commander/src/mini-commander_applet.c:427
 msgid "This applet adds a command line to the panel"
-msgstr ""
+msgstr "แอพเพล็ตนี้ใส่บรรทัดคำสั่งไว้ในพาเนล"
 
 #: mini-commander/src/preferences.c:428
 msgid "You must specify a pattern"
-msgstr ""
+msgstr "คุณต้องกำหนดรูปแบบ"
 
 #: mini-commander/src/preferences.c:432
 msgid "You must specify a pattern and a command"
-msgstr ""
+msgstr "คุณต้องกำหนดรูปแบบและคำสั่ง"
 
 #: mini-commander/src/preferences.c:433
 msgid "You must specify a command"
-msgstr ""
+msgstr "คุณต้องกำหนดคำสั่ง"
 
 #: mini-commander/src/preferences.c:436
 msgid "You may not specify duplicate patterns"
-msgstr ""
+msgstr "คุณจะกำหนดรูปแบบซ้ำไม่ได้"
 
 #: mini-commander/src/preferences.c:850
 msgid "Pattern"
-msgstr ""
+msgstr "รูปแบบ"
 
 #: mini-commander/src/preferences.c:860
 msgid "Command"
@@ -4402,24 +4415,24 @@ msgstr "คำสั่ง"
 
 #: mixer/GNOME_MixerApplet.server.in.in.h:1
 msgid "Adjust the sound volume"
-msgstr ""
+msgstr "ปรับระดับเสียง"
 
 #: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:199
 #: mixer/mixer.c:1346
 msgid "Volume Control"
-msgstr "ตัวควบคุมระดับเสียง"
+msgstr "ตัวปรับระดับเสียง"
 
 #: mixer/GNOME_MixerApplet.xml.h:3
 msgid "_Mute"
-msgstr ""
+msgstr "ปิ_ดเสียง"
 
 #: mixer/GNOME_MixerApplet.xml.h:4
 msgid "_Open Volume Control"
-msgstr ""
+msgstr "_เปิดตัวปรับระดับเสียง"
 
 #: mixer/mixer.c:125
 msgid "Main Volume"
-msgstr ""
+msgstr "ระดับเสียงหลัก"
 
 #: mixer/mixer.c:125
 msgid "Bass"
@@ -4431,15 +4444,15 @@ msgstr "เสียงแหลม"
 
 #: mixer/mixer.c:125
 msgid "Synth"
-msgstr ""
+msgstr "สังเคราะ"
 
 #: mixer/mixer.c:126
 msgid "Pcm"
-msgstr ""
+msgstr "Pcm"
 
 #: mixer/mixer.c:126
 msgid "Speaker"
-msgstr ""
+msgstr "ลำโพงเครื่อง"
 
 #: mixer/mixer.c:126
 msgid "Line"
@@ -4447,7 +4460,7 @@ msgstr "สาย"
 
 #: mixer/mixer.c:127
 msgid "Microphone"
-msgstr ""
+msgstr "ไมโครโฟน"
 
 #: mixer/mixer.c:127
 msgid "CD"
@@ -4455,15 +4468,15 @@ msgstr "ซีดี"
 
 #: mixer/mixer.c:127
 msgid "Mix"
-msgstr ""
+msgstr "ผสม"
 
 #: mixer/mixer.c:127
 msgid "Pcm2"
-msgstr ""
+msgstr "Pcm2"
 
 #: mixer/mixer.c:128
 msgid "Recording Level"
-msgstr ""
+msgstr "ระดับเสียงบันทึก"
 
 #: mixer/mixer.c:128
 msgid "Input Gain"
@@ -4475,39 +4488,39 @@ msgstr "เพิ่มระดับเสียงขาออก"
 
 #: mixer/mixer.c:129
 msgid "Line1"
-msgstr ""
+msgstr "สาย 1"
 
 #: mixer/mixer.c:129
 msgid "Line2"
-msgstr ""
+msgstr "สาย 2"
 
 #: mixer/mixer.c:129
 msgid "Line3"
-msgstr ""
+msgstr "สาย 3"
 
 #: mixer/mixer.c:129
 msgid "Digital1"
-msgstr "ดิจิตอล1"
+msgstr "ดิจิตอล 1"
 
 #: mixer/mixer.c:130
 msgid "Digital2"
-msgstr "ดิจิตอล2"
+msgstr "ดิจิตอล 2"
 
 #: mixer/mixer.c:130
 msgid "Digital3"
-msgstr "ดิจิตอล3"
+msgstr "ดิจิตอล 3"
 
 #: mixer/mixer.c:131
 msgid "Phone Input"
-msgstr ""
+msgstr "สายโทรศัพท์เข้า"
 
 #: mixer/mixer.c:131
 msgid "Phone Output"
-msgstr "ช่องเสียบหูฟัง"
+msgstr "สายโทรศัพท์ออก"
 
 #: mixer/mixer.c:131
 msgid "Video"
-msgstr "วีดีโอ"
+msgstr "วิดีโอ"
 
 #: mixer/mixer.c:131
 msgid "Radio"
@@ -4519,30 +4532,30 @@ msgstr "หน้าจอ"
 
 #: mixer/mixer.c:200
 msgid "Volume Control (muted)"
-msgstr ""
+msgstr "ตัวปรับเสียง (ปิดเสียงอยู่)"
 
 #: mixer/mixer.c:201
 msgid "No audio device"
-msgstr ""
+msgstr "ไม่มีอุปกรณ์เสียง"
 
 #: mixer/mixer.c:518
 msgid ""
 "warning: this version of gmix was compiled with a different version of\n"
 "soundcard.h.\n"
-msgstr ""
+msgstr "คำเตือน: gmix อันนี้ถูกคอมไพล์ด้วย soundcard.h คนละรุ่นกัน\n"
 
 #: mixer/mixer.c:878
 #, c-format
 msgid "Couldn't open mixer device %s\n"
-msgstr ""
+msgstr "ไม่สามารถเปิดอุปกรณ์ผสมเสียง %s\n"
 
 #: mixer/mixer.c:1047
 msgid "Volume Controller"
-msgstr ""
+msgstr "ตัวปรับระดับเสียง"
 
 #: mixer/mixer.c:1048
 msgid "Use Up/Down arrow keys to change volume"
-msgstr ""
+msgstr "ใช้ปุ่มลูกศร ขึ้น/ลง ปรับระดับเสียง"
 
 #. Translators - The + and - refer to increasing and decreasing the volume.
 #. ** I don't know if there are sensible alternatives in other languages
@@ -4556,39 +4569,40 @@ msgstr "-"
 
 #: mixer/mixer.c:1347
 msgid "(C) 2001 Richard Hult"
-msgstr ""
+msgstr "(C) 2001 Richard Hult"
 
 #: mixer/mixer.c:1348
 msgid "The volume control lets you set the volume level for your desktop."
-msgstr ""
+msgstr "ตัวปรับระดับเสียงช่วยคุณควบคุมระดับเสียงบนเครื่อง"
 
 #: mixer/mixer.c:1495
 msgid "Volume Control Preferences"
-msgstr ""
+msgstr "ปรับแต่งตัวปรับระดับเสียง"
 
 #: mixer/mixer.c:1519
 msgid "Audio Channels"
-msgstr ""
+msgstr "ช่องเสียง"
 
 #: mixer/mixer.c:1535
 msgid "_Select channel to control:"
-msgstr ""
+msgstr "เ_ลือกช่องเสียงที่จะควบคุม:"
 
 #: mixer/mixer.c:1874
 msgid "The volume control lets you set the volume level for your desktop"
-msgstr ""
+msgstr "ตัวปรับระดับเสียงช่วยคุณควบคุมระดับเสียงบนเครื่อง"
 
+# What is OSS?
 #: mixer/mixer.schemas.in.h:1
 msgid "Channel controlled by applet. Only for OSS setups"
 msgstr ""
 
 #: mixer/mixer.schemas.in.h:2
 msgid "Saved mute state"
-msgstr ""
+msgstr "สถานะการปิดเสียงที่บันทึกไว้"
 
 #: mixer/mixer.schemas.in.h:3
 msgid "Saved volume to restore on startup"
-msgstr ""
+msgstr "ระดับเสียงที่บันทึกไว้ใช้เมื่อเริ่มทำงาน"
 
 #: modemlights/GNOME_ModemLightsApplet.server.in.in.h:2
 #: modemlights/modemlights.c:135 modemlights/modemlights.c:1582
