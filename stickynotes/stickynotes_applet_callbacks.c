@@ -166,8 +166,8 @@ void menu_preferences_cb(BonoboUIComponent *uic, StickyNotesApplet *sticky, cons
 {
 	GladeXML *glade;
 	
-	if (stickynotes->preferences != 0) {
-		gtk_widget_raise(stickynotes->preferences);
+	if (stickynotes->preferences != NULL) {
+		gdk_window_raise(stickynotes->preferences->window);
 		return;
 	}
 	
@@ -218,8 +218,8 @@ void menu_preferences_cb(BonoboUIComponent *uic, StickyNotesApplet *sticky, cons
 		gnome_color_picker_set_i16(GNOME_COLOR_PICKER(note_color), color.red, color.green, color.blue, 65535);
 	}
 	
-	gtk_window_set_transient_for(GTK_WINDOW(dialog), GTK_WINDOW(stickynotes->applet));
-	gtk_widget_show(dialog);
+	gtk_window_set_transient_for(GTK_WINDOW(stickynotes->preferences), GTK_WINDOW(stickynotes->applet));
+	gtk_widget_show(stickynotes->preferences);
 
 	g_object_unref(glade);
 }
@@ -235,8 +235,8 @@ void menu_about_cb(BonoboUIComponent *uic, StickyNotesApplet *sticky, const gcha
 {
 	GladeXML *glade;
 	
-	if (stickynotes->about != 0) {
-		gtk_widget_raise(stickynotes->about);
+	if (stickynotes->about != NULL) {
+		gdk_window_raise(stickynotes->about->window);
 		return;
 	}
 	
@@ -265,7 +265,7 @@ void menu_about_cb(BonoboUIComponent *uic, StickyNotesApplet *sticky, const gcha
 void about_response_cb(GtkDialog *dialog, gint response, GladeXML *glade)
 {
 	gtk_widget_destroy(GTK_WIDGET(dialog));
-	stickynotes->about = 0;
+	stickynotes->about = NULL;
 }
 
 /* Preferences Callback : Save. */
@@ -323,7 +323,7 @@ void preferences_response_cb(GtkDialog *dialog, gint response, GladeXML *glade)
 	
 	else /* if (response == GTK_RESPONSE_CLOSE || response == GTK_RESPONSE_NONE) */ {
 		gtk_widget_destroy(GTK_WIDGET(dialog));
-		stickynotes->preferences = 0;
+		stickynotes->preferences = NULL;
 	}
 }
 

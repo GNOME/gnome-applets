@@ -46,8 +46,8 @@ static gboolean stickynotes_applet_fill(PanelApplet *applet)
 	/* Create and initialize Sticky Note Applet Settings Instance */
 	stickynotes = g_new(StickyNotesApplet, 1);
 	stickynotes->applet = GTK_WIDGET(applet);
-	stickynotes->about = 0;
-	stickynotes->preferences = 0;
+	stickynotes->about = NULL;
+	stickynotes->preferences = NULL;
 	stickynotes->size = panel_applet_get_size(applet);
 	stickynotes->pressed = FALSE;
 	stickynotes->notes = NULL;
