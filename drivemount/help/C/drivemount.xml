@@ -2,25 +2,12 @@
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appversion "2.0">
-  <!ENTITY manrevision "2.0">
-  <!ENTITY date "March 2002">
+  <!ENTITY appversion "2.5.4">
+  <!ENTITY manrevision "2.1">
+  <!ENTITY date "February 2004">
   <!ENTITY app "<application>Disk Mounter</application>">
   <!ENTITY appname "Disk Mounter">
-  
 ]>
-<!-- 
-  This is a GNOME documentation template, designed by the GNOME
-  Documentation Project Team. Please use it for writing GNOME
-  documentation, making obvious changes. In particular, all the words
-  written in UPPERCASE (with the exception of GNOME) should be
-  replaced. As for "legalnotice", please leave the reference
-  unchanged.
-
-  Remember that this is a guide, rather than a perfect model to follow
-  slavishly. Make your manual logical and readable.  And don't forget
-  to remove these comments in your final documentation!  ;-)
--->
 <!-- 
       (Do not remove this comment block.)
   Maintained by the GNOME Documentation Project
@@ -33,8 +20,11 @@
 <!-- please do not change the id; for translations, change lang to -->
 <!-- appropriate code -->
   <articleinfo> 
-    <title>&app; Manual V&manrevision;</title>       
-
+    <title>&appname; Manual V&manrevision;</title>       
+    <copyright>
+      <year>2004</year>
+      <holder>Sun Microsystems</holder>
+    </copyright>
     <copyright> 
       <year>2002</year> 
       <holder>John Fleck</holder> 
@@ -51,9 +41,6 @@
   </copyright>
 
    -->
-<!-- An address can be added to the publisher information.  If a role is 
-     not specified, the publisher/author is the same for all versions of the 
-     document.  -->
     <publisher> 
       <publishername> GNOME Documentation Project </publishername> 
     </publisher> 
@@ -64,6 +51,11 @@
 	any of this. -->
 
     <authorgroup> 
+      <author>
+        <firstname>Sun</firstname>
+        <surname>GNOME Documentation Team</surname>
+        <affiliation><orgname>Sun Microsystems</orgname></affiliation>
+      </author>
       <author> 
 	<firstname>John </firstname> 
 	<surname> Fleck</surname> 
@@ -95,22 +87,18 @@
     </authorgroup>
 
 
-<!-- According to GNU FDL, revision history is mandatory if you are -->
-<!-- modifying/reusing someone else's document.  If not, you can omit it. -->
-<!-- Remember to remove the &manrevision; entity from the revision entries other-->
-<!-- than the current revision. -->
-<!-- The revision numbering system for GNOME manuals is as follows: -->
-<!-- * the revision number consists of two components -->
-<!-- * the first component of the revision number reflects the release version of the GNOME desktop. -->
-<!-- * the second component of the revision number is a decimal unit that is incremented with each revision of the manual. -->
-<!-- For example, if the GNOME desktop release is V2.x, the first version of the manual that -->
-<!-- is written in that desktop timeframe is V2.0, the second version of the manual is V2.1, etc. -->
-<!-- When the desktop release version changes to V3.x, the revision number of the manual changes -->
-<!-- to V3.0, and so on. -->  
     <revhistory>
       <revision> 
-	<revnumber>&appname; Manual V&manrevision;</revnumber> 
+	<revnumber>&appname; Applet Manual V&manrevision;</revnumber> 
 	<date>&date;</date> 
+	<revdescription> 
+          <para role="author">Sun GNOME Documentation Team</para>
+          <para role="publisher">GNOME Documentation Project</para>
+	</revdescription> 
+      </revision> 
+      <revision> 
+	<revnumber>Disk Mounter Applet Manual V2.0</revnumber> 
+	<date>March 2002</date> 
 	<revdescription> 
 	  <para role="author">John Fleck
 	    <email>jfleck@inkstain.net</email>
@@ -132,16 +120,11 @@
 
     <releaseinfo>This manual describes version &appversion; of &appname;.
     </releaseinfo>
-    <!-- The following feedback information only applies to appliactions
-    listed in bugzilla.gnome.org and bugzilla.ximian.com. For other
-    applications, please provide your own feedback info or remove thsi
-    section altogether -->
     <legalnotice> 
       <title>Feedback</title> 
-      <para>To report a bug or make a suggestion regarding the &app; application or
+      <para>To report a bug or make a suggestion regarding the &app; applet or
 	this manual, follow the directions in the 
-	<ulink url="ghelp:gnome-feedback"
-	  type="help">GNOME Feedback Page</ulink>. 
+	<ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>. 
       </para>
 <!-- Translators may also add here feedback address for translations -->
     </legalnotice> 
@@ -152,475 +135,187 @@
   </indexterm> 
   
 
- <sect1 id="drivemountapplet">
-  <title>Disk Mounter Applet</title>
+  <!-- ============= Introduction  ================================ -->
+  <sect1 id="drivemountapplet-intro">
+    <title>Introduction</title>
 
-   <para>
-   &app;, shown in <xref
-   linkend="drivemountapplet-fig" />, allows you to quickly
-   mount and unmount various types of drives and filesystems. To add this applet
-   to a <interface>Panel</interface>, 
-   right-click on the <interface>Panel</interface> and choose
-   <menuchoice>
-    <guimenu>Add to Panel</guimenu>
-    <guisubmenu>Utility</guisubmenu>
-    <guimenuitem>Disk Mounter</guimenuitem>
-   </menuchoice>.
-  </para>
+    <figure id="drivemountapplet-fig"> 
+      <title>&appname; Applet</title> 
+      <screenshot> 
+        <mediaobject> 
+          <imageobject><imagedata
+            fileref="figures/drivemount-applet_window.png" format="PNG"/> 
+          </imageobject>
+          <textobject> 
+            <phrase>The &appname; applet.</phrase> 
+          </textobject> 
+        </mediaobject> 
+      </screenshot> 
+    </figure>
 
-<figure id="drivemountapplet-fig"> 
-	<title>&appname;</title> 
-	<screenshot> 
-	  <mediaobject> 
-	    <imageobject><imagedata
-		fileref="figures/drivemount_applet_floppy.png" format="PNG"/> 
-	    </imageobject>
-	    <textobject> 
-	      <phrase>&appname;</phrase> 
-	    </textobject> 
-	  </mediaobject> 
-	</screenshot> 
-      </figure>
+    <para>
+      The &app; applet enables you to quickly mount and unmount various types of drives and file systems. 
+    </para>
+    <para>
+      For the &app; applet to work properly, your system administrator must configure your system appropriately. For more information about the necessary system administration tasks, see <ulink url="man:fstab" type="man"><citerefentry><refentrytitle>fstab</refentrytitle><manvolnum>5</manvolnum></citerefentry></ulink>.
+    </para>
 
-  
+    <sect2 id="drivemount-intro-add">
+      <title>To Add &appname; to a Panel</title>
+      <para>
+        To add &app; to a panel, right-click on the panel, then choose <menuchoice><guimenu>Add to Panel</guimenu><guisubmenu>Utility</guisubmenu><guimenuitem>&appname;</guimenuitem></menuchoice>. 
+      </para>
+    </sect2>
 
-  <note>
-   <title>Background Information for Beginners</title>
-   <para>
-    Many file systems on Linux and Unix systems must be manually
-    mounted and unmounted. After a file system is mounted, you can
-    read and write to it. When you are finished with a file system,
-    you should unmount it. It is important to unmount removable
-    drives, such as floppy disks and Zip disks,
-    before removing the media, because Linux and Unix systems do not
-    always write the changes made immediately. They typically buffer
-    the changes made to the disk in order to improve the speed of the
-    system. Partitions on fixed drives, such as your hard drive, are
-    typically mounted automatically when your computer boots and
-    unmounted when it shuts down. Removable media must be mounted and
-    unmounted by hand, such as by using the &app; applet.  
-   </para>
-   <para>
-    The "root
-    filesystem" is the main filesystem on your computer starting with
-    "/" (root). Other filesystems are associated with directories inside
-    the root filesystem. These are called "mount points", which are
-    just empty directories. When a filesystem is mounted, its
-    contents appear inside this directory. As an example, most
-    systems create a mount point "/mnt/floppy" which is just an empty
-    directory if your floppy drive is not mounted. It contains
-    the contents of your floppy if the floppy drive is mounted.
-   </para>
-  </note>
+    <sect2 id="drivemount-intro-mount">
+      <title>Manually Mounting and Unmounting File Systems</title>
+      <para>
+        Many file systems on Linux and UNIX systems must be manually mounted and unmounted. 
+      </para>
+      <para>
+        When a file system is mounted, you can read and write to the file system. When you finish working with a file system, you should unmount the file system. 
+      </para>
+      <para>
+        You must unmount removable drives, such as floppy disks and Zip disks, before you remove the media, because Linux and UNIX systems do not always write the changes immediately. Such systems typically buffer the changes to the disk, to improve the speed of the system. 
+      </para>
+      <para>
+        Partitions on fixed drives, such as your hard drive, are typically mounted automatically when your computer boots, and unmounted when your computer shuts down. Removable media must be mounted and unmounted manually, for example by using the &app; applet.  
+      </para>
+    </sect2>
+
+    <sect2 id="drivemount-intro-mountpoint">
+      <title>Mount Points</title>
+      <para>
+        The root file system is the main file system on your computer. The root file system starts with the following character: <literal>/</literal> 
+      </para>
+      <para>
+        Other file systems are associated with empty directories inside the root file system. These directories are called mount points. When a file system is mounted, the contents of the file system are accessible from the associated mount point. 
+      </para>
+      <para>
+        For example, most systems create a mount point called <literal>/mnt/floppy</literal>:
+      </para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            If your floppy drive is not mounted, <literal>/mnt/floppy</literal> is an empty directory.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            If your floppy drive is mounted, <literal>/mnt/floppy</literal> provides access to the contents of your floppy disk.
+          </para>
+        </listitem>
+      </itemizedlist>
+    </sect2>
+
+  </sect1>
 
   <!-- ============= Usage  ================================ -->
-  <sect2 id="drivemount-usage">
-   <title>Usage</title>
-   <para>
-    To mount or unmount a drive, simply click on the
-    <application>Drive Mount Applet</application> icon with the left
-    mouse button.  For drives which can eject their media, such as 
-    most CDROM's and JAZ drives, you can eject the drive by clicking on the
-    icon with the right mouse button and selecting
-    <guimenuitem>Eject</guimenuitem>. To browse the contents of the
-    drive with the <application>Nautilus File Manager</application>, select
-    <guimenuitem>Browse&hellip;</guimenuitem>. 
-   </para>
+  <sect1 id="drivemount-usage">
+    <title>Usage</title>
 
-   <para>
-    Right-clicking on the applet brings up a menu containing the
-    following items:
-    <itemizedlist>
-
-     <listitem>
+    <sect2 id="drivemount-usage-tooltip">
+    <title>To Display the Mount Point and Mount Status of a Drive</title>
       <para>
-       <guimenuitem>Browse&hellip;</guimenuitem> &mdash; shows
-       the contents of the drive using the <application>GNOME File
-       Manager</application>.
-       The drive must be mounted for this to work.
+        To display the mount point and mount status of a drive, move the mouse pointer to the drive icon in the panel. A tooltip displays the mount point and mount status of the drive.
       </para>
-     </listitem>
+    </sect2>
 
-     <listitem>
+    <sect2 id="drivemount-usage-mount">
+    <title>To Mount or Unmount a Drive</title>
       <para>
-       <guimenuitem>Eject</guimenuitem> &mdash; ejects the
-       storage medium for drives which can be ejected, such as       
-       CDROM's and JAZ drives.
+        To mount or unmount a drive, click on the drive icon in the panel.
       </para>
-     </listitem>
+    </sect2>
 
-     <listitem>
+    <sect2 id="drivemount-usage-browse">
+    <title>To Browse the Contents of a Drive</title>
       <para>
-       <guimenuitem>Properties&hellip;</guimenuitem> &mdash;
-       opens the <link linkend="drivemountapplet-prefs">
-       <guilabel>Properties</guilabel></link> dialog.
+        To use a file manager to browse the contents of a drive, right-click on the drive icon in the panel, then choose <guimenuitem>Browse</guimenuitem>.
       </para>
-     </listitem>
-
-     <listitem>
       <para>
-       <guimenuitem>Help</guimenuitem> &mdash;
-       displays this document.
+        You can only browse the contents of a mounted drive.
       </para>
-     </listitem>
+    </sect2>
 
-     <listitem>
+    <sect2 id="drivemount-usage-eject">
+    <title>To Eject a Disk From a Drive</title>
       <para>
-       <guimenuitem>About&hellip;</guimenuitem> &mdash;
-       shows basic information about <application>Drive Mount
-       Applet</application>, including the applet's version and the
-       author's name.
+        To eject a disk from a drive, right-click on the drive icon in the panel, then choose <guimenuitem>Eject</guimenuitem>.
       </para>
-     </listitem>
+    </sect2>
 
-    </itemizedlist>
-   </para>
-
-   <para>
-    The mount point and mount status of a drive is shown in a tooltip
-    if the cursor is left over the applet for a short time.
-   </para>
-
-  </sect2>
-
+  </sect1>
 
   <!-- ============= Customization ============================= -->
-  <sect2 id="drivemountapplet-prefs">
-    <title>Customization</title>
+  <sect1 id="drivemountapplet-prefs">
+    <title>Preferences</title>
     <para>
-      You can customize <application>Drive Mount</application>
-      applet by right-clicking on it and choosing
-      <guimenuitem>Properties&hellip;</guimenuitem>. This will open the
-      <interface>Properties</interface> dialog(shown in <xref
-      linkend="drivemount-settings-fig" />), which allows you to
-      change various settings.
+      To configure the &app; applet, right-click on the applet, then choose <guimenuitem>Preferences</guimenuitem>. The <guilabel>Disk Mounter Preferences</guilabel> dialog is displayed.
     </para>
+    <variablelist>
+      <varlistentry>
+        <term><guilabel>Mount directory</guilabel></term>
+        <listitem>
+          <para>
+            Enter the name of the mount point for this drive. Alternatively, use the <guibutton>Browse</guibutton> button to select the mount point.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><guilabel>Update interval ... seconds</guilabel></term>
+        <listitem>
+          <para>
+            Use this spin box to specify the interval at which you want &app; to check the status of the drive and update the icon if necessary.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><guilabel>Icon</guilabel></term>
+        <listitem>
+          <para>
+            Select a drive type from the drop-down list. &app; automatically provides icons for each defined drive type, to indicate whether the drive is mounted or unmounted.
+          </para>
+          <para>
+            Alternatively, select <guilabel>Custom</guilabel> from the drop-down list. Click on the <guilabel>Mounted icon</guilabel> and <guilabel>Unmounted icon</guilabel> buttons to choose icons that indicate whether the drive is mounted or unmounted.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><guilabel>Eject disk when unmounting</guilabel></term>
+        <listitem>
+          <para>
+            Select this option to eject the disk when you unmount the drive.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><guilabel>Use automount friendly status test</guilabel></term>
+        <listitem>
+          <para>
+            Select this option only if you use the automount facility.
+          </para>
+          <para>
+            If you do not use the automount facility, you do not need to select the <guilabel>Use automount friendly status test</guilabel> option. When you position the mouse pointer over a drive icon in the panel, &app; runs the <command>stat</command> command, which tests the mount status.
+          </para>
+          <para>
+            However, if you use the automount facility, &app; behaves differently, as follows:
+          </para>
+          <itemizedlist>
+            <listitem>
+              <para>
+                If you use the automount facility and you do not select the <guilabel>Use automount friendly status test</guilabel> option, &app; runs the <command>stat</command> command, which mounts the drive instead of testing the mount status. 
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                If you use the automount facility and you select the <guilabel>Use automount friendly status test</guilabel> option, &app; runs the <command>mount</command> command, which tests the mount status.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+    </variablelist>
 
-<figure id="drivemount-settings-fig"> 
-	<title>&appname; Settings</title> 
-	<screenshot> 
-	  <mediaobject> 
-	    <imageobject><imagedata
-		fileref="figures/drivemount_applet_settings.png" format="PNG"/> 
-	    </imageobject>
-	    <textobject> 
-	      <phrase>&appname; Settings</phrase> 
-	    </textobject> 
-	  </mediaobject> 
-	</screenshot> 
-      </figure>
-
-
-    
-    <para>
-     The properties are:
-     <itemizedlist>
-
-      <listitem>
-       <para>
-        <guilabel>Mount Point</guilabel> &mdash; This is the mount
-        point used when mounting the drive.  This is
-        an empty directory which will hold the contents of the drive
-        whenever the drive is mounted.  Mount points can occur
-        anywhere in your filesystem, but the convention is to put all
-        mount points for removable drives in the  <filename
-        class="directory">/mnt</filename>
-        directory.
-       </para>
-      </listitem>
-
-      <listitem>
-       <para>
-        <guilabel>Update in seconds</guilabel> &mdash; This is the
-        interval in seconds at
-        which <application>Drive Mount</application> refreshes its
-        icon by checking the mount status.  This is only
-        important if you sometimes mount or unmount a drive using a
-        command or application other than <application>Drive
-        Mount</application>.
-       </para>
-      </listitem>
-
-      <listitem>
-       <para>
-        <guilabel>Icon</guilabel> &mdash; This determines the icons
-        (one for unmounted and
-        one for mounted) displayed for the
-        drive.  There are icon sets for most of the commonly used
-        drives (floppy, CDROM, Zip, hard disk, and JAZ). You may also select
-        <guimenuitem>Custom</guimenuitem>; this allows you to specify
-        your own icons.
-       </para>
-       
-       
-      </listitem>
-
-      <listitem>
-       <para>
-        <guilabel>Custom icon for mounted</guilabel>  &mdash; A custom
-        icon which is
-        displayed when the drive is mounted.  This option is only
-        available if the <guimenu>Icon:</guimenu> selection is set to
-        "Custom". 
-       </para>
-      </listitem>
-
-      <listitem>
-       <para>
-        <guilabel>Custom icon for not mounted</guilabel>  &mdash; A
-        custom icon which is
-        displayed when the drive is not mounted.  This option is only
-        available if the <guimenu>Icon:</guimenu> selection is set to
-        "Custom". 
-       </para>
-      </listitem>
-
-      <listitem>
-       <para>
-        <guibutton>Scale size to panel</guibutton> &mdash; Selecting
-        this option scales
-        the size of the mounted and unmounted icons with the
-        <interface>Panel</interface>'s size.  If this option is not
-        set, the icon sizes are fixed, independent of the size of
-        the <interface>Panel</interface>. For very small
-        <interface>Panel</interface> sizes, unselecting this option
-        may be useful, as it forces the applet to appear rotated and
-        larger, which makes it easier to see.
-       </para>
-      </listitem>
-
-      <listitem>
-       <para>
-        <guibutton>Use automount friendly status test</guibutton>
-        &mdash;  Select this option
-        if you use automount, otherwise leave it unselected.
-       </para>
-       <note>
-        <title>Information for Advanced Users</title>
-        <para>
-         The default command used by <application>Drive
-         Mount</application>to test whether a drive is mounted is
-         <command>stat</command> and would cause the drive to actually be
-         mounted if the user is using
-         <application>automount</application>. If this button is 
-         selected, it uses <command>mount</command> instead, which
-         does not cause <application>automount</application> to mount
-         the drive.  The reason this button is not selected by default
-         is that <command>mount</command> is more cpu intensive than
-         <command>stat</command>. 
-        </para>
-       </note>
-      </listitem>
-
-     </itemizedlist>
-    </para>
-
-    
-  </sect2>
-
-  <!-- ============= Configuring Your System  ============== -->
-  <sect2 id="drivemountapplet-configuring">
-   <title>Configuring Your System</title>
-
-   <warning>
-    <title>For Advanced Users</title>
-    <para>
-     This section is intended for system administrators and advanced
-     users.
-    </para>
-   </warning>
-  
-   <para>
-    In order for <application>Drive Mount Applet</application> to work
-    properly, the system may need to be configured by the system
-    administrator, using root privileges.  This section provides a
-    very basic introduction.
-   </para>
-
-   <para>
-    Information describing the mount point and filesystem type of each
-    drive is kept in <filename>/etc/fstab</filename>. For drives which
-    do not always have a single filesystem type (such as a floppy
-    drive which may have msdos or ext2 filesystems), you should use
-    "auto" for the filesystem type.  Each device has a single line in
-    /etc/fstab of the following form:
-    <programlisting>
-    /dev/fd0        /mnt/floppy      auto    noauto,rw,user  0 0
-    </programlisting>
-    This entry describes the first floppy device (/dev/fd0) as having
-    a mount point of <filename>/mnt/floppy</filename>, a variable
-    filesystem type which should be automatically detected, and the
-    following configurations: "noauto"&mdash; Do not automatically
-    mount the drive when the computer is booted, "rw"&mdash; The drive
-    is readable and writable, and "user"&mdash; Users have permission
-    to mount the drive.  These, along with the last two fields which
-    we do not describe here, are discussed in detail in the fstab man
-    pages, available by typing <command>man fstab</command>.
-   </para>
-   
-  </sect2>
-
-
-  <!-- ============ Troubleshooting & Error Messages ======= -->
-  <sect2 id="drivemountapplet-troubleshooting">
-   <title>Troubleshooting and Understanding Error Messages</title>
-   <para>
-    If you do not have your system configured properly, you may
-    encounter certain error messages when trying to mount or access
-    certain drives. Here are some of the more common error messages
-    and their causes: 
-    <itemizedlist>
-     <listitem>
-      <para>
-       <quote>mount: /dev/fd0 is not a valid block
-       device</quote>&mdash; The most common cause for this error is
-       that the drive (in this example, /dev/fd0, corresponding to the
-       floppy drive) is empty. 
-      </para>
-     </listitem> 
-     <listitem>
-      <para>
-       <quote>mount: only root can mount /dev/fda on
-       /mnt/floppy</quote>&mdash; You do not have permission to mount
-       this drive.  Contact the system administrator, who can give you
-       permission. 
-      </para>
-      <note>
-       <title>Note for System Administrators</title>
-       <para>
-        You can set a drive to be mountable and unmountable by users by
-        adding "users" to the mount options (fourth column) in
-        <filename>/etc/fstab</filename>.  This may be done by hand or
-        by using <application>linuxconf</application>, using the
-        <guilabel>Local volume</guilabel> tab in  
-       <menuchoice>
-        <guimenu>Config</guimenu>
-        <guisubmenu>Filesystems</guisubmenu>
-        <guimenuitem>Access local drive</guimenuitem>
-       </menuchoice>. After you select the correct drive from the list,
-        it will show you the <guilabel>Volume
-        specifications</guilabel>.  Click on the
-        <guilabel>Options</guilabel> tab, and select the
-        <guibutton>User mountable</guibutton> button. 
-       </para>
-      </note>
-     </listitem>
-     <listitem>
-      <para>
-       <quote>mount: wrong fs type, bad option, bad superblock on
-       /dev/cdrom, or too many mounted file systems</quote>&mdash;
-       This error can be caused by several problems.  It is most
-       commonly caused by not having the right filesystem type, such as
-       trying to mount a music CDROM as if it held data, or trying to
-       mount an msdos formatted floppy as ext2.
-      </para>
-     </listitem>
-     <listitem>
-      <para>
-       <quote>mount /mnt/cdrom 2>&amp;1 reported: mount: No medium
-       found</quote>&mdash; This error indicates the drive, in
-       this case the CDROM drive, is empty.
-      </para>
-     </listitem>
-     <listitem>
-      <para>
-       <quote>umount /mnt/cdrom 2>&amp;1 reported: umount: /mnt/cdrom:
-       device is busy</quote>&mdash; This error indicates that the
-       drive cannot be unmounted because the drive is being used by
-       the computer.  This often happens if you have the
-       <application>GNOME File Manager</application> open to a
-       directory on the drive or if you have a terminal window open
-       with the working directory on the drive.
-      </para>
-     </listitem>
-     <listitem>
-      <para>
-       <quote>umount: can't find /mnt/floppy in /etc/fstab or /etc/mtab
-       </quote>&mdash;
-       This indicates that the system has not been configured to mount
-       the mount point you are trying to use.  In many cases, you may
-       have put the wrong mount point in the <guilabel>Mount
-       point</guilabel> entry in the <interface>Properties
-       Dialog</interface> (see <xref
-       linkend="drivemountapplet-prefs" />). To find out which mount
-       point you should be using, contact your system administrator.
-      </para>
-      <note>
-       <title>Note for Advanced Users</title>
-       <para>
-        Each device (filesystem or drive) which can be mounted should
-        be listed in the <filename>/etc/fstab</filename> configuration
-        file. Reading this file will tell you which devices are
-        configured for your system.  To add or modify entries, you can
-        edit this file by hand or by using the
-        <application>linuxconf</application> application.
-       </para>
-      </note>
-     </listitem>
-     <listitem>
-      <para>
-       <quote>mount: /dev/fd0 already mounted or /mnt/floppy busy
-       mount: according to mtab, /dev/fd0 is mounted on /mnt/floppy_ext2
-       </quote>&mdash;
-       This error occurs if you have a single device (in this case
-       /dev/fd0) configured for multiple mount points and you try to
-       mount one mount point while another one is already mounted.
-       Having multiple mount points for a single device typically is
-       not necessary.
-      </para>
-     </listitem>
-     <listitem>
-      <para>
-       <quote>mount: the kernel does not recognize /dev/sda4 as a
-       block device(maybe 'insmod driver'?)</quote>&mdash; Contact
-       your system administrator. (This error
-       occurs if your kernel is not properly configured to
-       automatically mount the necessary kernel modules to read the
-       device.)
-      </para>
-     </listitem>
-    </itemizedlist>
-   </para>
-  </sect2>
-
-
-  
-
-
-  <!-- ============= Authors ================================ -->
-
-  <sect2 id="authors">
-   <title>Authors</title>
-   <para>
-    <application>Drive Mount Applet</application> was written by John Ellis
-    (<email>johne@bellatlantic.net</email>).
-   </para>
-
-      <para>To report a bug or make a suggestion regarding the &app; application or
-	this manual, follow the directions in the 
-	<ulink url="ghelp:gnome-feedback"
-	  type="help">GNOME Feedback Page</ulink>. 
-      </para>
-
-
-
-   <!-- For translations: uncomment this:
-
-   <para>
-    Latin translation was done by ME
-    (<email>MYNAME@MYADDRESS</email>). Please send all  comments  and
-    suggestions regarding this translation to SOMEWHERE.
-   </para>
-
-   -->
-
-      <para> This program is distributed under the terms of the GNU
-      General Public license as published by the Free Software
-      Foundation; either version 2 of the License, or (at your option)
-      any later version. A copy of this license can be found at this
-      <ulink url="ghelp:gpl" type="help">link</ulink>, or in the file
-      COPYING included with the source code of this program. </para>
-
-  </sect2>
  </sect1>
 </article>
