@@ -129,7 +129,7 @@ struct _ClickData
 };
 
 	/* display.c */
-void free_all_info_lines(GList *list);
+void free_all_info_lines(AppData *ad);
 InfoData *add_info_line(AppData *ad, gchar *text, gchar *icon_path, gint offset, gint center,
 		   gint show_count, gint delay);
 InfoData *add_info_line_with_pixmap(AppData *ad, gchar *text, GtkWidget *icon, gint offset, gint center,
@@ -138,6 +138,7 @@ void remove_info_line(AppData *ad, InfoData *id);
 void remove_all_lines(AppData *ad);
 void set_info_click_signal(InfoData *id, void (*click_func)(AppData *ad, gpointer data),
 		gpointer data, void (*free_func)(gpointer data));
+void set_mouse_cursor (AppData *ad, gint icon);
 void init_app_display(AppData *ad);
 
 	/* properties.c */

@@ -8,7 +8,7 @@
 
 static	InfoData *create_info_line(gchar *text,  gchar *icon_path, GtkWidget *icon,
 				gint offset, gint center, gint show_count, gint delay);
-static void free_info_line(InfoData *id);
+static void free_info_line(AppData *ad, InfoData *id);
 static gint check_info_for_removal(AppData *ad, InfoData *id);
 static GList *next_info_line(AppData *ad);
 static void redraw_display(AppData *ad);
@@ -18,6 +18,8 @@ static void draw_display_line(AppData *ad);
 static gint update_display_cb(gpointer data);
 static void register_click_func(AppData *ad, InfoData *id);
 static void scroll_click_func(AppData *ad, gint m);
+static int display_click(GtkWidget *w, GdkEventButton *event, gpointer data);
+static void display_motion(GtkWidget *w, GdkEventMotion *event, gpointer data);
 
 static	InfoData *create_info_line(gchar *text,  gchar *icon_path, GtkWidget *icon,
 				gint offset, gint center, gint show_count, gint delay)
@@ -73,9 +75,24 @@ static	InfoData *create_info_line(gchar *text,  gchar *icon_path, GtkWidget *ico
 	return id;
 }
 
-static void free_info_line(InfoData *id)
+static void free_info_line(AppData *ad, InfoData *id)
 {
+	GList *list = ad->click_list;
+
 	if (!id) return;
+
+	while(list)
+		{
+		GList *w = list;
+		ClickData *cd = w->data;
+		list = list->next;
+
+		if (cd->line_id == id)
+			{
+			ad->click_list = g_list_remove(ad->click_list, cd);
+			g_free(cd);
+			}
+		}
 
 	g_free(id->text);
 	g_free(id->icon_path);
@@ -87,18 +104,19 @@ static void free_info_line(InfoData *id)
 	g_free(id);
 }
 
-void free_all_info_lines(GList *list)
+void free_all_info_lines(AppData *ad)
 {
-	GList *t = list;
+	GList *list = ad->text;
 
 	if (!list) return;
-	while(t)
+	while(list)
 		{
-		InfoData *id = t->data;
-		free_info_line(id);
-		t = t->next;
+		InfoData *id = list->data;
+		free_info_line(ad, id);
+		list = list->next;
 		}
-	g_list_free(list);
+	g_list_free(ad->text);
+	ad->text = NULL;
 }
 
 InfoData *add_info_line(AppData *ad, gchar *text, gchar *icon_path, gint offset, gint center,
@@ -150,7 +168,7 @@ void remove_info_line(AppData *ad, InfoData *id)
 	else
 		{
 		ad->text = g_list_remove(ad->text, id);
-		free_info_line(id);
+		free_info_line(ad, id);
 		ad->text_lines--;
 		}
 }
@@ -437,7 +455,7 @@ static gint update_display_cb(gpointer data)
 	return TRUE;
 }
 
-static void set_mouse_cursor (AppData *ad, gint icon)
+void set_mouse_cursor (AppData *ad, gint icon)
 {
         GdkCursor *cursor = gdk_cursor_new (icon);
         gdk_window_set_cursor (ad->draw_area->window, cursor);

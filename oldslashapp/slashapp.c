@@ -6,6 +6,13 @@
 #include "http_get.h"
 #include "slashsplash.xpm"
 
+static void launch_url(AppData *ad, gchar *url);
+static void click_headline_cb(AppData *ad, gpointer data);
+static int filesize(char *s);
+static gchar *check_for_dir(char *d);
+static void delete_if_empty(char *file);
+static GtkWidget *get_topic_image(gchar *topic, AppData *ad);
+static void make_lowercase(gchar *text);
 static void flush_newline_chars(gchar *text, gint max);
 static int get_current_headlines(gpointer data);
 static int startup_delay_cb(gpointer data);
@@ -233,13 +240,19 @@ static int get_current_headlines(gpointer data)
 	gchar *filename = g_strconcat(ad->slashapp_dir, "/slashnews", NULL);
 	gint h = FALSE;
 
+	set_mouse_cursor (ad, GDK_WATCH);
+
+	while(gtk_events_pending()) gtk_main_iteration();
+
 	if ((slash_file = fopen(filename, "w")) == NULL)
 		{
 		fprintf(stderr, "Failed to open file \"%s\": %s\n",
 				filename, strerror(errno));
 		g_free(filename);
+		set_mouse_cursor (ad, GDK_LEFT_PTR);
 		return TRUE;
 		}
+
 	http_get_to_file("slashdot.org", 80, "/ultramode.txt", slash_file);
 	fclose(slash_file);
 
@@ -249,6 +262,7 @@ static int get_current_headlines(gpointer data)
 		fprintf(stderr, "Failed to open file \"%s\": %s\n",
 				filename, strerror(errno));
 		g_free(filename);
+		set_mouse_cursor (ad, GDK_LEFT_PTR);
 		return TRUE;
 		}
 
@@ -327,6 +341,8 @@ static int get_current_headlines(gpointer data)
 
 	fclose(slash_file);
 
+	set_mouse_cursor (ad, GDK_LEFT_PTR);
+
 	if (!h)	add_info_line(ad, "  \n  \nNo articles found", NULL, 0, FALSE, 1, 30);
 
 	g_free(filename);
@@ -381,7 +397,7 @@ static void destroy_applet(GtkWidget *widget, gpointer data)
 	gtk_timeout_remove(ad->headline_timeout_id);
 	if (ad->startup_timeout_id > 0) gtk_timeout_remove(ad->startup_timeout_id);
 
-	free_all_info_lines(ad->text);
+	free_all_info_lines(ad);
 	gtk_widget_destroy(ad->display_w);
 	gtk_widget_destroy(ad->disp_buf_w);
 	gtk_widget_destroy(ad->background_w);
