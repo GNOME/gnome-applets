@@ -221,11 +221,11 @@ main (int argc, char *argv[])
 
 
   /* this tells gtk_main() to call do_clock() every 900 milliseconds */
-  gtk_timeout_add (1000, do_clock, NULL);
+  gtk_timeout_add (900, do_clock, NULL);
 
   /* call gtk_main that sits and waits for events */
-  sleep(1);
-  gtk_main();
+
+  applet_widget_gtk_main();
 
   return(0);  
 }
