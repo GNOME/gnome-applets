@@ -5,13 +5,207 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 1.4.1\n"
-"POT-Creation-Date: 2002-02-12 00:10+0100\n"
-"PO-Revision-Date: 2002-02-12 00:17+0100\n"
+"POT-Creation-Date: 2002-02-17 09:07+0100\n"
+"PO-Revision-Date: 2002-02-17 09:09+0100\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian <no@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8-bit\n"
+
+#. Message displayed if user tries to run applet
+#. on unsupported platform
+#: battstat/battstat_applet.c:284
+msgid "Your platform is not supported!\n"
+msgstr "Din plattform er ikke støttet!\n"
+
+#: battstat/battstat_applet.c:285
+msgid "The applet will not work properly (if at all).\n"
+msgstr "Appleten vil ikke fungere riktig (hvis i det hele tatt).\n"
+
+#. The following four messages will be displayed as tooltips over
+#. the battery meter.
+#. High = The APM BIOS thinks that the battery charge is High.
+#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:798
+msgid "High"
+msgstr "Høy"
+
+#. Low = The APM BIOS thinks that the battery charge is Low.
+#: battstat/battstat_applet.c:324 battstat/battstat_applet.c:800
+msgid "Low"
+msgstr "Lav"
+
+#. Critical = The APM BIOS thinks that the battery charge is Critical.
+#: battstat/battstat_applet.c:326 battstat/battstat_applet.c:802
+msgid "Critical"
+msgstr "Kritisk"
+
+#. Charging = The APM BIOS thinks that the battery is recharging.
+#: battstat/battstat_applet.c:328 battstat/battstat_applet.c:804
+msgid "Charging"
+msgstr "Lader"
+
+#: battstat/battstat_applet.c:409
+#, c-format
+msgid "Battery low (%d%%) and AC is offline"
+msgstr "Lav batterikapasitet (%d%%) og ikke koblet til strøm"
+
+#: battstat/battstat_applet.c:432
+msgid "Battery is now fully re-charged!"
+msgstr "Batteriet er fullt oppladet!"
+
+#. This string will display as a tooltip over the status frame
+#. when the computer is using battery power and the battery meter
+#. and percent meter is hidden by the user.
+#: battstat/battstat_applet.c:451 battstat/battstat_applet.c:961
+#, c-format
+msgid ""
+"System is running on battery power\n"
+"Battery: %d%% (%s)"
+msgstr ""
+"Systemet kjører på batteristrøm\n"
+"Batteri: %d%% (%s)"
+
+#. This string will display as a tooltip over the status frame
+#. when the computer is using AC power and the battery meter
+#. and percent meter is hidden by the user.
+#: battstat/battstat_applet.c:455 battstat/battstat_applet.c:969
+#, c-format
+msgid ""
+"System is running on AC power\n"
+"Battery: %d%% (%s)"
+msgstr ""
+"Systemet kjører på nettstrøm\n"
+"Batteri: %d%% (%s)"
+
+#. This string will display as a tooltip over the status frame
+#. when the computer is using battery power.
+#: battstat/battstat_applet.c:461 battstat/battstat_applet.c:893
+#: battstat/battstat_applet.c:982
+msgid "System is running on battery power"
+msgstr "Systemet kjører på batteristrøm"
+
+#. This string will display as a tooltip over the status frame
+#. when the computer is using AC power.
+#: battstat/battstat_applet.c:464 battstat/battstat_applet.c:899
+#: battstat/battstat_applet.c:988
+msgid "System is running on AC power"
+msgstr "Systemet kjører på nettstrøm"
+
+#: battstat/battstat_applet.c:478
+msgid "N/A"
+msgstr "I/T"
+
+#. This string will display as a tooltip over the battery frame
+#. when the computer is using battery power.
+#: battstat/battstat_applet.c:602 battstat/battstat_applet.c:873
+#, c-format
+msgid "System is running on battery power. Battery: %d%% (%s)"
+msgstr "Systemet kjører på batteristrøm. Batteri: %d%% (%s)"
+
+#. This string will display as a tooltip over the battery frame
+#. when the computer is using AC power.
+#: battstat/battstat_applet.c:609 battstat/battstat_applet.c:880
+#, c-format
+msgid "System is running on AC power. Battery: %d%% (%s)"
+msgstr "Systemet kjører på nettstrøm. Batteri: %d%% (%s)"
+
+#. This string will display as a tooltip over the
+#. battery frame when the computer is using battery
+#. power and the battery isn't present. Not a
+#. possible combination, I guess... :)
+#: battstat/battstat_applet.c:620
+msgid "System is running on battery power. Battery: Not present"
+msgstr "Systemet kjører på batteristrøm. Batteri: Ikke tilstede"
+
+#. This string will display as a tooltip over the
+#. battery frame when the computer is using AC
+#. power and the battery isn't present.
+#: battstat/battstat_applet.c:626
+msgid "System is running on AC power. Battery: Not present"
+msgstr "Systemet kjører på nettstrøm. Batteri: Ikke tilstede"
+
+#. Displayed as a tooltip over the battery meter when there is
+#. a battery present. %d will hold the current charge and %s will
+#. hold the status of the battery, (High, Low, Critical, Charging.
+#: battstat/battstat_applet.c:635
+#, c-format
+msgid "Battery: %d%% (%s)"
+msgstr "Batteri: %d%% (%s)"
+
+#. Displayed as a tooltip over the battery meter when no
+#. battery is present.
+#: battstat/battstat_applet.c:642
+msgid "Battery: Not present"
+msgstr "Batteri: Ikke tilstede"
+
+#. Displayed if the APM device couldn't be opened. (Used under *BSD)
+#: battstat/battstat_applet.c:698
+msgid ""
+"Can't open the APM device!\n"
+"\n"
+"Make sure you have read permission to the\n"
+"APM device."
+msgstr ""
+"Kan ikke åpne APM-enhet!\n"
+"\n"
+"Sjekk at du har leserettigheter til\n"
+"APM-enheten."
+
+#. Displayed if the APM system is disabled (Used under *BSD)
+#: battstat/battstat_applet.c:706
+msgid ""
+"The APM Management subsystem seems to be disabled.\n"
+"Try executing \"apm -e 1\" (FreeBSD) and see if \n"
+"that helps.\n"
+msgstr ""
+"Støttesystemet for APM-håndtering ser ut til å være \n"
+"deaktivert. Prøv å kjøre «apm -e 1» (FreeBSD) \n"
+"og se om det hjelper.\n"
+
+#. The long name of the applet in the About dialog.
+#: battstat/battstat_applet.c:771
+msgid "Battery status utility"
+msgstr "Verktøy for batteristatus"
+
+#: battstat/battstat_applet.c:773
+msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
+msgstr "© 2000 Gnulix Society, © 2002 Free Software Foundation"
+
+#: battstat/battstat_applet.c:774
+msgid "This utility show the status of your laptop battery."
+msgstr "Dette verktøyet viser status for batteriet på din bærbare."
+
+#: battstat/GNOME_BattstatApplet.server.in.h:1
+msgid "Battery Charge Monitor"
+msgstr "Overvåking av batterilading"
+
+#: battstat/GNOME_BattstatApplet.server.in.h:2
+msgid "Battstat Factory"
+msgstr "Battstat-factory"
+
+#: battstat/GNOME_BattstatApplet.server.in.h:3
+msgid "Laptop battery monitor applet"
+msgstr "Applet for overvåking av batteri på bærbare"
+
+#: battstat/GNOME_BattstatApplet.xml.h:1
+msgid "About ..."
+msgstr "Om..."
+
+#: battstat/GNOME_BattstatApplet.xml.h:2
+#: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
+#: mixer/GNOME_MixerApplet.xml.h:2 modemlights/GNOME_ModemlightsApplet.xml.h:2
+#: screenshooter/GNOME_ScreenshooterApplet.xml.h:2
+msgid "Help"
+msgstr "Hjelp"
+
+#: battstat/GNOME_BattstatApplet.xml.h:3
+msgid "Propertyes ..."
+msgstr "Egenskaper..."
+
+#: battstat/GNOME_BattstatApplet.xml.h:4
+msgid "Suspend Computer ..."
+msgstr "Sett datamaskin i hvilemodus..."
 
 #: cdplayer/cdplayer.c:312
 msgid "CD Player Properties"
@@ -101,35 +295,35 @@ msgstr ""
 msgid "Character Palette Properties"
 msgstr "Egenskaper for tegnpalett"
 
-#: drivemount/drivemount.c:420
+#: drivemount/drivemount.c:429
 msgid "Drive Mount Applet"
 msgstr "Diskmonteringsapplet"
 
-#: drivemount/drivemount.c:421
+#: drivemount/drivemount.c:430
 msgid "(C) 1999-2001 The GNOME Hackers\n"
 msgstr "© 1999-2001 GNOME-hackerene\n"
 
-#: drivemount/drivemount.c:423
+#: drivemount/drivemount.c:432
 msgid "Applet for mounting and unmounting block volumes."
 msgstr "Applet for montering og avmontering av blokkvolumer."
 
-#: drivemount/drivemount.c:611
+#: drivemount/drivemount.c:620
 msgid " mounted"
 msgstr " montert"
 
-#: drivemount/drivemount.c:613
+#: drivemount/drivemount.c:622
 msgid " not mounted"
 msgstr " ikke montert"
 
-#: drivemount/drivemount.c:724
+#: drivemount/drivemount.c:733
 msgid "Drive Mount Applet Warning"
 msgstr "Advarsel fra diskmonteringsapplet"
 
-#: drivemount/drivemount.c:732
+#: drivemount/drivemount.c:741
 msgid "\" reported:\n"
 msgstr "\" rapportert:\n"
 
-#: drivemount/drivemount.c:734
+#: drivemount/drivemount.c:743
 msgid ""
 "Drivemount command failed.\n"
 "\""
@@ -178,48 +372,94 @@ msgid "Cdrom"
 msgstr "Cdrom"
 
 #: drivemount/properties.c:310
+msgid "Cd Recorder"
+msgstr "CD-R"
+
+#: drivemount/properties.c:313
 msgid "Zip Drive"
 msgstr "Zip-disk"
 
-#: drivemount/properties.c:313
+#: drivemount/properties.c:316
 msgid "Hard Disk"
 msgstr "Harddisk"
 
-#: drivemount/properties.c:316
+#: drivemount/properties.c:319
 msgid "Jaz Drive"
 msgstr "Jaz-disk"
 
-#: drivemount/properties.c:319
+#: drivemount/properties.c:322
 msgid "Custom"
 msgstr "Egendefinert"
 
-#: drivemount/properties.c:332
+#: drivemount/properties.c:335
 msgid "Select icon for mounted"
 msgstr "Velg ikon for montert"
 
-#: drivemount/properties.c:339
+#: drivemount/properties.c:342
 msgid "Custom icon for mounted:"
 msgstr "Egendefinert ikon for montert:"
 
-#: drivemount/properties.c:347
+#: drivemount/properties.c:350
 msgid "Select icon for unmounted"
 msgstr "Velg ikon for ikke montert"
 
-#: drivemount/properties.c:354
+#: drivemount/properties.c:357
 msgid "Custom icon for not mounted:"
 msgstr "Egendefinert ikon for ikke montert:"
 
-#: drivemount/properties.c:363
+#: drivemount/properties.c:366
 msgid "Scale size to panel"
 msgstr "Skaler til panelets størrelse"
 
-#: drivemount/properties.c:370
+#: drivemount/properties.c:373
 msgid "Eject on unmount"
 msgstr "Utløs ved avmontering"
 
-#: drivemount/properties.c:377
+#: drivemount/properties.c:380
 msgid "Use automount friendly status test"
 msgstr "Bruk automount-vennlig statustest"
+
+#: geyes/geyes_applet.desktop.in.h:1
+msgid "An applet that watches your mouse."
+msgstr "En applet som overvåker din mus."
+
+#: geyes/geyes.c:209 geyes/geyes_applet.desktop.in.h:2
+msgid "gEyes"
+msgstr "gEyes"
+
+#: geyes/geyes.c:200
+msgid "Dave Camp <campd@oit.edu>"
+msgstr "Dave Camp <campd@oit.edu>"
+
+#: geyes/geyes.c:210
+msgid "Copyright (C) 1999 Dave Camp"
+msgstr "Copyright (C) 1999 Dave Camp"
+
+#: geyes/geyes.c:211
+msgid "A goofy little xeyes clone for the GNOME panel."
+msgstr "En goofy liten xeyes klone for GNOME panelet."
+
+#: geyes/GNOME_GeyesApplet.server.in.h:1
+msgid "A set of eyeballs for your panel"
+msgstr "Et sett øyne for ditt panel"
+
+#: geyes/GNOME_GeyesApplet.server.in.h:2
+msgid "Geyes Applet"
+msgstr "Geyes-applet"
+
+#: geyes/GNOME_GeyesApplet.server.in.h:3
+msgid "Geyes Applet Factory"
+msgstr "Factory for geyes-applet"
+
+#: geyes/themes.c:185
+msgid "Theme Name"
+msgstr "Navn på tema"
+
+#: geyes/themes.c:198 mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
+#: modemlights/GNOME_ModemlightsApplet.xml.h:3
+#: screenshooter/GNOME_ScreenshooterApplet.xml.h:3
+msgid "Properties"
+msgstr "Egenskaper"
 
 #: gkb-new/gkb_applet.desktop.in.h:1
 msgid "GKB Keyboard Switcher"
@@ -853,1270 +1093,21 @@ msgstr "(Nei"
 msgid "Change "
 msgstr "Endre "
 
-#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:2
-#: mini-commander/src/mini-commander_applet.desktop.in.h:1
-msgid "Mini-Commander"
-msgstr "Mini-kommander"
-
-#: mini-commander/src/about.c:39
-msgid "Mini-Commander Applet"
-msgstr "Mini-kommander applet"
-
-#: mini-commander/src/about.c:42
-msgid ""
-"This GNOME applet adds a command line to the panel. It features command "
-"completion, command history, changeable macros and an optional built-in "
-"clock.\n"
-"\n"
-"This program is free software; you can redistribute it and/or modify it "
-"under the terms of the GNU General Public License as published by the Free "
-"Software Foundation; either version 2 of the License, or (at your option) "
-"any later version."
-msgstr ""
-"Denne GNOME-appleten legger til en kommandolinje på panelet. Denne støtter\n"
-"kommando-komplettering, kommando-historikk, redigerbare makroer og en\n"
-"valgfri, innebygget klokke.\n"
-"\n"
-"Dette programmet er fri programvare; du kan distribuere det og/eller \n"
-"endre det i følge betingelsene gitt i GNU General Fystikk"
-
-#: mini-commander/src/cmd_completion.c:69
-#: mini-commander/src/cmd_completion.c:115
-#: mini-commander/src/cmd_completion.c:151
-#: mini-commander/src/cmd_completion.c:202
-msgid "not unique"
-msgstr "ikke unik"
-
-#: mini-commander/src/cmd_completion.c:73
-#: mini-commander/src/cmd_completion.c:155
-msgid "completing..."
-msgstr "ferdigstiller..."
-
-#: mini-commander/src/cmd_completion.c:113
-#: mini-commander/src/cmd_completion.c:200
-msgid "completed"
-msgstr "ferdig"
-
-#: mini-commander/src/cmd_completion.c:118
-#: mini-commander/src/cmd_completion.c:205
-msgid "not found"
-msgstr "ikke funnet"
-
-#: mini-commander/src/cmd_completion.c:167 mini-commander/src/exec.c:117
-msgid "no /bin/sh"
-msgstr "ingen /bin/sh"
-
-#: mini-commander/src/command_line.c:89 mini-commander/src/command_line.c:109
-#: mini-commander/src/terminal.c:91 mini-commander/src/terminal.c:111
-msgid "end of history list"
-msgstr "slutten på historikken"
-
-#. enter pressed -> exec command
-#: mini-commander/src/command_line.c:119 mini-commander/src/exec.c:59
-#: mini-commander/src/terminal.c:121
-msgid "starting..."
-msgstr "starter..."
-
-#: mini-commander/src/command_line.c:148 mini-commander/src/terminal.c:153
-msgid "autocompleted"
-msgstr "autoutfylt"
-
-#: mini-commander/src/command_line.c:293
-msgid "history list empty"
-msgstr "Historikken er tom"
-
-#. title
-#: mini-commander/src/command_line.c:311
-msgid "Command history"
-msgstr "Kommandohistorikk"
-
-#. build file select dialog
-#: mini-commander/src/command_line.c:429
-msgid "Start program"
-msgstr "Start program"
-
-#: mini-commander/src/exec.c:61
-msgid "fork error"
-msgstr "fork feil"
-
-#: mini-commander/src/exec.c:105
-msgid "child exited"
-msgstr "barn avsluttet"
-
-#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:1
-msgid "Command Line"
-msgstr "Kommandolinje"
-
-#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:3
-msgid "MiniCommander Applet Factory"
-msgstr "Factory for mini-kommander-applet"
-
-#: mini-commander/src/help.c:36
-msgid "still not ported"
-msgstr "ikke portet ennå"
-
-#: mini-commander/src/message.c:148
-msgid "%H:%M - %d. %b"
-msgstr "%H:%M - %d. %b"
-
-#: mini-commander/src/message.c:150
-msgid "%H:%M"
-msgstr "%H:%M"
-
-#: mini-commander/src/message.c:152
-msgid "%d. %b"
-msgstr "%d. %b"
-
-#: mini-commander/src/mini-commander_applet.c:122
-msgid "orient. changed"
-msgstr "orientering endret"
-
-#: mini-commander/src/mini-commander_applet.c:141
-msgid "size changed"
-msgstr "størrelse endret"
-
-#: mini-commander/src/mini-commander_applet.c:261
-msgid "Browser"
-msgstr "Leser"
-
-#: mini-commander/src/mini-commander_applet.c:276
-msgid "History"
-msgstr "Historikk"
-
-#: mini-commander/src/mini-commander_applet.c:416
-msgid "ready..."
-msgstr "klar..."
-
-#: mini-commander/src/preferences.c:113
-msgid "time & date on"
-msgstr "tid & dato på"
-
-#: mini-commander/src/preferences.c:115
-msgid "time on"
-msgstr "tid på"
-
-#: mini-commander/src/preferences.c:117
-msgid "date on"
-msgstr "dato på"
-
-#: mini-commander/src/preferences.c:119
-msgid "clock off"
-msgstr "klokke av"
-
-#: mini-commander/src/preferences.c:573
-msgid "Command Line Properties"
-msgstr "Egenskaper for kommandolinje"
-
-#: mini-commander/src/preferences.c:586
-msgid "Clock"
-msgstr "Klokke"
-
-#. show time check box
-#: mini-commander/src/preferences.c:594
-msgid "Show time"
-msgstr "Vis tid"
-
-#. show date check box
-#: mini-commander/src/preferences.c:601
-msgid "Show date"
-msgstr "Vis dato"
-
-#. appearance frame
-#: mini-commander/src/preferences.c:609
-msgid "Appearance"
-msgstr "Utseende"
-
-#. show handle check box
-#: mini-commander/src/preferences.c:617
-msgid "Show handle"
-msgstr "Vis håndtak"
-
-#. show frame check box
-#: mini-commander/src/preferences.c:624
-msgid "Show frame"
-msgstr "Vis ramme"
-
-#. auto complete frame
-#: mini-commander/src/preferences.c:633
-msgid "Autocompletion"
-msgstr "Autoutfylling"
-
-#. show history autocomplete
-#: mini-commander/src/preferences.c:641
-msgid "Enable history based autocompletion"
-msgstr "Slå på historikkbasert autoutfylling"
-
-#. Size
-#: mini-commander/src/preferences.c:648
-msgid "Size"
-msgstr "Størrelse"
-
-#. applet width
-#: mini-commander/src/preferences.c:660
-msgid "Applet width:"
-msgstr "Applet-bredde:"
-
-#. applet height
-#: mini-commander/src/preferences.c:689
-msgid "Applet height:"
-msgstr "Applet-høyde:"
-
-#. cmd line height
-#: mini-commander/src/preferences.c:718
-msgid "Command line height:"
-msgstr "Kommandolinjehøyde:"
-
-#. Color
-#: mini-commander/src/preferences.c:760 modemlights/properties.c:445
-#: multiload/properties.c:395
-msgid "Colors"
-msgstr "Farger"
-
-#. fg
-#: mini-commander/src/preferences.c:770
-msgid "Command line foreground:"
-msgstr "Kommandolinjeforgrunn:"
-
-#. bg
-#: mini-commander/src/preferences.c:801
-msgid "Command line background:"
-msgstr "Kommandolinjebakgrunn:"
-
-#: mini-commander/src/preferences.c:829 modemlights/properties.c:405
-msgid "_General"
-msgstr "_Generelt"
-
-#. prefix
-#: mini-commander/src/preferences.c:854
-#, c-format
-msgid "Regex %.2d:"
-msgstr "Regex %.2d:"
-
-#. command
-#: mini-commander/src/preferences.c:870
-#, c-format
-msgid "   Macro %.2d:"
-msgstr "   Makro %.2d:"
-
-#: mini-commander/src/preferences.c:886
-msgid "_Macros"
-msgstr "_Makroer"
-
-#: mixer/GNOME_MixerApplet.server.in.h:1
-msgid "Applet for adjusting the sound volume"
-msgstr "Applet for justering av lydvolum"
-
-#: mixer/GNOME_MixerApplet.server.in.h:2 mixer/mixer.c:701
-msgid "Volume Control"
-msgstr "Volumkontroll"
-
-#. probably should die more gracefully
-#: mixer/mixer.c:168
-#, c-format
-msgid "Couldn't open mixer device %s\n"
-msgstr "Klarte ikke å åpne mikser-enheten %s\n"
-
-#: mixer/mixer.c:182
-msgid ""
-"warning: this version of gmix was compiled with a different version of\n"
-"soundcard.h.\n"
-msgstr ""
-"advarsel: denne versjonen av gmix ble kompilert med en annen versjon av\n"
-"soundcard.h\n"
-
-#: mixer/mixer.c:193
-#, c-format
-msgid "Querying available channels of mixer device %s failed\n"
-msgstr "Spørring etter tilgjengelige kanaler på mikserenhet %s feilet\n"
-
-#: mixer/mixer.c:200
-msgid "warning: mixer has no volume channel - using PCM instead.\n"
-msgstr "advarsel: mikseren har ingen volum-kanal - bruker PCM i stedet.\n"
-
-#: mixer/mixer.c:203
-#, c-format
-msgid "Mixer device %s has neither volume nor PCM channels.\n"
-msgstr "Mikserenhet %s har verken volum- eller PCM-kanaler.\n"
-
-#: mixer/mixer.c:702
-msgid "(C) 2001 Richard Hult"
-msgstr "© 2001 Richard Hult"
-
-#: mixer/mixer.c:703
-msgid "The volume control lets you set the volume level for your desktop."
-msgstr "Volumkontroll lar deg sette volumnivå for ditt skrivebord."
-
-#: modemlights/GNOME_ModemLightsApplet.server.in.h:1
-#: modemlights/modemlights_applet.desktop.in.h:1
-msgid "Modem Lights"
-msgstr "Modemlys"
-
-#: modemlights/modemlights_applet.desktop.in.h:2
-msgid "Show modem status"
-msgstr "Vis modemstatus"
-
-#: modemlights/modemlights.c:205
-msgid "Modem Lights Applet"
-msgstr "Modemlys applet"
-
-#: modemlights/modemlights.c:207
-msgid ""
-"Released under the GNU general public license.\n"
-"A modem status indicator and dialer.\n"
-"Lights in order from the top or left are Send data and Receive data."
-msgstr ""
-"Utgitt under GNUs generelle offentlige lisense.\n"
-"En modem status indikator og nummersender.\n"
-"Lysene fra øverst eller venstre er send data  og motta data."
-
-#: modemlights/modemlights.c:531
-msgid ""
-"You are currently connected.\n"
-"Do you want to disconnect?"
-msgstr ""
-"Du er nå tilkoblet.\n"
-"Vil du koble fra?"
-
-#: modemlights/modemlights.c:546
-msgid "Do you want to connect?"
-msgstr "Vil du koble til?"
-
-#: modemlights/modemlights.c:574
-#, c-format
-msgid "%#.1fMb received / %#.1fMb sent / time: %.1d:%.2d"
-msgstr "%#.1fMb mottatt / %#.1fMb sendt / tid: %.1d:%.2d"
-
-#: modemlights/modemlights.c:579
-msgid "not connected"
-msgstr "ikke tilkoblet"
-
-#: modemlights/properties.c:310
-msgid "Modem Lights Properties"
-msgstr "Egenskaper for Modemlys"
-
-#: modemlights/properties.c:322
-msgid "Connecting"
-msgstr "Kobler til"
-
-#: modemlights/properties.c:336
-msgid "Connect command:"
-msgstr "Tilkoblingskommando:"
-
-#: modemlights/properties.c:352
-msgid "Disconnect command:"
-msgstr "Frakoblingskommando:"
-
-#. confirmation checkbox
-#: modemlights/properties.c:364
-msgid "Confirm connection"
-msgstr "Bekreft tilkobling"
-
-#: modemlights/properties.c:385
-msgid "Updates per second"
-msgstr "Oppdateringer i sekundet"
-
-#. extra info checkbox
-#: modemlights/properties.c:398
-msgid "Show connect time and throughput"
-msgstr "Vis tilkoblet tid og overføringsmengde"
-
-#: modemlights/properties.c:415
-msgid "Receive data"
-msgstr "Motta data"
-
-#: modemlights/properties.c:417 modemlights/properties.c:422
-#: modemlights/properties.c:441
-msgid "Foreground"
-msgstr "Forgrunn"
-
-#: modemlights/properties.c:418 modemlights/properties.c:423
-#: modemlights/properties.c:442
-msgid "Background"
-msgstr "Bakgrunn"
-
-#: modemlights/properties.c:420
-msgid "Send data"
-msgstr "Send data"
-
-#: modemlights/properties.c:425
-msgid "Connection status"
-msgstr "Tilkoblingsstatus"
-
-#: modemlights/properties.c:427
-msgid "Connected"
-msgstr "Tilkoblet"
-
-#: modemlights/properties.c:428
-msgid "Not connected"
-msgstr "Ikke tilkoblet"
-
-#: modemlights/properties.c:429
-msgid "Awaiting connection"
-msgstr "Venter på tilkobling"
-
-#: modemlights/properties.c:432
-msgid "Blink"
-msgstr "Blink"
-
-#: modemlights/properties.c:439
-msgid "Text"
-msgstr "Tekst"
-
-#: modemlights/properties.c:443
-msgid "Outline"
-msgstr "Omriss"
-
-#: modemlights/properties.c:454
-msgid "Modem options"
-msgstr "Modemalternativer"
-
-#: modemlights/properties.c:468
-msgid "Modem lock file:"
-msgstr "Modem låsfil:"
-
-#: modemlights/properties.c:479
-msgid "Verify owner of lock file"
-msgstr "Verifiser eier av låsfil"
-
-#: modemlights/properties.c:491
-msgid "Device:"
-msgstr "Enhet:"
-
-#. ISDN checkbox
-#: modemlights/properties.c:503
-msgid "Use ISDN"
-msgstr "Bruk ISDN"
-
-#: modemlights/properties.c:523
-msgid "Set options as default"
-msgstr "Sett alternativer som standard"
-
-#: modemlights/properties.c:529
-msgid "Advanced"
-msgstr "Avansert"
-
-#: multiload/cpuload_applet.desktop.in.h:1
-msgid "CPU Load Meter"
-msgstr "CPU-last måler"
-
-#: multiload/cpuload_applet.desktop.in.h:2
-msgid "CPULoad"
-msgstr "CPU-last"
-
-#: multiload/loadavg.c:94 multiload/loadavg_applet.desktop.in.h:1
-msgid "Load Average"
-msgstr "Snittbelastning"
-
-#: multiload/loadavg_applet.desktop.in.h:2
-msgid "Load Average Applet"
-msgstr "Applet for snittbelastning"
-
-#: multiload/memload_applet.desktop.in.h:1
-msgid "MemLoad"
-msgstr "Minnelast"
-
-#: multiload/memload_applet.desktop.in.h:2
-msgid "Memory Load Meter"
-msgstr "Minnelast måler"
-
-#: multiload/netload_applet.desktop.in.h:1
-msgid "NetLoad"
-msgstr "Nettlast"
-
-#: multiload/netload_applet.desktop.in.h:2
-msgid "Network Activity Meter"
-msgstr "Måling av nettverksaktivitet"
-
-#: multiload/swapload_applet.desktop.in.h:1
-msgid "Swap Load Meter"
-msgstr "Swaplast måler"
-
-#: multiload/swapload_applet.desktop.in.h:2
-msgid "SwapLoad"
-msgstr "Swaplast"
-
-#: multiload/cpuload.c:39
-msgid "CPU Load"
-msgstr "Prosessorlast"
-
-#: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:1
-msgid "A system load indicator"
-msgstr "Måler systembelasning"
-
-#: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:2
-msgid "System Monitor"
-msgstr "Systemmonitor"
-
-#: multiload/main.c:53
-msgid "System Monitor Applet"
-msgstr "Systemmonitor-applet"
-
-#: multiload/main.c:55
-msgid ""
-"Released under the GNU General Public License.\n"
-"\n"
-"A system load monitor capable of displaying graphs for CPU, ram, and swap "
-"file use, plus network traffic."
-msgstr ""
-"Utgitt under GNU General Public License.\n"
-"\n"
-"Systemmonitor som kan vis grafer for bruk av cpu, ram og bruk av swap i "
-"tillegg til nettverkstrafikk."
-
-#: multiload/main.c:184 multiload/properties.c:404
-msgid "Processor"
-msgstr "Prosessor"
-
-#: multiload/main.c:186 multiload/properties.c:410
-msgid "Memory"
-msgstr "Minne"
-
-#: gweather/gweather-pref.c:604 multiload/main.c:188
-#: multiload/properties.c:416
-msgid "Network"
-msgstr "Nettverk"
-
-#: multiload/main.c:190 multiload/properties.c:422
-msgid "Swap File"
-msgstr "Swap-fil"
-
-#: multiload/main.c:192
-msgid "Resource"
-msgstr "Ressurs"
-
-#: multiload/main.c:204
-#, c-format
-msgid ""
-"%s:\n"
-"%d%% in use"
-msgstr ""
-"%s:\n"
-"%d%% i bruk"
-
-#: multiload/memload.c:39
-msgid "Memory Load"
-msgstr "Minnelast"
-
-#: multiload/netload.c:38
-msgid "Net Load"
-msgstr "Nettbelastning"
-
-#: multiload/properties.c:290
-msgid "Monitored Resources"
-msgstr "Overvåkede ressurser"
-
-#: multiload/properties.c:298
-msgid "_Processor"
-msgstr "_Prosessor"
-
-#: multiload/properties.c:308
-msgid "_Memory"
-msgstr "_Minne"
-
-#: multiload/properties.c:318
-msgid "_Network"
-msgstr "_Nettverk"
-
-#: multiload/properties.c:328
-msgid "_Swap File"
-msgstr "_Swap-fil"
-
-#.
-#. check_box = gtk_check_button_new_with_mnemonic(_("_Average"));
-#. gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_box),
-#. panel_applet_gconf_get_bool(multiload_applet->applet, "view_loadavg", NULL));
-#. gtk_box_pack_start(GTK_BOX(hbox), check_box, FALSE, FALSE, 0);
-#.
-#: multiload/properties.c:345
-msgid "Options"
-msgstr "Alternativer"
-
-#: multiload/properties.c:358
-msgid "System monitor width: "
-msgstr "Bredde for systemmonitor: "
-
-#: multiload/properties.c:360
-msgid "System monitor height: "
-msgstr "Høyde for systemmonitor: "
-
-#: multiload/properties.c:373
-msgid "pixels"
-msgstr "piksler"
-
-#: multiload/properties.c:379
-msgid "System monitor speed: "
-msgstr "Hastighet for systemmonitor: "
-
-#: multiload/properties.c:390
-msgid "milliseconds"
-msgstr "millisekunder"
-
-#: multiload/properties.c:405
-msgid "User"
-msgstr "Bruker"
-
-#: multiload/properties.c:406
-msgid "System"
-msgstr "System"
-
-#: multiload/properties.c:407
-msgid "Nice"
-msgstr "Snill"
-
-#: multiload/properties.c:408
-msgid "Idle"
-msgstr "Tomgang"
-
-#: multiload/properties.c:411 multiload/properties.c:420
-msgid "Other"
-msgstr "Andre"
-
-#: multiload/properties.c:412
-msgid "Shared"
-msgstr "Delt"
-
-#: multiload/properties.c:413
-msgid "Buffers"
-msgstr "Buffere"
-
-#: multiload/properties.c:414 multiload/properties.c:424
-msgid "Free"
-msgstr "Ledig"
-
-#: multiload/properties.c:417
-msgid "SLIP"
-msgstr "SLIP"
-
-#: multiload/properties.c:418
-msgid "PLIP"
-msgstr "PLIP"
-
-#: multiload/properties.c:419
-msgid "Ethernet"
-msgstr "Ethernet"
-
-#: multiload/properties.c:423
-msgid "Used"
-msgstr "Brukt"
-
-#: multiload/properties.c:445
-msgid "System Monitor Properties"
-msgstr "Egenskaper for systemmonitor"
-
-#: multiload/swapload.c:39
-msgid "Swap Load"
-msgstr "Belastning på swap"
-
-#: panel-menu/GNOME_PanelMenuApplet.server.in.h:1
-msgid "Factory for Panel Menu Applet"
-msgstr "Factory for panelmeny-applet"
-
-#: panel-menu/GNOME_PanelMenuApplet.server.in.h:2
-msgid "Panel Menu Applet Factory"
-msgstr "Factory for panelmeny-applet"
-
-#: panel-menu/GNOME_PanelMenuApplet.server.in.h:3
-msgid "Panel applet for displaying menus"
-msgstr "Panelapplet som viser menyer"
-
-#: panel-menu/GNOME_PanelMenuApplet.server.in.h:4
-msgid "Utility"
-msgstr "Verktøy"
-
-#: panel-menu/panel-menu-actions.c:96
-msgid "Actions"
-msgstr "Handlinger"
-
-#: panel-menu/panel-menu-add.c:76
-msgid "Add items to the Menu Bar"
-msgstr "Legg til oppføringer på menylinjen"
-
-#: panel-menu/panel-menu-add.c:234 panel-menu/panel-menu-links.c:139
-#: panel-menu/panel-menu-links.c:401
-msgid "Shortcuts"
-msgstr "Snarveier"
-
-#: panel-menu/panel-menu-add.c:240
-msgid "My Documents"
-msgstr "Mine dokumenter"
-
-#: panel-menu/panel-menu-add.c:246 panel-menu/panel-menu-documents.c:134
-#: panel-menu/panel-menu-documents.c:399
-msgid "Documents"
-msgstr "Dokumenter"
-
-#: panel-menu/panel-menu-applications.c:80
-msgid "Applications"
-msgstr "Applikasjoner"
-
-#: panel-menu/panel-menu.c:681
-msgid "PanelMenu Applet"
-msgstr "Panelmeny-applet"
-
-#: panel-menu/panel-menu.c:681
-msgid "(c) 2001 Chris Phelps"
-msgstr "© 2001 Chris Phelps"
-
-#: panel-menu/panel-menu.c:681
-msgid ""
-"The Panel Menu Applet allows you to display customized menubars on your "
-"panels."
-msgstr ""
-"Panelmeny-appleten lar deg vise egendefinerte menylinjer på dine paneler."
-
-#: panel-menu/panel-menu-directory.c:496
-msgid "Create directory item..."
-msgstr "Opprett katalogoppføring..."
-
-#: panel-menu/panel-menu-directory.c:499
-msgid "Home"
-msgstr "Hjem"
-
-#: panel-menu/panel-menu-directory.c:542
-msgid "Edit directory item..."
-msgstr "Rediger katalogoppføring..."
-
-#: panel-menu/panel-menu-directory.c:601 panel-menu/panel-menu-documents.c:398
-#: panel-menu/panel-menu-documents.c:434 panel-menu/panel-menu-links.c:400
-#: panel-menu/panel-menu-links.c:436
-msgid "Name:"
-msgstr "Navn:"
-
-#: panel-menu/panel-menu-directory.c:611 panel-menu/panel-menu-path.c:721
-msgid "Path:"
-msgstr "Sti:"
-
-#: panel-menu/panel-menu-directory.c:621
-msgid "Depth level:"
-msgstr "Dybdenivå:"
-
-#: panel-menu/panel-menu-documents.c:397
-msgid "Create documents item..."
-msgstr "Opprett dokumentoppføring..."
-
-#: panel-menu/panel-menu-documents.c:433
-msgid "Rename documents item..."
-msgstr "Endre navn på dokumentoppføring..."
-
-#: panel-menu/panel-menu-links.c:323 panel-menu/panel-menu-path.c:573
-msgid "KDE Menus"
-msgstr "KDE-menyer"
-
-#: panel-menu/panel-menu-links.c:326 panel-menu/panel-menu-path.c:233
-#: panel-menu/panel-menu-path.c:576
-msgid "Programs"
-msgstr "Programmer"
-
-#: panel-menu/panel-menu-links.c:399
-msgid "Create links item..."
-msgstr "Opprett lenkeoppføring..."
-
-#: panel-menu/panel-menu-links.c:435
-msgid "Rename links item..."
-msgstr "Endre navn på lenkeoppføring..."
-
-#: panel-menu/panel-menu-path.c:224
-msgid "KDE"
-msgstr "KDE"
-
-#: panel-menu/panel-menu-path.c:650
-msgid "Create menu path item..."
-msgstr "Opprett menystioppføring..."
-
-#: panel-menu/panel-menu-path.c:682
-msgid "Edit path item..."
-msgstr "Rediger stioppføring..."
-
-#: panel-menu/panel-menu-path.c:730
-msgid "Browse..."
-msgstr "Se på..."
-
-#: panel-menu/panel-menu-preferences.c:78
-msgid "Preferences"
-msgstr "Brukervalg"
-
-#: panel-menu/panel-menu-properties.c:71
-msgid "Menu Bar Properties"
-msgstr "Egenskaper for menylinje"
-
-#: panel-menu/panel-menu-properties.c:75
-msgid "Layout"
-msgstr "Plassering"
-
-#: panel-menu/panel-menu-properties.c:90
-msgid "Preferences Menu"
-msgstr "Meny for brukervalg"
-
-#: panel-menu/panel-menu-properties.c:110
-msgid "Applications Menu"
-msgstr "Applikasjonsmeny"
-
-#: panel-menu/panel-menu-properties.c:130
-msgid "Select an icon for the Applications menu"
-msgstr "Velg et ikon for applikasjonsmenyen"
-
-#: panel-menu/panel-menu-properties.c:146
-msgid "Actions Menu"
-msgstr "Handlingsmeny"
-
-#: panel-menu/panel-menu-properties.c:157
-msgid "Windows Menu"
-msgstr "Vindumeny"
-
-#: panel-menu/panel-menu-properties.c:168
-msgid "Workspaces Menu"
-msgstr "Arbeidsområdemeny"
-
-#: panel-menu/panel-menu-windows.c:99
-msgid "Windows"
-msgstr "Vinduer"
-
-#: panel-menu/panel-menu-workspaces.c:80
-msgid "Workspaces"
-msgstr "Arbeidsområder"
-
-#: screenshooter/GNOME_ScreenshooterApplet.server.in.h:1
-msgid "Screenshot Taker"
-msgstr "Skjermdumper"
-
-#: screenshooter/GNOME_ScreenshooterApplet.server.in.h:2
-msgid "Take screenshots"
-msgstr "Tar skjermdump"
-
-#: screenshooter/screenshooter_applet.desktop.in.h:1
-msgid "Screen Shooter is a screenshot grabber"
-msgstr "Skjermdumper er et program for å ta skjermdump"
-
-#: screenshooter/screenshooter_applet.desktop.in.h:2
-msgid "ScreenShooter"
-msgstr "Skjermdumper"
-
-#: screenshooter/screenshooter_applet.c:416
-msgid "Screen-Shooter Settings"
-msgstr "Instillinger for skjermskyter"
-
-#: screenshooter/screenshooter_applet.c:422
-msgid "Capture WM decorations when grabbing a window"
-msgstr "Dump WM dekorasjoner når et vindu hentes"
-
-#: screenshooter/screenshooter_applet.c:426
-msgid "Give audio feedback using the keyboard bell"
-msgstr "Gi tilbakemelding med lyd via tastaturklokken"
-
-#: screenshooter/screenshooter_applet.c:431
-msgid "Display Spurious Options (I got carried away)"
-msgstr "Vis skiftende alternativer (Jeg ble revet med)"
-
-#: screenshooter/screenshooter_applet.c:439
-msgid "Delay (seconds) before taking shot (only for entire desktop shots)"
-msgstr "Pause (sekunder) før dump tas (kun for dump av hele skrivebordet)"
-
-#: screenshooter/screenshooter_applet.c:444
-msgid "Compressed Quality (JPEG/MIFF/PNG mode) High: good quality/large file"
-msgstr "Komprimert kvalitet (JPEG/MIFF/PNG-modus) Høy: god kvalitet/stor fil"
-
-#: screenshooter/screenshooter_applet.c:455
-msgid "Create monochrome image"
-msgstr "Opprett monokromt bilde"
-
-#: screenshooter/screenshooter_applet.c:458
-msgid "Invert colours in image"
-msgstr "Inverter fargene i bildet"
-
-#: gweather/gweather-pref.c:707 screenshooter/screenshooter_applet.c:461
-msgid "General"
-msgstr "Generelt"
-
-#: screenshooter/screenshooter_applet.c:474
-msgid "Directory to save images in:"
-msgstr "Katalog for lagring av bilder:"
-
-#: screenshooter/screenshooter_applet.c:499
-msgid "Image filename:"
-msgstr "Filnavn for bilde:"
-
-#: screenshooter/screenshooter_applet.c:514
-msgid "Show expanded filename"
-msgstr "Vis utvidet filnavn"
-
-#. The % sign screws over xgettext ;)
-#: screenshooter/screenshooter_applet.c:536
-#, no-c-format
-msgid ""
-"Filetype is determined from filename suffix.\n"
-"Default filetype (if no extension or unrecognised extension) is miff.\n"
-"Recognised suffixes are:\n"
-"jpg, jpeg, bmp, cgm, cmyk, dib, eps, fig, fpx, gif, ico, map, miff, pcx,\n"
-"pict, pix, png, pnm, ppm, psd, rgb, rgba, rla, rle, tiff, tga, xbm, xpm,\n"
-"and several obscure ones. Try your luck with something interesting!\n"
-"Eg .html for a client-side image map. You'll get a .gif, .html, and a ."
-"shtml\n"
-"\n"
-"Recommendations:\n"
-"Small file, pretty good quality:   jpg, 75% quality\n"
-"Slightly larger file but lossless: png, as much compression as you like.\n"
-"- compressing pngs takes longer at higher ratios, but is still lossless"
-msgstr ""
-"Filtypen bestemmes fra filens etternavn/suffiks.\n"
-"Standard filtype (hvis ingen oppgis eller gjenkjennes) er miff.\n"
-"Gjenkjente filtyper er:\n"
-"jpg, jpeg, bmp, cgm, cmyk, dib, eps, fig, fpx, gif, ico, map, miff, pcx,\n"
-"pict, pix, png, pnm, ppm, psd, rgb, rgba, rla, rle, tiff, tga, xbm, xpm,\n"
-"og flere andre obskure typer. Prøv ditt hell med noe interessant!\n"
-"For eksempel .html for et klientside bildekart. Du vil få et .gif, .html og "
-"et .shtml.\n"
-"\n"
-"Forslag:\n"
-"Liten fil ganske god kvalitet:        jpg, 75% kvalitet\n"
-"Litt større fil men uten tap av data: png, så mye kompresjon som du ønsker.\n"
-"- kompresjon av png filer tar lengre tid ved høyere rater, men er likevel "
-"uten tap av data"
-
-#: screenshooter/screenshooter_applet.c:552
-msgid "View screenshot after saving it"
-msgstr "Vis skjermdump etter lagring"
-
-#: screenshooter/screenshooter_applet.c:559
-msgid "App to use for displaying screenshots:"
-msgstr "Applikasjon som skal brukes for å vise skjermdumpene:"
-
-#: screenshooter/screenshooter_applet.c:574
-msgid "Files, Apps"
-msgstr "Filer, applikasjoner"
-
-#: screenshooter/screenshooter_applet.c:582
-msgid "Create thumbnail of image too"
-msgstr "Opprett miniatyr også"
-
-#: screenshooter/screenshooter_applet.c:586
-msgid "Thumbnail Size (percentage of original)"
-msgstr "Størrelse for miniatyr (prosent av original)"
-
-#: screenshooter/screenshooter_applet.c:591
-msgid ""
-"Thumbnail compression (JPEG/MIFF/PNG mode) High: good quality/large file"
-msgstr ""
-"Kompresjon for miniatyr (JPEG/MIFF/PNG-modus) Høy: god kvalitet/stor fil"
-
-#: screenshooter/screenshooter_applet.c:601
-msgid "Prefix to attach to thumbnail filename:"
-msgstr "Prefiks som skal setter inn i miniatyrfilnavnet:"
-
-#: screenshooter/screenshooter_applet.c:629
-msgid "Use high-quality intermediate for generating thumbnail"
-msgstr "Bruk høykvalitets mellomlagring under oppretting av miniatyr"
-
-#: screenshooter/screenshooter_applet.c:638
-msgid ""
-"(This'll chug loads of CPU, but will prevent compressing the image twice if "
-"a\n"
-"lossy file format is used)\n"
-"Don't use this if you're using a lossless compression format, or if you "
-"cherish\n"
-"speed and don't mind imperfection in your thumbnails."
-msgstr ""
-"(Dette vil bruke mye prosessorkraft, men vil forhindre at bildet "
-"komprimeres \n"
-"to ganger hvis du bruker et format som taper data)\n"
-"Ikke bruk dette alternativet hvis du bruker et tapsfritt kompresjonsformat, "
-"eller hvis du setter pris på \n"
-"hurtighet og ikke bryr deg om mindre feil i miniatyrene."
-
-#: screenshooter/screenshooter_applet.c:645
-msgid "Thumbnails"
-msgstr "Miniatyrer"
-
-#: screenshooter/screenshooter_applet.c:668
-msgid ""
-"All post-processing, frill and spurious options will chug more CPU than a\n"
-"simple screenshot, due to the creation and then conversion of an "
-"intermediate\n"
-"image. Intensive operations may take some time on less spiffy CPUs."
-msgstr ""
-"All post-prosesserting, tillegg og uvanlige flagg vil bruke mer CPU enn\n"
-"et enkelt skjermdump, fordi oppretting og konvertering av et midlertidig "
-"bilde.\n"
-"Intensive operasjoner kan ta noe tid på mindre moderne prosessorer."
-
-#: screenshooter/screenshooter_applet.c:679
-msgid "Normalize image (Span full range of color values to enhance contrast)"
-msgstr ""
-"Normaliser bildet (Gå gjennom hele spekteret av fargeverdier for å bedre "
-"kontrasten)"
-
-#: screenshooter/screenshooter_applet.c:683
-msgid "Equalize image (Perform histogram equalization)"
-msgstr "Jevn ut bildet (Utfør histogramutjevning)"
-
-#: screenshooter/screenshooter_applet.c:691
-msgid "Enhance image (reduce noise)"
-msgstr "Forbedre bildet (reduser støy)"
-
-#: screenshooter/screenshooter_applet.c:694
-msgid "Despeckle Image (reduce spots)"
-msgstr "Flekkfjerning (reduser flekker)"
-
-#: screenshooter/screenshooter_applet.c:698
-msgid "Sharpen Image by what factor?"
-msgstr "Gjør bildet skarpere med hvilken faktor?"
-
-#: screenshooter/screenshooter_applet.c:703
-msgid "Rotate image clockwise by how many degrees?"
-msgstr "Hvor mange grader skal bildet roteres med klokken?"
-
-#: screenshooter/screenshooter_applet.c:708
-msgid "Adjust gamma"
-msgstr "Juster gamma"
-
-#: screenshooter/screenshooter_applet.c:711
-msgid "Gamma value"
-msgstr "Gammaverdi"
-
-#: screenshooter/screenshooter_applet.c:718
-msgid "Post Processing"
-msgstr "Postprosessering"
-
-#: screenshooter/screenshooter_applet.c:726
-msgid "Create frame around image"
-msgstr "Lag ramme rundt bildet"
-
-#: screenshooter/screenshooter_applet.c:730
-msgid "Frame Width (pixels)"
-msgstr "Rammebredde (piksler)"
-
-#: screenshooter/screenshooter_applet.c:738
-msgid "Mirror image vertically"
-msgstr "Speilvend bildet vertikalt"
-
-#: screenshooter/screenshooter_applet.c:740
-msgid "Mirror image horizontally"
-msgstr "Vend bildet horisontalt"
-
-#: screenshooter/screenshooter_applet.c:743
-msgid "Emboss image"
-msgstr "Lag trykk av bilde"
-
-#: screenshooter/screenshooter_applet.c:755
-msgid ""
-"When finished, send image and thumbnail filenames to script/program below"
-msgstr ""
-"Når ferdig, send bilde- og miniatyrfilnavnet til skriptet/programmet under"
-
-#: screenshooter/screenshooter_applet.c:763
-msgid "Script or program to launch:"
-msgstr "Skript eller program som skal startes:"
-
-#: screenshooter/screenshooter_applet.c:784
-msgid ""
-"Script/program will be launched after image creation with the image "
-"filenames\n"
-"specified on the commandline as follows:\n"
-"{Script_Name} {Image_Filename} {Thumbnail_filename_if_specified}\n"
-"Hint: I use a script to update my website screenshot page.\n"
-"An example script should've been included in the tarball, or at my website."
-msgstr ""
-"Skript/program som vil startes etter oppretting av bildet med bildets\n"
-"filnavn spesifisert på kommandolinjen som følger:\n"
-"{skript_navn} {bilde_filnavn} {miniatyr_filnavn_hvis_oppgitt}\n"
-"Tips: Jeg bruker et skript for å oppdatere min webside med skjermdump.\n"
-"Et eksempelskript skal være inkludert i tar arkivet, eller på min webside."
-
-#: screenshooter/screenshooter_applet.c:793
-msgid "Frills"
-msgstr "Ekstra"
-
-#: screenshooter/screenshooter_applet.c:802
-msgid "Blur image"
-msgstr "Gjør bildet uskarpt"
-
-#: screenshooter/screenshooter_applet.c:805
-msgid "Blur image by what factor?"
-msgstr "Gjør bildet uskarpt med hvilken faktor?"
-
-#: screenshooter/screenshooter_applet.c:809
-msgid "Create Charcoal Effect"
-msgstr "Lag kulleffekt"
-
-#: screenshooter/screenshooter_applet.c:813
-msgid "Charcoal by what factor?"
-msgstr "Faktor for kulleffekt?"
-
-#: screenshooter/screenshooter_applet.c:817
-msgid "Find Edges in Image"
-msgstr "Finn kanter i bildet"
-
-#: screenshooter/screenshooter_applet.c:821
-msgid "Find edges by what factor?"
-msgstr "Faktor for finn kanter?"
-
-#: screenshooter/screenshooter_applet.c:825
-msgid "Implode Image"
-msgstr "Imploder bildet"
-
-#: screenshooter/screenshooter_applet.c:829
-msgid "Implode by what factor?"
-msgstr "Faktor for implodering?"
-
-#: screenshooter/screenshooter_applet.c:834
-msgid "Spurious"
-msgstr "Overflødig"
-
-#: screenshooter/screenshooter_applet.c:842
-msgid "Create Painted Effect"
-msgstr "Lag tegnet effekt"
-
-#: screenshooter/screenshooter_applet.c:846
-msgid "Paint what radius around each pixel?"
-msgstr "Radius for tegning rundt hver piksel?"
-
-#: screenshooter/screenshooter_applet.c:850
-msgid "Solarise Image"
-msgstr "Solariser bildet"
-
-#: screenshooter/screenshooter_applet.c:854
-msgid "Solarize factor?"
-msgstr "Faktor for solarisering?"
-
-#: screenshooter/screenshooter_applet.c:858
-msgid "Spread image pixels"
-msgstr "Spre pikslene i bildet"
-
-#: screenshooter/screenshooter_applet.c:862
-msgid "Radius to around each pixel to spread?"
-msgstr "Spredningsradius rundt hver piksel?"
-
-#: screenshooter/screenshooter_applet.c:866
-msgid "Swirl pixels. My favorite :-)"
-msgstr "Snurr pikslene."
-
-#: screenshooter/screenshooter_applet.c:870
-msgid "Radius to swirl pixels around?)"
-msgstr "Snurr-radius rundt pikslene?"
-
-#: screenshooter/screenshooter_applet.c:874
-msgid "Spurious 2"
-msgstr "Overflødig 2"
-
-#: screenshooter/screenshooter_applet.c:1004
-msgid ""
-"There was a word expansion error\n"
-"I think you have stuck something funny in the directory box\n"
-"Screenshot aborted"
-msgstr ""
-"Det oppstod en feil under ordutvidelsen\n"
-"Jeg tror du har satt inn noe rart i katalog boksen\n"
-"Screenshot avbrutt"
-
-#: screenshooter/screenshooter_applet.c:1020
-msgid ""
-"There was a word expansion error\n"
-"I think you have stuck something funny in the filename box\n"
-"Screenshot aborted"
-msgstr ""
-"Det oppstod en feil under ordutvidelsen\n"
-"Jeg tror du har satt inn noe rart i filnavn boksen\n"
-"Screenshot avbrutt"
-
-#: screenshooter/screenshooter_applet.c:1368
-msgid ""
-"There was a word expansion error\n"
-"I think you have stuck something funny in the filename box"
-msgstr ""
-"Det oppstod en feil under ordutvidelsen\n"
-"Jeg tror du har satt inn noe rart i filnavn boksen"
-
-#: screenshooter/screenshooter_applet.c:1382
-#, c-format
-msgid ""
-"The specified filename:\n"
-"%s\n"
-"expands to:\n"
-"%s\n"
-"when passed to a shell"
-msgstr ""
-"Det spesifiserte filnavnet:\n"
-"%s\n"
-"utvides til:\n"
-"%s\n"
-"når det sendes videre til et skall"
-
-#: screenshooter/screenshooter_applet.c:1609
-msgid "Screen-Shooter Applet"
-msgstr "Skjermskyter applet!"
-
-#: screenshooter/screenshooter_applet.c:1611
-msgid "Copyright (C) 1999 Tom Gilbert"
-msgstr "Copyright (C) 1999 Tom Gilbert"
-
-#: screenshooter/screenshooter_applet.c:1612
-msgid ""
-"A useful little screengrabber.\n"
-"The left/top button allows you to grab either:\n"
-"a window (click to select which one)\n"
-"or an area (click and drag to select a rectangle.)\n"
-"The right/bottom button will grab the entire desktop.\n"
-"Share and Enjoy ;)"
-msgstr ""
-"En nyttig liten skjermdumper.\n"
-"Venstre/øverste knapp lar deg dumpe enten:\n"
-"et vindu (klikk for å velge hvilket)\n"
-"eller et område (klikk og dra for å velge et rektangel.)\n"
-"Høyre/nederste knapp lar deg dumpe hele skrivebordet.\n"
-"Del og nyt ;)"
-
-#: screenshooter/screenshooter_applet.c:1625
-msgid "Visit the author's Website"
-msgstr "Besøk forfatterens hjemmeside"
-
-#: screenshooter/screenshooter_applet.c:1725
-#: screenshooter/screenshooter_applet.c:1728
-msgid "Grab a shot of a specific window or area"
-msgstr "Hent et dump av et spesifikt vindu eller område"
-
-#: screenshooter/screenshooter_applet.c:1726
-#: screenshooter/screenshooter_applet.c:1729
-msgid "Grab a shot of your entire desktop"
-msgstr "Hent et dump av hele skrivebordet"
-
-#: geyes/GNOME_GeyesApplet.server.in.h:1
-msgid "A set of eyeballs for your panel"
-msgstr "Et sett øyne for ditt panel"
-
-#: geyes/GNOME_GeyesApplet.server.in.h:2
-msgid "Geyes Applet"
-msgstr "Geyes-applet"
-
-#: geyes/GNOME_GeyesApplet.server.in.h:3
-msgid "Geyes Applet Factory"
-msgstr "Factory for geyes-applet"
-
-#: geyes/geyes_applet.desktop.in.h:1
-msgid "An applet that watches your mouse."
-msgstr "En applet som overvåker din mus."
-
-#: geyes/geyes.c:207 geyes/geyes_applet.desktop.in.h:2
-msgid "gEyes"
-msgstr "gEyes"
-
-#: geyes/geyes.c:198
-msgid "Dave Camp <campd@oit.edu>"
-msgstr "Dave Camp <campd@oit.edu>"
-
-#: geyes/geyes.c:208
-msgid "Copyright (C) 1999 Dave Camp"
-msgstr "Copyright (C) 1999 Dave Camp"
-
-#: geyes/geyes.c:209
-msgid "A goofy little xeyes clone for the GNOME panel."
-msgstr "En goofy liten xeyes klone for GNOME panelet."
-
-#: geyes/themes.c:184
-msgid "Theme Name"
-msgstr "Navn på tema"
-
-#: geyes/themes.c:196
-msgid "Properties"
-msgstr "Egenskaper"
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:1
+msgid "Factory for creating the weather applet."
+msgstr "Factory for oppretting av værmeldingsapplet."
+
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:2
+msgid "Gweather Applet Factory"
+msgstr "Factory for værmeldingsapplet"
+
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:3
+msgid "The GNOME weather monitor"
+msgstr "GNOME værmonitor"
+
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:4
+msgid "Weather Report"
+msgstr "Værmelding"
 
 #: gweather/gweather-about.c:42 gweather/gweather-applet.c:243
 #: gweather/gweather.desktop.in.h:1
@@ -2268,6 +1259,11 @@ msgstr ""
 "Advarsel: Ditt passord vil bli lagret som\n"
 "klartekst i en privat konfigurasjonsfil."
 
+#: gweather/gweather-pref.c:604 multiload/main.c:178
+#: multiload/properties.c:416
+msgid "Network"
+msgstr "Nettverk"
+
 #: gweather/gweather-pref.c:629
 msgid "Automatically update every"
 msgstr "Automatisk oppdatering hver(t)"
@@ -2300,6 +1296,10 @@ msgstr "minutt"
 #: gweather/gweather-pref.c:692
 msgid "Miscellaneous"
 msgstr "Forskjellig"
+
+#: gweather/gweather-pref.c:707 screenshooter/screenshooter_applet.c:461
+msgid "General"
+msgstr "Generelt"
 
 #: gweather/weather.c:59
 msgid "knots"
@@ -3527,21 +2527,1259 @@ msgstr "Ukjent"
 msgid "Retrieval failed"
 msgstr "Henting feilet"
 
-#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:1
-msgid "Factory for creating the weather applet."
-msgstr "Factory for oppretting av værmeldingsapplet."
+#: mini-commander/src/about.c:39
+msgid "Mini-Commander Applet"
+msgstr "Mini-kommander applet"
 
-#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:2
-msgid "Gweather Applet Factory"
-msgstr "Factory for værmeldingsapplet"
+#: mini-commander/src/about.c:42
+msgid ""
+"This GNOME applet adds a command line to the panel. It features command "
+"completion, command history, changeable macros and an optional built-in "
+"clock.\n"
+"\n"
+"This program is free software; you can redistribute it and/or modify it "
+"under the terms of the GNU General Public License as published by the Free "
+"Software Foundation; either version 2 of the License, or (at your option) "
+"any later version."
+msgstr ""
+"Denne GNOME-appleten legger til en kommandolinje på panelet. Denne støtter\n"
+"kommando-komplettering, kommando-historikk, redigerbare makroer og en\n"
+"valgfri, innebygget klokke.\n"
+"\n"
+"Dette programmet er fri programvare; du kan distribuere det og/eller \n"
+"endre det i følge betingelsene gitt i GNU General Fystikk"
 
-#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:3
-msgid "The GNOME weather monitor"
-msgstr "GNOME værmonitor"
+#: mini-commander/src/cmd_completion.c:69
+#: mini-commander/src/cmd_completion.c:115
+#: mini-commander/src/cmd_completion.c:151
+#: mini-commander/src/cmd_completion.c:202
+msgid "not unique"
+msgstr "ikke unik"
 
-#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:4
-msgid "Weather Report"
-msgstr "Værmelding"
+#: mini-commander/src/cmd_completion.c:73
+#: mini-commander/src/cmd_completion.c:155
+msgid "completing..."
+msgstr "ferdigstiller..."
+
+#: mini-commander/src/cmd_completion.c:113
+#: mini-commander/src/cmd_completion.c:200
+msgid "completed"
+msgstr "ferdig"
+
+#: mini-commander/src/cmd_completion.c:118
+#: mini-commander/src/cmd_completion.c:205
+msgid "not found"
+msgstr "ikke funnet"
+
+#: mini-commander/src/cmd_completion.c:167 mini-commander/src/exec.c:117
+msgid "no /bin/sh"
+msgstr "ingen /bin/sh"
+
+#: mini-commander/src/command_line.c:89 mini-commander/src/command_line.c:109
+#: mini-commander/src/terminal.c:91 mini-commander/src/terminal.c:111
+msgid "end of history list"
+msgstr "slutten på historikken"
+
+#. enter pressed -> exec command
+#: mini-commander/src/command_line.c:119 mini-commander/src/exec.c:59
+#: mini-commander/src/terminal.c:121
+msgid "starting..."
+msgstr "starter..."
+
+#: mini-commander/src/command_line.c:148 mini-commander/src/terminal.c:153
+msgid "autocompleted"
+msgstr "autoutfylt"
+
+#: mini-commander/src/command_line.c:293
+msgid "history list empty"
+msgstr "Historikken er tom"
+
+#. title
+#: mini-commander/src/command_line.c:311
+msgid "Command history"
+msgstr "Kommandohistorikk"
+
+#. build file select dialog
+#: mini-commander/src/command_line.c:429
+msgid "Start program"
+msgstr "Start program"
+
+#: mini-commander/src/exec.c:61
+msgid "fork error"
+msgstr "fork feil"
+
+#: mini-commander/src/exec.c:105
+msgid "child exited"
+msgstr "barn avsluttet"
+
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:1
+msgid "Command Line"
+msgstr "Kommandolinje"
+
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:2
+#: mini-commander/src/mini-commander_applet.desktop.in.h:1
+msgid "Mini-Commander"
+msgstr "Mini-kommander"
+
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:3
+msgid "MiniCommander Applet Factory"
+msgstr "Factory for mini-kommander-applet"
+
+#: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
+#: modemlights/GNOME_ModemlightsApplet.xml.h:1
+#: screenshooter/GNOME_ScreenshooterApplet.xml.h:1
+msgid "About"
+msgstr "Om"
+
+#: mini-commander/src/help.c:36
+msgid "still not ported"
+msgstr "ikke portet ennå"
+
+#: mini-commander/src/message.c:148
+msgid "%H:%M - %d. %b"
+msgstr "%H:%M - %d. %b"
+
+#: mini-commander/src/message.c:150
+msgid "%H:%M"
+msgstr "%H:%M"
+
+#: mini-commander/src/message.c:152
+msgid "%d. %b"
+msgstr "%d. %b"
+
+#: mini-commander/src/mini-commander_applet.c:111
+msgid "orient. changed"
+msgstr "orientering endret"
+
+#: mini-commander/src/mini-commander_applet.c:130
+msgid "size changed"
+msgstr "størrelse endret"
+
+#: mini-commander/src/mini-commander_applet.c:250
+msgid "Browser"
+msgstr "Leser"
+
+#: mini-commander/src/mini-commander_applet.c:265
+msgid "History"
+msgstr "Historikk"
+
+#: mini-commander/src/mini-commander_applet.c:407
+msgid "ready..."
+msgstr "klar..."
+
+#: mini-commander/src/preferences.c:113
+msgid "time & date on"
+msgstr "tid & dato på"
+
+#: mini-commander/src/preferences.c:115
+msgid "time on"
+msgstr "tid på"
+
+#: mini-commander/src/preferences.c:117
+msgid "date on"
+msgstr "dato på"
+
+#: mini-commander/src/preferences.c:119
+msgid "clock off"
+msgstr "klokke av"
+
+#: mini-commander/src/preferences.c:573
+msgid "Command Line Properties"
+msgstr "Egenskaper for kommandolinje"
+
+#: mini-commander/src/preferences.c:586
+msgid "Clock"
+msgstr "Klokke"
+
+#. show time check box
+#: mini-commander/src/preferences.c:594
+msgid "Show time"
+msgstr "Vis tid"
+
+#. show date check box
+#: mini-commander/src/preferences.c:601
+msgid "Show date"
+msgstr "Vis dato"
+
+#. appearance frame
+#: mini-commander/src/preferences.c:609
+msgid "Appearance"
+msgstr "Utseende"
+
+#. show handle check box
+#: mini-commander/src/preferences.c:617
+msgid "Show handle"
+msgstr "Vis håndtak"
+
+#. show frame check box
+#: mini-commander/src/preferences.c:624
+msgid "Show frame"
+msgstr "Vis ramme"
+
+#. auto complete frame
+#: mini-commander/src/preferences.c:633
+msgid "Autocompletion"
+msgstr "Autoutfylling"
+
+#. show history autocomplete
+#: mini-commander/src/preferences.c:641
+msgid "Enable history based autocompletion"
+msgstr "Slå på historikkbasert autoutfylling"
+
+#. Size
+#: mini-commander/src/preferences.c:648
+msgid "Size"
+msgstr "Størrelse"
+
+#. applet width
+#: mini-commander/src/preferences.c:660
+msgid "Applet width:"
+msgstr "Applet-bredde:"
+
+#. applet height
+#: mini-commander/src/preferences.c:689
+msgid "Applet height:"
+msgstr "Applet-høyde:"
+
+#. cmd line height
+#: mini-commander/src/preferences.c:718
+msgid "Command line height:"
+msgstr "Kommandolinjehøyde:"
+
+#. Color
+#: mini-commander/src/preferences.c:760 modemlights/properties.c:445
+#: multiload/properties.c:395
+msgid "Colors"
+msgstr "Farger"
+
+#. fg
+#: mini-commander/src/preferences.c:770
+msgid "Command line foreground:"
+msgstr "Kommandolinjeforgrunn:"
+
+#. bg
+#: mini-commander/src/preferences.c:801
+msgid "Command line background:"
+msgstr "Kommandolinjebakgrunn:"
+
+#: mini-commander/src/preferences.c:829 modemlights/properties.c:405
+msgid "_General"
+msgstr "_Generelt"
+
+#. prefix
+#: mini-commander/src/preferences.c:854
+#, c-format
+msgid "Regex %.2d:"
+msgstr "Regex %.2d:"
+
+#. command
+#: mini-commander/src/preferences.c:870
+#, c-format
+msgid "   Macro %.2d:"
+msgstr "   Makro %.2d:"
+
+#: mini-commander/src/preferences.c:886
+msgid "_Macros"
+msgstr "_Makroer"
+
+#: mixer/GNOME_MixerApplet.server.in.h:1
+msgid "Applet for adjusting the sound volume"
+msgstr "Applet for justering av lydvolum"
+
+#: mixer/GNOME_MixerApplet.server.in.h:2 mixer/mixer.c:694
+msgid "Volume Control"
+msgstr "Volumkontroll"
+
+#: mixer/GNOME_MixerApplet.xml.h:1 multiload/GNOME_MultiloadApplet.xml.h:1
+msgid "About..."
+msgstr "Om..."
+
+#: mixer/GNOME_MixerApplet.xml.h:3
+msgid "Mute"
+msgstr "Demp"
+
+#: mixer/GNOME_MixerApplet.xml.h:4
+msgid "Run Audio Mixer..."
+msgstr "Kjør lydmikser..."
+
+#. probably should die more gracefully
+#: mixer/mixer.c:167
+#, c-format
+msgid "Couldn't open mixer device %s\n"
+msgstr "Klarte ikke å åpne mikser-enheten %s\n"
+
+#: mixer/mixer.c:181
+msgid ""
+"warning: this version of gmix was compiled with a different version of\n"
+"soundcard.h.\n"
+msgstr ""
+"advarsel: denne versjonen av gmix ble kompilert med en annen versjon av\n"
+"soundcard.h\n"
+
+#: mixer/mixer.c:192
+#, c-format
+msgid "Querying available channels of mixer device %s failed\n"
+msgstr "Spørring etter tilgjengelige kanaler på mikserenhet %s feilet\n"
+
+#: mixer/mixer.c:199
+msgid "warning: mixer has no volume channel - using PCM instead.\n"
+msgstr "advarsel: mikseren har ingen volum-kanal - bruker PCM i stedet.\n"
+
+#: mixer/mixer.c:202
+#, c-format
+msgid "Mixer device %s has neither volume nor PCM channels.\n"
+msgstr "Mikserenhet %s har verken volum- eller PCM-kanaler.\n"
+
+#: mixer/mixer.c:695
+msgid "(C) 2001 Richard Hult"
+msgstr "© 2001 Richard Hult"
+
+#: mixer/mixer.c:696
+msgid "The volume control lets you set the volume level for your desktop."
+msgstr "Volumkontroll lar deg sette volumnivå for ditt skrivebord."
+
+#: modemlights/GNOME_ModemLightsApplet.server.in.h:1
+#: modemlights/modemlights_applet.desktop.in.h:1
+msgid "Modem Lights"
+msgstr "Modemlys"
+
+#: modemlights/modemlights_applet.desktop.in.h:2
+msgid "Show modem status"
+msgstr "Vis modemstatus"
+
+#: modemlights/modemlights.c:205
+msgid "Modem Lights Applet"
+msgstr "Modemlys applet"
+
+#: modemlights/modemlights.c:207
+msgid ""
+"Released under the GNU general public license.\n"
+"A modem status indicator and dialer.\n"
+"Lights in order from the top or left are Send data and Receive data."
+msgstr ""
+"Utgitt under GNUs generelle offentlige lisense.\n"
+"En modem status indikator og nummersender.\n"
+"Lysene fra øverst eller venstre er send data  og motta data."
+
+#: modemlights/modemlights.c:531
+msgid ""
+"You are currently connected.\n"
+"Do you want to disconnect?"
+msgstr ""
+"Du er nå tilkoblet.\n"
+"Vil du koble fra?"
+
+#: modemlights/modemlights.c:546
+msgid "Do you want to connect?"
+msgstr "Vil du koble til?"
+
+#: modemlights/modemlights.c:574
+#, c-format
+msgid "%#.1fMb received / %#.1fMb sent / time: %.1d:%.2d"
+msgstr "%#.1fMb mottatt / %#.1fMb sendt / tid: %.1d:%.2d"
+
+#: modemlights/modemlights.c:579
+msgid "not connected"
+msgstr "ikke tilkoblet"
+
+#: modemlights/properties.c:310
+msgid "Modem Lights Properties"
+msgstr "Egenskaper for Modemlys"
+
+#: modemlights/properties.c:322
+msgid "Connecting"
+msgstr "Kobler til"
+
+#: modemlights/properties.c:336
+msgid "Connect command:"
+msgstr "Tilkoblingskommando:"
+
+#: modemlights/properties.c:352
+msgid "Disconnect command:"
+msgstr "Frakoblingskommando:"
+
+#. confirmation checkbox
+#: modemlights/properties.c:364
+msgid "Confirm connection"
+msgstr "Bekreft tilkobling"
+
+#: modemlights/properties.c:385
+msgid "Updates per second"
+msgstr "Oppdateringer i sekundet"
+
+#. extra info checkbox
+#: modemlights/properties.c:398
+msgid "Show connect time and throughput"
+msgstr "Vis tilkoblet tid og overføringsmengde"
+
+#: modemlights/properties.c:415
+msgid "Receive data"
+msgstr "Motta data"
+
+#: modemlights/properties.c:417 modemlights/properties.c:422
+#: modemlights/properties.c:441
+msgid "Foreground"
+msgstr "Forgrunn"
+
+#: modemlights/properties.c:418 modemlights/properties.c:423
+#: modemlights/properties.c:442
+msgid "Background"
+msgstr "Bakgrunn"
+
+#: modemlights/properties.c:420
+msgid "Send data"
+msgstr "Send data"
+
+#: modemlights/properties.c:425
+msgid "Connection status"
+msgstr "Tilkoblingsstatus"
+
+#: modemlights/properties.c:427
+msgid "Connected"
+msgstr "Tilkoblet"
+
+#: modemlights/properties.c:428
+msgid "Not connected"
+msgstr "Ikke tilkoblet"
+
+#: modemlights/properties.c:429
+msgid "Awaiting connection"
+msgstr "Venter på tilkobling"
+
+#: modemlights/properties.c:432
+msgid "Blink"
+msgstr "Blink"
+
+#: modemlights/properties.c:439
+msgid "Text"
+msgstr "Tekst"
+
+#: modemlights/properties.c:443
+msgid "Outline"
+msgstr "Omriss"
+
+#: modemlights/properties.c:454
+msgid "Modem options"
+msgstr "Modemalternativer"
+
+#: modemlights/properties.c:468
+msgid "Modem lock file:"
+msgstr "Modem låsfil:"
+
+#: modemlights/properties.c:479
+msgid "Verify owner of lock file"
+msgstr "Verifiser eier av låsfil"
+
+#: modemlights/properties.c:491
+msgid "Device:"
+msgstr "Enhet:"
+
+#. ISDN checkbox
+#: modemlights/properties.c:503
+msgid "Use ISDN"
+msgstr "Bruk ISDN"
+
+#: modemlights/properties.c:523
+msgid "Set options as default"
+msgstr "Sett alternativer som standard"
+
+#: modemlights/properties.c:529
+msgid "Advanced"
+msgstr "Avansert"
+
+#: multiload/cpuload_applet.desktop.in.h:1
+msgid "CPU Load Meter"
+msgstr "CPU-last måler"
+
+#: multiload/cpuload_applet.desktop.in.h:2
+msgid "CPULoad"
+msgstr "CPU-last"
+
+#: multiload/cpuload.c:39
+msgid "CPU Load"
+msgstr "Prosessorlast"
+
+#: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:1
+msgid "A system load indicator"
+msgstr "Måler systembelasning"
+
+#: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:2
+msgid "System Monitor"
+msgstr "Systemmonitor"
+
+#: multiload/GNOME_MultiloadApplet.xml.h:2
+msgid "Properties..."
+msgstr "Egenskaper..."
+
+#: multiload/GNOME_MultiloadApplet.xml.h:3
+msgid "Run detailed system monitor"
+msgstr "måleenheter"
+
+#: multiload/loadavg.c:94 multiload/loadavg_applet.desktop.in.h:1
+msgid "Load Average"
+msgstr "Snittbelastning"
+
+#: multiload/loadavg_applet.desktop.in.h:2
+msgid "Load Average Applet"
+msgstr "Applet for snittbelastning"
+
+#: multiload/main.c:53
+msgid "System Monitor Applet"
+msgstr "Systemmonitor-applet"
+
+#: multiload/main.c:55
+msgid ""
+"Released under the GNU General Public License.\n"
+"\n"
+"A system load monitor capable of displaying graphs for CPU, ram, and swap "
+"file use, plus network traffic."
+msgstr ""
+"Utgitt under GNU General Public License.\n"
+"\n"
+"Systemmonitor som kan vis grafer for bruk av cpu, ram og bruk av swap i "
+"tillegg til nettverkstrafikk."
+
+#: multiload/main.c:174 multiload/properties.c:404
+msgid "Processor"
+msgstr "Prosessor"
+
+#: multiload/main.c:176 multiload/properties.c:410
+msgid "Memory"
+msgstr "Minne"
+
+#: multiload/main.c:180 multiload/properties.c:422
+msgid "Swap File"
+msgstr "Swap-fil"
+
+#: multiload/main.c:182
+msgid "Resource"
+msgstr "Ressurs"
+
+#: multiload/main.c:194
+#, c-format
+msgid ""
+"%s:\n"
+"%d%% in use"
+msgstr ""
+"%s:\n"
+"%d%% i bruk"
+
+#: multiload/memload_applet.desktop.in.h:1
+msgid "MemLoad"
+msgstr "Minnelast"
+
+#: multiload/memload_applet.desktop.in.h:2
+msgid "Memory Load Meter"
+msgstr "Minnelast måler"
+
+#: multiload/memload.c:39
+msgid "Memory Load"
+msgstr "Minnelast"
+
+#: multiload/netload_applet.desktop.in.h:1
+msgid "NetLoad"
+msgstr "Nettlast"
+
+#: multiload/netload_applet.desktop.in.h:2
+msgid "Network Activity Meter"
+msgstr "Måling av nettverksaktivitet"
+
+#: multiload/netload.c:38
+msgid "Net Load"
+msgstr "Nettbelastning"
+
+#: multiload/properties.c:290
+msgid "Monitored Resources"
+msgstr "Overvåkede ressurser"
+
+#: multiload/properties.c:298
+msgid "_Processor"
+msgstr "_Prosessor"
+
+#: multiload/properties.c:308
+msgid "_Memory"
+msgstr "_Minne"
+
+#: multiload/properties.c:318
+msgid "_Network"
+msgstr "_Nettverk"
+
+#: multiload/properties.c:328
+msgid "_Swap File"
+msgstr "_Swap-fil"
+
+#.
+#. check_box = gtk_check_button_new_with_mnemonic(_("_Average"));
+#. gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_box),
+#. panel_applet_gconf_get_bool(multiload_applet->applet, "view_loadavg", NULL));
+#. gtk_box_pack_start(GTK_BOX(hbox), check_box, FALSE, FALSE, 0);
+#.
+#: multiload/properties.c:345
+msgid "Options"
+msgstr "Alternativer"
+
+#: multiload/properties.c:358
+msgid "System monitor width: "
+msgstr "Bredde for systemmonitor: "
+
+#: multiload/properties.c:360
+msgid "System monitor height: "
+msgstr "Høyde for systemmonitor: "
+
+#: multiload/properties.c:373
+msgid "pixels"
+msgstr "piksler"
+
+#: multiload/properties.c:379
+msgid "System monitor speed: "
+msgstr "Hastighet for systemmonitor: "
+
+#: multiload/properties.c:390
+msgid "milliseconds"
+msgstr "millisekunder"
+
+#: multiload/properties.c:405
+msgid "User"
+msgstr "Bruker"
+
+#: multiload/properties.c:406
+msgid "System"
+msgstr "System"
+
+#: multiload/properties.c:407
+msgid "Nice"
+msgstr "Snill"
+
+#: multiload/properties.c:408
+msgid "Idle"
+msgstr "Tomgang"
+
+#: multiload/properties.c:411 multiload/properties.c:420
+msgid "Other"
+msgstr "Andre"
+
+#: multiload/properties.c:412
+msgid "Shared"
+msgstr "Delt"
+
+#: multiload/properties.c:413
+msgid "Buffers"
+msgstr "Buffere"
+
+#: multiload/properties.c:414 multiload/properties.c:424
+msgid "Free"
+msgstr "Ledig"
+
+#: multiload/properties.c:417
+msgid "SLIP"
+msgstr "SLIP"
+
+#: multiload/properties.c:418
+msgid "PLIP"
+msgstr "PLIP"
+
+#: multiload/properties.c:419
+msgid "Ethernet"
+msgstr "Ethernet"
+
+#: multiload/properties.c:423
+msgid "Used"
+msgstr "Brukt"
+
+#: multiload/properties.c:445
+msgid "System Monitor Properties"
+msgstr "Egenskaper for systemmonitor"
+
+#: multiload/swapload_applet.desktop.in.h:1
+msgid "Swap Load Meter"
+msgstr "Swaplast måler"
+
+#: multiload/swapload_applet.desktop.in.h:2
+msgid "SwapLoad"
+msgstr "Swaplast"
+
+#: multiload/swapload.c:39
+msgid "Swap Load"
+msgstr "Belastning på swap"
+
+#: panel-menu/GNOME_PanelMenuApplet.server.in.h:1
+msgid "Factory for Panel Menu Applet"
+msgstr "Factory for panelmeny-applet"
+
+#: panel-menu/GNOME_PanelMenuApplet.server.in.h:2
+msgid "Panel Menu Applet Factory"
+msgstr "Factory for panelmeny-applet"
+
+#: panel-menu/GNOME_PanelMenuApplet.server.in.h:3
+msgid "Panel applet for displaying menus"
+msgstr "Panelapplet som viser menyer"
+
+#: panel-menu/GNOME_PanelMenuApplet.server.in.h:4
+msgid "Utility"
+msgstr "Verktøy"
+
+#: panel-menu/panel-menu-actions.c:96
+msgid "Actions"
+msgstr "Handlinger"
+
+#: panel-menu/panel-menu-add.c:76
+msgid "Add items to the Menu Bar"
+msgstr "Legg til oppføringer på menylinjen"
+
+#: panel-menu/panel-menu-add.c:234 panel-menu/panel-menu-links.c:139
+#: panel-menu/panel-menu-links.c:401
+msgid "Shortcuts"
+msgstr "Snarveier"
+
+#: panel-menu/panel-menu-add.c:240
+msgid "My Documents"
+msgstr "Mine dokumenter"
+
+#: panel-menu/panel-menu-add.c:246 panel-menu/panel-menu-documents.c:134
+#: panel-menu/panel-menu-documents.c:399
+msgid "Documents"
+msgstr "Dokumenter"
+
+#: panel-menu/panel-menu-applications.c:80
+msgid "Applications"
+msgstr "Applikasjoner"
+
+#: panel-menu/panel-menu.c:681
+msgid "PanelMenu Applet"
+msgstr "Panelmeny-applet"
+
+#: panel-menu/panel-menu.c:681
+msgid "(c) 2001 Chris Phelps"
+msgstr "© 2001 Chris Phelps"
+
+#: panel-menu/panel-menu.c:681
+msgid ""
+"The Panel Menu Applet allows you to display customized menubars on your "
+"panels."
+msgstr ""
+"Panelmeny-appleten lar deg vise egendefinerte menylinjer på dine paneler."
+
+#: panel-menu/panel-menu-directory.c:496
+msgid "Create directory item..."
+msgstr "Opprett katalogoppføring..."
+
+#: panel-menu/panel-menu-directory.c:499
+msgid "Home"
+msgstr "Hjem"
+
+#: panel-menu/panel-menu-directory.c:542
+msgid "Edit directory item..."
+msgstr "Rediger katalogoppføring..."
+
+#: panel-menu/panel-menu-directory.c:601 panel-menu/panel-menu-documents.c:398
+#: panel-menu/panel-menu-documents.c:434 panel-menu/panel-menu-links.c:400
+#: panel-menu/panel-menu-links.c:436
+msgid "Name:"
+msgstr "Navn:"
+
+#: panel-menu/panel-menu-directory.c:611 panel-menu/panel-menu-path.c:721
+msgid "Path:"
+msgstr "Sti:"
+
+#: panel-menu/panel-menu-directory.c:621
+msgid "Depth level:"
+msgstr "Dybdenivå:"
+
+#: panel-menu/panel-menu-documents.c:397
+msgid "Create documents item..."
+msgstr "Opprett dokumentoppføring..."
+
+#: panel-menu/panel-menu-documents.c:433
+msgid "Rename documents item..."
+msgstr "Endre navn på dokumentoppføring..."
+
+#: panel-menu/panel-menu-links.c:323 panel-menu/panel-menu-path.c:573
+msgid "KDE Menus"
+msgstr "KDE-menyer"
+
+#: panel-menu/panel-menu-links.c:326 panel-menu/panel-menu-path.c:233
+#: panel-menu/panel-menu-path.c:576
+msgid "Programs"
+msgstr "Programmer"
+
+#: panel-menu/panel-menu-links.c:399
+msgid "Create links item..."
+msgstr "Opprett lenkeoppføring..."
+
+#: panel-menu/panel-menu-links.c:435
+msgid "Rename links item..."
+msgstr "Endre navn på lenkeoppføring..."
+
+#: panel-menu/panel-menu-path.c:224
+msgid "KDE"
+msgstr "KDE"
+
+#: panel-menu/panel-menu-path.c:650
+msgid "Create menu path item..."
+msgstr "Opprett menystioppføring..."
+
+#: panel-menu/panel-menu-path.c:682
+msgid "Edit path item..."
+msgstr "Rediger stioppføring..."
+
+#: panel-menu/panel-menu-path.c:730
+msgid "Browse..."
+msgstr "Se på..."
+
+#: panel-menu/panel-menu-preferences.c:78
+msgid "Preferences"
+msgstr "Brukervalg"
+
+#: panel-menu/panel-menu-properties.c:71
+msgid "Menu Bar Properties"
+msgstr "Egenskaper for menylinje"
+
+#: panel-menu/panel-menu-properties.c:75
+msgid "Layout"
+msgstr "Plassering"
+
+#: panel-menu/panel-menu-properties.c:90
+msgid "Preferences Menu"
+msgstr "Meny for brukervalg"
+
+#: panel-menu/panel-menu-properties.c:110
+msgid "Applications Menu"
+msgstr "Applikasjonsmeny"
+
+#: panel-menu/panel-menu-properties.c:130
+msgid "Select an icon for the Applications menu"
+msgstr "Velg et ikon for applikasjonsmenyen"
+
+#: panel-menu/panel-menu-properties.c:146
+msgid "Actions Menu"
+msgstr "Handlingsmeny"
+
+#: panel-menu/panel-menu-properties.c:157
+msgid "Windows Menu"
+msgstr "Vindumeny"
+
+#: panel-menu/panel-menu-properties.c:168
+msgid "Workspaces Menu"
+msgstr "Arbeidsområdemeny"
+
+#: panel-menu/panel-menu-windows.c:99
+msgid "Windows"
+msgstr "Vinduer"
+
+#: panel-menu/panel-menu-workspaces.c:80
+msgid "Workspaces"
+msgstr "Arbeidsområder"
+
+#: screenshooter/GNOME_ScreenshooterApplet.server.in.h:1
+msgid "Screenshot Taker"
+msgstr "Skjermdumper"
+
+#: screenshooter/GNOME_ScreenshooterApplet.server.in.h:2
+msgid "Take screenshots"
+msgstr "Tar skjermdump"
+
+#: screenshooter/screenshooter_applet.c:416
+msgid "Screen-Shooter Settings"
+msgstr "Instillinger for skjermskyter"
+
+#: screenshooter/screenshooter_applet.c:422
+msgid "Capture WM decorations when grabbing a window"
+msgstr "Dump WM dekorasjoner når et vindu hentes"
+
+#: screenshooter/screenshooter_applet.c:426
+msgid "Give audio feedback using the keyboard bell"
+msgstr "Gi tilbakemelding med lyd via tastaturklokken"
+
+#: screenshooter/screenshooter_applet.c:431
+msgid "Display Spurious Options (I got carried away)"
+msgstr "Vis skiftende alternativer (Jeg ble revet med)"
+
+#: screenshooter/screenshooter_applet.c:439
+msgid "Delay (seconds) before taking shot (only for entire desktop shots)"
+msgstr "Pause (sekunder) før dump tas (kun for dump av hele skrivebordet)"
+
+#: screenshooter/screenshooter_applet.c:444
+msgid "Compressed Quality (JPEG/MIFF/PNG mode) High: good quality/large file"
+msgstr "Komprimert kvalitet (JPEG/MIFF/PNG-modus) Høy: god kvalitet/stor fil"
+
+#: screenshooter/screenshooter_applet.c:455
+msgid "Create monochrome image"
+msgstr "Opprett monokromt bilde"
+
+#: screenshooter/screenshooter_applet.c:458
+msgid "Invert colours in image"
+msgstr "Inverter fargene i bildet"
+
+#: screenshooter/screenshooter_applet.c:474
+msgid "Directory to save images in:"
+msgstr "Katalog for lagring av bilder:"
+
+#: screenshooter/screenshooter_applet.c:499
+msgid "Image filename:"
+msgstr "Filnavn for bilde:"
+
+#: screenshooter/screenshooter_applet.c:514
+msgid "Show expanded filename"
+msgstr "Vis utvidet filnavn"
+
+#. The % sign screws over xgettext ;)
+#: screenshooter/screenshooter_applet.c:536
+#, no-c-format
+msgid ""
+"Filetype is determined from filename suffix.\n"
+"Default filetype (if no extension or unrecognised extension) is miff.\n"
+"Recognised suffixes are:\n"
+"jpg, jpeg, bmp, cgm, cmyk, dib, eps, fig, fpx, gif, ico, map, miff, pcx,\n"
+"pict, pix, png, pnm, ppm, psd, rgb, rgba, rla, rle, tiff, tga, xbm, xpm,\n"
+"and several obscure ones. Try your luck with something interesting!\n"
+"Eg .html for a client-side image map. You'll get a .gif, .html, and a ."
+"shtml\n"
+"\n"
+"Recommendations:\n"
+"Small file, pretty good quality:   jpg, 75% quality\n"
+"Slightly larger file but lossless: png, as much compression as you like.\n"
+"- compressing pngs takes longer at higher ratios, but is still lossless"
+msgstr ""
+"Filtypen bestemmes fra filens etternavn/suffiks.\n"
+"Standard filtype (hvis ingen oppgis eller gjenkjennes) er miff.\n"
+"Gjenkjente filtyper er:\n"
+"jpg, jpeg, bmp, cgm, cmyk, dib, eps, fig, fpx, gif, ico, map, miff, pcx,\n"
+"pict, pix, png, pnm, ppm, psd, rgb, rgba, rla, rle, tiff, tga, xbm, xpm,\n"
+"og flere andre obskure typer. Prøv ditt hell med noe interessant!\n"
+"For eksempel .html for et klientside bildekart. Du vil få et .gif, .html og "
+"et .shtml.\n"
+"\n"
+"Forslag:\n"
+"Liten fil ganske god kvalitet:        jpg, 75% kvalitet\n"
+"Litt større fil men uten tap av data: png, så mye kompresjon som du ønsker.\n"
+"- kompresjon av png filer tar lengre tid ved høyere rater, men er likevel "
+"uten tap av data"
+
+#: screenshooter/screenshooter_applet.c:552
+msgid "View screenshot after saving it"
+msgstr "Vis skjermdump etter lagring"
+
+#: screenshooter/screenshooter_applet.c:559
+msgid "App to use for displaying screenshots:"
+msgstr "Applikasjon som skal brukes for å vise skjermdumpene:"
+
+#: screenshooter/screenshooter_applet.c:574
+msgid "Files, Apps"
+msgstr "Filer, applikasjoner"
+
+#: screenshooter/screenshooter_applet.c:582
+msgid "Create thumbnail of image too"
+msgstr "Opprett miniatyr også"
+
+#: screenshooter/screenshooter_applet.c:586
+msgid "Thumbnail Size (percentage of original)"
+msgstr "Størrelse for miniatyr (prosent av original)"
+
+#: screenshooter/screenshooter_applet.c:591
+msgid ""
+"Thumbnail compression (JPEG/MIFF/PNG mode) High: good quality/large file"
+msgstr ""
+"Kompresjon for miniatyr (JPEG/MIFF/PNG-modus) Høy: god kvalitet/stor fil"
+
+#: screenshooter/screenshooter_applet.c:601
+msgid "Prefix to attach to thumbnail filename:"
+msgstr "Prefiks som skal setter inn i miniatyrfilnavnet:"
+
+#: screenshooter/screenshooter_applet.c:629
+msgid "Use high-quality intermediate for generating thumbnail"
+msgstr "Bruk høykvalitets mellomlagring under oppretting av miniatyr"
+
+#: screenshooter/screenshooter_applet.c:638
+msgid ""
+"(This'll chug loads of CPU, but will prevent compressing the image twice if "
+"a\n"
+"lossy file format is used)\n"
+"Don't use this if you're using a lossless compression format, or if you "
+"cherish\n"
+"speed and don't mind imperfection in your thumbnails."
+msgstr ""
+"(Dette vil bruke mye prosessorkraft, men vil forhindre at bildet "
+"komprimeres \n"
+"to ganger hvis du bruker et format som taper data)\n"
+"Ikke bruk dette alternativet hvis du bruker et tapsfritt kompresjonsformat, "
+"eller hvis du setter pris på \n"
+"hurtighet og ikke bryr deg om mindre feil i miniatyrene."
+
+#: screenshooter/screenshooter_applet.c:645
+msgid "Thumbnails"
+msgstr "Miniatyrer"
+
+#: screenshooter/screenshooter_applet.c:668
+msgid ""
+"All post-processing, frill and spurious options will chug more CPU than a\n"
+"simple screenshot, due to the creation and then conversion of an "
+"intermediate\n"
+"image. Intensive operations may take some time on less spiffy CPUs."
+msgstr ""
+"All post-prosesserting, tillegg og uvanlige flagg vil bruke mer CPU enn\n"
+"et enkelt skjermdump, fordi oppretting og konvertering av et midlertidig "
+"bilde.\n"
+"Intensive operasjoner kan ta noe tid på mindre moderne prosessorer."
+
+#: screenshooter/screenshooter_applet.c:679
+msgid "Normalize image (Span full range of color values to enhance contrast)"
+msgstr ""
+"Normaliser bildet (Gå gjennom hele spekteret av fargeverdier for å bedre "
+"kontrasten)"
+
+#: screenshooter/screenshooter_applet.c:683
+msgid "Equalize image (Perform histogram equalization)"
+msgstr "Jevn ut bildet (Utfør histogramutjevning)"
+
+#: screenshooter/screenshooter_applet.c:691
+msgid "Enhance image (reduce noise)"
+msgstr "Forbedre bildet (reduser støy)"
+
+#: screenshooter/screenshooter_applet.c:694
+msgid "Despeckle Image (reduce spots)"
+msgstr "Flekkfjerning (reduser flekker)"
+
+#: screenshooter/screenshooter_applet.c:698
+msgid "Sharpen Image by what factor?"
+msgstr "Gjør bildet skarpere med hvilken faktor?"
+
+#: screenshooter/screenshooter_applet.c:703
+msgid "Rotate image clockwise by how many degrees?"
+msgstr "Hvor mange grader skal bildet roteres med klokken?"
+
+#: screenshooter/screenshooter_applet.c:708
+msgid "Adjust gamma"
+msgstr "Juster gamma"
+
+#: screenshooter/screenshooter_applet.c:711
+msgid "Gamma value"
+msgstr "Gammaverdi"
+
+#: screenshooter/screenshooter_applet.c:718
+msgid "Post Processing"
+msgstr "Postprosessering"
+
+#: screenshooter/screenshooter_applet.c:726
+msgid "Create frame around image"
+msgstr "Lag ramme rundt bildet"
+
+#: screenshooter/screenshooter_applet.c:730
+msgid "Frame Width (pixels)"
+msgstr "Rammebredde (piksler)"
+
+#: screenshooter/screenshooter_applet.c:738
+msgid "Mirror image vertically"
+msgstr "Speilvend bildet vertikalt"
+
+#: screenshooter/screenshooter_applet.c:740
+msgid "Mirror image horizontally"
+msgstr "Vend bildet horisontalt"
+
+#: screenshooter/screenshooter_applet.c:743
+msgid "Emboss image"
+msgstr "Lag trykk av bilde"
+
+#: screenshooter/screenshooter_applet.c:755
+msgid ""
+"When finished, send image and thumbnail filenames to script/program below"
+msgstr ""
+"Når ferdig, send bilde- og miniatyrfilnavnet til skriptet/programmet under"
+
+#: screenshooter/screenshooter_applet.c:763
+msgid "Script or program to launch:"
+msgstr "Skript eller program som skal startes:"
+
+#: screenshooter/screenshooter_applet.c:784
+msgid ""
+"Script/program will be launched after image creation with the image "
+"filenames\n"
+"specified on the commandline as follows:\n"
+"{Script_Name} {Image_Filename} {Thumbnail_filename_if_specified}\n"
+"Hint: I use a script to update my website screenshot page.\n"
+"An example script should've been included in the tarball, or at my website."
+msgstr ""
+"Skript/program som vil startes etter oppretting av bildet med bildets\n"
+"filnavn spesifisert på kommandolinjen som følger:\n"
+"{skript_navn} {bilde_filnavn} {miniatyr_filnavn_hvis_oppgitt}\n"
+"Tips: Jeg bruker et skript for å oppdatere min webside med skjermdump.\n"
+"Et eksempelskript skal være inkludert i tar arkivet, eller på min webside."
+
+#: screenshooter/screenshooter_applet.c:793
+msgid "Frills"
+msgstr "Ekstra"
+
+#: screenshooter/screenshooter_applet.c:802
+msgid "Blur image"
+msgstr "Gjør bildet uskarpt"
+
+#: screenshooter/screenshooter_applet.c:805
+msgid "Blur image by what factor?"
+msgstr "Gjør bildet uskarpt med hvilken faktor?"
+
+#: screenshooter/screenshooter_applet.c:809
+msgid "Create Charcoal Effect"
+msgstr "Lag kulleffekt"
+
+#: screenshooter/screenshooter_applet.c:813
+msgid "Charcoal by what factor?"
+msgstr "Faktor for kulleffekt?"
+
+#: screenshooter/screenshooter_applet.c:817
+msgid "Find Edges in Image"
+msgstr "Finn kanter i bildet"
+
+#: screenshooter/screenshooter_applet.c:821
+msgid "Find edges by what factor?"
+msgstr "Faktor for finn kanter?"
+
+#: screenshooter/screenshooter_applet.c:825
+msgid "Implode Image"
+msgstr "Imploder bildet"
+
+#: screenshooter/screenshooter_applet.c:829
+msgid "Implode by what factor?"
+msgstr "Faktor for implodering?"
+
+#: screenshooter/screenshooter_applet.c:834
+msgid "Spurious"
+msgstr "Overflødig"
+
+#: screenshooter/screenshooter_applet.c:842
+msgid "Create Painted Effect"
+msgstr "Lag tegnet effekt"
+
+#: screenshooter/screenshooter_applet.c:846
+msgid "Paint what radius around each pixel?"
+msgstr "Radius for tegning rundt hver piksel?"
+
+#: screenshooter/screenshooter_applet.c:850
+msgid "Solarise Image"
+msgstr "Solariser bildet"
+
+#: screenshooter/screenshooter_applet.c:854
+msgid "Solarize factor?"
+msgstr "Faktor for solarisering?"
+
+#: screenshooter/screenshooter_applet.c:858
+msgid "Spread image pixels"
+msgstr "Spre pikslene i bildet"
+
+#: screenshooter/screenshooter_applet.c:862
+msgid "Radius to around each pixel to spread?"
+msgstr "Spredningsradius rundt hver piksel?"
+
+#: screenshooter/screenshooter_applet.c:866
+msgid "Swirl pixels. My favorite :-)"
+msgstr "Snurr pikslene."
+
+#: screenshooter/screenshooter_applet.c:870
+msgid "Radius to swirl pixels around?)"
+msgstr "Snurr-radius rundt pikslene?"
+
+#: screenshooter/screenshooter_applet.c:874
+msgid "Spurious 2"
+msgstr "Overflødig 2"
+
+#: screenshooter/screenshooter_applet.c:1004
+msgid ""
+"There was a word expansion error\n"
+"I think you have stuck something funny in the directory box\n"
+"Screenshot aborted"
+msgstr ""
+"Det oppstod en feil under ordutvidelsen\n"
+"Jeg tror du har satt inn noe rart i katalog boksen\n"
+"Screenshot avbrutt"
+
+#: screenshooter/screenshooter_applet.c:1020
+msgid ""
+"There was a word expansion error\n"
+"I think you have stuck something funny in the filename box\n"
+"Screenshot aborted"
+msgstr ""
+"Det oppstod en feil under ordutvidelsen\n"
+"Jeg tror du har satt inn noe rart i filnavn boksen\n"
+"Screenshot avbrutt"
+
+#: screenshooter/screenshooter_applet.c:1368
+msgid ""
+"There was a word expansion error\n"
+"I think you have stuck something funny in the filename box"
+msgstr ""
+"Det oppstod en feil under ordutvidelsen\n"
+"Jeg tror du har satt inn noe rart i filnavn boksen"
+
+#: screenshooter/screenshooter_applet.c:1382
+#, c-format
+msgid ""
+"The specified filename:\n"
+"%s\n"
+"expands to:\n"
+"%s\n"
+"when passed to a shell"
+msgstr ""
+"Det spesifiserte filnavnet:\n"
+"%s\n"
+"utvides til:\n"
+"%s\n"
+"når det sendes videre til et skall"
+
+#: screenshooter/screenshooter_applet.c:1609
+msgid "Screen-Shooter Applet"
+msgstr "Skjermskyter applet!"
+
+#: screenshooter/screenshooter_applet.c:1611
+msgid "Copyright (C) 1999 Tom Gilbert"
+msgstr "Copyright (C) 1999 Tom Gilbert"
+
+#: screenshooter/screenshooter_applet.c:1612
+msgid ""
+"A useful little screengrabber.\n"
+"The left/top button allows you to grab either:\n"
+"a window (click to select which one)\n"
+"or an area (click and drag to select a rectangle.)\n"
+"The right/bottom button will grab the entire desktop.\n"
+"Share and Enjoy ;)"
+msgstr ""
+"En nyttig liten skjermdumper.\n"
+"Venstre/øverste knapp lar deg dumpe enten:\n"
+"et vindu (klikk for å velge hvilket)\n"
+"eller et område (klikk og dra for å velge et rektangel.)\n"
+"Høyre/nederste knapp lar deg dumpe hele skrivebordet.\n"
+"Del og nyt ;)"
+
+#: screenshooter/screenshooter_applet.c:1625
+msgid "Visit the author's Website"
+msgstr "Besøk forfatterens hjemmeside"
+
+#: screenshooter/screenshooter_applet.c:1714
+#: screenshooter/screenshooter_applet.c:1717
+msgid "Grab a shot of a specific window or area"
+msgstr "Hent et dump av et spesifikt vindu eller område"
+
+#: screenshooter/screenshooter_applet.c:1715
+#: screenshooter/screenshooter_applet.c:1718
+msgid "Grab a shot of your entire desktop"
+msgstr "Hent et dump av hele skrivebordet"
+
+#: screenshooter/screenshooter_applet.desktop.in.h:1
+msgid "Screen Shooter is a screenshot grabber"
+msgstr "Skjermdumper er et program for å ta skjermdump"
+
+#: screenshooter/screenshooter_applet.desktop.in.h:2
+msgid "ScreenShooter"
+msgstr "Skjermdumper"
+
+#~ msgid "Amusements"
+#~ msgstr "Underholdning"
+
+#~ msgid "Clocks"
+#~ msgstr "Klokker"
+
+#~ msgid "Monitors"
+#~ msgstr "Overvåking"
+
+#~ msgid "Multimedia"
+#~ msgstr "Multimedia"
 
 #~ msgid "saving prefs..."
 #~ msgstr "lagrer innstillinger..."
@@ -3628,12 +3866,6 @@ msgstr "Værmelding"
 #~ msgid "An analog clock similar to that in CDE panel."
 #~ msgstr "En analog klokke lik den som finnes i CDE-panelet"
 
-#~ msgid "Help"
-#~ msgstr "Hjelp"
-
-#~ msgid "About..."
-#~ msgstr "Om..."
-
 #~ msgid "ASClock"
 #~ msgstr "ASKlokke"
 
@@ -3670,9 +3902,6 @@ msgstr "Værmelding"
 
 #~ msgid "The battery is low."
 #~ msgstr "Batteriet har lite strøm."
-
-#~ msgid "The battery is fully charged."
-#~ msgstr "Batteriet er fullt oppladet."
 
 #~ msgid "Internal error: invalid mode in battery_set_mode"
 #~ msgstr "Intern feil: ugyldig modus i battery_set_mode"
@@ -4101,9 +4330,6 @@ msgstr "Værmelding"
 #~ msgstr ""
 #~ "Mikserappleten gir deg umiddelbar tilgang til innstillingene av lydnivået "
 #~ "for din lydenhet"
-
-#~ msgid "Run Audio Mixer..."
-#~ msgstr "Kjør lydmikser..."
 
 #~ msgid "Help..."
 #~ msgstr "Hjelp..."
@@ -4698,17 +4924,11 @@ msgstr "Værmelding"
 #~ msgid "Choose a log file"
 #~ msgstr "Velg en loggfil"
 
-#~ msgid "Height:"
-#~ msgstr "Høyde:"
-
 #~ msgid "Use panel size hint"
 #~ msgstr "Bruk panelhint for størrelse"
 
 #~ msgid "The Web Browser Controller"
 #~ msgstr "Kontroll av WWW-leser"
-
-#~ msgid "(C) 2000 the Free Software Foundation"
-#~ msgstr "© 2000 the Free Software Foundation"
 
 #~ msgid ""
 #~ "An applet to launch URLs in a web browser, search using various web sites "
@@ -4771,9 +4991,6 @@ msgstr "Værmelding"
 #~ msgid "CPU/MEM usage meter"
 #~ msgstr "CPU-/minnebruk måler"
 
-#~ msgid "Battery Charge Monitor"
-#~ msgstr "Overvåking av batterilading"
-
 #~ msgid "An analog clock similar to that in CDE panel"
 #~ msgstr "En analog klokke lik den som finnes i CDE-panelet"
 
@@ -4797,9 +5014,6 @@ msgstr "Værmelding"
 
 #~ msgid "Fifteen cells game"
 #~ msgstr "Spillet femten celler"
-
-#~ msgid "Sound Monitor"
-#~ msgstr "Lydmonitor"
 
 #~ msgid "Sound Monitor for Esound"
 #~ msgstr "Lydmonitor for Esound"
