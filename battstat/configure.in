@@ -132,6 +132,11 @@ case "${host}" in
   *-*-freebsd*)
 	 LDFLAGS="$LDFLAGS $GTK_LIBS"
 	 ;;
+  powerpc-*-linux*)
+  	HAVE_LIBAPM=no
+  	AM_CONDITIONAL(HAVE_LIBAPM, test "x$HAVE_LIBAPM" = "xyes")
+	AC_SUBST(HAVE_LIBAPM)
+	;;
   *-*-linux*)
 	AC_CHECK_LIB(apm,apm_read,,[
 	AC_MSG_ERROR([*** libapm not found.])])
@@ -215,6 +220,7 @@ AC_DEFINE_UNQUOTED(GNOME_ICONDIR, "${GNOME_PREFIX}/share/gnome/pixmaps")
 AC_OUTPUT([
 Makefile
 macros/Makefile
+apmlib/Makefile
 src/Makefile
 intl/Makefile
 po/Makefile.in

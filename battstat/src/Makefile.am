@@ -7,6 +7,13 @@
 gladedir = $(datadir)/battstat_applet
 glade_DATA = battstat_applet.glade
 
+if HAVE_LIBAPM
+APMLIB =
+APMDIR =
+else
+APMLIB = ../apmlib/libapm.a
+APMDIR = -I$(top_srcdir)/apmlib
+endif
 
 INCLUDES = \
 	-I$(top_srcdir)/intl \
@@ -16,7 +23,8 @@ INCLUDES = \
 	-DDATA_DIR=\"$(datadir)\" \
 	-DGLADE_DIR=\"$(gladedir)\" \
 	-DG_LOG_DOMAIN=\"battstat_applet\" \
-	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"
+	-DGNOMELOCALEDIR=\""$(datadir)/locale"\" \
+	$(APMDIR) $(NULL)
 
 bin_PROGRAMS = battstat_applet
 
@@ -29,7 +37,8 @@ battstat_applet_LDADD = 			\
 			$(GNOME_APPLETS_LIBS)   \
 	 		${GNOME_DOCKLETS_LIBS}	\
 			-lglade			\
-			-lglade-gnome
+			-lglade-gnome           \
+			$(APMLIB)
 
 EXTRA_DIST = $(glade_DATA)
 
