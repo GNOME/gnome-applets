@@ -161,19 +161,6 @@ static const BonoboUIVerb weather_applet_menu_verbs [] = {
         BONOBO_UI_VERB_END
 };
 
-static const char weather_applet_menu_xml [] =
-	"<popup name=\"button3\">\n"
-	"   <menuitem name=\"Item 1\" verb=\"Forecast\" _label=\"Forecast\"/>\n"
-	"   <menuitem name=\"Item 2\" verb=\"Update\" _label=\"Update\"\n"
-	"             pixtype=\"stock\" pixname=\"gtk-refresh\"/>\n"
-	"   <menuitem name=\"Item 3\" verb=\"Props\" _label=\"Properties\"\n"
-	"             pixtype=\"stock\" pixname=\"gtk-properties\"/>\n"
-/*	"   <menuitem name=\"Item 4\" verb=\"Help\" _label=\"Help\"\n"
-	"             pixtype=\"stock\" pixname=\"gtk-help\"/>\n" */
-	"   <menuitem name=\"Item 5\" verb=\"About\" _label=\"About\"\n"
-	"             pixtype=\"stock\" pixname=\"gnome-stock-about\"/>\n"
-	"</popup>\n";
-	
 void gweather_applet_create (GWeatherApplet *gw_applet)
 {
 	GtkWidget *frame;
@@ -246,10 +233,12 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
 
     gw_applet->orient = panel_applet_get_orient (gw_applet->applet);
     
-    panel_applet_setup_menu (gw_applet->applet,
-			     weather_applet_menu_xml,
-			     weather_applet_menu_verbs,
-			     gw_applet);
+    panel_applet_setup_menu_from_file (gw_applet->applet,
+                                       NULL,
+			               "GNOME_GWeatherApplet.xml",
+                                       NULL,
+			               weather_applet_menu_verbs,
+			               gw_applet);
 
 	gw_applet->frame = frame;
 	gw_applet->label = label;

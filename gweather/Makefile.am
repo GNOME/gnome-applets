@@ -28,6 +28,9 @@ gweather_applet_2_LDADD = \
 schemadir 	= @GCONF_SCHEMA_FILE_DIR@
 schema_DATA	= gweather.schemas
 
+uidir = $(datadir)/gnome-2.0/ui
+ui_DATA = GNOME_GWeatherApplet.xml
+
 install-data-local:
 	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schema_DATA)
 	
@@ -41,6 +44,7 @@ gweatherlocations_DATA = Locations
 EXTRA_DIST = \
 	GNOME_GWeatherApplet_Factory.server.in \
 	gweather.schemas \
+	$(ui_DATA)	\
 	Locations
 
 @INTLTOOL_SERVER_RULE@
