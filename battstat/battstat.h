@@ -151,7 +151,6 @@ void prop_apply (GtkWidget *, int, gpointer);
 
 void apm_readinfo(void);
 void adj_value_changed_cb(GtkAdjustment *, gpointer);
-void toggle_value_changed_cb(GtkToggleButton *, gpointer);
 void font_set_cb(GtkWidget *, int, gpointer);
 void simul_cb(GtkWidget *, gpointer);
 void helppref_cb(PanelApplet *, gpointer);
@@ -163,8 +162,7 @@ void help_cb (PanelApplet *, gpointer);
 void suspend_cb (PanelApplet *, gpointer);
 void destroy_about (GtkWidget *, gpointer);
 void about_cb (PanelApplet *, gpointer);
-gint applet_save_session(GtkWidget *, char *, char *, gpointer);
-void applet_change_pixel_size(GtkWidget *, int, gpointer);
+void change_size(PanelApplet *, gint, gpointer);
 gint create_layout(ProgressData *battstat);
 void save_preferences (ProgressData *battstat);
 void load_preferences(ProgressData *battstat);

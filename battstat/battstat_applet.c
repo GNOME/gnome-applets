@@ -408,8 +408,10 @@ pixmap_timeout( gpointer data )
       gtk_pixmap_set(GTK_PIXMAP (battery->statuspixmapwid),
                      statusimage[pixmap_index], statusmask[pixmap_index]);
      printf ("foo1\n");
+#ifdef FIXME
       gtk_pixmap_set(GTK_PIXMAP (battery->pixmapdockwid),
                      statusimage[pixmap_index], statusmask[pixmap_index]);
+#endif
      printf ("foo2\n");
    }
 
@@ -544,21 +546,28 @@ pixmap_timeout( gpointer data )
 				 i+2, pixel_offset_top[i]+progress_value);
 	       }
 	    }
-	    
-	    if(battery->horizont)
-	      gdk_draw_pixmap(battery->pixmapwid->window,
+    
+	    if(battery->horizont) {
+	      GdkPixmap *pixmap;
+	      gtk_pixmap_get (GTK_PIXMAP (battery->pixmapwid), &pixmap, NULL);
+	      gdk_draw_pixmap(pixmap,
 			      battery->pixgc,
 			      battery->pixmap,
 			      0,0,
 			      0,2,
 			      -1,-1);
-	    else
-	      gdk_draw_pixmap(battery->pixmapwidy->window,
+	    }
+	    else {
+	      GdkPixmap *pixmap;
+	      gtk_pixmap_get (GTK_PIXMAP (battery->pixmapwidy), &pixmap, NULL);
+	      gdk_draw_pixmap(pixmap,
 			      battery->pixgc,
 			      battery->pixmapy,
 			      0,0,
 			      2,1,
 			      -1,-1);
+	    }
+
 	 } else {
 	    progress_value = PROGLEN*batt_life/100.0;
 	    
@@ -597,21 +606,28 @@ pixmap_timeout( gpointer data )
 				    i+2, x);
 	       }
 	    }
-	    
-	    if(battery->horizont)
-	      gdk_draw_pixmap(battery->pixmapwid->window,
+    
+	    if(battery->horizont) {
+	      GdkPixmap *pixmap;
+	      gtk_pixmap_get (GTK_PIXMAP (battery->pixmapwid), &pixmap, NULL);
+	      gdk_draw_pixmap(pixmap,
 			      battery->pixgc,
 			      battery->pixmap,
 			      0,0,
 			      0,2,
 			      -1,-1);
-	    else
-	      gdk_draw_pixmap(battery->pixmapwidy->window,
+	    }
+	    else {
+	      GdkPixmap *pixmap;
+	      gtk_pixmap_get (GTK_PIXMAP (battery->pixmapwidy), &pixmap, NULL);
+	      gdk_draw_pixmap(pixmap,
 			      battery->pixgc,
 			      battery->pixmapy,
 			      0,0,
 			      2,1,
 			      -1,-1);
+	    }
+
 	 }
       }
       
@@ -687,7 +703,7 @@ pixmap_timeout( gpointer data )
 }
 
 void
-  destroy_applet( GtkWidget *widget, gpointer data )
+destroy_applet( GtkWidget *widget, gpointer data )
 {
    ProgressData *pdata = data;
    
@@ -870,33 +886,15 @@ change_orient (GtkWidget *w, PanelAppletOrient o, gpointer data)
       break;
    }
    
-   if (!(battstat->showbattery || battstat->showpercent || battstat->showstatus)) {
-      gnome_error_dialog(
-			 /* Displayed when the user tries to hide all
-			  parts of the applet in the preferences
-			  window. */
-			 _("You can't hide all elements of the applet!"));
-      /*      width=gdk_string_width((battstat->percentstyle)->font,"100%")+46+3;*/
-      gtk_widget_set_usize(battstat->framestatus, 20, 24);
-      gtk_widget_set_usize(battstat->framebattery, width, 24);
-      gtk_widget_show (battstat->framebattery);
-      gtk_widget_show (battstat->pixmapwid);
-      gtk_widget_show (battstat->framestatus);
-      gtk_widget_show (battstat->statuspixmapwid);
-      gtk_widget_show (battstat->percent);
-      gtk_widget_hide (battstat->statuspercent);
-      gtk_widget_hide (battstat->frameybattery);
-      gtk_toggle_button_set_state (GTK_TOGGLE_BUTTON (battstat->radio_lay_batt_on), TRUE);
-      gtk_toggle_button_set_state (GTK_TOGGLE_BUTTON (battstat->radio_lay_status_on), TRUE);
-      gtk_toggle_button_set_state (GTK_TOGGLE_BUTTON (battstat->radio_lay_percent_on), TRUE);
-   } else if (battstat->horizont) {
+   if (battstat->horizont) {
       /* Horizontal mode */
       gtk_widget_hide (battstat->statuspercent);
       gtk_widget_hide (battstat->frameybattery);
       gtk_widget_show (battstat->framebattery);
       
       battstat->showstatus ?
-	gtk_widget_show (battstat->framestatus):gtk_widget_hide (battstat->framestatus);
+	gtk_widget_show (battstat->statuspixmapwid):
+	gtk_widget_hide (battstat->statuspixmapwid);
       battstat->showpercent ?
 	gtk_widget_show (battstat->percent):gtk_widget_hide (battstat->percent);
       battstat->showbattery ?
@@ -942,6 +940,7 @@ change_orient (GtkWidget *w, PanelAppletOrient o, gpointer data)
 			       battstat->eventstatus,
 			       new_label,
 			       NULL);
+#ifdef FIXME
 	 gtk_widget_set_usize(battstat->framestatus, 20, 24);
 	 if(battstat->showbattery == 1 && battstat->showpercent == 1) {
 	   /*	    width=gdk_string_width((battstat->percentstyle)->font,"100%")+46+3;*/
@@ -952,6 +951,7 @@ change_orient (GtkWidget *w, PanelAppletOrient o, gpointer data)
 	 } else if(battstat->showbattery == 1 && battstat->showpercent == 0) {
 	    gtk_widget_set_usize(battstat->framebattery, 46, 24);	
 	 }
+#endif
       }
    } else {
       /* Square mode */
@@ -960,20 +960,25 @@ change_orient (GtkWidget *w, PanelAppletOrient o, gpointer data)
       gtk_widget_hide(battstat->framebattery);
       gtk_widget_show(battstat->frameybattery);
       battstat->showstatus ?
-	gtk_widget_show (battstat->framestatus):gtk_widget_hide (battstat->framestatus);
+	gtk_widget_show (battstat->statuspixmapwid):
+	gtk_widget_hide (battstat->statuspixmapwid);
       battstat->showpercent ?
 	gtk_widget_show (battstat->statuspercent):gtk_widget_hide (battstat->statuspercent);
       battstat->showbattery ?
 	gtk_widget_show (battstat->frameybattery):gtk_widget_hide (battstat->frameybattery);
+#ifdef FIXME
       battstat->showpercent ?
 	gtk_widget_set_usize(battstat->framestatus,width,24):
       gtk_widget_set_usize(battstat->framestatus, 20, 24);
-      
+#endif      
       if(battstat->showstatus == 0 && battstat->showpercent == 1) {
 	 gtk_widget_show (battstat->framestatus);
 	 gtk_widget_hide (battstat->statuspixmapwid);
+#ifdef FIXME
 	 gtk_widget_set_usize(battstat->framestatus, width, -1);
+#endif
       }
+#ifdef FIXME
       if(battstat->showstatus == 1 && battstat->showpercent == 0) {
 	 gtk_widget_set_usize(battstat->framestatus, 20, 24);
       }
@@ -983,6 +988,7 @@ change_orient (GtkWidget *w, PanelAppletOrient o, gpointer data)
       if(battstat->showstatus == 1) {
 	 gtk_widget_show (battstat->statuspixmapwid);      
       }
+#endif
       if(battstat->showbattery == 0 && battstat->showpercent == 0) {
 	 if(acline_status == 0) {
 	    /* 0 = Battery power */
@@ -1141,31 +1147,7 @@ adj_value_changed_cb ( GtkAdjustment *ignored, gpointer data )
    return;
 }
 
-void
-toggle_value_changed_cb ( GtkToggleButton *ignored, gpointer data )
-{
-   ProgressData *battstat = data;
-   
-   if (DEBUG) g_print("toggle_value_changed()\n");
-   
-   battstat->draintop = (GTK_TOGGLE_BUTTON (battstat->progdir_radio))->active;
-   battstat->lowbattnotification = (GTK_TOGGLE_BUTTON (battstat->lowbatt_toggle))->active;
-   battstat->fullbattnot = (GTK_TOGGLE_BUTTON (battstat->full_toggle))->active;
-   battstat->beep = (GTK_TOGGLE_BUTTON (battstat->beep_toggle))->active;
-   battstat->showstatus = (GTK_TOGGLE_BUTTON (battstat->radio_lay_status_on))->active;
-   battstat->showpercent = (GTK_TOGGLE_BUTTON (battstat->radio_lay_percent_on))->active;
-   battstat->showbattery = (GTK_TOGGLE_BUTTON (battstat->radio_lay_batt_on))->active;
-   
-   if(battstat->lowbattnotification || battstat->fullbattnot)
-     gtk_widget_set_sensitive(GTK_WIDGET (battstat->beep_toggle), TRUE);
-   else
-     gtk_widget_set_sensitive(GTK_WIDGET (battstat->beep_toggle), FALSE);
-
-   gnome_property_box_changed (GNOME_PROPERTY_BOX (battstat->prop_win));
-   return;
-}
-
-/*
+#if 0
 static void
 build_our_plug(StatusDocklet *docklet, GtkWidget *plug, gpointer data)
 {
@@ -1195,10 +1177,10 @@ build_our_plug(StatusDocklet *docklet, GtkWidget *plug, gpointer data)
    
    return;
 }
-*/
-#ifdef HAVE_PANEL_PIXEL_SIZE
+#endif
+
 void
-  applet_change_pixel_size(GtkWidget *w, int size, gpointer data)
+change_size(PanelApplet *applet, gint size, gpointer data)
 {
    ProgressData *battstat = data;
    
@@ -1207,11 +1189,11 @@ void
    battstat->panelsize=size;
    
    battstat->colors_changed=TRUE;
-   change_orient(w, battstat->orienttype, battstat);
+   change_orient(GTK_WIDGET (applet), battstat->orienttype, battstat);
    pixmap_timeout( battstat );
    battstat->colors_changed=FALSE;
 }
-#endif
+
 
 #define GCONF_PATH ""
 
@@ -1247,16 +1229,11 @@ save_preferences(ProgressData *battstat)
   panel_applet_gconf_set_int    (applet, GCONF_PATH "red_value", battstat->red_val, NULL);
   panel_applet_gconf_set_int    (applet, GCONF_PATH "orange_value",battstat->orange_val,  NULL);
   panel_applet_gconf_set_int    (applet, GCONF_PATH "yellow_value", battstat->yellow_val, NULL);
-  panel_applet_gconf_set_bool   (applet, GCONF_PATH "low_battery_notification", battstat->lowbattnotification, NULL);
-  panel_applet_gconf_set_bool   (applet, GCONF_PATH "full_battery_notification", battstat->fullbattnot, NULL);
-  panel_applet_gconf_set_bool   (applet, GCONF_PATH "beep", battstat->beep, NULL);
-  panel_applet_gconf_set_bool   (applet, GCONF_PATH "drain_from_top", battstat->draintop, NULL);
+  
+  
   panel_applet_gconf_set_bool   (applet, GCONF_PATH "horizontal", battstat->horizont, NULL);
 
-  panel_applet_gconf_set_bool   (applet, GCONF_PATH "show_status", battstat->showstatus, NULL);
-  panel_applet_gconf_set_bool   (applet, GCONF_PATH "show_battery", battstat->showbattery, NULL);
-  panel_applet_gconf_set_bool   (applet, GCONF_PATH "show_percent", battstat->showpercent, NULL);
-  panel_applet_gconf_set_string (applet, GCONF_PATH "suspend_command", battstat->suspend_cmd, NULL);
+ 
   panel_applet_gconf_set_bool   (applet, GCONF_PATH "use_dock", battstat->usedock, NULL);
 }
 
@@ -1268,7 +1245,7 @@ create_layout(ProgressData *battstat)
    if (DEBUG) g_print("create_layout()\n");
    
    battstat->framestatus = gtk_frame_new(NULL);
-   gtk_widget_set_usize( battstat->framestatus, 20, 24);
+   /*gtk_widget_set_usize( battstat->framestatus, 20, 24);*/
    gtk_frame_set_shadow_type ( GTK_FRAME (battstat->framestatus), 
 			       GTK_SHADOW_NONE);
    gtk_widget_show(battstat->framestatus);
@@ -1286,7 +1263,7 @@ create_layout(ProgressData *battstat)
 		     battstat->statusvbox);
    
    battstat->framebattery = gtk_frame_new(NULL);
-   gtk_widget_set_usize( battstat->framebattery, -1, 24);
+   /*gtk_widget_set_usize( battstat->framebattery, -1, 24);*/
    gtk_frame_set_shadow_type ( GTK_FRAME (battstat->framebattery), 
 			       GTK_SHADOW_NONE);
    gtk_widget_show(battstat->framebattery);
@@ -1330,16 +1307,17 @@ create_layout(ProgressData *battstat)
 					  battstat->masky );
    gtk_box_pack_start (GTK_BOX (battstat->hbox), GTK_WIDGET (battstat->pixmapwid), FALSE, TRUE, 0);
    gtk_widget_show ( GTK_WIDGET (battstat->pixmapwid) );
-   
+
    battstat->frameybattery = gtk_frame_new(NULL);
-   gtk_widget_set_usize( battstat->frameybattery, 24, 46);
+   /*gtk_widget_set_usize( battstat->frameybattery, 24, 46);*/
    gtk_frame_set_shadow_type ( GTK_FRAME (battstat->frameybattery), GTK_SHADOW_NONE);
    gtk_box_pack_start(GTK_BOX(battstat->hbox1), battstat->frameybattery, FALSE, TRUE, 0);
    battstat->eventybattery = gtk_event_box_new();
    gtk_widget_show (battstat->eventybattery);
    gtk_container_add (GTK_CONTAINER (battstat->frameybattery), battstat->eventybattery);
    gtk_container_add (GTK_CONTAINER (battstat->eventybattery),
-		      GTK_WIDGET (battstat->pixmapwidy));
+                      GTK_WIDGET (battstat->pixmapwidy));
+
    gtk_widget_show ( GTK_WIDGET (battstat->pixmapwidy) );
    
    gtk_signal_connect(GTK_OBJECT(battstat->pixmapwid), "destroy",
@@ -1371,9 +1349,11 @@ create_layout(ProgressData *battstat)
    battstat->statuspixmapwid = gtk_pixmap_new( battstat->status, statusmask[BATTERY] );
    gtk_box_pack_start (GTK_BOX (battstat->statusvbox), battstat->statuspixmapwid, FALSE, TRUE, 0);
    gtk_widget_show ( battstat->statuspixmapwid );
-   battstat->statuspercent = gtk_label_new("0%");
+
+   battstat->statuspercent = gtk_label_new("100%");
    gtk_box_pack_start (GTK_BOX (battstat->statusvbox), battstat->statuspercent, FALSE, TRUE, 0);
-   
+   gtk_widget_show (battstat->statuspercent);
+ 
    /* Alloc battery colors */
    for(i=0; orange[i].pixel!=-1; i++) {
       gdk_colormap_alloc_color (gdk_colormap_get_system(), 
@@ -1420,29 +1400,21 @@ create_layout(ProgressData *battstat)
 			 battstat->eventybattery,
 			 "",
 			 NULL);
-
-   /*
-   gtk_signal_connect (GTK_OBJECT(battstat->applet),"save_session",
-		       GTK_SIGNAL_FUNC(applet_save_session),
-		       battstat);
-   
+#if 0
    statusdock = status_docklet_new();
    
    gtk_signal_connect(GTK_OBJECT(statusdock), "build_plug",
 		      GTK_SIGNAL_FUNC(build_our_plug),
 		      battstat);
    status_docklet_run(STATUS_DOCKLET(statusdock));
-   */
-#ifdef HAVE_PANEL_PIXEL_SIZE
-   gtk_signal_connect(GTK_OBJECT(battstat->applet),"change_pixel_size",
-		      GTK_SIGNAL_FUNC(applet_change_pixel_size),
-		      battstat);
 #endif
-   
+
    gtk_signal_connect(GTK_OBJECT(battstat->applet),"change_orient",
 		      GTK_SIGNAL_FUNC(change_orient),
 		      battstat);
-   
+   g_signal_connect (G_OBJECT (battstat->applet), "change_size",
+   		     G_CALLBACK (change_size), battstat);
+
    return FALSE;
 }
 
@@ -1468,30 +1440,25 @@ battstat_applet_fill (PanelApplet *applet)
   battstat->hbox1 = gtk_hbox_new (FALSE, 1);
   gtk_widget_show(battstat->hbox1);
   
-  bindtextdomain (PACKAGE, GNOMELOCALEDIR);
-  textdomain(PACKAGE);
-  
   battstat->colors_changed = TRUE;
   battstat->suspend_cmd = FALSE;
-  battstat->panelsize = 48;
+  battstat->orienttype = panel_applet_get_orient (applet);
+  battstat->panelsize = panel_applet_get_size (applet);
+  
   glade_gnome_init ();
   
   load_preferences(battstat);
   create_layout(battstat);
+
   pixmap_timeout(battstat);
-
-#if 0
-  gtk_signal_emit_by_name(GTK_OBJECT(battstat->applet), "change_orient", battstat, NULL);
-#ifdef HAVE_PANEL_PIXEL_SIZE
-  gtk_signal_emit_by_name(GTK_OBJECT(battstat->applet), "change_pixel_size", battstat, NULL);
-#endif
-#endif
-
+  change_orient (NULL, battstat->orienttype, battstat );
+#if 1
   battstat->pixtimer = gtk_timeout_add (1000, pixmap_timeout, battstat);
-  
+#endif  
   gtk_container_add (GTK_CONTAINER (battstat->applet), battstat->hbox1);
 
-  panel_applet_setup_menu (PANEL_APPLET (battstat->applet), battstat_menu_xml, battstat_menu_verbs, battstat);
+  panel_applet_setup_menu (PANEL_APPLET (battstat->applet), 
+  			   battstat_menu_xml, battstat_menu_verbs, battstat);
 
   return TRUE;
 }
