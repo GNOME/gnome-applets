@@ -5,7 +5,7 @@
 #include "clockmail.h"
 
 static void about_cb (AppletWidget *widget, gpointer data);
-static void set_tooltip(gchar *newtext, AppData *ad);
+static void set_tooltip(struct tm *time_data, AppData *ad);
 static void redraw_display(AppData *ad);
 static void update_mail_display(int n, AppData *ad);
 static void update_time_count(gint h, gint m, gint s, AppData *ad);
@@ -91,15 +91,33 @@ void check_mail_file_status (int reset, AppData *ad)
 	ad->oldsize = newsize;
 }
 
-static void set_tooltip(gchar *newtext, AppData *ad)
+static void set_tooltip(struct tm *time_data, AppData *ad)
 {
-	if (!ad->tiptext)
-		gtk_tooltips_set_tip (ad->tooltips, ad->applet, newtext, NULL);
-	else if (strcmp(newtext,ad->tiptext) != 0)
-		gtk_tooltips_set_tip (ad->tooltips, ad->applet, newtext, NULL);
+	if (time_data->tm_yday != ad->old_yday)
+		{
+		gchar date[128];
+		strftime(date, 128, "%a, %b %d", time_data);
 
-	if (ad->tiptext) g_free (ad->tiptext);
-	ad->tiptext = strdup(newtext);
+		if (ad->use_gmt)
+			{
+			gchar *buf;
+			if (ad->gmt_offset == 0)
+				{
+				buf = g_strconcat (date, _(" (GMT)"), NULL);
+				}
+			else
+				{
+				gchar gmt_text[32];
+				sprintf(gmt_text, _(" (GMT %+d)"), ad->gmt_offset);
+				buf = g_strconcat (date, gmt_text, NULL);
+				}
+			gtk_tooltips_set_tip (ad->tooltips, ad->applet, buf, NULL);
+			g_free(buf);
+			}
+		else
+			gtk_tooltips_set_tip (ad->tooltips, ad->applet, date, NULL);
+		ad->old_yday = time_data->tm_yday;
+		}
 }
 
 static void redraw_display(AppData *ad)
@@ -184,11 +202,17 @@ static gint update_display(gpointer data)
 	AppData *ad = data;
 	time_t current_time;
 	struct tm *time_data;
-	gchar date[128];
 
 	time(&current_time);
-	time_data = localtime(&current_time);
-	strftime(date, 128, "%a, %b %d", time_data);
+
+	/* if using a non-local time, calculate it from GMT */
+	if (ad->use_gmt)
+		{
+		current_time += (time_t)ad->gmt_offset * 3600;
+		time_data = gmtime(&current_time);
+		}
+	else
+		time_data = localtime(&current_time);
 
 	/* update time */
 	update_time_count(time_data->tm_hour,time_data->tm_min, time_data->tm_sec, ad);
@@ -196,6 +220,9 @@ static gint update_display(gpointer data)
 	/* update date */
 	update_date_displays(time_data->tm_year, time_data->tm_mon, time_data->tm_mday,
 				time_data->tm_wday, ad);
+
+	/* set tooltip to the date */
+	set_tooltip(time_data, ad);
 
 	/* now check mail */
 	check_mail_file_status (FALSE, ad);
@@ -226,9 +253,6 @@ static gint update_display(gpointer data)
 
 	redraw_display(ad);
 
-	/* set tooltip to the date */
-	set_tooltip(date, ad);
-
 	return TRUE;
 }
 
@@ -247,7 +271,6 @@ static void destroy_applet(GtkWidget *widget, gpointer data)
 	g_free(ad->mail_file);
 	g_free(ad->newmail_exec_cmd);
 	g_free(ad->theme_file);
-	g_free(ad->tiptext);
 	g_free(ad);
 }
 
@@ -264,10 +287,12 @@ static AppData *create_new_app(GtkWidget *applet)
 	ad->oldsize = 0;
 	ad->oldtime = 0;
 	ad->old_week = -1;
-	ad->tiptext = NULL;
 	ad->old_n = 0;
 	ad->blink_lit = 0;
 	ad->blink_count = 0;
+
+	ad->use_gmt = FALSE;
+	ad->gmt_offset = 0;
 
 	/* (duration = BLINK_DELAY / 1000 * BLINK_TIMES) */
 	ad->blink_delay = 166;
@@ -305,7 +330,6 @@ static AppData *create_new_app(GtkWidget *applet)
 
 	/* create a tooltip widget to display song title */
 	ad->tooltips = gtk_tooltips_new();
-	set_tooltip(_("date"), ad);
 
 	ad->display_area = gtk_drawing_area_new();
 	gtk_signal_connect(GTK_OBJECT(ad->display_area), "destroy",

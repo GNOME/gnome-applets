@@ -6,6 +6,8 @@
 
 static void newmail_exec_cb(GtkWidget *w, gpointer data);
 static void am_pm_time_cb(GtkWidget *w, gpointer data);
+static void use_gmt_cb(GtkWidget *w, gpointer data);
+static void gmt_offset_cb(GtkObject *adj, gpointer data);
 static void always_blink_cb(GtkWidget *w, gpointer data);
 static void property_apply_cb(GtkWidget *widget, void *nodata, gpointer data);
 static gint property_destroy_cb(GtkWidget *widget, gpointer data);
@@ -21,6 +23,8 @@ void property_load(gchar *path, AppData *ad)
 	ad->newmail_exec_cmd = gnome_config_get_string("clockmail/newmail_command=");
 	ad->exec_cmd_on_newmail = gnome_config_get_int("clockmail/newmail_command_enable=0");
 	ad->theme_file = gnome_config_get_string("clockmail/theme=");
+	ad->use_gmt = gnome_config_get_int("clockmail/gmt=0");
+	ad->gmt_offset = gnome_config_get_int("clockmail/gmt_offset=0");
         gnome_config_pop_prefix ();
 }
 
@@ -34,6 +38,8 @@ void property_save(gchar *path, AppData *ad)
         gnome_config_set_int("clockmail/newmail_command_enable",
 			     ad->exec_cmd_on_newmail);
 	gnome_config_set_string("clockmail/theme", ad->theme_file);
+        gnome_config_set_int("clockmail/gmt", ad->use_gmt);
+        gnome_config_set_int("clockmail/gmt_offset", ad->gmt_offset);
 	gnome_config_sync();
         gnome_config_pop_prefix();
 }
@@ -51,6 +57,20 @@ static void am_pm_time_cb(GtkWidget *w, gpointer data)
 	ad->p_am_pm_enable = GTK_TOGGLE_BUTTON (w)->active;
 	gnome_property_box_changed(GNOME_PROPERTY_BOX(ad->propwindow));
 }
+
+static void use_gmt_cb(GtkWidget *w, gpointer data)
+{
+	AppData *ad = data;
+	ad->p_use_gmt = GTK_TOGGLE_BUTTON (w)->active;
+	gnome_property_box_changed(GNOME_PROPERTY_BOX(ad->propwindow));
+}
+
+static void gmt_offset_cb(GtkObject *adj, gpointer data)
+{
+	AppData *ad = data;
+	ad->p_gmt_offset = (gint)GTK_ADJUSTMENT(adj)->value;
+	gnome_property_box_changed(GNOME_PROPERTY_BOX(ad->propwindow));
+} 
 
 static void always_blink_cb(GtkWidget *w, gpointer data)
 {
@@ -100,6 +120,13 @@ static void property_apply_cb(GtkWidget *widget, void *nodata, gpointer data)
 
         ad->am_pm_enable = ad->p_am_pm_enable;
 	ad->always_blink = ad->p_always_blink;
+
+	if (ad->use_gmt != ad->p_use_gmt || ad->gmt_offset != ad->p_gmt_offset )
+		ad->old_yday = -1;
+
+	ad->use_gmt = ad->p_use_gmt;
+	ad->gmt_offset = ad->p_gmt_offset;
+
 	ad->exec_cmd_on_newmail = ad->p_exec_cmd_on_newmail;
 
 	applet_widget_sync_config(APPLET_WIDGET(ad->applet));
@@ -119,6 +146,8 @@ void property_show(AppletWidget *applet, gpointer data)
 	GtkWidget *hbox;
 	GtkWidget *label;
 	GtkWidget *button;
+	GtkObject *adj;
+	GtkWidget *spin;
 
 	if(ad->propwindow)
 		{
@@ -128,6 +157,8 @@ void property_show(AppletWidget *applet, gpointer data)
 
         ad->p_am_pm_enable = ad->am_pm_enable;
 	ad->p_always_blink = ad->always_blink;
+	ad->p_use_gmt = ad->use_gmt;
+	ad->p_gmt_offset = ad->gmt_offset;
 	ad->p_exec_cmd_on_newmail = ad->exec_cmd_on_newmail;
 
 	ad->propwindow = gnome_property_box_new();
@@ -141,6 +172,23 @@ void property_show(AppletWidget *applet, gpointer data)
 	gtk_toggle_button_set_state(GTK_TOGGLE_BUTTON(button), ad->p_am_pm_enable);
 	gtk_signal_connect (GTK_OBJECT(button),"clicked",(GtkSignalFunc) am_pm_time_cb, ad);
 	gtk_widget_show(button);
+
+	hbox = gtk_hbox_new(FALSE, 5);
+	gtk_box_pack_start( GTK_BOX(frame), hbox, FALSE, FALSE, 5);
+	gtk_widget_show(hbox);
+
+	button = gtk_check_button_new_with_label (_("Display time relative to GMT (Greenwich Mean Time):"));
+	gtk_box_pack_start(GTK_BOX(hbox), button, FALSE, FALSE, 0);
+	gtk_toggle_button_set_state(GTK_TOGGLE_BUTTON(button), ad->p_use_gmt);
+	gtk_signal_connect (GTK_OBJECT(button),"clicked",(GtkSignalFunc) use_gmt_cb, ad);
+	gtk_widget_show(button);
+
+	adj = gtk_adjustment_new((float)ad->gmt_offset, -12.0, 12.0, 1, 1, 1 );
+	spin = gtk_spin_button_new( GTK_ADJUSTMENT(adj), 1, 0 );
+	gtk_box_pack_start( GTK_BOX(hbox), spin, FALSE, FALSE, 5);
+	gtk_signal_connect( GTK_OBJECT(adj),"value_changed",GTK_SIGNAL_FUNC(gmt_offset_cb), ad);
+	gtk_spin_button_set_update_policy( GTK_SPIN_BUTTON(spin),GTK_UPDATE_ALWAYS );
+	gtk_widget_show(spin);
 
 	button = gtk_check_button_new_with_label (_("Blink when any mail is waiting. (Not just when mail arrives)"));
 	gtk_box_pack_start(GTK_BOX(frame), button, FALSE, FALSE, 0);

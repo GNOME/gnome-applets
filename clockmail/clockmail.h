@@ -93,6 +93,9 @@ struct _AppData
 	gint blinking;
 	gint mail_sections;
 
+	gint use_gmt;
+	gint gmt_offset;
+
 	/* the properties window widgets */
 	GtkWidget *propwindow;
 	GtkWidget *mail_file_entry;
@@ -100,12 +103,14 @@ struct _AppData
 	gint p_am_pm_enable;
 	gint p_always_blink;
 	gint p_exec_cmd_on_newmail;
+	gint p_use_gmt;
+	gint p_gmt_offset;
 	GtkWidget *theme_entry;
 
 	/* variables for mail status and remebering past states */
 	off_t oldsize;
 	time_t oldtime;
-	gchar *tiptext;
+	gint old_yday;
 	gint old_n;
 	gint blink_lit;
 	gint blink_count;
