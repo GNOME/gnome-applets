@@ -567,7 +567,7 @@ static gint updateOutput(gpointer data)
 				    bg, TRUE, 0,0,
 				    drawing_area->allocation.width,
 				    drawing_area->allocation.height);
-		
+		g_object_unref (bg);
 
 
 		for(i=0;i<stockdata->setCounter;i++) {
@@ -1329,6 +1329,10 @@ static gint updateOutput(gpointer data)
     		gtk_widget_set_sensitive (stockdata->proxy_port_entry, use_proxy);
     		gtk_widget_set_sensitive (stockdata->proxy_passwd_entry, use_proxy);
     		gtk_widget_set_sensitive (stockdata->proxy_user_entry, use_proxy);
+    		
+    		g_free (proxy_url);
+    		g_free (proxy_psswd);
+    		g_free (proxy_user);
     			
 		gtk_widget_show_all (vbox);
 		return vbox;
