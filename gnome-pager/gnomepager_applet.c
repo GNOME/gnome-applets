@@ -430,6 +430,7 @@ client_prop_change_cb(GtkWidget * widget, GdkEvent * ev, Task * t)
       gtk_label_set(GTK_LABEL(t->label), _("??"));
       gtk_label_set(GTK_LABEL(t->_label), _("??"));
     }
+/*  
   if (t->name)
     {
       gtk_tooltips_set_tip(GTK_TOOLTIPS(t->tooltip),
@@ -444,7 +445,7 @@ client_prop_change_cb(GtkWidget * widget, GdkEvent * ev, Task * t)
       gtk_tooltips_set_tip(GTK_TOOLTIPS(t->_tooltip),
 			   t->_widget, "??", "??");
     }
-
+*/
   
   pstick = t->sticky;
   pdesk = t->desktop;
@@ -693,9 +694,9 @@ add_task(Window win)
 					      GNOME_STOCK_MENU_BOOK_OPEN);
   t->state[0] = gnome_stock_pixmap_widget_new(applet,
 					      GNOME_STOCK_MENU_BOOK_RED);
-  t->tooltip = (GtkWidget *) gtk_tooltips_new();
-  gtk_tooltips_set_tip(GTK_TOOLTIPS(t->tooltip),
-		       t->widget, t->name, t->name);
+/*  t->tooltip = (GtkWidget *) gtk_tooltips_new();*/
+/*  gtk_tooltips_set_tip(GTK_TOOLTIPS(t->tooltip),
+		       t->widget, t->name, t->name);*/
   t->menu = gnome_popup_menu_new(uinfo);
   gnome_popup_menu_attach(t->menu, t->widget, t);
 
@@ -714,9 +715,9 @@ add_task(Window win)
 					      GNOME_STOCK_MENU_BOOK_OPEN);
   t->_state[0] = gnome_stock_pixmap_widget_new(applet,
 					      GNOME_STOCK_MENU_BOOK_RED);
-  t->_tooltip = (GtkWidget *) gtk_tooltips_new();
-  gtk_tooltips_set_tip(GTK_TOOLTIPS(t->_tooltip),
-		       t->_widget, t->name, t->name);
+/*  t->_tooltip = (GtkWidget *) gtk_tooltips_new();*/
+/*  gtk_tooltips_set_tip(GTK_TOOLTIPS(t->_tooltip),
+		       t->_widget, t->name, t->name);*/
   t->_menu = gnome_popup_menu_new(uinfo);
   gnome_popup_menu_attach(t->_menu, t->_widget, t);
 
