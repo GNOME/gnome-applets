@@ -33,7 +33,7 @@
 #include "history.h"
 #include "message.h"
 
-GtkWidget *terminal_zvt;
+GtkWidget *terminal_zvt = NULL;
 static int historyPosition = HISTORY_DEPTH;
 static char browsedFilename[300] = "";
 
@@ -235,6 +235,10 @@ terminal_init(void)
     
     /* create the widget we are going to put on the applet */
     terminal_zvt = zvt_term_new_with_size(16,1);
+    /* in case we get destroyed elsewhere */
+    gtk_signal_connect(GTK_OBJECT(terminal_zvt),"destroy",
+		       GTK_SIGNAL_FUNC(gtk_widget_destroyed),
+		       &terminal_zvt);
     zvt_term_set_blink (ZVT_TERM(terminal_zvt), TRUE);   
     zvt_term_feed(ZVT_TERM(terminal_zvt), "Ready.", sizeof("Ready."));
 

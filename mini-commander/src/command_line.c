@@ -42,7 +42,7 @@ static void historySelectionMade_cb(GtkWidget *clist, gint row, gint column,
 static gchar* historyAutoComplete(GtkWidget *widget, GdkEventKey *event);
 
 
-GtkWidget *entryCommand;
+GtkWidget *entryCommand = NULL;
 static int historyPosition = HISTORY_DEPTH;
 static char browsedFilename[300] = "";
 
@@ -422,6 +422,10 @@ initCommandEntry(void)
     
     /* create the widget we are going to put on the applet */
     entryCommand = gtk_entry_new_with_max_length((guint16) MAX_COMMAND_LENGTH); 
+    /* in case we get destroyed elsewhere */
+    gtk_signal_connect(GTK_OBJECT(entryCommand),"destroy",
+		       GTK_SIGNAL_FUNC(gtk_widget_destroyed),
+		       &entryCommand);
     
     /*	gtk_signal_connect(GTK_OBJECT(entryCommand), "activate",
 	GTK_SIGNAL_FUNC(commandEntered_cb),

@@ -42,8 +42,8 @@ static gint appletDestroy_signal(GtkWidget *widget, gpointer data);
 static gint appletDetached_signal(GtkWidget *widget, gpointer data);
 static gint appletAttached_signal(GtkWidget *widget, gpointer data);
 static gint applet_orient_changed_cb(GtkWidget *widget, gpointer data);
-#ifdef HAVE_PANEL_SIZE
-static void applet_size_changed_cb(GtkWidget *widget, PanelSizeType size_type, gpointer data);
+#ifdef HAVE_PANEL_PIXEL_SIZE
+static void applet_pixel_size_changed_cb(GtkWidget *widget, int size, gpointer data);
 #endif
 
 static gint
@@ -93,23 +93,24 @@ applet_orient_changed_cb(GtkWidget *widget, gpointer data)
     return FALSE;  
 }
 
-#ifdef HAVE_PANEL_SIZE
+#ifdef HAVE_PANEL_PIXEL_SIZE
 /*this is when the panel size changes*/
 static void
-applet_size_changed_cb(GtkWidget *widget, PanelSizeType size_type, gpointer data)
+applet_pixel_size_changed_cb(GtkWidget *widget, int size, gpointer data)
 {
     static int counter = 0;
 
     if(counter++ > 0)
 	showMessage((gchar *) _("size changed")); 
 
-    switch(size_type)
-	{
-	case SIZE_TINY: prop.normalSizeY = 24; prop.flatLayout = TRUE; prop.showFrame = FALSE; break;
-	case SIZE_STANDARD: prop.normalSizeY = 48; prop.flatLayout = FALSE; break;
-	case SIZE_LARGE: prop.normalSizeY = 64; prop.flatLayout = FALSE; break;
-	case SIZE_HUGE: prop.normalSizeY = 80; prop.flatLayout = FALSE; break;
-	}
+    prop.normalSizeY = size;
+    if(size<PIXEL_SIZE_STANDARD) {
+	    prop.showFrame = FALSE;
+	    prop.flatLayout = TRUE;
+    } else {
+	    prop.showFrame = TRUE;
+	    prop.flatLayout = FALSE;
+    }
 
     redraw_applet();
 }
@@ -128,8 +129,8 @@ redraw_applet(void)
     int size_frames = 0;
     int size_status_line = 18;
 
-    static GtkWidget *applet_inner_vbox;
-    static GtkWidget *applet_vbox;
+    static GtkWidget *applet_inner_vbox = NULL;
+    static GtkWidget *applet_vbox = NULL;
     static int first_time = TRUE;   
 
     /* recalculate sizes */
@@ -152,6 +153,10 @@ redraw_applet(void)
 
     applet_inner_vbox = gtk_vbox_new(FALSE, 0);
     gtk_container_set_border_width(GTK_CONTAINER(applet_inner_vbox), 0);
+    /* in case we get destroyed elsewhere */
+    gtk_signal_connect(GTK_OBJECT(applet_inner_vbox),"destroy",
+		       GTK_SIGNAL_FUNC(gtk_widget_destroyed),
+		       &applet_inner_vbox);
 
 
     /*
@@ -344,13 +349,13 @@ main(int argc, char **argv)
 		       GTK_SIGNAL_FUNC(applet_orient_changed_cb),
 		       NULL);
 
-#ifdef HAVE_PANEL_SIZE
-    /*we have to bind change_size before we do applet_widget_add 
-      since we need to get an initial change_size signal to set our
+#ifdef HAVE_PANEL_PIXEL_SIZE
+    /*we have to bind change_pixel_size before we do applet_widget_add 
+      since we need to get an initial change_pixel_size signal to set our
       initial size, and we get that during the _add call*/
     gtk_signal_connect(GTK_OBJECT(applet),
-		       "change_size",
-		       GTK_SIGNAL_FUNC(applet_size_changed_cb),
+		       "change_pixel_size",
+		       GTK_SIGNAL_FUNC(applet_pixel_size_changed_cb),
 		       NULL);
 #endif
     
