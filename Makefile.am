@@ -105,6 +105,7 @@ DIST_SUBDIRS = \
 	clipboard		\
 	$(gtop_applets)		\
 	$(ghttp_applets)	\
+	$(ghttp_vfs_applets)	\
 	$(ghttp_xml_applets)	\
 	$(cdplayer_applets)	\
 	$(mixer_applets)	\
