@@ -8,8 +8,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
-"POT-Creation-Date: 2002-04-16 19:25-0400\n"
-"PO-Revision-Date: 2002-03-27 17:36+0200\n"
+"POT-Creation-Date: 2002-04-22 22:47+0300\n"
+"PO-Revision-Date: 2002-04-22 22:46+0300\n"
 "Last-Translator: Jarkko Ranta <jjranta@cc.joensuu.f>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -29,26 +29,27 @@ msgstr "Sovelma tulee toimimaan väärin (jos ollenkaan).\n"
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:316 battstat/battstat_applet.c:834
+#: battstat/battstat_applet.c:316 battstat/battstat_applet.c:843
 msgid "High"
 msgstr "Korkea"
 
 #. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:836
+#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:845
 msgid "Low"
 msgstr "Matala"
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:838
+#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:847
 msgid "Critical"
 msgstr "Kriittinen"
 
 #. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:840
+#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:849
 msgid "Charging"
 msgstr "Latautuu"
 
 #: battstat/battstat_applet.c:403
+#, c-format
 msgid "Battery low (%d%%) and AC is offline"
 msgstr "Akkuvirta vähissä (%d%%) eikä verkkovirtaa ole saatavilla"
 
@@ -59,7 +60,8 @@ msgstr "Akku on nyt täynnä!"
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:445 battstat/battstat_applet.c:997
+#: battstat/battstat_applet.c:445 battstat/battstat_applet.c:1006
+#, c-format
 msgid ""
 "System is running on battery power\n"
 "Battery: %d%% (%s)"
@@ -70,7 +72,8 @@ msgstr ""
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:449 battstat/battstat_applet.c:1005
+#: battstat/battstat_applet.c:449 battstat/battstat_applet.c:1014
+#, c-format
 msgid ""
 "System is running on AC power\n"
 "Battery: %d%% (%s)"
@@ -80,15 +83,15 @@ msgstr ""
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:455 battstat/battstat_applet.c:929
-#: battstat/battstat_applet.c:1018
+#: battstat/battstat_applet.c:455 battstat/battstat_applet.c:938
+#: battstat/battstat_applet.c:1027
 msgid "System is running on battery power"
 msgstr "Järjestelmä käyttää akkuvirtaa"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:458 battstat/battstat_applet.c:935
-#: battstat/battstat_applet.c:1024
+#: battstat/battstat_applet.c:458 battstat/battstat_applet.c:944
+#: battstat/battstat_applet.c:1033
 msgid "System is running on AC power"
 msgstr "Järjestelmä käyttää verkkovirtaa"
 
@@ -98,13 +101,15 @@ msgstr "N/A"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:596 battstat/battstat_applet.c:909
+#: battstat/battstat_applet.c:596 battstat/battstat_applet.c:918
+#, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
 msgstr "Järjestelmä käyttää akkuvirtaa. Akun lataus: %d%% (%s)"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:603 battstat/battstat_applet.c:916
+#: battstat/battstat_applet.c:603 battstat/battstat_applet.c:925
+#, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
 msgstr "Järjestelmä käyttää verkkovirtaa. Akun lataus: %d%% (%s)"
 
@@ -127,6 +132,7 @@ msgstr "Järjestelmä käyttää verkkovirtaa. Akkua ei ole"
 #. a battery present. %d will hold the current charge and %s will
 #. hold the status of the battery, (High, Low, Critical, Charging.
 #: battstat/battstat_applet.c:629
+#, c-format
 msgid "Battery: %d%% (%s)"
 msgstr "Akun lataus: %d%% (%s)"
 
@@ -177,8 +183,8 @@ msgid ""
 "\"%d\"\n"
 "Please try to correct this error"
 msgstr ""
-"Virhe suoritettaessa virransäästökomentoa. Komento palautti vastauksen "
-"\"%d\"\n"
+"Virhe suoritettaessa virransäästökomentoa. Komento palautti vastauksen \"%d"
+"\"\n"
 "Voit yrittää korjata tämän virheen"
 
 #: battstat/battstat_applet.c:778
@@ -189,18 +195,119 @@ msgstr ""
 "Virransäästökomentoa ei ole asetettu kunnolla asetuksista.\n"
 "Korjaa asetukset ja yritä uudelleen."
 
+#. if your charset supports it, please replace the "o" in
+#. * "Jorgen" into U00F6
+#: battstat/battstat_applet.c:803
+msgid "Jorgen Pehrson <jp@spektr.eu.org>"
+msgstr "Jorgen Pehrson <jp@spektr.eu.org>"
+
+#: battstat/battstat_applet.c:813 cdplayer/cdplayer.c:418
+#: charpick/charpick.c:367 drivemount/drivemount.c:417 geyes/geyes.c:209
+#: gkb-new/gkb.c:568 gtik/gtik.c:681 gweather/gweather-about.c:39
+#: mini-commander/src/about.c:40 mixer/mixer.c:749
+#: modemlights/modemlights.c:203 multiload/main.c:50
+#: panel-menu/panel-menu.c:672
+msgid "translator_credits"
+msgstr "_kääntäjät"
+
 #. The long name of the applet in the About dialog.
-#: battstat/battstat_applet.c:807
+#: battstat/battstat_applet.c:817
 msgid "Battery status utility"
 msgstr "Akun latausohjelma"
 
-#: battstat/battstat_applet.c:809
+#: battstat/battstat_applet.c:819
 msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 msgstr "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 
-#: battstat/battstat_applet.c:810
+#: battstat/battstat_applet.c:820
 msgid "This utility show the status of your laptop battery."
 msgstr "Tämä ohjelma näyttää kannettavan koneesi akun latauksen."
+
+#: battstat/battstat_applet.glade.h:2
+#, no-c-format
+msgid "100%"
+msgstr "100%"
+
+#: battstat/battstat_applet.glade.h:3
+msgid "Apperance"
+msgstr "Ulkonäkö"
+
+#: battstat/battstat_applet.glade.h:4
+msgid "Applet layout"
+msgstr "Sovelman asettelu"
+
+#: battstat/battstat_applet.glade.h:5
+msgid "Battery Charge Monitor Preferences"
+msgstr "Latausmittarin asetukset"
+
+#: battstat/battstat_applet.glade.h:7
+#, no-c-format
+msgid "Battery color levels (%)"
+msgstr "Akun väritystasot (%)"
+
+#: battstat/battstat_applet.glade.h:8
+msgid "Beep when either of the above is true"
+msgstr "Anna äänimerkki kumman tahansa yllä ollessa totta"
+
+#: battstat/battstat_applet.glade.h:9
+msgid "General"
+msgstr "Yleiset"
+
+#: battstat/battstat_applet.glade.h:10
+msgid "Hide"
+msgstr "Piilota"
+
+#: battstat/battstat_applet.glade.h:11
+msgid "Move towards bottom"
+msgstr "Siirrä alaspäin"
+
+#: battstat/battstat_applet.glade.h:12
+msgid "Move towards top"
+msgstr "Siirrä ylöspäin"
+
+#: battstat/battstat_applet.glade.h:13
+msgid "Notify me when battery charge is low"
+msgstr "Huomauta akun latauksen ollessa matala"
+
+#: battstat/battstat_applet.glade.h:14
+msgid "Notify me when battery is fully re-charged"
+msgstr "Huomauta kun akku on ladattu täyteen"
+
+#: battstat/battstat_applet.glade.h:15
+msgid "Orange:"
+msgstr "Oranssi:"
+
+#: battstat/battstat_applet.glade.h:16
+msgid "Preview:"
+msgstr "Esikatselu:"
+
+#: battstat/battstat_applet.glade.h:17
+msgid "Progress bar direction"
+msgstr "Edistymispalkin suunta"
+
+#: battstat/battstat_applet.glade.h:18
+msgid "Red:"
+msgstr "Punainen:"
+
+#: battstat/battstat_applet.glade.h:19
+msgid "Show"
+msgstr "Näytä"
+
+#: battstat/battstat_applet.glade.h:20
+msgid "Suspend"
+msgstr "Virransäästö"
+
+#: battstat/battstat_applet.glade.h:21
+msgid "Suspend command:"
+msgstr "Virransäästökomento:"
+
+#: battstat/battstat_applet.glade.h:22
+msgid "Warnings"
+msgstr "Varoitukset"
+
+#: battstat/battstat_applet.glade.h:23
+msgid "Yellow:"
+msgstr "Keltainen:"
 
 #: battstat/GNOME_BattstatApplet.server.in.h:1
 msgid "Battery Charge Monitor"
@@ -252,56 +359,52 @@ msgstr "Ohje"
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
 #: modemlights/GNOME_ModemlightsApplet.xml.h:3
 #: multiload/GNOME_MultiloadApplet.xml.h:2
-#, fuzzy
 msgid "Preferences..."
-msgstr "Ominaisuudet"
+msgstr "Asetukset..."
 
 #: battstat/GNOME_BattstatApplet.xml.h:4
 msgid "Suspend Computer..."
 msgstr "Aseta tietokone virransäästötilaan..."
 
 #: battstat/sounds/battstat_applet.soundlist.in.h:1
-#, fuzzy
 msgid "Battery Status Utility"
 msgstr "Akun latausohjelma"
 
 #: battstat/sounds/battstat_applet.soundlist.in.h:2
-#, fuzzy
 msgid "Battery fully re-charged"
-msgstr "Akku on nyt täynnä!"
+msgstr "Akku on nyt täynnä"
 
 #: battstat/sounds/battstat_applet.soundlist.in.h:3
 msgid "Battery power low"
-msgstr ""
+msgstr "Akun virta vähissä"
 
-#: cdplayer/cdplayer.c:146 cdplayer/cdplayer.c:818
+#: cdplayer/cdplayer.c:146 cdplayer/cdplayer.c:828
 msgid "Stop"
 msgstr "Pysäytä"
 
-#: cdplayer/cdplayer.c:148 cdplayer/cdplayer.c:820
+#: cdplayer/cdplayer.c:148 cdplayer/cdplayer.c:830
 msgid "Play / Pause"
 msgstr "Soita / Tauko"
 
-#: cdplayer/cdplayer.c:150 cdplayer/cdplayer.c:822
+#: cdplayer/cdplayer.c:150 cdplayer/cdplayer.c:832
 #: drivemount/GNOME_DriveMountApplet.xml.h:3
 msgid "Eject"
 msgstr "Levy ulos"
 
-#: cdplayer/cdplayer.c:152 cdplayer/cdplayer.c:824
+#: cdplayer/cdplayer.c:152 cdplayer/cdplayer.c:834
 msgid "Previous Track"
 msgstr "Edellinen raita"
 
-#: cdplayer/cdplayer.c:154 cdplayer/cdplayer.c:826
+#: cdplayer/cdplayer.c:154 cdplayer/cdplayer.c:836
 msgid "Next Track"
 msgstr "Seuraava raita"
 
 #: cdplayer/GNOME_CDPlayerApplet.server.in.h:1 cdplayer/cdplayer.c:159
-#: cdplayer/cdplayer.c:828
+#: cdplayer/cdplayer.c:838
 msgid "CD Player"
 msgstr "CD-soitin"
 
 #: cdplayer/cdplayer.c:346
-#, fuzzy
 msgid "CD Player Preferences"
 msgstr "CD-soittimen asetukset"
 
@@ -329,11 +432,11 @@ msgstr "Aseta laitepolku tähän"
 msgid "Use _Default"
 msgstr "Käytä _oletusarvoja"
 
-#: cdplayer/cdplayer.c:420
+#: cdplayer/cdplayer.c:427
 msgid "CD Player Applet"
 msgstr "CD-soitinsovelma"
 
-#: cdplayer/cdplayer.c:421
+#: cdplayer/cdplayer.c:428
 msgid ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
@@ -341,35 +444,35 @@ msgstr ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 -porttaus)"
 
-#: cdplayer/cdplayer.c:423 cdplayer/cdplayer.c:829
+#: cdplayer/cdplayer.c:430 cdplayer/cdplayer.c:839
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr "CD-soitinsovelma on yksinkertainen CD-äänilevyjen soitin paneeliin"
 
-#: cdplayer/cdplayer.c:697 cdplayer/cdplayer.c:706
+#: cdplayer/cdplayer.c:707 cdplayer/cdplayer.c:716
 msgid "Elapsed time"
 msgstr "Aikaa kulunut"
 
-#: cdplayer/cdplayer.c:700 cdplayer/cdplayer.c:708
+#: cdplayer/cdplayer.c:710 cdplayer/cdplayer.c:718
 msgid "Track number"
 msgstr "Raidan numero"
 
-#: cdplayer/cdplayer.c:819
+#: cdplayer/cdplayer.c:829
 msgid "Click this button to Stop playing the CD"
 msgstr "Napsauta tästä lopettaaksesi CD:n soiton"
 
-#: cdplayer/cdplayer.c:821
+#: cdplayer/cdplayer.c:831
 msgid "Click this button to Play or Pause the CD"
 msgstr "Napsauta tästä keskeyttääksesi soiton tai jatkaaksesi sitä"
 
-#: cdplayer/cdplayer.c:823
+#: cdplayer/cdplayer.c:833
 msgid "Click this button to eject the CD"
 msgstr "Napsauta tästä poistaaksesi CD:n asemasta"
 
-#: cdplayer/cdplayer.c:825
+#: cdplayer/cdplayer.c:835
 msgid "Click this button to Play the previous track in the CD"
 msgstr "Napsauta tästä siirtyäksesi edelliseen raitaan CD:llä"
 
-#: cdplayer/cdplayer.c:827
+#: cdplayer/cdplayer.c:837
 msgid "Click this button to Play the next track in the CD"
 msgstr "Napsauta tästä siirtyäksesi seuraavaan raitaan CD:llä"
 
@@ -394,15 +497,21 @@ msgstr "Paneelisovelma CD-äänilevyjen soittamiseen"
 msgid "Run External CD Player"
 msgstr "Käynnistä ulkoinen Cd-soitin"
 
-#: charpick/charpick.c:363
+#. If your charset supports it, please use U00F1 to replace the "n"
+#. * in "Muniz".
+#: charpick/charpick.c:359
+msgid "Alexandre Muniz <munizao@xprt.net>"
+msgstr "Alexandre Muniz <munizao@xprt.net>"
+
+#: charpick/charpick.c:375
 msgid "Character Picker"
 msgstr "Merkkivalitsin"
 
-#: charpick/charpick.c:365
+#: charpick/charpick.c:377
 msgid "Copyright (C) 1998"
 msgstr "Copyright (C) 1998"
 
-#: charpick/charpick.c:366
+#: charpick/charpick.c:378
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -410,11 +519,11 @@ msgstr ""
 "Gnome-paneelisovelma epätavallisten, näppäimistöltä puuttuvien merkkien "
 "valitsemiseen. Julkaistu GNU/GPL-lisenssillä"
 
-#: charpick/charpick.c:444
+#: charpick/charpick.c:456
 msgid "Insert special characters"
 msgstr "Lisää erikoismerkkejä"
 
-#: charpick/GNOME_CharpickerApplet.server.in.h:1 charpick/charpick.c:445
+#: charpick/GNOME_CharpickerApplet.server.in.h:1 charpick/charpick.c:457
 msgid "Character Palette"
 msgstr "Merkkipaletti"
 
@@ -439,48 +548,46 @@ msgid "Set the default character list here"
 msgstr "Aseta kirjainten oletusluettelo tästä"
 
 #: charpick/properties.c:91
-#, fuzzy
 msgid ""
 "These characters will appear when the panel is started. To return to this "
 "list, hit <d> while the applet has focus."
 msgstr ""
-"Nämä merkit näkyvät kun paneeli käynnistetään. Palataksesi tähän "
-"luetteloon paina välilyöntiä sovelman ollessa valittuna."
+"Nämä merkit näkyvät kun paneeli käynnistetään. Palataksesi tähän luetteloon "
+"paina <d> sovelman ollessa valittuna."
 
 #: charpick/properties.c:144
-#, fuzzy
 msgid "Character Palette Preferences"
 msgstr "Merkkipaletin asetukset"
 
-#: drivemount/drivemount.c:419
+#: drivemount/drivemount.c:425
 msgid "Drive Mount Applet"
 msgstr "Levynliitossovelma"
 
-#: drivemount/drivemount.c:420
+#: drivemount/drivemount.c:426
 msgid "(C) 1999-2001 The GNOME Hackers\n"
 msgstr "(C) 1999-2001 GNOME-hakkerit\n"
 
-#: drivemount/drivemount.c:422
+#: drivemount/drivemount.c:428
 msgid "Applet for mounting and unmounting block volumes."
 msgstr "Sovelma asemien liittämiseksi ja irrottamiseksi."
 
-#: drivemount/drivemount.c:612
+#: drivemount/drivemount.c:621
 msgid " mounted"
 msgstr " liitetty"
 
-#: drivemount/drivemount.c:614
+#: drivemount/drivemount.c:623
 msgid " not mounted"
 msgstr " irti"
 
-#: drivemount/drivemount.c:725
+#: drivemount/drivemount.c:734
 msgid "Drive Mount Applet Warning"
 msgstr "Levynliitossovelman varoitus"
 
-#: drivemount/drivemount.c:733
+#: drivemount/drivemount.c:742
 msgid "\" reported:\n"
 msgstr "\" ilmoitti:\n"
 
-#: drivemount/drivemount.c:735
+#: drivemount/drivemount.c:744
 msgid ""
 "Drivemount command failed.\n"
 "\""
@@ -509,24 +616,20 @@ msgid "Browse..."
 msgstr "Selaa... "
 
 #: drivemount/properties.c:239
-#, fuzzy
 msgid "Disk Mounter Preferences"
 msgstr "Levynliittäjän asetukset"
 
 #: drivemount/properties.c:258
-#, fuzzy
 msgid "_Mount point:"
-msgstr "Liitoskohta:"
+msgstr "_Liitoskohta:"
 
 #: drivemount/properties.c:276
-#, fuzzy
 msgid "_Update interval (seconds):"
-msgstr "Päivitystiheys (sekunneissa):"
+msgstr "_Päivitystiheys (sekunneissa):"
 
 #: drivemount/properties.c:292
-#, fuzzy
 msgid "_Icon :"
-msgstr "Kuvake :"
+msgstr "_Kuvake :"
 
 #: drivemount/properties.c:310
 msgid "Floppy"
@@ -561,47 +664,38 @@ msgid "Select icon for mounted"
 msgstr "Valitse kuvake liitetylle"
 
 #: drivemount/properties.c:348
-#, fuzzy
 msgid "Custom icon for moun_ted:"
-msgstr "Kuvake liitetylle:"
+msgstr "Kuvake liite_tylle:"
 
 #: drivemount/properties.c:357
 msgid "Select icon for unmounted"
 msgstr "Valitse kuvake liittämättömälle"
 
 #: drivemount/properties.c:364
-#, fuzzy
 msgid "Custom icon for not mou_nted:"
-msgstr "Kuvake liittämättömälle:"
+msgstr "Kuvake liittä_mättömälle:"
 
 #: drivemount/properties.c:374
-#, fuzzy
 msgid "_Scale size to panel"
-msgstr "Sovita koko paneelin mukaan"
+msgstr "_Sovita koko paneelin mukaan"
 
 #: drivemount/properties.c:381
-#, fuzzy
 msgid "_Eject on unmount"
-msgstr "Levy ulos irroitettaessa"
+msgstr "_Levy ulos irroitettaessa"
 
 #: drivemount/properties.c:388
-#, fuzzy
 msgid "Use _automount friendly status test"
-msgstr "Käytä automount-yhteensopivaa tilankokeilua"
+msgstr "Käytä _automount-yhteensopivaa tilatarkistusta"
 
-#: geyes/geyes.c:200
-msgid "Dave Camp <campd@oit.edu>"
-msgstr "Dave Camp <campd@oit.edu>"
-
-#: geyes/geyes.c:209
+#: geyes/geyes.c:218
 msgid "gEyes"
 msgstr "gEyes"
 
-#: geyes/geyes.c:210
+#: geyes/geyes.c:219
 msgid "Copyright (C) 1999 Dave Camp"
 msgstr "Copyright (C) 1999 Dave Camp"
 
-#: geyes/geyes.c:211
+#: geyes/geyes.c:220
 msgid "A goofy little xeyes clone for the GNOME panel."
 msgstr "Hauska, pieni xeyes-klooni Gnomen paneeliin."
 
@@ -614,31 +708,28 @@ msgid "Amusements"
 msgstr "Huvitukset"
 
 #: geyes/GNOME_GeyesApplet.server.in.h:3
-#, fuzzy
 msgid "Geyes"
-msgstr "gEyes"
+msgstr "Geyes"
 
 #: geyes/GNOME_GeyesApplet.server.in.h:4
 msgid "Geyes Applet Factory"
 msgstr "Geyes-sovelman tehdas"
 
 #: geyes/themes.c:210
-#, fuzzy
 msgid "Geyes Preferences"
-msgstr "Ominaisuudet"
+msgstr "Geyesin asetukset"
 
 #: geyes/themes.c:222
-#, fuzzy
 msgid "T_heme Name"
-msgstr "Teeman nimi"
+msgstr "T_eeman nimi"
 
 #: gkb-new/gkb.c:114
 msgid ""
 "Press the hotkey to switch between layouts. The hotkey can be set through "
 "Properties dialog"
 msgstr ""
-"Käytä pikanäppäintä liikkuaksesi näppäinkarttojen välillä. "
-"Pikanäppäinen voi vaihtaa Asetukset-ikkunasta"
+"Käytä pikanäppäintä liikkuaksesi näppäinkarttojen välillä. Pikanäppäinen voi "
+"vaihtaa Asetukset-ikkunasta"
 
 #: gkb-new/gkb.c:404
 #, c-format
@@ -669,15 +760,15 @@ msgstr "command_%d"
 msgid "GKB"
 msgstr "GKB"
 
-#: gkb-new/gkb.c:576
+#: gkb-new/gkb.c:577
 msgid "The GNOME KeyBoard Switcher Applet"
 msgstr "Gnomen näppäimistönvaihtaja"
 
-#: gkb-new/gkb.c:578
+#: gkb-new/gkb.c:579
 msgid "(C) 1998-2000 Free Software Foundation"
 msgstr "(C) 1998-2000 Free Software Foundation"
 
-#: gkb-new/gkb.c:579
+#: gkb-new/gkb.c:580
 msgid ""
 "This applet switches between keyboard maps using setxkbmap, or xmodmap.\n"
 "Mail me your flag and keyboard layout if you want support for your locale "
@@ -687,16 +778,15 @@ msgid ""
 "Kovacs <emese@gnome.hu> for her solidarity, help from guys like KevinV.\n"
 "Shooby Ban <shooby@gnome.hu>"
 msgstr ""
-"Tämä sovelma vaihtaa näppäimistökarttoja käyttäen setxkbmap- tai "
-"xmodmap-\n"
-"ohjelmia. Postita minulle lippusi ja näppäinasettelusi ja haluat tuen "
-"maa-asetuksillesi (sähköpostiosoitteeni: shooby@gnome.hu)\n"
+"Tämä sovelma vaihtaa näppäimistökarttoja käyttäen setxkbmap- tai xmodmap-\n"
+"ohjelmia. Postita minulle lippusi ja näppäinasettelusi ja haluat tuen maa-"
+"asetuksillesi (sähköpostiosoitteeni: shooby@gnome.hu)\n"
 "Näkemiin ja kiitos kaloista.\n"
 "Kiitos Balazs Nagylle (Kevin) <julian7@iksz.hu> avusta ja Emese Kovacs'lle "
 "<emese@gnome.hu> solidaarisuudesta.\n"
 "Shooby Ban <shooby@gnome.hu>"
 
-#: gkb-new/gkb.c:596
+#: gkb-new/gkb.c:597
 msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
 msgstr "GKB:n kotisivu (http://projects.gnome.hu/gkb)"
 
@@ -725,73 +815,68 @@ msgid "Press a key or press Esc to cancel"
 msgstr "Paina mitä tahansa näppäintä, tai paina Esc:iä peruuttaaksesi"
 
 #: gkb-new/prop-add.c:86
-#, fuzzy
 msgid "Keyboards (select and press add)"
 msgstr "Näppäinkartat (valitse ja napsauta lisää)"
 
 #: gkb-new/prop-add.c:367
-#, fuzzy
 msgid "Select Keyboard"
 msgstr "Valitse asettelu"
 
-#: gkb-new/prop.c:121 gkb-new/prop.c:189
+#: gkb-new/prop.c:125 gkb-new/prop.c:193
 msgid "Normal"
 msgstr "Tavallinen"
 
-#: gkb-new/prop.c:122 gkb-new/prop.c:193
+#: gkb-new/prop.c:126 gkb-new/prop.c:197
 msgid "Big"
 msgstr "Suuri"
 
-#: gkb-new/prop.c:140 gkb-new/util.c:41 gkb-new/util.c:48 gkb-new/util.c:74
+#: gkb-new/prop.c:144 gkb-new/util.c:41 gkb-new/util.c:48 gkb-new/util.c:74
 msgid "Flag"
 msgstr "Lippu"
 
-#: gkb-new/prop.c:141 gkb-new/util.c:38 gkb-new/util.c:71
+#: gkb-new/prop.c:145 gkb-new/util.c:38 gkb-new/util.c:71
 msgid "Label"
 msgstr "Otsikko"
 
-#: gkb-new/prop.c:142 gkb-new/util.c:44 gkb-new/util.c:77
+#: gkb-new/prop.c:146 gkb-new/util.c:44 gkb-new/util.c:77
 msgid "Flag and Label"
 msgstr "Lippu ja otsikko"
 
-#: gkb-new/prop.c:278 modemlights/properties.c:374
+#: gkb-new/prop.c:282 modemlights/properties.c:374
 msgid "Display"
 msgstr "Näyttö"
 
 #. Labels and option Menus
-#: gkb-new/prop.c:298
-#, fuzzy
+#: gkb-new/prop.c:302
 msgid "_Appearance: "
-msgstr "_Ulkonäkö "
+msgstr "_Ulkonäkö: "
 
-#: gkb-new/prop.c:305
-#, fuzzy
+#: gkb-new/prop.c:309
 msgid "Applet _size: "
-msgstr "Sovelman _koko "
+msgstr "Sovelman _koko: "
 
-#: gkb-new/prop.c:331
+#: gkb-new/prop.c:335
 msgid "Hotkey for switching between layouts"
 msgstr "Pikavalinta näppäinkarttojen välillä vaihtamiseen"
 
-#: gkb-new/prop.c:343
+#: gkb-new/prop.c:347
 msgid "Grab hotkey"
 msgstr "Kaappaa pikavalinta"
 
 #. Create property box
-#: gkb-new/prop.c:405
-#, fuzzy
+#: gkb-new/prop.c:409
 msgid "Keyboard Layout Switcher Preferences"
-msgstr "Näppäimistönvaihtaja"
+msgstr "Näppäimistönvaihtajan asetukset"
 
-#: gkb-new/prop.c:419
+#: gkb-new/prop.c:423
 msgid "_Keymaps"
 msgstr "_Näppäinkartat"
 
-#: gkb-new/prop.c:431
+#: gkb-new/prop.c:435
 msgid "_Options"
 msgstr "_Asetukset"
 
-#: gkb-new/prop-list.c:389 gtik/gtik.c:1163
+#: gkb-new/prop-list.c:389 gtik/gtik.c:1178
 msgid "_Add"
 msgstr "_Lisää"
 
@@ -1100,32 +1185,27 @@ msgid "ibm"
 msgstr "ibm"
 
 #: gkb-new/prop-map.c:573
-#, fuzzy
 msgid "Edit Keyboard"
-msgstr "Muokkaa näppäinkarttaa"
+msgstr "Muokkaa näppäimistöä"
 
 #. Add the labels  and entries/combos/icon_entry
 #: gkb-new/prop-map.c:601 panel-menu/panel-menu-directory.c:624
 #: panel-menu/panel-menu-documents.c:398 panel-menu/panel-menu-documents.c:434
 #: panel-menu/panel-menu-links.c:404 panel-menu/panel-menu-links.c:440
-#, fuzzy
 msgid "_Name:"
-msgstr "_Nimi"
+msgstr "_Nimi:"
 
 #: gkb-new/prop-map.c:605
-#, fuzzy
 msgid "_Label:"
-msgstr "_Otsikko"
+msgstr "_Otsikko:"
 
 #: gkb-new/prop-map.c:609
-#, fuzzy
 msgid "Lan_guage:"
-msgstr "_Kieli"
+msgstr "_Kieli:"
 
 #: gkb-new/prop-map.c:615
-#, fuzzy
 msgid "Count_ry:"
-msgstr "_Maa"
+msgstr "_Maa:"
 
 #: gkb-new/prop-map.c:622
 msgid ""
@@ -1136,24 +1216,20 @@ msgstr ""
 "Kuva"
 
 #: gkb-new/prop-map.c:626
-#, fuzzy
 msgid "Arc_hitecture:"
-msgstr "Arkkitehtuu_ri"
+msgstr "Arkkitehtuu_ri:"
 
 #: gkb-new/prop-map.c:632
-#, fuzzy
 msgid "_Type:"
-msgstr "_Tyyppi"
+msgstr "_Tyyppi:"
 
 #: gkb-new/prop-map.c:638
-#, fuzzy
 msgid "Code_page:"
-msgstr "Koo_disivu"
+msgstr "Koo_disivu:"
 
 #: gkb-new/prop-map.c:645
-#, fuzzy
 msgid "Co_mmand:"
-msgstr "_Komento"
+msgstr "_Komento:"
 
 #: gkb-new/prop-map.c:652
 msgid ""
@@ -1192,15 +1268,15 @@ msgstr "Osakekurssisovelma"
 msgid "Refresh"
 msgstr "Virkistä"
 
-#: gtik/gtik.c:217 gtik/gtik.c:799
+#: gtik/gtik.c:220 gtik/gtik.c:814
 msgid "No data available or properties not set"
 msgstr "Ei tietoja saatavilla taikka ohjelman asetukset asettamatta"
 
-#: gtik/gtik.c:668
+#: gtik/gtik.c:683
 msgid "The GNOME Stock Ticker"
 msgstr "Gnomen osakekurssisovelma"
 
-#: gtik/gtik.c:670
+#: gtik/gtik.c:685
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.  "
 "The GNOME Stock Ticker is a free Internet-based application.  It comes with "
@@ -1209,132 +1285,119 @@ msgid ""
 msgstr ""
 "Tämä ohjelma hakee suositulta sivustolta osakekurssit.  Gnomen "
 "osakekurssisovelma on vapaa internet-pohjainen sovellus. Sen mukana EI TULE "
-"MINKÄÄNLAISTA TAKUUTA. Älä käytä Gnomen osakekurssisovelmaa "
-"päätöksenteossa; se on tarkoitettu ainoastaan tiedonhakuun."
+"MINKÄÄNLAISTA TAKUUTA. Älä käytä Gnomen osakekurssisovelmaa päätöksenteossa; "
+"se on tarkoitettu ainoastaan tiedonhakuun."
 
-#: gtik/gtik.c:1152
-#, fuzzy
+#: gtik/gtik.c:1167
 msgid "_New Symbol:"
-msgstr "Uusi symboli:"
+msgstr "_Uusi symboli:"
 
-#: gtik/gtik.c:1174
+#: gtik/gtik.c:1189
 msgid "_Remove Selected"
 msgstr "_Poista valitut"
 
-#: gtik/gtik.c:1222 gweather/gweather-pref.c:764
-#, fuzzy
+#: gtik/gtik.c:1237 gweather/gweather-pref.c:764
 msgid "_Use HTTP proxy"
-msgstr "Käytä HTTP-välityspalvelinta"
+msgstr "Käytä _HTTP-välityspalvelinta"
 
-#: gtik/gtik.c:1232
-#, fuzzy
+#: gtik/gtik.c:1247
 msgid "_Location :"
-msgstr "Sijainti :"
+msgstr "_Sijainti :"
 
-#: gtik/gtik.c:1248 gweather/gweather-pref.c:791
-#, fuzzy
+#: gtik/gtik.c:1263 gweather/gweather-pref.c:791
 msgid "P_ort :"
-msgstr "Portti :"
+msgstr "P_ortti :"
 
-#: gtik/gtik.c:1260
-#, fuzzy
-msgid "Pro_xy requires a uername and password"
-msgstr "Välityspalvelin vaatii käyttäjätunnuksen ja salasanan"
+#: gtik/gtik.c:1275 gweather/gweather-pref.c:803
+msgid "Pro_xy requires a username and password"
+msgstr "Välityspalvelin vaat_ii käyttäjätunnuksen ja salasanan"
 
-#: gtik/gtik.c:1271 gweather/gweather-pref.c:814
-#, fuzzy
+#: gtik/gtik.c:1286 gweather/gweather-pref.c:814
 msgid "Us_ername:"
-msgstr "Käyttäjätunnus:"
+msgstr "_Käyttäjätunnus:"
 
-#: gtik/gtik.c:1286 gweather/gweather-pref.c:830
-#, fuzzy
+#: gtik/gtik.c:1301 gweather/gweather-pref.c:830
 msgid "Pass_word:"
-msgstr "Salasana:"
+msgstr "_Salasana:"
 
-#: gtik/gtik.c:1357
-#, fuzzy
+#: gtik/gtik.c:1377
 msgid "Stock Ticker Preferences"
 msgstr "Osakekurssisovelman asetukset"
 
-#: gtik/gtik.c:1378
-#, fuzzy
+#: gtik/gtik.c:1398
 msgid "Update Fre_quency in minutes:"
-msgstr "Päivitystiheys minuuteissa:"
+msgstr "Päivitystiheys _minuuteissa:"
 
-#: gtik/gtik.c:1396
+#: gtik/gtik.c:1416
 msgid "Enter symbols delimited with \"+\" in the box below."
 msgstr "Anna symbolit alla olevaan laatikkon \"+\"-merkeillä eroteltuina."
 
-#: gtik/gtik.c:1406
-#, fuzzy
+#: gtik/gtik.c:1426
 msgid "Displa_y only symbols and price"
-msgstr "Näytä vain symbolit ja hinta"
+msgstr "Näytä vain sym_bolit ja hinta"
 
-#: gtik/gtik.c:1409
-#, fuzzy
+#: gtik/gtik.c:1429
 msgid "Scroll _left to right"
-msgstr "Vieritä vasemmalta oikealle"
+msgstr "Vieritä v_asemmalta oikealle"
 
-#: gtik/gtik.c:1412
-#, fuzzy
+#: gtik/gtik.c:1432
 msgid "Display a_rrows instead of -/+"
-msgstr "Näytä nuolet merkkien -/+ sijaan"
+msgstr "Näytä _nuolet -/+ sijaan"
 
-#: gtik/gtik.c:1415
-#, fuzzy
+#: gtik/gtik.c:1435
 msgid "_Enable scroll buttons"
-msgstr "Käytä vierityspainikkeita"
+msgstr "Käytä vi_erityspainikkeita"
 
 #. COLOR
-#: gtik/gtik.c:1441
-#, fuzzy
+#: gtik/gtik.c:1461
 msgid "+ C_olor"
-msgstr "+ väri"
+msgstr "+ _väri"
 
-#: gtik/gtik.c:1460
-#, fuzzy
+#: gtik/gtik.c:1480
 msgid "- Colo_r"
-msgstr "- väri"
+msgstr "- vä_ri"
 
-#: gtik/gtik.c:1482
-#, fuzzy
-msgid "Stock Sy_mbol:"
-msgstr "Osakesymboli:"
-
-#: gtik/gtik.c:1496
-#, fuzzy
-msgid "Stock C_hange:"
-msgstr "Kurssin muutos:"
+#: gtik/gtik.c:1498
+msgid "Back_ground Color"
+msgstr "_Taustaväri"
 
 #: gtik/gtik.c:1520
+msgid "Stock Sy_mbol:"
+msgstr "Osakesy_mboli:"
+
+#: gtik/gtik.c:1534
+msgid "Stock C_hange:"
+msgstr "Kurssin _muutos:"
+
+#: gtik/gtik.c:1558
 msgid "_Symbols"
 msgstr "_Symbolit"
 
-#: gtik/gtik.c:1522
+#: gtik/gtik.c:1560
 msgid "_Behavior"
 msgstr "_Toiminta"
 
-#: gtik/gtik.c:1524
+#: gtik/gtik.c:1562
 msgid "_Appearance"
 msgstr "_Ulkonäkö"
 
-#: gtik/gtik.c:1526 gweather/gweather-pref.c:843
+#: gtik/gtik.c:1564 gweather/gweather-pref.c:843
 msgid "_Proxy"
 msgstr "_Välityspalvelin"
 
-#: gtik/gtik.c:1575
+#: gtik/gtik.c:1613
 msgid "Skip forward"
-msgstr ""
+msgstr "Eteenpäin"
 
-#: gtik/gtik.c:1576
+#: gtik/gtik.c:1614
 msgid "Skip backword"
-msgstr ""
+msgstr "Taaksepäin"
 
-#: gtik/gtik.c:1755
+#: gtik/gtik.c:1793
 msgid "(No"
 msgstr "(Ei"
 
-#: gtik/gtik.c:1756
+#: gtik/gtik.c:1794
 msgid "Change "
 msgstr "Muuta "
 
@@ -1362,15 +1425,15 @@ msgstr "Ennuste"
 msgid "Update"
 msgstr "Päivitä"
 
-#: gweather/gweather-about.c:42 gweather/gweather-applet.c:196
+#: gweather/gweather-about.c:49 gweather/gweather-applet.c:196
 msgid "GNOME Weather"
 msgstr "Gnomen säätiedot"
 
-#: gweather/gweather-about.c:43
+#: gweather/gweather-about.c:50
 msgid "Copyright (c)1999 by S. Papadimitriou"
 msgstr "Copyright (C) 1999 S. Papadimitriou"
 
-#: gweather/gweather-about.c:44
+#: gweather/gweather-about.c:51
 msgid ""
 "Released under the GNU General Public License.\n"
 "\n"
@@ -1425,9 +1488,8 @@ msgid "Visibility:"
 msgstr "Näkyvyys:"
 
 #: gweather/gweather-dialog.c:277
-#, fuzzy
 msgid "C_urrent conditions"
-msgstr "Tämänhetkiset sääolot"
+msgstr "Tämänhetkiset _sääolot"
 
 #: gweather/gweather-dialog.c:290
 msgid "ForeCast Report"
@@ -1438,14 +1500,12 @@ msgid "See the ForeCast Details"
 msgstr "Katso ennusteen yksityiskohtia"
 
 #: gweather/gweather-dialog.c:300
-#, fuzzy
 msgid "_Forecast"
-msgstr "Ennuste"
+msgstr "_Ennuste"
 
 #: gweather/gweather-dialog.c:332
-#, fuzzy
 msgid "_Visit Weather.com"
-msgstr "Vieraile Weather.com:ssa"
+msgstr "_Vieraile Weather.com:ssa"
 
 #: gweather/gweather-dialog.c:333
 msgid "URL link Button"
@@ -1456,9 +1516,8 @@ msgid "Click to Enter Weather.com"
 msgstr "Vieraile Weather.com:ssa"
 
 #: gweather/gweather-dialog.c:341
-#, fuzzy
 msgid "_Radar map"
-msgstr "Tutkakartta"
+msgstr "_Tutkakartta"
 
 #: gweather/gweather-dialog.c:413
 msgid ""
@@ -1477,8 +1536,8 @@ msgid ""
 "only for US cities."
 msgstr ""
 "Valtionlaajuista ennustetta ei ole saatavana tälle sijainnille.\n"
-"Kokeile yksityiskohtaista ennustetta. Huomaa, että IWIN-ennuste on "
-"saatavana vain Yhdysvaltojen kaupungeille."
+"Kokeile yksityiskohtaista ennustetta. Huomaa, että IWIN-ennuste on saatavana "
+"vain Yhdysvaltojen kaupungeille."
 
 #. Accessible Name and Description for the components in Preference Dialog
 #: gweather/gweather-pref.c:125
@@ -1538,7 +1597,6 @@ msgid "Enter the URL"
 msgstr "Anna URL"
 
 #: gweather/gweather-pref.c:707
-#, fuzzy
 msgid "Weather Preferences"
 msgstr "Säätietosovelman asetukset"
 
@@ -1547,53 +1605,40 @@ msgid "_Location"
 msgstr "Si_jainti"
 
 #: gweather/gweather-pref.c:775
-#, fuzzy
 msgid "Locat_ion :"
-msgstr "Sijainti :"
-
-#: gweather/gweather-pref.c:803
-#, fuzzy
-msgid "Pro_xy requires a username and password"
-msgstr "Välityspalvelin vaatii käyttäjätunnuksen ja salasanan"
+msgstr "S_ijainti :"
 
 #: gweather/gweather-pref.c:872
-#, fuzzy
 msgid "_Automatically update every"
-msgstr "Päivitä automaattisesti"
+msgstr "Päivitä _automaattisesti"
 
 #: gweather/gweather-pref.c:878
-#, fuzzy
 msgid "Use _metric system units"
-msgstr "Käytä SI-järjestelmää"
+msgstr "Käytä SI-järjestel_mää"
 
 #: gweather/gweather-pref.c:884
-#, fuzzy
 msgid "Enable _detailed forecast"
-msgstr "Yksityiskohtainen ennuste"
+msgstr "_Yksityiskohtainen ennuste"
 
 #: gweather/gweather-pref.c:891
-#, fuzzy
 msgid "Enable _radar map"
-msgstr "Käytä tutkakarttoja"
+msgstr "Kä_ytä tutkakarttoja"
 
 #: gweather/gweather-pref.c:897
-#, fuzzy
 msgid "Use cus_tom address for radar map"
-msgstr "Käytä mukautettua osoitetta sääkartalle"
+msgstr "Käytä mukau_tettua osoitetta sääkartalle"
 
 #: gweather/gweather-pref.c:908
-#, fuzzy
 msgid "A_ddress :"
-msgstr "Osoite :"
+msgstr "_Osoite :"
 
 #: gweather/gweather-pref.c:920
 msgid "Updates"
 msgstr "Päivitykset"
 
 #: gweather/gweather-pref.c:926
-#, fuzzy
 msgid "_Automatically update every "
-msgstr "Päivitä automaattisesti "
+msgstr "Päivitä _automaattisesti "
 
 #: gweather/gweather-pref.c:946
 msgid "minute(s)"
@@ -1608,6 +1653,30 @@ msgstr "Sekalaiset"
 #: modemlights/properties.c:409
 msgid "_General"
 msgstr "_Yleiset"
+
+#: gweather/weather.c:57
+msgid "knots"
+msgstr "solmua"
+
+#: gweather/weather.c:57
+msgid "kph"
+msgstr "km/h"
+
+#: gweather/weather.c:62
+msgid "inHg"
+msgstr "inHg"
+
+#: gweather/weather.c:62
+msgid "hPa"
+msgstr "hPa"
+
+#: gweather/weather.c:66
+msgid "miles"
+msgstr "mailia"
+
+#: gweather/weather.c:66
+msgid "kilometers"
+msgstr "kilometriä"
 
 #: gweather/weather.c:132
 msgid "Variable"
@@ -2808,11 +2877,11 @@ msgstr "Tuntematon"
 msgid "Retrieval failed"
 msgstr "Haku epäonnistui"
 
-#: mini-commander/src/about.c:39
+#: mini-commander/src/about.c:48
 msgid "Mini-Commander Applet"
 msgstr "Minikomentotulkkisovelma"
 
-#: mini-commander/src/about.c:42
+#: mini-commander/src/about.c:51
 msgid ""
 "This GNOME applet adds a command line to the panel. It features command "
 "completion, command history, changeable macros and an optional built-in "
@@ -2823,9 +2892,8 @@ msgid ""
 "Software Foundation; either version 2 of the License, or (at your option) "
 "any later version."
 msgstr ""
-"Komentorivi paneelissa. Sisältää komentojen täydennyksen, "
-"komentohistorian, muunnettavat makrot ja valinnaisen sisäänrakennetun "
-"kellon.\n"
+"Komentorivi paneelissa. Sisältää komentojen täydennyksen, komentohistorian, "
+"muunnettavat makrot ja valinnaisen sisäänrakennetun kellon.\n"
 "\n"
 "Julkaistu GNU/GPL-lisenssillä."
 
@@ -2868,25 +2936,20 @@ msgstr "käynnistetään..."
 msgid "autocompleted"
 msgstr "täydennetty"
 
-#: mini-commander/src/command_line.c:313
+#: mini-commander/src/command_line.c:360
 msgid "history list empty"
 msgstr "komentohistoria tyhjä"
 
-#. title
-#: mini-commander/src/command_line.c:331
-msgid "Command history"
-msgstr "Komentohistoria"
-
 #. build file select dialog
-#: mini-commander/src/command_line.c:462
+#: mini-commander/src/command_line.c:510
 msgid "Start program"
 msgstr "Käynnistettävä ohjelma"
 
-#: mini-commander/src/command_line.c:501
+#: mini-commander/src/command_line.c:549
 msgid "Command line"
 msgstr "Komentorivi"
 
-#: mini-commander/src/command_line.c:502
+#: mini-commander/src/command_line.c:550
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "Kirjoita komento tähän ja Gnome suorittaa sen sinulle"
 
@@ -2899,7 +2962,7 @@ msgid "child exited"
 msgstr "lapsi lopetti"
 
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:1
-#: mini-commander/src/mini-commander_applet.c:355
+#: mini-commander/src/mini-commander_applet.c:313
 msgid "Command Line"
 msgstr "Komentorivi"
 
@@ -2962,7 +3025,6 @@ msgid "ready..."
 msgstr "valmis..."
 
 #: mini-commander/src/preferences.c:685
-#, fuzzy
 msgid "Command Line Preferences"
 msgstr "Komentorivin asetukset"
 
@@ -3043,16 +3105,16 @@ msgstr "Komentorivin _taustaväri:"
 # , c-format
 #. prefix
 #: mini-commander/src/preferences.c:982
-#, fuzzy, c-format
+#, c-format
 msgid "Regex _%.2d:"
-msgstr "Säle %.2d:"
+msgstr "Säle _%.2d:"
 
 # , c-format
 #. command
 #: mini-commander/src/preferences.c:1002
-#, fuzzy, c-format
+#, c-format
 msgid "   Macro _%.2d:"
-msgstr "   Makro %.2d:"
+msgstr "   Makro _%.2d:"
 
 #: mini-commander/src/preferences.c:1022
 msgid "_Macros"
@@ -3062,7 +3124,7 @@ msgstr "_Makrot"
 msgid "Adjust the sound volume"
 msgstr "Säädä äänenvoimakkuutta"
 
-#: mixer/GNOME_MixerApplet.server.in.h:3 mixer/mixer.c:130 mixer/mixer.c:750
+#: mixer/GNOME_MixerApplet.server.in.h:3 mixer/mixer.c:130 mixer/mixer.c:756
 msgid "Volume Control"
 msgstr "Äänenvoimakkuuden hallinta"
 
@@ -3089,14 +3151,12 @@ msgstr ""
 #: mixer/mixer.c:194
 #, c-format
 msgid "Querying available channels of mixer device %s failed\n"
-msgstr ""
-"Käytössä olevien kanavien kysely miksauslaitteelle %s epäonnistui\n"
+msgstr "Käytössä olevien kanavien kysely miksauslaitteelle %s epäonnistui\n"
 
 #: mixer/mixer.c:201
 msgid "warning: mixer has no volume channel - using PCM instead.\n"
 msgstr ""
-"varoitus: mikserillä ei ole äänenvoimakkuuskanavaa - käytetään "
-"PCM:ää.\n"
+"varoitus: mikserillä ei ole äänenvoimakkuuskanavaa - käytetään PCM:ää.\n"
 
 #: mixer/mixer.c:204
 #, c-format
@@ -3111,19 +3171,17 @@ msgstr "Äänenvoimakkuuden säädin"
 msgid "Use Up/Down arrow keys to change volume"
 msgstr "Käytä nuolinäppäimiä muuttaaksesi äänenvoimakkuutta"
 
-#: mixer/mixer.c:751
+#: mixer/mixer.c:757
 msgid "(C) 2001 Richard Hult"
 msgstr "(C) 2001 Richard Hult"
 
-#: mixer/mixer.c:752
+#: mixer/mixer.c:758
 msgid "The volume control lets you set the volume level for your desktop."
-msgstr ""
-"Äänenhallinta antaa sinun asettaa työpöytäsi äänenvoimakkuuden tason."
+msgstr "Äänenhallinta antaa sinun asettaa työpöytäsi äänenvoimakkuuden tason."
 
-#: mixer/mixer.c:924
+#: mixer/mixer.c:930
 msgid "The volume control lets you set the volume level for your desktop"
-msgstr ""
-"Äänenhallinta antaa sinun asettaa työpöytäsi äänenvoimakkuuden tason."
+msgstr "Äänenhallinta antaa sinun asettaa työpöytäsi äänenvoimakkuuden tason."
 
 #: modemlights/GNOME_ModemLightsApplet.server.in.h:1
 msgid "Internet"
@@ -3133,11 +3191,11 @@ msgstr "Internet"
 msgid "Modem Lights"
 msgstr "Modeemivalot"
 
-#: modemlights/modemlights.c:205
+#: modemlights/modemlights.c:212
 msgid "Modem Lights Applet"
 msgstr "Modeemivalosovelma"
 
-#: modemlights/modemlights.c:207
+#: modemlights/modemlights.c:214
 msgid ""
 "Released under the GNU general public license.\n"
 "A modem status indicator and dialer.\n"
@@ -3147,7 +3205,7 @@ msgstr ""
 "soittaa. Valot ylhäältä tai vasemmalta lukien ovat \"Lähetä dataa\" ja "
 "\"Vastaanota dataa\"."
 
-#: modemlights/modemlights.c:531
+#: modemlights/modemlights.c:539
 msgid ""
 "You are currently connected.\n"
 "Do you want to disconnect?"
@@ -3155,21 +3213,20 @@ msgstr ""
 "Yhteys on päällä.\n"
 "Haluatko katkaista yhteyden?"
 
-#: modemlights/modemlights.c:546
+#: modemlights/modemlights.c:554
 msgid "Do you want to connect?"
 msgstr "Haluatko ottaa yhteyden?"
 
-#: modemlights/modemlights.c:574
+#: modemlights/modemlights.c:582
 #, c-format
 msgid "%#.1fMb received / %#.1fMb sent / time: %.1d:%.2d"
 msgstr "%#.1fMb vastaanotettu / %#.1fMb lähetetty / aika: %.1d:%.2d"
 
-#: modemlights/modemlights.c:579
+#: modemlights/modemlights.c:587
 msgid "not connected"
 msgstr "Ei yhteyttä"
 
 #: modemlights/properties.c:311
-#, fuzzy
 msgid "Modem Lights Preferences"
 msgstr "Modeemivalojen asetukset"
 
@@ -3178,141 +3235,119 @@ msgid "Connecting"
 msgstr "Yhdistetään"
 
 #: modemlights/properties.c:337
-#, fuzzy
 msgid "Co_nnect command:"
-msgstr "Yhteydenottokomento:"
+msgstr "_Yhteydenottokomento:"
 
 #: modemlights/properties.c:354
-#, fuzzy
 msgid "_Disconnect command:"
-msgstr "Katkaisukomento:"
+msgstr "_Katkaisukomento:"
 
 #. confirmation checkbox
 #: modemlights/properties.c:367
-#, fuzzy
 msgid "Con_firm connection"
-msgstr "Vahvista yhteys"
+msgstr "Va_hvista yhteys"
 
 #: modemlights/properties.c:388
-#, fuzzy
 msgid "U_pdates per second"
-msgstr "Päivityksiä sekunnissa"
+msgstr "_Päivityksiä sekunnissa"
 
 #. extra info checkbox
 #: modemlights/properties.c:402
-#, fuzzy
 msgid "Sho_w connect time and throughput"
-msgstr "Näytä yhteysaika ja kulkevan tiedon määrä"
+msgstr "_Näytä yhteysaika ja kulkevan tiedon määrä"
 
 #: modemlights/properties.c:419
 msgid "Receive data"
 msgstr "Vastaanota dataa"
 
 #: modemlights/properties.c:421
-#, fuzzy
 msgid "_Foreground"
-msgstr "Edusta"
+msgstr "_Edusta"
 
 #: modemlights/properties.c:422
-#, fuzzy
 msgid "_Background"
-msgstr "Tausta"
+msgstr "_Tausta"
 
 #: modemlights/properties.c:424
 msgid "Send data"
 msgstr "Lähetä dataa"
 
 #: modemlights/properties.c:426
-#, fuzzy
 msgid "Foregroun_d"
-msgstr "Edusta"
+msgstr "E_dusta"
 
 #: modemlights/properties.c:427
-#, fuzzy
 msgid "Backg_round"
-msgstr "Tausta"
+msgstr "Tau_sta"
 
 #: modemlights/properties.c:429
 msgid "Connection status"
 msgstr "Yhteyden tila"
 
 #: modemlights/properties.c:431
-#, fuzzy
 msgid "Co_nnected"
-msgstr "Yhdistetty"
+msgstr "Y_hdistetty"
 
 #: modemlights/properties.c:432
-#, fuzzy
 msgid "No_t connected"
-msgstr "Ei yhteyttä"
+msgstr "E_i yhteyttä"
 
 #: modemlights/properties.c:433
-#, fuzzy
 msgid "A_waiting connection"
-msgstr "Odotetaan yhteyttä"
+msgstr "Odot_etaan yhteyttä"
 
 #: modemlights/properties.c:436
-#, fuzzy
 msgid "B_link"
-msgstr "Vilkuta"
+msgstr "Vi_lkuta"
 
 #: modemlights/properties.c:443
 msgid "Text"
 msgstr "Teksti"
 
 #: modemlights/properties.c:445
-#, fuzzy
 msgid "For_eground"
-msgstr "Edusta"
+msgstr "_Edusta"
 
 #: modemlights/properties.c:446
-#, fuzzy
 msgid "Bac_kground"
-msgstr "Tausta"
+msgstr "Taust_a"
 
 #: modemlights/properties.c:447
-#, fuzzy
 msgid "O_utline"
-msgstr "Kehykset"
+msgstr "_Kehykset"
 
 #: modemlights/properties.c:449
-#, fuzzy
 msgid "C_olors"
-msgstr "Värit"
+msgstr "_Värit"
 
 #: modemlights/properties.c:458
 msgid "Modem options"
 msgstr "Modeemin asetukset"
 
 #: modemlights/properties.c:472
-#, fuzzy
 msgid "_Modem lock file:"
-msgstr "Modeemin lukkotiedosto:"
+msgstr "_Modeemin lukkotiedosto:"
 
 #: modemlights/properties.c:484
-#, fuzzy
 msgid "_Verify owner of lock file"
-msgstr "Varmista lukkotiedoston omistaja"
+msgstr "Varmista lukkotiedoston _omistaja"
 
 #: modemlights/properties.c:496
-#, fuzzy
 msgid "_Device:"
-msgstr "Laite:"
+msgstr "_Laite:"
 
 #. ISDN checkbox
 #: modemlights/properties.c:509
-#, fuzzy
 msgid "U_se ISDN"
-msgstr "Käytä ISDN:ää"
+msgstr "Käytä _ISDN:ää"
 
 #: modemlights/properties.c:529
 msgid "Set options as default"
 msgstr "Tee nykyisistä asetuksista oletusasetukset"
 
 #: modemlights/properties.c:535
-#, fuzzy
 msgid "_Advanced"
-msgstr "Lisäasetukset"
+msgstr "_Lisäasetukset"
 
 #: multiload/cpuload.c:39
 msgid "CPU Load"
@@ -3334,11 +3369,11 @@ msgstr "Aja yksityiskohtainen järjestelmänvalvonta"
 msgid "Load Average"
 msgstr "Keskimääräinen kuorma"
 
-#: multiload/main.c:53
+#: multiload/main.c:60
 msgid "System Monitor Applet"
 msgstr "Järjestelmänvalvontasovelma"
 
-#: multiload/main.c:55
+#: multiload/main.c:62
 msgid ""
 "Released under the GNU General Public License.\n"
 "\n"
@@ -3346,30 +3381,31 @@ msgid ""
 "file use, plus network traffic."
 msgstr ""
 "Julkaistu GNU/GPL-lisenssillä.\n"
-"Järjestelmänvalvonta joka näyttää käyrät järjestelmäsi CPU:n, "
-"keskusmuistin ja sivutustiedoston käytöstä, sekä verkkoliikenteen."
+"Järjestelmänvalvonta joka näyttää käyrät järjestelmäsi CPU:n, keskusmuistin "
+"ja sivutustiedoston käytöstä, sekä verkkoliikenteen."
 
-#: multiload/main.c:177
+#: multiload/main.c:184
 msgid "Processor"
 msgstr "Suoritin"
 
-#: multiload/main.c:179
+#: multiload/main.c:186
 msgid "Memory"
 msgstr "Muisti"
 
-#: multiload/main.c:181
+#: multiload/main.c:188
 msgid "Network"
 msgstr "Verkko"
 
-#: multiload/main.c:183
+#: multiload/main.c:190
 msgid "Swap File"
 msgstr "Sivutustiedosto"
 
-#: multiload/main.c:185
+#: multiload/main.c:192
 msgid "Resource"
 msgstr "Resurssi"
 
-#: multiload/main.c:197
+#: multiload/main.c:204
+#, c-format
 msgid ""
 "%s:\n"
 "%d%% in use"
@@ -3416,120 +3452,98 @@ msgid "Options"
 msgstr "Asetukset"
 
 #: multiload/properties.c:324
-#, fuzzy
 msgid "System m_onitor width: "
-msgstr "Järjestelmänvalvonnan leveys: "
+msgstr "Järjestelmänvalvonnan _leveys: "
 
 #: multiload/properties.c:326
-#, fuzzy
 msgid "System m_onitor height: "
-msgstr "Järjestelmänvalvonnan korkeus: "
+msgstr "Järjestelmänvalvonnan _korkeus: "
 
 #: multiload/properties.c:340
 msgid "pixels"
 msgstr "pikseliä"
 
 #: multiload/properties.c:346
-#, fuzzy
 msgid "Sys_tem monitor update interval: "
-msgstr "Järjestelmänvalvonnan nopeus: "
+msgstr "Järjestelmänvalvonnan _nopeus: "
 
 #: multiload/properties.c:358
 msgid "milliseconds"
 msgstr "millisekuntia"
 
 #: multiload/properties.c:371
-#, fuzzy
 msgid "P_rocessor"
-msgstr "Suoritin"
+msgstr "_Suoritin"
 
 #: multiload/properties.c:372
-#, fuzzy
 msgid "_User"
-msgstr "Käyttäjä"
+msgstr "Käy_ttäjä"
 
 #: multiload/properties.c:373
-#, fuzzy
 msgid "S_ystem"
-msgstr "Järjestelmä"
+msgstr "_Järjestelmä"
 
 #: multiload/properties.c:374
-#, fuzzy
 msgid "N_ice"
-msgstr "Kiltit"
+msgstr "K_iltit"
 
 #: multiload/properties.c:375
-#, fuzzy
 msgid "I_dle"
-msgstr "Vapaa"
+msgstr "Va_paa"
 
 #: multiload/properties.c:377
-#, fuzzy
 msgid "M_emory"
-msgstr "Muisti"
+msgstr "_Muisti"
 
 #: multiload/properties.c:378
-#, fuzzy
 msgid "Ot_her"
-msgstr "Muu"
+msgstr "M_uu"
 
 #: multiload/properties.c:379
-#, fuzzy
 msgid "Sh_ared"
-msgstr "Jaettu"
+msgstr "_Jaettu"
 
 #: multiload/properties.c:380
-#, fuzzy
 msgid "_Buffers"
-msgstr "Puskurit"
+msgstr "Pu_skurit"
 
 #: multiload/properties.c:381
-#, fuzzy
 msgid "F_ree"
-msgstr "Vapaana"
+msgstr "_Vapaana"
 
 #: multiload/properties.c:383
-#, fuzzy
 msgid "Net_work"
-msgstr "Verkko"
+msgstr "_Verkko"
 
 #: multiload/properties.c:384
-#, fuzzy
 msgid "S_LIP"
-msgstr "SLIP"
+msgstr "S_LIP"
 
 #: multiload/properties.c:385
-#, fuzzy
 msgid "PL_IP"
-msgstr "PLIP"
+msgstr "PL_IP"
 
 #: multiload/properties.c:386
-#, fuzzy
 msgid "Et_hernet"
-msgstr "Ethernet"
+msgstr "_Ethernet"
 
 #: multiload/properties.c:387
-#, fuzzy
 msgid "_Other"
-msgstr "Muu"
+msgstr "_Muu"
 
 #: multiload/properties.c:389
-#, fuzzy
 msgid "Swap _File"
-msgstr "Sivutustiedosto"
+msgstr "Sivutus_tiedosto"
 
 #: multiload/properties.c:390
-#, fuzzy
 msgid "_Used"
-msgstr "Käytetty"
+msgstr "_Käytetty"
 
 #: multiload/properties.c:391
-#, fuzzy
 msgid "_Free"
-msgstr "Vapaana"
+msgstr "_Vapaana"
 
 #: multiload/properties.c:411
-#, fuzzy
 msgid "System Monitor Preferences"
 msgstr "Järjestelmänvalvonnan asetukset"
 
@@ -3579,15 +3593,15 @@ msgstr "Tiedostot"
 msgid "Applications"
 msgstr "Sovellukset"
 
-#: panel-menu/panel-menu.c:684
+#: panel-menu/panel-menu.c:690
 msgid "PanelMenu Applet"
 msgstr "Paneelivalikkosovelma"
 
-#: panel-menu/panel-menu.c:685
+#: panel-menu/panel-menu.c:691
 msgid "(c) 2001 Chris Phelps"
 msgstr "(C) 2001 Chris Phelps"
 
-#: panel-menu/panel-menu.c:686
+#: panel-menu/panel-menu.c:692
 msgid ""
 "The Panel Menu Applet allows you to display customized menubars on your "
 "panels."
@@ -3606,18 +3620,16 @@ msgid "Edit directory item..."
 msgstr "Muokkaa hakemistokohtaa..."
 
 #: panel-menu/panel-menu-directory.c:636 panel-menu/panel-menu-path.c:728
-#, fuzzy
 msgid "_Path:"
-msgstr "Polku:"
+msgstr "_Polku:"
 
 #: panel-menu/panel-menu-directory.c:644
 msgid "..."
-msgstr ""
+msgstr "..."
 
 #: panel-menu/panel-menu-directory.c:654
-#, fuzzy
 msgid "_Depth level:"
-msgstr "Syvyystaso:"
+msgstr "_Syvyystaso:"
 
 #: panel-menu/panel-menu-documents.c:397
 msgid "Create documents item..."
@@ -3661,7 +3673,6 @@ msgid "Preferences"
 msgstr "Ominaisuudet"
 
 #: panel-menu/panel-menu-properties.c:71
-#, fuzzy
 msgid "Menu Bar Preferences"
 msgstr "Valikkopalkin ominaisuudet"
 
@@ -3670,33 +3681,28 @@ msgid "Layout"
 msgstr "Asettelu"
 
 #: panel-menu/panel-menu-properties.c:90
-#, fuzzy
 msgid "_Applications Menu"
-msgstr "Sovellusvalikko"
+msgstr "Sovellusv_alikko"
 
 #: panel-menu/panel-menu-properties.c:110
 msgid "Select an icon for the Applications menu"
 msgstr "Valitse kuvake sovellusvalikolle"
 
 #: panel-menu/panel-menu-properties.c:126
-#, fuzzy
 msgid "_Preferences Menu"
-msgstr "Asetusvalikko"
+msgstr "A_setusvalikko"
 
 #: panel-menu/panel-menu-properties.c:137
-#, fuzzy
 msgid "Ac_tions Menu"
-msgstr "Toimintovalikko"
+msgstr "Toi_mintovalikko"
 
 #: panel-menu/panel-menu-properties.c:148
-#, fuzzy
 msgid "_Windows Menu"
-msgstr "Ikkunavalikko"
+msgstr "_Ikkunavalikko"
 
 #: panel-menu/panel-menu-properties.c:159
-#, fuzzy
 msgid "W_orkspaces Menu"
-msgstr "Työpöytävalikko"
+msgstr "_Työpöytävalikko"
 
 #: panel-menu/panel-menu-windows.c:99
 msgid "Windows"
@@ -3706,68 +3712,18 @@ msgstr "Ikkunat"
 msgid "Workspaces"
 msgstr "Työpöydät"
 
-#~ msgid "100%"
-#~ msgstr "100%"
+#~ msgid "Dave Camp <campd@oit.edu>"
+#~ msgstr "Dave Camp <campd@oit.edu>"
 
-#~ msgid "Apperance"
-#~ msgstr "Ulkonäkö"
+#, fuzzy
+#~ msgid "Pro_xy requires a uername and password"
+#~ msgstr "Välityspalvelin vaatii käyttäjätunnuksen ja salasanan"
 
-#~ msgid "Applet layout"
-#~ msgstr "Sovelman asettelu"
-
-#~ msgid "Battery color levels (%)"
-#~ msgstr "Akun väritystasot (%)"
+#~ msgid "Command history"
+#~ msgstr "Komentohistoria"
 
 #~ msgid "Battstat Settings"
 #~ msgstr "Akkusovelman asetukset"
-
-#~ msgid "Beep when either of the above is true"
-#~ msgstr "Anna äänimerkki kumman tahansa yllä ollessa totta"
-
-#~ msgid "General"
-#~ msgstr "Yleiset"
-
-#~ msgid "Hide"
-#~ msgstr "Piilota"
-
-#~ msgid "Move towards bottom"
-#~ msgstr "Siirrä alaspäin"
-
-#~ msgid "Move towards top"
-#~ msgstr "Siirrä ylöspäin"
-
-#~ msgid "Notify me when battery charge is low"
-#~ msgstr "Huomauta akun latauksen ollessa matala"
-
-#~ msgid "Notify me when battery is fully re-charged"
-#~ msgstr "Huomauta kun akku on ladattu täyteen"
-
-#~ msgid "Orange:"
-#~ msgstr "Oranssi:"
-
-#~ msgid "Preview:"
-#~ msgstr "Esikatselu:"
-
-#~ msgid "Progress bar direction"
-#~ msgstr "Edistymispalkin suunta"
-
-#~ msgid "Red:"
-#~ msgstr "Punainen:"
-
-#~ msgid "Show"
-#~ msgstr "Näytä"
-
-#~ msgid "Suspend"
-#~ msgstr "Virransäästö"
-
-#~ msgid "Suspend command:"
-#~ msgstr "Virransäästökomento:"
-
-#~ msgid "Warnings"
-#~ msgstr "Varoitukset"
-
-#~ msgid "Yellow:"
-#~ msgstr "Keltainen:"
 
 #~ msgid "Properties..."
 #~ msgstr "Asetukset..."
@@ -3780,24 +3736,6 @@ msgstr "Työpöydät"
 
 #~ msgid "GKB Properties"
 #~ msgstr "GKB:n asetukset"
-
-#~ msgid "knots"
-#~ msgstr "solmua"
-
-#~ msgid "kph"
-#~ msgstr "km/h"
-
-#~ msgid "inHg"
-#~ msgstr "inHg"
-
-#~ msgid "hPa"
-#~ msgstr "hPa"
-
-#~ msgid "miles"
-#~ msgstr "mailia"
-
-#~ msgid "kilometers"
-#~ msgstr "kilometriä"
 
 #~ msgid "Couldn't open mixer device %s\n"
 #~ msgstr "Miksauslaitetta ei voitu avata: %s\n"
