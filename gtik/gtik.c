@@ -272,10 +272,25 @@ static gint updateOutput(gpointer data)
 		gnome_vfs_async_cancel (stockdata->vfshandle);
 		stockdata->vfshandle = NULL;
 	}
-		
-	source_text_uri = g_strconcat("http://finance.yahoo.com/q/cq?s=",
+
+        /*
+         * Now using a CSV file to get quotes. Specification of CSV format
+         * is in URL f=sl1c1.
+         * Availables data columns are:
+         * s: ticker symbol
+         * l: last price
+         * d: date 
+         * t: time
+         * c: change
+         * o: open price
+         * h: daily high
+         * g: daily low
+         * v: volume
+         * The digit following some data specifiers change data formating (html/raw)
+         */
+	source_text_uri = g_strconcat("http://finance.yahoo.com/d/quotes.csv?s=",
 				      stockdata->props.tik_syms,
-				      "&d=v1",
+				      "&f=sl1c1&e=.csv",
 				      NULL);
 
 	source_uri = gnome_vfs_uri_new(source_text_uri);
@@ -409,121 +424,46 @@ static gint updateOutput(gpointer data)
 
 
 	/*-----------------------------------------------------------------*/
-	static char *extractText(const char *line) {
-
-		int  i=0;
-		int  j=0;
-		static char Text[1024]="";
-
-		if (line == NULL) {
-			Text[0] = '\0';
-			return Text;
-		}
-
-		while (i < (strlen(line) -1)) {
-			if (line[i] != '>')
-				i++;
-			else {
-				i++;
-				while (line[i] != '<') {
-					Text[j] = line[i];
-					i++;j++;
-				}
-			}
-		}
-		Text[j] = '\0';
-		i = 0;
-		while (i < (strlen(Text)) ) {
-			if (Text[i] < 32)
-				Text[i] = '\0';
-			i++;
-		}
-		return(Text);
-				
-	}
-
-	/*-----------------------------------------------------------------*/
-	static char *parseQuote(FILE *CONFIG, char line[1024]) {
+	static char *parseQuote(char line[1024]) {
 		
-		char symbol[1024];
-		char buff[1024];
-		char price[16];
-		char change[16];
-		char percent[16];
-		static char result[1024]="";
-		int  linenum=0;
-		int AllOneLine=0;
-		int flag=0;
-		char *section = NULL;
-		char *ptr;
+                char *symbol;
+                char *price;
+                char *change;
+                double price_val; 
+                double change_val; 
+                double percent;
+                static char result[512]="";
 
-		if (strlen(line) > 64) AllOneLine=1;
+                /* Yahoo file comme in C format */
+                setlocale(LC_NUMERIC, "C");
+                
+                symbol = strtok(line, ",");
+                symbol++;
+                symbol[strlen(symbol) -1] = 0;
+                g_message ("symbol: %s", symbol); 
+        
+                price = strtok(NULL, ",");
+                price_val = strtod(price, NULL); 
 
-		if (AllOneLine) {
-			strcpy(buff,line);
-			while (!flag) {
-				if ((ptr=strstr(buff,"</td>"))!=NULL) {
-					ptr[0] = '|';
-				}	
-				else flag=1;
-			}
-			section = strtok(buff,"|");
-		}
-		/* Get the stock symbol */
-		if (!AllOneLine) strcpy(symbol,extractText(line));
-		else strcpy(symbol,extractText(section));
-		linenum++;
+                change = strtok(NULL, ",");
+                /* file in DOS format: remove \r\n */
+                change[strlen(change) -1] = 0;
+                change[strlen(change) -1] = 0;
+                change_val = strtod(change, NULL); 
+                
+                percent = (change_val/price_val)*1E+02; 
 
-		/* Skip the time... */
-		if (!AllOneLine) fgets(line,1023,CONFIG);
-		else section = strtok(NULL,"|");
-		linenum++;
-
-		while (linenum < 8 ) {
-			if (!AllOneLine) {
-				fgets(line,1023,CONFIG);
-			
-				if (strstr(line,
-			  	 "td class=\"yfnc_tabledata1\" nowrap=\"nowrap\" align=\"center\">")) {
-					strcpy(change,"");
-					strcpy(percent,"");
-					linenum=100;
-				}
-			}
-			else {
-				section = strtok(NULL,"|");
-				if (section && strstr(section,
-			  	 "td class=\"yfnc_tabledata1\" nowrap=\"nowrap\" align=\"center\">")) {
-					strcpy(change,"");
-					strcpy(percent,"");
-					linenum=100;
-				}
-			}
-			
-			if (linenum == 2) { 
-				if (!AllOneLine) 
-					strcpy(price,extractText(line));
-				else
-					strcpy(price,extractText(section));
-			}
-			else if (linenum == 3) {
-				if (!AllOneLine)
-					strcpy(change,extractText(line));
-				else
-					strcpy(change,extractText(section));
-			}
-			else if (linenum == 4) {
-				if (!AllOneLine) 
-					strcpy(percent,extractText(line));
-				else
-					strcpy(percent,extractText(section));
-				linenum = 100;
-			}
-			linenum++;
-		}
-		sprintf(result,"%s:%s:%s:%s",
-				symbol,price,change,percent);		
-		return(result);
+                /* Restore numeric format for displaying */
+                setlocale(LC_NUMERIC, getenv("LANG"));
+                
+                if (change_val == 0.0)
+                        sprintf(result,"%s:%1.2f:%1.2f:%1.2f%%",
+                                symbol,price_val,change_val,percent);
+                else
+                        sprintf(result,"%s:%1.2f:%1.2f:%+1.2f%%",
+                                symbol,price_val,change_val,percent);
+        
+                return result;
 
 	}
 
@@ -547,10 +487,9 @@ static gint updateOutput(gpointer data)
 			while ( !feof(CONFIG) ) {
 				fgets(buffer, sizeof(buffer)-1, CONFIG);
 
-				if (strstr(buffer,
-				    "<td class=\"yfnc_tabledata1\" nowrap=\"nowrap\" align=\"center\"><b><a href=\"/q?s=")) {
+				if (!feof(CONFIG)) {
 
-				      setOutputArray(stockdata, parseQuote(CONFIG,buffer));
+				      setOutputArray(stockdata, parseQuote(buffer));
 				      retVar = 1;
 				}
 				else {
@@ -1366,7 +1305,7 @@ static gint updateOutput(gpointer data)
 	}
 	
 	static GtkWidget *
-	create_hig_catagory (GtkWidget *main_box, gchar *title)
+	create_hig_category (GtkWidget *main_box, gchar *title)
 	{
 		GtkWidget *vbox, *vbox2, *hbox;
 		GtkWidget *label;
@@ -1450,7 +1389,7 @@ static gint updateOutput(gpointer data)
 		label = gtk_label_new (_("Behavior"));
 		gtk_notebook_append_page (GTK_NOTEBOOK (notebook), behav_vbox, label);
 		
-		vbox = create_hig_catagory (behav_vbox, _("Update"));
+		vbox = create_hig_category (behav_vbox, _("Update"));
 		
 		hbox2 = gtk_hbox_new (FALSE, 12);
 		gtk_box_pack_start (GTK_BOX (vbox), hbox2, FALSE, FALSE, 0);
@@ -1472,7 +1411,7 @@ static gint updateOutput(gpointer data)
 		if ( ! key_writable (PANEL_APPLET (stockdata->applet), "timeout"))
 			hard_set_sensitive (hbox2, FALSE);
 		
-		vbox = create_hig_catagory (behav_vbox, _("Scrolling"));
+		vbox = create_hig_category (behav_vbox, _("Scrolling"));
 		
 		hbox2 = gtk_hbox_new (FALSE, 12);
 		gtk_box_pack_start (GTK_BOX (vbox), hbox2, FALSE, FALSE, 0);
@@ -1537,7 +1476,7 @@ static gint updateOutput(gpointer data)
 		
 		size = gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
 		
-		vbox = create_hig_catagory (appear_vbox, _("Display"));
+		vbox = create_hig_category (appear_vbox, _("Display"));
 		gtk_widget_show_all (vbox);
 		
 		hbox2 = gtk_hbox_new (FALSE, 6);
@@ -1578,7 +1517,7 @@ static gint updateOutput(gpointer data)
 		if ( ! key_writable (PANEL_APPLET (stockdata->applet), "width"))
 			hard_set_sensitive (hbox2, FALSE);
 		
-		vbox = create_hig_catagory (appear_vbox, _("Font and Colors"));
+		vbox = create_hig_category (appear_vbox, _("Font and Colors"));
 		size = gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
 		size2= gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
 				
@@ -2008,11 +1947,15 @@ static gint updateOutput(gpointer data)
 
 	/*-----------------------------------------------------------------*/
 	char *splitChange(StockData *stockdata,char *data, StockQuote *quote) {
-		char buff[128]="";
-		static char buff2[128]="";
+		char buff[128]; 
+		static char buff2[128];
 		char *var1, *var2, *var3, *var4;
-		char rise[1]="";
+		char rise[2]; 
 
+                bzero(buff, 128); 
+                bzero(buff2, 128); 
+                bzero(rise, 2); 
+                
 		strcpy(buff,data);
 		var1 = strtok(buff,":");
 		var2 = strtok(NULL,":");
@@ -2038,7 +1981,6 @@ static gint updateOutput(gpointer data)
 #endif
 			var4[0] = '(';
 			quote->color = RED;
-			sprintf (rise, "-");
 		}
 		else {
 			var3 = g_strdup(_("(No"));
