@@ -10,10 +10,18 @@
 
 #include "applet-lib.h"
 #include "applet-widget.h"
+#include "fvwm-pager.h"
 
-void DeadPipe(int);
-static void ParseOptions(void);
-static void switch_to_desktop(GtkFvwmPager* pager, int desktop_offset);
+
+void        DeadPipe             (int);
+static void ParseOptions         (GtkFvwmPager* pager);
+static void switch_to_desktop    (GtkFvwmPager* pager, int desktop_offset);
+#if 0
+static void move_window          (GtkFvwmPager* pager, unsigned long xid, int desktop, int x, int y);
+#endif
+
+gint   pager_width  = 170;
+gint   pager_height = 70;
 
 
 static Atom _XA_WIN_WORKSPACE;
@@ -21,7 +29,6 @@ static Atom _XA_WIN_WORKSPACE_NAMES;
 static Atom _XA_WIN_WORKSPACE_COUNT;
 static Atom _XA_WIN_LAYER;
 
-static GtkWidget* pager = 0;
 static int        desk1;
 static int        desk2;
 static int        fd[2];
@@ -31,7 +38,15 @@ unsigned long xprop_long_data[20];
 unsigned char xprop_char_data[128];
 
 
-void process_message(unsigned long, unsigned long*);
+void process_message    (GtkFvwmPager* pager, unsigned long, unsigned long*);
+void destroy            (GtkWidget* w, gpointer data);
+void about_cb           (AppletWidget* widget, gpointer data);
+void properties_dialog  (AppletWidget *widget, gpointer data);
+void configure_window   (GtkFvwmPager* pager, unsigned long* body);
+void configure_icon     (GtkFvwmPager* pager, unsigned long* body);
+void destroy_window     (GtkFvwmPager* pager, unsigned long* body);
+void deiconify_window   (GtkFvwmPager* pager, unsigned long* body);
+void add_window         (GtkFvwmPager* pager, unsigned long* body);
 
 void destroy(GtkWidget* w, gpointer data)
 {
@@ -47,10 +62,11 @@ fvwm_command_received(gpointer data,
   int count;
   unsigned long header[HEADER_SIZE];
   unsigned long* body;
+  GtkFvwmPager*  pager = GTK_FVWMPAGER(data);
 
   if ((count = ReadFvwmPacket(source, header, &body)) > 0)
     {
-      process_message(header[1], body);
+      process_message(pager, header[1], body);
       free(body);
     }
 }
@@ -61,11 +77,12 @@ about_cb(AppletWidget* widget, gpointer data)
   GtkWidget* about;
   gchar* authors[] ={"M. Lausch", NULL};
 
-  about = gnome_about_new( _("Fvwm Pager Applet"), "0.1",
+  about = gnome_about_new( _("Fvwm Pager Applet"),
+			   "0.1",
 			   _("Copyrhight (C) 1998 M. Lausch"),
-			   authors,
+			   (const gchar**)authors,
 			   "Pager for Fvwm2 window manager",
-			   NULL);
+			   0);
   gtk_widget_show(about);
 }
 
@@ -75,9 +92,7 @@ void properties_dialog(AppletWidget *widget, gpointer data)
     return;
 }
 
-    
-    
-
+int
 main(int argc, char* argv[])
 {
   GtkWidget* window;
@@ -86,7 +101,9 @@ main(int argc, char* argv[])
   int  ndesks;
   char* tmp;
   char* dummy_argv[2] = {NULL};
-
+  static GtkWidget* pager = 0;
+  GList* desktops;
+  
   dummy_argv[0] = "fvwm-pager";
   
   panel_corba_register_arguments();
@@ -96,7 +113,7 @@ main(int argc, char* argv[])
   window = applet_widget_new();
 
   gtk_widget_realize(window);
-
+  
   _XA_WIN_WORKSPACE       = XInternAtom(GDK_DISPLAY(), "WIN_WORKSPACE", False);
   _XA_WIN_WORKSPACE_NAMES = XInternAtom(GDK_DISPLAY(), "_WIN_WORKSPACE_NAMES", False);
   _XA_WIN_WORKSPACE_COUNT = XInternAtom(GDK_DISPLAY(), "WIN_WORKSPACE_COUNT", False);
@@ -131,16 +148,19 @@ main(int argc, char* argv[])
   
   XChangeProperty(GDK_DISPLAY(), GDK_ROOT_WINDOW(), _XA_WIN_WORKSPACE_COUNT, _XA_WIN_WORKSPACE_COUNT,
 		  32, PropModeReplace, (unsigned char*) xprop_long_data, 1);
-  
-  
-#if 0
-  window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
-  gtk_window_set_title(GTK_WINDOW(window),
-		       "GnomePager");
-#endif
-  gtk_widget_set_usize(GTK_WIDGET(window), 150, 60);
 
-  pager = gtk_fvwmpager_new();
+  pager_props.width  = 170;
+  pager_props.height =  70;
+  pager_props.inactive_desk_color   = "NavajoWhite";
+  pager_props.active_desk_color  = "red";
+  pager_props.inactive_win_color = "lavender";
+  pager_props.active_win_color   = "MintCream";
+  pager_props.default_cursor        = "";
+  pager_props.window_drag_cursor    = "";
+  
+  gtk_widget_set_usize(GTK_WIDGET(window), pager_props.width, pager_props.height);
+  
+  pager = gtk_fvwmpager_new(fd, pager_props.width, pager_props.height);
   
   gtk_signal_connect(GTK_OBJECT(pager), "switch_desktop",
 		     GTK_SIGNAL_FUNC(switch_to_desktop), NULL);
@@ -149,9 +169,6 @@ main(int argc, char* argv[])
 		     GTK_SIGNAL_FUNC(destroy), NULL);
   
   applet_widget_add(APPLET_WIDGET(window), pager);
-
-  gtk_widget_show(window);
-  gtk_widget_show(pager);
 
   applet_widget_register_stock_callback(APPLET_WIDGET(window),
 					"about",
@@ -165,11 +182,15 @@ main(int argc, char* argv[])
 					_("Properties"),
 					properties_dialog,
 					NULL);
-  
+  desktops = 0;
   for (idx = 0; idx < ndesks; idx++)
     {
+      Desktop* new_desk;
+      
       sprintf(bfr, _("Desk %d"), idx);
-      gtk_fvwmpager_add_desk(GTK_FVWMPAGER(pager), bfr);
+      new_desk = g_new0(Desktop, 1);
+      new_desk->title = g_strdup(bfr);
+      desktops = g_list_append(desktops, new_desk);
     }
 
   SetMessageMask(fd,
@@ -190,19 +211,18 @@ main(int argc, char* argv[])
 	     M_MINI_ICON        |
 	     M_END_WINDOWLIST);
 
-  ParseOptions();
-#if 1
+  ParseOptions(GTK_FVWMPAGER(pager));
   {
     GList* elem;
     XTextProperty tp;
     char*  desk_names[ndesks];
     int i;
 
-    elem = GTK_FVWMPAGER(pager)->desktops;
+    elem = desktops;
     
     for (i = 0; i < ndesks; i++)
       {
-	struct Desk* desk;
+	Desktop* desk;
 	desk = elem->data;
 	
 	desk_names[i] = desk->title;
@@ -210,7 +230,7 @@ main(int argc, char* argv[])
       }
     if (!XStringListToTextProperty(desk_names, ndesks, &tp))
       {
-	fprintf(stderr,"GnomePager: Cannot get textproperty for workspace names\n");
+	g_log("fvwm-pager", G_LOG_LEVEL_ERROR, "Cannot get textproperty for workspace names\n");
       }
     else
       {
@@ -218,13 +238,15 @@ main(int argc, char* argv[])
       }
   }
     
-#endif  
-  
-  
+  gtk_fvwmpager_display_desks(GTK_FVWMPAGER(pager), desktops);
   gdk_input_add(fd[1],
 		GDK_INPUT_READ,
 		fvwm_command_received,
-		0);
+		pager);
+
+  gtk_widget_show(window);
+  gtk_widget_show(pager);
+
   SendInfo(fd, "Send_WindowList", 0);
   applet_widget_gtk_main();
   return 0;
@@ -251,118 +273,169 @@ switch_to_desktop(GtkFvwmPager* pager, int offset)
 }
 
 
-void configure_window(unsigned long* body)
+void
+configure_window(GtkFvwmPager* pager, unsigned long* body)
 {
-  struct Xwin* win;
+  PagerWindow* win;
+  gint         xid = body[0];
+  PagerWindow  old;
+  gint         new_window = 0;
   
-  win = malloc(sizeof (struct Xwin));
-
-  memset(win, 0, sizeof(struct Xwin));
-  
-  win->xid   = body[0];
-  win->x     = body[3];
-  win->y     = body[4];
-  win->w     = body[5];
-  win->h     = body[6];
-  win->icon_x = -1000;
-  win->icon_y = -1000;
-  win->icon_h = 10;
-  win->icon_w = 10;
-  win->desktop_idx = body[7];
-  win->flags = 0;
+  win = g_hash_table_lookup(pager->windows, (gconstpointer)xid);
+  if (!win)
+    {
+      win = g_new0(PagerWindow, 1);
+      win->xid    = xid;
+      win->ix     = -1000;
+      win->iy     = -1000;
+      win->iw     = 0;
+      win->ih     = 0;
+      win->flags  = 0;
+      g_hash_table_insert(pager->windows, (gpointer)xid, win);
+      new_window = 1;
+    }
+  old           = *win;
+  win->x        = body[3];
+  win->y        = body[4];
+  win->w        = body[5];
+  win->h        = body[6];
+  win->th       = body[9];
+  win->bw       = body[10];
+  win->desk     = g_list_nth(pager->desktops, body[7])->data;
+  win->flags    = 0;
+  win->ixid     = body[20];
   if (body[8] & ICONIFIED)
-    win->flags |= GTKPAGER_WINDOW_ICONIFIED;
-  gtk_fvwmpager_conf_window(GTK_FVWMPAGER(pager), win);
-  
+    {
+      win->flags |= GTKPAGER_WINDOW_ICONIFIED;
+    }
+  gtk_fvwmpager_display_window(GTK_FVWMPAGER(pager), new_window ? 0 : &old, xid);
 }
 
-void configure_icon(unsigned long* body)
+void configure_icon(GtkFvwmPager* pager, unsigned long* body)
 {
-  struct Xwin* win;
-
-  win = malloc(sizeof(struct Xwin));
-  win->xid         = body[0];
-  win->desktop_idx = -1;
-  win->flags       = GTKPAGER_WINDOW_ICONIFIED;
-  win->icon_x      = body[3];
-  win->icon_y      = body[4];
-  win->icon_w      = body[5];
-  win->icon_h     = body[6];
-  gtk_fvwmpager_conf_window(GTK_FVWMPAGER(pager), win);
+  PagerWindow* win;
+  PagerWindow  old;
+  
+  gint         xid = body[0];
+  
+  win = g_hash_table_lookup(pager->windows, (gconstpointer)xid);
+  if (!win)
+    {
+      return;
+    }
+  old = *win;
+  win->flags  |= GTKPAGER_WINDOW_ICONIFIED;
+  win->ix      = body[3];
+  win->iy      = body[4];
+  win->iw      = body[5];
+  win->ih      = body[6];
+  
+  gtk_fvwmpager_display_window(GTK_FVWMPAGER(pager), &old, xid);
 }
 
     
 void
-destroy_window(unsigned long* body)
+destroy_window(GtkFvwmPager* pager, unsigned long* body)
 {
   unsigned long xid;
   xid = body[0];
-  gtk_fvwmpager_destroy_window(pager, xid);
+  gtk_fvwmpager_destroy_window(GTK_FVWMPAGER(pager), xid);
 }
 
 void
-deiconify_window(unsigned long* body)
+deiconify_window(GtkFvwmPager* pager, unsigned long* body)
 {
   unsigned long xid;
+  PagerWindow   old;
+  PagerWindow*  win;
 
   xid = body[0];
-  gtk_fvwmpager_deiconify_window(pager, xid);
+  win = g_hash_table_lookup(pager->windows, (gconstpointer)xid);
+  if (!win)
+    return;
+  old = *win;
+  win->flags &= ~GTKPAGER_WINDOW_ICONIFIED;
+  gtk_fvwmpager_display_window(GTK_FVWMPAGER(pager), &old, xid);
 }
 
-void process_message(unsigned long type,unsigned long *body)
+void
+add_window(GtkFvwmPager* pager, unsigned long* body)
+{
+  unsigned long xid;
+  PagerWindow*  win;
+
+  xid = body[0];
+  win = g_hash_table_lookup(pager->windows, (gconstpointer)xid);
+  if (!win)
+    {
+      return;
+    }
+  gtk_fvwmpager_display_window(GTK_FVWMPAGER(pager), 0, xid);
+}
+
+
+void process_message(GtkFvwmPager* pager, unsigned long type,unsigned long *body)
 {
   switch(type)
     {
     case M_ADD_WINDOW:
-      fprintf(stderr,"GnomePager: Unimplemented: M_ADD_WINDOW\n");
-      /*list_configure(body); */
+      g_log("fvwm-pager", G_LOG_LEVEL_DEBUG, "test-message: M_ADD_WINDOW received\n");
+      add_window(pager, body);
       break;
     case M_CONFIGURE_WINDOW:
-      configure_window(body);
+      g_log("fvwm-pager", G_LOG_LEVEL_DEBUG, "message: M_CONFIGURE_WINDOW received\n");
+      configure_window(pager, body);
       break;
     case M_DESTROY_WINDOW:
-      destroy_window(body);
+      g_log("fvwm-pager", G_LOG_LEVEL_DEBUG, "message: M_DESTROY_WINDOW received\n");
+      destroy_window(pager, body);
       break;
     case M_FOCUS_CHANGE:
-      fprintf(stderr,"GnomePager: Unimplemented: M_FOCUS_CHANGE\n");
+      g_log("fvwm-pager", G_LOG_LEVEL_DEBUG, "message: unhandled M_FOCUS_CHANGE received\n");
       /* list_focus(body);*/
       break;
     case M_NEW_PAGE:
-      fprintf(stderr,"GnomePager: Unimplmeneted: M_NEW_PAGE\n");
+      g_log("fvwm-pager", G_LOG_LEVEL_DEBUG, "message: unhandled M_ADD_WINDOW received\n");
       break;
     case M_NEW_DESK:
       {
+	long desktop = (long)body[0];
+
+	g_log("fvwm-pager", G_LOG_LEVEL_DEBUG, "message: M_NEW_DESK received\n");
+	gtk_fvwmpager_set_current_desk(GTK_FVWMPAGER(pager), desktop);
 	XChangeProperty(GDK_DISPLAY(), GDK_ROOT_WINDOW(),
 			_XA_WIN_WORKSPACE, _XA_WIN_WORKSPACE,
 			32, PropModeReplace, (unsigned char*)body, 1);
-	
-	gtk_fvwmpager_set_current_desk(GTK_FVWMPAGER(pager), body[0]);
       }
       break;
     case M_RAISE_WINDOW:
-      gtk_fvwmpager_raise_window(pager, body[0]);
+      g_log("fvwm-pager", G_LOG_LEVEL_DEBUG, "message: M_RAISE_WINDOW received\n");
+      gtk_fvwmpager_raise_window(GTK_FVWMPAGER(pager), body[0]);
       break;
     case M_LOWER_WINDOW:
-      gtk_fvwmpager_lower_window(pager, body[0]);
+      g_log("fvwm-pager", G_LOG_LEVEL_DEBUG, "message: M_LOWER_WINDOW received\n");
+      gtk_fvwmpager_lower_window(GTK_FVWMPAGER(pager), body[0]);
       break;
     case M_ICONIFY:
     case M_ICON_LOCATION:
-      configure_icon(body);
+      g_log("fvwm-pager", G_LOG_LEVEL_DEBUG, "message: M_ICONIFY || M_ICON_LOCATION received\n");
+      configure_icon(pager, body);
       break;
     case M_DEICONIFY:
-      deiconify_window(body); 
+      g_log("fvwm-pager", G_LOG_LEVEL_DEBUG, "message: M_DEICONIFY received\n");
+      deiconify_window(pager, body); 
       break;
     case M_ICON_NAME:
-      fprintf(stderr,"GnomePager: Unimplemented: M_ICON_NAME\n");
+      g_log("fvwm-pager", G_LOG_LEVEL_DEBUG, "message: unhandled M_AICON_NAME received\n");
       break;
     case M_MINI_ICON:
-      fprintf(stderr,"GnomePager: Unimplmented: M_MINI_ICON\n");
+      g_log("fvwm-pager", G_LOG_LEVEL_DEBUG, "message: unhandled M_MINI_ICON received\n");
       break;
     case M_END_WINDOWLIST:
-      fprintf(stderr,"GnomePager: Unimplemented: M_END_WINDOWLIST\n");
+      g_log("fvwm-pager", G_LOG_LEVEL_DEBUG, "message: unhandled M_END_WINDOWLIST received\n");
       break;
     default:
-      fprintf(stderr,"GnomePager: Unimplemented: default\n");
+      g_log("fvwm-pager", G_LOG_LEVEL_ERROR, "unknown FVWM2 test-message\n");
       break;
     }
 }
@@ -375,7 +448,7 @@ DeadPipe(int signo)
   exit(0);
 }
 
-void ParseOptions(void)
+void ParseOptions(GtkFvwmPager* pager)
 {
   char* tline;
   int   len = strlen(pgm_name);
@@ -394,7 +467,7 @@ void ParseOptions(void)
 
 	  if (sscanf(ptr, "%d", &desk) != 1)
 	    {
-	      fprintf(stderr,"GnomePager: Invalid Label line '%s'\n", tline);
+	      g_log("fvwm-pager", G_LOG_LEVEL_INFO,"Parse FVWM2 options: Invalid Label line '%s'\n", tline);
 	    }
 	  else
 	    {

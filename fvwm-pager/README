@@ -1,6 +1,6 @@
 This is a rewrite of the FvwmPager Module, so that it can be used by
-the panel as an applet. It uses Gtk and Gdk functions instead of the
-raw Xlib functions of the original FvwmPager Module.
+the panel as an applet. It uses Gnome, Gtk, and Gdk functions instead
+of the raw Xlib functions of the original FvwmPager Module.
 
 To install it you have to have:
 1) the fvwm2 sources on your system.
@@ -19,14 +19,23 @@ To install it you have to have:
       your fvwm2 setup file (usually ~/.fvwm2rc).
 5) I made an entry in one of the fvwm2 menus i'm using to start the
    pager. I added the line
-   `+          "FvwmGnome"         Module fvwm-pager 0 4'
-   to give me 4 virtual desktops to my .fvwm2rc file.
+   `+          "FvwmGnome"         Module fvwm-pager 0 4',
+   to give me 5 (0, 1, 2, 3, 4) virtual desktops, to my .fvwm2rc file.
+
 6) After starting the panel, you may add the pager to the panel by
    activating this menu entry.
 
-They look and feel is not pretty now, and you can't change the colors
-or anything else, but i'm working on it. Perhaps i'll also switch to
-gnome-canvas instead of the drawing area.
+How to use it: Because the panel grabs the mouse button 2 and 3, we
+have to do everything with one mouse button.
+
+Button1:   grab item (window or icon) and drag it around.
+Button1 double click:  change desktop
+Shift + Button1:       change desktop
+
+There's no property dialog now, but the hooks are there.
+
+The look is not pretty now, and you can't change the colors
+or anything else, but i'm working on it. 
 
 
 
