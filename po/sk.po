@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 1.2.99\n"
-"POT-Creation-Date: 2001-02-23 18:17+0100\n"
-"PO-Revision-Date: 2001-02-23 19:33CET\n"
+"POT-Creation-Date: 2001-03-02 14:58+0100\n"
+"PO-Revision-Date: 2001-03-02 14:59CET\n"
 "Last-Translator: Stanislav Visnovsky <visnovsky@nenya.ms.mff.cuni.cz>\n"
 "Language-Team: Slovak <sk-i18n@rak.isternet.sk>\n"
 "MIME-Version: 1.0\n"
@@ -84,7 +84,7 @@ msgstr "Analógové hodiny podobné tým z CDE panelu."
 #: multiload/loadavg.c:170 multiload/memload.c:98 multiload/netload.c:94
 #: multiload/swapload.c:98 odometer/odo.c:683
 #: screenshooter/screenshooter_applet.c:1017 slashapp/slashapp.c:94
-#: sound-monitor/main.c:269 tickastat/main.c:345 webcontrol/webcontrol.c:402
+#: sound-monitor/main.c:269 tickastat/main.c:345 webcontrol/webcontrol.c:397
 msgid "Properties..."
 msgstr "Vlastnosti..."
 
@@ -99,7 +99,7 @@ msgstr "Vlastnosti..."
 #: multiload/cpuload.c:108 multiload/loadavg.c:183 multiload/memload.c:111
 #: multiload/netload.c:107 multiload/swapload.c:111 odometer/odo.c:686
 #: quicklaunch/quicklaunch.c:534 screenshooter/screenshooter_applet.c:1023
-#: sound-monitor/main.c:276 tickastat/main.c:351 webcontrol/webcontrol.c:409
+#: sound-monitor/main.c:276 tickastat/main.c:351 webcontrol/webcontrol.c:404
 #: whereami/whereami.c:236
 msgid "Help"
 msgstr "Pomocník"
@@ -116,7 +116,7 @@ msgstr "Pomocník"
 #: multiload/loadavg.c:190 multiload/memload.c:118 multiload/netload.c:114
 #: multiload/swapload.c:118 odometer/odo.c:689 quicklaunch/quicklaunch.c:538
 #: screenshooter/screenshooter_applet.c:1028 slashapp/slashapp.c:97
-#: sound-monitor/main.c:281 tickastat/main.c:356 webcontrol/webcontrol.c:416
+#: sound-monitor/main.c:281 tickastat/main.c:356 webcontrol/webcontrol.c:411
 #: whereami/whereami.c:238
 msgid "About..."
 msgstr "O aplikácii..."
@@ -933,11 +933,11 @@ msgid "Select layout"
 msgstr "Vybra» vzhµad"
 
 #: gkb-new/prop-add.c:277 gkb-new/prop-list.c:378 gtik/gtik.c:1082
-#: webcontrol/properties.c:346
+#: webcontrol/properties.c:573
 msgid "Add"
 msgstr "Prida»"
 
-#: gkb-new/prop-list.c:379 webcontrol/properties.c:350
+#: gkb-new/prop-list.c:379 webcontrol/properties.c:582
 msgid "Edit"
 msgstr "Upravi»"
 
@@ -1439,13 +1439,13 @@ msgstr "Zmena kurzu:"
 msgid "Symbols"
 msgstr "Symboly"
 
-#: gtik/gtik.c:1301 webcontrol/properties.c:425
+#: gtik/gtik.c:1301 webcontrol/properties.c:667
 msgid "Behavior"
 msgstr "Chovanie"
 
 #. appearance frame
 #: gtik/gtik.c:1303 mini-commander/src/preferences.c:557
-#: webcontrol/properties.c:271
+#: webcontrol/properties.c:486
 msgid "Appearance"
 msgstr "Vzhµad"
 
@@ -4491,19 +4491,19 @@ msgstr ""
 "Aplet pre zobrazenie URL vo WWW prehliadaèi, hµadanie pomocou rôznych WWW "
 "vyhµadávaèov a veµa ïal¹ieho!"
 
-#: webcontrol/webcontrol.c:246
+#: webcontrol/webcontrol.c:241
 msgid "URL:"
 msgstr "URL:"
 
-#: webcontrol/webcontrol.c:269
+#: webcontrol/webcontrol.c:264
 msgid " GO "
 msgstr "ZOBRAZ"
 
-#: webcontrol/webcontrol.c:288
+#: webcontrol/webcontrol.c:283
 msgid " Clear "
 msgstr "Vymaza»"
 
-#: webcontrol/webcontrol.c:316
+#: webcontrol/webcontrol.c:311
 msgid "Launch new window"
 msgstr "Otvori» nové okno"
 
@@ -4543,65 +4543,85 @@ msgstr "mo¾nosti:\n"
 msgid "  -n, --noX     Allow to run with X server\n"
 msgstr "  -n, --noX     Povoli» beh s X serverom\n"
 
-#: webcontrol/properties.c:180
+#: webcontrol/properties.c:244
+msgid "Configure Browser"
+msgstr "Nastavi» prehliadaè"
+
+#: webcontrol/properties.c:252
+msgid "Browser Name:"
+msgstr "Meno prehliadaèa:"
+
+#: webcontrol/properties.c:269
+msgid "Browser Command:"
+msgstr "Príkaz pre prehliadaè:"
+
+#: webcontrol/properties.c:286
+msgid "New Window Option:"
+msgstr "Mo¾nos» Nové okno:"
+
+#: webcontrol/properties.c:303
+msgid "No New Window Option:"
+msgstr "Mo¾nos» Nie nové okno:"
+
+#: webcontrol/properties.c:395
 msgid "WebControl Properties"
 msgstr "Vlastnosti WebControl"
 
 #. create size properties
-#: webcontrol/properties.c:188
+#: webcontrol/properties.c:403
 msgid "URL bar width:"
 msgstr "©írka pruhu URL:"
 
 #. create Show Go button property
-#: webcontrol/properties.c:213
+#: webcontrol/properties.c:428
 msgid "Display GO Button"
 msgstr "Zobrazi» tlaèidlo Zobrazi»"
 
 #. create Launch New Window property
-#: webcontrol/properties.c:227
+#: webcontrol/properties.c:442
 msgid "Display \"launch new window\" option"
 msgstr "Zobrazi» mo¾nos» \"otvori» nové okno\""
 
 #. create show clear button property
-#: webcontrol/properties.c:241
+#: webcontrol/properties.c:456
 msgid "Display \"Clear\" button"
 msgstr "Zobrazi» tlaèidlo \"Vymaza»\""
 
 #. create clear button on top property
-#: webcontrol/properties.c:256
+#: webcontrol/properties.c:471
 msgid "\"Clear\" button on top?"
 msgstr "Tlaèidlo \"Vymaza»\" navrchu?"
 
-#: webcontrol/properties.c:281
+#: webcontrol/properties.c:496
 msgid " URL Activation "
 msgstr " Aktivácia URL "
 
-#: webcontrol/properties.c:288
+#: webcontrol/properties.c:503
 msgid "Use default MIME handler"
 msgstr "Pou¾i» ¹tandardnú obsluhu MIME"
 
-#: webcontrol/properties.c:296
+#: webcontrol/properties.c:511
 msgid "Use custom browser:"
 msgstr "Pou¾i» vlastný prehliadaè:"
 
-#: webcontrol/properties.c:354
+#: webcontrol/properties.c:591
 msgid "Remove"
 msgstr "Odstráni»"
 
 #. URL history frame
-#: webcontrol/properties.c:368
+#: webcontrol/properties.c:610
 msgid " URL History "
 msgstr " História URL "
 
-#: webcontrol/properties.c:377
+#: webcontrol/properties.c:619
 msgid "Size of URL history: "
 msgstr "Veµkos» histórie URL:"
 
-#: webcontrol/properties.c:403
+#: webcontrol/properties.c:645
 msgid "Clear"
 msgstr "Vymaza»"
 
-#: webcontrol/properties.c:413
+#: webcontrol/properties.c:655
 msgid "all entries in URL history"
 msgstr "v¹etky polo¾ky v histórii URL"
 
