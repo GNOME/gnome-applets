@@ -1962,7 +1962,6 @@ static gint updateOutput(gpointer data)
 		var2 = strtok(NULL,":");
 		var3 = strtok(NULL,":");
 		var4 = strtok(NULL,"");
-		g_free (buff);
 
 		if (!var3 || !var4)
 			return NULL;
@@ -1979,6 +1978,7 @@ static gint updateOutput(gpointer data)
 			buff2 = g_strdup(_("(No Change)"));
 			quote->color = WHITE;
 		}
+		g_free (buff);
 
 		return(buff2);
 	}
