@@ -8,10 +8,6 @@ INCLUDES = \
 	$(GNOME_APPLETS_CFLAGS) \
 	$(LIBGLADE_CFLAGS) \
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\" \
-	-DPREFIX=\""$(prefix)"\" \
-	-DDATADIR=\""$(datadir)"\" \
-	-DLIBDIR=\""$(libdir)"\" \
-	-DSYSCONFDIR=\""$(sysconfdir)"\" \
 	-DSTICKYNOTES_GLADEDIR=\"$(gladedir)\" \
 	-DSTICKYNOTES_ICONDIR=\"$(icondir)\"
 
