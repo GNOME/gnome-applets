@@ -963,6 +963,7 @@ make_new_battery_applet (const gchar *goad_id)
 					 about_cb,
 					 bat);
 
+  battery_set_follow_size(bat);
 
   gtk_widget_show_all (bat->applet);
 
