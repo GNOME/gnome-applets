@@ -7,7 +7,6 @@
 #include "charpick.h"
 
 
-static GtkWidget * event_box;
 static charpick_button_cb_data button_cb_data[MAX_BUTTONS];
 charpick_data curr_data;
 
@@ -370,8 +369,8 @@ main (int argc, char *argv[])
   GtkWidget *frame = NULL;
   GtkWidget *event_box = NULL;
   GtkWidget *table = NULL;
-  GtkWidget *toggle_button[9];
-  GtkWidget *label[9];
+  GtkWidget *toggle_button[MAX_BUTTONS];
+  GtkWidget *label[MAX_BUTTONS];
   gint rows, cols;
   /* initialize properties. when sm is added, these will be loaded
    * rather than simply copied from the defaults.

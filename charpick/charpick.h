@@ -49,7 +49,7 @@ struct _charpick_button_cb_data {
   charpick_data * p_curr_data;
 };
 
-static const gchar *def_list = "стуёцЊ";
+/*static const gchar *def_list = "стуёцЊ";*/
 
 extern charpick_data curr_data;
 

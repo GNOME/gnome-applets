@@ -64,7 +64,6 @@ static void update_rows_cb( GtkWidget *spin, gpointer data)
 
 static void update_cols_cb( GtkWidget *spin, gpointer data)
 {
-  gint * cols = data;
   temp_properties.cols = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spin));
   gnome_property_box_changed(GNOME_PROPERTY_BOX(propwindow));
 }
