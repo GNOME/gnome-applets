@@ -63,7 +63,7 @@ if test x$HAVE_XMMS != x$yes; then
 fi
 
 dnl screenshooter
-AC_CHECK_HEADERS(wordexp.h, have_wordexp=true)
+AC_CHECK_FUNC(wordexp,have_wordexp=true)
 AM_CONDITIONAL(HAVE_WORDEXP,$have_wordexp)
 if test -z "$have_wordexp"; then
 AC_MSG_WARN([*** No wordexp (glibc >=2.1) Screen-shooter will not be built ***])
