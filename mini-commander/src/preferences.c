@@ -55,12 +55,18 @@ color_cmd_fg_changed_signal(GtkWidget *color_picker_widget,
     MCData *mcdata = data;
     PanelApplet *applet = mcdata->applet;
     properties *prop;
+    gushort red, green, blue;
     
     prop = g_object_get_data (G_OBJECT (applet), "prop");
+    gnome_color_picker_get_i16 (GNOME_COLOR_PICKER (color_picker_widget),
+    				&red,
+    				&green,
+    				&blue,
+    				NULL);
     
-    prop->cmd_line_color_fg_r = (int) r;
-    prop->cmd_line_color_fg_g = (int) g; 
-    prop->cmd_line_color_fg_b = (int) b;
+    prop->cmd_line_color_fg_r = (int) red;
+    prop->cmd_line_color_fg_g = (int) green; 
+    prop->cmd_line_color_fg_b = (int) blue;
    
     command_entry_update_color (mcdata->entry, prop);
     
@@ -82,12 +88,18 @@ color_cmd_bg_changed_signal(GtkWidget *color_picker_widget,
     MCData *mcdata = data;
     PanelApplet *applet = mcdata->applet;
     properties *prop;
+    gushort red, green, blue;
     
     prop = g_object_get_data (G_OBJECT (applet), "prop");
+    gnome_color_picker_get_i16 (GNOME_COLOR_PICKER (color_picker_widget),
+    				&red,
+    				&green,
+    				&blue,
+    				NULL);
     
-    prop->cmd_line_color_bg_r = (int) r;
-    prop->cmd_line_color_bg_g = (int) g; 
-    prop->cmd_line_color_bg_b = (int) b;
+    prop->cmd_line_color_bg_r = (int) red;
+    prop->cmd_line_color_bg_g = (int) green;
+    prop->cmd_line_color_bg_b = (int) blue;
    
     command_entry_update_color (mcdata->entry, prop);
 
@@ -745,7 +757,6 @@ properties_box(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_theme), prop->show_default_theme);
     g_signal_connect (G_OBJECT (check_theme), "toggled",
     		      G_CALLBACK (check_theme_toggled), mcdata); 
-    gtk_misc_set_alignment (GTK_MISC (check_theme), 1.0, 0.5); 
     gtk_table_attach(GTK_TABLE(table),
              check_theme,
              0, 1,
