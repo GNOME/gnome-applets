@@ -1,5 +1,5 @@
 /* GNOME drivemount applet
- * (C) 1999 John Ellis
+ * (C) 2000 John Ellis
  *
  * Author: John Ellis
  *
@@ -102,7 +102,9 @@ static IconData icon_list[] = {
 static gint icon_list_count = 5;
 
 static gint mount_cb(GtkWidget *widget, gpointer data);
+static void eject(DriveData *dd);
 static void dnd_init(DriveData *dd);
+
 
 /*
  *-------------------------------------------------------------------------
@@ -468,10 +470,24 @@ static gint mount_cb(GtkWidget *widget, gpointer data)
 
 	pclose (fp);
 
-	/* now if the mount status is the same print
-	   the returned output from (u)mount, we are assuming an error */
-	if (check == device_is_mounted(dd))
+	dd->mounted = device_is_mounted(dd);
+
+	if (check != dd->mounted)
 		{
+		/* success! */
+		update_pixmap(dd, dd->mounted);
+
+		/* eject after unmounting, if enabled */
+		if (check && dd->auto_eject)
+			{
+			eject(dd);
+			}
+		}
+	else
+		{
+		/* the mount status is the same, print
+		   the returned output from (u)mount, we are assuming an error */
+
 		g_string_prepend(str, _("\" reported:\n"));
 		g_string_prepend(str, command_line);
 		g_string_prepend(str, _("Drivemount command failed.\n\""));
@@ -481,14 +497,12 @@ static gint mount_cb(GtkWidget *widget, gpointer data)
 		}
 
 	g_string_free(str, TRUE);
-	drive_update_cb(dd);
 	return FALSE;
 	widget = NULL;
 }
 
-static void eject_cb(AppletWidget *applet, gpointer data)
+static void eject(DriveData *dd)
 {
-	DriveData *dd = data;
 	gchar command_line[300];
 	gchar buffer[200];
 	gchar dn[200];	/* Devicename */
@@ -542,7 +556,14 @@ static void eject_cb(AppletWidget *applet, gpointer data)
 		g_snprintf (command_line, sizeof(command_line), "eject %s", dn);
 		system (command_line);
 	}
-	
+}
+
+static void eject_cb(AppletWidget *applet, gpointer data)
+{
+	DriveData *dd = data;
+
+	eject(dd);
+
 	return;
         applet = NULL;
 }
@@ -839,4 +860,5 @@ static void dnd_init(DriveData *dd)
 	gtk_signal_connect(GTK_OBJECT(dd->button), "drag_begin",
 			dnd_drag_begin_cb, dd);
 }
+
 

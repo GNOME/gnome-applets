@@ -39,6 +39,7 @@ struct _DriveData
 	PanelOrientType orient;
 	gint sizehint;
 	gint scale_applet;
+	gint auto_eject;
 
 	gchar *custom_icon_in;
 	gchar *custom_icon_out;
@@ -55,6 +56,7 @@ struct _DriveData
 	gint prop_device_pixmap;
 	gint prop_autofs_friendly;
 	gint prop_scale_applet;
+	gint prop_auto_eject;
 };
 
 void redraw_pixmap(DriveData *dd);
@@ -63,4 +65,5 @@ void start_callback_update(DriveData *dd);
 void property_load(const gchar *path, DriveData *dd);
 void property_save(const gchar *path, DriveData *dd);
 void property_show(AppletWidget *applet, gpointer data);
+
 

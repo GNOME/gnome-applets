@@ -40,6 +40,8 @@ void property_load(const gchar *path, DriveData *dd)
 	dd->device_pixmap = gnome_config_get_int("mount/pixmap=0");
 	dd->scale_applet = gnome_config_get_int("mount/scale=0");
 
+	dd->auto_eject = gnome_config_get_int("mount/auto_eject=0");
+
 	g_free(dd->mount_point);
 	dd->mount_point = gnome_config_get_string("mount/mountpoint=/mnt/floppy");
 	sync_mount_base(dd);
@@ -72,6 +74,8 @@ void property_save(const gchar *path, DriveData *dd)
         gnome_config_set_int("mount/pixmap", dd->device_pixmap);
         gnome_config_set_int("mount/scale", dd->scale_applet);
 
+	gnome_config_set_int("mount/auto_eject", dd->auto_eject);
+
         gnome_config_set_string("mount/mountpoint", dd->mount_point);
         gnome_config_set_int("mount/autofs_friendly", dd->autofs_friendly);
 
@@ -100,6 +104,13 @@ static void scale_applet_cb(GtkWidget *w, gpointer data)
 {
 	DriveData *dd = data;
 	dd->prop_scale_applet = GTK_TOGGLE_BUTTON (w)->active;
+	gnome_property_box_changed(GNOME_PROPERTY_BOX(dd->propwindow));
+}
+
+static void auto_eject_applet_cb(GtkWidget *w, gpointer data)
+{
+	DriveData *dd = data;
+	dd->prop_auto_eject = GTK_TOGGLE_BUTTON (w)->active;
 	gnome_property_box_changed(GNOME_PROPERTY_BOX(dd->propwindow));
 }
 
@@ -178,6 +189,8 @@ static void property_apply_cb(GtkWidget *propertybox, gint page_num, DriveData *
 
 	if(page_num != -1) return;	/* only do this once, on global signal */
 
+	dd->auto_eject = dd->prop_auto_eject;
+
 	dd->scale_applet = dd->prop_scale_applet;
 	dd->autofs_friendly = dd->prop_autofs_friendly;
 	new_file = gtk_entry_get_text(GTK_ENTRY(dd->mount_point_entry));
@@ -245,6 +258,7 @@ void property_show(AppletWidget *applet, gpointer data)
 	dd->prop_device_pixmap = dd->device_pixmap;
 	dd->prop_autofs_friendly = dd->autofs_friendly;
 	dd->prop_scale_applet = dd->scale_applet;
+	dd->prop_auto_eject = dd->auto_eject;
 
 	dd->propwindow = gnome_property_box_new();
 	gtk_window_set_title(GTK_WINDOW(GNOME_PROPERTY_BOX(dd->propwindow)),
@@ -371,6 +385,12 @@ void property_show(AppletWidget *applet, gpointer data)
         gtk_signal_connect (GTK_OBJECT(button),"clicked",(GtkSignalFunc) scale_applet_cb, dd);
         gtk_widget_show(button);
 
+	button = gtk_check_button_new_with_label (_("Eject on unmount"));
+	gtk_box_pack_start(GTK_BOX(vbox), button, FALSE, FALSE, 0);
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(button), dd->auto_eject);
+	gtk_signal_connect (GTK_OBJECT(button),"clicked",(GtkSignalFunc) auto_eject_applet_cb, dd);
+	gtk_widget_show(button);
+
 	button = gtk_check_button_new_with_label (_("Use automount friendly status test"));
         gtk_box_pack_start(GTK_BOX(vbox), button, FALSE, FALSE, 0);
         gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(button), dd->prop_autofs_friendly);
@@ -394,4 +414,5 @@ void property_show(AppletWidget *applet, gpointer data)
 	return;
 	applet = NULL;
 }
+
 
