@@ -10,7 +10,7 @@ typedef struct
 	gchar *fcolor;	/* color for free space */
 	gchar *tcolor;  /* color for text  */
 	gchar *bcolor;  /* background color */
-	guint speed, height, width;
+	guint speed, size;
 	gboolean look;
 } diskusage_properties;
 

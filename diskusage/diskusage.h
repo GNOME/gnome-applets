@@ -35,6 +35,7 @@ struct _DiskusageInfo {
 	unsigned n_filesystems;    /* no. of filesystems with >0 total blocks (/proc has 0) */
 	PanelOrientType orient;
 	unsigned selected_filesystem;
+	unsigned pixel_size;
 };
 
 

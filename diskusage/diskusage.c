@@ -85,10 +85,13 @@ guint num_mpoints;
 
 int timer_index=-1;
 
-
 void diskusage_resize ()
 {
-	gtk_widget_set_usize(disp, props.width, props.height);
+	if ((summary_info.orient == ORIENT_LEFT) ||
+	    (summary_info.orient == ORIENT_RIGHT))
+		gtk_widget_set_usize (disp, summary_info.pixel_size, props.size);
+	else
+		gtk_widget_set_usize (disp, props.size, summary_info.pixel_size);
 }
 
 /* Get list of currently mounted filesystems. */
@@ -233,6 +236,10 @@ int draw_v(void)
 	char *text;
 	unsigned free_space;
 	double ratio;		/* % of space used */
+	int du_pie_gap;
+	int du_mountpoint_x;
+	int du_freespace_x;
+	int vert_spacing;	/* vertical spacing */
 	int pie_width;		/* width+height of piechart */
 	int pie_spacing;	/* space between piechart and border */
 	int sel_fs;		/* # of selected filesystem */
@@ -243,11 +250,24 @@ int draw_v(void)
 
 	
 	sel_fs = summary_info.selected_filesystem;
+
+	if (summary_info.pixel_size <= PIXEL_SIZE_TINY) {
+		du_pie_gap = du_mountpoint_x = du_freespace_x = 0;
+	} else if (summary_info.pixel_size <= PIXEL_SIZE_SMALL) {
+		du_pie_gap = du_mountpoint_x = du_freespace_x = 1;
+	} else {
+		du_pie_gap = DU_PIE_GAP;
+		du_mountpoint_x = DU_MOUNTPOINT_X;
+		du_freespace_x = DU_FREESPACE_X;
+	}
 	
-	pie_width = disp->allocation.width - DU_PIE_GAP;
-	pie_spacing = DU_PIE_GAP / 2;
+	pie_width = disp->allocation.width - du_pie_gap;
+	pie_spacing = du_pie_gap / 2;
 
-
+	vert_spacing = disp->allocation.height -
+		(DU_FREESPACE2_Y_VERT + pie_width + du_pie_gap);
+	if (vert_spacing < 0) vert_spacing = 0;
+	vert_spacing /= 2;
 
 	/* Mountpoint text, part 1*/
 
@@ -273,20 +293,21 @@ int draw_v(void)
 	
 	/* draw text strings */
 	gdk_draw_string(pixmap, my_font, gc,
-			DU_MOUNTPOINT_X, 
-			DU_MOUNTPOINT_Y_VERT + pie_width + DU_PIE_GAP,
+			du_mountpoint_x, 
+			DU_MOUNTPOINT_Y_VERT + pie_width + du_pie_gap +
+			vert_spacing,
 			avail_buf1);
 	
 	gdk_draw_string(pixmap, my_font, gc,
-			DU_FREESPACE_X, 
-			DU_FREESPACE_Y_VERT + pie_width + DU_PIE_GAP,
+			du_freespace_x, 
+			DU_FREESPACE_Y_VERT + pie_width + du_pie_gap +
+			vert_spacing,
 			avail_buf2);
 	
 	/* Mountpoint text, part 2*/
 	text = mount_list [sel_fs].mountdir;
 
 	strcpy(avail_buf1, text);
-
 
 	/* Free Space text, part2*/		        
 	glibtop_get_fsusage (&fsu, mount_list [sel_fs].mountdir);
@@ -300,17 +321,59 @@ int draw_v(void)
 #else
 	free_space = fsu.bavail; /* Free blocks available to non-superuser. */
 #endif
-	g_snprintf (avail_buf2,sizeof(avail_buf2),"%u", free_space);
+	if (summary_info.pixel_size <= PIXEL_SIZE_STANDARD) {
+		if (free_space > 1048471142) /* 9999 MB */
+			g_snprintf (avail_buf2,sizeof(avail_buf2),"%uG",
+				    free_space >> 30);
+		else if (free_space > 10238976) /* 9999 kB */
+			g_snprintf (avail_buf2,sizeof(avail_buf2),"%uM",
+				    free_space >> 20);
+		else if (free_space > 9999) /* 9999 Bytes */
+			g_snprintf (avail_buf2,sizeof(avail_buf2),"%uk",
+				    free_space >> 10);
+		else
+			g_snprintf (avail_buf2,sizeof(avail_buf2),"%u",
+				    free_space);
+
+	} else if (summary_info.pixel_size <= PIXEL_SIZE_LARGE) {
+		if (free_space > 1048471142) /* 9999 MB */
+			g_snprintf (avail_buf2,sizeof(avail_buf2),"%.1f GB",
+				    (float)free_space / 1073741824.0);
+		else if (free_space > 10238976) /* 9999 kB */
+			g_snprintf (avail_buf2,sizeof(avail_buf2),"%.1f MB",
+				    (float)free_space / 1048576.0);
+		else if (free_space > 9999) /* 9999 Bytes */
+			g_snprintf (avail_buf2,sizeof(avail_buf2),"%.1f kB",
+				    free_space / 1024.0);
+		else
+			g_snprintf (avail_buf2,sizeof(avail_buf2),"%u",
+				    free_space);
+	} else {
+		if (free_space > 1048471142) /* 9999 MB */
+			g_snprintf (avail_buf2,sizeof(avail_buf2),"%.3f GB",
+				    (float)free_space / 1073741824.0);
+		else if (free_space > 10238976) /* 9999 kB */
+			g_snprintf (avail_buf2,sizeof(avail_buf2),"%.3f MB",
+				    (float)free_space / 1048576.0);
+		else if (free_space > 9999) /* 9999 Bytes */
+			g_snprintf (avail_buf2,sizeof(avail_buf2),"%.3f kB",
+				    free_space / 1024.0);
+		else
+			g_snprintf (avail_buf2,sizeof(avail_buf2),"%u",
+				    free_space);
+	}
 
 	/* draw text strings 2nd part*/
 	gdk_draw_string(pixmap, my_font, gc,
-			DU_MOUNTPOINT_X, 
-			DU_MOUNTPOINT2_Y_VERT + pie_width + DU_PIE_GAP,
+			du_mountpoint_x, 
+			DU_MOUNTPOINT2_Y_VERT + pie_width + du_pie_gap +
+			vert_spacing,
 			avail_buf1);
 	
 	gdk_draw_string(pixmap, my_font, gc,
-			DU_FREESPACE_X, 
-			DU_FREESPACE2_Y_VERT + pie_width + DU_PIE_GAP,
+			du_freespace_x, 
+			DU_FREESPACE2_Y_VERT + pie_width + du_pie_gap +
+			vert_spacing,
 			avail_buf2);
 	
 	/* Draw % usage Pie */
@@ -328,7 +391,8 @@ int draw_v(void)
 	gdk_draw_arc (pixmap,
 			gc,
 			1,		/* filled = true */
-			pie_spacing, pie_spacing, pie_width, pie_width,
+			pie_spacing, pie_spacing + (vert_spacing / 2),
+		        pie_width, pie_width,
 			90 * 64,
 			- (360 * ratio) * 64);
 
@@ -336,12 +400,11 @@ int draw_v(void)
 	gdk_draw_arc (pixmap,
 			gc,
 			1,		/* filled = true */
-			pie_spacing, pie_spacing, pie_width, pie_width,
+			pie_spacing, pie_spacing + (vert_spacing / 2),
+		        pie_width, pie_width,
 			(90 + 360 * (1 - ratio)) * 64,
 			- (360 * (1 -ratio)) * 64);
 
-	
-	
 	gdk_draw_pixmap(disp->window,
 		disp->style->fg_gc[GTK_WIDGET_STATE(disp)],
 	        pixmap,
@@ -358,12 +421,11 @@ int draw_v(void)
 
 void draw(void)
 {
-
-	if (summary_info.orient == ORIENT_LEFT || summary_info.orient == ORIENT_RIGHT)
+	if (summary_info.orient == ORIENT_LEFT ||
+	    summary_info.orient == ORIENT_RIGHT)
 		draw_v();
 	else
 		draw_h();
-
 }
 
 
@@ -407,39 +469,21 @@ void start_timer( void )
 
 
 static void
-applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
+applet_change_orient(AppletWidget *w, PanelOrientType o, gpointer data)
 {
-
-	guint tmp;
-
-	summary_info.orient = o;
-
-	/*
-	 * swap width <-> height of applet, when width is > then height
-	 * and vertical panel, or when it is < on horizontal panel
-	 */
-
-	if (o == ORIENT_LEFT || o == ORIENT_RIGHT) {
-		if (props.width > props.height) {
-			tmp = props.width;
-			props.width = props.height;
-			props.height = tmp;
-		}
-	} else {
-		if (props.width < props.height) {
-			tmp = props.width;
-			props.width = props.height;
-			props.height = tmp;
-		}
-	}
-
+	summary_info.orient = applet_widget_get_panel_orient (w);
 
 	diskusage_resize();
-
-	return;
-	w = NULL;
-        data = NULL;
 }
+
+static void
+applet_change_pixel_size(GtkWidget *applet, int size, gpointer data)
+{
+	summary_info.pixel_size = size;
+
+	diskusage_resize();
+}
+
 
 
 /*
@@ -746,6 +790,9 @@ GtkWidget *diskusage_widget(void)
 	gtk_container_add( GTK_CONTAINER(event_box), box );
 	gtk_container_add( GTK_CONTAINER(frame), event_box);
 	
+	summary_info.orient = applet_widget_get_panel_orient (APPLET_WIDGET (my_applet));
+	summary_info.pixel_size = applet_widget_get_panel_pixel_size (APPLET_WIDGET (my_applet));
+
 	diskusage_resize();
 
 	start_timer();
@@ -761,10 +808,13 @@ GtkWidget *diskusage_widget(void)
 static gint applet_save_session(GtkWidget *widget, char *privcfgpath, char *globcfgpath, gpointer data)
 {
 	save_properties(privcfgpath,&props);
+
+	gnome_config_sync();
+	/* you need to use the drop_all here since we're all writing to
+	   one file, without it, things might not work too well */
+	gnome_config_drop_all ();
+
 	return FALSE;
-	widget = NULL;
-	data = NULL;
-	globcfgpath = NULL;
 }
 
 int main(int argc, char **argv)
@@ -790,6 +840,10 @@ int main(int argc, char **argv)
 
 	gtk_signal_connect(GTK_OBJECT(applet),"change_orient",
 			   GTK_SIGNAL_FUNC(applet_change_orient),
+			   NULL);
+
+	gtk_signal_connect(GTK_OBJECT(applet),"change_pixel_size",
+			   GTK_SIGNAL_FUNC(applet_change_pixel_size),
 			   NULL);
 
         applet_widget_add( APPLET_WIDGET(applet), diskusage );

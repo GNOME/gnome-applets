@@ -1,3 +1,25 @@
+2000-02-21  Martin Baulig  <martin@home-of-linux.org>
+
+	Implement size/orientation hints in the diskusage applet.
+
+	* diskusage/properties.h (diskusage_properties): Replaced `width'
+	and `height' with `size'.
+	* diskusage/properties.c (properties): Only provide an "Applet size"
+	option in the properties dialog; this is the width an an horizontal
+	panel and the height in a vertical one.
+	(apply_cb): Call applet_widget_sync_config ().
+
+	* diskusage/diskusage.h (DiskusageInfo): Added `pixel_size'.
+	* diskusage/diskusage.c (diskusage_resize): Honor size/orientation
+	hints from the panel.
+	(draw_v): Display sizes in kilobytes and megabytes for small vertical
+	panels as it was suggested by Matthias Warkus on the bug tracker.
+	Also did some changes here to make it look a bit better on smaller
+	panels.
+	(applet_change_orient_cb): Updated.
+	(applet_change_pixel_size): New static function.
+	(applet_save_settion): Fixed session managing code.
+
 2000-02-20  Jacob Berkman  <jacob@helixcode.com>
 
 	* multiload/netload.c (make_netload_applet): have netload use

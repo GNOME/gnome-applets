@@ -32,10 +32,9 @@ void ucolor_set_cb(GnomeColorPicker *cp);
 void fcolor_set_cb(GnomeColorPicker *cp);
 void tcolor_set_cb(GnomeColorPicker *cp);
 void bcolor_set_cb(GnomeColorPicker *cp);
-void height_cb( GtkWidget *widget, GtkWidget *spin );
-void width_cb( GtkWidget *widget, GtkWidget *spin );
+void size_cb( GtkWidget *widget, GtkWidget *spin );
 void freq_cb( GtkWidget *widget, GtkWidget *spin );
-void apply_cb( GtkWidget *widget, void *data );
+void apply_cb( GtkWidget *widget, int page_num, AppletWidget *applet );
 gint destroy_cb( GtkWidget *widget, void *data );
 GtkWidget *create_frame(void);
 
@@ -60,8 +59,7 @@ void load_properties( const char *path, diskusage_properties *prop )
           prop->bcolor = g_realloc(prop->bcolor, max_rgb_str_size);
 
 	prop->speed	= gnome_config_get_int    ("disk/speed=2000");
-	prop->height 	= gnome_config_get_int	  ("disk/height=40");
-	prop->width 	= gnome_config_get_int	  ("disk/width=120");
+	prop->size 	= gnome_config_get_int	  ("disk/size=120");
 	prop->look	= gnome_config_get_bool   ("disk/look=1");
 	gnome_config_pop_prefix ();
 }
@@ -77,8 +75,7 @@ void save_properties( const char *path, diskusage_properties *prop )
 	gnome_config_set_string( "disk/tcolor", prop->tcolor );
 	gnome_config_set_string( "disk/bcolor", prop->bcolor );
 	gnome_config_set_int   ( "disk/speed", prop->speed );
-	gnome_config_set_int   ( "disk/height", prop->height );
-	gnome_config_set_int   ( "disk/width", prop->width );
+	gnome_config_set_int   ( "disk/size", prop->size );
 	gnome_config_set_bool  ( "disk/look", prop->look );
 	gnome_config_pop_prefix ();
         gnome_config_sync();
@@ -134,19 +131,10 @@ void bcolor_set_cb(GnomeColorPicker *cp)
         gnome_property_box_changed(GNOME_PROPERTY_BOX(propbox));
 }
 
-void height_cb( GtkWidget *widget, GtkWidget *spin )
+void size_cb( GtkWidget *widget, GtkWidget *spin )
 {
-	temp_props.height = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spin));
+	temp_props.size = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spin));
         gnome_property_box_changed(GNOME_PROPERTY_BOX(propbox));
-	return;
-	widget = NULL;
-}
-void width_cb( GtkWidget *widget, GtkWidget *spin )
-{
-	temp_props.width = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spin));
-        gnome_property_box_changed(GNOME_PROPERTY_BOX(propbox));
-        return;
-        widget = NULL;
 }
 
 void freq_cb( GtkWidget *widget, GtkWidget *spin )
@@ -162,8 +150,8 @@ GtkWidget *create_frame(void)
 	GtkWidget *label;
 	GtkWidget *box, *color, *size, *speed;
 	GtkWidget *color1, *color2;
-	GtkWidget *height, *width, *freq;
-	GtkObject *height_a, *width_a, *freq_a;
+	GtkWidget *applet_size, *freq;
+	GtkObject *applet_size_a, *freq_a;
 	GtkWidget *ucolor_gcp, *fcolor_gcp, *tcolor_gcp, *bcolor_gcp;
         int ur,ug,ub, fr,fg,fb, tr,tg,tb, br, bg, bb;
 
@@ -227,30 +215,18 @@ GtkWidget *create_frame(void)
 
 
 
-	label = gtk_label_new(_("Applet Height"));
-	height_a = gtk_adjustment_new( temp_props.height, 0.5, 128, 1, 8, 8 );
-	height  = gtk_spin_button_new( GTK_ADJUSTMENT(height_a), 1, 0 );
+	label = gtk_label_new(_("Applet Size"));
+	applet_size_a = gtk_adjustment_new( temp_props.size, 0.5, 256, 1, 8, 8 );
+	applet_size  = gtk_spin_button_new( GTK_ADJUSTMENT(applet_size_a), 1, 0 );
 	gtk_box_pack_start_defaults( GTK_BOX(size), label );
-	gtk_box_pack_start_defaults( GTK_BOX(size), height );
+	gtk_box_pack_start_defaults( GTK_BOX(size), applet_size );
 	
-	label = gtk_label_new(_("Width"));
-	width_a = gtk_adjustment_new( temp_props.width, 0.5, 128, 1, 8, 8 );
-	width  = gtk_spin_button_new( GTK_ADJUSTMENT(width_a), 1, 0 );
-	gtk_box_pack_start_defaults( GTK_BOX(size), label );
-	gtk_box_pack_start_defaults( GTK_BOX(size), width );
 
-
-        gtk_signal_connect( GTK_OBJECT(height_a),"value_changed",
-		GTK_SIGNAL_FUNC(height_cb), height );
-        gtk_signal_connect( GTK_OBJECT(height),"changed",
-		GTK_SIGNAL_FUNC(height_cb), height );
-        gtk_spin_button_set_update_policy( GTK_SPIN_BUTTON(height),
-        	GTK_UPDATE_ALWAYS );
-        gtk_signal_connect( GTK_OBJECT(width_a),"value_changed",
-       		GTK_SIGNAL_FUNC(width_cb), width );
-        gtk_signal_connect( GTK_OBJECT(width),"changed",
-       		GTK_SIGNAL_FUNC(width_cb), width );
-        gtk_spin_button_set_update_policy( GTK_SPIN_BUTTON(width),
+        gtk_signal_connect( GTK_OBJECT(applet_size_a),"value_changed",
+		GTK_SIGNAL_FUNC(size_cb), applet_size );
+        gtk_signal_connect( GTK_OBJECT(applet_size_a),"changed",
+		GTK_SIGNAL_FUNC(size_cb), applet_size );
+        gtk_spin_button_set_update_policy( GTK_SPIN_BUTTON(applet_size),
         	GTK_UPDATE_ALWAYS );
 
 
@@ -279,16 +255,14 @@ GtkWidget *create_frame(void)
 	return box;
 }
 
-void apply_cb( GtkWidget *widget, void *data )
+void apply_cb( GtkWidget *widget, gint page_num, AppletWidget *applet )
 {
 	memcpy( &props, &temp_props, sizeof(diskusage_properties) );
 
         setup_colors();
 	start_timer();
 	diskusage_resize();
-        return;
-	widget = NULL;
-	data = NULL;
+	applet_widget_sync_config(applet);
 }
 
 gint destroy_cb( GtkWidget *widget, void *data )
@@ -330,7 +304,7 @@ void properties(AppletWidget *applet, gpointer data)
 		frame, label );
 
         gtk_signal_connect( GTK_OBJECT(propbox),
-		"apply", GTK_SIGNAL_FUNC(apply_cb), NULL );
+		"apply", GTK_SIGNAL_FUNC(apply_cb), applet );
 
         gtk_signal_connect( GTK_OBJECT(propbox),
 		"destroy", GTK_SIGNAL_FUNC(destroy_cb), NULL );
