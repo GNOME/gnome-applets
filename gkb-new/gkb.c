@@ -810,7 +810,7 @@ static void gkb_destroy (GtkWidget * widget, gpointer data) {
 	
 	if (gkb->propwindow)
 		gtk_widget_destroy (gkb->propwindow);
-
+	gkb_update_handlers (gkb, TRUE);
 	g_free(gkb);
 }
 
