@@ -814,7 +814,7 @@ static void metar_get_start (WeatherInfo *info)
     ghttp_set_uri(metar_request, url);
     g_free(url);
     ghttp_set_proxy(metar_request, weather_proxy_url);
-    ghttp_set_authinfo(metar_request, weather_proxy_user, weather_proxy_passwd);
+    ghttp_set_proxy_authinfo(metar_request, weather_proxy_user, weather_proxy_passwd);
     ghttp_set_header(metar_request, http_hdr_Connection, "close");
 
     http_process_bg(metar_request, metar_get_finish, info);
@@ -992,7 +992,7 @@ static void iwin_get_start (WeatherInfo *info)
     ghttp_set_uri(iwin_request, url);
     g_free(url);
     ghttp_set_proxy(iwin_request, weather_proxy_url);
-    ghttp_set_authinfo(iwin_request, weather_proxy_user, weather_proxy_passwd);
+    ghttp_set_proxy_authinfo(iwin_request, weather_proxy_user, weather_proxy_passwd);
     ghttp_set_header(iwin_request, http_hdr_Connection, "close");
 
     http_process_bg(iwin_request, iwin_get_finish, info);
@@ -1070,7 +1070,7 @@ static void wx_get_start (WeatherInfo *info)
     ghttp_set_uri(wx_request, url);
     g_free(url);
     ghttp_set_proxy(wx_request, weather_proxy_url);
-    ghttp_set_authinfo(wx_request, weather_proxy_user, weather_proxy_passwd);
+    ghttp_set_proxy_authinfo(wx_request, weather_proxy_user, weather_proxy_passwd);
     ghttp_set_header(wx_request, http_hdr_Connection, "close");
 
     http_process_bg(wx_request, wx_get_finish, info);
