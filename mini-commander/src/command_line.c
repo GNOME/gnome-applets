@@ -203,6 +203,10 @@ history_list_key_press_cb (GtkWidget   *widget,
     case GDK_Return:
     case GDK_space:
     case GDK_KP_Space:
+        if ((event->state & GDK_CONTROL_MASK) &&
+            (event->keyval == GDK_space || event->keyval == GDK_KP_Space))
+             break;
+
         if (!gtk_tree_selection_get_selected (gtk_tree_view_get_selection (tree),
         				      &model,
         				      &iter))        				    
