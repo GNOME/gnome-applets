@@ -164,10 +164,10 @@ apm_readinfo (BatteryStatus *status)
 #include "acpi-linux.h"
 
 struct acpi_info acpiinfo;
-gboolean using_acpi;
-int acpi_count;
-int acpiwatch;
-struct apm_info apminfo;
+static gboolean using_acpi;
+static int acpi_count;
+static int acpiwatch;
+static struct apm_info apminfo;
 
 /* Declared in acpi-linux.c */
 gboolean acpi_linux_read(struct apm_info *apminfo, struct acpi_info *acpiinfo);

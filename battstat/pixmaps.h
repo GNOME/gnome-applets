@@ -608,7 +608,7 @@ static char * warning_small_xpm[] = {
 " .@%. ",
 "  ..  "};
 /* XPM */
-char * battery_gray_xpm[] = {
+static char * battery_gray_xpm[] = {
 "41 16 34 1",
 " 	c None",
 ".	c #000000",

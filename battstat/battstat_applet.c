@@ -296,7 +296,7 @@ allocate_battery_colours( void )
 static int instances;
 
 static const char *
-static_global_initialisation()
+static_global_initialisation(void)
 {
   const char *err;
 
@@ -312,7 +312,7 @@ static_global_initialisation()
 }
 
 static void
-static_global_teardown()
+static_global_teardown(void)
 {
   if( --instances )
     return;
@@ -1102,7 +1102,7 @@ key_press_cb (GtkWidget *widget, GdkEventKey *event, ProgressData *battstat)
 
 /* Get our settings out of gconf.
  */
-void
+static void
 load_preferences(ProgressData *battstat)
 {
   PanelApplet *applet = PANEL_APPLET (battstat->applet);
