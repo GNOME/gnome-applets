@@ -1510,6 +1510,18 @@ battstat_applet_fill (PanelApplet *applet)
                                      battstat_menu_verbs,
                                      battstat);
 
+  if (panel_applet_get_locked_down (PANEL_APPLET (battstat->applet))) {
+	  BonoboUIComponent *popup_component;
+
+	  popup_component = panel_applet_get_popup_component (PANEL_APPLET (battstat->applet));
+
+	  bonobo_ui_component_set_prop (popup_component,
+					"/commands/BattstatProperties",
+					"hidden", "1",
+					NULL);
+  }
+
+
   return TRUE;
 }
 
