@@ -414,6 +414,12 @@ help_cb (BonoboUIComponent *uic, gpointer user_data, const gchar *verbname)
 {
   GError *error = NULL;
   gnome_help_display("char-palette",NULL,&error);
+
+  if (error) {
+    g_warning ("help error: %s\n", error->message);
+    g_error_free (error);
+    error = NULL;
+  }
 }
 
 static void

@@ -39,6 +39,7 @@ enum
 
 
 static void gweather_pref_set_accessibility (GWeatherApplet *gw_applet);
+static void help_cb (void);
 
 
 /* sets up ATK Relation between the widgets */
@@ -483,6 +484,12 @@ static void
 response_cb (GtkDialog *dialog, gint id, gpointer data)
 {
     GWeatherApplet *gw_applet = data;
+   
+    if(id == GTK_RESPONSE_HELP){
+        help_cb ();
+	return;
+    }
+
     gtk_widget_hide (GTK_WIDGET (dialog));
 #if 0
     /* refresh the applet incase the location has changed */
@@ -521,6 +528,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     gw_applet->pref = gtk_dialog_new_with_buttons (_("Weather Preferences"), NULL,
 				      		   GTK_DIALOG_DESTROY_WITH_PARENT,
 				      		   GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
+				      		   GTK_STOCK_HELP, GTK_RESPONSE_HELP,
 				      		   NULL);
     gtk_dialog_set_default_response (GTK_DIALOG (gw_applet->pref), GTK_RESPONSE_CLOSE);
     gtk_widget_set_usize (gw_applet->pref, -2, 280);
@@ -745,6 +753,12 @@ static void help_cb (void)
 {
     GError *error = NULL;
     gnome_help_display("gweather","gweather-prefs",&error);
+
+    if (error) {
+        g_warning ("help error: %s\n", error->message);
+        g_error_free (error);
+        error = NULL;
+    }
 }
 
 void gweather_pref_run (GWeatherApplet *gw_applet)

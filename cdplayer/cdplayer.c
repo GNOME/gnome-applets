@@ -61,6 +61,7 @@ static int cdplayer_timeout_callback(gpointer data);
 static void start_gtcd_cb(GtkWidget *w, gpointer data);
 static void properties_cb (GtkWidget *w, gpointer data);
 static void help_cb (GtkWidget *w, gpointer data);
+static void phelp_cb (GtkWidget *w, gpointer data);
 static void about_cb(GtkWidget *w, gpointer data);
 
 static void applet_change_size(GtkWidget *w, int size, gpointer data);
@@ -263,8 +264,11 @@ start_gtcd_cb(GtkWidget *w, gpointer data)
 static void
 response_cb (GtkDialog *dialog, gint id, gpointer data)
 {
+    if(id == GTK_RESPONSE_HELP){
+         phelp_cb (dialog,data);
+	 return;
+    }
     gtk_widget_destroy (GTK_WIDGET (dialog));
-    
 }
 
 static void
@@ -345,6 +349,7 @@ properties_cb (GtkWidget *w, gpointer data)
     dialog = gtk_dialog_new_with_buttons(_("CD Player Preferences"),
                                          NULL, GTK_DIALOG_DESTROY_WITH_PARENT,
                                          GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
+                                         GTK_STOCK_HELP, GTK_RESPONSE_HELP,
                                          NULL);
     gtk_dialog_set_default_response(GTK_DIALOG (dialog), GTK_RESPONSE_CLOSE);
     box = GTK_DIALOG(dialog)->vbox;
@@ -399,6 +404,7 @@ help_cb (GtkWidget *w, gpointer data)
     if (error) {
         g_warning ("help error: %s\n", error->message);
         g_error_free (error);
+        error = NULL;
     }
 
     return;
@@ -901,4 +907,18 @@ set_atk_relation(GtkWidget *label, GtkWidget *widget)
     relation = atk_relation_new(targets, 1, ATK_RELATION_LABELLED_BY);
     atk_relation_set_add(relation_set, relation);
     g_object_unref(G_OBJECT (relation));
+}
+
+static void
+phelp_cb (GtkWidget *w, gpointer data)
+{
+    GError *error = NULL;
+    gnome_help_display ("cdplayer", "cdplayer-usage", &error);
+    
+    if (error) {
+        g_warning ("help error: %s\n", error->message);
+        g_error_free (error);
+        error = NULL;
+    }
+    return;
 }

@@ -114,6 +114,12 @@ static void help_cb (BonoboUIComponent *uic, gpointer data, const gchar *verbnam
 {
     GError *error = NULL;
     gnome_help_display("gweather",NULL,&error);
+ 
+    if (error) {
+        g_warning ("help error: %s\n", error->message);
+        g_error_free (error);
+        error = NULL;
+    }
 }
 
 static void pref_cb (BonoboUIComponent *uic, gpointer data, const gchar *verbname)

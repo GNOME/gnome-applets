@@ -1148,6 +1148,11 @@ static gint updateOutput(gpointer data)
 	response_cb (GtkDialog *dialog, gint id, gpointer data)
 	{
 		StockData *stockdata = data;
+			if(id == GTK_RESPONSE_HELP){
+			phelp_cb (dialog,id,data);
+			return;
+		}
+
 		gtk_widget_destroy (GTK_WIDGET (dialog));
 		stockdata->pb = NULL;
 		
@@ -1185,6 +1190,8 @@ static gint updateOutput(gpointer data)
 						  	     GTK_DIALOG_DESTROY_WITH_PARENT,
 						             GTK_STOCK_CLOSE, 
 						             GTK_RESPONSE_CLOSE,
+						             GTK_STOCK_HELP, 
+						             GTK_RESPONSE_HELP,
 						  	     NULL);
 		
 		notebook = gtk_notebook_new ();
@@ -1790,3 +1797,17 @@ static gint updateOutput(gpointer data)
 
 		return buff;
 	}
+
+static void
+phelp_cb (GtkWidget *w, gint tab, gpointer data)
+{
+  GError *error = NULL;
+  gnome_help_display("gtik2_applet2","gtik-settings",&error);
+
+  if (error) {
+     g_warning ("help error: %s\n", error->message);
+     g_error_free (error);
+     error = NULL;
+  }
+}
+

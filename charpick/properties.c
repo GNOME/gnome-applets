@@ -113,13 +113,24 @@ static void
 phelp_cb (GtkWidget *w, gint tab, gpointer data)
 {
   GError *error = NULL;
-  gnome_help_display("char-palette",NULL,&error);
+  gnome_help_display("char-palette","charpick-prefs",&error);
+
+  if (error) {
+    g_warning ("help error: %s\n", error->message);
+    g_error_free (error);
+    error = NULL;
+  }
 }
 
 static void
 response_cb (GtkDialog *dialog, gint id, gpointer data)
 {
   charpick_data *curr_data = data;
+
+  if(id == GTK_RESPONSE_HELP){
+    phelp_cb (dialog,id,data);
+    return;
+  }
   
   gtk_widget_destroy (curr_data->propwindow);
   curr_data->propwindow = NULL;
@@ -142,6 +153,7 @@ property_show(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
   					    NULL,
 					    GTK_DIALOG_DESTROY_WITH_PARENT,
 					    GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
+					    GTK_STOCK_HELP, GTK_RESPONSE_HELP,
 					    NULL);
   gtk_dialog_set_default_response (GTK_DIALOG (curr_data->propwindow), GTK_RESPONSE_CLOSE);
   /*size_frame_create();*/
