@@ -100,11 +100,99 @@ static int is_Modem_on()
  * add code please */
 static int is_ISDN_on()
 {
-	if (FALSE)
-		{
-		return TRUE;
+#ifdef __linux__
+
+	/* Perhaps I should try to explain this code a little bit.
+	 *
+	 * ------------------------------------------------------------
+	 * This is from the manpage of isdninfo(4):
+	 *
+	 * DESCRIPTION
+	 *   /dev/isdninfo  is  a character device with major number 45
+	 *   and minor number 255.  It delivers status information from
+	 *   the Linux ISDN subsystem to user level.
+	 *
+	 * DATA FORMAT
+	 *   When  reading  from this device, the current status of the
+	 *   Linux ISDN subsystem is delivered in 6 lines of text. Each
+	 *   line  starts  with  a  tag  string followed by a colon and
+	 *   whitespace. After that the status values are appended sep-
+	 *   arated by whitespace.
+	 *
+	 *   flags  is the tag of line 5. In this line for every driver
+	 *          slot, it's B-Channel status is shown. If no  driver
+	 *          is  registered  in a slot, a ? is shown.  For every
+	 *          established B-Channel of the driver, a bit  is  set
+	 *          in  the  shown value. The driver's first channel is
+	 *          mapped to bit 0, the second channel to bit 1 and so
+	 *          on.
+	 * ------------------------------------------------------------
+	 *
+	 * So we open /dev/isdninfo, discard the first four lines of text
+	 * and then check whether we have something that is not `0' or `?'
+	 * in one of the flags fields.
+	 *
+	 * Sounds complicated, but I don't see any other way to check whether
+	 * we are connected. Also, this is the method some other ISDN tools
+	 * for Linux use.
+	 *
+	 * Martin
+	 */
+
+	FILE *f = 0;
+	char buffer [BUFSIZ], *p;
+	int i;
+
+	f = fopen("/dev/isdninfo", "r");
+
+	if (!f) return FALSE;
+
+	for (i = 0; i < 5; i++) {
+		if (fgets (buffer, BUFSIZ, f) == NULL) {
+			fclose (f);
+			return FALSE;
 		}
+	}
+
+	if (strncmp (buffer, "flags:", 6)) {
+		fclose (f);
+		return FALSE;
+	}
+
+	p = buffer+6;
+
+	while (*p) {
+		char *end = p;
+
+		if (isspace (*p)) {
+			p++;
+			continue;
+		}
+
+		for (end = p; *end && !isspace (*end); end++)
+			;
+
+		if (*end == 0)
+			break;
+		else
+			*end = 0;
+
+		if (!strcmp (p, "?") || !strcmp (p, "0")) {
+			p = end+1;
+			continue;
+		}
+
+		fclose (f);
+
+		return TRUE;
+	}
+
+	fclose (f);
+
 	return FALSE;
+#else
+	return FALSE;
+#endif
 }
 
 static int is_connected()
