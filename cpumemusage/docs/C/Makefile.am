@@ -1,3 +1,4 @@
+figs = cpumemusage-applet.png
 applet = cpumemusage
 lang = C
 sgml_ents = $(applet).sgml

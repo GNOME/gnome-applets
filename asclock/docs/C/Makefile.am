@@ -1,3 +1,4 @@
+figs = asclock_applet asclock_settings
 applet = asclock
 lang = C
 sgml_ents = $(applet).sgml
