@@ -1,0 +1,368 @@
+ <sect1 id="gkbapplet">
+  <title>GNOMEren teklatuaren applet-a</title>
+<!-- reviewed by András--> 
+<para>
+<application>GNOMEren teklatuaren applet-ak</application> (<xref linkend="gkbapplet-fig">n agertzen da konfigurazio lehenetsiarekin) teklatu-mapa erraz eta azkar aldatu eta beste herrialde batean erabiltzen dena jartzeko aukera ematen dizu. Applet hau <interface>Panel</interface> bati gehitzeko, egin klik eskuineko botoiaz <interface>Panel</interface>ean eta aukeratu 
+<menuchoice>
+<guimenu>Panela</guimenu> 
+<guisubmenu>Gehitu panelari</guisubmenu> 
+<guisubmenu>Applet-a</guisubmenu> 
+<guisubmenu>Utilitatea</guisubmenu> 
+<guimenuitem>GKB teklatu-aldatzailea</guimenuitem>
+</menuchoice>.
+</para>
+
+
+  <figure id="gkbapplet-fig">
+   <title>GNOMEren teklatuaren applet-a</title>
+   <screenshot>
+<screeninfo>GNOMEren teklatuaren applet-a</screeninfo>
+ <graphic format="png" fileref="figures/gkb_applet"
+    srccredit="emese"></graphic></screenshot></figure>
+
+
+  <!-- ============= Usage  ================================ -->
+ <sect2 id="gkbapplet-usage">
+   <title>Erabilera</title>
+   
+<para>
+Konfiguratu ondoren, <application>GNOMEren teklatua</application>ren applet-ak aukera ematen dizu teklatu-mapaketa aldatzeko erabilgarri duzun beste edozein diseinurengatik. Ezkerreko botoiaz egin klik applet-ean edo sakatu <keycombo><keycap>Alt</keycap><keycap>Maius</keycap></keycombo> teklatu-mapaketa aldatzeko.
+</para>
+
+
+   
+<para>
+Applet-ean eskuineko botoiaz klik eginez gero, elementu hauek dituen menua agertuko zaizu: 
+<itemizedlist>
+
+     <listitem>
+<para>
+<guimenuitem>Propietateak&hellip;</guimenuitem> &mdash;
+  <link linkend="gkbapplet-prefs">
+       <guilabel>Propietateak</guilabel></link> elkarrizketa-koadroa irekitzen du.
+</para>
+</listitem>
+
+     <listitem>
+<para>
+<guimenuitem>Laguntza</guimenuitem> &mdash; dokumentu hau bistaratzen du.
+</para>
+</listitem>
+
+     <listitem>
+<para>
+<guimenuitem>Honi buruz&hellip;</guimenuitem> &mdash; <application>GNOMEren teklatuaren applet-a</application>-ari buruzko oinarrizko informazioa erakusten du, esaterako, applet-aren bertsioa eta egilearen izena. </para> </listitem>  
+
+    </itemizedlist>
+</para>
+</sect2>
+
+
+  <!-- ============= Customization ============================= -->
+ <sect2 id="gkbapplet-prefs">
+    <title>Pertsonalizazioa</title>
+    
+<para>
+<application>GNOMEren teklatua</application>ren applet-a pertsonaliza dezakezu bertan eskuineko botoiaz klik eginez eta <guimenuitem>Propietateak&hellip;</guimenuitem> aukeratuz. <interface>Propietateen</interface> elkarrizketa-koadroa irekiko da (<xref       linkend="gkbapplet-settings-fig">n ikusten dena), eta teklatuak gehitu, aldatu eta kendu ahal izango dituzu, eta <link linkend="gkbapplet-options">applet-aren diseinua konfiguratu.</link>.
+</para>
+
+
+    <figure id="gkbapplet-settings-fig">
+     <title>Propietateen elkarrizketa-koadroa</title>
+     <screenshot>
+<screeninfo>Propietateen elkarrizketa-koadroa</screeninfo>
+ <graphic format="png" fileref="figures/gkb_applet_settings"       srccredit="emese"></graphic>
+</screenshot>
+</figure>
+
+    
+<para>
+<interface>Propietateen</interface> elkarrizketa-koadroak bi fitxa ditu: <guilabel>Teklatuak</guilabel> eta <guilabel>Aukerak</guilabel>. <guilabel>Teklatuak</guilabel> fitxan teklatuen diseinuak Gehitu, Editatu eta Ezabatu ditzakezu, eta baita ordena aldatu ere. <guilabel>Aukerak</guilabel> fitxan applet-aren itxura (bandera, etiketa edo bandera+etiketa) eta tamaina (normala edo handia) ezar ditzakezu, eta baita teklatu-diseinua aldatzeko erabili beharreko tekla-sekuentzia ere (ikus <xref  linkend="bugs"> atala).
+</para>
+ <sect3 id="gkb-prefs-add">
+    <title>Zure hizkuntzaren teklatu-diseinuak ezarri</title>
+     
+<para>
+Teklatu-mapak ezartzeko ondorengo urratsetako bat edo gehiago egin beharko dituzu: 
+<itemizedlist>
+<listitem>
+<para>
+Behar den teklatu-diseinua gehitu &mdash;  <guilabel>Teklatuak</guilabel> fitxan, egin klik <guibutton>Gehitu</guibutton> botoian. <xref linkend="gkbapplet-add-keymap-fig">n ikusten den <interface>zuhaitzean</interface> zuri dagokizun teklatua aukera dezakezu, zure hizkuntzan eta herrialdean oinarrituta.
+</para>
+
+         
+         <figure id="gkbapplet-add-keymap-fig">
+         <title>Diseinua hautatzeko elkarrizketa-koadroa</title>
+         <screenshot>
+    <screeninfo>Hautatu diseinua elkarrizketa-koadroa</screeninfo> 
+     <graphic format="png" fileref="figures/gkb_add_list"
+      srccredit="emese"></graphic></screenshot></figure> 
+<para>
+Teklatu bat gehitzeko, egin klik ezarri nahi duzun hizkuntzaren aurreko <guibutton>+</guibutton> zeinuan. Hizkuntza hori erabiltzen duten herrialdeen zerrenda agertuko da. Berriz ere, egin klik aukeratutako herrialdearen aurreko <guibutton>+</guibutton> zeinuan, eta teklatu-zerrenda bat agertuko zaizu. Hautatu erabili nahi duzun teklatua eta egin klik <guibutton>Gehitu</guibutton> botoian. Teklatua <interface>GKB Propietateak</interface> leihoko zerrendan gehituko da. Nahi izanez gero beste teklatu bat gehi dezakezu, edo bestela egin klik <guibutton>Itxi</guibutton> botoian <interface>Hautatu diseinua</interface> elkarrizketa-koadroa ixteko.
+</para>
+</listitem>
+
+    	<listitem>
+<para>
+Lehendik dagoen teklatu-diseinua editatu &mdash; Teklatu bat hautatu eta <guibutton>Editatu</guibutton> botoia sakatzen baduzu, <interface>Editatu teklatua</interface> leihoa irekiko zaizu (ikus <xref linkend="gkbapplet-prefs-edit">).
+</para>
+
+
+
+ <figure id="gkbapplet-prefs-edit">
+         <title>Teklatua editatzeko elkarrizketa-koadroa</title>
+         <screenshot><screeninfo>Editatu teklatua elkarrizketa-koadroa</screeninfo> <graphic format="png" fileref="figures/gkb_edit_keymap"           srccredit="emese"></graphic></screenshot></figure>
+
+
+<para>
+Elkarrizketa-koadro honetan teklatuaren hainbat propietate alda ditzakezu. Hauek dira propietateak:
+
+<itemizedlist>
+
+<listitem>
+<para>
+<guilabel>Izena</guilabel>: Teklatuaren izena, <interface>GKB propietateen</interface> leihoan eta applet-aren gainean sagua mugitzean bistaratzen den argibidean agertuko dena.
+</para>
+</listitem>
+
+<listitem>
+<para>
+<guilabel>Etiketa</guilabel>: &quot;Etiketa&quot; edo &quot;Bandera+Etiketa&quot; ezartzen dituzunean azalduko den etiketa da hau. Xehetasun gehiago nahi izanez gero, ikus <xref  linkend="gkbapplet-options">.
+</para>
+</listitem>
+
+<listitem>
+<para>
+<guilabel>Hizkuntza</guilabel>: Aukera hau Gnome 2.0n erabiliko da. Oraingoz ez du eraginik.
+</para>
+</listitem>
+
+<listitem>
+<para>
+<guilabel>Estatua</guilabel>: Aukera hau Gnome 2.0n erabiliko da. Oraingoz ez du eraginik.
+</para>
+</listitem>
+
+<listitem>
+<para>
+<guilabel>Bandera</guilabel>: Teklatu-diseinuarekin batera erakustea nahi duzun bandera ezar dezakezu hemen.
+</para>
+</listitem>
+
+<listitem>
+<para>
+<guilabel>Arkitektura</guilabel>: Aukera hau Gnome 2.0n erabiliko da. Oraingoz ez du eraginik.
+</para>
+</listitem>
+
+<listitem>
+<para>
+<guilabel>Mota</guilabel>: Aukera hau Gnome 2.0n erabiliko da. Oraingoz ez du eraginik.
+</para>
+</listitem>
+
+<listitem>
+<para>
+<guilabel>Kode-orria</guilabel>: Aukera hau Gnome 2.0n erabiliko da. Oraingoz ez du eraginik.
+</para>
+</listitem>
+
+<listitem>
+<para>
+<guilabel>Komandoa</guilabel>: Komando hau erabiliko du <application>GNOME teklatua</application>k teklatua aldatzeko.  Lehenespenez <command>gkb_xmmap <replaceable>xmodmap-file-extension</replaceable></command> komandoa erabiltzen da, eta hor <replaceable>xmodmap-file-extension</replaceable>-en ordez erabili nahi duzun xmodmap fitxategiaren luzapena jarri behar da.
+</para>
+ <tip>
+<title>Zure sisteman erabilgarri dituzun teklatu-diseinuak aurkitu</title>
+
+<para>
+Linux sistema gehienetan xmodmap fitxategiak <filename class="directory">/usr/share/xmodmap</filename> direktorioan egoten dira.
+</para>
+</tip> 
+<para>
+Adibidez, US 101 teklako teklatua ezartzeko, <command>gkb_xmmap us-101</command> erabiltzen da.
+</para>
+ 
+<para>
+Horrela ezin bada egin, <command>setxkbmap <replaceable>LC</replaceable></command> komandoarekin saia zaitezke teklatua ezartzen (<replaceable>LC</replaceable> zure herrialdearen bi letrako kodea da). (adibidez, <command>setxkbmap fr</command> teklatu frantsesa erabiltzeko). Azkenik, zuk zeure teklatu-diseinuaren fitxategia (xmodmap) badaukazu, erabili <command>xmodmap <replaceable>xmodmap-filename</replaceable></command> komandoa (adibidez, <command>xmodmap ~/xrus/yawerty.koi8.xmm</command> alfabeto zirilikoaren teklatu-diseinua erabiltzeko koi8 kodeketan).  Xehetasun gehiago nahi izanez gero, ikus <xref  linkend="gkbappplet-technical">.
+</para>
+
+
+</listitem></itemizedlist> 
+               
+</para>
+</listitem>
+
+    <listitem>
+<para>
+Gehiago behar ez den teklatu-diseinua kendu &mdash; Teklatu bat kentzeko, hautatu (bertan klik eginez <interface>GKB propietateen</interface> leihoan) eta egin klik <guibutton>Ezabatu</guibutton> botoian.
+</para>
+</listitem>
+
+    	<listitem>
+<para>
+Teklatu-diseinuak berrordenatu &mdash; <interface>Propietateen</interface> leihoko zerrendak erabakitzen du teklatu-diseinuak zein ordenatan aktibatzen diren applet-ean klik egindakoan edo laster-tekla sakatutakoan. Zerrendan lehenengo lekuan agertzen den diseinua lehenetsita geratuko da <interface>Propietateen</interface> leihoa ixten duzunean. Zerrendaren ordena aldatzeko, hautatu lekuz aldatu nahi duzun teklatua eta egin klik <guibutton>Gora</guibutton> edo <guibutton>Behera</guibutton> botoian.
+</para>
+</listitem>
+
+      </itemizedlist>
+</para>
+ 
+<para>
+Nahi dituzun aldaketak egindakoan, egin klik <guibutton>Aplikatu</guibutton> botoian aldaketak aplikatzeko, edo <guibutton>Ados</guibutton> botoian aldaketak aplikatu eta <interface>Propietateen</interface> elkarrizketa-koadroa ixteko. Aldaketak bertan behera uzteko eta aurreko balioetara itzultzeko, egin klik <guibutton>Itxi</guibutton> botoian. <guibutton>Laguntza</guibutton> botoiak lineako laguntzaren kapitulu hau erakusten du.
+</para>
+
+
+    </sect3>
+
+
+    <sect3 id="gkbapplet-options">
+     <title>Beste hainbat aukera</title>
+     
+<para>
+Hainbat aukera dituzu zure applet-aren itxura aldatzeko. Eginbide berri gisa, bistaratzeko hiru modu hauek dituzu aukeran: <itemizedlist>
+
+	     	<listitem>
+<para>
+Bandera modua &mdash; Teklatuari dagokion bandera bistaratzen da <interface>Panel</interface>ean.
+</para>
+</listitem>
+
+	     	<listitem>
+<para>
+Etiketa modua &mdash; Ez da banderarik erakusten, teklatuari dagokion etiketa bakarrik.
+</para>
+</listitem>
+
+	     	<listitem>
+<para>
+Bandera eta etiketa modua &mdash; Teklatuari dagozkion bandera eta etiketa bistaratzen dira.
+</para>
+</listitem>
+
+      </itemizedlist>
+</para>
+ 
+<para>
+Erabiltzaile askok adierazi dute, applet-ak leku gehiegi hartzen duela panelean. Orain applet-aren tamaina ezar dezakezu <guilabel>Applet-aren tamaina</guilabel>ren zerrendan. Ezarri tamaina <guibutton>Normala</guibutton> applet txikiagoa nahi baduzu. Leku asko badaukazu edo panelean bandera handiak edukitzea gustatzen bazaizu, aukeratu <guibutton>Handia</guibutton>.
+</para>
+ 
+<para>
+Erabiltzaile askok nahi izaten dute teklatua laster-teklen bidez aldatzea. Garatzaileek atsegin handiz adierazten dute teklatu-aldaketa hori orain egin daitekeela. Hau da teklatuak aldatzeko laster-teklen konbinazioa: <keycombo><keycap>Alt</keycap><keycap>Maius</keycap></keycombo> (<keycap>Alt</keycap> hori ezkerreko <keycap>Alt</keycap> tekla da). Laster-tekla horiek pertsonaliza ditzakezu <interface>GKB Propietateen</interface> leihoko <guilabel>Aukerak</guilabel> fitxan. Egin klik <guibutton>Hartu laster-tekla</guibutton> botoian eta sakatu ezarri nahi dituzun teklak. Teklen konbinazioa <interface>sarrera-koadroa</interface>n bistaratzen da, botoiaren ondoan (honelako zerbait ikusiko duzu: <keysym>Control-Shift_R</keysym>). Azkenik, egin klik <guibutton>Aplikatu</guibutton> edo <guibutton>Ados</guibutton> botoian ezarpen berriekin amaitzeko.
+</para>
+</sect3>
+
+  </sect2>
+
+<sect2 id="gkbappplet-technical">
+    <title>Informazio teknikoa</title>
+    
+<para>
+Normalean ez dituzu beharko xehetasun hauek -baina zerbait ez badabil, edo jakin-minik baduzu, irakur itzazu.
+</para>
+ 
+<para>
+<application>GNOMEren teklatua</application>k X Window sistemari komando bat bidaliz aldatzen du teklatua. X-Window sistemak bi mekanismo ditu teklatu-mapaketa ezartzeko: zaharrena, &quot;xmodmap&quot;, eta berriena, &quot;Xkb extension&quot; delakoan oinarritutakoa. Xkb gaitua baldin badaukazu, erabil ezazu, eta aldatu teklatu-diseinuak <command>setxkbmap <replaceable>LC</replaceable></command> komandoaren bidez. Hainbat teklatu-diseinuren fitxategiak izaten ditu normalean <filename>/usr/X11R6/lib/X11/xkb/symbols</filename> direktorioan.
+</para>
+ 
+<para>
+Xkb luzapena ez baduzu gaituta, edo zuk behar duzun hizkuntza ez badu onartzen, <command>xmodmap</command> mekanismo zaharra erabili beharko duzu. Kasu honetan, teklatu-diseinua formatu berezian deskribatzen duen fitxategia behar duzu (xehetasun gehiago <command>xmodmap</command>-en eskuliburuko orrian), eta komandoak <command>xmodmap <replaceable>filename</replaceable> </command> izan beharko luke. <application>GNOMEren teklatua</application>k hainbat teklatu-diseinuren fitxategiak ditu <filename>/usr/share/xmodmap</filename> direktorioan instalatuta; fitxategi horiek <filename>xmodmap.de</filename> moduko izenak dituzte. Fitxategi horietako bat erabiltzeko <command>gkb_xmmap <replaceable>LC</replaceable></command> komandoa erabil dezakezu. Komando hori <command>xmodmap /usr/share/xmodmap/xmodmap.<replaceable>LC</replaceable></command>ren baliokidea da: adibidez, <command>gkb_xmmap hu</command> eta <command>xmodmap /usr/share/xmodmap/xmodmap.hu</command> berdinak dira.
+</para>
+</sect2>
+
+
+
+
+  <!-- ============= Bugs ================================== -->
+ <!-- This section should describe known bugs and limitations of
+       the program if there are any - please be frank and list all
+       problems you know of --> <sect2 id="bugs">
+   <title>Ezagutzen diren akatsak eta mugak</title>
+   
+<para>
+<itemizedlist>
+<listitem>
+<para>
+<interface>Hautatu diseinua</interface> elkarrizketa-koadroan agertzen diren hizkuntzak eta herrialdeak ez daude ordena alfabetikoan.
+</para>
+</listitem>
+ <listitem>
+<para>
+Programak erroreak maneiatzeko oso errutina gutxi ditu inplementatuta. Ohikoa ez den zerbaitekin elikatzen hasten bazara, litekeena da kraskatzea.
+</para>
+</listitem>
+ <listitem>
+<para>
+Kraskatzen ez badu, errore hau itzultzen du: &quot;Teklatu-aldaketak errorea eman du&quot;. <interface>Editatzeko</interface> leihoa irekita badago errore hau agertzen denean eta zuk <guibutton>Ados</guibutton> botoia sakatzen baduzu leiho horretan, litekeena da ezer ez gertatzea. Saiatu <interface>Editatzeko</interface> leihoa ixten lehendabizi eta ondoren errorearena.
+</para>
+</listitem>
+</itemizedlist>
+</para>
+</sect2>
+
+
+  <!-- ============= Authors ================================ -->
+
+  <sect2 id="authors">
+   <title>Egileak</title>
+   
+<para>
+<application>GNOMEren teklatua</application> Szabolcs Ban-ek idatzi du (<email>shooby@gnome.hu</email>).  Bidali zure iruzkin, iradokizun eta akatsen berri-emateak <ulink url="http://bugs.gnome.org" type="http">GNOMEren akatsen segimendurako datu-basera</ulink>. (Akatsei buruzko berriak bidaltzeko argibideak <ulink     url="http://bugs.gnome.org/Reporting.html" type="http">linean</ulink> aurkituko dituzu.) Akatsen berri emateko, <application>Akatsen berri emateko tresna</application> (<command>bug-buddy</command>) ere erabil dezakezu. Tresna hori <guimenu>Menu nagusiko</guimenu> <guisubmenu>Utilitateak</guisubmenu> azpimenuan duzu eskuragarri.
+</para>
+
+
+   
+<para>
+Eskuliburu honen jatorrizko bertsioa Szabolcs (Shooby) Ban-ek (<email>shooby@gnome.hu</email>) eta Dan Mueth-ek idatzi zuten (<email>d-mueth@uchicago.edu</email>). Emese Kovacs-ek (<email>emese@gnome.hu</email>) berridatzi du (jatorrizkoari oso lotua) v1.2 etik v1.4rako aldaketak azaltzeko. <link  linkend="gkbappplet-technical">Informazio teknikoaren</link> 
+    atala Alexander Kirillov-ek gehitu dio (<email>kirillov@math.sunysb.edu</email>). Eskuliburuari dagozkion iruzkinak eta iradokizunak <ulink type="http"     url="http://developer.gnome.org/projects/gdp/">GNOMEren dokumentazio-proiektura</ulink> bidal ditzakezu: <email>docs@gnome.org</email>. Iruzkinak linean ere egin ditzakezu <ulink type="http"     url="http://developer.gnome.org/projects/gdp/doctable/">GNOMEren dokumentazio-egoeraren taula</ulink> erabiliz.
+</para>
+
+
+<para>
+     Euskarazko itzulpena Hizkuntza Politikarako Sailburuordetzak 
+     egin du (<email>hizkpol@ej-gv.es</email>). Itzulpenari buruzko
+     oharrak eta iradokizunak helbide honetara bidal ditzakezu:
+      <email>hizkpol@ej-gv.es</email> 
+</para>
+
+  </sect2>
+
+
+  <!-- ============= Application License ============================= -->
+
+  <sect2 id="license">
+   <title>Lizentzia</title>
+   
+   <para> 
+      Programa hau software librea da; birbana eta/edo alda dezakezu, 
+      Free Software Foundation-ek argitaratutako <ulink
+      type="help"    url="gnome-help:gpl"><citetitle>GNU Lizentzia Publiko
+      Orokorra</citetitle></ulink>ren 2. bertsioan, edo (nahiago baduzu) bertsio
+      berriago batean, jasotako baldintzak betez gero. 
+   </para> 
+   <para>
+      Programa hau erabilgarria izango delakoan banatzen da, baina INOLAKO 
+      BERMERIK GABE; era berean, ez da bermatzen beraren EGOKITASUNA 
+      MERKATURATZEKO edo HELBURU PARTIKULARRETARAKO ERABILTZEKO. 
+      Argibide gehiago nahi izanez gero, ikus <ulink
+      type="help" url="gnome-help:gpl"><citetitle>GNU Lizentzia Publiko
+      Orokorra</citetitle></ulink>. 
+   </para> 
+<para>
+      <ulink type="help"    url="gnome-help:gpl"><citetitle>GNU Lizentzia
+      Publiko Orokorra</citetitle></ulink>ren kopia bat <citetitle>GNOME 
+      erabiltzailearen gida</citetitle>ren eranskinean daukazu. <ulink 
+      type="help" url="gnome-help:gpl"><citetitle>GNU Lizentzia Publiko 
+      Orokorra</citetitle></ulink>ren kopia Free Software Foundation-en 
+      bidez ere lor dezakezu <ulink type="http" url="http://www.fsf.org"> 
+      haren web gunea</ulink> bisitatuz edo hona idatziz: 
+     <address> Free Software Foundation, Inc. <street>59 Temple Place</street> -
+      Suite 330 <city>Boston</city>, <state>MA</state>
+      <postcode>02111-1307</postcode> <country>USA</country> </address> 
+</para>
+</sect2>
+
+ </sect1>
+
+
+
+

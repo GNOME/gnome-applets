@@ -1,1 +1,1 @@
-SUBDIRS	= C es it ja
+SUBDIRS	= C es eu it ja

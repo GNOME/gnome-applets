@@ -1,0 +1,427 @@
+ <sect1 id="gweather">
+  <title>GNOMEren eguraldiaren applet-a</title>
+
+  
+<para>
+<application>GNOMEren eguraldia</application>ren applet-ak, <xref
+   linkend="gweatherapplet-fig">n ikusten denak, eguraldiari buruzko hainbat informazio bildu eta bistaratzen du. Applet hau <interface>Panel</interface> bati gehitzeko, egin klik eskuineko botoiaz <interface>Panel</interface>ean eta aukeratu 
+<menuchoice>
+<guimenu>Panela</guimenu>
+ <guisubmenu>Gehitu panelari</guisubmenu>
+ <guisubmenu>Applet-a</guisubmenu>
+ <guisubmenu>Utilitatea</guisubmenu>
+ <guimenuitem>GNOMEren eguraldia</guimenuitem>
+</menuchoice>.
+</para>
+
+
+  <figure id="gweatherapplet-fig">
+   <title>GNOMEren eguraldiaren applet-a</title>
+   <screenshot><screeninfo>GNOMEren eguraldiaren applet-a</screeninfo> <graphic format="png" fileref="figures/gweather_applet"      srccredit="muet"></graphic></screenshot></figure>
+
+  <!-- ============= Usage  ================================ -->
+ <sect2 id="gweather-usage">
+   <title>Erabilera</title>
+   
+<para>
+<application>GNOMEren eguraldiak</application> uneko tenperatura eta eguraldi-baldintzak bistaratzen ditu, zenbaki eta ikono bidez, applet-aren barruan.  Informazio gehiago nahi izanez gero, egin klik bikoitza applet-ean. <interface>Eguraldi-informazioaren leihoa</interface> irekiko zaizu (<xref
+    linkend="gweather-weather-fig">). Uneko eguraldiari buruzko informazioa bistaratzen du eta baita egun bateko edo bost eguneko iragarpena ere.
+</para>
+
+
+  <figure id="gweather-weather-fig">
+   <title>Eguraldi-informazioaren leihoa</title>
+   <screenshot><screeninfo>Eguraldi-informazioaren leihoa</screeninfo> <graphic format="png" fileref="figures/gweather_weather" 
+    srccredit="muet"></graphic></screenshot></figure>
+
+   
+<para>
+Applet-ean eskuineko botoiaz klik eginez gero, elementu hauek dituen menua agertuko zaizu: <itemizedlist>
+
+     <listitem>
+<para>
+<guimenuitem>Eguneratu</guimenuitem> &mdash; eguraldi-informazioa eguneratu eta bistaratzen du.
+</para>
+</listitem>
+
+     <listitem>
+<para>
+<guimenuitem>Propietateak&hellip;</guimenuitem> &mdash;  <link linkend="gweather-prefs">
+       <guilabel>Propietateak</guilabel></link> elkarrizketa-koadroa irekitzen du.
+</para>
+</listitem>
+
+     <listitem>
+<para>
+<guimenuitem>Laguntza</guimenuitem> &mdash; dokumentu hau bistaratzen du.
+</para>
+</listitem>
+
+     <listitem>
+<para>
+<guimenuitem>Honi buruz&hellip;</guimenuitem> &mdash;  <application>GNOMEren eguraldiaren applet</application>-ari buruzko oinarrizko informazioa erakusten du, esaterako egilearen izena eta aplikazioaren bertsio-zenbakia.</para></listitem>
+
+    </itemizedlist>
+</para>
+</sect2>
+
+
+  <!-- ============= Customization ============================= -->
+ <sect2 id="gweather-prefs">
+    <title>Pertsonalizazioa</title>
+    
+<para>
+<application>GNOMEren eguraldia</application>ren applet-a pertsonaliza dezakezu bertan eskuineko botoiaz klik eginez eta <guimenuitem>Propietateak&hellip;</guimenuitem> aukeratuz. <interface>Propietateen</interface> elkarrizketa-koadroa (<xref       linkend="gweather-settings-fig">) irekiko da, eta hala hainbat ezarpen aldatu ahal izango duzu.
+</para>
+
+
+    <figure id="gweather-settings-fig">
+     <title>Propietateen elkarrizketa-koadroa</title>
+     <screenshot><screeninfo>Propietateen elkarrizketa-koadroa</screeninfo> <graphic format="png" fileref="figures/gweather_settings"       srccredit="mueth"></graphic></screenshot></figure>
+
+    
+<para>
+<guilabel>Oinarrizkoa</guilabel> fitxako propietateak hauek dira: <itemizedlist>
+
+      <listitem>
+<para>
+Eguneratze-bitartea &mdash; Aukera honek zehazten du <application>GNOMEren eguraldia</application> zenbatero konektatuko den zerbitzariarekin (edo zerbitzariekin) eguraldi-informazioa jasotzeko. Uneko baldintzak, iragarpena eta radar-mapa (gaituta badago) deskargatuko ditu.
+</para>
+ <note>
+        <title>Zerbitzari-eguneratzeei buruzko oharra</title>
+        
+<para>
+Kontuan izan <guilabel>Eguneratze-bitartea</guilabel>k zehazten duen gauza bakarra dela ordenagailuak zenbatero deskargatuko duen informazioa zerbitzaritik (edo zerbitzarietatik).  <interface>Uneko baldintzak</interface> fitxan agertzen den eguneratze-orduak (applet-ean bi aldiz klik eginez bistaratzen denak) adierazten du neurketa horiek zerbitzarian noiz berritu ziren, eta ez noiz jaso ziren azkeneko aldiz.
+</para>
+</note> <note>
+        <title>Eguneratze automatikoak desgaitu eta eskuzko eguneratzeak erabili</title>
+        
+<para>
+Eguneratze automatikoa desgaitzeko kendu hautamarka <guilabel>Eguneratzea gaituta</guilabel> laukiari.  Bestalde, <application>GNOMEren eguraldia</application> eguneratzera behartu dezakezu dagokion aukera hautatuz laster-menuan.  Bi aukera horiek oso erabilgarriak dira tartekako internet konexioa baldin badaukazu, eramangarri edo modem bidezkoa esate baterako.
+</para>
+</note></listitem>
+
+      <listitem>
+<para>
+Eguneratzea gaituta &mdash; Hautatu hau <application>GNOMEren eguraldiak</application> automatikoki deskargatzea nahi baduzu azken eguraldi-informazioa <guilabel>Eguneratu</guilabel>n zehaztutako maiztasunarekin.  Desautatu aukera hau eguraldi-eguneratzeak eskuz bakarrik egin nahi badituzu, hau da, eskuineko botoiaz applet-ean klik egin eta <guimenuitem>Eguneratu</guimenuitem> hautatuz.
+</para>
+</listitem>
+
+      <listitem>
+<para>
+Erabili sistema metrikoa &mdash; Lehenespenez <application>GNOMEren eguraldiak</application> unitate-sistema anglosaxoia erabiltzen du. Hautatu kontrol-lauki hau unitate metrikoak erabiltzeko. Erabilitako unitateak ikusteko: <xref linkend="tab-units">.
+</para>
+
+
+       <table id="tab-units">
+         <title>Neurri-unitateak</title>
+            <tgroup cols="3">
+              <thead>
+                <row><entry>Kantitatea</entry> <entry>Metrikoa</entry> <entry>Anglosaxoia</entry></row>
+              </thead>
+              <tbody>
+                <row><entry>Tenperatura</entry> <entry>Celsius graduak</entry> <entry>Fahrenheit graduak</entry></row> <row><entry>Haize-abiadura</entry> <entry>km/h</entry> <entry>mph</entry></row> <row><entry>Presioa</entry> <entry>mmHg</entry> <entry>inHg</entry></row> <row><entry>Ikusgaitasuna</entry> <entry>km</entry> <entry>miliak</entry></row>
+              </tbody>
+            </tgroup>
+          </table>
+      </listitem>
+
+      <listitem>
+<para>
+Iragarpen xehea  &mdash; Hautatu hau <application>GNOMEren eguraldia</application>k zure herrirako bost eguneko iragarpena jaso dezan nahi baduzu. Kontuan izan zenbait lekurentzat beharbada ez dela iragarpenik egongo.
+</para>
+ 
+<para>
+Botoi hau hautatu gabe dagoenean jasotzen den iragarpena leku hori barne hartzen duen eremu zabalago baten iragarpen laburra izaten da (normalean herrialde osoa) eta gehienetan 5 egunekoa.
+</para>
+ <note>
+        <title>Iragarpen-eskuragarritasuna</title>
+        
+<para>
+Kontuan izan IWINek emandako iragarpen xeheak Estatu Batuetako hirientzat soilik daudela erabilgarri.
+</para>
+</note></listitem>
+
+<!--
+      <listitem>
+       
+<para>
+
+        Enable radar maps &mdash; this allows you to retrieve radar
+        maps, if these are available.  These may be retrieved from the
+        Web, as long  as a valid URL pointing to the image (in
+        practically any format) is provided.  Check the <quote>Enable
+        radar maps</quote> if you want to enable this option.  If a
+        radar image URL is not provided in the
+        <filename>Locations</filename> file of the standard
+        distribution, you can always add one using the location editor
+        (see <xref linkend="location-editor">).
+       
+</para>
+
+      </listitem>
+-->
+
+     </itemizedlist>
+</para>
+
+
+    
+<para>
+<guilabel>Sarea</guilabel> fitxako propietateak erabili beharko dituzu zure ordenagailua suebaki baten atzean badago.  Hauek dira propietateak: <itemizedlist>
+
+      <listitem>
+<para>
+Erabili proxy-a &mdash; Hautatu botoi hau suebaki baten atzean bazaude eta HTTP proxy baten bidez sartzen bazara sarean.
+</para>
+</listitem>
+
+      <listitem>
+<para>
+Proxy ostalaria &mdash; Sartu hemen zure proxy ostalariaren IP helbidea (HTTP proxy-a erabiltzen baduzu).
+</para>
+</listitem>
+
+      <listitem>
+<para>
+Erabiltzaile-izena &mdash; Idatzi hemen zure erabiltzaile-izena.
+</para>
+</listitem>
+
+      <listitem>
+<para>
+Pasahitza &mdash; Idatzi hemen zure pasahitza. (Kontuan izan pasahitz hau konfigurazio-fitxategi pribatu batean gordeko dela, baina ez dela enkriptatuko).
+</para>
+</listitem>
+
+     </itemizedlist>
+</para>
+
+
+    
+<para>
+<guilabel>Kokalekua</guilabel> fitxaren bidez zehatz dezakezu <application>GNOMEren eguraldia</application>ren applet-ak nongo eguraldi-informazioa bistaratzea nahi duzun. Egin klik edozein (+) ikurretan zuhaitza zabaltzeko edo edozein (-) ikurretan zuhaitz-adarra ixteko.  Hautatu hiria edo eskualdea saguaren ezker-botoiaz klik eginez.
+</para>
+
+
+    
+<para>
+Kokalekuak hiru mailako hierarkian antolatuta daude.  Goiko mailak geografia-area zabalak biltzen ditu, bigarrenak eskualdeak eta azkenak hiriak.  Hierarkia hori US NWSek (Eguraldi-zerbitzu nazionalak) informazioa antolatzeko erabiltzen duen moduan oinarritua dago batez ere, eta horrexegatik agertzen dira AEB eta Kanada maila gorenean.
+</para>
+
+
+    
+<para>
+Nahi dituzun aldaketa guztiak egin ondoren, egin klik <guibutton>Ados</guibutton> botoian aldaketak aplikatu eta <interface>Propietateen</interface> elkarrizketa-koadroa ixteko. Aldaketak bertan behera uzteko eta aurreko balioetara itzultzeko, egin klik <guibutton>Utzi</guibutton> botoian.
+</para>
+</sect2>
+
+  <!-- ============= Further Information  ==================== -->
+ <!-- This section should describe known bugs and limitations of the
+  program if there are any - please be frank and list all problems you
+  know of -->
+ <sect2 id="gweather-furtherinfo">
+   <title>Informazio gehiago</title>
+   
+<para>
+<application>GNOMEren eguraldia</application>ren etxeko orria <ulink
+    url="http://gweather.dhs.org/">http://gweather.dhs.org/</ulink> helbidean dago. Hor aurkituko duzu <ulink    
+url="http://gweather.dhs.org/Locations">Kokalekuen</ulink> azken fitxategia, aldiro-aldiro eguneratzen baitute hiri berriekin, erabiltzaileek helarazi ahala.  Banaketa horretan zure hiria ez badago, idatzi Spiros Papadimitriou-ri (<email>spapadim+@cs.cmu.edu</email>) beharrezko informazioa emanez eta hurrengoan agertuko da.
+</para>
+
+
+   
+<para>
+<ulink url="http://gweather.dhs.org/news.html">Azken berriak</ulink> ikusteko gogorik baduzu, zoaz etxeko orrira.
+</para>
+</sect2>
+
+
+  <!-- ============= Bugs ================================== -->
+ <!--
+  This section should describe known bugs and limitations of the
+  program if there are any - please be frank and list all problems you
+  know of --> 
+ <sect2 id="gweather-bugs">
+   <title>Ezagutzen diren akatsak eta mugak</title>
+   <sect3 id="blocking-io">
+    <title>Sarrera/irteera blokeatzea</title>
+    
+<para>
+<application>GNOMEren eguraldia</application>k blokeatzen ez den S/I erabiltzen duen arren saretik datuak jasotzeko, oraindik ere badira exekuzioa blokeatzen duten hainbat urrats.  Nabarmenki, urruneko ostalariarekin TCP konexioa ezartzea eragiketa blokeatzailea da.  NWS eta IWIN web zerbitzariak oso kargatuta egoten direnez, litekeena da urrats honek denbora asko behar izatea. Hori egiten duen bitartean, aplikazioak ezin die <interface>Panel</interface>eko CORBA eskaerei erantzun.  Uneko inplementazioan, <interface>Panela</interface> aplikazio guztietan zehar iteratzen aritzen da eta CORBA eskaerak maiz bidaltzen ditu (adib. gordetzeko egoerarentzat).  Applet batek ezin badu erantzun arrazoiren batengatik, orduan <interface>Panela</interface> blokeatu egingo da erantzunaren zain.
+</para>
+
+
+    
+<para>
+<interface>Panela</interface> blokeatuta dagoen bitartean, ez die erabiltzaileen (edo aplikazioen) eskaerei erantzungo.  Adibidez, <interface>Panel</interface> mugimendu eta <interface>Panel</interface> menuak (eskuin-klikaz agertzen direnak) ez dira ibiliko.  Hala ere, <interface>Panel</interface>eko beste applet batzuk funtzionatu beharko lukete (baldin eta ez badiote CORBA eskaerarik egin <interface>Panela</interface>ri; adib., <interface>Panela</interface>ren tamaina galdetzeko).  <application>GNOMEren eguraldia</application>k blokeo-operazioa amaitu bezain laster, guztiak betiko moduan egon beharko luke  berriro (erabiltzaile-interfazearen eskaerak, bufferrean gordeta geratu direnak, exekutatu egingo dira).
+</para>
+
+
+    
+<para>
+Badago HTTP prozesatzeko beste hari bat erabiltzen duen <application>GNOMEren eguraldiaren</application> bertsio esperimental bat, eta agian hurrengo banaketan hori sartuko dugu (aldi baterako).  Hala ere, azken konponbidea <application>gnome-vfs</application> da, eta GNOME 2.0ren baitan egongo da. Plataforma anitzeko euskarria eskainiko du S/I erabat asinkronorako.
+</para>
+
+
+   </sect3>
+ </sect2>
+
+
+  <!-- ============= FAQ ================================== -->
+ <!-- This section should describe known bugs and limitations of the
+       program if there are any - please be frank and list all problems you
+       know of -->
+
+  <sect2 id="gweather-faq">
+   <title>Maiz egiten diren galderak</title>
+
+   
+<para>
+ <application>GNOMEren eguraldia</application>ri buruz maiz egiten diren galderen zerrenda da hau.  Informazio gehiago eta bertsio berriak, zoaz <ulink
+    url="http://gweather.dhs.org/">GNOMEren eguraldiaren etxeko orrira</ulink>.  Oraindik ez bada zure arazoa konpondu, idatz iezaiozu egileari: <email>spapadim+gweather@cs.cmu.edu</email>.
+</para>
+
+
+   <sect3 id="unnamed1">
+    <title>Zergatik blokeatzen dit Panela GNOMEren eguraldiak?</title>
+    
+<para>
+Horren arrazoia zenbait eragiketaren izaera blokeatzailea da (ikus <xref linkend="blocking-io">) eta baita <interface>Panela</interface>k unean duen lan egiteko modua ere.
+</para>
+</sect3>
+
+   <sect3 id="unnamed2">
+    <title>Zergatik agertzen da hutsik kokalekuen zerrenda?</title>
+
+    
+<para>
+Seguru asko <filename>Kokalekuen</filename> fitxategia ez zegoelako behar den lekuan instalatuta.  <application>GNOMEren eguraldia</application> eta GNOME modu berdinean konfiguratuta ez daudelako gertatzen da hori normalean.  Kokalekuak biltzen dituen fitxategia <filename>gweather</filename> azpi-direktorioan kokatu behar da, gnome-ren datu-direktorioaren azpian.  Bigarren hori <userinput>gnome-config --datadir</userinput> komandoaren bidez aurki dezakezu.
+</para>
+
+
+    
+<para>
+Zure kabuz konpilatu baduzu gnome-applets, egiaztatu <userinput>configure --prefix=`gnome-config --prefix` --sysconfdir=`gnome-config --sysconfdir`</userinput> erabili duzula.  RPM bitarrek suposatzen dute prefix eta sysconfdir <filename>/usr</filename> eta <filename>/etc</filename> direla, hurrenez hurren.  Zure kabuz konpilatu baduzu GNOME aukera desberdinekin, gnome-applets ere zure kabuz deskargatu eta konpilatu behar duzu.
+</para>
+</sect3>
+
+   <sect3 id="unnamed3">
+    <title>GNOMEren eguraldiak zergatik bistaratzen ditu galdera-ikurra eta marratxoak uneko baldintzetan?</title>
+
+    
+<para>
+Hori gertatzen da <application>GNOMEren eguraldia</application>k arrazoiren batengatik ezin badu atzitu NWS zerbitzaria.  Beharbada zure sare-konexioa erorita dagoelako gertatu da, edo NWS zerbitzaria itzalita dagoelako, edo NWS zerbitzariak une honetan ez daukalako zure hiriari buruzko informaziorik.
+</para>
+</sect3>
+
+   <sect3 id="unnamed4">
+    <title>Zergatik esaten du GNOMEren eguraldiak iragarpen bat ez dagoela erabilgarri?</title>
+
+    
+<para>
+Iragarpen xeheak gaituta badituzu, litekeena da zure hiriarentzat erabilgarri ez egotea.  Horrela bada, desgaitu iragarpen xeheak.
+</para>
+
+
+    
+<para>
+Litekeena den beste arrazoi bat da IWIN zerbitzaria itzalita egotea eta ondorioz <application>GNOMEren eguraldia</application>k iragarpenari buruzko informazioa ezin jaso izatea.  IWIN zerbitzaria berriz ere ondo dabilenean arazoak konponduta geratu beharko luke.
+</para>
+</sect3>
+
+<!--
+   <sect3>
+    <title>Why is the radar map not displayed?</title>
+
+    
+<para>
+
+     The most common reason is that the webserver containing the radar
+     image is down.  You may also want to use the location editor (see
+     <xref linkend="location-editor">) to make sure that the radar
+     image URL for your location is valid.
+    
+</para>
+
+
+    
+<para>
+
+     Also, if the image is in an uncommon format, <application>GNOME
+     Weather</application>  may not be able to display it.  Images are
+     displayed using the GNOME libraries, which supports practically
+     all available formats, so this problem should be very
+     rare. 
+</para>
+
+   </sect3>
+-->
+
+  </sect2>
+
+  <!-- ============= Authors ================================ -->
+
+  <sect2 id="gweather-authors">
+   <title>Egileak</title>
+   
+<para>
+<application>GNOMEren eguraldia</application> Spiros Papadimitriou-k idatzia da (<email>spapadim+@cs.cmu.edu</email>).  Bidali zure iruzkin, iradokizun eta akatsen berri-emateak <ulink url="http://bugs.gnome.org" type="http">GNOMEren akatsen segimendurako datu-basera</ulink>. (Akatsei buruzko berriak bidaltzeko argibideak <ulink     url="http://bugs.gnome.org/Reporting.html" type="http">linean</ulink> aurkituko dituzu.) GNOMEren 1.1 bertsioa edo berriagoa baduzu, <application>Akatsen berri emateko tresna</application> (<command>bug-buddy</command>) ere erabil dezakezu akatsen berri emateko. Tresna hori <guimenu>Menu nagusi</guimenu>ko <guisubmenu>Utilitateak</guisubmenu> azpimenuan duzu eskuragarri.
+</para>
+
+
+   
+<para>
+Eskuliburu hau Spiros Papadimitriou-k (<email>spapadim+@cs.cmu.edu</email>) eta Dan Mueth-ek idatzia da (<email>d-mueth@uchicago.edu</email>). Eskuliburuari dagozkion iruzkinak eta iradokizunak <ulink type="http"     url="http://www.gnome.org/gdp">GNOMEren dokumentazio-proiektura</ulink> bidal ditzakezu: <email>docs@gnome.org</email>. Iruzkinak linean ere egin ditzakezu <ulink type="http"     url="http://www.gnome.org/gdp/doctable/">GNOMEren dokumentazio-egoeraren taula</ulink> erabiliz.
+</para>
+
+
+<para>
+     Euskarazko itzulpena Hizkuntza Politikarako Sailburuordetzak 
+     egin du (<email>hizkpol@ej-gv.es</email>). Itzulpenari buruzko
+     oharrak eta iradokizunak helbide honetara bidal ditzakezu:
+      <email>hizkpol@ej-gv.es</email> 
+</para>
+
+  </sect2>
+
+
+  <!-- ============= Application License ============================= -->
+
+  <sect2 id="license">
+   <title>Lizentzia</title>
+   
+   <para> 
+      Programa hau software librea da; birbana eta/edo alda dezakezu, 
+      Free Software Foundation-ek argitaratutako <ulink
+      type="help"    url="gnome-help:gpl"><citetitle>GNU Lizentzia Publiko
+      Orokorra</citetitle></ulink>ren 2. bertsioan, edo (nahiago baduzu) bertsio
+      berriago batean, jasotako baldintzak betez gero. 
+   </para> 
+   <para>
+      Programa hau erabilgarria izango delakoan banatzen da, baina INOLAKO 
+      BERMERIK GABE; era berean, ez da bermatzen beraren EGOKITASUNA 
+      MERKATURATZEKO edo HELBURU PARTIKULARRETARAKO ERABILTZEKO. 
+      Argibide gehiago nahi izanez gero, ikus <ulink
+      type="help" url="gnome-help:gpl"><citetitle>GNU Lizentzia Publiko
+      Orokorra</citetitle></ulink>. 
+   </para> 
+<para>
+      <ulink type="help"    url="gnome-help:gpl"><citetitle>GNU Lizentzia
+      Publiko Orokorra</citetitle></ulink>ren kopia bat <citetitle>GNOME 
+      erabiltzailearen gida</citetitle>ren eranskinean daukazu. <ulink 
+      type="help" url="gnome-help:gpl"><citetitle>GNU Lizentzia Publiko 
+      Orokorra</citetitle></ulink>ren kopia Free Software Foundation-en 
+      bidez ere lor dezakezu <ulink type="http" url="http://www.fsf.org"> 
+      haren web gunea</ulink> bisitatuz edo hona idatziz: 
+     <address> Free Software Foundation, Inc. <street>59 Temple Place</street> -
+      Suite 330 <city>Boston</city>, <state>MA</state>
+      <postcode>02111-1307</postcode> <country>USA</country> </address> 
+</para>
+</sect2>
+
+ </sect1>
+
+
+
+

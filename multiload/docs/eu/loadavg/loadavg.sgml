@@ -1,0 +1,301 @@
+
+
+<!-- Permission is granted to make and distribute verbatim copies of --> 
+
+<!-- this manual provided the copyright notice and this permission --> 
+
+<!-- notice are  preserved on all copies. --> 
+
+<!-- --> 
+
+     <!-- Permission is granted to copy and distribute modified versions of -->
+      
+
+<!-- this manual under the conditions for verbatim copying, provided --> 
+
+<!-- that the entire resulting derived work is distributed under the --> 
+
+<!-- terms of a permission notice identical to this one. --> 
+
+<!-- --> 
+
+     <!-- Permission is granted to copy and distribute translations of this -->
+      
+
+<!-- manual into another language, under the above conditions for --> 
+
+<!-- modified versions, except that this permission notice may be --> 
+
+<!-- stated in a translation approved by the Foundation. -->  
+
+<sect1 id="loadavg-applet"> 
+
+<title>Batez besteko kargaren applet-a</title>   
+
+   <para> 
+       <application>loadavg_applet</application> monitore-applet txiki bat da,
+      besterik gabe panelean agertzen dena uneko batez besteko kargaren berri
+      emateko.  
+   </para> 
+  
+
+   <para> 
+      Makina baten batez besteko karga zenbaki nahiko arbitrarioa izaten da eta
+      makina zenbateraino dagoen "lanpetuta" adierazten du. Abian dauden
+      prozesuen eta nukleoaren deiaren zain daudenen arteko batez bestekoa
+      eginez kalkulatzen da (gutxi gorabehera). Oso lagungarria da zure makinak
+      denboran zehar izandako batez besteko karga desberdinak alderatzeko, baina
+      ez da oso erabilgarria beste makina batzuen denborekin alderatzeko.
+      Normalean frakzio gisa irudikatzen da.  <figure id="loadavg-applet-fig">
+      
+
+<title>Batez besteko kargaren applet-a</title> 
+<screenshot>  
+     <screeninfo>Batez besteko kargaren applet-a</screeninfo>  <graphic
+      format="png" fileref="figures/loadavg-applet" 		 srccredit="Eric Baudais">
+       </graphic> </screenshot> </figure> 
+   </para> 
+  
+<sect2 id="loadavg-usage"> 
+
+<title>Erabilera</title> 
+
+   <para> 
+      Ez daukazu applet honi ezer egin beharrik. Zure panelean agertu eta
+      exekutatuko da. Hainbat aukera erabil ditzakezu applet-aren bistaratzea
+      aldatzeko.  
+   </para> 
+ </sect2>  
+<sect2 id="loadavg-right-click"> 
+
+<title>Eskuin-klikaz agertzen den laster-menuko elementuak</title> 
+
+   <para> 
+       Menu-elementu estandarrez gain, eskuineko botoiaz klik eginda agertzen
+      den laster-menuak ondoko elementuak dauzka:  
+   </para> 
+   <variablelist> <varlistentry>
+ <term>Propietate lehenetsiak...</term> 
+
+<listitem> 
+
+   <para> 
+      <link linkend="loadavg-properties">Behean azaltzen den</link>
+      <guilabel>multiload_applet elkarrizketa-koadroa</guilabel> irekitzen du
+      applet honen eta beste monitore-applet batzuen propietate lehenetsiak
+      aldatzeko. 
+   </para> 
+ </listitem> </varlistentry>  <varlistentry>
+ <term>Propietateak...</term> 
+
+<listitem> 
+
+   <para> 
+      <link linkend="loadavg-properties">Behean azaltzen den</link>
+      <guilabel>multiload_applet elkarrizketa-koadroa</guilabel> irekitzen du,
+      <application>loadavg_applet</application>-aren propietateei dagokiena. 
+   </para> 
+      </listitem> </varlistentry>  <varlistentry>
+ <term>Exekutatu gtop...</term>
+      
+
+<listitem> 
+
+   <para> 
+      Aukera honek <command>gtop</command> exekutatuko du eta horrek GNOMEren
+      sistema-monitorea abiaraziko du. <application>gtop</application>-ek
+      sistemaren eta bertan gertatzen denaren ikuspegi zehatzagoa ematen dizu. 
+      
+   </para> 
+ </listitem> </varlistentry> </variablelist> </sect2>  
+<sect2 id="loadavg-properties"> 
+
+<title>Propietateak</title>  <figure id="loadavg-default-fig"> 
+
+<title>Propietate lehenetsien elkarrizketa-koadroa</title> 
+<screenshot>  
+     <screeninfo>Batez besteko kargaren applet-aren Propietate lehenetsien
+      elkarrizketa-koadroa</screeninfo>  <graphic format="png"
+      fileref="figures/loadavg-applet-default" 		 srccredit="Eric Baudais"> 
+      </graphic> </screenshot> </figure>  
+
+   <para> 
+      Beste zenbait monitore-applet-etan bezala,
+      <application>loadavg_applet</application>-en hobespenak bi modutan ezar
+      daitezke: Talde honetako edozein applet-etan eragina duten aldaketak egin
+      ditzakezu elkarrizketa-koadro handi batean
+      (<application>cpuload_applet</application>,
+      <application>memload_applet</application>,
+      <application>swapload_applet</application>,
+      <application>netload_applet</application> eta
+      <application>loadavg_applet</application>). Erabilgarria da horietakoren
+      bat edo gehiago erabiltzen baduzu. Hauek dira lehenespenez erabiltzen
+      diren ezarpenak. 
+     <guimenuitem>Propietate lehenetsiak...</guimenuitem> menu-elementuan
+      aurkituko dituzu. 
+   </para> 
+  <figure id="loadavg-greyed-fig"> 
+
+<title>Lausotutako Propietateen elkarrizketa-koadroa</title> 
+<screenshot>  
+     <screeninfo>Batez besteko kargaren applet-aren Lausotutako Propietateen
+      elkarrizketa-koadroa</screeninfo>  <graphic format="png"
+      fileref="figures/loadavg-applet-greyed" 	     srccredit="Eric Baudais"> 
+      </graphic> </screenshot> </figure>  
+
+   <para> 
+      Edo <application>loadavg_applet</application>-aren propietateak bakarrik
+      alda ditzakezu. Erabilgarria da
+      <application>loadavg_applet</application>-a bakarrik erabiltzen duzunean
+      edo konbinazio berriak probatu nahi dituzunean. 
+<guimenuitem>Propietateak</guimenuitem> menu-elementuan aurkituko duzu. 
+   </para> 
+ <note> 
+
+   <para> 
+ 
+     <guimenuitem>Propietateak...</guimenuitem> menu-elementua erabiltzen baduzu
+      eta applet honen hobespenak bakarrik editatzen badituzu,
+      <guibutton>Erabili propietate lehenetsiak</guibutton> kontrol-laukiari
+      hautamarka kendu behar diozu ezarpenak aldatu ahal izateko. 
+   </para> 
+ </note>  <figure id="loadavg-properties-fig"> 
+
+<title>Batez besteko kargaren Propietateen elkarrizketa-koadroa</title> 
+<screenshot>  
+     <screeninfo>Batez besteko kargaren Propietateen
+      elkarrizketa-koadroa</screeninfo>  <graphic format="png"
+      fileref="figures/loadavg-applet-properties" 	     srccredit="Eric
+      Baudais">  </graphic> </screenshot> </figure>  
+
+   <para> 
+ Propietateetan egin ditzakezun aldaketak lau dira: 
+   </para> 
+  <variablelist> <varlistentry> <term>Koloreak</term> 
+
+<listitem> 
+
+   <para> 
+      Applet-a bistaratzeko erabiltzen diren koloreak alda ditzakezu
+      kolore-koadroetan klik eginez. GNOME-ren kolore-gurpila agertuko zaizu.
+      Tituluak nahasgarri xamarrak dira. "Erabilita" uneko batez besteko karga
+      da, eta "libre" atzeko planoaren kolorea da. 
+   </para> 
+ </listitem> </varlistentry>  <varlistentry> <term>Abiadura</term> 
+
+<listitem> 
+
+   <para> 
+      Grafikoa eguneratzeko behar duen denbora alda dezakezu honen bidez.
+      Milisegundotan neurtzen da. Balio lehenetsia 500 da. 
+   </para> 
+ </listitem> </varlistentry>  <varlistentry> <term>Tamaina</term> 
+
+<listitem> 
+
+   <para> 
+      Applet-aren tamaina alda dezakezu honen bidez. Pixeletan neurtzen da.
+      Lehenetsitako balioa 40 da, eta pixel 1etik aurrera nahi duzun balioa ezar
+      dezakezu. Panel bertikaletan tamaina altuerari dagokio. Panel
+      horizontaletan, berriz, zabalerari dagokio.  
+   </para> 
+ </listitem> </varlistentry>  <varlistentry> <term>Gehienekoa</term> 
+
+<listitem> 
+
+   <para> 
+      Hau da Y ardatzaren gehieneko balioa (applet-ak erakuts dezakeen gehieneko
+      batez besteko karga). Balio lehenetsia 10 da.
+   </para> 
+ <note> 
+
+   <para> 
+ Aukera hau 
+     <guimenuitem>Propietate lehenetsien menu-aukeran</guimenuitem> bakarrik
+      dago erabilgarri. Ez da agertzen 
+     <guimenuitem>Propietateen menu-aukera</guimenuitem>tik irekitzen den
+      elkarrizketa-koadroan. 
+   </para> 
+ </note> </listitem> </varlistentry> </variablelist> </sect2>  
+<sect2 id="loadavg-bugs"> 
+
+<title> Ezagutzen diren akatsak eta mugak</title> 
+
+   <para> 
+      Panelaren tamaina eta orientazioa aldatzeak arazoak ekar ditzake, nahiz
+      eta orain denbora bat pasatakoan berez konpontzen diren. 
+   </para> 
+ </sect2>  
+<sect2 id="loadavg-authors"> 
+
+<title>Egileak</title> 
+
+   <para> 
+      Applet hau Martin Baulig-ek idatzi du
+      (<email>martin@home-of-linux.org</email>). Bidali zure iruzkin, iradokizun
+      eta akatsen berri-emateak <ulink url="http://bugs.gnome.org"
+      type="http">GNOMEren akatsen segimendurako datu-basera</ulink>. (Akatsei
+      buruzko berriak bidaltzeko argibideak <ulink      
+      url="http://bugs.gnome.org/Reporting.html" type="http">linean</ulink>
+      aurkituko dituzu.) GNOMEren 1.1 bertsioa edo berriagoa 
+      baduzu, <application>Akatsen berri emateko tresna</application>
+      (<command>bug-buddy</command>) ere erabil dezakezu akatsen berri emateko.
+      Tresna hori 
+<guimenu>Menu nagusi</guimenu>ko 
+<guisubmenu>Utilitateak</guisubmenu> azpimenuan duzu eskuragarri. 
+   </para> 
+ 
+
+   <para> 
+     Eskuliburu hau Telsa Gwynne-k (<email>telsa@linuxchix.org</email>) eta Eric
+      Baudais-ek (<email>baudais@okstate.edu</email>) idatzi dute. Eskuliburuari
+      dagozkion iruzkinak eta iradokizunak <ulink type="http"      
+      url="http://www.gnome.org/gdp">GNOMEren dokumentazio-proiektura</ulink>
+      bidal ditzakezu: <email>docs@gnome.org</email>. Iruzkinak linean ere egin
+      ditzakezu <ulink type="http"     
+      url="http://www.gnome.org/gdp/doctable/">GNOMEren dokumentazio-egoeraren
+      taula</ulink> erabiliz. 
+   </para> 
+  
+
+   <para> 
+      Euskarazko itzulpena Hizkuntza Politikarako Sailburuordetzak egin du
+      (<email>hizkpol@ej-gv.es</email>). Itzulpenari buruzko oharrak eta
+      iradokizunak helbide honetara bidal ditzakezu:
+      <email>hizkpol@ej-gv.es</email> 
+   </para> 
+  </sect2>  
+
+<!-- ============= Application License ============================= -->  
+<sect2 id="license"> 
+
+<title>Lizentzia</title> 
+
+   <para> 
+      Programa hau software librea da; birbana eta/edo alda dezakezu, 
+      Free Software Foundation-ek argitaratutako <ulink
+      type="help"    url="gnome-help:gpl"><citetitle>GNU Lizentzia Publiko
+      Orokorra</citetitle></ulink>ren 2. bertsioan, edo (nahiago baduzu) bertsio
+      berriago batean, jasotako baldintzak betez gero. 
+   </para> 
+   <para>
+      Programa hau erabilgarria izango delakoan banatzen da, baina INOLAKO 
+      BERMERIK GABE; era berean, ez da bermatzen beraren EGOKITASUNA 
+      MERKATURATZEKO edo HELBURU PARTIKULARRETARAKO ERABILTZEKO. 
+      Argibide gehiago nahi izanez gero, ikus <ulink
+      type="help" url="gnome-help:gpl"><citetitle>GNU Lizentzia Publiko
+      Orokorra</citetitle></ulink>. 
+   </para> 
+<para>
+      <ulink type="help"    url="gnome-help:gpl"><citetitle>GNU Lizentzia
+      Publiko Orokorra</citetitle></ulink>ren kopia bat <citetitle>GNOME 
+      erabiltzailearen gida</citetitle>ren eranskinean daukazu. <ulink 
+      type="help" url="gnome-help:gpl"><citetitle>GNU Lizentzia Publiko 
+      Orokorra</citetitle></ulink>ren kopia Free Software Foundation-en 
+      bidez ere lor dezakezu <ulink type="http" url="http://www.fsf.org"> 
+      haren web gunea</ulink> bisitatuz edo hona idatziz: 
+     <address> Free Software Foundation, Inc. <street>59 Temple Place</street> -
+      Suite 330 <city>Boston</city>, <state>MA</state>
+      <postcode>02111-1307</postcode> <country>USA</country> </address> 
+</para>
+ </sect2>  </sect1>

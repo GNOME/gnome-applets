@@ -1,0 +1,403 @@
+ 
+
+<sect1 id="mini-commander"> 
+
+<title>Mini-Commander applet-a</title>  
+
+   <para> 
+      <application>Mini-Commander</application> applet-ak (<xref  
+      linkend="mini-commander-applet-fig">) komando-lerro bat gehitzen du
+      <interface>Panel</interface>ean. Komando-osatzea, historia, makro
+      aldagarriak eta aukerako erloju inkorporatu bat eskaintzen ditu. Makro
+      aldagarriei esker, hainbat atazatan erabil dezakezu. Besterik gabe
+      programa bat abiaraz dezakezu (edo makro labur bat), edo web orri bat ikus
+      dezakezu, edo norbaiten/informazio-orri bat bilatu eta abar.
+      <application>Mini-Commander</application> <interface>Panel</interface>etik
+      kanpora atera dezakezu ezkerreko aldean duen aukerako maneiatzailea
+      erabiliz. Hori oso erosoa da panel bertikalak erabiltzen dituztenentzat.
+      
+   </para> 
+  
+
+   <para> 
+     Applet hau <interface>Panel</interface> bati gehitzeko, egin klik eskuineko
+      botoiaz <interface>Panel</interface>ean eta aukeratu 
+<menuchoice>
+<guimenu>Panela</guimenu> 
+<guisubmenu>Gehitu panelari</guisubmenu> 
+<guisubmenu>Applet-a</guisubmenu> 
+<guisubmenu>Utilitatea</guisubmenu> 
+<guimenuitem>Mini-Commander</guimenuitem>
+</menuchoice>. 
+   </para> 
+  <figure id="mini-commander-applet-fig"> 
+
+     <title>Mini-Commander applet-a</title> <screenshot>
+      <screeninfo>Mini-Commander applet-a</screeninfo> <graphic format="png"
+      fileref="figures/mini-commander_applet"     srccredit="Martin Baulig">
+      </graphic> </screenshot> </figure> 
+
+<!-- ============= Usage  ================================ --> 
+<sect2 id="APPLET-usage"> 
+
+<title>Erabilera</title>  
+
+   <para> 
+     Programa bat abiarazteko edo komando bat exekutatzeko, besterik gabe sartu
+      programa edo komandoa eta sakatu itzulera tekla. Edo, zure
+      fitxategi-sistemako aplikazio edo komando bat bilatzeko, egin klik beheko
+      izkinako <guiicon>zirkulua</guiicon>n. 
+   </para> 
+ 
+
+   <para> 
+      <application>Mini-Commander</application>-ek komando-osatze automatikoa
+      dauka (beste erabiltzaile shell askok izaten dutenaren antzekoa). Beraz,
+      askotan ez duzu izen osoa idatzi beharrik izango, baizik eta hasierako
+      karaktereak soilik eta ondoren <keycap>tab</keycap> tekla.
+      <application>Mini-Commander</application> programaren izena osatzen
+      saiatuko da UNIX shell gehienek egiten duten moduan.
+   </para> 
+ 
+
+   <para> 
+      <application>Mini-Commander</application>-ek komando-historia ere badu,
+      aurreko komandoak berriro erabili ahal izateko <keycap>gora gezia</keycap>
+      edo <keycap>behera gezia</keycap> tekla sakatuz. UNIX shell gehienetako
+      komando-historiak bezala funtzionatzen du. Kontuan izan komandoak ez
+      direla historian gordetzen lehendik historian baldin badaude, bikoiztuta
+      ager ez daitezen. Historia-zerrendara joateko, sakatu
+      <guibutton>behera geziaren ikono</guibutton> txikia eta hautatu nahi duzun
+      komandoa. 
+   </para> 
+ 
+
+   <para> 
+      <application>Mini-Commander</application>-ek makroak ere erabil ditzake.
+      Aurrez definitutako zenbait makro ditu. Adibidez,
+      <command>term:<replaceable>komandoa</replaceable></command> sartzen
+      baduzu, <command><replaceable>komandoa</replaceable></command>
+      terminal-leiho batean exekutatuko da. Edo URL bat sartzen baduzu, web
+      arakatzailea erabiliko du ikusteko. Gainera zuk zeure makroak idatz
+      ditzakezu edo lehenetsitakoak aldatu. 
+   </para> 
+  
+
+   <para> 
+     Applet-ean eskuineko botoiaz klik eginez gero, elementu hauek dituen menua
+      agertuko zaizu: 
+
+<itemizedlist>  
+
+<listitem> 
+
+   <para> 
+ 
+     <guimenuitem>Propietateak&hellip;</guimenuitem> &mdash; <link
+      linkend="mini-commander-prefs"> <guilabel>Propietateak</guilabel></link>
+      elkarrizketa-koadroa irekitzen du. 
+   </para> 
+ </listitem>  
+
+<listitem> 
+
+   <para> 
+ 
+<guimenuitem>Laguntza</guimenuitem> &mdash; dokumentu hau bistaratzen du. 
+   </para> 
+ </listitem>  
+
+<listitem> 
+
+   <para> 
+ 
+     <guimenuitem>Honi buruz&hellip;</guimenuitem> &mdash;
+      <application>Mini-Commander applet</application>-ari buruzko oinarrizko
+      informazioa erakusten du, esaterako, applet-aren bertsioa eta egilearen
+      izena. 
+   </para> 
+ </listitem>  </itemizedlist> 
+   </para> 
+ </sect2>   
+
+<!-- ============= Customization ============================= --> 
+<sect2 id="mini-commander-prefs"> 
+
+<title>Pertsonalizazioa</title> 
+
+   <para> 
+     <application>Mini-Commander</application> applet-a pertsonaliza dezakezu
+      bertan eskuineko botoiaz klik egin eta 
+     <guimenuitem>Propietateak</guimenuitem> aukeratuz.
+      <interface>Propietateen</interface> elkarrizketa-koadroa (<xref     
+      linkend="mini-commander-settings-fig-1">) irekiko da, eta hainbat ezarpen
+      aldatu ahal izango duzu. 
+   </para> 
+  <figure id="mini-commander-settings-fig-1"> 
+
+     <title>Propietateen elkarrizketa-koadroa: Orokorra fitxa</title>
+      <screenshot> <screeninfo>Propietateen elkarrizketa-koadroa: Orokorra
+      fitxa</screeninfo> <graphic format="png"
+      fileref="figures/mini-commander_settings_general"      srccredit="Martin
+      Baulig"> </graphic> </screenshot> </figure> 
+
+   <para> 
+<guilabel>Orokorra</guilabel> fitxako propietateak hauek dira: 
+
+<itemizedlist>  
+
+<listitem> 
+
+   <para> 
+     Erakutsi ordua &mdash; Botoi hau hautatzen baduzu, ordua erakutsiko dizu
+      applet-aren beheko izkinan. 
+   </para> 
+ </listitem>  
+
+<listitem> 
+
+   <para> 
+     Erakutsi data &mdash; Botoi hau hautatzen baduzu, data erakutsiko dizu
+      applet-aren beheko izkinan. 
+   </para> 
+ </listitem>  
+
+<listitem> 
+
+   <para> 
+     Erakutsi heldulekua &mdash; Botoi hau hautatzen baduzu, heldulekua jarriko
+      du applet-aren ertzean, eta horrela, applet-a
+      <interface>Panel</interface>etik askatu ahal izango duzu. Applet-a berriz
+      ere <interface>Panel</interface>ean jarri ahal izango duzu lehengo lekura
+      arrastatuz. 
+   </para> 
+ </listitem>  
+
+<listitem> 
+
+   <para> 
+     Erakutsi markoa &mdash; Botoi hau hautatzen baduzu, marko fin beltza
+      marraztuko du applet-aren inguruan. 
+   </para> 
+ </listitem>  
+
+<listitem> 
+
+   <para> 
+     Gaitu historian oinarritutako osatze automatikoa &mdash; Botoi hau
+      hautatzen baduzu, <application>Mini-Commander</application>-ek
+      automatikoki osatuko ditu komandoak historia-zerrendaren bidez. 
+   </para> 
+ </listitem>  
+
+<listitem> 
+
+   <para> 
+Applet-zabalera &mdash; Idatzi hemen applet-arentzat nahi duzun zabalera. 
+   </para> 
+ </listitem>  
+
+<listitem> 
+
+   <para> 
+Applet-altuera &mdash; Idatzi hemen applet-arentzat nahi duzun altuera. 
+   </para> 
+ </listitem>  
+
+<listitem> 
+
+   <para> 
+Komando-lerroaren altuera &mdash; (Eginbide hau desgaituta dago.) 
+   </para> 
+ </listitem>  
+
+<listitem> 
+
+   <para> 
+     Komando-lerroaren aurreko planoa &mdash; Hautatu aurreko planoaren kolorea.
+      Hori izango da idazten duzun testuaren kolorea. 
+   </para> 
+ </listitem>  
+
+<listitem> 
+
+   <para> 
+     Komando-lerroaren atzeko planoa &mdash; Hautatu atzeko planoaren kolorea.
+      Sartzen duzun testuaren atzeko planoan erabiliko da. 
+   </para> 
+ </listitem>  </itemizedlist> 
+   </para> 
+  
+
+<!--    <figure id="mini-commander-settings-fig-2"> 
+
+     <title>Propietateen elkarrizketa-koadroa: Makroak fitxa</title>
+      <screenshot> <screeninfo>Propietateen elkarrizketa-koadroa: Makroak
+      fitxa</screeninfo> <graphic format="png"
+      fileref="figures/mini-commander_settings_macros"      srccredit="Martin
+      Baulig"> </graphic> </screenshot> </figure>-->  
+
+   <para> 
+     <guilabel>Makroak</guilabel> fitxak 99 makroko zerrenda du, eta horietako
+      bakoitza adierazpen erregularra (<guilabel>Regex</guilabel>) eta makroa
+      (<guilabel>Makroa</guilabel>) da. Idatzi
+      <application>Mini-Commander</application>-ek aurkitu behar duen adierazpen
+      erregularra ezkerreko zutabean eta exekutatu behar duen makroa
+      eskuinekoan. Lehenetsitako ezarpenak makro erabilgarri ugari ditu
+      definituta, eta seguru asko zeure makroak idazten ikasten lagunduko
+      dizute. 
+   </para> 
+  
+
+   <para> 
+     Nahi dituzun aldaketa guztiak egin ondoren, egin klik
+      <guibutton>Ados</guibutton> botoian aldaketak aplikatu eta
+      <interface>Propietateen</interface> elkarrizketa-koadroa ixteko. Aldaketak
+      bertan behera utzi eta aurreko balioetara itzultzeko, egin klik
+      <guibutton>Utzi</guibutton> botoian. 
+   </para> 
+ </sect2>   
+
+<!-- ============= Freq. Asked Questions ==================== --> 
+<sect2 id="faq"> 
+
+<title>Maiz egiten diren galderak</title>  
+
+   <para> 
+     Jarraian, maiz egiten diren galderak eta emandako erantzunak aurkituko
+      dituzu. 
+   </para> 
+  <qandaset> <qandaentry> <question> 
+
+   <para> 
+      Zergatik ezin diot eman teklatu-fokua
+      <application>Mini-Commander</application>-i? 
+   </para> 
+ </question> <answer> 
+
+   <para> 
+     Badirudi arrazoi ugari izan ditzakeela arazo nahasgarri honek, eta
+      baldintza jakin batzuetan gertatzen dela. 
+   </para> 
+  
+
+   <para> 
+     Inolako teklatu-fokurik ezin badiozu eman
+      <application>Mini-Commander</application> applet-ari, beharbada zure
+      leiho-kudeatzaileak arazoren bat duelako izango da. Hala bada, idatz
+      iezadazu mezu labur bat zein leiho-kudeatzaile erabiltzen duzun adieraziz
+      (izena eta bertsioa). 
+   </para> 
+  
+
+   <para> 
+     Batzuetan gertatzen da behin bakarrik eman diezaiokezula teklatu-fokua
+      <application>Mini-Commander</application> applet-ari. Lehen aldi horren
+      ondoren ezin zaio berriz fokua eman. Oraingoz ez da ezagutzen akats horren
+      arrazoirik. 
+   </para> 
+  </answer> </qandaentry>  </qandaset> </sect2>   
+
+<!-- ============= Bugs ================================== --> 
+
+     <!-- This section should describe known bugs and limitations of       the
+      program if there are any - please be frank and list all problems you know
+      of --> 
+<sect2 id="bugs"> 
+
+<title>Ezagutzen diren akatsak eta mugak</title> 
+
+   <para> 
+      Kasu batzuetan lehen aldiaren ondoren ezin zaio fokua eman
+      <application>Mini-Commander</application>-i. 
+   </para> 
+ </sect2>   
+
+<!-- ============= Further Information ==================== --> 
+<sect2 id="furtherinfo"> 
+
+<title>Informazio gehiago</title> 
+
+   <para> 
+     <application>Mini-Commander</application> applet-ari buruzko informazio
+      gehiago nahi izanez gero, ikus bere web orria:<ulink   
+      url="http://www.maruhn.com/mini-commander/">
+      http://www.maruhn.com/mini-commander/</ulink>. 
+   </para> 
+ </sect2>  
+
+<!-- ============= Authors ================================ -->  
+<sect2 id="authors"> 
+
+<title>Egileak</title> 
+
+   <para> 
+      <application>Mini-Commander</application> Oliver Maruhn-ek idatzi du.
+      (<email>oliver@maruhn.com</email>). Bidali zure iruzkin, iradokizun eta
+      akatsen berri-emateak <ulink url="http://bugs.gnome.org"
+      type="http">GNOMEren akatsen segimendurako datu-basera</ulink>. (Akatsei
+      buruzko berriak bidaltzeko argibideak <ulink    
+      url="http://bugs.gnome.org/Reporting.html" type="http">linean</ulink>
+      aurkituko dituzu.) GNOMEren 1.1 bertsioa edo berriagoa baduzu,
+      <application>Akatsen berri emateko tresna</application>
+      (<command>bug-buddy</command>) ere erabil dezakezu akatsen berri emateko.
+      Tresna hori 
+<guimenu>Menu nagusi</guimenu>ko 
+<guisubmenu>Utilitateak</guisubmenu> azpimenuan duzu eskuragarri. 
+   </para> 
+  
+
+   <para> 
+      Eskuliburu hau Oliver Maruhn-ek idatzi du
+      (<email>oliver@maruhn.com</email>). Dan Mueth-ek aldaketa txiki batzuk eta
+      eguneratzeak egin dizkio (<email>d-mueth@uchicago.edu</email>).
+      Eskuliburuari dagozkion iruzkinak eta iradokizunak <ulink type="http"    
+      url="http://www.gnome.org/gdp">GNOMEren dokumentazio-proiektura</ulink>
+      bidal ditzakezu: <email>docs@gnome.org</email>. Iruzkinak linean ere egin
+      ditzakezu <ulink type="http"   
+      url="http://www.gnome.org/gdp/doctable/">GNOMEren dokumentazio-egoeraren
+      taula</ulink> erabiliz. 
+   </para> 
+  
+   <para> 
+      Euskarazko itzulpena Hizkuntza Politikarako Sailburuordetzak egin du
+      (<email>hizkpol@ej-gv.es</email>). Itzulpenari buruzko oharrak eta
+      iradokizunak helbide honetara bidal ditzakezu:
+      <email>hizkpol@ej-gv.es</email> 
+   </para> 
+    </sect2>   
+
+<!-- ============= Application License ============================= -->  
+<sect2 id="license"> 
+
+<title>Lizentzia</title> 
+
+   <para> 
+   <para> 
+      Programa hau software librea da; birbana eta/edo alda dezakezu, 
+      Free Software Foundation-ek argitaratutako <ulink
+      type="help"    url="gnome-help:gpl"><citetitle>GNU Lizentzia Publiko
+      Orokorra</citetitle></ulink>ren 2. bertsioan, edo (nahiago baduzu) bertsio
+      berriago batean, jasotako baldintzak betez gero. 
+   </para> 
+   <para>
+      Programa hau erabilgarria izango delakoan banatzen da, baina INOLAKO 
+      BERMERIK GABE; era berean, ez da bermatzen beraren EGOKITASUNA 
+      MERKATURATZEKO edo HELBURU PARTIKULARRETARAKO ERABILTZEKO. 
+      Argibide gehiago nahi izanez gero, ikus <ulink
+      type="help" url="gnome-help:gpl"><citetitle>GNU Lizentzia Publiko
+      Orokorra</citetitle></ulink>. 
+   </para> 
+<para>
+      <ulink type="help"    url="gnome-help:gpl"><citetitle>GNU Lizentzia
+      Publiko Orokorra</citetitle></ulink>ren kopia bat <citetitle>GNOME 
+      erabiltzailearen gida</citetitle>ren eranskinean daukazu. <ulink 
+      type="help" url="gnome-help:gpl"><citetitle>GNU Lizentzia Publiko 
+      Orokorra</citetitle></ulink>ren kopia Free Software Foundation-en 
+      bidez ere lor dezakezu <ulink type="http" url="http://www.fsf.org"> 
+      haren web gunea</ulink> bisitatuz edo hona idatziz: 
+     <address> Free Software Foundation, Inc. <street>59 Temple Place</street> -
+      Suite 330 <city>Boston</city>, <state>MA</state>
+      <postcode>02111-1307</postcode> <country>USA</country> </address> 
+</para>
+ </sect2>  </sect1>

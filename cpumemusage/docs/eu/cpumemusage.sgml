@@ -1,0 +1,139 @@
+<!-- Permission is granted to make and distribute verbatim copies of -->
+<!-- this manual provided the copyright notice and this permission -->
+ <!-- notice are  preserved on all copies. --> 
+<!-- -->
+ <!-- Permission is granted to copy and distribute modified versions of -->
+ <!-- this manual under the conditions for verbatim copying, provided -->
+ <!-- that the entire resulting derived work is distributed under the -->
+ <!-- terms of a permission notice identical to this one. -->
+ <!-- -->
+ <!-- Permission is granted to copy and distribute translations of this -->
+ <!-- manual into another language, under the above conditions for -->
+ <!-- modified versions, except that this permission notice may be -->
+ <!-- stated in a translation approved by the Foundation. -->
+
+<sect1 id="cpumemusage-applet">
+  <title>PUZ eta memoria-erabileraren applet-a</title> 
+
+  
+<para>
+<application>cpumemusage_applet</application> monitore-applet txiki bat da. Zure panelean agertzen da eta ordenagailuaren PUZ (CPU), memoria eta swap-aren erabilerari buruzko informazioa ematen dizu.  Applet hau <interface>Panel</interface> bati gehitzeko, egin klik eskuineko botoiaz <interface>Panel</interface>ean eta aukeratu <menuchoice><guimenu>Panela</guimenu> <guisubmenu>Gehitu panelari</guisubmenu> <guisubmenu>Applet-a</guisubmenu> <guisubmenu>Monitoreak</guisubmenu> <guimenuitem>PUZ/MEM erabilera</guimenuitem></menuchoice>.  
+ 
+   <sect2 id="cpumemusage-usage">
+
+    <title>Erabilera</title>
+    
+<para>
+Ez daukazu applet honi ezer egin beharrik. Zure panelean agertu eta exekutatuko da.
+</para>
+ 
+<para>
+Applet-ak hiru barra-diagrama erakusten ditu PUZ, memoria eta swap lekuarentzat. Zure panela horizontala bada, goiko barra PUZari dagokio, erdikoa memoriari eta behekoa swap-ari. Zure panela bertikala bada, ezkerreko barra PUZari dagokio, erdikoa memoriari eta eskuinekoa swap-ari.
+</para>
+
+
+    <figure id="cpumemusage-applet-fig">
+      <title>PUZ/MEM applet-a</title>
+     <screenshot>
+      <screeninfo>PUZ/MEM applet-a</screeninfo>
+     <graphic format="png" fileref="figures/cpumemusage-applet"
+      srccredit="Eric Baudais"></graphic></screenshot></figure>
+  
+    <variablelist><varlistentry><term>PUZ</term> <listitem>
+<para>
+Hemen hiru kolore erabiltzen dira. Horia erabiltzen da nukleorik behar ez duen PUZaren jarduerarentzat. Grisa erabiltzen da nukleoarekin komunikatzen diren programen PUZ jarduerarentzat (normalean S/I asko, gauzak memoriatik diskora eta alderantziz eramatean bezala). Beltza atzeko planoa da eta erabili gabeko PUZ irudikatzen du.
+</para>
+</listitem>
+</varlistentry>
+ <varlistentry>
+<term>Memoria</term>
+ <listitem>
+<para>
+Hemen lau kolore erabiltzen dira. Horia erabiltzen da memoria konpartituarentzat (programa batek baino gehiagok erabiltzen duten memoriarentzat). Grisa erabiltzen da bufferraren erabilerarentzat (oraindik diskoan idatzi gabeko datuak dituen memoriarentzat). Hori-grisaxka beste memoria-erabilera batzuetarako erabiltzen da. Berdeak erabili gabeko memoria irudikatzen du.
+</para>
+</listitem></varlistentry> <varlistentry><term>Swap</term> <listitem>
+<para>
+Hemen bi kolore erabiltzen dira. Gorriak adierazten du erabiltzen ari den swap lekua. Berdeak adierazten du erabili gabeko swap-a. Unean erabiltzen ari ez diren programen zatiak disko gogorreko Swap sekzioan jartzen ditu nukleoak, horrela, behar direnean erraz berreskuratzeko.
+</para>
+</listitem></varlistentry></variablelist></sect2>
+ <!--  When there are Right-Click Pop-Up Menu Items uncomment this section.
+   <sect2 id="cpumemusage-right-click">
+    <title>Right-Click Pop-Up Menu Items</title>
+    
+<para>
+ 
+      There are no extra menu items in the applet. 
+    
+</para>
+
+   </sect2>
+--> 
+<sect2 id="cpumemusage-bugs">
+    <title> Ezagutzen diren akatsak eta mugak</title>
+    
+<para>
+Applet honen akatsik ez da ezagutzen.
+</para>
+</sect2>
+
+   <sect2 id="cpumemusage-authors">
+    <title>Egileak</title>
+    
+<para>
+Applet hau Radek Doulik-ek idatzia da (<email>rodo@ucw.cz</email>).
+ Bidali zure iruzkin, iradokizun eta akatsen berri-emateak
+ <ulink type="http" url="http://bugs.gnome.org">GNOMEren akatsen
+ segimendurako datu-basera</ulink>. Gune horretako ildo nagusiak
+ jarrai ditzakezu edo komando-lerroko 
+<application>bug-buddy</application> erabili.
+ Paketearen izenean, jarri gnome-applets.
+</para>
+ 
+<para>
+Gida hau Telsa Gwynne-k (<email>telsa@linuxchix.org</email>) eta Eric Baudais-ek (<email>baudais@okstate.edu</email>) egina da, eta David Mason-ek (<email>dcm@redhat.com</email>) eta David Wheeler-ek egindako GNOME 1.0.53 erabiltzailearen gidako dokumentazioan dago oinarritua ia erabat. Bidali zure arazoen berri-emateak edo iradokizunak GNOME dokumentazio-proiektura (<email>docs@gnome.org</email>). Iruzkinak linean ere egin ditzakezu <ulink type="http"       url="http://www.gnome.org/gdp/doctable/">GNOMEren dokumentazio-egoeraren taula</ulink> erabiliz.
+</para>
+</sect2>
+  
+  <sect2 id="license">
+   <title>Lizentzia</title>
+   
+   <para> 
+      Programa hau software librea da; birbana eta/edo alda dezakezu, 
+      Free Software Foundation-ek argitaratutako <ulink
+      type="help"    url="gnome-help:gpl"><citetitle>GNU Lizentzia Publiko
+      Orokorra</citetitle></ulink>ren 2. bertsioan, edo (nahiago baduzu) bertsio
+      berriago batean, jasotako baldintzak betez gero. 
+   </para> 
+   <para>
+      Programa hau erabilgarria izango delakoan banatzen da, baina INOLAKO 
+      BERMERIK GABE; era berean, ez da bermatzen beraren EGOKITASUNA 
+      MERKATURATZEKO edo HELBURU PARTIKULARRETARAKO ERABILTZEKO. 
+      Argibide gehiago nahi izanez gero, ikus <ulink
+      type="help" url="gnome-help:gpl"><citetitle>GNU Lizentzia Publiko
+      Orokorra</citetitle></ulink>. 
+   </para> 
+ 
+<para>
+      <ulink type="help"    url="gnome-help:gpl"><citetitle>GNU Lizentzia
+      Publiko Orokorra</citetitle></ulink>ren kopia bat <citetitle>GNOME 
+      erabiltzailearen gida</citetitle>ren eranskinean daukazu. <ulink 
+      type="help" url="gnome-help:gpl"><citetitle>GNU Lizentzia Publiko 
+      Orokorra</citetitle></ulink>ren kopia Free Software Foundation-en 
+      bidez ere lor dezakezu <ulink type="http" url="http://www.fsf.org"> 
+      haren web gunea</ulink> bisitatuz edo hona idatziz: 
+     <address> Free Software Foundation, Inc. <street>59 Temple Place</street> -
+      Suite 330 <city>Boston</city>, <state>MA</state>
+      <postcode>02111-1307</postcode> <country>USA</country> </address> 
+</para>
+</sect2>
+</sect1>
+
+
+
+
+
+
+
+
+
+

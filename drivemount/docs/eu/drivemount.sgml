@@ -1,0 +1,325 @@
+ <sect1 id="drivemountapplet">
+  <title>Unitate-muntatzailearen applet-a</title>
+
+   <para>
+   <application>Unitate-muntatzailearen applet</application>-ak (<xref
+   linkend="drivemountapplet-fig">), mota desberdinetako diskoak eta
+    fitxategi-sistemak ordenagailuan azkar eta erraz muntatzeko eta 
+    desmuntatzeko aukera ematen dizu.  Applet hau 
+    <interface>Panel</interface> bati gehitzeko, egin klik eskuineko
+    botoiaz <interface>Panel</interface>ean eta aukeratu 
+    <menuchoice>
+   <guimenu>Panela</guimenu>
+    <guisubmenu>Gehitu panelari</guisubmenu>
+    <guisubmenu>Applet-a</guisubmenu>
+    <guisubmenu>Utilitatea</guisubmenu>
+    <guimenuitem>Unitate-muntatzailea</guimenuitem>
+   </menuchoice>
+  .</para>
+
+  <figure id="drivemountapplet-fig">
+   <title>Unitate-muntatzailearen applet-a</title>
+   <screenshot>
+    <screeninfo>Unitate-muntatzailearen applet-a</screeninfo>
+    <graphic format="png" fileref="figures/drivemount_applet_floppy" 
+    srccredit="muet"></graphic></screenshot></figure>
+
+  <note>
+   <title>Hasiberrientzako oinarrizko informazioa</title>
+   <para>
+Linux eta Unix sistemetan fitxategi-sistema asko eskuz muntatu eta desmuntatu behar izaten dira.  Fitxategi-sistema bat muntatu ondoren, irakurri eta idatz dezakezu bertan.  Fitxategi-sistema batekin amaitzean, desmuntatu egin beharko zenuke.  Oso garrantzitsua da unitate aldagarriak (disko malguak eta Zip diskoak, esaterako) euskarriak atera aurretik desmuntatzea, izan ere, Linux eta Unix sistemek beti ez baitituzte berehala idazten egindako aldaketak.  Normalean diskoan egindako aldaketak buffer batean gordetzen dira, sistemaren abiadura hobetzearren. Disko finkoetako partizioak, disko gogorrekoak adibidez, normalean automatikoki muntatzen dira ordenagailua abiaraztean, eta sistema ixtean, berriz, desmuntatu egiten dira.  Euskarri aldagarriak eskuz muntatu eta desmuntatu behar dira, adibidez, <application>Unitate-muntatzailea</application>ren applet-aren bidez.
+</para>
+ <para>
+&quot;Erroko fitxategi-sistema&quot; ordenagailuko fitxategi-sistema nagusia da, eta &quot;/&quot; (erroa) ikurrarekin hasten da.  Beste fitxategi-sistemak erroko fitxategi-sistemako direktorioekin lotuta daude.  Horiei &quot;muntatze-puntuak&quot; esaten zaie, eta direktorio hutsak baino ez dira.  Sistema-fitxategi bat muntatzean, haren edukiak direktorio horren barruan agertzen dira.  Adibidez, sistema gehienek  &quot;/mnt/floppy&quot; izeneko muntatze-puntua sortzen dute, eta direktorio hutsa baino ez da izango disketerik sartzen ez baduzu.  Disketea sartzen baduzu, berriz, disketearen edukia izango du bertan.
+</para>
+</note>
+
+  <!-- ============= Usage  ================================ -->
+ <sect2 id="drivemount-usage">
+   <title>Erabilera</title>
+   <para>
+Unitate bat muntatzeko edo desmuntatzeko, egin klik saguaren ezkerreko botoiaz <application>Disko-muntatzailearen applet</application>-aren ikonoan.  Euskarria egotz dezaketen unitateetan, hala nola CDROM eta JAZ unitate gehienetan, diskoa egotz dezakezu ikonoan saguaren eskuineko botoiaz klik eginez eta <guimenuitem>Egotzi</guimenuitem> hautatuz. <application>GNOMEren fitxategi-kudeatzailea</application>rekin diskoaren edukia arakatzeko, hautatu <guimenuitem>Arakatu&hellip;</guimenuitem>.
+</para>
+
+   <para>
+Applet-ean eskuineko botoiaz klik eginez gero, elementu hauek dituen menua agertuko zaizu: 
+<itemizedlist>
+</para>
+     <listitem>
+<para>
+<guimenuitem>Arakatu&hellip;</guimenuitem> &mdash; diskoaren edukia erakusten du <application>GNOMEren fitxategi-kudeatzailea</application> erabiliz. Horretarako, unitateak muntatuta egon behar du.
+</para>
+</listitem>
+
+     <listitem>
+<para>
+<guimenuitem>Egotzi</guimenuitem> &mdash; egotz daitezkeen unitateen euskarriak egozten ditu, CDROM eta JAZ unitateak, adibidez.
+</para>
+</listitem>
+
+     <listitem>
+<para>
+<guimenuitem>Propietateak&hellip;</guimenuitem> &mdash;  <link linkend="drivemountapplet-prefs">
+       <guilabel>Propietateak</guilabel></link> elkarrizketa-koadroa irekitzen du.
+</para>
+</listitem>
+
+     <listitem>
+<para>
+<guimenuitem>Laguntza</guimenuitem> &mdash; dokumentu hau bistaratzen du.
+</para>
+</listitem>
+
+     <listitem>
+<para>
+<guimenuitem>Honi buruz&hellip;</guimenuitem> &mdash;  <application>Unitate-muntatzailearen applet</application>-ari buruzko oinarrizko informazioa erakusten du, besteak beste, applet-aren bertsioa eta egilearen izena. </para> </listitem>  
+
+    </itemizedlist>
+</para>
+
+   <para>
+Muntatze-puntua eta muntatze-egoera erakusten dira argibide batean, kurtsorea applet-aren gainean edukitzen baduzu unetxo batez (<xref linkend="drivemountapplettooltips-fig">). <figure id="drivemountapplettooltips-fig">
+     <title>Unitate-muntatzailearen applet-a argibidearekin</title>
+     <screenshot><screeninfo>Unitate-muntatzailearen applet-a argibidearekin</screeninfo> <graphic format="png" fileref="figures/drivemount_applet_tooltip"
+      srccredit="muet"></graphic></screenshot></figure>
+</para>
+
+  </sect2>
+
+
+  <!-- ============= Customization ============================= -->
+ <sect2 id="drivemountapplet-prefs">
+    <title>Pertsonalizazioa</title>
+    <para>
+<application>Unitate-muntatzailea</application>ren applet-a pertsonaliza dezakezu bertan eskuineko botoiaz klik eginez eta <guimenuitem>Propietateak&hellip;</guimenuitem> aukeratuz. <interface>Propietateen</interface> elkarrizketa-koadroa (<xref       linkend="drivemount-settings-fig">) irekiko da, eta hala hainbat ezarpen aldatu ahal izango duzu.
+</para>
+
+    <figure id="drivemount-settings-fig">
+     <title>Propietateen elkarrizketa-koadroa</title>
+     <screenshot><screeninfo>Propietateen elkarrizketa-koadroa</screeninfo> <graphic format="png" fileref="figures/drivemount_applet_settings"        srccredit="muet"></graphic></screenshot></figure>
+
+    <para>
+Hauek dira propietateak:
+ <itemizedlist>
+
+      <listitem>
+<para>
+<guilabel>Muntatze-puntua</guilabel> &mdash; Diskoa muntatzeko erabiltzen den muntatze-puntua da.  Unitate bat muntatzen duzunean diskoaren edukia hartuko duen direktorio hutsa da.  Muntatze-puntuak fitxategi-sistemako edozein tokitan egon daitezke, baina normalean, unitate aldagarrien muntatze-puntu guztiak <filename
+        class="directory">/mnt</filename> direktorioan jartzen dira.
+</para>
+</listitem>
+
+      <listitem>
+<para>
+<guilabel>Eguneratzea segundotan</guilabel> &mdash; <application>Unitate-muntatzailea</application>k zenbat segundoz behin eguneratuko duen bere ikonoa muntatze-egoera egiaztatuz.  <application>Unitate-muntatzailea</application> ez den beste komando edo aplikazioren baten bidez unitateak muntatu edo desmuntatzen badituzu bakarrik du garrantzia.
+</para>
+</listitem>
+
+      <listitem>
+<para>
+<guilabel>Ikonoa</guilabel> &mdash; 
+Unitateentzat bistaratzen diren ikonoak zehazten ditu (bat desmuntatuta dagoenerako eta beste bat muntatuta dagoenerako).  Gehien erabiltzen diren unitateentzat ikono-jokoak badaude (diskete, CDROM, disko gogor eta JAZentzat, alegia). <xref  linkend="drivemountappletall-fig">n ikus daitezke. <guimenuitem>Pertsonalizatu</guimenuitem> ere hauta dezakezu zeure ikonoak zehaztu nahi badituzu.
+</para>
+ <figure id="drivemountappletall-fig">
+        <title>Unitate-mota desberdinak muntatuta eta desmuntatuta daudenerako ikonoak</title>
+        <screenshot>
+<screeninfo>Unitate-mota desberdinak muntatuta eta desmuntatuta daudenerako ikonoak</screeninfo>
+ <graphic format="png" fileref="figures/drivemount_applet_all" 
+         srccredit="muet"></graphic></screenshot></figure> 
+
+<para>
+Kontuan izan <xref linkend="drivemountappletall-fig">k diskete, CDROM, Zip eta JAZ eta disko gogorraren unitateei dagozkien ikonoak erakusten dituela (ezkerretik eskuinera).
+</para>
+</listitem>
+
+      <listitem>
+<para>
+<guilabel>Ikono pertsonalizatua muntatuta dagoenerako</guilabel>  &mdash; Unitatea muntatuta dagoenean bistaratuko den ikono pertsonalizatua.  Aukera hau <guimenu>Ikonoa:</guimenu> &quot;Pertsonalizatua&quot; hautatuta dagoenean soilik egongo da erabilgarri.
+</para>
+</listitem>
+
+      <listitem>
+<para>
+<guilabel>Ikono pertsonalizatua muntatu gabe dagoenerako</guilabel>  &mdash; Unitatea desmuntatuta dagoenean bistaratuko den ikono pertsonalizatua.  Aukera hau <guimenu>Ikonoa:</guimenu> &quot;Pertsonalizatua&quot; hautatuta dagoenean soilik egongo da erabilgarri.
+</para>
+</listitem>
+
+      <listitem>
+<para>
+<guibutton>Egokitu tamaina panelera</guibutton> &mdash; Aukera hau hautatuz gero, muntatuta eta desmuntatuta egoeren ikonoen tamaina <interface>Panela</interface>renari egokitzen zaio.  Aukera hori ez badago hautatuta, ikonoen tamainak finkoak dira, eta ez da kontuan hartzen <interface>Panela</interface>ren tamaina. Aukera hori hautatuz gero, itxura politagoa izango du zure pantailak.  <interface>Panela</interface> oso txikia bada, komeni da aukera hori ez hautatzea, izan ere, horrela applet-a biratuta eta tamaina handiagoan erakusten du eta hobeto ikusten da.
+</para>
+</listitem>
+
+      <listitem>
+<para>
+<guibutton>Erabili automuntatze-egoeraren proba</guibutton> &mdash;  Hautatu aukera hau automuntaketa erabiltzen baduzu, bestela utzi hautatu gabe.
+</para>
+ <note>
+        <title>Erabiltzaile aurreratuentzako informazioa</title>
+        <para>
+<application>Unitate-muntatzailea</application>k unitate bat muntatuta dagoen edo ez egiaztatzeko erabiltzen duen komando lehenetsia <command>stat</command> da eta <application>automuntatzea</application> erabiltzen baduzu, unitatea muntatuko dizu. Botoi hori hautatuta baldin badago, aldiz, <command>mount</command> komandoa erabiltzen du. Horrela <application>automuntatzea</application>k ez du unitatea muntatzen.  Botoi hori lehenespenez ez da hautatuta egoten, <command>mount</command> komandoak cpu gehiago behar baitu <command>stat</command>-ek baino.
+</para>
+</note></listitem>
+
+     </itemizedlist></para>
+
+    <para>
+Nahi dituzun aldaketa guztiak egin ondoren, egin klik <guibutton>Ados</guibutton> botoian aldaketak aplikatu eta <interface>Propietateen</interface> elkarrizketa-koadroa ixteko.
+ Egin klik <guibutton>Aplikatu</guibutton> botoian itxi gabe aldaketak aplikatzeko. <guibutton>Itxi</guibutton> botoiak <interface>Propietateen</interface> elkarrizketa-koadroa ixten du aplikatu ez diren aldaketak gorde gabe.  Aplikatutako aldaketak ezin dira bertan behera utzi.
+</para>
+</sect2>
+
+  <!-- ============= Configuring Your System  ============== -->
+ <sect2 id="drivemountapplet-configuring">
+   <title>Zure sistemaren konfigurazioa</title>
+
+   <warning>
+    <title>Erabiltzaile aurreratuentzat</title>
+    <para>
+Atal hau sistema-administratzaileei eta erabiltzaile aurreratuei zuzendua dago.
+</para>
+</warning>
+  
+   <para>
+<application>Unitate-muntatzailearen applet</application>-ak ondo funtziona dezan, agian sistema-administratzaileak konfiguratu beharko du root pribilegioak erabiliz.  Atal honek oinarri-oinarrizko sarrera ematen du.
+</para>
+
+   <para>
+Unitate bakoitzaren muntatze-puntua eta fitxategi-sistemaren mota deskribatzen dituen informazioa <filename>/etc/fstab</filename>-en gordetzen da.  Eskuz konfigura daiteke edo bestela <application>linuxconf</application> aplikazioaren bidez. Beti mota bereko fitxategi-sistema ez daukaten unitateekin (adibidez disketeak msdos edo ext2 fitxategi-sistemak izan ditzake), &quot;auto&quot; erabiltzea komeni da fitxategi-sistemaren motarentzat.  Unitate bakoitzak lerro bakarra du /etc/fstab-en eta forma honetakoa: <programlisting>/dev/fd0        /mnt/floppy      auto    noauto,rw,user  0 0</programlisting> Sarrera honek lehen diskete-unitatea deskribatzen du (/dev/fd0), eta aditzera ematen du <filename>/mnt/floppy</filename> muntatze-puntua duela eta bere fitxategi-sistemaren mota, finkoa ez denez, automatikoki detektatu behar dela. Horrez gain, ondorengo konfigurazio-aukerak ere deskribatzen ditu: &quot;noauto&quot;&mdash; Ordenagailua abiaraztean ez da automatikoki muntatzen, &quot;rw&quot;&mdash; Unitatean idatzi eta irakur daiteke, eta &quot;user&quot;&mdash; Erabiltzaileek unitatea munta dezakete.  Aukera hauek eta hemen deskribatu ez ditugun beste bi azken eremuak xehetasunez aztertzen dira fstab eskuliburuko orrialdeetan. <command>man fstab</command> tekleatuz eskura ditzakezu, edo baita <application>GNOMEren laguntza-arakatzailea</application>ren bidez ere.
+</para>
+ <para>
+<application>linuxconf</application> aplikazioak fitxategi-sistema horiek kontrolatzeko interfaze grafikoa eskaintzen dizu.  <application>linuxconf</application> abiarazteko, nahikoa duzu <command>linuxconf</command> idaztea shell leiho batean (saioa root gisa hasi behar duzu). Hautatu <menuchoice><guimenu>Konfig</guimenu> <guisubmenu>fitxategi-sistemak</guisubmenu> <guimenuitem>Atzitu unitate lokala</guimenuitem></menuchoice>. Sarrera bat editatzeko, hautatu besterik gabe. <application>linuxconf</application> erraz erabiltzeko diseinatuta dago eta bere laguntza-sistema propioa dauka prozesuan zehar laguntza emateko. Sarrera berriak ere gehi ditzakezu <guibutton>Gehitu</guibutton> botoiaren bidez.
+</para>
+</sect2>
+
+
+  <!-- ============ Troubleshooting & Error Messages ======= -->
+ <sect2 id="drivemountapplet-troubleshooting">
+   <title>Arazoak konpondu eta errore-mezuak ulertu</title>
+   <para>
+Sistema behar bezala konfiguratuta ez badaukazu, agian errore-mezu batzuk jasoko dituzu zenbait unitate muntatzerakoan edo atzitzerakoan. Hona hemen errore-mezurik ohikoenak eta bakoitzaren zergatiak: 
+<itemizedlist>
+<listitem>
+<para>
+<quote>mount: /dev/fd0 ez da baliozko bloke-gailua</quote>&mdash; Errore honen zergatia gehienetan zera izaten da: unitatea (adibide honetan /dev/fd0, disketearen unitateari dagokiona) hutsik dagoela.
+</para>
+</listitem>
+ <listitem>
+<para>
+<quote>mount: root-ak bakarrik munta dezake /dev/fda /mnt/floppy-n</quote> &mdash; Zuk ez daukazu unitate hau muntatzeko baimenik.  Galdetu sistema-administratzaileari, berak eman baitiezazuke horretarako baimena.
+</para>
+ <note>
+       <title>Sistema-administratzaileentzako oharra</title>
+       <para>
+Unitatea erabiltzaileek muntatzeko edo desmuntatzeko moduan ezar dezakezu &quot;users&quot; gehituta muntatze-aukerei (laugarren zutabean) <filename>/etc/fstab</filename>-en.  Eskuz egin dezakezu edo bestela <application>linuxconf</application> aplikazioaren bidez, <menuchoice><guimenu>Konfig</guimenu> <guisubmenu>Fitxategi-sistemak</guisubmenu> <guimenuitem>Atzitu unitate lokala</guimenuitem></menuchoice> hautatuz eta <guilabel>bolumen lokala</guilabel> koadroa erabiliz. Zerrendan unitate egokia hautatzen duzunean, <guilabel>Bolumen-zehaztapenak</guilabel> erakutsiko dizkizu.  Egin klik <guilabel>Aukerak</guilabel> fitxan, eta hautatu <guibutton>Erabiltzaileek muntatzekoa</guibutton> botoia.
+</para>
+</note></listitem> <listitem>
+<para>
+<quote>mount: okerreko fs mota, aukera txarra, superbloke txarra /dev/cdrom-en, edo fitxategi-sistema gehiegi muntatuta</quote>&mdash; Errore hau arazo askok eragin dezakete.  Gehienetan arrazoia fitxategi-sistema egokia ez edukitzea izaten da, hala nola, musika CDROM bat muntatzen saiatzea datuak izango balitu bezala, edo msdos-entzat formateatutako disketea ext2-entzat formateatutakoa balitz bezala. 
+<listitem>
+<para>
+<quote>mount /mnt/cdrom 2&gt;&amp;1en azalpena: mount: Ez da euskarririk aurkitu</quote>&mdash; Errore honek adierazten digu unitatea, CDROMa kasu honetan, hutsik dagoela.
+</para>
+</listitem>
+ <listitem>
+<para>
+<quote>umount /mnt/cdrom 2&gt;&amp;1en azalpena: umount: /mnt/cdrom: gailua okupatuta dago</quote>&mdash; Errore honek adierazten du unitatea ezin dela desmuntatu ordenagailua unitate hori erabiltzen ari delako.  Askotan gertatzen da <application>GNOMEren fitxategi-kudeatzailea</application> unitateko direktorio batean irekita daukazunean edo irekita daukazun terminal leiho bateko laneko direktorioa unitate horretan dagoenean.
+</para>
+</listitem>
+ <listitem>
+<para>
+<quote>umount: ezin da aurkitu /mnt/floppy /etc/fstab-en edo /etc/mtab-en</quote>&mdash; Honek adierazten du sistema ez dagoela konfiguratuta erabili nahi duzun muntatze-puntu hori muntatzeko.  Seguru asko okerreko muntatze-puntua jarriko zenuen <guilabel>Muntatze-puntua</guilabel>ri dagokion sarreran <interface>Propietateen elkarrizketa-koadroan</interface> (ikus <xref
+       linkend="drivemountapplet-prefs">). Zein muntatze-puntu erabili behar zenukeen jakiteko, galdetu sistema-administratzaileari.
+</para>
+ <note>
+       <title>Erabiltzaile aurreratuentzako oharra</title>
+       <para>
+Unitate muntagarri bakoitzak (fitxategi-sistema nahiz unitateak) <filename>/etc/fstab</filename> konfigurazio-fitxategiko zerrendan egon behar du. Fitxategi hori irakurrita jakingo duzu zein unitate dauden konfiguratuta zure sisteman.  Sarrerak gehitu edo aldatu nahi badituzu, fitxategi hau eskuz nahiz <application>linuxconf</application> aplikazioaren bidez edita dezakezu.
+</para>
+</note>
+</listitem>
+ <listitem>
+<para>
+<quote>mount: /dev/fd0 dagoeneko muntatuta edo /mnt/floppy okupatuta mount: mtab-en arabera, /dev/fd0 muntatuta dago /mnt/floppy_ext2-n</quote>&mdash; Gailu bat (kasu honetan /dev/fd0) muntatze-puntu desberdinentzat konfiguratuta daukazunean eta dagoeneko muntatze-puntu bat muntatuta dagoela beste bat muntatzen hasten zarenean gertatzen da errore hau. Gailu bakarrarentzat muntatze-puntu desberdinak edukitzea normalean ez da izaten beharrezkoa.
+</para>
+</listitem>
+ <listitem>
+<para>
+<quote>mount: nukleoak ez du ezagutzen /dev/sda4 bloke-gailu gisa (agian 'insmod kontrolatzailea'?</quote>&mdash; Galdetu sistema-administratzaileari. (Errore hau gertatzen da zure nukleoa ez dagoenean behar bezala konfiguratuta gailua irakurtzeko behar diren nukleo-moduluak automatikoki muntatzeko)
+</para>
+</listitem>
+</itemizedlist>
+</para>
+</sect2>
+
+
+  <!-- ============= Bugs ================================== --> <!-- This section should describe known bugs and limitations of
+       the program if there are any - please be frank and list all
+       problems you know of --> <sect2 id="bugs">
+   <title>Ezagutzen diren akatsak eta mugak</title>
+   <para>
+<guimenuitem>Egotzi</guimenuitem> komandoak ez du beti funtzionatzen.  Unitatea muntatuta daukazula egozten ahalegintzen bazara, ez dizu azalduko zergatik ez duen egozten.
+</para>
+</sect2>
+
+
+  <!-- ============= Authors ================================ -->
+
+  <sect2 id="authors">
+   <title>Egileak</title>
+   <para>
+<application>Unitate-muntatzailearen applet-a</application> John Ellis-ek idatzia da (<email>johne@bellatlantic.net<email>).  Bidali zure iruzkin, iradokizun eta akatsen berri-emateak <ulink url="http://bugs.gnome.org" type="http">GNOMEren akatsen segimendurako datu-basera</ulink>. (Akatsei buruzko berriak bidaltzeko argibideak <ulink     url="http://bugs.gnome.org/Reporting.html" type="http">linean</ulink> aurkituko dituzu.) GNOMEren 1.1 bertsioa edo berriagoa erabiltzen ari bazara, <application>Akatsen berri emateko tresna</application> (<command>bug-buddy</command>) ere erabil dezakezu akatsen berri emateko. Tresna hori <guimenu>Menu nagusi</guimenu>ko <guisubmenu>Utilitateak</guisubmenu> azpimenuan duzu eskuragarri.
+</para>
+
+   <para>
+Eskuliburu hau Dan Mueth-ek idatzi du (<email>d-mueth@uchicago.edu</email>). Eskuliburuari dagozkion iruzkinak eta iradokizunak <ulink type="http"     url="http://www.gnome.org/gdp">GNOMEren dokumentazio-proiektura</ulink> bidal ditzakezu: <email>docs@gnome.org</email>. Iruzkinak linean ere egin ditzakezu <ulink type="http"     url="http://www.gnome.org/gdp/doctable/">GNOMEren dokumentazio-egoeraren taula</ulink> erabiliz.
+</para>
+
+<para>
+     Euskarazko itzulpena Hizkuntza Politikarako Sailburuordetzak 
+     egin du (<email>hizkpol@ej-gv.es</email>). Itzulpenari buruzko
+     oharrak eta iradokizunak helbide honetara bidal ditzakezu:
+      <email>hizkpol@ej-gv.es</email> 
+</para>
+
+
+  </sect2>
+
+
+  <!-- ============= Application License ============================= -->
+
+  <sect2 id="license">
+   <title>Lizentzia</title>
+   <para> 
+      Programa hau software librea da; birbana eta/edo alda dezakezu, 
+      Free Software Foundation-ek argitaratutako <ulink
+      type="help"    url="gnome-help:gpl"><citetitle>GNU Lizentzia Publiko
+      Orokorra</citetitle></ulink>ren 2. bertsioan, edo (nahiago baduzu) bertsio
+      berriago batean, jasotako baldintzak betez gero. 
+   </para> 
+   <para>
+      Programa hau erabilgarria izango delakoan banatzen da, baina INOLAKO 
+      BERMERIK GABE; era berean, ez da bermatzen beraren egokitasuna 
+      MERKATURATZEKO edo HELBURU PARTIKULARRETARAKO ERABILTZEKO. 
+      Argibide gehiago nahi izanez gero, ikus <ulink
+      type="help" url="gnome-help:gpl"><citetitle>GNU Lizentzia Publiko
+      Orokorra</citetitle></ulink>. 
+   </para> 
+<para>
+      <ulink type="help"    url="gnome-help:gpl"><citetitle>GNU Lizentzia
+      Publiko Orokorra</citetitle></ulink>ren kopia bat <citetitle>GNOME 
+      erabiltzailearen gida</citetitle>ren eranskinean daukazu. <ulink 
+      type="help" url="gnome-help:gpl"><citetitle>GNU Lizentzia Publiko 
+      Orokorra</citetitle></ulink>ren kopia Free Software Foundation-en 
+      bidez ere lor dezakezu <ulink type="http" url="http://www.fsf.org"> 
+      haren web gunea</ulink> bisitatuz edo hona idatziz: 
+     <address> Free Software Foundation, Inc. <street>59 Temple Place</street> -
+      Suite 330 <city>Boston</city>, <state>MA</state>
+      <postcode>02111-1307</postcode> <country>USA</country> </address> 
+</para>
+  </sect2>
+
+ </sect1>
+
+
+
