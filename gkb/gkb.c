@@ -138,7 +138,8 @@ static  gkb_properties defaults = {
 
 	gnome_config_push_prefix(APPLET_WIDGET(gkb->applet)->privcfgpath);
 	g_free(gkb->properties.command);
-	g_snprintf(buf,256,"gkb/name=%s",defaults.command);
+	/* I was sooo... Thanx Carsten */
+	g_snprintf(buf,256,"gkb/command=%s",defaults.command);
 	gkb->properties.command = gnome_config_get_string(buf);
 	g_free(gkb->properties.image[0]);
 	g_snprintf(buf,256,"gkb/image0=%s",gnome_unconditional_pixmap_file("gkb/us.xpm"));
