@@ -37,7 +37,7 @@ preset_data_predata = \
 		KR_Korean.keyprop.desktop.in LA_Lao_x.keyprop.desktop.in \
 		LT_Lithuanian.keyprop.desktop.in LT_Lithuanian_x.keyprop.desktop.in \
 		LT_Prog.keyprop.desktop.in LT_Standard.keyprop.desktop.in \
-		LV_Apostrophe.keyprop.desktop.in  LV_Standart.keyprop.desktop.in  LV_Tilde.keyprop.desktop.in \
+		LV_Apostrophe.keyprop.desktop.in  LV_Standard.keyprop.desktop.in  LV_Tilde.keyprop.desktop.in \
 		Macedonian.keyprop.desktop.in MK_Macedonian.keyprop.desktop.in \
 		MN_Mongolian.keyprop.desktop.in MN_Mongolian_x.keyprop.desktop.in \
 		MN_Mongolian_x_rev.keyprop.desktop.in MN_Mongolian_x_uni.keyprop.desktop.in \
