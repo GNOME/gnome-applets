@@ -827,6 +827,7 @@ destroy_applet (GtkWidget *widget, gpointer data)
    gtk_timeout_remove (pdata->pixtimer);
    pdata->pixtimer = 0;
    pdata->applet = NULL;
+   g_object_unref(G_OBJECT (pdata->testpixgc));
    g_object_unref(G_OBJECT (pdata->pixgc));
    g_object_unref(pdata->ac_tip);
    g_object_unref(pdata->progress_tip);
