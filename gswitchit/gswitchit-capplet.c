@@ -331,6 +331,9 @@ GSwitchItAppletPropsCreate (GSwitchItApplet * sia)
 	CappletGroupPerWindowChanged (groupPerApp, sia);
 	CappletShowFlagsChanged (showFlags, sia);
 
+	gtk_window_set_screen (GTK_WINDOW (capplet),
+			       gtk_widget_get_screen (GTK_WIDGET (sia->applet)));
+
 	gtk_widget_show_all (capplet);
 #ifndef ENABLE_FLAGS
 	gtk_widget_hide (showFlags);

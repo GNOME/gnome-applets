@@ -457,6 +457,9 @@ GSwitchItAppletCmdProps (BonoboUIComponent *
 {
 	/* Only one preferences window at a time */
 	if (sia->propsDialog) {
+		gtk_window_set_screen (GTK_WINDOW (sia->propsDialog),
+				       gtk_widget_get_screen (GTK_WIDGET (sia->applet)));
+		
 		gtk_window_present (GTK_WINDOW (sia->propsDialog));
 		return;
 	}
@@ -510,7 +513,7 @@ void
 GSwitchItAppletCmdHelp (BonoboUIComponent
 			* uic, GSwitchItApplet * sia, const gchar * verb)
 {
-	GSwitchItHelp (NULL, "gswitchitApplet");
+	GSwitchItHelp (sia->applet, "gswitchitApplet");
 }
 
 void
@@ -529,6 +532,9 @@ GSwitchItAppletCmdAbout (BonoboUIComponent *
 	GdkPixbuf *pixbuf = NULL;
 	gchar *file;
 	if (sia->aboutDialog) {
+		gtk_window_set_screen (GTK_WINDOW (sia->aboutDialog),
+				       gtk_widget_get_screen (GTK_WIDGET (sia->applet)));
+		
 		gtk_window_present (GTK_WINDOW (sia->aboutDialog));
 		return;
 	}
@@ -556,6 +562,10 @@ GSwitchItAppletCmdAbout (BonoboUIComponent *
 	gnome_window_icon_set_from_file (GTK_WINDOW (sia->aboutDialog),
 					 file);
 	g_free (file);
+
+	gtk_window_set_screen (GTK_WINDOW (sia->aboutDialog),
+			       gtk_widget_get_screen (GTK_WIDGET (sia->applet)));
+	
 	gtk_window_present (GTK_WINDOW (sia->aboutDialog));
 }
 
