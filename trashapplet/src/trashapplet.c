@@ -390,11 +390,11 @@ trash_applet_update (gpointer user_data)
 		case 0:
 			tip_text = g_strdup (_("No Items in Trash"));
 			break;
-		case 1:
-			tip_text = g_strdup (_("1 Item in Trash"));
-			break;
 		default:
-			tip_text = g_strdup_printf (_("%d Items in Trash"), 
+			tip_text = g_strdup_printf (ngettext (
+						"%d Item in Trash",
+						"%d Items in Trash",
+						applet->item_count), 
 						    applet->item_count);
 		}
 		gtk_tooltips_set_tip (applet->tooltips, GTK_WIDGET (applet),
