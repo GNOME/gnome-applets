@@ -94,6 +94,10 @@ static void cdplayer_prev(GtkWidget * w, gpointer data);
 static void cdplayer_next(GtkWidget * w, gpointer data);
 static void cdplayer_eject(GtkWidget * w, gpointer data);
 
+static void set_atk_relation(GtkWidget *label, GtkWidget *entry);
+static void set_atk_name_description(GtkWidget *widget, const gchar *name, const gchar *description);
+static void make_applet_accessible(CDPlayerData *cd);
+
 /* Bonobo Verbs for our popup menu */
 static const BonoboUIVerb applet_menu_verbs [] = {
     BONOBO_UI_UNSAFE_VERB ("RunGTCD", start_gtcd_cb),
@@ -142,7 +146,10 @@ applet_fill (PanelApplet *applet)
     g_signal_connect_after (G_OBJECT (cdplayer), "realize", G_CALLBACK (cdplayer_realize), cd);
     gtk_widget_show(cdplayer);
     
-    tooltips = gtk_tooltips_new ();
+    tooltips = gtk_tooltips_new (); 
+    g_object_ref (tooltips);
+    gtk_object_sink (GTK_OBJECT (tooltips));
+    g_object_set_data (G_OBJECT (cd->panel.applet), "tooltips", tooltips);
 
     cd->panel.box = NULL;
     cd->panel.play_control.stop = control_button_factory(stop_xpm, G_CALLBACK(cdplayer_stop), cd);
@@ -159,6 +166,8 @@ applet_fill (PanelApplet *applet)
     led_create_widgets(&cd->panel.time, &cd->panel.track_control.display, (gpointer)cd);
 
     gtk_container_add (GTK_CONTAINER (applet), cdplayer);
+    gtk_tooltips_set_tip (tooltips, cd->panel.applet, _("CD Player"), NULL);
+    make_applet_accessible (cd); 
 
     /* panel_applet_add_preferences (applet, "/schemas/apps/cdplayer-applet/prefs", NULL); */
     cdplayer_load_config(cd);
@@ -207,12 +216,23 @@ static void
 cdplayer_destroy(GtkWidget * widget, gpointer data)
 {
     CDPlayerData *cd = data;
+    GtkTooltips *tooltips;
 
     if (cd->timeout != 0)
         gtk_timeout_remove(cd->timeout);
     cd->timeout = 0;
     cd_close (cd);
 
+    tooltips = g_object_get_data (G_OBJECT (cd->panel.applet), "tooltips");
+    if (tooltips) {
+        g_object_unref (tooltips);
+        g_object_set_data (G_OBJECT (cd->panel.applet), "tooltips", NULL);
+    }
+    
+    if (cd->time_description)
+        g_free(cd->time_description); 
+    if (cd->track_description)
+        g_free(cd->track_description);
     g_free (cd->devpath);
     cd->devpath = NULL;
     g_free(cd);
@@ -321,6 +341,7 @@ properties_cb (GtkWidget *w, gpointer data)
     image = gtk_image_new_from_stock(GTK_STOCK_CDROM, GTK_ICON_SIZE_DIALOG);
     gtk_box_pack_start(GTK_BOX(hbox), image, FALSE, FALSE, 10);
     gtk_widget_show(image);
+    set_atk_name_description(image, _("Disc Image"), _("An image of a cd-rom disc"));
 
     label = gtk_label_new(_("Device Path:"));
     gtk_misc_set_padding (GTK_MISC (label), GNOME_PAD_SMALL, 0);
@@ -331,6 +352,8 @@ properties_cb (GtkWidget *w, gpointer data)
     gtk_box_pack_start(GTK_BOX(hbox), entry, TRUE, TRUE, 0);
     gtk_widget_show(entry);
     gtk_entry_set_text(GTK_ENTRY(entry), cd->devpath);
+    set_atk_name_description(entry, _("Device Path"), _("Set the device path here"));
+    set_atk_relation(label, entry);
     g_signal_connect (G_OBJECT (entry), "activate",
     		      G_CALLBACK (activate_cb), cd);
     g_signal_connect (G_OBJECT (entry), "focus_out_event",
@@ -600,6 +623,7 @@ static void
 cd_panel_update(GtkWidget * cdplayer, CDPlayerData * cd)
 {
     cdrom_device_status_t stat;
+    gboolean description = FALSE;
 
     if (cd_try_open(cd)) {
         if (cdrom_get_status(cd->cdrom_device, &stat) == DISC_NO_ERROR)
@@ -612,6 +636,7 @@ cd_panel_update(GtkWidget * cdplayer, CDPlayerData * cd)
                          stat.relative_address.second,
                          cd->panel.track_control.display,
                          stat.track);
+                    description = TRUE;
                     break;
                 case DISC_PAUSED:
                     led_paused(cd->panel.time,
@@ -619,6 +644,7 @@ cd_panel_update(GtkWidget * cdplayer, CDPlayerData * cd)
                            stat.relative_address.second,
                            cd->panel.track_control.display,
                            stat.track);
+                    description = TRUE;
                     break;
                 case DISC_COMPLETED:
                 case DISC_STOP:
@@ -635,8 +661,28 @@ cd_panel_update(GtkWidget * cdplayer, CDPlayerData * cd)
     {
         led_nodisc(cd->panel.time, cd->panel.track_control.display);
     }
+    if (description)
+    {
+        cd->time_description = g_strdup_printf("Time elapsed is %d minutes and
+            %d seconds", stat.relative_address.minute,
+            stat.relative_address.second);
+        cd->track_description = g_strdup_printf("Current track number is %d",
+            stat.track);
+        set_atk_name_description(cd->panel.time, _("Elapsed time"),
+            cd->time_description);
+        set_atk_name_description(cd->panel.track_control.display,
+            _("Track number"), cd->track_description);
+        g_free (cd->time_description);
+        g_free (cd->track_description);
+    }
+    else
+    {
+        set_atk_name_description(cd->panel.time, _("Elapsed time"), _(""));
+        set_atk_name_description(cd->panel.track_control.display,
+            _("Track number"), _(""));
+    }
     return;
-    cdplayer = NULL;
+    cdplayer = NULL; 
 }
 
 
@@ -734,4 +780,66 @@ cdplayer_eject(GtkWidget * w, gpointer data)
     cd_close(cd);
     return;
         w = NULL;
+}
+
+static void
+make_applet_accessible(CDPlayerData *cd)
+{
+    /* Check if gail is loaded */
+    if (GTK_IS_ACCESSIBLE(gtk_widget_get_accessible(cd->panel.play_control.stop))
+        == FALSE) return;
+	
+    set_atk_name_description(cd->panel.play_control.stop, _("Stop"), 
+        _("Click this button to Stop playing the CD"));
+    set_atk_name_description(cd->panel.play_control.play_pause, _("Play / Pause"), 
+        _("Click this button to Play or Pause the CD"));
+    set_atk_name_description(cd->panel.play_control.eject, _("Eject"), 
+        _("Click this button to eject the CD"));
+    set_atk_name_description(cd->panel.track_control.prev, _("Previous Track"),
+        _("Click this button to Play the previous track in the CD"));
+    set_atk_name_description(cd->panel.track_control.next, _("Next Track"),
+        _("Click this button to Play the next track in the CD"));
+    set_atk_name_description(cd->panel.applet, _("CD Player"), 
+        _("The CD Player applet is a simple audio CD player for your panel"));
+}
+
+static void
+set_atk_name_description(GtkWidget *widget, const gchar *name,
+    const gchar *description)
+{	
+    AtkObject *aobj;
+	
+    aobj = gtk_widget_get_accessible(widget);
+    /* Check if gail is loaded */
+    if (GTK_IS_ACCESSIBLE (aobj) == FALSE)
+        return; 
+    atk_object_set_name(aobj, name);
+    atk_object_set_description(aobj, description);
+}
+
+static void
+set_atk_relation(GtkWidget *label, GtkWidget *widget)
+{
+    AtkObject *atk_widget;
+    AtkObject *atk_label;
+    AtkRelationSet *relation_set;
+    AtkRelation *relation;
+    AtkObject *targets[1];
+
+    atk_widget = gtk_widget_get_accessible(widget);
+    atk_label = gtk_widget_get_accessible(label);
+
+    /* Check if gail is loaded */
+    if (GTK_IS_ACCESSIBLE (atk_widget) == FALSE)
+        return;
+
+    /* Set the label-for relation */
+    gtk_label_set_mnemonic_widget(GTK_LABEL (label), widget);	
+
+    /* Set the labelled-by relation */
+    relation_set = atk_object_ref_relation_set(atk_widget);
+    targets[0] = atk_label;
+    relation = atk_relation_new(targets, 1, ATK_RELATION_LABELLED_BY);
+    atk_relation_set_add(relation_set, relation);
+    g_object_unref(G_OBJECT (relation));
 }

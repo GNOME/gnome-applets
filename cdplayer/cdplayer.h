@@ -36,6 +36,8 @@ typedef struct
     int size;
     PanelAppletOrient orient;
     char *devpath;
+    gchar *time_description;
+    gchar *track_description;
     struct
     {
         GtkWidget *applet;
