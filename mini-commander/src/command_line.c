@@ -541,7 +541,7 @@ history_auto_complete(GtkWidget *widget, GdkEventKey *event)
 	    if(!exists_history_entry(i))
 		break;
   	    completed_command = get_history_entry(i); 
-  	    if(!g_strncasecmp(completed_command, current_command, strlen( current_command))) 
+  	    if(!strncmp(completed_command, current_command, strlen(current_command))) 
 		return completed_command; 
   	} 
     
