@@ -73,14 +73,10 @@ WeatherLocation *weather_location_new (const gchar *name, const gchar *code, con
     WeatherLocation *location;
 
     location = g_new(WeatherLocation, 1);
-    strncpy(location->name, name, WEATHER_LOCATION_NAME_MAX_LEN);
-    location->name[WEATHER_LOCATION_NAME_MAX_LEN] = '\0';
-    strncpy(location->code, code, WEATHER_LOCATION_CODE_LEN);
-    location->code[WEATHER_LOCATION_CODE_LEN] = '\0';
-    strncpy(location->zone, zone, WEATHER_LOCATION_ZONE_LEN);
-    location->zone[WEATHER_LOCATION_ZONE_LEN] = '\0';
-    strncpy(location->radar, radar, WEATHER_LOCATION_RADAR_LEN);
-    location->radar[WEATHER_LOCATION_RADAR_LEN] = '\0';
+    location->name = g_strdup(name);
+    location->code = g_strdup(code);
+    location->zone = g_strdup(zone);
+    location->radar = g_strdup(radar);
 
     return location;
 }
@@ -775,7 +771,7 @@ static void metar_finish_read(GnomeVFSAsyncHandle *handle, GnomeVFSResult result
     WeatherLocation *loc;
     gchar *metar, *eoln, *body, *temp;
     gboolean success = FALSE;
-    gchar searchkey[WEATHER_LOCATION_CODE_LEN + 2];
+    gchar *searchkey;
 
     info->forecast = NULL;
     loc = info->location;
@@ -796,7 +792,7 @@ static void metar_finish_read(GnomeVFSAsyncHandle *handle, GnomeVFSResult result
     if (result == GNOME_VFS_ERROR_EOF)
     {
 
-  	g_snprintf (searchkey, sizeof (searchkey), "\n%s", loc->code);
+        searchkey = g_strdup_printf("\n%s", loc->code);
 
         metar = strstr(info->metar_buffer, searchkey);
         if (metar == NULL) {
@@ -835,7 +831,6 @@ static void metar_finish_open (GnomeVFSAsyncHandle *handle, GnomeVFSResult resul
     int body_len;
     gchar *metar, *eoln;
     gboolean success = FALSE;
-    gchar searchkey[WEATHER_LOCATION_CODE_LEN + 2];
 
     g_return_if_fail(handle == info->metar_handle);
 
@@ -1079,7 +1074,8 @@ static void iwin_finish_open (GnomeVFSAsyncHandle *handle, GnomeVFSResult result
     }
 
     if (result != GNOME_VFS_OK) {
-        g_warning(_("Failed to get IWIN forecast data.\n"));
+        /* forecast data is not really interesting anyway ;)
+	 * g_warning(_("Failed to get IWIN forecast data.\n")); */
         info->iwin_handle = NULL;
         requests_done_check (info);
     } else {
@@ -1338,7 +1334,6 @@ static void metoffice_start_open (WeatherInfo *info)
 /* Get forecast into newly alloc'ed string */
 static void iwin_start_open (WeatherInfo *info)
 {
-    gchar state[WEATHER_LOCATION_ZONE_LEN];
     gchar *url;
     WeatherLocation *loc;
 
@@ -1356,12 +1351,12 @@ static void iwin_start_open (WeatherInfo *info)
     	return;
     }
 
-    strncpy(state, loc->zone, 2);
-    state[2] = 0;
     if (weather_forecast == FORECAST_ZONE)
-        url = g_strdup_printf("http://iwin.nws.noaa.gov/iwin/%s/zone.html", state);
+        url = g_strdup_printf("http://iwin.nws.noaa.gov/iwin/%s/zone.html",
+			loc->zone);
     else
-        url = g_strdup_printf("http://iwin.nws.noaa.gov/iwin/%s/state.html", state);
+        url = g_strdup_printf("http://iwin.nws.noaa.gov/iwin/%s/state.html",
+			loc->zone);
     gnome_vfs_async_open(&info->iwin_handle, url, GNOME_VFS_OPEN_READ, 
     			 0, iwin_finish_open, info);
     g_free(url);

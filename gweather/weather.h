@@ -24,16 +24,13 @@
 
 G_BEGIN_DECLS
 
-#define WEATHER_LOCATION_NAME_MAX_LEN 100
-#define WEATHER_LOCATION_CODE_LEN     4
-#define WEATHER_LOCATION_ZONE_LEN     7
-#define WEATHER_LOCATION_RADAR_LEN    3
+#define WEATHER_LOCATION_CODE_LEN 4
 
 struct _WeatherLocation {
-    gchar name[WEATHER_LOCATION_NAME_MAX_LEN + 1];
-    gchar code[WEATHER_LOCATION_CODE_LEN + 1];
-    gchar zone[WEATHER_LOCATION_ZONE_LEN + 1];
-    gchar radar[WEATHER_LOCATION_RADAR_LEN + 1];
+    gchar *name;
+    gchar *code;
+    gchar *zone;
+    gchar *radar;
 };
 
 typedef struct _WeatherLocation WeatherLocation;
