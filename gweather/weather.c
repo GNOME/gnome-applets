@@ -1353,6 +1353,7 @@ static void iwin_start_open (WeatherInfo *info)
         url = g_strdup_printf("http://iwin.nws.noaa.gov/iwin/%s/state.html",
 			loc->zone);
 #endif
+    
     /* The zone for Pittsburgh (for example) is given as PAZ021 in the locations
     ** file (the PA stands for the state pennsylvania). The url used wants the state
     ** as pa, and the zone as lower case paz021.
@@ -1361,12 +1362,13 @@ static void iwin_start_open (WeatherInfo *info)
     g_strdown (zone);
     state = g_strdup (zone);
     state[2] = '\0';
-
+    
     url = g_strdup_printf ("http://weather.noaa.gov/pub/data/forecasts/zone/%s/%s.txt",
         		   state, zone); 
-
-    g_free (zone);   
-    g_free (state);
+    if (zone)
+    	g_free (zone);   
+    if (state)
+    	g_free (state);
 
     gnome_vfs_async_open(&info->iwin_handle, url, GNOME_VFS_OPEN_READ, 
     			 0, iwin_finish_open, info);
@@ -1466,11 +1468,11 @@ static void wx_start_open (WeatherInfo *info)
 
     if (loc->radar[0] == '-')
         return;
-#if 0
-    url = g_strdup_printf("http://image.weather.com/images/radar/single_site/%sloc_450x284.jpg", loc->radar);
-#else
-    url = g_strdup_printf ("http://image.weather.com/web/radar/us_%s_ultraradar_medium_usen.jpg", loc->radar);
-#endif
+    if (info->radar_url)
+    	url = g_strdup (info->radar_url);
+    else {
+	 url = g_strdup_printf ("http://image.weather.com/web/radar/us_%s_ultraradar_medium_usen.jpg", loc->radar);
+    }
   
     gnome_vfs_async_open(&info->wx_handle, url, GNOME_VFS_OPEN_READ, 
     			 0, wx_finish_open, info);
@@ -1480,7 +1482,7 @@ static void wx_start_open (WeatherInfo *info)
     return;
 }
 
-gboolean _weather_info_fill (gpointer applet, WeatherInfo *info, WeatherLocation *location, WeatherInfoFunc cb)
+gboolean _weather_info_fill (GWeatherApplet *applet, WeatherInfo *info, WeatherLocation *location, WeatherInfoFunc cb)
 {
     g_return_val_if_fail(((info == NULL) && (location != NULL)) || \
                          ((info != NULL) && (location == NULL)), FALSE);
@@ -1525,6 +1527,10 @@ gboolean _weather_info_fill (gpointer applet, WeatherInfo *info, WeatherLocation
     info->visibility = -1.0;
     info->forecast = NULL;
     info->radar = NULL;
+    info->radar_url = NULL;
+    if (applet->gweather_pref.use_custom_radar_url && applet->gweather_pref.radar) {
+    	info->radar_url = g_strdup (applet->gweather_pref.radar); 
+    }   
     info->metar_handle = NULL;
     info->iwin_handle = NULL;
     info->wx_handle = NULL;
@@ -1627,6 +1633,7 @@ WeatherInfo *weather_info_clone (const WeatherInfo *info)
     clone->location = weather_location_clone(info->location);
     /* This handles null correctly */
     clone->forecast = g_strdup(info->forecast);
+    clone->radar_url = g_strdup (info->radar_url); 
 
     clone->radar = info->radar;
     if (clone->radar != NULL)
@@ -1646,6 +1653,8 @@ void weather_info_free (WeatherInfo *info)
 		gdk_pixmap_unref (info->radar);
 		info->radar = NULL;
 	}
+	if (info->radar)
+	    g_free (info->radar);
 	g_free(info);
     }
     

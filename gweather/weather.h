@@ -17,6 +17,7 @@
 #include <panel-applet.h>
 #include <panel-applet-gconf.h>
 #include <libgnomevfs/gnome-vfs.h>
+#include "gweather.h"
 
 /*
  * Location
@@ -33,7 +34,7 @@ struct _WeatherLocation {
     gchar *radar;
 };
 
-typedef struct _WeatherLocation WeatherLocation;
+
 
 extern WeatherLocation *weather_location_new (const gchar *name, const gchar *code, const gchar *zone, const gchar *radar);
 extern WeatherLocation *weather_location_clone (const WeatherLocation *location);
@@ -186,6 +187,7 @@ struct _WeatherInfo {
     gchar *iwin_buffer;
     gchar *met_buffer;
     gchar *radar_buffer;
+    gchar *radar_url;
     GdkPixbufLoader *radar_loader;
     GdkPixmap *radar;
     GnomeVFSAsyncHandle *metar_handle;
@@ -193,14 +195,14 @@ struct _WeatherInfo {
     GnomeVFSAsyncHandle *wx_handle;
     GnomeVFSAsyncHandle *met_handle;
     gboolean requests_pending;
-    gpointer applet;
+    GWeatherApplet *applet;
 };
 
-typedef struct _WeatherInfo WeatherInfo;
+
 
 typedef void (*WeatherInfoFunc) (WeatherInfo *info);
 
-extern gboolean _weather_info_fill (gpointer applet, WeatherInfo *info, WeatherLocation *location, WeatherInfoFunc cb);
+extern gboolean _weather_info_fill (GWeatherApplet *applet, WeatherInfo *info, WeatherLocation *location, WeatherInfoFunc cb);
 #define weather_info_new(applet, location,cb) _weather_info_fill((applet), NULL, (location), (cb))
 #define weather_info_update(applet, info,cb) _weather_info_fill((applet), (info), NULL, (cb));
 extern WeatherInfo *weather_info_clone (const WeatherInfo *info);

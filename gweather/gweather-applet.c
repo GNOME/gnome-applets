@@ -265,7 +265,7 @@ gint timeout_cb (gpointer data)
 void update_finish (WeatherInfo *info)
 {
     char *s;
-    GWeatherApplet *gw_applet = (GWeatherApplet *) info->applet;
+    GWeatherApplet *gw_applet = info->applet;
     
 /*
     if (info != gweather_info) {
@@ -340,7 +340,7 @@ void gweather_update (GWeatherApplet *gw_applet)
     if (gw_applet->gweather_info && 
     	weather_location_equal(gw_applet->gweather_info->location, 
     			       gw_applet->gweather_pref.location)) {
-        update_success = weather_info_update((gpointer)gw_applet, 
+        update_success = weather_info_update(gw_applet, 
         				      gw_applet->gweather_info, 
         				      update_finish);
     } else {

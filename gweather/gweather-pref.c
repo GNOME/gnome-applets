@@ -68,6 +68,15 @@ static gboolean update_dialog (GWeatherApplet *gw_applet)
 #ifdef RADARMAP
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(gw_applet->pref_basic_radar_btn),
     				 gw_applet->gweather_pref.radar_enabled);
+    gtk_widget_set_sensitive (gw_applet->pref_basic_radar_url_btn, 
+    			      gw_applet->gweather_pref.radar_enabled);
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(gw_applet->pref_basic_radar_url_btn),
+    				 gw_applet->gweather_pref.use_custom_radar_url);
+    gtk_widget_set_sensitive (gw_applet->pref_basic_radar_url_hbox, 
+    			      gw_applet->gweather_pref.radar_enabled);
+    if (gw_applet->gweather_pref.radar)
+    	gtk_entry_set_text (GTK_ENTRY (gw_applet->pref_basic_radar_url_entry),
+    			    gw_applet->gweather_pref.radar);
 #endif /* RADARMAP */
 
     use_proxy = gconf_client_get_bool (client, "/system/gnome-vfs/use-http-proxy", NULL);
@@ -449,6 +458,42 @@ radar_toggled (GtkToggleButton *button, gpointer data)
     toggled = gtk_toggle_button_get_active(button);
     gw_applet->gweather_pref.radar_enabled = toggled;
     panel_applet_gconf_set_bool(gw_applet->applet, "enable_radar_map", toggled, NULL);
+    gtk_widget_set_sensitive (gw_applet->pref_basic_radar_url_btn, toggled);
+    gtk_widget_set_sensitive (gw_applet->pref_basic_radar_url_hbox, toggled);
+}
+
+static void
+use_radar_url_toggled (GtkToggleButton *button, gpointer data)
+{
+    GWeatherApplet *gw_applet = data;
+    gboolean toggled;
+    
+    toggled = gtk_toggle_button_get_active(button);
+    gw_applet->gweather_pref.use_custom_radar_url = toggled;
+    panel_applet_gconf_set_bool(gw_applet->applet, "use_custom_radar_url", toggled, NULL);
+}
+
+static void
+radar_url_changed (GtkWidget *widget, GdkEventFocus *event, gpointer data)
+{
+    GWeatherApplet *gw_applet = data;
+    gchar *text;
+    
+    text = gtk_editable_get_chars (GTK_EDITABLE (widget), 0, -1);
+    
+    if (gw_applet->gweather_pref.radar)
+        g_free (gw_applet->gweather_pref.radar);
+        
+    if (text) {
+    	gw_applet->gweather_pref.radar = g_strdup (text);
+    	g_free (text);
+    }
+    else
+    	gw_applet->gweather_pref.radar = NULL;
+    	
+    panel_applet_gconf_set_string (gw_applet->applet, "radar", 
+    				   gw_applet->gweather_pref.radar, NULL);
+    				   
 }
 
 static void
@@ -486,6 +531,8 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     GtkWidget *pref_basic_detailed_alignment;
 #ifdef RADARMAP
     GtkWidget *pref_basic_radar_alignment;
+    GtkWidget *pref_basic_radar_url_alignment;
+    GtkWidget *pref_basic_radar_url_entry_alignment;
 #endif /* RADARMAP */
     GtkWidget *pref_basic_update_alignment;
     GtkWidget *pref_basic_update_lbl;
@@ -503,6 +550,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     GtkWidget *pref_loc_hbox;
     GtkWidget *pref_loc_note_lbl;
     GtkWidget *scrolled_window;
+    GtkWidget *label;
     GtkTreeStore *model;
     GtkTreeSelection *selection;
     GtkWidget *pref_basic_vbox;
@@ -660,6 +708,10 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
 #ifdef RADARMAP
     pref_basic_radar_alignment = gtk_alignment_new (0, 0.5, 0, 1);
     gtk_widget_show (pref_basic_radar_alignment);
+    pref_basic_radar_url_alignment = gtk_alignment_new (0.1, 0.5, 0, 1);
+    gtk_widget_show (pref_basic_radar_url_alignment);
+    pref_basic_radar_url_entry_alignment = gtk_alignment_new (0.1, 0.5, 0, 1);
+    gtk_widget_show (pref_basic_radar_url_entry_alignment);
 #endif /* RADARMAP */
 
     gw_applet->pref_basic_update_btn = gtk_check_button_new_with_label (_("Automatically update every"));
@@ -686,6 +738,28 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     gtk_container_add (GTK_CONTAINER (pref_basic_radar_alignment), gw_applet->pref_basic_radar_btn);
     g_signal_connect (G_OBJECT (gw_applet->pref_basic_radar_btn), "toggled",
     		      G_CALLBACK (radar_toggled), gw_applet);
+    		      
+    gw_applet->pref_basic_radar_url_btn = gtk_check_button_new_with_label (_("Use custom address for radar map"));
+    gtk_widget_show (gw_applet->pref_basic_radar_url_btn);
+    gtk_container_add (GTK_CONTAINER (pref_basic_radar_url_alignment), 
+    		       gw_applet->pref_basic_radar_url_btn);
+    g_signal_connect (G_OBJECT (gw_applet->pref_basic_radar_url_btn), "toggled",
+    		      G_CALLBACK (use_radar_url_toggled), gw_applet);
+    		      
+    gw_applet->pref_basic_radar_url_hbox = gtk_hbox_new (FALSE, 4);
+    gtk_widget_show (gw_applet->pref_basic_radar_url_hbox);
+    gtk_container_add (GTK_CONTAINER (pref_basic_radar_url_entry_alignment), 
+    		       gw_applet->pref_basic_radar_url_hbox);
+    label = gtk_label_new (_("Address :"));
+    gtk_widget_show (label);
+    gtk_box_pack_start (GTK_BOX (gw_applet->pref_basic_radar_url_hbox),
+    			label, FALSE, FALSE, 0); 
+    gw_applet->pref_basic_radar_url_entry = gtk_entry_new ();
+    gtk_widget_show (gw_applet->pref_basic_radar_url_entry);
+    gtk_box_pack_start (GTK_BOX (gw_applet->pref_basic_radar_url_hbox),
+    			gw_applet->pref_basic_radar_url_entry, TRUE, TRUE, 0);    
+    g_signal_connect (G_OBJECT (gw_applet->pref_basic_radar_url_entry), "focus_out_event",
+    		      G_CALLBACK (radar_url_changed), gw_applet);
 #endif /* RADARMAP */
 
     frame = gtk_frame_new (_("Updates"));
@@ -731,10 +805,13 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     vbox = gtk_vbox_new (FALSE, GNOME_PAD_SMALL);
     gtk_container_border_width (GTK_CONTAINER (vbox), GNOME_PAD_SMALL);
 
-    gtk_box_pack_start (GTK_BOX (vbox), pref_basic_metric_alignment, FALSE, TRUE, 0);
-    gtk_box_pack_start (GTK_BOX (vbox), pref_basic_detailed_alignment, FALSE, TRUE, 0);
+    gtk_box_pack_start (GTK_BOX (vbox), pref_basic_metric_alignment, TRUE, TRUE, 0);
+    gtk_box_pack_start (GTK_BOX (vbox), pref_basic_detailed_alignment, TRUE, TRUE, 0);
 #ifdef RADARMAP
-    gtk_box_pack_start (GTK_BOX (vbox), pref_basic_radar_alignment, FALSE, TRUE, 0);
+    gtk_box_pack_start (GTK_BOX (vbox), pref_basic_radar_alignment, TRUE, TRUE, 0);
+    gtk_box_pack_start (GTK_BOX (vbox), pref_basic_radar_url_alignment, TRUE, TRUE, 0);
+    gtk_box_pack_start (GTK_BOX (vbox), pref_basic_radar_url_entry_alignment, TRUE, 
+    			TRUE, 0);
 #endif /* RADARMAP */
 
     gtk_container_add (GTK_CONTAINER (frame), vbox);
@@ -742,7 +819,9 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
 
     pref_basic_note_lbl = gtk_label_new (_("General"));
     gtk_widget_show (pref_basic_note_lbl);
-    gtk_notebook_set_tab_label (GTK_NOTEBOOK (pref_notebook), gtk_notebook_get_nth_page (GTK_NOTEBOOK (pref_notebook), 2), pref_basic_note_lbl);
+    gtk_notebook_set_tab_label (GTK_NOTEBOOK (pref_notebook), 
+    				gtk_notebook_get_nth_page (GTK_NOTEBOOK (pref_notebook), 2),
+    				pref_basic_note_lbl);
 
 
     g_signal_connect (G_OBJECT (gw_applet->pref), "response",
@@ -765,7 +844,11 @@ void gweather_pref_load (GWeatherApplet *gw_applet)
     gw_applet->gweather_pref.radar_enabled =
     	panel_applet_gconf_get_bool(gw_applet->applet, "enable_radar_map", NULL);
     gw_applet->gweather_pref.location = weather_location_config_read(gw_applet->applet);
-    
+    gw_applet->gweather_pref.use_custom_radar_url = 
+    	panel_applet_gconf_get_bool(gw_applet->applet, "use_custom_radar_url", NULL);
+    gw_applet->gweather_pref.radar = panel_applet_gconf_get_string (gw_applet->applet,
+    								    "radar",
+    								    NULL);
     return;
 }
 
