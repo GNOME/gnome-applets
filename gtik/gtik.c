@@ -555,7 +555,6 @@ static gint updateOutput(gpointer data)
 		GArray *quotes = stockdata->quotes;
 		PangoFontDescription *my_font = stockdata->my_font;
 		GdkGC *gc = stockdata->gc;
-		GdkGC *bg;
 		GdkRectangle update_rect;
 		PangoLayout *layout;
 		PangoRectangle logical_rect;
@@ -571,15 +570,12 @@ static gint updateOutput(gpointer data)
 		totalLoc = 0;
 		totalLen = 0;
 	
-		bg = gdk_gc_new (stockdata->pixmap);
-		gdk_gc_set_foreground( bg, &stockdata->gdkBGcolor );
+		gdk_gc_set_foreground( gc, &stockdata->gdkBGcolor );
 		gdk_draw_rectangle (stockdata->pixmap,
-				    bg, TRUE, 0,0,
+				    gc, TRUE, 0,0,
 				    drawing_area->allocation.width,
 				    drawing_area->allocation.height);
-		g_object_unref (bg);
-
-
+		
 		layout = stockdata->layout;
 		
 		for (i=0; i< stockdata->setCounter; i++) {
