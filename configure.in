@@ -59,7 +59,14 @@ LDFLAGS=$LDFLAGS_save
 
 dnl AM_CONDITIONAL(HAVE_XMMS,test $have_xmms)
 if test x$HAVE_XMMS != x$yes; then
-  AC_MSG_WARN([*** \`xmms' plugin for gumma will not be build ***])
+  AC_MSG_WARN([*** \`xmms' plugin for gumma will not be built ***])
+fi
+
+dnl screenshooter
+AC_CHECK_HEADERS(wordexp.h, have_wordexp=true)
+AM_CONDITIONAL(HAVE_WORDEXP,$have_wordexp)
+if test -z "$have_wordexp"; then
+AC_MSG_WARN([*** No wordexp (glibc >=2.1) Screen-shooter will not be built ***])
 fi
 
 dnl cdplayer
@@ -71,7 +78,7 @@ esac
 AM_CONDITIONAL(APPLET_CDPLAYER, test -n "$CDROM_HOST")
 AC_SUBST(CDROM_HOST)
 if test -z "$CDROM_HOST"; then
-  AC_MSG_WARN([*** \`cd' plugin for gumma will not be build ***])
+  AC_MSG_WARN([*** \`cd' plugin for gumma will not be built ***])
   AC_MSG_WARN([*** \`cdplayer' applet will not be built ***])
 fi
 
@@ -126,8 +133,6 @@ dnl Fvwm pager
 AC_CHECK_HEADER(fvwm.h, fvwm=true, fvwm=false)
 AM_CONDITIONAL(HAVE_FVWM, $fvwm)
 
-dnl screenshooter
-AM_CONDITIONAL(APPLET_SCREENSAVER, xyes)
 
 ALL_LINGUAS="ca cs da de el en_GB es et eu fi fr ga gl hu it ja ko nl no pl pt ru sk sv wa zh_TW.Big5"
 AM_GNU_GETTEXT
@@ -191,6 +196,7 @@ tickastat/Makefile
 tickastat/news_scripts/Makefile
 webcontrol/Makefile
 whereami/Makefile
+screenshooter/Makefile
 ])
 
 dnl batmon/Makefile

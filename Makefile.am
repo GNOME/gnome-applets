@@ -6,6 +6,12 @@ if HAVE_LIBGTOP
 gtop_SUBDIRS = $(gtop_applets)
 endif
 
+wordexp_applets = \
+	screenshooter
+if HAVE_WORDEXP
+wordexp_SUBDIRS = $(wordexp_applets)
+endif
+
 xml_applets = \
 	gnotes	\
 	bug-applet
@@ -51,12 +57,6 @@ if APPLET_MODEMLIGHTS
 modemlights_SUBDIRS = $(modemlights_applets)
 endif
 
-convert_applets = \
-	screenshooter
-if APPLET_SCREENSHOOTER
-screenshooter_SUBDIRS = $(convert_applets)
-endif
-
 always_built_SUBDIRS = \
 	another_clock	\
 	asclock		\
@@ -88,7 +88,7 @@ SUBDIRS = \
 	$(mixer_SUBDIRS)	\
 	$(modemlights_SUBDIRS)	\
 	$(esd_SUBDIRS)		\
-	$(screenshooter_SUBDIRS) \
+	$(wordexp_applets)      \
 	$(xml_SUBDIRS)
 
 DIST_SUBDIRS = \
@@ -101,7 +101,7 @@ DIST_SUBDIRS = \
 	$(mixer_applets)	\
 	$(modemlights_applets)	\
 	$(esd_applets)		\
-	$(screenshooter_SUBDIRS) \
+	$(wordexp_applets)      \
 	$(xml_applets)
 
 ## to automatically rebuild aclocal.m4 if any of the macros in `macros/' change
