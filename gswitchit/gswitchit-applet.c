@@ -37,6 +37,9 @@
 
 #define GROUPS_SUBMENU_PATH "/popups/popup/groups"
 
+static gboolean terminatedOnce = FALSE;
+static GSwitchItApplet *theAppletInstance = NULL;
+
 static void GSwitchItAppletCmdProps (BonoboUIComponent * uic,
 				     GSwitchItApplet * sia,
 				     const gchar * verb);
@@ -794,7 +797,6 @@ GSwitchItAppletInit (GSwitchItApplet * sia, PanelApplet * applet)
 void
 GSwitchItAppletTerm (PanelApplet * applet, GSwitchItApplet * sia)
 {
-	static gboolean terminatedOnce = FALSE;
 	if (terminatedOnce) {
 		XklDebug (0,
 			  "Please do not call the termination method twice!!!\n");
@@ -818,13 +820,15 @@ GSwitchItAppletTerm (PanelApplet * applet, GSwitchItApplet * sia)
 	XklConfigTerm ();
 	XklTerm ();
 
+	terminatedOnce = TRUE;
+	g_free (theAppletInstance);
+	theAppletInstance = NULL;
 	XklDebug (100, "The applet successfully terminated\n");
 }
 
 gboolean
 GSwitchItAppletNew (PanelApplet * applet)
 {
-	static GSwitchItApplet *sia = NULL;
 	gboolean rv = TRUE;
 #if 0
 	GLogLevelFlags fatal_mask;
@@ -832,9 +836,10 @@ GSwitchItAppletNew (PanelApplet * applet)
 	g_log_set_always_fatal (fatal_mask);
 #endif
 	/* BASTARDS! THEY CALL THIS METHOD TWICE!!! */
-	if (sia == NULL) {
-		sia = g_new0 (GSwitchItApplet, 1);
-		rv = GSwitchItAppletInit (sia, applet);
+	if (theAppletInstance == NULL) {
+		terminatedOnce = FALSE;
+		theAppletInstance = g_new0 (GSwitchItApplet, 1);
+		rv = GSwitchItAppletInit (theAppletInstance, applet);
 		XklDebug (100, "The applet successfully started: %d\n",
 			  rv);
 	} else
