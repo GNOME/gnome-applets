@@ -2,6 +2,7 @@
 /*##                         clock & mail applet 0.1.0 alpha       ##*/
 /*###################################################################*/
 
+#include <sys/types.h>
 #include <config.h>
 #include <dirent.h>
 #include <stdio.h>
