@@ -39,6 +39,7 @@ battstat_applet_2_SOURCES = \
 	pixmaps.h \
 	properties.c \
 	battstat_applet.c \
+	power-management.c \
 	acpi-linux.c \
 	acpi-linux.h
 

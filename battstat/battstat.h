@@ -38,22 +38,46 @@ enum {
 	APPLET_SHOW_TIME
 };
 
-/*
- * Not used yet... 
- */
-typedef struct _MeterData {
-  GdkPixmap *pixbuffer;
-  GdkBitmap *pixmask;
-  GdkColor *color;
-  GdkColor *darkcolor;
-} MeterData;
+typedef enum
+{
+  BATTERY_HIGH     = 0,
+  BATTERY_LOW      = 1,
+  BATTERY_CRITICAL = 2,
+  BATTERY_CHARGING = 3
+} BatteryState;
+
+typedef struct
+{
+  BatteryState state;
+  gboolean on_ac_power;
+  gboolean charging;
+  gboolean present;
+  gint minutes;
+  gint percent;
+} BatteryStatus;
+
+typedef enum
+{
+  LAYOUT_NONE,
+  LAYOUT_LONG,
+  LAYOUT_TOPLEFT,
+  LAYOUT_TOP,
+  LAYOUT_LEFT,
+  LAYOUT_CENTRE,
+  LAYOUT_RIGHT,
+  LAYOUT_BOTTOM
+} LayoutLocation;
+
+typedef struct
+{
+  LayoutLocation status;
+  LayoutLocation text;
+  LayoutLocation battery;
+} LayoutConfiguration;
 
 typedef struct _ProgressData {
   GtkWidget *applet;
   GtkStyle *style;
-  GtkTooltips *ac_tip;
-  GtkTooltips *progress_tip;
-  GtkTooltips *progressy_tip;
   GtkWidget *progdir_radio;
   GtkWidget *radio_orient_horizont;
   GtkWidget *radio_lay_batt_on;
@@ -61,42 +85,31 @@ typedef struct _ProgressData {
   GtkWidget *radio_text_1;
   GtkWidget *radio_text_2;
   GtkWidget *check_text;
-  GdkPixmap *pixbuffer;
-  GdkBitmap *pixmask;
-  GdkPixmap *pixbuffery;
-  GdkBitmap *pixmasky;
-  GdkPixmap *pixmap;
-  GdkPixmap *pixmapy;
-  GdkBitmap *masky;
-  GdkGC *pixgc;
-  GdkBitmap *mask;
-  GtkWidget *pixmapwid;
-  GtkWidget *pixmapwidy;
+
+  GtkTooltips *tip;
+
   GtkWidget *about_dialog;
   GtkDialog *prop_win;
-  GtkWidget *hbox;
-  GtkWidget *hbox1;
-  GtkWidget *frameybattery;
-  GtkWidget *framebattery;
-  GtkWidget *framestatus;
+
+  GdkGC *pixgc;
+
+  GtkWidget *table;
+
+  GtkWidget *battery;
+  GtkWidget *status;
   GtkWidget *percent;
-  GtkWidget *eventbattery;
-  GtkWidget *eventybattery;
-  GtkWidget *eventstatus;
-  GdkPixmap *status;
-  GtkWidget *statuspixmapwid;
-  GtkWidget *statusvbox;
-  GtkWidget *statuspercent;
 
   gboolean colors_changed;
   gboolean lowbattnotification;
   gboolean fullbattnot;
   gboolean beep;
   gboolean draintop;
-  gboolean horizont;
   gboolean showstatus;
   gboolean showbattery;
   int showtext;
+
+  gint width, height;
+  gboolean horizont;
 
   GtkWidget *suspend_entry;
   char *suspend_cmd;
@@ -106,8 +119,8 @@ typedef struct _ProgressData {
   guint yellow_val;
   int panelsize;
   PanelAppletOrient orienttype;
+  LayoutConfiguration layout;
   int pixtimer;
-  int acpiwatch;
 
   GtkWidget *lowbatt_toggle;
   GtkWidget *full_toggle;
@@ -127,18 +140,15 @@ enum statusimagename {BATTERY,AC,FLASH,WARNING};
 GdkPixmap *statusimage[4];
 GdkBitmap *statusmask[4];
 
-/*guint pixmap_type;*/
-
 extern char * battery_gray_xpm[];
 
 void prop_cb (BonoboUIComponent *, ProgressData *, const char *);
 int prop_cancel (GtkWidget *, gpointer);
 
-void apm_readinfo(PanelApplet *, ProgressData *);
 void adj_value_changed_cb(GtkAdjustment *, gpointer);
 void simul_cb(GtkWidget *, gpointer);
 void helppref_cb(PanelApplet *, gpointer);
-gint pixmap_timeout(gpointer);
+gint check_for_updates(gpointer);
 void change_orient(PanelApplet *, PanelAppletOrient, ProgressData *);
 void destroy_applet( GtkWidget *, gpointer);
 void cleanup(PanelApplet *, int);
@@ -146,8 +156,10 @@ void help_cb (BonoboUIComponent *, ProgressData *, const char *);
 void suspend_cb (BonoboUIComponent *, ProgressData *, const char *);
 void destroy_about (GtkWidget *, gpointer);
 void about_cb (BonoboUIComponent *, ProgressData *, const char *);
-void size_allocate(PanelApplet *, GtkAllocation *, gpointer);
-void change_background(PanelApplet *a, PanelAppletBackgroundType type, 
-		GdkColor *color, GdkPixmap *pixmap, ProgressData *battstat);	
-gint create_layout(ProgressData *battstat);
 void load_preferences(ProgressData *battstat);
+
+/* power-management.c */
+const char *power_management_getinfo( BatteryStatus *status );
+const char *power_management_initialise( void );
+void power_management_cleanup( void );
+

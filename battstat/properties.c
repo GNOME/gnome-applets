@@ -128,12 +128,8 @@ show_bat_toggled (GtkToggleButton *button, gpointer data)
   }
 
   battstat->showbattery = toggled;
-  if (battstat->horizont) 
-    battstat->showbattery ?
-	gtk_widget_show (battstat->pixmapwid):gtk_widget_hide (battstat->pixmapwid);
-  else
-    battstat->showbattery ?
-	gtk_widget_show (battstat->frameybattery):gtk_widget_hide (battstat->frameybattery);
+  reconfigure_layout( battstat );
+
   panel_applet_gconf_set_bool   (applet, "show_battery", 
   				 battstat->showbattery, NULL);
   				 
@@ -154,7 +150,7 @@ show_status_toggled (GtkToggleButton *button, gpointer data)
   }
   
   battstat->showstatus = toggled;
-	change_orient(applet, battstat->orienttype, battstat);
+  reconfigure_layout( battstat );
   
   panel_applet_gconf_set_bool   (applet, "show_status", 
   				 battstat->showstatus, NULL);
@@ -177,8 +173,8 @@ show_text_toggled (GtkToggleButton *button, gpointer data)
 	  battstat->showtext = APPLET_SHOW_TIME;
   else
 	  battstat->showtext = APPLET_SHOW_NONE;
-  
-  change_orient(applet, battstat->orienttype, battstat);
+ 
+  reconfigure_layout( battstat ); 
 
   gtk_widget_set_sensitive (GTK_WIDGET (battstat->radio_text_1),
 		  battstat->showtext);
@@ -297,28 +293,12 @@ prop_cb (BonoboUIComponent *uic,
   GtkWidget *layout_table;
   GtkWidget *preview_hbox;
   GtkWidget *widget;
-  guint      percentage;
   GConfClient *client;
   gboolean   inhibit_command_line;
   AtkObject *atk_widget;
 
   client = gconf_client_get_default ();
   inhibit_command_line = gconf_client_get_bool (client, "/desktop/gnome/lockdown/inhibit_command_line", NULL);
-
-  apm_readinfo (PANEL_APPLET (battstat->applet), battstat);
-
-#ifdef __FreeBSD__
-  percentage = apminfo.ai_batt_life;
-  if(percentage == 255) percentage = 0;
-#elif defined(__NetBSD__) || defined(__OpenBSD__)
-  percentage = apminfo.battery_life;
-  if(percentage == 255) percentage = 0;
-#elif __linux__
-  percentage = apminfo.battery_percentage;
-  if(percentage < 0) percentage = 0;
-#else
-  percentage = 100;
-#endif
 
   if (DEBUG) g_print("prop_cb()\n");
 

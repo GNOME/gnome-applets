@@ -1,3 +1,30 @@
+2005-01-11  Ryan Lortie  <desrt@desrt.ca>
+	* battstat_applet.c:  Massive changes.  In brief:
+	- pixmap_timeout has been gutted, separated into smaller
+	  functions and renamed to check_for_updates.
+
+	- Rewrote layout engine to use a single table.  Flexibility
+	  for easily defining new layouts in the future.  Much less
+	  duplication.
+
+	- Moved a lot of common data that used to be stored on a
+	  per-instance basis to a global initialisation function.
+
+	* power-manangement.c: New file to try to abstract away the process
+		of reading APM data.  All platform-specific #ifdef are
+		removed from battstat_applet.c.
+
+	* battstat.h:
+		- Added new datatypes and enums to deal with new layout.
+		- Erased many members of the main applet struct due to
+                  simplified layout.
+
+	* Makefile.am:
+		Added power-management.c
+
+	* properties.c:
+		Some minor changes to deal with the changes elsewhere.
+
 2004-11-11  Dennis Cranston <dennis_cranston@yahoo.com>
 
 	* battstat_applet.glade:  Fix minor use of incorrect padding.  Fix conflicting
