@@ -14,7 +14,6 @@
 #include <gnome.h>
 #include <gdk/gdkx.h>
 #include <gdk/gdkprivate.h>
-#include "applet-lib.h"
 #include "applet-widget.h"
 
 typedef struct _task
