@@ -583,10 +583,10 @@ gkb_activator(PortableServer_POA poa,
         gkb = g_new0(GKB,1);
       
         gkb->applet=applet_widget_new(goad_id);
-        
+
+        create_gkb_widget(gkb);        
         load_properties(gkb);
-      
-        create_gkb_widget(gkb);
+
         gtk_widget_show(gkb->frame);
         applet_widget_add(APPLET_WIDGET(gkb->applet), gkb->frame);
         gtk_widget_show(gkb->applet);
