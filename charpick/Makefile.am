@@ -2,7 +2,7 @@ SUBDIRS = help
 
 INCLUDES = -I. -I$(srcdir) 				\
 	$(GNOME_APPLETS_CFLAGS)				\
-	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"
+	-DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\"
 
 
 bin_PROGRAMS = charpick_applet2

@@ -1,6 +1,6 @@
 SUBDIRS = access help
 
-INCLUDES =  -I$(srcdir)  -DGNOMELOCALEDIR=\""$(datadir)/locale"\" \
+INCLUDES =  -I$(srcdir)  -DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\"  \
 		 $(GNOME_APPLETS_CFLAGS) $(GNOME_VFS_APPLETS_CFLAGS) \
 		 -DGTIK_APPLET_NAME=\"gtik2_applet\" \
 		 -I access/

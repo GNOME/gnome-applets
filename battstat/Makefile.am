@@ -26,7 +26,9 @@ INCLUDES = \
 	-DDATA_DIR=\"$(datadir)\" \
 	-DGLADE_DIR=\"$(gladedir)\" \
 	-DG_LOG_DOMAIN=\"battstat_applet\" \
-	-DGNOMELOCALEDIR=\""$(datadir)/locale"\" 
+	-DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\"
+
+
 
 
 bin_PROGRAMS = battstat-applet-2

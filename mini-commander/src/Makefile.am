@@ -4,7 +4,7 @@ INCLUDES = 						\
 	 $(GNOME_APPLETS_CFLAGS)			\
 	-I.						\
 	-I$(srcdir)					\
-	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
+	-DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\"	\
 	$(GNOME_INCLUDEDIR)
 
 bin_PROGRAMS = mini_commander_applet

@@ -2,7 +2,7 @@ SUBDIRS = docs
 INCLUDES = -I. \
 $(GNOME_APPLETS_CFLAGS) \
 -I$(srcdir) \
--DGNOMELOCALEDIR=\""$(datadir)/locale"\" \
+-DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\"  \
 $(CDROM_CFLAGS)
 
 bin_PROGRAMS = cdplayer_applet2

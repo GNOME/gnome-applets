@@ -2,7 +2,7 @@
 
 INCLUDES = -I. -I$(srcdir) 				\
 	$(GNOME_APPLETS_CFLAGS)				\
-	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
+	-DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\" 	\
 	-DVERSION=\""$(VERSION)"\"
 
 bin_PROGRAMS = modemlights_applet2

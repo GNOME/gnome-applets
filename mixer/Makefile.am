@@ -4,7 +4,7 @@ pixmapsdir = $(datadir)/pixmaps
 pixmaps_DATA = gnome-mixer-applet.png
 
 INCLUDES = -I. -I$(srcdir) 				\
-	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
+	-DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\" 	\
 	-DG_DISABLE_DEPRECATED -DGTK_DISABLE_DEPRECATED \
 	-DGNOME_DISABLE_DEPRECATED -DGDK_DISABLE_DEPRECATED \
 	$(GNOME_APPLETS_CFLAGS)				

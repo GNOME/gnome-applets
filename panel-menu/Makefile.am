@@ -8,7 +8,7 @@ icon_DATA = panel-menu-icon.png
 INCLUDES = \
 	-DPREFIX=\""$(prefix)"\" \
 	-DG_LOG_DOMAIN=\"PanelMenu\" \
-	-DGNOMELOCALEDIR=\""$(datadir)/locale"\" \
+	-DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\" \
 	-DDATADIR=\""$(datadir)"\" \
 	-DWNCK_I_KNOW_THIS_IS_UNSTABLE \
 	-I$(top_srcdir) \

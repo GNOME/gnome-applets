@@ -4,7 +4,7 @@ SUBDIRS = pixmaps docs
 
 INCLUDES = \
 	-I$(srcdir)	-I$(srcdir)/pixmaps	\
-	-DGNOMELOCALEDIR=\""$(datadir)/locale"\" \
+	-DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\" \
 	-DGTK_ENABLE_BROKEN	\
 	$(GNOME_APPLETS_CFLAGS)	\
 	$(GNOME_VFS_APPLETS_CFLAGS)

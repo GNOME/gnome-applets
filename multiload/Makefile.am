@@ -1,6 +1,6 @@
 INCLUDES =						\
 	-I$(srcdir)					\
-	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
+	-DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\"	\
 	-DGNOME_DISABLE_DEPRECATED=1	\
 	-DGTK_DISABLE_DEPRECATED=1	\
 	$(GNOME_APPLETS_CFLAGS)                         \
