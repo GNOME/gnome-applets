@@ -1,6 +1,6 @@
 ## Process this file with automake to produce Makefile.in
 
-SUBDIRS = pixmaps #doc
+SUBDIRS = pixmaps docs
 
 INCLUDES = \
 	-I. \
