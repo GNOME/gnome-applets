@@ -106,7 +106,6 @@
 #include <config.h>
 #include <locale.h>             /* needed for setlocale () */
 #include "odo.h"
-#include <libgnomeui/gnome-window-icon.h>
 
 static conversionEntry conversion_table[MAX_UNIT] = {
 { INCH, "inch", "inches", 12.0,   2.54,     "cm",     "cm",     100.0,  2 },
@@ -114,18 +113,18 @@ static conversionEntry conversion_table[MAX_UNIT] = {
 { MILE, "mile", "miles",  -1.0,   1.609344, "km",     "km",     -1.0,   1 }
 };
 
+
 static void
-reset_cb (AppletWidget *widget, gpointer data)
+reset_cb (BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 {
    OdoApplet *oa = data;
    oa->trip_distance=0.;
    refresh(oa);
    return;
-   widget = NULL;
 }
 
 static void
-about_cb (AppletWidget *widget, gpointer data)
+about_cb (BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 {
    static GtkWidget *about = NULL;
 
@@ -142,17 +141,18 @@ about_cb (AppletWidget *widget, gpointer data)
    about=gnome_about_new (_("Odometer"),
    	ODO_VERSION,
    	_("(C) 1999 The Free Software Foundation"),
-   	authors,
    	_("a GNOME applet that tracks and measures the movements "
    	"of your mouse pointer across the desktop."),
+   	authors,
+   	NULL,
+   	NULL,
    	NULL);
    gtk_signal_connect( GTK_OBJECT(about), "destroy",
 		       GTK_SIGNAL_FUNC(gtk_widget_destroyed), &about );
    gtk_widget_show (about);
    return;
-   widget = NULL;
-   data = NULL;
 }
+
 
 static void
 properties_save (gchar *path, OdoApplet *oa)
@@ -161,6 +161,7 @@ properties_save (gchar *path, OdoApplet *oa)
    printf ("properties_save\nTrip=%f\ndistance=%f\n",
    	oa->trip_distance,oa->distance);
 #endif
+#ifdef FIXME
    gnome_config_push_prefix (path);
    gnome_config_set_bool ("odometer/use_metric",oa->use_metric);
    gnome_config_set_bool ("odometer/auto_reset",oa->auto_reset);
@@ -173,11 +174,13 @@ properties_save (gchar *path, OdoApplet *oa)
    gnome_config_sync ();
    gnome_config_drop_all ();
    gnome_config_pop_prefix ();
+#endif
 }
 
 static void
 properties_load (gchar *path,OdoApplet *oa)
 {
+#ifdef FIXME
    gnome_config_push_prefix (path);
    oa->use_metric=gnome_config_get_bool_with_default ("odometer/use_metric=true",NULL);
    oa->auto_reset=gnome_config_get_bool_with_default ("odometer/auto_reset=true",NULL);
@@ -188,25 +191,30 @@ properties_load (gchar *path,OdoApplet *oa)
    oa->distance=gnome_config_get_float_with_default ("odometer/distance=0",NULL);
 
    oa->theme_file=gnome_config_get_string("odometer/theme_file");
+#endif
+   oa->use_metric=TRUE;
+   oa->auto_reset=TRUE;
+   oa->enabled=TRUE;
+   oa->digits_nb=5;
+   oa->scale_applet=TRUE;
+   oa->trip_distance=0.0;
+   oa->distance=0.0;
+
+   oa->theme_file=NULL;
 #ifdef DEBUG
    printf ("properties_load\nTrip=%f\ndistance=%f\n",
    	oa->trip_distance,oa->distance);
 #endif
-   gnome_config_pop_prefix ();
+ 
    if (oa->auto_reset) oa->trip_distance=0;
-#ifdef HAVE_PANEL_PIXEL_SIZE
-   oa->orient = applet_widget_get_panel_orient (APPLET_WIDGET(oa->applet));
-   oa->size   = applet_widget_get_panel_pixel_size (APPLET_WIDGET(oa->applet));
-#else
-   oa->orient = ORIENT_UP;
-   oa->size   = SIZEHINT_DEFAULT;
-#endif
+
 }
 
 /*
  * Save session callback. Just save the current distance in the properties
  * stuff
  */
+#ifdef FIXME
 static gint
 save_session_cb (GtkWidget *widget,
 	gchar *privcfgpath,
@@ -214,27 +222,15 @@ save_session_cb (GtkWidget *widget,
 	gpointer data)
 {
    OdoApplet *oa = data;
-#ifdef DEBUG
+ ifdef DEBUG
    g_print ("save_session_cb\n");
-#endif
+ endif
    properties_save (privcfgpath,oa);
    return FALSE;
    widget = NULL;
    globcfgpath = NULL;
 }
-
-static void
-delete_cb (GtkWidget *widget,GdkEvent *event, gpointer data)
-{
-#ifdef DEBUG
-   g_print ("delete_cb\n");
 #endif
-   gtk_main_quit();
-   return;
-   widget = NULL;
-   event = NULL;
-   data = NULL;
-}
 
 gint
 change_digits_nb (OdoApplet *oa)
@@ -283,11 +279,13 @@ Calcdistance(OdoApplet *oa)
 static void
 draw_digit(GtkWidget *darea,gint n,gint x,gint image_number,OdoApplet *oa)
 {
-   gdk_draw_pixmap (darea->window,darea->style->fg_gc[GTK_WIDGET_STATE(darea)],
-   	oa->image[image_number]->pixmap,
-   	n*oa->digit_width,0,
-   	x*oa->digit_width,0,
-   	oa->digit_width,oa->digit_height-1);
+
+   gdk_pixbuf_render_to_drawable (oa->pixbuf[image_number], darea->window,
+   				  darea->style->fg_gc[GTK_WIDGET_STATE(darea)] ,
+   				  n*oa->digit_width,0,
+   			          x*oa->digit_width,0,
+   			          oa->digit_width,oa->digit_height-1,
+   			          GDK_RGB_DITHER_NONE, 0, 0);
 }
 
 /*
@@ -456,7 +454,9 @@ refresh(OdoApplet *oa)
 #ifdef DEBUG
    	printf ("%s\n",ttip->str);
 #endif
+#ifdef FIXME
    	applet_widget_set_tooltip (APPLET_WIDGET(oa->applet),ttip->str);
+#endif
    	g_string_free(ttip,TRUE);
    }
 
@@ -492,7 +492,9 @@ timer_cb(gpointer data)
 	oa->cycles_since_last_save++;
 	if (oa->cycles_since_last_save>100) {
 		oa->cycles_since_last_save=0;
+	#ifdef FIXME	
 		properties_save (APPLET_WIDGET (oa->applet)->privcfgpath,oa);
+	#endif
 	};
    }
    return TRUE;
@@ -505,6 +507,7 @@ darea_expose (GtkWidget *widget, GdkEventExpose *event,gpointer data)
 #ifdef DEBUG
    g_print ("darea_expose event catched!\n");
 #endif
+   
    refresh(oa);
    return FALSE;
    widget = NULL;
@@ -518,7 +521,7 @@ sized_render (OdoApplet *oa)
 }
 
 static void
-odo_change_orient (GtkWidget *widget, PanelOrientType orient, gpointer data)
+odo_change_orient (PanelApplet *widget, PanelAppletOrient orient, gpointer data)
 {
    OdoApplet *oa = data;
 
@@ -533,25 +536,15 @@ odo_change_orient (GtkWidget *widget, PanelOrientType orient, gpointer data)
    }
 #endif
 
-   /*
-    * FIXME : why must I use applet_widget_get_panel_orient() here to
-    * get the correct orientation ? The callback 2nd parameter is
-    * always zero except at the first time this callback is called.
-    */
-
-   /* oa->orient = orient; */
-
-   oa->orient = applet_widget_get_panel_orient
-   	(APPLET_WIDGET (oa->applet));
+   oa->orient = orient;
    sized_render (oa);
    return;
    widget = NULL;
-   orient = ORIENT_UP;
 }
 
-#ifdef HAVE_PANEL_PIXEL_SIZE
+
 static void 
-odo_change_pixel_size (GtkWidget *widget, int size, gpointer data)
+odo_change_pixel_size (PanelApplet *widget, gint size, gpointer data)
 {
    OdoApplet *oa = data;
 
@@ -563,7 +556,7 @@ odo_change_pixel_size (GtkWidget *widget, int size, gpointer data)
    return;
    widget = NULL;
 }
-#endif
+
 
 static void
 create_odo(OdoApplet *oa)
@@ -588,7 +581,10 @@ create_odo(OdoApplet *oa)
    gtk_box_pack_start (GTK_BOX(oa->vbox),oa->darea1,FALSE,FALSE,1);
    gtk_box_pack_start (GTK_BOX(oa->vbox),oa->darea2,FALSE,FALSE,1);
    gtk_widget_show (oa->vbox);
-   applet_widget_add(APPLET_WIDGET(oa->applet),oa->vbox);
+   
+   oa->applet = panel_applet_new (oa->vbox);
+   oa->orient = panel_applet_get_orient (PANEL_APPLET(oa->applet));
+   oa->size   = panel_applet_get_size (PANEL_APPLET(oa->applet));
 
    /*
     * Get screen size in millimeters. 
@@ -630,76 +626,93 @@ init_applet (OdoApplet *oa)
    oa->digit_width=10;
    oa->digit_height=20;
 
-   oa->image[INTEGER]=NULL;
-   oa->image[DECIMAL]=NULL;
+   oa->pixbuf[INTEGER]=NULL;
+   oa->pixbuf[DECIMAL]=NULL;
    oa->theme_file=NULL;
    oa->theme_entry=NULL;
 }
 
 static void
-help_cb (AppletWidget *applet, gpointer data)
+help_cb (BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 {
+#ifdef FIXME
     GnomeHelpMenuEntry help_entry = { "odometer_applet", "index.html"};
     gnome_help_display(NULL, &help_entry);
-}
-
-int
-main (int argc, char *argv[])
-{
-   OdoApplet *oa;
-
-   /* Internationalization stuff */
-   bindtextdomain (PACKAGE, GNOMELOCALEDIR);
-   textdomain (PACKAGE);
-
-   oa = g_new0(OdoApplet,1);
-   init_applet (oa);
-
-   applet_widget_init ("odometer_applet", VERSION, argc, argv,
-   	NULL,0,NULL);
-   gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gnome-odometer.png");
-
-   oa->applet=applet_widget_new ("odometer_applet");
-   if (!oa->applet)
-	g_error (_("Can't create odometer applet!"));
-
-   gtk_signal_connect (GTK_OBJECT (oa->applet),
-   	"save_session",GTK_SIGNAL_FUNC(save_session_cb),oa);
-   gtk_signal_connect (GTK_OBJECT (oa->applet),
-   	"delete_event",GTK_SIGNAL_FUNC(delete_cb),NULL);
-   gtk_signal_connect (GTK_OBJECT (oa->applet),
-   	"expose_event",GTK_SIGNAL_FUNC(darea_expose),oa);
-#ifdef HAVE_PANEL_PIXEL_SIZE
-   gtk_signal_connect (GTK_OBJECT (oa->applet),
-   	"change_pixel_size",GTK_SIGNAL_FUNC(odo_change_pixel_size),oa);
 #endif
-   gtk_signal_connect (GTK_OBJECT (oa->applet),
-   	"change_orient",GTK_SIGNAL_FUNC(odo_change_orient),oa);
-
-   applet_widget_register_callback (APPLET_WIDGET (oa->applet),
-   	"reset",_("Reset"),GTK_SIGNAL_FUNC(reset_cb),oa);
-   applet_widget_register_stock_callback (APPLET_WIDGET (oa->applet),
-   	"properties",GNOME_STOCK_MENU_PROP,
-   	_("Properties..."),GTK_SIGNAL_FUNC(properties_cb),oa);
-   applet_widget_register_stock_callback (APPLET_WIDGET (oa->applet),
-	"help", GNOME_STOCK_PIXMAP_HELP,
-	_("Help"), help_cb, NULL);					  
-   applet_widget_register_stock_callback (APPLET_WIDGET (oa->applet),
-   	"about",GNOME_STOCK_MENU_ABOUT,
-   	_("About..."),GTK_SIGNAL_FUNC(about_cb),oa);
-
-   properties_load (APPLET_WIDGET (oa->applet)->privcfgpath,oa);
-   create_odo (oa);
-   gtk_widget_realize (oa->applet);
-   gtk_widget_realize (oa->darea1);
-   gtk_widget_realize (oa->darea2);
-   change_theme (oa->theme_file,oa);
-   gtk_timeout_add (UPDATE_TIMEOUT,(GtkFunction)timer_cb,oa);
-   /*
-    * need to call gtk_widget_realize() before 
-    * the initialization of the pixmap
-    */
-   gtk_widget_show (oa->applet);
-   applet_widget_gtk_main ();
-   return 0;
 }
+
+static const BonoboUIVerb odo_applet_menu_verbs [] = {
+        BONOBO_UI_VERB ("Reset", reset_cb),
+        BONOBO_UI_VERB ("Properties", properties_cb),
+        BONOBO_UI_VERB ("Help", help_cb),
+        BONOBO_UI_VERB ("About", about_cb),
+
+        BONOBO_UI_VERB_END
+};
+
+static const char odo_applet_menu_xml [] =
+	"<popup name=\"button3\">\n"
+	"   <menuitem name=\"Item 1\" verb=\"Reset\" _label=\"Reset\"/>\n"
+	"   <menuitem name=\"Item 2\" verb=\"Properties\" _label=\"Properties\"/>\n"
+	"             pixtype=\"stock\" pixname=\"gtk-properties\"/>\n"
+	"   <menuitem name=\"Item 3\" verb=\"Help\" _label=\"Help\"/>\n"
+	"             pixtype=\"stock\" pixname=\"gtk-help\"/>\n"
+	"   <menuitem name=\"Item 4\" verb=\"About\" _label=\"About\"/>\n"
+	"             pixtype=\"stock\" pixname=\"gnome-stock-about\"/>\n"
+	"</popup>\n";
+	
+static BonoboObject *
+odometer_applet_new (void)
+{
+    OdoApplet *oa;
+    
+    gdk_rgb_init ();
+    
+    oa = g_new0(OdoApplet,1);
+    init_applet (oa);
+
+    properties_load (NULL,oa);
+    create_odo (oa);
+    gtk_widget_realize (oa->applet);
+    gtk_widget_realize (oa->darea1);
+    gtk_widget_realize (oa->darea2);
+    change_theme (oa->theme_file,oa);
+    gtk_timeout_add (UPDATE_TIMEOUT,(GtkFunction)timer_cb,oa);
+    
+    gtk_widget_show (oa->applet);
+   
+    g_signal_connect (G_OBJECT (oa->applet),
+   	"expose_event",G_CALLBACK(darea_expose),oa);
+    g_signal_connect (G_OBJECT (oa->applet),
+   	"change_size",G_CALLBACK(odo_change_pixel_size),oa);
+
+    g_signal_connect (G_OBJECT (oa->applet),
+   	"change_orient",G_CALLBACK(odo_change_orient),oa);
+
+    panel_applet_setup_menu (PANEL_APPLET (oa->applet),
+				 odo_applet_menu_xml,
+				 odo_applet_menu_verbs,
+				 oa);	
+    return BONOBO_OBJECT (panel_applet_get_control (PANEL_APPLET (oa->applet)));
+    
+}	
+
+static BonoboObject *
+odometer_applet_factory (BonoboGenericFactory *this,
+		     const gchar          *iid,
+		     gpointer              data)
+{
+	BonoboObject *applet = NULL;
+    
+	if (!strcmp (iid, "OAFIID:GNOME_OdometerApplet"))
+		applet = odometer_applet_new (); 
+    
+	return applet;
+}
+
+PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_OdometerApplet_Factory",
+			     "Odometer Applet",
+			     "0",
+			     odometer_applet_factory,
+			     NULL)
+

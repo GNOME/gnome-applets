@@ -9,10 +9,10 @@
 
 #include "odo.h"
 
-static GdkImlibImage *
+static GdkPixbuf *
 get_image (gchar *path, gchar *string)
 {
-  GdkImlibImage *image = NULL;
+  GdkPixbuf *image = NULL;
   gchar * buf = NULL;
   gchar *filename;
 
@@ -27,7 +27,8 @@ get_image (gchar *path, gchar *string)
   	g_free (filename);
   	return NULL;
   }
-  image = gdk_imlib_load_image (filename);
+
+  image = gdk_pixbuf_new_from_file (filename, NULL);
   g_free (filename);
   return image;
 }
@@ -35,10 +36,12 @@ get_image (gchar *path, gchar *string)
 static gint
 load_theme (gchar *path, OdoApplet *oa)
 {
+  GdkPixbuf *tmp1, *tmp2;
   gchar *datafile = g_strconcat (path, "/themedata", NULL);
   gchar *prefix;
   gint area_width, area_height;
   gint digits_nb, digits_nb_in_image;
+  gint rgb_width[2], rgb_height[2];
   gdouble ratioXY [2];
 
   if (oa->size == 0) {
@@ -52,20 +55,25 @@ load_theme (gchar *path, OdoApplet *oa)
   }
   prefix = g_strconcat ("=", datafile, "=/Default/", NULL);
   g_free (datafile);
+/* FIXME this should be gconfized */
   gnome_config_push_prefix (prefix);
   g_free (prefix);
 
   /*
    * Loading images
    */
-  if (oa->image[INTEGER])
-  	gdk_imlib_destroy_image (oa->image[INTEGER]);
-  if (oa->image[DECIMAL])
-  	gdk_imlib_destroy_image (oa->image[DECIMAL]);
-  oa->image[INTEGER] = get_image (path, "integer_image=");
-  oa->image[DECIMAL] = get_image (path, "decimal_image=");
 
+  if (oa->pixbuf[INTEGER])
+  	gdk_pixbuf_unref (oa->pixbuf[INTEGER]);
+  if (oa->pixbuf[DECIMAL])
+  	gdk_pixbuf_unref (oa->pixbuf[DECIMAL]);
 
+  tmp1 = get_image (path, "integer_image=");
+  tmp2 = get_image (path, "decimal_image=");
+  rgb_width[0] = gdk_pixbuf_get_width (tmp1);
+  rgb_height[0] = gdk_pixbuf_get_height (tmp1);
+  rgb_width[1] = gdk_pixbuf_get_width (tmp2);
+  rgb_height[1] = gdk_pixbuf_get_height (tmp2);
   /*
    * compute the ratio for the RGB image
    */
@@ -75,26 +83,24 @@ load_theme (gchar *path, OdoApplet *oa)
   digits_nb=oa->digits_nb;
   if (oa->with_decimal_dot)
   	digits_nb_in_image++;
-  ratioXY [INTEGER]=((float)oa->image [INTEGER]->rgb_width/
-  	(float)digits_nb_in_image)/(float)oa->image[INTEGER]->rgb_height;
-  ratioXY [DECIMAL]=((float)oa->image [DECIMAL]->rgb_width/
-  	(float)digits_nb_in_image)/(float)oa->image[DECIMAL]->rgb_height;
 
+  ratioXY [INTEGER]=((float)rgb_width[0]/
+  	(float)digits_nb_in_image)/(float)rgb_height[0];
+  ratioXY [DECIMAL]=((float)rgb_width[1]/
+  	(float)digits_nb_in_image)/(float)rgb_height[1];
+  	
   /*
    * define the pixmap size from the panel size
    * and the ratio of the RGB image
    */
-  if ((oa->orient == ORIENT_LEFT) || (oa->orient == ORIENT_RIGHT)) {
+  if ((oa->orient == PANEL_APPLET_ORIENT_LEFT) || (oa->orient == PANEL_APPLET_ORIENT_RIGHT)) {
 	if (oa->scale_applet) {
-#ifdef HAVE_PANEL_PIXEL_SIZE
-		oa->size   = applet_widget_get_panel_pixel_size
-				(APPLET_WIDGET(oa->applet));
-#else
-		oa->size   = SIZEHINT_DEFAULT;
-#endif
+		oa->size   = panel_applet_get_size (PANEL_APPLET (oa->applet));
+
 	} else 
-		oa->size = (oa->image [INTEGER]->rgb_width * digits_nb)
+		oa->size = (rgb_width[0] * digits_nb)
 				/digits_nb_in_image;
+	
   	oa->width = oa->size;
   	area_width = oa->size - 0;
   	oa->digit_width = area_width / digits_nb;
@@ -103,14 +109,11 @@ load_theme (gchar *path, OdoApplet *oa)
   	oa->height = (oa->digit_height << 1) + 2;
   } else {
 	if (oa->scale_applet) {
-#ifdef HAVE_PANEL_PIXEL_SIZE
-		oa->size   = applet_widget_get_panel_pixel_size
-				(APPLET_WIDGET(oa->applet));
-#else
-		oa->size   = SIZEHINT_DEFAULT;
-#endif
+
+		oa->size   = panel_applet_get_size (PANEL_APPLET (oa->applet));
+
 	} else
-		oa->size = (oa->image [INTEGER]->rgb_height << 1) + 2;
+		oa->size = (rgb_height[0] << 1) + 2;
 	oa->height = oa->size;
 	area_height = (oa->size - 2) >> 1;
 	oa->digit_height = area_height;
@@ -118,13 +121,13 @@ load_theme (gchar *path, OdoApplet *oa)
 	area_width = oa->digit_width * digits_nb;
 	oa->width = area_width + 0;
   }
-
-  gdk_imlib_render (oa->image [INTEGER], 
-  	oa->digit_width * digits_nb_in_image,
-  	oa->digit_height);
-  gdk_imlib_render (oa->image [DECIMAL],
-  	oa->digit_width * digits_nb_in_image,
-  	oa->digit_height);
+  
+  oa->pixbuf[INTEGER] = gdk_pixbuf_scale_simple (tmp1, oa->digit_width * digits_nb_in_image,
+  						 oa->digit_height, GDK_INTERP_HYPER);
+  oa->pixbuf[DECIMAL] = gdk_pixbuf_scale_simple (tmp2, oa->digit_width * digits_nb_in_image,
+  						 oa->digit_height, GDK_INTERP_HYPER);
+  gdk_pixbuf_unref (tmp1);
+  gdk_pixbuf_unref (tmp2);
 
   /*
    * Adjust widget sizes

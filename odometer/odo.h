@@ -15,7 +15,7 @@
 #include <sys/stat.h>
 
 #include <gnome.h>
-#include <applet-widget.h>
+#include <panel-applet.h>
 
 #define ODO_VERSION "0.7"
 #define UPDATE_TIMEOUT 75
@@ -53,13 +53,13 @@ struct _OdoApplet {
 	GtkWidget *darea1,*darea2;
 	GtkWidget *vbox;
 	GdkPixmap *digits;
-	PanelOrientType orient;
+	PanelAppletOrient orient;
 	int size;
 
 	/* Theme */
 	gchar *theme_file;
 	GtkWidget *theme_entry;
-	GdkImlibImage *image[2];
+	GdkPixbuf *pixbuf[2];
 	gint width;
 	gint height;
 	gint digit_width_in_image;
@@ -93,7 +93,7 @@ struct _OdoApplet {
 	Units trip_distance_unit;
 };
 
-void properties_cb (AppletWidget *applet, gpointer data);
+void properties_cb (BonoboUIComponent *uic, gpointer data, const gchar *verbname);
 
 void refresh (OdoApplet *oa);
 gint change_digits_nb (OdoApplet *oa);

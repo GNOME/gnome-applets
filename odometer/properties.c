@@ -99,7 +99,9 @@ properties_apply_cb (GtkWidget *b, gint page_num, gpointer data)
    	change_theme(NULL, oa);
    }
 
+#ifdef FIXME
    applet_widget_sync_config (APPLET_WIDGET (oa->applet));
+#endif
    refresh(oa);
    return;
    b = NULL;
@@ -201,10 +203,12 @@ populate_theme_list (GtkWidget *clist)
 static void
 phelp_cb (GtkWidget *w, gint tab, gpointer data)
 {
+#ifdef FIXME
 	GnomeHelpMenuEntry help_entry = { 
 		"odometer_applet", "index.html#ODOMETER-PREFS"
 	};
 	gnome_help_display (NULL, &help_entry);
+#endif
 }
 
 /*
@@ -214,7 +218,7 @@ phelp_cb (GtkWidget *w, gint tab, gpointer data)
  *   - the enable/disable mode
  */
 void
-properties_cb (AppletWidget *applet, gpointer data)
+properties_cb (BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 {
    OdoApplet *oa = data;
    GtkWidget *label;
@@ -277,7 +281,9 @@ properties_cb (AppletWidget *applet, gpointer data)
    adj = (GtkAdjustment *) gtk_adjustment_new ((gdouble)oa->digits_nb, 1.0, 10.0, 1.0, 1.0, 0.0);
    oa->spinner = gtk_spin_button_new (adj,1.0,0);
    gtk_spin_button_set_wrap (GTK_SPIN_BUTTON (oa->spinner),TRUE);
+#ifdef GO_AWAY
    gtk_spin_button_set_shadow_type (GTK_SPIN_BUTTON (oa->spinner), GTK_SHADOW_IN);
+#endif
    gtk_container_add (GTK_CONTAINER (frame2), oa->spinner);
    gtk_signal_connect (GTK_OBJECT (adj),"value_changed",
    	GTK_SIGNAL_FUNC (digits_number_changed_cb),oa);
@@ -344,5 +350,4 @@ properties_cb (AppletWidget *applet, gpointer data)
 	"help", GTK_SIGNAL_FUNC (phelp_cb), NULL);
    gtk_widget_show_all(oa->pbox);
    return;
-   applet = NULL;
 }

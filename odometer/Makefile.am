@@ -1,30 +1,30 @@
-SUBDIRS = themes docs
+#SUBDIRS = themes docs
+SUBDIRS = themes
 
 INCLUDES = -I. -I$(srcdir) 					\
-	-I$(top_srcdir)/intl -I$(top_builddir)/intl		\
+	$(GNOME_APPLETS_CFLAGS)					\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"		\
 	-I$(includedir)						\ 
 	-DODOMETER_THEMES_DIR=\""$(datadir)/odometer/"\"
 
-bin_PROGRAMS = odometer_applet
+bin_PROGRAMS = odometer_applet2
 
-odometer_applet_SOURCES = odo.c odo.h properties.c theme.c
+odometer_applet2_SOURCES = odo.c odo.h properties.c theme.c
 
-odometer_applet_LDADD = \
-		$(GNOME_APPLETS_LIBS) $(INTLLIBS) 
+odometer_applet2_LDADD = \
+		$(GNOME_APPLETS_LIBS)
 
-sysdir = $(datadir)/applets/Amusements
-sys_predata = odometer_applet.desktop.in
-sys_DATA = $(sys_predata:.desktop.in=.desktop)
-@XML_I18N_MERGE_DESKTOP_RULE@
-
-gnorbadir  = $(sysconfdir)/CORBA/servers
-gnorba_DATA = odometer_applet.gnorba
 
 pixmapdir = $(datadir)/pixmaps
 pixmap_DATA = gnome-odometer.png
 
+serverdir       = $(libdir)/bonobo/servers
+server_in_files = GNOME_OdometerApplet.server.in
+server_DATA     = $(server_in_files:.server.in=.server)
+
+@XML_I18N_MERGE_SERVER_RULE@	
+
 EXTRA_DIST = \
 	README.themes	\
 	$(pixmap_DATA)	\
-	$(gnorba_DATA) $(sys_DATA) $(sys_predata)
+	$(server_in_files)
