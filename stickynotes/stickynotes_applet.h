@@ -83,6 +83,9 @@ typedef struct
 	gboolean prelighted;		/* Whether applet is prelighted */
 	gboolean pressed;		/* Whether applet is pressed */
 
+	gint panel_size;
+	PanelAppletOrient panel_orient;
+
 } StickyNotesApplet;
 	
 typedef enum

@@ -283,6 +283,8 @@ StickyNotesApplet * stickynotes_applet_new(PanelApplet *panel_applet)
 
 	/* Add the applet icon */
 	gtk_container_add(GTK_CONTAINER(panel_applet), applet->w_image);
+	applet->panel_size = panel_applet_get_size (panel_applet);
+	applet->panel_orient = panel_applet_get_orient (panel_applet);
 	stickynotes_applet_update_icon(applet);
 
 	/* Add the popup menu */
@@ -310,7 +312,8 @@ StickyNotesApplet * stickynotes_applet_new(PanelApplet *panel_applet)
 	g_signal_connect(G_OBJECT(applet->w_applet), "focus-out-event", G_CALLBACK(applet_focus_cb), applet);
 	g_signal_connect(G_OBJECT(applet->w_applet), "enter-notify-event", G_CALLBACK(applet_cross_cb), applet);
 	g_signal_connect(G_OBJECT(applet->w_applet), "leave-notify-event", G_CALLBACK(applet_cross_cb), applet);
-	g_signal_connect(G_OBJECT(applet->w_applet), "change-size", G_CALLBACK(applet_change_size_cb), applet);
+	g_signal_connect(G_OBJECT(applet->w_applet), "size-allocate", G_CALLBACK(applet_size_allocate_cb), applet);
+	g_signal_connect(G_OBJECT(applet->w_applet), "change-orient", G_CALLBACK(applet_change_orient_cb), applet);
 	g_signal_connect(G_OBJECT(applet->w_applet), "change-background", G_CALLBACK(applet_change_bg_cb), applet);
 	g_signal_connect(G_OBJECT(applet->w_applet), "destroy", G_CALLBACK(applet_destroy_cb), applet);
 
@@ -327,7 +330,7 @@ void stickynotes_applet_update_icon(StickyNotesApplet *applet)
 {
 	GdkPixbuf *pixbuf1, *pixbuf2;
 
-	gint size = panel_applet_get_size(PANEL_APPLET(applet->w_applet));
+	gint size = applet->panel_size;
 
 	/* Choose appropriate icon and size it */
 	if (applet->prelighted)
