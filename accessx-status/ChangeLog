@@ -1,3 +1,15 @@
+2004-01-31  Archana Shah <archana.shah@wipro.com>
+
+	* applet.h: Added a field in the structure AccessxStatusApplet
+	for about dialog.
+	* applet.c: (accessx_status_applet_fill): Initialized about_dialog
+	with NULL.
+	(about_cb): Changed to use member field instead of static variable
+	for about dialog.
+	(accessx_status_applet_destroy): Destroys about dialog when the
+	applet is removed.
+	Fixes bug# 132290
+
 2003-12-22  Muktha <muktha.narayan@wipro.com>
 
 	* applet.c: Fix a typo in the accessible description.

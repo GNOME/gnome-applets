@@ -117,7 +117,6 @@ about_cb (BonoboUIComponent          *uic,
 	  AccessxStatusApplet        *sapplet,
 	  const gchar                *verbname)
 {
-	static GtkWidget *about = NULL;
 	GdkPixbuf	 *pixbuf;
 	GError		 *error = NULL;
 	gchar		 *file;
@@ -134,11 +133,8 @@ about_cb (BonoboUIComponent          *uic,
 
 	const gchar *translator_credits = _("translator_credits");
 
-	if (about) {
-		gtk_window_set_screen (
-			GTK_WINDOW (about),
-			gtk_widget_get_screen (GTK_WIDGET (sapplet->applet)));
-		gtk_window_present (GTK_WINDOW (about));
+	if (sapplet->about_dialog) {
+		gtk_window_present (GTK_WINDOW (sapplet->about_dialog));
 		return;
 	}
         
@@ -153,25 +149,24 @@ about_cb (BonoboUIComponent          *uic,
 		g_error_free (error);
 	}
 	
-        about = gnome_about_new (
-		_("AccessX Status"), VERSION,
-		_("Copyright (C) 2003 Sun Microsystems"),
-		_("Shows the state of AccessX features such as latched modifiers"),
-		authors,
-		documenters,
-		strcmp (translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
-		pixbuf);
+        sapplet->about_dialog = gnome_about_new (_("AccessX Status"), VERSION,
+						 _("Copyright (C) 2003 Sun Microsystems"),
+						 _("Shows the state of AccessX features such as latched modifiers"),
+						 authors,
+						 documenters,
+						 strcmp (translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
+						 pixbuf);
 		
 	if (pixbuf)
 		gdk_pixbuf_unref (pixbuf);
 			
-	gtk_window_set_wmclass (GTK_WINDOW (about), "accessx status", "AccessX Status");
-	gtk_window_set_screen (GTK_WINDOW (about),
+	gtk_window_set_wmclass (GTK_WINDOW (sapplet->about_dialog), "accessx status", "AccessX Status");
+	gtk_window_set_screen (GTK_WINDOW (sapplet->about_dialog),
 			       gtk_widget_get_screen (GTK_WIDGET (sapplet->applet)));
-	g_signal_connect (about, "destroy",
+	g_signal_connect (sapplet->about_dialog, "destroy",
 			  G_CALLBACK (gtk_widget_destroyed),
-			  &about);
-        gtk_widget_show (about);
+			  &sapplet->about_dialog);
+	gtk_widget_show (sapplet->about_dialog);
 }
 
 static void
@@ -1077,6 +1072,8 @@ accessx_status_applet_destroy (GtkWidget *widget, gpointer user_data)
 		XkbFreeKeyboard (sapplet->xkb, 0, True);
 	if (sapplet->xkb_display) 
 		XCloseDisplay (sapplet->xkb_display);
+	if (sapplet->about_dialog)
+		gtk_widget_destroy (sapplet->about_dialog);
 	if (sapplet->tooltips)
 		g_object_unref (sapplet->tooltips);
 }
@@ -1186,6 +1183,8 @@ accessx_status_applet_fill (PanelApplet *applet)
 					      "hidden", "1",
 					      NULL);
 	}
+
+	sapplet->about_dialog = NULL;
 
 	sapplet->tooltips = gtk_tooltips_new ();
 	g_object_ref (sapplet->tooltips);
