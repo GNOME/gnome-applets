@@ -184,7 +184,7 @@ static gint device_is_in_mountlist(DriveData *dd)
 {
 	FILE *fp;
 	gchar *command_line = "mount";
-	gchar buf[201];
+	gchar buf[256];
 	gint found = FALSE;
 
 	if (!dd->mount_point) return FALSE;
@@ -443,32 +443,35 @@ static gint drive_update_cb(gpointer data)
 static gint mount_cb(GtkWidget *widget, gpointer data)
 {
 	DriveData *dd = data;
-	gchar command_line[300];
-	gchar buf[200];
+	gchar *command_line;
+	gchar buf[512];
 	FILE *fp;
 	GString *str;
 	gint check = device_is_mounted(dd);
 
 	/* Stop the user from displaying zillions of error messages */
 	if (dd->error_dialog)
-	{
+		{
 		gdk_window_show(dd->error_dialog->window);
 		gdk_window_raise(dd->error_dialog->window);
 		return FALSE;
-	}
+		}
 
 	if (!check)
-		g_snprintf(command_line, sizeof(command_line),
-			   "mount %s 2>&1", dd->mount_point);
+		{
+		command_line = g_strdup_printf("mount %s 2>&1", dd->mount_point);
+		}
 	else
-		g_snprintf(command_line, sizeof(command_line),
-			   "umount %s 2>&1", dd->mount_point);
+		{
+		command_line = g_strdup_printf("umount %s 2>&1", dd->mount_point);
+		}
 
 	fp = popen(command_line, "r");
 
 	if (!fp)
 		{
 		printf("unable to run command: %s\n", command_line);
+		g_free(command_line);
 		return FALSE;
 		}
 
@@ -509,17 +512,20 @@ static gint mount_cb(GtkWidget *widget, gpointer data)
 		}
 
 	g_string_free(str, TRUE);
+	g_free(command_line);
+
 	return FALSE;
 	widget = NULL;
 }
 
 static void eject(DriveData *dd)
 {
-	gchar command_line[300];
-	gchar buffer[200];
-	gchar dn[200];	/* Devicename */
-	gchar mp[200];	/* Mountpoint */
+	gchar *command_line;
+	gchar buffer[512];
+	gchar dn[256];	/* Devicename */
+	gchar mp[256];	/* Mountpoint */
 	FILE *ml;	/* Mountlist */
+	gint found = FALSE;
 
 	if (!dd->mount_point) return;
 
@@ -534,39 +540,44 @@ static void eject(DriveData *dd)
 	if (dd->mounted) {
 		ml = popen("mount", "r");
 		while (fgets(buffer, sizeof(buffer), ml)) {
-			sscanf(buffer, "%s %*s %s", dn, mp);
-			if (!strcmp(mp, dd->mount_point))
+			if (sscanf(buffer, "%255s %*s %255s", dn, mp) == 2 &&
+			    strcmp(mp, dd->mount_point) == 0) {
+				found = TRUE;
 				break;
+			}
 		}
 		pclose (ml);
 	} else {
 		ml = fopen("/etc/fstab", "r");
 		while (fgets(buffer, sizeof(buffer), ml)) {
-			sscanf(buffer, "%s %s", dn, mp);
-			if (!strcmp(mp, dd->mount_point))
+			if (sscanf(buffer, "%255s %255s", dn, mp) == 2 &&
+			    strcmp(mp, dd->mount_point) == 0) {
+				found = TRUE;
 				break;
+			}
 		}
 		fclose (ml);
 	}
 	
-	if (strcmp(mp, dd->mount_point)) {	/* mp != dd->mount_point */
+	if (!found) {	/* mp != dd->mount_point */
 		printf("WARNING: drivemount.c ... dd->mount_point not found in list\
 			 (output of mount, or /etc/fstab) \n");
 		return;
 	}
 
 	if (dd->mounted) {
-		g_snprintf (command_line, sizeof(command_line),
-			    "eject -u '%s'", dn);
+		command_line = g_strdup_printf("eject -u '%s'", dn);
 		/* perhaps it doesn't like the -u option */
-		if(system (command_line)!=0) {
-			g_snprintf (command_line, sizeof(command_line),
-				    "eject '%s'", dn);
+		if(system(command_line) != 0) {
+			g_free(command_line);
+			command_line = g_strdup_printf("eject '%s'", dn);
 			gnome_execute_shell (NULL, command_line);
 		}
+		g_free(command_line);
 	} else {
-		g_snprintf (command_line, sizeof(command_line), "eject '%s'", dn);
+		command_line = g_strdup_printf("eject '%s'", dn);
 		gnome_execute_shell (NULL, command_line);
+		g_free(command_line);
 	}
 }
 
