@@ -149,8 +149,8 @@ long pv_buf[MAX_PV_BUF] = {
 /********************** Mixer related Code *******************/
 /*  Mostly based on the gmix code                            */
 /*************************************************************/
-static void
-openMixer( gchar *device_name ) 
+static gboolean
+openMixer(const gchar *device_name ) 
 {
 	gint res, ver;
 #ifdef OSS_API
@@ -170,13 +170,8 @@ openMixer( gchar *device_name )
 	mixerfd = ALgetparams(AL_DEFAULT_DEVICE, pv_buf, MAX_PV_BUF);
 #endif
 	if (mixerfd < 0) {
-		/* probably should die more gracefully */
-		char *s = g_strdup_printf(_("Couldn't open mixer device %s\n"),
-					  device_name);
-		gnome_error_dialog(s);
-		g_warning(s);
-		g_free(s);
-		return;
+		/* probably should die more gracefully */		
+		return FALSE;
 	}
 
         /*
@@ -199,7 +194,7 @@ openMixer( gchar *device_name )
 		char *s = g_strdup_printf(_("Querying available channels of mixer device %s failed\n"), device_name);
 		gnome_error_dialog(s);
 		g_free(s);
-		return;
+		return TRUE;
 	} else if (devmask & SOUND_MASK_VOLUME) {
 		mixerchannel = SOUND_MIXER_VOLUME;
 	} else if (devmask & SOUND_MASK_PCM) {
@@ -209,9 +204,10 @@ openMixer( gchar *device_name )
 		char *s = g_strdup_printf(_("Mixer device %s has neither volume nor PCM channels.\n"), device_name);
 		gnome_error_dialog(s);
 		g_free(s);
-		return;
+		return TRUE;
 	}
-#endif		
+#endif	
+ 	return TRUE;	
 }
 
 /* only works with master vol currently */
@@ -846,13 +842,31 @@ mixer_applet_create (PanelApplet *applet)
 {
 	MixerData         *data;
 	BonoboUIComponent *component;
+	const gchar *device;
+	gboolean retval;
 
 #ifdef OSS_API
-	openMixer("/dev/mixer");
+	/* /dev/sound/mixer for devfs */
+	device = "/dev/mixer";
+	retval = openMixer(device);
+	if (!retval) {
+		device = "/dev/sound/mixer";
+		retval = openMixer (device);
+	}
 #endif
 #ifdef SUN_API
-	openMixer("/dev/audioctl");
+	device = "/dev/audioctl";
+	retval = openMixer(device);
 #endif
+
+	if (!retval) {
+		GtkWidget *dialog;
+		dialog = gtk_message_dialog_new (NULL, GTK_DIALOG_DESTROY_WITH_PARENT,
+						 GTK_MESSAGE_ERROR, GTK_BUTTONS_CLOSE,
+						 ("Couldn't open mixer device %s\n"),
+						 device, NULL);
+		gtk_dialog_run (GTK_DIALOG (dialog));
+	}
 
  	if (GTK_IS_ACCESSIBLE (gtk_widget_get_accessible(GTK_WIDGET(applet)))) {
 		gail_loaded = TRUE;
