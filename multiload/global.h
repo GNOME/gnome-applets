@@ -81,41 +81,41 @@ struct _MultiloadApplet
 
 /* start a new instance of the cpuload applet */
 LoadGraph *
-cpuload_applet_new(PanelApplet *applet, gpointer data);
+cpuload_applet_new(PanelApplet *applet, gpointer data) G_GNUC_INTERNAL;
 
 /* start a new instance of the memload applet */
 LoadGraph *
-memload_applet_new(PanelApplet *applet, gpointer data);
+memload_applet_new(PanelApplet *applet, gpointer data) G_GNUC_INTERNAL;
 
 /* start a new instance of the swapload applet */
 LoadGraph *
-swapload_applet_new(PanelApplet *applet, gpointer data);
+swapload_applet_new(PanelApplet *applet, gpointer data) G_GNUC_INTERNAL;
 
 /* start a new instance of the netload applet */
 LoadGraph *
-netload_applet_new(PanelApplet *applet, gpointer data);
+netload_applet_new(PanelApplet *applet, gpointer data) G_GNUC_INTERNAL;
 
 /* start a new instance of the loadavg applet */
 LoadGraph *
-loadavg_applet_new(PanelApplet *applet, gpointer data);
+loadavg_applet_new(PanelApplet *applet, gpointer data) G_GNUC_INTERNAL;
 
 /* start a new instance of the loadavg applet */
 LoadGraph *
-diskload_applet_new(PanelApplet *applet, gpointer data);
+diskload_applet_new(PanelApplet *applet, gpointer data) G_GNUC_INTERNAL;
 
 /* show properties dialog */
 void
 multiload_properties_cb (BonoboUIComponent *uic,
 			 MultiloadApplet   *ma,	
-			 const char        *name);
+			 const char        *name) G_GNUC_INTERNAL;
 
 /* remove the old graphs and rebuild them */
 void
-multiload_applet_refresh(MultiloadApplet *ma);
+multiload_applet_refresh(MultiloadApplet *ma) G_GNUC_INTERNAL;
 
 /* update the tooltip to the graph's current "used" percentage */
 void
-multiload_applet_tooltip_update(LoadGraph *g);
+multiload_applet_tooltip_update(LoadGraph *g) G_GNUC_INTERNAL;
 
 G_END_DECLS
 

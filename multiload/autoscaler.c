@@ -24,7 +24,7 @@ unsigned autoscaler_get_max(AutoScaler *that, unsigned current)
 	that->count++;
 	time(&now);
 
-	if(difftime(now, that->last_update) > that->update_interval)
+	if((float)difftime(now, that->last_update) > that->update_interval)
 	{
 		float new_average = that->sum / that->count;
 		float average;

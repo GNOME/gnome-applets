@@ -10,18 +10,18 @@ load_graph_new (PanelApplet *applet, guint n, gchar *label,
 		guint size, 
 		gboolean visible, 
 		gchar *name, 
-		LoadGraphDataFunc get_data);
+		LoadGraphDataFunc get_data) G_GNUC_INTERNAL;
 
 /* Start load graph. */
 void
-load_graph_start (LoadGraph *g);
+load_graph_start (LoadGraph *g) G_GNUC_INTERNAL;
 
 /* Stop load graph. */
 void
-load_graph_stop (LoadGraph *g);
+load_graph_stop (LoadGraph *g) G_GNUC_INTERNAL;
 
 /* free load graph */
 void
-load_graph_unalloc (LoadGraph *g);
+load_graph_unalloc (LoadGraph *g) G_GNUC_INTERNAL;
 		      
 #endif

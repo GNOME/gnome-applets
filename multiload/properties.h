@@ -37,11 +37,11 @@ struct _MultiLoadProperties {
 };
 
 /*
-void multiload_properties_apply (void);
-void multiload_properties_close (void);
-void multiload_properties_changed (void);
-void multiload_show_properties (PropertyClass prop_class);
-void multiload_init_properties (void);
+void multiload_properties_apply (void) G_GNUC_INTERNAL;
+void multiload_properties_close (void) G_GNUC_INTERNAL;
+void multiload_properties_changed (void) G_GNUC_INTERNAL;
+void multiload_show_properties (PropertyClass prop_class) G_GNUC_INTERNAL;
+void multiload_init_properties (void) G_GNUC_INTERNAL;
 */
 G_END_DECLS
 
