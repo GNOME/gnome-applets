@@ -82,6 +82,7 @@ panel_menu_config_load_layout (PanelMenu *panel_menu)
 
 		layout = panel_applet_gconf_get_string (panel_menu->applet,
 							"layout", NULL);
+		g_print ("(load-layout) layout is %s\n", layout);
 		retval = TRUE;
 	}
 	if (!layout) {
@@ -138,6 +139,7 @@ panel_menu_config_save_layout (PanelMenu *panel_menu)
 	layout = panel_menu_config_get_layout_string (panel_menu);
 	panel_applet_gconf_set_string (panel_menu->applet,
 				      "layout", layout, NULL);
+	g_print ("(save-layout) layout is %s\n", layout);
 	g_free (layout);
 }
 

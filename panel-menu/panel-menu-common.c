@@ -694,6 +694,7 @@ panel_menu_common_remove_entry (GtkWidget *widget, PanelMenuEntry *entry, const 
 	panel_menu->entries = g_list_remove (panel_menu->entries, entry);
 	panel_menu_common_call_entry_destroy (entry);
 	panel_menu_config_save_prefs (panel_menu);
+	panel_menu_config_save_layout (panel_menu);
 }
 
 void
