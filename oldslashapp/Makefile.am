@@ -8,13 +8,12 @@ bin_PROGRAMS = slash_applet
 slash_applet_SOURCES =  slashapp.c	\
 			slashapp.h	\
 			display.c	\
-			properties.c	\
-			http_get.c	\
-			http_get.h
+			properties.c
 
 slash_applet_LDADD = ../../panel/libpanel_applet.la \
 		     $(GNOME_LIBDIR) $(ORB_LIBS) -lXt \
-		     $(GNOMEUI_LIBS) $(INTLLIBS) 
+		     $(GNOMEUI_LIBS) $(INTLLIBS)      \
+                     $(GHTTP_LIB)
 
 EXTRA_DIST = \
 	slash_applet.desktop back.xpm noimage.xpm slashsplash.xpm

@@ -3,7 +3,7 @@
 /*###################################################################*/
 
 #include "slashapp.h"
-#include "http_get.h"
+#include <ghttp.h>
 #include "slashsplash.xpm"
 #include <errno.h>
 #include <ctype.h>
@@ -24,6 +24,45 @@ static gint applet_save_session(GtkWidget *widget, gchar *privcfgpath,
 					gchar *globcfgpath, gpointer data);
 static AppData *create_new_app(GtkWidget *applet);
 static void applet_start_new_applet(const gchar *param, gpointer data);
+
+static int
+http_get_to_file(gchar *a_host, gint a_port, gchar *a_resource, FILE *a_file)
+{
+  int length = -1;
+  ghttp_request *request = NULL;
+  gchar s_port[8];
+  gchar *uri = NULL;
+  gchar *body;
+  gchar *proxy = g_getenv("http_proxy");
+
+  g_snprintf(s_port, 8, "%d", a_port);
+  uri = g_strconcat("http://", a_host, ":", s_port, a_resource, NULL);
+  /*fprintf(stderr,"Asking for %s\n", uri);*/
+  request = ghttp_request_new();
+  if (!request)
+    goto ec;
+  if (proxy && (ghttp_set_proxy(request,proxy) != 0))
+    goto ec;
+  if (ghttp_set_uri(request, uri) != 0)
+    goto ec;
+  ghttp_set_header(request, http_hdr_Connection, "close");
+  if (ghttp_prepare(request) != 0)
+    goto ec;
+  if (ghttp_process(request) != ghttp_done)
+    goto ec;
+  length = ghttp_get_body_len(request);
+  body = ghttp_get_body(request);
+  if (body != NULL)
+    fwrite(body, length, 1, a_file);
+
+ ec:
+  /*fprintf(stderr, "Resource received: %d bytes\n", length);*/
+  if (request)
+  ghttp_request_destroy(request);
+  if (uri)
+    g_free(uri);
+  return length;
+}
 
 static void article_button_cb(GtkWidget *button, gpointer data)
 {
@@ -254,10 +293,21 @@ static GtkWidget *get_topic_image(gchar *topic, AppData *ad)
 	gchar *icon_file;
 	gchar *gif_filename;
 	gchar *jpg_filename;
+	gchar *image_topic;
+	gchar *image_topic_end;
 
+	/* sometimes, the topic has spaces (as in Sun Microsystems) */
+	image_topic = g_strdup(topic);
+	image_topic_end = strchr(image_topic,' ');
+	if (image_topic_end)
+	  *image_topic_end = 0;
+	/* treat some special cases */
+	if (g_strcasecmp(image_topic,"technology")==0)
+	  image_topic[4] = 0;
+	
 	/* darn, must try both file types */
-	gif_file = g_strconcat(topic, ".gif", NULL);
-	jpg_file = g_strconcat(topic, ".jpg", NULL);
+	gif_file = g_strconcat(image_topic, ".gif", NULL);
+	jpg_file = g_strconcat(image_topic, ".jpg", NULL);
 
 	gif_filename = g_strconcat(ad->slashapp_dir, "/", gif_file, NULL);
 	jpg_filename = g_strconcat(ad->slashapp_dir, "/", jpg_file, NULL);
@@ -301,7 +351,7 @@ static GtkWidget *get_topic_image(gchar *topic, AppData *ad)
 		icon_file = jpg_filename;
 	else
 		{
-		printf("could not load topic image: topic%s.[gif/jpg]\n", topic);
+		printf("could not load topic image: topic%s.[gif/jpg]\n", image_topic);
 		icon_file = NULL;
 		}
 
@@ -314,7 +364,8 @@ static GtkWidget *get_topic_image(gchar *topic, AppData *ad)
 			icon = NULL;
 			}
 		}
-	
+
+	g_free(image_topic);
 	g_free(gif_file);
 	g_free(jpg_file);
 	g_free(gif_filename);
