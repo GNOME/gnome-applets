@@ -28,8 +28,7 @@ static gboolean
 GKBAppletNew (PanelApplet * applet)
 {
 	fprintf (stderr, "No xkb found, fallback to gkb\n");
-	gkb_factory (applet, "OAFIID:GNOME_KeyboardApplet", NULL);
-	return FALSE;
+	return gkb_factory (applet, "OAFIID:GNOME_KeyboardApplet", NULL);
 }
 
 static gboolean
