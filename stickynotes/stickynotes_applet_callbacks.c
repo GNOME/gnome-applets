@@ -81,8 +81,21 @@ position_menu (GtkMenu *menu, gint *x, gint *y,
 static void
 popup_add_note (StickyNotesApplet *applet, GtkWidget *item)
 {
+	GList *l;
+
 	g_print ("popup_add_note()\n");
+        
 	stickynotes_add (gtk_widget_get_screen (applet->w_applet));
+	for (l = stickynotes->applets; l; l = l->next)
+        {
+                StickyNotesApplet *applet;
+
+                applet = l->data;
+
+                gtk_check_menu_item_set_active (
+                                GTK_CHECK_MENU_ITEM (applet->menu_show),
+                                TRUE);
+        }
 }
 
 static void
@@ -153,7 +166,12 @@ applet_button_cb (GtkWidget         *widget,
 		  GdkEventButton    *event,
 		  StickyNotesApplet *applet)
 {
-	if (event->button == 1)
+	if (event->type == GDK_2BUTTON_PRESS) /* FIXME */
+	{
+		popup_add_note (applet, NULL);
+		return TRUE;
+	}
+	else if (event->button == 1)
 	{
 		stickynote_applet_ensure_popup (applet);
 		if (applet->popup_menu)
@@ -313,12 +331,6 @@ void applet_destroy_cb (PanelApplet *panel_applet, StickyNotesApplet *applet)
 	
 	
 }		
-
-/* Menu Callback : Create a new sticky note */
-void menu_create_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gchar *verbname)
-{
-	stickynotes_add(gtk_widget_get_screen(applet->w_applet));
-}
 
 /* Destroy all response Callback: Callback for the destroy all dialog */
 static void
@@ -500,56 +512,74 @@ void preferences_font_cb (GtkWidget *button, gpointer data)
 /* Preferences Callback : Apply to existing notes. */
 void preferences_apply_cb(GConfClient *client, guint cnxn_id, GConfEntry *entry, gpointer data)
 {
-	gint i;
+	GList *l;
+	StickyNote *note;
 
-	if (strcmp(entry->key, GCONF_PATH "/settings/sticky") == 0) {
+	if (!strcmp (entry->key, GCONF_PATH "/settings/sticky"))
+	{
 		if (gconf_value_get_bool(entry->value))
-			for (i = 0; i < g_list_length(stickynotes->notes); i++) {
-				StickyNote *note = g_list_nth_data(stickynotes->notes, i);
-				gtk_window_stick(GTK_WINDOW(note->w_window));
+			for (l = stickynotes->notes; l; l = l->next)
+			{
+				note = l->data;
+				gtk_window_stick (GTK_WINDOW (note->w_window));
 			}
 		else
-			for (i = 0; i < g_list_length(stickynotes->notes); i++) {
-				StickyNote *note = g_list_nth_data(stickynotes->notes, i);
-				gtk_window_unstick(GTK_WINDOW(note->w_window));
+			for (l= stickynotes->notes; l; l = l->next)
+			{
+				note = l->data;
+				gtk_window_unstick (GTK_WINDOW (
+							note->w_window));
 			}
 	}
 
-	else if (strcmp(entry->key, GCONF_PATH "/settings/locked") == 0) {
-		for (i = 0; i < g_list_length(stickynotes->notes); i++) {
-			StickyNote *note = g_list_nth_data(stickynotes->notes, i);
-			stickynote_set_locked(note, gconf_value_get_bool(entry->value));
+	else if (!strcmp (entry->key, GCONF_PATH "/settings/locked"))
+	{
+		for (l = stickynotes->notes; l; l = l->next)
+		{
+			note = l->data;
+			stickynote_set_locked (note,
+					gconf_value_get_bool (entry->value));
 		}
 		stickynotes_save();
 	}
 
-	else if (strcmp(entry->key, GCONF_PATH "/settings/visible") == 0) {
-		for (i = 0; i < g_list_length(stickynotes->notes); i++) {
-			StickyNote *note = g_list_nth_data(stickynotes->notes, i);
-			stickynote_set_visible(note, gconf_value_get_bool(entry->value));
+	else if (!strcmp (entry->key, GCONF_PATH "/settings/visible"))
+	{
+		for (l = stickynotes->notes; l; l = l->next)
+		{
+			note = l->data;
+			stickynote_set_visible (note,
+					gconf_value_get_bool (entry->value));
 		}
 		stickynotes_save();
 	}
 
-	else if (strcmp(entry->key, GCONF_PATH "/settings/use_system_color") == 0 ||
-	    strcmp(entry->key, GCONF_PATH "/defaults/color") == 0) {
-		for (i = 0; i < g_list_length(stickynotes->notes); i++) {
-			StickyNote *note = g_list_nth_data(stickynotes->notes, i);
-			stickynote_set_color(note, note->color, FALSE);
+	else if (!strcmp (entry->key,
+				GCONF_PATH "/settings/use_system_color") ||
+		 !strcmp (entry->key, GCONF_PATH "/defaults/color"))
+	{
+		for (l = stickynotes->notes; l; l = l->next)
+		{
+			note = l->data;
+			stickynote_set_color (note, note->color, FALSE);
 		}
 	}
 
-	else if (strcmp(entry->key, GCONF_PATH "/settings/use_system_font") == 0 ||
-	    strcmp(entry->key, GCONF_PATH "/defaults/font") == 0) {
-		for (i = 0; i < g_list_length(stickynotes->notes); i++) {
-			StickyNote *note = g_list_nth_data(stickynotes->notes, i);
-			stickynote_set_font(note, note->font, FALSE);
+	else if (!strcmp (entry->key, GCONF_PATH "/settings/use_system_font") ||
+		 !strcmp (entry->key, GCONF_PATH "/defaults/font"))
+	{
+		for (l = stickynotes->notes; l; l = l->next)
+		{
+			note = l->data;
+			stickynote_set_font (note, note->font, FALSE);
 		}
 	}
 
-	else if (strcmp(entry->key, GCONF_PATH "/settings/force_default") == 0) {
-		for (i = 0; i < g_list_length(stickynotes->notes); i++) {
-			StickyNote *note = g_list_nth_data(stickynotes->notes, i);
+	else if (!strcmp (entry->key, GCONF_PATH "/settings/force_default"))
+	{
+		for (l = stickynotes->notes; l; l = l->next)
+		{
+			note = l->data;
 			stickynote_set_color(note, note->color, FALSE);
 			stickynote_set_font(note, note->font, FALSE);
 		}

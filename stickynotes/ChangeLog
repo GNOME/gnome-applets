@@ -1,5 +1,33 @@
 2005-01-05  Davyd Madeley  <davyd@madeley.id.au>
 
+	* stickynotes.[ch]:
+	* stickynotes_callbacks.c:
+	* stickynotes_applet.c:
+	* stickynotes_applet_callbacks.c: Revamp of stickynotes, stage 3.
+	  Stuff that has changed (overall):
+	   - stickynotes will now stay on workspace they are meant to when you
+	     add new notes, or toggle visibility of the notes.
+	   - left clicking on the applet offers a small two option menu:
+	     new/toggle visibility
+	   - above menu items have been removed from right-click menu
+	   - stickynotes float on top (this is important as they vanish from
+	     the alt-tab bar with new metacity, apparently).
+	  Things still to implement:
+	   - Getting windows to return to their original workspace after you
+	     turn off sticky mode
+	   - Testing with new metacity
+	   - Have stickynotes implement it's own window layout code so that
+	     notes are well positioned regardless of other windows on the
+	     screen
+
+	* util.c: Uncommented out xstuff_change_workspace() since the libwnck
+	  workspace changing code can be unreliable if it hasn't updated the
+	  window list yet.
+	
+	* GNOME_StickyNotesApplet.xml: Remove extra separator, oops...
+
+2005-01-05  Davyd Madeley  <davyd@madeley.id.au>
+
 	* GNOME_StickyNotesApplet.xml:
 	* stickynotes.c:
 	* stickynotes_callbacks.c:

@@ -111,7 +111,8 @@ stickynotes_make_prelight_icon (GdkPixbuf *dest, GdkPixbuf *src, int shift)
 
 
 /* Create and initalize global sticky notes instance */
-void stickynotes_applet_init(PanelApplet *panel_applet)
+void
+stickynotes_applet_init (PanelApplet *panel_applet)
 {	
 	GnomeIconTheme *icon_theme;
 	gchar *sticky_icon;
@@ -123,24 +124,28 @@ void stickynotes_applet_init(PanelApplet *panel_applet)
 	stickynotes->applets = NULL;
 
 	icon_theme = gnome_icon_theme_new ();
-	sticky_icon = gnome_icon_theme_lookup_icon (icon_theme, "stock_notes", 48, NULL, NULL);
+	sticky_icon = gnome_icon_theme_lookup_icon (icon_theme,
+			"stock_notes", 48, NULL, NULL);
 	/* Register size for icons */
 	gtk_icon_size_register ("stickynotes_icon_size", 8,8);
-	
 
 	if (sticky_icon) {
-		gnome_window_icon_set_default_from_file(sticky_icon);
-		stickynotes->icon_normal = gdk_pixbuf_new_from_file(sticky_icon, NULL);
+		gnome_window_icon_set_default_from_file (sticky_icon);
+		stickynotes->icon_normal = gdk_pixbuf_new_from_file (
+				sticky_icon, NULL);
 	}
 	g_free (sticky_icon);
 	g_object_unref (icon_theme);
 
-	stickynotes->icon_prelight = gdk_pixbuf_new(gdk_pixbuf_get_colorspace (stickynotes->icon_normal),
-						    gdk_pixbuf_get_has_alpha (stickynotes->icon_normal),
-						    gdk_pixbuf_get_bits_per_sample (stickynotes->icon_normal),
-						    gdk_pixbuf_get_width (stickynotes->icon_normal),
-						    gdk_pixbuf_get_height (stickynotes->icon_normal));
-	stickynotes_make_prelight_icon (stickynotes->icon_prelight, stickynotes->icon_normal, 30);
+	stickynotes->icon_prelight = gdk_pixbuf_new (
+			gdk_pixbuf_get_colorspace (stickynotes->icon_normal),
+			gdk_pixbuf_get_has_alpha (stickynotes->icon_normal),
+			gdk_pixbuf_get_bits_per_sample (
+				stickynotes->icon_normal),
+			gdk_pixbuf_get_width (stickynotes->icon_normal),
+			gdk_pixbuf_get_height (stickynotes->icon_normal));
+	stickynotes_make_prelight_icon (stickynotes->icon_prelight,
+			stickynotes->icon_normal, 30);
 	stickynotes->gconf = gconf_client_get_default();
 	stickynotes->tooltips = gtk_tooltips_new();
 
@@ -148,22 +153,29 @@ void stickynotes_applet_init(PanelApplet *panel_applet)
 	stickynotes_applet_init_prefs();
 
 	/* Watch GConf values */
-	gconf_client_add_dir(stickynotes->gconf, GCONF_PATH, GCONF_CLIENT_PRELOAD_NONE, NULL);
-	gconf_client_notify_add(stickynotes->gconf, GCONF_PATH "/defaults", (GConfClientNotifyFunc) preferences_apply_cb, NULL, NULL, NULL);
-	gconf_client_notify_add(stickynotes->gconf, GCONF_PATH "/settings", (GConfClientNotifyFunc) preferences_apply_cb, NULL, NULL, NULL);
+	gconf_client_add_dir (stickynotes->gconf, GCONF_PATH,
+			GCONF_CLIENT_PRELOAD_NONE, NULL);
+	gconf_client_notify_add (stickynotes->gconf, GCONF_PATH "/defaults",
+			(GConfClientNotifyFunc) preferences_apply_cb,
+			NULL, NULL, NULL);
+	gconf_client_notify_add (stickynotes->gconf, GCONF_PATH "/settings",
+			(GConfClientNotifyFunc) preferences_apply_cb,
+			NULL, NULL, NULL);
 
 	client = gnome_master_client ();
 	gnome_client_set_restart_style (client, GNOME_RESTART_NEVER);
 
-	/* The help suggests this is automatic, but that seems to not be the case here. */
+	/* The help suggests this is automatic, but that seems to not be
+	 * the case here. */
 	gnome_client_connect (client);
 	gnome_client_flush (client);
 	
 	/* Load sticky notes */
-	stickynotes_load(gtk_widget_get_screen(GTK_WIDGET(panel_applet)));
+	stickynotes_load (gtk_widget_get_screen (GTK_WIDGET (panel_applet)));
 	
 	/* Auto-save every so minutes (default 5) */
-	g_timeout_add(1000 * 60 * gconf_client_get_int(stickynotes->gconf, GCONF_PATH "/settings/autosave_time", NULL),
+	g_timeout_add (1000 * 60 * gconf_client_get_int(stickynotes->gconf,
+				GCONF_PATH "/settings/autosave_time", NULL),
 		      (GSourceFunc) applet_save_cb, NULL);
 }
 

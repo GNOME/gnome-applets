@@ -117,7 +117,7 @@ xstuff_get_current_workspace (GtkWindow *window)
 
 	return retval;
 }
-
+#endif
 void
 xstuff_change_workspace (GtkWindow *window,
                          int        new_space)
@@ -148,4 +148,3 @@ xstuff_change_workspace (GtkWindow *window,
 	      SubstructureRedirectMask | SubstructureNotifyMask,
 	      &xev);
 }
-#endif

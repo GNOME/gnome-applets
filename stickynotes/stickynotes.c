@@ -31,11 +31,13 @@
 static void response_cb (GtkWidget *dialog, gint id, gpointer data);
 
 /* Create a new (empty) Sticky Note */
-StickyNote * stickynote_new(GdkScreen *screen)
+StickyNote *
+stickynote_new (GdkScreen *screen)
 {
-	/* Create Sticky Note instance */
-	StickyNote *note = g_new(StickyNote, 1);
+	StickyNote *note;
 	GtkIconSize size;
+	
+	note = g_new (StickyNote, 1);
 	
 	/* Create and initialize a Sticky Note */
 	note->window = glade_xml_new (GLADE_PATH, "stickynote_window", NULL);
@@ -71,7 +73,6 @@ StickyNote * stickynote_new(GdkScreen *screen)
 	note->color = NULL;
 	note->font = NULL;
 	note->locked = FALSE;
-	note->visible = FALSE;
 	note->x = -1;
 	note->y = -1;
 	note->w = 0;
@@ -107,7 +108,8 @@ StickyNote * stickynote_new(GdkScreen *screen)
 	stickynote_set_color(note, NULL, TRUE);
 	stickynote_set_font(note, NULL, TRUE);
 	stickynote_set_locked(note, FALSE);
-	stickynote_set_visible(note, FALSE);
+
+	gtk_widget_realize (note->w_window);
 
 	/* Connect a popup menu to all buttons and title */
 	gnome_popup_menu_attach(note->w_menu, note->w_window, note);
@@ -169,13 +171,6 @@ StickyNote * stickynote_new(GdkScreen *screen)
 	g_signal_connect (G_OBJECT (note->w_entry), "activate",
 			G_CALLBACK (properties_activate_cb), note);
 
-	gtk_window_set_decorated (GTK_WINDOW (note->w_window), FALSE);
-	gtk_window_set_skip_taskbar_hint (GTK_WINDOW (note->w_window), TRUE);
-	gtk_window_set_skip_pager_hint (GTK_WINDOW (note->w_window), TRUE);
-	gtk_window_set_keep_above (GTK_WINDOW (note->w_window), TRUE);
-	
-	gtk_widget_show_all (note->w_window);
-	
 	return note;
 }
 
@@ -422,12 +417,17 @@ void stickynote_set_locked(StickyNote *note, gboolean locked)
 void
 stickynote_set_visible (StickyNote *note, gboolean visible)
 {
-	note->visible = visible;
-
-	if (visible) {
-		/* Show & raise sticky note,
-		 * then move to the corrected location on screen. */
-		gtk_widget_show (GTK_WIDGET (note->w_window));
+	if (visible)
+	{
+		gtk_window_set_decorated (GTK_WINDOW (note->w_window), FALSE);
+		gtk_window_set_skip_taskbar_hint (GTK_WINDOW (note->w_window),
+				TRUE);
+		gtk_window_set_skip_pager_hint (GTK_WINDOW (note->w_window),
+				TRUE);
+		gtk_window_set_keep_above (GTK_WINDOW (note->w_window), TRUE);
+		gtk_widget_show (note->w_window);
+		
+		g_print ("set_visible: x = %i, y = %i\n", note->x, note->y);
 		if (note->x != -1 || note->y != -1)
 			gtk_window_move (GTK_WINDOW (note->w_window),
 					note->x, note->y);
@@ -435,6 +435,32 @@ stickynote_set_visible (StickyNote *note, gboolean visible)
 		if (gconf_client_get_bool(stickynotes->gconf,
 					GCONF_PATH "/settings/sticky", NULL))
 			gtk_window_stick(GTK_WINDOW(note->w_window));
+		else if (note->workspace > 0)
+		{
+#if 0
+			WnckWorkspace *wnck_ws;
+			gulong xid;
+			WnckWindow *wnck_win;
+			WnckScreen *wnck_screen;
+
+			g_print ("set_visible(): workspace = %i\n",
+					note->workspace);
+
+			xid = GDK_WINDOW_XID (note->w_window->window);
+			wnck_screen = wnck_screen_get_default ();
+			wnck_win = wnck_window_get (xid);
+			wnck_ws = wnck_screen_get_workspace (
+					wnck_screen,
+					note->workspace - 1);
+			if (wnck_win && wnck_ws)
+				wnck_window_move_to_workspace (
+						wnck_win, wnck_ws);
+			else
+				g_print ("set_visible(): errr\n");
+#endif
+			xstuff_change_workspace (GTK_WINDOW (note->w_window),
+					note->workspace - 1);
+		}
 	}
 	else {
 		/* Hide sticky note */
@@ -443,25 +469,17 @@ stickynote_set_visible (StickyNote *note, gboolean visible)
 }
 
 /* Add a sticky note */
-void stickynotes_add(GdkScreen *screen)
+void stickynotes_add (GdkScreen *screen)
 {
-	StickyNote *note = stickynote_new(screen);
+	StickyNote *note;
+		
+	note = stickynote_new (screen);
 
-	/* Add the note to the linked-list of all notes */
 	stickynotes->notes = g_list_append(stickynotes->notes, note);
-	
-	/* Update tooltips */
 	stickynotes_applet_update_tooltips();
-
-	/* Save notes */
 	stickynotes_save();
-
-	/* Show all sticky notes */
-	stickynote_set_visible(note, TRUE);
-
-	/* Only set the visible flag if we can actually write it */
-	if (gconf_client_key_is_writable(stickynotes->gconf, GCONF_PATH "/settings/visible", NULL))
-		gconf_client_set_bool(stickynotes->gconf, GCONF_PATH "/settings/visible", TRUE, NULL);
+	stickynote_set_visible (note, gconf_client_get_bool (stickynotes->gconf,
+				GCONF_PATH "/settings/visible", NULL));
 }
 
 /* Remove a sticky note with confirmation, if needed */
@@ -510,7 +528,6 @@ void stickynotes_save(void)
 	/* For all sticky notes */
 	for (i = 0; i < g_list_length(stickynotes->notes); i++) {
 		WnckWindow *wnck_win;
-		int workspace = 0;
 		gulong xid = 0;
 
 		/* Access the current note in the list */
@@ -526,13 +543,20 @@ void stickynotes_save(void)
 
 		xid = GDK_WINDOW_XID (note->w_window->window);
 		wnck_win = wnck_window_get (xid);
-		if (!gconf_client_get_bool (stickynotes->gconf,
-					GCONF_PATH "/settings/sticky", NULL)
-				&& wnck_win)
-			workspace = 1 + wnck_workspace_get_number (
+		if (gconf_client_get_bool (stickynotes->gconf,
+			     		GCONF_PATH "/settings/visible", NULL))
+		{
+			if (!gconf_client_get_bool (stickynotes->gconf,
+					GCONF_PATH "/settings/sticky", NULL) &&
+				wnck_win)
+				note->workspace = 1 +
+					wnck_workspace_get_number (
 					wnck_window_get_workspace (wnck_win));
-		else
-			workspace = 0;
+			else
+				note->workspace = 0;
+		}
+		
+		g_print ("save(): workspace = %i\n", note->workspace);
 		
 		/* Retreive the title of the note */
 		const gchar *title = gtk_label_get_text(GTK_LABEL(note->w_title));
@@ -555,20 +579,18 @@ void stickynotes_save(void)
 				xmlNewProp (node, "color", note->color);
 			if (note->font)
 				xmlNewProp (node, "font", note->font);
-			if (note->visible)
-				xmlNewProp (node, "visible", "true");
 			if (note->locked)
 				xmlNewProp (node, "locked", "true");
 			xmlNewProp (node, "x", x_str);
 			xmlNewProp (node, "y", y_str);
 			xmlNewProp (node, "w", w_str);
 			xmlNewProp (node, "h", h_str);
-			if (workspace)
+			if (note->workspace > 0)
 			{
 				char *workspace_str;
 				
 				workspace_str = g_strdup_printf ("%i",
-						workspace);
+						note->workspace);
 				xmlNewProp (node, "workspace", workspace_str);
 				g_free (workspace_str);
 			}
@@ -596,7 +618,8 @@ void stickynotes_save(void)
 }
 
 /* Load all sticky notes from an XML configuration file */
-void stickynotes_load(GdkScreen *screen)
+void
+stickynotes_load (GdkScreen *screen)
 {
 	xmlDocPtr doc;
 	xmlNodePtr root;
@@ -614,14 +637,16 @@ void stickynotes_load(GdkScreen *screen)
 	}
 
 	/* If the XML file does not exist, create a blank one */
-	if (!doc) {
+	if (!doc)
+	{
 		stickynotes_save();
 		return;
 	}
 	
 	/* If the XML file is corrupted/incorrect, create a blank one */
 	root = xmlDocGetRootElement(doc);
-	if (!root || xmlStrcmp(root->name, (const xmlChar *) "stickynotes")) {
+	if (!root || xmlStrcmp(root->name, (const xmlChar *) "stickynotes"))
+	{
 		xmlFreeDoc(doc);
 		stickynotes_save();
 		return;
@@ -633,27 +658,30 @@ void stickynotes_load(GdkScreen *screen)
 	new_notes = NULL;
 	new_nodes = NULL;
 	while (node) {
-		if (!xmlStrcmp(node->name, (const xmlChar *) "note")) {
+		if (!xmlStrcmp(node->name, (const xmlChar *) "note"))
+		{
 			/* Create a new note */
-			StickyNote *note = stickynote_new(screen);
-			stickynotes->notes = g_list_append(stickynotes->notes, note);
-			new_notes = g_list_append(new_notes, note);
-			new_nodes = g_list_append(new_nodes, node);
+			StickyNote *note = stickynote_new (screen);
+			stickynotes->notes = g_list_append (stickynotes->notes,
+					note);
+			new_notes = g_list_append (new_notes, note);
+			new_nodes = g_list_append (new_nodes, node);
 
 			/* Retrieve and set title of the note */
 			{
 				gchar *title = xmlGetProp(node, "title");
 				if (title)
-					stickynote_set_title(note, title);
-				g_free(title);
+					stickynote_set_title (note, title);
+				g_free (title);
 			}
 
 			/* Retrieve and set the color of the note */
 			{
-				gchar *color_str = xmlGetProp(node, "color");
+				gchar *color_str = xmlGetProp (node, "color");
 				if (color_str)
-					stickynote_set_color(note, color_str, TRUE);
-				g_free(color_str);
+					stickynote_set_color (note,
+							color_str, TRUE);
+				g_free (color_str);
 			}
 
 			/* Retrieve and set the font of the note */
@@ -670,8 +698,13 @@ void stickynotes_load(GdkScreen *screen)
 				gchar *w_str = xmlGetProp(node, "w");
 				gchar *h_str = xmlGetProp(node, "h");
 				if (w_str && h_str)
-					gtk_window_resize(GTK_WINDOW(note->w_window), atoi(w_str), atoi(h_str));
-				gtk_window_get_size(GTK_WINDOW(note->w_window), &note->w, &note->h);
+					gtk_window_resize (GTK_WINDOW (
+							note->w_window),
+							atoi(w_str),
+							atoi(h_str));
+				gtk_window_get_size (GTK_WINDOW (
+							note->w_window),
+						&note->w, &note->h);
 				g_free(w_str);
 				g_free(h_str);
 			}
@@ -680,14 +713,63 @@ void stickynotes_load(GdkScreen *screen)
 			{
 				gchar *x_str = xmlGetProp(node, "x");
 				gchar *y_str = xmlGetProp(node, "y");
-				if (x_str && y_str) {
-					if (atoi(x_str) != -1 || atoi(y_str) !=-1) {
-					    gtk_window_move(GTK_WINDOW(note->w_window), atoi(x_str), atoi(y_str));
+				if (x_str && y_str)
+				{
+					if (atoi(x_str) != -1 ||
+							atoi(y_str) !=-1)
+					{
+					    gtk_window_move (GTK_WINDOW (
+							note->w_window),
+							    atoi(x_str),
+							    atoi(y_str));
 					}
-					gtk_window_get_position(GTK_WINDOW(note->w_window), &note->x, &note->y);
+					gtk_window_get_position (GTK_WINDOW (
+							note->w_window),
+							&note->x, &note->y);
 					g_free(x_str);
 					g_free(y_str);
 				}
+			}
+			
+			/* Retrieve the workspace */
+			{
+				char *workspace_str;
+
+				workspace_str = xmlGetProp (node, "workspace");
+				if (workspace_str)
+				{
+					note->workspace = atoi (workspace_str);
+					g_free (workspace_str);
+				}
+			}
+
+			/* Retrieve and set (if any) the body contents of the
+			 * note */
+			{
+				gchar *body = xmlNodeListGetString(doc,
+						node->xmlChildrenNode, 1);
+				if (body) {
+					GtkTextBuffer *buffer;
+					GtkTextIter start, end;
+					
+					buffer = gtk_text_view_get_buffer(
+						GTK_TEXT_VIEW(note->w_body));
+					gtk_text_buffer_get_bounds(
+							buffer, &start, &end);
+					gtk_text_buffer_insert(buffer,
+							&start, body, -1);
+				}
+				g_free(body);
+			}
+
+			/* Retrieve and set the locked state of the note,
+			 * by default unlocked */
+			{
+				gchar *locked = xmlGetProp(node, "locked");
+				if (locked)
+					stickynote_set_locked(note,
+						!strcmp(locked, "true"));
+				g_free(locked);
 			}
 		}
 		
@@ -695,86 +777,23 @@ void stickynotes_load(GdkScreen *screen)
 	}
 
 	tmp1 = new_notes;
-	tmp2 = new_nodes;
+	/*
 	wnck_screen = wnck_screen_get_default ();
 	wnck_screen_force_update (wnck_screen);
+	*/
 
-	while (tmp1) {
+	while (tmp1)
+	{
 		StickyNote *note = tmp1->data;
-		node = tmp2->data;
 
-			/* Retrieve the workspace */
-			{
-				char *workspace_str;
-				int workspace;
+		stickynote_set_visible (note, gconf_client_get_bool (
+						stickynotes->gconf,
+						GCONF_PATH "/settings/visible",
+						NULL));
 
-				workspace_str = xmlGetProp (node, "workspace");
-				if (workspace_str)
-				{
-					
-			workspace = atoi (workspace_str);
-			if (workspace > 0)
-			{
-				WnckWorkspace *wnck_ws;
-				gulong xid;
-				WnckWindow *wnck_win;
-
-				wnck_ws = wnck_screen_get_workspace (
-						wnck_screen,
-						workspace - 1);
-				xid = GDK_WINDOW_XID (note->w_window->window);
-				/*FIXME: Remember to remove this debugging info*/
-				g_print ("XID = 0x%lx\n", xid);
-				g_print ("workspace = %d\n", workspace);
-				wnck_win = wnck_window_get (xid);
-				if (wnck_ws && wnck_win)
-					wnck_window_move_to_workspace (
-							wnck_win, wnck_ws);
-				else
-					g_print ("Err, could not move window\n");
-			}
-
-				g_free (workspace_str);
-				}
-			}
-
-			/* Retrieve and set (if any) the body contents of the note */
-			{
-				gchar *body = xmlNodeListGetString(doc, node->xmlChildrenNode, 1);
-				if (body) {
-					GtkTextBuffer *buffer;
-					GtkTextIter start, end;
-					
-					buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(note->w_body));
-					gtk_text_buffer_get_bounds(buffer, &start, &end);
-					gtk_text_buffer_insert(buffer, &start, body, -1);
-				}
-				g_free(body);
-			}
-
-			/* Retrieve and set the locked state of the note, by default unlocked */
-			{
-				gchar *locked = xmlGetProp(node, "locked");
-				if (locked)
-					stickynote_set_locked(note, strcmp(locked, "true") == 0);
-				g_free(locked);
-			}
-
-			/* Retrieve and set the visibility of the note, be default invisible */
-			{
-				gchar *visible = xmlGetProp(node, "visible");
-				if (visible)
-					stickynote_set_visible(note, strcmp(visible, "true") == 0);
-				else
-					stickynote_set_visible(note, FALSE);
-				    
-				g_free(visible);
-			}
-
-		
 		tmp1 = tmp1->next;
-		tmp2 = tmp2->next;
 	}
+
 
 	g_list_free (new_notes);
 	g_list_free (new_nodes);

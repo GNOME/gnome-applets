@@ -20,6 +20,8 @@
 #ifndef __STICKYNOTES_H__
 #define __STICKYNOTES_H__
 
+#define WNCK_I_KNOW_THIS_IS_UNSTABLE 1
+#include <libwnck/libwnck.h>
 #include <stickynotes_applet.h>
 
 typedef struct
@@ -48,12 +50,13 @@ typedef struct
 	gchar *color;			/* Note color */
 	gchar *font;			/* Note font */
 	gboolean locked;		/* Note locked state */
-	gboolean visible;		/* Note visibility */
 	
 	gint x;				/* Note x-coordinate */
 	gint y;				/* Note y-coordinate */
 	gint w;				/* Note width */
 	gint h;				/* Note height */
+
+	int workspace;			/* Workspace the note is on */
 
 } StickyNote;
 
