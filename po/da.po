@@ -12,8 +12,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 1.2.0\n"
-"POT-Creation-Date: 2001-08-04 12:53+0200\n"
-"PO-Revision-Date: 2001-08-03 18:13+02:00\n"
+"POT-Creation-Date: 2001-08-28 17:26+0200\n"
+"PO-Revision-Date: 2001-08-28 17:29+0200\n"
 "Last-Translator: Ole Laursen <olau@hardworking.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
 "MIME-Version: 1.0\n"
@@ -102,7 +102,7 @@ msgstr "Egenskaber..."
 #: fifteen/fifteen.c:384 geyes/geyes.c:399 gkb-new/gkb.c:763
 #: gnotes/gnotes_applet.c:202 gweather/gweather-applet.c:203
 #: jbc/jbc-applet.c:204 life/life.c:279
-#: mini-commander/src/mini-commander_applet.c:408 mixer/mixer.c:807
+#: mini-commander/src/mini-commander_applet.c:408 mixer/mixer.c:836
 #: multiload/cpuload.c:108 multiload/loadavg.c:183 multiload/memload.c:111
 #: multiload/netload.c:107 multiload/swapload.c:111 odometer/odo.c:686
 #: quicklaunch/quicklaunch.c:536 screenshooter/screenshooter_applet.c:1023
@@ -118,7 +118,7 @@ msgstr "Hjælp"
 #: drivemount/drivemount.c:753 fifteen/fifteen.c:389 geyes/geyes.c:404
 #: gkb-new/gkb.c:768 gnotes/gnotes_applet.c:205 gtik/gtik.c:1428
 #: gweather/gweather-applet.c:208 jbc/jbc-applet.c:209 life/life.c:283
-#: mini-commander/src/mini-commander_applet.c:415 mixer/mixer.c:812
+#: mini-commander/src/mini-commander_applet.c:415 mixer/mixer.c:841
 #: modemlights/modemlights.c:1512 multiload/cpuload.c:115
 #: multiload/loadavg.c:190 multiload/memload.c:118 multiload/netload.c:114
 #: multiload/swapload.c:118 odometer/odo.c:689 quicklaunch/quicklaunch.c:540
@@ -1676,31 +1676,28 @@ msgid "Miscellaneous"
 msgstr "Diverse"
 
 #: gweather/weather.c:55
-#, fuzzy
 msgid "knots"
-msgstr "Gnotices"
+msgstr "not"
 
 #: gweather/weather.c:55
 msgid "kph"
-msgstr ""
+msgstr "km/t"
 
 #: gweather/weather.c:60
 msgid "inHg"
-msgstr ""
+msgstr "tmHG"
 
 #: gweather/weather.c:60
 msgid "mmHg"
-msgstr ""
+msgstr "mmHg"
 
 #: gweather/weather.c:64
-#, fuzzy
 msgid "miles"
-msgstr "Lyde"
+msgstr "mil"
 
 #: gweather/weather.c:64
-#, fuzzy
 msgid "kilometers"
-msgstr "Kilometertæller"
+msgstr "kilometer"
 
 #: gweather/weather.c:113
 msgid "Location vector needs to be 4 elements long"
@@ -3151,12 +3148,12 @@ msgid "Macros"
 msgstr "Makroer"
 
 #. probably should die more gracefully
-#: mixer/mixer.c:155
+#: mixer/mixer.c:161
 #, c-format
 msgid "Couldn't open mixer device %s\n"
 msgstr "Kunne ikke åbne mixerenhed %s\n"
 
-#: mixer/mixer.c:169
+#: mixer/mixer.c:175
 msgid ""
 "warning: this version of gmix was compiled with a different version of\n"
 "soundcard.h.\n"
@@ -3164,19 +3161,33 @@ msgstr ""
 "advarsel: denne version af gmix blev oversat med en anden version af "
 "soundcard.h\n"
 
-#: mixer/mixer.c:530
+#: mixer/mixer.c:186
+#, c-format
+msgid "Querying available channels of mixer device %s failed\n"
+msgstr "Forespørgsel om tilgængelige kanaler på mixerenheden %s mislykkedes\n"
+
+#: mixer/mixer.c:193
+msgid "warning: mixer has no volume channel - using PCM instead.\n"
+msgstr "advarsel: mixeren har ingen lydstyrkekanal - bruger PCM i stedet.\n"
+
+#: mixer/mixer.c:196
+#, c-format
+msgid "Mixer device %s has neither volume nor PCM channels.\n"
+msgstr "Mixerenheden %s har hverken lydstyrke- eller PCM-kanaler.\n"
+
+#: mixer/mixer.c:559
 msgid "Main Volume and Mute"
 msgstr "Hovedlydstyrke og dæmp"
 
-#: mixer/mixer.c:661
+#: mixer/mixer.c:690
 msgid "Mixer Applet"
 msgstr "Mixerpanelprogram"
 
-#: mixer/mixer.c:662
+#: mixer/mixer.c:691
 msgid "(c) 1998 The Free Software Foundation"
 msgstr "© 1998 Free Software Foundation"
 
-#: mixer/mixer.c:664
+#: mixer/mixer.c:693
 msgid ""
 "The mixer applet gives you instant access to setting the master volume level "
 "on your soundcard device"
@@ -3184,7 +3195,7 @@ msgstr ""
 "Mixerpanelprogrammet tillader dig at indstille hovedlydstyrken på lydkortet "
 "direkte."
 
-#: mixer/mixer.c:800
+#: mixer/mixer.c:829
 msgid "Run Audio Mixer..."
 msgstr "Kør lydmixer..."
 
@@ -4988,6 +4999,3 @@ msgstr "Ryd"
 #: webcontrol/properties.c:656
 msgid "all entries in URL history"
 msgstr "alle elementer i adressehistorik"
-
-#~ msgid "keymap_%d/flag=us.png"
-#~ msgstr "keymap_%d/flag=us.png"
