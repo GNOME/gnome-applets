@@ -33,6 +33,7 @@
 #include "mini-commander_applet.h"
 
 static void reset_temporary_prefs(void);
+static void phelp_cb (void);
 
 static gboolean
 pattern_entry_changed_signal(GtkWidget *entry_widget, GdkEventFocus *event, gpointer data)
@@ -489,13 +490,16 @@ load_session(MCData *mcdata)
 }
 
 static void
-phelp_cb (GtkWidget *w, gint tab, gpointer data)
+phelp_cb (void)
 {
-   #if 0 /* FIXME */
-        GnomeHelpMenuEntry help_entry = { "mini-commander_applet",
-                                          "index.html#MINI-COMMANDER-PREFS" };
-        gnome_help_display(NULL, &help_entry);
-   #endif
+    GError *error = NULL;
+    gnome_help_display ("command-line", "command-line-prefs-0", &error);
+
+    if (error) {
+        g_warning ("help error: %s\n", error->message);
+        g_error_free (error);
+        error = NULL;
+    }
 }
 
 static void
@@ -647,6 +651,11 @@ static void
 response_cb (GtkDialog *dialog, gint it, gpointer data)
 {
     MCData *mcdata = data;
+
+    if(it == GTK_RESPONSE_HELP){
+        phelp_cb ();
+        return;
+    }
     
     gtk_widget_destroy (GTK_WIDGET (dialog));
     mcdata->properties_box = NULL;
@@ -686,6 +695,7 @@ properties_box(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
     						  NULL,
 						  GTK_DIALOG_DESTROY_WITH_PARENT,
 						  GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
+						  GTK_STOCK_HELP, GTK_RESPONSE_HELP,
 						  NULL);
     gtk_dialog_set_default_response (GTK_DIALOG (mcdata->properties_box), GTK_RESPONSE_CLOSE);
     gtk_window_set_default_size (GTK_WINDOW (mcdata->properties_box), 400, 300);

@@ -31,6 +31,7 @@ show_help(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
     if (error) {
     	g_warning ("help error: %s\n", error->message);
 	g_error_free (error);
+	error = NULL;
     }
 
     return;
