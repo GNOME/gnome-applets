@@ -83,8 +83,6 @@ popup_add_note (StickyNotesApplet *applet, GtkWidget *item)
 {
 	GList *l;
 
-	g_print ("popup_add_note()\n");
-        
 	stickynotes_add (gtk_widget_get_screen (applet->w_applet));
 	for (l = stickynotes->applets; l; l = l->next)
         {
@@ -102,8 +100,6 @@ static void
 popup_toggle_show_notes (StickyNotesApplet *applet, GtkWidget *item)
 {
 	gboolean visible;
-	
-	g_print ("popup_toggle_show_notes()\n");
 	
 	visible = gconf_client_get_bool (stickynotes->gconf,
 			GCONF_PATH "/settings/visible", NULL);
@@ -460,49 +456,85 @@ void menu_about_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gcha
 }
 
 /* Preferences Callback : Save. */
-void preferences_save_cb(gpointer data)
+void
+preferences_save_cb (gpointer data)
 {
-	gint width = gtk_adjustment_get_value(stickynotes->w_prefs_width);
-	gint height = gtk_adjustment_get_value(stickynotes->w_prefs_height);
-	gboolean sys_color = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(stickynotes->w_prefs_sys_color));
-	gboolean sys_font = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(stickynotes->w_prefs_sys_font));
-	gboolean sticky = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(stickynotes->w_prefs_sticky));
-	gboolean force_default = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(stickynotes->w_prefs_force));
+	gint width = gtk_adjustment_get_value (stickynotes->w_prefs_width);
+	gint height = gtk_adjustment_get_value (stickynotes->w_prefs_height);
+	gboolean sys_color = gtk_toggle_button_get_active (
+			GTK_TOGGLE_BUTTON (stickynotes->w_prefs_sys_color));
+	gboolean sys_font = gtk_toggle_button_get_active (
+			GTK_TOGGLE_BUTTON (stickynotes->w_prefs_sys_font));
+	gboolean sticky = gtk_toggle_button_get_active (
+			GTK_TOGGLE_BUTTON (stickynotes->w_prefs_sticky));
+	gboolean force_default = gtk_toggle_button_get_active (
+			GTK_TOGGLE_BUTTON (stickynotes->w_prefs_force));
 
-	if (gconf_client_key_is_writable(stickynotes->gconf, GCONF_PATH "/defaults/width", NULL))
-		gconf_client_set_int(stickynotes->gconf, GCONF_PATH "/defaults/width", width, NULL);
-	if (gconf_client_key_is_writable(stickynotes->gconf, GCONF_PATH "/defaults/height", NULL))
-		gconf_client_set_int(stickynotes->gconf, GCONF_PATH "/defaults/height", height, NULL);
-	if (gconf_client_key_is_writable(stickynotes->gconf, GCONF_PATH "/settings/use_system_color", NULL))
-		gconf_client_set_bool(stickynotes->gconf, GCONF_PATH "/settings/use_system_color", sys_color, NULL);
-	if (gconf_client_key_is_writable(stickynotes->gconf, GCONF_PATH "/settings/use_system_font", NULL))
-		gconf_client_set_bool(stickynotes->gconf, GCONF_PATH "/settings/use_system_font", sys_font, NULL);
-	if (gconf_client_key_is_writable(stickynotes->gconf, GCONF_PATH "/settings/sticky", NULL))
-		gconf_client_set_bool(stickynotes->gconf, GCONF_PATH "/settings/sticky", sticky, NULL);
-	if (gconf_client_key_is_writable(stickynotes->gconf, GCONF_PATH "/settings/force_default", NULL))
-		gconf_client_set_bool(stickynotes->gconf, GCONF_PATH "/settings/force_default", force_default, NULL);
+	if (gconf_client_key_is_writable (stickynotes->gconf,
+				GCONF_PATH "/defaults/width", NULL))
+		gconf_client_set_int (stickynotes->gconf,
+				GCONF_PATH "/defaults/width", width, NULL);
+	if (gconf_client_key_is_writable (stickynotes->gconf,
+				GCONF_PATH "/defaults/height", NULL))
+		gconf_client_set_int (stickynotes->gconf,
+				GCONF_PATH "/defaults/height", height, NULL);
+	if (gconf_client_key_is_writable (stickynotes->gconf,
+				GCONF_PATH "/settings/use_system_color", NULL))
+		gconf_client_set_bool (stickynotes->gconf,
+				GCONF_PATH "/settings/use_system_color",
+				sys_color, NULL);
+	if (gconf_client_key_is_writable (stickynotes->gconf,
+				GCONF_PATH "/settings/use_system_font", NULL))
+		gconf_client_set_bool (stickynotes->gconf,
+				GCONF_PATH "/settings/use_system_font",
+				sys_font, NULL);
+	if (gconf_client_key_is_writable (stickynotes->gconf,
+				GCONF_PATH "/settings/sticky", NULL))
+		gconf_client_set_bool (stickynotes->gconf,
+				GCONF_PATH "/settings/sticky", sticky, NULL);
+	if (gconf_client_key_is_writable (stickynotes->gconf,
+				GCONF_PATH "/settings/force_default", NULL))
+		gconf_client_set_bool (stickynotes->gconf,
+				GCONF_PATH "/settings/force_default",
+				force_default, NULL);
 }
 
 /* Preferences Callback : Change color. */
 void
 preferences_color_cb (GtkWidget *button, gpointer data)
 {
-	GdkColor color;
+	GdkColor color, font_color;
+	char *color_str, *font_color_str;
 
-	gtk_color_button_get_color (GTK_COLOR_BUTTON (button), &color);
+	gtk_color_button_get_color (
+			GTK_COLOR_BUTTON (stickynotes->w_prefs_color), &color);
+	gtk_color_button_get_color (
+			GTK_COLOR_BUTTON (stickynotes->w_prefs_font_color),
+			&font_color);
 	
-	gchar *color_str = g_strdup_printf("#%.2x%.2x%.2x",
+	color_str = g_strdup_printf ("#%.2x%.2x%.2x",
 			color.red / 256,
 			color.green / 256,
 			color.blue / 256);
-	gconf_client_set_string(stickynotes->gconf,
+	font_color_str = g_strdup_printf ("#%.2x%.2x%.2x",
+			font_color.red / 256,
+			font_color.green / 256,
+			font_color.blue / 256);
+	
+	gconf_client_set_string (stickynotes->gconf,
 			GCONF_PATH "/defaults/color", color_str, NULL);
+	gconf_client_set_string (stickynotes->gconf,
+			GCONF_PATH "/defaults/font_color", font_color_str,
+			NULL);
+
+	g_free (color_str);
+	g_free (font_color_str);
 }
 
 /* Preferences Callback : Change font. */
 void preferences_font_cb (GtkWidget *button, gpointer data)
 {
-	char *font_str;
+	const char *font_str;
 
 	font_str = gtk_font_button_get_font_name (GTK_FONT_BUTTON (button));
 	gconf_client_set_string(stickynotes->gconf,
@@ -561,7 +593,9 @@ void preferences_apply_cb(GConfClient *client, guint cnxn_id, GConfEntry *entry,
 		for (l = stickynotes->notes; l; l = l->next)
 		{
 			note = l->data;
-			stickynote_set_color (note, note->color, FALSE);
+			stickynote_set_color (note,
+					note->color, note->font_color,
+					FALSE);
 		}
 	}
 
@@ -580,7 +614,9 @@ void preferences_apply_cb(GConfClient *client, guint cnxn_id, GConfEntry *entry,
 		for (l = stickynotes->notes; l; l = l->next)
 		{
 			note = l->data;
-			stickynote_set_color(note, note->color, FALSE);
+			stickynote_set_color(note,
+					note->color, note->font_color,
+					FALSE);
 			stickynote_set_font(note, note->font, FALSE);
 		}
 	}

@@ -45,6 +45,7 @@ typedef struct
 	GtkAdjustment *w_prefs_width;
 	GtkAdjustment *w_prefs_height;
 	GtkWidget *w_prefs_color;
+	GtkWidget *w_prefs_font_color;
 	GtkWidget *w_prefs_sys_color;
 	GtkWidget *w_prefs_font;
 	GtkWidget *w_prefs_sys_font;
