@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets-1.1.0\n"
-"POT-Creation-Date: 2000-03-01 06:58+0100\n"
+"POT-Creation-Date: 2000-03-26 16:16+0200\n"
 "PO-Revision-Date: 1999-12-28 12:00+0100\n"
 "Last-Translator: Andreas Hyden <ahyden@staffanstorp.net>\n"
 "Language-Team: Swedish <sv@li.org>\n"
@@ -100,7 +100,7 @@ msgstr "Inställningar för klocka"
 #. ---
 #: another_clock/another_clock.c:256 asclock/dialogs.c:367
 #: battery/properties.c:77 clockmail/properties.c:411
-#: diskusage/properties.c:342 drivemount/properties.c:344
+#: diskusage/properties.c:462 drivemount/properties.c:344
 #: mini-commander/src/preferences.c:786 modemlights/properties.c:292
 #: odometer/properties.c:283 screenshooter/screenshooter_applet.c:433
 #: slashapp/properties.c:351 sound-monitor/properties.c:426
@@ -109,8 +109,9 @@ msgid "General"
 msgstr "Allmänt"
 
 #. frame for colors
-#: another_clock/another_clock.c:266 mini-commander/src/preferences.c:708
-#: multiload/load-graph.c:585 multiload/load-graph.c:777
+#: another_clock/another_clock.c:266 diskusage/properties.c:352
+#: mini-commander/src/preferences.c:708 multiload/load-graph.c:585
+#: multiload/load-graph.c:777
 msgid "Colors"
 msgstr "Färger"
 
@@ -154,9 +155,9 @@ msgid "An analog clock similar to that in CDE panel."
 msgstr "Analog klocka, liknande den i CDE-panelen."
 
 #: another_clock/another_clock.c:723 asclock/asclock.c:608
-#: battery/battery.c:930 charpick/charpick.c:579 clockmail/clockmail.c:561
-#: diskusage/diskusage.c:1066 drivemount/drivemount.c:665 geyes/geyes.c:391
-#: gkb/gkb.c:710 gnotes/gnotes_applet.c:176 gweather/gweather-applet.c:186
+#: battery/battery.c:942 charpick/charpick.c:579 clockmail/clockmail.c:561
+#: diskusage/diskusage.c:1071 drivemount/drivemount.c:695 geyes/geyes.c:403
+#: gkb/gkb.c:691 gnotes/gnotes_applet.c:176 gweather/gweather-applet.c:203
 #: mini-commander/src/mini-commander_applet.c:398
 #: modemlights/modemlights.c:1226 multiload/cpuload.c:94
 #: multiload/memload.c:94 multiload/swapload.c:94 odometer/odo.c:658
@@ -166,24 +167,26 @@ msgid "Properties..."
 msgstr "Egenskaper..."
 
 #: another_clock/another_clock.c:729 asclock/asclock.c:614
-#: clockmail/clockmail.c:568 diskusage/diskusage.c:1089 fifteen/fifteen.c:361
-#: geyes/geyes.c:397 gweather/gweather-applet.c:191 jbc/jbc-applet.c:196
+#: clockmail/clockmail.c:568 diskusage/diskusage.c:1094 fifteen/fifteen.c:361
+#: geyes/geyes.c:398 gweather/gweather-applet.c:193 jbc/jbc-applet.c:196
 #: life/life.c:284 mini-commander/src/mini-commander_applet.c:404
+#: multiload/cpuload.c:107 multiload/memload.c:107 multiload/swapload.c:107
 #: odometer/odo.c:661 screenshooter/screenshooter_applet.c:1008
 #: webcontrol/webcontrol.c:359 whereami/whereami.c:236
 msgid "Help"
 msgstr "Hjälp"
 
 #: another_clock/another_clock.c:733 asclock/asclock.c:619
-#: battery/battery.c:923 charpick/charpick.c:572 clipboard/clipboard.c:339
-#: clockmail/clockmail.c:573 diskusage/diskusage.c:1096
-#: drivemount/drivemount.c:671 fifteen/fifteen.c:366 geyes/geyes.c:402
-#: gkb/gkb.c:702 gnotes/gnotes_applet.c:173 gweather/gweather-applet.c:195
+#: battery/battery.c:935 cdplayer/cdplayer.c:386 charpick/charpick.c:572
+#: clipboard/clipboard.c:339 clockmail/clockmail.c:573
+#: diskusage/diskusage.c:1101 drivemount/drivemount.c:670
+#: fifteen/fifteen.c:366 geyes/geyes.c:392 gkb/gkb.c:684
+#: gnotes/gnotes_applet.c:173 gweather/gweather-applet.c:188
 #: jbc/jbc-applet.c:201 life/life.c:288
-#: mini-commander/src/mini-commander_applet.c:411
-#: modemlights/modemlights.c:1239 multiload/cpuload.c:107
-#: multiload/memload.c:107 multiload/swapload.c:107 odometer/odo.c:664
-#: quicklaunch/quicklaunch.c:465 screenshooter/screenshooter_applet.c:1003
+#: mini-commander/src/mini-commander_applet.c:411 mixer/mixer.c:744
+#: modemlights/modemlights.c:1239 multiload/cpuload.c:114
+#: multiload/memload.c:114 multiload/swapload.c:114 odometer/odo.c:664
+#: quicklaunch/quicklaunch.c:502 screenshooter/screenshooter_applet.c:1003
 #: slashapp/slashapp.c:58 sound-monitor/main.c:355 tickastat/main.c:338
 #: webcontrol/webcontrol.c:366 whereami/whereami.c:238
 msgid "About..."
@@ -236,24 +239,24 @@ msgstr "Blinkande element på klockan"
 msgid "Timezone"
 msgstr "Tidszon"
 
-#: battery/battery.c:137
+#: battery/battery.c:141
 msgid "The battery is low."
 msgstr "Batteriladdningen är låg."
 
-#: battery/battery.c:152
+#: battery/battery.c:156
 msgid "The battery is fully charged."
 msgstr "Batteriet är fullt uppladdat."
 
-#: battery/battery.c:689
+#: battery/battery.c:699
 msgid "Internal error: invalid mode in battery_set_mode"
 msgstr "Internt fel: ogiltigt läge i battery_set_mode"
 
-#: battery/battery.c:762 jbc/jbc-applet.c:177
+#: battery/battery.c:772 jbc/jbc-applet.c:177
 #: screenshooter/screenshooter_applet.c:905
 msgid "Can't create applet!\n"
 msgstr "Kan inte skapa applet!\n"
 
-#: battery/battery.c:766
+#: battery/battery.c:776
 msgid ""
 "Error querying battery charge.\n"
 "\n"
@@ -263,15 +266,15 @@ msgstr ""
 "\n"
 "Kontrollera att din kernel har stöd för APM."
 
-#: battery/battery.c:1004
+#: battery/battery.c:1016
 msgid "The GNOME Battery Monitor Applet"
 msgstr "GNOME batteriövervaknings-applet"
 
-#: battery/battery.c:1005
+#: battery/battery.c:1017
 msgid " (C) 1997-1998 The Free Software Foundation"
 msgstr "(C) 1997-1998 the Free Software Foundation"
 
-#: battery/battery.c:1007
+#: battery/battery.c:1019
 msgid ""
 "This applet monitors the charge of your laptop's battery.  Click on it to "
 "change display modes."
@@ -279,7 +282,7 @@ msgstr ""
 "Denna applet övervakar laddningen på batteriet i din bärbara dator.  Klicka "
 "på den för att ändra vad den ska visa."
 
-#: battery/battery.c:1207
+#: battery/battery.c:1219
 msgid "Could not allocate space for graph values"
 msgstr "Kunde inte allokera utrymme för grafvärden"
 
@@ -298,7 +301,7 @@ msgid "Applet Height:"
 msgstr "Applethöjd:"
 
 #. Applet width
-#: battery/properties.c:98
+#: battery/properties.c:98 diskusage/properties.c:305
 msgid "Applet Width:"
 msgstr "Appletbredd"
 
@@ -396,9 +399,21 @@ msgstr "ioctl misslyckades på /dev/apm."
 msgid "APM is disabled!  Cannot read battery charge information."
 msgstr "APM är avstängt!  Kan inte läsa batteriladdningsinformation."
 
-#: cdplayer/cdplayer.c:356
-msgid "Run gtcd..."
-msgstr "Kör gtcd..."
+#: cdplayer/cdplayer.c:155
+msgid "CD Player Applet"
+msgstr "CD-spelar-applet"
+
+#: cdplayer/cdplayer.c:156
+msgid "(c) 1997 The Free Software Foundation"
+msgstr "(c) 1997 the Free Software Foundation"
+
+#: cdplayer/cdplayer.c:158
+msgid "The CD Player applet is a simple audio CD player for your panel"
+msgstr "CD-spelar-appleten är en enkel ljud CD-spelare för din panel"
+
+#: cdplayer/cdplayer.c:393
+msgid "Run CD Player..."
+msgstr "Kör CD-spelaren..."
 
 #: clipboard/clipboard.c:181
 msgid "Clipboard Applet"
@@ -453,8 +468,8 @@ msgid "Number of columns of buttons:"
 msgstr "Antal kolumner med knappar:"
 
 #. Size
-#: charpick/properties.c:267 mini-commander/src/preferences.c:596
-#: tickastat/properties.c:492
+#: charpick/properties.c:267 diskusage/properties.c:365
+#: mini-commander/src/preferences.c:596 tickastat/properties.c:492
 msgid "Size"
 msgstr "Storlek"
 
@@ -560,19 +575,19 @@ msgstr "Temafil (katalog):"
 msgid "Theme"
 msgstr "Tema"
 
-#: diskusage/diskusage.c:760
+#: diskusage/diskusage.c:766
 msgid "File Systems"
 msgstr "Filsystem"
 
-#: diskusage/diskusage.c:813
+#: diskusage/diskusage.c:820
 msgid "File System Changed!\n"
 msgstr "Filsystem ändrat!\n"
 
-#: diskusage/diskusage.c:985
+#: diskusage/diskusage.c:988
 msgid "Disk Usage Applet"
 msgstr "Diskanvändningsapplet"
 
-#: diskusage/diskusage.c:988
+#: diskusage/diskusage.c:991
 msgid ""
 "Released under the GNU general public license.\n"
 "Monitors the amount of space in use and available on your disk drives."
@@ -581,43 +596,47 @@ msgstr ""
 "Håller reda på mängden utrymme som används och som är tillgängligt på dina "
 "hårddiskar"
 
-#: diskusage/diskusage.c:1074 drivemount/drivemount.c:689
+#: diskusage/diskusage.c:1079 drivemount/drivemount.c:676
 msgid "Browse..."
 msgstr "Bläddra..."
 
-#: diskusage/diskusage.c:1082
+#: diskusage/diskusage.c:1087
 msgid "Update..."
 msgstr "Uppdatera..."
 
-#: diskusage/properties.c:221
-msgid "Used Diskspace"
-msgstr "Utnyttjat diskutrymme"
+#: diskusage/properties.c:243
+msgid "Used Diskspace:"
+msgstr "Utnyttjat diskutrymme:"
 
-#: diskusage/properties.c:226
-msgid "Free Diskspace"
-msgstr "Ledigt diskutrymme"
+#: diskusage/properties.c:258
+msgid "Text:"
+msgstr "Text:"
 
-#: diskusage/properties.c:231
-msgid "Textcolor"
-msgstr "Textfärg"
+#: diskusage/properties.c:273
+msgid "Free Diskspace:"
+msgstr "Ledigt diskutrymme:"
 
-#: diskusage/properties.c:237
-msgid "Backgroundcolor"
-msgstr "Bakgrundsfärg"
+#: diskusage/properties.c:289
+msgid "Background:"
+msgstr "Bakgrundsfärg:"
 
-#: diskusage/properties.c:244
-msgid "Applet Size"
-msgstr "Storlek på applet"
-
-#: diskusage/properties.c:251
+#: diskusage/properties.c:311
 msgid "Automatically pick best applet size"
 msgstr "Ta den bästa appletstorleken automatiskt"
 
-#: diskusage/properties.c:275
-msgid "Update Frequency"
-msgstr "Uppdateringsfrekvens"
+#: diskusage/properties.c:334
+msgid "Update Frequency (seconds):"
+msgstr "Uppdatera var (sekunder):"
 
-#: diskusage/properties.c:338
+#: diskusage/properties.c:374
+msgid "Fonts"
+msgstr "Typsnitt"
+
+#: diskusage/properties.c:378
+msgid "Font:"
+msgstr "Typsnitt:"
+
+#: diskusage/properties.c:458
 msgid "Diskusage Settings"
 msgstr "Inställningar för Diskusage"
 
@@ -628,24 +647,24 @@ msgstr "Enhetsmonteringsapplet"
 #: drivemount/drivemount.c:130
 msgid ""
 "Released under the GNU general public license.\n"
-"Mounts and Unmounts drives.."
+"Mounts and Unmounts drives."
 msgstr ""
 "Släppt under GNU generel public licens.\n"
 "Monterar och avmonterar enheter."
 
-#: drivemount/drivemount.c:354
+#: drivemount/drivemount.c:359
 msgid " mounted"
 msgstr " monterad"
 
-#: drivemount/drivemount.c:358
+#: drivemount/drivemount.c:363
 msgid " not mounted"
 msgstr " inte monterad"
 
-#: drivemount/drivemount.c:466
+#: drivemount/drivemount.c:471
 msgid "\" reported:\n"
 msgstr "\" rapporterad:\n"
 
-#: drivemount/drivemount.c:468
+#: drivemount/drivemount.c:473
 msgid ""
 "Drivemount command failed.\n"
 "\""
@@ -653,13 +672,13 @@ msgstr ""
 "Drivemount-kommando misslyckades.\n"
 "\""
 
-#: drivemount/drivemount.c:680
+#: drivemount/drivemount.c:686
 msgid "Eject"
 msgstr "Mata ut"
 
 #: drivemount/properties.c:215
-msgid "Drive Mount Settings"
-msgstr "Inställningar för Enhetsmontering"
+msgid "Drive Mount Applet Properties"
+msgstr "Enhetsmonteringsappletens egenskaper"
 
 #: drivemount/properties.c:229
 msgid "Mount point:"
@@ -757,11 +776,11 @@ msgstr "Dave Camp <campd@oit.edu>"
 msgid "gEyes"
 msgstr "gEyes"
 
-#: geyes/geyes.c:239
+#: geyes/geyes.c:240
 msgid "Copyright (C) 1999 Dave Camp"
 msgstr "Copyright (C) 1999 Dave Camp"
 
-#: geyes/geyes.c:241
+#: geyes/geyes.c:242
 msgid "A goofy little xeyes clone for the GNOME panel."
 msgstr "En knäpp liten xeyes-klon för GNOME-panelen."
 
@@ -777,47 +796,47 @@ msgstr "Inställningar för gEyes"
 msgid "Themes"
 msgstr "Teman"
 
-#: gkb/gkb.c:94
+#: gkb/gkb.c:92
 msgid "Browse"
 msgstr "Bläddra"
 
-#: gkb/gkb.c:370
-msgid "GKB settings"
-msgstr "Inställningar för GKB"
+#: gkb/gkb.c:365
+msgid "GKB Properties"
+msgstr "GKB egenskaper"
 
-#: gkb/gkb.c:383
+#: gkb/gkb.c:378
 msgid "Flag One"
 msgstr "Flagga nr ett"
 
-#: gkb/gkb.c:415
+#: gkb/gkb.c:410
 msgid "Flag Two"
 msgstr "Flagga nr två"
 
-#: gkb/gkb.c:443
+#: gkb/gkb.c:438
 msgid "Program"
 msgstr "Program"
 
-#: gkb/gkb.c:453
+#: gkb/gkb.c:448
 msgid "Xkb"
 msgstr "Xkb"
 
-#: gkb/gkb.c:457
+#: gkb/gkb.c:452
 msgid "Xmodmap"
 msgstr "Xmodmap"
 
-#: gkb/gkb.c:469
+#: gkb/gkb.c:464
 msgid "Menu"
 msgstr "Meny"
 
-#: gkb/gkb.c:619
+#: gkb/gkb.c:601
 msgid "The GNOME KeyBoard Applet"
 msgstr "GNOME-tangentborsapplet"
 
-#: gkb/gkb.c:621
+#: gkb/gkb.c:603
 msgid "(C) 1998-99 LSC - Linux Supporting Center"
 msgstr "(C) 1998-99 LSC - Linux Supporting Center"
 
-#: gkb/gkb.c:623
+#: gkb/gkb.c:605
 msgid ""
 "This applet switches between keyboard maps. Not more. It uses setxkbmap, or "
 "xmodmap. The main site of this app moved temporarily to URL "
@@ -831,7 +850,7 @@ msgstr ""
 "så lägger jag till den. Hej så länge och tack för fisken.\n"
 "Tack till Balazs Nagy (Kevin)<julian7@kva.hu> för hjälpen."
 
-#: gkb/gkb.c:634
+#: gkb/gkb.c:616
 msgid "gkb.xpm"
 msgstr "gkb.xpm"
 
@@ -994,8 +1013,8 @@ msgid "Regions"
 msgstr "Regioner"
 
 #: gweather/gweather-pref.c:333
-msgid "Properties"
-msgstr "Egenskaper"
+msgid "Gweather Properties"
+msgstr "Egenskaper för Gweather"
 
 #: gweather/gweather-pref.c:382
 msgid "Update enabled"
@@ -2512,7 +2531,23 @@ msgstr ""
 msgid "Main Volume and Mute"
 msgstr "Huvudvolym och dämpa"
 
-#: mixer/mixer.c:717
+#: mixer/mixer.c:612
+msgid "Mixer Applet"
+msgstr "Mixer-applet"
+
+#: mixer/mixer.c:613
+msgid "(c) 1998 The Free Software Foundation"
+msgstr "(c) 1998 the Free Software Foundation"
+
+#: mixer/mixer.c:615
+msgid ""
+"The mixer applet gives you instant access to setting the master volume level "
+"on your soundcard device"
+msgstr ""
+"Mixer-appleten ger dig direkt åtkomst till att ändra huvudvolym-nivån "
+"på din ljudenhet"
+
+#: mixer/mixer.c:750
 msgid "Run gmix..."
 msgstr "Kör gmix..."
 
@@ -2624,7 +2659,7 @@ msgstr ""
 "\n"
 "CPU lastmätar-applet."
 
-#: multiload/cpuload.c:74 multiload/main.c:203
+#: multiload/cpuload.c:74 multiload/main.c:212
 msgid "CPU Load"
 msgstr "Processorbelastning"
 
@@ -2704,19 +2739,19 @@ msgstr "PPP"
 msgid "ETH"
 msgstr "ETH"
 
-#: multiload/main.c:207 multiload/memload.c:74
+#: multiload/main.c:216 multiload/memload.c:74
 msgid "Memory Load"
 msgstr "Minnesbelastning"
 
-#: multiload/main.c:211 multiload/swapload.c:74
+#: multiload/main.c:220 multiload/swapload.c:74
 msgid "Swap Load"
 msgstr "Swap-belastning"
 
-#: multiload/main.c:215
+#: multiload/main.c:224
 msgid "Net Load"
 msgstr "Nätverksbelastning"
 
-#: multiload/main.c:219
+#: multiload/main.c:228
 msgid "Load Average"
 msgstr "Medelbelastning"
 
@@ -2830,7 +2865,17 @@ msgstr "Egenskaper för programstartare..."
 msgid "Delete launcher"
 msgstr "Ta bort programstartare"
 
-#: quicklaunch/quicklaunch.c:432
+#: quicklaunch/quicklaunch.c:399
+#, c-format
+msgid "File '%s' does not exist"
+msgstr "Filen \"%s\" finns inte"
+
+#: quicklaunch/quicklaunch.c:408
+#, c-format
+msgid "Don't know how to make a launcher out of: '%s'"
+msgstr "Vet inte hur man gör en programstartare av: \"%s\""
+
+#: quicklaunch/quicklaunch.c:469
 msgid ""
 "Cannot create directory:\n"
 "~/.gnome/quicklaunch.\n"
@@ -3802,6 +3847,24 @@ msgstr ""
 #: whereami/whereami.c:210
 msgid "whereami_applet"
 msgstr "whereami_applet"
+
+#~ msgid "Run gtcd..."
+#~ msgstr "Kör gtcd..."
+
+#~ msgid "Textcolor"
+#~ msgstr "Textfärg"
+
+#~ msgid "Applet Size"
+#~ msgstr "Storlek på applet"
+
+#~ msgid "Update Frequency"
+#~ msgstr "Uppdateringsfrekvens"
+
+#~ msgid "Drive Mount Settings"
+#~ msgstr "Inställningar för Enhetsmontering"
+
+#~ msgid "GKB settings"
+#~ msgstr "Inställningar för GKB"
 
 #~ msgid "Applet Height"
 #~ msgstr "Applethöjd"
