@@ -963,6 +963,38 @@ GtkWidget *diskusage_widget(void)
 }
 
 
+static void about_cb (AppletWidget *widget, gpointer data)
+{
+	static GtkWidget *about = NULL;
+	const gchar *authors[8];
+
+	if (about != NULL)
+	{
+		gdk_window_show(about->window);
+		gdk_window_raise(about->window);
+		return;
+	}
+
+	authors[0] = "Bruno Widmann <bwidmann@tks.fh-sbg.ac.at>";
+	authors[1] = "Martin Baulig <martin@home-of-linux.org>";
+	authors[2] = "Dave Finton <dfinton@d.umn.edu>";
+	authors[3] = NULL;
+
+
+        about = gnome_about_new
+		(_("Disk Usage Applet"), VERSION,
+		 "(C) 1999",
+		 authors,
+		 _("Released under the GNU general public license.\n"
+		   "Monitors the amount of space in use and available on your "
+		   "disk drives."),
+		 NULL);
+	gtk_signal_connect (GTK_OBJECT (about), "destroy",
+			    GTK_SIGNAL_FUNC (gtk_widget_destroyed), &about);
+
+	gtk_widget_show (about);
+}
+
 static gint applet_save_session(GtkWidget *widget, char *privcfgpath, char *globcfgpath, gpointer data)
 {
 	save_properties(privcfgpath,&props);
@@ -1040,6 +1072,12 @@ int main(int argc, char **argv)
                                               _("Update..."),
                                               update_cb,
                                               NULL);
+
+	applet_widget_register_stock_callback(APPLET_WIDGET(applet),
+					      "about",
+					      GNOME_STOCK_MENU_ABOUT,
+					      _("About..."),
+					      about_cb, NULL);
 
 
 	applet_widget_gtk_main();
