@@ -491,6 +491,7 @@ static GtkWidget * applet_start_new_applet(const gchar *goad_id,
 int main (int argc, char *argv[])
 {
 	GtkWidget *applet;
+	char *goad_id;
 
 	/* Initialize the i18n stuff */
 	bindtextdomain (PACKAGE, GNOMELOCALEDIR);
@@ -502,11 +503,10 @@ int main (int argc, char *argv[])
 	applet_factory_new("clockmail_applet_factory", NULL,
 			   applet_start_new_applet);
 
-	applet = applet_widget_new("clockmail_applet");
-	if (!applet)
-		g_error("Can't create applet!\n");
-
-	create_new_app(applet);
+	goad_id = goad_server_activation_id();
+	if(goad_id) {
+	  applet_start_new_applet(goad_id, NULL, 0);
+	}
 
 	applet_widget_gtk_main();
 	return 0;
