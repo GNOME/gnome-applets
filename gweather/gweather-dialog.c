@@ -30,7 +30,15 @@
 static void response_cb (GtkDialog *dialog, gint id, gpointer data)
 {
     GWeatherApplet *gw_applet = (GWeatherApplet *)data;
-	
+
+    if (id == GTK_RESPONSE_OK) {
+	gweather_update (gw_applet);
+
+	gweather_dialog_update (gw_applet);
+
+	return;
+    }
+    
     gweather_dialog_close(gw_applet);
     return;
 }
@@ -72,10 +80,14 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
 
   gw_applet->gweather_dialog = gtk_dialog_new_with_buttons (_("Forecast"), NULL,
 						  GTK_DIALOG_DESTROY_WITH_PARENT,
-						  GTK_STOCK_CLOSE, GTK_RESPONSE_OK,
+						  _("_Update"),
+						  GTK_RESPONSE_OK,
+						  GTK_STOCK_CLOSE,
+						  GTK_RESPONSE_CLOSE,
 						  NULL);
+
   gtk_dialog_set_default_response (GTK_DIALOG (gw_applet->gweather_dialog), 
-  				   GTK_RESPONSE_OK);
+  				   GTK_RESPONSE_CLOSE);
 
   if (gw_applet->gweather_pref.radar_enabled)
       gtk_window_set_default_size (GTK_WINDOW(gw_applet->gweather_dialog), 570,440);
