@@ -1,3 +1,5 @@
+SUBDIRS = help
+
 EXTRA_DIST = \
 	$(server_in_in_files) \
         $(ui_DATA) \
