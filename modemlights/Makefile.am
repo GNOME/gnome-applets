@@ -1,4 +1,4 @@
-#SUBDIRS = docs
+SUBDIRS = docs
 
 INCLUDES = -I. -I$(srcdir) 				\
 	-I$(top_srcdir)/screen-exec			\

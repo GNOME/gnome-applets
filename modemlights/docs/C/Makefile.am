@@ -1,11 +1,7 @@
-figs = \
-	figures/modemlights-advpref.png			\
-	figures/modemlights.png				\
-	figures/modemlights-prefs.png
-docname = modemlights_applet
+figdir = figures
+docname = modemlights
 lang = C
-omffile = modemlights_applet-C.omf
-sgml_ents = modemlights.sgml
-include $(top_srcdir)/sgmldocs.make
+omffile = modemlights-C.omf
+entities = legal.xml
+include $(top_srcdir)/xmldocs.make
 dist-hook: app-dist-hook
-
