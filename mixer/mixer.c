@@ -886,7 +886,7 @@ mixer_applet_create (PanelApplet *applet)
 	const gchar *device;
 	gboolean retval;
 #ifdef SUN_API
-	gchar *ctl;
+	gchar *ctl = NULL;
 #endif
 
 #ifdef OSS_API
@@ -899,11 +899,10 @@ mixer_applet_create (PanelApplet *applet)
 	}
 #endif
 #ifdef SUN_API
-	if (!(device = g_getenv("AUDIODEV")))
-		device = "/dev/audioctl";
-	ctl = g_strdup_printf("%sctl",device);
-	retval = openMixer(ctl);
-	g_free(ctl);
+	if (!(ctl = g_getenv("AUDIODEV")))
+		ctl = "/dev/audio";
+	device = g_strdup_printf("%sctl",ctl);
+	retval = openMixer(device);
 #endif
 
 	if (!retval) {
