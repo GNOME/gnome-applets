@@ -65,8 +65,8 @@ load_graph_draw (LoadGraph *g)
 
 		for (i = 0; i < g->draw_width; i++) {
 	 	   gdk_draw_line (g->pixmap, g->gc,
-				  g->draw_width - i, g->pos[i],
-			 	  g->draw_width - i, g->pos[i] - g->data[i][j]);
+				  g->draw_width - i - 1, g->pos[i],
+			 	  g->draw_width - i - 1, g->pos[i] - g->data[i][j]);
 
 		    g->pos [i] -= g->data [i][j];
 		}
@@ -172,12 +172,12 @@ load_graph_configure (GtkWidget *widget, GdkEventConfigure *event,
     load_graph_unalloc (c);
 
     if (c->orient) {
-    	c->draw_width = c->pixel_size - 2;
-    	c->draw_height = c->size - 2;
+    	c->draw_width = c->pixel_size - 4;
+    	c->draw_height = c->size - 4;
     }
     else {
-    	c->draw_width = c->size - 2;
-    	c->draw_height = c->pixel_size - 2;
+    	c->draw_width = c->size - 4;
+    	c->draw_height = c->pixel_size - 4;
     }
 
     load_graph_alloc (c);
@@ -301,12 +301,12 @@ load_graph_new (PanelApplet *applet, guint n, gchar *label,
     }
     
     if (g->orient) {
-    	g->draw_width = g->pixel_size - 2;
-    	g->draw_height = g->size - 2;
+    	g->draw_width = g->pixel_size - 4;
+    	g->draw_height = g->size - 4;
     }
     else {
-    	g->draw_width = g->size - 2;
-    	g->draw_height = g->pixel_size - 2;
+    	g->draw_width = g->size - 4;
+    	g->draw_height = g->pixel_size - 4;
     }
 
     load_graph_alloc (g);	
