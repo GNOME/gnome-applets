@@ -23,11 +23,12 @@
 #define __STICKYNOTES_APPLET_CALLBACKS_H__
 
 /* Callbacks for the sticky notes applet */
-gboolean applet_click_cb(GtkWidget *widget, GdkEventButton *event, StickyNotesApplet *stickynotes);
-gboolean applet_resize_cb(GtkWidget *widget, gint size, StickyNotesApplet *stickynotes);
+gboolean applet_button_cb(GtkWidget *widget, GdkEventButton *event, StickyNotesApplet *stickynotes);
+gboolean applet_key_cb(GtkWidget *widget, GdkEventKey *event, StickyNotesApplet *stickynotes);
 gboolean applet_cross_cb(GtkWidget *widget, GdkEventCrossing *event, StickyNotesApplet *stickynotes);
 gboolean applet_focus_cb(GtkWidget *widget, GdkEventFocus *event, StickyNotesApplet *stickynotes);
 gboolean applet_save_cb(StickyNotesApplet *stickynotes);
+gboolean applet_change_size_cb(GtkWidget *widget, gint size, StickyNotesApplet *stickynotes);
 gboolean applet_change_bg_cb(PanelApplet *applet, PanelAppletBackgroundType type, GdkColor *color, GdkPixmap *pixmap, StickyNotesApplet *stickynotes);
 
 /* Callbacks for sticky notes applet menu */
@@ -41,13 +42,13 @@ void menu_preferences_cb(BonoboUIComponent *uic, StickyNotesApplet *stickynotes,
 void menu_help_cb(BonoboUIComponent *uic, StickyNotesApplet *stickynotes, const gchar *verbname);
 void menu_about_cb(BonoboUIComponent *uic, StickyNotesApplet *stickynotes, const gchar *verbname);
 
-/* Callbacks for sticky notes about dialog */
-void about_response_cb(GtkDialog *dialog, gint response, StickyNotesApplet *stickynotes);
-
 /* Callbacks for sticky notes preferences dialog */
 void preferences_save_cb(StickyNotesApplet *stickynotes);
 void preferences_color_cb(GnomeColorPicker *cp, guint r, guint g, guint b, guint a, StickyNotesApplet *stickynotes);
-void preferences_response_cb(GtkDialog *dialog, gint response, StickyNotesApplet *stickynotes);
 void preferences_apply_cb(GConfClient *client, guint cnxn_id, GConfEntry *entry, StickyNotesApplet *stickynotes);
+void preferences_response_cb(GtkDialog *dialog, gint response, StickyNotesApplet *stickynotes);
+
+/* Callbacks for sticky notes about dialog */
+void about_response_cb(GtkDialog *dialog, gint response, StickyNotesApplet *stickynotes);
 
 #endif /* __STICKYNOTES_APPLET_CALLBACKS_H__ */

@@ -49,7 +49,12 @@ typedef struct
 } StickyNotesApplet;
 
 /* Modify the applet */
-void stickynotes_applet_set_highlighted(StickyNotesApplet *stickynotes, gboolean highlighted);
+void stickynotes_applet_update_icon(StickyNotesApplet *stickynotes, gboolean highlighted);
 void stickynotes_applet_update_tooltips(StickyNotesApplet *stickynotes);
+
+void stickynotes_applet_do_default_action(StickyNotesApplet *stickynotes);
+
+void stickynotes_applet_create_preferences(StickyNotesApplet *stickynotes);
+void stickynotes_applet_create_about(StickyNotesApplet *stickynotes);
 
 #endif /* __STICKYNOTES_APPLET_H__ */
