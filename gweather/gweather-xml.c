@@ -19,8 +19,10 @@
 
 
 /* There is very little error checking in the parsing code below, it relies 
- * heavily on the locations file being in the correct format.  The format is
- * as follows: 
+ * heavily on the locations file being in the correct format.
+ * It also does not enforce a limit on the frequency or ordering of
+ * the elements within a particular element.
+ * The format is as follows: 
  * 
  * <gweather format="1.0">
  * <region>
@@ -37,6 +39,14 @@
  *     <location>
  *       ....
  *     </location>
+ *     <city>
+ *      <name>Name of city with multiple locations</city>
+ *      <zone>Forecast code</zone>
+ *      <radar>Radar Map code</radar>
+ *      <location>
+ *        ...
+ *      </location>
+ *     </city>
  *   </state>
  *  </country>
  * </region>
@@ -71,12 +81,12 @@
 #define GWEATHER_XML_NODE_REGION     "region"
 #define GWEATHER_XML_NODE_COUNTRY    "country"
 #define GWEATHER_XML_NODE_STATE      "state"
+#define GWEATHER_XML_NODE_CITY       "city"
 #define GWEATHER_XML_NODE_LOC        "location"
 #define GWEATHER_XML_NODE_NAME       "name"
 #define GWEATHER_XML_NODE_CODE       "code"
 #define GWEATHER_XML_NODE_ZONE       "zone"
 #define GWEATHER_XML_NODE_RADAR      "radar"
-
 
 /* XML Attributes */
 #define GWEATHER_XML_ATTR_FORMAT    "format"
@@ -155,14 +165,14 @@ static xmlChar* gweather_xml_get_value (xmlTextReaderPtr reader)
  * Parm:
  *      *locale         current locale
  *      *tree:          tree to view locations
- *      *loc:           currently selected location
- *      reader:         xml text reader
  *      *iter:          iterator to named node
+ *      reader:         xml text reader
  *      **untrans_name: returns untranslated name
  *      **trans_name:   returns translated name
  *      *pref:          the preference of the current translation, the smaller the better 
  */
-static void gweather_xml_parse_name (const GList *locale, GtkTreeStore *tree, GtkTreeIter* iter, xmlTextReaderPtr reader, xmlChar **untrans_name, xmlChar **trans_name, gint *pref)
+static void gweather_xml_parse_name (const GList *locale, GtkTreeStore *tree, GtkTreeIter* iter, xmlTextReaderPtr reader,
+				     xmlChar **untrans_name, xmlChar **trans_name, gint *pref)
 {
     int ret, type;
     xmlChar *lang;
@@ -180,9 +190,11 @@ static void gweather_xml_parse_name (const GList *locale, GtkTreeStore *tree, Gt
          * the language
          */
         if ( lang == NULL ) {
-            *untrans_name = xmlTextReaderValue (reader);
+            if (*untrans_name == NULL) {
+	        *untrans_name = xmlTextReaderValue (reader);
+	    }
             /* set the column entry, incase there is no translation */
-            gtk_tree_store_set (tree, iter, GWEATHER_PREF_COL_LOC, *untrans_name, -1);
+	    gtk_tree_store_set (tree, iter, GWEATHER_PREF_COL_LOC, *untrans_name, -1);
         } else {
             found_locale = g_list_find_custom((GList*)locale, lang, gweather_xml_compare_locale);
             if (found_locale) {
@@ -190,7 +202,9 @@ static void gweather_xml_parse_name (const GList *locale, GtkTreeStore *tree, Gt
                 
                 /* If this is higer up the preference list then use it */
                 if ( (*pref == -1) || (*pref > position) ) {
-                    *trans_name = xmlTextReaderValue (reader);
+		    if (*trans_name == NULL) {
+		        *trans_name = xmlTextReaderValue (reader);
+		    }
                     gtk_tree_store_set (tree, iter, GWEATHER_PREF_COL_LOC, *trans_name, -1);
                     *pref = position;
                 }
@@ -216,10 +230,16 @@ static void gweather_xml_parse_name (const GList *locale, GtkTreeStore *tree, Gt
  *      *loc:           currently selected location
  *      reader:         xml text reader
  *      *iter:          Changed to iterator for this node
- *      *p_iter:        parent node's iterator 
- *      *s_iter:        sibling node's iterator (who this node appears after)
+ *      *r_iter:        parent node's iterator 
+ *      *c_iter:        sibling node's iterator (who this node appears after)
+ *      *dfltZone       default forecast zone for the enclosing element
+ *      *dfltRadar      default radar map code
+ *      *untransCity    if set, the untranslated name for encompassing city
+ *      *transCity      if set, the translated name for encompassing city
  */
-static void gweather_xml_parse_location (const GList* locale, GtkTreeView *tree, WeatherLocation *loc, xmlTextReaderPtr reader, GtkTreeIter* iter, GtkTreeIter* r_iter, GtkTreeIter* c_iter)
+static void gweather_xml_parse_location (const GList* locale, GtkTreeView *tree, WeatherLocation *loc, xmlTextReaderPtr reader,
+					 GtkTreeIter* iter, GtkTreeIter* r_iter, GtkTreeIter* c_iter,
+					 xmlChar *dfltZone, xmlChar *dfltRadar, xmlChar *untransCity, xmlChar *transCity)
 {
     int ret, type;
     xmlChar *name, *untrans_name, *trans_name, *code, *zone, *radar;
@@ -234,20 +254,19 @@ static void gweather_xml_parse_location (const GList* locale, GtkTreeView *tree,
     
     /* initialise variables */
     store = GTK_TREE_STORE (gtk_tree_view_get_model (tree));
-    untrans_name = NULL; 
+    untrans_name = NULL;
     trans_name = NULL;
     code = NULL;
-    zone = NULL;
-    radar = NULL;
+    zone = dfltZone;
+    radar = dfltRadar;
     pref = -1;
 
     /* create a node in the tree for this region */
     gtk_tree_store_insert_after(store, iter, r_iter, c_iter);
 
     /* Loop through any sub elements (ie until we get to a close for this element */
-    ret = xmlTextReaderRead(reader);
     type = XML_READER_TYPE_ELEMENT;
-    while ( (ret == 1) && (type != XML_READER_TYPE_END_ELEMENT) ) {
+    while ( (xmlTextReaderRead(reader) == 1) && (type != XML_READER_TYPE_END_ELEMENT) ) {
                
         type = xmlTextReaderNodeType (reader);
         
@@ -255,33 +274,35 @@ static void gweather_xml_parse_location (const GList* locale, GtkTreeView *tree,
         if ( type == XML_READER_TYPE_ELEMENT ) {
             name = xmlTextReaderName (reader);
             
-            if ( strcmp (name, GWEATHER_XML_NODE_NAME) == 0 ) {
+            if ( untrans_name == NULL && trans_name == NULL && strcmp (name, GWEATHER_XML_NODE_NAME) == 0 ) {
                 gweather_xml_parse_name (locale, store, iter, reader, &untrans_name, &trans_name, &pref);
-            } else if ( strcmp (name, GWEATHER_XML_NODE_CODE) == 0 ) {
+            } else if ( code == NULL && strcmp (name, GWEATHER_XML_NODE_CODE) == 0 ) {
                 code = gweather_xml_get_value (reader);
             } else if ( strcmp (name, GWEATHER_XML_NODE_ZONE) == 0 ) {
                 zone = gweather_xml_get_value (reader);
             } else if ( strcmp (name, GWEATHER_XML_NODE_RADAR) == 0 ) {
                 radar = gweather_xml_get_value (reader);
-            }
+	    } else {
+	        xmlFree (gweather_xml_get_value (reader) );
+	    }
             
             xmlFree (name);
         }
-        
-        ret = xmlTextReaderRead(reader);
-
     }
     
     /* Add an entry in the tree for the location */
-    new_loc = weather_location_new(untrans_name, trans_name, code, zone, radar);
+    new_loc = weather_location_new((untransCity ? untransCity : untrans_name), (transCity ? transCity : trans_name),
+				   code, zone, radar);
     gtk_tree_store_set (store, iter, GWEATHER_PREF_COL_POINTER, new_loc, -1);
 
     /* Free xml attributes */
+    xmlFree(code);
     xmlFree(untrans_name);
     xmlFree(trans_name);
-    xmlFree(code);
-    xmlFree(zone);
-    xmlFree(radar);
+    if (zone != dfltZone)
+        xmlFree(zone);
+    if (radar != dfltRadar)
+        xmlFree(radar);
 
     /* If this location is actually the currently selected one, select it */
     if ( loc && weather_location_equal (new_loc, loc) ) {
@@ -296,9 +317,10 @@ static void gweather_xml_parse_location (const GList* locale, GtkTreeView *tree,
     }
 }
 
+
 /*****************************************************************************
- * Func:    gweather_xml_parse_node()
- * Desc:    Parse a region/country/state node, creating a leaf for it in the tree
+ * Func:    gweather_xml_parse_city()
+ * Desc:    Parse a city node, creating a leaf for it in the tree
  *          then parsing any sub-nodes.
  *          This is called recursively as each node parses it's sub-nodes
  * Parm:
@@ -310,15 +332,17 @@ static void gweather_xml_parse_location (const GList* locale, GtkTreeView *tree,
  *      *p_iter:        iterator to parent node
  *      *s_iter:        iterator to last sibling node
  */
-static void gweather_xml_parse_node (const GList *locale, GtkTreeView *tree, WeatherLocation *loc, xmlTextReaderPtr reader, GtkTreeIter* iter, GtkTreeIter* p_iter, GtkTreeIter* s_iter)
+static void gweather_xml_parse_city (const GList *locale, GtkTreeView *tree, WeatherLocation *loc,
+				     xmlTextReaderPtr reader, GtkTreeIter* iter, GtkTreeIter* p_iter, GtkTreeIter* s_iter)
 {
-    int ret, type;
+    int type;
     xmlChar *name, *untrans_name, *trans_name;
     GtkTreeStore *model;
     GtkTreeIter last_child;
-    gboolean first;
+    gboolean first, isCity;
     gint pref;
-
+    xmlChar *zone, *radar;
+    
     /* check for an empty element */
     if ( xmlTextReaderIsEmptyElement (reader) ) {
         return;
@@ -327,45 +351,128 @@ static void gweather_xml_parse_node (const GList *locale, GtkTreeView *tree, Wea
     /* initialise variables */
     model = GTK_TREE_STORE (gtk_tree_view_get_model (tree));
     first = TRUE;
+    isCity = FALSE;
     pref = -1;
+    untrans_name = NULL;
+    trans_name = NULL;
+    zone = NULL;
+    radar = NULL;
     
     /* create a node in the tree for this region */
     gtk_tree_store_insert_after(model, iter, p_iter, s_iter);
-    
-    ret = xmlTextReaderRead(reader);
-    type = XML_READER_TYPE_ELEMENT;
-    while ( (ret == 1) && (type != XML_READER_TYPE_END_ELEMENT) ) {
+
+    while ( xmlTextReaderRead(reader) == 1 ) {
 
         type = xmlTextReaderNodeType (reader);
 
         /* skip non-element types */
         if ( type == XML_READER_TYPE_ELEMENT ) {
             name = xmlTextReaderName (reader);
-            if ( strcmp (name, GWEATHER_XML_NODE_NAME) == 0 ) {
-                gweather_xml_parse_name (locale, model, iter, reader, &untrans_name, &trans_name, &pref);
-            } else if ( strcmp (name, GWEATHER_XML_NODE_COUNTRY) == 0 || 
-                        strcmp (name, GWEATHER_XML_NODE_STATE)   == 0 ) {
-                if (first) {
-                    gweather_xml_parse_node (locale, tree, loc, reader, &last_child, iter , NULL);
-                    first = FALSE;
-                } else {
-                    gweather_xml_parse_node (locale, tree, loc, reader, &last_child, iter, &last_child);
-                }
-                
+
+	    if ( untrans_name == NULL && trans_name == NULL && strcmp (name, GWEATHER_XML_NODE_NAME) == 0 ) {
+	        gweather_xml_parse_name (locale, model, iter, reader,
+					 &untrans_name, &trans_name, &pref);
+	    } else if (zone == NULL && strcmp (name, GWEATHER_XML_NODE_ZONE) == 0) {
+	        zone = gweather_xml_get_value (reader);
+	    } else if (radar == NULL && strcmp (name, GWEATHER_XML_NODE_RADAR) == 0 ) {
+	        radar = gweather_xml_get_value (reader);
             } else if ( strcmp (name, GWEATHER_XML_NODE_LOC) == 0 ) {
-                if (first) {
-                    gweather_xml_parse_location (locale, tree, loc, reader, &last_child, iter, NULL);
-                    first = FALSE;
-                } else {
-                    gweather_xml_parse_location (locale, tree, loc, reader, &last_child, iter, &last_child);
-                }
+	        gweather_xml_parse_location (locale, tree, loc, reader, &last_child, iter,
+					     (first ? NULL : &last_child), zone, radar,
+					     untrans_name, trans_name);
+		first = FALSE;
+	    } else {
+	        xmlFree (gweather_xml_get_value (reader) );
             }
             
             xmlFree (name);
-        }
-        
-        ret = xmlTextReaderRead (reader);
-    }    
+
+        } else if ( type == XML_READER_TYPE_END_ELEMENT ) {
+	    break;
+	}
+    }
+
+    xmlFree (untrans_name);
+    xmlFree (trans_name);
+    xmlFree (zone);
+    xmlFree (radar);
+}
+
+/*****************************************************************************
+ * Func:    gweather_xml_parse_node()
+ * Desc:    Parse a region/country/state/city node, creating a leaf for it in the tree
+ *          then parsing any sub-nodes.
+ *          This is called recursively as each node parses it's sub-nodes
+ * Parm:
+ *      *locale         current_locale
+ *      *tree:          tree to view locations
+ *      *loc:           currently selected location
+ *      reader:         xml text reader
+ *      *iter:          Changed to iterator for this node
+ *      *p_iter:        iterator to parent node
+ *      *s_iter:        iterator to last sibling node
+ */
+
+static void gweather_xml_parse_node (const GList *locale, GtkTreeView *tree, WeatherLocation *loc,
+				     xmlTextReaderPtr reader, GtkTreeIter* iter, GtkTreeIter* p_iter, GtkTreeIter* s_iter)
+{
+    int type;
+    xmlChar *name, *untrans_name, *trans_name;
+    GtkTreeStore *model;
+    GtkTreeIter last_child;
+    gboolean first, isCity;
+    gint pref;
+    
+    /* check for an empty element */
+    if ( xmlTextReaderIsEmptyElement (reader) ) {
+        return;
+    }
+       
+    /* initialise variables */
+    model = GTK_TREE_STORE (gtk_tree_view_get_model (tree));
+    first = TRUE;
+    isCity = FALSE;
+    pref = -1;
+    untrans_name = NULL;
+    trans_name = NULL;
+    
+    /* create a node in the tree for this region */
+    gtk_tree_store_insert_after(model, iter, p_iter, s_iter);
+
+    while ( xmlTextReaderRead(reader) == 1 ) {
+
+        type = xmlTextReaderNodeType (reader);
+
+        /* skip non-element types */
+        if ( type == XML_READER_TYPE_ELEMENT ) {
+            name = xmlTextReaderName (reader);
+
+	    if ( strcmp (name, GWEATHER_XML_NODE_NAME) == 0 ) {
+	        gweather_xml_parse_name (locale, model, iter, reader,
+					 &untrans_name, &trans_name, &pref);
+	    } else if ( strcmp (name, GWEATHER_XML_NODE_CITY) == 0 ) {
+		gweather_xml_parse_city (locale, tree, loc, reader, &last_child, iter,
+					 (first ? NULL : &last_child));
+		first = FALSE;
+	    } else if ( strcmp (name, GWEATHER_XML_NODE_COUNTRY) == 0 || 
+			strcmp (name, GWEATHER_XML_NODE_STATE)   == 0)  {
+		gweather_xml_parse_node (locale, tree, loc, reader, &last_child, iter,
+					 (first ? NULL : &last_child) );
+		first = FALSE;
+            } else if ( strcmp (name, GWEATHER_XML_NODE_LOC) == 0 ) {
+	        gweather_xml_parse_location (locale, tree, loc, reader, &last_child, iter,
+					     (first ? NULL : &last_child), NULL, NULL, NULL, NULL);
+		first = FALSE;
+	    } else {
+	        xmlFree (gweather_xml_get_value (reader) );
+            }
+            
+            xmlFree (name);
+
+        } else if ( type == XML_READER_TYPE_END_ELEMENT ) {
+	    break;
+	}
+    }
 }
 
 /*****************************************************************************
@@ -393,13 +500,11 @@ static void gweather_xml_parse (GtkTreeView *tree, WeatherLocation *loc, xmlText
         if (type == XML_READER_TYPE_ELEMENT) {
             name = xmlTextReaderName (reader);
             if ( strcmp(name, GWEATHER_XML_NODE_REGION) == 0 ) {
-                if (first) {
-                    gweather_xml_parse_node (locale, tree, loc, reader, &iter, NULL, NULL);
-                    first = FALSE;
-                }
-                else {
-                    gweather_xml_parse_node (locale, tree, loc, reader, &iter, NULL, &iter);
-                }
+	        gweather_xml_parse_node (locale, tree, loc, reader, &iter, NULL,
+					 (first ? NULL : &iter));
+		first = FALSE;
+	    } else {
+	        xmlFree (gweather_xml_get_value (reader) );
             }
             xmlFree (name);
         }
