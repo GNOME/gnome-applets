@@ -125,8 +125,6 @@ void menu_destroy_all_cb(BonoboUIComponent *uic, StickyNotesApplet *sticky, cons
 	GladeXML *glade = glade_xml_new(GLADE_PATH, "delete_all_dialog", NULL);
 	GtkWidget *dialog = glade_xml_get_widget(glade, "delete_all_dialog");
 
-	gtk_window_set_transient_for(GTK_WINDOW(dialog), GTK_WINDOW(stickynotes->applet));
-
 	if (gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_OK) {
 		while (g_list_length(stickynotes->notes) > 0)
 		    stickynote_free(g_list_nth_data(stickynotes->notes, 0));

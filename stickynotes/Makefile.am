@@ -2,6 +2,8 @@
 
 SUBDIRS = pixmaps docs
 
+CFLAGS = -Wall -g
+
 INCLUDES = \
 	-I. \
 	-I$(srcdir) \

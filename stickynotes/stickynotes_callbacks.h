@@ -24,7 +24,7 @@
 #define __STICKYNOTES_CALLBACKS_H__
 
 /* Callbacks for the sticky notes windows */
-gboolean window_delete_cb(GtkWidget *widget, StickyNote *note);
+gboolean window_delete_cb(GtkWidget *widget, GdkEvent *event, StickyNote *note);
 gboolean window_move_edit_cb(GtkWidget *widget, GdkEventButton *event, StickyNote *note);
 gboolean window_resize_cb(GtkWidget *widget, GdkEventButton *event, StickyNote *note);
 gboolean window_close_cb(GtkWidget *widget, GdkEventButton *event, StickyNote *note);

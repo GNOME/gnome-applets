@@ -22,8 +22,10 @@
 #include <stickynotes_applet.h>
 
 /* Sticky Window Callback : Prevent deleting the window. */
-gboolean window_delete_cb(GtkWidget *widget, StickyNote *note)
+gboolean window_delete_cb(GtkWidget *widget, GdkEvent *event, StickyNote *note)
 {
+	stickynote_remove(note);
+
 	return TRUE;
 }
 
