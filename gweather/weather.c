@@ -1538,17 +1538,13 @@ static void iwin_start_open (WeatherInfo *info)
     ** file (the PA stands for the state pennsylvania). The url used wants the state
     ** as pa, and the zone as lower case paz021.
     */
-    zone = g_strdup (loc->zone);
-    g_ascii_strdown (zone, strlen (zone));
-    state = g_strdup (zone);
-    state[2] = '\0';
+    zone = g_ascii_strdown (loc->zone, -1);
+    state = g_strndup (zone, 2);
     
     url = g_strdup_printf ("http://weather.noaa.gov/pub/data/forecasts/zone/%s/%s.txt",
         		   state, zone); 
-    if (zone)
-    	g_free (zone);   
-    if (state)
-    	g_free (state);
+    g_free (zone);   
+    g_free (state);
 
     gnome_vfs_async_open(&info->iwin_handle, url, GNOME_VFS_OPEN_READ, 
     			 0, iwin_finish_open, info);
