@@ -84,31 +84,25 @@ static gdouble dmsh2rad (const gchar *latlon)
     return value;
 }
 
-WeatherLocation *weather_location_new (const gchar *untrans_name, const gchar *trans_name, const gchar *code,
-				       const gchar *zone, const gchar *radar, const gchar *coordinates)
+WeatherLocation *weather_location_new (const gchar *name, const gchar *code,
+				       const gchar *zone, const gchar *radar,
+                                       const gchar *coordinates)
 {
     WeatherLocation *location;
     char lat[12], lon[12];
 
     location = g_new(WeatherLocation, 1);
-  
-    /* untransalted name and metar code must be set */
-    location->untrans_name = g_strdup(untrans_name);
+
+    /* name and metar code must be set */
+    location->name = g_strdup(name);
     location->code = g_strdup(code);
 
-    /* if there is no translated name, then use the untranslated version */
-    if (trans_name) {
-        location->trans_name = g_strdup(trans_name);    
-    } else {
-        location->trans_name = g_strdup(untrans_name);
-    }
-    
     if (zone) {    
         location->zone = g_strdup(zone);
     } else {
         location->zone = g_strdup("------");
     }
-    
+
     if (radar) {
         location->radar = g_strdup(radar);
     } else {
@@ -121,6 +115,7 @@ WeatherLocation *weather_location_new (const gchar *untrans_name, const gchar *t
         location->zone_valid = TRUE;
     }
 
+    /* XXX: warning: big bad buffer overflow */
     if (coordinates && sscanf(coordinates, "%s %s", lat, lon) == 2) {
         location->coordinates = g_strdup(coordinates);
         location->latitude = dmsh2rad (lat);
@@ -138,90 +133,65 @@ WeatherLocation *weather_location_new (const gchar *untrans_name, const gchar *t
 WeatherLocation *weather_location_config_read (PanelApplet *applet)
 {
     WeatherLocation *location;
-    gchar *untrans_name, *trans_name, *code, *zone, *radar, *coordinates;
+    gchar *name, *code, *zone, *radar, *coordinates;
     
-    trans_name = NULL;
+    name = NULL;
 
-    untrans_name = panel_applet_gconf_get_string(applet, "location0", NULL);
-    if (!untrans_name) {
-        if ( g_strstr_len ("DEFAULT_LOCATION", 16, _("DEFAULT_LOCATION")) == NULL ) {
-            /* TRANSLATOR: Change this to the default location name (1st parameter) in the */
-            /* gweather/Locations file */
-            /* For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc */
-            /* so this should be translated as "New York-JFK Arpt" */
-            untrans_name = g_strdup ( _("DEFAULT_LOCATION") );
-            trans_name = g_strdup ( _( _("DEFAULT_LOCATION") ) );
-		} else {
-    	    untrans_name = g_strdup ("Pittsburgh");
-        }
-    } else if ( g_strstr_len ("DEFAULT_LOCATION", 16, untrans_name) ) {
-        g_free ( untrans_name );
-		untrans_name = g_strdup ("Pittsburgh");
-        trans_name = g_strdup ( _("Pittsburgh") );
-    } else {
-        /* Use the stored value */
-        trans_name = panel_applet_gconf_get_string (applet, "location4", NULL);
-    }
+    name = panel_applet_gconf_get_string (applet, "location4", NULL);
 
-    code = panel_applet_gconf_get_string(applet, "location1", NULL);
-    if (!code) { 
-        if (g_strstr_len ("DEFAULT_CODE", 12, _("DEFAULT_CODE")) == NULL) {
-            /* TRANSLATOR: Change this to the default location code (2nd parameter) in the */
-            /* gweather/Locations file */
-            /* For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc */
-            /* so this should be translated as "KJFK" */
-            code = g_strdup ( _("DEFAULT_CODE") );
-        } else {
+    if (!name)
+        /* TRANSLATOR: Change this to the default location name (1st parameter) in the */
+        /* gweather/Locations file */
+        /* For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc */
+        /* so this should be translated as "New York-JFK Arpt" */
+        if (strcmp ("DEFAULT_LOCATION", _("DEFAULT_LOCATION")))
+            name = g_strdup (_("DEFAULT_LOCATION"));
+        else
+            name = g_strdup ("Pittsburgh");
+
+    code = panel_applet_gconf_get_string (applet, "location1", NULL);
+    if (!code) 
+        /* TRANSLATOR: Change this to the default location code (2nd parameter) in the */
+        /* gweather/Locations file */
+        /* For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc */
+        /* so this should be translated as "KJFK" */
+        if (strcmp ("DEFAULT_CODE", _("DEFAULT_CODE")))
+            code = g_strdup (_("DEFAULT_CODE"));
+        else
     	    code = g_strdup ("KPIT");
-        }
-    } else if ( g_strstr_len ("DEFAULT_CODE", 12, code) ) {
-        g_free (code);
-        code = g_strdup ("KPIT");
-    }
-	
-    zone = panel_applet_gconf_get_string(applet, "location2", NULL);
-    if (!zone) {
-        if (g_strstr_len("DEFAULT_ZONE", 12, _("DEFAULT_ZONE")) == NULL) {
-            /* TRANSLATOR: Change this to the default location zone (3rd parameter) in the */
-            /* gweather/Locations file */
-            /* For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc */
-            /* so this should be translated as "NYZ076" */
-            zone = g_strdup ( _("DEFAULT_ZONE" ) );
-        } else {
+
+    zone = panel_applet_gconf_get_string (applet, "location2", NULL);
+    if (!zone)
+        /* TRANSLATOR: Change this to the default location zone (3rd parameter) in the */
+        /* gweather/Locations file */
+        /* For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc */
+        /* so this should be translated as "NYZ076" */
+        if (strcmp ("DEFAULT_ZONE", _("DEFAULT_ZONE")))
+            zone = g_strdup (_("DEFAULT_ZONE" ));
+        else
             zone = g_strdup ("PAZ021");
-        }
-    } else if ( g_strstr_len ("DEFAULT_ZONE", 12, code) ) {
-        g_free (zone);
-		zone = g_strdup ("PAZ021");
-    }
 
     radar = panel_applet_gconf_get_string(applet, "location3", NULL);
-    if (!radar) {
-        if (g_strstr_len("DEFAULT_RADAR", 13, N_("DEFAULT_RADAR")) == NULL) {
-            /* Translators: Change this to the default location radar (4th parameter) in the */
-            /* gweather/Locations file */
-            /* For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc */
-            /* so this should be translated as "nyc" */
-			radar = g_strdup ( _("DEFAULT_RADAR") );
-        } else {
+    if (!radar)
+        /* Translators: Change this to the default location radar (4th parameter) in the */
+        /* gweather/Locations file */
+        /* For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc */
+        /* so this should be translated as "nyc" */
+        if (strcmp ("DEFAULT_RADAR", _("DEFAULT_RADAR")))
+            radar = g_strdup (_("DEFAULT_RADAR"));
+        else
             radar = g_strdup ("pit");
-        }
-    } else if ( g_strstr_len ("DEFAULT_RADAR", 13, radar) ) {
-        g_free (radar);
-        radar = g_strdup ("pit");
-    }
 
-    coordinates = panel_applet_gconf_get_string(applet, "coordinates", NULL);
-    if (coordinates && g_strstr_len ("DEFAULT_COORDINATES", 19, coordinates) ) {
+    coordinates = panel_applet_gconf_get_string (applet, "coordinates", NULL);
+    if (coordinates && !strcmp ("DEFAULT_COORDINATES", coordinates))
+    {
         g_free (coordinates);
-	coordinates = NULL;
+        coordinates = NULL;
     }
     
+    location = weather_location_new (name, code, zone, radar, coordinates);
     
-    location = weather_location_new(untrans_name, trans_name, code, zone, radar, coordinates);
-    
-    g_free (untrans_name);
-    g_free (trans_name);
+    g_free (name);
     g_free (code);
     g_free (zone);
     g_free (radar);
@@ -234,7 +204,7 @@ WeatherLocation *weather_location_clone (const WeatherLocation *location)
 {
     WeatherLocation *clone;
 
-    clone = weather_location_new (location->untrans_name, location->trans_name, 
+    clone = weather_location_new (location->name,
 				  location->code, location->zone,
 				  location->radar, location->coordinates);
     clone->latitude = location->latitude;
@@ -246,8 +216,7 @@ WeatherLocation *weather_location_clone (const WeatherLocation *location)
 void weather_location_free (WeatherLocation *location)
 {
     if (location) {
-        g_free (location->untrans_name);
-        g_free (location->trans_name);
+        g_free (location->name);
         g_free (location->code);
         g_free (location->zone);
         g_free (location->radar);
@@ -262,7 +231,7 @@ gboolean weather_location_equal (const WeatherLocation *location1, const Weather
     if (!location1->code || !location2->code)
         return 1;
     return ( (strcmp(location1->code, location2->code) == 0) &&
-             (strcmp(location1->untrans_name, location2->untrans_name) == 0) );    
+             (strcmp(location1->name, location2->name) == 0) );    
 }
 
 static const gchar *wind_direction_str[] = {
@@ -985,7 +954,7 @@ const gchar *weather_info_get_location (WeatherInfo *info)
 {
     g_return_val_if_fail(info != NULL, NULL);
     g_return_val_if_fail(info->location != NULL, NULL);
-    return info->location->trans_name;
+    return info->location->name;
 }
 
 const gchar *weather_info_get_update (WeatherInfo *info)

@@ -1,3 +1,31 @@
+2005-03-30  Ryan Lortie  <desrt@desrt.ca>
+
+	** MERGE CHANGES FROM HEAD **
+
+	* gweather-dialog.c: Remove some debugging output (bug #171924)
+
+	* gweather-xml.h: Change the prototype from void -> int to allow
+	an indication of success/failure to parse the XML.
+
+	* gweather-pref.c: Add an error dialog asking the user to file a
+	bug in the case of an Locations.xml parse error.
+
+	* weather.h: Removed trans/untrans_name for favour of a single
+	'name' field in the WeatherLocation structure.  Change prototype
+	of weather_location_new to take the single name.  (bug #171855)
+
+	* weather.c: Lots of changes to deal with the removal of
+	trans/untrans_name.
+
+	* weather-iwin.c: Small change to deal with the removal of the
+	translated/untranslated name crud.
+
+	* gweather-xml.c: Massive (pretty much total) rewrite.  Better
+	error reporting, fewer memory leaks.  Less code duplication.
+	Changed to deal with a single name (no trans/untrans stuff).
+
+	* gweather-about.c: Added myself to the author credits.
+
 2005-03-28  Ryan Lortie  <desrt@desrt.ca>
 
 	* gweather-xml.c: Lots of fixes:

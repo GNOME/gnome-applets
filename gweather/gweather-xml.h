@@ -20,7 +20,7 @@
 #ifndef __GWEATHER_XML_H__
 #define __GWEATHER_XML_H__
 
-void gweather_xml_load_locations (GtkTreeView *tree, WeatherLocation *loc);
+int gweather_xml_load_locations( GtkTreeView *tree, WeatherLocation *current );
 
 
 #endif /* __GWEATHER_XML_H__ */
