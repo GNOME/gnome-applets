@@ -224,7 +224,7 @@ static void about_cb(AppletWidget * widget, gpointer data)
 	authors[2] = NULL;
 
 	fish->aboutbox =
-	    gnome_about_new(_("The GNOME Fish Applet"), "2001",
+	    gnome_about_new(_("The GNOME HAL"), "2001",
 			    _("(C) 1999 the Free Software Foundation"),
 			    (const char **) authors,
 			    _("I am a HAL 9000 computer, Production "
