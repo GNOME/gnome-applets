@@ -108,6 +108,16 @@ gboolean window_focus_cb(GtkWidget *widget, GdkEventFocus *event, StickyNote *no
 	/* Highlight the sticky note. */
 	stickynote_set_color(note, NULL, event->in);
 
+	/* Show hide window management buttons */
+	if (event->in) {
+		gtk_widget_show(glade_xml_get_widget(note->glade, "resize_button"));
+		gtk_widget_show(glade_xml_get_widget(note->glade, "close_button"));
+	}
+	else {
+		gtk_widget_hide(glade_xml_get_widget(note->glade, "resize_button"));
+		gtk_widget_hide(glade_xml_get_widget(note->glade, "close_button"));
+	}
+
 	/* Let other handlers receive this event. */
 	return FALSE;
 }
