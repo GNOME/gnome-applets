@@ -213,6 +213,7 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
   gtk_table_attach (GTK_TABLE (cond_table), gw_applet->cond_location, 1, 2, 0, 1,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
+  gtk_label_set_selectable (GTK_LABEL (gw_applet->cond_location), TRUE);
   gtk_label_set_justify (GTK_LABEL (gw_applet->cond_location), GTK_JUSTIFY_LEFT);
   gtk_misc_set_alignment (GTK_MISC (gw_applet->cond_location), 0, 0.5);
 
@@ -221,6 +222,7 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
   gtk_table_attach (GTK_TABLE (cond_table), gw_applet->cond_update, 1, 2, 1, 2,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
+  gtk_label_set_selectable (GTK_LABEL (gw_applet->cond_update), TRUE);
   gtk_label_set_justify (GTK_LABEL (gw_applet->cond_update), GTK_JUSTIFY_LEFT);
   gtk_misc_set_alignment (GTK_MISC (gw_applet->cond_update), 0, 0.5);
 
@@ -229,6 +231,7 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
   gtk_table_attach (GTK_TABLE (cond_table), gw_applet->cond_cond, 1, 2, 2, 3,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
+  gtk_label_set_selectable (GTK_LABEL (gw_applet->cond_cond), TRUE);
   gtk_label_set_justify (GTK_LABEL (gw_applet->cond_cond), GTK_JUSTIFY_LEFT);
   gtk_misc_set_alignment (GTK_MISC (gw_applet->cond_cond), 0, 0.5);
 
@@ -237,6 +240,7 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
   gtk_table_attach (GTK_TABLE (cond_table), gw_applet->cond_sky, 1, 2, 3, 4,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
+  gtk_label_set_selectable (GTK_LABEL (gw_applet->cond_sky), TRUE);
   gtk_label_set_justify (GTK_LABEL (gw_applet->cond_sky), GTK_JUSTIFY_LEFT);
   gtk_misc_set_alignment (GTK_MISC (gw_applet->cond_sky), 0, 0.5);
 
@@ -245,6 +249,7 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
   gtk_table_attach (GTK_TABLE (cond_table), gw_applet->cond_temp, 1, 2, 4, 5,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
+  gtk_label_set_selectable (GTK_LABEL (gw_applet->cond_temp), TRUE);
   gtk_label_set_justify (GTK_LABEL (gw_applet->cond_temp), GTK_JUSTIFY_LEFT);
   gtk_misc_set_alignment (GTK_MISC (gw_applet->cond_temp), 0, 0.5);
 
@@ -253,6 +258,7 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
   gtk_table_attach (GTK_TABLE (cond_table), gw_applet->cond_apparent, 1, 2, 5, 6,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
+  gtk_label_set_selectable (GTK_LABEL (gw_applet->cond_apparent), TRUE);
   gtk_label_set_justify (GTK_LABEL (gw_applet->cond_apparent), GTK_JUSTIFY_LEFT);
   gtk_misc_set_alignment (GTK_MISC (gw_applet->cond_apparent), 0, 0.5);
 
@@ -261,6 +267,7 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
   gtk_table_attach (GTK_TABLE (cond_table), gw_applet->cond_dew, 1, 2, 6, 7,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
+  gtk_label_set_selectable (GTK_LABEL (gw_applet->cond_dew), TRUE);
   gtk_label_set_justify (GTK_LABEL (gw_applet->cond_dew), GTK_JUSTIFY_LEFT);
   gtk_misc_set_alignment (GTK_MISC (gw_applet->cond_dew), 0, 0.5);
 
@@ -269,6 +276,7 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
   gtk_table_attach (GTK_TABLE (cond_table), gw_applet->cond_humidity, 1, 2, 7, 8,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
+  gtk_label_set_selectable (GTK_LABEL (gw_applet->cond_humidity), TRUE);
   gtk_label_set_justify (GTK_LABEL (gw_applet->cond_humidity), GTK_JUSTIFY_LEFT);
   gtk_misc_set_alignment (GTK_MISC (gw_applet->cond_humidity), 0, 0.5);
 
@@ -277,6 +285,7 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
   gtk_table_attach (GTK_TABLE (cond_table), gw_applet->cond_wind, 1, 2, 8, 9,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
+  gtk_label_set_selectable (GTK_LABEL (gw_applet->cond_wind), TRUE);
   gtk_label_set_justify (GTK_LABEL (gw_applet->cond_wind), GTK_JUSTIFY_LEFT);
   gtk_misc_set_alignment (GTK_MISC (gw_applet->cond_wind), 0, 0.5);
 
@@ -285,6 +294,7 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
   gtk_table_attach (GTK_TABLE (cond_table), gw_applet->cond_pressure, 1, 2, 9, 10,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
+  gtk_label_set_selectable (GTK_LABEL (gw_applet->cond_pressure), TRUE);
   gtk_label_set_justify (GTK_LABEL (gw_applet->cond_pressure), GTK_JUSTIFY_LEFT);
   gtk_misc_set_alignment (GTK_MISC (gw_applet->cond_pressure), 0, 0.5);
 
@@ -293,6 +303,7 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
   gtk_table_attach (GTK_TABLE (cond_table), gw_applet->cond_vis, 1, 2, 10, 11,
                     (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
+  gtk_label_set_selectable (GTK_LABEL (gw_applet->cond_vis), TRUE);
   gtk_label_set_justify (GTK_LABEL (gw_applet->cond_vis), GTK_JUSTIFY_LEFT);
   gtk_misc_set_alignment (GTK_MISC (gw_applet->cond_vis), 0, 0.5);
 
