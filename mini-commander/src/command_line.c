@@ -312,7 +312,7 @@ mc_show_history (GtkWidget *widget,
      /* add history entries to list */
      if (j == 0) {
           gtk_list_store_append (store, &iter);
-          gtk_list_store_set (store, &iter,0, "no items in history", -1);
+          gtk_list_store_set (store, &iter,0, _("No items in history"), -1);
      }
      else {	
           for(i = 0; i < MC_HISTORY_LIST_LENGTH; i++)
