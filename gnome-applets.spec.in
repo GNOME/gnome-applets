@@ -35,9 +35,22 @@ utilities in the GNOME panel.
 %setup -q
 
 %build
-%configure --sysconfdir=/etc
-CFLAGS="$RPM_OPT_FLAGS"
-make
+%ifarch alpha
+  MYARCH_FLAGS="--host=alpha-redhat-linux"
+%endif
+
+if [ ! -f configure ]; then
+CFLAGS="$RPM_OPT_FLAGS" ./autogen.sh $MYARCH_FLAGS --prefix=/usr --sysconfdir=/etc
+else
+CFLAGS="$RPM_OPT_FLAGS" ./configure $MYARCH_FLAGS --prefix=/usr --sysconfdir=/etc
+fi
+
+if [ "$SMP" != "" ]; then
+  (make "MAKE=make -k -j $SMP"; exit 0)
+  make
+else
+  make
+fi
 
 %install
 [ -n "$RPM_BUILD_ROOT" -a "$RPM_BUILD_ROOT" != / ] && rm -rf $RPM_BUILD_ROOT
