@@ -461,43 +461,6 @@ close_cb (GnomeVFSAsyncHandle *handle, GnomeVFSResult result, gpointer data)
 	return;
 }
 
-#define TIME_RE_STR  "^([0-9]{6})Z$"
-#define WIND_RE_STR  "^(([0-9]{3})|VRB)([0-9]?[0-9]{2})(G[0-9]?[0-9]{2})?KT$"
-#define VIS_RE_STR   "^((([0-9]?[0-9])|(M?([12] )?([1357]/1?[0-9])))SM)|" \
-                     "([0-9]{4}(N|NE|E|SE|S|SW|W|NW( [0-9]{4})(N|NE|E|SE|S|SW|W|NW))?)$"
-#define CLOUD_RE_STR "^(CLR|BKN|SCT|FEW|OVC|SKC|NSC)([0-9]{3})?(CB|TCU)?$"
-#define TEMP_RE_STR  "^(M?[0-9][0-9])/(M?(//|[0-9][0-9]))$"
-#define PRES_RE_STR  "^(A|Q)([0-9]{4})$"
-#define COND_RE_STR  "^(-|\\+)?(VC|MI|BC|PR|TS|BL|SH|DR|FZ)?(DZ|RA|SN|SG|IC|PE|GR|GS|UP|BR|FG|FU|VA|SA|HZ|PY|DU|SQ|SS|DS|PO|\\+?FC)$"
-
-#define TIME_RE   0
-#define WIND_RE   1
-#define VIS_RE    2
-#define CLOUD_RE  3
-#define TEMP_RE   4
-#define PRES_RE   5
-#define COND_RE   6
-
-#define RE_NUM   7
-
-static regex_t metar_re[RE_NUM];
-
-static void metar_init_re (void)
-{
-    static gboolean initialized = FALSE;
-    if (initialized)
-        return;
-    initialized = TRUE;
-
-    regcomp(&metar_re[TIME_RE], TIME_RE_STR, REG_EXTENDED);
-    regcomp(&metar_re[WIND_RE], WIND_RE_STR, REG_EXTENDED);
-    regcomp(&metar_re[VIS_RE], VIS_RE_STR, REG_EXTENDED);
-    regcomp(&metar_re[CLOUD_RE], CLOUD_RE_STR, REG_EXTENDED);
-    regcomp(&metar_re[TEMP_RE], TEMP_RE_STR, REG_EXTENDED);
-    regcomp(&metar_re[PRES_RE], PRES_RE_STR, REG_EXTENDED);
-    regcomp(&metar_re[COND_RE], COND_RE_STR, REG_EXTENDED);
-}
-
 /* Return time of weather report as secs since epoch UTC */
 static time_t make_time (gint utcDate, gint utcHour, gint utcMin)
 {
@@ -521,43 +484,38 @@ static time_t make_time (gint utcDate, gint utcHour, gint utcMin)
    return tm.tm_gmtoff + mktime(&tm);
 }
 
-static gboolean metar_tok_time (gchar *tokp, WeatherInfo *info)
+static void metar_tok_time (gchar *tokp, WeatherInfo *info)
 {
     gint day, hr, min;
 
-    if (regexec(&metar_re[TIME_RE], tokp, 0, NULL, 0) == REG_NOMATCH)
-        return FALSE;
-
     sscanf(tokp, "%2u%2u%2u", &day, &hr, &min);
-    
     info->update = make_time(day, hr, min);
-
-    return TRUE;
 }
 
 #define CONST_DIGITS "0123456789"
 
-static gboolean metar_tok_wind (gchar *tokp, WeatherInfo *info)
+static void metar_tok_wind (gchar *tokp, WeatherInfo *info)
 {
     gchar sdir[4], sspd[4], sgust[4];
     gint dir, spd, gust = -1;
     gchar *gustp;
-
-    if (regexec(&metar_re[WIND_RE], tokp, 0, NULL, 0) == REG_NOMATCH)
-        return FALSE;
-
+    size_t glen;
+    
     strncpy(sdir, tokp, 3);
     sdir[3] = 0;
     dir = (!strcmp(sdir, "VRB")) ? -1 : atoi(sdir);
 
     memset(sspd, 0, sizeof(sspd));
-    strncpy(sspd, tokp+3, strspn(tokp+3, CONST_DIGITS));
+    glen = strspn(tokp+3, CONST_DIGITS);
+    strncpy(sspd, tokp+3, glen);
     spd = atoi(sspd);
+    tokp += glen + 3;
 
     gustp = strchr(tokp, 'G');
     if (gustp) {
         memset(sgust, 0, sizeof(sgust));
-        strncpy(sgust, gustp+1, strspn(gustp+1, CONST_DIGITS));
+	glen = strspn(gustp+1, CONST_DIGITS);
+        strncpy(sgust, gustp+1, glen);
         gust = atoi(sgust);
     }
 
@@ -595,18 +553,13 @@ static gboolean metar_tok_wind (gchar *tokp, WeatherInfo *info)
         info->wind = WIND_NNW;
     
     info->windspeed = (WeatherWindSpeed)spd;
-
-    return TRUE;
 }
 
-static gboolean metar_tok_vis (gchar *tokp, WeatherInfo *info)
+static void metar_tok_vis (gchar *tokp, WeatherInfo *info)
 {
     gchar *pfrac, *pend, *psp;
     gchar sval[6];
     gint num, den, val;
-
-    if (regexec(&metar_re[VIS_RE], tokp, 0, NULL, 0) == REG_NOMATCH)
-        return FALSE;
 
     pend = strstr(tokp, "SM");
     memset(sval, 0, sizeof(sval));
@@ -643,23 +596,17 @@ static gboolean metar_tok_vis (gchar *tokp, WeatherInfo *info)
 	val = atoi(sval);
 	info->visibility = (WeatherVisibility)val / VISIBILITY_SM_TO_M(1.);
     }
-
-    return TRUE;
 }
 
-static gboolean metar_tok_cloud (gchar *tokp, WeatherInfo *info)
+static void metar_tok_cloud (gchar *tokp, WeatherInfo *info)
 {
     gchar stype[4], salt[4];
     gint alt = -1;
 
-    if (regexec(&metar_re[CLOUD_RE], tokp, 0, NULL, 0) == REG_NOMATCH)
-	if (!strcmp(tokp,"CAVOK"))
-	{
-		info->sky=SKY_CLEAR;
-		return TRUE;
-	}
-   	else
-        	return FALSE;
+    if (!strcmp(tokp,"CAVOK")) {
+        info->sky=SKY_CLEAR;
+	return;
+    }
 
     strncpy(stype, tokp, 3);
     stype[3] = 0;
@@ -684,15 +631,10 @@ static gboolean metar_tok_cloud (gchar *tokp, WeatherInfo *info)
     } else if (!strcmp(stype, "OVC")) {
         info->sky = SKY_OVERCAST;
     }
-
-    return TRUE;
 }
 
-static gboolean metar_tok_pres (gchar *tokp, WeatherInfo *info)
+static void metar_tok_pres (gchar *tokp, WeatherInfo *info)
 {
-    if (regexec(&metar_re[PRES_RE], tokp, 0, NULL, 0) == REG_NOMATCH)
-        return FALSE;
-
     if (*tokp == 'A') {
         gchar sintg[3], sfract[3];
         gint intg, fract;
@@ -716,8 +658,6 @@ static gboolean metar_tok_pres (gchar *tokp, WeatherInfo *info)
 
         info->pressure = PRESSURE_MBAR_TO_INCH((WeatherPressure)pres);
     }
-
-    return TRUE;
 }
 
 /* Relative humidity computation - thanks to <Olof.Oberg@modopaper.modogroup.com> */
@@ -1003,12 +943,9 @@ static gboolean calc_sun (WeatherInfo *info)
 	   &info->sunrise, &info->sunset);
 }
 
-static gboolean metar_tok_temp (gchar *tokp, WeatherInfo *info)
+static void metar_tok_temp (gchar *tokp, WeatherInfo *info)
 {
     gchar *ptemp, *pdew, *psep;
-
-    if (regexec(&metar_re[TEMP_RE], tokp, 0, NULL, 0) == REG_NOMATCH)
-        return FALSE;
 
     psep = strchr(tokp, '/');
     *psep = 0;
@@ -1019,16 +956,12 @@ static gboolean metar_tok_temp (gchar *tokp, WeatherInfo *info)
                                  : TEMP_C_TO_F(atoi(ptemp));
     info->dew = (*pdew == 'M') ? TEMP_C_TO_F(-atoi(pdew+1))
                                : TEMP_C_TO_F(atoi(pdew));
-    return TRUE;
 }
 
-static gboolean metar_tok_cond (gchar *tokp, WeatherInfo *info)
+static void metar_tok_cond (gchar *tokp, WeatherInfo *info)
 {
     gchar squal[3], sphen[4];
     gchar *pphen;
-
-    if (regexec(&metar_re[COND_RE], tokp, 0, NULL, 0) == REG_NOMATCH)
-        return FALSE;
 
     if ((strlen(tokp) > 3) && ((*tokp == '+') || (*tokp == '-')))
         ++tokp;   /* FIX */
@@ -1078,7 +1011,7 @@ static gboolean metar_tok_cond (gchar *tokp, WeatherInfo *info)
     } else if (!strcmp(squal, "FZ")) {
         info->cond.qualifier = QUALIFIER_FREEZING;
     } else {
-        g_return_val_if_fail(FALSE, FALSE);
+        g_return_if_fail(FALSE);
     }
 
     if (!strcmp(sphen, "DZ")) {
@@ -1128,63 +1061,85 @@ static gboolean metar_tok_cond (gchar *tokp, WeatherInfo *info)
     } else if (!strcmp(sphen, "FC")) {
         info->cond.phenomenon = PHENOMENON_FUNNEL_CLOUD;
     } else {
-        g_return_val_if_fail(FALSE, FALSE);
+        g_return_if_fail(FALSE);
     }
 
     if ((info->cond.qualifier != QUALIFIER_NONE) || (info->cond.phenomenon != PHENOMENON_NONE))
         info->cond.significant = TRUE;
-
-    return TRUE;
 }
 
-static void metar_parse_token (gchar *tokp, gboolean in_remark, WeatherInfo *info)
+#define TIME_RE_STR  "^([0-9]{6})Z"
+#define WIND_RE_STR  "^(([0-9]{3})|VRB)([0-9]?[0-9]{2})(G[0-9]?[0-9]{2})?KT"
+#define VIS_RE_STR   "^((([0-9]?[0-9])|(M?([12] )?([1357]/1?[0-9])))SM)|" \
+                     "([0-9]{4}(N|NE|E|SE|S|SW|W|NW( [0-9]{4}(N|NE|E|SE|S|SW|W|NW))?)?)"
+#define CLOUD_RE_STR "^(((CLR|BKN|SCT|FEW|OVC|SKC|NSC)([0-9]{3})?(CB|TCU)? ?)+|CAVOK)"
+#define TEMP_RE_STR  "^(M?[0-9][0-9])/(M?(//|[0-9][0-9]))"
+#define PRES_RE_STR  "^(A|Q)([0-9]{4})"
+#define COND_RE_STR  "^(-|\\+)?(VC|MI|BC|PR|TS|BL|SH|DR|FZ)?(DZ|RA|SN|SG|IC|PE|GR|GS|UP|BR|FG|FU|VA|SA|HZ|PY|DU|SQ|SS|DS|PO|\\+?FC)"
+
+#define TIME_RE   0
+#define WIND_RE   1
+#define VIS_RE    2
+#define CLOUD_RE  3
+#define TEMP_RE   4
+#define PRES_RE   5
+#define COND_RE   6
+
+#define RE_NUM   7
+
+static regex_t metar_re[RE_NUM];
+static void (*metar_f[RE_NUM])(gchar *tokp, WeatherInfo *info);
+
+static void metar_init_re (void)
 {
-    if (!in_remark) {
-        if (metar_tok_time(tokp, info))
-            return;
-        else if (metar_tok_wind(tokp, info))
-            return;
-        else if (metar_tok_vis(tokp, info))
-            return;
-        else if (metar_tok_cloud(tokp, info))
-            return;
-        else if (metar_tok_temp(tokp, info))
-            return;
-        else if (metar_tok_pres(tokp, info))
-            return;
-        else if (metar_tok_cond(tokp, info))
-            return;
-    }
+    static gboolean initialized = FALSE;
+    if (initialized)
+        return;
+    initialized = TRUE;
+
+    regcomp(&metar_re[TIME_RE], TIME_RE_STR, REG_EXTENDED);
+    regcomp(&metar_re[WIND_RE], WIND_RE_STR, REG_EXTENDED);
+    regcomp(&metar_re[VIS_RE], VIS_RE_STR, REG_EXTENDED);
+    regcomp(&metar_re[CLOUD_RE], CLOUD_RE_STR, REG_EXTENDED);
+    regcomp(&metar_re[TEMP_RE], TEMP_RE_STR, REG_EXTENDED);
+    regcomp(&metar_re[PRES_RE], PRES_RE_STR, REG_EXTENDED);
+    regcomp(&metar_re[COND_RE], COND_RE_STR, REG_EXTENDED);
+
+    metar_f[TIME_RE] = metar_tok_time;
+    metar_f[WIND_RE] = metar_tok_wind;
+    metar_f[VIS_RE] = metar_tok_vis;
+    metar_f[CLOUD_RE] = metar_tok_cloud;
+    metar_f[TEMP_RE] = metar_tok_temp;
+    metar_f[PRES_RE] = metar_tok_pres;
+    metar_f[COND_RE] = metar_tok_cond;
 }
 
-static gboolean metar_parse (gchar *metar, WeatherInfo *info)
+/*static*/ gboolean metar_parse (gchar *metar, WeatherInfo *info)
 {
-    gchar **toks;
+    gchar *p;
     gint ntoks;
     gint i;
-    gboolean in_remark = FALSE;
+    regmatch_t rm;
+    gchar *tokp;
 
     g_return_val_if_fail(info != NULL, FALSE);
     g_return_val_if_fail(metar != NULL, FALSE);
 
     metar_init_re();
+    p = metar;
+    
+    for (i = 0; i < RE_NUM; i++) {
+        if (*p == '\0' || !strncmp(p, "RMK", 3))
+	    break;
 
-    toks = g_strsplit(metar, " ", 0);
-
-    for (ntoks = 0;  toks[ntoks];  ntoks++)
-        if (!strcmp(toks[ntoks], "RMK"))
-            in_remark = TRUE;
-
-    for (i = ntoks-1; i >= 0;  i--)
-        if (strlen(toks[i]) > 0) {
-            if (!strcmp(toks[i], "RMK"))
-                in_remark = FALSE;
-            else
-                metar_parse_token(toks[i], in_remark, info);
-        }
-
-    g_strfreev(toks);
-
+        if (regexec(&metar_re[i], p, 1, &rm, 0) == 0) {
+	    tokp = g_strndup(p+rm.rm_so, rm.rm_eo);
+	    metar_f[i](tokp, info);
+	    g_free (tokp);
+	    p += rm.rm_so + rm.rm_eo;
+	    p += strspn(p, " ");
+	}
+    }
     return TRUE;
 }
 
