@@ -3,26 +3,26 @@
 # translation of sk.po to Slovak
 # Slovak translation of sk.po
 # gnome-applets Slovak translation.
-# Copyright (C) 2000,2001,2002,2003 Free Software Foundation, Inc.
-# Stanislav Visnovsky <visnovsky@nenya.ms.mff.cuni.cz>, 2000,2001,2002,2003.
+# Copyright (C) 2000,2001,2002,2003, 2004 Free Software Foundation, Inc.
+# Stanislav Visnovsky <visnovsky@nenya.ms.mff.cuni.cz>, 2000,2001,2002,2003, 2004.
 # Stanislav Višňovský <visnovsky@nenya.ms.mff.cuni.cz>, 2002.
 # Stanislav Visnovsky <visnov@suse.cz>, 2003.
 # Stanislav Visnovsky <visnovsky@kde.org>, 2003.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-applets.gnome-2-4.sk\n"
-"POT-Creation-Date: 2004-03-17 11:48+1300\n"
-"PO-Revision-Date: 2003-09-24 14:10+0200\n"
-"Last-Translator: Stanislav Visnovsky <visnovsky@kde.org>\n"
+"Project-Id-Version: gnome-applets.HEAD\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-03-18 14:46+0100\n"
+"PO-Revision-Date: 2004-03-18 16:53+0100\n"
+"Last-Translator: Stanislav Visnovsky <visnovsky@nenya.ms.mff.cuni.cz>\n"
 "Language-Team: Slovak <sk-i18n@linux.sk>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Report-Msgid-Bugs-To: \n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: KBabel 1.2\n"
+"X-Generator: KBabel 1.3\n"
 
 #: accessx-status/GNOME_AccessxApplet.xml.h:1
 #: battstat/GNOME_BattstatApplet.xml.h:1 cdplayer/GNOME_CDPlayerApplet.xml.h:1
@@ -130,9 +130,8 @@ msgid "a"
 msgstr "a"
 
 #: accessx-status/applet.c:984 accessx-status/applet.c:1082
-#, fuzzy
 msgid "Shows keyboard status when accessibility features are used."
-msgstr "Zobrazí stav funkcií pre sprístupnenie klávesnice"
+msgstr "Zobrazí stav klávesnice pre sprístupnenie pri zapnutí sprístupnenia."
 
 #: accessx-status/applet.c:1250
 msgid "Displays current state of keyboard accessibility features"
@@ -317,6 +316,7 @@ msgstr ""
 #. when the computer is using battery power.
 #: battstat/battstat_applet.c:510 battstat/battstat_applet.c:1052
 #: battstat/battstat_applet.c:1141
+#, c-format
 msgid "System is running on battery power"
 msgstr "Systém beží na batérie"
 
@@ -324,15 +324,20 @@ msgstr "Systém beží na batérie"
 #. when the computer is using AC power.
 #: battstat/battstat_applet.c:513 battstat/battstat_applet.c:1058
 #: battstat/battstat_applet.c:1147
+#, c-format
 msgid "System is running on AC power"
 msgstr "Systém beží zo siete"
 
 #: battstat/battstat_applet.c:527 wireless/wireless-applet.c:146
+#, c-format
 msgid "N/A"
 msgstr "N/A"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
+#. This string will display as a tooltip over the status frame
+#. when the computer is using battery power and the battery meter
+#. and percent meter is hidden by the user.
 #: battstat/battstat_applet.c:651 battstat/battstat_applet.c:1032
 #, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
@@ -340,6 +345,9 @@ msgstr "Systém beží na batérie. Batérie: %d%% (%s)"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
+#. This string will display as a tooltip over the status frame
+#. when the computer is using AC power and the battery meter
+#. and percent meter is hidden by the user.
 #: battstat/battstat_applet.c:658 battstat/battstat_applet.c:1039
 #, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
@@ -350,6 +358,7 @@ msgstr "Systém beží zo siete. Batérie: %d%% (%s)"
 #. power and the battery isn't present. Not a
 #. possible combination, I guess... :)
 #: battstat/battstat_applet.c:669
+#, c-format
 msgid "System is running on battery power. Battery: Not present"
 msgstr "Systém beží na batérie. Batérie: Nie sú dostupné"
 
@@ -357,6 +366,7 @@ msgstr "Systém beží na batérie. Batérie: Nie sú dostupné"
 #. battery frame when the computer is using AC
 #. power and the battery isn't present.
 #: battstat/battstat_applet.c:675
+#, c-format
 msgid "System is running on AC power. Battery: Not present"
 msgstr "Systéme beží zo siete: Batérie: Nie sú dostupné"
 
@@ -371,6 +381,7 @@ msgstr "Batérie: %d%% (%s)"
 #. Displayed as a tooltip over the battery meter when no
 #. battery is present.
 #: battstat/battstat_applet.c:691
+#, c-format
 msgid "Battery: Not present"
 msgstr "Batérie: Nie sú dostupné"
 
@@ -409,11 +420,11 @@ msgstr ""
 #: battstat/battstat_applet.c:858
 #, c-format
 msgid "The Suspend command '%s' was unsuccessful."
-msgstr ""
+msgstr "Príkaz pre uspanie '%s' nebol úspešný."
 
 #: battstat/battstat_applet.c:860
 msgid "The Suspend command was unsuccessful."
-msgstr ""
+msgstr "Príkaz pre uspanie nebol úspešný."
 
 #: battstat/battstat_applet.c:868
 msgid ""
@@ -442,6 +453,8 @@ msgid ""
 "Can't access ACPI events in /var/run/acpid.socket! Make sure the ACPI "
 "subsystem is working and the acpid daemon is running."
 msgstr ""
+"Nie je možný prístup k udalostiam ACPI v /var/run/acpid.socket. "
+"Overte, že systém ACPI funguje a beží démon acpid."
 
 #: battstat/battstat_applet.glade.h:1 gswitchit/gswitchit-properties.glade.h:1
 #: mini-commander/src/mini-commander.glade.h:1
@@ -781,7 +794,6 @@ msgid "Palette entry"
 msgstr "Položka palety"
 
 #: charpick/properties.c:99
-#, fuzzy
 msgid "Modify a palette by adding or removing characters"
 msgstr "Upravte paletu pridaním alebo odstránením znakov"
 
@@ -959,7 +971,7 @@ msgstr "Jaz disk"
 
 #: drivemount/properties.c:472
 msgid "USB Stick"
-msgstr ""
+msgstr "USB Stick"
 
 #: drivemount/properties.c:475
 msgid "Custom"
@@ -1028,12 +1040,11 @@ msgstr "Priečinok, kde je umiestnená téma"
 
 #: geyes/themes.c:123
 msgid "Can not launch the eyes applet."
-msgstr ""
+msgstr "Nepodarilo sa spustiť applet Oči."
 
 #: geyes/themes.c:124
-#, fuzzy
 msgid "There was a fatal error while trying to load the theme."
-msgstr "Pri pokuse o zobrazenie Pomocníka nastala chyba: %s"
+msgstr "Pri pokuse o načítanie témy nastala kritická chyba."
 
 #: geyes/themes.c:294
 msgid "Geyes Preferences"
@@ -1077,19 +1088,16 @@ msgid "Armenian Sun keymap"
 msgstr "Arménska Sun"
 
 #: gkb-new/descs.sun/presets.xml.in.h:4 gkb-new/descs/presets.xml.in.h:9
-#, fuzzy
 msgid "Azerbaijan"
-msgstr "Azerbajdžánska"
+msgstr "Ázerbajdžánska"
 
 #: gkb-new/descs.sun/presets.xml.in.h:5 gkb-new/descs/presets.xml.in.h:10
-#, fuzzy
 msgid "Azerbaijani Turkish"
-msgstr "Azerbajdžánska turecká"
+msgstr "Ázerbajdžánska turecká"
 
 #: gkb-new/descs.sun/presets.xml.in.h:6
-#, fuzzy
 msgid "Azerbaijani Turkish Sun keymap"
-msgstr "Azerbajdžánska turecká Sun"
+msgstr "Ázerbajdžánska turecká Sun"
 
 #: gkb-new/descs.sun/presets.xml.in.h:7 gkb-new/descs/presets.xml.in.h:14
 msgid "Belarus"
@@ -1616,9 +1624,8 @@ msgid "Austria"
 msgstr "Rakúsko"
 
 #: gkb-new/descs/presets.xml.in.h:11
-#, fuzzy
 msgid "Azerbaijani Turkish xkb keymap"
-msgstr "Azerbajdžánska turecká xkb"
+msgstr "Ázerbajdžánska turecká xkb"
 
 #: gkb-new/descs/presets.xml.in.h:12
 msgid "Bahrain"
@@ -1961,7 +1968,6 @@ msgid "Mongolian phonetic keymap"
 msgstr "Mongolská fonetická"
 
 #: gkb-new/descs/presets.xml.in.h:134
-#, fuzzy
 msgid "Morocco"
 msgstr "Maroko"
 
@@ -2042,12 +2048,10 @@ msgid "Serbia and Montenegro"
 msgstr "Serbia a Montenegro"
 
 #: gkb-new/descs/presets.xml.in.h:164
-#, fuzzy
 msgid "Serbian"
 msgstr "Srbská"
 
 #: gkb-new/descs/presets.xml.in.h:165
-#, fuzzy
 msgid "Serbian keymap"
 msgstr "Srbská"
 
@@ -2212,7 +2216,6 @@ msgid "United Kingdom xkb keymap"
 msgstr "Spojené kráľovstvo xkb"
 
 #: gkb-new/descs/presets.xml.in.h:225
-#, fuzzy
 msgid "Vietnamese xkb keymap"
 msgstr "Vietnamská xkb"
 
@@ -2477,218 +2480,206 @@ msgstr ""
 
 #: gswitchit/GNOME_GSwitchItApplet.xml.h:1
 msgid "Pl_ugins..."
-msgstr ""
+msgstr "_Moduly..."
 
 #: gswitchit/GNOME_GSwitchItApplet.xml.h:3
 msgid "_Groups"
-msgstr ""
+msgstr "_Skupiny"
 
 #: gswitchit/GNOME_GSwitchItApplet.xml.h:5
-#, fuzzy
 msgid "_Open Keyboard Preferences"
-msgstr "Nastavenie _Prístupnosti klávesníc"
+msgstr "Zobraziť nas_tavenie klávesníc"
 
 #: gswitchit/GNOME_KeyboardApplet.server.in.in.h:1
-#, fuzzy
 msgid "GNOME keyboard applet factory"
-msgstr "Vytváracie rozhranie pre applet Gweather"
+msgstr "Vytváracie rozhranie pre applet GNOME klávesnica"
 
 #: gswitchit/GNOME_KeyboardApplet.server.in.in.h:2
-#, fuzzy
 msgid "GNOME keyboard layout indicator"
-msgstr "Prepínanie klávesníc"
+msgstr "Indikátor Prepínania klávesníc"
 
 #: gswitchit/GNOME_KeyboardApplet.server.in.in.h:3
 #: gswitchit/gswitchit-applet.c:575
-#, fuzzy
 msgid "Keyboard Indicator"
-msgstr "Indikátor zaťaženie systému"
+msgstr "Indikátor klávesnice"
 
 #: gswitchit/GNOME_KeyboardApplet.server.in.in.h:4
-#, fuzzy
 msgid "Keyboard applet factory"
-msgstr "Vytváracie rozhranie pre Geyes"
+msgstr "Vytváracie rozhranie pre applet Klávesnica"
 
 #: gswitchit/gswitchit-applet.c:110
 #, c-format
 msgid "Keyboard Indicator (%s)"
-msgstr ""
+msgstr "Indikátor klávesnice (%s)"
 
 #: gswitchit/gswitchit-applet.c:578
 msgid "Copyright (c) Sergey V. Oudaltsov 1999-2004"
-msgstr ""
+msgstr "Copyright (c) Sergey V. Oudaltsov 1999-2004"
 
 #: gswitchit/gswitchit-applet.c:580
-#, fuzzy
 msgid "Keyboard layout indicator applet for GNOME"
-msgstr "Prepínanie klávesníc"
+msgstr "Indikátor prepínania klávesníc pre GNOME"
 
 #: gswitchit/gswitchit-applet.c:734
 msgid "XKB initialization error"
-msgstr ""
+msgstr "Chyba inicializácie XKB"
 
 #: gswitchit/gswitchit-applet.c:742
 msgid "Error loading XKB configuration registry"
-msgstr ""
+msgstr "Chyba pri načítavaní konfigurácie XKB"
 
 #: gswitchit/gswitchit-capplet.c:185
 msgid ""
 "Make the layout accessible from the applet popup menu ONLY.\n"
 "No way to switch to this layout using the keyboard."
 msgstr ""
+"Sprístupniť rozloženie iba z menu appletu.\n"
+"Nie je možné prepínať toto rozloženie klávesnicou."
 
 #: gswitchit/gswitchit-capplet.c:265
 msgid "_Exclude from keyboard switching"
-msgstr ""
+msgstr "_Vynechať z prepínania"
 
 #: gswitchit/gswitchit-capplet.c:296
-#, fuzzy
 msgid "Not used"
-msgstr "Už nepoužívané"
+msgstr "Nepoužívané"
 
 #: gswitchit/gswitchit-plugins-add.c:105 gswitchit/gswitchit-plugins.c:117
 msgid "No description."
-msgstr ""
+msgstr "Bez popisu."
 
 #: gswitchit/gswitchit-plugins.c:331
 #, c-format
 msgid "Failed to init GConf: %s\n"
-msgstr ""
+msgstr "Nepodarilo sa inicializovať GConf: %s\n"
 
 #: gswitchit/gswitchit-plugins.glade.h:1
 msgid "Activate more plugins"
-msgstr ""
+msgstr "Aktivovať ďalšie moduly"
 
 #: gswitchit/gswitchit-plugins.glade.h:2
 msgid "Active _plugins:"
-msgstr ""
+msgstr "Aktívne _moduly:"
 
 #: gswitchit/gswitchit-plugins.glade.h:3
-#, fuzzy
 msgid "Add Plugin"
-msgstr "Tlačidlo Pridať"
+msgstr "Pridať modul"
 
 #: gswitchit/gswitchit-plugins.glade.h:4
-#, fuzzy
 msgid "Close the dialog"
-msgstr "Zavrieť poznámku"
+msgstr "Zavrieť dialog"
 
 #: gswitchit/gswitchit-plugins.glade.h:5
-#, fuzzy
 msgid "Configure the selected plugin"
-msgstr "Kliknutím upravíte vybranú paletu"
+msgstr "Nastaviť vybraný modul"
 
 #: gswitchit/gswitchit-plugins.glade.h:6
 msgid "Deactivate selected plugin"
-msgstr ""
+msgstr "Deaktivovať vybraný modul"
 
 #: gswitchit/gswitchit-plugins.glade.h:7
 msgid "Decrease the plugin priority"
-msgstr ""
+msgstr "Znížiť prioritu modulu"
 
 #: gswitchit/gswitchit-plugins.glade.h:8
 msgid "Increase the plugin priority"
-msgstr ""
+msgstr "Zvýšiť prioritu modulu"
 
 #: gswitchit/gswitchit-plugins.glade.h:9
 msgid "Keyboard Indicator Plugins"
-msgstr ""
+msgstr "Moduly Prepínania klávesníc"
 
 #: gswitchit/gswitchit-plugins.glade.h:10
 msgid "The list of active plugins"
-msgstr ""
+msgstr "Zoznam aktívnych modulov"
 
 #: gswitchit/gswitchit-plugins.glade.h:11
-#, fuzzy
 msgid "_Available plugins:"
-msgstr "Dostupné palety"
+msgstr "_Dostupné moduly:"
 
 #: gswitchit/gswitchit-properties.glade.h:2 stickynotes/stickynotes.glade.h:3
 msgid "<b>Behavior</b>"
 msgstr "<b>Chovanie</b>"
 
 #: gswitchit/gswitchit-properties.glade.h:3
-#, fuzzy
 msgid "Choose the default group (for newly created windows)."
-msgstr "Vyberte, či všetky poznámky majú používať štandardný štýl"
+msgstr "Vyberte štandardnú skupinu (pre novo vytvorené okná)"
 
 #: gswitchit/gswitchit-properties.glade.h:4
 msgid "Keep separate group for each application window."
-msgstr ""
+msgstr "Udržiavať samostatné skupiny pre každé okno aplikácie."
 
 #: gswitchit/gswitchit-properties.glade.h:5
 msgid "Keep the state of indicators separately for each application window."
-msgstr ""
+msgstr "Udržiavať stav indikátorov pre každé okno aplikácie."
 
 #: gswitchit/gswitchit-properties.glade.h:6
-#, fuzzy
 msgid "Keyboard Indicator Preferences"
 msgstr "Nastavenie Prepínania klávesníc"
 
 #: gswitchit/gswitchit-properties.glade.h:7
 msgid "Save/restore _indicators with group"
-msgstr ""
+msgstr "Uložiť/obnoviť _indikátory so skupinou"
 
 #: gswitchit/gswitchit-properties.glade.h:8
 msgid "Separate _group for each window"
-msgstr ""
+msgstr "Samostatná _skupina pre každé okno"
 
 #: gswitchit/gswitchit-properties.glade.h:9
 msgid "Show national flags as indicators of corresponding layouts"
-msgstr ""
+msgstr "Zobraziť národné vlajky ako indikátory klávesníc"
 
 #: gswitchit/gswitchit-properties.glade.h:10
-#, fuzzy
 msgid "Use _flags as indicators"
-msgstr "Indikátor zaťaženie systému"
+msgstr "Použiť _vlajky ako označenie"
 
 #: gswitchit/gswitchit-properties.glade.h:11
 msgid "_Default group:"
-msgstr ""
+msgstr "Š_tandardná skupina:"
 
 #: gswitchit/gswitchit.schemas.in.h:1
 msgid "Beep on group switch"
-msgstr ""
+msgstr "Pípnuť pri zmene skupiny"
 
 #: gswitchit/gswitchit.schemas.in.h:2
-#, fuzzy
 msgid "Debug level"
-msgstr "Hodnota červenej úrovne"
+msgstr "Úroveň ladenia"
 
 #: gswitchit/gswitchit.schemas.in.h:3
 msgid "Default group, assigned on window creation"
-msgstr ""
+msgstr "Štandardná skupina nastavená pri vytvorení okna"
 
 #: gswitchit/gswitchit.schemas.in.h:4
 msgid "Keep and manage separate group per window"
-msgstr ""
+msgstr "Udržiavať samostatné skupiny pre jednotlivé okná"
 
 #: gswitchit/gswitchit.schemas.in.h:5
 msgid "Save/restore indicators together with layout groups"
-msgstr ""
+msgstr "Uložiť/obnoviť indikátory spolu so skupinami rozložení"
 
 #: gswitchit/gswitchit.schemas.in.h:6
 msgid "Secondary groups"
-msgstr ""
+msgstr "Sekundárne skupiny"
 
 #: gswitchit/gswitchit.schemas.in.h:7
-#, fuzzy
 msgid "Show flags in the applet"
-msgstr "Zobraziť rám okolo appletu."
+msgstr "Zobraziť vlajky v applete."
 
 #: gswitchit/gswitchit.schemas.in.h:8
 msgid "Show flags in the applet to indicate the current layout"
-msgstr ""
+msgstr "Zobraziť vlajky v applete ako indikátor aktuálnej klávesnice"
 
 #: gswitchit/gswitchit.schemas.in.h:9
 msgid "Show layout names instead of group names"
-msgstr ""
+msgstr "Zobraziť mená klávesníc namiesto mien skupín"
 
 #: gswitchit/gswitchit.schemas.in.h:10
 msgid ""
 "Show layout names instead of group names (only for versions of XFree "
 "supporting multiple layouts)"
 msgstr ""
+"Zobraziť mená klávesníc namiesto mien skupín (iba pre verzie "
+"XFree, ktoré podporujú viac rozložení)"
 
 #: gtik/GNOME_GtikApplet.server.in.in.h:1
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:1
@@ -2880,8 +2871,7 @@ msgstr "Farba pozadia"
 msgid ""
 "Display only stock symbols along with their value. Do not diplay changes in "
 "value."
-msgstr ""
-"Zobraziť iba symboly akcií spolu s ich hodnotou. Nezobrazovať zmeny cien."
+msgstr "Zobraziť iba symboly akcií spolu s ich hodnotou. Nezobrazovať zmeny cien."
 
 #: gtik/gtik.schemas.in.h:4
 msgid "Display only symbols and price"
@@ -2933,8 +2923,7 @@ msgstr "Sledované kurzy - musie byť oddelené +"
 msgid ""
 "The color of the background of the display. Has no effect when the user "
 "chooses to use the default theme fonts and colors."
-msgstr ""
-"Farba pozadia. Nemá zmysel ak používateľ zvolí štandardné písma a farby témy."
+msgstr "Farba pozadia. Nemá zmysel ak používateľ zvolí štandardné písma a farby témy."
 
 #: gtik/gtik.schemas.in.h:15
 msgid ""
@@ -3211,8 +3200,7 @@ msgstr "Získať radarovú mapu pri každej aktualizácii."
 msgid ""
 "If true, then retreive a radar map from a location specified by the \"radar"
 "\" key."
-msgstr ""
-"Ak je true, radarová mapa sa získa z umiestnenia zadaného v kľúči  \"radar\"."
+msgstr "Ak je true, radarová mapa sa získa z umiestnenia zadaného v kľúči  \"radar\"."
 
 #: gweather/gweather.schemas.in.h:5
 #: mini-commander/src/mini-commander.schemas.in.h:14
@@ -3767,22 +3755,23 @@ msgstr "Máte poštu."
 #, c-format
 msgid "%d unread"
 msgid_plural "%d unread"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d neprečítaná"
+msgstr[1] "%d neprečítané"
+msgstr[2] "%d neprečítaných"
 
 #: mailcheck/mailcheck.c:1094 mailcheck/mailcheck.c:1103
-#, fuzzy, c-format
+#, c-format
 msgid "%d message"
 msgid_plural "%d messages"
-msgstr[0] "%d správ"
-msgstr[1] "%d správ"
+msgstr[0] "%d správa"
+msgstr[1] "%d správy"
 msgstr[2] "%d správ"
 
 #. translators: this is of the form "%d unread/%d messages"
 #: mailcheck/mailcheck.c:1097
 #, c-format
 msgid "%s/%s"
-msgstr ""
+msgstr "%s/%s"
 
 #: mailcheck/mailcheck.c:1110
 msgid "No mail."
@@ -3968,8 +3957,7 @@ msgstr "Ak je toto zapnuté, heslo sa uloží pomocou gconf"
 
 #: mailcheck/mailcheck.schemas.in.h:12
 msgid "If this is set mail will be checked every update-freq milliseconds"
-msgstr ""
-"Ak je toto zapnuté, pošta sa bude aktualizovať každých update-freq milisekúnd"
+msgstr "Ak je toto zapnuté, pošta sa bude aktualizovať každých update-freq milisekúnd"
 
 #: mailcheck/mailcheck.schemas.in.h:13
 msgid "If this is set, we should run the exec-command"
@@ -4031,8 +4019,7 @@ msgstr "Toto popisuje, ako sa spracováva pošta"
 msgid ""
 "This is the animation that will be displayed during normal Inbox Monitor "
 "usage"
-msgstr ""
-"Toto je animácia zobrazená počas štandardného použitia sledovanie pošty"
+msgstr "Toto je animácia zobrazená počas štandardného použitia sledovanie pošty"
 
 #: mailcheck/mailcheck.schemas.in.h:28
 msgid "Username on the remote server"
@@ -4072,7 +4059,6 @@ msgid "MiniCommander Applet Factory"
 msgstr "Vytváracie rozhranie pre applet Mini-Commander"
 
 #: mini-commander/src/about.c:72
-#, fuzzy
 msgid ""
 "This GNOME applet adds a command line to the panel. It features command "
 "completion, command history, and changeable macros.\n"
@@ -4083,8 +4069,7 @@ msgid ""
 "any later version."
 msgstr ""
 "Tento applet GNOME pridá do vášho panelu príkazový riadok. Obsahuje "
-"automatické dopĺňanie, históriu príkazov, meniteľné makrá a voliteľné "
-"vstavané hodiny.\n"
+"automatické dopĺňanie, históriu príkazov a meniteľné makrá.\n"
 "\n"
 "Tento program je voľne šíriteľný, môžete ho distribuovať alebo modifikovať "
 "podľa pravidiel GNU General Public Licence ako ju publikuje Free Software "
@@ -4092,7 +4077,7 @@ msgstr ""
 
 #: mini-commander/src/command_line.c:315
 msgid "No items in history"
-msgstr ""
+msgstr "História prázdna"
 
 #. build file select dialog
 #: mini-commander/src/command_line.c:439
@@ -4123,11 +4108,12 @@ msgid "Set default list value for %s\n"
 msgstr "Nastaviť štandardnú hodnotu pre %s\n"
 
 #: mini-commander/src/mc-install-default-macros.c:117
+#, c-format
 msgid "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL is set, not installing schemas\n"
-msgstr ""
-"GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL je nastavené, neinštalujem schémy\n"
+msgstr "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL je nastavené, neinštalujem schémy\n"
 
 #: mini-commander/src/mc-install-default-macros.c:125
+#, c-format
 msgid "Must set the GCONF_CONFIG_SOURCE environment variable\n"
 msgstr "Je nutné nastaviť premennú prostredia GCONF_CONFIG_SOURCE\n"
 
@@ -4215,38 +4201,31 @@ msgstr "_Použiť štandardné farby témy"
 
 #: mini-commander/src/mini-commander.schemas.in.h:1
 msgid "Attempt to autocomplete a command from the history of commands entered."
-msgstr ""
-"Pokus o automatické doplnenie príkazu podľa histórie zadaných príkazov."
+msgstr "Pokus o automatické doplnenie príkazu podľa histórie zadaných príkazov."
 
 #: mini-commander/src/mini-commander.schemas.in.h:2
-#, fuzzy
 msgid "Background color, blue component"
-msgstr "Modrá časť farby pozadia"
+msgstr "Farba pozadia, modrá časť"
 
 #: mini-commander/src/mini-commander.schemas.in.h:3
-#, fuzzy
 msgid "Background color, green component"
-msgstr "Zelená časť farby pozadia"
+msgstr "Farba pozadia, zelená časť"
 
 #: mini-commander/src/mini-commander.schemas.in.h:4
-#, fuzzy
 msgid "Background color, red component"
-msgstr "Červená časť farby pozadia"
+msgstr "Farba pozadia, červená časť"
 
 #: mini-commander/src/mini-commander.schemas.in.h:5
-#, fuzzy
 msgid "Foreground color, blue component"
-msgstr "Modrá časť farby popredia."
+msgstr "Farba popredia, modrá časť"
 
 #: mini-commander/src/mini-commander.schemas.in.h:6
-#, fuzzy
 msgid "Foreground color, green component"
-msgstr "Zelená časť farby popredia."
+msgstr "Farba popredia, zelená časť"
 
 #: mini-commander/src/mini-commander.schemas.in.h:7
-#, fuzzy
 msgid "Foreground color, red component"
-msgstr "Červená časť farby popredia."
+msgstr "Farba popredia, červená časť"
 
 #: mini-commander/src/mini-commander.schemas.in.h:8
 msgid "History list"
@@ -4348,7 +4327,7 @@ msgstr "Stlačením tohto tlačidla zobrazíte zoznam predchádzajúcich príkaz
 
 #: mini-commander/src/mini-commander_applet.c:363
 msgid "Command line has been disabled by your system administrator"
-msgstr ""
+msgstr "Príkazový riadok pre vás zakázal administrátor systému"
 
 #: mini-commander/src/mini-commander_applet.c:426
 msgid "Mini-Commander applet"
@@ -4375,14 +4354,12 @@ msgid "You may not specify duplicate patterns"
 msgstr "Nemôžete zadať duplikované vzorky"
 
 #: mini-commander/src/preferences.c:850
-#, fuzzy
 msgid "Pattern"
-msgstr "_Vzorka:"
+msgstr "Vzorka"
 
 #: mini-commander/src/preferences.c:860
-#, fuzzy
 msgid "Command"
-msgstr "Príkazy"
+msgstr "Príkaz"
 
 #: mixer/GNOME_MixerApplet.server.in.in.h:1
 msgid "Adjust the sound volume"
@@ -4713,18 +4690,15 @@ msgid "The background color of the button used to indicate data sent."
 msgstr "Farba pozadia tlačidla pre odoslané dáta."
 
 #: modemlights/modemlights.schemas.in.h:23
-msgid ""
-"The color used to display the status button when the modem is connected."
+msgid "The color used to display the status button when the modem is connected."
 msgstr "Farba používaná pre zobrazenie tlačidla stavu pri pripojenom modeme."
 
 #: modemlights/modemlights.schemas.in.h:24
-msgid ""
-"The color used to display the status button when the modem is connecting."
+msgid "The color used to display the status button when the modem is connecting."
 msgstr "Farba používaná pre zobrazenie tlačidla stavu pri pripojení modemu."
 
 #: modemlights/modemlights.schemas.in.h:25
-msgid ""
-"The color used to display the status button when the modem is not connected."
+msgid "The color used to display the status button when the modem is not connected."
 msgstr "Farba používaná pre zobrazenie tlačidla stavu pri nepripojenom modeme."
 
 #: modemlights/modemlights.schemas.in.h:26
@@ -4980,8 +4954,7 @@ msgstr "Povoliť graf zaťaženia odkladacieho priestoru"
 msgid ""
 "For horizontal panels, the width of the graphs in pixels. For vertical "
 "panels, this is the height of the graphs."
-msgstr ""
-"Pre horizontálne panely šírka grafu v bodoch. Pre vertikálne výška grafov."
+msgstr "Pre horizontálne panely šírka grafu v bodoch. Pre vertikálne výška grafov."
 
 #: multiload/multiload.schemas.in.h:9
 msgid "Graph color for Ethernet network activity"
@@ -5465,22 +5438,19 @@ msgstr "Vždy, keď uplynie zadaný počet minút, poznámky sa automaticky ulo�
 msgid ""
 "If this option is disabled, a custom color can be used as the default color "
 "for all sticky notes."
-msgstr ""
-"Ak je toto vypnuté, pre všetky poznámky použijú vlastnú štandardnú farbu."
+msgstr "Ak je toto vypnuté, pre všetky poznámky použijú vlastnú štandardnú farbu."
 
 #: stickynotes/stickynotes.schemas.in.h:16
 msgid ""
 "If this option is disabled, a custom font can be used as the default font "
 "for all sticky notes."
-msgstr ""
-"Ak je toto vypnuté, pre všetky poznámky použijú vlastné štandardné písmo."
+msgstr "Ak je toto vypnuté, pre všetky poznámky použijú vlastné štandardné písmo."
 
 #: stickynotes/stickynotes.schemas.in.h:17
 msgid ""
 "If this option is enabled, the custom colors and fonts that have been "
 "assigned to individual notes will be ignored."
-msgstr ""
-"Ak je toto zapnuté, farby a písma jednotlivých poznámok budú ignorované."
+msgstr "Ak je toto zapnuté, farby a písma jednotlivých poznámok budú ignorované."
 
 #: stickynotes/stickynotes.schemas.in.h:18
 msgid ""
@@ -5590,9 +5560,8 @@ msgid "This utility shows the status of a wireless link."
 msgstr "Tento nástroj zobrazuje stav bezdrôtového pripojenia."
 
 #: wireless/wireless-applet.c:836
-#, fuzzy
 msgid "This utility shows the status of a wireless link"
-msgstr "Tento nástroj zobrazuje stav bezdrôtového pripojenia."
+msgstr "Tento nástroj zobrazuje stav bezdrôtového pripojenia"
 
 #: wireless/wireless-applet.glade.h:1
 msgid "Show signal strength in _percentage"
@@ -5606,23 +5575,3 @@ msgstr "Nastavenie Bezdrôtového pripojenia"
 msgid "_Monitored device:"
 msgstr "_Sledované zariadenie:"
 
-#~ msgid ""
-#~ "An error occured while launching the Suspend command, the command "
-#~ "returned \"%d\"\n"
-#~ "Please try to correct this error"
-#~ msgstr ""
-#~ "Nastala chyba pri pokuse o spustenie príkazu na suspendovanie. Príkaz "
-#~ "vrátil \"%d\"\n"
-#~ "Prosím, opravte tento problém"
-
-#~ msgid "Add a palette..."
-#~ msgstr "Pridať paletu..."
-
-#~ msgid "Portuglese"
-#~ msgstr "Portugalská"
-
-#~ msgid "Viet_namese"
-#~ msgstr "Vietnamská"
-
-#~ msgid "%d unread/ %d messages"
-#~ msgstr "%d neprečítaných/%d správ"
