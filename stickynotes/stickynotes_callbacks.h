@@ -37,10 +37,13 @@ gboolean stickynote_focus_cb(GtkWidget *widget, GdkEventFocus *event, StickyNote
 void popup_create_cb(GtkWidget *widget, StickyNote *note);
 void popup_destroy_cb(GtkWidget *widget, StickyNote *note);
 void popup_toggle_lock_cb(GtkWidget *widget, StickyNote *note);
-void popup_change_title_cb(GtkWidget *widget, StickyNote *note);
-void popup_change_color_cb(GtkWidget *widget, StickyNote *note);
+void popup_properties_cb(GtkWidget *widget, StickyNote *note);
 
-/* Callbacks for dialogs */
-void dialog_apply_cb(GtkWidget *widget, GtkDialog *dialog);
+/* Callbacks for sticky notes properties dialog */
+void properties_apply_title_cb(StickyNote *note);
+void properties_apply_color_cb(StickyNote *note);
+void properties_color_cb(GnomeColorPicker *cp, guint r, guint g, guint b, guint a, StickyNote *note);
+void properties_activate_cb(GtkWidget *widget, StickyNote *note);
+void properties_response_cb(GtkDialog *dialog, gint response, StickyNote *note);
 
 #endif /* __STICKYNOTES_CALLBACKS_H__ */

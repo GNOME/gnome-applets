@@ -32,8 +32,13 @@ StickyNote * stickynote_new()
 	/* Create and initialize a Sticky Note */
 	note->window = glade_xml_new(GLADE_PATH, "stickynote_window", NULL);
 	note->menu = glade_xml_new(GLADE_PATH, "stickynote_menu", NULL);
+	note->properties = glade_xml_new(GLADE_PATH, "stickynote_properties", NULL);
 	note->w_window = glade_xml_get_widget(note->window, "stickynote_window");
 	note->w_menu = glade_xml_get_widget(note->menu, "stickynote_menu");
+	note->w_properties = glade_xml_get_widget(note->properties, "stickynote_properties");
+	note->w_entry = glade_xml_get_widget(note->properties, "title_entry");
+	note->w_color = glade_xml_get_widget(note->properties, "note_color");
+	note->w_default = GTK_WIDGET(&GTK_CHECK_BUTTON(glade_xml_get_widget(note->properties, "use_default_check"))->toggle_button);
 	note->w_title = glade_xml_get_widget(note->window, "title_label");
 	note->w_body = glade_xml_get_widget(note->window, "body_text");
 	note->w_lock = glade_xml_get_widget(note->window, "lock_button");
@@ -73,7 +78,11 @@ StickyNote * stickynote_new()
 	gnome_popup_menu_attach(note->w_menu, note->w_resize_se, note);
 	gnome_popup_menu_attach(note->w_menu, note->w_resize_sw, note);
 
+	/* Connect a properties dialog to the note */
+	gtk_window_set_transient_for(GTK_WINDOW(note->w_properties), GTK_WINDOW(note->w_window));
+	
 	/* Connect signals to the sticky note */
+
 	g_signal_connect(G_OBJECT(note->w_lock), "clicked", G_CALLBACK(stickynote_toggle_lock_cb), note);
 	g_signal_connect(G_OBJECT(note->w_close), "clicked", G_CALLBACK(stickynote_close_cb), note);
 	g_signal_connect(G_OBJECT(note->w_resize_se), "button-press-event", G_CALLBACK(stickynote_resize_cb), note);
@@ -91,8 +100,13 @@ StickyNote * stickynote_new()
 	g_signal_connect(G_OBJECT(glade_xml_get_widget(note->menu, "popup_create")), "activate", G_CALLBACK(popup_create_cb), note);
 	g_signal_connect(G_OBJECT(glade_xml_get_widget(note->menu, "popup_destroy")), "activate", G_CALLBACK(popup_destroy_cb), note);
 	g_signal_connect(G_OBJECT(glade_xml_get_widget(note->menu, "popup_toggle_lock")), "toggled", G_CALLBACK(popup_toggle_lock_cb), note);
-	g_signal_connect(G_OBJECT(glade_xml_get_widget(note->menu, "popup_change_title")), "activate", G_CALLBACK(popup_change_title_cb), note);
-	g_signal_connect(G_OBJECT(glade_xml_get_widget(note->menu, "popup_change_color")), "activate", G_CALLBACK(popup_change_color_cb), note);
+	g_signal_connect(G_OBJECT(glade_xml_get_widget(note->menu, "popup_properties")), "activate", G_CALLBACK(popup_properties_cb), note);
+
+	g_signal_connect_swapped(G_OBJECT(note->w_entry), "changed", G_CALLBACK(properties_apply_title_cb), note);
+	g_signal_connect(G_OBJECT(note->w_color), "color_set", G_CALLBACK(properties_color_cb), note);
+	g_signal_connect_swapped(G_OBJECT(note->w_default), "toggled", G_CALLBACK(properties_apply_color_cb), note);
+	g_signal_connect(G_OBJECT(note->w_entry), "activate", G_CALLBACK(properties_activate_cb), note);
+	g_signal_connect(G_OBJECT(note->w_properties), "response", G_CALLBACK(properties_response_cb), note);
 	
 	return note;
 }
@@ -100,37 +114,38 @@ StickyNote * stickynote_new()
 /* Destroy a Sticky Note */
 void stickynote_free(StickyNote *note)
 {
+	gtk_widget_destroy(note->w_properties);
+	gtk_widget_destroy(note->w_menu);
 	gtk_widget_destroy(note->w_window);
+	
+	g_object_unref(note->properties);
+	g_object_unref(note->menu);
 	g_object_unref(note->window);
+	
 	g_free(note->color);
+	
 	g_free(note);
 }
 
-/* Change the sticky note title */
-void stickynote_change_title(StickyNote *note)
+/* Change the sticky note title and color */
+void stickynote_change_properties(StickyNote *note)
 {
-	GladeXML *glade = glade_xml_new(GLADE_PATH, "change_title_dialog", NULL);
-	GtkWidget *dialog = glade_xml_get_widget(glade, "change_title_dialog");
-	GtkWidget *entry = glade_xml_get_widget(glade, "title_entry");
-	
-	g_signal_connect(G_OBJECT(entry), "activate", G_CALLBACK(dialog_apply_cb), dialog);
+	gtk_entry_set_text(GTK_ENTRY(note->w_entry), gtk_label_get_text(GTK_LABEL(note->w_title)));
 
-	gtk_entry_set_text(GTK_ENTRY(entry), gtk_label_get_text(GTK_LABEL(note->w_title)));
-	gtk_window_set_transient_for(GTK_WINDOW(dialog), GTK_WINDOW(note->w_window));
+	if (note->color) {
+		GdkColor color;
 
-	if (gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_OK) {
-		stickynote_set_title(note, gtk_entry_get_text(GTK_ENTRY(entry)));
-		stickynotes_save();
+		gdk_color_parse(note->color, &color);
+		gnome_color_picker_set_i16(GNOME_COLOR_PICKER(note->w_color), color.red, color.green, color.blue, 65535);
 	}
 
-	gtk_widget_destroy(dialog);
-	g_object_unref(glade);
-}
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(note->w_default), note->color == NULL);
+	gtk_widget_set_sensitive(glade_xml_get_widget(note->properties, "color_label"), note->color != NULL);
+	gtk_widget_set_sensitive(note->w_color, note->color != NULL);
 
-/* Change the sticky note color */
-void stickynote_change_color(StickyNote *note)
-{
-	/* FIXME : Finish me */
+	gtk_dialog_run(GTK_DIALOG(note->w_properties));
+
+	stickynotes_save();
 }
 
 /* Check if a sticky note is empty */
@@ -167,13 +182,17 @@ void stickynote_set_color(StickyNote *note, const gchar *color_str)
 	gint i;
 
 	/* If "force_default_color" is enabled or color_str is NULL, then we use the default color instead of color_str. */
-	if (!color_str || gconf_client_get_bool(stickynotes->gconf, GCONF_PATH "/settings/force_default_color", NULL)) 
-		color_str_actual = gconf_client_get_string(stickynotes->gconf, GCONF_PATH "/defaults/color", NULL);
+	if (!color_str || gconf_client_get_bool(stickynotes->gconf, GCONF_PATH "/settings/force_default_color", NULL)) {
+		if (gconf_client_get_bool(stickynotes->gconf, GCONF_PATH "/settings/use_system_color", NULL))
+			color_str_actual = NULL;
+		else
+			color_str_actual = gconf_client_get_string(stickynotes->gconf, GCONF_PATH "/defaults/color", NULL);
+	}
 	else
 		color_str_actual = g_strdup(color_str);
 
 	/* Do not use custom colors if "use_system_color" is enabled */
-	if (!gconf_client_get_bool(stickynotes->gconf, GCONF_PATH "/settings/use_system_color", NULL)) {
+	if (color_str_actual != NULL) {
 		/* Custom colors */
 		GdkColor color[4];
 
@@ -411,10 +430,9 @@ void stickynotes_load()
 
 			/* Retrieve and set the color of the note */
 			{
-				gchar *color = xmlGetProp(node, "color");
-				if (color)
-					stickynote_set_color(note, color);
-				g_free(color);
+				note->color = xmlGetProp(node, "color");
+				if (note->color)
+					stickynote_set_color(note, note->color);
 			}
 
 			/* Retrieve and set the window size of the note */

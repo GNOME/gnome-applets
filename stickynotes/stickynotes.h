@@ -26,9 +26,16 @@ typedef struct
 {
 	GladeXML *window;		/* Glade object for note window */
 	GladeXML *menu;			/* Glade object for popup menu */
+	GladeXML *properties;		/* Glade object for properties dialog */
 
 	GtkWidget *w_window;		/* Sticky Note window */
 	GtkWidget *w_menu;		/* Sticky Note menu */
+	GtkWidget *w_properties;	/* Sticky Note properties dialog */
+
+	GtkWidget *w_entry;		/* Sticky Note title entry */
+	GtkWidget *w_color;		/* Sticky Note color picker */
+	GtkWidget *w_default;		/* Sticky Note default color setting */
+
 	GtkWidget *w_title;		/* Sticky Note title */
 	GtkWidget *w_body;		/* Sticky Note text body */
 	GtkWidget *w_lock;		/* Sticky Note lock button */
@@ -57,8 +64,7 @@ void stickynote_set_title(StickyNote *note, const gchar* title);
 void stickynote_set_locked(StickyNote *note, gboolean locked);
 void stickynote_set_visible(StickyNote *note, gboolean visible);
 
-void stickynote_change_title(StickyNote *note);
-void stickynote_change_color(StickyNote *note);
+void stickynote_change_properties(StickyNote *note);
 
 void stickynotes_add();
 void stickynotes_remove(StickyNote *note);

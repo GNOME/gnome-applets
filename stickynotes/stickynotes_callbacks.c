@@ -59,7 +59,7 @@ gboolean stickynote_move_cb(GtkWidget *widget, GdkEventButton *event, StickyNote
 	if (event->type == GDK_BUTTON_PRESS && event->button == 1)
 		gtk_window_begin_move_drag(GTK_WINDOW(note->w_window), event->button, event->x_root, event->y_root, event->time);
 	else if (event->type == GDK_2BUTTON_PRESS && event->button == 1)
-		stickynote_change_title(note);
+		stickynote_change_properties(note);
 	else
 		return FALSE;
 
@@ -150,20 +150,55 @@ void popup_toggle_lock_cb(GtkWidget *widget, StickyNote *note)
 	stickynote_set_locked(note, gtk_check_menu_item_get_active(GTK_CHECK_MENU_ITEM(widget)));
 }
 
-/* Popup Menu Callback : Change the title */
-void popup_change_title_cb(GtkWidget *widget, StickyNote *note)
+/* Popup Menu Callback : Change sticky note properties */
+void popup_properties_cb(GtkWidget *widget, StickyNote *note)
 {
-	stickynote_change_title(note);
+	stickynote_change_properties(note);
 }
 
-/* Popup Menu Callback : Change the color */
-void popup_change_color_cb(GtkWidget *widget, StickyNote *note)
+/* Properties Dialog Callback : Apply title */
+void properties_apply_title_cb(StickyNote *note)
 {
-	stickynote_change_color(note);
+	stickynote_set_title(note, gtk_entry_get_text(GTK_ENTRY(note->w_entry)));
 }
 
-/* Callback for Dialog to change title */
-void dialog_apply_cb(GtkWidget *widget, GtkDialog *dialog)
+/* Properties Dialog Callback : Apply color */
+void properties_apply_color_cb(StickyNote *note)
 {
-        gtk_dialog_response(dialog, GTK_RESPONSE_OK);
+	g_free(note->color);
+	if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(note->w_default)))
+		note->color = NULL;
+	else {
+		GdkColor color;
+		
+		gnome_color_picker_get_i16(GNOME_COLOR_PICKER(note->w_color), &color.red, &color.green, &color.blue, NULL);
+		note->color = g_strdup_printf("#%.2x%.2x%.2x", color.red / 256, color.green / 256, color.blue / 256);
+	}
+	
+	gtk_widget_set_sensitive(glade_xml_get_widget(note->properties, "color_label"), note->color != NULL);
+	gtk_widget_set_sensitive(note->w_color, note->color != NULL);
+
+	stickynote_set_color(note, note->color);
+}
+
+/* Properties Dialog Callback : Color */
+void properties_color_cb(GnomeColorPicker *cp, guint r, guint g, guint b, guint a, StickyNote *note)
+{
+	/* Reduce RGB from 16-bit to 8-bit values and calculate HTML-style hex specification for the color */
+	g_free(note->color);
+	note->color = g_strdup_printf("#%.2x%.2x%.2x", r / 256, g / 256, b / 256);
+
+	stickynote_set_color(note, note->color);
+}
+
+/* Properties Dialog Callback : Activate */
+void properties_activate_cb(GtkWidget *widget, StickyNote *note)
+{
+        gtk_dialog_response(GTK_DIALOG(note->w_properties), GTK_RESPONSE_CLOSE);
+}
+
+/* Properties Dialog Callback : Response. */
+void properties_response_cb(GtkDialog *dialog, gint response, StickyNote *note)
+{
+	gtk_widget_hide(GTK_WIDGET(dialog));
 }

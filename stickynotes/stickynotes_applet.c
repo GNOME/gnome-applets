@@ -116,7 +116,7 @@ void stickynotes_applet_init_prefs()
 	stickynotes->w_prefs = glade_xml_get_widget(stickynotes->prefs, "preferences_dialog");
 	stickynotes->w_prefs_width = gtk_spin_button_get_adjustment(GTK_SPIN_BUTTON(glade_xml_get_widget(stickynotes->prefs, "width_spin")));
 	stickynotes->w_prefs_height= gtk_spin_button_get_adjustment(GTK_SPIN_BUTTON(glade_xml_get_widget(stickynotes->prefs, "height_spin")));
-	stickynotes->w_prefs_color = glade_xml_get_widget(stickynotes->prefs, "note_color");
+	stickynotes->w_prefs_color = glade_xml_get_widget(stickynotes->prefs, "default_color");
 	stickynotes->w_prefs_system = GTK_WIDGET(&GTK_CHECK_BUTTON(glade_xml_get_widget(stickynotes->prefs, "use_system_check"))->toggle_button);
 	stickynotes->w_prefs_click = glade_xml_get_widget(stickynotes->prefs, "click_behavior_menu");
 	stickynotes->w_prefs_sticky = GTK_WIDGET(&GTK_CHECK_BUTTON(glade_xml_get_widget(stickynotes->prefs, "sticky_check"))->toggle_button);
@@ -164,8 +164,8 @@ StickyNotesApplet * stickynotes_applet_new(PanelApplet *panel_applet)
 	/* Add the popup menu */
 	panel_applet_setup_menu_from_file(panel_applet, NULL, "GNOME_StickyNotesApplet.xml", NULL, stickynotes_applet_menu_verbs, applet);
 
-	bonobo_ui_component_add_listener(panel_applet_get_popup_component(panel_applet), "show", menu_toggle_show_cb, applet);
-	bonobo_ui_component_add_listener(panel_applet_get_popup_component(panel_applet), "lock", menu_toggle_lock_cb, applet);
+	bonobo_ui_component_add_listener(panel_applet_get_popup_component(panel_applet), "show", (BonoboUIListenerFn) menu_toggle_show_cb, applet);
+	bonobo_ui_component_add_listener(panel_applet_get_popup_component(panel_applet), "lock", (BonoboUIListenerFn) menu_toggle_lock_cb, applet);
 
 	gtk_widget_add_events(GTK_WIDGET(applet->w_applet), GDK_KEY_PRESS_MASK | GDK_KEY_RELEASE_MASK);
 
