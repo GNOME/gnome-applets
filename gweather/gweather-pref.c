@@ -38,7 +38,7 @@ enum
 {
     COL_LOC = 0,
     COL_POINTER,
-    NUM_COLUMNS,
+    NUM_COLUMNS
 }; 
 
 
