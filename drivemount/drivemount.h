@@ -14,10 +14,6 @@
 #include <gnome.h>
 #include <applet-widget.h>
 
-#define DRIVEMOUNT_APPLET_VERSION_MAJ 1
-#define DRIVEMOUNT_APPLET_VERSION_MIN 0
-#define DRIVEMOUNT_APPLET_VERSION_REV 1
-
 typedef struct _DriveData DriveData;
 struct _DriveData
 {

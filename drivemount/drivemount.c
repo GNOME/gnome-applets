@@ -70,17 +70,11 @@ static void about_cb (AppletWidget *widget, gpointer data)
 {
 	GtkWidget *about;
 	const gchar *authors[2];
-	gchar version[32];
-
-	g_snprintf(version, sizeof(version), "%d.%d.%d",
-		   DRIVEMOUNT_APPLET_VERSION_MAJ,
-		   DRIVEMOUNT_APPLET_VERSION_MIN,
-		   DRIVEMOUNT_APPLET_VERSION_REV);
 
 	authors[0] = "John Ellis <johne@bellatlantic.net>";
 	authors[1] = NULL;
 
-        about = gnome_about_new ( _("Drive Mount Applet"), version,
+        about = gnome_about_new ( _("Drive Mount Applet"), VERSION,
 			"(C) 1999",
 			authors,
 			_("Released under the GNU general public license.\n"
