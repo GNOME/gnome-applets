@@ -193,6 +193,7 @@ msgstr "Хто сказав, що NeXT мертвий?"
 msgid ""
 "Since you are root, would you like to set the system's default timezone?"
 msgstr ""
+"Доки ви з правами root, хочете встановити типовий системний часовий пояс?"
 
 #: asclock/dialogs.c:154
 msgid "My Title"
@@ -224,7 +225,19 @@ msgstr "Блимаюч╕ елементи в годиннику"
 msgid "Timezone"
 msgstr "Часовий пояс"
 
+<<<<<<< uk.po
+#: battery/battery.c:122
+msgid ""
+"Error querying battery charge.  Make sure that your kernel was built with "
+"APM support."
+msgstr ""
+"Помилка запиту зарядження батарей.  Пересв╕дчитесь, що вашея ядро було "
+"з╕бране ╕з п╕дтримкою APM."
+
+#: battery/battery.c:141
+=======
 #: battery/battery.c:137
+>>>>>>> 1.6
 msgid "The battery is low."
 msgstr "Батарея розряджена"
 
@@ -298,7 +311,7 @@ msgstr "Пер╕од поновлення в секундах:"
 #. Low battery value
 #: battery/properties.c:124
 msgid "Low Charge Threshold:"
-msgstr ""
+msgstr "Пор╕г розрядження:"
 
 #. Applet mode label
 #: battery/properties.c:138
@@ -327,11 +340,11 @@ msgstr "Кол╕р при розрядженн╕ батаре╖:"
 
 #: battery/properties.c:270
 msgid "Graph Battery Low Color:"
-msgstr ""
+msgstr "Кол╕р граф╕ка розряджено╖ батаре╖:"
 
 #: battery/properties.c:276
 msgid "Graph Tick Color:"
-msgstr ""
+msgstr "Кол╕р в╕дм╕тки граф╕ка:"
 
 #: battery/properties.c:283
 msgid "Graph Direction:"
@@ -347,7 +360,7 @@ msgstr "З права на л╕во"
 
 #: battery/properties.c:308
 msgid "Battery Charge Messages"
-msgstr ""
+msgstr "Пов╕домлення про зарядження батаре╖"
 
 #: battery/properties.c:311
 msgid "Enable Low Battery Warning"
@@ -355,7 +368,7 @@ msgstr "Вв╕мкнути попередження про розряджен╕ батаре╖"
 
 #: battery/properties.c:316
 msgid "Warn if the battery charge dips below:"
-msgstr ""
+msgstr "Попереджевати якщо зарядження буде нижче:"
 
 #: battery/properties.c:330
 msgid "Enable Full-Charge Notification"
@@ -402,6 +415,8 @@ msgid ""
 "Gnome panel applet for copying and retrieving selections with a history "
 "list. Released under GNU General Public Licence."
 msgstr ""
+"Аплет панел╕ GNOME для коп╕ювання ╕ в╕дтворення вид╕лень з списком ╕стор╕╖. "
+"Розповсюджено п╕д GNU General Public Licence."
 
 #: charpick/charpick.c:434
 msgid "Character Picker"
@@ -451,9 +466,8 @@ msgstr ""
 
 #. add tab to propwindow
 #: charpick/properties.c:300
-#, fuzzy
 msgid "Default List"
-msgstr "Ширина аплету:"
+msgstr ""
 
 #: clockmail/clockmail.c:56 slashapp/slashapp.c:130 sound-monitor/main.c:35
 #: tickastat/main.c:175
@@ -795,6 +809,11 @@ msgid ""
 "to CVS.So long, and thanks for all the fish.\n"
 "Thanks for Balazs Nagy (Kevin)<julian7@kva.hu> for minor help."
 msgstr ""
+"Цей аплет перемика╓ розкладки клав╕атур. Не б╕льше. В╕н використову╓ "
+"setxkbmap чи xmodmap. Тимчасова головний сайт цього аплету знаходиться на "
+"http://lsc.kva.hu/gkb. Будь ласка, в╕дсилайте мен╕ сво╖ прапори (розм╕ром "
+" 60x40 п╕ксел╕в), я долучу ╖х до CVS.\n"
+"Дякую Balazs Nagy (Kevin)<julian7@kva.hu> за допомогу."
 
 #: gkb/gkb.c:660
 msgid "gkb.xpm"
@@ -830,31 +849,27 @@ msgstr ""
 
 #: gnotes/gnotes_applet.c:97
 msgid "Create sticky notes on your screen."
-msgstr ""
+msgstr "Створити клейку нотатку на вашому екран╕."
 
 #: gnotes/gnotes_applet.c:152
 msgid "Can't create GNotes applet!"
 msgstr "Неможливо створити аплет GNotes!"
 
 #: gnotes/gnotes_applet.c:171
-#, fuzzy
 msgid "Raise Notes"
 msgstr "П╕дняти нотатку"
 
 #: gnotes/gnotes_applet.c:173
-#, fuzzy
 msgid "Lower Notes"
 msgstr "Опустити нотатку"
 
 #: gnotes/gnotes_applet.c:175
-#, fuzzy
 msgid "Hide Notes"
 msgstr "Сховати нотатку"
 
 #: gnotes/gnotes_applet.c:177
-#, fuzzy
 msgid "Show Notes"
-msgstr "Влива"
+msgstr "Показати нотатку"
 
 #: gumma/gumma.c:314
 #, c-format
@@ -900,11 +915,11 @@ msgstr "М╕сцев╕сть:"
 
 #: gweather/gweather-dialog.c:131 gweather/gweather-pref.c:384
 msgid "Update:"
-msgstr ""
+msgstr "Поновлювати:"
 
 #: gweather/gweather-dialog.c:139
 msgid "Conditions:"
-msgstr ""
+msgstr "Умови:"
 
 #: gweather/gweather-dialog.c:147
 msgid "Sky:"
@@ -956,6 +971,9 @@ msgid ""
 "Please try the state forecast; note that IWIN forecasts are available only "
 "for US cities."
 msgstr ""
+"Нема╓ детального прогнозу для цього м╕сця.\n"
+"Будб ласка спробуйте оф╕ц╕йний прогноз; зауважимо, що прогнози IWIN ╓ лише "
+"для м╕ст США."
 
 #: gweather/gweather-dialog.c:418
 msgid ""
@@ -963,18 +981,25 @@ msgid ""
 "Please try the detailed forecast; note that IWIN forecasts are available "
 "only for US cities."
 msgstr ""
+"Нема╓ оф╕ц╕йного прогнозу для цього м╕сця.\n"
+"Будб ласка спробуйте оф╕ц╕йний прогноз; зауважимо, що прогнози IWIN ╓ лише "
+"для м╕ст США."
 
 #: gweather/gweather-pref.c:125
 msgid ""
 "Invalid location chosen!\n"
 "Properties remain unchanged."
 msgstr ""
+"Вибрано нев╕рне м╕сце!\n"
+"Властисот╕ залишаються незм╕неними."
 
 #: gweather/gweather-pref.c:130
 msgid ""
 "Proxy URL is not of the form http://host:port/\n"
 "Properties remain unchanged."
 msgstr ""
+"URL прокс╕ не в╕дпов╕да╓ форм╕ http://хост:порт/\n"
+"Властисот╕ залишаються незм╕неними."
 
 #: gweather/gweather-pref.c:209
 msgid "Regions"
@@ -986,7 +1011,7 @@ msgstr "Властивост╕..."
 
 #: gweather/gweather-pref.c:368
 msgid "Update enabled"
-msgstr ""
+msgstr "Поновлення дозволено"
 
 #: gweather/gweather-pref.c:372
 msgid "Use metric"
@@ -994,7 +1019,7 @@ msgstr ""
 
 #: gweather/gweather-pref.c:376
 msgid "Detailed forecast"
-msgstr ""
+msgstr "Детальний прогноз"
 
 #: gweather/gweather-pref.c:380
 msgid "Enable radar maps"
@@ -1061,15 +1086,15 @@ msgstr "П╕вн╕чний"
 
 #: gweather/weather.c:138
 msgid "North - NorthEast"
-msgstr ""
+msgstr "П╕вн╕чний - п╕вн╕чно-сх╕дний"
 
 #: gweather/weather.c:138
 msgid "Northeast"
-msgstr ""
+msgstr "П╕вн╕чно-сх╕дний"
 
 #: gweather/weather.c:138
 msgid "East - NorthEast"
-msgstr ""
+msgstr "Сх╕дний - п╕вн╕чно-сх╕дний"
 
 #: gweather/weather.c:139
 msgid "East"
@@ -1077,15 +1102,15 @@ msgstr "Сх╕дний"
 
 #: gweather/weather.c:139
 msgid "East - Southeast"
-msgstr ""
+msgstr "Сх╕дний - п╕вденно-сх╕дний"
 
 #: gweather/weather.c:139
 msgid "Southeast"
-msgstr ""
+msgstr "П╕вденно-сх╕дний"
 
 #: gweather/weather.c:139
 msgid "South - Southeast"
-msgstr ""
+msgstr "П╕вденний - п╕вденно-сх╕дний"
 
 #: gweather/weather.c:140
 msgid "South"
@@ -1093,15 +1118,15 @@ msgstr "П╕вденний"
 
 #: gweather/weather.c:140
 msgid "South - Southwest"
-msgstr ""
+msgstr "П╕вденний - п╕вденно-зах╕дний"
 
 #: gweather/weather.c:140
 msgid "Southwest"
-msgstr ""
+msgstr "П╕вденно-зах╕дний"
 
 #: gweather/weather.c:140
 msgid "West - Southwest"
-msgstr ""
+msgstr "Зах╕дний - П╕вденно-зах╕дний"
 
 #: gweather/weather.c:141
 msgid "West"
@@ -1109,15 +1134,15 @@ msgstr "Зах╕дний"
 
 #: gweather/weather.c:141
 msgid "West - Northwest"
-msgstr ""
+msgstr "Зах╕дний - п╕вн╕чно-зах╕дний"
 
 #: gweather/weather.c:141
 msgid "Northwest"
-msgstr ""
+msgstr "П╕вн╕чно-зах╕дний"
 
 #: gweather/weather.c:141
 msgid "North - Northwest"
-msgstr ""
+msgstr "П╕вн╕чний - п╕вн╕чно-зах╕дний"
 
 #: gweather/weather.c:150
 msgid "Clear Sky"
@@ -2279,9 +2304,8 @@ msgstr ""
 #: mini-commander/src/cmd_completion.c:116
 #: mini-commander/src/cmd_completion.c:152
 #: mini-commander/src/cmd_completion.c:203
-#, fuzzy
 msgid "not unique"
-msgstr " не змонтовано"
+msgstr ""
 
 #: mini-commander/src/cmd_completion.c:74
 #: mini-commander/src/cmd_completion.c:156
@@ -2303,24 +2327,21 @@ msgid "no /bin/sh"
 msgstr "нема╓ /bin/sh"
 
 #: mini-commander/src/command_line.c:87 mini-commander/src/command_line.c:107
-#, fuzzy
 msgid "end of history list"
-msgstr "Список ╕стор╕╖ порожн╕й"
+msgstr "к╕нець списку ╕стор╕╖"
 
 #. enter pressed -> exec command
 #: mini-commander/src/command_line.c:117 mini-commander/src/exec.c:63
-#, fuzzy
 msgid "starting..."
 msgstr "запуск..."
 
 #: mini-commander/src/command_line.c:146
-#, fuzzy
 msgid "autocompleted"
-msgstr "завершено"
+msgstr "автозавершено"
 
 #: mini-commander/src/command_line.c:288
 msgid "history list empty"
-msgstr "Список ╕стор╕╖ порожн╕й"
+msgstr "список ╕стор╕╖ порожн╕й"
 
 #. title
 #: mini-commander/src/command_line.c:306
@@ -2350,7 +2371,7 @@ msgstr "%H:%M"
 
 #: mini-commander/src/message.c:146
 msgid "%d. %b"
-msgstr "%d %b"
+msgstr "%d. %b"
 
 #: mini-commander/src/mini-commander_applet.c:96
 msgid "orient. changed"
@@ -2362,7 +2383,7 @@ msgstr ""
 
 #: mini-commander/src/mini-commander_applet.c:228 slashapp/properties.c:253
 msgid "Browser"
-msgstr ""
+msgstr "Переглядач"
 
 #: mini-commander/src/mini-commander_applet.c:241
 msgid "History"
@@ -2374,26 +2395,23 @@ msgstr ""
 
 #: mini-commander/src/preferences.c:139
 msgid "time & date on"
-msgstr ""
+msgstr "час та дату ув╕мкнено"
 
 #: mini-commander/src/preferences.c:141
-#, fuzzy
 msgid "time on"
-msgstr "Часовий пояс"
+msgstr "час ув╕мкнено"
 
 #: mini-commander/src/preferences.c:143
-#, fuzzy
 msgid "date on"
-msgstr "дата"
+msgstr "дату ув╕мкнено"
 
 #: mini-commander/src/preferences.c:145
-#, fuzzy
 msgid "clock off"
-msgstr "Кол╕р годинника"
+msgstr "годинник вимкнено"
 
 #: mini-commander/src/preferences.c:451
 msgid "saving prefs..."
-msgstr ""
+msgstr "збереження установок..."
 
 #: mini-commander/src/preferences.c:489
 msgid "Mini-Commander Properties"
@@ -2401,32 +2419,28 @@ msgstr "Властивост╕ Mini-Commander"
 
 #. show time check box
 #: mini-commander/src/preferences.c:503
-#, fuzzy
 msgid "Show time"
 msgstr "Показати час"
 
 #. show date check box
 #: mini-commander/src/preferences.c:515
-#, fuzzy
 msgid "Show date"
-msgstr "Показувати п╕дрозд╕л"
+msgstr "Показувати дату"
 
 #. appearance frame
 #: mini-commander/src/preferences.c:528
 msgid "Appearance"
-msgstr ""
+msgstr "Вигляд"
 
 #. show handle check box
 #: mini-commander/src/preferences.c:536
-#, fuzzy
 msgid "Show handle"
-msgstr "Показати дату"
+msgstr ""
 
 #. show frame check box
 #: mini-commander/src/preferences.c:548
-#, fuzzy
 msgid "Show frame"
-msgstr "Показати дату"
+msgstr "Показувати рамку"
 
 #. auto complete frame
 #: mini-commander/src/preferences.c:562
@@ -2465,9 +2479,9 @@ msgstr "Тло командного рядка:"
 
 #. prefix
 #: mini-commander/src/preferences.c:799
-#, fuzzy, c-format
+#, c-format
 msgid "Regex %.2d:"
-msgstr "Преф╕кс %.2d:"
+msgstr "Регулярний вираз %.2d:"
 
 #. command
 #: mini-commander/src/preferences.c:817
@@ -2495,7 +2509,7 @@ msgstr ""
 
 #: mixer/mixer.c:433
 msgid "Main Volume and Mute"
-msgstr ""
+msgstr "Основний регулятор гучност╕ та вимикач звуку"
 
 #: mixer/mixer.c:664
 msgid "Run gmix..."
@@ -2520,7 +2534,7 @@ msgid ""
 "You are currently connected.\n"
 "Do you want to disconnect?"
 msgstr ""
-"Ви п╕д'╓днан╕.\n"
+"Ви при╓днан╕.\n"
 "В╕д'╓днатись?"
 
 #: modemlights/modemlights.c:427
@@ -2723,7 +2737,7 @@ msgstr "Файл теми:"
 
 #: quicklaunch/quicklaunch.c:63
 msgid "The QuickLaunch Applet"
-msgstr ""
+msgstr "Аплет швидкого запуску"
 
 #: quicklaunch/quicklaunch.c:65
 msgid ""
@@ -2733,9 +2747,8 @@ msgid ""
 msgstr ""
 
 #: quicklaunch/quicklaunch.c:131
-#, fuzzy
 msgid "Launcher Properties"
-msgstr "Властивост╕..."
+msgstr "Властивост╕ запускача..."
 
 #: quicklaunch/quicklaunch.c:229
 msgid ""
@@ -2744,14 +2757,12 @@ msgid ""
 msgstr ""
 
 #: quicklaunch/quicklaunch.c:267
-#, fuzzy
 msgid "Launcher properties..."
-msgstr "Влистивост╕..."
+msgstr "Влистивост╕ запускача..."
 
 #: quicklaunch/quicklaunch.c:279
-#, fuzzy
 msgid "Delete launcher"
-msgstr "Видалити нотатку"
+msgstr "Видалити запускача"
 
 #: quicklaunch/quicklaunch.c:419
 msgid ""
@@ -2759,15 +2770,17 @@ msgid ""
 "~/.gnome/quicklaunch.\n"
 "Aborting"
 msgstr ""
+"Неможливо створити каталог:\n"
+"~/.gnome/quicklaunch.\n"
+"Переривання"
 
 #: screenshooter/screenshooter_applet.c:38
 msgid "Screen-Shooter Applet"
-msgstr ""
+msgstr "Аплет Фотограф екрану"
 
 #: screenshooter/screenshooter_applet.c:40
-#, fuzzy
 msgid "Copyright (C) 1999 Tom Gilbert"
-msgstr "Copyright © 1999"
+msgstr "Copyright © 1999 Tom Gilbert"
 
 #: screenshooter/screenshooter_applet.c:41
 msgid ""
@@ -2780,9 +2793,8 @@ msgid ""
 msgstr ""
 
 #: screenshooter/screenshooter_applet.c:372
-#, fuzzy
 msgid "Screen-Shooter Settings"
-msgstr "Установки аплету монтування диск╕в"
+msgstr "Установки Фотографа екрану"
 
 #: screenshooter/screenshooter_applet.c:378
 msgid "Capture WM decorations when grabbing a window"
@@ -2806,19 +2818,19 @@ msgstr ""
 
 #: screenshooter/screenshooter_applet.c:406
 msgid "Create monochrome image"
-msgstr ""
+msgstr "Створювати монохромне зображення"
 
 #: screenshooter/screenshooter_applet.c:409
 msgid "Invert colours in image"
-msgstr ""
+msgstr "╤нвертувати кольори в зображенн╕"
 
 #: screenshooter/screenshooter_applet.c:425
 msgid "Directory to save images in:"
-msgstr ""
+msgstr "Каталог для запису зн╕мк╕в:"
 
 #: screenshooter/screenshooter_applet.c:449
 msgid "Image filename:"
-msgstr ""
+msgstr "Назва файлу зображення:"
 
 #: screenshooter/screenshooter_applet.c:464
 msgid "Show expanded filename"
@@ -2852,7 +2864,7 @@ msgstr ""
 
 #: screenshooter/screenshooter_applet.c:522
 msgid "Files, Apps"
-msgstr ""
+msgstr "Файли, програми"
 
 #: screenshooter/screenshooter_applet.c:530
 msgid "Create thumbnail of image too"
@@ -2935,23 +2947,23 @@ msgstr ""
 
 #: screenshooter/screenshooter_applet.c:674
 msgid "Create frame around image"
-msgstr ""
+msgstr "Створити рамку навколо зображення"
 
 #: screenshooter/screenshooter_applet.c:678
 msgid "Frame Width (pixels)"
-msgstr ""
+msgstr "Ширина рамки (п╕ксели)"
 
 #: screenshooter/screenshooter_applet.c:686
 msgid "Mirror image vertically"
-msgstr ""
+msgstr "В╕дзеркалити зображення вертикально"
 
 #: screenshooter/screenshooter_applet.c:688
 msgid "Mirror image horizontally"
-msgstr ""
+msgstr "В╕дзеркалити зображення горизонтально"
 
 #: screenshooter/screenshooter_applet.c:691
 msgid "Emboss image"
-msgstr ""
+msgstr "Рел'╓фне зображення"
 
 #: screenshooter/screenshooter_applet.c:703
 msgid ""
@@ -2960,7 +2972,7 @@ msgstr ""
 
 #: screenshooter/screenshooter_applet.c:711
 msgid "Script or program to launch:"
-msgstr ""
+msgstr "Скрипт чи програма для запуску:"
 
 #: screenshooter/screenshooter_applet.c:732
 msgid ""
@@ -2974,12 +2986,11 @@ msgstr ""
 
 #: screenshooter/screenshooter_applet.c:741
 msgid "Frills"
-msgstr ""
+msgstr "Прикраси"
 
 #: screenshooter/screenshooter_applet.c:750
-#, fuzzy
 msgid "Blur image"
-msgstr "зображення"
+msgstr "Розмити зображення"
 
 #: screenshooter/screenshooter_applet.c:753
 msgid "Blur image by what factor?"
@@ -3233,11 +3244,11 @@ msgstr ""
 
 #: sound-monitor/main.c:84
 msgid "Place Esound in standby"
-msgstr ""
+msgstr "Призупинити Esound"
 
 #: sound-monitor/main.c:89
 msgid "Resume Esound"
-msgstr ""
+msgstr "Продовжити роботу Esound"
 
 #: sound-monitor/main.c:94 sound-monitor/main.c:361
 msgid "Start Esound"
@@ -3272,15 +3283,15 @@ msgstr ""
 
 #: sound-monitor/properties.c:348
 msgid "off"
-msgstr ""
+msgstr "вимкнено"
 
 #: sound-monitor/properties.c:355
 msgid "active"
-msgstr ""
+msgstr "активний"
 
 #: sound-monitor/properties.c:362
 msgid "smooth"
-msgstr ""
+msgstr "спок╕йний"
 
 #: sound-monitor/properties.c:369
 msgid "Peak indicator falloff speed"
@@ -3296,19 +3307,19 @@ msgstr ""
 
 #: sound-monitor/properties.c:409
 msgid "Screen refresh (frames per second)"
-msgstr ""
+msgstr "Поновлення екрану (кадр╕в на секунду)"
 
 #: sound-monitor/properties.c:490
 msgid "ESD host to monitor:"
-msgstr ""
+msgstr "Хост ESD для мон╕торингу:"
 
 #: sound-monitor/properties.c:504
 msgid "Monitor sound input (only use if sound card is FULL DUPLEX)"
-msgstr ""
+msgstr "Мон╕торинг входного звуку (лише якщо звукова карта ╓ FULL DUPLEX)"
 
 #: tickastat/main.c:39
 msgid "Tick-a-Stat event log"
-msgstr ""
+msgstr "Журнал под╕й Tick-a-Stat"
 
 #: tickastat/main.c:120
 msgid "%Y%m%d-%H-%M-%S"
@@ -3403,11 +3414,11 @@ msgstr "секунд"
 #. Warning dialog
 #: tickastat/mod_loadavg.c:546
 msgid "Warning options"
-msgstr ""
+msgstr "Параметри попереджень"
 
 #: tickastat/mod_loadavg.c:555 tickastat/mod_loadavg.c:600
 msgid "Show pop-up dialog for this event"
-msgstr ""
+msgstr "Показувати вискакуючий д╕алог на ц╕й под╕╖"
 
 #: tickastat/mod_loadavg.c:565 tickastat/mod_loadavg.c:610
 msgid "Load average threshhold:"
@@ -3430,7 +3441,7 @@ msgstr ""
 
 #: tickastat/mod_news.c:548
 msgid "script \""
-msgstr ""
+msgstr "скрипт \""
 
 #: tickastat/mod_news.c:549
 msgid "Tick-a-Stat script encountered an error:\n"
@@ -3470,7 +3481,7 @@ msgstr ""
 
 #: tickastat/mod_news.c:1208
 msgid "News and Information Module"
-msgstr ""
+msgstr "Модуль новин та ╕нформац╕╖"
 
 #: tickastat/mod_news.c:1262
 msgid "Line (s):"
@@ -3544,11 +3555,11 @@ msgstr ""
 
 #: tickastat/mod_test.c:126
 msgid "Test Module"
-msgstr ""
+msgstr "Тестовий модуль"
 
 #: tickastat/mod_test.c:219
 msgid "This is the test module's description line."
-msgstr ""
+msgstr "Це рядок опису тестового модуля."
 
 #. left pane will be filled in select cb
 #: tickastat/properties.c:373
@@ -3557,11 +3568,11 @@ msgstr "Модул╕"
 
 #: tickastat/properties.c:382
 msgid "Event Log"
-msgstr ""
+msgstr "Журнал под╕й"
 
 #: tickastat/properties.c:391
 msgid "Enable logging of events"
-msgstr ""
+msgstr "Ув╕мкнути журналювання под╕й"
 
 #: tickastat/properties.c:401
 msgid "Log path:"
@@ -3638,176 +3649,3 @@ msgstr ""
 #: whereami/whereami.c:195
 msgid "whereami_applet"
 msgstr "whereami_applet"
-
-#, fuzzy
-#~ msgid "Can't open /proc/apm; can't get data."
-#~ msgstr "Неможливо в╕дкрити /proc/apm; неможливо тримати дан╕."
-
-#, fuzzy
-#~ msgid "Something wrong with /proc/apm; can't get data."
-#~ msgstr "Неможливо в╕дкрити /proc/apm; неможливо тримати дан╕."
-
-#, fuzzy
-#~ msgid "Can't open /dev/apm; can't get data."
-#~ msgstr "Неможливо в╕дкрити /proc/apm; неможливо тримати дан╕."
-
-#, fuzzy
-#~ msgid "High."
-#~ msgstr "Висота:"
-
-#, fuzzy
-#~ msgid "Battery Status:"
-#~ msgstr "Установки мон╕тору батарей"
-
-#, fuzzy
-#~ msgid "Close"
-#~ msgstr "Кольори"
-
-#, fuzzy
-#~ msgid "Refresh Image"
-#~ msgstr "Оновити статт╕"
-
-#, fuzzy
-#~ msgid "(c) 1998 the Free Software Foundation"
-#~ msgstr "© 1998 Free Software Foundation"
-
-#
-#, fuzzy
-#~ msgid "Esound MAnager Applet"
-#~ msgstr "Аплет мон╕торингу Esound"
-
-#, fuzzy
-#~ msgid "Copyright (C)1998 Red Hat Software"
-#~ msgstr "Copyright © The Free Software Foundation"
-
-#, fuzzy
-#~ msgid "Copyright (C) 1998 M. Lausch"
-#~ msgstr "Copyright © 1998"
-
-#, fuzzy
-#~ msgid "Fvwm Pager Settings"
-#~ msgstr "Установки gEyes"
-
-#, fuzzy
-#~ msgid "Copyright (C)1998,1999 Red Hat Software, Free Software Foundation"
-#~ msgstr "Copyright © The Free Software Foundation"
-
-#, fuzzy
-#~ msgid "Gnome Pager Settings"
-#~ msgstr "Установки gEyes"
-
-#, fuzzy
-#~ msgid "Pager"
-#~ msgstr "зображення"
-
-#, fuzzy
-#~ msgid "Show task list"
-#~ msgstr "Показати час"
-
-#, fuzzy
-#~ msgid "Show all tasks"
-#~ msgstr "Показати дату"
-
-#, fuzzy
-#~ msgid "Number of rows of horizontal tasks"
-#~ msgstr "К╕льк╕сть рядк╕в кнопок:"
-
-#, fuzzy
-#~ msgid "Number of vertical columns of tasks"
-#~ msgstr "К╕льк╕сь стовпчик╕в кнопок:"
-
-#, fuzzy
-#~ msgid "Sticky"
-#~ msgstr "Небо:"
-
-#, fuzzy
-#~ msgid "GNotes Settings"
-#~ msgstr "Установки gEyes"
-
-#, fuzzy
-#~ msgid "Default Height"
-#~ msgstr "Висота аплету"
-
-#, fuzzy
-#~ msgid "Show Article Listing"
-#~ msgstr "Список статтей Slashapp"
-
-#, fuzzy
-#~ msgid "Refresh Articles"
-#~ msgstr "Статт╕"
-
-#, fuzzy
-#~ msgid "Justin Maurer <justin@openprojects.net>"
-#~ msgstr "Justin Maurer <justin@slashdot.org>"
-
-#, fuzzy
-#~ msgid "(C) 1998"
-#~ msgstr "© 1999"
-
-#, fuzzy
-#~ msgid "GTicker Article List"
-#~ msgstr "Список статтей Slashapp"
-
-#, fuzzy
-#~ msgid "creating user directory: %s\n"
-#~ msgstr "Створення каталогу користувача:  %s\n"
-
-#, fuzzy
-#~ msgid ""
-#~ "unable to create user directory: \n"
-#~ "\t\t\t\t\t    %s\n"
-#~ msgstr "неможливо створити каталог користувача: %s\n"
-
-#, fuzzy
-#~ msgid "Image path:"
-#~ msgstr "Шлях до журналу:"
-
-#~ msgid "Dave, what are you doing?"
-#~ msgstr "Дейв, що ти робиш?"
-
-#~ msgid "The GNOME HAL"
-#~ msgstr "GNOME HAL"
-
-#, fuzzy
-#~ msgid "Copyright (C)1998 M.Watson"
-#~ msgstr "Copyright © 1998"
-
-#, fuzzy
-#~ msgid "The GNOME Network Load Applet"
-#~ msgstr "Клав╕атурний аплет GNOME"
-
-#, fuzzy
-#~ msgid "Network Traffic"
-#~ msgstr "Мережа"
-
-#, fuzzy
-#~ msgid "Network Load Settings"
-#~ msgstr "Установки годинника"
-
-#, fuzzy
-#~ msgid "Device"
-#~ msgstr "Пристр╕й:"
-
-#, fuzzy
-#~ msgid "Slashapp article list"
-#~ msgstr "Список статтей Slashapp"
-
-#, fuzzy
-#~ msgid "No articles found"
-#~ msgstr "Нема╓ статтей"
-
-#, fuzzy
-#~ msgid "John Ellis <johne@bellatlantic.net> - Display engine"
-#~ msgstr "John Ellis <johne@bellatlantic.net>"
-
-#, fuzzy
-#~ msgid "Loading headlines........"
-#~ msgstr "Завантаження заголовк╕в..."
-
-#, fuzzy
-#~ msgid "Show article listing"
-#~ msgstr "Нема╓ статтей"
-
-#, fuzzy
-#~ msgid "Refresh articles"
-#~ msgstr "Нема╓ статтей"
