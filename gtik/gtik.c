@@ -166,10 +166,6 @@
 		stockdata->small_font = gdk_font_from_description (font);
 		pango_font_description_free (font);
 
-		/* If fonts do not load */
-		if (!stockdata->my_font)
-			g_error("Could not load fonts!");
-
 		if ( !stockdata->extra_font || (stockdata->props.arrows == FALSE ) ){
 			
 			if (stockdata->extra_font)
@@ -186,10 +182,11 @@
 			stockdata->symbolfont = 1;
 
 		}
+		if (!stockdata->my_font) {
+			stockdata->my_font = gdk_font_load("fixed 12");
+		}
 		if (!stockdata->small_font) {
-			if (stockdata->small_font)
-				gdk_font_unref(stockdata->small_font);
-			stockdata->small_font = gdk_font_load("fixed");
+			stockdata->small_font = gdk_font_load("fixed 12");
 		}
 
 	}
@@ -296,12 +293,12 @@ static gint updateOutput(gpointer data)
 								       "font",
 								       NULL);
 		if (!stockdata->props.font)
-			stockdata->props.font = g_strdup ("fixed");
+			stockdata->props.font = g_strdup ("fixed 12");
 		stockdata->props.font2 = panel_applet_gconf_get_string (applet,
 									"font2",
 									NULL);
 		if (!stockdata->props.font2)
-			stockdata->props.font2 = g_strdup ("-*-clean-medium-r-normal-*-*-100-*-*-c-*-iso8859-1");
+			stockdata->props.font2 = g_strdup ("fixed 12");
 		
 		stockdata->props.buttons = panel_applet_gconf_get_bool(applet,
 									  "buttons",
