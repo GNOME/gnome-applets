@@ -359,9 +359,9 @@ static int get_current_headlines(gpointer data)
 	gint h = FALSE;
 	gint delay = ad->article_delay / 10 * (1000 / UPDATE_DELAY);
 
-	set_mouse_cursor (ad, GDK_WATCH);
+/*	set_mouse_cursor (ad, GDK_WATCH);
 
-	while(gtk_events_pending()) gtk_main_iteration();
+	while(gtk_events_pending()) gtk_main_iteration(); */
 
 	if ((slash_file = fopen(filename, "w")) == NULL)
 		{
@@ -451,7 +451,7 @@ static int get_current_headlines(gpointer data)
 					id = add_info_line(ad, text, NULL, 0, FALSE, FALSE, delay);
 				set_info_click_signal(id, click_headline_cb, g_strdup(url), g_free);
 
-				/* a space separater, could include a graphic divider too */
+				/* a space separator, could include a graphic divider too */
 				add_info_line(ad, "", NULL, 0, FALSE, 0, 0);
 				g_free(text);
 				}
@@ -504,11 +504,10 @@ static void about_cb (AppletWidget *widget, gpointer data)
 	authors[2] = _("John Ellis <johne@bellatlantic.net> - Display engine");
 	authors[3] = NULL;
 
-        about = gnome_about_new ( _("Slash Applet"), version,
+        about = gnome_about_new ( _("SlashApp"), version,
 			_("(C) 1998"),
 			authors,
-			_("Released under the GNU general public license.\n"
-			"Display scroller for slashapp. "),
+			_("A ticker to display Slashdot headlines\n"),
 			NULL);
 	gtk_widget_show (about);
 }
@@ -553,7 +552,7 @@ static AppData *create_new_app(GtkWidget *applet)
 
 	property_load(APPLET_WIDGET(applet)->privcfgpath, ad);
 
-	add_info_line(ad, "Slashdot.org Applet\n", NULL, 0, TRUE, 1, 0);
+	add_info_line(ad, "SlashApp\n", NULL, 0, TRUE, 1, 0);
 	add_info_line(ad, _("Loading headlines........"), NULL, 0, FALSE, 1, 20);
 
 /* applet signals */
