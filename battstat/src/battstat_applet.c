@@ -1352,7 +1352,7 @@ load_preferences(gpointer data)
   battstat->horizont=gnome_config_get_bool("batt/horizont=true");
   battstat->showstatus=gnome_config_get_bool("batt/showstatus=true");
   battstat->showbattery=gnome_config_get_bool("batt/showbattery=true");
-  battstat->showpercent=gnome_config_get_bool("batt/showpercent=true");
+  battstat->showpercent=gnome_config_get_bool("batt/showpercent=false");
   battstat->suspend_cmd=gnome_config_get_string("batt/suspendcommand=");
   battstat->usedock=gnome_config_get_bool("batt/usedock=false");
   battstat->own_font=gnome_config_get_bool("batt/own_font=false");
@@ -1449,7 +1449,6 @@ create_layout(int argc, char *argv[], gpointer data)
 					 battstat->masky );
   gtk_box_pack_start (GTK_BOX (battstat->hbox), GTK_WIDGET (battstat->pixmapwid), FALSE, TRUE, 0);
   gtk_widget_show ( GTK_WIDGET (battstat->pixmapwid) );
-
 
   battstat->frameybattery = gtk_frame_new(NULL);
   gtk_widget_set_usize( battstat->frameybattery, 24, 46);

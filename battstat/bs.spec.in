@@ -1,15 +1,22 @@
+# Note that this is NOT a relocatable package
 %define ver	@SPEC_VERSION@
-%define rel	1
-%define prefix	@prefix@
+%define rel	2
+%define prefix	/usr
+
+%define config_opts --prefix=%{prefix} --sysconfdir=/etc
 
 Summary:   Battery status applet for GNOME.
 Name:      battstat_applet
 Version:   %{ver}
 Release:   %{rel}
 Copyright: GPL
-Packager:  jp@spektr.eu.org
 Group:     homegrown
 Source:    @PACKAGE@-@VERSION@.tar.gz
+Patch:     rpm-po.patch
+BuildRoot: /tmp/@PACKAGE@-@VERSION@-buildroot
+Requires:  gtk+ >= 1.2.7
+Requires:  gnome-libs >= 1.2.0
+Provides:  battstat_applet
 
 %description
  Battstat is a battery status applet that monitors the battery charge level
@@ -18,54 +25,33 @@ Source:    @PACKAGE@-@VERSION@.tar.gz
  level. It uses the standard GNOME event system to play user configurable
  samples at certain events.
 
-
 %prep
 %setup -n @TAR_NAME@
+%patch -p0
 
 %build
-./configure --prefix=%{prefix}
-make
+CFLAGS="$RPM_OPT_FLAGS" ./configure %{config_opts}
+make CFLAGS="$RPM_OPT_FLAGS"
 
 %install
-if [ -d $RPM_BUILD_ROOT ]; then rm -rf $RPM_BUILD_ROOT; fi
-make install-strip prefix=$RPM_BUILD_ROOT%{prefix}
+rm -rf $RPM_BUILD_ROOT
+make DESTDIR="$RPM_BUILD_ROOT" install-strip
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
-%{prefix}/share/pixmaps/battstat.png
-%{prefix}/share/pixmaps/battstat-tesla.xpm
-%{prefix}/share/locale/sv/LC_MESSAGES/battstat_applet.mo
-%{prefix}/share/locale/pl/LC_MESSAGES/battstat_applet.mo
-%{prefix}/share/gnome/help/battstat_applet/pl/topic.dat
-%{prefix}/share/gnome/help/battstat_applet/pl/top.gif
-%{prefix}/share/gnome/help/battstat_applet/pl/square.gif
-%{prefix}/share/gnome/help/battstat_applet/pl/square-hidden.gif
-%{prefix}/share/gnome/help/battstat_applet/pl/screen-charge.gif
-%{prefix}/share/gnome/help/battstat_applet/pl/screen-batt.gif
-%{prefix}/share/gnome/help/battstat_applet/pl/screen-ac.gif
-%{prefix}/share/gnome/help/battstat_applet/pl/menu.gif
-%{prefix}/share/gnome/help/battstat_applet/pl/index.html
-%{prefix}/share/gnome/help/battstat_applet/pl/general.gif
-%{prefix}/share/gnome/help/battstat_applet/pl/bottom.gif
-%{prefix}/share/gnome/help/battstat_applet/pl/appear.gif
-%{prefix}/share/gnome/help/battstat_applet/pl/appear-hidden.gif
-%{prefix}/share/gnome/help/battstat_applet/C/topic.dat
-%{prefix}/share/gnome/help/battstat_applet/C/top.gif
-%{prefix}/share/gnome/help/battstat_applet/C/square.gif
-%{prefix}/share/gnome/help/battstat_applet/C/square-hidden.gif
-%{prefix}/share/gnome/help/battstat_applet/C/screen-charge.gif
-%{prefix}/share/gnome/help/battstat_applet/C/screen-batt.gif
-%{prefix}/share/gnome/help/battstat_applet/C/screen-ac.gif
-%{prefix}/share/gnome/help/battstat_applet/C/menu.gif
-%{prefix}/share/gnome/help/battstat_applet/C/index.html
-%{prefix}/share/gnome/help/battstat_applet/C/general.gif
-%{prefix}/share/gnome/help/battstat_applet/C/dock.gif
-%{prefix}/share/gnome/help/battstat_applet/C/bottom.gif
-%{prefix}/share/gnome/help/battstat_applet/C/appear.gif
-%{prefix}/share/gnome/help/battstat_applet/C/appear-hidden.gif
-%{prefix}/share/applets/Monitors/battstat_applet.desktop
+%defattr(-, root, root)
+%doc README INSTALL COPYING ChangeLog NEWS TODO AUTHORS
 %{prefix}/bin/battstat_applet
-/etc/sound/events/battstat_applet.soundlist
-/etc/CORBA/servers/battstat_applet.gnorba
+%{prefix}/share/pixmaps/*
+%{prefix}/share/locale/*/LC_MESSAGES/battstat_applet.mo
+%{prefix}/share/gnome/help/battstat_applet/*
+%{prefix}/share/applets/Monitors/battstat_applet.desktop
+%config /etc/sound/events/battstat_applet.soundlist
+%config /etc/CORBA/servers/battstat_applet.gnorba
+
+%changelog
+* Sun May 06 2001 Michael Reinsch <mr@uue.org>
+- several fixes to spec file
+

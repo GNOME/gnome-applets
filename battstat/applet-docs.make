@@ -51,7 +51,8 @@ install-data-am: index.html
 	-for file in \
 		$(applet)-applet/*.html	\
 		$(applet)-applet/*.css	\
-		$(srcdir)/*.png; do\
+		$(srcdir)/*.png \
+		$(srcdir)/*.gif ; do\
 	  basefile=`echo $$file | sed -e 's,^.*/,,'`; \
 	  $(INSTALL_DATA) $$file $(DESTDIR)$(docdir)/$$basefile; \
 	done

@@ -255,11 +255,11 @@ prop_cb (AppletWidget *applet, gpointer data)
   gtk_container_add (GTK_CONTAINER(frame1), vbox);
 
   table = gtk_table_new (1, 3, FALSE);
-  gtk_box_pack_start (GTK_BOX (vbox), table, FALSE, FALSE, 5);
+  gtk_box_pack_start (GTK_BOX (vbox), table, FALSE, TRUE, 5);
 
   frame = gtk_frame_new (NULL);
   gtk_widget_set_usize( frame, 72, 24);
-  gtk_frame_set_shadow_type ( GTK_FRAME (frame), GTK_SHADOW_ETCHED_IN);
+  gtk_frame_set_shadow_type ( GTK_FRAME (frame), GTK_SHADOW_NONE);
   gtk_table_attach (GTK_TABLE (table), frame, 1, 2, 0, 1,
 		    (GtkAttachOptions) (0),
 		    (GtkAttachOptions) (0), 0, 0);
