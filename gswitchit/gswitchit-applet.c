@@ -73,9 +73,13 @@ static void GSwitchItAppletFillNotebook (GSwitchItApplet * sia);
 
 static void GSwitchItAppletCleanupNotebook (GSwitchItApplet * sia);
 
-static gint GSwitchItAppletButtonPressed (GtkWidget * widget,
-					  GdkEventButton * event,
-					  GSwitchItAppletConfig * config);
+static gboolean GSwitchItAppletButtonPressed (GtkWidget * widget,
+					      GdkEventButton * event,
+					      GSwitchItAppletConfig * config);
+
+static gboolean GSwitchItAppletKeyPressed (GtkWidget * widget,
+					   GdkEventKey * event,
+					   GSwitchItAppletConfig * config);
 
 static const BonoboUIVerb gswitchitAppletMenuVerbs[] = {
 	BONOBO_UI_UNSAFE_VERB ("Props", GSwitchItAppletCmdProps),
@@ -117,7 +121,7 @@ GSwitchItAppletReinitUi (GSwitchItApplet * sia)
 
 	GSwitchItAppletRevalidate (sia);
 
-	// also, update tooltips
+	/* also, update tooltips */
 	currentState = XklGetCurrentState ();
 	if (currentState->group >= 0) {
 		pname = sia->groupNames[currentState->group];
@@ -189,10 +193,12 @@ GSwitchItAppletFilterXEvt (GdkXEvent * xev,
 	XEvent *xevent = (XEvent *) xev;
 	Display *display = xevent->xany.display;
 	int ignoredByXkl = XklFilterEvents (xevent);
-// WM_PROTOCOLS are handled in a special way - 
-// otherwize gtk drives CPU crazy.
-// We do it manually - because gdk_add_client_message_filter calls only
-// one filter per atom :(
+/**
+ * WM_PROTOCOLS are handled in a special way - 
+ * otherwize gtk drives CPU crazy.
+ * We do it manually - because gdk_add_client_message_filter calls only
+ * one filter per atom :(
+ **/
 	switch (xevent->type) {
 	case ClientMessage:
 		{
@@ -236,7 +242,7 @@ GSwitchItAppletWmProtocolsFilter (GdkXEvent *
 	    XInternAtom (display, "_NET_WM_PING", FALSE)) {
 		static long lastTimestamp = -1;
 		long thisTimestamp = xevent->xclient.data.l[1];
-		// allow only events we have not processed yet
+		/* allow only events we have not processed yet */
 		if (lastTimestamp == thisTimestamp) {
 			return GDK_FILTER_REMOVE;
 		}
@@ -262,7 +268,7 @@ GSwitchItAppletCleanupNotebook (GSwitchItApplet * sia)
 	    GTK_NOTEBOOK (GTK_BIN (sia->applet)->child);
 
 	int i;
-	// Do not remove the first page! It is the default page
+	/* Do not remove the first page! It is the default page */
 	for (i = gtk_notebook_get_n_pages (notebook); --i > 0;) {
 		gtk_notebook_remove_page (notebook, i);
 	}
@@ -317,7 +323,7 @@ GSwitchItAppletPrepareDrawing (GSwitchItApplet * sia, int group)
 			char *variantName;
 			if (!GSwitchItConfigSplitItems
 			    (fullLayoutName, &layoutName, &variantName))
-				// just in case
+			    /* just in case */
 				layoutName = fullLayoutName;
 
 			g_snprintf (configItem.name,
@@ -340,7 +346,12 @@ GSwitchItAppletPrepareDrawing (GSwitchItApplet * sia, int group)
 				  G_CALLBACK
 				  (GSwitchItAppletButtonPressed), sia);
 
-		gtk_container_add (GTK_CONTAINER (ebox), align);
+		g_signal_connect (G_OBJECT (sia->applet), 
+				  "key_press_event",
+				  G_CALLBACK 
+				  (GSwitchItAppletKeyPressed), sia);
+
+		gtk_container_add (GTK_CONTAINER (ebox), align); 
 		gtk_container_add (GTK_CONTAINER (align), label);
 		gtk_container_set_border_width (GTK_CONTAINER (align), 2);
 	}
@@ -403,7 +414,30 @@ GSwitchItAppletChangePixelSize (PanelApplet *
 	GSwitchItAppletRevalidate (sia);
 }
 
-static gint
+
+static gboolean
+GSwitchItAppletKeyPressed (GtkWidget *
+			   widget,
+			   GdkEventKey *
+			   event, GSwitchItAppletConfig * config)
+{
+	switch (event->keyval)
+	{
+	case GDK_KP_Enter:
+	case GDK_ISO_Enter:
+	case GDK_3270_Enter:
+	case GDK_Return:
+	case GDK_space:
+	case GDK_KP_Space:
+		GSwitchItAppletConfigLockNextGroup ();
+		return TRUE;
+	default:
+		break;
+	}
+	return FALSE;
+}
+
+static gboolean
 GSwitchItAppletButtonPressed (GtkWidget *
 			      widget,
 			      GdkEventButton *
@@ -411,9 +445,9 @@ GSwitchItAppletButtonPressed (GtkWidget *
 {
 	if (event->button == 1 && event->type == GDK_BUTTON_PRESS) {
 		GSwitchItAppletConfigLockNextGroup ();
-		return GDK_FILTER_REMOVE;
+		return TRUE;
 	}
-	return GDK_FILTER_CONTINUE;
+	return FALSE;
 }
 
 void
@@ -461,12 +495,12 @@ GSwitchItAppletCmdSetGroup (BonoboUIComponent
 		XklDebug (150, "Enforcing the state %d for window %lx\n",
 			  st.group, cur);
 		XklSaveState (XklGetCurrentWindow (), &st);
-//    XSetInputFocus( GDK_DISPLAY(), cur, RevertToNone, CurrentTime );
+/*    XSetInputFocus( GDK_DISPLAY(), cur, RevertToNone, CurrentTime );*/
 	} else {
 		XklDebug (150,
 			  "??? Enforcing the state %d for unknown window\n",
 			  st.group);
-		// strange situation - bad can happen
+		/* strange situation - bad things can happen */
 	}
 	XklLockGroup (st.group);
 }
@@ -618,7 +652,7 @@ static void
 GSwitchItAppletStopListen (GSwitchItApplet * sia)
 {
 	XklStopListen ();
-//!! no client message filter removal in gnome 2.2
+/* !! no client message filter removal in gnome 2.2 */
 	gdk_window_remove_filter (NULL, (GdkFilterFunc)
 				  GSwitchItAppletFilterXEvt, sia);
 	gdk_window_remove_filter
@@ -657,7 +691,7 @@ GSwitchItAppletInit (GSwitchItApplet * sia, PanelApplet * applet)
 	GSwitchItAppletSetTooltip (sia, _(PACKAGE));
 	gtk_widget_show_all (sia->applet);
 	gtk_widget_realize (sia->applet);
-	//GSwitchItInstallGlibLogAppender(  );
+	/* GSwitchItInstallGlibLogAppender(  ); */
 	if (XklInit (GDK_DISPLAY ()) != 0) {
 		GSwitchItAppletSetTooltip (sia,
 					   _("XKB initialization error"));
@@ -759,7 +793,7 @@ GSwitchItAppletNew (PanelApplet * applet)
 	fatal_mask = G_LOG_LEVEL_WARNING | G_LOG_LEVEL_CRITICAL;
 	g_log_set_always_fatal (fatal_mask);
 #endif
-	// BASTARDS! THEY CALL THIS METHOD TWICE!!!
+	/* BASTARDS! THEY CALL THIS METHOD TWICE!!! */
 	if (sia == NULL) {
 		sia = g_new0 (GSwitchItApplet, 1);
 		rv = GSwitchItAppletInit (sia, applet);
@@ -771,7 +805,7 @@ GSwitchItAppletNew (PanelApplet * applet)
 	return rv;
 }
 
-// Plugins support
+/* Plugin support */
 void
 GSwitchItPluginContainerReinitUi (GSwitchItPluginContainer * pc)
 {

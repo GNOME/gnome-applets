@@ -1,3 +1,15 @@
+2004-01-27  Bill Haneman <billh@gnome.org>
+
+	Fix for bug 132225.
+	* gswitchit/gswitchit-applet.c:
+	(GSwitchItAppletKeyPressed): New, cycle through
+	available groups on 'Enter', 'Return', or 'spacebar'.
+	(GSwitchItAppletPrepareDrawing): Connect to the
+	key-pressed signal on the applet as well as the
+	button-pressed signal on the event box.
+
+	Also changed C++ style "//" comments to /* */.
+
 2004-01-27  Chee Bin HOH  <cbhoh@gnome.org>
 	
 	* modemlights/ChangeLog:
