@@ -113,13 +113,13 @@ set_atk_relation (GtkWidget *label, GtkWidget *widget)
     atk_widget = gtk_widget_get_accessible (widget);
     atk_label = gtk_widget_get_accessible (label);
 
+    /* Set label-for relation */
+    gtk_label_set_mnemonic_widget (GTK_LABEL (label), widget);	
+
     /* Check if gail is loaded */
     if (GTK_IS_ACCESSIBLE (atk_widget) == FALSE)
         return;
     
-    /* Set label-for relation */
-    gtk_label_set_mnemonic_widget (GTK_LABEL (label), widget);	
-
     /* Set labelled-by relation */
     relation_set = atk_object_ref_relation_set (atk_widget);
     targets[0] = atk_label;
@@ -522,6 +522,7 @@ properties_box(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 						  GTK_DIALOG_DESTROY_WITH_PARENT,
 						  GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
 						  NULL);
+    gtk_dialog_set_default_response (GTK_DIALOG (mcdata->properties_box), GTK_RESPONSE_CLOSE);
     gtk_window_set_default_size (GTK_WINDOW (mcdata->properties_box), 400, 300);
     
     notebook = gtk_notebook_new ();
@@ -563,14 +564,14 @@ properties_box(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
     gtk_container_add(GTK_CONTAINER(frame), vbox1);
 
     /* show handle check box */
-    check_handle = gtk_check_button_new_with_label (_("Show handle"));
+    check_handle = gtk_check_button_new_with_mnemonic (_("Show han_dle"));
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_handle), prop->show_handle);
     g_signal_connect (G_OBJECT (check_handle), "toggled",
     		      G_CALLBACK (check_handle_toggled), mcdata);
     gtk_box_pack_start(GTK_BOX(vbox1), check_handle, FALSE, TRUE, 0);
 
     /* show frame check box */
-    check_frame = gtk_check_button_new_with_label (_("Show frame"));
+    check_frame = gtk_check_button_new_with_mnemonic (_("Show fram_e"));
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_frame), prop->show_frame);
     g_signal_connect (G_OBJECT (check_frame), "toggled",
     		      G_CALLBACK (check_frame_toggled), mcdata);
@@ -587,7 +588,7 @@ properties_box(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
     gtk_container_add(GTK_CONTAINER(frame), vbox1);
 
     /* show history autocomplete */
-    check_auto_complete_history = gtk_check_button_new_with_label (_("Enable history based autocompletion"));
+    check_auto_complete_history = gtk_check_button_new_with_mnemonic (_("Enable _history based autocompletion"));
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_auto_complete_history), prop->auto_complete_history);
     g_signal_connect (G_OBJECT (check_auto_complete_history), "toggled",
     		      G_CALLBACK (autocomplete_toggled), mcdata);
@@ -606,7 +607,7 @@ properties_box(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
     gtk_container_add(GTK_CONTAINER(frame), table);
 
     /* applet width */    
-    label = gtk_label_new(_("Applet width:"));
+    label = gtk_label_new_with_mnemonic(_("Applet _width:"));
     gtk_misc_set_alignment(GTK_MISC(label), 1.0, 0.5);
     gtk_table_attach(GTK_TABLE(table), 
 		     label,
@@ -707,7 +708,7 @@ properties_box(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
     gtk_container_add(GTK_CONTAINER(frame), table);
 
     /* fg */
-    label = gtk_label_new(_("Command line foreground:"));
+    label = gtk_label_new_with_mnemonic(_("Command line _foreground:"));
     gtk_misc_set_alignment (GTK_MISC (label), 1.0, 0.5);
     gtk_table_attach(GTK_TABLE(table), 
 		     label,
@@ -722,6 +723,7 @@ properties_box(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 			       prop->cmd_line_color_fg_g, 
 			       prop->cmd_line_color_fg_b, 
 			       0);
+    set_atk_relation(label, color_picker);
     gtk_signal_connect(GTK_OBJECT(color_picker),
 		       "color_set",
 		       GTK_SIGNAL_FUNC(color_cmd_fg_changed_signal),
@@ -738,7 +740,7 @@ properties_box(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
     
 
     /* bg */
-    label = gtk_label_new(_("Command line background:"));
+    label = gtk_label_new_with_mnemonic(_("Command line _background:"));
     gtk_misc_set_alignment (GTK_MISC (label), 1.0, 0.5);
     gtk_table_attach(GTK_TABLE(table), 
 		     label,
@@ -752,6 +754,7 @@ properties_box(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 			       prop->cmd_line_color_bg_g, 
 			       prop->cmd_line_color_bg_b, 
 			       0);
+    set_atk_relation(label, color_picker);
     gtk_signal_connect(GTK_OBJECT(color_picker),
 		       "color_set",
 		       GTK_SIGNAL_FUNC(color_cmd_bg_changed_signal),

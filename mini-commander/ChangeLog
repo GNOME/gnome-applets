@@ -1,3 +1,17 @@
+2002-03-24  Kevin Vandersloot <kfv101@psu.edu>
+
+	* src/command_line.c: don't do tab completion for shift-tab
+	so the keyboard users can get out of the entry. Another fix
+	for part of #75908
+
+2002-03-23  Deepa Natarajan <deepa.natarajan@wipro.com>
+
+       * src/prefrences: set mnemonics for the widgets in the properties
+       dialog & set Close as the default button. Fix label-for relation
+       to be set even if gail is not loaded. Also set atk relation between
+       label and color pick widgets.
+       This partially fixes the bug#75908.
+
 2002-03-17 Sandeep V honde <sandeep.honde@wipro.com>
 
 	* src/command_line.c : removed deprecated clist calls.
