@@ -33,6 +33,7 @@
 #include <libgnome/libgnome.h>
 #include <libgnomeui/libgnomeui.h>
 #include <gdk/gdkx.h>
+#include <gconf/gconf-client.h>
 #include <panel-applet.h>
 #include <panel-applet-gconf.h>
 #include <egg-screen-exec.h>
@@ -244,6 +245,24 @@ show_error (CDPlayerData *cd)
     gtk_widget_show (dialog);
 }
 
+static gboolean
+key_writable (PanelApplet *applet, const char *key)
+{
+	gboolean writable;
+	char *fullkey;
+	static GConfClient *client = NULL;
+	if (client == NULL)
+		client = gconf_client_get_default ();
+
+	fullkey = panel_applet_gconf_get_full_key (applet, key);
+
+	writable = gconf_client_key_is_writable (client, fullkey, NULL);
+
+	g_free (fullkey);
+
+	return writable;
+}
+
 static void
 cdplayer_load_config(CDPlayerData *cd)
 {
@@ -259,7 +278,8 @@ cdplayer_load_config(CDPlayerData *cd)
 static void
 cdplayer_save_config(CDPlayerData *cd)
 {
-    panel_applet_gconf_set_string(PANEL_APPLET(cd->panel.applet), "device_path", cd->devpath, NULL);
+    if (key_writable (PANEL_APPLET (cd->panel.applet), "device_path"))
+        panel_applet_gconf_set_string(PANEL_APPLET(cd->panel.applet), "device_path", cd->devpath, NULL);
 }
 
 static void
@@ -487,6 +507,12 @@ preferences_cb (BonoboUIComponent *component,
     gtk_box_pack_start (GTK_BOX(hbox), button, FALSE, FALSE, 0);
     g_object_set_data (G_OBJECT (button), "entry", entry);
     gtk_widget_show (button);
+
+    if ( ! key_writable (PANEL_APPLET (cd->panel.applet), "device_path")) {
+	    gtk_widget_set_sensitive (label, FALSE);
+	    gtk_widget_set_sensitive (entry, FALSE);
+	    gtk_widget_set_sensitive (button, FALSE);
+    }
     
     g_signal_connect (G_OBJECT (entry), "activate",
     		      G_CALLBACK (activate_cb), cd);
