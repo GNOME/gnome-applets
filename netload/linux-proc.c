@@ -75,7 +75,7 @@ GetTraffic(int refresh, char *device)
 	}
 
 	d = di;
-	while (d->name[0] != 0){
+	while (d && d->name[0] != 0){
 		if (!strcmp(device, d->name)){
 			return d->bytes;
 		}
