@@ -37,7 +37,7 @@ _("This GNOME applet adds a command line to the panel. It features command compl
 This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version."),
 				    (gchar *) NULL);
         gtk_widget_show (aboutBox);
+	return;
+	applet = NULL;
+	data = NULL;
 }
-
-
-

@@ -106,6 +106,10 @@ static void line_click_cb(ModuleData *md, gpointer data, InfoData *id, AppData *
 {
 	TailData *td = data;
 	show_log_file(td);
+        return;
+	ad = NULL;
+	id = NULL;
+	md = NULL;
 }
 
 static void popup_dialog_close(GtkWidget *widget, gpointer data)
@@ -322,6 +326,8 @@ static void misc_entry_cb(GtkWidget *widget, gpointer data)
 {
 	TailData *td = data;
 	property_changed(td->md, td->ad);
+        return;
+        widget = NULL;
 }
 
 /*
@@ -377,6 +383,8 @@ static void mod_tail_config_apply(gpointer data, AppData *ad)
 		}
 
 	td->show_popup = td->C_show_popup;
+        return;
+        ad = NULL;
 }
 
 static void mod_tail_config_close(gpointer data, AppData *ad)
@@ -385,6 +393,8 @@ static void mod_tail_config_close(gpointer data, AppData *ad)
 
 	g_free(td->C_path);
 	td->C_path = NULL;
+        return;
+        ad = NULL;
 }
 
 /* remember that the returned widget is gtk_widget_destroy()ed
@@ -441,6 +451,7 @@ static GtkWidget *mod_tail_config_show(gpointer data, AppData *ad)
 	gtk_widget_show(label);
 	
 	return frame;
+        ad = NULL;
 }
 
 static void mod_tail_config_hide(gpointer data, AppData *ad)
@@ -455,6 +466,8 @@ static void mod_tail_config_hide(gpointer data, AppData *ad)
 		td->C_path = g_strdup(buf);
 		}
 	td->path_entry = NULL;
+        return;
+        ad = NULL;
 }
 
 static void mod_tail_config_init(gpointer data, AppData *ad)
@@ -467,6 +480,8 @@ static void mod_tail_config_init(gpointer data, AppData *ad)
 	td->path_entry = NULL;
 
 	td->C_show_popup = td->show_popup;
+        return;
+        ad = NULL;
 }
 
 /*
@@ -490,6 +505,8 @@ static void mod_tail_load_options(gpointer data, AppData *ad)
 		}
 
 	td->show_popup = gnome_config_get_int("module_tail/popup_dialog=0");
+        return;
+        ad = NULL;
 }
 
 static void mod_tail_save_options(gpointer data, AppData *ad)
@@ -500,6 +517,8 @@ static void mod_tail_save_options(gpointer data, AppData *ad)
 	gnome_config_set_string("module_tail/path", td->path);
 
 	gnome_config_set_int("module_tail/popup_dialog", td->show_popup);
+        return;
+        ad = NULL;
 }
 
 /*
@@ -516,6 +535,8 @@ static void mod_tail_start(gpointer data, AppData *ad)
 		{
 		tail_start(td);
 		}
+        return;
+        ad = NULL;
 }
 
 static void mod_tail_destroy(gpointer data, AppData *ad)
@@ -526,6 +547,8 @@ static void mod_tail_destroy(gpointer data, AppData *ad)
 	g_free(td->path);
 
 	g_free(td);
+        return;
+        ad = NULL;
 }
 
 ModuleData *mod_tail_init(AppData *ad)

@@ -272,6 +272,10 @@ static void line_click_cb(ModuleData *md, gpointer data, InfoData *id, AppData *
 	if (!d) return;
 
 	if (d->url) gnome_url_show(d->url);
+        return;
+        ad = NULL;
+        md = NULL;
+	id = NULL;
 }
 
 static void line_free_cb(ModuleData *md, gpointer data)
@@ -284,6 +288,8 @@ static void line_free_cb(ModuleData *md, gpointer data)
 	sd = d->sd;
 	sd->lines = g_list_remove(sd->lines, d);
 	article_free_data(d);
+        return;
+        md = NULL;
 }
 
 static void line_add(ScriptData *sd, ArticleData *d, gint show_count)
@@ -384,6 +390,8 @@ static void script_load_body(ScriptData *sd, ArticleData *d, gint number)
 
 		i++;
 		}
+        return;
+        sd = NULL;
 }
 
 static gint script_load_article(ScriptData *sd, gint number)
@@ -864,6 +872,10 @@ static void script_row_select_cb(GtkWidget *widget, gint row, gint col,
 		}
 
 	script_edit_set_to_row(nd, row);
+        return;
+	widget = NULL;
+	col = 0;
+	event = NULL;
 }
 
 /*
@@ -1162,11 +1174,16 @@ static void mod_news_config_apply(gpointer data, AppData *ad)
 			news_stop(nd);
 			}
 		}
+        return;
+        ad = NULL;
 }
 
 static void mod_news_config_close(gpointer data, AppData *ad)
 {
 /*	NewsData *nd = data;*/
+        return;
+        ad = NULL;
+	data = NULL;
 }
 
 /* remember that the returned widget is gtk_widget_destroy()ed
@@ -1305,6 +1322,7 @@ static GtkWidget *mod_news_config_show(gpointer data, AppData *ad)
 	gtk_widget_show(label);
 
 	return frame;
+        ad = NULL;
 }
 
 static void mod_news_config_hide(gpointer data, AppData *ad)
@@ -1313,6 +1331,8 @@ static void mod_news_config_hide(gpointer data, AppData *ad)
 
 	nd->C_clist = NULL;
 	nd->C_label = NULL;
+        return;
+        ad = NULL;
 }
 
 static void mod_news_config_init(gpointer data, AppData *ad)
@@ -1335,6 +1355,8 @@ static void mod_news_config_init(gpointer data, AppData *ad)
 		sd->C_show_body = sd->show_body;
 		work = work->next;
 		}
+        return;
+        ad = NULL;
 }
 
 /*
@@ -1391,6 +1413,8 @@ static void mod_news_load_options(gpointer data, AppData *ad)
 
 		work = work->next;
 		}
+        return;
+        ad = NULL;
 }
 
 static void mod_news_save_options_util(ScriptData *sd, gchar *key, gint val)
@@ -1423,6 +1447,8 @@ static void mod_news_save_options(gpointer data, AppData *ad)
 
 		work = work->next;
 		}
+        return;
+        ad = NULL;
 }
 
 /*
@@ -1439,6 +1465,8 @@ static void mod_news_start(gpointer data, AppData *ad)
 		{
 		news_start(nd);
 		}
+        return;
+        ad = NULL;
 }
 
 static void mod_news_destroy(gpointer data, AppData *ad)
@@ -1455,6 +1483,8 @@ static void mod_news_destroy(gpointer data, AppData *ad)
 		}
 
 	g_free(nd);
+        return;
+        ad = NULL;
 }
 
 ModuleData *mod_news_init(AppData *ad)

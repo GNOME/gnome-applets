@@ -30,4 +30,7 @@ showHelp(AppletWidget *applet, gpointer data)
     help_entry.name = gnome_app_id;
     
     gnome_help_display(NULL, &help_entry);
+    return;
+    applet = NULL;
+    data = NULL;
 }

@@ -138,4 +138,5 @@ showInterestingInformation(gpointer data)
 
     /* continue timeout function */
     return TRUE;
+    data = NULL;
 }

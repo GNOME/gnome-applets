@@ -157,12 +157,17 @@ static void clicked_cb(ModuleData *md, gpointer data, InfoData *id, AppData *ad)
 {
 	LoadavgData *lad = (LoadavgData *)(md->internal_data);
 	show_loadavg_dialog(id, lad, FALSE);
+        return;
+        ad = NULL;
+	data = NULL;
 }
 
 static void free_line_cb(ModuleData *md, gpointer data)
 {
 	LineData *ld = data;
 	line_data_free(ld);
+        return;
+        md = NULL;
 }
 
 /*
@@ -394,6 +399,8 @@ static void misc_entry_cb(GtkWidget *widget, gpointer data)
 {
 	LoadavgData *lad = data;
 	property_changed(lad->md, lad->ad);
+        return;
+        widget = NULL;
 }
 
 /*
@@ -467,6 +474,8 @@ static void mod_loadavg_config_apply(gpointer data, AppData *ad)
 
 	lad->warning_point = lad->C_warning_point;
 	lad->danger_point = lad->C_danger_point;
+        return;
+        ad = NULL;
 }
 
 static void mod_loadavg_config_close(gpointer data, AppData *ad)
@@ -478,6 +487,8 @@ static void mod_loadavg_config_close(gpointer data, AppData *ad)
 
 	g_free(lad->C_danger_text);
 	lad->C_danger_text = NULL;
+        return;
+        ad = NULL;
 }
 
 /* remember that the returned widget is gtk_widget_destroy()ed
@@ -625,6 +636,7 @@ static GtkWidget *mod_loadavg_config_show(gpointer data, AppData *ad)
 	gtk_widget_show(label);
 	
 	return frame;
+        ad = NULL;
 }
 
 static void mod_loadavg_config_hide(gpointer data, AppData *ad)
@@ -647,6 +659,8 @@ static void mod_loadavg_config_hide(gpointer data, AppData *ad)
 		lad->C_danger_text = g_strdup(buf);
 		}
 	lad->danger_text_entry = NULL;
+        return;
+        ad = NULL;
 }
 
 static void mod_loadavg_config_init(gpointer data, AppData *ad)
@@ -664,6 +678,8 @@ static void mod_loadavg_config_init(gpointer data, AppData *ad)
 
 	lad->warning_text_entry = NULL;
 	lad->danger_text_entry = NULL;
+        return;
+        ad = NULL;
 }
 
 /*
@@ -699,6 +715,8 @@ static void mod_loadavg_load_options(gpointer data, AppData *ad)
 		g_free(lad->danger_text);
 		lad->danger_text = g_strdup(buf);
 		}
+        return;
+        ad = NULL;
 }
 
 static void mod_loadavg_save_options(gpointer data, AppData *ad)
@@ -716,6 +734,8 @@ static void mod_loadavg_save_options(gpointer data, AppData *ad)
 
 	gnome_config_set_string("module_loadavg/warning_text", lad->warning_text);
 	gnome_config_set_string("module_loadavg/danger_text", lad->danger_text);
+        return;
+        ad = NULL;
 }
 
 /*
@@ -732,6 +752,8 @@ static void mod_loadavg_start(gpointer data, AppData *ad)
 		{
 		lad->loadavg_check_timeout_id = gtk_timeout_add(lad->update_interval * 1000, (GtkFunction)loadavg_check_cb, lad);
 		}
+        return;
+        ad = NULL;
 }
 
 static void mod_loadavg_destroy(gpointer data, AppData *ad)
@@ -744,6 +766,8 @@ static void mod_loadavg_destroy(gpointer data, AppData *ad)
 	g_free(lad->danger_text);
 
 	g_free(lad);
+        return;
+        ad = NULL;
 }
 
 ModuleData *mod_loadavg_init(AppData *ad)

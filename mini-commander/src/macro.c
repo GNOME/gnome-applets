@@ -38,7 +38,7 @@ prefixNumber(char *command)
 {
     int i;
     int found_prefix_no = -1;
-    int found_prefix_len = 0;
+    unsigned int found_prefix_len = 0;
 
     for(i=0; i<=MAX_PREFIXES-1; i++)
 	if (prop.prefix[i] != (char *) NULL &&

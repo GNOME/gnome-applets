@@ -107,6 +107,8 @@ void sighandle_sigchld(int sig)
 
     if(show_message)
 	showMessage((gchar *) _("child exited"));
+    return;
+    sig = 0;
 }
 
 static
@@ -127,6 +129,8 @@ void sighandle_sigalrm(int sig)
        NULL)
        )
        ); */
+    return;
+    sig = 0;
 }
 
 void

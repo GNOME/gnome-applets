@@ -211,6 +211,7 @@ term_key_cb(GtkWidget *widget, GdkEventKey *event, gpointer data)
 	}
 
     return(TRUE);
+    data = NULL;
 }
 
 
@@ -223,6 +224,8 @@ term_focus_in_cb(GtkWidget *widget, gpointer data)
     
     /* go on */
     return (FALSE);
+    widget = NULL;
+    data = NULL;
 }
 
 

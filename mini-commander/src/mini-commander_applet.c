@@ -53,6 +53,8 @@ appletDestroy_signal(GtkWidget *widget, gpointer data)
     saveSession();
     /* go on */
     return FALSE;  
+    widget = NULL;
+    data = NULL;
 }
 
 static gint
@@ -66,6 +68,8 @@ appletDetached_signal(GtkWidget *widget, gpointer data)
   
     /* go on */
     return FALSE;  
+    widget = NULL;
+    data = NULL;
 }
 
 static gint
@@ -79,6 +83,8 @@ appletAttached_signal(GtkWidget *widget, gpointer data)
   
     /* go on */
     return FALSE;  
+    widget = NULL;
+    data = NULL;
 }
 
 static gint
@@ -91,6 +97,8 @@ applet_orient_changed_cb(GtkWidget *widget, gpointer data)
 
     /* go on */
     return FALSE;  
+    widget = NULL;
+    data = NULL;
 }
 
 #ifdef HAVE_PANEL_PIXEL_SIZE
@@ -113,6 +121,9 @@ applet_pixel_size_changed_cb(GtkWidget *widget, int size, gpointer data)
     }
 
     redraw_applet();
+    return;
+    widget = NULL;
+    data = NULL;
 }
 #endif
 

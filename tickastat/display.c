@@ -135,6 +135,8 @@ static void free_info_line(AppData *ad, InfoData *id)
 	if (id->data && id->free_func) id->free_func(id->module, id->data);
 
 	g_free(id);
+	return;
+	ad = NULL;
 }
 
 void free_all_info_lines(AppData *ad)
@@ -736,6 +738,7 @@ static int display_click(GtkWidget *w, GdkEventButton *event, gpointer data)
 		}
 
 	return TRUE;
+	w = NULL;
 }
 
 static void display_motion(GtkWidget *w, GdkEventMotion *event, gpointer data)
@@ -762,7 +765,9 @@ static void display_motion(GtkWidget *w, GdkEventMotion *event, gpointer data)
 	if (proximity)
 		set_mouse_cursor (ad, GDK_HAND2);
 	else
-		set_mouse_cursor (ad, GDK_LEFT_PTR);
+	      set_mouse_cursor (ad, GDK_LEFT_PTR);
+	return;
+	w = NULL;
 }
 
 /*
@@ -868,6 +873,9 @@ static void app_display_style_change_cb(GtkWidget *widget, GtkStyle *previous_st
 	/* the size does not change, but this causes a redraw
 	   in the case that the background color changed */
 	resized_app_display(ad, TRUE);
+	return;
+	widget = NULL;
+	previous_style = NULL;
 }
 
 void init_app_display(AppData *ad)

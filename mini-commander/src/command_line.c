@@ -158,6 +158,7 @@ commandKey_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
 	    event->length = 0;  
 	}
     return (propagateEvent == FALSE);
+    data = NULL;
 }
 
 static gint
@@ -168,6 +169,9 @@ commandFocusOut_event(GtkWidget *widget, GdkEvent *event, gpointer data)
       gtk_widget_grab_focus(GTK_WIDGET(widget)); 
     */
     return (FALSE);
+    widget = NULL;
+    event = NULL;
+    data = NULL;
 }
 
 #if 0
@@ -194,6 +198,9 @@ historySelectionMade_cb(GtkWidget *clist, gint row, gint column,
 
     /* close history window */
     gtk_widget_destroy(GTK_WIDGET(clist->parent->parent->parent));
+    return;
+    data = NULL;
+    event = NULL;
 }
 
 #if 0
@@ -229,6 +236,7 @@ historyPopupClicked_cb(GtkWidget *widget, gpointer data)
      
     /* go on */
     return (FALSE);
+    data = NULL;
 }
 
 static gint
@@ -236,6 +244,8 @@ historyPopupClickedInside_cb(GtkWidget *widget, gpointer data)
 {
     /* eat signal (prevent that popup will be destroyed) */
     return(TRUE);
+    widget = NULL;
+    data = NULL;
 }
 
 gint 
@@ -359,7 +369,9 @@ showHistory_signal(GtkWidget *widget, gpointer data)
      */
      
      /* go on */
-     return FALSE;  
+     return FALSE;
+     widget = NULL;
+     data = NULL;
 }
 
 static gint 
@@ -378,6 +390,7 @@ fileBrowserOK_signal(GtkWidget *widget, gpointer fileSelect)
 
     /* go on */
     return FALSE;  
+    widget = NULL;
 }
 
 gint 
@@ -413,7 +426,9 @@ showFileBrowser_signal(GtkWidget *widget, gpointer data)
     gtk_widget_show(fileSelect);
 
     /* go on */
-    return FALSE;  
+    return FALSE;
+    widget = NULL;
+    data = NULL;
 }
 
 void

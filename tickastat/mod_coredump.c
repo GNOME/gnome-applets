@@ -162,12 +162,18 @@ static void clicked_cb(ModuleData *md, gpointer data, InfoData *id, AppData *ad)
 	LineData *ld = data;
 
 	show_coredump_dialog(ld, NULL);
+	return;
+	md = NULL;
+	id = NULL;
+	ad = NULL;
 }
 
 static void free_line_cb(ModuleData *md, gpointer data)
 {
 	LineData *ld = data;
 	free_list_info(ld);
+        return;
+        md = NULL;
 }
 
 /*
@@ -382,6 +388,8 @@ static void path_entry_cb(GtkWidget *widget, gpointer data)
 {
 	CoredumpData *cd = data;
 	property_changed(cd->md, cd->ad);
+        return;
+        widget = NULL;
 }
 
 
@@ -432,6 +440,8 @@ static void mod_coredump_config_apply(gpointer data, AppData *ad)
 		}
 
 	cd->show_popup = cd->C_show_popup;
+        return;
+        ad = NULL;
 }
 
 static void mod_coredump_config_close(gpointer data, AppData *ad)
@@ -440,6 +450,8 @@ static void mod_coredump_config_close(gpointer data, AppData *ad)
 
 	g_free(cd->C_core_path);
 	cd->C_core_path = NULL;
+        return;
+        ad = NULL;
 }
 
 /* remember that the returned widget is gtk_widget_destroy()ed
@@ -494,6 +506,7 @@ static GtkWidget *mod_coredump_config_show(gpointer data, AppData *ad)
 	gtk_widget_show(label);
 	
 	return frame;
+        ad = NULL;
 }
 
 static void mod_coredump_config_hide(gpointer data, AppData *ad)
@@ -509,6 +522,8 @@ static void mod_coredump_config_hide(gpointer data, AppData *ad)
 		}
 
 	cd->core_path_entry = NULL;
+        return;
+        ad = NULL;
 }
 
 static void mod_coredump_config_init(gpointer data, AppData *ad)
@@ -520,6 +535,8 @@ static void mod_coredump_config_init(gpointer data, AppData *ad)
 	cd->C_core_path = g_strdup(cd->core_path);
 
 	cd->core_path_entry = NULL;
+        return;
+        ad = NULL;
 }
 
 /*
@@ -546,6 +563,8 @@ static void mod_coredump_load_options(gpointer data, AppData *ad)
 		g_free(cd->core_file);
 		cd->core_file = g_concat_dir_and_file(cd->core_path, "core");
 		}
+        return;
+        ad = NULL;
 }
 
 static void mod_coredump_save_options(gpointer data, AppData *ad)
@@ -556,6 +575,8 @@ static void mod_coredump_save_options(gpointer data, AppData *ad)
 	gnome_config_set_int("module_coredump/show_popup", cd->show_popup);
 
 	gnome_config_set_string("module_coredump/path", cd->core_path);
+        return;
+        ad = NULL;
 }
 
 /*
@@ -572,6 +593,8 @@ static void mod_coredump_start(gpointer data, AppData *ad)
 		{
 		cd->core_check_timeout_id = gtk_timeout_add(1000, (GtkFunction)core_check_cb, cd);
 		}
+        return;
+        ad = NULL;
 }
 
 static void mod_coredump_destroy(gpointer data, AppData *ad)
@@ -584,6 +607,8 @@ static void mod_coredump_destroy(gpointer data, AppData *ad)
 	g_free(cd->core_file);
 
 	g_free(cd);
+        return;
+        ad = NULL;
 }
 
 ModuleData *mod_coredump_init(AppData *ad)

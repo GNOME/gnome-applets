@@ -29,17 +29,25 @@ static void free_cb(ModuleData *md, gpointer data)
 {
 	printf("Freeing [%s]\n", (gchar *)data);
 	g_free(data);
+	return;
+	md = NULL;
 }
 
 static void clicked_cb(ModuleData *md, gpointer data, InfoData *id, AppData *ad)
 {
 	gnome_warning_dialog(data);
+        return;
+        md = NULL;
+	id = NULL;
+	ad = NULL;
 }
 
 static void post_show_cb(ModuleData *md, gpointer data, InfoData *id, AppData *ad)
 {
 	TestData *td = md->internal_data;
 	if (!td->enabled) remove_info_line(ad, id);
+        return;
+        data = NULL;
 }
 
 static void show_a_line(TestData *td)
@@ -93,10 +101,15 @@ static void mod_test_config_apply(gpointer data, AppData *ad)
 			show_a_line(td);
 			}
 		}
+        return;
+        ad = NULL;
 }
 
 static void mod_test_config_close(gpointer data, AppData *ad)
 {
+        return;
+	ad = NULL;
+	data = NULL;
 }
 
 /* remember that the returned widget is gtk_widget_destroy()ed
@@ -128,11 +141,15 @@ static GtkWidget *mod_test_config_show(gpointer data, AppData *ad)
 	gtk_widget_show(label);
 	
 	return frame;
+        ad = NULL;
 }
 
 static void mod_test_config_hide(gpointer data, AppData *ad)
 {
 /*	TestData *td = data;*/
+    return;
+    data = NULL;
+    ad = NULL;
 }
 
 static void mod_test_config_init(gpointer data, AppData *ad)
@@ -140,6 +157,8 @@ static void mod_test_config_init(gpointer data, AppData *ad)
 	TestData *td = data;
 
 	td->C_enabled = td->enabled;
+	return;
+	ad = NULL;
 }
 
 /*
@@ -153,6 +172,8 @@ static void mod_test_load_options(gpointer data, AppData *ad)
 	TestData *td = data;
 
 	td->enabled = gnome_config_get_int("module_test/enabled=0");
+	return;
+	ad = NULL;
 }
 
 static void mod_test_save_options(gpointer data, AppData *ad)
@@ -160,6 +181,8 @@ static void mod_test_save_options(gpointer data, AppData *ad)
 	TestData *td = data;
 
 	gnome_config_set_int("module_test/enabled", td->enabled);
+	return;
+	ad = NULL;
 }
 
 /*
@@ -173,12 +196,16 @@ static void start(gpointer data, AppData *ad)
 	TestData *td = data;
 
 	if (td->enabled) show_a_line(td);
+	return;
+	ad = NULL;
 }
 
 static void mod_test_destroy(gpointer data, AppData *ad)
 {
 	TestData *td = data;
 	g_free(td);
+	return;
+	ad = NULL;
 }
 
 ModuleData *mod_test_init(AppData *ad)

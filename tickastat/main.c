@@ -53,6 +53,8 @@ static void event_log_cb(AppletWidget *widget, gpointer data)
 		}
 
 	gtk_widget_show(dialog);
+	return;
+	widget = NULL;
 }
 
 
@@ -136,6 +138,8 @@ static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
 	if (!ad->draw_area) return; /* we are done if in startup */
 
 	resized_app_display(ad, FALSE);
+	return;
+	w = NULL;
 }
 
 #ifdef HAVE_PANEL_PIXEL_SIZE
@@ -148,6 +152,8 @@ static void applet_change_pixel_size(GtkWidget *w, int size, gpointer data)
 	if (!ad->draw_area) return; /* we are done if in startup */
 
 	resized_app_display(ad, FALSE);
+        return;
+        w = NULL;	
 }
 #endif
 
@@ -175,11 +181,19 @@ static void about_cb(AppletWidget *widget, gpointer data)
 			_("A ticker to display various information and statistics.\n"),
 			NULL);
 	gtk_widget_show (about);
+        return;
+        widget = NULL;
+	data = NULL;
 }
 
 static void about_line_cb(ModuleData *md, gpointer data, InfoData *id, AppData *ad)
 {
-	about_cb(NULL, NULL);
+    about_cb(NULL, NULL);
+    return;
+    data = NULL;
+    md = NULL;
+    id = NULL;
+    ad = NULL;
 }
 
 static void destroy_applet(GtkWidget *widget, gpointer data)
@@ -214,6 +228,8 @@ static void destroy_applet(GtkWidget *widget, gpointer data)
 	if (ad->background) gdk_pixmap_unref(ad->background);
 
 	g_free(ad);
+	return;
+	widget = NULL;
 }
 
 static gint applet_save_session(GtkWidget *widget, gchar *privcfgpath,
@@ -221,7 +237,9 @@ static gint applet_save_session(GtkWidget *widget, gchar *privcfgpath,
 {
 	AppData *ad = data;
 	property_save(privcfgpath, ad);
-        return FALSE;
+	return FALSE;
+	widget = NULL;
+	globcfgpath = NULL;
 }
 
 static AppData *create_new_app(GtkWidget *applet)
@@ -338,6 +356,8 @@ static GtkWidget *applet_start_new_applet(const gchar *goad_id,
 	create_new_app(applet);
 
 	return applet;
+        params = NULL;
+	nparams = 0;
 }
 
 int main (int argc, char *argv[])

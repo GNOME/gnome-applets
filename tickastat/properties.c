@@ -198,6 +198,9 @@ static void module_select_cb(GtkWidget *widget, gint row, gint col,
 		gtk_paned_add2 (GTK_PANED(ad->prop_module_pane), w);
 		gtk_widget_show(w);
 		}
+	return;
+	col = 0;
+	event = NULL;
 }
 
 static void module_list_populate(GtkWidget *clist, AppData *ad)
@@ -222,6 +225,8 @@ void property_changed(ModuleData *md, AppData *ad)
 {
 	if (!ad->propwindow) return;
 	gnome_property_box_changed(GNOME_PROPERTY_BOX(ad->propwindow));
+	return;
+	md = NULL;
 }
 
 static void property_apply_cb(GtkWidget *widget, gint page_num, gpointer data)
@@ -270,6 +275,8 @@ static void property_apply_cb(GtkWidget *widget, gint page_num, gpointer data)
 		}
 
 	applet_widget_sync_config(APPLET_WIDGET(ad->applet));
+	return;
+	widget = NULL;
 }
 
 static gint property_destroy_cb(GtkWidget *widget, gpointer data)
@@ -298,6 +305,7 @@ static gint property_destroy_cb(GtkWidget *widget, gpointer data)
 		}
 
 	return FALSE;
+	widget = NULL;
 }
 
 void property_show(AppletWidget *applet, gpointer data)
@@ -569,5 +577,7 @@ void property_show(AppletWidget *applet, gpointer data)
 
 	gtk_clist_select_row(GTK_CLIST(clist), 0, 0);
 
-        gtk_widget_show_all(ad->propwindow);
+	gtk_widget_show_all(ad->propwindow);
+	return;
+	applet = NULL;
 } 

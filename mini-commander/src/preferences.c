@@ -65,6 +65,8 @@ colorCmdFgChanged_signal(GtkWidget *colorPickerWidget, gpointer *data)
     propTmp.cmdLineColorFgR = (int) r;
     propTmp.cmdLineColorFgG = (int) g; 
     propTmp.cmdLineColorFgB = (int) b;
+    return;
+    data = NULL;
 }
 
 static void
@@ -77,6 +79,8 @@ colorCmdBgChanged_signal(GtkWidget *colorPickerWidget, gpointer *data)
     propTmp.cmdLineColorBgR = (int) r;
     propTmp.cmdLineColorBgG = (int) g; 
     propTmp.cmdLineColorBgB = (int) b;
+    return;
+    data = NULL;
 }
 
 static void
@@ -212,6 +216,10 @@ propertiesBox_apply_signal(GnomePropertyBox *propertyBoxWidget, gint page, gpoin
     /* Why is this not done automatically??? */
     /* Ok, looks like this is done right now. */
     /*    saveSession(); */
+    return;
+    propertyBoxWidget = NULL;
+    page = 0;
+    data = NULL;
 }
 
 void
@@ -434,6 +442,9 @@ saveSession_signal(GtkWidget *widget, const char *privcfgpath, const char *globc
        other state such as the panel you are on, position,
        parameter, etc ... */
     return FALSE;
+    widget = NULL;
+    privcfgpath = NULL;
+    globcfgpath = NULL;
 }
 
 void
@@ -818,5 +829,8 @@ propertiesBox(AppletWidget *applet, gpointer data)
 		       &helpEntry);
     
     gtk_widget_show_all(propertiesBox);
+    return;
+    applet = NULL;
+    data = NULL;
 }
 

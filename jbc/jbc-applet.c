@@ -37,7 +37,7 @@ about_jbc ()
 {
   GtkWidget *about;
   const gchar *authors[2];
-  gchar version[32];
+  /* gchar version[32]; */
 
   authors[0] = "Jon Anhold <jon@snoopy.net>";
   authors[1] = NULL;
@@ -108,7 +108,7 @@ main (int argc, char **argv)
   GtkWidget *canvas;
 
   int ytmp;
-  float xtmp;
+  float xtmp = 0.0;
 
   bindtextdomain (PACKAGE, GNOMELOCALEDIR);
   textdomain (PACKAGE);
