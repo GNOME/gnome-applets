@@ -34,12 +34,99 @@
 
 static void reset_temporary_prefs(void);
 
-static void
-entry_changed_signal(GtkWidget *entry_widget, char **data)
+static gboolean
+pattern_entry_changed_signal(GtkWidget *entry_widget, GdkEventFocus *event, gpointer data)
 {
-    free(*data);
-    *data = (char *) malloc(sizeof(char) * (strlen(gtk_entry_get_text(GTK_ENTRY(entry_widget))) + 1));
-    strcpy(*data, gtk_entry_get_text(GTK_ENTRY(entry_widget)));
+    PanelApplet *applet = g_object_get_data (G_OBJECT (entry_widget), "applet");
+    properties *prop = g_object_get_data (G_OBJECT (entry_widget), "prop");
+    GConfValue *macro_patterns;
+    GSList *pattern_list = NULL;
+    gchar *new;
+    gint i, current;
+        
+    new = gtk_editable_get_chars (GTK_EDITABLE (entry_widget), 0, -1);
+    current = GPOINTER_TO_INT (data);
+    if (!new)
+    	return FALSE;
+
+    if (!g_strcasecmp (new, prop->macro_pattern[current]))
+    	return FALSE;
+	 
+    free(prop->macro_pattern[current]);
+    prop->macro_pattern[current] = new;
+    
+    /* save the patterns */
+    for(i=0; i<=MAX_NUM_MACROS-1; i++) {
+        GConfValue *entry;
+	    
+	entry = gconf_value_new (GCONF_VALUE_STRING);
+	gconf_value_set_string (entry, prop->macro_pattern[i]);
+	pattern_list = g_slist_append (pattern_list, entry);	   
+    
+    }  
+    
+    macro_patterns = gconf_value_new (GCONF_VALUE_LIST);
+    if (pattern_list) {
+        gconf_value_set_list_type (macro_patterns, GCONF_VALUE_STRING);
+        gconf_value_set_list (macro_patterns, pattern_list);
+        panel_applet_gconf_set_value (applet, "macro_patterns", macro_patterns, NULL);               
+    }
+#if 0
+    if(prop->macro_regex[current] != NULL)
+	free(prop->macro_regex[current]);
+#endif
+    if(prop->macro_pattern[current] && prop->macro_pattern[current][0] != '\0')
+    {
+	prop->macro_regex[current] = malloc(sizeof(regex_t));
+	/* currently we don't care about syntax errors in regex patterns */
+	regcomp(prop->macro_regex[current], prop->macro_pattern[current], REG_EXTENDED);
+    }
+    else
+    {
+	prop->macro_regex[current] = NULL;
+    }
+    return FALSE;
+}
+
+static gboolean
+command_entry_changed_signal(GtkWidget *entry_widget, GdkEventFocus *event, gpointer data)
+{
+    PanelApplet *applet = g_object_get_data (G_OBJECT (entry_widget), "applet");
+    properties *prop = g_object_get_data (G_OBJECT (entry_widget), "prop");
+    GConfValue *macro_command;
+    GSList *command_list = NULL;
+    gchar *new;
+    gint i;
+     
+    new = gtk_editable_get_chars (GTK_EDITABLE (entry_widget), 0, -1);
+    i = GPOINTER_TO_INT (data);
+    if (!new)
+    	return FALSE;
+ 
+    if (!g_strcasecmp (new, prop->macro_command[i]))
+    	return FALSE;
+ 
+    free(prop->macro_command[i]);
+    prop->macro_command[i] = new;
+    
+    /* save the commands */
+    for(i=0; i<=MAX_NUM_MACROS-1; i++) {
+        GConfValue *entry;
+	    
+	entry = gconf_value_new (GCONF_VALUE_STRING);
+	gconf_value_set_string (entry, prop->macro_command[i]);
+	command_list = g_slist_append (command_list, entry);	   
+    
+    }  
+    
+    macro_command = gconf_value_new (GCONF_VALUE_LIST);
+    if (command_list) {
+        gconf_value_set_list_type (macro_command, GCONF_VALUE_STRING);
+        gconf_value_set_list (macro_command, command_list);
+        panel_applet_gconf_set_value (applet, "macro_commands", macro_command, NULL);               
+    }
+
+    return FALSE;
 }
 
 static void
@@ -177,13 +264,13 @@ load_session(MCData *mcdata)
 {
     PanelApplet *applet = mcdata->applet;
     GConfValue *history;
+    GConfValue *macro_patterns, *macro_commands;
+    GSList *pattern_list = NULL, *command_list = NULL;
     properties *prop;
     int i;
     char section[MAX_COMMAND_LENGTH + 100];
     char default_macro_pattern[MAX_MACRO_PATTERN_LENGTH];
     char default_macro_command[MAX_COMMAND_LENGTH];
-    
-    gnome_config_push_prefix("/mini-commander/"); 
     
     prop = g_new0 (properties, 1);
     
@@ -220,9 +307,47 @@ load_session(MCData *mcdata)
     							   NULL);
     prop->cmd_line_color_bg_b = panel_applet_gconf_get_int(applet, "cmd_line_color_bg_b",
     							   NULL);
-
-    /* macros */
-    for(i=0; i<=MAX_NUM_MACROS-1; i++)
+    macro_patterns = panel_applet_gconf_get_value (applet, "macro_patterns", NULL);
+    macro_commands = panel_applet_gconf_get_value (applet, "macro_commands", NULL);
+    
+    if (macro_patterns &&  macro_commands) {
+    	GSList *list1 = NULL, *list2 = NULL;
+    	gint i = 0;
+    	
+        list1 = gconf_value_get_list (macro_patterns);
+        list2 = gconf_value_get_list (macro_commands);
+        while (list1 && list2) {
+            GConfValue *value1 = list1->data;
+            GConfValue *value2 = list2->data;
+            const gchar *pattern = NULL, *command = NULL;
+            
+            pattern = gconf_value_get_string (value1);
+            command = gconf_value_get_string (value2);
+            
+            free(prop->macro_pattern[i]);
+	    prop->macro_pattern[i] = (char *)pattern;
+            free(prop->macro_command[i]);
+	    prop->macro_command[i] = (char *)command; 
+	    
+	    if(prop->macro_pattern[i][0] != '\0')
+		{
+		    prop->macro_regex[i] = malloc(sizeof(regex_t));
+		    /* currently we don't care about syntax errors in regex patterns */
+		    regcomp(prop->macro_regex[i], prop->macro_pattern[i], REG_EXTENDED);
+		}
+	    else
+		{
+		    prop->macro_regex[i] = NULL;
+		}
+		
+            list1 = g_slist_next (list1);
+            list2 = g_slist_next (list2);
+            i++;
+        }
+    }
+    else {    
+    /* defaults */
+    	for(i=0; i<=MAX_NUM_MACROS-1; i++)
 	{
 	    switch (i + 1) 
 		/* set default macros */
@@ -298,29 +423,49 @@ load_session(MCData *mcdata)
 		default:
 		    strcpy(default_macro_pattern, "");
 		    strcpy(default_macro_command, "");		   
-		}
+		} 
 
-	    g_snprintf(section, sizeof(section), "mini_commander/macro_pattern_%.2u=%s", i+1, default_macro_pattern);
-	    free(prop->macro_pattern[i]);
-	    prop->macro_pattern[i] = (char *)gnome_config_get_string((gchar *) section);
-
-	    g_snprintf(section, sizeof(section), "mini_commander/macro_command_%.2u=%s", i+1, default_macro_command);
-	    free(prop->macro_command[i]);
-	    prop->macro_command[i] = (char *)gnome_config_get_string((gchar *) section);
-
-	    if(prop->macro_pattern[i][0] != '\0')
+		free(prop->macro_pattern[i]);
+	        prop->macro_pattern[i] = g_strdup (default_macro_pattern);
+            	free(prop->macro_command[i]);
+	    	prop->macro_command[i] = g_strdup (default_macro_command); 
+	    
+	    	if(prop->macro_pattern[i][0] != '\0')
 		{
 		    prop->macro_regex[i] = malloc(sizeof(regex_t));
 		    /* currently we don't care about syntax errors in regex patterns */
 		    regcomp(prop->macro_regex[i], prop->macro_pattern[i], REG_EXTENDED);
 		}
-	    else
+	   	else
 		{
 		    prop->macro_regex[i] = NULL;
 		}
-
-
-	}    
+	}
+    }
+    	
+    /* save the commands and patterns */
+    for(i=0; i<=MAX_NUM_MACROS-1; i++) {
+        GConfValue *entry1, *entry2;
+	    
+	entry1 = gconf_value_new (GCONF_VALUE_STRING);
+	gconf_value_set_string (entry1, prop->macro_pattern[i]);
+	entry2 = gconf_value_new (GCONF_VALUE_STRING);
+	gconf_value_set_string (entry2, prop->macro_command[i]);
+	pattern_list = g_slist_append (pattern_list, entry1);
+	command_list = g_slist_append (command_list, entry2);	   
+    
+    }  
+    
+    macro_patterns = gconf_value_new (GCONF_VALUE_LIST);
+    macro_commands = gconf_value_new (GCONF_VALUE_LIST);
+    if (pattern_list && command_list) {
+        gconf_value_set_list_type (macro_patterns, GCONF_VALUE_STRING);
+        gconf_value_set_list (macro_patterns, pattern_list);
+        panel_applet_gconf_set_value (applet, "macro_patterns", macro_patterns, NULL);
+        gconf_value_set_list_type (macro_commands, GCONF_VALUE_STRING);
+        gconf_value_set_list (macro_commands, command_list);
+        panel_applet_gconf_set_value (applet, "macro_commands", macro_commands, NULL);        
+    }
 
     /* history */
     history = panel_applet_gconf_get_value (applet, "history", NULL);
@@ -339,33 +484,8 @@ load_session(MCData *mcdata)
             list = g_slist_next (list);
         }
     }
-    gnome_config_pop_prefix();
     
     return prop;
-}
-
-
-/* FIXME: port to gconf */
-void
-save_session(MCData *mcdata)
-{
-    PanelApplet *applet = mcdata->applet;
-    int i;
-    
-#if 0
-    for(i=0; i<=MAX_NUM_MACROS-1; i++)
-	{
-	    g_snprintf(section, sizeof(section), "mini_commander/macro_pattern_%.2u", i+1);
-	    gnome_config_set_string((gchar *) section, (gchar *) prop.macro_pattern[i]);
-
-	    g_snprintf(section, sizeof(section), "mini_commander/macro_command_%.2u", i+1);
-	    gnome_config_set_string((gchar *) section, (gchar *) prop.macro_command[i]);
-
-	    prop_tmp.macro_pattern[i] = (char *) NULL;
-	    prop_tmp.macro_command[i] = (char *) NULL;
-	}    
-
-#endif
 }
 
 static void
@@ -864,11 +984,13 @@ properties_box(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 	    if (prop->macro_pattern[i] != (gchar *) NULL)
 		gtk_entry_set_text(GTK_ENTRY(entry), (gchar *) prop->macro_pattern[i]);
 	    set_atk_relation(label, entry);
-	    #ifdef FIXME
+	    g_object_set_data (G_OBJECT (entry), "prop", prop);
+	    g_object_set_data (G_OBJECT (entry), "applet", applet);
+	    #if 1
 	    gtk_signal_connect(GTK_OBJECT(entry),
-			       "changed",
-			       GTK_SIGNAL_FUNC(entry_changed_signal),
-			       &prop->macro_pattern[i]);
+			       "focus_out_event",
+			       GTK_SIGNAL_FUNC(pattern_entry_changed_signal),
+			       GINT_TO_POINTER (i));
 	    #endif
 	    gtk_box_pack_start(GTK_BOX(hbox), entry, FALSE, TRUE, 0);
 	    
@@ -881,11 +1003,13 @@ properties_box(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 	    if (prop->macro_command[i] != (gchar *) NULL)
 		gtk_entry_set_text(GTK_ENTRY(entry), prop->macro_command[i]);
 	    set_atk_relation(label, entry);
-	    #ifdef FIXME
+	    g_object_set_data (G_OBJECT (entry), "prop", prop);
+	    g_object_set_data (G_OBJECT (entry), "applet", applet);
+	    #if 1
 	    gtk_signal_connect(GTK_OBJECT(entry),
-			       "changed",
-			       GTK_SIGNAL_FUNC(entry_changed_signal),
-			       &prop_tmp.macro_command[i]);
+			       "focus_out_event",
+			       GTK_SIGNAL_FUNC(command_entry_changed_signal),
+			       GINT_TO_POINTER (i));
 	    #endif
 	    gtk_box_pack_start(GTK_BOX(hbox), entry, TRUE, TRUE, 0);
 	}

@@ -61,9 +61,7 @@ applet_destroy_signal(GtkWidget *widget, gpointer data)
         g_object_set_data (G_OBJECT (applet), "tooltips", NULL);
     }
     
-    /* applet will be destroyed; save history */
-    save_session();
-
+    
 #if 0 /* Freeing these prevents the applet from restarting - not sure what's up */
   
     g_free (mcdata->prop);
