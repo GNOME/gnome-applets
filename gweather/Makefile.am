@@ -19,7 +19,8 @@ gweather_applet_2_SOURCES = \
 	gweather-pref.c gweather-pref.h \
 	gweather-dialog.c gweather-dialog.h \
 	gweather-applet.c gweather-applet.h \
-	weather.c weather.h
+	weather.c weather.h \
+	location.c location.h
 
 gweather_applet_2_LDADD = \
 	$(top_builddir)/screen-exec/libscreen-exec.la \
@@ -42,13 +43,10 @@ server_DATA     = $(server_in_files:.server.in=.server)
 $(server_in_files): $(server_in_files:.server.in=.server.in.in)
 	sed -e "s|\@LIBEXECDIR\@|$(libexecdir)|" $< > $@
 
-gweatherlocationsdir = $(datadir)/gweather
-gweatherlocations_DATA = Locations
 
 EXTRA_DIST = \
 	GNOME_GWeatherApplet_Factory.server.in.in \
 	gweather.schemas \
-	$(ui_DATA)	\
-	Locations
+	$(ui_DATA)	
 
 @INTLTOOL_SERVER_RULE@

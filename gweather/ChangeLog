@@ -1,3 +1,140 @@
+2003-02-20  Kevin Vandersloot <kfv101@psu.edu>
+
+	* merge changes from gweather-improve branch. 
+
+2003-02-20  Kevin Vandersloot <kfv101@psu.edu>
+
+	* weather.c: funky animation for when an update occurs
+
+2003-02-18  Kevin Vandersloot <kfv101@psu.edu>
+
+	* location.c: cancel download of citites if new country is selected. Fixes a problem where
+	the fist country is shown
+
+	* gweather-applet.c: reoder high and low temps in tooltips
+
+	* weather.c: change icon for one condition
+
+2003-02-16  Kevin Vandersloot <kfv101@psu.edu>
+
+	* gweather-dialog.c: add a label for feels like temp and pressure. Get
+	some more metric conversions.
+
+	* weather.c, weather.c, gweather.h: remove lots of unneeded stuff
+
+	* location.c: fix crash if the dialog was closed durring an update 
+
+	* gweather-applet.c: open forecast if applet double clicked
+
+2003-02-13  Kevin Vandersloot <kfv101@psu.edu>
+
+	* gweather-applet.c: add labels to display temps. 
+
+	* gweather-dialog.c: don't display NULL if temp is not set
+
+	* gweather-pref.c: new config to show temp labels. Better packing
+	of some widgets
+
+	* gweather.schemas: new config option.
+
+	* gweather.h: fix an extra enum
+
+2003-02-10  Kevin vandersloot <kfv101@psu.edu>
+
+	* gweather-applet.c: display only requested number of forecast days
+
+	* weather.c: download all the forecast days even if the user only wants
+	to display a few.
+
+	* gweather-pref.c: change wording of the pref to reflect change in 
+	behavior.
+
+2003-02-10  Kevin Vandersloot <kfv101@psu.edu>
+
+	* weather.c, gweather-dialog.c: improve the display of the forecast. 
+	Display a string for the wind direction
+
+2003-02-09  Kevin Vandersloot <kfv101@psu.edu>
+
+	* weather.c: Remove dead code. Add support for canceling updates. 
+	Add support for retrieving data in metric. Set tooltips properly when
+	update failed. More checks for xml retrievel - fixes possible crashes. Free
+	forecasts on update to plug some leaks.
+
+	* main.c: make sure to initialize some WeatherInfo values.
+
+	* location.c: display errors when retrieval fails
+
+	* gweather-pref.c: Remove some code. Make metic option work. Small
+	fixes.
+
+2003-02-09  Kevin Vandersloot <kfv101@psu.edu>
+
+	* gweather-dialog.c: improvements - show images, and better alignments
+
+2003-02-08  Kevin Vandersloot <kfv101@psu.edu>
+
+	* gweather-dialog.c: add a forecast list
+
+2003-02-08  Kevin Vandersloot <kfv101@psu.edu>
+
+	* gweather-dialog.c: readd this. Still some more work needed
+
+	* weather.c: update the forecast dialog when finished
+
+	* location.c: remove the druid stuff
+
+2003-02-08  Kevin Vandersloot <kfv101@psu.edu>
+
+	* gweather-pref.c: higify and flesh out the prefs dialog. Can now select
+	locations from this dialog
+
+	* gweather_applet.c: some cleanup and readd the timer now
+
+	* gweather.schemas: save the location city and url
+
+	* location.c: some cleanup. Fix to work with prefs dialog. 
+
+	* main.c: some reorganization
+
+2003-02-06  Kevin Vandersloot <kfv101@psu.edu>
+
+	* gweather-pref.c: some pref dialog additions and removals. Very messy
+	right now
+
+2003-02-05  Kevin Vandersloot <kfv101@psu.edu>
+
+	*weather.c: parse wind conditions and city names.
+
+	* location.c: 	gnome_vfs_escape_string on url so that urls with
+	spaces work properly (and actually add it to cvs)
+
+	* gweather-applet.c: improve the tooltip labels
+
+2003-02-04  Kevin Vandersloot <kfv101@psu.edu>
+
+	* weather.c: free the Forecasts Glist when updating. Fixes a
+	crash on update
+
+	* gweather-about.c: add myself to authors list
+
+2003-02-04  Kevin Vandersloot <kfv101@psu.edu>
+
+	* location.c: new code to fetch available locations. Uses a druid
+	as the selector right now which might be an overkill.
+
+	* weather.c, gweather-applet.c: remove some unused code
+
+	* .schemas: add new config for number of forecast days and
+	a first time run key
+
+2003-01-29  Kevin Vandersloot <kfv101@psu.edu>
+
+	* weather.c: use weather.interceptvector.com to fetch weather forecast
+	in xml format. Rewrite large amounts of code and simplify. Display
+	up to a five day forecast on the panel instead of just current condition.
+	Still lots needs to be done.
+
 2003-01-21  Arvind Samptur <arvind.samptur@wipro.com>
 	* gweather-applet.c (gweather_applet_create) (applet_destroy):
 	Destroy the preferences and forcast dialog when destroying the applet.

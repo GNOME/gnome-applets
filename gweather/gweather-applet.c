@@ -29,46 +29,111 @@
 #include "gweather-pref.h"
 #include "gweather-dialog.h"
 #include "gweather-applet.h"
+#include "location.h"
 
-/* FIX - This code is WAY too kludgy!... */
-static void place_widgets (GWeatherApplet *gw_applet)
+void update_display (GWeatherApplet *applet)
 {
-    gint size = gw_applet->size;
-    const gchar *temp;
+	WeatherInfo *info = applet->gweather_info;
+	GList *list = NULL;
+	GdkPixbuf *pixbuf;
+	gint i = 1;
+	gchar *tmp;
+
+	if (info->success) {
+		tmp = g_strdup_printf (_("%s\nToday: %s\nCurrent temperature %d"), 
+						  applet->gweather_pref.city, get_conditions (info->wid), info->curtemp);
+		gtk_tooltips_set_tip (applet->tooltips, applet->events[0], tmp, NULL);
+		g_free (tmp);
+	}
+	else
+		gtk_tooltips_set_tip (applet->tooltips, applet-> events[0], NULL, NULL);
+	pixbuf = get_conditions_pixbuf (info->wid);
+	gtk_image_set_from_pixbuf (GTK_IMAGE (applet->images[0]), pixbuf);
+	tmp = g_strdup_printf ("%d\302\260", info->curtemp);
+	gtk_label_set_text (GTK_LABEL (applet->labels[0]), tmp);
+	g_free (tmp);
+	
+g_print ("update \n");
+	list = info->forecasts;
+	for (i=1; i<=applet->gweather_info->numforecasts; i++) {
+		WeatherForecast *forecast = NULL;
+		gint avgtemp;
+		if (!list)
+			continue;
+		forecast = list->data;	
+		if (info->success)	 {	
+			tmp = g_strdup_printf (_("%s\n%s: %s\nLow %d, High %d"),
+						  applet->gweather_pref.city,
+						  forecast->day, 
+						  get_conditions (forecast->wid), forecast->low,
+						  forecast->high);
+			gtk_tooltips_set_tip (applet->tooltips, applet->events[i], tmp, NULL);
+			g_free (tmp);
+		}
+		else
+			gtk_tooltips_set_tip (applet->tooltips,applet->events[i], NULL, NULL);
+		pixbuf = get_conditions_pixbuf (forecast->wid);
+		gtk_image_set_from_pixbuf (GTK_IMAGE (applet->images[i]), pixbuf);
+		avgtemp = 0.5 * (forecast->low + forecast->high);
+		tmp = g_strdup_printf ("%d\302\260", avgtemp);
+		gtk_label_set_text (GTK_LABEL (applet->labels[i]), tmp);
+		g_free (tmp);
+		list = g_list_next (list);
+	
+	}
+
+g_print ("done updating display \n");
+}
+
+void place_widgets (GWeatherApplet *gw_applet)
+{
+    gint i;
+    gboolean horiz;
  
     if (gw_applet->box)
         gtk_widget_destroy (gw_applet->box);
     
-    if (((gw_applet->orient == PANEL_APPLET_ORIENT_LEFT) || 
-         (gw_applet->orient == PANEL_APPLET_ORIENT_RIGHT)) ^ (size < 25)) {
-         gw_applet->box = gtk_hbox_new (FALSE, 2);
-         
+    if ((gw_applet->orient == PANEL_APPLET_ORIENT_LEFT) || 
+         (gw_applet->orient == PANEL_APPLET_ORIENT_RIGHT)) {
+	 horiz = FALSE;
+         gw_applet->box = gtk_vbox_new (FALSE, 2);         
     }
     else {
-         gw_applet->box = gtk_vbox_new (FALSE, 2);
+         gw_applet->box = gtk_hbox_new (FALSE, 2);
+	 horiz = TRUE;
     }
     
     gtk_container_add (GTK_CONTAINER (gw_applet->applet), gw_applet->box);
-    
-    weather_info_get_pixbuf_mini(gw_applet->gweather_info, 
-    				 &(gw_applet->applet_pixbuf));     
-    gw_applet->image = gtk_image_new_from_pixbuf (gw_applet->applet_pixbuf);
-    gtk_box_pack_start (GTK_BOX (gw_applet->box), gw_applet->image, FALSE, FALSE, 0);
-         
-    gw_applet->label = gtk_label_new("0\302\260");
-    gtk_box_pack_start (GTK_BOX (gw_applet->box), gw_applet->label, FALSE, FALSE, 0);
-    
-    gtk_image_set_from_pixbuf (GTK_IMAGE (gw_applet->image), 
-    			       gw_applet->applet_pixbuf);
 
-    /* Update temperature text */
-
-    temp = weather_info_get_temp_summary(gw_applet->gweather_info);
-    if (temp)
-    	gtk_label_set_text(GTK_LABEL(gw_applet->label), temp);
+    for (i=0; i<=gw_applet->gweather_info->numforecasts; i++) {
+		gchar *tmp;
+		gw_applet->events[i] = gtk_event_box_new ();
+		gtk_box_pack_start (GTK_BOX (gw_applet->box), 
+				                      gw_applet->events[i], FALSE, FALSE, 0);
+		if (horiz)
+			gw_applet->boxes[i] = gtk_hbox_new (FALSE, 2);
+		else
+			gw_applet->boxes[i] = gtk_vbox_new (FALSE, 2);
+		gtk_container_add (GTK_CONTAINER (gw_applet->events[i]),  gw_applet->boxes[i]);
+		gw_applet->images[i] = gtk_image_new ();
+		gtk_box_pack_start (GTK_BOX (gw_applet->boxes[i]), gw_applet->images[i], FALSE, FALSE, 0);
+		gtk_image_set_from_pixbuf (GTK_IMAGE (gw_applet->images[i]),
+								     get_conditions_pixbuf (31));
+		gw_applet->labels[i] = gtk_label_new (NULL);
+		gtk_box_pack_start (GTK_BOX (gw_applet->boxes[i]), 
+				                      gw_applet->labels[i], FALSE, FALSE, 0);
+		tmp = g_strdup_printf ("%d\302\260", 0);
+		gtk_label_set_text (GTK_LABEL (gw_applet->labels[i]), tmp);
+		g_free (tmp);
+    }
 
     gtk_widget_show_all (GTK_WIDGET (gw_applet->applet));
 
+    if (!gw_applet->gweather_pref.show_labels) {
+	for (i=0; i<=gw_applet->gweather_info->numforecasts; i++) {
+		gtk_widget_hide (gw_applet->labels[i]);
+	}
+    }
 }
 
 static void change_orient_cb (PanelApplet *w, PanelAppletOrient o, gpointer data)
@@ -77,7 +142,8 @@ static void change_orient_cb (PanelApplet *w, PanelAppletOrient o, gpointer data
 	
     gw_applet->orient = o;
     place_widgets(gw_applet);
-    return;
+    update_display (gw_applet);	
+
 }
 
 static void change_size_cb(PanelApplet *w, gint s, gpointer data)
@@ -86,12 +152,14 @@ static void change_size_cb(PanelApplet *w, gint s, gpointer data)
 	
     gw_applet->size = s;
     place_widgets(gw_applet);
-    return;
+    update_display (gw_applet);
+
 }
 
 
 static gboolean clicked_cb (GtkWidget *widget, GdkEventButton *ev, gpointer data)
 {
+
     GWeatherApplet *gw_applet = data;
     if ((ev == NULL) || (ev->button != 1))
 	    return FALSE;
@@ -99,7 +167,7 @@ static gboolean clicked_cb (GtkWidget *widget, GdkEventButton *ev, gpointer data
 	gweather_dialog_open(gw_applet);
 	return TRUE;
     }
-    
+  
     return FALSE;
 }
 
@@ -146,7 +214,7 @@ static void update_cb (BonoboUIComponent *uic,
 		       GWeatherApplet    *gw_applet,
 		       const gchar       *verbname)
 {
-    gweather_update (gw_applet);
+      	gweather_update (gw_applet);
 }
 
 
@@ -172,28 +240,8 @@ applet_destroy (GtkWidget *widget, GWeatherApplet *gw_applet)
 
 void gweather_applet_create (GWeatherApplet *gw_applet)
 {
-    GtkWidget *label;
-    GtkWidget *pixmap;
-    GtkTooltips *tooltips;
- 
-    gw_applet->gweather_pref.location = NULL;
-    gw_applet->gweather_pref.update_interval = 1800;
-    gw_applet->gweather_pref.update_enabled = TRUE;
-    gw_applet->gweather_pref.use_metric = FALSE;
-    gw_applet->gweather_pref.detailed = FALSE;
-    gw_applet->gweather_pref.radar_enabled = TRUE;
-    
- 
-    gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gweather/tstorm.xpm");
-
-    /* PUSH */
-    gtk_widget_push_colormap (gdk_rgb_get_cmap ());
-
-    /*gtk_widget_realize(GTK_WIDGET(gw_applet->applet));
-
-    gtk_widget_set_events(GTK_WIDGET(gw_applet->applet), gtk_widget_get_events(GTK_WIDGET(gw_applet->applet)) | \
-                          GDK_BUTTON_PRESS_MASK);*/
-
+   
+   gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gweather/tstorm.xpm");
 
     g_signal_connect (G_OBJECT(gw_applet->applet), "change_orient",
                        G_CALLBACK(change_orient_cb), gw_applet);
@@ -201,12 +249,10 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
                        G_CALLBACK(change_size_cb), gw_applet);
     g_signal_connect (G_OBJECT(gw_applet->applet), "destroy", 
                        G_CALLBACK (applet_destroy), gw_applet);
-    gtk_signal_connect (GTK_OBJECT(gw_applet->applet), "button_press_event",
-                       GTK_SIGNAL_FUNC(clicked_cb), gw_applet);
-                     
-    tooltips = gtk_tooltips_new();
-
-    gtk_tooltips_set_tip(tooltips, GTK_WIDGET(gw_applet->applet), _("GNOME Weather"), NULL);
+    g_signal_connect (G_OBJECT(gw_applet->applet), "button_press_event",
+                       G_CALLBACK(clicked_cb), gw_applet);
+                    
+    gw_applet->tooltips = gtk_tooltips_new();
 
     gw_applet->size = panel_applet_get_size (gw_applet->applet);
 
@@ -218,51 +264,14 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
                                        NULL,
 			               weather_applet_menu_verbs,
 			               gw_applet);
-
-    gw_applet->tooltips = tooltips;
-	
+   
     place_widgets(gw_applet);
-    /* POP */
-    gtk_widget_pop_colormap ();
-    
-	return;
-}
+    update_display(gw_applet);   
 
-
-void gweather_info_save (const gchar *path, GWeatherApplet *gw_applet)
-{
-    gchar *prefix;
-
-    g_return_if_fail(gw_applet->gweather_info != NULL);
-    g_return_if_fail(path != NULL);
-
-    prefix = g_strconcat (path, "WeatherInfo/", NULL);
-    gnome_config_push_prefix(prefix);
-    /* fprintf(stderr, "gweather_info_save: %s\n", prefix); */
-    g_free(prefix);
-
-    weather_info_config_write(gw_applet->gweather_info);
-
-    gnome_config_pop_prefix();
-    gnome_config_sync();
-    gnome_config_drop_all();
-}
-
-void gweather_info_load (const gchar *path, GWeatherApplet *gw_applet)
-{
-    gchar *prefix;
-
-    g_return_if_fail(path != NULL);
-
-    prefix = g_strconcat (path, "WeatherInfo/", NULL);
-    gnome_config_push_prefix(prefix);
-    /* fprintf(stderr, "gweather_info_save: %s\n", prefix); */
-    g_free(prefix);
-
-    weather_info_free (gw_applet->gweather_info);
-    gw_applet->gweather_info = weather_info_config_read(gw_applet->applet);
-
-    gnome_config_pop_prefix();
+    gw_applet->timeout_tag =  
+        	gtk_timeout_add (gw_applet->gweather_pref.update_interval * 1000,
+                                 timeout_cb, gw_applet);
+    return;
 }
 
 gint timeout_cb (gpointer data)
@@ -270,89 +279,23 @@ gint timeout_cb (gpointer data)
     GWeatherApplet *gw_applet = (GWeatherApplet *)data;
 	
     gweather_update(gw_applet);
-    return 0;  /* Do not repeat timeout (will be re-set by gweather_update) */
-}
 
-void update_finish (WeatherInfo *info)
-{
-    char *s;
-    GWeatherApplet *gw_applet = info->applet;
-    
-/*
-    if (info != gweather_info) {
-	    if (gweather_info != NULL) {
-		    weather_info_free (gweather_info);
-		    gweather_info = NULL;
-	    }
-
-*/	    /* Save weather info */ /*
-	    gweather_info = weather_info_clone (info);
-    }
-*/
-    /* Store current conditions */
-   
-    gw_applet->gweather_info = info;
-    weather_info_get_pixbuf_mini(gw_applet->gweather_info, 
-    				 &(gw_applet->applet_pixbuf));
-    gtk_image_set_from_pixbuf (GTK_IMAGE (gw_applet->image), 
-    			       gw_applet->applet_pixbuf);
-
-    if (gw_applet->gweather_pref.use_metric)
-        weather_info_to_metric (gw_applet->gweather_info);
-        
-    gtk_label_set_text(GTK_LABEL(gw_applet->label), 
-    		       weather_info_get_temp_summary(gw_applet->gweather_info));
-
-
-    s = weather_info_get_weather_summary(gw_applet->gweather_info);
-    gtk_tooltips_set_tip(gw_applet->tooltips, GTK_WIDGET(gw_applet->applet), s, NULL);
-    g_free (s);
-
-
-    /* Update timer */
-    if (gw_applet->timeout_tag > 0)
-        gtk_timeout_remove(gw_applet->timeout_tag);
-    if (gw_applet->gweather_pref.update_enabled)
-        gw_applet->timeout_tag =  
-        	gtk_timeout_add (gw_applet->gweather_pref.update_interval * 1000,
-                                 timeout_cb, gw_applet);
-
-    /* Update dialog -- if one is present */
-    gweather_dialog_update(gw_applet);
+    return TRUE;
 }
 
 void gweather_update (GWeatherApplet *gw_applet)
 {
     gboolean update_success;
+    gint i;
 
-    weather_info_get_pixbuf_mini(gw_applet->gweather_info, 
-    				 &(gw_applet->applet_pixbuf));
-
-    gtk_image_set_from_pixbuf (GTK_IMAGE (gw_applet->image), 
-    			       gw_applet->applet_pixbuf);
     gtk_tooltips_set_tip(gw_applet->tooltips, GTK_WIDGET(gw_applet->applet), 
-    			 _("Updating..."), NULL);
-
-    /* Set preferred forecast type */
-    weather_forecast_set(gw_applet->gweather_pref.detailed ? 
-    			 	FORECAST_ZONE : FORECAST_STATE);
-
-    /* Set radar map retrieval option */
-    weather_radar_set(gw_applet->gweather_pref.radar_enabled);
-
-    /* Update current conditions */
-    if (gw_applet->gweather_info && 
-    	weather_location_equal(gw_applet->gweather_info->location, 
-    			       gw_applet->gweather_pref.location)) {
-        update_success = weather_info_update(gw_applet, 
-        				      gw_applet->gweather_info, 
-        				      update_finish);
-    } else {
-        weather_info_free(gw_applet->gweather_info);
-        gw_applet->gweather_info = NULL;
-        update_success = weather_info_new((gpointer)gw_applet, 
-        		 gw_applet->gweather_pref.location, update_finish);
+    			                 _("Updating..."), NULL);
+    
+    for (i=0; i<=gw_applet->gweather_info->numforecasts; i++) {
+    	gtk_tooltips_set_tip (gw_applet->tooltips, gw_applet->events[i], NULL, NULL);
     }
+
+    update_success = update_weather (gw_applet);
     
     return;
 }
