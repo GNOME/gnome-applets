@@ -505,9 +505,14 @@ gtk_fvwmpager_destroy_window(GtkFvwmPager* pager, gint xid)
 {
 
   PagerWindow* window = g_hash_table_lookup(pager->windows, (gconstpointer) xid);
-
-  if (window = pager->current_window)
+  
+  if (window == pager->current_window)
     pager->current_window = 0;
+  if (!window)
+    {
+      fprintf(stderr,"Destroying not existing window\n");
+      return;
+    }
   gtk_object_destroy(GTK_OBJECT(window->rect));
   g_hash_table_remove(pager->windows, (gconstpointer) xid);
   g_free(window);
@@ -585,6 +590,11 @@ gtk_fvwmpager_set_current_window(GtkFvwmPager* pager, gint xid)
   pager->current_window = window;
   if (!window)
     return;
+  if (window->xid == 0)
+    {
+      fprintf(stderr,"gtk_fvwmpager_set_current_window: xid = 0\n");
+      return;
+    }
   gnome_canvas_item_set(GNOME_CANVAS_ITEM(window->rect), "fill_color", pager_props.active_win_color, NULL);
 }
 

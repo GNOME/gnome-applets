@@ -32,6 +32,7 @@ typedef struct _Pager_props
   gchar*    inactive_win_color;
   gchar*    default_cursor;
   gchar*    window_drag_cursor;
+  GList*    desktop_names;
 }PagerProps;
 
 extern PagerProps pager_props;

@@ -315,6 +315,11 @@ configure_window(GtkFvwmPager* pager, unsigned long* body)
       win->iw     = 0;
       win->ih     = 0;
       win->flags  = 0;
+      if (xid == 0)
+	{
+	  fprintf(stderr,"Inserting window with xid 0\n");
+	  return;
+	}
       g_hash_table_insert(pager->windows, (gpointer)xid, win);
       new_window = 1;
     }
