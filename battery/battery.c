@@ -77,7 +77,6 @@ battery_update(gpointer data)
 
   /* The battery change information that we grab here will be used by
      both readout mode and graph mode. */
-  /* FIXME: Deal with errors */
   battery_read_charge(&percentage, &ac_online, &hours_remaining,
 		      &minutes_remaining);
 
@@ -95,7 +94,8 @@ battery_update(gpointer data)
 
   /* First check that it is time to update the graph. */
   time(&curr_time);
-  if (curr_time > (bat->last_graph_update + bat->graph_interval))
+  if (curr_time > (bat->last_graph_update + bat->graph_interval) ||
+      bat->force_update)
     {
       bat->last_graph_update = curr_time;
 
@@ -142,9 +142,12 @@ battery_update(gpointer data)
    *
    */
 
-  /* Only update the little picture of the battery if the battery charge
-     percentage has changed since the last time battery_update() ran. */
-  if (1)/*last_percentage != percentage)*/
+  /*
+   * Only update the little picture of the battery if the battery
+   * charge percentage has changed since the last time
+   * battery_update() ran.
+   */
+  if ((last_percentage != percentage) || bat->force_update)
     {
       /* Clear the readout pixmap to grey */
       gdk_draw_rectangle(bat->readout_pixmap,
@@ -241,8 +244,9 @@ battery_update(gpointer data)
   last_hours_remaining = hours_remaining;
   last_percentage = percentage;
 
-  return TRUE;
+  bat->force_update = FALSE;
 
+  return TRUE;
 } /* battery_update */
 
 
@@ -314,6 +318,9 @@ battery_configure_handler(GtkWidget *widget, GdkEventConfigure *event,
   /* We have to set up the picture here because the coordinates will
      be all wrong otherwise. */
   battery_setup_picture(bat);
+
+  bat->force_update = TRUE;
+  battery_update((gpointer) bat);
 
   return TRUE;
 }  /* battery_configure_handler */
@@ -397,6 +404,7 @@ make_new_battery_applet(void)
   bat->last_graph_update = 0;
   bat->graph_values = NULL;
   bat->setup = 0;
+  bat->force_update = TRUE;
 
   /* Load all the saved session parameters (or the defaults if none
      exist). */
@@ -497,18 +505,19 @@ make_new_battery_applet(void)
 					battery_properties_window,
 					bat);
 
+
   gtk_widget_show_all(bat->applet);
   gtk_widget_show(bat->graph_area);
   
-  /* Size things according to the saved settings */
-  battery_set_size(bat);
+  /* Allocate the colors... */
+  battery_create_gc(bat);
+  battery_setup_colors(bat);
 
   /* Display only one mode */
   battery_set_mode(bat);
 
-  /* Allocate the colors... */
-  battery_create_gc(bat);
-  battery_setup_colors(bat);
+  /* Size things according to the saved settings */
+  battery_set_size(bat);
 
   /* Nothing is drawn until this is set. */
   bat->setup = TRUE;
@@ -520,6 +529,10 @@ make_new_battery_applet(void)
 void
 battery_setup_picture(BatteryData * bat)
 {
+  gint readout_width, readout_height;
+
+  readout_width = bat->readout_area->allocation.width;
+  readout_height = bat->readout_area->allocation.height;
 
   /*  Set up the line segments for the battery picture.  The points are
       numbered as follows:
@@ -534,40 +547,40 @@ battery_setup_picture(BatteryData * bat)
   */
 
   /* 0 */
-  bat->readout_batt_points[0].x = bat->readout_area->allocation.width / 4;
-  bat->readout_batt_points[0].y = bat->readout_area->allocation.height / 6;
+  bat->readout_batt_points[0].x = readout_width / 4;
+  bat->readout_batt_points[0].y = readout_height / 6;
 
   /* 1 */
-  bat->readout_batt_points[1].x = bat->readout_area->allocation.width * 0.42;
-  bat->readout_batt_points[1].y = bat->readout_area->allocation.height / 6; 
+  bat->readout_batt_points[1].x = readout_width * 0.42;
+  bat->readout_batt_points[1].y = readout_height / 6; 
 
   /* 2 */
-  bat->readout_batt_points[2].x = bat->readout_area->allocation.width * 0.42;
-  bat->readout_batt_points[2].y = bat->readout_area->allocation.height / 8;
+  bat->readout_batt_points[2].x = readout_width * 0.42;
+  bat->readout_batt_points[2].y = readout_height / 8;
 
   /* 3 */
-  bat->readout_batt_points[3].x = bat->readout_area->allocation.width * 0.59;
-  bat->readout_batt_points[3].y = bat->readout_area->allocation.height / 8;
+  bat->readout_batt_points[3].x = readout_width * 0.59;
+  bat->readout_batt_points[3].y = readout_height / 8;
 
   /* 4 */
-  bat->readout_batt_points[4].x = bat->readout_area->allocation.width * 0.59;
-  bat->readout_batt_points[4].y = bat->readout_area->allocation.height / 6;
+  bat->readout_batt_points[4].x = readout_width * 0.59;
+  bat->readout_batt_points[4].y = readout_height / 6;
 
   /* 5 */
-  bat->readout_batt_points[5].x = bat->readout_area->allocation.width * 0.75;
-  bat->readout_batt_points[5].y = bat->readout_area->allocation.height / 6;
+  bat->readout_batt_points[5].x = readout_width * 0.75;
+  bat->readout_batt_points[5].y = readout_height / 6;
 
   /* 6 */
-  bat->readout_batt_points[6].x = bat->readout_area->allocation.width * 0.75;
-  bat->readout_batt_points[6].y = bat->readout_area->allocation.height * 0.83;
+  bat->readout_batt_points[6].x = readout_width * 0.75;
+  bat->readout_batt_points[6].y = readout_height * 0.83;
 
   /* 7 */
-  bat->readout_batt_points[7].x = bat->readout_area->allocation.width * 0.25;
-  bat->readout_batt_points[7].y = bat->readout_area->allocation.height * 0.83;
+  bat->readout_batt_points[7].x = readout_width * 0.25;
+  bat->readout_batt_points[7].y = readout_height * 0.83;
 
   /* 8 */
-  bat->readout_batt_points[8].x = bat->readout_area->allocation.width / 4;
-  bat->readout_batt_points[8].y = bat->readout_area->allocation.height / 6;
+  bat->readout_batt_points[8].x = readout_width / 4;
+  bat->readout_batt_points[8].y = readout_height / 6;
 } /* battery_setup_picture */
 
 void
@@ -601,7 +614,7 @@ battery_set_size(BatteryData * bat)
 
   /* If we've been resized, don't throw away the old graph data */
   if (bat->graph_values != NULL)
-    {
+    { 
       unsigned char * new_vals;
 
       new_vals = (unsigned char *) g_malloc(bat->width);
@@ -623,6 +636,10 @@ battery_set_size(BatteryData * bat)
     }
 
   bat->old_width = bat->width;
+
+  bat->force_update = TRUE;
+
+  battery_update((gpointer)bat);
 
 } /* battery_set_size */
 

@@ -1,6 +1,7 @@
 #include <stdio.h>
-#include <gnome.h>
+#include <errno.h>
 #include <string.h>
+#include <gnome.h>
 #include "read-battery.h"
 
 int
@@ -10,20 +11,68 @@ battery_read_charge(char * percentage,
 		    char * minutes_remaining)
 {
 #ifdef __linux__
-/* This was mainly lifted out of the APM sample interface functions that
-   came with the APM package. */ 
+  static FILE * apm_file = NULL;
+
   char buffer[256], units[10];
   apm_info i;
-  FILE * f;
-  
-  if ((f = fopen("/proc/apm", "r")) == NULL)
+
+  /*
+   * (1) Open /proc/apm
+   */
+  if (apm_file == NULL)
     {
-      g_error(_("Cannot open /proc/apm!  Make sure that you built APM "
-		"support into your kernel.\n"));
-      return FALSE;
+      apm_file = fopen("/proc/apm", "r");
+
+      if (apm_file == NULL)
+	{
+	  g_warning(_("Cannot open /proc/apm!  Make sure that you built APM "
+		      "support into your kernel.\n"));
+	  *ac_online = 1;
+	  *percentage = 100;
+	  *hours_remaining = -1;
+
+	  return TRUE;
+	}
+    }
+  else
+    {
+      /*
+       * If we are here, then this routine has been called before and
+       * apm_file is valid.  We do not want to call open() over and
+       * over again, since each call to open() requires an access to
+       * the root inode, and disk accesses are bad on laptops.  An
+       * alternative would be to chdir() into /proc, but then core
+       * dumps will disappear, and that's not good either.
+       *
+       * Unfortunately, we can't just lseek() to the beginning of
+       * /proc/apm and re-read the data, either.  It ends up always
+       * giving you the same data.  So we dup() the fd associated with
+       * apm_file, close the old one, and use the duplicate.  This
+       * gives us up-to-date apm information and never touches the
+       * filesystem.
+       *
+       */
+
+      int dup_fd;
+
+      dup_fd = dup( fileno(apm_file) );
+      if (dup_fd == -1)
+	{
+	  g_error(_("Could not dup() APM file descriptor: %s\n"),
+		  g_strerror(errno));
+	  abort();
+	}
+
+      fclose(apm_file);
+
+      apm_file = fdopen(dup_fd, "r");
+      fseek(apm_file, 0, SEEK_SET);
     }
 
-  fgets( buffer, sizeof( buffer ) - 1, f );
+  /*
+   * (2) Read the battery charge information
+   */
+  fgets( buffer, sizeof( buffer ) - 1, apm_file );
 
   buffer[ sizeof( buffer ) - 1 ] = '\0';
 
@@ -39,6 +88,9 @@ battery_read_charge(char * percentage,
 	  &i.battery_time,
 	  units );
 
+  /*
+   * (3) Interpret it and return.
+   */
   i.using_minutes = !strncmp( units, "min", 3 ) ? 1 : 0;
 
   if (i.using_minutes)
@@ -53,17 +105,16 @@ battery_read_charge(char * percentage,
       *minutes_remaining = i.battery_time / 60;
     }
   
-  /* Fix possible kernel bug -- percentage set to 0xff (==255) instead
-     of -1. */
   if (i.battery_percentage > 100) i.battery_percentage = 0;
 
-  /* If we cannot read the battery percentage (indicated by a reading
-     of -1), then just set it to zero.  It will sometimes appear as -1
-     if, for example, the battery is unplugged, so this might be a
-     FIXME if we want to provide that kind of information later */
+  /*
+   * If we cannot read the battery percentage (indicated by a
+   *  reading of -1), then just set it to zero.  It will sometimes
+   *  appear as -1 if, for example, the battery is unplugged, so this
+   *  might be a FIXME if we want to provide that kind of information
+   *  later
+   */
   if (i.battery_percentage < 0) i.battery_percentage = 0;
-
-  fclose(f);
 
   *percentage = i.battery_percentage;
   *ac_online = i.ac_line_status;

@@ -53,7 +53,7 @@ battery_properties_window(AppletWidget * applet, gpointer data)
   gtk_spin_button_set_update_policy( GTK_SPIN_BUTTON(height_spin),
 				     GTK_UPDATE_ALWAYS );
   gtk_signal_connect(GTK_OBJECT(bat->height_adj), "value_changed",
-		     GTK_SIGNAL_FUNC(value_changed_cb), bat);
+		     GTK_SIGNAL_FUNC(adj_value_changed_cb), bat);
   
   l = gtk_label_new(_("Applet Width")); 
   bat->width_adj = gtk_adjustment_new ( bat->width, 0.5, 666, 1, 8, 8 );
@@ -63,7 +63,7 @@ battery_properties_window(AppletWidget * applet, gpointer data)
   gtk_spin_button_set_update_policy( GTK_SPIN_BUTTON(width_spin),
 				     GTK_UPDATE_ALWAYS );
   gtk_signal_connect(GTK_OBJECT(bat->width_adj), "value_changed",
-		     GTK_SIGNAL_FUNC(value_changed_cb), bat);
+		     GTK_SIGNAL_FUNC(adj_value_changed_cb), bat);
 
   l = gtk_label_new(_("Applet Mode"));
   bat->mode_radio_graph = gtk_radio_button_new_with_label (NULL, _("Graph"));
@@ -77,7 +77,7 @@ battery_properties_window(AppletWidget * applet, gpointer data)
       (GTK_TOGGLE_BUTTON (bat->mode_radio_readout), 1);
     
   gtk_signal_connect (GTK_OBJECT (bat->mode_radio_graph), "toggled",
-		      GTK_SIGNAL_FUNC (value_changed_cb), bat);
+		      GTK_SIGNAL_FUNC (toggle_value_changed_cb), bat);
 	
   gtk_table_attach ( GTK_TABLE(t), l,  3, 4, 0, 1, GTK_FILL | GTK_EXPAND,
 		     GTK_EXPAND, 0, 0); 
@@ -97,11 +97,11 @@ battery_properties_window(AppletWidget * applet, gpointer data)
 
   bat->graph_ac_on_color_sel = GNOME_COLOR_PICKER(gnome_color_picker_new());
   gtk_signal_connect(GTK_OBJECT(bat->graph_ac_on_color_sel), "color_set",
-		     GTK_SIGNAL_FUNC(value_changed_cb), bat );
+		     GTK_SIGNAL_FUNC(col_value_changed_cb), bat );
 
   bat->graph_ac_off_color_sel = GNOME_COLOR_PICKER(gnome_color_picker_new());
   gtk_signal_connect(GTK_OBJECT(bat->graph_ac_off_color_sel), "color_set",
-		     GTK_SIGNAL_FUNC(value_changed_cb), bat );
+		     GTK_SIGNAL_FUNC(col_value_changed_cb), bat );
 
   /* Initialize the selector colors */
   sscanf(bat->graph_color_ac_on_s, "#%02x%02x%02x", &r, &g, &b);
@@ -130,7 +130,7 @@ battery_properties_window(AppletWidget * applet, gpointer data)
   graph_speed_spin = gtk_spin_button_new( GTK_ADJUSTMENT(bat->graph_speed_adj),
 					  1, 0 );
   gtk_signal_connect(GTK_OBJECT(bat->graph_speed_adj), "value_changed",
-		     GTK_SIGNAL_FUNC(value_changed_cb), bat);
+		     GTK_SIGNAL_FUNC(adj_value_changed_cb), bat);
   gtk_spin_button_set_update_policy( GTK_SPIN_BUTTON(graph_speed_spin),
 				     GTK_UPDATE_ALWAYS );
   
@@ -146,7 +146,7 @@ battery_properties_window(AppletWidget * applet, gpointer data)
 		    (GTK_RADIO_BUTTON(bat->dir_radio), _("Right to Left"));
 
   gtk_signal_connect (GTK_OBJECT (bat->dir_radio), "toggled",
-		      GTK_SIGNAL_FUNC (value_changed_cb), bat);
+		      GTK_SIGNAL_FUNC (toggle_value_changed_cb), bat);
 
   gtk_table_attach_defaults ( GTK_TABLE(t), bat->dir_radio, 1, 2, 3, 4);
   gtk_table_attach_defaults ( GTK_TABLE(t), r2, 2, 3, 3, 4);
@@ -162,11 +162,11 @@ battery_properties_window(AppletWidget * applet, gpointer data)
 
   bat->readout_ac_on_color_sel = GNOME_COLOR_PICKER(gnome_color_picker_new());
   gtk_signal_connect(GTK_OBJECT(bat->readout_ac_on_color_sel), "color_set",
-		     GTK_SIGNAL_FUNC(value_changed_cb), bat );
+		     GTK_SIGNAL_FUNC(col_value_changed_cb), bat );
 
   bat->readout_ac_off_color_sel = GNOME_COLOR_PICKER(gnome_color_picker_new());
   gtk_signal_connect(GTK_OBJECT(bat->readout_ac_off_color_sel), "color_set",
-		     GTK_SIGNAL_FUNC(value_changed_cb), bat );
+		     GTK_SIGNAL_FUNC(col_value_changed_cb), bat );
 
   /* Initialize the selector colors */
   sscanf(bat->readout_color_ac_on_s, "#%02x%02x%02x", &r, &g, &b);
@@ -273,6 +273,9 @@ prop_apply (GtkWidget *w, int page, gpointer data)
       BATTERY_MODE_GRAPH : BATTERY_MODE_READOUT;
       
   battery_set_mode(bat);
+
+  bat->force_update = TRUE;
+  battery_update((gpointer) bat);
   
   /*make the panel save our config*/
   applet_widget_sync_config(APPLET_WIDGET(bat->applet));
@@ -287,9 +290,27 @@ prop_apply (GtkWidget *w, int page, gpointer data)
  */
 
 void
-value_changed_cb( GtkWidget * widget, gpointer data )
+adj_value_changed_cb( GtkAdjustment * ignored, gpointer data )
 {
   BatteryData * bat = data;
 
   gnome_property_box_changed (GNOME_PROPERTY_BOX (bat->prop_win)); 
 } /* value_changed_cb */
+
+void
+toggle_value_changed_cb( GtkToggleButton * ignored, gpointer data )
+{
+  BatteryData * bat = data;
+
+  gnome_property_box_changed (GNOME_PROPERTY_BOX (bat->prop_win)); 
+} /* value_changed_cb */
+
+void
+col_value_changed_cb( GtkObject * ignored, guint arg1, guint arg2,
+		      guint arg3, guint arg4, gpointer data )
+{
+  BatteryData * bat = data;
+
+  gnome_property_box_changed (GNOME_PROPERTY_BOX (bat->prop_win)); 
+} /* value_changed_cb */
+

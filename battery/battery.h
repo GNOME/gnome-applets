@@ -27,6 +27,8 @@ typedef struct BatteryData {
 
   gint setup;
 
+  gboolean force_update;
+
   /*
    *
    * The Graph
