@@ -143,10 +143,10 @@ static void update_mail_amount_display(AppData *ad)
 		if (ad->skin->mail_amount)
 			{
 			gint p;
-			if (ad->mailsize >= ad->mail_max)
+			if (ad->mailsize >= ad->mail_max * 1024)
 				p = ad->skin->mail_amount->sections - 1;
 			else
-				p = (float)ad->mailsize / ( ad->mail_max * 1024 ) / ad->skin->mail_amount->sections;
+				p = (float)ad->mailsize / ( ad->mail_max * 1024 ) * ad->skin->mail_amount->sections;
 			draw_item(ad->skin->mail_amount, p, ad);
 			}
 		draw_number(ad->skin->mail_count, ad->mailsize / 1024, ad);
