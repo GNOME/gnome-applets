@@ -34,7 +34,7 @@
 static char *prefixdir = NULL;
 
 GList *
-find_presets ()
+find_presets (void)
 {
   DIR *dir;
   struct dirent *actfile;

@@ -389,7 +389,7 @@ grab_button_pressed (GtkButton *button,
 }
 
 static void
-init_xmaps ()
+init_xmaps (void)
 {
   XModifierKeymap *xmk=NULL;
   KeyCode *map;
