@@ -10,6 +10,11 @@ gtop_SUBDIRS = $(gtop_applets)
 gtop_nb_SUBDIRS = $(gtop_nb_applets)
 endif
 
+xml_applets = \
+	gnotes
+if HAVE_LIBXML
+xml_SUBDIRS = $(xml_applets)
+endif
 
 ghttp_applets = \
 	slashapp	\
@@ -86,7 +91,8 @@ SUBDIRS = \
 	$(cdplayer_SUBDIRS)	\
 	$(mixer_SUBDIRS)	\
 	$(modemlights_SUBDIRS)	\
-	$(esd_SUBDIRS)		
+	$(esd_SUBDIRS)		\
+	$(xml_SUBDIRS)
 
 
 DIST_SUBDIRS = \
@@ -101,7 +107,9 @@ DIST_SUBDIRS = \
 	$(mixer_applets)	\
 	$(modemlights_applets)	\
 	$(esd_applets)		\
-	$(esd_nb_applets)
+	$(esd_nb_applets)	\
+	$(xml_applets)		\
+	$(xml_nb_applets)
 
 ## to automatically rebuild aclocal.m4 if any of the macros in `macros/' change
 @MAINT@include macros/macros.dep

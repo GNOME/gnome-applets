@@ -1,0 +1,122 @@
+/*
+#
+#   GNotes!
+#   Copyright (C) 1998-1999  spoon@ix.netcom.com
+#   Copyright (C) 1999 dres@debian.org
+#
+#   This program is free software; you can redistribute it and/or modify
+#   it under the terms of the GNU General Public License as published by
+#   the Free Software Foundation; either version 2 of the License, or
+#   (at your option) any later version.
+#
+#   This program is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#   GNU General Public License for more details.
+#
+#   You should have received a copy of the GNU General Public License
+#   along with this program; if not, write to the Free Software
+#   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+*/
+
+#ifndef _GNOTE_H_
+#define _GNOTE_H_
+
+/* uncomment this to turn on debugging */
+/* #define GNOTE_DEBUG (1) */
+
+#ifdef GNOTE_DEBUG
+#  define g_debug(format, args...) \
+    g_log(G_LOG_DOMAIN, G_LOG_LEVEL_DEBUG, "GNotes: "format, ##args)
+#else
+#  define g_debug(format, args...) 
+#endif
+
+#define g_critical(format, args...) \
+  g_log(G_LOG_DOMAIN, G_LOG_LEVEL_CRITICAL, "GNotes: "format, ##args)
+
+#define g_info(format, args...) \
+  g_log(G_LOG_DOMAIN, G_LOG_LEVEL_INFO, "GNotes: "format, ##args)
+
+
+#include <gnome.h>
+#include <applet-widget.h>
+#include "config.h"
+
+/* various actions */
+#define GNOTES_SAVE    "Save Notes"
+#define GNOTES_LOAD    "Load Notes"
+#define GNOTES_RAISE   "Raise Notes"
+#define GNOTES_LOWER   "Lower Notes"
+#define GNOTES_HIDE    "Hide Notes"
+#define GNOTES_SHOW    "Show Notes"
+#define GNOTE_RESIZE   "Resize Note"
+#define GNOTE_HIDE     "Hide Note"
+#define GNOTE_DELETE   "Delete Note"
+#define GNOTE_NEW_DEFAULT  "Default Note"
+#define GNOTE_NEW_1x1  "1x1 Note"
+#define GNOTE_NEW_1x2  "1x2 Note"
+#define GNOTE_NEW_2x2  "2x2 Note"
+#define GNOTE_NEW_2x3  "2x3 Note"
+#define GNOTE_NEW_3x3  "3x3 Note"
+#define GNOTE_NEW_3x4  "3x4 Note"
+#define GNOTE_NEW_4x4  "4x4 Note"
+#define GNOTE_NEW_4x5  "4x5 Note"
+
+#define TITLE_LEN (20)
+
+#define GNOTE_FORMAT "#GNOTE-1"
+
+#define GNOTES_DIR    ".gnome/gnotes.d"
+
+typedef struct _Gnote
+{
+    GtkWidget *window;
+    GtkWidget *hbox;
+    GtkWidget *handle_box;
+    GtkWidget *text;
+    gboolean  hidden;
+    time_t    timestamp;
+    gchar    *title;
+    gboolean  already_saved;
+    gchar    *type;
+} GNote;
+
+struct _GNotes
+{
+    GtkWidget *applet;
+    gint default_height;
+    gint default_width;
+};
+
+typedef struct _GNotes GNotes;
+
+void gnotes_init();
+
+const gchar *get_gnotes_dir();
+void gnote_action(GtkWidget *, gpointer);
+void gnote_menu(GtkWidget *, GdkEventButton *);
+gint gnote_handle_button_cb(GtkWidget *, GdkEventButton *, gpointer);
+void gnote_new(gint, gint, gint, gint, gboolean, const gchar *,
+               time_t, const gchar *, gboolean, const gchar *);
+void gnote_new_cb(AppletWidget *, gpointer);
+gint gnote_delete_cb(GtkWidget *, gpointer);
+void gnote_signal_handler(int);
+gint gnote_motion_cb(GtkWidget *, GdkEventButton *event, gpointer);
+gint gnote_handle_button_cb(GtkWidget *, GdkEventButton *event, gpointer);
+
+void gnotes_raise(AppletWidget*, gpointer);
+void gnote_raise(gpointer);
+void gnotes_lower(AppletWidget*, gpointer);
+void gnote_lower(gpointer);
+void gnotes_show(AppletWidget*, gpointer);
+void gnote_show(gpointer);
+void gnotes_hide(AppletWidget*, gpointer);
+void gnote_hide(gpointer);
+void gnotes_save(AppletWidget*, gpointer);
+void gnote_save(gpointer);
+void gnotes_load(AppletWidget*, gpointer);
+
+
+#endif /* _GNOTE_H_ */
+

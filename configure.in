@@ -81,6 +81,14 @@ if test "$P_MODEMLIGHTS" != "modemlights"; then
   AC_MSG_WARN([*** \`modemlights' applet will not be built ***])
 fi
 
+dnl Check for xml
+GNOME_XML_CHECK
+
+AM_CONDITIONAL(HAVE_LIBXML, test -n "$GNOME_XML_LIB")
+if test -z "$GNOME_XML_LIB"; then
+  AC_MSG_WARN([*** \`gnotes' applet will not be built ***])
+fi
+
 dnl Check for libgtop
 GNOME_LIBGTOP_HOOK(,applets_libgtop=yes)
 
@@ -157,6 +165,7 @@ gkb/Makefile
 gkb/gkb/Makefile
 gkb/xmodmap/Makefile
 gnome-pager/Makefile
+gnotes/Makefile
 gweather/Makefile
 gweather/pixmaps/Makefile
 jbc/Makefile
