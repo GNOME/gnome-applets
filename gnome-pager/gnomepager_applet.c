@@ -1574,6 +1574,10 @@ main(int argc, char *argv[])
   config.show_icons = gnome_config_get_int("stuff/show_icons=1");
   config.show_arrow = gnome_config_get_int("stuff/show_arrow=1");
   config.fixed_tasklist = gnome_config_get_int("stuff/fixed_tasklist=0");
+  config.pager_w_0 = gnome_config_get_int("stuff/pager_w_0=31");
+  config.pager_h_0 = gnome_config_get_int("stuff/pager_h_0=22");
+  config.pager_w_1 = gnome_config_get_int("stuff/pager_w_1=62");
+  config.pager_h_1 = gnome_config_get_int("stuff/pager_h_1=44");
 
   gdk_error_warnings = 0;  
   get_desktop_names();
