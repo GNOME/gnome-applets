@@ -10,14 +10,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets.gnome-2-2.ar\n"
-"POT-Creation-Date: 2004-03-17 11:48+1300\n"
-"PO-Revision-Date: 2004-03-12 09:42+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-03-17 03:42+0100\n"
+"PO-Revision-Date: 2004-03-17 13:19+0100\n"
 "Last-Translator: Arafat Medini <lumina@silverpen.de>\n"
 "Language-Team: Arabic <doc@arabeyes.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Report-Msgid-Bugs-To: \n"
+"Content-Transfer-Encoding: 8bit"
 
 #: accessx-status/GNOME_AccessxApplet.xml.h:1
 #: battstat/GNOME_BattstatApplet.xml.h:1 cdplayer/GNOME_CDPlayerApplet.xml.h:1
@@ -92,10 +92,12 @@ msgstr "أداة"
 #: stickynotes/stickynotes_applet_callbacks.c:230
 #: wireless/wireless-applet.c:572
 msgid "translator_credits"
-msgstr ""
-"تحت إشراف عرب آيز (http://www.arabeyes.org):عرفات المديني، تونس "
-"<lumina@silverpen.de>عصام بيازيدي، الأردننور الدين أمين آغة، العربية "
-"السعوديةسيد جعفر الموسوي، البحرينمحمد جمال، مصرإبراهيم الإبراهيم، الكويت"
+msgstr "عرفات المديني، تونس <lumina@silverpen.de>"
+"عصام بيازيدي، الأردن "
+"نور الدين أمين آغة، العربية "
+"السعوديةسيد جعفر الموسوي، البحرين "
+"محمد جمال، مصر "
+"إبراهيم الإبراهيم، الكويت "
 
 #: accessx-status/applet.c:155 accessx-status/applet.c:983
 #: accessx-status/applet.c:1081 accessx-status/applet.c:1248
@@ -312,6 +314,7 @@ msgstr ""
 #. when the computer is using battery power.
 #: battstat/battstat_applet.c:510 battstat/battstat_applet.c:1052
 #: battstat/battstat_applet.c:1141
+#, c-format
 msgid "System is running on battery power"
 msgstr "النظام يعمل على طاقة البطارية"
 
@@ -319,15 +322,20 @@ msgstr "النظام يعمل على طاقة البطارية"
 #. when the computer is using AC power.
 #: battstat/battstat_applet.c:513 battstat/battstat_applet.c:1058
 #: battstat/battstat_applet.c:1147
+#, c-format
 msgid "System is running on AC power"
 msgstr "النظام يعمل على التيار الكهربائي المتغير"
 
 #: battstat/battstat_applet.c:527 wireless/wireless-applet.c:146
+#, c-format
 msgid "N/A"
 msgstr "غير متوفر"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
+#. This string will display as a tooltip over the status frame
+#. when the computer is using battery power and the battery meter
+#. and percent meter is hidden by the user.
 #: battstat/battstat_applet.c:651 battstat/battstat_applet.c:1032
 #, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
@@ -335,6 +343,9 @@ msgstr "النظام يعمل على طاقة البطارية. البطارية
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
+#. This string will display as a tooltip over the status frame
+#. when the computer is using AC power and the battery meter
+#. and percent meter is hidden by the user.
 #: battstat/battstat_applet.c:658 battstat/battstat_applet.c:1039
 #, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
@@ -345,6 +356,7 @@ msgstr "النظام يعمل على التيار الكهربائي المتغ�
 #. power and the battery isn't present. Not a
 #. possible combination, I guess... :)
 #: battstat/battstat_applet.c:669
+#, c-format
 msgid "System is running on battery power. Battery: Not present"
 msgstr "النظام يعمل على طاقة البطارية. البطارية: غير متوفرة"
 
@@ -352,6 +364,7 @@ msgstr "النظام يعمل على طاقة البطارية. البطارية
 #. battery frame when the computer is using AC
 #. power and the battery isn't present.
 #: battstat/battstat_applet.c:675
+#, c-format
 msgid "System is running on AC power. Battery: Not present"
 msgstr "النظام يعمل على التيار الكهربائي المتغير. البطارية: غير متوفرة"
 
@@ -366,6 +379,7 @@ msgstr "البطارية: %d%% (%s)"
 #. Displayed as a tooltip over the battery meter when no
 #. battery is present.
 #: battstat/battstat_applet.c:691
+#, c-format
 msgid "Battery: Not present"
 msgstr "البطارية: غير متوفرة"
 
@@ -3739,18 +3753,14 @@ msgid "You have mail."
 msgstr "بانتظارك بريد."
 
 #: mailcheck/mailcheck.c:1093
-#, fuzzy, c-format
+#, c-format
 msgid "%d unread"
-msgid_plural "%d unread"
-msgstr[0] "%d غير مقروء"
-msgstr[1] "%d غير مقروء"
+msgstr "%d غير مقروء"
 
 #: mailcheck/mailcheck.c:1094 mailcheck/mailcheck.c:1103
-#, fuzzy, c-format
+#, c-format
 msgid "%d message"
-msgid_plural "%d messages"
-msgstr[0] "%d رسالة"
-msgstr[1] "%d رسالة"
+msgstr "%d رسالة"
 
 #. translators: this is of the form "%d unread/%d messages"
 #: mailcheck/mailcheck.c:1097
@@ -4094,10 +4104,12 @@ msgid "Set default list value for %s\n"
 msgstr "ضبط قائمة القيم الإفتراضية لـ %s\n"
 
 #: mini-commander/src/mc-install-default-macros.c:117
+#, c-format
 msgid "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL is set, not installing schemas\n"
 msgstr "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL ضبط، لن يثبت المخطط\n"
 
 #: mini-commander/src/mc-install-default-macros.c:125
+#, c-format
 msgid "Must set the GCONF_CONFIG_SOURCE environment variable\n"
 msgstr "يجب ضبط المتغيًر البيئي GCONF_CONFIG_SOURCE\n"
 
@@ -5499,21 +5511,19 @@ msgid "Whether to use the default system font"
 msgstr "ما إذا يستخدم خط النظام الافتراضي"
 
 #: stickynotes/stickynotes_applet.c:433
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%s\n"
 "%d note"
-msgid_plural ""
 "%s\n"
 "%d notes"
-msgstr[0] ""
+msgstr ""
 "%s\n"
 "%d مذكرة%s\n"
-"%d مذكرات"
-msgstr[1] ""
 "%s\n"
-"%d مذكرة%s\n"
 "%d مذكرات"
+""
+""
 
 #: stickynotes/stickynotes_applet_callbacks.c:242
 msgid "(c) 2002-2003 Loban A Rahman"
