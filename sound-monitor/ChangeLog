@@ -1,3 +1,68 @@
+Fri Sep 29 18:04:47 2000  John Ellis  <johne@bellatlantic.net>
+
+	* Syncing current version into CVS, an edited copy of the ChangeLog
+	is below.
+	Note: fft.c needs lots of work, left it in in case someone wants to
+	fix it for a proper spectrum analyzer. A test theme is included,
+	spectra-clear, to test the spectrum analyzer from analyzer.[ch] and
+	fft.[ch]. spectra-clear is not installed at this time.
+
+	I will make sure this all passes make distcheck once I sync clockmail
+	applet onto CVS too.
+
+	--
+
+	* analyzer.[ch]: Added an spectrum analyzer display widget.
+	* fft.[ch]: FFT routines.
+	* skin.c, theme.c, update.c: Added analyzer to theme spec.
+	* themes/spectra-clear: New theme to test spectrum analyzer.
+
+	--
+
+	* README, sound-monitor.spec.in: Updated.
+	* pixbuf_ops.c: Fixes for off by ones ??
+
+	--
+
+	* THEME-SPEC: Updated, and re-added, how did this file ever get lost?
+
+	--
+
+	* Makefile.am, sound-monitor_applet.spec.in: Include spec file in make
+	distcheck, update requirements.
+	* README: Updated.
+	* themes/Makefile.am: Install all the blue theme files so it actually
+	works.
+
+	--
+
+	* def_theme.c, item.c, meter.c, scope.c, skin.c, theme.c: Fixes for
+	gdk-pixbuf 0.7.0 API.
+
+	--
+
+	* pixbuf_ops.[ch]: Move to the newer funcs for
+	pixbuf_copy_area{_alpha}()
+	* item.c, meter.c, scope.c, skin.c: Change to use above.
+
+	--
+
+	* skin.c: Fix 'doesn't sync back on new skin' and 'no initial redraw
+	on new skin' bugs.
+	* scope.c (scope_draw): Fix vertical drawing of scopes in line mode.
+	* themes/scope-clear/*.png: Minor fixups. Added small and tiny size.
+	* themes/scope-round/scope*.png: Add transparent areas, the old style
+	transparency was drawn from the back image only.
+
+	--
+
+	* *.[ch]: Broke code into smaller files, convert to gdk_pixbuf, add
+	transparency support.
+	* def_theme.[ch], esdcalls.h, item.[ch], manager.h, meter.[ch],
+	pixbuf_ops.[ch], scope.[ch], skin.[ch], theme.h, typedefs.h,
+	update.[ch]: New file resulting from above.
+	* Makefile.am: Added new file references.
+
 2000-08-16  Alexander Kirillov  <kirillov@math.sunysb.edu>
 
 	* docs/C/sound-monitor-applet.sgml: updated the docs, clarifying

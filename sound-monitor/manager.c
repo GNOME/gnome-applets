@@ -1,11 +1,12 @@
-/* GNOME Esound Monitor Control applet
- * (C) 1999 John Ellis
+/* GNOME sound-monitor applet
+ * (C) 2000 John Ellis
  *
  * Author: John Ellis
  *
  */
 
 #include "sound-monitor.h"
+#include "manager.h"
 
 enum {
 	STREAM_TYPE,

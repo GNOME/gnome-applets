@@ -1,24 +1,21 @@
-/* GNOME Esound Monitor Control applet
- * (C) 1999 John Ellis
+/* GNOME sound-Monitor applet
+ * (C) 2000 John Ellis
  *
  * Author: John Ellis
  *
  */
 
-/* Portions of code in this file based on vu-meter by Gregory McLean */
+/*
+ * Portions of code in this file originally based on vu-meter by Gregory McLean
+ * almost completely different by now.
+ */
 
 #include "sound-monitor.h"
-
-static gint open_sound (gchar *esd_host, gint use_input);
-static void update_levels (gpointer data, gint source, GdkInputCondition condition);
+#include "esdcalls.h"
 
 static gint open_sound (gchar *esd_host, gint use_input)
 {
 	gint sound = -1;
-
-#ifdef HAVE_ADVANCED
-	use_input = FALSE;
-#endif
 
 	if (!use_input)
 		{
@@ -27,125 +24,161 @@ static gint open_sound (gchar *esd_host, gint use_input)
 		}
 	else
 		{
-	/* use this command to monitor input (microphone, line-in, cd, etc.)
-	   hmm, well it works for me under Linux kernel 2.0.36, but freezes
-	   the system under 2.2.1. I think it is a duplex problem.
-	   Yes, this should be an option, but not until it stops freezing my
-	   system under 2.2.x :( UPDATE: I added the option, but did not test it.*/
 		sound = esd_record_stream (ESD_BITS16|ESD_STEREO|ESD_STREAM|ESD_PLAY|ESD_RECORD,
 					   RATE, esd_host, "volume_meter_applet");
 		}
 
 	if (sound < 0)
-		{ /* TPG: Make a friendly error dialog if we can't open sound */
+		{
 		GtkWidget *box;
-		/*printf("unable to connect to esound");*/
 		box = gnome_error_dialog("Cannot connect to the sound daemon.\nThe sound daemon can be started by selecting 'Start ESD' from\n the right click menu, or by running 'esd' at a command prompt.");
 		}
 
 	return sound;
 }
 
-static void update_levels (gpointer data, gint source, GdkInputCondition condition)
+static void sound_compute_volume(SoundData *sd)
 {
-	AppData *ad = data;
-	register gint i;
-	register short val_l, val_r;
-	static unsigned short bigl, bigr;
+	unsigned short l, r;
+	unsigned short val_l, val_r;
+	int i;
 
-	if (!(read (source, ad->aubuf, NSAMP * 2)))
+	l = sd->left;
+	r = sd->right;
+	for (i = 1; i < NSAMP / 2;)
+		{
+		val_r = abs (sd->buffer[i++]);
+		val_l = abs (sd->buffer[i++]);
+		l = (val_l > l) ? val_l : l;
+		r = (val_r > r) ? val_r : r;
+		}
+	l /= 327;
+	r /= 327;
+
+	sd->left = l;
+	sd->right = r;
+}
+
+static void sound_read(gpointer data, gint source, GdkInputCondition condition)
+{
+	SoundData *sd = data;
+
+	if (!(read (source, sd->buffer, NSAMP * 2)))
 		{
 		return;
 		printf("...nothing");
 		}
-	bigl = 0;
-	bigr = 0;
-	for (i = 1; i < NSAMP / 2;)
-		{
-		val_r = abs (ad->aubuf[i++]);
-		val_l = abs (ad->aubuf[i++]);
-		bigl = (val_l > bigl) ? val_l : bigl;
-		bigr = (val_r > bigr) ? val_r : bigr;
-		}
-	bigl /= 327;
-	bigr /= 327;
 
-	/* ok, these values are stored, and will be updated in the
-	   next screen redraw update, this will be improved, but for now...
-	   the idea is to allow a screen refresh rate slower than the input rate */
-	ad->vu_l = bigl;
-	ad->vu_r = bigr;
-	ad->new_vu_data = TRUE;
+	sd->new_data = TRUE;
+
+	sound_compute_volume(sd);
+
 	return;
-	condition = (GdkInputCondition) 0;
+}
+
+void sound_get_volume(SoundData *sd, gint *l, gint *r)
+{
+	if (!sd) return;
+
+	*l = sd->left;
+	*r = sd->right;
+
+	/* this is reset after every call */
+	sd->left = 0;
+	sd->right = 0;
+}
+
+void sound_get_buffer(SoundData *sd, short **buffer, gint *length)
+{
+	if (!sd) return;
+
+	*buffer = sd->buffer;
+	*length = NSAMP;
 }
 
 /* returns TRUE if successful, FALSE if failed */
-gint init_sound(AppData *ad)
+SoundData *sound_init(gchar *host, gint monitor_input)
 {
-	ad->sound_fd = open_sound(ad->esd_host, ad->monitor_input);
+	SoundData *sd;
+	gint fd;
 
-	if(ad->sound_fd > 0) /* TPG: Make sure we have a valid fd... */
+	fd = open_sound(host, monitor_input);
+
+	if (fd < 1) return NULL;
+
+	sd = g_new0(SoundData, 1);
+
+	sd->fd = fd;
+	sd->input_cb_id = gdk_input_add (sd->fd, GDK_INPUT_READ, (GdkInputFunction)sound_read, sd);
+
+	sd->left = sd->right = 0;
+	sd->new_data = FALSE;
+
+	return sd;
+}
+
+void sound_free(SoundData *sd)
+{
+	if (!sd) return;
+
+	if (sd->input_cb_id > -1)
 		{
-		ad->sound_input_cb_id = gdk_input_add (ad->sound_fd, GDK_INPUT_READ, (GdkInputFunction)update_levels, ad);
-		ad->esd_status = ESD_STATUS_STANDBY;
-		return TRUE;
+		gdk_input_remove(sd->input_cb_id);
 		}
-	ad->esd_status = ESD_STATUS_ERROR;
+	if (sd->fd > -1)
+		{
+		esd_close(sd->fd);
+		}
+
+	g_free(sd);
+}
+
+/* esd controls */
+
+gint esd_control(ControlType function, gchar *host)
+{
+	gint esd_fd;
+	gint ret;
+
+	switch (function)
+		{
+		case Control_Start:
+			/* EEK! ESD should have a flag to start the daemon in
+			 * the background, and return to cmd line when ready */
+			ret = system("esd &");
+			if (ret == -1 || ret == 127) return FALSE;
+			sleep(3);
+			return TRUE;
+			break;
+		case Control_Standby:
+			esd_fd = esd_open_sound(host);
+			if (esd_fd >= 0)
+				{
+				esd_standby(esd_fd);
+				esd_close(esd_fd);
+				return TRUE;
+				}
+			break;
+		case Control_Resume:
+			esd_fd = esd_open_sound(host);
+			if (esd_fd >= 0)
+				{
+				esd_resume(esd_fd);
+				esd_close(esd_fd);
+				return TRUE;
+				}
+			break;
+		}
+
 	return FALSE;
 }
 
-/* shuts down the esd connection fd */
-void stop_sound(AppData *ad)
-{
-	if (ad->sound_input_cb_id > -1)
-		{
-		gdk_input_remove(ad->sound_input_cb_id);
-		ad->sound_input_cb_id = -1;
-		}
-	if (ad->sound_fd > -1)
-		{
-		esd_close(ad->sound_fd);
-		ad->sound_fd = -1;
-		}
-}
-
-void esd_sound_control(gint function, AppData *ad)
-{
-	if (function == ESD_CONTROL_START)
-		{
-		/* EEK! ESD should have a flag to start the daemon in
-		 * the background, and return to cmd line when ready */
-		system("esd &");
-		sleep(3);
-		init_sound(ad);
-		}
-	else if (function == ESD_CONTROL_STANDBY)
-		{
-		gint esd_fd = esd_open_sound(ad->esd_host);
-		if (esd_fd>= 0)
-			{
-			esd_standby(esd_fd);
-			esd_close(esd_fd);
-			}
-		}
-	else if (function == ESD_CONTROL_RESUME)
-		{
-		gint esd_fd = esd_open_sound(ad->esd_host);
-		if (esd_fd>= 0)
-			{
-			esd_resume(esd_fd);
-			esd_close(esd_fd);
-			}
-		}
-}
-
-gint esd_check_status(AppData *ad)
+StatusType esd_status(gchar *host)
 {
 	esd_standby_mode_t mode;
 	gint esd_fd = 0;
 
-	esd_fd = esd_open_sound(ad->esd_host);
+	esd_fd = esd_open_sound(host);
 	if (esd_fd>= 0)
 		{
 		mode = esd_get_standby_mode(esd_fd);
@@ -154,12 +187,14 @@ gint esd_check_status(AppData *ad)
 	else
 		{
 		/* hmm, well, this must be an error, right? */
-		return ESD_STATUS_ERROR;
+		return Status_Error;
 		}
 
-	if (mode == ESM_ON_STANDBY) return ESD_STATUS_STANDBY;
-	if (mode == ESM_ON_AUTOSTANDBY) return ESD_STATUS_AUTOSTANDBY;
-	if (mode == ESM_RUNNING) return ESD_STATUS_READY;
+	if (mode == ESM_ON_STANDBY) return Status_Standby;
+	if (mode == ESM_ON_AUTOSTANDBY) return Status_AutoStandby;
+	if (mode == ESM_RUNNING) return Status_Ready;
 
-	return ESD_STATUS_ERROR;
+	return Status_Error;
 }
+
+

@@ -102,6 +102,29 @@ scope_r_stuff = \
 	scope-round/scope_tiny.png	\
 	scope-round/themedata
 
+scope_cleardir = $(datadir)/sound-monitor/scope-clear
+scope_clear_DATA =
+scope_clear_stuff = \
+	scope-clear/back.png		\
+	scope-clear/back_small_h.png	\
+	scope-clear/back_small_v.png	\
+	scope-clear/back_tiny_h.png	\
+	scope-clear/back_tiny_v.png	\
+	scope-clear/scope.png		\
+	scope-clear/scope_small_h.png	\
+	scope-clear/scope_small_v.png	\
+	scope-clear/scope_tiny_h.png	\
+	scope-clear/scope_tiny_v.png	\
+	scope-clear/themedata
+
+#This is an experimental theme for the analyzer widget, not installed on purpose
+#spectra_cleardir = $(datadir)/sound-monitor/spectra-clear
+#spectra_clear_DATA =
+#spectra_clear_stuff = \
+#	spectra-clear/back.png		\
+#	spectra-clear/analyzer.png	\
+#	spectra-clear/themedata
+
 zsound_monitordir = $(datadir)/sound-monitor
 zsound_monitor_DATA = \
 	$(radar_blue_stuff)		\
@@ -113,6 +136,7 @@ zsound_monitor_DATA = \
 	$(grey_stuff)		\
 	$(meters2_stuff)	\
 	$(scope_stuff)		\
-	$(scope_r_stuff)
+	$(scope_r_stuff)	\
+	$(scope_clear_stuff)
 
 EXTRA_DIST = $(zsound_monitor_DATA)

@@ -1,0 +1,64 @@
+a theme for sound-monitor_applet contains the following:
+
+* the theme is contained within a directory.
+* the layout and filenames for images are specified in a file
+  named themedata (see the example included in the source)
+* Only the Background image is required, all other items are
+  optional. (but a background by itself is just a picture :)
+* a themedata file contains 1 or more sections. [Horizontal] is
+  required, [Vertical] is used if the theme supports orientation.
+  Both sections support all the flags below. To specify a setup for
+  the other panel size, append "_Tiny", "_Small", "_Large", or
+  "_Huge" when specifying the respective section. For example
+  [Horizontal_Small] would be the heading for Small panel size when
+  horizontal.
+* Any Image can contain an alpha (transparency) channel, multiple level
+  alpha is supported (ala PNG, the recommended image format)
+
+Internationalization:
+  Item_* types support internationalization by adding another tag
+  to the themedata file and supplying a suitable image.
+  Example:
+    To internationalize the status item for 'es' do this:
+
+    keep the default line:     Item_Status=stat.png 2 20
+    and add a translated line: Item_Status[es]=stat_es.png
+        (do not add coordinates to the translated lines)
+
+  Note: the translated image should be the same size as the default,
+        and in the case of Item_Misc_* must contain the same number
+        of animation frames.
+
+Item_Status=filename x y
+  filename: name of the image file for mail, this file contains
+            4 images vertically, from top to bottom, indicators for
+            error, standby, autostandby, and ready.
+  x, y: coordinates to place the image within the window
+
+Item_Meter_Left/Item_Meter_Right=filename sections x y horizontal
+  filename: Name of the image file for the vu meters, if vertical, this
+            file contains 3 images vertically. The images are each a full
+            representation of the meter, from top to bottom these are
+            blank (no sound), lit (sound is at this level), peak lights
+            (the image to represent the peak position). If horizontal is true,
+            then the image is 3 images from left to right, instead of top to
+            bottom.
+  sections: total number of sections within the meter. (number of increments)
+  x, y: coordinates to place the image within the window
+  horizontal: If true, designated the meter as a horizontal meter, otherwise
+              vertical.
+
+Item_Misc_Left/Item_Misc_Right=filename sections x y
+  filename: Name of image file for representing the percentage of volume,
+            contains image from top to bottom, the top representing 0 Volume
+            and the bottom representing 100% Volume.
+  sections: Number of image frames within the image file.
+  x, y: coordinates to place the image within the window
+
+Scope=filename sections x y vertical
+  filename: Name of image file for representing the scope, contains two images
+            vertically. The top image represents the scope's background and the
+            bottom image represents scope' data colors.
+  x, y: coordinates to place the scope within the window
+  vertical: When TRUE, the scope data is displayed from top to bottom.
+

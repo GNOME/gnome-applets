@@ -1,31 +1,16 @@
-/* GNOME Esound Monitor Control applet
- * (C) 1999 John Ellis
+/* GNOME sound-monitor applet
+ * (C) 2000 John Ellis
  *
  * Author: John Ellis
  *
  */
 
 #include <config.h>
-#include <sound-monitor.h>
-
-static void about_cb (AppletWidget *widget, gpointer data);
-static void manager_cb (AppletWidget *widget, gpointer data);
-static void redraw_display(AppData *ad);
-static gint update_display(gpointer data);
-static void applet_change_back(GtkWidget *applet, PanelBackType type, char *pixmap,
-				GdkColor *color, gpointer data);
-static void destroy_applet(GtkWidget *widget, gpointer data);
-static AppData *create_new_app(GtkWidget *applet);
-static void reload_theme(AppData *ad);
-static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data);
-
-#ifdef HAVE_PANEL_PIXEL_SIZE
-static void applet_change_pixel_size(GtkWidget *w, int size, gpointer data);
-#endif
-
-static gint applet_save_session(GtkWidget *widget, char *privcfgpath,
-					char *globcfgpath, gpointer data);
-static GtkWidget * applet_start_new_applet(const gchar *goad_id, const char **params, int nparams);
+#include "sound-monitor.h"
+#include "skin.h"
+#include "update.h"
+#include "esdcalls.h"
+#include "manager.h"
 
 static void about_cb (AppletWidget *widget, gpointer data)
 {
@@ -42,7 +27,7 @@ static void about_cb (AppletWidget *widget, gpointer data)
 	authors[1] = NULL;
 
         about = gnome_about_new ( _("Sound Monitor Applet"), VERSION,
-			_("(C) 1999 John Ellis"),
+			_("(C) 2000 John Ellis"),
 			authors,
 			_("Sound monitor interface to Esound\n\n"
 			"Released under the GNU general public license."),
@@ -51,28 +36,27 @@ static void about_cb (AppletWidget *widget, gpointer data)
 			    GTK_SIGNAL_FUNC(gtk_widget_destroyed), &about );
 	gtk_widget_show (about);
 	return;
-	widget = NULL;
-	data = NULL;
 }
 
 static void esd_control_cb (AppletWidget *widget, gpointer data)
 {
 	AppData *ad = data;
 
-	if (ad->esd_status == ESD_STATUS_ERROR)
+	if (ad->esd_status == Status_Error)
 		{
-		esd_sound_control(ESD_CONTROL_START, ad);
+		if (esd_control(Control_Start, ad->esd_host));
+		sound_free(ad->sound);
+		ad->sound = sound_init(ad->esd_host, FALSE);
 		}
-	else if (ad->esd_status == ESD_STATUS_STANDBY)
+	else if (ad->esd_status == Status_Standby)
 		{
-		esd_sound_control(ESD_CONTROL_RESUME, ad);
+		esd_control(Control_Resume, ad->esd_host);
 		}
-	else if (ad->esd_status == ESD_STATUS_READY)
+	else if (ad->esd_status == Status_Ready)
 		{
-		esd_sound_control(ESD_CONTROL_STANDBY, ad);
+		esd_control(Control_Standby, ad->esd_host);
 		}
 	return;
-	widget = NULL;
 }
 
 static void manager_cb (AppletWidget *widget, gpointer data)
@@ -80,27 +64,27 @@ static void manager_cb (AppletWidget *widget, gpointer data)
 	AppData *ad = data;
 	manager_window_show(ad);
 	return;
-	widget = NULL;
 }
 
-static void sync_esd_menu_item(AppData *ad)
+void sync_esd_menu_item(AppData *ad)
 {
 	gchar *menu_text = "";
 	gchar *stock_type;
-	if (ad->esd_status == ESD_STATUS_READY || ad->esd_status == ESD_STATUS_AUTOSTANDBY)
+	switch (ad->esd_status)
 		{
-		menu_text = _("Place Esound in standby");
-		stock_type = GNOME_STOCK_MENU_STOP;
-		}
-	else if (ad->esd_status == ESD_STATUS_STANDBY)
-		{
-		menu_text = _("Resume Esound");
-		stock_type = GNOME_STOCK_MENU_VOLUME;
-		}
-	else	
-		{
-		menu_text = _("Start Esound");
-		stock_type = GNOME_STOCK_MENU_VOLUME;
+		case Status_Ready:
+		case Status_AutoStandby:
+			menu_text = _("Place Esound in standby");
+			stock_type = GNOME_STOCK_MENU_STOP;
+			break;
+		case Status_Standby:
+			menu_text = _("Resume Esound");
+			stock_type = GNOME_STOCK_MENU_VOLUME;
+			break;
+		default:
+			menu_text = _("Start Esound");
+			stock_type = GNOME_STOCK_MENU_VOLUME;
+			break;
 		}
 
 	applet_widget_unregister_callback (APPLET_WIDGET(ad->applet),
@@ -114,154 +98,17 @@ static void sync_esd_menu_item(AppData *ad)
 	ad->esd_status_menu = ad->esd_status;
 }
 
-void reset_fps_timeout(AppData *ad)
+void reload_skin(AppData *ad)
 {
-	gtk_timeout_remove(ad->update_timeout_id);
-	ad->update_timeout_id = gtk_timeout_add(1000 / ad->refresh_fps, (GtkFunction)update_display, ad);
-}
-
-void set_widget_modes(AppData *ad)
-{
-	/* just to test */
-	set_vu_item_mode(ad->skin->vu_left, ad->peak_mode, ad->falloff_speed);
-	set_vu_item_mode(ad->skin->vu_right, ad->peak_mode, ad->falloff_speed);
-	set_scope_item_scale(ad->skin->scope, ad->scope_scale);
-}
-
-static void redraw_display(AppData *ad)
-{
-	redraw_skin(ad);
-}
-
-static void do_zero_volume_check(AppData *ad)
-{
-	if (ad->vu_l != 0 || ad->vu_r != 0)
+	if (ad->theme_file && strlen(ad->theme_file) == 0)
 		{
-		ad->vu_l = ad->vu_r = 0;
-		ad->new_vu_data = TRUE;
+		skin_set(NULL, ad);
 		}
-}
-
-static gint update_display(gpointer data)
-{
-	gint redraw = FALSE;
-	AppData *ad = data;
-	gint draw_scope = FALSE;
-
-	/* do status check */
-
-	ad->esd_status_check_count++;
-	if (ad->esd_status_check_count > ad->refresh_fps) /* 1 second checks should do */
+	else if (!skin_set(ad->theme_file, ad))
 		{
-		gint new_status = esd_check_status(ad);
-		ad->esd_status_check_count = 0;
-		if (ad->esd_status != new_status)
-			{
-			ad->esd_status = new_status;
-			if (ad->esd_status == ESD_STATUS_ERROR)
-				{
-				/* problem must have occured, disconnect from esd now! */
-				stop_sound(ad);
-				gnome_error_dialog("Sound Monitor has lost the connection to the Esound daemon,\n this usually means the daemon has exited and can simply be restarted.\n\n Or the daemon has crashed and needs some attention...");
-				}
-			}
+		printf("Failed to load skin %s, loading default\n", ad->theme_file);
+		skin_set(NULL, ad);
 		}
-
-	if (ad->esd_status != ESD_STATUS_READY && !ad->new_vu_data)
-		{
-		do_zero_volume_check(ad);
-		}
-
-	if (ad->esd_status == ESD_STATUS_READY)
-		{
-		if (ad->new_vu_data)
-			ad->no_data_check_count = 0;
-		else if (ad->no_data_check_count < ad->refresh_fps / 3) /* 1/3 second with no sound */
-			ad->no_data_check_count++;
-		else
-			{
-			do_zero_volume_check(ad);
-			if (!ad->scope_flat)
-				{
-				ad->scope_flat = TRUE;
-				draw_scope = TRUE;
-				}
-			}
-		}
-
-	/* do our display writes */
-
-	if (ad->new_vu_data)
-		{
-		draw_scope_item(ad->skin->scope, ad, ad->scope_flat);
-		ad->scope_flat = FALSE;
-		redraw= TRUE;
-		}
-	else if (draw_scope)
-		{
-		draw_scope_item(ad->skin->scope, ad, ad->scope_flat);
-		redraw= TRUE;
-		}
-
-	if (ad->new_vu_data || ad->prev_vu_changed)
-		{
-		redraw = (draw_vu_item(ad->skin->vu_left, ad->vu_l, ad) || redraw);
-		redraw = (draw_vu_item(ad->skin->vu_right, ad->vu_r, ad) || redraw);
-
-		redraw = (draw_item_by_percent(ad->skin->meter_left, ad->vu_l, ad) || redraw);
-		redraw = (draw_item_by_percent(ad->skin->meter_right, ad->vu_r, ad) || redraw);
-
-		ad->prev_vu_changed = redraw;
-
-		ad->new_vu_data = FALSE;
-		}
-
-	redraw = (draw_item(ad->skin->status, ad->esd_status, ad) || redraw);
-
-	if (redraw) redraw_display(ad);
-
-	if (ad->esd_status_menu != ad->esd_status) sync_esd_menu_item(ad);
-
-	return TRUE;
-}
-
-static void applet_change_back(GtkWidget *applet, PanelBackType type, char *pixmap,
-				GdkColor *color, gpointer data)
-{
-	AppData *ad = data;
-	GtkStyle *ns;
-
-	switch (type)
-		{
-		case PANEL_BACK_NONE :
-			gtk_widget_set_rc_style(GTK_WIDGET(ad->applet));
-			break;
-		case PANEL_BACK_COLOR :
-			ns = gtk_style_copy(GTK_WIDGET(ad->applet)->style);
-			gtk_style_ref(ns);
-			ns->bg[GTK_STATE_NORMAL] = *color;
-			gtk_widget_set_style(GTK_WIDGET(ad->applet), ns);
-			gtk_style_unref(ns);
-			break;
-		case PANEL_BACK_PIXMAP :
-			if (g_file_exists (pixmap))
-				{
-				GdkImlibImage *im = gdk_imlib_load_image (pixmap);
-				if (im)
-					{
-					GdkPixmap *pmap;
-					gdk_imlib_render (im, im->rgb_width, im->rgb_height);
-					pmap = gdk_imlib_copy_image (im);
-					gdk_imlib_destroy_image (im);
-					gdk_window_set_back_pixmap(ad->applet->window, pmap, FALSE);
-					gdk_window_clear(ad->applet->window);
-					gdk_pixmap_unref(pmap);
-					}
-				}
-			break;
-		}
-	return;
-	applet = NULL;
 }
 
 /* clean up function to free all the applet's memory and stop io,timers */
@@ -273,15 +120,65 @@ static void destroy_applet(GtkWidget *widget, gpointer data)
 
 	gtk_timeout_remove(ad->update_timeout_id);
 
-	stop_sound(ad);
+	sound_free(ad->sound);
 
-	free_skin(ad->skin);
+	skin_free(ad->skin);
 
 	g_free(ad->esd_host);
 	g_free(ad->theme_file);
 	g_free(ad);
 	return;
+}
+
+static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
+{
+	AppData *ad = data;
+	ad->orient = o;
+
+	reload_skin(ad);
+	return;
+	w = NULL;
+}
+
+#ifdef HAVE_PANEL_PIXEL_SIZE
+static void applet_change_pixel_size(GtkWidget *w, int size, gpointer data)
+{
+	AppData *ad = data;
+
+	if(size<PIXEL_SIZE_SMALL)
+		ad->sizehint = SIZEHINT_TINY;
+	else if(size<PIXEL_SIZE_STANDARD)
+		ad->sizehint = SIZEHINT_SMALL;
+	else if(size<PIXEL_SIZE_LARGE)
+		ad->sizehint = SIZEHINT_STANDARD;
+	else if(size<PIXEL_SIZE_HUGE)
+		ad->sizehint = SIZEHINT_LARGE;
+	else
+		ad->sizehint = SIZEHINT_HUGE;
+
+	reload_skin(ad);
+	return;
+        w = NULL;
+}
+#endif
+
+#ifdef HAVE_PANEL_DRAW_SIGNAL
+static void applet_do_draw(GtkWidget *w, gpointer data)
+{
+	AppData *ad = data;
+
+	applet_skin_backing_sync(ad);
+}
+#endif
+
+static gint applet_save_session(GtkWidget *widget, gchar *privcfgpath,
+				gchar *globcfgpath, gpointer data)
+{
+	AppData *ad = data;
+        property_save(privcfgpath, ad);
+	return FALSE;
 	widget = NULL;
+	globcfgpath = NULL;
 }
 
 static void
@@ -303,16 +200,16 @@ static AppData *create_new_app(GtkWidget *applet)
 	ad->orient = ORIENT_UP;
 	ad->sizehint = SIZEHINT_STANDARD;
 
-	ad->esd_status = ESD_STATUS_ERROR;
-	ad->esd_status_menu = ESD_STATUS_ERROR;
+	ad->esd_status = Status_Error;
+	ad->esd_status_menu = Status_Error;
 
-	ad->sound_fd = -1;
-	ad->sound_input_cb_id = -1;
+	ad->sound = NULL;
+
 	ad->esd_host = NULL;
 
 	ad->refresh_fps = 10;
 	ad->falloff_speed = 3;
-	ad->peak_mode = PEAK_MODE_ACTIVE;
+	ad->peak_mode = PeakMode_Active;
 	ad->scope_scale = 5;
 	ad->draw_scope_as_segments = TRUE;
 
@@ -322,15 +219,12 @@ static AppData *create_new_app(GtkWidget *applet)
 
 	property_load(APPLET_WIDGET(applet)->privcfgpath, ad);
 
-	/* create a tooltip widget */
-	ad->tooltips = gtk_tooltips_new();
-
-	ad->display_area = gtk_drawing_area_new();
-	gtk_signal_connect(GTK_OBJECT(ad->display_area), "destroy",
+	ad->display = gtk_drawing_area_new();
+	gtk_signal_connect(GTK_OBJECT(ad->display), "destroy",
 		GTK_SIGNAL_FUNC(destroy_applet), ad);
-	gtk_widget_show(ad->display_area);
+	gtk_widget_show(ad->display);
 
-	applet_widget_add(APPLET_WIDGET(ad->applet), ad->display_area);
+	applet_widget_add(APPLET_WIDGET(ad->applet), ad->display);
 
 	gtk_signal_connect(GTK_OBJECT(ad->applet),"change_orient",
 		GTK_SIGNAL_FUNC(applet_change_orient), ad);
@@ -340,15 +234,20 @@ static AppData *create_new_app(GtkWidget *applet)
 		GTK_SIGNAL_FUNC(applet_change_pixel_size), ad);
 #endif
 
+#ifdef HAVE_PANEL_DRAW_SIGNAL
+	applet_widget_send_draw(APPLET_WIDGET(ad->applet), TRUE);
+
+	gtk_signal_connect(GTK_OBJECT(ad->applet),"do_draw",
+		GTK_SIGNAL_FUNC(applet_do_draw), ad);
+#endif
+
 	gtk_widget_set_usize(ad->applet, 5, 5); /* so that a large default is not shown */
 	gtk_widget_show(ad->applet);
 
-	reload_theme(ad);
+	reload_skin(ad);
 
 	gtk_signal_connect(GTK_OBJECT(ad->applet),"save_session",
 		GTK_SIGNAL_FUNC(applet_save_session), ad);
-	gtk_signal_connect(GTK_OBJECT(ad->applet),"back_change",
-		GTK_SIGNAL_FUNC(applet_change_back), ad);
 
 	applet_widget_register_stock_callback(APPLET_WIDGET(ad->applet),
 						"manager",
@@ -363,6 +262,7 @@ static AppData *create_new_app(GtkWidget *applet)
 						_("Start Esound"),
 						esd_control_cb,
 						ad);
+
 	applet_widget_register_stock_callback(APPLET_WIDGET(ad->applet),
 						"properties",
 						GNOME_STOCK_MENU_PROP,
@@ -382,73 +282,13 @@ static AppData *create_new_app(GtkWidget *applet)
 						about_cb,
 						NULL);
 
-
 	update_display(ad);
 
-	set_widget_modes(ad);
-
-	init_sound(ad);
+	ad->sound = sound_init(ad->esd_host, FALSE);
 
 	ad->update_timeout_id = gtk_timeout_add(1000 / ad->refresh_fps, (GtkFunction)update_display, ad);
 	
 	return ad;
-}
-
-static void reload_theme(AppData *ad)
-{
-	if (ad->theme_file && strlen(ad->theme_file) == 0)
-		{
-		change_to_skin(NULL, ad);
-		}
-	else if (!change_to_skin(ad->theme_file, ad))
-		{
-		printf("Failed to load theme %s, loading default\n", ad->theme_file);
-		change_to_skin(NULL, ad);
-		}
-}
-
-static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
-{
-	AppData *ad = data;
-	ad->orient = o;
-
-	if (!ad->skin) return; /* we are done if in startup */
-
-	reload_theme(ad);
-	return;
-	w = NULL;
-}
-
-#ifdef HAVE_PANEL_PIXEL_SIZE
-static void applet_change_pixel_size(GtkWidget *w, int size, gpointer data)
-{
-	AppData *ad = data;
-
-	if(size<PIXEL_SIZE_STANDARD)
-		ad->sizehint = SIZEHINT_TINY;
-	else if(size<PIXEL_SIZE_LARGE)
-		ad->sizehint = SIZEHINT_STANDARD;
-	else if(size<PIXEL_SIZE_HUGE)
-		ad->sizehint = SIZEHINT_LARGE;
-	else
-		ad->sizehint = SIZEHINT_HUGE;
-
-	if (!ad->skin) return; /* we are done if in startup */
-
-	reload_theme(ad);
-	return;
-        w = NULL;
-}
-#endif
-
-static gint applet_save_session(GtkWidget *widget, gchar *privcfgpath,
-					gchar *globcfgpath, gpointer data)
-{
-	AppData *ad = data;
-        property_save(privcfgpath, ad);
-	return FALSE;
-	widget = NULL;
-	globcfgpath = NULL;
 }
 
 static GtkWidget * applet_start_new_applet(const gchar *goad_id,
@@ -496,3 +336,4 @@ int main (int argc, char *argv[])
 	applet_widget_gtk_main();
 	return 0;
 }
+

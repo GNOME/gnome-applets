@@ -1,11 +1,13 @@
-/* GNOME Esound Monitor Control applet
- * (C) 1999 John Ellis
+/* GNOME sound-monitor applet
+ * (C) 2000 John Ellis
  *
  * Author: John Ellis
  *
  */
 
 #include "sound-monitor.h"
+#include "update.h"
+#include "esdcalls.h"
 
 static void property_apply_cb(GtkWidget *widget, void *nodata, gpointer data);
 static gint property_destroy_cb(GtkWidget *widget, gpointer data);
@@ -67,7 +69,7 @@ static void peak_mode_off_cb(GtkWidget *w, gpointer data)
 	AppData *ad = data;
 	if (GTK_TOGGLE_BUTTON (w)->active)
 		{
-		ad->p_peak_mode = PEAK_MODE_OFF;
+		ad->p_peak_mode = PeakMode_Off;
 		gnome_property_box_changed(GNOME_PROPERTY_BOX(ad->propwindow));
 		}
 }
@@ -77,7 +79,7 @@ static void peak_mode_active_cb(GtkWidget *w, gpointer data)
 	AppData *ad = data;
 	if (GTK_TOGGLE_BUTTON (w)->active)
 		{
-		ad->p_peak_mode = PEAK_MODE_ACTIVE;
+		ad->p_peak_mode = PeakMode_Active;
 		gnome_property_box_changed(GNOME_PROPERTY_BOX(ad->propwindow));
 		}
 }
@@ -87,7 +89,7 @@ static void peak_mode_smooth_cb(GtkWidget *w, gpointer data)
 	AppData *ad = data;
 	if (GTK_TOGGLE_BUTTON (w)->active)
 		{
-		ad->p_peak_mode = PEAK_MODE_SMOOTH;
+		ad->p_peak_mode = PeakMode_Smooth;
 		gnome_property_box_changed(GNOME_PROPERTY_BOX(ad->propwindow));
 		}
 }
@@ -227,25 +229,14 @@ static void property_apply_cb(GtkWidget *widget, void *nodata, gpointer data)
 	gint info_changed = FALSE;
 
 	buf = gtk_entry_get_text(GTK_ENTRY(ad->theme_entry));
-	if (buf && ad->theme_file && strcmp(buf, ad->theme_file) != 0)
+	if ((!ad->theme_file && buf && strlen(buf) > 0) ||
+	    (ad->theme_file && (!buf || strlen(buf) == 0)) ||
+	    (buf && ad->theme_file && strcmp(buf, ad->theme_file) != 0))
 		{
 		g_free (ad->theme_file);
-		ad->theme_file = g_strdup(buf);
-		if (!change_to_skin(ad->theme_file, ad))
-			change_to_skin(NULL, ad);
-		}
-	else if (buf && strlen(buf) != 0)
-		{
-		if (ad->theme_file) g_free (ad->theme_file);
-		ad->theme_file = g_strdup(buf);
-		if (!change_to_skin(ad->theme_file, ad))
-			change_to_skin(NULL, ad);
-		}
-	else
-		{
-		if (ad->theme_file) g_free (ad->theme_file);
 		ad->theme_file = NULL;
-		change_to_skin(NULL, ad);
+		if (buf && strlen(buf) > 0) ad->theme_file = g_strdup(buf);
+		reload_skin(ad);
 		}
 
 	ad->peak_mode = ad->p_peak_mode;
@@ -256,10 +247,10 @@ static void property_apply_cb(GtkWidget *widget, void *nodata, gpointer data)
 	if (ad->p_refresh_fps != ad->refresh_fps)
 		{
 		ad->refresh_fps = ad->p_refresh_fps;
-		reset_fps_timeout(ad);
+		update_fps_timeout(ad);
 		}
 
-	set_widget_modes(ad);
+	update_modes(ad);
 
 	if (ad->monitor_input != ad->p_monitor_input)
 		{
@@ -281,8 +272,8 @@ static void property_apply_cb(GtkWidget *widget, void *nodata, gpointer data)
 	/* reset sound input if relevent options changed */
 	if (info_changed)
 		{
-		stop_sound(ad);
-		init_sound(ad);
+		sound_free(ad->sound);
+		ad->sound = sound_init(ad->esd_host, FALSE);
 		}
 
 	applet_widget_sync_config(APPLET_WIDGET(ad->applet));
@@ -290,6 +281,7 @@ static void property_apply_cb(GtkWidget *widget, void *nodata, gpointer data)
 	widget = NULL;
 	nodata = NULL;
 }
+
 static void
 phelp_cb (GtkWidget *w, gint tab, gpointer data)
 {
@@ -298,7 +290,6 @@ phelp_cb (GtkWidget *w, gint tab, gpointer data)
 	gnome_help_display(NULL, &help_entry);
 }
 
-
 static gint property_destroy_cb(GtkWidget *widget, gpointer data)
 {
 	AppData *ad = data;
@@ -306,8 +297,6 @@ static gint property_destroy_cb(GtkWidget *widget, gpointer data)
 	return FALSE;
 	widget = NULL;
 }
-
-
 
 void property_show(AppletWidget *applet, gpointer data)
 {
@@ -356,21 +345,21 @@ void property_show(AppletWidget *applet, gpointer data)
 	gtk_widget_show(vbox1);
 
 	radio_group = gtk_radio_button_new_with_label (NULL, _("off"));
-	if (ad->p_peak_mode == PEAK_MODE_OFF)
+	if (ad->p_peak_mode == PeakMode_Off)
 		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(radio_group), 1);
 	gtk_signal_connect (GTK_OBJECT(radio_group),"clicked",(GtkSignalFunc) peak_mode_off_cb, ad);
 	gtk_box_pack_start(GTK_BOX(vbox1), radio_group, FALSE, FALSE, 0);
 	gtk_widget_show(radio_group);
 
 	button = gtk_radio_button_new_with_label (gtk_radio_button_group(GTK_RADIO_BUTTON(radio_group)), _("active"));
-	if (ad->p_peak_mode == PEAK_MODE_ACTIVE)
+	if (ad->p_peak_mode == PeakMode_Active)
 		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(button), 1);
 	gtk_signal_connect (GTK_OBJECT(button),"clicked",(GtkSignalFunc) peak_mode_active_cb, ad);
 	gtk_box_pack_start(GTK_BOX(vbox1), button, FALSE, FALSE, 0);
 	gtk_widget_show(button);
 
 	button = gtk_radio_button_new_with_label (gtk_radio_button_group(GTK_RADIO_BUTTON(radio_group)), _("smooth"));
-	if (ad->p_peak_mode == PEAK_MODE_SMOOTH)
+	if (ad->p_peak_mode == PeakMode_Smooth)
 		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(button), 1);
 	gtk_signal_connect (GTK_OBJECT(button),"clicked",(GtkSignalFunc) peak_mode_smooth_cb, ad);
 	gtk_box_pack_start(GTK_BOX(vbox1), button, FALSE, FALSE, 0);
