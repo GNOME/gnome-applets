@@ -40,6 +40,7 @@
 #include "harddisk_h_out.xpm"
 
 static void about_cb (AppletWidget *widget, gpointer data);
+static void browse_cb (AppletWidget *widget, gpointer data);
 static gint device_is_in_mountlist(DriveData *dd);
 static dev_t get_device(gchar *file);
 static gint device_is_mounted(DriveData *dd);
@@ -82,6 +83,34 @@ static void about_cb (AppletWidget *widget, gpointer data)
 			"."),
 			NULL);
 	gtk_widget_show (about);
+}
+
+static void browse_cb (AppletWidget *widget, gpointer data)
+{
+	DriveData *dd = data;
+	const char *buf[2];
+
+	/* attempt to mount first, otherwise, what is the point? */
+	if(!dd->mounted)
+		{
+		mount_cb(NULL, dd);
+		if (!dd->mounted) return; /* failed to mount, so abort */
+		}
+
+	buf[0] = dd->mount_point;
+	buf[1] = NULL;
+
+/*	I assume the first (commented out) call is mor correct, but:
+ *	use  "IDL:GNOME/FileManagerWindow:1.0"  ?
+ *	how do we correctly construct this string? In the event version != 1.0 ?
+ */
+
+/*	goad_server_activate_with_repo_id(NULL, "IDL:GNOME/FileManagerWindow:1.0",
+			GOAD_ACTIVATE_REMOTE | GOAD_ACTIVATE_ASYNC, buf);
+*/
+
+	goad_server_activate_with_id(NULL, "gmc_filemanager_window",
+			0, buf);
 }
 
 static gint device_is_in_mountlist(DriveData *dd)
@@ -292,7 +321,6 @@ static void eject_cb(AppletWidget *applet, gpointer data)
 
 }	
 
-
 /* start or change the update callback timeout interval */
 void start_callback_update(DriveData *dd)
 {
@@ -493,14 +521,22 @@ static DriveData * create_drive_widget(GtkWidget *applet)
 
 	/* add "eject" entry if eject program is found in PATH */
 	tmp_path = gnome_is_program_in_path("eject");
-	if (tmp_path) {
+	if (tmp_path)
+		{
 		applet_widget_register_callback(APPLET_WIDGET(applet),
 					      "eject",
 					      _("Eject"),
 					      eject_cb,
 					      dd);
 		g_free (tmp_path);
-	}
+		}
+
+	applet_widget_register_stock_callback(APPLET_WIDGET(applet),
+					      "browse",
+					      GNOME_STOCK_MENU_OPEN,
+					      _("Browse..."),
+					      browse_cb,
+					      dd);
 
 	start_callback_update(dd);
 	return dd;
