@@ -429,7 +429,7 @@ static gint get_connect_time(MLData *mldata, gint recalc_start)
 }
 
 static void
-run_response_cb (GtkDialog *dialog, gint id, MLData *mldata)
+run_response_cb(GtkDialog *dialog, gint id, MLData *mldata)
 {
 	gtk_widget_destroy(GTK_WIDGET (dialog));
 

@@ -493,7 +493,7 @@ help_cb (BonoboUIComponent *uic,
 
 	egg_help_display_desktop_on_screen (
 			applet_program, "drivemount", "drivemount", "drivemount",
-			gtk_widget_get_screen (GTK_WIDGET (uic)),
+			gtk_widget_get_screen (GTK_WIDGET (drivemount->applet)),
 			&error);
 
 	if (error) {
