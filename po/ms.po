@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applet HEAD\n"
-"POT-Creation-Date: 2002-06-11 05:58+0800\n"
+"POT-Creation-Date: 2002-07-28 02:29+0800\n"
 "PO-Revision-Date: 2002-06-11 05:53+0800\n"
 "Last-Translator: Hasbullah Bin Pit <sebol@ikhlas.com>\n"
 "Language-Team: Projek Gabai <gabai-penyumbang@lists.sourceforge.org>\n"
@@ -14,24 +14,25 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. The long name of the applet in the About dialog.
-#: battstat/GNOME_BattstatApplet.server.in.h:1 battstat/battstat_applet.c:831
+#: battstat/GNOME_BattstatApplet.server.in.in.h:1
+#: battstat/battstat_applet.c:843
 msgid "Battery Charge Monitor"
 msgstr "Monitor Cas Bateri"
 
-#: battstat/GNOME_BattstatApplet.server.in.h:2
+#: battstat/GNOME_BattstatApplet.server.in.in.h:2
 msgid "Battstat Factory"
 msgstr "Kilang Battstat"
 
-#: battstat/GNOME_BattstatApplet.server.in.h:3
+#: battstat/GNOME_BattstatApplet.server.in.in.h:3
 msgid "Monitor a laptop's remaining power"
 msgstr "Monitor baki kuasa laptop"
 
-#: battstat/GNOME_BattstatApplet.server.in.h:4
-#: charpick/GNOME_CharpickerApplet.server.in.h:4
-#: drivemount/GNOME_DriveMountApplet.server.in.h:5
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:5
-#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:4
-#: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:3
+#: battstat/GNOME_BattstatApplet.server.in.in.h:4
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:4
+#: drivemount/GNOME_DriveMountApplet.server.in.in.h:5
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:5
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:4
+#: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:3
 #: panel-menu/GNOME_PanelMenuApplet.server.in.h:4
 msgid "Utility"
 msgstr "Utiliti"
@@ -44,6 +45,7 @@ msgstr "Utiliti"
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
 #: mixer/GNOME_MixerApplet.xml.h:1 modemlights/GNOME_ModemlightsApplet.xml.h:1
 #: multiload/GNOME_MultiloadApplet.xml.h:1
+#: wireless/GNOME_WirelessApplet.xml.h:1
 msgid "_About..."
 msgstr "_Perihal..."
 
@@ -65,6 +67,7 @@ msgstr "_Bantuan"
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
 #: modemlights/GNOME_ModemlightsApplet.xml.h:3
 #: multiload/GNOME_MultiloadApplet.xml.h:2
+#: wireless/GNOME_WirelessApplet.xml.h:2
 msgid "_Preferences..."
 msgstr "Ke_utamaan..."
 
@@ -85,22 +88,22 @@ msgstr "Aplet tidak akan bekerja dengan betul .\n"
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:316 battstat/battstat_applet.c:859
+#: battstat/battstat_applet.c:316 battstat/battstat_applet.c:876
 msgid "High"
 msgstr "Tinggi"
 
 #. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:861
+#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:878
 msgid "Low"
 msgstr "Rendah"
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:863
+#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:880
 msgid "Critical"
 msgstr "Kritikal"
 
 #. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:865
+#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:882
 msgid "Charging"
 msgstr "Mengecas"
 
@@ -116,7 +119,7 @@ msgstr "Bateri sekarang telah dicas sepenuhnya"
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:446 battstat/battstat_applet.c:1022
+#: battstat/battstat_applet.c:446 battstat/battstat_applet.c:1040
 #, c-format
 msgid ""
 "System is running on battery power\n"
@@ -128,7 +131,7 @@ msgstr ""
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:450 battstat/battstat_applet.c:1030
+#: battstat/battstat_applet.c:450 battstat/battstat_applet.c:1048
 #, c-format
 msgid ""
 "System is running on AC power\n"
@@ -139,15 +142,15 @@ msgstr ""
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:456 battstat/battstat_applet.c:954
-#: battstat/battstat_applet.c:1043
+#: battstat/battstat_applet.c:456 battstat/battstat_applet.c:972
+#: battstat/battstat_applet.c:1061
 msgid "System is running on battery power"
 msgstr "Sistem menggunakan kuasa bateri"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:459 battstat/battstat_applet.c:960
-#: battstat/battstat_applet.c:1049
+#: battstat/battstat_applet.c:459 battstat/battstat_applet.c:978
+#: battstat/battstat_applet.c:1067
 msgid "System is running on AC power"
 msgstr "Sistem menggunakan kuasa AC"
 
@@ -157,14 +160,14 @@ msgstr "N/A"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:597 battstat/battstat_applet.c:934
+#: battstat/battstat_applet.c:597 battstat/battstat_applet.c:952
 #, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
 msgstr "Sistem menggunakan kuasa bateri. Bateri: %d%% (%s)"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:604 battstat/battstat_applet.c:941
+#: battstat/battstat_applet.c:604 battstat/battstat_applet.c:959
 #, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
 msgstr "Sistem menggunakan kuasa AC. Bateri: %d%% (%s)"
@@ -199,7 +202,7 @@ msgid "Battery: Not present"
 msgstr "Bateri: Tidak ada"
 
 #. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: battstat/battstat_applet.c:712
+#: battstat/battstat_applet.c:719
 msgid ""
 "Can't open the APM device!\n"
 "\n"
@@ -212,7 +215,7 @@ msgstr ""
 "pada peranti APM."
 
 #. Displayed if the APM system is disabled (Used under *BSD)
-#: battstat/battstat_applet.c:720
+#: battstat/battstat_applet.c:728
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
@@ -222,7 +225,7 @@ msgstr ""
 "Cuba laksanakan \"apm -e 1\" (FreeBSD) dan lihat\n"
 "Samada ia boleh membantu.\n"
 
-#: battstat/battstat_applet.c:768
+#: battstat/battstat_applet.c:778
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -232,7 +235,7 @@ msgstr ""
 "Sila cuba betulkan ralat ini"
 
 #. Probably because the shell_ret is != 0
-#: battstat/battstat_applet.c:771
+#: battstat/battstat_applet.c:781
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command, the command returned "
@@ -243,7 +246,7 @@ msgstr ""
 "mengembalikan \"%d\"\n"
 "Sila cuba betulkan ralat ini"
 
-#: battstat/battstat_applet.c:779
+#: battstat/battstat_applet.c:789
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -253,16 +256,16 @@ msgstr ""
 
 #. if your charset supports it, please replace the "o" in
 #. * "Jorgen" into U00F6
-#: battstat/battstat_applet.c:808
+#: battstat/battstat_applet.c:820
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jorgen Pehrson <jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:818 cdplayer/cdplayer.c:438
-#: charpick/charpick.c:371 drivemount/drivemount.c:425 geyes/geyes.c:213
-#: gkb-new/gkb.c:593 gtik/gtik.c:714 gweather/gweather-about.c:43
-#: mini-commander/src/about.c:44 mixer/mixer.c:766
-#: modemlights/modemlights.c:206 multiload/main.c:54
-#: panel-menu/panel-menu.c:672
+#: battstat/battstat_applet.c:830 cdplayer/cdplayer.c:485
+#: charpick/charpick.c:373 drivemount/drivemount.c:459 geyes/geyes.c:215
+#: gkb-new/gkb.c:592 gtik/gtik.c:715 gweather/gweather-about.c:43
+#: mini-commander/src/about.c:46 mixer/mixer.c:796
+#: modemlights/modemlights.c:208 multiload/main.c:57
+#: panel-menu/panel-menu.c:673 wireless/wireless-applet.c:704
 msgid "translator_credits"
 msgstr ""
 "Hasbullah Bin Pit <sebol@ikhlas.com>,Merlimau\n"
@@ -270,11 +273,11 @@ msgstr ""
 "Mohamad Afifi Omar <mr_mohd_afifi@yahoo.com>\n"
 "Rakan-rakan di mypenguin99 & Bincang.net"
 
-#: battstat/battstat_applet.c:833
+#: battstat/battstat_applet.c:845
 msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 msgstr "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 
-#: battstat/battstat_applet.c:834
+#: battstat/battstat_applet.c:846
 msgid "This utility show the status of your laptop battery."
 msgstr "Utiliti Bateri ini memaparkan status bateri laptop anda."
 
@@ -283,8 +286,9 @@ msgstr "Utiliti Bateri ini memaparkan status bateri laptop anda."
 msgid "100%"
 msgstr "100%"
 
-#: battstat/battstat_applet.glade.h:3
-msgid "Apperance"
+#. appearance frame
+#: battstat/battstat_applet.glade.h:3 mini-commander/src/preferences.c:751
+msgid "Appearance"
 msgstr "Penampilan"
 
 #: battstat/battstat_applet.glade.h:4
@@ -376,25 +380,25 @@ msgstr "Bateri dicas sepenuhnya"
 msgid "Battery power low"
 msgstr "Kuasa bateri rendah"
 
-#: cdplayer/GNOME_CDPlayerApplet.server.in.h:1 cdplayer/cdplayer.c:161
-#: cdplayer/cdplayer.c:456 cdplayer/cdplayer.c:874
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:170
+#: cdplayer/cdplayer.c:505 cdplayer/cdplayer.c:922
 msgid "CD Player"
 msgstr "Pemain CD"
 
-#: cdplayer/GNOME_CDPlayerApplet.server.in.h:2
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:2
 msgid "CD Player Applet Factory"
 msgstr "Kilang Aplet Pemain CD"
 
-#: cdplayer/GNOME_CDPlayerApplet.server.in.h:3
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:3
 msgid "Factory for CD player applet"
 msgstr "Kilang bagi aplet Pemain CD"
 
-#: cdplayer/GNOME_CDPlayerApplet.server.in.h:4
-#: mixer/GNOME_MixerApplet.server.in.h:2
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:4
+#: mixer/GNOME_MixerApplet.server.in.in.h:2
 msgid "Multimedia"
 msgstr "Multimedia"
 
-#: cdplayer/GNOME_CDPlayerApplet.server.in.h:5
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:5
 msgid "Panel applet for playing audio CDs"
 msgstr "Aplet panel untuk memainkan CD audio."
 
@@ -402,55 +406,61 @@ msgstr "Aplet panel untuk memainkan CD audio."
 msgid "_Run External CD Player"
 msgstr "_Laksanakan Pemain CD luaran"
 
-#: cdplayer/cdplayer.c:149 cdplayer/cdplayer.c:864
+#: cdplayer/cdplayer.c:158 cdplayer/cdplayer.c:912
 msgid "Stop"
 msgstr "Henti"
 
-#: cdplayer/cdplayer.c:151 cdplayer/cdplayer.c:866
+#: cdplayer/cdplayer.c:160 cdplayer/cdplayer.c:914
 msgid "Play / Pause"
 msgstr "Putar / Kaku"
 
-#: cdplayer/cdplayer.c:153 cdplayer/cdplayer.c:868
+#: cdplayer/cdplayer.c:162 cdplayer/cdplayer.c:916
 msgid "Eject"
 msgstr "Eject"
 
-#: cdplayer/cdplayer.c:155 cdplayer/cdplayer.c:870
+#: cdplayer/cdplayer.c:164 cdplayer/cdplayer.c:918
 msgid "Previous Track"
 msgstr "Trek terdahulu"
 
-#: cdplayer/cdplayer.c:157 cdplayer/cdplayer.c:872
+#: cdplayer/cdplayer.c:166 cdplayer/cdplayer.c:920
 msgid "Next Track"
 msgstr "Trek Seterusnya"
 
-#: cdplayer/cdplayer.c:353
+#: cdplayer/cdplayer.c:286 drivemount/drivemount.c:403 mixer/mixer.c:760
+#: multiload/main.c:126
+#, c-format
+msgid "There was an error executing '%s' : %s"
+msgstr ""
+
+#: cdplayer/cdplayer.c:393
 msgid "CD Player Preferences"
 msgstr "Keutamaan Pemain CD"
 
-#: cdplayer/cdplayer.c:369
+#: cdplayer/cdplayer.c:413
 msgid "Disc Image"
 msgstr "Imej Cakera"
 
-#: cdplayer/cdplayer.c:369
+#: cdplayer/cdplayer.c:413
 msgid "An image of a cd-rom disc"
 msgstr "Imej bagi cakera cd-rom"
 
-#: cdplayer/cdplayer.c:371
+#: cdplayer/cdplayer.c:415
 msgid "Device _Path:"
 msgstr "_Path Peranti:"
 
-#: cdplayer/cdplayer.c:380
+#: cdplayer/cdplayer.c:424
 msgid "Device Path"
 msgstr "Path Peranti"
 
-#: cdplayer/cdplayer.c:380
+#: cdplayer/cdplayer.c:424
 msgid "Set the device path here"
 msgstr "Tetapkan path peranti default di sini"
 
-#: cdplayer/cdplayer.c:383
+#: cdplayer/cdplayer.c:427
 msgid "Use _Default"
 msgstr "Guna _Default"
 
-#: cdplayer/cdplayer.c:457
+#: cdplayer/cdplayer.c:506
 msgid ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
@@ -458,62 +468,62 @@ msgstr ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
 
-#: cdplayer/cdplayer.c:459 cdplayer/cdplayer.c:875
+#: cdplayer/cdplayer.c:508 cdplayer/cdplayer.c:923
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr "Aplet Pemain CD adalah satu pemain CD audio mudah untuk panel anda"
 
-#: cdplayer/cdplayer.c:741 cdplayer/cdplayer.c:752
+#: cdplayer/cdplayer.c:793 cdplayer/cdplayer.c:804
 msgid "Elapsed time"
 msgstr "Masa berlalu"
 
-#: cdplayer/cdplayer.c:744 cdplayer/cdplayer.c:754
+#: cdplayer/cdplayer.c:796 cdplayer/cdplayer.c:806
 msgid "Track number"
 msgstr "Nombor trek"
 
-#: cdplayer/cdplayer.c:865
+#: cdplayer/cdplayer.c:913
 msgid "Click this button to Stop playing the CD"
 msgstr "Kllik butang ini untuk Henti memain CD"
 
-#: cdplayer/cdplayer.c:867
+#: cdplayer/cdplayer.c:915
 msgid "Click this button to Play or Pause the CD"
 msgstr "Kllik butang ini untuk Main atau kakukan CD"
 
-#: cdplayer/cdplayer.c:869
+#: cdplayer/cdplayer.c:917
 msgid "Click this button to eject the CD"
 msgstr "Klik butang ini untuk eject CD"
 
-#: cdplayer/cdplayer.c:871
+#: cdplayer/cdplayer.c:919
 msgid "Click this button to Play the previous track in the CD"
 msgstr "Klik butang ini untuk Memainkan trek terdahulu pada CD"
 
-#: cdplayer/cdplayer.c:873
+#: cdplayer/cdplayer.c:921
 msgid "Click this button to Play the next track in the CD"
 msgstr "Klik butang ini untuk Memainkan trek seterusnya pada CD"
 
-#: charpick/GNOME_CharpickerApplet.server.in.h:1 charpick/charpick.c:389
-#: charpick/charpick.c:480
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:393
+#: charpick/charpick.c:490
 msgid "Character Palette"
 msgstr "Palet Aksara"
 
-#: charpick/GNOME_CharpickerApplet.server.in.h:2
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:2
 msgid "Charpicker Applet Factory"
 msgstr "Kilang Aplet Charpicker"
 
-#: charpick/GNOME_CharpickerApplet.server.in.h:3
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:3
 msgid "Insert characters"
 msgstr "Selit Aksara"
 
 #. If your charset supports it, please use U00F1 to replace the "n"
 #. * in "Muniz".
-#: charpick/charpick.c:363
+#: charpick/charpick.c:365
 msgid "Alexandre Muniz <munizao@xprt.net>"
 msgstr "Alexandre Muniz <munizao@xprt.net>"
 
-#: charpick/charpick.c:391
+#: charpick/charpick.c:395
 msgid "Copyright (C) 1998"
 msgstr "Copyright (C) 1998"
 
-#: charpick/charpick.c:392
+#: charpick/charpick.c:396
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -521,7 +531,7 @@ msgstr ""
 "Aplet panel Gnome untuk memilih aksara pelik yang tiada pada papan kekunci "
 "saya. Dikeluarkan dibawah Lesen Awam Umum GNU."
 
-#: charpick/charpick.c:479
+#: charpick/charpick.c:489
 msgid "Insert special characters"
 msgstr "Selit aksara istimewa"
 
@@ -545,23 +555,24 @@ msgstr ""
 "Aksara ini akan muncul bila panel dimulakan. untuk kembali ke senarai ini, "
 "tekan <d> semasa aplet difokus."
 
-#: charpick/properties.c:152
+#: charpick/properties.c:154
 msgid "Character Palette Preferences"
 msgstr "Keutamaan Palet Aksara"
 
-#: drivemount/GNOME_DriveMountApplet.server.in.h:1 drivemount/drivemount.c:442
+#: drivemount/GNOME_DriveMountApplet.server.in.in.h:1
+#: drivemount/drivemount.c:479
 msgid "Disk Mounter"
 msgstr "Pelekap Cakera"
 
-#: drivemount/GNOME_DriveMountApplet.server.in.h:2
+#: drivemount/GNOME_DriveMountApplet.server.in.in.h:2
 msgid "Drive Mount Applet Factory"
 msgstr "Kilang Aplet Pelekapan Pemacu"
 
-#: drivemount/GNOME_DriveMountApplet.server.in.h:3
+#: drivemount/GNOME_DriveMountApplet.server.in.in.h:3
 msgid "Factory for drive mount applet"
 msgstr "Kilang bagi Aplet pelekapan pemacu"
 
-#: drivemount/GNOME_DriveMountApplet.server.in.h:4
+#: drivemount/GNOME_DriveMountApplet.server.in.in.h:4
 msgid "Mount local disks and devices"
 msgstr "Melekap cakera dan peranti lokal"
 
@@ -573,31 +584,31 @@ msgstr "_Lungsur..."
 msgid "_Eject"
 msgstr "_Eject"
 
-#: drivemount/drivemount.c:443
+#: drivemount/drivemount.c:480
 msgid "(C) 1999-2001 The GNOME Hackers\n"
 msgstr "(C) 1999-2001 Penggodek GNOME\n"
 
-#: drivemount/drivemount.c:445
+#: drivemount/drivemount.c:482
 msgid "Applet for mounting and unmounting block volumes."
 msgstr "Aplet untuk melekapkan dan mengenyahlekapkan isipadu blok."
 
-#: drivemount/drivemount.c:641
+#: drivemount/drivemount.c:682
 msgid " mounted"
 msgstr " dilekapkan"
 
-#: drivemount/drivemount.c:643
+#: drivemount/drivemount.c:684
 msgid " not mounted"
 msgstr "tidak dilekapkan"
 
-#: drivemount/drivemount.c:754
+#: drivemount/drivemount.c:798
 msgid "Drive Mount Applet Warning"
 msgstr "Amaran Aplet Pelekapan Pemacu"
 
-#: drivemount/drivemount.c:762
+#: drivemount/drivemount.c:810
 msgid "\" reported:\n"
 msgstr "\" melapor:\n"
 
-#: drivemount/drivemount.c:764
+#: drivemount/drivemount.c:812
 msgid ""
 "Drivemount command failed.\n"
 "\""
@@ -605,132 +616,132 @@ msgstr ""
 "Arahan pelekapan pemacu gagal.\n"
 "\""
 
-#: drivemount/properties.c:251
+#: drivemount/properties.c:252
 msgid "Disk Mounter Preferences"
 msgstr "Keutamaan Pelekap Cakera"
 
-#: drivemount/properties.c:270
+#: drivemount/properties.c:275
 msgid "_Mount point:"
 msgstr "Titik _Pelekapan:"
 
-#: drivemount/properties.c:288
+#: drivemount/properties.c:293
 msgid "_Update interval (seconds):"
 msgstr "Selang masa _kemaskini (saat) :"
 
-#: drivemount/properties.c:304 panel-menu/panel-menu-properties.c:108
+#: drivemount/properties.c:309 panel-menu/panel-menu-properties.c:113
 msgid "_Icon :"
 msgstr "_Ikon :"
 
-#: drivemount/properties.c:322
+#: drivemount/properties.c:327
 msgid "Floppy"
 msgstr "Liut"
 
-#: drivemount/properties.c:325
+#: drivemount/properties.c:330
 msgid "Cdrom"
 msgstr "CDROM"
 
-#: drivemount/properties.c:328
+#: drivemount/properties.c:333
 msgid "Cd Recorder"
 msgstr "Perekod CD"
 
-#: drivemount/properties.c:331
+#: drivemount/properties.c:336
 msgid "Zip Drive"
 msgstr "Pemacu Zip"
 
-#: drivemount/properties.c:334
+#: drivemount/properties.c:339
 msgid "Hard Disk"
 msgstr "Cakera Keras"
 
-#: drivemount/properties.c:337
+#: drivemount/properties.c:342
 msgid "Jaz Drive"
 msgstr "Pemacu Jaz"
 
-#: drivemount/properties.c:340
+#: drivemount/properties.c:345
 msgid "Custom"
 msgstr "Sendiri"
 
-#: drivemount/properties.c:353
+#: drivemount/properties.c:358
 msgid "Select icon for mounted"
 msgstr "Pilih ikon pelekapan"
 
-#: drivemount/properties.c:360
+#: drivemount/properties.c:365
 msgid "Custom icon for moun_ted:"
 msgstr "Guna ikon sendiri untuk di_lekap"
 
-#: drivemount/properties.c:369
+#: drivemount/properties.c:374
 msgid "Select icon for unmounted"
 msgstr "Pilih ikon untuk dinyahlekap"
 
-#: drivemount/properties.c:376
+#: drivemount/properties.c:381
 msgid "Custom icon for not mou_nted:"
 msgstr "Guna ikon sendiri untuk tidak dile_kapkan"
 
-#: drivemount/properties.c:386
+#: drivemount/properties.c:391
 msgid "_Scale size to panel"
 msgstr "_Skalakan saiz ke panel"
 
-#: drivemount/properties.c:393
+#: drivemount/properties.c:398
 msgid "_Eject on unmount"
 msgstr "_Eject pada nyahlekap"
 
-#: drivemount/properties.c:400
+#: drivemount/properties.c:405
 msgid "Use _automount friendly status test"
 msgstr "Guna ujian status kemesraan _autolekap "
 
-#: geyes/GNOME_GeyesApplet.server.in.h:1
+#: geyes/GNOME_GeyesApplet.server.in.in.h:1
 msgid "A set of eyeballs for your panel"
 msgstr "Jelingan mata untuk panel anda"
 
-#: geyes/GNOME_GeyesApplet.server.in.h:2
+#: geyes/GNOME_GeyesApplet.server.in.in.h:2
 msgid "Amusements"
 msgstr "Hiburan"
 
-#: geyes/GNOME_GeyesApplet.server.in.h:3 geyes/geyes.c:231 geyes/geyes.c:416
-#: geyes/geyes.c:418
+#: geyes/GNOME_GeyesApplet.server.in.in.h:3 geyes/geyes.c:237
+#: geyes/geyes.c:428 geyes/geyes.c:430
 msgid "Geyes"
 msgstr "Geyes"
 
-#: geyes/GNOME_GeyesApplet.server.in.h:4
+#: geyes/GNOME_GeyesApplet.server.in.in.h:4
 msgid "Geyes Applet Factory"
 msgstr "Kilang Aplet Geyes"
 
-#: geyes/geyes.c:232
+#: geyes/geyes.c:238
 msgid "Copyright (C) 1999 Dave Camp"
 msgstr "Copyright (C) 1999 Dave Camp"
 
-#: geyes/geyes.c:233
+#: geyes/geyes.c:239
 msgid "A goofy little xeyes clone for the GNOME panel."
 msgstr "Klon bagi  xeyes bagi Panel GNOME"
 
-#: geyes/geyes.c:419
+#: geyes/geyes.c:431
 msgid "The eyes look in the direction of the mouse pointer"
 msgstr "Jelingan mata yang tajam ke arah tetikus"
 
-#: geyes/themes.c:215
+#: geyes/themes.c:220
 msgid "Geyes Preferences"
 msgstr "Keutamaan Geyes"
 
-#: geyes/themes.c:229
+#: geyes/themes.c:238
 msgid "T_heme Name"
 msgstr "Nama _Tema"
 
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:1
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:1
 msgid "Change the keyboard layout"
 msgstr "Tukar susunatur papan kekunci"
 
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:2
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:2
 msgid "GKB Factory"
 msgstr "Kilang GKB"
 
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:3 gkb-new/gkb.c:604
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:3 gkb-new/gkb.c:603
 msgid "Keyboard Layout Switcher"
 msgstr "Penukar susunatur papan kekunci"
 
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:4
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:4
 msgid "Produces keyboard layout switcher applets."
 msgstr "Aplet menghasilkan penukaran susunatur papankekunci."
 
-#: gkb-new/gkb.c:112
+#: gkb-new/gkb.c:111
 msgid ""
 "Press the hotkey to switch between layouts. The hotkey can be set through "
 "Properties dialog"
@@ -738,15 +749,15 @@ msgstr ""
 "Tekan hotkey untuk menukar antara susunatur. Hotkey boleh ditetapkan pada "
 "dialog Ciri-Ciri"
 
-#: gkb-new/gkb.c:551 gkb-new/gkb.c:558
+#: gkb-new/gkb.c:550 gkb-new/gkb.c:557
 msgid "GKB"
 msgstr "GKB"
 
-#: gkb-new/gkb.c:606
+#: gkb-new/gkb.c:605
 msgid "(C) 1998-2000 Free Software Foundation"
 msgstr "(c) 1998-2000 the Free Software Foundation"
 
-#: gkb-new/gkb.c:607
+#: gkb-new/gkb.c:606
 msgid ""
 "This applet switches between keyboard maps using setxkbmap or xmodmap.\n"
 "Mail me your flag and keyboard layout if you want support for your locale "
@@ -766,7 +777,7 @@ msgstr ""
 "pertolongan daripada  mamat seperti KevinV.\n"
 "Shooby Ban <shooby@gnome.hu>"
 
-#: gkb-new/gkb.c:624
+#: gkb-new/gkb.c:623
 msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
 msgstr "Laman GKB (http://projects.gnome.hu/gkb/)"
 
@@ -774,7 +785,7 @@ msgstr "Laman GKB (http://projects.gnome.hu/gkb/)"
 msgid "Disabled"
 msgstr "Dimatikan"
 
-#: gkb-new/keygrab.c:292
+#: gkb-new/keygrab.c:313
 msgid "Press a key or press Esc to cancel"
 msgstr "Tekan satu kekunci atau tekan Esc untuk batal"
 
@@ -782,11 +793,11 @@ msgstr "Tekan satu kekunci atau tekan Esc untuk batal"
 msgid "Keyboards (select and press add)"
 msgstr "Papankekunci (pilih dan tekan tambah)"
 
-#: gkb-new/prop-add.c:372
+#: gkb-new/prop-add.c:375
 msgid "Select Keyboard"
 msgstr "Pilih Papankekunci"
 
-#: gkb-new/prop-list.c:398 gtik/gtik.c:1137
+#: gkb-new/prop-list.c:398 gtik/gtik.c:1141
 msgid "_Add"
 msgstr "T_ambah"
 
@@ -1110,30 +1121,30 @@ msgstr "dec"
 msgid "ibm"
 msgstr "ibm"
 
-#: gkb-new/prop-map.c:582
+#: gkb-new/prop-map.c:586
 msgid "Edit Keyboard"
 msgstr "Edit PapanKekunci"
 
 #. Add the labels  and entries/combos/icon_entry
-#: gkb-new/prop-map.c:610 panel-menu/panel-menu-directory.c:668
-#: panel-menu/panel-menu-documents.c:398 panel-menu/panel-menu-documents.c:434
+#: gkb-new/prop-map.c:614 panel-menu/panel-menu-directory.c:676
+#: panel-menu/panel-menu-documents.c:398 panel-menu/panel-menu-documents.c:435
 #: panel-menu/panel-menu-links.c:404 panel-menu/panel-menu-links.c:440
 msgid "_Name:"
 msgstr "_Nama:"
 
-#: gkb-new/prop-map.c:614
+#: gkb-new/prop-map.c:618
 msgid "_Label:"
 msgstr "_Label:"
 
-#: gkb-new/prop-map.c:618
+#: gkb-new/prop-map.c:622
 msgid "Lan_guage:"
 msgstr "_Bahasa:"
 
-#: gkb-new/prop-map.c:624
+#: gkb-new/prop-map.c:628
 msgid "Count_ry:"
 msgstr "Nega_ra:"
 
-#: gkb-new/prop-map.c:631
+#: gkb-new/prop-map.c:635
 msgid ""
 "Flag\n"
 "Pixmap"
@@ -1141,23 +1152,23 @@ msgstr ""
 "Bendera\n"
 "Pixmap"
 
-#: gkb-new/prop-map.c:635
+#: gkb-new/prop-map.c:639
 msgid "Arc_hitecture:"
 msgstr "Ar_kitektur:"
 
-#: gkb-new/prop-map.c:641
+#: gkb-new/prop-map.c:645
 msgid "_Type:"
 msgstr "_Jenis:"
 
-#: gkb-new/prop-map.c:647
+#: gkb-new/prop-map.c:651
 msgid "Code_page:"
 msgstr "Code_page:"
 
-#: gkb-new/prop-map.c:654
+#: gkb-new/prop-map.c:658
 msgid "Co_mmand:"
 msgstr "_Arahan:"
 
-#: gkb-new/prop-map.c:661
+#: gkb-new/prop-map.c:665
 msgid ""
 "Where command can be:\n"
 "* xmodmap /full/path/xmodmap.hu\n"
@@ -1189,7 +1200,7 @@ msgstr "Label"
 msgid "Flag and Label"
 msgstr "Flag dan Label"
 
-#: gkb-new/prop.c:287 modemlights/properties.c:382
+#: gkb-new/prop.c:287 modemlights/properties.c:397
 msgid "Display"
 msgstr "Paparan"
 
@@ -1215,12 +1226,12 @@ msgstr "Genggam hotkey"
 msgid "Keyboard Layout Switcher Preferences"
 msgstr "Keutamaan Penukar Susunatur PapanKekunci"
 
-#: gkb-new/prop.c:427
+#: gkb-new/prop.c:431
 msgid "_Keymaps"
 msgstr "_Keymap"
 
 # ui/galeon.glade.h:247
-#: gkb-new/prop.c:439
+#: gkb-new/prop.c:443
 msgid "_Options"
 msgstr "_Opsyen"
 
@@ -1228,32 +1239,32 @@ msgstr "_Opsyen"
 msgid "The keymap switching command returned with error!"
 msgstr "Arahan penukar keymap dipulangkan dengan ralat!"
 
-#: gtik/GNOME_GtikApplet.server.in.h:1
-#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:1
+#: gtik/GNOME_GtikApplet.server.in.in.h:1
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:1
 msgid "Accessories"
 msgstr "Aksesori"
 
-#: gtik/GNOME_GtikApplet.server.in.h:2
+#: gtik/GNOME_GtikApplet.server.in.in.h:2
 msgid "Get continuously updated stock quotes"
 msgstr "Dapatkan petikan pengemaskinian stok berterusan"
 
-#: gtik/GNOME_GtikApplet.server.in.h:3
+#: gtik/GNOME_GtikApplet.server.in.in.h:3
 msgid "Gtik Applet Factory"
 msgstr "Kilang Aplet Gtik"
 
-#: gtik/GNOME_GtikApplet.server.in.h:4 gtik/gtik.c:730
+#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:731
 msgid "Stock Ticker"
 msgstr "Stock Ticker"
 
-#: gtik/GNOME_GtikApplet.xml.h:4
-msgid "_Refresh"
-msgstr "_Segarkan"
+#: gtik/GNOME_GtikApplet.xml.h:4 gweather/GNOME_GWeatherApplet.xml.h:5
+msgid "_Update"
+msgstr "_Kemaskini"
 
 #: gtik/gtik.c:202
 msgid "No data available or properties not set"
 msgstr "TIada data atau ciri-ciri tidak ditetapkan"
 
-#: gtik/gtik.c:732
+#: gtik/gtik.c:733
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.  "
 "The GNOME Stock Ticker is a free Internet-based application.  It comes with "
@@ -1261,83 +1272,83 @@ msgid ""
 "investment decisions; it is for informational purposes only."
 msgstr ""
 
-#: gtik/gtik.c:1126
+#: gtik/gtik.c:1130
 msgid "_New Symbol:"
 msgstr "Simbol _Baru:"
 
-#: gtik/gtik.c:1148
+#: gtik/gtik.c:1152
 msgid "_Remove Selected"
 msgstr "_Buang yang dipilih"
 
-#: gtik/gtik.c:1224
+#: gtik/gtik.c:1232
 msgid "Stock Ticker Preferences"
 msgstr "Keutamaan Stock Ticker"
 
-#: gtik/gtik.c:1247
+#: gtik/gtik.c:1258
 msgid "Update Fre_quency in minutes:"
 msgstr "_Kekerapan kemaskini dalam minit:"
 
-#: gtik/gtik.c:1265
+#: gtik/gtik.c:1276
 msgid "Enter symbols delimited with \"+\" in the box below."
 msgstr "Masukkan simbol dipisahkan denyan \"+\" pada petak dibawah."
 
-#: gtik/gtik.c:1272
+#: gtik/gtik.c:1283
 msgid "Displa_y only symbols and price"
 msgstr "Papa_r hanya simbol dan harga"
 
-#: gtik/gtik.c:1275
+#: gtik/gtik.c:1286
 msgid "Scroll _left to right"
 msgstr "Skrol ki_ri ke kanan"
 
-#: gtik/gtik.c:1278
+#: gtik/gtik.c:1289
 msgid "_Enable scroll buttons"
 msgstr "_Hidupkan butang skrol"
 
-#: gtik/gtik.c:1302
+#: gtik/gtik.c:1313
 msgid "+ C_olor"
 msgstr "+ Wa_rna"
 
-#: gtik/gtik.c:1322
+#: gtik/gtik.c:1333
 msgid "- Colo_r"
 msgstr "- War_na"
 
-#: gtik/gtik.c:1339
+#: gtik/gtik.c:1350
 msgid "_Unchanged Color"
 msgstr "Warna _tak berubah"
 
-#: gtik/gtik.c:1356
+#: gtik/gtik.c:1367
 msgid "Back_ground Color"
 msgstr "Warna Latar_Belakang"
 
-#: gtik/gtik.c:1378
+#: gtik/gtik.c:1389
 msgid "Stock Sy_mbol:"
 msgstr "Si_mbol Saham:"
 
-#: gtik/gtik.c:1392
+#: gtik/gtik.c:1403
 msgid "Stock C_hange:"
 msgstr "Pe_nukaran Saham"
 
-#: gtik/gtik.c:1416
+#: gtik/gtik.c:1427
 msgid "_Symbols"
 msgstr "_Simbol"
 
-#: gtik/gtik.c:1418
+#: gtik/gtik.c:1429
 msgid "_Behavior"
 msgstr "Ke_lakuan"
 
-#: gtik/gtik.c:1420
+#: gtik/gtik.c:1431
 msgid "_Appearance"
 msgstr "Pen_ampilan"
 
-#: gtik/gtik.c:1494
+#: gtik/gtik.c:1505
 msgid "Skip forward"
 msgstr "Langkah kedepan"
 
-#: gtik/gtik.c:1495
+#: gtik/gtik.c:1506
 msgid "Skip backward"
 msgstr "Langkah kebelakang"
 
-#: gtik/gtik.c:1496
+#: gtik/gtik.c:1507
 msgid ""
 "Stock Ticker\n"
 "Get continuously updated stock quotes"
@@ -1345,44 +1356,40 @@ msgstr ""
 "Stock Ticker\n"
 "Peroleh kemaskini petikan stok berterusan"
 
-#: gtik/gtik.c:1683
+#: gtik/gtik.c:1694
 msgid "(No"
 msgstr "(Tiada"
 
-#: gtik/gtik.c:1684
+#: gtik/gtik.c:1695
 msgid "Change "
 msgstr "Penukaran"
 
-#: gweather/GNOME_GWeatherApplet.xml.h:2 gweather/gweather-dialog.c:302
+#: gweather/GNOME_GWeatherApplet.xml.h:2 gweather/gweather-dialog.c:306
 msgid "_Forecast"
 msgstr "_Ramalan"
 
-#: gweather/GNOME_GWeatherApplet.xml.h:5
-msgid "_Update"
-msgstr "_Kemaskini"
-
-#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:2
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:2
 msgid "Factory for creating the weather applet."
 msgstr "Kilang bagi mencipta Aplet cuaca"
 
-#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:3
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:3
 msgid "Gweather Applet Factory"
 msgstr "Kilang Aplet Gweather"
 
-#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:4
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:4
 msgid "Monitor the current weather conditions, and forecasts"
 msgstr "Monitor keadaan cuaca semasa, dan ramalan"
 
-#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:5
-#: gweather/gweather-about.c:63
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:5
+#: gweather/gweather-about.c:65
 msgid "Weather Report"
 msgstr "Laporan Cuaca"
 
-#: gweather/gweather-about.c:64
+#: gweather/gweather-about.c:66
 msgid "Copyright (c)1999 by S. Papadimitriou"
 msgstr "Copyright (c)1999 by S. Papadimitriou"
 
-#: gweather/gweather-about.c:65
+#: gweather/gweather-about.c:67
 msgid ""
 "Released under the GNU General Public License.\n"
 "\n"
@@ -1392,11 +1399,11 @@ msgstr ""
 "\n"
 "Aplet untuk memonitor keadaan cuaca tempatan."
 
-#: gweather/gweather-applet.c:196
+#: gweather/gweather-applet.c:194
 msgid "GNOME Weather"
 msgstr "GNOME Cuaca"
 
-#: gweather/gweather-applet.c:324
+#: gweather/gweather-applet.c:319
 msgid "Updating..."
 msgstr "Mengemaskini..."
 
@@ -1405,75 +1412,75 @@ msgid "Forecast"
 msgstr "Ramalan"
 
 # ui/galeon.glade.h:247
-#: gweather/gweather-dialog.c:108
+#: gweather/gweather-dialog.c:112
 msgid "Location:"
 msgstr "Lokasi:"
 
-#: gweather/gweather-dialog.c:116
+#: gweather/gweather-dialog.c:120
 msgid "Update:"
 msgstr "Kemaskini:"
 
-#: gweather/gweather-dialog.c:124
+#: gweather/gweather-dialog.c:128
 msgid "Conditions:"
 msgstr "Keadaan:"
 
-#: gweather/gweather-dialog.c:132
+#: gweather/gweather-dialog.c:136
 msgid "Sky:"
 msgstr "Langit:"
 
-#: gweather/gweather-dialog.c:140
+#: gweather/gweather-dialog.c:144
 msgid "Temperature:"
 msgstr "Suhu:"
 
-#: gweather/gweather-dialog.c:148
+#: gweather/gweather-dialog.c:152
 msgid "Dew point:"
 msgstr "Titik Dew:"
 
-#: gweather/gweather-dialog.c:156
+#: gweather/gweather-dialog.c:160
 msgid "Humidity:"
 msgstr "Kelembapan:"
 
-#: gweather/gweather-dialog.c:164
+#: gweather/gweather-dialog.c:168
 msgid "Wind:"
 msgstr "Angin:"
 
-#: gweather/gweather-dialog.c:172
+#: gweather/gweather-dialog.c:176
 msgid "Pressure:"
 msgstr "Tekanan:"
 
-#: gweather/gweather-dialog.c:180
+#: gweather/gweather-dialog.c:184
 msgid "Visibility:"
 msgstr "Penglihatan:"
 
-#: gweather/gweather-dialog.c:279
+#: gweather/gweather-dialog.c:283
 msgid "C_urrent conditions"
 msgstr "Keadaan _semasa"
 
-#: gweather/gweather-dialog.c:292
+#: gweather/gweather-dialog.c:296
 msgid "ForeCast Report"
 msgstr "Laporan Ramalan"
 
-#: gweather/gweather-dialog.c:292
+#: gweather/gweather-dialog.c:296
 msgid "See the ForeCast Details"
 msgstr "LIhat Perincian Ramalan"
 
-#: gweather/gweather-dialog.c:327
+#: gweather/gweather-dialog.c:331
 msgid "_Visit Weather.com"
 msgstr "_Lawat Weather.com"
 
-#: gweather/gweather-dialog.c:328
+#: gweather/gweather-dialog.c:332
 msgid "URL link Button"
 msgstr "Butang Pautan URL"
 
-#: gweather/gweather-dialog.c:328
+#: gweather/gweather-dialog.c:332
 msgid "Click to Enter Weather.com"
 msgstr "Klik untuk Masuk ke Weather.com"
 
-#: gweather/gweather-dialog.c:336
+#: gweather/gweather-dialog.c:340
 msgid "_Radar map"
 msgstr "Peta _radar"
 
-#: gweather/gweather-dialog.c:408
+#: gweather/gweather-dialog.c:412
 msgid ""
 "Detailed forecast not available for this location.\n"
 "Please try the state forecast; note that IWIN forecasts are available only "
@@ -1483,7 +1490,7 @@ msgstr ""
 "Sila cuba ramalan bagi negeri; dimaklumkan bahawa ralaman IWIN hanya ada "
 "bagi Bandaraya di Amerika SYarikat."
 
-#: gweather/gweather-dialog.c:410
+#: gweather/gweather-dialog.c:414
 msgid ""
 "State forecast not available for this location.\n"
 "Please try the detailed forecast; note that IWIN forecasts are available "
@@ -1516,76 +1523,1311 @@ msgstr "Kemasukan Alamat"
 msgid "Enter the URL"
 msgstr "Masukkan URL"
 
-#: gweather/gweather-pref.c:559
+#: gweather/gweather-pref.c:560
 msgid "Weather Preferences"
 msgstr "Keutamaan Cuaca"
 
 # ui/galeon.glade.h:247
-#: gweather/gweather-pref.c:606
+#: gweather/gweather-pref.c:611
 msgid "_Location"
 msgstr "_Lokasi"
 
-#: gweather/gweather-pref.c:637
+#: gweather/gweather-pref.c:642
 msgid "_Automatically update every"
 msgstr "_Automatik kemaskini setiap"
 
-#: gweather/gweather-pref.c:643
+#: gweather/gweather-pref.c:648
 msgid "Use _metric system units"
 msgstr "Guna sistem unit _metrik"
 
-#: gweather/gweather-pref.c:649
+#: gweather/gweather-pref.c:654
 msgid "Enable _detailed forecast"
 msgstr "Hidupkan ramalan _terperinci"
 
-#: gweather/gweather-pref.c:656
+#: gweather/gweather-pref.c:661
 msgid "Enable _radar map"
 msgstr "Hidupkan Peta _radar"
 
-#: gweather/gweather-pref.c:662
+#: gweather/gweather-pref.c:667
 msgid "Use cus_tom address for radar map"
 msgstr "Guna alamat _tersendiri bagi peta radar"
 
-#: gweather/gweather-pref.c:673
+#: gweather/gweather-pref.c:678
 msgid "A_ddress :"
 msgstr "A_lamat :"
 
-#: gweather/gweather-pref.c:685
+#: gweather/gweather-pref.c:690
 msgid "Updates"
 msgstr "Kemaskini"
 
-#: gweather/gweather-pref.c:691
+#: gweather/gweather-pref.c:696
 msgid "_Automatically update every "
 msgstr "_Automatik kemaskini setiap "
 
-#: gweather/gweather-pref.c:711
+#: gweather/gweather-pref.c:716
 msgid "minute(s)"
 msgstr "minit"
 
 #. The Miscellaneous frame
-#: gweather/gweather-pref.c:722
+#: gweather/gweather-pref.c:727
 msgid "Miscellaneous"
 msgstr "Pelbagai"
 
-#: gweather/gweather-pref.c:740 mini-commander/src/preferences.c:971
-#: modemlights/properties.c:417
+#: gweather/gweather-pref.c:745 mini-commander/src/preferences.c:980
+#: modemlights/properties.c:432
 msgid "_General"
 msgstr "_Umum"
 
-#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:1
-#: mini-commander/src/about.c:62
+#: gweather/weather.c:57
+msgid "knots"
+msgstr ""
+
+#: gweather/weather.c:57
+msgid "kph"
+msgstr ""
+
+#: gweather/weather.c:62
+msgid "inHg"
+msgstr ""
+
+#: gweather/weather.c:62
+msgid "hPa"
+msgstr "hPa"
+
+#: gweather/weather.c:66
+msgid "miles"
+msgstr "batu"
+
+#: gweather/weather.c:66
+msgid "kilometers"
+msgstr "kilometer"
+
+#: gweather/weather.c:132
+msgid "Variable"
+msgstr "Berubah-ubah"
+
+#: gweather/weather.c:133
+msgid "North"
+msgstr "Utara"
+
+#: gweather/weather.c:133
+msgid "North - NorthEast"
+msgstr ""
+
+#: gweather/weather.c:133
+msgid "Northeast"
+msgstr "Timur laut"
+
+#: gweather/weather.c:133
+msgid "East - NorthEast"
+msgstr ""
+
+#: gweather/weather.c:134
+msgid "East"
+msgstr "Timur"
+
+#: gweather/weather.c:134
+msgid "East - Southeast"
+msgstr ""
+
+#: gweather/weather.c:134
+msgid "Southeast"
+msgstr "Tenggara"
+
+#: gweather/weather.c:134
+msgid "South - Southeast"
+msgstr ""
+
+#: gweather/weather.c:135
+msgid "South"
+msgstr "Selatan"
+
+#: gweather/weather.c:135
+msgid "South - Southwest"
+msgstr ""
+
+#: gweather/weather.c:135
+msgid "Southwest"
+msgstr "Barat daya"
+
+#: gweather/weather.c:135
+msgid "West - Southwest"
+msgstr ""
+
+#: gweather/weather.c:136
+msgid "West"
+msgstr "Barat"
+
+#: gweather/weather.c:136
+msgid "West - Northwest"
+msgstr ""
+
+#: gweather/weather.c:136
+msgid "Northwest"
+msgstr "Barat laut"
+
+#: gweather/weather.c:136
+msgid "North - Northwest"
+msgstr ""
+
+#: gweather/weather.c:143 gweather/weather.c:160 gweather/weather.c:224
+msgid "Invalid"
+msgstr "Tidak sah"
+
+#: gweather/weather.c:149
+msgid "Clear Sky"
+msgstr "Langit Cerah"
+
+#: gweather/weather.c:150
+msgid "Broken clouds"
+msgstr ""
+
+#: gweather/weather.c:151
+msgid "Scattered clouds"
+msgstr ""
+
+#: gweather/weather.c:152
+msgid "Few clouds"
+msgstr ""
+
+#: gweather/weather.c:153
+#, fuzzy
+msgid "Overcast"
+msgstr "Ramalan"
+
+#. NONE                         VICINITY                             LIGHT                      MODERATE                      HEAVY                      SHALLOW                      PATCHES                         PARTIAL                      THUNDERSTORM                    BLOWING                      SHOWERS                         DRIFTING                      FREEZING
+#. ******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
+#. NONE
+#. DRIZZLE
+#: gweather/weather.c:186
+msgid "Drizzle"
+msgstr ""
+
+#: gweather/weather.c:186
+msgid "Drizzle in the vicinity"
+msgstr ""
+
+#: gweather/weather.c:186
+msgid "Light drizzle"
+msgstr ""
+
+#: gweather/weather.c:186
+msgid "Moderate drizzle"
+msgstr ""
+
+#: gweather/weather.c:186
+msgid "Heavy drizzle"
+msgstr ""
+
+#: gweather/weather.c:186
+msgid "Shallow drizzle"
+msgstr ""
+
+#: gweather/weather.c:186
+msgid "Patches of drizzle"
+msgstr ""
+
+#: gweather/weather.c:186
+msgid "Partial drizzle"
+msgstr ""
+
+#: gweather/weather.c:186 gweather/weather.c:187
+msgid "Thunderstorm"
+msgstr ""
+
+#: gweather/weather.c:186
+msgid "Windy drizzle"
+msgstr ""
+
+#: gweather/weather.c:186
+msgid "Showers"
+msgstr ""
+
+#: gweather/weather.c:186
+msgid "Drifting drizzle"
+msgstr ""
+
+#: gweather/weather.c:186
+msgid "Freezing drizzle"
+msgstr ""
+
+#. RAIN
+#: gweather/weather.c:187
+msgid "Rain"
+msgstr "Hujan"
+
+#: gweather/weather.c:187
+msgid "Rain in the vicinity"
+msgstr ""
+
+#: gweather/weather.c:187
+msgid "Light rain"
+msgstr ""
+
+#: gweather/weather.c:187
+#, fuzzy
+msgid "Moderate rain"
+msgstr "Britain"
+
+#: gweather/weather.c:187
+msgid "Heavy rain"
+msgstr "Hujan lebat"
+
+#: gweather/weather.c:187
+#, fuzzy
+msgid "Shallow rain"
+msgstr "Papar k_erangka"
+
+#: gweather/weather.c:187
+msgid "Patches of rain"
+msgstr ""
+
+#: gweather/weather.c:187
+msgid "Partial rainfall"
+msgstr ""
+
+#: gweather/weather.c:187
+msgid "Blowing rainfall"
+msgstr ""
+
+#: gweather/weather.c:187
+msgid "Rain showers"
+msgstr ""
+
+#: gweather/weather.c:187
+msgid "Drifting rain"
+msgstr ""
+
+#: gweather/weather.c:187
+msgid "Freezing rain"
+msgstr ""
+
+#. SNOW
+#: gweather/weather.c:188
+msgid "Snow"
+msgstr "Salji"
+
+#: gweather/weather.c:188
+msgid "Snow in the vicinity"
+msgstr ""
+
+#: gweather/weather.c:188
+msgid "Light snow"
+msgstr ""
+
+#: gweather/weather.c:188
+msgid "Moderate snow"
+msgstr ""
+
+#: gweather/weather.c:188
+msgid "Heavy snow"
+msgstr ""
+
+#: gweather/weather.c:188
+msgid "Shallow snow"
+msgstr ""
+
+#: gweather/weather.c:188
+msgid "Patches of snow"
+msgstr ""
+
+#: gweather/weather.c:188
+msgid "Partial snowfall"
+msgstr ""
+
+#: gweather/weather.c:188 gweather/weather.c:189
+msgid "Snowstorm"
+msgstr ""
+
+#: gweather/weather.c:188
+msgid "Blowing snowfall"
+msgstr ""
+
+#: gweather/weather.c:188
+msgid "Snow showers"
+msgstr ""
+
+#: gweather/weather.c:188
+msgid "Drifting snow"
+msgstr ""
+
+#: gweather/weather.c:188
+msgid "Freezing snow"
+msgstr ""
+
+#. SNOW_GRAINS
+#: gweather/weather.c:189
+msgid "Snow grains"
+msgstr ""
+
+#: gweather/weather.c:189
+msgid "Snow grains in the vicinity"
+msgstr ""
+
+#: gweather/weather.c:189
+msgid "Light snow grains"
+msgstr ""
+
+#: gweather/weather.c:189
+msgid "Moderate snow grains"
+msgstr ""
+
+#: gweather/weather.c:189
+msgid "Heavy snow grains"
+msgstr ""
+
+#: gweather/weather.c:189
+msgid "Shallow snow grains"
+msgstr ""
+
+#: gweather/weather.c:189
+msgid "Patches of snow grains"
+msgstr ""
+
+#: gweather/weather.c:189
+msgid "Partial snow grains"
+msgstr ""
+
+#: gweather/weather.c:189
+msgid "Blowing snow grains"
+msgstr ""
+
+#: gweather/weather.c:189
+msgid "Snow grain showers"
+msgstr ""
+
+#: gweather/weather.c:189
+msgid "Drifting snow grains"
+msgstr ""
+
+#: gweather/weather.c:189
+msgid "Freezing snow grains"
+msgstr ""
+
+#. ICE_CRYSTALS
+#: gweather/weather.c:190
+msgid "Ice crystals"
+msgstr ""
+
+#: gweather/weather.c:190
+msgid "Ice crystals in the vicinity"
+msgstr ""
+
+#: gweather/weather.c:190
+msgid "Few ice crystals"
+msgstr ""
+
+#: gweather/weather.c:190
+msgid "Moderate ice crystals"
+msgstr ""
+
+#: gweather/weather.c:190
+msgid "Heavy ice crystals"
+msgstr ""
+
+#: gweather/weather.c:190
+msgid "Patches of ice crystals"
+msgstr ""
+
+#: gweather/weather.c:190
+msgid "Partial ice crystals"
+msgstr ""
+
+#: gweather/weather.c:190
+msgid "Ice crystal storm"
+msgstr ""
+
+#: gweather/weather.c:190
+msgid "Blowing ice crystals"
+msgstr ""
+
+#: gweather/weather.c:190
+msgid "Showers of ice crystals"
+msgstr ""
+
+#: gweather/weather.c:190
+msgid "Drifting ice crystals"
+msgstr ""
+
+#: gweather/weather.c:190
+msgid "Freezing ice crystals"
+msgstr ""
+
+#. ICE_PELLETS
+#: gweather/weather.c:191
+msgid "Ice pellets"
+msgstr ""
+
+#: gweather/weather.c:191
+msgid "Ice pellets in the vicinity"
+msgstr ""
+
+#: gweather/weather.c:191
+msgid "Few ice pellets"
+msgstr ""
+
+#: gweather/weather.c:191
+msgid "Moderate ice pellets"
+msgstr ""
+
+#: gweather/weather.c:191
+msgid "Heavy ice pellets"
+msgstr ""
+
+#: gweather/weather.c:191
+msgid "Shallow ice pellets"
+msgstr ""
+
+#: gweather/weather.c:191
+msgid "Patches of ice pellets"
+msgstr ""
+
+#: gweather/weather.c:191
+msgid "Partial ice pellets"
+msgstr ""
+
+#: gweather/weather.c:191
+msgid "Ice pellet storm"
+msgstr ""
+
+#: gweather/weather.c:191
+msgid "Blowing ice pellets"
+msgstr ""
+
+#: gweather/weather.c:191
+msgid "Showers of ice pellets"
+msgstr ""
+
+#: gweather/weather.c:191
+msgid "Drifting ice pellets"
+msgstr ""
+
+#: gweather/weather.c:191
+msgid "Freezing ice pellets"
+msgstr ""
+
+#. HAIL
+#: gweather/weather.c:192
+#, fuzzy
+msgid "Hail"
+msgstr "Brazil"
+
+#: gweather/weather.c:192
+msgid "Hail in the vicinity"
+msgstr ""
+
+#: gweather/weather.c:192 gweather/weather.c:193
+msgid "Light hail"
+msgstr ""
+
+#: gweather/weather.c:192
+msgid "Moderate hail"
+msgstr ""
+
+#: gweather/weather.c:192
+msgid "Heavy hail"
+msgstr ""
+
+#: gweather/weather.c:192
+#, fuzzy
+msgid "Shallow hail"
+msgstr "Papar pengen_dali"
+
+#: gweather/weather.c:192
+msgid "Patches of hail"
+msgstr ""
+
+#: gweather/weather.c:192
+msgid "Partial hail"
+msgstr ""
+
+#: gweather/weather.c:192
+#, fuzzy
+msgid "Hailstorm"
+msgstr "Sejarah"
+
+#: gweather/weather.c:192
+msgid "Blowing hail"
+msgstr ""
+
+#: gweather/weather.c:192
+msgid "Hail showers"
+msgstr ""
+
+#: gweather/weather.c:192
+msgid "Drifting hail"
+msgstr ""
+
+#: gweather/weather.c:192
+msgid "Freezing hail"
+msgstr ""
+
+#. SMALL_HAIL
+#: gweather/weather.c:193
+msgid "Small hail"
+msgstr ""
+
+#: gweather/weather.c:193
+msgid "Small hail in the vicinity"
+msgstr ""
+
+#: gweather/weather.c:193
+msgid "Moderate small hail"
+msgstr ""
+
+#: gweather/weather.c:193
+msgid "Heavy small hail"
+msgstr ""
+
+#: gweather/weather.c:193
+msgid "Shallow small hail"
+msgstr ""
+
+#: gweather/weather.c:193
+msgid "Patches of small hail"
+msgstr ""
+
+#: gweather/weather.c:193
+msgid "Partial small hail"
+msgstr ""
+
+#: gweather/weather.c:193
+msgid "Small hailstorm"
+msgstr ""
+
+#: gweather/weather.c:193
+msgid "Blowing small hail"
+msgstr ""
+
+#: gweather/weather.c:193
+msgid "Showers of small hail"
+msgstr ""
+
+#: gweather/weather.c:193
+msgid "Drifting small hail"
+msgstr ""
+
+#: gweather/weather.c:193
+msgid "Freezing small hail"
+msgstr ""
+
+#. PRECIPITATION
+#: gweather/weather.c:194
+msgid "Unknown precipitation"
+msgstr ""
+
+#: gweather/weather.c:194
+msgid "Precipitation in the vicinity"
+msgstr ""
+
+#: gweather/weather.c:194
+msgid "Light precipitation"
+msgstr ""
+
+#: gweather/weather.c:194
+msgid "Moderate precipitation"
+msgstr ""
+
+#: gweather/weather.c:194
+msgid "Heavy precipitation"
+msgstr ""
+
+#: gweather/weather.c:194
+msgid "Shallow precipitation"
+msgstr ""
+
+#: gweather/weather.c:194
+msgid "Patches of precipitation"
+msgstr ""
+
+#: gweather/weather.c:194
+msgid "Partial precipitation"
+msgstr ""
+
+#: gweather/weather.c:194
+msgid "Unknown thunderstorm"
+msgstr ""
+
+#: gweather/weather.c:194
+msgid "Blowing precipitation"
+msgstr ""
+
+#: gweather/weather.c:194
+msgid "Showers, type unknown"
+msgstr ""
+
+#: gweather/weather.c:194
+msgid "Drifting precipitation"
+msgstr ""
+
+#: gweather/weather.c:194
+msgid "Freezing precipitation"
+msgstr ""
+
+#. MIST
+#: gweather/weather.c:195
+msgid "Mist"
+msgstr ""
+
+#: gweather/weather.c:195
+msgid "Mist in the vicinity"
+msgstr ""
+
+#: gweather/weather.c:195
+msgid "Light mist"
+msgstr ""
+
+#: gweather/weather.c:195
+msgid "Moderate mist"
+msgstr ""
+
+#: gweather/weather.c:195
+msgid "Thick mist"
+msgstr ""
+
+#: gweather/weather.c:195
+msgid "Shallow mist"
+msgstr ""
+
+#: gweather/weather.c:195
+msgid "Patches of mist"
+msgstr ""
+
+#: gweather/weather.c:195
+msgid "Partial mist"
+msgstr ""
+
+#: gweather/weather.c:195
+msgid "Mist with wind"
+msgstr ""
+
+#: gweather/weather.c:195
+msgid "Drifting mist"
+msgstr ""
+
+#: gweather/weather.c:195
+msgid "Freezing mist"
+msgstr ""
+
+#. FOG
+#: gweather/weather.c:196
+msgid "Fog"
+msgstr ""
+
+#: gweather/weather.c:196
+msgid "Fog in the vicinity"
+msgstr ""
+
+#: gweather/weather.c:196
+msgid "Light fog"
+msgstr ""
+
+#: gweather/weather.c:196
+msgid "Moderate fog"
+msgstr ""
+
+#: gweather/weather.c:196
+msgid "Thick fog"
+msgstr ""
+
+#: gweather/weather.c:196
+msgid "Shallow fog"
+msgstr ""
+
+#: gweather/weather.c:196
+msgid "Patches of fog"
+msgstr ""
+
+#: gweather/weather.c:196
+msgid "Partial fog"
+msgstr ""
+
+#: gweather/weather.c:196
+msgid "Fog with wind"
+msgstr ""
+
+#: gweather/weather.c:196
+msgid "Drifting fog"
+msgstr ""
+
+#: gweather/weather.c:196
+msgid "Freezing fog"
+msgstr ""
+
+#. SMOKE
+#: gweather/weather.c:197
+msgid "Smoke"
+msgstr ""
+
+#: gweather/weather.c:197
+msgid "Smoke in the vicinity"
+msgstr ""
+
+#: gweather/weather.c:197
+msgid "Thin smoke"
+msgstr ""
+
+#: gweather/weather.c:197
+msgid "Moderate smoke"
+msgstr ""
+
+#: gweather/weather.c:197
+msgid "Thick smoke"
+msgstr ""
+
+#: gweather/weather.c:197
+#, fuzzy
+msgid "Shallow smoke"
+msgstr "Papar masa"
+
+#: gweather/weather.c:197
+msgid "Patches of smoke"
+msgstr ""
+
+#: gweather/weather.c:197
+msgid "Partial smoke"
+msgstr ""
+
+#: gweather/weather.c:197
+msgid "Smoke w/ thunders"
+msgstr ""
+
+#: gweather/weather.c:197
+msgid "Smoke with wind"
+msgstr ""
+
+#: gweather/weather.c:197
+msgid "Drifting smoke"
+msgstr ""
+
+#. VOLCANIC_ASH
+#: gweather/weather.c:198
+msgid "Volcanic ash"
+msgstr ""
+
+#: gweather/weather.c:198
+msgid "Volcanic ash in the vicinity"
+msgstr ""
+
+#: gweather/weather.c:198
+msgid "Moderate volcanic ash"
+msgstr ""
+
+#: gweather/weather.c:198
+msgid "Thick volcanic ash"
+msgstr ""
+
+#: gweather/weather.c:198
+msgid "Shallow volcanic ash"
+msgstr ""
+
+#: gweather/weather.c:198
+msgid "Patches of volcanic ash"
+msgstr ""
+
+#: gweather/weather.c:198
+msgid "Partial volcanic ash"
+msgstr ""
+
+#: gweather/weather.c:198
+msgid "Volcanic ash w/ thunders"
+msgstr ""
+
+#: gweather/weather.c:198
+msgid "Blowing volcanic ash"
+msgstr ""
+
+#: gweather/weather.c:198
+msgid "Showers of volcanic ash "
+msgstr ""
+
+#: gweather/weather.c:198
+msgid "Drifting volcanic ash"
+msgstr ""
+
+#: gweather/weather.c:198
+msgid "Freezing volcanic ash"
+msgstr ""
+
+#. SAND
+#: gweather/weather.c:199
+#, fuzzy
+msgid "Sand"
+msgstr "Sepanyol"
+
+#: gweather/weather.c:199
+msgid "Sand in the vicinity"
+msgstr ""
+
+#: gweather/weather.c:199
+msgid "Light sand"
+msgstr ""
+
+#: gweather/weather.c:199
+msgid "Moderate sand"
+msgstr ""
+
+#: gweather/weather.c:199
+msgid "Heavy sand"
+msgstr ""
+
+#: gweather/weather.c:199
+msgid "Patches of sand"
+msgstr ""
+
+#: gweather/weather.c:199
+#, fuzzy
+msgid "Partial sand"
+msgstr "Thailand"
+
+#: gweather/weather.c:199
+msgid "Blowing sand"
+msgstr ""
+
+#: gweather/weather.c:199
+msgid "Drifting sand"
+msgstr ""
+
+#. HAZE
+#: gweather/weather.c:200
+msgid "Haze"
+msgstr ""
+
+#: gweather/weather.c:200
+msgid "Haze in the vicinity"
+msgstr ""
+
+#: gweather/weather.c:200
+msgid "Light haze"
+msgstr ""
+
+#: gweather/weather.c:200
+msgid "Moderate haze"
+msgstr ""
+
+#: gweather/weather.c:200
+msgid "Thick haze"
+msgstr ""
+
+#: gweather/weather.c:200
+#, fuzzy
+msgid "Shallow haze"
+msgstr "Papar pengen_dali"
+
+#: gweather/weather.c:200
+msgid "Patches of haze"
+msgstr ""
+
+#: gweather/weather.c:200
+msgid "Partial haze"
+msgstr ""
+
+#: gweather/weather.c:200
+msgid "Haze with wind"
+msgstr ""
+
+#: gweather/weather.c:200
+msgid "Drifting haze"
+msgstr ""
+
+#: gweather/weather.c:200
+msgid "Freezing haze"
+msgstr ""
+
+#. SPRAY
+#: gweather/weather.c:201
+msgid "Sprays"
+msgstr ""
+
+#: gweather/weather.c:201
+msgid "Sprays in the vicinity"
+msgstr ""
+
+#: gweather/weather.c:201
+msgid "Light sprays"
+msgstr ""
+
+#: gweather/weather.c:201
+msgid "Moderate sprays"
+msgstr ""
+
+#: gweather/weather.c:201
+msgid "Heavy sprays"
+msgstr ""
+
+#: gweather/weather.c:201
+msgid "Shallow sprays"
+msgstr ""
+
+#: gweather/weather.c:201
+msgid "Patches of sprays"
+msgstr ""
+
+#: gweather/weather.c:201
+msgid "Partial sprays"
+msgstr ""
+
+#: gweather/weather.c:201
+msgid "Blowing sprays"
+msgstr ""
+
+#: gweather/weather.c:201
+msgid "Drifting sprays"
+msgstr ""
+
+#: gweather/weather.c:201
+msgid "Freezing sprays"
+msgstr ""
+
+#. DUST
+#: gweather/weather.c:202
+#, fuzzy
+msgid "Dust"
+msgstr "Belanda"
+
+#: gweather/weather.c:202
+msgid "Dust in the vicinity"
+msgstr ""
+
+#: gweather/weather.c:202
+msgid "Light dust"
+msgstr ""
+
+#: gweather/weather.c:202
+msgid "Moderate dust"
+msgstr ""
+
+#: gweather/weather.c:202
+msgid "Heavy dust"
+msgstr ""
+
+#: gweather/weather.c:202
+msgid "Patches of dust"
+msgstr ""
+
+#: gweather/weather.c:202
+msgid "Partial dust"
+msgstr ""
+
+#: gweather/weather.c:202
+msgid "Blowing dust"
+msgstr ""
+
+#: gweather/weather.c:202
+msgid "Drifting dust"
+msgstr ""
+
+#. SQUALL
+#: gweather/weather.c:203
+msgid "Squall"
+msgstr ""
+
+#: gweather/weather.c:203
+msgid "Squall in the vicinity"
+msgstr ""
+
+#: gweather/weather.c:203
+msgid "Light squall"
+msgstr ""
+
+#: gweather/weather.c:203
+msgid "Moderate squall"
+msgstr ""
+
+#: gweather/weather.c:203
+msgid "Heavy squall"
+msgstr ""
+
+#: gweather/weather.c:203
+msgid "Partial squall"
+msgstr ""
+
+#: gweather/weather.c:203
+msgid "Thunderous squall"
+msgstr ""
+
+#: gweather/weather.c:203
+msgid "Blowing squall"
+msgstr ""
+
+#: gweather/weather.c:203
+msgid "Drifting squall"
+msgstr ""
+
+#: gweather/weather.c:203
+msgid "Freezing squall"
+msgstr ""
+
+#. SANDSTORM
+#: gweather/weather.c:204
+msgid "Sandstorm"
+msgstr ""
+
+#: gweather/weather.c:204
+msgid "Sandstorm in the vicinity"
+msgstr ""
+
+#: gweather/weather.c:204
+msgid "Light standstorm"
+msgstr ""
+
+#: gweather/weather.c:204
+msgid "Moderate sandstorm"
+msgstr ""
+
+#: gweather/weather.c:204
+msgid "Heavy sandstorm"
+msgstr ""
+
+#: gweather/weather.c:204
+msgid "Shallow sandstorm"
+msgstr ""
+
+#: gweather/weather.c:204
+msgid "Partial sandstorm"
+msgstr ""
+
+#: gweather/weather.c:204
+msgid "Thunderous sandstorm"
+msgstr ""
+
+#: gweather/weather.c:204
+msgid "Blowing sandstorm"
+msgstr ""
+
+#: gweather/weather.c:204
+msgid "Drifting sandstorm"
+msgstr ""
+
+#: gweather/weather.c:204
+msgid "Freezing sandstorm"
+msgstr ""
+
+#. DUSTSTORM
+#: gweather/weather.c:205
+#, fuzzy
+msgid "Duststorm"
+msgstr "Sendiri"
+
+#: gweather/weather.c:205
+msgid "Duststorm in the vicinity"
+msgstr ""
+
+#: gweather/weather.c:205
+msgid "Light duststorm"
+msgstr ""
+
+#: gweather/weather.c:205
+msgid "Moderate duststorm"
+msgstr ""
+
+#: gweather/weather.c:205
+msgid "Heavy duststorm"
+msgstr ""
+
+#: gweather/weather.c:205
+msgid "Shallow duststorm"
+msgstr ""
+
+#: gweather/weather.c:205
+msgid "Partial duststorm"
+msgstr ""
+
+#: gweather/weather.c:205
+msgid "Thunderous duststorm"
+msgstr ""
+
+#: gweather/weather.c:205
+msgid "Blowing duststorm"
+msgstr ""
+
+#: gweather/weather.c:205
+msgid "Drifting duststorm"
+msgstr ""
+
+#: gweather/weather.c:205
+msgid "Freezing duststorm"
+msgstr ""
+
+#. FUNNEL_CLOUD
+#: gweather/weather.c:206
+msgid "Funnel cloud"
+msgstr ""
+
+#: gweather/weather.c:206
+msgid "Funnel cloud in the vicinity"
+msgstr ""
+
+#: gweather/weather.c:206
+msgid "Light funnel cloud"
+msgstr ""
+
+#: gweather/weather.c:206
+msgid "Moderate funnel cloud"
+msgstr ""
+
+#: gweather/weather.c:206
+msgid "Thick funnel cloud"
+msgstr ""
+
+#: gweather/weather.c:206
+msgid "Shallow funnel cloud"
+msgstr ""
+
+#: gweather/weather.c:206
+msgid "Patches of funnel clouds"
+msgstr ""
+
+#: gweather/weather.c:206
+msgid "Partial funnel clouds"
+msgstr ""
+
+#: gweather/weather.c:206
+msgid "Funnel cloud w/ wind"
+msgstr ""
+
+#: gweather/weather.c:206
+msgid "Drifting funnel cloud"
+msgstr ""
+
+#. TORNADO
+#: gweather/weather.c:207
+msgid "Tornado"
+msgstr ""
+
+#: gweather/weather.c:207
+msgid "Tornado in the vicinity"
+msgstr ""
+
+#: gweather/weather.c:207
+msgid "Moderate tornado"
+msgstr ""
+
+#: gweather/weather.c:207
+msgid "Raging tornado"
+msgstr ""
+
+#: gweather/weather.c:207
+msgid "Partial tornado"
+msgstr ""
+
+#: gweather/weather.c:207
+msgid "Thunderous tornado"
+msgstr ""
+
+#: gweather/weather.c:207
+msgid "Drifting tornado"
+msgstr ""
+
+#: gweather/weather.c:207
+msgid "Freezing tornado"
+msgstr ""
+
+#. DUST_WHIRLS
+#: gweather/weather.c:208
+msgid "Dust whirls"
+msgstr ""
+
+#: gweather/weather.c:208
+msgid "Dust whirls in the vicinity"
+msgstr ""
+
+#: gweather/weather.c:208
+msgid "Light dust whirls"
+msgstr ""
+
+#: gweather/weather.c:208
+msgid "Moderate dust whirls"
+msgstr ""
+
+#: gweather/weather.c:208
+msgid "Heavy dust whirls"
+msgstr ""
+
+#: gweather/weather.c:208
+msgid "Shallow dust whirls"
+msgstr ""
+
+#: gweather/weather.c:208
+msgid "Patches of dust whirls"
+msgstr ""
+
+#: gweather/weather.c:208
+msgid "Partial dust whirls"
+msgstr ""
+
+#: gweather/weather.c:208
+msgid "Blowing dust whirls"
+msgstr ""
+
+#: gweather/weather.c:208
+msgid "Drifting dust whirls"
+msgstr ""
+
+#: gweather/weather.c:824 gweather/weather.c:864 gweather/weather.c:1436
+msgid "Failed to get METAR data.\n"
+msgstr ""
+
+#: gweather/weather.c:856 gweather/weather.c:884 gweather/weather.c:1081
+msgid "WeatherInfo missing location"
+msgstr ""
+
+#: gweather/weather.c:1047
+msgid "Failed to get IWIN data.\n"
+msgstr ""
+
+#. forecast data is not really interesting anyway ;)
+#: gweather/weather.c:1091
+msgid "Failed to get IWIN forecast data.\n"
+msgstr ""
+
+#: gweather/weather.c:1290
+msgid "Failed to get Met Office data.\n"
+msgstr ""
+
+#: gweather/weather.c:1324
+msgid "Failed to get Met Office forecast data.\n"
+msgstr ""
+
+#: gweather/weather.c:1466
+msgid "Failed to get radar map image.\n"
+msgstr ""
+
+#: gweather/weather.c:1769
+msgid "%a, %b %d / %H:%M"
+msgstr ""
+
+#: gweather/weather.c:1773
+msgid "Unknown observation time"
+msgstr ""
+
+#: gweather/weather.c:1833
+msgid "Calm"
+msgstr ""
+
+#: gweather/weather.c:1859
+msgid "Unknown"
+msgstr ""
+
+#: gweather/weather.c:1893
+msgid "Retrieval failed"
+msgstr ""
+
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:1
+#: mini-commander/src/about.c:66
 #: mini-commander/src/mini-commander_applet.c:316
 msgid "Command Line"
 msgstr "Arahan Baris"
 
-#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:2
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:2
 msgid "Mini-Commander"
 msgstr "Mini-Commander"
 
-#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:3
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:3
 msgid "MiniCommander Applet Factory"
 msgstr "Kilang Aplet MiniCommander"
 
-#: mini-commander/src/about.c:65
+#: mini-commander/src/about.c:69
 msgid ""
 "This GNOME applet adds a command line to the panel. It features command "
 "completion, command history, changeable macros and an optional built-in "
@@ -1627,43 +2869,35 @@ msgstr "selesai"
 msgid "not found"
 msgstr "tidak dijumpai"
 
-#: mini-commander/src/cmd_completion.c:167 mini-commander/src/exec.c:117
+#: mini-commander/src/cmd_completion.c:167
 msgid "no /bin/sh"
 msgstr "tiada /bin/sh"
 
-#: mini-commander/src/command_line.c:94 mini-commander/src/command_line.c:114
+#: mini-commander/src/command_line.c:103 mini-commander/src/command_line.c:123
 msgid "end of history list"
 msgstr "akhir senarai sejarah"
 
 #. enter pressed -> exec command
-#: mini-commander/src/command_line.c:124 mini-commander/src/exec.c:59
+#: mini-commander/src/command_line.c:133
 msgid "starting..."
 msgstr "memulakan..."
 
-#: mini-commander/src/command_line.c:153
+#: mini-commander/src/command_line.c:162
 msgid "autocompleted"
 msgstr "autosempurna"
 
 #. build file select dialog
-#: mini-commander/src/command_line.c:514
+#: mini-commander/src/command_line.c:506
 msgid "Start program"
 msgstr "Mula program"
 
-#: mini-commander/src/command_line.c:553
+#: mini-commander/src/command_line.c:546
 msgid "Command line"
 msgstr "Arahan baris"
 
-#: mini-commander/src/command_line.c:554
+#: mini-commander/src/command_line.c:547
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "Taip arahan di sini dan Gnome akan melaksanakannya untuk anda"
-
-#: mini-commander/src/exec.c:61
-msgid "fork error"
-msgstr "sepit ralat"
-
-#: mini-commander/src/exec.c:105
-msgid "child exited"
-msgstr "anak terkeluar"
 
 #: mini-commander/src/message.c:155
 msgid "%H:%M - %d. %b"
@@ -1711,114 +2945,110 @@ msgstr "Aplet Mini-Commander"
 msgid "This applet adds a command line to the panel"
 msgstr "Aplet ini menambah arahan baris pada panel"
 
-#: mini-commander/src/mini-commander_applet.c:448
+#: mini-commander/src/mini-commander_applet.c:445
 msgid "ready..."
 msgstr "bersedia..."
 
-#: mini-commander/src/preferences.c:702
+#: mini-commander/src/preferences.c:707
 msgid "Command Line Preferences"
 msgstr "Keutamaan Arahan Baris"
 
-#: mini-commander/src/preferences.c:719
+#: mini-commander/src/preferences.c:728
 msgid "Clock"
 msgstr "Jam"
 
 #. show time check box
-#: mini-commander/src/preferences.c:727
+#: mini-commander/src/preferences.c:736
 msgid "Show time"
 msgstr "Papar masa"
 
 #. show date check box
-#: mini-commander/src/preferences.c:734
+#: mini-commander/src/preferences.c:743
 msgid "Show date"
 msgstr "Papar tarikh"
 
-#. appearance frame
-#: mini-commander/src/preferences.c:742
-msgid "Appearance"
-msgstr "Penampilan"
-
 #. show handle check box
-#: mini-commander/src/preferences.c:750
+#: mini-commander/src/preferences.c:759
 msgid "Show han_dle"
 msgstr "Papar pengen_dali"
 
 #. show frame check box
-#: mini-commander/src/preferences.c:757
+#: mini-commander/src/preferences.c:766
 msgid "Show fram_e"
 msgstr "Papar k_erangka"
 
 #. auto complete frame
-#: mini-commander/src/preferences.c:766
+#: mini-commander/src/preferences.c:775
 msgid "Autocompletion"
 msgstr "Auto Penyempurnaan"
 
 #. show history autocomplete
-#: mini-commander/src/preferences.c:774
+#: mini-commander/src/preferences.c:783
 msgid "Enable _history based autocompletion"
 msgstr "Hidupkan _sejarah berdasarkan auto penyempurnaan"
 
 #. Size
-#: mini-commander/src/preferences.c:781
+#: mini-commander/src/preferences.c:790
 msgid "Size"
 msgstr "Saiz"
 
 #. applet width
-#: mini-commander/src/preferences.c:793
+#: mini-commander/src/preferences.c:802
 msgid "Applet _width:"
 msgstr "_Lebar aplet:"
 
 #. applet height
-#: mini-commander/src/preferences.c:827
+#: mini-commander/src/preferences.c:836
 msgid "Applet height:"
 msgstr "Tinggi aplet: "
 
 #. cmd line height
-#: mini-commander/src/preferences.c:849
+#: mini-commander/src/preferences.c:858
 msgid "Command line height:"
 msgstr "Tinggi arahan baris:"
 
 #. Color
-#: mini-commander/src/preferences.c:884 multiload/properties.c:363
+#: mini-commander/src/preferences.c:893 multiload/properties.c:365
 msgid "Colors"
 msgstr "Warna"
 
 #. default bg and fg theme
-#: mini-commander/src/preferences.c:894
+#: mini-commander/src/preferences.c:903
 msgid "_Use default theme colors"
 msgstr "_Guna warna tema default"
 
 #. fg
-#: mini-commander/src/preferences.c:906
+#: mini-commander/src/preferences.c:915
 msgid "Command line _foreground:"
 msgstr "Latar_depan arahan baris:"
 
 #. bg
-#: mini-commander/src/preferences.c:940
+#: mini-commander/src/preferences.c:949
 msgid "Command line _background:"
 msgstr "Latar_belakang arahan baris:"
 
 #. prefix
-#: mini-commander/src/preferences.c:1000
+#: mini-commander/src/preferences.c:1009
 #, c-format
 msgid "Regex _%.2d:"
 msgstr "Regex _%.2d:"
 
 #. command
-#: mini-commander/src/preferences.c:1020
+#: mini-commander/src/preferences.c:1029
 #, c-format
 msgid "   Macro _%.2d:"
 msgstr "   Makro  _%.2d:"
 
-#: mini-commander/src/preferences.c:1040
+#: mini-commander/src/preferences.c:1049
 msgid "_Macros"
 msgstr "_Makro"
 
-#: mixer/GNOME_MixerApplet.server.in.h:1
+#: mixer/GNOME_MixerApplet.server.in.in.h:1
 msgid "Adjust the sound volume"
 msgstr "Sesuaikan volum bunyi"
 
-#: mixer/GNOME_MixerApplet.server.in.h:3 mixer/mixer.c:131 mixer/mixer.c:777
+#: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:131
+#: mixer/mixer.c:811
 msgid "Volume Control"
 msgstr "Kawalan Volume"
 
@@ -1856,37 +3086,37 @@ msgstr "amaran: mixer tiada saluran volume - Guna PCM sebaliknya.\n"
 msgid "Mixer device %s has neither volume nor PCM channels.\n"
 msgstr "Peranti mixer %s tiada volume mahupun saluran PCM.\n"
 
-#: mixer/mixer.c:531
+#: mixer/mixer.c:535
 msgid "Volume Controller"
 msgstr "Pengawal Volum"
 
-#: mixer/mixer.c:532
+#: mixer/mixer.c:536
 msgid "Use Up/Down arrow keys to change volume"
 msgstr "Guna kekunci panah atas/bawah untuk menukar volum"
 
-#: mixer/mixer.c:778
+#: mixer/mixer.c:812
 msgid "(C) 2001 Richard Hult"
 msgstr "(c) 2001 Richard Hult"
 
-#: mixer/mixer.c:779
+#: mixer/mixer.c:813
 msgid "The volume control lets you set the volume level for your desktop."
 msgstr ""
 "kawalan volum membenarkan anda menetapkan aras volum bagi desktop anda."
 
-#: mixer/mixer.c:958
+#: mixer/mixer.c:1000
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr "kawalan volum membenarkan anda menetapkan aras volum bagi desktop anda"
 
-#: modemlights/GNOME_ModemLightsApplet.server.in.h:1
+#: modemlights/GNOME_ModemLightsApplet.server.in.in.h:1
 msgid "Internet"
 msgstr "Internet"
 
-#: modemlights/GNOME_ModemLightsApplet.server.in.h:2
-#: modemlights/modemlights.c:224
+#: modemlights/GNOME_ModemLightsApplet.server.in.in.h:2
+#: modemlights/modemlights.c:228
 msgid "Modem Lights"
 msgstr "Lampu Modem"
 
-#: modemlights/modemlights.c:226
+#: modemlights/modemlights.c:230
 msgid ""
 "Released under the GNU general public license.\n"
 "A modem status indicator and dialer.\n"
@@ -1895,7 +3125,7 @@ msgstr ""
 "Dikeluarkan di bawah lesen awam umum GNU.\n"
 "Lampu daripada atas atau kiri adakan Hantar data dan Terima data."
 
-#: modemlights/modemlights.c:555
+#: modemlights/modemlights.c:561
 msgid ""
 "You are currently connected.\n"
 "Do you want to disconnect?"
@@ -1903,147 +3133,148 @@ msgstr ""
 "Anda kini tersambung.\n"
 "Anda ingin putuskan?"
 
-#: modemlights/modemlights.c:570
+#: modemlights/modemlights.c:576
 msgid "Do you want to connect?"
 msgstr "Adakah anda ingin menyambung?"
 
-#: modemlights/modemlights.c:598
+#: modemlights/modemlights.c:604
 #, c-format
 msgid "%#.1fMb received / %#.1fMb sent / time: %.1d:%.2d"
 msgstr "%#.1fMb diterima / %#.1fMb dihantar / masa: %.1d:%.2d"
 
-#: modemlights/modemlights.c:603
+#: modemlights/modemlights.c:609
 msgid "not connected"
 msgstr "tidak disambung"
 
-#: modemlights/properties.c:319
+#: modemlights/properties.c:330
 msgid "Modem Lights Preferences"
 msgstr "Keutamaan Lampu Modem"
 
-#: modemlights/properties.c:331
+#: modemlights/properties.c:346
 msgid "Connecting"
 msgstr "Menyambung"
 
-#: modemlights/properties.c:345
+#: modemlights/properties.c:360
 msgid "Co_nnect command:"
 msgstr "Arahan untuk Me_nyambung:"
 
-#: modemlights/properties.c:362
+#: modemlights/properties.c:377
 msgid "_Disconnect command:"
 msgstr "Arahan untuk me_mutus:"
 
 #. confirmation checkbox
-#: modemlights/properties.c:375
+#: modemlights/properties.c:390
 msgid "Con_firm connection"
 msgstr "Kepas_tian sambungan"
 
-#: modemlights/properties.c:396
+#: modemlights/properties.c:411
 msgid "U_pdates per second"
 msgstr "Ke_maskini per saat"
 
 #. extra info checkbox
-#: modemlights/properties.c:410
+#: modemlights/properties.c:425
 msgid "Sho_w connect time and throughput"
 msgstr "Papa_r masa sambungan dan throughput"
 
-#: modemlights/properties.c:427
+#: modemlights/properties.c:442
 msgid "Receive data"
 msgstr "Terima data"
 
-#: modemlights/properties.c:429
+#: modemlights/properties.c:444
 msgid "_Foreground"
 msgstr "Latar_Depan"
 
-#: modemlights/properties.c:430
+#: modemlights/properties.c:445
 msgid "_Background"
 msgstr "Latar_Belakang"
 
-#: modemlights/properties.c:432
+#: modemlights/properties.c:447
 msgid "Send data"
 msgstr "Hantar data"
 
-#: modemlights/properties.c:434
+#: modemlights/properties.c:449
 msgid "Foregroun_d"
 msgstr "Latar_Depan"
 
-#: modemlights/properties.c:435
+#: modemlights/properties.c:450
 msgid "Backg_round"
 msgstr "La_tarBelakang"
 
-#: modemlights/properties.c:437
+#: modemlights/properties.c:452
 msgid "Connection status"
 msgstr "Status sambungan"
 
-#: modemlights/properties.c:439
+#: modemlights/properties.c:454
 msgid "Co_nnected"
 msgstr "Ter_sambung"
 
-#: modemlights/properties.c:440
+#: modemlights/properties.c:455
 msgid "No_t connected"
 msgstr "_Tidak disambung"
 
-#: modemlights/properties.c:441
+#: modemlights/properties.c:456
 msgid "A_waiting connection"
 msgstr "Me_nanti sambungan"
 
-#: modemlights/properties.c:444
+#: modemlights/properties.c:459
 msgid "B_link"
 msgstr "Ke_rdip"
 
-#: modemlights/properties.c:451
+#: modemlights/properties.c:466
 msgid "Text"
 msgstr "Teks"
 
-#: modemlights/properties.c:453
+#: modemlights/properties.c:468
 msgid "For_eground"
 msgstr "LatarD_epan"
 
-#: modemlights/properties.c:454
+#: modemlights/properties.c:469
 msgid "Bac_kground"
 msgstr "Latar_Belakang"
 
-#: modemlights/properties.c:455
+#: modemlights/properties.c:470
 msgid "O_utline"
 msgstr ""
 
-#: modemlights/properties.c:457
+#: modemlights/properties.c:472
 msgid "C_olors"
 msgstr "W_arna"
 
-#: modemlights/properties.c:466
+#: modemlights/properties.c:481
 msgid "Modem options"
 msgstr "Opsyen modem"
 
-#: modemlights/properties.c:480
+#: modemlights/properties.c:495
 msgid "_Modem lock file:"
 msgstr "Fail kunci _modem:"
 
-#: modemlights/properties.c:492
+#: modemlights/properties.c:507
 msgid "_Verify owner of lock file"
 msgstr "_Tentusah pemilik fail kunci"
 
-#: modemlights/properties.c:504
+#: modemlights/properties.c:519
 msgid "_Device:"
 msgstr "_Peranti:"
 
 #. ISDN checkbox
-#: modemlights/properties.c:517
+#: modemlights/properties.c:532
 msgid "U_se ISDN"
 msgstr "_Guna ISDN"
 
-#: modemlights/properties.c:537
+#: modemlights/properties.c:552
 msgid "Set options as default"
 msgstr "Tetapkan opsyen sebagai default"
 
-#: modemlights/properties.c:543
+#: modemlights/properties.c:558
 msgid "_Advanced"
 msgstr "_Lanjutan"
 
-#: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:1
+#: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:1
 msgid "A system load indicator"
 msgstr "Penunjuk muatan sistem"
 
-#: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:2 multiload/main.c:75
+#: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:2
+#: multiload/main.c:80
 msgid "System Monitor"
 msgstr "Monitor Sistem"
 
@@ -2055,11 +3286,11 @@ msgstr "_Laksanakan monitor sistem terperinci"
 msgid "CPU Load"
 msgstr "Muatan CPU"
 
-#: multiload/loadavg.c:94
+#: multiload/loadavg.c:107
 msgid "Load Average"
 msgstr "Purata Muatan"
 
-#: multiload/main.c:77
+#: multiload/main.c:82
 msgid ""
 "Released under the GNU General Public License.\n"
 "\n"
@@ -2071,27 +3302,27 @@ msgstr ""
 "Monitor muatan sistem yang boleh memaparkan graf bagi cpu, ram dan fail swap "
 "yang digunakan, termasuk trafik rangkaian."
 
-#: multiload/main.c:203
+#: multiload/main.c:246
 msgid "Processor"
 msgstr "Pemproses"
 
-#: multiload/main.c:205
+#: multiload/main.c:248
 msgid "Memory"
 msgstr "Memori"
 
-#: multiload/main.c:207
+#: multiload/main.c:250
 msgid "Network"
 msgstr "Rangkaian"
 
-#: multiload/main.c:209
+#: multiload/main.c:252
 msgid "Swap File"
 msgstr "Fail Swap"
 
-#: multiload/main.c:211
+#: multiload/main.c:254
 msgid "Resource"
 msgstr "Sumber"
 
-#: multiload/main.c:223
+#: multiload/main.c:266
 #, c-format
 msgid ""
 "%s:\n"
@@ -2108,24 +3339,24 @@ msgstr "Muatan Memori"
 msgid "Net Load"
 msgstr "Muatan Net"
 
-#: multiload/properties.c:256
+#: multiload/properties.c:258
 msgid "Monitored Resources"
 msgstr "Sumber dimonitor"
 
-#: multiload/properties.c:264
+#: multiload/properties.c:266
 msgid "_Processor"
 msgstr "_Pemproses"
 
-#: multiload/properties.c:274
+#: multiload/properties.c:276
 msgid "_Memory"
 msgstr "_Memori"
 
-#: multiload/properties.c:284
+#: multiload/properties.c:286
 msgid "_Network"
 msgstr "_Rangkaian"
 
 # ui/galeon.glade.h:134
-#: multiload/properties.c:294
+#: multiload/properties.c:296
 msgid "_Swap File"
 msgstr "Fail _Swap"
 
@@ -2136,103 +3367,103 @@ msgstr "Fail _Swap"
 #. panel_applet_gconf_get_bool(multiload_applet->applet, "view_loadavg", NULL));
 #. gtk_box_pack_start(GTK_BOX(hbox), check_box, FALSE, FALSE, 0);
 #.
-#: multiload/properties.c:311
+#: multiload/properties.c:313
 msgid "Options"
 msgstr "Opsyen"
 
-#: multiload/properties.c:324
+#: multiload/properties.c:326
 msgid "System m_onitor width: "
 msgstr "Lebar m_onitor sistem: "
 
-#: multiload/properties.c:326
+#: multiload/properties.c:328
 msgid "System m_onitor height: "
 msgstr "Tinggi m_onitor sistem: "
 
-#: multiload/properties.c:340
+#: multiload/properties.c:342
 msgid "pixels"
 msgstr "piksel"
 
-#: multiload/properties.c:346
+#: multiload/properties.c:348
 msgid "Sys_tem monitor update interval: "
 msgstr "Kelajuan monitor sis_tem: "
 
-#: multiload/properties.c:358
+#: multiload/properties.c:360
 msgid "milliseconds"
 msgstr "milisaat"
 
-#: multiload/properties.c:371
+#: multiload/properties.c:373
 msgid "P_rocessor"
 msgstr "Pemp_roses"
 
-#: multiload/properties.c:372
+#: multiload/properties.c:374
 msgid "_User"
 msgstr "_Pengguna"
 
-#: multiload/properties.c:373
+#: multiload/properties.c:375
 msgid "S_ystem"
 msgstr "S_istem"
 
-#: multiload/properties.c:374
+#: multiload/properties.c:376
 msgid "N_ice"
 msgstr "E_lok"
 
-#: multiload/properties.c:375
+#: multiload/properties.c:377
 msgid "I_dle"
 msgstr "L_eka"
 
-#: multiload/properties.c:377
+#: multiload/properties.c:379
 msgid "M_emory"
 msgstr "M_emori"
 
-#: multiload/properties.c:378
+#: multiload/properties.c:380
 msgid "Ot_her"
 msgstr "_Lain-lain"
 
-#: multiload/properties.c:379
+#: multiload/properties.c:381
 msgid "Sh_ared"
 msgstr "Ter_kongsi"
 
-#: multiload/properties.c:380
+#: multiload/properties.c:382
 msgid "_Buffers"
 msgstr "_Penimbal"
 
-#: multiload/properties.c:381
+#: multiload/properties.c:383
 msgid "F_ree"
 msgstr "B_ebas"
 
-#: multiload/properties.c:383
+#: multiload/properties.c:385
 msgid "Net_work"
 msgstr "_Rangkaian"
 
-#: multiload/properties.c:384
+#: multiload/properties.c:386
 msgid "S_LIP"
 msgstr "S_LIP"
 
-#: multiload/properties.c:385
+#: multiload/properties.c:387
 msgid "PL_IP"
 msgstr "PL_IP"
 
-#: multiload/properties.c:386
+#: multiload/properties.c:388
 msgid "Et_hernet"
 msgstr "Et_hernet"
 
-#: multiload/properties.c:387
+#: multiload/properties.c:389
 msgid "_Other"
 msgstr "_Lain-lain"
 
-#: multiload/properties.c:389
+#: multiload/properties.c:391
 msgid "Swap _File"
 msgstr "_Fail Swap"
 
-#: multiload/properties.c:390
+#: multiload/properties.c:392
 msgid "_Used"
 msgstr "_Digunakan"
 
-#: multiload/properties.c:391
+#: multiload/properties.c:393
 msgid "_Free"
 msgstr "_Bebas"
 
-#: multiload/properties.c:411
+#: multiload/properties.c:415
 msgid "System Monitor Preferences"
 msgstr "Keutamaan Monitor Sistem"
 
@@ -2261,20 +3492,20 @@ msgstr "Aksi"
 msgid "Actions Menu"
 msgstr "Menu Aksi"
 
-#: panel-menu/panel-menu-add.c:76
+#: panel-menu/panel-menu-add.c:77
 msgid "Add items to the Menu Bar"
 msgstr "Tambah item ke Bar Menu "
 
-#: panel-menu/panel-menu-add.c:235 panel-menu/panel-menu-links.c:139
+#: panel-menu/panel-menu-add.c:248 panel-menu/panel-menu-links.c:139
 #: panel-menu/panel-menu-links.c:405
 msgid "Shortcuts"
 msgstr "Pintasan"
 
-#: panel-menu/panel-menu-add.c:241
+#: panel-menu/panel-menu-add.c:254
 msgid "My Documents"
 msgstr "Dokumen Daku"
 
-#: panel-menu/panel-menu-add.c:247 panel-menu/panel-menu-documents.c:134
+#: panel-menu/panel-menu-add.c:260 panel-menu/panel-menu-documents.c:134
 #: panel-menu/panel-menu-documents.c:399
 msgid "Documents"
 msgstr "Dokumen"
@@ -2284,7 +3515,7 @@ msgstr "Dokumen"
 msgid "Applications"
 msgstr "Aplikasi"
 
-#: panel-menu/panel-menu-common.c:727
+#: panel-menu/panel-menu-common.c:740
 msgid ""
 "Removing this entry is not allowed as this will cause the Menu Bar applet to "
 "be removed from GNOME Panel"
@@ -2292,31 +3523,31 @@ msgstr ""
 "Pembuangan kemasukan ini tidak diizinkan kerana ia akan menyebabkan aplet "
 "Bar Menu dibuang daripada Panel GNOME"
 
-#: panel-menu/panel-menu-directory.c:515
+#: panel-menu/panel-menu-directory.c:516
 msgid "Create directory item..."
 msgstr "Cipta item direktori..."
 
-#: panel-menu/panel-menu-directory.c:523
+#: panel-menu/panel-menu-directory.c:524
 msgid "Home"
 msgstr "Laman Mula"
 
-#: panel-menu/panel-menu-directory.c:594
+#: panel-menu/panel-menu-directory.c:595
 msgid "Edit directory item..."
 msgstr "Edit item direktori..."
 
-#: panel-menu/panel-menu-directory.c:680 panel-menu/panel-menu-path.c:728
+#: panel-menu/panel-menu-directory.c:688 panel-menu/panel-menu-path.c:738
 msgid "_Path:"
 msgstr "_Path:"
 
-#: panel-menu/panel-menu-directory.c:688
+#: panel-menu/panel-menu-directory.c:696
 msgid "..."
 msgstr "..."
 
-#: panel-menu/panel-menu-directory.c:698
+#: panel-menu/panel-menu-directory.c:706
 msgid "_Depth level:"
 msgstr "Aras ke_dalaman:"
 
-#: panel-menu/panel-menu-directory.c:795
+#: panel-menu/panel-menu-directory.c:803
 msgid "Path specified is currently not a valid directory."
 msgstr "Path dinyatakan kini bukan direktori yang sah."
 
@@ -2324,16 +3555,16 @@ msgstr "Path dinyatakan kini bukan direktori yang sah."
 msgid "Create documents item..."
 msgstr "Cipta item dokumen..."
 
-#: panel-menu/panel-menu-documents.c:433
+#: panel-menu/panel-menu-documents.c:434
 msgid "Rename documents item..."
 msgstr "Tukarnama item dokumen"
 
-#: panel-menu/panel-menu-links.c:323 panel-menu/panel-menu-path.c:554
+#: panel-menu/panel-menu-links.c:323 panel-menu/panel-menu-path.c:556
 msgid "KDE Menus"
 msgstr "Menu KDE"
 
-#: panel-menu/panel-menu-links.c:326 panel-menu/panel-menu-path.c:237
-#: panel-menu/panel-menu-path.c:557
+#: panel-menu/panel-menu-links.c:326 panel-menu/panel-menu-path.c:239
+#: panel-menu/panel-menu-path.c:559
 msgid "Programs"
 msgstr "Program"
 
@@ -2345,15 +3576,15 @@ msgstr "Cipta item pautan..."
 msgid "Rename links item..."
 msgstr "Tukarnama item pautan"
 
-#: panel-menu/panel-menu-path.c:228
+#: panel-menu/panel-menu-path.c:230
 msgid "KDE"
 msgstr "KDE"
 
-#: panel-menu/panel-menu-path.c:655
+#: panel-menu/panel-menu-path.c:658
 msgid "Create menu path item..."
 msgstr "Cipta item path menu"
 
-#: panel-menu/panel-menu-path.c:697
+#: panel-menu/panel-menu-path.c:701
 msgid "Edit path item..."
 msgstr "Edit item path"
 
@@ -2361,35 +3592,35 @@ msgstr "Edit item path"
 msgid "Preferences"
 msgstr "Keutamaan"
 
-#: panel-menu/panel-menu-properties.c:71
+#: panel-menu/panel-menu-properties.c:72
 msgid "Menu Bar Preferences"
 msgstr "Keutamaan Bar Menu"
 
-#: panel-menu/panel-menu-properties.c:75
+#: panel-menu/panel-menu-properties.c:80
 msgid "Layout"
 msgstr "Susunatur"
 
-#: panel-menu/panel-menu-properties.c:90
+#: panel-menu/panel-menu-properties.c:95
 msgid "_Applications Menu"
 msgstr "Menu _Aplikasi"
 
-#: panel-menu/panel-menu-properties.c:114
+#: panel-menu/panel-menu-properties.c:119
 msgid "Select an icon for the Applications menu"
 msgstr "Pilih ikon untuk menu Aplikasi"
 
-#: panel-menu/panel-menu-properties.c:131
+#: panel-menu/panel-menu-properties.c:136
 msgid "_Preferences Menu"
 msgstr "Menu _Keutamaan"
 
-#: panel-menu/panel-menu-properties.c:142
+#: panel-menu/panel-menu-properties.c:147
 msgid "Ac_tions Menu"
 msgstr "Menu A_ksi"
 
-#: panel-menu/panel-menu-properties.c:153
+#: panel-menu/panel-menu-properties.c:158
 msgid "_Windows Menu"
 msgstr "Menu _Tetingkap"
 
-#: panel-menu/panel-menu-properties.c:164
+#: panel-menu/panel-menu-properties.c:169
 msgid "W_orkspaces Menu"
 msgstr "Menu R_uangKerja"
 
@@ -2401,14 +3632,75 @@ msgstr "Tetingkap"
 msgid "Workspaces"
 msgstr "Ruangkerja"
 
-#: panel-menu/panel-menu.c:690
+#: panel-menu/panel-menu.c:694
 msgid "Menu Bar"
 msgstr "Bar Menu"
 
-#: panel-menu/panel-menu.c:691
+#: panel-menu/panel-menu.c:695
 msgid "(c) 2001 Chris Phelps"
 msgstr "(c) 2001 Chris Phelps"
 
-#: panel-menu/panel-menu.c:692
+#: panel-menu/panel-menu.c:696
 msgid "The Menu Bar allows you to display customized menubars on your panels."
 msgstr "Bar Menu membolehkan anda memapar bar menu tersendiri pada panel anda."
+
+#: wireless/wireless-applet.c:344
+msgid ""
+"The images necessary to run the wireless monitor are missing.\n"
+"Please make sure that it is correctly installed."
+msgstr ""
+
+#: wireless/wireless-applet.c:525
+msgid "No Wireless Devices"
+msgstr ""
+
+#: wireless/wireless-applet.c:527
+msgid ""
+"There doesn't seem to be any wireless devices configured on your system.\n"
+"Please verify your configuration if you think this is incorrect."
+msgstr ""
+
+#: wireless/wireless-applet.c:719
+#: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:2
+msgid "Wireless Link Monitor"
+msgstr ""
+
+#: wireless/wireless-applet.c:721
+msgid "(C) 2001, 2002 Free Software Foundation "
+msgstr "(C) 2001,2002 Free Software Foundation"
+
+#: wireless/wireless-applet.c:722
+msgid "This utility shows the status of a wireless link."
+msgstr "Utiliti ini memaparkan status bagi pautan tanpa wayar."
+
+#: wireless/wireless-applet.glade.h:1
+msgid "Monitored Device:"
+msgstr "Peranti Dimonitor:"
+
+#: wireless/wireless-applet.glade.h:2
+msgid "Show _dialog boxes"
+msgstr "Papar kotak _dialog"
+
+#: wireless/wireless-applet.glade.h:3
+msgid "Show signal strength in _percentage"
+msgstr "Papar kekuatan isyarat dalam _peratus"
+
+#: wireless/wireless-applet.glade.h:4
+msgid "Wireless Link Monitor Preferences"
+msgstr "Keutamaan Monitor Pautan Tanpa Wayar"
+
+#: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:1
+msgid "Monitor the quality of a wireless network link"
+msgstr "Monitor kualiti bagi pautan rangkaian tanpa wayar"
+
+#~ msgid "Apperance"
+#~ msgstr "Penampilan"
+
+#~ msgid "_Refresh"
+#~ msgstr "_Segarkan"
+
+#~ msgid "fork error"
+#~ msgstr "sepit ralat"
+
+#~ msgid "child exited"
+#~ msgstr "anak terkeluar"
