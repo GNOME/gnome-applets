@@ -247,6 +247,17 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
 			               weather_applet_menu_verbs,
 			               gw_applet);
 
+    if (panel_applet_get_locked_down (gw_applet->applet)) {
+	    BonoboUIComponent *popup_component;
+
+	    popup_component = panel_applet_get_popup_component (gw_applet->applet);
+
+	    bonobo_ui_component_set_prop (popup_component,
+					  "/commands/Props",
+					  "hidden", "1",
+					  NULL);
+    }
+
     gw_applet->tooltips = tooltips;
 	
     place_widgets(gw_applet);
