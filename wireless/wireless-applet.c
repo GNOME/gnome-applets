@@ -141,7 +141,7 @@ wireless_applet_draw (WirelessApplet *applet, int percent)
 
 	/* Update the percentage */
 	if (percent > 0) {
-		tmp = g_strdup_printf ("%2.0d%%", percent);
+		tmp = g_strdup_printf ( _("Link Strength: %2.0d%%"), percent);
 	} else {
 		tmp = g_strdup_printf (_("N/A"));
 	}
@@ -362,10 +362,6 @@ start_file_read (WirelessApplet *applet)
 {
 	applet->file = fopen ("/proc/net/wireless", "rt");
 	if (applet->file == NULL) {
-		gtk_tooltips_set_tip (applet->tips,
-				GTK_WIDGET (applet),
-				_("No Wireless Devices"),
-				NULL);
 		show_error_dialog (_("There doesn't seem to be any wireless devices configured on your system.\nPlease verify your configuration if you think this is incorrect."));
 	}
 }
@@ -825,6 +821,11 @@ wireless_applet_new (WirelessApplet *applet)
 
 	start_file_read (applet);
 	wireless_applet_timeout_handler (applet);
+
+	gtk_tooltips_set_tip (applet->tips,
+			      GTK_WIDGET (applet),
+			      _("No Wireless Devices"),
+			      NULL);
 
 	applet->timeout_handler_id = gtk_timeout_add
 		(CFG_UPDATE_INTERVAL * 1000,
