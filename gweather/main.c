@@ -17,8 +17,6 @@
 #include <gnome.h>
 #include <panel-applet.h>
 
-#include "http.h"
-
 #include "gweather.h"
 #include "gweather-pref.h"
 #include "gweather-dialog.h"

@@ -33,6 +33,7 @@ gweatherlocationsdir = $(datadir)/gweather
 gweatherlocations_DATA = Locations
 
 EXTRA_DIST = \
-	GNOME_GWeatherApplet_Factory.server.in
+	GNOME_GWeatherApplet_Factory.server.in \
+	Locations
 
 @INTLTOOL_SERVER_RULE@
