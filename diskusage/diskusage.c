@@ -50,7 +50,7 @@ glibtop_mountlist   mountlist;
 glibtop_mountentry *mount_list;
 
 static gboolean is_realized = FALSE;
-//static GtkWidget *diskusage;
+/* static GtkWidget *diskusage; */
 static GtkWidget *my_applet;
 
 GtkWidget *disp;
@@ -62,7 +62,7 @@ void update_mount_list_menu_items (void);
 void draw (void);
 
 
-//void add_mount_list_menu_items (void);
+/* void add_mount_list_menu_items (void); */
 #if 0
 static void browse_cb (AppletWidget *widget, gpointer data);
 #endif
@@ -102,7 +102,7 @@ load_my_font (void)
 static int
 diskusage_get_best_size_v (void)
 {
-//	GdkFont* my_font;
+/*	GdkFont* my_font; */
 	int string_height;
 	int du_pie_gap;
 	int du_mountpoint_x;
@@ -130,14 +130,14 @@ diskusage_get_best_size_v (void)
 	total_height = DU_FREESPACE2_Y_VERT + pie_width + du_pie_gap
 		       + string_height * 4;
 
-//	gdk_font_unref (my_font);
+/*	gdk_font_unref (my_font); */
 	return total_height;
 }
 
 static int
 diskusage_get_best_size_h (void)
 {
-//	GdkFont* my_font;
+/*	GdkFont* my_font; */
 	int string_width;
 	int cur_width;
 	int du_pie_gap;
@@ -187,7 +187,7 @@ diskusage_get_best_size_h (void)
 	total_width = pie_width + du_pie_gap + DU_FREESPACE_HOR_X * 2 +
 		string_width + du_pie_gap;
 
-//	gdk_font_unref (my_font);
+/*	gdk_font_unref (my_font); */
 
 	return total_width;
 }
@@ -239,7 +239,7 @@ diskusage_read (void)
 static int
 draw_h (void)
 {
-//	GdkFont* my_font;
+/*	GdkFont* my_font; */
 	char *text;
 	gulong free_space;
 	int du_pie_gap;
@@ -369,7 +369,7 @@ draw_h (void)
 			 disp->allocation.width,
 			 disp->allocation.height);
 
-//	gdk_font_unref (my_font);
+/*	gdk_font_unref (my_font); */
 
 	return TRUE;
 }
@@ -378,7 +378,7 @@ draw_h (void)
 static int
 draw_v (void)
 {
-//	GdkFont* my_font;
+/*	GdkFont* my_font; */
 	char *text;
 	gulong free_space;
 	double ratio;		/* % of space used */
@@ -551,7 +551,7 @@ draw_v (void)
 			 disp->allocation.width,
 			 disp->allocation.height);
 
-//	gdk_font_unref (my_font);
+/*	gdk_font_unref (my_font); */
 
 	return TRUE;
 }

@@ -508,7 +508,7 @@ int main( int argc, char *argv[] )
       g_error("couldn't allocate colour");
     }
 
-//    my->white_gc = gdk_gc_new(my->window->window);
+/*    my->white_gc = gdk_gc_new(my->window->window); */
     gdk_gc_set_foreground(my->white_gc, &colour);
 
 #ifdef ASCLOCK_GNOME

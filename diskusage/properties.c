@@ -19,8 +19,8 @@ static GtkWidget *gfp = NULL;
 GtkWidget *propbox = NULL;
 static diskusage_properties temp_props;
 
-//static const unsigned int max_rgb_str_len = 7;
-//static const unsigned int max_rgb_str_size = 8;
+/* static const unsigned int max_rgb_str_len = 7; */
+/* static const unsigned int max_rgb_str_size = 8; */
 
 extern DiskusageInfo   summary_info;
 	
@@ -212,7 +212,7 @@ create_frame (diskusage_properties *props)
 	size  = gtk_hbox_new (FALSE, 0);
 	speed = gtk_hbox_new (FALSE, 0);
 	best_size = gtk_hbox_new (FALSE, 0);
-//	gtk_container_set_border_width (GTK_CONTAINER(box), GNOME_PAD_SMALL);
+/*	gtk_container_set_border_width (GTK_CONTAINER(box), GNOME_PAD_SMALL); */
 
 	table = gtk_table_new (2, 4, TRUE);
 
@@ -242,8 +242,8 @@ create_frame (diskusage_properties *props)
 
 	label = gtk_label_new (_("Used Diskspace:"));
 	gtk_misc_set_alignment (GTK_MISC (label), 1.0, 0.5);
-//	gtk_box_pack_start (GTK_BOX (color1), label, TRUE, TRUE, 0);
-//	gtk_box_pack_start (GTK_BOX (color1), ucolor_gcp, FALSE, FALSE, 0);
+/*	gtk_box_pack_start (GTK_BOX (color1), label, TRUE, TRUE, 0); */
+/*	gtk_box_pack_start (GTK_BOX (color1), ucolor_gcp, FALSE, FALSE, 0); */
 
 	gtk_table_attach (GTK_TABLE (table), label,
 			  0, 1, 0, 1,
@@ -257,8 +257,8 @@ create_frame (diskusage_properties *props)
 
 	label = gtk_label_new (_("Text:"));
 	gtk_misc_set_alignment (GTK_MISC (label), 1.0, 0.5);
-//	gtk_box_pack_start (GTK_BOX (color1), label, TRUE, TRUE, 0);
-//	gtk_box_pack_start (GTK_BOX (color1), tcolor_gcp, FALSE, FALSE, 0);
+/*	gtk_box_pack_start (GTK_BOX (color1), label, TRUE, TRUE, 0); */
+/*	gtk_box_pack_start (GTK_BOX (color1), tcolor_gcp, FALSE, FALSE, 0); */
 
 	gtk_table_attach (GTK_TABLE (table), label,
 			  2, 3, 0, 1,
@@ -272,8 +272,8 @@ create_frame (diskusage_properties *props)
 
 	label = gtk_label_new (_("Free Diskspace:"));
 	gtk_misc_set_alignment (GTK_MISC (label), 1.0, 0.5);
-//	gtk_box_pack_start (GTK_BOX (color2), label, TRUE, TRUE, 0);
-//	gtk_box_pack_start (GTK_BOX (color2), fcolor_gcp, FALSE, FALSE, 0);
+/*	gtk_box_pack_start (GTK_BOX (color2), label, TRUE, TRUE, 0); */
+/*	gtk_box_pack_start (GTK_BOX (color2), fcolor_gcp, FALSE, FALSE, 0); */
 
 	gtk_table_attach (GTK_TABLE (table), label,
 			  0, 1, 1, 2,
@@ -288,8 +288,8 @@ create_frame (diskusage_properties *props)
 
 	label = gtk_label_new (_("Background:"));
 	gtk_misc_set_alignment (GTK_MISC (label), 1.0, 0.5);
-//	gtk_box_pack_start (GTK_BOX (color2), label, TRUE, TRUE, 0);
-//	gtk_box_pack_start (GTK_BOX (color2), bcolor_gcp, FALSE, FALSE, 0);
+/*	gtk_box_pack_start (GTK_BOX (color2), label, TRUE, TRUE, 0); */
+/*	gtk_box_pack_start (GTK_BOX (color2), bcolor_gcp, FALSE, FALSE, 0); */
 
 	gtk_table_attach (GTK_TABLE (table), label,
 			  2, 3, 1, 2,
@@ -345,22 +345,22 @@ create_frame (diskusage_properties *props)
 					   GTK_UPDATE_ALWAYS);
 
 	gtk_box_pack_start (GTK_BOX (color), table, FALSE, FALSE, GNOME_PAD_SMALL);
-//        gtk_box_pack_start (GTK_BOX (color), color2, FALSE, FALSE, 0);
+/*        gtk_box_pack_start (GTK_BOX (color), color2, FALSE, FALSE, 0); */
         
-//        gtk_box_pack_start (GTK_BOX (box), color, FALSE, FALSE, 0);
+/*        gtk_box_pack_start (GTK_BOX (box), color, FALSE, FALSE, 0); */
 
 	frame = gtk_frame_new (_("Colors"));
 	gtk_container_border_width (GTK_CONTAINER (frame), GNOME_PAD_SMALL);
 	gtk_container_add (GTK_CONTAINER (frame), color);
 	gtk_box_pack_start (GTK_BOX (box), frame, FALSE, FALSE, GNOME_PAD_SMALL);
 
-//	gtk_box_pack_start (GTK_BOX (box), best_size, FALSE, FALSE, 0);
+/*	gtk_box_pack_start (GTK_BOX (box), best_size, FALSE, FALSE, 0); */
 
 	size_box = gtk_vbox_new (FALSE, 0);
-//	gtk_widget_set (best_size,
-//			"border_width", 2,
-//			"spacing", 2,
-//			NULL);
+/*	gtk_widget_set (best_size, */
+/*			"border_width", 2, */
+/*			"spacing", 2, */
+/*			NULL); */
 
 	frame = gtk_frame_new (_("Size"));
 	gtk_container_border_width (GTK_CONTAINER (frame), GNOME_PAD_SMALL);
@@ -395,8 +395,8 @@ create_frame (diskusage_properties *props)
 	gtk_box_pack_start (GTK_BOX (font_vbox), font_hbox, FALSE, FALSE, GNOME_PAD_SMALL);
 	gtk_container_add (GTK_CONTAINER (frame), font_vbox);
 
-//	gtk_box_pack_start (GTK_BOX (box), size, FALSE, FALSE, 0);
-//	gtk_box_pack_start (GTK_BOX (box), best_size, FALSE, FALSE, 0);
+/*	gtk_box_pack_start (GTK_BOX (box), size, FALSE, FALSE, 0); */
+/*	gtk_box_pack_start (GTK_BOX (box), best_size, FALSE, FALSE, 0); */
 	gtk_box_pack_start (GTK_BOX (box), speed, FALSE, FALSE, GNOME_PAD_SMALL);
 	
 	gtk_widget_show_all (box);

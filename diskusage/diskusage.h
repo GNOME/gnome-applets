@@ -1,17 +1,10 @@
 #ifndef __DISKUSAGE_H__
 #define __DISKUSAGE_H__
 
-//#include <applet-widget.h>
-
-//#include <config.h>
 #include <glibtop.h>
 #include <glibtop/xmalloc.h>
 #include <glibtop/fsusage.h>
 #include <glibtop/mountlist.h>
-//#include <stdio.h>
-//#include <unistd.h>
-
-//#include <assert.h>
 
 #include "properties.h"
 #include <applet-widget.h>

@@ -93,10 +93,10 @@ pack_procbars(gboolean vertical)
 	
 	if (vertical) {
 		box = gtk_hbox_new (TRUE, 0);
-		//gtk_widget_set_usize (box, 40, 80);
+		/* gtk_widget_set_usize (box, 40, 80); */
 	} else {
 		box = gtk_vbox_new (TRUE, 0);
-		//gtk_widget_set_usize (box, 80, 40);
+		/* gtk_widget_set_usize (box, 80, 40); */
 	}
 
 	gnome_proc_bar_set_orient (GNOME_PROC_BAR (cpu), vertical);
