@@ -1,3 +1,18 @@
+2002-07-11  Mark McLoughlin  <mark@skynet.ie>
+
+	* src/Makefile.am: add egg-screen-exec.[ch] to
+	the build.
+
+	* src/exec.c: (exec_command): execute commands
+	with DISPLAY set to make the default screen the
+	same as the screen on which the applet is realised.
+
+	* src/about.c: (about_box):
+	* src/command_line.c: (show_history_signal),
+	(show_file_browser_signal):
+	* src/preferences.c: (properties_box):
+	realise dialogs on the same screen as the applet.
+
 2002-07-10  Mark McLoughlin  <mark@skynet.ie>
 
 	* src/about.c: (about_box): use gtk_window_present.

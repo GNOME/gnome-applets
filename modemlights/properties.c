@@ -319,6 +319,10 @@ void property_show (BonoboUIComponent *uic,
 	GtkWidget *button;
 
 	if (propwindow) {
+#ifdef HAVE_GTK_MULTIHEAD
+		gtk_window_set_screen (GTK_WINDOW (propwindow),
+				       gtk_widget_get_screen (GTK_WIDGET (applet)));
+#endif
 		gtk_window_present (GTK_WINDOW (propwindow));
 		return;
 	}
@@ -327,7 +331,11 @@ void property_show (BonoboUIComponent *uic,
 						  GTK_DIALOG_DESTROY_WITH_PARENT,
 						  GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
 						  NULL);
-						  
+#ifdef HAVE_GTK_MULTIHEAD
+	gtk_window_set_screen (GTK_WINDOW (propwindow),
+			       gtk_widget_get_screen (GTK_WIDGET (applet)));
+#endif
+
 	notebook = gtk_notebook_new ();
 	gtk_box_pack_start (GTK_BOX (GTK_DIALOG (propwindow)->vbox), notebook,
 			    TRUE, TRUE, 0);
