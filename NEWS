@@ -1,3 +1,97 @@
+Changes in GNOME-Applets 2.9.4
+==================================
+Codenamed "Insubstantial!"
+
+This is it! Over the hump, from here it's bugfixes, documentation and
+translation, as with this release GNOME Applets 2.9/2.10 is in feature freeze.
+This release highlights the seriously huge amount of work put in by the GNOME
+Lovers last Sunday, as well as the more consistant contributors. Extra special
+thanks go to Benoît Dejean for his fantastic work with multiload, and Ryan
+Lortie for singlehandedly fixing almost every bug in battstat. I also want to
+extend my more heartfelt thanks to anyone I've missed from this list, I
+apologise for leaving you off, but with so many changes I'm sure I've missed
+someone.
+
+Everyone should remember to give their location some Location Loving (see bug
+#160163) so that our l10n is absolutely rocking in GNOME 2.10. Thanks again
+everyone for their hard work for this release.
+
+Changes:
+ - Battstat:
+   * Layout rewrite, transparency fixes (Ryan Lortie)
+   * Remove code duplication (Ryan Lortie)
+   * Make power backend common between instances, allow multiple instances of
+     battstat to be run (Ryan Lortie)
+   * Use GtkAboutDialog (Davyd Madeley)
+ - CPU-Freq:
+   * Build fixes (Davyd Madeley)
+   * Fixes from CPUFreq rewrite (Carlos Garcia Campos)
+ - Drivemount:
+   * Use GtkAboutDialog (Davyd Madeley)
+ - Geyes:
+   * Make eyes focus properly (Nickolay V. Shmyrev)
+   * Move geyes themes to prefix/share/gnome-applets/geyes (Davyd Madeley)
+ - GKB:
+   * Correct English/British and keyboard/keymap (Sergey V. Udaltsov)
+ - GSwitchit:
+   * Allow multiple instances to be started (Sergey Udaltsov)
+ - GTik:
+   * Use GtkAboutDialog (Davyd Madeley)
+   * Use stock graphics in preferences (Davyd Madeley)
+ - GWeather:
+   * Location Love (Nicholas J. Skehin, Davyd Madeley, Javier F. Serrador)
+   * Use GtkAboutDialog (Davyd Madeley)
+   * Take three retries to get weather data before displaying '?' (???)
+   * Animated radar images (Jonathan Brandmeyer)
+   * Use g_locale_from_utf8 for displaying date (Gareth Owen)
+   * Fix encoding errors in the locations database (Kjartan Maraas)
+   * Move gweather data to prefix/share/gnome-applets/gweather (Davyd Madeley)
+ - Mini-Commander:
+   * Set cursor colour to be the same as the font colour (Davyd Madeley)
+   * Fix a focus problem that will occur with the new Metacity (Elijah Newren)
+   * Use GtkAboutDialog (Davyd Madeley)
+ - Modemlights:
+   * New modemlights applet (Carlos Garnacho)
+ - Multiload:
+   * Use GtkAboutDialog (Davyd Madeley)
+   * DiskLoad graph (Davyd Madeley, Benoît Dejean)
+   * iowait stats for CPU graph (Benoît Dejean)
+   * Improve Network Load autoscaling (Benoît Dejean)
+   * Remove unrequired assertions (Benoît Dejean)
+ - Stickynotes:
+   * Fix notes in RTL environments (needs testing) (Davyd Madeley)
+   * Waste less memory due to Glade (Paolo Borelli)
+   * Add ability to set font colour for notes (Davyd Madeley)
+   * Get stickynotes to stay on their own workspace (Davyd Madeley)
+   * Save the workspace stickynotes are on (Davyd Madeley)
+   * Remove 'default action' and instead replace with a small left click menu
+     (Davyd Madeley)
+   * Stickynotes always float on top (required since they no longer appear in
+     the Alt-Tab list with Metacity) (Davyd Madeley)
+   * Update preferences dialogs to use new widgets, clean up layout (Davyd
+     Madeley)
+ - Other:
+   * Update HACKING file (Christoffer Olsen, Davyd Madeley)
+   * Build fixes (Thomas Vander Stichele, Davyd Madeley, Tomasz Kłoczko)
+   * Remove wireless applet (replaced by gnome-netstatus) (Mark McLoughlin)
+   * Remove cdplayer applet (Davyd Madeley)
+
+Translations:
+ * it (Luca Ferretti)
+ * en_CA (Adam Weinberger)
+ * cs (Miloslav Trmac)
+ * js (Takeshi AIHANA)
+ * el (Kostas Papadimas)
+ * es (Francisco Javier F. Serrador)
+ * nl (Tino Meinen, Vincent van Adrighem)
+ * th (Theppitak Karoonboonyanan)
+ * sq (Elian Myftiu)
+ * de (Hendrik Brandt)
+ * zh_CN (Funda Wang)
+ * lt (Žygimantas Beručka)
+ * nb (Kjartan Maraas)
+ * no (Kjartan Maraas)
+
 Changes in GNOME-Applets 2.9.3.1
 ==================================
 Codenamed: "Ham!"
