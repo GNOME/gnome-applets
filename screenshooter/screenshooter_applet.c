@@ -35,7 +35,8 @@ cb_about (AppletWidget * widget, gpointer data)
   GtkWidget *my_url;
   static const char *authors[] =
     { "Tom Gilbert <gilbertt@tomgilbert.freeserve.co.uk>",
-    "The Sirius Cybernetics Corporation (Ursa-minor)", NULL
+	"Telsa Gwynne <hobbit@aloss.ukuu.org.uk> (typo fixes, documentation)",
+    "The Sirius Cybernetics Corporation <Ursa-minor>", NULL
   };
 
   about = gnome_about_new
@@ -381,7 +382,7 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
 
   button =
     gtk_check_button_new_with_label (_
-				     ("Capture WM decorations when grabbing a window?"));
+				     ("Capture WM decorations when grabbing a window"));
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), ad->decoration);
   gtk_signal_connect (GTK_OBJECT (button), "clicked",
 		      (GtkSignalFunc) decoration_cb, NULL);
@@ -390,7 +391,7 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
 
   button =
     gtk_check_button_new_with_label (_
-				     ("Give audio feedback using the keyboard bell?"));
+				     ("Give audio feedback using the keyboard bell"));
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), ad->beep);
   gtk_signal_connect (GTK_OBJECT (button), "clicked",
 		      (GtkSignalFunc) beep_cb, NULL);
@@ -399,7 +400,7 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
 
   button =
     gtk_check_button_new_with_label (_
-				     ("Display Spurious Options? (I got carried away)"));
+				     ("Display Spurious Options (I got carried away)"));
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), ad->spurious);
   gtk_signal_connect (GTK_OBJECT (button), "clicked",
 		      (GtkSignalFunc) spurious_cb, NULL);
@@ -408,7 +409,7 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
 
   frame =
     gtk_frame_new (_
-		   ("Delay (seconds) before taking shot (Only for entire desktop shots)"));
+		   ("Delay (seconds) before taking shot (only for entire desktop shots)"));
   gtk_box_pack_start (GTK_BOX (pref_vbox), frame, FALSE, FALSE, 0);
   gtk_widget_show (frame);
 
@@ -430,7 +431,7 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
 
   frame =
     gtk_frame_new (_
-		   ("Compression Quality (JPEG/MIFF/PNG Mode) High: good quality/large file"));
+		   ("Compressed Quality (JPEG/MIFF/PNG mode) High: good quality/large file"));
   gtk_box_pack_start (GTK_BOX (pref_vbox), frame, FALSE, FALSE, 0);
   gtk_widget_show (frame);
 
@@ -455,7 +456,7 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
   gtk_box_pack_start (GTK_BOX (pref_vbox), ad->spurious_pref_vbox3, FALSE,
 		      FALSE, 0);
 
-  button = gtk_check_button_new_with_label (_ ("Create Monochrome image?"));
+  button = gtk_check_button_new_with_label (_ ("Create monochrome image"));
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), ad->monochrome);
   gtk_signal_connect (GTK_OBJECT (button), "clicked",
 		      (GtkSignalFunc) monochrome_cb, NULL);
@@ -463,7 +464,7 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
 		      0);
   gtk_widget_show (button);
 
-  button = gtk_check_button_new_with_label (_ ("Invert colours in image?"));
+  button = gtk_check_button_new_with_label (_ ("Invert colours in image"));
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), ad->negate);
   gtk_signal_connect (GTK_OBJECT (button), "clicked",
 		      (GtkSignalFunc) negate_cb, NULL);
@@ -504,19 +505,6 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
 		      0);
   gtk_widget_show (ad->directory_entry);
 
-/* Directory selector button 
-  pref_hbox5 = gtk_hbox_new (FALSE, GNOME_PAD_SMALL);
-  gtk_box_pack_start (GTK_BOX (pref_vbox), pref_hbox5, FALSE, FALSE, 0);
-  gtk_widget_show (pref_hbox5);
-  directory_button = gtk_button_new_with_label (_ ("Pick Directory..."));
-  gtk_signal_connect_object (GTK_OBJECT (directory_button), "clicked",
-			     GTK_SIGNAL_FUNC (directory_button_pressed),
-			     NULL);
-  gtk_box_pack_end (GTK_BOX (pref_hbox5), directory_button, FALSE, FALSE, 0);
-  gtk_widget_show (directory_button);
-  gtk_widget_show (pref_hbox5);
-  */
-
   pref_hbox = gtk_hbox_new (FALSE, GNOME_PAD_SMALL);
   gtk_box_pack_start (GTK_BOX (pref_vbox), pref_hbox, FALSE, FALSE, 0);
   gtk_widget_show (pref_hbox);
@@ -550,7 +538,7 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
   gtk_widget_show (pref_hbox);
   label = gtk_label_new (_
 			 ("Filetype is determined from filename suffix.\n"
-			  "Default filetype (if no extension, or unrecognised extension) "
+			  "Default filetype (if no extension or unrecognised extension) "
 			  "is miff.\n"
 			  "Recognised suffixes are:\n"
 			  "jpg, jpeg, bmp, cgm, cmyk, dib, eps, fig, fpx, gif, ico, map, miff, pcx,\n"
@@ -562,7 +550,7 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
   gtk_widget_show (label);
 
   button =
-    gtk_check_button_new_with_label (_ ("View screenshot after saving it?"));
+    gtk_check_button_new_with_label (_ ("View screenshot after saving it"));
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), ad->view);
   gtk_signal_connect (GTK_OBJECT (button), "clicked",
 		      (GtkSignalFunc) view_cb, NULL);
@@ -597,7 +585,7 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
   gtk_container_set_border_width (GTK_CONTAINER (pref_vbox), GNOME_PAD_SMALL);
 
   button =
-    gtk_check_button_new_with_label (_ ("Create Thumbnail of image too?"));
+    gtk_check_button_new_with_label (_ ("Create thumbnail of image too"));
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), ad->thumb);
   gtk_signal_connect (GTK_OBJECT (button), "clicked",
 		      (GtkSignalFunc) thumb_cb, NULL);
@@ -605,7 +593,7 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
   gtk_widget_show (button);
 
 
-  frame = gtk_frame_new (_ ("Thumbnail Size (Percentage of original)"));
+  frame = gtk_frame_new (_ ("Thumbnail Size (percentage of original)"));
   gtk_box_pack_start (GTK_BOX (pref_vbox), frame, FALSE, FALSE, 0);
   gtk_widget_show (frame);
 
@@ -626,7 +614,7 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
 
   frame =
     gtk_frame_new (_
-		   ("Thumbnail Compression (JPEG/MIFF/PNG Mode) "
+		   ("Thumbnail compression (JPEG/MIFF/PNG mode) "
 		    "High: good quality/large file"));
   gtk_box_pack_start (GTK_BOX (pref_vbox), frame, FALSE, FALSE, 0);
   gtk_widget_show (frame);
@@ -681,7 +669,7 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
   button =
     gtk_check_button_new_with_label (_
 				     ("Use high-quality intermediate "
-				      "for generating thumbnail?"));
+				      "for generating thumbnail"));
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button),
 				ad->thumbnail_intermediate);
   gtk_signal_connect (GTK_OBJECT (button), "clicked",
@@ -694,10 +682,10 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
   gtk_widget_show (pref_hbox);
   label =
     gtk_label_new (_
-		   ("(This'll chug loads of cpu, but will prevent compressing the "
+		   ("(This'll chug loads of CPU, but will prevent compressing the "
 		    "image twice if a\nlossy file format is used)\n"
-		    "Don't use this if you're not using a lossy compression format, or"
-		    "if you cherish\nspeed, and don't mind imperfection in your thumbnails."));
+		    "Don't use this if you're using a lossless compression format, or "
+		    "if you cherish\nspeed and don't mind imperfection in your thumbnails."));
   gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
   gtk_box_pack_start (GTK_BOX (pref_hbox), label, FALSE, FALSE, 0);
 
@@ -725,9 +713,9 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
   label =
     gtk_label_new (_
 		   ("All post-processing, frill and spurious options "
-		    "will chug more cpu than a\nsimple screenshot, "
+		    "will chug more CPU than a\nsimple screenshot, "
 		    "due to the creation and then conversion of an intermediate\n"
-		    "image. Intensive operations may take some time on less spiffy cpus."));
+		    "image. Intensive operations may take some time on less spiffy CPUs."));
   gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
   gtk_box_pack_start (GTK_BOX (pref_hbox), label, FALSE, FALSE, 0);
 
@@ -737,7 +725,7 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
 
   button =
     gtk_check_button_new_with_label (_
-				     ("Normalize image? (Span full range of "
+				     ("Normalize image (Span full range of "
 				      "color values to enhance contrast)"));
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), ad->normalize);
   gtk_signal_connect (GTK_OBJECT (button), "clicked",
@@ -747,7 +735,7 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
 
   button =
     gtk_check_button_new_with_label (_
-				     ("Equalize image? (Perform "
+				     ("Equalize image (Perform "
 				      "histogram equalization)"));
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), ad->equalize);
   gtk_signal_connect (GTK_OBJECT (button), "clicked",
@@ -760,7 +748,7 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
   gtk_widget_show (pref_hbox);
 
   button =
-    gtk_check_button_new_with_label (_ ("Enhance image? (Reduce noise)"));
+    gtk_check_button_new_with_label (_ ("Enhance image (reduce noise)"));
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), ad->enhance);
   gtk_signal_connect (GTK_OBJECT (button), "clicked",
 		      (GtkSignalFunc) enhance_cb, NULL);
@@ -768,7 +756,7 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
   gtk_widget_show (button);
 
   button =
-    gtk_check_button_new_with_label (_ ("Despeckle Image? (Reduce Spots)"));
+    gtk_check_button_new_with_label (_ ("Despeckle Image (reduce spots)"));
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), ad->despeckle);
   gtk_signal_connect (GTK_OBJECT (button), "clicked",
 		      (GtkSignalFunc) despeckle_cb, NULL);
@@ -813,7 +801,7 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
   gtk_box_pack_start (GTK_BOX (pref_vbox_2), hscale, TRUE, TRUE, 0);
   gtk_widget_show (hscale);
 
-  button = gtk_check_button_new_with_label (_ ("Adjust gamma?"));
+  button = gtk_check_button_new_with_label (_ ("Adjust gamma"));
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), ad->gamma);
   gtk_signal_connect (GTK_OBJECT (button), "clicked",
 		      (GtkSignalFunc) gamma_cb, NULL);
@@ -851,14 +839,14 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
   pref_vbox = gtk_vbox_new (FALSE, GNOME_PAD_SMALL);
   gtk_container_set_border_width (GTK_CONTAINER (pref_vbox), GNOME_PAD_SMALL);
 
-  button = gtk_check_button_new_with_label (_ ("Create Frame around image?"));
+  button = gtk_check_button_new_with_label (_ ("Create frame around image"));
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), ad->frame);
   gtk_signal_connect (GTK_OBJECT (button), "clicked",
 		      (GtkSignalFunc) frame_cb, NULL);
   gtk_box_pack_start (GTK_BOX (pref_vbox), button, FALSE, FALSE, 0);
   gtk_widget_show (button);
 
-  frame = gtk_frame_new (_ ("Frame Width (Pixels)"));
+  frame = gtk_frame_new (_ ("Frame Width (pixels)"));
   gtk_box_pack_start (GTK_BOX (pref_vbox), frame, FALSE, FALSE, 0);
   gtk_widget_show (frame);
 
@@ -882,7 +870,7 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
   gtk_widget_show (pref_hbox);
 
   button =
-    gtk_check_button_new_with_label (_ ("Flip (mirror) image vertically?"));
+    gtk_check_button_new_with_label (_ ("Mirror image vertically"));
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), ad->flip);
   gtk_signal_connect (GTK_OBJECT (button), "clicked",
 		      (GtkSignalFunc) flip_cb, NULL);
@@ -890,14 +878,14 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
   gtk_widget_show (button);
 
   button =
-    gtk_check_button_new_with_label (_ ("Flip (mirror) image horizontally?"));
+    gtk_check_button_new_with_label (_ ("Mirror image horizontally"));
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), ad->flop);
   gtk_signal_connect (GTK_OBJECT (button), "clicked",
 		      (GtkSignalFunc) flop_cb, NULL);
   gtk_box_pack_start (GTK_BOX (pref_hbox), button, FALSE, FALSE, 0);
   gtk_widget_show (button);
 
-  button = gtk_check_button_new_with_label (_ ("Emboss image?"));
+  button = gtk_check_button_new_with_label (_ ("Emboss image"));
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), ad->emboss);
   gtk_signal_connect (GTK_OBJECT (button), "clicked",
 		      (GtkSignalFunc) emboss_cb, NULL);
@@ -917,7 +905,7 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
   button =
     gtk_check_button_new_with_label (_
 				     ("When finished, send image and "
-				      "thumbnail filenames to script/program below?"));
+				      "thumbnail filenames to script/program below"));
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), ad->use_script);
   gtk_signal_connect (GTK_OBJECT (button), "clicked",
 		      (GtkSignalFunc) use_script_cb, NULL);
@@ -949,11 +937,11 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
 
   label =
     gtk_label_new (_
-		   ("Script/Program will be launched after image creation, with the "
+		   ("Script/program will be launched after image creation with the "
 		    "image filenames\nspecified on the commandline as follows:\n"
 		    "{Script_Name} {Image_Filename} {Thumbnail_filename_if_specified}\n"
 		    "Hint: I use a script to update my website screenshot page.\n"
-		    "An example script should have included in the tarball, or at my website."));
+		    "An example script should've been included in the tarball, or at my website."));
   gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
   gtk_box_pack_start (GTK_BOX (pref_hbox), label, FALSE, FALSE, 0);
   gtk_widget_show (label);
@@ -967,7 +955,7 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
   gtk_container_set_border_width (GTK_CONTAINER (ad->spurious_pref_vbox),
 				  GNOME_PAD_SMALL);
 
-  button = gtk_check_button_new_with_label (_ ("Blur Image?"));
+  button = gtk_check_button_new_with_label (_ ("Blur Image"));
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), ad->blur);
   gtk_signal_connect (GTK_OBJECT (button), "clicked",
 		      (GtkSignalFunc) blur_cb, NULL);
@@ -996,7 +984,7 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
   gtk_widget_show (hscale);
 
 
-  button = gtk_check_button_new_with_label (_ ("Create Charcoal Effect?"));
+  button = gtk_check_button_new_with_label (_ ("Create Charcoal Effect"));
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), ad->charcoal);
   gtk_signal_connect (GTK_OBJECT (button), "clicked",
 		      (GtkSignalFunc) charcoal_cb, NULL);
@@ -1025,7 +1013,7 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
   gtk_widget_show (hscale);
 
 
-  button = gtk_check_button_new_with_label (_ ("Find Edges in Image?"));
+  button = gtk_check_button_new_with_label (_ ("Find Edges in Image"));
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), ad->edge);
   gtk_signal_connect (GTK_OBJECT (button), "clicked",
 		      (GtkSignalFunc) edge_cb, NULL);
@@ -1053,7 +1041,7 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
   gtk_box_pack_start (GTK_BOX (pref_vbox_2), hscale, TRUE, TRUE, 0);
   gtk_widget_show (hscale);
 
-  button = gtk_check_button_new_with_label (_ ("Implode Image?"));
+  button = gtk_check_button_new_with_label (_ ("Implode Image"));
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), ad->implode);
   gtk_signal_connect (GTK_OBJECT (button), "clicked",
 		      (GtkSignalFunc) implode_cb, NULL);
@@ -1091,7 +1079,7 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
 				  GNOME_PAD_SMALL);
 
 
-  button = gtk_check_button_new_with_label (_ ("Create Painted Effect?"));
+  button = gtk_check_button_new_with_label (_ ("Create Painted Effect"));
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), ad->paint);
   gtk_signal_connect (GTK_OBJECT (button), "clicked",
 		      (GtkSignalFunc) paint_cb, NULL);
@@ -1119,7 +1107,7 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
   gtk_box_pack_start (GTK_BOX (pref_vbox_2), hscale, TRUE, TRUE, 0);
   gtk_widget_show (hscale);
 
-  button = gtk_check_button_new_with_label (_ ("Solarize Image?"));
+  button = gtk_check_button_new_with_label (_ ("Solarise Image"));
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), ad->solarize);
   gtk_signal_connect (GTK_OBJECT (button), "clicked",
 		      (GtkSignalFunc) solarize_cb, NULL);
@@ -1127,7 +1115,7 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
 		      0);
   gtk_widget_show (button);
 
-  frame = gtk_frame_new (_ ("Solarize Factor?"));
+  frame = gtk_frame_new (_ ("Solarize factor?"));
   gtk_box_pack_start (GTK_BOX (ad->spurious_pref_vbox2), frame, FALSE, FALSE,
 		      0);
   gtk_widget_show (frame);
@@ -1147,7 +1135,7 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
   gtk_box_pack_start (GTK_BOX (pref_vbox_2), hscale, TRUE, TRUE, 0);
   gtk_widget_show (hscale);
 
-  button = gtk_check_button_new_with_label (_ ("Spread Image Pixels?"));
+  button = gtk_check_button_new_with_label (_ ("Spread image pixels"));
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), ad->spread);
   gtk_signal_connect (GTK_OBJECT (button), "clicked",
 		      (GtkSignalFunc) spread_cb, NULL);
@@ -1176,7 +1164,7 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
   gtk_widget_show (hscale);
 
   button =
-    gtk_check_button_new_with_label (_ ("Swirl Pixels? My favorite :-)"));
+    gtk_check_button_new_with_label (_ ("Swirl pixels. My favorite :-)"));
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), ad->swirl);
   gtk_signal_connect (GTK_OBJECT (button), "clicked",
 		      (GtkSignalFunc) swirl_cb, NULL);
