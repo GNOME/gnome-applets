@@ -4,15 +4,7 @@ INCLUDES = 							\
 	-I$(top_srcdir)/screen-exec				\
 	$(WARN_CFLAGS) 						\
 	$(GNOME_APPLETS_CFLAGS) 				\
-	$(DISABLE_DEPRECATED_CFLAGS)				\
 	-DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\" 
-
-DISABLE_DEPRECATED_CFLAGS =			\
-	-DG_DISABLE_DEPRECATED			\
-	-DGDK_DISABLE_DEPRECATED		\
-	-DGTK_DISABLE_DEPRECATED		\
-	-DGDK_PIXBUF_DISABLE_DEPRECATED		\
-	-DGNOME_DISABLE_DEPRECATED
 
 mailcheck_applet_SOURCES = \
 	mailcheck.c \
@@ -65,11 +57,8 @@ schemas_DATA     = $(schemas_in_files:.schemas.in=.schemas)
 if GCONF_SCHEMAS_INSTALL
 # don't do this if we are building in eg. rpm
 install-data-local:
-	if test -z "$(DESTDIR)" ; then \
-		for p in $(schemas_DATA) ; do \
-		        GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(top_builddir)/mailcheck/$$p ; \
-		done \
-	fi
+	-GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schemas_DATA) ;
+
 else
 install-data-local:
 endif
@@ -82,3 +71,4 @@ EXTRA_DIST =						\
 	$(ui_DATA)
 
 CLEANFILES = $(server_in_files) $(server_DATA)
+
