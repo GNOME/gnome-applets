@@ -6,7 +6,7 @@
 #include <sys/time.h>
 #include <sys/types.h>
 #include <string.h>
-#include <malloc.h>
+#include <stdlib.h>
 #include <signal.h>
 
 #include "fvwmlib.h"
