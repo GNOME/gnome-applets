@@ -101,14 +101,20 @@ CappletAvailablePluginsSelectionChanged (GtkTreeSelection *
 					  (availablePluginsList),
 					  gswic);
 	isAnythingSelected = fullPath != NULL;
-	gtk_label_set_text (GTK_LABEL (lblDescription), "");
+	gtk_label_set_text (GTK_LABEL (lblDescription), 
+	                    g_strconcat ("<small><i>", _("No description."), "</i></small>", NULL));
+	gtk_label_set_use_markup (GTK_LABEL (lblDescription), TRUE);
+	
 	if (fullPath != NULL) {
 		const GSwitchItPlugin *plugin =
 		    GSwitchItPluginManagerGetPlugin (&gswic->pluginManager,
 						     fullPath);
 		if (plugin != NULL && plugin->description != NULL)
 			gtk_label_set_text (GTK_LABEL (lblDescription),
-					    plugin->description);
+			                    g_strconcat ("<small><i>", 
+					    plugin->description, 
+					    "</i></small>", NULL));
+			gtk_label_set_use_markup (GTK_LABEL (lblDescription), TRUE);
 	}
 	gtk_widget_set_sensitive (GTK_WIDGET
 				  (g_object_get_data

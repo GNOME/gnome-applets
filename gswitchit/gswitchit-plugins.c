@@ -112,6 +112,10 @@ CappletActivePluginsSelectionChanged (GtkTreeSelection *
 	GtkWidget *lblDescription =
 	    CappletGetGladeWidget (gswic, "lblDescription");
 
+	gtk_label_set_text (GTK_LABEL (lblDescription), 
+	                    g_strconcat ("<small><i>", _("No description."), "</i></small>", NULL));
+	gtk_label_set_use_markup (GTK_LABEL (lblDescription), TRUE);
+
 	if (gtk_tree_selection_get_selected
 	    (selection, NULL, &selectedIter)) {
 		int counter = gtk_tree_model_iter_n_children (model, NULL);
@@ -133,7 +137,8 @@ CappletActivePluginsSelectionChanged (GtkTreeSelection *
 			hasConfigurationUi =
 			    (plugin->configurePropertiesCallback != NULL);
 			gtk_label_set_text (GTK_LABEL (lblDescription),
-					    plugin->description);
+					    g_strconcat ("<small><i>", plugin->description, "</i></small>", NULL));
+			gtk_label_set_use_markup (GTK_LABEL (lblDescription), TRUE);
 		}
 		g_free (fullPath);
 
