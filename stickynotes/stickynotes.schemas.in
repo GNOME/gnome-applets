@@ -38,6 +38,18 @@
 </schema>
 
 <schema>
+	<key>/schemas/apps/stickynotes_applet/defaults/font</key>
+	<applyto>/apps/stickynotes_applet/defaults/font</applyto>
+	<owner>stickynotes_applet</owner>
+	<type>string</type>
+	<default>Sans 10</default>
+	<locale name="C">
+		<short>Default font for new notes</short>
+		<long>Default font for new sticky notes. This should be a Pango Font Name, for example "Sans Italic 10"</long>
+	</locale>
+</schema>
+
+<schema>
 	<key>/schemas/apps/stickynotes_applet/settings/sticky</key>
 	<applyto>/apps/stickynotes_applet/settings/sticky</applyto>
 	<owner>stickynotes_applet</owner>
@@ -122,14 +134,26 @@
 </schema>
 
 <schema>
-	<key>/schemas/apps/stickynotes_applet/settings/force_default_color</key>
-	<applyto>/apps/stickynotes_applet/settings/force_default_color</applyto>
+	<key>/schemas/apps/stickynotes_applet/settings/use_system_font</key>
+	<applyto>/apps/stickynotes_applet/settings/use_system_font</applyto>
+	<owner>stickynotes_applet</owner>
+	<type>bool</type>
+	<default>true</default>
+	<locale name="C">
+		<short>Whether to use the default system font</short>
+		<long>If this option is disabled, a custom font can be used as the default font for all sticky notes.</long>
+	</locale>
+</schema>
+
+<schema>
+	<key>/schemas/apps/stickynotes_applet/settings/force_default</key>
+	<applyto>/apps/stickynotes_applet/settings/force_default</applyto>
 	<owner>stickynotes_applet</owner>
 	<type>bool</type>
 	<default>false</default>
 	<locale name="C">
-		<short>Whether to force the default color on all notes</short>
-		<long>If this option is enabled, the custom colors that have been assigned to individual notes will be ignored.</long>
+		<short>Whether to force the default color and font on all notes</short>
+		<long>If this option is enabled, the custom colors and fonts that have been assigned to individual notes will be ignored.</long>
 	</locale>
 </schema>
 

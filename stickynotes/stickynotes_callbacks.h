@@ -42,7 +42,9 @@ void popup_properties_cb(GtkWidget *widget, StickyNote *note);
 /* Callbacks for sticky notes properties dialog */
 void properties_apply_title_cb(StickyNote *note);
 void properties_apply_color_cb(StickyNote *note);
+void properties_apply_font_cb(StickyNote *note);
 void properties_color_cb(GnomeColorPicker *cp, guint r, guint g, guint b, guint a, StickyNote *note);
+void properties_font_cb(GnomeFontPicker *fp, gchar *font_str, StickyNote *note);
 void properties_activate_cb(GtkWidget *widget, StickyNote *note);
 void properties_response_cb(GtkDialog *dialog, gint response, StickyNote *note);
 

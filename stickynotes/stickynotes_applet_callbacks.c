@@ -179,14 +179,16 @@ void preferences_save_cb(gpointer data)
 {
 	gint width = gtk_adjustment_get_value(stickynotes->w_prefs_width);
 	gint height = gtk_adjustment_get_value(stickynotes->w_prefs_height);
-	gboolean use_system = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(stickynotes->w_prefs_system));
+	gboolean sys_color = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(stickynotes->w_prefs_sys_color));
+	gboolean sys_font = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(stickynotes->w_prefs_sys_font));
 	gint click_behavior = gtk_option_menu_get_history(GTK_OPTION_MENU(stickynotes->w_prefs_click));
 	gboolean sticky = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(stickynotes->w_prefs_sticky));
 	gboolean force_default = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(stickynotes->w_prefs_force));
 
 	gconf_client_set_int(stickynotes->gconf, GCONF_PATH "/defaults/width", width, NULL);
 	gconf_client_set_int(stickynotes->gconf, GCONF_PATH "/defaults/height", height, NULL);
-	gconf_client_set_bool(stickynotes->gconf, GCONF_PATH "/settings/use_system_color", use_system, NULL);
+	gconf_client_set_bool(stickynotes->gconf, GCONF_PATH "/settings/use_system_color", sys_color, NULL);
+	gconf_client_set_bool(stickynotes->gconf, GCONF_PATH "/settings/use_system_font", sys_font, NULL);
 	gconf_client_set_int(stickynotes->gconf, GCONF_PATH "/settings/click_behavior", click_behavior, NULL);
 	gconf_client_set_bool(stickynotes->gconf, GCONF_PATH "/settings/sticky", sticky, NULL);
 	gconf_client_set_bool(stickynotes->gconf, GCONF_PATH "/settings/force_default_color", force_default, NULL);
@@ -199,6 +201,12 @@ void preferences_color_cb(GnomeColorPicker *cp, guint r, guint g, guint b, guint
 	gchar *color_str = g_strdup_printf("#%.2x%.2x%.2x", r / 256, g / 256, b / 256);
 	gconf_client_set_string(stickynotes->gconf, GCONF_PATH "/defaults/color", color_str, NULL);
 	g_free(color_str);
+}
+
+/* Preferences Callback : Change font. */
+void preferences_font_cb(GnomeFontPicker *fp, gchar *font_str, gpointer data)
+{
+	gconf_client_set_string(stickynotes->gconf, GCONF_PATH "/defaults/font", font_str, NULL);
 }
 
 /* Preferences Callback : Apply to existing notes. */
@@ -235,12 +243,27 @@ void preferences_apply_cb(GConfClient *client, guint cnxn_id, GConfEntry *entry,
 		stickynotes_save();
 	}
 
-	if (strcmp(entry->key, GCONF_PATH "/settings/force_default_color") == 0 ||
-	    strcmp(entry->key, GCONF_PATH "/settings/use_system_color") == 0 ||
+	else if (strcmp(entry->key, GCONF_PATH "/settings/use_system_color") == 0 ||
 	    strcmp(entry->key, GCONF_PATH "/defaults/color") == 0) {
 		for (i = 0; i < g_list_length(stickynotes->notes); i++) {
 			StickyNote *note = g_list_nth_data(stickynotes->notes, i);
 			stickynote_set_color(note, note->color, FALSE);
+		}
+	}
+
+	else if (strcmp(entry->key, GCONF_PATH "/settings/use_system_font") == 0 ||
+	    strcmp(entry->key, GCONF_PATH "/defaults/font") == 0) {
+		for (i = 0; i < g_list_length(stickynotes->notes); i++) {
+			StickyNote *note = g_list_nth_data(stickynotes->notes, i);
+			stickynote_set_font(note, note->font, FALSE);
+		}
+	}
+
+	else if (strcmp(entry->key, GCONF_PATH "/settings/force_default") == 0) {
+		for (i = 0; i < g_list_length(stickynotes->notes); i++) {
+			StickyNote *note = g_list_nth_data(stickynotes->notes, i);
+			stickynote_set_color(note, note->color, FALSE);
+			stickynote_set_font(note, note->font, FALSE);
 		}
 	}
 

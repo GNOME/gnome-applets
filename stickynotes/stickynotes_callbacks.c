@@ -167,7 +167,7 @@ void properties_apply_color_cb(StickyNote *note)
 {
 	gchar *color_str = NULL;
 	
-	if (!gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(note->w_default))) {
+	if (!gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(note->w_def_color))) {
 		GdkColor color;
 		gnome_color_picker_get_i16(GNOME_COLOR_PICKER(note->w_color), &color.red, &color.green, &color.blue, NULL);
 		color_str = g_strdup_printf("#%.2x%.2x%.2x", color.red / 256, color.green / 256, color.blue / 256);
@@ -178,6 +178,17 @@ void properties_apply_color_cb(StickyNote *note)
 	g_free(color_str);
 }
 
+void properties_apply_font_cb(StickyNote *note)
+{
+	const gchar *font_str = NULL;
+	
+	if (!gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(note->w_def_font))) {
+		font_str = gnome_font_picker_get_font_name(GNOME_FONT_PICKER(note->w_font));
+	}
+
+	stickynote_set_font(note, font_str, TRUE);
+}
+
 /* Properties Dialog Callback : Color */
 void properties_color_cb(GnomeColorPicker *cp, guint r, guint g, guint b, guint a, StickyNote *note)
 {
@@ -185,6 +196,12 @@ void properties_color_cb(GnomeColorPicker *cp, guint r, guint g, guint b, guint 
 	gchar *color_str = g_strdup_printf("#%.2x%.2x%.2x", r / 256, g / 256, b / 256);
 	stickynote_set_color(note, color_str, TRUE);
 	g_free(color_str);
+}
+
+/* Properties Dialog Callback : Font */
+void properties_font_cb(GnomeFontPicker *fp, gchar *font_str, StickyNote *note)
+{
+	stickynote_set_font(note, font_str, TRUE);
 }
 
 /* Properties Dialog Callback : Activate */

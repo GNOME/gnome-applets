@@ -34,7 +34,9 @@ typedef struct
 
 	GtkWidget *w_entry;		/* Sticky Note title entry */
 	GtkWidget *w_color;		/* Sticky Note color picker */
-	GtkWidget *w_default;		/* Sticky Note default color setting */
+	GtkWidget *w_font;		/* Sticky Note font picker */
+	GtkWidget *w_def_color;		/* Sticky Note default color setting */
+	GtkWidget *w_def_font;		/* Sticky Note default font setting */
 
 	GtkWidget *w_title;		/* Sticky Note title */
 	GtkWidget *w_body;		/* Sticky Note text body */
@@ -44,6 +46,7 @@ typedef struct
 	GtkWidget *w_resize_sw;		/* Sticky Note resize button (south west) */
 
 	gchar *color;			/* Note color */
+	gchar *font;			/* Note font */
 	gboolean locked;		/* Note locked state */
 	gboolean visible;		/* Note visibility */
 
@@ -61,6 +64,7 @@ gboolean stickynote_get_empty(const StickyNote *note);
 
 void stickynote_set_title(StickyNote *note, const gchar* title);
 void stickynote_set_color(StickyNote *note, const gchar* color_str, gboolean save);
+void stickynote_set_font(StickyNote *note, const gchar* font_str, gboolean save);
 void stickynote_set_locked(StickyNote *note, gboolean locked);
 void stickynote_set_visible(StickyNote *note, gboolean visible);
 

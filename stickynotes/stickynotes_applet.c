@@ -153,7 +153,9 @@ void stickynotes_applet_init_prefs()
 	stickynotes->w_prefs_width = gtk_spin_button_get_adjustment(GTK_SPIN_BUTTON(glade_xml_get_widget(stickynotes->prefs, "width_spin")));
 	stickynotes->w_prefs_height= gtk_spin_button_get_adjustment(GTK_SPIN_BUTTON(glade_xml_get_widget(stickynotes->prefs, "height_spin")));
 	stickynotes->w_prefs_color = glade_xml_get_widget(stickynotes->prefs, "default_color");
-	stickynotes->w_prefs_system = GTK_WIDGET(&GTK_CHECK_BUTTON(glade_xml_get_widget(stickynotes->prefs, "use_system_check"))->toggle_button);
+	stickynotes->w_prefs_sys_color = GTK_WIDGET(&GTK_CHECK_BUTTON(glade_xml_get_widget(stickynotes->prefs, "sys_color_check"))->toggle_button);
+	stickynotes->w_prefs_font = glade_xml_get_widget(stickynotes->prefs, "default_font");
+	stickynotes->w_prefs_sys_font = GTK_WIDGET(&GTK_CHECK_BUTTON(glade_xml_get_widget(stickynotes->prefs, "sys_font_check"))->toggle_button);
 	stickynotes->w_prefs_click = glade_xml_get_widget(stickynotes->prefs, "click_behavior_menu");
 	stickynotes->w_prefs_sticky = GTK_WIDGET(&GTK_CHECK_BUTTON(glade_xml_get_widget(stickynotes->prefs, "sticky_check"))->toggle_button);
 	stickynotes->w_prefs_force = GTK_WIDGET(&GTK_CHECK_BUTTON(glade_xml_get_widget(stickynotes->prefs, "force_default_check"))->toggle_button);
@@ -161,8 +163,10 @@ void stickynotes_applet_init_prefs()
 	g_signal_connect(G_OBJECT(stickynotes->w_prefs), "response", G_CALLBACK(preferences_response_cb), NULL);
 	g_signal_connect_swapped(G_OBJECT(stickynotes->w_prefs_width), "value-changed", G_CALLBACK(preferences_save_cb), NULL);
 	g_signal_connect_swapped(G_OBJECT(stickynotes->w_prefs_height), "value-changed", G_CALLBACK(preferences_save_cb), NULL);
-	g_signal_connect_swapped(G_OBJECT(stickynotes->w_prefs_system), "toggled", G_CALLBACK(preferences_save_cb), NULL);
+	g_signal_connect_swapped(G_OBJECT(stickynotes->w_prefs_sys_color), "toggled", G_CALLBACK(preferences_save_cb), NULL);
+	g_signal_connect_swapped(G_OBJECT(stickynotes->w_prefs_sys_font), "toggled", G_CALLBACK(preferences_save_cb), NULL);
 	g_signal_connect(G_OBJECT(stickynotes->w_prefs_color), "color_set", G_CALLBACK(preferences_color_cb), NULL);
+	g_signal_connect(G_OBJECT(stickynotes->w_prefs_font), "font_set", G_CALLBACK(preferences_font_cb), NULL);
 	g_signal_connect_swapped(G_OBJECT(stickynotes->w_prefs_click), "changed", G_CALLBACK(preferences_save_cb), NULL);
 	g_signal_connect_swapped(G_OBJECT(stickynotes->w_prefs_sticky), "toggled", G_CALLBACK(preferences_save_cb), NULL);
 	g_signal_connect_swapped(G_OBJECT(stickynotes->w_prefs_force), "toggled", G_CALLBACK(preferences_save_cb), NULL);
@@ -202,8 +206,6 @@ StickyNotesApplet * stickynotes_applet_new(PanelApplet *panel_applet)
 
 	bonobo_ui_component_add_listener(panel_applet_get_popup_component(panel_applet), "show", (BonoboUIListenerFn) menu_toggle_show_cb, applet);
 	bonobo_ui_component_add_listener(panel_applet_get_popup_component(panel_applet), "lock", (BonoboUIListenerFn) menu_toggle_lock_cb, applet);
-
-	gtk_widget_add_events(GTK_WIDGET(applet->w_applet), GDK_KEY_PRESS_MASK | GDK_KEY_RELEASE_MASK);
 
 	/* Connect all signals for applet management */
 	g_signal_connect(G_OBJECT(applet->w_applet), "button-press-event", G_CALLBACK(applet_button_cb), applet);
@@ -251,11 +253,13 @@ void stickynotes_applet_update_prefs()
 {
 	gint width = gconf_client_get_int(stickynotes->gconf, GCONF_PATH "/defaults/width", NULL);
 	gint height = gconf_client_get_int(stickynotes->gconf, GCONF_PATH "/defaults/height", NULL);
-	gboolean use_system = gconf_client_get_bool(stickynotes->gconf, GCONF_PATH "/settings/use_system_color", NULL);
+	gboolean sys_color = gconf_client_get_bool(stickynotes->gconf, GCONF_PATH "/settings/use_system_color", NULL);
+	gboolean sys_font = gconf_client_get_bool(stickynotes->gconf, GCONF_PATH "/settings/use_system_font", NULL);
 	gint click_behavior = gconf_client_get_int(stickynotes->gconf, GCONF_PATH "/settings/click_behavior", NULL);
 	gboolean sticky = gconf_client_get_bool(stickynotes->gconf, GCONF_PATH "/settings/sticky", NULL);
-	gboolean force_default = gconf_client_get_bool(stickynotes->gconf, GCONF_PATH "/settings/force_default_color", NULL);
-
+	gboolean force_default = gconf_client_get_bool(stickynotes->gconf, GCONF_PATH "/settings/force_default", NULL);
+	gchar *font_str = gconf_client_get_string(stickynotes->gconf, GCONF_PATH "/defaults/font", NULL);
+	
 	GdkColor color;
 	{
 		gchar *color_str = gconf_client_get_string(stickynotes->gconf, GCONF_PATH "/defaults/color", NULL);
@@ -265,15 +269,19 @@ void stickynotes_applet_update_prefs()
 
 	gtk_adjustment_set_value(stickynotes->w_prefs_width, width);
 	gtk_adjustment_set_value(stickynotes->w_prefs_height, height);
-	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(stickynotes->w_prefs_system), use_system);
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(stickynotes->w_prefs_sys_color), sys_color);
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(stickynotes->w_prefs_sys_font), sys_font);
 	gtk_option_menu_set_history(GTK_OPTION_MENU(stickynotes->w_prefs_click), click_behavior);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(stickynotes->w_prefs_sticky), sticky);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(stickynotes->w_prefs_force), force_default);
 
 	gnome_color_picker_set_i16(GNOME_COLOR_PICKER(stickynotes->w_prefs_color), color.red, color.green, color.blue, 65535);
-	
-	gtk_widget_set_sensitive(glade_xml_get_widget(stickynotes->prefs, "color_label"), !use_system);
-	gtk_widget_set_sensitive(stickynotes->w_prefs_color, !use_system);
+	gnome_font_picker_set_font_name(GNOME_FONT_PICKER(stickynotes->w_prefs_font), font_str);
+
+	gtk_widget_set_sensitive(glade_xml_get_widget(stickynotes->prefs, "color_label"), !sys_color);
+	gtk_widget_set_sensitive(stickynotes->w_prefs_color, !sys_color);
+	gtk_widget_set_sensitive(glade_xml_get_widget(stickynotes->prefs, "font_label"), !sys_font);
+	gtk_widget_set_sensitive(stickynotes->w_prefs_font, !sys_font);
 }
 
 void stickynotes_applet_update_menus()
