@@ -414,7 +414,6 @@ void update_finish (WeatherInfo *info)
     char *s;
     GWeatherApplet *gw_applet = info->applet;
    
-    gw_applet->gweather_info = info;
     weather_info_get_pixbuf_mini(gw_applet->gweather_info, 
     				 &(gw_applet->applet_pixbuf));
     gtk_image_set_from_pixbuf (GTK_IMAGE (gw_applet->image), 

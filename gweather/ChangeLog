@@ -1,3 +1,15 @@
+2004-05-27  Dennis Smit  <ds@nerds-incorporated.org>
+
+	* gweather-applet.c, weather.c: Applied patch by Gareth Owen that fixes bug
+	#134018. 
+
+	I've done two things in this patch.  Firstly, when the location is changed any
+	outstanding VFS async calls are cancelled.  Secondly, instead of passing a
+	pointer to the weather info structure (which is free'd when you change
+	location) to the callbacks, a pointer to the GWeatherApplet structure
+	is now used.  Since the applet is only free'd when the instance is removed
+	from the panel, it can't get deleted before the callback is called.
+
 2004-05-16  Kevin Vandersloot <kfv101 psu edu>
 
 	* gweather-pref.c: Allow for translators to specify the default location. Fixes
