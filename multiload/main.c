@@ -99,7 +99,6 @@ main (int argc, char **argv)
     textdomain (PACKAGE);
 
     applet_widget_init ("multiload_applet", VERSION, argc, argv, NULL, 0, NULL);
-    applet_factory_new ("multiload_applet", NULL, applet_start_new_applet);
 
     goad_id = goad_server_activation_id();
     if(!goad_id)
@@ -191,6 +190,8 @@ main (int argc, char **argv)
 
     /* Read properties. */
     multiload_init_properties ();
+
+    applet_factory_new ("multiload_applet", NULL, applet_start_new_applet);
 
     /* Only do if factory wasn't requested. */
     if(strcmp(goad_id, "multiload_applet"))
