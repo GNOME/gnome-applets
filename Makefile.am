@@ -69,7 +69,6 @@ always_built_SUBDIRS = \
 	geyes		\
 	gkb		\
 	gumma		\
-	hal		\
 	jbc		\
 	life		\
 	mini-commander	\

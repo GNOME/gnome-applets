@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-core 1.0.0\n"
-"POT-Creation-Date: 1999-09-11 16:18+0200\n"
+"POT-Creation-Date: 2000-01-24 19:05-0500\n"
 "PO-Revision-Date: 1999-09-16 22:27+02:00\n"
 "Last-Translator: Kenneth Christiansen <kenneth@ripen.dk>\n"
 "Language-Team: Danish <da@li.org>\n"
@@ -101,10 +101,10 @@ msgstr "Egenskaber for ur"
 #: another_clock/another_clock.c:215 asclock/dialogs.c:347
 #: battery/properties.c:77 charpick/properties.c:184
 #: clockmail/properties.c:404 diskusage/properties.c:315
-#: drivemount/properties.c:229 fvwm-pager/properties.c:247
-#: gnotes/gnotes_applet.c:236 mini-commander/src/preferences.c:744
-#: modemlights/properties.c:275 netload/properties.c:280
-#: slashapp/properties.c:347
+#: drivemount/properties.c:321 mini-commander/src/preferences.c:744
+#: modemlights/properties.c:277 odometer/properties.c:253
+#: slashapp/properties.c:347 sound-monitor/properties.c:419
+#: tickastat/properties.c:408
 msgid "General"
 msgstr "Generelt"
 
@@ -145,7 +145,7 @@ msgstr "Iñigo Serna <inigo@gaztelan.bi.ehu.es>"
 msgid "Another Clock Applet"
 msgstr "En anden urapplet"
 
-#: another_clock/another_clock.c:325 hal/hal.c:228
+#: another_clock/another_clock.c:325
 msgid "(C) 1999 the Free Software Foundation"
 msgstr "(C) 1999 Fri Software Fundation"
 
@@ -154,27 +154,26 @@ msgid "An analog clock similar to that in CDE panel."
 msgstr "Et analogt ur magen til det fra CDE panelet"
 
 #: another_clock/another_clock.c:615 asclock/asclock.c:595
-#: battery/battery.c:783 charpick/charpick.c:475 clockmail/clockmail.c:539
-#: drivemount/drivemount.c:552 esd-manager/esdmanager_applet.c:80
-#: fifteen/fifteen.c:309 fvwm-pager/fvwm-pager.c:406 geyes/geyes.c:350
-#: gkb/gkb.c:675 gnome-pager/gnomepager_applet.c:2552
-#: gnotes/gnotes_applet.c:300 gweather/gweather-applet.c:172 hal/hal.c:285
-#: jbc/jbc-applet.c:136 life/life.c:197
-#: mini-commander/src/mini-commander_applet.c:375
-#: modemlights/modemlights.c:1155 netload/netload.c:339 slashapp/slashapp.c:58
-#: webcontrol/webcontrol.c:308
+#: battery/battery.c:783 charpick/charpick.c:475 clipboard/clipboard.c:229
+#: clockmail/clockmail.c:546 drivemount/drivemount.c:639 fifteen/fifteen.c:309
+#: geyes/geyes.c:365 gkb/gkb.c:701 gnotes/gnotes_applet.c:151
+#: gumma/gumma.c:574 gweather/gweather-applet.c:157 jbc/jbc-applet.c:136
+#: life/life.c:260 mini-commander/src/mini-commander_applet.c:393
+#: modemlights/modemlights.c:1193 odometer/odo.c:562 slashapp/slashapp.c:58
+#: sound-monitor/main.c:336 tickastat/main.c:303 webcontrol/webcontrol.c:308
+#: whereami/whereami.c:142
 msgid "About..."
 msgstr "Om..."
 
 #: another_clock/another_clock.c:621 asclock/asclock.c:601
-#: charpick/charpick.c:482 clockmail/clockmail.c:532 diskusage/diskusage.c:799
-#: drivemount/drivemount.c:546 esd-manager/esdmanager_applet.c:87
-#: fvwm-pager/fvwm-pager.c:412 geyes/geyes.c:356 gkb/gkb.c:683
-#: gnome-pager/gnomepager_applet.c:2558 gweather/gweather-applet.c:175
-#: mini-commander/src/mini-commander_applet.c:362
-#: modemlights/modemlights.c:1149 multiload/cpuload.c:64
-#: multiload/memload.c:60 multiload/swapload.c:60 netload/netload.c:346
-#: slashapp/slashapp.c:55 webcontrol/webcontrol.c:316
+#: charpick/charpick.c:482 clockmail/clockmail.c:539 diskusage/diskusage.c:799
+#: drivemount/drivemount.c:633 geyes/geyes.c:371 gkb/gkb.c:709
+#: gnotes/gnotes_applet.c:154 gweather/gweather-applet.c:160
+#: mini-commander/src/mini-commander_applet.c:380
+#: modemlights/modemlights.c:1187 multiload/cpuload.c:64
+#: multiload/memload.c:60 multiload/swapload.c:60 odometer/odo.c:559
+#: slashapp/slashapp.c:55 sound-monitor/main.c:329 tickastat/main.c:297
+#: webcontrol/webcontrol.c:316
 msgid "Properties..."
 msgstr "Egenskaber ..."
 
@@ -244,8 +243,7 @@ msgstr "Batteriet er fuldt opladet"
 msgid "Internal error: invalid mode in battery_set_mode"
 msgstr "Intern fejl: ugyldig mode i battery_set_mode"
 
-#: battery/battery.c:643 esd-manager/esdmanager_applet.c:72
-#: jbc/jbc-applet.c:121 netload/netload.c:321
+#: battery/battery.c:643 jbc/jbc-applet.c:121
 msgid "Can't create applet!\n"
 msgstr "Kan ikke oprette applet!\n"
 
@@ -388,6 +386,24 @@ msgstr "APM er slået fra! Kan ikke læse informasion om batteriladning."
 msgid "Run gtcd..."
 msgstr "Kør gmix..."
 
+#: clipboard/clipboard.c:163
+msgid "Clipboard Applet"
+msgstr ""
+
+#: clipboard/clipboard.c:165
+#, fuzzy
+msgid "Copyright (C) 1999"
+msgstr "Ophavsret (C) 1998"
+
+#: clipboard/clipboard.c:167
+#, fuzzy
+msgid ""
+"Gnome panel applet for copying and retrieving selections with a history "
+"list. Released under GNU General Public Licence."
+msgstr ""
+"Gnome Panel applet til at vælge særlige tegn der ikke findes på mit "
+"tastatur. Udgivet under GNU General Public Licence."
+
 #: charpick/charpick.c:352
 msgid "Character Picker"
 msgstr "Tegnvælger"
@@ -420,19 +436,20 @@ msgstr "Antal rækker af knapper:"
 msgid "Number of columns of buttons:"
 msgstr "Antal kolonner af knapper:"
 
-#: clockmail/clockmail.c:52 slashapp/slashapp.c:127
+#: clockmail/clockmail.c:56 slashapp/slashapp.c:127 sound-monitor/main.c:35
+#: tickastat/main.c:169
 msgid "John Ellis <johne@bellatlantic.net>"
 msgstr "John Ellis <johne@bellatlantic.net>"
 
-#: clockmail/clockmail.c:55
+#: clockmail/clockmail.c:59
 msgid "Clock and Mail Notify Applet"
 msgstr "Ur- og postnotifiseringsapplet"
 
-#: clockmail/clockmail.c:56 jbc/jbc-applet.c:47
+#: clockmail/clockmail.c:60 jbc/jbc-applet.c:47
 msgid "(C) 1999"
 msgstr "(C) 1999"
 
-#: clockmail/clockmail.c:58
+#: clockmail/clockmail.c:62
 msgid ""
 "Released under the GNU general public license.\n"
 "Basic digital clock with date in a tooltip. Optional 12/24 time display. "
@@ -441,24 +458,25 @@ msgid ""
 msgstr ""
 "Udgivet under GNU general public license.\n"
 "Enkelt digitalt ur med dato i værktøjstips. Valgfri 12/24-timers visning. "
-"Epost blink kan være for enhver ulæst melding, eller bare kort når ny "
-"epost ankommer."
+"Epost blink kan være for enhver ulæst melding, eller bare kort når ny epost "
+"ankommer."
 
-#: clockmail/clockmail.c:128
+#: clockmail/clockmail.c:132
 msgid "%a, %b %d"
 msgstr "%a, %b %d"
 
-#: clockmail/clockmail.c:135
+#: clockmail/clockmail.c:139
 msgid " (GMT)"
 msgstr " (GMT)"
 
-#: clockmail/clockmail.c:141
+#: clockmail/clockmail.c:145
 #, c-format
 msgid " (GMT %+d)"
 msgstr " (GMT %+d)"
 
 #. add default theme
-#: clockmail/properties.c:138
+#: clockmail/properties.c:138 odometer/properties.c:128
+#: sound-monitor/properties.c:163
 msgid "None (default)"
 msgstr "Ingen (standard)"
 
@@ -502,11 +520,12 @@ msgstr "Antal breve før postkassen betragtes som fuld:"
 msgid "When clicked, run:"
 msgstr "Når klikket på, kør:"
 
-#: clockmail/properties.c:422
+#: clockmail/properties.c:422 sound-monitor/properties.c:437
 msgid "Theme file (directory):"
 msgstr "Temafil (katalog):"
 
-#: clockmail/properties.c:453
+#: clockmail/properties.c:453 odometer/properties.c:294
+#: sound-monitor/properties.c:465
 msgid "Theme"
 msgstr "Tema"
 
@@ -518,7 +537,7 @@ msgstr "Filsystem"
 msgid "File System Changed!\n"
 msgstr "Filsystemet er ændret!\n"
 
-#: diskusage/diskusage.c:806 drivemount/drivemount.c:570
+#: diskusage/diskusage.c:806 drivemount/drivemount.c:657
 msgid "Browse..."
 msgstr "Gennemse..."
 
@@ -538,17 +557,15 @@ msgstr "Tekstfarve"
 msgid "Backgroundcolor"
 msgstr "Baggrundsfarve"
 
-#: diskusage/properties.c:224 fvwm-pager/properties.c:179
-#: netload/properties.c:141
+#: diskusage/properties.c:224
 msgid "Applet Height"
 msgstr "Applethøjde"
 
-#: diskusage/properties.c:230 fvwm-pager/properties.c:185
-#: netload/properties.c:147
+#: diskusage/properties.c:230
 msgid "Width"
 msgstr "Bredde"
 
-#: diskusage/properties.c:251 netload/properties.c:170
+#: diskusage/properties.c:251
 msgid "Update Frequency"
 msgstr "Opdateringsfrekvens"
 
@@ -556,11 +573,11 @@ msgstr "Opdateringsfrekvens"
 msgid "Diskusage Settings"
 msgstr "Indstillinger for diskbrug"
 
-#: drivemount/drivemount.c:77
+#: drivemount/drivemount.c:120
 msgid "Drive Mount Applet"
 msgstr "Diskmonteringsapplet"
 
-#: drivemount/drivemount.c:80
+#: drivemount/drivemount.c:123
 msgid ""
 "Released under the GNU general public license.\n"
 "Mounts and Unmounts drives.."
@@ -568,19 +585,19 @@ msgstr ""
 "Udgivet under GNU general public license.\n"
 "Monterer og afmonterer diske.."
 
-#: drivemount/drivemount.c:181
+#: drivemount/drivemount.c:345
 msgid " mounted"
 msgstr " monteret"
 
-#: drivemount/drivemount.c:186
+#: drivemount/drivemount.c:349
 msgid " not mounted"
 msgstr " ikke monteret"
 
-#: drivemount/drivemount.c:258
+#: drivemount/drivemount.c:449
 msgid "\" reported:\n"
 msgstr "\" rapportert:\n"
 
-#: drivemount/drivemount.c:260
+#: drivemount/drivemount.c:451
 msgid ""
 "Drivemount command failed.\n"
 "\""
@@ -588,61 +605,77 @@ msgstr ""
 "Diskmonteringskommandoen fejlede.\n"
 "\""
 
-#: drivemount/drivemount.c:561
+#: drivemount/drivemount.c:648
 msgid "Eject"
 msgstr "Skub ud"
 
-#: drivemount/properties.c:149
+#: drivemount/properties.c:197
 msgid "Drive Mount Settings"
 msgstr "Indstillinger for Diskmontering"
 
-#: drivemount/properties.c:163
+#: drivemount/properties.c:211
 msgid "Mount point:"
 msgstr "Monteringspunkt:"
 
-#: drivemount/properties.c:179
+#: drivemount/properties.c:227
 msgid "Update in seconds:"
 msgstr "Opdatering i sekunder:"
 
-#: drivemount/properties.c:191
+#: drivemount/properties.c:239
 msgid "Icon:"
 msgstr "Ikon:"
 
-#: drivemount/properties.c:198
+#: drivemount/properties.c:246
 msgid "Floppy"
 msgstr "Diskette"
 
-#: drivemount/properties.c:202
+#: drivemount/properties.c:250
 msgid "Cdrom"
 msgstr "Cdrom"
 
-#: drivemount/properties.c:206
+#: drivemount/properties.c:254
 msgid "Zip Drive"
 msgstr "Zip-disk"
 
-#: drivemount/properties.c:210
+#: drivemount/properties.c:258
 msgid "Jaz Drive"
 msgstr "Jaz-disk"
 
-#: drivemount/properties.c:214
+#: drivemount/properties.c:262
 msgid "Hard Disk"
 msgstr "Harddisk"
 
-#: drivemount/properties.c:223
+#: drivemount/properties.c:266
+#, fuzzy
+msgid "Custom"
+msgstr "Støvstorm"
+
+#: drivemount/properties.c:279
+#, fuzzy
+msgid "Select icon for mounted"
+msgstr " ikke monteret"
+
+#: drivemount/properties.c:287
+#, fuzzy
+msgid "Custom icon for mounted:"
+msgstr "Kommandolinie forgrund:"
+
+#: drivemount/properties.c:295
+msgid "Select icon for unmounted"
+msgstr ""
+
+#: drivemount/properties.c:303
+#, fuzzy
+msgid "Custom icon for not mounted:"
+msgstr " ikke monteret"
+
+#: drivemount/properties.c:309
+msgid "Scale size to panel"
+msgstr ""
+
+#: drivemount/properties.c:315
 msgid "Use automount friendly status test"
 msgstr "Brug automount 'venlig' statustest"
-
-#: esd-manager/esdmanager_applet.c:30
-msgid "Esound MAnager Applet"
-msgstr "Esound håndteringsapplet"
-
-#: esd-manager/esdmanager_applet.c:30
-msgid "Copyright (C)1998 Red Hat Software"
-msgstr "Ophavsret (C) 1998 Red Hat Software"
-
-#: esd-manager/esdmanager_applet.c:32
-msgid "This does nothing useful"
-msgstr "Den gør ingenting"
 
 #: fifteen/fifteen.c:36
 msgid "You win!"
@@ -652,7 +685,7 @@ msgstr "Du vinder!"
 msgid "Fifteen sliding pieces"
 msgstr "Femten glidene stykker"
 
-#: fifteen/fifteen.c:268 life/life.c:141
+#: fifteen/fifteen.c:268 life/life.c:196
 msgid "Copyright (C) The Free Software Foundation"
 msgstr "Opretshav tilhørende Fri Software Foundation"
 
@@ -672,52 +705,19 @@ msgstr "Kan ikke oprette femten appleten!"
 msgid "Scramble pieces"
 msgstr "Bland stykkene"
 
-#: fvwm-pager/fvwm-pager.c:155
-msgid "Fvwm Pager Applet"
-msgstr "Applet for valg af virtuelt skærmområde"
-
-#: fvwm-pager/fvwm-pager.c:157
-msgid "Copyright (C) 1998 M. Lausch"
-msgstr "Opretshav tilhørende 1998, M.Watson"
-
-#: fvwm-pager/fvwm-pager.c:317
-#, c-format
-msgid "Desk %d"
-msgstr "Skrivebord %d"
-
-#: fvwm-pager/properties.c:134 fvwm-pager/properties.c:163
-msgid "Active Window Color"
-msgstr "Aktiv vinduesfarve"
-
-#: fvwm-pager/properties.c:138 fvwm-pager/properties.c:167
-msgid "Inactive Window Color"
-msgstr "Inaktiv vinduesfarve"
-
-#: fvwm-pager/properties.c:142 fvwm-pager/properties.c:171
-msgid "Active Desktop Color"
-msgstr "Aktiv skrivebordsfarve"
-
-#: fvwm-pager/properties.c:146 fvwm-pager/properties.c:175
-msgid "Inactive Desktop Color"
-msgstr "Inaktiv skrivebordsfarve"
-
-#: fvwm-pager/properties.c:243
-msgid "Fvwm Pager Settings"
-msgstr "Indstillinger for diskbrug"
-
-#: geyes/geyes.c:224
+#: geyes/geyes.c:226
 msgid "Dave Camp <campd@oit.edu>"
 msgstr "Dave Camp <campd@oit.edu>"
 
-#: geyes/geyes.c:226
+#: geyes/geyes.c:228
 msgid "gEyes"
 msgstr "gØjne"
 
-#: geyes/geyes.c:226
+#: geyes/geyes.c:228
 msgid "Copyright (C) 1999 Dave Camp"
 msgstr "Ophavsret (C) 1999 Dave Camp"
 
-#: geyes/geyes.c:228
+#: geyes/geyes.c:230
 msgid "A goofy little xeyes clone for the GNOME panel."
 msgstr "En fjollet lille xeyes klon for GNOME panelet."
 
@@ -733,43 +733,48 @@ msgstr "gØjne indstillinger"
 msgid "Themes"
 msgstr "Temaer"
 
-#: gkb/gkb.c:343
+#: gkb/gkb.c:94
+#, fuzzy
+msgid "Browse"
+msgstr "Browser"
+
+#: gkb/gkb.c:370
 msgid "GKB settings"
 msgstr "GKB egenskaber"
 
-#: gkb/gkb.c:356
+#: gkb/gkb.c:383
 msgid "Flag One"
 msgstr "Flag 1"
 
-#: gkb/gkb.c:388
+#: gkb/gkb.c:415
 msgid "Flag Two"
 msgstr "Flag 2"
 
-#: gkb/gkb.c:416
+#: gkb/gkb.c:443
 msgid "Program"
 msgstr "Program"
 
-#: gkb/gkb.c:426
+#: gkb/gkb.c:453
 msgid "Xkb"
 msgstr "Xkb"
 
-#: gkb/gkb.c:430
+#: gkb/gkb.c:457
 msgid "Xmodmap"
 msgstr "Xmodmap"
 
-#: gkb/gkb.c:442
+#: gkb/gkb.c:469
 msgid "Menu"
 msgstr "Menu"
 
-#: gkb/gkb.c:592
+#: gkb/gkb.c:618
 msgid "The GNOME KeyBoard Applet"
 msgstr "Tastatur applet"
 
-#: gkb/gkb.c:594
+#: gkb/gkb.c:620
 msgid "(C) 1998-99 LSC - Linux Supporting Center"
 msgstr "(C) 1998-99 LSC - Linux Supporting Center"
 
-#: gkb/gkb.c:596
+#: gkb/gkb.c:622
 msgid ""
 "This applet switches between keyboard maps. Not more. It uses setxkbmap, or "
 "xmodmap. The main site of this app moved temporarily to URL "
@@ -778,240 +783,74 @@ msgid ""
 "Thanks for Balazs Nagy (Kevin)<julian7@kva.hu> for minor help."
 msgstr ""
 
-#: gkb/gkb.c:607
+#: gkb/gkb.c:633
 msgid "gkb.xpm"
 msgstr "gkb.xpm"
 
-#: gnome-pager/gnomepager_applet.c:197
-msgid "Desktop Pager Applet"
-msgstr "Skrivebordshåndterings applet"
-
-#: gnome-pager/gnomepager_applet.c:198
-msgid "Copyright (C)1998,1999 Red Hat Software, Free Software Foundation"
-msgstr ""
-"Opretshav tilhørende Red Hat Software, Free Software Foundation, 1998,1999 "
-
-#: gnome-pager/gnomepager_applet.c:200
-msgid "Pager for a GNOME compliant Window Manager"
-msgstr "Skrivebordshåndtering for en GNOME-kompatibel vindueshåndterer"
-
-#: gnome-pager/gnomepager_applet.c:327
-msgid "Gnome Pager Settings"
-msgstr "Skrivebordshåndterings indstillinger"
-
-#: gnome-pager/gnomepager_applet.c:333
-msgid "Pager"
-msgstr "Skærmoversigt"
-
-#: gnome-pager/gnomepager_applet.c:340
-msgid "Show pager"
-msgstr "Vis skærmoversigt"
-
-#: gnome-pager/gnomepager_applet.c:343
-msgid "Place pagers after tasklist"
-msgstr "Placer skærmoversigter efter opgaveliste"
-
-#: gnome-pager/gnomepager_applet.c:349
-msgid "Use small pagers"
-msgstr "Brug små oversigter"
-
-#: gnome-pager/gnomepager_applet.c:355
-msgid "Enable pager tooltips"
-msgstr "Slå værktøjstips til"
-
-#: gnome-pager/gnomepager_applet.c:361
-msgid "Rows of pagers"
-msgstr "Antal oversigtsrækker"
-
-#: gnome-pager/gnomepager_applet.c:364
-msgid "Width of small pagers"
-msgstr "Bredde på små oversigter"
-
-#: gnome-pager/gnomepager_applet.c:367
-msgid "Height of small pagers"
-msgstr "Højde på små oversigter"
-
-#: gnome-pager/gnomepager_applet.c:370
-msgid "Width of large pagers"
-msgstr "Bredde på store oversigter"
-
-#: gnome-pager/gnomepager_applet.c:373
-msgid "Height of large pagers"
-msgstr "Bredde på store oversigter"
-
-#: gnome-pager/gnomepager_applet.c:386
-msgid "Tasklist"
-msgstr "Opgaveliste"
-
-#: gnome-pager/gnomepager_applet.c:388
-msgid "Show task list button"
-msgstr "Vis opgaveliste knapper"
-
-#: gnome-pager/gnomepager_applet.c:391
-msgid "Show task list"
-msgstr "Vis opgaveliste"
-
-#: gnome-pager/gnomepager_applet.c:394
-msgid "Show button icons"
-msgstr "Vis knappeikoner"
-
-#. Radio buttons for which tasks to show
-#: gnome-pager/gnomepager_applet.c:406
-msgid "Which tasks to show"
-msgstr "Hvilke opgaver skal vises"
-
-#: gnome-pager/gnomepager_applet.c:415
-msgid "Show all tasks"
-msgstr "Vis alle opgaver"
-
-#: gnome-pager/gnomepager_applet.c:421
-msgid "Show normal tasks only"
-msgstr "Vis kun normale opgaver"
-
-#: gnome-pager/gnomepager_applet.c:427
-msgid "Show minimized tasks only"
-msgstr "Vis kun minimerede opgaver"
-
-#: gnome-pager/gnomepager_applet.c:440
-msgid "Show all tasks on all desktops"
-msgstr "Vis alle opgaver på alle skriveborde"
-
-#: gnome-pager/gnomepager_applet.c:443
-msgid "Show minimized tasks on all desktops"
-msgstr "Vis alle minimerede opgaver på alle skriveborde "
-
-#: gnome-pager/gnomepager_applet.c:447
-msgid "Enable task list tooltips"
-msgstr "Slå opgaveliste værktøjstips til"
-
-#: gnome-pager/gnomepager_applet.c:450
-msgid "Geometry"
-msgstr "Geometri"
-
-#: gnome-pager/gnomepager_applet.c:459
-msgid "Tasklist always maximum size"
-msgstr "Opgaveliste har altid maks. størrelse"
-
-#: gnome-pager/gnomepager_applet.c:462
-msgid "Don't push other applets out of the way"
-msgstr ""
-
-#: gnome-pager/gnomepager_applet.c:466
-msgid "Maximum width of horizontal task list"
-msgstr "Max vidde af horisontale opgaveliste"
-
-#: gnome-pager/gnomepager_applet.c:471
-msgid "Maximum width of vertical task list"
-msgstr "Max vidde af horisontale opgaveliste"
-
-#: gnome-pager/gnomepager_applet.c:476
-msgid "Number of rows of horizontal tasks"
-msgstr "Antal horisontale rækker af opgaver"
-
-#: gnome-pager/gnomepager_applet.c:481
-msgid "Number of vertical columns of tasks"
-msgstr "Antal vertikale kolonner af opgaver"
-
-#: gnome-pager/gnomepager_applet.c:1762
-msgid "Sticky"
-msgstr "Klistret"
-
-#: gnome-pager/gnomepager_applet.c:2213
-msgid "Show / Hide"
-msgstr "Vis / Gem"
-
-#: gnome-pager/gnomepager_applet.c:2219
-msgid "Shade / Unshade"
-msgstr "Rul op / Rul ned"
-
-#: gnome-pager/gnomepager_applet.c:2225
-msgid "Stick / Unstick"
-msgstr "Klister / Klister ikke"
-
-#: gnome-pager/gnomepager_applet.c:2231
-msgid "Close"
-msgstr "Luk"
-
-#: gnome-pager/gnomepager_applet.c:2237
-msgid "Nuke"
-msgstr "Dræb"
-
-#: gnome-pager/gnomepager_applet.c:2500
-msgid "Gnome Pager Error"
-msgstr "Skrivebordshåndterings fejl"
-
-#: gnome-pager/gnomepager_applet.c:2501
-msgid ""
-"You are not running a GNOME Compliant Window Manager.\n"
-"Please run a GNOME Compliant Window Manager.\n"
-"For Example:\n"
-"Enlightenment (DR-0.15)\n"
-"Then start this applet again.\n"
-msgstr ""
-"Vindueshåndtereren du bruger er ikke GNOME kompatibel\n"
-"Kør venligst en GNOME-kompatibel vindueshåndterer.\n"
-"For eksempel:\n"
-"Enlightenment (DR-0.15)\n"
-"Start derefter denne applet igen\n"
-
-#. XXX: a hackish way to bind events on these buttons so that
-#. we will recieve the right click and such events over them to
-#. display menus and allow dragging over them
-#: gnome-pager/gnomepager_applet.c:2532
-msgid "?"
-msgstr "?"
-
-#: gnotes/gnote.c:246
-msgid "Raise Notes"
+#: gnotes/gnote.c:225
+#, fuzzy
+msgid "Raise Note"
 msgstr "Hæv notitser"
 
-#: gnotes/gnote.c:251
-msgid "Lower Notes"
+#: gnotes/gnote.c:230
+#, fuzzy
+msgid "Lower Note"
 msgstr "Sænk notitser"
 
-#: gnotes/gnote.c:256
-msgid "Hide Notes"
+#: gnotes/gnote.c:235
+#, fuzzy
+msgid "Hide Note"
 msgstr "Skjul notitser"
 
-#: gnotes/gnote.c:261
+#: gnotes/gnote.c:240
 msgid "Delete Note"
 msgstr "Slet notits"
 
-#: gnotes/gnotes_applet.c:126
+#: gnotes/gnotes_applet.c:93
 msgid "GNotes!"
 msgstr "GNotes!"
 
-#: gnotes/gnotes_applet.c:127
+#: gnotes/gnotes_applet.c:94
 msgid ""
-"Copyright (C) 1998-1999 spoon <spoon@ix.netcom.com>, Copyright (C) 1999 dres "
-"<dres@debian.org>"
+"Copyright (C) 1998-1999 spoon <spoon@ix.netcom.com> \n"
+"Copyright (C) 1999 dres <dres@debian.org>"
 msgstr ""
 
-#: gnotes/gnotes_applet.c:130
+#: gnotes/gnotes_applet.c:96
 msgid "Create sticky notes on your screen."
 msgstr ""
 
-#: gnotes/gnotes_applet.c:191
-msgid "GNotes Settings"
-msgstr "GNotes indstillinger"
-
-#: gnotes/gnotes_applet.c:200
-msgid "Default Height"
-msgstr "standard højde"
-
-#: gnotes/gnotes_applet.c:220
-msgid "Default Width"
-msgstr "Standard bredde"
-
-#: gnotes/gnotes_applet.c:288
+#: gnotes/gnotes_applet.c:139
 msgid "Can't create GNotes applet!"
 msgstr "Kan ikke oprette GNotes appleten!"
 
-#: gweather/gweather-applet.c:167
+#: gumma/gumma.c:309
+#, fuzzy, c-format
+msgid "Loading plugin %s..."
+msgstr "Henter headlines..."
+
+#: gumma/gumma.c:483
+msgid "Select a plugin"
+msgstr ""
+
+#: gumma/gumma.c:497
+msgid "Plugins"
+msgstr ""
+
+#: gumma/gumma.c:579
+#, fuzzy
+msgid "About Plugin..."
+msgstr "Om..."
+
+#: gumma/gumma.c:583
+msgid "Plugins..."
+msgstr ""
+
+#: gweather/gweather-applet.c:152
 msgid "Cannot create applet!\n"
 msgstr "Kan ikke oprette applet!\n"
 
-#: gweather/gweather-applet.c:178
+#: gweather/gweather-applet.c:163
 msgid "Update"
 msgstr "Updater"
 
@@ -1244,8 +1083,9 @@ msgstr "Nordvest"
 msgid "North - Northwest"
 msgstr "Nord - Nordvest"
 
-#: gweather/weather.c:150 webcontrol/webcontrol.c:121
-msgid "Clear"
+#: gweather/weather.c:150
+#, fuzzy
+msgid "Clear Sky"
 msgstr "Ryd"
 
 #: gweather/weather.c:151
@@ -1399,8 +1239,9 @@ msgid "Patches of snow"
 msgstr ""
 
 #: gweather/weather.c:181
-msgid "Partial snowfali"
-msgstr ""
+#, fuzzy
+msgid "Partial snowfall"
+msgstr "Delvis tåge"
 
 #: gweather/weather.c:181 gweather/weather.c:182
 msgid "Snowstorm"
@@ -2354,38 +2195,6 @@ msgstr "Stille"
 msgid "Unknown"
 msgstr "Ukendt"
 
-#: hal/hal.c:19
-msgid "I'm sorry, Dave, I can't let you do that."
-msgstr "I'm sorry, Dave, I can't let you do that."
-
-#: hal/hal.c:20
-msgid "Dave, what are you doing?"
-msgstr "Dave, what are you doing?"
-
-#: hal/hal.c:21
-msgid "I can feel my mind going, Dave...I can feel it."
-msgstr "I can feel my mind going, Dave...I can feel it."
-
-#: hal/hal.c:22
-msgid "Daisy, daisy..."
-msgstr "Daisy, daisy..."
-
-#: hal/hal.c:223
-msgid "(with minor help from George Lebl and his amazing fish applet)"
-msgstr "(med en smule hjælp fra George Lebl og hans utrolige fisk applet)"
-
-#: hal/hal.c:227
-msgid "The GNOME HAL"
-msgstr "GNOME HAL9000"
-
-#: hal/hal.c:230
-msgid ""
-"I am a HAL 9000 computer, Production Number 3. I became operational at the "
-"Hal Plant in Urbana, Illinois, on January 12, 1997."
-msgstr ""
-"I am a HAL 9000 computer, Production Number 3. I became operational at the "
-"Hal Plant in Urbana, Illinois, on January 12, 1997."
-
 #: jbc/jbc-applet.c:45
 msgid "Jon's Binary Clock"
 msgstr "Jon's binære ur"
@@ -2399,19 +2208,19 @@ msgstr ""
 "Udgivet under GNU general public license.\n"
 "Monterer og avmonterer disker.."
 
-#: life/life.c:139
+#: life/life.c:194
 msgid "The Game of Life"
 msgstr "Livets spil"
 
-#: life/life.c:143
+#: life/life.c:198
 msgid "A complete waste of perfectly good CPU cycles."
 msgstr ""
 
-#: life/life.c:172
+#: life/life.c:234
 msgid "Can't create life applet!"
 msgstr "Kan ikke oprette livs appleten!"
 
-#: life/life.c:190
+#: life/life.c:253
 msgid "Randomize"
 msgstr "Bland!"
 
@@ -2457,30 +2266,30 @@ msgstr "ikke fundet"
 msgid "no /bin/sh"
 msgstr "ingen /bin/sh"
 
-#: mini-commander/src/command_line.c:87 mini-commander/src/command_line.c:107
+#: mini-commander/src/command_line.c:88 mini-commander/src/command_line.c:108
 msgid "end of history list"
 msgstr "slutning af historieliste"
 
 #. enter pressed -> exec command
-#: mini-commander/src/command_line.c:117 mini-commander/src/exec.c:63
+#: mini-commander/src/command_line.c:118 mini-commander/src/exec.c:63
 msgid "starting..."
 msgstr "starter..."
 
-#: mini-commander/src/command_line.c:146
+#: mini-commander/src/command_line.c:147
 msgid "autocompleted"
 msgstr "autofærdig"
 
-#: mini-commander/src/command_line.c:256
+#: mini-commander/src/command_line.c:257
 msgid "history list empty"
 msgstr "historieliste tom"
 
 #. title
-#: mini-commander/src/command_line.c:274
+#: mini-commander/src/command_line.c:275
 msgid "Command history"
 msgstr "Kommando historie"
 
 #. build file select dialog
-#: mini-commander/src/command_line.c:391
+#: mini-commander/src/command_line.c:392
 msgid "Start program"
 msgstr "Start program"
 
@@ -2505,27 +2314,27 @@ msgstr "%H:%M"
 msgid "%d. %b"
 msgstr "%d. %b"
 
-#: mini-commander/src/mini-commander_applet.c:89
+#: mini-commander/src/mini-commander_applet.c:90
 msgid "orient. changed"
 msgstr "orient. ændret:"
 
-#: mini-commander/src/mini-commander_applet.c:103
+#: mini-commander/src/mini-commander_applet.c:104
 msgid "size changed"
 msgstr "størrelse ændret"
 
-#: mini-commander/src/mini-commander_applet.c:199 slashapp/properties.c:249
+#: mini-commander/src/mini-commander_applet.c:209 slashapp/properties.c:249
 msgid "Browser"
 msgstr "Browser"
 
-#: mini-commander/src/mini-commander_applet.c:212
+#: mini-commander/src/mini-commander_applet.c:222
 msgid "History"
 msgstr "Historie"
 
-#: mini-commander/src/mini-commander_applet.c:368
+#: mini-commander/src/mini-commander_applet.c:386
 msgid "Help"
 msgstr "Hjælp"
 
-#: mini-commander/src/mini-commander_applet.c:379
+#: mini-commander/src/mini-commander_applet.c:397
 msgid "ready..."
 msgstr "parat..."
 
@@ -2589,7 +2398,7 @@ msgid "Enable history based auto completion"
 msgstr "Brug historiebaseret autofærdiggøring"
 
 #. Size
-#: mini-commander/src/preferences.c:554
+#: mini-commander/src/preferences.c:554 tickastat/properties.c:484
 msgid "Size"
 msgstr "Størrelse"
 
@@ -2656,21 +2465,22 @@ msgstr "Hovedmenu"
 msgid "Run gmix..."
 msgstr "Kør mixer..."
 
-#: modemlights/modemlights.c:128
+#: modemlights/modemlights.c:108
 msgid "Modem Lights Applet"
 msgstr "Modemlys applet"
 
-#: modemlights/modemlights.c:131
+#: modemlights/modemlights.c:111
+#, fuzzy
 msgid ""
 "Released under the GNU general public license.\n"
-"A modem status indicator and dialer.Lights in order from the top or left are "
-"RX and TX"
+"A modem status indicator and dialer.\n"
+"Lights in order from the top or left are Send data and Receive data."
 msgstr ""
 "Udgivet under GNU generel offentlig licens.\n"
-"En modem statusindikator og nummersender. Lysene fra øverst eller venstre "
-"er RX og TX"
+"En modem statusindikator og nummersender. Lysene fra øverst eller venstre er "
+"RX og TX"
 
-#: modemlights/modemlights.c:406
+#: modemlights/modemlights.c:403
 msgid ""
 "You are currently connected.\n"
 "Do you want to disconnect?"
@@ -2678,70 +2488,71 @@ msgstr ""
 "Du er nu opkoblet.\n"
 "Vil du koble fra?"
 
-#: modemlights/modemlights.c:417
+#: modemlights/modemlights.c:418
 msgid "Do you want to connect?"
 msgstr "Vil du koble op?"
 
-#: modemlights/modemlights.c:436
+#: modemlights/modemlights.c:440
 msgid "not connected"
 msgstr "ikke tilkoblet"
 
-#: modemlights/properties.c:185
+#: modemlights/properties.c:187
 msgid "Modem Lights Settings"
 msgstr "Indstillinger for Modemlys"
 
-#: modemlights/properties.c:190
+#: modemlights/properties.c:192
 msgid "Connecting"
 msgstr "Forbinder"
 
-#: modemlights/properties.c:204
+#: modemlights/properties.c:206
 msgid "Connect command:"
 msgstr "Opkoblingskommando:"
 
-#: modemlights/properties.c:221
+#: modemlights/properties.c:223
 msgid "Disconnect command:"
 msgstr "Frakoblingskommando:"
 
 #. confirmation checkbox
-#: modemlights/properties.c:234
+#: modemlights/properties.c:236
 msgid "Confirm connection"
 msgstr "Bekræft forbindelse"
 
-#: modemlights/properties.c:241 slashapp/properties.c:422
+#: modemlights/properties.c:243 slashapp/properties.c:422
+#: tickastat/properties.c:549
 msgid "Display"
 msgstr "Vis"
 
-#: modemlights/properties.c:255
+#: modemlights/properties.c:257
 msgid "Updates per second"
 msgstr "Opdateringer i sekundet"
 
 #. extra info checkbox
-#: modemlights/properties.c:268
+#: modemlights/properties.c:270
 msgid "Show connect time and throughput"
 msgstr "Vis forbindelsestid og gennemstrømning"
 
-#: modemlights/properties.c:284
+#: modemlights/properties.c:286
 msgid "Modem options"
 msgstr "Modem indstillinger"
 
-#: modemlights/properties.c:298
+#: modemlights/properties.c:300
 msgid "Modem lock file:"
 msgstr "Modem låsefil:"
 
-#: modemlights/properties.c:310
+#: modemlights/properties.c:312
 msgid "Verify owner of lock file"
 msgstr "Bekræft ejer af låsefil"
 
-#: modemlights/properties.c:322
+#: modemlights/properties.c:324
 msgid "Device:"
 msgstr "Enhed:"
 
 #. ISDN checkbox
-#: modemlights/properties.c:335
+#: modemlights/properties.c:337
 msgid "Use ISDN"
 msgstr "Brug ISDN"
 
-#: modemlights/properties.c:349
+#: modemlights/properties.c:351 sound-monitor/properties.c:504
 msgid "Advanced"
 msgstr "Advanceret"
 
@@ -2761,11 +2572,11 @@ msgstr "Hent graf"
 msgid "Speed:"
 msgstr "Hastighed:"
 
-#: multiload/load-graph.c:180
+#: multiload/load-graph.c:180 tickastat/properties.c:497
 msgid "Width:"
 msgstr "Bredde:"
 
-#: multiload/load-graph.c:180
+#: multiload/load-graph.c:180 tickastat/properties.c:525
 msgid "Height:"
 msgstr "Højde:"
 
@@ -2813,6 +2624,10 @@ msgstr "SLIP"
 msgid "PPP"
 msgstr "PPP"
 
+#: multiload/main.c:39
+msgid "ETH"
+msgstr ""
+
 #: multiload/main.c:181 multiload/memload.c:47
 msgid "Memory Load"
 msgstr "Hukommelses belast."
@@ -2825,57 +2640,59 @@ msgstr "Swap belast."
 msgid "Net Load"
 msgstr "Netbelast."
 
-#: netload/netload.c:261
-msgid "Netload Error"
-msgstr "Fejl i netbelastning"
+#: odometer/odo.c:131
+#, fuzzy
+msgid "Odometer"
+msgstr "Geometri"
 
-#: netload/netload.c:266
-msgid "An error occured in the Netload Applet:"
-msgstr "En fejl opstod i netbelastnings-appleten:"
+#: odometer/odo.c:133
+#, fuzzy
+msgid "(C) 1999 The Free Software Foundation"
+msgstr "(C) 1999 Fri Software Fundation"
 
-#: netload/netload.c:295
-msgid "The GNOME Network Load Applet"
-msgstr "Netværksbelastnings applet"
-
-#: netload/netload.c:298
+#: odometer/odo.c:135
 msgid ""
-"This applet is released under the terms and conditions of the GNU Public "
-"Licence.This applet shows the load on a network device. It requires the "
-"/proc/net/ip_acct interface to be present and set up correctly for the "
-"device."
+"a GNOME applet that tracks and measures the movements of your mouse pointer "
+"across the desktop."
 msgstr ""
-"Denne applet er udgivet under vilkårene og betingelserne givet i GNU Public "
-"Licence. Denne applet viser belastningen på en netværksenhed. Den kræver "
-"at /proc/net/ip_acct grænsesnittet er tilgængeligt og sat korrekt op for "
-"enheden."
 
-#: netload/properties.c:133
-msgid "Network Traffic"
-msgstr "Netværkstrafik"
+#: odometer/odo.c:546
+#, fuzzy
+msgid "Can't create odometer applet!"
+msgstr "Kan ikke oprette GNotes appleten!"
 
-#: netload/properties.c:137
-msgid "Traffic bars"
-msgstr "Trafikstolper"
+#: odometer/odo.c:556
+#, fuzzy
+msgid "Reset"
+msgstr "Vest"
 
-#: netload/properties.c:215
-msgid "Device name (like ppp0 or eth0)"
-msgstr "Enhedsnavn (som ppp0 eller eth0)"
+#: odometer/properties.c:210
+#, fuzzy
+msgid "Odometer setting"
+msgstr "Skrivebordshåndterings indstillinger"
 
-#: netload/properties.c:223
-msgid "Vertical spacing of bars (in kilobytes)"
-msgstr "Vertikal afstand mellem stolper (i kilobytes)"
+#: odometer/properties.c:221
+#, fuzzy
+msgid "Use Metric"
+msgstr "Brug metermål"
 
-#: netload/properties.c:271
-msgid "properties.c: gnome_property_box_new() failed.\n"
-msgstr "properties.c: gnome_property_box_new() fejlede.\n"
+#: odometer/properties.c:227
+msgid "auto_reset"
+msgstr ""
 
-#: netload/properties.c:277
-msgid "Network Load Settings"
-msgstr "Indstillinger for netbelastning"
+#: odometer/properties.c:233 tickastat/mod_news.c:1234
+#, fuzzy
+msgid "enabled"
+msgstr "Opdatering brugt"
 
-#: netload/properties.c:286
-msgid "Device"
-msgstr "Enhed"
+#: odometer/properties.c:239
+msgid "Digits number"
+msgstr ""
+
+#: odometer/properties.c:268
+#, fuzzy
+msgid "Theme file :"
+msgstr "Temafil (katalog):"
 
 #: slashapp/properties.c:199 slashapp/slashapp.c:61
 msgid "Articles"
@@ -2905,27 +2722,27 @@ msgstr ""
 msgid "Open new window"
 msgstr "Åben nyt vindue"
 
-#: slashapp/properties.c:356
+#: slashapp/properties.c:356 tickastat/properties.c:418
 msgid "Scrolling"
 msgstr "Rullende"
 
-#: slashapp/properties.c:365
+#: slashapp/properties.c:365 tickastat/properties.c:427
 msgid "Smooth scroll"
 msgstr ""
 
-#: slashapp/properties.c:371
+#: slashapp/properties.c:371 tickastat/properties.c:433
 msgid "Smooth type"
 msgstr ""
 
-#: slashapp/properties.c:377
+#: slashapp/properties.c:377 tickastat/properties.c:439
 msgid "Speed"
 msgstr "Hastighed"
 
-#: slashapp/properties.c:390
+#: slashapp/properties.c:390 tickastat/properties.c:452
 msgid "Delay when wrapping text:"
 msgstr ""
 
-#: slashapp/properties.c:408
+#: slashapp/properties.c:408 tickastat/properties.c:470
 msgid "Scroll speed between lines (Smooth scroll):"
 msgstr ""
 
@@ -2947,7 +2764,7 @@ msgstr "Opretter brugermappe: %s\n"
 msgid "Unable to create user directory: %s\n"
 msgstr "Kunne ikke oprette brugermappe: %s\n"
 
-#: slashapp/slashapp.c:124
+#: slashapp/slashapp.c:124 tickastat/main.c:166
 #, c-format
 msgid "%d.%d.%d"
 msgstr "%d.%d.%d"
@@ -3000,6 +2817,379 @@ msgstr "Kan ikke forberede forespørgsel.\n"
 msgid "Unable to process request.\n"
 msgstr "Kan ikke behandle forespørgsel.\n"
 
+#: sound-monitor/main.c:38
+#, fuzzy
+msgid "Sound Monitor Applet"
+msgstr "Esound håndteringsapplet"
+
+#: sound-monitor/main.c:39 tickastat/main.c:173
+msgid "(C) 1999 John Ellis"
+msgstr ""
+
+#: sound-monitor/main.c:41
+msgid ""
+"Sound monitor interface to Esound\n"
+"\n"
+"Released under the GNU general public license."
+msgstr ""
+
+#: sound-monitor/main.c:77
+msgid "Place Esound in standby"
+msgstr ""
+
+#: sound-monitor/main.c:82
+msgid "Resume Esound"
+msgstr ""
+
+#: sound-monitor/main.c:87 sound-monitor/main.c:350
+msgid "Start Esound"
+msgstr ""
+
+#: sound-monitor/main.c:343
+msgid "Manager..."
+msgstr ""
+
+#: sound-monitor/manager.c:1261 sound-monitor/manager.c:1349
+msgid "Volume"
+msgstr ""
+
+#: sound-monitor/manager.c:1277 sound-monitor/manager.c:1365
+msgid "Balance"
+msgstr ""
+
+#: sound-monitor/properties.c:133
+msgid ""
+"You have enabled the \"Monitor sound input\" option.\n"
+"\n"
+"If your sound card is not fully 100% FULL DUPLEX (can do input and output "
+"simultaneously),\n"
+"then this may touch bugs in sound drivers/esound that may hang the system.\n"
+"\n"
+"You have been warned!"
+msgstr ""
+
+#: sound-monitor/properties.c:332
+msgid "Peak indicator"
+msgstr ""
+
+#: sound-monitor/properties.c:341
+msgid "off"
+msgstr ""
+
+#: sound-monitor/properties.c:348
+msgid "active"
+msgstr ""
+
+#: sound-monitor/properties.c:355
+msgid "smooth"
+msgstr ""
+
+#: sound-monitor/properties.c:362
+msgid "Peak indicator falloff speed"
+msgstr ""
+
+#: sound-monitor/properties.c:379
+msgid "Scope (scale 1:X, where X = ? )"
+msgstr ""
+
+#: sound-monitor/properties.c:396
+msgid "Connect points in scope"
+msgstr ""
+
+#: sound-monitor/properties.c:402
+msgid "Screen refresh (frames per second)"
+msgstr ""
+
+#: sound-monitor/properties.c:483
+msgid "ESD host to monitor:"
+msgstr ""
+
+#: sound-monitor/properties.c:497
+msgid "Monitor sound input (only use if sound card is FULL DUPLEX)"
+msgstr ""
+
+#: tickastat/main.c:39
+msgid "Tick-a-Stat event log"
+msgstr ""
+
+#: tickastat/main.c:118
+msgid "%Y%m%d-%H-%M-%S"
+msgstr ""
+
+#: tickastat/main.c:120
+msgid "%m-%d-%Y %H:%M:%S"
+msgstr ""
+
+#: tickastat/main.c:172
+msgid "Tick-a-Stat"
+msgstr ""
+
+#: tickastat/main.c:175
+msgid "A ticker to display various information and statistics.\n"
+msgstr ""
+
+#: tickastat/main.c:246
+#, fuzzy, c-format
+msgid "unable to create user directory: %s\n"
+msgstr "Kunne ikke oprette brugermappe: %s\n"
+
+#: tickastat/main.c:286
+msgid "The unique information and status ticker."
+msgstr ""
+
+#: tickastat/main.c:308
+msgid "Event log..."
+msgstr ""
+
+#: tickastat/mod_coredump.c:91
+msgid "Core dump information (Tick-a-Stat)"
+msgstr ""
+
+#: tickastat/mod_coredump.c:234
+msgid "Core dump module (Tick-A-Stat)"
+msgstr ""
+
+#: tickastat/mod_coredump.c:235
+msgid ""
+"The core dump module is\n"
+"processing a core file..."
+msgstr ""
+
+#: tickastat/mod_coredump.c:457
+msgid "Core Dump Module"
+msgstr ""
+
+#: tickastat/mod_coredump.c:464 tickastat/mod_loadavg.c:507
+#: tickastat/mod_news.c:1198 tickastat/mod_tail.c:409 tickastat/mod_test.c:120
+#, fuzzy
+msgid "Enable this module"
+msgstr "Slå opgaveliste værktøjstips til"
+
+#: tickastat/mod_coredump.c:470
+msgid "Show backtrace dialog on new core files"
+msgstr ""
+
+#: tickastat/mod_coredump.c:480
+msgid "Path to monitor:"
+msgstr ""
+
+#: tickastat/mod_coredump.c:597
+msgid ""
+"This module monitors a path for core dumps, if one is\n"
+" found it is time stamped and a backtrace logged (using gdb)."
+msgstr ""
+
+#: tickastat/mod_loadavg.c:108
+msgid "Load Average information (Tick-a-Stat)"
+msgstr ""
+
+#: tickastat/mod_loadavg.c:320
+msgid "The Load average is very high."
+msgstr ""
+
+#: tickastat/mod_loadavg.c:321
+msgid "Load average is at a critical point, help me!"
+msgstr ""
+
+#: tickastat/mod_loadavg.c:500
+msgid "Load Average Module"
+msgstr ""
+
+#: tickastat/mod_loadavg.c:517
+msgid "Check every:"
+msgstr ""
+
+#: tickastat/mod_loadavg.c:529
+msgid "Seconds"
+msgstr ""
+
+#. Warning dialog
+#: tickastat/mod_loadavg.c:535
+msgid "Warning options"
+msgstr ""
+
+#: tickastat/mod_loadavg.c:544 tickastat/mod_loadavg.c:589
+msgid "Show pop-up dialog for this event"
+msgstr ""
+
+#: tickastat/mod_loadavg.c:554 tickastat/mod_loadavg.c:599
+msgid "Load average threshhold:"
+msgstr ""
+
+#: tickastat/mod_loadavg.c:566 tickastat/mod_loadavg.c:611
+msgid "Text to display:"
+msgstr ""
+
+#. Danger dialog
+#: tickastat/mod_loadavg.c:580
+#, fuzzy
+msgid "Alert options"
+msgstr "Modem indstillinger"
+
+#: tickastat/mod_loadavg.c:757
+msgid ""
+"This module monitors the system load average,\n"
+" and displays warning when it rises above certain points."
+msgstr ""
+
+#: tickastat/mod_news.c:540
+msgid "script \""
+msgstr ""
+
+#: tickastat/mod_news.c:541
+msgid "Tick-a-Stat script encountered an error:\n"
+msgstr ""
+
+#: tickastat/mod_news.c:1186
+msgid "Enabled"
+msgstr ""
+
+#: tickastat/mod_news.c:1186
+msgid "Name"
+msgstr ""
+
+#: tickastat/mod_news.c:1186
+msgid "Line delay"
+msgstr ""
+
+#: tickastat/mod_news.c:1186
+#, fuzzy
+msgid "Update interval"
+msgstr "Opdatering brugt"
+
+#: tickastat/mod_news.c:1187
+msgid "D"
+msgstr ""
+
+#: tickastat/mod_news.c:1187
+msgid "T"
+msgstr ""
+
+#: tickastat/mod_news.c:1187
+msgid "I"
+msgstr ""
+
+#: tickastat/mod_news.c:1187
+msgid "B"
+msgstr ""
+
+#: tickastat/mod_news.c:1191
+msgid "News and Information Module"
+msgstr ""
+
+#: tickastat/mod_news.c:1245
+msgid "Line (s):"
+msgstr ""
+
+#: tickastat/mod_news.c:1259
+#, fuzzy
+msgid "Update (m):"
+msgstr "Updatering:"
+
+#: tickastat/mod_news.c:1277
+msgid "body"
+msgstr ""
+
+#: tickastat/mod_news.c:1282
+#, fuzzy
+msgid "image"
+msgstr "Skærmoversigt"
+
+#: tickastat/mod_news.c:1287
+msgid "topic"
+msgstr ""
+
+#: tickastat/mod_news.c:1292
+#, fuzzy
+msgid "date"
+msgstr "Updater"
+
+#: tickastat/mod_news.c:1297
+#, fuzzy
+msgid "Show:"
+msgstr "Regnbyger"
+
+#: tickastat/mod_news.c:1468
+msgid "This module can display news and other information."
+msgstr ""
+
+#: tickastat/mod_tail.c:77
+msgid "File tail view file (Tick-a-Stat)"
+msgstr ""
+
+#: tickastat/mod_tail.c:87
+msgid "no file specified"
+msgstr ""
+
+#: tickastat/mod_tail.c:130
+msgid "File tail information (Tick-a-Stat)"
+msgstr ""
+
+#: tickastat/mod_tail.c:139
+msgid "File tail for "
+msgstr ""
+
+#: tickastat/mod_tail.c:402
+msgid "File Tail Module"
+msgstr ""
+
+#: tickastat/mod_tail.c:419
+msgid "Path to tail:"
+msgstr ""
+
+#: tickastat/mod_tail.c:424
+msgid "Choose a file to tail"
+msgstr ""
+
+#: tickastat/mod_tail.c:433
+msgid "Show pop up dialog for new lines."
+msgstr ""
+
+#: tickastat/mod_tail.c:539
+msgid ""
+"This module monitors a file for appended text,\n"
+" and prints it. Useful for log files."
+msgstr ""
+
+#: tickastat/mod_test.c:113
+#, fuzzy
+msgid "Test Module"
+msgstr "Appletmode:"
+
+#: tickastat/mod_test.c:192
+msgid "This is the test module's description line."
+msgstr ""
+
+#. left pane will be filled in select cb
+#: tickastat/properties.c:365
+msgid "Modules"
+msgstr ""
+
+#: tickastat/properties.c:374
+msgid "Event Log"
+msgstr ""
+
+#: tickastat/properties.c:383
+msgid "Enable logging of events"
+msgstr ""
+
+#: tickastat/properties.c:393
+msgid "Log path:"
+msgstr ""
+
+#: tickastat/properties.c:398
+#, fuzzy
+msgid "Choose a log file"
+msgstr "Modem låsefil:"
+
+#: tickastat/properties.c:512
+msgid "Use all room on panel"
+msgstr ""
+
+#: tickastat/properties.c:540
+msgid "Use panel size hint"
+msgstr ""
+
 #: webcontrol/webcontrol.c:56
 msgid "The Web Browser Controller"
 msgstr "Kontrol af WWW-browser"
@@ -3016,6 +3206,10 @@ msgstr ""
 #: webcontrol/webcontrol.c:118
 msgid "Url:"
 msgstr "Adresse:"
+
+#: webcontrol/webcontrol.c:121
+msgid "Clear"
+msgstr "Ryd"
 
 #: webcontrol/webcontrol.c:137
 msgid "Launch new window"
@@ -3036,3 +3230,247 @@ msgstr "Vis \"Åben nyt vindue\" muligheden"
 #: webcontrol/webcontrol.c:232
 msgid "Look"
 msgstr "Se"
+
+#: whereami/whereami.c:36
+msgid "Where Am I?"
+msgstr ""
+
+#: whereami/whereami.c:37
+#, fuzzy
+msgid "Copyright 1999 John Kodis"
+msgstr "Ophavsret (C) 1998"
+
+#: whereami/whereami.c:38
+msgid ""
+"A cursor position reporting applet.\n"
+"= Clicking mouse button 1 grabs the cursor.\n"
+"= Dragging with mouse button 1 held down shows the size of the region."
+msgstr ""
+
+#: whereami/whereami.c:124
+msgid "whereami_applet"
+msgstr ""
+
+#~ msgid "I'm sorry, Dave, I can't let you do that."
+#~ msgstr "I'm sorry, Dave, I can't let you do that."
+
+#~ msgid "Dave, what are you doing?"
+#~ msgstr "Dave, what are you doing?"
+
+#~ msgid "I can feel my mind going, Dave...I can feel it."
+#~ msgstr "I can feel my mind going, Dave...I can feel it."
+
+#~ msgid "Daisy, daisy..."
+#~ msgstr "Daisy, daisy..."
+
+#~ msgid "(with minor help from George Lebl and his amazing fish applet)"
+#~ msgstr "(med en smule hjælp fra George Lebl og hans utrolige fisk applet)"
+
+#~ msgid "The GNOME HAL"
+#~ msgstr "GNOME HAL9000"
+
+#~ msgid ""
+#~ "I am a HAL 9000 computer, Production Number 3. I became operational at the "
+#~ "Hal Plant in Urbana, Illinois, on January 12, 1997."
+#~ msgstr ""
+#~ "I am a HAL 9000 computer, Production Number 3. I became operational at the "
+#~ "Hal Plant in Urbana, Illinois, on January 12, 1997."
+
+#~ msgid "Copyright (C)1998 Red Hat Software"
+#~ msgstr "Ophavsret (C) 1998 Red Hat Software"
+
+#~ msgid "This does nothing useful"
+#~ msgstr "Den gør ingenting"
+
+#~ msgid "Fvwm Pager Applet"
+#~ msgstr "Applet for valg af virtuelt skærmområde"
+
+#~ msgid "Copyright (C) 1998 M. Lausch"
+#~ msgstr "Opretshav tilhørende 1998, M.Watson"
+
+#~ msgid "Desk %d"
+#~ msgstr "Skrivebord %d"
+
+#~ msgid "Active Window Color"
+#~ msgstr "Aktiv vinduesfarve"
+
+#~ msgid "Inactive Window Color"
+#~ msgstr "Inaktiv vinduesfarve"
+
+#~ msgid "Active Desktop Color"
+#~ msgstr "Aktiv skrivebordsfarve"
+
+#~ msgid "Inactive Desktop Color"
+#~ msgstr "Inaktiv skrivebordsfarve"
+
+#~ msgid "Fvwm Pager Settings"
+#~ msgstr "Indstillinger for diskbrug"
+
+#~ msgid "Desktop Pager Applet"
+#~ msgstr "Skrivebordshåndterings applet"
+
+#~ msgid "Copyright (C)1998,1999 Red Hat Software, Free Software Foundation"
+#~ msgstr ""
+#~ "Opretshav tilhørende Red Hat Software, Free Software Foundation, 1998,1999 "
+
+#~ msgid "Pager for a GNOME compliant Window Manager"
+#~ msgstr "Skrivebordshåndtering for en GNOME-kompatibel vindueshåndterer"
+
+#~ msgid "Show pager"
+#~ msgstr "Vis skærmoversigt"
+
+#~ msgid "Place pagers after tasklist"
+#~ msgstr "Placer skærmoversigter efter opgaveliste"
+
+#~ msgid "Use small pagers"
+#~ msgstr "Brug små oversigter"
+
+#~ msgid "Enable pager tooltips"
+#~ msgstr "Slå værktøjstips til"
+
+#~ msgid "Rows of pagers"
+#~ msgstr "Antal oversigtsrækker"
+
+#~ msgid "Width of small pagers"
+#~ msgstr "Bredde på små oversigter"
+
+#~ msgid "Height of small pagers"
+#~ msgstr "Højde på små oversigter"
+
+#~ msgid "Width of large pagers"
+#~ msgstr "Bredde på store oversigter"
+
+#~ msgid "Height of large pagers"
+#~ msgstr "Bredde på store oversigter"
+
+#~ msgid "Tasklist"
+#~ msgstr "Opgaveliste"
+
+#~ msgid "Show task list button"
+#~ msgstr "Vis opgaveliste knapper"
+
+#~ msgid "Show task list"
+#~ msgstr "Vis opgaveliste"
+
+#~ msgid "Show button icons"
+#~ msgstr "Vis knappeikoner"
+
+#~ msgid "Which tasks to show"
+#~ msgstr "Hvilke opgaver skal vises"
+
+#~ msgid "Show all tasks"
+#~ msgstr "Vis alle opgaver"
+
+#~ msgid "Show normal tasks only"
+#~ msgstr "Vis kun normale opgaver"
+
+#~ msgid "Show minimized tasks only"
+#~ msgstr "Vis kun minimerede opgaver"
+
+#~ msgid "Show all tasks on all desktops"
+#~ msgstr "Vis alle opgaver på alle skriveborde"
+
+#~ msgid "Show minimized tasks on all desktops"
+#~ msgstr "Vis alle minimerede opgaver på alle skriveborde "
+
+#~ msgid "Tasklist always maximum size"
+#~ msgstr "Opgaveliste har altid maks. størrelse"
+
+#~ msgid "Maximum width of horizontal task list"
+#~ msgstr "Max vidde af horisontale opgaveliste"
+
+#~ msgid "Maximum width of vertical task list"
+#~ msgstr "Max vidde af horisontale opgaveliste"
+
+#~ msgid "Number of rows of horizontal tasks"
+#~ msgstr "Antal horisontale rækker af opgaver"
+
+#~ msgid "Number of vertical columns of tasks"
+#~ msgstr "Antal vertikale kolonner af opgaver"
+
+#~ msgid "Sticky"
+#~ msgstr "Klistret"
+
+#~ msgid "Show / Hide"
+#~ msgstr "Vis / Gem"
+
+#~ msgid "Shade / Unshade"
+#~ msgstr "Rul op / Rul ned"
+
+#~ msgid "Stick / Unstick"
+#~ msgstr "Klister / Klister ikke"
+
+#~ msgid "Close"
+#~ msgstr "Luk"
+
+#~ msgid "Nuke"
+#~ msgstr "Dræb"
+
+#~ msgid "Gnome Pager Error"
+#~ msgstr "Skrivebordshåndterings fejl"
+
+#~ msgid ""
+#~ "You are not running a GNOME Compliant Window Manager.\n"
+#~ "Please run a GNOME Compliant Window Manager.\n"
+#~ "For Example:\n"
+#~ "Enlightenment (DR-0.15)\n"
+#~ "Then start this applet again.\n"
+#~ msgstr ""
+#~ "Vindueshåndtereren du bruger er ikke GNOME kompatibel\n"
+#~ "Kør venligst en GNOME-kompatibel vindueshåndterer.\n"
+#~ "For eksempel:\n"
+#~ "Enlightenment (DR-0.15)\n"
+#~ "Start derefter denne applet igen\n"
+
+#~ msgid "?"
+#~ msgstr "?"
+
+#~ msgid "GNotes Settings"
+#~ msgstr "GNotes indstillinger"
+
+#~ msgid "Default Height"
+#~ msgstr "standard højde"
+
+#~ msgid "Default Width"
+#~ msgstr "Standard bredde"
+
+#~ msgid "Netload Error"
+#~ msgstr "Fejl i netbelastning"
+
+#~ msgid "An error occured in the Netload Applet:"
+#~ msgstr "En fejl opstod i netbelastnings-appleten:"
+
+#~ msgid "The GNOME Network Load Applet"
+#~ msgstr "Netværksbelastnings applet"
+
+#~ msgid ""
+#~ "This applet is released under the terms and conditions of the GNU Public "
+#~ "Licence.This applet shows the load on a network device. It requires the "
+#~ "/proc/net/ip_acct interface to be present and set up correctly for the "
+#~ "device."
+#~ msgstr ""
+#~ "Denne applet er udgivet under vilkårene og betingelserne givet i GNU Public "
+#~ "Licence. Denne applet viser belastningen på en netværksenhed. Den kræver at "
+#~ "/proc/net/ip_acct grænsesnittet er tilgængeligt og sat korrekt op for "
+#~ "enheden."
+
+#~ msgid "Network Traffic"
+#~ msgstr "Netværkstrafik"
+
+#~ msgid "Traffic bars"
+#~ msgstr "Trafikstolper"
+
+#~ msgid "Device name (like ppp0 or eth0)"
+#~ msgstr "Enhedsnavn (som ppp0 eller eth0)"
+
+#~ msgid "Vertical spacing of bars (in kilobytes)"
+#~ msgstr "Vertikal afstand mellem stolper (i kilobytes)"
+
+#~ msgid "properties.c: gnome_property_box_new() failed.\n"
+#~ msgstr "properties.c: gnome_property_box_new() fejlede.\n"
+
+#~ msgid "Network Load Settings"
+#~ msgstr "Indstillinger for netbelastning"
+
+#~ msgid "Device"
+#~ msgstr "Enhed"
