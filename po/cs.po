@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-12-07 11:42+0100\n"
-"PO-Revision-Date: 2004-12-07 18:07+0100\n"
+"POT-Creation-Date: 2005-01-02 11:39+0100\n"
+"PO-Revision-Date: 2005-01-02 14:57+0100\n"
 "Last-Translator: Miloslav Trmac <mitr@volny.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -75,8 +75,8 @@ msgstr "Zobrazí stav vlastností zpřístupnění klávesnice"
 
 #: accessx-status/applet.c:136 battstat/battstat_applet.c:1070
 #: cdplayer/cdplayer.c:596 charpick/charpick.c:607
-#: cpufreq/src/cpufreq-applet.c:146 drivemount/drivemount.c:132
-#: geyes/geyes.c:201 gswitchit/gswitchit-applet.c:574 gtik/gtik.c:722
+#: cpufreq/src/cpufreq-applet.c:231 drivemount/drivemount.c:132
+#: geyes/geyes.c:201 gswitchit/gswitchit-applet.c:572 gtik/gtik.c:722
 #: gweather/gweather-about.c:48 mini-commander/src/about.c:48
 #: modemlights/modemlights.c:116 multiload/main.c:56
 #: stickynotes/stickynotes_applet_callbacks.c:282
@@ -156,8 +156,8 @@ msgstr "Sledovat zbývající napájení notebooku"
 
 #: battstat/GNOME_BattstatApplet.xml.h:3 cdplayer/GNOME_CDPlayerApplet.xml.h:4
 #: charpick/GNOME_CharpickerApplet.xml.h:3 cpufreq/GNOME_CPUFreqApplet.xml.h:3
-#: geyes/GNOME_GeyesApplet.xml.h:3 gswitchit/GNOME_GSwitchItApplet.xml.h:6
-#: gtik/GNOME_GtikApplet.xml.h:3 gweather/GNOME_GWeatherApplet.xml.h:4
+#: geyes/GNOME_GeyesApplet.xml.h:3 gtik/GNOME_GtikApplet.xml.h:3
+#: gweather/GNOME_GWeatherApplet.xml.h:4
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
 #: mixer/GNOME_MixerApplet.xml.h:5 modemlights/GNOME_ModemlightsApplet.xml.h:3
 #: multiload/GNOME_MultiloadApplet.xml.h:4
@@ -788,7 +788,7 @@ msgid "Character Palette Preferences"
 msgstr "Nastavení Palety znaků"
 
 #: cpufreq/GNOME_CPUFreqApplet.server.in.in.h:1
-#: cpufreq/src/cpufreq-applet.c:162 cpufreq/src/cpufreq-applet.c:743
+#: cpufreq/src/cpufreq-applet.c:224 cpufreq/src/cpufreq-applet.c:786
 msgid "CPU Frequency Scaling Monitor"
 msgstr "Sledování změny frekvence CPU"
 
@@ -869,31 +869,47 @@ msgstr "_Sledovaná CPU:"
 msgid "_Show in mode:"
 msgstr "Zobrazovat v _režimu:"
 
-#: cpufreq/src/cpufreq-applet.c:125 cpufreq/src/cpufreq-prefs.c:219
+#: cpufreq/src/cpufreq-applet.c:184 cpufreq/src/cpufreq-prefs.c:246
 msgid "Could not open help document"
 msgstr "Nemohu otevřít dokument nápovědy"
 
-#: cpufreq/src/cpufreq-applet.c:138
-msgid "Graphic Arts:"
-msgstr "Grafika:"
-
-#: cpufreq/src/cpufreq-applet.c:164
+#: cpufreq/src/cpufreq-applet.c:226
 msgid "Copyright (C) 2004 Free Software Foundation. Inc."
 msgstr "Copyright © 2004 Free Software Foundation. Inc."
 
-#: cpufreq/src/cpufreq-applet.c:165
+#: cpufreq/src/cpufreq-applet.c:227
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr "Tento nástroj zobrazuje aktuální frekvenci CPU."
 
+#: cpufreq/src/cpufreq-applet.c:787
+msgid "This utility shows the current CPU Frequency"
+msgstr "Tento nástroj zobrazuje aktuální frekvenci CPU"
+
+#: cpufreq/src/cpufreq-prefs.c:310
+msgid "Graphic"
+msgstr "Grafika"
+
+#: cpufreq/src/cpufreq-prefs.c:315 modemlights/properties.c:609
+msgid "Text"
+msgstr "Text"
+
+#: cpufreq/src/cpufreq-prefs.c:320
+msgid "Graphic and Text"
+msgstr "Grafika a text"
+
+#: cpufreq/src/cpufreq-monitor-cpuinfo.c:182
+msgid "Frequency Scaling Unsupported"
+msgstr "Změna frekvence nepodporována"
+
 #. If there is no cpufreq support it shows only the cpu frequency,
-#. * I thi	nk is better than do nothing. I have to notify it to the user, because
-#. * he could think	 that cpufreq is supported but it doesn't work succesfully
+#. * I thi nk is better than do nothing. I have to notify it to the user, because
+#. * he could think   that cpufreq is supported but it doesn't work succesfully
 #.
-#: cpufreq/src/cpufreq-applet.c:601
+#: cpufreq/src/cpufreq-monitor-factory.c:44
 msgid "CPU frequency scaling unsupported"
 msgstr "Změny frekvence CPU nepodporována"
 
-#: cpufreq/src/cpufreq-applet.c:602
+#: cpufreq/src/cpufreq-monitor-factory.c:45
 msgid ""
 "You will not be able to modify the frequency of your machine.  Your machine "
 "may be misconfigured or not have hardware support for CPU frequency scaling."
@@ -901,40 +917,11 @@ msgstr ""
 "Nebudete moci změnit frekvenci vašeho počítače. Váš počítač je možná špatně "
 "nastaven nebo nemá podporu hardware pro změnu frekvence CPU."
 
-#: cpufreq/src/cpufreq-applet.c:607
-#, c-format
-msgid ""
-"CPU %d - Frequency Scaling Unsupported\n"
-"%s %s (%s)"
-msgstr ""
-"CPU %d - Změna frekvence nepodporována\n"
-"%s %s (%s)"
-
-#: cpufreq/src/cpufreq-applet.c:613
-msgid "Frequency Scaling Unsupported"
-msgstr "Změna frekvence nepodporována"
-
-#: cpufreq/src/cpufreq-applet.c:744
-msgid "This utility shows the current CPU Frequency"
-msgstr "Tento nástroj zobrazuje aktuální frekvenci CPU"
-
-#: cpufreq/src/cpufreq-prefs.c:280
-msgid "Graphic"
-msgstr "Grafika"
-
-#: cpufreq/src/cpufreq-prefs.c:285 modemlights/properties.c:609
-msgid "Text"
-msgstr "Text"
-
-#: cpufreq/src/cpufreq-prefs.c:290
-msgid "Graphic and Text"
-msgstr "Grafika a text"
-
-#: cpufreq/src/cpufreq.c:231 gweather/weather.c:301 gweather/weather.c:2430
-#: gweather/weather.c:2444 gweather/weather.c:2456 gweather/weather.c:2471
-#: gweather/weather.c:2487 gweather/weather.c:2518 gweather/weather.c:2530
-#: gweather/weather.c:2549 gweather/weather.c:2577 gweather/weather.c:2590
-#: gweather/weather.c:2610
+#: cpufreq/src/cpufreq-monitor-procfs.c:249 cpufreq/src/cpufreq-popup.c:215
+#: gweather/weather.c:277 gweather/weather.c:1081 gweather/weather.c:1095
+#: gweather/weather.c:1107 gweather/weather.c:1122 gweather/weather.c:1138
+#: gweather/weather.c:1169 gweather/weather.c:1181 gweather/weather.c:1200
+#: gweather/weather.c:1228 gweather/weather.c:1241 gweather/weather.c:1261
 msgid "Unknown"
 msgstr "Neznámý"
 
@@ -1726,7 +1713,7 @@ msgid "GNOME keyboard layout indicator"
 msgstr "GNOME indikátor rozložení klávesnice"
 
 #: gswitchit/GNOME_KeyboardApplet.server.in.in.h:3
-#: gswitchit/gswitchit-applet.c:579
+#: gswitchit/gswitchit-applet.c:577
 msgid "Keyboard Indicator"
 msgstr "Indikátor klávesnice"
 
@@ -1734,16 +1721,16 @@ msgstr "Indikátor klávesnice"
 msgid "Keyboard applet factory"
 msgstr "Generátor apletu klávesnice"
 
-#: gswitchit/gswitchit-applet.c:106
+#: gswitchit/gswitchit-applet.c:101
 #, c-format
 msgid "Keyboard Indicator (%s)"
 msgstr "Indikátor klávesnice (%s)"
 
-#: gswitchit/gswitchit-applet.c:582
+#: gswitchit/gswitchit-applet.c:580
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "Copyright © Sergey V. Udaltsov 1999-2004"
 
-#: gswitchit/gswitchit-applet.c:584
+#: gswitchit/gswitchit-applet.c:582
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "Aplet indikátoru rozložení klávesnice pro GNOME"
 
@@ -1755,27 +1742,11 @@ msgstr "Chyba inicializace XKB"
 msgid "Error loading XKB configuration registry"
 msgstr "Chyba při načítání registru nastavení XKB"
 
-#: gswitchit/gswitchit-capplet.c:185
-msgid ""
-"Make the layout accessible from the applet popup menu ONLY.\n"
-"No way to switch to this layout using the keyboard."
-msgstr ""
-"Zpřístupnit rozložení JEN z vyskakovacího menu apletu.\n"
-"Na toto rozložení se nedá přepnout pomocí klávesnice."
-
-#: gswitchit/gswitchit-capplet.c:262
-msgid "_Exclude from keyboard switching"
-msgstr "_Vyjmout z přepínání klávesnicí"
-
-#: gswitchit/gswitchit-capplet.c:293
-msgid "Not used"
-msgstr "Nepoužívá se"
-
 #: gswitchit/gswitchit-plugins-add.c:105 gswitchit/gswitchit-plugins.c:117
 msgid "No description."
 msgstr "Žádný popis."
 
-#: gswitchit/gswitchit-plugins.c:331
+#: gswitchit/gswitchit-plugins.c:328
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "Nemohu inicializovat GConf: %s\n"
@@ -1865,48 +1836,20 @@ msgid "_Default group:"
 msgstr "_Implicitní skupina:"
 
 #: gswitchit/gswitchit.schemas.in.h:1
-msgid "Beep on group switch"
-msgstr "Pípnout při přepnutí skupiny"
-
-#: gswitchit/gswitchit.schemas.in.h:2
-msgid "Debug level"
-msgstr "Úroveň ladění"
-
-#: gswitchit/gswitchit.schemas.in.h:3
-msgid "Default group, assigned on window creation"
-msgstr "Implicitní skupina přiřazená při vytvoření okna"
-
-#: gswitchit/gswitchit.schemas.in.h:4
-msgid "Keep and manage separate group per window"
-msgstr "Udržovat a spravovat oddělenou skupinu pro každé okno"
-
-#: gswitchit/gswitchit.schemas.in.h:5
-msgid "Save/restore indicators together with layout groups"
-msgstr "Ukládat/obnovovat indikátory se skupinami rozložení"
-
-#: gswitchit/gswitchit.schemas.in.h:6
 msgid "Secondary groups"
 msgstr "Sekundární skupiny"
 
-#: gswitchit/gswitchit.schemas.in.h:7
+#: gswitchit/gswitchit.schemas.in.h:2
 msgid "Show flags in the applet"
 msgstr "Zobrazovat v apletu vlajky"
 
-#: gswitchit/gswitchit.schemas.in.h:8
+#: gswitchit/gswitchit.schemas.in.h:3
 msgid "Show flags in the applet to indicate the current layout"
 msgstr "Zobrazovat v apletu vlajky pro indikaci aktuálního rozložení"
 
-#: gswitchit/gswitchit.schemas.in.h:9
-msgid "Show layout names instead of group names"
-msgstr "Zobrazovat názvy rozložení místo názvů skupin"
-
-#: gswitchit/gswitchit.schemas.in.h:10
-msgid ""
-"Show layout names instead of group names (only for versions of XFree "
-"supporting multiple layouts)"
-msgstr ""
-"Zobrazovat názvy rozložení místo názvů skupin (jen pro verze XFree, které "
-"podporují více rozložení)"
+#: gswitchit/gswitchit.schemas.in.h:4
+msgid "The list of enabled Keyboard Indicator plugins"
+msgstr "Seznam povolených modulů indikátoru klávesnice"
 
 #: gtik/GNOME_GtikApplet.server.in.in.h:1
 msgid "Get continuously updated stock quotes"
@@ -1978,7 +1921,7 @@ msgstr "Symboly"
 msgid "Behavior"
 msgstr "Chování"
 
-#: gtik/gtik.c:1424 gweather/gweather-pref.c:998
+#: gtik/gtik.c:1424 gweather/gweather-pref.c:1007
 msgid "Update"
 msgstr "Aktualizace"
 
@@ -1986,7 +1929,7 @@ msgstr "Aktualizace"
 msgid "Stock update fre_quency:"
 msgstr "_Frekvence aktualizace:"
 
-#: gtik/gtik.c:1440 gweather/gweather-pref.c:1022
+#: gtik/gtik.c:1440 gweather/gweather-pref.c:1031
 msgid "minutes"
 msgstr "minut"
 
@@ -2022,7 +1965,7 @@ msgstr "Posunovat z_leva doprava"
 msgid "Appearance"
 msgstr "Vzhled"
 
-#: gtik/gtik.c:1511 gweather/gweather-pref.c:1038 modemlights/properties.c:444
+#: gtik/gtik.c:1511 gweather/gweather-pref.c:1047 modemlights/properties.c:444
 msgid "Display"
 msgstr "Zobrazení"
 
@@ -2217,7 +2160,7 @@ msgstr "Čas v milisekundách pro aktualizaci zobrazení"
 msgid "Unchanged color"
 msgstr "Barva nezměněného"
 
-#: gtik/gtik.schemas.in.h:23 gweather/gweather.schemas.in.h:20
+#: gtik/gtik.schemas.in.h:23 gweather/gweather.schemas.in.h:21
 #: modemlights/modemlights.schemas.in.h:31
 msgid "Update interval"
 msgstr "Interval aktualizace"
@@ -2365,7 +2308,7 @@ msgstr "Navštívit weather.com"
 msgid "Click to Enter Weather.com"
 msgstr "Vstupte do weather.com kliknutím"
 
-#: gweather/gweather-dialog.c:588
+#: gweather/gweather-dialog.c:589
 msgid "Forecast not currently available for this location."
 msgstr "Pro toto umístění momentálně není předpověď k dispozici."
 
@@ -2425,13 +2368,13 @@ msgstr "km"
 msgid "Weather Preferences"
 msgstr "Nastavení Počasí"
 
-#: gweather/gweather-pref.c:834 gweather/gweather-pref.c:1002
+#: gweather/gweather-pref.c:834 gweather/gweather-pref.c:1011
 msgid "_Automatically update every:"
 msgstr "Automaticky aktualizovat _každých:"
 
 #. Temperature Unit
 #: gweather/gweather-pref.c:843
-msgid "_Temperature Unit:"
+msgid "_Temperature unit:"
 msgstr "Jednotka _teploty:"
 
 #: gweather/gweather-pref.c:852 gweather/gweather-pref.c:872
@@ -2454,7 +2397,7 @@ msgstr "Stupeň Fahrenheita"
 
 #. Speed Unit
 #: gweather/gweather-pref.c:863
-msgid "_Wind Speed Unit:"
+msgid "_Wind speed unit:"
 msgstr "Jednotka _rychlosti větru:"
 
 #. TRANSLATOR: The wind speed unit "meters per second"
@@ -2479,7 +2422,7 @@ msgstr "uzly"
 
 #. Pressure Unit
 #: gweather/gweather-pref.c:887
-msgid "_Pressure Unit:"
+msgid "_Pressure unit:"
 msgstr "Jednotka _tlaku:"
 
 #. TRANSLATOR: The pressure unit "kiloPascals"
@@ -2509,7 +2452,7 @@ msgstr "inHg"
 
 #. Distance Unit
 #: gweather/gweather-pref.c:913
-msgid "_Visibility Unit:"
+msgid "_Visibility unit:"
 msgstr "Jednotka _viditelnosti:"
 
 #. TRANSLATOR: The distance unit "meters"
@@ -2527,46 +2470,62 @@ msgstr "km"
 msgid "miles"
 msgstr "míle"
 
-#: gweather/gweather-pref.c:953
+#: gweather/gweather-pref.c:962
 msgid "Enable _radar map"
 msgstr "Povolit mapu _radaru"
 
-#: gweather/gweather-pref.c:967
+#: gweather/gweather-pref.c:976
 msgid "Use _custom address for radar map"
 msgstr "Používat _vlastní adresu pro mapu radaru"
 
-#: gweather/gweather-pref.c:984
+#: gweather/gweather-pref.c:993
 msgid "A_ddress:"
 msgstr "_Adresa:"
 
-#: gweather/gweather-pref.c:1053 mini-commander/src/mini-commander.glade.h:12
+#: gweather/gweather-pref.c:1062 mini-commander/src/mini-commander.glade.h:12
 #: modemlights/properties.c:563
 msgid "General"
 msgstr "Obecné"
 
-#: gweather/gweather-pref.c:1066
+#: gweather/gweather-pref.c:1075
 msgid "_Select a location:"
 msgstr "Vyberte _umístění:"
 
-#: gweather/gweather-pref.c:1096
+#: gweather/gweather-pref.c:1105
 msgid "Location"
 msgstr "Umístění"
+
+#: gweather/weather-iwin.c:242 gweather/weather-metar.c:528
+#: gweather/weather-metar.c:556
+msgid "WeatherInfo missing location"
+msgstr "Chybí umístění WeatherInfo"
+
+#: gweather/weather-metar.c:494 gweather/weather-metar.c:536
+#: gweather/weather-wx.c:51
+msgid "Failed to get METAR data.\n"
+msgstr "Nemohu získat data METAR.\n"
 
 #. TRANSLATOR: Change this to the default location code (2nd parameter) in the
 #. gweather/Locations file
 #. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
 #. so this should be translated as "KJFK"
-#: gweather/gweather.schemas.in.h:1 gweather/weather.c:191
-#: gweather/weather.c:196
+#: gweather/gweather.schemas.in.h:1 gweather/weather.c:167
+#: gweather/weather.c:172
 msgid "DEFAULT_CODE"
 msgstr "LKPR"
+
+# Hradčanské náměstí v Praze,
+# per http://astro.mff.cuni.cz/mira/sh/sh.php?rec=54326
+#: gweather/gweather.schemas.in.h:2
+msgid "DEFAULT_COORDINATES"
+msgstr "50-05-20N 14-23-48E"
 
 #. TRANSLATOR: Change this to the default location name (1st parameter) in the
 #. gweather/Locations file
 #. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
 #. so this should be translated as "New York-JFK Arpt"
-#: gweather/gweather.schemas.in.h:2 gweather/weather.c:170
-#: gweather/weather.c:175 gweather/weather.c:176
+#: gweather/gweather.schemas.in.h:3 gweather/weather.c:146
+#: gweather/weather.c:151 gweather/weather.c:152
 msgid "DEFAULT_LOCATION"
 msgstr "Praha"
 
@@ -2574,8 +2533,8 @@ msgstr "Praha"
 #. gweather/Locations file
 #. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
 #. so this should be translated as "nyc"
-#: gweather/gweather.schemas.in.h:3 gweather/weather.c:223
-#: gweather/weather.c:228
+#: gweather/gweather.schemas.in.h:4 gweather/weather.c:199
+#: gweather/weather.c:204
 msgid "DEFAULT_RADAR"
 msgstr "---"
 
@@ -2583,194 +2542,204 @@ msgstr "---"
 #. gweather/Locations file
 #. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
 #. so this should be translated as "NYZ076"
-#: gweather/gweather.schemas.in.h:4 gweather/weather.c:207
-#: gweather/weather.c:212
+#: gweather/gweather.schemas.in.h:5 gweather/weather.c:183
+#: gweather/weather.c:188
 msgid "DEFAULT_ZONE"
 msgstr "------"
 
-#: gweather/gweather.schemas.in.h:5
+#: gweather/gweather.schemas.in.h:6
 msgid ""
 "Determines whether the applet automatically updates its weather statistics "
 "or not."
 msgstr "Určuje, jestli aplet automaticky aktualizuje své statistiky počasí."
 
-#: gweather/gweather.schemas.in.h:6
+#: gweather/gweather.schemas.in.h:7
 msgid "Display radar map"
 msgstr "Zobrazovat mapu radaru"
 
-#: gweather/gweather.schemas.in.h:7
+#: gweather/gweather.schemas.in.h:8
 msgid "Distance units"
 msgstr "Jednotky vzdálenosti"
 
-#: gweather/gweather.schemas.in.h:8
+#: gweather/gweather.schemas.in.h:9
 msgid "Fetch a radar map on each update."
 msgstr "Stáhnout při každé aktualizaci mapu radaru."
 
-#: gweather/gweather.schemas.in.h:9
+#: gweather/gweather.schemas.in.h:10
 msgid ""
 "If true, then retrieve a radar map from a location specified by the \"radar"
 "\" key."
 msgstr ""
 "Je-li true, získávat mapu radaru z umístění určeného v klíči \"radar\"."
 
-#: gweather/gweather.schemas.in.h:10
+#: gweather/gweather.schemas.in.h:11
 #: mini-commander/src/mini-commander.schemas.in.h:12
 msgid "Not used anymore"
 msgstr "Již se nepoužívá"
 
-#: gweather/gweather.schemas.in.h:11
+#: gweather/gweather.schemas.in.h:12
 msgid "Pressure units"
 msgstr "Jednotky tlaku"
 
-#: gweather/gweather.schemas.in.h:12
+#: gweather/gweather.schemas.in.h:13
 msgid "Speed units"
 msgstr "Jednotky rychlosti"
 
-#: gweather/gweather.schemas.in.h:13
+#: gweather/gweather.schemas.in.h:14
 msgid "Temperature units"
 msgstr "Jednotky teploty"
 
-#: gweather/gweather.schemas.in.h:14
+#: gweather/gweather.schemas.in.h:15
 msgid "The custom url from where to retrieve a radar map."
 msgstr "Používat vlastní url pro mapu radaru."
 
-#: gweather/gweather.schemas.in.h:15
+#: gweather/gweather.schemas.in.h:16
 msgid "The interval, in seconds, between automatic updates."
 msgstr "Interval ve vteřinách mezi automatickými aktualizacemi."
 
-#: gweather/gweather.schemas.in.h:16
+#: gweather/gweather.schemas.in.h:17
 msgid "The unit to use for pressure."
 msgstr "Jednotka, kterou používat pro tlak."
 
-#: gweather/gweather.schemas.in.h:17
+#: gweather/gweather.schemas.in.h:18
 msgid "The unit to use for temperature."
 msgstr "Jednotka, kterou používat pro teplotu."
 
-#: gweather/gweather.schemas.in.h:18
+#: gweather/gweather.schemas.in.h:19
 msgid "The unit to use for visibility."
 msgstr "Jednotka, kterou používat pro viditelnost."
 
-#: gweather/gweather.schemas.in.h:19
+#: gweather/gweather.schemas.in.h:20
 msgid "The unit to use for wind speed."
 msgstr "Jednotka, kterou používat pro rychlost větru."
 
-#: gweather/gweather.schemas.in.h:21
+#: gweather/gweather.schemas.in.h:22
 msgid "Update the data automatically"
 msgstr "Aktualizovat data automaticky"
 
-#: gweather/gweather.schemas.in.h:22
+#: gweather/gweather.schemas.in.h:23
 msgid "Url for the radar map"
 msgstr "Url mapy radaru"
 
-#: gweather/gweather.schemas.in.h:23
+#: gweather/gweather.schemas.in.h:24
 msgid "Use custom url for the radar map"
 msgstr "Používat vlastní url pro mapu radaru"
 
-#: gweather/gweather.schemas.in.h:24
+#: gweather/gweather.schemas.in.h:25
 msgid "Use metric units"
 msgstr "Používat metrické jednotky"
 
-#: gweather/gweather.schemas.in.h:25
+#: gweather/gweather.schemas.in.h:26
 msgid "Use metric units instead of english units."
 msgstr "Používat metrické jednotky místo anglických."
 
-#: gweather/gweather.schemas.in.h:26
+#: gweather/gweather.schemas.in.h:27
+msgid ""
+"latitude and longitude of your location expressed in DD-MM-SS[NS] DD-MM-SS"
+"[EW]"
+msgstr "zeměpisná šířka a délka vašeho umístění vyjádřená jako SS-MM-SS[NS] SS-MM-SS[EW]"
+
+#: gweather/gweather.schemas.in.h:28
+msgid "location coordinates"
+msgstr "souřadnice umístění"
+
+#: gweather/gweather.schemas.in.h:29
 msgid "weather location information."
 msgstr "informace o umístění počasí."
 
-#: gweather/weather.c:183
+#: gweather/weather.c:159
 msgid "Pittsburgh"
 msgstr "Pittsburgh"
 
-#: gweather/weather.c:291
+#: gweather/weather.c:267
 msgid "Variable"
 msgstr "Proměnlivě"
 
-#: gweather/weather.c:292
+#: gweather/weather.c:268
 msgid "North"
 msgstr "Sever"
 
-#: gweather/weather.c:292
+#: gweather/weather.c:268
 msgid "North - NorthEast"
 msgstr "Sever - Severovýchod"
 
-#: gweather/weather.c:292
+#: gweather/weather.c:268
 msgid "Northeast"
 msgstr "Severovýchod"
 
-#: gweather/weather.c:292
+#: gweather/weather.c:268
 msgid "East - NorthEast"
 msgstr "Východ - Severovýchod"
 
-#: gweather/weather.c:293
+#: gweather/weather.c:269
 msgid "East"
 msgstr "Východ"
 
-#: gweather/weather.c:293
+#: gweather/weather.c:269
 msgid "East - Southeast"
 msgstr "Východ - Jihovýchod"
 
-#: gweather/weather.c:293
+#: gweather/weather.c:269
 msgid "Southeast"
 msgstr "Jihovýchod"
 
-#: gweather/weather.c:293
+#: gweather/weather.c:269
 msgid "South - Southeast"
 msgstr "Jih - Jihovýchod"
 
-#: gweather/weather.c:294
+#: gweather/weather.c:270
 msgid "South"
 msgstr "Jih"
 
-#: gweather/weather.c:294
+#: gweather/weather.c:270
 msgid "South - Southwest"
 msgstr "Jih - Jihozápad"
 
-#: gweather/weather.c:294
+#: gweather/weather.c:270
 msgid "Southwest"
 msgstr "Jihozápad"
 
-#: gweather/weather.c:294
+#: gweather/weather.c:270
 msgid "West - Southwest"
 msgstr "Západ - Jihozápad"
 
-#: gweather/weather.c:295
+#: gweather/weather.c:271
 msgid "West"
 msgstr "Západ"
 
-#: gweather/weather.c:295
+#: gweather/weather.c:271
 msgid "West - Northwest"
 msgstr "Západ - Severozápad"
 
-#: gweather/weather.c:295
+#: gweather/weather.c:271
 msgid "Northwest"
 msgstr "Severozápad"
 
-#: gweather/weather.c:295
+#: gweather/weather.c:271
 msgid "North - Northwest"
 msgstr "Sever - Severozápad"
 
-#: gweather/weather.c:303 gweather/weather.c:320 gweather/weather.c:391
+#: gweather/weather.c:279 gweather/weather.c:296 gweather/weather.c:367
 msgid "Invalid"
 msgstr "Neplatné"
 
-#: gweather/weather.c:309
+#: gweather/weather.c:285
 msgid "Clear Sky"
 msgstr "Jasno"
 
-#: gweather/weather.c:310
+#: gweather/weather.c:286
 msgid "Broken clouds"
 msgstr "Oblačno"
 
-#: gweather/weather.c:311
+#: gweather/weather.c:287
 msgid "Scattered clouds"
 msgstr "Rozptýlená oblačnost"
 
-#: gweather/weather.c:312
+#: gweather/weather.c:288
 msgid "Few clouds"
 msgstr "Malá oblačnost"
 
-#: gweather/weather.c:313
+#: gweather/weather.c:289
 msgid "Overcast"
 msgstr "Zataženo"
 
@@ -2778,442 +2747,434 @@ msgstr "Zataženo"
 #. * etc means, you can go to http://www.weather.com/glossary/ and
 #. * http://www.crh.noaa.gov/arx/wx.tbl.html
 #. NONE
-#: gweather/weather.c:352 gweather/weather.c:354
+#: gweather/weather.c:328 gweather/weather.c:330
 msgid "Thunderstorm"
 msgstr "Bouřka"
 
 #. DRIZZLE
-#: gweather/weather.c:353
+#: gweather/weather.c:329
 msgid "Drizzle"
 msgstr "Mrholení"
 
-#: gweather/weather.c:353
+#: gweather/weather.c:329
 msgid "Light drizzle"
 msgstr "Lehké mrholení"
 
-#: gweather/weather.c:353
+#: gweather/weather.c:329
 msgid "Moderate drizzle"
 msgstr "Střední mrholení"
 
-#: gweather/weather.c:353
+#: gweather/weather.c:329
 msgid "Heavy drizzle"
 msgstr "Silné mrholení"
 
-#: gweather/weather.c:353
+#: gweather/weather.c:329
 msgid "Freezing drizzle"
 msgstr "Mrznoucí mrholení"
 
 #. RAIN
-#: gweather/weather.c:354
+#: gweather/weather.c:330
 msgid "Rain"
 msgstr "Déšť"
 
-#: gweather/weather.c:354
+#: gweather/weather.c:330
 msgid "Light rain"
 msgstr "Mírný déšť"
 
-#: gweather/weather.c:354
+#: gweather/weather.c:330
 msgid "Moderate rain"
 msgstr "Střední déšť"
 
-#: gweather/weather.c:354
+#: gweather/weather.c:330
 msgid "Heavy rain"
 msgstr "Vydatný déšť"
 
-#: gweather/weather.c:354
+#: gweather/weather.c:330
 msgid "Rain showers"
 msgstr "Přepršky"
 
-#: gweather/weather.c:354
+#: gweather/weather.c:330
 msgid "Freezing rain"
 msgstr "Mrznoucí déšť"
 
 #. SNOW
-#: gweather/weather.c:355
+#: gweather/weather.c:331
 msgid "Snow"
 msgstr "Sníh"
 
-#: gweather/weather.c:355
+#: gweather/weather.c:331
 msgid "Light snow"
 msgstr "Mírný sníh"
 
-#: gweather/weather.c:355
+#: gweather/weather.c:331
 msgid "Moderate snow"
 msgstr "Střední sníh"
 
-#: gweather/weather.c:355
+#: gweather/weather.c:331
 msgid "Heavy snow"
 msgstr "Vydatný sníh"
 
-#: gweather/weather.c:355
+#: gweather/weather.c:331
 msgid "Snowstorm"
 msgstr "Sněhová bouře"
 
-#: gweather/weather.c:355
+#: gweather/weather.c:331
 msgid "Blowing snowfall"
 msgstr "Sněhová bouře s větrem"
 
-#: gweather/weather.c:355
+#: gweather/weather.c:331
 msgid "Snow showers"
 msgstr "Sněhové přeháňky"
 
-#: gweather/weather.c:355
+#: gweather/weather.c:331
 msgid "Drifting snow"
 msgstr "Ustupující sníh"
 
 #. SNOW_GRAINS
-#: gweather/weather.c:356
+#: gweather/weather.c:332
 msgid "Snow grains"
 msgstr "Sněhové vločky"
 
-#: gweather/weather.c:356
+#: gweather/weather.c:332
 msgid "Light snow grains"
 msgstr "Mírné sněhové vločky"
 
-#: gweather/weather.c:356
+#: gweather/weather.c:332
 msgid "Moderate snow grains"
 msgstr "Střední sněhové vločky"
 
-#: gweather/weather.c:356
+#: gweather/weather.c:332
 msgid "Heavy snow grains"
 msgstr "Silné sněhové vločky "
 
 #. ICE_CRYSTALS
-#: gweather/weather.c:357
+#: gweather/weather.c:333
 msgid "Ice crystals"
 msgstr "Ledové krystaly"
 
 #. ICE_PELLETS
-#: gweather/weather.c:358
+#: gweather/weather.c:334
 msgid "Ice pellets"
 msgstr "Kroupy"
 
-#: gweather/weather.c:358
+#: gweather/weather.c:334
 msgid "Few ice pellets"
 msgstr "Řídké kroupy"
 
-#: gweather/weather.c:358
+#: gweather/weather.c:334
 msgid "Moderate ice pellets"
 msgstr "Mírné kroupy"
 
-#: gweather/weather.c:358
+#: gweather/weather.c:334
 msgid "Heavy ice pellets"
 msgstr "Husté kroupy"
 
-#: gweather/weather.c:358
+#: gweather/weather.c:334
 msgid "Ice pellet storm"
 msgstr "Krupová bouře"
 
-#: gweather/weather.c:358
+#: gweather/weather.c:334
 msgid "Showers of ice pellets"
 msgstr "Krupové přeháňky"
 
 #. HAIL
-#: gweather/weather.c:359
+#: gweather/weather.c:335
 msgid "Hail"
 msgstr "Krupobití"
 
-#: gweather/weather.c:359
+#: gweather/weather.c:335
 msgid "Hailstorm"
 msgstr "Krupobití"
 
-#: gweather/weather.c:359
+#: gweather/weather.c:335
 msgid "Hail showers"
 msgstr "Přepršky krupobití"
 
 #. SMALL_HAIL
-#: gweather/weather.c:360
+#: gweather/weather.c:336
 msgid "Small hail"
 msgstr "Malé kroupy"
 
-#: gweather/weather.c:360
+#: gweather/weather.c:336
 msgid "Small hailstorm"
 msgstr "Malé krupobití"
 
-#: gweather/weather.c:360
+#: gweather/weather.c:336
 msgid "Showers of small hail"
 msgstr "Přepršky malých krup"
 
 #. PRECIPITATION
-#: gweather/weather.c:361
+#: gweather/weather.c:337
 msgid "Unknown precipitation"
 msgstr "Neznámé srážky"
 
 #. MIST
-#: gweather/weather.c:362
+#: gweather/weather.c:338
 msgid "Mist"
 msgstr "Opar"
 
 #. FOG
-#: gweather/weather.c:363
+#: gweather/weather.c:339
 msgid "Fog"
 msgstr "Mlha"
 
-#: gweather/weather.c:363
+#: gweather/weather.c:339
 msgid "Fog in the vicinity"
 msgstr "Mlha v blízkosti"
 
-#: gweather/weather.c:363
+#: gweather/weather.c:339
 msgid "Shallow fog"
 msgstr "Slabá mlha"
 
-#: gweather/weather.c:363
+#: gweather/weather.c:339
 msgid "Patches of fog"
 msgstr "Místy mlha"
 
-#: gweather/weather.c:363
+#: gweather/weather.c:339
 msgid "Partial fog"
 msgstr "Částečná mlha"
 
-#: gweather/weather.c:363
+#: gweather/weather.c:339
 msgid "Freezing fog"
 msgstr "Mrznoucí mlha"
 
 #. SMOKE
-#: gweather/weather.c:364
+#: gweather/weather.c:340
 msgid "Smoke"
 msgstr "Kouř"
 
 #. VOLCANIC_ASH
-#: gweather/weather.c:365
+#: gweather/weather.c:341
 msgid "Volcanic ash"
 msgstr "Vulkanický popel"
 
 #. SAND
-#: gweather/weather.c:366
+#: gweather/weather.c:342
 msgid "Sand"
 msgstr "Písek"
 
-#: gweather/weather.c:366
+#: gweather/weather.c:342
 msgid "Blowing sand"
 msgstr "Písek s větrem"
 
-#: gweather/weather.c:366
+#: gweather/weather.c:342
 msgid "Drifting sand"
 msgstr "Ustupující písek"
 
 #. HAZE
-#: gweather/weather.c:367
+#: gweather/weather.c:343
 msgid "Haze"
 msgstr "Opar"
 
 #. SPRAY
-#: gweather/weather.c:368
+#: gweather/weather.c:344
 msgid "Blowing sprays"
 msgstr "Spršky s větrem"
 
 #. DUST
-#: gweather/weather.c:369
+#: gweather/weather.c:345
 msgid "Dust"
 msgstr "Prach"
 
-#: gweather/weather.c:369
+#: gweather/weather.c:345
 msgid "Blowing dust"
 msgstr "Prach s větrem"
 
-#: gweather/weather.c:369
+#: gweather/weather.c:345
 msgid "Drifting dust"
 msgstr "Ustupující prach"
 
 #. SQUALL
-#: gweather/weather.c:370
+#: gweather/weather.c:346
 msgid "Squall"
 msgstr "Hromobití"
 
 #. SANDSTORM
-#: gweather/weather.c:371
+#: gweather/weather.c:347
 msgid "Sandstorm"
 msgstr "Písečná bouře"
 
-#: gweather/weather.c:371
+#: gweather/weather.c:347
 msgid "Sandstorm in the vicinity"
 msgstr "Písečná bouře v blízkosti"
 
-#: gweather/weather.c:371
+#: gweather/weather.c:347
 msgid "Heavy sandstorm"
 msgstr "Silná písečná bouře"
 
 #. DUSTSTORM
-#: gweather/weather.c:372
+#: gweather/weather.c:348
 msgid "Duststorm"
 msgstr "Prachová bouře"
 
-#: gweather/weather.c:372
+#: gweather/weather.c:348
 msgid "Duststorm in the vicinity"
 msgstr "Prachová bouře v blízkosti"
 
-#: gweather/weather.c:372
+#: gweather/weather.c:348
 msgid "Heavy duststorm"
 msgstr "Silná prachová bouře"
 
 #. FUNNEL_CLOUD
-#: gweather/weather.c:373
+#: gweather/weather.c:349
 msgid "Funnel cloud"
 msgstr "Nálevkovitý mrak"
 
 #. TORNADO
-#: gweather/weather.c:374
+#: gweather/weather.c:350
 msgid "Tornado"
 msgstr "Tornádo"
 
 #. DUST_WHIRLS
-#: gweather/weather.c:375
+#: gweather/weather.c:351
 msgid "Dust whirls"
 msgstr "Prachová smršť"
 
-#: gweather/weather.c:375
+#: gweather/weather.c:351
 msgid "Dust whirls in the vicinity"
 msgstr "Prachová smršť v blízkosti"
 
-#: gweather/weather.c:1245 gweather/weather.c:1287 gweather/weather.c:2006
-msgid "Failed to get METAR data.\n"
-msgstr "Nemohu získat data METAR.\n"
-
-#: gweather/weather.c:1279 gweather/weather.c:1307 gweather/weather.c:1554
-msgid "WeatherInfo missing location"
-msgstr "Chybí umístění WeatherInfo"
-
-#: gweather/weather.c:2344
+#: gweather/weather.c:995
 msgid "%a, %b %d / %H:%M"
 msgstr "%a %d. %b, %H:%M"
 
-#: gweather/weather.c:2348
+#: gweather/weather.c:999
 msgid "Unknown observation time"
 msgstr "Neznámý čas pozorování"
 
 #. TRANSLATOR: This is the temperature in degrees fahrenheit, use the degree
 #. symbol Unicode 00B0 if possible
-#: gweather/weather.c:2380 gweather/weather.c:2383
+#: gweather/weather.c:1031 gweather/weather.c:1034
 #, c-format
 msgid "%.1f F"
 msgstr "%.1f °F"
 
 #. TRANSLATOR: This is the temperature in degrees fahrenheit, use the degree
 #. symbol Unicode 00B0 if possible
-#: gweather/weather.c:2388 gweather/weather.c:2391
+#: gweather/weather.c:1039 gweather/weather.c:1042
 #, c-format
 msgid "%dF"
 msgstr "%d °F"
 
 #. TRANSLATOR: This is the temperature in degrees centigrade , use the degree
 #. symbol Unicode 00B0 if possible
-#: gweather/weather.c:2399 gweather/weather.c:2402
+#: gweather/weather.c:1050 gweather/weather.c:1053
 #, c-format
 msgid "%.1f C"
 msgstr "%.1f °C"
 
 #. TRANSLATOR: This is the temperature in degrees centigrade , use the degree
 #. symbol Unicode 00B0 if possible
-#: gweather/weather.c:2407 gweather/weather.c:2410
+#: gweather/weather.c:1058 gweather/weather.c:1061
 #, c-format
 msgid "%dC"
 msgstr "%d °C"
 
 #. TRANSLATOR: This is the temperature in Kelvin
-#: gweather/weather.c:2419
+#: gweather/weather.c:1070
 #, c-format
 msgid "%.1f K"
 msgstr "%.1f K"
 
 #. TRANSLATOR: This is the temperature in Kelvin
-#: gweather/weather.c:2422
+#: gweather/weather.c:1073
 #, c-format
 msgid "%dK"
 msgstr "%d K"
 
 #. TRANSLATOR: This is the humidity in percent
-#: gweather/weather.c:2474
+#: gweather/weather.c:1125
 #, c-format
 msgid "%.f%%"
 msgstr "%.f%%"
 
 #. TRANSLATOR: This is the wind speed in knots
-#: gweather/weather.c:2499
+#: gweather/weather.c:1150
 #, c-format
 msgid "%0.1f knots"
 msgstr "%0.1f uzlů"
 
 #. TRANSLATOR: This is the wind speed in miles per hour
-#: gweather/weather.c:2503
+#: gweather/weather.c:1154
 #, c-format
 msgid "%.1f mph"
 msgstr "%.1f mph"
 
 #. TRANSLATOR: This is the wind speed in kilometers per hour
-#: gweather/weather.c:2507
+#: gweather/weather.c:1158
 #, c-format
 msgid "%.1f km/h"
 msgstr "%.1f km/h"
 
 #. TRANSLATOR: This is the wind speed in meters per second
-#: gweather/weather.c:2511
+#: gweather/weather.c:1162
 #, c-format
 msgid "%.1f m/s"
 msgstr "%.1f m/s"
 
-#: gweather/weather.c:2532
+#: gweather/weather.c:1183
 msgid "Calm"
 msgstr "Bezvětří"
 
 #. TRANSLATOR: This is 'wind direction' / 'wind speed'
-#: gweather/weather.c:2536
+#: gweather/weather.c:1187
 #, c-format
 msgid "%s / %s"
 msgstr "%s / %s"
 
 #. TRANSLATOR: This is pressure in inches of mercury
-#: gweather/weather.c:2554
+#: gweather/weather.c:1205
 #, c-format
 msgid "%.2f inHg"
 msgstr "%.2f inHg"
 
 #. TRANSLATOR: This is pressure in millimeters of mercury
-#: gweather/weather.c:2558
+#: gweather/weather.c:1209
 #, c-format
 msgid "%.1f mmHg"
 msgstr "%.1f mmHg"
 
 #. TRANSLATOR: This is pressure in kiloPascals
-#: gweather/weather.c:2562
+#: gweather/weather.c:1213
 #, c-format
 msgid "%.2f kPa"
 msgstr "%.2f kPa"
 
 #. TRANSLATOR: This is pressure in hectoPascals
-#: gweather/weather.c:2566
+#: gweather/weather.c:1217
 #, c-format
 msgid "%.2f hPa"
 msgstr "%.2f hPa"
 
 #. TRANSLATOR: This is pressure in millibars
-#: gweather/weather.c:2570
+#: gweather/weather.c:1221
 #, c-format
 msgid "%.2f mb"
 msgstr "%.2f mb"
 
 #. TRANSLATOR: This is the visibility in miles
-#: gweather/weather.c:2595
+#: gweather/weather.c:1246
 #, c-format
 msgid "%.1f miles"
 msgstr "%.1f miles"
 
 #. TRANSLATOR: This is the visibility in kilometers
-#: gweather/weather.c:2599
+#: gweather/weather.c:1250
 #, c-format
 msgid "%.1f km"
 msgstr "%.1f km"
 
 #. TRANSLATOR: This is the visibility in meters
-#: gweather/weather.c:2603
+#: gweather/weather.c:1254
 #, c-format
 msgid "%.0fm"
 msgstr "%.0f m"
 
-#: gweather/weather.c:2631 gweather/weather.c:2651
+#: gweather/weather.c:1282 gweather/weather.c:1302
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: gweather/weather.c:2684
+#: gweather/weather.c:1335
 msgid "Retrieval failed"
 msgstr "Stahování selhalo"
 
@@ -3590,12 +3551,12 @@ msgstr "-"
 #.
 #. create element
 #. and recreate this object, since we give it to the mixer
-#: mixer/load.c:72 mixer/load.c:75 mixer/load.c:125
+#: mixer/load.c:72 mixer/load.c:75 mixer/load.c:131
 #, c-format
 msgid "Unknown Volume Control %d"
 msgstr "Neznámé ovládání hlasitosti %d"
 
-#: mixer/load.c:159
+#: mixer/load.c:165
 msgid "No volume control elements and/or devices found."
 msgstr "Nenalezeny elementy nebo zařízení pro ovládání hlasitosti."
 
@@ -3950,7 +3911,7 @@ msgstr "_Otevřít sledování systému"
 msgid "CPU Load"
 msgstr "Zátěž CPU"
 
-#: multiload/loadavg.c:107 multiload/main.c:346
+#: multiload/loadavg.c:107 multiload/main.c:345
 msgid "Load Average"
 msgstr "Průměrná zátěž"
 
@@ -3966,27 +3927,27 @@ msgstr ""
 "Program, který sleduje zátěž systému a je schopný zobrazovat grafy pro CPU, "
 "paměť, využití odkládacího prostoru a zatížení sítě."
 
-#: multiload/main.c:338 multiload/properties.c:560
+#: multiload/main.c:337 multiload/properties.c:560
 msgid "Processor"
 msgstr "Procesor"
 
-#: multiload/main.c:340 multiload/properties.c:567
+#: multiload/main.c:339 multiload/properties.c:567
 msgid "Memory"
 msgstr "Paměť"
 
-#: multiload/main.c:342 multiload/properties.c:575
+#: multiload/main.c:341 multiload/properties.c:575
 msgid "Network"
 msgstr "Síť"
 
-#: multiload/main.c:344 multiload/properties.c:583
+#: multiload/main.c:343 multiload/properties.c:583
 msgid "Swap Space"
 msgstr "Odkládací prostor"
 
-#: multiload/main.c:348
+#: multiload/main.c:347
 msgid "Resource"
 msgstr "Zdroj"
 
-#: multiload/main.c:364
+#: multiload/main.c:363
 #, c-format
 msgid ""
 "%s:\n"
@@ -3997,7 +3958,7 @@ msgstr ""
 "Používá se %d%%, z čehož\n"
 "%d%% je cache"
 
-#: multiload/main.c:367
+#: multiload/main.c:366
 #, c-format
 msgid ""
 "%s:\n"
@@ -4810,3 +4771,51 @@ msgstr "Nastavení Sledování bezdrátového spojení"
 #: wireless/wireless-applet.glade.h:3
 msgid "_Monitored device:"
 msgstr "_Sledované zařízení:"
+
+#~ msgid "Graphic Arts:"
+#~ msgstr "Grafika:"
+
+#~ msgid ""
+#~ "CPU %d - Frequency Scaling Unsupported\n"
+#~ "%s %s (%s)"
+#~ msgstr ""
+#~ "CPU %d - Změna frekvence nepodporována\n"
+#~ "%s %s (%s)"
+
+#~ msgid ""
+#~ "Make the layout accessible from the applet popup menu ONLY.\n"
+#~ "No way to switch to this layout using the keyboard."
+#~ msgstr ""
+#~ "Zpřístupnit rozložení JEN z vyskakovacího menu apletu.\n"
+#~ "Na toto rozložení se nedá přepnout pomocí klávesnice."
+
+#~ msgid "_Exclude from keyboard switching"
+#~ msgstr "_Vyjmout z přepínání klávesnicí"
+
+#~ msgid "Not used"
+#~ msgstr "Nepoužívá se"
+
+#~ msgid "Beep on group switch"
+#~ msgstr "Pípnout při přepnutí skupiny"
+
+#~ msgid "Debug level"
+#~ msgstr "Úroveň ladění"
+
+#~ msgid "Default group, assigned on window creation"
+#~ msgstr "Implicitní skupina přiřazená při vytvoření okna"
+
+#~ msgid "Keep and manage separate group per window"
+#~ msgstr "Udržovat a spravovat oddělenou skupinu pro každé okno"
+
+#~ msgid "Save/restore indicators together with layout groups"
+#~ msgstr "Ukládat/obnovovat indikátory se skupinami rozložení"
+
+#~ msgid "Show layout names instead of group names"
+#~ msgstr "Zobrazovat názvy rozložení místo názvů skupin"
+
+#~ msgid ""
+#~ "Show layout names instead of group names (only for versions of XFree "
+#~ "supporting multiple layouts)"
+#~ msgstr ""
+#~ "Zobrazovat názvy rozložení místo názvů skupin (jen pro verze XFree, které "
+#~ "podporují více rozložení)"
