@@ -50,16 +50,26 @@ properties_load(DriveData *dd)
 {
 	GConfClient *client;
 	gchar *key;
+	GError *error = NULL;
 
 	client = gconf_client_get_default ();
 	key = panel_applet_get_preferences_key (PANEL_APPLET (dd->applet));
 
 	if (gconf_client_dir_exists (client, key, NULL)) {
-		dd->interval = panel_applet_gconf_get_int(PANEL_APPLET(dd->applet), "interval", NULL);
+		dd->interval = panel_applet_gconf_get_int(PANEL_APPLET(dd->applet), "interval", &error);
+		if (error) {
+			g_print ("%s \n", error->message);
+			g_error_free (error);
+			error = NULL;
+		}
+		dd->interval = MAX (dd->interval, 1);
 		dd->device_pixmap = panel_applet_gconf_get_int(PANEL_APPLET(dd->applet), "pixmap", NULL);
+		dd->device_pixmap = CLAMP (dd->device_pixmap, 0, 6);
 		dd->scale_applet = panel_applet_gconf_get_bool(PANEL_APPLET(dd->applet), "scale", NULL);
 		dd->auto_eject = panel_applet_gconf_get_bool(PANEL_APPLET(dd->applet), "auto_eject", NULL);
 		dd->mount_point = panel_applet_gconf_get_string(PANEL_APPLET(dd->applet), "mount_point", NULL);
+		if (!dd->mount_point)
+			dd->mount_point = g_strdup ("/mnt/floppy");
 		dd->autofs_friendly = panel_applet_gconf_get_bool(PANEL_APPLET(dd->applet), "autofs_friendly", NULL);
 		dd->custom_icon_in = panel_applet_gconf_get_string(PANEL_APPLET(dd->applet), "custom_icon_mounted", NULL);
 		dd->custom_icon_out = panel_applet_gconf_get_string(PANEL_APPLET(dd->applet), "custom_icon_unmounted", NULL);
