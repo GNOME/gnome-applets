@@ -434,6 +434,7 @@ gkb_prop_map_add (GkbPropertyBoxInfo * pbi)
   
   gtk_dialog_set_default_response (GTK_DIALOG (gkb->addwindow), 100);
   gtk_dialog_set_has_separator (GTK_DIALOG (gkb->addwindow), FALSE);
+  gtk_container_set_border_width (GTK_CONTAINER (gkb->addwindow), 5);
   gtk_window_set_screen (GTK_WINDOW (gkb->addwindow),
 			 gtk_widget_get_screen (gkb->applet));
   gtk_object_set_data (GTK_OBJECT (gkb->addwindow), "addwindow",
@@ -443,7 +444,7 @@ gkb_prop_map_add (GkbPropertyBoxInfo * pbi)
   
   vbox1 = gtk_vbox_new (FALSE, 6); 
   gtk_box_pack_start (GTK_BOX (GTK_DIALOG (gkb->addwindow)->vbox), vbox1, FALSE, FALSE, 0);
-  gtk_container_set_border_width (GTK_CONTAINER (vbox1), 12);
+  gtk_container_set_border_width (GTK_CONTAINER (vbox1), 5);
   gtk_widget_show (vbox1);
   
   label = gtk_label_new_with_mnemonic (_("_Keyboards (select and press add):"));

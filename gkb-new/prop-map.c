@@ -275,10 +275,11 @@ gkb_prop_map_edit (GkbPropertyBoxInfo * pbi)
 
   gtk_dialog_set_has_separator (GTK_DIALOG (mdi->dialog), FALSE);
   gtk_dialog_set_default_response (GTK_DIALOG (mdi->dialog), GTK_RESPONSE_CLOSE);
+  gtk_container_set_border_width (GTK_CONTAINER (mdi->dialog), 5);
   gtk_window_set_resizable (GTK_WINDOW (mdi->dialog), FALSE);
 
   vbox1 = gtk_vbox_new (FALSE, 0);
-  gtk_container_set_border_width (GTK_CONTAINER (vbox1), 12);
+  gtk_container_set_border_width (GTK_CONTAINER (vbox1), 5);
   gtk_box_pack_start (GTK_BOX (GTK_DIALOG (mdi->dialog)->vbox), vbox1,
                         TRUE, TRUE, 0);
 
