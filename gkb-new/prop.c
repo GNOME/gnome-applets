@@ -383,7 +383,8 @@ window_response (GtkWidget *w, int response, gpointer data)
   if (response == GTK_RESPONSE_HELP)
     prophelp_cb (gkb->applet, data);
   else {
-    gtk_list_clear_items (pbi->list, 0, -1);
+    gtk_list_store_clear (GTK_LIST_STORE (gtk_tree_view_get_model 
+                          (GTK_TREE_VIEW (pbi->list))));
     g_free (pbi);
     gtk_widget_destroy (w);
   }
@@ -463,7 +464,8 @@ gkb_prop_box_destroy (GtkWidget * box, GkbPropertyBoxInfo * pbi)
    * row, so we need to clear the selection so that the
    * gkb_prop_list_selection_changed function is not reached.
    * if you know of a way to solve this, enlighten me. Chema */
-  gtk_list_clear_items (pbi->list, 0, -1);
+  gtk_list_store_clear (GTK_LIST_STORE (gtk_tree_view_get_model 
+                        (GTK_TREE_VIEW (pbi->list))));
   g_free (pbi);
 
   return FALSE;

@@ -72,47 +72,32 @@ gkb_util_get_pixmap_name (GkbKeymap * keymap)
 /**
  * gkb_prop_list_create_item:
  * @keymap: 
- * 
+ * @treeview 
  * Create a list item from a keymap
  * 
  * Return Value: 
  **/
-static GtkWidget *
-gkb_prop_list_create_item (GkbKeymap * keymap)
+static void
+gkb_prop_list_create_item (GkbKeymap * keymap, GtkTreeView *treeview, GtkTreeIter *iter)
 {
-  GtkWidget *list_item;
-  GtkWidget *label;
-  GtkWidget *hbox;
-  GtkWidget *pixmap;
+  GdkPixbuf  *pixbuf;
   gchar *pixmap_name;
+  GtkTreeModel *store;	
 
-  hbox = gtk_hbox_new (FALSE, 0);
-
-  /* Pixmap */
-  pixmap = gtk_type_new (gnome_pixmap_get_type ());
+  store = gtk_tree_view_get_model (treeview);  
+  /* PixBuf */
   pixmap_name = gkb_util_get_pixmap_name (keymap);
-  gnome_pixmap_load_file_at_size (GNOME_PIXMAP (pixmap), pixmap_name, 28, 20);
+  pixbuf = gdk_pixbuf_scale_simple  (gdk_pixbuf_new_from_file 
+                                               (pixmap_name, NULL),
+                                               28,
+                                               20,
+                                               GDK_INTERP_HYPER);
+   
+  gtk_list_store_append (GTK_LIST_STORE(store), iter);
+  gtk_list_store_set (GTK_LIST_STORE(store), iter, 0, pixbuf, 1, keymap->name, 2, keymap, -1); 	
   g_free (pixmap_name);
-  gtk_box_pack_start (GTK_BOX (hbox), pixmap, FALSE, TRUE, 0);
-
-  /* Label */
-  label = gtk_label_new (keymap->name);
-  gtk_box_pack_start (GTK_BOX (hbox), label, TRUE, TRUE, 0);
-  gtk_misc_set_alignment (GTK_MISC (label), 0, 0.5);
-  gtk_misc_set_padding (GTK_MISC (label), 3, 0);
-
-  /* List item */
-  list_item = gtk_list_item_new ();
-  gtk_container_add (GTK_CONTAINER (list_item), hbox);
-  gtk_object_set_data (GTK_OBJECT (list_item), GKB_KEYMAP_TAG, keymap);
-  
-  if (gail_loaded)
-  {
-    add_atk_namedesc(GTK_WIDGET(list_item), keymap->name, NULL );
-  }
-  return list_item;
+  g_object_unref (G_OBJECT (pixbuf));
 }
-
 
 /**
  * gkb_prop_list_reload:
@@ -126,29 +111,34 @@ gkb_prop_list_reload (GkbPropertyBoxInfo * pbi)
 {
   GkbKeymap *keymap;
   GkbKeymap *selected_keymap;
-  GtkWidget *item;
-  GtkWidget *selected_child = NULL;
+  GtkTreeIter item;
+  GtkTreeIter *selected_child = NULL;
   GList *list;
 
   g_return_if_fail (pbi != NULL);
 
   selected_keymap = pbi->selected_keymap;
-
-  gtk_list_clear_items (pbi->list, 0, -1);
+  
+  gtk_list_store_clear (GTK_LIST_STORE(gtk_tree_view_get_model(GTK_TREE_VIEW(pbi->list))));
 
   list = pbi->keymaps;
   for (; list != NULL; list = list->next)
     {
       keymap = (GkbKeymap *) list->data;
-      item = gkb_prop_list_create_item (keymap);
-      gtk_container_add (GTK_CONTAINER (pbi->list), item);
+      gkb_prop_list_create_item (keymap, pbi->list, &item);
       if (keymap == selected_keymap)
-	selected_child = item;
+	selected_child = gtk_tree_iter_copy (&item);
     }
 
-  if (selected_child)
-    gtk_list_select_child (pbi->list, selected_child);
-
+  if (selected_child) {
+      GtkTreePath *path;
+  	
+      path = gtk_tree_model_get_path (gtk_tree_view_get_model(GTK_TREE_VIEW(pbi->list)),
+      				      selected_child);
+      gtk_tree_view_set_cursor (GTK_TREE_VIEW(pbi->list), path, NULL, FALSE);
+      gtk_tree_path_free (path);
+      gtk_tree_iter_free (selected_child);		
+  }
   gtk_widget_show_all (GTK_WIDGET (pbi->list));
 }
 
@@ -227,8 +217,10 @@ gkb_prop_list_up_down_clicked (GkbPropertyBoxInfo * pbi, gboolean up)
     gkb_util_g_list_swap (keymap_node->prev, keymap_node);
   else
     gkb_util_g_list_swap (keymap_node, keymap_node->next);
+  
+  /*FIXME */ 
 
-  gkb_prop_list_reload (pbi);
+  pbi->selected_keymap = NULL;
 
   gkb_apply(pbi);
 
@@ -277,41 +269,36 @@ gkb_prop_list_update_sensitivity (GkbPropertyBoxInfo * pbi)
 
 }
 
+
 /**
  * gkb_prop_list_selection_changed:
- * @list: 
- * @pbi: 
+ * @Selection: 
+ * @data: 
  * 
  * The list's selection has changed. The main purpose it to set pbi->selected_keymap
  **/
-static void
-gkb_prop_list_selection_changed (GtkWidget * list, GkbPropertyBoxInfo * pbi)
-{
-  GList *selection;
 
-  g_return_if_fail (GTK_IS_WIDGET (list));
+static void
+gkb_prop_list_selection_changed  (GtkTreeSelection *selection, gpointer data)
+
+{
+  GkbPropertyBoxInfo * pbi = data;
+  GtkTreeView *treeview; 
+  GkbKeymap *keymap;
+  GtkTreeIter iter;
+  GtkTreeModel *model;
   g_return_if_fail (pbi != NULL);
   g_return_if_fail (GTK_IS_WIDGET (pbi->add_button));
-
-  selection = GTK_LIST (pbi->list)->selection;
-
-  if (selection)
+  treeview = gtk_tree_selection_get_tree_view (selection);
+  if (gtk_tree_selection_get_selected (selection, &model, &iter))
     {
-      GkbKeymap *keymap;
-      GtkListItem *list_item;
+        gtk_tree_model_get (model, &iter, 2, &keymap, -1);
+        if (keymap != NULL)
+                pbi->selected_keymap = keymap;
+        else
 
-      list_item = GTK_LIST_ITEM (selection->data);
-      keymap = gtk_object_get_data (GTK_OBJECT (list_item), GKB_KEYMAP_TAG);
-      g_return_if_fail (keymap != NULL);
-      pbi->selected_keymap = keymap;
-/*      gkb->keymap = keymap->parent;
-      gkb_update (gkb, TRUE); */
-    }
-  else
-    {
-      pbi->selected_keymap = NULL;
-    }
-
+                pbi->selected_keymap = NULL;
+    } 
   gkb_prop_list_update_sensitivity (pbi);
 
   return;
@@ -416,6 +403,7 @@ gkb_prop_list_load_keymaps (GkbPropertyBoxInfo * pbi)
   pbi->keymaps = gkb_keymap_copy_list (gkb->maps);
 
   gkb_prop_list_reload (pbi);
+  gtk_widget_show (GTK_WIDGET(pbi->list));
 }
 
 /**
@@ -431,19 +419,47 @@ GtkWidget *
 gkb_prop_create_scrolled_window (GkbPropertyBoxInfo * pbi)
 {
   GtkWidget *scrolled_window;
-
+  GtkTreeModel *model;
+  GtkWidget    *treeview;
+  GtkCellRenderer *cell_renderer;
+  GtkTreeViewColumn *column;
+  GtkListStore *store;
   scrolled_window = gtk_scrolled_window_new (NULL, NULL);
+
   gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled_window),
 				  GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
-  pbi->list = GTK_LIST (gtk_list_new ());
-  gtk_scrolled_window_add_with_viewport (GTK_SCROLLED_WINDOW
-					 (scrolled_window),
-					 GTK_WIDGET (pbi->list));
+
+  store = gtk_list_store_new (3, GDK_TYPE_PIXBUF, G_TYPE_STRING,G_TYPE_POINTER);	
+  model = GTK_TREE_MODEL(store);	
+  treeview = gtk_tree_view_new_with_model (model);
+  pbi->list = GTK_TREE_VIEW (treeview);
+  
+  column = gtk_tree_view_column_new ();
+  
+  cell_renderer = gtk_cell_renderer_pixbuf_new  ();
+  gtk_tree_view_column_pack_start (column, cell_renderer, FALSE);
+  gtk_tree_view_column_set_attributes (column, cell_renderer,
+				       "pixbuf", 0, NULL);
+  
+  cell_renderer = gtk_cell_renderer_text_new ();
+  gtk_tree_view_column_pack_start (column, cell_renderer, FALSE);
+  gtk_tree_view_column_set_attributes (column, cell_renderer,
+				       "text", 1, NULL);
+   
+  gtk_tree_view_append_column (GTK_TREE_VIEW (treeview), column);
+  
+  gtk_tree_view_set_headers_visible (GTK_TREE_VIEW (treeview), FALSE);			
+  gtk_tree_selection_set_mode ((GtkTreeSelection *) gtk_tree_view_get_selection
+			(GTK_TREE_VIEW (treeview)),
+			GTK_SELECTION_SINGLE);
+  g_signal_connect (G_OBJECT (gtk_tree_view_get_selection (GTK_TREE_VIEW (treeview))),
+                          "changed",
+                          G_CALLBACK (gkb_prop_list_selection_changed), pbi);
+
+  g_object_unref (G_OBJECT (model));
+  gtk_container_add (GTK_CONTAINER (scrolled_window), GTK_WIDGET(treeview));	
+
+  gtk_widget_show (GTK_WIDGET(treeview));
   gkb_prop_list_load_keymaps (pbi);
-
-  g_signal_connect (pbi->list,
-		      "selection_changed",
-		      G_CALLBACK (gkb_prop_list_selection_changed), pbi);
-
   return scrolled_window;
 }
