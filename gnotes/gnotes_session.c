@@ -21,6 +21,8 @@ Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #include <gnome.h>
 #include "gnotes_applet.h"
 
+GnomeClient *newGnomeClient(void);
+
 static int save_state (GnomeClient *client, gint phase, 
 		       GnomeRestartStyle save_style,
 		       gint shutdown, 
