@@ -74,13 +74,13 @@ piece_event (GnomeCanvasItem *item, GdkEvent *event, gpointer data)
 	switch (event->type) {
 	case GDK_ENTER_NOTIFY:
 		gnome_canvas_item_set (text,
-				       "GnomeCanvasText::fill_color", "white",
+				       "fill_color", "white",
 				       NULL);
 		break;
 
 	case GDK_LEAVE_NOTIFY:
 		gnome_canvas_item_set (text,
-				       "GnomeCanvasText::fill_color", "black",
+				       "fill_color", "black",
 				       NULL);
 		break;
 
@@ -162,31 +162,31 @@ create_fifteen (void)
 
 		board[i] = gnome_canvas_item_new (GNOME_CANVAS_GROUP (GNOME_CANVAS (canvas)->root),
 						  gnome_canvas_group_get_type (),
-						  "GnomeCanvasGroup::x", (double) (x * PIECE_SIZE),
-						  "GnomeCanvasGroup::y", (double) (y * PIECE_SIZE),
+						  "x", (double) (x * PIECE_SIZE),
+						  "y", (double) (y * PIECE_SIZE),
 						  NULL);
 
 		gnome_canvas_item_new (GNOME_CANVAS_GROUP (board[i]),
 				       gnome_canvas_rect_get_type (),
-				       "GnomeCanvasRE::x1", 0.0,
-				       "GnomeCanvasRE::y1", 0.0,
-				       "GnomeCanvasRE::x2", (double) (PIECE_SIZE - 1),
-				       "GnomeCanvasRE::y2", (double) (PIECE_SIZE - 1),
-				       "GnomeCanvasRE::fill_color", get_piece_color (i),
-				       "GnomeCanvasRE::outline_color", "black",
-				       "GnomeCanvasRE::width_pixels", 0,
+				       "x1", 0.0,
+				       "y1", 0.0,
+				       "x2", (double) PIECE_SIZE,
+				       "y2", (double) PIECE_SIZE,
+				       "fill_color", get_piece_color (i),
+				       "outline_color", "black",
+				       "width_pixels", 0,
 				       NULL);
 
 		sprintf (buf, "%d", i + 1);
 
 		text = gnome_canvas_item_new (GNOME_CANVAS_GROUP (board[i]),
 					      gnome_canvas_text_get_type (),
-					      "GnomeCanvasText::text", buf,
-					      "GnomeCanvasText::x", (double) PIECE_SIZE / 2.0,
-					      "GnomeCanvasText::y", (double) PIECE_SIZE / 2.0,
-					      "GnomeCanvasText::font", PIECE_FONT,
-					      "GnomeCanvasText::anchor", GTK_ANCHOR_CENTER,
-					      "GnomeCanvasText::fill_color", "black",
+					      "text", buf,
+					      "x", (double) PIECE_SIZE / 2.0,
+					      "y", (double) PIECE_SIZE / 2.0,
+					      "font", PIECE_FONT,
+					      "anchor", GTK_ANCHOR_CENTER,
+					      "fill_color", "black",
 					      NULL);
 
 		gtk_object_set_data (GTK_OBJECT (board[i]), "piece_num", GINT_TO_POINTER (i));
