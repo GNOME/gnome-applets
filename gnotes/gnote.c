@@ -356,7 +356,7 @@ void gnote_new(gint width, gint height, gint x, gint y, gboolean hidden,
                const gchar *title, gboolean loaded_from_file,
                const gchar *type)
 {
-    GNote* the_note = g_new0(GNote,1);
+    GNote* the_note = g_new0(GNote, 1);
 
     g_debug("gnote_new(%d, %d, %d, %d, %d, %s, %ld, %s, %d, %s) called.",
             width, height, x, y, hidden, text, timestamp, title,
@@ -442,6 +442,16 @@ void gnote_new(gint width, gint height, gint x, gint y, gboolean hidden,
                        "destroy",
                        GTK_SIGNAL_FUNC(gnote_destroy_cb),
                        the_note->handle_box);
+    /* FIXME: can't do this because the window gets destroyed when
+    shutting down which deletes the notes.  very bad.  Way around? */
+/*     gtk_signal_connect(GTK_OBJECT(the_note->handle_box), */
+/*                        "delete_event", */
+/*                        GTK_SIGNAL_FUNC(gnote_delete_cb), */
+/*                        the_note->handle_box); */
+/*     gtk_signal_connect(GTK_OBJECT(the_note->handle_box), */
+/*                        "destroy_event", */
+/*                        GTK_SIGNAL_FUNC(gnote_delete_cb), */
+/*                        the_note->handle_box); */
     gtk_widget_set_usize(the_note->handle_box, 10, 0);
 
     /* create hbox */
@@ -457,7 +467,7 @@ void gnote_new(gint width, gint height, gint x, gint y, gboolean hidden,
 
     gtk_widget_show_all(the_note->hbox);
     gtk_widget_realize(the_note->window);
-
+    
     /*
      * setup window parameters.
      */
@@ -495,6 +505,11 @@ void gnote_new(gint width, gint height, gint x, gint y, gboolean hidden,
         gdk_cursor_destroy(cursor);
     };
 
+    if (the_note->hidden != FALSE)
+    {
+        gdk_window_hide(the_note->window->window);
+    }
+
     the_note->menu = gnote_create_menu(the_note);
     
     gnote_save(the_note);
@@ -522,7 +537,7 @@ void gnote_new_cb(AppletWidget *applet, gpointer data)
     gnote_new(width, height, 0, 0, FALSE, "",
               time(NULL), "GNotes!", FALSE, "");
 
-};
+}
 
 /*----------------------------------------------------------------------*/
 void gnote_destroy(gpointer prenote)
@@ -534,7 +549,7 @@ void gnote_delete_cb(GtkWidget *widget, gpointer handle_boxptr)
     GNote *the_note = get_gnote_based_on_boxptr(handle_boxptr);
     /* the window's desctruction handler will take care of everything */
     if(the_note->window)
-	    gtk_widget_destroy(the_note->window);
+        gtk_widget_destroy(the_note->window);
 }
 
 
@@ -550,7 +565,7 @@ void gnote_destroy_cb(GtkWidget *widget, gpointer handle_boxptr)
     free(fname);
 
     if(the_note->menu)
-	    gtk_widget_destroy(GTK_WIDGET(the_note->menu));
+        gtk_widget_destroy(GTK_WIDGET(the_note->menu));
     
     g_free(the_note->title);
     g_free(the_note->type);
