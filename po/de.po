@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-04 17:07+0100\n"
-"PO-Revision-Date: 2005-02-04 17:07+0100\n"
+"POT-Creation-Date: 2005-02-08 00:39+0100\n"
+"PO-Revision-Date: 2005-02-08 00:39+0100\n"
 "Last-Translator: Hendrik Brandt <heb@gnome-de.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -75,7 +75,6 @@ msgstr "Zeigt den Status der Barrierefreiheitsfunktionen der Tastatur an"
 #: accessx-status/applet.c:136 charpick/charpick.c:607
 #: drivemount/drivemount.c:132 geyes/geyes.c:192
 #: gswitchit/gswitchit-applet.c:602 modemlights/modem-applet.c:1031
-#: trashapplet/src/trashapplet.c:681
 msgid "translator_credits"
 msgstr ""
 "Karl Eichwalder <ke@suse.de>\n"
@@ -406,6 +405,7 @@ msgstr "Dieses Hilfsprogramm zeigt den Ladezustand Ihrer Laptop-Batterie an."
 #: gweather/gweather-about.c:53 mini-commander/src/about.c:54
 #: mixer/applet.c:1056 multiload/main.c:66
 #: stickynotes/stickynotes_applet_callbacks.c:442
+#: trashapplet/src/trashapplet.c:647
 msgid "translator-credits"
 msgstr ""
 "Karl Eichwalder <ke@suse.de>\n"
@@ -476,7 +476,7 @@ msgstr "_Warnen, falls der Batteriestand niedrig ist"
 #: mini-commander/src/preferences.c:368
 #: stickynotes/stickynotes_applet_callbacks.c:406
 #: stickynotes/stickynotes_applet_callbacks.c:625
-#: trashapplet/src/trashapplet.c:648
+#: trashapplet/src/trashapplet.c:614
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Beim Anzeigen der Hilfe ist ein Fehler aufgetreten: %s"
@@ -4357,6 +4357,7 @@ msgid "Trash"
 msgstr "Mülleimer"
 
 #: trashapplet/GNOME_Panel_TrashApplet.xml.h:2
+#: trashapplet/src/trashapplet.c:536
 msgid "_Empty Trash"
 msgstr "Mülleimer l_eeren"
 
@@ -4364,38 +4365,36 @@ msgstr "Mülleimer l_eeren"
 msgid "_Open"
 msgstr "Ö_ffnen"
 
-#: trashapplet/src/trashapplet.c:160
+#: trashapplet/src/trashapplet.c:162
 #, c-format
 msgid "Unable to find the Trash directory: %s"
 msgstr "Verzeichnis für den Mülleimer wurde nicht gefunden: %s"
 
-#: trashapplet/src/trashapplet.c:391
+#: trashapplet/src/trashapplet.c:393
 msgid "No Items in Trash"
 msgstr "Der Mülleimer ist leer"
 
-#: trashapplet/src/trashapplet.c:395
+#: trashapplet/src/trashapplet.c:397
 #, c-format
 msgid "%d Item in Trash"
 msgid_plural "%d Items in Trash"
 msgstr[0] "%d Objekt im Mülleimer"
 msgstr[1] "%d Objekte im Mülleimer"
 
-#: trashapplet/src/trashapplet.c:543
-msgid "Are you sure you want to empty all of the items from the trash?"
+#: trashapplet/src/trashapplet.c:513
+msgid "Empty all of the items from the trash?"
+msgstr "Möchten Sie alle Objekte aus dem Mülleimer löschen?"
+
+#: trashapplet/src/trashapplet.c:516
+msgid ""
+"If you choose to empty the trash, all items in it will be permanently lost. "
+"Please note that you can also delete them separately."
 msgstr ""
-"Sind Sie sicher, dass Sie alle Objekte aus dem Mülleimer löschen wollen?"
+"Wenn Sie den Mülleimer leeren, wird der gesamte Inhalt unwiderruflich "
+"gelöscht. Bitte beachten Sie, dass Objekte auch einzeln gelöscht werden "
+"können."
 
-#: trashapplet/src/trashapplet.c:557
-msgid "If you empty the trash, items will be permanently deleted."
-msgstr ""
-"Wenn Sie den Mülleimer leeren, wird der gesamte Inhalt unwiederruflich "
-"gelöscht."
-
-#: trashapplet/src/trashapplet.c:569
-msgid "_Empty"
-msgstr "_Leeren"
-
-#: trashapplet/src/trashapplet.c:626
+#: trashapplet/src/trashapplet.c:592
 #, c-format
 msgid ""
 "Error while spawning nautilus:\n"
@@ -4404,11 +4403,11 @@ msgstr ""
 "Fehler beim Aufrufen von Nautilus:\n"
 "%s"
 
-#: trashapplet/src/trashapplet.c:673
+#: trashapplet/src/trashapplet.c:639
 msgid "Trash Applet"
 msgstr "Müll-Applet"
 
-#: trashapplet/src/trashapplet.c:676
+#: trashapplet/src/trashapplet.c:642
 msgid ""
 "A GNOME trash bin that lives in your panel. You can use it to view the trash "
 "or drag and drop items into the trash."
@@ -4417,24 +4416,24 @@ msgstr ""
 "im Müll befindlichen Dateien anzuschauen oder Objekte in den Müll zu "
 "verschieben."
 
-#: trashapplet/src/trashapplet.c:701
+#: trashapplet/src/trashapplet.c:667
 msgid "Delete Immediately?"
 msgstr "Sofort löschen?"
 
-#: trashapplet/src/trashapplet.c:730
+#: trashapplet/src/trashapplet.c:696
 msgid "Cannot move items to trash, do you want to delete them immediately?"
 msgstr ""
 "Die Objekte konnten nicht in den Müll verschoben werden. Sollen diese sofort "
 "gelöscht werden?"
 
-#: trashapplet/src/trashapplet.c:733
+#: trashapplet/src/trashapplet.c:699
 msgid ""
 "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr ""
 "Einige Objekte konnten nicht in den Müll verschoben werden. Sollen diese "
 "sofort gelöscht werden?"
 
-#: trashapplet/src/trashapplet.c:834 trashapplet/src/trashapplet.c:851
+#: trashapplet/src/trashapplet.c:800 trashapplet/src/trashapplet.c:817
 #, c-format
 msgid ""
 "Unable to move to trash:\n"
