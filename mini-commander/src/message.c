@@ -56,7 +56,7 @@ void show_message(gchar *message)
 	    /* FIXME: cleanup needed */
 	    GtkWidget *frame;
 	    GtkWidget *message_label;
-	    gint x, y;
+	    gint x, y, yy;
 	    
 	    if(message_window != NULL)
 		gtk_widget_destroy(message_window);
@@ -65,7 +65,14 @@ void show_message(gchar *message)
 	    /* gtk_window_set_policy(GTK_WINDOW(message_window), 0, 0, 1); */
 	    gtk_widget_set_usize(GTK_WIDGET(message_window), prop.normal_size_x, 20);
 	    gdk_window_get_origin (applet->window, &x, &y);
-	    gtk_widget_set_uposition(message_window, x, y - 20 - 6);  
+	    y -= 20 + 6;
+	    if(y < 0)
+		{
+		    /* panel is at the top of the screen */
+		    gdk_window_get_size(applet->window, NULL, &yy);
+		    y += (20 + 6) + yy + 6;
+		}
+	    gtk_widget_set_uposition(message_window, x, y);
 	    gtk_widget_show(message_window);
 	    
 	    /* frame */
