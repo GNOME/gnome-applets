@@ -253,9 +253,6 @@ cb_applet_properties(AppletWidget * widget, gpointer data)
 					    20, 
 					    (gfloat)gdk_screen_width(), 
 					    16, 16, 16 );
-  gtk_signal_connect(GTK_OBJECT(adj), "value_changed",
-		     GTK_SIGNAL_FUNC(cb_adj), &o_config.max_task_width);
-  gtk_object_set_data(GTK_OBJECT(adj), "prop", prop);
   label = gtk_label_new(_("Maximum width of horizontal task list"));
   gtk_widget_show(label);
   spin = gtk_spin_button_new(adj, 1, 0);
@@ -264,14 +261,14 @@ cb_applet_properties(AppletWidget * widget, gpointer data)
 		   0, 1, 0, 1, GTK_FILL|GTK_EXPAND,0,0,0);
   gtk_table_attach(GTK_TABLE(table), spin, 
 		   1, 2, 0, 1, GTK_FILL|GTK_EXPAND,0,0,0);
+  gtk_signal_connect(GTK_OBJECT(adj), "value_changed",
+		     GTK_SIGNAL_FUNC(cb_adj), &o_config.max_task_width);
+  gtk_object_set_data(GTK_OBJECT(adj), "prop", prop);
 
   adj = (GtkAdjustment *)gtk_adjustment_new((gfloat)config.max_task_vwidth,
 					    4, 
 					    (gfloat)gdk_screen_width(), 
 					    4, 4, 4 );
-  gtk_signal_connect(GTK_OBJECT(adj), "value_changed",
-		     GTK_SIGNAL_FUNC(cb_adj), &o_config.max_task_vwidth);
-  gtk_object_set_data(GTK_OBJECT(adj), "prop", prop);
   label = gtk_label_new(_("Maximum width of vertical task list"));
   gtk_widget_show(label);
   spin = gtk_spin_button_new(adj, 1, 0);
@@ -280,12 +277,12 @@ cb_applet_properties(AppletWidget * widget, gpointer data)
 		   0, 1, 1, 2, GTK_FILL|GTK_EXPAND,0,0,0);
   gtk_table_attach(GTK_TABLE(table), spin, 
 		   1, 2, 1, 2, GTK_FILL|GTK_EXPAND,0,0,0);
+  gtk_signal_connect(GTK_OBJECT(adj), "value_changed",
+		     GTK_SIGNAL_FUNC(cb_adj), &o_config.max_task_vwidth);
+  gtk_object_set_data(GTK_OBJECT(adj), "prop", prop);
 
   adj = (GtkAdjustment *)gtk_adjustment_new((gfloat)config.task_rows_h, 1, 
 					    8, 1, 1, 1 );
-  gtk_signal_connect(GTK_OBJECT(adj), "value_changed",
-		     GTK_SIGNAL_FUNC(cb_adj), &o_config.task_rows_h);
-  gtk_object_set_data(GTK_OBJECT(adj), "prop", prop);
   label = gtk_label_new(_("Number of rows of horizontal tasks"));
   gtk_widget_show(label);
   spin = gtk_spin_button_new(adj, 1, 0);
@@ -294,11 +291,12 @@ cb_applet_properties(AppletWidget * widget, gpointer data)
 		   0, 1, 2, 3, GTK_FILL|GTK_EXPAND,0,0,0);
   gtk_table_attach(GTK_TABLE(table), spin, 
 		   1, 2, 2, 3, GTK_FILL|GTK_EXPAND,0,0,0);
+  gtk_signal_connect(GTK_OBJECT(adj), "value_changed",
+		     GTK_SIGNAL_FUNC(cb_adj), &o_config.task_rows_h);
+  gtk_object_set_data(GTK_OBJECT(adj), "prop", prop);
+
   adj = (GtkAdjustment *)gtk_adjustment_new((gfloat)config.task_rows_v, 1, 
 					    4, 1, 1, 1 );
-  gtk_signal_connect(GTK_OBJECT(adj), "value_changed",
-		     GTK_SIGNAL_FUNC(cb_adj), &o_config.task_rows_v);
-  gtk_object_set_data(GTK_OBJECT(adj), "prop", prop);
   label = gtk_label_new(_("Number of vertical columns of tasks"));
   gtk_widget_show(label);
   spin = gtk_spin_button_new(adj, 1, 0);
@@ -307,11 +305,12 @@ cb_applet_properties(AppletWidget * widget, gpointer data)
 		   0, 1, 3, 4, GTK_FILL|GTK_EXPAND,0,0,0);
   gtk_table_attach(GTK_TABLE(table), spin, 
 		   1, 2, 3, 4, GTK_FILL|GTK_EXPAND,0,0,0);
+  gtk_signal_connect(GTK_OBJECT(adj), "value_changed",
+		     GTK_SIGNAL_FUNC(cb_adj), &o_config.task_rows_v);
+  gtk_object_set_data(GTK_OBJECT(adj), "prop", prop);
+
   adj = (GtkAdjustment *)gtk_adjustment_new((gfloat)config.pager_rows, 1, 
 					    8, 1, 1, 1 );
-  gtk_signal_connect(GTK_OBJECT(adj), "value_changed",
-		     GTK_SIGNAL_FUNC(cb_adj), &o_config.pager_rows);
-  gtk_object_set_data(GTK_OBJECT(adj), "prop", prop);
   label = gtk_label_new(_("Number rows of pagers"));
   gtk_widget_show(label);
   spin = gtk_spin_button_new(adj, 1, 0);
@@ -320,6 +319,9 @@ cb_applet_properties(AppletWidget * widget, gpointer data)
 		   0, 1, 4, 5, GTK_FILL|GTK_EXPAND,0,0,0);
   gtk_table_attach(GTK_TABLE(table), spin, 
 		   1, 2, 4, 5, GTK_FILL|GTK_EXPAND,0,0,0);
+  gtk_signal_connect(GTK_OBJECT(adj), "value_changed",
+		     GTK_SIGNAL_FUNC(cb_adj), &o_config.pager_rows);
+  gtk_object_set_data(GTK_OBJECT(adj), "prop", prop);
 
   gtk_widget_show(prop);
 }
@@ -1980,7 +1982,7 @@ init_applet_gui(int horizontal)
 	  gtk_box_pack_start(GTK_BOX(box), button, FALSE, FALSE, 0);
 	  break;
 	 default:
-	  arrow = NULL; /*shut up warning*/
+	  arrow = box = NULL; /*shut up warning*/
 	  g_assert_not_reached();
 	  break;
 	}
