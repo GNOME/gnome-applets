@@ -35,7 +35,11 @@ about(AppletWidget *applet, gpointer data)
   about_box = gnome_about_new(
     _("Where Am I?"), VERSION,
     _("Copyright 1999 John Kodis"), authors,
-    _("A cursor position reporting applet."), NULL);
+    _("A cursor position reporting applet.\n"
+      "= Clicking mouse button 1 grabs the cursor.\n"
+      "= Dragging with mouse button 1 held down "
+      "shows the size of the region."),
+    NULL);
 
   gtk_widget_show(about_box);
 }
