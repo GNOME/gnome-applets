@@ -46,6 +46,7 @@ static GtkWidget * properties_timezone_render(asclock *my_asclock, GtkWidget *pa
   float yloc;
   char cmd[1024];
   int fd;
+  char *old_locale;
 
   do {
 	  
@@ -55,11 +56,13 @@ static GtkWidget * properties_timezone_render(asclock *my_asclock, GtkWidget *pa
 
   close (fd);
   
-  snprintf(cmd, 1024, 
-          "xearth -ppm -night 15 -size '320 320' -mag 0.95 -pos 'fixed 0 %.4f' -nostars >> %s",
-          lon, fname);
+  old_locale = setlocale(LC_NUMERIC, "C");
+  g_snprintf(cmd, sizeof(cmd), 
+	     "xearth -ppm -night 15 -size '320 320' -mag 0.95 -pos 'fixed 0 %.4f' -nostars >> %s",
+	     lon, fname);
 
   system(cmd);
+  setlocale(LC_NUMERIC, old_locale);
 
   gdk_imlib_load_file_to_pixmap(fname, &pmap, &mask);
 

@@ -1,0 +1,8 @@
+Wed May 31 14:50:35 2000  George Lebl <jirka@5z.com>
+
+	* dialogs.c: protect the snprintf with setlocale(LC_NUMERIC, "C")
+	  since xearth does not follow locale when reading arguments
+
+	* config.c: fix some unused warnings when the standalone code is
+	  disabled
+

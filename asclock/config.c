@@ -11,6 +11,14 @@ void config (void)
 
 /*************************************************************************************/
 
+char *themes_directories[] = {
+  "./themes/",
+  ASCLOCK_THEMES_DIR ,
+  "",
+  NULL
+};
+
+#ifdef ASCLOCK_GTK
 static char *help_message[] = {
 "where options include:",
 "    -h, --help              this help message",
@@ -24,13 +32,6 @@ static char *help_message[] = {
 NULL
 };
  
-char *themes_directories[] = {
-  "./themes/",
-  ASCLOCK_THEMES_DIR ,
-  "",
-  NULL
-};
-
 static void usage(char *ProgName)
 {
   char **cpp;
@@ -91,6 +92,7 @@ static int findTheme(char*input, char *ret)
     }
   return FALSE;
 }
+#endif /* ASCLOCK_GTK */
 
 int loadTheme(char *themesdir)
 {
