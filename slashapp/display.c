@@ -820,11 +820,11 @@ static void create_display_pixmaps(AppData *ad)
 	ad->background = gdk_pixmap_new (ad->applet->window,
 					 ad->width, ad->height, -1);
 
-	gdk_draw_rectangle (ad->display, ad->applet->style->white_gc,
+	gdk_draw_rectangle (ad->display, ad->applet->style->light_gc[0],
 			    TRUE, 0, 0, ad->width, ad->height);
-	gdk_draw_rectangle (ad->disp_buf, ad->applet->style->white_gc, 
+	gdk_draw_rectangle (ad->disp_buf, ad->applet->style->light_gc[0], 
 			    TRUE, 0, 0, ad->width, ad->height);
-	gdk_draw_rectangle (ad->background, ad->applet->style->white_gc,
+	gdk_draw_rectangle (ad->background, ad->applet->style->light_gc[0],
 			    TRUE, 0, 0, ad->width, ad->height);
 }
 
