@@ -10,7 +10,6 @@ bin_PROGRAMS = gnomepager_applet
 
 gnomepager_applet_SOURCES = \
 	gnomepager_applet.c \
-	gnomepager.h \
 	icon1.xpm \
 	icon2.xpm \
 	icon3.xpm	\
