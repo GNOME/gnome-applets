@@ -227,9 +227,56 @@ progdir_toggled (GtkToggleButton *button, gpointer data)
 }
 
 static void
+prefs_help_cb (GtkWindow *dialog)
+{
+	GError *error = NULL;
+	static GnomeProgram *applet_program = NULL;
+	
+	if (!applet_program) {
+		int argc = 1;
+		char *argv[2] = { "battstat" };
+		applet_program = gnome_program_init ("battstat", VERSION,
+						      LIBGNOME_MODULE, argc, argv,
+     						      GNOME_PROGRAM_STANDARD_PROPERTIES, NULL);
+	}
+
+	egg_help_display_desktop_on_screen (
+			applet_program, "battstat", "battstat", "battstatt-prefs",
+			gtk_widget_get_screen (GTK_WIDGET (dialog)),
+			&error);
+
+	if (error) {
+		GtkWidget *error_dialog;
+
+		error_dialog = gtk_message_dialog_new (
+				NULL,
+				GTK_DIALOG_DESTROY_WITH_PARENT,
+				GTK_MESSAGE_ERROR,
+				GTK_BUTTONS_CLOSE,
+				_("There was an error displaying help: %s"),
+				error->message);
+
+		g_signal_connect (error_dialog, "response",
+				  G_CALLBACK (gtk_widget_destroy),
+				  NULL);
+
+		gtk_window_set_resizable (GTK_WINDOW (error_dialog), FALSE);
+		gtk_window_set_screen (GTK_WINDOW (error_dialog),
+				       gtk_widget_get_screen (GTK_WIDGET (dialog)));
+		gtk_widget_show (error_dialog);
+		g_error_free (error);
+	}
+}
+
+static void
 response_cb (GtkDialog *dialog, gint id, gpointer data)
 {
   ProgressData   *battstat = data;
+  
+  if (id == GTK_RESPONSE_HELP) {
+  	prefs_help_cb (GTK_WINDOW (dialog));
+	return;
+  }
   
   gtk_widget_hide (GTK_WIDGET (battstat->prop_win));
   
@@ -244,7 +291,6 @@ prop_cb (BonoboUIComponent *uic,
   GtkWidget *layout_table;
   GtkWidget *preview_hbox;
   GtkWidget *widget;
-  GtkWidget *batterypixwid, *statuspixwid;
   guint      percentage;
 
   apm_readinfo (PANEL_APPLET (battstat->applet));
@@ -374,53 +420,35 @@ prop_cb (BonoboUIComponent *uic,
   battstat->dock_toggle = glade_xml_get_widget (glade_xml, "dock_toggle");
 #endif
   layout_table = glade_xml_get_widget (glade_xml, "layout_table");
-	
-  battstat->radio_lay_batt_on = glade_xml_get_widget (glade_xml, "show_batt_radio");
 
-  widget = glade_xml_get_widget (glade_xml, "hide_batt_radio");
-	
-  if(battstat->showbattery) {
-    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (battstat->radio_lay_batt_on), 1);
-  } else {
-    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), 1);
+  battstat->radio_lay_batt_on = glade_xml_get_widget (glade_xml, "show_batt_toggle");
+  
+  if(battstat->radio_lay_batt_on) {
+    gtk_toggle_button_set_state (GTK_TOGGLE_BUTTON (battstat->radio_lay_batt_on), TRUE);
   }
   g_signal_connect (G_OBJECT (battstat->radio_lay_batt_on), "toggled",
   		    G_CALLBACK (show_bat_toggled), battstat);
 
-  battstat->radio_lay_status_on = glade_xml_get_widget (glade_xml, "show_status_radio");
+  battstat->radio_lay_status_on = glade_xml_get_widget (glade_xml, "show_status_toggle");
   g_signal_connect (G_OBJECT (battstat->radio_lay_status_on), "toggled",
   		    G_CALLBACK (show_status_toggled), battstat);
 	
   widget = glade_xml_get_widget (glade_xml, "hide_status_radio");
 
   if(battstat->showstatus) {
-    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (battstat->radio_lay_status_on), 1);
-  } else {
-    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), 1);   
+    gtk_toggle_button_set_state (GTK_TOGGLE_BUTTON (battstat->radio_lay_status_on), TRUE);
   }
 
-  battstat->radio_lay_percent_on = glade_xml_get_widget (glade_xml, "show_percent_radio");
+  battstat->radio_lay_percent_on = glade_xml_get_widget (glade_xml, "show_percent_toggle");
   g_signal_connect (G_OBJECT (battstat->radio_lay_percent_on), "toggled",
   		    G_CALLBACK (show_percent_toggled), battstat);
 
   widget = glade_xml_get_widget (glade_xml, "hide_percent_radio");
 
   if(battstat->showpercent) {
-    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (battstat->radio_lay_percent_on), 1);
-  } else {
-    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), 1);   
+    gtk_toggle_button_set_state (GTK_TOGGLE_BUTTON (battstat->radio_lay_percent_on), TRUE);
   }
 
-  batterypixwid = gtk_pixmap_new (battstat->pixmap, battstat->mask);
-  gtk_table_attach (GTK_TABLE (layout_table), batterypixwid, 0, 1, 1, 2,
-                    (GtkAttachOptions) (GTK_EXPAND),
-                    (GtkAttachOptions) (GTK_EXPAND), 0, 0);
-
-  statuspixwid = gtk_pixmap_new (statusimage[AC], statusmask[AC]);
-
-  gtk_table_attach (GTK_TABLE (layout_table), statuspixwid, 0, 1, 2, 3,
-                    (GtkAttachOptions) (GTK_EXPAND),
-                    (GtkAttachOptions) (GTK_EXPAND), 0, 0);
 #if 0
   if(battstat->usedock) {
     gtk_toggle_button_set_state (GTK_TOGGLE_BUTTON (battstat->dock_toggle), TRUE);
@@ -431,6 +459,11 @@ prop_cb (BonoboUIComponent *uic,
 #endif
    
    gtk_dialog_add_button (battstat->prop_win, GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE);
+   gtk_dialog_add_button (battstat->prop_win, GTK_STOCK_HELP, GTK_RESPONSE_HELP);
+   gtk_dialog_set_default_response (GTK_DIALOG (battstat->prop_win), GTK_RESPONSE_CLOSE);
+   gtk_window_set_resizable (GTK_WINDOW (battstat->prop_win), FALSE);
+   gtk_dialog_set_has_separator (GTK_DIALOG (battstat->prop_win), FALSE);
+   
    g_signal_connect (G_OBJECT (battstat->prop_win), "response",
    		     G_CALLBACK (response_cb), battstat);
    gtk_widget_show_all (GTK_WIDGET (battstat->prop_win));
