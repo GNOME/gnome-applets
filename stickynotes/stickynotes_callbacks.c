@@ -165,30 +165,26 @@ void properties_apply_title_cb(StickyNote *note)
 /* Properties Dialog Callback : Apply color */
 void properties_apply_color_cb(StickyNote *note)
 {
-	g_free(note->color);
-	if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(note->w_default)))
-		note->color = NULL;
-	else {
+	gchar *color_str = NULL;
+	
+	if (!gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(note->w_default))) {
 		GdkColor color;
-		
 		gnome_color_picker_get_i16(GNOME_COLOR_PICKER(note->w_color), &color.red, &color.green, &color.blue, NULL);
-		note->color = g_strdup_printf("#%.2x%.2x%.2x", color.red / 256, color.green / 256, color.blue / 256);
+		color_str = g_strdup_printf("#%.2x%.2x%.2x", color.red / 256, color.green / 256, color.blue / 256);
 	}
 	
-	gtk_widget_set_sensitive(glade_xml_get_widget(note->properties, "color_label"), note->color != NULL);
-	gtk_widget_set_sensitive(note->w_color, note->color != NULL);
+	stickynote_set_color(note, color_str, TRUE);
 
-	stickynote_set_color(note, note->color);
+	g_free(color_str);
 }
 
 /* Properties Dialog Callback : Color */
 void properties_color_cb(GnomeColorPicker *cp, guint r, guint g, guint b, guint a, StickyNote *note)
 {
 	/* Reduce RGB from 16-bit to 8-bit values and calculate HTML-style hex specification for the color */
-	g_free(note->color);
-	note->color = g_strdup_printf("#%.2x%.2x%.2x", r / 256, g / 256, b / 256);
-
-	stickynote_set_color(note, note->color);
+	gchar *color_str = g_strdup_printf("#%.2x%.2x%.2x", r / 256, g / 256, b / 256);
+	stickynote_set_color(note, color_str, TRUE);
+	g_free(color_str);
 }
 
 /* Properties Dialog Callback : Activate */

@@ -59,8 +59,8 @@ void stickynote_free(StickyNote *note);
 
 gboolean stickynote_get_empty(const StickyNote *note);
 
-void stickynote_set_color(StickyNote *note, const gchar* color_str);
 void stickynote_set_title(StickyNote *note, const gchar* title);
+void stickynote_set_color(StickyNote *note, const gchar* color_str, gboolean save);
 void stickynote_set_locked(StickyNote *note, gboolean locked);
 void stickynote_set_visible(StickyNote *note, gboolean visible);
 

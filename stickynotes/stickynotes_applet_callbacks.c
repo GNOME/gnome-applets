@@ -240,7 +240,7 @@ void preferences_apply_cb(GConfClient *client, guint cnxn_id, GConfEntry *entry,
 	    strcmp(entry->key, GCONF_PATH "/defaults/color") == 0) {
 		for (i = 0; i < g_list_length(stickynotes->notes); i++) {
 			StickyNote *note = g_list_nth_data(stickynotes->notes, i);
-			stickynote_set_color(note, note->color);
+			stickynote_set_color(note, note->color, FALSE);
 		}
 	}
 
