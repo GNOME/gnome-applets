@@ -70,6 +70,7 @@ struct _MultiloadApplet
 	gboolean view_swapload;
 	gboolean view_loadavg;
 	
+	GtkWidget *about_dialog;
 	GtkWidget *check_boxes[NGRAPHS];
 };
 

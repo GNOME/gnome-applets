@@ -38,7 +38,6 @@ about_cb (BonoboUIComponent *uic,
 	  MultiloadApplet   *ma,
 	  const char        *name)
 {
-    static GtkWidget *about = NULL;
     GdkPixbuf        *pixbuf;
     GError           *error = NULL;
     gchar            *file;
@@ -57,10 +56,8 @@ about_cb (BonoboUIComponent *uic,
 
     const gchar *translator_credits = _("translator_credits");
 
-    if (about) {
-	gtk_window_set_screen (GTK_WINDOW (about),
-			       gtk_widget_get_screen (GTK_WIDGET (ma->applet)));
-	gtk_window_present (GTK_WINDOW (about));
+    if (ma->about_dialog) {
+	gtk_window_present (GTK_WINDOW (ma->about_dialog));
 	return;
     }
 	
@@ -68,33 +65,32 @@ about_cb (BonoboUIComponent *uic,
     pixbuf = gdk_pixbuf_new_from_file (file, &error);
     g_free (file);
    
-    if (error) 
-    	{
-   	    g_warning (G_STRLOC ": cannot open %s: %s", file, error->message);
-	    g_error_free (error);
-   	}
+    if (error) {
+	g_warning (G_STRLOC ": cannot open %s: %s", file, error->message);
+	g_error_free (error);
+    }
 
 	
-    about = gnome_about_new
-	(_("System Monitor"), VERSION,
-	 "(C) 1999 - 2002 The Free Software Foundation",
-	 _("Released under the GNU General Public License.\n\n"
-	   "A system load monitor capable of displaying graphs for CPU, ram, and swap space use, plus network traffic."),
-	 authors,
-	 documenters,
-	 strcmp (translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
-	 pixbuf);
+    ma->about_dialog = gnome_about_new (_("System Monitor"), VERSION,
+					"(C) 1999 - 2002 The Free Software Foundation",
+					_("Released under the GNU General Public License.\n\n"
+					  "A system load monitor capable of displaying graphs for CPU, ram, and swap space use, plus network traffic."),
+					authors,
+					documenters,
+					strcmp (translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
+					pixbuf);
 
     if (pixbuf) 
-   	g_object_unref (pixbuf);
+	g_object_unref (pixbuf);
   
-    gtk_window_set_screen (GTK_WINDOW (about),
-   			   gtk_widget_get_screen (GTK_WIDGET (ma->applet)));
-    gtk_window_set_wmclass (GTK_WINDOW (about), "system monitor", "System Monitor");
-    g_signal_connect (G_OBJECT (about), "destroy",
-			G_CALLBACK (gtk_widget_destroyed), &about);
+    gtk_window_set_screen (GTK_WINDOW (ma->about_dialog),
+			   gtk_widget_get_screen (GTK_WIDGET (ma->applet)));
+    gtk_window_set_wmclass (GTK_WINDOW (ma->about_dialog), "system monitor",
+			    "System Monitor");
+    g_signal_connect (G_OBJECT (ma->about_dialog), "destroy",
+		      G_CALLBACK (gtk_widget_destroyed), &ma->about_dialog);
 
-    gtk_widget_show (about);
+    gtk_widget_show (ma->about_dialog);
 }
 
 /* run the full-scale system process monitor */
@@ -180,6 +176,9 @@ multiload_destroy_cb(GtkWidget *widget, gpointer data)
 		load_graph_unalloc(ma->graphs[i]);
 		g_free(ma->graphs[i]);
 	}
+	
+	if (ma->about_dialog)
+		gtk_widget_destroy (ma->about_dialog);
 	
 	gtk_widget_destroy(GTK_WIDGET(ma->applet));
 			
@@ -382,6 +381,8 @@ multiload_applet_new(PanelApplet *applet, const gchar *iid, gpointer data)
 	ma = g_new0(MultiloadApplet, 1);
 	
 	ma->applet = applet;
+	
+	ma->about_dialog = NULL;
 	
 	gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gnome-monitor.png");
 	

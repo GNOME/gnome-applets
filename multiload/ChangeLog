@@ -1,3 +1,13 @@
+2004-01-31  Archana Shah  <archana.shah@wipro.com>
+
+	* global.h: Added a field in structure MultiloadApplet for
+	about dialog.
+	* main.c: (multiload_applet_new): Initialized about_dialog with NULL.
+	(about_cb): Changed to use about_dialog member field instead of
+	static variable.
+	(multiload_destroy_cb): about)_dialog is removed when applet is removed.
+	Fixes bug# 132293
+
 2004-01-30 Breda McColgan <breda.mccolgan@sun.com>
 
 	* docs/C/multiload.xml: Updated for GNOME 2.6, technical review draft
