@@ -3,7 +3,7 @@ gladedir = $(datadir)/battstat_applet
 glade_DATA = battstat_applet.glade
 
 if HAVE_LIBAPM
-APMLIB =
+APMLIB = -lapm
 APMDIR =
 APMINC = 
 else

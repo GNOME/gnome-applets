@@ -251,12 +251,9 @@ case "${host}" in
 	AC_SUBST(HAVE_LIBAPM)
 	;;
   *-*-linux*)
-  	HAVE_LIBAPM=yes
-  	AM_CONDITIONAL(HAVE_LIBAPM, test "x$HAVE_LIBAPM" = "xyes")
-	AC_SUBST(HAVE_LIBAPM)
-	AC_CHECK_LIB(apm,apm_read,,[
-	AC_MSG_ERROR([*** libapm not found.])])
-	LDFLAGS="$LDFLAGS -lapm"
+	AC_CHECK_LIB(apm,apm_read,[HAVE_LIBAPM=yes],[HAVE_LIBAPM=no])
+	AM_CONDITIONAL(HAVE_LIBAPM, test "x$HAVE_LIBAPM" = "xyes")
+	AC_SUBST(HAVE_LIBAPM)  
 	;;
 esac
 

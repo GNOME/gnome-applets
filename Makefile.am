@@ -87,7 +87,8 @@ DIST_SUBDIRS = \
 	multiload	\
 	gtik		\
  	gweather 	\
-	mini-commander
+	mini-commander	\
+	man
 
 EXTRA_DIST = \
 	COPYING-DOCS		\
