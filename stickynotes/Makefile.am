@@ -31,13 +31,13 @@ stickynotes_applet_SOURCES = \
 stickynotes_applet_LDADD = \
 	$(GNOME_APPLETS_LIBS)
 
-docdir = ${prefix}/doc/$(PACKAGE)
+docdir = ${prefix}/doc/stickynotes
 doc_DATA = \
 	README \
 	TODO \
 	ChangeLog
 
-gladedir = $(datadir)/$(PACKAGE)
+gladedir = $(datadir)/stickynotes
 glade_DATA = stickynotes_applet.glade
 
 xmldir = $(datadir)/gnome-2.0/ui
