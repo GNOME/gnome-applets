@@ -3,8 +3,8 @@ figs = \
         figures/battstat-applet.png \
         figures/battstat-general.png
 docname = battstat
-lang = C
-omffile = battstat-C.omf
+lang = ja
+omffile = battstat-ja.omf
 entities = legal.xml
 include $(top_srcdir)/xmldocs.make
 dist-hook: app-dist-hook
