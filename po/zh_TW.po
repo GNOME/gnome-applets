@@ -6,9 +6,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-applets 1.98.0\n"
-"POT-Creation-Date: 2002-04-10 21:28+0800\n"
-"PO-Revision-Date: 2002-04-12 20:24+0800\n"
+"Project-Id-Version: gnome-applets 1.99.0\n"
+"POT-Creation-Date: 2002-04-20 10:23+0800\n"
+"PO-Revision-Date: 2002-04-20 11:11+0800\n"
 "Last-Translator: Abel Cheung <maddog@linux.org.hk>\n"
 "Language-Team: traditional Chinese <zh-l10n@linux.org.tw>\n"
 "MIME-Version: 1.0\n"
@@ -29,25 +29,25 @@ msgstr "此面板程式將不能正常運作 (即使它仍能啟動)。\n"
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:316 battstat/battstat_applet.c:834
+#: battstat/battstat_applet.c:316 battstat/battstat_applet.c:843
 msgid "High"
 msgstr "高"
 
 # src/battstat_applet.c:314 src/battstat_applet.c:793
 #. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:836
+#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:845
 msgid "Low"
 msgstr "低"
 
 # src/battstat_applet.c:315 src/battstat_applet.c:794
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:838
+#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:847
 msgid "Critical"
 msgstr "極低"
 
 # src/battstat_applet.c:316 src/battstat_applet.c:795
 #. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:840
+#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:849
 msgid "Charging"
 msgstr "正在充電"
 
@@ -66,7 +66,7 @@ msgstr "電池已滿格！"
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:445 battstat/battstat_applet.c:997
+#: battstat/battstat_applet.c:445 battstat/battstat_applet.c:1006
 #, c-format
 msgid ""
 "System is running on battery power\n"
@@ -79,7 +79,7 @@ msgstr ""
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:449 battstat/battstat_applet.c:1005
+#: battstat/battstat_applet.c:449 battstat/battstat_applet.c:1014
 #, c-format
 msgid ""
 "System is running on AC power\n"
@@ -91,16 +91,16 @@ msgstr ""
 # src/battstat_applet.c:417
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:455 battstat/battstat_applet.c:929
-#: battstat/battstat_applet.c:1018
+#: battstat/battstat_applet.c:455 battstat/battstat_applet.c:938
+#: battstat/battstat_applet.c:1027
 msgid "System is running on battery power"
 msgstr "系統正在使用電池"
 
 # src/battstat_applet.c:417
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:458 battstat/battstat_applet.c:935
-#: battstat/battstat_applet.c:1024
+#: battstat/battstat_applet.c:458 battstat/battstat_applet.c:944
+#: battstat/battstat_applet.c:1033
 msgid "System is running on AC power"
 msgstr "系統正在使用交流電"
 
@@ -112,7 +112,7 @@ msgstr "不適用"
 # src/battstat_applet.c:955
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:596 battstat/battstat_applet.c:909
+#: battstat/battstat_applet.c:596 battstat/battstat_applet.c:918
 #, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
 msgstr "系統正在使用電池。電池︰%d%% (%s)"
@@ -121,7 +121,7 @@ msgstr "系統正在使用電池。電池︰%d%% (%s)"
 # src/battstat_applet.c:955
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:603 battstat/battstat_applet.c:916
+#: battstat/battstat_applet.c:603 battstat/battstat_applet.c:925
 #, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
 msgstr "系統正在使用交流電。電池︰%d%% (%s)"
@@ -212,18 +212,33 @@ msgstr ""
 "偏好設定中的暫停模式指令並未設定好。\n"
 "請更改偏好設定並再試一次。"
 
+#. if your charset supports it, please replace the "o" in
+#. * "Jorgen" into U00F6
+#: battstat/battstat_applet.c:803
+msgid "Jorgen Pehrson <jp@spektr.eu.org>"
+msgstr "Jorgen Pehrson <jp@spektr.eu.org>"
+
+#: battstat/battstat_applet.c:813 cdplayer/cdplayer.c:418
+#: charpick/charpick.c:367 drivemount/drivemount.c:417 geyes/geyes.c:209
+#: gkb-new/gkb.c:568 gtik/gtik.c:672 gweather/gweather-about.c:39
+#: mini-commander/src/about.c:40 mixer/mixer.c:749
+#: modemlights/modemlights.c:203 multiload/main.c:50
+#: panel-menu/panel-menu.c:672
+msgid "translator_credits"
+msgstr "Abel Cheung <maddog@linux.org.hk>"
+
 # src/battstat_applet.c:732
 #. The long name of the applet in the About dialog.
-#: battstat/battstat_applet.c:807
+#: battstat/battstat_applet.c:817
 msgid "Battery status utility"
 msgstr "電池狀態公用程式"
 
-#: battstat/battstat_applet.c:809
+#: battstat/battstat_applet.c:819
 msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 msgstr "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 
 # src/battstat_applet.c:735
-#: battstat/battstat_applet.c:810
+#: battstat/battstat_applet.c:820
 msgid "This utility show the status of your laptop battery."
 msgstr "此公用程式能顯示攜帶型電腦的電池狀態。"
 
@@ -255,7 +270,7 @@ msgstr "不同電量的電池顏色 (%)"
 # src/properties.c:320
 #: battstat/battstat_applet.glade.h:8
 msgid "Beep when either of the above is true"
-msgstr "遇到以上情況時發出嗶聲"
+msgstr "遇到以上情況時發出聲響"
 
 # src/properties.c:197
 #: battstat/battstat_applet.glade.h:9
@@ -279,13 +294,13 @@ msgstr "向上移動"
 
 # src/properties.c:318
 #: battstat/battstat_applet.glade.h:13
-msgid "Notify me when battery charge is _low"
-msgstr "當電量太低時請通知我(_L)"
+msgid "Notify me when battery charge is low"
+msgstr "當電量太低時請通知我"
 
 # src/properties.c:319
 #: battstat/battstat_applet.glade.h:14
 msgid "Notify me when battery is fully re-charged"
-msgstr "當電量滿時請通知我"
+msgstr "當電量全滿時請通知我"
 
 # src/properties.c:228
 #: battstat/battstat_applet.glade.h:15
@@ -374,7 +389,7 @@ msgstr "關於..."
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
 #: mixer/GNOME_MixerApplet.xml.h:2 modemlights/GNOME_ModemlightsApplet.xml.h:2
 msgid "Help"
-msgstr "輔助說明"
+msgstr "說明"
 
 #: battstat/GNOME_BattstatApplet.xml.h:3 cdplayer/GNOME_CDPlayerApplet.xml.h:3
 #: charpick/GNOME_CharpickerApplet.xml.h:3
@@ -389,30 +404,44 @@ msgstr "偏好設定..."
 
 #: battstat/GNOME_BattstatApplet.xml.h:4
 msgid "Suspend Computer..."
-msgstr "電腦進入暫停模式..."
+msgstr "令電腦進入暫停模式..."
 
-#: cdplayer/cdplayer.c:146 cdplayer/cdplayer.c:819
+# src/battstat_applet.c:732
+#: battstat/sounds/battstat_applet.soundlist.in.h:1
+msgid "Battery Status Utility"
+msgstr "電池狀態公用程式"
+
+# src/battstat_applet.c:614
+#: battstat/sounds/battstat_applet.soundlist.in.h:2
+msgid "Battery fully re-charged"
+msgstr "電池電量全滿"
+
+#: battstat/sounds/battstat_applet.soundlist.in.h:3
+msgid "Battery power low"
+msgstr "電池電量過低"
+
+#: cdplayer/cdplayer.c:146 cdplayer/cdplayer.c:828
 msgid "Stop"
 msgstr "停止"
 
-#: cdplayer/cdplayer.c:148 cdplayer/cdplayer.c:821
+#: cdplayer/cdplayer.c:148 cdplayer/cdplayer.c:830
 msgid "Play / Pause"
 msgstr "播放 / 暫停"
 
-#: cdplayer/cdplayer.c:150 cdplayer/cdplayer.c:823
+#: cdplayer/cdplayer.c:150 cdplayer/cdplayer.c:832
 #: drivemount/GNOME_DriveMountApplet.xml.h:3
 msgid "Eject"
 msgstr "退出碟片"
 
-#: cdplayer/cdplayer.c:152 cdplayer/cdplayer.c:825
+#: cdplayer/cdplayer.c:152 cdplayer/cdplayer.c:834
 msgid "Previous Track"
 msgstr "上一首"
 
-#: cdplayer/cdplayer.c:154 cdplayer/cdplayer.c:827
+#: cdplayer/cdplayer.c:154 cdplayer/cdplayer.c:836
 msgid "Next Track"
 msgstr "下一首"
 
-#: cdplayer/cdplayer.c:159 cdplayer/cdplayer.c:829
+#: cdplayer/cdplayer.c:159 cdplayer/cdplayer.c:838
 #: cdplayer/GNOME_CDPlayerApplet.server.in.h:1
 msgid "CD Player"
 msgstr "CD 播放程式"
@@ -445,11 +474,11 @@ msgstr "在這裡設定裝置的路徑"
 msgid "Use _Default"
 msgstr "使用預設值(_D)"
 
-#: cdplayer/cdplayer.c:420
+#: cdplayer/cdplayer.c:427
 msgid "CD Player Applet"
 msgstr "CD 播放器面板程式"
 
-#: cdplayer/cdplayer.c:421
+#: cdplayer/cdplayer.c:428
 msgid ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
@@ -457,35 +486,35 @@ msgstr ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 移植版本)"
 
-#: cdplayer/cdplayer.c:423 cdplayer/cdplayer.c:830
+#: cdplayer/cdplayer.c:430 cdplayer/cdplayer.c:839
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr "CD 播放器面板程式是面板上的簡單音樂 CD 播放器"
 
-#: cdplayer/cdplayer.c:698 cdplayer/cdplayer.c:707
+#: cdplayer/cdplayer.c:707 cdplayer/cdplayer.c:716
 msgid "Elapsed time"
 msgstr "播放時間"
 
-#: cdplayer/cdplayer.c:701 cdplayer/cdplayer.c:709
+#: cdplayer/cdplayer.c:710 cdplayer/cdplayer.c:718
 msgid "Track number"
 msgstr "音軌號碼"
 
-#: cdplayer/cdplayer.c:820
+#: cdplayer/cdplayer.c:829
 msgid "Click this button to Stop playing the CD"
 msgstr "按下此按鈕來停止播放 CD"
 
-#: cdplayer/cdplayer.c:822
+#: cdplayer/cdplayer.c:831
 msgid "Click this button to Play or Pause the CD"
 msgstr "按下此按鈕來播放或暫停播放 CD"
 
-#: cdplayer/cdplayer.c:824
+#: cdplayer/cdplayer.c:833
 msgid "Click this button to eject the CD"
 msgstr "按下此按鈕來退出 CD 碟片"
 
-#: cdplayer/cdplayer.c:826
+#: cdplayer/cdplayer.c:835
 msgid "Click this button to Play the previous track in the CD"
 msgstr "按下此按鈕來播放 CD 的上一個音軌"
 
-#: cdplayer/cdplayer.c:828
+#: cdplayer/cdplayer.c:837
 msgid "Click this button to Play the next track in the CD"
 msgstr "按下此按鈕來播放 CD 的下一個音軌"
 
@@ -510,26 +539,32 @@ msgstr "播效音樂 CD 的面板程式"
 msgid "Run External CD Player"
 msgstr "執行外部的 CD 播放程式"
 
-#: charpick/charpick.c:363
+#. If your charset supports it, please use U00F1 to replace the "n"
+#. * in "Muniz".
+#: charpick/charpick.c:359
+msgid "Alexandre Muniz <munizao@xprt.net>"
+msgstr "Alexandre Muniz <munizao@xprt.net>"
+
+#: charpick/charpick.c:375
 msgid "Character Picker"
 msgstr "特殊字元選擇程式"
 
-#: charpick/charpick.c:365
+#: charpick/charpick.c:377
 msgid "Copyright (C) 1998"
 msgstr "版權所有 (C) 1998"
 
-#: charpick/charpick.c:366
+#: charpick/charpick.c:378
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
 msgstr ""
 "用來選擇在鍵盤上找不到的特殊字元的 Gnome 面板程式。依 GPL 使用條款發行。"
 
-#: charpick/charpick.c:444
+#: charpick/charpick.c:456
 msgid "Insert special characters"
 msgstr "加入特殊字元"
 
-#: charpick/charpick.c:445 charpick/GNOME_CharpickerApplet.server.in.h:1
+#: charpick/charpick.c:457 charpick/GNOME_CharpickerApplet.server.in.h:1
 msgid "Character Palette"
 msgstr "字元選擇盤"
 
@@ -556,42 +591,44 @@ msgstr "在這裡設定預設的字元列表"
 #: charpick/properties.c:91
 msgid ""
 "These characters will appear when the panel is started. To return to this "
-"list, hit <space> while the applet has focus."
-msgstr "這些字元將會在面板啟動時出現。要回到這個列表，請按下空白鍵。"
+"list, hit <d> while the applet has focus."
+msgstr ""
+"這些字元將會在面板啟動時出現。要回到此列表，請當輸入焦點位於此面板程式時按 "
+"<d> 鍵。"
 
 #: charpick/properties.c:144
 msgid "Character Palette Preferences"
 msgstr "字元選擇盤偏好設定"
 
-#: drivemount/drivemount.c:419
+#: drivemount/drivemount.c:425
 msgid "Drive Mount Applet"
 msgstr "檔案系統掛載面板程式"
 
-#: drivemount/drivemount.c:420
+#: drivemount/drivemount.c:426
 msgid "(C) 1999-2001 The GNOME Hackers\n"
 msgstr "(C) 1999-2001 The GNOME Hackers\n"
 
-#: drivemount/drivemount.c:422
+#: drivemount/drivemount.c:428
 msgid "Applet for mounting and unmounting block volumes."
 msgstr "掛載及卸載檔案系統的面板程式。"
 
-#: drivemount/drivemount.c:612
+#: drivemount/drivemount.c:621
 msgid " mounted"
 msgstr " 已掛上"
 
-#: drivemount/drivemount.c:614
+#: drivemount/drivemount.c:623
 msgid " not mounted"
 msgstr " 未掛上"
 
-#: drivemount/drivemount.c:725
+#: drivemount/drivemount.c:734
 msgid "Drive Mount Applet Warning"
 msgstr "檔案系統掛載面板程式的警告"
 
-#: drivemount/drivemount.c:733
+#: drivemount/drivemount.c:742
 msgid "\" reported:\n"
 msgstr "\" 報告：\n"
 
-#: drivemount/drivemount.c:735
+#: drivemount/drivemount.c:744
 msgid ""
 "Drivemount command failed.\n"
 "\""
@@ -619,91 +656,87 @@ msgstr "掛載本機磁碟及裝置"
 msgid "Browse..."
 msgstr "瀏覽..."
 
-#: drivemount/properties.c:241
+#: drivemount/properties.c:239
 msgid "Disk Mounter Preferences"
 msgstr "檔案系統掛載程式偏好設定"
 
-#: drivemount/properties.c:260
+#: drivemount/properties.c:258
 msgid "_Mount point:"
 msgstr "掛載點位置(_M)："
 
-#: drivemount/properties.c:278
+#: drivemount/properties.c:276
 msgid "_Update interval (seconds):"
 msgstr "更新周期[秒](_U)："
 
-#: drivemount/properties.c:294
+#: drivemount/properties.c:292
 msgid "_Icon :"
 msgstr "圖示(_I)："
 
-#: drivemount/properties.c:312
+#: drivemount/properties.c:310
 msgid "Floppy"
 msgstr "軟碟"
 
-#: drivemount/properties.c:315
+#: drivemount/properties.c:313
 msgid "Cdrom"
 msgstr "光碟"
 
-#: drivemount/properties.c:318
+#: drivemount/properties.c:316
 msgid "Cd Recorder"
 msgstr "CD 燒錄機"
 
-#: drivemount/properties.c:321
+#: drivemount/properties.c:319
 msgid "Zip Drive"
 msgstr "Zip 磁碟機"
 
-#: drivemount/properties.c:324
+#: drivemount/properties.c:322
 msgid "Hard Disk"
 msgstr "硬碟"
 
-#: drivemount/properties.c:327
+#: drivemount/properties.c:325
 msgid "Jaz Drive"
 msgstr "Jaz 磁碟機"
 
-#: drivemount/properties.c:330
+#: drivemount/properties.c:328
 msgid "Custom"
 msgstr "自訂"
 
-#: drivemount/properties.c:343
+#: drivemount/properties.c:341
 msgid "Select icon for mounted"
 msgstr "選擇表示已掛載的圖示"
 
-#: drivemount/properties.c:350
+#: drivemount/properties.c:348
 msgid "Custom icon for moun_ted:"
 msgstr "表示已掛載的自訂圖示(_T)："
 
-#: drivemount/properties.c:359
+#: drivemount/properties.c:357
 msgid "Select icon for unmounted"
 msgstr "選擇表示未掛載的圖示"
 
-#: drivemount/properties.c:366
+#: drivemount/properties.c:364
 msgid "Custom icon for not mou_nted:"
 msgstr "表示未掛載的自訂圖示(_N)："
 
-#: drivemount/properties.c:376
+#: drivemount/properties.c:374
 msgid "_Scale size to panel"
 msgstr "縮放至配合面板尺寸(_S)"
 
-#: drivemount/properties.c:383
+#: drivemount/properties.c:381
 msgid "_Eject on unmount"
 msgstr "卸載後退出碟片(_E)"
 
-#: drivemount/properties.c:390
+#: drivemount/properties.c:388
 msgid "Use _automount friendly status test"
 msgstr "使用相容於 automount 的狀態測試方式(_A)"
 
-#: geyes/geyes.c:200
-msgid "Dave Camp <campd@oit.edu>"
-msgstr "Dave Camp <campd@oit.edu>"
-
-#: geyes/geyes.c:209
+#: geyes/geyes.c:218
 msgid "gEyes"
 msgstr "gEyes"
 
-#: geyes/geyes.c:210
+#: geyes/geyes.c:219
 msgid "Copyright (C) 1999 Dave Camp"
 msgstr "版權所有 (C) 1999 Dave Camp"
 
-#: geyes/geyes.c:211
+#: geyes/geyes.c:220
 msgid "A goofy little xeyes clone for the GNOME panel."
 msgstr "Gnome 面板上與 xeyes 同類的程式。"
 
@@ -766,15 +799,15 @@ msgstr "指令_%d"
 msgid "GKB"
 msgstr "GKB"
 
-#: gkb-new/gkb.c:576
+#: gkb-new/gkb.c:577
 msgid "The GNOME KeyBoard Switcher Applet"
 msgstr "GNOME 鍵盤切換面板程式"
 
-#: gkb-new/gkb.c:578
+#: gkb-new/gkb.c:579
 msgid "(C) 1998-2000 Free Software Foundation"
 msgstr "(C) 1998-2000 Free Software Foundation"
 
-#: gkb-new/gkb.c:579
+#: gkb-new/gkb.c:580
 msgid ""
 "This applet switches between keyboard maps using setxkbmap, or xmodmap.\n"
 "Mail me your flag and keyboard layout if you want support for your locale "
@@ -785,15 +818,15 @@ msgid ""
 "Shooby Ban <shooby@gnome.hu>"
 msgstr ""
 "這個面板程式使用 setxkbmap 或 xmodmap 來切換不同的鍵盤排列設定。\n"
-"如果想此程式支援閣下的語系，請將國旗圖案及鍵盤配置寄給作者（我的電郵地址\n"
-"是 shooby@gnome.hu）。\n"
+"如果想此程式支援閣下的語系，請將國旗圖案及鍵盤配置寄給作者（我的電郵地址是 "
+"shooby@gnome.hu）。\n"
 "\n"
 "感謝 Balazs Nagy (Kevin) <julian7@kva.hu> 的幫助及 Emese Kovacs <emese@gnome."
 "hu> 的熱心，還有 KevinV 等人的幫助。\n"
 "\n"
 "Shooby Ban <shooby@gnome.hu>"
 
-#: gkb-new/gkb.c:596
+#: gkb-new/gkb.c:597
 msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
 msgstr "GKB 網頁（http://projects.gnome.hu/gkb）"
 
@@ -823,69 +856,69 @@ msgstr "按任何一鍵，或按 Esc 鍵取消"
 
 #: gkb-new/prop-add.c:86
 msgid "Keyboards (select and press add)"
-msgstr "鍵盤 (請在選取後按「加入」)"
+msgstr "鍵盤 (請在選取後按「新增」)"
 
 #: gkb-new/prop-add.c:367
 msgid "Select Keyboard"
 msgstr "選擇鍵盤"
 
-#: gkb-new/prop.c:121 gkb-new/prop.c:189
+#: gkb-new/prop.c:125 gkb-new/prop.c:193
 msgid "Normal"
 msgstr "一般"
 
-#: gkb-new/prop.c:122 gkb-new/prop.c:193
+#: gkb-new/prop.c:126 gkb-new/prop.c:197
 msgid "Big"
 msgstr "較大"
 
-#: gkb-new/prop.c:140 gkb-new/util.c:41 gkb-new/util.c:48 gkb-new/util.c:74
+#: gkb-new/prop.c:144 gkb-new/util.c:41 gkb-new/util.c:48 gkb-new/util.c:74
 msgid "Flag"
 msgstr "國旗"
 
-#: gkb-new/prop.c:141 gkb-new/util.c:38 gkb-new/util.c:71
+#: gkb-new/prop.c:145 gkb-new/util.c:38 gkb-new/util.c:71
 msgid "Label"
 msgstr "標籤"
 
-#: gkb-new/prop.c:142 gkb-new/util.c:44 gkb-new/util.c:77
+#: gkb-new/prop.c:146 gkb-new/util.c:44 gkb-new/util.c:77
 msgid "Flag and Label"
 msgstr "國旗和標籤"
 
-#: gkb-new/prop.c:278 modemlights/properties.c:374
+#: gkb-new/prop.c:282 modemlights/properties.c:374
 msgid "Display"
 msgstr "顯示"
 
 #. Labels and option Menus
-#: gkb-new/prop.c:298
-msgid "_Appearance "
-msgstr "外觀(_A) "
+#: gkb-new/prop.c:302
+msgid "_Appearance: "
+msgstr "外觀(_A)："
 
-#: gkb-new/prop.c:305
-msgid "Applet _size "
-msgstr "面板程式尺寸(_S) "
+#: gkb-new/prop.c:309
+msgid "Applet _size: "
+msgstr "面板程式尺寸(_S)："
 
-#: gkb-new/prop.c:331
+#: gkb-new/prop.c:335
 msgid "Hotkey for switching between layouts"
 msgstr "切換配置所使用的快速鍵"
 
-#: gkb-new/prop.c:343
+#: gkb-new/prop.c:347
 msgid "Grab hotkey"
 msgstr "擷取快速鍵"
 
 #. Create property box
-#: gkb-new/prop.c:405
+#: gkb-new/prop.c:409
 msgid "Keyboard Layout Switcher Preferences"
 msgstr "鍵盤配置切換程式偏好設定"
 
-#: gkb-new/prop.c:419
+#: gkb-new/prop.c:423
 msgid "_Keymaps"
 msgstr "鍵盤對應(_K)"
 
-#: gkb-new/prop.c:431
+#: gkb-new/prop.c:435
 msgid "_Options"
 msgstr "選項(_O)"
 
-#: gkb-new/prop-list.c:389 gtik/gtik.c:1163
+#: gkb-new/prop-list.c:389 gtik/gtik.c:1169
 msgid "_Add"
-msgstr "加入(_A)"
+msgstr "新增(_A)"
 
 #: gkb-new/prop-list.c:390
 msgid "_Edit"
@@ -1196,21 +1229,23 @@ msgid "Edit Keyboard"
 msgstr "修改鍵盤"
 
 #. Add the labels  and entries/combos/icon_entry
-#: gkb-new/prop-map.c:601
-msgid "_Name"
-msgstr "名稱(_N)"
+#: gkb-new/prop-map.c:601 panel-menu/panel-menu-directory.c:624
+#: panel-menu/panel-menu-documents.c:398 panel-menu/panel-menu-documents.c:434
+#: panel-menu/panel-menu-links.c:404 panel-menu/panel-menu-links.c:440
+msgid "_Name:"
+msgstr "名稱(_N)："
 
 #: gkb-new/prop-map.c:605
-msgid "_Label"
-msgstr "標籤(_L)"
+msgid "_Label:"
+msgstr "標籤(_L)："
 
 #: gkb-new/prop-map.c:609
-msgid "Lan_guage"
-msgstr "語言(_G)"
+msgid "Lan_guage:"
+msgstr "語言(_G)："
 
 #: gkb-new/prop-map.c:615
-msgid "Count_ry"
-msgstr "國家(_R)"
+msgid "Count_ry:"
+msgstr "國家(_R)："
 
 #: gkb-new/prop-map.c:622
 msgid ""
@@ -1221,20 +1256,20 @@ msgstr ""
 "圖案"
 
 #: gkb-new/prop-map.c:626
-msgid "Arc_hitecture"
-msgstr "系統架構(_H)"
+msgid "Arc_hitecture:"
+msgstr "系統架構(_H)："
 
 #: gkb-new/prop-map.c:632
-msgid "_Type"
-msgstr "鍵盤類別(_T)"
+msgid "_Type:"
+msgstr "鍵盤類別(_T)："
 
 #: gkb-new/prop-map.c:638
-msgid "Code_page"
-msgstr "頁碼(_P)"
+msgid "Code_page:"
+msgstr "頁碼(_P)："
 
 #: gkb-new/prop-map.c:645
-msgid "Co_mmand"
-msgstr "指令(_M)"
+msgid "Co_mmand:"
+msgstr "指令(_M)："
 
 #: gkb-new/prop-map.c:652
 msgid ""
@@ -1243,7 +1278,7 @@ msgid ""
 "* gkb__xmmap hu\n"
 "* setxkbmap hu"
 msgstr ""
-"指令可以是：\n"
+"指令可以是類似：\n"
 "* xmodmap /full/path/xmodmap.hu\n"
 "* gkb__xmmap hu\n"
 "* setxkbmap hu"
@@ -1273,15 +1308,15 @@ msgstr "股市行情指示器"
 msgid "Refresh"
 msgstr "重新整理"
 
-#: gtik/gtik.c:217 gtik/gtik.c:799
+#: gtik/gtik.c:217 gtik/gtik.c:805
 msgid "No data available or properties not set"
 msgstr "沒有資料或是未設定偏好"
 
-#: gtik/gtik.c:668
+#: gtik/gtik.c:674
 msgid "The GNOME Stock Ticker"
 msgstr "GNOME 股市行情顯示器"
 
-#: gtik/gtik.c:670
+#: gtik/gtik.c:676
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.  "
 "The GNOME Stock Ticker is a free Internet-based application.  It comes with "
@@ -1291,112 +1326,112 @@ msgstr ""
 "此程式會接駁某個著名網站並下載現時的股價。GNOME 股市行情顯示器是一個可自由使"
 "用的軟件。它沒有使用擔保。不要使用它作投資的決定；僅作為參考資料而已。"
 
-#: gtik/gtik.c:1152
+#: gtik/gtik.c:1158
 msgid "_New Symbol:"
 msgstr "新增股票代碼(_N)："
 
-#: gtik/gtik.c:1174
+#: gtik/gtik.c:1180
 msgid "_Remove Selected"
 msgstr "移除選擇項目(_R)"
 
-#: gtik/gtik.c:1222 gweather/gweather-pref.c:764
+#: gtik/gtik.c:1228 gweather/gweather-pref.c:764
 msgid "_Use HTTP proxy"
 msgstr "使用 HTTP 代理伺服器(_U)"
 
-#: gtik/gtik.c:1232
+#: gtik/gtik.c:1238
 msgid "_Location :"
 msgstr "位置(_L)："
 
-#: gtik/gtik.c:1248 gweather/gweather-pref.c:791
+#: gtik/gtik.c:1254 gweather/gweather-pref.c:791
 msgid "P_ort :"
 msgstr "連接埠(_O)："
 
-#: gtik/gtik.c:1260
+#: gtik/gtik.c:1266
 msgid "Pro_xy requires a uername and password"
 msgstr "使用代理伺服器前需要用戶名稱及密碼(_X)"
 
-#: gtik/gtik.c:1271 gweather/gweather-pref.c:814
+#: gtik/gtik.c:1277 gweather/gweather-pref.c:814
 msgid "Us_ername:"
 msgstr "用戶名稱(_E)："
 
-#: gtik/gtik.c:1286 gweather/gweather-pref.c:830
+#: gtik/gtik.c:1292 gweather/gweather-pref.c:830
 msgid "Pass_word:"
 msgstr "密碼(_W)："
 
-#: gtik/gtik.c:1357
+#: gtik/gtik.c:1363
 msgid "Stock Ticker Preferences"
 msgstr "股市行情顯示器偏好設定"
 
-#: gtik/gtik.c:1378
+#: gtik/gtik.c:1384
 msgid "Update Fre_quency in minutes:"
 msgstr "更新周期[分鐘](_Q)："
 
-#: gtik/gtik.c:1396
+#: gtik/gtik.c:1402
 msgid "Enter symbols delimited with \"+\" in the box below."
 msgstr "在下方的空格填入以“+”分隔的代碼。"
 
-#: gtik/gtik.c:1406
+#: gtik/gtik.c:1412
 msgid "Displa_y only symbols and price"
 msgstr "只顯示股票代碼及股價(_Y)"
 
-#: gtik/gtik.c:1409
+#: gtik/gtik.c:1415
 msgid "Scroll _left to right"
 msgstr "由左至右捲動(_L)"
 
-#: gtik/gtik.c:1412
+#: gtik/gtik.c:1418
 msgid "Display a_rrows instead of -/+"
 msgstr "顯示箭頭代替加減號(_R)"
 
-#: gtik/gtik.c:1415
+#: gtik/gtik.c:1421
 msgid "_Enable scroll buttons"
 msgstr "顯示捲動按紐(_E)"
 
 #. COLOR
-#: gtik/gtik.c:1441
+#: gtik/gtik.c:1447
 msgid "+ C_olor"
 msgstr "+ 的色彩(_O)"
 
-#: gtik/gtik.c:1460
+#: gtik/gtik.c:1466
 msgid "- Colo_r"
 msgstr "- 的色彩(_R)"
 
-#: gtik/gtik.c:1482
+#: gtik/gtik.c:1488
 msgid "Stock Sy_mbol:"
 msgstr "股票代碼(_M)："
 
-#: gtik/gtik.c:1496
+#: gtik/gtik.c:1502
 msgid "Stock C_hange:"
 msgstr "股值改變(_H)︰"
 
-#: gtik/gtik.c:1520
+#: gtik/gtik.c:1526
 msgid "_Symbols"
 msgstr "股票代碼(_S)"
 
-#: gtik/gtik.c:1522
+#: gtik/gtik.c:1528
 msgid "_Behavior"
 msgstr "表現(_B)"
 
-#: gtik/gtik.c:1524
+#: gtik/gtik.c:1530
 msgid "_Appearance"
 msgstr "外觀(_A)"
 
-#: gtik/gtik.c:1526 gweather/gweather-pref.c:843
+#: gtik/gtik.c:1532 gweather/gweather-pref.c:843
 msgid "_Proxy"
 msgstr "代理伺服器(_P)"
 
-#: gtik/gtik.c:1575
+#: gtik/gtik.c:1581
 msgid "Skip forward"
-msgstr ""
+msgstr "向前捲動"
 
-#: gtik/gtik.c:1576
+#: gtik/gtik.c:1582
 msgid "Skip backword"
-msgstr ""
+msgstr "向後捲動"
 
-#: gtik/gtik.c:1755
+#: gtik/gtik.c:1761
 msgid "(No"
 msgstr "(沒有"
 
-#: gtik/gtik.c:1756
+#: gtik/gtik.c:1762
 msgid "Change "
 msgstr "改變"
 
@@ -1424,15 +1459,15 @@ msgstr "預報"
 msgid "Update"
 msgstr "更新"
 
-#: gweather/gweather-about.c:42 gweather/gweather-applet.c:196
+#: gweather/gweather-about.c:49 gweather/gweather-applet.c:196
 msgid "GNOME Weather"
 msgstr "Gnome 天氣面板程式"
 
-#: gweather/gweather-about.c:43
+#: gweather/gweather-about.c:50
 msgid "Copyright (c)1999 by S. Papadimitriou"
 msgstr "版權所有 (c)1999 S. Papadimitriou"
 
-#: gweather/gweather-about.c:44
+#: gweather/gweather-about.c:51
 msgid ""
 "Released under the GNU General Public License.\n"
 "\n"
@@ -1539,11 +1574,11 @@ msgstr ""
 #. Accessible Name and Description for the components in Preference Dialog
 #: gweather/gweather-pref.c:125
 msgid "Location view"
-msgstr ""
+msgstr "位置檢視模式"
 
 #: gweather/gweather-pref.c:125
 msgid "Select Location from the list"
-msgstr ""
+msgstr "請在清單中選取位置"
 
 #: gweather/gweather-pref.c:126
 msgid "URL Entry"
@@ -1579,11 +1614,11 @@ msgstr "請輸入密碼"
 
 #: gweather/gweather-pref.c:131
 msgid "Update spin button"
-msgstr ""
+msgstr "數值更新按鈕"
 
 #: gweather/gweather-pref.c:131
 msgid "Spinbutton for updating"
-msgstr ""
+msgstr "更新數值用的按鈕"
 
 #: gweather/gweather-pref.c:132
 msgid "Address Entry"
@@ -1627,7 +1662,7 @@ msgstr "啟用雷達圖(_R)"
 
 #: gweather/gweather-pref.c:897
 msgid "Use cus_tom address for radar map"
-msgstr ""
+msgstr "自行指定電達圖的地址(_T)"
 
 #: gweather/gweather-pref.c:908
 msgid "A_ddress :"
@@ -2878,11 +2913,11 @@ msgstr "不詳"
 msgid "Retrieval failed"
 msgstr "接收失敗"
 
-#: mini-commander/src/about.c:39
+#: mini-commander/src/about.c:48
 msgid "Mini-Commander Applet"
 msgstr "小型命令窗程式"
 
-#: mini-commander/src/about.c:42
+#: mini-commander/src/about.c:51
 msgid ""
 "This GNOME applet adds a command line to the panel. It features command "
 "completion, command history, changeable macros and an optional built-in "
@@ -2927,38 +2962,33 @@ msgstr "沒有找到"
 msgid "no /bin/sh"
 msgstr "找不到 /bin/sh"
 
-#: mini-commander/src/command_line.c:93 mini-commander/src/command_line.c:113
+#: mini-commander/src/command_line.c:94 mini-commander/src/command_line.c:114
 msgid "end of history list"
 msgstr "紀錄列表結尾"
 
 #. enter pressed -> exec command
-#: mini-commander/src/command_line.c:123 mini-commander/src/exec.c:59
+#: mini-commander/src/command_line.c:124 mini-commander/src/exec.c:59
 msgid "starting..."
 msgstr "啟動中..."
 
-#: mini-commander/src/command_line.c:152
+#: mini-commander/src/command_line.c:153
 msgid "autocompleted"
 msgstr "自動補齊"
 
-#: mini-commander/src/command_line.c:312
+#: mini-commander/src/command_line.c:360
 msgid "history list empty"
 msgstr "紀錄列表是空的"
 
-#. title
-#: mini-commander/src/command_line.c:330
-msgid "Command history"
-msgstr "指令紀錄"
-
 #. build file select dialog
-#: mini-commander/src/command_line.c:461
+#: mini-commander/src/command_line.c:510
 msgid "Start program"
 msgstr "啟動程式"
 
-#: mini-commander/src/command_line.c:500
+#: mini-commander/src/command_line.c:549
 msgid "Command line"
 msgstr "指令列"
 
-#: mini-commander/src/command_line.c:501
+#: mini-commander/src/command_line.c:550
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "在這裡輸入指令後，Gnome 就會執行該指令"
 
@@ -2971,7 +3001,7 @@ msgid "child exited"
 msgstr "副程序結束"
 
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:1
-#: mini-commander/src/mini-commander_applet.c:355
+#: mini-commander/src/mini-commander_applet.c:313
 msgid "Command Line"
 msgstr "指令列"
 
@@ -3113,18 +3143,18 @@ msgid "Command line _background:"
 msgstr "指令列背景顏色(_B)："
 
 #. prefix
-#: mini-commander/src/preferences.c:978
+#: mini-commander/src/preferences.c:982
 #, c-format
 msgid "Regex _%.2d:"
 msgstr "正規表示式 _%.2d："
 
 #. command
-#: mini-commander/src/preferences.c:998
+#: mini-commander/src/preferences.c:1002
 #, c-format
 msgid "   Macro _%.2d:"
 msgstr "   巨集 _%.2d："
 
-#: mini-commander/src/preferences.c:1018
+#: mini-commander/src/preferences.c:1022
 msgid "_Macros"
 msgstr "巨集(_M)"
 
@@ -3132,7 +3162,7 @@ msgstr "巨集(_M)"
 msgid "Adjust the sound volume"
 msgstr "調校音量"
 
-#: mixer/GNOME_MixerApplet.server.in.h:3 mixer/mixer.c:130 mixer/mixer.c:738
+#: mixer/GNOME_MixerApplet.server.in.h:3 mixer/mixer.c:130 mixer/mixer.c:756
 msgid "Volume Control"
 msgstr "音量控制"
 
@@ -3170,23 +3200,23 @@ msgstr "警告：混音器沒有音量頻道 - 會使用 PCM。\n"
 msgid "Mixer device %s has neither volume nor PCM channels.\n"
 msgstr "混合裝置 %s 沒有音量和 PCM 頻道。\n"
 
-#: mixer/mixer.c:504
+#: mixer/mixer.c:516
 msgid "Volume Controller"
 msgstr "音量控制程式"
 
-#: mixer/mixer.c:505
+#: mixer/mixer.c:517
 msgid "Use Up/Down arrow keys to change volume"
 msgstr "使用上/下方向鍵更改音量"
 
-#: mixer/mixer.c:739
+#: mixer/mixer.c:757
 msgid "(C) 2001 Richard Hult"
 msgstr "(C) 2001 Richard Hult"
 
-#: mixer/mixer.c:740
+#: mixer/mixer.c:758
 msgid "The volume control lets you set the volume level for your desktop."
 msgstr "音量控制可設定系統的音量。"
 
-#: mixer/mixer.c:912
+#: mixer/mixer.c:930
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr "音量控制可設定系統的音量"
 
@@ -3198,11 +3228,11 @@ msgstr "互聯網"
 msgid "Modem Lights"
 msgstr "數據機燈號"
 
-#: modemlights/modemlights.c:205
+#: modemlights/modemlights.c:212
 msgid "Modem Lights Applet"
 msgstr "數據機燈號面板程式"
 
-#: modemlights/modemlights.c:207
+#: modemlights/modemlights.c:214
 msgid ""
 "Released under the GNU general public license.\n"
 "A modem status indicator and dialer.\n"
@@ -3212,7 +3242,7 @@ msgstr ""
 "顯示數據機的狀態並可用來撥號，\n"
 "燈號依序為 RX 與 TX (從上到下或左到右)。"
 
-#: modemlights/modemlights.c:531
+#: modemlights/modemlights.c:539
 msgid ""
 "You are currently connected.\n"
 "Do you want to disconnect?"
@@ -3220,16 +3250,16 @@ msgstr ""
 "你目前還在連線狀態中，\n"
 "確定要切斷連線嗎？"
 
-#: modemlights/modemlights.c:546
+#: modemlights/modemlights.c:554
 msgid "Do you want to connect?"
 msgstr "你要撥接連線嗎？"
 
-#: modemlights/modemlights.c:574
+#: modemlights/modemlights.c:582
 #, c-format
 msgid "%#.1fMb received / %#.1fMb sent / time: %.1d:%.2d"
 msgstr "收到 %#.1fMb / 送出 %#.1fMb / 時間: %.1d:%.2d"
 
-#: modemlights/modemlights.c:579
+#: modemlights/modemlights.c:587
 msgid "not connected"
 msgstr "沒有連線"
 
@@ -3376,11 +3406,11 @@ msgstr "進行詳細的系統監控"
 msgid "Load Average"
 msgstr "平均負載"
 
-#: multiload/main.c:53
+#: multiload/main.c:60
 msgid "System Monitor Applet"
 msgstr "系統監控面板程式"
 
-#: multiload/main.c:55
+#: multiload/main.c:62
 msgid ""
 "Released under the GNU General Public License.\n"
 "\n"
@@ -3390,34 +3420,34 @@ msgstr ""
 "依 GPL 使用條款發行。\n"
 "一個可顯示 CPU、記憶體、交換檔及網路使用量的系統負載監控程式。"
 
-#: multiload/main.c:177
+#: multiload/main.c:184
 msgid "Processor"
 msgstr "處理器"
 
-#: multiload/main.c:179
+#: multiload/main.c:186
 msgid "Memory"
 msgstr "記憶體"
 
-#: multiload/main.c:181
+#: multiload/main.c:188
 msgid "Network"
 msgstr "網絡"
 
-#: multiload/main.c:183
+#: multiload/main.c:190
 msgid "Swap File"
 msgstr "交換檔"
 
-#: multiload/main.c:185
+#: multiload/main.c:192
 msgid "Resource"
 msgstr "資源"
 
-#: multiload/main.c:197
+#: multiload/main.c:204
 #, c-format
 msgid ""
 "%s:\n"
 "%d%% in use"
 msgstr ""
 "%s：\n"
-"%d%% 使用中"
+"已使用 %d%%"
 
 #: multiload/memload.c:39
 msgid "Memory Load"
@@ -3599,49 +3629,43 @@ msgstr "文件"
 msgid "Applications"
 msgstr "程式集"
 
-#: panel-menu/panel-menu.c:684
+#: panel-menu/panel-menu.c:690
 msgid "PanelMenu Applet"
 msgstr "選單面板程式"
 
-#: panel-menu/panel-menu.c:685
+#: panel-menu/panel-menu.c:691
 msgid "(c) 2001 Chris Phelps"
 msgstr "(c) 2001 Chris Phelps"
 
-#: panel-menu/panel-menu.c:686
+#: panel-menu/panel-menu.c:692
 msgid ""
 "The Panel Menu Applet allows you to display customized menubars on your "
 "panels."
 msgstr "選單面板程式允許您在面板上顯示自訂的選單列。"
 
-#: panel-menu/panel-menu-directory.c:481
+#: panel-menu/panel-menu-directory.c:482
 msgid "Create directory item..."
 msgstr "建立目錄..."
 
-#: panel-menu/panel-menu-directory.c:484
+#: panel-menu/panel-menu-directory.c:485
 msgid "Home"
 msgstr "個人目錄"
 
-#: panel-menu/panel-menu-directory.c:523
+#: panel-menu/panel-menu-directory.c:524
 msgid "Edit directory item..."
 msgstr "修改目錄..."
 
-#: panel-menu/panel-menu-directory.c:623 panel-menu/panel-menu-documents.c:398
-#: panel-menu/panel-menu-documents.c:434 panel-menu/panel-menu-links.c:404
-#: panel-menu/panel-menu-links.c:440
-msgid "Name:"
-msgstr "名稱："
+#: panel-menu/panel-menu-directory.c:636 panel-menu/panel-menu-path.c:728
+msgid "_Path:"
+msgstr "路徑(_P)："
 
-#: panel-menu/panel-menu-directory.c:633 panel-menu/panel-menu-path.c:728
-msgid "Path:"
-msgstr "路徑："
-
-#: panel-menu/panel-menu-directory.c:639
+#: panel-menu/panel-menu-directory.c:644
 msgid "..."
 msgstr "..."
 
-#: panel-menu/panel-menu-directory.c:648
-msgid "Depth level:"
-msgstr "深度："
+#: panel-menu/panel-menu-directory.c:654
+msgid "_Depth level:"
+msgstr "深度(_D)："
 
 #: panel-menu/panel-menu-documents.c:397
 msgid "Create documents item..."
@@ -3724,6 +3748,15 @@ msgstr "視窗"
 msgid "Workspaces"
 msgstr "工作區"
 
+#~ msgid "Dave Camp <campd@oit.edu>"
+#~ msgstr "Dave Camp <campd@oit.edu>"
+
+#~ msgid "_Name"
+#~ msgstr "名稱(_N)"
+
+#~ msgid "Command history"
+#~ msgstr "指令紀錄"
+
 #~ msgid "Battstat Settings"
 #~ msgstr "Battstat 設定"
 
@@ -3762,7 +3795,7 @@ msgstr "工作區"
 #~ msgstr "鍵盤配置切換面板程式"
 
 #~ msgid "Add"
-#~ msgstr "加入"
+#~ msgstr "新增"
 
 #~ msgid "GNOME Stock Ticker"
 #~ msgstr "GNOME 股市行情指示器"
@@ -3853,10 +3886,6 @@ msgstr "工作區"
 #~ "You have chosen to enable the Suspend function. This can potentially be a "
 #~ "security risk."
 #~ msgstr "你選擇了啟用暫停模式功能。這有可能造成保安上的問題。"
-
-# src/battstat_applet.c:732
-#~ msgid "Battery Status Utility"
-#~ msgstr "電池狀態公用程式"
 
 # src/battstat_applet.c:735
 #~ msgid "Shows the status of the battery"
