@@ -69,7 +69,6 @@ battery_session_save(GtkWidget * w,
   BatteryData * bat = data;
   char col[24];
 
-  printf("privcfgpath: %s\n", privcfgpath);
   gnome_config_push_prefix (privcfgpath);
 
   /* Global configurable parameters */
