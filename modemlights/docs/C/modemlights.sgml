@@ -1,3 +1,4 @@
+
 <sect1 id="modemlights">
   <title>Modem Lights Applet</title> 
 
@@ -163,7 +164,15 @@
     device. Check with your system administrator to see if a different
     device name and therefore lock file is in use. <application>Modem
     Lights Applet</application> needs this information to find and
-    monitor your modem.</para>
+    monitor your modem.
+	      <tip>
+		<para>You can determine the correct lock file name by
+		  establishing a PPP connection and then changing into the
+		  /var/lock directory. There should now be a new lock file. This
+		  is most likely the one you need for the applet.</para>
+	      </tip>
+</para>
+	  
       </listitem>
 
       <listitem>
