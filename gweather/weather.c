@@ -690,7 +690,7 @@ do_update (gpointer data)
 	WeatherForecast *forecast = NULL;
 	gint oldnum;
 	
-	if (applet->animation_loc > applet->gweather_info->numforecasts)
+	if (applet->animation_loc > applet->gweather_info->numforecasts-1)
 		applet->animation_loc = 0;
 
 	tmp = get_conditions_pixbuf (-1);
@@ -702,7 +702,7 @@ do_update (gpointer data)
 	}
 	else {
 		if (applet->animation_loc == 0)
-			oldnum = applet->gweather_info->numforecasts;
+			oldnum = applet->gweather_info->numforecasts-1;
 		else
 			oldnum = applet->animation_loc - 1;
 		forecast = g_list_nth_data (list, oldnum-1);

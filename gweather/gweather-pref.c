@@ -347,10 +347,10 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     hbox = gtk_hbox_new (FALSE, 12);
     gtk_box_pack_start (GTK_BOX (vbox2), hbox, FALSE, FALSE, 0);
 
-    label = gtk_label_new_with_mnemonic (_("Number of _forecasts to display:"));
+    label = gtk_label_new_with_mnemonic (_("Number of _days to display:"));
     gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
     
-    spin = gtk_spin_button_new_with_range (0, 5, 1);
+    spin = gtk_spin_button_new_with_range (1, 6, 1);
     gtk_spin_button_set_value (GTK_SPIN_BUTTON (spin), gw_applet->gweather_info->numforecasts);
     g_signal_connect (G_OBJECT (spin), "value_changed",
     		      G_CALLBACK (num_forecasts_changed), gw_applet);
@@ -448,7 +448,7 @@ void gweather_pref_load (GWeatherApplet *gw_applet)
     gw_applet->gweather_info->numforecasts = panel_applet_gconf_get_int (gw_applet->applet,
     								    "num_forecasts",
     								    NULL);
-    gw_applet->gweather_info->numforecasts = CLAMP (gw_applet->gweather_info->numforecasts, 0, 5);
+    gw_applet->gweather_info->numforecasts = CLAMP (gw_applet->gweather_info->numforecasts, 1, 6);
     gw_applet->gweather_pref.url = NULL;
     gw_applet->gweather_pref.url = panel_applet_gconf_get_string(gw_applet->applet, "url", NULL);
     gw_applet->gweather_pref.city = panel_applet_gconf_get_string(gw_applet->applet, "city", NULL);

@@ -55,7 +55,7 @@ void update_display (GWeatherApplet *applet)
 	
 g_print ("update \n");
 	list = info->forecasts;
-	for (i=1; i<=applet->gweather_info->numforecasts; i++) {
+	for (i=1; i<=applet->gweather_info->numforecasts-1; i++) {
 		WeatherForecast *forecast = NULL;
 		gint avgtemp;
 		if (!list)
@@ -105,7 +105,7 @@ void place_widgets (GWeatherApplet *gw_applet)
     
     gtk_container_add (GTK_CONTAINER (gw_applet->applet), gw_applet->box);
 
-    for (i=0; i<=gw_applet->gweather_info->numforecasts; i++) {
+    for (i=0; i<=gw_applet->gweather_info->numforecasts-1; i++) {
 		gchar *tmp;
 		gw_applet->events[i] = gtk_event_box_new ();
 		gtk_box_pack_start (GTK_BOX (gw_applet->box), 
@@ -130,7 +130,7 @@ void place_widgets (GWeatherApplet *gw_applet)
     gtk_widget_show_all (GTK_WIDGET (gw_applet->applet));
 
     if (!gw_applet->gweather_pref.show_labels) {
-	for (i=0; i<=gw_applet->gweather_info->numforecasts; i++) {
+	for (i=0; i<=gw_applet->gweather_info->numforecasts-1; i++) {
 		gtk_widget_hide (gw_applet->labels[i]);
 	}
     }
@@ -292,7 +292,7 @@ void gweather_update (GWeatherApplet *gw_applet)
     gtk_tooltips_set_tip(gw_applet->tooltips, GTK_WIDGET(gw_applet->applet), 
     			                 _("Updating..."), NULL);
     
-    for (i=0; i<=gw_applet->gweather_info->numforecasts; i++) {
+    for (i=0; i<=gw_applet->gweather_info->numforecasts-1; i++) {
     	gtk_tooltips_set_tip (gw_applet->tooltips, gw_applet->events[i], NULL, NULL);
     }
 
