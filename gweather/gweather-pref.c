@@ -86,7 +86,7 @@ static gboolean update_dialog (GWeatherApplet *gw_applet)
     return TRUE;
 }
 
-static __inline void update_string (gchar *val, gchar **str)
+static inline void update_string (gchar *val, gchar **str)
 {
     g_return_if_fail(str != NULL);
 

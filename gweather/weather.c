@@ -222,7 +222,7 @@ const gchar *weather_conditions_string (WeatherConditions cond)
 static WeatherInfoFunc request_cb = NULL;
 static WeatherInfo *request_info = NULL;
 
-static __inline gboolean requests_init (WeatherInfoFunc cb, WeatherInfo *info)
+static inline gboolean requests_init (WeatherInfoFunc cb, WeatherInfo *info)
 {
     if (info->requests_pending)
         return FALSE;
