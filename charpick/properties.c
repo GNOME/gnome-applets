@@ -37,7 +37,7 @@ set_atk_relation (GtkWidget *label, GtkWidget *widget)
 }
 
 static gchar *
-run_edit_dialog (gchar *string)
+run_edit_dialog (gchar *string, gchar *title)
 {
 	GtkWidget *dialog;
 	GtkWidget *dbox;
@@ -47,19 +47,23 @@ run_edit_dialog (gchar *string)
 	gint retval;
 	gchar *new;
 	
-	dialog = gtk_dialog_new_with_buttons (_("Edit Palette"), NULL,
+	dialog = gtk_dialog_new_with_buttons (_(title), NULL,
 							    GTK_DIALOG_DESTROY_WITH_PARENT |
 							    GTK_DIALOG_MODAL, 
 							    GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+							    GTK_STOCK_OK, GTK_RESPONSE_OK,
 							    NULL);
-	gtk_dialog_add_button (GTK_DIALOG (dialog), _("_Accept"), 100);
+
+	gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
+	gtk_dialog_set_has_separator (GTK_DIALOG (dialog), FALSE);
+
 	dbox = GTK_DIALOG (dialog)->vbox;
 	
 	vbox = gtk_vbox_new (FALSE, 12);
 	gtk_box_pack_start (GTK_BOX (dbox), vbox, TRUE, TRUE, 0);
 	gtk_container_set_border_width (GTK_CONTAINER (vbox), 12);
 	
-	hbox = gtk_hbox_new (FALSE, 6);
+	hbox = gtk_hbox_new (FALSE, 12);
 	gtk_box_pack_start (GTK_BOX (vbox), hbox, TRUE, TRUE, 0);
 	
 	label = gtk_label_new_with_mnemonic (_("_Palette:"));
@@ -67,15 +71,16 @@ run_edit_dialog (gchar *string)
 		
 	entry = gtk_entry_new ();
 	gtk_label_set_mnemonic_widget (GTK_LABEL (label), entry);
+	gtk_entry_set_activates_default (GTK_ENTRY (entry), TRUE);
 	gtk_box_pack_start (GTK_BOX (hbox), entry, TRUE, TRUE, 0);
 	if (string)
 		gtk_entry_set_text (GTK_ENTRY (entry), string);
 	gtk_widget_show_all (dialog);
 	retval = gtk_dialog_run (GTK_DIALOG (dialog));
 	
-	if (retval != 100) {
+	if (retval != GTK_RESPONSE_OK) {
 		gtk_widget_destroy (dialog);
-		return;
+		return NULL;
 	}
 	
 	new = gtk_editable_get_chars (GTK_EDITABLE (entry), 0, -1);
@@ -96,7 +101,7 @@ add_palette (GtkButton *buttonk, charpick_data *curr_data)
 	GtkTreeSelection *selection;
 	GtkTreePath *path;
 		
-	new = run_edit_dialog (NULL);
+	new = run_edit_dialog (NULL, _("Add Palette"));
 	if (!new)
 		return;
 		
@@ -131,7 +136,7 @@ edit_palette (GtkButton *button, charpick_data *curr_data)
 		
 	gtk_tree_model_get (model, &iter, 1, &charlist, -1);
 	
-	new = run_edit_dialog (charlist);
+	new = run_edit_dialog (charlist, _("Edit Palette"));
 	if (!new || (g_ascii_strcasecmp (new, charlist) == 0))
 		return;
 		
@@ -191,7 +196,7 @@ delete_palette (GtkButton *button, charpick_data *curr_data)
 }
 
 static GtkWidget *
-create_palettes_tree (charpick_data *curr_data)
+create_palettes_tree (charpick_data *curr_data, GtkWidget *label)
 {
 	GtkWidget *scrolled;
 	GtkWidget *tree;
@@ -208,6 +213,7 @@ create_palettes_tree (charpick_data *curr_data)
 	model = gtk_list_store_new (2, G_TYPE_STRING, G_TYPE_POINTER);
 	tree = gtk_tree_view_new_with_model (GTK_TREE_MODEL (model));
 	curr_data->pref_tree = tree;
+	gtk_label_set_mnemonic_widget (GTK_LABEL (label), tree);
 	gtk_container_add (GTK_CONTAINER (scrolled), tree);
 	g_object_unref (G_OBJECT (model));
 	cell = gtk_cell_renderer_text_new ();
@@ -265,8 +271,9 @@ create_hig_catagory (GtkWidget *main_box, gchar *title)
 static void default_chars_frame_create(charpick_data *curr_data)
 {
   GtkWidget *dialog = curr_data->propwindow;
-  GtkWidget *dbox, *vbox, *vbox1, *vbox2;
+  GtkWidget *dbox, *vbox, *vbox1, *vbox2, *vbox3;
   GtkWidget *hbox;
+  GtkWidget *label;
   GtkWidget *scrolled;
   GtkWidget *button;
 
@@ -276,24 +283,32 @@ static void default_chars_frame_create(charpick_data *curr_data)
   gtk_container_set_border_width (GTK_CONTAINER (vbox), 12);
   gtk_box_pack_start (GTK_BOX (dbox), vbox, TRUE, TRUE, 0);
 
-  vbox1 = create_hig_catagory (vbox, _("Palettes")); 
-    
-  hbox = gtk_hbox_new (FALSE, 6);
-  gtk_box_pack_start (GTK_BOX (vbox1), hbox, TRUE, TRUE, 0); 
-  scrolled = create_palettes_tree (curr_data);
+  vbox1 = create_hig_catagory (vbox, _("Character Palette")); 
+  
+  vbox3 = gtk_vbox_new (FALSE, 6);
+  gtk_box_pack_start (GTK_BOX (vbox1), vbox3, TRUE, TRUE, 0);
+  
+  label = gtk_label_new_with_mnemonic(_("Pal_ettes:"));
+  gtk_box_pack_start(GTK_BOX(vbox3), label, FALSE, FALSE, 0);
+  gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+  gtk_widget_show(label);
+	  
+  hbox = gtk_hbox_new (FALSE, 12);
+  gtk_box_pack_start (GTK_BOX (vbox3), hbox, TRUE, TRUE, 0); 
+  scrolled = create_palettes_tree (curr_data, label);
   gtk_box_pack_start (GTK_BOX (hbox), scrolled, TRUE, TRUE, 0);
   
   vbox2 = gtk_vbox_new (FALSE, 6);
   gtk_box_pack_start (GTK_BOX (hbox), vbox2, FALSE, FALSE, 0);
-  button = gtk_button_new_with_mnemonic (_("_Add Palette"));
+  button = gtk_button_new_from_stock (GTK_STOCK_ADD);
   gtk_box_pack_start (GTK_BOX (vbox2), button, FALSE, FALSE, 0);
   g_signal_connect (G_OBJECT (button), "clicked",
   			     G_CALLBACK (add_palette), curr_data);
-  button = gtk_button_new_with_mnemonic (_("_Edit Palette"));
+  button = gtk_button_new_from_stock (GTK_STOCK_PROPERTIES);
   gtk_box_pack_start (GTK_BOX (vbox2), button, FALSE, FALSE, 0);
   g_signal_connect (G_OBJECT (button), "clicked",
   			     G_CALLBACK (edit_palette), curr_data);
-  button = gtk_button_new_with_mnemonic (_("_Delete Palette"));
+  button = gtk_button_new_from_stock (GTK_STOCK_DELETE);
   gtk_box_pack_start (GTK_BOX (vbox2), button, FALSE, FALSE, 0);
   g_signal_connect (G_OBJECT (button), "clicked",
   			     G_CALLBACK (delete_palette), curr_data);
@@ -355,6 +370,7 @@ show_preferences_dialog (BonoboUIComponent *uic,
 			 gtk_widget_get_screen (curr_data->applet));
   gtk_window_set_default_size (GTK_WINDOW (curr_data->propwindow), 350, 350);
   gtk_dialog_set_default_response (GTK_DIALOG (curr_data->propwindow), GTK_RESPONSE_CLOSE);
+  gtk_dialog_set_has_separator (GTK_DIALOG (curr_data->propwindow), FALSE);
 
   default_chars_frame_create(curr_data);
   g_signal_connect (G_OBJECT (curr_data->propwindow), "response",
