@@ -32,6 +32,7 @@ index.html: gnome-applets/index.html
 # cannot handle relative filenames
 gnome-applets/index.html: $(srcdir)/gnome-applets.sgml	\
 		$(top_srcdir)/modemlights/docs/C/modemlights.sgml \
+		$(top_srcdir)/diskusage/docs/C/diskusage.sgml \
 		$(top_srcdir)/webcontrol/docs/C/webcontrol.sgml
 	-srcdir=`cd $(srcdir) && pwd`; \
 	db2html $$srcdir/gnome-applets.sgml
@@ -49,6 +50,7 @@ install-data-local: index.html
 	done
 	-for file in \
 		$(top_srcdir)/modemlights/docs/C/fig/*.png \
+		$(top_srcdir)/diskusage/docs/C/fig/*.png \
 		$(top_srcdir)/webcontrol/docs/C/fig/*.png \
 	; do \
 	    basefile=`echo $$file | sed -e 's,^.*/,,'`; \
