@@ -197,7 +197,6 @@ GtkWidget *create_device_frame(void)
 	gtk_box_pack_start_defaults( GTK_BOX(line_box), label);
 	line_a = gtk_adjustment_new( props.line_spacing >> 10, 1, 1024, 1, 10, 10 );
 	line = gtk_spin_button_new( GTK_ADJUSTMENT(line_a), 1, 0 );
-	gtk_box_pack_start_defaults( GTK_BOX(line_box), line_a);
 	gtk_box_pack_start_defaults( GTK_BOX(line_box), line);
 
         gtk_signal_connect( GTK_OBJECT(line_a),"value_changed",
