@@ -157,8 +157,8 @@ delmap_cb (GnomePropertyBox * pb,GKB * gkb)
 
   if (gkb->tempmaps->next == NULL) return;
 
-  page = gtk_notebook_get_current_page(gkb->notebook);
-  gtk_notebook_remove_page (gkb->notebook, page);
+  page = gtk_notebook_get_current_page(GTK_NOTEBOOK(gkb->notebook));
+  gtk_notebook_remove_page (GTK_NOTEBOOK(gkb->notebook), page);
   gkb->tempmaps = g_list_remove(gkb->tempmaps, 
   			g_list_nth_data(gkb->tempmaps, page));
   gtk_widget_draw(GTK_WIDGET(gkb->notebook), NULL);
@@ -189,9 +189,6 @@ pathtoicon_cb (GnomePropertyBox * pb, PropWg * actdata)
 {
  int i;
  
- g_return_if_fail (GTK_WIDGET_REALIZED (actdata->iconpathinput));
- g_return_if_fail (GTK_WIDGET_REALIZED (actdata->iconentry));
-
  i = strcmp (gtk_entry_get_text(GTK_ENTRY(actdata->iconpathinput)),
    gnome_icon_entry_get_filename(GNOME_ICON_ENTRY (actdata->iconentry)));
 
@@ -207,8 +204,11 @@ pathtoicon_cb (GnomePropertyBox * pb, PropWg * actdata)
 static void
 newmap_cb (GnomePropertyBox * pb, GKB * gkb)
 {
+  PropWg *actdata;
 
-  PropWg *actdata = cp_prop(loadprop (gkb, 0));
+  gnome_config_push_prefix (APPLET_WIDGET (gkb->applet)->privcfgpath);
+  actdata = cp_prop(loadprop (gkb, 0));
+  gnome_config_pop_prefix ();
 
   makenotebook (gkb, actdata, gkb->tn);
 
