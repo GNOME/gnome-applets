@@ -114,6 +114,8 @@ gkb_keymap_copy (GkbKeymap *keymap)
   new_keymap->command = g_strdup (keymap->command);
   new_keymap->lang    = g_strdup (keymap->lang);
   new_keymap->label   = g_strdup (keymap->label);
+  new_keymap->pix     = NULL;
+  new_keymap->parent  = NULL;
 
   return new_keymap;
 }
@@ -141,5 +143,7 @@ gkb_keymap_copy_list (GList *list_in)
     new_list = g_list_prepend (new_list, keymap);
   }
 
-  return g_list_reverse (new_list);
+  new_list = g_list_reverse (new_list);
+
+  return new_list;
 }

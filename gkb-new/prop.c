@@ -72,6 +72,7 @@ gkb_prop_apply_clicked (GtkWidget * pb, gint page, GkbPropertyBoxInfo * pbi)
   if (page != -1)
     return;
 
+  /* Swap the lists of keymaps */
   gkb_keymap_free_list (gkb->maps);
   gkb->maps = gkb_keymap_copy_list (pbi->keymaps);
 
@@ -82,19 +83,22 @@ gkb_prop_apply_clicked (GtkWidget * pb, gint page, GkbPropertyBoxInfo * pbi)
 
   /* misc props from pbi */
   gkb->is_small    = pbi->is_small;
-  if (pbi->size > 0)
-   gkb->size        = pbi->size;
   gkb->appeareance = pbi->appeareance;
 
   gkb->key = g_strdup (gtk_entry_get_text (GTK_ENTRY(pbi->hotkey_entry)));
-  
   convert_string_to_keysym_state (gkb->key,
 				  &gkb->keysym,
 				  &gkb->state);
 
+  /* Render & update */
   gkb_sized_render (gkb);
-  gkb_update (gkb, FALSE);
   gkb_update (gkb, TRUE);
+
+  /* We need keymap->parent to be valid, reload list */
+#if 0	/*Not working */
+  gkb_keymap_free_list (pbi->keymaps);
+  pbi->keymaps = gkb_keymap_copy_list (gkb->maps);
+#endif	
 
   applet_widget_sync_config (APPLET_WIDGET(gkb->applet));
 }
@@ -172,9 +176,6 @@ gkb_prop_get_appeareance (void)
 }
 
 
-
-
-
 /**
  * gkb_prop_appeareance_changed:
  * @menu_item: 
@@ -214,10 +215,8 @@ gkb_prop_size_changed (GtkWidget *menu_item, GkbPropertyBoxInfo * pbi)
 
   if (strcmp (text, _("Small")) == 0) {
     pbi->is_small = TRUE;
-    pbi->size = applet_widget_get_panel_pixel_size (APPLET_WIDGET (gkb->applet)) / 2;
   } else if (strcmp (text, _("Normal")) == 0) {
     pbi->is_small = FALSE;
-    pbi->size = applet_widget_get_panel_pixel_size (APPLET_WIDGET (gkb->applet));
   } else {
     g_warning ("Could not interpret size change [%s]\n", text);
   }
@@ -413,7 +412,7 @@ gkb_prop_create_property_box (GkbPropertyBoxInfo *pbi)
 
   /* Page 1 Frames */
   display_frame = gkb_prop_create_display_frame (pbi);
-  hotkey_frame  = gkb_prop_create_hotkey_frame (pbi, propbox);
+  hotkey_frame  = gkb_prop_create_hotkey_frame (pbi, GNOME_PROPERTY_BOX (propbox));
   gtk_box_pack_start (GTK_BOX (page_1_vbox), display_frame, TRUE, TRUE, 0);
   gtk_box_pack_start (GTK_BOX (page_1_vbox), hotkey_frame, TRUE, FALSE, 2);
 
@@ -468,7 +467,6 @@ properties_dialog (AppletWidget * applet)
   
   pbi = g_new0 (GkbPropertyBoxInfo, 1);
   pbi->gkb = gkb;
-  pbi->size = gkb->size;
   pbi->mode = gkb->mode;
   pbi->is_small = gkb->is_small;
   pbi->add_button    = NULL;

@@ -40,6 +40,7 @@
 static gboolean
 gkb_system_set_keymap_idle (GkbKeymap *keymap)
 {
+  g_print ("Executing [%s]\n", gkb->keymap->command);
   if (system (gkb->keymap->command))
     gnome_error_dialog (_("The keymap switching command returned with error!"));
   

@@ -42,12 +42,14 @@ static GdkFilterReturn
 event_filter (GdkXEvent * gdk_xevent, GdkEvent * event, gpointer data);
 
 static void
-makepix (GkbKeymap *actdata, char *fname, int w, int h)
+makepix (GkbKeymap *keymap, char *fname, int w, int h)
 {
   GdkPixbuf *pix;
   int width, height;
 
   debug (FALSE, "");
+
+  g_print ("Making pixmap for \"%s\" with file \"%s\"\n", keymap->label, fname);
 
   pix = gdk_pixbuf_new_from_file (fname);
   if (pix != NULL)
@@ -76,12 +78,14 @@ makepix (GkbKeymap *actdata, char *fname, int w, int h)
 			   gdk_pixbuf_get_rowstride (pix),
 			   affine, ART_FILTER_NEAREST, NULL);
 
+#if 0	
       gdk_pixbuf_unref (pix);
+#endif	
 
-      actdata->pix = gdk_pixmap_new (bah_window->window, w, h, -1);
+      keymap->pix = gdk_pixmap_new (bah_window->window, w, h, -1);
 
-      gc = gdk_gc_new (actdata->pix);
-      gdk_draw_rgb_image (actdata->pix, gc,
+      gc = gdk_gc_new (keymap->pix);
+      gdk_draw_rgb_image (keymap->pix, gc,
 			  0, 0, w, h, GDK_RGB_DITHER_NORMAL, rgb, w * 3);
       gdk_gc_destroy (gc);
 
@@ -89,9 +93,11 @@ makepix (GkbKeymap *actdata, char *fname, int w, int h)
     }
   else
     {
-      if (actdata->pix)
-	gdk_pixmap_unref (actdata->pix);
-      actdata->pix = gdk_pixmap_new (bah_window->window, w, h, -1);
+      if (keymap->pix) {
+	g_print ("Unrefing ..\n");
+	gdk_pixmap_unref (keymap->pix);
+      }
+      keymap->pix = gdk_pixmap_new (bah_window->window, w, h, -1);
     }
 }
 
@@ -130,22 +136,25 @@ gkb_draw (GKB * gkb)
 void
 gkb_sized_render (GKB * gkb)
 {
-  GkbKeymap *actdata;
-  int i = 0;
+  GkbKeymap *keymap;
+  GList *list;
+  gint size;
 
   debug (FALSE, "");
 
   if (gkb->is_small)
-    gkb->size = applet_widget_get_panel_pixel_size (APPLET_WIDGET (gkb->applet)) / 2;
+    size = applet_widget_get_panel_pixel_size (APPLET_WIDGET (gkb->applet)) / 2;
+  else
+    size = applet_widget_get_panel_pixel_size (APPLET_WIDGET (gkb->applet));
 
   if (gkb->orient == ORIENT_UP || gkb->orient == ORIENT_DOWN)
     {
-      gkb->h = gkb->size;
-      gkb->w = gkb->h * 1.5;
+      gkb->h = size;
+      gkb->w = (int) gkb->h * 1.5;
     }
   else
     {
-      gkb->w = gkb->size;
+      gkb->w = size;
       gkb->h = (int) gkb->w / 1.5;
     }
 
@@ -158,25 +167,23 @@ gkb_sized_render (GKB * gkb)
   gtk_widget_queue_resize (gkb->darea->parent);
   gtk_widget_queue_resize (gkb->darea->parent->parent);
 
-  while ((actdata = g_list_nth_data (gkb->maps, i++)) != NULL)
-    {
-      gchar buf[256];
-      gchar *pixmapname;
-      struct stat tempbuf;
-
-      sprintf (buf, "gkb/%s", actdata->flag);
-      pixmapname = gnome_unconditional_pixmap_file (buf);
-      if (stat (pixmapname, &tempbuf))
-	{
-	  pixmapname = gnome_unconditional_pixmap_file ("gkb/gkb-foot.png");
-	  makepix (actdata, pixmapname, gkb->w - 4, gkb->h - 4);
-	}
-      else
-	{
-	  makepix (actdata, pixmapname, gkb->w - 4, gkb->h - 4);
-	}
-      g_free (pixmapname);
+  list = gkb->maps;
+  for (; list != NULL; list = list->next) {
+    gchar *name;
+    gchar *real_name;
+    keymap = (GkbKeymap *)list->data;
+    name = g_strdup_printf ("gkb/%s", keymap->flag);
+    real_name = gnome_unconditional_pixmap_file (name);
+    if (g_file_exists (real_name)) {
+      makepix (keymap, real_name, gkb->w - 4, gkb->h - 4);
+    } else {
+      g_free (real_name);
+      real_name = gnome_unconditional_pixmap_file ("gkb/gkb-foot.png");
+      makepix (keymap, real_name, gkb->w - 4, gkb->h - 4);
     }
+    g_free (name);
+    g_free (real_name);
+  }
 }
 
 /**
@@ -191,16 +198,19 @@ gkb_update (GKB * gkb, gboolean set_command)
 {
   debug (FALSE, "");
 
-  gkb_draw (gkb);
-  
+  g_return_if_fail (gkb->maps);
+
   /* When the size is changed, we don't need to change the actual
    * keymap, so when the set_commadn is false, it means that we
    * have changed size. In other words, we can't change size &
    * keymap at the same time */
+  if (!set_command)
+    gkb_sized_render (gkb);
+  
+  gkb_draw (gkb);
+  
   if (set_command)
     gkb_system_set_keymap (gkb);
-  else
-    gkb_sized_render (gkb);
 }
 
 static void
@@ -224,11 +234,15 @@ gkb_change_pixel_size (GtkWidget * w, gint new_size, gpointer data)
 
   debug (FALSE, "");
 
+#if 0
   if (gkb->size != new_size)
     {
       gkb->size = new_size;
+#endif	
       gkb_update (gkb, FALSE);
+#if 0	
     }
+#endif	
 }
 
 #if 0
@@ -264,13 +278,64 @@ gkb_switch_small (AppletWidget * applet, gpointer gkbx)
 #endif
 
 
+static gboolean
+applet_save_session (GtkWidget * w,
+		     const char *privcfgpath, const char *globcfgpath)
+{
+  const gchar *text;
+  GkbKeymap *actdata;
+  GList *list = gkb->maps;
+  gchar str[100];
+  int i = 0;
+
+  debug (FALSE, "");
+
+  gnome_config_push_prefix (privcfgpath);
+  gnome_config_set_int ("gkb/num", gkb->n);
+  gnome_config_set_int ("gkb/small", gkb->is_small);
+  gnome_config_set_string ("gkb/key", gkb->key);
+  text = gkb_util_get_text_from_appeareance (gkb->appeareance);
+  gnome_config_set_string ("gkb/appeareance", text);
+
+  while (list)
+    {
+      actdata = list->data;
+      if (actdata)
+	{
+	  g_snprintf (str, sizeof (str), "keymap_%d/name", i);
+	  gnome_config_set_string (str, actdata->name);
+	  g_snprintf (str, sizeof (str), "keymap_%d/country", i);
+	  gnome_config_set_string (str, actdata->country);
+	  g_snprintf (str, sizeof (str), "keymap_%d/lang", i);
+	  gnome_config_set_string (str, actdata->lang);
+	  g_snprintf (str, sizeof (str), "keymap_%d/label", i);
+	  gnome_config_set_string (str, actdata->label);
+	  g_snprintf (str, sizeof (str), "keymap_%d/flag", i);
+	  gnome_config_set_string (str, actdata->flag);
+	  g_snprintf (str, sizeof (str), "keymap_%d/command", i);
+	  gnome_config_set_string (str, actdata->command);
+	}
+
+      list = list->next;
+
+      i++;
+    }
+
+  gnome_config_pop_prefix ();
+  gnome_config_sync ();
+  gnome_config_drop_all ();
+
+  return FALSE;
+}
+
 GkbKeymap *
 loadprop (int i)
 {
+  struct stat tempbuf;
   GkbKeymap *actdata;
+  gint size;
   char buf[256];
   char *pixmapname;
-  struct stat tempbuf;
 
   debug (FALSE, "");
 
@@ -324,20 +389,18 @@ loadprop (int i)
   gkb->orient = applet_widget_get_panel_orient (APPLET_WIDGET (gkb->applet));
 
   if (gkb->is_small)
-    gkb->size =
-      applet_widget_get_panel_pixel_size (APPLET_WIDGET (gkb->applet)) / 2;
+    size = applet_widget_get_panel_pixel_size (APPLET_WIDGET (gkb->applet)) / 2;
   else
-    gkb->size =
-      applet_widget_get_panel_pixel_size (APPLET_WIDGET (gkb->applet));
+    size = applet_widget_get_panel_pixel_size (APPLET_WIDGET (gkb->applet));
 
   if (gkb->orient == ORIENT_UP || gkb->orient == ORIENT_DOWN)
     {
-      gkb->h = gkb->size;
+      gkb->h = size;
       gkb->w = gkb->h * 1.5;
     }
   else
     {
-      gkb->w = gkb->size;
+      gkb->w = size;
       gkb->h = (int) gkb->w / 1.5;
     }
 
@@ -531,56 +594,6 @@ help_cb (AppletWidget * applet)
   debug (FALSE, "");
 
   gnome_help_display (NULL, &help_entry);
-}
-
-static gboolean
-applet_save_session (GtkWidget * w,
-		     const char *privcfgpath, const char *globcfgpath)
-{
-  const gchar *text;
-  GkbKeymap *actdata;
-  GList *list = gkb->maps;
-  gchar str[100];
-  int i = 0;
-
-  debug (FALSE, "");
-
-  gnome_config_push_prefix (privcfgpath);
-  gnome_config_set_int ("gkb/num", gkb->n);
-  gnome_config_set_int ("gkb/small", gkb->is_small);
-  gnome_config_set_string ("gkb/key", gkb->key);
-  text = gkb_util_get_text_from_appeareance (gkb->appeareance);
-  gnome_config_set_string ("gkb/appeareance", text);
-
-  while (list)
-    {
-      actdata = list->data;
-      if (actdata)
-	{
-	  g_snprintf (str, sizeof (str), "keymap_%d/name", i);
-	  gnome_config_set_string (str, actdata->name);
-	  g_snprintf (str, sizeof (str), "keymap_%d/country", i);
-	  gnome_config_set_string (str, actdata->country);
-	  g_snprintf (str, sizeof (str), "keymap_%d/lang", i);
-	  gnome_config_set_string (str, actdata->lang);
-	  g_snprintf (str, sizeof (str), "keymap_%d/label", i);
-	  gnome_config_set_string (str, actdata->label);
-	  g_snprintf (str, sizeof (str), "keymap_%d/flag", i);
-	  gnome_config_set_string (str, actdata->flag);
-	  g_snprintf (str, sizeof (str), "keymap_%d/command", i);
-	  gnome_config_set_string (str, actdata->command);
-	}
-
-      list = list->next;
-
-      i++;
-    }
-
-  gnome_config_pop_prefix ();
-  gnome_config_sync ();
-  gnome_config_drop_all ();
-
-  return FALSE;
 }
 
 static GdkFilterReturn

@@ -42,7 +42,7 @@
 #include <dirent.h>		/* for opendir() et al. */
 #include <string.h>		/* for strncmp() */
 
-#if 1
+#if 0
 #define debug(section,str) /*if (debug_turned_on) */ g_print ("%s:%d (%s) %s\n", __FILE__, __LINE__, __FUNCTION__, str);
 #else
 #define debug(section,str) /*if (debug_turned_on) */ ;
@@ -84,7 +84,6 @@ struct _GkbPropertyBoxInfo
   
   /* Other properties */
   gint is_small;
-  gint size;
   gint mode;
   GkbAppeareance appeareance;
 };
@@ -115,7 +114,6 @@ struct _GKB
   /* Properties */
   PanelOrientType orient;
   GkbAppeareance appeareance;
-  gint size;
   gint is_small;
   gint w;
   gint h;

@@ -1,3 +1,13 @@
+2000-12-09  Chema Celorio  <chema@celorio.com>
+
+	* gkb.h (struct _GKB): remove size from the structure
+	and remove all references in the code.
+	(struct _GkbPropertyBoxInfo): ditto
+
+	* prop.c (gkb_prop_create_property_box): cast propbox
+	to GNOME_PROPERTY_BOX to avoid compile time warning
+	(gkb_prop_apply_clicked): fix a stupid crash.
+
 2000-12-09  Shooby Ban <shooby@gnome.hu>
 
 	* prop.c: (gkb_propbox_apply_clikced): fix size problem

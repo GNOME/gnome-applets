@@ -419,7 +419,7 @@ gkb_prop_list_load_keymaps (GkbPropertyBoxInfo *pbi)
   }
 
   pbi->keymaps = gkb_keymap_copy_list (gkb->maps);
-  
+
   gkb_prop_list_reload (pbi);
 }
 
