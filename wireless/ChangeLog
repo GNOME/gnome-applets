@@ -1,0 +1,89 @@
+2002-07-08  Bastien Nocera  <hadess@hadess.net>
+
+	* ChangeLog:
+	* GNOME_Panel_WirelessApplet.server.in:
+	* GNOME_WirelessApplet.xml:
+	* Makefile.am:
+	* broken-0.png:
+	* no-link-0.png:
+	* signal-1-40.png:
+	* signal-41-60.png:
+	* signal-61-80.png:
+	* signal-81-100.png:
+	* wireless-applet.c:
+	* wireless-applet.glade:
+	* wireless-applet.png: Ported to GNOME2, changed the icon
+	to a nifty icon from Jimmac <jimmac@ximian.com>
+
+2001-12-18  Eskil Heyn Olsen  <eskil@eskil.dk>
+
+	* configure.in:
+	* po/da.po:
+	* po/ja.po:
+	* po/wavelan-applet.pot:
+	* src/wavelan-applet.c: (wavelan_applet_draw),
+	(wavelan_applet_load_properties), (wavelan_applet_save_properties),
+	(wavelan_applet_new):
+	* themes/Makefile.am:
+	* themes/wavelan-card/Makefile.am:
+	* themes/wavelan-card/broken-0.png:
+	* themes/wavelan-card/no-link-0.png:
+	* themes/wavelan-card/signal-1-40.png:
+	* themes/wavelan-card/signal-41-60.png:
+	* themes/wavelan-card/signal-61-80.png:
+	* themes/wavelan-card/signal-81-100.png:
+	Fixed the session stuff.
+	Added a theme
+	did things..
+
+2001-12-13  Eskil Heyn Olsen  <eskil@eskil.dk>
+
+	* configure.in:
+	* src/wavelan-applet.c: (wavelan_applet_draw),
+	(wavelan_applet_animate_timeout), (wavelan_applet_start_animation),
+	(wavelan_applet_stop_animation), (wavelan_applet_animation_state),
+	(wavelan_applet_update_state), (wavelan_applet_load_theme_image),
+	(wavelan_applet_load_theme), (wavelan_applet_set_theme),
+	(wavelan_applet_read_device_state), (wavelan_applet_new),
+	(applet_activator):
+	* themes/Makefile.am:
+	* themes/airport/Makefile.am:
+	* themes/airport/broken-0.png:
+	* themes/airport/busted-link.png:
+	* themes/airport/good-link.png:
+	* themes/airport/no-link-0.png:
+	* themes/airport/no-link.png:
+	* themes/airport/ok-link.png:
+	* themes/airport/really-good-link.png:
+	* themes/airport/signal-1-40.png:
+	* themes/airport/signal-41-60.png:
+	* themes/airport/signal-61-80.png:
+	* themes/airport/signal-81-100.png:
+	* themes/airport/some-link.png:
+	* themes/default/Makefile.am:
+	* themes/default/broken-0.xpm:
+	* themes/default/broken-1.xpm:
+	* themes/default/busted-link.xpm:
+	* themes/default/good-link.xpm:
+	* themes/default/no-link-0.xpm:
+	* themes/default/no-link.xpm:
+	* themes/default/ok-link.xpm:
+	* themes/default/really-good-link.xpm:
+	* themes/default/signal-1-40.xpm:
+	* themes/default/signal-41-60.xpm:
+	* themes/default/signal-61-80.xpm:
+	* themes/default/signal-81-100.xpm:
+	* themes/default/some-link.xpm:
+	* wavelan-applet.spec.in:
+
+	nuked the sad-ass themes. Used the animation and theming from the power-applet.
+	
+2001-12-11  Eskil Heyn Olsen  <eskil@eskil.dk>
+
+	reviewed by: <delete if not using a buddy>
+
+	* po/wavelan-applet.pot:
+	* src/wavelan-applet.c: (wavelan_applet_add_theme_menu),
+	(wavelan_applet_properties_dialog), (wavelan_applet_new):
+
+	changed the theme list reding thing

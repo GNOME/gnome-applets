@@ -1,0 +1,52 @@
+## Process this file with automake to produce Makefile.in
+
+NULL=
+
+INCLUDES = 							\
+	-I$(top_srcdir)/intl 					\
+	$(GNOME_APPLETS_CFLAGS)					\
+	$(LIBGLADE_CFLAGS)					\
+	-DICONDIR=\""$(datadir)/pixmaps"\"			\
+	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"		\
+	$(NULL)
+
+bin_PROGRAMS = wireless-applet
+
+wireless_applet_SOURCES = 	\
+	wireless-applet.c	\
+	$(NULL)
+
+wireless_applet_LDADD = 	\
+	$(GNOME_APPLETS_LIBS) 	\
+	$(LIBGLADE_LIBS)	\
+	$(NULL)
+
+gladedir = $(datadir)/wireless-applet/
+glade_DATA = wireless-applet.glade
+
+serverdir       = $(libdir)/bonobo/servers
+server_in_files = GNOME_Panel_WirelessApplet.server.in
+noinst_DATA     = $(server_in_files:.server.in=.server)
+@INTLTOOL_SERVER_RULE@
+
+uidir = $(datadir)/gnome-2.0/ui
+ui_DATA = GNOME_WirelessApplet.xml
+
+pixmapdir = $(datadir)/pixmaps/wireless-applet/
+pixmap_DATA = no-link-0.png	\
+        broken-0.png		\
+	signal-1-40.png		\
+	signal-41-60.png	\
+	signal-61-80.png	\
+	signal-81-100.png	\
+	wireless-applet.png	\
+	$(NULL)
+
+CLEANFILES = GNOME_Panel_WirelessApplet.server *.bak *.gladep
+
+EXTRA_DIST = 				\
+	$(server_in_files)		\
+	$(glade_DATA)			\
+	$(pixmap_DATA)			\
+	$(ui_DATA)			\
+	$(NULL)
