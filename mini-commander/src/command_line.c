@@ -37,8 +37,8 @@ static gint file_browser_ok_signal(GtkWidget *widget, gpointer file_select);
 /*static gint history_item_clicked_cb(GtkWidget *widget, gpointer data);*/
 static gint history_popup_clicked_cb(GtkWidget *widget, gpointer data);
 static gint history_popup_clicked_inside_cb(GtkWidget *widget, gpointer data);
-static void history_selection_made_cb(GtkWidget *clist, gint row, gint column,
-				    GdkEventButton *event, gpointer data);
+static void history_selection_made_cb (GtkTreeView *treeview, GtkTreePath *arg1,
+                                       GtkTreeViewColumn *arg2, gpointer data);
 static gchar* history_auto_complete(GtkWidget *widget, GdkEventKey *event);
 
 
@@ -211,22 +211,31 @@ command_line_activate_cb(GtkWidget *widget, GdkEvent *event, gpointer data)
     data = NULL;
 }
 
-/* no longer needed */
 static void
-history_selection_made_cb(GtkWidget *clist, gint row, gint column,
-			GdkEventButton *event, gpointer data)
+history_selection_made_cb (GtkTreeView *treeview, GtkTreePath *arg1,
+                           GtkTreeViewColumn *arg2, gpointer data)
 {
     PanelApplet *applet = data;
     gchar *command;
+    GtkTreeModel *model;
+    GtkTreeIter iter;
+    GValue val = {0,};
+    GtkWidget *widget;
 
-    gtk_clist_get_text(GTK_CLIST(clist), row, column, &command);
+    widget = (GtkWidget *) treeview;
+    model = gtk_tree_view_get_model (treeview);
+    gtk_tree_model_get_iter ( model, &iter, arg1);
+    gtk_tree_model_get_value (GTK_TREE_MODEL (model), &iter,
+                              0, &val);
+    command = g_strdup (g_value_get_string (&val));
     exec_command(command, applet);
 
+    g_value_unset(&val);
+    g_free(command);
     /* close history window */
-    gtk_widget_destroy(GTK_WIDGET(clist->parent->parent->parent));
+    gtk_widget_destroy(GTK_WIDGET(widget->parent->parent->parent));
     return;
     data = NULL;
-    event = NULL;
 }
 
 #if 0
@@ -282,7 +291,12 @@ show_history_signal(GtkWidget *widget, gpointer data)
      GtkWidget *window;
      GtkWidget *frame;
      GtkWidget *scrolled_window;
-     GtkWidget *clist;
+     GtkListStore *store;
+     GtkTreeIter iter;
+     GtkTreeModel *model;
+     GtkWidget    *treeview;
+     GtkCellRenderer *cell_renderer;
+     GtkTreeViewColumn *column;
      /*Gtk_style *style;*/
      gchar *command_list[1];
      int i, j;
@@ -351,26 +365,38 @@ show_history_signal(GtkWidget *widget, gpointer data)
      
      gtk_widget_push_style (style);
      */
-     clist = gtk_clist_new(1);
      /*      gtk_widget_pop_style (); */
-     gtk_signal_connect(GTK_OBJECT(clist),
-			"select_row",
-			GTK_SIGNAL_FUNC(history_selection_made_cb),
-			applet);
      
-     
+     store = gtk_list_store_new (1, G_TYPE_STRING);
+
      /* add history entries to list */
      for(i = 0; i < LENGTH_HISTORY_LIST; i++)
 	 {
 	     if(exists_history_entry(i))
 		 {
 		     command_list[0] = get_history_entry(i);
-		     gtk_clist_append(GTK_CLIST(clist), command_list);
+                     gtk_list_store_append (store, &iter);
+                     gtk_list_store_set (store, &iter,0,command_list[0],-1);
 		 }
 	 }
-     gtk_container_add(GTK_CONTAINER(scrolled_window), clist);
-     gtk_widget_show(clist);    
      
+     model = GTK_TREE_MODEL(store);
+     treeview = gtk_tree_view_new_with_model (model);
+     cell_renderer = gtk_cell_renderer_text_new ();
+     column = gtk_tree_view_column_new_with_attributes (NULL, cell_renderer,
+                                                       "text", 0, NULL);
+     gtk_tree_view_append_column (GTK_TREE_VIEW (treeview), column);
+     gtk_tree_view_set_headers_visible (GTK_TREE_VIEW (treeview), FALSE);
+     gtk_tree_selection_set_mode( (GtkTreeSelection *)gtk_tree_view_get_selection
+                                (GTK_TREE_VIEW (treeview)),
+                                 GTK_SELECTION_SINGLE);
+     gtk_signal_connect(GTK_OBJECT(treeview),
+                        "row_activated",
+                        GTK_SIGNAL_FUNC(history_selection_made_cb),
+                        applet);
+     g_object_unref (G_OBJECT (model));
+     gtk_container_add(GTK_CONTAINER(scrolled_window),treeview);
+     gtk_widget_show (treeview); 
      /* grab focus */
      gdk_pointer_grab (window->window,
 		       TRUE,

@@ -33,7 +33,5 @@ show_help(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 	g_error_free (error);
     }
 
-    show_message((gchar *) _("still not ported")); 
-
     return;
 }

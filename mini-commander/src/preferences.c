@@ -24,6 +24,7 @@
 #include <panel-applet.h>
 #include <gconf/gconf.h>
 #include <string.h>
+#include <panel-applet-gconf.h>
 
 #include "preferences.h"
 #include "command_line.h" /* needed for style changes */

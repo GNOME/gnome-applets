@@ -202,6 +202,7 @@ redraw_applet(MCData *mcdata)
     GtkWidget *icon;
     GtkWidget *vbox;
     GtkTooltips *tooltips;
+    GdkPixbuf *image;
     int size_frames = 0;
     int size_status_line = 18;
     gboolean first_time = FALSE;
@@ -281,7 +282,8 @@ redraw_applet(MCData *mcdata)
     g_signal_connect (G_OBJECT (button), "button_press_event",
 		      G_CALLBACK (button_press_hack), applet);
     gtk_widget_set_usize(GTK_WIDGET(button), 13, 10);
-    icon = gnome_pixmap_new_from_xpm_d (browser_mini_xpm);
+    image = gdk_pixbuf_new_from_xpm_data (browser_mini_xpm);
+    icon = gtk_image_new_from_pixbuf (image);
     gtk_container_add(GTK_CONTAINER(button), icon);
 
     gtk_tooltips_set_tip (tooltips, button, _("Browser"), NULL);
@@ -298,7 +300,8 @@ redraw_applet(MCData *mcdata)
     g_signal_connect (G_OBJECT (button), "button_press_event",
 		      G_CALLBACK (button_press_hack), applet);
     gtk_widget_set_usize(GTK_WIDGET(button), 13, 10);
-    icon = gnome_pixmap_new_from_xpm_d (history_mini_xpm);
+    image = gdk_pixbuf_new_from_xpm_data (history_mini_xpm);
+    icon = gtk_image_new_from_pixbuf (image);
     gtk_container_add(GTK_CONTAINER(button), icon);
 
     gtk_tooltips_set_tip (tooltips, button, _("History"), NULL);

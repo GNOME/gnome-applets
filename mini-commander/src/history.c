@@ -27,6 +27,7 @@
 #include <gnome.h>
 #include <gconf/gconf.h>
 #include <panel-applet.h>
+#include <panel-applet-gconf.h>
 
 #include "history.h"
 #include "preferences.h"
