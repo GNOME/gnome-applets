@@ -2922,4 +2922,4 @@ PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_MailcheckApplet_Factory",
                              "InboxMonitor",
                              "0",
                              mailcheck_factory,
-                            NULL)
+                             NULL)
