@@ -46,18 +46,6 @@ struct _KeymapData
   GkbKeymap *preset;
 };
 
-static void
-changed_cb (GtkEntry * entry, GnomePropertyBox * pb)
-{
-  gnome_property_box_changed (GNOME_PROPERTY_BOX (pb));
-}
-
-
-
-
-
-
-
 /**
  * gkb_prop_apply_clicked:
  * @pb: 
@@ -67,12 +55,9 @@ changed_cb (GtkEntry * entry, GnomePropertyBox * pb)
  * Apply settings.
  **/
 static void
-gkb_prop_apply_clicked (GtkWidget * pb, gint page, GkbPropertyBoxInfo * pbi)
+gkb_prop_apply_clicked (GtkWidget * pb, GkbPropertyBoxInfo * pbi)
 {
   static guint key = 0;
-
-  if (page != -1)
-    return;
 
   /* Swap the lists of keymaps */
   gkb_keymap_free_list (gkb->maps);
@@ -89,15 +74,14 @@ gkb_prop_apply_clicked (GtkWidget * pb, gint page, GkbPropertyBoxInfo * pbi)
 
   key = XKeysymToKeycode (GDK_DISPLAY (), gkb->keysym);
 
-  XUngrabKey (GDK_DISPLAY (), key, gkb->state, GDK_ROOT_WINDOW ());
+  gkb_xungrab (key, gkb->state);
 
   gkb->key = g_strdup (gtk_entry_get_text (GTK_ENTRY (pbi->hotkey_entry)));
   convert_string_to_keysym_state (gkb->key, &gkb->keysym, &gkb->state);
 
   key = XKeysymToKeycode (GDK_DISPLAY (), gkb->keysym);
 
-  XGrabKey (GDK_DISPLAY (), key, gkb->state,
-	    GDK_ROOT_WINDOW (), True, GrabModeAsync, GrabModeAsync);
+  gkb_xgrab ( key, gkb->state);
 
   applet_save_session ();
 
@@ -197,7 +181,6 @@ gkb_prop_mode_changed (GtkWidget * menu_item, GkbPropertyBoxInfo * pbi)
 
   pbi->mode = gkb_util_get_mode_from_text (text);
 
-  gnome_property_box_changed (GNOME_PROPERTY_BOX (pbi->box));
 }
 
 /**
@@ -229,7 +212,6 @@ gkb_prop_size_changed (GtkWidget * menu_item, GkbPropertyBoxInfo * pbi)
       g_warning ("Could not interpret size change [%s]\n", text);
     }
 
-  gnome_property_box_changed (GNOME_PROPERTY_BOX (pbi->box));
 }
 
 
@@ -346,7 +328,7 @@ gkb_prop_create_display_frame (GkbPropertyBoxInfo * pbi)
  * Return Value: the hotkey frame widget
  **/
 static GtkWidget *
-gkb_prop_create_hotkey_frame (GkbPropertyBoxInfo * pbi, GnomePropertyBox * pb)
+gkb_prop_create_hotkey_frame (GkbPropertyBoxInfo * pbi, GtkWidget * widget)
 {
   GtkWidget *frame;
   GtkWidget *button;
@@ -369,8 +351,9 @@ gkb_prop_create_hotkey_frame (GkbPropertyBoxInfo * pbi, GnomePropertyBox * pb)
   gtk_box_pack_start (GTK_BOX (hbox), button, TRUE, FALSE, 0);
   gtk_box_pack_start (GTK_BOX (hbox), pbi->hotkey_entry, FALSE, TRUE, 0);
 
-  g_signal_connect (pbi->hotkey_entry, "changed",
+/*  g_signal_connect (pbi->hotkey_entry, "changed",
 		      G_CALLBACK (changed_cb), pb);
+*/
   g_signal_connect (button, "clicked",
 		      G_CALLBACK (grab_button_pressed),
 		      pbi->hotkey_entry);
@@ -389,10 +372,25 @@ prophelp_cb (PanelApplet * applet, gpointer data)
 */
 }
 
+static void
+window_response (GtkWidget *w, int response, gpointer data)
+{
+        switch (response) {
+        case GTK_RESPONSE_APPLY:
+                gkb_prop_apply_clicked(w, data);
+		break;
+        case GTK_RESPONSE_OK:
+                gkb_prop_apply_clicked(w, data);
+	case GTK_RESPONSE_CLOSE:
+                gtk_widget_destroy (w);
+        }
+}
+
+
 static GtkWidget *
 gkb_prop_create_property_box (GkbPropertyBoxInfo * pbi)
 {
-  GtkWidget *propbox;
+  GtkWidget *propwindow;
   GtkWidget *propnotebook;
   GtkWidget *display_frame;
   GtkWidget *hotkey_frame;
@@ -405,14 +403,17 @@ gkb_prop_create_property_box (GkbPropertyBoxInfo * pbi)
   GtkWidget *page_2_label;
 
   /* Create property box */
-  propbox = gnome_property_box_new ();
+  propwindow = gtk_dialog_new_with_buttons (_("GKB Properties"), NULL,
+                                            GTK_DIALOG_DESTROY_WITH_PARENT,
+                                            GTK_STOCK_APPLY, GTK_RESPONSE_APPLY,
+                                            GTK_STOCK_OK, GTK_RESPONSE_OK,
+                                            GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
+                                            NULL);
 
-  gtk_object_set_data (GTK_OBJECT (propbox), "propbox", propbox);
-  gtk_window_set_title (GTK_WINDOW (propbox), _("GKB Properties"));
-  gtk_window_set_position (GTK_WINDOW (propbox), GTK_WIN_POS_CENTER);
-  gtk_window_set_policy (GTK_WINDOW (propbox), FALSE, FALSE, FALSE);
-
-  propnotebook = GNOME_PROPERTY_BOX (propbox)->notebook;
+  propnotebook =  gtk_notebook_new ();
+  gtk_box_pack_start (GTK_BOX (GTK_DIALOG (propwindow)->vbox), propnotebook,
+                      TRUE, TRUE, 0);
+                              
   gtk_widget_show (propnotebook);
 
   /* Add page 1 */
@@ -442,17 +443,15 @@ gkb_prop_create_property_box (GkbPropertyBoxInfo * pbi)
   /* Page 2 Frames */
   display_frame = gkb_prop_create_display_frame (pbi);
   hotkey_frame =
-    gkb_prop_create_hotkey_frame (pbi, GNOME_PROPERTY_BOX (propbox));
+    gkb_prop_create_hotkey_frame (pbi, propnotebook);
   gtk_box_pack_start (GTK_BOX (page_2_vbox), display_frame, TRUE, TRUE, 0);
   gtk_box_pack_start (GTK_BOX (page_2_vbox), hotkey_frame, TRUE, FALSE, 2);
 
-  /* Connect the signals */
-  g_signal_connect (propbox, "apply",
-		      G_CALLBACK (gkb_prop_apply_clicked), pbi);
-  g_signal_connect (propbox, "help",
-		      G_CALLBACK (prophelp_cb), NULL);
+  g_signal_connect (G_OBJECT (propwindow), "response",
+                    G_CALLBACK (window_response),
+                    pbi);
 
-  return propbox;
+  return propwindow;
 }
 
 static gint

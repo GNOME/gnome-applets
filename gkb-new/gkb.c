@@ -40,7 +40,6 @@
 #include <libgnomeui/libgnomeui.h>
 #include <libgnome/libgnome.h>
 #include <panel-applet-gconf.h>
-
 #include "gkb.h"
 
 int NumLockMask, CapsLockMask, ScrollLockMask;
@@ -142,7 +141,7 @@ gkb_draw (GKB * gkb)
 {
   g_return_if_fail (gkb->darea != NULL);
   g_return_if_fail (gkb->keymap != NULL);
-  g_return_if_fail (GTK_WIDGET_REALIZED (gkb->darea));
+  if (!GTK_WIDGET_REALIZED (gkb->darea)) return;
 
   if (gkb->mode != GKB_LABEL)
     {
@@ -511,6 +510,10 @@ load_properties (GKB * gkb)
 
   gkb->is_small = panel_applet_gconf_get_bool (PANEL_APPLET(gkb->applet), "small", NULL);
 
+  if (gkb->is_small == NULL) {
+    gkb->is_small = TRUE;
+  }
+ 
   text = gkb_load_pref ("mode", "Flag and Label");
   gkb->mode = gkb_util_get_mode_from_text (text);
   g_free (text);
@@ -850,15 +853,14 @@ static void gkb_destroy (GtkWidget * widget, gpointer data) {
 
 gboolean fill_gkb_applet(PanelApplet *applet)
 {
-  int keycode, modifiers;
-
+  gint keycode, modifiers;
   gkb = g_new0 (GKB, 1);
 
   gkb->n = 0;
   gkb->cur = 0;
   gkb->applet = GTK_WIDGET (applet);
 
-  panel_applet_add_preferences (gkb->applet, "/schemas/apps/gkb-applet/prefs", NULL);
+  panel_applet_add_preferences (applet, "/schemas/apps/gkb-applet-2/prefs", NULL);
 
   gtk_widget_push_visual (gdk_rgb_get_visual ());
   gtk_widget_push_colormap (gdk_rgb_get_cmap ());
@@ -885,20 +887,7 @@ gboolean fill_gkb_applet(PanelApplet *applet)
 
   modifiers = gkb->state;
   
-  XGrabKey (GDK_DISPLAY(), keycode, modifiers,
-            GDK_ROOT_WINDOW(), True, GrabModeAsync, GrabModeAsync);
-  XGrabKey (GDK_DISPLAY(), keycode, modifiers|NumLockMask,
-            GDK_ROOT_WINDOW(), True, GrabModeAsync, GrabModeAsync);
-  XGrabKey (GDK_DISPLAY(), keycode, modifiers|CapsLockMask,
-            GDK_ROOT_WINDOW(), True, GrabModeAsync, GrabModeAsync);
-  XGrabKey (GDK_DISPLAY(), keycode, modifiers|ScrollLockMask,
-            GDK_ROOT_WINDOW(), True, GrabModeAsync, GrabModeAsync);
-  XGrabKey (GDK_DISPLAY(), keycode, modifiers|NumLockMask|CapsLockMask,
-            GDK_ROOT_WINDOW(), True, GrabModeAsync, GrabModeAsync);
-  XGrabKey (GDK_DISPLAY(), keycode, modifiers|NumLockMask|ScrollLockMask,
-            GDK_ROOT_WINDOW(), True, GrabModeAsync, GrabModeAsync);
-  XGrabKey (GDK_DISPLAY(), keycode, modifiers|NumLockMask|CapsLockMask|ScrollLockMask,
-            GDK_ROOT_WINDOW(), True, GrabModeAsync, GrabModeAsync);
+  gkb_xgrab (keycode, modifiers);
 
   gdk_window_add_filter (GDK_ROOT_PARENT (), event_filter, NULL);
 

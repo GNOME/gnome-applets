@@ -214,6 +214,9 @@ char * convert_keysym_state_to_string(guint keysym,
 					guint state);
 void grab_button_pressed (GtkButton *button, gpointer data);
 
+void gkb_xgrab(gint keycode, gint modifiers);
+void gkb_xungrab(gint keycode, gint modifiers);
+
 /* Globals */
 gchar * prefixdir;
 GKB * gkb;
