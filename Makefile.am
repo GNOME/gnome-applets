@@ -75,7 +75,8 @@ DIST_SUBDIRS = \
 	gweather 	\
 	mini-commander	\
 	man		\
-	omf-install
+	omf-install	\
+	wireless
 
 EXTRA_DIST = \
 	COPYING-DOCS		\
