@@ -107,6 +107,7 @@ cdrom_pause(cdrom_device_t cdp)
 		cdp->my_errno = errno;
 	}
 
+	cdrom_unuse (cdp);
 	return result;
 }
 
@@ -123,6 +124,7 @@ cdrom_resume(cdrom_device_t cdp)
 		result = DISC_IO_ERROR;
 	}
 
+	cdrom_unuse (cdp);
 	return result;
 }
 

@@ -1,3 +1,9 @@
+2003-06-21  Elijah Newren <newren@math.utah.edu>
+
+	* cdrom-linux.c: Fixed a crash on eject which occurred if the user
+	had paused the music, by simply correcting the cdp->use_count
+	reference count to have the right value.  Fixes bug #115686.
+
 2003-06-03  Kevin Vandersloot
 
 	* cdplayer.c: expand for FItt's law and get rid of external frame. Needed to remove
