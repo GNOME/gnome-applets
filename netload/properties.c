@@ -58,7 +58,7 @@ void color_changed_cb( GnomeColorSelector *widget, gchar **color )
 	tmp = g_malloc(24);
         if( !tmp )
         {
-        	g_warning( "Can't allocate memory for color\n" );
+        	g_warning(_("Can't allocate memory for color\n"));
                 return;
         }
         gnome_color_selector_get_color_int(
@@ -116,23 +116,23 @@ GtkWidget *create_general_frame(void)
 	gnome_color_selector_set_color_int( scolor_gcs, sr, sg, sb, 255 );
                   
 
-	label = gtk_label_new("Network Traffic");
+	label = gtk_label_new(_("Network Traffic"));
 	gtk_box_pack_start_defaults( GTK_BOX(color), label );
 	gtk_box_pack_start_defaults( GTK_BOX(color), 
 		gnome_color_selector_get_button(ucolor_gcs) );
 
-	label = gtk_label_new("Traffic bars");
+	label = gtk_label_new(_("Traffic bars"));
 	gtk_box_pack_start_defaults( GTK_BOX(color), label );
 	gtk_box_pack_start_defaults( GTK_BOX(color), 
 		gnome_color_selector_get_button(scolor_gcs) );
 
-	label = gtk_label_new("Applet Height");
+	label = gtk_label_new(_("Applet Height"));
 	height_a = gtk_adjustment_new( props.height, 0.5, 128, 1, 8, 8 );
 	height  = gtk_spin_button_new( GTK_ADJUSTMENT(height_a), 1, 0 );
 	gtk_box_pack_start_defaults( GTK_BOX(size), label );
 	gtk_box_pack_start_defaults( GTK_BOX(size), height );
 	
-	label = gtk_label_new("Width");
+	label = gtk_label_new(_("Width"));
 	width_a = gtk_adjustment_new( props.width, 0.5, 128, 1, 8, 8 );
 	width  = gtk_spin_button_new( GTK_ADJUSTMENT(width_a), 1, 0 );
 	gtk_box_pack_start_defaults( GTK_BOX(size), label );
@@ -147,7 +147,7 @@ GtkWidget *create_general_frame(void)
         gtk_spin_button_set_update_policy( GTK_SPIN_BUTTON(width),
         	GTK_UPDATE_ALWAYS );
 
-	label = gtk_label_new("Update Frequency");
+	label = gtk_label_new(_("Update Frequency"));
 
 	freq_a = gtk_adjustment_new( (float)props.speed/1000, 1, 60, 0.1, 5, 5 );
 	freq  = gtk_spin_button_new( GTK_ADJUSTMENT(freq_a), 1, 1 );
@@ -190,7 +190,7 @@ GtkWidget *create_device_frame(void)
 	box = gtk_vbox_new( 5, TRUE );
 
 	device_box = gtk_hbox_new(5, FALSE);
-	label = gtk_label_new("Device name (like ppp0 or eth0)");
+	label = gtk_label_new(_("Device name (like ppp0 or eth0)"));
 	gtk_box_pack_start_defaults( GTK_BOX(device_box), label);
 	device = gtk_entry_new_with_max_length(4);
 	gtk_entry_set_text(GTK_ENTRY(device), props.device);
@@ -198,7 +198,7 @@ GtkWidget *create_device_frame(void)
 	gtk_box_pack_start_defaults( GTK_BOX(device_box), device);
 
 	line_box = gtk_hbox_new(5, TRUE);
-	label = gtk_label_new("Vertical spacing of bars (in kilobytes)");
+	label = gtk_label_new(_("Vertical spacing of bars (in kilobytes)"));
 	gtk_box_pack_start_defaults( GTK_BOX(line_box), label);
 	line_a = gtk_adjustment_new( props.line_spacing >> 10, 1, 1024, 1, 10, 10 );
 	line = gtk_spin_button_new( GTK_ADJUSTMENT(line_a), 1, 0 );
@@ -240,22 +240,22 @@ void properties(AppletWidget *applet, gpointer data)
 	memcpy(&new_props, &props, sizeof(netload_properties));
 		
         if (!(propbox = gnome_property_box_new())){
-		fprintf(stderr, "properties.c: gnome_property_box_new() failed.\n");
+		fprintf(stderr,_("properties.c: gnome_property_box_new() failed.\n"));
 		return;
 	}
 
 	gtk_window_set_title( 
 		GTK_WINDOW(&GNOME_PROPERTY_BOX(propbox)->dialog.window), 
-		"Network Load Settings" );
+		_("Network Load Settings"));
 	
 	frame = create_general_frame();
-	label = gtk_label_new("General");
+	label = gtk_label_new(_("General"));
         gtk_widget_show(frame);
 	gnome_property_box_append_page( GNOME_PROPERTY_BOX(propbox),
 		frame, label );
 
 	frame = create_device_frame();
-	label = gtk_label_new("Device");
+	label = gtk_label_new(_("Device"));
         gtk_widget_show(frame);
 	gnome_property_box_append_page( GNOME_PROPERTY_BOX(propbox),
 		frame, label );
