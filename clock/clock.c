@@ -162,6 +162,11 @@ applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
 {
 	time_t current_time;
 
+	if(o == ORIENT_UP) puts("ORIENT_UP");
+	else if(o == ORIENT_DOWN) puts("ORIENT_DOWN");
+	else if(o == ORIENT_LEFT) puts("ORIENT_LEFT");
+	else if(o == ORIENT_RIGHT) puts("ORIENT_RIGHT");
+
 	time(&current_time);
 	cd->orient = o;
 	(*cd->update_func) (clockw, current_time);
@@ -194,15 +199,17 @@ main(int argc, char **argv)
 		g_error("Can't create applet!\n");
 
 	clockw = create_clock_widget();
-	gtk_widget_show(clockw);
-	applet_widget_add(APPLET_WIDGET(applet), clockw);
-	gtk_widget_show(applet);
+
 	gtk_signal_connect(GTK_OBJECT(applet),"destroy",
 			   GTK_SIGNAL_FUNC(destroy_applet),
 			   NULL);
 	gtk_signal_connect(GTK_OBJECT(applet),"change_orient",
 			   GTK_SIGNAL_FUNC(applet_change_orient),
 			   NULL);
+
+	gtk_widget_show(clockw);
+	applet_widget_add(APPLET_WIDGET(applet), clockw);
+	gtk_widget_show(applet);
 
 /*
 	gnome_panel_applet_register_callback(applet_id,
