@@ -1,0 +1,112 @@
+<!-- Permission is granted to make and distribute verbatim copies of -->
+<!-- this manual provided the copyright notice and this permission -->
+<!-- notice are  preserved on all copies. -->
+<!-- -->
+<!-- Permission is granted to copy and distribute modified versions of -->
+<!-- this manual under the conditions for verbatim copying, provided -->
+<!-- that the entire resulting derived work is distributed under the -->
+<!-- terms of a permission notice identical to this one. -->
+<!-- -->
+<!-- Permission is granted to copy and distribute translations of this -->
+<!-- manual into another language, under the above conditions for -->
+<!-- modified versions, except that this permission notice may be -->
+<!-- stated in a translation approved by the Foundation. -->
+
+  <sect1 id="cpumemusage-applet">
+   <title>Апплет использования ЦПУ и памяти</title> 
+
+   <para> 
+     <application>cpumemusage_applet</application> - это  маленький
+     индикатор, который располагается на вашей панели и сообщает вам
+     об использовании ЦПУ, памяти и подкачки на вашей машине. 
+   </para>  
+ 
+   <sect2 id="cpumemusage-usage">
+    <title>Использование</title>
+    <para>
+      Вам не нужно делать что-либо с этим апплетом. Он просто располагается
+      и работает на вашей панели.
+    </para>
+    <para>
+      Апплет показывает три прямоугольных индикатора для ЦПУ, памяти и подкачки.
+      Если ваша панель горизонтальная, верхняя полоса - ЦПУ, средняя - память,
+      а нижняя - подкачка. Если ваша панель вертикальная, левая полоса - ЦПУ,
+      средняя - память, а правая - подкачка.
+    </para>
+    <variablelist>
+     <varlistentry>
+      <term>ЦПУ</term>
+      <listitem>
+       <para>
+         Здесь используются три цвета. Желтый -- для показа активности ЦПУ, которой не
+	 требуется ядро. Серый -- для показа активности ЦПУ создаваемой программами
+         общающимися с ядром (обычно, куча ввода/вывода такого как перемещение
+         данных между памятью и диском). Черный используется как фон и отображает
+         неиспользование ЦПУ. 
+       </para>
+      </listitem>
+     </varlistentry>
+     <varlistentry>
+      <term>Память</term>
+      <listitem>
+       <para>
+         Здесь используются четыре цвета. Желтый -- для показа использования разделяемой памяти
+	 (памяти используемой несколькими программами). Серый -- для показа использования
+         буферов (памяти содержащей данные еще не записанные на диск).
+         Желто-зеленый -- для показа использования остальной памяти. Зеленый отображает
+         неиспользуемую память.
+       </para>
+      </listitem>
+     </varlistentry>
+     <varlistentry>
+      <term>Подкачка</term>
+      <listitem>
+       <para>
+         Здесь используются два цвета. Красный используется для показа используемого
+	 пространства подкачки. Зеленый -- для неиспользуемог. Подкачка -- это раздел
+	 на жестком диске где ядро хранит части программ, которые не используются в данный
+	 момент так что они могут быть легко запрошены когда они потребуются.
+       </para>
+      </listitem>
+     </varlistentry>
+    </variablelist>
+   </sect2>
+<!--  Этот раздел надо будет раскомментировать когда появится Меню всплывающее по 
+ щелчку правой кнопкой мыши.
+   <sect2 id="cpumemusage-right-click">
+    <title>Пункты меню всплывающего по щелчку правой кнопкой мыши</title>
+    <para> 
+      У этого апплета нет дополнительных пунктов меню. 
+    </para>
+   </sect2>
+-->  
+   <sect2 id="cpumemusage-bugs">
+    <title> Известные ошибки и ограничения</title>
+    <para>
+      У этого апплета нет известных ошибок.
+    </para>
+   </sect2>
+
+   <sect2 id="cpumemusage-authors">
+    <title>Авторы</title>
+    <para>
+      Этот апплет был написал Radek Doulik (<email>rodo@ucw.cz</email>).
+      Пожалуйста сообщайте об обнаруженных ошибках с помощью
+      <ulink type="http" url="http://bugs.gnome.org">Системы обработки
+      ошибок GNOME</ulink>. Вы можете сделать это следуя инструкциям на 
+      этом сайте или используя <application>bug-buddy</application>
+      из командной строки. В качестве пакета укажите gnome-applets.
+    </para>
+    <para>
+      Это руководство было написано Telsa Gwynne 
+      (<email>telsa@linuxchix.org</email>) и почти полностью основано на
+      более ранней документации из Руководства пользователя GNOME 1.0.53
+      написанного David Mason (<email>dcm@redhat.com</email>) и David Wheeler.
+      Пожалуйста сообщайте о проблеммах или высказывайте свое мнение
+      Проекту Документирования GNOME (<email>docs@gnome.org</email>).
+      Вы можете также послать комментарии используя <ulink type="http"
+      url="http://www.gnome.org/gdp/doctable/">GNOME Documentation Status
+      Table</ulink>.
+    </para>
+   </sect2>
+  </sect1>
