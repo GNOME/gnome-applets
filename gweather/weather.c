@@ -2013,7 +2013,7 @@ const gchar *weather_info_get_wind (WeatherInfo *info)
 
 const gchar *weather_info_get_pressure (WeatherInfo *info)
 {
-    static gchar buf[30];
+    static gchar buf[100];
     g_return_val_if_fail(info != NULL, NULL);
     if (!info->valid)
         return "-";
@@ -2025,7 +2025,7 @@ const gchar *weather_info_get_pressure (WeatherInfo *info)
 
 const gchar *weather_info_get_visibility (WeatherInfo *info)
 {
-    static gchar buf[40];
+    static gchar buf[100];
     g_return_val_if_fail(info != NULL, NULL);
     if (!info->valid)
         return "-";
