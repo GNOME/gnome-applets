@@ -35,6 +35,7 @@ G_BEGIN_DECLS
 typedef struct
 {
     int timeout;
+    gboolean played_by_applet;
     cdrom_device_t cdrom_device;
     int size;
     PanelAppletOrient orient;

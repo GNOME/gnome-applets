@@ -304,7 +304,7 @@ cdplayer_destroy(GtkWidget * widget, gpointer data)
         gtk_timeout_remove(cd->timeout);
     cd->timeout = 0;
     /* Since the applet is being destroyed, stop playing cd */
-    if(cd_try_open(cd, &err))
+    if(cd_try_open(cd, &err) && cd->played_by_applet == 1)
         cdrom_stop(cd->cdrom_device);
     cd_close (cd);
 
@@ -930,6 +930,7 @@ cdplayer_play_pause(GtkWidget * w, gpointer data)
         case DISC_PAUSED:
 	    cdplayer_update_play_pause_button (cd, PAUSE_IMAGE);
             cdrom_resume(cd->cdrom_device);
+            cd->played_by_applet = 1;
             break;
         case DISC_COMPLETED:
         case DISC_STOP:
@@ -938,6 +939,8 @@ cdplayer_play_pause(GtkWidget * w, gpointer data)
             cdrom_read_track_info(cd->cdrom_device);
             ret = cdrom_play(cd->cdrom_device, cd->cdrom_device->track0,
                    cd->cdrom_device->track1);
+            if (ret == DISC_NO_ERROR)
+                   cd->played_by_applet = 1;
             break;
         }
     } else if(status == DISC_TRAY_OPEN) {
@@ -945,6 +948,8 @@ cdplayer_play_pause(GtkWidget * w, gpointer data)
         cdrom_read_track_info(cd->cdrom_device);
         ret = cdrom_play(cd->cdrom_device, cd->cdrom_device->track0,
                cd->cdrom_device->track1);
+        if (ret == DISC_NO_ERROR)
+               cd->played_by_applet = 1;
     }
 
     if (ret == DISC_DEVICE_BUSY) {
@@ -984,28 +989,38 @@ static void
 cdplayer_prev(GtkWidget * w, gpointer data)
 {
     CDPlayerData *cd = data;
+    cdrom_device_status_t stat;
+    int status;
     int err;
     if(!cd_try_open(cd, &err)) {
         if (err == EACCES)
             show_error (cd);
         return;
     }
-    cdrom_prev(cd->cdrom_device);
+    status = cdrom_get_status(cd->cdrom_device, &stat);
+    if (status == DISC_NO_ERROR && stat.audio_status != DISC_PLAY)
+        cd->played_by_applet = 1;
 
+    cdrom_prev(cd->cdrom_device);
 }
 
 static void 
 cdplayer_next(GtkWidget * w, gpointer data)
 {
     CDPlayerData *cd = data;
+    cdrom_device_status_t stat;
+    int status;
     int err;
     if(!cd_try_open(cd, &err)) {
         if (err == EACCES)
             show_error (cd);
         return;
     }
-    cdrom_next(cd->cdrom_device);
+    status = cdrom_get_status(cd->cdrom_device, &stat);
+    if (status == DISC_NO_ERROR && stat.audio_status != DISC_PLAY)
+        cd->played_by_applet = 1;
 
+    cdrom_next(cd->cdrom_device);
 }
 
 static void 
@@ -1032,9 +1047,9 @@ cdplayer_eject(GtkWidget * w, gpointer data)
         cdrom_eject(cd->cdrom_device);
     else
         cdrom_eject(cd->cdrom_device);
+    cd->played_by_applet = 0;
     cd_close(cd);
     return;
-        w = NULL;
 }
 
 static void
@@ -1222,6 +1237,7 @@ cdplayer_update_play_pause_button (CDPlayerData *cd, gint id)
 	    gtk_container_remove (GTK_CONTAINER (cd->panel.play_control.play_pause), cd->current_image);
 	    gtk_container_add (GTK_CONTAINER (cd->panel.play_control.play_pause), cd->play_image);
 	    cd->current_image = cd->play_image;
+	    cd->played_by_applet = 0;
 	}
     }
     else {

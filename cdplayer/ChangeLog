@@ -1,3 +1,10 @@
+2003-11-01  Kaushal Kumar <kaushal.kumar@wipro.com>
+
+	* cdplayer.h: Added played_by_applet in CDPlayerData.
+	* cdplayer.c: Set played_by_applet if cdplayer applet plays the cdrom,
+	un-set it otherwise. Helps to decide whether to stop the cdrom before
+	exit, when gnome-cd is running. Fixes bugzilla #123033.
+
 2003-10-10  Kjartan Maraas  <kmaraas@gnome.org>
 
 	* cdplayer.c: (cdplayer_applet_factory), (cdplayer_destroy): Rename
