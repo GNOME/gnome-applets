@@ -222,12 +222,9 @@ properties_box_apply_signal(GnomePropertyBox *property_box_widget, gint page, gp
     save_session();
 
     return;
-
-    /*
-      property_box_widget = NULL;
-      page = 0;
-      data = NULL;
-    */
+    property_box_widget = NULL;
+    page = 0;
+    data = NULL;
 }
 
 void
@@ -462,12 +459,9 @@ save_session_signal(GtkWidget *widget, const char *privcfgpath, const char *glob
        other state such as the panel you are on, position,
        parameter, etc ... */
     return FALSE;
-
-    /*
-      widget = NULL;
-      privcfgpath = NULL;
-      globcfgpath = NULL;
-    */
+    widget = NULL;
+    privcfgpath = NULL;
+    globcfgpath = NULL;
 }
 
 void

@@ -161,11 +161,12 @@ command_key_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
     data = NULL;
 }
 
+#if 0
 static gint
-command_focus_out_event(GtkWidget *widget, GdkEvent *event, gpointer data)
+command_line_focus_out_cb(GtkWidget *widget, GdkEvent *event, gpointer data)
 {
+    fprintf(stderr, "focus_out\n");
     /*
-      printf("focus_out\n");
       gtk_widget_grab_focus(GTK_WIDGET(widget)); 
     */
     return (FALSE);
@@ -174,17 +175,35 @@ command_focus_out_event(GtkWidget *widget, GdkEvent *event, gpointer data)
     data = NULL;
 }
 
-#if 0
 static gint
-activate_command_line_signal(GtkWidget *widget, gpointer data)
+command_line_focus_in_cb(GtkWidget *widget, GdkEvent *event, gpointer data)
 {
-    printf("focus_in\n");
-    /*      gtk_widget_grab_focus(GTK_WIDGET(entry_command)); */
-    
-    /* go on */
+    fprintf(stderr, "focus_in\n");
+    /*
+      gtk_widget_grab_focus(GTK_WIDGET(widget)); 
+    */
+    //    gtk_widget_grab_focus(GTK_WIDGET(widget));
+
     return (FALSE);
+    widget = NULL;
+    event = NULL;
+    data = NULL;
 }
 #endif
+
+static gint
+command_line_activate_cb(GtkWidget *widget, GdkEvent *event, gpointer data)
+{
+    /* Sometimes the text entry does not get the keyboard focus
+       although it should.  This workaround fixes this problem. */
+    gtk_widget_grab_focus(GTK_WIDGET(widget));
+
+    /* go on */
+    return (FALSE);
+    widget = NULL;
+    event = NULL;
+    data = NULL;
+}
 
 /* no longer needed */
 static void
@@ -444,15 +463,22 @@ init_command_entry(void)
 		       GTK_SIGNAL_FUNC(gtk_widget_destroyed),
 		       &entry_command);
     
-    /*	gtk_signal_connect(GTK_OBJECT(entry_command), "activate",
-	GTK_SIGNAL_FUNC(command_entered_cb),
-	entry_command); */
     gtk_signal_connect(GTK_OBJECT(entry_command), "key_press_event",
 		       GTK_SIGNAL_FUNC(command_key_event),
 		       NULL);
+
+#if 0
     gtk_signal_connect(GTK_OBJECT(entry_command), "focus_out_event",
-		       GTK_SIGNAL_FUNC(command_focus_out_event),
+		       GTK_SIGNAL_FUNC(command_line_focus_out_cb),
 		       NULL);
+    gtk_signal_connect(GTK_OBJECT(entry_command), "focus_in_event",
+		       GTK_SIGNAL_FUNC(command_line_focus_in_cb),
+		       NULL);
+#endif
+
+    gtk_signal_connect(GTK_OBJECT(entry_command), "button_press_event",
+		       GTK_SIGNAL_FUNC(command_line_activate_cb),
+		       entry_command);
     
     command_entry_update_color();
     command_entry_update_size();
