@@ -17,7 +17,7 @@ MICO_LIBS = -lmicocoss$(MICO_VERS) -lmicoaux$(MICO_VERS) -lmico$(MICO_VERS)
 
 winlist_applet_LDADD = ../../panel/libpanel_applet.la \
 		     $(GNOME_LIBDIR) $(MICO_LIBS) -lXt \
-		     $(GNOMEUI_LIBS) $(INTLLIBS) -lcrypt
+		     $(GNOMEUI_LIBS) $(INTLLIBS)
 
 winlist_applet_LINK = $(CXXLINK)
 
