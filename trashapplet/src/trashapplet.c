@@ -66,6 +66,10 @@ static void     trash_applet_drag_data_received (GtkWidget         *widget,
 
 static void     trash_applet_change_orient      (PanelApplet     *panel_applet,
 						 PanelAppletOrient  orient);
+static void     trash_applet_change_background  (PanelApplet     *panel_applet,
+						 PanelAppletBackgroundType type,
+						 GdkColor        *colour,
+						 GdkPixmap       *pixmap);
 
 static void trash_applet_do_empty    (BonoboUIComponent *component,
 				      TrashApplet       *applet,
@@ -107,6 +111,7 @@ trash_applet_class_init (TrashAppletClass *class)
 	GTK_WIDGET_CLASS (class)->drag_motion = trash_applet_drag_motion;
 	GTK_WIDGET_CLASS (class)->drag_data_received = trash_applet_drag_data_received;
 	PANEL_APPLET_CLASS (class)->change_orient = trash_applet_change_orient;
+	PANEL_APPLET_CLASS (class)->change_background = trash_applet_change_background;
 }
 
 static void
@@ -244,6 +249,39 @@ trash_applet_change_orient (PanelApplet       *panel_applet,
 		(* PANEL_APPLET_CLASS (trash_applet_parent_class)->change_orient) (panel_applet, orient);
 }
 
+static void
+trash_applet_change_background (PanelApplet               *panel_applet,
+				PanelAppletBackgroundType  type,
+				GdkColor                  *colour,
+				GdkPixmap                 *pixmap)
+{
+	TrashApplet *applet = TRASH_APPLET (panel_applet);
+	GtkRcStyle *rc_style;
+	GtkStyle *style;
+
+	/* reset style */
+	gtk_widget_set_style (GTK_WIDGET (applet), NULL);
+	rc_style = gtk_rc_style_new ();
+	gtk_widget_modify_style (GTK_WIDGET (applet), rc_style);
+	g_object_unref (rc_style);
+
+	switch (type) {
+	case PANEL_NO_BACKGROUND:
+		break;
+	case PANEL_COLOR_BACKGROUND:
+		gtk_widget_modify_bg (GTK_WIDGET (applet),
+				      GTK_STATE_NORMAL, colour);
+		break;
+	case PANEL_PIXMAP_BACKGROUND:
+		style = gtk_style_copy (GTK_WIDGET (applet)->style);
+		if (style->bg_pixmap[GTK_STATE_NORMAL])
+			g_object_unref (style->bg_pixmap[GTK_STATE_NORMAL]);
+		style->bg_pixmap[GTK_STATE_NORMAL] = g_object_ref (pixmap);
+		gtk_widget_set_style (GTK_WIDGET (applet), style);
+		break;
+	}
+}
+
 static gboolean
 trash_applet_button_release (GtkWidget      *widget,
 			     GdkEventButton *event)
@@ -290,7 +328,6 @@ trash_applet_drag_leave (GtkWidget      *widget,
 {
 	TrashApplet *applet = TRASH_APPLET (widget);
 
-	g_message ("drag_leave");
 	if (applet->drag_hover) {
 		applet->drag_hover = FALSE;
 		trash_applet_queue_update (applet);
@@ -306,7 +343,6 @@ trash_applet_drag_motion (GtkWidget      *widget,
 {
 	TrashApplet *applet = TRASH_APPLET (widget);
 
-	g_message ("drag_motion");
 	if (!applet->drag_hover) {
 		applet->drag_hover = TRUE;
 		trash_applet_queue_update (applet);
@@ -335,7 +371,6 @@ trash_applet_update (gpointer user_data)
 	GdkScreen *screen;
 	GtkIconTheme *icon_theme;
 
-	g_message ("update");
 	applet->update_id = 0;
 
 	new_item_count = trash_monitor_get_item_count (applet->monitor);
@@ -398,7 +433,6 @@ trash_applet_update (gpointer user_data)
 static void
 trash_applet_queue_update (TrashApplet *applet)
 {
-	g_message ("queue_update");
 	if (applet->update_id == 0) {
 		applet->update_id = g_idle_add (trash_applet_update, applet);
 	}
@@ -821,34 +855,6 @@ trash_applet_drag_data_received (GtkWidget        *widget,
 	gtk_drag_finish (context, TRUE, FALSE, time_);
 }
 
-#if 0
-static void
-changed_background_cb (PanelApplet               *applet,
-                      PanelAppletBackgroundType  type,
-                      GdkColor                  *color,
-                      const gchar               *pixmap,
-                      TrashApplet               *trash_applet)
-{
-       if (type == PANEL_NO_BACKGROUND ||
-	   type == PANEL_PIXMAP_BACKGROUND) {
-               GtkRcStyle *rc_style;
-
-               rc_style = gtk_rc_style_new ();
-
-               gtk_widget_modify_style (GTK_WIDGET (trash_applet->applet), rc_style);
-	       gtk_widget_modify_style (GTK_WIDGET (trash_applet->image), rc_style);
-               g_object_unref (rc_style);
-       } else if (type == PANEL_COLOR_BACKGROUND) {
-               gtk_widget_modify_bg (GTK_WIDGET (trash_applet->applet),
-                                     GTK_STATE_NORMAL,
-                                     color);
-               gtk_widget_modify_bg (GTK_WIDGET (trash_applet->image),
-                                     GTK_STATE_NORMAL,
-                                     color);
-       }
-}
-#endif
-
 static gboolean
 trash_applet_factory (PanelApplet *applet,
                       const gchar *iid,
@@ -856,7 +862,6 @@ trash_applet_factory (PanelApplet *applet,
 {
 	gboolean retval = FALSE;
 
-	g_message ("factory: %s", iid);
   	if (!strcmp (iid, "OAFIID:GNOME_Panel_TrashApplet")) {
 		/* Set up the menu */
 		panel_applet_setup_menu_from_file (applet,
@@ -875,14 +880,6 @@ trash_applet_factory (PanelApplet *applet,
   	return retval;
 }
 
-#if 0
-PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_Panel_TrashApplet_Factory",
-               TRASH_TYPE_APPLET,
-               "trashapplet",
-               "0",
-               trash_applet_factory,
-               NULL);
-#else
 int
 main (int argc, char *argv [])
 {
@@ -903,4 +900,3 @@ main (int argc, char *argv [])
 		("OAFIID:GNOME_Panel_TrashApplet_Factory", TRASH_TYPE_APPLET,
 		 trash_applet_factory, NULL);
 }
-#endif
