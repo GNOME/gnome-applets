@@ -91,12 +91,12 @@ typedef struct BatteryData {
   /* Graph mode */
   GtkObject * graph_speed_adj;
   GtkWidget * dir_radio;
-  GnomeColorSelector * graph_ac_on_color_sel;
-  GnomeColorSelector * graph_ac_off_color_sel;
+  GnomeColorPicker * graph_ac_on_color_sel;
+  GnomeColorPicker * graph_ac_off_color_sel;
 
   /* Readout mode */
-  GnomeColorSelector * readout_ac_on_color_sel;
-  GnomeColorSelector * readout_ac_off_color_sel;
+  GnomeColorPicker * readout_ac_on_color_sel;
+  GnomeColorPicker * readout_ac_off_color_sel;
 
 
 } BatteryData;

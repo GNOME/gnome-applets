@@ -92,32 +92,33 @@ battery_properties_window(AppletWidget * applet, gpointer data)
   gnome_property_box_append_page (GNOME_PROPERTY_BOX (bat->prop_win), t,
 				  gtk_label_new ("Graph Properties"));
 
-  bat->graph_ac_on_color_sel = gnome_color_selector_new ( (SetColorFunc)
-							  value_changed_cb,
-							  bat );
+  bat->graph_ac_on_color_sel = gnome_color_picker_new();
+  gtk_signal_connect(GTK_OBJECT(bat->graph_ac_on_color_sel), "color_set",
+		     GTK_SIGNAL_FUNC(value_changed_cb), bat );
 
-  bat->graph_ac_off_color_sel = gnome_color_selector_new( (SetColorFunc)
-							  value_changed_cb,
-							  bat );
+  bat->graph_ac_off_color_sel = gnome_color_picker_new();
+  gtk_signal_connect(GTK_OBJECT(bat->graph_ac_off_color_sel), "color_set",
+		     GTK_SIGNAL_FUNC(value_changed_cb), bat );
+
   /* Initialize the selector colors */
   sscanf(bat->graph_color_ac_on_s, "#%02x%02x%02x", &r, &g, &b);
-  gnome_color_selector_set_color_int( bat->graph_ac_on_color_sel,
+  gnome_color_picker_set_i8(bat->graph_ac_on_color_sel,
 				      r, g, b, 255);
 
   sscanf(bat->graph_color_ac_off_s, "#%02x%02x%02x", &r, &g, &b);
-  gnome_color_selector_set_color_int( bat->graph_ac_off_color_sel,
+  gnome_color_picker_set_i8(bat->graph_ac_off_color_sel,
 				      r, g, b, 255);
 
   l = gtk_label_new (_("AC-On Battery Color:"));
   gtk_table_attach_defaults (GTK_TABLE (t), l, 0, 1, 0, 1);
   gtk_table_attach (GTK_TABLE(t),
-	    gnome_color_selector_get_button(bat->graph_ac_on_color_sel),
+	    GTK_WIDGET(bat->graph_ac_on_color_sel),
 	    1, 2, 0, 1, GTK_EXPAND, 0, 0, 0);
 
   l = gtk_label_new(_("AC-Off Battery Color:"));
   gtk_table_attach (GTK_TABLE(t), l, 0, 1, 1, 2, 0, 0, 0, 0);
   gtk_table_attach (GTK_TABLE (t),
-	    gnome_color_selector_get_button(bat->graph_ac_off_color_sel),
+	    GTK_WIDGET(bat->graph_ac_off_color_sel),
 	    1, 2, 1, 2, GTK_EXPAND, 0, 0, 0);
 
   l = gtk_label_new(_("Graph Interval:"));
@@ -156,33 +157,33 @@ battery_properties_window(AppletWidget * applet, gpointer data)
   gnome_property_box_append_page (GNOME_PROPERTY_BOX (bat->prop_win), t,
 				  gtk_label_new ("Readout Properties"));
 
-  bat->readout_ac_on_color_sel = gnome_color_selector_new ( (SetColorFunc)
-							    value_changed_cb,
-							    bat );
+  bat->readout_ac_on_color_sel = gnome_color_picker_new();
+  gtk_signal_connect(GTK_OBJECT(bat->readout_ac_on_color_sel), "color_set",
+		     GTK_SIGNAL_FUNC(value_changed_cb), bat );
 
-  bat->readout_ac_off_color_sel = gnome_color_selector_new( (SetColorFunc)
-							    value_changed_cb,
-							    bat );
+  bat->readout_ac_off_color_sel = gnome_color_picker_new();
+  gtk_signal_connect(GTK_OBJECT(bat->readout_ac_off_color_sel), "color_set",
+		     GTK_SIGNAL_FUNC(value_changed_cb), bat );
 
   /* Initialize the selector colors */
   sscanf(bat->readout_color_ac_on_s, "#%02x%02x%02x", &r, &g, &b);
-  gnome_color_selector_set_color_int( bat->readout_ac_on_color_sel,
+  gnome_color_picker_set_i8( bat->readout_ac_on_color_sel,
 				      r, g, b, 255);
 
   sscanf(bat->readout_color_ac_off_s, "#%02x%02x%02x", &r, &g, &b);
-  gnome_color_selector_set_color_int( bat->readout_ac_off_color_sel,
+  gnome_color_picker_set_i8( bat->readout_ac_off_color_sel,
 				      r, g, b, 255);
 
   l = gtk_label_new (_("AC-On Battery Color:"));
   gtk_table_attach_defaults (GTK_TABLE (t), l, 0, 1, 0, 1);
   gtk_table_attach (GTK_TABLE(t),
-	    gnome_color_selector_get_button(bat->readout_ac_on_color_sel),
+	    GTK_WIDGET(bat->readout_ac_on_color_sel),
 	    1, 2, 0, 1, GTK_EXPAND, 0, 0, 0);
 
   l = gtk_label_new(_("AC-Off Battery Color:"));
   gtk_table_attach (GTK_TABLE(t), l, 0, 1, 1, 2, 0, 0, 0, 0);
   gtk_table_attach (GTK_TABLE (t),
-	    gnome_color_selector_get_button(bat->readout_ac_off_color_sel),
+	    GTK_WIDGET(bat->readout_ac_off_color_sel),
 	    1, 2, 1, 2, GTK_EXPAND, 0, 0, 0);
 
   gtk_signal_connect (GTK_OBJECT (bat->prop_win), "destroy",
@@ -219,7 +220,7 @@ prop_apply (GtkWidget *w, int page, gpointer data)
 {
   BatteryData * bat = data;
   int width, height, size_changed = 0;
-  int r, g, b;
+  guint8 r, g, b;
 
   /* Update the running session from the properties.  The session
      state will be saved when the applet exits and the panel tells it
@@ -236,29 +237,25 @@ prop_apply (GtkWidget *w, int page, gpointer data)
   bat->graph_interval = GTK_ADJUSTMENT(bat->graph_speed_adj)->value;
   /* FIXME: set the direction! */
 
-  gnome_color_selector_get_color_int ( bat->graph_ac_on_color_sel,
-				       &r, &g, &b, 255);
+  gnome_color_picker_get_i8 ( bat->graph_ac_on_color_sel,
+				       &r, &g, &b, NULL);
   snprintf(bat->graph_color_ac_on_s, sizeof(bat->graph_color_ac_on_s),
-	   "#%02x%02x%02x", (unsigned char)r, (unsigned char)g,
-	   (unsigned char)b);
+	   "#%02x%02x%02x", r, g, b);
 
-  gnome_color_selector_get_color_int ( bat->graph_ac_off_color_sel,
-				       &r, &g, &b, 255);
+  gnome_color_picker_get_i8 ( bat->graph_ac_off_color_sel,
+				       &r, &g, &b, NULL);
   snprintf(bat->graph_color_ac_off_s, sizeof(bat->graph_color_ac_off_s),
-	  "#%02x%02x%02x", (unsigned char)r, (unsigned char)g,
-	  (unsigned char)b);
+	  "#%02x%02x%02x", r, g, b);
 
-  gnome_color_selector_get_color_int ( bat->readout_ac_off_color_sel,
-				       &r, &g, &b, 255);
+  gnome_color_picker_get_i8 ( bat->readout_ac_off_color_sel,
+				       &r, &g, &b, NULL);
   snprintf(bat->readout_color_ac_off_s, sizeof(bat->readout_color_ac_off_s),
-	  "#%02x%02x%02x", (unsigned char)r, (unsigned char)g,
-	  (unsigned char)b);
+	  "#%02x%02x%02x", r, g, b);
 
-  gnome_color_selector_get_color_int ( bat->readout_ac_on_color_sel,
-				       &r, &g, &b, 255);
+  gnome_color_picker_get_i8 ( bat->readout_ac_on_color_sel,
+				       &r, &g, &b, NULL);
   snprintf(bat->readout_color_ac_on_s, sizeof(bat->readout_color_ac_on_s),
-	  "#%02x%02x%02x", (unsigned char)r, (unsigned char)g,
-	  (unsigned char)b);
+	  "#%02x%02x%02x", r, g, b);
 
   battery_setup_colors(bat);
 
