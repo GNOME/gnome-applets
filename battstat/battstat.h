@@ -20,6 +20,12 @@
  $Id$
  */
 
+
+#include <glib.h>
+#include <gdk/gdkgc.h>
+#include <gtk/gtktooltips.h>
+#include <gtk/gtkwidget.h>
+
 #define DEBUG 0
 
 #define PROGLEN 33.0

@@ -28,6 +28,7 @@
 #include <sys/file.h>
 #include <sys/ioctl.h>
 #include <sys/types.h>
+#include <sys/stat.h>
 #include <sys/sysctl.h>
 
 #include <err.h>
@@ -38,7 +39,6 @@
 #include <time.h>
 #include <unistd.h>
 
-#include <gnome.h> /* needed to make it through battstat.h */
 #include <panel-applet.h>
 #include <panel-applet-gconf.h>
 

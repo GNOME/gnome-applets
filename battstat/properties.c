@@ -49,14 +49,17 @@
 #include <time.h>
 #include <unistd.h>
 
-#include <gnome.h>
-#include <libgnomeui/gnome-window-icon.h>
 #include <gdk/gdkx.h>
 
 #include <glade/glade.h>
+#include <gtk/gtkmain.h>
+#include <gtk/gtkmessagedialog.h>
+#include <gtk/gtktogglebutton.h>
 #include <gtk/gtkspinbutton.h>
 
 #include <gconf/gconf-client.h>
+#include <libgnome/gnome-init.h>
+#include <libgnomeui/gnome-window-icon.h>
 #include <panel-applet.h>
 #include <panel-applet-gconf.h>
 /*#include <status-docklet.h>*/

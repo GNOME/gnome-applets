@@ -33,8 +33,18 @@
 #include <time.h>
 #include <unistd.h>
 
+#include <gdk/gdkkeysyms.h>
+#include <gtk/gtkaccessible.h>
+#include <gtk/gtkbox.h>
+#include <gtk/gtkicontheme.h>
+#include <gtk/gtkhbox.h>
+#include <gtk/gtkimage.h>
+#include <gtk/gtklabel.h>
+#include <gtk/gtkmessagedialog.h>
+#include <gtk/gtkstock.h>
+#include <gtk/gtktable.h>
+
 #include <glade/glade.h>
-#include <gnome.h>
 
 #include <panel-applet.h>
 #include <panel-applet-gconf.h>
