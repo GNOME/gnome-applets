@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-08-08 03:35+0200\n"
-"PO-Revision-Date: 2004-08-08 11:45+0200\n"
+"POT-Creation-Date: 2004-08-12 11:34+0200\n"
+"PO-Revision-Date: 2004-08-12 17:02+0200\n"
 "Last-Translator: Elian Myftiu <elian@lycos.com>\n"
 "Language-Team: Albanian <gnome-albanian-perkthyesit@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -70,23 +70,13 @@ msgstr "Fabrika për Applet e Statusit të Tastierës së Lehtësuar"
 msgid "Shows the status of keyboard accessibility features"
 msgstr "Tregon gjendjen e tastierës së thjeshtuar"
 
-#: accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:5
-#: battstat/GNOME_BattstatApplet.server.in.in.h:4
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:4
-#: drivemount/GNOME_DriveMountApplet.server.in.in.h:5
-#: gswitchit/GNOME_KeyboardApplet.server.in.in.h:5
-#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:4
-#: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:3
-msgid "Utility"
-msgstr "Ndihmues"
-
-#: accessx-status/applet.c:136 battstat/battstat_applet.c:1058
+#: accessx-status/applet.c:136 battstat/battstat_applet.c:1057
 #: cdplayer/cdplayer.c:598 charpick/charpick.c:563 drivemount/drivemount.c:553
 #: geyes/geyes.c:202 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:608
 #: gtik/gtik.c:723 gweather/gweather-about.c:47 mailcheck/mailcheck.c:2470
 #: mini-commander/src/about.c:50 mixer/mixer.c:1350
 #: modemlights/modemlights.c:118 multiload/main.c:60
-#: stickynotes/stickynotes_applet_callbacks.c:243
+#: stickynotes/stickynotes_applet_callbacks.c:261
 #: wireless/wireless-applet.c:574
 msgid "translator_credits"
 msgstr "Elian Myftiu <elian@lycos.com>"
@@ -142,7 +132,7 @@ msgstr "Shfaq statusin e tanishëm për preferencat e tastierës së thjeshtuar"
 
 #. The long name of the applet in the About dialog.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:1079 battstat/battstat_applet.c:1840
+#: battstat/battstat_applet.c:1078 battstat/battstat_applet.c:1824
 msgid "Battery Charge Monitor"
 msgstr "Vëzhgues i Ngarkesës së Baterisë"
 
@@ -151,7 +141,7 @@ msgid "Battstat Factory"
 msgstr "Factory Battstat"
 
 #: battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: battstat/battstat_applet.c:1841
+#: battstat/battstat_applet.c:1825
 msgid "Monitor a laptop's remaining power"
 msgstr "Kontrollon baterinë e mbetur tek një laptop"
 
@@ -250,189 +240,126 @@ msgstr "Niveli i baterisë poshtë të cilit bateria paraqitet·e verdhë"
 msgid "Yellow value level"
 msgstr "Niveli i vlerës së verdhë"
 
-#. Message displayed if user tries to run applet
-#. on unsupported platform
-#: battstat/battstat_applet.c:340
-msgid "Your platform is not supported!\n"
-msgstr "Platforma juaj nuk suportohet!\n"
-
-#: battstat/battstat_applet.c:341
-msgid "The applet will not work properly (if at all).\n"
-msgstr "Applet nuk do punojë siç duhet(në mos fare).\n"
-
-#: battstat/battstat_applet.c:360
-#, c-format
-msgid "%i minute"
-msgid_plural "%i minutes"
-msgstr[0] "%i minutë"
-msgstr[1] "%i minuta"
-
-#: battstat/battstat_applet.c:361
-#, c-format
-msgid "%i hour"
-msgid_plural "%i hours"
-msgstr[0] "%i orë"
-msgstr[1] "%i orë"
-
-#. Translation Note: as in "No time remaining" or "No time till charged"
-#: battstat/battstat_applet.c:365
-msgid "No time"
-msgstr "Nuk ka më kohë"
-
-#. Translation Note: as in "Unknown time remaining" or "Unknown time till charged"
-#. Translation Note: as in "Unknown time remaining"
-#: battstat/battstat_applet.c:368 battstat/battstat_applet.c:1145
-msgid "Unknown time"
-msgstr "Koha e mbetur nuk njihet"
-
-#. Translation note:
-#. * The %s:s are the "%i hour" and "%i minute" messages translated elsewhere respectively.
-#. * Swap the order with "%2$s %1$s" if needed.
-#: battstat/battstat_applet.c:386
-#, c-format
-msgid "%s %s"
-msgstr "%s %s"
-
-#. The following four messages will be displayed as tooltips over
-#. the battery meter.
-#. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:418 battstat/battstat_applet.c:1117
-msgid "High"
-msgstr "E lartë"
-
-#. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:420 battstat/battstat_applet.c:1119
-msgid "Low"
-msgstr "E ulët"
-
-#. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:422 battstat/battstat_applet.c:1121
-msgid "Critical"
-msgstr "Kritik"
-
-#. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:424 battstat/battstat_applet.c:1123
-msgid "Charging"
-msgstr "Në karikim e sipër"
-
-#: battstat/battstat_applet.c:515
-#, c-format
-msgid ""
-"%s (%d%%) remaining. To avoid losing work please power off, suspend or plug "
-"your laptop in."
-msgstr ""
-"Mbeten akoma %s (%d%%). Për të shmangur humbjen e punës ju lutem fikni, pezulloni "
-"apo mbyllni laptop-in tuaj."
-
-#: battstat/battstat_applet.c:519
-msgid "Your battery is running low"
-msgstr "Bateria juaj është duke u shkarkuar"
-
-#: battstat/battstat_applet.c:524 battstat/battstat_applet.c:577
-msgid "Battery Notice"
-msgstr "Gjendja e Baterisë"
-
-#: battstat/battstat_applet.c:597
-msgid "Your battery is now fully recharged"
-msgstr "Bateria tani është komplet e ngarkuar"
-
-#. Translation note: %s is time in words (translated elsewhere)
-#: battstat/battstat_applet.c:651
-#, c-format
-msgid ""
-"System is running on battery power\n"
-"%s (%d%%) remaining"
-msgstr ""
-"Sistemi është duke u furnizuar nga bateria\n"
-"%s (%d%%) në dispozicion"
-
-#. Translation note: %s is time in words (translated elsewhere)
-#: battstat/battstat_applet.c:655
-#, c-format
-msgid ""
-"System is running on AC power\n"
-"%s (%d%%) till charged"
-msgstr ""
-"Sistemi po punon me rrymë AC\n"
-"%s (%d%%) për t'u ngarkuar"
-
-#. 0 = Battery power
-#. This string will display as a tooltip over the status frame
-#. when the computer is using battery power.
-#: battstat/battstat_applet.c:661 battstat/battstat_applet.c:1211
-#: battstat/battstat_applet.c:1300
-msgid "System is running on battery power"
-msgstr "Sistemi po punon me bateri"
-
-#. 1 = AC power. I should really test it explicitly here.
-#. This string will display as a tooltip over the status frame
-#. when the computer is using AC power.
-#: battstat/battstat_applet.c:663 battstat/battstat_applet.c:1216
-#: battstat/battstat_applet.c:1305
+#: battstat/battstat_applet.c:86
 msgid "System is running on AC power"
 msgstr "Sistemi po punon me korent"
 
-#: battstat/battstat_applet.c:678 wireless/wireless-applet.c:148
+#: battstat/battstat_applet.c:87
+msgid "System is running on battery power"
+msgstr "Sistemi po punon me bateri"
+
+#. Message displayed if user tries to run applet
+#. on unsupported platform
+#: battstat/battstat_applet.c:342
+msgid "Your platform is not supported!\n"
+msgstr "Platforma juaj nuk suportohet!\n"
+
+#: battstat/battstat_applet.c:343
+msgid "The applet will not work properly (if at all).\n"
+msgstr "Applet nuk do punojë siç duhet(në mos fare).\n"
+
+#: battstat/battstat_applet.c:382
+#, c-format
+msgid "Battery charged (%d%%)"
+msgstr "Ngarkesa e baterisë (%d%%)"
+
+#: battstat/battstat_applet.c:384
+#, c-format
+msgid "Unknown time (%d%%) remaining"
+msgstr "Koha e mbetur nuk njihet (%d%%)"
+
+#: battstat/battstat_applet.c:386
+#, c-format
+msgid "Unknown time (%d%%) till charged"
+msgstr "Koha e ngarkesës nuk njihet (%d%%)"
+
+#: battstat/battstat_applet.c:391
+#, c-format
+msgid "%d minute (%d%%) remaining"
+msgid_plural "%d minutes (%d%%) remaining"
+msgstr[0] "%d minutë (%d%%) në dispozicion"
+msgstr[1] "%d minuta (%d%%) në dispozicion"
+
+#: battstat/battstat_applet.c:396
+#, c-format
+msgid "%d minute till charged (%d%%)"
+msgid_plural "%d minutes till charged (%d%%)"
+msgstr[0] "%d minutë me ngarkesë (%d%%)"
+msgstr[1] "%d minuta me ngarkesë (%d%%)"
+
+#: battstat/battstat_applet.c:402
+#, c-format
+msgid "%d hour (%d%%) remaining"
+msgid_plural "%d hours (%d%%) remaining"
+msgstr[0] "%d orë (%d%%) në dispozicion"
+msgstr[1] "%d orë (%d%%) në dispozicion"
+
+#: battstat/battstat_applet.c:407
+#, c-format
+msgid "%d hour (%d%%) till charged (%d%%)"
+msgid_plural "%d hours (%d%%) till charged (%d%%)"
+msgstr[0] "%d orë (%d%%) me ngarkesë (%d%%)"
+msgstr[1] "%d orë (%d%%) me ngarkesë (%d%%)"
+
+#. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
+#. * Swap order with "%2$s %2$d %1$s %1$d if needed
+#: battstat/battstat_applet.c:414
+#, c-format
+msgid "%d %s %d %s (%d%%) remaining"
+msgstr "%d %s %d %s (%d%%) në dispozicion"
+
+#: battstat/battstat_applet.c:415 battstat/battstat_applet.c:422
+msgid "hour"
+msgid_plural "hours"
+msgstr[0] "orë"
+msgstr[1] "orë"
+
+#: battstat/battstat_applet.c:416 battstat/battstat_applet.c:423
+msgid "minute"
+msgid_plural "minutes"
+msgstr[0] "minutë"
+msgstr[1] "minuta"
+
+#. TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
+#. * Swap order with "%2$s %2$d %1$s %1$d if needed
+#: battstat/battstat_applet.c:421
+#, c-format
+msgid "%d %s %d %s till charged (%d%%)"
+msgstr "%d %s %d %s me ngarkesë (%d%%)"
+
+#: battstat/battstat_applet.c:529
+msgid "Your battery is running low"
+msgstr "Bateria juaj është duke u shkarkuar"
+
+#: battstat/battstat_applet.c:531
+msgid "To avoid losing work please power off, suspend or plug your laptop in."
+msgstr "Për të shmangur humbjen e punës ju lutem fikni, pezulloni apo mbyllni laptop-in tuaj."
+
+#: battstat/battstat_applet.c:534 battstat/battstat_applet.c:587
+msgid "Battery Notice"
+msgstr "Gjendja e Baterisë"
+
+#: battstat/battstat_applet.c:607
+msgid "Your battery is now fully recharged"
+msgstr "Bateria tani është komplet e ngarkuar"
+
+#: battstat/battstat_applet.c:686 wireless/wireless-applet.c:148
 #: wireless/wireless-applet.c:149
 msgid "N/A"
 msgstr "Mungon"
 
-#. This string will display as a tooltip over the battery frame
-#. when the computer is using battery power.
-#. Translation note: %s is time in words (translated elsewhere)
-#. This string will display as a tooltip over the status frame
-#. when the computer is using battery power and the battery meter
-#. and percent meter is hidden by the user.
-#. Translation note: %s is time in words (translated elsewhere)
-#: battstat/battstat_applet.c:812 battstat/battstat_applet.c:1190
-#, c-format
-msgid "System is running on battery power. %s (%d%%) remaining."
-msgstr "Sistemi po punon me bateri. %s (%d%%) në dispozicion."
-
-#. This string will display as a tooltip over the battery frame
-#. when the computer is using AC power.
-#. Translation note: %s is time in words (translated elsewhere)
-#. This string will display as a tooltip over the status frame
-#. when the computer is using AC power and the battery meter
-#. and percent meter is hidden by the user.
-#. Translation note: %s is time in words (translated elsewhere)
-#: battstat/battstat_applet.c:818 battstat/battstat_applet.c:1197
-#, c-format
-msgid "System is running on AC power. %s (%d%%) till charged."
-msgstr "Sistemi po punon me korent nga rrjeti. %s (%d%%) për t'u ngarkuar."
-
-#. This string will display as a tooltip over the
-#. battery frame when the computer is using battery
-#. power and the battery isn't present. Not a
-#. possible combination, I guess... :)
-#: battstat/battstat_applet.c:827
-msgid "System is running on battery power. Battery status unknown."
-msgstr "Sistemi po punon me bateri. Gjendja e baterisë nuk njihet."
-
-#. This string will display as a tooltip over the
-#. battery frame when the computer is using AC
-#. power and the battery isn't present.
-#: battstat/battstat_applet.c:832
-msgid "System is running on AC power. No battery present."
-msgstr "Sistemi po punon me korent nga rrjeti. Bateria mungon."
-
-#. Displayed as a tooltip over the battery meter when there is
-#. a battery present. %d will hold the current charge and %s will
-#. contains a string of the time remaining
-#. Translation note: %s is time in words (translated elsewhere)
-#: battstat/battstat_applet.c:841
-#, c-format
-msgid "%s (%d%%) remaining"
-msgstr "%s (%d%%) në dispozicion"
+#: battstat/battstat_applet.c:828
+msgid "Battery status unknown"
+msgstr "Gjendja e baterisë nuk njihet"
 
 #. Displayed as a tooltip over the battery meter when no
 #. battery is present.
-#: battstat/battstat_applet.c:846
+#: battstat/battstat_applet.c:835 battstat/battstat_applet.c:847
 msgid "No battery present"
 msgstr "Bateria mungon"
 
 #. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: battstat/battstat_applet.c:948
+#: battstat/battstat_applet.c:947
 msgid ""
 "Can't open the APM device!\n"
 "\n"
@@ -445,7 +372,7 @@ msgstr ""
 "dispozitivit APM."
 
 #. Displayed if the APM system is disabled (Used under *BSD)
-#: battstat/battstat_applet.c:957
+#: battstat/battstat_applet.c:956
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
@@ -455,7 +382,7 @@ msgstr ""
 "Provo të ekzekutosh \"apm -e 1\" (FreeBSD) dhe shiko nëse \n"
 "kjo të ndihmon.\n"
 
-#: battstat/battstat_applet.c:1013
+#: battstat/battstat_applet.c:1012
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -464,16 +391,16 @@ msgstr ""
 "Ndodhi një gabim duke lëshuar komandën e Pezullimit: %s\n"
 "Të lutem përpiqu të korrigjosh këtë gabim"
 
-#: battstat/battstat_applet.c:1017
+#: battstat/battstat_applet.c:1016
 #, c-format
 msgid "The Suspend command '%s' was unsuccessful."
 msgstr "Komanda e pezullimit '%s' nuk pati sukses."
 
-#: battstat/battstat_applet.c:1019
+#: battstat/battstat_applet.c:1018
 msgid "The Suspend command was unsuccessful."
 msgstr "Komanda e pezullimit dështoi."
 
-#: battstat/battstat_applet.c:1027
+#: battstat/battstat_applet.c:1026
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -483,47 +410,19 @@ msgstr ""
 
 #. if your charset supports it, please replace the "o" in
 #. * "Jorgen" into U00F6
-#: battstat/battstat_applet.c:1045
+#: battstat/battstat_applet.c:1044
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jorgen·Pehrson·<jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:1081
+#: battstat/battstat_applet.c:1080
 msgid "(C) 2000 The Gnulix Society, (C) 2002-2004 Free Software Foundation"
 msgstr "(C) 2000 The Gnulix Society, (C) 2002-2004 Free Software Foundation"
 
-#: battstat/battstat_applet.c:1082
+#: battstat/battstat_applet.c:1081
 msgid "This utility shows the status of your laptop battery."
 msgstr "Kjo vegël tregon statusin e baterisë së laptopit tuaj."
 
-#. 0 = Battery power
-#. This string will display as a tooltip over the status frame
-#. when the computer is using battery power and the battery meter
-#. and percent meter is hidden by the user.
-#. Translation note: %s is time in words (translated elsewhere)
-#: battstat/battstat_applet.c:1279
-#, c-format
-msgid ""
-"System is running on battery power\n"
-"%s (%d%%) remaining."
-msgstr ""
-"Sistemi është duke u furnizuar nga bateria\n"
-"%s (%d%%) në dispozicion."
-
-#. 1 = AC power. I should really test it explicitly here.
-#. This string will display as a tooltip over the status frame
-#. when the computer is using AC power and the battery meter
-#. and percent meter is hidden by the user.
-#. Translation note: %s is time in words (translated elsewhere)
-#: battstat/battstat_applet.c:1287
-#, c-format
-msgid ""
-"System is running on AC power\n"
-"%s (%d%%) till charged."
-msgstr ""
-"Sistemi është duke u furnizuar nga korenti i rrjetit\n"
-"%s (%d%%) për t'u ngarkuar."
-
-#: battstat/battstat_applet.c:1766
+#: battstat/battstat_applet.c:1750
 msgid ""
 "Can't access ACPI events in /var/run/acpid.socket! Make sure the ACPI "
 "subsystem is working and the acpid daemon is running."
@@ -578,7 +477,7 @@ msgid "Battery Charge Monitor Preferences"
 msgstr "Preferencat e Monitoruesit të Baterisë"
 
 #: battstat/battstat_applet.glade.h:13 drivemount/properties.c:358
-#: gweather/gweather-pref.c:1045 mailcheck/mailcheck.c:2056
+#: gweather/gweather-pref.c:1050 mailcheck/mailcheck.c:2056
 #: mini-commander/src/mini-commander.glade.h:12 modemlights/properties.c:563
 msgid "General"
 msgstr "Të përgjithshme"
@@ -638,8 +537,8 @@ msgstr "_E Verdhë:"
 #: battstat/properties.c:291 drivemount/drivemount.c:510
 #: drivemount/properties.c:604 mailcheck/mailcheck.c:2323
 #: mailcheck/mailcheck.c:2617 mini-commander/src/preferences.c:365
-#: mixer/mixer.c:1463 stickynotes/stickynotes_applet_callbacks.c:220
-#: stickynotes/stickynotes_applet_callbacks.c:384
+#: mixer/mixer.c:1463 stickynotes/stickynotes_applet_callbacks.c:238
+#: stickynotes/stickynotes_applet_callbacks.c:402
 #: wireless/wireless-applet.c:544 wireless/wireless-applet.c:628
 #, c-format
 msgid "There was an error displaying help: %s"
@@ -679,11 +578,6 @@ msgid "Factory for CD player applet"
 msgstr "Fabrika për applet e lexuesit CD"
 
 #: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:4
-#: mixer/GNOME_MixerApplet.server.in.in.h:2
-msgid "Multimedia"
-msgstr "Multimedia"
-
-#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:5
 msgid "Panel applet for playing audio CDs"
 msgstr "Applet e panelit për leximin e CD-ve"
 
@@ -792,18 +686,6 @@ msgstr "Kliko këtë buton për të luajtur titullin e mëparshëm në CD"
 #: cdplayer/cdplayer.c:1116
 msgid "Click this button to Play the next track in the CD"
 msgstr "Kliko këtë buton për të Luajtur titullin pasues në CD"
-
-#: cdplayer/cdplayer.schemas.in.h:1
-msgid "Path to the device"
-msgstr "Path për tek dispozitivi"
-
-#: cdplayer/cdplayer.schemas.in.h:2
-msgid ""
-"This is the full path of the device that will be used to play cd's from this "
-"applet"
-msgstr ""
-"Ky është pozicioni i plotë për tek dispozitivi që do të përdoret nga kjo "
-"vegël për të luajtur CD"
 
 #: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:583
 #: charpick/charpick.c:737 charpick/properties.c:449
@@ -1105,16 +987,12 @@ msgstr "Përdor testin e statusit _automontues"
 msgid "A set of eyeballs for your panel"
 msgstr "Një komplet sysh për panelin tuaj"
 
-#: geyes/GNOME_GeyesApplet.server.in.in.h:2
-msgid "Amusements"
-msgstr "Zbavitje"
-
-#: geyes/GNOME_GeyesApplet.server.in.in.h:3 geyes/geyes.c:222
+#: geyes/GNOME_GeyesApplet.server.in.in.h:2 geyes/geyes.c:222
 #: geyes/geyes.c:452 geyes/geyes.c:454
 msgid "Geyes"
 msgstr "Geyes"
 
-#: geyes/GNOME_GeyesApplet.server.in.in.h:4
+#: geyes/GNOME_GeyesApplet.server.in.in.h:3
 msgid "Geyes Applet Factory"
 msgstr "Fabrika e Applet Geyes"
 
@@ -1154,15 +1032,32 @@ msgstr "Temat"
 msgid "_Select a theme:"
 msgstr "_Zgjidh një temë:"
 
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:1
+msgid "Change the keyboard layout"
+msgstr "Ndrysho planimetrinë tastierës"
+
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:2
+msgid "GKB Factory"
+msgstr "Fabrika e GKB"
+
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:3
+#: gkb-new/gkb-applet.c:95
+msgid "Keyboard Layout Switcher"
+msgstr "Ndryshuesi i Tastierës"
+
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:4
+msgid "Produces keyboard layout switcher applets."
+msgstr "Prodhon instrumentë për ndryshimin e planimetrisë së tastierës."
+
 #: gkb-new/descs/AM_Armenian.keyprop.desktop.in.h:1
 #: gkb-new/descs/Armenian.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:5
+#: gkb-new/descs/presets.xml.in.h:5 gkb-new/descs.sun/presets.xml.in.h:1
 msgid "Armenia"
 msgstr "Armenia"
 
 #: gkb-new/descs/AM_Armenian.keyprop.desktop.in.h:2
 #: gkb-new/descs/Armenian.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:6
+#: gkb-new/descs/presets.xml.in.h:6 gkb-new/descs.sun/presets.xml.in.h:2
 msgid "Armenian"
 msgstr "Armenisht"
 
@@ -1327,14 +1222,14 @@ msgstr "Tastiera xkb Turqisht e Azerbaixhanit"
 
 #: gkb-new/descs/BE_Dutch.keyprop.desktop.in.h:1
 #: gkb-new/descs/Belgian.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:18
+#: gkb-new/descs/presets.xml.in.h:18 gkb-new/descs.sun/presets.xml.in.h:10
 msgid "Belgium"
 msgstr "Belgjika"
 
 #: gkb-new/descs/BE_Dutch.keyprop.desktop.in.h:2
 #: gkb-new/descs/Belgian.keyprop.desktop.in.h:3
 #: gkb-new/descs/NL_Dutch_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:43
+#: gkb-new/descs/presets.xml.in.h:43 gkb-new/descs.sun/presets.xml.in.h:27
 msgid "Dutch"
 msgstr "Hollandeze"
 
@@ -1346,14 +1241,14 @@ msgstr "Tastiera xkb Hollandeze"
 #: gkb-new/descs/BG_Bulgarian.keyprop.desktop.in.h:1
 #: gkb-new/descs/BG_Bulgarian_x.keyprop.desktop.in.h:1
 #: gkb-new/descs/BulgarianCyril.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:22
+#: gkb-new/descs/presets.xml.in.h:22 gkb-new/descs.sun/presets.xml.in.h:14
 msgid "Bulgaria"
 msgstr "Bullgaria"
 
 #: gkb-new/descs/BG_Bulgarian.keyprop.desktop.in.h:2
 #: gkb-new/descs/BG_Bulgarian_x.keyprop.desktop.in.h:2
 #: gkb-new/descs/BulgarianCyril.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:23
+#: gkb-new/descs/presets.xml.in.h:23 gkb-new/descs.sun/presets.xml.in.h:15
 msgid "Bulgarian"
 msgstr "Bullgarisht"
 
@@ -1371,7 +1266,7 @@ msgstr "Tastiera Bullgarisht"
 #: gkb-new/descs/BR_Portuguese_x.keyprop.desktop.in.h:1
 #: gkb-new/descs/Portugal.keyprop.desktop.in.h:1
 #: gkb-new/descs/PortugalDeadkeys.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:19
+#: gkb-new/descs/presets.xml.in.h:19 gkb-new/descs.sun/presets.xml.in.h:11
 msgid "Brazil"
 msgstr "Brazil"
 
@@ -1386,7 +1281,7 @@ msgstr "Tastiera xkb Portugalisht Braziliane"
 #: gkb-new/descs/PT_Portuguese_x.keyprop.desktop.in.h:2
 #: gkb-new/descs/Portugal.keyprop.desktop.in.h:3
 #: gkb-new/descs/PortugalDeadkeys.keyprop.desktop.in.h:4
-#: gkb-new/descs/presets.xml.in.h:148
+#: gkb-new/descs/presets.xml.in.h:148 gkb-new/descs.sun/presets.xml.in.h:85
 msgid "Portuguese"
 msgstr "Portugeze"
 
@@ -1396,12 +1291,12 @@ msgid "Brazil Portuguese keymap"
 msgstr "Tastiera Portugalisht Braziliane"
 
 #: gkb-new/descs/BY_Belarussian.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:14
+#: gkb-new/descs/presets.xml.in.h:14 gkb-new/descs.sun/presets.xml.in.h:7
 msgid "Belarus"
 msgstr "Bjellorusia"
 
 #: gkb-new/descs/BY_Belarussian.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:15
+#: gkb-new/descs/presets.xml.in.h:15 gkb-new/descs.sun/presets.xml.in.h:8
 msgid "Belarusian"
 msgstr "Bjellorusisht"
 
@@ -1432,7 +1327,7 @@ msgstr "Belg"
 #: gkb-new/descs/FrenchCanadian.keyprop.desktop.in.h:2
 #: gkb-new/descs/FrenchCanadian2.keyprop.desktop.in.h:1
 #: gkb-new/descs/FrenchSwiss.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:61
+#: gkb-new/descs/presets.xml.in.h:61 gkb-new/descs.sun/presets.xml.in.h:40
 msgid "French"
 msgstr "Frengjisht"
 
@@ -1447,7 +1342,7 @@ msgstr "Bullgarishtja Cirilike"
 
 #: gkb-new/descs/CA_English.keyprop.desktop.in.h:1
 #: gkb-new/descs/FrenchCanadian.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:27
+#: gkb-new/descs/presets.xml.in.h:27 gkb-new/descs.sun/presets.xml.in.h:17
 msgid "Canada"
 msgstr "Kanada"
 
@@ -1475,7 +1370,8 @@ msgstr "Tastiera xkb Kanadeze"
 #: gkb-new/descs/US.keyprop.desktop.in.h:1
 #: gkb-new/descs/US_English.keyprop.desktop.in.h:1
 #: gkb-new/descs/US_international.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:48 gkb-new/gkb.c:364
+#: gkb-new/descs/presets.xml.in.h:48 gkb-new/descs.sun/presets.xml.in.h:29
+#: gkb-new/gkb.c:365
 msgid "English"
 msgstr "Anglisht"
 
@@ -1484,7 +1380,7 @@ msgstr "Anglisht"
 #: gkb-new/descs/DE_German_x.keyprop.desktop.in.h:1
 #: gkb-new/descs/German.keyprop.desktop.in.h:2
 #: gkb-new/descs/GermanSwiss.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:75
+#: gkb-new/descs/presets.xml.in.h:75 gkb-new/descs.sun/presets.xml.in.h:43
 msgid "German"
 msgstr "Gjermanisht"
 
@@ -1498,14 +1394,14 @@ msgstr "Tastiera Zviceriane"
 #: gkb-new/descs/FrenchSwiss.keyprop.desktop.in.h:3
 #: gkb-new/descs/German.keyprop.desktop.in.h:4
 #: gkb-new/descs/GermanSwiss.keyprop.desktop.in.h:3
-#: gkb-new/descs/presets.xml.in.h:186
+#: gkb-new/descs/presets.xml.in.h:186 gkb-new/descs.sun/presets.xml.in.h:113
 msgid "Switzerland"
 msgstr "Zvicra"
 
 #: gkb-new/descs/CZ_Czech.keyprop.desktop.in.h:1
 #: gkb-new/descs/CZ_Czech_Slovak.keyprop.desktop.in.h:1
 #: gkb-new/descs/CZ_Czech_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:33
+#: gkb-new/descs/presets.xml.in.h:33 gkb-new/descs.sun/presets.xml.in.h:19
 msgid "Czech"
 msgstr "Çekisht"
 
@@ -1520,7 +1416,7 @@ msgstr "Republika Çeke, ish Çekosllovakia"
 
 #: gkb-new/descs/CZ_Czech_Slovak.keyprop.desktop.in.h:2
 #: gkb-new/descs/CZ_Czech_x.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:34
+#: gkb-new/descs/presets.xml.in.h:34 gkb-new/descs.sun/presets.xml.in.h:20
 msgid "Czech Republic"
 msgstr "Republika Çeke"
 
@@ -1531,13 +1427,14 @@ msgstr "Tastiera xkb Çeke dhe Sllovake"
 
 #: gkb-new/descs/CZ_Czech_Slovak.keyprop.desktop.in.h:4
 #: gkb-new/descs/Slovak.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:166
+#: gkb-new/descs/presets.xml.in.h:166 gkb-new/descs.sun/presets.xml.in.h:96
 msgid "Slovak"
 msgstr "Sllovake"
 
 #: gkb-new/descs/CZ_Czech_Slovak.keyprop.desktop.in.h:5
+#: gkb-new/descs/SK__x.keyprop.desktop.in.h:3
 #: gkb-new/descs/Slovak.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:167
+#: gkb-new/descs/presets.xml.in.h:167 gkb-new/descs.sun/presets.xml.in.h:97
 msgid "Slovak Republic"
 msgstr "Republika Sllovake"
 
@@ -1554,7 +1451,7 @@ msgstr "Tastiera xkb Gjermane"
 #: gkb-new/descs/DE_German.keyprop.desktop.in.h:3
 #: gkb-new/descs/DE_German_x.keyprop.desktop.in.h:3
 #: gkb-new/descs/German.keyprop.desktop.in.h:3
-#: gkb-new/descs/presets.xml.in.h:79
+#: gkb-new/descs/presets.xml.in.h:79 gkb-new/descs.sun/presets.xml.in.h:47
 msgid "Germany"
 msgstr "Gjermania"
 
@@ -1565,7 +1462,7 @@ msgstr "Tastiera Gjermane"
 
 #: gkb-new/descs/DK_Danish.keyprop.desktop.in.h:1
 #: gkb-new/descs/DK_Danish_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:38
+#: gkb-new/descs/presets.xml.in.h:38 gkb-new/descs.sun/presets.xml.in.h:22
 msgid "Danish"
 msgstr "Danisht"
 
@@ -1576,7 +1473,7 @@ msgstr "Tastiera xkb Daneze"
 
 #: gkb-new/descs/DK_Danish.keyprop.desktop.in.h:3
 #: gkb-new/descs/DK_Danish_x.keyprop.desktop.in.h:3
-#: gkb-new/descs/presets.xml.in.h:41
+#: gkb-new/descs/presets.xml.in.h:41 gkb-new/descs.sun/presets.xml.in.h:26
 msgid "Denmark"
 msgstr "Danimarka"
 
@@ -1585,20 +1482,21 @@ msgstr "Danimarka"
 msgid "Danish keymap"
 msgstr "Tastiera Daneze"
 
-#: gkb-new/descs/Default.keyprop.desktop.in.h:1 gweather/gweather-pref.c:847
-#: gweather/gweather-pref.c:866 gweather/gweather-pref.c:890
-#: gweather/gweather-pref.c:914
+#: gkb-new/descs/Default.keyprop.desktop.in.h:1 gweather/gweather-pref.c:849
+#: gweather/gweather-pref.c:869 gweather/gweather-pref.c:893
+#: gweather/gweather-pref.c:919
 msgid "Default"
 msgstr "E prezgjedhur"
 
 #: gkb-new/descs/Default.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:80
+#: gkb-new/descs/presets.xml.in.h:80 gkb-new/descs.sun/presets.xml.in.h:48
 msgid "Gnome Keyboard default"
 msgstr "Tastiera Bazë e Gnome"
 
 #: gkb-new/descs/Default.keyprop.desktop.in.h:3
 #: gkb-new/descs/Dvorak.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:101 gkb-new/gkb.c:364
+#: gkb-new/descs/presets.xml.in.h:101 gkb-new/descs.sun/presets.xml.in.h:58
+#: gkb-new/gkb.c:365
 msgid "International"
 msgstr "Internacionale"
 
@@ -1609,13 +1507,13 @@ msgstr "Tastiera xkb Dvorak"
 
 #: gkb-new/descs/EE_Estonian.keyprop.desktop.in.h:1
 #: gkb-new/descs/EE_Estonian_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:50
+#: gkb-new/descs/presets.xml.in.h:50 gkb-new/descs.sun/presets.xml.in.h:33
 msgid "Estonia"
 msgstr "Estonia"
 
 #: gkb-new/descs/EE_Estonian.keyprop.desktop.in.h:2
 #: gkb-new/descs/EE_Estonian_x.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:51
+#: gkb-new/descs/presets.xml.in.h:51 gkb-new/descs.sun/presets.xml.in.h:34
 msgid "Estonian"
 msgstr "Estonisht"
 
@@ -1632,14 +1530,14 @@ msgstr "Tastiera Estonisht"
 #: gkb-new/descs/ES_Spanish-x86.keyprop.desktop.in.h:1
 #: gkb-new/descs/ES_Spanish.keyprop.desktop.in.h:1
 #: gkb-new/descs/ES_Spanish_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:174
+#: gkb-new/descs/presets.xml.in.h:174 gkb-new/descs.sun/presets.xml.in.h:102
 msgid "Spain"
 msgstr "Spanja"
 
 #: gkb-new/descs/ES_Spanish-x86.keyprop.desktop.in.h:2
 #: gkb-new/descs/ES_Spanish.keyprop.desktop.in.h:2
 #: gkb-new/descs/ES_Spanish_x.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:175
+#: gkb-new/descs/presets.xml.in.h:175 gkb-new/descs.sun/presets.xml.in.h:103
 msgid "Spanish"
 msgstr "Spanjisht"
 
@@ -1659,13 +1557,13 @@ msgstr "Tastiera Spanjisht"
 
 #: gkb-new/descs/FI_Finnish.keyprop.desktop.in.h:1
 #: gkb-new/descs/FI_Finnish_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:55
+#: gkb-new/descs/presets.xml.in.h:55 gkb-new/descs.sun/presets.xml.in.h:36
 msgid "Finland"
 msgstr "Finlanda"
 
 #: gkb-new/descs/FI_Finnish.keyprop.desktop.in.h:2
 #: gkb-new/descs/FI_Finnish_x.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:56
+#: gkb-new/descs/presets.xml.in.h:56 gkb-new/descs.sun/presets.xml.in.h:37
 msgid "Finnish"
 msgstr "Finlandeze"
 
@@ -1682,7 +1580,7 @@ msgstr "Tastiera Finlandeze"
 #: gkb-new/descs/FR_French-x86.keyprop.desktop.in.h:1
 #: gkb-new/descs/FR_French.keyprop.desktop.in.h:1
 #: gkb-new/descs/FR_French_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:60
+#: gkb-new/descs/presets.xml.in.h:60 gkb-new/descs.sun/presets.xml.in.h:39
 msgid "France"
 msgstr "Franca"
 
@@ -1800,7 +1698,7 @@ msgstr "Tastiera Kroate"
 #: gkb-new/descs/Hungarian.keyprop.desktop.in.h:1
 #: gkb-new/descs/Hungarian101-1.keyprop.desktop.in.h:1
 #: gkb-new/descs/Hungarian101.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:88
+#: gkb-new/descs/presets.xml.in.h:88 gkb-new/descs.sun/presets.xml.in.h:51
 msgid "Hungarian"
 msgstr "Hungarisht"
 
@@ -1817,7 +1715,7 @@ msgstr "Tastiera xkb latin2 Hungarisht"
 #: gkb-new/descs/Hungarian.keyprop.desktop.in.h:3
 #: gkb-new/descs/Hungarian101-1.keyprop.desktop.in.h:3
 #: gkb-new/descs/Hungarian101.keyprop.desktop.in.h:3
-#: gkb-new/descs/presets.xml.in.h:96
+#: gkb-new/descs/presets.xml.in.h:96 gkb-new/descs.sun/presets.xml.in.h:54
 msgid "Hungary"
 msgstr "Hungaria"
 
@@ -1857,7 +1755,7 @@ msgstr "Tastiera 101 latin 2 Hungarisht"
 
 #: gkb-new/descs/IL_Hebrew.keyprop.desktop.in.h:1
 #: gkb-new/descs/IL_Hebrew_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:85
+#: gkb-new/descs/presets.xml.in.h:85 gkb-new/descs.sun/presets.xml.in.h:49
 msgid "Hebrew"
 msgstr "Hebraike"
 
@@ -1868,7 +1766,7 @@ msgstr "Tastiera xkb Hebraisht"
 
 #: gkb-new/descs/IL_Hebrew.keyprop.desktop.in.h:3
 #: gkb-new/descs/IL_Hebrew_x.keyprop.desktop.in.h:3
-#: gkb-new/descs/presets.xml.in.h:103
+#: gkb-new/descs/presets.xml.in.h:103 gkb-new/descs.sun/presets.xml.in.h:59
 msgid "Israel"
 msgstr "Izraeli"
 
@@ -1879,13 +1777,13 @@ msgstr "Tastiera Hebraisht"
 
 #: gkb-new/descs/IS_Icelandic.keyprop.desktop.in.h:1
 #: gkb-new/descs/IS_Icelandic_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:97
+#: gkb-new/descs/presets.xml.in.h:97 gkb-new/descs.sun/presets.xml.in.h:55
 msgid "Iceland"
 msgstr "Islanda"
 
 #: gkb-new/descs/IS_Icelandic.keyprop.desktop.in.h:2
 #: gkb-new/descs/IS_Icelandic_x.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:98
+#: gkb-new/descs/presets.xml.in.h:98 gkb-new/descs.sun/presets.xml.in.h:56
 msgid "Icelandic"
 msgstr "Islandeze"
 
@@ -1901,7 +1799,7 @@ msgstr "Tastiera Islandisht"
 
 #: gkb-new/descs/IT_Italian.keyprop.desktop.in.h:1
 #: gkb-new/descs/IT_Italian_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:104
+#: gkb-new/descs/presets.xml.in.h:104 gkb-new/descs.sun/presets.xml.in.h:60
 msgid "Italian"
 msgstr "Italisht"
 
@@ -1912,7 +1810,7 @@ msgstr "Tastiera xkb Italisht"
 
 #: gkb-new/descs/IT_Italian.keyprop.desktop.in.h:3
 #: gkb-new/descs/IT_Italian_x.keyprop.desktop.in.h:3
-#: gkb-new/descs/presets.xml.in.h:107
+#: gkb-new/descs/presets.xml.in.h:107 gkb-new/descs.sun/presets.xml.in.h:64
 msgid "Italy"
 msgstr "Italia"
 
@@ -1923,13 +1821,13 @@ msgstr "Tastiera Italisht"
 
 #: gkb-new/descs/JP_Japanese.keyprop.desktop.in.h:1
 #: gkb-new/descs/JP_Japanese_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:108
+#: gkb-new/descs/presets.xml.in.h:108 gkb-new/descs.sun/presets.xml.in.h:65
 msgid "Japan"
 msgstr "Japonia"
 
 #: gkb-new/descs/JP_Japanese.keyprop.desktop.in.h:2
 #: gkb-new/descs/JP_Japanese_x.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:109
+#: gkb-new/descs/presets.xml.in.h:109 gkb-new/descs.sun/presets.xml.in.h:66
 msgid "Japanese"
 msgstr "Japonisht"
 
@@ -1974,7 +1872,7 @@ msgstr "Laos"
 #: gkb-new/descs/LT_Lithuanian_x.keyprop.desktop.in.h:1
 #: gkb-new/descs/LT_Prog.keyprop.desktop.in.h:1
 #: gkb-new/descs/LT_Standard.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:119
+#: gkb-new/descs/presets.xml.in.h:119 gkb-new/descs.sun/presets.xml.in.h:72
 msgid "Lithuania"
 msgstr "Lituania"
 
@@ -1982,7 +1880,7 @@ msgstr "Lituania"
 #: gkb-new/descs/LT_Lithuanian_x.keyprop.desktop.in.h:2
 #: gkb-new/descs/LT_Prog.keyprop.desktop.in.h:2
 #: gkb-new/descs/LT_Standard.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:120
+#: gkb-new/descs/presets.xml.in.h:120 gkb-new/descs.sun/presets.xml.in.h:73
 msgid "Lithuanian"
 msgstr "Lituaniane"
 
@@ -2008,13 +1906,13 @@ msgstr "Tastiera xkb standarte Lituanisht"
 
 #: gkb-new/descs/MK_Macedonian.keyprop.desktop.in.h:1
 #: gkb-new/descs/Macedonian.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:125
+#: gkb-new/descs/presets.xml.in.h:125 gkb-new/descs.sun/presets.xml.in.h:75
 msgid "Macedonia"
 msgstr "Maqedonia"
 
 #: gkb-new/descs/MK_Macedonian.keyprop.desktop.in.h:2
 #: gkb-new/descs/Macedonian.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:126
+#: gkb-new/descs/presets.xml.in.h:126 gkb-new/descs.sun/presets.xml.in.h:76
 msgid "Macedonian"
 msgstr "Maqedonisht"
 
@@ -2068,13 +1966,13 @@ msgstr "Hollanda"
 
 #: gkb-new/descs/NO_Norwegian.keyprop.desktop.in.h:1
 #: gkb-new/descs/Norwegian.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:136
+#: gkb-new/descs/presets.xml.in.h:136 gkb-new/descs.sun/presets.xml.in.h:78
 msgid "Norway"
 msgstr "Norvegjia"
 
 #: gkb-new/descs/NO_Norwegian.keyprop.desktop.in.h:2
 #: gkb-new/descs/Norwegian.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:137
+#: gkb-new/descs/presets.xml.in.h:137 gkb-new/descs.sun/presets.xml.in.h:79
 msgid "Norwegian"
 msgstr "Norvegjeze"
 
@@ -2086,14 +1984,14 @@ msgstr "Tastiera xkb Norvegjisht"
 #: gkb-new/descs/PL_Polish.keyprop.desktop.in.h:1
 #: gkb-new/descs/Polish.keyprop.desktop.in.h:1
 #: gkb-new/descs/PolishDeadkeys.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:142
+#: gkb-new/descs/presets.xml.in.h:142 gkb-new/descs.sun/presets.xml.in.h:81
 msgid "Poland"
 msgstr "Polonia"
 
 #: gkb-new/descs/PL_Polish.keyprop.desktop.in.h:2
 #: gkb-new/descs/Polish.keyprop.desktop.in.h:2
 #: gkb-new/descs/PolishDeadkeys.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:143
+#: gkb-new/descs/presets.xml.in.h:143 gkb-new/descs.sun/presets.xml.in.h:82
 msgid "Polish"
 msgstr "Polonisht"
 
@@ -2106,7 +2004,7 @@ msgstr "Tastiera xkb Polonisht"
 #: gkb-new/descs/PT_Portuguese_x.keyprop.desktop.in.h:1
 #: gkb-new/descs/Portugal.keyprop.desktop.in.h:2
 #: gkb-new/descs/PortugalDeadkeys.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:146
+#: gkb-new/descs/presets.xml.in.h:146 gkb-new/descs.sun/presets.xml.in.h:84
 msgid "Portugal"
 msgstr "Portugalia"
 
@@ -2131,12 +2029,12 @@ msgid "Portugal Deadkeys"
 msgstr "Deadkey Portugalisht"
 
 #: gkb-new/descs/RO_Romanian.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:152
+#: gkb-new/descs/presets.xml.in.h:152 gkb-new/descs.sun/presets.xml.in.h:88
 msgid "Romania"
 msgstr "Rumania"
 
 #: gkb-new/descs/RO_Romanian.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:153
+#: gkb-new/descs/presets.xml.in.h:153 gkb-new/descs.sun/presets.xml.in.h:89
 msgid "Romanian"
 msgstr "Rumanisht"
 
@@ -2149,7 +2047,7 @@ msgstr "Tastiera xkb Rumanisht"
 #: gkb-new/descs/RU_Russian_x.keyprop.desktop.in.h:1
 #: gkb-new/descs/RU_Russian_x_rev.keyprop.desktop.in.h:2
 #: gkb-new/descs/RussianCyril.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:155
+#: gkb-new/descs/presets.xml.in.h:155 gkb-new/descs.sun/presets.xml.in.h:91
 msgid "Russia"
 msgstr "Rusia"
 
@@ -2157,7 +2055,7 @@ msgstr "Rusia"
 #: gkb-new/descs/RU_Russian_x.keyprop.desktop.in.h:2
 #: gkb-new/descs/RU_Russian_x_rev.keyprop.desktop.in.h:3
 #: gkb-new/descs/RussianCyril.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:156
+#: gkb-new/descs/presets.xml.in.h:156 gkb-new/descs.sun/presets.xml.in.h:92
 msgid "Russian"
 msgstr "Rusisht"
 
@@ -2184,14 +2082,14 @@ msgstr "Rusishtja Cirilike"
 #: gkb-new/descs/SE_Swedish.keyprop.desktop.in.h:1
 #: gkb-new/descs/SE_Swedish_x.keyprop.desktop.in.h:1
 #: gkb-new/descs/Swedish.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:181
+#: gkb-new/descs/presets.xml.in.h:181 gkb-new/descs.sun/presets.xml.in.h:107
 msgid "Sweden"
 msgstr "Suedia"
 
 #: gkb-new/descs/SE_Swedish.keyprop.desktop.in.h:2
 #: gkb-new/descs/SE_Swedish_x.keyprop.desktop.in.h:2
 #: gkb-new/descs/Swedish.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:182
+#: gkb-new/descs/presets.xml.in.h:182 gkb-new/descs.sun/presets.xml.in.h:108
 msgid "Swedish"
 msgstr "Suedisht"
 
@@ -2209,7 +2107,7 @@ msgstr "Tastiera Suedisht"
 #: gkb-new/descs/SI_Slovenian_x.keyprop.desktop.in.h:1
 #: gkb-new/descs/Slovene.keyprop.desktop.in.h:1
 #: gkb-new/descs/Slovenian.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:169
+#: gkb-new/descs/presets.xml.in.h:169 gkb-new/descs.sun/presets.xml.in.h:99
 msgid "Slovenia"
 msgstr "Sllovenia"
 
@@ -2217,7 +2115,7 @@ msgstr "Sllovenia"
 #: gkb-new/descs/SI_Slovenian_x.keyprop.desktop.in.h:2
 #: gkb-new/descs/Slovene.keyprop.desktop.in.h:2
 #: gkb-new/descs/Slovenian.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:170
+#: gkb-new/descs/presets.xml.in.h:170 gkb-new/descs.sun/presets.xml.in.h:100
 msgid "Slovenian"
 msgstr "Sllovene"
 
@@ -2251,6 +2149,14 @@ msgstr "Serbia dhe Mali i Zi"
 msgid "Serbian standard xkb keymap"
 msgstr "Tastiera xkb standarte Serbisht"
 
+#: gkb-new/descs/SK__x.keyprop.desktop.in.h:1
+msgid " keymap"
+msgstr " tastiera"
+
+#: gkb-new/descs/SK__x.keyprop.desktop.in.h:2
+msgid "***FIXME***"
+msgstr "***NDREQMË***"
+
 #: gkb-new/descs/Syriac.keyprop.desktop.in.h:1
 #: gkb-new/descs/Syriac_Phonetic.keyprop.desktop.in.h:1
 #: gkb-new/descs/presets.xml.in.h:188
@@ -2269,7 +2175,7 @@ msgstr "Tastiera fonetike xkb Sirisht"
 #: gkb-new/descs/TH_Thai_x.keyprop.desktop.in.h:1
 #: gkb-new/descs/Thai.keyprop.desktop.in.h:1
 #: gkb-new/descs/Thai2.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:190
+#: gkb-new/descs/presets.xml.in.h:190 gkb-new/descs.sun/presets.xml.in.h:114
 msgid "Thai"
 msgstr "Thai"
 
@@ -2282,7 +2188,7 @@ msgstr "Tastiera xkb Tailandeze"
 #: gkb-new/descs/TH_Thai_x.keyprop.desktop.in.h:3
 #: gkb-new/descs/Thai.keyprop.desktop.in.h:3
 #: gkb-new/descs/Thai2.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:194
+#: gkb-new/descs/presets.xml.in.h:194 gkb-new/descs.sun/presets.xml.in.h:116
 msgid "Thailand"
 msgstr "Tajlanda"
 
@@ -2295,7 +2201,7 @@ msgstr "Tastiera Tailandeze"
 #: gkb-new/descs/TR-q.keyprop.desktop.in.h:1
 #: gkb-new/descs/TR_Turkish.keyprop.desktop.in.h:1
 #: gkb-new/descs/TR_Turkish_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:196
+#: gkb-new/descs/presets.xml.in.h:196 gkb-new/descs.sun/presets.xml.in.h:117
 msgid "Turkey"
 msgstr "Turqia"
 
@@ -2303,7 +2209,7 @@ msgstr "Turqia"
 #: gkb-new/descs/TR-q.keyprop.desktop.in.h:2
 #: gkb-new/descs/TR_Turkish.keyprop.desktop.in.h:2
 #: gkb-new/descs/TR_Turkish_x.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:197
+#: gkb-new/descs/presets.xml.in.h:197 gkb-new/descs.sun/presets.xml.in.h:118
 msgid "Turkish"
 msgstr "Turqisht"
 
@@ -2333,12 +2239,12 @@ msgid "Thai Kedmanee"
 msgstr "Tailanda"
 
 #: gkb-new/descs/UA_Ukrainian.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:216
+#: gkb-new/descs/presets.xml.in.h:216 gkb-new/descs.sun/presets.xml.in.h:123
 msgid "Ukraine"
 msgstr "Ukrahina"
 
 #: gkb-new/descs/UA_Ukrainian.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:217
+#: gkb-new/descs/presets.xml.in.h:217 gkb-new/descs.sun/presets.xml.in.h:124
 msgid "Ukrainian"
 msgstr "Ukrahinase"
 
@@ -2358,7 +2264,7 @@ msgstr "Tastiera GB·102"
 #: gkb-new/descs/UK_English.keyprop.desktop.in.h:2
 #: gkb-new/descs/UK_English_x.keyprop.desktop.in.h:3
 #: gkb-new/descs/UK_United_Kingdom.keyprop.desktop.in.h:3
-#: gkb-new/descs/presets.xml.in.h:220
+#: gkb-new/descs/presets.xml.in.h:220 gkb-new/descs.sun/presets.xml.in.h:126
 msgid "United Kingdom"
 msgstr "Mbretëria e Bashkuar"
 
@@ -2402,7 +2308,8 @@ msgstr "Tastiera Amerikane 101 taste"
 #: gkb-new/descs/US.keyprop.desktop.in.h:3
 #: gkb-new/descs/US_English.keyprop.desktop.in.h:3
 #: gkb-new/descs/US_international.keyprop.desktop.in.h:3
-#: gkb-new/descs/presets.xml.in.h:222 gkb-new/gkb.c:360
+#: gkb-new/descs/presets.xml.in.h:222 gkb-new/descs.sun/presets.xml.in.h:127
+#: gkb-new/gkb.c:361
 msgid "United States"
 msgstr "Shtetet e Bashkuara"
 
@@ -2461,12 +2368,12 @@ msgid "US International xkb keymap"
 msgstr "Tastiera xkb Amerikane Internacionale"
 
 #: gkb-new/descs/VN_Vietnamese.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:223
+#: gkb-new/descs/presets.xml.in.h:223 gkb-new/descs.sun/presets.xml.in.h:128
 msgid "Vietnam"
 msgstr "Vietnami"
 
 #: gkb-new/descs/VN_Vietnamese.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:224
+#: gkb-new/descs/presets.xml.in.h:224 gkb-new/descs.sun/presets.xml.in.h:129
 msgid "Vietnamese"
 msgstr "Vietnameze"
 
@@ -2481,11 +2388,11 @@ msgstr "Tastiera xkb Vietnameze"
 msgid "Serb keymap"
 msgstr "Tastiera Serbe"
 
-#: gkb-new/descs/presets.xml.in.h:9
+#: gkb-new/descs/presets.xml.in.h:9 gkb-new/descs.sun/presets.xml.in.h:4
 msgid "Azerbaijan"
 msgstr "Azerbajxhan"
 
-#: gkb-new/descs/presets.xml.in.h:10
+#: gkb-new/descs/presets.xml.in.h:10 gkb-new/descs.sun/presets.xml.in.h:5
 msgid "Azerbaijani Turkish"
 msgstr "Turqishte Azerbaixhanit"
 
@@ -2541,9 +2448,249 @@ msgstr "Fonetika Sirisht"
 msgid "UK PC/AT keyboard"
 msgstr "Tastiera UK PC/AT"
 
-#: gkb-new/gkb-applet.c:95
-msgid "Keyboard Layout Switcher"
-msgstr "Ndryshuesi i Tastierës"
+#: gkb-new/descs.sun/presets.xml.in.h:3
+msgid "Armenian Sun keymap"
+msgstr "Tastiera Sun Armenisht"
+
+#: gkb-new/descs.sun/presets.xml.in.h:6
+msgid "Azerbaijani Turkish Sun keymap"
+msgstr "Tastiera Sun Turqisht e Azerbaixhanit"
+
+#: gkb-new/descs.sun/presets.xml.in.h:9
+msgid "Belarusian Sun keymap"
+msgstr "Tastiera Sun Bjelloruse"
+
+#: gkb-new/descs.sun/presets.xml.in.h:12
+msgid "Brazil Portuguese Sun USB keymap"
+msgstr "Tastiera Sun USB Portugalisht Braziliane"
+
+#: gkb-new/descs.sun/presets.xml.in.h:13
+msgid "Brazil Portuguese Sun keymap"
+msgstr "Tastiera Sun Portugalisht Braziliane"
+
+#: gkb-new/descs.sun/presets.xml.in.h:16
+msgid "Bulgarian Sun keymap"
+msgstr "Tastiera Sun Bullgarisht"
+
+#: gkb-new/descs.sun/presets.xml.in.h:18
+msgid "Canadian Sun keymap"
+msgstr "Tastiera Sun Kanadeze"
+
+#: gkb-new/descs.sun/presets.xml.in.h:21
+msgid "Czech Sun keymap"
+msgstr "Tastiera Sun Çeke"
+
+#: gkb-new/descs.sun/presets.xml.in.h:23
+msgid "Danish Sun Type-4 keymap"
+msgstr "Tastiera Sun Type-4 Daneze "
+
+#: gkb-new/descs.sun/presets.xml.in.h:24
+msgid "Danish Sun USB keymap"
+msgstr "Tastiera Sun USB Daneze"
+
+#: gkb-new/descs.sun/presets.xml.in.h:25
+msgid "Danish Sun keymap"
+msgstr "Tastiera Sun Daneze"
+
+#: gkb-new/descs.sun/presets.xml.in.h:28
+msgid "Dutch Sun keymap"
+msgstr "Tastiera Sun Hollandeze"
+
+#: gkb-new/descs.sun/presets.xml.in.h:30
+msgid "English Sun Type-4 keymap"
+msgstr "Tastiera Angleze Sun Type-4"
+
+#: gkb-new/descs.sun/presets.xml.in.h:31
+msgid "English Sun USB keymap"
+msgstr "Tastiera Sun USB anglisht"
+
+#: gkb-new/descs.sun/presets.xml.in.h:32
+msgid "English Sun keymap"
+msgstr "Tastiera Sun Anglisht"
+
+#: gkb-new/descs.sun/presets.xml.in.h:35
+msgid "Estonian Sun keymap"
+msgstr "Tastiera Sun Estonisht"
+
+#: gkb-new/descs.sun/presets.xml.in.h:38
+msgid "Finnish Sun keymap"
+msgstr "Tastiera Sun Finlandeze"
+
+#: gkb-new/descs.sun/presets.xml.in.h:41
+msgid "French Sun USB keymap"
+msgstr "Tastiera Sun USB Franceze"
+
+#: gkb-new/descs.sun/presets.xml.in.h:42
+msgid "French Sun keymap"
+msgstr "Tastiera Sun Franceze"
+
+#: gkb-new/descs.sun/presets.xml.in.h:44
+msgid "German Sun Type-4 keymap"
+msgstr "Tastiera Sun Type-4 Gjermane"
+
+#: gkb-new/descs.sun/presets.xml.in.h:45
+msgid "German Sun USB keymap"
+msgstr "Tastiera Sun USB Gjermane"
+
+#: gkb-new/descs.sun/presets.xml.in.h:46
+msgid "German Sun keymap"
+msgstr "Tastiera Sun Gjermane"
+
+#: gkb-new/descs.sun/presets.xml.in.h:50
+msgid "Hebrew Sun keymap"
+msgstr "Tastiera Sun Hebraisht"
+
+#: gkb-new/descs.sun/presets.xml.in.h:52
+msgid "Hungarian latin2 Sun keymap"
+msgstr "Tastiera Sun latin2 Hungarisht"
+
+#: gkb-new/descs.sun/presets.xml.in.h:53
+msgid "Hungarian type5 latin 1 keymap"
+msgstr "Tastiera type5 latin1 Hungarisht"
+
+#: gkb-new/descs.sun/presets.xml.in.h:57
+msgid "Icelandic Sun keymap"
+msgstr "Tastiera Sun Islandisht"
+
+#: gkb-new/descs.sun/presets.xml.in.h:61
+msgid "Italian Sun Type-4 keymap"
+msgstr "Tastiera Sun Type-4 Italisht"
+
+#: gkb-new/descs.sun/presets.xml.in.h:62
+msgid "Italian Sun USB keymap"
+msgstr "Tastiera Sun USB Italisht"
+
+#: gkb-new/descs.sun/presets.xml.in.h:63
+msgid "Italian Sun keymap"
+msgstr "Tastiera Sun Italisht"
+
+#: gkb-new/descs.sun/presets.xml.in.h:67
+msgid "Japanese Sun Type-4 keymap"
+msgstr "Tastiera Sun Type-4 Japonisht"
+
+#: gkb-new/descs.sun/presets.xml.in.h:68
+msgid "Japanese Sun keymap"
+msgstr "Tastiera Sun Japonisht"
+
+#: gkb-new/descs.sun/presets.xml.in.h:69
+msgid "Latvia"
+msgstr "Letonia"
+
+#: gkb-new/descs.sun/presets.xml.in.h:70
+msgid "Latvian"
+msgstr "Letone"
+
+#: gkb-new/descs.sun/presets.xml.in.h:71
+msgid "Latvian Sun keymap"
+msgstr "Tastiera Sun Letone"
+
+#: gkb-new/descs.sun/presets.xml.in.h:74
+msgid "Lithuanian Sun keymap"
+msgstr "Tasteria Sun Lituane"
+
+#: gkb-new/descs.sun/presets.xml.in.h:77
+msgid "Macedonian Sun keymap"
+msgstr "Tastiera Sun Maqedonisht"
+
+#: gkb-new/descs.sun/presets.xml.in.h:80
+msgid "Norwegian Sun keymap"
+msgstr "Tastiera Sun Norvegjisht"
+
+#: gkb-new/descs.sun/presets.xml.in.h:83
+msgid "Polish Sun keymap"
+msgstr "Tastiera Sun Polonisht"
+
+#: gkb-new/descs.sun/presets.xml.in.h:86
+msgid "Portuguese Sun Type-4 keymap"
+msgstr "Tastiera Sun Type-4 Portugalisht"
+
+#: gkb-new/descs.sun/presets.xml.in.h:87
+msgid "Portuguese Sun keymap"
+msgstr "Tastiera Sun Portugalisht"
+
+#: gkb-new/descs.sun/presets.xml.in.h:90
+msgid "Romanian Sun keymap"
+msgstr "Tastiera Sun Rumanisht"
+
+#: gkb-new/descs.sun/presets.xml.in.h:93
+msgid "Russian Sun keymap"
+msgstr "Tastiera Sun Rusisht"
+
+#: gkb-new/descs.sun/presets.xml.in.h:94
+msgid "Serbian Sun standard keymap"
+msgstr "Tastiera Sun standarte Serbisht"
+
+#: gkb-new/descs.sun/presets.xml.in.h:95
+msgid "Serbo-Croatian"
+msgstr "Serbo-Kroate"
+
+#: gkb-new/descs.sun/presets.xml.in.h:98
+msgid "Slovak Sun keymap"
+msgstr "Tastiera Sun Sllovake"
+
+#: gkb-new/descs.sun/presets.xml.in.h:101
+msgid "Slovenian Sun keymap"
+msgstr "Tastiera Sun Sllovene"
+
+#: gkb-new/descs.sun/presets.xml.in.h:104
+msgid "Spanish Sun Type-4 keymap"
+msgstr "Tastiera Sun Type-4 Spanjisht"
+
+#: gkb-new/descs.sun/presets.xml.in.h:105
+msgid "Spanish Sun USB keymap"
+msgstr "Tastiera Sun USB Spanjisht"
+
+#: gkb-new/descs.sun/presets.xml.in.h:106
+msgid "Spanish Sun keymap"
+msgstr "Tastiera Sun Spanjisht"
+
+#: gkb-new/descs.sun/presets.xml.in.h:109
+msgid "Swedish Sun Type-4 keymap"
+msgstr "Tastiera Sun Type-4 Suedisht"
+
+#: gkb-new/descs.sun/presets.xml.in.h:110
+msgid "Swedish Sun USB keymap"
+msgstr "Tastiera Sun USB Suedisht"
+
+#: gkb-new/descs.sun/presets.xml.in.h:111
+msgid "Swedish Sun keymap"
+msgstr "Tastiera Sun Suedisht"
+
+#: gkb-new/descs.sun/presets.xml.in.h:112
+msgid "Swiss German Sun keymap"
+msgstr "Tastiera Sun Gjermanisht e Zvicrës"
+
+#: gkb-new/descs.sun/presets.xml.in.h:115
+msgid "Thai Sun keymap"
+msgstr "Tastiera Sun Tailandeze"
+
+#: gkb-new/descs.sun/presets.xml.in.h:119
+msgid "Turkish Sun keymap"
+msgstr "Tastiera Sun Turqisht"
+
+#: gkb-new/descs.sun/presets.xml.in.h:120
+msgid "US Sun Type-4 keyboard"
+msgstr "Tastiera Sun Type-4 Amerikane"
+
+#: gkb-new/descs.sun/presets.xml.in.h:121
+msgid "US Sun USB keyboard"
+msgstr "Tastiera Sun USB Amerikane"
+
+#: gkb-new/descs.sun/presets.xml.in.h:122
+msgid "US Sun type5 keyboard"
+msgstr "Tastiera Amerikane Sun type5"
+
+#: gkb-new/descs.sun/presets.xml.in.h:125
+msgid "Ukrainian Sun keymap"
+msgstr "Tastiera Sun Ukrainase"
+
+#: gkb-new/descs.sun/presets.xml.in.h:130
+msgid "Vietnamese Sun keymap"
+msgstr "Tastiera Sun Vietnameze"
+
+#: gkb-new/descs.sun/presets.xml.in.h:131
+msgid "Yugoslavia"
+msgstr "Jugosllavia"
 
 #: gkb-new/gkb-applet.c:97
 msgid "(C) 1998-2000 Free Software Foundation"
@@ -2574,7 +2721,7 @@ msgstr "Faqja e internetit për GKB (http://projects.gnome.hu/gkb)"
 msgid "GKB"
 msgstr "GKB"
 
-#: gkb-new/gkb.c:275
+#: gkb-new/gkb.c:276
 msgid ""
 "Press the hotkey to switch between layouts. The hotkey can be set through "
 "Properties dialog"
@@ -2582,19 +2729,19 @@ msgstr ""
 "Shtyp tastin e duhur për të ndryshuar layout. Tasti i duhur mund të "
 "konfigurohet tek dialogu i Preferencave"
 
-#: gkb-new/gkb.c:352
+#: gkb-new/gkb.c:353
 msgid "US 105 key keyboard"
 msgstr "Tastiera Amerikane 105 taste"
 
-#: gkb-new/gkb.c:352
+#: gkb-new/gkb.c:353
 msgid "Gnome Keyboard Default"
 msgstr "Tastiera Bazë e Gnome"
 
-#: gkb-new/gkb.c:356
+#: gkb-new/gkb.c:357
 msgid "default"
 msgstr "prezgjedhur"
 
-#: gkb-new/gkb.c:360
+#: gkb-new/gkb.c:361
 msgid "Gnome Keyboard"
 msgstr "Tastiera e Gnome"
 
@@ -2631,30 +2778,38 @@ msgid "The country of the keyboard layout"
 msgstr "Shteti i tastierës"
 
 #: gkb-new/gkb.schemas.in.h:9
+msgid "The default keymap"
+msgstr "Tastiera e prezgjedhur"
+
+#: gkb-new/gkb.schemas.in.h:10
+msgid "The default keymap for the applet"
+msgstr "Tastiera e prezgjedhur e applet-it"
+
+#: gkb-new/gkb.schemas.in.h:11
 msgid "The label of the keyboard layout"
 msgstr "Etiketa e tastierës"
 
-#: gkb-new/gkb.schemas.in.h:10
+#: gkb-new/gkb.schemas.in.h:12
 msgid "The language of the keyboard layout"
 msgstr "Gjuha e tastierës"
 
-#: gkb-new/gkb.schemas.in.h:11
+#: gkb-new/gkb.schemas.in.h:13
 msgid "The name of the keyboard layout"
 msgstr "Emri i tastierës"
 
-#: gkb-new/gkb.schemas.in.h:12
+#: gkb-new/gkb.schemas.in.h:14
 msgid "This flag will appear in flag field of the applet"
 msgstr "Ky flamur do të shfaqet në fushën e flamurit për applet"
 
-#: gkb-new/gkb.schemas.in.h:13
+#: gkb-new/gkb.schemas.in.h:15
 msgid "This information helps you to identify your keyboard layout"
 msgstr "Ky informacion të ndihmon për identifikimin e tastierës"
 
-#: gkb-new/gkb.schemas.in.h:14
+#: gkb-new/gkb.schemas.in.h:16
 msgid "This is the binding for keypress-based layout change"
 msgstr "Mënyra për ndërrimin e tastierës me anë të tasteve"
 
-#: gkb-new/gkb.schemas.in.h:15
+#: gkb-new/gkb.schemas.in.h:17
 msgid ""
 "This should be like \"gkb_xmmap us\", \"setxkbmap us\" or \"xmodmap "
 "something.xmm\""
@@ -2662,11 +2817,11 @@ msgstr ""
 "Kjo duhet të jetë si \"gkb_xmmap us\", \"setxkbmap us\" ose \"xmodmap diçka."
 "xmm\""
 
-#: gkb-new/gkb.schemas.in.h:16
+#: gkb-new/gkb.schemas.in.h:18
 msgid "This will appear in the label box of the applet"
 msgstr "Kjo do shfaqet në kutinë e etiketës për applet"
 
-#: gkb-new/gkb.schemas.in.h:17
+#: gkb-new/gkb.schemas.in.h:19
 msgid "This will identify the layout in the list"
 msgstr "Kjo do të tregojë tastierat në një listë"
 
@@ -2739,7 +2894,7 @@ msgstr "Etiketa"
 msgid "Flag and Label"
 msgstr "Flamur dhe Etiketë"
 
-#: gkb-new/prop.c:257 gtik/gtik.c:1521 gweather/gweather-pref.c:1030
+#: gkb-new/prop.c:257 gtik/gtik.c:1521 gweather/gweather-pref.c:1035
 #: modemlights/properties.c:444
 msgid "Display"
 msgstr "Monitori"
@@ -3019,20 +3174,14 @@ msgstr ""
 "e XFree që suportojnë paraqitje multiple)"
 
 #: gtik/GNOME_GtikApplet.server.in.in.h:1
-#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:1
-#: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:1
-msgid "Accessories"
-msgstr "Aksesorë"
-
-#: gtik/GNOME_GtikApplet.server.in.in.h:2
 msgid "Get continuously updated stock quotes"
 msgstr "Tërhiq vazhdimisht kuotat e freskuara të aksioneve"
 
-#: gtik/GNOME_GtikApplet.server.in.in.h:3
+#: gtik/GNOME_GtikApplet.server.in.in.h:2
 msgid "Gtik Applet Factory"
 msgstr "Fabrika e Applet Gtik"
 
-#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:746
+#: gtik/GNOME_GtikApplet.server.in.in.h:3 gtik/gtik.c:746
 msgid "Stock Ticker"
 msgstr "Applet i Aksioneve"
 
@@ -3094,7 +3243,7 @@ msgstr "Simbolet"
 msgid "Behavior"
 msgstr "Sjellja"
 
-#: gtik/gtik.c:1434 gweather/gweather-pref.c:990
+#: gtik/gtik.c:1434 gweather/gweather-pref.c:995
 msgid "Update"
 msgstr "Rifresko"
 
@@ -3102,7 +3251,7 @@ msgstr "Rifresko"
 msgid "Stock update fre_quency:"
 msgstr "Fre_kuenca e freskimit të aksioneve:"
 
-#: gtik/gtik.c:1450 gweather/gweather-pref.c:1014 mailcheck/mailcheck.c:2104
+#: gtik/gtik.c:1450 gweather/gweather-pref.c:1019 mailcheck/mailcheck.c:2104
 #: mailcheck/mailcheck.c:2110
 msgid "minutes"
 msgstr "minuta"
@@ -3344,19 +3493,19 @@ msgstr "font 2 - I Papërdorshëm"
 msgid "_Forecast"
 msgstr "_Parashikimi"
 
-#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:2
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:1
 msgid "Factory for creating the weather applet."
 msgstr "Fabrika për krijimin e applet së motit."
 
-#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:3
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:2
 msgid "Gweather Applet Factory"
 msgstr "Fabrika e Applet Gweather"
 
-#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:4
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:3
 msgid "Monitor the current weather conditions, and forecasts"
 msgstr "Vëzhgo të dhënat e motit dhe parashikimet"
 
-#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:5
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:4
 #: gweather/gweather-about.c:68
 msgid "Weather Report"
 msgstr "Njoftimet e Motit"
@@ -3460,168 +3609,175 @@ msgid "Forecast not currently available for this location."
 msgstr "Parashikimi nuk është i mundur për këtë vendndodhje."
 
 #. Accessible Name and Description for the components in Preference Dialog
-#: gweather/gweather-pref.c:191
+#: gweather/gweather-pref.c:192
 msgid "Location view"
 msgstr "Pamja e vendndodhjes"
 
-#: gweather/gweather-pref.c:191
+#: gweather/gweather-pref.c:192
 msgid "Select Location from the list"
 msgstr "Zgjidh Vendndodhjen nga lista"
 
-#: gweather/gweather-pref.c:193
+#: gweather/gweather-pref.c:194
 msgid "Update spin button"
 msgstr "Butoni i freskimit"
 
-#: gweather/gweather-pref.c:193
+#: gweather/gweather-pref.c:194
 msgid "Spinbutton for updating"
 msgstr "Butoni për freskim"
 
-#: gweather/gweather-pref.c:194
+#: gweather/gweather-pref.c:195
 msgid "Address Entry"
 msgstr "Dhënia e adresës"
 
-#: gweather/gweather-pref.c:194
+#: gweather/gweather-pref.c:195
 msgid "Enter the URL"
 msgstr "Fut URL"
 
 #. TRANSLATOR: This is the default unit to use for temperature measurements.
-#. Valid values are: "K" (Kelvin), "C" (Centigrade) and "F" (Fahrenheit)
-#: gweather/gweather-pref.c:400 gweather/gweather-pref.c:409
+#. Valid values are: "K" (Kelvin), "C" (Celsius) and "F" (Fahrenheit)
+#: gweather/gweather-pref.c:401 gweather/gweather-pref.c:410
 msgid "DEFAULT_TEMP_UNIT"
 msgstr "C"
 
 #. TRANSLATOR: This is the default unit to use for wind speed.
 #. Valid values are: "m/s" (meters per second), "km/h" (kilometers per hour),
 #. "mph" (miles per hour) and "knots"
-#: gweather/gweather-pref.c:435 gweather/gweather-pref.c:445
+#: gweather/gweather-pref.c:436 gweather/gweather-pref.c:446
 msgid "DEFAULT_SPEED_UNIT"
 msgstr "m/s"
 
 #. TRANSLATOR: This is the default unit to use for atmospheric pressure.
-#. Valid values are: "hPa" (hectoPascals), "mb" (millibars), "mmHg"
-#. (millimeters of mercury) and "inHg" (inches of mercury)
-#: gweather/gweather-pref.c:473 gweather/gweather-pref.c:483
+#. Valid values are: "kPa" (kiloPascals), "hPa" (hectoPascals),
+#. "mb" (millibars), "mmHg" (millimeters of mercury) and
+#. "inHg" (inches of mercury)
+#: gweather/gweather-pref.c:474 gweather/gweather-pref.c:485
 msgid "DEFAULT_PRESSURE_UNIT"
 msgstr "mb"
 
 #. TRANSLATOR: This is the default unit to use for visibility distance.
 #. Valid values are: "m" (meters), "km" (kilometers) and "mi" (miles)
-#: gweather/gweather-pref.c:509 gweather/gweather-pref.c:518
+#: gweather/gweather-pref.c:511 gweather/gweather-pref.c:520
 msgid "DEFAULT_DISTANCE_UNIT"
 msgstr "m"
 
-#: gweather/gweather-pref.c:796
+#: gweather/gweather-pref.c:798
 msgid "Weather Preferences"
 msgstr "Preferencat e Motit"
 
-#: gweather/gweather-pref.c:829 gweather/gweather-pref.c:994
+#: gweather/gweather-pref.c:831 gweather/gweather-pref.c:999
 msgid "_Automatically update every:"
 msgstr "Freskon _Automatikish çdo:"
 
 #. Temperature Unit
-#: gweather/gweather-pref.c:838
+#: gweather/gweather-pref.c:840
 msgid "_Temperature Unit:"
 msgstr "Njësia e _Temperaturës:"
 
-#: gweather/gweather-pref.c:848
+#: gweather/gweather-pref.c:850
 msgid "Kelvin"
 msgstr "Kelvin"
 
-#: gweather/gweather-pref.c:849
-msgid "Centigrade"
-msgstr "Centigrade"
+#. TRANSLATORS: Celsius is sometimes referred Centigrade
+#: gweather/gweather-pref.c:852
+msgid "Celsius"
+msgstr "Celsius"
 
-#: gweather/gweather-pref.c:850
+#: gweather/gweather-pref.c:853
 msgid "Fahrenheit"
 msgstr "Fahrenheit"
 
 #. Speed Unit
-#: gweather/gweather-pref.c:857
+#: gweather/gweather-pref.c:860
 msgid "_Wind Speed Unit:"
 msgstr "Njësia e shpejtësisë së _Erës:"
 
 #. TRANSLATOR: The wind speed unit "meters per second"
-#: gweather/gweather-pref.c:868
+#: gweather/gweather-pref.c:871
 msgid "m/s"
 msgstr "m/s"
 
 #. TRANSLATOR: The wind speed unit "kilometers per hour"
-#: gweather/gweather-pref.c:870
+#: gweather/gweather-pref.c:873
 msgid "km/h"
 msgstr "km/h"
 
 #. TRANSLATOR: The wind speed unit "miles per hour"
-#: gweather/gweather-pref.c:872
+#: gweather/gweather-pref.c:875
 msgid "mph"
 msgstr "mph"
 
 #. TRANSLATOR: The wind speed unit "knots"
-#: gweather/gweather-pref.c:874
+#: gweather/gweather-pref.c:877
 msgid "knots"
 msgstr "nyje"
 
 #. Pressure Unit
-#: gweather/gweather-pref.c:881
+#: gweather/gweather-pref.c:884
 msgid "_Pressure Unit:"
 msgstr "Njësia e _Trysnisë:"
 
+#. TRANSLATOR: The pressure unit "kiloPascals"
+#: gweather/gweather-pref.c:895
+msgid "kPa"
+msgstr "kPa"
+
 #. TRANSLATOR: The pressure unit "hectoPascals"
-#: gweather/gweather-pref.c:892
+#: gweather/gweather-pref.c:897
 msgid "hPa"
 msgstr "hPa"
 
 #. TRANSLATOR: The pressure unit "millibars"
-#: gweather/gweather-pref.c:894
+#: gweather/gweather-pref.c:899
 msgid "mb"
 msgstr "mb"
 
 #. TRANSLATOR: The pressure unit "millibars of mercury"
-#: gweather/gweather-pref.c:896
+#: gweather/gweather-pref.c:901
 msgid "mmHg"
 msgstr "mmHg"
 
 #. TRANSLATOR: The pressure unit "inches of mercury"
-#: gweather/gweather-pref.c:898
+#: gweather/gweather-pref.c:903
 msgid "inHg"
 msgstr "in/Hg"
 
 #. Distance Unit
-#: gweather/gweather-pref.c:905
+#: gweather/gweather-pref.c:910
 msgid "_Visibility Unit:"
 msgstr "Njësia e _Dukshmërisë:"
 
 #. TRANSLATOR: The distance unit "meters"
-#: gweather/gweather-pref.c:916
+#: gweather/gweather-pref.c:921
 msgid "meters"
 msgstr "metra"
 
 #. TRANSLATOR: The distance unit "kilometers"
-#: gweather/gweather-pref.c:918
+#: gweather/gweather-pref.c:923
 msgid "km"
 msgstr "km"
 
 #. TRANSLATOR: The distance unit "miles"
-#: gweather/gweather-pref.c:920
+#: gweather/gweather-pref.c:925
 msgid "miles"
 msgstr "milje"
 
-#: gweather/gweather-pref.c:945
+#: gweather/gweather-pref.c:950
 msgid "Enable _radar map"
 msgstr "Aktivizo hartën e _radarit"
 
-#: gweather/gweather-pref.c:959
+#: gweather/gweather-pref.c:964
 msgid "Use _custom address for radar map"
 msgstr "Përdor adresën e perso_nalizuar për hartën e radarit"
 
-#: gweather/gweather-pref.c:976
+#: gweather/gweather-pref.c:981
 msgid "A_ddress:"
 msgstr "A_dresa:"
 
-#: gweather/gweather-pref.c:1058
+#: gweather/gweather-pref.c:1063
 msgid "_Select a location:"
 msgstr "_Zgjidh një vendndodhje:"
 
-#: gweather/gweather-pref.c:1088
+#: gweather/gweather-pref.c:1093
 msgid "Location"
 msgstr "Vendodhja"
 
@@ -3629,8 +3785,8 @@ msgstr "Vendodhja"
 #. gweather/Locations file
 #. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
 #. so this should be translated as "KJFK"
-#: gweather/gweather.schemas.in.h:1 gweather/weather.c:135
-#: gweather/weather.c:140
+#: gweather/gweather.schemas.in.h:1 gweather/weather.c:136
+#: gweather/weather.c:141
 msgid "DEFAULT_CODE"
 msgstr "DEFAULT_CODE"
 
@@ -3638,8 +3794,8 @@ msgstr "DEFAULT_CODE"
 #. gweather/Locations file
 #. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
 #. so this should be translated as "New York-JFK Arpt"
-#: gweather/gweather.schemas.in.h:2 gweather/weather.c:114
-#: gweather/weather.c:119 gweather/weather.c:120
+#: gweather/gweather.schemas.in.h:2 gweather/weather.c:115
+#: gweather/weather.c:120 gweather/weather.c:121
 msgid "DEFAULT_LOCATION"
 msgstr "DEFAULT_LOCATION"
 
@@ -3647,8 +3803,8 @@ msgstr "DEFAULT_LOCATION"
 #. gweather/Locations file
 #. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
 #. so this should be translated as "nyc"
-#: gweather/gweather.schemas.in.h:3 gweather/weather.c:166
-#: gweather/weather.c:171
+#: gweather/gweather.schemas.in.h:3 gweather/weather.c:167
+#: gweather/weather.c:172
 msgid "DEFAULT_RADAR"
 msgstr "DEFAULT_RADAR"
 
@@ -3656,8 +3812,8 @@ msgstr "DEFAULT_RADAR"
 #. gweather/Locations file
 #. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
 #. so this should be translated as "NYZ076"
-#: gweather/gweather.schemas.in.h:4 gweather/weather.c:151
-#: gweather/weather.c:156
+#: gweather/gweather.schemas.in.h:4 gweather/weather.c:152
+#: gweather/weather.c:157
 msgid "DEFAULT_ZONE"
 msgstr "DEFAULT_ZONE"
 
@@ -3754,106 +3910,106 @@ msgstr "Përdor sistemin metrik kundrejt atij anglez."
 msgid "weather location information."
 msgstr "informacioni i motit për vendndodhjen."
 
-#: gweather/weather.c:127
+#: gweather/weather.c:128
 msgid "Pittsburgh"
 msgstr "Pittsburgh"
 
-#: gweather/weather.c:221
+#: gweather/weather.c:222
 msgid "Variable"
 msgstr "E ndryshueshme"
 
-#: gweather/weather.c:222
+#: gweather/weather.c:223
 msgid "North"
 msgstr "Veri"
 
-#: gweather/weather.c:222
+#: gweather/weather.c:223
 msgid "North - NorthEast"
 msgstr "Veri - Veri-Lindje"
 
-#: gweather/weather.c:222
+#: gweather/weather.c:223
 msgid "Northeast"
 msgstr "Veri-Lindje"
 
-#: gweather/weather.c:222
+#: gweather/weather.c:223
 msgid "East - NorthEast"
 msgstr "Lindje - Veri-Lindje"
 
-#: gweather/weather.c:223
+#: gweather/weather.c:224
 msgid "East"
 msgstr "Lindje"
 
-#: gweather/weather.c:223
+#: gweather/weather.c:224
 msgid "East - Southeast"
 msgstr "Lindje - Jug-Lindje"
 
-#: gweather/weather.c:223
+#: gweather/weather.c:224
 msgid "Southeast"
 msgstr "Jug-Lindje"
 
-#: gweather/weather.c:223
+#: gweather/weather.c:224
 msgid "South - Southeast"
 msgstr "Jug - Jug-Lindje"
 
-#: gweather/weather.c:224
+#: gweather/weather.c:225
 msgid "South"
 msgstr "Jug"
 
-#: gweather/weather.c:224
+#: gweather/weather.c:225
 msgid "South - Southwest"
 msgstr "Jug - Jug-Perëndim"
 
-#: gweather/weather.c:224
+#: gweather/weather.c:225
 msgid "Southwest"
 msgstr "Jug-Perëndim"
 
-#: gweather/weather.c:224
+#: gweather/weather.c:225
 msgid "West - Southwest"
 msgstr "Perëndim - Jug-Perëndim"
 
-#: gweather/weather.c:225
+#: gweather/weather.c:226
 msgid "West"
 msgstr "Perëndim"
 
-#: gweather/weather.c:225
+#: gweather/weather.c:226
 msgid "West - Northwest"
 msgstr "Perëndim - Veri-Perëndim"
 
-#: gweather/weather.c:225
+#: gweather/weather.c:226
 msgid "Northwest"
 msgstr "Veri-Perëndim"
 
-#: gweather/weather.c:225
+#: gweather/weather.c:226
 msgid "North - Northwest"
 msgstr "Veri - Veri-Perëndim"
 
-#: gweather/weather.c:231 gweather/weather.c:2233 gweather/weather.c:2247
-#: gweather/weather.c:2259 gweather/weather.c:2274 gweather/weather.c:2290
-#: gweather/weather.c:2321 gweather/weather.c:2333 gweather/weather.c:2352
-#: gweather/weather.c:2376 gweather/weather.c:2389 gweather/weather.c:2409
+#: gweather/weather.c:232 gweather/weather.c:2234 gweather/weather.c:2248
+#: gweather/weather.c:2260 gweather/weather.c:2275 gweather/weather.c:2291
+#: gweather/weather.c:2322 gweather/weather.c:2334 gweather/weather.c:2353
+#: gweather/weather.c:2381 gweather/weather.c:2394 gweather/weather.c:2414
 msgid "Unknown"
 msgstr "Nuk njihet"
 
-#: gweather/weather.c:233 gweather/weather.c:250 gweather/weather.c:321
+#: gweather/weather.c:234 gweather/weather.c:251 gweather/weather.c:322
 msgid "Invalid"
 msgstr "E pavlefshme"
 
-#: gweather/weather.c:239
+#: gweather/weather.c:240
 msgid "Clear Sky"
 msgstr "Qiell i Hapur"
 
-#: gweather/weather.c:240
+#: gweather/weather.c:241
 msgid "Broken clouds"
 msgstr "Re të thyera"
 
-#: gweather/weather.c:241
+#: gweather/weather.c:242
 msgid "Scattered clouds"
 msgstr "Re të shpërndara"
 
-#: gweather/weather.c:242
+#: gweather/weather.c:243
 msgid "Few clouds"
 msgstr "Pak re"
 
-#: gweather/weather.c:243
+#: gweather/weather.c:244
 msgid "Overcast"
 msgstr "Vrenjtur"
 
@@ -3861,432 +4017,438 @@ msgstr "Vrenjtur"
 #. * etc means, you can go to http://www.weather.com/glossary/ and
 #. * http://www.crh.noaa.gov/arx/wx.tbl.html
 #. NONE
-#: gweather/weather.c:282 gweather/weather.c:284
+#: gweather/weather.c:283 gweather/weather.c:285
 msgid "Thunderstorm"
 msgstr "Stuhi"
 
 #. DRIZZLE
-#: gweather/weather.c:283
+#: gweather/weather.c:284
 msgid "Drizzle"
 msgstr "Shi i imët"
 
-#: gweather/weather.c:283
+#: gweather/weather.c:284
 msgid "Light drizzle"
 msgstr "Vesë"
 
-#: gweather/weather.c:283
+#: gweather/weather.c:284
 msgid "Moderate drizzle"
 msgstr "Shi"
 
-#: gweather/weather.c:283
+#: gweather/weather.c:284
 msgid "Heavy drizzle"
 msgstr "Shi i rënde"
 
-#: gweather/weather.c:283
+#: gweather/weather.c:284
 msgid "Freezing drizzle"
 msgstr "Shi i akullt"
 
 #. RAIN
-#: gweather/weather.c:284
+#: gweather/weather.c:285
 msgid "Rain"
 msgstr "Shi"
 
-#: gweather/weather.c:284
+#: gweather/weather.c:285
 msgid "Light rain"
 msgstr "Shi i lehtë"
 
-#: gweather/weather.c:284
+#: gweather/weather.c:285
 msgid "Moderate rain"
 msgstr "Shi i moderuar"
 
-#: gweather/weather.c:284
+#: gweather/weather.c:285
 msgid "Heavy rain"
 msgstr "Shi i madh"
 
-#: gweather/weather.c:284
+#: gweather/weather.c:285
 msgid "Rain showers"
 msgstr "Shi i bollshëm"
 
-#: gweather/weather.c:284
+#: gweather/weather.c:285
 msgid "Freezing rain"
 msgstr "Shi i akullt"
 
 #. SNOW
-#: gweather/weather.c:285
+#: gweather/weather.c:286
 msgid "Snow"
 msgstr "Borë"
 
-#: gweather/weather.c:285
+#: gweather/weather.c:286
 msgid "Light snow"
 msgstr "Borë e imët"
 
-#: gweather/weather.c:285
+#: gweather/weather.c:286
 msgid "Moderate snow"
 msgstr "Borë e moderuar"
 
-#: gweather/weather.c:285
+#: gweather/weather.c:286
 msgid "Heavy snow"
 msgstr "Borë e madhe"
 
-#: gweather/weather.c:285
+#: gweather/weather.c:286
 msgid "Snowstorm"
 msgstr "Stuhi bore"
 
-#: gweather/weather.c:285
+#: gweather/weather.c:286
 msgid "Blowing snowfall"
 msgstr "Borë e fuqishme"
 
-#: gweather/weather.c:285
+#: gweather/weather.c:286
 msgid "Snow showers"
 msgstr "Borë e bollshme"
 
-#: gweather/weather.c:285
+#: gweather/weather.c:286
 msgid "Drifting snow"
 msgstr "Borë e levizshme"
 
 #. SNOW_GRAINS
-#: gweather/weather.c:286
+#: gweather/weather.c:287
 msgid "Snow grains"
 msgstr "Borë"
 
-#: gweather/weather.c:286
+#: gweather/weather.c:287
 msgid "Light snow grains"
 msgstr "Borë e lehtë"
 
-#: gweather/weather.c:286
+#: gweather/weather.c:287
 msgid "Moderate snow grains"
 msgstr "Borë e moderuar"
 
-#: gweather/weather.c:286
+#: gweather/weather.c:287
 msgid "Heavy snow grains"
 msgstr "Borë e madhe"
 
 #. ICE_CRYSTALS
-#: gweather/weather.c:287
+#: gweather/weather.c:288
 msgid "Ice crystals"
 msgstr "Kristale akulli"
 
 #. ICE_PELLETS
-#: gweather/weather.c:288
+#: gweather/weather.c:289
 msgid "Ice pellets"
 msgstr "Copa akulli"
 
-#: gweather/weather.c:288
+#: gweather/weather.c:289
 msgid "Few ice pellets"
 msgstr "Copa të pakta akulli"
 
-#: gweather/weather.c:288
+#: gweather/weather.c:289
 msgid "Moderate ice pellets"
 msgstr "Copa të pakta akulli"
 
-#: gweather/weather.c:288
+#: gweather/weather.c:289
 msgid "Heavy ice pellets"
 msgstr "Copa të shumta akulli"
 
-#: gweather/weather.c:288
+#: gweather/weather.c:289
 msgid "Ice pellet storm"
 msgstr "Stuhi copash akulli"
 
-#: gweather/weather.c:288
+#: gweather/weather.c:289
 msgid "Showers of ice pellets"
 msgstr "Shi copash akulli"
 
 #. HAIL
-#: gweather/weather.c:289
+#: gweather/weather.c:290
 msgid "Hail"
 msgstr "Breshër"
 
-#: gweather/weather.c:289
+#: gweather/weather.c:290
 msgid "Hailstorm"
 msgstr "Stuhi Breshëri"
 
-#: gweather/weather.c:289
+#: gweather/weather.c:290
 msgid "Hail showers"
 msgstr "Breshër"
 
 #. SMALL_HAIL
-#: gweather/weather.c:290
+#: gweather/weather.c:291
 msgid "Small hail"
 msgstr "Breshër i imët"
 
-#: gweather/weather.c:290
+#: gweather/weather.c:291
 msgid "Small hailstorm"
 msgstr "Stuhi e vogël breshëri"
 
-#: gweather/weather.c:290
+#: gweather/weather.c:291
 msgid "Showers of small hail"
 msgstr "Breshër i vogël"
 
 #. PRECIPITATION
-#: gweather/weather.c:291
+#: gweather/weather.c:292
 msgid "Unknown precipitation"
 msgstr "Rënie të panjohura"
 
 #. MIST
-#: gweather/weather.c:292
+#: gweather/weather.c:293
 msgid "Mist"
 msgstr "Grimca"
 
 #. FOG
-#: gweather/weather.c:293
+#: gweather/weather.c:294
 msgid "Fog"
 msgstr "Mjegull"
 
-#: gweather/weather.c:293
+#: gweather/weather.c:294
 msgid "Fog in the vicinity"
 msgstr "Mjegull e dendur"
 
-#: gweather/weather.c:293
+#: gweather/weather.c:294
 msgid "Shallow fog"
 msgstr "Mjegull e cekët"
 
-#: gweather/weather.c:293
+#: gweather/weather.c:294
 msgid "Patches of fog"
 msgstr "Mjegull e shpërndarë"
 
-#: gweather/weather.c:293
+#: gweather/weather.c:294
 msgid "Partial fog"
 msgstr "Mjegull e pjesshme"
 
-#: gweather/weather.c:293
+#: gweather/weather.c:294
 msgid "Freezing fog"
 msgstr "Mjegull e akullt"
 
 #. SMOKE
-#: gweather/weather.c:294
+#: gweather/weather.c:295
 msgid "Smoke"
 msgstr "Tym"
 
 #. VOLCANIC_ASH
-#: gweather/weather.c:295
+#: gweather/weather.c:296
 msgid "Volcanic ash"
 msgstr "Hi vullkanik"
 
 #. SAND
-#: gweather/weather.c:296
+#: gweather/weather.c:297
 msgid "Sand"
 msgstr "Rërë"
 
-#: gweather/weather.c:296
+#: gweather/weather.c:297
 msgid "Blowing sand"
 msgstr "Stuhi Rëre"
 
-#: gweather/weather.c:296
+#: gweather/weather.c:297
 msgid "Drifting sand"
 msgstr "Rërë e lëvizshme"
 
 #. HAZE
-#: gweather/weather.c:297
+#: gweather/weather.c:298
 msgid "Haze"
 msgstr "Mjegull"
 
 #. SPRAY
-#: gweather/weather.c:298
+#: gweather/weather.c:299
 msgid "Blowing sprays"
 msgstr "Spërkatje shpërthyese"
 
 #. DUST
-#: gweather/weather.c:299
+#: gweather/weather.c:300
 msgid "Dust"
 msgstr "Pluhur"
 
-#: gweather/weather.c:299
+#: gweather/weather.c:300
 msgid "Blowing dust"
 msgstr "Pluhur shpërthyes"
 
-#: gweather/weather.c:299
+#: gweather/weather.c:300
 msgid "Drifting dust"
 msgstr "Pluhur i lëvizshëm"
 
 #. SQUALL
-#: gweather/weather.c:300
+#: gweather/weather.c:301
 msgid "Squall"
 msgstr "Erë që ulërin"
 
 #. SANDSTORM
-#: gweather/weather.c:301
+#: gweather/weather.c:302
 msgid "Sandstorm"
 msgstr "Stuhi rëre"
 
-#: gweather/weather.c:301
+#: gweather/weather.c:302
 msgid "Sandstorm in the vicinity"
 msgstr "Stuhi rëre në afërsi"
 
-#: gweather/weather.c:301
+#: gweather/weather.c:302
 msgid "Heavy sandstorm"
 msgstr "Stuhi rëre e fuqishme"
 
 #. DUSTSTORM
-#: gweather/weather.c:302
+#: gweather/weather.c:303
 msgid "Duststorm"
 msgstr "Stuhi pluhuri"
 
-#: gweather/weather.c:302
+#: gweather/weather.c:303
 msgid "Duststorm in the vicinity"
 msgstr "Stuhi pluhuri në afërsi"
 
-#: gweather/weather.c:302
+#: gweather/weather.c:303
 msgid "Heavy duststorm"
 msgstr "Stuhi pluhuri e fuqishme"
 
 #. FUNNEL_CLOUD
-#: gweather/weather.c:303
+#: gweather/weather.c:304
 msgid "Funnel cloud"
 msgstr "Re hinkë"
 
 #. TORNADO
-#: gweather/weather.c:304
+#: gweather/weather.c:305
 msgid "Tornado"
 msgstr "Tornado"
 
 #. DUST_WHIRLS
-#: gweather/weather.c:305
+#: gweather/weather.c:306
 msgid "Dust whirls"
 msgstr "Vorbulla pluhuri"
 
-#: gweather/weather.c:305
+#: gweather/weather.c:306
 msgid "Dust whirls in the vicinity"
 msgstr "Stuhi pluhuri në afërsi"
 
-#: gweather/weather.c:1021 gweather/weather.c:1063 gweather/weather.c:1815
+#: gweather/weather.c:1022 gweather/weather.c:1064 gweather/weather.c:1816
 msgid "Failed to get METAR data.\n"
 msgstr "Dështoi në tërheqjen e të dhënave METAR.\n"
 
-#: gweather/weather.c:1055 gweather/weather.c:1083 gweather/weather.c:1330
+#: gweather/weather.c:1056 gweather/weather.c:1084 gweather/weather.c:1331
 msgid "WeatherInfo missing location"
 msgstr "Mungon vendndodhja WeatherInfo"
 
-#: gweather/weather.c:2147
+#: gweather/weather.c:2148
 msgid "%a, %b %d / %H:%M"
 msgstr "%a,·%b·%d·/·%H:%M"
 
-#: gweather/weather.c:2151
+#: gweather/weather.c:2152
 msgid "Unknown observation time"
 msgstr "Kohë e panjohur e vëzhgimit"
 
 #. TRANSLATOR: This is the temperature in degrees fahrenheit, use the degree
 #. symbol Unicode 00B0 if possible
-#: gweather/weather.c:2183 gweather/weather.c:2186
+#: gweather/weather.c:2184 gweather/weather.c:2187
 #, c-format
 msgid "%.1f F"
 msgstr "%.1f F"
 
 #. TRANSLATOR: This is the temperature in degrees fahrenheit, use the degree
 #. symbol Unicode 00B0 if possible
-#: gweather/weather.c:2191 gweather/weather.c:2194
+#: gweather/weather.c:2192 gweather/weather.c:2195
 #, c-format
 msgid "%dF"
 msgstr "%dF"
 
 #. TRANSLATOR: This is the temperature in degrees centigrade , use the degree
 #. symbol Unicode 00B0 if possible
-#: gweather/weather.c:2202 gweather/weather.c:2205
+#: gweather/weather.c:2203 gweather/weather.c:2206
 #, c-format
 msgid "%.1f C"
 msgstr "%.1f C"
 
 #. TRANSLATOR: This is the temperature in degrees centigrade , use the degree
 #. symbol Unicode 00B0 if possible
-#: gweather/weather.c:2210 gweather/weather.c:2213
+#: gweather/weather.c:2211 gweather/weather.c:2214
 #, c-format
 msgid "%dC"
 msgstr "%dC"
 
 #. TRANSLATOR: This is the temperature in Kelvin
-#: gweather/weather.c:2222
+#: gweather/weather.c:2223
 #, c-format
 msgid "%.1f K"
 msgstr "%.1f K"
 
 #. TRANSLATOR: This is the temperature in Kelvin
-#: gweather/weather.c:2225
+#: gweather/weather.c:2226
 #, c-format
 msgid "%dK"
 msgstr "%dK"
 
 #. TRANSLATOR: This is the humidity in percent
-#: gweather/weather.c:2277
+#: gweather/weather.c:2278
 #, c-format
 msgid "%.f%%"
 msgstr "%.f%%"
 
 #. TRANSLATOR: This is the wind speed in knots
-#: gweather/weather.c:2302
+#: gweather/weather.c:2303
 #, c-format
 msgid "%0.1f knots"
 msgstr "%0.1f nyje"
 
 #. TRANSLATOR: This is the wind speed in miles per hour
-#: gweather/weather.c:2306
+#: gweather/weather.c:2307
 #, c-format
 msgid "%.1f mph"
 msgstr "%.1f mph"
 
 #. TRANSLATOR: This is the wind speed in kilometers per hour
-#: gweather/weather.c:2310
+#: gweather/weather.c:2311
 #, c-format
 msgid "%.1f km/h"
 msgstr "%.1f km/h"
 
 #. TRANSLATOR: This is the wind speed in miles per hour
-#: gweather/weather.c:2314
+#: gweather/weather.c:2315
 #, c-format
 msgid "%.1f m/s"
 msgstr "%.1f m/s"
 
-#: gweather/weather.c:2335
+#: gweather/weather.c:2336
 msgid "Calm"
 msgstr "Qetë"
 
 #. TRANSLATOR: This is 'wind direction' / 'wind speed'
-#: gweather/weather.c:2339
+#: gweather/weather.c:2340
 #, c-format
 msgid "%s / %s"
 msgstr "%s / %s"
 
 #. TRANSLATOR: This is pressure in inches of mercury
-#: gweather/weather.c:2357
+#: gweather/weather.c:2358
 #, c-format
 msgid "%.2f inHg"
 msgstr "%.2f inHg"
 
 #. TRANSLATOR: This is pressure in millimeters of mercury
-#: gweather/weather.c:2361
+#: gweather/weather.c:2362
 #, c-format
 msgid "%.1f mmHg"
 msgstr "%.1f mmHg"
 
+#. TRANSLATOR: This is pressure in kiloPascals
+#: gweather/weather.c:2366
+#, c-format
+msgid "%.2f kPa"
+msgstr "%.2f kPa"
+
 #. TRANSLATOR: This is pressure in hectoPascals
-#: gweather/weather.c:2365
+#: gweather/weather.c:2370
 #, c-format
 msgid "%.2f hPa"
 msgstr "%.2f hPa"
 
 #. TRANSLATOR: This is pressure in millibars
-#: gweather/weather.c:2369
+#: gweather/weather.c:2374
 #, c-format
 msgid "%.2f mb"
 msgstr "%.2f mb"
 
 #. TRANSLATOR: This is the visibility in miles
-#: gweather/weather.c:2394
+#: gweather/weather.c:2399
 #, c-format
 msgid "%.1f miles"
 msgstr "%.1f milje"
 
 #. TRANSLATOR: This is the visibility in kilometers
-#: gweather/weather.c:2398
+#: gweather/weather.c:2403
 #, c-format
 msgid "%.1f km"
 msgstr "%.1f km"
 
 #. TRANSLATOR: This is the visibility in meters
-#: gweather/weather.c:2402
+#: gweather/weather.c:2407
 #, c-format
 msgid "%.0fm"
 msgstr "%.0fm"
 
-#: gweather/weather.c:2443
+#: gweather/weather.c:2448
 msgid "Retrieval failed"
 msgstr "Tërheqja dështoi"
 
@@ -4306,12 +4468,6 @@ msgstr "Vëzhguesi i Postës"
 #: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:4
 msgid "Inbox Monitor Factory"
 msgstr "Fabrika e Vëzhguesve të Postës"
-
-#: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:5
-#: modemlights/GNOME_ModemLightsApplet.server.in.in.h:1
-#: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:1
-msgid "Internet"
-msgstr "Internet"
 
 #: mailcheck/mailcheck.c:669
 msgid "Error checking mail"
@@ -4972,7 +5128,7 @@ msgstr "Komanda"
 msgid "Adjust the sound volume"
 msgstr "Rregullo volumin e zërit"
 
-#: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:200
+#: mixer/GNOME_MixerApplet.server.in.in.h:2 mixer/mixer.c:200
 #: mixer/mixer.c:1364
 msgid "Volume Control"
 msgstr "Kontrolli i Volumit"
@@ -5160,8 +5316,8 @@ msgstr "Gjendja pa zë u ruajt"
 msgid "Saved volume to restore on startup"
 msgstr "Ruajti rivendosjen e volumit në nisje e sipër"
 
-#: modemlights/GNOME_ModemLightsApplet.server.in.in.h:2
-#: modemlights/modemlights.c:138 modemlights/modemlights.c:1599
+#: modemlights/GNOME_ModemLightsApplet.server.in.in.h:1
+#: modemlights/modemlights.c:138 modemlights/modemlights.c:1603
 msgid "Modem Lights"
 msgstr "Dritat e Modemit"
 
@@ -5196,12 +5352,12 @@ msgstr "Do të lidhesh?"
 msgid "C_onnect"
 msgstr "Li_dhu"
 
-#: modemlights/modemlights.c:587
+#: modemlights/modemlights.c:591
 #, c-format
 msgid "%#.1fMb received / %#.1fMb sent / time: %.1d:%.2d"
 msgstr "%#.1fMb marrë / %#.1f dërguar / koha: %.1d:%.2d"
 
-#: modemlights/modemlights.c:592
+#: modemlights/modemlights.c:596
 msgid "not connected"
 msgstr "jo i lidhur"
 
@@ -5769,17 +5925,17 @@ msgstr "Preferencat e Vëzhguesit të Sistemit"
 msgid "Swap Load"
 msgstr "Ngarkesa e Memorjes Swap"
 
-#: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
+#: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:1
 msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "Krijo, shiko dhe drejto shënime ngjitëse mbi hapësirën e punës"
 
-#: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:3
-#: stickynotes/stickynotes_applet.c:318 stickynotes/stickynotes_applet.c:436
-#: stickynotes/stickynotes_applet_callbacks.c:253
+#: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
+#: stickynotes/stickynotes_applet.c:321 stickynotes/stickynotes_applet.c:439
+#: stickynotes/stickynotes_applet_callbacks.c:271
 msgid "Sticky Notes"
 msgstr "Shënime Ngjitëse"
 
-#: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:4
+#: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:3
 msgid "Sticky Notes Applet Factory"
 msgstr "Fabrika e Applet Shënime Ngjitëse"
 
@@ -6138,7 +6294,7 @@ msgstr "Nëse duhet të përdorë ngjyrën e paracaktuar të sistemit"
 msgid "Whether to use the default system font"
 msgstr "Nëse duhet të përdorë stilin e shkronjave të sistemit"
 
-#: stickynotes/stickynotes_applet.c:436
+#: stickynotes/stickynotes_applet.c:439
 #, c-format
 msgid ""
 "%s\n"
@@ -6153,19 +6309,19 @@ msgstr[1] ""
 "%s\n"
 "%d·shënime"
 
-#: stickynotes/stickynotes_applet_callbacks.c:255
+#: stickynotes/stickynotes_applet_callbacks.c:273
 msgid "(c) 2002-2003 Loban A Rahman"
 msgstr "(c)·2002-2003·Loban·A·Rahman"
 
-#: stickynotes/stickynotes_applet_callbacks.c:256
+#: stickynotes/stickynotes_applet_callbacks.c:274
 msgid "Sticky Notes for the Gnome Desktop Environment"
 msgstr "Shënimet e Ngjitura për Mjedisin e Punës Gnome"
 
-#: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:2
+#: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:1
 msgid "Monitor the quality of a wireless network link"
 msgstr "Kontrollon cilësinë e një lidhjeje rrjeti wireless"
 
-#: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:3
+#: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:2
 #: wireless/wireless-applet.c:590 wireless/wireless-applet.c:842
 msgid "Wireless Link Monitor"
 msgstr "Vëzhgues i Lidhjes Wireless"
