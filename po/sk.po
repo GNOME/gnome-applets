@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 1.4.0.2\n"
-"POT-Creation-Date: 2002-02-26 16:19+0100\n"
-"PO-Revision-Date: 2002-02-26 16:18+0100\n"
+"POT-Creation-Date: 2002-03-04 16:25+0100\n"
+"PO-Revision-Date: 2002-03-04 16:28+0100\n"
 "Last-Translator: Stanislav Višňovský <visnovsky@nenya.ms.mff.cuni.cz>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
 "MIME-Version: 1.0\n"
@@ -27,22 +27,22 @@ msgstr "Tento applet nebude fungovať správne (ak vôbec).\n"
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:316 battstat/battstat_applet.c:830
+#: battstat/battstat_applet.c:316 battstat/battstat_applet.c:834
 msgid "High"
 msgstr "Vysoké"
 
 #. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:832
+#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:836
 msgid "Low"
 msgstr "Nízke"
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:834
+#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:838
 msgid "Critical"
 msgstr "Kritické"
 
 #. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:836
+#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:840
 msgid "Charging"
 msgstr "Nabíjanie"
 
@@ -58,7 +58,7 @@ msgstr "Batérie sú plne dobité."
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:445 battstat/battstat_applet.c:993
+#: battstat/battstat_applet.c:445 battstat/battstat_applet.c:997
 #, c-format
 msgid ""
 "System is running on battery power\n"
@@ -70,7 +70,7 @@ msgstr ""
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:449 battstat/battstat_applet.c:1001
+#: battstat/battstat_applet.c:449 battstat/battstat_applet.c:1005
 #, c-format
 msgid ""
 "System is running on AC power\n"
@@ -81,15 +81,15 @@ msgstr ""
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:455 battstat/battstat_applet.c:925
-#: battstat/battstat_applet.c:1014
+#: battstat/battstat_applet.c:455 battstat/battstat_applet.c:929
+#: battstat/battstat_applet.c:1018
 msgid "System is running on battery power"
 msgstr "Systém beží na batérie"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:458 battstat/battstat_applet.c:931
-#: battstat/battstat_applet.c:1020
+#: battstat/battstat_applet.c:458 battstat/battstat_applet.c:935
+#: battstat/battstat_applet.c:1024
 msgid "System is running on AC power"
 msgstr "Systém beží zo siete"
 
@@ -99,14 +99,14 @@ msgstr "N/A"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:596 battstat/battstat_applet.c:905
+#: battstat/battstat_applet.c:596 battstat/battstat_applet.c:909
 #, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
 msgstr "Systém beží na batérie. Batérie: %d%% (%s)"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:603 battstat/battstat_applet.c:912
+#: battstat/battstat_applet.c:603 battstat/battstat_applet.c:916
 #, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
 msgstr "Systém beží zo siete. Batérie: %d%% (%s)"
@@ -141,7 +141,7 @@ msgid "Battery: Not present"
 msgstr "Batérie: Nie sú dostupné"
 
 #. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: battstat/battstat_applet.c:707
+#: battstat/battstat_applet.c:711
 msgid ""
 "Can't open the APM device!\n"
 "\n"
@@ -153,7 +153,7 @@ msgstr ""
 "Overte, že máte práva na čítanie zariadenia APM."
 
 #. Displayed if the APM system is disabled (Used under *BSD)
-#: battstat/battstat_applet.c:715
+#: battstat/battstat_applet.c:719
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
@@ -163,7 +163,7 @@ msgstr ""
 "Skúste spustiť \"apm -e 1\" (FreeBSD), čo to\n"
 "pomôže.\n"
 
-#: battstat/battstat_applet.c:763
+#: battstat/battstat_applet.c:767
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -173,7 +173,7 @@ msgstr ""
 "Prosím, opravte tento problém"
 
 #. Probably because the shell_ret is != 0
-#: battstat/battstat_applet.c:766
+#: battstat/battstat_applet.c:770
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command, the command returned "
@@ -184,7 +184,7 @@ msgstr ""
 "\"%d\"\n"
 "Prosím, opravte tento problém"
 
-#: battstat/battstat_applet.c:774
+#: battstat/battstat_applet.c:778
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -193,17 +193,103 @@ msgstr ""
 "Prosím, zmeňte nastavenie a skúste to znovu."
 
 #. The long name of the applet in the About dialog.
-#: battstat/battstat_applet.c:803
+#: battstat/battstat_applet.c:807
 msgid "Battery status utility"
 msgstr "Nástroj pre stav batérií"
 
-#: battstat/battstat_applet.c:805
+#: battstat/battstat_applet.c:809
 msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 msgstr "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 
-#: battstat/battstat_applet.c:806
+#: battstat/battstat_applet.c:810
 msgid "This utility show the status of your laptop battery."
 msgstr "Tento nástroj zobrazuje stav batérií vášho počítača."
+
+#: battstat/battstat_applet.glade.h:2
+#, no-c-format
+msgid "100%"
+msgstr "100%"
+
+#: battstat/battstat_applet.glade.h:3
+msgid "Apperance"
+msgstr "Vzhľad"
+
+#: battstat/battstat_applet.glade.h:4
+msgid "Applet layout"
+msgstr "Rozloženie appletu"
+
+#: battstat/battstat_applet.glade.h:6
+#, no-c-format
+msgid "Battery color levels (%)"
+msgstr "Farby úrovní batérií (%)"
+
+#: battstat/battstat_applet.glade.h:7
+msgid "Battstat Settings"
+msgstr "Nastavenie Battstat"
+
+#: battstat/battstat_applet.glade.h:8
+msgid "Beep when either of the above is true"
+msgstr "Pípnuť, ak je niektorá z možností platná"
+
+#: battstat/battstat_applet.glade.h:9 gweather/gweather-pref.c:713
+msgid "General"
+msgstr "Všeobecné"
+
+#: battstat/battstat_applet.glade.h:10
+msgid "Hide"
+msgstr "Skryť"
+
+#: battstat/battstat_applet.glade.h:11
+msgid "Move towards bottom"
+msgstr "Presunúť nižšie"
+
+#: battstat/battstat_applet.glade.h:12
+msgid "Move towards top"
+msgstr "Presunúť vyššie"
+
+#: battstat/battstat_applet.glade.h:13
+msgid "Notify me when battery charge is low"
+msgstr "Upozorniť, že sú batérie skoro vybité"
+
+#: battstat/battstat_applet.glade.h:14
+msgid "Notify me when battery is fully re-charged"
+msgstr "Upozorniť, že sú batérie plne dobité"
+
+#: battstat/battstat_applet.glade.h:15
+msgid "Orange:"
+msgstr "Oranžová:"
+
+#: battstat/battstat_applet.glade.h:16
+msgid "Preview:"
+msgstr "Náhľad:"
+
+#: battstat/battstat_applet.glade.h:17
+msgid "Progress bar direction"
+msgstr "Orientácia pruhu priebehu"
+
+#: battstat/battstat_applet.glade.h:18
+msgid "Red:"
+msgstr "Červená:"
+
+#: battstat/battstat_applet.glade.h:19
+msgid "Show"
+msgstr "Zobraziť"
+
+#: battstat/battstat_applet.glade.h:20
+msgid "Suspend"
+msgstr "Suspendovať"
+
+#: battstat/battstat_applet.glade.h:21
+msgid "Suspend command:"
+msgstr "Príkaz na suspendovanie:"
+
+#: battstat/battstat_applet.glade.h:22
+msgid "Warnings"
+msgstr "Varovania"
+
+#: battstat/battstat_applet.glade.h:23
+msgid "Yellow:"
+msgstr "Žltá:"
 
 #: battstat/GNOME_BattstatApplet.server.in.h:1
 msgid "Battery Charge Monitor"
@@ -361,11 +447,11 @@ msgstr "Vytváracie rozhranie pre applet Charpicker"
 msgid "Insert characters"
 msgstr "Vkladanie znakov"
 
-#: charpick/properties.c:55
+#: charpick/properties.c:52
 msgid "Default character list:"
 msgstr "Štandardný zoznam znakov:"
 
-#: charpick/properties.c:63
+#: charpick/properties.c:60
 msgid ""
 "These characters will appear when the panel is started. To return to this "
 "list, hit <space> while the applet has focus."
@@ -373,7 +459,7 @@ msgstr ""
 "Tieto znaky budú zobrazené po štarte panelu. K tomuto zoznamu sa vrátite, ak "
 "má panel fokus a stlačíte kláves <medzera>."
 
-#: charpick/properties.c:116
+#: charpick/properties.c:113
 msgid "Character Palette Properties"
 msgstr "Vlastnosti Palety znakov"
 
@@ -537,25 +623,25 @@ msgstr "Applet Oči"
 msgid "Geyes Applet Factory"
 msgstr "Vytváracie rozhranie pre Geyes"
 
-#: geyes/themes.c:189
+#: geyes/themes.c:197
 msgid "Theme Name"
 msgstr "Meno témy"
 
-#: geyes/themes.c:202
+#: geyes/themes.c:210
 msgid "Properties"
 msgstr "Vlastnosti"
 
-#: gkb-new/gkb.c:405
+#: gkb-new/gkb.c:402
 #, c-format
 msgid "name_%d"
 msgstr "meno_%d"
 
-#: gkb-new/gkb.c:408
+#: gkb-new/gkb.c:406
 #, c-format
 msgid "label_%d"
 msgstr "popis_%d"
 
-#: gkb-new/gkb.c:411
+#: gkb-new/gkb.c:410
 #, c-format
 msgid "country_%d"
 msgstr "krajina_%d"
@@ -565,28 +651,28 @@ msgstr "krajina_%d"
 msgid "lang_%d"
 msgstr "jazyk_%d"
 
-#: gkb-new/gkb.c:420
+#: gkb-new/gkb.c:422
 #, c-format
 msgid "command_%d"
 msgstr "príkaz_%d"
 
-#: gkb-new/gkb.c:524 gkb-new/gkb.c:531
+#: gkb-new/gkb.c:525 gkb-new/gkb.c:532
 msgid "GKB"
 msgstr "GKB"
 
-#: gkb-new/gkb.c:571
+#: gkb-new/gkb.c:574
 msgid "The GNOME KeyBoard Switcher Applet"
 msgstr "Applet pre prepínanie klávesníc GNOME"
 
-#: gkb-new/gkb.c:573
+#: gkb-new/gkb.c:576
 msgid "(C) 1998-2000 Free Software Foundation"
 msgstr "(C) 1998-2000 Free Software Foundation"
 
-#: gkb-new/gkb.c:574
+#: gkb-new/gkb.c:577
 msgid ""
 "This applet switches between keyboard maps using setxkbmap, or xmodmap.\n"
-"Mail me your flag and keyboard layoutif you want support for your locale (my "
-"email address is shooby@gnome.hu).\n"
+"Mail me your flag and keyboard layout if you want support for your locale "
+"(my email address is shooby@gnome.hu).\n"
 "So long, and thanks for all the fish.\n"
 "Thanks for Balazs Nagy (Kevin) <julian7@iksz.hu> for his help and Emese "
 "Kovacs <emese@gnome.hu> for her solidarity, help from guys like KevinV.\n"
@@ -600,7 +686,7 @@ msgstr ""
 "Kovacs <emese@gnome.hu> za jej solidaritu, pomoc od ľudí ako je KevinV.\n"
 "Shooby Ban <shooby@gnome.hu>"
 
-#: gkb-new/gkb.c:591
+#: gkb-new/gkb.c:594
 msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
 msgstr "Domovská stránka GKB (http://projects.gnome.hu/gkb)"
 
@@ -632,7 +718,7 @@ msgstr "Stlačte kláves alebo zrušte akciu stlačením Esc"
 msgid "Keymaps (select and press add)"
 msgstr "Rozloženia (vyberte a stlačte Pridať)"
 
-#: gkb-new/prop-add.c:357
+#: gkb-new/prop-add.c:362
 msgid "Select layout"
 msgstr "Vyberte rozloženie"
 
@@ -1068,15 +1154,15 @@ msgstr "Sledovanie burzy"
 msgid "Refresh"
 msgstr "Aktualizovať"
 
-#: gtik/gtik.c:200 gtik/gtik.c:777
+#: gtik/gtik.c:202 gtik/gtik.c:779
 msgid "No data available or properties not set"
 msgstr "Žiadne dáta nie sú k dispozícii alebo nie sú nastavené vlastnosti"
 
-#: gtik/gtik.c:646
+#: gtik/gtik.c:648
 msgid "The GNOME Stock Ticker"
 msgstr "Sledovanie burzy pre GNOME"
 
-#: gtik/gtik.c:648
+#: gtik/gtik.c:650
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.  "
 "The GNOME Stock Ticker is a free Internet-based application.  It comes with "
@@ -1088,80 +1174,80 @@ msgstr ""
 "Neobsahuje ABSOLÚTNE ŽIADNE ZÁRUKY. Nepoužívajte ju pre investičné "
 "rozhodnutia, slúži iba na informovanie."
 
-#: gtik/gtik.c:1011
+#: gtik/gtik.c:1026
 msgid "New Symbol:"
 msgstr "Nový symbol:"
 
-#: gtik/gtik.c:1021
+#: gtik/gtik.c:1036
 msgid "_Add"
 msgstr "_Pridať"
 
-#: gtik/gtik.c:1032
+#: gtik/gtik.c:1047
 msgid "_Remove Selected"
 msgstr "_Odstrániť vybraný"
 
-#: gtik/gtik.c:1078
+#: gtik/gtik.c:1100
 msgid "Stock Ticker Properties"
 msgstr "Vlastnosti Sledovania burzy"
 
-#: gtik/gtik.c:1099
+#: gtik/gtik.c:1121
 msgid "Update Frequency in minutes:"
 msgstr "Aktualizácia (v minútach):"
 
-#: gtik/gtik.c:1115
+#: gtik/gtik.c:1137
 msgid "Enter symbols delimited with \"+\" in the box below."
 msgstr "Zadajte symboly oddelené \"+\"."
 
-#: gtik/gtik.c:1125
+#: gtik/gtik.c:1147
 msgid "Display only symbols and price"
 msgstr "Zobraziť iba symboly a cenu"
 
-#: gtik/gtik.c:1128
+#: gtik/gtik.c:1150
 msgid "Scroll left to right"
 msgstr "Posúvať doprava"
 
-#: gtik/gtik.c:1131
+#: gtik/gtik.c:1153
 msgid "Display arrows instead of -/+"
 msgstr "Zobraziť šipky namiesto -/+"
 
-#: gtik/gtik.c:1134
+#: gtik/gtik.c:1156
 msgid "Enable scroll buttons"
 msgstr "Povoliť tlačidlá pre posun"
 
 #. COLOR
-#: gtik/gtik.c:1160
+#: gtik/gtik.c:1182
 msgid "+ Color"
 msgstr "Farba +"
 
-#: gtik/gtik.c:1177
+#: gtik/gtik.c:1199
 msgid "- Color"
 msgstr "Farba -"
 
-#: gtik/gtik.c:1197
+#: gtik/gtik.c:1219
 msgid "Stock Symbol:"
 msgstr "Burzový symbol:"
 
-#: gtik/gtik.c:1207
+#: gtik/gtik.c:1229
 msgid "Stock Change:"
 msgstr "Zmena kurzu:"
 
-#: gtik/gtik.c:1227
+#: gtik/gtik.c:1249
 msgid "_Symbols"
 msgstr "_Symboly"
 
-#: gtik/gtik.c:1229
+#: gtik/gtik.c:1251
 msgid "_Behavior"
 msgstr "_Chovanie"
 
-#: gtik/gtik.c:1231
+#: gtik/gtik.c:1253
 msgid "_Appearance"
 msgstr "_Vzhľad"
 
-#: gtik/gtik.c:1440
+#: gtik/gtik.c:1471
 msgid "(No"
 msgstr "(Žiadna"
 
-#: gtik/gtik.c:1441
+#: gtik/gtik.c:1472
 msgid "Change "
 msgstr "Zmena"
 
@@ -1190,7 +1276,7 @@ msgstr "Predpoveď"
 msgid "Update"
 msgstr "Aktualizácia"
 
-#: gweather/gweather-about.c:42 gweather/gweather-applet.c:226
+#: gweather/gweather-about.c:42 gweather/gweather-applet.c:198
 msgid "GNOME Weather"
 msgstr "GNOME Počasie"
 
@@ -1208,13 +1294,9 @@ msgstr ""
 "\n"
 "Applet pre sledovanie lokálneho počasia."
 
-#: gweather/gweather-applet.c:358
+#: gweather/gweather-applet.c:321
 msgid "Updating..."
 msgstr "Obnovujem..."
-
-#: gweather/gweather-applet.c:382
-msgid "Update failed! Maybe another update was already in progress?"
-msgstr "Aktualizácia zlyhala! Možno už prebieha iná obnova."
 
 #: gweather/gweather-dialog.c:106
 msgid "Location:"
@@ -1296,31 +1378,31 @@ msgstr ""
 "Proxy URL nie je vo formáte http://hostiteľ:port/\n"
 "Vlastnosti zostali nezmenené."
 
-#: gweather/gweather-pref.c:478
+#: gweather/gweather-pref.c:482
 msgid "Weather Properties"
 msgstr "Vlastnosti Počasia"
 
-#: gweather/gweather-pref.c:523
+#: gweather/gweather-pref.c:527
 msgid "Location"
 msgstr "Miesto"
 
-#: gweather/gweather-pref.c:543
+#: gweather/gweather-pref.c:547
 msgid "Use proxy"
 msgstr "Použiť proxy"
 
-#: gweather/gweather-pref.c:549
+#: gweather/gweather-pref.c:553
 msgid "Proxy URL:"
 msgstr "Proxy URL:"
 
-#: gweather/gweather-pref.c:565
+#: gweather/gweather-pref.c:569
 msgid "Username:"
 msgstr "Používateľské meno:"
 
-#: gweather/gweather-pref.c:581
+#: gweather/gweather-pref.c:585
 msgid "Password:"
 msgstr "Heslo:"
 
-#: gweather/gweather-pref.c:598
+#: gweather/gweather-pref.c:602
 msgid ""
 "Warning: Your password will be saved as\n"
 "unencrypted text in a private configuration\n"
@@ -1330,48 +1412,44 @@ msgstr ""
 "v vašom osobnom konfiguračnom súbore\n"
 "nezašifrované ako text."
 
-#: gweather/gweather-pref.c:606
-#: modemlights/GNOME_ModemLightsApplet.server.in.h:2 multiload/main.c:180
+#: gweather/gweather-pref.c:610
+#: modemlights/GNOME_ModemLightsApplet.server.in.h:2 multiload/main.c:181
 #: multiload/properties.c:381
 msgid "Network"
 msgstr "Sieť"
 
-#: gweather/gweather-pref.c:631
+#: gweather/gweather-pref.c:635
 msgid "Automatically update every"
 msgstr "Automaticky aktualizovať každých"
 
-#: gweather/gweather-pref.c:637
+#: gweather/gweather-pref.c:641
 msgid "Use metric system units"
 msgstr "Použiť metrické jednotky"
 
-#: gweather/gweather-pref.c:643
+#: gweather/gweather-pref.c:647
 msgid "Enable detailed forecast"
 msgstr "Povoliť detailnú predpoveď"
 
-#: gweather/gweather-pref.c:650
+#: gweather/gweather-pref.c:654
 msgid "Enable radar map"
 msgstr "Povoliť radarové mapy"
 
-#: gweather/gweather-pref.c:657
+#: gweather/gweather-pref.c:661
 msgid "Updates"
 msgstr "Aktualizácia"
 
-#: gweather/gweather-pref.c:663
+#: gweather/gweather-pref.c:667
 msgid "Automatically update every "
 msgstr "Automaticky aktualizovať každých "
 
-#: gweather/gweather-pref.c:683
+#: gweather/gweather-pref.c:687
 msgid "minute(s)"
 msgstr "minút"
 
 #. The Miscellaneous frame
-#: gweather/gweather-pref.c:694
+#: gweather/gweather-pref.c:698
 msgid "Miscellaneous"
 msgstr "Rôzne"
-
-#: gweather/gweather-pref.c:709
-msgid "General"
-msgstr "Všeobecné"
 
 #: gweather/weather.c:59
 msgid "knots"
@@ -2547,51 +2625,47 @@ msgstr "Veterné prachové víry"
 msgid "Drifting dust whirls"
 msgstr "Kolísajúce prachové víry"
 
-#: gweather/weather.c:814 gweather/weather.c:852 gweather/weather.c:1423
+#: gweather/weather.c:815 gweather/weather.c:854 gweather/weather.c:1407
 msgid "Failed to get METAR data.\n"
 msgstr "Neporadilo sa získať METAR dáta.\n"
 
-#: gweather/weather.c:845 gweather/weather.c:872 gweather/weather.c:1069
+#: gweather/weather.c:846 gweather/weather.c:874 gweather/weather.c:1071
 msgid "WeatherInfo missing location"
 msgstr "Neznáme miesto pre WeatherInfo"
 
-#: gweather/weather.c:1037
+#: gweather/weather.c:1039
 msgid "Failed to get IWIN data.\n"
 msgstr "Nepodarilo sa získať údaje IWIN.\n"
 
-#: gweather/weather.c:1277
+#: gweather/weather.c:1280
 msgid "Failed to get Met Office data.\n"
 msgstr "Nepodarilo sa získať údaje Met Office.\n"
 
-#: gweather/weather.c:1309
+#: gweather/weather.c:1312
 msgid "Failed to get Met Office forecast data.\n"
 msgstr "Nepodarilo sa získať predpoveď Met Office.\n"
 
-#: gweather/weather.c:1457
+#: gweather/weather.c:1437
 msgid "Failed to get radar map image.\n"
 msgstr "Nepodarilo sa získať radarovú mapu.\n"
 
-#: gweather/weather.c:1516
-msgid "Another update already in progress!\n"
-msgstr "Iná obnova už prebieha!\n"
-
-#: gweather/weather.c:1764
+#: gweather/weather.c:1749
 msgid "%a, %b %d / %H:%M"
 msgstr "%a, %b %d / %H:%M"
 
-#: gweather/weather.c:1768
+#: gweather/weather.c:1753
 msgid "Unknown observation time"
 msgstr "Neznámy čas pozorovania"
 
-#: gweather/weather.c:1828
+#: gweather/weather.c:1813
 msgid "Calm"
 msgstr "Bezvetrie"
 
-#: gweather/weather.c:1854
+#: gweather/weather.c:1839
 msgid "Unknown"
 msgstr "Neznámy"
 
-#: gweather/weather.c:1887
+#: gweather/weather.c:1873
 msgid "Retrieval failed"
 msgstr "Získanie zlyhalo"
 
@@ -2644,32 +2718,32 @@ msgstr "nenájdený"
 msgid "no /bin/sh"
 msgstr "Nenašiel som /bin/sh"
 
-#: mini-commander/src/command_line.c:89 mini-commander/src/command_line.c:109
+#: mini-commander/src/command_line.c:93 mini-commander/src/command_line.c:113
 #: mini-commander/src/terminal.c:91 mini-commander/src/terminal.c:111
 msgid "end of history list"
 msgstr "koniec zoznamu histórie"
 
 #. enter pressed -> exec command
-#: mini-commander/src/command_line.c:119 mini-commander/src/exec.c:59
+#: mini-commander/src/command_line.c:123 mini-commander/src/exec.c:59
 #: mini-commander/src/terminal.c:121
 msgid "starting..."
 msgstr "spúšťam..."
 
-#: mini-commander/src/command_line.c:148 mini-commander/src/terminal.c:153
+#: mini-commander/src/command_line.c:152 mini-commander/src/terminal.c:153
 msgid "autocompleted"
 msgstr "autom. doplnený"
 
-#: mini-commander/src/command_line.c:293
+#: mini-commander/src/command_line.c:298
 msgid "history list empty"
 msgstr "zoznam histórie prázdny"
 
 #. title
-#: mini-commander/src/command_line.c:311
+#: mini-commander/src/command_line.c:316
 msgid "Command history"
 msgstr "História príkazov"
 
 #. build file select dialog
-#: mini-commander/src/command_line.c:430
+#: mini-commander/src/command_line.c:435
 msgid "Start program"
 msgstr "Spustiť program"
 
@@ -2697,150 +2771,134 @@ msgstr "Vytváracie rozhranie pre applet Mini-Commander"
 msgid "still not ported"
 msgstr "ešte neportované"
 
-#: mini-commander/src/message.c:148
+#: mini-commander/src/message.c:155
 msgid "%H:%M - %d. %b"
 msgstr "%H:%M - %d. %b"
 
-#: mini-commander/src/message.c:150
+#: mini-commander/src/message.c:157
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: mini-commander/src/message.c:152
+#: mini-commander/src/message.c:159
 msgid "%d. %b"
 msgstr "%d. %b"
 
-#: mini-commander/src/mini-commander_applet.c:111
+#: mini-commander/src/mini-commander_applet.c:119
 msgid "orient. changed"
 msgstr "zmena orient."
 
-#: mini-commander/src/mini-commander_applet.c:128
+#: mini-commander/src/mini-commander_applet.c:136
 msgid "size changed"
 msgstr "zmena veľk."
 
-#: mini-commander/src/mini-commander_applet.c:247
+#: mini-commander/src/mini-commander_applet.c:264
 msgid "Browser"
 msgstr "Prehliadač"
 
-#: mini-commander/src/mini-commander_applet.c:259
+#: mini-commander/src/mini-commander_applet.c:278
 msgid "History"
 msgstr "História"
 
-#: mini-commander/src/mini-commander_applet.c:397
+#: mini-commander/src/mini-commander_applet.c:418
 msgid "ready..."
 msgstr "pripravený..."
 
-#: mini-commander/src/preferences.c:113
-msgid "time & date on"
-msgstr "Čas a dátum zapnuté"
-
-#: mini-commander/src/preferences.c:115
-msgid "time on"
-msgstr "Čas zapnutý"
-
-#: mini-commander/src/preferences.c:117
-msgid "date on"
-msgstr "Dátum zapnutý"
-
-#: mini-commander/src/preferences.c:119
-msgid "clock off"
-msgstr "Hodiny vypnuté"
-
-#: mini-commander/src/preferences.c:573
+#: mini-commander/src/preferences.c:492
 msgid "Command Line Properties"
 msgstr "Vlastnosti príkazového riadku"
 
-#: mini-commander/src/preferences.c:586
+#: mini-commander/src/preferences.c:507
 msgid "Clock"
 msgstr "Hodiny"
 
 #. show time check box
-#: mini-commander/src/preferences.c:594
+#: mini-commander/src/preferences.c:515
 msgid "Show time"
 msgstr "Zobraziť čas"
 
 #. show date check box
-#: mini-commander/src/preferences.c:601
+#: mini-commander/src/preferences.c:522
 msgid "Show date"
 msgstr "Zobraziť dátum"
 
 #. appearance frame
-#: mini-commander/src/preferences.c:609
+#: mini-commander/src/preferences.c:530
 msgid "Appearance"
 msgstr "Vzhľad"
 
 #. show handle check box
-#: mini-commander/src/preferences.c:617
+#: mini-commander/src/preferences.c:538
 msgid "Show handle"
 msgstr "Zobraziť handle"
 
 #. show frame check box
-#: mini-commander/src/preferences.c:624
+#: mini-commander/src/preferences.c:545
 msgid "Show frame"
 msgstr "Zobraziť rámec"
 
 #. auto complete frame
-#: mini-commander/src/preferences.c:633
+#: mini-commander/src/preferences.c:554
 msgid "Autocompletion"
 msgstr "Automatické dopĺňanie"
 
 #. show history autocomplete
-#: mini-commander/src/preferences.c:641
+#: mini-commander/src/preferences.c:562
 msgid "Enable history based autocompletion"
 msgstr "Povoliť automatické dopĺňanie založené na histórii"
 
 #. Size
-#: mini-commander/src/preferences.c:648
+#: mini-commander/src/preferences.c:569
 msgid "Size"
 msgstr "Veľkosť"
 
 #. applet width
-#: mini-commander/src/preferences.c:660
+#: mini-commander/src/preferences.c:581
 msgid "Applet width:"
 msgstr "Šírka apletu:"
 
 #. applet height
-#: mini-commander/src/preferences.c:689
+#: mini-commander/src/preferences.c:614
 msgid "Applet height:"
 msgstr "Výška apletu:"
 
 #. cmd line height
-#: mini-commander/src/preferences.c:718
+#: mini-commander/src/preferences.c:635
 msgid "Command line height:"
 msgstr "Výška príkazového riadku:"
 
 #. Color
-#: mini-commander/src/preferences.c:760 modemlights/properties.c:445
+#: mini-commander/src/preferences.c:669 modemlights/properties.c:445
 #: multiload/properties.c:361
 msgid "Colors"
 msgstr "Farby"
 
 #. fg
-#: mini-commander/src/preferences.c:770
+#: mini-commander/src/preferences.c:679
 msgid "Command line foreground:"
 msgstr "Popredie príkazového riadku:"
 
 #. bg
-#: mini-commander/src/preferences.c:801
+#: mini-commander/src/preferences.c:710
 msgid "Command line background:"
 msgstr "Pozadie príkazového riadku:"
 
-#: mini-commander/src/preferences.c:829 modemlights/properties.c:405
+#: mini-commander/src/preferences.c:738 modemlights/properties.c:405
 msgid "_General"
 msgstr "_Všeobecné"
 
 #. prefix
-#: mini-commander/src/preferences.c:854
+#: mini-commander/src/preferences.c:763
 #, c-format
 msgid "Regex %.2d:"
 msgstr "Regul. výraz %.2d:"
 
 #. command
-#: mini-commander/src/preferences.c:870
+#: mini-commander/src/preferences.c:779
 #, c-format
 msgid "   Macro %.2d:"
 msgstr "   Makro %.2d:"
 
-#: mini-commander/src/preferences.c:886
+#: mini-commander/src/preferences.c:795
 msgid "_Macros"
 msgstr "_Makrá"
 
@@ -2848,7 +2906,7 @@ msgstr "_Makrá"
 msgid "Applet for adjusting the sound volume"
 msgstr "Applet pri úpravu hlasitosti zvuku"
 
-#: mixer/GNOME_MixerApplet.server.in.h:3 mixer/mixer.c:694
+#: mixer/GNOME_MixerApplet.server.in.h:3 mixer/mixer.c:703
 msgid "Volume Control"
 msgstr "Nastavenie hlasitosti"
 
@@ -2888,11 +2946,11 @@ msgstr "varovanie: mixér nemá kanál hlasitosti - použijem PCM.\n"
 msgid "Mixer device %s has neither volume nor PCM channels.\n"
 msgstr "Zariadenie mixéru %s nemá ani kanál pre hlasitosť, ani PCM.\n"
 
-#: mixer/mixer.c:695
+#: mixer/mixer.c:704
 msgid "(C) 2001 Richard Hult"
 msgstr "(C) 2001 Richard Hult"
 
-#: mixer/mixer.c:696
+#: mixer/mixer.c:705
 msgid "The volume control lets you set the volume level for your desktop."
 msgstr "Ovládanie hlasitosti umožňuje nastaviť hlasitosť pre vaše prostredie."
 
@@ -3076,23 +3134,23 @@ msgstr ""
 "Monitor zaťaženia systému, ktorý zobrazuje grafy pre procesor, pamäť, "
 "odkladací súbor a sieťový prenos."
 
-#: multiload/main.c:176 multiload/properties.c:369
+#: multiload/main.c:177 multiload/properties.c:369
 msgid "Processor"
 msgstr "Procesor"
 
-#: multiload/main.c:178 multiload/properties.c:375
+#: multiload/main.c:179 multiload/properties.c:375
 msgid "Memory"
 msgstr "Pamäť"
 
-#: multiload/main.c:182 multiload/properties.c:387
+#: multiload/main.c:183 multiload/properties.c:387
 msgid "Swap File"
 msgstr "Odkladací súbor"
 
-#: multiload/main.c:184
+#: multiload/main.c:185
 msgid "Resource"
 msgstr "Zdroj"
 
-#: multiload/main.c:196
+#: multiload/main.c:197
 #, c-format
 msgid ""
 "%s:\n"
@@ -3265,8 +3323,7 @@ msgstr "(c) 2001 Chris Phelps"
 msgid ""
 "The Panel Menu Applet allows you to display customized menubars on your "
 "panels."
-msgstr ""
-"Applet Menu panelu umožňuje zobraziť prispôsobené menu na vašom paneli."
+msgstr "Applet Menu panelu umožňuje zobraziť prispôsobené menu na vašom paneli."
 
 #: panel-menu/panel-menu-directory.c:496
 msgid "Create directory item..."
@@ -3374,6 +3431,24 @@ msgstr "Okná"
 #: panel-menu/panel-menu-workspaces.c:80
 msgid "Workspaces"
 msgstr "Pracovné plochy"
+
+#~ msgid "Update failed! Maybe another update was already in progress?"
+#~ msgstr "Aktualizácia zlyhala! Možno už prebieha iná obnova."
+
+#~ msgid "Another update already in progress!\n"
+#~ msgstr "Iná obnova už prebieha!\n"
+
+#~ msgid "time & date on"
+#~ msgstr "Čas a dátum zapnuté"
+
+#~ msgid "time on"
+#~ msgstr "Čas zapnutý"
+
+#~ msgid "date on"
+#~ msgstr "Dátum zapnutý"
+
+#~ msgid "clock off"
+#~ msgstr "Hodiny vypnuté"
 
 #, fuzzy
 #~ msgid "Character picker"
@@ -3757,3 +3832,4 @@ msgstr "Pracovné plochy"
 
 #~ msgid "mmHg"
 #~ msgstr "mmHg"
+
