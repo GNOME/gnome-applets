@@ -69,8 +69,9 @@ hal_quote_new()
 {
 	int i=0, j;
 	
-	while (fortunes[i] != NULL) i++; // Number of fortunes
+	while (fortunes[i] != NULL) i++; /* Number of fortunes */
 	j = (int) ( ((double) i) * rand()/(RAND_MAX + 1.0)); 
+	g_print("i=%i, j=%i\n", i, j);
 	return fortunes[j];
 }
 	
@@ -276,7 +277,7 @@ main(int argc, char *argv[])
 
 	APPLET_ACTIVATE(wanda_activator, "hal_applet", &wanda_impl);
 	
-	srand( time(NULL) ); // For hal_quote_new()
+	srand( time(NULL) ); /* For hal_quote_new() */
 
 	applet_widget_gtk_main();
 
