@@ -2482,6 +2482,18 @@ main(int argc, char *argv[])
 	gtk_widget_push_visual(gdk_imlib_get_visual());
 	gtk_widget_push_colormap(gdk_imlib_get_colormap());
 	gnome_win_hints_init();
+	
+	ptooltips = gtk_tooltips_new();
+	ttooltips = gtk_tooltips_new();
+	
+	/*need to create the applet widget before we can get config data, so
+	   that we know where to get them from */
+	applet = applet_widget_new("gnomepager_applet");
+	if (!applet) {
+		g_error("Can't create applet!\n");
+		exit(1);
+	}
+
 	if (!gnome_win_hints_wm_exists()) {
 		GtkWidget *d, *l;
 
@@ -2497,20 +2509,10 @@ main(int argc, char *argv[])
 		gtk_box_pack_start(GTK_BOX(GNOME_DIALOG(d)->vbox), l,
 				   TRUE, TRUE, 5);
 		gnome_dialog_run(GNOME_DIALOG(d));
-
+		applet_widget_remove (APPLET_WIDGET(applet));
 		gtk_exit(1);
 	}
-	
-	ptooltips = gtk_tooltips_new();
-	ttooltips = gtk_tooltips_new();
-	
-	/*need to create the applet widget before we can get config data, so
-	   that we know where to get them from */
-	applet = applet_widget_new("gnomepager_applet");
-	if (!applet) {
-		g_error("Can't create applet!\n");
-		exit(1);
-	}
+
 	gtk_signal_connect(GTK_OBJECT(applet), "change_orient",
 			   GTK_SIGNAL_FUNC(cb_applet_orient_change),
 			   NULL);

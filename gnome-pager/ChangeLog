@@ -1,3 +1,9 @@
+1999-07-11  Jacob Berkman  <jberkman@andrew.cmu.edu>
+
+	* gnomepager_applet.c (main): move the warning dialog to after
+	applet_widget_new() so we can applet_widget_remove() and not
+	leave blank space on the panel
+
 Wed Jun 02 00:58:06 1999  George Lebl  <jirka@5z.com>
 
 	* gnomepager_applet.c: added an option (on by default) not to have
