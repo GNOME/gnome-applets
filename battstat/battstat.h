@@ -152,22 +152,22 @@ GdkBitmap *statusmask[4];
 
 extern char * battery_gray_xpm[];
 
-void prop_cb (PanelApplet *, gpointer);
+void prop_cb (BonoboUIComponent *, ProgressData *, const char *);
 int prop_cancel (GtkWidget *, gpointer);
 
-void apm_readinfo(void);
+void apm_readinfo(PanelApplet *);
 void adj_value_changed_cb(GtkAdjustment *, gpointer);
 void font_set_cb(GtkWidget *, int, gpointer);
 void simul_cb(GtkWidget *, gpointer);
 void helppref_cb(PanelApplet *, gpointer);
 gint pixmap_timeout(gpointer);
-void change_orient(GtkWidget *, PanelAppletOrient, gpointer);
+void change_orient(PanelApplet *, PanelAppletOrient, ProgressData *);
 void destroy_applet( GtkWidget *, gpointer);
-void cleanup(int);
-void help_cb (PanelApplet *, gpointer);
-void suspend_cb (PanelApplet *, gpointer);
+void cleanup(PanelApplet *, int);
+void help_cb (BonoboUIComponent *, ProgressData *, const char *);
+void suspend_cb (BonoboUIComponent *, ProgressData *, const char *);
 void destroy_about (GtkWidget *, gpointer);
-void about_cb (PanelApplet *, gpointer);
+void about_cb (BonoboUIComponent *, ProgressData *, const char *);
 void change_size(PanelApplet *, gint, gpointer);
 gint create_layout(ProgressData *battstat);
 void load_preferences(ProgressData *battstat);

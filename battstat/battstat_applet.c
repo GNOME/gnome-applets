@@ -221,7 +221,7 @@ struct apm_info apminfo;
 
 #ifdef __FreeBSD__
 void
-apm_readinfo(void)
+apm_readinfo (PanelApplet *applet)
 {
   /* This is how I read the information from the APM subsystem under
      FreeBSD.  Each time this functions is called (once every second)
@@ -231,7 +231,7 @@ apm_readinfo(void)
   if (DEBUG) g_print("apm_readinfo() (FreeBSD)\n");
 
   fd = open(APMDEVICE, O_RDONLY);
-  if (fd == -1) cleanup(1);
+  if (fd == -1) cleanup (applet, 1);
 
   if (ioctl(fd, APMIO_GETINFO, &apminfo) == -1)
     err(1, "ioctl(APMIO_GETINFO)");
@@ -240,7 +240,7 @@ apm_readinfo(void)
 }
 #elif __OpenBSD__
 void
-apm_readinfo(void)
+apm_readinfo (PanelApplet *applet)
 {
   /* Code for OpenBSD by Joe Ammond <jra@twinight.org>. Using the same
      procedure as for FreeBSD.
@@ -249,7 +249,7 @@ apm_readinfo(void)
   if (DEBUG) g_print("apm_readinfo() (OpenBSD)\n");
 
   fd = open(APMDEVICE, O_RDONLY);
-  if (fd == -1) cleanup(1);
+  if (fd == -1) cleanup (applet, 1);
   if (ioctl(fd, APM_IOC_GETPOWER, &apminfo) == -1)
     err(1, "ioctl(APM_IOC_GETPOWER)");
   close(fd);
@@ -260,7 +260,7 @@ apm_readinfo(void)
 gboolean acpi_linux_read(struct apm_info *apminfo);
 
 void
-apm_readinfo(void)
+apm_readinfo (PanelApplet *applet)
 {
   /* Code for Linux by Thomas Hood <jdthood@mail.com>. apm_read() will
      read from /proc/... instead and we do not need to open the device
@@ -275,7 +275,7 @@ apm_readinfo(void)
 }
 #else
 void
-apm_readinfo(void)
+apm_readinfo (PanelApplet *applet)
 {
   g_print("apm_readinfo() (Generic)\n");
   g_print(
@@ -340,7 +340,7 @@ pixmap_timeout( gpointer data )
       3 = Charging
   */
 
-   apm_readinfo();
+   apm_readinfo (PANEL_APPLET (battery->applet));
    batterypresent = TRUE;
 #ifdef __FreeBSD__
    acline_status = apminfo.ai_acline ? 1 : 0;
@@ -686,7 +686,8 @@ destroy_applet (GtkWidget *widget, gpointer data)
 }
 
 static void
-battstat_error_dialog(gchar *msg)
+battstat_error_dialog (PanelApplet *applet,
+		       char        *msg)
 {
 	GtkWidget *dialog;
 
@@ -701,13 +702,15 @@ battstat_error_dialog(gchar *msg)
 }
 
 void
-cleanup(int status)
+cleanup (PanelApplet *applet,
+	 int          status)
 {
    if (DEBUG) g_print("cleanup()\n");
    
    switch (status) {
     case 1:
       battstat_error_dialog (
+	       applet,
 	       /* Displayed if the APM device couldn't be opened. (Used under *BSD)*/
 	       _("Can't open the APM device!\n\n"
 		 "Make sure you have read permission to the\n"
@@ -716,6 +719,7 @@ cleanup(int status)
       break;
     case 2:
       battstat_error_dialog (
+	       applet,
 	       /* Displayed if the APM system is disabled (Used under *BSD)*/	     
 	       _("The APM Management subsystem seems to be disabled.\n"
 		 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
@@ -726,7 +730,9 @@ cleanup(int status)
 }
 
 void
-help_cb (PanelApplet *applet, gpointer data)
+help_cb (BonoboUIComponent *uic,
+	 ProgressData      *battstat,
+	 const char        *verb)
 {
   /* FIXME
    GnomeHelpMenuEntry help_entry = {
@@ -748,10 +754,10 @@ helppref_cb (PanelApplet *applet, gpointer data)
 }
 
 void
-suspend_cb (PanelApplet *applet, gpointer data)
+suspend_cb (BonoboUIComponent *uic,
+	    ProgressData      *battstat,
+	    const char        *verb)
 {
-   ProgressData *battstat = data;
-   
    if(battstat->suspend_cmd && strlen(battstat->suspend_cmd)>0) {
       GError *err = NULL;
       gboolean ret;
@@ -770,13 +776,13 @@ suspend_cb (PanelApplet *applet, gpointer data)
 		      /* Probably because the shell_ret is != 0 */
 		      msg = g_strdup_printf(_("An error occured while launching the Suspend command, the command returned \"%d\"\nPlease try to correct this error"), shell_ret);
 	      }
-	      battstat_error_dialog(msg);
+	      battstat_error_dialog (PANEL_APPLET (battstat->applet), msg);
 	      g_free(msg);
 	      if (err != NULL)
 		      g_error_free(err);
       }
    } else {
-      battstat_error_dialog(_("Suspend command wasn't setup correctly in the preferences.\nPlease change the preferences and try again."));
+      battstat_error_dialog (PANEL_APPLET (battstat->applet), _("Suspend command wasn't setup correctly in the preferences.\nPlease change the preferences and try again."));
    }
    
    return;
@@ -795,7 +801,9 @@ destroy_about (GtkWidget *w, gpointer data)
 }
 
 void
-about_cb (PanelApplet *widget, gpointer data)
+about_cb (BonoboUIComponent *uic,
+	  ProgressData      *battstat,
+	  const char        *verb)
 {
    GtkWidget   *about_box;
    GdkPixbuf   *pixbuf;
@@ -839,15 +847,16 @@ about_cb (PanelApplet *widget, gpointer data)
    
    if (pixbuf) 
    	gdk_pixbuf_unref (pixbuf);
-   
+
    gtk_window_set_wmclass (GTK_WINDOW (about_box), "battery charge monitor", "Batter Charge Monitor");
    gtk_widget_show (about_box);
 }
 
 void
-change_orient (GtkWidget *w, PanelAppletOrient o, gpointer data)
+change_orient (PanelApplet       *applet,
+	       PanelAppletOrient  orient,
+	       ProgressData      *battstat)
 {
-   ProgressData *battstat = data;
    gchar new_label[80];
    guint acline_status;
    guint batt_state;
@@ -863,11 +872,12 @@ change_orient (GtkWidget *w, PanelAppletOrient o, gpointer data)
       gettext_noop ("Critical"),
       /* Charging = The APM BIOS thinks that the battery is recharging.*/
       gettext_noop ("Charging")};
-   battstat->orienttype=o;
+
+   battstat->orienttype = orient;
    
    if (DEBUG) g_print("change_orient()\n");
 
-   apm_readinfo();
+   apm_readinfo(PANEL_APPLET (applet));
 #ifdef __FreeBSD__
    acline_status = apminfo.ai_acline ? 1 : 0;
    batt_state = apminfo.ai_batt_stat;
@@ -1217,7 +1227,7 @@ change_size(PanelApplet *applet, gint size, gpointer data)
    battstat->panelsize=size;
    
    battstat->colors_changed=TRUE;
-   change_orient(GTK_WIDGET (applet), battstat->orienttype, battstat);
+   change_orient(applet, battstat->orienttype, battstat);
    pixmap_timeout( battstat );
    battstat->colors_changed=FALSE;
 }
@@ -1444,10 +1454,10 @@ battstat_applet_fill (PanelApplet *applet)
   
   panel_applet_add_preferences (applet, "/schemas/apps/battstat-applet/prefs", NULL);
 
-  apm_readinfo();
+  apm_readinfo (applet);
   
 #ifdef __FreeBSD__
-  if(apminfo.ai_status == 0) cleanup(2);
+  if(apminfo.ai_status == 0) cleanup (applet, 2);
 #endif
   
   battstat = g_new0 (ProgressData, 1);
@@ -1474,7 +1484,7 @@ battstat_applet_fill (PanelApplet *applet)
   create_layout(battstat);
 
   pixmap_timeout(battstat);
-  change_orient (NULL, battstat->orienttype, battstat );
+  change_orient (applet, battstat->orienttype, battstat );
 #if 1
   battstat->pixtimer = gtk_timeout_add (1000, pixmap_timeout, battstat);
 #endif  
