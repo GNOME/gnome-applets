@@ -1,10 +1,10 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?><!-- -*- indent-tabs-mode: nil -*- -->
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "2.5.4">
-  <!ENTITY manrevision "2.3">
-  <!ENTITY date "February 2004">
+  <!ENTITY appletversion "2.8">
+  <!ENTITY manrevision "2.8">
+  <!ENTITY date "September 2004">
   <!ENTITY applet "Sticky Notes">
 ]>
 
@@ -19,17 +19,25 @@ Template last modified Mar 12, 2002
 <!-- please do not change the id; for translations, change lang to appropriate code -->
     
     <articleinfo> 
-	<title>&applet; Applet Manual V&manrevision;</title> 
-	
-	<copyright> 
-	    <year>2003</year>  
-	    <year>2004</year>  
-	    <holder>Sun Microsystems</holder> 
-	</copyright> 
-	<copyright> 
-	    <year>2003</year>  
-	    <holder>Loban A Rahman</holder> 
-	</copyright> 
+      <title>&applet; Applet Manual</title> 
+
+      <copyright>
+        <year>2004</year>
+        <holder>Shaun McCance</holder>
+      </copyright>
+      <copyright>
+        <year>2004</year>
+        <holder>Angela Boyle</holder>
+      </copyright>
+      <copyright> 
+        <year>2003</year>  
+        <year>2004</year>  
+        <holder>Sun Microsystems</holder> 
+      </copyright> 
+      <copyright> 
+        <year>2003</year>  
+        <holder>Loban A Rahman</holder> 
+      </copyright> 
 
 	<!-- Translators: uncomment this:
 	<copyright>
@@ -44,22 +52,25 @@ Template last modified Mar 12, 2002
 	
 	&legal;
 
-	<authorgroup> 
-            <author>
-               <firstname>Sun</firstname>
-               <surname>GNOME Documentation Team</surname>
-               <affiliation>
-                  <orgname>Sun Microsystems</orgname>
-              </affiliation>
-            </author>
-	    <author> 
-		<firstname>Loban</firstname> 
-		<surname>Rahman</surname> 
-		<affiliation> 
-		    <!-- <orgname></orgname> --> 
-		    <address> <email>loban@earthling.net</email> </address> 
-		</affiliation> 
-	    </author> 
+	<authorgroup>
+          <author>
+            <firstname>Shaun</firstname>
+            <surname>McCance</surname>
+            <affiliation>
+              <orgname>GNOME Documentation Project</orgname>
+            </affiliation>
+            <email>shaunm@gnome.org</email>
+          </author>
+          <author>
+            <firstname>Angela</firstname>
+            <surname>Boyle</surname>
+            <email>aboyle@aboyle.com</email>
+          </author>
+          <author> 
+            <firstname>Loban</firstname> 
+            <surname>Rahman</surname> 
+            <email>loban@earthling.net</email>
+          </author> 
 
 	    <!-- This is appropriate place for other contributors: translators, maintainers, etc. Commented out by default.
 	    <othercredit role="translator">
@@ -76,8 +87,16 @@ Template last modified Mar 12, 2002
 
 	<revhistory>
 	    <revision> 
-		<revnumber>&applet; Applet Manual V&manrevision;</revnumber> 
+		<revnumber>Verion &manrevision;</revnumber> 
 		<date>&date;</date> 
+		<revdescription> 
+                    <para role="author">Angela Boyle</para>
+                    <para role="publisher">GNOME Documentation Project</para>
+		</revdescription> 
+	    </revision>
+	    <revision>
+		<revnumber>&applet; Applet Manual V2.3</revnumber> 
+		<date>February 2004</date> 
 		<revdescription> 
                     <para role="author">Sun GNOME Documentation Team</para>
                     <para role="publisher">GNOME Documentation Project</para>
@@ -86,7 +105,7 @@ Template last modified Mar 12, 2002
 	    <revision> 
 		<revnumber>&applet; Applet Manual V2.2</revnumber> 
 		<date>November 2003</date> 
-		<revdescription> 
+		<revdescription>
                     <para role="author">Sun GNOME Documentation Team</para>
                     <para role="publisher">GNOME Documentation Project</para>
 		</revdescription> 
@@ -122,154 +141,266 @@ Template last modified Mar 12, 2002
 	<primary>Sticky Notes</primary> 
     </indexterm> 
 
-    <!-- ============= Document Body ============================= -->
-    
-    <!-- ============= Introduction ============================== -->
-    <sect1 id="stickynotes-introduction">
-	<title>Introduction</title>
-	<figure id="stickynotes-fig"> 
-	    <title>&applet; Applet</title> 
-	    <screenshot> 
-		<mediaobject> 
-		    <imageobject><imagedata fileref="figures/stickynotes_applet.png" format="PNG"/></imageobject>
-		    <textobject><phrase>Shows Sticky Notes applet.</phrase></textobject> 
-		</mediaobject> 
-	    </screenshot> 
-	</figure> 
-	<para>The <application>&applet;</application> applet enables you to create, view, and manage sticky notes on the GNOME Desktop. You can edit the title, contents, dimensions, and style of sticky notes. When the applet is restarted, for example when you log out and log in again, all sticky notes are saved and reopened in the same position with the same dimensions and style.</para>
-	<para>To add <application>&applet;</application> to a panel, right-click on the panel, then choose 
-	    <menuchoice>
-		<guimenu>Add to Panel</guimenu>
-		<guisubmenu>Accessories</guisubmenu>
-		<guimenuitem>Sticky Notes</guimenuitem>
-	    </menuchoice>.
-	</para>
-    </sect1>
-    
-    <!-- ============= Basic Usage ============================ -->
-    <sect1 id="stickynotes-usage"> 
-	<title>Usage</title>
-    <sect2 id="stickynotes-create-note">
-        <title>To Create a Sticky Note</title>
-	    <para>You can create a sticky note in the following ways:</para>
-             <itemizedlist>
-               <listitem><para>Choose <guimenuitem>New Note</guimenuitem> from the applet menu. </para></listitem>
-               <listitem><para>Right-click on the title of an existing note, then choose <guimenuitem>New Note</guimenuitem> from the popup menu. </para></listitem>
-             </itemizedlist>
-    </sect2>
-    <sect2 id="stickynotes-show-notes">
-        <title>To Show or Hide Sticky Notes</title>
-	    <para>To hide all sticky notes, choose <guimenuitem>Show Notes</guimenuitem> from the applet menu.</para>
-	    <para>To show all sticky notes, choose <guimenuitem>Show Notes</guimenuitem> from the applet menu again.</para>
-    </sect2>
-    <sect2 id="stickynotes-lock-notes">
-        <title>To Lock or Unlock Sticky Notes</title>
-            <para>You can lock or unlock all sticky notes at the same time, or you can lock or unlock individual sticky notes.</para>
-    <sect3 id="stickynotes-lock-notes-all">
-        <title>To Lock or Unlock All Sticky Notes</title>
-	    <para>To lock all sticky notes so that the notes cannot be edited, choose <guimenuitem>Lock Notes</guimenuitem> from the applet menu. </para>
-            <para>To unlock all sticky notes, choose <guimenuitem>Lock Notes</guimenuitem> from the applet menu again.</para>
-    </sect3>
-    <sect3 id="stickynotes-lock-notes-individual">
-        <title>To Lock or Unlock Individual Sticky Notes</title>
-	    <para>To lock an individual sticky note, right-click on the title of the note, then choose <guimenuitem>Lock Note</guimenuitem> from the popup menu. </para>
-            <para>To unlock an individual note, right-click on the title of the note, then choose <guimenuitem>Lock Note</guimenuitem> from the popup menu again.</para>
-    </sect3>
-    </sect2>
-    <sect2 id="stickynotes-delete-notes">
-        <title>To Delete Sticky Notes</title>
-            <para>You can delete all sticky notes at the same time, or you can delete individual sticky notes.</para>
-    <sect3 id="stickynotes-delete-notes-all">
-        <title>To Delete All Sticky Notes</title>
-	    <para>To delete all sticky notes, perform the following steps:</para>
-              <orderedlist>
-                <listitem><para>Choose <guimenuitem>Delete Notes</guimenuitem> from the applet menu.</para></listitem>
-                <listitem><para>Click on the <guibutton>Delete ALL</guibutton> button to confirm the deletion.</para></listitem>
-              </orderedlist>
-    </sect3>
-    <sect3 id="stickynotes-delete-notes-individual">
-        <title>To Delete Individual Sticky Notes</title>
-	    <para>To delete an individual sticky note, right-click on the title of the note, then choose <guimenuitem>Delete Note</guimenuitem> from the popup menu.</para>
-    </sect3>
-    </sect2>
-    </sect1>
+<sect1 id="stickynotes-introduction">
+  <title>Introduction</title>
+  <figure id="stickynotes-fig">
+    <title>&applet; Applet</title>
+    <screenshot>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="figures/stickynotes_applet.png" format="PNG"/>
+        </imageobject>
+        <textobject><phrase>Shows Sticky Notes applet</phrase></textobject>
+      </mediaobject>
+    </screenshot>
+  </figure>
 
-    <!-- ============= Advanced Settings ============================ -->
-    <sect1 id="stickynotes-advanced-settings"> 
-	<title>Preferences</title>
-    <sect2 id="stickynotes-settings-all"> 
-	<title>General Preferences</title>
-	<para>To configure the settings for all sticky notes, right-click on the applet, then choose <guimenu>Preferences</guimenu> from the applet menu. The <guilabel>Sticky Notes Preferences</guilabel> dialog is displayed.</para>
-	<variablelist> 
-	    <varlistentry> 
-		<term>Width</term> 
-		<listitem><para>Use this spin box to specify the default width of new sticky notes, in pixels.</para></listitem>
-	    </varlistentry>
-	    <varlistentry> 
-		<term>Height</term> 
-		<listitem><para>Use this spin box to specify the default height of new sticky notes, in pixels.</para></listitem>
-	    </varlistentry>
-	    <varlistentry> 
-		<term>Color</term> 
-		<listitem><para>Click on the color selector button to display the color selector dialog. On the color selector dialog, use the color wheel or spin boxes to choose the default base color of uncustomized sticky notes.</para></listitem>
-	    </varlistentry>
-	    <varlistentry> 
-		<term>Use color from the system theme</term> 
-		<listitem><para>Select this option to use the current system theme to determine the default base color of uncustomized sticky notes.</para></listitem>
-	    </varlistentry>
-	    <varlistentry> 
-		<term>Font</term> 
-		<listitem><para>Click on the font selector button to display the font selector dialog. On the font selector dialog, use the list boxes to choose the default font of uncustomized sticky notes.</para></listitem>
-	    </varlistentry>
-	    <varlistentry> 
-		<term>Use font from the system theme</term> 
-		<listitem><para>Select this option to use the current system theme to determine the default font of uncustomized sticky notes.</para></listitem>
-	    </varlistentry>
-	    <varlistentry> 
-		<term>Click</term> 
-		<listitem><para>Select one of the following options to specify what happens when you click on the applet:</para>
-                  <itemizedlist>
-                    <listitem><para>create a new note</para></listitem>
-                    <listitem><para>show/hide all notes</para></listitem>
-                    <listitem><para>lock/unlock all notes</para></listitem>
-                  </itemizedlist>
-               </listitem>
-	    </varlistentry>
-	    <varlistentry> 
-		<term>Put notes on all workspaces</term> 
-		<listitem><para>Select this option to specify that sticky notes are visible on all workspaces on the desktop.</para></listitem>
-	    </varlistentry>
-	    <varlistentry> 
-		<term>Force default color and font on notes</term> 
-		<listitem><para>Select this option to specify that all sticky notes, including customized notes, must use the default style.</para></listitem>
-	    </varlistentry>
-	</variablelist> 
-    </sect2>
-    <sect2 id="stickynotes-settings-individual"> 
-	<title>Individual Preferences</title>
-	<para>To configure the settings for an individual sticky note, right-click on the note, then choose <guimenu>Properties</guimenu> from the popup menu. The <guilabel>Sticky Note Properties</guilabel> dialog is displayed.</para>
-	<variablelist> 
-	    <varlistentry> 
-		<term>Title</term> 
-		<listitem><para>Use this text box to specify the title of the sticky note.</para></listitem>
-	    </varlistentry>
-	    <varlistentry> 
-		<term>Color</term> 
-		<listitem><para>Click on the color selector button to display the color selector dialog. On the color selector dialog, use the color wheel or spin boxes to choose the base color of this sticky note.</para></listitem>
-	    </varlistentry>
-	    <varlistentry> 
-		<term>Use default color</term> 
-		<listitem><para>Select this option to use the default base color of this sticky note.</para></listitem>
-	    </varlistentry>
-	    <varlistentry> 
-		<term>Font</term> 
-		<listitem><para>Click on the font selector button to display the font selector dialog. On the font selector dialog, use the list boxes to choose the font of this sticky note.</para></listitem>
-	    </varlistentry>
-	    <varlistentry> 
-		<term>Use default font</term> 
-		<listitem><para>Select this option to use the default font of this sticky note.</para></listitem>
-	    </varlistentry>
-	</variablelist> 
-    </sect2>
-    </sect1>
+  <para>The <application>&applet;</application> applet enables you to create,
+  view, and manage sticky notes on your desktop. You can edit the title,
+  contents, dimensions, and style of sticky notes. When the applet is
+  restarted, for example when you log out and log in again, all sticky
+  notes are saved and reopened in the same position with the same
+  dimensions and style.</para>
+
+  <para>To add <application>&applet;</application> to a panel,
+  right-click on the panel, then choose <guimenuitem>Add to
+  Panel</guimenuitem>.  Select <application>&applet;</application>
+  in the <application>Add to the panel</application> dialog, then
+  click <guibutton>OK</guibutton>.</para>
+</sect1>
+    
+<sect1 id="stickynotes-usage"> 
+  <title>Using Sticky Notes</title>
+
+  <sect2 id="stickynotes-create-note">
+    <title>Creating a Sticky Note</title>
+    <para>You can create a sticky note in the following ways:</para>
+    <itemizedlist>
+      <listitem><para>Choose <guimenuitem>New Note</guimenuitem> from
+      the applet right-click menu. </para></listitem>
+      <listitem><para>Right-click on the title of an existing note,
+      then choose <guimenuitem>New Note</guimenuitem> from the popup
+      menu.</para></listitem>
+      <listitem><para>Depending on your preference settings, you may
+      be able to create a new sticky note simply by clicking on the
+      <application>&applet;</application> applet.  For information on this
+      setting, see <xref linkend="stickynotes-behavior"/>.</para></listitem>
+    </itemizedlist>
+  </sect2>
+
+  <sect2 id="stickynotes-lock-notes">
+    <title>Locking and Unlocking Sticky Notes</title>
+    <para>You can lock or unlock all sticky notes at the same time, or you can
+    lock or unlock individual sticky notes.  Locking a sticky note prevents you
+    from accidentally changing the contents of the note.</para>
+    <variablelist>
+      <varlistentry>
+        <term><phrase>To Lock or Unlock All Sticky Notes</phrase></term>
+        <listitem>
+          <para>To lock all sticky notes so that the notes cannot be edited,
+          choose <guimenuitem>Lock Notes</guimenuitem> from the applet
+          right-click menu so that there is a check mark next to it.  To
+          unlock all sticky notes, choose <guimenuitem>Lock Notes</guimenuitem>
+          from the applet right-click menu again so that there is not a check
+          mark next to it.</para>
+          <para>Note that all applets have the <guimenuitem>Lock</guimenuitem>
+          item in the right-click menu, which locks the position of the applet
+          on the panel.  Do not confuse this with the
+          <guimenuitem>Lock Notes</guimenuitem> item.</para>
+          <para>Depending on your preference settings, you may be able
+          to lock and unlock all sticky notes simply by clicking on the
+          <application>&applet;</application> applet.  For information on this
+          setting, see <xref linkend="stickynotes-behavior"/>.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><phrase>To Lock or Unlock Individual Sticky Notes</phrase></term>
+        <listitem><para>To lock an individual sticky note, right-click on the
+        title of the note, then choose <guimenuitem>Lock Note</guimenuitem>
+        from the popup menu.  To unlock an individual note, right-click on the
+        title of the note, then choose <guimenuitem>Lock Note</guimenuitem>
+        from the popup menu again.</para></listitem>
+      </varlistentry>
+    </variablelist>
+  </sect2>
+
+  <sect2 id="stickynotes-delete-notes">
+    <title>Deleting Sticky Notes</title>
+    <para>You can delete all sticky notes at the same time, or you can delete
+    individual sticky notes.</para>
+    <variablelist>
+      <varlistentry>
+        <term>To Delete All Sticky Notes</term>
+        <listitem><para>To delete all sticky notes, choose <guimenuitem>Delete
+        Notes</guimenuitem> from the applet right-click menu.  A confirmation
+        dialog will appear; click on the <guibutton>Delete ALL</guibutton>
+        button to confirm the deletion.</para></listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>To Delete Individual Sticky Notes</term>
+        <listitem><para>To delete an individual sticky note, right-click on the
+        title of the note, then choose <guimenuitem>Delete Note</guimenuitem>
+        from the popup menu.</para></listitem>
+      </varlistentry>
+    </variablelist>
+  </sect2>
+
+  <sect2 id="stickynotes-show-notes">
+    <title>Hiding and Showing Sticky Notes</title>
+    <para>You can hide all sticky notes so that they do not appear on your
+    desktop.  Sticky notes are not deleted when they are hidden.  To hide all
+    sticky notes, choose <guimenuitem>Show Notes</guimenuitem> from the applet
+    right-click menu so that there is not a check mark next to it.  To show all
+    sticky notes, choose <guimenuitem>Show Notes</guimenuitem> from the applet
+    right-click menu again so there is a check mark next to it.</para>
+    <para>Depending on your preference settings, you may be able
+    hide and show all sticky notes simply by clicking on the
+    <application>&applet;</application> applet.  For information on this
+    setting, see <xref linkend="stickynotes-behavior"/>.</para>
+  </sect2>
+</sect1>
+
+<sect1 id="stickynotes-advanced-settings"> 
+  <title>Preferences</title>
+
+  <sect2 id="stickynotes-size">
+    <title>Adjusting Size</title> 
+    <para>To configure the default size for all sticky notes, right-click on the
+    applet, then choose <guimenu>Preferences</guimenu> from the popup menu. The
+    <application>Sticky Notes Preferences</application> dialog is displayed.</para>
+    <variablelist> 
+      <varlistentry> 
+        <term><guilabel>Width</guilabel></term> 
+        <listitem><para>Use this spin box to specify the default width of new
+        sticky notes, in pixels.</para></listitem>
+      </varlistentry>
+      <varlistentry> 
+        <term><guilabel>Height</guilabel></term> 
+        <listitem><para>Use this spin box to specify the default height of new
+        sticky notes, in pixels.</para></listitem>
+      </varlistentry>
+    </variablelist>
+  </sect2>
+
+  <sect2 id="stickynotes-color">
+    <title>Changing Color and Font</title>
+    <para>To configure the color and font for all sticky notes, right-click on
+    the applet, then choose <guimenu>Preferences</guimenu> from the popup menu.
+    The <application>Sticky Notes Preferences</application> dialog is
+    displayed.</para>
+    <variablelist>  
+      <varlistentry> 
+        <term><guilabel>Color</guilabel></term> 
+        <listitem>
+          <para>Click on the color selector button to display the color
+          selector dialog. On the color selector dialog, use the color wheel or
+          spin boxes to choose the default base color for sticky notes.</para>
+          <para>Select <guilabel>Use color from the system theme</guilabel> to
+          use the current system theme to determine the default base color of
+          uncustomized sticky notes.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry> 
+        <term><guilabel>Font</guilabel></term> 
+        <listitem>
+          <para>Click on the font selector button to display the font selector
+          dialog. On the font selector dialog, use the list boxes to choose the
+          default font for sticky notes.</para>
+          <para>Select <guilabel>Use font from the system theme</guilabel>
+          to use the current system theme to determine the default font of
+          uncustomized sticky notes.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry> 
+        <term>Default Color and Font</term> 
+        <listitem><para>Under <guilabel>Behavior</guilabel>, select
+        <guilabel>Force default color and font on notes</guilabel> to
+        specify that all sticky notes, including customized notes, must
+        use the default style.</para></listitem>
+      </varlistentry>
+    </variablelist> 
+  </sect2>
+  <sect2 id="stickynotes-behavior">
+    <title>Customizing Behavior</title>
+    <para>To customize the behavior of <application>&applet;</application>,
+    right-click on the applet, then choose <guimenu>Preferences</guimenu>
+    from the popup menu.  The <application>Sticky Notes Preferences</application>
+    dialog is displayed.</para>
+    <para>To specify that sticky notes are visible on all workspaces on the
+    desktop, select <guilabel>Put notes on all workspaces</guilabel> in the
+    <guilabel>Sticky Notes Preferences</guilabel> dialog.  If you are using
+    multiple workspaces, this will cause all sticky notes to be visible on
+    all workspaces.</para>
+    <para>To specify what happens when you click on the
+    <application>&applet;</application> applet, choose the appropriate
+    item in the list labeled <guilabel>Click</guilabel>.</para>
+    <variablelist>
+      <varlistentry>
+        <term><guilabel>Create a new note</guilabel></term>
+        <listitem><para>If you select this option, a new sticky note will be
+        created each time you click on the <application>&applet;</application>
+        applet.  For information on creating new sticky notes, see
+        <xref linkend="stickynotes-create-note"/>.</para></listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><guilabel>Show/Hide all notes</guilabel></term>
+        <listitem><para>If you select this option, clicking on the
+        <application>&applet;</application> applet will toggle whether
+        all the sticky notes are hidden or shown.
+        For information on hiding and showing sticky notes, see
+        <xref linkend="stickynotes-show-notes"/>.</para></listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><guilabel>Lock/Unlock all notes</guilabel></term>
+        <listitem><para>If you select this option, clicking on the
+        <application>&applet;</application> applet will toggle whether
+        all the sticky notes are locked or unlocked.
+        For information on locking sticky notes, see
+        <xref linkend="stickynotes-lock-notes"/>.</para></listitem>
+      </varlistentry>
+    </variablelist>
+  </sect2>
+
+  <sect2 id="stickynotes-settings-individual"> 
+    <title>Customizing Individual Notes</title>
+    <para>You can customize the look of each individual sticky note.  This
+    can be useful for visually distinguishing different types of notes
+    quickly.  To configure the settings for an individual sticky note,
+    right-click on the note's title, then choose <guimenu>Properties</guimenu>
+    from the popup menu.  The <application>Sticky Note Properties</application>
+    dialog is displayed.</para>
+    <variablelist> 
+      <varlistentry> 
+        <term><guilabel>Title</guilabel></term> 
+        <listitem><para>Use this text box to specify the title of the sticky
+        note.</para></listitem>
+      </varlistentry>
+      <varlistentry> 
+        <term><guilabel>Color</guilabel></term> 
+        <listitem><para>Click on the color selector button to display the
+        color selector dialog. On the color selector dialog, use the color
+        wheel or spin boxes to choose the base color for this sticky
+        note.</para></listitem>
+      </varlistentry>
+      <varlistentry> 
+        <term><guilabel>Use default color</guilabel></term> 
+        <listitem><para>Select this option to use the default base color for
+        this sticky note.  For information on setting the default base color,
+        see <xref linkend="stickynotes-color"/>.</para></listitem>
+      </varlistentry>
+      <varlistentry> 
+        <term><guilabel>Font</guilabel></term> 
+        <listitem><para>Click on the font selector button to display the font
+        selector dialog.  On the font selector dialog, use the list boxes to
+        choose the font for this sticky note.</para></listitem>
+      </varlistentry>
+      <varlistentry> 
+        <term><guilabel>Use default font</guilabel></term> 
+        <listitem><para>Select this option to use the default font for this
+        sticky note.  For information on setting the default font, see
+        <xref linkend="stickynotes-color"/>.</para></listitem>
+      </varlistentry>
+    </variablelist> 
+  </sect2>
+</sect1>
 </article> 
