@@ -1,6 +1,21 @@
 - HELP if there will be a help system
 - get lang and country from the tree
 - fix sizing appearance bug
+
 the gnome_config stuff will need to be ported to
+
 shooby: I'm gonna #if 0 the save session stuff
 you are right... maybe I should put save somewhere
+
+kevinv: do you know about gtk_tree_model_get instead 
+of _get_value - it's easier to use
+
+S kevinv: should I force it to use the old config path? :(((
+K shooby: you shouldn't do that. It should be possible to have
+  seperate instances of the applet running with different configs
+S kevinv: that's ok, but few month ago I got a nice patch to gkb in 1.4 what
+  made this with gnome_config
+K shooby: if you want to save values as global configs you can do the gconf
+  stuff yourself and save to 
+
+<kevinv> shooby: GtkImage with GdkPixbuf is pretty easy to use
