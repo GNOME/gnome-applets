@@ -1101,120 +1101,6 @@ key_press_cb (GtkWidget *widget, GdkEventKey *event, MailCheck *mc)
 }
 
 static void
-mailcheck_destroy (GtkWidget *widget, gpointer data)
-{
-	MailCheck *mc = data;
-
-	mc->bin = NULL;
-
-	if (mc->property_window != NULL)
-		gtk_widget_destroy (mc->property_window);
-	if (mc->about != NULL)
-		gtk_widget_destroy (mc->about);
-
-	gtk_widget_unref (mc->da);
-
-	g_free (mc->pre_check_cmd);
-	g_free (mc->newmail_cmd);
-	g_free (mc->clicked_cmd);
-
-	g_free (mc->remote_server);
-	g_free (mc->remote_username);
-	g_free (mc->remote_password);
-	g_free (mc->remote_encrypted_password);
-	g_free (mc->remote_folder);
-	g_free (mc->real_password);
-
-	g_free (mc->animation_file);
-	g_free (mc->mail_file);
-
-	if (mc->email_pixmap)
-		g_object_unref (mc->email_pixmap);
-
-	if (mc->email_mask)
-		g_object_unref (mc->email_mask);
-
-	if (mc->mail_timeout != 0)
-		gtk_timeout_remove (mc->mail_timeout);
-
-	if (mc->animation_tag != 0)
-		gtk_timeout_remove (mc->animation_tag);
-
-	if (mc->remote_handle != NULL)
-		helper_whack_handle (mc->remote_handle);
-
-	/* just for sanity */
-	memset(mc, 0, sizeof(MailCheck));
-
-	g_free(mc);
-}
-
-static GtkWidget *
-create_mail_widgets (MailCheck *mc)
-{
-	const char *fname;
-	GtkWidget *alignment;
-
-	fname = mail_animation_filename (mc);
-
-	mc->ebox = gtk_event_box_new();
-        gtk_widget_set_events(mc->ebox, 
-                              gtk_widget_get_events(mc->ebox) |
-                              GDK_BUTTON_PRESS_MASK);
-	gtk_widget_show (mc->ebox);
-	
-	alignment = gtk_alignment_new (0.5, 0.5, 0.0, 0.0);
-	gtk_container_add (GTK_CONTAINER (mc->ebox), alignment);
-	gtk_widget_show (alignment);
-	
-	/*
-	 * This is so that the properties dialog is destroyed if the
-	 * applet is removed from the panel while the dialog is
-	 * active.
-	 */
-	g_signal_connect (G_OBJECT (mc->ebox), "destroy",
-			    (GtkSignalFunc) mailcheck_destroy,
-			    mc);
-
-	mc->bin = gtk_hbox_new (0, 0);
-	gtk_container_add(GTK_CONTAINER(alignment), mc->bin);
-
-	gtk_widget_show (mc->bin);
-	
-	if (mc->auto_update)
-		mc->mail_timeout = gtk_timeout_add (mc->update_freq, mail_check_timeout, mc);
-	else
-		mc->mail_timeout = 0;
-
-	/* The drawing area */
-	mc->da = gtk_drawing_area_new ();
-	gtk_widget_ref (mc->da);
-
-	gtk_widget_set_size_request (mc->da, mc->size, mc->size);
-
-	g_signal_connect (G_OBJECT(mc->da), "expose_event", (GtkSignalFunc)icon_expose, mc);
-	gtk_widget_show (mc->da);
-
-	/* The label */
-	mc->label = gtk_label_new ("");
-	gtk_widget_show (mc->label);
-	gtk_widget_ref (mc->label);
-	
-	if (fname != NULL &&
-	    WANT_BITMAPS (mc->report_mail_mode) &&
-	    mailcheck_load_animation (mc, fname)) {
-		mc->containee = mc->da;
-	} else {
-		mc->report_mail_mode = REPORT_MAIL_USE_TEXT;
-		mc->containee = mc->label;
-	}
-
-	gtk_container_add (GTK_CONTAINER (mc->bin), mc->containee);
-
-	return mc->ebox;
-}
-
-static void
 load_new_pixmap (MailCheck *mc)
 {
 	gtk_widget_hide (mc->containee);
@@ -2340,9 +2226,21 @@ applet_change_pixel_size(PanelApplet * w, gint size, gpointer data)
 {
 	MailCheck *mc = data;
 	const char *fname;
-
-	if(mc->report_mail_mode == REPORT_MAIL_USE_TEXT)
+	
+	switch (panel_applet_get_orient (w)) {
+     	case PANEL_APPLET_ORIENT_DOWN:
+        case PANEL_APPLET_ORIENT_UP:
+        	gtk_widget_set_size_request (mc->label, -1, size);
+        	break;
+     	case PANEL_APPLET_ORIENT_LEFT:
+     	case PANEL_APPLET_ORIENT_RIGHT:
+     		gtk_widget_set_size_request (mc->label, size, -1);
+		break;
+	}
+	if(mc->report_mail_mode == REPORT_MAIL_USE_TEXT) {
+		
 		return;
+	}
 
 	mc->size = size;
 	fname = mail_animation_filename (mc);
@@ -2351,8 +2249,25 @@ applet_change_pixel_size(PanelApplet * w, gint size, gpointer data)
 	
 	if (!fname)
 		return;
-
 	mailcheck_load_animation (mc, fname);
+}
+
+static void
+applet_change_orient(PanelApplet * w, PanelAppletOrient orient, gpointer data)
+{
+	MailCheck *mc = data;
+	
+	switch (orient) {
+     	case PANEL_APPLET_ORIENT_DOWN:
+        case PANEL_APPLET_ORIENT_UP:
+        	gtk_widget_set_size_request (mc->label, -1, mc->size);
+        	break;
+     	case PANEL_APPLET_ORIENT_LEFT:
+     	case PANEL_APPLET_ORIENT_RIGHT:
+     		gtk_widget_set_size_request (mc->label, mc->size, -1);
+		break;
+	}
+
 }
 
 static void
@@ -2392,6 +2307,131 @@ help_callback (BonoboUIComponent *uic, MailCheck *mc, const gchar *verbname)
 		gtk_widget_show (dialog);
 		g_error_free (error);
 	}
+}
+
+static void
+mailcheck_destroy (GtkWidget *widget, gpointer data)
+{
+	MailCheck *mc = data;
+
+	mc->bin = NULL;
+
+	if (mc->property_window != NULL)
+		gtk_widget_destroy (mc->property_window);
+	if (mc->about != NULL)
+		gtk_widget_destroy (mc->about);
+
+	gtk_widget_unref (mc->da);
+
+	g_free (mc->pre_check_cmd);
+	g_free (mc->newmail_cmd);
+	g_free (mc->clicked_cmd);
+
+	g_free (mc->remote_server);
+	g_free (mc->remote_username);
+	g_free (mc->remote_password);
+	g_free (mc->remote_encrypted_password);
+	g_free (mc->remote_folder);
+	g_free (mc->real_password);
+
+	g_free (mc->animation_file);
+	g_free (mc->mail_file);
+
+	if (mc->email_pixmap)
+		g_object_unref (mc->email_pixmap);
+
+	if (mc->email_mask)
+		g_object_unref (mc->email_mask);
+
+	if (mc->mail_timeout != 0)
+		gtk_timeout_remove (mc->mail_timeout);
+
+	if (mc->animation_tag != 0)
+		gtk_timeout_remove (mc->animation_tag);
+
+	if (mc->remote_handle != NULL)
+		helper_whack_handle (mc->remote_handle);
+
+	/* just for sanity */
+	memset(mc, 0, sizeof(MailCheck));
+
+	g_free(mc);
+}
+
+static GtkWidget *
+create_mail_widgets (MailCheck *mc)
+{
+	const char *fname;
+	GtkWidget *alignment;
+
+	fname = mail_animation_filename (mc);
+
+	mc->ebox = gtk_event_box_new();
+        gtk_widget_set_events(mc->ebox, 
+                              gtk_widget_get_events(mc->ebox) |
+                              GDK_BUTTON_PRESS_MASK);
+	gtk_widget_show (mc->ebox);
+	
+	alignment = gtk_alignment_new (0.5, 0.5, 0.0, 0.0);
+	gtk_container_add (GTK_CONTAINER (mc->ebox), alignment);
+	gtk_widget_show (alignment);
+	
+	/*
+	 * This is so that the properties dialog is destroyed if the
+	 * applet is removed from the panel while the dialog is
+	 * active.
+	 */
+	g_signal_connect (G_OBJECT (mc->ebox), "destroy",
+			    (GtkSignalFunc) mailcheck_destroy,
+			    mc);
+
+	mc->bin = gtk_hbox_new (0, 0);
+	gtk_container_add(GTK_CONTAINER(alignment), mc->bin);
+
+	gtk_widget_show (mc->bin);
+	
+	if (mc->auto_update)
+		mc->mail_timeout = gtk_timeout_add (mc->update_freq, mail_check_timeout, mc);
+	else
+		mc->mail_timeout = 0;
+
+	/* The drawing area */
+	mc->da = gtk_drawing_area_new ();
+	gtk_widget_ref (mc->da);
+
+	gtk_widget_set_size_request (mc->da, mc->size, mc->size);
+
+	g_signal_connect (G_OBJECT(mc->da), "expose_event", (GtkSignalFunc)icon_expose, mc);
+	gtk_widget_show (mc->da);
+
+	/* The label */
+	mc->label = gtk_label_new (NULL);
+	gtk_label_set_line_wrap (GTK_LABEL (mc->label), TRUE);
+	gtk_widget_show (mc->label);
+	gtk_widget_ref (mc->label);
+	
+	if (fname != NULL &&
+	    WANT_BITMAPS (mc->report_mail_mode) &&
+	    mailcheck_load_animation (mc, fname)) {
+		mc->containee = mc->da;
+	} else {
+		mc->report_mail_mode = REPORT_MAIL_USE_TEXT;
+		mc->containee = mc->label;
+	}
+
+	gtk_container_add (GTK_CONTAINER (mc->bin), mc->containee);
+	switch (panel_applet_get_orient (PANEL_APPLET (mc->applet))) {
+     	case PANEL_APPLET_ORIENT_DOWN:
+        case PANEL_APPLET_ORIENT_UP:
+        	gtk_widget_set_size_request (mc->label, -1, mc->size);
+        	break;
+     	case PANEL_APPLET_ORIENT_LEFT:
+     	case PANEL_APPLET_ORIENT_RIGHT:
+     		gtk_widget_set_size_request (mc->label, mc->size, -1);
+		break;
+	}
+
+	return mc->ebox;
 }
 
 static void
@@ -2487,6 +2527,10 @@ mailcheck_applet_fill (PanelApplet *applet)
 
 	g_signal_connect(G_OBJECT(applet), "change_size",
 			 G_CALLBACK(applet_change_pixel_size),
+			 mc);
+			 
+	g_signal_connect(G_OBJECT(applet), "change_orient",
+			 G_CALLBACK(applet_change_orient),
 			 mc);
 
 	mailcheck = create_mail_widgets (mc);
