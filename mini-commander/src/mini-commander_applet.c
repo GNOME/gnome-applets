@@ -114,17 +114,20 @@ applet_pixel_size_changed_cb(GtkWidget *widget, int size, gpointer data)
     prop.normal_size_y = size;
     if(size <= PIXEL_SIZE_TINY)
 	{
-	    prop.show_frame = FALSE;
+	  if(counter > 1) /* ignore size-changed-signal at startup */
+	      prop.show_frame = FALSE;
 	    prop.flat_layout = TRUE;
 	} 
     else if(size <= PIXEL_SIZE_SMALL)
 	{
-	    prop.show_frame = TRUE;
+	    if(counter > 1) /* ignore size-changed-signal at startup */
+	      prop.show_frame = TRUE;
 	    prop.flat_layout = TRUE;
 	} 
     else
 	{
-	    prop.show_frame = TRUE;
+	    if(counter > 1) /* ignore size-changed-signal at startup */
+	      prop.show_frame = TRUE;
 	    prop.flat_layout = FALSE;
 	}
 

@@ -1,3 +1,10 @@
+2001-03-12  Oliver Maruhn  <oliver@maruhn.com>
+
+	* src/mini-commander_applet.c (applet_pixel_size_changed_cb): Do
+	not change show_frame status on startup.  This prevents that the
+	preferences are ignored [fixes #9662 and #12458 reported by
+	<andreas.hyden@telia.com> and <acapnotic@users.sourceforge.net>].
+
 2001-03-11  Timur Bakeyev  <mc@bat.ru>
 
 	* src/macro.c, src/preferences.h: Added sys/types.h before regex.h,
