@@ -26,5 +26,5 @@ netload_applet_LINK = $(CXXLINK)
 
 EXTRA_DIST = netload_applet.desktop
 
-sysdir = $(datadir)/applets/Utility
+sysdir = $(datadir)/applets/Network
 sys_DATA = netload_applet.desktop
