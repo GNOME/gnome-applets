@@ -1103,6 +1103,7 @@ static gint updateOutput(gpointer data)
 
 		model = gtk_list_store_new (1, G_TYPE_STRING);
 		list = gtk_tree_view_new_with_model (GTK_TREE_MODEL (model));
+		gtk_widget_set_size_request (list, 70, -1);
 		g_object_unref (G_OBJECT (model));
 		
 		/*selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (tree));
