@@ -2,7 +2,7 @@ INCLUDES = -I. -I$(srcdir) 				\
 	-I$(top_srcdir)/intl -I$(top_builddir)/intl	\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
 	-I$(includedir) $(GNOME_INCLUDEDIR)		\
-	-I$(LIBGTOP_INCS)
+	$(LIBGTOP_INCS)
 
 bin_PROGRAMS = cpumemusage_applet
 
