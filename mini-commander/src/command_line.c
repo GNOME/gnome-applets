@@ -56,7 +56,9 @@ commandKey_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
 
     /* printf("%d,%d,%d;  ", (gint16) event->keyval, event->state, event->length); */
 
-    if(key == GDK_Tab)
+    if(key == GDK_Tab
+       || key == GDK_KP_Tab
+       || key == GDK_ISO_Left_Tab)
 	{
 	    /* tab key pressed */
 	    strcpy(buffer, (char *) gtk_entry_get_text(GTK_ENTRY(widget)));
@@ -65,7 +67,10 @@ commandKey_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
 
 	    propagateEvent = FALSE;
 	}
-    else if(key == GDK_Up)
+    else if(key == GDK_Up
+	    || key == GDK_KP_Up
+	    || key == GDK_ISO_Move_Line_Up
+	    || key == GDK_Pointer_Up)
 	{
 	    /* up key pressed */
 	    if(historyPosition == HISTORY_DEPTH)
@@ -82,7 +87,10 @@ commandKey_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
 
 	    propagateEvent = FALSE;
 	}
-    else if(key == GDK_Down)
+    else if(key == GDK_Down
+	    || key == GDK_KP_Down
+	    || key == GDK_ISO_Move_Line_Down
+	    || key == GDK_Pointer_Down)
 	{
 	    /* down key pressed */
 	    if(historyPosition <  HISTORY_DEPTH - 1)
@@ -99,7 +107,10 @@ commandKey_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
 
 	    propagateEvent = FALSE;
 	}
-    else if(key == GDK_Return)
+    else if(key == GDK_Return
+	    || key == GDK_KP_Enter
+	    || key == GDK_ISO_Enter
+	    || key == GDK_3270_Enter)
 	{
 	    /* enter pressed -> exec command */
 	    showMessage((gchar *) _("starting...")); 
