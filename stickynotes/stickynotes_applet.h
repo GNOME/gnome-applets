@@ -45,8 +45,9 @@ typedef struct
 	GtkTooltips *tooltips;		/* Tooltips */
 } StickyNotesApplet;
 
-/* Prelight the applet */
-void stickynotes_applet_highlight(PanelApplet *applet, gboolean highlight);
+/* Modify the applet */
+void stickynotes_applet_set_highlighted(gboolean highlight);
+void stickynotes_applet_update_tooltips();
 
 /* Sticky Notes Applet settings instance */
 extern StickyNotesApplet *stickynotes;

@@ -96,15 +96,7 @@ StickyNote * stickynote_new()
 	}
 
 	/* Update tooltips */
-	{
-		gchar *tooltip;
-		if (gconf_client_get_bool(stickynotes->gconf_client, GCONF_PATH "/settings/locked", NULL))
-			tooltip = g_strdup_printf(_("Sticky Notes\n%d locked note(s)"), g_list_length(stickynotes->notes));
-		else
-			tooltip = g_strdup_printf(_("Sticky Notes\n%d note(s)"), g_list_length(stickynotes->notes));
-		gtk_tooltips_set_tip(stickynotes->tooltips, GTK_WIDGET(stickynotes->applet), tooltip, NULL);
-		g_free(tooltip);
-	}
+	stickynotes_applet_update_tooltips();
 	
 	/* Finally show it all. */
 	gtk_widget_show_all(note->window);
@@ -123,15 +115,7 @@ void stickynote_free(StickyNote *note)
 	g_free(note);
 
 	/* Update tooltips */
-	{
-		gchar *tooltip;
-		if (gconf_client_get_bool(stickynotes->gconf_client, GCONF_PATH "/settings/locked", NULL))
-			tooltip = g_strdup_printf(_("Sticky Notes\n%d locked note(s)"), g_list_length(stickynotes->notes));
-		else
-			tooltip = g_strdup_printf(_("Sticky Notes\n%d note(s)"), g_list_length(stickynotes->notes));
-		gtk_tooltips_set_tip(stickynotes->tooltips, GTK_WIDGET(stickynotes->applet), tooltip, NULL);
-		g_free(tooltip);
-	}
+	stickynotes_applet_update_tooltips();
 }
 
 /* Check if a sticky note is empty */
@@ -151,6 +135,7 @@ void stickynote_set_highlighted(StickyNote *note, gboolean highlighted)
 
 	GdkColor color;
 
+	/* Do not highlight if notes are locked */
 	if (highlighted && !gconf_client_get_bool(stickynotes->gconf_client, GCONF_PATH "/settings/locked", NULL)) {
 		gchar *color_str = gconf_client_get_string(stickynotes->gconf_client, GCONF_PATH "/settings/title_color_prelight", NULL);
 		gdk_color_parse(color_str, &color);

@@ -63,7 +63,7 @@ gboolean applet_click_cb(GtkWidget *widget, GdkEventButton *event, PanelApplet *
 	else
 		return FALSE;
 
-	stickynotes_applet_highlight(applet, TRUE);
+	stickynotes_applet_set_highlighted(TRUE);
 	
 	/* Let other handlers receive this event. */
 	return FALSE;
@@ -74,7 +74,7 @@ gboolean applet_resize_cb(GtkWidget *widget, gint size, PanelApplet *applet)
 {
 	stickynotes->size = size;
 
-	stickynotes_applet_highlight(applet, FALSE);
+	stickynotes_applet_set_highlighted(FALSE);
 
 	return TRUE;
 }
@@ -83,9 +83,9 @@ gboolean applet_resize_cb(GtkWidget *widget, gint size, PanelApplet *applet)
 gboolean applet_cross_cb(GtkWidget *widget, GdkEventCrossing *event, PanelApplet *applet)
 {
 	if (event->type == GDK_ENTER_NOTIFY || GTK_WIDGET_HAS_FOCUS(applet))
-		stickynotes_applet_highlight(applet, TRUE);
+		stickynotes_applet_set_highlighted(TRUE);
 	else /* (event->type == GDK_LEAVE_NOTIFY) */
-		stickynotes_applet_highlight(applet, FALSE);
+		stickynotes_applet_set_highlighted(FALSE);
 	
 	return TRUE;
 }
@@ -94,9 +94,9 @@ gboolean applet_cross_cb(GtkWidget *widget, GdkEventCrossing *event, PanelApplet
 gboolean applet_focus_cb(GtkWidget *widget, GdkEventFocus *event, PanelApplet *applet)
 {
 	if (event->in)
-		stickynotes_applet_highlight(applet, TRUE);
+		stickynotes_applet_set_highlighted(TRUE);
 	else
-		stickynotes_applet_highlight(applet, FALSE);
+		stickynotes_applet_set_highlighted(FALSE);
 
 	return TRUE;
 }
@@ -319,6 +319,8 @@ void preferences_apply_cb(GConfClient *client, guint cnxn_id, GConfEntry *entry,
 			stickynotes_lock_all();
 		else
 			stickynotes_unlock_all();
+
+		stickynotes_applet_update_tooltips();
 	}
 
 	else if (strcmp(entry->key, GCONF_PATH "/settings/title_color") == 0
@@ -327,7 +329,7 @@ void preferences_apply_cb(GConfClient *client, guint cnxn_id, GConfEntry *entry,
 		    || strcmp(entry->key, GCONF_PATH "/settings/body_color_prelight") == 0) {
 		for (i = 0; i < g_list_length(stickynotes->notes); i++) {
 			StickyNote *note = g_list_nth_data(stickynotes->notes, i);
-			stickynote_set_highlighted(note, FALSE);
+			stickynote_set_highlighteded(note, FALSE);
 		}
 	}
 }

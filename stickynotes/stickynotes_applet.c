@@ -113,7 +113,7 @@ static gboolean stickynotes_applet_factory(PanelApplet *applet, const gchar *iid
 PANEL_APPLET_BONOBO_FACTORY("OAFIID:GNOME_StickyNotesApplet_Factory", PANEL_TYPE_APPLET, PACKAGE, VERSION, stickynotes_applet_factory, NULL);
 
 /* Highlight the Sticky Notes Applet */
-void stickynotes_applet_highlight(PanelApplet *applet, gboolean highlight)
+void stickynotes_applet_set_highlight(gboolean highlight)
 {
 	GdkPixbuf *pixbuf1, *pixbuf2;
 	
@@ -133,3 +133,17 @@ void stickynotes_applet_highlight(PanelApplet *applet, gboolean highlight)
 	g_object_unref(pixbuf2);
 }
 
+/* Update the Sticky Notes Applet tooltip */
+void stickynotes_applet_update_tooltips()
+{
+	gchar *tooltip;
+	
+	if (gconf_client_get_bool(stickynotes->gconf_client, GCONF_PATH "/settings/locked", NULL))
+		tooltip = g_strdup_printf(_("Sticky Notes\n%d locked note(s)"), g_list_length(stickynotes->notes));
+	else
+		tooltip = g_strdup_printf(_("Sticky Notes\n%d note(s)"), g_list_length(stickynotes->notes));
+
+	gtk_tooltips_set_tip(stickynotes->tooltips, GTK_WIDGET(stickynotes->applet), tooltip, NULL);
+
+	g_free(tooltip);
+}
