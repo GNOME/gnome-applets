@@ -1,0 +1,6 @@
+applet = fifteen
+figs = fifteen_applet.png
+lang = it
+sgml_ents = $(applet).sgml
+include $(top_srcdir)/applet-docs.make
+dist-hook: applet-dist-hook

@@ -1,0 +1,243 @@
+<sect1 id="anotherclock">
+  <title>Orologio Analogico</title>
+  <para>
+    L'applet <application>Orologio Analogico</application> vedi <xref
+      linkend="anotherclock-applet">, è un semplice orologio analogico (simile a 
+      quello presente sul pannello di CDE, Common Desktop Environment). Per
+      aggiungerlo ad un <interface>Pannello</interface>, cliccate con il tasto
+      destro sul <interface>Pannello</interface> e selezionate
+      <menuchoice>
+        <guimenu>Pannello</guimenu>
+        <guisubmenu>Aggiungi al pannello</guisubmenu>
+        <guisubmenu>Applet</guisubmenu>
+	<guisubmenu>Orologi</guisubmenu>
+	<guimenuitem>Orologio Analogico</guimenuitem>
+      </menuchoice>.
+  </para>
+
+  <figure id="anotherclock-applet">
+    <title>Applet Orologio Analogico</title>
+    <screenshot>
+      <screeninfo>Applet Orologio Analogico</screeninfo>
+      <graphic format="png" fileref="anotherclock-applet" 
+	       srccredit="Eric Baudais">
+      </graphic>
+    </screenshot>
+  </figure>
+  
+  <!-- ============= Usage  ================================ -->
+  <sect2 id="anotherclock-usage">
+    <title>Uso</title>
+    <para>
+      Non c'è alcunché da fare con questa applet. Si aggiunge ad un pannello
+      indicando l'ora corrente del computer.
+    </para>
+    
+    <itemizedlist>
+      
+      <listitem>
+	<para>
+	  <guimenuitem>Proprietà&hellip;</guimenuitem> &mdash; apre la finestra
+	  di dialogo <guilabel>Impostazioni dell'orologio</guilabel>.
+	</para>
+      </listitem>
+      
+      <listitem>
+	<para>
+	  <guimenuitem>Aiuto</guimenuitem> &mdash; mostra questo documento.
+	</para>
+      </listitem>
+      
+      <listitem>
+	<para>
+	  <guimenuitem>Informazioni su&hellip;</guimenuitem> &mdash; mostra le
+            informazioni riguardo l'applet <application>Orologio
+            Analogico</application> come la versione e il nome dell'autore.
+	</para>
+      </listitem>
+
+    </itemizedlist>
+
+  </sect2>
+
+
+  <!-- ============= Customization ============================= -->
+  <sect2 id="anotherclock-prefs">
+    <title>Personalizzazione</title>
+    <para>
+      È possibile personalizzare <application>Orologio Analogico</application>
+      cliccandoci sopra con il tasto destro del mouse e selezionando
+      <guimenuitem>Proprietà&hellip;</guimenuitem>. Apparirà così la finestra di
+      dialogo <interface>Impostazioni dell'orologio</interface> (vedi <xref
+      linkend="anotherclock-settings-fig">) che permette di modificare molte
+      impostazioni.
+    </para>
+
+
+    <figure id="anotherclock-settings-fig">
+      <title>Finestra di dialogo Impostazioni dell'orologio</title>
+      <screenshot>
+	<screeninfo>Finestra di dialogo Impostazioni dell'orologio</screeninfo>
+	<graphic format="png" fileref="anotherclock-properties"
+	       srccredit="Eric Baudais">
+	</graphic>
+      </screenshot>
+    </figure>
+
+    <para>
+      Le impostazioni modificabili sono:
+      <itemizedlist>
+
+	<listitem>
+	  <para>
+	    Colore dell'orologio &mdash; Questa opzione è ancora disabilitata,
+	    ma in futuro sarà reso possibile modificare il colore dello sfondo
+	    dell'orologio.
+	  </para>
+	</listitem>
+
+	<listitem>
+	  <para>
+	    Colore della lancetta delle ore &mdash; Imposta il colore preferito
+	    per la lancetta delle ore dell'orologio.
+	  </para>
+	</listitem>
+
+	<listitem>
+	  <para>
+	    Colore della lancetta dei minuti &mdash; Imposta il colore preferito
+	    per la lancetta dei minuti dell'orologio.
+	  </para>
+	</listitem>
+
+	<listitem>
+	  <para>
+    	    Colore della lancetta dei secondi &mdash; Imposta il colore preferito
+	    per la lancetta dei secondi dell'orologio.
+	  </para>
+	</listitem>
+
+	<listitem>
+	  <para>
+	    Mostra lancetta dei secondi &mdash; se viene premuto questo bottone,
+	    viene mostrata anche la lancetta dei secondi.
+	  </para>
+	</listitem>
+
+      </itemizedlist>
+    </para>
+
+    <para> 
+      Fatti i cambiamenti voluti cliccate sul pulsante <guibutton>OK</guibutton>
+      per salvarli e chiudete la finestra di dialogo
+      <interface>Impostazioni dell'orologio</interface>. Per annullare le
+      modifiche e tornare alle impostazioni precedenti, cliccate sul pulsante
+      <guibutton>Chiudi</guibutton>.
+    </para>
+  </sect2>
+
+
+  <!-- ============= Bugs ================================== -->
+  <!-- This section should describe known bugs and limitations of
+  the program if there are any - please be frank and list all
+  problems you know of -->
+  <sect2 id="anotherclock-bugs">
+    <title>Bug conosciuti e Limitazioni</title>
+    <orderedlist>
+      <!--     <listitem>  Jacob says this should be fixed with GTK+-1.2.7.
+    <para>
+      Non è possibile modificare l'ora del computer usando la finestra di
+      dialogo delle impostazioni; questo non è esattamente un bug in quanto è
+      necessario avere i permessi di super utente (root) per modificare l'ora
+      generale del sistema con il comando <command>date</command>.
+    </para>
+    </listitem> 
+      -->
+      <listitem>
+	<para>
+	  Se si modifica l'orologio del computer usando il comando
+	  <command>date</command>, l'orologio smetterà di funzionare fino a che
+	  l'ora del computer non raggiunge quella mostrata
+	  dall'orologio; successivamente questo funzionerà normalmente.
+	</para>
+      </listitem>
+    </orderedlist>
+  </sect2>
+
+  <!-- ============= Authors ================================ -->
+
+  <sect2 id="authors">
+    <title>Autori</title>
+    <para>
+      <application>Orologio Analogico</application> è stato scritto da
+      I&ntilde;igo Serna (<email>inigo@gazletan.bi.ehu.es</email>). Inviate
+      tutti i commenti, suggerimenti e notifiche di errori al <ulink
+      url="http://bugs.gnome.org" type="http">GNOME bug tracking
+      database</ulink>. (Le istruzioni per riportare errori possono essere
+      trovate <ulink url="http://bugs.gnome.org/Reporting.html"
+      type="http">on-line</ulink>. Se state usando la versione di GNOME 1.1 o
+      una più recente è possibile usare anche il programma
+      <application>bug-buddy</application> (<command>bug-buddy</command>), che
+      si trova nel sotto-menù <guisubmenu>Utilità</guisubmenu> nel
+      <guimenu>Menù Principale</guimenu>, per riportare errori. 
+    </para>
+
+   <para>
+      Questo manuale è stato scritto da  Telsa Gwynne
+      (<email>telsa@linuxchix.org</email>) and Eric Baudais
+      (<email>baudais@okstate.edu</email>).  Inviate tutti i commenti e i
+      suggerimenti riguardo questo manuale allo <ulink type="http"
+      url="http://www.gnome.org/gdp">GNOME Documentation Project</ulink>
+      mandando un email a <email>docs@gnome.org</email>. <81>È possibile anche
+      spedire commenti on-line usando lo <ulink type="http"
+      url="http://www.gnome.org/gdp/doctable/">GNOME Documentation Status
+      Table</ulink>.
+    </para>
+
+    <para>
+      La traduzione italiana è stata fatta da Leandro Noferini
+      (<email>lnoferin@cybervalley.org</email>). Inviate tutti i commenti e
+      suggerimenti riguardo questa traduzione a
+      <email>webmaster@www.it.gnome.org</email>.
+    </para>
+
+  </sect2>
+
+
+  <!-- ============= Application License ============================= -->
+
+  <sect2 id="license">
+    <title>License</title>
+    <para>
+      This program is free software; you can redistribute it and/or
+      modify it under the terms of the <citetitle>GNU General Public
+	License</citetitle> as published by the Free Software Foundation;
+      either version 2 of the License, or (at your option) any later
+      version.
+    </para>
+    <para>
+      This program is distributed in the hope that it will be useful, but
+      WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      <citetitle>GNU General Public License</citetitle> for more details.
+    </para>
+    <para>
+      A copy of the <citetitle>GNU General Public License</citetitle> is
+      included as an appendix to the <citetitle>GNOME Users
+	Guide</citetitle>.  You may also obtain a copy of the
+      <citetitle>GNU General Public License</citetitle> from the Free
+      Software Foundation by visiting <ulink type="http"
+      url="http://www.fsf.org">their Web site</ulink> or by writing to
+      <address>
+	Free Software Foundation, Inc.
+	<street>59 Temple Place</street> - Suite 330
+	<city>Boston</city>, <state>MA</state> <postcode>02111-1307</postcode>
+	<country>USA</country>
+      </address>
+    </para>
+  </sect2>
+
+</sect1>
+
+
+
