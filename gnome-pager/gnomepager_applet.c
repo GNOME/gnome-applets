@@ -1198,7 +1198,7 @@ main(int argc, char *argv[])
 			  "Then start this applet again.\n"));
       gtk_widget_show(l);
       gtk_box_pack_start(GTK_BOX(GNOME_DIALOG(d)->vbox), l, TRUE, TRUE, 5);
-      gnome_dialog_set_modal(GNOME_DIALOG(d));
+      gtk_window_set_modal(GTK_WINDOW(d),TRUE);
       gtk_window_position(GTK_WINDOW(d), GTK_WIN_POS_CENTER);
       gnome_dialog_run_modal(GNOME_DIALOG(d));
       gtk_widget_destroy(d);

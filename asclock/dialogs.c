@@ -55,7 +55,7 @@ GtkWidget * properties_timezone_render(GtkWidget *parent, float lat, float lon)
   if(pic) 
   {
     gtk_pixmap_set(GTK_PIXMAP(pic), pmap, mask);
-    gtk_widget_draw_children(pic);
+    gtk_widget_draw_default(pic);
   }
   else
     pic = gtk_pixmap_new(pmap, mask);

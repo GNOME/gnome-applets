@@ -270,7 +270,7 @@ error_dialog(char *message, int fatal)
 		TRUE, TRUE, GNOME_PAD);
 
 	gnome_less_fixed_font(GNOME_LESS(less));
-	gnome_dialog_set_modal(GNOME_DIALOG(error));
+	gtk_window_set_modal(GTK_WINDOW(error),TRUE);
 
 	if (fatal)
 		gtk_signal_connect( GTK_OBJECT(error),
