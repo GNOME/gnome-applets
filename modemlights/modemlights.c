@@ -10,6 +10,15 @@
 #include "button_off.xpm"
 #include "button_on.xpm"
 
+#ifdef __linux__
+#include <linux/isdn.h>
+#include <sys/ioctl.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+
+static unsigned long *isdn_stats = NULL;
+#endif
+
 gint UPDATE_DELAY = 5;		/* status lights update interval in Hz (1 - 20) */
 gchar *lock_file;		/* the modem lock file */
 gchar *device_name;		/* the device name eg:ppp0 */
@@ -239,8 +248,39 @@ static int get_modem_stats(int *in, int *out)
 
 static int get_ISDN_stats(int *in, int *out)
 {
+#ifdef __linux__
+	int fd, i;
+	unsigned long *ptr;
+
 	*in = *out = 0;
+
+	if (!isdn_stats)
+		isdn_stats = g_new0 (unsigned long, ISDN_MAX_CHANNELS  *  2);
+
+	fd = open("/dev/isdninfo", O_RDONLY);
+
+	if (fd < 0)
+		return FALSE;
+
+	if ((ioctl (fd, IIOCGETCPS, isdn_stats) < 0) && (errno != 0)) {
+		close (fd);
+		
+		return FALSE;
+	}
+
+	for (i = 0, ptr = isdn_stats; i < ISDN_MAX_CHANNELS; i++) {
+		*in  += *ptr++; *out += *ptr++;
+	}
+
+	close (fd);
+
+	return TRUE;
+
+#else
+	*in = *out = 0;
+
 	return FALSE;
+#endif
 }
 
 static int get_stats(int *in, int *out)
