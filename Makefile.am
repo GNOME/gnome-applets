@@ -47,11 +47,11 @@ always_built_SUBDIRS = \
 	drivemount	\
 	charpick	\
 	geyes		\
-	mailcheck	\
 	mini-commander	\
 	gkb-new		\
 	wireless	\
-	stickynotes
+	stickynotes	\
+	null_applet
 
 SUBDIRS = \
 	po			\
@@ -67,7 +67,6 @@ SUBDIRS = \
 
 DIST_SUBDIRS = \
 	po		\
-	mailcheck	\
 	mixer		\
 	modemlights	\
 	cdplayer	\
@@ -87,7 +86,8 @@ DIST_SUBDIRS = \
 	stickynotes	\
 	libgswitchit	\
 	gswitchit	\
-	trashapplet
+	trashapplet	\
+	null_applet
 
 EXTRA_DIST = \
 	COPYING-DOCS		\

@@ -1,0 +1,22 @@
+What the hell is a Null Applet?
+===============================
+
+The Null Applet is the Applet Deprecation Applet. It allows us to remove applets
+from a users configuration, without them getting cryptic messages about being
+unable to resolve things, and getting a raw dump of preferences (the panel likes
+to do this). In the future, the null applet will also be useful for when someone
+decides not to build one of the optional applets, to prevent them from seeing
+the same ugly message.
+
+How do I add an applet to Null Applet?
+======================================
+
+You'll need the factory from the oaf_server, copy that server to
+GNOME_NullApplet_Factory.server.in.in, set it's location to
+GNOME_NullApplet_Factory. Remove it's panel:icon attribute so that it doesn't
+appear in the add to panel list.
+
+Who wrote this abomination?
+===========================
+
+Blame Davyd Madeley <davyd@madeley.id.au>
