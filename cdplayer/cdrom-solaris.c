@@ -24,13 +24,16 @@ cdrom_play(cdrom_device_t cdp, int start, int stop)
 	struct cdrom_ti ti;
  	struct cdrom_msf msf;
 	int start_lba, end_lba;
+	int ret;
 
 	/* If CDDA convert addresses to LBA format */
 	if (cdp->cdda) {
 		start_lba = msf2lba(&cdp->track_info[start - 1]);
 		end_lba = msf2lba(&cdp->track_info[stop]);
 		audio_stop(cdp->cdda);
-		audio_start(cdp->cdda, start_lba, end_lba);
+		ret = audio_start(cdp->cdda, start_lba, end_lba);
+		if (ret == -1) 
+			return DISC_DEVICE_BUSY;
 		return (DISC_NO_ERROR);
 	}
 

@@ -820,6 +820,7 @@ cdplayer_play_pause(GtkWidget * w, gpointer data)
     CDPlayerData *cd = data;
     cdrom_device_status_t stat;
     int status;
+    int ret;
 
     if(!cd_try_open(cd))
         return;
@@ -840,15 +841,32 @@ cdplayer_play_pause(GtkWidget * w, gpointer data)
 	    cdplayer_update_play_pause_button (cd, PAUSE_IMAGE);
         case DISC_ERROR:
             cdrom_read_track_info(cd->cdrom_device);
-            cdrom_play(cd->cdrom_device, cd->cdrom_device->track0,
+            ret = cdrom_play(cd->cdrom_device, cd->cdrom_device->track0,
                    cd->cdrom_device->track1);
             break;
         }
     } else if(status == DISC_TRAY_OPEN) {
         cdrom_load(cd->cdrom_device);
         cdrom_read_track_info(cd->cdrom_device);
-        cdrom_play(cd->cdrom_device, cd->cdrom_device->track0,
+        ret = cdrom_play(cd->cdrom_device, cd->cdrom_device->track0,
                cd->cdrom_device->track1);
+    }
+
+    if (ret == DISC_DEVICE_BUSY) {
+		GtkWidget *dialog;
+		dialog = gtk_message_dialog_new (NULL,
+						 GTK_DIALOG_DESTROY_WITH_PARENT,
+						 GTK_MESSAGE_ERROR,
+						 GTK_BUTTONS_CLOSE,
+						 "Audio Device is busy, or being used by another application",
+						 NULL);
+		gtk_window_set_screen (GTK_WINDOW (dialog),
+				       gtk_widget_get_screen (cd->panel.applet));
+		g_signal_connect_swapped (GTK_OBJECT (dialog), "response",
+		                          G_CALLBACK (gtk_widget_destroy),
+					  GTK_OBJECT (dialog));
+
+		gtk_widget_show_all (dialog);
     }
 }
 
