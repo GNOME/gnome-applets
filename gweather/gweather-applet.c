@@ -145,6 +145,14 @@ static void about_cb (AppletWidget *widget, gpointer data)
     data = NULL;
 }
 
+static void help_cb (AppletWidget *applet, gpointer data)
+{
+    static GnomeHelpMenuEntry help_entry = { NULL, "index.html"};
+
+    help_entry.name = gnome_app_id;
+    gnome_help_display(NULL, &help_entry);
+}
+
 static void pref_cb (AppletWidget *widget, gpointer data)
 {
     gweather_pref_run();
@@ -176,6 +184,9 @@ void gweather_applet_create (int argc, char *argv[])
     applet_widget_register_stock_callback (APPLET_WIDGET(gweather_applet), "about",
                                            GNOME_STOCK_MENU_ABOUT, _("About..."),
                                            about_cb, NULL);
+    applet_widget_register_callback (APPLET_WIDGET(gweather_applet), "help",
+                                     _("Help"),
+                                     help_cb, NULL);
     applet_widget_register_stock_callback (APPLET_WIDGET(gweather_applet), "preferences",
                                            GNOME_STOCK_MENU_PREF, _("Properties..."),
                                            pref_cb, NULL);
