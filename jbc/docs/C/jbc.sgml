@@ -1,73 +1,76 @@
- <sect1 id="jcb">
-  <title>Binary Clock</title>
+ <sect1 id="jbc">
+  <title>Jon's Binary Clock Applet</title>
+
   <para>
-    <application>Jon's Binary Clock</application> (or 
-    <application>jbc_applet</application> for short) is an applet
-    which shows the time in an unusual form: binary coded decimal. 
-    It has twenty-four LEDs which represent the hours, minutes and
-    seconds by illuminating the appropriate LED.
-  </para>
-  <para>
-    You can start the binary clock by clicking <mousebutton>button
-    3</mousebutton> on an empty part of the <interface>panel</interface>
-    and following the sequence
-    <menuchoice>
-     <guimenu>Applets</guimenu>
-     <guisubmenu>Clocks</guisubmenu>
-     <guimenuitem>JCB Binary Clock</guimenuitem>
-    </menuchoice>
-    or you can type the following command at a command line:
-    <command>jbc_applet --activate-goad-server=jbc_applet</command>
-  </para>
-  <para>
-    The binary clock applet was written by Jon Anhold
-    (<email>jon@snoopy.net</email>. Please report bugs in it to the
-    <ulink type="http" url="http://bugs.gnome.org">GNOME bug
-    tracking system</ulink>. You can do this by following the
-    guidelines on that site or by using <application>bug-buddy</application>
-    from the command-line. For the package, put gnome-applets.
+   <application>Jon's Binary Clock</application> applet, shown in <xref
+   linkend="jbcapplet-fig">, shows the time in an unusual form: binary
+   coded decimal. It has twenty-four LEDs which represent the hours,
+   minutes and seconds by illuminating the appropriate LED.  To add this
+   applet to a <interface>Panel</interface>, 
+   right-click on the <interface>Panel</interface> and choose
+   <menuchoice>
+    <guimenu>Panel</guimenu>
+    <guisubmenu>Add to panel</guisubmenu>
+    <guisubmenu>Applet</guisubmenu>
+    <guisubmenu>Clocks</guisubmenu>
+    <guimenuitem>JBC Binary Clock</guimenuitem>
+   </menuchoice>.
   </para>
 
-  <sect2 id="jcb-usage">
+  <figure id="jbcapplet-fig">
+   <title>Jon's Binary Clock Applet</title>
+   <screenshot>
+    <screeninfo>Jon's Binary Clock Applet</screeninfo>
+    <graphic format="png" fileref="jbc_applet" 
+    srccredit="muet">
+    </graphic>
+   </screenshot>
+  </figure>
+
+  <!-- ============= Usage  ================================ -->
+  <sect2 id="APPLET-usage">
    <title>Usage</title>
    <para>
-     You don't need to do anything special to this clock. It just
-     sits there and flashes lights at you. Some of the standard applet
-     mouse options are available:
+    You don't need to do anything special to this clock. It just
+    sits there and flashes lights at you.
    </para>
 
-   <orderedlist>
-    <listitem>
-     <para>
-       Pressing <mousebutton>mouse button 1</mousebutton> has
-       no effect.
-     </para>
-    </listitem>
-    <listitem>
-     <para>
-       Holding down <mousebutton>mouse button 2</mousebutton> allows you to 
-       move the clock about in the same way you move anything on the panel
-     </para>
-    </listitem>
-    <listitem>
-     <para>
-       Pressing <mousebutton>mouse button 3</mousebutton> brings
-       up the standard choices available for applets, including an
-       About box, but no preferences menu.
-     </para>
-    </listitem>
-   </orderedlist>
-   </sect2>
+   <para>
+    Right-clicking on the applet brings up a menu containing the
+    following items:
+    <itemizedlist>
 
-   <sect2 id="jcb-lights">
-    <title>Deciphering the lights</title>
+     <listitem>
+      <para>
+       <guimenuitem>Help</guimenuitem> &mdash;
+       displays this document.
+      </para>
+     </listitem>
+
+     <listitem>
+      <para>
+       <guimenuitem>About&hellip;</guimenuitem> &mdash;
+       shows basic information about <application>Jon's Binary Clock
+       Applet</application>, inluding the applet's version and the
+       author's name.
+      </para>
+     </listitem>
+
+    </itemizedlist>
+   </para>
+  </sect2>
+
+
+  <!-- ============= Deciphering the Lights =========================== -->
+  <sect2 id="jbc-deciphering">
+   <title>Deciphering the Lights</title>
     <para>
       BCD stands for binary-coded decimal, a way of representing 
       normal denary (0,1,2,3,4,5,6,7,8,9) numbers as what programmers
       call &quot;a set of binary numbers in four bits, thus removing the
       numbers A to F&quot;. If this doesn't make sense, just be aware
       that this clock is an amusement for programmers, and serves
-      no really useful purpose!
+      no really useful purpose.
     </para>
     <para>
       It helps to read this clock upside-down! Start at the bottom and 
@@ -116,26 +119,120 @@
       changing.
     </para>
 
-   </sect2>
+    <para>
+     As an example, we can read the time in <xref
+     linkend="jbcapplet-fig">. Let's start with the hour.  The first
+     column has only 1 LED on, in the second lowest position, so this
+     gives us <quote>2</quote> for the first digit of the hour.  The
+     second column has no LEDs on, so we have a <quote>0</quote> for
+     the second digit of the hour.  So the hour is <quote>20</quote>,
+     or 8PM for people who like AM/PM notation.  Looking at the
+     minutes, we have <quote>0</quote> for the first digit, and
+     <quote>1</quote> for the second digit since only the bottom LED
+     is lit.  This gives us "20:01" so far.  Lastly, we have the
+     seconds.  For the first digit, we have the lowest two LED's
+     lit. These have value 1 (for the lowest) and 2 (second lowest)
+     for a total of <quote>3</quote>.  And the second column of the
+     seconds has the top LED lit, with a value of
+     <quote>8</quote>. Thus, the time is <quote>20:01:38</quote>, or
+     <quote>8:01:38PM</quote>.
+    </para>
 
-   <sect2 id="jbc-bugs">
-    <title>Bugs and limitations</title>
-    <orderedlist>
-     <listitem>
-      <para>
-        It's extremely silly.
-      </para>
-     </listitem>
-     <listitem>
-      <para>
-        If you add it to a vertical panel, it is a nice size. If you
-        then move it to a horizonal panel, it changes size in the 
-        horizontal panel. If you move it back to a vertical panel, it
-        doesn't change size back, and forces the panel to widen itself.
-      </para>
-     </listitem>
-    </orderedlist> 
-   </sect2>
+  </sect2>
 
-  </sect1>
+  <!-- ============= Bugs ================================== --> <!--
+  This section should describe known bugs and limitations of the
+  program if there are any - please be frank and list all problems you
+  know of -->
+  <sect2 id="jbc-bugs">
+   <title>Known Bugs and Limitations</title>
+   <para>
+    If you add it to a vertical panel, it is a nice size. If you then
+    move it to a horizonal panel, it changes size in the  horizontal
+    panel. If you move it back to a vertical panel, it doesn't change
+    size back, and forces the panel to widen itself.
+   </para>
+  </sect2>
+
+
+  <!-- ============= Authors ================================ -->
+
+  <sect2 id="authors">
+   <title>Authors</title>
+   <para>
+    <application>Jon's Binary Clock</application> was written by Jon
+    Anhold (<email>jon@snoopy.net</email>.  Please send all comments,
+    suggestions, and bug  reports to the <ulink
+    url="http://bugs.gnome.org" type="http">GNOME bug tracking
+    database</ulink>. (Instructions for submitting bug reports can be
+    found <ulink url="http://bugs.gnome.org/Reporting.html"
+    type="http"> on-line</ulink>. If you are using GNOME 1.1 or later,
+    you can also use <application>Bug Report Tool</application>
+    (<command>bug-buddy</command>), available in the
+    <guisubmenu>Utilities</guisubmenu> submenu of <guimenu>Main
+    Menu</guimenu>, for submitting bug reports.
+   </para>
+
+   <para>
+    This manual was written by Telsa Gwynne
+    (<email>hobbit@aloss.ukuu.org.uk</email>).  Please send all
+    comments and suggestions regarding this manual to the <ulink
+    type="http" url="http://www.gnome.org/gdp">GNOME Documentation
+    Project</ulink> by sending an email to
+    <email>docs@gnome.org</email>. You can also submit comments online
+    by using the <ulink type="http"
+    url="http://www.gnome.org/gdp/doctable/">GNOME Documentation
+    Status Table</ulink>.
+   </para>
+
+   <!-- For translations: uncomment this:
+
+   <para>
+    Latin translation was done by ME
+    (<email>MYNAME@MYADDRESS</email>). Please send all  comments  and
+    suggestions regarding this translation to SOMEWHERE.
+   </para>
+
+   -->
+
+  </sect2>
+
+
+  <!-- ============= Application License ============================= -->
+
+  <sect2 id="license">
+   <title>License</title>
+   <para>
+    This program is free software; you can redistribute it and/or
+    modify it under the terms of the <citetitle>GNU General Public
+    License</citetitle> as published by the Free Software Foundation;
+    either version 2 of the License, or (at your option) any later
+    version.
+   </para>
+   <para>
+    This program is distributed in the hope that it will be useful, but
+    WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    <citetitle>GNU General Public License</citetitle> for more details.
+   </para>
+   <para>
+    A copy of the <citetitle>GNU General Public License</citetitle> is
+    included as an appendix to the <citetitle>GNOME Users
+    Guide</citetitle>.  You may also obtain a copy of the
+    <citetitle>GNU General Public License</citetitle> from the Free
+    Software Foundation by visiting <ulink type="http"
+    url="http://www.fsf.org">their Web site</ulink> or by writing to
+    <address>
+     Free Software Foundation, Inc.
+     <street>59 Temple Place</street> - Suite 330
+     <city>Boston</city>, <state>MA</state> <postcode>02111-1307</postcode>
+     <country>USA</country>
+    </address>
+   </para>
+  </sect2>
+
+ </sect1>
+
+
+
 
