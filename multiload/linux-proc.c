@@ -127,9 +127,10 @@ GetPage (int Maximum, int data [3], LoadGraph *g)
 }
 
 void
-GetMemory (int Maximum, int data [4], LoadGraph *g)
+GetMemory (int Maximum, int data [5], LoadGraph *g)
 {
-    int user, shared, buffer, free;
+    int user, shared, buffer, cached;
+    unsigned long tmp_user;
 
     glibtop_mem mem;
 	
@@ -137,17 +138,18 @@ GetMemory (int Maximum, int data [4], LoadGraph *g)
 	
     assert ((mem.flags & needed_mem_flags) == needed_mem_flags);
 
-    user = mem.used - mem.buffer - mem.shared;
-	
-    user    = rint (Maximum * (float)user   / mem.total);
+    tmp_user = mem.used - mem.buffer - mem.shared - mem.cached;
+   
+    user    = rint (Maximum * (float)tmp_user / mem.total);
     shared  = rint (Maximum * (float)mem.shared / mem.total);
     buffer  = rint (Maximum * (float)mem.buffer / mem.total);
-    free    = rint (Maximum * (float)mem.free / mem.total);
-
+    cached = rint (Maximum * (float)mem.cached / mem.total);
+    
     data [0] = user;
     data [1] = shared;
     data [2] = buffer;
-    data [3] = free;
+    data[3] = cached;
+    data [4] = Maximum-user-shared-buffer-cached;
 }
 
 void

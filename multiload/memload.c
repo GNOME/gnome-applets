@@ -47,7 +47,7 @@ memload_applet_new(PanelApplet *applet, gpointer data)
 	speed = MAX (speed, 50);
 	size = panel_applet_gconf_get_int(applet, "size", NULL);
 	size = CLAMP (size, 10, 400); 
-	g = load_graph_new(applet, 4, N_("Memory Load"), 
+	g = load_graph_new(applet, 5, N_("Memory Load"), 
 					speed, 
 					size, 
 					panel_applet_gconf_get_bool(applet, "view_memload", NULL), 

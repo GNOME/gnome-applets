@@ -383,10 +383,11 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	add_color_selector(page, _("I_dle"), "cpuload_color3", ma);
 	
 	page = add_page(notebook,  _("Memory"));
-	add_color_selector(page, _("Ot_her"), "memload_color0", ma);
+	add_color_selector(page, _("_User"), "memload_color0", ma);
 	add_color_selector(page, _("Sh_ared"), "memload_color1", ma);
 	add_color_selector(page, _("_Buffers"), "memload_color2", ma);
-	add_color_selector(page, _("F_ree"), "memload_color3", ma);
+	add_color_selector(page, _("Cac_hed"), "memload_color3", ma);
+	add_color_selector(page, _("F_ree"), "memload_color4", ma);
 	
 	page = add_page(notebook,  _("Network"));
 	add_color_selector(page, _("S_LIP"), "netload_color0", ma);
