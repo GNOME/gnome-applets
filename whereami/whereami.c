@@ -213,6 +213,11 @@ main(int argc, char **argv)
   textdomain(PACKAGE);
   applet_widget_init(applet_name, VERSION, argc, argv, NULL, 0, NULL);
 
+  applet = applet_widget_new(applet_name);
+  
+  /* Get an idea of the panel size we're working with. */
+  panel_size = applet_widget_get_panel_pixel_size(APPLET_WIDGET(applet));
+  
   msg = gtk_button_new_with_label("\n");
   gtk_signal_connect(GTK_OBJECT(msg),
     "motion_notify_event", motion_handler, NULL);
@@ -220,9 +225,9 @@ main(int argc, char **argv)
     "button_press_event", button_handler, NULL);
   gtk_signal_connect(GTK_OBJECT(msg),
     "button_release_event", button_handler, NULL);
+  gtk_label_set_text(GTK_LABEL(GTK_BIN(msg)->child), "");
   gtk_widget_show(msg);
 
-  applet = applet_widget_new(applet_name);
   gtk_signal_connect(GTK_OBJECT(applet), "change_pixel_size",
 		     GTK_SIGNAL_FUNC(change_pixel_size),
 		     NULL);
@@ -236,6 +241,7 @@ main(int argc, char **argv)
 					_("Help"), help_cb, NULL);
   applet_widget_register_stock_callback(APPLET_WIDGET(applet),
     "about", GNOME_STOCK_MENU_ABOUT, _("About..."), about, NULL);
+
   gtk_timeout_add(100, (GtkFunction)timeout_handler, msg);
   gtk_widget_show(applet);
 
