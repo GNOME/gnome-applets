@@ -92,11 +92,12 @@ int main(int argc, char **argv)
   gtk_widget_show(l_applet);
 
   /* attach the about window */
-  applet_widget_register_callback(APPLET_WIDGET(l_applet),
-				  "about",
-				  _("About..."),
-				  about_window,
-				  NULL);
+  applet_widget_register_stock_callback(APPLET_WIDGET(l_applet),
+					"about",
+					GNOME_STOCK_MENU_ABOUT,
+					_("About..."),
+					about_window,
+					NULL);
 
   /* attach the properties button */
   /*
@@ -112,11 +113,12 @@ int main(int argc, char **argv)
   
 
   /* attach a refresh button */
-  applet_widget_register_callback(APPLET_WIDGET(l_applet),
-				  "refresh",
-				  _("Refresh Image"),
-				  bussign_refresh_widget_dummy,
-				  NULL);
+  applet_widget_register_stock_callback(APPLET_WIDGET(l_applet),
+					"refresh",
+					GNOME_STOCK_MENU_REFRESH,
+					_("Refresh Image"),
+					bussign_refresh_widget_dummy,
+					NULL);
 
   /* do it. */
   applet_widget_gtk_main();
