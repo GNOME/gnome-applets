@@ -1,3 +1,11 @@
+2002-09-25  jacob berkman  <jacob@ximian.com>
+
+	* src/Makefile.am (tool_PROGRAMS): install
+	mc-install-default-macros so packages can set up this stuff
+
+	* src/mc-install-default-macros.c (main): just return if
+	GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL is set in the environment
+
 2002-09-24  Jacob Berkman  <jacob@ximian.com>
 
 	* src/Makefile.am (EXTRA_DIST): add $(glade_DATA)

@@ -13,7 +13,8 @@ INCLUDES = 						\
 
 libexec_PROGRAMS = mini_commander_applet
 
-noinst_PROGRAMS = mc-install-default-macros
+tooldir = $(libexecdir)/gnome-applets
+tool_PROGRAMS = mc-install-default-macros
 
 mini_commander_applet_SOURCES =			\
 	about.c					\

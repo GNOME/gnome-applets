@@ -113,6 +113,11 @@ main (int argc, char **argv)
 	GError      *error = NULL;
 	const char  *config_source;
 
+	if (g_getenv ("GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL")) {
+		fprintf (stderr, _("GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL is set, not installing schemas\n"));
+		return 0;
+	}
+
 	g_type_init ();
 
 	config_source = g_getenv ("GCONF_CONFIG_SOURCE");
