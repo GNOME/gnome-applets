@@ -219,7 +219,11 @@ properties_cb (BonoboUIComponent *uic,
         DIR *dfd;
         struct dirent *dp;
         int i;
+#ifdef PATH_MAX
         gchar filename [PATH_MAX];
+#else
+	gchar *filename;
+#endif
         gchar *title;
      
 	if (eyes_applet->prop_box.pbox) {
@@ -308,9 +312,13 @@ properties_cb (BonoboUIComponent *uic,
                                         gchar *elems[2] = {NULL, NULL };
                                         gchar *theme_dir;
 					elems[0] = filename;
+#ifdef PATH_MAX
                                         strcpy (filename, 
                                                 theme_directories[i]);
                                         strcat (filename, dp->d_name);
+#else
+					asprintf (&filename, theme_directories[i], dp->d_name);
+#endif
                                         gtk_list_store_insert (model, &iter, 0);
                                         gtk_list_store_set (model, &iter, 0, &filename, -1);
                                         theme_dir = g_strdup_printf ("%s/", filename);
@@ -330,6 +338,9 @@ properties_cb (BonoboUIComponent *uic,
                         closedir (dfd);
                 }
         }
+#ifndef PATH_MAX
+	g_free (filename);
+#endif
         
         gtk_box_pack_start (GTK_BOX (control_vbox), tree, TRUE, TRUE, 0);
         

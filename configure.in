@@ -176,12 +176,14 @@ case "${host}" in
   	AM_CONDITIONAL(HAVE_LIBAPM, test "x$HAVE_LIBAPM" = "xyes")
 	AC_SUBST(HAVE_LIBAPM)
 	;;
-  *-*-linux*)
+  # list of supported OS cores
+  *-*-linux*|*-*-freebsd*|*-*-openbsd*)
 	AC_CHECK_LIB(apm,apm_read,[HAVE_LIBAPM=yes],[HAVE_LIBAPM=no])
 	AM_CONDITIONAL(HAVE_LIBAPM, test "x$HAVE_LIBAPM" = "xyes")
-	AC_SUBST(HAVE_LIBAPM)  
+	AC_SUBST(HAVE_LIBAPM)
 	;;
-  *solaris*)
+  *)
+	echo "warning: ${host} is not supported by battstat_applet, not building" >&2
 	build_battstat_applet=no
 	;;
 esac
