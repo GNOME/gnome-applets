@@ -383,7 +383,7 @@ static char *get_remaining (struct apm_info apminfo)
 	else if (time < 0 && !acline_status)
 		return g_strdup_printf (_("Unknown time (%d%%) remaining"), batt_life);
 	else if (time < 0 && acline_status)
-		return g_strdup_printf (_("Unknown time (%d%%) till charged"), batt_life);
+		return g_strdup_printf (_("Unknown time (%d%%) until charged"), batt_life);
 	else
 		if (hours == 0)
 			if (!acline_status)
@@ -393,8 +393,8 @@ static char *get_remaining (struct apm_info apminfo)
 						mins), mins, batt_life);
 			else
 				return g_strdup_printf (ngettext (
-						"%d minute till charged (%d%%)",
-						"%d minutes till charged (%d%%)",
+						"%d minute until charged (%d%%)",
+						"%d minutes until charged (%d%%)",
 						mins), mins, batt_life);
 		else if (mins == 0)
 			if (!acline_status)
@@ -404,8 +404,8 @@ static char *get_remaining (struct apm_info apminfo)
 						hours), hours, batt_life);
 			else
 				return g_strdup_printf (ngettext (
-						"%d hour (%d%%) till charged (%d%%)",
-						"%d hours (%d%%) till charged (%d%%)",
+						"%d hour (%d%%) until charged (%d%%)",
+						"%d hours (%d%%) until charged (%d%%)",
 						hours), hours, batt_life);
 		else
 			if (!acline_status)
@@ -418,7 +418,7 @@ static char *get_remaining (struct apm_info apminfo)
 			else
 				/* TRANSLATOR: "%d %s %d %s" are "%d hours %d minutes"
 				 * Swap order with "%2$s %2$d %1$s %1$d if needed */
-				return g_strdup_printf (_("%d %s %d %s till charged (%d%%)"),
+				return g_strdup_printf (_("%d %s %d %s until charged (%d%%)"),
 						hours, ngettext ("hour", "hours", hours),
 						mins, ngettext ("minute", "minutes", mins),
 						batt_life);
