@@ -63,6 +63,7 @@ if test x$HAVE_XMMS != x$yes; then
 fi
 
 dnl screenshooter
+have_wordexp=false
 AC_CHECK_FUNC(wordexp,have_wordexp=true)
 AM_CONDITIONAL(HAVE_WORDEXP,$have_wordexp)
 if test -z "$have_wordexp"; then

@@ -88,7 +88,7 @@ SUBDIRS = \
 	$(mixer_SUBDIRS)	\
 	$(modemlights_SUBDIRS)	\
 	$(esd_SUBDIRS)		\
-	$(wordexp_applets)      \
+	$(wordexp_SUBDIRS)      \
 	$(xml_SUBDIRS)
 
 DIST_SUBDIRS = \

@@ -1,3 +1,14 @@
+Sun Oct 31 00:31:57 1999  George Lebl  <jirka@5z.com>
+
+	* configure.in,Makefile.am: really only build screenshooter when we
+	  have wordexp
+
+Sat Oct 30 22:29:31 1999  George Lebl  <jirka@5z.com>
+
+	* configure.in: rather then checking for wordexp.h check for the
+	  actual function since it seems some versions of glibc have
+	  included the include file and not the implementation
+
 Fri Oct 29 19:40:51 1999  Tom Gilbert  <gilbertt@tomgilbert.freeserve.co.uk>
 
 	* configure.in: checks for wordexp.h
