@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-08-12 23:58-0400\n"
-"PO-Revision-Date: 2004-08-10 16:42-0400\n"
+"POT-Creation-Date: 2004-08-15 20:48-0400\n"
+"PO-Revision-Date: 2004-08-15 16:42-0400\n"
 "Last-Translator: Adam Weinberger <adamw@gnome.org>\n"
 "Language-Team: English/Canada <adamw@FreeBSD.org>\n"
 "MIME-Version: 1.0\n"
@@ -71,7 +71,7 @@ msgid "Shows the status of keyboard accessibility features"
 msgstr "Shows the status of keyboard accessibility features"
 
 #: accessx-status/applet.c:136 battstat/battstat_applet.c:1057
-#: cdplayer/cdplayer.c:598 charpick/charpick.c:563 drivemount/drivemount.c:553
+#: cdplayer/cdplayer.c:598 charpick/charpick.c:564 drivemount/drivemount.c:552
 #: geyes/geyes.c:202 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:608
 #: gtik/gtik.c:723 gweather/gweather-about.c:47 mailcheck/mailcheck.c:2470
 #: mini-commander/src/about.c:50 mixer/mixer.c:1350
@@ -358,6 +358,7 @@ msgstr "Battery status unknown"
 msgid "No battery present"
 msgstr "No battery present"
 
+#. Displayed if the APM device couldn't be opened. (Used under *BSD)
 #: battstat/battstat_applet.c:947
 msgid ""
 "Can't open the APM device!\n"
@@ -370,6 +371,7 @@ msgstr ""
 "Make sure you have read permission to the\n"
 "APM device."
 
+#. Displayed if the APM system is disabled (Used under *BSD)
 #: battstat/battstat_applet.c:956
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
@@ -532,7 +534,7 @@ msgstr "_Warn when battery charge is low"
 msgid "_Yellow:"
 msgstr "_Yellow:"
 
-#: battstat/properties.c:291 drivemount/drivemount.c:510
+#: battstat/properties.c:291 drivemount/drivemount.c:509
 #: drivemount/properties.c:604 mailcheck/mailcheck.c:2323
 #: mailcheck/mailcheck.c:2617 mini-commander/src/preferences.c:365
 #: mixer/mixer.c:1463 stickynotes/stickynotes_applet_callbacks.c:238
@@ -685,8 +687,8 @@ msgstr "Click this button to Play the previous track in the CD"
 msgid "Click this button to Play the next track in the CD"
 msgstr "Click this button to Play the next track in the CD"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:583
-#: charpick/charpick.c:737 charpick/properties.c:449
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:584
+#: charpick/charpick.c:738 charpick/properties.c:449
 msgid "Character Palette"
 msgstr "Character Palette"
 
@@ -694,38 +696,38 @@ msgstr "Character Palette"
 msgid "Charpicker Applet Factory"
 msgstr "Charpicker Applet Factory"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:3 charpick/charpick.c:737
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:3 charpick/charpick.c:738
 msgid "Insert characters"
 msgstr "Insert characters"
 
-#: charpick/charpick.c:419
+#: charpick/charpick.c:420
 msgid "Available palettes"
 msgstr "Available palettes"
 
-#: charpick/charpick.c:454
+#: charpick/charpick.c:455
 #, c-format
 msgid "insert special character %s"
 msgstr "insert special character %s"
 
-#: charpick/charpick.c:459
+#: charpick/charpick.c:460
 msgid "Insert special characters"
 msgstr "Insert special characters"
 
 #. If your charset supports it, please use U00F1 to replace the "n"
 #. * in "Muniz".
-#: charpick/charpick.c:552
+#: charpick/charpick.c:553
 msgid "Alexandre Muniz <munizao@xprt.net>"
 msgstr "Alexandre Muniz <munizao@xprt.net>"
 
-#: charpick/charpick.c:553
+#: charpick/charpick.c:554
 msgid "Kevin Vandersloot"
 msgstr "Kevin Vandersloot"
 
-#: charpick/charpick.c:585
+#: charpick/charpick.c:586
 msgid "Copyright (C) 1998"
 msgstr "Copyright (C) 1998"
 
-#: charpick/charpick.c:586
+#: charpick/charpick.c:587
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -818,7 +820,7 @@ msgid "Character Palette Preferences"
 msgstr "Character Palette Preferences"
 
 #: drivemount/GNOME_DriveMountApplet.server.in.in.h:1
-#: drivemount/drivemount.c:268 drivemount/drivemount.c:572
+#: drivemount/drivemount.c:267 drivemount/drivemount.c:571
 msgid "Disk Mounter"
 msgstr "Disk Mounter"
 
@@ -842,41 +844,41 @@ msgstr "_Browse"
 msgid "_Eject"
 msgstr "_Eject"
 
-#: drivemount/drivemount.c:451 mailcheck/mailcheck.c:662
+#: drivemount/drivemount.c:450 mailcheck/mailcheck.c:662
 #, c-format
 msgid "There was an error executing %s: %s"
 msgstr "There was an error executing %s: %s"
 
-#: drivemount/drivemount.c:458
+#: drivemount/drivemount.c:457
 msgid "Cannot browse device"
 msgstr "Cannot browse device"
 
-#: drivemount/drivemount.c:516 drivemount/properties.c:610
+#: drivemount/drivemount.c:515 drivemount/properties.c:610
 #: mailcheck/mailcheck.c:2329 mailcheck/mailcheck.c:2623
 msgid "Error displaying help"
 msgstr "Error displaying help"
 
-#: drivemount/drivemount.c:573
+#: drivemount/drivemount.c:572
 msgid "(C) 1999-2001 The GNOME Hackers\n"
 msgstr "(C) 1999-2001 The GNOME Hackers\n"
 
-#: drivemount/drivemount.c:575
+#: drivemount/drivemount.c:574
 msgid "Applet for mounting and unmounting block volumes."
 msgstr "Applet for mounting and unmounting block volumes."
 
-#: drivemount/drivemount.c:781
+#: drivemount/drivemount.c:780
 msgid " mounted"
 msgstr " mounted"
 
-#: drivemount/drivemount.c:783
+#: drivemount/drivemount.c:782
 msgid " not mounted"
 msgstr " not mounted"
 
-#: drivemount/drivemount.c:895
+#: drivemount/drivemount.c:894
 msgid "\" reported:\n"
 msgstr "\" reported:\n"
 
-#: drivemount/drivemount.c:897
+#: drivemount/drivemount.c:896
 msgid ""
 "Drivemount command failed.\n"
 "\""
@@ -884,7 +886,7 @@ msgstr ""
 "Drivemount command failed.\n"
 "\""
 
-#: drivemount/drivemount.c:903
+#: drivemount/drivemount.c:902
 msgid "Cannot mount device"
 msgstr "Cannot mount device"
 
@@ -3485,8 +3487,8 @@ msgid "font 2 - No Longer used"
 msgstr "font 2 - No Longer used"
 
 #: gweather/GNOME_GWeatherApplet.xml.h:2
-msgid "_Forecast"
-msgstr "_Forecast"
+msgid "_Details"
+msgstr "_Details"
 
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:1
 msgid "Factory for creating the weather applet."
@@ -3523,9 +3525,9 @@ msgstr ""
 msgid "GNOME Weather"
 msgstr "GNOME Weather"
 
-#: gweather/gweather-dialog.c:83 gweather/gweather-dialog.c:336
-msgid "Forecast"
-msgstr "Forecast"
+#: gweather/gweather-dialog.c:83
+msgid "Details"
+msgstr "Details"
 
 #: gweather/gweather-dialog.c:123
 msgid "City:"
@@ -3556,8 +3558,8 @@ msgid "Dew point:"
 msgstr "Dew point:"
 
 #: gweather/gweather-dialog.c:179
-msgid "Humidity:"
-msgstr "Humidity:"
+msgid "Relative humidity:"
+msgstr "Relative humidity:"
 
 #: gweather/gweather-dialog.c:187
 msgid "Wind:"
@@ -3582,6 +3584,10 @@ msgstr "Forecast Report"
 #: gweather/gweather-dialog.c:326
 msgid "See the ForeCast Details"
 msgstr "See the ForeCast Details"
+
+#: gweather/gweather-dialog.c:336
+msgid "Forecast"
+msgstr "Forecast"
 
 #: gweather/gweather-dialog.c:344
 msgid "Radar Map"
@@ -6361,13 +6367,3 @@ msgstr "Wireless Link Monitor Preferences"
 #: wireless/wireless-applet.glade.h:3
 msgid "_Monitored device:"
 msgstr "_Monitored device:"
-
-#~ msgid "Path to the device"
-#~ msgstr "Path to the device"
-
-#~ msgid ""
-#~ "This is the full path of the device that will be used to play cd's from "
-#~ "this applet"
-#~ msgstr ""
-#~ "This is the full path of the device that will be used to play cd's from "
-#~ "this applet"
