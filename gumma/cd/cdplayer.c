@@ -137,6 +137,12 @@ cd_do_verb (GummaVerb verb, gpointer data)
 	case GUMMA_VERB_NEXT:
 		cdrom_next (cd->device);
 		break;
+	case GUMMA_VERB_FORWARD:
+		cdrom_ff (cd->device);
+		break;
+	case GUMMA_VERB_REWIND:
+		cdrom_rewind (cd->device);
+		break;
 	case GUMMA_VERB_EJECT:
 #if 0
 		if (cdrom_get_status (cd->device, &stat)==DISC_TRAY_OPEN)

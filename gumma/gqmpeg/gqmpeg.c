@@ -71,7 +71,9 @@ static gchar *cmds[] = { "play",
 			 "stop",
 			 "show_playlist",
 			 "next",
-			 "prev" };
+			 "prev",
+			 "seek +1",
+			 "seek -1" };
 
 static GtkWidget *
 gqmpeg_get_config_page (gpointer data)

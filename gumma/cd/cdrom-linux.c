@@ -107,7 +107,7 @@ cdrom_read_track_info(cdrom_device_t cdp)
 		if (cdp->track_info)
 			g_free(cdp->track_info);
 		cdp->nr_track = nr_track;
-		cdp->track_info = g_malloc((cdp->nr_track + 1) * sizeof(track_info_t));
+		cdp->track_info = g_new0(track_info_t, (cdp->nr_track + 1));
 	}
 	for (i = 0, j = cdp->track0; i < cdp->nr_track; i++, j++) {
 		tocentry.cdte_track = j;

@@ -44,7 +44,7 @@ typedef struct {
 	GModule *module;
 	gchar *module_path;
 
-	int timeout;
+	gint timeout, roll_t, release_t;	
 } GummaPlayerData;
 
 #define TIMEOUT_VALUE 500
@@ -113,6 +113,70 @@ generic_cb (GtkWidget *w, gpointer data)
 	return FALSE;
 }
 
+static gint 
+roll_timer_f (gpointer data)
+{
+	GummaPlayerData *gpd = data;
+	gpd->plugin->do_verb (GUMMA_VERB_FORWARD, gpd->data);
+	return TRUE;
+}
+
+static gint
+roll_timer_b (gpointer data)
+{
+	GummaPlayerData *gpd = data;
+	gpd->plugin->do_verb (GUMMA_VERB_REWIND, gpd->data);
+	return TRUE;
+}
+
+static gint 
+release_timer_f (gpointer data)
+{
+	GummaPlayerData *gpd = data;
+	gpd->roll_t = gtk_timeout_add (40, roll_timer_f, data);
+	gpd->release_t = 0;
+	return FALSE;
+}
+
+static gint
+release_timer_b (gpointer data)
+{
+	GummaPlayerData *gpd = data;
+	gpd->roll_t = gtk_timeout_add (40, roll_timer_b, data);
+	gpd->release_t = 0;
+	return FALSE;
+}
+
+static int 
+skip_cb(GtkWidget *widget, GdkEvent *event, gpointer data)
+{
+	GummaPlayerData *gpd = gtk_object_get_user_data (GTK_OBJECT (widget));
+
+	if(event->type == GDK_BUTTON_PRESS)
+		gpd->release_t = gtk_timeout_add(250, GPOINTER_TO_INT (data)
+						 ? release_timer_f
+						 : release_timer_b, 
+						 gpd);
+
+	else if (event->type == GDK_BUTTON_RELEASE) {
+		if (gpd->release_t) {
+			gtk_timeout_remove (gpd->release_t);
+			g_assert (gpd->plugin->do_verb);
+			gpd->plugin->do_verb (GPOINTER_TO_INT (data)
+					      ? GUMMA_VERB_NEXT
+					      : GUMMA_VERB_PREV,
+					      gpd->data);
+		}
+		if (gpd->roll_t)
+			gtk_timeout_remove (gpd->roll_t);
+
+		gpd->release_t = 0;
+		gpd->roll_t = 0;
+	}
+	
+	return FALSE;	
+}
+
 static int
 timeout_cb (gpointer data)
 {
@@ -142,7 +206,8 @@ control_button_factory(GtkWidget *box_container,
 	gtk_box_pack_start(GTK_BOX(box_container), w, FALSE, TRUE, 0);
 	gtk_widget_show(pixmap);
 	gtk_container_add(GTK_CONTAINER(w), pixmap);
-	gtk_signal_connect(GTK_OBJECT(w), "clicked", func, data);
+	if (func)
+		gtk_signal_connect(GTK_OBJECT(w), "clicked", func, data);
 	gtk_widget_show(w);
 	return w;
 }
@@ -193,16 +258,28 @@ create_panel_widget(GtkWidget *window, GummaPlayerData *gpd)
 	gtk_box_pack_start_defaults(GTK_BOX(vbox), hbox);
 	gtk_widget_show(hbox);
 
-	gpd->panel.prev = control_button_factory(hbox, prev_xpm, gpd,
-						 GTK_SIGNAL_FUNC (generic_cb),
-						 GINT_TO_POINTER (GUMMA_VERB_PREV));
+	gpd->panel.prev = control_button_factory(hbox, prev_xpm, gpd, NULL, NULL);
+
+	gtk_widget_set_events (gpd->panel.prev, 
+			       GDK_BUTTON_PRESS_MASK |
+			       GDK_BUTTON_RELEASE_MASK);
+
+	gtk_signal_connect (GTK_OBJECT (gpd->panel.prev), "event",
+			    GTK_SIGNAL_FUNC (skip_cb),
+			    GINT_TO_POINTER (FALSE));
 
 	gtk_box_pack_start (GTK_BOX(hbox), gpd->panel.track, TRUE, TRUE, 0);
 	gtk_widget_show(gpd->panel.track);						 
 	
-	gpd->panel.next = control_button_factory(hbox, next_xpm, gpd,
-						 GTK_SIGNAL_FUNC (generic_cb),
-						 GINT_TO_POINTER (GUMMA_VERB_NEXT));
+	gpd->panel.next = control_button_factory(hbox, next_xpm, gpd, NULL, NULL);
+
+	gtk_widget_set_events (gpd->panel.next,
+			       GDK_BUTTON_PRESS_MASK |
+			       GDK_BUTTON_RELEASE_MASK);
+
+	gtk_signal_connect (GTK_OBJECT (gpd->panel.next), "event",
+			    GTK_SIGNAL_FUNC(skip_cb),
+			    GINT_TO_POINTER (TRUE));
 	
 	return frame;
 }

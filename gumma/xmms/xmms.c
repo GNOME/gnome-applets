@@ -55,14 +55,29 @@ static xmms_func cmds[] = { xmms_remote_play,
 			    xmms_remote_stop,
 			    xmms_remote_eject,
 			    xmms_remote_playlist_next,
-			    xmms_remote_playlist_prev };
+			    xmms_remote_playlist_prev,
+			    NULL,
+			    NULL };
 
 static void
 xmms_do_verb (GummaVerb verb, gpointer data)
 {
 	XmmsData *xmms = data;
-	if (!cmds[verb]) return;
-	cmds[verb] (xmms->session);
+	gint time;
+	switch (verb) {
+	case GUMMA_VERB_FORWARD:
+		time = xmms_remote_get_output_time (xmms->session);
+		xmms_remote_jump_to_time (xmms->session, time + 1000);
+		break;
+	case GUMMA_VERB_REWIND:
+		time = xmms_remote_get_output_time (xmms->session);
+		xmms_remote_jump_to_time (xmms->session, time - 1000);
+		break;
+	default:
+		if (!cmds[verb]) return;
+		cmds[verb] (xmms->session);
+		break;
+	}
 }
 
 static GtkWidget *
