@@ -212,7 +212,8 @@ historyPopupClickedInside_cb(GtkWidget *widget, gpointer data)
 gint 
 showHistory_signal(GtkWidget *widget, gpointer data)
 {
-     GtkWidget *window, *popup;
+     GtkWidget *window;
+     GtkWidget *frame;
      GtkWidget *scrolled_window;
      GtkWidget *clist;
      gchar *commandList[1];
@@ -229,10 +230,14 @@ showHistory_signal(GtkWidget *widget, gpointer data)
      gtk_window_position(GTK_WINDOW (window), GTK_WIN_POS_MOUSE);
      /* size */
      gtk_widget_set_usize(GTK_WIDGET(window), 200, 350);
-     /* border */
-     gtk_container_border_width(GTK_CONTAINER(window), 3);
      /* title */
      gtk_window_set_title(GTK_WINDOW(window), (gchar *) _("Command history"));
+
+     /* frame */
+     frame = gtk_frame_new(NULL);
+     gtk_frame_set_shadow_type(GTK_FRAME(frame), GTK_SHADOW_OUT);
+     gtk_widget_show(frame);
+     gtk_container_add(GTK_CONTAINER(window), frame);
      
      /* scrollbars */
      /* create scrolled window to put the GtkList widget inside */
@@ -241,7 +246,8 @@ showHistory_signal(GtkWidget *widget, gpointer data)
 			"button_press_event",
 			GTK_SIGNAL_FUNC(historyPopupClickedInside_cb),
 			NULL);
-     gtk_container_add(GTK_CONTAINER(window), scrolled_window);
+     gtk_container_add(GTK_CONTAINER(frame), scrolled_window);
+     gtk_container_border_width(GTK_CONTAINER(scrolled_window), 2);
      gtk_widget_show(scrolled_window);
      
      
