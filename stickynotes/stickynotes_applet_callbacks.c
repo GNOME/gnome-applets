@@ -413,10 +413,14 @@ void menu_help_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gchar
 }
 
 /* Menu Callback : Display About window */
-void menu_about_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gchar *verbname)
+void
+menu_about_cb (BonoboUIComponent *uic,
+	       StickyNotesApplet *applet,
+	       const gchar *verbname)
 {
 	static const gchar *authors[] = {
 		"Loban A Rahman <loban@earthling.net>",
+		"Davyd Madeley <davyd@madeley.id.au>",
 		NULL
 	};
 
@@ -426,33 +430,18 @@ void menu_about_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gcha
 		NULL
 	};
 
-	const gchar *translator_credits = _("translator_credits");
-
-	if (applet->about_dialog) {
-		gtk_window_set_screen (GTK_WINDOW (applet->about_dialog),
-				       gtk_widget_get_screen (GTK_WIDGET (applet->w_applet)));
-
-		gtk_window_present (GTK_WINDOW (applet->about_dialog));
-		return;
-	}
-	
-	applet->about_dialog = gnome_about_new(_("Sticky Notes"),
-					       VERSION,
-					       _("(c) 2002-2003 Loban A Rahman"),
-					       _("Sticky Notes for the Gnome Desktop Environment"),
-					       authors,
-					       documenters,
-					       strcmp(translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
-					       stickynotes->icon_normal);
-
-	gtk_window_set_screen (GTK_WINDOW (applet->about_dialog),
-			       gtk_widget_get_screen (GTK_WIDGET (applet->w_applet)));
-
-	g_signal_connect (applet->about_dialog, "destroy",
-			  G_CALLBACK (gtk_widget_destroyed),
-			  &applet->about_dialog);
-	
-	gtk_widget_show(applet->about_dialog);
+	gtk_show_about_dialog (NULL,
+		"name",		_("Sticky Notes"),
+		"version",	VERSION,
+		"copyright",	"\xC2\xA9 2002-2003 Loban A Rahman, "
+				"\xC2\xA9 2005 Davyd Madeley",
+		"comments",	_("Sticky Notes for the "
+				  "GNOME Desktop Environment"),
+		"authors",	authors,
+		"documenters",	documenters,
+		"translator-credits",	_("translator-credits"),
+		"logo-icon-name",	"stock_notes",
+		NULL);
 }
 
 /* Preferences Callback : Save. */
