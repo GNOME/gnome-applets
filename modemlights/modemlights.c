@@ -88,8 +88,8 @@ static int confirm_dialog = FALSE;
 
 static PanelOrientType orient;
 
-#ifdef HAVE_PANEL_SIZE
-static PanelSizeType sizehint;
+#ifdef HAVE_PANEL_PIXEL_SIZE
+static int sizehint;
 #endif
 
 static gint panel_verticle = FALSE;
@@ -985,9 +985,9 @@ static void setup_colors()
 
 void reset_orientation(void)
 {
-#ifdef HAVE_PANEL_SIZE
-	if (((orient == ORIENT_LEFT || orient == ORIENT_RIGHT) && sizehint != SIZE_TINY) ||
-	    ((orient == ORIENT_UP || orient == ORIENT_DOWN) && sizehint == SIZE_TINY))
+#ifdef HAVE_PANEL_PIXEL_SIZE
+	if (((orient == ORIENT_LEFT || orient == ORIENT_RIGHT) && sizehint >= PIXEL_SIZE_STANDARD) ||
+	    ((orient == ORIENT_UP || orient == ORIENT_DOWN) && sizehint < PIXEL_SIZE_STANDARD))
 #else
 	if (orient == ORIENT_LEFT || orient == ORIENT_RIGHT)
 #endif
@@ -1044,8 +1044,8 @@ static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
 	if (setup_done) reset_orientation();
 }
 
-#ifdef HAVE_PANEL_SIZE
-static void applet_change_size(GtkWidget *w, PanelSizeType s, gpointer data)
+#ifdef HAVE_PANEL_PIXEL_SIZE
+static void applet_change_pixel_size(GtkWidget *w, int s, gpointer data)
 {
 	sizehint = s;
 	if (setup_done) reset_orientation();
@@ -1092,8 +1092,8 @@ int main (int argc, char *argv[])
 	command_disconnect = g_strdup("pppoff");
 	orient = ORIENT_UP;
 
-#ifdef HAVE_PANEL_SIZE
-	sizehint = SIZE_STANDARD;
+#ifdef HAVE_PANEL_PIXEL_SIZE
+	sizehint = PIXEL_SIZE_STANDARD;
 #endif
 
 	/* open ip socket */
@@ -1134,9 +1134,9 @@ int main (int argc, char *argv[])
 	gtk_signal_connect(GTK_OBJECT(applet),"change_orient",
 				GTK_SIGNAL_FUNC(applet_change_orient),
 				NULL);
-#ifdef HAVE_PANEL_SIZE
-	gtk_signal_connect(GTK_OBJECT(applet),"change_size",
-				GTK_SIGNAL_FUNC(applet_change_size),
+#ifdef HAVE_PANEL_PIXEL_SIZE
+	gtk_signal_connect(GTK_OBJECT(applet),"change_pixel_size",
+				GTK_SIGNAL_FUNC(applet_change_pixel_size),
 				NULL);
 #endif
 
