@@ -34,11 +34,13 @@
 ## cdplayer_SUBDIRS = $(cdplayer_applets)
 ## endif
 ## 
-## mixer_applets = \
-## 	mixer
-## if APPLET_MIXER
-## mixer_SUBDIRS = $(mixer_applets)
-## endif
+
+mixer_applets = \
+	mixer
+if APPLET_MIXER
+mixer_SUBDIRS = $(mixer_applets)
+endif
+
 ## 
 ## modemlights_applets = \
 ## 	modemlights
@@ -69,8 +71,8 @@ always_built_SUBDIRS = \
 ## 
 ## 
 SUBDIRS = \
- 	po			\
- 	$(always_built_SUBDIRS)	
+	po			\
+	$(always_built_SUBDIRS)	
 ## 	$(gtop_SUBDIRS)		\
 ## 	$(ghttp_SUBDIRS)	\
 ## 	$(cdplayer_SUBDIRS)	\
@@ -81,7 +83,7 @@ SUBDIRS = \
 ## 	omf-install
 ## 
 DIST_SUBDIRS = \
- 	po 			\
+	po 			\
 ## 	$(always_built_SUBDIRS)	\
 ## 	clipboard		\
 ## 	$(gtop_applets)		\
@@ -91,15 +93,15 @@ DIST_SUBDIRS = \
 ## 	$(modemlights_applets)	\
 ## 	$(esd_applets)		\
 ## 	$(wordexp_applets)      \
- 	omf-install
- 
+	omf-install
+
 EXTRA_DIST = \
- 	COPYING-DOCS		\
- 	gnome-applets.spec.in	\
- 	gnome-applets.spec	\
- 	applet-docs.make	\
- 	sgmldocs.make		\
- 	xml-i18n-update.in	\
- 	xml-i18n-extract.in	\
- 	xml-i18n-merge.in
- 
+	COPYING-DOCS		\
+	gnome-applets.spec.in	\
+	gnome-applets.spec	\
+	applet-docs.make	\
+	sgmldocs.make		\
+	xml-i18n-update.in	\
+	xml-i18n-extract.in	\
+	xml-i18n-merge.in
+

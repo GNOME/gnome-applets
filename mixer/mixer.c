@@ -1,16 +1,25 @@
 /*
+ * Mixer (volume control) applet.
+ * 
+ * (C) Copyright 2001, Richard Hult
+ *
+ * Author: Richard Hult <rhult@codefactory.se>
+ *
+ *
+ * Loosely based on the mixer applet:
+ *
  * GNOME audio mixer module
  * (C) 1998 The Free Software Foundation
  *
- * based on:
+ * Author: Michael Fulbright <msf@redhat.com>:
+ *
+ * Based on:
  *
  * GNOME time/date display module.
  * (C) 1997 The Free Software Foundation
  *
  * Authors: Miguel de Icaza
  *          Federico Mena
- *
- * Feel free to implement new look and feels :-)
  *
  */
 
@@ -19,6 +28,8 @@
  * bugs concerning the Solaris audio api code.
  *
  */	
+
+#include <config.h>
 
 #include <math.h>
 #include <stdio.h>
@@ -29,14 +40,11 @@
 #include <fcntl.h>
 #include <string.h>
 #include <errno.h>
-#include <config.h>
-#include <gnome.h>
-#include <gdk/gdkx.h>
-#include <applet-widget.h>
-#include <libgnomeui/gnome-window-icon.h>
 
-#include "vslider.h"
-#include "hslider.h"
+#include <gtk/gtk.h>
+#include <gdk/gdkkeysyms.h>
+#include <libgnomeui/gnome-about.h>
+#include <panel-applet.h>
 
 #ifdef HAVE_LINUX_SOUNDCARD_H
 #include <linux/soundcard.h>
@@ -76,47 +84,46 @@
 #define VOLUME_MAX 255
 #endif
 
-#include "lamp-small.xpm"
-#include "lamp-small-red.xpm"
+#include "volume-zero.xpm"
+#include "volume-min.xpm"
+#include "volume-medium.xpm"
+#include "volume-max.xpm"
+#include "volume-mute.xpm"
 
-typedef void (*MixerUpdateFunc) (GtkWidget *, gint);
+#define IS_PANEL_HORIZONTAL(o) (o == PANEL_APPLET_ORIENT_UP || o == PANEL_APPLET_ORIENT_DOWN)
 
 typedef struct {
-	/* gint mastervol; */
-	gint mute;
-	gint timeout;
-	MixerUpdateFunc update_func;
-	PanelOrientType orient;
-	int size;
-	gint last_vol;
+	PanelAppletOrient  orientation;
+
+	gint               timeout;
+	gboolean           mute;
+	gint               vol;
+	gint               vol_before_popup;
+
+	GtkAdjustment     *adj;
+
+	GtkWidget         *event_box;
+	GtkWidget         *applet;
+	GtkWidget         *image;
+	
+	/* The popup window and scale. */
+	GtkWidget         *popup;
+	GtkWidget         *scale;
+
+	GdkPixbuf         *zero_pixbuf;
+	GdkPixbuf         *min_pixbuf;
+	GdkPixbuf         *medium_pixbuf;
+	GdkPixbuf         *max_pixbuf;
+	GdkPixbuf         *mute_pixbuf;
 } MixerData;
 
-typedef struct {
-	GtkWidget *base;
+static void mixer_update_slider (MixerData *data);
+static void mixer_update_image  (MixerData *data);
+static void mixer_popup_show    (MixerData *data);
+static void mixer_popup_hide    (MixerData *data, gboolean revert);
 
-	GtkWidget *vbox;
-	GtkWidget *vslider;
-	GtkWidget *vmutebutton;
-	GtkWidget *vlightwid;
 
-	GtkWidget *hbox;
-	GtkWidget *hslider;
-	GtkWidget *hmutebutton;
-	GtkWidget *hlightwid;
-
-	GtkAdjustment *hadj;
-	GtkAdjustment *vadj;
-
-	guint16 startcolor[3];
-	guint16 endcolor[3];
-} MixerWidget;
-
-GtkWidget *applet = NULL;
-GtkWidget *mixerw = NULL;
-
-MixerData *md = NULL;
-
-gint mixerfd = -1;
+static gint       mixerfd = -1;
 
 #ifdef OSS_API
 static int mixerchannel;
@@ -267,536 +274,522 @@ setMixer(gint vol)
 }
 
 static void
-free_data(GtkWidget * widget, gpointer data)
-{
-	g_free(data);
-	return;
-	widget = NULL;
-}
-
-static void 
-mute_cb (GtkWidget *widget, gpointer   data)
-{
-	static gint old_vol=-1;
-	MixerData *p = data;
-	MixerWidget *mx;
-
-	mx = gtk_object_get_user_data(GTK_OBJECT(widget));
-
-	if (GTK_TOGGLE_BUTTON (widget)->active ) {
-		if (p->mute ==0) {
-			/* turn off the timeout */
-			gtk_widget_set_sensitive(mx->hslider, FALSE);
-			gtk_widget_set_sensitive(mx->vslider, FALSE);
-			p->mute = 1;
-			old_vol = readMixer();
-			setMixer(0);
-			gnome_pixmap_load_xpm_d(GNOME_PIXMAP(mx->hlightwid),
-				       		lamp_small_red_xpm);
-			gnome_pixmap_load_xpm_d(GNOME_PIXMAP(mx->vlightwid),
-				       		lamp_small_red_xpm);
-		}
-	} else {
-		if (p->mute ==1) {
-			p->mute = 0;
-			if (old_vol >= 0)
-				setMixer(old_vol);
-			gtk_widget_set_sensitive(mx->hslider, TRUE);
-			gtk_widget_set_sensitive(mx->vslider, TRUE);
-			gnome_pixmap_load_xpm_d(GNOME_PIXMAP(mx->hlightwid),
-				       		lamp_small_xpm);
-			gnome_pixmap_load_xpm_d(GNOME_PIXMAP(mx->vlightwid),
-				       		lamp_small_xpm);
-		}
-	}
-/* printf("In mute_cb: mute button state is %d\n",p->mute); */
-/*	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(widget), p->mute); */
-}
-
-static void
-adj_cb(GtkWidget *widget, gpointer   data)
+mixer_value_changed_cb (GtkAdjustment *adj, MixerData *data)
 {
 	gint vol;
-	MixerWidget *mx;
-	mx = gtk_object_get_user_data(GTK_OBJECT(widget));
-	if (GTK_ADJUSTMENT(widget) == mx->vadj)
-		vol = -GTK_ADJUSTMENT(data)->value;
-	else
-		vol = -(-VOLUME_MAX - GTK_ADJUSTMENT(data)->value);
-	/*	printf("In adj_cb: value is %d\n", vol); */
-	setMixer(vol);
-}
 
-static void
-set_other_button_cb(GtkWidget *widget, GtkWidget* other_button)
-{
-	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(other_button),
-		       		GTK_TOGGLE_BUTTON(widget)->active);
-}
-
-static void
-set_other_slider_cb(GtkAdjustment *adj, GtkAdjustment* other_adj)
-{
-
-	/* without the funny formula, the hslider would turn up the 
-	   volume to the left and down to the right.  */
-
-	if ( other_adj->value != -VOLUME_MAX - adj->value)
-	gtk_adjustment_set_value(other_adj, -VOLUME_MAX - adj->value);
-	
-}
-
-static int
-mixer_timeout_callback(gpointer data)
-{
-	gint mvol;
-
-	mvol = readMixer();
-	if (mvol != md->last_vol) {
-		(*md->update_func) (mixerw, mvol);
-		md->last_vol = mvol;
-	}
-	return 1;
-	data = NULL;
-}
-
-static void
-mixer_set_color(MixerWidget* mx)
-{
-	GdkColormap* colormap;
-	GdkColor bgColor;
-	guint16 baseColor[3];
-	gfloat inc_values[3];
-	gfloat  mod_value;
-	GtkWidget* cur_slider;
-	gint win_height, win_width;
-
-	/* operate on the slider that's currently showing */
-	if (md->orient == ORIENT_UP || md->orient == ORIENT_DOWN) {
-		if(md->size < PIXEL_SIZE_STANDARD)
-			cur_slider=mx->hslider;
-		else
-			cur_slider=mx->vslider;
-	} else  {
-		if(md->size < PIXEL_SIZE_STANDARD)
-			cur_slider=mx->vslider;
-		else
-			cur_slider=mx->hslider;
+	if (IS_PANEL_HORIZONTAL (data->orientation)) {
+		vol = -GTK_ADJUSTMENT (adj)->value;
+	} else {
+		vol = -(-VOLUME_MAX - GTK_ADJUSTMENT (adj)->value);
 	}
 
-	/* don't do anything if the slider isn't mapped to the screen */
-	if (GTK_RANGE(cur_slider)->trough){
+	data->vol = vol;
+
+	mixer_update_image (data);
 	
-		colormap = gdk_window_get_colormap(GTK_RANGE(cur_slider)->
-								trough);
-
-		/* mod_value becomes a float between 0 and 1 inclusive. */
-		mod_value = fabs( mx->hadj->value/
-				(mx->hadj->upper - mx->hadj->lower));
-
-		baseColor[0] = mx->endcolor[0];		
-		baseColor[1] = mx->endcolor[1];		
-		baseColor[2] = mx->endcolor[2];
-
-		inc_values[0] =  (gfloat)mx->startcolor[0] - mx->endcolor[0];	
-		inc_values[1] =  (gfloat)mx->startcolor[1] - mx->endcolor[1];	
-		inc_values[2] =  (gfloat)mx->startcolor[2] - mx->endcolor[2];	
-
-		/* interpolate a colour between startcolor and endcolor */	
-		bgColor.red   = baseColor[0] + (mod_value * inc_values[0]);
-		bgColor.green = baseColor[1] + (mod_value * inc_values[1]);
-		bgColor.blue  = baseColor[2] + (mod_value * inc_values[2]);
-
-		/* apply the new colour */
-		gdk_color_alloc(colormap, &bgColor);
-		gdk_window_set_background(GTK_RANGE(cur_slider)->trough,
-								&bgColor);
-		gdk_window_get_size(GTK_RANGE(cur_slider)->trough, &win_width,
-				       				&win_height);
-		gdk_window_clear_area(GTK_RANGE(cur_slider)->trough, 2, 2,
-						win_width -4,win_height -4);
+	if (!data->mute) {
+		setMixer (vol);
 	}
 }
 
-	
-static void
-mixer_update_func(GtkWidget *mixer, gint mvol)
+static gboolean
+mixer_timeout_cb (MixerData *data)
 {
-	MixerWidget *mx;
+	BonoboUIComponent *component;
+	gint               vol;
 
-	mx = gtk_object_get_user_data(GTK_OBJECT(mixer));
+	vol = readMixer ();
 
-	/* get out of mute mode if the volume is turned up by another program. */
-	if ((md->mute ==1) && (mvol !=0))
-	    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(mx->hmutebutton),0);
+	/* Some external program changed the volume, get out of mute mode. */
+	if (data->mute && (vol > 0)) {
+		data->mute = FALSE;
 
-	/* change the sliders to reflect the new value. */
-	/*   ignore if we're in mute mode. */
-	if (!md->mute) {
-	gtk_adjustment_set_value(mx->vadj, (gfloat)(-mvol));
-	gtk_adjustment_set_value(mx->hadj, (gfloat)(-VOLUME_MAX + mvol));
+		/* Sync the menu. */
+		component = panel_applet_get_popup_component (PANEL_APPLET (data->applet));
+
+		bonobo_ui_component_set_prop (component,
+					      "/commands/Mute",
+					      "state",
+					      "0",
+					      NULL);
 	}
-	mixer_set_color(mx);
-	
 
-	/* need code to read current mixer ? Or not since timeout cb does it */
-	/* how do I move the scale value once its realized?? */
-/*	gtk_scale_set_draw_value(GTK_SCALE(mx->slider), mvol); */
+	if (!data->mute && vol != data->vol) {
+		data->vol = vol;
+		mixer_update_slider (data);
+	}
+	
+	return TRUE;
 }
 
 static void
-create_computer_mixer_widget(GtkWidget ** mixer, 
-			     MixerUpdateFunc * update_func)
+mixer_update_slider (MixerData *data)
 {
-	MixerWidget* mx;
-	GtkWidget *vbox, *align, *hbox, *vbutton, *hbutton, *vscale, *hscale; 
-	GtkWidget *vlightwid, *hlightwid, *base;
-	GtkAdjustment *hadj, *vadj;
-	/* widget hierarchy:  
-	   
-	                        applet_widget
-		                      |
-			        ----vbox------ 
-	                        |            |
-                               vbox          hbox (only one of these boxes 
-                                |            |       is shown at a given time)
-                toggle_button AND slider     .
-	  	   |                         .
-	        gnome_pixmap                 .
-	  */ 
+	gint vol = data->vol;
 
-	base = gtk_vbox_new(FALSE, 0);	
-	
-	hbutton = gtk_toggle_button_new();
-	vbutton = gtk_toggle_button_new();
-	
-	vbox=gtk_vbox_new(FALSE,0);	
-	align=gtk_alignment_new(0.5,0.0, 1.0, 1.0);
-	hbox=gtk_hbox_new(FALSE,0);
-
-	vscale = vslider_new();
-	hscale = hslider_new();
-	
-        hadj=(GtkAdjustment *) gtk_adjustment_new (-50, -VOLUME_MAX, 0.0, 
-					VOLUME_MAX/100, VOLUME_MAX/10, 0.0);
-        vadj=(GtkAdjustment *) gtk_adjustment_new (-50, -VOLUME_MAX, 0.0, 
-					VOLUME_MAX/100, VOLUME_MAX/10, 0.0);
-
-	hlightwid = gnome_pixmap_new_from_xpm_d(lamp_small_xpm);
-	vlightwid = gnome_pixmap_new_from_xpm_d(lamp_small_xpm);
-
-	gtk_range_set_adjustment(GTK_RANGE(vscale), vadj);
-	gtk_range_set_adjustment(GTK_RANGE(hscale), hadj);
-
-	gtk_range_set_update_policy (GTK_RANGE(vscale), GTK_UPDATE_CONTINUOUS);
-       	gtk_range_set_update_policy (GTK_RANGE(hscale), GTK_UPDATE_CONTINUOUS);
-
-	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(hbutton), 0);
-	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(vbutton), 0);
-
-
-	/* cosmetic settings */
-	GTK_WIDGET_UNSET_FLAGS(vscale, GTK_CAN_DEFAULT);
-	GTK_WIDGET_UNSET_FLAGS(vscale, GTK_CAN_FOCUS);
-
-	GTK_WIDGET_UNSET_FLAGS(hscale, GTK_CAN_DEFAULT);
-	GTK_WIDGET_UNSET_FLAGS(hscale, GTK_CAN_FOCUS);
-
-	GTK_WIDGET_UNSET_FLAGS(hbutton, GTK_CAN_DEFAULT);
-	GTK_WIDGET_UNSET_FLAGS(hbutton, GTK_CAN_FOCUS);
-
-	GTK_WIDGET_UNSET_FLAGS(vbutton, GTK_CAN_DEFAULT);
-	GTK_WIDGET_UNSET_FLAGS(vbutton, GTK_CAN_FOCUS);
-	
-        gtk_scale_set_draw_value(GTK_SCALE(vscale), FALSE);
-        gtk_scale_set_draw_value(GTK_SCALE(hscale), FALSE);
-
-	gtk_widget_set_usize(GTK_WIDGET(vscale), 20, 32);
-	gtk_widget_set_usize(GTK_WIDGET(vbutton),20, 15);
-
-	gtk_widget_set_usize(GTK_WIDGET(hscale), 32, 20);
-	gtk_widget_set_usize(GTK_WIDGET(hbutton),15, 20);
-
-	
-	/* pack the widgets */
-	gtk_container_add(GTK_CONTAINER(align), vscale);
-	gtk_box_pack_start(GTK_BOX(vbox),align, FALSE, FALSE, 0);
-	gtk_box_pack_start(GTK_BOX(vbox),vbutton, FALSE, FALSE, 0); 
-
-	gtk_box_pack_start(GTK_BOX(hbox),hbutton, FALSE, FALSE, 0); 
-	gtk_box_pack_start(GTK_BOX(hbox),hscale, FALSE, FALSE, 0);
-
-	gtk_box_pack_start(GTK_BOX(base), vbox, TRUE, TRUE,0);
-	gtk_box_pack_start(GTK_BOX(base), hbox, TRUE, TRUE,0);
-
-	gtk_container_add(GTK_CONTAINER(hbutton),hlightwid);
-	gtk_container_add(GTK_CONTAINER(vbutton),vlightwid);
-
-	/* keep the hor. and vert. sliders in sync. */
-	gtk_signal_connect(GTK_OBJECT(hadj), "value_changed",
-			  (GtkSignalFunc)set_other_slider_cb, (gpointer)vadj);
-	gtk_signal_connect(GTK_OBJECT(vadj), "value_changed",
-			  (GtkSignalFunc)set_other_slider_cb, (gpointer)hadj);
-
-	/* write slider events to the mixer. */
-	gtk_signal_connect(GTK_OBJECT(vadj), "value_changed",
-			   (GtkSignalFunc)adj_cb, (gpointer)vadj);
-        gtk_signal_connect(GTK_OBJECT(hadj), "value_changed",
-			   (GtkSignalFunc)adj_cb, (gpointer)hadj);
-
-	/* keep mute buttons in sync */	
-	gtk_signal_connect(GTK_OBJECT(vbutton), "toggled",
-		  (GtkSignalFunc)set_other_button_cb, (gpointer)hbutton);
-	gtk_signal_connect(GTK_OBJECT(hbutton), "toggled",
-		  (GtkSignalFunc)set_other_button_cb, (gpointer)vbutton);
-
-	/* apply mute button events */
-	gtk_signal_connect(GTK_OBJECT(vbutton), "toggled",
-		   (GtkSignalFunc)mute_cb, (gpointer)md);
-        gtk_signal_connect(GTK_OBJECT(hbutton), "toggled",
-		   (GtkSignalFunc)mute_cb, (gpointer)md);
-
-	applet_widget_set_tooltip(APPLET_WIDGET(applet), _("Main Volume and Mute"));
-
-	
-
-	/* show the widgets */
-	gtk_widget_show (hbutton);
-	gtk_widget_show (vbutton);
-
-	gtk_widget_show(hlightwid);
-	gtk_widget_show(vlightwid);
-
-	gtk_widget_show (vscale);
-	gtk_widget_show (hscale);
-	gtk_widget_show (align);
-
-	if (md->orient == ORIENT_UP || md->orient == ORIENT_DOWN) {
-		if(md->size < PIXEL_SIZE_STANDARD)
-			gtk_widget_show(hbox);
-		else
-			gtk_widget_show(vbox);
-	} else  {
-		if(md->size < PIXEL_SIZE_STANDARD)
-			gtk_widget_show(vbox);
-		else
-			gtk_widget_show(hbox);
+	if (IS_PANEL_HORIZONTAL (data->orientation)) {
+		vol = -vol;
+	} else {
+		vol = vol - VOLUME_MAX;
 	}
+	
+	gtk_adjustment_set_value (data->adj, vol);
+}
+
+static void
+mixer_update_image (MixerData *data)
+{
+	gint       vol;
+	GdkPixbuf *pixbuf;
+
+	vol = data->vol;
+	
+	if (vol <= 0) {
+		pixbuf = data->zero_pixbuf;
+	}
+	else if (vol <= VOLUME_MAX / 3) {
+		pixbuf = data->min_pixbuf;
+	}
+	else if (vol <= 2 * VOLUME_MAX / 3) {
+		pixbuf = data->medium_pixbuf;
+	}
+	else {
+		pixbuf = data->max_pixbuf;
+	}
+
+	if (!data->mute) {
+		gtk_image_set_from_pixbuf (GTK_IMAGE (data->image), pixbuf);
+	} else {
+		GdkPixbuf *copy = gdk_pixbuf_copy (pixbuf);
+
+		gdk_pixbuf_composite (data->mute_pixbuf,
+				      copy,
+				      0,
+				      0,
+				      gdk_pixbuf_get_width (data->mute_pixbuf),
+				      gdk_pixbuf_get_height (data->mute_pixbuf),
+				      0,
+				      0,
+				      1.0,
+				      1.0,
+				      GDK_INTERP_BILINEAR,
+				      127);
+
+		gtk_image_set_from_pixbuf (GTK_IMAGE (data->image), copy);
+		g_object_unref (copy);
+	}
+}
+
+static gboolean
+scale_key_press_event_cb (GtkWidget *widget, GdkEventKey *event, MixerData *data)
+{
+	switch (event->keyval) {
+	case GDK_Escape:
+		/* Revert. */
+		mixer_popup_hide (data, TRUE);
+		return TRUE;
+
+	case GDK_KP_Enter:
+	case GDK_ISO_Enter:
+	case GDK_3270_Enter:
+	case GDK_Return:
+	case GDK_space:
+	case GDK_KP_Space:
+		/* Apply. */
+		mixer_popup_hide (data, FALSE);
+		return TRUE;
+
+	default:
+		break;
+	}
+
+	return FALSE;
+}
+static gboolean
+scale_button_release_event_cb (GtkWidget *widget, GdkEventButton *event, MixerData *data)
+{
+	if (event->button == 1 && data->popup) {
+		mixer_popup_hide (data, FALSE);
+		return TRUE;
+	}
+
+	return FALSE;
+}
+
+static gboolean
+event_box_button_press_event_cb (GtkWidget *widget, GdkEventButton *event, MixerData *data)
+{
+	if (event->button == 1) {
+		if (!data->popup) {
+			mixer_popup_show (data);
+		}
+		else {
+			mixer_popup_hide (data, FALSE);
+		}
+	}
+
+	g_signal_stop_emission_by_name (widget, "button_press_event");
+
+	if (event->button == 2) {
+		g_print ("Button2: Why won't the panel get this event?\n");
+	}
+
+	return FALSE;
+}
+
+static void
+mixer_popup_show (MixerData *data)
+{
+	GtkRequisition  req;
+	GtkWidget      *frame;
+	GtkWidget      *inner_frame;
+	gint            x, y;
+	gint            width, height;
+	GdkGrabStatus   pointer, keyboard;
+
+	data->popup = gtk_window_new (GTK_WINDOW_POPUP);
+
+	data->vol_before_popup = readMixer ();
+	
+	frame = gtk_frame_new (NULL);
+	gtk_container_set_border_width (GTK_CONTAINER (frame), 0);
+	gtk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_OUT);
+	gtk_widget_show (frame);
+	
+	inner_frame = gtk_frame_new (NULL);
+	gtk_container_set_border_width (GTK_CONTAINER (inner_frame), 0);
+	gtk_frame_set_shadow_type (GTK_FRAME (inner_frame), GTK_SHADOW_NONE);
+	gtk_widget_show (inner_frame);
+	
+	if (IS_PANEL_HORIZONTAL (data->orientation)) {
+		data->scale = gtk_vscale_new (data->adj);
+		gtk_widget_set_usize (data->scale, -1, 100);			
+	} else {
+		data->scale = gtk_hscale_new (data->adj);
+		gtk_widget_set_usize (data->scale, 100, -1);
+	}
+	
+	g_signal_connect (data->scale,
+			  "button-release-event",
+			  (GCallback) scale_button_release_event_cb,
+			  data);
+
+	g_signal_connect (data->scale,
+			  "key-press-event",
+			  (GCallback) scale_key_press_event_cb,
+			  data);
+	
+	gtk_widget_show (data->scale);
+	gtk_scale_set_draw_value (GTK_SCALE (data->scale), FALSE);
+	
+	gtk_range_set_update_policy (GTK_RANGE (data->scale),
+				     GTK_UPDATE_CONTINUOUS);
+	
+	gtk_container_add (GTK_CONTAINER (data->popup), frame);
+	
+	gtk_container_add (GTK_CONTAINER (frame), inner_frame);
+	gtk_container_add (GTK_CONTAINER (inner_frame), data->scale);
+
+	gtk_widget_show_all (inner_frame);
+	
+	/*
+	 * Position the popup right next to the button.
+	 */
+	gtk_widget_size_request (data->popup, &req);
+	
+	gdk_window_get_origin (data->image->window, &x, &y);
+	gdk_window_get_size (data->image->window, &width, &height);
+	
+	switch (data->orientation) {
+	case PANEL_APPLET_ORIENT_DOWN:
+		x += (width - req.width) / 2;
+		y += height;
+		break;
 		
-	/* signal handlers can use gtk_object_get_user_data to get a
-   	pointer to mx and access any of the mixer's widgets. */	   
-	mx = g_new(MixerWidget, 1);
-	mx->base = base;
-	mx->vbox = vbox;
-	mx->hbox = hbox;
-	mx->vslider = vscale;
-	mx->hslider = hscale;
-	mx->vmutebutton = vbutton;
-	mx->hmutebutton = hbutton;
-	mx->vlightwid = vlightwid;
-	mx->hlightwid = hlightwid;
-	mx->hadj = hadj;
-        mx->vadj = vadj;	
-
-	/* set the slider background colors */
-
-	mx->startcolor[0] = 45000;  /* R */
-	mx->startcolor[1] = 0;	    /* G */
-	mx->startcolor[2] = 0;      /* B */
+	case PANEL_APPLET_ORIENT_UP:
+		x += (width - req.width) / 2;
+		y -= req.height;
+		break;
+		
+	case PANEL_APPLET_ORIENT_LEFT:
+		x -= req.width;
+		y += (height - req.height) / 2;			
+		break;
+		
+	case PANEL_APPLET_ORIENT_RIGHT:
+		x += width;
+		y += (height - req.height) / 2;			
+		break;
+		
+	default:
+		break;
+	}
 	
-	mx->endcolor[0] = 0;
-	mx->endcolor[1] = 0;
-	mx->endcolor[2] = 45000;
+	if (x < 0) {
+		x = 0;
+	}
+	if (y < 0) {
+		y = 0;
+	}
+	
+	gtk_window_move (GTK_WINDOW (data->popup), x, y);
+	
+	gtk_widget_show (data->popup);
+	
+	/*
+	 * Grab focus and pointer.
+	 */
+	gtk_widget_grab_focus (data->scale);
+	gtk_grab_add (data->scale);
 
-	gtk_object_set_user_data(GTK_OBJECT(base), mx);
-	gtk_object_set_user_data(GTK_OBJECT(hbutton), mx);
-	gtk_object_set_user_data(GTK_OBJECT(vbutton), mx);
-	gtk_object_set_user_data(GTK_OBJECT(hadj), mx);
-	gtk_object_set_user_data(GTK_OBJECT(vadj), mx);
-
-	gtk_signal_connect(GTK_OBJECT(base), "destroy",
-			   (GtkSignalFunc) free_data, mx);
-
-	*mixer = base;
-	*update_func = mixer_update_func;
-
+	pointer = gdk_pointer_grab (data->scale->window,
+				    TRUE,
+				    (GDK_BUTTON_PRESS_MASK
+				     | GDK_BUTTON_RELEASE_MASK
+				     | GDK_POINTER_MOTION_MASK),
+				    NULL, NULL, GDK_CURRENT_TIME);
+	
+	keyboard = gdk_keyboard_grab (data->scale->window,
+				      TRUE,
+				      GDK_CURRENT_TIME);
+	
+	if (pointer != GDK_GRAB_SUCCESS || keyboard != GDK_GRAB_SUCCESS) {
+		/* We could not grab. */
+		gtk_grab_remove (data->scale);
+		gtk_widget_destroy (data->popup);
+		data->popup = NULL;
+		data->scale = NULL;
+		
+		if (pointer == GDK_GRAB_SUCCESS) {
+			gdk_keyboard_ungrab (GDK_CURRENT_TIME);
+		}
+		if (keyboard == GDK_GRAB_SUCCESS) {
+			gdk_pointer_ungrab (GDK_CURRENT_TIME);
+		}
+		
+		g_warning ("volume-control-applet: Could not grab X server.");
+	}
 }
 
 static void
-start_gmix_cb (AppletWidget *applet, gpointer data)
+mixer_popup_hide (MixerData *data, gboolean revert)
 {
-	gnome_execute_shell(NULL, "gmix");
+	gint vol;
+	
+	if (data->popup) {
+		gtk_grab_remove (data->scale);
+		gdk_pointer_ungrab (GDK_CURRENT_TIME);		
+		gdk_keyboard_ungrab (GDK_CURRENT_TIME);
+
+		/* Ref the adjustment or it will get destroyed
+		 * when the scale goes away.
+		 */
+		gtk_object_ref (GTK_OBJECT (data->adj));
+
+		gtk_widget_destroy (GTK_WIDGET (data->popup));
+
+		data->popup = NULL;
+		data->scale = NULL;
+
+		if (revert) {
+			vol = data->vol_before_popup;
+			setMixer (vol);
+		} else {
+			/* Get a soft beep like sound to play here, like
+			 * on MacOS X :) */
+			/*gnome_sound_play ("blipp.wav");*/
+		}
+	}
 }
 
 static void
-destroy_mixer(GtkWidget * widget, void *data)
+destroy_mixer_cb (GtkWidget *widget, MixerData *data)
 {
-	gtk_timeout_remove(md->timeout);
-	g_free(md);
+	if (data->timeout != 0) {
+		gtk_timeout_remove (data->timeout);
+		data->timeout = 0;
+	}
+
+	if (data->zero_pixbuf) {
+		g_object_unref (data->zero_pixbuf);
+		data->zero_pixbuf = NULL;
+	}
+	if (data->min_pixbuf) {
+		g_object_unref (data->min_pixbuf);
+		data->min_pixbuf = NULL;
+	}
+	if (data->medium_pixbuf) {
+		g_object_unref (data->medium_pixbuf);
+		data->medium_pixbuf = NULL;
+	}
+	if (data->max_pixbuf) {
+		g_object_unref (data->max_pixbuf);
+		data->max_pixbuf = NULL;
+	}
+	if (data->mute_pixbuf) {
+		g_object_unref (data->mute_pixbuf);
+		data->mute_pixbuf = NULL;
+	}
+	
+	g_free (data);
+
 	return;
-	widget = NULL;
-	data = NULL;
-}
-
-static GtkWidget *
-create_mixer_widget(void)
-{
-	GtkWidget *mixer;
-	gint      curmvol;
-
-	md = g_new(MixerData, 1);
-	
-	/* ask the panel for its current orientation and size. */
-	md->orient = applet_widget_get_panel_orient(APPLET_WIDGET(applet));
-	md->size = applet_widget_get_panel_pixel_size(APPLET_WIDGET(applet));
-
-	/* do the nitty-gritty GTK-related stuff */
-	create_computer_mixer_widget(&mixer, &md->update_func);
-
-	/* Install timeout handler */
-
-	md->timeout = gtk_timeout_add(500, mixer_timeout_callback, mixer);
-	md->mute   = 0;
-
-	gtk_signal_connect(GTK_OBJECT(mixer), "destroy",
-			   (GtkSignalFunc) destroy_mixer,
-			   NULL);
-	/* Call the mixer's update function so that it paints its first state */
-
-	/* add code to read currect status of mixer */
-	curmvol = readMixer(); /* replace with proper read */
-	(*md->update_func) (mixer, curmvol);
-	md->last_vol = curmvol;
-	return mixer;
 }
 
 static void
-mixer_about (AppletWidget *applet, gpointer data)
+applet_change_orient_cb (GtkWidget *w, PanelAppletOrient o, MixerData *data)
+{
+	gint vol;
+	
+	mixer_popup_hide (data, FALSE);
+
+	data->orientation = o;
+}
+
+static void
+applet_change_size_cb (GtkWidget *w, gint size, MixerData *data)
+{
+	gint vol;
+	
+	mixer_popup_hide (data, FALSE);
+
+	/* Really only needed to fit on the ultra small panel,
+	 * but we could scale up for the bigger ones...
+	 */
+	if (IS_PANEL_HORIZONTAL (data->orientation)) {
+		gtk_widget_set_size_request (GTK_WIDGET (data->event_box), -1, size);
+	} else {
+		gtk_widget_set_size_request (GTK_WIDGET (data->event_box), size, -1);
+	}
+}
+
+static void
+mixer_start_gmix_cb (BonoboUIComponent *uic,
+		     MixerData         *data,
+		     const gchar       *verbname)
+{
+	gnome_execute_shell (NULL, "gmix");
+}
+
+static void
+mixer_about_cb (BonoboUIComponent *uic,
+		MixerData         *data,
+		const gchar       *verbname)
 {
         static GtkWidget   *about     = NULL;
-        static const gchar *authors[] =
-        {
-		"Michael Fulbright <msf@redhat.com>",
+        static const gchar *authors[] = {
+		"Richard Hult <rhult@codefactory.se>",
                 NULL
         };
 
-        if (about != NULL)
-        {
-                gdk_window_show(about->window);
-                gdk_window_raise(about->window);
+        if (about != NULL) {
+                gdk_window_show (about->window);
+                gdk_window_raise (about->window);
                 return;
         }
-        
-        about = gnome_about_new (_("Mixer Applet"), VERSION,
-                                 _("(c) 1998 The Free Software Foundation"),
-                                 authors,
-                                 _("The mixer applet gives you instant access to setting the master volume level on your soundcard device"),
+
+        about = gnome_about_new (_("Volume Control"), VERSION,
+                                 _("(C) 2001 Richard Hult"),
+                                 _("The volume control lets you set the volume level for your desktop."),
+				 authors,
+				 NULL,
+				 NULL,
                                  NULL);
-        gtk_signal_connect (GTK_OBJECT(about), "destroy",
-                            GTK_SIGNAL_FUNC(gtk_widget_destroyed), &about);
+
+        gtk_signal_connect (GTK_OBJECT (about), "destroy",
+                            GTK_SIGNAL_FUNC (gtk_widget_destroyed),
+			    &about);
+	
         gtk_widget_show (about);
 }
 
-/*these are commands sent over corba: */
 static void
-applet_change_orient(GtkWidget *w, PanelOrientType o)
+mixer_help_cb (BonoboUIComponent *uic,
+	       MixerData         *data,
+	       const gchar       *verbname)
 {
-	gint mvol;
-	MixerWidget* mx;
-	
-	mvol = readMixer();
+#if 0
+	GnomeHelpMenuEntry help_entry = {
+		"volume-control-applet",
+		"index.html"
+	};
 
-	(*md->update_func) (mixerw, mvol);
-
-	mx = gtk_object_get_user_data(GTK_OBJECT(w));	
-
-	if(md->size < PIXEL_SIZE_STANDARD) {
-		/* hide one box */
-		if((ORIENT_UP == md->orient) || (ORIENT_DOWN == md->orient))
-			gtk_widget_hide(mx->hbox);
-		else
-			gtk_widget_hide(mx->vbox);
-
-		/* and show the other */
-		if(ORIENT_UP == o || ORIENT_DOWN == o)
-			gtk_widget_show(mx->hbox);
-		else
-			gtk_widget_show(mx->vbox);
-	} else {
-		/* hide one box */
-		if((ORIENT_UP == md->orient) || (ORIENT_DOWN == md->orient))
-			gtk_widget_hide(mx->vbox);
-		else
-			gtk_widget_hide(mx->hbox);
-
-		/* and show the other */
-		if(ORIENT_UP == o || ORIENT_DOWN == o)
-			gtk_widget_show(mx->vbox);
-		else
-			gtk_widget_show(mx->hbox);
-	}
-
-	md->orient = o;
-
-	/* without this, the mixer sometimes draws itself incorrectly
-	   if you drag the panel around the screen a lot. */
-	while(gtk_events_pending())
-		gtk_main_iteration();
+	gnome_help_display (NULL, &help_entry);
+#endif
 }
+
+/* Dummy callback to get rid of a warning, for now. */
 static void
-applet_change_pixel_size(GtkWidget *w, int size)
+mixer_mute_cb (BonoboUIComponent *uic,
+	       MixerData         *data,
+	       const gchar       *verbname)
 {
-	gint mvol;
-	MixerWidget* mx;
+}
+
+static void
+mixer_ui_component_event (BonoboUIComponent            *comp,
+			  const gchar                  *path,
+			  Bonobo_UIComponent_EventType  type,
+			  const gchar                  *state_string,
+			  MixerData                    *data)
+{
+	gboolean state;
 	
-	mvol = readMixer();
-
-	(*md->update_func) (mixerw, mvol);
-
-	mx = gtk_object_get_user_data(GTK_OBJECT(w));	
-	
-	md->size = size;
-
-	if (md->orient == ORIENT_UP || md->orient == ORIENT_DOWN) {
-		if(md->size < PIXEL_SIZE_STANDARD) {
-			gtk_widget_hide(mx->vbox);
-			gtk_widget_show(mx->hbox);
+	if (!strcmp (path, "Mute")) {
+		if (!strcmp (state_string, "1")) {
+			state = TRUE;
 		} else {
-			gtk_widget_hide(mx->hbox);
-			gtk_widget_show(mx->vbox);
+			state = FALSE;
 		}
-	} else  {
-		if(md->size < PIXEL_SIZE_STANDARD) {
-			gtk_widget_hide(mx->hbox);
-			gtk_widget_show(mx->vbox);
-		} else {
-			gtk_widget_hide(mx->vbox);
-			gtk_widget_show(mx->hbox);
+
+		if (state == data->mute) {
+			return;
+		}
+	       
+		data->mute = state;
+
+		if (data->mute) {
+			setMixer (0);
+			mixer_update_image (data);
+		}
+		else {
+			setMixer (data->vol);
+			mixer_update_image (data);
 		}
 	}
-
-	/* without this, the mixer sometimes draws itself incorrectly
-	   if you drag the panel around the screen a lot. */
-	while(gtk_events_pending())
-		gtk_main_iteration();
 }
 
-static void
-help_cb (AppletWidget *applet, gpointer data)
-{
-	GnomeHelpMenuEntry help_entry = { "mixer_applet", "index.html"};
-	gnome_help_display(NULL, &help_entry);
-}
+static const BonoboUIVerb mixer_applet_menu_verbs [] = {
+	BONOBO_UI_UNSAFE_VERB ("RunMixer", mixer_start_gmix_cb),
+	BONOBO_UI_UNSAFE_VERB ("Mute",     mixer_mute_cb),
+	BONOBO_UI_UNSAFE_VERB ("Help",     mixer_help_cb),
+	BONOBO_UI_UNSAFE_VERB ("About",    mixer_about_cb),
 
-int
-main(int argc, char **argv)
-{
-	bindtextdomain(PACKAGE, GNOMELOCALEDIR);
-	textdomain(PACKAGE);
+        BONOBO_UI_VERB_END
+};
 
-	applet_widget_init("mixer_applet", VERSION, argc, argv,
-				    NULL, 0, NULL);
-	gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gnome-mixer.png");
+static const char mixer_applet_menu_xml [] =
+"<popup name=\"button3\">\n"
+"   <menuitem name=\"RunMixer\" verb=\"RunMixer\" _label=\"Run Audio Mixer...\"\n"
+"             />" /*pixtype=\"stock\" pixname=\"gtk-volume\"/>\n"*/
+"             pixtype=\"stock\" pixname=\"gtk-volume\"/>\n"
+"   <menuitem name=\"Mute\" verb=\"Mute\" type=\"toggle\" _label=\"Mute\"\n"
+"             pixtype=\"stock\" pixname=\"gtk-volume\"/>\n"
+"   <menuitem name=\"Help\" verb=\"Help\" _label=\"Help\"\n"
+"             pixtype=\"stock\" pixname=\"gtk-help\"/>\n"
+"   <menuitem name=\"About\" verb=\"About\" _label=\"About ...\"\n"
+"             pixtype=\"stock\" pixname=\"gnome-stock-about\"/>\n"
+"</popup>\n";
+
+static BonoboObject *
+mixer_applet_new (void)
+{
+	MixerData         *data;
+	GtkWidget         *event_box;
+	GtkWidget         *applet;
+	gint               vol;
+	BonoboUIComponent *component;
 
 #ifdef OSS_API
 	openMixer("/dev/mixer");
@@ -805,46 +798,114 @@ main(int argc, char **argv)
 	openMixer("/dev/audioctl");
 #endif
 
-	applet = applet_widget_new("mixer_applet");
-	if (!applet)
-		g_error(("Can't create applet!\n"));
+	data = g_new0 (MixerData, 1);
 
-	gtk_signal_connect(GTK_OBJECT(applet),"change_orient",
-			   GTK_SIGNAL_FUNC(applet_change_orient),
-			   NULL);
-	gtk_signal_connect(GTK_OBJECT(applet),"change_pixel_size",
-			   GTK_SIGNAL_FUNC(applet_change_pixel_size),
-			   NULL);
+	data->zero_pixbuf = gdk_pixbuf_new_from_xpm_data (volume_zero_xpm);
+	data->min_pixbuf = gdk_pixbuf_new_from_xpm_data (volume_min_xpm);
+	data->medium_pixbuf = gdk_pixbuf_new_from_xpm_data (volume_medium_xpm);
+	data->max_pixbuf = gdk_pixbuf_new_from_xpm_data (volume_max_xpm);
+	data->mute_pixbuf = gdk_pixbuf_new_from_xpm_data (volume_mute_xpm);
+	
+	data->event_box = gtk_event_box_new ();
+	
+	data->image = gtk_image_new ();
 
-	mixerw = create_mixer_widget();
-	gtk_widget_show(mixerw);
-	applet_widget_add(APPLET_WIDGET(applet), mixerw);
+	g_signal_connect (data->event_box,
+			  "button-press-event",
+			  (GCallback) event_box_button_press_event_cb,
+			  data);
+	
+	gtk_container_add (GTK_CONTAINER (data->event_box), data->image);
 
-	gtk_object_set_user_data(GTK_OBJECT(applet),
-				gtk_object_get_user_data(GTK_OBJECT(mixerw)));
+	gtk_widget_show_all (data->event_box);
+	
+        data->adj = GTK_ADJUSTMENT (
+		gtk_adjustment_new (-50,
+				    -VOLUME_MAX,
+				    0.0, 
+				    VOLUME_MAX/100,
+				    VOLUME_MAX/10,
+				    0.0));
 
-        applet_widget_register_stock_callback (APPLET_WIDGET(applet),
-					       "run_gmix",
-					       GNOME_STOCK_MENU_VOLUME,
-					       _("Run Audio Mixer..."),
-					       start_gmix_cb,
-					       NULL);
+	g_signal_connect (GTK_OBJECT (data->adj),
+			  "value-changed",
+			  (GCallback) mixer_value_changed_cb,
+			  data);
 
-	applet_widget_register_stock_callback (APPLET_WIDGET(applet),
-					       "help",
-					       GNOME_STOCK_PIXMAP_HELP,
-					       _("Help"), help_cb, NULL);
+	/* Get the initial volume. */
+	vol = readMixer ();
+	data->vol = vol;
 
-	applet_widget_register_stock_callback (APPLET_WIDGET(applet),
-					       "about",
-					       GNOME_STOCK_MENU_ABOUT,
-					       _("About..."),
-					       mixer_about,
-					       NULL);
+	applet = panel_applet_new (data->event_box);
+	
+	data->applet = applet;
+	
+	/* Install timeout handler, that keeps the applet up-to-date if the
+	 * volume is changed somewhere else.
+	 */
+	data->timeout = gtk_timeout_add (500,
+					 (GSourceFunc) mixer_timeout_cb,
+					 data);
 
-	gtk_widget_show(applet);
+	data->mute = FALSE;
 
-	applet_widget_gtk_main();
+	g_signal_connect (applet,
+			  "destroy",
+			  (GCallback) destroy_mixer_cb,
+			  data);
 
-	return 0;
+	g_signal_connect (applet,
+			  "change_orient",
+			  G_CALLBACK (applet_change_orient_cb),
+			  data);
+
+	g_signal_connect (applet,
+			  "change_size",
+			  G_CALLBACK (applet_change_size_cb),
+			  data);
+
+	panel_applet_setup_menu (PANEL_APPLET (applet),
+				 mixer_applet_menu_xml,
+				 mixer_applet_menu_verbs,
+				 data);
+
+	component = panel_applet_get_popup_component (PANEL_APPLET (applet));
+
+	g_signal_connect (component,
+			  "ui-event",
+			  (GCallback) mixer_ui_component_event,
+			  data);
+	
+	applet_change_orient_cb (applet,
+				 panel_applet_get_orient (PANEL_APPLET (applet)),
+				 data);
+	applet_change_size_cb (applet,
+			       panel_applet_get_size (PANEL_APPLET (applet)),
+			       data);
+	
+	mixer_update_slider (data);
+	mixer_update_image (data);
+
+	gtk_widget_show (applet);
+
+	return BONOBO_OBJECT (panel_applet_get_control (PANEL_APPLET (applet)));
 }
+
+static BonoboObject *
+mixer_applet_factory (BonoboGenericFactory *this,
+		      const gchar          *iid,
+		      gpointer              data)
+{
+	BonoboObject *applet = NULL;
+	
+	if (!strcmp (iid, "OAFIID:GNOME_MixerApplet"))
+		applet = mixer_applet_new ();
+	
+	return applet;
+}
+
+PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_MixerApplet_Factory",
+			     "Volume control applet",
+			     "0",
+			     mixer_applet_factory,
+			     NULL)

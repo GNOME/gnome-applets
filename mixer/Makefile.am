@@ -1,32 +1,26 @@
-SUBDIRS = docs
+#SUBDIRS = docs
 
 INCLUDES = -I. -I$(srcdir) 				\
-	-I$(top_srcdir)/intl -I$(top_builddir)/intl	\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
-	-I$(includedir)
+	-I$(includedir)					\
+	$(GNOME_APPLETS_CFLAGS)
 
-bin_PROGRAMS = mixer_applet
+bin_PROGRAMS = mixer_applet2
 
-mixer_applet_SOURCES = \
-	mixer.c		\
-	vslider.c	\
-	vslider.h	\
-	hslider.c	\
-	hslider.h	\
-	lamp-small.xpm  \
-	lamp-small-red.xpm 
+mixer_applet2_SOURCES = 				\
+	mixer.c
 
-mixer_applet_LDADD = \
-		     $(MIXER_LIBS) \
-		     $(GNOME_APPLETS_LIBS) $(INTLLIBS) 
+mixer_applet2_LDADD = 					\
+	$(MIXER_LIBS) 					\
+	$(GNOME_APPLETS_LIBS)
 
-sysdir = $(datadir)/applets/Multimedia
-sys_predata = mixer_applet.desktop.in
-sys_DATA = $(sys_predata:.desktop.in=.desktop)
-@XML_I18N_MERGE_DESKTOP_RULE@
+serverdir       = $(libdir)/bonobo/servers
+server_in_files = GNOME_MixerApplet.server.in
+server_DATA     = $(server_in_files:.server.in=.server)
 
-gnorbadir  = $(sysconfdir)/CORBA/servers
-gnorba_DATA = mixer_applet.gnorba
+@XML_I18N_MERGE_SERVER_RULE@
 
-EXTRA_DIST = $(gnorba_DATA) $(sys_DATA) $(sys_predata)
+EXTRA_DIST = 						\
+	$(server_DATA) 					\
+	$(server_in_files)
 
