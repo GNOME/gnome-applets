@@ -12,6 +12,7 @@
 #include <dirent.h>
 #include <string.h>
 #include <time.h>
+#include <config.h>
 #include <gnome.h>
 #include <gdk/gdkx.h>
 
@@ -28,10 +29,8 @@ int
 main(int argc, char ** argv)
 {
   /* Initialize i18n */
-#if 0
   bindtextdomain (PACKAGE, GNOMELOCALEDIR);
   textdomain (PACKAGE);
-#endif
 
   /* Initialize the applet */
   applet_widget_init("battery_applet", &parser, argc, argv, 0, NULL, argv[0],
@@ -581,7 +580,14 @@ battery_set_size(BatteryData * bat)
   gtk_widget_set_usize(bat->graph_frame, bat->width, bat->height);
   gtk_widget_set_usize(bat->readout_frame, bat->width, bat->height);
 
-  /* FIXME: free these!! */
+  /* If pixmaps have already been allocated, then free them here before
+     creating new ones. */
+  if (bat->setup)
+    {
+      gdk_pixmap_unref(bat->graph_pixmap);
+      gdk_pixmap_unref(bat->readout_pixmap);
+    }
+
   bat->graph_pixmap = gdk_pixmap_new(bat->graph_area->window,
 				     bat->width, bat->height,
 			     gtk_widget_get_visual(bat->graph_area)->depth);

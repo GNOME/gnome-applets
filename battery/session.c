@@ -30,26 +30,32 @@ battery_session_load(gchar * cfgpath, BatteryData * bat)
     ("battery/height=" BATTERY_DEFAULT_HEIGHT, NULL);
 
   /* The graph */
+  
   bat->graph_interval = gnome_config_get_int_with_default
     ("graph/interval=" BATTERY_DEFAULT_GRAPH_INTERVAL, NULL);
   bat->graph_direction = gnome_config_get_int_with_default
     ("graph/direction=" BATTERY_DEFAULT_GRAPH_DIRECTION, NULL);
-  bat->graph_color_ac_on_s =
-    gnome_config_get_string_with_default
-    ("graph/ac_on_color=" BATTERY_DEFAULT_GRAPH_ACON_COLOR, NULL);
 
-  printf("bat->graph_color_ac_on_s: %s\n", bat->graph_color_ac_on_s);
-  bat->graph_color_ac_off_s =
-    gnome_config_get_string_with_default
-    ("graph/ac_off_color="  BATTERY_DEFAULT_GRAPH_ACOFF_COLOR, NULL);
+  strncpy(bat->graph_color_ac_on_s,
+	  gnome_config_get_string_with_default
+	  ("graph/ac_on_color=" BATTERY_DEFAULT_GRAPH_ACON_COLOR, NULL),
+	  sizeof(bat->graph_color_ac_on_s));
+
+  strncpy(bat->graph_color_ac_off_s,
+	  gnome_config_get_string_with_default
+	  ("graph/ac_off_color="  BATTERY_DEFAULT_GRAPH_ACOFF_COLOR, NULL),
+	  sizeof(bat->graph_color_ac_off_s));
 
   /* The readout */
-  bat->readout_color_ac_on_s =
-    gnome_config_get_string_with_default
-    ("readout/ac_on_color="  BATTERY_DEFAULT_READOUT_ACON_COLOR, NULL);
-  bat->readout_color_ac_off_s =
-    gnome_config_get_string_with_default
-    ("readout/ac_off_color=" BATTERY_DEFAULT_READOUT_ACOFF_COLOR, NULL);
+  strncpy(bat->readout_color_ac_on_s,
+	  gnome_config_get_string_with_default
+	  ("readout/ac_on_color="  BATTERY_DEFAULT_READOUT_ACON_COLOR, NULL),
+	  sizeof(bat->readout_color_ac_on_s));
+
+  strncpy(bat->readout_color_ac_off_s,
+	  gnome_config_get_string_with_default
+	  ("readout/ac_off_color=" BATTERY_DEFAULT_READOUT_ACOFF_COLOR, NULL),
+	  sizeof(bat->readout_color_ac_off_s));
 
   gnome_config_pop_prefix ();
 } /* battery_session_load */
@@ -105,12 +111,17 @@ battery_session_defaults(BatteryData * bat)
   /* The Graph */
   bat->graph_interval = atoi(BATTERY_DEFAULT_GRAPH_INTERVAL);
   bat->graph_direction = atoi(BATTERY_DEFAULT_GRAPH_DIRECTION);
-  bat->graph_color_ac_on_s = BATTERY_DEFAULT_GRAPH_ACON_COLOR;
-  bat->graph_color_ac_off_s = BATTERY_DEFAULT_GRAPH_ACOFF_COLOR;
+  strncpy(bat->graph_color_ac_on_s, BATTERY_DEFAULT_GRAPH_ACON_COLOR,
+	  sizeof(bat->graph_color_ac_on_s));
+  strncpy(bat->graph_color_ac_off_s, BATTERY_DEFAULT_GRAPH_ACOFF_COLOR,
+	  sizeof(bat->graph_color_ac_off_s));
 
   /* The Readout */
-  bat->readout_color_ac_on_s = BATTERY_DEFAULT_READOUT_ACON_COLOR;
-  bat->readout_color_ac_off_s = BATTERY_DEFAULT_READOUT_ACOFF_COLOR;
+  strncpy(bat->readout_color_ac_on_s, BATTERY_DEFAULT_READOUT_ACON_COLOR,
+	  sizeof(bat->readout_color_ac_on_s));
+	  
+  strncpy(bat->readout_color_ac_off_s, BATTERY_DEFAULT_READOUT_ACOFF_COLOR,
+	  sizeof(bat->readout_color_ac_on_s));
 
 } /* battery_session_defaults */
 

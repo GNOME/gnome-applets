@@ -220,12 +220,10 @@ prop_apply (GtkWidget *w, int page, gpointer data)
   BatteryData * bat = data;
   int width, height, size_changed = 0;
   int r, g, b;
-  char * col;
 
   /* Update the running session from the properties.  The session
      state will be saved when the applet exits and the panel tells it
      to save state. */
-
   height = GTK_ADJUSTMENT(bat->height_adj)->value;
   width = GTK_ADJUSTMENT(bat->width_adj)->value;
   if (height != bat->height ||  width != bat->width)
@@ -240,31 +238,27 @@ prop_apply (GtkWidget *w, int page, gpointer data)
 
   gnome_color_selector_get_color_int ( bat->graph_ac_on_color_sel,
 				       &r, &g, &b, 255);
-  col = g_malloc(24);   /* FIXME! */
-  sprintf(col, "#%02x%02x%02x", (unsigned char)r, (unsigned char)g,
-	  (unsigned char)b);
-  bat->graph_color_ac_on_s = col;
+  snprintf(bat->graph_color_ac_on_s, sizeof(bat->graph_color_ac_on_s),
+	   "#%02x%02x%02x", (unsigned char)r, (unsigned char)g,
+	   (unsigned char)b);
 
   gnome_color_selector_get_color_int ( bat->graph_ac_off_color_sel,
 				       &r, &g, &b, 255);
-  col = g_malloc(24);   /* FIXME! */
-  sprintf(col, "#%02x%02x%02x", (unsigned char)r, (unsigned char)g,
+  snprintf(bat->graph_color_ac_off_s, sizeof(bat->graph_color_ac_off_s),
+	  "#%02x%02x%02x", (unsigned char)r, (unsigned char)g,
 	  (unsigned char)b);
-  bat->graph_color_ac_off_s = col;
 
   gnome_color_selector_get_color_int ( bat->readout_ac_off_color_sel,
 				       &r, &g, &b, 255);
-  col = g_malloc(24);   /* FIXME! */
-  sprintf(col, "#%02x%02x%02x", (unsigned char)r, (unsigned char)g,
+  snprintf(bat->readout_color_ac_off_s, sizeof(bat->readout_color_ac_off_s),
+	  "#%02x%02x%02x", (unsigned char)r, (unsigned char)g,
 	  (unsigned char)b);
-  bat->readout_color_ac_off_s = col;
 
   gnome_color_selector_get_color_int ( bat->readout_ac_on_color_sel,
 				       &r, &g, &b, 255);
-  col = g_malloc(24);   /* FIXME! */
-  sprintf(col, "#%02x%02x%02x", (unsigned char)r, (unsigned char)g,
+  snprintf(bat->readout_color_ac_on_s, sizeof(bat->readout_color_ac_on_s),
+	  "#%02x%02x%02x", (unsigned char)r, (unsigned char)g,
 	  (unsigned char)b);
-  bat->readout_color_ac_on_s = col;
 
   battery_setup_colors(bat);
 

@@ -39,9 +39,9 @@ typedef struct BatteryData {
   gint graph_direction;
 #define BATTERY_GRAPH_LEFT_TO_RIGHT 1
 #define BATTERY_GRAPH_RIGHT_TO_LEFT 2
-  gchar * graph_color_ac_on_s;
+  gchar graph_color_ac_on_s[24];
   GdkColor graph_color_ac_on;
-  gchar * graph_color_ac_off_s;
+  gchar graph_color_ac_off_s[24];
   GdkColor graph_color_ac_off;
 
   /* Widgets n stuff... */
@@ -62,9 +62,9 @@ typedef struct BatteryData {
    */
 
   /* The Configurable elements of the readout */
-  gchar * readout_color_ac_on_s;
+  gchar readout_color_ac_on_s[24];
   GdkColor readout_color_ac_on;
-  gchar * readout_color_ac_off_s;
+  gchar readout_color_ac_off_s[24];
   GdkColor readout_color_ac_off;
 
   /* Widgets n stuff */
