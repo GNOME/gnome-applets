@@ -1,4 +1,4 @@
-figs =
+figs = whereami_applet.png
 applet = whereami
 lang = C
 sgml_ents = $(applet).sgml

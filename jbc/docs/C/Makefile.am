@@ -1,4 +1,4 @@
-figs =
+figs = jbc_applet.png
 applet = jbc
 lang = C
 sgml_ents = $(applet).sgml
