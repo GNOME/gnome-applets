@@ -211,7 +211,7 @@ void gweather_applet_create (int argc, char *argv[])
     tooltips = gtk_tooltips_new();
 
     frame = gtk_frame_new(NULL);
-    gtk_frame_set_shadow_type(GTK_FRAME(frame), GTK_SHADOW_IN);
+    gtk_frame_set_shadow_type(GTK_FRAME(frame), GTK_SHADOW_ETCHED_IN);
     gtk_widget_set_usize(frame, 26, 48);
     gtk_widget_show(frame);
 
