@@ -846,7 +846,7 @@ static gint updateOutput(gpointer data)
 
 		stockdata->props.scroll_speed = timeout;
 		panel_applet_gconf_set_int (applet, "scroll_speed", 
-					    stockdata->props.timeout, NULL);
+					    stockdata->props.scroll_speed, NULL);
 		gtk_timeout_remove(stockdata->drawTimeID);
 		stockdata->drawTimeID = gtk_timeout_add(stockdata->props.scroll_speed,
 						        Repaint,stockdata);
