@@ -57,11 +57,12 @@ enum {
 static gint
 batmon_timeout_callback (gpointer *data)
 {
-	gboolean	linestat;
+	gboolean	linestat = TRUE;
 	gint		batflag;
 	gint		batpct;
 	gint		batmin;
 	gchar		str[30];
+	gchar		*fname;
 	
 /* In an effort to be platform independent, the section of code below
    (up to the #endif) is the only Linux-specific code in this function
@@ -81,7 +82,6 @@ batmon_timeout_callback (gpointer *data)
 	gchar		*string[9];
 	gchar		*mempoint;
 	gchar		*apmstr;
-	gchar		*fname;
 	gint		i;
 	int             intval;
 	
