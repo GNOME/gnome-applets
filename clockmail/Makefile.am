@@ -22,11 +22,13 @@ EXTRA_DIST = \
 	clockmail_applet.desktop	\
 	backgrnd.xpm			\
 	backgrnd_tiny.xpm		\
+	backgrnd_tiny_v.xpm		\
 	digmed.xpm			\
 	digsml.xpm			\
 	mailpics.xpm			\
 	button.xpm			\
 	button_tiny.xpm			\
+	button_tiny_v.xpm		\
 	clockmaildata			\
 	THEME-SPEC			\
 	clockmail_applet.gnorba

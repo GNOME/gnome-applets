@@ -93,7 +93,7 @@ void check_mail_file_status (int reset, AppData *ad)
 		}
 
 	/* no need to continue if no mail item is available */
-	if (!ad->skin->mail && !ad->skin->mail_amount && !ad->skin->mail_count) return;
+	if (!ad->skin->mail && !ad->skin->mail_count) return;
 
 	/* check if mail file contains something */
 	if (!ad->mail_file) return;
@@ -171,15 +171,9 @@ static void update_mail_display(int n, AppData *ad, gint force)
 
 static void update_mail_count(AppData *ad, gint force)
 {
-	if (!ad->skin->messages) return;
+	if (!ad->skin->messages && !ad->skin->mail_amount) return;
 
-	if (force)
-		{
-		draw_number(ad->skin->messages, ad->message_count, ad);
-		return;
-		}
-
-	if (ad->mail_file)
+	if (ad->mail_file && !force)
 		{
 		FILE *f = 0;
 		gchar buf[1024];
@@ -201,26 +195,30 @@ static void update_mail_count(AppData *ad, gint force)
 			ad->message_count = 0;
 			}
 		}
+
 	draw_number(ad->skin->messages, ad->message_count, ad);
+
+	if (ad->skin->mail_amount)
+		{
+		gint p;
+
+		if (ad->mail_max < 10) ad->mail_max = 10;
+		if (ad->message_count >= ad->mail_max)
+			p = ad->skin->mail_amount->sections - 1;
+		else
+			p = (float)ad->message_count / ad->mail_max * ad->skin->mail_amount->sections;
+		if (p == 0 && ad->anymail && ad->skin->mail_amount->sections > 1) p = 1;
+		draw_item(ad->skin->mail_amount, p, ad);
+		}
 }
 
 static void update_mail_amount_display(AppData *ad, gint force)
 {
 	if (ad->mailsize != ad->old_amount || force)
 		{
-		if (ad->skin->mail_amount)
-			{
-			gint p;
-			if (ad->mailsize >= ad->mail_max * 1024)
-				p = ad->skin->mail_amount->sections - 1;
-			else
-				p = (float)ad->mailsize / ( ad->mail_max * 1024 ) * ad->skin->mail_amount->sections;
-			if (p == 0 && ad->anymail && ad->skin->mail_amount->sections > 1) p = 1;
-			draw_item(ad->skin->mail_amount, p, ad);
-			}
+		update_mail_count(ad, force);
 		draw_number(ad->skin->mail_count, ad->mailsize / 1024, ad);
 		ad->old_amount = ad->mailsize;
-		update_mail_count(ad, force);
 		}
 }
 
@@ -463,7 +461,7 @@ static AppData *create_new_app(GtkWidget *applet)
 
 	ad->use_gmt = FALSE;
 	ad->gmt_offset = 0;
-	ad->mail_max = 150;
+	ad->mail_max = 100;
 
 	ad->message_count = 0;
 

@@ -16,6 +16,8 @@
 
 #include "backgrnd_tiny.xpm"
 #include "button_tiny.xpm"
+#include "backgrnd_tiny_v.xpm"
+#include "button_tiny_v.xpm"
 
 static GdkPixmap *get_pixmap_from_data(gchar **data);
 static GdkPixmap *get_pixmap_from_file(gchar *path);
@@ -720,6 +722,35 @@ static SkinData *load_default_skin(AppData *ad)
 		s->mail = new_item_from_data((gchar **)mailpics_xpm, 10, 49, 5);
 
 		s->button_pix = new_item_from_data((gchar **)button_tiny_xpm, 3, 0, 0);
+		s->button = new_button(s, s->button_pix, launch_mail_reader, redraw_all);
+
+		return s;
+		}
+	else if (ad->sizehint == SIZEHINT_TINY &&
+		 (ad->orient == ORIENT_LEFT || ad->orient == ORIENT_RIGHT))
+		{
+		/* this is the tiny size theme for a vertical panel*/
+
+		s->pixmap = gnome_pixmap_new_from_xpm_d(backgrnd_tiny_v_xpm);
+		s->background = GNOME_PIXMAP(s->pixmap)->pixmap;
+		s->mask = GNOME_PIXMAP(s->pixmap)->mask;
+
+		gdk_window_get_size (s->background, &width, &height);
+
+		s->width = width;
+		s->height = height;
+
+		s->dig_large = new_digit_from_data((gchar **)digmed_xpm);
+		s->dig_small = new_digit_from_data((gchar **)digsml_xpm);
+
+		s->hour = new_number(s->dig_large, 2, FALSE, FALSE, 2, 4);
+		s->min = new_number(s->dig_large, 2, TRUE, FALSE, 2, 26);
+
+		s->messages = new_number(s->dig_small, 3, FALSE, FALSE, 2, 59);
+
+		s->mail = new_item_from_data((gchar **)mailpics_xpm, 10, 1, 45);
+
+		s->button_pix = new_item_from_data((gchar **)button_tiny_v_xpm, 3, 0, 0);
 		s->button = new_button(s, s->button_pix, launch_mail_reader, redraw_all);
 
 		return s;

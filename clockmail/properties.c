@@ -32,7 +32,7 @@ void property_load(gchar *path, AppData *ad)
 	ad->theme_file = gnome_config_get_string("clockmail/theme=");
 	ad->use_gmt = gnome_config_get_int("clockmail/gmt=0");
 	ad->gmt_offset = gnome_config_get_int("clockmail/gmt_offset=0");
-	ad->mail_max = gnome_config_get_int("clockmail/mailmax=150");
+	ad->mail_max = gnome_config_get_int("clockmail/mailmax=100");
         gnome_config_pop_prefix ();
 }
 
@@ -278,14 +278,15 @@ void property_show(AppletWidget *applet, gpointer data)
 	gtk_window_set_title(GTK_WINDOW(&GNOME_PROPERTY_BOX(ad->propwindow)->dialog.window),
 		_("ClockMail Settings"));
 	
-	vbox = gtk_vbox_new(0, TRUE);
+	vbox = gtk_vbox_new(FALSE, 0);
+	gtk_container_set_border_width (GTK_CONTAINER (vbox), GNOME_PAD_SMALL);
 
 	frame = gtk_frame_new(_("Clock"));
-	gtk_container_set_border_width (GTK_CONTAINER (frame), 5);
 	gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
 	gtk_widget_show(frame);
 
-	vbox1 = gtk_vbox_new(0,TRUE);
+	vbox1 = gtk_vbox_new(FALSE, 0);
+	gtk_container_set_border_width (GTK_CONTAINER (vbox1), GNOME_PAD_SMALL);
 	gtk_container_add(GTK_CONTAINER(frame), vbox1);
 	gtk_widget_show(vbox1);
 
@@ -314,45 +315,21 @@ void property_show(AppletWidget *applet, gpointer data)
 	gtk_widget_show(spin);
 
 	frame = gtk_frame_new(_("Mail"));
-	gtk_container_set_border_width (GTK_CONTAINER (frame), 5);
 	gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
 	gtk_widget_show(frame);
 
-	vbox1 = gtk_vbox_new(0,TRUE);
+	vbox1 = gtk_vbox_new(FALSE, 0);
+	gtk_container_set_border_width (GTK_CONTAINER (vbox1), GNOME_PAD_SMALL);
 	gtk_container_add(GTK_CONTAINER(frame), vbox1);
 	gtk_widget_show(vbox1);
 
-	/* reader exec command */
-	hbox = gtk_hbox_new(FALSE, 5);
-	gtk_box_pack_start( GTK_BOX(vbox1), hbox, FALSE, FALSE, 5);
-	gtk_widget_show(hbox);
-
-	label= gtk_label_new (_("When clicked, run:"));
-	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
-	gtk_widget_show(label);
-
-	ad->reader_exec_cmd_entry = gtk_entry_new_with_max_length(255);
-	if (ad->reader_exec_cmd)
-		gtk_entry_set_text(GTK_ENTRY(ad->reader_exec_cmd_entry), ad->reader_exec_cmd);
-	gtk_signal_connect_object(GTK_OBJECT(ad->reader_exec_cmd_entry), "changed",
-				GTK_SIGNAL_FUNC(gnome_property_box_changed),
-				GTK_OBJECT(ad->propwindow));
-	gtk_box_pack_start( GTK_BOX(hbox),ad->reader_exec_cmd_entry , TRUE, TRUE, 5);
-	gtk_widget_show(ad->reader_exec_cmd_entry);
-
-	button = gtk_check_button_new_with_label (_("Blink when any mail is waiting. (Not just when mail arrives)"));
-	gtk_box_pack_start(GTK_BOX(vbox1), button, FALSE, FALSE, 0);
-	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(button), ad->p_always_blink);
-	gtk_signal_connect (GTK_OBJECT(button),"clicked",(GtkSignalFunc) always_blink_cb, ad);
-	gtk_widget_show(button);
-
 	/* mail file entry */
-	hbox = gtk_hbox_new(FALSE, 5);
-	gtk_box_pack_start( GTK_BOX(vbox1), hbox, FALSE, FALSE, 5);
+	hbox = gtk_hbox_new(FALSE, GNOME_PAD_SMALL);
+	gtk_box_pack_start( GTK_BOX(vbox1), hbox, FALSE, FALSE, 0);
 	gtk_widget_show(hbox);
 
 	label = gtk_label_new(_("Mail file:"));
-	gtk_box_pack_start( GTK_BOX(hbox), label, FALSE, FALSE, 5);
+	gtk_box_pack_start( GTK_BOX(hbox), label, FALSE, FALSE, 0);
 	gtk_widget_show(label);
 
 	ad->mail_file_entry = gtk_entry_new_with_max_length(255);
@@ -360,12 +337,12 @@ void property_show(AppletWidget *applet, gpointer data)
 	gtk_signal_connect_object(GTK_OBJECT(ad->mail_file_entry), "changed",
 				GTK_SIGNAL_FUNC(gnome_property_box_changed),
 				GTK_OBJECT(ad->propwindow));
-	gtk_box_pack_start( GTK_BOX(hbox),ad->mail_file_entry , TRUE, TRUE, 5);
+	gtk_box_pack_start( GTK_BOX(hbox),ad->mail_file_entry , TRUE, TRUE, 0);
 	gtk_widget_show(ad->mail_file_entry);
 
 	/* newmail exec command */
-	hbox = gtk_hbox_new(FALSE, 5);
-	gtk_box_pack_start( GTK_BOX(vbox1), hbox, FALSE, FALSE, 5);
+	hbox = gtk_hbox_new(FALSE, GNOME_PAD_SMALL);
+	gtk_box_pack_start( GTK_BOX(vbox1), hbox, FALSE, FALSE, 0);
 	gtk_widget_show(hbox);
 
 	button = gtk_check_button_new_with_label (_("When new mail is received run:"));
@@ -380,25 +357,49 @@ void property_show(AppletWidget *applet, gpointer data)
 	gtk_signal_connect_object(GTK_OBJECT(ad->newmail_exec_cmd_entry), "changed",
 				GTK_SIGNAL_FUNC(gnome_property_box_changed),
 				GTK_OBJECT(ad->propwindow));
-	gtk_box_pack_start( GTK_BOX(hbox),ad->newmail_exec_cmd_entry , TRUE, TRUE, 5);
+	gtk_box_pack_start( GTK_BOX(hbox),ad->newmail_exec_cmd_entry , TRUE, TRUE, 0);
 	gtk_widget_show(ad->newmail_exec_cmd_entry);
 
-	hbox = gtk_hbox_new(FALSE, 5);
-	gtk_box_pack_start( GTK_BOX(vbox1), hbox, FALSE, FALSE, 5);
+	button = gtk_check_button_new_with_label (_("Always blink when any mail is waiting."));
+	gtk_box_pack_start(GTK_BOX(vbox1), button, FALSE, FALSE, 0);
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(button), ad->p_always_blink);
+	gtk_signal_connect (GTK_OBJECT(button),"clicked",(GtkSignalFunc) always_blink_cb, ad);
+	gtk_widget_show(button);
+
+	hbox = gtk_hbox_new(FALSE, GNOME_PAD_SMALL);
+	gtk_box_pack_start( GTK_BOX(vbox1), hbox, FALSE, FALSE, 0);
 	gtk_widget_show(hbox);
 
-	label = gtk_label_new(_("Amount of mail to consider mailbox full (Kbytes):"));
-	gtk_box_pack_start( GTK_BOX(hbox), label, FALSE, FALSE, 5);
+	label = gtk_label_new(_("Number of messages to consider mailbox full:"));
+	gtk_box_pack_start( GTK_BOX(hbox), label, FALSE, FALSE, 0);
 	gtk_widget_show(label);
 
 	adj = gtk_adjustment_new((float)ad->mail_max, 10.0, 9000.0, 1, 5, 50);
 	spin = gtk_spin_button_new( GTK_ADJUSTMENT(adj), 1, 0 );
 	gtk_widget_set_usize(spin, 100, -1);
-	gtk_box_pack_start( GTK_BOX(hbox), spin, FALSE, FALSE, 5);
+	gtk_box_pack_start( GTK_BOX(hbox), spin, FALSE, FALSE, 0);
 	gtk_signal_connect( GTK_OBJECT(adj),"value_changed",GTK_SIGNAL_FUNC(mail_max_cb), ad);
 	gtk_signal_connect( GTK_OBJECT(spin),"changed",GTK_SIGNAL_FUNC(mail_max_cb), ad);
 	gtk_spin_button_set_update_policy( GTK_SPIN_BUTTON(spin),GTK_UPDATE_ALWAYS );
 	gtk_widget_show(spin);
+
+	/* reader exec command */
+	hbox = gtk_hbox_new(FALSE, GNOME_PAD_SMALL);
+	gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
+	gtk_widget_show(hbox);
+
+	label= gtk_label_new (_("When clicked, run:"));
+	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
+	gtk_widget_show(label);
+
+	ad->reader_exec_cmd_entry = gtk_entry_new_with_max_length(255);
+	if (ad->reader_exec_cmd)
+		gtk_entry_set_text(GTK_ENTRY(ad->reader_exec_cmd_entry), ad->reader_exec_cmd);
+	gtk_signal_connect_object(GTK_OBJECT(ad->reader_exec_cmd_entry), "changed",
+				GTK_SIGNAL_FUNC(gnome_property_box_changed),
+				GTK_OBJECT(ad->propwindow));
+	gtk_box_pack_start( GTK_BOX(hbox),ad->reader_exec_cmd_entry , TRUE, TRUE, 0);
+	gtk_widget_show(ad->reader_exec_cmd_entry);
 
         label = gtk_label_new(_("General"));
         gtk_widget_show(vbox);
@@ -407,19 +408,19 @@ void property_show(AppletWidget *applet, gpointer data)
 	/* theme tab */
 
 	frame = gtk_frame_new(NULL);
-	gtk_container_set_border_width (GTK_CONTAINER (frame), 5);
+	gtk_container_set_border_width (GTK_CONTAINER (frame), GNOME_PAD_SMALL);
 
-	vbox = gtk_vbox_new(0, TRUE);
-	gtk_container_set_border_width (GTK_CONTAINER (vbox), 5);
+	vbox = gtk_vbox_new(FALSE, GNOME_PAD_SMALL);
+	gtk_container_set_border_width (GTK_CONTAINER (vbox), GNOME_PAD_SMALL);
 	gtk_container_add(GTK_CONTAINER(frame), vbox);
 	gtk_widget_show(vbox);
 
-	hbox = gtk_hbox_new(FALSE, 5);
-	gtk_box_pack_start( GTK_BOX(vbox), hbox, FALSE, FALSE, 5);
+	hbox = gtk_hbox_new(FALSE, GNOME_PAD_SMALL);
+	gtk_box_pack_start( GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
 	gtk_widget_show(hbox);
 
 	label = gtk_label_new(_("Theme file (directory):"));
-	gtk_box_pack_start( GTK_BOX(hbox), label, FALSE, FALSE, 5);
+	gtk_box_pack_start( GTK_BOX(hbox), label, FALSE, FALSE, 0);
 	gtk_widget_show(label);
 
 	ad->theme_entry = gtk_entry_new_with_max_length(255);
@@ -428,7 +429,7 @@ void property_show(AppletWidget *applet, gpointer data)
 	gtk_signal_connect_object(GTK_OBJECT(ad->theme_entry), "changed",
 				GTK_SIGNAL_FUNC(gnome_property_box_changed),
 				GTK_OBJECT(ad->propwindow));
-	gtk_box_pack_start( GTK_BOX(hbox),ad->theme_entry , TRUE, TRUE, 5);
+	gtk_box_pack_start( GTK_BOX(hbox),ad->theme_entry , TRUE, TRUE, 0);
 	gtk_widget_show(ad->theme_entry);
 
 	scrolled = gtk_scrolled_window_new(NULL, NULL);
