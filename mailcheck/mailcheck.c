@@ -2506,35 +2506,38 @@ mailcheck_about(BonoboUIComponent *uic, MailCheck *mc, const gchar *verbname)
 	gtk_widget_show(mc->about);
 }
 
-/*this is when the panel size changes */
 static void
-applet_change_pixel_size(PanelApplet * w, gint size, gpointer data)
+applet_size_allocate (PanelApplet *w, GtkAllocation *allocation, MailCheck *mc)
 {
-	MailCheck *mc = data;
 	const char *fname;
-	
+
 	switch (panel_applet_get_orient (w)) {
-     	case PANEL_APPLET_ORIENT_DOWN:
-        case PANEL_APPLET_ORIENT_UP:
-        	gtk_widget_set_size_request (mc->label, -1, size);
-        	break;
-     	case PANEL_APPLET_ORIENT_LEFT:
-     	case PANEL_APPLET_ORIENT_RIGHT:
-     		gtk_widget_set_size_request (mc->label, size, -1);
+	case PANEL_APPLET_ORIENT_DOWN:
+	case PANEL_APPLET_ORIENT_UP:
+		if( mc->size == allocation->height )
+			return;
+
+		mc->size = allocation->height;
+		gtk_widget_set_size_request (mc->label, -1, mc->size);
+		break;
+
+	case PANEL_APPLET_ORIENT_LEFT:
+	case PANEL_APPLET_ORIENT_RIGHT:
+		if( mc->size == allocation->width )
+			return;
+
+		mc->size = allocation->width;
+		gtk_widget_set_size_request (mc->label, mc->size, -1);
 		break;
 	}
-	if(mc->report_mail_mode == REPORT_MAIL_USE_TEXT) {
-		
-		return;
-	}
 
-	mc->size = size;
 	fname = mail_animation_filename (mc);
 
 	gtk_widget_set_size_request (GTK_WIDGET(mc->da), mc->size, mc->size);
-	
+
 	if (!fname)
 		return;
+
 	mailcheck_load_animation (mc, fname);
 }
 
@@ -2854,8 +2857,8 @@ mailcheck_applet_fill (PanelApplet *applet)
 
 	mc->size = panel_applet_get_size (applet);
 
-	g_signal_connect(G_OBJECT(applet), "change_size",
-			 G_CALLBACK(applet_change_pixel_size),
+	g_signal_connect(G_OBJECT(applet), "size_allocate",
+			 G_CALLBACK(applet_size_allocate),
 			 mc);
 			 
 	g_signal_connect(G_OBJECT(applet), "change_orient",
