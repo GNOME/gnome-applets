@@ -246,7 +246,7 @@ scramble (AppletWidget *applet, gpointer data)
 	int dir;
 	int x, y;
 
-	srand (time (NULL));
+	srandom (time (NULL));
 
 	canvas = gtk_object_get_user_data (data);
 	board = gtk_object_get_user_data (GTK_OBJECT (canvas));
@@ -262,7 +262,7 @@ scramble (AppletWidget *applet, gpointer data)
 	for (i = 0; i < SCRAMBLE_MOVES; i++) {
 /* retry_scramble: */
 /* Yuck ;) --Tom. */
-		dir = rand () % 4;
+		dir = random () % 4;
 
 		x = y = 0;
 
