@@ -4,17 +4,31 @@
 typedef struct {
 	int timeout;
 	cdrom_device_t cdrom_device;
+	int size;
+	PanelOrientType orient;
 
 	struct {
-		GtkWidget *time;
-		GtkWidget *track;
+		GtkWidget *frame;
+		/* Main box for all bits 
+		   changes depending on orientation,size,etc. */ 
+		GtkWidget *box;
 
-		/* control button */
-		GtkWidget *play_pause;
-		GtkWidget *stop;
-		GtkWidget *prev;
-		GtkWidget *next;
-		GtkWidget *eject;
+		/* Time display LED */
+		GtkWidget *time;
+
+		/* Box holding the track stuff */
+		struct {
+			GtkWidget *display;
+			GtkWidget *prev;
+			GtkWidget *next;
+		} track_control; 
+
+		/* Box holding the play controls */
+		struct {
+			GtkWidget *play_pause;
+			GtkWidget *stop;
+			GtkWidget *eject;
+		} play_control;
 	} panel;
 } CDPlayerData;
 

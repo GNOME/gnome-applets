@@ -39,9 +39,9 @@ void cdpanel_realized(GtkWidget *cdpanel, CDPlayerData *cd);
     
 GtkWidget *applet = NULL;
 
-char *devpath;
+char *devpath = NULL;
 
-static int
+static gboolean
 cd_try_open(CDPlayerData *cd)
 {
 	int err;
@@ -65,14 +65,14 @@ cd_panel_update(GtkWidget * cdplayer, CDPlayerData * cd)
 			led_time(cd->panel.time,
 				 stat.relative_address.minute,
 				 stat.relative_address.second,
-				 cd->panel.track,
+				 cd->panel.track_control.display,
 				 stat.track);
 			break;
 		case DISC_PAUSED:
 			led_paused(cd->panel.time,
 				   stat.relative_address.minute,
 				   stat.relative_address.second,
-				   cd->panel.track,
+				   cd->panel.track_control.display,
 				   stat.track);
 			break;
 		case DISC_COMPLETED:
@@ -80,18 +80,18 @@ cd_panel_update(GtkWidget * cdplayer, CDPlayerData * cd)
 			break;
 		case DISC_STOP:
 		case DISC_ERROR:
-			led_stop(cd->panel.time, cd->panel.track);
+			led_stop(cd->panel.time, cd->panel.track_control.display);
 			break;
 		default:
 			break;
 		}
 	} else
-	      led_nodisc(cd->panel.time, cd->panel.track);
+	      led_nodisc(cd->panel.time, cd->panel.track_control.display);
 	return;
 	cdplayer = NULL;
 }
 
-static int 
+static void 
 cdplayer_play_pause(GtkWidget * w, gpointer data)
 {
 	CDPlayerData *cd = data;
@@ -99,7 +99,7 @@ cdplayer_play_pause(GtkWidget * w, gpointer data)
 	int status;
 
 	if(!cd_try_open(cd))
-		return 0;
+		return;
 
 	status = cdrom_get_status(cd->cdrom_device, &stat);
 	if (status == DISC_NO_ERROR) {
@@ -125,18 +125,18 @@ cdplayer_play_pause(GtkWidget * w, gpointer data)
 			   cd->cdrom_device->track1);
 	}
 
-	return 0;
+	return;
 	w = NULL;
 }
 
 static void
-start_gtcd_cb(void)
+start_gtcd_cb(AppletWidget *w, gpointer data)
 {
 	gnome_execute_shell(NULL, "gtcd");
 }
 
 static void
-help_cb (GtkWidget *w, gpointer data)
+help_cb (AppletWidget *w, gpointer data)
 {
         GnomeHelpMenuEntry help_entry = { "cdplayer_applet",
                                           "index.html" };
@@ -144,7 +144,7 @@ help_cb (GtkWidget *w, gpointer data)
 }
 
 static void
-about_cb(void)
+about_cb(AppletWidget *w, gpointer data)
 {
         static GtkWidget   *about     = NULL;
         static const gchar *authors[] =
@@ -171,46 +171,46 @@ about_cb(void)
         gtk_widget_show (about);
 }
 
-static int 
+static void 
 cdplayer_stop(GtkWidget * w, gpointer data)
 {
 	CDPlayerData *cd = data;
 	if(!cd_try_open(cd))
-		return 0;
+		return;
 	cdrom_stop(cd->cdrom_device);
-	return 0;
+	return;
         w = NULL;
 }
 
-static int 
+static void 
 cdplayer_prev(GtkWidget * w, gpointer data)
 {
 	CDPlayerData *cd = data;
 	if(!cd_try_open(cd))
-		return 0;
+		return;
 	cdrom_prev(cd->cdrom_device);
-	return 0;
+	return;
         w = NULL;
 }
 
-static int 
+static void 
 cdplayer_next(GtkWidget * w, gpointer data)
 {
 	CDPlayerData *cd = data;
 	if(!cd_try_open(cd))
-		return 0;
+		return;
 	cdrom_next(cd->cdrom_device);
-	return 0;
+	return;
         w = NULL;
 }
 
-static int 
+static void 
 cdplayer_eject(GtkWidget * w, gpointer data)
 {
 	cdrom_device_status_t stat;
 	CDPlayerData *cd = data;
 	if(!cd_try_open(cd))
-		return 0;
+		return;
 	if(cdrom_get_status(cd->cdrom_device, &stat)==DISC_TRAY_OPEN)
 		/*FIXME: if there is no disc, we get TRAY_OPEN even
 		  if the tray is closed, is this a kernel bug?? or
@@ -223,7 +223,7 @@ cdplayer_eject(GtkWidget * w, gpointer data)
 		cdrom_eject(cd->cdrom_device);
 	else
 		cdrom_eject(cd->cdrom_device);
-	return 0;
+	return;
         w = NULL;
 }
 
@@ -241,9 +241,8 @@ cdplayer_timeout_callback(gpointer data)
 }
 
 static GtkWidget *
-control_button_factory(GtkWidget * box_container,
-		       gchar * pixmap_data[],
-		       int (*func) (GtkWidget *, gpointer data),
+control_button_factory(gchar * pixmap_data[],
+		       void (*func) (GtkWidget *, gpointer data),
 		       CDPlayerData * cd)
 {
 	GtkWidget *w, *pixmap;
@@ -252,65 +251,52 @@ control_button_factory(GtkWidget * box_container,
 	GTK_WIDGET_UNSET_FLAGS(w, GTK_CAN_DEFAULT);
 	GTK_WIDGET_UNSET_FLAGS(w, GTK_CAN_FOCUS);
 	pixmap = gnome_pixmap_new_from_xpm_d (pixmap_data);
-	gtk_box_pack_start(GTK_BOX(box_container), w, FALSE, TRUE, 0);
 	gtk_widget_show(pixmap);
 	gtk_container_add(GTK_CONTAINER(w), pixmap);
 	gtk_signal_connect(GTK_OBJECT(w), "clicked",
-			   GTK_SIGNAL_FUNC(func),
-			   (gpointer) cd);
+			   GTK_SIGNAL_FUNC(func), cd);
 	gtk_widget_show(w);
+	gtk_widget_ref(w);
 	return w;
 }
 
 static GtkWidget *
 create_cdpanel_widget(GtkWidget *window, CDPlayerData * cd)
 {
-	GtkWidget *frame;
-	GtkWidget *vbox;
-	GtkWidget *hbox;
-
-	frame = gtk_frame_new(NULL);
-	gtk_frame_set_shadow_type(GTK_FRAME(frame), GTK_SHADOW_IN);
-	gtk_widget_show(frame);
-
-	vbox = gtk_vbox_new(FALSE, FALSE);
-	gtk_container_add(GTK_CONTAINER(frame), vbox);
-	gtk_widget_show(vbox);
-
+	cd->panel.frame = gtk_frame_new(NULL);
+	gtk_frame_set_shadow_type(GTK_FRAME(cd->panel.frame), GTK_SHADOW_IN);
+	gtk_widget_show(cd->panel.frame);
+	
 	led_init(window);
 
-	led_create_widget(window,&cd->panel.time, &cd->panel.track);
-	gtk_box_pack_start_defaults(GTK_BOX(vbox), cd->panel.time);
+	/* time & track widgets */ 
+	led_create_widget(window,&cd->panel.time, &cd->panel.track_control.display);
 	gtk_widget_show(cd->panel.time);
+	gtk_object_ref(GTK_OBJECT(cd->panel.time));
 
-	/* */
-	hbox = gtk_hbox_new(FALSE, FALSE);
-	gtk_box_pack_start_defaults(GTK_BOX(vbox), hbox);
-	gtk_widget_show(hbox);
+	cd->panel.play_control.stop = 
+	  control_button_factory(stop_xpm, cdplayer_stop, cd);
 
-	cd->panel.stop = control_button_factory(hbox, stop_xpm,
-						cdplayer_stop, cd);
-	cd->panel.play_pause = control_button_factory(hbox, play_pause_xpm,
-						cdplayer_play_pause, cd);
-	cd->panel.eject = control_button_factory(hbox, eject_xpm,
-						 cdplayer_eject, cd);
+	cd->panel.play_control.play_pause = 
+	  control_button_factory(play_pause_xpm, cdplayer_play_pause, cd);
 
-	/* */
-	hbox = gtk_hbox_new(FALSE, FALSE);
-	gtk_box_pack_start_defaults(GTK_BOX(vbox), hbox);
-	gtk_widget_show(hbox);
+	cd->panel.play_control.eject = 
+	  control_button_factory(eject_xpm, cdplayer_eject, cd);
+	
+	/* Track control.  */
+	cd->panel.track_control.prev = 
+	  control_button_factory(prev_xpm, cdplayer_prev, cd);
 
-	cd->panel.prev = control_button_factory(hbox, prev_xpm,
-						cdplayer_prev, cd);
+	gtk_widget_show(cd->panel.track_control.display);
+	gtk_widget_ref(cd->panel.track_control.display);
 
-	gtk_box_pack_start(GTK_BOX(hbox), cd->panel.track, TRUE, TRUE, 0);
-	gtk_widget_show(cd->panel.track);
-
-	cd->panel.next = control_button_factory(hbox, next_xpm,
-						cdplayer_next, cd);
-
-	return frame;
+	cd->panel.track_control.next = 
+	  control_button_factory(next_xpm, cdplayer_next, cd);
+	
+	return cd->panel.frame;
 }
+
+	  
 
 static void 
 destroy_cdplayer(GtkWidget * widget, void *data)
@@ -322,6 +308,7 @@ destroy_cdplayer(GtkWidget * widget, void *data)
 	if(cd->cdrom_device)
 		cdrom_close(cd->cdrom_device);
 	g_free(cd);
+
 	return;
 	data = NULL;
 }
@@ -332,23 +319,162 @@ cdpanel_realized(GtkWidget *cdpanel, CDPlayerData *cd)
 	cd_panel_update(cdpanel, cd);
 }
 
+static void
+ref_and_remove(GtkWidget *w)
+{
+	GtkWidget *parent = w->parent;
+	if(parent) {
+		gtk_widget_ref(w);
+		gtk_container_remove(GTK_CONTAINER(parent), w);
+	}
+}
+
+static void
+destroy_box(CDPlayerData* cd)
+{
+	g_return_if_fail(GTK_IS_CONTAINER(cd->panel.box));
+
+	ref_and_remove(cd->panel.time);
+
+	ref_and_remove(cd->panel.play_control.stop);
+	ref_and_remove(cd->panel.play_control.play_pause);
+	ref_and_remove(cd->panel.play_control.eject);
+
+	ref_and_remove(cd->panel.track_control.prev);
+	ref_and_remove(cd->panel.track_control.display);
+	ref_and_remove(cd->panel.track_control.next);
+
+	gtk_widget_destroy(cd->panel.box);
+	cd->panel.box = NULL;
+}
+
+static GtkWidget *
+pack_make_hbox(CDPlayerData* cd)
+{
+	GtkWidget *hbox = gtk_hbox_new(FALSE, 0);
+	gtk_widget_show(hbox);
+	gtk_box_pack_start(GTK_BOX(cd->panel.box), hbox,
+			   TRUE, TRUE, 0);
+	return hbox;
+}
+
+static void
+pack_thing(GtkWidget *box, GtkWidget *w, gboolean expand)
+{
+	gtk_box_pack_start(GTK_BOX(box), w, expand, TRUE, 0);
+	gtk_widget_unref(w);
+}
+
+
+static void
+setup_box(CDPlayerData* cd)
+{
+	GtkWidget *hbox;
+
+	if(cd->panel.box)
+		destroy_box(cd);
+
+	if ((cd->orient == ORIENT_DOWN || cd->orient == ORIENT_UP) &&
+	    cd->size < 36  ) {
+		/* tiny horizontal panel */
+		cd->panel.box = gtk_hbox_new(FALSE, 0);
+		gtk_container_add(GTK_CONTAINER(cd->panel.frame),
+				  cd->panel.box);
+		gtk_widget_show(cd->panel.box);
+
+		pack_thing(cd->panel.box, cd->panel.track_control.prev, FALSE);
+		pack_thing(cd->panel.box,
+			   cd->panel.track_control.display, TRUE);
+		pack_thing(cd->panel.box, cd->panel.track_control.next, FALSE);
+
+		pack_thing(cd->panel.box, cd->panel.time, TRUE);
+
+		pack_thing(cd->panel.box, cd->panel.play_control.stop, FALSE);
+		pack_thing(cd->panel.box,
+			   cd->panel.play_control.play_pause, FALSE);
+		pack_thing(cd->panel.box, cd->panel.play_control.eject, FALSE);
+	} else if ((cd->orient == ORIENT_DOWN || cd->orient == ORIENT_UP) &&
+		   cd->size < 48  ) {
+		/* small horizontal panel */
+		cd->panel.box = gtk_vbox_new(FALSE, 0);
+		gtk_container_add(GTK_CONTAINER(cd->panel.frame),
+				  cd->panel.box);
+		gtk_widget_show(cd->panel.box);
+
+		hbox = pack_make_hbox(cd);
+		pack_thing(hbox, cd->panel.time, TRUE);
+		pack_thing(hbox, cd->panel.track_control.display, TRUE);
+
+		hbox = pack_make_hbox(cd);
+		pack_thing(hbox, cd->panel.play_control.stop, FALSE);
+		pack_thing(hbox, cd->panel.play_control.play_pause, FALSE);
+		pack_thing(hbox, cd->panel.play_control.eject, FALSE);
+		pack_thing(hbox, cd->panel.track_control.prev, FALSE);
+		pack_thing(hbox, cd->panel.track_control.next, FALSE);
+	} else if ((cd->orient == ORIENT_LEFT || cd->orient == ORIENT_RIGHT) &&
+		   cd->size < 48  ) {
+		/* small vertical panel (won't work too great on tiny verticals
+		 * but oh well) */
+		cd->panel.box = gtk_vbox_new(FALSE, 0);
+		gtk_container_add(GTK_CONTAINER(cd->panel.frame),
+				  cd->panel.box);
+		gtk_widget_show(cd->panel.box);
+
+		pack_thing(cd->panel.box, cd->panel.time, TRUE);
+
+		hbox = pack_make_hbox(cd);
+		pack_thing(hbox, cd->panel.play_control.stop, FALSE);
+		pack_thing(hbox, cd->panel.play_control.play_pause, TRUE);
+
+		hbox = pack_make_hbox(cd);
+		pack_thing(hbox, cd->panel.play_control.eject, FALSE);
+		pack_thing(hbox, cd->panel.track_control.display, TRUE);
+
+		hbox = pack_make_hbox(cd);
+		pack_thing(hbox, cd->panel.track_control.prev, TRUE);
+		pack_thing(hbox, cd->panel.track_control.next, TRUE);
+	} else {
+		/* other panel sizes/orientations should go here */
+		cd->panel.box = gtk_vbox_new(FALSE, 0);
+		gtk_container_add(GTK_CONTAINER(cd->panel.frame),
+				  cd->panel.box);
+		gtk_widget_show(cd->panel.box);
+
+		pack_thing(cd->panel.box, cd->panel.time, TRUE);
+
+		hbox = pack_make_hbox(cd);
+		pack_thing(hbox, cd->panel.play_control.stop, FALSE);
+		pack_thing(hbox, cd->panel.play_control.play_pause, FALSE);
+		pack_thing(hbox, cd->panel.play_control.eject, FALSE);
+
+		hbox = pack_make_hbox(cd);
+		pack_thing(hbox, cd->panel.track_control.prev, FALSE);
+		pack_thing(hbox, cd->panel.track_control.display, TRUE);
+		pack_thing(hbox, cd->panel.track_control.next, FALSE);
+	}
+}
+
 static GtkWidget *
 create_cdplayer_widget(GtkWidget *window, char *globcfgpath)
 {
-	gchar *devpath;
 	CDPlayerData *cd;
 	GtkWidget *cdpanel;
 	int err;
-	/* int i; */
 
-	cd = g_new(CDPlayerData, 1);
+	cd = g_new0(CDPlayerData, 1);
 
 	gnome_config_push_prefix(globcfgpath);
 	devpath = gnome_config_get_string("cdplayer/devpath=/dev/cdrom");
 	gnome_config_pop_prefix();
 	cd->cdrom_device = cdrom_open(devpath, &err);
 	g_free (devpath);
-	cdpanel = create_cdpanel_widget(window,cd);
+	
+	cd->size = APPLET_WIDGET(window)->size;
+	cd->orient = APPLET_WIDGET(window)->orient;
+
+	cdpanel = create_cdpanel_widget(window, cd);
+	cd->panel.box = NULL;
+	setup_box(cd);
 
 	/* Install timeout handler */
 
@@ -365,10 +491,39 @@ create_cdplayer_widget(GtkWidget *window, char *globcfgpath)
 	return cdpanel;
 }
 
+
+static void
+applet_change_pixel_size(GtkWidget *w, int size, gpointer data)
+{
+        CDPlayerData *cd = data;
+
+        cd->size = size;
+
+	setup_box(cd);
+
+        cd_panel_update(cd->panel.frame, cd);
+}
+
+static void
+applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
+{
+        CDPlayerData *cd = data;
+        
+        cd->orient = o;
+        
+	setup_box(cd);
+
+        cd_panel_update(cd->panel.frame, cd);
+}
+
+
+
 int
 main(int argc, char **argv)
 {
 	GtkWidget *cdplayer;
+	CDPlayerData *cd;
+
 
 	bindtextdomain(PACKAGE, GNOMELOCALEDIR);
 	textdomain(PACKAGE);
@@ -390,6 +545,18 @@ main(int argc, char **argv)
 		return 1;
 	}
 
+	cd = (CDPlayerData*)gtk_object_get_user_data(GTK_OBJECT(cdplayer));
+	
+	if (cd == NULL) {
+	        applet_widget_abort_load(APPLET_WIDGET(applet));
+		return 1;
+	}
+
+	gtk_signal_connect(GTK_OBJECT(applet),"change_orient",
+			   GTK_SIGNAL_FUNC(applet_change_orient), cd);
+	gtk_signal_connect(GTK_OBJECT(applet),"change_pixel_size",
+			   GTK_SIGNAL_FUNC(applet_change_pixel_size), cd);
+
         applet_widget_register_stock_callback (APPLET_WIDGET(applet),
 					       "run_gtcd",         
 					       GNOME_STOCK_MENU_CDROM,
@@ -410,6 +577,7 @@ main(int argc, char **argv)
 					       _("About..."),
 					       about_cb,
 					       NULL);
+       
 
 	gtk_widget_show(cdplayer);
 	applet_widget_add (APPLET_WIDGET (applet), cdplayer);
