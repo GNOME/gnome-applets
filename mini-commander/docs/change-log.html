@@ -1,11 +1,11 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!DOCTYPE HTML PUBLIC "-//Norman Walsh//DTD DocBook HTML 1.0//EN">
 <HTML
 ><HEAD
 ><TITLE
 >ChangeLog</TITLE
 ><META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet version 1.13"><LINK
+CONTENT="Modular DocBook HTML Stylesheet"><LINK
 REL="HOME"
 TITLE="Mini-Commander"
 HREF="index.html"><LINK
@@ -59,6 +59,8 @@ HREF="feedback.html"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"></DIV
+><DIV
+CLASS="CHAPTER"
 ><H1
 ><A
 NAME="CHANGE-LOG"
@@ -82,7 +84,41 @@ WIDTH="100%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->1999-01-08  Oliver Maruhn  &#60;om@linuxhq.com&#62;
+>1999-01-16  Oliver Maruhn  &#60;om@linuxhq.com&#62;
+
+	* src/preferences.c (loadSession): load history on program start
+	(saveSession): store history permanently
+
+	* src/history.c (existsHistoryEntry): added
+	(getHistoryEntry): added
+	(setHistoryEntry): added
+	(appendHistoryEntry): added
+
+	* src/command_line.c (commandKey_event): history related functions
+ 	moved to history.c
+
+	* src/history.[ch]: added
+
+	* src/mini-commander_applet.c (main): show history list dirctly
+ 	after the mouse button has been pressed down
+	(appletOrientChanged_cb): added [currently without any meaning]
+
+	* src/command_line.c (showHistory_signal): history window
+ 	converted into a popup window
+	(showHistory_signal): style support added [currently inactive]
+	(commandKey_event): "end of history list" messages added
+	(showHistory_signal): "history list empty"message added
+	(commandKey_event):   "(gchar) -173" replaced by "GDK_Right"
+
+1999-01-14  Oliver Maruhn  &#60;om@linuxhq.com&#62;
+
+	* src/mini-commander_applet.c (main): icons for
+ 	file-browser/history-list buttons added
+
+	* src/command_line.c (showHistory_signal): history window added;
+ 	there is still fine-tuning needed
+
+1999-01-08  Oliver Maruhn  &#60;om@linuxhq.com&#62;
 
 	* src/preferences.c (propertiesBox): found and fixed
  	preferences-mess-up bug [finally!]
@@ -316,6 +352,7 @@ CLASS="SCREEN"
 ></TABLE
 ><P
 ></P
+></DIV
 ><DIV
 CLASS="NAVFOOTER"
 ><HR
