@@ -39,6 +39,11 @@
 #include "harddisk_h_in.xpm"
 #include "harddisk_h_out.xpm"
 
+#include "jazdrive_h_in.xpm"
+#include "jazdrive_h_out.xpm"
+#include "jazdrive_v_in.xpm"
+#include "jazdrive_v_out.xpm"
+
 static void about_cb (AppletWidget *widget, gpointer data);
 static void browse_cb (AppletWidget *widget, gpointer data);
 static gint device_is_in_mountlist(DriveData *dd);
@@ -367,6 +372,10 @@ void create_pixmaps(DriveData *dd)
 				pmap_d_in = harddisk_h_in_xpm;
 				pmap_d_out = harddisk_h_out_xpm;
 				break;
+			case 4:
+				pmap_d_in = jazdrive_h_in_xpm;
+				pmap_d_out = jazdrive_h_out_xpm;
+				break;
 			default:
 				pmap_d_in = floppy_h_in_xpm;
 				pmap_d_out = floppy_h_out_xpm;
@@ -392,6 +401,10 @@ void create_pixmaps(DriveData *dd)
 			case 3:
 				pmap_d_in = harddisk_v_in_xpm;
 				pmap_d_out = harddisk_v_out_xpm;
+				break;
+			case 4:
+				pmap_d_in = jazdrive_v_in_xpm;
+				pmap_d_out = jazdrive_v_out_xpm;
 				break;
 			default:
 				pmap_d_in = floppy_v_in_xpm;

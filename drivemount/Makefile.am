@@ -34,6 +34,10 @@ EXTRA_DIST = \
 	zipdrive_h_out.xpm		\
 	zipdrive_v_in.xpm		\
 	zipdrive_v_out.xpm		\
+	jazdrive_h_in.xpm		\
+	jazdrive_h_out.xpm		\
+	jazdrive_v_in.xpm		\
+	jazdrive_v_out.xpm		\
 	drivemount_applet.gnorba
 
 sysdir = $(datadir)/applets/Utility

@@ -11,6 +11,7 @@ static void autofs_friendly_cb(GtkWidget *w, gpointer data);
 static void pixmap_cdrom_cb(GtkWidget *widget, gpointer data);
 static void pixmap_zipdrive_cb(GtkWidget *widget, gpointer data);
 static void pixmap_harddisk_cb(GtkWidget *widget, gpointer data);
+static void pixmap_jazdrive_cb(GtkWidget *widget, gpointer data);
 static void update_delay_cb( GtkWidget *widget, gpointer data );
 static void property_apply_cb( GtkWidget *widget, void *data, DriveData *dd);
 static gint property_destroy_cb( GtkWidget *w, DriveData *dd);
@@ -68,6 +69,13 @@ static void pixmap_zipdrive_cb(GtkWidget *widget, gpointer data)
 	DriveData *dd = data;
 	dd->prop_device_pixmap = 2;
         gnome_property_box_changed(GNOME_PROPERTY_BOX(dd->propwindow));
+}
+
+static void pixmap_jazdrive_cb(GtkWidget *widget, gpointer data)
+{
+	DriveData *dd = data;
+	dd->prop_device_pixmap = 4;
+	gnome_property_box_changed(GNOME_PROPERTY_BOX(dd->propwindow));
 }
 
 static void pixmap_harddisk_cb(GtkWidget *widget, gpointer data)
@@ -174,6 +182,10 @@ void property_show(AppletWidget *applet, gpointer data)
 
 	item = gtk_menu_item_new_with_label(_("Zip Drive"));
 	gtk_signal_connect (GTK_OBJECT (item), "activate", (GtkSignalFunc) pixmap_zipdrive_cb, dd);
+	gtk_menu_append (GTK_MENU (menu), item);
+
+	item = gtk_menu_item_new_with_label(_("Jaz Drive"));
+	gtk_signal_connect (GTK_OBJECT (item), "activate", (GtkSignalFunc) pixmap_jazdrive_cb, dd);
 	gtk_menu_append (GTK_MENU (menu), item);
 
 	item = gtk_menu_item_new_with_label(_("Hard Disk"));
