@@ -23,7 +23,7 @@ gkb_applet_SOURCES = gkb.c properties.c properties.h
 
 gkb_applet_LDADD = ../../panel/libpanel_applet.la \
 		     $(GNOME_LIBDIR) $(ORB_LIBS) \
-		     $(GNOMEUI_LIBS) $(INTLLIBS) 
+		     $(GNOMEUI_LIBS) $(INTLLIBS) $(GNOMEGNORBA_LIBS)
 
 # gkb_applet_DEPENDENCIES = $(P_HEADER_1)
 
