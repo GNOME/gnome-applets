@@ -133,7 +133,7 @@ wireless_applet_draw (WirelessApplet *applet, int percent)
 	}
 
 	/* Update the percentage */
-	if (percent >= 0) {
+	if (percent > 0) {
 		tmp = g_strdup_printf ("%2.0d%%", percent);
 	} else {
 		tmp = g_strdup_printf ("N/A");
