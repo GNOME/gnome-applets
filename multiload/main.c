@@ -172,6 +172,8 @@ multiload_destroy_cb(GtkWidget *widget, gpointer data)
 		if (ma->graphs[i]->visible)
 		{
 			load_graph_stop(ma->graphs[i]);
+			g_free (ma->graphs[i]->colors);
+			ma->graphs[i]->colors = NULL;
 			gtk_widget_destroy(ma->graphs[i]->main_widget);
 		}
 		
