@@ -1,5 +1,5 @@
-#include <stdio.h>
 #include <config.h>
+#include <stdio.h>
 #include <sys/stat.h>
 #include <unistd.h>
 #include <signal.h>

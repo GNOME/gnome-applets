@@ -8,6 +8,7 @@
  *
  */
 
+#include <config.h>
 #include <stdio.h>
 #include <config.h>
 #include <sys/stat.h>
@@ -16,7 +17,6 @@
 #include <dirent.h>
 #include <string.h>
 #include <time.h>
-#include <config.h>
 #include <gnome.h>
 #include <gdk/gdkx.h>
 #include <applet-widget.h>
@@ -197,6 +197,12 @@ main (int argc, char **argv)
     multiload_properties.loadavg.adj_data [0] = 500;
     multiload_properties.loadavg.adj_data [1] = 40;
     multiload_properties.loadavg.adj_data [2] = 10;
+#ifdef ENABLE_NLS
+    {
+        int i;
+        for (i=0;i<2;i++) loadavg_texts[i]=_(loadavg_texts[i]);
+    }
+#endif
 
 
     /* Add property objects. */
