@@ -21,8 +21,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-11-29 15:53+0100\n"
-"PO-Revision-Date: 2004-11-29 15:55+0100\n"
+"POT-Creation-Date: 2004-12-01 12:12+0100\n"
+"PO-Revision-Date: 2004-12-01 12:16+0100\n"
 "Last-Translator: Martin Willemoes Hansen <mwh@sysrq.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
 "MIME-Version: 1.0\n"
@@ -85,7 +85,7 @@ msgstr "Viser status for tastaturtilgængelighedsfaciliteter"
 
 #: accessx-status/applet.c:136 battstat/battstat_applet.c:1070
 #: cdplayer/cdplayer.c:596 charpick/charpick.c:607
-#: cpufreq/src/cpufreq-applet.c:145 drivemount/drivemount.c:132
+#: cpufreq/src/cpufreq-applet.c:146 drivemount/drivemount.c:132
 #: geyes/geyes.c:201 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:574
 #: gtik/gtik.c:722 gweather/gweather-about.c:48 mini-commander/src/about.c:48
 #: modemlights/modemlights.c:116 multiload/main.c:56
@@ -794,7 +794,7 @@ msgid "Character Palette Preferences"
 msgstr "Indstillinger for tegnpalet"
 
 #: cpufreq/GNOME_CPUFreqApplet.server.in.in.h:1
-#: cpufreq/src/cpufreq-applet.c:161 cpufreq/src/cpufreq-applet.c:742
+#: cpufreq/src/cpufreq-applet.c:162 cpufreq/src/cpufreq-applet.c:743
 msgid "CPU Frequency Scaling Monitor"
 msgstr "CPU-frekvensskalering"
 
@@ -876,26 +876,19 @@ msgstr "_Overvåget CPU:"
 msgid "_Show in mode:"
 msgstr "_Vis i tilstand:"
 
-#: cpufreq/src/cpufreq-applet.c:119 cpufreq/src/cpufreq-prefs.c:220
-msgid ""
-"Sorry, an internal error has occurred with the CPU Frequency Scaling Monitor "
-"help"
-msgstr ""
-"Beklager, en intern fejl er opstået i hjælpen for CPU-frekvensskaleringen"
+#: cpufreq/src/cpufreq-applet.c:125 cpufreq/src/cpufreq-prefs.c:219
+msgid "Could not open help document"
+msgstr "Kunne ikke åbne hjælpdokumentet"
 
-#: cpufreq/src/cpufreq-applet.c:123 cpufreq/src/cpufreq-prefs.c:223
-msgid "Sorry, the document can not be found"
-msgstr "Beklager, dokumentet kan ikke findes"
-
-#: cpufreq/src/cpufreq-applet.c:137
+#: cpufreq/src/cpufreq-applet.c:138
 msgid "Graphic Arts:"
 msgstr "Grafikkunst:"
 
-#: cpufreq/src/cpufreq-applet.c:163
+#: cpufreq/src/cpufreq-applet.c:164
 msgid "Copyright (C) 2004 Free Software Foundation. Inc."
 msgstr "Copyright (C) 2004 Free Software Foundation. Inc."
 
-#: cpufreq/src/cpufreq-applet.c:164
+#: cpufreq/src/cpufreq-applet.c:165
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr "Dette værktøj viser den nuværende CPU-frekvensskalering."
 
@@ -903,46 +896,44 @@ msgstr "Dette værktøj viser den nuværende CPU-frekvensskalering."
 #. * I thi	nk is better than do nothing. I have to notify it to the user, because
 #. * he could think	 that cpufreq is supported but it doesn't work succesfully
 #.
-#: cpufreq/src/cpufreq-applet.c:597
-msgid ""
-"There is no cpufreq support in your system, needed to use CPU Frequency "
-"Scaling Monitor.\n"
-"If your system already supports cpufreq, check whether /sys or /proc file "
-"systems are mounted.\n"
-"Now the applet will only show the current cpu frequency."
-msgstr ""
-"cpufreq er ikke understøttet af dit system, hvilket er nødvendigt for brugen "
-"af CPU-frekvensskalering.\n"
-"Hvis dit system burde understøtte cpufreq, kontrollér at filsystemerne /sys "
-"eller /proc er monteret\n"
-"Indtil videre vil panelprogrammet kun vise den nuværende CPU-frekvens."
+#: cpufreq/src/cpufreq-applet.c:601
+msgid "CPU frequency scaling unsupported"
+msgstr "CPU-frekvensskalering er ikke understøttet"
 
-#: cpufreq/src/cpufreq-applet.c:606
+#: cpufreq/src/cpufreq-applet.c:602
+msgid ""
+"You will not be able to modify the frequency of your machine.  Your machine "
+"may be misconfigured or not have hardware support for CPU frequency scaling."
+msgstr ""
+"Du vil ikke kunne ændre frekvensen på din maskine. Din maskine kan være "
+"miskonfigureret eller mangle understøttelse for CPU-frekvens-skalering."
+
+#: cpufreq/src/cpufreq-applet.c:607
 #, c-format
 msgid ""
-"CPU %d - cpufreq Not Supported\n"
-"%s (%s)"
+"CPU %d - Frequency Scaling Unsupported\n"
+"%s %s (%s)"
 msgstr ""
-"CPU %d - cpufreq er ikke understøttet\n"
-"%s (%s)"
+"CPU %d - Frekvens-skalering er ikke understøttet\n"
+"%s %s (%s)"
 
-#: cpufreq/src/cpufreq-applet.c:612
-msgid "cpufreq Not Supported"
-msgstr "cpufreq er ikke understøttet"
+#: cpufreq/src/cpufreq-applet.c:613
+msgid "Frequency Scaling Unsupported"
+msgstr "Frekvensskalering er ikke understøttet"
 
-#: cpufreq/src/cpufreq-applet.c:743
+#: cpufreq/src/cpufreq-applet.c:744
 msgid "This utility shows the current CPU Frequency"
 msgstr "Dette værktøj viser den nuværende CPU-frekvens"
 
-#: cpufreq/src/cpufreq-prefs.c:285
+#: cpufreq/src/cpufreq-prefs.c:280
 msgid "Graphic"
 msgstr "Grafik"
 
-#: cpufreq/src/cpufreq-prefs.c:290 modemlights/properties.c:609
+#: cpufreq/src/cpufreq-prefs.c:285 modemlights/properties.c:609
 msgid "Text"
 msgstr "Tekst"
 
-#: cpufreq/src/cpufreq-prefs.c:295
+#: cpufreq/src/cpufreq-prefs.c:290
 msgid "Graphic and Text"
 msgstr "Grafik og tekst"
 
@@ -6213,6 +6204,31 @@ msgstr "Indstillinger for trådløs forbindelse"
 msgid "_Monitored device:"
 msgstr "_Overvåget enhed:"
 
+#~ msgid ""
+#~ "Sorry, an internal error has occurred with the CPU Frequency Scaling "
+#~ "Monitor help"
+#~ msgstr ""
+#~ "Beklager, en intern fejl er opstået i hjælpen for CPU-frekvensskaleringen"
+
+#~ msgid "Sorry, the document can not be found"
+#~ msgstr "Beklager, dokumentet kan ikke findes"
+
+#~ msgid ""
+#~ "There is no cpufreq support in your system, needed to use CPU Frequency "
+#~ "Scaling Monitor.\n"
+#~ "If your system already supports cpufreq, check whether /sys or /proc file "
+#~ "systems are mounted.\n"
+#~ "Now the applet will only show the current cpu frequency."
+#~ msgstr ""
+#~ "cpufreq er ikke understøttet af dit system, hvilket er nødvendigt for "
+#~ "brugen af CPU-frekvensskalering.\n"
+#~ "Hvis dit system burde understøtte cpufreq, kontrollér at filsystemerne /"
+#~ "sys eller /proc er monteret\n"
+#~ "Indtil videre vil panelprogrammet kun vise den nuværende CPU-frekvens."
+
+#~ msgid "cpufreq Not Supported"
+#~ msgstr "cpufreq er ikke understøttet"
+
 #~ msgid "100%"
 #~ msgstr "100%"
 
@@ -6695,9 +6711,6 @@ msgstr "_Overvåget enhed:"
 #~ msgstr ""
 #~ "advarsel: denne version af gmix blev oversat med en anden version af "
 #~ "soundcard.h\n"
-
-#~ msgid "Couldn't open mixer device %s\n"
-#~ msgstr "Kunne ikke åbne mixerenheden %s\n"
 
 #~ msgid "Use Up/Down arrow keys to change volume"
 #~ msgstr "Brug op- og ned-piletasterne til at ændre lydstyrken"
