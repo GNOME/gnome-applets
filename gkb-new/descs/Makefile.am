@@ -47,7 +47,8 @@ preset_data_predata = AM_Armenian.keyprop.in \
 		US-int.keyprop.in US-mac.keyprop.in US-sgi-101.keyprop.in \
 		US-sun.keyprop.in US.keyprop.in US_English.keyprop.in \
 		US_international.keyprop.in VN_Vietnamese.keyprop.in \
-		YU_Serbo-Croatian_x.keyprop.in Yugoslav.keyprop.in
+		YU_Serbo-Croatian_x.keyprop.in Yugoslav.keyprop.in \
+		Macedonian.keyprop.in
 
 preset_datadir = $(datadir)/gnome/gkb
 preset_data_DATA = $(preset_data_predata:.keyprop.in=.keyprop)
