@@ -99,12 +99,12 @@ about_cb (BonoboUIComponent *uic,
 /* run the full-scale system process monitor */
 
 static void
-start_procman_cb (BonoboUIComponent *uic,
-		  MultiloadApplet   *ma,
-		  const char        *name)
+start_procman (MultiloadApplet *ma)
 {
 	GError *error = NULL;
 
+	g_return_if_fail (ma != NULL);
+	
 	egg_screen_execute_command_line_async (
 			gtk_widget_get_screen (GTK_WIDGET (ma->applet)),
 			"gnome-system-monitor", &error);
@@ -133,6 +133,14 @@ start_procman_cb (BonoboUIComponent *uic,
 	}
 }
               
+static void
+start_procman_cb (BonoboUIComponent *uic,
+		  MultiloadApplet   *ma,
+		  const char        *name)
+{
+	start_procman (ma);
+}
+
 void
 multiload_change_size_cb(PanelApplet *applet, gint size, gpointer data)
 {
@@ -217,6 +225,45 @@ multiload_leave_cb(GtkWidget *widget, GdkEventCrossing *event, gpointer data)
 			ma->graphs[i]->tooltip_update = FALSE;
 		
 	return TRUE;
+}
+
+static gboolean
+multiload_button_press_event_cb (GtkWidget *widget, GdkEventButton *event, MultiloadApplet *ma)
+{
+	g_return_val_if_fail (event != NULL, FALSE);
+	g_return_val_if_fail (ma != NULL, FALSE);
+
+	if (event->button == 1 && event->type == GDK_2BUTTON_PRESS) {
+		start_procman (ma);
+		return TRUE;
+	}
+	return FALSE;
+}
+
+static gboolean
+multiload_key_press_event_cb (GtkWidget *widget, GdkEventKey *event, MultiloadApplet *ma)
+{
+	g_return_val_if_fail (event != NULL, FALSE);
+	g_return_val_if_fail (ma != NULL, FALSE);
+
+	switch (event->keyval) {
+	/* this list of keyvals taken from mixer applet, which seemed to have
+		a good list of keys to use */
+	case GDK_KP_Enter:
+	case GDK_ISO_Enter:
+	case GDK_3270_Enter:
+	case GDK_Return:
+	case GDK_space:
+	case GDK_KP_Space:
+		/* activate */
+		start_procman (ma);
+		return TRUE;
+
+	default:
+		break;
+	}
+
+	return FALSE;
 }
 
 /* update the tooltip to the graph's current "used" percentage */
@@ -399,6 +446,10 @@ multiload_applet_new(PanelApplet *applet, const gchar *iid, gpointer data)
 				G_CALLBACK(multiload_destroy_cb), ma);
 	g_signal_connect(G_OBJECT(applet), "enter_notify_event",
 				G_CALLBACK(multiload_enter_cb), ma);
+	g_signal_connect(G_OBJECT(applet), "button_press_event",
+				G_CALLBACK(multiload_button_press_event_cb), ma);
+	g_signal_connect(G_OBJECT(applet), "key_press_event",
+				G_CALLBACK(multiload_key_press_event_cb), ma);
 	multiload_change_size_cb (ma->applet,
 				  panel_applet_get_size (ma->applet),
 				  ma);	
