@@ -232,9 +232,10 @@ unmount_icon_changed (GnomeIconEntry *entry, gpointer data)
 }
 
 void
-properties_show(PanelApplet *applet, gpointer data)
+properties_show (BonoboUIComponent *uic,
+		 DriveData         *dd,
+		 const char        *verb)
 {
-	DriveData *dd = data;
 	GtkWidget *dialog;
 	GtkWidget *box;
 	GtkWidget *frame;

@@ -1,3 +1,18 @@
+2002-07-10  Mark McLoughlin  <mark@skynet.ie>
+
+	* drivemount.c: Correct the signatures for verb callback
+	methods.
+	(browse_cb): remove gmc support, simplify launching and
+	display error dialog if it fails.
+	(about_cb): use gtk_window_present.
+	(mount_cb): use_gtk_window_present and make it return
+	void - the clicked signal handler doesn't need a boolean
+	return.
+
+	* properties.c: (properties_show): use gtk_window_present.
+
+	* properties.h: don't include libgnome.h
+
 2002-06-03  Arvind Samptur <arvind.samptur@wipro.com>
 
 	* drivemount.c: changed gtk_main_do_event
