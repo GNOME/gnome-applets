@@ -405,6 +405,8 @@ void property_show (BonoboUIComponent *uic,
 	GtkObject *delay_adj;
 	GtkWidget *checkbox;
 	GtkSizeGroup *size_group;
+	GConfClient *client;
+	gboolean inhibit_command_line;
 
 	if (mldata->propwindow) {
 		gtk_window_set_screen (GTK_WINDOW (mldata->propwindow),
@@ -412,6 +414,9 @@ void property_show (BonoboUIComponent *uic,
 		gtk_window_present (GTK_WINDOW (mldata->propwindow));
 		return;
 	}
+
+	client = gconf_client_get_default ();
+	inhibit_command_line = gconf_client_get_bool (client, "/desktop/gnome/lockdown/inhibit_command_line", NULL);
 
         mldata->propwindow = gtk_dialog_new_with_buttons (_("Modem Lights Preferences"), NULL,
 						  GTK_DIALOG_DESTROY_WITH_PARENT,
@@ -510,7 +515,8 @@ void property_show (BonoboUIComponent *uic,
         gtk_box_pack_start(GTK_BOX(hbox), mldata->connect_entry , TRUE, TRUE, 0);
 	gtk_widget_show(mldata->connect_entry);
 
-	if ( ! key_writable (PANEL_APPLET (mldata->applet), "connect")) {
+	if ( ! key_writable (PANEL_APPLET (mldata->applet), "connect") ||
+	    inhibit_command_line) {
 		hard_set_sensitive (label, FALSE);
 		hard_set_sensitive (mldata->connect_entry, FALSE);
 	}
@@ -534,7 +540,8 @@ void property_show (BonoboUIComponent *uic,
         gtk_box_pack_start(GTK_BOX(hbox), mldata->disconnect_entry, TRUE, TRUE, 0);
 	gtk_widget_show(mldata->disconnect_entry);
 
-	if ( ! key_writable (PANEL_APPLET (mldata->applet), "disconnect")) {
+	if ( ! key_writable (PANEL_APPLET (mldata->applet), "disconnect") ||
+	    inhibit_command_line) {
 		hard_set_sensitive (label, FALSE);
 		hard_set_sensitive (mldata->disconnect_entry, FALSE);
 	}
@@ -643,7 +650,8 @@ void property_show (BonoboUIComponent *uic,
         gtk_box_pack_start (GTK_BOX (hbox), mldata->device_entry, TRUE, TRUE, 0);
 	gtk_widget_show (mldata->device_entry);
 
-	if ( ! key_writable (PANEL_APPLET (mldata->applet), "device")) {
+	if ( ! key_writable (PANEL_APPLET (mldata->applet), "device") ||
+	    inhibit_command_line) {
 		hard_set_sensitive (label, FALSE);
 		hard_set_sensitive (mldata->device_entry, FALSE);
 	}
@@ -667,7 +675,8 @@ void property_show (BonoboUIComponent *uic,
         gtk_box_pack_start(GTK_BOX(hbox), mldata->lockfile_entry, TRUE, TRUE, 0);
 	gtk_widget_show(mldata->lockfile_entry);
 
-	if ( ! key_writable (PANEL_APPLET (mldata->applet), "lockfile")) {
+	if ( ! key_writable (PANEL_APPLET (mldata->applet), "lockfile") ||
+	    inhibit_command_line) {
 		hard_set_sensitive (label, FALSE);
 		hard_set_sensitive (mldata->lockfile_entry, FALSE);
 	}
