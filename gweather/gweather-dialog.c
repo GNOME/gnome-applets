@@ -77,6 +77,7 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
   GtkWidget *forecast_hbox;
   GtkWidget *ebox;
   GtkWidget *scrolled_window;
+  GtkWidget *imagescroll_window;
 
   gw_applet->gweather_dialog = gtk_dialog_new_with_buttons (_("Forecast"), NULL,
 						  GTK_DIALOG_DESTROY_WITH_PARENT,
@@ -328,13 +329,23 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
       gtk_notebook_append_page (GTK_NOTEBOOK (weather_notebook), radar_vbox, radar_note_lbl);
       gtk_container_set_border_width (GTK_CONTAINER (radar_vbox), 6);
 
+      gw_applet->radar_image = gtk_image_new_from_pixbuf (gw_applet->dialog_pixbuf);  /* Tmp hack */
+      
+      imagescroll_window = gtk_scrolled_window_new (NULL, NULL);
+      gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (imagescroll_window),
+                                 GTK_POLICY_AUTOMATIC,
+                                 GTK_POLICY_AUTOMATIC);
+      gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (imagescroll_window),
+                                      GTK_SHADOW_ETCHED_IN);
+      
       ebox = gtk_event_box_new ();
       gtk_widget_show (ebox);
-      gtk_box_pack_start (GTK_BOX (radar_vbox), ebox, FALSE, FALSE, 0);
 
-
-      gw_applet->radar_image = gtk_image_new_from_pixbuf (gw_applet->dialog_pixbuf);  /* Tmp hack */
+      gtk_scrolled_window_add_with_viewport(imagescroll_window,ebox);
+      gtk_box_pack_start (GTK_BOX (radar_vbox), imagescroll_window, TRUE, TRUE, 0);
       gtk_widget_show (gw_applet->radar_image);
+      gtk_widget_show (imagescroll_window);
+      
       gtk_container_add (GTK_CONTAINER (ebox), gw_applet->radar_image);
 
       radar_link_alignment = gtk_alignment_new (0.5, 0.5, 0, 0);
