@@ -635,6 +635,13 @@ make_new_battery_applet (const gchar *goad_id)
 
   char p, a, h, m;
 
+  bat = g_new0 (BatteryData, 1);
+
+  bat->applet = applet_widget_new (goad_id);
+
+  if (bat->applet == NULL)
+    g_error (_("Can't create applet!\n"));
+
   if (! battery_read_charge (&p, &a, &h, &m))
     {
       GtkWidget *d;
@@ -642,15 +649,9 @@ make_new_battery_applet (const gchar *goad_id)
 				"Make sure that your kernel was "
 				"built with APM support."));
       gnome_dialog_run (GNOME_DIALOG (d));
+      applet_widget_remove (bat->applet);
       gtk_exit (1);
     }
-
-  bat = g_new0 (BatteryData, 1);
-
-  bat->applet = applet_widget_new (goad_id);
-
-  if (bat->applet == NULL)
-    g_error (_("Can't create applet!\n"));
 
   bat->graph_values = NULL;
   bat->setup = 0;
