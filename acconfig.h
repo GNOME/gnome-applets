@@ -49,4 +49,10 @@
 /* Define if this NetBSD platform supports APM. */
 #undef NETBSD_APM
 
+/* Define if system is IPv6 enabled. */
+#undef ENABLE_IPV6
+
+/* Define if getaddrinfo() exists on the system.*/
+#undef HAVE_GETADDRINFO
+
 #undef DEV_PATH
