@@ -90,6 +90,9 @@ struct _AppData
 
 	gint new_browser_window;
 	gint p_new_browser_window;
+
+	gint article_delay;
+	gint p_article_delay;
 };
 
 typedef struct _InfoData InfoData;

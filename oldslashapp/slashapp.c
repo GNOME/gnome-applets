@@ -227,6 +227,7 @@ static void flush_newline_chars(gchar *text, gint max)
 static int get_current_headlines(gpointer data)
 {
 	AppData *ad = data;
+	InfoData *id;
 	GtkWidget *icon;
 	gchar buf[256];
 	gchar headline[128];
@@ -239,6 +240,7 @@ static int get_current_headlines(gpointer data)
 	FILE *slash_file = NULL;
 	gchar *filename = g_strconcat(ad->slashapp_dir, "/slashnews", NULL);
 	gint h = FALSE;
+	gint delay = ad->article_delay / 10 * (1000 / UPDATE_DELAY);
 
 	set_mouse_cursor (ad, GDK_WATCH);
 
@@ -271,7 +273,9 @@ static int get_current_headlines(gpointer data)
 
 	/* add a generic header image */
 	icon = gnome_pixmap_new_from_xpm_d(slashsplash_xpm);
-	add_info_line_with_pixmap(ad, "", icon, 0, FALSE, 1, 40);
+	id = add_info_line_with_pixmap(ad, "", icon, 0, FALSE, 1, delay);
+	set_info_click_signal(id, click_headline_cb, g_strdup("http://slashdot.org"), g_free);
+	add_info_line(ad, "", NULL, 0, FALSE, 1, 0);
 
 	while (fgets(buf, sizeof(buf), slash_file) != NULL)
 		{
@@ -279,7 +283,6 @@ static int get_current_headlines(gpointer data)
 			{
 			if (fgets(buf, sizeof(buf), slash_file) != NULL)
 				{
-				InfoData *id;
 				gchar *text;
 				gchar *edate;
 				h = TRUE;
@@ -327,9 +330,9 @@ static int get_current_headlines(gpointer data)
 
 				/* add the headline */
 				if (icon)
-					id = add_info_line_with_pixmap(ad, text, icon, 0, FALSE, FALSE, 30);
+					id = add_info_line_with_pixmap(ad, text, icon, 0, FALSE, FALSE, delay);
 				else
-					id = add_info_line(ad, text, NULL, 0, FALSE, FALSE, 30);
+					id = add_info_line(ad, text, NULL, 0, FALSE, FALSE, delay);
 				set_info_click_signal(id, click_headline_cb, g_strdup(url), g_free);
 
 				/* a space separater, could include a graphic divider too */
@@ -343,7 +346,11 @@ static int get_current_headlines(gpointer data)
 
 	set_mouse_cursor (ad, GDK_LEFT_PTR);
 
-	if (!h)	add_info_line(ad, "  \n  \nNo articles found", NULL, 0, FALSE, 1, 30);
+	if (!h)
+		{
+		add_info_line(ad, "  \n  ", NULL, 0, FALSE, 1, 0);
+		add_info_line(ad, _("No articles found"), NULL, 0, TRUE, 1, 30);
+		}
 
 	g_free(filename);
 	return TRUE;
@@ -428,7 +435,7 @@ static AppData *create_new_app(GtkWidget *applet)
 	property_load(APPLET_WIDGET(applet)->privcfgpath, ad);
 
 	add_info_line(ad, "Slashdot.org Applet\n", NULL, 0, TRUE, 1, 0);
-	add_info_line(ad, "Loading headlines........", NULL, 0, FALSE, 1, 20);
+	add_info_line(ad, _("Loading headlines........"), NULL, 0, FALSE, 1, 20);
 
 /* applet signals */
         gtk_signal_connect(GTK_OBJECT(applet),"save_session",

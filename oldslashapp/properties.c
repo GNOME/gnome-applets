@@ -4,6 +4,7 @@
 
 #include "slashapp.h"
 
+static void article_delay_cb(GtkObject *adj, gpointer data);
 static void browser_window_cb(GtkWidget *w, gpointer data);
 static void show_images_cb(GtkWidget *w, gpointer data);
 static void show_info_cb(GtkWidget *w, gpointer data);
@@ -26,6 +27,7 @@ void property_load(gchar *path, AppData *ad)
 	ad->show_images = gnome_config_get_int("display/show_images=1");
 	ad->show_info = gnome_config_get_int("display/show_info=1");
 	ad->show_department = gnome_config_get_int("display/show_department=0");
+	ad->article_delay = gnome_config_get_int("display/article_delay=50");
 
 	ad->new_browser_window = gnome_config_get_int("display/new_browser_window=1");
 
@@ -43,11 +45,19 @@ void property_save(gchar *path, AppData *ad)
         gnome_config_set_int("slashapp/show_images", ad->show_images);
         gnome_config_set_int("slashapp/show_info", ad->show_info);
         gnome_config_set_int("slashapp/show_department", ad->show_department);
+        gnome_config_set_int("slashapp/article_delay", ad->article_delay);
 
         gnome_config_set_int("slashapp/new_browser_window", ad->new_browser_window);
 
 	gnome_config_sync();
         gnome_config_pop_prefix();
+}
+
+static void article_delay_cb(GtkObject *adj, gpointer data)
+{
+        AppData *ad = data;
+        ad->p_article_delay = (gint)GTK_ADJUSTMENT(adj)->value;
+        gnome_property_box_changed(GNOME_PROPERTY_BOX(ad->propwindow));
 }
 
 static void browser_window_cb(GtkWidget *w, gpointer data)
@@ -117,6 +127,7 @@ static void property_apply_cb(GtkWidget *widget, void *nodata, gpointer data)
 	ad->show_images = ad->p_show_images;
 	ad->show_info = ad->p_show_info;
 	ad->show_department = ad->p_show_department;
+	ad->article_delay = ad->p_article_delay;
 
 	ad->new_browser_window = ad->p_new_browser_window;
 
@@ -141,6 +152,7 @@ void property_show(AppletWidget *applet, gpointer data)
 	GtkWidget *button;
 	GtkObject *adj;
 	GtkWidget *spin;
+	GtkWidget *entry;
 
 	if(ad->propwindow)
 		{
@@ -156,6 +168,7 @@ void property_show(AppletWidget *applet, gpointer data)
 	ad->p_show_images = ad->show_images;
 	ad->p_show_info = ad->show_info;
 	ad->p_show_department = ad->show_department;
+	ad->p_article_delay = ad->article_delay;
 
 	ad->p_new_browser_window = ad->new_browser_window;
 
@@ -195,6 +208,22 @@ void property_show(AppletWidget *applet, gpointer data)
 	gtk_signal_connect (GTK_OBJECT(button),"clicked",(GtkSignalFunc) show_info_cb, ad);
 	gtk_widget_show(button);
 
+	hbox = gtk_hbox_new(FALSE, 0);
+	gtk_box_pack_start(GTK_BOX(vbox1), hbox, FALSE, FALSE, 0);
+	gtk_widget_show(hbox);
+
+        label = gtk_label_new(_("Delay between articles (10 = 1 sec):"));
+        gtk_box_pack_start( GTK_BOX(hbox), label, FALSE, FALSE, 0);
+        gtk_widget_show(label);
+
+        adj = gtk_adjustment_new( ad->p_article_delay, 0.0, 3000.0 , 10, 10, 10 );
+        spin = gtk_spin_button_new( GTK_ADJUSTMENT(adj), 1, 0 );
+        gtk_box_pack_start( GTK_BOX(hbox), spin, FALSE, FALSE, 0);
+        gtk_signal_connect( GTK_OBJECT(adj),"value_changed",
+			GTK_SIGNAL_FUNC(article_delay_cb), ad);
+        gtk_spin_button_set_update_policy(GTK_SPIN_BUTTON(spin), GTK_UPDATE_ALWAYS);
+        gtk_widget_show(spin);
+
         label = gtk_label_new(_("(These settings do not take effect until a refresh)"));
 	gtk_box_pack_start(GTK_BOX(vbox1), label, FALSE, FALSE, 0);
 	gtk_widget_show(label);
@@ -213,6 +242,88 @@ void property_show(AppletWidget *applet, gpointer data)
 	gtk_toggle_button_set_state(GTK_TOGGLE_BUTTON(button), ad->p_new_browser_window);
 	gtk_signal_connect (GTK_OBJECT(button),"clicked",(GtkSignalFunc) browser_window_cb, ad);
 	gtk_widget_show(button);
+
+/* -- not implemented yet -- */
+
+	frame = gtk_frame_new(_("Ticker Information (unimplemented)"));
+	gtk_container_border_width (GTK_CONTAINER (frame), 5);
+	gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
+	gtk_widget_show(frame);
+
+	vbox1 = gtk_vbox_new(FALSE, 1);
+	gtk_container_add(GTK_CONTAINER(frame), vbox1);
+	gtk_widget_show(vbox1);
+
+	hbox = gtk_hbox_new(FALSE, 0);
+	gtk_box_pack_start(GTK_BOX(vbox1), hbox, FALSE, FALSE, 0);
+	gtk_widget_show(hbox);
+
+        label = gtk_label_new(_("Url:"));
+        gtk_box_pack_start( GTK_BOX(hbox), label, FALSE, FALSE, 0);
+        gtk_widget_show(label);
+
+	entry = gtk_entry_new_with_max_length(255);
+	gtk_entry_set_text(GTK_ENTRY(entry), "slashdot.org");
+	gtk_signal_connect_object(GTK_OBJECT(entry), "changed",
+                            GTK_SIGNAL_FUNC(gnome_property_box_changed),
+                            GTK_OBJECT(ad->propwindow));
+        gtk_box_pack_start(GTK_BOX(hbox), entry ,TRUE, TRUE, 0);
+	gtk_widget_set_sensitive(entry, FALSE);
+        gtk_widget_show(entry);
+
+	hbox = gtk_hbox_new(FALSE, 0);
+	gtk_box_pack_start(GTK_BOX(vbox1), hbox, FALSE, FALSE, 0);
+	gtk_widget_show(hbox);
+
+        label = gtk_label_new(_("Article index file:"));
+        gtk_box_pack_start( GTK_BOX(hbox), label, FALSE, FALSE, 0);
+        gtk_widget_show(label);
+
+	entry = gtk_entry_new_with_max_length(255);
+	gtk_entry_set_text(GTK_ENTRY(entry), "/ultramode.txt");
+	gtk_signal_connect_object(GTK_OBJECT(entry), "changed",
+                            GTK_SIGNAL_FUNC(gnome_property_box_changed),
+                            GTK_OBJECT(ad->propwindow));
+        gtk_box_pack_start(GTK_BOX(hbox), entry ,TRUE, TRUE, 0);
+	gtk_widget_set_sensitive(entry, FALSE);
+        gtk_widget_show(entry);
+
+	hbox = gtk_hbox_new(FALSE, 0);
+	gtk_box_pack_start(GTK_BOX(vbox1), hbox, FALSE, FALSE, 0);
+	gtk_widget_show(hbox);
+
+        label = gtk_label_new(_("Image Server Url:"));
+        gtk_box_pack_start( GTK_BOX(hbox), label, FALSE, FALSE, 0);
+        gtk_widget_show(label);
+
+	entry = gtk_entry_new_with_max_length(255);
+	gtk_entry_set_text(GTK_ENTRY(entry), "wolfe.slashdot.org");
+	gtk_signal_connect_object(GTK_OBJECT(entry), "changed",
+                            GTK_SIGNAL_FUNC(gnome_property_box_changed),
+                            GTK_OBJECT(ad->propwindow));
+        gtk_box_pack_start(GTK_BOX(hbox), entry ,TRUE, TRUE, 0);
+	gtk_widget_set_sensitive(entry, FALSE);
+        gtk_widget_show(entry);
+
+	hbox = gtk_hbox_new(FALSE, 0);
+	gtk_box_pack_start(GTK_BOX(vbox1), hbox, FALSE, FALSE, 0);
+	gtk_widget_show(hbox);
+
+        label = gtk_label_new(_("Image path:"));
+        gtk_box_pack_start( GTK_BOX(hbox), label, FALSE, FALSE, 0);
+        gtk_widget_show(label);
+
+	entry = gtk_entry_new_with_max_length(255);
+	gtk_entry_set_text(GTK_ENTRY(entry), "/images/topics/topic");
+	gtk_signal_connect_object(GTK_OBJECT(entry), "changed",
+                            GTK_SIGNAL_FUNC(gnome_property_box_changed),
+                            GTK_OBJECT(ad->propwindow));
+        gtk_box_pack_start(GTK_BOX(hbox), entry, TRUE, TRUE, 0);
+	gtk_widget_set_sensitive(entry, FALSE);
+        gtk_widget_show(entry);
+
+
+/* --- */
 
         label = gtk_label_new(_("General"));
         gtk_widget_show(frame);
