@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-11-14 09:55+0200\n"
-"PO-Revision-Date: 2004-11-14 12:18+0200\n"
+"POT-Creation-Date: 2004-12-01 00:57+0200\n"
+"PO-Revision-Date: 2004-12-01 15:15+0200\n"
 "Last-Translator: Žygimantas Beručka <uid0@akl.lt>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: accessx-status/GNOME_AccessxApplet.xml.h:1
 #: battstat/GNOME_BattstatApplet.xml.h:1 cdplayer/GNOME_CDPlayerApplet.xml.h:1
-#: charpick/GNOME_CharpickerApplet.xml.h:1
+#: charpick/GNOME_CharpickerApplet.xml.h:1 cpufreq/GNOME_CPUFreqApplet.xml.h:1
 #: drivemount/GNOME_DriveMountApplet.xml.h:1 geyes/GNOME_GeyesApplet.xml.h:1
 #: gkb-new/GNOME_KeyboardApplet.xml.h:1
 #: gswitchit/GNOME_GSwitchItApplet.xml.h:2 gtik/GNOME_GtikApplet.xml.h:1
@@ -29,8 +29,8 @@ msgstr ""
 #: mixer/GNOME_MixerApplet.xml.h:1 modemlights/GNOME_ModemlightsApplet.xml.h:1
 #: multiload/GNOME_MultiloadApplet.xml.h:1
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:1
-#: wireless/GNOME_WirelessApplet.xml.h:1
 #: trashapplet/GNOME_Panel_TrashApplet.xml.h:1
+#: wireless/GNOME_WirelessApplet.xml.h:1
 msgid "_About"
 msgstr "_Apie"
 
@@ -45,8 +45,8 @@ msgstr "_Apie"
 #: mixer/GNOME_MixerApplet.xml.h:2 modemlights/GNOME_ModemlightsApplet.xml.h:2
 #: multiload/GNOME_MultiloadApplet.xml.h:2
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:3
-#: wireless/GNOME_WirelessApplet.xml.h:2
 #: trashapplet/GNOME_Panel_TrashApplet.xml.h:3
+#: wireless/GNOME_WirelessApplet.xml.h:2
 msgid "_Help"
 msgstr "_Pagalba"
 
@@ -72,13 +72,13 @@ msgid "Shows the status of keyboard accessibility features"
 msgstr "Rodo klaviatūros pagalbinių ypatybių būklę"
 
 #: accessx-status/applet.c:136 battstat/battstat_applet.c:1070
-#: cdplayer/cdplayer.c:596 charpick/charpick.c:601
-#: cpufreq/src/cpufreq-applet.c:145 drivemount/drivemount.c:132
-#: geyes/geyes.c:201 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:599
+#: cdplayer/cdplayer.c:596 charpick/charpick.c:607
+#: cpufreq/src/cpufreq-applet.c:146 drivemount/drivemount.c:132
+#: geyes/geyes.c:201 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:574
 #: gtik/gtik.c:722 gweather/gweather-about.c:48 mini-commander/src/about.c:48
 #: modemlights/modemlights.c:116 multiload/main.c:56
 #: stickynotes/stickynotes_applet_callbacks.c:282
-#: wireless/wireless-applet.c:574 trashapplet/src/trashapplet.c:681
+#: trashapplet/src/trashapplet.c:681 wireless/wireless-applet.c:574
 msgid "translator_credits"
 msgstr ""
 "Paskutinis vertėjas:\n"
@@ -153,8 +153,8 @@ msgid "Monitor a laptop's remaining power"
 msgstr "Stebėti likusią nešiojamojo kompiuterio energiją"
 
 #: battstat/GNOME_BattstatApplet.xml.h:3 cdplayer/GNOME_CDPlayerApplet.xml.h:4
-#: charpick/GNOME_CharpickerApplet.xml.h:3 geyes/GNOME_GeyesApplet.xml.h:3
-#: gkb-new/GNOME_KeyboardApplet.xml.h:3
+#: charpick/GNOME_CharpickerApplet.xml.h:3 cpufreq/GNOME_CPUFreqApplet.xml.h:3
+#: geyes/GNOME_GeyesApplet.xml.h:3 gkb-new/GNOME_KeyboardApplet.xml.h:3
 #: gswitchit/GNOME_GSwitchItApplet.xml.h:6 gtik/GNOME_GtikApplet.xml.h:3
 #: gweather/GNOME_GWeatherApplet.xml.h:4
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
@@ -345,8 +345,8 @@ msgstr "Jūsų baterija išsikrauna"
 #: battstat/battstat_applet.c:538
 msgid "To avoid losing work please power off, suspend or plug your laptop in."
 msgstr ""
-"Tam, kad neprarastumėte darbo prašom išjungti, sulaikyti arba įjungti "
-"Jūsų nešiojamą kompiuterį maitinimo lizdą."
+"Tam, kad neprarastumėte darbo prašom išjungti, sulaikyti arba įjungti Jūsų "
+"nešiojamą kompiuterį maitinimo lizdą."
 
 #: battstat/battstat_applet.c:541 battstat/battstat_applet.c:594
 msgid "Battery Notice"
@@ -444,7 +444,8 @@ msgstr ""
 "Negaliu pasiekti ACPI įvykių esančių /var/run/acpid.socket! Įsitikinkit, kad "
 "ACPI subsistema veikia ir, kad paleistas acpid demonas."
 
-#: battstat/battstat_applet.glade.h:1 gswitchit/gswitchit-properties.glade.h:1
+#: battstat/battstat_applet.glade.h:1 cpufreq/cpufreq-preferences.glade.h:1
+#: gswitchit/gswitchit-properties.glade.h:1
 #: mini-commander/src/mini-commander.glade.h:1
 #: stickynotes/stickynotes.glade.h:1
 msgid "    "
@@ -467,32 +468,32 @@ msgid "Battery Charge Monitor Preferences"
 msgstr "Baterijų krovimo stebėtuvo nustatymai"
 
 #: battstat/battstat_applet.glade.h:6
+msgid "S_uspend command:"
+msgstr "S_ulaikymo komanda:"
+
+#: battstat/battstat_applet.glade.h:7
 msgid "Show _battery status"
 msgstr "Rodyti _baterijos būklę"
 
-#: battstat/battstat_applet.glade.h:7
+#: battstat/battstat_applet.glade.h:8
 msgid "Show _percentage remaining"
 msgstr "Rodyti likusius _procentus"
 
-#: battstat/battstat_applet.glade.h:8
+#: battstat/battstat_applet.glade.h:9
 msgid "Show _time remaining"
 msgstr "Rodyti likusį _laiką"
 
-#: battstat/battstat_applet.glade.h:9
+#: battstat/battstat_applet.glade.h:10
 msgid "Show power _connection status"
 msgstr "Rodyti _srovės pajungimo būseną"
 
-#: battstat/battstat_applet.glade.h:10
+#: battstat/battstat_applet.glade.h:11
 msgid "War_n when battery is fully re-charged"
 msgstr "Pra_nešti, kai baterija yra pilnai pakraunama"
 
-#: battstat/battstat_applet.glade.h:11
+#: battstat/battstat_applet.glade.h:12
 msgid "_Show time/percentage remaining:"
 msgstr "_Rodyti likusį laiką/procentus:"
-
-#: battstat/battstat_applet.glade.h:12
-msgid "_Suspend command:"
-msgstr "_Sulaikymo komanda:"
 
 #: battstat/battstat_applet.glade.h:13
 msgid "_Warn when battery charge is low"
@@ -502,8 +503,8 @@ msgstr "_Pranešti, kai baterija yra beveik išsikrovusi"
 #: mini-commander/src/preferences.c:368
 #: stickynotes/stickynotes_applet_callbacks.c:259
 #: stickynotes/stickynotes_applet_callbacks.c:423
-#: wireless/wireless-applet.c:544 wireless/wireless-applet.c:628
-#: trashapplet/src/trashapplet.c:648
+#: trashapplet/src/trashapplet.c:648 wireless/wireless-applet.c:544
+#: wireless/wireless-applet.c:628
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Įvyko klaida rodant pagalbą: %s"
@@ -643,8 +644,8 @@ msgstr "Norėdamas groti prieš tai buvusį CD takelį, paspausk šį mygtuką"
 msgid "Click this button to Play the next track in the CD"
 msgstr "Norėdamas groti kitą CD takelį, paspausk šį mygtuką"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:614
-#: charpick/charpick.c:768 charpick/properties.c:449
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:620
+#: charpick/charpick.c:774 charpick/properties.c:449
 msgid "Character Palette"
 msgstr "Simbolių rinkiklis"
 
@@ -652,11 +653,11 @@ msgstr "Simbolių rinkiklis"
 msgid "Charpicker Applet Factory"
 msgstr "Charpicker įtaiso gamykla"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:3 charpick/charpick.c:768
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:3 charpick/charpick.c:774
 msgid "Insert characters"
 msgstr "Įterpti simbolius"
 
-#: charpick/charpick.c:445
+#: charpick/charpick.c:447
 msgid "Available palettes"
 msgstr "Prieinamos paletės"
 
@@ -664,31 +665,35 @@ msgstr "Prieinamos paletės"
 #. *             hopefully, the name of the unicode character has already
 #. *             been translated.
 #.
-#: charpick/charpick.c:486
+#: charpick/charpick.c:489
 #, c-format
 msgid "Insert \"%s\""
 msgstr "Įterpti „%s“"
 
-#: charpick/charpick.c:490
+#: charpick/charpick.c:492
+msgid "Insert special character"
+msgstr "Įterpkite specialų simbolį"
+
+#: charpick/charpick.c:496
 #, c-format
 msgid "insert special character %s"
 msgstr "įterpti specialų simbolį %s"
 
 #. If your charset supports it, please use U00F1 to replace the "n"
 #. * in "Muniz".
-#: charpick/charpick.c:590
+#: charpick/charpick.c:596
 msgid "Alexandre Muniz <munizao@xprt.net>"
 msgstr "Alexandre Muniz <munizao@xprt.net>"
 
-#: charpick/charpick.c:591
+#: charpick/charpick.c:597
 msgid "Kevin Vandersloot"
 msgstr "Kevin Vandersloot"
 
-#: charpick/charpick.c:616
+#: charpick/charpick.c:622
 msgid "Copyright (C) 1998"
 msgstr "Copyright (C) 1998"
 
-#: charpick/charpick.c:617
+#: charpick/charpick.c:623
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -781,7 +786,7 @@ msgid "Character Palette Preferences"
 msgstr "Simbolių paletės nustatymai"
 
 #: cpufreq/GNOME_CPUFreqApplet.server.in.in.h:1
-#: cpufreq/src/cpufreq-applet.c:161 cpufreq/src/cpufreq-applet.c:742
+#: cpufreq/src/cpufreq-applet.c:162 cpufreq/src/cpufreq-applet.c:743
 msgid "CPU Frequency Scaling Monitor"
 msgstr "CPU dažnio mastelio stebėtuvas"
 
@@ -792,14 +797,6 @@ msgstr "Stebėti CPU dažnio mastelį"
 #: cpufreq/GNOME_CPUFreqApplet.server.in.in.h:3
 msgid "Utility"
 msgstr "Pagalbinė programa"
-
-#: cpufreq/GNOME_CPUFreqApplet.xml.h:1
-msgid "_About..."
-msgstr "_Apie..."
-
-#: cpufreq/GNOME_CPUFreqApplet.xml.h:3
-msgid "_Preferences..."
-msgstr "_Nustatymai..."
 
 #: cpufreq/cpufreq-applet.schemas.in.h:1
 msgid ""
@@ -815,8 +812,9 @@ msgid ""
 "the applet in text mode (not to show the pixmap) and 2 to show the applet in "
 "graphic and text mode."
 msgstr ""
-"0-inė vertė reiškia, kad įtaisas rodomas grafiniame režime (tik paveikslėlis),"" 1, kad įtaisas rodomas tekstiniame režime (paveikslėlis nerodomas) ir 2, kad "
-"įtaisas rodomas ir grafiniame, ir tekstiniame režime."
+"0-inė vertė reiškia, kad įtaisas rodomas grafiniame režime (tik "
+"paveikslėlis), 1, kad įtaisas rodomas tekstiniame režime (paveikslėlis "
+"nerodomas) ir 2, kad įtaisas rodomas ir grafiniame, ir tekstiniame režime."
 
 #: cpufreq/cpufreq-applet.schemas.in.h:3
 msgid "CPU to Monitor"
@@ -828,7 +826,8 @@ msgstr "CPU apkrovos rodymo režimas"
 
 #: cpufreq/cpufreq-applet.schemas.in.h:5
 msgid "Mode to show when show_mode is text or both"
-msgstr "Rodomas režimas, kai rody_mo režimas yra tekstinis arba ir tas, ir tas."
+msgstr ""
+"Rodomas režimas, kai rody_mo režimas yra tekstinis arba ir tas, ir tas."
 
 #: cpufreq/cpufreq-applet.schemas.in.h:6
 msgid ""
@@ -837,21 +836,17 @@ msgid ""
 msgstr ""
 "Nurodykit stebimą CPU. Vieno procesoriaus sistemoje, jums nereikia jo keisti."
 
-#: cpufreq/cpufreq-preferences.glade.h:1
+#: cpufreq/cpufreq-preferences.glade.h:2
 msgid "<b>Display Settings</b>"
 msgstr "<b>Rodymo nustatymai</b>"
 
-#: cpufreq/cpufreq-preferences.glade.h:2
+#: cpufreq/cpufreq-preferences.glade.h:3
 msgid "<b>Monitor Settings</b>"
 msgstr "<b>Stebėjimo nustatymai</b>"
 
-#: cpufreq/cpufreq-preferences.glade.h:3
-msgid "CPUFreq Monitor Preferences"
-msgstr "CPUFreq stebėjimo nustatymai"
-
 #: cpufreq/cpufreq-preferences.glade.h:4
-msgid "Monitored CPU"
-msgstr "Stebimas CPU"
+msgid "CPU Frequency Monitor Preferences"
+msgstr "CPU dažnio stebėjimo nustatymai"
 
 #: cpufreq/cpufreq-preferences.glade.h:5
 msgid "Show CPU frequency as _frequency"
@@ -866,29 +861,26 @@ msgid "Show frequency _units"
 msgstr "Rodyti dažnio _vienetus"
 
 #: cpufreq/cpufreq-preferences.glade.h:8
-msgid "Show in Mode "
-msgstr "Rodyti režime "
+msgid "_Monitored CPU:"
+msgstr "_Stebimas CPU:"
 
-#: cpufreq/src/cpufreq-applet.c:119 cpufreq/src/cpufreq-prefs.c:220
-msgid ""
-"Sorry, an internal error has occurred with the CPU Frequency Scaling Monitor "
-"help"
-msgstr ""
-"Atsiprašome, įvyko klaida CPU dažnio mastelio stebėtuvo pagalboje"
+#: cpufreq/cpufreq-preferences.glade.h:9
+msgid "_Show in mode:"
+msgstr "_Rodyti režime:"
 
-#: cpufreq/src/cpufreq-applet.c:123 cpufreq/src/cpufreq-prefs.c:223
-msgid "Sorry, the document can not be found"
-msgstr "Atsiprašome, dokumentas nerastas"
+#: cpufreq/src/cpufreq-applet.c:125 cpufreq/src/cpufreq-prefs.c:219
+msgid "Could not open help document"
+msgstr "Nepavyko atidaryti pagalbos dokumento"
 
-#: cpufreq/src/cpufreq-applet.c:137
+#: cpufreq/src/cpufreq-applet.c:138
 msgid "Graphic Arts:"
 msgstr "Grafinis apipavidalinimas:"
 
-#: cpufreq/src/cpufreq-applet.c:163
+#: cpufreq/src/cpufreq-applet.c:164
 msgid "Copyright (C) 2004 Free Software Foundation. Inc."
 msgstr "Copyright (C) 2004 Free Software Foundation. Inc."
 
-#: cpufreq/src/cpufreq-applet.c:164
+#: cpufreq/src/cpufreq-applet.c:165
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr "Ši pagalbinė programa rodo esamą CPU dažnio mastelį."
 
@@ -896,54 +888,52 @@ msgstr "Ši pagalbinė programa rodo esamą CPU dažnio mastelį."
 #. * I thi	nk is better than do nothing. I have to notify it to the user, because
 #. * he could think	 that cpufreq is supported but it doesn't work succesfully
 #.
-#: cpufreq/src/cpufreq-applet.c:597
-msgid ""
-"There is no cpufreq support in your system, needed to use CPU Frequency "
-"Scaling Monitor.\n"
-"If your system already supports cpufreq, check whether /sys or /proc file "
-"systems are mounted.\n"
-"Now the applet will only show the current cpu frequency."
-msgstr ""
-"Jūsų sistemoje nėra cpufreq palaikymo, reikalingo norint naudoti CPU "
-"dažnio mastelio stebėtuvą.\n"
-"Jeigu Jūsų sistema jau palaiko spufreq, patikrinkit ar yra prijungtos /sys "
-"arba /proc bylų sistemos.\n"
-"Tuo tarpu dabar įtaisas tik rodys esamą cpu dažnį."
+#: cpufreq/src/cpufreq-applet.c:601
+msgid "CPU frequency scaling unsupported"
+msgstr "CPU dažnio keitimas nepalaikomas"
 
-#: cpufreq/src/cpufreq-applet.c:606
+#: cpufreq/src/cpufreq-applet.c:602
+msgid ""
+"You will not be able to modify the frequency of your machine.  Your machine "
+"may be misconfigured or not have hardware support for CPU frequency scaling."
+msgstr ""
+"Jūs negalėsite keisti Jūsų kompiuterio dažnio todėl, kad Jūsų kompiuteris "
+"gali būti neteisingai sukonfigūruotas arba neturi galimybės keisti dažnį."
+
+#: cpufreq/src/cpufreq-applet.c:607
 #, c-format
 msgid ""
-"CPU %d - cpufreq Not Supported\n"
-"%s (%s)"
+"CPU %d - Frequency Scaling Unsupported\n"
+"%s %s (%s)"
 msgstr ""
-"CPU %d - cpufreq nepalaikomas\n"
-"%s (%s)"
+"CPU %d - dažnio keitimas nepalaikomas\n"
+"%s %s (%s)"
 
-#: cpufreq/src/cpufreq-applet.c:612
-msgid "cpufreq Not Supported"
-msgstr "cpufreq nepalaikomas"
+#: cpufreq/src/cpufreq-applet.c:613
+msgid "Frequency Scaling Unsupported"
+msgstr "Dažnio keitimas nepalaikomas"
 
-#: cpufreq/src/cpufreq-applet.c:743
+#: cpufreq/src/cpufreq-applet.c:744
 msgid "This utility shows the current CPU Frequency"
 msgstr "Ši pagalbinė programa rodo esamą CPU dažnį"
 
-#: cpufreq/src/cpufreq-prefs.c:285
+#: cpufreq/src/cpufreq-prefs.c:280
 msgid "Graphic"
 msgstr "Grafikas"
 
-#: cpufreq/src/cpufreq-prefs.c:290 modemlights/properties.c:609
+#: cpufreq/src/cpufreq-prefs.c:285 modemlights/properties.c:609
 msgid "Text"
 msgstr "Tekstas"
 
-#: cpufreq/src/cpufreq-prefs.c:295
+#: cpufreq/src/cpufreq-prefs.c:290
 msgid "Graphic and Text"
 msgstr "Grafikas ir tekstas"
 
-#: cpufreq/src/cpufreq.c:231 gweather/weather.c:232 gweather/weather.c:2200
-#: gweather/weather.c:2214 gweather/weather.c:2226 gweather/weather.c:2241
-#: gweather/weather.c:2257 gweather/weather.c:2288 gweather/weather.c:2300
-#: gweather/weather.c:2319 gweather/weather.c:2347 gweather/weather.c:2360
-#: gweather/weather.c:2380
+#: cpufreq/src/cpufreq.c:231 gweather/weather.c:301 gweather/weather.c:2407
+#: gweather/weather.c:2421 gweather/weather.c:2433 gweather/weather.c:2448
+#: gweather/weather.c:2464 gweather/weather.c:2495 gweather/weather.c:2507
+#: gweather/weather.c:2526 gweather/weather.c:2554 gweather/weather.c:2567
+#: gweather/weather.c:2587
 msgid "Unknown"
 msgstr "Nežinomas"
 
@@ -964,21 +954,93 @@ msgstr "Diskų prijungimo priedo gamykla"
 msgid "Mount local disks and devices"
 msgstr "Prijungti vietinius diskus ir įrenginius"
 
+#: drivemount/drive-button.c:319 drivemount/drive-button.c:327
+#, c-format
+msgid ""
+"%s\n"
+"(mounted)"
+msgstr ""
+"%s\n"
+"(prijungta)"
+
+#: drivemount/drive-button.c:321 drivemount/drive-button.c:329
+#, c-format
+msgid ""
+"%s\n"
+"(not mounted)"
+msgstr ""
+"%s\n"
+"(neprijungta)"
+
+#: drivemount/drive-button.c:323
+#, fuzzy, c-format
+msgid ""
+"%s\n"
+"(not connected)"
+msgstr ""
+"%s\n"
+"(neprijungta)"
+
+#: drivemount/drive-button.c:495
+#, c-format
+msgid ""
+"<span weight=\"bold\" size=\"larger\">Cannot execute '%s'</span>\n"
+"%s"
+msgstr ""
+"<span weight=\"bold\" size=\"larger\">Nepavyko įvykdyti „%s“</span>\n"
+"%s"
+
+#: drivemount/drive-button.c:518
+msgid "Mount Error"
+msgstr "Klaida prijungiant"
+
+#: drivemount/drive-button.c:521
+msgid "Unmount Error"
+msgstr "Klaida atjungiant"
+
+#: drivemount/drive-button.c:524
+msgid "Eject Error"
+msgstr "Klaida išmetant"
+
+#: drivemount/drive-button.c:527
+msgid "Error"
+msgstr "Klaida"
+
+#: drivemount/drive-button.c:672
+#, c-format
+msgid "_Open %s"
+msgstr "_Atidaryti %s"
+
+#: drivemount/drive-button.c:681
+#, c-format
+msgid "_Mount %s"
+msgstr "_Prijungti %s"
+
+#: drivemount/drive-button.c:688
+#, c-format
+msgid "Un_mount %s"
+msgstr "A_tjungti %s"
+
+#: drivemount/drive-button.c:695
+#, c-format
+msgid "_Eject %s"
+msgstr "_Išmesti %s"
+
 #: drivemount/drivemount.c:129
 msgid "Applet for mounting and unmounting block volumes."
 msgstr "Įtaisas duomenų laikmenų prijungimui ir atjungimui."
 
 #: drivemount/drivemount.schemas.in.h:1
 msgid "Interval timeout to check mount point status"
-msgstr "Intervalas tarp prijungimo taškų patikrinimų"
+msgstr "Intervalas tarp prijungimo vietų patikrinimų"
 
 #: drivemount/drivemount.schemas.in.h:2
 msgid "Time in seconds between status updates"
-msgstr "Laikas sekundėmis tarp būklės atnaujinimų"
+msgstr "Laiko tarpas sekundėmis tarp būklės atnaujinimų"
 
 #: geyes/GNOME_GeyesApplet.server.in.in.h:1
 msgid "A set of eyeballs for your panel"
-msgstr "Akių rinkinys Jūsų skydeliui"
+msgstr "Keletas akių Jūsų skydeliui"
 
 #: geyes/GNOME_GeyesApplet.server.in.in.h:2 geyes/geyes.c:221
 #: geyes/geyes.c:451 geyes/geyes.c:453
@@ -1042,17 +1104,826 @@ msgstr "Klaviatūros išdėstymo perjungiklis"
 msgid "Produces keyboard layout switcher applets."
 msgstr "Daro klaviatūros išdėstymo perjungklio įtaisus"
 
+#: gkb-new/descs.sun/presets.xml.in.h:1
 #: gkb-new/descs/AM_Armenian.keyprop.desktop.in.h:1
 #: gkb-new/descs/Armenian.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:5 gkb-new/descs.sun/presets.xml.in.h:1
+#: gkb-new/descs/presets.xml.in.h:5
 msgid "Armenia"
 msgstr "Armenija"
 
+#: gkb-new/descs.sun/presets.xml.in.h:2
 #: gkb-new/descs/AM_Armenian.keyprop.desktop.in.h:2
 #: gkb-new/descs/Armenian.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:6 gkb-new/descs.sun/presets.xml.in.h:2
+#: gkb-new/descs/presets.xml.in.h:6
 msgid "Armenian"
 msgstr "Armenų"
+
+#: gkb-new/descs.sun/presets.xml.in.h:3
+msgid "Armenian Sun keymap"
+msgstr "Armėnų Sun išdėstymas"
+
+#: gkb-new/descs.sun/presets.xml.in.h:4 gkb-new/descs/presets.xml.in.h:9
+msgid "Azerbaijan"
+msgstr "Azerbaidžanas"
+
+#: gkb-new/descs.sun/presets.xml.in.h:5 gkb-new/descs/presets.xml.in.h:10
+msgid "Azerbaijani Turkish"
+msgstr "Azerbaidžano Turkų"
+
+#: gkb-new/descs.sun/presets.xml.in.h:6
+msgid "Azerbaijani Turkish Sun keymap"
+msgstr "Azerbaidžano Turkų Sun išdėstymas"
+
+#: gkb-new/descs.sun/presets.xml.in.h:7
+#: gkb-new/descs/BY_Belarussian.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:14
+msgid "Belarus"
+msgstr "Baltarusija"
+
+#: gkb-new/descs.sun/presets.xml.in.h:8
+#: gkb-new/descs/BY_Belarussian.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:15
+msgid "Belarusian"
+msgstr "Baltarusių"
+
+#: gkb-new/descs.sun/presets.xml.in.h:9
+msgid "Belarusian Sun keymap"
+msgstr "Baltarusių Sun išdėstymas"
+
+#: gkb-new/descs.sun/presets.xml.in.h:10
+#: gkb-new/descs/BE_Dutch.keyprop.desktop.in.h:1
+#: gkb-new/descs/Belgian.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:18
+msgid "Belgium"
+msgstr "Belgija"
+
+#: gkb-new/descs.sun/presets.xml.in.h:11
+#: gkb-new/descs/BR_Portuguese.keyprop.desktop.in.h:1
+#: gkb-new/descs/BR_Portuguese_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/Portugal.keyprop.desktop.in.h:1
+#: gkb-new/descs/PortugalDeadkeys.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:19
+msgid "Brazil"
+msgstr "Brazilija"
+
+#: gkb-new/descs.sun/presets.xml.in.h:12
+msgid "Brazil Portuguese Sun USB keymap"
+msgstr "Brazilų Portugalų Sun USB išdėstymas"
+
+#: gkb-new/descs.sun/presets.xml.in.h:13
+msgid "Brazil Portuguese Sun keymap"
+msgstr "Brazilų Portugalų Sun išdėstymas"
+
+#: gkb-new/descs.sun/presets.xml.in.h:14
+#: gkb-new/descs/BG_Bulgarian.keyprop.desktop.in.h:1
+#: gkb-new/descs/BG_Bulgarian_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/BulgarianCyril.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:22
+msgid "Bulgaria"
+msgstr "Bulgarija"
+
+#: gkb-new/descs.sun/presets.xml.in.h:15
+#: gkb-new/descs/BG_Bulgarian.keyprop.desktop.in.h:2
+#: gkb-new/descs/BG_Bulgarian_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/BulgarianCyril.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:23
+msgid "Bulgarian"
+msgstr "Bulgarų"
+
+#: gkb-new/descs.sun/presets.xml.in.h:16
+msgid "Bulgarian Sun keymap"
+msgstr "Bulgarų Sun išdėstymas"
+
+#: gkb-new/descs.sun/presets.xml.in.h:17
+#: gkb-new/descs/CA_English.keyprop.desktop.in.h:1
+#: gkb-new/descs/FrenchCanadian.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:27
+msgid "Canada"
+msgstr "Kanada"
+
+#: gkb-new/descs.sun/presets.xml.in.h:18
+msgid "Canadian Sun keymap"
+msgstr "Kanadiečių Sun išdėstymas"
+
+#: gkb-new/descs.sun/presets.xml.in.h:19
+#: gkb-new/descs/CZ_Czech.keyprop.desktop.in.h:1
+#: gkb-new/descs/CZ_Czech_Slovak.keyprop.desktop.in.h:1
+#: gkb-new/descs/CZ_Czech_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:33
+msgid "Czech"
+msgstr "Čekų"
+
+#: gkb-new/descs.sun/presets.xml.in.h:20
+#: gkb-new/descs/CZ_Czech_Slovak.keyprop.desktop.in.h:2
+#: gkb-new/descs/CZ_Czech_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:34
+msgid "Czech Republic"
+msgstr "Čekija"
+
+#: gkb-new/descs.sun/presets.xml.in.h:21
+msgid "Czech Sun keymap"
+msgstr "Čekų Sun išdėstymas"
+
+#: gkb-new/descs.sun/presets.xml.in.h:22
+#: gkb-new/descs/DK_Danish.keyprop.desktop.in.h:1
+#: gkb-new/descs/DK_Danish_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:38
+msgid "Danish"
+msgstr "Danų"
+
+#: gkb-new/descs.sun/presets.xml.in.h:23
+msgid "Danish Sun Type-4 keymap"
+msgstr "Danų Sun Type-4 išdėstymas"
+
+#: gkb-new/descs.sun/presets.xml.in.h:24
+msgid "Danish Sun USB keymap"
+msgstr "Danų Sun USB išdėstymas"
+
+#: gkb-new/descs.sun/presets.xml.in.h:25
+msgid "Danish Sun keymap"
+msgstr "Danų Sun išdėstymas"
+
+#: gkb-new/descs.sun/presets.xml.in.h:26
+#: gkb-new/descs/DK_Danish.keyprop.desktop.in.h:3
+#: gkb-new/descs/DK_Danish_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:41
+msgid "Denmark"
+msgstr "Danija"
+
+#: gkb-new/descs.sun/presets.xml.in.h:27
+#: gkb-new/descs/BE_Dutch.keyprop.desktop.in.h:2
+#: gkb-new/descs/Belgian.keyprop.desktop.in.h:3
+#: gkb-new/descs/NL_Dutch_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:43
+msgid "Dutch"
+msgstr "Olandų"
+
+#: gkb-new/descs.sun/presets.xml.in.h:28
+msgid "Dutch Sun keymap"
+msgstr "Olandų Sun išdėstymas"
+
+#: gkb-new/descs.sun/presets.xml.in.h:29
+#: gkb-new/descs/CA_English.keyprop.desktop.in.h:3
+#: gkb-new/descs/UK-102.keyprop.desktop.in.h:1
+#: gkb-new/descs/UK-x86.keyprop.desktop.in.h:1
+#: gkb-new/descs/UK.keyprop.desktop.in.h:1
+#: gkb-new/descs/UK_English.keyprop.desktop.in.h:1
+#: gkb-new/descs/UK_English_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/UK_United_Kingdom.keyprop.desktop.in.h:1
+#: gkb-new/descs/US-101.keyprop.desktop.in.h:1
+#: gkb-new/descs/US-101A-x86.keyprop.desktop.in.h:1
+#: gkb-new/descs/US-84.keyprop.desktop.in.h:1
+#: gkb-new/descs/US-dec.keyprop.desktop.in.h:1
+#: gkb-new/descs/US-ibm.keyprop.desktop.in.h:1
+#: gkb-new/descs/US-int.keyprop.desktop.in.h:1
+#: gkb-new/descs/US-mac.keyprop.desktop.in.h:1
+#: gkb-new/descs/US-sgi-101.keyprop.desktop.in.h:1
+#: gkb-new/descs/US-sun.keyprop.desktop.in.h:1
+#: gkb-new/descs/US.keyprop.desktop.in.h:1
+#: gkb-new/descs/US_English.keyprop.desktop.in.h:1
+#: gkb-new/descs/US_international.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:48 gkb-new/gkb.c:365
+msgid "English"
+msgstr "Anglų"
+
+#: gkb-new/descs.sun/presets.xml.in.h:30
+msgid "English Sun Type-4 keymap"
+msgstr "Anglų Sun Type-4 išdėstymas"
+
+#: gkb-new/descs.sun/presets.xml.in.h:31
+msgid "English Sun USB keymap"
+msgstr "Anglų Sun USB išdėstymas"
+
+#: gkb-new/descs.sun/presets.xml.in.h:32
+msgid "English Sun keymap"
+msgstr "Anglų Sun išdėstymas"
+
+#: gkb-new/descs.sun/presets.xml.in.h:33
+#: gkb-new/descs/EE_Estonian.keyprop.desktop.in.h:1
+#: gkb-new/descs/EE_Estonian_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:50
+msgid "Estonia"
+msgstr "Estija"
+
+#: gkb-new/descs.sun/presets.xml.in.h:34
+#: gkb-new/descs/EE_Estonian.keyprop.desktop.in.h:2
+#: gkb-new/descs/EE_Estonian_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:51
+msgid "Estonian"
+msgstr "Estų"
+
+#: gkb-new/descs.sun/presets.xml.in.h:35
+msgid "Estonian Sun keymap"
+msgstr "Estų Sun išdėstymas"
+
+#: gkb-new/descs.sun/presets.xml.in.h:36
+#: gkb-new/descs/FI_Finnish.keyprop.desktop.in.h:1
+#: gkb-new/descs/FI_Finnish_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:55
+msgid "Finland"
+msgstr "Suomija"
+
+#: gkb-new/descs.sun/presets.xml.in.h:37
+#: gkb-new/descs/FI_Finnish.keyprop.desktop.in.h:2
+#: gkb-new/descs/FI_Finnish_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:56
+msgid "Finnish"
+msgstr "Suomių"
+
+#: gkb-new/descs.sun/presets.xml.in.h:38
+msgid "Finnish Sun keymap"
+msgstr "Suomių Sun išdėstymas"
+
+#: gkb-new/descs.sun/presets.xml.in.h:39
+#: gkb-new/descs/FR_French-x86.keyprop.desktop.in.h:1
+#: gkb-new/descs/FR_French.keyprop.desktop.in.h:1
+#: gkb-new/descs/FR_French_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:60
+msgid "France"
+msgstr "Prancūzija"
+
+#: gkb-new/descs.sun/presets.xml.in.h:40
+#: gkb-new/descs/Belgian.keyprop.desktop.in.h:4
+#: gkb-new/descs/FR_French-x86.keyprop.desktop.in.h:2
+#: gkb-new/descs/FR_French.keyprop.desktop.in.h:2
+#: gkb-new/descs/FR_French_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/FrenchCanadian.keyprop.desktop.in.h:2
+#: gkb-new/descs/FrenchCanadian2.keyprop.desktop.in.h:1
+#: gkb-new/descs/FrenchSwiss.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:61
+msgid "French"
+msgstr "Prancūzų"
+
+#: gkb-new/descs.sun/presets.xml.in.h:41
+msgid "French Sun USB keymap"
+msgstr "Prancūzų Sun USB išdėstymas"
+
+#: gkb-new/descs.sun/presets.xml.in.h:42
+msgid "French Sun keymap"
+msgstr "Prancūzų Sun išdėstymas"
+
+#: gkb-new/descs.sun/presets.xml.in.h:43
+#: gkb-new/descs/CH_German_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/DE_German.keyprop.desktop.in.h:1
+#: gkb-new/descs/DE_German_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/German.keyprop.desktop.in.h:2
+#: gkb-new/descs/GermanSwiss.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:75
+msgid "German"
+msgstr "Vokiečių"
+
+#: gkb-new/descs.sun/presets.xml.in.h:44
+msgid "German Sun Type-4 keymap"
+msgstr "Vokiečių Sun Type-4 išdėstymas"
+
+#: gkb-new/descs.sun/presets.xml.in.h:45
+msgid "German Sun USB keymap"
+msgstr "Vokiečių Sun USB išdėstymas"
+
+#: gkb-new/descs.sun/presets.xml.in.h:46
+msgid "German Sun keymap"
+msgstr "Vokiečių Sun išdėstymas"
+
+#: gkb-new/descs.sun/presets.xml.in.h:47
+#: gkb-new/descs/DE_German.keyprop.desktop.in.h:3
+#: gkb-new/descs/DE_German_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/German.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:79
+msgid "Germany"
+msgstr "Vokietija"
+
+#: gkb-new/descs.sun/presets.xml.in.h:48
+#: gkb-new/descs/Default.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:80
+msgid "Gnome Keyboard default"
+msgstr "Įprasta Gnome klaviatūra"
+
+#: gkb-new/descs.sun/presets.xml.in.h:49
+#: gkb-new/descs/IL_Hebrew.keyprop.desktop.in.h:1
+#: gkb-new/descs/IL_Hebrew_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:85
+msgid "Hebrew"
+msgstr "Hebrajų"
+
+#: gkb-new/descs.sun/presets.xml.in.h:50
+msgid "Hebrew Sun keymap"
+msgstr "Hebrajų Sun išdėstymas"
+
+#: gkb-new/descs.sun/presets.xml.in.h:51
+#: gkb-new/descs/HU_Hungarian.keyprop.desktop.in.h:1
+#: gkb-new/descs/Hungarian-101.keyprop.desktop.in.h:1
+#: gkb-new/descs/Hungarian-lat1.keyprop.desktop.in.h:1
+#: gkb-new/descs/Hungarian-sun.keyprop.desktop.in.h:1
+#: gkb-new/descs/Hungarian-x86.keyprop.desktop.in.h:1
+#: gkb-new/descs/Hungarian.keyprop.desktop.in.h:1
+#: gkb-new/descs/Hungarian101-1.keyprop.desktop.in.h:1
+#: gkb-new/descs/Hungarian101.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:88
+msgid "Hungarian"
+msgstr "Vengriškų"
+
+#: gkb-new/descs.sun/presets.xml.in.h:52
+msgid "Hungarian latin2 Sun keymap"
+msgstr "Vengrų latin2 Sun išdėstymas"
+
+#: gkb-new/descs.sun/presets.xml.in.h:53
+msgid "Hungarian type5 latin 1 keymap"
+msgstr "Vengrų type5 latin1 išdėstymas"
+
+#: gkb-new/descs.sun/presets.xml.in.h:54
+#: gkb-new/descs/HU_Hungarian.keyprop.desktop.in.h:3
+#: gkb-new/descs/Hungarian-101.keyprop.desktop.in.h:3
+#: gkb-new/descs/Hungarian-lat1.keyprop.desktop.in.h:3
+#: gkb-new/descs/Hungarian-sun.keyprop.desktop.in.h:2
+#: gkb-new/descs/Hungarian-x86.keyprop.desktop.in.h:3
+#: gkb-new/descs/Hungarian.keyprop.desktop.in.h:3
+#: gkb-new/descs/Hungarian101-1.keyprop.desktop.in.h:3
+#: gkb-new/descs/Hungarian101.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:96
+msgid "Hungary"
+msgstr "Vengrija"
+
+#: gkb-new/descs.sun/presets.xml.in.h:55
+#: gkb-new/descs/IS_Icelandic.keyprop.desktop.in.h:1
+#: gkb-new/descs/IS_Icelandic_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:97
+msgid "Iceland"
+msgstr "Islandija"
+
+#: gkb-new/descs.sun/presets.xml.in.h:56
+#: gkb-new/descs/IS_Icelandic.keyprop.desktop.in.h:2
+#: gkb-new/descs/IS_Icelandic_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:98
+msgid "Icelandic"
+msgstr "Islandų"
+
+#: gkb-new/descs.sun/presets.xml.in.h:57
+msgid "Icelandic Sun keymap"
+msgstr "Islandų Sun išdėstymas"
+
+#: gkb-new/descs.sun/presets.xml.in.h:58
+#: gkb-new/descs/Default.keyprop.desktop.in.h:3
+#: gkb-new/descs/Dvorak.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:101 gkb-new/gkb.c:365
+msgid "International"
+msgstr "Tarptautinės"
+
+#: gkb-new/descs.sun/presets.xml.in.h:59
+#: gkb-new/descs/IL_Hebrew.keyprop.desktop.in.h:3
+#: gkb-new/descs/IL_Hebrew_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:103
+msgid "Israel"
+msgstr "Izraelis"
+
+#: gkb-new/descs.sun/presets.xml.in.h:60
+#: gkb-new/descs/IT_Italian.keyprop.desktop.in.h:1
+#: gkb-new/descs/IT_Italian_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:104
+msgid "Italian"
+msgstr "Italų"
+
+#: gkb-new/descs.sun/presets.xml.in.h:61
+msgid "Italian Sun Type-4 keymap"
+msgstr "Italų Sun Type-4 išdėstymas"
+
+#: gkb-new/descs.sun/presets.xml.in.h:62
+msgid "Italian Sun USB keymap"
+msgstr "Italų Sun USB išdėstymas"
+
+#: gkb-new/descs.sun/presets.xml.in.h:63
+msgid "Italian Sun keymap"
+msgstr "Italų Sun išdėstymas"
+
+#: gkb-new/descs.sun/presets.xml.in.h:64
+#: gkb-new/descs/IT_Italian.keyprop.desktop.in.h:3
+#: gkb-new/descs/IT_Italian_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:107
+msgid "Italy"
+msgstr "Italija"
+
+#: gkb-new/descs.sun/presets.xml.in.h:65
+#: gkb-new/descs/JP_Japanese.keyprop.desktop.in.h:1
+#: gkb-new/descs/JP_Japanese_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:108
+msgid "Japan"
+msgstr "Japonija"
+
+#: gkb-new/descs.sun/presets.xml.in.h:66
+#: gkb-new/descs/JP_Japanese.keyprop.desktop.in.h:2
+#: gkb-new/descs/JP_Japanese_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:109
+msgid "Japanese"
+msgstr "Japonų"
+
+#: gkb-new/descs.sun/presets.xml.in.h:67
+msgid "Japanese Sun Type-4 keymap"
+msgstr "Japonų Sun Type-4 išdėstymas"
+
+#: gkb-new/descs.sun/presets.xml.in.h:68
+msgid "Japanese Sun keymap"
+msgstr "Japonų Sun išdėstymas"
+
+#: gkb-new/descs.sun/presets.xml.in.h:69
+#: gkb-new/descs/LV_Apostrophe.keyprop.desktop.in.h:1
+#: gkb-new/descs/LV_Standard.keyprop.desktop.in.h:1
+#: gkb-new/descs/LV_Tilde.keyprop.desktop.in.h:1
+msgid "Latvia"
+msgstr "Latvija"
+
+#: gkb-new/descs.sun/presets.xml.in.h:70
+#: gkb-new/descs/LV_Apostrophe.keyprop.desktop.in.h:2
+#: gkb-new/descs/LV_Standard.keyprop.desktop.in.h:2
+#: gkb-new/descs/LV_Tilde.keyprop.desktop.in.h:2
+msgid "Latvian"
+msgstr "Latvija"
+
+#: gkb-new/descs.sun/presets.xml.in.h:71
+msgid "Latvian Sun keymap"
+msgstr "Latvių Sun išdėstymas"
+
+#: gkb-new/descs.sun/presets.xml.in.h:72
+#: gkb-new/descs/LT_Lithuanian.keyprop.desktop.in.h:1
+#: gkb-new/descs/LT_Lithuanian_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/LT_Prog.keyprop.desktop.in.h:1
+#: gkb-new/descs/LT_Standard.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:119
+msgid "Lithuania"
+msgstr "Lietuva"
+
+#: gkb-new/descs.sun/presets.xml.in.h:73
+#: gkb-new/descs/LT_Lithuanian.keyprop.desktop.in.h:2
+#: gkb-new/descs/LT_Lithuanian_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/LT_Prog.keyprop.desktop.in.h:2
+#: gkb-new/descs/LT_Standard.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:120
+msgid "Lithuanian"
+msgstr "Lietuvių"
+
+#: gkb-new/descs.sun/presets.xml.in.h:74
+msgid "Lithuanian Sun keymap"
+msgstr "Lietuviškas Sun išdėstymas"
+
+#: gkb-new/descs.sun/presets.xml.in.h:75
+#: gkb-new/descs/MK_Macedonian.keyprop.desktop.in.h:1
+#: gkb-new/descs/Macedonian.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:125
+msgid "Macedonia"
+msgstr "Makedonija"
+
+#: gkb-new/descs.sun/presets.xml.in.h:76
+#: gkb-new/descs/MK_Macedonian.keyprop.desktop.in.h:2
+#: gkb-new/descs/Macedonian.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:126
+msgid "Macedonian"
+msgstr "Makedoniečių"
+
+#: gkb-new/descs.sun/presets.xml.in.h:77
+msgid "Macedonian Sun keymap"
+msgstr "Makedoniečių Sun išdėstymas"
+
+#: gkb-new/descs.sun/presets.xml.in.h:78
+#: gkb-new/descs/NO_Norwegian.keyprop.desktop.in.h:1
+#: gkb-new/descs/Norwegian.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:136
+msgid "Norway"
+msgstr "Norvegija"
+
+#: gkb-new/descs.sun/presets.xml.in.h:79
+#: gkb-new/descs/NO_Norwegian.keyprop.desktop.in.h:2
+#: gkb-new/descs/Norwegian.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:137
+msgid "Norwegian"
+msgstr "Norvegų"
+
+#: gkb-new/descs.sun/presets.xml.in.h:80
+msgid "Norwegian Sun keymap"
+msgstr "Norvegų Sun išdėstymas"
+
+#: gkb-new/descs.sun/presets.xml.in.h:81
+#: gkb-new/descs/PL_Polish.keyprop.desktop.in.h:1
+#: gkb-new/descs/Polish.keyprop.desktop.in.h:1
+#: gkb-new/descs/PolishDeadkeys.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:142
+msgid "Poland"
+msgstr "Lenkija"
+
+#: gkb-new/descs.sun/presets.xml.in.h:82
+#: gkb-new/descs/PL_Polish.keyprop.desktop.in.h:2
+#: gkb-new/descs/Polish.keyprop.desktop.in.h:2
+#: gkb-new/descs/PolishDeadkeys.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:143
+msgid "Polish"
+msgstr "Lenkų"
+
+#: gkb-new/descs.sun/presets.xml.in.h:83
+msgid "Polish Sun keymap"
+msgstr "Lenkų Sun išdėstymas"
+
+#: gkb-new/descs.sun/presets.xml.in.h:84
+#: gkb-new/descs/PT_Portuguese.keyprop.desktop.in.h:1
+#: gkb-new/descs/PT_Portuguese_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/Portugal.keyprop.desktop.in.h:2
+#: gkb-new/descs/PortugalDeadkeys.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:146
+msgid "Portugal"
+msgstr "Portugalija"
+
+#: gkb-new/descs.sun/presets.xml.in.h:85
+#: gkb-new/descs/BR_Portuguese.keyprop.desktop.in.h:3
+#: gkb-new/descs/BR_Portuguese_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/PT_Portuguese.keyprop.desktop.in.h:2
+#: gkb-new/descs/PT_Portuguese_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/Portugal.keyprop.desktop.in.h:3
+#: gkb-new/descs/PortugalDeadkeys.keyprop.desktop.in.h:4
+#: gkb-new/descs/presets.xml.in.h:148
+msgid "Portuguese"
+msgstr "Portugalų"
+
+#: gkb-new/descs.sun/presets.xml.in.h:86
+msgid "Portuguese Sun Type-4 keymap"
+msgstr "Portugalų Sun Type-4 išdėstymas"
+
+#: gkb-new/descs.sun/presets.xml.in.h:87
+msgid "Portuguese Sun keymap"
+msgstr "Portugalų Sun išdėstymas"
+
+#: gkb-new/descs.sun/presets.xml.in.h:88
+#: gkb-new/descs/RO_Romanian.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:152
+msgid "Romania"
+msgstr "Rumunija"
+
+#: gkb-new/descs.sun/presets.xml.in.h:89
+#: gkb-new/descs/RO_Romanian.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:153
+msgid "Romanian"
+msgstr "Rumunų"
+
+#: gkb-new/descs.sun/presets.xml.in.h:90
+msgid "Romanian Sun keymap"
+msgstr "Rumunų Sun išdėstymas"
+
+#: gkb-new/descs.sun/presets.xml.in.h:91
+#: gkb-new/descs/RU_Russian.keyprop.desktop.in.h:1
+#: gkb-new/descs/RU_Russian_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/RU_Russian_x_rev.keyprop.desktop.in.h:2
+#: gkb-new/descs/RussianCyril.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:155
+msgid "Russia"
+msgstr "Rusija"
+
+#: gkb-new/descs.sun/presets.xml.in.h:92
+#: gkb-new/descs/RU_Russian.keyprop.desktop.in.h:2
+#: gkb-new/descs/RU_Russian_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/RU_Russian_x_rev.keyprop.desktop.in.h:3
+#: gkb-new/descs/RussianCyril.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:156
+msgid "Russian"
+msgstr "Rusiška"
+
+#: gkb-new/descs.sun/presets.xml.in.h:93
+msgid "Russian Sun keymap"
+msgstr "Rusų Sun išdėstymas"
+
+#: gkb-new/descs.sun/presets.xml.in.h:94
+msgid "Serbian Sun standard keymap"
+msgstr "Serbų Sun standartinis išdėstymas"
+
+#: gkb-new/descs.sun/presets.xml.in.h:95
+msgid "Serbo-Croatian"
+msgstr "Serbų-Kroatų"
+
+#: gkb-new/descs.sun/presets.xml.in.h:96
+#: gkb-new/descs/CZ_Czech_Slovak.keyprop.desktop.in.h:4
+#: gkb-new/descs/SK__x.keyprop.desktop.in.h:2
+#: gkb-new/descs/Slovak.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:166
+msgid "Slovak"
+msgstr "Slovakija"
+
+#: gkb-new/descs.sun/presets.xml.in.h:97
+#: gkb-new/descs/CZ_Czech_Slovak.keyprop.desktop.in.h:5
+#: gkb-new/descs/SK__x.keyprop.desktop.in.h:3
+#: gkb-new/descs/Slovak.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:167
+msgid "Slovak Republic"
+msgstr "Slovakija"
+
+#: gkb-new/descs.sun/presets.xml.in.h:98
+msgid "Slovak Sun keymap"
+msgstr "Slovakų Sun išdėstymas"
+
+#: gkb-new/descs.sun/presets.xml.in.h:99
+#: gkb-new/descs/SI_Slovenian.keyprop.desktop.in.h:1
+#: gkb-new/descs/SI_Slovenian_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/Slovene.keyprop.desktop.in.h:1
+#: gkb-new/descs/Slovenian.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:169
+msgid "Slovenia"
+msgstr "Slovėnija"
+
+#: gkb-new/descs.sun/presets.xml.in.h:100
+#: gkb-new/descs/SI_Slovenian.keyprop.desktop.in.h:2
+#: gkb-new/descs/SI_Slovenian_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/Slovene.keyprop.desktop.in.h:2
+#: gkb-new/descs/Slovenian.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:170
+msgid "Slovenian"
+msgstr "Slovėnų"
+
+#: gkb-new/descs.sun/presets.xml.in.h:101
+msgid "Slovenian Sun keymap"
+msgstr "Slovėnų Sun išdėstymas"
+
+#: gkb-new/descs.sun/presets.xml.in.h:102
+#: gkb-new/descs/ES_Spanish-x86.keyprop.desktop.in.h:1
+#: gkb-new/descs/ES_Spanish.keyprop.desktop.in.h:1
+#: gkb-new/descs/ES_Spanish_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:174
+msgid "Spain"
+msgstr "Ispanija"
+
+#: gkb-new/descs.sun/presets.xml.in.h:103
+#: gkb-new/descs/ES_Spanish-x86.keyprop.desktop.in.h:2
+#: gkb-new/descs/ES_Spanish.keyprop.desktop.in.h:2
+#: gkb-new/descs/ES_Spanish_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:175
+msgid "Spanish"
+msgstr "Ispanų"
+
+#: gkb-new/descs.sun/presets.xml.in.h:104
+msgid "Spanish Sun Type-4 keymap"
+msgstr "Ispanų Sun Type-4 išdėstymas"
+
+#: gkb-new/descs.sun/presets.xml.in.h:105
+msgid "Spanish Sun USB keymap"
+msgstr "Ispanų Sun USB išdėstymas"
+
+#: gkb-new/descs.sun/presets.xml.in.h:106
+msgid "Spanish Sun keymap"
+msgstr "Ispanų Sun išdėstymas"
+
+#: gkb-new/descs.sun/presets.xml.in.h:107
+#: gkb-new/descs/SE_Swedish.keyprop.desktop.in.h:1
+#: gkb-new/descs/SE_Swedish_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/Swedish.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:181
+msgid "Sweden"
+msgstr "Švedija"
+
+#: gkb-new/descs.sun/presets.xml.in.h:108
+#: gkb-new/descs/SE_Swedish.keyprop.desktop.in.h:2
+#: gkb-new/descs/SE_Swedish_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/Swedish.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:182
+msgid "Swedish"
+msgstr "Švedų"
+
+#: gkb-new/descs.sun/presets.xml.in.h:109
+msgid "Swedish Sun Type-4 keymap"
+msgstr "Švedų Sun Type-4 išdėstymas"
+
+#: gkb-new/descs.sun/presets.xml.in.h:110
+msgid "Swedish Sun USB keymap"
+msgstr "Švedų Sun USB išdėstymas"
+
+#: gkb-new/descs.sun/presets.xml.in.h:111
+msgid "Swedish Sun keymap"
+msgstr "Švedų Sun išdėstymas"
+
+#: gkb-new/descs.sun/presets.xml.in.h:112
+msgid "Swiss German Sun keymap"
+msgstr "Šveicarų Vokiečių Sun išdėstymas"
+
+#: gkb-new/descs.sun/presets.xml.in.h:113
+#: gkb-new/descs/CH_German_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/FrenchCanadian2.keyprop.desktop.in.h:3
+#: gkb-new/descs/FrenchSwiss.keyprop.desktop.in.h:3
+#: gkb-new/descs/German.keyprop.desktop.in.h:4
+#: gkb-new/descs/GermanSwiss.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:186
+msgid "Switzerland"
+msgstr "Šveicarija"
+
+#: gkb-new/descs.sun/presets.xml.in.h:114
+#: gkb-new/descs/TH_Thai.keyprop.desktop.in.h:1
+#: gkb-new/descs/TH_Thai_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/Thai.keyprop.desktop.in.h:1
+#: gkb-new/descs/Thai2.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:190
+msgid "Thai"
+msgstr "Tailandiečių"
+
+#: gkb-new/descs.sun/presets.xml.in.h:115
+msgid "Thai Sun keymap"
+msgstr "Tailandiečių Sun išdėstymas"
+
+#: gkb-new/descs.sun/presets.xml.in.h:116
+#: gkb-new/descs/TH_Thai.keyprop.desktop.in.h:3
+#: gkb-new/descs/TH_Thai_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/Thai.keyprop.desktop.in.h:3
+#: gkb-new/descs/Thai2.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:194
+msgid "Thailand"
+msgstr "Tailandas"
+
+#: gkb-new/descs.sun/presets.xml.in.h:117
+#: gkb-new/descs/TR-f.keyprop.desktop.in.h:1
+#: gkb-new/descs/TR-q.keyprop.desktop.in.h:1
+#: gkb-new/descs/TR_Turkish.keyprop.desktop.in.h:1
+#: gkb-new/descs/TR_Turkish_x.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:196
+msgid "Turkey"
+msgstr "Turkija"
+
+#: gkb-new/descs.sun/presets.xml.in.h:118
+#: gkb-new/descs/TR-f.keyprop.desktop.in.h:2
+#: gkb-new/descs/TR-q.keyprop.desktop.in.h:2
+#: gkb-new/descs/TR_Turkish.keyprop.desktop.in.h:2
+#: gkb-new/descs/TR_Turkish_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:197
+msgid "Turkish"
+msgstr "Turkų"
+
+#: gkb-new/descs.sun/presets.xml.in.h:119
+msgid "Turkish Sun keymap"
+msgstr "Turkų Sun išdėstymas"
+
+#: gkb-new/descs.sun/presets.xml.in.h:120
+msgid "US Sun Type-4 keyboard"
+msgstr "JAV Sun Type-4 klaviatūra"
+
+#: gkb-new/descs.sun/presets.xml.in.h:121
+msgid "US Sun USB keyboard"
+msgstr "JAV Sun USB klaviatūra"
+
+#: gkb-new/descs.sun/presets.xml.in.h:122
+msgid "US Sun type5 keyboard"
+msgstr "JAV Sun type5 klaviatūra"
+
+#: gkb-new/descs.sun/presets.xml.in.h:123
+#: gkb-new/descs/UA_Ukrainian.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:216
+msgid "Ukraine"
+msgstr "Ukraina"
+
+#: gkb-new/descs.sun/presets.xml.in.h:124
+#: gkb-new/descs/UA_Ukrainian.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:217
+msgid "Ukrainian"
+msgstr "Ukrainiečių"
+
+#: gkb-new/descs.sun/presets.xml.in.h:125
+msgid "Ukrainian Sun keymap"
+msgstr "Ukrainiečių Sun išdėstymas"
+
+#: gkb-new/descs.sun/presets.xml.in.h:126
+#: gkb-new/descs/UK-102.keyprop.desktop.in.h:3
+#: gkb-new/descs/UK-x86.keyprop.desktop.in.h:3
+#: gkb-new/descs/UK.keyprop.desktop.in.h:3
+#: gkb-new/descs/UK_English.keyprop.desktop.in.h:2
+#: gkb-new/descs/UK_English_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/UK_United_Kingdom.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:220
+msgid "United Kingdom"
+msgstr "Jungtinė karalystė"
+
+#: gkb-new/descs.sun/presets.xml.in.h:127
+#: gkb-new/descs/US-101.keyprop.desktop.in.h:3
+#: gkb-new/descs/US-101A-x86.keyprop.desktop.in.h:3
+#: gkb-new/descs/US-84.keyprop.desktop.in.h:3
+#: gkb-new/descs/US-dec.keyprop.desktop.in.h:3
+#: gkb-new/descs/US-ibm.keyprop.desktop.in.h:3
+#: gkb-new/descs/US-int.keyprop.desktop.in.h:3
+#: gkb-new/descs/US-mac.keyprop.desktop.in.h:3
+#: gkb-new/descs/US-sgi-101.keyprop.desktop.in.h:3
+#: gkb-new/descs/US-sun.keyprop.desktop.in.h:3
+#: gkb-new/descs/US.keyprop.desktop.in.h:3
+#: gkb-new/descs/US_English.keyprop.desktop.in.h:3
+#: gkb-new/descs/US_international.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:222 gkb-new/gkb.c:361
+msgid "United States"
+msgstr "Jungtinės valstijos"
+
+#: gkb-new/descs.sun/presets.xml.in.h:128
+#: gkb-new/descs/VN_Vietnamese.keyprop.desktop.in.h:1
+#: gkb-new/descs/presets.xml.in.h:223
+msgid "Vietnam"
+msgstr "Vietnamas"
+
+#: gkb-new/descs.sun/presets.xml.in.h:129
+#: gkb-new/descs/VN_Vietnamese.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:224
+msgid "Vietnamese"
+msgstr "Vietnamiečių"
+
+#: gkb-new/descs.sun/presets.xml.in.h:130
+msgid "Vietnamese Sun keymap"
+msgstr "Vietnamiečių Sun išdėstymas"
+
+#: gkb-new/descs.sun/presets.xml.in.h:131
+msgid "Yugoslavia"
+msgstr "Jugoslavija"
 
 #: gkb-new/descs/AM_Armenian.keyprop.desktop.in.h:3
 #: gkb-new/descs/presets.xml.in.h:7
@@ -1213,37 +2084,10 @@ msgstr "Azerbaidžano Turkų"
 msgid "Azerbaidjani Turkic xkb keymap"
 msgstr "Azerbaidžano Turkų xkb išdėstymas"
 
-#: gkb-new/descs/BE_Dutch.keyprop.desktop.in.h:1
-#: gkb-new/descs/Belgian.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:18 gkb-new/descs.sun/presets.xml.in.h:10
-msgid "Belgium"
-msgstr "Belgija"
-
-#: gkb-new/descs/BE_Dutch.keyprop.desktop.in.h:2
-#: gkb-new/descs/Belgian.keyprop.desktop.in.h:3
-#: gkb-new/descs/NL_Dutch_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:43 gkb-new/descs.sun/presets.xml.in.h:27
-msgid "Dutch"
-msgstr "Olandų"
-
 #: gkb-new/descs/BE_Dutch.keyprop.desktop.in.h:3
 #: gkb-new/descs/presets.xml.in.h:45
 msgid "Dutch xkb keymap"
 msgstr "Olandų xkb išdėstymas"
-
-#: gkb-new/descs/BG_Bulgarian.keyprop.desktop.in.h:1
-#: gkb-new/descs/BG_Bulgarian_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/BulgarianCyril.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:22 gkb-new/descs.sun/presets.xml.in.h:14
-msgid "Bulgaria"
-msgstr "Bulgarija"
-
-#: gkb-new/descs/BG_Bulgarian.keyprop.desktop.in.h:2
-#: gkb-new/descs/BG_Bulgarian_x.keyprop.desktop.in.h:2
-#: gkb-new/descs/BulgarianCyril.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:23 gkb-new/descs.sun/presets.xml.in.h:15
-msgid "Bulgarian"
-msgstr "Bulgarų"
 
 #: gkb-new/descs/BG_Bulgarian.keyprop.desktop.in.h:3
 #: gkb-new/descs/presets.xml.in.h:26
@@ -1255,43 +2099,15 @@ msgstr "Bulgarų xkb išdėstymas"
 msgid "Bulgarian keymap"
 msgstr "Bulgarų išdėstymas"
 
-#: gkb-new/descs/BR_Portuguese.keyprop.desktop.in.h:1
-#: gkb-new/descs/BR_Portuguese_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/Portugal.keyprop.desktop.in.h:1
-#: gkb-new/descs/PortugalDeadkeys.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:19 gkb-new/descs.sun/presets.xml.in.h:11
-msgid "Brazil"
-msgstr "Brazilija"
-
 #: gkb-new/descs/BR_Portuguese.keyprop.desktop.in.h:2
 #: gkb-new/descs/presets.xml.in.h:21
 msgid "Brazil Portuguese xkb keymap"
 msgstr "Brazilų Portugalų xkb išdėstymas"
 
-#: gkb-new/descs/BR_Portuguese.keyprop.desktop.in.h:3
-#: gkb-new/descs/BR_Portuguese_x.keyprop.desktop.in.h:3
-#: gkb-new/descs/PT_Portuguese.keyprop.desktop.in.h:2
-#: gkb-new/descs/PT_Portuguese_x.keyprop.desktop.in.h:2
-#: gkb-new/descs/Portugal.keyprop.desktop.in.h:3
-#: gkb-new/descs/PortugalDeadkeys.keyprop.desktop.in.h:4
-#: gkb-new/descs/presets.xml.in.h:148 gkb-new/descs.sun/presets.xml.in.h:85
-msgid "Portuguese"
-msgstr "Portugalų"
-
 #: gkb-new/descs/BR_Portuguese_x.keyprop.desktop.in.h:2
 #: gkb-new/descs/presets.xml.in.h:20
 msgid "Brazil Portuguese keymap"
 msgstr "Brazilų Portugalų išdėstymas"
-
-#: gkb-new/descs/BY_Belarussian.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:14 gkb-new/descs.sun/presets.xml.in.h:7
-msgid "Belarus"
-msgstr "Baltarusija"
-
-#: gkb-new/descs/BY_Belarussian.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:15 gkb-new/descs.sun/presets.xml.in.h:8
-msgid "Belarusian"
-msgstr "Baltarusių"
 
 #: gkb-new/descs/BY_Belarussian.keyprop.desktop.in.h:3
 #: gkb-new/descs/presets.xml.in.h:16
@@ -1313,17 +2129,6 @@ msgstr "Euskadi"
 msgid "Belgian"
 msgstr "Belgų"
 
-#: gkb-new/descs/Belgian.keyprop.desktop.in.h:4
-#: gkb-new/descs/FR_French-x86.keyprop.desktop.in.h:2
-#: gkb-new/descs/FR_French.keyprop.desktop.in.h:2
-#: gkb-new/descs/FR_French_x.keyprop.desktop.in.h:2
-#: gkb-new/descs/FrenchCanadian.keyprop.desktop.in.h:2
-#: gkb-new/descs/FrenchCanadian2.keyprop.desktop.in.h:1
-#: gkb-new/descs/FrenchSwiss.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:61 gkb-new/descs.sun/presets.xml.in.h:40
-msgid "French"
-msgstr "Prancūzų"
-
 #: gkb-new/descs/Belgian.keyprop.desktop.in.h:5
 msgid "Wallon"
 msgstr "Valonų"
@@ -1332,6 +2137,35 @@ msgstr "Valonų"
 #: gkb-new/descs/presets.xml.in.h:24
 msgid "Bulgarian Cyrillic"
 msgstr "Bulgarų kirilica"
+
+#: gkb-new/descs/CA_English.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:28
+msgid "Canadian xkb keymap"
+msgstr "Kandiečių xkb išdėstymas"
+
+#: gkb-new/descs/CH_German_x.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:185
+msgid "Swiss keymap"
+msgstr "Šveicarų išdėstymas"
+
+#: gkb-new/descs/CZ_Czech.keyprop.desktop.in.h:2
+#: gkb-new/descs/presets.xml.in.h:37
+msgid "Czech qwertz xkb keymap"
+msgstr "Čekų qwertz xkb išdėstymas"
+
+#: gkb-new/descs/CZ_Czech.keyprop.desktop.in.h:3
+msgid "Former Czechoslovakia Czech Republic"
+msgstr "Buvusi Čekoslovakijos respublika"
+
+#: gkb-new/descs/CZ_Czech_Slovak.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:35
+msgid "Czech and Slovak xkb keymap"
+msgstr "Čekų ir Slovakų xkb išdėstymas"
+
+#: gkb-new/descs/CZ_Czech_x.keyprop.desktop.in.h:3
+#: gkb-new/descs/presets.xml.in.h:36
+msgid "Czech keymap"
+msgstr "Čekų išdėstymas"
 
 #: gkb-new/descs/Catalan.keyprop.desktop.in.h:1
 msgid "Catalan"
@@ -1345,183 +2179,36 @@ msgstr "Katalonų xkb išdėstymas"
 msgid "Catalonia"
 msgstr "Katalonija"
 
-#: gkb-new/descs/CA_English.keyprop.desktop.in.h:1
-#: gkb-new/descs/FrenchCanadian.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:27 gkb-new/descs.sun/presets.xml.in.h:17
-msgid "Canada"
-msgstr "Kanada"
-
-#: gkb-new/descs/CA_English.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:28
-msgid "Canadian xkb keymap"
-msgstr "Kandiečių xkb išdėstymas"
-
-#: gkb-new/descs/CA_English.keyprop.desktop.in.h:3
-#: gkb-new/descs/UK-102.keyprop.desktop.in.h:1
-#: gkb-new/descs/UK-x86.keyprop.desktop.in.h:1
-#: gkb-new/descs/UK.keyprop.desktop.in.h:1
-#: gkb-new/descs/UK_English.keyprop.desktop.in.h:1
-#: gkb-new/descs/UK_English_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/UK_United_Kingdom.keyprop.desktop.in.h:1
-#: gkb-new/descs/US-101.keyprop.desktop.in.h:1
-#: gkb-new/descs/US-101A-x86.keyprop.desktop.in.h:1
-#: gkb-new/descs/US-84.keyprop.desktop.in.h:1
-#: gkb-new/descs/US-dec.keyprop.desktop.in.h:1
-#: gkb-new/descs/US-ibm.keyprop.desktop.in.h:1
-#: gkb-new/descs/US-int.keyprop.desktop.in.h:1
-#: gkb-new/descs/US-mac.keyprop.desktop.in.h:1
-#: gkb-new/descs/US-sgi-101.keyprop.desktop.in.h:1
-#: gkb-new/descs/US-sun.keyprop.desktop.in.h:1
-#: gkb-new/descs/US.keyprop.desktop.in.h:1
-#: gkb-new/descs/US_English.keyprop.desktop.in.h:1
-#: gkb-new/descs/US_international.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:48 gkb-new/descs.sun/presets.xml.in.h:29
-#: gkb-new/gkb.c:365
-msgid "English"
-msgstr "Anglų"
-
-#: gkb-new/descs/CH_German_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/DE_German.keyprop.desktop.in.h:1
-#: gkb-new/descs/DE_German_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/German.keyprop.desktop.in.h:2
-#: gkb-new/descs/GermanSwiss.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:75 gkb-new/descs.sun/presets.xml.in.h:43
-msgid "German"
-msgstr "Vokiečių"
-
-#: gkb-new/descs/CH_German_x.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:185
-msgid "Swiss keymap"
-msgstr "Šveicarų išdėstymas"
-
-#: gkb-new/descs/CH_German_x.keyprop.desktop.in.h:3
-#: gkb-new/descs/FrenchCanadian2.keyprop.desktop.in.h:3
-#: gkb-new/descs/FrenchSwiss.keyprop.desktop.in.h:3
-#: gkb-new/descs/German.keyprop.desktop.in.h:4
-#: gkb-new/descs/GermanSwiss.keyprop.desktop.in.h:3
-#: gkb-new/descs/presets.xml.in.h:186 gkb-new/descs.sun/presets.xml.in.h:113
-msgid "Switzerland"
-msgstr "Šveicarija"
-
-#: gkb-new/descs/CZ_Czech.keyprop.desktop.in.h:1
-#: gkb-new/descs/CZ_Czech_Slovak.keyprop.desktop.in.h:1
-#: gkb-new/descs/CZ_Czech_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:33 gkb-new/descs.sun/presets.xml.in.h:19
-msgid "Czech"
-msgstr "Čekų"
-
-#: gkb-new/descs/CZ_Czech.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:37
-msgid "Czech qwertz xkb keymap"
-msgstr "Čekų qwertz xkb išdėstymas"
-
-#: gkb-new/descs/CZ_Czech.keyprop.desktop.in.h:3
-msgid "Former Czechoslovakia Czech Republic"
-msgstr "Buvusi Čekoslovakijos respublika"
-
-#: gkb-new/descs/CZ_Czech_Slovak.keyprop.desktop.in.h:2
-#: gkb-new/descs/CZ_Czech_x.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:34 gkb-new/descs.sun/presets.xml.in.h:20
-msgid "Czech Republic"
-msgstr "Čekija"
-
-#: gkb-new/descs/CZ_Czech_Slovak.keyprop.desktop.in.h:3
-#: gkb-new/descs/presets.xml.in.h:35
-msgid "Czech and Slovak xkb keymap"
-msgstr "Čekų ir Slovakų xkb išdėstymas"
-
-#: gkb-new/descs/CZ_Czech_Slovak.keyprop.desktop.in.h:4
-#: gkb-new/descs/SK__x.keyprop.desktop.in.h:2
-#: gkb-new/descs/Slovak.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:166 gkb-new/descs.sun/presets.xml.in.h:96
-msgid "Slovak"
-msgstr "Slovakija"
-
-#: gkb-new/descs/CZ_Czech_Slovak.keyprop.desktop.in.h:5
-#: gkb-new/descs/SK__x.keyprop.desktop.in.h:3
-#: gkb-new/descs/Slovak.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:167 gkb-new/descs.sun/presets.xml.in.h:97
-msgid "Slovak Republic"
-msgstr "Slovakija"
-
-#: gkb-new/descs/CZ_Czech_x.keyprop.desktop.in.h:3
-#: gkb-new/descs/presets.xml.in.h:36
-msgid "Czech keymap"
-msgstr "Čekų išdėstymas"
-
 #: gkb-new/descs/DE_German.keyprop.desktop.in.h:2
 #: gkb-new/descs/presets.xml.in.h:78
 msgid "German xkb keymap"
 msgstr "Vokiečių xkb išdėstymas"
-
-#: gkb-new/descs/DE_German.keyprop.desktop.in.h:3
-#: gkb-new/descs/DE_German_x.keyprop.desktop.in.h:3
-#: gkb-new/descs/German.keyprop.desktop.in.h:3
-#: gkb-new/descs/presets.xml.in.h:79 gkb-new/descs.sun/presets.xml.in.h:47
-msgid "Germany"
-msgstr "Vokietija"
 
 #: gkb-new/descs/DE_German_x.keyprop.desktop.in.h:2
 #: gkb-new/descs/presets.xml.in.h:77
 msgid "German keymap"
 msgstr "Vokiečių išdėstymas"
 
-#: gkb-new/descs/DK_Danish.keyprop.desktop.in.h:1
-#: gkb-new/descs/DK_Danish_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:38 gkb-new/descs.sun/presets.xml.in.h:22
-msgid "Danish"
-msgstr "Danų"
-
 #: gkb-new/descs/DK_Danish.keyprop.desktop.in.h:2
 #: gkb-new/descs/presets.xml.in.h:40
 msgid "Danish xkb keymap"
 msgstr "Danų xkb išdėstymas"
-
-#: gkb-new/descs/DK_Danish.keyprop.desktop.in.h:3
-#: gkb-new/descs/DK_Danish_x.keyprop.desktop.in.h:3
-#: gkb-new/descs/presets.xml.in.h:41 gkb-new/descs.sun/presets.xml.in.h:26
-msgid "Denmark"
-msgstr "Danija"
 
 #: gkb-new/descs/DK_Danish_x.keyprop.desktop.in.h:2
 #: gkb-new/descs/presets.xml.in.h:39
 msgid "Danish keymap"
 msgstr "Danų išdėstymas"
 
-#: gkb-new/descs/Default.keyprop.desktop.in.h:1 gweather/gweather-pref.c:851
-#: gweather/gweather-pref.c:871 gweather/gweather-pref.c:895
-#: gweather/gweather-pref.c:921
+#: gkb-new/descs/Default.keyprop.desktop.in.h:1 gweather/gweather-pref.c:852
+#: gweather/gweather-pref.c:872 gweather/gweather-pref.c:896
+#: gweather/gweather-pref.c:922
 msgid "Default"
 msgstr "Įprasti"
-
-#: gkb-new/descs/Default.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:80 gkb-new/descs.sun/presets.xml.in.h:48
-msgid "Gnome Keyboard default"
-msgstr "Įprasta Gnome klaviatūra"
-
-#: gkb-new/descs/Default.keyprop.desktop.in.h:3
-#: gkb-new/descs/Dvorak.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:101 gkb-new/descs.sun/presets.xml.in.h:58
-#: gkb-new/gkb.c:365
-msgid "International"
-msgstr "Tarptautinės"
 
 #: gkb-new/descs/Dvorak.keyprop.desktop.in.h:1
 #: gkb-new/descs/presets.xml.in.h:46
 msgid "Dvorak xkb keymap"
 msgstr "Dvorako xkb išdėstymas"
-
-#: gkb-new/descs/EE_Estonian.keyprop.desktop.in.h:1
-#: gkb-new/descs/EE_Estonian_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:50 gkb-new/descs.sun/presets.xml.in.h:33
-msgid "Estonia"
-msgstr "Estija"
-
-#: gkb-new/descs/EE_Estonian.keyprop.desktop.in.h:2
-#: gkb-new/descs/EE_Estonian_x.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:51 gkb-new/descs.sun/presets.xml.in.h:34
-msgid "Estonian"
-msgstr "Estų"
 
 #: gkb-new/descs/EE_Estonian.keyprop.desktop.in.h:3
 #: gkb-new/descs/presets.xml.in.h:53
@@ -1532,20 +2219,6 @@ msgstr "Estų xkb išdėstymas"
 #: gkb-new/descs/presets.xml.in.h:52
 msgid "Estonian keymap"
 msgstr "Estų išdėstymas"
-
-#: gkb-new/descs/ES_Spanish-x86.keyprop.desktop.in.h:1
-#: gkb-new/descs/ES_Spanish.keyprop.desktop.in.h:1
-#: gkb-new/descs/ES_Spanish_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:174 gkb-new/descs.sun/presets.xml.in.h:102
-msgid "Spain"
-msgstr "Ispanija"
-
-#: gkb-new/descs/ES_Spanish-x86.keyprop.desktop.in.h:2
-#: gkb-new/descs/ES_Spanish.keyprop.desktop.in.h:2
-#: gkb-new/descs/ES_Spanish_x.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:175 gkb-new/descs.sun/presets.xml.in.h:103
-msgid "Spanish"
-msgstr "Ispanų"
 
 #: gkb-new/descs/ES_Spanish-x86.keyprop.desktop.in.h:3
 #: gkb-new/descs/presets.xml.in.h:176
@@ -1562,18 +2235,6 @@ msgstr "Ispanų xkb išdėstymas"
 msgid "Spanish keymap"
 msgstr "Ispanų išdėstymas"
 
-#: gkb-new/descs/FI_Finnish.keyprop.desktop.in.h:1
-#: gkb-new/descs/FI_Finnish_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:55 gkb-new/descs.sun/presets.xml.in.h:36
-msgid "Finland"
-msgstr "Suomija"
-
-#: gkb-new/descs/FI_Finnish.keyprop.desktop.in.h:2
-#: gkb-new/descs/FI_Finnish_x.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:56 gkb-new/descs.sun/presets.xml.in.h:37
-msgid "Finnish"
-msgstr "Suomių"
-
 #: gkb-new/descs/FI_Finnish.keyprop.desktop.in.h:3
 #: gkb-new/descs/presets.xml.in.h:58
 msgid "Finnish xkb keymap"
@@ -1583,13 +2244,6 @@ msgstr "Suomių xkb išdėstymas"
 #: gkb-new/descs/presets.xml.in.h:57
 msgid "Finnish keymap"
 msgstr "Suomių išdėstymas"
-
-#: gkb-new/descs/FR_French-x86.keyprop.desktop.in.h:1
-#: gkb-new/descs/FR_French.keyprop.desktop.in.h:1
-#: gkb-new/descs/FR_French_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:60 gkb-new/descs.sun/presets.xml.in.h:39
-msgid "France"
-msgstr "Prancūzija"
 
 #: gkb-new/descs/FR_French-x86.keyprop.desktop.in.h:3
 #: gkb-new/descs/presets.xml.in.h:62
@@ -1697,34 +2351,10 @@ msgstr "Kroatų"
 msgid "Croatian keymap"
 msgstr "Kroatų išdėstymas"
 
-#: gkb-new/descs/HU_Hungarian.keyprop.desktop.in.h:1
-#: gkb-new/descs/Hungarian-101.keyprop.desktop.in.h:1
-#: gkb-new/descs/Hungarian-lat1.keyprop.desktop.in.h:1
-#: gkb-new/descs/Hungarian-sun.keyprop.desktop.in.h:1
-#: gkb-new/descs/Hungarian-x86.keyprop.desktop.in.h:1
-#: gkb-new/descs/Hungarian.keyprop.desktop.in.h:1
-#: gkb-new/descs/Hungarian101-1.keyprop.desktop.in.h:1
-#: gkb-new/descs/Hungarian101.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:88 gkb-new/descs.sun/presets.xml.in.h:51
-msgid "Hungarian"
-msgstr "Vengriškų"
-
 #: gkb-new/descs/HU_Hungarian.keyprop.desktop.in.h:2
 #: gkb-new/descs/presets.xml.in.h:95
 msgid "Hungarian latin2 xkb keymap"
 msgstr "Vengrų latin2 xkb išdėstymas"
-
-#: gkb-new/descs/HU_Hungarian.keyprop.desktop.in.h:3
-#: gkb-new/descs/Hungarian-101.keyprop.desktop.in.h:3
-#: gkb-new/descs/Hungarian-lat1.keyprop.desktop.in.h:3
-#: gkb-new/descs/Hungarian-sun.keyprop.desktop.in.h:2
-#: gkb-new/descs/Hungarian-x86.keyprop.desktop.in.h:3
-#: gkb-new/descs/Hungarian.keyprop.desktop.in.h:3
-#: gkb-new/descs/Hungarian101-1.keyprop.desktop.in.h:3
-#: gkb-new/descs/Hungarian101.keyprop.desktop.in.h:3
-#: gkb-new/descs/presets.xml.in.h:96 gkb-new/descs.sun/presets.xml.in.h:54
-msgid "Hungary"
-msgstr "Vengrija"
 
 #: gkb-new/descs/Hungarian-101.keyprop.desktop.in.h:2
 #: gkb-new/descs/presets.xml.in.h:94
@@ -1761,39 +2391,15 @@ msgstr "Vengrų 101-klavišo latin1"
 msgid "Hungarian 101-key latin 2"
 msgstr "Vengrų 101-klavišo latin2"
 
-#: gkb-new/descs/IL_Hebrew.keyprop.desktop.in.h:1
-#: gkb-new/descs/IL_Hebrew_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:85 gkb-new/descs.sun/presets.xml.in.h:49
-msgid "Hebrew"
-msgstr "Hebrajų"
-
 #: gkb-new/descs/IL_Hebrew.keyprop.desktop.in.h:2
 #: gkb-new/descs/presets.xml.in.h:87
 msgid "Hebrew xkb keymap"
 msgstr "Hebrajų xkb išdėstymas"
 
-#: gkb-new/descs/IL_Hebrew.keyprop.desktop.in.h:3
-#: gkb-new/descs/IL_Hebrew_x.keyprop.desktop.in.h:3
-#: gkb-new/descs/presets.xml.in.h:103 gkb-new/descs.sun/presets.xml.in.h:59
-msgid "Israel"
-msgstr "Izraelis"
-
 #: gkb-new/descs/IL_Hebrew_x.keyprop.desktop.in.h:2
 #: gkb-new/descs/presets.xml.in.h:86
 msgid "Hebrew keymap"
 msgstr "Hebrajų išdėstymas"
-
-#: gkb-new/descs/IS_Icelandic.keyprop.desktop.in.h:1
-#: gkb-new/descs/IS_Icelandic_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:97 gkb-new/descs.sun/presets.xml.in.h:55
-msgid "Iceland"
-msgstr "Islandija"
-
-#: gkb-new/descs/IS_Icelandic.keyprop.desktop.in.h:2
-#: gkb-new/descs/IS_Icelandic_x.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:98 gkb-new/descs.sun/presets.xml.in.h:56
-msgid "Icelandic"
-msgstr "Islandų"
 
 #: gkb-new/descs/IS_Icelandic.keyprop.desktop.in.h:3
 #: gkb-new/descs/presets.xml.in.h:100
@@ -1805,39 +2411,15 @@ msgstr "Islandų xkb išdėstymas"
 msgid "Icelandic keymap"
 msgstr "Islandų išdėstymas"
 
-#: gkb-new/descs/IT_Italian.keyprop.desktop.in.h:1
-#: gkb-new/descs/IT_Italian_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:104 gkb-new/descs.sun/presets.xml.in.h:60
-msgid "Italian"
-msgstr "Italų"
-
 #: gkb-new/descs/IT_Italian.keyprop.desktop.in.h:2
 #: gkb-new/descs/presets.xml.in.h:106
 msgid "Italian xkb keymap"
 msgstr "Italų xkb išdėstymas"
 
-#: gkb-new/descs/IT_Italian.keyprop.desktop.in.h:3
-#: gkb-new/descs/IT_Italian_x.keyprop.desktop.in.h:3
-#: gkb-new/descs/presets.xml.in.h:107 gkb-new/descs.sun/presets.xml.in.h:64
-msgid "Italy"
-msgstr "Italija"
-
 #: gkb-new/descs/IT_Italian_x.keyprop.desktop.in.h:2
 #: gkb-new/descs/presets.xml.in.h:105
 msgid "Italian keymap"
 msgstr "Italų išdėstymas"
-
-#: gkb-new/descs/JP_Japanese.keyprop.desktop.in.h:1
-#: gkb-new/descs/JP_Japanese_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:108 gkb-new/descs.sun/presets.xml.in.h:65
-msgid "Japan"
-msgstr "Japonija"
-
-#: gkb-new/descs/JP_Japanese.keyprop.desktop.in.h:2
-#: gkb-new/descs/JP_Japanese_x.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:109 gkb-new/descs.sun/presets.xml.in.h:66
-msgid "Japanese"
-msgstr "Japonų"
 
 #: gkb-new/descs/JP_Japanese.keyprop.desktop.in.h:3
 #: gkb-new/descs/presets.xml.in.h:111
@@ -1876,22 +2458,6 @@ msgstr "Laoso išdėstymas"
 msgid "Laos"
 msgstr "Laosas"
 
-#: gkb-new/descs/LT_Lithuanian.keyprop.desktop.in.h:1
-#: gkb-new/descs/LT_Lithuanian_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/LT_Prog.keyprop.desktop.in.h:1
-#: gkb-new/descs/LT_Standard.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:119 gkb-new/descs.sun/presets.xml.in.h:72
-msgid "Lithuania"
-msgstr "Lietuva"
-
-#: gkb-new/descs/LT_Lithuanian.keyprop.desktop.in.h:2
-#: gkb-new/descs/LT_Lithuanian_x.keyprop.desktop.in.h:2
-#: gkb-new/descs/LT_Prog.keyprop.desktop.in.h:2
-#: gkb-new/descs/LT_Standard.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:120 gkb-new/descs.sun/presets.xml.in.h:73
-msgid "Lithuanian"
-msgstr "Lietuvių"
-
 #: gkb-new/descs/LT_Lithuanian.keyprop.desktop.in.h:3
 #: gkb-new/descs/presets.xml.in.h:123
 msgid "Lithuanian qwerty xkb keymap"
@@ -1912,20 +2478,6 @@ msgstr "Lietuviškas programuotojų xkb išdėstymas"
 msgid "Lithuanian standard xkb keymap"
 msgstr "Lietuviškas standartinis xkb išdėstymas"
 
-#: gkb-new/descs/LV_Apostrophe.keyprop.desktop.in.h:1
-#: gkb-new/descs/LV_Standard.keyprop.desktop.in.h:1
-#: gkb-new/descs/LV_Tilde.keyprop.desktop.in.h:1
-#: gkb-new/descs.sun/presets.xml.in.h:69
-msgid "Latvia"
-msgstr "Latvija"
-
-#: gkb-new/descs/LV_Apostrophe.keyprop.desktop.in.h:2
-#: gkb-new/descs/LV_Standard.keyprop.desktop.in.h:2
-#: gkb-new/descs/LV_Tilde.keyprop.desktop.in.h:2
-#: gkb-new/descs.sun/presets.xml.in.h:70
-msgid "Latvian"
-msgstr "Latvija"
-
 #: gkb-new/descs/LV_Apostrophe.keyprop.desktop.in.h:3
 msgid "Latvian (') xkb keymap"
 msgstr "Latvių (') xkb išdėstymas"
@@ -1937,18 +2489,6 @@ msgstr "Latvių standartinis xkb išdėstymas"
 #: gkb-new/descs/LV_Tilde.keyprop.desktop.in.h:3
 msgid "Latvian (~) xkb keymap"
 msgstr "Latvių (~) xkb išdėstymas"
-
-#: gkb-new/descs/MK_Macedonian.keyprop.desktop.in.h:1
-#: gkb-new/descs/Macedonian.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:125 gkb-new/descs.sun/presets.xml.in.h:75
-msgid "Macedonia"
-msgstr "Makedonija"
-
-#: gkb-new/descs/MK_Macedonian.keyprop.desktop.in.h:2
-#: gkb-new/descs/Macedonian.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:126 gkb-new/descs.sun/presets.xml.in.h:76
-msgid "Macedonian"
-msgstr "Makedoniečių"
 
 #: gkb-new/descs/MK_Macedonian.keyprop.desktop.in.h:3
 #: gkb-new/descs/presets.xml.in.h:127
@@ -1998,49 +2538,15 @@ msgstr "Olandų išdėstymas"
 msgid "Netherlands"
 msgstr "Nyderlandai"
 
-#: gkb-new/descs/NO_Norwegian.keyprop.desktop.in.h:1
-#: gkb-new/descs/Norwegian.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:136 gkb-new/descs.sun/presets.xml.in.h:78
-msgid "Norway"
-msgstr "Norvegija"
-
-#: gkb-new/descs/NO_Norwegian.keyprop.desktop.in.h:2
-#: gkb-new/descs/Norwegian.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:137 gkb-new/descs.sun/presets.xml.in.h:79
-msgid "Norwegian"
-msgstr "Norvegų"
-
 #: gkb-new/descs/NO_Norwegian.keyprop.desktop.in.h:3
 #: gkb-new/descs/presets.xml.in.h:138
 msgid "Norwegian xkb keymap"
 msgstr "Norvegų xkb išdėstymas"
 
-#: gkb-new/descs/PL_Polish.keyprop.desktop.in.h:1
-#: gkb-new/descs/Polish.keyprop.desktop.in.h:1
-#: gkb-new/descs/PolishDeadkeys.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:142 gkb-new/descs.sun/presets.xml.in.h:81
-msgid "Poland"
-msgstr "Lenkija"
-
-#: gkb-new/descs/PL_Polish.keyprop.desktop.in.h:2
-#: gkb-new/descs/Polish.keyprop.desktop.in.h:2
-#: gkb-new/descs/PolishDeadkeys.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:143 gkb-new/descs.sun/presets.xml.in.h:82
-msgid "Polish"
-msgstr "Lenkų"
-
 #: gkb-new/descs/PL_Polish.keyprop.desktop.in.h:3
 #: gkb-new/descs/presets.xml.in.h:145
 msgid "Polish xkb keymap"
 msgstr "Lenkų xkb išdėstymas"
-
-#: gkb-new/descs/PT_Portuguese.keyprop.desktop.in.h:1
-#: gkb-new/descs/PT_Portuguese_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/Portugal.keyprop.desktop.in.h:2
-#: gkb-new/descs/PortugalDeadkeys.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:146 gkb-new/descs.sun/presets.xml.in.h:84
-msgid "Portugal"
-msgstr "Portugalija"
 
 #: gkb-new/descs/PT_Portuguese.keyprop.desktop.in.h:3
 #: gkb-new/descs/presets.xml.in.h:150
@@ -2062,36 +2568,10 @@ msgstr "Lenkų deadkeys"
 msgid "Portugal Deadkeys"
 msgstr "Portugalų Deadkeys"
 
-#: gkb-new/descs/RO_Romanian.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:152 gkb-new/descs.sun/presets.xml.in.h:88
-msgid "Romania"
-msgstr "Rumunija"
-
-#: gkb-new/descs/RO_Romanian.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:153 gkb-new/descs.sun/presets.xml.in.h:89
-msgid "Romanian"
-msgstr "Rumunų"
-
 #: gkb-new/descs/RO_Romanian.keyprop.desktop.in.h:3
 #: gkb-new/descs/presets.xml.in.h:154
 msgid "Romanian xkb keymap"
 msgstr "Rumunų xkb išdėstymas"
-
-#: gkb-new/descs/RU_Russian.keyprop.desktop.in.h:1
-#: gkb-new/descs/RU_Russian_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/RU_Russian_x_rev.keyprop.desktop.in.h:2
-#: gkb-new/descs/RussianCyril.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:155 gkb-new/descs.sun/presets.xml.in.h:91
-msgid "Russia"
-msgstr "Rusija"
-
-#: gkb-new/descs/RU_Russian.keyprop.desktop.in.h:2
-#: gkb-new/descs/RU_Russian_x.keyprop.desktop.in.h:2
-#: gkb-new/descs/RU_Russian_x_rev.keyprop.desktop.in.h:3
-#: gkb-new/descs/RussianCyril.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:156 gkb-new/descs.sun/presets.xml.in.h:92
-msgid "Russian"
-msgstr "Rusiška"
 
 #: gkb-new/descs/RU_Russian.keyprop.desktop.in.h:3
 #: gkb-new/descs/presets.xml.in.h:159
@@ -2113,20 +2593,6 @@ msgstr "Paprastas Rusų išdėstymas"
 msgid "Russian Cyrillic"
 msgstr "Rusų kirilica"
 
-#: gkb-new/descs/SE_Swedish.keyprop.desktop.in.h:1
-#: gkb-new/descs/SE_Swedish_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/Swedish.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:181 gkb-new/descs.sun/presets.xml.in.h:107
-msgid "Sweden"
-msgstr "Švedija"
-
-#: gkb-new/descs/SE_Swedish.keyprop.desktop.in.h:2
-#: gkb-new/descs/SE_Swedish_x.keyprop.desktop.in.h:2
-#: gkb-new/descs/Swedish.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:182 gkb-new/descs.sun/presets.xml.in.h:108
-msgid "Swedish"
-msgstr "Švedų"
-
 #: gkb-new/descs/SE_Swedish.keyprop.desktop.in.h:3
 #: gkb-new/descs/presets.xml.in.h:184
 msgid "Swedish xkb keymap"
@@ -2137,22 +2603,6 @@ msgstr "Švedų xkb išdėstymas"
 msgid "Swedish keymap"
 msgstr "Švedų išdėstymas"
 
-#: gkb-new/descs/SI_Slovenian.keyprop.desktop.in.h:1
-#: gkb-new/descs/SI_Slovenian_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/Slovene.keyprop.desktop.in.h:1
-#: gkb-new/descs/Slovenian.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:169 gkb-new/descs.sun/presets.xml.in.h:99
-msgid "Slovenia"
-msgstr "Slovėnija"
-
-#: gkb-new/descs/SI_Slovenian.keyprop.desktop.in.h:2
-#: gkb-new/descs/SI_Slovenian_x.keyprop.desktop.in.h:2
-#: gkb-new/descs/Slovene.keyprop.desktop.in.h:2
-#: gkb-new/descs/Slovenian.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:170 gkb-new/descs.sun/presets.xml.in.h:100
-msgid "Slovenian"
-msgstr "Slovėnų"
-
 #: gkb-new/descs/SI_Slovenian.keyprop.desktop.in.h:3
 #: gkb-new/descs/presets.xml.in.h:172
 msgid "Slovenian xkb keymap"
@@ -2162,6 +2612,10 @@ msgstr "Slovėnų xkb išdėstymas"
 #: gkb-new/descs/presets.xml.in.h:171
 msgid "Slovenian keymap"
 msgstr "Slovėnų išdėstymas"
+
+#: gkb-new/descs/SK__x.keyprop.desktop.in.h:1
+msgid " keymap"
+msgstr " išdėstymas"
 
 #: gkb-new/descs/SR_Dutch.keyprop.desktop.in.h:1
 #: gkb-new/descs/YU_Serb_x.keyprop.desktop.in.h:1
@@ -2183,10 +2637,6 @@ msgstr "Serbija ir Juodkalnija"
 msgid "Serbian standard xkb keymap"
 msgstr "Standartinis serbų xkb išdėstymas"
 
-#: gkb-new/descs/SK__x.keyprop.desktop.in.h:1
-msgid " keymap"
-msgstr " išdėstymas"
-
 #: gkb-new/descs/Syriac.keyprop.desktop.in.h:1
 #: gkb-new/descs/Syriac_Phonetic.keyprop.desktop.in.h:1
 #: gkb-new/descs/presets.xml.in.h:188
@@ -2201,47 +2651,15 @@ msgstr "Sirijos xkb išdėstymas"
 msgid "Syriac Phonetic xkb keymap"
 msgstr "Sirijos fonetinis xkb išdėstymas"
 
-#: gkb-new/descs/TH_Thai.keyprop.desktop.in.h:1
-#: gkb-new/descs/TH_Thai_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/Thai.keyprop.desktop.in.h:1
-#: gkb-new/descs/Thai2.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:190 gkb-new/descs.sun/presets.xml.in.h:114
-msgid "Thai"
-msgstr "Tailandiečių"
-
 #: gkb-new/descs/TH_Thai.keyprop.desktop.in.h:2
 #: gkb-new/descs/presets.xml.in.h:193
 msgid "Thai xkb keymap"
 msgstr "Tajų xkb išdėstymas"
 
-#: gkb-new/descs/TH_Thai.keyprop.desktop.in.h:3
-#: gkb-new/descs/TH_Thai_x.keyprop.desktop.in.h:3
-#: gkb-new/descs/Thai.keyprop.desktop.in.h:3
-#: gkb-new/descs/Thai2.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:194 gkb-new/descs.sun/presets.xml.in.h:116
-msgid "Thailand"
-msgstr "Tailandas"
-
 #: gkb-new/descs/TH_Thai_x.keyprop.desktop.in.h:2
 #: gkb-new/descs/presets.xml.in.h:192
 msgid "Thai keymap"
 msgstr "Tajų išdėstymas"
-
-#: gkb-new/descs/TR-f.keyprop.desktop.in.h:1
-#: gkb-new/descs/TR-q.keyprop.desktop.in.h:1
-#: gkb-new/descs/TR_Turkish.keyprop.desktop.in.h:1
-#: gkb-new/descs/TR_Turkish_x.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:196 gkb-new/descs.sun/presets.xml.in.h:117
-msgid "Turkey"
-msgstr "Turkija"
-
-#: gkb-new/descs/TR-f.keyprop.desktop.in.h:2
-#: gkb-new/descs/TR-q.keyprop.desktop.in.h:2
-#: gkb-new/descs/TR_Turkish.keyprop.desktop.in.h:2
-#: gkb-new/descs/TR_Turkish_x.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:197 gkb-new/descs.sun/presets.xml.in.h:118
-msgid "Turkish"
-msgstr "Turkų"
 
 #: gkb-new/descs/TR-f.keyprop.desktop.in.h:3
 #: gkb-new/descs/presets.xml.in.h:198
@@ -2268,16 +2686,6 @@ msgstr "Turkų išdėstymas"
 msgid "Thai Kedmanee"
 msgstr "Thai Kedmanee"
 
-#: gkb-new/descs/UA_Ukrainian.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:216 gkb-new/descs.sun/presets.xml.in.h:123
-msgid "Ukraine"
-msgstr "Ukraina"
-
-#: gkb-new/descs/UA_Ukrainian.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:217 gkb-new/descs.sun/presets.xml.in.h:124
-msgid "Ukrainian"
-msgstr "Ukrainiečių"
-
 #: gkb-new/descs/UA_Ukrainian.keyprop.desktop.in.h:3
 #: gkb-new/descs/presets.xml.in.h:218
 msgid "Ukrainian xkb keymap"
@@ -2287,16 +2695,6 @@ msgstr "Ukrainiečių xkb išdėstymas"
 #: gkb-new/descs/presets.xml.in.h:68
 msgid "GB 102-key"
 msgstr "GB 102-klavišų"
-
-#: gkb-new/descs/UK-102.keyprop.desktop.in.h:3
-#: gkb-new/descs/UK-x86.keyprop.desktop.in.h:3
-#: gkb-new/descs/UK.keyprop.desktop.in.h:3
-#: gkb-new/descs/UK_English.keyprop.desktop.in.h:2
-#: gkb-new/descs/UK_English_x.keyprop.desktop.in.h:3
-#: gkb-new/descs/UK_United_Kingdom.keyprop.desktop.in.h:3
-#: gkb-new/descs/presets.xml.in.h:220 gkb-new/descs.sun/presets.xml.in.h:126
-msgid "United Kingdom"
-msgstr "Jungtinė karalystė"
 
 #: gkb-new/descs/UK-x86.keyprop.desktop.in.h:2
 #: gkb-new/descs/presets.xml.in.h:203
@@ -2326,23 +2724,6 @@ msgstr "GB 105-klavišų"
 #: gkb-new/descs/presets.xml.in.h:204
 msgid "US 101-key keyboard"
 msgstr "JAV 101-klavišo klaviatūra"
-
-#: gkb-new/descs/US-101.keyprop.desktop.in.h:3
-#: gkb-new/descs/US-101A-x86.keyprop.desktop.in.h:3
-#: gkb-new/descs/US-84.keyprop.desktop.in.h:3
-#: gkb-new/descs/US-dec.keyprop.desktop.in.h:3
-#: gkb-new/descs/US-ibm.keyprop.desktop.in.h:3
-#: gkb-new/descs/US-int.keyprop.desktop.in.h:3
-#: gkb-new/descs/US-mac.keyprop.desktop.in.h:3
-#: gkb-new/descs/US-sgi-101.keyprop.desktop.in.h:3
-#: gkb-new/descs/US-sun.keyprop.desktop.in.h:3
-#: gkb-new/descs/US.keyprop.desktop.in.h:3
-#: gkb-new/descs/US_English.keyprop.desktop.in.h:3
-#: gkb-new/descs/US_international.keyprop.desktop.in.h:3
-#: gkb-new/descs/presets.xml.in.h:222 gkb-new/descs.sun/presets.xml.in.h:127
-#: gkb-new/gkb.c:361
-msgid "United States"
-msgstr "Jungtinės valstijos"
 
 #: gkb-new/descs/US-101A-x86.keyprop.desktop.in.h:2
 #: gkb-new/descs/presets.xml.in.h:212
@@ -2398,16 +2779,6 @@ msgstr "US xkb išdėstymas"
 msgid "US International xkb keymap"
 msgstr "JAV tarptautinė xkb išdėstymas"
 
-#: gkb-new/descs/VN_Vietnamese.keyprop.desktop.in.h:1
-#: gkb-new/descs/presets.xml.in.h:223 gkb-new/descs.sun/presets.xml.in.h:128
-msgid "Vietnam"
-msgstr "Vietnamas"
-
-#: gkb-new/descs/VN_Vietnamese.keyprop.desktop.in.h:2
-#: gkb-new/descs/presets.xml.in.h:224 gkb-new/descs.sun/presets.xml.in.h:129
-msgid "Vietnamese"
-msgstr "Vietnamiečių"
-
 #: gkb-new/descs/VN_Vietnamese.keyprop.desktop.in.h:3
 #: gkb-new/descs/presets.xml.in.h:225
 msgid "Vietnamese xkb keymap"
@@ -2418,14 +2789,6 @@ msgstr "Vietnamiečių xkb išdėstymas"
 #: gkb-new/descs/Yugoslav.keyprop.desktop.in.h:2
 msgid "Serb keymap"
 msgstr "Serbų išdėstymas"
-
-#: gkb-new/descs/presets.xml.in.h:9 gkb-new/descs.sun/presets.xml.in.h:4
-msgid "Azerbaijan"
-msgstr "Azerbaidžanas"
-
-#: gkb-new/descs/presets.xml.in.h:10 gkb-new/descs.sun/presets.xml.in.h:5
-msgid "Azerbaijani Turkish"
-msgstr "Azerbaidžano Turkų"
 
 #: gkb-new/descs/presets.xml.in.h:11
 msgid "Azerbaijani Turkish xkb keymap"
@@ -2466,242 +2829,6 @@ msgstr "Slovakų išdėstymas"
 #: gkb-new/descs/presets.xml.in.h:189
 msgid "Syriac Phonetic"
 msgstr "Sirojos fonetiškas"
-
-#: gkb-new/descs.sun/presets.xml.in.h:3
-msgid "Armenian Sun keymap"
-msgstr "Armėnų Sun išdėstymas"
-
-#: gkb-new/descs.sun/presets.xml.in.h:6
-msgid "Azerbaijani Turkish Sun keymap"
-msgstr "Azerbaidžano Turkų Sun išdėstymas"
-
-#: gkb-new/descs.sun/presets.xml.in.h:9
-msgid "Belarusian Sun keymap"
-msgstr "Baltarusių Sun išdėstymas"
-
-#: gkb-new/descs.sun/presets.xml.in.h:12
-msgid "Brazil Portuguese Sun USB keymap"
-msgstr "Brazilų Portugalų Sun USB išdėstymas"
-
-#: gkb-new/descs.sun/presets.xml.in.h:13
-msgid "Brazil Portuguese Sun keymap"
-msgstr "Brazilų Portugalų Sun išdėstymas"
-
-#: gkb-new/descs.sun/presets.xml.in.h:16
-msgid "Bulgarian Sun keymap"
-msgstr "Bulgarų Sun išdėstymas"
-
-#: gkb-new/descs.sun/presets.xml.in.h:18
-msgid "Canadian Sun keymap"
-msgstr "Kanadiečių Sun išdėstymas"
-
-#: gkb-new/descs.sun/presets.xml.in.h:21
-msgid "Czech Sun keymap"
-msgstr "Čekų Sun išdėstymas"
-
-#: gkb-new/descs.sun/presets.xml.in.h:23
-msgid "Danish Sun Type-4 keymap"
-msgstr "Danų Sun Type-4 išdėstymas"
-
-#: gkb-new/descs.sun/presets.xml.in.h:24
-msgid "Danish Sun USB keymap"
-msgstr "Danų Sun USB išdėstymas"
-
-#: gkb-new/descs.sun/presets.xml.in.h:25
-msgid "Danish Sun keymap"
-msgstr "Danų Sun išdėstymas"
-
-#: gkb-new/descs.sun/presets.xml.in.h:28
-msgid "Dutch Sun keymap"
-msgstr "Olandų Sun išdėstymas"
-
-#: gkb-new/descs.sun/presets.xml.in.h:30
-msgid "English Sun Type-4 keymap"
-msgstr "Anglų Sun Type-4 išdėstymas"
-
-#: gkb-new/descs.sun/presets.xml.in.h:31
-msgid "English Sun USB keymap"
-msgstr "Anglų Sun USB išdėstymas"
-
-#: gkb-new/descs.sun/presets.xml.in.h:32
-msgid "English Sun keymap"
-msgstr "Anglų Sun išdėstymas"
-
-#: gkb-new/descs.sun/presets.xml.in.h:35
-msgid "Estonian Sun keymap"
-msgstr "Estų Sun išdėstymas"
-
-#: gkb-new/descs.sun/presets.xml.in.h:38
-msgid "Finnish Sun keymap"
-msgstr "Suomių Sun išdėstymas"
-
-#: gkb-new/descs.sun/presets.xml.in.h:41
-msgid "French Sun USB keymap"
-msgstr "Prancūzų Sun USB išdėstymas"
-
-#: gkb-new/descs.sun/presets.xml.in.h:42
-msgid "French Sun keymap"
-msgstr "Prancūzų Sun išdėstymas"
-
-#: gkb-new/descs.sun/presets.xml.in.h:44
-msgid "German Sun Type-4 keymap"
-msgstr "Vokiečių Sun Type-4 išdėstymas"
-
-#: gkb-new/descs.sun/presets.xml.in.h:45
-msgid "German Sun USB keymap"
-msgstr "Vokiečių Sun USB išdėstymas"
-
-#: gkb-new/descs.sun/presets.xml.in.h:46
-msgid "German Sun keymap"
-msgstr "Vokiečių Sun išdėstymas"
-
-#: gkb-new/descs.sun/presets.xml.in.h:50
-msgid "Hebrew Sun keymap"
-msgstr "Hebrajų Sun išdėstymas"
-
-#: gkb-new/descs.sun/presets.xml.in.h:52
-msgid "Hungarian latin2 Sun keymap"
-msgstr "Vengrų latin2 Sun išdėstymas"
-
-#: gkb-new/descs.sun/presets.xml.in.h:53
-msgid "Hungarian type5 latin 1 keymap"
-msgstr "Vengrų type5 latin1 išdėstymas"
-
-#: gkb-new/descs.sun/presets.xml.in.h:57
-msgid "Icelandic Sun keymap"
-msgstr "Islandų Sun išdėstymas"
-
-#: gkb-new/descs.sun/presets.xml.in.h:61
-msgid "Italian Sun Type-4 keymap"
-msgstr "Italų Sun Type-4 išdėstymas"
-
-#: gkb-new/descs.sun/presets.xml.in.h:62
-msgid "Italian Sun USB keymap"
-msgstr "Italų Sun USB išdėstymas"
-
-#: gkb-new/descs.sun/presets.xml.in.h:63
-msgid "Italian Sun keymap"
-msgstr "Italų Sun išdėstymas"
-
-#: gkb-new/descs.sun/presets.xml.in.h:67
-msgid "Japanese Sun Type-4 keymap"
-msgstr "Japonų Sun Type-4 išdėstymas"
-
-#: gkb-new/descs.sun/presets.xml.in.h:68
-msgid "Japanese Sun keymap"
-msgstr "Japonų Sun išdėstymas"
-
-#: gkb-new/descs.sun/presets.xml.in.h:71
-msgid "Latvian Sun keymap"
-msgstr "Latvių Sun išdėstymas"
-
-#: gkb-new/descs.sun/presets.xml.in.h:74
-msgid "Lithuanian Sun keymap"
-msgstr "Lietuviškas Sun išdėstymas"
-
-#: gkb-new/descs.sun/presets.xml.in.h:77
-msgid "Macedonian Sun keymap"
-msgstr "Makedoniečių Sun išdėstymas"
-
-#: gkb-new/descs.sun/presets.xml.in.h:80
-msgid "Norwegian Sun keymap"
-msgstr "Norvegų Sun išdėstymas"
-
-#: gkb-new/descs.sun/presets.xml.in.h:83
-msgid "Polish Sun keymap"
-msgstr "Lenkų Sun išdėstymas"
-
-#: gkb-new/descs.sun/presets.xml.in.h:86
-msgid "Portuguese Sun Type-4 keymap"
-msgstr "Portugalų Sun Type-4 išdėstymas"
-
-#: gkb-new/descs.sun/presets.xml.in.h:87
-msgid "Portuguese Sun keymap"
-msgstr "Portugalų Sun išdėstymas"
-
-#: gkb-new/descs.sun/presets.xml.in.h:90
-msgid "Romanian Sun keymap"
-msgstr "Rumunų Sun išdėstymas"
-
-#: gkb-new/descs.sun/presets.xml.in.h:93
-msgid "Russian Sun keymap"
-msgstr "Rusų Sun išdėstymas"
-
-#: gkb-new/descs.sun/presets.xml.in.h:94
-msgid "Serbian Sun standard keymap"
-msgstr "Serbų Sun standartinis išdėstymas"
-
-#: gkb-new/descs.sun/presets.xml.in.h:95
-msgid "Serbo-Croatian"
-msgstr "Serbų-Kroatų"
-
-#: gkb-new/descs.sun/presets.xml.in.h:98
-msgid "Slovak Sun keymap"
-msgstr "Slovakų Sun išdėstymas"
-
-#: gkb-new/descs.sun/presets.xml.in.h:101
-msgid "Slovenian Sun keymap"
-msgstr "Slovėnų Sun išdėstymas"
-
-#: gkb-new/descs.sun/presets.xml.in.h:104
-msgid "Spanish Sun Type-4 keymap"
-msgstr "Ispanų Sun Type-4 išdėstymas"
-
-#: gkb-new/descs.sun/presets.xml.in.h:105
-msgid "Spanish Sun USB keymap"
-msgstr "Ispanų Sun USB išdėstymas"
-
-#: gkb-new/descs.sun/presets.xml.in.h:106
-msgid "Spanish Sun keymap"
-msgstr "Ispanų Sun išdėstymas"
-
-#: gkb-new/descs.sun/presets.xml.in.h:109
-msgid "Swedish Sun Type-4 keymap"
-msgstr "Švedų Sun Type-4 išdėstymas"
-
-#: gkb-new/descs.sun/presets.xml.in.h:110
-msgid "Swedish Sun USB keymap"
-msgstr "Švedų Sun USB išdėstymas"
-
-#: gkb-new/descs.sun/presets.xml.in.h:111
-msgid "Swedish Sun keymap"
-msgstr "Švedų Sun išdėstymas"
-
-#: gkb-new/descs.sun/presets.xml.in.h:112
-msgid "Swiss German Sun keymap"
-msgstr "Šveicarų Vokiečių Sun išdėstymas"
-
-#: gkb-new/descs.sun/presets.xml.in.h:115
-msgid "Thai Sun keymap"
-msgstr "Tailandiečių Sun išdėstymas"
-
-#: gkb-new/descs.sun/presets.xml.in.h:119
-msgid "Turkish Sun keymap"
-msgstr "Turkų Sun išdėstymas"
-
-#: gkb-new/descs.sun/presets.xml.in.h:120
-msgid "US Sun Type-4 keyboard"
-msgstr "JAV Sun Type-4 klaviatūra"
-
-#: gkb-new/descs.sun/presets.xml.in.h:121
-msgid "US Sun USB keyboard"
-msgstr "JAV Sun USB klaviatūra"
-
-#: gkb-new/descs.sun/presets.xml.in.h:122
-msgid "US Sun type5 keyboard"
-msgstr "JAV Sun type5 klaviatūra"
-
-#: gkb-new/descs.sun/presets.xml.in.h:125
-msgid "Ukrainian Sun keymap"
-msgstr "Ukrainiečių Sun išdėstymas"
-
-#: gkb-new/descs.sun/presets.xml.in.h:130
-msgid "Vietnamese Sun keymap"
-msgstr "Vietnamiečių Sun išdėstymas"
-
-#: gkb-new/descs.sun/presets.xml.in.h:131
-msgid "Yugoslavia"
-msgstr "Jugoslavija"
 
 #: gkb-new/gkb-applet.c:97
 msgid "(C) 1998-2000 Free Software Foundation"
@@ -2907,7 +3034,7 @@ msgstr "Užrašas"
 msgid "Flag and Label"
 msgstr "Vėliava ir užrašas"
 
-#: gkb-new/prop.c:257 gtik/gtik.c:1511 gweather/gweather-pref.c:1037
+#: gkb-new/prop.c:257 gtik/gtik.c:1511 gweather/gweather-pref.c:1038
 #: modemlights/properties.c:444
 msgid "Display"
 msgstr "Rodymas"
@@ -3004,7 +3131,7 @@ msgid "GNOME keyboard layout indicator"
 msgstr "GNOME klaviatūros išdėstymo indikatorius"
 
 #: gswitchit/GNOME_KeyboardApplet.server.in.in.h:3
-#: gswitchit/gswitchit-applet.c:604
+#: gswitchit/gswitchit-applet.c:579
 msgid "Keyboard Indicator"
 msgstr "Klaviatūros indikatorius"
 
@@ -3012,24 +3139,24 @@ msgstr "Klaviatūros indikatorius"
 msgid "Keyboard applet factory"
 msgstr "Klaviatūros įtaiso gamykla"
 
-#: gswitchit/gswitchit-applet.c:110
+#: gswitchit/gswitchit-applet.c:106
 #, c-format
 msgid "Keyboard Indicator (%s)"
 msgstr "Klaviatūros indikatorius (%s)"
 
-#: gswitchit/gswitchit-applet.c:607
+#: gswitchit/gswitchit-applet.c:582
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "Autorinės teisės (c) Sergey V. Udaltsov 1999-2004"
 
-#: gswitchit/gswitchit-applet.c:609
+#: gswitchit/gswitchit-applet.c:584
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "Klaviatūros išdėstymo indikatoriaus įtaisas skirtas GNOME"
 
-#: gswitchit/gswitchit-applet.c:763
+#: gswitchit/gswitchit-applet.c:738
 msgid "XKB initialization error"
 msgstr "XKB inicializacijos klaida"
 
-#: gswitchit/gswitchit-applet.c:771
+#: gswitchit/gswitchit-applet.c:746
 msgid "Error loading XKB configuration registry"
 msgstr "Klaida įkeliant XKB konfigūracijos registrą"
 
@@ -3199,7 +3326,7 @@ msgid "Stock Ticker"
 msgstr "Akcijų kurso pranešėjas"
 
 #: gtik/GNOME_GtikApplet.xml.h:4 gweather/GNOME_GWeatherApplet.xml.h:5
-#: gweather/gweather-dialog.c:156
+#: gweather/gweather-dialog.c:158
 msgid "_Update"
 msgstr "_Atnaujinti"
 
@@ -3255,7 +3382,7 @@ msgstr "Simboliai"
 msgid "Behavior"
 msgstr "Elgesys"
 
-#: gtik/gtik.c:1424 gweather/gweather-pref.c:997
+#: gtik/gtik.c:1424 gweather/gweather-pref.c:998
 msgid "Update"
 msgstr "Atnaujinti"
 
@@ -3263,7 +3390,7 @@ msgstr "Atnaujinti"
 msgid "Stock update fre_quency:"
 msgstr "Akcijų atnaujinimo _dažnis:"
 
-#: gtik/gtik.c:1440 gweather/gweather-pref.c:1021
+#: gtik/gtik.c:1440 gweather/gweather-pref.c:1022
 msgid "minutes"
 msgstr "minutę(čių)"
 
@@ -3548,89 +3675,97 @@ msgstr ""
 msgid "GNOME Weather"
 msgstr "GNOME oras"
 
-#: gweather/gweather-dialog.c:154
+#: gweather/gweather-dialog.c:156
 msgid "Details"
 msgstr "Detalės"
 
-#: gweather/gweather-dialog.c:195
+#: gweather/gweather-dialog.c:197
 msgid "City:"
 msgstr "Miestas:"
 
-#: gweather/gweather-dialog.c:203
+#: gweather/gweather-dialog.c:205
 msgid "Last update:"
 msgstr "Paskutinis atnaujinimas:"
 
-#: gweather/gweather-dialog.c:211
+#: gweather/gweather-dialog.c:213
 msgid "Conditions:"
 msgstr "Sąlygos:"
 
-#: gweather/gweather-dialog.c:219
+#: gweather/gweather-dialog.c:221
 msgid "Sky:"
 msgstr "Dangus:"
 
-#: gweather/gweather-dialog.c:227
+#: gweather/gweather-dialog.c:229
 msgid "Temperature:"
 msgstr "Temperatūra:"
 
-#: gweather/gweather-dialog.c:235
+#: gweather/gweather-dialog.c:237
 msgid "Feels like:"
 msgstr "Panašu į:"
 
-#: gweather/gweather-dialog.c:243
+#: gweather/gweather-dialog.c:245
 msgid "Dew point:"
 msgstr "Rasos taškas:"
 
-#: gweather/gweather-dialog.c:251
+#: gweather/gweather-dialog.c:253
 msgid "Relative humidity:"
 msgstr "Santykinis drėgnumas:"
 
-#: gweather/gweather-dialog.c:259
+#: gweather/gweather-dialog.c:261
 msgid "Wind:"
 msgstr "Vėjas:"
 
-#: gweather/gweather-dialog.c:267
+#: gweather/gweather-dialog.c:269
 msgid "Pressure:"
 msgstr "Slėgis:"
 
-#: gweather/gweather-dialog.c:275
+#: gweather/gweather-dialog.c:277
 msgid "Visibility:"
 msgstr "Matomumas:"
 
-#: gweather/gweather-dialog.c:392
+#: gweather/gweather-dialog.c:285
+msgid "Sunrise:"
+msgstr "Saulėtekis:"
+
+#: gweather/gweather-dialog.c:293
+msgid "Sunset:"
+msgstr "Saulėlydis:"
+
+#: gweather/gweather-dialog.c:428
 msgid "Current Conditions"
 msgstr "Esamos sąlygos"
 
-#: gweather/gweather-dialog.c:409
+#: gweather/gweather-dialog.c:445
 msgid "Forecast Report"
 msgstr "Prognozės ataskaita"
 
-#: gweather/gweather-dialog.c:409
+#: gweather/gweather-dialog.c:445
 msgid "See the ForeCast Details"
 msgstr "Žiūrėti išsamesnę prognozę"
 
-#: gweather/gweather-dialog.c:419
+#: gweather/gweather-dialog.c:455
 msgid "Forecast"
 msgstr "Prognozė"
 
-#: gweather/gweather-dialog.c:427
+#: gweather/gweather-dialog.c:463
 msgid "Radar Map"
 msgstr "Radarinis žemėlapis"
 
-#: gweather/gweather-dialog.c:458
+#: gweather/gweather-dialog.c:494
 msgid "_Visit Weather.com"
-msgstr "_Aplankykit Weather.com"
+msgstr "_Aplankykite Weather.com"
 
-#: gweather/gweather-dialog.c:459
+#: gweather/gweather-dialog.c:495
 msgid "Visit Weather.com"
-msgstr "Aplankykit Weather.com"
+msgstr "Aplankykite Weather.com"
 
-#: gweather/gweather-dialog.c:459
+#: gweather/gweather-dialog.c:495
 msgid "Click to Enter Weather.com"
-msgstr "Spauskit, jei norit aplankyti Weather.com"
+msgstr "Spauskite, jei norite aplankyti Weather.com"
 
-#: gweather/gweather-dialog.c:550
+#: gweather/gweather-dialog.c:588
 msgid "Forecast not currently available for this location."
-msgstr "Šiuo metu prognozė šiai vietai yra neprieinama."
+msgstr "Šiuo metu prognozė šiai vietovei yra neprieinama."
 
 #. Accessible Name and Description for the components in Preference Dialog
 #: gweather/gweather-pref.c:191
@@ -3641,32 +3776,32 @@ msgstr "Vietovės vaizdas"
 msgid "Select Location from the list"
 msgstr "Pasirinkit vietovę iš sąrašo"
 
-#: gweather/gweather-pref.c:193
+#: gweather/gweather-pref.c:192
 msgid "Update spin button"
 msgstr "Atnaujinimo mygtukas"
 
-#: gweather/gweather-pref.c:193
+#: gweather/gweather-pref.c:192
 msgid "Spinbutton for updating"
 msgstr "Mygtukas atnaujinimui"
 
-#: gweather/gweather-pref.c:194
+#: gweather/gweather-pref.c:193
 msgid "Address Entry"
-msgstr "Adreso elementas"
+msgstr "Adreso įvesties elementas"
 
-#: gweather/gweather-pref.c:194
+#: gweather/gweather-pref.c:193
 msgid "Enter the URL"
-msgstr "Įvesk URL"
+msgstr "Įveskite URL"
 
 #. TRANSLATOR: This is the default unit to use for temperature measurements.
 #. Valid values are: "K" (Kelvin), "C" (Celsius) and "F" (Fahrenheit)
-#: gweather/gweather-pref.c:403 gweather/gweather-pref.c:412
+#: gweather/gweather-pref.c:404 gweather/gweather-pref.c:413
 msgid "DEFAULT_TEMP_UNIT"
 msgstr "C"
 
 #. TRANSLATOR: This is the default unit to use for wind speed.
 #. Valid values are: "m/s" (meters per second), "km/h" (kilometers per hour),
 #. "mph" (miles per hour) and "knots"
-#: gweather/gweather-pref.c:438 gweather/gweather-pref.c:448
+#: gweather/gweather-pref.c:439 gweather/gweather-pref.c:449
 msgid "DEFAULT_SPEED_UNIT"
 msgstr "m/s"
 
@@ -3674,139 +3809,139 @@ msgstr "m/s"
 #. Valid values are: "kPa" (kiloPascals), "hPa" (hectoPascals),
 #. "mb" (millibars), "mmHg" (millimeters of mercury) and
 #. "inHg" (inches of mercury)
-#: gweather/gweather-pref.c:476 gweather/gweather-pref.c:487
+#: gweather/gweather-pref.c:477 gweather/gweather-pref.c:488
 msgid "DEFAULT_PRESSURE_UNIT"
 msgstr "mmHg"
 
 #. TRANSLATOR: This is the default unit to use for visibility distance.
 #. Valid values are: "m" (meters), "km" (kilometers) and "mi" (miles)
-#: gweather/gweather-pref.c:513 gweather/gweather-pref.c:522
+#: gweather/gweather-pref.c:514 gweather/gweather-pref.c:523
 msgid "DEFAULT_DISTANCE_UNIT"
 msgstr "m"
 
-#: gweather/gweather-pref.c:800
+#: gweather/gweather-pref.c:801
 msgid "Weather Preferences"
 msgstr "Oro nustatymai"
 
-#: gweather/gweather-pref.c:833 gweather/gweather-pref.c:1001
+#: gweather/gweather-pref.c:834 gweather/gweather-pref.c:1002
 msgid "_Automatically update every:"
 msgstr "_Automatiškai atnaujinti kas:"
 
 #. Temperature Unit
-#: gweather/gweather-pref.c:842
+#: gweather/gweather-pref.c:843
 msgid "_Temperature Unit:"
 msgstr "_Temperatūros vienetai:"
 
-#: gweather/gweather-pref.c:852
+#: gweather/gweather-pref.c:853
 msgid "Kelvin"
 msgstr "Kelvino"
 
 #. TRANSLATORS: Celsius is sometimes referred Centigrade
-#: gweather/gweather-pref.c:854
+#: gweather/gweather-pref.c:855
 msgid "Celsius"
 msgstr "Celsijaus"
 
-#: gweather/gweather-pref.c:855
+#: gweather/gweather-pref.c:856
 msgid "Fahrenheit"
 msgstr "Farenheito"
 
 #. Speed Unit
-#: gweather/gweather-pref.c:862
+#: gweather/gweather-pref.c:863
 msgid "_Wind Speed Unit:"
 msgstr "_Vėjo greičio vienetai:"
 
 #. TRANSLATOR: The wind speed unit "meters per second"
-#: gweather/gweather-pref.c:873
+#: gweather/gweather-pref.c:874
 msgid "m/s"
 msgstr "m/s"
 
 #. TRANSLATOR: The wind speed unit "kilometers per hour"
-#: gweather/gweather-pref.c:875
+#: gweather/gweather-pref.c:876
 msgid "km/h"
 msgstr "km/h"
 
 #. TRANSLATOR: The wind speed unit "miles per hour"
-#: gweather/gweather-pref.c:877
+#: gweather/gweather-pref.c:878
 msgid "mph"
 msgstr "mph"
 
 #. TRANSLATOR: The wind speed unit "knots"
-#: gweather/gweather-pref.c:879
+#: gweather/gweather-pref.c:880
 msgid "knots"
 msgstr "mazgai"
 
 #. Pressure Unit
-#: gweather/gweather-pref.c:886
+#: gweather/gweather-pref.c:887
 msgid "_Pressure Unit:"
 msgstr "_Slėgio vienetai:"
 
 #. TRANSLATOR: The pressure unit "kiloPascals"
-#: gweather/gweather-pref.c:897
+#: gweather/gweather-pref.c:898
 msgid "kPa"
 msgstr "kPa"
 
 #. TRANSLATOR: The pressure unit "hectoPascals"
-#: gweather/gweather-pref.c:899
+#: gweather/gweather-pref.c:900
 msgid "hPa"
 msgstr "hPa"
 
 #. TRANSLATOR: The pressure unit "millibars"
-#: gweather/gweather-pref.c:901
+#: gweather/gweather-pref.c:902
 msgid "mb"
 msgstr "mb"
 
 #. TRANSLATOR: The pressure unit "millibars of mercury"
-#: gweather/gweather-pref.c:903
+#: gweather/gweather-pref.c:904
 msgid "mmHg"
 msgstr "mmHg"
 
 #. TRANSLATOR: The pressure unit "inches of mercury"
-#: gweather/gweather-pref.c:905
+#: gweather/gweather-pref.c:906
 msgid "inHg"
 msgstr "colHg"
 
 #. Distance Unit
-#: gweather/gweather-pref.c:912
+#: gweather/gweather-pref.c:913
 msgid "_Visibility Unit:"
 msgstr "_Matomumo vienetai:"
 
 #. TRANSLATOR: The distance unit "meters"
-#: gweather/gweather-pref.c:923
+#: gweather/gweather-pref.c:924
 msgid "meters"
 msgstr "metrai"
 
 #. TRANSLATOR: The distance unit "kilometers"
-#: gweather/gweather-pref.c:925
+#: gweather/gweather-pref.c:926
 msgid "km"
 msgstr "km"
 
 #. TRANSLATOR: The distance unit "miles"
-#: gweather/gweather-pref.c:927
+#: gweather/gweather-pref.c:928
 msgid "miles"
 msgstr "mylios"
 
-#: gweather/gweather-pref.c:952
+#: gweather/gweather-pref.c:953
 msgid "Enable _radar map"
 msgstr "Įjungti _radarinius žemėlapius"
 
-#: gweather/gweather-pref.c:966
+#: gweather/gweather-pref.c:967
 msgid "Use _custom address for radar map"
 msgstr "Naudoti nau_dotojo parinktą adresą radaro žemėlapiui"
 
-#: gweather/gweather-pref.c:983
+#: gweather/gweather-pref.c:984
 msgid "A_ddress:"
 msgstr "A_dresas:"
 
-#: gweather/gweather-pref.c:1052 mini-commander/src/mini-commander.glade.h:12
+#: gweather/gweather-pref.c:1053 mini-commander/src/mini-commander.glade.h:12
 #: modemlights/properties.c:563
 msgid "General"
 msgstr "Pagrindinės"
 
-#: gweather/gweather-pref.c:1065
+#: gweather/gweather-pref.c:1066
 msgid "_Select a location:"
 msgstr "_Pasirinkite vietovę:"
 
-#: gweather/gweather-pref.c:1095
+#: gweather/gweather-pref.c:1096
 msgid "Location"
 msgstr "Vietovė"
 
@@ -3814,8 +3949,8 @@ msgstr "Vietovė"
 #. gweather/Locations file
 #. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
 #. so this should be translated as "KJFK"
-#: gweather/gweather.schemas.in.h:1 gweather/weather.c:136
-#: gweather/weather.c:141
+#: gweather/gweather.schemas.in.h:1 gweather/weather.c:191
+#: gweather/weather.c:196
 msgid "DEFAULT_CODE"
 msgstr "EYVI"
 
@@ -3823,8 +3958,8 @@ msgstr "EYVI"
 #. gweather/Locations file
 #. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
 #. so this should be translated as "New York-JFK Arpt"
-#: gweather/gweather.schemas.in.h:2 gweather/weather.c:115
-#: gweather/weather.c:120 gweather/weather.c:121
+#: gweather/gweather.schemas.in.h:2 gweather/weather.c:170
+#: gweather/weather.c:175 gweather/weather.c:176
 msgid "DEFAULT_LOCATION"
 msgstr "Vilnius"
 
@@ -3832,8 +3967,8 @@ msgstr "Vilnius"
 #. gweather/Locations file
 #. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
 #. so this should be translated as "nyc"
-#: gweather/gweather.schemas.in.h:3 gweather/weather.c:167
-#: gweather/weather.c:172
+#: gweather/gweather.schemas.in.h:3 gweather/weather.c:223
+#: gweather/weather.c:228
 msgid "DEFAULT_RADAR"
 msgstr "---"
 
@@ -3841,8 +3976,8 @@ msgstr "---"
 #. gweather/Locations file
 #. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
 #. so this should be translated as "NYZ076"
-#: gweather/gweather.schemas.in.h:4 gweather/weather.c:152
-#: gweather/weather.c:157
+#: gweather/gweather.schemas.in.h:4 gweather/weather.c:207
+#: gweather/weather.c:212
 msgid "DEFAULT_ZONE"
 msgstr "------"
 
@@ -3938,99 +4073,99 @@ msgstr "Naudoti metrinę matų sistemą vietoje angliškų vienetų."
 msgid "weather location information."
 msgstr "vietovės oro sąlygų informacija."
 
-#: gweather/weather.c:128
+#: gweather/weather.c:183
 msgid "Pittsburgh"
 msgstr "Pitsburgas"
 
-#: gweather/weather.c:222
+#: gweather/weather.c:291
 msgid "Variable"
 msgstr "Nepastovus"
 
-#: gweather/weather.c:223
+#: gweather/weather.c:292
 msgid "North"
 msgstr "Šiaurės"
 
-#: gweather/weather.c:223
+#: gweather/weather.c:292
 msgid "North - NorthEast"
 msgstr "Šiaurės - Šiaurės Rytų"
 
-#: gweather/weather.c:223
+#: gweather/weather.c:292
 msgid "Northeast"
 msgstr "Šiaurės Rytų"
 
-#: gweather/weather.c:223
+#: gweather/weather.c:292
 msgid "East - NorthEast"
 msgstr "Rytų - Šiaurės Rytų"
 
-#: gweather/weather.c:224
+#: gweather/weather.c:293
 msgid "East"
 msgstr "Rytų"
 
-#: gweather/weather.c:224
+#: gweather/weather.c:293
 msgid "East - Southeast"
 msgstr "Rytų - Pietryčių"
 
-#: gweather/weather.c:224
+#: gweather/weather.c:293
 msgid "Southeast"
 msgstr "Pietryčių"
 
-#: gweather/weather.c:224
+#: gweather/weather.c:293
 msgid "South - Southeast"
 msgstr "Pietų - Pietryčių"
 
-#: gweather/weather.c:225
+#: gweather/weather.c:294
 msgid "South"
 msgstr "Pietų"
 
-#: gweather/weather.c:225
+#: gweather/weather.c:294
 msgid "South - Southwest"
 msgstr "Pietų - Pietvakarių"
 
-#: gweather/weather.c:225
+#: gweather/weather.c:294
 msgid "Southwest"
 msgstr "Pietvakarių"
 
-#: gweather/weather.c:225
+#: gweather/weather.c:294
 msgid "West - Southwest"
 msgstr "Vakarų - Pietvakarių"
 
-#: gweather/weather.c:226
+#: gweather/weather.c:295
 msgid "West"
 msgstr "Vakarų"
 
-#: gweather/weather.c:226
+#: gweather/weather.c:295
 msgid "West - Northwest"
 msgstr "Vakarų - Šiaurės Vakarų"
 
-#: gweather/weather.c:226
+#: gweather/weather.c:295
 msgid "Northwest"
 msgstr "Šiaurės Vakarų"
 
-#: gweather/weather.c:226
+#: gweather/weather.c:295
 msgid "North - Northwest"
 msgstr "Šiaurės - Šiaurės Vakarų"
 
-#: gweather/weather.c:234 gweather/weather.c:251 gweather/weather.c:322
+#: gweather/weather.c:303 gweather/weather.c:320 gweather/weather.c:391
 msgid "Invalid"
 msgstr "Klaidingas"
 
-#: gweather/weather.c:240
+#: gweather/weather.c:309
 msgid "Clear Sky"
 msgstr "Giedras dangus"
 
-#: gweather/weather.c:241
+#: gweather/weather.c:310
 msgid "Broken clouds"
 msgstr "Su pragiedruliais"
 
-#: gweather/weather.c:242
+#: gweather/weather.c:311
 msgid "Scattered clouds"
 msgstr "Išsisklaidę debesys"
 
-#: gweather/weather.c:243
+#: gweather/weather.c:312
 msgid "Few clouds"
 msgstr "Mažai debesuotas"
 
-#: gweather/weather.c:244
+#: gweather/weather.c:313
 msgid "Overcast"
 msgstr "Debesuotas"
 
@@ -4038,440 +4173,444 @@ msgstr "Debesuotas"
 #. * etc means, you can go to http://www.weather.com/glossary/ and
 #. * http://www.crh.noaa.gov/arx/wx.tbl.html
 #. NONE
-#: gweather/weather.c:283 gweather/weather.c:285
+#: gweather/weather.c:352 gweather/weather.c:354
 msgid "Thunderstorm"
 msgstr "Perkūnija"
 
 #. DRIZZLE
-#: gweather/weather.c:284
+#: gweather/weather.c:353
 msgid "Drizzle"
 msgstr "Dulksna"
 
-#: gweather/weather.c:284
+#: gweather/weather.c:353
 msgid "Light drizzle"
 msgstr "Lengva dulksna"
 
-#: gweather/weather.c:284
+#: gweather/weather.c:353
 msgid "Moderate drizzle"
 msgstr "Vidutiniška dulksna"
 
-#: gweather/weather.c:284
+#: gweather/weather.c:353
 msgid "Heavy drizzle"
 msgstr "Stipri dulksna"
 
-#: gweather/weather.c:284
+#: gweather/weather.c:353
 msgid "Freezing drizzle"
 msgstr "Šalanti dulksna"
 
 #. RAIN
-#: gweather/weather.c:285
+#: gweather/weather.c:354
 msgid "Rain"
 msgstr "Lietus"
 
-#: gweather/weather.c:285
+#: gweather/weather.c:354
 msgid "Light rain"
 msgstr "Silpnas lietus"
 
-#: gweather/weather.c:285
+#: gweather/weather.c:354
 msgid "Moderate rain"
 msgstr "Vidutinis lietus"
 
-#: gweather/weather.c:285
+#: gweather/weather.c:354
 msgid "Heavy rain"
 msgstr "Stiprus lietus"
 
-#: gweather/weather.c:285
+#: gweather/weather.c:354
 msgid "Rain showers"
 msgstr "Labai stiprus lietus"
 
-#: gweather/weather.c:285
+#: gweather/weather.c:354
 msgid "Freezing rain"
 msgstr "Šalantis lietus"
 
 #. SNOW
-#: gweather/weather.c:286
+#: gweather/weather.c:355
 msgid "Snow"
 msgstr "Sniegas"
 
-#: gweather/weather.c:286
+#: gweather/weather.c:355
 msgid "Light snow"
 msgstr "Silpnai sninga"
 
-#: gweather/weather.c:286
+#: gweather/weather.c:355
 msgid "Moderate snow"
 msgstr "Sninga"
 
-#: gweather/weather.c:286
+#: gweather/weather.c:355
 msgid "Heavy snow"
 msgstr "Stipriai sninga"
 
-#: gweather/weather.c:286
+#: gweather/weather.c:355
 msgid "Snowstorm"
 msgstr "Sniego audra"
 
-#: gweather/weather.c:286
+#: gweather/weather.c:355
 msgid "Blowing snowfall"
 msgstr "Pūga"
 
-#: gweather/weather.c:286
+#: gweather/weather.c:355
 msgid "Snow showers"
 msgstr "L. stipriai sninga"
 
-#: gweather/weather.c:286
+#: gweather/weather.c:355
 msgid "Drifting snow"
 msgstr "Pusto"
 
 #. SNOW_GRAINS
-#: gweather/weather.c:287
+#: gweather/weather.c:356
 msgid "Snow grains"
 msgstr "Labai stipriai sninga"
 
-#: gweather/weather.c:287
+#: gweather/weather.c:356
 msgid "Light snow grains"
 msgstr "Silpnai sninga"
 
-#: gweather/weather.c:287
+#: gweather/weather.c:356
 msgid "Moderate snow grains"
 msgstr "Vidutiniškai sninga"
 
-#: gweather/weather.c:287
+#: gweather/weather.c:356
 msgid "Heavy snow grains"
 msgstr "Stipriai sninga"
 
 #. ICE_CRYSTALS
-#: gweather/weather.c:288
+#: gweather/weather.c:357
 msgid "Ice crystals"
 msgstr "Ledo kristalai"
 
 #. ICE_PELLETS
-#: gweather/weather.c:289
+#: gweather/weather.c:358
 msgid "Ice pellets"
 msgstr "Ledo gabalėliai"
 
-#: gweather/weather.c:289
+#: gweather/weather.c:358
 msgid "Few ice pellets"
 msgstr "Maži ledo gabalėliai"
 
-#: gweather/weather.c:289
+#: gweather/weather.c:358
 msgid "Moderate ice pellets"
 msgstr "Vidutiniai ledo gabalėliai"
 
-#: gweather/weather.c:289
+#: gweather/weather.c:358
 msgid "Heavy ice pellets"
 msgstr "Sunkūs ledo gabalėliai"
 
-#: gweather/weather.c:289
+#: gweather/weather.c:358
 msgid "Ice pellet storm"
 msgstr "Audra su ledais"
 
-#: gweather/weather.c:289
+#: gweather/weather.c:358
 msgid "Showers of ice pellets"
 msgstr "Liūtis su ledais"
 
 #. HAIL
-#: gweather/weather.c:290
+#: gweather/weather.c:359
 msgid "Hail"
 msgstr "Kruša"
 
-#: gweather/weather.c:290
+#: gweather/weather.c:359
 msgid "Hailstorm"
 msgstr "Krušos audra"
 
-#: gweather/weather.c:290
+#: gweather/weather.c:359
 msgid "Hail showers"
 msgstr "Krušos dušai"
 
 #. SMALL_HAIL
-#: gweather/weather.c:291
+#: gweather/weather.c:360
 msgid "Small hail"
 msgstr "Maža kruša"
 
-#: gweather/weather.c:291
+#: gweather/weather.c:360
 msgid "Small hailstorm"
 msgstr "Nedidelė kruša"
 
-#: gweather/weather.c:291
+#: gweather/weather.c:360
 msgid "Showers of small hail"
 msgstr "Stipri kruša"
 
 #. PRECIPITATION
-#: gweather/weather.c:292
+#: gweather/weather.c:361
 msgid "Unknown precipitation"
 msgstr "Nežinomi krituliai"
 
 #. MIST
-#: gweather/weather.c:293
+#: gweather/weather.c:362
 msgid "Mist"
 msgstr "Migla"
 
 #. FOG
-#: gweather/weather.c:294
+#: gweather/weather.c:363
 msgid "Fog"
 msgstr "Rūkas"
 
-#: gweather/weather.c:294
+#: gweather/weather.c:363
 msgid "Fog in the vicinity"
 msgstr "Rūkas kaimynystėje"
 
-#: gweather/weather.c:294
+#: gweather/weather.c:363
 msgid "Shallow fog"
 msgstr "Paviršinis rūkas"
 
-#: gweather/weather.c:294
+#: gweather/weather.c:363
 msgid "Patches of fog"
 msgstr "Rūkas lopais"
 
-#: gweather/weather.c:294
+#: gweather/weather.c:363
 msgid "Partial fog"
 msgstr "Dalinis rūkas"
 
-#: gweather/weather.c:294
+#: gweather/weather.c:363
 msgid "Freezing fog"
 msgstr "Šalantis rūkas"
 
 #. SMOKE
-#: gweather/weather.c:295
+#: gweather/weather.c:364
 msgid "Smoke"
 msgstr "Dūmai"
 
 #. VOLCANIC_ASH
-#: gweather/weather.c:296
+#: gweather/weather.c:365
 msgid "Volcanic ash"
 msgstr "Vulkaniniai pelenai"
 
 #. SAND
-#: gweather/weather.c:297
+#: gweather/weather.c:366
 msgid "Sand"
 msgstr "Smėlis"
 
-#: gweather/weather.c:297
+#: gweather/weather.c:366
 msgid "Blowing sand"
 msgstr "Pučiamas smėlis"
 
-#: gweather/weather.c:297
+#: gweather/weather.c:366
 msgid "Drifting sand"
 msgstr "Pustomas smėlis"
 
 #. HAZE
-#: gweather/weather.c:298
+#: gweather/weather.c:367
 msgid "Haze"
 msgstr "Migla"
 
 #. SPRAY
-#: gweather/weather.c:299
+#: gweather/weather.c:368
 msgid "Blowing sprays"
 msgstr "Pučiami purslai"
 
 #. DUST
-#: gweather/weather.c:300
+#: gweather/weather.c:369
 msgid "Dust"
 msgstr "Dulkės"
 
-#: gweather/weather.c:300
+#: gweather/weather.c:369
 msgid "Blowing dust"
 msgstr "Pučiamos dulkės"
 
-#: gweather/weather.c:300
+#: gweather/weather.c:369
 msgid "Drifting dust"
 msgstr "Pustomos dulkės"
 
 #. SQUALL
-#: gweather/weather.c:301
+#: gweather/weather.c:370
 msgid "Squall"
 msgstr "Škvalas"
 
 #. SANDSTORM
-#: gweather/weather.c:302
+#: gweather/weather.c:371
 msgid "Sandstorm"
 msgstr "Smėlio audra"
 
-#: gweather/weather.c:302
+#: gweather/weather.c:371
 msgid "Sandstorm in the vicinity"
 msgstr "Kaimynystėje smėlio audra"
 
-#: gweather/weather.c:302
+#: gweather/weather.c:371
 msgid "Heavy sandstorm"
 msgstr "Stipri smėlio audra"
 
 #. DUSTSTORM
-#: gweather/weather.c:303
+#: gweather/weather.c:372
 msgid "Duststorm"
 msgstr "Dulkių audra"
 
-#: gweather/weather.c:303
+#: gweather/weather.c:372
 msgid "Duststorm in the vicinity"
 msgstr "Kaimynystėje dulkių audra"
 
-#: gweather/weather.c:303
+#: gweather/weather.c:372
 msgid "Heavy duststorm"
 msgstr "Stipri dulkių audra"
 
 #. FUNNEL_CLOUD
-#: gweather/weather.c:304
+#: gweather/weather.c:373
 msgid "Funnel cloud"
 msgstr "Lietingi debesys"
 
 #. TORNADO
-#: gweather/weather.c:305
+#: gweather/weather.c:374
 msgid "Tornado"
 msgstr "Tornado"
 
 #. DUST_WHIRLS
-#: gweather/weather.c:306
+#: gweather/weather.c:375
 msgid "Dust whirls"
 msgstr "Dulkių sūkuriai"
 
-#: gweather/weather.c:306
+#: gweather/weather.c:375
 msgid "Dust whirls in the vicinity"
 msgstr "Kaimynystėje dulkių sūkuriai"
 
-#: gweather/weather.c:1022 gweather/weather.c:1064 gweather/weather.c:1783
+#: gweather/weather.c:1222 gweather/weather.c:1264 gweather/weather.c:1983
 msgid "Failed to get METAR data.\n"
 msgstr "Nepavyko gauti METAR duomenų.\n"
 
-#: gweather/weather.c:1056 gweather/weather.c:1084 gweather/weather.c:1331
+#: gweather/weather.c:1256 gweather/weather.c:1284 gweather/weather.c:1531
 msgid "WeatherInfo missing location"
 msgstr "WeatherInfo trūksta vietos"
 
-#: gweather/weather.c:2114
+#: gweather/weather.c:2321
 msgid "%a, %b %d / %H:%M"
 msgstr "%a, %b %d / %H:%M"
 
-#: gweather/weather.c:2118
+#: gweather/weather.c:2325
 msgid "Unknown observation time"
 msgstr "Nežinomas stebėjimo laikas"
 
 #. TRANSLATOR: This is the temperature in degrees fahrenheit, use the degree
 #. symbol Unicode 00B0 if possible
-#: gweather/weather.c:2150 gweather/weather.c:2153
+#: gweather/weather.c:2357 gweather/weather.c:2360
 #, c-format
 msgid "%.1f F"
 msgstr "%.1f°F"
 
 #. TRANSLATOR: This is the temperature in degrees fahrenheit, use the degree
 #. symbol Unicode 00B0 if possible
-#: gweather/weather.c:2158 gweather/weather.c:2161
+#: gweather/weather.c:2365 gweather/weather.c:2368
 #, c-format
 msgid "%dF"
 msgstr "%d°F"
 
 #. TRANSLATOR: This is the temperature in degrees centigrade , use the degree
 #. symbol Unicode 00B0 if possible
-#: gweather/weather.c:2169 gweather/weather.c:2172
+#: gweather/weather.c:2376 gweather/weather.c:2379
 #, c-format
 msgid "%.1f C"
 msgstr "%.1f°C"
 
 #. TRANSLATOR: This is the temperature in degrees centigrade , use the degree
 #. symbol Unicode 00B0 if possible
-#: gweather/weather.c:2177 gweather/weather.c:2180
+#: gweather/weather.c:2384 gweather/weather.c:2387
 #, c-format
 msgid "%dC"
 msgstr "%d°C"
 
 #. TRANSLATOR: This is the temperature in Kelvin
-#: gweather/weather.c:2189
+#: gweather/weather.c:2396
 #, c-format
 msgid "%.1f K"
 msgstr "%.1f K"
 
 #. TRANSLATOR: This is the temperature in Kelvin
-#: gweather/weather.c:2192
+#: gweather/weather.c:2399
 #, c-format
 msgid "%dK"
 msgstr "%dK"
 
 #. TRANSLATOR: This is the humidity in percent
-#: gweather/weather.c:2244
+#: gweather/weather.c:2451
 #, c-format
 msgid "%.f%%"
 msgstr "%.f%%"
 
 #. TRANSLATOR: This is the wind speed in knots
-#: gweather/weather.c:2269
+#: gweather/weather.c:2476
 #, c-format
 msgid "%0.1f knots"
 msgstr "%0.1f mazgų"
 
 #. TRANSLATOR: This is the wind speed in miles per hour
-#: gweather/weather.c:2273
+#: gweather/weather.c:2480
 #, c-format
 msgid "%.1f mph"
 msgstr "%.1f mph"
 
 #. TRANSLATOR: This is the wind speed in kilometers per hour
-#: gweather/weather.c:2277
+#: gweather/weather.c:2484
 #, c-format
 msgid "%.1f km/h"
 msgstr "%.1f km/h"
 
 #. TRANSLATOR: This is the wind speed in meters per second
-#: gweather/weather.c:2281
+#: gweather/weather.c:2488
 #, c-format
 msgid "%.1f m/s"
 msgstr "%.1f m/s"
 
-#: gweather/weather.c:2302
+#: gweather/weather.c:2509
 msgid "Calm"
 msgstr "Ramuma"
 
 #. TRANSLATOR: This is 'wind direction' / 'wind speed'
-#: gweather/weather.c:2306
+#: gweather/weather.c:2513
 #, c-format
 msgid "%s / %s"
 msgstr "%s / %s"
 
 #. TRANSLATOR: This is pressure in inches of mercury
-#: gweather/weather.c:2324
+#: gweather/weather.c:2531
 #, c-format
 msgid "%.2f inHg"
 msgstr "%.2f colHg"
 
 #. TRANSLATOR: This is pressure in millimeters of mercury
-#: gweather/weather.c:2328
+#: gweather/weather.c:2535
 #, c-format
 msgid "%.1f mmHg"
 msgstr "%.1f mmHg"
 
 #. TRANSLATOR: This is pressure in kiloPascals
-#: gweather/weather.c:2332
+#: gweather/weather.c:2539
 #, c-format
 msgid "%.2f kPa"
 msgstr "%.2f kPa"
 
 #. TRANSLATOR: This is pressure in hectoPascals
-#: gweather/weather.c:2336
+#: gweather/weather.c:2543
 #, c-format
 msgid "%.2f hPa"
 msgstr "%.2f hPa"
 
 #. TRANSLATOR: This is pressure in millibars
-#: gweather/weather.c:2340
+#: gweather/weather.c:2547
 #, c-format
 msgid "%.2f mb"
 msgstr "%.2f mb"
 
 #. TRANSLATOR: This is the visibility in miles
-#: gweather/weather.c:2365
+#: gweather/weather.c:2572
 #, c-format
 msgid "%.1f miles"
 msgstr "%.1f mylios"
 
 #. TRANSLATOR: This is the visibility in kilometers
-#: gweather/weather.c:2369
+#: gweather/weather.c:2576
 #, c-format
 msgid "%.1f km"
 msgstr "%.1f km"
 
 #. TRANSLATOR: This is the visibility in meters
-#: gweather/weather.c:2373
+#: gweather/weather.c:2580
 #, c-format
 msgid "%.0fm"
 msgstr "%.0fm"
 
-#: gweather/weather.c:2414
+#: gweather/weather.c:2608 gweather/weather.c:2628
+msgid "%H:%M"
+msgstr "%H:%H"
+
+#: gweather/weather.c:2661
 msgid "Retrieval failed"
-msgstr "Parsiuntimas nepavyko"
+msgstr "Parsiųsti nepavyko"
 
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:1
 #: mini-commander/src/about.c:61
@@ -4557,6 +4696,24 @@ msgstr "Nepavyko prieiti nustatymų šaltinio(ių): %s\n"
 #, c-format
 msgid "Error syncing config data: %s"
 msgstr "Klaida suvienodinant nustatymų duomenis: %s "
+
+#: mini-commander/src/mini-commander-global.schemas.in.h:1
+msgid "List of GConfValue entries containing strings for the macro commands."
+msgstr "GConfValue elementų, turinčių makro komandų eilutes, sąrašas."
+
+#: mini-commander/src/mini-commander-global.schemas.in.h:2
+msgid "List of GConfValue entries containing strings for the macro patterns."
+msgstr "GConfValue elementų, turinčių makro palečių eilutes, sąrašas"
+
+#: mini-commander/src/mini-commander-global.schemas.in.h:3
+#: mini-commander/src/mini-commander.schemas.in.h:10
+msgid "Macro command list"
+msgstr "Makro komandų sąrašas"
+
+#: mini-commander/src/mini-commander-global.schemas.in.h:4
+#: mini-commander/src/mini-commander.schemas.in.h:11
+msgid "Macro pattern list"
+msgstr "Makro raštų sąrašas"
 
 #: mini-commander/src/mini-commander.glade.h:2
 #: stickynotes/stickynotes.glade.h:2
@@ -4658,14 +4815,6 @@ msgstr "Žurnalas"
 #: mini-commander/src/mini-commander.schemas.in.h:9
 msgid "List of GConfValue entries containing strings for history entries."
 msgstr "GConfValue elementų, turinčių istorijos žurnalo eilutes, sąrašas."
-
-#: mini-commander/src/mini-commander.schemas.in.h:10
-msgid "Macro command list"
-msgstr "Makro komandų sąrašas"
-
-#: mini-commander/src/mini-commander.schemas.in.h:11
-msgid "Macro pattern list"
-msgstr "Makro raštų sąrašas"
 
 #: mini-commander/src/mini-commander.schemas.in.h:13
 msgid "Perform history autocompletion"
@@ -4819,11 +4968,11 @@ msgstr "Garso įtaisas"
 msgid "A GNOME/GStreamer-based volume control applet"
 msgstr "GNOME/GStreamer paremtas garso valdymo įtaisas"
 
-#: mixer/dock.c:116
+#: mixer/dock.c:117
 msgid "+"
 msgstr "+"
 
-#: mixer/dock.c:144
+#: mixer/dock.c:145
 msgid "-"
 msgstr "-"
 
@@ -4842,15 +4991,6 @@ msgstr "Nežinomas Garso valdymas %d"
 msgid "No volume control elements and/or devices found."
 msgstr "Garso valdymo elementų ir/arba įrenginių nerasta."
 
-#. make window look cute
-#: mixer/preferences.c:112
-msgid "Volume Control Preferences"
-msgstr "Garso valdymo nustatymai"
-
-#: mixer/preferences.c:125
-msgid "Select the device and track to control."
-msgstr "Pasirinkit valdomą įrenginį ir takelį."
-
 #: mixer/mixer.schemas.in.h:1
 msgid "Channel controlled by applet. Only for OSS setups"
 msgstr "Kanalas valdomas įtaiso. Tinka tik naudojant OSS."
@@ -4862,6 +5002,15 @@ msgstr "Išsaugota nebyli būklė"
 #: mixer/mixer.schemas.in.h:3
 msgid "Saved volume to restore on startup"
 msgstr "Išsaugotas garso lygis atstatomas paleidmo metu."
+
+#. make window look cute
+#: mixer/preferences.c:113
+msgid "Volume Control Preferences"
+msgstr "Garso valdymo nustatymai"
+
+#: mixer/preferences.c:126
+msgid "Select the device and track to control."
+msgstr "Pasirinkit valdomą įrenginį ir takelį."
 
 #: modemlights/GNOME_ModemLightsApplet.server.in.in.h:1
 msgid "Activate and monitor a dial-up network connection"
@@ -5466,7 +5615,7 @@ msgstr "_Laisva"
 
 #: multiload/properties.c:588
 msgid "Load"
-msgstr "Apkrovimas"
+msgstr "Apkrova"
 
 #: multiload/properties.c:590
 msgid "_Average"
@@ -5478,11 +5627,47 @@ msgstr "Sistemos stebėtuvo nustatymai"
 
 #: multiload/swapload.c:51
 msgid "Swap Load"
-msgstr "Swap apkrovimas"
+msgstr "Swap apkrova"
+
+#: null_applet/GNOME_NullApplet_Factory.server.in.in.h:1
+msgid "Alert you when new mail arrives"
+msgstr "Įspėti, kai gaunamas naujas paštas"
+
+#: null_applet/GNOME_NullApplet_Factory.server.in.in.h:2
+msgid "Factory for deprecating applets"
+msgstr "Įtaisų sendinimo gamykla"
+
+#: null_applet/GNOME_NullApplet_Factory.server.in.in.h:3
+msgid "Inbox Monitor (Deprecated)"
+msgstr "Inbox stebyklė (nebenaudojam)"
+
+#: null_applet/GNOME_NullApplet_Factory.server.in.in.h:4
+msgid "Null Applet Factory"
+msgstr "Null įtaiso gamykla"
+
+#: null_applet/null_applet.c:147
+msgid "Some panel items are no longer available"
+msgstr "Kai kurie skydelio elementai yra daugiau nebeprieinami"
+
+#: null_applet/null_applet.c:148
+msgid ""
+"One or more panel items (also referred to as applets) are no longer "
+"available in the GNOME desktop."
+msgstr ""
+"Vienas ar keletas skydelio elementų (įtaisų) yra daugiau nebeprieinami "
+"GNOME aplinkoje."
+
+#: null_applet/null_applet.c:150
+msgid "These items will now be removed from your configuration:"
+msgstr "Šie elementai dabar bus pašalinti iš Jūsų konfigūracijos:"
+
+#: null_applet/null_applet.c:153
+msgid "You will not receive this message again."
+msgstr "Ši žinutė Jums daugiau nebus rodoma"
 
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:1
 msgid "Create, view, and manage sticky notes on the desktop"
-msgstr "Sukurkit, žiūrėkit ir tvarkykit lipnius darbastalio rašelius"
+msgstr "Sukurkit, žiūrėkit ir tvarkykit lipnius darbastalio raštelius"
 
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
 #: stickynotes/stickynotes_applet.c:332 stickynotes/stickynotes_applet.c:450
@@ -5511,11 +5696,11 @@ msgstr "_Naujas raštelis"
 msgid "_Show Notes"
 msgstr "_Rodyti raštelius"
 
-#: stickynotes/stickynotes.c:336
+#: stickynotes/stickynotes.c:342
 msgid "This note is locked."
 msgstr "Šis raštelis yra užrakintas."
 
-#: stickynotes/stickynotes.c:341
+#: stickynotes/stickynotes.c:347
 msgid "This note is unlocked."
 msgstr "Šis raštelis yra atrakintas."
 
@@ -5578,7 +5763,7 @@ msgstr ""
 
 #: stickynotes/stickynotes.glade.h:19
 msgid "Clic_k:"
-msgstr "Spragtel_k:"
+msgstr "Spra_gtelėjimas:"
 
 #: stickynotes/stickynotes.glade.h:20
 msgid "Close note"
@@ -5606,19 +5791,19 @@ msgstr "Užrakinti/Atrakinti raštelį"
 
 #: stickynotes/stickynotes.glade.h:26
 msgid "Pick a color for the sticky note"
-msgstr "Pasirink lipnaus raštelio spalvą"
+msgstr "Pasirinkite lipnaus raštelio spalvą"
 
 #: stickynotes/stickynotes.glade.h:27
 msgid "Pick a default sticky note color"
-msgstr "Pasirink įprastą lipnaus raštelio spalvą"
+msgstr "Pasirinkite įprastą lipnaus raštelio spalvą"
 
 #: stickynotes/stickynotes.glade.h:28
 msgid "Pick a default sticky note font"
-msgstr "Pasirink įprastą lipnaus raštelio šriftą"
+msgstr "Pasirinkite įprastą lipnaus raštelio šriftą"
 
 #: stickynotes/stickynotes.glade.h:29
 msgid "Pick a font for the sticky note"
-msgstr "Pasirink lipnaus raštelio šriftą"
+msgstr "Pasirinkite lipnaus raštelio šriftą"
 
 #: stickynotes/stickynotes.glade.h:30
 msgid "Resize note"
@@ -5630,15 +5815,15 @@ msgstr "Rodyti/Paslėpti visus raštelius"
 
 #: stickynotes/stickynotes.glade.h:32
 msgid "Specify a title for the note"
-msgstr "Nurodyk raštelio antraštę"
+msgstr "Nurodykite raštelio antraštę"
 
 #: stickynotes/stickynotes.glade.h:33
 msgid "Specify the default height (in pixels) of new notes"
-msgstr "Nurodyk įprastą naujų raštelių aukštį (taškais)"
+msgstr "Nurodykite įprastą naujų raštelių aukštį (taškais)"
 
 #: stickynotes/stickynotes.glade.h:34
 msgid "Specify the default width (in pixels) of new notes"
-msgstr "Nurodyk įprastą naujų raštelių plotį (taškais)"
+msgstr "Nurodykite įprastą naujų raštelių plotį (taškais)"
 
 #: stickynotes/stickynotes.glade.h:35
 msgid "Sticky Note"
@@ -5690,7 +5875,7 @@ msgstr "_Nustatymai"
 
 #: stickynotes/stickynotes.glade.h:49
 msgid "_Put notes on all workspaces"
-msgstr "_Patalpinti visose darbo erdvėse"
+msgstr "_Patalpinti visuose darbalaukiuose"
 
 #: stickynotes/stickynotes.glade.h:50
 msgid "_Title:"
@@ -5876,55 +6061,13 @@ msgstr "(c) 2002-2003 Loban A Rahman"
 msgid "Sticky Notes for the Gnome Desktop Environment"
 msgstr "Limpantys rašteliai skirti Gnome Darbalaukio Aplinkai"
 
-#: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:1
-msgid "Monitor the quality of a wireless network link"
-msgstr "Stebėti bevielio ryšio kokybę"
+#: trashapplet/GNOME_Panel_TrashApplet.server.in.in.h:1
+msgid "Go to Trash"
+msgstr "Eiti į šiukšlinę"
 
-#: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:2
-#: wireless/wireless-applet.c:590 wireless/wireless-applet.c:842
-msgid "Wireless Link Monitor"
-msgstr "Bevielio ryšio stebėtuvas"
-
-#: wireless/wireless-applet.c:144
-#, c-format
-msgid "Link Strength: %2.0d%%"
-msgstr "Ryšio stiprumas: %2.0d%%"
-
-#: wireless/wireless-applet.c:369
-msgid ""
-"There doesn't seem to be any wireless devices configured on your system.\n"
-"Please verify your configuration if you think this is incorrect."
-msgstr ""
-"Atrodo, kad Jūsų sistemoje nėra sukonfigūruotų bevielių įrenginių.\n"
-"Pasitikrinkit Jūsų nustatymus, jei manote, jog tai netiesa."
-
-#: wireless/wireless-applet.c:504 wireless/wireless-applet.c:831
-msgid "No Wireless Devices"
-msgstr "Nėra bevielių įrenginių"
-
-#: wireless/wireless-applet.c:592
-msgid "(C) 2001, 2002 Free Software Foundation "
-msgstr "(C) 2001, 2002 Free Software Foundation "
-
-#: wireless/wireless-applet.c:593
-msgid "This utility shows the status of a wireless link."
-msgstr "Ši pagalbinė programa rodo bevielio ryšio būseną"
-
-#: wireless/wireless-applet.c:843
-msgid "This utility shows the status of a wireless link"
-msgstr "Ši pagalbinė programa rodo bevielio ryšio būseną"
-
-#: wireless/wireless-applet.glade.h:1
-msgid "Show signal strength in _percentage"
-msgstr "Rodyti signalo stiprumą _procentais"
-
-#: wireless/wireless-applet.glade.h:2
-msgid "Wireless Link Monitor Preferences"
-msgstr "Bevielio ryšio stebėtuvo nustatymai"
-
-#: wireless/wireless-applet.glade.h:3
-msgid "_Monitored device:"
-msgstr "_Stebimas įrenginys:"
+#: trashapplet/GNOME_Panel_TrashApplet.server.in.in.h:2
+msgid "Trash"
+msgstr "Šiukšlinė"
 
 #: trashapplet/GNOME_Panel_TrashApplet.xml.h:2
 msgid "_Empty Trash"
@@ -5933,14 +6076,6 @@ msgstr "_Išvalyti šiukšlinę"
 #: trashapplet/GNOME_Panel_TrashApplet.xml.h:4
 msgid "_Open"
 msgstr "_Atidaryti"
-
-#: trashapplet/GNOME_Panel_TrashApplet.server.in.in.h:1
-msgid "Go to Trash"
-msgstr "Eiti į šiukšlinę"
-
-#: trashapplet/GNOME_Panel_TrashApplet.server.in.in.h:2
-msgid "Trash"
-msgstr "Šiukšlinė"
 
 #: trashapplet/src/trashapplet.c:160
 #, c-format
@@ -6017,6 +6152,86 @@ msgid ""
 msgstr ""
 "Nepavyko perkelti į šiukšlinę:\n"
 "%s"
+
+#: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:1
+msgid "Monitor the quality of a wireless network link"
+msgstr "Stebėti bevielio ryšio kokybę"
+
+#: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:2
+#: wireless/wireless-applet.c:590 wireless/wireless-applet.c:842
+msgid "Wireless Link Monitor"
+msgstr "Bevielio ryšio stebėtuvas"
+
+#: wireless/wireless-applet.c:144
+#, c-format
+msgid "Link Strength: %2.0d%%"
+msgstr "Ryšio stiprumas: %2.0d%%"
+
+#: wireless/wireless-applet.c:369
+msgid ""
+"There doesn't seem to be any wireless devices configured on your system.\n"
+"Please verify your configuration if you think this is incorrect."
+msgstr ""
+"Atrodo, kad Jūsų sistemoje nėra sukonfigūruotų bevielių įrenginių.\n"
+"Pasitikrinkit Jūsų nustatymus, jei manote, jog tai netiesa."
+
+#: wireless/wireless-applet.c:504 wireless/wireless-applet.c:831
+msgid "No Wireless Devices"
+msgstr "Nėra bevielių įrenginių"
+
+#: wireless/wireless-applet.c:592
+msgid "(C) 2001, 2002 Free Software Foundation "
+msgstr "(C) 2001, 2002 Free Software Foundation "
+
+#: wireless/wireless-applet.c:593
+msgid "This utility shows the status of a wireless link."
+msgstr "Ši pagalbinė programa rodo bevielio ryšio būseną"
+
+#: wireless/wireless-applet.c:843
+msgid "This utility shows the status of a wireless link"
+msgstr "Ši pagalbinė programa rodo bevielio ryšio būseną"
+
+#: wireless/wireless-applet.glade.h:1
+msgid "Show signal strength in _percentage"
+msgstr "Rodyti signalo stiprumą _procentais"
+
+#: wireless/wireless-applet.glade.h:2
+msgid "Wireless Link Monitor Preferences"
+msgstr "Bevielio ryšio stebėtuvo nustatymai"
+
+#: wireless/wireless-applet.glade.h:3
+msgid "_Monitored device:"
+msgstr "_Stebimas įrenginys:"
+
+#~ msgid "_About..."
+#~ msgstr "_Apie..."
+
+#~ msgid "_Preferences..."
+#~ msgstr "_Nustatymai..."
+
+#~ msgid ""
+#~ "Sorry, an internal error has occurred with the CPU Frequency Scaling "
+#~ "Monitor help"
+#~ msgstr "Atsiprašome, įvyko klaida CPU dažnio mastelio stebėtuvo pagalboje"
+
+#~ msgid "Sorry, the document can not be found"
+#~ msgstr "Atsiprašome, dokumentas nerastas"
+
+#~ msgid ""
+#~ "There is no cpufreq support in your system, needed to use CPU Frequency "
+#~ "Scaling Monitor.\n"
+#~ "If your system already supports cpufreq, check whether /sys or /proc file "
+#~ "systems are mounted.\n"
+#~ "Now the applet will only show the current cpu frequency."
+#~ msgstr ""
+#~ "Jūsų sistemoje nėra cpufreq palaikymo, reikalingo norint naudoti CPU "
+#~ "dažnio mastelio stebėtuvą.\n"
+#~ "Jeigu Jūsų sistema jau palaiko spufreq, patikrinkit ar yra prijungtos /"
+#~ "sys arba /proc bylų sistemos.\n"
+#~ "Tuo tarpu dabar įtaisas tik rodys esamą cpu dažnį."
+
+#~ msgid "cpufreq Not Supported"
+#~ msgstr "cpufreq nepalaikomas"
 
 #~ msgid "charged"
 #~ msgstr "įkrauta"
@@ -6134,14 +6349,8 @@ msgstr ""
 #~ "Tai pilnas kelias iki įrenginio kuris bus naudojamas groti kompaktinius "
 #~ "diskus iš šio įtaiso"
 
-#~ msgid "Insert special characters"
-#~ msgstr "Įterpti specialius simbolius"
-
 #~ msgid "_Browse"
 #~ msgstr "_Naršyti"
-
-#~ msgid "_Eject"
-#~ msgstr "_Išmesti"
 
 #~ msgid "There was an error executing %s: %s"
 #~ msgstr "Įvyko klaida vykdant %s: %s"
@@ -6154,12 +6363,6 @@ msgstr ""
 
 #~ msgid "(C) 1999-2001 The GNOME Hackers\n"
 #~ msgstr "(C) 1999-2001 The GNOME Hackers\n"
-
-#~ msgid " mounted"
-#~ msgstr " užmontuotas"
-
-#~ msgid " not mounted"
-#~ msgstr " išmontuotas"
 
 #~ msgid "\" reported:\n"
 #~ msgstr "\" pranešė:\n"
@@ -6176,9 +6379,6 @@ msgstr ""
 
 #~ msgid "Disk Mounter Preferences"
 #~ msgstr "Diskų prijungimo įtaiso nustatymai"
-
-#~ msgid "_Mount directory:"
-#~ msgstr "_Montavimo katalogas:"
 
 #~ msgid "Select Mount Directory"
 #~ msgstr "Pasirink montavimo katalogą"
@@ -6252,9 +6452,6 @@ msgstr ""
 #~ msgid "The temperature units to use."
 #~ msgstr "Vienetai naudojami temperatūrai matuoti."
 
-#~ msgid "Alert you when new mail arrives"
-#~ msgstr "Įspėti kai gaunamas naujas paštas"
-
 #~ msgid "Factory for creating inbox monitors."
 #~ msgstr "Gamykla inbox stebyklų kūrimui."
 
@@ -6297,9 +6494,6 @@ msgstr ""
 
 #~ msgid "Error connecting to mail server."
 #~ msgstr "Įvyko klaida jungiantis prie pašto serverio."
-
-#~ msgid "Error"
-#~ msgstr "Klaida"
 
 #~ msgid "You have new mail."
 #~ msgstr "Jūs gavote naują paštą."
@@ -6411,9 +6605,6 @@ msgstr ""
 
 #~ msgid "Command to execute when clicked"
 #~ msgstr "Spragtelėjus vykdoma komanda"
-
-#~ msgid "Inbox Monitor Preferences"
-#~ msgstr "Inbox stebyklės nustatymai"
 
 #~ msgid "Inbox Monitor notifies you when new mail arrives in your mailbox"
 #~ msgstr "Inbox stebyklė įspėja tave kai tu gauni naują paštą"
@@ -6530,14 +6721,6 @@ msgstr ""
 #~ msgid "New Mail"
 #~ msgstr "Naujas paštas"
 
-#~ msgid ""
-#~ "List of GConfValue entries containing strings for the macro commands."
-#~ msgstr "GConfValue elementų, turinčių makro komandų eilutes, sąrašas."
-
-#~ msgid ""
-#~ "List of GConfValue entries containing strings for the macro patterns."
-#~ msgstr "GConfValue elementų, turinčių makro palečių eilutes, sąrašas"
-
 #~ msgid "Main Volume"
 #~ msgstr "Pagrindinis garsas"
 
@@ -6622,9 +6805,6 @@ msgstr ""
 #~ msgstr ""
 #~ "pavojus: ši gmix versija buvo sukompiliuota su kita bylos soundcard.h "
 #~ "versija.\n"
-
-#~ msgid "Couldn't open mixer device %s\n"
-#~ msgstr "Negalių atidaryti \"mixer\" įrenginio %s\n"
 
 #~ msgid "Use Up/Down arrow keys to change volume"
 #~ msgstr "Norėdamas pakeisti garsumą, naudok aukštyn/žemyn klavišus "
