@@ -1,3 +1,11 @@
+Thu Oct 26 14:43:45 2000  John Ellis  <johne@bellatlantic.net>
+
+	* modemlights.c(get_modem_stats): Apparently the FreeBSD/OpenBSD
+	#ifdefs were doing it the right way, SIOCDEVPRIVATE is by name private.
+	Now this should work on FreeBSD, etc. without the #ifdef's. Also fixed
+	when SIOCGPPPSTATS is undefined to return failure (FALSE) instead of
+	success. Added include of <linux/if_ppp.h> on linux.
+
 Mon Oct 23 22:17:28 2000  John Ellis  <johne@bellatlantic.net>
 
 	* modemlights.c: The connect light now blinks until the

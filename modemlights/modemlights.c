@@ -37,6 +37,7 @@
 #endif
 
 #ifdef __linux__
+#include <linux/if_ppp.h>
 #include <linux/isdn.h>
 #include <sys/ioctl.h>
 #include <fcntl.h>
@@ -352,21 +353,14 @@ static int get_modem_stats(int *in, int *out)
 	struct 	ppp_stats stats;
 
 	memset(&ifreq, 0, sizeof(ifreq));
-#if defined(__FreeBSD__) || defined(__OpenBSD__)
 	strncpy(ifreq.ifr_name, device_name, IFNAMSIZ);
-#else
-	strncpy(ifreq.ifr_ifrn.ifrn_name, device_name, IFNAMSIZ);
-#endif /* FreeBSD or OpenBSD */
 	ifreq.ifr_ifru.ifru_data = (caddr_t)&stats;
-#if defined(__FreeBSD__) || defined(__OpenBSD__)
-		if ((ioctl(ip_socket,SIOCGPPPSTATS,(caddr_t)&ifreq) < 0))
+
+#ifdef SIOCGPPPSTATS
+	if (ioctl(ip_socket, SIOCGPPPSTATS, (caddr_t)&ifreq) < 0)
 #else
-#ifdef SIOCDEVPRIVATE
-	if ((ioctl(ip_socket,SIOCDEVPRIVATE,(caddr_t)&ifreq) < 0))
-#else
-	if (FALSE)
+	if (TRUE)
 #endif
-#endif /* FreeBSD or OpenBSD */
 		{
 		/* failure means ppp is not up */
 		*in = *out = 0;
