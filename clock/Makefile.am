@@ -14,3 +14,8 @@ clock_applet_LDADD = ../../panel/libpanel_applet.la \
 		     $(GNOME_LIBDIR) $(MICO_LIBS) -lXt \
 		     $(GNOMEUI_LIBS) $(INTLLIBS) -lstdc++
 
+EXTRA_DIST = clock_applet.desktop
+
+sysdir = $(datadir)/applets/Utility
+sys_DATA = clock_applet.desktop
+
