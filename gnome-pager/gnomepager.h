@@ -66,7 +66,7 @@ void task_get_info(Task *t);
 gint task_add(Window win);
 void task_delete(Window win);
 Task *task_find(Window win);
-void tasks_match(CARD32 * win, guint num);
+void tasks_match(Window * win, guint num);
 void tasks_update(void);
 void get_desktop_names(void);
 

@@ -55,8 +55,6 @@ static void
 redo_interface(void)
 {
   gint i;
-  
-  printf("SIZES: Atom %d Window %d XID %d CARD32 %d guint32 %d\n",(int)sizeof(Atom),(int)sizeof(Window),(int)sizeof(XID),(int)sizeof(CARD32),(int)sizeof(guint32));
 
   for (i = 0; i < 32; i++)
     desk_widget[i] = NULL;
@@ -93,8 +91,6 @@ redo_interface(void)
 void 
 cb_applet_orient_change(GtkWidget *w, PanelOrientType o, gpointer data)
 {
-  gint i;
-  
   if (o == applet_orient) 
     return;
 
@@ -347,11 +343,30 @@ util_get_atom(Window win, gchar *atom, Atom type, gint *size)
 		     &retval);
   if ((retval) && (num_ret > 0) && (format_ret > 0))
     {
-      data = g_malloc0(num_ret * (format_ret >> 3));
-      if (data)
-	memcpy(data, retval, num_ret * (format_ret >> 3));
+      if(format_ret==32)
+        {
+	   int i;
+	   *size = num_ret * sizeof(unsigned long);
+	   data = g_malloc(*size);
+	   for(i=0;i<num_ret;i++)
+	     ((unsigned long *)data)[i] = ((unsigned long *)retval)[i];
+	}
+      else if(format_ret==16)
+        {
+	   int i;
+	   *size = num_ret * sizeof(unsigned short);
+	   data = g_malloc(*size);
+	   for(i=0;i<num_ret;i++)
+	     ((unsigned short *)data)[i] = ((unsigned short *)retval)[i];
+	}
+      else /*format_ret==8*/
+	{
+          *size = num_ret;
+          data = g_malloc(num_ret);
+          if (data)
+	    memcpy(data, retval, num_ret);
+	}
       XFree(retval);
-      *size = num_ret * (format_ret >> 3);
       return data;
     }
   if (retval)
@@ -700,7 +715,7 @@ cb_root_prop_change(GtkWidget * widget, GdkEventProperty * ev)
 {
   gint                desk, pdesk, i;
   GdkAtom             at;
-  gint32             *da;
+  unsigned long      *da;
   gint                size;  
 
   gdk_error_warnings = 0;
@@ -747,7 +762,7 @@ cb_root_prop_change(GtkWidget * widget, GdkEventProperty * ev)
       da = util_get_atom(GDK_ROOT_WINDOW(), "_WIN_AREA_COUNT", XA_CARDINAL, &size);
       if (da)
 	{
-	  if (size == 8)
+	  if (size == 2*sizeof(unsigned long))
 	    {
 	      area_w = da[0];
 	      area_h = da[1];
@@ -766,7 +781,7 @@ cb_root_prop_change(GtkWidget * widget, GdkEventProperty * ev)
       da = util_get_atom(GDK_ROOT_WINDOW(), "_WIN_AREA", XA_CARDINAL, &size);
       if (da)
 	{
-	  if (size == 8)
+	  if (size == 2*sizeof(unsigned long))
 	    {
 	      area_x = da[0];
 	      area_y = da[1];
@@ -862,7 +877,7 @@ task_get_info(Task *t)
   gchar               *name;
   gint                 size;
   guint                w, h, d;
-  CARD32              *val;
+  unsigned long       *val;
   Atom                 a;
   int                  rev;
   gchar               psticky;
@@ -994,7 +1009,7 @@ task_add(Window win)
   Task               *t;
   int                 size;
   gchar              *str;
-  CARD32             *val;
+  unsigned long      *val;
   GnomeUIInfo         uinfo[5] = 
     {
       GNOMEUIINFO_END,
@@ -1144,12 +1159,12 @@ task_find(Window win)
 }
 
 void 
-tasks_match(CARD32 * win, guint num)
+tasks_match(Window * win, guint num)
 {
   guint               i, j, there;
   GList              *p1;
   Task               *t;
-
+  
   p1 = tasks;
   while (p1)
     {
@@ -1163,7 +1178,7 @@ tasks_match(CARD32 * win, guint num)
 	      if (win[j] == t->win)
 		{
 		  there = 1;
-		  j = num;
+		  break;
 		}
 	    }
 	  if (!there)
@@ -1185,7 +1200,7 @@ tasks_match(CARD32 * win, guint num)
 	  if (t->win == win[i])
 	    {
 	      there = 1;
-	      p1 = NULL;	      
+	      break;
 	    }
 	}
       if (!there)
@@ -1199,16 +1214,16 @@ tasks_match(CARD32 * win, guint num)
 void 
 tasks_update(void)
 {
-  CARD32              *list;
+  Window              *list;
   gint                 num, size;
 
   gdk_error_warnings = 0;
   list = util_get_atom(GDK_ROOT_WINDOW(), "_WIN_CLIENT_LIST", 
 		       XA_CARDINAL, &size);
-
+  
   if ((size > 0) && (list))
     {
-      num = size / sizeof(CARD32);
+      num = size / sizeof(Window);
       tasks_match(list, num);
       g_free(list);
     }
@@ -1294,7 +1309,8 @@ int
 main(int argc, char *argv[])
 {
   GtkWidget *dlg;
-  gint i, size, *da;
+  gint i, size;
+  unsigned long *da;
   
   /* Initialize the i18n stuff */
   bindtextdomain (PACKAGE, GNOMELOCALEDIR);
@@ -1409,7 +1425,7 @@ main(int argc, char *argv[])
   da = util_get_atom(GDK_ROOT_WINDOW(), "_WIN_AREA_COUNT", XA_CARDINAL, &size);
   if (da)
     {
-      if (size == 8)
+      if (size == 2*sizeof(unsigned long))
 	{
 	  area_w = da[0];
 	  area_h = da[1];
@@ -1424,7 +1440,7 @@ main(int argc, char *argv[])
   da = util_get_atom(GDK_ROOT_WINDOW(), "_WIN_AREA", XA_CARDINAL, &size);
   if (da)
     {
-      if (size == 8)
+      if (size == 2*sizeof(unsigned long))
 	{
 	  area_x = da[0];
 	  area_y = da[1];
@@ -1520,7 +1536,7 @@ get_window_root_and_frame_id(Window w, Window *ret_frame, Window *ret_root)
 {
   Window               w3, w2, ret, root, *wl;
   gint                 size;
-  CARD32              *val;
+  unsigned long       *val;
 
   w3 = w2 = w;
 
@@ -2187,12 +2203,13 @@ set_task_info_to_button(Task *t)
   p = tasks;
   while (p)
     {
+      Task *t = p->data;
       if ((config.tasks_all) || 
-	  (((Task *)(p->data))->sticky) || 
+	  (t->sticky) || 
 	  (
-	   (((Task *)(p->data))->desktop == current_desk)
-	  && (((Task *)(p->data))->ax == area_x)
-	  && (((Task *)(p->data))->ay == area_y)
+	   (t->desktop == current_desk)
+	  && (t->ax == area_x)
+	  && (t->ay == area_y)
 	   )
 	  )	
 	num++;
@@ -2282,12 +2299,13 @@ populate_tasks(void)
   p = tasks;
   while (p)
     {
+      t = p->data;
       if ((config.tasks_all) || 
-	  (((Task *)(p->data))->sticky) || 
+	  (t->sticky) || 
 	  (
-	   (((Task *)(p->data))->desktop == current_desk)
-	  && (((Task *)(p->data))->ax == area_x)
-	  && (((Task *)(p->data))->ay == area_y)
+	   (t->desktop == current_desk)
+	  && (t->ax == area_x)
+	  && (t->ay == area_y)
 	   )
 	  )
 	num++;
