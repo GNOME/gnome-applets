@@ -40,8 +40,8 @@ static const BonoboUIVerb stickynotes_applet_menu_verbs[] =
 /* Sticky Notes Icons */
 static const StickyNotesStockIcon stickynotes_icons[] =
 {
-	{ STICKYNOTES_STOCK_LOCK, STICKYNOTES_ICONDIR "/lock.png" },
-	{ STICKYNOTES_STOCK_UNLOCK, STICKYNOTES_ICONDIR "/unlock.png" },
+	{ STICKYNOTES_STOCK_LOCKED, STICKYNOTES_ICONDIR "/locked.png" },
+	{ STICKYNOTES_STOCK_UNLOCKED, STICKYNOTES_ICONDIR "/unlocked.png" },
 	{ STICKYNOTES_STOCK_CLOSE, STICKYNOTES_ICONDIR "/close.png" },
 	{ STICKYNOTES_STOCK_RESIZE_SE, STICKYNOTES_ICONDIR "/resize_se.png" },
 	{ STICKYNOTES_STOCK_RESIZE_SW, STICKYNOTES_ICONDIR "/resize_sw.png" }

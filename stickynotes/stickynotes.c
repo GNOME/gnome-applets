@@ -307,11 +307,13 @@ void stickynote_set_locked(StickyNote *note, gboolean locked)
 
 	/* Show appropriate icon and tooltip */
 	if (locked) {
-		gtk_image_set_from_stock(GTK_IMAGE(glade_xml_get_widget(note->window, "lock_img")), STICKYNOTES_STOCK_LOCK, STICKYNOTES_ICON_SIZE);
+		gtk_image_set_from_stock(GTK_IMAGE(glade_xml_get_widget(note->window, "lock_img")),
+					 STICKYNOTES_STOCK_LOCKED, STICKYNOTES_ICON_SIZE);
 		gtk_tooltips_set_tip(stickynotes->tooltips, note->w_lock, _("Locked note"), NULL);
 	}
 	else {
-		gtk_image_set_from_stock(GTK_IMAGE(glade_xml_get_widget(note->window, "lock_img")), STICKYNOTES_STOCK_UNLOCK, STICKYNOTES_ICON_SIZE);
+		gtk_image_set_from_stock(GTK_IMAGE(glade_xml_get_widget(note->window, "lock_img")),
+					 STICKYNOTES_STOCK_UNLOCKED, STICKYNOTES_ICON_SIZE);
 		gtk_tooltips_set_tip(stickynotes->tooltips, note->w_lock, _("Unlocked note"), NULL);
 	}
 

@@ -30,8 +30,8 @@
 #define XML_PATH	"/.gnome2/stickynotes_applet"
 #define ICON_PATH	STICKYNOTES_ICONDIR
 
-#define STICKYNOTES_STOCK_LOCK		"stickynotes-stock-lock"
-#define STICKYNOTES_STOCK_UNLOCK	"stickynotes-stock-unlock"
+#define STICKYNOTES_STOCK_LOCKED	"stickynotes-stock-locked"
+#define STICKYNOTES_STOCK_UNLOCKED	"stickynotes-stock-unlocked"
 #define STICKYNOTES_STOCK_CLOSE 	"stickynotes-stock-close"
 #define STICKYNOTES_STOCK_RESIZE_SE 	"stickynotes-stock-resize-se"
 #define STICKYNOTES_STOCK_RESIZE_SW	"stickynotes-stock-resize-sw"
