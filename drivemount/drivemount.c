@@ -344,8 +344,10 @@ static DriveData * create_drive_widget(GtkWidget *applet)
 					      _("Properties..."),
 					      property_show,
 					      dd);
-	
-	applet_widget_register_callback(APPLET_WIDGET(applet),
+
+	/* add "eject" entry if eject program is found in PATH */
+	if (system("which eject > /dev/null") == 0)
+		applet_widget_register_callback(APPLET_WIDGET(applet),
 					      "eject",
 					      _("Eject"),
 					      eject_cb,
