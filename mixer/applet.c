@@ -85,11 +85,11 @@ static struct {
   gchar *filename;
   GdkPixbuf *pixbuf;
 } pix[] = {
-  { GNOME_PIXMAPSDIR "/volume-mute.png",   NULL },
-  { GNOME_PIXMAPSDIR "/volume-zero.png",   NULL },
-  { GNOME_PIXMAPSDIR "/volume-min.png",    NULL },
-  { GNOME_PIXMAPSDIR "/volume-medium.png", NULL },
-  { GNOME_PIXMAPSDIR "/volume-max.png",    NULL },
+  { GNOME_PIXMAPSDIR "/mixer/volume-mute.png",   NULL },
+  { GNOME_PIXMAPSDIR "/mixer/volume-zero.png",   NULL },
+  { GNOME_PIXMAPSDIR "/mixer/volume-min.png",    NULL },
+  { GNOME_PIXMAPSDIR "/mixer/volume-medium.png", NULL },
+  { GNOME_PIXMAPSDIR "/mixer/volume-max.png",    NULL },
   { NULL, NULL }
 };
 

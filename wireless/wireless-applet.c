@@ -219,7 +219,8 @@ wireless_applet_load_theme (WirelessApplet *applet) {
 	for (i = 0; i < PIX_NUMBER; i++)
 	{
 		pixmapname = g_build_filename (G_DIR_SEPARATOR_S,
-				GNOME_PIXMAPSDIR, pixmap_names[i], NULL);
+				GNOME_PIXMAPSDIR, "wireless-applet",
+				pixmap_names[i], NULL);
 		applet->pixmaps[i] = gdk_pixbuf_new_from_file (pixmapname, NULL);
 		g_free (pixmapname);
 	}
