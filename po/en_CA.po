@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-05-25 13:44-0700\n"
-"PO-Revision-Date: 2004-05-25 13:44-0700\n"
+"POT-Creation-Date: 2004-05-30 14:36-0700\n"
+"PO-Revision-Date: 2004-05-30 14:37-0700\n"
 "Last-Translator: Adam Weinberger <adamw@gnome.org>\n"
 "Language-Team: English/Canada <adamw@FreeBSD.org>\n"
 "MIME-Version: 1.0\n"
@@ -81,7 +81,7 @@ msgstr "Shows the status of keyboard accessibility features"
 msgid "Utility"
 msgstr "Utility"
 
-#: accessx-status/applet.c:134 battstat/battstat_applet.c:990
+#: accessx-status/applet.c:134 battstat/battstat_applet.c:987
 #: cdplayer/cdplayer.c:603 charpick/charpick.c:556 drivemount/drivemount.c:553
 #: geyes/geyes.c:202 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:601
 #: gtik/gtik.c:719 gweather/gweather-about.c:47 mailcheck/mailcheck.c:2461
@@ -130,7 +130,7 @@ msgstr "Displays current state of keyboard accessibility features"
 
 #. The long name of the applet in the About dialog.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:1011 battstat/battstat_applet.c:1760
+#: battstat/battstat_applet.c:1008 battstat/battstat_applet.c:1753
 msgid "Battery Charge Monitor"
 msgstr "Battery Charge Monitor"
 
@@ -139,7 +139,7 @@ msgid "Battstat Factory"
 msgstr "Battstat Factory"
 
 #: battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: battstat/battstat_applet.c:1761
+#: battstat/battstat_applet.c:1754
 msgid "Monitor a laptop's remaining power"
 msgstr "Monitor a laptop's remaining power"
 
@@ -264,42 +264,45 @@ msgstr "%d hours %d minutes remaining"
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:389 battstat/battstat_applet.c:1048
+#: battstat/battstat_applet.c:389 battstat/battstat_applet.c:1045
 msgid "High"
 msgstr "High"
 
 #. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:391 battstat/battstat_applet.c:1050
+#: battstat/battstat_applet.c:391 battstat/battstat_applet.c:1047
 msgid "Low"
 msgstr "Low"
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:393 battstat/battstat_applet.c:1052
+#: battstat/battstat_applet.c:393 battstat/battstat_applet.c:1049
 msgid "Critical"
 msgstr "Critical"
 
 #. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:395 battstat/battstat_applet.c:1054
+#: battstat/battstat_applet.c:395 battstat/battstat_applet.c:1051
 msgid "Charging"
 msgstr "Charging"
 
-#: battstat/battstat_applet.c:477
+#: battstat/battstat_applet.c:478
 #, c-format
-msgid "Battery low (%d%%) and AC is offline"
-msgstr "Battery low (%d%%) and AC is offline"
+msgid ""
+"Your battery is running low (%d%%, %s). You should recharge your battery to "
+"avoid losing your work."
+msgstr ""
 
-#: battstat/battstat_applet.c:480 battstat/battstat_applet.c:525
+#: battstat/battstat_applet.c:481 battstat/battstat_applet.c:528
 msgid "Battery Notice"
 msgstr "Battery Notice"
 
-#: battstat/battstat_applet.c:544
-msgid "Battery is now fully re-charged!"
-msgstr "Battery is now fully re-charged!"
+#: battstat/battstat_applet.c:547
+msgid "Your battery is now fully recharged."
+msgstr "Your battery is now fully recharged."
 
+#. 0 = Battery power
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:588 battstat/battstat_applet.c:1212
+#: battstat/battstat_applet.c:591 battstat/battstat_applet.c:1206
 #, c-format
 msgid ""
 "System is running on battery power\n"
@@ -308,10 +311,11 @@ msgstr ""
 "System is running on battery power\n"
 "Battery: %d%% (%s)"
 
+#. 1 = AC power. I should really test it explicitly here.
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:592 battstat/battstat_applet.c:1220
+#: battstat/battstat_applet.c:594 battstat/battstat_applet.c:1213
 #, c-format
 msgid ""
 "System is running on AC power\n"
@@ -320,24 +324,23 @@ msgstr ""
 "System is running on AC power\n"
 "Battery: %d%% (%s)"
 
+#. 0 = Battery power
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:598 battstat/battstat_applet.c:1144
-#: battstat/battstat_applet.c:1233
-#, c-format
+#: battstat/battstat_applet.c:599 battstat/battstat_applet.c:1139
+#: battstat/battstat_applet.c:1226
 msgid "System is running on battery power"
 msgstr "System is running on battery power"
 
+#. 1 = AC power. I should really test it explicitly here.
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:601 battstat/battstat_applet.c:1150
-#: battstat/battstat_applet.c:1239
-#, c-format
+#: battstat/battstat_applet.c:601 battstat/battstat_applet.c:1144
+#: battstat/battstat_applet.c:1231
 msgid "System is running on AC power"
 msgstr "System is running on AC power"
 
-#: battstat/battstat_applet.c:615 wireless/wireless-applet.c:146
-#, c-format
+#: battstat/battstat_applet.c:616 wireless/wireless-applet.c:146
 msgid "N/A"
 msgstr "N/A"
 
@@ -346,7 +349,7 @@ msgstr "N/A"
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:744 battstat/battstat_applet.c:1124
+#: battstat/battstat_applet.c:745 battstat/battstat_applet.c:1120
 #, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
 msgstr "System is running on battery power. Battery: %d%% (%s)"
@@ -356,7 +359,7 @@ msgstr "System is running on battery power. Battery: %d%% (%s)"
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:750 battstat/battstat_applet.c:1131
+#: battstat/battstat_applet.c:750 battstat/battstat_applet.c:1126
 #, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
 msgstr "System is running on AC power. Battery: %d%% (%s)"
@@ -365,35 +368,32 @@ msgstr "System is running on AC power. Battery: %d%% (%s)"
 #. battery frame when the computer is using battery
 #. power and the battery isn't present. Not a
 #. possible combination, I guess... :)
-#: battstat/battstat_applet.c:760
-#, c-format
+#: battstat/battstat_applet.c:759
 msgid "System is running on battery power. Battery: Not present"
 msgstr "System is running on battery power. Battery: Not present"
 
 #. This string will display as a tooltip over the
 #. battery frame when the computer is using AC
 #. power and the battery isn't present.
-#: battstat/battstat_applet.c:766
-#, c-format
+#: battstat/battstat_applet.c:764
 msgid "System is running on AC power. Battery: Not present"
 msgstr "System is running on AC power. Battery: Not present"
 
 #. Displayed as a tooltip over the battery meter when there is
 #. a battery present. %d will hold the current charge and %s will
-#. hold the status of the battery, (High, Low, Critical, Charging.
-#: battstat/battstat_applet.c:775
+#. contains a string of the time remaining
+#: battstat/battstat_applet.c:772
 #, c-format
 msgid "Battery: %d%% (%s)"
 msgstr "Battery: %d%% (%s)"
 
 #. Displayed as a tooltip over the battery meter when no
 #. battery is present.
-#: battstat/battstat_applet.c:781
-#, c-format
+#: battstat/battstat_applet.c:777
 msgid "Battery: Not present"
 msgstr "Battery: Not present"
 
-#: battstat/battstat_applet.c:881
+#: battstat/battstat_applet.c:878
 msgid ""
 "Can't open the APM device!\n"
 "\n"
@@ -405,7 +405,7 @@ msgstr ""
 "Make sure you have read permission to the\n"
 "APM device."
 
-#: battstat/battstat_applet.c:890
+#: battstat/battstat_applet.c:887
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
@@ -415,7 +415,7 @@ msgstr ""
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
 "that helps.\n"
 
-#: battstat/battstat_applet.c:946
+#: battstat/battstat_applet.c:943
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -424,16 +424,16 @@ msgstr ""
 "An error occured while launching the Suspend command: %s\n"
 "Please try to correct this error"
 
-#: battstat/battstat_applet.c:950
+#: battstat/battstat_applet.c:947
 #, c-format
 msgid "The Suspend command '%s' was unsuccessful."
 msgstr "The Suspend command '%s' was unsuccessful."
 
-#: battstat/battstat_applet.c:952
+#: battstat/battstat_applet.c:949
 msgid "The Suspend command was unsuccessful."
 msgstr "The Suspend command was unsuccessful."
 
-#: battstat/battstat_applet.c:960
+#: battstat/battstat_applet.c:957
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -443,19 +443,19 @@ msgstr ""
 
 #. if your charset supports it, please replace the "o" in
 #. * "Jorgen" into U00F6
-#: battstat/battstat_applet.c:978
+#: battstat/battstat_applet.c:975
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jorgen Pehrson <jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:1013
+#: battstat/battstat_applet.c:1010
 msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 msgstr "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 
-#: battstat/battstat_applet.c:1014
+#: battstat/battstat_applet.c:1011
 msgid "This utility shows the status of your laptop battery."
 msgstr "This utility shows the status of your laptop battery."
 
-#: battstat/battstat_applet.c:1686
+#: battstat/battstat_applet.c:1679
 msgid ""
 "Can't access ACPI events in /var/run/acpid.socket! Make sure the ACPI "
 "subsystem is working and the acpid daemon is running."
@@ -511,7 +511,7 @@ msgstr "Battery Charge Monitor Preferences"
 
 #: battstat/battstat_applet.glade.h:13 drivemount/properties.c:358
 #: gweather/gweather-pref.c:753 mailcheck/mailcheck.c:2047
-#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:563
+#: mini-commander/src/mini-commander.glade.h:12 modemlights/properties.c:563
 msgid "General"
 msgstr "General"
 
@@ -569,7 +569,7 @@ msgstr "_Yellow:"
 
 #: battstat/properties.c:297 drivemount/drivemount.c:510
 #: drivemount/properties.c:604 mailcheck/mailcheck.c:2314
-#: mailcheck/mailcheck.c:2602 mini-commander/src/preferences.c:393
+#: mailcheck/mailcheck.c:2602 mini-commander/src/preferences.c:365
 #: mixer/mixer.c:1445 stickynotes/stickynotes_applet_callbacks.c:220
 #: stickynotes/stickynotes_applet_callbacks.c:384
 #: wireless/wireless-applet.c:544 wireless/wireless-applet.c:628
@@ -2389,7 +2389,7 @@ msgstr "_Name:"
 msgid "_Label:"
 msgstr "_Label:"
 
-#: gkb-new/prop-map.c:310 mini-commander/src/mini-commander.glade.h:8
+#: gkb-new/prop-map.c:310 mini-commander/src/mini-commander.glade.h:7
 msgid "Co_mmand:"
 msgstr "Co_mmand:"
 
@@ -2714,7 +2714,7 @@ msgstr "_Update"
 msgid "Could not retrieve the stock data."
 msgstr "Could not retrieve the stock data."
 
-#: gtik/gtik.c:309 gweather/gweather-applet.c:456
+#: gtik/gtik.c:309 gweather/gweather-applet.c:455
 msgid "Updating..."
 msgstr "Updating..."
 
@@ -2803,12 +2803,12 @@ msgstr "Scroll _left to right"
 msgid "Displa_y only symbols and price"
 msgstr "Displa_y only symbols and price"
 
-#: gtik/gtik.c:1503 mini-commander/src/mini-commander.glade.h:23
+#: gtik/gtik.c:1503 mini-commander/src/mini-commander.glade.h:20
 #: stickynotes/stickynotes.glade.h:51
 msgid "_Width:"
 msgstr "_Width:"
 
-#: gtik/gtik.c:1517 mini-commander/src/mini-commander.glade.h:24
+#: gtik/gtik.c:1517 mini-commander/src/mini-commander.glade.h:21
 #: multiload/properties.c:489
 msgid "pixels"
 msgstr "pixels"
@@ -3037,7 +3037,7 @@ msgid ""
 "\n"
 "An applet for monitoring local weather conditions."
 msgstr ""
-"Released under the GNU General Public License.\n"
+"Released under the GNU General Public Licence.\n"
 "\n"
 "An applet for monitoring local weather conditions."
 
@@ -3383,9 +3383,9 @@ msgstr "Northwest"
 msgid "North - Northwest"
 msgstr "North - Northwest"
 
-#: gweather/weather.c:193 gweather/weather.c:2025 gweather/weather.c:2037
-#: gweather/weather.c:2049 gweather/weather.c:2061 gweather/weather.c:2079
-#: gweather/weather.c:2091
+#: gweather/weather.c:193 gweather/weather.c:2105 gweather/weather.c:2117
+#: gweather/weather.c:2129 gweather/weather.c:2141 gweather/weather.c:2159
+#: gweather/weather.c:2171
 msgid "Unknown"
 msgstr "Unknown"
 
@@ -3704,27 +3704,27 @@ msgstr "Dust whirls"
 msgid "Dust whirls in the vicinity"
 msgstr "Dust whirls in the vicinity"
 
-#: gweather/weather.c:894 gweather/weather.c:934 gweather/weather.c:1651
+#: gweather/weather.c:907 gweather/weather.c:949 gweather/weather.c:1701
 msgid "Failed to get METAR data.\n"
 msgstr "Failed to get METAR data.\n"
 
-#: gweather/weather.c:926 gweather/weather.c:954 gweather/weather.c:1192
+#: gweather/weather.c:941 gweather/weather.c:969 gweather/weather.c:1216
 msgid "WeatherInfo missing location"
 msgstr "WeatherInfo missing location"
 
-#: gweather/weather.c:1989
+#: gweather/weather.c:2069
 msgid "%a, %b %d / %H:%M"
 msgstr "%a, %b %d / %H:%M"
 
-#: gweather/weather.c:1993
+#: gweather/weather.c:2073
 msgid "Unknown observation time"
 msgstr "Unknown observation time"
 
-#: gweather/weather.c:2063
+#: gweather/weather.c:2143
 msgid "Calm"
 msgstr "Calm"
 
-#: gweather/weather.c:2136
+#: gweather/weather.c:2216
 msgid "Retrieval failed"
 msgstr "Retrieval failed"
 
@@ -4124,8 +4124,8 @@ msgstr ""
 "completion, command history, and changeable macros.\n"
 "\n"
 "\\ This program is free software; you can redistribute it and/or modify it "
-"under the terms of the GNU General Public License as published by the Free "
-"Software Foundation; either version 2 of the License, or (at your option) "
+"under the terms of the GNU General Public Licence as published by the Free "
+"Software Foundation; either version 2 of the Licence, or (at your option) "
 "any later version."
 
 #: mini-commander/src/command_line.c:315
@@ -4181,74 +4181,62 @@ msgid "Error syncing config data: %s"
 msgstr "Error syncing config data: %s"
 
 #: mini-commander/src/mini-commander.glade.h:3
-msgid "<b>Appearance</b>"
-msgstr "<b>Appearance</b>"
-
-#: mini-commander/src/mini-commander.glade.h:4
 msgid "<b>Auto Completion</b>"
 msgstr "<b>Auto Completion</b>"
 
-#: mini-commander/src/mini-commander.glade.h:5
+#: mini-commander/src/mini-commander.glade.h:4
 msgid "<b>Colors</b>"
 msgstr "<b>Colours</b>"
 
-#: mini-commander/src/mini-commander.glade.h:6
+#: mini-commander/src/mini-commander.glade.h:5
 msgid "<b>Size</b>"
 msgstr "<b>Size</b>"
 
-#: mini-commander/src/mini-commander.glade.h:7
+#: mini-commander/src/mini-commander.glade.h:6
 msgid "Add New Macro"
 msgstr "Add New Macro"
 
-#: mini-commander/src/mini-commander.glade.h:9
+#: mini-commander/src/mini-commander.glade.h:8
 msgid "Command Line Preferences"
 msgstr "Command Line Preferences"
 
-#: mini-commander/src/mini-commander.glade.h:10
+#: mini-commander/src/mini-commander.glade.h:9
 msgid "Command line _background:"
 msgstr "Command line _background:"
 
-#: mini-commander/src/mini-commander.glade.h:11
+#: mini-commander/src/mini-commander.glade.h:10
 msgid "Command line _foreground:"
 msgstr "Command line _foreground:"
 
-#: mini-commander/src/mini-commander.glade.h:12
+#: mini-commander/src/mini-commander.glade.h:11
 msgid "E_nable history-based auto completion"
 msgstr "E_nable history-based auto completion"
 
-#: mini-commander/src/mini-commander.glade.h:14
+#: mini-commander/src/mini-commander.glade.h:13
 msgid "Macros"
 msgstr "Macros"
 
-#: mini-commander/src/mini-commander.glade.h:15
+#: mini-commander/src/mini-commander.glade.h:14
 msgid "Pick a color"
 msgstr "Pick a colour"
 
-#: mini-commander/src/mini-commander.glade.h:16
-msgid "Show fram_e"
-msgstr "Show fram_e"
-
-#: mini-commander/src/mini-commander.glade.h:17
-msgid "Show han_dle"
-msgstr "Show han_dle"
-
-#: mini-commander/src/mini-commander.glade.h:18
+#: mini-commander/src/mini-commander.glade.h:15
 msgid "_Add Macro..."
 msgstr "_Add Macro..."
 
-#: mini-commander/src/mini-commander.glade.h:19
+#: mini-commander/src/mini-commander.glade.h:16
 msgid "_Delete Macro"
 msgstr "_Delete Macro"
 
-#: mini-commander/src/mini-commander.glade.h:20
+#: mini-commander/src/mini-commander.glade.h:17
 msgid "_Macros:"
 msgstr "_Macros:"
 
-#: mini-commander/src/mini-commander.glade.h:21
+#: mini-commander/src/mini-commander.glade.h:18
 msgid "_Pattern:"
 msgstr "_Pattern:"
 
-#: mini-commander/src/mini-commander.glade.h:22
+#: mini-commander/src/mini-commander.glade.h:19
 msgid "_Use default theme colors"
 msgstr "_Use default theme colours"
 
@@ -4361,57 +4349,57 @@ msgstr "Use theme colours instead of custom ones."
 msgid "Width"
 msgstr "Width"
 
-#: mini-commander/src/mini-commander_applet.c:228
-#: mini-commander/src/mini-commander_applet.c:232
+#: mini-commander/src/mini-commander_applet.c:226
+#: mini-commander/src/mini-commander_applet.c:230
 msgid "Browser"
 msgstr "Browser"
 
-#: mini-commander/src/mini-commander_applet.c:233
+#: mini-commander/src/mini-commander_applet.c:231
 msgid "Click this button to start the browser"
 msgstr "Click this button to start the browser"
 
-#: mini-commander/src/mini-commander_applet.c:246
-#: mini-commander/src/mini-commander_applet.c:250
+#: mini-commander/src/mini-commander_applet.c:244
+#: mini-commander/src/mini-commander_applet.c:248
 msgid "History"
 msgstr "History"
 
-#: mini-commander/src/mini-commander_applet.c:251
+#: mini-commander/src/mini-commander_applet.c:249
 msgid "Click this button for the list of previous commands"
 msgstr "Click this button for the list of previous commands"
 
-#: mini-commander/src/mini-commander_applet.c:363
+#: mini-commander/src/mini-commander_applet.c:319
 msgid "Command line has been disabled by your system administrator"
 msgstr "Command line has been disabled by your system administrator"
 
-#: mini-commander/src/mini-commander_applet.c:426
+#: mini-commander/src/mini-commander_applet.c:382
 msgid "Mini-Commander applet"
 msgstr "Mini-Commander applet"
 
-#: mini-commander/src/mini-commander_applet.c:427
+#: mini-commander/src/mini-commander_applet.c:383
 msgid "This applet adds a command line to the panel"
 msgstr "This applet adds a command line to the panel"
 
-#: mini-commander/src/preferences.c:428
+#: mini-commander/src/preferences.c:400
 msgid "You must specify a pattern"
 msgstr "You must specify a pattern"
 
-#: mini-commander/src/preferences.c:432
+#: mini-commander/src/preferences.c:404
 msgid "You must specify a pattern and a command"
 msgstr "You must specify a pattern and a command"
 
-#: mini-commander/src/preferences.c:433
+#: mini-commander/src/preferences.c:405
 msgid "You must specify a command"
 msgstr "You must specify a command"
 
-#: mini-commander/src/preferences.c:436
+#: mini-commander/src/preferences.c:408
 msgid "You may not specify duplicate patterns"
 msgstr "You may not specify duplicate patterns"
 
-#: mini-commander/src/preferences.c:850
+#: mini-commander/src/preferences.c:778
 msgid "Pattern"
 msgstr "Pattern"
 
-#: mini-commander/src/preferences.c:860
+#: mini-commander/src/preferences.c:788
 msgid "Command"
 msgstr "Command"
 
@@ -4618,7 +4606,7 @@ msgid ""
 "A modem status indicator and dialer.\n"
 "Lights in order from the top or left are Send data and Receive data."
 msgstr ""
-"Released under the GNU general public license.\n"
+"Released under the GNU general public licence.\n"
 "A modem status indicator and dialer.\n"
 "Lights in order from the top or left are Send data and Receive data."
 
@@ -4944,7 +4932,7 @@ msgid ""
 "A system load monitor capable of displaying graphs for CPU, ram, and swap "
 "space use, plus network traffic."
 msgstr ""
-"Released under the GNU General Public License.\n"
+"Released under the GNU General Public Licence.\n"
 "\n"
 "A system load monitor capable of displaying graphs for CPU, ram, and swap "
 "space use, plus network traffic."
@@ -5279,7 +5267,7 @@ msgstr "<b>Properties</b>"
 
 #: stickynotes/stickynotes.glade.h:12
 msgid "C_olor:"
-msgstr "C_olor:"
+msgstr "C_olour:"
 
 #: stickynotes/stickynotes.glade.h:13
 msgid "Choose a base color to use for all sticky notes"
@@ -5383,11 +5371,11 @@ msgstr "Sticky Notes Preferences"
 
 #: stickynotes/stickynotes.glade.h:38
 msgid "Use co_lor from the system theme"
-msgstr "Use co_lor from the system theme"
+msgstr "Use co_lour from the system theme"
 
 #: stickynotes/stickynotes.glade.h:39
 msgid "Use default co_lor"
-msgstr "Use default co_lor"
+msgstr "Use default co_lour"
 
 #: stickynotes/stickynotes.glade.h:40
 msgid "Use default fo_nt"
