@@ -32,6 +32,7 @@
 
 #include "gkb.h"
 
+#define free_and_null(x) g_free (x); x = NULL;
 
 /**
  * gkb_utils_free_keymap_internals:
@@ -43,15 +44,15 @@ void
 gkb_keymap_free_internals (GkbKeymap * keymap)
 {
 
-  g_free (keymap->name);
-  g_free (keymap->label);
-  g_free (keymap->lang);
-  g_free (keymap->country);
-  g_free (keymap->codepage);
-  g_free (keymap->type);
-  g_free (keymap->arch);
-  g_free (keymap->command);
-  g_free (keymap->flag);
+  free_and_null (keymap->name);
+  free_and_null (keymap->label);
+  free_and_null (keymap->lang);
+  free_and_null (keymap->country);
+  free_and_null (keymap->codepage);
+  free_and_null (keymap->type);
+  free_and_null (keymap->arch);
+  free_and_null (keymap->command);
+  free_and_null (keymap->flag);
 }
 
 
@@ -84,6 +85,8 @@ gkb_keymap_free_list (GList * list_in)
   for (; list != NULL; list = list->next)
     {
       keymap = (GkbKeymap *) list->data;
+      list->data = NULL;
+
       gkb_keymap_free (keymap);
     }
   g_list_free (list_in);

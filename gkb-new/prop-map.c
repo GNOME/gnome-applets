@@ -600,24 +600,29 @@ gkb_prop_map_edit (GkbPropertyBoxInfo * pbi)
   list = gkb_prop_map_get_languages (pbi);
   entry = gkb_prop_map_combo_at (right_table, 1, 2, list, mdi, keymap->lang);
   mdi->language_entry = entry;
+  g_list_free (list);
 
   list = gkb_prop_map_get_countries (pbi);
   entry =
     gkb_prop_map_combo_at (right_table, 1, 3, list, mdi, keymap->country);
   mdi->country_entry = entry;
+  g_list_free (list);
 
   list = gkb_prop_map_get_arquitectures (pbi),
     entry = gkb_prop_map_combo_at (left_table, 1, 0, list, mdi, keymap->arch);
   mdi->arch_entry = entry;
+  g_list_free (list);
 
   list = gkb_prop_map_get_types (pbi);
   entry = gkb_prop_map_combo_at (left_table, 1, 1, list, mdi, keymap->type);
   mdi->type_entry = entry;
+  g_list_free (list);
 
   list = gkb_prop_map_get_codepages (pbi);
   entry =
     gkb_prop_map_combo_at (left_table, 1, 2, list, mdi, keymap->codepage);
   mdi->codepage_entry = entry;
+  g_list_free (list);
 
   /* Add the flag pixmap */
   mdi->icon_entry =

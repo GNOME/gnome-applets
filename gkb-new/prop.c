@@ -150,16 +150,12 @@ gkb_prop_label_at (GtkWidget * table, gint row, gint col,
 static GList *
 gkb_prop_get_sizes (void)
 {
-  static GList *list = NULL;
-
-  if (list != NULL)
-    return list;
+  GList *list = NULL;
 
   list = g_list_prepend (list, _("Normal"));
   list = g_list_prepend (list, _("Big"));
 
-  list = g_list_reverse (list);
-  return list;
+  return g_list_reverse (list);
 }
 
 /**
@@ -173,17 +169,13 @@ gkb_prop_get_sizes (void)
 static GList *
 gkb_prop_get_mode (void)
 {
-  static GList *list = NULL;
-
-  if (list != NULL)
-    return list;
+  GList *list = NULL;
 
   list = g_list_prepend (list, _("Flag"));
   list = g_list_prepend (list, _("Label"));
   list = g_list_prepend (list, _("Flag and Label"));
 
-  list = g_list_reverse (list);
-  return list;
+  return g_list_reverse (list);
 }
 
 
@@ -334,10 +326,12 @@ gkb_prop_create_display_frame (GkbPropertyBoxInfo * pbi)
   gkb_prop_option_menu_at (table, 1, 0, mode,
 			   gkb_prop_mode_changed, pbi,
 			   gkb_util_get_int_from_mode (pbi->mode));
+  g_list_free (mode);
 
   sizes = gkb_prop_get_sizes ();
   gkb_prop_option_menu_at (table, 1, 1, sizes,
 			   gkb_prop_size_changed, pbi, pbi->is_small ? 0 : 1);
+  g_list_free (sizes);
 
   return frame;
 }
