@@ -11,6 +11,6 @@ preset_data_DATA = \
 	TR-f.keyprop TR-q.keyprop Thai.keyprop Thai2.keyprop UK.keyprop \
 	US-101.keyprop US-84.keyprop US-dec.keyprop US-ibm.keyprop \
 	US-int.keyprop US-mac.keyprop US-sgi-101.keyprop US-sun.keyprop \
-	US.keyprop Yugoslav.keyprop
+	US.keyprop Yugoslav.keyprop Hungarian-sun.keyprop
 
 EXTRA_DIST = $(preset_data_DATA)
