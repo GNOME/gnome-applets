@@ -365,14 +365,51 @@ cb_applet_destroy (GtkWidget *applet, gpointer data)
 	gtk_main_quit ();
 }
 
+static GnomeDesktopEntry *
+make_new_dentry (const char *filename)
+{
+	GnomeDesktopEntry *dentry;
+	char *execv[] = { NULL, NULL };
+
+	dentry = g_new0(GnomeDesktopEntry, 1);
+	dentry->name = g_strdup(filename);
+
+	execv[0] = filename;
+	dentry->exec = g_copy_vector(execv);
+	dentry->exec_length = 1;
+
+	return dentry;
+}
+
 static void
 drop_launcher (gchar *filename)
 {
-	GnomeDesktopEntry *dentry;
+	GnomeDesktopEntry *dentry = NULL;
+	const char *mimetype;
 
-	dentry = gnome_desktop_entry_load (filename);
-	if (dentry == NULL)
-		return;  
+	mimetype = gnome_mime_type(filename);
+
+	if(mimetype &&
+	   (strcmp(mimetype, "application/x-gnome-app-info") == 0 ||
+	    strcmp(mimetype, "application/x-kde-app-info") == 0))
+		dentry = gnome_desktop_entry_load (filename);
+	else {
+		struct stat s;
+		if(stat(filename, &s) != 0) {
+			g_warning (_("File '%s' does not exist"), filename);
+			return;
+		}
+
+		if(S_IEXEC & s.st_mode) /*executable?*/
+			dentry = make_new_dentry (filename);
+	}
+
+	if (dentry == NULL) {
+		g_warning (_("Don't know how to make a launcher out of: '%s'"),
+			   filename);
+		return;
+	}
+
 	g_free(dentry->location);
 	dentry->location = g_concat_dir_and_file (directory, 
 						  g_basename (filename));
