@@ -44,15 +44,10 @@ typedef struct _MeterData {
 
 typedef struct _ProgressData {
   GtkWidget *applet;
-  GnomeClient *smClient;
-  GtkAdjustment *adj;
   GtkStyle *style;
-  GtkTooltips *st_tip;
   GtkTooltips *ac_tip;
   GtkTooltips *progress_tip;
   GtkTooltips *progressy_tip;
-  GtkWidget *docklabel;
-  GtkWidget *aclabel;
   GtkWidget *progdir_radio;
   GtkWidget *radio_orient_horizont;
   GtkWidget *radio_lay_batt_on;
@@ -68,72 +63,59 @@ typedef struct _ProgressData {
   GdkGC *pixgc;
   GdkBitmap *mask;
   GtkWidget *pixmapwid;
-  GtkWidget *pixmapdockwid;
   GtkWidget *pixmapwidy;
-  GtkWidget *ac_event_box;
-  GtkWidget *progress_event_box;
   GtkWidget *about_dialog;
   GtkDialog *prop_win;
   GtkWidget *hbox;
   GtkWidget *hbox1;
-  GtkWidget *framestatus;
-  GtkWidget *framebattery;
   GtkWidget *frameybattery;
+  GtkWidget *framebattery;
+  GtkWidget *framestatus;
   GtkWidget *percent;
   GtkWidget *eventbattery;
   GtkWidget *eventybattery;
   GtkWidget *eventstatus;
-  GtkWidget *eventdock;
-  GdkBitmap *statusmask;
   GdkPixmap *status;
   GtkWidget *statuspixmapwid;
   GtkWidget *statusvbox;
   GtkWidget *statuspercent;
-  GtkWidget *fontpicker;
-  GtkStyle *percentstyle;
-  gboolean font_changed;
+
   gboolean colors_changed;
   gboolean lowbattnotification;
   gboolean fullbattnot;
   gboolean beep;
   gboolean draintop;
   gboolean horizont;
-  gboolean own_font;
   gboolean showstatus;
   gboolean showbattery;
   gboolean showpercent;
-  gboolean suspend;
+
   GtkWidget *suspend_entry;
-  gchar *suspend_cmd;
-  gchar *fontname;
-  gint ered;
-  gint eorange;
-  gint eyellow;
+  char *suspend_cmd;
+  char *fontname;
   guint red_val;
   guint orange_val;
   guint yellow_val;
-  gint panelsize;
+  int panelsize;
   PanelAppletOrient orienttype;
   GtkObject *ered_adj;
   GtkObject *eorange_adj;
   GtkObject *eyellow_adj;
   int pixtimer;
   int acpiwatch;
-  GtkWidget *font_toggle;
+
   GtkWidget *lowbatt_toggle;
-  GtkWidget *dock_toggle;
   GtkWidget *full_toggle;
   GtkWidget *testpercent;
   GdkPixmap *testpixmap;
   GdkBitmap *testmask;
   GdkPixmap *testpixbuffer;
   GdkBitmap *testpixmask;
-  GtkWidget *testevent;
   GdkGC *testpixgc;
   GtkWidget *testpixmapwid;
-  GtkWidget *testhscale;
   GtkObject *testadj;
   GtkWidget *beep_toggle;
+
   /* last_* for the benefit of the timeout functions */
   guint flash;
   guint last_batt_life;
@@ -168,5 +150,7 @@ void suspend_cb (BonoboUIComponent *, ProgressData *, const char *);
 void destroy_about (GtkWidget *, gpointer);
 void about_cb (BonoboUIComponent *, ProgressData *, const char *);
 void change_size(PanelApplet *, gint, gpointer);
+void change_background(PanelApplet *a, PanelAppletBackgroundType type, 
+		GdkColor *color, GdkPixmap *pixmap, ProgressData *battstat);	
 gint create_layout(ProgressData *battstat);
 void load_preferences(ProgressData *battstat);

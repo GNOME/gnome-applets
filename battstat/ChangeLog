@@ -1,3 +1,18 @@
+2004-02-26  Dennis Smit  <ds@nerds-incorporated.org>
+
+	* battstat.h: Removed unused entries in the ProgressData
+	structure.
+
+	Added prototype for the change_background function.
+
+	* battstat_applet.c (change_background):
+	Added function that handles panel background changes
+	and makes the applet panel background aware. Not
+	nearly as it should be, but it's a start.
+
+	(create_layout):
+	Small cleanups and connect signal for the change_background signal.
+
 2004-02-18  Kevin Vandersloot
 
 	* Makefile.am, battstat.c, properties.c: Open BSD support. From 

@@ -1238,11 +1238,11 @@ destroy_mixer_cb (GtkWidget *widget, MixerData *data)
 }
 
 static void
-applet_change_background_cb (PanelApplet               *applet,
-			     PanelAppletBackgroundType  type,
-			     GdkColor                  *color,
-			     const gchar               *pixmap,
-			     MixerData                 *data)
+applet_change_background_cb (PanelApplet		*applet,
+			     PanelAppletBackgroundType	type,
+			     GdkColor			*color,
+			     GdkPixmap			*pixmap,
+			     MixerData			*data)
 {
 	if (type == PANEL_NO_BACKGROUND) {
 		GtkRcStyle *rc_style = gtk_rc_style_new ();

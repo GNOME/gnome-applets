@@ -932,7 +932,8 @@ about_cb (BonoboUIComponent *uic,
    gtk_window_set_screen (GTK_WINDOW (battstat->about_dialog),
 			  gtk_widget_get_screen (battstat->applet));
 
-   g_signal_connect (battstat->about_dialog, "destroy",
+   g_signal_connect (battstat->about_dialog,
+		     "destroy",
 		     G_CALLBACK (gtk_widget_destroyed),
 		     &battstat->about_dialog);
 
@@ -1277,6 +1278,39 @@ change_size(PanelApplet *applet, gint size, gpointer data)
    battstat->colors_changed=FALSE;
 }
 
+void
+change_background(PanelApplet *a, PanelAppletBackgroundType type, GdkColor *color, GdkPixmap *pixmap, ProgressData *battstat)
+{
+	GtkRcStyle *rc_style = gtk_rc_style_new ();
+
+	switch (type) {
+		case PANEL_PIXMAP_BACKGROUND:
+			/* FIXME use pixmap here */
+			gtk_widget_modify_style (GTK_WIDGET (battstat->applet), rc_style);
+			gtk_widget_modify_style (GTK_WIDGET (battstat->hbox), rc_style);
+			break;
+
+		case PANEL_COLOR_BACKGROUND:
+			gtk_widget_modify_bg (GTK_WIDGET (battstat->applet), GTK_STATE_NORMAL, color);
+			gtk_widget_modify_bg (GTK_WIDGET (battstat->hbox), GTK_STATE_NORMAL, color);
+			break;
+
+		case PANEL_NO_BACKGROUND:
+			gtk_widget_modify_style (GTK_WIDGET (battstat->applet), rc_style);
+			gtk_widget_modify_style (GTK_WIDGET (battstat->hbox), rc_style);
+			break;
+
+		default:
+			gtk_widget_modify_style (GTK_WIDGET (battstat->applet), rc_style);
+			gtk_widget_modify_style (GTK_WIDGET (battstat->hbox), rc_style);
+			break;
+	}
+
+	gtk_rc_style_unref (rc_style);
+
+	return;
+}
+
 static gboolean
 button_press_cb (GtkWidget *widget, GdkEventButton *event, ProgressData *battstat)
 {
@@ -1417,8 +1451,10 @@ create_layout(ProgressData *battstat)
 
    gtk_widget_show ( GTK_WIDGET (battstat->pixmapwidy) );
    
-   g_signal_connect(G_OBJECT(battstat->pixmapwid), "destroy",
-		    G_CALLBACK(destroy_applet), battstat);
+   g_signal_connect(G_OBJECT(battstat->pixmapwid),
+		    "destroy",
+		    G_CALLBACK(destroy_applet),
+		    battstat);
    
    battstat->percent = gtk_label_new ("0%");
    gtk_widget_show(battstat->percent);
@@ -1504,16 +1540,30 @@ create_layout(ProgressData *battstat)
 			 "",
 			 NULL);
 
-   g_signal_connect(G_OBJECT(battstat->applet),"change_orient",
-		    G_CALLBACK(change_orient),
-		    battstat);
-   g_signal_connect (G_OBJECT (battstat->applet), "change_size",
-   		     G_CALLBACK (change_size), battstat);
-   		     
-   g_signal_connect (battstat->applet, "button_press_event",
-   			     G_CALLBACK (button_press_cb), battstat);
-   g_signal_connect (battstat->applet, "key_press_event",
-   			     G_CALLBACK (key_press_cb), battstat);
+   g_signal_connect (battstat->applet,
+		     "change_orient",
+		     G_CALLBACK(change_orient),
+		     battstat);
+
+   g_signal_connect (battstat->applet,
+		     "change_size",
+   		     G_CALLBACK (change_size),
+		     battstat);
+
+   g_signal_connect (battstat->applet,
+		     "change_background",
+		     G_CALLBACK (change_background),
+		     battstat);
+
+   g_signal_connect (battstat->applet,
+		     "button_press_event",
+   		     G_CALLBACK (button_press_cb),
+		     battstat);
+
+   g_signal_connect (battstat->applet,
+		     "key_press_event",
+		     G_CALLBACK (key_press_cb),
+		     battstat);
 
    return FALSE;
 }
