@@ -139,6 +139,19 @@ toggle_button_toggled_cb(GtkWidget *widget, gpointer data)
   return TRUE;
 }
 
+/* clicks on the toggle buttons with mouse buttons other than 1 go to the 
+   applet */
+
+static int
+button_press_cb (GtkWidget *widget, GdkEventButton *event)
+{
+  if (event->button > 1)
+  {
+    return gtk_widget_event (curr_data.applet, (GdkEvent *)event);
+  }
+  return TRUE;
+}
+
 static gint
 key_press_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
 {
@@ -254,6 +267,7 @@ build_table(charpick_data *p_curr_data)
     gtk_signal_connect (GTK_OBJECT (toggle_button[i]), "toggled",
                         (GtkSignalFunc) toggle_button_toggled_cb,
                         &button_cb_data[i]);
+    gtk_signal_connect (GTK_OBJECT (toggle_button[i]), "button_press_event", button_press_cb, NULL);
   }
   gtk_container_add (GTK_CONTAINER(event_box), table);
   gtk_widget_show (event_box);
@@ -273,8 +287,8 @@ build_table(charpick_data *p_curr_data)
 static gint applet_save_session(GtkWidget *widget, char *privcfgpath, 
                                 char *globcfgpath, gpointer data)
 {
-  charpick_persistant_properties *properties = data;
-  property_save(privcfgpath, properties);
+  /*charpick_persistant_properties *properties = data;*/
+  property_save(privcfgpath, curr_data.properties);
   return FALSE;
 }
 
