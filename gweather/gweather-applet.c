@@ -356,7 +356,7 @@ static void update_finish (WeatherInfo *info)
         gtk_timeout_remove(gw_applet->timeout_tag);
     if (gw_applet->gweather_pref.update_enabled)
         gw_applet->timeout_tag =  gtk_timeout_add (gw_applet->gweather_pref.update_interval * 1000,
-                                        timeout_cb, NULL);
+                                        timeout_cb, gw_applet);
 
     /* Update dialog -- if one is present */
     gweather_dialog_update(gw_applet);
