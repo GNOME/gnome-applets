@@ -142,6 +142,7 @@ struct _GKB
   gint keycode;
   guint old_keysym, old_state;
 
+  guint button_press_id;
 };
 
 struct _GkbKeymapWg
@@ -261,6 +262,8 @@ gboolean gconf_applet_get_bool  (PanelApplet *parent,
 
 /* Globals */
 gchar * prefixdir;
+
+void gkb_update_handlers (GKB *gkb, gboolean disconnect);
 
 G_BEGIN_DECLS
 
