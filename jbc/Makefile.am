@@ -8,11 +8,16 @@ INCLUDES = -I. -I$(srcdir) 				\
 bin_PROGRAMS = jbc_applet
 
 jbc_applet_SOURCES = \
-	jbc.c		\
-	jbc.h
+	jbc-applet.c		\
+	jbc-applet.h
 jbc_applet_LDADD = ../../panel/libpanel_applet.la \
-		     $(GNOME_LIBDIR) $(ORB_LIBS)      \
+		     $(GNOME_LIBDIR) $(GNORBA_LIBS)\
 		     $(GNOMEUI_LIBS) $(INTLLIBS) 
 
-EXTRA_DIST = jbc.deskto
+EXTRA_DIST = jbc_applet.desktop jbc_applet.gnorba
 
+sysdir = $(datadir)/applets/Utility
+sys_DATA = jbc_applet.desktop
+
+gnorbadir  = $(sysconfdir)/CORBA/servers
+gnorba_DATA = jbc_applet.gnorba

@@ -28,14 +28,14 @@ struct tm atime;
 time_t thetime;
 int i;
 int d[8];
-static digits[8] = {0, 0, 0, 0, 0, 0};
+static int digits[8] = {0, 0, 0, 0, 0, 0};
 int blink = 0;
 
 #define APPLET_VERSION_MAJ 0
 #define APPLET_VERSION_MIN 0
 #define APPLET_VERSION_REV 9
 
-gint
+static gint
 about_jbc ()
 {
   GtkWidget *about;
@@ -58,10 +58,12 @@ about_jbc ()
 			  "."),
 			   NULL);
   gtk_widget_show (about);
+
+  return TRUE;
 }
 
 
-gint
+static gint
 do_flicker ()
 {
   thetime = time (NULL);
@@ -126,7 +128,7 @@ main (int argc, char **argv)
   gtk_widget_set_usize (canvas, CANVAS_WIDTH, CANVAS_HEIGHT);
   gnome_canvas_set_scroll_region (GNOME_CANVAS (canvas), 0.0, 0.0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
-  applet_widget_add (GTK_CONTAINER (applet), canvas);
+  applet_widget_add (APPLET_WIDGET (applet), canvas);
   gtk_widget_show (canvas);
 
   gtk_widget_show (applet);
@@ -136,7 +138,7 @@ main (int argc, char **argv)
 					 "about",
 					 GNOME_STOCK_MENU_ABOUT,
 					 _ ("About..."),
-					 about_jbc, NULL);
+					 (AppletCallbackFunc)about_jbc, NULL);
 
 
   tpix[0] = gdk_imlib_create_image_from_xpm_data (tcolon_xpm);
