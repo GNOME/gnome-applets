@@ -502,7 +502,7 @@ client_win_show(Task *t)
   if (!t->focused)
     XSetInputFocus(GDK_DISPLAY(), t->win, RevertToPointerRoot, CurrentTime);
   XRaiseWindow(GDK_DISPLAY(), t->win);
-  if ((!t->sticky) && (t->desktop != current_desk - 1) && (!t->iconified))
+  if ((!t->sticky) && (t->desktop != current_desk) && (!t->iconified))
     gnome_win_hints_set_current_workspace(t->desktop);
   if (!t->iconified)
     {
