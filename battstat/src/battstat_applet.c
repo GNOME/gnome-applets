@@ -48,8 +48,9 @@
 #include <unistd.h>
 
 #include <glade/glade.h>
-#include <applet-widget.h>
-#include <status-docklet.h>
+#include <gnome.h>
+#include <panel-applet.h>
+/*#include <status-docklet.h>*/
 
 #include "battstat.h"
 #include "pixmaps.h"
@@ -275,6 +276,7 @@ apm_readinfo(void)
 }
 #endif 
 
+/*
 void
 load_font (gpointer data)
 {
@@ -297,7 +299,7 @@ load_font (gpointer data)
     
   }
 }
-
+*/
 /* void */
 /* draw_meter ( gpointer battdata, gpointer meterdata )  */
 /* { */
@@ -727,25 +729,29 @@ cleanup(int status)
 }
 
 void
-help_cb (AppletWidget *applet, gpointer data)
+help_cb (PanelApplet *applet, gpointer data)
 {
+  /* FIXME
    GnomeHelpMenuEntry help_entry = {
       "battstat_applet", "index.html"
    };
    gnome_help_display (NULL, &help_entry);
+  */
 }
 
 void
-helppref_cb (AppletWidget *applet, gpointer data)
+helppref_cb (PanelApplet *applet, gpointer data)
 {
-   GnomeHelpMenuEntry help_entry = {
+  /* FIXME
+       GnomeHelpMenuEntry help_entry = {
       "battstat_applet", "index.html#BATTSTAT_PREFS"
    };
    gnome_help_display (NULL, &help_entry);
+  */
 }
 
 void
-suspend_cb (AppletWidget *applet, gpointer data)
+suspend_cb (PanelApplet *applet, gpointer data)
 {
    ProgressData *battstat = data;
    
@@ -769,7 +775,7 @@ destroy_about (GtkWidget *w, gpointer data)
 }
 
 void
-about_cb (AppletWidget *widget, gpointer data)
+about_cb (PanelApplet *widget, gpointer data)
 {
    GtkWidget   *about_box;
    char        *authors[] = { "Jörgen Pehrson <jp@spektr.eu.org>", "Lennart Poettering <lennart@poettering.de> (Linux ACPI support)",
@@ -777,18 +783,23 @@ about_cb (AppletWidget *widget, gpointer data)
    
    about_box = gnome_about_new (
 				/* The long name of the applet in the About dialog.*/
-				_("Battery status utility"), VERSION,
+				_("Battery status utility"), 
+				VERSION,
 				_("(C) 2000 The Gnulix Society"),
+				_("This utility show the status of your laptop battery."),
 				(const char **) authors,
 				/* Longer description of the applet in the About dialog.*/
-				_("This utility show the status of your laptop battery."),
+				NULL,
+				NULL,
+				NULL);
+   /* FIXME
 				"battstat-tesla.xpm");
-   
+   */
    gtk_widget_show (about_box);
 }
 
 void
-change_orient (GtkWidget *w, PanelOrientType o, gpointer data)
+change_orient (GtkWidget *w, PanelAppletOrient o, gpointer data)
 {
    ProgressData *battstat = data;
    gchar new_label[80];
@@ -833,22 +844,22 @@ change_orient (GtkWidget *w, PanelOrientType o, gpointer data)
    if(batt_life > 100) batt_life = 100;
 
    switch(battstat->orienttype) {
-    case ORIENT_UP:
+    case PANEL_APPLET_ORIENT_UP:
       if(battstat->panelsize<40)
 	battstat->horizont=TRUE;
       else
 	battstat->horizont=FALSE;
       break;
-    case ORIENT_DOWN:
+    case PANEL_APPLET_ORIENT_DOWN:
       if(battstat->panelsize<40)
 	battstat->horizont=TRUE;
       else
 	battstat->horizont=FALSE;
       break;
-    case ORIENT_LEFT:
+    case PANEL_APPLET_ORIENT_LEFT:
       battstat->horizont=FALSE;
       break;
-    case ORIENT_RIGHT:
+    case PANEL_APPLET_ORIENT_RIGHT:
       battstat->horizont=FALSE;
       break;
    }
@@ -859,7 +870,7 @@ change_orient (GtkWidget *w, PanelOrientType o, gpointer data)
 			  parts of the applet in the preferences
 			  window. */
 			 _("You can't hide all elements of the applet!"));
-      width=gdk_string_width((battstat->percentstyle)->font,"100%")+46+3;
+      /*      width=gdk_string_width((battstat->percentstyle)->font,"100%")+46+3;*/
       gtk_widget_set_usize(battstat->framestatus, 20, 24);
       gtk_widget_set_usize(battstat->framebattery, width, 24);
       gtk_widget_show (battstat->framebattery);
@@ -927,10 +938,10 @@ change_orient (GtkWidget *w, PanelOrientType o, gpointer data)
 			       NULL);
 	 gtk_widget_set_usize(battstat->framestatus, 20, 24);
 	 if(battstat->showbattery == 1 && battstat->showpercent == 1) {
-	    width=gdk_string_width((battstat->percentstyle)->font,"100%")+46+3;
+	   /*	    width=gdk_string_width((battstat->percentstyle)->font,"100%")+46+3;*/
 	    gtk_widget_set_usize(battstat->framebattery, width, 24);
 	 } else if(battstat->showbattery == 0 && battstat->showpercent == 1) {
-	    width=gdk_string_width((battstat->percentstyle)->font,"100%")+6;
+	   /*	    width=gdk_string_width((battstat->percentstyle)->font,"100%")+6;*/
 	    gtk_widget_set_usize(battstat->framebattery, width, 24);
 	 } else if(battstat->showbattery == 1 && battstat->showpercent == 0) {
 	    gtk_widget_set_usize(battstat->framebattery, 46, 24);	
@@ -938,7 +949,7 @@ change_orient (GtkWidget *w, PanelOrientType o, gpointer data)
       }
    } else {
       /* Square mode */
-      width=gdk_string_width((battstat->percentstyle)->font,"100%")+6;
+     /*      width=gdk_string_width((battstat->percentstyle)->font,"100%")+6;*/
       
       gtk_widget_hide(battstat->framebattery);
       gtk_widget_show(battstat->frameybattery);
@@ -1138,25 +1149,26 @@ toggle_value_changed_cb ( GtkToggleButton *ignored, gpointer data )
    battstat->showstatus = (GTK_TOGGLE_BUTTON (battstat->radio_lay_status_on))->active;
    battstat->showpercent = (GTK_TOGGLE_BUTTON (battstat->radio_lay_percent_on))->active;
    battstat->showbattery = (GTK_TOGGLE_BUTTON (battstat->radio_lay_batt_on))->active;
-   battstat->own_font = (GTK_TOGGLE_BUTTON (battstat->font_toggle))->active;
+   /*   battstat->own_font = (GTK_TOGGLE_BUTTON (battstat->font_toggle))->active;*/
    
    if(battstat->lowbattnotification || battstat->fullbattnot)
      gtk_widget_set_sensitive(GTK_WIDGET (battstat->beep_toggle), TRUE);
    else
      gtk_widget_set_sensitive(GTK_WIDGET (battstat->beep_toggle), FALSE);
-   
+   /*   
    if(battstat->own_font) {
-      /*     gtk_widget_set_sensitive(GTK_WIDGET (battstat->fontlabel), TRUE); */
+   *     gtk_widget_set_sensitive(GTK_WIDGET (battstat->fontlabel), TRUE); 
       gtk_widget_set_sensitive(GTK_WIDGET (battstat->fontpicker), TRUE);
    } else {
-      /*     gtk_widget_set_sensitive(GTK_WIDGET (battstat->fontlabel), FALSE); */
+   *     gtk_widget_set_sensitive(GTK_WIDGET (battstat->fontlabel), FALSE); 
       gtk_widget_set_sensitive(GTK_WIDGET (battstat->fontpicker), FALSE);
    }
+*/
    gnome_property_box_changed (GNOME_PROPERTY_BOX (battstat->prop_win));
    return;
 }
 
-
+/*
 static void
 build_our_plug(StatusDocklet *docklet, GtkWidget *plug, gpointer data)
 {
@@ -1186,7 +1198,7 @@ build_our_plug(StatusDocklet *docklet, GtkWidget *plug, gpointer data)
    
    return;
 }
-
+*/
 #ifdef HAVE_PANEL_PIXEL_SIZE
 void
   applet_change_pixel_size(GtkWidget *w, int size, gpointer data)
@@ -1204,6 +1216,7 @@ void
 }
 #endif
 
+/*
 gint
 applet_save_session(GtkWidget *w,
 		      char *privcfgpath,
@@ -1218,7 +1231,7 @@ applet_save_session(GtkWidget *w,
    gnome_config_set_int ("batt/red_val", battstat->red_val);
    gnome_config_set_int ("batt/orange_val", battstat->orange_val);
    gnome_config_set_int ("batt/yellow_val", battstat->yellow_val);
-   gnome_config_set_string ("batt/fontname", battstat->fontname);
+      gnome_config_set_string ("batt/fontname", battstat->fontname);
    gnome_config_set_bool ("batt/lowbattnotification", battstat->lowbattnotification);
    gnome_config_set_bool ("batt/fullbattnot", battstat->fullbattnot);
    gnome_config_set_bool ("batt/beep", battstat->beep);
@@ -1237,7 +1250,9 @@ applet_save_session(GtkWidget *w,
    
    return FALSE;
 }
+*/
 
+/*
 static gint
 load_preferences(gpointer data)
 {
@@ -1265,7 +1280,7 @@ load_preferences(gpointer data)
    
    return FALSE;
 }
-
+*/
 gint
 init_applet(int argc, char *argv[], gpointer data)
 {
@@ -1281,7 +1296,7 @@ init_applet(int argc, char *argv[], gpointer data)
 	       _("Can't create applet!\n"));
       destroy_applet(battstat->applet, battstat);
    }
-   battstat->font_changed=TRUE;
+   /*   battstat->font_changed=TRUE;*/
    return FALSE;
 }
 
@@ -1488,10 +1503,10 @@ create_layout(int argc, char *argv[], gpointer data)
 					    "suspend",
 					    FALSE);
    }
+   /*
    gtk_signal_connect (GTK_OBJECT(battstat->applet),"save_session",
 		       GTK_SIGNAL_FUNC(applet_save_session),
 		       battstat);
-   
    
    statusdock = status_docklet_new();
    
@@ -1499,7 +1514,7 @@ create_layout(int argc, char *argv[], gpointer data)
 		      GTK_SIGNAL_FUNC(build_our_plug),
 		      battstat);
    status_docklet_run(STATUS_DOCKLET(statusdock));
-   
+   */
 #ifdef HAVE_PANEL_PIXEL_SIZE
    gtk_signal_connect(GTK_OBJECT(battstat->applet),"change_pixel_size",
 		      GTK_SIGNAL_FUNC(applet_change_pixel_size),
@@ -1536,9 +1551,9 @@ main(int argc, char *argv[])
    battstat->panelsize = 48;
    glade_gnome_init ();
    init_applet(argc, argv, battstat);
-   load_preferences(battstat);
+   /*   load_preferences(battstat);*/
    create_layout(argc, argv, battstat);
-   load_font(battstat);
+   /*   load_font(battstat);*/
    pixmap_timeout(battstat);
    gtk_signal_emit_by_name(GTK_OBJECT(battstat->applet), "change_orient", battstat, NULL);
 #ifdef HAVE_PANEL_PIXEL_SIZE

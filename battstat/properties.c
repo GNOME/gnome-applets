@@ -48,10 +48,15 @@ $Id$
 #include <time.h>
 #include <unistd.h>
 
+#include <gnome.h>
+#include <libgnomeui/gnome-window-icon.h>
+#include <gdk/gdkx.h>
+
 #include <glade/glade.h>
 #include <gtk/gtkspinbutton.h>
-#include <applet-widget.h>
-#include <status-docklet.h>
+
+#include <panel-applet.h>
+/*#include <status-docklet.h>*/
 
 #include "battstat.h"
 
@@ -79,6 +84,7 @@ prop_apply (GtkWidget *w, int page, gpointer data)
   battstat->orange_val = GTK_ADJUSTMENT (battstat->eorange_adj)->value;
   battstat->red_val = GTK_ADJUSTMENT (battstat->ered_adj)->value;
 
+	/*
   battstat->own_font = (GTK_TOGGLE_BUTTON (battstat->font_toggle))->active;
 
   if(battstat->font_changed) {
@@ -91,7 +97,7 @@ prop_apply (GtkWidget *w, int page, gpointer data)
   else
     (battstat->percentstyle)->font=gdk_font_load ("fixed");
   gtk_widget_set_style (battstat->testpercent, battstat->percentstyle);
-
+	*/
   battstat->lowbattnotification = (GTK_TOGGLE_BUTTON (battstat->lowbatt_toggle))->active;
   battstat->draintop = (GTK_TOGGLE_BUTTON (battstat->progdir_radio))->active;
   battstat->colors_changed=TRUE;
@@ -145,7 +151,7 @@ prop_cancel (GtkWidget *w, gpointer data)
 }
 
 void
-prop_cb (AppletWidget *applet, gpointer data)
+prop_cb (PanelApplet *applet, gpointer data)
 {
   ProgressData   *battstat = data;
   GladeXML       *glade_xml;
@@ -180,7 +186,7 @@ prop_cb (AppletWidget *applet, gpointer data)
    } 
 
   glade_xml = glade_xml_new (GLADE_DIR "/battstat_applet.glade", 
-                             "battstat_properties");
+                             "battstat_properties", NULL);
   
   battstat->prop_win = GNOME_PROPERTY_BOX (glade_xml_get_widget (glade_xml, 
 																																 "battstat_properties"));
@@ -268,18 +274,20 @@ prop_cb (AppletWidget *applet, gpointer data)
   gtk_signal_connect (GTK_OBJECT (battstat->beep_toggle), "toggled",
                       GTK_SIGNAL_FUNC (toggle_value_changed_cb), battstat);
 
+	/*
   battstat->font_toggle = glade_xml_get_widget (glade_xml, "font_toggle");
+
 
   battstat->fontpicker = glade_xml_get_widget (glade_xml, "font_picker");
  
   gnome_font_picker_set_font_name (GNOME_FONT_PICKER (battstat->fontpicker), battstat->fontname);
-
   if(battstat->own_font == 0) {
     gtk_widget_set_sensitive(GTK_WIDGET (battstat->fontpicker), FALSE);
   }
 
   gtk_signal_connect (GTK_OBJECT (battstat->fontpicker), "font_set",
 		      GTK_SIGNAL_FUNC (font_set_cb), battstat);
+	*/
    
   battstat->suspend_entry = glade_xml_get_widget (glade_xml, "suspend_entry");
 
@@ -343,10 +351,10 @@ prop_cb (AppletWidget *applet, gpointer data)
 
    gtk_signal_connect (GTK_OBJECT (battstat->dock_toggle), "toggled",
 		       GTK_SIGNAL_FUNC (toggle_value_changed_cb), battstat);
-   
+	 /*   
    gtk_signal_connect (GTK_OBJECT (battstat->font_toggle), "toggled",
 		       GTK_SIGNAL_FUNC (toggle_value_changed_cb), battstat);
-   
+	 */ 
    gtk_signal_connect (GTK_OBJECT(battstat->suspend_entry), "changed",
 		       GTK_SIGNAL_FUNC( toggle_value_changed_cb), battstat);
    

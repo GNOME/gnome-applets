@@ -1,6 +1,6 @@
-# Makefile.in generated automatically by automake 1.4-p4 from Makefile.am
+# Makefile.in generated automatically by automake 1.4-p5 from Makefile.am
 
-# Copyright (C) 1994, 1995-8, 1999 Free Software Foundation, Inc.
+# Copyright (C) 1994, 1995-8, 1999, 2001 Free Software Foundation, Inc.
 # This Makefile.in is free software; the Free Software Foundation
 # gives unlimited permission to copy and/or distribute it,
 # with or without modifications, as long as this notice is preserved.
@@ -66,79 +66,65 @@ POST_UNINSTALL = :
 host_alias = @host_alias@
 host_triplet = @host@
 AS = @AS@
-BUILD_INCLUDED_LIBINTL = @BUILD_INCLUDED_LIBINTL@
+BATTSTAT_CFLAGS = @BATTSTAT_CFLAGS@
+BATTSTAT_LIBS = @BATTSTAT_LIBS@
 CATALOGS = @CATALOGS@
 CATOBJEXT = @CATOBJEXT@
 CC = @CC@
-CPP = @CPP@
+CFLAGS = @CFLAGS@
+CPPFLAGS = @CPPFLAGS@
 DATADIRNAME = @DATADIRNAME@
 DLLTOOL = @DLLTOOL@
 ECHO = @ECHO@
 EXEEXT = @EXEEXT@
-GENCAT = @GENCAT@
-GLIBC21 = @GLIBC21@
 GMOFILES = @GMOFILES@
 GMSGFMT = @GMSGFMT@
-GNOMEGNORBA_LIBS = @GNOMEGNORBA_LIBS@
-GNOMEUI_LIBS = @GNOMEUI_LIBS@
-GNOME_APPLETS_LIBS = @GNOME_APPLETS_LIBS@
-GNOME_CAPPLET_LIBS = @GNOME_CAPPLET_LIBS@
-GNOME_CONFIG = @GNOME_CONFIG@
-GNOME_DOCKLETS_LIBS = @GNOME_DOCKLETS_LIBS@
-GNOME_INCLUDEDIR = @GNOME_INCLUDEDIR@
-GNOME_LIBDIR = @GNOME_LIBDIR@
-GNOME_LIBS = @GNOME_LIBS@
-GNORBA_CFLAGS = @GNORBA_CFLAGS@
-GNORBA_LIBS = @GNORBA_LIBS@
-GTKXMHTML_LIBS = @GTKXMHTML_LIBS@
+GNOME_INTERFACE_VERSION = @GNOME_INTERFACE_VERSION@
 GTK_CFLAGS = @GTK_CFLAGS@
-GTK_CONFIG = @GTK_CONFIG@
 GTK_LIBS = @GTK_LIBS@
 HAVE_LIBAPM = @HAVE_LIBAPM@
 INSTOBJEXT = @INSTOBJEXT@
-INTLBISON = @INTLBISON@
 INTLDEPS = @INTLDEPS@
 INTLLIBS = @INTLLIBS@
 INTLOBJS = @INTLOBJS@
-INTL_LIBTOOL_SUFFIX_PREFIX = @INTL_LIBTOOL_SUFFIX_PREFIX@
-LIBICONV = @LIBICONV@
+INTLTOOL_PERL = @INTLTOOL_PERL@
+LDFLAGS = @LDFLAGS@
 LIBTOOL = @LIBTOOL@
-LIBTOOL_DEPS = @LIBTOOL_DEPS@
 LN_S = @LN_S@
 MAINT = @MAINT@
 MAKEINFO = @MAKEINFO@
 MKINSTALLDIRS = @MKINSTALLDIRS@
-MSGFMT = @MSGFMT@
 OBJDUMP = @OBJDUMP@
 OBJEXT = @OBJEXT@
-ORBIT_CFLAGS = @ORBIT_CFLAGS@
-ORBIT_CONFIG = @ORBIT_CONFIG@
-ORBIT_IDL = @ORBIT_IDL@
-ORBIT_LIBS = @ORBIT_LIBS@
 PACKAGE = @PACKAGE@
+PKG_CONFIG = @PKG_CONFIG@
 POFILES = @POFILES@
 POSUB = @POSUB@
+PTHREAD_LIB = @PTHREAD_LIB@
 RANLIB = @RANLIB@
+SCROLLKEEPER_CONFIG = @SCROLLKEEPER_CONFIG@
 SPEC_VERSION = @SPEC_VERSION@
-STATIC = @STATIC@
 STRIP = @STRIP@
 TAR_NAME = @TAR_NAME@
 USE_INCLUDED_LIBINTL = @USE_INCLUDED_LIBINTL@
 USE_NLS = @USE_NLS@
 VERSION = @VERSION@
+WARN_CFLAGS = @WARN_CFLAGS@
 XML_I18N_EXTRACT = @XML_I18N_EXTRACT@
 XML_I18N_MERGE = @XML_I18N_MERGE@
-XML_I18N_TOOLS_PERL = @XML_I18N_TOOLS_PERL@
+XML_I18N_MERGE_DESKTOP_RULE = @XML_I18N_MERGE_DESKTOP_RULE@
+XML_I18N_MERGE_DIRECTORY_RULE = @XML_I18N_MERGE_DIRECTORY_RULE@
+XML_I18N_MERGE_KEYS_RULE = @XML_I18N_MERGE_KEYS_RULE@
+XML_I18N_MERGE_OAF_RULE = @XML_I18N_MERGE_OAF_RULE@
+XML_I18N_MERGE_PONG_RULE = @XML_I18N_MERGE_PONG_RULE@
+XML_I18N_MERGE_SERVER_RULE = @XML_I18N_MERGE_SERVER_RULE@
+XML_I18N_MERGE_SHEET_RULE = @XML_I18N_MERGE_SHEET_RULE@
+XML_I18N_MERGE_SOUNDLIST_RULE = @XML_I18N_MERGE_SOUNDLIST_RULE@
+XML_I18N_MERGE_XML_RULE = @XML_I18N_MERGE_XML_RULE@
 XML_I18N_UPDATE = @XML_I18N_UPDATE@
-ZVT_LIBS = @ZVT_LIBS@
-cflags_set = @cflags_set@
+XPM_LIBS = @XPM_LIBS@
 cxxflags_set = @cxxflags_set@
-gladeincludedir = @gladeincludedir@
-gnomebindir = @gnomebindir@
-gnomeconfdir = @gnomeconfdir@
-gnomedatadir = @gnomedatadir@
 gnomelocaledir = @gnomelocaledir@
-gnomeprefix = @gnomeprefix@
 
 gladedir = $(datadir)/battstat_applet
 glade_DATA = battstat_applet.glade
@@ -147,16 +133,18 @@ glade_DATA = battstat_applet.glade
 @HAVE_LIBAPM_TRUE@APMDIR = 
 @HAVE_LIBAPM_FALSE@APMDIR = -I$(top_srcdir)/apmlib
 
-INCLUDES =  	-I$(top_srcdir)/intl 	-I$(top_srcdir) 	-I$(includedir) 	$(GNOME_INCLUDEDIR) 	$(gladeincludedir) 	-DDATA_DIR=\"$(datadir)\" 	-DGLADE_DIR=\"$(gladedir)\" 	-DG_LOG_DOMAIN=\"battstat_applet\" 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\" 	$(APMDIR) $(NULL)
+INCLUDES =  	-I$(top_srcdir)/intl 	-I$(top_srcdir) 	-I$(includedir) 	$(gladeincludedir) 	$(BATTSTAT_CFLAGS) 	-DDATA_DIR=\"$(datadir)\" 	-DGLADE_DIR=\"$(gladedir)\" 	-DG_LOG_DOMAIN=\"battstat_applet\" 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\" 	$(APMDIR) $(NULL)
 
+#	-DG_DISABLE_DEPRECATED -DGTK_DISABLE_DEPRECATED \
+#	-DGDK_DISABLE_DEPRECATED -DGNOME_DISABLE_DEPRECATED 
 
 bin_PROGRAMS = battstat_applet
 
 battstat_applet_CFLAGS = -DAPPLET 
 
-battstat_applet_SOURCES = battstat.h pixmaps.h properties.c battstat_applet.c acpi-linux.c
+battstat_applet_SOURCES = battstat.h pixmaps.h properties.c battstat_applet.c acpi-linux.c acpi-linux.h
 
-battstat_applet_LDADD =  			$(GNOME_LIBDIR) 				$(GNOME_APPLETS_LIBS)   	 		${GNOME_DOCKLETS_LIBS}				-lglade						-lglade-gnome           			$(APMLIB)
+battstat_applet_LDADD =  	 		${BATTSTAT_LIBS}				-lglade						-lglade-gnome           			$(APMLIB)
 
 
 EXTRA_DIST = $(glade_DATA)
@@ -168,15 +156,12 @@ PROGRAMS =  $(bin_PROGRAMS)
 
 
 DEFS = @DEFS@ -I. -I$(srcdir) -I..
-CPPFLAGS = @CPPFLAGS@
-LDFLAGS = @LDFLAGS@
 LIBS = @LIBS@
 battstat_applet_OBJECTS =  properties.$(OBJEXT) \
 battstat_applet.$(OBJEXT) acpi-linux.$(OBJEXT)
 @HAVE_LIBAPM_FALSE@battstat_applet_DEPENDENCIES =  ../apmlib/libapm.a
 @HAVE_LIBAPM_TRUE@battstat_applet_DEPENDENCIES = 
 battstat_applet_LDFLAGS = 
-CFLAGS = @CFLAGS@
 COMPILE = $(CC) $(DEFS) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 LTCOMPILE = $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 CCLD = $(CC)

@@ -112,7 +112,7 @@ typedef struct _ProgressData {
   guint orange_val;
   guint yellow_val;
   gint panelsize;
-  PanelOrientType orienttype;
+  PanelAppletOrient orienttype;
   GtkObject *ered_adj;
   GtkObject *eorange_adj;
   GtkObject *eyellow_adj;
@@ -143,7 +143,7 @@ GdkBitmap *statusmask[4];
 
 extern char * battery_gray_xpm[];
 
-void prop_cb (AppletWidget *, gpointer);
+void prop_cb (PanelApplet *, gpointer);
 int prop_cancel (GtkWidget *, gpointer);
 void prop_apply (GtkWidget *, int, gpointer);
 
@@ -152,16 +152,16 @@ void adj_value_changed_cb(GtkAdjustment *, gpointer);
 void toggle_value_changed_cb(GtkToggleButton *, gpointer);
 void font_set_cb(GtkWidget *, int, gpointer);
 void simul_cb(GtkWidget *, gpointer);
-void helppref_cb(AppletWidget *, gpointer);
+void helppref_cb(PanelApplet *, gpointer);
 void load_font(gpointer);
 gint pixmap_timeout(gpointer);
-void change_orient(GtkWidget *, PanelOrientType, gpointer);
+void change_orient(GtkWidget *, PanelAppletOrient, gpointer);
 void destroy_applet( GtkWidget *, gpointer);
 void cleanup(int);
-void help_cb (AppletWidget *, gpointer);
-void suspend_cb (AppletWidget *, gpointer);
+void help_cb (PanelApplet *, gpointer);
+void suspend_cb (PanelApplet *, gpointer);
 void destroy_about (GtkWidget *, gpointer);
-void about_cb (AppletWidget *, gpointer);
+void about_cb (PanelApplet *, gpointer);
 gint applet_save_session(GtkWidget *, char *, char *, gpointer);
 void applet_change_pixel_size(GtkWidget *, int, gpointer);
 gint init_applet(int, char *[], gpointer);

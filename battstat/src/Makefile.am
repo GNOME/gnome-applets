@@ -19,24 +19,24 @@ INCLUDES = \
 	-I$(top_srcdir)/intl \
 	-I$(top_srcdir) \
 	-I$(includedir) \
-	$(GNOME_INCLUDEDIR) \
 	$(gladeincludedir) \
+	$(BATTSTAT_CFLAGS) \
 	-DDATA_DIR=\"$(datadir)\" \
 	-DGLADE_DIR=\"$(gladedir)\" \
 	-DG_LOG_DOMAIN=\"battstat_applet\" \
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\" \
+#	-DG_DISABLE_DEPRECATED -DGTK_DISABLE_DEPRECATED \
+#	-DGDK_DISABLE_DEPRECATED -DGNOME_DISABLE_DEPRECATED 
 	$(APMDIR) $(NULL)
 
 bin_PROGRAMS = battstat_applet
 
 battstat_applet_CFLAGS = -DAPPLET 
 
-battstat_applet_SOURCES = battstat.h pixmaps.h properties.c battstat_applet.c acpi-linux.c
+battstat_applet_SOURCES = battstat.h pixmaps.h properties.c battstat_applet.c acpi-linux.c acpi-linux.h
 
 battstat_applet_LDADD = 			\
-			$(GNOME_LIBDIR) 	\
-			$(GNOME_APPLETS_LIBS)   \
-	 		${GNOME_DOCKLETS_LIBS}	\
+	 		${BATTSTAT_LIBS}	\
 			-lglade			\
 			-lglade-gnome           \
 			$(APMLIB)

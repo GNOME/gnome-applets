@@ -1,137 +1,47 @@
-#
-# configure.in
-#
-# Author: Jörgen Pehrson <jp@spektr.eu.org>
-#
-# Created: Sun May  7 19:13:52 CEST 2000
-#
-# $Id$
-#
 
-AC_INIT(configure.in)
 BS_MAJOR=2
 BS_MINOR=1
 BS_SUB=0
 SPEC_VERSION=$BS_MAJOR.$BS_MINOR.$BS_SUB
 TAR_NAME="battstat_applet-"$BS_MAJOR.$BS_MINOR.$BS_SUB
 
-dnl This is required since older gettext versions doesn't work properly with Big5.
-GETTEXT_REQUIRED=0.10.37
-
 AC_SUBST(SPEC_VERSION)
 AC_SUBST(TAR_NAME)
+AC_INIT(battstat_applet, $SPEC_VERSION,
+	http://bugzilla.gnome.org/enter_bug.cgi?product=battstat_applet)
 AM_CONFIG_HEADER(config.h)
-AC_CANONICAL_HOST
-AC_MSG_CHECKING(cached information)
 
-hostcheck="$host"
-AC_CACHE_VAL(ac_cv_hostcheck, [ ac_cv_hostcheck="$hostcheck" ])
-if test "$ac_cv_hostcheck" != "$hostcheck"; then
-  AC_MSG_RESULT(changed)
-  AC_MSG_WARN(config.cache exists!)
-  AC_MSG_ERROR(you must do 'make distclean' first to compile for different host or different parameters.)
-else
-  AC_MSG_RESULT(ok)
-fi
+dnl Might as well give it a GNOME 2.0 version number
+AM_INIT_AUTOMAKE(AC_PACKAGE_NAME, AC_PACKAGE_VERSION)
 
-dnl The two functions below comes from Nautilus 1.0.
-
-dnl EAZEL_VERSION_CANON(version)
-dnl                     1
-
-AC_DEFUN(EAZEL_VERSION_CANON, [`
-
-	dnl Assumes that there are no more than 999 revisions at a level,
-	dnl no more than three levels of revision.
-	dnl
-	dnl Any more than that, and test starts messing up the numeric
-	dnl comparisons because its integers overflow, and there's no
-	dnl way to do string comparisons in the shell.  Grr.
-	dnl
-	dnl Must come up with some way to fix this.
-
-	echo "$1" |
-	tr . '\012' |
-	sed -e 's/^/000/' -e 's/^.*\(...\)/\1/' |
-	tr -d '\012' |
-	sed 's/$/000000000/
-	     s/^\(.........\).*/\1/'
-`])
-dnl EAZEL_VERSION_INSIST(package, get-version-cmd, operator, want-version-var)
-dnl                      1        2                3         4
-
-AC_DEFUN(EAZEL_VERSION_INSIST, [
-	ez_want_version=[$]$4
-
-	case "$3" in
-		">")	ez_operator=-gt ;;
-		">=")	ez_operator=-ge ;;
-		"<")	ez_operator=-lt ;;
-		"<=")	ez_operator=-le ;;
-		"=")	ez_operator=-eq ;;
-		"!=")	ez_operator=-ne ;;
-		*)	AC_ERROR(Unknown operator $3 in configure script) ;;
-	esac
-
-	AC_MSG_CHECKING(for $1 $3 [$ez_want_version])
-
-	if ez_installed_version="`$2`"
-	then
-		AC_MSG_RESULT([$ez_installed_version])
-	else
-		AC_ERROR($2 failed)
-	fi
-
-	if test "EAZEL_VERSION_CANON([$ez_installed_version])" "$ez_operator" \
-		"EAZEL_VERSION_CANON([$ez_want_version])"
-	then
-		:
-		AC_SUBST($4)
-	else
-		AC_ERROR($1 version [$ez_want_version] is required.)
-	fi
-])
-
+AM_MAINTAINER_MODE
 
 AC_PROG_CC
-AC_PROG_INSTALL
 AC_ISC_POSIX
-AC_PROG_CPP
-AC_ARG_PROGRAM
-AC_DEFINE(DEBUG, 0)
-
-AM_INIT_AUTOMAKE(battstat_applet, $SPEC_VERSION)
-
-dnl
-dnl Libtool
-dnl
-AC_LIBTOOL_DLOPEN
-AM_DISABLE_STATIC
-AM_PROG_LIBTOOL
-AC_SUBST(LIBTOOL_DEPS)
-if ${CONFIG_SHELL} ./libtool --features | grep "enable static" >/dev/null; then
-  STATIC="-static"
-else
-  STATIC=
-fi
-AC_SUBST(STATIC)
-
-
 AC_HEADER_STDC
-AM_PATH_GTK(1.2.0)
-CFLAGS="$CFLAGS"
-AM_MAINTAINER_MODE
-AM_ACLOCAL_INCLUDE(macros)
-GNOME_INIT(applets docklets)
-GNOME_COMPILE_WARNINGS
+AM_PROG_LIBTOOL
 
-AC_CHECK_HEADERS(unistd.h)
-AC_CHECK_FUNCS(getopt)
+GNOME_COMPILE_WARNINGS
+GNOME_PLATFORM_GNOME_2(yes, force)
+GNOME2_X_CHECKS
+
+LIBGNOME_REQUIRED=1.96.0
+LIBGNOMEUI_REQUIRED=1.96.0
+SCROLLKEEPER_REQUIRED=0.1.4
+LIBGLADE_REQUIRED=1.99.5
+
+PKG_CHECK_MODULES(BATTSTAT, libgnome-2.0 >= $LIBGNOME_REQUIRED libgnomeui-2.0 >= $LIBGNOMEUI_REQUIRED libpanelapplet-2.0 libglade-2.0 >= $LIBGLADE_REQUIRED)
+AC_SUBST(BATTSTAT_CFLAGS)
+AC_SUBST(BATTSTAT_LIBS)
+
+dnl Test for Scrollkeeper
+
+AC_PATH_PROG(SCROLLKEEPER_CONFIG, scrollkeeper-config,no)
+if test x$SCROLLKEEPER_CONFIG = xno; then
+  AC_MSG_ERROR(Couldn't find scrollkeeper-config, please install the scrollkeeper package)
+fi
 
 case "${host}" in
-  *-*-freebsd*)
-	LDFLAGS="$LDFLAGS $GTK_LIBS"
-	;;
   powerpc-*-linux*)
   	HAVE_LIBAPM=no
   	AM_CONDITIONAL(HAVE_LIBAPM, test "x$HAVE_LIBAPM" = "xyes")
@@ -145,102 +55,32 @@ case "${host}" in
 	AC_MSG_ERROR([*** libapm not found.])])
 	LDFLAGS="$LDFLAGS $GTK_LIBS -lapm"
 	;;
-  *)
-	AC_MSG_WARN($host is not supported. You are on your own!)
-	LDFLAGS="$LDFLAGS $GTK_LIBS"
-        ;;
 esac
 
-if test -f $srcdir/MANIFEST
-then
-  AC_MSG_CHECKING(if all files are included in the distribution)
-  cat $srcdir/MANIFEST | while read afile
-  do
-    if test ! -f $srcdir/$afile
-    then
-      AC_MSG_WARN(file $afile missing from distribution)
-    fi
-  done
-  AC_MSG_RESULT(yes)
-fi
-
-dnl ######################################################################################
-dnl Install into gnome locations? (may require priveliges that we don't have)
-dnl ######################################################################################
-
-AC_ARG_ENABLE([system-install], [  --disable-system-install Don't install some files into Gnome's prefix],[
-        use_system_install=$enableval
-],[
-        if test x"$BALSA_DISTCHECK_HACK" = xyes ; then
-                use_system_install=no
-        else
-                use_system_install=yes
-        fi
-])
-
-AC_MSG_CHECKING([whether to install into Gnome's prefix])
-if test x"$use_system_install" = xyes ; then
-        AC_MSG_RESULT([yes])
-        gnomeprefix=`${GNOME_CONFIG} --prefix`
-        gnomebindir=`${GNOME_CONFIG} --bindir`
-        gnomedatadir=`${GNOME_CONFIG} --datadir`
-        gnomeconfdir=`${GNOME_CONFIG} --sysconfdir`
-	gnomelocaledir='${prefix}/${DATADIRNAME}/locale'
-	gladeincludedir=`${GNOME_CONFIG} --cflags libglade`
-else
-        AC_MSG_RESULT([no])
-        gnomeprefix=`eval "echo ${prefix}"`
-        gnomebindir=`eval "echo ${prefix}"/bin`
-        gnomedatadir=`eval "echo ${datadir}"`
-        gnomeconfdir=`eval "echo ${sysconfdir}"`
-	gnomelocaledir='${prefix}/${DATADIRNAME}/locale'
-	gladeincludedir=`${GNOME_CONFIG} --cflags libglade`
-fi
-
-AC_SUBST(gnomeprefix)
-AC_SUBST(gnomebindir)
-AC_SUBST(gnomedatadir)
-AC_SUBST(gnomeconfdir)
-AC_SUBST(gnomelocaledir)
-AC_SUBST(gladeincludedir)
+AM_PROG_XML_I18N_TOOLS
 
 ALL_LINGUAS="az bg da de es hu no pl pt ru sk sv uk zh_TW"
-AM_GNU_GETTEXT
-USE_INCLUDED_LIBINTL="no"
-AM_PROG_XML_I18N_TOOLS
-INTLDEPS=""
-INTLLIBS=""
-INTLOBJS=""
-AC_SUBST(USE_INCLUDED_LIBINTL)
-AC_SUBST(INTLDEPS)
-AC_SUBST(INTLLIBS)
-AC_SUBST(INTLOBJS)
 
-EAZEL_VERSION_INSIST(gettext, gettext -V | grep "GNU gettext" | awk '{print $4}', >=, GETTEXT_REQUIRED)
- 
-INSTOBJEXT=.mo
-AC_SUBST(INSTOBJEXT)
+AM_GLIB_GNU_GETTEXT
 
-AC_DEFINE_UNQUOTED(GNOME_ICONDIR, "${GNOME_PREFIX}/share/gnome/pixmaps")
+# this is the directory where the *.{mo,gmo} files are installed
+gnomelocaledir='${prefix}/${DATADIRNAME}/locale'
+AC_SUBST(gnomelocaledir)
+
+AC_SUBST(CFLAGS)
+AC_SUBST(CPPFLAGS)
+AC_SUBST(LDFLAGS)
+
+AC_DEFINE_UNQUOTED(GNOME_ICONDIR, "${GNOME_PREFIX}/share/pixmaps")
 
 AC_OUTPUT([
 Makefile
-macros/Makefile
-apmlib/Makefile
 src/Makefile
-intl/Makefile
+apmlib/Makefile
 po/Makefile.in
-docs/Makefile
-docs/C/Makefile
-docs/pl/Makefile
 sounds/Makefile
+docs/Makefile
 bs.spec
 ])
 
-if test "$prefix" != "$gnomeprefix"; then
-  AC_MSG_WARN(\$prefix is different from where GNOME is installed)
-  AC_MSG_WARN(This can potentionally be a problem, due to the way GNOME works.)
-  AC_MSG_WARN(To make sure that everything will work correctly, run configure again with --prefix=$gnomeprefix)
-  AC_MSG_WARN(\$prefix = $prefix)
-  AC_MSG_WARN(GNOME prefix = $gnomeprefix)
-fi
+
