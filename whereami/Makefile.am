@@ -1,12 +1,12 @@
 SUBDIRS = docs
 
-INCLUDES = $(GNOME_INCLUDEDIR) -DGNOMELOCALEDIR=\""$(datadir)/locale"\"
+INCLUDES = -DGNOMELOCALEDIR=\""$(datadir)/locale"\"
 
 bin_PROGRAMS = whereami_applet
 
 whereami_applet_SOURCES = whereami.c
 
-whereami_applet_LDADD = $(GNOME_LIBDIR) $(GNOME_APPLETS_LIBS) $(INTLLIBS) 
+whereami_applet_LDADD = $(GNOME_APPLETS_LIBS) $(INTLLIBS) 
 
 sysdir = $(datadir)/applets/Utility
 sys_predata = whereami_applet.desktop.in

@@ -3,7 +3,7 @@ SUBDIRS = docs
 INCLUDES = -I. -I$(srcdir) 				\
 	-I$(top_srcdir)/intl -I$(top_builddir)/intl	\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
-	-I$(includedir) $(GNOME_INCLUDEDIR)		\
+	-I$(includedir) 				\
 	$(LIBGTOP_INCS)
 
 bin_PROGRAMS = cpumemusage_applet
@@ -14,7 +14,6 @@ cpumemusage_applet_SOURCES = \
 	proc.h
 
 cpumemusage_applet_LDADD = \
-		     $(GNOME_LIBDIR) \
 		     $(GNOME_APPLETS_LIBS) $(INTLLIBS)	\
 		     $(LIBGTOP_LIBS) $(LIBGTOP_EXTRA_LIBS)
 

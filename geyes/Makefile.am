@@ -2,7 +2,7 @@ SUBDIRS = themes docs
 
 INCLUDES = -I. -I$(srcdir) 				\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
-	-I$(includedir) $(GNOME_INCLUDEDIR)             \
+	-I$(includedir) 				\
 	-DGEYES_THEMES_DIR=\""$(datadir)/geyes/"\"
 
 bin_PROGRAMS = geyes_applet
@@ -13,7 +13,6 @@ geyes_applet_SOURCES =	\
 	geyes.h
 
 geyes_applet_LDADD = \
-	$(GNOME_LIBDIR) \
 	$(GNOME_APPLETS_LIBS) $(INTLLIBS)
 
 EXTRA_DIST = geyes_applet.desktop.in \

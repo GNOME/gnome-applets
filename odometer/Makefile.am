@@ -3,7 +3,7 @@ SUBDIRS = themes docs
 INCLUDES = -I. -I$(srcdir) 					\
 	-I$(top_srcdir)/intl -I$(top_builddir)/intl		\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"		\
-	-I$(includedir) $(GNOME_INCLUDEDIR)			\
+	-I$(includedir)						\ 
 	-DODOMETER_THEMES_DIR=\""$(datadir)/odometer/"\"
 
 bin_PROGRAMS = odometer_applet
@@ -11,7 +11,6 @@ bin_PROGRAMS = odometer_applet
 odometer_applet_SOURCES = odo.c odo.h properties.c theme.c
 
 odometer_applet_LDADD = \
-		$(GNOME_LIBDIR) \
 		$(GNOME_APPLETS_LIBS) $(INTLLIBS) 
 
 sysdir = $(datadir)/applets/Amusements

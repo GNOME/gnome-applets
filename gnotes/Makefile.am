@@ -3,7 +3,7 @@ SUBDIRS = docs
 INCLUDES = -I. -I$(srcdir)                              \
         -I$(top_srcdir)/intl -I$(top_builddir)/intl     \
         -DGNOMELOCALEDIR=\""$(datadir)/locale"\"        \
-        -I$(includedir) $(GNOME_INCLUDEDIR)
+        -I$(includedir) 
 
 bin_PROGRAMS = gnotes_applet
 
@@ -18,7 +18,6 @@ gnotes_applet_SOURCES = \
         properties.c
 
 gnotes_applet_LDADD = \
-	$(GNOME_LIBDIR) \
 	$(GNOME_APPLETS_LIBS) \
 	$(GNOME_XML_LIB) \
 	$(INTLLIBS)

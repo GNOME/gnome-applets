@@ -1,7 +1,7 @@
 INCLUDES = -I. -I$(srcdir)                              \
 	-I$(top_srcdir)/intl -I$(top_builddir)/intl     \
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"        \
-	-I$(includedir) $(GNOME_INCLUDEDIR)		\
+	-I$(includedir)					\ 
 	@PIXBUF_CFLAGS@ -DGNOMEDATADIR=\""$(datadir)"\"
 
 bin_PROGRAMS = gkb_applet
@@ -26,7 +26,6 @@ gkb_applet_SOURCES = \
 #libgkb_applet_la_SOURCES= gkb.c gkb.h prop.c preset.c
 
 gkb_applet_LDADD =     $(GNOME_APPLETS_LIBS) \
-                       $(GNOME_LIBDIR) \
                        $(GNOMEGNORBA_LIBS) $(INTLLIBS) \
                        @PIXBUF_LIBS@
 

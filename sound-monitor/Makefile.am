@@ -4,7 +4,7 @@ INCLUDES = -I$(srcdir) -I$(builddir) \
 	-I$(top_srcdir) -I$(top_builddir)	\
 	-I$(top_srcdir)/intl -I$(top_builddir)/intl		\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"		\
-	-I$(includedir) $(GNOME_INCLUDEDIR)			\
+	-I$(includedir) 					\
 	@PIXBUF_CFLAGS@
 
 CFLAGS += $(ESD_CFLAGS)
@@ -42,7 +42,6 @@ sound_monitor_applet_SOURCES = \
 	update.h
 
 sound_monitor_applet_LDADD = \
-	$(GNOME_LIBDIR) 	\
 	$(GNOME_APPLETS_LIBS) $(INTLLIBS)	\
 	@PIXBUF_LIBS@
 

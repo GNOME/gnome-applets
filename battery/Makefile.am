@@ -4,7 +4,7 @@ INCLUDES = -I. -I$(srcdir) 				\
 	-I$(top_srcdir)/intl \
 	-I$(top_builddir)/intl	\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
-	-I$(includedir) $(GNOME_INCLUDEDIR)
+	-I$(includedir) 
 
 bin_PROGRAMS = battery_applet
 
@@ -18,7 +18,6 @@ battery_applet_SOURCES = battery.c 	\
 			 session.h
 
 battery_applet_LDADD = \
-			$(GNOME_LIBDIR)  \
 			$(GNOME_APPLETS_LIBS) $(INTLLIBS)
 
 sysdir = $(datadir)/applets/Monitors

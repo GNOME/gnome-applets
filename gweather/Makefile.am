@@ -7,7 +7,6 @@ INCLUDES = \
 	-I$(top_srcdir)/intl	\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\" \
 	-I$(includedir)		\
-	$(GNOME_INCLUDEDIR)	\
 	$(PIXBUF_CFLAGS)
 
 bin_PROGRAMS = gweather
@@ -22,7 +21,6 @@ gweather_SOURCES = \
 	http.c http.h
 
 gweather_LDADD = \
-	$(GNOME_LIBDIR) \
 	$(GNOME_APPLETS_LIBS)	\
 	$(INTLLIBS) \
 	$(PIXBUF_LIBS) \

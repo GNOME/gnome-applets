@@ -3,7 +3,7 @@ SUBDIRS = docs
 INCLUDES = -I. -I$(srcdir) 				\
 	-I$(top_srcdir)/intl -I$(top_builddir)/intl	\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
-	-I$(includedir) $(GNOME_INCLUDEDIR)		\
+	-I$(includedir) 				\
 	-DVERSION=\""$(VERSION)"\"
 
 bin_PROGRAMS = another_clock_applet
@@ -12,7 +12,6 @@ another_clock_applet_SOURCES = another_clock.c
 
 
 another_clock_applet_LDADD = \
-		     $(GNOME_LIBDIR) \
 		     $(GNOME_APPLETS_LIBS) $(INTLLIBS)
 
 another_clockbitmapsdir = $(datadir)/pixmaps

@@ -3,7 +3,7 @@ SUBDIRS = docs
 INCLUDES = -I. -I$(srcdir) 				\
 	-I$(top_srcdir)/intl -I$(top_builddir)/intl	\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
-	-I$(includedir) $(GNOME_INCLUDEDIR)		\
+	-I$(includedir) 				\
 	-D_POSIX_SOURCE
 
 CFLAGS = -ansi -Werror -Wmissing-prototypes -Wmissing-declarations
@@ -16,7 +16,6 @@ drivemount_applet_SOURCES = \
 	properties.c
 
 drivemount_applet_LDADD = \
-		     $(GNOME_LIBDIR) \
 		     $(GNOME_APPLETS_LIBS) $(INTLLIBS) 
 
 sysdir = $(datadir)/applets/Utility

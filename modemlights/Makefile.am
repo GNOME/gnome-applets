@@ -3,7 +3,7 @@ SUBDIRS = docs
 INCLUDES = -I. -I$(srcdir) 				\
 	-I$(top_srcdir)/intl -I$(top_builddir)/intl	\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
-	-I$(includedir) $(GNOME_INCLUDEDIR)		\
+	-I$(includedir) 				\
 	-DVERSION=\""$(VERSION)"\"
 
 bin_PROGRAMS = modemlights_applet
@@ -14,7 +14,6 @@ modemlights_applet_SOURCES = \
 	properties.c
 
 modemlights_applet_LDADD = \
-		     $(GNOME_LIBDIR) \
 		     $(GNOME_APPLETS_LIBS) $(INTLLIBS) 
 
 sysdir = $(datadir)/applets/Network

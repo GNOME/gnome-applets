@@ -1,6 +1,6 @@
 INCLUDES = -I. -I$(srcdir) 				\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
-	-I$(includedir) $(GNOME_INCLUDEDIR)
+	-I$(includedir) 
 
 bin_PROGRAMS = slash_applet
 
@@ -10,7 +10,7 @@ slash_applet_SOURCES =  slashapp.c	\
 			properties.c
 
 slash_applet_LDADD = \
-		     $(GNOME_LIBDIR) -lXt \
+		     -lXt \
 		     $(GNOME_APPLETS_LIBS) $(INTLLIBS)      \
                      $(GHTTP_LIB) $(GNOME_XML_LIB)
 

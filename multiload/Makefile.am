@@ -2,7 +2,7 @@ SUBDIRS = docs
 
 INCLUDES = -I. -I$(srcdir) 				\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
-	-I$(includedir) $(GNOME_INCLUDEDIR) $(LIBGTOP_INCS)
+	-I$(includedir) $(LIBGTOP_INCS)
 
 bin_PROGRAMS = multiload_applet
 
@@ -25,7 +25,6 @@ multiload_applet_SOURCES = cpuload.c		\
 			   load-graph.h
 
 multiload_applet_LDADD = \
-		     $(GNOME_LIBDIR) \
 		     $(GNOME_APPLETS_LIBS) $(INTLLIBS)	\
 		     $(LIBGTOP_LIBS) $(LIBGTOP_EXTRA_LIBS)
 

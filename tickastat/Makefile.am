@@ -3,7 +3,7 @@ SUBDIRS = news_scripts docs
 INCLUDES = -I$(srcdir) -I$(top_srcdir) -I$(top_builddir)	\
 	-I$(top_srcdir)/intl -I$(top_builddir)/intl		\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"		\
-	-I$(includedir) $(GNOME_INCLUDEDIR)
+	-I$(includedir) 
 
 bin_PROGRAMS = tickastat_applet
 
@@ -24,7 +24,6 @@ tickastat_applet_SOURCES = \
 	$(module_sources)
 
 tickastat_applet_LDADD = \
-	$(GNOME_LIBDIR) 	\
 	$(GNOME_APPLETS_LIBS) $(INTLLIBS)
 
 sysdir = $(datadir)/applets/Utility

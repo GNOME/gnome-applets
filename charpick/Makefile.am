@@ -3,7 +3,7 @@ SUBDIRS = docs
 INCLUDES = -I. -I$(srcdir) 				\
 	-I$(top_srcdir)/intl -I$(top_builddir)/intl	\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
-	-I$(includedir) $(GNOME_INCLUDEDIR)
+	-I$(includedir) 
 
 CFLAGS = -ansi -Werror -Wmissing-prototypes -Wmissing-declarations
 
@@ -14,7 +14,6 @@ charpick_applet_SOURCES = charpick.c \
                           properties.c
 
 charpick_applet_LDADD = \
-		       $(GNOME_LIBDIR) \
 		       $(GNOME_APPLETS_LIBS) $(INTLLIBS) 
 
 charpickbitmapsdir = $(datadir)/pixmaps/

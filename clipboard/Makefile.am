@@ -1,14 +1,13 @@
 INCLUDES = -I. -I$(srcdir) 				\
 	-I$(top_srcdir)/intl -I$(top_builddir)/intl	\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
-	-I$(includedir) $(GNOME_INCLUDEDIR)
+	-I$(includedir) 
 
 bin_PROGRAMS = clipboard_applet
 
 clipboard_applet_SOURCES = clipboard.c
 
 clipboard_applet_LDADD = \
-		       $(GNOME_LIBDIR) \
 		       $(GNOME_APPLETS_LIBS) $(INTLLIBS) 
 
 sysdir = $(datadir)/applets/Utility

@@ -8,8 +8,7 @@ INCLUDES = \
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\" \
 	-I$(includedir) \
 	$(PIXBUF_CFLAGS) \
-	$(CANVAS_PIXBUF_CFLAGS) \
-	$(GNOME_INCLUDEDIR)
+	$(CANVAS_PIXBUF_CFLAGS) 
 
 bin_PROGRAMS = jbc_applet
 
@@ -18,7 +17,6 @@ jbc_applet_SOURCES = \
 	jbc-applet.h
 
 jbc_applet_LDADD = \
-	$(GNOME_LIBDIR) \
 	$(GNOME_APPLETS_LIBS) \
 	$(PIXBUF_LIBS) \
 	$(CANVAS_PIXBUF_LIBS) \

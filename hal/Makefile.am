@@ -1,14 +1,13 @@
 INCLUDES = -I. -I$(srcdir) 				\
 	-I$(top_srcdir)/intl -I$(top_builddir)/intl	\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
-	-I$(includedir) $(GNOME_INCLUDEDIR)
+	-I$(includedir) 
 
 bin_PROGRAMS = hal_applet 
 
 hal_applet_SOURCES = hal.c
 
 hal_applet_LDADD = \
-		       $(GNOME_LIBDIR) \
 		       $(GNOME_APPLETS_LIBS) $(INTLLIBS) 
 
 halbitmapsdir = $(datadir)/pixmaps/hal

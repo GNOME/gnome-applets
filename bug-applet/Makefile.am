@@ -2,7 +2,7 @@ XML_CFLAGS = `xml-config --cflags`
 
 INCLUDES = -I. -I$(srcdir) 				\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
-	-I$(includedir) $(GNOME_INCLUDEDIR) 		\
+	-I$(includedir) 				\
 	$(XML_CFLAGS)
 
 bin_PROGRAMS = bug-applet
@@ -11,7 +11,6 @@ bug_applet_SOURCES = \
 	bug-applet.c
 
 bug_applet_LDADD = \
-	$(GNOME_LIBDIR)		\
 	$(GNOME_APPLETS_LIBS)	\
 	$(INTLLIBS)      	\
 	$(GHTTP_LIB) $(GNOME_XML_LIB)

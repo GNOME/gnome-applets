@@ -34,7 +34,6 @@ mini_commander_applet_SOURCES =			\
 	terminal.h
 
 mini_commander_applet_LDADD =				\
-	$(GNOME_LIBDIR)					\
 	$(GNOME_APPLETS_LIBS)				\
 	$(ZVT_LIBS)					\
 	$(INTLLIBS) 

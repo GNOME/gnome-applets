@@ -24,7 +24,6 @@ asclock_applet_SOURCES = \
 
 
 asclock_applet_LDADD = \
-		     $(GNOME_LIBDIR) \
 		     $(GNOME_APPLETS_LIBS) $(INTLLIBS) 
 
 sysdir = $(datadir)/applets/Clocks

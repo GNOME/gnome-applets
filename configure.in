@@ -1,38 +1,105 @@
 AC_INIT(sound-monitor/main.c)
 
 AM_CONFIG_HEADER(config.h)
-AM_INIT_AUTOMAKE(gnome-applets, 1.4.0.4)
+AM_INIT_AUTOMAKE(gnome-applets, 2.0)
 
 AM_MAINTAINER_MODE
+
 AM_PROG_XML_I18N_TOOLS
 
-AM_ACLOCAL_INCLUDE(macros)
+dnl Just going to comment stuff out that I don't think we'll need for now
+dnl AM_ACLOCAL_INCLUDE(macros)
+dnl GNOME_INIT(applets)
 
+GNOME_COMMON_INIT
+GNOME_COMPILE_WARNINGS
+GNOME_REQUIRE_PKGCONFIG
+GNOME_PLATFORM_GNOME_2(yes, force)
+GNOME2_X_CHECKS
 gnome_cv_use_gnome=yes
-
-GNOME_INIT(applets)
 
 AC_ISC_POSIX
 AC_PROG_CC
 AC_STDC_HEADERS
-AC_ARG_PROGRAM
 AM_PROG_LIBTOOL
-
-GNOME_COMPILE_WARNINGS
-
-GNOME_X_CHECKS
+AC_PATH_PROGS(PATH_TO_XRDB, "xrdb")
 
 SCROLLKEEPER_REQUIRED=0.1.4
+LIBGNOME_REQUIRED=1.96.0
+LIBGNOMEUI_REQUIRED=1.96.0
+XML_REQUIRED=2.2.8
+GNOME_VFS_REQUIRED=1.1
+GTK_REQUIRED=1.3.1
+GDK_PIXBUF_REQUIRED=1.3.1
+LIBGNOMECANVAS_REQUIRED=1.102.0
+
+dnl ******************************************
+dnl ** pkg-config dependacy checks          **
+dnl ******************************************
+
+PKG_CHECK_MODULES(GNOME_APPLETS, gdk-pixbuf-2.0 >= $GDK_PIXBUF_REQUIRED gkt+-2.0 >= $GTK_REQUIRED libgnomecanvas-2.0 >= $LIBGNOMECANVAS_REQUIRED libgnome-2.0 >= $LIBGNOME_REQUIRED libgnomeui-2.0 >= $LIBGNOMEUI_REQUIRED libxml-2.0 >= $XML_REQUIRED gnome-vfs-2.0 >= $GNOME_VFS_REQUIRED)
+AC_SUBST(GNOME_APPLETS_CFLAGS)
+AC_SUBST(GNOME_APPLETS_LIBS)
+
+
+dnl Is this really the best way to do things??? I'm not so sure..
+dnl How can we check if pkg-config passed or not?
+
+dnl PKG_CHECK_MODULES(GNOME_GTOP_APPLETS, blah blah)
+dnl AC_SUBST(GNOME_GTOP_APPLETS_CFLAGS)
+dnl AC_SUBST(GNOME_GTOP_APPLETS_LIBS)
+
+dnl PKG_CHECK_MODULES(GNOME_WORDEXP_APPLETS, blah blah)
+dnl AC_SUBST(GNOME_WORDEXP_APPLETS_CFLAGS)
+dnl AC_SUBST(GNOME_WORDEXP_APPLETS_LIBS)
+
+dnl PKG_CHECK_MODULES(GNOME_XML_APPLETS, blah blah)
+dnl AC_SUBST(GNOME_XML_APPLETS_CFLAGS)
+dnl AC_SUBST(GNOME_XML_APPLETS_LIBS)
+
+dnl PKG_CHECK_MODULES(GNOME_XML_APPLETS, blah blah)
+dnl AC_SUBST(GNOME_XML_APPLETS_CFLAGS)
+dnl AC_SUBST(GNOME_XML_APPLETS_LIBS)
+
+dnl PKG_CHECK_MODULES(GNOME_GHTTP_APPLETS, blah blah)
+dnl AC_SUBST(GNOME_GHTTP_APPLETS_CFLAGS)
+dnl AC_SUBST(GNOME_GHTTP_APPLETS_LIBS)
+
+dnl ******************************************
+dnl ******************************************
+
+ALL_LINGUAS="az ca cs da de el en_GB es et eu fi fr ga gl hu it ja ko lt nl nn no pl pt pt_BR ro ru sk sl sv tr uk wa zh_CN.GB2312 zh_TW"
+
+AM_GNOME2_GETTEXT
+
+# this is the directory where the *.{mo,gmo} files are installed
+gnomelocaledir='${prefix}/${DATADIRNAME}/locale'
+AC_SUBST(gnomelocaledir)
+
+
+dnl utility conditional
+AM_CONDITIONAL(FALSE, test "x" = "y")
+
+
+dnl ******************************************
+dnl ** Check for Scrollkeeper               **
+dnl ******************************************
+
+AC_PATH_PROG(SCROLLKEEPER_CONFIG, scrollkeeper-config, no)
+if test x$SCROLLKEEPER_CONFIG = xno; then
+  AC_MSG_ERROR(Couldn't find scrollkeeper-config, please install the Scrollkeeper 0.1.4 package)
+fi
 AC_SUBST(SCROLLKEEPER_REQUIRED)
 
-dnl Check for scrollkeeper
-AC_PATH_PROG(SCROLLKEEPER_CONFIG, scrollkeeper-config,no)
-if test x$SCROLLKEEPER_CONFIG = xno; then
-  AC_MSG_ERROR(Couldn't find scrollkeeper-config, please install the scrollkeeper package)
-fi
+dnl ******************************************
+dnl ******************************************
 
-dnl  Test whether jw is installed
-AC_PATH_PROG(JW,jw,no)
+
+dnl ******************************************
+dnl **  Test whether jw is installed        **
+dnl ******************************************
+
+AC_PATH_PROG(JW, jw, no)
 if test x$JW = xno; then
   HAVE_JW="no"
 else
@@ -41,21 +108,20 @@ fi
 AM_CONDITIONAL(HAVE_JW, test "x$HAVE_JW" = "xyes")
 AC_SUBST(HAVE_JW)
 
+dnl ******************************************
+dnl ******************************************
+
 
 dnl Check for new enough gnome-libs
-CFLAGS_save=$CFLAGS
-LIBS_save=$LIBS
-CFLAGS=`gnome-config --cflags gnomeui`
-LIBS=`gnome-config --libs gnomeui`
+dnl CFLAGS_save=$CFLAGS
+dnl LIBS_save=$LIBS
+dnl CFLAGS=`gnome-config --cflags gnomeui`
+dnl LIBS=`gnome-config --libs gnomeui`
+dnl AC_CHECK_LIB(gnomeui, gnome_window_icon_set_default_from_file, ,[
+dnl AC_MSG_ERROR(gnome-libs 1.0.59 or higher is required.)])
+dnl CFLAGS=$CFLAGS_save
+dnl LIBS=$LIBS_save
 
-AC_CHECK_LIB(gnomeui, gnome_window_icon_set_default_from_file, ,[
-AC_MSG_ERROR(gnome-libs 1.0.59 or higher is required.)])
-
-CFLAGS=$CFLAGS_save
-LIBS=$LIBS_save
-
-dnl utility conditional
-AM_CONDITIONAL(FALSE, test "x" = "y")
 
 dnl possibly have something like this
 dnl AM_ARG_ENABLE(old-applets,
@@ -71,11 +137,19 @@ dnl                fi
 dnl        fi,
 dnl        enable_old_applets=yes)
 
-dnl esd-manager
+
+dnl ******************************************
+dnl ** ESound Library                       **
+dnl ******************************************
+
 have_libesd=no
 AM_PATH_ESD(,have_libesd=yes,
 [AC_MSG_WARN([*** \`sound-monitor' will not be built ***])])
 AM_CONDITIONAL(HAVE_LIBESD, test yes = $have_libesd)
+
+dnl ******************************************
+dnl ******************************************
+
 
 dnl gumma
 dnl have_xmms=false
@@ -95,7 +169,10 @@ dnl if test x$HAVE_XMMS != x$yes; then
 dnl   AC_MSG_WARN([*** \`xmms' plugin for gumma will not be built ***])
 dnl fi
 
-dnl screenshooter
+dnl ******************************************
+dnl ** screenshooter applet check           **
+dnl ******************************************
+
 have_wordexp=false
 AC_CHECK_FUNC(wordexp,have_wordexp=true)
 AM_CONDITIONAL(HAVE_WORDEXP,$have_wordexp)
@@ -103,8 +180,15 @@ if test -z "$have_wordexp"; then
 AC_MSG_WARN([*** No wordexp (glibc >=2.1) Screen-shooter will not be built ***])
 fi
 
-dnl cdplayer
-AC_CANONICAL_HOST
+dnl ******************************************
+dnl ******************************************
+
+
+dnl ******************************************
+dnl ** cdplayer applet check                **
+dnl ******************************************
+
+dnl AC_CANONICAL_HOST
 case "$host" in
 *irix*) CDROM_HOST=irix; CDROM_LIBS="-lcdaudio -lmediad -lds";;
 *linux*) CDROM_HOST=linux;;
@@ -119,14 +203,28 @@ dnl  AC_MSG_WARN([*** \`cd' plugin for gumma will not be built ***])
   AC_MSG_WARN([*** \`cdplayer' applet will not be built ***])
 fi
 
-dnl battery
+dnl ******************************************
+dnl ******************************************
+
+
+dnl ******************************************
+dnl **  battery applet check                **
+dnl ******************************************
+
 case "$host_os" in
 netbsd*)
   AC_CHECK_HEADERS(machine/apmvar.h, AC_DEFINE(NETBSD_APM))
   ;;
 esac
 
-dnl mixer
+dnl ******************************************
+dnl ******************************************
+
+
+dnl *******************************************
+dnl ** mixer applet check                    **
+dnl *******************************************
+
 P_MIXER=
 MIXER_LIBS=
 AC_CHECK_HEADERS(linux/soundcard.h,[P_MIXER=mixer],[
@@ -144,7 +242,15 @@ if test "$P_MIXER" != "mixer"; then
   AC_MSG_WARN([*** \`mixer' applet will not be built ***])
 fi
 
-dnl modemlights
+dnl ******************************************
+dnl ******************************************
+
+
+
+dnl ******************************************
+dnl ** modemlights applet check             **
+dnl ******************************************
+
 P_MODEMLIGHTS=
 case "$host_os" in
 linux*|freebsd*|netbsd*|openbsd*)
@@ -156,17 +262,24 @@ if test "$P_MODEMLIGHTS" != "modemlights"; then
   AC_MSG_WARN([*** \`modemlights' applet will not be built ***])
 fi
 
+dnl ******************************************
+dnl ******************************************
+
+dnl Don't need this since xml is in the packages by default
 dnl Check for xml
-GNOME_XML_HOOK
-AM_CONDITIONAL(HAVE_LIBXML, test -n "$GNOME_XML_LIB")
-if test -z "$GNOME_XML_LIB"; then
-  AC_MSG_WARN([*** \`gnotes' applet will not be built ***])
-  AC_MSG_WARN([*** \`slashapp' applet will not be build ***])
-fi
+dnl GNOME_XML_HOOK
+dnl AM_CONDITIONAL(HAVE_LIBXML, test -n "$GNOME_XML_LIB")
+dnl if test -z "$GNOME_XML_LIB"; then
+dnl   AC_MSG_WARN([*** \`gnotes' applet will not be built ***])
+dnl   AC_MSG_WARN([*** \`slashapp' applet will not be build ***])
+dnl fi
 
-dnl Check for libgtop
+dnl ******************************************
+dnl ** Check for libgtop                    **
+dnl ******************************************
+
 GNOME_LIBGTOP_HOOK(,applets_libgtop=yes)
-
+AM_CONDITIONAL(HAVE_LIBGTOP, test -n "$GTOP_LIB")
 if test x$applets_libgtop != xyes; then
   AC_MSG_WARN([*** \`cpuload' applet will not be built ***])
   AC_MSG_WARN([*** \`cpumemusage' applet will not be built ***])
@@ -175,7 +288,14 @@ if test x$applets_libgtop != xyes; then
   AC_MSG_WARN([*** \`netload' applet will not be built ***])
 fi
 
-dnl Check for ghttp library
+dnl ******************************************
+dnl ******************************************
+
+
+dnl ******************************************
+dnl ** Check for ghttp                      **
+dnl ******************************************
+
 GNOME_GHTTP_CHECK
 AM_CONDITIONAL(HAVE_LIBGHTTP, test -n "$GHTTP_LIB")
 AC_SUBST(GHTTP_LIB)
@@ -185,62 +305,67 @@ if test -z "$GHTTP_LIB"; then
    AC_MSG_WARN([*** \`gtik' applet will not be built ***])
 fi
 
+dnl ******************************************
+dnl ******************************************
+
+
 
 dnl Check for gnome-vfs library
-AC_MSG_CHECKING(for gnome-vfs)
-if gnome-config --libs vfs; then
-   AC_MSG_RESULT(yes)
-   VFS_LIBS=`gnome-config --libs vfs`
-   VFS_CFLAGS=`gnome-config --cflags vfs`
-   HAVE_GNOME_VFS=true
-else
-   AC_MSG_RESULT(no)
-   HAVE_GNOME_VFS=false
-   AC_MSG_WARN([*** \`gtik' applet will not be built ***])
-fi
-AC_SUBST(VFS_LIBS)
-AC_SUBST(VFS_CFLAGS)
-AM_CONDITIONAL(HAVE_GNOME_VFS, $HAVE_GNOME_VFS)
+dnl AC_MSG_CHECKING(for gnome-vfs)
+dnl if gnome-config --libs vfs; then
+dnl    AC_MSG_RESULT(yes)
+dnl    VFS_LIBS=`gnome-config --libs vfs`
+dnl    VFS_CFLAGS=`gnome-config --cflags vfs`
+dnl    HAVE_GNOME_VFS=true
+dnl else
+dnl    AC_MSG_RESULT(no)
+dnl    HAVE_GNOME_VFS=false
+dnl    AC_MSG_WARN([*** \`gtik' applet will not be built ***])
+dnl fi
+dnl AC_SUBST(VFS_LIBS)
+dnl AC_SUBST(VFS_CFLAGS)
+dnl AM_CONDITIONAL(HAVE_GNOME_VFS, $HAVE_GNOME_VFS)
 
 
 
-dnl Fvwm pager
+dnl ******************************************
+dnl ** Fvwm pager                           **
+dnl ******************************************
+
 AC_CHECK_HEADER(fvwm.h, fvwm=true, fvwm=false)
 AM_CONDITIONAL(HAVE_FVWM, $fvwm)
+
+dnl ******************************************
+dnl ******************************************
 
 dnl
 dnl GdkPixBuf
 dnl
-AC_MSG_CHECKING(for GdkPixbuf library >= 0.7.0)
-PIXBUF_CFLAGS=`$GNOME_CONFIG --cflags gdk_pixbuf`
-PIXBUF_LIBS=`$GNOME_CONFIG --libs gdk_pixbuf`
-if test "x$PIXBUF_CFLAGS" != x ; then
-    vers=`gdk-pixbuf-config --version | awk 'BEGIN { FS = "."; } { printf "%d", ($1 * 1000 + $2) * 1000 + $3;}'`
-    if test "$vers" -ge 0007000; then
-        AC_MSG_RESULT(found)
-    else
-       AC_MSG_ERROR(You need at least GdkPixbuf version 0.7.0 for the panel)
-    fi
-else
-    AC_MSG_ERROR(Did not find GdkPixbuf installed)
-fi
-AC_SUBST(PIXBUF_CFLAGS)
-AC_SUBST(PIXBUF_LIBS)
+dnl AC_MSG_CHECKING(for GdkPixbuf library >= 0.7.0)
+dnl PIXBUF_CFLAGS=`$GNOME_CONFIG --cflags gdk_pixbuf`
+dnl PIXBUF_LIBS=`$GNOME_CONFIG --libs gdk_pixbuf`
+dnl if test "x$PIXBUF_CFLAGS" != x ; then
+dnl     vers=`gdk-pixbuf-config --version | awk 'BEGIN { FS = "."; } { printf "%d", ($1 * 1000 + $2) * 1000 + $3;}'`
+dnl     if test "$vers" -ge 0007000; then
+dnl         AC_MSG_RESULT(found)
+dnl     else
+dnl        AC_MSG_ERROR(You need at least GdkPixbuf version 0.7.0 for the panel)
+dnl     fi
+dnl else
+dnl     AC_MSG_ERROR(Did not find GdkPixbuf installed)
+dnl fi
+dnl AC_SUBST(PIXBUF_CFLAGS)
+dnl AC_SUBST(PIXBUF_LIBS)
 
 dnl
 dnl GdkPixBuf canvas stuff
 dnl No need to check, we know we have these
 dnl
-CANVAS_PIXBUF_CFLAGS=`$GNOME_CONFIG --cflags gnomecanvaspixbuf`
-CANVAS_PIXBUF_LIBS=`$GNOME_CONFIG --libs gnomecanvaspixbuf`
-AC_SUBST(CANVAS_PIXBUF_CFLAGS)
-AC_SUBST(CANVAS_PIXBUF_LIBS)
+dnl CANVAS_PIXBUF_CFLAGS=`$GNOME_CONFIG --cflags gnomecanvaspixbuf`
+dnl CANVAS_PIXBUF_LIBS=`$GNOME_CONFIG --libs gnomecanvaspixbuf`
+dnl AC_SUBST(CANVAS_PIXBUF_CFLAGS)
+dnl AC_SUBST(CANVAS_PIXBUF_LIBS)
 
-ALL_LINGUAS="az ca cs da de el en_GB es et eu fi fr ga gl hu it ja ko lt nl nn no pl pt pt_BR ro ru sk sl sv tr uk wa zh_CN.GB2312 zh_TW"
-AM_GNOME_GETTEXT
-# this is the directory where the *.{mo,gmo} files are installed
-gnomelocaledir='${prefix}/${DATADIRNAME}/locale'
-AC_SUBST(gnomelocaledir)
 
 AC_SUBST(CFLAGS)
 AC_SUBST(CPPFLAGS)
@@ -452,3 +577,5 @@ dnl netload/Makefile
 dnl netwatch/Makefile
 dnl oldslashapp/Makefile
 dnl winlist/Makefile
+
+cat $srcdir/message-of-doom
