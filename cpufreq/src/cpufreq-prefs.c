@@ -216,13 +216,8 @@ cpufreq_prefs_response_cb (GtkDialog *dialog, gint response, gpointer gdata)
 									 gtk_widget_get_screen (GTK_WIDGET (applet)),
 									 &error);
 			 if (error) {
-				    if (error->code == GNOME_HELP_ERROR_INTERNAL) {
-						  cpufreq_applet_display_error (_("Sorry, an internal error has occurred "
-												    "with the CPU Frequency Scaling Monitor help"));
-				    } else {
-						  cpufreq_applet_display_error (_("Sorry, the document can not be found"));
-				    }
-				    
+				    cpufreq_applet_display_error (_("Could not open help document"),
+				                                  error->message);
 				    g_error_free (error);
 			 }
 	   } else {

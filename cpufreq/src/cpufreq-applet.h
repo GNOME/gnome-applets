@@ -74,5 +74,6 @@ typedef struct {
 } CPUFreqApplet;
 
 void cpufreq_applet_update        (CPUFreqApplet *applet);
-void cpufreq_applet_display_error (const gchar *error_message);
+void cpufreq_applet_display_error (const gchar *message, 
+                                   const gchar *secondary);
 void cpufreq_applet_run           (CPUFreqApplet *applet);

@@ -81,17 +81,24 @@ cpufreq_applet_get_type (void)
 }
 
 void
-cpufreq_applet_display_error (const gchar *error_message)
+cpufreq_applet_display_error (const gchar *message, 
+                              const gchar *secondary)
 {
 	   GtkWidget *dialog;
+	   gchar *bold_str;
+	   
+	   bold_str = g_strconcat ("<span weight=\"bold\" size=\"larger\">", message, "</span>", NULL);		
 
-	   dialog = gtk_message_dialog_new (NULL,
+	   dialog = gtk_message_dialog_new_with_markup (NULL,
 								 GTK_DIALOG_DESTROY_WITH_PARENT,
 								 GTK_MESSAGE_ERROR,
-								 GTK_BUTTONS_CLOSE,
-								 error_message);
+								 GTK_BUTTONS_OK,
+								 bold_str);
+	   gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
+	                                             secondary);
 	   gtk_dialog_run (GTK_DIALOG (dialog));
 	   gtk_widget_destroy (dialog);
+	   g_free (bold_str);
 }
 
 static void
@@ -115,14 +122,8 @@ cpufreq_applet_help_cb (BonoboUIComponent *uic, CPUFreqApplet *applet)
 							   &error);
 
 	   if (error) {
-			 if (error->code == GNOME_HELP_ERROR_INTERNAL) {
-				    cpufreq_applet_display_error (_("Sorry, an internal error has occurred "
-											 "with the CPU Frequency Scaling Monitor help"));
-			 } else {
-				    g_print ("help error: %s\n", error->message);
-				    cpufreq_applet_display_error (_("Sorry, the document can not be found"));
-			 }
-			 
+			 cpufreq_applet_display_error (_("Could not open help document"),
+				                       error->message);
 			 g_error_free (error);
 	   }
 }
@@ -130,7 +131,7 @@ cpufreq_applet_help_cb (BonoboUIComponent *uic, CPUFreqApplet *applet)
 static void
 cpufreq_applet_about_cb (BonoboUIComponent *uic, CPUFreqApplet *applet)
 {
-	   GdkPixbuf   *pixbuf;
+	   GdkPixbuf   *pixbuf = NULL;
 	   const gchar *authors[] = {
 			 "Carlos Garcia Campos <carlosgc@gnome.org>",
 			 " ",
@@ -168,7 +169,8 @@ cpufreq_applet_about_cb (BonoboUIComponent *uic, CPUFreqApplet *applet)
 				    translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
 			 pixbuf);
 
-	   g_object_unref (pixbuf);
+	   if (pixbuf)
+			 g_object_unref (pixbuf);
 
 	   gtk_window_set_screen (GTK_WINDOW (applet->about_dialog),
 						 gtk_widget_get_screen (GTK_WIDGET (applet)));
@@ -594,22 +596,21 @@ cpufreq_applet_run (CPUFreqApplet *applet)
 			  * I thi	nk is better than do nothing. I have to notify it to the user, because
 			  * he could think	 that cpufreq is supported but it doesn't work succesfully
 			  */
-			 cpufreq_applet_display_error (_("There is no cpufreq support in your system, needed "
-									   "to use CPU Frequency Scaling Monitor.\n"
-									   "If your system already supports cpufreq, check whether "
-									   "/sys or /proc file systems are mounted.\n"
-									   "Now the applet will only show the current "
-									   "cpu frequency."));
 
+
+			 cpufreq_applet_display_error (_("CPU frequency scaling unsupported"),
+			                               _("You will not be able to modify the frequency of your machine.  "
+						         "Your machine may be misconfigured or not have hardware support "
+							 "for CPU frequency scaling."));
 
 			 if (cpufreq_get_from_procfs_cpuinfo (applet)) {
-				    text_tip = g_strdup_printf (_("CPU %d - cpufreq Not Supported\n%s (%s)"),
-										  applet->cpu, applet->freq, applet->perc);
+				    text_tip = g_strdup_printf (_("CPU %d - Frequency Scaling Unsupported\n%s %s (%s)"),
+										  applet->cpu, applet->freq, applet->unit, applet->perc);
 				    gtk_tooltips_set_tip (applet->tips, GTK_WIDGET (applet), text_tip, NULL);
 				    g_free (text_tip);
 			 } else {
 				    gtk_tooltips_set_tip (applet->tips, GTK_WIDGET (applet),
-									 _("cpufreq Not Supported"),
+									 _("Frequency Scaling Unsupported"),
 									 NULL);
 			 }
 
