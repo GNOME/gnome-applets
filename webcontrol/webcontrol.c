@@ -94,30 +94,25 @@ static void clear_callback(GtkWidget *button, GtkWidget *input)
 static void goto_callback(GtkWidget *entry, GtkWidget *check)
 {
 	gchar *url;
-	gchar *command;
 	int status;
 	
         url = gtk_entry_get_text(GTK_ENTRY(entry));
         
-        if(WC.properties.newwindow) {
-        	command = malloc(sizeof(gchar) * (strlen(url) + strlen("openURL(, new-window)") + 1));
-        	sprintf(command, "openURL(%s, new-window)", url);
-        } else {
-        	command = malloc(sizeof(gchar) * (strlen(url) + strlen("openURL()") + 1));
-        	sprintf(command, "openURL(%s)", url);
-        }
-                
         if(fork() == 0) {
         	/* child  */
-        	execlp("netscape", "netscape", "-remote", command, NULL);
+		if(WC.properties.newwindow) {
+			execlp ("gnome-moz-remote", "gnome-moz-remote", "--newwin", url, NULL);
+		} else {
+			execlp ("gnome-moz-remote", "gnome-moz-remote", url, NULL);
+		}
+		g_warning (_("gnome-moz-remote not found or unable to launch it"));
+		/* something went wrong, perhaps gnome-moz-remote was not found */
+		_exit (1);
         } else {
         	wait(&status);
-        	if(WEXITSTATUS(status) != 0) {  /* command didn't work */
-        		char *argv[3];
-        		argv[0] = "netscape";
-        		argv[1] = url;
-        		argv[2] = NULL;
-        		gnome_execute_async (NULL, 2, argv);
+        	if(WEXITSTATUS(status) != 0) {  /* command didn't work, use normal url show
+						 * routine */
+			gnome_url_show (url);
         	}
 	}
 	return;
