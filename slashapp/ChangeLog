@@ -1,3 +1,20 @@
+2001-06-26  Kjartan Maraas  <kmaraas@gnome.org>
+
+	* *: Apply patch from Richard Kinder from bugzilla.
+	Fixes #52869 plus a whole bunch of duplicates.
+
+Wed Jun 19 20:00:00 2001  Richard Kinder <r_kinder@yahoo.com>
+
+	* slashapp.c: clean up the info_current and info_next fields post
+	'remove_all_lines' call. This stops crashes when clicking the refresh
+	menu item, and crashes when clicking the 'articles' menu item during the
+	refresh timeout (5 secs).
+	* slashapp.h: remove unused GList current_text from AppData struct.
+	Removed prototype for 'free_all_info_lines'
+	* display.c: removed 'free_all_info_lines' and 'free_click_lists' since
+	neither is currently used. 'remove_all_lines' modified so it walks the
+	list of text InfoData's and cleans them up.
+
 Fri Jun 22 12:17:13 2001  George Lebl <jirka@5z.com>
 
 	* slashapp.[ch], display.c: fix some memleaks and a bit of

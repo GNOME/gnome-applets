@@ -81,7 +81,6 @@ struct _AppData
 	GdkColor text_color;
 
 	GList *text;		/* GList of InfoData structs */
-	GList *current_text;	/* GList of current_text */
 	gint text_lines;
 
 	gint current_line;
@@ -187,7 +186,6 @@ struct _ClickData
 };
 
 	/* display.c */
-void free_all_info_lines(AppData *ad);
 InfoData *add_info_line(AppData *ad, const gchar *text, const gchar *icon_path, gint offset, gint center,
                    gint show_count, gint delay);
 InfoData *add_info_line_with_pixmap(AppData *ad, const gchar *text, GtkWidget *icon, gint offset, gint center,

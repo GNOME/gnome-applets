@@ -24,7 +24,6 @@ static gint update_display_cb(gpointer data);
 
 
 static gint line_is_in_click_list(AppData *ad, InfoData *id);
-static void free_click_list(AppData *ad);
 static void register_click_func(AppData *ad, InfoData *id);
 static void scroll_click_func(AppData *ad, gint m);
 static int display_click(GtkWidget *w, GdkEventButton *event, gpointer data);
@@ -142,21 +141,6 @@ static void free_info_line(AppData *ad, InfoData *id)
 	ad = NULL;
 }
 
-void free_all_info_lines(AppData *ad)
-{
-	GList *list = ad->text;
-
-	if (!list) return;
-	while(list)
-		{
-			InfoData *id = list->data;
-			free_info_line(ad, id);
-			list = list->next;
-		}
-	g_list_free(ad->text);
-	ad->text = NULL;
-	free_click_list(ad);
-}
 
 /*
  *----------------------------------------------------------------------------
@@ -256,6 +240,7 @@ void remove_all_lines(AppData *ad)
 		InfoData *id = work->data;
 		work = work->next;
 		ad->info_list = g_list_remove(ad->info_list, id);
+		ad->text = g_list_remove(ad->text, id);
 		if (!line_is_in_click_list(ad, id)) free_info_line(ad, id);
 		}
 }
@@ -645,19 +630,6 @@ static gint line_is_in_click_list(AppData *ad, InfoData *id)
 		}
 
 	return FALSE;
-}
-
-static void free_click_list(AppData *ad)
-{
-	GList * work = ad->click_list;
-	while (work)
-		{
-		ClickData *cd = work->data;
-		work = work->next;
-		ad->click_list = g_list_remove(ad->click_list, cd);
-		if (!line_is_in_click_list(ad, cd->line_id)) free_info_line(ad, cd->line_id);
-		g_free(cd);
-		}
 }
 
 static void register_click_func(AppData *ad, InfoData *id)

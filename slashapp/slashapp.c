@@ -179,7 +179,6 @@ void destroy_applet(GtkWidget *widget, gpointer data)
  * CORBA servers, this will leak memory. for the time being, everything 
  * is fine, though */
 
-/*	free_all_info_lines(ad);*/
 
 	if (ad->display_w != NULL)
 		gtk_widget_destroy(ad->display_w);
@@ -354,6 +353,8 @@ void refresh_cb(AppletWidget *widget, gpointer data)
 	GtkWidget *icon;
 	
 	remove_all_lines(ad);
+	ad->info_current = NULL;
+	ad->info_next = NULL;
 	if (ad->rdf_site == RDFSITE_SLASHDOT)
 		icon = gnome_pixmap_new_from_xpm_d(slashsplash_xpm);
 	else
@@ -510,6 +511,8 @@ void tree_walk(xmlNodePtr root, gpointer data)
 	}
 
 	remove_all_lines(ad);
+	ad->info_current = NULL;
+	ad->info_next = NULL;
 	for(i=0;i<itemcount;i++) {
 		const char *title = layer_find(item[i]->childs, "title", _("No title"));
 		const char *url = layer_find(item[i]->childs, "link", _("No url"));
