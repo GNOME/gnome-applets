@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-02-02 14:55+0100\n"
-"PO-Revision-Date: 2004-02-02 18:44+0100\n"
+"POT-Creation-Date: 2004-02-07 14:57+0100\n"
+"PO-Revision-Date: 2004-02-07 17:15+0100\n"
 "Last-Translator: Miloslav Trmac <mitr@volny.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -48,6 +48,7 @@ msgstr "O _aplikaci..."
 #: mailcheck/GNOME_MailCheckApplet.xml.h:2
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
 #: mixer/GNOME_MixerApplet.xml.h:2 modemlights/GNOME_ModemlightsApplet.xml.h:2
+#: multiload/GNOME_MultiloadApplet.xml.h:2
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:3
 #: wireless/GNOME_WirelessApplet.xml.h:2
 msgid "_Help"
@@ -86,13 +87,13 @@ msgid "Utility"
 msgstr "Nástroj"
 
 #: accessx-status/applet.c:136 battstat/battstat_applet.c:889
-#: cdplayer/cdplayer.c:601 charpick/charpick.c:553 drivemount/drivemount.c:546
-#: geyes/geyes.c:230 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:540
+#: cdplayer/cdplayer.c:601 charpick/charpick.c:556 drivemount/drivemount.c:546
+#: geyes/geyes.c:230 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:541
 #: gtik/gtik.c:777 gweather/gweather-about.c:47 mailcheck/mailcheck.c:2450
 #: mini-commander/src/about.c:50 mixer/mixer.c:1329
-#: modemlights/modemlights.c:115 multiload/main.c:57
+#: modemlights/modemlights.c:115 multiload/main.c:60
 #: stickynotes/stickynotes_applet_callbacks.c:202
-#: wireless/wireless-applet.c:566
+#: wireless/wireless-applet.c:572
 msgid "translator_credits"
 msgstr ""
 "David Šauer <davids@penguin.cz>\n"
@@ -162,7 +163,7 @@ msgstr "Sledovat zbývající napájení notebooku"
 #: mailcheck/GNOME_MailCheckApplet.xml.h:3
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
 #: mixer/GNOME_MixerApplet.xml.h:5 modemlights/GNOME_ModemlightsApplet.xml.h:3
-#: multiload/GNOME_MultiloadApplet.xml.h:3
+#: multiload/GNOME_MultiloadApplet.xml.h:4
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:6
 #: wireless/GNOME_WirelessApplet.xml.h:3
 msgid "_Preferences..."
@@ -330,7 +331,7 @@ msgstr "Systém je napájen bateriemi."
 msgid "System is running on AC power"
 msgstr "Systém je napájen el. sítí."
 
-#: battstat/battstat_applet.c:518
+#: battstat/battstat_applet.c:518 wireless/wireless-applet.c:146
 #, c-format
 msgid "N/A"
 msgstr "N/A"
@@ -459,7 +460,7 @@ msgstr ""
 "Nemohu přistupovat k událostem ACPI v /var/run/acpid.socket! Přesvědčte se, "
 "že subsystém ACPI funguje a démon acpid běží."
 
-#: battstat/battstat_applet.glade.h:1
+#: battstat/battstat_applet.glade.h:1 gswitchit/gswitchit-properties.glade.h:1
 #: mini-commander/src/mini-commander.glade.h:1
 #: stickynotes/stickynotes.glade.h:1
 msgid "    "
@@ -568,7 +569,7 @@ msgstr "_Žlutá:"
 #: mailcheck/mailcheck.c:2555 mini-commander/src/preferences.c:393
 #: mixer/mixer.c:1435 stickynotes/stickynotes_applet_callbacks.c:179
 #: stickynotes/stickynotes_applet_callbacks.c:340
-#: wireless/wireless-applet.c:536 wireless/wireless-applet.c:617
+#: wireless/wireless-applet.c:542 wireless/wireless-applet.c:623
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Při zobrazování nápovědy došlo k chybě: %s"
@@ -635,7 +636,7 @@ msgstr "Následující skladba"
 msgid "You do not have permission to use the CD player."
 msgstr "Nemáte oprávnění používat přehrávač CD."
 
-#: cdplayer/cdplayer.c:383 mixer/mixer.c:1296 multiload/main.c:115
+#: cdplayer/cdplayer.c:383 mixer/mixer.c:1296 multiload/main.c:140
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "Při spuštění '%s' došlo k chybě: %s"
@@ -723,8 +724,8 @@ msgstr ""
 "Toto je úplná cesta zařízení, které bude použito pro přehrávání cd z tohoto "
 "apletu"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:570
-#: charpick/charpick.c:721 charpick/properties.c:425
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:573
+#: charpick/charpick.c:724 charpick/properties.c:425
 msgid "Character Palette"
 msgstr "Paleta znaků"
 
@@ -732,33 +733,33 @@ msgstr "Paleta znaků"
 msgid "Charpicker Applet Factory"
 msgstr "Generátor pro Paletu znaků"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:3 charpick/charpick.c:721
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:3 charpick/charpick.c:724
 msgid "Insert characters"
 msgstr "Vkládání znaků"
 
-#: charpick/charpick.c:416
+#: charpick/charpick.c:419
 msgid "Available palettes"
 msgstr "Dostupné palety"
 
-#: charpick/charpick.c:453
+#: charpick/charpick.c:456
 msgid "Insert special characters"
 msgstr "Vkládání speciálních znaků"
 
 #. If your charset supports it, please use U00F1 to replace the "n"
 #. * in "Muniz".
-#: charpick/charpick.c:542
+#: charpick/charpick.c:545
 msgid "Alexandre Muniz <munizao@xprt.net>"
 msgstr "Alexandre Muñiz <munizao@xprt.net>"
 
-#: charpick/charpick.c:543
+#: charpick/charpick.c:546
 msgid "Kevin Vandersloot"
 msgstr "Kevin Vandersloot"
 
-#: charpick/charpick.c:572
+#: charpick/charpick.c:575
 msgid "Copyright (C) 1998"
 msgstr "Copyright © 1998"
 
-#: charpick/charpick.c:573
+#: charpick/charpick.c:576
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -1588,11 +1589,11 @@ msgstr "Velká Británie"
 msgid "United States"
 msgstr "Spojené státy americké"
 
-#: gkb-new/descs.sun/presets.xml.in.h:128 gkb-new/descs/presets.xml.in.h:225
+#: gkb-new/descs.sun/presets.xml.in.h:128 gkb-new/descs/presets.xml.in.h:223
 msgid "Vietnam"
 msgstr "Vietnam"
 
-#: gkb-new/descs.sun/presets.xml.in.h:129
+#: gkb-new/descs.sun/presets.xml.in.h:129 gkb-new/descs/presets.xml.in.h:224
 msgid "Vietnamese"
 msgstr "Vietnamská"
 
@@ -2220,13 +2221,9 @@ msgstr "Spojené arabské emiráty"
 msgid "United Kingdom xkb keymap"
 msgstr "Mapa kláves xkb Velké Británie"
 
-#: gkb-new/descs/presets.xml.in.h:223
-msgid "Viet_namese"
-msgstr "Viet_namská"
-
-#: gkb-new/descs/presets.xml.in.h:224
-msgid "Viet_namese xkb keymap"
-msgstr "Viet_namská mapa kláves xkb"
+#: gkb-new/descs/presets.xml.in.h:225
+msgid "Vietnamese xkb keymap"
+msgstr "Vietnamská mapa kláves xkb"
 
 #: gkb-new/descs/presets.xml.in.h:226
 msgid "Yemen"
@@ -2381,23 +2378,23 @@ msgstr "Neznámá klávesnice"
 msgid "?"
 msgstr "?"
 
-#: gkb-new/prop-map.c:277
+#: gkb-new/prop-map.c:278
 msgid "Edit Keyboard"
 msgstr "Upravit rozložení"
 
-#: gkb-new/prop-map.c:302
+#: gkb-new/prop-map.c:303
 msgid "_Name:"
 msgstr "_Název:"
 
-#: gkb-new/prop-map.c:306
+#: gkb-new/prop-map.c:307
 msgid "_Label:"
 msgstr "_Popis:"
 
-#: gkb-new/prop-map.c:309 mini-commander/src/mini-commander.glade.h:8
+#: gkb-new/prop-map.c:310 mini-commander/src/mini-commander.glade.h:8
 msgid "Co_mmand:"
 msgstr "Pří_kaz:"
 
-#: gkb-new/prop-map.c:314
+#: gkb-new/prop-map.c:315
 msgid "_Flag:"
 msgstr "_Vlajka:"
 
@@ -2490,16 +2487,16 @@ msgstr ""
 "Příkaz zněl: %s"
 
 #: gswitchit/GNOME_GSwitchItApplet.xml.h:1
-msgid "La_youts..."
-msgstr "_Rozložení..."
+msgid "Pl_ugins..."
+msgstr "_Moduly..."
 
 #: gswitchit/GNOME_GSwitchItApplet.xml.h:3
 msgid "_Groups"
 msgstr "_Skupiny"
 
 #: gswitchit/GNOME_GSwitchItApplet.xml.h:5
-msgid "_Plugins..."
-msgstr "_Moduly..."
+msgid "_Open Keyboard Preferences"
+msgstr "_Otevřít nastavení klávesnice"
 
 #: gswitchit/GNOME_KeyboardApplet.server.in.in.h:1
 msgid "GNOME keyboard applet factory"
@@ -2510,7 +2507,7 @@ msgid "GNOME keyboard layout indicator"
 msgstr "GNOME indikátor rozložení klávesnice"
 
 #: gswitchit/GNOME_KeyboardApplet.server.in.in.h:3
-#: gswitchit/gswitchit-applet.c:545
+#: gswitchit/gswitchit-applet.c:546
 msgid "Keyboard Indicator"
 msgstr "Indikátor klávesnice"
 
@@ -2523,23 +2520,23 @@ msgstr "Generátor apletu klávesnice"
 msgid "Keyboard Indicator (%s)"
 msgstr "Indikátor klávesnice (%s)"
 
-#: gswitchit/gswitchit-applet.c:548
+#: gswitchit/gswitchit-applet.c:549
 msgid "Copyright (c) Sergey V. Oudaltsov 1999-2004"
 msgstr "Copyright © Sergey V. Oudaltsov 1999-2004"
 
-#: gswitchit/gswitchit-applet.c:550
+#: gswitchit/gswitchit-applet.c:551
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "Aplet indikátoru rozložení klávesnice pro GNOME"
 
-#: gswitchit/gswitchit-applet.c:697
+#: gswitchit/gswitchit-applet.c:700
 msgid "XKB initialization error"
 msgstr "Chyba inicializace XKB"
 
-#: gswitchit/gswitchit-applet.c:705
+#: gswitchit/gswitchit-applet.c:708
 msgid "Error loading XKB configuration registry"
 msgstr "Chyba při načítání registru nastavení XKB"
 
-#: gswitchit/gswitchit-capplet.c:156
+#: gswitchit/gswitchit-capplet.c:185
 msgid ""
 "Make the layout accessible from the applet popup menu ONLY.\n"
 "No way to switch to this layout using the keyboard."
@@ -2547,15 +2544,19 @@ msgstr ""
 "Zpřístupnit rozložení JEN z vyskakovacího menu apletu.\n"
 "Na toto rozložení se nedá přepnout pomocí klávesnice."
 
-#: gswitchit/gswitchit-capplet.c:239
-msgid "Exclude from keyboard switching"
-msgstr "Vyjmout z přepínání klávesnicí"
+#: gswitchit/gswitchit-capplet.c:265
+msgid "_Exclude from keyboard switching"
+msgstr "_Vyjmout z přepínání klávesnicí"
 
-#: gswitchit/gswitchit-capplet.c:270
-msgid "not used"
-msgstr "nepoužívá se"
+#: gswitchit/gswitchit-capplet.c:296
+msgid "Not used"
+msgstr "Nepoužívá se"
 
-#: gswitchit/gswitchit-plugins.c:307
+#: gswitchit/gswitchit-plugins-add.c:105 gswitchit/gswitchit-plugins.c:116
+msgid "No description."
+msgstr "Žádný popis."
+
+#: gswitchit/gswitchit-plugins.c:312
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "Nemohu inicializovat GConf: %s\n"
@@ -2565,78 +2566,82 @@ msgid "Activate more plugins"
 msgstr "Aktivovat více modulů"
 
 #: gswitchit/gswitchit-plugins.glade.h:2
-msgid "Add plugin"
-msgstr "Přidat modul"
+msgid "Active _plugins:"
+msgstr "_Aktivní moduly:"
 
 #: gswitchit/gswitchit-plugins.glade.h:3
+msgid "Add Plugin"
+msgstr "Přidat modul"
+
+#: gswitchit/gswitchit-plugins.glade.h:4
 msgid "Close the dialog"
 msgstr "Zavřít dialog"
 
-#: gswitchit/gswitchit-plugins.glade.h:4
+#: gswitchit/gswitchit-plugins.glade.h:5
 msgid "Configure the selected plugin"
 msgstr "Nastavit vybraný modul"
 
-#: gswitchit/gswitchit-plugins.glade.h:5
+#: gswitchit/gswitchit-plugins.glade.h:6
 msgid "Deactivate selected plugin"
 msgstr "Deaktivovat vybraný modul"
 
-#: gswitchit/gswitchit-plugins.glade.h:6
+#: gswitchit/gswitchit-plugins.glade.h:7
 msgid "Decrease the plugin priority"
 msgstr "Snížit prioritu modulu"
-
-#: gswitchit/gswitchit-plugins.glade.h:7
-msgid "GSwitchIt Plugins"
-msgstr "Moduly GSwitchIt"
 
 #: gswitchit/gswitchit-plugins.glade.h:8
 msgid "Increase the plugin priority"
 msgstr "Zvýšit prioritu modulu"
 
 #: gswitchit/gswitchit-plugins.glade.h:9
-msgid "The list of active plugins"
-msgstr "Seznam aktivních modulů"
+msgid "Keyboard Indicator Plugins"
+msgstr "Moduly indikátoru klávesnice"
 
 #: gswitchit/gswitchit-plugins.glade.h:10
-msgid "_Active plugins"
-msgstr "_Aktivní moduly"
+msgid "The list of active plugins"
+msgstr "Seznam aktivních modulů"
 
 #: gswitchit/gswitchit-plugins.glade.h:11
 msgid "_Available plugins:"
 msgstr "_Dostupné moduly:"
 
-#: gswitchit/gswitchit-properties.glade.h:1
+#: gswitchit/gswitchit-properties.glade.h:2 stickynotes/stickynotes.glade.h:3
+msgid "<b>Behavior</b>"
+msgstr "<b>Chování</b>"
+
+#: gswitchit/gswitchit-properties.glade.h:3
 msgid "Choose the default group (for newly created windows)."
 msgstr "Zvolte implicitní skupinu (pro nově vytvářená okna)."
 
-#: gswitchit/gswitchit-properties.glade.h:2
+#: gswitchit/gswitchit-properties.glade.h:4
 msgid "Keep separate group for each application window."
 msgstr "Udržovat skupinu odděleně pro každé okno aplikace."
 
-#: gswitchit/gswitchit-properties.glade.h:3
+#: gswitchit/gswitchit-properties.glade.h:5
 msgid "Keep the state of indicators separately for each application window."
 msgstr "Udržovat stav indikátorů odděleně pro každé okno aplikace."
 
-#: gswitchit/gswitchit-properties.glade.h:4
+#: gswitchit/gswitchit-properties.glade.h:6
 msgid "Keyboard Indicator Preferences"
 msgstr "Nastavení indikátoru klávesnice"
 
-#: gswitchit/gswitchit-properties.glade.h:5
+#: gswitchit/gswitchit-properties.glade.h:7
 msgid "Save/restore _indicators with group"
 msgstr "Ukládat/obnovovat _indikátory se skupinou"
 
-#: gswitchit/gswitchit-properties.glade.h:6
+#: gswitchit/gswitchit-properties.glade.h:8
 msgid "Separate _group for each window"
 msgstr "Oddělená _skupina pro každé okno"
 
-#: gswitchit/gswitchit-properties.glade.h:7
+#: gswitchit/gswitchit-properties.glade.h:9
 msgid "Show national flags as indicators of corresponding layouts"
 msgstr "Zobrazovat národní vlajky jako indikátory odpovídajících rozložení"
 
-#: gswitchit/gswitchit-properties.glade.h:8
+#: gswitchit/gswitchit-properties.glade.h:10
 msgid "Use _flags as indicators"
 msgstr "Používat _vlajky jako indikátory"
 
-#: gswitchit/gswitchit-properties.glade.h:9
+#: gswitchit/gswitchit-properties.glade.h:11
 msgid "_Default group:"
 msgstr "_Implicitní skupina:"
 
@@ -4557,7 +4562,7 @@ msgstr "Zvukové kanály"
 msgid "_Select channel to control:"
 msgstr "_Vyberte kanály, které ovládat:"
 
-#: mixer/mixer.c:1862
+#: mixer/mixer.c:1864
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr ""
 "Ovládání hlasitosti vám umožní nastavit úroveň hlasitosti vašeho počítače"
@@ -4575,7 +4580,7 @@ msgid "Saved volume to restore on startup"
 msgstr "Uložená hlasitost, kterou obnovit při startu"
 
 #: modemlights/GNOME_ModemLightsApplet.server.in.in.h:2
-#: modemlights/modemlights.c:132
+#: modemlights/modemlights.c:132 modemlights/modemlights.c:1526
 msgid "Modem Lights"
 msgstr "Kontrolky modemu"
 
@@ -4888,11 +4893,11 @@ msgid "A system load indicator"
 msgstr "Indikátor zatížení systému"
 
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:2
-#: multiload/main.c:74
+#: multiload/main.c:77
 msgid "System Monitor"
 msgstr "Sledování systému"
 
-#: multiload/GNOME_MultiloadApplet.xml.h:2
+#: multiload/GNOME_MultiloadApplet.xml.h:3
 msgid "_Open System Monitor"
 msgstr "_Otevřít sledování systému"
 
@@ -4900,11 +4905,11 @@ msgstr "_Otevřít sledování systému"
 msgid "CPU Load"
 msgstr "Zátěž CPU"
 
-#: multiload/loadavg.c:107 multiload/main.c:282
+#: multiload/loadavg.c:107 multiload/main.c:307
 msgid "Load Average"
 msgstr "Průměrná zátěž"
 
-#: multiload/main.c:76
+#: multiload/main.c:79
 msgid ""
 "Released under the GNU General Public License.\n"
 "\n"
@@ -4916,27 +4921,27 @@ msgstr ""
 "Program, který sleduje zátěž systému a je schopný zobrazovat grafy pro CPU, "
 "paměť, využití odkládacího prostoru a zatížení sítě."
 
-#: multiload/main.c:274 multiload/properties.c:558
+#: multiload/main.c:299 multiload/properties.c:558
 msgid "Processor"
 msgstr "Procesor"
 
-#: multiload/main.c:276 multiload/properties.c:565
+#: multiload/main.c:301 multiload/properties.c:565
 msgid "Memory"
 msgstr "Paměť"
 
-#: multiload/main.c:278 multiload/properties.c:573
+#: multiload/main.c:303 multiload/properties.c:573
 msgid "Network"
 msgstr "Síť"
 
-#: multiload/main.c:280 multiload/properties.c:581
+#: multiload/main.c:305 multiload/properties.c:581
 msgid "Swap Space"
 msgstr "Odkládací prostor"
 
-#: multiload/main.c:284
+#: multiload/main.c:309
 msgid "Resource"
 msgstr "Zdroj"
 
-#: multiload/main.c:295
+#: multiload/main.c:320
 #, c-format
 msgid ""
 "%s:\n"
@@ -5208,17 +5213,13 @@ msgstr "_Nová poznámka"
 msgid "_Show Notes"
 msgstr "_Zobrazit poznámky"
 
-#: stickynotes/stickynotes.c:326
+#: stickynotes/stickynotes.c:332
 msgid "Locked note"
 msgstr "Zamčená poznámka"
 
-#: stickynotes/stickynotes.c:331
+#: stickynotes/stickynotes.c:337
 msgid "Unlocked note"
 msgstr "Odemčená poznámka"
-
-#: stickynotes/stickynotes.glade.h:3
-msgid "<b>Behavior</b>"
-msgstr "<b>Chování</b>"
 
 #: stickynotes/stickynotes.glade.h:4
 msgid "<b>Default Note Properties</b>"
@@ -5579,15 +5580,15 @@ msgid "Monitor the quality of a wireless network link"
 msgstr "Sledování kvality bezdrátového síťového spojení"
 
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:3
-#: wireless/wireless-applet.c:582 wireless/wireless-applet.c:799
+#: wireless/wireless-applet.c:588 wireless/wireless-applet.c:805
 msgid "Wireless Link Monitor"
 msgstr "Sledování bezdrátového spojení"
 
-#: wireless/wireless-applet.c:359 wireless/wireless-applet.c:496
+#: wireless/wireless-applet.c:365 wireless/wireless-applet.c:502
 msgid "No Wireless Devices"
 msgstr "Žádná bezdrátová zařízení"
 
-#: wireless/wireless-applet.c:361
+#: wireless/wireless-applet.c:367
 msgid ""
 "There doesn't seem to be any wireless devices configured on your system.\n"
 "Please verify your configuration if you think this is incorrect."
@@ -5595,15 +5596,15 @@ msgstr ""
 "Zdá se, že na vašem systému nejsou nastavena žádná bezdrátová zařízení.\n"
 "Zkontrolujte prosím vaše nastavení, pokud si myslíte, že to není správně."
 
-#: wireless/wireless-applet.c:584
+#: wireless/wireless-applet.c:590
 msgid "(C) 2001, 2002 Free Software Foundation "
 msgstr "© 2001, 2002 Free Software Foundation"
 
-#: wireless/wireless-applet.c:585
+#: wireless/wireless-applet.c:591
 msgid "This utility shows the status of a wireless link."
 msgstr "Tento nástroj zobrazuje stav bezdrátového spojení."
 
-#: wireless/wireless-applet.c:800
+#: wireless/wireless-applet.c:806
 msgid "This utility shows the status of a wireless link"
 msgstr "Tento nástroj zobrazuje stav bezdrátového spojení"
 
@@ -5618,6 +5619,9 @@ msgstr "Nastavení Sledování bezdrátového spojení"
 #: wireless/wireless-applet.glade.h:3
 msgid "_Monitored device:"
 msgstr "_Sledované zařízení:"
+
+#~ msgid "La_youts..."
+#~ msgstr "_Rozložení..."
 
 #~ msgid "Add a palette..."
 #~ msgstr "Přidat paletu..."
