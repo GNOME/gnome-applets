@@ -1496,6 +1496,17 @@ modemlights_applet_fill (PanelApplet *applet)
 					   NULL,
 					   modem_applet_menu_verbs,
 					   mldata);
+
+	if (panel_applet_get_locked_down (PANEL_APPLET (applet))) {
+		BonoboUIComponent *popup_component;
+
+		popup_component = panel_applet_get_popup_component (PANEL_APPLET (applet));
+
+		bonobo_ui_component_set_prop (popup_component,
+					      "/commands/Props",
+					      "hidden", "1",
+					      NULL);
+	}
 				 
 	/* by now we know the geometry */
 	mldata->setup_done = TRUE;
