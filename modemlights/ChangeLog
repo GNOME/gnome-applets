@@ -1,3 +1,14 @@
+2004-01-31  Archana Shah  <archana.shah@wipro.com>
+
+	* modemlights.h: Added a member in structure MLData for
+	about dialog.
+	* modemlights.c: (modemlights_applet_fill): Initialized about_dialog
+	with NULL.
+	(about_cb): Changed to use member field about_dialog instead of
+	static variable about.
+	(destroy_cb): Destroys about_dialog when the applet is removed.
+	Fixes bug #132289
+
 2004-01-29  Chee Bin HOH  <cbhoh@gnome.org>
 
 	* modemlights.c:

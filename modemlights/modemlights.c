@@ -97,7 +97,6 @@ static void about_cb (BonoboUIComponent *uic,
 		      const gchar       *verbname)
 {
 	PanelApplet *applet = PANEL_APPLET (mldata->applet);
-	static GtkWidget *about = NULL;
 	GdkPixbuf 	 *pixbuf;
 	GError		 *error = NULL;
 	gchar		 *file;
@@ -114,14 +113,13 @@ static void about_cb (BonoboUIComponent *uic,
 
 	const gchar *translator_credits = _("translator_credits");
 
-	if (about) {
-		gtk_window_set_screen (GTK_WINDOW (about),
-				       gtk_widget_get_screen (GTK_WIDGET (applet)));
-		gtk_window_present (GTK_WINDOW (about));
+	if (mldata->about_dialog) {
+		gtk_window_present (GTK_WINDOW (mldata->about_dialog));
 		return;
 	}
 
-	file = gnome_program_locate_file (NULL, GNOME_FILE_DOMAIN_PIXMAP, "gnome-modem.png", FALSE, NULL);
+	file = gnome_program_locate_file (NULL, GNOME_FILE_DOMAIN_PIXMAP,
+					  "gnome-modem.png", FALSE, NULL);
 	pixbuf = gdk_pixbuf_new_from_file (file, &error);
 	g_free (file);
 	
@@ -130,25 +128,26 @@ static void about_cb (BonoboUIComponent *uic,
 		g_error_free (error);
 	}
 
-        about = gnome_about_new ( _("Modem Lights"), VERSION,
-			"(C) 2000",
-			_("Released under the GNU general public license.\n"
-			"A modem status indicator and dialer.\n"
-			"Lights in order from the top or left are Send data and Receive data."),
-			authors,
-			documenters,
-			strcmp (translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
-			pixbuf);
+	mldata->about_dialog = gnome_about_new ( _("Modem Lights"), VERSION,
+						"(C) 2000",
+						_("Released under the GNU general public license.\n"
+						"A modem status indicator and dialer.\n"
+						"Lights in order from the top or left are Send data and Receive data."),
+						authors,
+						documenters,
+						strcmp (translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
+						pixbuf);
 
 	if (pixbuf)
 		g_object_unref (pixbuf);
 
-	gtk_window_set_screen (GTK_WINDOW (about),
+	gtk_window_set_screen (GTK_WINDOW (mldata->about_dialog),
 			       gtk_widget_get_screen (GTK_WIDGET (applet)));
-	gtk_window_set_wmclass (GTK_WINDOW (about), "modem lights", "Modem Lights");
-	g_signal_connect (G_OBJECT (about), "destroy",
-			  G_CALLBACK (gtk_widget_destroyed), &about);
-	gtk_widget_show (about);
+	gtk_window_set_wmclass (GTK_WINDOW (mldata->about_dialog),
+				"modem lights", "Modem Lights");
+	g_signal_connect (G_OBJECT (mldata->about_dialog), "destroy",
+			  G_CALLBACK (gtk_widget_destroyed), &mldata->about_dialog);
+	gtk_widget_show (mldata->about_dialog);
 }
 
 static int is_Modem_on(MLData *mldata)
@@ -1363,6 +1362,8 @@ destroy_cb (GtkWidget *widget, gpointer data)
 {
 	MLData *mldata = data;
 	g_source_remove (mldata->update_timeout_id);
+	if (mldata->about_dialog)
+		gtk_widget_destroy (mldata->about_dialog);
 	if (mldata->propwindow)
 		gtk_widget_destroy (mldata->propwindow);
 	
@@ -1384,6 +1385,7 @@ modemlights_applet_fill (PanelApplet *applet)
 	mldata->button_blink_id = -1;
 	mldata->update_timeout_id = FALSE;
 	mldata->confirm_dialog = FALSE;
+	mldata->about_dialog = NULL;
 	mldata->setup_done = FALSE;
 	mldata->start_time = (time_t)0;
 	mldata->old_timer = -1;

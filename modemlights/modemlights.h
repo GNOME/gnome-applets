@@ -140,6 +140,7 @@ struct _MLData
 
 	GdkGC *gc;
 	
+	GtkWidget *about_dialog;
 	GtkWidget *propwindow;
 	GtkWidget *connect_entry;
 	GtkWidget *disconnect_entry;
