@@ -360,6 +360,7 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
 /*  GtkWidget *directory_button; */
   GtkObject *adj;
   GtkWidget *hscale;
+  GtkWidget *entry;
 
   if (ad->propwindow)
     {
@@ -487,11 +488,15 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
   gtk_box_pack_start (GTK_BOX (pref_hbox), label, FALSE, FALSE, 0);
   gtk_widget_show (label);
 
-  ad->directory_entry = gtk_entry_new ();
-  if (ad->directory_entry)
-    gtk_entry_set_text (GTK_ENTRY (ad->directory_entry), ad->directory);
+  ad->directory_entry = gnome_file_entry_new ("output_dir",
+					      "Select directory");
+  gnome_file_entry_set_directory(GNOME_FILE_ENTRY(ad->directory_entry), TRUE);
+  entry = GTK_COMBO (GNOME_FILE_ENTRY (ad->directory_entry)->gentry)->entry;
+  
+  if (ad->directory)
+    gtk_entry_set_text (GTK_ENTRY (entry), ad->directory);
 
-  gtk_signal_connect_object (GTK_OBJECT (ad->directory_entry), "changed",
+  gtk_signal_connect_object (GTK_OBJECT (entry), "changed",
 			     GTK_SIGNAL_FUNC (gnome_property_box_changed),
 			     GTK_OBJECT (ad->propwindow));
 
@@ -1829,7 +1834,8 @@ property_apply_cb (GtkWidget * w, gpointer data)
   gchar *buf;
   gint info_changed = FALSE;
 
-  buf = gtk_entry_get_text (GTK_ENTRY (ad->directory_entry));
+  buf = gtk_entry_get_text (GTK_ENTRY (
+    GTK_COMBO (GNOME_FILE_ENTRY (ad->directory_entry)->gentry)->entry));
 
   if ((buf) && (strcmp (buf, old->directory)))
     {
