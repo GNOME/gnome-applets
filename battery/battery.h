@@ -84,7 +84,7 @@ typedef struct BatteryData {
    * For the  "Properties" window ...
    *
    */
-  GtkWidget * prop_win;
+  GnomePropertyBox * prop_win;
 
   /* General */
   GtkObject * height_adj, * width_adj;

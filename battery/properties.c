@@ -28,9 +28,16 @@ battery_properties_window(AppletWidget * applet, gpointer data)
   help_entry.name = gnome_app_id;
 
   if (bat->prop_win)
-    return; 
+    {
+      gtk_widget_show (GTK_WIDGET (bat->prop_win));
+
+      return;
+    }
 	
-  bat->prop_win = gnome_property_box_new ();
+  bat->prop_win = GNOME_PROPERTY_BOX (gnome_property_box_new ());
+
+  gnome_dialog_close_hides
+    (GNOME_DIALOG (& (bat->prop_win->dialog)), TRUE);
 
   gtk_window_set_title (
 	GTK_WINDOW(&GNOME_PROPERTY_BOX(bat->prop_win)->dialog.window),
@@ -56,9 +63,10 @@ battery_properties_window(AppletWidget * applet, gpointer data)
 		     GTK_SIGNAL_FUNC(adj_value_changed_cb), bat);
   
   l = gtk_label_new(_("Applet Width")); 
+  gtk_table_attach_defaults( GTK_TABLE(t), l, 0, 1, 2, 3 ); 
+
   bat->width_adj = gtk_adjustment_new ( bat->width, 0.5, 666, 1, 8, 8 );
   width_spin = gtk_spin_button_new( GTK_ADJUSTMENT(bat->width_adj), 1, 0 );
-  gtk_table_attach_defaults( GTK_TABLE(t), l, 0, 1, 2, 3 ); 
   gtk_table_attach_defaults( GTK_TABLE(t), width_spin, 1, 2, 2, 3 );
   gtk_spin_button_set_update_policy( GTK_SPIN_BUTTON(width_spin),
 				     GTK_UPDATE_ALWAYS );
@@ -202,7 +210,7 @@ battery_properties_window(AppletWidget * applet, gpointer data)
 		      GTK_SIGNAL_FUNC (gnome_help_pbox_display),
 		      &help_entry);
 	
-  gtk_widget_show_all (bat->prop_win);
+  gtk_widget_show_all (GTK_WIDGET (bat->prop_win));
 
 } /* battery_properties_window */
 
@@ -217,8 +225,6 @@ prop_cancel (GtkWidget * w, gpointer data)
 {
   BatteryData * bat = data;
 
-  bat->prop_win = 0;
-
   return FALSE;
 } /* prop_cancel */
 
@@ -229,12 +235,15 @@ prop_apply (GtkWidget *w, int page, gpointer data)
   int width, height, size_changed = 0;
   guint8 r, g, b;
 
-  /* Update the running session from the properties.  The session
-     state will be saved when the applet exits and the panel tells it
-     to save state. */
+  /*
+   * Update the running session from the properties.  The session
+   * state will be saved when the applet exits and the panel tells it
+   * to save state.
+   */
   height = GTK_ADJUSTMENT(bat->height_adj)->value;
   width = GTK_ADJUSTMENT(bat->width_adj)->value;
-  if (height != bat->height ||  width != bat->width)
+
+  if ((height != bat->height) || (width != bat->width))
     {
       size_changed = 1;
       bat->height = height;

@@ -416,13 +416,13 @@ make_new_battery_applet(void)
     battery_session_defaults(bat);
 
   /* All widgets will go into this container. */
-  root = gtk_hbox_new(FALSE, 0);
+  root = gtk_hbox_new (FALSE, 0);
 
   /* The 'graph frame' is the root widget of the entire graph mode.
      It provides the pretty bevelling and serves as an easy way of
      hiding/showing the entire graph mode. */
-  bat->graph_frame = gtk_frame_new(NULL);
-  gtk_frame_set_shadow_type(GTK_FRAME(bat->graph_frame), GTK_SHADOW_IN);
+  bat->graph_frame = gtk_frame_new (NULL);
+  gtk_frame_set_shadow_type (GTK_FRAME(bat->graph_frame), GTK_SHADOW_IN);
 
   /* The 'readout frame' is the root widget of the entire readout
      mode. */
@@ -439,11 +439,11 @@ make_new_battery_applet(void)
   /* The two labels go into this vbox */
   readout_text_vbox = gtk_vbox_new(FALSE, 3);
 
-  bat->readout_label_percentage = gtk_label_new("");
+  bat->readout_label_percentage = gtk_label_new ("");
   gtk_box_pack_start_defaults(GTK_BOX(readout_text_vbox),
 			      bat->readout_label_percentage);
 
-  bat->readout_label_time = gtk_label_new("");
+  bat->readout_label_time = gtk_label_new ("");
   gtk_box_pack_start_defaults(GTK_BOX(readout_text_vbox),
 			      bat->readout_label_time);
 
@@ -507,21 +507,23 @@ make_new_battery_applet(void)
 					bat);
 
 
-  gtk_widget_show_all(bat->applet);
-  gtk_widget_show(bat->graph_area);
+  gtk_widget_show_all (bat->applet);
+  gtk_widget_show (bat->graph_area);
   
   /* Allocate the colors... */
-  battery_create_gc(bat);
-  battery_setup_colors(bat);
+  battery_create_gc (bat);
+  battery_setup_colors (bat);
 
   /* Display only one mode */
   battery_set_mode(bat);
 
+  /* Nothing is drawn until this is set. */
+  bat->setup = TRUE;
+
   /* Size things according to the saved settings */
   battery_set_size(bat);
 
-  /* Nothing is drawn until this is set. */
-  bat->setup = TRUE;
+  gtk_timeout_add(500, (GtkFunction) battery_update,  bat);
 
   bat->graph_timeout_id = gtk_timeout_add(1000 * bat->graph_interval,
 					  (GtkFunction) battery_update, bat);
@@ -591,12 +593,16 @@ battery_set_size(BatteryData * bat)
   gtk_widget_set_usize(bat->graph_frame, bat->width, bat->height);
   gtk_widget_set_usize(bat->readout_frame, bat->width, bat->height);
 
-  /* If pixmaps have already been allocated, then free them here before
-     creating new ones. */
+  /*
+   * If pixmaps have already been allocated, then free them here
+   * before creating new ones.
+   */
   if (bat->setup)
     {
-      gdk_pixmap_unref(bat->graph_pixmap);
-      gdk_pixmap_unref(bat->readout_pixmap);
+      if (bat->graph_pixmap != NULL)
+	  gdk_pixmap_unref(bat->graph_pixmap);
+      if (bat->readout_pixmap != NULL)
+	gdk_pixmap_unref(bat->readout_pixmap);
     }
 
   bat->graph_pixmap = gdk_pixmap_new(bat->graph_area->window,
@@ -640,7 +646,7 @@ battery_set_size(BatteryData * bat)
 
   bat->force_update = TRUE;
 
-  battery_update((gpointer)bat);
+  battery_update((gpointer) bat);
 
 } /* battery_set_size */
 
