@@ -76,7 +76,7 @@ void gnotes_preferences_save(const char *path, GNotes *gnotes)
     gnome_config_pop_prefix();
 };
 
-static void property_apply_cb(GtkWidget *wid, gpointer data)
+static void property_apply_cb(GtkWidget *wid, gpointer nodata, gpointer data)
 {
     GNotes *gnotes = (GNotes*)data;
 
@@ -119,7 +119,7 @@ void properties_show(AppletWidget *applet, gpointer data)
     GtkObject *width_adj;
     GtkWidget *tmp_label;
 
-    GNotes gnotes = *(GNotes*)data;
+    GNotes *gnotes = (GNotes*)data;
     
     if(propwindow != 0)
     {
@@ -129,7 +129,7 @@ void properties_show(AppletWidget *applet, gpointer data)
 
     help_entry.name = gnome_app_id;
 
-    gnotes_copy_defaults_to_defaults(&gnotes.defaults, &defaults);
+    gnotes_copy_defaults_to_defaults(&gnotes->defaults, &defaults);
     
     propwindow = gnome_property_box_new();
 
@@ -186,7 +186,7 @@ void properties_show(AppletWidget *applet, gpointer data)
                                    tmp_label);
 
     gtk_signal_connect(GTK_OBJECT(propwindow), "apply",
-                       GTK_SIGNAL_FUNC(property_apply_cb), &gnotes);
+                       GTK_SIGNAL_FUNC(property_apply_cb), gnotes);
     gtk_signal_connect(GTK_OBJECT(propwindow), "destroy",
                        GTK_SIGNAL_FUNC(property_destroy_cb), NULL);
     gtk_signal_connect( GTK_OBJECT(propwindow), "help",
