@@ -81,7 +81,7 @@ static void place_widgets (GWeatherApplet *gw_applet)
 
 static void change_orient_cb (PanelApplet *w, PanelAppletOrient o, gpointer data)
 {
-	GWeatherApplet *gw_applet = (GWeatherApplet *)data;
+    GWeatherApplet *gw_applet = (GWeatherApplet *)data;
 	
     gw_applet->orient = o;
     place_widgets(gw_applet);
@@ -90,33 +90,14 @@ static void change_orient_cb (PanelApplet *w, PanelAppletOrient o, gpointer data
 
 static void change_size_cb(PanelApplet *w, gint s, gpointer data)
 {
-	GWeatherApplet *gw_applet = (GWeatherApplet *)data;
+    GWeatherApplet *gw_applet = (GWeatherApplet *)data;
 	
-	gw_applet->size = s;
-	place_widgets(gw_applet);
-	return;
-}
-
-/*
-#ifdef HAVE_PANEL_PIXEL_SIZE
-static void change_pixel_size_cb (AppletWidget *w, int s)
-{
-    gweather_size = s;
-    place_widgets();
+    gw_applet->size = s;
+    place_widgets(gw_applet);
     return;
 }
-#endif */ /* HAVE_PANEL_PIXEL_SIZE */ /*
 
-#ifdef HAVE_SAVE_SESSION_SIGNAL
-static int save_session_cb (AppletWidget *w, gchar *privcfgpath, gchar *globcfgpath)
-{
-    /* /* fprintf(stderr, "save_session_cb: %s\n", privcfgpath); */ /*
-    gweather_pref_save(privcfgpath);
-    gweather_info_save(privcfgpath);
-    return FALSE;
-}
-#endif */ /* HAVE_SAVE_SESSION_SIGNAL */ /*
-
+#ifdef FIXME
 static void clicked_cb (GtkWidget *widget, GdkEventButton *ev, gpointer data)
 {
     if ((ev == NULL) || (ev->button != 1))
@@ -126,38 +107,73 @@ static void clicked_cb (GtkWidget *widget, GdkEventButton *ev, gpointer data)
 
     return;
 }
-
-static void about_cb (AppletWidget *widget, gpointer data)
+#endif
+static void about_cb (BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 {
+
     gweather_about_run();
     return;
+
 }
 
-static void help_cb (AppletWidget *applet, gpointer data)
+static void help_cb (BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 {
+#ifdef FIXME
     static GnomeHelpMenuEntry help_entry = { "gweather_applet", "index.html"};
 
     gnome_help_display(NULL, &help_entry);
+#endif
 }
 
-static void pref_cb (AppletWidget *widget, gpointer data)
+static void pref_cb (BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 {
-    gweather_pref_run();
+    GWeatherApplet *gw_applet = data;
+    gweather_pref_run(gw_applet);
     return;
 }
 
-static void forecast_cb (AppletWidget *widget, gpointer data)
+static void forecast_cb (BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 {
-    gweather_dialog_display_toggle();
+    GWeatherApplet *gw_applet = data;
+
+    gweather_dialog_display_toggle(gw_applet);
+
     return;
 }
 
-static void update_cb (AppletWidget *widget, gpointer data)
+static void update_cb (BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 {
-    gweather_update();
+    GWeatherApplet *gw_applet = data;
+
+    gweather_update(gw_applet);
+
     return;
 }
-*/
+
+
+static const BonoboUIVerb weather_applet_menu_verbs [] = {
+	BONOBO_UI_VERB ("Forecast", forecast_cb),
+	BONOBO_UI_VERB ("Update", update_cb),
+        BONOBO_UI_VERB ("Props", pref_cb),
+        BONOBO_UI_VERB ("Help", help_cb),
+        BONOBO_UI_VERB ("About", about_cb),
+
+        BONOBO_UI_VERB_END
+};
+
+static const char weather_applet_menu_xml [] =
+	"<popup name=\"button3\">\n"
+	"   <menuitem name=\"Item 1\" verb=\"Forecast\" _label=\"Forecast\"/>\n"
+	"   <menuitem name=\"Item 2\" verb=\"Update\" _label=\"Update\"\n"
+	"             pixtype=\"stock\" pixname=\"gtk-refresh\"/>\n"
+	"   <menuitem name=\"Item 3\" verb=\"Props\" _label=\"Properties\"\n"
+	"             pixtype=\"stock\" pixname=\"gtk-properties\"/>\n"
+	"   <menuitem name=\"Item 4\" verb=\"Help\" _label=\"Help\"\n"
+	"             pixtype=\"stock\" pixname=\"gtk-help\"/>\n"
+	"   <menuitem name=\"Item 5\" verb=\"About\" _label=\"About\"\n"
+	"             pixtype=\"stock\" pixname=\"gnome-stock-about\"/>\n"
+	"</popup>\n";
+	
 void gweather_applet_create (GWeatherApplet *gw_applet)
 {
 	GtkWidget *frame;
@@ -166,12 +182,7 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
 	GtkWidget *pixmap;
 	GtkTooltips *tooltips;
 
- /*   g_return_if_fail(gweather_applet == NULL);
-
-    applet_widget_init("gweather", VERSION, argc, argv,
-                       NULL, 0, NULL);
-*/
-
+ 
    gw_applet->gweather_pref.location = NULL;
    gw_applet->gweather_pref.update_interval = 1800;
    gw_applet->gweather_pref.update_enabled = TRUE;
@@ -193,38 +204,8 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
 
     gtk_widget_set_events(GTK_WIDGET(gw_applet->applet), gtk_widget_get_events(GTK_WIDGET(gw_applet->applet)) | \
                           GDK_BUTTON_PRESS_MASK);*/
-/*
-    applet_widget_register_stock_callback (APPLET_WIDGET(gweather_applet),
-					   "forecast",
-					   GNOME_STOCK_MENU_BOOK_OPEN,
-					   _("Detailed Forecast"),
-					   forecast_cb, NULL);
-    applet_widget_register_stock_callback (APPLET_WIDGET(gweather_applet),
-					   "update",
-					   GNOME_STOCK_MENU_REFRESH,
-					   _("Update"),
-					   update_cb, NULL);
-    applet_widget_register_stock_callback (APPLET_WIDGET(gweather_applet),
-					   "preferences",
-                                           GNOME_STOCK_MENU_PREF,
-					   _("Properties..."),
-                                           pref_cb, NULL);
-    applet_widget_register_stock_callback (APPLET_WIDGET(gweather_applet), 
-					   "help",
-					   GNOME_STOCK_PIXMAP_HELP,
-					   _("Help"),
-					   help_cb, NULL);
-    applet_widget_register_stock_callback (APPLET_WIDGET(gweather_applet),
-					   "about",
-                                           GNOME_STOCK_MENU_ABOUT,
-					   _("About..."),
-                                           about_cb, NULL);
-*/
-/*
-#ifdef HAVE_SAVE_SESSION_SIGNAL
-    gtk_signal_connect (GTK_OBJECT(gweather_applet), "save_session",
-                       GTK_SIGNAL_FUNC(save_session_cb), NULL);
-#endif */ /* HAVE_SAVE_SESSION_SIGNAL */
+
+
     g_signal_connect (G_OBJECT(gw_applet->applet), "change_orient",
                        G_CALLBACK(change_orient_cb), gw_applet);
     g_signal_connect (G_OBJECT(gw_applet->applet), "change_size",
@@ -236,7 +217,7 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
     g_signal_connect (G_OBJECT(gw_applet->applet), "destroy",
                         G_CALLBACK(gtk_main_quit), NULL);
                         
-	tooltips = gtk_tooltips_new();
+    tooltips = gtk_tooltips_new();
 
     frame = gtk_frame_new(NULL);
     gtk_frame_set_shadow_type(GTK_FRAME(frame), GTK_SHADOW_NONE);
@@ -257,14 +238,18 @@ void gweather_applet_create (GWeatherApplet *gw_applet)
 
     gtk_container_add(GTK_CONTAINER(frame), fixed);
 
-	gtk_container_add(GTK_CONTAINER(gw_applet->applet), frame);
-/*    applet_widget_add(APPLET_WIDGET(gweather_applet), frame); */
+    gtk_container_add(GTK_CONTAINER(gw_applet->applet), frame);
 
     gtk_tooltips_set_tip(tooltips, GTK_WIDGET(gw_applet->applet), _("GNOME Weather"), NULL);
 
     gw_applet->size = panel_applet_get_size (gw_applet->applet);
 
     gw_applet->orient = panel_applet_get_orient (gw_applet->applet);
+    
+    panel_applet_setup_menu (gw_applet->applet,
+			     weather_applet_menu_xml,
+			     weather_applet_menu_verbs,
+			     gw_applet);
 
 	gw_applet->frame = frame;
 	gw_applet->label = label;
