@@ -581,7 +581,8 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	add_color_selector(page, _("_User"), "cpuload_color0", ma);
 	add_color_selector(page, _("S_ystem"), "cpuload_color1", ma);
 	add_color_selector(page, _("N_ice"), "cpuload_color2", ma);
-	add_color_selector(page, _("I_dle"), "cpuload_color3", ma);
+	add_color_selector(page, _("I_OWait"), "cpuload_color3", ma);
+	add_color_selector(page, _("I_dle"), "cpuload_color4", ma);
 	
 	page = add_page(notebook,  _("Memory"));
 	gtk_container_set_border_width (GTK_CONTAINER (page), 12);

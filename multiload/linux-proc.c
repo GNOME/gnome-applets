@@ -24,7 +24,10 @@
 
 static const unsigned needed_cpu_flags =
 (1 << GLIBTOP_CPU_USER) +
-(1 << GLIBTOP_CPU_IDLE);
+(1 << GLIBTOP_CPU_IDLE) +
+(1 << GLIBTOP_CPU_SYS) +
+(1 << GLIBTOP_CPU_NICE) +
+(1 << GLIBTOP_CPU_IOWAIT);
 
 static const unsigned needed_page_flags =
 (1 << GLIBTOP_SWAP_PAGEIN) +
@@ -47,9 +50,9 @@ static const unsigned needed_netload_flags =
 
 
 void
-GetLoad (int Maximum, int data [4], LoadGraph *g)
+GetLoad (int Maximum, int data [5], LoadGraph *g)
 {
-    int usr, nice, sys, free;
+    int usr, nice, sys, iowait, free;
     int total;
 
     glibtop_cpu cpu;
@@ -61,7 +64,8 @@ GetLoad (int Maximum, int data [4], LoadGraph *g)
     g->cpu_time [0] = cpu.user;
     g->cpu_time [1] = cpu.nice;
     g->cpu_time [2] = cpu.sys;
-    g->cpu_time [3] = cpu.idle;
+    g->cpu_time [3] = cpu.iowait;
+    g->cpu_time [4] = cpu.idle - cpu.iowait;
 
     if (!g->cpu_initialized) {
 	memcpy (g->cpu_last, g->cpu_time, sizeof (g->cpu_last));
@@ -71,55 +75,64 @@ GetLoad (int Maximum, int data [4], LoadGraph *g)
     usr  = g->cpu_time [0] - g->cpu_last [0];
     nice = g->cpu_time [1] - g->cpu_last [1];
     sys  = g->cpu_time [2] - g->cpu_last [2];
-    free = g->cpu_time [3] - g->cpu_last [3];
+    iowait = g->cpu_time [3] - g->cpu_last [3];
+    free = g->cpu_time [4] - g->cpu_last [4];
 
-    total = usr + nice + sys + free;
+    total = usr + nice + sys + free + iowait;
 
-    g->cpu_last [0] = g->cpu_time [0];
-    g->cpu_last [1] = g->cpu_time [1];
-    g->cpu_last [2] = g->cpu_time [2];
-    g->cpu_last [3] = g->cpu_time [3];
+    memcpy(g->cpu_last, g->cpu_time, sizeof g->cpu_last);
 
     if (!total) total = Maximum;
 
     usr  = rint (Maximum * (float)(usr)  / total);
     nice = rint (Maximum * (float)(nice) / total);
     sys  = rint (Maximum * (float)(sys)  / total);
+    iowait = rint (Maximum * (float)(iowait) / total);
     free = rint (Maximum * (float)(free) / total);
 
     data [0] = usr;
     data [1] = sys;
     data [2] = nice;
-    data [3] = free;
+    data [3] = iowait;
+    data [4] = free;
 }
 
 void
 GetDiskLoad (int Maximum, int data [3], LoadGraph *g)
 {
-	glibtop_fsusage fsusage;
+	static guint64 lastread = 0, lastwrite = 0;
+	static guint64 max = 1;
+
 	glibtop_mountlist mountlist;
 	glibtop_mountentry *mountentries;
-	int i;
-	static guint64 lastread, lastwrite;
+	guint i;
+
 	guint64 read, write;
-	guint64 total;
+	guint64 total, readdiff, writediff;
+
+	read = write = 0;
 
 	mountentries = glibtop_get_mountlist (&mountlist, FALSE);
 
-	
-	read = -lastread; write = -lastwrite;
 	for (i = 0; i < mountlist.number; i++)
 	{
+		glibtop_fsusage fsusage;
 		glibtop_get_fsusage(&fsusage, mountentries[i].mountdir);
 		read += fsusage.read; write += fsusage.write;
 	}
-	lastread += read; lastwrite += write;
 
-	total = read + write;
+	g_free(mountentries);
 
-	data[0] = read;
-	data[1] = read + write;
-	data[2] = Maximum - read - write;
+	readdiff  = read - lastread;
+	writediff = write - lastwrite;
+
+	lastread  = read;
+	lastwrite = write;
+	max = MAX(max, read + write);
+
+	data[0] = read / max;
+	data[1] = (read + write) / max;
+	data[2] = Maximum - (read + write);
 }
 
 #if 0

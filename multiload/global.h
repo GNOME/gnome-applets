@@ -14,7 +14,7 @@
 
 G_BEGIN_DECLS
 
-#define NCPUSTATES 4
+#define NCPUSTATES 5
 #define NGRAPHS 6
 
 typedef struct _MultiloadApplet MultiloadApplet;

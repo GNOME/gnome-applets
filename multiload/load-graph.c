@@ -104,8 +104,7 @@ load_graph_update (LoadGraph *g)
 	g->get_data (g->draw_height, g->data [0], g);
 
     for (i=0; i < g->draw_width-1; i++)
-		for (j=0; j < g->n; j++)
-		    g->data [i+1][j] = g->odata [i][j];
+	    memcpy(g->data [i+1], g->odata [i], g->n * sizeof g->odata [i][0]);
 
     load_graph_draw (g);
     return TRUE;

@@ -1,3 +1,16 @@
+2005-01-10  Benoît Dejean  <TazForEver@dlfp.org>
+
+	* cpuload.c: (cpuload_applet_new):
+	* global.h:
+	* linux-proc.c: (GetLoad):
+	* linux-proc.h:
+	* properties.c: (fill_properties): Added iowait to cpu graph.
+	Closes #160444.
+	
+	* linux-proc.c: (GetDiskLoad): More work.
+	
+	* load-graph.c: (load_graph_update): 1-line cleanup.
+
 2005-01-09  Benoît Dejean  <TazForEver@dlfp.org>
 
 	* linux-proc.c: (get_netmax), (GetNet): Should fix #88654.

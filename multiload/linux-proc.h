@@ -3,7 +3,7 @@
 
 #include <load-graph.h>
 
-void GetLoad (int Maximum, int data [4], LoadGraph *g);
+void GetLoad (int Maximum, int data [5], LoadGraph *g);
 void GetDiskLoad (int Maximum, int data [3], LoadGraph *g);
 #if 0
 void GetPage (int Maximum, int data [3], LoadGraph *g);
