@@ -31,6 +31,6 @@ battstat_applet_LDADD = 			\
 			-lglade			\
 			-lglade-gnome
 
-EXTRADIST = $(glade_DATA)
+EXTRA_DIST = $(glade_DATA)
 
 

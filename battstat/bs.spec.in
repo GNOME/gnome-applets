@@ -1,6 +1,6 @@
 # Note that this is NOT a relocatable package
 %define ver	@SPEC_VERSION@
-%define rel	2
+%define rel	1
 %define prefix	/usr
 
 %define config_opts --prefix=%{prefix} --sysconfdir=/etc
@@ -45,10 +45,11 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-, root, root)
 %doc README INSTALL COPYING ChangeLog NEWS TODO AUTHORS
 %{prefix}/bin/battstat_applet
-%{prefix}/share/pixmaps/*
+%{prefix}/share/pixmaps/battstat*
 %{prefix}/share/locale/*/LC_MESSAGES/battstat_applet.mo
 %{prefix}/share/gnome/help/battstat_applet/*
 %{prefix}/share/applets/Monitors/battstat_applet.desktop
+%{prefix}/share/battstat_applet/*
 %config /etc/sound/events/battstat_applet.soundlist
 %config /etc/CORBA/servers/battstat_applet.gnorba
 

@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: battstat_applet\n"
-"POT-Creation-Date: 2001-07-19 01:52+0200\n"
+"POT-Creation-Date: 2001-10-26 18:27+0200\n"
 "PO-Revision-Date: 2001-04-21 03:15+0200\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
@@ -18,40 +18,49 @@ msgstr ""
 
 #. Message displayed if user tries to run applet
 #. on unsupported platform
-#: src/battstat_applet.c:263
+#: src/battstat_applet.c:262
 msgid "Your platform is not supported!\n"
 msgstr "Din plattform stöds inte!\n"
 
-#: src/battstat_applet.c:264
+#: src/battstat_applet.c:263
 msgid "The applet will not work properly (if at all).\n"
 msgstr "Panelprogrammet kommer inte att fungera ordentligt (om alls).\n"
 
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
-#: src/battstat_applet.c:322 src/battstat_applet.c:891
+#: src/battstat_applet.c:324 src/battstat_applet.c:827
 msgid "High"
 msgstr "Hög"
 
 #. Low = The APM BIOS thinks that the battery charge is Low.
-#: src/battstat_applet.c:324 src/battstat_applet.c:893
+#: src/battstat_applet.c:326 src/battstat_applet.c:829
 msgid "Low"
 msgstr "Låg"
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: src/battstat_applet.c:326 src/battstat_applet.c:895
+#: src/battstat_applet.c:328 src/battstat_applet.c:831
 msgid "Critical"
 msgstr "Kritisk"
 
 #. Charging = The APM BIOS thinks that the battery is recharging.
-#: src/battstat_applet.c:328 src/battstat_applet.c:897
+#: src/battstat_applet.c:330 src/battstat_applet.c:833
 msgid "Charging"
 msgstr "Laddar"
+
+#: src/battstat_applet.c:409
+#, c-format
+msgid "Battery low (%d%%) and AC is offline"
+msgstr "Batterinivån är låg (%d%%) och nätspänningen är frånkopplad"
+
+#: src/battstat_applet.c:432
+msgid "Battery is now fully re-charged!"
+msgstr "Batteriet är nu helt uppladdat!"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: src/battstat_applet.c:434 src/battstat_applet.c:1088
+#: src/battstat_applet.c:451 src/battstat_applet.c:1001
 #, c-format
 msgid ""
 "System is running on battery power\n"
@@ -63,7 +72,7 @@ msgstr ""
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: src/battstat_applet.c:442 src/battstat_applet.c:1096
+#: src/battstat_applet.c:455 src/battstat_applet.c:1009
 #, c-format
 msgid ""
 "System is running on AC power\n"
@@ -74,54 +83,32 @@ msgstr ""
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
-#: src/battstat_applet.c:451 src/battstat_applet.c:1028
-#: src/battstat_applet.c:1109
+#: src/battstat_applet.c:461 src/battstat_applet.c:941
+#: src/battstat_applet.c:1022
 msgid "System is running on battery power"
 msgstr "Systemet körs på batteri"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
-#: src/battstat_applet.c:457 src/battstat_applet.c:1034
-#: src/battstat_applet.c:1115
+#: src/battstat_applet.c:464 src/battstat_applet.c:947
+#: src/battstat_applet.c:1028
 msgid "System is running on AC power"
 msgstr "Systemet körs på nätspänning"
 
-#. Displayed in the percentage label at the side of the battery meter
-#. * if the applet discovers that you have removed the battery
-#. * from the system and it only runs on AC power.
-#.
-#: src/battstat_applet.c:477
+#: src/battstat_applet.c:478
 msgid "N/A"
 msgstr "--"
 
-#. This message will be displayed in a Gnome Warning dialog
-#. window when the laptop isn't connected to a power source
-#. and the battery charge is dropping below the value
-#. specified by the user.
-#: src/battstat_applet.c:616
-#, c-format
-msgid "Battery low (%d%%) and AC is offline"
-msgstr "Batterinivån är låg (%d%%) och nätspänningen är frånkopplad"
-
-#. This message will be displayed in a Gnome Warning dialog
-#. window when the battery charge is dropping below the
-#. value specified by the user. Technically this shouldn't
-#. happen if the battery is working properly.
-#: src/battstat_applet.c:623
-#, c-format
-msgid "Battery low (%d%%) and AC is online"
-msgstr "Batterinivån är låg (%d%%) och nätspänningen är inkopplad"
-
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
-#: src/battstat_applet.c:643 src/battstat_applet.c:1008
+#: src/battstat_applet.c:609 src/battstat_applet.c:921
 #, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
 msgstr "Systemet körs på batteri. Batteri: %d%% (%s)"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
-#: src/battstat_applet.c:650 src/battstat_applet.c:1015
+#: src/battstat_applet.c:616 src/battstat_applet.c:928
 #, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
 msgstr "Systemet körs på nätspänning. Batteri: %d%% (%s)"
@@ -130,39 +117,33 @@ msgstr "Systemet körs på nätspänning. Batteri: %d%% (%s)"
 #. battery frame when the computer is using battery
 #. power and the battery isn't present. Not a
 #. possible combination, I guess... :)
-#: src/battstat_applet.c:661
+#: src/battstat_applet.c:627
 msgid "System is running on battery power. Battery: Not present"
 msgstr "Systemet körs på batteri. Batteri: Inte tillgängligt"
 
 #. This string will display as a tooltip over the
 #. battery frame when the computer is using AC
 #. power and the battery isn't present.
-#: src/battstat_applet.c:667
+#: src/battstat_applet.c:633
 msgid "System is running on AC power. Battery: Not present"
 msgstr "Systemet körs på nätspänning. Batteri: Inte tillgängligt"
 
 #. Displayed as a tooltip over the battery meter when there is
 #. a battery present. %d will hold the current charge and %s will
 #. hold the status of the battery, (High, Low, Critical, Charging.
-#: src/battstat_applet.c:676
+#: src/battstat_applet.c:642
 #, c-format
 msgid "Battery: %d%% (%s)"
 msgstr "Batteri: %d%% (%s)"
 
 #. Displayed as a tooltip over the battery meter when no
 #. battery is present.
-#: src/battstat_applet.c:683
+#: src/battstat_applet.c:649
 msgid "Battery: Not present"
 msgstr "Batteri: Inte tillgängligt"
 
-#. Displayed in a Gnome OK dialog window when the battery is
-#. fully recharged.
-#: src/battstat_applet.c:707
-msgid "Battery is now fully re-charged!"
-msgstr "Batteriet är nu helt uppladdat!"
-
 #. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: src/battstat_applet.c:747
+#: src/battstat_applet.c:704
 msgid ""
 "Can't open the APM device!\n"
 "\n"
@@ -175,7 +156,7 @@ msgstr ""
 "APM-enheten."
 
 #. Displayed if the APM system is disabled (Used under *BSD)
-#: src/battstat_applet.c:755
+#: src/battstat_applet.c:712
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
@@ -186,166 +167,146 @@ msgstr ""
 "FreeBSD) och se om det hjälper.\n"
 
 #. The long name of the applet in the About dialog.
-#: src/battstat_applet.c:829
+#: src/battstat_applet.c:771
 msgid "Battery status utility"
 msgstr "Batteriövervakare"
 
-#: src/battstat_applet.c:830
+#: src/battstat_applet.c:772
 msgid "(C) 2000 The Gnulix Society"
 msgstr "© 2000 Gnulix Society"
 
 #. Longer description of the applet in the About dialog.
-#: src/battstat_applet.c:833
+#: src/battstat_applet.c:775
 msgid "This utility show the status of your laptop battery."
 msgstr "Detta verktyg visar laddningsnivån på batteriet i din bärbara dator."
 
 #. Displayed when the user tries to hide all
 #. parts of the applet in the preferences
 #. window.
-#: src/battstat_applet.c:973
+#: src/battstat_applet.c:886
 msgid "You can't hide all elements of the applet!"
 msgstr "Du kan inte gömma alla delar i panelprogrammet!"
 
 #. Message will be displayed if the applet couldn't be
 #. created at all.
-#: src/battstat_applet.c:1373
+#: src/battstat_applet.c:1272
 msgid "Can't create applet!\n"
 msgstr "Kan inte skapa panelprogram!\n"
 
 #. Applet menu, Properties
-#: src/battstat_applet.c:1525
+#: src/battstat_applet.c:1450
 msgid "Properties..."
 msgstr "Egenskaper..."
 
 #. Applet menu, About
-#: src/battstat_applet.c:1532
+#: src/battstat_applet.c:1457
 msgid "About..."
 msgstr "Om..."
 
 #. Applet menu, Help
-#: src/battstat_applet.c:1539
+#: src/battstat_applet.c:1464
 msgid "Help"
 msgstr "Hjälp"
 
 #. Applet menu, Suspend laptop
-#: src/battstat_applet.c:1545
+#: src/battstat_applet.c:1470
 msgid "Suspend laptop"
 msgstr "Pausa datorn"
 
 #. Message in a Gnome warning dialog window
 #. when the user enables the suspend
 #. function.
-#: src/properties.c:121
+#: src/properties.c:123
+#, fuzzy
 msgid ""
-"You have chosen to enable the Suspend function. This can potentionally be a "
-"security risc."
+"You have chosen to enable the Suspend function. This can potentially be a "
+"security risk."
 msgstr ""
 "Du har valt att aktivera pausfunktionen. Detta skulle kunna vara en "
 "säkerhetsrisk."
 
-#. This is the title of the properties window
-#: src/properties.c:186
-msgid "Battstat Settings"
-msgstr "Inställningar för Battstat"
+#: battstat_applet.desktop.in.h:1
+msgid "Battery Status Utility"
+msgstr "Batteristatusövervakare"
 
-#: src/properties.c:191
-msgid "General"
-msgstr "Allmänt"
+#: battstat_applet.desktop.in.h:2
+msgid "Shows the status of the battery"
+msgstr "Visar laddningsnivån på batteriet"
 
-#: src/properties.c:197
-msgid "Battery color levels (%)"
-msgstr "Nivåfärger för batteri (%)"
+#~ msgid "Battery low (%d%%) and AC is online"
+#~ msgstr "Batterinivån är låg (%d%%) och nätspänningen är inkopplad"
 
-#: src/properties.c:207
-msgid "Yellow:"
-msgstr "Gul:"
+#~ msgid "Battstat Settings"
+#~ msgstr "Inställningar för Battstat"
 
-#: src/properties.c:222
-msgid "Orange:"
-msgstr "Orange:"
+#~ msgid "General"
+#~ msgstr "Allmänt"
 
-#: src/properties.c:236
-msgid "Red:"
-msgstr "Röd:"
+#~ msgid "Battery color levels (%)"
+#~ msgstr "Nivåfärger för batteri (%)"
 
-#: src/properties.c:251
-msgid "Preview"
-msgstr "Förhandsgranskning"
+#~ msgid "Yellow:"
+#~ msgstr "Gul:"
 
-#: src/properties.c:307
-msgid "Warnings"
-msgstr "Varningar"
+#~ msgid "Orange:"
+#~ msgstr "Orange:"
 
-#: src/properties.c:312
-msgid "Notify me when battery charge is low"
-msgstr "Informera mig när laddningen på batteriet är låg"
+#~ msgid "Red:"
+#~ msgstr "Röd:"
 
-#: src/properties.c:313
-msgid "Notify me when battery is fully re-charged"
-msgstr "Informera mig när batteriet är helt uppladdat"
+#~ msgid "Preview"
+#~ msgstr "Förhandsgranskning"
 
-#: src/properties.c:314
-msgid "Beep when either of the above is true"
-msgstr "Pip till när något av ovanstående händer"
+#~ msgid "Warnings"
+#~ msgstr "Varningar"
 
-#: src/properties.c:339
-msgid "Fonts"
-msgstr "Typsnitt"
+#~ msgid "Notify me when battery charge is low"
+#~ msgstr "Informera mig när laddningen på batteriet är låg"
 
-#: src/properties.c:347
-msgid "Use my own font instead of the default GNOME font"
-msgstr "Använd mitt eget typsnitt istället för standardtypsnittet i GNOME"
+#~ msgid "Notify me when battery is fully re-charged"
+#~ msgstr "Informera mig när batteriet är helt uppladdat"
 
-#: src/properties.c:349
-msgid "Percentage text:"
-msgstr "Procenttext:"
+#~ msgid "Beep when either of the above is true"
+#~ msgstr "Pip till när något av ovanstående händer"
 
-#: src/properties.c:378
-msgid "Suspend"
-msgstr "Paus"
+#~ msgid "Fonts"
+#~ msgstr "Typsnitt"
 
-#: src/properties.c:383
-msgid "Suspend command:"
-msgstr "Pauskommando:"
+#~ msgid "Use my own font instead of the default GNOME font"
+#~ msgstr "Använd mitt eget typsnitt istället för standardtypsnittet i GNOME"
 
-#: src/properties.c:395
-msgid "Appearance"
-msgstr "Utseende"
+#~ msgid "Percentage text:"
+#~ msgstr "Procenttext:"
 
-#: src/properties.c:404
-msgid "Progress bar direction"
-msgstr "Riktning på mätare"
+#~ msgid "Suspend"
+#~ msgstr "Paus"
 
-#: src/properties.c:410
-msgid "Move towards top"
-msgstr "Gå mot toppen"
+#~ msgid "Suspend command:"
+#~ msgstr "Pauskommando:"
 
-#: src/properties.c:412
-msgid "Move towards bottom"
-msgstr "Gå mot botten"
+#~ msgid "Appearance"
+#~ msgstr "Utseende"
 
-#: src/properties.c:422
-msgid "Status dock"
-msgstr "Statusfält"
+#~ msgid "Progress bar direction"
+#~ msgstr "Riktning på mätare"
 
-#: src/properties.c:425
-msgid "Use the status dock"
-msgstr "Använd statusfältet"
+#~ msgid "Move towards top"
+#~ msgstr "Gå mot toppen"
 
-#: src/properties.c:431
-msgid "Applet layout"
-msgstr "Layout på panelprogrammet"
+#~ msgid "Move towards bottom"
+#~ msgstr "Gå mot botten"
 
-#: src/properties.c:487
-msgid "Show"
-msgstr "Visa"
+#~ msgid "Status dock"
+#~ msgstr "Statusfält"
 
-#: src/properties.c:491
-msgid "Hide"
-msgstr "Göm"
+#~ msgid "Use the status dock"
+#~ msgstr "Använd statusfältet"
 
-#~ msgid "Battery Status Utility"
-#~ msgstr "Batteristatusövervakare"
+#~ msgid "Applet layout"
+#~ msgstr "Layout på panelprogrammet"
 
-#~ msgid "Shows the status of the battery"
-#~ msgstr "Visar laddningsnivån på batteriet"
+#~ msgid "Show"
+#~ msgstr "Visa"
+
+#~ msgid "Hide"
+#~ msgstr "Göm"

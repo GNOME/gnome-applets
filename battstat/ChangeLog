@@ -178,3 +178,14 @@
 	applet would claim that the battery was fully recharged even
 	though there wasn't any battery in the laptop at all.
 	- Release of 2.0.12
+	
+2.0.13:
+	2001-10-26
+	- Discovered some bugs in the spec file for building RPM's.  One
+	totally deranged bug where rpm -bb bs.spec would pack every pixmap
+	under /usr/share/pixmap in the .rpm. The other was that the 
+	directory for libglade under /usr/share/battstat_applet/ wasn't
+	created at all.
+	- Fixed a spelling error in src/Makefile.am. Instead of EXTRA_DIST
+	it said EXTRADIST. That meant that the libglade file wasn't included
+	in the distribution when doing a "make dist". 

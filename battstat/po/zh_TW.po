@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: battstat\n"
-"POT-Creation-Date: 2001-04-25 00:18+0200\n"
+"POT-Creation-Date: 2001-10-26 18:27+0200\n"
 "PO-Revision-Date: 2001-09-24 04:53+0800\n"
 "Last-Translator: Abel Cheung <maddog@linux.org.hk>\n"
 "Language-Team: Traditional Chinese <zh-l10n@linux.org.tw>\n"
@@ -15,11 +15,11 @@ msgstr ""
 
 #. Message displayed if user tries to run applet
 #. on unsupported platform
-#: src/battstat_applet.c:263
+#: src/battstat_applet.c:262
 msgid "Your platform is not supported!\n"
 msgstr "不支援此平台！\n"
 
-#: src/battstat_applet.c:264
+#: src/battstat_applet.c:263
 msgid "The applet will not work properly (if at all).\n"
 msgstr "此面板程式將不能正常運作（若有可能的話）。\n"
 
@@ -27,33 +27,45 @@ msgstr "此面板程式將不能正常運作（若有可能的話）。\n"
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
-#: src/battstat_applet.c:317 src/battstat_applet.c:890
+#: src/battstat_applet.c:324 src/battstat_applet.c:827
 msgid "High"
 msgstr "高"
 
 # src/battstat_applet.c:314 src/battstat_applet.c:793
 #. Low = The APM BIOS thinks that the battery charge is Low.
-#: src/battstat_applet.c:319 src/battstat_applet.c:892
+#: src/battstat_applet.c:326 src/battstat_applet.c:829
 msgid "Low"
 msgstr "低"
 
 # src/battstat_applet.c:315 src/battstat_applet.c:794
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: src/battstat_applet.c:321 src/battstat_applet.c:894
+#: src/battstat_applet.c:328 src/battstat_applet.c:831
 msgid "Critical"
 msgstr "極低"
 
 # src/battstat_applet.c:316 src/battstat_applet.c:795
 #. Charging = The APM BIOS thinks that the battery is recharging.
-#: src/battstat_applet.c:323 src/battstat_applet.c:896
+#: src/battstat_applet.c:330 src/battstat_applet.c:833
 msgid "Charging"
 msgstr "正在充電"
+
+# src/battstat_applet.c:565
+#: src/battstat_applet.c:409
+#, c-format
+msgid "Battery low (%d%%) and AC is offline"
+msgstr "電池電量為低（%d%%）而交流電不存在"
+
+# src/battstat_applet.c:614
+#: src/battstat_applet.c:432
+msgid "Battery is now fully re-charged!"
+msgstr "電池已充滿了電！"
 
 # src/battstat_applet.c:414
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: src/battstat_applet.c:429 src/battstat_applet.c:1087
+#: src/battstat_applet.c:451 src/battstat_applet.c:1001
+#, c-format
 msgid ""
 "System is running on battery power\n"
 "Battery: %d%% (%s)"
@@ -65,7 +77,8 @@ msgstr ""
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: src/battstat_applet.c:437 src/battstat_applet.c:1095
+#: src/battstat_applet.c:455 src/battstat_applet.c:1009
+#, c-format
 msgid ""
 "System is running on AC power\n"
 "Battery: %d%% (%s)"
@@ -76,50 +89,29 @@ msgstr ""
 # src/battstat_applet.c:417
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
-#: src/battstat_applet.c:446 src/battstat_applet.c:1027
-#: src/battstat_applet.c:1108
+#: src/battstat_applet.c:461 src/battstat_applet.c:941
+#: src/battstat_applet.c:1022
 msgid "System is running on battery power"
 msgstr "系統正在使用電池"
 
 # src/battstat_applet.c:417
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
-#: src/battstat_applet.c:452 src/battstat_applet.c:1033
-#: src/battstat_applet.c:1114
+#: src/battstat_applet.c:464 src/battstat_applet.c:947
+#: src/battstat_applet.c:1028
 msgid "System is running on AC power"
 msgstr "系統正在使用交流電"
 
-#. Displayed in the percentage label at the side of the battery meter
-#. * if the applet discovers that you have removed the battery
-#. * from the system and it only runs on AC power.
-#.
-#: src/battstat_applet.c:472
+#: src/battstat_applet.c:478
 msgid "N/A"
 msgstr "不適用"
-
-# src/battstat_applet.c:565
-#. This message will be displayed in a Gnome Warning dialog
-#. window when the laptop isn't connected to a power source
-#. and the battery charge is dropping below the value
-#. specified by the user.
-#: src/battstat_applet.c:611
-msgid "Battery low (%d%%) and AC is offline"
-msgstr "電池電量為低（%d%%）而交流電不存在"
-
-# src/battstat_applet.c:565
-#. This message will be displayed in a Gnome Warning dialog
-#. window when the battery charge is dropping below the
-#. value specified by the user. Technically this shouldn't
-#. happen if the battery is working properly.
-#: src/battstat_applet.c:618
-msgid "Battery low (%d%%) and AC is online"
-msgstr "電池電量為低（%d%%）而交流電存在"
 
 # src/battstat_applet.c:579 src/battstat_applet.c:898
 # src/battstat_applet.c:955
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
-#: src/battstat_applet.c:638 src/battstat_applet.c:1007
+#: src/battstat_applet.c:609 src/battstat_applet.c:921
+#, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
 msgstr "系統正在使用電池。電池︰%d%%（%s）"
 
@@ -127,7 +119,8 @@ msgstr "系統正在使用電池。電池︰%d%%（%s）"
 # src/battstat_applet.c:955
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
-#: src/battstat_applet.c:645 src/battstat_applet.c:1014
+#: src/battstat_applet.c:616 src/battstat_applet.c:928
+#, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
 msgstr "系統正在使用交流電。電池︰%d%%（%s）"
 
@@ -136,7 +129,7 @@ msgstr "系統正在使用交流電。電池︰%d%%（%s）"
 #. battery frame when the computer is using battery
 #. power and the battery isn't present. Not a
 #. possible combination, I guess... :)
-#: src/battstat_applet.c:656
+#: src/battstat_applet.c:627
 msgid "System is running on battery power. Battery: Not present"
 msgstr "系統正在使用電池。電池︰不存在"
 
@@ -144,7 +137,7 @@ msgstr "系統正在使用電池。電池︰不存在"
 #. This string will display as a tooltip over the
 #. battery frame when the computer is using AC
 #. power and the battery isn't present.
-#: src/battstat_applet.c:662
+#: src/battstat_applet.c:633
 msgid "System is running on AC power. Battery: Not present"
 msgstr "系統正在使用交流電。電池︰不存在"
 
@@ -152,27 +145,21 @@ msgstr "系統正在使用交流電。電池︰不存在"
 #. Displayed as a tooltip over the battery meter when there is
 #. a battery present. %d will hold the current charge and %s will
 #. hold the status of the battery, (High, Low, Critical, Charging.
-#: src/battstat_applet.c:671
+#: src/battstat_applet.c:642
+#, c-format
 msgid "Battery: %d%% (%s)"
 msgstr "電池︰%d%%（%s）"
 
 # src/battstat_applet.c:594
 #. Displayed as a tooltip over the battery meter when no
 #. battery is present.
-#: src/battstat_applet.c:678
+#: src/battstat_applet.c:649
 msgid "Battery: Not present"
 msgstr "電池︰不存在"
 
-# src/battstat_applet.c:614
-#. Displayed in a Gnome OK dialog window when the battery is
-#. fully recharged.
-#: src/battstat_applet.c:702
-msgid "Battery is now fully re-charged!"
-msgstr "電池已充滿了電！"
-
 # src/battstat_applet.c:653
 #. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: src/battstat_applet.c:743
+#: src/battstat_applet.c:704
 msgid ""
 "Can't open the APM device!\n"
 "\n"
@@ -185,7 +172,7 @@ msgstr ""
 
 # src/battstat_applet.c:659
 #. Displayed if the APM system is disabled (Used under *BSD)
-#: src/battstat_applet.c:751
+#: src/battstat_applet.c:712
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
@@ -197,18 +184,18 @@ msgstr ""
 
 # src/battstat_applet.c:732
 #. The long name of the applet in the About dialog.
-#: src/battstat_applet.c:826
+#: src/battstat_applet.c:771
 msgid "Battery status utility"
 msgstr "電池狀態工具"
 
 # src/battstat_applet.c:733
-#: src/battstat_applet.c:827
+#: src/battstat_applet.c:772
 msgid "(C) 2000 The Gnulix Society"
 msgstr "(C) 2000 The Gnulix Society"
 
 # src/battstat_applet.c:735
 #. Longer description of the applet in the About dialog.
-#: src/battstat_applet.c:830
+#: src/battstat_applet.c:775
 msgid "This utility show the status of your laptop battery."
 msgstr "此工具能顯示筆記型電腦的電池狀態。"
 
@@ -216,38 +203,38 @@ msgstr "此工具能顯示筆記型電腦的電池狀態。"
 #. Displayed when the user tries to hide all
 #. parts of the applet in the preferences
 #. window.
-#: src/battstat_applet.c:972
+#: src/battstat_applet.c:886
 msgid "You can't hide all elements of the applet!"
 msgstr "你不能隱藏整個面板程式！"
 
 # src/battstat_applet.c:1221
 #. Message will be displayed if the applet couldn't be
 #. created at all.
-#: src/battstat_applet.c:1375
+#: src/battstat_applet.c:1272
 msgid "Can't create applet!\n"
 msgstr "不能建立面板程式！\n"
 
 # src/battstat_applet.c:1373
 #. Applet menu, Properties
-#: src/battstat_applet.c:1528
+#: src/battstat_applet.c:1450
 msgid "Properties..."
 msgstr "內容…"
 
 # src/battstat_applet.c:1379
 #. Applet menu, About
-#: src/battstat_applet.c:1535
+#: src/battstat_applet.c:1457
 msgid "About..."
 msgstr "關於…"
 
 # src/battstat_applet.c:1385
 #. Applet menu, Help
-#: src/battstat_applet.c:1542
+#: src/battstat_applet.c:1464
 msgid "Help"
 msgstr "輔助說明"
 
 # src/battstat_applet.c:1390
 #. Applet menu, Suspend laptop
-#: src/battstat_applet.c:1548
+#: src/battstat_applet.c:1470
 msgid "Suspend laptop"
 msgstr "讓筆記型電腦進入待機模式"
 
@@ -255,137 +242,12 @@ msgstr "讓筆記型電腦進入待機模式"
 #. Message in a Gnome warning dialog window
 #. when the user enables the suspend
 #. function.
-#: src/properties.c:121
+#: src/properties.c:123
+#, fuzzy
 msgid ""
-"You have chosen to enable the Suspend function. This can potentionally be a "
-"security risc."
+"You have chosen to enable the Suspend function. This can potentially be a "
+"security risk."
 msgstr "你選擇了啟用待機功能。這有可能造成保安上的問題。"
-
-# src/properties.c:192
-#. This is the title of the properties window
-#: src/properties.c:186
-msgid "Battstat Settings"
-msgstr "Battstat 設定"
-
-# src/properties.c:197
-#: src/properties.c:191
-msgid "General"
-msgstr "一般"
-
-# src/properties.c:203
-#: src/properties.c:197
-msgid "Battery color levels (%)"
-msgstr "不同電量的電池顏色（%）"
-
-# src/properties.c:213
-#: src/properties.c:207
-msgid "Yellow:"
-msgstr "黃︰"
-
-# src/properties.c:228
-#: src/properties.c:222
-msgid "Orange:"
-msgstr "橙︰"
-
-# src/properties.c:242
-#: src/properties.c:236
-msgid "Red:"
-msgstr "紅︰"
-
-# src/properties.c:257
-#: src/properties.c:251
-msgid "Preview"
-msgstr "預覽"
-
-# src/properties.c:313
-#: src/properties.c:307
-msgid "Warnings"
-msgstr "警告"
-
-# src/properties.c:318
-#: src/properties.c:312
-msgid "Notify me when battery charge is low"
-msgstr "當電量太低時請通知我"
-
-# src/properties.c:319
-#: src/properties.c:313
-msgid "Notify me when battery is fully re-charged"
-msgstr "當電量滿時請通知我"
-
-# src/properties.c:320
-#: src/properties.c:314
-msgid "Beep when either of the above is true"
-msgstr "遇到以上情況時發出嗶聲"
-
-# src/properties.c:345
-#: src/properties.c:339
-msgid "Fonts"
-msgstr "字型"
-
-# src/properties.c:353
-#: src/properties.c:347
-msgid "Use my own font instead of the default GNOME font"
-msgstr "使用自定的字型"
-
-# src/properties.c:355
-#: src/properties.c:349
-msgid "Percentage text:"
-msgstr "百分比字型︰"
-
-# src/properties.c:384
-#: src/properties.c:378
-msgid "Suspend"
-msgstr "待機"
-
-# src/properties.c:389
-#: src/properties.c:383
-msgid "Suspend command:"
-msgstr "待機指令︰"
-
-# src/properties.c:401
-#: src/properties.c:395
-msgid "Appearance"
-msgstr "外觀"
-
-# src/properties.c:410
-#: src/properties.c:404
-msgid "Progress bar direction"
-msgstr "進度棒的方向"
-
-# src/properties.c:416
-#: src/properties.c:410
-msgid "Move towards top"
-msgstr "向上"
-
-# src/properties.c:418
-#: src/properties.c:412
-msgid "Move towards bottom"
-msgstr "向下"
-
-# src/properties.c:428
-#: src/properties.c:422
-msgid "Status dock"
-msgstr "嵌入式狀態顯示"
-
-# src/properties.c:431
-#: src/properties.c:425
-msgid "Use the status dock"
-msgstr "使用嵌入式狀態顯示"
-
-# src/properties.c:437
-#: src/properties.c:431
-msgid "Applet layout"
-msgstr "面板程式配置"
-
-# src/properties.c:493
-#: src/properties.c:487
-msgid "Show"
-msgstr "顯示"
-
-# src/properties.c:497
-#: src/properties.c:491
-msgid "Hide"
-msgstr "隱藏"
 
 # src/battstat_applet.c:732
 #: battstat_applet.desktop.in.h:1
@@ -396,6 +258,110 @@ msgstr "電池狀態工具"
 #: battstat_applet.desktop.in.h:2
 msgid "Shows the status of the battery"
 msgstr "顯示電池的狀態"
+
+# src/battstat_applet.c:565
+#~ msgid "Battery low (%d%%) and AC is online"
+#~ msgstr "電池電量為低（%d%%）而交流電存在"
+
+# src/properties.c:192
+#~ msgid "Battstat Settings"
+#~ msgstr "Battstat 設定"
+
+# src/properties.c:197
+#~ msgid "General"
+#~ msgstr "一般"
+
+# src/properties.c:203
+#~ msgid "Battery color levels (%)"
+#~ msgstr "不同電量的電池顏色（%）"
+
+# src/properties.c:213
+#~ msgid "Yellow:"
+#~ msgstr "黃︰"
+
+# src/properties.c:228
+#~ msgid "Orange:"
+#~ msgstr "橙︰"
+
+# src/properties.c:242
+#~ msgid "Red:"
+#~ msgstr "紅︰"
+
+# src/properties.c:257
+#~ msgid "Preview"
+#~ msgstr "預覽"
+
+# src/properties.c:313
+#~ msgid "Warnings"
+#~ msgstr "警告"
+
+# src/properties.c:318
+#~ msgid "Notify me when battery charge is low"
+#~ msgstr "當電量太低時請通知我"
+
+# src/properties.c:319
+#~ msgid "Notify me when battery is fully re-charged"
+#~ msgstr "當電量滿時請通知我"
+
+# src/properties.c:320
+#~ msgid "Beep when either of the above is true"
+#~ msgstr "遇到以上情況時發出嗶聲"
+
+# src/properties.c:345
+#~ msgid "Fonts"
+#~ msgstr "字型"
+
+# src/properties.c:353
+#~ msgid "Use my own font instead of the default GNOME font"
+#~ msgstr "使用自定的字型"
+
+# src/properties.c:355
+#~ msgid "Percentage text:"
+#~ msgstr "百分比字型︰"
+
+# src/properties.c:384
+#~ msgid "Suspend"
+#~ msgstr "待機"
+
+# src/properties.c:389
+#~ msgid "Suspend command:"
+#~ msgstr "待機指令︰"
+
+# src/properties.c:401
+#~ msgid "Appearance"
+#~ msgstr "外觀"
+
+# src/properties.c:410
+#~ msgid "Progress bar direction"
+#~ msgstr "進度棒的方向"
+
+# src/properties.c:416
+#~ msgid "Move towards top"
+#~ msgstr "向上"
+
+# src/properties.c:418
+#~ msgid "Move towards bottom"
+#~ msgstr "向下"
+
+# src/properties.c:428
+#~ msgid "Status dock"
+#~ msgstr "嵌入式狀態顯示"
+
+# src/properties.c:431
+#~ msgid "Use the status dock"
+#~ msgstr "使用嵌入式狀態顯示"
+
+# src/properties.c:437
+#~ msgid "Applet layout"
+#~ msgstr "面板程式配置"
+
+# src/properties.c:493
+#~ msgid "Show"
+#~ msgstr "顯示"
+
+# src/properties.c:497
+#~ msgid "Hide"
+#~ msgstr "隱藏"
 
 # src/battstat_applet.c:566
 #~ msgid "online"
