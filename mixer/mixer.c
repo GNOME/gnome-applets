@@ -444,13 +444,13 @@ create_computer_mixer_widget(GtkWidget ** mixer,
 
 	/* set the slider background colors */
 
-	mx->startcolor[0] = 30000;  /* R */
+	mx->startcolor[0] = 45000;  /* R */
 	mx->startcolor[1] = 0;	    /* G */
 	mx->startcolor[2] = 0;      /* B */
 	
 	mx->endcolor[0] = 0;
 	mx->endcolor[1] = 0;
-	mx->endcolor[2] = 30000;
+	mx->endcolor[2] = 45000;
 
 	gtk_object_set_user_data(GTK_OBJECT(base), mx);
 	gtk_object_set_user_data(GTK_OBJECT(hbutton), mx);
