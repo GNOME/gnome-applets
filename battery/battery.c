@@ -116,7 +116,11 @@ battery_update (gpointer data)
     return 0;
 
   panel_orient = applet_widget_get_panel_orient (APPLET_WIDGET (bat->applet));
+#ifdef HAVE_PANEL_PIXEL_SIZE
   panel_size = applet_widget_get_panel_pixel_size (APPLET_WIDGET (bat->applet));
+#else
+  panel_size = 48;
+#endif
 
   /*
    * The battery change information that we grab here will be used by
@@ -587,7 +591,11 @@ battery_set_follow_size (BatteryData *bat)
     return;
 
   o = applet_widget_get_panel_orient (APPLET_WIDGET (bat->applet));
+#ifdef HAVE_PANEL_PIXEL_SIZE
   size = applet_widget_get_panel_pixel_size (APPLET_WIDGET (bat->applet));
+#else
+  size = 48;
+#endif
 
   if (size <= 36)
     {
@@ -628,6 +636,7 @@ battery_change_orient (GtkWidget * w, PanelOrientType o, gpointer data)
   w = NULL;
 } /* battery_change_orient */
 
+#ifdef HAVE_PANEL_PIXEL_SIZE
 static void
 battery_change_pixel_size (GtkWidget * w, int size, gpointer data)
 {
@@ -638,6 +647,7 @@ battery_change_pixel_size (GtkWidget * w, int size, gpointer data)
   size = 0;
   w = NULL;
 } /* battery_change_pixel_size */
+#endif
 
 gint
 battery_configure_handler (GtkWidget *widget, GdkEventConfigure *event,
@@ -913,9 +923,11 @@ make_new_battery_applet (const gchar *goad_id)
   gtk_signal_connect (GTK_OBJECT (bat->applet), "change_orient",
 		      GTK_SIGNAL_FUNC (battery_change_orient),
 		      bat);
+#ifdef HAVE_PANEL_PIXEL_SIZE
   gtk_signal_connect (GTK_OBJECT (bat->applet), "change_pixel_size",
 		      GTK_SIGNAL_FUNC (battery_change_pixel_size),
 		      bat);
+#endif
 
   applet_widget_register_stock_callback (APPLET_WIDGET (bat->applet),
 					 "about",
