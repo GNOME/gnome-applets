@@ -10,6 +10,7 @@
  *
  */
 
+#include <config.h>
 #include "odo.h"
 
 static int
@@ -224,7 +225,7 @@ properties_cb (AppletWidget *applet, gpointer data)
    GtkWidget *scrolled;
    GtkWidget *theme_clist;
    GtkAdjustment *adj;
-   gchar *theme_title[] = { "Themes:", };
+   gchar *theme_title[] = { N_("Themes:"), NULL };
 
    if (oa->pbox) {
    	gdk_window_raise (oa->pbox->window);
@@ -322,6 +323,7 @@ properties_cb (AppletWidget *applet, gpointer data)
    gtk_box_pack_start(GTK_BOX(vbox), scrolled, TRUE, TRUE, 0);
 
    /* theme list */
+   theme_title[0] = _(theme_title[0]);
    theme_clist=gtk_clist_new_with_titles (1, theme_title);
    gtk_clist_column_titles_passive (GTK_CLIST (theme_clist));
    gtk_signal_connect (GTK_OBJECT (theme_clist), "select_row",
