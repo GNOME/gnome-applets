@@ -326,7 +326,7 @@ about_cb (AppletWidget *applet, gpointer data)
 		return;
 	}
 
-	about_box = gnome_about_new("GNOME Universal MultiMedia Applet", VERSION,
+	about_box = gnome_about_new("GNOME Useless MultiMedia Applet", VERSION,
 				    "Copyright (C) 1999 The Free Software Foundation",
 				    authors,
 				    "Panel applet to control various media players.\n\n"
