@@ -1338,7 +1338,7 @@ main(int argc, char *argv[])
     {
       GtkWidget *d, *l;
       
-      d = gnome_ok_dialog(_("Gnome Pager Error"));
+      d = gnome_error_dialog(_("Gnome Pager Error"));
       l = gtk_label_new(_("You are not running a GNOME Compliant Window Manager.\n"
 			  "Please run a GNOME Compliant Window Manager.\n"
 			  "For Example:\n"
@@ -1346,12 +1346,9 @@ main(int argc, char *argv[])
 			  "Then start this applet again.\n"));
       gtk_widget_show(l);
       gtk_box_pack_start(GTK_BOX(GNOME_DIALOG(d)->vbox), l, TRUE, TRUE, 5);
-      gtk_window_set_modal(GTK_WINDOW(d),TRUE);
-      gtk_window_set_position (GTK_WINDOW(d), GTK_WIN_POS_CENTER);
       gnome_dialog_run(GNOME_DIALOG(d));
-      gtk_widget_destroy(d);
       
-      exit(1);
+      gtk_exit(1);
     }
 
   /*FIXME: remove this later!!!!!, in favour of the WELL BEHAVED
