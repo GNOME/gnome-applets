@@ -1,54 +1,44 @@
-SUBDIRS = docs
+#SUBDIRS = docs
 
-INCLUDES =				\
-	-I.				\
-	-I$(srcdir)			\
-	$(GNOME_APPLETS_CFLAGS)		\
-	-DVERSION=\""$(VERSION)"\"
+INCLUDES = -I. -I$(srcdir) 				\
+	$(GNOME_APPLETS_CFLAGS)				\
+	$(LIBGLADE_CFLAGS)           			\
+	-DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\"  \
+	-DVERSION=\""$(VERSION)"\"			\
+	-DICONDIR=\""$(datadir)/pixmaps"\"
 
-libexec_PROGRAMS = modemlights_applet2
+libexec_PROGRAMS = modem_applet
 
-modemlights_applet2_SOURCES = \
-	modemlights.c	\
-	modemlights.h	\
-	properties.c
+modem_applet_SOURCES = \
+	modem-applet.c		modem-applet.h
 
-modemlights_applet2_LDADD = \
-		     $(GNOME_APPLETS_LIBS)
+modem_applet_LDADD = 		\
+     $(GNOME_APPLETS_LIBS)	\
+	$(LIBGLADE_LIBS)		\
+	$(MODEMLIGHTS_LIBS)
 
 uidir		= $(datadir)/gnome-2.0/ui
-ui_DATA		= GNOME_ModemlightsApplet.xml
+ui_DATA		= GNOME_ModemLights.xml
 
-desktop_iconsdir = $(iconsdir)/hicolor/48x48/apps
-desktop_icons_DATA = gnome-modem.png
+pixmapdir = $(datadir)/icons/hicolor/48x48/apps
+pixmap_DATA = gnome-modem.png
 
 serverdir       = $(libdir)/bonobo/servers
-server_in_files = GNOME_ModemLightsApplet.server.in
+server_in_files = GNOME_ModemLights.server.in
 server_DATA     = $(server_in_files:.server.in=.server)
 
 $(server_in_files): $(server_in_files:.server.in=.server.in.in)
 	sed -e "s|\@LIBEXECDIR\@|$(libexecdir)|" $< > $@
 
-CLEANFILES = $(server_in_files) $(server_DATA) $(schemas_DATA)
+CLEANFILES = $(server_in_files) $(server_DATA)
 
 @INTLTOOL_SERVER_RULE@
 
-schemasdir   = @GCONF_SCHEMA_FILE_DIR@
-schemas_in_files = modemlights.schemas.in
-schemas_DATA = $(schemas_in_files:.schemas.in=.schemas)
-
-@INTLTOOL_SCHEMAS_RULE@
+gladedir = $(datadir)/modemlights-applet/
+glade_DATA = modemlights.glade
 
 EXTRA_DIST =					\
-	GNOME_ModemLightsApplet.server.in.in	\
-	digits.xpm 				\
-	$(schemas_in_files)			\
-	$(desktop_icons_DATA)			\
+	GNOME_ModemLights.server.in.in		\
+	$(pixmap_DATA)				\
+	$(glade_DATA)				\
 	$(ui_DATA)
-
-if GCONF_SCHEMAS_INSTALL
-install-data-local:
-	for p in $(schemas_DATA); do \
-		GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $$p ; \
-	done
-endif

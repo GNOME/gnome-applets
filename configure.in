@@ -34,6 +34,7 @@ LIBGLADE_REQUIRED=2.4.0
 LIBGAIL_REQUIRED=1.1.0
 LIBXKLAVIER_REQUIRED=1.13
 LIBWNCK_REQUIRED=2.9.3
+SYSTEM_TOOLS_BACKENDS_REQUIRED=1.1.3
 
 dnl ******************************************
 dnl ** pkg-config dependency checks         **
@@ -285,14 +286,19 @@ dnl ** modemlights applet check             **
 dnl ******************************************
 
 P_MODEMLIGHTS=
-case "$host_os" in
-linux*|freebsd*|netbsd*|openbsd*)
-  AC_CHECK_HEADERS(net/ppp_defs.h,[P_MODEMLIGHTS=modemlights])
-  ;;
-esac
-AM_CONDITIONAL(APPLET_MODEMLIGHTS, test "$P_MODEMLIGHTS" = "modemlights")
-if test "$P_MODEMLIGHTS" != "modemlights"; then
+HAVE_LIBUTIL=
+
+AC_CHECK_LIB(util, forkpty, HAVE_LIBUTIL=true, HAVE_LIBUTIL=false)
+AM_PATH_SYSTEM_TOOLS_BACKENDS($SYSTEM_TOOLS_BACKENDS_REQUIRED, P_MODEMLIGHTS=modemlights)
+
+AM_CONDITIONAL(APPLET_MODEMLIGHTS, test "x$HAVE_LIBUTIL" = "xtrue" -a "x$P_MODEMLIGHTS" = "xmodemlights")
+
+if test "x$HAVE_LIBUTIL" != "xtrue" -o "x$P_MODEMLIGHTS" != "xmodemlights"; then
   AC_MSG_WARN([*** \`modemlights' applet will not be built ***])
+else
+  MODEMLIGHTS_LIBS=" -lutil"
+  AC_SUBST(MODEMLIGHTS_LIBS)
+  AC_DEFINE_UNQUOTED(STB_SCRIPTS_DIR, "$STB_SCRIPTS_DIR", [System tools backends])
 fi
 
 dnl ******************************************
@@ -450,9 +456,6 @@ drivemount/help/zh_HK/Makefile
 drivemount/help/zh_CN/Makefile
 drivemount/help/zh_TW/Makefile
 modemlights/Makefile
-modemlights/docs/Makefile
-modemlights/docs/C/Makefile
-modemlights/docs/eu/Makefile
 multiload/Makefile
 multiload/docs/Makefile
 multiload/docs/C/Makefile
