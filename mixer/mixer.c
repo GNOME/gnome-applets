@@ -108,6 +108,8 @@ typedef struct {
 	/* The popup window and scale. */
 	GtkWidget         *popup;
 	GtkWidget         *scale;
+
+	GtkTooltips	  *tooltips;
 } MixerData;
 
 static void mixer_update_slider (MixerData *data);
@@ -119,11 +121,15 @@ static void mixer_start_gmix_cb (BonoboUIComponent *uic,
 				 gpointer           data,
 				 const gchar       *verbname);
 
+void add_atk_namedesc (GtkWidget *widget, const gchar *name, const gchar *desc);
 
 static gint mixerfd = -1;
 static GdkPixbuf *zero_pixbuf = NULL, *min_pixbuf, *medium_pixbuf, *max_pixbuf, *mute_pixbuf;
 static gchar *run_mixer_cmd = NULL;
 
+static const gchar *access_name = N_("Volume Control");     
+static const gchar *access_name_mute = N_("Volume Control (muted)");
+gboolean gail_loaded = FALSE;  
 
 #ifdef OSS_API
 static int mixerchannel;
@@ -309,6 +315,14 @@ mixer_timeout_cb (MixerData *data)
 					      "state",
 					      "0",
 					      NULL);
+		
+		gtk_tooltips_set_tip (data->tooltips,
+				      data->applet,
+				      _(access_name),
+			              NULL); 
+		if (gail_loaded) {
+			add_atk_namedesc (data->applet, _(access_name), NULL);
+		}
 	}
 
 	if (!data->mute && vol != data->vol) {
@@ -488,7 +502,12 @@ mixer_popup_show (MixerData *data)
 		gtk_widget_set_size_request (data->scale, 100, -1);
 		gtk_range_set_inverted (GTK_RANGE (data->scale), TRUE);
 	}
-
+	
+	if (gail_loaded) {
+		add_atk_namedesc (data->scale, 
+				_("Volume Controller"),
+				_("Use Up/Down arrow keys to change volume"));
+	}
 	g_signal_connect (data->scale,
 			  "button-release-event",
 			  (GCallback) scale_button_release_event_cb,
@@ -634,7 +653,7 @@ destroy_mixer_cb (GtkWidget *widget, MixerData *data)
 		gtk_timeout_remove (data->timeout);
 		data->timeout = 0;
 	}
-
+	
 	g_free (data);
 }
 
@@ -783,10 +802,32 @@ mixer_ui_component_event (BonoboUIComponent            *comp,
 		if (data->mute) {
 			setMixer (0);
 			mixer_update_image (data);
+		
+				
+			gtk_tooltips_set_tip (data->tooltips,
+					      data->applet,
+					      _(access_name_mute),
+					      NULL); 
+			if (gail_loaded) {
+				add_atk_namedesc (data->applet,
+						  _(access_name_mute),
+						  NULL);
+			}
 		}
 		else {
 			setMixer (data->vol);
 			mixer_update_image (data);
+			
+			
+			gtk_tooltips_set_tip (data->tooltips,
+					      data->applet,
+					      _(access_name),
+					      NULL); 
+			if (gail_loaded) {
+				add_atk_namedesc (data->applet,
+						  _(access_name),
+						  NULL);
+			}
 		}
 	}
 }
@@ -812,6 +853,10 @@ mixer_applet_create (PanelApplet *applet)
 #ifdef SUN_API
 	openMixer("/dev/audioctl");
 #endif
+
+ 	if (GTK_IS_ACCESSIBLE (gtk_widget_get_accessible(GTK_WIDGET(applet)))) {
+		gail_loaded = TRUE;
+	}
 
 	data = g_new0 (MixerData, 1);
 
@@ -840,6 +885,17 @@ mixer_applet_create (PanelApplet *applet)
 	gtk_container_add (GTK_CONTAINER (data->frame), data->image);
 
 	data->applet = GTK_WIDGET (applet);
+
+        data->tooltips = gtk_tooltips_new ();                                   
+        gtk_tooltips_set_tip (data->tooltips,
+			      data->applet,
+			      _(access_name),
+			      NULL);
+	if (gail_loaded) { 
+		add_atk_namedesc(GTK_WIDGET(data->applet),
+				 _(access_name),
+				 _("The volume control lets you set the volume level for your desktop"));
+	} 
 	
 	g_signal_connect (data->applet,
 			  "button-release-event",
@@ -941,3 +997,13 @@ PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_MixerApplet_Factory",
 			     "0",
 			     mixer_applet_factory,
 			     NULL)
+ 
+/* Accessible name and description */ 
+void 
+add_atk_namedesc (GtkWidget *widget, const gchar *name, const gchar *desc) 
+{ 
+	AtkObject *atk_widget;
+	atk_widget = gtk_widget_get_accessible(widget);
+	atk_object_set_name(atk_widget, name);
+	atk_object_set_description(atk_widget, desc);
+}                                                                               
