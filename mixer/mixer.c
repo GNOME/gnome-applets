@@ -171,7 +171,7 @@ mute_cb (GtkWidget *widget, gpointer   data)
 		}
 	}
 /* printf("In mute_cb: mute button state is %d\n",p->mute); */
-/*	gtk_toggle_button_set_state (GTK_TOGGLE_BUTTON(widget), p->mute); */
+/*	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(widget), p->mute); */
 }
 
 static void
@@ -191,7 +191,7 @@ adj_cb(GtkWidget *widget, gpointer   data)
 static void
 set_other_button_cb(GtkWidget *widget, GtkWidget* other_button)
 {
-	gtk_toggle_button_set_state(GTK_TOGGLE_BUTTON(other_button),
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(other_button),
 		       		GTK_TOGGLE_BUTTON(widget)->active);
 }
 
@@ -279,7 +279,7 @@ mixer_update_func(GtkWidget *mixer, gint mvol)
 
 	/* get out of mute mode if the volume is turned up by another program. */
 	if ((md->mute ==1) && (mvol !=0))
-	    gtk_toggle_button_set_state(GTK_TOGGLE_BUTTON(mx->hmutebutton),0);
+	    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(mx->hmutebutton),0);
 
 	/* change the sliders to reflect the new value. */
 	/*   ignore if we're in mute mode. */
@@ -341,8 +341,8 @@ create_computer_mixer_widget(GtkWidget ** mixer,
 	gtk_range_set_update_policy (GTK_RANGE(vscale), GTK_UPDATE_CONTINUOUS);
        	gtk_range_set_update_policy (GTK_RANGE(hscale), GTK_UPDATE_CONTINUOUS);
 
-	gtk_toggle_button_set_state (GTK_TOGGLE_BUTTON(hbutton), 0);
-	gtk_toggle_button_set_state (GTK_TOGGLE_BUTTON(vbutton), 0);
+	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(hbutton), 0);
+	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(vbutton), 0);
 
 
 	/* cosmetic settings */

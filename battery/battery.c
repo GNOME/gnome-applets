@@ -328,7 +328,7 @@ battery_set_mode(BatteryData * bat)
     {
       /* If the property dialogue is open, update it */
       if (bat->prop_win)
-	gtk_toggle_button_set_state(GTK_TOGGLE_BUTTON(bat->mode_radio_graph),
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(bat->mode_radio_graph),
 				    1);
 
       battery_expose_handler(bat->graph_area, NULL, bat);
@@ -338,7 +338,7 @@ battery_set_mode(BatteryData * bat)
   else if (!strcmp(bat->mode_string, BATTERY_MODE_READOUT))
     {
       if (bat->prop_win)
-	gtk_toggle_button_set_state
+	gtk_toggle_button_set_active
 	  (GTK_TOGGLE_BUTTON(bat->mode_radio_readout), 1);
 
       battery_expose_handler(bat->readout_area, NULL, bat);

@@ -197,7 +197,7 @@ void property_show(AppletWidget *applet, gpointer data)
 
 	button = gtk_check_button_new_with_label (_("Use automount friendly status test"));
         gtk_box_pack_start(GTK_BOX(frame), button, FALSE, FALSE, 5);
-        gtk_toggle_button_set_state(GTK_TOGGLE_BUTTON(button), dd->prop_autofs_friendly);
+        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(button), dd->prop_autofs_friendly);
         gtk_signal_connect (GTK_OBJECT(button),"clicked",(GtkSignalFunc) autofs_friendly_cb, dd);
         gtk_widget_show(button);
 

@@ -188,7 +188,7 @@ void property_show(AppletWidget *applet, gpointer data)
 
 	/* confirmation checkbox */
 	checkbox = gtk_check_button_new_with_label(_("Confirm connection"));
-	gtk_toggle_button_set_state (GTK_TOGGLE_BUTTON (checkbox), ask_for_confirmation);
+	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (checkbox), ask_for_confirmation);
 	gtk_signal_connect( GTK_OBJECT(checkbox), "toggled",
 			    GTK_SIGNAL_FUNC(confirm_checkbox_cb), NULL);
         gtk_box_pack_start( GTK_BOX(frame), checkbox, FALSE, FALSE, 5);
@@ -238,7 +238,7 @@ void property_show(AppletWidget *applet, gpointer data)
 
 	/* ISDN checkbox */
 	checkbox = gtk_check_button_new_with_label(_("Use ISDN"));
-	gtk_toggle_button_set_state (GTK_TOGGLE_BUTTON (checkbox), use_ISDN);
+	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (checkbox), use_ISDN);
 	gtk_signal_connect( GTK_OBJECT(checkbox), "toggled",
 			    GTK_SIGNAL_FUNC(isdn_checkbox_cb), NULL);
         gtk_box_pack_start( GTK_BOX(frame), checkbox, FALSE, FALSE, 5);

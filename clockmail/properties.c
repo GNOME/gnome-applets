@@ -291,7 +291,7 @@ void property_show(AppletWidget *applet, gpointer data)
 
 	button = gtk_check_button_new_with_label (_("Display time in 12 hour format (AM/PM)"));
 	gtk_box_pack_start(GTK_BOX(vbox1), button, FALSE, FALSE, 0);
-	gtk_toggle_button_set_state(GTK_TOGGLE_BUTTON(button), ad->p_am_pm_enable);
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(button), ad->p_am_pm_enable);
 	gtk_signal_connect (GTK_OBJECT(button),"clicked",(GtkSignalFunc) am_pm_time_cb, ad);
 	gtk_widget_show(button);
 
@@ -301,7 +301,7 @@ void property_show(AppletWidget *applet, gpointer data)
 
 	button = gtk_check_button_new_with_label (_("Display time relative to GMT (Greenwich Mean Time):"));
 	gtk_box_pack_start(GTK_BOX(hbox), button, FALSE, FALSE, 0);
-	gtk_toggle_button_set_state(GTK_TOGGLE_BUTTON(button), ad->p_use_gmt);
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(button), ad->p_use_gmt);
 	gtk_signal_connect (GTK_OBJECT(button),"clicked",(GtkSignalFunc) use_gmt_cb, ad);
 	gtk_widget_show(button);
 
@@ -324,7 +324,7 @@ void property_show(AppletWidget *applet, gpointer data)
 
 	button = gtk_check_button_new_with_label (_("Blink when any mail is waiting. (Not just when mail arrives)"));
 	gtk_box_pack_start(GTK_BOX(vbox1), button, FALSE, FALSE, 0);
-	gtk_toggle_button_set_state(GTK_TOGGLE_BUTTON(button), ad->p_always_blink);
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(button), ad->p_always_blink);
 	gtk_signal_connect (GTK_OBJECT(button),"clicked",(GtkSignalFunc) always_blink_cb, ad);
 	gtk_widget_show(button);
 
@@ -352,7 +352,7 @@ void property_show(AppletWidget *applet, gpointer data)
 
 	button = gtk_check_button_new_with_label (_("When new mail is received run:"));
 	gtk_box_pack_start(GTK_BOX(hbox), button, FALSE, FALSE, 0);
-	gtk_toggle_button_set_state(GTK_TOGGLE_BUTTON(button), ad->p_exec_cmd_on_newmail);
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(button), ad->p_exec_cmd_on_newmail);
 	gtk_signal_connect (GTK_OBJECT(button),"clicked",(GtkSignalFunc) newmail_exec_cb, ad);
 	gtk_widget_show(button);
 

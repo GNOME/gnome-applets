@@ -329,7 +329,7 @@ cb_applet_properties(AppletWidget * widget, gpointer data)
       gnome_property_box_append_page(GNOME_PROPERTY_BOX(prop), table,
 				     gtk_label_new (_("Display")));
       check = gtk_check_button_new_with_label(_("Show all tasks on all desktops"));
-      gtk_toggle_button_set_state(GTK_TOGGLE_BUTTON(check), tasks_all);
+      gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check), tasks_all);
       gtk_signal_connect(GTK_OBJECT(check), "clicked",
 			 GTK_SIGNAL_FUNC(cb_check_all_tasks), NULL);
       gtk_object_set_data(GTK_OBJECT(check), "prop", prop);
@@ -337,7 +337,7 @@ cb_applet_properties(AppletWidget * widget, gpointer data)
       gtk_table_attach(GTK_TABLE(table), check, 
 		       2, 4, 0, 1, GTK_FILL|GTK_EXPAND,0,0,0);
       check = gtk_check_button_new_with_label(_("Show tasks"));
-      gtk_toggle_button_set_state(GTK_TOGGLE_BUTTON(check), show_tasks);
+      gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check), show_tasks);
       gtk_signal_connect(GTK_OBJECT(check), "clicked",
 			 GTK_SIGNAL_FUNC(cb_check_show_tasks), NULL);
       gtk_object_set_data(GTK_OBJECT(check), "prop", prop);
@@ -345,7 +345,7 @@ cb_applet_properties(AppletWidget * widget, gpointer data)
       gtk_table_attach(GTK_TABLE(table), check, 
 		       2, 4, 1, 2, GTK_FILL|GTK_EXPAND,0,0,0);
       check = gtk_check_button_new_with_label(_("Show pager"));
-      gtk_toggle_button_set_state(GTK_TOGGLE_BUTTON(check), show_pager);
+      gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check), show_pager);
       gtk_signal_connect(GTK_OBJECT(check), "clicked",
 			 GTK_SIGNAL_FUNC(cb_check_show_pager), NULL);
       gtk_object_set_data(GTK_OBJECT(check), "prop", prop);
@@ -353,7 +353,7 @@ cb_applet_properties(AppletWidget * widget, gpointer data)
       gtk_table_attach(GTK_TABLE(table), check, 
 		       2, 4, 2, 3, GTK_FILL|GTK_EXPAND,0,0,0);
       check = gtk_check_button_new_with_label(_("Use small pagers"));
-      gtk_toggle_button_set_state(GTK_TOGGLE_BUTTON(check), pager_size);
+      gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check), pager_size);
       gtk_signal_connect(GTK_OBJECT(check), "clicked",
 			 GTK_SIGNAL_FUNC(cb_check_pager_size), NULL);
       gtk_object_set_data(GTK_OBJECT(check), "prop", prop);
@@ -361,7 +361,7 @@ cb_applet_properties(AppletWidget * widget, gpointer data)
       gtk_table_attach(GTK_TABLE(table), check, 
 		       2, 4, 3, 4, GTK_FILL|GTK_EXPAND,0,0,0);
       check = gtk_check_button_new_with_label(_("Show icons in tasks"));
-      gtk_toggle_button_set_state(GTK_TOGGLE_BUTTON(check), show_icons);
+      gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check), show_icons);
       gtk_signal_connect(GTK_OBJECT(check), "clicked",
 			 GTK_SIGNAL_FUNC(cb_check_show_icons), NULL);
       gtk_object_set_data(GTK_OBJECT(check), "prop", prop);

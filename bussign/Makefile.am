@@ -17,7 +17,10 @@ bussign_applet_LDADD = ../../panel/libpanel_applet.la \
 		     $(GNOMEUI_LIBS) $(INTLLIBS)      \
                      $(GHTTP_LIB)
 
-EXTRA_DIST = bussign_applet.desktop
+EXTRA_DIST = bussign_applet.desktop bussign_applet.gnorba
 
 sysdir = $(datadir)/applets/Amusements
 sys_DATA = bussign_applet.desktop
+
+gnorbadir  = $(sysconfdir)/CORBA/servers
+gnorba_DATA = bussign_applet.gnorba

@@ -134,7 +134,7 @@ static void create_widget(void)
 	gtk_box_pack_start(GTK_BOX(topbox), WC.label, FALSE, FALSE, 3);
 	
 	WC.check = gtk_check_button_new_with_label (_("Launch new window"));
-	gtk_toggle_button_set_state(GTK_TOGGLE_BUTTON(WC.check), WC.properties.newwindow);
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(WC.check), WC.properties.newwindow);
 	if(WC.properties.showcheck)
 		gtk_widget_show(WC.check);
 	
@@ -207,7 +207,7 @@ properties_cb (AppletWidget *widget, gpointer data)
 	gtk_container_set_border_width(GTK_CONTAINER(vbox), GNOME_PAD);
 
 	urlcheck = gtk_check_button_new_with_label (_("Display URL label"));
-	gtk_toggle_button_set_state(GTK_TOGGLE_BUTTON(urlcheck), WC.properties.showurl);
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(urlcheck), WC.properties.showurl);
 	gtk_signal_connect(GTK_OBJECT(urlcheck),"toggled",
 			   GTK_SIGNAL_FUNC(check_box_toggled),
 			   &WC.tmp_properties.showurl);
@@ -216,7 +216,7 @@ properties_cb (AppletWidget *widget, gpointer data)
 				  GTK_OBJECT(pb));
 	
 	launchcheck = gtk_check_button_new_with_label (_("Display \"launch new window\" option"));
-	gtk_toggle_button_set_state(GTK_TOGGLE_BUTTON(launchcheck), WC.properties.showcheck);
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(launchcheck), WC.properties.showcheck);
 	gtk_signal_connect(GTK_OBJECT(launchcheck),"toggled",
 			   GTK_SIGNAL_FUNC(check_box_toggled),
 			   &WC.tmp_properties.showcheck);

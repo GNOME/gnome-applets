@@ -430,7 +430,7 @@ propertiesBox(AppletWidget *applet, gpointer data)
 
     /* show time check box */
     checkTime = gtk_check_button_new_with_label (_("Show time"));
-    gtk_toggle_button_set_state(GTK_TOGGLE_BUTTON(checkTime), prop.showTime);
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(checkTime), prop.showTime);
     gtk_signal_connect(GTK_OBJECT(checkTime),
 		       "toggled",
 		       GTK_SIGNAL_FUNC(checkBoxToggled_signal),
@@ -443,7 +443,7 @@ propertiesBox(AppletWidget *applet, gpointer data)
     /* show date check box */
 
     checkDate = gtk_check_button_new_with_label (_("Show date"));
-    gtk_toggle_button_set_state(GTK_TOGGLE_BUTTON(checkDate), prop.showDate);
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(checkDate), prop.showDate);
     gtk_signal_connect(GTK_OBJECT(checkDate),
 		       "toggled",
 		       GTK_SIGNAL_FUNC(checkBoxToggled_signal),

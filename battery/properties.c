@@ -68,9 +68,9 @@ battery_properties_window(AppletWidget * applet, gpointer data)
     (GTK_RADIO_BUTTON (bat->mode_radio_graph), _("Readout"));
 
   if (!strcmp(bat->mode_string, BATTERY_MODE_GRAPH))
-    gtk_toggle_button_set_state (GTK_TOGGLE_BUTTON (bat->mode_radio_graph), 1);
+    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (bat->mode_radio_graph), 1);
   else
-    gtk_toggle_button_set_state
+    gtk_toggle_button_set_active
       (GTK_TOGGLE_BUTTON (bat->mode_radio_readout), 1);
     
   gtk_signal_connect (GTK_OBJECT (bat->mode_radio_graph), "toggled",

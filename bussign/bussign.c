@@ -134,12 +134,15 @@ create_bussign_widget(GtkWidget *a_parent)
     
   /* load the file */
   sg_bus = gdk_imlib_load_image(IMAGE_FILENAME);
-  /* render it */
-  gdk_imlib_render(sg_bus, sg_bus->rgb_width, sg_bus->rgb_height);
-  /* get the pixmap */
-  sg_pixmap = gtk_pixmap_new(sg_bus->pixmap, sg_bus->shape_mask);
-  /* show it */
-  gtk_widget_show(sg_pixmap);
+  if(sg_bus) {
+    /* render it */
+    gdk_imlib_render(sg_bus, sg_bus->rgb_width, sg_bus->rgb_height);
+    /* get the pixmap */
+    sg_pixmap = gtk_pixmap_new(sg_bus->pixmap, sg_bus->shape_mask);
+    /* show it */
+    gtk_widget_show(sg_pixmap);
+  } else
+    sg_pixmap = NULL;
 
   /* set up the timeout to refresh */
   gtk_timeout_add(20000, bussign_refresh, NULL);

@@ -135,7 +135,7 @@ toggle_button_toggled_cb(GtkWidget *widget, gpointer data)
   if ((GTK_TOGGLE_BUTTON (cb_data->curr_data->toggle_buttons[button_index])->active))
   {
     if ((last_index != NO_LAST_INDEX) && (last_index != button_index))
-      gtk_toggle_button_set_state
+      gtk_toggle_button_set_active
         (GTK_TOGGLE_BUTTON (cb_data->curr_data->toggle_buttons[last_index]), 
          FALSE);    
     gtk_widget_grab_focus(event_box);
@@ -186,7 +186,7 @@ key_press_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
 
     }
   if (curr_data->last_index != NO_LAST_INDEX)
-    gtk_toggle_button_set_state
+    gtk_toggle_button_set_active
         (GTK_TOGGLE_BUTTON (curr_data->toggle_buttons[curr_data->last_index]), 
          FALSE);
   curr_data->last_index = NO_LAST_INDEX;

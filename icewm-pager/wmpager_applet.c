@@ -63,7 +63,7 @@ int main(int argc, char *argv[])
     workspace_list = get_workspaces();
     setup();
     current_workspace = get_current_workspace();
-    gtk_toggle_button_set_state
+    gtk_toggle_button_set_active
         (GTK_TOGGLE_BUTTON(g_list_nth(button_list, current_workspace)->data), 1);
 
     gtk_timeout_add(1000, check_workspace, NULL);
@@ -242,7 +242,7 @@ void switch_cb(GtkWidget *widget, gpointer data)
     if(GTK_TOGGLE_BUTTON(widget)->active)
     {
         if(button_num != tmp_ws)
-            gtk_toggle_button_set_state
+            gtk_toggle_button_set_active
                 (GTK_TOGGLE_BUTTON(g_list_nth(button_list, tmp_ws)->data), 0);
         change_workspace(button_num);
         gtk_widget_set_sensitive(GTK_WIDGET(g_list_nth(button_list, button_num)->data), 0);
@@ -313,8 +313,8 @@ gint check_workspace(gpointer data)
     tmp_ws = get_current_workspace();
     if(tmp_ws != current_workspace)
     {
-        gtk_toggle_button_set_state(GTK_TOGGLE_BUTTON(g_list_nth(button_list, current_workspace)->data), 0);
-        gtk_toggle_button_set_state(GTK_TOGGLE_BUTTON(g_list_nth(button_list, tmp_ws)->data), 1);
+        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(g_list_nth(button_list, current_workspace)->data), 0);
+        gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(g_list_nth(button_list, tmp_ws)->data), 1);
         current_workspace = tmp_ws;
     }
     return 1;
