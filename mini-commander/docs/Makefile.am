@@ -11,7 +11,7 @@ features.html            macros.html					\
 clock.html               feedback.html            screenshot01.gif	\
 command-completion.html  gpl2.html                screenshots.html	\
 command-history.html     history.html             todo.html		\
-customization.html       index.html               			\
+properties-0.html        index.html               			\
 docbook.css              introduction.html        download.html
 
 # the .sgml docs sources in DocBook format:

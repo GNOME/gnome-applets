@@ -84,7 +84,31 @@ WIDTH="100%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->1999-01-17  Oliver Maruhn  &#60;om@linuxhq.com&#62;
+>1999-01-19  Oliver Maruhn  &#60;om@linuxhq.com&#62;
+
+	* docs/Makefile.am (docdir): doc files will be installed in the
+ 	right place
+
+1999-01-18  Nat Friedman  &#60;nat@nat.org&#62;
+
+	* src/help.c (showHelp): Use gnome_app_id for the name of the root
+ 	help directory.
+
+	* src/preferences.c (propertiesBox): Likewise.
+
+1999-01-18  Nat Friedman  &#60;nat@nat.org&#62;
+
+	* src/preferences.c (propertiesBox): Connected the help signal of
+ 	the GnomePropertyBox to gnome_help_pbox_display.
+
+1999-01-18  Oliver Maruhn  &#60;om@linuxhq.com&#62;
+
+	* src/preferences.c (propertiesBox_apply_signal): wrong "date on"
+ 	message fixed
+
+1999-01-17  Oliver Maruhn  &#60;om@linuxhq.com&#62;
+
+	* v0.0.14 released
 
 	* src/preferences.c (resetTemporaryPrefs): added
 	(propertiesBox_apply_signal): cleanup [now using resetTemporaryPrefs()]
@@ -132,7 +156,7 @@ CLASS="SCREEN"
 
 	* src/history.[ch]: added
 
-	* src/mini-commander_applet.c (main): show history list dirctly
+	* src/mini-commander_applet.c (main): show history list directly
  	after the mouse button has been pressed down
 	(appletOrientChanged_cb): added [currently without any meaning]
 
