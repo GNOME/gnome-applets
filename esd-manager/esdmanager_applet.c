@@ -62,7 +62,8 @@ main(int argc, char *argv[])
 {
   panel_corba_register_arguments();
   
-  applet_widget_init_defaults("esdmanager_applet", NULL, argc, argv, 0, NULL, argv[0]);
+  applet_widget_init_defaults("esdmanager_applet", NULL, argc, argv,
+  			      NULL, 0, NULL);
 
   applet = applet_widget_new("esdmanager_applet");
   if (!applet)
