@@ -62,7 +62,7 @@ event_filter (GdkXEvent * gdk_xevent, GdkEvent * event, gpointer data);
 
 static void gkb_destroy (GtkWidget * widget, gpointer data);
 
-void
+static void
 set_tooltip (GtkWidget * w, const gchar * tip)
 {
   GtkTooltips *t = gtk_tooltips_new ();
@@ -77,66 +77,6 @@ void alert(const gchar * str){
  gtk_widget_show_all(window);
 }
 
-static void
-makepix (GkbKeymap * keymap, char *fname, int w, int h)
-{
-  GdkPixbuf *pix;
-  int width, height;
-
-  pix = gdk_pixbuf_new_from_file (fname,NULL);
-  if (pix != NULL)
-    {
-      double affine[6];
-      guchar *rgb;
-      GdkGC *gc;
-
-      g_assert (bah_window);
-      g_assert (bah_window->window);
-
-      width = gdk_pixbuf_get_width (pix);
-      height = gdk_pixbuf_get_height (pix);
-
-      affine[1] = affine[2] = affine[4] = affine[5] = 0;
-
-      affine[0] = w / (double) width;
-      affine[3] = h / (double) height;
-
-      rgb = g_new0 (guchar, w * h * 3);
-
-      art_rgb_rgba_affine (rgb,
-			   0, 0, w, h, w * 3,
-			   gdk_pixbuf_get_pixels (pix),
-			   width, height,
-			   gdk_pixbuf_get_rowstride (pix),
-			   affine, ART_FILTER_NEAREST, NULL);
-
-      gdk_pixbuf_unref (pix);
-
-      keymap->pix = gdk_pixmap_new (bah_window->window, w, h,
-#if 0
-				    gtk_widget_get_visual (gkb->darea)->depth
-#else
-				    -1
-#endif
-	);
-
-      gc = gdk_gc_new (keymap->pix);
-      gdk_draw_rgb_image (keymap->pix, gc,
-			  0, 0, w, h, GDK_RGB_DITHER_NORMAL, rgb, w * 3);
-      gdk_gc_destroy (gc);
-
-      g_free (rgb);
-    }
-  else
-    {
-      if (keymap->pix)
-	{
-	  gdk_pixmap_unref (keymap->pix);
-	}
-      keymap->pix = gdk_pixmap_new (bah_window->window, w, h, -1);
-    }
-}
-
 /**
  * gkb_draw:
  * @gkb: 
@@ -146,22 +86,23 @@ makepix (GkbKeymap * keymap, char *fname, int w, int h)
 static void
 gkb_draw (GKB * gkb)
 {
-  g_return_if_fail (gkb->darea != NULL);
+  g_return_if_fail (gkb->image != NULL);
   g_return_if_fail (gkb->keymap != NULL);
-  if (!GTK_WIDGET_REALIZED (gkb->darea)) return;
 
   if (gkb->mode != GKB_LABEL)
     {
+      GdkPixbuf *tmp;
+      
       g_return_if_fail (gkb != NULL);
       g_return_if_fail (gkb->keymap != NULL);
-      g_return_if_fail (gkb->keymap->pix != NULL);
-      g_return_if_fail (gkb->darea);
-      g_return_if_fail (gkb->darea->window);
-
-      gdk_draw_pixmap (gkb->darea->window,
-		       gkb->darea->
-		       style->fg_gc[GTK_WIDGET_STATE (gkb->darea)],
-		       gkb->keymap->pix, 0, 0, 0, 0, gkb->w, gkb->h);
+      g_return_if_fail (gkb->keymap->pixbuf != NULL);
+      
+      tmp = gdk_pixbuf_scale_simple (gkb->keymap->pixbuf, gkb->w, 
+      				     gkb->h, GDK_INTERP_HYPER); 
+      if (tmp) {     
+        gtk_image_set_from_pixbuf (GTK_IMAGE (gkb->image), tmp);
+        g_object_unref (tmp);
+      }
 
     }
 
@@ -199,7 +140,6 @@ gkb_count_sizes (GKB * gkb)
 
   gint size;
 
-  size = panel_applet_get_size (PANEL_APPLET (gkb->applet));
   size = panel_applet_get_size (PANEL_APPLET (gkb->applet));
 
   /* Determine if this pannel requires different handling because it is very small */
@@ -268,23 +208,12 @@ gkb_count_sizes (GKB * gkb)
 	applet_width += label_width;
     }
 
-  gtk_widget_set_usize (GTK_WIDGET (gkb->applet), applet_width,
-			applet_height);
-
-  if (flag_width > 0)
-    {
-#if 1
-      gtk_widget_set_usize (GTK_WIDGET (gkb->darea), flag_width, flag_height);
-#endif
-      gtk_drawing_area_size (GTK_DRAWING_AREA (gkb->darea), flag_width,
-			     flag_height);
-    }
-
-  gtk_widget_set_usize (GTK_WIDGET (gkb->label1), label_width, label_height);
-  gtk_widget_set_usize (GTK_WIDGET (gkb->label2), label_width, label_height);
-
   gkb->w = flag_width;
-  gkb->h = flag_height;
+  /* FIXME the applet is just a little bigger than panel, so I add the -1 here*/
+  gkb->h = flag_height - 1; 
+  gtk_widget_set_size_request (gkb->label_frame1, gkb->w, gkb->h);
+  gtk_widget_set_size_request (gkb->label_frame2, gkb->w, gkb->h);
+  gtk_widget_set_size_request (gkb->darea_frame, gkb->w, gkb->h);
 
   return label_in_vbox;
 }
@@ -304,7 +233,7 @@ gkb_sized_render (GKB * gkb)
   gboolean label_in_vbox;
 
   label_in_vbox = gkb_count_sizes (gkb);
-
+ 
   /* Hide or show the flag */
   if (gkb->mode == GKB_LABEL)
     gtk_widget_hide (gkb->darea_frame);
@@ -342,23 +271,18 @@ gkb_sized_render (GKB * gkb)
       real_name = gnome_unconditional_pixmap_file (name);
       if (g_file_exists (real_name))
 	{
-	  makepix (keymap, real_name, gkb->w - 4, gkb->h - 4);
+	  keymap->pixbuf = gdk_pixbuf_new_from_file (real_name,NULL);
 	}
       else
 	{
 	  g_free (real_name);
 	  real_name = gnome_unconditional_pixmap_file ("gkb/gkb-foot.png");
-	  makepix (keymap, real_name, gkb->w - 4, gkb->h - 4);
+	  keymap->pixbuf = gdk_pixbuf_new_from_file (real_name,NULL);
 	}
       g_free (name);
       g_free (real_name);
     }
 
-#if 0
-  gtk_widget_queue_resize (gkb->darea);
-  gtk_widget_queue_resize (gkb->darea->parent);
-  gtk_widget_queue_resize (gkb->darea->parent->parent);
-#endif
 }
 
 /**
@@ -494,7 +418,7 @@ loadprop (int i)
 
   g_free(buf);
 
-  actdata->pix = NULL;
+  actdata->pixbuf = NULL;
   gkb->orient = panel_applet_get_orient (PANEL_APPLET (gkb->applet));
 
   return actdata;
@@ -515,11 +439,11 @@ load_properties (GKB * gkb)
   convert_string_to_keysym_state (gkb->key, &gkb->keysym, &gkb->state);
 
   gkb->is_small = panel_applet_gconf_get_bool (PANEL_APPLET(gkb->applet), "small", NULL);
-
+#ifdef THIS_IS_UNNECESSARY
   if (gkb->is_small == NULL) {
     gkb->is_small = TRUE;
   }
- 
+#endif 
   text = gkb_load_pref ("mode", "Flag and Label");
   gkb->mode = gkb_util_get_mode_from_text (text);
   g_free (text);
@@ -564,64 +488,28 @@ gkb_button_press_event_cb (GtkWidget * widget, GdkEventButton * event)
   return TRUE;
 }
 
-static int
-gkb_expose (GtkWidget * darea, GdkEventExpose * event)
-{
-  gdk_draw_pixmap (gkb->darea->window,
-		   gkb->darea->style->fg_gc[GTK_WIDGET_STATE (gkb->darea)],
-		   gkb->keymap->pix,
-		   event->area.x, event->area.y,
-		   event->area.x, event->area.y,
-		   event->area.width, event->area.height);
-
-  return FALSE;
-}
-
 static void
 create_gkb_widget ()
 {
-  GtkStyle *style;
-
-  gtk_widget_push_visual (gdk_rgb_get_visual ());
-  gtk_widget_push_colormap (gdk_rgb_get_cmap ());
-
-  style = gtk_widget_get_style (gkb->applet);
-
   gkb->eventbox = gtk_event_box_new ();
   gtk_widget_show (gkb->eventbox);
 
-  gkb->vbox = gtk_vbox_new (FALSE, 0);
+  gkb->vbox = gtk_vbox_new (TRUE, 0);
   gtk_widget_show (gkb->vbox);
-  gkb->hbox = gtk_hbox_new (FALSE, 0);
+  gkb->hbox = gtk_hbox_new (TRUE, 0);
   gtk_widget_show (gkb->hbox);
 
   gtk_container_add (GTK_CONTAINER (gkb->eventbox), gkb->hbox);
   gtk_container_add (GTK_CONTAINER (gkb->hbox), gkb->vbox);
 
-  gkb->darea = gtk_drawing_area_new ();
-
-  gtk_drawing_area_size (GTK_DRAWING_AREA (gkb->darea), gkb->w, gkb->h);
-
-  gtk_widget_set_events (gkb->darea,
-			 gtk_widget_get_events (gkb->darea) |
-			 GDK_BUTTON_PRESS_MASK);
+  gkb->image = gtk_image_new ();
 
   g_signal_connect (gkb->eventbox, "button_press_event",
-		      G_CALLBACK (gkb_button_press_event_cb), NULL);
-	      
-#if 0
-  g_signal_connect (gkb->eventbox, "expose_event",
-		      G_CALLBACK (gkb_expose), NULL);
-#else
-  g_signal_connect (gkb->darea, "expose_event",
-		      G_CALLBACK (gkb_expose), NULL);
-#endif
-
-  gtk_widget_show (gkb->darea);
+                    G_CALLBACK (gkb_button_press_event_cb), NULL);
 
   gkb->darea_frame = gtk_frame_new (NULL);
   gtk_frame_set_shadow_type (GTK_FRAME (gkb->darea_frame), GTK_SHADOW_IN);
-  gtk_container_add (GTK_CONTAINER (gkb->darea_frame), gkb->darea);
+  gtk_container_add (GTK_CONTAINER (gkb->darea_frame), gkb->image);
   gtk_box_pack_start (GTK_BOX (gkb->vbox), gkb->darea_frame, TRUE, TRUE, 0);
 #if 0
   g_print ("c\n");
@@ -643,12 +531,6 @@ create_gkb_widget ()
   gtk_container_add (GTK_CONTAINER (gkb->label_frame2), gkb->label2);
   gtk_container_add (GTK_CONTAINER (gkb->hbox), gkb->label_frame2);
 
-  gtk_widget_pop_colormap ();
-  gtk_widget_pop_visual ();
-
-  gkb_sized_render (gkb);
-
-  gkb_update (gkb, TRUE);
 }
 
 static void
@@ -866,15 +748,9 @@ gboolean fill_gkb_applet(PanelApplet *applet)
   gkb->cur = 0;
   gkb->applet = GTK_WIDGET (applet);
 
-  panel_applet_add_preferences (applet, "/schemas/apps/gkb-applet-2/prefs", NULL);
-
-  gtk_widget_push_visual (gdk_rgb_get_visual ());
-  gtk_widget_push_colormap (gdk_rgb_get_cmap ());
-
+  panel_applet_add_preferences (applet, "/schemas/apps/gkb-applet/prefs", NULL);
+  /* FIXME: is bah_window needed for anything */
   bah_window = gtk_window_new (GTK_WINDOW_POPUP);
-
-  gtk_widget_pop_visual ();
-  gtk_widget_pop_colormap ();
 
   gtk_widget_set_uposition (bah_window, gdk_screen_width () + 1,
 			    gdk_screen_height () + 1);
@@ -918,7 +794,7 @@ gboolean fill_gkb_applet(PanelApplet *applet)
   				gkb);
 
   gtk_widget_show (GTK_WIDGET(gkb->applet));
-
+  gkb_sized_render (gkb);
   gkb_update(gkb,TRUE);
 
   return TRUE;

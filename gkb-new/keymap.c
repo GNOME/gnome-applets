@@ -53,6 +53,9 @@ gkb_keymap_free_internals (GkbKeymap * keymap)
   free_and_null (keymap->arch);
   free_and_null (keymap->command);
   free_and_null (keymap->flag);
+  if (keymap->pixbuf)
+    g_object_unref (keymap->pixbuf);
+  keymap->pixbuf = NULL;
 }
 
 
@@ -113,7 +116,8 @@ gkb_keymap_copy (GkbKeymap * keymap)
   new_keymap->command = g_strdup (keymap->command);
   new_keymap->lang = g_strdup (keymap->lang);
   new_keymap->label = g_strdup (keymap->label);
-  new_keymap->pix = NULL;
+  /* FIXME - why was new_keymap->pix NULL'd before */
+  new_keymap->pixbuf = NULL;
   new_keymap->parent = NULL;
 
   return new_keymap;

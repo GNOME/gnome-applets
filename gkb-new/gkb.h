@@ -90,7 +90,7 @@ struct _GkbPropertyBoxInfo
 struct _GkbKeymap
 {
   gint i;
-  GdkPixmap *pix;
+  GdkPixbuf *pixbuf;
 
   gchar *name;
   gchar *command;
@@ -127,8 +127,8 @@ struct _GKB
   GtkWidget *label_frame1;
   GtkWidget *label2;
   GtkWidget *label_frame2;
-  GtkWidget *darea;
   GtkWidget *darea_frame;
+  GtkWidget *image;
   GtkWidget *addwindow;
 
   gint n;
@@ -168,7 +168,7 @@ struct _GkbKeymapWg
 /* gkb.c */
 void gkb_update (GKB *gkb, gboolean set_command);
 void alert (const gchar * str);
-void applet_save_session ();
+void applet_save_session (void);
 
 /* prop.c */
 void gkb_apply (GkbPropertyBoxInfo * pbi);
