@@ -106,7 +106,7 @@ static const BonoboUIVerb applet_menu_verbs [] = {
 	BONOBO_UI_UNSAFE_VERB ("Properties", properties_cb),
 	BONOBO_UI_UNSAFE_VERB ("Help", help_cb),
 	BONOBO_UI_UNSAFE_VERB ("About", about_cb),
-    BONOBO_UI_VERB_END
+	BONOBO_UI_VERB_END
 };
 
 /* and the XML definition for the popup menu */
@@ -124,7 +124,7 @@ static const char applet_menu_xml [] =
 
 
 PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_CDPlayerApplet_Factory",
-							 "CD Player applet",
+							 "CD-Player-Applet",
 							 "0",
 							  applet_factory,
 							  NULL)
@@ -150,7 +150,6 @@ applet_new ()
 	int err;
 	gchar *global_key;
 	gchar *private_key;
-	gchar *current_key;
 
 	cd = g_new0(CDPlayerData, 1);
 
@@ -173,15 +172,14 @@ applet_new ()
 
 	applet = cd->panel.applet = panel_applet_new (cdplayer);
 
-    g_free(current_key);
-    if(strlen(cd->devpath) < 1)
-    {
-    	g_free(cd->devpath);
-	    cd->devpath = g_strdup(DEV_PATH);
+	if(strlen(cd->devpath) < 1)
+	{
+		g_free(cd->devpath);
+		cd->devpath = g_strdup(DEV_PATH);
 	}
 	cd->cdrom_device = cdrom_open(cd->devpath, &err);
-    cd->orient = panel_applet_get_orient (PANEL_APPLET (applet));
-    cd->size = panel_applet_get_size (PANEL_APPLET (applet));
+	cd->orient = panel_applet_get_orient (PANEL_APPLET (applet));
+	cd->size = panel_applet_get_size (PANEL_APPLET (applet));
 
 	g_signal_connect (applet, "destroy", G_CALLBACK (cdplayer_destroy), cd);
 	g_signal_connect (applet, "change_orient", G_CALLBACK (applet_change_orient), cd);
@@ -213,7 +211,7 @@ cdplayer_destroy(GtkWidget * widget, gpointer data)
 	g_free (cd->devpath);
 	cd->devpath = NULL;
 	g_free(cd);
-    led_done();
+	led_done();
 }
 
 static void
@@ -258,11 +256,11 @@ properties_cb (GtkWidget *w, gpointer data)
 
 	cd = (CDPlayerData *) data;
 
-    dialog = gtk_dialog_new_with_buttons(_("CD Player Applet Properties"),
+	dialog = gtk_dialog_new_with_buttons(_("CD Player Applet Properties"),
 										 NULL, GTK_DIALOG_MODAL,
 										 GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
 										 GTK_STOCK_OK, GTK_RESPONSE_OK, NULL);
-    box = GTK_DIALOG(dialog)->vbox;
+	box = GTK_DIALOG(dialog)->vbox;
 
 	hbox = gtk_hbox_new(FALSE, 0);
 	gtk_box_pack_start(GTK_BOX(box), hbox, TRUE, TRUE, 0);
@@ -272,31 +270,31 @@ properties_cb (GtkWidget *w, gpointer data)
 	gtk_box_pack_start(GTK_BOX(hbox), image, FALSE, FALSE, 10);
 	gtk_widget_show(image);
 
-    label = gtk_label_new(_("NOTICE: These is a per-applet settings\n"
+	label = gtk_label_new(_("NOTICE: These is a per-applet settings\n"
     						"If you change them here, it will only change\n"
 							"for this applet, allowing each instance to\n"
 							"control a different cdrom device."));
 	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 10);
 	gtk_widget_show(label);
 
-    frame = gtk_frame_new(_("Settings"));
+	frame = gtk_frame_new(_("Settings"));
 	gtk_box_pack_start(GTK_BOX(box), frame, TRUE, TRUE, 0);
 	gtk_container_set_border_width(GTK_CONTAINER(frame), 5);
-    gtk_widget_show(frame);
+	gtk_widget_show(frame);
 
 	hbox = gtk_hbox_new(FALSE, 0);
 	gtk_container_set_border_width(GTK_CONTAINER(hbox), 5);
 	gtk_container_add(GTK_CONTAINER(frame), hbox);
 	gtk_widget_show(hbox);
 
-    label = gtk_label_new(_("Device Path:"));
+	label = gtk_label_new(_("Device Path:"));
 	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
 	gtk_widget_show(label);
 
 	entry = gtk_entry_new();
 	gtk_box_pack_start(GTK_BOX(hbox), entry, TRUE, TRUE, 0);
-    gtk_widget_show(entry);
-    gtk_entry_set_text(GTK_ENTRY(entry), cd->devpath);
+	gtk_widget_show(entry);
+	gtk_entry_set_text(GTK_ENTRY(entry), cd->devpath);
 
 	gtk_widget_show_all(dialog);
 	do
@@ -387,12 +385,12 @@ applet_save_session(PanelApplet *applet, gpointer data)
 	gchar *private_key;
 
 	/* FIXME: Save our prefs ? */
-    global_key = panel_applet_get_global_key (PANEL_APPLET (applet));
-    private_key = panel_applet_get_private_key (PANEL_APPLET (applet));
+	global_key = panel_applet_get_global_key (PANEL_APPLET (applet));
+	private_key = panel_applet_get_private_key (PANEL_APPLET (applet));
 	g_print("(cdplayer_save_yourself) global key is %s, and private key is %s\n", global_key, private_key);
 	g_free(global_key);
 	g_free(private_key);
-    /* cd->devpath = gconf_extensions_get_string(current_key); */
+	/* cd->devpath = gconf_extensions_get_string(current_key); */
 	return(FALSE);
 }
 
