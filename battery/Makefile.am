@@ -21,7 +21,7 @@ battery_applet_LDADD = ../../panel/libpanel_applet.la \
 			$(GNOME_LIBDIR)  \
 			$(GNOMEGNORBA_LIBS) $(INTLLIBS)
 
-EXTRA_DIST = battery_applet.desktop battery_applet.gnorba
+EXTRA_DIST = battery_applet.desktop battery_applet.gnorba bolt.xpm
 
 sysdir = $(datadir)/applets/Monitors
 sys_DATA = battery_applet.desktop

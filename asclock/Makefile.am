@@ -1,4 +1,4 @@
-SUBDIRS = themes
+SUBDIRS = themes default_theme
 
 INCLUDES = -I. -I$(srcdir) 				\
 	-I$(top_srcdir)/intl -I$(top_builddir)/intl	\
