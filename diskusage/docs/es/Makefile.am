@@ -6,8 +6,8 @@ lang = es
 omffile = diskusage_applet-es.omf
 sgml_ents = diskusage.sgml \
 	authors.sgml \
-	licencia_es.sgml \
-	licencia_nota_es.sgml \
+	licencia-es.sgml \
+	licencia-nota-es.sgml \
 	license.sgml
 include $(top_srcdir)/sgmldocs.make
 dist-hook: app-dist-hook
