@@ -16,6 +16,7 @@
 #include <time.h>
 #include <panel-applet.h>
 #include <panel-applet-gconf.h>
+#include <libgnomevfs/gnome-vfs.h>
 
 /*
  * Location
@@ -189,6 +190,11 @@ struct _WeatherInfo {
     gchar *met_buffer;
     gchar *radar_buffer;
     GdkPixmap *radar;
+    GnomeVFSAsyncHandle *metar_handle;
+    GnomeVFSAsyncHandle *iwin_handle;
+    GnomeVFSAsyncHandle *wx_handle;
+    GnomeVFSAsyncHandle *met_handle;
+    gboolean requests_pending;
 };
 
 typedef struct _WeatherInfo WeatherInfo;
