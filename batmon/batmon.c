@@ -341,7 +341,7 @@ init_module(void)
 static void
 destroy_module(void)
 {
-	gtk_tooltips_destroy(tooltips);
+	gtk_tooltips_unref(tooltips);
 
 	g_free(ac_pixmap_filename);
 	g_free(bat_pixmap_filename);

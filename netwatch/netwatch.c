@@ -341,7 +341,7 @@ create_netwatch (GtkWidget *window, char *parameters)
 		interface_list = g_slist_append(interface_list, this_int);
 		gtk_box_pack_end(GTK_BOX(parent_widget), this_int->button,
 				FALSE, FALSE, 0);
-	} while (dev = strtok(NULL, " "));
+	} while ((dev = strtok(NULL, " ")));
 	free(devpath);
 
 
