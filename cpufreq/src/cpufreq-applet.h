@@ -22,7 +22,8 @@
 #ifndef __CPUFREQ_APPLET_H__
 #define __CPUFREQ_APPLET_H__
 
-#include <gnome.h>
+#include <glib.h>
+#include <gtk/gtktooltips.h>
 #include <panel-applet.h>
 
 #include "cpufreq-monitor.h"

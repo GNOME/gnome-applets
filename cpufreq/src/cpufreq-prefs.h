@@ -19,7 +19,7 @@
  * Authors : Carlos García Campos <carlosgc@gnome.org>
  */
 
-#include <gnome.h>
+#include "cpufreq-applet.h"
 #include <panel-applet.h>
 
 void cpufreq_preferences_dialog_run (CPUFreqApplet *applet);
