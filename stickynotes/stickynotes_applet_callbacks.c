@@ -191,7 +191,7 @@ void preferences_save_cb(gpointer data)
 	gconf_client_set_bool(stickynotes->gconf, GCONF_PATH "/settings/use_system_font", sys_font, NULL);
 	gconf_client_set_int(stickynotes->gconf, GCONF_PATH "/settings/click_behavior", click_behavior, NULL);
 	gconf_client_set_bool(stickynotes->gconf, GCONF_PATH "/settings/sticky", sticky, NULL);
-	gconf_client_set_bool(stickynotes->gconf, GCONF_PATH "/settings/force_default_color", force_default, NULL);
+	gconf_client_set_bool(stickynotes->gconf, GCONF_PATH "/settings/force_default", force_default, NULL);
 }
 
 /* Preferences Callback : Change color. */
