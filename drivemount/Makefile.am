@@ -32,6 +32,10 @@ cdrom_h_in.xpm \
 cdrom_h_out.xpm \
 cdrom_v_in.xpm \
 cdrom_v_out.xpm \
+cdburn_h_in.xpm \
+cdburn_h_out.xpm \
+cdburn_v_in.xpm \
+cdburn_v_out.xpm \
 floppy_h_in.xpm	\
 floppy_h_out.xpm \
 floppy_v_in.xpm \
