@@ -2277,7 +2277,7 @@ static const gchar *windspeed_string (gfloat knots, SpeedUnit to_unit)
             g_snprintf(buf, sizeof (buf), _("%.1f km/h"), WINDSPEED_KNOTS_TO_KPH(knots));
             break;
         case SPEED_UNIT_MS:
-            /* TRANSLATOR: This is the wind speed in miles per hour */
+            /* TRANSLATOR: This is the wind speed in meters per second */
             g_snprintf(buf, sizeof (buf), _("%.1f m/s"), WINDSPEED_KNOTS_TO_MS(knots));
             break;
 
