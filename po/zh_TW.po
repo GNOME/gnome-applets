@@ -11,14 +11,74 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-applets 1.99.0\n"
-"POT-Creation-Date: 2002-04-29 15:33+0800\n"
-"PO-Revision-Date: 2002-04-30 16:20+0800\n"
+"Project-Id-Version: gnome-applets 1.101.0\n"
+"POT-Creation-Date: 2002-05-09 14:51+0800\n"
+"PO-Revision-Date: 2002-05-09 15:49+0800\n"
 "Last-Translator: Abel Cheung <maddog@linux.org.hk>\n"
 "Language-Team: traditional Chinese <zh-l10n@linux.org.tw>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#. The long name of the applet in the About dialog.
+#: battstat/GNOME_BattstatApplet.server.in.h:1 battstat/battstat_applet.c:830
+msgid "Battery Charge Monitor"
+msgstr "電池電量監控"
+
+#: battstat/GNOME_BattstatApplet.server.in.h:2
+msgid "Battstat Factory"
+msgstr "Battstat 工廠"
+
+#: battstat/GNOME_BattstatApplet.server.in.h:3
+msgid "Monitor a laptop's remaining power"
+msgstr "監控攜帶型電腦的剩餘電量"
+
+#: battstat/GNOME_BattstatApplet.server.in.h:4
+#: charpick/GNOME_CharpickerApplet.server.in.h:4
+#: drivemount/GNOME_DriveMountApplet.server.in.h:5
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:5
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:4
+#: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:3
+#: panel-menu/GNOME_PanelMenuApplet.server.in.h:4
+msgid "Utility"
+msgstr "公用程式"
+
+# src/battstat_applet.c:1379
+#: battstat/GNOME_BattstatApplet.xml.h:1 cdplayer/GNOME_CDPlayerApplet.xml.h:1
+#: charpick/GNOME_CharpickerApplet.xml.h:1
+#: drivemount/GNOME_DriveMountApplet.xml.h:1 geyes/GNOME_GeyesApplet.xml.h:1
+#: gkb-new/GNOME_KeyboardApplet.xml.h:1 gtik/GNOME_GtikApplet.xml.h:1
+#: gweather/GNOME_GWeatherApplet.xml.h:1
+#: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
+#: mixer/GNOME_MixerApplet.xml.h:1 modemlights/GNOME_ModemlightsApplet.xml.h:1
+#: multiload/GNOME_MultiloadApplet.xml.h:1
+msgid "About..."
+msgstr "關於..."
+
+# src/battstat_applet.c:1385
+#: battstat/GNOME_BattstatApplet.xml.h:2 cdplayer/GNOME_CDPlayerApplet.xml.h:2
+#: charpick/GNOME_CharpickerApplet.xml.h:2
+#: drivemount/GNOME_DriveMountApplet.xml.h:4 geyes/GNOME_GeyesApplet.xml.h:2
+#: gkb-new/GNOME_KeyboardApplet.xml.h:2 gweather/GNOME_GWeatherApplet.xml.h:3
+#: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
+#: mixer/GNOME_MixerApplet.xml.h:2 modemlights/GNOME_ModemlightsApplet.xml.h:2
+msgid "Help"
+msgstr "說明"
+
+#: battstat/GNOME_BattstatApplet.xml.h:3 cdplayer/GNOME_CDPlayerApplet.xml.h:3
+#: charpick/GNOME_CharpickerApplet.xml.h:3
+#: drivemount/GNOME_DriveMountApplet.xml.h:5 geyes/GNOME_GeyesApplet.xml.h:3
+#: gkb-new/GNOME_KeyboardApplet.xml.h:3 gtik/GNOME_GtikApplet.xml.h:2
+#: gweather/GNOME_GWeatherApplet.xml.h:4
+#: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
+#: modemlights/GNOME_ModemlightsApplet.xml.h:3
+#: multiload/GNOME_MultiloadApplet.xml.h:2
+msgid "Preferences..."
+msgstr "偏好設定..."
+
+#: battstat/GNOME_BattstatApplet.xml.h:4
+msgid "Suspend Computer..."
+msgstr "令電腦進入暫停模式..."
 
 #. Message displayed if user tries to run applet
 #. on unsupported platform
@@ -223,19 +283,14 @@ msgstr ""
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jorgen Pehrson <jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:817 cdplayer/cdplayer.c:422
+#: battstat/battstat_applet.c:817 cdplayer/cdplayer.c:428
 #: charpick/charpick.c:370 drivemount/drivemount.c:420 geyes/geyes.c:213
-#: gkb-new/gkb.c:569 gtik/gtik.c:702 gweather/gweather-about.c:43
+#: gkb-new/gkb.c:567 gtik/gtik.c:701 gweather/gweather-about.c:43
 #: mini-commander/src/about.c:44 mixer/mixer.c:751
 #: modemlights/modemlights.c:206 multiload/main.c:54
 #: panel-menu/panel-menu.c:672
 msgid "translator_credits"
 msgstr "Abel Cheung <maddog@linux.org.hk>"
-
-#. The long name of the applet in the About dialog.
-#: battstat/battstat_applet.c:830 battstat/GNOME_BattstatApplet.server.in.h:1
-msgid "Battery Charge Monitor"
-msgstr "電池電量監控"
 
 #: battstat/battstat_applet.c:832
 msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
@@ -351,61 +406,6 @@ msgstr "警告"
 msgid "Yellow:"
 msgstr "黃︰"
 
-#: battstat/GNOME_BattstatApplet.server.in.h:2
-msgid "Battstat Factory"
-msgstr "Battstat 工廠"
-
-#: battstat/GNOME_BattstatApplet.server.in.h:3
-msgid "Monitor a laptop's remaining power"
-msgstr "監控攜帶型電腦的剩餘電量"
-
-#: battstat/GNOME_BattstatApplet.server.in.h:4
-#: charpick/GNOME_CharpickerApplet.server.in.h:4
-#: drivemount/GNOME_DriveMountApplet.server.in.h:5
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:5
-#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:4
-#: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:3
-#: panel-menu/GNOME_PanelMenuApplet.server.in.h:4
-msgid "Utility"
-msgstr "公用程式"
-
-# src/battstat_applet.c:1379
-#: battstat/GNOME_BattstatApplet.xml.h:1 cdplayer/GNOME_CDPlayerApplet.xml.h:1
-#: charpick/GNOME_CharpickerApplet.xml.h:1
-#: drivemount/GNOME_DriveMountApplet.xml.h:1 geyes/GNOME_GeyesApplet.xml.h:1
-#: gkb-new/GNOME_KeyboardApplet.xml.h:1 gtik/GNOME_GtikApplet.xml.h:1
-#: gweather/GNOME_GWeatherApplet.xml.h:1
-#: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
-#: mixer/GNOME_MixerApplet.xml.h:1 modemlights/GNOME_ModemlightsApplet.xml.h:1
-#: multiload/GNOME_MultiloadApplet.xml.h:1
-msgid "About..."
-msgstr "關於..."
-
-# src/battstat_applet.c:1385
-#: battstat/GNOME_BattstatApplet.xml.h:2 cdplayer/GNOME_CDPlayerApplet.xml.h:2
-#: charpick/GNOME_CharpickerApplet.xml.h:2
-#: drivemount/GNOME_DriveMountApplet.xml.h:4 geyes/GNOME_GeyesApplet.xml.h:2
-#: gkb-new/GNOME_KeyboardApplet.xml.h:2
-#: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
-#: mixer/GNOME_MixerApplet.xml.h:2 modemlights/GNOME_ModemlightsApplet.xml.h:2
-msgid "Help"
-msgstr "說明"
-
-#: battstat/GNOME_BattstatApplet.xml.h:3 cdplayer/GNOME_CDPlayerApplet.xml.h:3
-#: charpick/GNOME_CharpickerApplet.xml.h:3
-#: drivemount/GNOME_DriveMountApplet.xml.h:5 geyes/GNOME_GeyesApplet.xml.h:3
-#: gkb-new/GNOME_KeyboardApplet.xml.h:3 gtik/GNOME_GtikApplet.xml.h:2
-#: gweather/GNOME_GWeatherApplet.xml.h:3
-#: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
-#: modemlights/GNOME_ModemlightsApplet.xml.h:3
-#: multiload/GNOME_MultiloadApplet.xml.h:2
-msgid "Preferences..."
-msgstr "偏好設定..."
-
-#: battstat/GNOME_BattstatApplet.xml.h:4
-msgid "Suspend Computer..."
-msgstr "令電腦進入暫停模式..."
-
 # src/battstat_applet.c:732
 #: battstat/sounds/battstat_applet.soundlist.in.h:1
 msgid "Battery Status Utility"
@@ -420,99 +420,10 @@ msgstr "電池電量全滿"
 msgid "Battery power low"
 msgstr "電池電量過低"
 
-#: cdplayer/cdplayer.c:146 cdplayer/cdplayer.c:845
-msgid "Stop"
-msgstr "停止"
-
-#: cdplayer/cdplayer.c:148 cdplayer/cdplayer.c:847
-msgid "Play / Pause"
-msgstr "播放 / 暫停"
-
-#: cdplayer/cdplayer.c:150 cdplayer/cdplayer.c:849
-#: drivemount/GNOME_DriveMountApplet.xml.h:3
-msgid "Eject"
-msgstr "退出碟片"
-
-#: cdplayer/cdplayer.c:152 cdplayer/cdplayer.c:851
-msgid "Previous Track"
-msgstr "上一首"
-
-#: cdplayer/cdplayer.c:154 cdplayer/cdplayer.c:853
-msgid "Next Track"
-msgstr "下一首"
-
-#: cdplayer/cdplayer.c:159 cdplayer/cdplayer.c:440 cdplayer/cdplayer.c:855
-#: cdplayer/GNOME_CDPlayerApplet.server.in.h:1
+#: cdplayer/GNOME_CDPlayerApplet.server.in.h:1 cdplayer/cdplayer.c:158
+#: cdplayer/cdplayer.c:446 cdplayer/cdplayer.c:861
 msgid "CD Player"
 msgstr "CD 播放程式"
-
-#: cdplayer/cdplayer.c:347
-msgid "CD Player Preferences"
-msgstr "CD 播放程式偏好設定"
-
-#: cdplayer/cdplayer.c:362
-msgid "Disc Image"
-msgstr "碟片影像檔"
-
-#: cdplayer/cdplayer.c:362
-msgid "An image of a cd-rom disc"
-msgstr "Cd-rom 碟片的影像檔"
-
-#: cdplayer/cdplayer.c:364
-msgid "Device _Path:"
-msgstr "裝置的路徑(_P)："
-
-#: cdplayer/cdplayer.c:373
-msgid "Device Path"
-msgstr "裝置的路徑"
-
-#: cdplayer/cdplayer.c:373
-msgid "Set the device path here"
-msgstr "在這裡設定該裝置的路徑"
-
-#: cdplayer/cdplayer.c:376
-msgid "Use _Default"
-msgstr "使用預設值(_D)"
-
-#: cdplayer/cdplayer.c:441
-msgid ""
-"(C) 1997 The Free Software Foundation\n"
-"(C) 2001 Chris Phelps (GNOME 2 Port)"
-msgstr ""
-"(C) 1997 The Free Software Foundation\n"
-"(C) 2001 Chris Phelps (GNOME 2 移植版本)"
-
-#: cdplayer/cdplayer.c:443 cdplayer/cdplayer.c:856
-msgid "The CD Player applet is a simple audio CD player for your panel"
-msgstr "CD 播放器面板程式是面板上的簡單音樂 CD 播放器"
-
-#: cdplayer/cdplayer.c:724 cdplayer/cdplayer.c:733
-msgid "Elapsed time"
-msgstr "播放時間"
-
-#: cdplayer/cdplayer.c:727 cdplayer/cdplayer.c:735
-msgid "Track number"
-msgstr "音軌號碼"
-
-#: cdplayer/cdplayer.c:846
-msgid "Click this button to Stop playing the CD"
-msgstr "按下此按鈕來停止播放 CD"
-
-#: cdplayer/cdplayer.c:848
-msgid "Click this button to Play or Pause the CD"
-msgstr "按下此按鈕來播放或暫停播放 CD"
-
-#: cdplayer/cdplayer.c:850
-msgid "Click this button to eject the CD"
-msgstr "按下此按鈕來退出 CD 碟片"
-
-#: cdplayer/cdplayer.c:852
-msgid "Click this button to Play the previous track in the CD"
-msgstr "按下此按鈕來播放 CD 的上一個音軌"
-
-#: cdplayer/cdplayer.c:854
-msgid "Click this button to Play the next track in the CD"
-msgstr "按下此按鈕來播放 CD 的下一個音軌"
 
 #: cdplayer/GNOME_CDPlayerApplet.server.in.h:2
 msgid "CD Player Applet Factory"
@@ -535,16 +446,113 @@ msgstr "播效音樂 CD 的面板程式"
 msgid "Run External CD Player"
 msgstr "執行外部的 CD 播放程式"
 
+#: cdplayer/cdplayer.c:146 cdplayer/cdplayer.c:851
+msgid "Stop"
+msgstr "停止"
+
+#: cdplayer/cdplayer.c:148 cdplayer/cdplayer.c:853
+msgid "Play / Pause"
+msgstr "播放 / 暫停"
+
+#: cdplayer/cdplayer.c:150 cdplayer/cdplayer.c:855
+#: drivemount/GNOME_DriveMountApplet.xml.h:3
+msgid "Eject"
+msgstr "退出碟片"
+
+#: cdplayer/cdplayer.c:152 cdplayer/cdplayer.c:857
+msgid "Previous Track"
+msgstr "上一首"
+
+#: cdplayer/cdplayer.c:154 cdplayer/cdplayer.c:859
+msgid "Next Track"
+msgstr "下一首"
+
+#: cdplayer/cdplayer.c:345
+msgid "CD Player Preferences"
+msgstr "CD 播放程式偏好設定"
+
+#: cdplayer/cdplayer.c:360
+msgid "Disc Image"
+msgstr "碟片影像檔"
+
+#: cdplayer/cdplayer.c:360
+msgid "An image of a cd-rom disc"
+msgstr "Cd-rom 碟片的影像檔"
+
+#: cdplayer/cdplayer.c:362
+msgid "Device _Path:"
+msgstr "裝置的路徑(_P)："
+
+#: cdplayer/cdplayer.c:371
+msgid "Device Path"
+msgstr "裝置的路徑"
+
+#: cdplayer/cdplayer.c:371
+msgid "Set the device path here"
+msgstr "在這裡設定該裝置的路徑"
+
+#: cdplayer/cdplayer.c:374
+msgid "Use _Default"
+msgstr "使用預設值(_D)"
+
+#: cdplayer/cdplayer.c:447
+msgid ""
+"(C) 1997 The Free Software Foundation\n"
+"(C) 2001 Chris Phelps (GNOME 2 Port)"
+msgstr ""
+"(C) 1997 The Free Software Foundation\n"
+"(C) 2001 Chris Phelps (GNOME 2 移植版本)"
+
+#: cdplayer/cdplayer.c:449 cdplayer/cdplayer.c:862
+msgid "The CD Player applet is a simple audio CD player for your panel"
+msgstr "CD 播放器面板程式是面板上的簡單音樂 CD 播放器"
+
+#: cdplayer/cdplayer.c:730 cdplayer/cdplayer.c:739
+msgid "Elapsed time"
+msgstr "播放時間"
+
+#: cdplayer/cdplayer.c:733 cdplayer/cdplayer.c:741
+msgid "Track number"
+msgstr "音軌號碼"
+
+#: cdplayer/cdplayer.c:852
+msgid "Click this button to Stop playing the CD"
+msgstr "按下此按鈕來停止播放 CD"
+
+#: cdplayer/cdplayer.c:854
+msgid "Click this button to Play or Pause the CD"
+msgstr "按下此按鈕來播放或暫停播放 CD"
+
+#: cdplayer/cdplayer.c:856
+msgid "Click this button to eject the CD"
+msgstr "按下此按鈕來退出 CD 碟片"
+
+#: cdplayer/cdplayer.c:858
+msgid "Click this button to Play the previous track in the CD"
+msgstr "按下此按鈕來播放 CD 的上一個音軌"
+
+#: cdplayer/cdplayer.c:860
+msgid "Click this button to Play the next track in the CD"
+msgstr "按下此按鈕來播放 CD 的下一個音軌"
+
+#: charpick/GNOME_CharpickerApplet.server.in.h:1 charpick/charpick.c:388
+#: charpick/charpick.c:473
+msgid "Character Palette"
+msgstr "字元選擇盤"
+
+#: charpick/GNOME_CharpickerApplet.server.in.h:2
+msgid "Charpicker Applet Factory"
+msgstr "字元選擇面板程式工廠"
+
+#: charpick/GNOME_CharpickerApplet.server.in.h:3
+msgid "Insert characters"
+msgstr "加入字元"
+
 #. If your charset supports it, please use U00F1 to replace the "n"
 #. * in "Muniz".
 #: charpick/charpick.c:362
 msgid "Alexandre Muniz <munizao@xprt.net>"
 msgstr "Alexandre Muniz <munizao@xprt.net>"
-
-#: charpick/charpick.c:388 charpick/charpick.c:476
-#: charpick/GNOME_CharpickerApplet.server.in.h:1
-msgid "Character Palette"
-msgstr "字元選擇盤"
 
 #: charpick/charpick.c:390
 msgid "Copyright (C) 1998"
@@ -557,17 +565,9 @@ msgid ""
 msgstr ""
 "用來選擇在鍵盤上找不到的特殊字元的 GNOME 面板程式。根據 GPL 使用條款發行。"
 
-#: charpick/charpick.c:475
+#: charpick/charpick.c:472
 msgid "Insert special characters"
 msgstr "加入特殊字元"
-
-#: charpick/GNOME_CharpickerApplet.server.in.h:2
-msgid "Charpicker Applet Factory"
-msgstr "字元選擇面板程式工廠"
-
-#: charpick/GNOME_CharpickerApplet.server.in.h:3
-msgid "Insert characters"
-msgstr "加入字元"
 
 #: charpick/properties.c:79
 msgid "_Default character list:"
@@ -589,13 +589,29 @@ msgstr ""
 "這些字元將會在面板啟動時出現。要回到此列表，請當輸入焦點位於此面板程式時按 "
 "<d> 鍵。"
 
-#: charpick/properties.c:144
+#: charpick/properties.c:141
 msgid "Character Palette Preferences"
 msgstr "字元選擇盤偏好設定"
 
-#: drivemount/drivemount.c:437 drivemount/GNOME_DriveMountApplet.server.in.h:1
+#: drivemount/GNOME_DriveMountApplet.server.in.h:1 drivemount/drivemount.c:437
 msgid "Disk Mounter"
 msgstr "檔案系統掛載程式"
+
+#: drivemount/GNOME_DriveMountApplet.server.in.h:2
+msgid "Drive Mount Applet Factory"
+msgstr "檔案系統掛載面板程式工廠"
+
+#: drivemount/GNOME_DriveMountApplet.server.in.h:3
+msgid "Factory for drive mount applet"
+msgstr "檔案系統掛載面板程式工廠"
+
+#: drivemount/GNOME_DriveMountApplet.server.in.h:4
+msgid "Mount local disks and devices"
+msgstr "掛載本機磁碟及裝置"
+
+#: drivemount/GNOME_DriveMountApplet.xml.h:2
+msgid "Browse..."
+msgstr "瀏覽..."
 
 #: drivemount/drivemount.c:438
 msgid "(C) 1999-2001 The GNOME Hackers\n"
@@ -629,110 +645,77 @@ msgstr ""
 "掛載磁碟的指令發生錯誤。\n"
 "\""
 
-#: drivemount/GNOME_DriveMountApplet.server.in.h:2
-msgid "Drive Mount Applet Factory"
-msgstr "檔案系統掛載面板程式工廠"
-
-#: drivemount/GNOME_DriveMountApplet.server.in.h:3
-msgid "Factory for drive mount applet"
-msgstr "檔案系統掛載面板程式工廠"
-
-#: drivemount/GNOME_DriveMountApplet.server.in.h:4
-msgid "Mount local disks and devices"
-msgstr "掛載本機磁碟及裝置"
-
-#: drivemount/GNOME_DriveMountApplet.xml.h:2
-msgid "Browse..."
-msgstr "瀏覽..."
-
-#: drivemount/properties.c:239
+#: drivemount/properties.c:241
 msgid "Disk Mounter Preferences"
 msgstr "檔案系統掛載程式偏好設定"
 
-#: drivemount/properties.c:258
+#: drivemount/properties.c:260
 msgid "_Mount point:"
 msgstr "掛載點位置(_M)："
 
-#: drivemount/properties.c:276
+#: drivemount/properties.c:278
 msgid "_Update interval (seconds):"
 msgstr "更新周期[秒](_U)："
 
-#: drivemount/properties.c:292
+#: drivemount/properties.c:294 panel-menu/panel-menu-properties.c:108
 msgid "_Icon :"
 msgstr "圖示(_I)："
 
-#: drivemount/properties.c:310
+#: drivemount/properties.c:312
 msgid "Floppy"
 msgstr "軟碟"
 
-#: drivemount/properties.c:313
+#: drivemount/properties.c:315
 msgid "Cdrom"
 msgstr "光碟"
 
-#: drivemount/properties.c:316
+#: drivemount/properties.c:318
 msgid "Cd Recorder"
 msgstr "CD 燒錄機"
 
-#: drivemount/properties.c:319
+#: drivemount/properties.c:321
 msgid "Zip Drive"
 msgstr "Zip 磁碟機"
 
-#: drivemount/properties.c:322
+#: drivemount/properties.c:324
 msgid "Hard Disk"
 msgstr "硬碟"
 
-#: drivemount/properties.c:325
+#: drivemount/properties.c:327
 msgid "Jaz Drive"
 msgstr "Jaz 磁碟機"
 
-#: drivemount/properties.c:328
+#: drivemount/properties.c:330
 msgid "Custom"
 msgstr "自訂"
 
-#: drivemount/properties.c:341
+#: drivemount/properties.c:343
 msgid "Select icon for mounted"
 msgstr "選擇表示已掛載的圖示"
 
-#: drivemount/properties.c:348
+#: drivemount/properties.c:350
 msgid "Custom icon for moun_ted:"
 msgstr "表示已掛載的自訂圖示(_T)："
 
-#: drivemount/properties.c:357
+#: drivemount/properties.c:359
 msgid "Select icon for unmounted"
 msgstr "選擇表示未掛載的圖示"
 
-#: drivemount/properties.c:364
+#: drivemount/properties.c:366
 msgid "Custom icon for not mou_nted:"
 msgstr "表示未掛載的自訂圖示(_N)："
 
-#: drivemount/properties.c:374
+#: drivemount/properties.c:376
 msgid "_Scale size to panel"
 msgstr "縮放至配合面板尺寸(_S)"
 
-#: drivemount/properties.c:381
+#: drivemount/properties.c:383
 msgid "_Eject on unmount"
 msgstr "卸載後退出碟片(_E)"
 
-#: drivemount/properties.c:388
+#: drivemount/properties.c:390
 msgid "Use _automount friendly status test"
 msgstr "使用相容於 automount 的狀態測試方式(_A)"
-
-#: geyes/geyes.c:231 geyes/geyes.c:412 geyes/geyes.c:414
-#: geyes/GNOME_GeyesApplet.server.in.h:3
-msgid "Geyes"
-msgstr "Geyes"
-
-#: geyes/geyes.c:232
-msgid "Copyright (C) 1999 Dave Camp"
-msgstr "版權所有 (C) 1999 Dave Camp"
-
-#: geyes/geyes.c:233
-msgid "A goofy little xeyes clone for the GNOME panel."
-msgstr "GNOME 面板上與 xeyes 同類的程式。"
-
-#: geyes/geyes.c:415
-msgid "The eyes look in the direction of the mouse pointer"
-msgstr "眼睛會望向滑鼠鼠標"
 
 #: geyes/GNOME_GeyesApplet.server.in.h:1
 msgid "A set of eyeballs for your panel"
@@ -742,62 +725,91 @@ msgstr "在面板上顯示眼睛"
 msgid "Amusements"
 msgstr "娛樂"
 
+#: geyes/GNOME_GeyesApplet.server.in.h:3 geyes/geyes.c:231 geyes/geyes.c:410
+#: geyes/geyes.c:412
+msgid "Geyes"
+msgstr "Geyes"
+
 #: geyes/GNOME_GeyesApplet.server.in.h:4
 msgid "Geyes Applet Factory"
 msgstr "Geyes 面板程式工廠"
 
-#: geyes/themes.c:210
+#: geyes/geyes.c:232
+msgid "Copyright (C) 1999 Dave Camp"
+msgstr "版權所有 (C) 1999 Dave Camp"
+
+#: geyes/geyes.c:233
+msgid "A goofy little xeyes clone for the GNOME panel."
+msgstr "GNOME 面板上與 xeyes 同類的程式。"
+
+#: geyes/geyes.c:413
+msgid "The eyes look in the direction of the mouse pointer"
+msgstr "眼睛會望向滑鼠鼠標"
+
+#: geyes/themes.c:207
 msgid "Geyes Preferences"
 msgstr "Geyes 偏好設定"
 
-#: geyes/themes.c:223
+#: geyes/themes.c:220
 msgid "T_heme Name"
 msgstr "佈景主題名稱(_H)"
 
-#: gkb-new/gkb.c:114
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:1
+msgid "Change the keyboard layout"
+msgstr "更改鍵盤配置"
+
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:2
+msgid "GKB Factory"
+msgstr "GKB 工廠"
+
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:3 gkb-new/gkb.c:578
+msgid "Keyboard Layout Switcher"
+msgstr "鍵盤配置切換程式"
+
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:4
+msgid "Produces keyboard layout switcher applets."
+msgstr "可產生鍵盤配置切換面板程式。"
+
+#: gkb-new/gkb.c:112
 msgid ""
 "Press the hotkey to switch between layouts. The hotkey can be set through "
 "Properties dialog"
 msgstr "按下快速鍵可切換不同的鍵盤配置。快速鍵可在屬性對話窗中設定"
 
-#: gkb-new/gkb.c:404
+#: gkb-new/gkb.c:402
 #, c-format
 msgid "name_%d"
 msgstr "名稱_%d"
 
-#: gkb-new/gkb.c:408
+#: gkb-new/gkb.c:406
 #, c-format
 msgid "label_%d"
 msgstr "標籤_%d"
 
-#: gkb-new/gkb.c:412
+#: gkb-new/gkb.c:410
 #, c-format
 msgid "country_%d"
 msgstr "國家_%d"
 
-#: gkb-new/gkb.c:416
+#: gkb-new/gkb.c:414
 #, c-format
 msgid "lang_%d"
 msgstr "語言_%d"
 
-#: gkb-new/gkb.c:424
+#: gkb-new/gkb.c:422
 #, c-format
 msgid "command_%d"
 msgstr "指令_%d"
 
-#: gkb-new/gkb.c:527 gkb-new/gkb.c:534
+#: gkb-new/gkb.c:525 gkb-new/gkb.c:532
 msgid "GKB"
 msgstr "GKB"
 
-#: gkb-new/gkb.c:580 gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:3
-msgid "Keyboard Layout Switcher"
-msgstr "鍵盤配置切換程式"
-
-#: gkb-new/gkb.c:582
+#: gkb-new/gkb.c:580
 msgid "(C) 1998-2000 Free Software Foundation"
 msgstr "(C) 1998-2000 Free Software Foundation"
 
-#: gkb-new/gkb.c:583
+#: gkb-new/gkb.c:581
 msgid ""
 "This applet switches between keyboard maps using setxkbmap or xmodmap.\n"
 "Mail me your flag and keyboard layout if you want support for your locale "
@@ -816,21 +828,9 @@ msgstr ""
 "\n"
 "Shooby Ban <shooby@gnome.hu>"
 
-#: gkb-new/gkb.c:600
+#: gkb-new/gkb.c:598
 msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
 msgstr "GKB 網頁（http://projects.gnome.hu/gkb）"
-
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:1
-msgid "Change the keyboard layout"
-msgstr "更改鍵盤配置"
-
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:2
-msgid "GKB Factory"
-msgstr "GKB 工廠"
-
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:4
-msgid "Produces keyboard layout switcher applets."
-msgstr "可產生鍵盤配置切換面板程式。"
 
 #: gkb-new/keygrab.c:69 gkb-new/keygrab.c:144
 msgid "Disabled"
@@ -847,6 +847,373 @@ msgstr "鍵盤 (請在選取後按「新增」)"
 #: gkb-new/prop-add.c:367
 msgid "Select Keyboard"
 msgstr "選擇鍵盤"
+
+#: gkb-new/prop-list.c:376 gtik/gtik.c:1230
+msgid "_Add"
+msgstr "新增(_A)"
+
+#: gkb-new/prop-list.c:377
+msgid "_Edit"
+msgstr "編輯(_E)"
+
+#: gkb-new/prop-list.c:378
+msgid "_Up"
+msgstr "上移(_U)"
+
+#: gkb-new/prop-list.c:379
+msgid "Dow_n"
+msgstr "下移(_N)"
+
+#: gkb-new/prop-list.c:380
+msgid "_Delete"
+msgstr "刪除(_D)"
+
+#: gkb-new/prop-map.c:189
+msgid "Armenia"
+msgstr "亞美尼亞"
+
+#: gkb-new/prop-map.c:190
+msgid "Australia"
+msgstr "澳洲"
+
+#: gkb-new/prop-map.c:191
+msgid "Austria"
+msgstr "奧地利"
+
+#: gkb-new/prop-map.c:192
+msgid "Belgium"
+msgstr "比利時"
+
+#: gkb-new/prop-map.c:193
+msgid "Brazil"
+msgstr "巴西"
+
+#: gkb-new/prop-map.c:194
+msgid "Bulgaria"
+msgstr "保加利亞"
+
+#: gkb-new/prop-map.c:195
+msgid "Canada"
+msgstr "加拿大"
+
+#: gkb-new/prop-map.c:196
+msgid "Caribic"
+msgstr "加勒比海區域"
+
+#: gkb-new/prop-map.c:197
+msgid "France"
+msgstr "法國"
+
+#: gkb-new/prop-map.c:198
+msgid "Georgia"
+msgstr "格魯吉亞"
+
+#: gkb-new/prop-map.c:199
+msgid "Germany"
+msgstr "德國"
+
+#: gkb-new/prop-map.c:200
+msgid "Great Britain"
+msgstr "大不列顛"
+
+#: gkb-new/prop-map.c:201
+msgid "Hungary"
+msgstr "匈牙利"
+
+#: gkb-new/prop-map.c:202
+msgid "Jamaica"
+msgstr "牙買加"
+
+#: gkb-new/prop-map.c:203
+msgid "New Zealand"
+msgstr "新西蘭"
+
+#: gkb-new/prop-map.c:204
+msgid "Norway"
+msgstr "挪威"
+
+#: gkb-new/prop-map.c:205
+msgid "Poland"
+msgstr "波蘭"
+
+#: gkb-new/prop-map.c:206
+msgid "Portugal"
+msgstr "葡萄牙"
+
+#: gkb-new/prop-map.c:207
+msgid "Russia"
+msgstr "俄羅斯"
+
+#: gkb-new/prop-map.c:208
+msgid "Slovak Republic"
+msgstr "斯洛伐克"
+
+#: gkb-new/prop-map.c:209
+msgid "Slovenia"
+msgstr "斯洛文尼亞"
+
+#: gkb-new/prop-map.c:210
+msgid "South Africa"
+msgstr "南非"
+
+#: gkb-new/prop-map.c:211
+msgid "Spain"
+msgstr "西班牙"
+
+#: gkb-new/prop-map.c:212
+msgid "Sweden"
+msgstr "瑞典"
+
+#: gkb-new/prop-map.c:213
+msgid "Switzerland"
+msgstr "瑞士"
+
+#: gkb-new/prop-map.c:214
+msgid "Thailand"
+msgstr "泰國"
+
+#: gkb-new/prop-map.c:215
+msgid "Turkey"
+msgstr "土耳其"
+
+#: gkb-new/prop-map.c:216
+msgid "United Kingdom"
+msgstr "英國"
+
+#: gkb-new/prop-map.c:217
+msgid "United States"
+msgstr "美國"
+
+#: gkb-new/prop-map.c:218
+msgid "Yugoslavia"
+msgstr "南斯拉夫"
+
+#: gkb-new/prop-map.c:238
+msgid "Armenian"
+msgstr "亞美尼亞語"
+
+#: gkb-new/prop-map.c:239
+msgid "Basque"
+msgstr "巴斯克語"
+
+#: gkb-new/prop-map.c:240
+msgid "Bulgarian"
+msgstr "保加利亞語"
+
+#: gkb-new/prop-map.c:241
+msgid "Dutch"
+msgstr "荷蘭語"
+
+#: gkb-new/prop-map.c:242
+msgid "English"
+msgstr "英語"
+
+#: gkb-new/prop-map.c:243
+msgid "French"
+msgstr "法語"
+
+#: gkb-new/prop-map.c:244
+msgid "Georgian"
+msgstr "格魯吉亞語"
+
+#: gkb-new/prop-map.c:245
+msgid "German"
+msgstr "德語"
+
+#: gkb-new/prop-map.c:246
+msgid "Hungarian"
+msgstr "匈牙利語"
+
+#: gkb-new/prop-map.c:247
+msgid "Norwegian"
+msgstr "挪威語"
+
+#: gkb-new/prop-map.c:248
+msgid "Polish"
+msgstr "波蘭語"
+
+#: gkb-new/prop-map.c:249
+msgid "Portuguese"
+msgstr "葡萄牙語"
+
+#: gkb-new/prop-map.c:250
+msgid "Russian"
+msgstr "俄語"
+
+#: gkb-new/prop-map.c:251
+msgid "Slovak"
+msgstr "斯洛伐克語"
+
+#: gkb-new/prop-map.c:252
+msgid "Slovenian"
+msgstr "斯洛文尼亞語"
+
+#: gkb-new/prop-map.c:253
+msgid "Swedish"
+msgstr "瑞典語"
+
+#: gkb-new/prop-map.c:254
+msgid "Thai"
+msgstr "泰語"
+
+#: gkb-new/prop-map.c:255
+msgid "Turkish"
+msgstr "土耳其語"
+
+#: gkb-new/prop-map.c:256
+msgid "Wallon"
+msgstr "華隆語"
+
+#: gkb-new/prop-map.c:257
+msgid "Yugoslavian"
+msgstr "南斯拉夫語"
+
+#: gkb-new/prop-map.c:275
+msgid "105"
+msgstr "105"
+
+#: gkb-new/prop-map.c:276
+msgid "101"
+msgstr "101"
+
+#: gkb-new/prop-map.c:277
+msgid "102"
+msgstr "102"
+
+#: gkb-new/prop-map.c:278
+msgid "450"
+msgstr "450"
+
+#: gkb-new/prop-map.c:279
+msgid "84"
+msgstr "84"
+
+#: gkb-new/prop-map.c:280
+msgid "mklinux"
+msgstr "mklinux"
+
+#: gkb-new/prop-map.c:281
+msgid "type5"
+msgstr "type5"
+
+#: gkb-new/prop-map.c:301
+msgid "iso-8859-1"
+msgstr "iso-8859-1"
+
+#: gkb-new/prop-map.c:302
+msgid "iso-8859-2"
+msgstr "iso-8859-2"
+
+#: gkb-new/prop-map.c:303
+msgid "iso-8859-9"
+msgstr "iso-8859-9"
+
+#: gkb-new/prop-map.c:304
+msgid "am-armscii8"
+msgstr "am-armscii8"
+
+#: gkb-new/prop-map.c:305
+msgid "be-latin1"
+msgstr "be-latin1"
+
+#: gkb-new/prop-map.c:306
+msgid "cp1251"
+msgstr "cp1251"
+
+#: gkb-new/prop-map.c:307
+msgid "georgian-academy"
+msgstr "georgian-academy"
+
+#: gkb-new/prop-map.c:308
+msgid "koi8-r"
+msgstr "koi8-r"
+
+#: gkb-new/prop-map.c:309
+msgid "tis620"
+msgstr "tis620"
+
+#: gkb-new/prop-map.c:327
+msgid "ix86"
+msgstr "ix86"
+
+#: gkb-new/prop-map.c:328
+msgid "sun"
+msgstr "sun"
+
+#: gkb-new/prop-map.c:329
+msgid "mac"
+msgstr "mac"
+
+#: gkb-new/prop-map.c:330
+msgid "sgi"
+msgstr "sgi"
+
+#: gkb-new/prop-map.c:331
+msgid "dec"
+msgstr "dec"
+
+#: gkb-new/prop-map.c:332
+msgid "ibm"
+msgstr "ibm"
+
+#: gkb-new/prop-map.c:569
+msgid "Edit Keyboard"
+msgstr "修改鍵盤"
+
+#. Add the labels  and entries/combos/icon_entry
+#: gkb-new/prop-map.c:597 panel-menu/panel-menu-directory.c:668
+#: panel-menu/panel-menu-documents.c:398 panel-menu/panel-menu-documents.c:434
+#: panel-menu/panel-menu-links.c:404 panel-menu/panel-menu-links.c:440
+msgid "_Name:"
+msgstr "名稱(_N)："
+
+#: gkb-new/prop-map.c:601
+msgid "_Label:"
+msgstr "標籤(_L)："
+
+#: gkb-new/prop-map.c:605
+msgid "Lan_guage:"
+msgstr "語言(_G)："
+
+#: gkb-new/prop-map.c:611
+msgid "Count_ry:"
+msgstr "國家(_R)："
+
+#: gkb-new/prop-map.c:618
+msgid ""
+"Flag\n"
+"Pixmap"
+msgstr ""
+"國旗\n"
+"圖案"
+
+#: gkb-new/prop-map.c:622
+msgid "Arc_hitecture:"
+msgstr "系統架構(_H)："
+
+#: gkb-new/prop-map.c:628
+msgid "_Type:"
+msgstr "鍵盤類別(_T)："
+
+#: gkb-new/prop-map.c:634
+msgid "Code_page:"
+msgstr "頁碼(_P)："
+
+#: gkb-new/prop-map.c:641
+msgid "Co_mmand:"
+msgstr "指令(_M)："
+
+#: gkb-new/prop-map.c:648
+msgid ""
+"Where command can be:\n"
+"* xmodmap /full/path/xmodmap.hu\n"
+"* gkb__xmmap hu\n"
+"* setxkbmap hu"
+msgstr ""
+"指令可以是類似：\n"
+"* xmodmap /full/path/xmodmap.hu\n"
+"* gkb__xmmap hu\n"
+"* setxkbmap hu"
 
 #: gkb-new/prop.c:125 gkb-new/prop.c:193
 msgid "Normal"
@@ -890,384 +1257,17 @@ msgid "Grab hotkey"
 msgstr "擷取快速鍵"
 
 #. Create property box
-#: gkb-new/prop.c:410
+#: gkb-new/prop.c:406
 msgid "Keyboard Layout Switcher Preferences"
 msgstr "鍵盤配置切換程式偏好設定"
 
-#: gkb-new/prop.c:424
+#: gkb-new/prop.c:420
 msgid "_Keymaps"
 msgstr "鍵盤對應(_K)"
 
-#: gkb-new/prop.c:436
+#: gkb-new/prop.c:432
 msgid "_Options"
 msgstr "選項(_O)"
-
-#: gkb-new/prop-list.c:376 gtik/gtik.c:1207
-msgid "_Add"
-msgstr "新增(_A)"
-
-#: gkb-new/prop-list.c:377
-msgid "_Edit"
-msgstr "編輯(_E)"
-
-#: gkb-new/prop-list.c:378
-msgid "_Up"
-msgstr "上移(_U)"
-
-#: gkb-new/prop-list.c:379
-msgid "Dow_n"
-msgstr "下移(_N)"
-
-#: gkb-new/prop-list.c:380
-msgid "_Delete"
-msgstr "刪除(_D)"
-
-#: gkb-new/prop-map.c:193
-msgid "Armenia"
-msgstr "亞美尼亞"
-
-#: gkb-new/prop-map.c:194
-msgid "Australia"
-msgstr "澳洲"
-
-#: gkb-new/prop-map.c:195
-msgid "Austria"
-msgstr "奧地利"
-
-#: gkb-new/prop-map.c:196
-msgid "Belgium"
-msgstr "比利時"
-
-#: gkb-new/prop-map.c:197
-msgid "Brazil"
-msgstr "巴西"
-
-#: gkb-new/prop-map.c:198
-msgid "Bulgaria"
-msgstr "保加利亞"
-
-#: gkb-new/prop-map.c:199
-msgid "Canada"
-msgstr "加拿大"
-
-#: gkb-new/prop-map.c:200
-msgid "Caribic"
-msgstr "加勒比海區域"
-
-#: gkb-new/prop-map.c:201
-msgid "France"
-msgstr "法國"
-
-#: gkb-new/prop-map.c:202
-msgid "Georgia"
-msgstr "格魯吉亞"
-
-#: gkb-new/prop-map.c:203
-msgid "Germany"
-msgstr "德國"
-
-#: gkb-new/prop-map.c:204
-msgid "Great Britain"
-msgstr "大不列顛"
-
-#: gkb-new/prop-map.c:205
-msgid "Hungary"
-msgstr "匈牙利"
-
-#: gkb-new/prop-map.c:206
-msgid "Jamaica"
-msgstr "牙買加"
-
-#: gkb-new/prop-map.c:207
-msgid "New Zealand"
-msgstr "新西蘭"
-
-#: gkb-new/prop-map.c:208
-msgid "Norway"
-msgstr "挪威"
-
-#: gkb-new/prop-map.c:209
-msgid "Poland"
-msgstr "波蘭"
-
-#: gkb-new/prop-map.c:210
-msgid "Portugal"
-msgstr "葡萄牙"
-
-#: gkb-new/prop-map.c:211
-msgid "Russia"
-msgstr "俄羅斯"
-
-#: gkb-new/prop-map.c:212
-msgid "Slovak Republic"
-msgstr "斯洛伐克"
-
-#: gkb-new/prop-map.c:213
-msgid "Slovenia"
-msgstr "斯洛文尼亞"
-
-#: gkb-new/prop-map.c:214
-msgid "South Africa"
-msgstr "南非"
-
-#: gkb-new/prop-map.c:215
-msgid "Spain"
-msgstr "西班牙"
-
-#: gkb-new/prop-map.c:216
-msgid "Sweden"
-msgstr "瑞典"
-
-#: gkb-new/prop-map.c:217
-msgid "Switzerland"
-msgstr "瑞士"
-
-#: gkb-new/prop-map.c:218
-msgid "Thailand"
-msgstr "泰國"
-
-#: gkb-new/prop-map.c:219
-msgid "Turkey"
-msgstr "土耳其"
-
-#: gkb-new/prop-map.c:220
-msgid "United Kingdom"
-msgstr "英國"
-
-#: gkb-new/prop-map.c:221
-msgid "United States"
-msgstr "美國"
-
-#: gkb-new/prop-map.c:222
-msgid "Yugoslavia"
-msgstr "南斯拉夫"
-
-#: gkb-new/prop-map.c:242
-msgid "Armenian"
-msgstr "亞美尼亞語"
-
-#: gkb-new/prop-map.c:243
-msgid "Basque"
-msgstr "巴斯克語"
-
-#: gkb-new/prop-map.c:244
-msgid "Bulgarian"
-msgstr "保加利亞語"
-
-#: gkb-new/prop-map.c:245
-msgid "Dutch"
-msgstr "荷蘭語"
-
-#: gkb-new/prop-map.c:246
-msgid "English"
-msgstr "英語"
-
-#: gkb-new/prop-map.c:247
-msgid "French"
-msgstr "法語"
-
-#: gkb-new/prop-map.c:248
-msgid "Georgian"
-msgstr "格魯吉亞語"
-
-#: gkb-new/prop-map.c:249
-msgid "German"
-msgstr "德語"
-
-#: gkb-new/prop-map.c:250
-msgid "Hungarian"
-msgstr "匈牙利語"
-
-#: gkb-new/prop-map.c:251
-msgid "Norwegian"
-msgstr "挪威語"
-
-#: gkb-new/prop-map.c:252
-msgid "Polish"
-msgstr "波蘭語"
-
-#: gkb-new/prop-map.c:253
-msgid "Portuguese"
-msgstr "葡萄牙語"
-
-#: gkb-new/prop-map.c:254
-msgid "Russian"
-msgstr "俄語"
-
-#: gkb-new/prop-map.c:255
-msgid "Slovak"
-msgstr "斯洛伐克語"
-
-#: gkb-new/prop-map.c:256
-msgid "Slovenian"
-msgstr "斯洛文尼亞語"
-
-#: gkb-new/prop-map.c:257
-msgid "Swedish"
-msgstr "瑞典語"
-
-#: gkb-new/prop-map.c:258
-msgid "Thai"
-msgstr "泰語"
-
-#: gkb-new/prop-map.c:259
-msgid "Turkish"
-msgstr "土耳其語"
-
-#: gkb-new/prop-map.c:260
-msgid "Wallon"
-msgstr "華隆語"
-
-#: gkb-new/prop-map.c:261
-msgid "Yugoslavian"
-msgstr "南斯拉夫語"
-
-#: gkb-new/prop-map.c:279
-msgid "105"
-msgstr "105"
-
-#: gkb-new/prop-map.c:280
-msgid "101"
-msgstr "101"
-
-#: gkb-new/prop-map.c:281
-msgid "102"
-msgstr "102"
-
-#: gkb-new/prop-map.c:282
-msgid "450"
-msgstr "450"
-
-#: gkb-new/prop-map.c:283
-msgid "84"
-msgstr "84"
-
-#: gkb-new/prop-map.c:284
-msgid "mklinux"
-msgstr "mklinux"
-
-#: gkb-new/prop-map.c:285
-msgid "type5"
-msgstr "type5"
-
-#: gkb-new/prop-map.c:305
-msgid "iso-8859-1"
-msgstr "iso-8859-1"
-
-#: gkb-new/prop-map.c:306
-msgid "iso-8859-2"
-msgstr "iso-8859-2"
-
-#: gkb-new/prop-map.c:307
-msgid "iso-8859-9"
-msgstr "iso-8859-9"
-
-#: gkb-new/prop-map.c:308
-msgid "am-armscii8"
-msgstr "am-armscii8"
-
-#: gkb-new/prop-map.c:309
-msgid "be-latin1"
-msgstr "be-latin1"
-
-#: gkb-new/prop-map.c:310
-msgid "cp1251"
-msgstr "cp1251"
-
-#: gkb-new/prop-map.c:311
-msgid "georgian-academy"
-msgstr "georgian-academy"
-
-#: gkb-new/prop-map.c:312
-msgid "koi8-r"
-msgstr "koi8-r"
-
-#: gkb-new/prop-map.c:313
-msgid "tis620"
-msgstr "tis620"
-
-#: gkb-new/prop-map.c:331
-msgid "ix86"
-msgstr "ix86"
-
-#: gkb-new/prop-map.c:332
-msgid "sun"
-msgstr "sun"
-
-#: gkb-new/prop-map.c:333
-msgid "mac"
-msgstr "mac"
-
-#: gkb-new/prop-map.c:334
-msgid "sgi"
-msgstr "sgi"
-
-#: gkb-new/prop-map.c:335
-msgid "dec"
-msgstr "dec"
-
-#: gkb-new/prop-map.c:336
-msgid "ibm"
-msgstr "ibm"
-
-#: gkb-new/prop-map.c:573
-msgid "Edit Keyboard"
-msgstr "修改鍵盤"
-
-#. Add the labels  and entries/combos/icon_entry
-#: gkb-new/prop-map.c:601 panel-menu/panel-menu-directory.c:624
-#: panel-menu/panel-menu-documents.c:398 panel-menu/panel-menu-documents.c:434
-#: panel-menu/panel-menu-links.c:404 panel-menu/panel-menu-links.c:440
-msgid "_Name:"
-msgstr "名稱(_N)："
-
-#: gkb-new/prop-map.c:605
-msgid "_Label:"
-msgstr "標籤(_L)："
-
-#: gkb-new/prop-map.c:609
-msgid "Lan_guage:"
-msgstr "語言(_G)："
-
-#: gkb-new/prop-map.c:615
-msgid "Count_ry:"
-msgstr "國家(_R)："
-
-#: gkb-new/prop-map.c:622
-msgid ""
-"Flag\n"
-"Pixmap"
-msgstr ""
-"國旗\n"
-"圖案"
-
-#: gkb-new/prop-map.c:626
-msgid "Arc_hitecture:"
-msgstr "系統架構(_H)："
-
-#: gkb-new/prop-map.c:632
-msgid "_Type:"
-msgstr "鍵盤類別(_T)："
-
-#: gkb-new/prop-map.c:638
-msgid "Code_page:"
-msgstr "頁碼(_P)："
-
-#: gkb-new/prop-map.c:645
-msgid "Co_mmand:"
-msgstr "指令(_M)："
-
-#: gkb-new/prop-map.c:652
-msgid ""
-"Where command can be:\n"
-"* xmodmap /full/path/xmodmap.hu\n"
-"* gkb__xmmap hu\n"
-"* setxkbmap hu"
-msgstr ""
-"指令可以是類似：\n"
-"* xmodmap /full/path/xmodmap.hu\n"
-"* gkb__xmmap hu\n"
-"* setxkbmap hu"
 
 #: gkb-new/system.c:45
 msgid "The keymap switching command returned with error!"
@@ -1286,19 +1286,19 @@ msgstr "獲取不斷更新的股市行情"
 msgid "Gtik Applet Factory"
 msgstr "Gtik 面板程式工廠"
 
-#: gtik/GNOME_GtikApplet.server.in.h:4 gtik/gtik.c:718
+#: gtik/GNOME_GtikApplet.server.in.h:4 gtik/gtik.c:717
 msgid "Stock Ticker"
-msgstr "股市行情指示器"
+msgstr "股市行情顯示器"
 
 #: gtik/GNOME_GtikApplet.xml.h:3
 msgid "Refresh"
 msgstr "重新整理"
 
-#: gtik/gtik.c:204
+#: gtik/gtik.c:203
 msgid "No data available or properties not set"
 msgstr "沒有資料或是未設定偏好"
 
-#: gtik/gtik.c:720
+#: gtik/gtik.c:719
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.  "
 "The GNOME Stock Ticker is a free Internet-based application.  It comes with "
@@ -1308,114 +1308,130 @@ msgstr ""
 "此程式會接駁某個著名網站並下載現時的股價。GNOME 股市行情顯示器是一個可自由使"
 "用的軟件。它沒有使用擔保。不要使用它作投資的決定；僅作為參考資料而已。"
 
-#: gtik/gtik.c:1196
+#: gtik/gtik.c:1219
 msgid "_New Symbol:"
 msgstr "新增股票代碼(_N)："
 
-#: gtik/gtik.c:1218
+#: gtik/gtik.c:1241
 msgid "_Remove Selected"
 msgstr "移除選擇項目(_R)"
 
-#: gtik/gtik.c:1266 gweather/gweather-pref.c:765
+#: gtik/gtik.c:1289 gweather/gweather-pref.c:765
 msgid "_Use HTTP proxy"
 msgstr "使用 HTTP 代理伺服器(_U)"
 
-#: gtik/gtik.c:1276
+#: gtik/gtik.c:1299
 msgid "_Location :"
 msgstr "位置(_L)："
 
-#: gtik/gtik.c:1292 gweather/gweather-pref.c:792
+#: gtik/gtik.c:1315 gweather/gweather-pref.c:792
 msgid "P_ort :"
 msgstr "連接埠(_O)："
 
-#: gtik/gtik.c:1304 gweather/gweather-pref.c:804
+#: gtik/gtik.c:1327 gweather/gweather-pref.c:804
 msgid "Pro_xy requires a username and password"
 msgstr "使用代理伺服器前需要用戶名稱及密碼(_X)"
 
-#: gtik/gtik.c:1315 gweather/gweather-pref.c:815
+#: gtik/gtik.c:1338 gweather/gweather-pref.c:815
 msgid "Us_ername:"
 msgstr "用戶名稱(_E)："
 
-#: gtik/gtik.c:1330 gweather/gweather-pref.c:831
+#: gtik/gtik.c:1353 gweather/gweather-pref.c:831
 msgid "Pass_word:"
 msgstr "密碼(_W)："
 
-#: gtik/gtik.c:1406
+#: gtik/gtik.c:1429
 msgid "Stock Ticker Preferences"
 msgstr "股市行情顯示器偏好設定"
 
-#: gtik/gtik.c:1427
+#: gtik/gtik.c:1450
 msgid "Update Fre_quency in minutes:"
 msgstr "更新周期[分鐘](_Q)："
 
-#: gtik/gtik.c:1445
+#: gtik/gtik.c:1468
 msgid "Enter symbols delimited with \"+\" in the box below."
 msgstr "在下方的空格填入以“+”分隔的代碼。"
 
-#: gtik/gtik.c:1455
+#: gtik/gtik.c:1478
 msgid "Displa_y only symbols and price"
 msgstr "只顯示股票代碼及股價(_Y)"
 
-#: gtik/gtik.c:1458
+#: gtik/gtik.c:1481
 msgid "Scroll _left to right"
 msgstr "由左至右捲動(_L)"
 
-#: gtik/gtik.c:1461
+#: gtik/gtik.c:1484
 msgid "_Enable scroll buttons"
 msgstr "顯示捲動按紐(_E)"
 
 #. COLOR
-#: gtik/gtik.c:1483
+#: gtik/gtik.c:1506
 msgid "+ C_olor"
 msgstr "+ 的色彩(_O)"
 
-#: gtik/gtik.c:1502
+#: gtik/gtik.c:1525
 msgid "- Colo_r"
 msgstr "- 的色彩(_R)"
 
-#: gtik/gtik.c:1520
+#: gtik/gtik.c:1543
 msgid "Back_ground Color"
 msgstr "背景顏色(_G)"
 
-#: gtik/gtik.c:1542
+#: gtik/gtik.c:1565
 msgid "Stock Sy_mbol:"
 msgstr "股票代碼(_M)："
 
-#: gtik/gtik.c:1556
+#: gtik/gtik.c:1579
 msgid "Stock C_hange:"
 msgstr "股值改變(_H)︰"
 
-#: gtik/gtik.c:1580
+#: gtik/gtik.c:1603
 msgid "_Symbols"
 msgstr "股票代碼(_S)"
 
-#: gtik/gtik.c:1582
+#: gtik/gtik.c:1605
 msgid "_Behavior"
 msgstr "表現(_B)"
 
-#: gtik/gtik.c:1584
+#: gtik/gtik.c:1607
 msgid "_Appearance"
 msgstr "外觀(_A)"
 
-#: gtik/gtik.c:1586 gweather/gweather-pref.c:844
+#: gtik/gtik.c:1609 gweather/gweather-pref.c:844
 msgid "_Proxy"
 msgstr "代理伺服器(_P)"
 
-#: gtik/gtik.c:1636
+#: gtik/gtik.c:1659
 msgid "Skip forward"
 msgstr "向前捲動"
 
-#: gtik/gtik.c:1637
+#: gtik/gtik.c:1660
 msgid "Skip backword"
 msgstr "向後捲動"
 
-#: gtik/gtik.c:1824
+#: gtik/gtik.c:1661
+msgid ""
+"Stock Ticker\n"
+"Get continuously updated stock quotes"
+msgstr ""
+"股市行情顯示器\n"
+"獲取不斷更新的股市行情"
+
+#: gtik/gtik.c:1848
 msgid "(No"
 msgstr "(沒有"
 
-#: gtik/gtik.c:1825
+#: gtik/gtik.c:1849
 msgid "Change "
 msgstr "改變"
+
+#: gweather/GNOME_GWeatherApplet.xml.h:2 gweather/gweather-dialog.c:75
+msgid "Forecast"
+msgstr "預報"
+
+#: gweather/GNOME_GWeatherApplet.xml.h:5
+msgid "Update"
+msgstr "更新"
 
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.h:2
 msgid "Factory for creating the weather applet."
@@ -1434,14 +1450,6 @@ msgstr "監控目前的天氣情況及天氣預報"
 msgid "Weather Report"
 msgstr "天氣報告"
 
-#: gweather/GNOME_GWeatherApplet.xml.h:2 gweather/gweather-dialog.c:75
-msgid "Forecast"
-msgstr "預報"
-
-#: gweather/GNOME_GWeatherApplet.xml.h:4
-msgid "Update"
-msgstr "更新"
-
 #: gweather/gweather-about.c:64
 msgid "Copyright (c)1999 by S. Papadimitriou"
 msgstr "版權所有 (c)1999 S. Papadimitriou"
@@ -1456,11 +1464,11 @@ msgstr ""
 "\n"
 "監控本地天氣情況的面板程式。"
 
-#: gweather/gweather-applet.c:196
+#: gweather/gweather-applet.c:193
 msgid "GNOME Weather"
 msgstr "GNOME 天氣面板程式"
 
-#: gweather/gweather-applet.c:324
+#: gweather/gweather-applet.c:321
 msgid "Updating..."
 msgstr "更新中..."
 
@@ -2892,11 +2900,19 @@ msgstr "不詳"
 msgid "Retrieval failed"
 msgstr "接收失敗"
 
-#: mini-commander/src/about.c:62
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:1
+#: mini-commander/src/about.c:62
 #: mini-commander/src/mini-commander_applet.c:313
 msgid "Command Line"
 msgstr "指令列"
+
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:2
+msgid "Mini-Commander"
+msgstr "小型命令窗"
+
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:3
+msgid "MiniCommander Applet Factory"
+msgstr "小型命令窗面板程式工廠"
 
 #: mini-commander/src/about.c:65
 msgid ""
@@ -2956,20 +2972,16 @@ msgstr "啟動中..."
 msgid "autocompleted"
 msgstr "自動補齊"
 
-#: mini-commander/src/command_line.c:360
-msgid "history list empty"
-msgstr "紀錄列表是空的"
-
 #. build file select dialog
-#: mini-commander/src/command_line.c:510
+#: mini-commander/src/command_line.c:514
 msgid "Start program"
 msgstr "啟動程式"
 
-#: mini-commander/src/command_line.c:549
+#: mini-commander/src/command_line.c:553
 msgid "Command line"
 msgstr "指令列"
 
-#: mini-commander/src/command_line.c:550
+#: mini-commander/src/command_line.c:554
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "在這裡輸入指令後，GNOME 就會執行該指令"
 
@@ -2980,14 +2992,6 @@ msgstr "fork 錯誤"
 #: mini-commander/src/exec.c:105
 msgid "child exited"
 msgstr "副程序結束"
-
-#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:2
-msgid "Mini-Commander"
-msgstr "小型命令窗"
-
-#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:3
-msgid "MiniCommander Applet Factory"
-msgstr "小型命令窗面板程式工廠"
 
 #: mini-commander/src/message.c:155
 msgid "%H:%M - %d. %b"
@@ -3192,7 +3196,7 @@ msgstr "(C) 2001 Richard Hult"
 msgid "The volume control lets you set the volume level for your desktop."
 msgstr "音量控制可設定系統的音量。"
 
-#: mixer/mixer.c:938
+#: mixer/mixer.c:932
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr "音量控制可設定系統的音量"
 
@@ -3359,10 +3363,6 @@ msgstr "使用目前的選項作為預設值"
 msgid "_Advanced"
 msgstr "進階(_A)"
 
-#: multiload/cpuload.c:39
-msgid "CPU Load"
-msgstr "CPU 負載"
-
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:1
 msgid "A system load indicator"
 msgstr "系統負載指示器"
@@ -3374,6 +3374,10 @@ msgstr "系統監控"
 #: multiload/GNOME_MultiloadApplet.xml.h:3
 msgid "Run detailed system monitor"
 msgstr "進行詳細的系統監控"
+
+#: multiload/cpuload.c:39
+msgid "CPU Load"
+msgstr "CPU 負載"
 
 #: multiload/loadavg.c:94
 msgid "Load Average"
@@ -3578,7 +3582,7 @@ msgstr "行動選單"
 
 #: panel-menu/panel-menu-add.c:76
 msgid "Add items to the Menu Bar"
-msgstr "將項目加上選單列"
+msgstr "將項目加進面板選單"
 
 #: panel-menu/panel-menu-add.c:235 panel-menu/panel-menu-links.c:139
 #: panel-menu/panel-menu-links.c:405
@@ -3598,41 +3602,39 @@ msgstr "文件"
 msgid "Applications"
 msgstr "程式集"
 
-#: panel-menu/panel-menu.c:690
-msgid "Menu Bar"
-msgstr "面板選單"
+#: panel-menu/panel-menu-common.c:726
+msgid ""
+"Removing this entry is not allowed as this will cause the Menu Bar applet to "
+"be removed from GNOME Panel"
+msgstr "不允許移除此項目，因為這樣會令「面板選單」從 GNOME 面板中移除"
 
-#: panel-menu/panel-menu.c:691
-msgid "(c) 2001 Chris Phelps"
-msgstr "(c) 2001 Chris Phelps"
-
-#: panel-menu/panel-menu.c:692
-msgid "The Menu Bar allows you to display customized menubars on your panels."
-msgstr "「面板選單」允許使用者在面板上顯示自訂的選單列。"
-
-#: panel-menu/panel-menu-directory.c:482
+#: panel-menu/panel-menu-directory.c:515
 msgid "Create directory item..."
 msgstr "建立目錄..."
 
-#: panel-menu/panel-menu-directory.c:485
+#: panel-menu/panel-menu-directory.c:523
 msgid "Home"
 msgstr "個人目錄"
 
-#: panel-menu/panel-menu-directory.c:524
+#: panel-menu/panel-menu-directory.c:594
 msgid "Edit directory item..."
 msgstr "修改目錄..."
 
-#: panel-menu/panel-menu-directory.c:636 panel-menu/panel-menu-path.c:728
+#: panel-menu/panel-menu-directory.c:680 panel-menu/panel-menu-path.c:728
 msgid "_Path:"
 msgstr "路徑(_P)："
 
-#: panel-menu/panel-menu-directory.c:644
+#: panel-menu/panel-menu-directory.c:688
 msgid "..."
 msgstr "..."
 
-#: panel-menu/panel-menu-directory.c:654
+#: panel-menu/panel-menu-directory.c:698
 msgid "_Depth level:"
 msgstr "深度(_D)："
+
+#: panel-menu/panel-menu-directory.c:795
+msgid "Path specified is currently not a valid directory."
+msgstr "指定的目錄不是有效的目錄。"
 
 #: panel-menu/panel-menu-documents.c:397
 msgid "Create documents item..."
@@ -3677,7 +3679,7 @@ msgstr "偏好設定"
 
 #: panel-menu/panel-menu-properties.c:71
 msgid "Menu Bar Preferences"
-msgstr "選單列偏好設定"
+msgstr "面板選單偏好設定"
 
 #: panel-menu/panel-menu-properties.c:75
 msgid "Layout"
@@ -3687,23 +3689,23 @@ msgstr "配置"
 msgid "_Applications Menu"
 msgstr "程式集選單(_A)"
 
-#: panel-menu/panel-menu-properties.c:110
+#: panel-menu/panel-menu-properties.c:114
 msgid "Select an icon for the Applications menu"
 msgstr "選擇程式集選單的圖示"
 
-#: panel-menu/panel-menu-properties.c:126
+#: panel-menu/panel-menu-properties.c:131
 msgid "_Preferences Menu"
 msgstr "偏好設定選單(_P)"
 
-#: panel-menu/panel-menu-properties.c:137
+#: panel-menu/panel-menu-properties.c:142
 msgid "Ac_tions Menu"
 msgstr "行動選單(_T)"
 
-#: panel-menu/panel-menu-properties.c:148
+#: panel-menu/panel-menu-properties.c:153
 msgid "_Windows Menu"
 msgstr "視窗選單(_W)"
 
-#: panel-menu/panel-menu-properties.c:159
+#: panel-menu/panel-menu-properties.c:164
 msgid "W_orkspaces Menu"
 msgstr "工作區選單(_O)"
 
@@ -3714,6 +3716,21 @@ msgstr "視窗"
 #: panel-menu/panel-menu-workspaces.c:80
 msgid "Workspaces"
 msgstr "工作區"
+
+#: panel-menu/panel-menu.c:690
+msgid "Menu Bar"
+msgstr "面板選單"
+
+#: panel-menu/panel-menu.c:691
+msgid "(c) 2001 Chris Phelps"
+msgstr "(c) 2001 Chris Phelps"
+
+#: panel-menu/panel-menu.c:692
+msgid "The Menu Bar allows you to display customized menubars on your panels."
+msgstr "「面板選單」允許使用者在面板上顯示自訂的選單列。"
+
+#~ msgid "history list empty"
+#~ msgstr "紀錄列表是空的"
 
 # src/battstat_applet.c:732
 #~ msgid "Battery status utility"
@@ -3805,7 +3822,7 @@ msgstr "工作區"
 #~ msgstr "新增"
 
 #~ msgid "GNOME Stock Ticker"
-#~ msgstr "GNOME 股市行情指示器"
+#~ msgstr "GNOME 股市行情顯示器"
 
 #~ msgid "GNOME Stock Ticker Panel Applet"
 #~ msgstr "GNOME 股市行情面板程式"
