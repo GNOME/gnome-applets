@@ -13,6 +13,7 @@ static GtkWidget *connect_entry = NULL;
 static GtkWidget *disconnect_entry = NULL;
 static GtkWidget *lockfile_entry = NULL;
 static GtkWidget *device_entry = NULL;
+static GtkWidget *verify_checkbox = NULL;
 
 /* temporary variables modified by the properties dialog.  they get
    compied to the permanent variables when the users selects Apply or
@@ -20,7 +21,9 @@ static GtkWidget *device_entry = NULL;
 static gint P_UPDATE_DELAY = 10;
 static gint P_ask_for_confirmation = TRUE;
 static gint P_use_ISDN = FALSE;
+static gint P_verify_lock_file = TRUE;
 
+static void verify_lock_file_cb( GtkWidget *widget, gpointer data );
 static void update_delay_cb( GtkWidget *widget, GtkWidget *spin );
 static void confirm_checkbox_cb( GtkWidget *widget, gpointer data );
 static void isdn_checkbox_cb( GtkWidget *widget, gpointer data );
@@ -41,6 +44,7 @@ void property_load(char *path)
 	ask_for_confirmation = gnome_config_get_int("modem/confirmation=1");
 	device_name          = gnome_config_get_string("modem/device=ppp0");
         use_ISDN	   = gnome_config_get_int("modem/isdn=0");
+	verify_lock_file   = gnome_config_get_int("modem/verify_lock=1");
 	gnome_config_pop_prefix ();
 }
 
@@ -54,9 +58,16 @@ void property_save(char *path)
         gnome_config_set_int("modem/confirmation", ask_for_confirmation);
         gnome_config_set_string("modem/device", device_name);
         gnome_config_set_int("modem/isdn", use_ISDN);
+        gnome_config_set_int("modem/verify_lock", verify_lock_file);
 	gnome_config_sync();
 	gnome_config_drop_all();
         gnome_config_pop_prefix();
+}
+
+static void verify_lock_file_cb( GtkWidget *widget, gpointer data )
+{
+	P_verify_lock_file = GTK_TOGGLE_BUTTON (widget)->active;
+	gnome_property_box_changed(GNOME_PROPERTY_BOX(propwindow));
 }
 
 static void update_delay_cb( GtkWidget *widget, GtkWidget *spin )
@@ -77,6 +88,7 @@ static void isdn_checkbox_cb( GtkWidget *widget, gpointer data )
 
 	gtk_widget_set_sensitive(lockfile_entry, !P_use_ISDN);
 	gtk_widget_set_sensitive(device_entry, !P_use_ISDN);
+	gtk_widget_set_sensitive(verify_checkbox, !P_use_ISDN);
 
 	gnome_property_box_changed(GNOME_PROPERTY_BOX(propwindow));
 }
@@ -104,6 +116,7 @@ static void property_apply_cb( GtkWidget *widget, void *data )
         UPDATE_DELAY = P_UPDATE_DELAY;
 	ask_for_confirmation = P_ask_for_confirmation;
 	use_ISDN = P_use_ISDN;
+	verify_lock_file = P_verify_lock_file;
 
 	start_callback_update();
 
@@ -136,6 +149,7 @@ void property_show(AppletWidget *applet, gpointer data)
 
         P_UPDATE_DELAY = UPDATE_DELAY;
 	P_ask_for_confirmation = ask_for_confirmation;
+	P_verify_lock_file = verify_lock_file;
 
 	propwindow = gnome_property_box_new();
 	gtk_window_set_title(GTK_WINDOW(&GNOME_PROPERTY_BOX(propwindow)->dialog.window),
@@ -226,6 +240,13 @@ void property_show(AppletWidget *applet, gpointer data)
         gtk_box_pack_start( GTK_BOX(hbox),lockfile_entry , TRUE, TRUE, 5);
 	gtk_widget_show(lockfile_entry);
 
+	verify_checkbox = gtk_check_button_new_with_label(_("Verify owner of lock file"));
+	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (verify_checkbox), verify_lock_file);
+	gtk_signal_connect( GTK_OBJECT(verify_checkbox), "toggled",
+			    GTK_SIGNAL_FUNC(verify_lock_file_cb), NULL);
+        gtk_box_pack_start( GTK_BOX(frame), verify_checkbox, FALSE, FALSE, 5);
+	gtk_widget_show(verify_checkbox);
+
 	/* device entry */
 	hbox = gtk_hbox_new(FALSE, 5);
         gtk_box_pack_start( GTK_BOX(frame), hbox, FALSE, FALSE, 5);
@@ -255,6 +276,7 @@ void property_show(AppletWidget *applet, gpointer data)
 		{
 		gtk_widget_set_sensitive(lockfile_entry, FALSE);
 		gtk_widget_set_sensitive(device_entry, FALSE);
+		gtk_widget_set_sensitive(verify_checkbox, FALSE);
 		}
 
         label = gtk_label_new(_("Advanced"));

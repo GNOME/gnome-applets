@@ -49,6 +49,7 @@ static unsigned long *isdn_stats = NULL;
 
 gint UPDATE_DELAY = 5;		/* status lights update interval in Hz (1 - 20) */
 gchar *lock_file;		/* the modem lock file */
+gint verify_lock_file = TRUE;	/* do we verify the pid inside the lockfile? */
 gchar *device_name;		/* the device name eg:ppp0 */
 gchar *command_connect;		/* connection commands */
 gchar *command_disconnect;
@@ -130,24 +131,28 @@ static int is_Modem_on()
 {
 	FILE *f = 0;
 	gchar buf[64];
-	gchar *ptr;
 	pid_t pid = -1;
 
 	f = fopen(lock_file, "r");
 
 	if(!f) return FALSE;
 
-	if (fgets(buf, sizeof(buf), f) == NULL)
+	if (verify_lock_file)
 		{
-		fclose(f);
-		return FALSE;
+		if (fgets(buf, sizeof(buf), f) == NULL)
+			{
+			fclose(f);
+			return FALSE;
+			}
 		}
+
 	fclose(f);
 
-	ptr = buf;
-	while (*ptr == '0' || *ptr == ' ') ptr++;
-	pid = (pid_t)strtol(ptr, NULL, 0);
-	if (pid < 1 || (kill (pid, 0) == -1 && errno != EPERM)) return FALSE;
+	if (verify_lock_file)
+		{
+		pid = (pid_t)strtol(buf, NULL, 10);
+		if (pid < 1 || (kill (pid, 0) == -1 && errno != EPERM)) return FALSE;
+		}
 
 	return TRUE;
 }

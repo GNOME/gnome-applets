@@ -30,10 +30,11 @@
 
 #define MODEMLIGHTS_APPLET_VERSION_MAJ 1
 #define MODEMLIGHTS_APPLET_VERSION_MIN 0
-#define MODEMLIGHTS_APPLET_VERSION_REV 1
+#define MODEMLIGHTS_APPLET_VERSION_REV 2
 
 extern gint UPDATE_DELAY;
 extern gchar *lock_file;
+extern gint verify_lock_file;
 extern gchar *command_connect;
 extern gchar *command_disconnect;
 extern int ask_for_confirmation;
