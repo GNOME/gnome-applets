@@ -187,6 +187,37 @@ multiload_change_orient_cb(PanelApplet *applet, gint arg1, gpointer data)
 }
 
 void
+multiload_change_background_cb(PanelApplet *a, PanelAppletBackgroundType type,
+				GdkColor *color, GdkPixmap *pixmap,
+				gpointer *data)
+{
+	MultiloadApplet *ma = data;
+	GtkRcStyle *rc_style = gtk_rc_style_new ();
+
+	switch (type) {
+		case PANEL_PIXMAP_BACKGROUND:
+			gtk_widget_modify_style (GTK_WIDGET (ma->applet), rc_style);
+			break;
+
+		case PANEL_COLOR_BACKGROUND:
+			gtk_widget_modify_bg (GTK_WIDGET (ma->applet), GTK_STATE_NORMAL, color);
+			break;
+
+		case PANEL_NO_BACKGROUND:
+			gtk_widget_modify_style (GTK_WIDGET (ma->applet), rc_style);
+			break;
+
+		default:
+			gtk_widget_modify_style (GTK_WIDGET (ma->applet), rc_style);
+			break;
+	}
+
+	gtk_rc_style_unref (rc_style);
+
+	return;
+}
+
+void
 multiload_destroy_cb(GtkWidget *widget, gpointer data)
 {
 	gint i;
@@ -456,6 +487,8 @@ multiload_applet_new(PanelApplet *applet, const gchar *iid, gpointer data)
 				G_CALLBACK(multiload_change_size_cb), ma);
 	g_signal_connect(G_OBJECT(applet), "change_orient",
 				G_CALLBACK(multiload_change_orient_cb), ma);
+	g_signal_connect(G_OBJECT(applet), "change_background",
+				G_CALLBACK(multiload_change_background_cb), ma);
 	g_signal_connect(G_OBJECT(applet), "destroy",
 				G_CALLBACK(multiload_destroy_cb), ma);
 	g_signal_connect(G_OBJECT(applet), "enter_notify_event",
