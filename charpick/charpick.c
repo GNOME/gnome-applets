@@ -110,112 +110,33 @@ selection_clear_cb (GtkWidget *widget, GdkEventSelection *event,
   charpick_data *curr_data = data;
   
   gint last_index = curr_data->last_index;
-  GtkWidget *toggle_button;
+  
+  if (curr_data->last_toggle_button)
+    gtk_toggle_button_set_state (curr_data->last_toggle_button, FALSE);
 
-  toggle_button = curr_data->toggle_buttons[last_index];
-  gtk_toggle_button_set_state (GTK_TOGGLE_BUTTON(toggle_button), FALSE);
-  curr_data->last_index = NO_LAST_INDEX;
+  curr_data->last_toggle_button = NULL;
   return TRUE;
 }
 
-/* this sets up the rows and columns according to the panel size and
-   settings as appropriate */
-static void
-setup_rows_cols(charpick_data *p_curr_data, gint *rows, gint *cols)
-{
-  if (p_curr_data->properties->follow_panel_size)
-  {
-    int r,c;
-    /* for vertical we only take 2/3 of the size as that is what is
-       then used for the table */
-    if (p_curr_data->panel_vertical)
-      r = (p_curr_data->panel_size * 3) / (p_curr_data->properties->size * 2);
-    else
-      r = p_curr_data->panel_size / p_curr_data->properties->size;
-
-    if (r < 1)
-      r = 1;
-    else if (r > p_curr_data->properties->min_cells)
-      r = p_curr_data->properties->min_cells;
-
-    if (p_curr_data->properties->min_cells % r == 0)
-      c = p_curr_data->properties->min_cells / r;
-    else
-      c = (p_curr_data->properties->min_cells / r) + 1;
-      
-    if (p_curr_data->panel_vertical)
-    {
-      *rows = c;
-      *cols = r;
-    }
-    else
-    {
-      *rows = r;
-      *cols = c;
-    }
-  }
-  else
-  {
-    *rows = p_curr_data->properties->rows;
-    *cols = p_curr_data->properties->cols;
-  }
-}
-
-
-/* displays a list of characters in labels on buttons*/
-static void
-display_charlist (charpick_data *data)
-{
-  guint rows;
-  guint cols;
-  const gchar *charlist = data->charlist;
-  /* let's show no more characters than we have, or than we have space for. */
-  guint numtoshow;
-  guint i = 0; /* loop variable */
-  gchar currstr[2];
-
-  setup_rows_cols (data, &rows, &cols);
-
-  numtoshow = MIN(rows * cols, strlen(charlist));
-
-  /* reset the characters on the labels and reshow the buttons */
-  for (i=0;i<numtoshow;i++)
-  {
-    gchar *str_utf8;
-    currstr[0] = charlist[i];
-    currstr[1] = '\0';
-    
-    str_utf8 = g_locale_to_utf8 (currstr, -1, NULL, NULL, NULL);
-    if (str_utf8) {
-      gtk_label_set_text(GTK_LABEL(data->labels[i]), str_utf8);
-      g_free (str_utf8);
-    }
-    gtk_widget_show_all(data->toggle_buttons[i]);
-    
-  }
-  /* extra buttons? hide em */
-  if ((rows * cols) > strlen(charlist))
-    for (i=numtoshow;i<(rows*cols);i++)
-      gtk_widget_hide(data->toggle_buttons[i]);
-  
-}
-
 static gint
-toggle_button_toggled_cb(GtkWidget *widget, gpointer data)
+toggle_button_toggled_cb(GtkToggleButton *button, gpointer data)
 {
   charpick_data *curr_data = data;
   GtkClipboard *clipboard;
   gint button_index;
   gint last_index = curr_data->last_index;
+  gboolean toggled;
    
-  button_index = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (widget), "index"));  
+  button_index = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (button), "index")); 
+  toggled = gtk_toggle_button_get_active (button); 
 
-  if ((GTK_TOGGLE_BUTTON (curr_data->toggle_buttons[button_index])->active))
-  {
-    if ((last_index != NO_LAST_INDEX) && (last_index != button_index))
-      gtk_toggle_button_set_state
-       (GTK_TOGGLE_BUTTON (curr_data->toggle_buttons[last_index]), FALSE);   
-        
+  if (toggled)
+  { 
+    if (curr_data->last_toggle_button && (button != curr_data->last_toggle_button))
+    	gtk_toggle_button_set_active (curr_data->last_toggle_button,
+    				      FALSE);
+    				      
+    curr_data->last_toggle_button = button; 
     gtk_widget_grab_focus(curr_data->event_box);
     /* set selected_char */
     curr_data->selected_char = curr_data->charlist[button_index];
@@ -236,7 +157,7 @@ static int
 button_press_cb (GtkWidget *widget, GdkEventButton *event, gpointer data)
 {
   charpick_data *curr_data = data;
-g_print ("button press \n");  
+ 
   if (event->button > 1)
   {
     return gtk_widget_event (curr_data->applet, (GdkEvent *)event);
@@ -329,15 +250,13 @@ key_press_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
     case '3' : p_curr_data->charlist = three_list;
                break;
     case ' ' : p_curr_data->charlist = 
-	         p_curr_data->properties->default_charlist;
+	         p_curr_data->default_charlist;
                break;
     }
-  if (p_curr_data->last_index != NO_LAST_INDEX)
-    gtk_toggle_button_set_state
-        (GTK_TOGGLE_BUTTON (p_curr_data->toggle_buttons[p_curr_data->last_index]), 
-         FALSE);
+
   p_curr_data->last_index = NO_LAST_INDEX;
-  display_charlist(p_curr_data);
+  p_curr_data->last_toggle_button = NULL;
+  build_table(p_curr_data);
   return TRUE;
 }
 
@@ -347,51 +266,42 @@ key_press_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
 void
 build_table(charpick_data *p_curr_data)
 {
-  GtkWidget *table = p_curr_data->table;
-  GtkWidget * *toggle_button;
-  GtkWidget * *label;
-  gint rows, cols, size;
-  gint i;
-  size = p_curr_data->properties->size;
-g_print ("build table \n");
-  setup_rows_cols (p_curr_data, &rows, &cols);
+  GtkWidget *box;
+  GtkWidget *toggle_button;
+  gint size;
+  gint i, num;
+  
+  if (p_curr_data->box)
+    gtk_widget_destroy(p_curr_data->box);
+  if (p_curr_data->panel_vertical == TRUE)
+    box = gtk_vbox_new (TRUE, 0);
+  else
+    box = gtk_hbox_new (TRUE, 0);
+  gtk_widget_show (box);
+  p_curr_data->box = box;
+  num = strlen (p_curr_data->charlist);
 
-  toggle_button = p_curr_data->toggle_buttons;
-  label = p_curr_data->labels;
-  /*for (i=0;i<MAX_BUTTONS_WITH_BUFFER;i++)*/
-  if (table)
-    gtk_widget_destroy(table);
-  table = gtk_table_new (rows, cols, TRUE);
-  p_curr_data->table = table;
-  for(i=0;i<(rows*cols);i++)
-  {
-    label[i] = gtk_label_new("Q"); /*if we get a list of Qs, something busted*/
-  }
-  /* buttons */
-  for(i=0;i<(rows*cols);i++)
-  {
-    toggle_button[i] = gtk_toggle_button_new();
-    /* pack label in button */
-    gtk_container_add(GTK_CONTAINER(toggle_button[i]), label[i]);
-    /* pack button in table */
-    gtk_table_attach_defaults(GTK_TABLE(table),
-                              toggle_button[i],
-                              (i % cols),
-                              (i % cols + 1),
-                              (i / cols),
-                              (i / cols + 1));
-    gtk_button_set_relief(GTK_BUTTON(toggle_button[i]), GTK_RELIEF_NONE);
-    /* connect toggle signal for button to handler */
-    g_object_set_data (G_OBJECT (toggle_button[i]), "index", GINT_TO_POINTER (i));
-    gtk_signal_connect (GTK_OBJECT (toggle_button[i]), "toggled",
+  for (i=0; i < num; i++) {
+    gchar *str_utf8;
+    gchar currstr[2];
+    currstr[0] = p_curr_data->charlist[i];
+    currstr[1] = '\0';
+ 
+    str_utf8 = g_locale_to_utf8 (currstr, -1, NULL, NULL, NULL);
+    toggle_button = gtk_toggle_button_new_with_label (str_utf8);
+    g_free (str_utf8);
+    gtk_box_pack_start (GTK_BOX (box), toggle_button, TRUE, TRUE, 0);
+    gtk_button_set_relief(GTK_BUTTON(toggle_button), GTK_RELIEF_NONE);
+    g_object_set_data (G_OBJECT (toggle_button), "index", GINT_TO_POINTER (i));
+    gtk_signal_connect (GTK_OBJECT (toggle_button), "toggled",
                         (GtkSignalFunc) toggle_button_toggled_cb,
                         p_curr_data);
-    gtk_signal_connect (GTK_OBJECT (toggle_button[i]), "button_press_event", 
+    gtk_signal_connect (GTK_OBJECT (toggle_button), "button_press_event", 
                         (GtkSignalFunc) button_press_cb, p_curr_data);
   }
-  
-  gtk_container_add (GTK_CONTAINER(p_curr_data->event_box), table);
-  gtk_widget_show (p_curr_data->event_box);
+
+  gtk_container_add (GTK_CONTAINER(p_curr_data->event_box), box);
+  gtk_widget_show_all (p_curr_data->event_box);
   
   /* a fudge factor is applied to make less space wasted.
      this is needed now that we have capital letters and the new 
@@ -399,11 +309,15 @@ g_print ("build table \n");
      The right thing to do would be to make width of cells setable
      seperately from height, or to make aspect ratio setable.
    */  
+#if 0
   gtk_widget_set_usize(table, 
                        ((cols * size * 2) / 3), 
                        (rows * size));
-  gtk_widget_show (table);
-  display_charlist(p_curr_data);
+
+#endif
+
+  p_curr_data->last_index = NO_LAST_INDEX;
+  p_curr_data->last_toggle_button = NULL;
 }
 
 static void applet_change_pixel_size(PanelApplet *applet, gint size, gpointer data)
@@ -493,25 +407,21 @@ charpicker_applet_fill (PanelApplet *applet)
 {
   charpick_data *curr_data;
   GtkWidget *event_box = NULL;
-  GtkWidget *table = NULL;
   
   panel_applet_add_preferences (applet, "/schemas/apps/charpick/prefs", NULL);
    
   curr_data = g_new0 (charpick_data, 1);
-  curr_data->properties = g_new0 (charpick_persistant_properties, 1);
-  curr_data->charlist = def_list;
   curr_data->selected_char = ' ';
   curr_data->last_index = NO_LAST_INDEX;
-  curr_data->toggle_buttons = g_new0 (GtkWidget *, MAX_BUTTONS_WITH_BUFFER);
-  curr_data->labels = g_new0 (GtkWidget *, MAX_BUTTONS_WITH_BUFFER);
-  curr_data->table = table;
   curr_data->event_box = event_box;
   curr_data->applet = GTK_WIDGET (applet);
   
-/* FIXME: hook up to gconf */
-  property_load(curr_data);
-  if (!curr_data->properties->default_charlist)
-    curr_data->properties->default_charlist = g_strdup (def_list);
+  curr_data->default_charlist = panel_applet_gconf_get_string (applet, 
+  							       "default_list", NULL);
+  if (!curr_data->default_charlist)
+    curr_data->default_charlist = g_strdup (def_list);
+    
+  curr_data->charlist = curr_data->default_charlist;
 
   /* Create the event_box (needed to catch keypress and focus change events) */
 

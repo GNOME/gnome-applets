@@ -14,35 +14,21 @@
 #define MAX_BUTTONS 25
 #define MAX_BUTTONS_WITH_BUFFER ((2*MAX_BUTTONS)-1)
 
-typedef struct _charpick_persistant_properties charpick_persistant_properties;
-/* This is the data type for user definable properties of the charpick applet.
- * It should include anything we might want to save when (and if)
- * we save the session.
- */
-struct _charpick_persistant_properties {
-  const gchar * default_charlist;
-  gboolean      follow_panel_size;
-  gint          min_cells;
-  gint          rows;
-  gint          cols;
-  gint          size; /* this is the height and width of a cell */
-};
-
 typedef struct _charpick_data charpick_data;
 /* this type has basically all data for this program */
 struct _charpick_data {
   const gchar * charlist;
+  gchar * default_charlist;
   gchar selected_char;
   gint last_index;
-  GtkWidget * *toggle_buttons;
-  GtkWidget * *labels;
-  GtkWidget *table;
+  GtkWidget *box;
   GtkWidget *event_box;
   GtkWidget *frame;
   GtkWidget *applet;
+  GtkToggleButton *last_toggle_button;
   gint panel_size;
   gboolean panel_vertical;
-  charpick_persistant_properties * properties;
+  GtkWidget *propwindow;
 };
 
 
@@ -58,8 +44,6 @@ struct _charpick_button_cb_data {
 void start_callback_update();
 
 void build_table(charpick_data *curr_data);
-void property_load(charpick_data *curr_data);
-void property_save(char *path, charpick_persistant_properties *properties);
 void property_show(BonoboUIComponent *uic, gpointer data, const gchar *verbname);
 
 

@@ -4,262 +4,37 @@
 
 #include "charpick.h"
 
-static GtkWidget *propwindow = NULL;
-
-void property_load (charpick_data *curr_data)
+static void
+update_default_list_cb (GtkEditable *editable, gpointer data)
 {
+  charpick_data *curr_data = data;
   PanelApplet *applet = PANEL_APPLET (curr_data->applet);
-  charpick_persistant_properties *props = curr_data->properties;
+  gchar *text;
   
-  props->follow_panel_size = panel_applet_gconf_get_bool (applet, "follow_panel", NULL);
-  props->min_cells = panel_applet_gconf_get_int (applet, "min_cells", NULL);
-  props->rows = panel_applet_gconf_get_int (applet, "rows", NULL);
-  props->cols = panel_applet_gconf_get_int (applet, "cols", NULL);
-  props->size = panel_applet_gconf_get_int (applet, "size", NULL);
-  props->default_charlist = panel_applet_gconf_get_string (applet, "default_list", NULL);
+  text = gtk_editable_get_chars (editable, 0, -1);
+  if (!text)
+  	return;
+  	
+  if (g_utf8_strlen (text, -1) == 0) {
+    gchar *old_text = g_locale_to_utf8 (curr_data->charlist, -1, NULL, NULL, NULL);
+    gint pos;
+    gtk_editable_insert_text (editable, old_text, -1, &pos);
+    g_free (old_text);
+    return;
+  }
   
-  /* sanity check the properties read from config */
-  if (props->rows < 1)
-  {
-    props->rows = DEFAULT_ROWS; 
-  }
-  if (props->cols < 1)
-  {
-    props->cols =  DEFAULT_COLS; 
-  }
-  if (props->size < 1)
-  {
-    props->size = DEFAULT_SIZE; 
-  }
-
-  if (props->min_cells < 1)
-  {
-    props->min_cells = DEFAULT_ROWS; 
-  }
-  else if (props->min_cells > MAX_BUTTONS)
-  {
-    props->min_cells = DEFAULT_ROWS; 
-  }
-
-  return;
-}
-
-void property_save (char *path, charpick_persistant_properties *properties)
-{
-#ifdef FIXME
-  gnome_config_push_prefix(path);
-  gnome_config_set_int("charpick/buttonsize", properties->size);
-  gnome_config_set_int("charpick/rows", properties->rows);
-  gnome_config_set_int("charpick/cols", properties->cols);
-  gnome_config_set_int("charpick/min_cells", properties->min_cells);
-  gnome_config_set_bool("charpick/follow_panel_size",
-			properties->follow_panel_size);
-  gnome_config_set_string("charpick/deflist", 
-  		          properties->default_charlist);
-  gnome_config_pop_prefix();
-  gnome_config_sync();
-#endif
-}
-
-static void update_spin_cb( GtkWidget *spin, gint *data)
-{
-  *data = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spin));
-  gnome_property_box_changed(GNOME_PROPERTY_BOX(propwindow));
-  return;
-}
-
-static void update_bool_cb( GtkWidget *cb, gboolean *data)
-{
-  *data = GTK_TOGGLE_BUTTON (cb)->active;
-  gnome_property_box_changed(GNOME_PROPERTY_BOX(propwindow));
-  return;
-}
-
-static void update_default_list_cb( GtkWidget *entry, gpointer data)
-{
-#ifdef FIXME
-  temp_properties.default_charlist = g_strdup(gtk_entry_get_text(GTK_ENTRY(entry)));
-#endif
-   gnome_property_box_changed(GNOME_PROPERTY_BOX(propwindow));
-  return;
-}
-
-static void property_apply_cb (GtkWidget *widget, void *data)
-{
-#ifdef FIXME
-  /*charpick_data * curr_data = data;*/
-  curr_data.properties->follow_panel_size = temp_properties.follow_panel_size;
-  curr_data.properties->min_cells = temp_properties.min_cells;
-  curr_data.properties->rows = temp_properties.rows;
-  curr_data.properties->cols = temp_properties.cols;
-  curr_data.properties->size = temp_properties.size;
-  curr_data.properties->default_charlist = 
-    g_strdup(temp_properties.default_charlist);
-
-  curr_data.charlist = curr_data.properties->default_charlist;
-  build_table(&curr_data);
-#endif
-  return;
-}
-
-static gint property_destroy_cb (GtkWidget *widget, void *data)
-{
-  propwindow = NULL;
-  return FALSE;
-}
-
-static void check_button_disable_cb (GtkWidget *cb, GtkWidget *todisable)
-{
-  gboolean active = GTK_TOGGLE_BUTTON(cb)->active;
-  gtk_widget_set_sensitive (todisable, !active);
-}
-
-static void check_button_enable_cb (GtkWidget *cb, GtkWidget *todisable)
-{
-  gboolean active = GTK_TOGGLE_BUTTON(cb)->active;
-  gtk_widget_set_sensitive (todisable, active);
-}
-
-static void size_frame_create()
-{
-
-  GtkWidget *frame;
-  GtkWidget *min_cells_hbox;
-  GtkWidget *size_hbox;
-  GtkWidget *rows_hbox;
-  GtkWidget *cols_hbox;
-  GtkWidget *min_cells_label;
-  GtkWidget *size_label;
-  GtkWidget *rows_label;
-  GtkWidget *cols_label;
-  GtkWidget *tab_label;
-  GtkObject *min_cells_adj;
-  GtkObject *size_adj;
-  GtkObject *rows_adj;
-  GtkObject *cols_adj;
-  GtkWidget *min_cells_sb;
-  GtkWidget *size_sb;
-  GtkWidget *rows_sb;
-  GtkWidget *cols_sb;
-  GtkWidget *follow_cb;
-
-  /* make some widgets */
-  frame = gtk_vbox_new(FALSE, 5);
-  min_cells_hbox = gtk_hbox_new(FALSE, 5);
-  size_hbox = gtk_hbox_new(FALSE, 5);
-  rows_hbox = gtk_hbox_new(FALSE, 5);
-  cols_hbox = gtk_hbox_new(FALSE, 5);
-  min_cells_label = gtk_label_new(_("Minimum number of cells: (for autosize)"));
-  size_label = gtk_label_new(_("Size of button: (pixels)"));
-  rows_label = gtk_label_new(_("Number of rows of buttons:"));
-  cols_label = gtk_label_new(_("Number of columns of buttons:"));
-
-  /* the follow_panel_size check button */
-  follow_cb = gtk_check_button_new_with_label(_("Follow panel size"));
-#ifdef FIXME
-  gtk_toggle_button_set_state (GTK_TOGGLE_BUTTON (follow_cb),
-			       temp_properties.follow_panel_size);
-
-  gtk_signal_connect (GTK_OBJECT (follow_cb), "toggled",
-		      GTK_SIGNAL_FUNC (update_bool_cb),
-		      &temp_properties.follow_panel_size);
-
-#endif
-  /* pack the main vbox */
-  gtk_box_pack_start (GTK_BOX(frame), follow_cb, FALSE, FALSE, 5);
-  gtk_box_pack_start (GTK_BOX(frame), min_cells_hbox, FALSE, FALSE, 5);
-  gtk_box_pack_start (GTK_BOX(frame), rows_hbox, FALSE, FALSE, 5);
-  gtk_box_pack_start (GTK_BOX(frame), cols_hbox, FALSE, FALSE, 5);
-  gtk_box_pack_start (GTK_BOX(frame), size_hbox, FALSE, FALSE, 5);
-
-  /*min_cells hbox */
-  gtk_box_pack_start (GTK_BOX(min_cells_hbox), min_cells_label, FALSE, FALSE, 5);
-  gtk_widget_show(min_cells_label);
-  min_cells_adj = gtk_adjustment_new( 2 /* FIXME */, 1.0,
-				      MAX_BUTTONS, 1, 1, 1 );
-  min_cells_sb  = gtk_spin_button_new( GTK_ADJUSTMENT(min_cells_adj), 1, 0 );
-  gtk_box_pack_start( GTK_BOX(min_cells_hbox), min_cells_sb, FALSE, FALSE, 5);
-#ifdef FIXME
-  gtk_signal_connect
-    (GTK_OBJECT(min_cells_sb), "changed", GTK_SIGNAL_FUNC(update_spin_cb), &temp_properties.min_cells);
-#endif
-  gtk_spin_button_set_update_policy
-    (GTK_SPIN_BUTTON(min_cells_sb),GTK_UPDATE_ALWAYS);
-  gtk_widget_show(min_cells_sb);
-  gtk_signal_connect (GTK_OBJECT (follow_cb), "toggled",
-		      GTK_SIGNAL_FUNC (check_button_enable_cb),
-		      min_cells_hbox);
-  check_button_enable_cb (follow_cb, min_cells_hbox);
-
-  /*size hbox*/
-  gtk_box_pack_start (GTK_BOX(size_hbox), size_label, FALSE, FALSE, 5);
-  gtk_widget_show(size_label);
-  size_adj = gtk_adjustment_new (22 /* FIXME */, 1.0, 40.0, 1, 1, 1 );
-  size_sb  = gtk_spin_button_new( GTK_ADJUSTMENT(size_adj), 1, 0 );
-  gtk_box_pack_start( GTK_BOX(size_hbox), size_sb, FALSE, FALSE, 5);
-#ifdef FIXME
-  /*gtk_signal_connect
-    (GTK_OBJECT(size_adj), "value_changed", 
-    GTK_SIGNAL_FUNC(update_size_cb), &temp_properties.size);*/
-  gtk_signal_connect
-    (GTK_OBJECT(size_sb), "changed", GTK_SIGNAL_FUNC(update_spin_cb), &temp_properties.size);
-#endif
-  gtk_spin_button_set_update_policy
-    (GTK_SPIN_BUTTON(size_sb),GTK_UPDATE_ALWAYS);
-  gtk_widget_show(size_sb);
-
-  /*rows hbox */
-  gtk_box_pack_start (GTK_BOX(rows_hbox), rows_label, FALSE, FALSE, 5);
-  gtk_widget_show(rows_label);
-  rows_adj = gtk_adjustment_new( 2 /* FIXME */, 1.0, 5.0, 1, 1, 1 );
-  rows_sb  = gtk_spin_button_new( GTK_ADJUSTMENT(rows_adj), 1, 0 );
-  gtk_box_pack_start( GTK_BOX(rows_hbox), rows_sb, FALSE, FALSE, 5);
-#ifdef FIXME
-  /*gtk_signal_connect
-    (GTK_OBJECT(rows_adj), "value_changed", 
-    GTK_SIGNAL_FUNC(update_rows_cb), &temp_properties.rows);*/
-  gtk_signal_connect
-    (GTK_OBJECT(rows_sb), "changed", GTK_SIGNAL_FUNC(update_spin_cb), &temp_properties.rows);
-#endif    
-  gtk_spin_button_set_update_policy
-    (GTK_SPIN_BUTTON(rows_sb),GTK_UPDATE_ALWAYS);
-  gtk_widget_show(rows_sb);
-  gtk_signal_connect (GTK_OBJECT (follow_cb), "toggled",
-		      GTK_SIGNAL_FUNC (check_button_disable_cb),
-		      rows_hbox);
-  check_button_disable_cb (follow_cb, rows_hbox);
-
-  /*cols hbox */
-  gtk_box_pack_start (GTK_BOX(cols_hbox), cols_label, FALSE, FALSE, 5);
-  gtk_widget_show (cols_label);
-  cols_adj = gtk_adjustment_new (4 /* FIXME */, 1.0, 5.0, 1, 1, 1 );
-  cols_sb  = gtk_spin_button_new (GTK_ADJUSTMENT(cols_adj), 1, 0 );
-  gtk_box_pack_start (GTK_BOX(cols_hbox), cols_sb, FALSE, FALSE, 5);
-#ifdef FIXME
-  /*gtk_signal_connect
-    (GTK_OBJECT(cols_adj), "value_changed", 
-     GTK_SIGNAL_FUNC(update_cols_cb), &temp_properties.cols);*/
-  gtk_signal_connect
-    (GTK_OBJECT(cols_sb), "changed", GTK_SIGNAL_FUNC(update_spin_cb), &temp_properties.cols);
-#endif
-  gtk_spin_button_set_update_policy
-    (GTK_SPIN_BUTTON(cols_sb),GTK_UPDATE_ALWAYS);
-  gtk_widget_show(cols_sb);
-  gtk_signal_connect (GTK_OBJECT (follow_cb), "toggled",
-		      GTK_SIGNAL_FUNC (check_button_disable_cb),
-		      cols_hbox);
-  check_button_disable_cb (follow_cb, cols_hbox);
-
-  tab_label = gtk_label_new(_("Size"));
-  gtk_widget_show(frame);
-  gnome_property_box_append_page (GNOME_PROPERTY_BOX(propwindow), 
-                                  frame , tab_label);
-
-  return;
+  if (curr_data->default_charlist)
+    g_free (curr_data->default_charlist	);
+  curr_data->default_charlist = g_locale_from_utf8 (text, -1, NULL, NULL, NULL);
+  
+  panel_applet_gconf_set_string (applet, "default_list", text, NULL);
+  g_free (text);
+  
 }
 
 static void default_chars_frame_create(charpick_data *curr_data)
 {
+  GtkWidget *propwindow = curr_data->propwindow;
   GtkWidget *tab_label;
   GtkWidget *frame;
   GtkWidget *default_list_hbox;
@@ -273,7 +48,7 @@ static void default_chars_frame_create(charpick_data *curr_data)
   default_list_hbox = gtk_hbox_new(FALSE, 5);
   default_list_label = gtk_label_new(_("Default character list:"));
   default_list_entry = gtk_entry_new_with_max_length (MAX_BUTTONS);
-  text_utf8 = g_locale_to_utf8 (curr_data->properties->default_charlist, -1,
+  text_utf8 = g_locale_to_utf8 (curr_data->default_charlist, -1,
   				NULL, NULL, NULL);
   gtk_entry_set_text(GTK_ENTRY(default_list_entry), 
 		     text_utf8);
@@ -290,13 +65,10 @@ static void default_chars_frame_create(charpick_data *curr_data)
   gtk_box_pack_start(GTK_BOX(default_list_hbox), default_list_label, FALSE, FALSE, 5);
   gtk_box_pack_start( GTK_BOX(default_list_hbox), default_list_entry, 
 		      FALSE, FALSE, 5);
-#ifdef FIXME
-  gtk_signal_connect (GTK_OBJECT(default_list_entry), "changed", 
-		      GTK_SIGNAL_FUNC(update_default_list_cb), 
-		      &temp_properties.default_charlist);
-#endif
-  /* add tab to propwindow */
-  tab_label = gtk_label_new(_("Default List"));
+
+  g_signal_connect (G_OBJECT(default_list_entry), "changed", 
+		    G_CALLBACK (update_default_list_cb), curr_data);
+
   gtk_widget_show_all(frame);
   gtk_box_pack_start (GTK_BOX (GTK_DIALOG (propwindow)->vbox), frame, TRUE, TRUE, 0);
   
@@ -316,8 +88,10 @@ phelp_cb (GtkWidget *w, gint tab, gpointer data)
 static void
 response_cb (GtkDialog *dialog, gint id, gpointer data)
 {
-  gtk_widget_destroy (propwindow);
-  propwindow = NULL;
+  charpick_data *curr_data = data;
+  
+  gtk_widget_destroy (curr_data->propwindow);
+  curr_data->propwindow = NULL;
   
 }
 
@@ -327,22 +101,23 @@ property_show(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
   charpick_data *curr_data = data;
   
   /*if the properties dialog is already open, just raise it.*/
-  if(propwindow)
+  if(curr_data->propwindow)
   {
-    gdk_window_raise(propwindow->window);
+    gtk_window_present(GTK_WINDOW (curr_data->propwindow->window));
     return;
   }
-  propwindow = gnome_property_box_new();
-  propwindow = gtk_dialog_new_with_buttons (_("Character Palette Properties"), NULL,
+  curr_data->propwindow = gnome_property_box_new();
+  curr_data->propwindow = gtk_dialog_new_with_buttons (_("Character Palette Properties"), 
+  					    NULL,
 					    GTK_DIALOG_DESTROY_WITH_PARENT,
 					    GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
 					    NULL);
   /*size_frame_create();*/
   default_chars_frame_create(curr_data);
-  g_signal_connect (G_OBJECT (propwindow), "response",
+  g_signal_connect (G_OBJECT (curr_data->propwindow), "response",
   		    G_CALLBACK (response_cb), curr_data);
   		    
-  gtk_widget_show_all(propwindow);
+  gtk_widget_show_all(curr_data->propwindow);
 
   return;
 }
