@@ -3,8 +3,8 @@
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
   <!ENTITY appletversion "1.104.0">
-  <!ENTITY manrevision "2.1">
-  <!ENTITY date "July 2002">
+  <!ENTITY manrevision "2.2">
+  <!ENTITY date "August 2002">
   <!ENTITY applet "Stock Ticker">
 ]>
 
@@ -14,6 +14,7 @@
   http://developer.gnome.org/projects/gdp
   Template version: 2.0 beta
   Template last modified Mar 12, 2002
+  
 -->
 <!-- =============Document Header ============================= -->
 <article id="index" lang="en">
@@ -73,6 +74,15 @@
 		  </revdescription> 
 		</revision> 
 		<revision> 
+		  <revnumber>Stock Ticker Applet Manual V2.1</revnumber> 
+		  <date>July 2002</date> 
+		  <revdescription> 
+			 <para role="author">Sun GNOME Documentation Team
+				<email>gdocteam@sun.com</email></para> 
+			 <para role="publisher">GNOME Documentation Project</para> 
+		  </revdescription> 
+		</revision> 
+		<revision> 
 		  <revnumber>Stock Ticker Applet Manual V2.0</revnumber> 
 		  <date>May 2002</date> 
 		  <revdescription> 
@@ -110,14 +120,14 @@
 			 <imageobject><imagedata fileref="figures/gtik_applet.png" format="PNG"/> 
 			 </imageobject>
 			 <textobject> 
-				<phrase>Shows the Stock Ticker applet. Contains scrolling display area, back and forward buttons.</phrase> 
+				<phrase>Shows Stock Ticker applet. Contains scrolling display area, back and forward buttons.</phrase> 
 			 </textobject> 
 		  </mediaobject> 
 		</screenshot> 
 	 </figure> 
     	 <!-- ==== End of Figure ======================================= -->
 <para>The <application>&applet;</application> applet downloads current stock quotes from the Internet and displays the quotes in a scrolling display in the applet. The applet downloads the stock information from Yahoo! Finance. </para>
-<para>To add <application>&applet;</application> to a panel, right-click on the panel to open the panel popup menu, then choose 
+<para>To add <application>&applet;</application> to a panel, right-click on the panel, then choose 
 <menuchoice>
 <guimenu>Add to Panel</guimenu> 
 <guisubmenu>Accessories</guisubmenu> 
@@ -152,13 +162,16 @@ For more information about how to specify a proxy server, see <xref linkend="gti
 
 <sect2 id="gtik-refresh">
 <title>To Update the Display</title>
-<para><application>&applet;</application> automatically updates the stock information at the frequency that is specified in the applet preferences. See <xref linkend="gtik-settings-behavior"/> for more information about the applet preferences. To update the information that is displayed in the applet immediately, right-click on the applet, then choose <guimenuitem>Refresh</guimenuitem> from the applet popup menu. </para>
+<para><application>&applet;</application> automatically updates the stock information at the frequency that 
+is specified in the applet preferences. See <xref linkend="gtik-settings-behavior"/> for more information 
+about the applet preferences. To update the information that is displayed in the applet immediately, 
+right-click on the applet, then choose <guimenuitem>Refresh</guimenuitem>. </para>
 </sect2>
 
 </sect1>
 
 <sect1 id="gtik-settings">
-<title>Settings</title>
+<title>Preferences</title>
 
 <sect2 id="gtik-set-proxy">
 <title>To Set a Proxy Server</title>
@@ -167,13 +180,14 @@ To configure GNOME to use a proxy server, choose
 <menuchoice>
 <guimenu>Applications</guimenu>
 <guisubmenu>Desktop Preferences</guisubmenu> 
-<guimenuitem>Network</guimenuitem>
+<guimenuitem>Network Proxy</guimenuitem>
 </menuchoice>.</para>
 </sect2>
 
 <sect2 id="gtik-configure">
 <title>To Configure &applet;</title>
-<para>To configure the <application>&applet;</application> applet, right-click on the applet, then choose <guimenu>Preferences</guimenu> from the applet popup menu. The <guilabel>Stock Ticker Preferences</guilabel> dialog contains the following tabbed sections:</para>
+<para>To configure <application>&applet;</application>, right-click on the applet, then choose <guimenu>Preferences</guimenu>. 
+The <guilabel>Stock Ticker Preferences</guilabel> dialog contains the following tabbed sections:</para>
 <itemizedlist>
 <listitem><para><xref linkend="gtik-settings-symbols"/></para></listitem>
 <listitem><para><xref linkend="gtik-settings-behavior"/></para></listitem>
@@ -243,43 +257,43 @@ To configure GNOME to use a proxy server, choose
 <varlistentry>
 <term><guilabel>+ Color</guilabel> </term>
 <listitem>
-<para>Use this button to select a color to display stock quotes that increased since the previous stock quote. Click on the color button to display a color selector dialog. Use the color wheel or sliders on the color selector dialog to choose a color. </para>
-<para>Default: Green.</para>
+<para>Click on this button to select a color to display stock quotes that increased since the previous stock quote. Click on the color button to display a color selector dialog. Use the color wheel or sliders on the color selector dialog to choose a color. </para>
+<para>Default: green.</para>
 </listitem>
 </varlistentry>
 <varlistentry>
 <term><guilabel>- Color</guilabel> </term>
 <listitem>
-<para>Use this button to select a color to display stock quotes that decreased since the previous stock quote. </para>
-<para>Default: Red.</para>
+<para>Click on this button to select a color to display stock quotes that decreased since the previous stock quote. </para>
+<para>Default: red.</para>
 </listitem>
 </varlistentry>
 <varlistentry>
 <term><guilabel>Unchanged Color</guilabel> </term>
 <listitem>
-<para>Use this button to select a color to display stock quotes that are unchanged since the previous stock quote.  </para>
-<para>Default: Black.</para>
+<para>Click on this button to select a color to display stock quotes that are unchanged since the previous stock quote.  </para>
+<para>Default: black.</para>
 </listitem>
 </varlistentry>
 <varlistentry>
 <term><guilabel>Background Color</guilabel> </term>
 <listitem>
-<para>Use this button to select a background color for the display area of the applet. </para>
-<para>Default: White.</para>
+<para>Click on this button to select a background color for the display area of the applet. </para>
+<para>Default: white.</para>
 </listitem>
 </varlistentry>
 <varlistentry>
 <term><guilabel>Stock Symbol</guilabel> </term>
 <listitem>
-<para>Click on the <guibutton>Stock Symbol</guibutton> button to choose the font to use to display the stock symbol and current price. </para>
-<para>Default: Not specified.</para>
+<para>Click on this button to choose the font to use to display the stock symbol and current price. </para>
+<para>Default: not specified.</para>
 </listitem>
 </varlistentry>
 <varlistentry>
 <term><guilabel>Stock Change</guilabel> </term>
 <listitem>
-<para>Click on the <guibutton>Stock Change</guibutton> button to choose the font to use to display the change in stock price. </para>
-<para>Default: Not specified.</para>
+<para>Click on this button to choose the font to use to display the change in stock price. </para>
+<para>Default: not specified.</para>
 </listitem>
 </varlistentry>
 </variablelist>

@@ -3,8 +3,8 @@
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
   <!ENTITY appletversion "1.104.0">
-  <!ENTITY manrevision "2.1">
-  <!ENTITY date "July 2002">
+  <!ENTITY manrevision "2.2">
+  <!ENTITY date "August 2002">
   <!ENTITY applet "Weather Report">
 ]>
 <!-- 
@@ -120,6 +120,22 @@
          </revision>
          
          <revision>
+              	<revnumber>Weather Report Applet Manual V2.1</revnumber>  		
+             	<date>July 2002</date>  		  
+            	<revdescription>
+                 			 
+		<para role="author">Sun GNOME Documentation Team <email>gdocteam@sun.com</email>
+		</para>
+                 			 
+		<para role="publisher">
+                  GNOME Documentation Project
+                </para>
+                 		  
+            </revdescription>
+              		
+         </revision>
+         
+         <revision>
               	<revnumber>Weather Report Applet Manual V2.0</revnumber>  		
              	<date>March 2002</date>  		  
             	<revdescription>
@@ -191,7 +207,7 @@
                   <imagedata fileref="figures/gweather_applet.png" format="PNG"/>                  			 
                </imageobject>
                <textobject>
-                  <phrase>Screenshot of the Weather Report applet.</phrase> 			 
+                  <phrase>Shows Weather Report applet. Contains a weather icon and current temperature</phrase> 			 
                </textobject>
             </mediaobject>
          </screenshot>
@@ -201,12 +217,12 @@
       <para>
          The <application>&applet;</application> applet downloads weather information
           from the U.S National Weather Service (NWS) servers, including the Interactive
-         Weather Information Network (IWIN). You can use the <application>&applet;</application> applet to display current
+         Weather Information Network (IWIN). You can use <application>&applet;</application> to display current
          weather information and weather forecasts on your computer. 
       </para>
       <para>
          To add <application>&applet;</application> to a panel, right-click on the
-         panel to  open the panel popup menu, then choose 
+         panel, then choose 
          <menuchoice>
             <guimenu>Add to Panel</guimenu> 
             <guisubmenu>Accessories</guisubmenu> 
@@ -259,7 +275,7 @@
             </listitem>
             <listitem>
                <para>
-                  Select <guimenuitem>Preferences</guimenuitem> from the applet popup
+                  Choose <guimenuitem>Preferences</guimenuitem> from the applet popup
                   menu. The applet displays the <guilabel>Weather Preferences</guilabel> dialog.
                   The <guilabel>Location</guilabel> tabbed section contains a list
                   of geographical regions, subregions, and specific locations.
@@ -489,9 +505,9 @@
          </sect3>
       </sect2>
    </sect1>
-   <!-- ============= Settings ================================== -->
+   <!-- ============= Preferences ================================== -->
    <sect1 id="gweather-settings">
-      <title>Settings</title>
+      <title>Preferences</title>
       
       <sect2 id="gweather-set-proxy">
       <title>To Set a Proxy Server</title>
@@ -501,16 +517,15 @@
       <menuchoice>
       <guimenu>Applications</guimenu>
       <guisubmenu>Desktop Preferences</guisubmenu> 
-      <guimenuitem>Network</guimenuitem>
+      <guimenuitem>Network Proxy</guimenuitem>
       </menuchoice>.</para>
       </sect2>
       
       <sect2 id="gweather-configure">
       <title>To Configure &applet;</title>
       <para>
-         To configure the <application>&applet;</application> applet, right-click
-         on the applet, then choose <guimenuitem>Preferences</guimenuitem> from the
-         applet popup menu. The <guilabel>Weather Preferences</guilabel> dialog contains
+         To configure <application>&applet;</application>, right-click
+         on the applet, then choose <guimenuitem>Preferences</guimenuitem>. The <guilabel>Weather Preferences</guilabel> dialog contains
          the following tabbed sections:
       </para>
       <itemizedlist>
