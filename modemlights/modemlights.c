@@ -1422,7 +1422,7 @@ destroy_cb (GtkWidget *widget, gpointer data)
 	if (mldata->run_dialog)
 		gtk_widget_destroy (mldata->run_dialog);
 	if (mldata->tooltips)
-		g_object_unref (tooltips);
+		g_object_unref (mldata->tooltips);
 	g_free (data);
 }
 
