@@ -12,8 +12,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
-"POT-Creation-Date: 2002-04-18 11:38+0200\n"
-"PO-Revision-Date: 2002-04-18 11:58+0200\n"
+"POT-Creation-Date: 2002-05-08 00:51+0200\n"
+"PO-Revision-Date: 2002-05-08 00:54+0200\n"
 "Last-Translator: GNOME PL Team <translators@gnome.pl>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -199,10 +199,25 @@ msgstr ""
 "W ustawieniach nie podano poprawnie polecenia uśpienia.\n"
 "Zmień ustawienia i spróbuj ponownie."
 
-#. The long name of the applet in the About dialog.
+#. if your charset supports it, please replace the "o" in
+#. * "Jorgen" into U00F6
 #: battstat/battstat_applet.c:1
-msgid "Battery status utility"
-msgstr "Narzędzie monitorujące stan baterii"
+msgid "Jorgen Pehrson <jp@spektr.eu.org>"
+msgstr "Jorgen Pehrson <jp@spektr.eu.org>"
+
+#: battstat/battstat_applet.c:1 cdplayer/cdplayer.c:1
+#: charpick/charpick.c:1 drivemount/drivemount.c:1 geyes/geyes.c:1
+#: gkb-new/gkb.c:1 gtik/gtik.c:1 gweather/gweather-about.c:1
+#: mini-commander/src/about.c:1 mixer/mixer.c:1
+#: modemlights/modemlights.c:1 multiload/main.c:1
+#: panel-menu/panel-menu.c:1
+msgid "translator_credits"
+msgstr "GNOME PL Team <translators@gnome.pl>"
+
+#. The long name of the applet in the About dialog.
+#: battstat/GNOME_BattstatApplet.server.in.h:1 battstat/battstat_applet.c:1
+msgid "Battery Charge Monitor"
+msgstr "Monitor poziomu naładowania baterii"
 
 #: battstat/battstat_applet.c:1
 msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
@@ -255,8 +270,8 @@ msgid "Move towards top"
 msgstr "Ruch ku górze"
 
 #: battstat/battstat_applet.glade.h:1
-msgid "Notify me when battery charge is _low"
-msgstr "Powiadomienie o _niskim poziomie naładowaniu baterii"
+msgid "Notify me when battery charge is low"
+msgstr "Powiadomienie o niskim poziomie naładowaniu baterii"
 
 #: battstat/battstat_applet.glade.h:1
 msgid "Notify me when battery is fully re-charged"
@@ -299,10 +314,6 @@ msgid "Yellow:"
 msgstr "Żółty:"
 
 #: battstat/GNOME_BattstatApplet.server.in.h:1
-msgid "Battery Charge Monitor"
-msgstr "Monitor poziomu naładowania baterii"
-
-#: battstat/GNOME_BattstatApplet.server.in.h:1
 msgid "Battstat Factory"
 msgstr "Generator Battstat"
 
@@ -334,7 +345,7 @@ msgstr "Informacje o..."
 #: battstat/GNOME_BattstatApplet.xml.h:1 cdplayer/GNOME_CDPlayerApplet.xml.h:1
 #: charpick/GNOME_CharpickerApplet.xml.h:1
 #: drivemount/GNOME_DriveMountApplet.xml.h:1 geyes/GNOME_GeyesApplet.xml.h:1
-#: gkb-new/GNOME_KeyboardApplet.xml.h:1
+#: gkb-new/GNOME_KeyboardApplet.xml.h:1 gweather/GNOME_GWeatherApplet.xml.h:1
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
 #: mixer/GNOME_MixerApplet.xml.h:1 modemlights/GNOME_ModemlightsApplet.xml.h:1
 msgid "Help"
@@ -389,7 +400,7 @@ msgid "Next Track"
 msgstr "Następna ścieżka"
 
 #: cdplayer/GNOME_CDPlayerApplet.server.in.h:1 cdplayer/cdplayer.c:1
-#: cdplayer/cdplayer.c:1
+#: cdplayer/cdplayer.c:1 cdplayer/cdplayer.c:1
 msgid "CD Player"
 msgstr "Odtwarzacz CD"
 
@@ -420,10 +431,6 @@ msgstr "Ustaw tutaj ścieżkę urządzenia"
 #: cdplayer/cdplayer.c:1
 msgid "Use _Default"
 msgstr "Użycie _domyślnej"
-
-#: cdplayer/cdplayer.c:1
-msgid "CD Player Applet"
-msgstr "Aplet odtwarzacza CD"
 
 #: cdplayer/cdplayer.c:1
 msgid ""
@@ -488,9 +495,16 @@ msgstr "Aplet panelu służący do odtwarzania płyt CD"
 msgid "Run External CD Player"
 msgstr "Uruchom pełny odtwarzacz CD"
 
+#. If your charset supports it, please use U00F1 to replace the "n"
+#. * in "Muniz".
 #: charpick/charpick.c:1
-msgid "Character Picker"
-msgstr "Wybieraczka znaków"
+msgid "Alexandre Muniz <munizao@xprt.net>"
+msgstr "Alexandre Muniz <munizao@xprt.net>"
+
+#: charpick/GNOME_CharpickerApplet.server.in.h:1 charpick/charpick.c:1
+#: charpick/charpick.c:1
+msgid "Character Palette"
+msgstr "Paleta znaków"
 
 #: charpick/charpick.c:1
 msgid "Copyright (C) 1998"
@@ -507,10 +521,6 @@ msgstr ""
 #: charpick/charpick.c:1
 msgid "Insert special characters"
 msgstr "Narzędzie do wstawiania znaków specjalnych"
-
-#: charpick/GNOME_CharpickerApplet.server.in.h:1 charpick/charpick.c:1
-msgid "Character Palette"
-msgstr "Paleta znaków"
 
 #: charpick/GNOME_CharpickerApplet.server.in.h:1
 msgid "Charpicker Applet Factory"
@@ -544,9 +554,9 @@ msgstr ""
 msgid "Character Palette Preferences"
 msgstr "Ustawienia palety znaków"
 
-#: drivemount/drivemount.c:1
-msgid "Drive Mount Applet"
-msgstr "Aplet montowania napędów"
+#: drivemount/GNOME_DriveMountApplet.server.in.h:1 drivemount/drivemount.c:1
+msgid "Disk Mounter"
+msgstr "Narzędzie do montowania dysków"
 
 #: drivemount/drivemount.c:1
 msgid "(C) 1999-2001 The GNOME Hackers\n"
@@ -581,10 +591,6 @@ msgstr ""
 "\""
 
 #: drivemount/GNOME_DriveMountApplet.server.in.h:1
-msgid "Disk Mounter"
-msgstr "Narzędzie do montowania dysków"
-
-#: drivemount/GNOME_DriveMountApplet.server.in.h:1
 msgid "Drive Mount Applet Factory"
 msgstr "Generator apletu montowania napędów"
 
@@ -612,7 +618,7 @@ msgstr "Punkt _montowania:"
 msgid "_Update interval (seconds):"
 msgstr "_Okres odświeżania (w sekundach):"
 
-#: drivemount/properties.c:1
+#: drivemount/properties.c:1 panel-menu/panel-menu-properties.c:1
 msgid "_Icon :"
 msgstr "_Ikona : "
 
@@ -672,13 +678,10 @@ msgstr "_Wysuwanie po odmontowaniu"
 msgid "Use _automount friendly status test"
 msgstr "Wykorzystanie testu przyjaznego dla _automount"
 
+#: geyes/GNOME_GeyesApplet.server.in.h:1 geyes/geyes.c:1 geyes/geyes.c:1
 #: geyes/geyes.c:1
-msgid "Dave Camp <campd@oit.edu>"
-msgstr "Dave Camp <campd@oit.edu>"
-
-#: geyes/geyes.c:1
-msgid "gEyes"
-msgstr "gEyes"
+msgid "Geyes"
+msgstr "Geyes"
 
 #: geyes/geyes.c:1
 msgid "Copyright (C) 1999 Dave Camp"
@@ -688,6 +691,10 @@ msgstr "Copyright (C) 1999 Dave Camp"
 msgid "A goofy little xeyes clone for the GNOME panel."
 msgstr "Wersja xeyes dla panelu GNOME."
 
+#: geyes/geyes.c:1
+msgid "The eyes look in the direction of the mouse pointer"
+msgstr "Oczy patrzące w kierunku wskaźnika myszy"
+
 #: geyes/GNOME_GeyesApplet.server.in.h:1
 msgid "A set of eyeballs for your panel"
 msgstr "Zbiór oczek dla panelu"
@@ -695,10 +702,6 @@ msgstr "Zbiór oczek dla panelu"
 #: geyes/GNOME_GeyesApplet.server.in.h:1
 msgid "Amusements"
 msgstr "Zabawki"
-
-#: geyes/GNOME_GeyesApplet.server.in.h:1
-msgid "Geyes"
-msgstr "Geyes"
 
 #: geyes/GNOME_GeyesApplet.server.in.h:1
 msgid "Geyes Applet Factory"
@@ -749,9 +752,9 @@ msgstr "polecenie_%d"
 msgid "GKB"
 msgstr "GKB"
 
-#: gkb-new/gkb.c:1
-msgid "The GNOME KeyBoard Switcher Applet"
-msgstr "Przełącznik map znaków - aplet"
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:1 gkb-new/gkb.c:1
+msgid "Keyboard Layout Switcher"
+msgstr "Przełącznik układów klawiatur"
 
 #: gkb-new/gkb.c:1
 msgid "(C) 1998-2000 Free Software Foundation"
@@ -759,7 +762,7 @@ msgstr "(C) 1998-2000 Free Software Foundation"
 
 #: gkb-new/gkb.c:1
 msgid ""
-"This applet switches between keyboard maps using setxkbmap, or xmodmap.\n"
+"This applet switches between keyboard maps using setxkbmap or xmodmap.\n"
 "Mail me your flag and keyboard layout if you want support for your locale "
 "(my email address is shooby@gnome.hu).\n"
 "So long, and thanks for all the fish.\n"
@@ -767,7 +770,7 @@ msgid ""
 "Kovacs <emese@gnome.hu> for her solidarity, help from guys like KevinV.\n"
 "Shooby Ban <shooby@gnome.hu>"
 msgstr ""
-"Ten aplet przełącza mapy znaków, wykorzystując do teggo setxkbmap lub "
+"Ten aplet przełącza mapy klawiatur, wykorzystując do teggo setxkbmap lub "
 "xmodmap.\n"
 "Jeśli chcesz dodać nowy układ klawiatury i flagę, prześlij je na adres "
 "autora (shooby@gnome.hu, w języku angielskim).\n"
@@ -785,10 +788,6 @@ msgstr "Zmiana układu klawiatury"
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:1
 msgid "GKB Factory"
 msgstr "Generator GKB"
-
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:1
-msgid "Keyboard Layout Switcher"
-msgstr "Przełącznik układów klawiatur"
 
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:1
 msgid "Produces keyboard layout switcher applets."
@@ -1248,7 +1247,7 @@ msgstr "Aktualizowane na bieżąco notowania giełdowe"
 msgid "Gtik Applet Factory"
 msgstr "Generator wskaźnika giełdowego"
 
-#: gtik/GNOME_GtikApplet.server.in.h:1
+#: gtik/GNOME_GtikApplet.server.in.h:1 gtik/gtik.c:1
 msgid "Stock Ticker"
 msgstr "Wskaźnik giełdowy"
 
@@ -1256,13 +1255,9 @@ msgstr "Wskaźnik giełdowy"
 msgid "Refresh"
 msgstr "Odśwież"
 
-#: gtik/gtik.c:1 gtik/gtik.c:1
+#: gtik/gtik.c:1
 msgid "No data available or properties not set"
 msgstr "Dane nie są dostępne lub właściwości nie są ustawione"
-
-#: gtik/gtik.c:1
-msgid "The GNOME Stock Ticker"
-msgstr "Wskażnik Giełdowy GNOME"
 
 #: gtik/gtik.c:1
 msgid ""
@@ -1297,8 +1292,8 @@ msgstr "_Położenie :"
 msgid "P_ort :"
 msgstr "P_ort :"
 
-#: gtik/gtik.c:1
-msgid "Pro_xy requires a uername and password"
+#: gtik/gtik.c:1 gweather/gweather-pref.c:1
+msgid "Pro_xy requires a username and password"
 msgstr "Pośrednik wymaga _nazwy użytkownika i hasła"
 
 #: gtik/gtik.c:1 gweather/gweather-pref.c:1
@@ -1330,10 +1325,6 @@ msgid "Scroll _left to right"
 msgstr "Przewijanie od _lewej do prawej"
 
 #: gtik/gtik.c:1
-msgid "Display a_rrows instead of -/+"
-msgstr "Wyświetlanie _strzałek zamiast -/+"
-
-#: gtik/gtik.c:1
 msgid "_Enable scroll buttons"
 msgstr "_Przyciski przewijania"
 
@@ -1345,6 +1336,10 @@ msgstr "+ _Kolor"
 #: gtik/gtik.c:1
 msgid "- Colo_r"
 msgstr "- K_olor"
+
+#: gtik/gtik.c:1
+msgid "Back_ground Color"
+msgstr "Kolor _tła"
 
 #: gtik/gtik.c:1
 msgid "Stock Sy_mbol:"
@@ -1379,6 +1374,12 @@ msgid "Skip backword"
 msgstr "Przeskocz wstecz"
 
 #: gtik/gtik.c:1
+msgid ""
+"Stock Ticker\n"
+"Get continuously updated stock quotes"
+msgstr "Aktualizowane na bieżąco notowania giełdowe"
+
+#: gtik/gtik.c:1
 msgid "(No"
 msgstr "(Nie"
 
@@ -1399,6 +1400,7 @@ msgid "Monitor the current weather conditions, and forecasts"
 msgstr "Monitor aktualnych warunków pogodowych i prognoza pogody"
 
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.h:1
+#: gweather/gweather-about.c:1
 msgid "Weather Report"
 msgstr "Raport pogodowy"
 
@@ -1409,10 +1411,6 @@ msgstr "Prognoza"
 #: gweather/GNOME_GWeatherApplet.xml.h:1
 msgid "Update"
 msgstr "Odśwież"
-
-#: gweather/gweather-about.c:1 gweather/gweather-applet.c:1
-msgid "GNOME Weather"
-msgstr "Pogoda GNOME"
 
 #: gweather/gweather-about.c:1
 msgid "Copyright (c)1999 by S. Papadimitriou"
@@ -1427,6 +1425,10 @@ msgstr ""
 "Rozpowszechniany na warunkach licencji GNU GPL.\n"
 "\n"
 "Aplet monitorujący lokalne warunki pogodowe."
+
+#: gweather/gweather-applet.c:1
+msgid "GNOME Weather"
+msgstr "Pogoda GNOME"
 
 #: gweather/gweather-applet.c:1
 msgid "Updating..."
@@ -1592,10 +1594,6 @@ msgstr "P_ołożenie"
 #: gweather/gweather-pref.c:1
 msgid "Locat_ion :"
 msgstr "_Położenie :"
-
-#: gweather/gweather-pref.c:1
-msgid "Pro_xy requires a username and password"
-msgstr "Pośrednik wymaga _nazwy użytkownika i hasła"
 
 #: gweather/gweather-pref.c:1
 msgid "_Automatically update every"
@@ -2866,9 +2864,11 @@ msgstr "Nieznany"
 msgid "Retrieval failed"
 msgstr "Pobranie nie powiodło się"
 
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:1
 #: mini-commander/src/about.c:1
-msgid "Mini-Commander Applet"
-msgstr "Aplet Mini-Commander"
+#: mini-commander/src/mini-commander_applet.c:1
+msgid "Command Line"
+msgstr "Wiersz poleceń"
 
 #: mini-commander/src/about.c:1
 msgid ""
@@ -2926,15 +2926,6 @@ msgstr "uruchamianie..."
 msgid "autocompleted"
 msgstr "automatyczne uzupełnienie"
 
-#: mini-commander/src/command_line.c:1
-msgid "history list empty"
-msgstr "lista historii jest pusta"
-
-#. title
-#: mini-commander/src/command_line.c:1
-msgid "Command history"
-msgstr "Historia poleceń"
-
 #. build file select dialog
 #: mini-commander/src/command_line.c:1
 msgid "Start program"
@@ -2955,11 +2946,6 @@ msgstr "błąd funkcji fork"
 #: mini-commander/src/exec.c:1
 msgid "child exited"
 msgstr "proces potomny został zakończony"
-
-#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:1
-#: mini-commander/src/mini-commander_applet.c:1
-msgid "Command Line"
-msgstr "Wiersz poleceń"
 
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:1
 msgid "Mini-Commander"
@@ -3183,12 +3169,9 @@ msgid "Internet"
 msgstr "Internet"
 
 #: modemlights/GNOME_ModemLightsApplet.server.in.h:1
+#: modemlights/modemlights.c:1
 msgid "Modem Lights"
 msgstr "Kontrolki modemu"
-
-#: modemlights/modemlights.c:1
-msgid "Modem Lights Applet"
-msgstr "Aplet kontrolek modemu"
 
 #: modemlights/modemlights.c:1
 msgid ""
@@ -3353,7 +3336,7 @@ msgstr "Obciążenie CPU"
 msgid "A system load indicator"
 msgstr "Wskaźnik obciążenia systemu"
 
-#: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:1
+#: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:1 multiload/main.c:1
 msgid "System Monitor"
 msgstr "Monitor systemu"
 
@@ -3364,10 +3347,6 @@ msgstr "Uruchom pełny monitor systemu"
 #: multiload/loadavg.c:1
 msgid "Load Average"
 msgstr "Średnie obciążenie"
-
-#: multiload/main.c:1
-msgid "System Monitor Applet"
-msgstr "Aplet monitora systemu"
 
 #: multiload/main.c:1
 msgid ""
@@ -3591,20 +3570,18 @@ msgid "Applications"
 msgstr "Aplikacje"
 
 #: panel-menu/panel-menu.c:1
-msgid "PanelMenu Applet"
-msgstr "Aplet PanelMenu"
+msgid "Menu Bar"
+msgstr "Pasek menu"
 
 #: panel-menu/panel-menu.c:1
 msgid "(c) 2001 Chris Phelps"
 msgstr "(c) 2001 Chris Phelps"
 
 #: panel-menu/panel-menu.c:1
-msgid ""
-"The Panel Menu Applet allows you to display customized menubars on your "
-"panels."
+msgid "The Menu Bar allows you to display customized menubars on your panels."
 msgstr ""
-"Aplet menu pozwala na wyświetlanie na panelu dowolnie dopasowanych pasków "
-"menu."
+"Aplet paska menu pozwala na wyświetlanie na panelu dowolnie dopasowanych "
+"pasków menu."
 
 #: panel-menu/panel-menu-directory.c:1
 msgid "Create directory item..."
@@ -3629,6 +3606,10 @@ msgstr "..."
 #: panel-menu/panel-menu-directory.c:1
 msgid "_Depth level:"
 msgstr "_Poziom zagłębienia:"
+
+#: panel-menu/panel-menu-directory.c:1
+msgid "Path specified is currently not a valid directory."
+msgstr "Podana ścieżka nie opisuje katalogu."
 
 #: panel-menu/panel-menu-documents.c:1
 msgid "Create documents item..."
