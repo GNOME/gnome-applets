@@ -1786,6 +1786,24 @@ actual_redraw(gpointer data)
   /* FIXME: sel is currently always zero */
   sel = GPOINTER_TO_INT (gtk_object_get_data(GTK_OBJECT(widget), "select"));
 
+  if (config.pager_size)
+    {
+      if (widget->allocation.width != (area_w * PAGER_W_0))
+	gtk_widget_set_usize(widget, (area_w * PAGER_W_0), 
+			 widget->allocation.height);
+      if (widget->allocation.height != (area_h * PAGER_H_0))
+	gtk_widget_set_usize(widget, widget->allocation.width, 
+			 (area_h * PAGER_H_0));
+    }
+  else
+    {
+      if (widget->allocation.width != (area_w * PAGER_W_1))
+	gtk_widget_set_usize(widget, (area_w * PAGER_W_1), 
+			 widget->allocation.height);
+      if (widget->allocation.height != (area_h * PAGER_H_1))
+	gtk_widget_set_usize(widget, widget->allocation.width, 
+			 (area_h * PAGER_H_1));
+    }
   w = widget->allocation.width - 4;
   h = widget->allocation.height - 4;
   s = widget->style;
@@ -1893,6 +1911,7 @@ make_desktop_pane(gint desktop, gint width, gint height)
   else
     height = (height * area_h) / area_w;
   gtk_drawing_area_size(GTK_DRAWING_AREA(area), width, height);
+  gtk_widget_set_usize(area, width, height);
   gtk_object_set_data(GTK_OBJECT(area), "desktop", GINT_TO_POINTER (desktop));
   gtk_object_set_data(GTK_OBJECT(area), "select", GINT_TO_POINTER (0));
   gtk_widget_set_events(area, GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK |
