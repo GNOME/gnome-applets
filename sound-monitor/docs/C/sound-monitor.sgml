@@ -166,7 +166,8 @@
       <listitem>
        <para>
         Peak indicator falloff speed &mdash; This controls the speed
-        the peak indicator falls back to zero volume.
+        the peak indicator falls back to zero volume(for active mode)
+        or moves toward the current volume(for smooth mode).
        </para>
       </listitem>
       <listitem>
@@ -175,7 +176,9 @@
         horizontal (time) axis scale for <application>Sound
         Monitor</application> themes which resemble a scope. (Since
         the default theme is not a scope, this control does not do
-        anything until you have modified the theme, as described below.) 
+        anything until you have modified the theme, as described
+        below.) A value of 1 corresponds to having one pixel on the
+        display represent one sound sampling, which is taken at 44.1kHz.
        </para>
       </listitem>
 
@@ -232,7 +235,14 @@
 
       <listitem>
        <para>
-        ESD host to monitor &mdash;
+        ESD host to monitor &mdash; This option allows you to listen
+        to sound being played by ESD on another computer. To do so, 
+        enter the network address (or IP address) of a computer to
+        monitor in the format <replaceable>host:port</replaceable>.
+        The host specified must be running ESD and have their esound
+        daemon "unlocked" to allow other machines to connect. Note
+        that the default port for ESD is 5001.  Leave
+        this entry blank to monitor sound on the local machine.
        </para>
       </listitem>
 
@@ -276,7 +286,11 @@
 
       <listitem>
        <para>
-        Esound version &mdash;
+        Server information &mdash; This is a brief description of the
+        esound server daemon's current status, including the sound
+        output rate to the sound card, the number of currently playing
+        sounds (connected streams), and the number of sound samples
+        cached in the server.
        </para>
       </listitem>
 
@@ -289,7 +303,11 @@
 
       <listitem>
        <para>
-        Peak indicator &mdash;
+        Connected Streams &mdash; This displays a list of basic
+	information for the current sound streams playing through the
+	sound server. The user can adjust the volume and balance of a
+	stream by first selecting the stream's line, then adjusting
+	the volume and balance sliders. 
        </para>
       </listitem>
 
@@ -302,7 +320,13 @@
 
       <listitem>
        <para>
-        ESD host to monitor &mdash;
+        Cached Samples &mdash; This displays a list of basic
+	information for the current sounds cached in the sound
+	server. The user can adjust the volume and balance of a cached
+	sound by first selecting the sound's line, then adjusting the
+	volume and balance sliders. To toggle between displaying the
+	sound's length as bytes or time (format MM:SS.S) click on the
+	length or time column heading.
        </para>
       </listitem>
 
@@ -316,6 +340,46 @@
       <guibutton>Cancel</guibutton> button.
     </para>
 
+  </sect2>
+
+  <!-- ============= ESDPVD ================================== -->
+  <sect2 id="esdpvd">
+   <title>The Esound Persistent Volume Daemon (ESDPVD)</title>
+   <para>
+    The <application>Sound Monitor</application> applet comes with a
+    companion program called the <application>Esound Persistent Volume
+    Daemon</application>
+    (ESDPVD), which can run in the background and remembers the volume
+    and balance of each stream that connects to the sound server. The
+    main purpose of <application>ESDPVD</application> is to be used in
+    conjunction with the <application>Sound Monitor</application>
+    applet's <interface>Manager</interface> dialog 
+    to retain volume levels for individual streams that
+    connect to the ESD sound server.
+   </para>
+   <para>
+    As an example, suppose you are running the
+    <application>GTCD</application> CD Player and you 
+    lower its volume using the <interface>Manager</interface> window. Normally
+    the volume setting will be lost when the program(in this case
+    <application>GTCD</application>) is exited and
+    restarted. However, if <application>esdpvd</application> is
+    running and you start <application>GTCD</application> again, the
+    volume will be restored to its previous (in this case, 
+    lower) value from before. 
+   </para>
+   <para>
+    If you configure GNOME to start <application>ESDPVD</application>
+    each time GNOME is started (using the
+    <interface>control-center</interface>'s <interface>Startup 
+    Programs</interface> section), <application>ESDPVD</application> will remember
+    sound volume and balance customizations between GNOME sessions.
+   </para>
+   <para>
+    <application>ESDPVD</application> also remembers volume and
+    balance adjustments to cached samples (often used for interface
+    sound events such as button clicks, menus, etc.).
+   </para>
   </sect2>
 
 
@@ -352,7 +416,8 @@
 
    <para>
     This manual was written by Dan Mueth
-    (<email>d-mueth@uchicago.edu</email>). Please send all comments and
+    (<email>d-mueth@uchicago.edu</email>) and John Ellis
+    (<email>johne@bellatlantic.net</email>). Please send all comments and 
     suggestions regarding this manual to the <ulink type="http"
     url="http://www.gnome.org/gdp">GNOME Documentation Project</ulink> 
     by sending an email to <email>docs@gnome.org</email>. You can also
