@@ -7,6 +7,8 @@ typedef struct
 {
 	gchar *ucolor;	/* color for used space */
 	gchar *fcolor;	/* color for free space */
+	gchar *tcolor;  /* color for text  */
+	gchar *bcolor;  /* background color */
 	guint speed, height, width;
 	gboolean look;
 } diskusage_properties;

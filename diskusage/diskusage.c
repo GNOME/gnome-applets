@@ -37,7 +37,7 @@ static GtkWidget *my_applet;
 GtkWidget *disp;
 GdkPixmap *pixmap;
 GdkGC *gc;
-GdkColor ucolor, fcolor;
+GdkColor ucolor, fcolor, tcolor, bcolor;
 
 int timer_index=-1;
 
@@ -85,17 +85,18 @@ int draw_h(void)
 	sprintf (avail_buf2,"av: %u\0", summary_info.filesystems[sel_fs].sizeinfo[2]);
 
 
-	
 
+	gdk_gc_set_foreground( gc, &bcolor );
+	
 	/* Erase Rectangle */
 	gdk_draw_rectangle( pixmap,
-		disp->style->black_gc,
+		gc,
 		TRUE, 0,0,
 		disp->allocation.width,
 		disp->allocation.height );
 
 
-	gdk_gc_set_foreground( gc, &ucolor );
+	gdk_gc_set_foreground( gc, &tcolor );
 	
 	/* draw text strings */
 	gdk_draw_string(pixmap, my_font, gc,
@@ -187,16 +188,17 @@ int draw_v(void)
 
 
 	
+	gdk_gc_set_foreground( gc, &bcolor );
 
 	/* Erase Rectangle */
 	gdk_draw_rectangle( pixmap,
-		disp->style->black_gc,
+		gc,
 		TRUE, 0,0,
 		disp->allocation.width,
 		disp->allocation.height );
 
 
-	gdk_gc_set_foreground( gc, &ucolor );
+	gdk_gc_set_foreground( gc, &tcolor );
 	
 	/* draw text strings */
 	gdk_draw_string(pixmap, my_font, gc,
@@ -294,6 +296,12 @@ void setup_colors(void)
 
         gdk_color_parse(props.fcolor, &fcolor);
         gdk_color_alloc(colormap, &fcolor);
+        
+	gdk_color_parse(props.tcolor, &tcolor);
+        gdk_color_alloc(colormap, &tcolor);
+	
+	gdk_color_parse(props.bcolor, &bcolor);
+        gdk_color_alloc(colormap, &bcolor);
 }
 	        
 void create_gc(void)
@@ -505,8 +513,8 @@ about_cb (AppletWidget *widget, gpointer data)
 			"This applet is released under "
 			"the terms and conditions of the "
 			"GNU Public Licence."
-			"\nShows a bargraph with the used space "
-			"on each mounted filesystem.  ",
+			"\nShows a pie with the used and free space "
+			"for the selected filesystem.  ",
 			NULL);
 	gtk_widget_show (about);
 
