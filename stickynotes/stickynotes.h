@@ -43,6 +43,8 @@ void stickynote_remove(StickyNote *note);
     
 void stickynotes_hide_all();
 void stickynotes_show_all();
+void stickynotes_lock_all();
+void stickynotes_unlock_all();
 void stickynotes_save_all();
 void stickynotes_load_all();
 

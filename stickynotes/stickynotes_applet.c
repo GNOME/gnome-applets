@@ -32,6 +32,8 @@ static const BonoboUIVerb stickynotes_applet_menu_verbs[] =
         BONOBO_UI_UNSAFE_VERB ("destroy_all", menu_destroy_all_cb),
         BONOBO_UI_UNSAFE_VERB ("hide", menu_hide_cb),
         BONOBO_UI_UNSAFE_VERB ("show", menu_show_cb),
+        BONOBO_UI_UNSAFE_VERB ("lock", menu_lock_cb),
+        BONOBO_UI_UNSAFE_VERB ("unlock", menu_unlock_cb),
         BONOBO_UI_UNSAFE_VERB ("preferences", menu_preferences_cb),
         BONOBO_UI_UNSAFE_VERB ("help", menu_help_cb),
         BONOBO_UI_UNSAFE_VERB ("about", menu_about_cb),
@@ -61,7 +63,7 @@ static gboolean stickynotes_applet_fill(PanelApplet *applet)
 		g_object_unref(pixbuf);
 	}
 	gtk_container_add(GTK_CONTAINER(applet), stickynotes->image);
-	panel_applet_setup_menu_from_file(applet, NULL, "stickynotes_applet.xml", NULL, stickynotes_applet_menu_verbs, stickynotes);
+	panel_applet_setup_menu_from_file(applet, NULL, "GNOME_StickyNotesApplet.xml", NULL, stickynotes_applet_menu_verbs, stickynotes);
 	gtk_tooltips_set_tip(stickynotes->tooltips, GTK_WIDGET(applet), _("Sticky Notes"), NULL);
 
 	/* Connect all signals for applet management */
@@ -83,10 +85,14 @@ static gboolean stickynotes_applet_fill(PanelApplet *applet)
 	
 	/* Set default icon for all sticky note windows */
 	gnome_window_icon_set_default_from_file(STICKYNOTES_ICONDIR "/stickynotes.png");
-	
+
 	/* Load sticky notes */
 	stickynotes_load_all();
 	
+	/* Lock sticky notes if necessary */
+	if (gconf_client_get_bool(stickynotes->gconf_client, GCONF_PATH "/settings/locked", NULL))
+		stickynotes_lock_all();
+
 	/* Auto-save every so minutes (default 5) */
 	g_timeout_add(1000 * 60 * gconf_client_get_int(stickynotes->gconf_client, GCONF_PATH "/settings/autosave_time", NULL),
 		(GSourceFunc) applet_save_cb, applet);
@@ -97,14 +103,14 @@ static gboolean stickynotes_applet_fill(PanelApplet *applet)
 /* Create the Sticky Notes applet */
 static gboolean stickynotes_applet_factory(PanelApplet *applet, const gchar *iid, gpointer data) 
 {
-	if (!strcmp(iid, "OAFIID:StickyNotesApplet"))
+	if (!strcmp(iid, "OAFIID:GNOME_StickyNotesApplet"))
 		return stickynotes_applet_fill(applet);
 
 	return FALSE;
 }
 
 /* Initialize the applet */
-PANEL_APPLET_BONOBO_FACTORY("OAFIID:StickyNotesApplet_Factory", PANEL_TYPE_APPLET, PACKAGE, VERSION, stickynotes_applet_factory, NULL);
+PANEL_APPLET_BONOBO_FACTORY("OAFIID:GNOME_StickyNotesApplet_Factory", PANEL_TYPE_APPLET, PACKAGE, VERSION, stickynotes_applet_factory, NULL);
 
 /* Highlight the Sticky Notes Applet */
 void stickynotes_applet_highlight(PanelApplet *applet, gboolean highlight)

@@ -34,12 +34,26 @@ gboolean applet_click_cb(GtkWidget *widget, GdkEventButton *event, PanelApplet *
 			case 0:
 				stickynote_new();
 				stickynotes_save_all();
+				
+				/* Unlock all sticky notes */
+				gconf_client_set_bool(stickynotes->gconf_client, GCONF_PATH "/settings/locked", FALSE, NULL);
+				
 				break;
+				
 			case 1:
 				if (stickynotes->hidden)
 					stickynotes_show_all();
 				else
 					stickynotes_hide_all();
+				
+				break;
+				
+			case 2:
+				if (gconf_client_get_bool(stickynotes->gconf_client, GCONF_PATH "/settings/locked", NULL))
+					gconf_client_set_bool(stickynotes->gconf_client, GCONF_PATH "/settings/locked", FALSE, NULL);
+				else
+					gconf_client_set_bool(stickynotes->gconf_client, GCONF_PATH "/settings/locked", TRUE, NULL);
+				
 				break;
                 }
 		
@@ -100,6 +114,9 @@ void menu_create_cb(BonoboUIComponent *uic, StickyNotesApplet *sticky, const gch
 {
 	stickynote_new();
 	stickynotes_save_all();
+	
+	/* Unlock all sticky notes */
+	gconf_client_set_bool(stickynotes->gconf_client, GCONF_PATH "/settings/locked", FALSE, NULL);
 }
 
 /* Menu Callback : Destroy all sticky notes */
@@ -130,6 +147,18 @@ void menu_hide_cb(BonoboUIComponent *uic, StickyNotesApplet *sticky, const gchar
 void menu_show_cb(BonoboUIComponent *uic, StickyNotesApplet *sticky, const gchar *verbname)
 {
 	stickynotes_show_all();
+}
+
+/* Menu Callback : Lock all Sticky notes from editing */
+void menu_lock_cb(BonoboUIComponent *uic, StickyNotesApplet *sticky, const gchar *verbname)
+{
+	gconf_client_set_bool(stickynotes->gconf_client, GCONF_PATH "/settings/locked", TRUE, NULL);
+}
+
+/* Menu Callback : Unlock all Sticky notes for editiing */
+void menu_unlock_cb(BonoboUIComponent *uic, StickyNotesApplet *sticky, const gchar *verbname)
+{
+	gconf_client_set_bool(stickynotes->gconf_client, GCONF_PATH "/settings/locked", FALSE, NULL);
 }
 
 /* Menu Callback : Configure preferences */
@@ -283,6 +312,13 @@ void preferences_apply_cb(GConfClient *client, guint cnxn_id, GConfEntry *entry,
 				gtk_window_unstick(GTK_WINDOW(note->window));
 			}
 		}
+	}
+
+	if (strcmp(entry->key, GCONF_PATH "/settings/locked") == 0) {
+		if (gconf_value_get_bool(entry->value))
+			stickynotes_lock_all();
+		else
+			stickynotes_unlock_all();
 	}
 
 	else if (strcmp(entry->key, GCONF_PATH "/settings/title_color") == 0

@@ -36,6 +36,8 @@ void menu_create_cb(BonoboUIComponent *uic, StickyNotesApplet *sticky, const gch
 void menu_destroy_all_cb(BonoboUIComponent *uic, StickyNotesApplet *sticky, const gchar *verbname);
 void menu_hide_cb(BonoboUIComponent *uic, StickyNotesApplet *sticky, const gchar *verbname);
 void menu_show_cb(BonoboUIComponent *uic, StickyNotesApplet *sticky, const gchar *verbname);
+void menu_lock_cb(BonoboUIComponent *uic, StickyNotesApplet *sticky, const gchar *verbname);
+void menu_unlock_cb(BonoboUIComponent *uic, StickyNotesApplet *sticky, const gchar *verbname);
 void menu_preferences_cb(BonoboUIComponent *uic, StickyNotesApplet *sticky, const gchar *verbname);
 void menu_help_cb(BonoboUIComponent *uic, StickyNotesApplet *sticky, const gchar *verbname);
 void menu_about_cb(BonoboUIComponent *uic, StickyNotesApplet *sticky, const gchar *verbname);

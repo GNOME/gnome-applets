@@ -19,6 +19,7 @@
 
 #include <config.h>
 #include <stickynotes_callbacks.h>
+#include <stickynotes_applet.h>
 
 /* Sticky Window Callback : Prevent deleting the window. */
 gboolean window_delete_cb(GtkWidget *widget, StickyNote *note)
@@ -101,6 +102,9 @@ gboolean window_focus_cb(GtkWidget *widget, GdkEventFocus *event, StickyNote *no
 void popup_create_cb(GtkWidget *widget, StickyNote *note)
 {
 	stickynote_new();
+	
+	/* Unlock all sticky notes */
+	gconf_client_set_bool(stickynotes->gconf_client, GCONF_PATH "/settings/locked", FALSE, NULL);
 }
 
 /* Popup Menu Callback : Destroy selected sticky note */

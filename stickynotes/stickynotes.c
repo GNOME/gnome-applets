@@ -75,6 +75,7 @@ StickyNote * stickynote_new()
 	/* Customize the colors */
 	stickynote_set_highlighted(note, FALSE);
 
+	/* Other stuff */
 	{
 		GtkWidget *title_box = glade_xml_get_widget(note->glade, "title_box");
 		GtkWidget *resize_box = glade_xml_get_widget(note->glade, "resize_box");
@@ -96,14 +97,18 @@ StickyNote * stickynote_new()
 
 	/* Update tooltips */
 	{
-		gchar *tooltip = g_strdup_printf(_("Sticky Notes\n%d note(s)"), g_list_length(stickynotes->notes));
+		gchar *tooltip;
+		if (gconf_client_get_bool(stickynotes->gconf_client, GCONF_PATH "/settings/locked", NULL))
+			tooltip = g_strdup_printf(_("Sticky Notes\n%d locked note(s)"), g_list_length(stickynotes->notes));
+		else
+			tooltip = g_strdup_printf(_("Sticky Notes\n%d note(s)"), g_list_length(stickynotes->notes));
 		gtk_tooltips_set_tip(stickynotes->tooltips, GTK_WIDGET(stickynotes->applet), tooltip, NULL);
 		g_free(tooltip);
 	}
 	
 	/* Finally show it all. */
 	gtk_widget_show_all(note->window);
-	
+
 	return note;
 }
 
@@ -119,7 +124,11 @@ void stickynote_free(StickyNote *note)
 
 	/* Update tooltips */
 	{
-		gchar *tooltip = g_strdup_printf(_("Sticky Notes\n%d note(s)"), g_list_length(stickynotes->notes));
+		gchar *tooltip;
+		if (gconf_client_get_bool(stickynotes->gconf_client, GCONF_PATH "/settings/locked", NULL))
+			tooltip = g_strdup_printf(_("Sticky Notes\n%d locked note(s)"), g_list_length(stickynotes->notes));
+		else
+			tooltip = g_strdup_printf(_("Sticky Notes\n%d note(s)"), g_list_length(stickynotes->notes));
 		gtk_tooltips_set_tip(stickynotes->tooltips, GTK_WIDGET(stickynotes->applet), tooltip, NULL);
 		g_free(tooltip);
 	}
@@ -142,7 +151,7 @@ void stickynote_set_highlighted(StickyNote *note, gboolean highlighted)
 
 	GdkColor color;
 
-	if (highlighted) {
+	if (highlighted && !gconf_client_get_bool(stickynotes->gconf_client, GCONF_PATH "/settings/locked", NULL)) {
 		gchar *color_str = gconf_client_get_string(stickynotes->gconf_client, GCONF_PATH "/settings/title_color_prelight", NULL);
 		gdk_color_parse(color_str, &color);
 		g_free(color_str);
@@ -216,6 +225,19 @@ void stickynote_remove(StickyNote *note)
 	g_object_unref(glade);
 }
 
+/* Hide all sticky notes */
+void stickynotes_hide_all()
+{
+	gint i;
+	
+	for (i = 0; i < g_list_length(stickynotes->notes); i++) {
+		StickyNote *note = g_list_nth_data(stickynotes->notes, i);
+		gtk_widget_hide(note->window);
+	}
+
+	stickynotes->hidden = TRUE;
+}
+
 /* Show all sticky notes */
 void stickynotes_show_all()
 {
@@ -230,17 +252,28 @@ void stickynotes_show_all()
 	stickynotes->hidden = FALSE;
 }
 
-/* Hide all sticky notes */
-void stickynotes_hide_all()
+/* Lock all sticky notes from editing */
+void stickynotes_lock_all()
 {
 	gint i;
 	
 	for (i = 0; i < g_list_length(stickynotes->notes); i++) {
 		StickyNote *note = g_list_nth_data(stickynotes->notes, i);
-		gtk_widget_hide(note->window);
+		gtk_text_view_set_editable(GTK_TEXT_VIEW(note->body), FALSE);
+		gtk_text_view_set_cursor_visible(GTK_TEXT_VIEW(note->body), FALSE);
 	}
+}
 
-	stickynotes->hidden = TRUE;
+/* Unlock all sticky notes for editing */
+void stickynotes_unlock_all()
+{
+	gint i;
+	
+	for (i = 0; i < g_list_length(stickynotes->notes); i++) {
+		StickyNote *note = g_list_nth_data(stickynotes->notes, i);
+		gtk_text_view_set_editable(GTK_TEXT_VIEW(note->body), TRUE);
+		gtk_text_view_set_cursor_visible(GTK_TEXT_VIEW(note->body), TRUE);
+	}
 }
 
 /* Save all sticky notes in an XML configuration file */
