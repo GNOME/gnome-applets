@@ -402,26 +402,6 @@ util_get_atom(Window win, gchar *atom, Atom type, gint *size)
   return NULL;
 }
 
-gchar              *
-util_reduce_chars(gchar * s, int num)
-{
-  int                 l;
-  gchar              *ss;
-  
-  l = strlen(s);
-  if (l > num)
-    {
-      ss = g_malloc(num + 4);
-      ss[0] = 0;
-      strncat(ss, s, num);
-      strcat(ss, "...");
-      return ss;
-    }
-  else
-    return strdup(s);
-}
-
-
 
 /* CLIENT WINDOW manipulation functions */
 
@@ -695,6 +675,12 @@ custom_popbox_show(GtkWidget * widget)
 int
 showpop_cb(GtkWidget *widget, gpointer data)
 {
+  if(!popbox)
+    {
+      create_popbox();
+      populate_tasks(TRUE);
+    }
+
   custom_popbox_show(popbox);
   /*XXX: return false even though clicked is a void signal, but all the _event's
     need a return value*/
@@ -729,7 +715,7 @@ cb_task_change(GtkWidget *widget, GdkEventProperty * ev, Task *t)
 	  desktop_draw(t->desktop);
 	  desktop_draw(tdesk);
 	  if (!config.tasks_all)
-	    populate_tasks();	  
+	    populate_tasks(FALSE);	  
 	}
       else
 	desktop_draw(t->desktop);
@@ -758,7 +744,7 @@ cb_root_prop_change(GtkWidget * widget, GdkEventProperty * ev)
       current_desk = desk;
       desktop_draw(pdesk);
       desktop_draw(current_desk);
-      populate_tasks();
+      populate_tasks(FALSE);
       return;
     }
   
@@ -768,7 +754,7 @@ cb_root_prop_change(GtkWidget * widget, GdkEventProperty * ev)
       tasks_changed = 0;
       tasks_update();
       if (tasks_changed)
-	populate_tasks();
+	populate_tasks(FALSE);
       tasks_changed = 0;
       return;
     }
@@ -779,7 +765,7 @@ cb_root_prop_change(GtkWidget * widget, GdkEventProperty * ev)
       num_desk = gnome_win_hints_get_workspace_count();
       if (num_desk < 1)
 	num_desk = 1;
-      populate_tasks();
+      populate_tasks(FALSE);
       redo_interface();
       return;
     }
@@ -817,7 +803,7 @@ cb_root_prop_change(GtkWidget * widget, GdkEventProperty * ev)
 	  g_free(da);
 	}
       if (!config.tasks_all)
-	populate_tasks();
+	populate_tasks(FALSE);
       desktop_draw(current_desk);
     }
   at = gdk_atom_intern(XA_WIN_WORKSPACE_NAMES, FALSE);
@@ -1026,9 +1012,7 @@ task_get_info(Task *t)
 	needredo = 1;
     }
   if ((psticky != t->sticky) || (needredo))
-    {
-      populate_tasks();
-    }
+    populate_tasks(FALSE);
 }
 
 gint
@@ -2035,10 +2019,8 @@ init_applet_gui(int horizontal)
     gtk_container_add(GTK_CONTAINER(frame), table);
   task_table = table;
   
-  create_popbox();
-
   emtpy_task_widgets();
-  populate_tasks();
+  populate_tasks(FALSE);
 }
 
 gboolean
@@ -2195,8 +2177,7 @@ set_task_info_to_button(Task *t)
 {
   GtkWidget *button, *icon1, *icon2, *icon3, *label;
   GtkRequisition  req;
-  gint num, len, mw;
-  gchar *str;
+  gint num, mw;
   GList *p;
 
   if (!t)
@@ -2289,29 +2270,96 @@ set_task_info_to_button(Task *t)
     {
       mw = config.max_task_vwidth;
     }
+  
+    /*if the size is too much and we can reduce it, do it*/
+    /*FIXME: this  won't work with i18n (with multibyte characters)
+      properly*/
+    if(req.width > mw && label && (!t->name || *t->name)) {
+	    int len;
+	    char *str;
+	    int button_width;
 
-    if (t->name)
-      len = strlen(t->name);
-    else
-      len = 3; /*strlen("???");*/
-    while ((req.width > mw) && (len > 0))
-      {
-	len--;
-	if (t->name)
-	  str = util_reduce_chars(t->name, len);
-	else
-	  str = util_reduce_chars("???", len);
-	if (label)
-	  gtk_label_set_text (GTK_LABEL(label), str);
-	g_free(str);
-	gtk_widget_size_request(button, &req);
-      }
-    if ((len <=0) && (label))
-      gtk_label_set_text (GTK_LABEL(label), "");
+	    gtk_label_set_text (GTK_LABEL(label), "");
+	    gtk_widget_size_request(button, &req);
+
+	    if (t->name)
+		    len = strlen(t->name);
+	    else
+		    len = 3; /*strlen("???");*/
+	    
+	    len--;
+	    str = g_malloc(len+4);
+	    if(t->name)
+		    strcpy(str,t->name);
+	    else
+		    strcpy(str,"???");
+	    strcat(str,"..");
+	    for(;len>0;len--) {
+		    int label_len;
+		    str[len]='.';
+		    str[len+3]='\0';
+
+		    label_len = gdk_string_width
+			    (GTK_WIDGET (label)->style->font, str);
+		    if(label_len+req.width<=mw)
+			    break;
+	    }
+	    if(len<=0)
+		    gtk_label_set_text (GTK_LABEL(label), "");
+	    else
+		    gtk_label_set_text (GTK_LABEL(label), str);
+	    g_free(str);
+    }
 }
 
+static gint
+popup_button_pressed (GtkWidget *widget, GdkEventButton *event, Task *t)
+{
+	GtkWidget *popup;
+	if (event->button != 3)
+		return FALSE;
+	
+	popup = gtk_object_get_data(GTK_OBJECT(widget),"popup");
+	if(!popup) {
+		GtkWidget *item;
+		popup = gtk_menu_new();
+
+		item = gtk_menu_item_new_with_label(_("Show / Hide"));
+		gtk_widget_show(item);
+		gtk_menu_append(GTK_MENU(popup),item);
+		gtk_signal_connect(GTK_OBJECT(item),"activate",
+				   GTK_SIGNAL_FUNC(cb_showhide),t);
+
+		item = gtk_menu_item_new_with_label(_("Shade / Unshade"));
+		gtk_widget_show(item);
+		gtk_menu_append(GTK_MENU(popup),item);
+		gtk_signal_connect(GTK_OBJECT(item),"activate",
+				   GTK_SIGNAL_FUNC(cb_shade),t);
+
+		item = gtk_menu_item_new_with_label(_("Close"));
+		gtk_widget_show(item);
+		gtk_menu_append(GTK_MENU(popup),item);
+		gtk_signal_connect(GTK_OBJECT(item),"activate",
+				   GTK_SIGNAL_FUNC(cb_kill),t);
+
+		item = gtk_menu_item_new_with_label(_("Nuke"));
+		gtk_widget_show(item);
+		gtk_menu_append(GTK_MENU(popup),item);
+		gtk_signal_connect(GTK_OBJECT(item),"activate",
+				   GTK_SIGNAL_FUNC(cb_nuke),t);
+
+		gtk_signal_connect_object(GTK_OBJECT(widget),"destroy",
+					  GTK_SIGNAL_FUNC(gtk_widget_destroy),
+					  GTK_OBJECT(popup));
+	}
+	gnome_popup_menu_do_popup (popup, NULL, NULL, event, NULL);
+
+	return TRUE;
+}
+
+
 void
-populate_tasks(void)
+populate_tasks(int just_popbox)
 {
    Task            *t;
    GList           *p;
@@ -2319,19 +2367,31 @@ populate_tasks(void)
 #ifdef ANIMATION
    GtkWidget       *f1, *f2, *f3, *f4;
 #endif  
-   gint             n_rows, n_cols, num, i, j, k, mw, len;
-   gchar           *str;
-   GnomeUIInfo     uinfo[5] = {GNOMEUIINFO_END, GNOMEUIINFO_END, 
-      GNOMEUIINFO_END, GNOMEUIINFO_END};
+   gint             n_rows, n_cols, num, i, j, k;
 
   if (!task_table)
     return;
 
-  desktroy_task_widgets();
+  if (!just_popbox && popbox && !GTK_WIDGET_VISIBLE(popbox))
+    {
+      gtk_widget_destroy(popbox);
+      popbox_q = popbox = NULL;
+      g_list_free(task_dest);
+      task_dest = NULL;
+    }
 
+  if (just_popbox)
+    {
+      g_list_foreach(task_dest,(GFunc)gtk_widget_destroy,NULL);
+      g_list_free(task_dest);
+      task_dest = NULL;
+    }
+  else
+    desktroy_task_widgets();
+  
   if (!tasks)
     return;
-
+  
   j = 0;
   k = 0;
   n_rows = 0;
@@ -2350,15 +2410,8 @@ populate_tasks(void)
 	   )
 	  )
 	num++;
-      p = p->next;
-    }
-  p = tasks;
-  while (p)
-    {
-      t = (Task *)p->data;
-      
       if (popbox)
-	{
+        {
 	  button = gtk_button_new_with_label(t->name ? t->name : "");
 	  gtk_widget_show(button);
 	  gtk_signal_connect(GTK_OBJECT(button), "button_press_event",
@@ -2375,18 +2428,32 @@ populate_tasks(void)
 		   (t->desktop >= 0) && (t->desktop < num_desk) && 
 		   (num_desk > 0) && (blists[(t->desktop % num_desk) + 1]))
 	    gtk_box_pack_start(GTK_BOX(blists[(t->desktop % num_desk) + 1]), 
-			       button, TRUE, TRUE, 0);
-	  task_dest = g_list_append(task_dest, button);
+				     button, TRUE, TRUE, 0);
 	  gtk_object_set_data(GTK_OBJECT(button), "task", t);
+	  task_dest = g_list_append(task_dest, button);
 	}
       
-      if (((!(config.tasks_all)) && 
-	   (t->desktop == current_desk)
-	   && (t->ax == area_x)
-	   && (t->ay == area_y)
+      p = p->next;
+    }
+  if (popbox_q)
+    gtk_widget_queue_resize(popbox_q);
+
+  if(just_popbox)
+    return;
+
+  p = tasks;
+  while (p)
+    {
+      t = (Task *)p->data;
+      
+      if ((((!(config.tasks_all)) && 
+	    (t->desktop == current_desk)
+	    && (t->ax == area_x)
+	    && (t->ay == area_y)
 	   )
-	  || (config.tasks_all) ||
-	  (t->sticky))
+	   || (config.tasks_all) ||
+	   (t->sticky)) &&
+	  !just_popbox)
 	{
 	  hbox = gtk_hbox_new(0, FALSE);
 	  gtk_widget_show(hbox);
@@ -2445,58 +2512,10 @@ populate_tasks(void)
 	  gtk_tooltips_set_tip(GTK_TOOLTIPS(tip), button, t->name, NULL);
 	  gtk_tooltips_enable(GTK_TOOLTIPS(tip));
 */	  
-	   uinfo[0].type            = GNOME_APP_UI_ITEM;
-	   uinfo[0].label           = N_("Show / Hide");
-	   uinfo[0].hint            = NULL;
-	   uinfo[0].moreinfo        = cb_showhide;
-	   uinfo[0].user_data       = t;
-	   uinfo[0].unused_data     = NULL;
-	   uinfo[0].pixmap_type     = GNOME_APP_PIXMAP_NONE;
-	   uinfo[0].pixmap_info     = GNOME_STOCK_MENU_OPEN;
-	   uinfo[0].accelerator_key = 0;
-	   uinfo[0].ac_mods         = (GdkModifierType) 0;
-	   uinfo[0].widget          = NULL;
-	   
-	   uinfo[1].type            = GNOME_APP_UI_ITEM;
-	   uinfo[1].label           = N_("Shade / Unshade");
-	   uinfo[1].hint            = NULL;
-	   uinfo[1].moreinfo        = cb_shade;
-	   uinfo[1].user_data       = t;
-	   uinfo[1].unused_data     = NULL;
-	   uinfo[1].pixmap_type     = GNOME_APP_PIXMAP_NONE;
-	   uinfo[1].pixmap_info     = GNOME_STOCK_MENU_OPEN;
-	   uinfo[1].accelerator_key = 0;
-	   uinfo[1].ac_mods         = (GdkModifierType) 0;
-	   uinfo[1].widget          = NULL;
-	   
-	   uinfo[2].type            = GNOME_APP_UI_ITEM;
-	   uinfo[2].label           = N_("Close");
-	   uinfo[2].hint            = NULL;
-	   uinfo[2].moreinfo        = cb_kill;
-	   uinfo[2].user_data       = t;
-	   uinfo[2].unused_data     = NULL;
-	   uinfo[2].pixmap_type     = GNOME_APP_PIXMAP_NONE;
-	   uinfo[2].pixmap_info     = GNOME_STOCK_MENU_OPEN;
-	   uinfo[2].accelerator_key = 0;
-	   uinfo[2].ac_mods         = (GdkModifierType) 0;
-	   uinfo[2].widget          = NULL;
-	   
-	   uinfo[3].type            = GNOME_APP_UI_ITEM;
-	   uinfo[3].label           = N_("Nuke");
-	   uinfo[3].hint            = NULL;
-	   uinfo[3].moreinfo        = cb_nuke;
-	   uinfo[3].user_data       = t;
-	   uinfo[3].unused_data     = NULL;
-	   uinfo[3].pixmap_type     = GNOME_APP_PIXMAP_NONE/*GNOME_APP_PIXMAP_STOCK*/;
-	   uinfo[3].pixmap_info     = GNOME_STOCK_MENU_OPEN;
-	   uinfo[3].accelerator_key = 0;
-	   uinfo[3].ac_mods         = (GdkModifierType) 0;
-	   uinfo[3].widget          = NULL;
-
-/* WARNING WARNING: FIXME FIXME:  gnome_menu_popup LEAKS like a sieve */
-	  menu = gnome_popup_menu_new(uinfo);
-	  gnome_popup_menu_attach(menu, button, t);
-/*	  task_dest = g_list_append(task_dest, menu);*/
+	  
+	  gtk_signal_connect (GTK_OBJECT (button), "button_press_event",
+			      (GtkSignalFunc) popup_button_pressed,
+			      t);
 
 	  gtk_object_set_data(GTK_OBJECT(button), "icon1", icon1);
 	  gtk_object_set_data(GTK_OBJECT(button), "icon2", icon2);
@@ -2546,8 +2565,4 @@ populate_tasks(void)
       p = p->next;
     }
   gtk_table_resize(GTK_TABLE(task_table), n_rows, n_cols);
-  if (popbox_q)
-    {
-      gtk_widget_queue_resize(popbox_q);
-    }
 }

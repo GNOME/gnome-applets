@@ -45,7 +45,6 @@ void cb_prop_apply(GtkWidget *widget, int page, gpointer data);
 void cb_applet_properties(AppletWidget * widget, gpointer data);
 
 void *util_get_atom(Window win, gchar *atom, Atom type, gint *size);
-gchar *util_reduce_chars(gchar * s, int num);
 
 void client_win_kill(Task *t);
 void client_win_close(Task *t);
@@ -95,7 +94,8 @@ void emtpy_task_widgets(void);
 void desktroy_task_widgets(void);
 GtkWidget *find_task_widget(Task *t);
 void set_task_info_to_button(Task *t);
-void populate_tasks(void);
+
+void populate_tasks(int just_popbox);
 
 void desktop_set_area(int ax, int ay);
 void create_popbox(void);

@@ -1,3 +1,11 @@
+Sat Mar 06 22:34:06 1999  George Lebl  <jirka@5z.com>
+
+	* gnomepager_applet.c: more efficent algorithm for getting the short
+	  string names, don't always create and populate popbox, but do it
+	  on demand when actually needed, get rid of gnome_popup for menus
+	  and make the popup menu handcoded and created on demand to reduce
+	  memory usage and cpu usage (this also seems to fix leaking)
+
 Sat Mar 06 20:56:48 1999  George Lebl  <jirka@5z.com>
 
 	* gnomepager_applet.c: added a hack so that one can drag the applet
