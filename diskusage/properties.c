@@ -4,8 +4,6 @@
  *
  * this was cut & past'ed nearly 1:1 from the cpuload applet
  *
- * Author: Tim P. Gerla
- *
  */
 
 #include <stdio.h>
@@ -16,7 +14,7 @@
 #include "properties.h"
 #include "diskusage.h"
 
-/*#define DU_DEBUG*/
+/* #define DU_DEBUG */
 
 GtkWidget *propbox=NULL;
 static diskusage_properties temp_props;
@@ -24,9 +22,21 @@ static diskusage_properties temp_props;
 extern GtkWidget *disp;
 extern diskusage_properties props;
 extern DiskusageInfo   summary_info;
+	
+extern void diskusage_resize(void);
 
 void setup_colors(void);
 void start_timer( void );
+void ucolor_set_cb(GnomeColorPicker *cp);
+void fcolor_set_cb(GnomeColorPicker *cp);
+void tcolor_set_cb(GnomeColorPicker *cp);
+void bcolor_set_cb(GnomeColorPicker *cp);
+void height_cb( GtkWidget *widget, GtkWidget *spin );
+void width_cb( GtkWidget *widget, GtkWidget *spin );
+void freq_cb( GtkWidget *widget, GtkWidget *spin );
+void apply_cb( GtkWidget *widget, void *data );
+gint destroy_cb( GtkWidget *widget, void *data );
+GtkWidget *create_frame(void);
 
 void load_properties( char *path, diskusage_properties *prop )
 {
@@ -62,25 +72,50 @@ void save_properties( char *path, diskusage_properties *prop )
 	gnome_config_drop_all();
 }
 
-void color_changed_cb( GnomeColorSelector *widget, gchar **color )
+void ucolor_set_cb(GnomeColorPicker *cp)
 {
-        char *tmp;
  	int r,g,b;
-
-	/* FIXME ugh, mem leak..anyone have a better way of doing this? */        
-	tmp = malloc(24);
-        if( !tmp )
-        {
-	        g_warning(_("Can't allocate memory for color\n"));
-                return;
-        }
-        gnome_color_selector_get_color_int(
-        	widget, &r, &g, &b, 255 );
-	
-	sprintf( tmp, "#%02x%02x%02x", r, g, b );
-        *color = tmp;
+	gnome_color_picker_get_i8(cp, 
+			&r,
+			&g, 
+			&b,
+			NULL);
+	sprintf( temp_props.ucolor, "#%02x%02x%02x", r, g, b );
         gnome_property_box_changed(GNOME_PROPERTY_BOX(propbox));
-}          
+}
+void fcolor_set_cb(GnomeColorPicker *cp)
+{
+ 	int r,g,b;
+	gnome_color_picker_get_i8(cp, 
+			&r,
+			&g, 
+			&b,
+			NULL);
+	sprintf( temp_props.fcolor, "#%02x%02x%02x", r, g, b );
+        gnome_property_box_changed(GNOME_PROPERTY_BOX(propbox));
+}
+void tcolor_set_cb(GnomeColorPicker *cp)
+{
+ 	int r,g,b;
+	gnome_color_picker_get_i8(cp, 
+			&r,
+			&g, 
+			&b,
+			NULL);
+	sprintf( temp_props.tcolor, "#%02x%02x%02x", r, g, b );
+        gnome_property_box_changed(GNOME_PROPERTY_BOX(propbox));
+}
+void bcolor_set_cb(GnomeColorPicker *cp)
+{
+ 	int r,g,b;
+	gnome_color_picker_get_i8(cp, 
+			&r,
+			&g, 
+			&b,
+			NULL);
+	sprintf( temp_props.bcolor, "#%02x%02x%02x", r, g, b );
+        gnome_property_box_changed(GNOME_PROPERTY_BOX(propbox));
+}
 
 void height_cb( GtkWidget *widget, GtkWidget *spin )
 {
@@ -106,8 +141,7 @@ GtkWidget *create_frame(void)
 	GtkWidget *color1, *color2;
 	GtkWidget *height, *width, *freq;
 	GtkObject *height_a, *width_a, *freq_a;
-
-	GnomeColorSelector *ucolor_gcs, *fcolor_gcs, *tcolor_gcs, *bcolor_gcs;
+	GtkWidget *ucolor_gcp, *fcolor_gcp, *tcolor_gcp, *bcolor_gcp;
         int ur,ug,ub, fr,fg,fb, tr,tg,tb, br, bg, bb;
 
 #ifdef DU_DEBUG
@@ -119,35 +153,36 @@ GtkWidget *create_frame(void)
         sscanf( temp_props.tcolor, "#%02x%02x%02x", &tr,&tg,&tb );
         sscanf( temp_props.bcolor, "#%02x%02x%02x", &br,&bg,&bb );
         
-#ifdef DU_DEBUG
-	printf (" gtkvboxnew \n");
-#endif
 	box = gtk_vbox_new( 5, TRUE );
 	color=gtk_vbox_new( 5, TRUE );
 	size =gtk_hbox_new( 5, TRUE );
 	speed=gtk_hbox_new( 5, TRUE );
 	gtk_container_border_width( GTK_CONTAINER(box), 5 );
 	        
-#ifdef DU_DEBUG
-	printf (" colorselctor_new \n");
-#endif
 	color1=gtk_hbox_new( 5, TRUE );
 	color2=gtk_hbox_new( 5, TRUE );
-	
-	ucolor_gcs  = gnome_color_selector_new( (SetColorFunc)color_changed_cb,
-		&temp_props.ucolor );
-	fcolor_gcs = gnome_color_selector_new( (SetColorFunc)color_changed_cb,
-		&temp_props.fcolor );
-	tcolor_gcs = gnome_color_selector_new( (SetColorFunc)color_changed_cb,
-		&temp_props.tcolor );
-	bcolor_gcs = gnome_color_selector_new( (SetColorFunc)color_changed_cb,
-		&temp_props.bcolor );
 
-        gnome_color_selector_set_color_int( ucolor_gcs, ur, ug, ub, 255 );
-	gnome_color_selector_set_color_int( fcolor_gcs, fr, fg, fb, 255 );
-	gnome_color_selector_set_color_int( tcolor_gcs, tr, tg, tb, 255 );
-	gnome_color_selector_set_color_int( bcolor_gcs, br, bg, bb, 255 );
-                  
+	ucolor_gcp = gnome_color_picker_new();
+	fcolor_gcp = gnome_color_picker_new();
+	tcolor_gcp = gnome_color_picker_new();
+	bcolor_gcp = gnome_color_picker_new();
+	gnome_color_picker_set_i8(GNOME_COLOR_PICKER (ucolor_gcp), 
+			ur, ug, ub, 255);
+	gnome_color_picker_set_i8(GNOME_COLOR_PICKER (fcolor_gcp), 
+			fr, fg, fb, 255);
+	gnome_color_picker_set_i8(GNOME_COLOR_PICKER (tcolor_gcp), 
+			tr, tg, tb, 255);
+	gnome_color_picker_set_i8(GNOME_COLOR_PICKER (bcolor_gcp), 
+			br, bg, bb, 255);
+	gtk_signal_connect(GTK_OBJECT(ucolor_gcp), "color_set",
+			GTK_SIGNAL_FUNC(ucolor_set_cb), NULL);
+	gtk_signal_connect(GTK_OBJECT(fcolor_gcp), "color_set",
+			GTK_SIGNAL_FUNC(fcolor_set_cb), NULL);
+	gtk_signal_connect(GTK_OBJECT(tcolor_gcp), "color_set",
+			GTK_SIGNAL_FUNC(tcolor_set_cb), NULL);
+	gtk_signal_connect(GTK_OBJECT(bcolor_gcp), "color_set",
+			GTK_SIGNAL_FUNC(bcolor_set_cb), NULL);
+
 #ifdef DU_DEBUG
 	printf (" label_new \n");
 #endif
@@ -155,22 +190,24 @@ GtkWidget *create_frame(void)
 	label = gtk_label_new(_("Used Diskspace"));
 	gtk_box_pack_start_defaults( GTK_BOX(color1), label );
 	gtk_box_pack_start_defaults( GTK_BOX(color1), 
-		gnome_color_selector_get_button(ucolor_gcs) );
+		 ucolor_gcp );
 
 	label = gtk_label_new(_("Free Diskspace"));
 	gtk_box_pack_start_defaults( GTK_BOX(color2), label );
 	gtk_box_pack_start_defaults( GTK_BOX(color2), 
-		gnome_color_selector_get_button(fcolor_gcs) );
+		 fcolor_gcp );
 
 	label = gtk_label_new(_("Textcolor"));
 	gtk_box_pack_start_defaults( GTK_BOX(color1), label );
 	gtk_box_pack_start_defaults( GTK_BOX(color1), 
-		gnome_color_selector_get_button(tcolor_gcs) );
+		 tcolor_gcp );
+
 
 	label = gtk_label_new(_("Backgroundcolor"));
 	gtk_box_pack_start_defaults( GTK_BOX(color2), label );
 	gtk_box_pack_start_defaults( GTK_BOX(color2), 
-		gnome_color_selector_get_button(bcolor_gcs) );
+		 bcolor_gcp );
+
 
 
 	label = gtk_label_new(_("Applet Height"));
