@@ -52,7 +52,7 @@ typedef struct _GkbPropertyBoxInfo GkbPropertyBoxInfo;
 typedef enum {
   GKB_LABEL,
   GKB_FLAG,
-  GKB_FLAG_AND_LABEL,
+  GKB_FLAG_AND_LABEL
 } GkbMode;
 
 struct _GkbPropertyBoxInfo
@@ -82,7 +82,7 @@ struct _GkbPropertyBoxInfo
 
   /* Other properties */
   gint is_small; 
-  GkbMode mode;;
+  GkbMode mode;
 };
 
 struct _GkbKeymap
