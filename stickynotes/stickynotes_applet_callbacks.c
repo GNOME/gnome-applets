@@ -90,7 +90,7 @@ void applet_change_orient_cb(PanelApplet *panel_applet, PanelAppletOrient orient
 }
 
 /* Applet Callback : Resize the applet. */
-gboolean applet_size_allocate_cb(GtkWidget *widget, GtkAllocation *allocation, StickyNotesApplet *applet)
+void applet_size_allocate_cb(GtkWidget *widget, GtkAllocation *allocation, StickyNotesApplet *applet)
 {
 	if ((applet->panel_orient == PANEL_APPLET_ORIENT_UP) || (applet->panel_orient == PANEL_APPLET_ORIENT_DOWN)) {
 	  if (applet->panel_size == allocation->height)
@@ -104,7 +104,7 @@ gboolean applet_size_allocate_cb(GtkWidget *widget, GtkAllocation *allocation, S
 
 	stickynotes_applet_update_icon(applet);
 
-	return FALSE;
+	return;
 }
 
 /* Applet Callback : Change the applet background. */

@@ -29,7 +29,7 @@ gboolean applet_cross_cb(GtkWidget *widget, GdkEventCrossing *event, StickyNotes
 gboolean applet_focus_cb(GtkWidget *widget, GdkEventFocus *event, StickyNotesApplet *applet);
 gboolean applet_save_cb(StickyNotesApplet *applet);
 void applet_change_orient_cb(PanelApplet *panel_applet, PanelAppletOrient orient, StickyNotesApplet *applet);
-gboolean applet_size_allocate_cb(GtkWidget *widget, GtkAllocation *allocation, StickyNotesApplet *applet);
+void applet_size_allocate_cb(GtkWidget *widget, GtkAllocation *allocation, StickyNotesApplet *applet);
 gboolean applet_change_bg_cb(PanelApplet *panel_applet, PanelAppletBackgroundType type, GdkColor *color, GdkPixmap *pixmap,
 			     StickyNotesApplet *applet);
 void applet_destroy_cb (PanelApplet *panel_applet, StickyNotesApplet *applet);

@@ -1,3 +1,18 @@
+2004-08-15  Kjartan Maraas  <kmaraas@gnome.org>
+
+	* stickynotes.c: (stickynotes_save): ANSIfication.
+	* stickynotes.h: Same
+	* stickynotes_applet.c: (stickynotes_applet_init_icons),
+	(stickynotes_applet_init_prefs), (stickynotes_applet_update_prefs),
+	(stickynotes_applet_update_menus),
+	(stickynotes_applet_update_tooltips): Same.
+	* stickynotes_applet.h: Same.
+	* stickynotes_applet_callbacks.c: (applet_size_allocate_cb): Make
+	the size allocation callback be consistent wrt returning something
+	or not. Other similar functions don't return a value so I made this
+	one void too.
+	* stickynotes_applet_callbacks.h: Adjust for the above.
+
 2004-08-09  Kjartan Maraas  <kmaraas@gnome.org>
 
 	* stickynotes_applet.c: (stickynotes_applet_new),

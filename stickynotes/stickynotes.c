@@ -413,7 +413,7 @@ void stickynotes_remove(StickyNote *note)
 }
 
 /* Save all sticky notes in an XML configuration file */
-void stickynotes_save()
+void stickynotes_save(void)
 {
 	gint i;
 

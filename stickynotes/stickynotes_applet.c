@@ -169,7 +169,7 @@ void stickynotes_applet_init(PanelApplet *panel_applet)
 }
 
 /* Initialize Sticky Notes Icons */
-void stickynotes_applet_init_icons()
+void stickynotes_applet_init_icons(void)
 {
 	GtkIconFactory *icon_factory = gtk_icon_factory_new();
 
@@ -192,7 +192,7 @@ void stickynotes_applet_init_icons()
 	g_object_unref(G_OBJECT(icon_factory));
 }
 
-void stickynotes_applet_init_prefs()
+void stickynotes_applet_init_prefs(void)
 {
 	stickynotes->prefs = glade_xml_new(GLADE_PATH, "preferences_dialog", NULL);
 
@@ -350,7 +350,7 @@ void stickynotes_applet_update_icon(StickyNotesApplet *applet)
 	g_object_unref(pixbuf2);
 }
 
-void stickynotes_applet_update_prefs()
+void stickynotes_applet_update_prefs(void)
 {
 	gint height, click_behavior;
 	gboolean sys_color, sys_font, sticky, force_default;
@@ -401,7 +401,7 @@ void stickynotes_applet_update_prefs()
 	}
 }
 
-void stickynotes_applet_update_menus()
+void stickynotes_applet_update_menus(void)
 {
 	gboolean visible = gconf_client_get_bool(stickynotes->gconf, GCONF_PATH "/settings/visible", NULL);
 	gboolean locked = gconf_client_get_bool(stickynotes->gconf, GCONF_PATH "/settings/locked", NULL);
@@ -433,7 +433,7 @@ void stickynotes_applet_update_menus()
 	}
 }
 
-void stickynotes_applet_update_tooltips()
+void stickynotes_applet_update_tooltips(void)
 {
 	gint num = g_list_length(stickynotes->notes);
 	gchar *tooltip = g_strdup_printf(ngettext("%s\n%d note", "%s\n%d notes", num), _("Sticky Notes"), num);

@@ -72,7 +72,7 @@ void stickynote_change_properties(StickyNote *note);
 
 void stickynotes_add(GdkScreen *screen);
 void stickynotes_remove(StickyNote *note);
-void stickynotes_save();
-void stickynotes_load();
+void stickynotes_save(void);
+void stickynotes_load(GdkScreen *screen);
 
 #endif /* __STICKYNOTES_H__ */
