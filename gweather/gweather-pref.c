@@ -47,7 +47,8 @@ static GtkWidget *pref_net_proxy_passwd_entry;
 static GtkWidget *pref_loc_ctree;
 static GtkCTreeNode *pref_loc_root;
 static GtkCTreeNode *pref_loc_sel_node = NULL;
-static GnomeHelpMenuEntry help_entry = { "gweather_applet", "index.html#GWEATHER-PREFS"};
+
+static void close_cb (GtkButton *button, gpointer user_data);
 
 
 static gint cmp_loc (const WeatherLocation *l1, const WeatherLocation *l2)
@@ -134,7 +135,8 @@ static gboolean update_pref (void)
         return FALSE;
     }
 
-    if (proxy_url && strlen(proxy_url) && !check_proxy_uri(proxy_url)) {
+    if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(pref_net_proxy_btn))
+	&& proxy_url && strlen(proxy_url) && !check_proxy_uri(proxy_url)) {
         gnome_error_dialog(_("Proxy URL is not of the form http://host:port/\nProperties remain unchanged."));
         return FALSE;
     }
@@ -158,20 +160,6 @@ static gboolean update_pref (void)
     /* fprintf(stderr, "Set location to: %s\n", loc->name); */
 
     return TRUE;
-}
-
-static void ok_cb (GtkButton *button, gpointer user_data)
-{
-    update_pref();
-    return;
-}
-
-static void apply_cb (GtkButton *button, gpointer user_data)
-{
-    gnome_dialog_set_sensitive(GNOME_DIALOG(pref), 0, FALSE);
-    gnome_dialog_set_sensitive(GNOME_DIALOG(pref), 1, FALSE);
-    update_pref();
-    return;
 }
 
 static void change_cb (GtkButton *button, gpointer user_data)
@@ -294,291 +282,271 @@ static void load_locations (void)
 
 static void gweather_pref_create (void)
 {
-  GtkWidget *pref_vbox;
-  GtkWidget *pref_notebook;
-  GtkWidget *pref_basic_table;
-  GtkWidget *pref_basic_metric_alignment;
-  GtkWidget *pref_basic_detailed_alignment;
+    GtkWidget *pref_vbox;
+    GtkWidget *pref_notebook;
+    GtkWidget *pref_basic_table;
+    GtkWidget *pref_basic_metric_alignment;
+    GtkWidget *pref_basic_detailed_alignment;
 #ifdef RADARMAP
-  GtkWidget *pref_basic_radar_alignment;
+    GtkWidget *pref_basic_radar_alignment;
 #endif /* RADARMAP */
-  GtkWidget *pref_basic_update_alignment;
-  GtkWidget *pref_basic_update_lbl;
-  GtkWidget *pref_basic_update_hbox;
-  GtkObject *pref_basic_update_spin_adj;
-  GtkWidget *pref_basic_update_sec_lbl;
-  GtkWidget *pref_basic_note_lbl;
-  GtkWidget *pref_net_table;
-  GtkWidget *pref_net_note_lbl;
-  GtkWidget *pref_net_proxy_url_lbl;
-  GtkWidget *pref_net_proxy_user_lbl;
-  GtkWidget *pref_net_proxy_passwd_lbl;
-  GtkWidget *pref_net_proxy_alignment;
-  GtkWidget *pref_net_caveat_lbl;
-  GtkWidget *pref_loc_hbox;
-  GtkWidget *pref_loc_note_lbl;
-  GtkWidget *pref_action_area;
-  GtkWidget *ok_button;
-  GtkWidget *apply_button;
-  GtkWidget *cancel_button;
-  GtkWidget *help_button;
-  GtkWidget *scrolled_window;
+    GtkWidget *pref_basic_update_alignment;
+    GtkWidget *pref_basic_update_lbl;
+    GtkWidget *pref_basic_update_hbox;
+    GtkObject *pref_basic_update_spin_adj;
+    GtkWidget *pref_basic_update_sec_lbl;
+    GtkWidget *pref_basic_note_lbl;
+    GtkWidget *pref_net_table;
+    GtkWidget *pref_net_note_lbl;
+    GtkWidget *pref_net_proxy_url_lbl;
+    GtkWidget *pref_net_proxy_user_lbl;
+    GtkWidget *pref_net_proxy_passwd_lbl;
+    GtkWidget *pref_net_proxy_alignment;
+    GtkWidget *pref_net_caveat_lbl;
+    GtkWidget *pref_loc_hbox;
+    GtkWidget *pref_loc_note_lbl;
+    GtkWidget *pref_action_area;
+    GtkWidget *scrolled_window;
 
-  g_return_if_fail(pref == NULL);
+    g_return_if_fail (pref == NULL);
 
-  pref = gnome_dialog_new (_("GNOME Weather Properties"), NULL);
-  gtk_widget_set_usize (pref, -2, 280);
-  gtk_window_set_policy (GTK_WINDOW (pref), TRUE, TRUE, FALSE);
-  gnome_dialog_close_hides(GNOME_DIALOG(pref), TRUE);
+    pref = gnome_dialog_new (_("GNOME Weather Properties"),
+			     GNOME_STOCK_BUTTON_OK,
+			     GNOME_STOCK_BUTTON_APPLY,
+			     GNOME_STOCK_BUTTON_CLOSE,
+			     GNOME_STOCK_BUTTON_HELP,
+			     NULL);
+    gtk_widget_set_usize (pref, -2, 280);
+    gtk_window_set_policy (GTK_WINDOW (pref), TRUE, TRUE, FALSE);
+    gnome_dialog_close_hides (GNOME_DIALOG (pref), TRUE);
 
-  pref_vbox = GNOME_DIALOG (pref)->vbox;
-  gtk_widget_show (pref_vbox);
+    pref_vbox = GNOME_DIALOG (pref)->vbox;
+    gtk_widget_show (pref_vbox);
 
-  pref_notebook = gtk_notebook_new ();
-  gtk_widget_show (pref_notebook);
-  gtk_box_pack_start (GTK_BOX (pref_vbox), pref_notebook, TRUE, TRUE, 0);
+    pref_notebook = gtk_notebook_new ();
+    gtk_widget_show (pref_notebook);
+    gtk_box_pack_start (GTK_BOX (pref_vbox), pref_notebook, TRUE, TRUE, 0);
 
   /*
    * Location page.
    */
-  pref_loc_hbox = gtk_hbox_new (FALSE, 2);
-  gtk_widget_show (pref_loc_hbox);
-  gtk_container_add (GTK_CONTAINER (pref_notebook), pref_loc_hbox);
+    pref_loc_hbox = gtk_hbox_new (FALSE, 2);
+    gtk_widget_show (pref_loc_hbox);
+    gtk_container_add (GTK_CONTAINER (pref_notebook), pref_loc_hbox);
 
-  scrolled_window = gtk_scrolled_window_new (NULL, NULL);
-  gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled_window),
-				  GTK_POLICY_AUTOMATIC,
-				  GTK_POLICY_AUTOMATIC);
+    scrolled_window = gtk_scrolled_window_new (NULL, NULL);
+    gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled_window),
+				    GTK_POLICY_AUTOMATIC,
+				    GTK_POLICY_AUTOMATIC);
 
-  pref_loc_ctree = gtk_ctree_new (1, 0);
-  gtk_container_add (GTK_CONTAINER (scrolled_window), pref_loc_ctree);
-  gtk_widget_show (pref_loc_ctree);
-  gtk_widget_show (scrolled_window);
-  gtk_box_pack_start (GTK_BOX (pref_loc_hbox), scrolled_window, TRUE, TRUE, 0);
-  gtk_clist_set_column_width (GTK_CLIST (pref_loc_ctree), 0, 80);
-  gtk_clist_set_selection_mode (GTK_CLIST (pref_loc_ctree), GTK_SELECTION_BROWSE);
-  gtk_clist_column_titles_hide (GTK_CLIST (pref_loc_ctree));
-  load_locations();
+    pref_loc_ctree = gtk_ctree_new (1, 0);
+    gtk_container_add (GTK_CONTAINER (scrolled_window), pref_loc_ctree);
+    gtk_widget_show (pref_loc_ctree);
+    gtk_widget_show (scrolled_window);
+    gtk_box_pack_start (GTK_BOX (pref_loc_hbox), scrolled_window, TRUE, TRUE, 0);
+    gtk_clist_set_column_width (GTK_CLIST (pref_loc_ctree), 0, 80);
+    gtk_clist_set_selection_mode (GTK_CLIST (pref_loc_ctree), GTK_SELECTION_BROWSE);
+    gtk_clist_column_titles_hide (GTK_CLIST (pref_loc_ctree));
+    load_locations();
 
-  pref_loc_note_lbl = gtk_label_new (_("Location"));
-  gtk_widget_show (pref_loc_note_lbl);
-  gtk_notebook_set_tab_label (GTK_NOTEBOOK (pref_notebook), gtk_notebook_get_nth_page (GTK_NOTEBOOK (pref_notebook), 0), pref_loc_note_lbl);
+    pref_loc_note_lbl = gtk_label_new (_("Location"));
+    gtk_widget_show (pref_loc_note_lbl);
+    gtk_notebook_set_tab_label (GTK_NOTEBOOK (pref_notebook), gtk_notebook_get_nth_page (GTK_NOTEBOOK (pref_notebook), 0), pref_loc_note_lbl);
 
-  /*
+    /*
    * Network settings page.
    */
-  pref_net_table = gtk_table_new (5, 2, FALSE);
-  gtk_widget_show (pref_net_table);
-  gtk_container_add (GTK_CONTAINER (pref_notebook), pref_net_table);
-  gtk_container_set_border_width (GTK_CONTAINER (pref_net_table), 8);
-  gtk_table_set_row_spacings (GTK_TABLE (pref_net_table), 4);
-  gtk_table_set_col_spacings (GTK_TABLE (pref_net_table), 4);
+    pref_net_table = gtk_table_new (5, 2, FALSE);
+    gtk_widget_show (pref_net_table);
+    gtk_container_add (GTK_CONTAINER (pref_notebook), pref_net_table);
+    gtk_container_set_border_width (GTK_CONTAINER (pref_net_table), 8);
+    gtk_table_set_row_spacings (GTK_TABLE (pref_net_table), 4);
+    gtk_table_set_col_spacings (GTK_TABLE (pref_net_table), 4);
 
-  pref_net_proxy_alignment = gtk_alignment_new (0, 0.5, 0, 1);
-  gtk_widget_show (pref_net_proxy_alignment);
-  gtk_table_attach (GTK_TABLE (pref_net_table), pref_net_proxy_alignment, 0, 2, 0, 1,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
+    pref_net_proxy_alignment = gtk_alignment_new (0, 0.5, 0, 1);
+    gtk_widget_show (pref_net_proxy_alignment);
+    gtk_table_attach (GTK_TABLE (pref_net_table), pref_net_proxy_alignment, 0, 2, 0, 1,
+		      (GtkAttachOptions) (GTK_FILL),
+		      (GtkAttachOptions) (0), 0, 0);
 
-  pref_net_proxy_btn = gtk_check_button_new_with_label (_("Use proxy"));
-  gtk_widget_show (pref_net_proxy_btn);
-  gtk_container_add (GTK_CONTAINER (pref_net_proxy_alignment), pref_net_proxy_btn);
+    pref_net_proxy_btn = gtk_check_button_new_with_label (_("Use proxy"));
+    gtk_widget_show (pref_net_proxy_btn);
+    gtk_container_add (GTK_CONTAINER (pref_net_proxy_alignment), pref_net_proxy_btn);
 
-  pref_net_proxy_url_lbl = gtk_label_new (_("Proxy host:"));
-  gtk_widget_show (pref_net_proxy_url_lbl);
-  gtk_table_attach (GTK_TABLE (pref_net_table), pref_net_proxy_url_lbl, 0, 1, 1, 2,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_label_set_justify (GTK_LABEL (pref_net_proxy_url_lbl), GTK_JUSTIFY_RIGHT);
-  gtk_misc_set_alignment (GTK_MISC (pref_net_proxy_url_lbl), 1, 0.5);
+    pref_net_proxy_url_lbl = gtk_label_new (_("Proxy host:"));
+    gtk_widget_show (pref_net_proxy_url_lbl);
+    gtk_table_attach (GTK_TABLE (pref_net_table), pref_net_proxy_url_lbl, 0, 1, 1, 2,
+		      (GtkAttachOptions) (GTK_FILL),
+		      (GtkAttachOptions) (0), 0, 0);
+    gtk_label_set_justify (GTK_LABEL (pref_net_proxy_url_lbl), GTK_JUSTIFY_RIGHT);
+    gtk_misc_set_alignment (GTK_MISC (pref_net_proxy_url_lbl), 1, 0.5);
 
-  pref_net_proxy_url_entry = gtk_entry_new ();
-  gtk_widget_show (pref_net_proxy_url_entry);
-  gtk_table_attach (GTK_TABLE (pref_net_table), pref_net_proxy_url_entry, 1, 2, 1, 2,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+    pref_net_proxy_url_entry = gtk_entry_new ();
+    gtk_widget_show (pref_net_proxy_url_entry);
+    gtk_table_attach (GTK_TABLE (pref_net_table), pref_net_proxy_url_entry, 1, 2, 1, 2,
+		      (GtkAttachOptions) (GTK_FILL),
+		      (GtkAttachOptions) (GTK_FILL), 0, 0);
 
-  pref_net_proxy_user_lbl = gtk_label_new (_("Username:"));
-  gtk_widget_show (pref_net_proxy_user_lbl);
-  gtk_table_attach (GTK_TABLE (pref_net_table), pref_net_proxy_user_lbl, 0, 1, 2, 3,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_label_set_justify (GTK_LABEL (pref_net_proxy_user_lbl), GTK_JUSTIFY_RIGHT);
-  gtk_misc_set_alignment (GTK_MISC (pref_net_proxy_user_lbl), 1, 0.5);
+    pref_net_proxy_user_lbl = gtk_label_new (_("Username:"));
+    gtk_widget_show (pref_net_proxy_user_lbl);
+    gtk_table_attach (GTK_TABLE (pref_net_table), pref_net_proxy_user_lbl, 0, 1, 2, 3,
+		      (GtkAttachOptions) (GTK_FILL),
+		      (GtkAttachOptions) (0), 0, 0);
+    gtk_label_set_justify (GTK_LABEL (pref_net_proxy_user_lbl), GTK_JUSTIFY_RIGHT);
+    gtk_misc_set_alignment (GTK_MISC (pref_net_proxy_user_lbl), 1, 0.5);
 
-  pref_net_proxy_user_entry = gtk_entry_new ();
-  gtk_widget_show (pref_net_proxy_user_entry);
-  gtk_table_attach (GTK_TABLE (pref_net_table), pref_net_proxy_user_entry, 1, 2, 2, 3,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+    pref_net_proxy_user_entry = gtk_entry_new ();
+    gtk_widget_show (pref_net_proxy_user_entry);
+    gtk_table_attach (GTK_TABLE (pref_net_table), pref_net_proxy_user_entry, 1, 2, 2, 3,
+		      (GtkAttachOptions) (GTK_FILL),
+		      (GtkAttachOptions) (GTK_FILL), 0, 0);
 
-  pref_net_proxy_passwd_lbl = gtk_label_new (_("Password:"));
-  gtk_widget_show (pref_net_proxy_passwd_lbl);
-  gtk_table_attach (GTK_TABLE (pref_net_table), pref_net_proxy_passwd_lbl, 0, 1, 3, 4,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_label_set_justify (GTK_LABEL (pref_net_proxy_passwd_lbl), GTK_JUSTIFY_RIGHT);
-  gtk_misc_set_alignment (GTK_MISC (pref_net_proxy_passwd_lbl), 1, 0.5);
+    pref_net_proxy_passwd_lbl = gtk_label_new (_("Password:"));
+    gtk_widget_show (pref_net_proxy_passwd_lbl);
+    gtk_table_attach (GTK_TABLE (pref_net_table), pref_net_proxy_passwd_lbl, 0, 1, 3, 4,
+		      (GtkAttachOptions) (GTK_FILL),
+		      (GtkAttachOptions) (0), 0, 0);
+    gtk_label_set_justify (GTK_LABEL (pref_net_proxy_passwd_lbl), GTK_JUSTIFY_RIGHT);
+    gtk_misc_set_alignment (GTK_MISC (pref_net_proxy_passwd_lbl), 1, 0.5);
 
-  pref_net_proxy_passwd_entry = gtk_entry_new ();
-  gtk_entry_set_visibility (GTK_ENTRY (pref_net_proxy_passwd_entry), FALSE);
-  gtk_widget_show (pref_net_proxy_passwd_entry);
-  gtk_table_attach (GTK_TABLE (pref_net_table), pref_net_proxy_passwd_entry, 1, 2, 3, 4,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+    pref_net_proxy_passwd_entry = gtk_entry_new ();
+    gtk_entry_set_visibility (GTK_ENTRY (pref_net_proxy_passwd_entry), FALSE);
+    gtk_widget_show (pref_net_proxy_passwd_entry);
+    gtk_table_attach (GTK_TABLE (pref_net_table), pref_net_proxy_passwd_entry, 1, 2, 3, 4,
+		      (GtkAttachOptions) (GTK_FILL),
+		      (GtkAttachOptions) (GTK_FILL), 0, 0);
 
-  pref_net_caveat_lbl = gtk_label_new (_("Caveat warning: Even though your password will\nbe saved in the private configuration file, it will\nbe unencrypted!"));
-  gtk_widget_show (pref_net_caveat_lbl);
-  gtk_table_attach (GTK_TABLE (pref_net_table), pref_net_caveat_lbl, 0, 2, 4, 5,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_label_set_justify (GTK_LABEL (pref_net_caveat_lbl), GTK_JUSTIFY_LEFT);
-  gtk_misc_set_alignment (GTK_MISC (pref_net_caveat_lbl), 1, 0.5);
+    pref_net_caveat_lbl = gtk_label_new (_("Warning: Your password will be saved as\nunencrypted text in a private configuration\nfile."));
+    gtk_widget_show (pref_net_caveat_lbl);
+    gtk_table_attach (GTK_TABLE (pref_net_table), pref_net_caveat_lbl, 0, 2, 4, 5,
+		      (GtkAttachOptions) (GTK_FILL),
+		      (GtkAttachOptions) (0), 0, 0);
+    gtk_label_set_justify (GTK_LABEL (pref_net_caveat_lbl), GTK_JUSTIFY_LEFT);
+    gtk_misc_set_alignment (GTK_MISC (pref_net_caveat_lbl), 1, 0.5);
 
-  pref_net_note_lbl = gtk_label_new (_("Network"));
-  gtk_widget_show (pref_net_note_lbl);
-  gtk_notebook_set_tab_label (GTK_NOTEBOOK (pref_notebook), gtk_notebook_get_nth_page (GTK_NOTEBOOK (pref_notebook), 1), pref_net_note_lbl);
+    pref_net_note_lbl = gtk_label_new (_("Network"));
+    gtk_widget_show (pref_net_note_lbl);
+    gtk_notebook_set_tab_label (GTK_NOTEBOOK (pref_notebook), gtk_notebook_get_nth_page (GTK_NOTEBOOK (pref_notebook), 1), pref_net_note_lbl);
 
   /*
    * General settings page.
    */
 
 #ifdef RADARMAP
-  pref_basic_table = gtk_table_new (5, 2, FALSE);
+    pref_basic_table = gtk_table_new (5, 2, FALSE);
 #else /* RADARMAP */
-  pref_basic_table = gtk_table_new (4, 2, FALSE);
+    pref_basic_table = gtk_table_new (4, 2, FALSE);
 #endif /* RADARMAP */
-  gtk_widget_show (pref_basic_table);
-  gtk_container_add (GTK_CONTAINER (pref_notebook), pref_basic_table);
-  gtk_container_set_border_width (GTK_CONTAINER (pref_basic_table), 8);
-  gtk_table_set_row_spacings (GTK_TABLE (pref_basic_table), 4);
-  gtk_table_set_col_spacings (GTK_TABLE (pref_basic_table), 4);
+    gtk_widget_show (pref_basic_table);
+    gtk_container_add (GTK_CONTAINER (pref_notebook), pref_basic_table);
+    gtk_container_set_border_width (GTK_CONTAINER (pref_basic_table), 8);
+    gtk_table_set_row_spacings (GTK_TABLE (pref_basic_table), 4);
+    gtk_table_set_col_spacings (GTK_TABLE (pref_basic_table), 4);
 
-  pref_basic_update_alignment = gtk_alignment_new (0, 0.5, 0, 1);
-  gtk_widget_show (pref_basic_update_alignment);
-  gtk_table_attach (GTK_TABLE (pref_basic_table), pref_basic_update_alignment, 0, 2, 1, 2,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
+    pref_basic_update_alignment = gtk_alignment_new (0, 0.5, 0, 1);
+    gtk_widget_show (pref_basic_update_alignment);
+    gtk_table_attach (GTK_TABLE (pref_basic_table), pref_basic_update_alignment, 0, 2, 1, 2,
+		      (GtkAttachOptions) (GTK_FILL),
+		      (GtkAttachOptions) (0), 0, 0);
 
-  pref_basic_metric_alignment = gtk_alignment_new (0, 0.5, 0, 1);
-  gtk_widget_show (pref_basic_metric_alignment);
-  gtk_table_attach (GTK_TABLE (pref_basic_table), pref_basic_metric_alignment, 0, 2, 2, 3,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
+    pref_basic_metric_alignment = gtk_alignment_new (0, 0.5, 0, 1);
+    gtk_widget_show (pref_basic_metric_alignment);
+    gtk_table_attach (GTK_TABLE (pref_basic_table), pref_basic_metric_alignment, 0, 2, 2, 3,
+		      (GtkAttachOptions) (GTK_FILL),
+		      (GtkAttachOptions) (0), 0, 0);
 
-  pref_basic_detailed_alignment = gtk_alignment_new (0, 0.5, 0, 1);
-  gtk_widget_show (pref_basic_detailed_alignment);
-  gtk_table_attach (GTK_TABLE (pref_basic_table), pref_basic_detailed_alignment, 0, 2, 3, 4,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
+    pref_basic_detailed_alignment = gtk_alignment_new (0, 0.5, 0, 1);
+    gtk_widget_show (pref_basic_detailed_alignment);
+    gtk_table_attach (GTK_TABLE (pref_basic_table), pref_basic_detailed_alignment, 0, 2, 3, 4,
+		      (GtkAttachOptions) (GTK_FILL),
+		      (GtkAttachOptions) (0), 0, 0);
 
 #ifdef RADARMAP
-  pref_basic_radar_alignment = gtk_alignment_new (0, 0.5, 0, 1);
-  gtk_widget_show (pref_basic_radar_alignment);
-  gtk_table_attach (GTK_TABLE (pref_basic_table), pref_basic_radar_alignment, 0, 2, 4, 5,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
+    pref_basic_radar_alignment = gtk_alignment_new (0, 0.5, 0, 1);
+    gtk_widget_show (pref_basic_radar_alignment);
+    gtk_table_attach (GTK_TABLE (pref_basic_table), pref_basic_radar_alignment, 0, 2, 4, 5,
+		      (GtkAttachOptions) (GTK_FILL),
+		      (GtkAttachOptions) (0), 0, 0);
 #endif /* RADARMAP */
 
-  pref_basic_update_btn = gtk_check_button_new_with_label (_("Update enabled"));
-  gtk_widget_show (pref_basic_update_btn);
-  gtk_container_add (GTK_CONTAINER (pref_basic_update_alignment), pref_basic_update_btn);
+    pref_basic_update_btn = gtk_check_button_new_with_label (_("Update enabled"));
+    gtk_widget_show (pref_basic_update_btn);
+    gtk_container_add (GTK_CONTAINER (pref_basic_update_alignment), pref_basic_update_btn);
 
-  pref_basic_metric_btn = gtk_check_button_new_with_label (_("Use metric"));
-  gtk_widget_show (pref_basic_metric_btn);
-  gtk_container_add (GTK_CONTAINER (pref_basic_metric_alignment), pref_basic_metric_btn);
+    pref_basic_metric_btn = gtk_check_button_new_with_label (_("Use metric"));
+    gtk_widget_show (pref_basic_metric_btn);
+    gtk_container_add (GTK_CONTAINER (pref_basic_metric_alignment), pref_basic_metric_btn);
 
-  pref_basic_detailed_btn = gtk_check_button_new_with_label (_("Detailed forecast"));
-  gtk_widget_show (pref_basic_detailed_btn);
-  gtk_container_add (GTK_CONTAINER (pref_basic_detailed_alignment), pref_basic_detailed_btn);
+    pref_basic_detailed_btn = gtk_check_button_new_with_label (_("Detailed forecast"));
+    gtk_widget_show (pref_basic_detailed_btn);
+    gtk_container_add (GTK_CONTAINER (pref_basic_detailed_alignment), pref_basic_detailed_btn);
 
 #ifdef RADARMAP
-  pref_basic_radar_btn = gtk_check_button_new_with_label (_("Enable radar maps"));
-  gtk_widget_show (pref_basic_radar_btn);
-  gtk_container_add (GTK_CONTAINER (pref_basic_radar_alignment), pref_basic_radar_btn);
+    pref_basic_radar_btn = gtk_check_button_new_with_label (_("Enable radar maps"));
+    gtk_widget_show (pref_basic_radar_btn);
+    gtk_container_add (GTK_CONTAINER (pref_basic_radar_alignment), pref_basic_radar_btn);
 #endif /* RADARMAP */
 
-  pref_basic_update_lbl = gtk_label_new (_("Update:"));
-  gtk_widget_show (pref_basic_update_lbl);
-  gtk_table_attach (GTK_TABLE (pref_basic_table), pref_basic_update_lbl, 0, 1, 0, 1,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (0), 0, 0);
-  gtk_label_set_justify (GTK_LABEL (pref_basic_update_lbl), GTK_JUSTIFY_RIGHT);
-  gtk_misc_set_alignment (GTK_MISC (pref_basic_update_lbl), 1, 0.5);
+    pref_basic_update_lbl = gtk_label_new (_("Update:"));
+    gtk_widget_show (pref_basic_update_lbl);
+    gtk_table_attach (GTK_TABLE (pref_basic_table), pref_basic_update_lbl, 0, 1, 0, 1,
+		      (GtkAttachOptions) (GTK_FILL),
+		      (GtkAttachOptions) (0), 0, 0);
+    gtk_label_set_justify (GTK_LABEL (pref_basic_update_lbl), GTK_JUSTIFY_RIGHT);
+    gtk_misc_set_alignment (GTK_MISC (pref_basic_update_lbl), 1, 0.5);
 
-  pref_basic_update_hbox = gtk_hbox_new (FALSE, 2);
-  gtk_widget_show (pref_basic_update_hbox);
-  gtk_table_attach (GTK_TABLE (pref_basic_table), pref_basic_update_hbox, 1, 2, 0, 1,
-                    (GtkAttachOptions) (GTK_FILL),
-                    (GtkAttachOptions) (GTK_FILL), 0, 0);
+    pref_basic_update_hbox = gtk_hbox_new (FALSE, 2);
+    gtk_widget_show (pref_basic_update_hbox);
+    gtk_table_attach (GTK_TABLE (pref_basic_table), pref_basic_update_hbox, 1, 2, 0, 1,
+		      (GtkAttachOptions) (GTK_FILL),
+		      (GtkAttachOptions) (GTK_FILL), 0, 0);
 
-  pref_basic_update_spin_adj = gtk_adjustment_new (300, 30, 7200, 10, 30, 30);
-  pref_basic_update_spin = gtk_spin_button_new (GTK_ADJUSTMENT (pref_basic_update_spin_adj), 1, 0);
-  gtk_widget_show (pref_basic_update_spin);
-  gtk_box_pack_start (GTK_BOX (pref_basic_update_hbox), pref_basic_update_spin, TRUE, TRUE, 0);
-  gtk_widget_set_usize (pref_basic_update_spin, 80, -2);
-  gtk_spin_button_set_numeric (GTK_SPIN_BUTTON (pref_basic_update_spin), TRUE);
-  gtk_spin_button_set_update_policy (GTK_SPIN_BUTTON (pref_basic_update_spin), GTK_UPDATE_IF_VALID);
+    pref_basic_update_spin_adj = gtk_adjustment_new (300, 30, 7200, 10, 30, 30);
+    pref_basic_update_spin = gtk_spin_button_new (GTK_ADJUSTMENT (pref_basic_update_spin_adj), 1, 0);
+    gtk_widget_show (pref_basic_update_spin);
+    gtk_box_pack_start (GTK_BOX (pref_basic_update_hbox), pref_basic_update_spin, TRUE, TRUE, 0);
+    gtk_widget_set_usize (pref_basic_update_spin, 80, -2);
+    gtk_spin_button_set_numeric (GTK_SPIN_BUTTON (pref_basic_update_spin), TRUE);
+    gtk_spin_button_set_update_policy (GTK_SPIN_BUTTON (pref_basic_update_spin), GTK_UPDATE_IF_VALID);
 
-  pref_basic_update_sec_lbl = gtk_label_new (_("(sec)"));
-  gtk_widget_show (pref_basic_update_sec_lbl);
-  gtk_box_pack_start (GTK_BOX (pref_basic_update_hbox), pref_basic_update_sec_lbl, FALSE, FALSE, 0);
+    pref_basic_update_sec_lbl = gtk_label_new (_("(sec)"));
+    gtk_widget_show (pref_basic_update_sec_lbl);
+    gtk_box_pack_start (GTK_BOX (pref_basic_update_hbox), pref_basic_update_sec_lbl, FALSE, FALSE, 0);
 
-  pref_basic_note_lbl = gtk_label_new (_("General"));
-  gtk_widget_show (pref_basic_note_lbl);
-  gtk_notebook_set_tab_label (GTK_NOTEBOOK (pref_notebook), gtk_notebook_get_nth_page (GTK_NOTEBOOK (pref_notebook), 2), pref_basic_note_lbl);
+    pref_basic_note_lbl = gtk_label_new (_("General"));
+    gtk_widget_show (pref_basic_note_lbl);
+    gtk_notebook_set_tab_label (GTK_NOTEBOOK (pref_notebook), gtk_notebook_get_nth_page (GTK_NOTEBOOK (pref_notebook), 2), pref_basic_note_lbl);
 
-  pref_action_area = GNOME_DIALOG (pref)->action_area;
-  gtk_widget_show (pref_action_area);
-  gtk_button_box_set_layout (GTK_BUTTON_BOX (pref_action_area), GTK_BUTTONBOX_END);
-  gtk_button_box_set_spacing (GTK_BUTTON_BOX (pref_action_area), 8);
+    pref_action_area = GNOME_DIALOG (pref)->action_area;
+    gtk_widget_show (pref_action_area);
+    gtk_button_box_set_layout (GTK_BUTTON_BOX (pref_action_area), GTK_BUTTONBOX_END);
+    gtk_button_box_set_spacing (GTK_BUTTON_BOX (pref_action_area), 8);
 
-  gnome_dialog_append_button (GNOME_DIALOG (pref), GNOME_STOCK_BUTTON_OK);
-  ok_button = g_list_last (GNOME_DIALOG (pref)->buttons)->data;
-  gtk_widget_show (ok_button);
-  GTK_WIDGET_SET_FLAGS (ok_button, GTK_CAN_DEFAULT);
+    gtk_signal_connect (GTK_OBJECT (pref_loc_ctree), "tree_select_row",
+			GTK_SIGNAL_FUNC (tree_select_row_cb), NULL);
 
-  gnome_dialog_append_button (GNOME_DIALOG (pref), GNOME_STOCK_BUTTON_APPLY);
-  apply_button = g_list_last (GNOME_DIALOG (pref)->buttons)->data;
-  gtk_widget_show (apply_button);
-  GTK_WIDGET_SET_FLAGS (apply_button, GTK_CAN_DEFAULT);
-
-  gnome_dialog_append_button (GNOME_DIALOG (pref), GNOME_STOCK_BUTTON_CLOSE);
-  cancel_button = g_list_last (GNOME_DIALOG (pref)->buttons)->data;
-  gtk_widget_show (cancel_button);
-  GTK_WIDGET_SET_FLAGS (cancel_button, GTK_CAN_DEFAULT);
-
-  gnome_dialog_append_button (GNOME_DIALOG (pref), GNOME_STOCK_BUTTON_HELP);
-  help_button = g_list_last (GNOME_DIALOG (pref)->buttons)->data;
-  gtk_widget_show (help_button);
-  GTK_WIDGET_SET_FLAGS (help_button, GTK_CAN_DEFAULT);
-
-  gtk_signal_connect (GTK_OBJECT (pref_loc_ctree), "tree_select_row",
-                      GTK_SIGNAL_FUNC (tree_select_row_cb), NULL);
-  gtk_signal_connect (GTK_OBJECT (ok_button), "clicked",
-                      GTK_SIGNAL_FUNC (ok_cb), NULL);
-  gtk_signal_connect (GTK_OBJECT (apply_button), "clicked",
-                      GTK_SIGNAL_FUNC (apply_cb), NULL);
-  gtk_signal_connect (GTK_OBJECT (pref_basic_update_spin), "changed",
-                      GTK_SIGNAL_FUNC (change_cb), NULL);
-  gtk_signal_connect (GTK_OBJECT (pref_basic_metric_btn), "toggled",
-                      GTK_SIGNAL_FUNC (change_cb), NULL);
-  gtk_signal_connect (GTK_OBJECT (pref_basic_detailed_btn), "toggled",
-                      GTK_SIGNAL_FUNC (change_cb), NULL);
+    gtk_signal_connect (GTK_OBJECT (pref_basic_update_spin), "changed",
+			GTK_SIGNAL_FUNC (change_cb), NULL);
+    gtk_signal_connect (GTK_OBJECT (pref_basic_metric_btn), "toggled",
+			GTK_SIGNAL_FUNC (change_cb), NULL);
+    gtk_signal_connect (GTK_OBJECT (pref_basic_detailed_btn), "toggled",
+			GTK_SIGNAL_FUNC (change_cb), NULL);
 #ifdef RADARMAP
-  gtk_signal_connect (GTK_OBJECT (pref_basic_radar_btn), "toggled",
-                      GTK_SIGNAL_FUNC (change_cb), NULL);
+    gtk_signal_connect (GTK_OBJECT (pref_basic_radar_btn), "toggled",
+			GTK_SIGNAL_FUNC (change_cb), NULL);
 #endif /* RADARMAP */
-  gtk_signal_connect (GTK_OBJECT (pref_basic_update_btn), "toggled",
-                      GTK_SIGNAL_FUNC (change_cb), NULL);
-  gtk_signal_connect (GTK_OBJECT (pref_net_proxy_btn), "toggled",
-                      GTK_SIGNAL_FUNC (change_cb), NULL);
-  gtk_signal_connect (GTK_OBJECT (pref_net_proxy_url_entry), "changed",
-                      GTK_SIGNAL_FUNC (change_cb), NULL);
-  gtk_signal_connect (GTK_OBJECT (pref_net_proxy_user_entry), "changed",
-                      GTK_SIGNAL_FUNC (change_cb), NULL);
-  gtk_signal_connect (GTK_OBJECT (pref_net_proxy_passwd_entry), "changed",
-                      GTK_SIGNAL_FUNC (change_cb), NULL);
+    gtk_signal_connect (GTK_OBJECT (pref_basic_update_btn), "toggled",
+			GTK_SIGNAL_FUNC (change_cb), NULL);
+    gtk_signal_connect (GTK_OBJECT (pref_net_proxy_btn), "toggled",
+			GTK_SIGNAL_FUNC (change_cb), NULL);
+    gtk_signal_connect (GTK_OBJECT (pref_net_proxy_url_entry), "changed",
+			GTK_SIGNAL_FUNC (change_cb), NULL);
+    gtk_signal_connect (GTK_OBJECT (pref_net_proxy_user_entry), "changed",
+			GTK_SIGNAL_FUNC (change_cb), NULL);
+    gtk_signal_connect (GTK_OBJECT (pref_net_proxy_passwd_entry), "changed",
+			GTK_SIGNAL_FUNC (change_cb), NULL);
+
+    gtk_widget_show_all (pref);
 }
 
 
@@ -634,35 +602,50 @@ void gweather_pref_save (const gchar *path)
     gnome_config_drop_all();
 }
 
+
+static void ok_cb (GtkButton *button, gpointer user_data)
+{
+    if (update_pref())
+	close_cb (button, user_data);
+    return;
+}
+
+static void apply_cb (GtkButton *button, gpointer user_data)
+{
+    gnome_dialog_set_sensitive(GNOME_DIALOG(pref), 0, FALSE);
+    gnome_dialog_set_sensitive(GNOME_DIALOG(pref), 1, FALSE);
+    update_pref();
+    return;
+}
+
+static void close_cb (GtkButton *button, gpointer user_data)
+{
+    gnome_dialog_close (GNOME_DIALOG (pref));
+
+    gtk_widget_destroy (pref);
+    pref = NULL;
+}
+
+static void help_cb (void)
+{
+    GnomeHelpMenuEntry help_entry = { "gweather_applet",
+				      "index.html#GWEATHER-PREFS" };
+
+    gnome_help_display (NULL, &help_entry);
+}
+
 void gweather_pref_run (void)
 {
-    gint btn;
+    /* Only one preferences window at a time */
+    if (pref)
+	return;
 
-    if (!pref)
-        gweather_pref_create();
-
+    gweather_pref_create();
     update_dialog();
 
-    do {
-        gnome_dialog_set_sensitive(GNOME_DIALOG(pref), 0, FALSE);
-        gnome_dialog_set_sensitive(GNOME_DIALOG(pref), 1, FALSE);
-        btn = gnome_dialog_run(GNOME_DIALOG(pref));
-        if (btn == 1) {  /* Apply */
-            applet_widget_sync_config(APPLET_WIDGET(gweather_applet));
-            gweather_update();
-        } else if (btn == 3) { /* help */
-	    gnome_help_display(NULL, &help_entry);
-	}
-    } while (btn == 1 || btn == 3);
-
-    gtk_widget_hide(pref);
-
-    if (btn == 0) {  /* OK */
-        applet_widget_sync_config(APPLET_WIDGET(gweather_applet));
-        gweather_update();
-    }
-
-    gtk_widget_destroy(pref);
-    pref = NULL;
+    gnome_dialog_button_connect (GNOME_DIALOG (pref), 0, ok_cb, NULL);
+    gnome_dialog_button_connect (GNOME_DIALOG (pref), 1, apply_cb, NULL);
+    gnome_dialog_button_connect (GNOME_DIALOG (pref), 2, close_cb, NULL);
+    gnome_dialog_button_connect (GNOME_DIALOG (pref), 3, help_cb, NULL);
 }
 

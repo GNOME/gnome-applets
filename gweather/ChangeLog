@@ -1,3 +1,11 @@
+2001-04-18  Jason Leach  <jasonleach@usa.net>
+
+	* gweather-pref.c (update_pref): Only bug the user about an
+	invalid proxy URL when they've actually toggled the proxy to be
+	used.
+	(gweather_pref_run): Fix bug #53254 (and clean up some code in the
+	process): Pesky error dialog that wouldn't close properly.
+
 2001-02-20  Nat Friedman  <nat@ximian.com>
 
 	* gweather-pref.c: Define RADARMAP by default.
