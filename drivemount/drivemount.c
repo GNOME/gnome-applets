@@ -142,7 +142,7 @@ static void about_cb (AppletWidget *widget, gpointer data)
 static void browse_cb (AppletWidget *widget, gpointer data)
 {
 	DriveData *dd = data;
-	const char *buf[2];
+	gchar *command;
 
 	/* attempt to mount first, otherwise, what is the point? */
 	if(!dd->mounted)
@@ -151,13 +151,9 @@ static void browse_cb (AppletWidget *widget, gpointer data)
 		if (!dd->mounted) return; /* failed to mount, so abort */
 		}
 
-	buf[0] = dd->mount_point;
-	buf[1] = NULL;
-
-	/* FIXME browse menu item is broken here. */
-	goad_server_activate_with_repo_id(NULL,
-					  "IDL:GNOME/FileManager/Window:1.0",
-					  0, buf);
+	command = g_strdup_printf("gmc-client --create-window=\"%s\"", dd->mount_point);
+ 	gnome_execute_shell (NULL, command);
+	g_free (command);
 
 	return;
 	widget = NULL;
