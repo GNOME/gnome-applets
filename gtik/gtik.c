@@ -653,7 +653,8 @@ static void updateOutput(void)
 		static const gchar *authors[] = {
 			"Jayson Lorenzen <jayson_lorenzen@yahoo.com>",
 			"Jim Garrison <garrison@users.sourceforge.net>",
-			"Rached Blili <striker@dread.net>"
+			"Rached Blili <striker@dread.net>",
+			NULL
 		};
 
 		about = gnome_about_new (_("The GNOME Stock Ticker"), VERSION,
