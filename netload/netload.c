@@ -241,6 +241,27 @@ static gint destroy_plug(GtkWidget *widget, gpointer data)
         return FALSE;
 }
 
+void
+about_cb (AppletWidget *widget, gpointer data)
+{
+	GtkWidget *about;
+	gchar *authors[] = {
+		"Stephen Norris (srn@fn.com.au)",
+	  NULL
+	  };
+
+	about = gnome_about_new ( "The GNOME Fish Applet", "3.4.7.4",
+			"(C) 1998 the Free Software Foundation",
+			authors,
+			"This applet shows the load on a network device. "
+			"It requires the /proc/net/ip_acct interface to be present and "
+			"set up correctly for the device.",
+			NULL);
+	gtk_widget_show (about);
+
+	return;
+}
+
 int main(int argc, char **argv)
 {
 	GtkWidget *plug;
@@ -282,6 +303,12 @@ int main(int argc, char **argv)
         if (result)
                 g_error("Could not talk to the Panel: %s\n", result);
 	
+       	gnome_panel_applet_register_callback(applet_id,
+					     "about",
+                                             _("About..."),
+                                             about_cb,
+                                             NULL);
+
        	gnome_panel_applet_register_callback(applet_id,
 					     "properties",
                                              _("Properties..."),
