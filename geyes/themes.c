@@ -23,9 +23,9 @@
 #include <dirent.h>
 #include <limits.h>
 #include <ctype.h>
-#include "geyes.h"
 
-extern EyesApplet eyes_applet;
+#include <panel-applet-gconf.h>
+#include "geyes.h"
 
 gchar *theme_directories[] = {
         GEYES_THEMES_DIR,
@@ -34,7 +34,7 @@ gchar *theme_directories[] = {
 #define NUM_THEME_DIRECTORIES 2
 
 static void
-parse_theme_file (FILE *theme_file)
+parse_theme_file (EyesApplet *eyes_applet, FILE *theme_file)
 {
         gchar line_buf [512]; /* prolly overkill */
         gchar *token;
@@ -47,29 +47,29 @@ parse_theme_file (FILE *theme_file)
                         while (!isdigit (*token)) {
                                 token++;
                         }
-                        sscanf (token, "%d", &eyes_applet.wall_thickness); 
+                        sscanf (token, "%d", &eyes_applet->wall_thickness); 
                 } else if (strncmp (token, "num-eyes", strlen ("num-eyes")) == 0) {
                         token += strlen ("num-eyes");
                         while (!isdigit (*token)) {
                                 token++;
                         }
-                        sscanf (token, "%d", &eyes_applet.num_eyes);
+                        sscanf (token, "%d", &eyes_applet->num_eyes);
                 } else if (strncmp (token, "eye-pixmap", strlen ("eye-pixmap")) == 0) {
                         token = strtok (NULL, "\"");
                         token = strtok (NULL, "\"");          
-                        if (eyes_applet.eye_filename != NULL) 
-                                g_free (eyes_applet.eye_filename);
-                        eyes_applet.eye_filename = g_strdup_printf ("%s%s",
-                                                                    eyes_applet.theme_dir,
+                        if (eyes_applet->eye_filename != NULL) 
+                                g_free (eyes_applet->eye_filename);
+                        eyes_applet->eye_filename = g_strdup_printf ("%s%s",
+                                                                    eyes_applet->theme_dir,
                                                                     token);
                 } else if (strncmp (token, "pupil-pixmap", strlen ("pupil-pixmap")) == 0) {
                         token = strtok (NULL, "\"");
                         token = strtok (NULL, "\"");      
-            if (eyes_applet.pupil_filename != NULL) 
-                    g_free (eyes_applet.pupil_filename);
-            eyes_applet.pupil_filename 
+            if (eyes_applet->pupil_filename != NULL) 
+                    g_free (eyes_applet->pupil_filename);
+            eyes_applet->pupil_filename 
                     = g_strdup_printf ("%s%s",
-                                       eyes_applet.theme_dir,
+                                       eyes_applet->theme_dir,
                                        token);   
                 }
                 fgets (line_buf, 512, theme_file);
@@ -77,12 +77,12 @@ parse_theme_file (FILE *theme_file)
 }
 
 void
-load_theme (gchar *theme_dir)
+load_theme (EyesApplet *eyes_applet, const gchar *theme_dir)
 {
 	FILE* theme_file;
         gchar *file_name;
 
-        eyes_applet.theme_dir = g_strdup_printf ("%s/", theme_dir);
+        eyes_applet->theme_dir = g_strdup_printf ("%s/", theme_dir);
 
         file_name = g_malloc (strlen (theme_dir) + strlen ("/config") + 1);
         strcpy (file_name, theme_dir);
@@ -92,44 +92,44 @@ load_theme (gchar *theme_dir)
                 g_error ("Unable to open theme file.");
         }
         
-        parse_theme_file (theme_file);
+        parse_theme_file (eyes_applet, theme_file);
         fclose (theme_file);
         
-        eyes_applet.theme_name = g_strdup (theme_dir);
+        eyes_applet->theme_name = g_strdup (theme_dir);
         
-        eyes_applet.eye_image = gdk_pixbuf_new_from_file (eyes_applet.eye_filename, NULL);
-        eyes_applet.pupil_image = gdk_pixbuf_new_from_file (eyes_applet.pupil_filename, NULL);
+        eyes_applet->eye_image = gdk_pixbuf_new_from_file (eyes_applet->eye_filename, NULL);
+        eyes_applet->pupil_image = gdk_pixbuf_new_from_file (eyes_applet->pupil_filename, NULL);
 
-	eyes_applet.eye_height = gdk_pixbuf_get_height (eyes_applet.eye_image);
-        eyes_applet.eye_width = gdk_pixbuf_get_width (eyes_applet.eye_image);
-        eyes_applet.pupil_height = gdk_pixbuf_get_height (eyes_applet.pupil_image);
-        eyes_applet.pupil_width = gdk_pixbuf_get_width (eyes_applet.pupil_image);
+	eyes_applet->eye_height = gdk_pixbuf_get_height (eyes_applet->eye_image);
+        eyes_applet->eye_width = gdk_pixbuf_get_width (eyes_applet->eye_image);
+        eyes_applet->pupil_height = gdk_pixbuf_get_height (eyes_applet->pupil_image);
+        eyes_applet->pupil_width = gdk_pixbuf_get_width (eyes_applet->pupil_image);
         
         g_free (file_name);
         
 }
 
 static void
-destroy_theme ()
+destroy_theme (EyesApplet *eyes_applet)
 {
 	/* Dunno about this - to unref or not to unref? */
-	if (eyes_applet.eye_image != NULL) {
-        	gdk_pixbuf_unref (eyes_applet.eye_image); 
-        	eyes_applet.eye_image = NULL;
+	if (eyes_applet->eye_image != NULL) {
+        	gdk_pixbuf_unref (eyes_applet->eye_image); 
+        	eyes_applet->eye_image = NULL;
         }
-        if (eyes_applet.pupil_image != NULL) {
-        	gdk_pixbuf_unref (eyes_applet.pupil_image); 
-        	eyes_applet.pupil_image = NULL;
+        if (eyes_applet->pupil_image != NULL) {
+        	gdk_pixbuf_unref (eyes_applet->pupil_image); 
+        	eyes_applet->pupil_image = NULL;
 	}
 	
-        g_free (eyes_applet.theme_dir);
-        g_free (eyes_applet.theme_name);
+        g_free (eyes_applet->theme_dir);
+        g_free (eyes_applet->theme_name);
 }
 
 static void
 theme_selected_cb (GtkTreeSelection *selection, gpointer data)
 {
-	GtkWidget *applet = data;
+	EyesApplet *eyes_applet = data;
 	GtkTreeModel *model;
 	GtkTreeIter iter;
 	gchar *theme;
@@ -141,33 +141,35 @@ theme_selected_cb (GtkTreeSelection *selection, gpointer data)
 	
 	g_return_if_fail (theme);
 	
-	destroy_eyes ();
-        destroy_theme ();
-        load_theme (theme);
-        create_eyes ();
+	destroy_eyes (eyes_applet);
+        destroy_theme (eyes_applet);
+        load_theme (eyes_applet, theme);
+        setup_eyes (eyes_applet);
 	
-	panel_applet_gconf_set_string (PANEL_APPLET (applet), "theme-path",
-				       theme, NULL);
+	panel_applet_gconf_set_string (
+		eyes_applet->applet, "theme-path", theme, NULL);
 	
 	g_free (theme);
 }
 
+#ifdef FIXME
 static void
 phelp_cb (GtkWidget *w, gint tab, gpointer data)
 {
-	
-#ifdef FIXME
 	GnomeHelpMenuEntry help_entry = { "geyes_applet",
 					  "index.html#GEYES-PREFS" };
 	gnome_help_display(NULL, &help_entry);
-#endif
 }
+#endif
 
 static void
 presponse_cb (GtkDialog *dialog, gint id, gpointer data)
 {
+	EyesApplet *eyes_applet = data;
+
 	gtk_widget_destroy (GTK_WIDGET (dialog));
-	eyes_applet.prop_box.pbox = NULL;
+
+	eyes_applet->prop_box.pbox = NULL;
 }
 
 void
@@ -180,16 +182,16 @@ properties_cb (BonoboUIComponent *uic, gpointer user_data, const gchar *verbname
         GtkCellRenderer *cell;
         GtkTreeSelection *selection;
         GtkTreeIter iter;
-        GtkWidget *label;
         gchar *title [] = { N_("Theme Name"), NULL };
         DIR *dfd;
         struct dirent *dp;
         int i;
         gchar filename [PATH_MAX];
+	EyesApplet *eyes_applet = user_data;
      
-	if (eyes_applet.prop_box.pbox) {
-		gdk_window_show (eyes_applet.prop_box.pbox->window);
-		gdk_window_raise (eyes_applet.prop_box.pbox->window);
+	if (eyes_applet->prop_box.pbox) {
+		gdk_window_show (eyes_applet->prop_box.pbox->window);
+		gdk_window_raise (eyes_applet->prop_box.pbox->window);
 		return;
 	}
 
@@ -198,8 +200,9 @@ properties_cb (BonoboUIComponent *uic, gpointer user_data, const gchar *verbname
 					     GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
 					     NULL);
 
-        g_signal_connect (G_OBJECT (pbox), "response",
-			  G_CALLBACK (presponse_cb), NULL);
+        g_signal_connect (pbox, "response",
+			  G_CALLBACK (presponse_cb),
+			  eyes_applet);
 
 	model = gtk_list_store_new (1, G_TYPE_STRING);
 	tree = gtk_tree_view_new_with_model (GTK_TREE_MODEL (model));
@@ -211,8 +214,9 @@ properties_cb (BonoboUIComponent *uic, gpointer user_data, const gchar *verbname
         gtk_tree_view_append_column (GTK_TREE_VIEW (tree), column);
                                                            
         selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (tree));
-        g_signal_connect (G_OBJECT (selection), "changed",
-        		  G_CALLBACK (theme_selected_cb), eyes_applet.applet);
+        g_signal_connect (selection, "changed",
+        		  G_CALLBACK (theme_selected_cb),
+			  eyes_applet);
         
         for (i = 0; i < NUM_THEME_DIRECTORIES; i++) {
                 if ((dfd = opendir (theme_directories[i])) != NULL) {
@@ -235,7 +239,7 @@ properties_cb (BonoboUIComponent *uic, gpointer user_data, const gchar *verbname
         
         gtk_widget_show_all (pbox);
         
-        eyes_applet.prop_box.pbox = pbox;
+        eyes_applet->prop_box.pbox = pbox;
 	
 	return;
 }

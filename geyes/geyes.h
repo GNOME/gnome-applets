@@ -25,41 +25,50 @@
 #define MAX_EYES 5
 typedef struct
 {
-    GtkWidget *pbox;
+	GtkWidget *pbox;
     
-    gint selected_row;
+	gint selected_row;
 } EyesPropertyBox;
 
 typedef struct 
 {
-    /* Applet */
-    GtkWidget *applet;
-    GtkWidget *fixed;
-    GtkWidget *hbox;
-    GtkWidget *eyes[MAX_EYES];
+	/* Applet */
+	PanelApplet *applet;
+	GtkWidget   *fixed;
+	GtkWidget   *hbox;
+	GtkWidget   *eyes[MAX_EYES];
+	guint        timeout_id;
 
-    /* Theme */
-    GdkPixbuf *eye_image;
-    GdkPixbuf *pupil_image;
-    gchar *theme_dir;
-    gchar *theme_name;
-    gchar *eye_filename;
-    gchar *pupil_filename;
-    gint num_eyes;
-    gint eye_height;
-    gint eye_width;
-    gint pupil_height;
-    gint pupil_width;
-    gint wall_thickness;
+	/* Theme */
+	GdkPixbuf *eye_image;
+	GdkPixbuf *pupil_image;
+	gchar *theme_dir;
+	gchar *theme_name;
+	gchar *eye_filename;
+	gchar *pupil_filename;
+	gint num_eyes;
+	gint eye_height;
+	gint eye_width;
+	gint pupil_height;
+	gint pupil_width;
+	gint wall_thickness;
 
-    /* Properties */
-    EyesPropertyBox prop_box;
+	/* Properties */
+	EyesPropertyBox prop_box;
 } EyesApplet;
 
-void create_eyes (void);
-void destroy_eyes (void);
+/* eyes.c */
+void setup_eyes   (EyesApplet *eyes_applet);
 
-void load_theme (gchar *theme_name);
-void properties_cb (BonoboUIComponent *uic, gpointer user_data, const gchar *verbname);
+void destroy_eyes (EyesApplet *eyes_applet);
+
+
+/* theme.c */
+void load_theme    (EyesApplet        *eyes_applet,
+		    const gchar       *theme_dir);
+
+void properties_cb (BonoboUIComponent *uic,
+		    gpointer           user_data,
+		    const gchar       *verbname);
 
 #endif

@@ -1,3 +1,15 @@
+2002-02-14  Michael Meeks  <michael@ximian.com>
+
+	* geyes.c (geyes_applet_fill): pass timeout handle.
+	(destroy_cb): use the correct signature for "destroy",
+	don't use a global for the timeout, we might have several.
+	(geyes_applet_fill): kill gdk_rgb_init.
+	(timer_cb): pass the applet in, only render if realized.
+	(destroy_eyes): remove; unused.
+	remove bogus color_depth stuff.
+
+	* themes.c: re-write some chunks.
+	
 2002-02-11  Kjartan Maraas  <kmaraas@gnome.org>
 
 	* GNOME_MultiLoadApplet_Factory.server.in: Mark strings for l10n.
