@@ -181,6 +181,7 @@ applet_fill (PanelApplet *applet)
 
     g_signal_connect (component, "ui-event", G_CALLBACK (ui_component_event), cd);
     gtk_widget_show (GTK_WIDGET(applet));
+    setup_box(cd);
     return(TRUE);
 }
 
