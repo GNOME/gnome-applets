@@ -76,7 +76,8 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
 						  GTK_DIALOG_DESTROY_WITH_PARENT,
 						  GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
 						  NULL);
-  gtk_dialog_set_default_response (gw_applet->gweather_dialog, GTK_RESPONSE_CLOSE);
+  gtk_dialog_set_default_response (GTK_DIALOG (gw_applet->gweather_dialog), 
+  				   GTK_RESPONSE_CLOSE);
 
   if (gw_applet->gweather_pref.radar_enabled)
       gtk_widget_set_usize (gw_applet->gweather_dialog, 570, 440);
@@ -310,9 +311,6 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
       gtk_container_set_border_width (GTK_CONTAINER (radar_vbox), 6);
 
 
-      /* PUSH */
-      gtk_widget_push_colormap (gdk_rgb_get_cmap ());
-
       ebox = gtk_event_box_new ();
       gtk_widget_show (ebox);
       gtk_box_pack_start (GTK_BOX (radar_vbox), ebox, FALSE, FALSE, 0);
@@ -321,10 +319,6 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
       gw_applet->radar_image = gtk_image_new_from_pixbuf (gw_applet->dialog_pixbuf);  /* Tmp hack */
       gtk_widget_show (gw_applet->radar_image);
       gtk_container_add (GTK_CONTAINER (ebox), gw_applet->radar_image);
-
-      /* POP */
-      gtk_widget_pop_colormap ();
-
 
       radar_link_alignment = gtk_alignment_new (0.5, 0.5, 0, 0);
       gtk_widget_show (radar_link_alignment);

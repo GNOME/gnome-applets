@@ -708,7 +708,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
 				      		   GTK_DIALOG_DESTROY_WITH_PARENT,
 				      		   GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
 				      		   NULL);
-    gtk_dialog_set_default_response (gw_applet->pref, GTK_RESPONSE_CLOSE);
+    gtk_dialog_set_default_response (GTK_DIALOG (gw_applet->pref), GTK_RESPONSE_CLOSE);
     gtk_widget_set_usize (gw_applet->pref, -2, 280);
     gtk_window_set_policy (GTK_WINDOW (gw_applet->pref), TRUE, TRUE, FALSE);
     
