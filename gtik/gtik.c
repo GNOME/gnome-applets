@@ -258,7 +258,7 @@ static gint updateOutput(gpointer data)
 									   "tik_syms",
 									   NULL);
 		if (!stockdata->props.tik_syms)
-			stockdata->props.tik_syms = g_strdup ("cald+rhat+corl");
+			stockdata->props.tik_syms = g_strdup ("^DJI+^IXIC+^GSPC");
 		stockdata->props.output = panel_applet_gconf_get_bool (applet,
 									  "output",
 									  NULL);
