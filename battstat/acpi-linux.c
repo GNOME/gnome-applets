@@ -148,6 +148,7 @@ gboolean acpi_linux_read(struct apm_info *apminfo)
   char buf[BUFSIZ];
   GHashTable *hash;
   const char *ac_state_state, *charging_state;
+  const char *batt_state_state;
   char batt_info[60], batt_state[60], ac_state[60];
   DIR * procdir;
   struct dirent * procdirentry;
@@ -177,9 +178,11 @@ gboolean acpi_linux_read(struct apm_info *apminfo)
 
   if (acpi_ver < (gulong)20020208) {
     ac_state_state = "status";
+    batt_state_state = "status";
     charging_state = "state";
   } else {
     ac_state_state = "state";
+    batt_state_state = "state";
     charging_state = "charging state";
   }
 
@@ -204,7 +207,8 @@ gboolean acpi_linux_read(struct apm_info *apminfo)
        }
       strcpy(batt_state,"/proc/acpi/battery/");
       strcat(batt_state,procdirentry->d_name);
-      strcat(batt_state,"/state");
+      strcat(batt_state,"/");
+      strcat(batt_state,batt_state_state);
       hash = read_file (batt_state, buf, sizeof (buf));
       if (hash)
        {
