@@ -105,6 +105,7 @@ static int get_current_headlines(gpointer data)
  
   gchar http_server[128] = "slashdot.org";
   gchar http_filename[128] = "/ultramode.txt";
+  gint wrotebytes;
   gint http_port = 80;
   gchar final_url[334];
   gchar buf[256];
@@ -119,38 +120,27 @@ static int get_current_headlines(gpointer data)
   gchar free1[128];
   gchar free2[128];
   FILE *gticker_file = NULL;
-  gchar *filename = g_strconcat(appdata->gticker_dir, "/gticker", NULL);
+  gchar *filename = g_strconcat(appdata->gticker_dir, "/", "headlines", NULL);
   gint delay = appdata->article_delay / 10 * (1000 / UPDATE_DELAY);
-  
+ 
   ghttp_set_uri(req, g_strconcat("http://", http_server, http_filename, NULL));
-  printf("%s\n", ghttp_get_error(req));
-  ghttp_prepare(req);	/* should add error checking...*/
-  printf("%s\n", ghttp_get_error(req));
   ghttp_set_header(req, http_hdr_Connection, "close");
-  printf("%s\n", ghttp_get_error(req));
+  ghttp_prepare(req);
   ghttp_process(req);
-  printf("%s\n", ghttp_get_error(req));
-  ghttp_get_body(req);
-  printf("%s\n", ghttp_get_error(req));
-  ghttp_close(req);
-  printf("%s\n", ghttp_get_error(req));
-  ghttp_request_destroy(req);
-      
+
+  if ((gticker_file = fopen(filename, "w")) == NULL) {
+	  fprintf(stderr, "Failed to open file \"%s\": %s\n", filename, 
+			  strerror(errno));
+	  g_free(filename);
+	  set_mouse_cursor(appdata, GDK_LEFT_PTR);
+	  return TRUE;
+  }
   
-  set_mouse_cursor(appdata, GDK_WATCH);
-  while(gtk_events_pending())
-    gtk_main_iteration();
-
-  if ((gticker_file = fopen(filename, "w")) == NULL)
-    {
-      fprintf(stderr, "Failed to open file \"%s\": %s\n",
-	      filename, strerror(errno));
-      g_free(filename);
-      set_mouse_cursor(appdata, GDK_LEFT_PTR);
-      return TRUE;
-    }
-
-  fclose(gticker_file); 
+  fwrite(ghttp_get_body(req), ghttp_get_body_len(req), 1, gticker_file);
+  fclose(gticker_file);
+  ghttp_close(req);
+  ghttp_request_destroy(req);
+  fclose(gticker_file);
   return TRUE;
 }
 
