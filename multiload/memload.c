@@ -58,6 +58,13 @@ make_memload_applet (const gchar *goad_id)
 					   g);
 
     applet_widget_register_stock_callback (APPLET_WIDGET(applet),
+					   "local_properties",
+					   GNOME_STOCK_MENU_PROP,
+					   _("Properties..."),
+					   multiload_local_properties_cb,
+					   g);
+
+    applet_widget_register_stock_callback (APPLET_WIDGET(applet),
 					   "run_gtop",
 					   GNOME_STOCK_MENU_INDEX,
 					   _("Run gtop..."),

@@ -136,6 +136,7 @@ GetLoadAvg (int Maximum, int data [2], LoadGraph *g)
 {
     float used, free;
     float max_loadavg = 10.0;
+    int index;
 
     glibtop_loadavg loadavg;
 	
@@ -143,14 +144,28 @@ GetLoadAvg (int Maximum, int data [2], LoadGraph *g)
 	
     assert ((loadavg.flags & needed_loadavg_flags) == needed_loadavg_flags);
 
+    switch (g->prop_data->loadavg_type) {
+    case LOADAVG_1:
+	index = 0;
+	break;
+    case LOADAVG_5:
+	index = 1;
+	break;
+    case LOADAVG_15:
+	index = 2;
+	break;
+    default:
+	g_assert_not_reached ();
+    }
+
     if (g->prop_data_ptr->adj_data [2])
 	max_loadavg = (float) g->prop_data_ptr->adj_data [2];
 
-    if (loadavg.loadavg [0] > max_loadavg)
-	loadavg.loadavg [0] = max_loadavg;
+    if (loadavg.loadavg [index] > max_loadavg)
+	loadavg.loadavg [index] = max_loadavg;
 
-    used    = (loadavg.loadavg [0]) / max_loadavg;
-    free    = (max_loadavg - loadavg.loadavg [0]) / max_loadavg;
+    used    = (loadavg.loadavg [index]) / max_loadavg;
+    free    = (max_loadavg - loadavg.loadavg [index]) / max_loadavg;
 
     data [0] = rint ((float) Maximum * used);
     data [1] = rint ((float) Maximum * free);

@@ -342,6 +342,9 @@ applet_save_session_cb (GtkWidget *w, const char *privcfgpath,
     sprintf (name, "%s/use_default", g->prop_data->name);
     gnome_config_set_int (name, g->prop_data->use_default);
 
+    sprintf (name, "%s/loadavg_type", g->prop_data->name);
+    gnome_config_set_int (name, g->prop_data->loadavg_type);
+
     gnome_config_pop_prefix();
 
     gnome_config_sync();
@@ -396,6 +399,10 @@ applet_load_config (LoadGraph *g)
 
     sprintf (name, "%s/use_default=1", g->prop_data->name);
     g->prop_data->use_default = gnome_config_get_int (name);
+
+    sprintf (name, "%s/loadavg_type=%d",
+	     g->prop_data->name, g->prop_data->loadavg_type);
+    g->prop_data->loadavg_type = gnome_config_get_int (name);
 
     if (g->prop_data->use_default)
 	g->prop_data_ptr = g->global_prop_data;
@@ -595,6 +602,10 @@ load_graph_properties_load (GnomePropertyObject *object)
     sprintf (name, "multiload/%s/maximum=%ld",
 	     prop_data->name, prop_data->adj_data [2]);
     prop_data->adj_data [2] = gnome_config_get_int (name);
+
+    sprintf (name, "multiload/%s/loadavg_type=%d",
+	     prop_data->name, prop_data->loadavg_type);
+    prop_data->loadavg_type = gnome_config_get_int (name);
 }
 
 static void
@@ -622,6 +633,9 @@ load_graph_properties_save (GnomePropertyObject *object)
 
     sprintf (name, "multiload/%s/maximum", prop_data->name);
     gnome_config_set_int (name, prop_data->adj_data [2]);
+
+    sprintf (name, "multiload/%s/loadavg_type", prop_data->name);
+    gnome_config_set_int (name, prop_data->loadavg_type);
 }
 
 static void

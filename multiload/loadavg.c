@@ -23,6 +23,66 @@
 
 #include "global.h"
 
+static const char *loadavg_texts [3] = {
+    N_("Load average over 1 minute"),
+    N_("Load average over 5 minutes"),
+    N_("Load average over 15 minutes")
+};
+
+static void
+loadavg_1_cb (AppletWidget *widget, gpointer data)
+{
+    LoadGraph *g = (LoadGraph *) data;
+
+    g->prop_data->loadavg_type = LOADAVG_1;
+
+    gnome_property_object_list_walk
+	(g->local_prop_data->local_property_object_list,
+	 GNOME_PROPERTY_ACTION_UPDATE);
+
+    gnome_property_object_list_walk
+	(g->local_prop_data->local_property_object_list,
+	 GNOME_PROPERTY_ACTION_SAVE);
+
+    applet_widget_set_tooltip (g->applet, _(loadavg_texts [0]));
+}
+
+static void
+loadavg_5_cb (AppletWidget *widget, gpointer data)
+{
+    LoadGraph *g = (LoadGraph *) data;
+
+    g->prop_data->loadavg_type = LOADAVG_5;
+
+    gnome_property_object_list_walk
+	(g->local_prop_data->local_property_object_list,
+	 GNOME_PROPERTY_ACTION_UPDATE);
+
+    gnome_property_object_list_walk
+	(g->local_prop_data->local_property_object_list,
+	 GNOME_PROPERTY_ACTION_SAVE);
+
+    applet_widget_set_tooltip (g->applet, _(loadavg_texts [1]));
+}
+
+static void
+loadavg_15_cb (AppletWidget *widget, gpointer data)
+{
+    LoadGraph *g = (LoadGraph *) data;
+
+    g->prop_data->loadavg_type = LOADAVG_15;
+
+    gnome_property_object_list_walk
+	(g->local_prop_data->local_property_object_list,
+	 GNOME_PROPERTY_ACTION_UPDATE);
+
+    gnome_property_object_list_walk
+	(g->local_prop_data->local_property_object_list,
+	 GNOME_PROPERTY_ACTION_SAVE);
+
+    applet_widget_set_tooltip (g->applet, _(loadavg_texts [2]));
+}
+
 /* start a new instance of the loadavg applet */
 GtkWidget *
 make_loadavg_applet (const gchar *goad_id)
@@ -51,27 +111,43 @@ make_loadavg_applet (const gchar *goad_id)
 
     load_graph_start (g);
 
-    applet_widget_register_stock_callback (APPLET_WIDGET(applet),
+    applet_widget_register_callback_dir (APPLET_WIDGET (applet),
+					 "loadavg/", _("Load Average"));
+
+    applet_widget_register_callback (APPLET_WIDGET (applet),
+				     "loadavg/load_1", _(loadavg_texts [0]),
+				     loadavg_1_cb, g);
+
+    applet_widget_register_callback (APPLET_WIDGET (applet),
+				     "loadavg/load_5", _(loadavg_texts [1]),
+				     loadavg_5_cb, g);
+
+    applet_widget_register_callback (APPLET_WIDGET (applet),
+				     "loadavg/load_15", _(loadavg_texts [2]),
+				     loadavg_15_cb, g);
+
+    applet_widget_register_stock_callback (APPLET_WIDGET (applet),
 					   "properties",
 					   GNOME_STOCK_MENU_PROP,
 					   _("Default Properties..."),
 					   multiload_properties_cb,
 					   g);
 
-    applet_widget_register_stock_callback (APPLET_WIDGET(applet),
+    applet_widget_register_stock_callback (APPLET_WIDGET (applet),
 					   "local_properties",
 					   GNOME_STOCK_MENU_PROP,
 					   _("Properties..."),
 					   multiload_local_properties_cb,
 					   g);
 
-    applet_widget_register_stock_callback (APPLET_WIDGET(applet), 
+    applet_widget_register_stock_callback (APPLET_WIDGET (applet), 
 					   "run_gtop",
 					   GNOME_STOCK_MENU_INDEX,
 					   _("Run gtop..."),
 					   start_gtop_cb, NULL);
 
-    applet_widget_set_tooltip(APPLET_WIDGET(applet), "Load Average");
+    applet_widget_set_tooltip (APPLET_WIDGET (applet),
+			       _(loadavg_texts [prop_data->loadavg_type]));
 
     return applet;
 }
