@@ -143,6 +143,9 @@ cdrom_get_status(cdrom_device_t cdp, cdrom_device_status_t * stat)
 	struct cdrom_subchnl subchnl;
 	int status;
 
+/*if we have the uniform cdrom api, which I thought was on 2.0 kernels,
+  but it doesn't seem to be*/
+#ifdef CDROM_DRIVE_STATUS
 	status = ioctl(cdp->device, CDROM_DRIVE_STATUS, CDSL_CURRENT);
 
 	/*if the status is -1, then it could mean that we just don't support
@@ -159,6 +162,7 @@ cdrom_get_status(cdrom_device_t cdp, cdrom_device_status_t * stat)
 			break;
 		}
 	}
+#endif
 
 	subchnl.cdsc_format = CDROM_MSF;
 	if (ioctl(cdp->device, CDROMSUBCHNL, &subchnl) == -1) {
