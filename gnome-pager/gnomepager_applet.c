@@ -1894,6 +1894,17 @@ desktop_cb_redraw(GtkWidget *widget, gpointer data)
   data = NULL;
 }
 
+void
+cb_desk_destroy(GtkWidget *widget, gpointer data)
+{
+  gint current_timeout;
+  
+  current_timeout =
+    GPOINTER_TO_INT (gtk_object_get_data(GTK_OBJECT(widget), "timeout"));
+  if (current_timeout)
+    gtk_timeout_remove(current_timeout);
+}
+
 GtkWidget *
 make_desktop_pane(gint desktop, gint width, gint height)
 {
@@ -1918,6 +1929,8 @@ make_desktop_pane(gint desktop, gint width, gint height)
 		     GTK_SIGNAL_FUNC(desktop_cb_button_up), NULL);
   gtk_signal_connect(GTK_OBJECT(area), "expose_event",
 		     GTK_SIGNAL_FUNC(desktop_cb_redraw), NULL);
+  gtk_signal_connect(GTK_OBJECT(area), "destroy",
+		     GTK_SIGNAL_FUNC(cb_desk_destroy), NULL);
   s = desk_name[desktop];
   if (s) 
     {
