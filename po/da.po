@@ -8,8 +8,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 1.2.0\n"
-"POT-Creation-Date: 2001-06-10 18:52+0200\n"
-"PO-Revision-Date: 2001-06-09 23:40+02:00\n"
+"POT-Creation-Date: 2001-06-26 21:01+0200\n"
+"PO-Revision-Date: 2001-06-26 21:01+02:00\n"
 "Last-Translator: Ole Laursen <olau@hardworking.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
 "MIME-Version: 1.0\n"
@@ -79,7 +79,7 @@ msgstr "Et analogt ur magen til det fra CDE-panelet"
 
 #: another_clock/another_clock.c:726 asclock/asclock.c:615
 #: battery/battery.c:951 charpick/charpick.c:588 clockmail/clockmail.c:327
-#: diskusage/diskusage.c:1058 drivemount/drivemount.c:741 geyes/geyes.c:393
+#: diskusage/diskusage.c:1058 drivemount/drivemount.c:752 geyes/geyes.c:393
 #: gkb-new/gkb.c:758 gnotes/gnotes_applet.c:198 gtik/gtik.c:1417
 #: gweather/gweather-applet.c:212
 #: mini-commander/src/mini-commander_applet.c:401
@@ -94,11 +94,11 @@ msgstr "Egenskaber..."
 #: another_clock/another_clock.c:732 asclock/asclock.c:621
 #: battery/battery.c:957 cdplayer/cdplayer.c:603 charpick/charpick.c:595
 #: clockmail/clockmail.c:334 cpumemusage/cpumemusage.c:299
-#: diskusage/diskusage.c:1081 drivemount/drivemount.c:747
+#: diskusage/diskusage.c:1081 drivemount/drivemount.c:758
 #: fifteen/fifteen.c:390 geyes/geyes.c:399 gkb-new/gkb.c:764
 #: gnotes/gnotes_applet.c:202 gweather/gweather-applet.c:217
 #: jbc/jbc-applet.c:202 life/life.c:286
-#: mini-commander/src/mini-commander_applet.c:408 mixer/mixer.c:762
+#: mini-commander/src/mini-commander_applet.c:408 mixer/mixer.c:806
 #: multiload/cpuload.c:108 multiload/loadavg.c:183 multiload/memload.c:111
 #: multiload/netload.c:107 multiload/swapload.c:111 odometer/odo.c:686
 #: quicklaunch/quicklaunch.c:534 screenshooter/screenshooter_applet.c:1023
@@ -111,10 +111,10 @@ msgstr "Hjælp"
 #: battery/battery.c:962 cdplayer/cdplayer.c:610 charpick/charpick.c:601
 #: clipboard/clipboard.c:339 clockmail/clockmail.c:339
 #: cpumemusage/cpumemusage.c:305 diskusage/diskusage.c:1088
-#: drivemount/drivemount.c:752 fifteen/fifteen.c:395 geyes/geyes.c:404
+#: drivemount/drivemount.c:763 fifteen/fifteen.c:395 geyes/geyes.c:404
 #: gkb-new/gkb.c:769 gnotes/gnotes_applet.c:205 gtik/gtik.c:1426
 #: gweather/gweather-applet.c:222 jbc/jbc-applet.c:207 life/life.c:290
-#: mini-commander/src/mini-commander_applet.c:415 mixer/mixer.c:767
+#: mini-commander/src/mini-commander_applet.c:415 mixer/mixer.c:811
 #: modemlights/modemlights.c:1507 multiload/cpuload.c:115
 #: multiload/loadavg.c:190 multiload/memload.c:118 multiload/netload.c:114
 #: multiload/swapload.c:118 odometer/odo.c:689 quicklaunch/quicklaunch.c:538
@@ -381,7 +381,10 @@ msgstr "Antal rækker:"
 msgid "Number of columns of buttons:"
 msgstr "Antal kolonner:"
 
-#. Size
+#. gtk_widget_set (best_size,
+#. "border_width", 2,
+#. "spacing", 2,
+#. NULL);
 #: charpick/properties.c:254 diskusage/properties.c:365
 #: mini-commander/src/preferences.c:611 tickastat/properties.c:500
 msgid "Size"
@@ -552,7 +555,7 @@ msgstr ""
 "Viser hvor meget plads der er henholdsvis ledig og i brug på dine harddiske. "
 "Udgivet under GNU general public license."
 
-#: diskusage/diskusage.c:1066 drivemount/drivemount.c:722
+#: diskusage/diskusage.c:1066 drivemount/drivemount.c:733
 msgid "Browse..."
 msgstr "Gennemse..."
 
@@ -616,11 +619,11 @@ msgstr " ikke monteret"
 
 #. the mount status is the same, print
 #. the returned output from (u)mount, we are assuming an error
-#: drivemount/drivemount.c:503
+#: drivemount/drivemount.c:506
 msgid "\" reported:\n"
 msgstr "\" rapporterede:\n"
 
-#: drivemount/drivemount.c:505
+#: drivemount/drivemount.c:508
 msgid ""
 "Drivemount command failed.\n"
 "\""
@@ -628,7 +631,7 @@ msgstr ""
 "Drevmonteringskommandoen mislykkedes.\n"
 "\""
 
-#: drivemount/drivemount.c:732
+#: drivemount/drivemount.c:743
 msgid "Eject"
 msgstr "Skub ud"
 
@@ -756,7 +759,7 @@ msgstr "Temanavn"
 msgid "gEyes Settings"
 msgstr "Indstillinger for øjne"
 
-#: geyes/themes.c:226
+#: geyes/themes.c:227
 msgid "Themes"
 msgstr "Temaer"
 
@@ -1247,7 +1250,7 @@ msgid "Edit keymap"
 msgstr "Redigér tastaturudlægning"
 
 #. Add the labels
-#: gkb-new/prop-map.c:580 tickastat/mod_news.c:1203
+#: gkb-new/prop-map.c:580 tickastat/mod_news.c:1206
 msgid "Name"
 msgstr "Navn"
 
@@ -1550,7 +1553,7 @@ msgstr "Besøg Weather.com"
 msgid "Radar map"
 msgstr "Radarkort"
 
-#: gweather/gweather-dialog.c:435
+#: gweather/gweather-dialog.c:436
 msgid ""
 "Detailed forecast not available for this location.\n"
 "Please try the state forecast; note that IWIN forecasts are available only "
@@ -1560,7 +1563,7 @@ msgstr ""
 "Prøv venligst den nationale vejrudsigt (bemærk at\n"
 "IWIN-vejrudsigter kun er tilgængelige for byer i USA)."
 
-#: gweather/gweather-dialog.c:437
+#: gweather/gweather-dialog.c:438
 msgid ""
 "State forecast not available for this location.\n"
 "Please try the detailed forecast; note that IWIN forecasts are available "
@@ -3110,12 +3113,12 @@ msgid "Macros"
 msgstr "Makroer"
 
 #. probably should die more gracefully
-#: mixer/mixer.c:130
+#: mixer/mixer.c:155
 #, c-format
 msgid "Couldn't open mixer device %s\n"
 msgstr "Kunne ikke åbne mixerenhed %s\n"
 
-#: mixer/mixer.c:144
+#: mixer/mixer.c:169
 msgid ""
 "warning: this version of gmix was compiled with a different version of\n"
 "soundcard.h.\n"
@@ -3123,19 +3126,19 @@ msgstr ""
 "advarsel: denne version af gmix blev oversat med en anden version af "
 "soundcard.h\n"
 
-#: mixer/mixer.c:485
+#: mixer/mixer.c:529
 msgid "Main Volume and Mute"
 msgstr "Hovedlydstyrke og dæmp"
 
-#: mixer/mixer.c:616
+#: mixer/mixer.c:660
 msgid "Mixer Applet"
 msgstr "Mixerpanelprogram"
 
-#: mixer/mixer.c:617
+#: mixer/mixer.c:661
 msgid "(c) 1998 The Free Software Foundation"
 msgstr "© 1998 Free Software Foundation"
 
-#: mixer/mixer.c:619
+#: mixer/mixer.c:663
 msgid ""
 "The mixer applet gives you instant access to setting the master volume level "
 "on your soundcard device"
@@ -3143,7 +3146,7 @@ msgstr ""
 "Mixerpanelprogrammet tillader dig at indstille hovedlydstyrken på lydkortet "
 "direkte."
 
-#: mixer/mixer.c:755
+#: mixer/mixer.c:799
 msgid "Run Audio Mixer..."
 msgstr "Kør lydmixer..."
 
@@ -3510,7 +3513,7 @@ msgstr "Brug metriske mål"
 msgid "auto_reset"
 msgstr "Nulstil ved hver opstart"
 
-#: odometer/properties.c:267 tickastat/mod_news.c:1251
+#: odometer/properties.c:267 tickastat/mod_news.c:1260
 msgid "enabled"
 msgstr "Slået til"
 
@@ -3519,7 +3522,7 @@ msgid "Digits number"
 msgstr "Antal cifre"
 
 #: odometer/properties.c:308
-msgid "Theme file :"
+msgid "Theme file:"
 msgstr "Temafil:"
 
 #: quicklaunch/quicklaunch.c:64
@@ -4065,31 +4068,31 @@ msgstr "SlashApp-artikelliste"
 msgid "No articles"
 msgstr "Ingen artikler"
 
-#: slashapp/slashapp.c:402 slashapp/slashapp.c:411
+#: slashapp/slashapp.c:405 slashapp/slashapp.c:414
 msgid "Unable to parse document\n"
 msgstr "Kan ikke analysere dokument\n"
 
-#: slashapp/slashapp.c:403 slashapp/slashapp.c:412
+#: slashapp/slashapp.c:406 slashapp/slashapp.c:415
 msgid "Can't parse XML. Net connection down?"
 msgstr "Kan ikke fortolke XML. Er netforbindelsen nede?"
 
-#: slashapp/slashapp.c:441
+#: slashapp/slashapp.c:445
 msgid "Unable to initialize request. Shouldn't happen\n"
 msgstr "Kan ikke starte forespørgsel. Burde ikke ske\n"
 
-#: slashapp/slashapp.c:470
+#: slashapp/slashapp.c:474
 msgid "Unable to prepare request.\n"
 msgstr "Kan ikke forberede forespørgsel.\n"
 
-#: slashapp/slashapp.c:474
+#: slashapp/slashapp.c:478
 msgid "Unable to process request.\n"
 msgstr "Kan ikke behandle forespørgsel.\n"
 
-#: slashapp/slashapp.c:510
+#: slashapp/slashapp.c:517
 msgid "No title"
 msgstr "Ingen titel"
 
-#: slashapp/slashapp.c:511
+#: slashapp/slashapp.c:518
 msgid "No url"
 msgstr "Ingen adresse"
 
@@ -4254,7 +4257,7 @@ msgid "Core Dump Module"
 msgstr "Core-dump-modul"
 
 #: tickastat/mod_coredump.c:476 tickastat/mod_loadavg.c:518
-#: tickastat/mod_news.c:1215 tickastat/mod_tail.c:419 tickastat/mod_test.c:133
+#: tickastat/mod_news.c:1224 tickastat/mod_tail.c:419 tickastat/mod_test.c:133
 msgid "Enable this module"
 msgstr "Brug dette modul"
 
@@ -4344,71 +4347,71 @@ msgstr "skript \""
 msgid "Tick-a-Stat script encountered an error:\n"
 msgstr "Fjernskriver-skriptet løb ind i en fejl:\n"
 
-#: tickastat/mod_news.c:1203
+#: tickastat/mod_news.c:1205
 msgid "Enabled"
 msgstr "Aktiveret"
 
-#: tickastat/mod_news.c:1203
+#: tickastat/mod_news.c:1207
 msgid "Line delay"
 msgstr "Linjeforsinkelse"
 
-#: tickastat/mod_news.c:1203
+#: tickastat/mod_news.c:1208
 msgid "Update interval"
 msgstr "Opdateringsinterval"
 
-#: tickastat/mod_news.c:1204
+#: tickastat/mod_news.c:1209
 msgid "D"
 msgstr "D"
 
-#: tickastat/mod_news.c:1204
+#: tickastat/mod_news.c:1210
 msgid "T"
 msgstr "T"
 
-#: tickastat/mod_news.c:1204
+#: tickastat/mod_news.c:1211
 msgid "I"
 msgstr "I"
 
-#: tickastat/mod_news.c:1204
+#: tickastat/mod_news.c:1212
 msgid "B"
 msgstr "B"
 
-#: tickastat/mod_news.c:1208
+#: tickastat/mod_news.c:1217
 msgid "News and Information Module"
 msgstr "Nyheds- og informationsmodul"
 
-#: tickastat/mod_news.c:1262
+#: tickastat/mod_news.c:1271
 msgid "Line (s):"
 msgstr "Linje(r):"
 
-#: tickastat/mod_news.c:1276
+#: tickastat/mod_news.c:1285
 msgid "Update (m):"
 msgstr "Opdatér (m):"
 
-#: tickastat/mod_news.c:1294
+#: tickastat/mod_news.c:1303
 msgid "body"
 msgstr "krop"
 
-#: tickastat/mod_news.c:1299
+#: tickastat/mod_news.c:1308
 msgid "image"
 msgstr "billede"
 
-#: tickastat/mod_news.c:1304
+#: tickastat/mod_news.c:1313
 msgid "topic"
 msgstr "emne"
 
-#: tickastat/mod_news.c:1309
+#: tickastat/mod_news.c:1318
 msgid "date"
 msgstr "dato"
 
-#: tickastat/mod_news.c:1314
+#: tickastat/mod_news.c:1323
 msgid "Show:"
 msgstr "Vis:"
 
-#: tickastat/mod_news.c:1497
+#: tickastat/mod_news.c:1506
 msgid "News and information ticker"
 msgstr "Nyheds- og informationsfjernskriver"
 
-#: tickastat/mod_news.c:1498
+#: tickastat/mod_news.c:1507
 msgid "This module can display news and other information."
 msgstr "Dette modul kan vise nyheder og anden information"
 
