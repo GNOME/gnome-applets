@@ -86,6 +86,9 @@ static int load_hist_tx[20];
 static int confirm_dialog = FALSE;
 
 static PanelOrientType orient;
+static PanelSizeType sizehint;
+static gint panel_verticle = FALSE;
+static gint setup_done = FALSE;
 
 static void about_cb (AppletWidget *widget, gpointer data);
 static int is_Modem_on();
@@ -113,6 +116,7 @@ static gint update_display();
 static void create_pixmaps();
 static void setup_colors();
 static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data);
+static void applet_change_size(GtkWidget *w, PanelSizeType s, gpointer data);
 static gint applet_save_session(GtkWidget *widget, char *privcfgpath, char *globcfgpath);
 
 static int get_modem_stats(int *in, int *out);
@@ -593,7 +597,7 @@ static void draw_load(int rxbytes,int txbytes)
 		y = 19;
 		dot_height = 18;
 		}
-	else if (orient == ORIENT_LEFT || orient == ORIENT_RIGHT)
+	else if (panel_verticle)
 		{
 		x = 2;
 		y = 17;
@@ -656,7 +660,7 @@ static void draw_load(int rxbytes,int txbytes)
 static void draw_light(int lit,int x,int y)
 {
 	/* if the orientation is sideways (left or right panel), we swap x and y */
-	if (show_extra_info || orient == ORIENT_LEFT || orient == ORIENT_RIGHT)
+	if (show_extra_info || panel_verticle)
 		{
 		int t;
 		t = y;
@@ -845,14 +849,18 @@ static void setup_colors()
 
 void reset_orientation(void)
 {
-	applet_change_orient(NULL, orient, NULL);
-}
+	if (((orient == ORIENT_LEFT || orient == ORIENT_RIGHT) && sizehint != SIZE_TINY) ||
+	    ((orient == ORIENT_UP || orient == ORIENT_DOWN) && sizehint == SIZE_TINY))
+		{
+		panel_verticle = TRUE;
+		}
+	else
+		{
+		panel_verticle = FALSE;
+		}
 
-static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
-{
+
 	/* resize the applet and set the proper background pixmap */
-	orient = o;
-
 	if (show_extra_info)
 		{
 		gtk_widget_set_usize(frame, 46, 46);
@@ -864,7 +872,7 @@ static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
 		gtk_fixed_move(GTK_FIXED(frame),display_area,16,0);
 		gtk_fixed_move(GTK_FIXED(frame),button,0,0);
 		}
-	else if (orient == ORIENT_LEFT || orient == ORIENT_RIGHT)
+	else if (panel_verticle)
 		{
 		gtk_widget_set_usize(frame, 46, 20);
 		display = gdk_pixmap_new(display_area->window,30,20,-1);
@@ -889,6 +897,18 @@ static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
 	/* we set the lights to off so they will be correct on the next update */
 	update_lights(FALSE, FALSE, FALSE, -1);
 	redraw_display();
+}
+
+static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
+{
+	orient = o;
+	if (setup_done) reset_orientation();
+}
+
+static void applet_change_size(GtkWidget *w, PanelSizeType s, gpointer data)
+{
+	sizehint = s;
+	if (setup_done) reset_orientation();
 }
 
 static gint applet_save_session(GtkWidget *widget, char *privcfgpath, char *globcfgpath)
@@ -926,6 +946,7 @@ int main (int argc, char *argv[])
 	command_connect = g_strdup("pppon");
 	command_disconnect = g_strdup("pppoff");
 	orient = ORIENT_UP;
+	sizehint = SIZE_STANDARD;
 
 	/* open ip socket */
 	if ((ip_socket = socket(AF_INET, SOCK_DGRAM, 0)) < 0)
@@ -973,6 +994,9 @@ int main (int argc, char *argv[])
 	gtk_signal_connect(GTK_OBJECT(applet),"change_orient",
 				GTK_SIGNAL_FUNC(applet_change_orient),
 				NULL);
+	gtk_signal_connect(GTK_OBJECT(applet),"change_size",
+				GTK_SIGNAL_FUNC(applet_change_size),
+				NULL);
 
 	button_pixmap = gtk_pixmap_new(button_off, NULL);
 	gtk_container_add(GTK_CONTAINER(button), button_pixmap);
@@ -980,6 +1004,10 @@ int main (int argc, char *argv[])
 
 	update_tooltip(FALSE,0,0);
 	gtk_widget_show(applet);
+
+	/* by now we know the geometry */
+	setup_done = TRUE;
+	reset_orientation();
 
 	gtk_signal_connect(GTK_OBJECT(applet),"save_session",
 		GTK_SIGNAL_FUNC(applet_save_session), NULL);
