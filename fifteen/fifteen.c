@@ -386,26 +386,7 @@ fifteen_applet_new (void)
 			  G_CALLBACK (geyes_applet_size_change),
 			  canvas);
 
-#ifdef FIXME
-	
-
-	test_applet_setup_tooltips (GTK_WIDGET (applet));
-
-	g_signal_connect (G_OBJECT (applet),
-			  "change_orient",
-			  G_CALLBACK (test_applet_handle_orient_change),
-			  label);
-
-	g_signal_connect (G_OBJECT (applet),
-			  "change_background",
-			  G_CALLBACK (test_applet_handle_background_change),
-			  label);
-
-	g_signal_connect (G_OBJECT (applet),
-			  "save_yourself",
-			  G_CALLBACK (test_applet_handle_save_yourself),
-			  label);
-#endif			  
+		  
 	return BONOBO_OBJECT (panel_applet_get_control (PANEL_APPLET (applet)));
 }
 
