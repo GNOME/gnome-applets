@@ -608,7 +608,7 @@ static AnalogData *new_clock_from_data(HandData *h, HandData *m, HandData *s,
 		back = gdk_pixmap_new (ad->applet->window, width, height, -1);
 		gdk_draw_pixmap(back,
 			ad->display_area->style->fg_gc[GTK_WIDGET_STATE(ad->display_area)],
-			large_back, 0, 0, x, y, width, height);
+			large_back, x, y, 0, 0, width, height);
 		}
 
 	return new_clock(h, m, s, back, x, y);
@@ -641,9 +641,9 @@ void draw_clock(AnalogData *c, gint h, gint m, gint s, AppData *ad)
 
 	img = gdk_image_get(c->back, 0, 0, c->width, c->height);
 
-	draw_hand(c->hour, c->x + c->cx, c->y + c->cy, (float)h / 12 * 360, img, ad);
-	draw_hand(c->minute, c->x + c->cx, c->y + c->cy, (float)m / 60 * 360, img, ad);
-	draw_hand(c->second, c->x + c->cx, c->y + c->cy, (float)s / 60 * 360, img, ad);
+	draw_hand(c->hour,  c->cx, c->cy, (float)h / 12 * 360, img, ad);
+	draw_hand(c->minute, c->cx, c->cy, (float)m / 60 * 360, img, ad);
+	draw_hand(c->second, c->cx, c->cy, (float)s / 60 * 360, img, ad);
 
 	gdk_draw_image (ad->skin->background,
 		ad->display_area->style->fg_gc[GTK_WIDGET_STATE(ad->display_area)],
