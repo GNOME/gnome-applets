@@ -33,6 +33,8 @@ gchar               show_icons = 1;
 void 
 cb_applet_orient_change(GtkWidget *w, PanelOrientType o, gpointer data)
 {
+  gint i;
+  
   if (o == applet_orient) 
     return;
   applet_orient = o;
@@ -40,6 +42,8 @@ cb_applet_orient_change(GtkWidget *w, PanelOrientType o, gpointer data)
     {
      case ORIENT_UP:
      case ORIENT_DOWN:
+      for (i = 0; i < 32; i++)
+	desk_widget[i] = NULL;
       if (main_box)
 	gtk_widget_destroy(main_box);
       main_box = NULL;
@@ -47,6 +51,8 @@ cb_applet_orient_change(GtkWidget *w, PanelOrientType o, gpointer data)
       break;
      case ORIENT_LEFT:
      case ORIENT_RIGHT:
+      for (i = 0; i < 32; i++)
+	desk_widget[i] = NULL;
       if (main_box)
 	gtk_widget_destroy(main_box);
       main_box = NULL;
@@ -199,10 +205,14 @@ cb_prop_cancel(GtkWidget *widget, gpointer data)
 void
 cb_prop_apply(GtkWidget *widget, gpointer data)
 {
+  gint i;
+  
   switch (applet_orient) 
     {
      case ORIENT_UP:
      case ORIENT_DOWN:
+      for (i = 0; i < 32; i++)
+	desk_widget[i] = NULL;
       if (main_box)
 	gtk_widget_destroy(main_box);
       main_box = NULL;
@@ -210,6 +220,8 @@ cb_prop_apply(GtkWidget *widget, gpointer data)
       break;
      case ORIENT_LEFT:
      case ORIENT_RIGHT:
+      for (i = 0; i < 32; i++)
+	desk_widget[i] = NULL;
       if (main_box)
 	gtk_widget_destroy(main_box);
       main_box = NULL;
@@ -698,7 +710,7 @@ cb_task_change(GtkWidget *widget, GdkEventProperty * ev, Task *t)
 void 
 cb_root_prop_change(GtkWidget * widget, GdkEventProperty * ev)
 {
-  gint                desk, pdesk;
+  gint                desk, pdesk, i;
   GdkAtom             at;
 
   at = gdk_atom_intern(XA_WIN_WORKSPACE, FALSE);
@@ -733,6 +745,8 @@ cb_root_prop_change(GtkWidget * widget, GdkEventProperty * ev)
 	{
 	 case ORIENT_UP:
 	 case ORIENT_DOWN:
+	  for (i = 0; i < 32; i++)
+	    desk_widget[i] = NULL;
 	  if (main_box)
 	    gtk_widget_destroy(main_box);
 	  main_box = NULL;
@@ -740,6 +754,8 @@ cb_root_prop_change(GtkWidget * widget, GdkEventProperty * ev)
 	  break;
 	 case ORIENT_LEFT:
 	 case ORIENT_RIGHT:
+	  for (i = 0; i < 32; i++)
+	    desk_widget[i] = NULL;
 	  if (main_box)
 	    gtk_widget_destroy(main_box);
 	  main_box = NULL;
@@ -1283,7 +1299,13 @@ desktop_cb_redraw(GtkWidget *widget, gpointer data)
   gint sel, sw, sh, w, h, desk, x, y, ww, hh;
   Task *t;
   GList *p;
-  
+
+  if (!widget)
+    return;
+  if (!widget->window)
+    return;
+  if (!widget->style)
+    return;
   if (!(show_pager))
     return;
   desk = (gint)gtk_object_get_data(GTK_OBJECT(widget), "desktop");
