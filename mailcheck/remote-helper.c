@@ -148,7 +148,7 @@ fork_new_handler (RemoteHandler handler, RemoteHandler error_handler,
 		/*parent*/
 		close (pidpipe[1]);
 		close (mailpipe[1]);
-		while ((waitpid (pid, 0, 0) == -1) && errno == EINTR);
+		while ((waitpid (pid, NULL, 0) == -1) && errno == EINTR);
 		if (read (pidpipe[0], &pid, sizeof (pid)) == -1)
 			pid = -1;
 		close (pidpipe[0]);
