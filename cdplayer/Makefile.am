@@ -2,7 +2,6 @@ INCLUDES = -I. \
 $(GNOME_APPLETS_CFLAGS) \
 -I$(srcdir) \
 -DGNOMELOCALEDIR=\""$(datadir)/locale"\" \
-$(GCONF_APPLETS_CFLAGS) \
 $(CDROM_CFLAGS)
 
 bin_PROGRAMS = cdplayer_applet2
@@ -20,7 +19,6 @@ cdrom-@CDROM_HOST@.c
 
 cdplayer_applet2_LDADD = \
 $(GNOME_APPLETS_LIBS) \
-$(GCONF_APPLETS_LIBS) \
 $(CDROM_LIBS)
 
 icondir   = $(datadir)/pixmaps
