@@ -1,12 +1,12 @@
 ## Again, remove the comments on an applet you want to work on
 
-## gtop_applets = \
-## 	cpumemusage	\
+gtop_applets = \
+##	cpumemusage	\
 ## 	diskusage	\
-## 	multiload
-## if HAVE_LIBGTOP
-## gtop_SUBDIRS = $(gtop_applets)
-## endif
+ 	multiload
+if BUILD_GTOP_APPLETS
+gtop_SUBDIRS = $(gtop_applets)
+endif
 
 wordexp_applets = screenshooter
 if HAVE_WORDEXP
@@ -74,8 +74,8 @@ SUBDIRS = \
 	$(modemlights_SUBDIRS)	\
 	$(wordexp_SUBDIRS)      \
 	$(cdplayer_SUBDIRS)	\
-	$(always_built_SUBDIRS)	
-## 	$(gtop_SUBDIRS)		\
+	$(always_built_SUBDIRS)	\
+ 	$(gtop_SUBDIRS)		
 ## 	$(ghttp_SUBDIRS)	\
 ## 	$(esd_SUBDIRS)		\
 ## 	omf-install

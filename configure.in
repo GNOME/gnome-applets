@@ -35,6 +35,7 @@ GCONF_REQUIRED=1.1.5
 GDK_PIXBUF_REQUIRED=1.3.1
 LIBGNOMECANVAS_REQUIRED=1.102.0
 SCROLLKEEPER_REQUIRED=0.1.4
+LIBGTOP_REQUIRED=1.90.0
 
 dnl configure argument fo disable schema install
 
@@ -76,11 +77,25 @@ PKG_CHECK_MODULES(GCONF_APPLETS, gconf-2.0 >= $GCONF_REQUIRED, , AC_MSG_ERROR([
 AC_SUBST(GCONF_APPLETS_CFLAGS)
 AC_SUBST(GCONF_APPLETS_LIBS)
 
-if test x$enable_install_schemas != xno; then
-	AM_GCONF_SOURCE_2
+AC_PATH_PROG(GCONFTOOL, gconftool-2, no)
+
+if test x"$GCONFTOOL" = xno; then
+  AC_MSG_ERROR([gconftool-2 executable not found in your path - should be installed with GConf])
 fi
 
+AM_GCONF_SOURCE_2
+
+
 dnl Still need to decide on the checks for these
+
+build_gtop_applets=false
+PKG_CHECK_MODULES(GTOP_APPLETS,
+                 [libgtop-2.0 >= $LIBGTOP_REQUIRED],
+                 build_gtop_applets=true,)
+AC_SUBST(GTOP_APPLETS_CFLAGS)
+AC_SUBST(GTOP_APPLETS_LIBS)
+AM_CONDITIONAL(BUILD_GTOP_APPLETS, $build_gtop_applets)
+
 
 PKG_CHECK_MODULES(GDK_PIXBUF_APPLETS, gdk-pixbuf-2.0 >= $GDK_PIXBUF_REQUIRED)
 AC_SUBST(GDK_PIXBUF_APPLETS_CFLAGS)
@@ -288,24 +303,6 @@ dnl   AC_MSG_WARN([*** \`slashapp' applet will not be build ***])
 dnl fi
 
 dnl ******************************************
-dnl ** Check for libgtop                    **
-dnl ******************************************
-
-dnl GNOME_LIBGTOP_HOOK(,applets_libgtop=yes)
-dnl AM_CONDITIONAL(HAVE_LIBGTOP, test -n "$GTOP_LIB")
-dnl if test x$applets_libgtop != xyes; then
-dnl   AC_MSG_WARN([*** \`cpuload' applet will not be built ***])
-dnl   AC_MSG_WARN([*** \`cpumemusage' applet will not be built ***])
-dnl   AC_MSG_WARN([*** \`diskusage' applet will not be built ***])
-dnl   AC_MSG_WARN([*** \`multiload' applet will not be built ***])
-dnl   AC_MSG_WARN([*** \`netload' applet will not be built ***])
-dnl fi
-
-dnl ******************************************
-dnl ******************************************
-
-
-dnl ******************************************
 dnl ** Check for ghttp                      **
 dnl ******************************************
 
@@ -409,6 +406,7 @@ odometer/themes/Makefile
 geyes/Makefile
 geyes/themes/Makefile
 cdplayer/Makefile
+multiload/Makefile
 ])
 
 dnl Mostly Ported Applets
@@ -454,7 +452,6 @@ dnl gweather/pixmaps/Makefile
 dnl gweather/docs/Makefile
 dnl gweather/docs/C/Makefile
 dnl gweather/docs/it/Makefile
-dnl multiload/Makefile
 dnl multiload/docs/Makefile
 dnl multiload/docs/C/Makefile
 dnl multiload/docs/C/cpuload/Makefile
