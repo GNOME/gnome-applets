@@ -1,3 +1,14 @@
+2002-03-03  Richard Hult  <rhult@codefactory.se>
+
+	* mixer.c (mixer_applet_factory): Remove temporary i18n stuff now
+	that it is in libpanel-applet.
+
+	* mixer.c: Popup scale on button release instead of button press,
+	this makes the popup work again with the recent grab fixes in
+	gtk+, and also it makes more sense. And don't run the mixer on
+	double click, because it doesn't make sense to double click on a
+	combo-like popup button.
+	
 2002-02-16  Richard Hult  <rhult@codefactory.se>
 
 	* Makefile.am: Add ui file.

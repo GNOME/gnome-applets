@@ -413,24 +413,33 @@ scale_button_release_event_cb (GtkWidget *widget, GdkEventButton *event, MixerDa
 }
 
 static gboolean
-button_press_event_cb (GtkWidget *widget, GdkEventButton *event, MixerData *data)
+applet_button_press_event_cb (GtkWidget *widget, GdkEventButton *event, MixerData *data)
 {
 	if (data->popup != NULL) {
 		mixer_popup_hide (data, FALSE);
 		return TRUE;
-	} else {
-		if (event->button == 1) {
-			if (event->type == GDK_2BUTTON_PRESS) {
-				mixer_start_gmix_cb (NULL, data, NULL);
-			} else {
-				mixer_popup_show (data);
-			}
-		}
 	}
 
-	if (event->button == 2) {
-		g_print ("Button2: Why won't the panel get this event?\n");
+	if (event->button == 1) {
+		gtk_frame_set_shadow_type (GTK_FRAME (data->frame), GTK_SHADOW_IN);
+		return TRUE;
 	}
+
+	return FALSE;
+}
+
+static gboolean
+applet_button_release_event_cb (GtkWidget *widget, GdkEventButton *event, MixerData *data)
+{
+	if (event->button == 1) {
+		mixer_popup_show (data);
+		return TRUE;
+	}
+
+	/* Make sure we don't leave the frame sunken in if button 1 is pressed
+	 * and then another button is released.
+	 */
+	gtk_frame_set_shadow_type (GTK_FRAME (data->frame), GTK_SHADOW_NONE);
 
 	return FALSE;
 }
@@ -805,7 +814,12 @@ mixer_applet_create (PanelApplet *applet)
 	
 	g_signal_connect (data->applet,
 			  "button-press-event",
-			  (GCallback) button_press_event_cb,
+			  (GCallback) applet_button_press_event_cb,
+			  data);
+	
+	g_signal_connect (data->applet,
+			  "button-release-event",
+			  (GCallback) applet_button_release_event_cb,
 			  data);
 	
         data->adj = GTK_ADJUSTMENT (
@@ -884,19 +898,6 @@ mixer_applet_factory (PanelApplet *applet,
 		      const gchar *iid,
 		      gpointer     data)
 {
-/* FIXME: remove this when libpanel-applet is fixed. */
-#ifdef ENABLE_NLS
-	static inited = FALSE;
-
-	if (!inited) {
-		bindtextdomain(GETTEXT_PACKAGE, GNOMELOCALEDIR);
-		bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-		textdomain(GETTEXT_PACKAGE);
-
-		inited = TRUE;
-	}
-#endif	
-
 	mixer_applet_create (applet);
 
 	return TRUE;
