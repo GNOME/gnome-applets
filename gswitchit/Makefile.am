@@ -1,6 +1,7 @@
 EXTRA_DIST = \
 	$(server_in_in_files) \
         $(ui_DATA) \
+	$(schemas_in_files) \
         $(schemas_DATA) \
         $(pixmap_DATA) \
         $(glade_DATA)
