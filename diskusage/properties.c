@@ -438,13 +438,17 @@ destroy_cb (GtkWidget *widget, void *data)
 	data = NULL;
 }
 
+static void
+phelp_cb (GtkWidget *w, gint tab, gpointer data)
+{
+	GnomeHelpMenuEntry help_entry = { "diskusage_applet",
+					  "index.html#diskusage-applet-prefs" };
+	gnome_help_display(NULL, &help_entry);
+}
+
 void
 properties (AppletWidget *applet, gpointer data)
 {
-        static GnomeHelpMenuEntry help_entry = { NULL, "properties" };
-
-	help_entry.name = gnome_app_id;
-
 	/* only show one property box at a time */
 	if (propbox) {
 		gdk_window_raise (propbox->window);
@@ -469,8 +473,8 @@ properties (AppletWidget *applet, gpointer data)
 			    GTK_SIGNAL_FUNC (destroy_cb), NULL);
 
         gtk_signal_connect (GTK_OBJECT (propbox), "help",
-			    GTK_SIGNAL_FUNC (gnome_help_pbox_display),
-			    &help_entry);
+			    GTK_SIGNAL_FUNC (phelp_cb),
+			    NULL);
 
 	gtk_widget_show_all (propbox);
 

@@ -3,10 +3,13 @@
 docdir = $(datadir)/gnome/help/modemlights_applet/C
 doc_DATA =	\
 	index.html	\
-	topic.dat
+	topic.dat	\
+	modemlights-advpref.png  modemlights-prefs.png  modemlights.png
+
 
 # automake does not know anything about .sgml files yet -> EXTRA_DIST
-EXTRA_DIST = modemlights-applet.sgml modemlights.sgml topic.dat
+EXTRA_DIST = modemlights-applet.sgml modemlights.sgml topic.dat	\
+	modemlights-advpref.png  modemlights-prefs.png  modemlights.png
 
 # this is taken from gnome-core/gnome-terminal/C/Makefile.am
 all: index.html

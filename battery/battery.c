@@ -751,6 +751,15 @@ applet_start_new_applet (const gchar *goad_id, const char **params,
     nparams = 0;
 } /* applet_start_new_applet */
 
+static void
+help_cb (AppletWidget *w, gpointer data)
+{
+	GnomeHelpMenuEntry help_entry = { 
+		"battery_applet", "index.html"
+	};
+	gnome_help_display (NULL, &help_entry);
+}
+
 /* This is the function that actually creates the display widgets */
 GtkWidget *
 make_new_battery_applet (const gchar *goad_id)
@@ -930,18 +939,23 @@ make_new_battery_applet (const gchar *goad_id)
 #endif
 
   applet_widget_register_stock_callback (APPLET_WIDGET (bat->applet),
+					 "properties",
+					 GNOME_STOCK_MENU_PROP,
+					 _("Properties..."),
+					 battery_properties_window,
+					 bat);
+  applet_widget_register_stock_callback (APPLET_WIDGET (bat->applet),
+					 "help",
+					 GNOME_STOCK_PIXMAP_HELP,
+					 _("Help"),
+					 help_cb, NULL);
+  applet_widget_register_stock_callback (APPLET_WIDGET (bat->applet),
 					 "about",
 					 GNOME_STOCK_MENU_ABOUT,
 					 _("About..."),
 					 about_cb,
 					 bat);
 
-  applet_widget_register_stock_callback (APPLET_WIDGET (bat->applet),
-					 "properties",
-					 GNOME_STOCK_MENU_PROP,
-					 _("Properties..."),
-					 battery_properties_window,
-					 bat);
 
   gtk_widget_show_all (bat->applet);
 

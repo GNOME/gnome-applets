@@ -3,10 +3,12 @@
 docdir = $(datadir)/gnome/help/diskusage_applet/C
 doc_DATA =	\
 	index.html	\
-	topic.dat
+	topic.dat	\
+	diskusage-applet-prefs.png  diskusage-applet.png
 
 # automake does not know anything about .sgml files yet -> EXTRA_DIST
-EXTRA_DIST = diskusage-applet.sgml diskusage.sgml topic.dat
+EXTRA_DIST = diskusage-applet.sgml diskusage.sgml topic.dat	\
+	diskusage-applet-prefs.png  diskusage-applet.png
 
 # this is taken from gnome-core/gnome-terminal/C/Makefile.am
 all: index.html

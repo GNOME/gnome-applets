@@ -1,0 +1,218 @@
+  <!-- Permission is granted to make and distribute verbatim copies of -->
+  <!-- this manual provided the copyright notice and this permission -->
+  <!-- notice are  preserved on all copies. -->
+  <!-- -->
+  <!-- Permission is granted to copy and distribute modified versions of -->
+  <!-- this manual under the conditions for verbatim copying, provided -->
+  <!-- that the entire resulting derived work is distributed under the -->
+  <!-- terms of a permission notice identical to this one. -->
+  <!-- -->
+  <!-- Permission is granted to copy and distribute translations of this -->
+  <!-- manual into another language, under the above conditions for -->
+  <!-- modified versions, except that this permission notice may be -->
+  <!-- stated in a translation approved by the Foundation. -->
+
+  <!-- ###############   GNOTES!   ############### -->
+                      
+  <sect1 id="gnotes">
+   <title>GNOTES! Applet</title> 
+
+   <para> 
+    <application>GNOTES!</application> applet, shown in <xref
+    linkend="gnotes-fig">, allows you to cover your GNOME desktop with
+    little, yellow, virtual sticky-notes.  To learn how to
+    add this applet to a <interface>Panel</interface>, see <xref
+    linkend="adding-applets">. 
+   </para>
+  
+ 
+   <figure id="gnotes-fig">
+   <title>GNOTES!</title>
+   <screenshot>
+    <screeninfo>GNOTES!</screeninfo>
+    <graphic format="png" fileref="gnotes-fig" srccredit="Michael Hall">
+    </graphic>
+   </screenshot>
+   </figure>
+
+   <sect2 id="gnotes-usage">
+    <title>Usage</title>
+    <para>
+     This applet places a yellow sticky-note on your desktop. To use it,
+     left-click on the GNOTES! icon to make a new note appear on your
+     desktop.  After creating a new note, you may then left-click within 
+     the yellow area of the note to begin adding text to it.
+    </para>
+   </sect2>
+
+   <sect2 id="gnotes-right-click">
+    <title>Right-Click Pop-Up Menu Items</title>
+    <para> 
+     In addition to the standard menu items (see <xref
+     linkend="standard-right-click-items">), the right-click pop-up menu has 
+     the following items: 
+     <itemizedlist> 	
+      <listitem>
+       <para>
+        <guimenuitem>Properties...</guimenuitem> &mdash; This menu
+        item opens the <interface>Properties</interface> dialog (see
+        <xref linkend="gnotes-properties">) which allows you to
+        customize the appearance and behavior of this applet.
+       </para>
+      </listitem>
+      <listitem>
+       <para>
+        <guimenuitem>Raise Notes</guimenuitem> &mdash; This menu
+        item causes all your notes to appear above any overlapping
+	windows.
+
+       </para>
+      </listitem>
+      <listitem>
+       <para>
+        <guimenuitem>Lower Notes</guimenuitem> &mdash; This
+        menu item causes all your notes to be hidden below any
+ 	overlapping windows.
+       </para>
+      </listitem>
+      <listitem>
+       <para>
+        <guimenuitem>Hide Notes</guimenuitem> &mdash; This menu
+        item causes all your notes to become hidden from view.  It does
+	not destroy your notes.
+       </para>
+      </listitem>
+      <listitem>
+       <para>
+        <guimenuitem>Show Notes</guimenuitem> &mdash; This menu
+        item brings your notes back into view if you used the
+	<guimenuitem>Hide Notes</guimenuitem> menu command.
+       </para>
+      </listitem>
+     </itemizedlist>
+    </para>
+   </sect2>
+    <sect2 id="individual-note-right-click">
+    <title>Right-Clicking on the Left Border of Individual Notes</title>
+    <para> 
+
+    	You may also right-click on the left border of each of the notes on your
+     desktop to change their individual properties.  <itemizedlist>
+
+      <listitem>
+       <para>
+        <guimenuitem>Raise Note</guimenuitem> &mdash; This menu
+        item causes your note to appear above any overlapping windows. 
+       </para>
+      </listitem>
+
+      <listitem>
+       <para>
+        <guimenuitem>Lower Note</guimenuitem> &mdash; This
+        menu item causes your note to be placed below any overlapping
+	windows.
+       </para>
+      </listitem>
+
+      <listitem>
+       <para>
+        <guimenuitem>Hide Note</guimenuitem> &mdash; This menu
+        item causes your note to become hidden from view.  It does
+	not destroy your note.
+       </para>
+      </listitem>
+
+      <listitem>
+       <para>
+        <guimenuitem>Destroy Note</guimenuitem> &mdash; This menu
+        item permanently removes your note from the desktop. Unlike
+	<guimenuitem>Hide Notes</guimenuitem>, you may not recover
+	your note.
+       </para>
+      </listitem>
+
+     </itemizedlist>
+    </para>
+   </sect2>
+
+
+   <sect2 id="gnotes-properties">
+    <title>Properties</title>
+    <para>
+     You can configure <application>GNOTES!</application> applet by
+     right-clicking on the applet and choosing the
+     <guimenuitem>Properties...</guimenuitem> menu item. This will open the
+     <interface>Properties</interface> dialog, shown in <xref
+     linkend="gnotes-properties-fig">.
+    </para>
+    <figure id="gnotes-properties-fig">
+     <title>Properties Dialog</title>
+     <screenshot>
+      <screeninfo>Properties Dialog</screeninfo> 
+      <graphic format="png" fileref="gnotes-properties" srccredit="Michael Hall">
+      </graphic>
+     </screenshot>
+    </figure>
+    
+    <para> 
+
+     To change the default size at which your notes appear on the desktop, you
+     may either click on the <guibutton>up</guibutton> and
+     <guibutton>down</guibutton> arrows, or type values (in pixels) directly 
+     into the fields next to the <guilabel>Default Height</guilabel> and
+     <guilabel>Default Width</guilabel> labels.
+    
+    </para>
+
+    <para>
+     For more information on the <interface>Properties</interface>
+     dialog, including descriptions of the <guibutton>OK</guibutton>,
+     <guibutton>Apply</guibutton>, <guibutton>Cancel</guibutton>, and
+     <guibutton>Help</guibutton> buttons, see <xref
+     linkend="applet-properties-dialog">.
+    </para>
+   </sect2>
+  
+   <sect2 id="gnotes-bugs">
+    <title> Known Bugs and Limitations</title>
+    <para>
+     Setting the <guilabel>Default Height</guilabel> or <guilabel>Default
+     Width</guilabel> may cause the <application>GNOTES</application> to crash.
+     
+    </para>
+
+    <para>
+    After first adding <application>GNOTES!</application> to your
+    <interface>Panel</interface>, clicking on the first note you create may
+    cause a second note to be created on your desktop.
+   
+    </para>
+
+
+   </sect2>
+
+   <sect2 id="gnotes-authors">
+    <title>Authors</title>
+    <para>
+     This applet was writen by spoon
+     <email>spoon@ix.netcom.com</email> and dres
+     <email>dres@debian.org</email>.  The documentation for this applet
+     which you are reading now was written by
+     Michael Hall <email>mphall@cstone.net</email>. For information on 
+     submitting bug reports and suggestions for improvements, see <xref
+     linkend="feedback">. 
+    </para>
+   </sect2>
+
+  </sect1>
+
+
+
+
+
+
+
+
+
+
+

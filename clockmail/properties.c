@@ -253,6 +253,15 @@ static gint property_destroy_cb(GtkWidget *widget, gpointer data)
 	widget = NULL;
 }
 
+static void
+phelp_cb (GtkWidget *w, gint tab, gpointer data)
+{
+	GnomeHelpMenuEntry help_entry = { 
+		"clockmail_applet", "index.html#clockmail-prefs"
+	};
+	gnome_help_display (NULL, &help_entry);
+}
+
 void property_show(AppletWidget *applet, gpointer data)
 {
 	AppData *ad = data;
@@ -463,6 +472,7 @@ void property_show(AppletWidget *applet, gpointer data)
 
 	gtk_signal_connect( GTK_OBJECT(ad->propwindow),"apply", GTK_SIGNAL_FUNC(property_apply_cb), ad);
 	gtk_signal_connect( GTK_OBJECT(ad->propwindow),"destroy", GTK_SIGNAL_FUNC(property_destroy_cb), ad );
+	gtk_signal_connect( GTK_OBJECT(ad->propwindow),"help", GTK_SIGNAL_FUNC(phelp_cb), NULL);
 
 	gtk_widget_show_all(ad->propwindow);
 	return;

@@ -3,10 +3,12 @@
 docdir = $(datadir)/gnome/help/webcontrol_applet/C
 doc_DATA =	\
 	index.html	\
-	topic.dat
+	topic.dat	\
+	webcontrol-applet-prefs.png  webcontrol-applet.png
 
 # automake does not know anything about .sgml files yet -> EXTRA_DIST
-EXTRA_DIST = webcontrol-applet.sgml webcontrol.sgml topic.dat
+EXTRA_DIST = webcontrol-applet.sgml webcontrol.sgml topic.dat	\
+	webcontrol-applet-prefs.png  webcontrol-applet.png
 
 # this is taken from gnome-core/gnome-terminal/C/Makefile.am
 all: index.html

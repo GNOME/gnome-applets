@@ -42,7 +42,7 @@ struct _LoadGraph {
 
     long cpu_time [NCPUSTATES];
     long cpu_last [NCPUSTATES];
-    int cpu_initialized;
+    int cpu_initialized;       
 };
 
 /* Create new load graph. */
@@ -50,7 +50,8 @@ LoadGraph *
 load_graph_new (AppletWidget *applet, guint n, gchar *label,
 		LoadGraphProperties *global_prop_data,
 		LoadGraphProperties *prop_data, guint speed,
-		guint size, LoadGraphDataFunc get_data);
+		guint size, LoadGraphDataFunc get_data,
+		gchar *help_path);
 
 /* Start load graph. */
 void

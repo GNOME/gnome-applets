@@ -250,6 +250,15 @@ static int property_close_cb(AppletWidget *applet, gpointer data)
   applet = NULL;
 }
 
+static void
+property_help_cb (GtkWidget *w, gint tab, gpointer data)
+{
+	GnomeHelpMenuEntry help_entry = { 
+		"asclock_applet", "index.html#asclock-prefs"
+	};
+	gnome_help_display (NULL, &help_entry);
+}
+
 void properties_dialog(AppletWidget *applet, gpointer data)
 {
   gchar *timezone_titles[2] = { N_("Continent/City") , NULL};
@@ -411,6 +420,7 @@ void properties_dialog(AppletWidget *applet, gpointer data)
   gtk_signal_connect( GTK_OBJECT(my_asclock->pwin), "close", GTK_SIGNAL_FUNC(property_close_cb), my_asclock);
 
   gtk_signal_connect( GTK_OBJECT(my_asclock->pwin),"apply", GTK_SIGNAL_FUNC(property_apply_cb), my_asclock );
+  gtk_signal_connect( GTK_OBJECT(my_asclock->pwin),"help", GTK_SIGNAL_FUNC(property_help_cb), NULL);
 
 /*
   gtk_signal_connect( GTK_OBJECT(my_asclock->pwin),"destroy", GTK_SIGNAL_FUNC(property_destroy_cb), my_asclock );
@@ -421,3 +431,7 @@ void properties_dialog(AppletWidget *applet, gpointer data)
   return;
   applet = NULL;
 } 
+
+
+
+

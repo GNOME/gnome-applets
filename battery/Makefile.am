@@ -1,3 +1,5 @@
+SUBDIRS = docs
+
 INCLUDES = -I. -I$(srcdir) 				\
 	-I$(top_srcdir)/intl \
 	-I$(top_builddir)/intl	\

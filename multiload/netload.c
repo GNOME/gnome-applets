@@ -73,7 +73,8 @@ make_netload_applet (const gchar *goad_id)
     g = load_graph_new (APPLET_WIDGET (applet), 4, N_("Net Load"),
 			&multiload_properties.netload, prop_data,
 			multiload_properties.netload.adj_data[0],
-			multiload_properties.netload.adj_data[1], GetNet);
+			multiload_properties.netload.adj_data[1], GetNet,
+			"netload-applet.html#NETLOAD-PROPERTIES");
 
     applet_widget_add (APPLET_WIDGET(applet), g->main_widget);
     gtk_widget_show (applet);

@@ -63,13 +63,25 @@ multiload_properties_changed (void)
     gnome_property_box_changed (GNOME_PROPERTY_BOX (win));
 }
 
+static void
+phelp_cb (GtkWidget *w, gint tab)
+{
+	GnomeHelpMenuEntry help_entry = { "multiload_applet" };
+	char *das_pages[] = {
+		"index.html#CPULOAD-PROPERTIES",
+		"memload-applet.html#MEMLOAD-PROPERTIES",
+		"swapload-applet.html#SWAPLOAD-PROPERTIES",
+		"netload-applet.html#NETLOAD-PROPERTIES",
+		"loadavg-applet.html#LOADAVG-PROPERTIES"
+	};
+	help_entry.path = das_pages[tab];
+	gnome_help_display(NULL, &help_entry);
+}
+
 void
 multiload_show_properties (PropertyClass prop_class)
 {
-    static GnomeHelpMenuEntry help_entry = { NULL, "properties" };
     GList *c;
-
-    help_entry.name = gnome_app_id;
 
     if (win) {
 	gdk_window_raise (win->window);
@@ -96,8 +108,7 @@ multiload_show_properties (PropertyClass prop_class)
 			GTK_SIGNAL_FUNC (multiload_properties_close), NULL);
 
     gtk_signal_connect (GTK_OBJECT (win), "help",
-			GTK_SIGNAL_FUNC (gnome_help_pbox_display),
-			&help_entry);
+			GTK_SIGNAL_FUNC (phelp_cb), NULL);
 
     gtk_widget_show_all (win);
     gtk_notebook_set_page (GTK_NOTEBOOK (GNOME_PROPERTY_BOX (win)->notebook), prop_class);

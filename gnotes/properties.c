@@ -105,6 +105,13 @@ static void update_width_cb(GtkWidget *wid, GtkWidget *data)
     gnome_property_box_changed(GNOME_PROPERTY_BOX(propwindow));
 }
 
+static void
+phelp_cb (GtkWidget *w, gint tab, gpointer data)
+{
+	GnomeHelpMenuEntry help_entry = { "gnotes_applet",
+					  "index.html#gnotes-properties" };
+	gnome_help_display(NULL, &help_entry);
+}
 
 void properties_show(AppletWidget *applet, gpointer data)
 {
@@ -190,8 +197,7 @@ void properties_show(AppletWidget *applet, gpointer data)
     gtk_signal_connect(GTK_OBJECT(propwindow), "destroy",
                        GTK_SIGNAL_FUNC(property_destroy_cb), NULL);
     gtk_signal_connect( GTK_OBJECT(propwindow), "help",
-                        GTK_SIGNAL_FUNC(gnome_help_pbox_display),
-                        &help_entry );
+                        GTK_SIGNAL_FUNC(phelp_cb), NULL);
 
     gtk_widget_show(propwindow);
     

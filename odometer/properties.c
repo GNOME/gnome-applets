@@ -197,6 +197,15 @@ populate_theme_list (GtkWidget *clist)
    g_free(themepath);
 }
 
+static void
+phelp_cb (GtkWidget *w, gint tab, gpointer data)
+{
+	GnomeHelpMenuEntry help_entry = { 
+		"odometer_applet", "index.html#odometerapplet-prefs"
+	};
+	gnome_help_display (NULL, &help_entry);
+}
+
 /*
  * Callback to access properties of the applet : you can toggle :
  *   - the Metric mode
@@ -329,9 +338,9 @@ properties_cb (AppletWidget *applet, gpointer data)
    	"apply", GTK_SIGNAL_FUNC (properties_apply_cb), oa);
    gtk_signal_connect (GTK_OBJECT (oa->pbox),
    	"destroy", GTK_SIGNAL_FUNC (properties_destroy_cb), oa);
-
+   gtk_signal_connect (GTK_OBJECT (oa->pbox),
+	"help", GTK_SIGNAL_FUNC (phelp_cb), NULL);
    gtk_widget_show_all(oa->pbox);
    return;
    applet = NULL;
 }
-

@@ -162,6 +162,14 @@ apply_cb (GtkWidget *prob_box, gint page_num, gpointer data)
 	data = NULL;
 }
 
+static void
+phelp_cb (GtkWidget *w, gint tab, gpointer data)
+{
+	GnomeHelpMenuEntry help_entry = { "geyes_applet",
+					  "index.html#geyes-prefs" };
+	gnome_help_display(NULL, &help_entry);
+}
+
 void
 properties_cb (AppletWidget *applet, gpointer data)
 {
@@ -188,6 +196,8 @@ properties_cb (AppletWidget *applet, gpointer data)
         gtk_signal_connect (GTK_OBJECT (pbox), "destroy",
 			    GTK_SIGNAL_FUNC (gtk_widget_destroyed),
 			    &eyes_applet.prop_box.pbox);
+	gtk_signal_connect (GTK_OBJECT (pbox), "help",
+			    GTK_SIGNAL_FUNC (phelp_cb), NULL);
         gtk_window_set_title (GTK_WINDOW (pbox),
                               _("gEyes Settings"));
         

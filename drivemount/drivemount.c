@@ -608,6 +608,14 @@ static void destroy_drive_widget(GtkWidget *widget, gpointer data)
 	widget = NULL;
 }
 
+static void
+help_cb (GtkWidget *w, gpointer data)
+{
+	GnomeHelpMenuEntry help_entry = { "drivemount_applet",
+					  "index.html" };
+	gnome_help_display(NULL, &help_entry);
+}
+
 static DriveData * create_drive_widget(GtkWidget *applet)
 {
 	DriveData *dd;
@@ -664,11 +672,6 @@ static DriveData * create_drive_widget(GtkWidget *applet)
 				GTK_SIGNAL_FUNC(applet_save_session),
 				dd);
 
-	applet_widget_register_stock_callback(APPLET_WIDGET(applet),
-					      "about",
-					      GNOME_STOCK_MENU_ABOUT,
-					      _("About..."),
-					      about_cb, NULL);
 
 	applet_widget_register_stock_callback(APPLET_WIDGET(applet),
 					      "browse",
@@ -695,6 +698,16 @@ static DriveData * create_drive_widget(GtkWidget *applet)
 					      _("Properties..."),
 					      property_show,
 					      dd);
+	applet_widget_register_stock_callback(APPLET_WIDGET(applet),
+					      "help",
+					      GNOME_STOCK_PIXMAP_HELP,
+					      _("Help"),
+					      help_cb, NULL);
+	applet_widget_register_stock_callback(APPLET_WIDGET(applet),
+					      "about",
+					      GNOME_STOCK_MENU_ABOUT,
+					      _("About..."),
+					      about_cb, NULL);
 
 	redraw_pixmap(dd);
 	gtk_widget_show(applet);

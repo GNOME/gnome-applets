@@ -134,7 +134,8 @@ make_loadavg_applet (const gchar *goad_id)
     g = load_graph_new (APPLET_WIDGET (applet), 2, N_("Load Average"),
 			&multiload_properties.loadavg, prop_data,
 			multiload_properties.loadavg.adj_data[0],
-			multiload_properties.loadavg.adj_data[1], GetLoadAvg);
+			multiload_properties.loadavg.adj_data[1], GetLoadAvg,
+			"loadavg-applet.html#LOADAVG-PROPERTIES");
 
     applet_widget_add (APPLET_WIDGET(applet), g->main_widget);
     gtk_widget_show (applet);

@@ -37,18 +37,24 @@
 static int prop_cancel (GtkWidget * w, gpointer data);
 static void prop_apply (GtkWidget *w, int page, gpointer data);
 
+static void
+phelp_cb (GtkWidget *w, gint tab, gpointer data)
+{
+	GnomeHelpMenuEntry help_entry = { 
+		"battery_applet", "index.html#Battery-Charge-Monitor-properties"
+	};
+	gnome_help_display (NULL, &help_entry);
+}
+
 /* Create the properties window */
 void
 battery_properties_window (AppletWidget * applet, gpointer data)
 {
-  static GnomeHelpMenuEntry help_entry = { NULL, "properties" };
   BatteryData * bat = data; 
   GtkWidget * t, * l, * r2;
   GtkWidget * height_spin, * width_spin, * interval_spin, * low_charge_spin,
     * low_warn_spin;
   int r, g, b;
-
-  help_entry.name = gnome_app_id;
 
   if (bat->prop_win)
     {
@@ -352,8 +358,7 @@ battery_properties_window (AppletWidget * applet, gpointer data)
 		      GTK_SIGNAL_FUNC (prop_apply), bat);
 
   gtk_signal_connect (GTK_OBJECT (bat->prop_win), "help",
-		      GTK_SIGNAL_FUNC (gnome_help_pbox_display),
-		      &help_entry);
+		      GTK_SIGNAL_FUNC (phelp_cb), NULL);
 	
   gtk_widget_show_all (GTK_WIDGET (bat->prop_win));
 

@@ -440,7 +440,8 @@ LoadGraph *
 load_graph_new (AppletWidget *applet, guint n, gchar *label,
 		LoadGraphProperties *global_prop_data,
 		LoadGraphProperties *prop_data, guint speed,
-		guint size, LoadGraphDataFunc get_data)
+		guint size, LoadGraphDataFunc get_data,
+		gchar *help_path)
 {
     LoadGraph *g;
 
@@ -451,10 +452,10 @@ load_graph_new (AppletWidget *applet, guint n, gchar *label,
     g->n = n;
     g->prop_data = prop_data;
     g->global_prop_data = global_prop_data;
-
     applet_load_config (g);
 
     g->local_prop_data = g_new0 (LocalPropData, 1);
+    g->local_prop_data->help_path = help_path; /* no need to dup */
 
     g->local_prop_data->applet = g->applet;
 

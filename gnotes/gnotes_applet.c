@@ -130,6 +130,13 @@ static void applet_change_pixel_size(GtkWidget *widget, int size,
     gtk_container_add(GTK_CONTAINER(gnotes->button), gnotes->pixmap);
 }
 
+static void
+help_cb (AppletWidget *w, gpointer data)
+{
+	GnomeHelpMenuEntry help_entry = { "gnotes_applet",
+					  "index.html" };
+	gnome_help_display(NULL, &help_entry);
+}
 
 int main(int argc, char **argv)
 {
@@ -169,12 +176,15 @@ int main(int argc, char **argv)
     gtk_widget_show(gnotes.applet);
 
     applet_widget_register_stock_callback(APPLET_WIDGET(gnotes.applet),
-                                          "about", GNOME_STOCK_MENU_ABOUT,
-                                          _("About..."), about, NULL);
-    applet_widget_register_stock_callback(APPLET_WIDGET(gnotes.applet),
                                           "properties", GNOME_STOCK_MENU_PROP,
                                           _("Properties..."), properties_show,
                                           &gnotes);
+    applet_widget_register_stock_callback(APPLET_WIDGET(gnotes.applet),
+                                          "help", GNOME_STOCK_PIXMAP_HELP,
+                                          _("Help"), help_cb, NULL);
+    applet_widget_register_stock_callback(APPLET_WIDGET(gnotes.applet),
+                                          "about", GNOME_STOCK_MENU_ABOUT,
+                                          _("About..."), about, NULL);
 
     applet_widget_register_callback(APPLET_WIDGET(gnotes.applet), "raise-notes",
                                     _("Raise Notes"), gnotes_raise, 0);

@@ -2,7 +2,7 @@
 
 # Taken from gnome-applets/mini-commander/docs/Makefile.am
 
-docdir = $(datadir)/gnome/help/gweather/C
+docdir = $(datadir)/gnome/help/gweather_applet/C
 doc_DATA =	\
 	index.html	\
 	topic.dat

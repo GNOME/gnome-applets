@@ -12,6 +12,7 @@ struct _LocalPropData {
     GnomePropertyObject *property_object;
     GList *local_property_object_list;
     GtkWidget *win;
+    gchar *help_path;
 };
 
 void

@@ -172,9 +172,16 @@ static gint property_destroy_cb( GtkWidget *widget, void *data )
         data = NULL;
 }
 
+static void
+phelp_cb (GtkWidget *w, gint tab, gpointer data)
+{
+	GnomeHelpMenuEntry help_entry = { "modemlights_applet",
+					  "index.html#modemlights-prefs" };
+	gnome_help_display(NULL, &help_entry);
+}
+
 void property_show(AppletWidget *applet, gpointer data)
 {
-        static GnomeHelpMenuEntry help_entry = { NULL, "properties" };
 	GtkWidget *frame;
 	GtkWidget *hbox;
 	GtkWidget *vbox;
@@ -184,8 +191,6 @@ void property_show(AppletWidget *applet, gpointer data)
 	GtkObject *delay_adj;
 	GtkWidget *checkbox;
 
-	help_entry.name = gnome_app_id;
-	
 	if(propwindow)
 		{
                 gdk_window_raise(propwindow->window);
@@ -372,8 +377,7 @@ void property_show(AppletWidget *applet, gpointer data)
 	gtk_signal_connect( GTK_OBJECT(propwindow), "destroy",
 			    GTK_SIGNAL_FUNC(property_destroy_cb), NULL );
 	gtk_signal_connect( GTK_OBJECT(propwindow), "help",
-			    GTK_SIGNAL_FUNC(gnome_help_pbox_display),
-			    &help_entry );
+			    GTK_SIGNAL_FUNC(phelp_cb), NULL);
 
         gtk_widget_show_all(propwindow);
         return;

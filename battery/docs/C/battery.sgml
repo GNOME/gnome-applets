@@ -1,0 +1,481 @@
+  <!-- ###############   Battery Charge Monitor   ############### -->
+  <sect1 id="Battery-Charge-Monitor">
+   <title>Battery Charge Monitor Applet</title> 
+
+   <para> 
+    <application>Battery Charge Monitor</application> applet, shown in <xref
+    linkend="Battery-Charge-Monitor-fig1">, displays the charge status of your
+    portable computer battery. To learn how to
+    add this applet to a <interface>Panel</interface>, see <xref
+    linkend="adding-applets">. 
+   </para>
+  
+   <note>
+    <para>
+     In order for <application>Battery Charge
+     Monitor</application> to function correctly, your computer must
+     have been configured to support <systemitem>Advanced Power
+     Management</systemitem>.
+    </para>
+   </note>
+
+   <figure id="Battery-Charge-Monitor-fig1">
+    <title>Battery Charge Monitor</title>
+    <screenshot>
+     <screeninfo>Battery Charge Monitor</screeninfo>
+     <graphic format="png" fileref="battery-applet-ac-offline-25-20"
+	      srccredit="James Cope">
+    </graphic>
+    </screenshot>
+   </figure>
+
+   <sect2 id="Battery-Charge-Monitor-usage">
+    <title>Usage</title>
+    <para>
+     <application>Battery Charge Monitor</application> just sits in
+     your panel monitoring the status of your computer battery. By
+     <mousebutton>left</mousebutton>-clicking on the applet you can
+     toggle the view between Readout View and Graph View described in
+     <xref linkend="Battery-Charge-Monitor-Readout-sec"> and <xref
+     linkend="Battery-Charge-Monitor-Graph-sec"> respectively.
+    </para>
+
+    <sect3 id="Battery-Charge-Monitor-Readout-sec">
+     <title>Readout View</title>
+     <para>
+      Readout View, the default mode of view, displays the current
+      battery status in an iconic and textual format. In this mode
+      <application>Battery Charge Monitor</application> displays
+      the following information:
+     </para>
+
+     <variablelist>
+      <varlistentry>
+       <term><emphasis>Battery Icon</emphasis></term>
+       <listitem>
+	<para>
+         The iconic representation of a battery on the left of the
+         applet, shows how fully charged your battery is
+         currently. The coloured area of the battery represents the
+         ammount of charge left in your battery, with the top of the
+         battery representing 100% charged.
+	</para>
+	
+	<para>
+	 The colour of the battery changes when the charge drops below
+         the current <guilabel>Low Charge Threshold</guilabel> (see
+         <xref linkend="Battery-Charge-Monitor-properties-general">). The
+         default colour of the battery is green in a normal state and
+         red when it drops below the <guilabel>Low Charge Threshold</guilabel>.
+        </para>
+
+	<para>
+         When your computer is attached to the power supply, a
+         small lightning bolt appears on the battery representation to
+         indicate that the battery is attached to the power supply
+         and is in a charging state. An example of this is shown in
+         <xref linkend="Battery-Charge-Monitor-fig2">. You can also
+         configure the battery to change colour when it is or isn't
+         connected to the power supply, see
+         <xref linkend="Battery-charge-Monitor-properties-readout"> for
+         further details on this feature.
+        </para>
+      
+	<figure id="Battery-Charge-Monitor-fig2">
+         <title>Battery Charge Monitor with the power supply connected</title>
+         <screenshot>
+	  <screeninfo>Battery Charge Monitor</screeninfo>
+	  <graphic format="png" 
+		   fileref="battery-applet-ac-online-25-20"
+		   srccredit="James Cope">
+          </graphic>
+         </screenshot>
+	</figure>
+
+       </listitem>
+      </varlistentry>
+
+      <varlistentry>
+       <term><emphasis>Percentage Remaining</emphasis></term>
+       <listitem>
+	<para>
+         The percentage readout on the top right of the applet
+         represents how fully charged your computer battery is currently.
+        </para>
+       </listitem>
+      </varlistentry>
+
+      <varlistentry>
+       <term><emphasis>Time Remaining</emphasis></term>
+       <listitem>
+       <para>
+        The time remaining readout on the bottom right of the applet
+        shows how much running time the battery has left. The time is
+        shown in hours and minutes.
+       </para>
+       </listitem>
+      </varlistentry>
+     </variablelist>
+    </sect3>
+    
+    <sect3 id="Battery-Charge-Monitor-Graph-sec">
+     <title>Graph View</title>
+     <para>
+      Graph View displays the percentage of charge remaining in your
+      battery as a moving graph. The horizontal axis represents time
+      and the vertical axis represents charge percentage with 100%
+      charged being the top of the graph. By default the graph is
+      green when your computer is connected to the power supply and
+      blue when it isn't. The graph also changes colour when the
+      charge drops below the <guilabel>Low Charge Threshold</guilabel>
+      (see <xref linkend="Battery-Charge-Monitor-properties-general">)
+      the default colour in this case is red.
+     </para>
+
+     <figure>
+      <title>Battery Charge Monitor in Graph View</title>
+       <screenshot>
+        <screeninfo>Battery Charge Monitor in Graph View</screeninfo>
+        <graphic format="png"
+		 fileref="battery-applet-graph"
+		 srccredit="James Cope">
+        </graphic>
+       </screenshot>
+      </figure>
+    </sect3>
+   </sect2>
+
+   <sect2 id="Battery-Charge-Monitor-right-click">
+    <title>Right-Click Pop-Up Menu Items</title>
+    <para> 
+     In addition to the standard menu items (see <xref
+     linkend="standard-right-click-items">), the right-click pop-up menu has 
+     the following item: 
+     <itemizedlist> 	
+      <listitem>
+       <para>
+        <guimenuitem>Properties...</guimenuitem> &mdash; This menu
+        item opens the <interface>Properties</interface> dialog (see
+        <xref linkend="Battery-Charge-Monitor-properties">) which allows you to
+        customize the appearance and behavior of this applet.
+       </para>
+      </listitem>
+     </itemizedlist>
+    </para>
+   </sect2>
+
+   <sect2 id="Battery-Charge-Monitor-properties">
+    <title>Properties</title>
+    <para>
+     You can configure <application>Battery Charge
+     Monitor</application> applet by right-clicking on the applet and
+     choosing the <guimenuitem>Properties...</guimenuitem> menu
+     item. This will open the <interface>Properties</interface>
+     dialog, with four groups of configurable items arranged in the
+     following tabbed pages:
+     <link
+     linkend="Battery-Charge-Monitor-properties-general">General</link>,
+     <link
+     linkend="Battery-Charge-Monitor-properties-readout">Readout</link>,
+     <link
+     linkend="Battery-Charge-Monitor-properties-graph">Graph</link> and
+      <link linkend="Battery-Charge-Monitor-properties-messages">Battery
+    Charge Messages</link>.
+    </para>
+
+    <sect3 id="Battery-Charge-Monitor-properties-general">
+     <title>Properties &mdash; General</title>
+    
+     <figure id="Battery-Charge-Monitor-properties-fig1">
+      <title>Properties Dialogue &mdash; General</title>
+      <screenshot>
+       <screeninfo>Properties Dialogue &mdash; General</screeninfo> 
+       <graphic format="png" 
+		fileref="battery-applet-properties-general"
+		srccredit="James Cope">
+        </graphic>
+      </screenshot>
+     </figure>
+
+     <itemizedlist>
+      <listitem>
+       <para>
+        <guilabel>Follow Panel Size</guilabel> &mdash; instructs
+	<application>Battery Charge Monitor</application> to resize
+	when the panel changes size. It is checked on by default. In
+	order for <guilabel>Applet Height</guilabel> and
+	<guilabel>Applet Width</guilabel> settings to take affect, it
+	must be unchecked.
+       </para>
+      </listitem>
+
+      <listitem>
+       <para>
+	<guilabel>Applet Height &amp; Applet Width</guilabel> &mdash;
+	these two spin buttons allow you to specify the dimensions
+	of <application>Battery Charge Monitor</application> exactly
+	in pixels. In order for these settings to take affect,
+	<guilabel>Follow Panel Size</guilabel> must be unchecked. The
+	default values are both set to 48.
+       </para>
+
+       <note>
+	<para>
+	 Setting these values very small (below 28 pixels)
+	 results in the battery icon not being displayed due to lack
+	 of space.
+        </para>
+       </note>
+      </listitem>
+
+      <listitem>
+       <para>
+	<guilabel>Update Interval</guilabel> &mdash; specifies in
+	seconds how often <application>Battery Charge
+	Monitor</application> refreshes the battery charge
+	information it displays. The default setting is two seconds.
+       </para>
+      </listitem>
+
+      <listitem>
+       <para>
+	<guilabel>Low Charge Threshold</guilabel> &mdash; is a
+	percentage value of the battery charge that
+	<application>Battery Charge Monitor</application> uses to
+	optionally display a warning, it then considers the battery to
+	have little power remaining. For example this information is
+	used to decide when to change the colour of the battery icon in
+	Readout View. The default value is 25.
+       </para>
+      </listitem>
+
+      <listitem>	 
+       <para>
+	<guilabel>Applet Mode</guilabel> &mdash; the two
+	<guibutton>Readout</guibutton> and
+	<guibutton>Graph</guibutton> checkboxes are another way of
+	toggling between Readout View and Graph View discussed in
+	<xref linkend="Battery-Charge-Monitor-Readout-sec"> and <xref
+	linkend="Battery-Charge-Monitor-Graph-sec">.
+       </para>
+      </listitem>
+     </itemizedlist>
+    </sect3>
+
+    <sect3 id="Battery-Charge-Monitor-properties-readout">
+     <title>Properties &mdash; Readout</title>
+     
+     <para>
+      The settings on this tab only affect <application>Battery Charge
+      Monitor</application> when it is in Readout View described in
+      <xref linkend="Battery-Charge-Monitor-Readout-sec">.
+     </para>
+
+     <para> 
+      All of the coloured rectangles on this tab can be
+      <mousebutton>left</mousebutton> clicked on to display the GNOME
+      colour wheel. This enables you to choose colours that you may
+      prefer more than the defaults.
+     </para>
+
+     <figure id="Battery-Charge-Monitor-properties-fig2">
+      <title>Properties Dialogue &mdash; Readout</title>
+      <screenshot>
+       <screeninfo>Properties Dialogue &mdash; Readout</screeninfo>
+       <graphic format="png"
+		fileref="battery-applet-properties-readout" srccredit="James
+		Cope"></graphic>
+      </screenshot>
+     </figure>
+	
+     <itemizedlist>
+      <listitem>
+       <para>
+	<guilabel>AC-On Battery Color</guilabel> &mdash; specifies the
+	colour of the battery icon in Readout view when your computer
+	is connected to the AC power supply. The default colour is
+	green.
+       </para>
+      </listitem> 
+
+      <listitem>
+       <para>
+	<guilabel>AC-Off Battery Color</guilabel> &mdash; specifies
+	the colour of the battery icon in Readout View when your
+	computer is not connected to the AC power supply. The default
+	colour is green.
+       </para>
+      </listitem>
+
+
+      <listitem>
+       <para>
+	<guilabel>Low Battery Color</guilabel> &mdash; specifies the
+	colour of the battery icon in Readout View when the charge
+	percentage rate drops below the <guilabel>Low Charge
+	Threshold</guilabel> (see <xref
+	linkend="Battery-Charge-Monitor-properties-general">). The
+	default colour is red.
+       </para>
+      </listitem>
+     </itemizedlist>
+    </sect3>
+
+    <sect3 id="Battery-Charge-Monitor-properties-graph">
+     <title>Properties &mdash; Graph</title>
+
+     <para>
+      The settings on this tab only affect <application>Battery Charge
+      Monitor</application> when it is in Graph View described in
+      <xref linkend="Battery-Charge-Monitor-Graph-sec">.
+     </para>
+
+     <para> All of the coloured rectangles on this tab can be
+      <mousebutton>left</mousebutton> clicked on to display the GNOME
+      colour wheel. This enables you to choose colours that you may
+      prefer more than the defaults.
+     </para>
+
+     <figure id="Battery-Charge-Monitor-properties-fig3">
+      <title>Properties Dialogue &mdash; Graph</title>
+      <screenshot>
+       <screeninfo>Properties Dialogue &mdash; Graph</screeninfo>
+       <graphic format="png"
+		fileref="battery-applet-properties-graph" srccredit="James
+		Cope"></graphic>
+      </screenshot>
+     </figure>
+
+	
+     <itemizedlist>
+      <listitem>
+       <para>
+	<guilabel>AC-On Battery Color</guilabel> &mdash;
+	specifies the colour of the graph when your computer is
+	connected to the AC power supply. The default colour is
+	green.
+       </para>
+      </listitem>
+	 
+      <listitem>
+       <para>
+	<guilabel>AC-Off Battery Color</guilabel> &mdash: specifies
+	the colour of the graph when your computer is not connected to
+	the AC power supply. The default colour is blue.
+       </para>
+      </listitem>
+
+      <listitem>
+       <para>
+	<guilabel>Graph Battery Low Color</guilabel> &mdash; specifies
+	the colour of the graph when the charge percentage rate drops
+	below the <guilabel>Low Charge Threshold</guilabel>. The
+	default colour is red.
+       </para>
+      </listitem>
+
+      <listitem>
+       <para>
+	<guilabel>Graph Tick Color</guilabel> &mdash; specifies the
+	colour of the graph division lines on the graph which mark the
+	25%, 50% and 75% charge points. The default colour is dark
+	grey.
+       </para>
+      </listitem>
+
+      <listitem>
+       <para>
+	<guilabel>Graph Direction</guilabel> &mdash;
+	specifies which direction the graph moves over time. The
+	default direction is <guilabel>Right to Left</guilabel>.
+       </para>
+      </listitem>
+     </itemizedlist>
+    </sect3>
+
+    <sect3 id="Battery-Charge-Monitor-properties-messages">
+     <title>Properties &mdash; Battery Charge Messages</title>
+
+     <figure id="Battery-Charge-Monitor-properties-fig4">
+      <title>Properties Dialogue &mdash; Battery Charge
+        Messages</title>
+      <screenshot>
+       <screeninfo>Properties Dialogue &mdash; Battery Charge
+        Messages</screeninfo>
+       <graphic format="png"
+		fileref="battery-applet-properties-messages" srccredit="James
+		Cope"></graphic>
+      </screenshot>
+     </figure>
+
+     <itemizedlist>
+      <listitem>
+       <para>
+	<guilabel>Warn in the battery charge dips below</guilabel>
+	&mdash; specifies the charge percentage at which
+	<application>Battery Charge Monitor</application> shows a
+	warning dialogue box that the battery is at a low charge. This
+	warning is only displayed if <guilabel>Enable Low Battery
+	Warning</guilabel> is checked. The default setting is 5%.
+       </para>
+      </listitem>
+
+      <listitem>
+       <para>
+	<guilabel>Enable Low Battery Warning</guilabel> &mdash;
+	specifies if <application>Battery Charge Monitor</application>
+	should display a dialogue box warning that the battery charge
+	has dropped below the charge percentage specified in the
+	<guilabel>Warn if the battery charge dips below</guilabel>
+	setting. The default value is checked.
+       </para>
+      </listitem>
+
+      <listitem>
+       <para>
+	<guilabel>Enable Full-Charge Notification</guilabel> &mdash;
+	specifies if <application>Battery Charge
+	Monitor</application> should display a dialogue box when the
+	battery has reached its 100% charged rate. The default value
+	is unchecked.
+       </para>
+      </listitem>
+     </itemizedlist>
+    </sect3>
+
+    <sect3>
+     <title>Further Information</title>
+     <para>
+      For more information on the <interface>Properties</interface>
+      dialog, including descriptions of the <guibutton>OK</guibutton>,
+      <guibutton>Apply</guibutton>, <guibutton>Cancel</guibutton>, and
+      <guibutton>Help</guibutton> buttons, see <xref
+      linkend="applet-properties-dialog">.
+     </para>
+    </sect3>
+   </sect2>
+  
+   <sect2 id="Battery-Charge-Monitor-bugs">
+    <title> Known Bugs and Limitations</title>
+    <para>
+     One oddity is if you start <application>Battery Charge
+     Monitor</application> on a computer that has no Advanced Power
+     Management support. This causes the <guilabel>Low Battery
+     Warning</guilabel> dialogue box to be displayed which may be
+     mis-leading.
+    </para>
+   </sect2>
+
+   <sect2 id="Battery-Charge-Monitor-authors">
+    <title>Authors</title>
+    <para>
+     This applet was writen by Nat Friedman
+     <email>nat@nat.org</email>.  The documentation for this applet
+     which you are reading now was written by
+     James Cope <email>jcope@bcs.org.uk</email>. For information on submitting
+     bug reports and suggestions for improvements, see <xref
+     linkend="feedback">. 
+    </para>
+   </sect2>
+
+  </sect1>

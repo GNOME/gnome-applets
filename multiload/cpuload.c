@@ -74,7 +74,8 @@ make_cpuload_applet (const gchar *goad_id)
     g = load_graph_new (APPLET_WIDGET (applet), 4, N_("CPU Load"),
 			&multiload_properties.cpuload, prop_data,
 			multiload_properties.cpuload.adj_data[0],
-			multiload_properties.cpuload.adj_data[1], GetLoad);
+			multiload_properties.cpuload.adj_data[1], GetLoad,
+			"index.html#CPULOAD-PROPERTIES");
 
     applet_widget_add (APPLET_WIDGET(applet), g->main_widget);
     gtk_widget_show (applet);

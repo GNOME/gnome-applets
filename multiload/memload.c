@@ -74,7 +74,8 @@ make_memload_applet (const gchar *goad_id)
     g = load_graph_new (APPLET_WIDGET (applet), 4, N_("Memory Load"),
 			&multiload_properties.memload, prop_data,
 			multiload_properties.memload.adj_data[0],
-			multiload_properties.memload.adj_data[1], GetMemory);
+			multiload_properties.memload.adj_data[1], GetMemory,
+			"memload-applet.html#MEMLOAD-PROPERTIES");
 
     applet_widget_add (APPLET_WIDGET(applet), g->main_widget);
     gtk_widget_show (applet);

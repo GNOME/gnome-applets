@@ -210,13 +210,27 @@ static void sec_needle_changed (GtkWidget *widget, GtkWidget **sec)
     widget = NULL;
 }
 
+static void
+help_cb (GtkWidget *applet, gpointer data)
+{
+	GnomeHelpMenuEntry help_entry = { 
+		"anotherclock_applet", NULL
+	};
+	help_entry.path = data;
+	gnome_help_display (NULL, &help_entry);
+}
+
+static void
+phelp_cb (GtkWidget *w, gint tab, gpointer data)
+{
+	help_cb (applet, "index.html#anotherclock-prefs");
+}
 
 /*************
  * Callbacks *
  *************/
 static void cb_properties (AppletWidget *applet, gpointer data)
 {
-    static GnomeHelpMenuEntry help_entry = { NULL, "properties" };
     GtkWidget *label;
     GtkWidget *page;
     GtkWidget *frame;
@@ -238,8 +252,6 @@ static void cb_properties (AppletWidget *applet, gpointer data)
     props_tmp.min = g_strdup (clk.props.min);
     props_tmp.sec = g_strdup (clk.props.sec);
 
-    help_entry.name = gnome_app_id;
-
     /* Window and frame for settings */
     props_window = gnome_property_box_new ();
     gtk_window_set_title (GTK_WINDOW(&GNOME_PROPERTY_BOX(props_window)->dialog.window),
@@ -250,8 +262,7 @@ static void cb_properties (AppletWidget *applet, gpointer data)
     gtk_signal_connect (GTK_OBJECT (props_window), "destroy",
                         GTK_SIGNAL_FUNC(props_cancel), &props_window);
     gtk_signal_connect (GTK_OBJECT (props_window), "help",
-                        GTK_SIGNAL_FUNC(gnome_help_pbox_display),
-			&help_entry);
+			GTK_SIGNAL_FUNC(phelp_cb), NULL);
 
     label = gtk_label_new (_("General"));
     gtk_widget_show (label);
@@ -648,15 +659,6 @@ static gint update_clock (gpointer data)
     data = NULL;
 }
 
-static void
-help_cb (AppletWidget *applet, gpointer data)
-{
-	static GnomeHelpMenuEntry help_entry = { 
-		"anotherclock_applet", "index.html"
-	};
-	gnome_help_display (NULL, &help_entry);
-}
-
 /*****************
  * Main function *
  *****************/
@@ -726,7 +728,7 @@ int main (int argc, char *argv[])
     applet_widget_register_stock_callback (APPLET_WIDGET(applet),
 					   "help",
 					   GNOME_STOCK_PIXMAP_HELP,
-					   _("Help"), help_cb, NULL);
+					   _("Help"), help_cb, "index.html");
     applet_widget_register_stock_callback (APPLET_WIDGET(applet),
 					   "about",
 					   GNOME_STOCK_MENU_ABOUT,

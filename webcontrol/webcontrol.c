@@ -211,6 +211,15 @@ apply_cb(GnomePropertyBox * pb, gint page, gpointer data)
 }
 
 static void
+phelp_cb (GtkWidget *w, gint tab, gpointer data)
+{
+	GnomeHelpMenuEntry help_entry = { 
+		"webcontrol_applet", "index.html#webcontrol-applet-prefs"
+	};
+	gnome_help_display (NULL, &help_entry);
+}
+
+static void
 properties_cb (AppletWidget *widget, gpointer data)
 {
 	static GtkWidget * pb = NULL;
@@ -260,7 +269,8 @@ properties_cb (AppletWidget *widget, gpointer data)
 	gtk_signal_connect(GTK_OBJECT(pb), "destroy",
 			  gtk_widget_destroyed,
 			  (gpointer) &pb);
-
+	gtk_signal_connect(GTK_OBJECT(pb), "help",
+			   phelp_cb, NULL);
 	gtk_widget_show_all(pb);
 	return;
 	widget = NULL;

@@ -48,6 +48,16 @@ multiload_local_properties_changed (LocalPropData *d)
 }
 
 static void
+phelp_cb (GtkWidget *w, gint tab, gpointer data)
+{
+	GnomeHelpMenuEntry help_entry = { 
+		"multiload_applet", "index.html"
+	};
+	help_entry.path = ((LocalPropData *)data)->help_path;
+	gnome_help_display (NULL, &help_entry);
+}
+
+static void
 multiload_show_local_properties (LocalPropData *d)
 {
     static GnomeHelpMenuEntry help_entry = { NULL, "properties" };
@@ -86,8 +96,7 @@ multiload_show_local_properties (LocalPropData *d)
 			(gpointer) d);
 
     gtk_signal_connect (GTK_OBJECT (d->win), "help",
-			GTK_SIGNAL_FUNC (gnome_help_pbox_display),
-			&help_entry);
+			GTK_SIGNAL_FUNC (phelp_cb), d);
 
     gtk_widget_show_all (d->win);
 }
