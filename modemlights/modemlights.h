@@ -1,6 +1,10 @@
-/*#####################################################*/
-/*##           modemlights applet 0.3.2              ##*/
-/*#####################################################*/
+/* GNOME modemlights applet
+ * (C) 1999 John Ellis
+ *
+ * Authors: John Ellis
+ *          Martin Baulig
+ *
+ */
 
 #include <stdio.h>
 #include <string.h>
@@ -17,8 +21,8 @@
 #include <applet-widget.h>
 
 #define MODEMLIGHTS_APPLET_VERSION_MAJ 0
-#define MODEMLIGHTS_APPLET_VERSION_MIN 3
-#define MODEMLIGHTS_APPLET_VERSION_REV 2
+#define MODEMLIGHTS_APPLET_VERSION_MIN 99
+#define MODEMLIGHTS_APPLET_VERSION_REV 0
 
 extern gint UPDATE_DELAY;
 extern gchar *lock_file;

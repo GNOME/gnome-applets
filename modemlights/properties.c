@@ -1,6 +1,10 @@
-/*#####################################################*/
-/*##           modemlights applet 0.3.2              ##*/
-/*#####################################################*/
+/* GNOME modemlights applet
+ * (C) 1999 John Ellis
+ *
+ * Authors: John Ellis
+ *          Martin Baulig
+ *
+ */
 
 #include "modemlights.h"
 
