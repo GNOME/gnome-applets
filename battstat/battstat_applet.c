@@ -59,7 +59,9 @@
 
 #include "battstat.h"
 #include "pixmaps.h"
+#ifdef __linux__
 #include "acpi-linux.h"
+#endif
 
 #ifndef gettext_noop
 #define gettext_noop(String) (String)
@@ -224,7 +226,7 @@ GdkColor darkred[] = {
 };
 
 #if defined(__NetBSD__) || defined(__OpenBSD__)
-typedef apm_power_info apm_info;
+#define apm_info apm_power_info
 #endif
 struct apm_info apminfo;
 
@@ -349,7 +351,7 @@ apm_readinfo (PanelApplet *applet, ProgressData * battstat)
 
 /* } */
 
-static char *get_remaining (apm_info apminfo)
+static char *get_remaining (struct apm_info apminfo)
 {
 	int time;
 	int hours;
@@ -363,7 +365,7 @@ static char *get_remaining (apm_info apminfo)
 	batt_life = apminfo.ai_batt_life;
 #elif defined (__NetBSD__) || defined(__OpenBSD__)
 	acline_status = apminfo.ac_state ? 1 : 0;
-	time = apminfo.battery_time;
+	time = apminfo.minutes_left;
 	batt_life = apminfo.battery_life;
 #elif __linux__
 	acline_status = apminfo.ac_line_status ? 1 : 0;
