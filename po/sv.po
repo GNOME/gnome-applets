@@ -10,8 +10,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
-"POT-Creation-Date: 2003-06-06 13:54+0200\n"
-"PO-Revision-Date: 2003-06-06 13:54+0200\n"
+"POT-Creation-Date: 2003-06-09 14:38+0200\n"
+"PO-Revision-Date: 2003-06-09 14:40+0200\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -79,10 +79,10 @@ msgstr "Visar statusen för funktionerna för tangentbordstillgänglighet"
 #: accessx-status/applet.c:135 battstat/battstat_applet.c:839
 #: cdplayer/cdplayer.c:548 charpick/charpick.c:561 drivemount/drivemount.c:491
 #: geyes/geyes.c:228 gkb-new/gkb.c:631 gtik/gtik.c:708
-#: gweather/gweather-about.c:44 mailcheck/mailcheck.c:2263
+#: gweather/gweather-about.c:44 mailcheck/mailcheck.c:2268
 #: mini-commander/src/about.c:48 mixer/mixer.c:1012
 #: modemlights/modemlights.c:115 multiload/main.c:57
-#: stickynotes/stickynotes.glade.h:53 stickynotes/stickynotes_applet.c:142
+#: stickynotes/stickynotes.glade.h:53 stickynotes/stickynotes_applet.c:143
 #: wireless/wireless-applet.c:735
 msgid "translator_credits"
 msgstr ""
@@ -406,7 +406,7 @@ msgid "Battery Charge Monitor Preferences"
 msgstr "Inställningar för batteriladdningsövervakare"
 
 #: battstat/battstat_applet.glade.h:13 drivemount/properties.c:305
-#: gweather/gweather-pref.c:294 mailcheck/mailcheck.c:1895
+#: gweather/gweather-pref.c:295 mailcheck/mailcheck.c:1900
 #: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:488
 msgid "General"
 msgstr "Allmänt"
@@ -464,8 +464,8 @@ msgid "_Yellow:"
 msgstr "_Gul:"
 
 #: battstat/properties.c:256 drivemount/drivemount.c:456
-#: drivemount/properties.c:513 mailcheck/mailcheck.c:2127
-#: mailcheck/mailcheck.c:2341 mini-commander/src/preferences.c:352
+#: drivemount/properties.c:513 mailcheck/mailcheck.c:2132
+#: mailcheck/mailcheck.c:2346 mini-commander/src/preferences.c:352
 #: mixer/mixer.c:1119
 #, c-format
 msgid "There was an error displaying help: %s"
@@ -748,8 +748,8 @@ msgstr "Välj monteringskatalog"
 msgid "_Update interval:"
 msgstr "_Uppdateringsintervall:"
 
-#: drivemount/properties.c:352 mailcheck/mailcheck.c:1955
-#: mailcheck/mailcheck.c:1959 modemlights/properties.c:419
+#: drivemount/properties.c:352 mailcheck/mailcheck.c:1960
+#: mailcheck/mailcheck.c:1964 modemlights/properties.c:419
 msgid "seconds"
 msgstr "sekunder"
 
@@ -979,7 +979,7 @@ msgstr "Etikett"
 msgid "Flag and Label"
 msgstr "Flagga och etikett"
 
-#: gkb-new/prop.c:323 gtik/gtik.c:1414 gweather/gweather-pref.c:333
+#: gkb-new/prop.c:323 gtik/gtik.c:1414 gweather/gweather-pref.c:334
 #: modemlights/properties.c:395
 msgid "Display"
 msgstr "Visa"
@@ -1073,7 +1073,7 @@ msgstr "_Uppdatera"
 msgid "Could not retrieve the stock data."
 msgstr "Kunde inte hämta aktiedata."
 
-#: gtik/gtik.c:236 gweather/gweather-applet.c:338
+#: gtik/gtik.c:236 gweather/gweather-applet.c:350
 msgid "Updating..."
 msgstr "Uppdaterar..."
 
@@ -1114,11 +1114,11 @@ msgstr "Inställningar för aktieövervakare"
 msgid "Symbols"
 msgstr "Symboler"
 
-#: gtik/gtik.c:1340 mailcheck/mailcheck.c:2194
+#: gtik/gtik.c:1340 mailcheck/mailcheck.c:2199
 msgid "Behavior"
 msgstr "Beteende"
 
-#: gtik/gtik.c:1343 gweather/gweather-pref.c:299
+#: gtik/gtik.c:1343 gweather/gweather-pref.c:300
 msgid "Update"
 msgstr "Uppdatera"
 
@@ -1126,8 +1126,8 @@ msgstr "Uppdatera"
 msgid "Stock update fre_quency:"
 msgstr "Aktieuppdateringsfre_kvens:"
 
-#: gtik/gtik.c:1359 gweather/gweather-pref.c:329 mailcheck/mailcheck.c:1937
-#: mailcheck/mailcheck.c:1941
+#: gtik/gtik.c:1359 gweather/gweather-pref.c:330 mailcheck/mailcheck.c:1942
+#: mailcheck/mailcheck.c:1946
 msgid "minutes"
 msgstr "minuter"
 
@@ -1257,29 +1257,37 @@ msgstr ""
 "\n"
 "Panelprogram för övervakning av lokala väderförhållanden."
 
-#: gweather/gweather-applet.c:54
+#: gweather/gweather-applet.c:55 gweather/gweather-applet.c:130
+msgid "C"
+msgstr "C"
+
+#: gweather/gweather-applet.c:57 gweather/gweather-applet.c:132
+msgid "F"
+msgstr "F"
+
+#: gweather/gweather-applet.c:59
 #, c-format
 msgid ""
 "%s\n"
 "Today: %s\n"
-"Current temperature %d"
+"Current temperature %d%s"
 msgstr ""
 "%s\n"
 "Idag: %s\n"
-"Aktuell temperatur %d"
+"Aktuell temperatur %d%s"
 
-#: gweather/gweather-applet.c:75
+#: gweather/gweather-applet.c:81
 #, c-format
 msgid ""
 "%s\n"
 "%s: %s\n"
-"Low %d, High %d"
+"Low %d%s, High %d%s"
 msgstr ""
 "%s\n"
 "%s: %s\n"
-"Lägsta %d, högsta %d"
+"Lägsta %d%s, högsta %d%s"
 
-#: gweather/gweather-applet.c:95
+#: gweather/gweather-applet.c:101
 msgid "There was an error retrieving the forecast"
 msgstr "Ett fel uppstod vid hämtning av prognosen"
 
@@ -1295,102 +1303,102 @@ msgstr "Nederbörd"
 msgid "Condition"
 msgstr "Förhållande"
 
-#: gweather/gweather-dialog.c:86 gweather/gweather-dialog.c:192
+#: gweather/gweather-dialog.c:86 gweather/gweather-dialog.c:182
 msgid "Forecast"
 msgstr "Prognos"
 
-#: gweather/gweather-dialog.c:110
+#: gweather/gweather-dialog.c:108
 msgid "Current Conditions"
 msgstr "Nuvarande förhållanden"
 
-#: gweather/gweather-dialog.c:121
+#: gweather/gweather-dialog.c:115
 msgid "City:"
 msgstr "Ort:"
 
-#: gweather/gweather-dialog.c:128
+#: gweather/gweather-dialog.c:122
 msgid "Last update:"
 msgstr "Senaste uppdatering:"
 
-#: gweather/gweather-dialog.c:135
+#: gweather/gweather-dialog.c:129
 msgid "Conditions:"
 msgstr "Förhållanden:"
 
-#: gweather/gweather-dialog.c:146
+#: gweather/gweather-dialog.c:140
 msgid "Temperature:"
 msgstr "Temperatur:"
 
-#: gweather/gweather-dialog.c:153
+#: gweather/gweather-dialog.c:147
 msgid "Feels like:"
 msgstr "Känns som:"
 
-#: gweather/gweather-dialog.c:160
+#: gweather/gweather-dialog.c:154
 msgid "Humidity:"
 msgstr "Luftfuktighet:"
 
-#: gweather/gweather-dialog.c:167
+#: gweather/gweather-dialog.c:161
 msgid "Wind:"
 msgstr "Vind:"
 
-#: gweather/gweather-dialog.c:174
+#: gweather/gweather-dialog.c:168
 msgid "Visibility:"
 msgstr "Sikt:"
 
-#: gweather/gweather-dialog.c:181
+#: gweather/gweather-dialog.c:175
 msgid "Pressure:"
 msgstr "Tryck:"
 
-#: gweather/gweather-dialog.c:307
+#: gweather/gweather-dialog.c:293
 #, c-format
 msgid "%s / %.1f %s"
 msgstr "%s / %.1f %s"
 
 #. Accessible Name and Description for the components in Preference Dialog
-#: gweather/gweather-pref.c:95
+#: gweather/gweather-pref.c:124
 msgid "Update spin button"
 msgstr "Uppdatera spinnknapp"
 
-#: gweather/gweather-pref.c:95
+#: gweather/gweather-pref.c:124
 msgid "Spinbutton for updating"
 msgstr "Spinnknapp för uppdatering"
 
-#: gweather/gweather-pref.c:265
+#: gweather/gweather-pref.c:266
 msgid "Weather Preferences"
 msgstr "Väderinställningar"
 
-#: gweather/gweather-pref.c:303
+#: gweather/gweather-pref.c:304
 msgid "_Automatically update every:"
 msgstr "_Uppdatera automatiskt var:"
 
-#: gweather/gweather-pref.c:335
+#: gweather/gweather-pref.c:336
 msgid "Use _metric system units"
 msgstr "Använd _metriska enheter"
 
-#: gweather/gweather-pref.c:343
+#: gweather/gweather-pref.c:344
 msgid "Display _temperatures"
 msgstr "Visa _temperaturer"
 
-#: gweather/gweather-pref.c:354
+#: gweather/gweather-pref.c:355
 msgid "Number of _days to display:"
 msgstr "Antalet _dagar att visa:"
 
-#: gweather/gweather-pref.c:367
+#: gweather/gweather-pref.c:368
 msgid "days"
 msgstr "dagar"
 
-#: gweather/gweather-pref.c:374 gweather/gweather-pref.c:383
+#: gweather/gweather-pref.c:375 gweather/gweather-pref.c:380
 #: gweather/location.c:354
 msgid "Location"
 msgstr "Plats"
 
-#: gweather/gweather-pref.c:394
+#: gweather/gweather-pref.c:384
 msgid "Current city:"
 msgstr "Aktuell ort:"
 
-#: gweather/gweather-pref.c:406
+#: gweather/gweather-pref.c:395
 msgid "Available c_ountries:"
 msgstr "Tillgängliga l_änder:"
 
-#: gweather/gweather-pref.c:418
+#: gweather/gweather-pref.c:409
 msgid "Available c_ities:"
 msgstr "Tillgängliga _orter:"
 
@@ -1631,7 +1639,7 @@ msgid "Factory for creating inbox monitors."
 msgstr "Fabrik för skapande av inkorgsövervakare."
 
 #: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:3
-#: mailcheck/mailcheck.c:637 mailcheck/mailcheck.c:2276
+#: mailcheck/mailcheck.c:637 mailcheck/mailcheck.c:2281
 msgid "Inbox Monitor"
 msgstr "Inkorgsövervakare"
 
@@ -1662,11 +1670,11 @@ msgstr ""
 msgid "Please enter your mailserver's _password:"
 msgstr "Ange din e-postservers _lösenord:"
 
-#: mailcheck/mailcheck.c:656 mailcheck/mailcheck.c:1815
+#: mailcheck/mailcheck.c:656 mailcheck/mailcheck.c:1820
 msgid "Password Entry box"
 msgstr "Lösenordsfält"
 
-#: mailcheck/mailcheck.c:676 mailcheck/mailcheck.c:1837
+#: mailcheck/mailcheck.c:676 mailcheck/mailcheck.c:1842
 msgid "_Save password to disk"
 msgstr "_Spara lösenord till disk"
 
@@ -1712,141 +1720,141 @@ msgstr "%d meddelanden"
 msgid "No mail."
 msgstr "Ingen e-post."
 
-#: mailcheck/mailcheck.c:1455 mailcheck/mailcheck.c:1456
-#: mailcheck/mailcheck.c:2466 mailcheck/mailcheck.c:2467
+#: mailcheck/mailcheck.c:1460 mailcheck/mailcheck.c:1461
+#: mailcheck/mailcheck.c:2472 mailcheck/mailcheck.c:2473
 msgid "Status not updated"
 msgstr "Statusen inte uppdaterad"
 
-#: mailcheck/mailcheck.c:1654 mailcheck/mailcheck.c:2198
+#: mailcheck/mailcheck.c:1659 mailcheck/mailcheck.c:2203
 msgid "Inbox Settings"
 msgstr "Inkorgsinställningar"
 
-#: mailcheck/mailcheck.c:1680
+#: mailcheck/mailcheck.c:1685
 msgid "Mailbox _resides on:"
 msgstr "Brevlådan _finns på:"
 
-#: mailcheck/mailcheck.c:1691
+#: mailcheck/mailcheck.c:1696
 msgid "Local mailspool"
 msgstr "Lokal e-postspool"
 
-#: mailcheck/mailcheck.c:1699
+#: mailcheck/mailcheck.c:1704
 msgid "Local maildir"
 msgstr "Lokal e-postkatalog"
 
-#: mailcheck/mailcheck.c:1707
+#: mailcheck/mailcheck.c:1712
 msgid "Remote POP3-server"
 msgstr "POP3-fjärrserver"
 
-#: mailcheck/mailcheck.c:1715
+#: mailcheck/mailcheck.c:1720
 msgid "Remote IMAP-server"
 msgstr "IMAP-fjärrserver"
 
-#: mailcheck/mailcheck.c:1735
+#: mailcheck/mailcheck.c:1740
 msgid "Mail _spool file:"
 msgstr "Fil för e-post_spool:"
 
-#: mailcheck/mailcheck.c:1742
+#: mailcheck/mailcheck.c:1747
 msgid "Browse"
 msgstr "Bläddra"
 
-#: mailcheck/mailcheck.c:1757
+#: mailcheck/mailcheck.c:1762
 msgid "Mail s_erver:"
 msgstr "E-posts_erver:"
 
-#: mailcheck/mailcheck.c:1766
+#: mailcheck/mailcheck.c:1771
 msgid "Mail Server Entry box"
 msgstr "E-postserverfält"
 
-#: mailcheck/mailcheck.c:1780
+#: mailcheck/mailcheck.c:1785
 msgid "_Username:"
 msgstr "_Användarnamn:"
 
-#: mailcheck/mailcheck.c:1791
+#: mailcheck/mailcheck.c:1796
 msgid "Username Entry box"
 msgstr "Användarnamnsfält"
 
-#: mailcheck/mailcheck.c:1804
+#: mailcheck/mailcheck.c:1809
 msgid "_Password:"
 msgstr "_Lösenord:"
 
-#: mailcheck/mailcheck.c:1849
+#: mailcheck/mailcheck.c:1854
 msgid "_Folder:"
 msgstr "_Mapp:"
 
-#: mailcheck/mailcheck.c:1860
+#: mailcheck/mailcheck.c:1865
 msgid "Folder Entry box"
 msgstr "Mappfält"
 
-#: mailcheck/mailcheck.c:1921
+#: mailcheck/mailcheck.c:1926
 msgid "Check for mail _every:"
 msgstr "Kontrollera e-post _var:"
 
-#: mailcheck/mailcheck.c:1937
+#: mailcheck/mailcheck.c:1942
 msgid "Choose time interval in minutes to check mail"
 msgstr "Välj tidsintervall i minuter för kontroll av post"
 
-#: mailcheck/mailcheck.c:1955
+#: mailcheck/mailcheck.c:1960
 msgid "Choose time interval in seconds to check mail"
 msgstr "Välj tidsintervall i sekunder för kontroll av post"
 
-#: mailcheck/mailcheck.c:1968
+#: mailcheck/mailcheck.c:1973
 msgid "Play a _sound when new mail arrives"
 msgstr "Spela ett _ljud då ny e-post anländer"
 
 #. l = gtk_check_button_new_with_mnemonic (_("Set the number of unread mails to _zero when clicked"));
-#: mailcheck/mailcheck.c:1976
+#: mailcheck/mailcheck.c:1981
 msgid "Sto_p animation when double clicked"
 msgstr "Sto_ppa animation vid dubbelklick"
 
-#: mailcheck/mailcheck.c:1987
+#: mailcheck/mailcheck.c:1992
 msgid "Select a_nimation:"
 msgstr "Välj ani_mation:"
 
-#: mailcheck/mailcheck.c:2000
+#: mailcheck/mailcheck.c:2005
 msgid "Commands"
 msgstr "Kommandon"
 
-#: mailcheck/mailcheck.c:2029
+#: mailcheck/mailcheck.c:2034
 msgid "Before each _update:"
 msgstr "Innan varje _uppdatering:"
 
-#: mailcheck/mailcheck.c:2044
+#: mailcheck/mailcheck.c:2049
 msgid "Command to execute before each update"
 msgstr "Kommando att köra före varje uppdatering"
 
-#: mailcheck/mailcheck.c:2054
+#: mailcheck/mailcheck.c:2059
 msgid "When new mail _arrives:"
 msgstr "När ny e-post _anländer:"
 
-#: mailcheck/mailcheck.c:2067 mailcheck/mailcheck.schemas.in.h:2
+#: mailcheck/mailcheck.c:2072 mailcheck/mailcheck.schemas.in.h:2
 msgid "Command to execute when new mail arrives"
 msgstr "Kommando att köra då ny e-post anländer"
 
-#: mailcheck/mailcheck.c:2077
+#: mailcheck/mailcheck.c:2082
 msgid "When double clicke_d:"
 msgstr "Vid _dubbelklick:"
 
-#: mailcheck/mailcheck.c:2090
+#: mailcheck/mailcheck.c:2095
 msgid "Command to execute when clicked"
 msgstr "Kommando att köra vid klick"
 
-#: mailcheck/mailcheck.c:2168
+#: mailcheck/mailcheck.c:2173
 msgid "Inbox Monitor Preferences"
 msgstr "Inställningar för inkorgsövervakare"
 
-#: mailcheck/mailcheck.c:2278
+#: mailcheck/mailcheck.c:2283
 msgid "Inbox Monitor notifies you when new mail arrives in your mailbox"
 msgstr "Inkorgsövervakaren signalerar när ny e-post anländer i din brevlåda"
 
-#: mailcheck/mailcheck.c:2442
+#: mailcheck/mailcheck.c:2448
 msgid "Text only"
 msgstr "Endast text"
 
-#: mailcheck/mailcheck.c:2468
+#: mailcheck/mailcheck.c:2474
 msgid "Mail check"
 msgstr "E-postkontroll"
 
-#: mailcheck/mailcheck.c:2469
+#: mailcheck/mailcheck.c:2475
 msgid "Mail check notifies you when new mail arrives in your mailbox"
 msgstr "E-postkontrollen signalerar när ny e-post anländer i din brevlåda"
 
@@ -2378,7 +2386,7 @@ msgstr ""
 "En indikator för modemstatus och uppringare.\n"
 "Lamporna uppifrån eller från vänster är Sänd data och Mottag Data."
 
-#: modemlights/modemlights.c:464
+#: modemlights/modemlights.c:485
 msgid ""
 "You are currently connected.\n"
 "Do you want to disconnect?"
@@ -2386,16 +2394,24 @@ msgstr ""
 "Du är just nu ansluten.\n"
 "Vill du avbryta och koppla ner förbindelsen?"
 
-#: modemlights/modemlights.c:479
+#: modemlights/modemlights.c:489
+msgid "_Disconnect"
+msgstr "_Koppla från"
+
+#: modemlights/modemlights.c:510
 msgid "Do you want to connect?"
 msgstr "Vill du ansluta?"
 
-#: modemlights/modemlights.c:506
+#: modemlights/modemlights.c:513
+msgid "C_onnect"
+msgstr "A_nslut"
+
+#: modemlights/modemlights.c:536
 #, c-format
 msgid "%#.1fMb received / %#.1fMb sent / time: %.1d:%.2d"
 msgstr "%#.1fMB mottaget / %#.1fMB skickat / tid: %.1d.%.2d"
 
-#: modemlights/modemlights.c:511
+#: modemlights/modemlights.c:541
 msgid "not connected"
 msgstr "inte ansluten"
 
@@ -2702,7 +2718,7 @@ msgstr "Skapa, visa och hantera klisterlappar på skrivbordet"
 
 #. FIXME : Hack because libglade does not properly set these
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:3
-#: stickynotes/stickynotes_applet.c:134 stickynotes/stickynotes_applet.c:305
+#: stickynotes/stickynotes_applet.c:135 stickynotes/stickynotes_applet.c:306
 msgid "Sticky Notes"
 msgstr "Klisterlappar"
 
@@ -3071,7 +3087,7 @@ msgstr "Huruvida standardsystemfärgen ska användas"
 msgid "Whether to use the default system font"
 msgstr "Huruvida standardsystemtypsnittet ska användas"
 
-#: stickynotes/stickynotes_applet.c:305
+#: stickynotes/stickynotes_applet.c:306
 #, c-format
 msgid ""
 "%s\n"
@@ -3138,6 +3154,24 @@ msgstr "Inställningar för övervakare av trådlös länk"
 #: wireless/wireless-applet.glade.h:4
 msgid "_Monitored device:"
 msgstr "_Övervakad enhet:"
+
+#~ msgid ""
+#~ "%s\n"
+#~ "Today: %s\n"
+#~ "Current temperature %d"
+#~ msgstr ""
+#~ "%s\n"
+#~ "Idag: %s\n"
+#~ "Aktuell temperatur %d"
+
+#~ msgid ""
+#~ "%s\n"
+#~ "%s: %s\n"
+#~ "Low %d, High %d"
+#~ msgstr ""
+#~ "%s\n"
+#~ "%s: %s\n"
+#~ "Lägsta %d, högsta %d"
 
 #~ msgid "Add a palette"
 #~ msgstr "Lägg till en palett"
