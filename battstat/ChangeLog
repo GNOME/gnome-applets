@@ -1,3 +1,11 @@
+2005-01-13  Benoît Dejean  <TazForEver@dlfp.org>
+
+	* battstat.h:
+	* battstat_applet.c: (battery_low_dialog), (update_percent_label):
+	* power-management.c: (acpi_callback):
+	* properties.c: (prop_cb): Cleanups to please gcc :)
+	Closes #163930
+
 2005-01-13  Ryan Lortie  <desrt@desrt.ca>
 	* acpi_linux.c: acpi_linux_init: On failure to connect to the apicd
 		this function would set acpiinfo->event_fd = -1; but not

@@ -85,6 +85,7 @@ hard_set_sensitive (GtkWidget *w, gboolean sensitivity)
 }
 
 
+#if 0
 /* set sensitive, but always insensitive if NEVER_SENSITIVE is set */
 static void
 soft_set_sensitive (GtkWidget *w, gboolean sensitivity)
@@ -94,6 +95,7 @@ soft_set_sensitive (GtkWidget *w, gboolean sensitivity)
 	else
 		gtk_widget_set_sensitive (w, sensitivity);
 }
+#endif /* 0 */
 
 static gboolean
 key_writable (PanelApplet *applet, const char *key)
@@ -291,11 +293,8 @@ prop_cb (BonoboUIComponent *uic,
 {
   GladeXML  *glade_xml;
   GtkWidget *layout_table;
-  GtkWidget *preview_hbox;
-  GtkWidget *widget;
   GConfClient *client;
   gboolean   inhibit_command_line;
-  AtkObject *atk_widget;
 
   client = gconf_client_get_default ();
   inhibit_command_line = gconf_client_get_bool (client, "/desktop/gnome/lockdown/inhibit_command_line", NULL);

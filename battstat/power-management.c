@@ -165,7 +165,7 @@ struct apm_info apminfo;
 // Declared in acpi-linux.c
 gboolean acpi_linux_read(struct apm_info *apminfo, struct acpi_info *acpiinfo);
 
-gboolean acpi_callback (GIOChannel * chan, GIOCondition cond, gpointer data)
+static gboolean acpi_callback (GIOChannel * chan, GIOCondition cond, gpointer data)
 {
   if (cond & (G_IO_ERR | G_IO_HUP)) {
     acpi_linux_cleanup(&acpiinfo);

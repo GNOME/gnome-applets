@@ -59,10 +59,10 @@ static const BonoboUIVerb battstat_menu_verbs [] = {
 #define AC_POWER_STRING _("System is running on AC power")
 #define DC_POWER_STRING _("System is running on battery power")
 
-int pixel_offset_top[]={ 5, 5, 6, 6, 6, 6, 6, 6, 6, 6, 5, 5 };
-int pixel_top_length[]={ 2, 3, 4, 4, 4, 4, 4, 4, 4, 4, 3, 2 };
-int pixel_offset_bottom[]={ 38, 38, 39, 39, 39, 39, 39, 39, 39, 39, 38, 38 };
-GdkColor green[] = {
+static const int pixel_offset_top[]={ 5, 5, 6, 6, 6, 6, 6, 6, 6, 6, 5, 5 };
+static const int pixel_top_length[]={ 2, 3, 4, 4, 4, 4, 4, 4, 4, 4, 3, 2 };
+static const int pixel_offset_bottom[]={ 38, 38, 39, 39, 39, 39, 39, 39, 39, 39, 38, 38 };
+static GdkColor green[] = {
   {0,0x7A00,0xDB00,0x7000},
   {0,0x9100,0xE900,0x8500},
   {0,0xA000,0xF100,0x9500},
@@ -77,7 +77,7 @@ GdkColor green[] = {
   {0,0x5100,0xC100,0x4200},
   {-1,0x0000,0x0000,0x0000}
 };
-GdkColor red[] = {
+static GdkColor red[] = {
   {0,0xD900,0x7200,0x7400},
   {0,0xE600,0x8800,0x8C00},
   {0,0xF000,0x9600,0x9A00},
@@ -92,7 +92,7 @@ GdkColor red[] = {
   {0,0xC100,0x4200,0x4700},
   {-1,0x0000,0x0000,0x0000}
 };
-GdkColor yellow[] = {
+static GdkColor yellow[] = {
   {0,0xD800,0xD900,0x7200},
   {0,0xE600,0xE500,0x8800},
   {0,0xF000,0xEF00,0x9600},
@@ -107,7 +107,7 @@ GdkColor yellow[] = {
   {0,0xC100,0xBF00,0x4200},
   {-1,0x0000,0x0000,0x0000}
 };
-GdkColor orange[] = {
+static GdkColor orange[] = {
   {0,0xD900,0xAD00,0x7200},
   {0,0xE600,0xBB00,0x8800},
   {0,0xF000,0xC700,0x9600},
@@ -122,7 +122,7 @@ GdkColor orange[] = {
   {0,0xC100,0x8600,0x4200},
   {-1,0x0000,0x0000,0x0000}
 };
-GdkColor gray[] = {
+static GdkColor gray[] = {
   {0,0xC400,0xC400,0xC400},
   {0,0xD300,0xD300,0xD300},
   {0,0xDE00,0xDE00,0xDE00},
@@ -137,7 +137,7 @@ GdkColor gray[] = {
   {0,0xA800,0xA800,0xA800},
   {-1,0x0000,0x0000,0x0000}
 };
-GdkColor darkgreen[] = {
+static GdkColor darkgreen[] = {
   {0,0x6500,0xC600,0x5B00},
   {0,0x7B00,0xD300,0x6F00},
   {0,0x8A00,0xDB00,0x7F00},
@@ -152,7 +152,7 @@ GdkColor darkgreen[] = {
   {0,0x3C00,0xAC00,0x2D00},
   {-1,0x0000,0x0000,0x0000}
 };
-GdkColor darkorange[] = {
+static GdkColor darkorange[] = {
   {0,0xC400,0x9700,0x5C00},
   {0,0xD000,0xA500,0x7200},
   {0,0xDA00,0xB100,0x8000},
@@ -167,7 +167,7 @@ GdkColor darkorange[] = {
   {0,0xAC00,0x7200,0x2D00},
   {-1,0x0000,0x0000,0x0000}
 };
-GdkColor darkyellow[] = {
+static GdkColor darkyellow[] = {
   {0,0xC200,0xC400,0x5C00},
   {0,0xD000,0xCF00,0x7200},
   {0,0xDA00,0xD900,0x8000},
@@ -182,7 +182,7 @@ GdkColor darkyellow[] = {
   {0,0xAC00,0xAA00,0x2D00},
   {-1,0x0000,0x0000,0x0000}
 };
-GdkColor darkred[] = {
+static GdkColor darkred[] = {
   {0,0xC900,0x6200,0x6400},
   {0,0xD600,0x7800,0x7C00},
   {0,0xDA00,0x8000,0x8500},
@@ -385,7 +385,7 @@ battery_full_dialog( void )
 static void
 battery_low_dialog( ProgressData *battery, BatteryStatus *info )
 {
-  GtkWidget *dialog, *hbox, *image, *label;
+  GtkWidget *hbox, *image, *label;
   gchar *new_string, *new_label;
   GdkPixbuf *pixbuf;
 
@@ -432,7 +432,7 @@ battery_low_dialog( ProgressData *battery, BatteryStatus *info )
   battery->lowbattnotification=FALSE;
 }
 
-void
+static void
 update_tooltip( ProgressData *battstat, BatteryStatus *info )
 {
   gchar *powerstring;
@@ -568,8 +568,6 @@ static void
 update_percent_label( ProgressData *battstat, BatteryStatus *info )
 {
   gchar *new_label;
-  gchar *new_string;
-  gchar *rem_time = NULL;
 
   if (info->present && battstat->showtext == APPLET_SHOW_PERCENT)
     new_label = g_strdup_printf ("%d%%", info->percent);
@@ -868,7 +866,7 @@ change_orient (PanelApplet       *applet,
   }
 }
 
-void
+static void
 size_allocate( PanelApplet *applet, GtkAllocation *allocation,
                ProgressData *battstat)
 {
@@ -1020,7 +1018,7 @@ table_layout_attach( GtkTable *table, LayoutLocation loc, GtkWidget *child )
   }
 }
 
-gint
+void
 reconfigure_layout( ProgressData *battstat )
 {
   gboolean up_down_order = FALSE;
@@ -1134,7 +1132,7 @@ reconfigure_layout( ProgressData *battstat )
   check_for_updates( battstat );
 }
 
-gint
+static gint
 create_layout(ProgressData *battstat)
 {
   if (DEBUG) g_print("create_layout()\n");
