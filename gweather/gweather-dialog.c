@@ -400,6 +400,7 @@ void gweather_dialog_display_toggle (void)
 void gweather_dialog_update (void)
 {
     const gchar *forecast;
+    GdkFont* detailed_forecast_font = gdk_fontset_load ( "fixed" );
 
     /* Check for parallel network update in progress */
     if(gweather_info == NULL)
@@ -429,12 +430,12 @@ void gweather_dialog_update (void)
     gtk_text_forward_delete(GTK_TEXT(forecast_text), gtk_text_get_length(GTK_TEXT(forecast_text)));
     forecast = weather_info_get_forecast(gweather_info);
     if (forecast) {
-        gtk_text_insert(GTK_TEXT(forecast_text), NULL, NULL, NULL, forecast, strlen(forecast));
+        gtk_text_insert(GTK_TEXT(forecast_text), detailed_forecast_font, NULL, NULL, forecast, strlen(forecast));
     } else {
         if (gweather_pref.detailed)
-            gtk_text_insert(GTK_TEXT(forecast_text), NULL, NULL, NULL, _("Detailed forecast not available for this location.\nPlease try the state forecast; note that IWIN forecasts are available only for US cities."), -1);
+            gtk_text_insert(GTK_TEXT(forecast_text), detailed_forecast_font, NULL, NULL, _("Detailed forecast not available for this location.\nPlease try the state forecast; note that IWIN forecasts are available only for US cities."), -1);
         else
-            gtk_text_insert(GTK_TEXT(forecast_text), NULL, NULL, NULL, _("State forecast not available for this location.\nPlease try the detailed forecast; note that IWIN forecasts are available only for US cities."), -1);
+            gtk_text_insert(GTK_TEXT(forecast_text), detailed_forecast_font, NULL, NULL, _("State forecast not available for this location.\nPlease try the detailed forecast; note that IWIN forecasts are available only for US cities."), -1);
     }
 
     /* Update radar map */

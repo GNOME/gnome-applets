@@ -1715,7 +1715,7 @@ const gchar *weather_info_get_temp_summary (WeatherInfo *info)
     g_return_val_if_fail(info != NULL, NULL);
     if (!info->valid)
         return "--";
-    g_snprintf(buf, sizeof (buf), "%d\260", (int)info->temp);
+    g_snprintf(buf, sizeof (buf), "%d\260", (int)(info->temp + 0.5));
     return buf;
 }
 
