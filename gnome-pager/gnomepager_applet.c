@@ -153,166 +153,175 @@ cb_prop_apply(GtkWidget *widget, int page, gpointer data)
   redo_interface();
 }
 
+static void
+prop_destroyed(GtkWidget *widget, GtkWidget **prop)
+{
+	*prop = NULL;
+}
+
 void 
 cb_applet_properties(AppletWidget * widget, gpointer data)
 {
   static GnomeHelpMenuEntry help_entry = { NULL, "properties" };
-  GtkWidget *prop = NULL;
+  static GtkWidget *prop = NULL;
   GtkWidget *table, *label, *spin, *check;
   GtkAdjustment *adj;
+  
+  if(prop)
+    {
+      gtk_widget_show(prop);
+      if(prop->window) gdk_window_raise(prop->window);
+      return;
+    }
 
   help_entry.name = gnome_app_id;
 
   o_config = config;
   
-  if (!prop) 
-    {
-      prop = gnome_property_box_new();
-      gtk_signal_connect (GTK_OBJECT(prop), "delete_event",
-			  GTK_SIGNAL_FUNC(gtk_false),NULL);
-      gtk_signal_connect (GTK_OBJECT(prop), "apply",
-			  GTK_SIGNAL_FUNC(cb_prop_apply), NULL);
-      gtk_signal_connect (GTK_OBJECT(prop), "help",
-			  GTK_SIGNAL_FUNC(gnome_help_pbox_display),
-			  &help_entry);
-      gtk_window_set_title(GTK_WINDOW(prop), _("Gnome Pager Settings"));
-      table = gtk_table_new(1, 1, FALSE);
-      gtk_widget_show(table);
-      gnome_property_box_append_page(GNOME_PROPERTY_BOX(prop), table,
-				     gtk_label_new (_("Display")));
-      check = gtk_check_button_new_with_label(_("Show all tasks on all desktops"));
-      gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check), config.tasks_all);
-      gtk_signal_connect(GTK_OBJECT(check), "toggled",
-			 GTK_SIGNAL_FUNC(cb_check), &o_config.tasks_all);
-      gtk_object_set_data(GTK_OBJECT(check), "prop", prop);
-      gtk_widget_show(check);
-      gtk_table_attach(GTK_TABLE(table), check, 
-		       2, 4, 0, 1, GTK_FILL|GTK_EXPAND,0,0,0);
-      check = gtk_check_button_new_with_label(_("Show tasks"));
-      gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check), config.show_tasks);
-      gtk_signal_connect(GTK_OBJECT(check), "toggled",
-			 GTK_SIGNAL_FUNC(cb_check), &o_config.show_tasks);
-      gtk_object_set_data(GTK_OBJECT(check), "prop", prop);
-      gtk_widget_show(check);
-      gtk_table_attach(GTK_TABLE(table), check, 
-		       2, 4, 1, 2, GTK_FILL|GTK_EXPAND,0,0,0);
-      check = gtk_check_button_new_with_label(_("Show pager"));
-      gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check), config.show_pager);
-      gtk_signal_connect(GTK_OBJECT(check), "toggled",
-			 GTK_SIGNAL_FUNC(cb_check), &o_config.show_pager);
-      gtk_object_set_data(GTK_OBJECT(check), "prop", prop);
-      gtk_widget_show(check);
-      gtk_table_attach(GTK_TABLE(table), check, 
-		       2, 4, 2, 3, GTK_FILL|GTK_EXPAND,0,0,0);
-      check = gtk_check_button_new_with_label(_("Use small pagers"));
-      gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check), config.pager_size);
-      gtk_signal_connect(GTK_OBJECT(check), "toggled",
-			 GTK_SIGNAL_FUNC(cb_check), &o_config.pager_size);
-      gtk_object_set_data(GTK_OBJECT(check), "prop", prop);
-      gtk_widget_show(check);
-      gtk_table_attach(GTK_TABLE(table), check, 
-		       2, 4, 3, 4, GTK_FILL|GTK_EXPAND,0,0,0);
-      check = gtk_check_button_new_with_label(_("Show icons in tasks"));
-      gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check), config.show_icons);
-      gtk_signal_connect(GTK_OBJECT(check), "toggled",
-			 GTK_SIGNAL_FUNC(cb_check), &o_config.show_icons);
-      gtk_object_set_data(GTK_OBJECT(check), "prop", prop);
-      gtk_widget_show(check);
-      gtk_table_attach(GTK_TABLE(table), check, 
-		       2, 4, 4, 5, GTK_FILL|GTK_EXPAND,0,0,0);
-      check = gtk_check_button_new_with_label(_("Show task list button"));
-      gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(check), config.show_arrow);
-      gtk_signal_connect(GTK_OBJECT(check), "toggled",
-			 GTK_SIGNAL_FUNC(cb_check), &o_config.show_arrow);
-      gtk_object_set_data(GTK_OBJECT(check), "prop", prop);
-      gtk_widget_show(check);
-      gtk_table_attach(GTK_TABLE(table), check,
-		       2, 4, 5, 6, GTK_FILL|GTK_EXPAND,0,0,0);
+  prop = gnome_property_box_new();
+  gtk_signal_connect (GTK_OBJECT(prop), "destroy",
+		      GTK_SIGNAL_FUNC(prop_destroyed),&prop);
+  gtk_signal_connect (GTK_OBJECT(prop), "apply",
+		      GTK_SIGNAL_FUNC(cb_prop_apply), NULL);
+  gtk_signal_connect (GTK_OBJECT(prop), "help",
+		      GTK_SIGNAL_FUNC(gnome_help_pbox_display),
+		      &help_entry);
+  gtk_window_set_title(GTK_WINDOW(prop), _("Gnome Pager Settings"));
+  table = gtk_table_new(1, 1, FALSE);
+  gtk_widget_show(table);
+  gnome_property_box_append_page(GNOME_PROPERTY_BOX(prop), table,
+				 gtk_label_new (_("Display")));
+  check = gtk_check_button_new_with_label(_("Show all tasks on all desktops"));
+  gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check), config.tasks_all);
+  gtk_signal_connect(GTK_OBJECT(check), "toggled",
+		     GTK_SIGNAL_FUNC(cb_check), &o_config.tasks_all);
+  gtk_object_set_data(GTK_OBJECT(check), "prop", prop);
+  gtk_widget_show(check);
+  gtk_table_attach(GTK_TABLE(table), check, 
+		   2, 4, 0, 1, GTK_FILL|GTK_EXPAND,0,0,0);
+  check = gtk_check_button_new_with_label(_("Show tasks"));
+  gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check), config.show_tasks);
+  gtk_signal_connect(GTK_OBJECT(check), "toggled",
+		     GTK_SIGNAL_FUNC(cb_check), &o_config.show_tasks);
+  gtk_object_set_data(GTK_OBJECT(check), "prop", prop);
+  gtk_widget_show(check);
+  gtk_table_attach(GTK_TABLE(table), check, 
+		   2, 4, 1, 2, GTK_FILL|GTK_EXPAND,0,0,0);
+  check = gtk_check_button_new_with_label(_("Show pager"));
+  gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check), config.show_pager);
+  gtk_signal_connect(GTK_OBJECT(check), "toggled",
+		     GTK_SIGNAL_FUNC(cb_check), &o_config.show_pager);
+  gtk_object_set_data(GTK_OBJECT(check), "prop", prop);
+  gtk_widget_show(check);
+  gtk_table_attach(GTK_TABLE(table), check, 
+		   2, 4, 2, 3, GTK_FILL|GTK_EXPAND,0,0,0);
+  check = gtk_check_button_new_with_label(_("Use small pagers"));
+  gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check), config.pager_size);
+  gtk_signal_connect(GTK_OBJECT(check), "toggled",
+		     GTK_SIGNAL_FUNC(cb_check), &o_config.pager_size);
+  gtk_object_set_data(GTK_OBJECT(check), "prop", prop);
+  gtk_widget_show(check);
+  gtk_table_attach(GTK_TABLE(table), check, 
+		   2, 4, 3, 4, GTK_FILL|GTK_EXPAND,0,0,0);
+  check = gtk_check_button_new_with_label(_("Show icons in tasks"));
+  gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check), config.show_icons);
+  gtk_signal_connect(GTK_OBJECT(check), "toggled",
+		     GTK_SIGNAL_FUNC(cb_check), &o_config.show_icons);
+  gtk_object_set_data(GTK_OBJECT(check), "prop", prop);
+  gtk_widget_show(check);
+  gtk_table_attach(GTK_TABLE(table), check, 
+		   2, 4, 4, 5, GTK_FILL|GTK_EXPAND,0,0,0);
+  check = gtk_check_button_new_with_label(_("Show task list button"));
+  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(check), config.show_arrow);
+  gtk_signal_connect(GTK_OBJECT(check), "toggled",
+		     GTK_SIGNAL_FUNC(cb_check), &o_config.show_arrow);
+  gtk_object_set_data(GTK_OBJECT(check), "prop", prop);
+  gtk_widget_show(check);
+  gtk_table_attach(GTK_TABLE(table), check,
+		   2, 4, 5, 6, GTK_FILL|GTK_EXPAND,0,0,0);
 
-      check = gtk_check_button_new_with_label(_("Tasklist always maximum size"));
-      gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(check), config.fixed_tasklist);
-      gtk_signal_connect(GTK_OBJECT(check), "toggled",
-			 GTK_SIGNAL_FUNC(cb_check), &o_config.fixed_tasklist);
-      gtk_object_set_data(GTK_OBJECT(check), "prop", prop);
-      gtk_widget_show(check);
-      gtk_table_attach(GTK_TABLE(table), check,
-		       2, 4, 6, 7, GTK_FILL|GTK_EXPAND,0,0,0);
+  check = gtk_check_button_new_with_label(_("Tasklist always maximum size"));
+  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON(check), config.fixed_tasklist);
+  gtk_signal_connect(GTK_OBJECT(check), "toggled",
+		     GTK_SIGNAL_FUNC(cb_check), &o_config.fixed_tasklist);
+  gtk_object_set_data(GTK_OBJECT(check), "prop", prop);
+  gtk_widget_show(check);
+  gtk_table_attach(GTK_TABLE(table), check,
+		   2, 4, 6, 7, GTK_FILL|GTK_EXPAND,0,0,0);
 
-      adj = (GtkAdjustment *)gtk_adjustment_new((gfloat)config.max_task_width,
-						20, 
-						(gfloat)gdk_screen_width(), 
-						16, 16, 16 );
-      gtk_signal_connect(GTK_OBJECT(adj), "value_changed",
-			 GTK_SIGNAL_FUNC(cb_adj), &o_config.max_task_width);
-      gtk_object_set_data(GTK_OBJECT(adj), "prop", prop);
-      label = gtk_label_new(_("Maximum width of horizontal task list"));
-      gtk_widget_show(label);
-      spin = gtk_spin_button_new(adj, 1, 0);
-      gtk_widget_show(spin);
-      gtk_table_attach(GTK_TABLE(table), label, 
-		       0, 1, 0, 1, GTK_FILL|GTK_EXPAND,0,0,0);
-      gtk_table_attach(GTK_TABLE(table), spin, 
-		       1, 2, 0, 1, GTK_FILL|GTK_EXPAND,0,0,0);
-      
-      adj = (GtkAdjustment *)gtk_adjustment_new((gfloat)config.max_task_vwidth,
-						4, 
-						(gfloat)gdk_screen_width(), 
-						4, 4, 4 );
-      gtk_signal_connect(GTK_OBJECT(adj), "value_changed",
-			 GTK_SIGNAL_FUNC(cb_adj), &o_config.max_task_vwidth);
-      gtk_object_set_data(GTK_OBJECT(adj), "prop", prop);
-      label = gtk_label_new(_("Maximum width of vertical task list"));
-      gtk_widget_show(label);
-      spin = gtk_spin_button_new(adj, 1, 0);
-      gtk_widget_show(spin);
-      gtk_table_attach(GTK_TABLE(table), label, 
-		       0, 1, 1, 2, GTK_FILL|GTK_EXPAND,0,0,0);
-      gtk_table_attach(GTK_TABLE(table), spin, 
-		       1, 2, 1, 2, GTK_FILL|GTK_EXPAND,0,0,0);
+  adj = (GtkAdjustment *)gtk_adjustment_new((gfloat)config.max_task_width,
+					    20, 
+					    (gfloat)gdk_screen_width(), 
+					    16, 16, 16 );
+  gtk_signal_connect(GTK_OBJECT(adj), "value_changed",
+		     GTK_SIGNAL_FUNC(cb_adj), &o_config.max_task_width);
+  gtk_object_set_data(GTK_OBJECT(adj), "prop", prop);
+  label = gtk_label_new(_("Maximum width of horizontal task list"));
+  gtk_widget_show(label);
+  spin = gtk_spin_button_new(adj, 1, 0);
+  gtk_widget_show(spin);
+  gtk_table_attach(GTK_TABLE(table), label, 
+		   0, 1, 0, 1, GTK_FILL|GTK_EXPAND,0,0,0);
+  gtk_table_attach(GTK_TABLE(table), spin, 
+		   1, 2, 0, 1, GTK_FILL|GTK_EXPAND,0,0,0);
 
-      adj = (GtkAdjustment *)gtk_adjustment_new((gfloat)config.task_rows_h, 1, 
-						8, 1, 1, 1 );
-      gtk_signal_connect(GTK_OBJECT(adj), "value_changed",
-			 GTK_SIGNAL_FUNC(cb_adj), &o_config.task_rows_h);
-      gtk_object_set_data(GTK_OBJECT(adj), "prop", prop);
-      label = gtk_label_new(_("Number of rows of horizontal tasks"));
-      gtk_widget_show(label);
-      spin = gtk_spin_button_new(adj, 1, 0);
-      gtk_widget_show(spin);
-      gtk_table_attach(GTK_TABLE(table), label, 
-		       0, 1, 2, 3, GTK_FILL|GTK_EXPAND,0,0,0);
-      gtk_table_attach(GTK_TABLE(table), spin, 
-		       1, 2, 2, 3, GTK_FILL|GTK_EXPAND,0,0,0);
-      adj = (GtkAdjustment *)gtk_adjustment_new((gfloat)config.task_rows_v, 1, 
-						4, 1, 1, 1 );
-      gtk_signal_connect(GTK_OBJECT(adj), "value_changed",
-			 GTK_SIGNAL_FUNC(cb_adj), &o_config.task_rows_v);
-      gtk_object_set_data(GTK_OBJECT(adj), "prop", prop);
-      label = gtk_label_new(_("Number of vertical columns of tasks"));
-      gtk_widget_show(label);
-      spin = gtk_spin_button_new(adj, 1, 0);
-      gtk_widget_show(spin);
-      gtk_table_attach(GTK_TABLE(table), label, 
-		       0, 1, 3, 4, GTK_FILL|GTK_EXPAND,0,0,0);
-      gtk_table_attach(GTK_TABLE(table), spin, 
-		       1, 2, 3, 4, GTK_FILL|GTK_EXPAND,0,0,0);
-      adj = (GtkAdjustment *)gtk_adjustment_new((gfloat)config.pager_rows, 1, 
-						8, 1, 1, 1 );
-      gtk_signal_connect(GTK_OBJECT(adj), "value_changed",
-			 GTK_SIGNAL_FUNC(cb_adj), &o_config.pager_rows);
-      gtk_object_set_data(GTK_OBJECT(adj), "prop", prop);
-      label = gtk_label_new(_("Number rows of pagers"));
-      gtk_widget_show(label);
-      spin = gtk_spin_button_new(adj, 1, 0);
-      gtk_widget_show(spin);
-      gtk_table_attach(GTK_TABLE(table), label, 
-		       0, 1, 4, 5, GTK_FILL|GTK_EXPAND,0,0,0);
-      gtk_table_attach(GTK_TABLE(table), spin, 
-		       1, 2, 4, 5, GTK_FILL|GTK_EXPAND,0,0,0);
-      
-    }
-  if (prop)
-    gtk_widget_show(prop);
+  adj = (GtkAdjustment *)gtk_adjustment_new((gfloat)config.max_task_vwidth,
+					    4, 
+					    (gfloat)gdk_screen_width(), 
+					    4, 4, 4 );
+  gtk_signal_connect(GTK_OBJECT(adj), "value_changed",
+		     GTK_SIGNAL_FUNC(cb_adj), &o_config.max_task_vwidth);
+  gtk_object_set_data(GTK_OBJECT(adj), "prop", prop);
+  label = gtk_label_new(_("Maximum width of vertical task list"));
+  gtk_widget_show(label);
+  spin = gtk_spin_button_new(adj, 1, 0);
+  gtk_widget_show(spin);
+  gtk_table_attach(GTK_TABLE(table), label, 
+		   0, 1, 1, 2, GTK_FILL|GTK_EXPAND,0,0,0);
+  gtk_table_attach(GTK_TABLE(table), spin, 
+		   1, 2, 1, 2, GTK_FILL|GTK_EXPAND,0,0,0);
+
+  adj = (GtkAdjustment *)gtk_adjustment_new((gfloat)config.task_rows_h, 1, 
+					    8, 1, 1, 1 );
+  gtk_signal_connect(GTK_OBJECT(adj), "value_changed",
+		     GTK_SIGNAL_FUNC(cb_adj), &o_config.task_rows_h);
+  gtk_object_set_data(GTK_OBJECT(adj), "prop", prop);
+  label = gtk_label_new(_("Number of rows of horizontal tasks"));
+  gtk_widget_show(label);
+  spin = gtk_spin_button_new(adj, 1, 0);
+  gtk_widget_show(spin);
+  gtk_table_attach(GTK_TABLE(table), label, 
+		   0, 1, 2, 3, GTK_FILL|GTK_EXPAND,0,0,0);
+  gtk_table_attach(GTK_TABLE(table), spin, 
+		   1, 2, 2, 3, GTK_FILL|GTK_EXPAND,0,0,0);
+  adj = (GtkAdjustment *)gtk_adjustment_new((gfloat)config.task_rows_v, 1, 
+					    4, 1, 1, 1 );
+  gtk_signal_connect(GTK_OBJECT(adj), "value_changed",
+		     GTK_SIGNAL_FUNC(cb_adj), &o_config.task_rows_v);
+  gtk_object_set_data(GTK_OBJECT(adj), "prop", prop);
+  label = gtk_label_new(_("Number of vertical columns of tasks"));
+  gtk_widget_show(label);
+  spin = gtk_spin_button_new(adj, 1, 0);
+  gtk_widget_show(spin);
+  gtk_table_attach(GTK_TABLE(table), label, 
+		   0, 1, 3, 4, GTK_FILL|GTK_EXPAND,0,0,0);
+  gtk_table_attach(GTK_TABLE(table), spin, 
+		   1, 2, 3, 4, GTK_FILL|GTK_EXPAND,0,0,0);
+  adj = (GtkAdjustment *)gtk_adjustment_new((gfloat)config.pager_rows, 1, 
+					    8, 1, 1, 1 );
+  gtk_signal_connect(GTK_OBJECT(adj), "value_changed",
+		     GTK_SIGNAL_FUNC(cb_adj), &o_config.pager_rows);
+  gtk_object_set_data(GTK_OBJECT(adj), "prop", prop);
+  label = gtk_label_new(_("Number rows of pagers"));
+  gtk_widget_show(label);
+  spin = gtk_spin_button_new(adj, 1, 0);
+  gtk_widget_show(spin);
+  gtk_table_attach(GTK_TABLE(table), label, 
+		   0, 1, 4, 5, GTK_FILL|GTK_EXPAND,0,0,0);
+  gtk_table_attach(GTK_TABLE(table), spin, 
+		   1, 2, 4, 5, GTK_FILL|GTK_EXPAND,0,0,0);
+
+  gtk_widget_show(prop);
 }
 
 
