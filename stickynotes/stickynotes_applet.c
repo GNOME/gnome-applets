@@ -146,6 +146,17 @@ void stickynotes_applet_init_prefs()
 	g_signal_connect_swapped(G_OBJECT(stickynotes->w_prefs_sticky), "toggled", G_CALLBACK(preferences_save_cb), NULL);
 	g_signal_connect_swapped(G_OBJECT(stickynotes->w_prefs_force), "toggled", G_CALLBACK(preferences_save_cb), NULL);
 	
+	{
+		GtkSizeGroup *group = gtk_size_group_new(GTK_SIZE_GROUP_HORIZONTAL);
+
+		gtk_size_group_add_widget(group, glade_xml_get_widget(stickynotes->prefs, "width_label"));
+		gtk_size_group_add_widget(group, glade_xml_get_widget(stickynotes->prefs, "height_label"));
+		gtk_size_group_add_widget(group, glade_xml_get_widget(stickynotes->prefs, "color_label"));
+		gtk_size_group_add_widget(group, glade_xml_get_widget(stickynotes->prefs, "click_label"));
+
+		g_object_unref(group);
+	}
+			
 	stickynotes_applet_update_prefs();
 }
 
