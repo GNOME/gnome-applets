@@ -30,6 +30,7 @@ asclock_applet_LDADD = \
 sysdir = $(datadir)/applets/Clocks
 sys_predata = asclock_applet.desktop.in
 sys_DATA = $(sys_predata:.desktop.in=.desktop)
+@XML_I18N_MERGE_DESKTOP_RULE@
 
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = asclock_applet.gnorba

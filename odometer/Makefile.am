@@ -27,5 +27,5 @@ pixmap_DATA = gnome-odometer.png
 
 EXTRA_DIST = \
 	README.themes	\
-	$(pixmap_DATA)
+	$(pixmap_DATA)	\
 	$(gnorba_DATA) $(sys_DATA) $(sys_predata)

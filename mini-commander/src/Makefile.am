@@ -43,13 +43,12 @@ mini_commander_applet_LDADD =				\
 bitmapsdir = $(datadir)/pixmaps/mini-commander
 bitmaps_DATA = browser-mini.xpm history-mini.xpm
 
-EXTRA_DIST = 				\
-	mini-commander_applet.desktop	\
-	mini-commander_applet.gnorba	\
-	$(bitmaps_DATA)
-
 sysdir = $(datadir)/applets/Utility
-sys_DATA = mini-commander_applet.desktop
+sys_predata = mini-commander_applet.desktop.in
+sys_DATA = $(sys_predata:.desktop.in=.desktop)
+@XML_I18N_MERGE_DESKTOP_RULE@
 
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = mini-commander_applet.gnorba
+
+EXTRA_DIST = $(gnorba_DATA) $(sys_DATA) $(sys_predata) $(bitmaps_DATA)
