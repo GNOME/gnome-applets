@@ -96,6 +96,12 @@ prop_apply (GtkWidget *w, int page, gpointer data)
     load_font(battstat);
     battstat->font_changed=FALSE;
   }
+  if (battstat->fontname)
+    (battstat->percentstyle)->font=gdk_font_load(battstat->fontname);
+  else
+    (battstat->percentstyle)->font=gdk_font_load ("fixed");
+  gtk_widget_set_style (battstat->testpercent, battstat->percentstyle);
+
   battstat->lowbattnotification = (GTK_TOGGLE_BUTTON (battstat->lowbatt_toggle))->active;
   battstat->draintop = (GTK_TOGGLE_BUTTON (battstat->progdir_radio))->active;
   battstat->colors_changed=TRUE;
@@ -119,6 +125,7 @@ prop_apply (GtkWidget *w, int page, gpointer data)
     applet_widget_callback_set_sensitive (APPLET_WIDGET (battstat->applet),
 					  "suspend",
 					  TRUE);
+    gnome_warning_dialog(_("You have chosen to enable the Suspend function. This can potentionally be a security risc."));
   } else {
     applet_widget_callback_set_sensitive (APPLET_WIDGET (battstat->applet),
 					  "suspend",
@@ -284,6 +291,11 @@ prop_cb (AppletWidget *applet, gpointer data)
 
   battstat->testpercent = gtk_label_new ("0%");
   gtk_box_pack_start (GTK_BOX (hbox2), GTK_WIDGET (battstat->testpercent), FALSE, TRUE, 0);
+  if (battstat->fontname)
+    (battstat->percentstyle)->font=gdk_font_load(battstat->fontname);
+  else
+    (battstat->percentstyle)->font=gdk_font_load ("fixed");
+  gtk_widget_set_style (battstat->testpercent, battstat->percentstyle);
 
   battstat->testadj = gtk_adjustment_new(percentage, 0, 100, 1, 1, 0);
   battstat->testhscale = gtk_hscale_new (GTK_ADJUSTMENT (battstat->testadj));

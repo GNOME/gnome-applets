@@ -1446,12 +1446,11 @@ main(int argc, char *argv[])
   battstat->suspend_cmd = FALSE;
 
   init_applet(argc, argv, battstat);
-  load_preferences ( battstat );
-  create_layout ( argc, argv, battstat );
-  load_font( battstat );
-  pixmap_timeout ( battstat );
-  change_orient(NULL, ORIENT_UP, battstat);
-
+  load_preferences(battstat);
+  create_layout(argc, argv, battstat);
+  load_font(battstat);
+  pixmap_timeout(battstat);
+  gtk_signal_emit_by_name(GTK_OBJECT(battstat->applet), "change_pixel_size", battstat, NULL);
   battstat->pixtimer = gtk_timeout_add (1000, pixmap_timeout, battstat);
 
   applet_widget_gtk_main();
