@@ -2351,6 +2351,8 @@ popup_button_pressed (GtkWidget *widget, GdkEventButton *event, Task *t)
 		gtk_signal_connect_object(GTK_OBJECT(widget),"destroy",
 					  GTK_SIGNAL_FUNC(gtk_widget_destroy),
 					  GTK_OBJECT(popup));
+
+		gtk_object_set_data(GTK_OBJECT(widget),"popup",popup);
 	}
 	gnome_popup_menu_do_popup (popup, NULL, NULL, event, NULL);
 
