@@ -53,7 +53,7 @@ struct clock_applet_t{
 
 GtkWidget		*applet;
 static GtkWidget 	*props_window = NULL;
-struct clock_applet_t 	clk;
+struct clock_applet_t 	clk = {0};
 struct clock_props_t	props_tmp;
 
 static int applet_width = APPLET_WIDTH;
@@ -117,7 +117,19 @@ static int properties_save (char *path)
 
 static void props_ok (GtkWidget *wid, int page, gpointer *data)
 {
-    memcpy (&clk.props, &props_tmp, sizeof(struct clock_props_t));
+    if(page != -1)
+        return;
+
+    g_free(clk.props.bg);
+    clk.props.bg = g_strdup(props_tmp.bg);
+    g_free(clk.props.hour);
+    clk.props.hour = g_strdup(props_tmp.hour);
+    g_free(clk.props.min);
+    clk.props.min = g_strdup(props_tmp.min);
+    g_free(clk.props.sec);
+    clk.props.sec = g_strdup(props_tmp.sec);
+    clk.props.secneedle = props_tmp.secneedle;
+
     applet_widget_sync_config (APPLET_WIDGET(applet));
     set_colors(clk.area);
     update_clock (NULL);
@@ -130,6 +142,15 @@ static void props_ok (GtkWidget *wid, int page, gpointer *data)
 
 static void props_cancel (GtkWidget *widget, GtkWidget **win)
 {
+    g_free(props_tmp.bg);
+    props_tmp.bg = NULL;
+    g_free(props_tmp.hour);
+    props_tmp.hour = NULL;
+    g_free(props_tmp.min);
+    props_tmp.min = NULL;
+    g_free(props_tmp.sec);
+    props_tmp.sec = NULL;
+
     *win = NULL;
     return;
     widget = NULL;
@@ -139,11 +160,10 @@ static void props_cancel (GtkWidget *widget, GtkWidget **win)
 static void bg_color_changed (GnomeColorPicker *cp)
 {
     guint8 r, g, b;
-    gchar  buf[24];
 		
     gnome_color_picker_get_i8 (cp, &r, &g, &b, NULL);
-    sprintf (buf, "#%02x%02x%02x", r, g, b);
-    strcpy (props_tmp.bg, buf);
+    g_free(props_tmp.bg);
+    props_tmp.bg = g_strdup_printf ("#%02x%02x%02x", r, g, b);
     gnome_property_box_changed (GNOME_PROPERTY_BOX(props_window));
 }
 
@@ -151,11 +171,10 @@ static void bg_color_changed (GnomeColorPicker *cp)
 static void hour_color_changed (GnomeColorPicker *cp)
 {
     guint8 r, g, b;
-    gchar  buf[24];
 		
     gnome_color_picker_get_i8 (cp, &r, &g, &b, NULL);
-    sprintf (buf, "#%02x%02x%02x", r, g, b);
-    strcpy (props_tmp.hour, buf);
+    g_free(props_tmp.hour);
+    props_tmp.hour = g_strdup_printf ("#%02x%02x%02x", r, g, b);
     gnome_property_box_changed (GNOME_PROPERTY_BOX(props_window));
 }
 
@@ -163,11 +182,10 @@ static void hour_color_changed (GnomeColorPicker *cp)
 static void min_color_changed (GnomeColorPicker *cp)
 {
     guint8 r, g, b;
-    gchar  buf[24];
 		
     gnome_color_picker_get_i8 (cp, &r, &g, &b, NULL);
-    sprintf (buf, "#%02x%02x%02x", r, g, b);
-    strcpy (props_tmp.min, buf);
+    g_free(props_tmp.min);
+    props_tmp.min = g_strdup_printf ("#%02x%02x%02x", r, g, b);
     gnome_property_box_changed (GNOME_PROPERTY_BOX(props_window));
 }
 
@@ -175,11 +193,10 @@ static void min_color_changed (GnomeColorPicker *cp)
 static void sec_color_changed (GnomeColorPicker *cp)
 {
     guint8 r, g, b;
-    gchar  buf[24];
 		
     gnome_color_picker_get_i8 (cp, &r, &g, &b, NULL);
-    sprintf (buf, "#%02x%02x%02x", r, g, b);
-    strcpy (props_tmp.sec, buf);
+    g_free(props_tmp.sec);
+    props_tmp.sec = g_strdup_printf ("#%02x%02x%02x", r, g, b);
     gnome_property_box_changed (GNOME_PROPERTY_BOX(props_window));
 }
 
@@ -208,6 +225,12 @@ static void cb_properties (AppletWidget *applet, gpointer data)
     GtkWidget *colorpicker;
     guint     r, g, b;
 
+    if (props_window)
+    {
+       gdk_window_raise (props_window->window);
+       return;
+    }
+
     /* init temporal properties */
     props_tmp.secneedle = clk.props.secneedle;
     props_tmp.bg = g_strdup (clk.props.bg);
@@ -217,12 +240,6 @@ static void cb_properties (AppletWidget *applet, gpointer data)
 
     help_entry.name = gnome_app_id;
 
-    if (props_window)
-    {
-       gdk_window_raise (props_window->window);
-       return;
-    }
-																			 
     /* Window and frame for settings */
     props_window = gnome_property_box_new ();
     gtk_window_set_title (GTK_WINDOW(&GNOME_PROPERTY_BOX(props_window)->dialog.window),
@@ -555,15 +572,15 @@ static void set_colors (GtkWidget *widget)
 
     cc = gdk_color_context_new (gtk_widget_get_visual(widget),
                                 gtk_widget_get_colormap(widget));
-    clk.gc[0] = gdk_gc_new (widget->window);
-    clk.gc[1] = gdk_gc_new (widget->window);
-    clk.gc[2] = gdk_gc_new (widget->window);
-    clk.gc[3] = gdk_gc_new (widget->window);
+    if(!clk.gc[0]) clk.gc[0] = gdk_gc_new (widget->window);
+    if(!clk.gc[1]) clk.gc[1] = gdk_gc_new (widget->window);
+    if(!clk.gc[2]) clk.gc[2] = gdk_gc_new (widget->window);
+    if(!clk.gc[3]) clk.gc[3] = gdk_gc_new (widget->window);
     set_gc_color (cc, 0);
     set_gc_color (cc, 1);
     set_gc_color (cc, 2);
     set_gc_color (cc, 3);
-    g_free (cc);
+    gdk_color_context_free (cc);
 }
 
 
