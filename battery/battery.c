@@ -356,7 +356,7 @@ battery_set_mode(BatteryData * bat)
 
 } /* battery_set_mode */
 
-void
+static void
 battery_change_mode(BatteryData * bat)
 {
   if (!strcmp(bat->mode_string, BATTERY_MODE_GRAPH))
@@ -367,7 +367,7 @@ battery_change_mode(BatteryData * bat)
   battery_set_mode(bat);
 } /* battery_change_mode */
 
-gint
+static gint
 battery_button_press_handler(GtkWidget * w, GdkEventButton * ev,
 			     gpointer data)
 {

@@ -1,7 +1,7 @@
 #include "asclock.h"
 #include <stdio.h>
 
-gint 
+static gint 
 cmp (gconstpointer a, gconstpointer b)
 {
   location one = *((location *)a);

@@ -92,11 +92,11 @@ battery_properties_window(AppletWidget * applet, gpointer data)
   gnome_property_box_append_page (GNOME_PROPERTY_BOX (bat->prop_win), t,
 				  gtk_label_new ("Graph Properties"));
 
-  bat->graph_ac_on_color_sel = gnome_color_picker_new();
+  bat->graph_ac_on_color_sel = GNOME_COLOR_PICKER(gnome_color_picker_new());
   gtk_signal_connect(GTK_OBJECT(bat->graph_ac_on_color_sel), "color_set",
 		     GTK_SIGNAL_FUNC(value_changed_cb), bat );
 
-  bat->graph_ac_off_color_sel = gnome_color_picker_new();
+  bat->graph_ac_off_color_sel = GNOME_COLOR_PICKER(gnome_color_picker_new());
   gtk_signal_connect(GTK_OBJECT(bat->graph_ac_off_color_sel), "color_set",
 		     GTK_SIGNAL_FUNC(value_changed_cb), bat );
 
@@ -157,11 +157,11 @@ battery_properties_window(AppletWidget * applet, gpointer data)
   gnome_property_box_append_page (GNOME_PROPERTY_BOX (bat->prop_win), t,
 				  gtk_label_new ("Readout Properties"));
 
-  bat->readout_ac_on_color_sel = gnome_color_picker_new();
+  bat->readout_ac_on_color_sel = GNOME_COLOR_PICKER(gnome_color_picker_new());
   gtk_signal_connect(GTK_OBJECT(bat->readout_ac_on_color_sel), "color_set",
 		     GTK_SIGNAL_FUNC(value_changed_cb), bat );
 
-  bat->readout_ac_off_color_sel = gnome_color_picker_new();
+  bat->readout_ac_off_color_sel = GNOME_COLOR_PICKER(gnome_color_picker_new());
   gtk_signal_connect(GTK_OBJECT(bat->readout_ac_off_color_sel), "color_set",
 		     GTK_SIGNAL_FUNC(value_changed_cb), bat );
 

@@ -6,7 +6,6 @@
 #include "asclock.h"
 
 /* prototypes */
-void enum_timezones(GtkWidget *clist );
 void location_selected(GtkWidget *list, gint row, gint column, GdkEventButton *event, gpointer data);
 
 
@@ -15,10 +14,10 @@ GtkWidget *pic = NULL;
 void about_dialog(AppletWidget *applet, gpointer data)
 {
   GtkWidget *about;
-  gchar *authors[] = {
-       "Beat Christen (beat@longstreet.ch)",
-                NULL
-                };
+  static const gchar *authors[] = {
+    "Beat Christen (beat@longstreet.ch)",
+    NULL
+  };
 
   about = gnome_about_new (_("Afterstep Clock Applet"), "1.2",
                         "(C) 1998 the Free Software Foundation",
@@ -151,6 +150,6 @@ void properties_dialog(AppletWidget *applet, gpointer data)
 */
   gtk_widget_show_all(pwin);
 
-  enum_timezones(GTK_CLIST(list));
+  enum_timezones(list);
 } 
 

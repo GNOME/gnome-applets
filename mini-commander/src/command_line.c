@@ -164,7 +164,7 @@ showHistory_signal(GtkWidget *widget, gpointer data)
     return FALSE;  
 }
 
-int 
+static int 
 fileBrowserOK_signal(GtkWidget *widget, gpointer fileSelect)
 {
     

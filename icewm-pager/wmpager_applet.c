@@ -19,15 +19,15 @@
 #include "WinMgr.h"
 #include <applet-widget.h>
 
-void   setup();
+static void   setup(void);
 void   switch_cb(GtkWidget *widget, gpointer data);
 void   about_cb(AppletWidget *widget, gpointer data);
 void   properties_dialog(AppletWidget *widget, gpointer data);
 void   change_workspace(gint ws);
 void   make_sticky(GtkWidget *widget, gpointer data);
 gint   check_workspace(gpointer data);
-GList* get_workspaces();
-gint   get_current_workspace();
+static GList* get_workspaces(void);
+static gint   get_current_workspace(void);
 
 GtkWidget *applet;
 GList *workspace_list, *button_list;
@@ -99,7 +99,7 @@ int main(int argc, char *argv[])
 
 
 
-GList *get_workspaces()
+static GList *get_workspaces(void)
 {
     GList *tmp_list;
     XTextProperty tp;
@@ -120,7 +120,7 @@ GList *get_workspaces()
     return tmp_list;
 }
 
-void setup()
+static void setup()
 {
     GtkWidget *frame;
     GtkWidget *hb, *vb;
@@ -255,7 +255,7 @@ void switch_cb(GtkWidget *widget, gpointer data)
 }
 
 
-gint get_current_workspace()
+static gint get_current_workspace(void)
 {
     Atom type;
     int format;

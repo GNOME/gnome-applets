@@ -45,7 +45,7 @@
 
 diskusage_properties props;
 
-static gint update_values ();
+static gint update_values (void);
 
 DiskusageInfo   summary_info;
 
@@ -115,7 +115,7 @@ int draw_h(void)
 
 	/* Free Space text */		        
 	g_snprintf (avail_buf2, sizeof(avail_buf2), 
-		    "av: %u\0", summary_info.filesystems[sel_fs].sizeinfo[2]);
+		    "av: %u", summary_info.filesystems[sel_fs].sizeinfo[2]);
 
 
 
@@ -216,7 +216,7 @@ int draw_v(void)
 
 
 	/* Free Space text, part1*/		        
-	g_snprintf (avail_buf2,sizeof(avail_buf2),"av: \0");
+	g_snprintf (avail_buf2,sizeof(avail_buf2),"av: ");
 
 
 	
@@ -250,7 +250,7 @@ int draw_v(void)
 
 
 	/* Free Space text, part2*/		        
-	g_snprintf (avail_buf2,sizeof(avail_buf2),"%u\0", summary_info.filesystems[sel_fs].sizeinfo[2]);
+	g_snprintf (avail_buf2,sizeof(avail_buf2),"%u", summary_info.filesystems[sel_fs].sizeinfo[2]);
 
 	/* draw text strings 2nd part*/
 	gdk_draw_string(pixmap, my_font, gc,
@@ -401,7 +401,7 @@ applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
 /*
  * read new filesystem-info, and call draw
  */
-static gint update_values ()
+static gint update_values (void)
 {
 
 #ifdef DU_DEBUG

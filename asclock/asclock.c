@@ -137,7 +137,8 @@ int main( int argc, char *argv[] )
     gtk_widget_realize(my.display_area);
 
     /* now for the pixmap from gdk */
-    load_pixmaps(my.display_area, my.display_area->style->fg_gc[GTK_WIDGET_STATE(my.display_area)]);
+    load_pixmaps(my.display_area,
+		 my.display_area->style);
 
     my.pixmap = gdk_pixmap_new(my.display_area->window, 64, 64, -1);
 

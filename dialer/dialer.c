@@ -17,7 +17,7 @@
 GtkWidget *applet;
 GtkWidget *label;
 
-int dialer_stop(GtkWidget * w, gpointer data)
+static int dialer_stop(GtkWidget * w, gpointer data)
 {
 	/* Execute ppp-off (or 'killall pppd', take your pick, when i get Properties
 					 working ;-)*/
@@ -26,7 +26,7 @@ int dialer_stop(GtkWidget * w, gpointer data)
 	return 0;
 }
 
-int dialer_start(GtkWidget * w, gpointer data)
+static int dialer_start(GtkWidget * w, gpointer data)
 {
 	/* Execute ppp-up */
 	system("/etc/ppp/ppp-on");
@@ -35,7 +35,7 @@ int dialer_start(GtkWidget * w, gpointer data)
 }
 
 
-void about_cb (AppletWidget *widget, gpointer data)
+static void about_cb (AppletWidget *widget, gpointer data)
 {
 	GtkWidget *about;
 	static const gchar *authors[] = {

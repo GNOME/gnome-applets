@@ -1,6 +1,8 @@
 #include <gtk/gtk.h>
 #include <time.h>
 
+#include "asclock.h"
+
 extern GdkPixmap *month_pixmap;
 extern GdkPixmap *led_pixmap;
 extern GdkPixmap *weekday_pixmap;

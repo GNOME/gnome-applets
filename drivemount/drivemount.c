@@ -510,7 +510,7 @@ int main (int argc, char *argv[])
 			   NULL, 0, NULL);
 	applet_factory_new("drivemount_applet_factory", NULL, applet_start_new_applet);
 
-	goad_id = goad_server_activation_id();
+	goad_id = (char *)goad_server_activation_id();
 
 	if(goad_id && strcmp(goad_id, "drivemount_applet")) {
 		applet = applet_widget_new("drivemount_applet");

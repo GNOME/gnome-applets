@@ -16,4 +16,7 @@ void led_stop(GtkWidget * time, GtkWidget * track);
 void led_pause(GtkWidget * time, int min, int sec, GtkWidget * track,
 	       int trackno);
 void led_nodisc(GtkWidget * time, GtkWidget * track);
+
+void led_paused(GtkWidget * time, int min, int sec, GtkWidget * track, int trackno);
+
 #endif

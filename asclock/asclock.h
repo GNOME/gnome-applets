@@ -36,4 +36,7 @@ void TwentyFour(GdkPixmap *p, GdkGC *gc , struct tm *clk);
 void about_dialog(AppletWidget *applet, gpointer data);
 void properties_dialog(AppletWidget *applet, gpointer data);
 
+/* timezone.c */
+void enum_timezones(GtkWidget *clist );
+
 #endif

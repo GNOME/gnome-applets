@@ -46,12 +46,12 @@ static WebControl WC = {
 
 /*the most important dialog in the whole application*/
 /* shamelessly jacked from the fish applet.   --Garrett */
-void
+static void
 about_cb (AppletWidget *widget, gpointer data)
 {
 	GtkWidget *about;
-	static const gchar *authors[2] = {"Garrett Smith <gsmith@serv.net>", NULL};
-	const gchar * author_format = _("%s the Fish");
+	static const gchar *authors[2] =
+	{"Garrett Smith <gsmith@serv.net>", NULL};
 
 	about = gnome_about_new (_("The Web Browser Controller"), "0.1",
 			"(C) 1998 the Free Software Foundation",
@@ -67,17 +67,17 @@ about_cb (AppletWidget *widget, gpointer data)
 }
 
 
-void check_box_toggled(GtkWidget *check, int *data)
+static void check_box_toggled(GtkWidget *check, int *data)
 {
 	*data = GTK_TOGGLE_BUTTON(check)->active;
 }
 
-void clear_callback(GtkWidget *button, GtkWidget *input)
+static void clear_callback(GtkWidget *button, GtkWidget *input)
 {
   gtk_entry_set_text(GTK_ENTRY(input), "");
 }
 
-void goto_callback(GtkWidget *entry, GtkWidget *check)
+static void goto_callback(GtkWidget *entry, GtkWidget *check)
 {
 	gchar *url;
 	gchar *command;
@@ -108,7 +108,8 @@ void goto_callback(GtkWidget *entry, GtkWidget *check)
         }
 }
 
-void create_widget() {
+static void create_widget(void)
+{
 	GtkWidget *input;
 	GtkWidget *topbox, *bottombox, *vbox;
 	
@@ -191,7 +192,7 @@ apply_cb(GnomePropertyBox * pb, gint page, gpointer data)
 	gtk_widget_queue_resize(WC.applet);
 }
 
-void
+static void
 properties_cb (AppletWidget *widget, gpointer data)
 {
 	GtkWidget * pb;

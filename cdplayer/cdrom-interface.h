@@ -68,4 +68,5 @@ int cdrom_rewind(cdrom_device_t cdp);
 
 int cdrom_track_length(cdrom_device_t cdp, int track,
 		       /* out */ cdrom_msf_t * length);
+int cdrom_get_status(cdrom_device_t cdp, cdrom_device_status_t * stat);
 #endif

@@ -18,6 +18,7 @@
 #include <gdk/gdkx.h>
 #include <applet-widget.h>
 
+#include "netload.h"
 #include "linux-proc.h"
 #include "properties.h"
 
@@ -35,7 +36,7 @@ int timer_index=-1;
  * Use a circular buffer for storing the values.
  */
 
-int draw(void)
+static int draw(void)
 {
 	static gint width = 0;
 	static unsigned long int	*data = NULL;
@@ -177,7 +178,7 @@ static gint netload_expose(GtkWidget *widget, GdkEventExpose *event)
         return FALSE;
 }
 
-GtkWidget *netload_new( void )
+static GtkWidget *netload_new( void )
 {
 	GtkWidget *frame, *box;
 
@@ -226,7 +227,7 @@ void setup_colors(void)
         gdk_color_alloc(colormap, &bcolor);
 }
 	        
-void create_gc(void)
+static void create_gc(void)
 {
         gc = gdk_gc_new( disp->window );
         gdk_gc_copy( gc, disp->style->white_gc );
@@ -238,7 +239,7 @@ static gint applet_save_session(GtkWidget *widget, char *privcfgpath, char *glob
 	return FALSE;
 }
 
-void
+static void
 error_close_cb(GtkWidget *widget, void *data)
 {
   applet_widget_remove(APPLET_WIDGET(widget));
@@ -286,10 +287,10 @@ static void
 about_cb (AppletWidget *widget, gpointer data)
 {
 	GtkWidget *about;
-	gchar *authors[] = {
-		"Stephen Norris (srn@fn.com.au)",
+	static const gchar *authors[] = {
+	  "Stephen Norris (srn@fn.com.au)",
 	  NULL
-	  };
+	};
 
 	about = gnome_about_new (_("The GNOME Network Load Applet"), "0.0.3",
 			"(C) 1998 Stephen Norris",

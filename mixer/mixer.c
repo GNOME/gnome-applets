@@ -218,7 +218,7 @@ mixer_timeout_callback(gpointer data)
 	return 1;
 }
 
-void
+static void
 mixer_set_color(MixerWidget* mx)
 {
 	GdkColormap* colormap;

@@ -46,7 +46,7 @@ static void autofs_friendly_cb(GtkWidget *w, gpointer data)
 	gnome_property_box_changed(GNOME_PROPERTY_BOX(dd->propwindow));
 }
 
-void pixmap_floppy_cb(GtkWidget *widget, gpointer data)
+static void pixmap_floppy_cb(GtkWidget *widget, gpointer data)
 {
 	DriveData *dd = data;
 	dd->prop_device_pixmap = 0;
