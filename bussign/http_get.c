@@ -104,7 +104,7 @@ http_get_to_file(gchar *a_host, gint a_port, gchar *a_resource, FILE *a_file)
     }
   fflush(a_file);
   close(l_socket);
-  fprintf(stderr, "Resource recieved: %d bytes\n", l_return);
+  /* fprintf(stderr, "Resource recieved: %d bytes\n", l_return); */
  ec:
   return l_return;
 }

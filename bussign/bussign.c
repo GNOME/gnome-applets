@@ -1,22 +1,30 @@
 #include <gnome.h>
 #include "applet-lib.h"
 #include "applet-widget.h"
+#include "bussign.h"
 
-#define IMAGE_FILENAME "test_image"
-
-typedef struct _bussign_properties bussign_properties;
-
-struct _bussign_properties
+static const bussign_properties_t sg_properties_defaults =
 {
-  gchar *url;
+  "www1.netscape.com",
+  "/fishcam/livefishcamsmall.cgi?livesigncamsmall",
+  80,
+  ".bussign_image"
 };
 
-static const bussign_properties sg_defaults =
+static bussign_properties_t sg_properties =
 {
-  "http://www1.netscape.com/fishcam/livefishcamsmall.cgi?livesigncamsmall"
+  NULL,
+  NULL,
+  0,
+  NULL
 };
 
-static bussign_properties sg_properties = { NULL };
+/* globals give me the willies. */
+
+static GdkImlibImage *sg_bus = NULL;
+static GtkWidget     *sg_pixmap = NULL;
+
+/* some prototypes */
 
 static GtkWidget *
 create_bussign_widget(GtkWidget *a_parent);
@@ -37,72 +45,16 @@ static void
 about_window(AppletWidget *a_widget, gpointer a_data);
 
 static void
-properties_window(AppletWidget *a_widget, gpointer a_data);
+properties_window(AppletWidget *a_applet, gpointer a_data);
+
+void
+load_properties(char *a_path, bussign_properties_t *a_properties);
+
+void
+save_properties(char *a_path, bussign_properties_t *a_properties);
 
 static void
-load_properties(char *a_cfgpath);
-
-static void
-apply_properties(GnomePropertyBox *a_property_box, gint a_page, gpointer a_data);
-
-static gint
-session_save(GtkWidget *a_widget,
-	     const char *a_cfgpath,
-	     const char *a_global_cfgpath);
-
-static void
-bussign_refresh_widget_dummy(AppletWidget *a_applet, gpointer a_data)
-{
-  bussign_refresh(NULL);
-}
-
-static gint
-session_save(GtkWidget *a_widget,
-	     const char *a_cfgpath,
-	     const char *a_global_cfgpath)
-{
-  char     *l_query = NULL;
-  
-  l_query = g_copy_strings(a_cfgpath, "url", NULL);
-  gnome_config_set_string(l_query, sg_properties.url);
-  g_free(l_query);
-  gnome_config_sync();
-  gnome_config_drop_all();
-  return FALSE;
-}
-
-static void
-apply_properties(GnomePropertyBox *a_property_box, gint a_page, gpointer a_data)
-{
-  gchar *l_new_url = NULL;
-
-  if (a_page != -1)
-    return;
-  l_new_url = gtk_entry_get_text(GTK_ENTRY(a_data));
-  if (l_new_url)
-    {
-      g_free(sg_properties.url);
-      sg_properties.url = g_strdup(l_new_url);
-    }
-}
-
-static void
-load_properties(char *a_cfgpath)
-{
-  char *l_query = NULL;
-
-  if (sg_properties.url)
-    g_free(sg_properties.url);
-  l_query = g_copy_strings(a_cfgpath, "bussign", NULL);
-  sg_properties.url = gnome_config_get_string(l_query);
-  g_free(l_query);
-  if (sg_properties.url == NULL)
-    sg_properties.url = g_strdup(sg_defaults.url);
-  return;
-}
-
-static GdkImlibImage *sg_bus = NULL;
-static GtkWidget     *sg_pixmap = NULL;
+bussign_apply_properties(GnomePropertyBox *a_property_box, gint a_page, gpointer a_data);
 
 int main(int argc, char **argv)
 {
@@ -112,14 +64,13 @@ int main(int argc, char **argv)
   /* set up the usual stuff */
   panel_corba_register_arguments();
   gnome_init("bussign_applet", NULL, argc, argv, 0, NULL);
-  gtk_widget_push_visual(gdk_imlib_get_visual());
-  gtk_widget_push_colormap(gdk_imlib_get_colormap());
   l_applet = applet_widget_new(argv[0]);
   if (!l_applet)
     g_error("Can't create applet!\n");
-  gtk_widget_realize(l_applet);
 
-  load_properties(APPLET_WIDGET(l_applet)->cfgpath);
+  load_properties(APPLET_WIDGET(l_applet)->cfgpath, &sg_properties);
+
+  gtk_widget_realize(l_applet);
 
   /* set up the bussign widget */
   l_bussign = create_bussign_widget(l_applet);
@@ -133,10 +84,7 @@ int main(int argc, char **argv)
   gtk_signal_connect(GTK_OBJECT(l_applet), "destroy",
 		     GTK_SIGNAL_FUNC(destroy_applet),
 		     NULL);
-  /* save the session*/
-  gtk_signal_connect(GTK_OBJECT(l_applet), "session_save",
-		     GTK_SIGNAL_FUNC(session_save),
-		     NULL);
+
   /* attach the about window */
   applet_widget_register_callback(APPLET_WIDGET(l_applet),
 				  "about",
@@ -144,12 +92,13 @@ int main(int argc, char **argv)
 				  about_window,
 				  NULL);
 
-  /* attach the properties dialog */
+  /* attach the properties button */
   applet_widget_register_callback(APPLET_WIDGET(l_applet),
 				  "properties",
 				  _("Properties..."),
 				  properties_window,
 				  NULL);
+
   /* attach a refresh button */
   applet_widget_register_callback(APPLET_WIDGET(l_applet),
 				  "refresh",
@@ -162,12 +111,26 @@ int main(int argc, char **argv)
   return 0;
 }
 
+static void
+bussign_apply_changes(GnomePropertyBox *a_property_box, gint a_page, gpointer a_data)
+{
+
+}
+
+static void
+bussign_refresh_widget_dummy(AppletWidget *a_applet, gpointer a_data)
+{
+  bussign_refresh(NULL);
+}
+
 static GtkWidget *
 create_bussign_widget(GtkWidget *a_parent)
 {
   GtkWidget              *l_frame = NULL;
   GtkStyle               *l_style = NULL;
 
+  gtk_widget_push_visual(gdk_imlib_get_visual());
+  gtk_widget_push_colormap(gdk_imlib_get_colormap());
   l_style = gtk_widget_get_style(a_parent);
   
   /* refresh the image */
@@ -194,6 +157,8 @@ create_bussign_widget(GtkWidget *a_parent)
   gtk_frame_set_shadow_type(GTK_FRAME(l_frame), GTK_SHADOW_IN);
   /* add the pixmap to the frame */
   gtk_container_add(GTK_CONTAINER(l_frame), sg_pixmap);
+  gtk_widget_pop_colormap();
+  gtk_widget_pop_visual();
   return l_frame;
 }
   
@@ -224,24 +189,9 @@ refresh_imagefile(void)
     }
   fclose(l_file);
   /*
-<<<<<<< bussign.c
-    l_image_location = g_malloc(strlen(sg_properties.url) + 5 + 2);
-    strcpy(l_image_location, "wget ");
-    strcat(l_image_location, sg_properties.url);
-=======
     l_return = system("wget -q http://www1.netscape.com/fishcam/livefishcamsmall.cgi?livesigncamsmall");
->>>>>>> 1.5
   */
-<<<<<<< bussign.c
-  
-  unlink (IMAGE_FILENAME);
-  l_return = system("wget -q http://www1.netscape.com/fishcam/livefishcamsmall.cgi?livesigncamsmall");
-  /* 
-     g_free(l_image_location);
-  */
-=======
  ec:
->>>>>>> 1.5
   return l_return;
 }
 
@@ -277,7 +227,7 @@ about_window(AppletWidget *a_widget, gpointer a_data)
   l_author[0] = "Christopher Blizzard";
   l_author[1] = NULL;
 
-  l_about = gnome_about_new ( _("The Bus Sign Applet", "1.0"),
+  l_about = gnome_about_new ( _("The Bus Sign Applet"), "1.0",
 			      _("(c) 1998 the Free Software Foundation"),
 			      l_author,
 			      _("This applet is a total waste of time. "
@@ -289,41 +239,103 @@ about_window(AppletWidget *a_widget, gpointer a_data)
   return;
 }
 
-static void
-properties_window(AppletWidget *a_widget, gpointer a_data)
+void
+load_properties(char *a_path, bussign_properties_t *a_properties)
 {
-  GtkWidget       *l_property_box = NULL;
-  GtkWidget       *l_vbox = NULL;
-  GtkWidget       *l_entry = NULL;
-  GtkWidget       *l_label = NULL;
+  gnome_config_push_prefix(a_path);
+  sg_properties.resource = gnome_config_get_string("resource=/fishcam/livefishcamsmall.cgi?livesigncamsmal");
+  sg_properties.host     = gnome_config_get_string("host=www1.netscape.com");
+  sg_properties.port     = gnome_config_get_int("port=80");
+  sg_properties.file     = gnome_config_get_string("file=.bussign_image");
+  gnome_config_pop_prefix();
+}
 
-  /* new box.. */
+void
+save_properties(char *a_path, bussign_properties_t *a_properties)
+{
+  gnome_config_push_prefix(a_path);
+  gnome_config_set_string("resource", sg_properties.resource);
+  gnome_config_set_string("host", sg_properties.host);
+  gnome_config_set_int("port", sg_properties.port);
+  gnome_config_set_string("file", sg_properties.file);
+  gnome_config_pop_prefix();
+  gnome_config_sync();
+  gnome_config_drop_all();
+}
+
+static void
+properties_window(AppletWidget *a_applet, gpointer a_data)
+{
+  GtkWidget *l_property_box = NULL;
+  GtkWidget *l_label = NULL;
+  GtkWidget *l_vbox = NULL;
+  GtkWidget *l_hbox = NULL;
+  GtkWidget *l_entry = NULL;
+  char       l_port[20] = "";
+
   l_property_box = gnome_property_box_new();
-  /* set the title */
-  gtk_window_set_title(GTK_WINDOW(l_property_box), _("GNOME Bus Sign Applet Properties"));
-  /* set up a new vbox */
+  gtk_window_set_title(GTK_WINDOW(l_property_box), "Bussign Settings");
   l_vbox = gtk_vbox_new(GNOME_PAD, FALSE);
-  gtk_container_border_width(GTK_CONTAINER(l_vbox), GNOME_PAD);
-  /* set up the labels and entries */
-  l_label = gtk_label_new("URL: ");
+
+  /* begin host entry */
+  l_hbox = gtk_hbox_new(GNOME_PAD, FALSE);
+  gtk_container_border_width(GTK_CONTAINER(l_hbox), GNOME_PAD);
+  l_label = gtk_label_new("Host:");
   l_entry = gtk_entry_new();
-  /* get the old text */
-  gtk_entry_set_text(GTK_ENTRY(l_entry), sg_properties.url);
-  /* if it changes */
+  gtk_entry_set_text(GTK_ENTRY(l_entry), sg_properties.host);
   gtk_signal_connect_object(GTK_OBJECT(l_entry), "changed",
 			    GTK_SIGNAL_FUNC(gnome_property_box_changed),
 			    GTK_OBJECT(l_property_box));
-  /* pack everything in there */
-  gtk_box_pack_start(GTK_BOX(l_vbox), l_label, FALSE, FALSE, GNOME_PAD);
-  gtk_box_pack_start(GTK_BOX(l_vbox), l_entry, TRUE, TRUE, GNOME_PAD);
+  gtk_box_pack_start(GTK_BOX(l_hbox), l_label, FALSE, FALSE, GNOME_PAD);
+  gtk_box_pack_start(GTK_BOX(l_hbox), l_entry, TRUE, TRUE, GNOME_PAD);
+  gtk_box_pack_start(GTK_BOX(l_vbox), l_hbox, FALSE, FALSE, GNOME_PAD);
+
+  /* begin the resource entry */
+  l_hbox = gtk_hbox_new(GNOME_PAD, FALSE);
+  gtk_container_border_width(GTK_CONTAINER(l_hbox), GNOME_PAD);
+  l_label = gtk_label_new("Resource:");
+  l_entry = gtk_entry_new();
+  gtk_entry_set_text(GTK_ENTRY(l_entry), sg_properties.resource);
+  gtk_signal_connect_object(GTK_OBJECT(l_entry), "changed",
+			    GTK_SIGNAL_FUNC(gnome_property_box_changed),
+			    GTK_OBJECT(l_property_box));
+  gtk_box_pack_start(GTK_BOX(l_hbox), l_label, FALSE, FALSE, GNOME_PAD);
+  gtk_box_pack_start(GTK_BOX(l_hbox), l_entry, TRUE, TRUE, GNOME_PAD);
+  gtk_box_pack_start(GTK_BOX(l_vbox), l_hbox, FALSE, FALSE, GNOME_PAD);
+
+  /* begin the port entry */
+  l_hbox = gtk_hbox_new(GNOME_PAD, FALSE);
+  gtk_container_border_width(GTK_CONTAINER(l_hbox), GNOME_PAD);
+  l_label = gtk_label_new("Port:");
+  l_entry = gtk_entry_new();
+  sprintf(l_port, "%d", sg_properties.port);
+  gtk_entry_set_text(GTK_ENTRY(l_entry), l_port);
+  gtk_signal_connect_object(GTK_OBJECT(l_entry), "changed",
+			    GTK_SIGNAL_FUNC(gnome_property_box_changed),
+			    GTK_OBJECT(l_property_box));
+  gtk_box_pack_start(GTK_BOX(l_hbox), l_label, FALSE, FALSE, GNOME_PAD);
+  gtk_box_pack_start(GTK_BOX(l_hbox), l_entry, TRUE, TRUE, GNOME_PAD);
+  gtk_box_pack_start(GTK_BOX(l_vbox), l_hbox, FALSE, FALSE, GNOME_PAD);
+
+  /* begin the filename entry */
+  l_hbox = gtk_hbox_new(GNOME_PAD, FALSE);
+  gtk_container_border_width(GTK_CONTAINER(l_hbox), GNOME_PAD);
+  l_label = gtk_label_new("File:");
+  l_entry = gtk_entry_new();
+  gtk_entry_set_text(GTK_ENTRY(l_entry), sg_properties.file);
+  gtk_signal_connect_object(GTK_OBJECT(l_entry), "changed",
+			    GTK_SIGNAL_FUNC(gnome_property_box_changed),
+			    GTK_OBJECT(l_property_box));
+  gtk_box_pack_start(GTK_BOX(l_hbox), l_label, FALSE, FALSE, GNOME_PAD);
+  gtk_box_pack_start(GTK_BOX(l_hbox), l_entry, TRUE, TRUE, GNOME_PAD);
+  gtk_box_pack_start(GTK_BOX(l_vbox), l_hbox, FALSE, FALSE, GNOME_PAD);
+
   gnome_property_box_append_page(GNOME_PROPERTY_BOX(l_property_box), l_vbox,
-				 gtk_label_new("URL"));
-  /* make sure you can apply */
+				 gtk_label_new("Properties"));
   gtk_signal_connect(GTK_OBJECT(l_property_box), "apply",
-		     GTK_SIGNAL_FUNC(apply_properties), l_entry);
-  /* show your gams! */
-  gtk_widget_show_all(l_property_box);
-  return;
-}
-		     
+		     GTK_SIGNAL_FUNC(bussign_apply_changes),
+		     l_entry);
   
+  gtk_widget_show_all(l_property_box);
+
+}
