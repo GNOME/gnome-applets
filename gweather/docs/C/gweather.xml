@@ -192,7 +192,7 @@
          To add <application>&applet;</application> to a panel, right-click on the
          panel to  open the <guimenu>Panel</guimenu> menu, then choose 
          <menuchoice>
-            <guimenu>Add to panel </guimenu> <guisubmenu> Utility </guisubmenu> <guimenuitem>
+            <guimenu>Add to panel </guimenu> <guisubmenu> Accessories </guisubmenu> <guimenuitem>
             &applet;</guimenuitem>
          </menuchoice>
          .
@@ -244,8 +244,8 @@
             </listitem>
             <listitem>
                <para>
-                  Select <guimenuitem>Properties</guimenuitem> from the applet popup
-                  menu. The applet displays the <guilabel>Weather Properties</guilabel> dialog.
+                  Select <guimenuitem>Preferences</guimenuitem> from the applet popup
+                  menu. The applet displays the <guilabel>Weather Preferences</guilabel> dialog.
                   The <guilabel>Location</guilabel> tabbed section contains a list
                   of geographical regions, subregions, and specific locations.
                </para>
@@ -501,11 +501,6 @@
          </listitem>
          <listitem>
             <para>
-               <link linkend="gweather-network">Network</link>
-            </para>
-         </listitem>
-         <listitem>
-            <para>
                <link linkend="gweather-general">General</link>
             </para>
          </listitem>
@@ -519,67 +514,7 @@
             about how to select a location.
          </para>
       </sect2>
-      <sect2 id="gweather-network">
-         <title>Network</title>
-         <variablelist>
-            <varlistentry>
-               <term><guilabel>Use proxy</guilabel> </term>
-               <listitem>
-                  <para>
-                     Select this option if your computer is located behind a firewall
-                     and you need to use a proxy server to access the Internet. 
-                  </para>
-                  <para>
-                     Default: unselected.
-                  </para>
-               </listitem>
-            </varlistentry>
-            <varlistentry>
-               <term><guilabel>Proxy host</guilabel> </term>
-               <listitem>
-                  <para>
-                     Use this text box to specify the proxy address to use to access
-                     the Internet. You must enter the address in the following format
-                     <userinput>http://proxyaddress:portnumber/</userinput>, for
-                     example <userinput>http://www.myproxy.com:80/</userinput>. This
-                     text box is only available if you select the <guilabel>Use proxy</guilabel>
-                     option. 
-                  </para>
-                  <para>
-                     Default: unselected.
-                  </para>
-               </listitem>
-            </varlistentry>
-            <varlistentry>
-               <term><guilabel>Username</guilabel> </term>
-               <listitem>
-                  <para>
-                     Use this text box to type the username required to access the
-                     proxy server if a username is required. This text box is only
-                     available if you select the <guilabel>Use proxy</guilabel> option.
-                     
-                  </para>
-                  <para>
-                     Default: unselected.
-                  </para>
-               </listitem>
-            </varlistentry>
-            <varlistentry>
-               <term><guilabel>Password</guilabel> </term>
-               <listitem>
-                  <para>
-                     Use this text box to type the password required to access the
-                     proxy server if a password is required. This text box is only
-                     available if you select the <guilabel>Use proxy</guilabel> option.
-                     
-                  </para>
-                  <para>
-                     Default: unselected.
-                  </para>
-               </listitem>
-            </varlistentry>
-         </variablelist>
-      </sect2>
+      
       <sect2 id="gweather-general">
          <title>General</title>
          <sect3 id="gweather-general-updates">
@@ -717,25 +652,7 @@
                      </para>
                   </listitem>
                </varlistentry>
-               <varlistentry>
-                  <term><guilabel>Enable detailed forecast</guilabel> </term>
-                  <listitem>
-                     <para>
-                        Select this option to enable the applet to display a more
-                        detailed forecast for the location in the <guilabel>Forecast</guilabel>
-                        tabbed section of the <guilabel>Forecast</guilabel> dialog.
-                        If you select this option, the applet usually displays a
-                        detailed forecast for the next five days if the information
-                        is available from the weather server. If you do not select
-                        this option, the applet usually displays a less detailed
-                        forecast for a larger region that includes your location.
-                        
-                     </para>
-                     <para>
-                        Default: unselected.
-                     </para>
-                  </listitem>
-               </varlistentry>
+               
                <varlistentry>
                   <term><guilabel>Enable radar map</guilabel> </term>
                   <listitem>
@@ -750,6 +667,16 @@
                      </para>
                   </listitem>
                </varlistentry>
+	  <varlistentry>
+	    <term><guilabel>Use custom address for radar map</guilabel></term>
+	    <listitem>
+	      <para>
+		An alternative <acronym>URI</acronym> can be entered in the
+		<guilabel>Address</guilabel> field to be used as the source for
+		the radar map.
+	      </para>
+	    </listitem>
+	  </varlistentry>
             </variablelist>
          </sect3>
       </sect2>
