@@ -1,6 +1,7 @@
 INCLUDES =                                           \
 	-I.			                     \
 	$(WARN_CFLAGS)                               \
+	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"     \
 	$(GNOME_APPLETS_CFLAGS)                                                            
 
 bin_PROGRAMS = gkb-applet-2

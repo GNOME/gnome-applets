@@ -4,12 +4,13 @@ icondir  = $(datadir)/pixmaps
 icon_DATA = panel-menu-icon.png
 
 INCLUDES = \
--DPREFIX=\""$(prefix)"\" \
--DG_LOG_DOMAIN=\"PanelMenu\" \
--DDATADIR=\""$(datadir)"\" \
--DWNCK_I_KNOW_THIS_IS_UNSTABLE \
--I$(top_srcdir) \
-$(PANEL_MENU_CFLAGS)
+	-DPREFIX=\""$(prefix)"\" \
+	-DG_LOG_DOMAIN=\"PanelMenu\" \
+	-DGNOMELOCALEDIR=\""$(datadir)/locale"\" \
+	-DDATADIR=\""$(datadir)"\" \
+	-DWNCK_I_KNOW_THIS_IS_UNSTABLE \
+	-I$(top_srcdir) \
+	$(PANEL_MENU_CFLAGS)
 
 #lib_LTLIBRARIES = libpanel-menu.la
 bin_PROGRAMS = panel-menu-applet
