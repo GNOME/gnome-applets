@@ -408,9 +408,6 @@ directory_load_cb (GnomeVFSAsyncHandle *handle, GnomeVFSResult result,
 			subpath =
 				(gchar *) g_object_get_data (G_OBJECT (parent),
 							     "uri-path");
-			if (subpath)
-			  printf ("Subpath is %s\n", subpath);
-			else printf ("Subpath WAS NULL\n");
 			g_object_set_data (G_OBJECT (parent), "uri-path", NULL);
 			w = GTK_MENU (parent)->parent_menu_item;
 			if (w && g_list_length (parent->children) < 2 &&
@@ -429,8 +426,6 @@ directory_load_cb (GnomeVFSAsyncHandle *handle, GnomeVFSResult result,
 								monitor_path_cb, w);
 
 				if (monitor_result == GNOME_VFS_OK) {
-				  /* g_print ("monitor successfully installed for %s\n",
-				     subpath); */
 					g_object_set_data (G_OBJECT (w), "vfs-monitor", monitor);
 					g_signal_connect (G_OBJECT (w), "destroy",
 							  G_CALLBACK (kill_monitor_cb),

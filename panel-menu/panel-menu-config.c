@@ -82,11 +82,10 @@ panel_menu_config_load_layout (PanelMenu *panel_menu)
 
 		layout = panel_applet_gconf_get_string (panel_menu->applet,
 							"layout", NULL);
-		g_print ("(load-layout) layout is %s\n", layout);
 		retval = TRUE;
 	}
 	if (!layout) {
-		layout = g_strdup ("applications|actions|windows|workspaces");
+		layout = g_strdup ("applications|preferences|actions|windows|workspaces");
 		panel_applet_gconf_set_string (panel_menu->applet,
 					      "layout", layout, NULL);
 	}
@@ -297,7 +296,6 @@ tearoff_visibility_changed (GConfClient *client,
 	key = gconf_entry_get_key (entry);
 	value = gconf_entry_get_value (entry);
 	setting = gconf_value_get_bool (value);
-	g_print ("(tearoff-visiblity-changed) value %d\n", setting);
 	panel_menu->menu_tearoffs = setting;
 	for (cur = panel_menu->entries; cur; cur = cur->next) {
 		PanelMenuEntry *entry;
