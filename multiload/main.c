@@ -35,8 +35,8 @@ static const gchar *swap_texts [2] = {
     N_("Used"), N_("Free")
 };
 
-static const gchar *net_texts [3] = {
-    N_("SLIP"), N_("PPP"), N_("Other"),
+static const gchar *net_texts [4] = {
+    N_("SLIP"), N_("PPP"), N_("ETH"), N_("Other"),
 };
 
 static const gchar *cpu_color_defs [4] = {
@@ -53,8 +53,9 @@ static const gchar *swap_color_defs [4] = {
     "#cfff5fff5fff", "#00008fff0000"
 };
 
-static const gchar *net_color_defs [3] = {
-    "#64009500e0e0", "#d300d300d300", "#ffffffff4fff",
+static const gchar *net_color_defs [4] = {
+    "#64009500e0e0", "#d300d300d300", 
+    "#00008fff0000", "#ffffffff4fff"
 };
 
 
@@ -148,7 +149,7 @@ main (int argc, char **argv)
     multiload_properties.swapload.adj_data [1] = 40;
     multiload_properties.swapload.adj_data [2] = 40;
 
-    multiload_properties.netload.n = 3;
+    multiload_properties.netload.n = 4;
     multiload_properties.netload.name = "netload";
 #ifdef ENABLE_NLS
     {

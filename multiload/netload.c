@@ -43,7 +43,7 @@ make_netload_applet (const gchar *goad_id)
     if (!applet)
 	g_error ("Can't create applet!\n");
 
-    g = load_graph_new (2, N_("Net Load"), &multiload_properties.netload,
+    g = load_graph_new (4, N_("Net Load"), &multiload_properties.netload,
 			multiload_properties.netload.adj_data[0],
 			multiload_properties.netload.adj_data[1],
 			multiload_properties.netload.adj_data[2], GetNet);

@@ -128,12 +128,13 @@ GetSwap (int Maximum, int data [2])
 }
 
 void
-GetNet (int Maximum, int data [3])
+GetNet (int Maximum, int data [4])
 {
 #define SLIP_COUNT	0
 #define PPP_COUNT	1
-#define OTHER_COUNT	2
-#define COUNT_TYPES	3
+#define ETH_COUNT       2
+#define OTHER_COUNT	3
+#define COUNT_TYPES	4
     int fields[4], present[COUNT_TYPES], delta[COUNT_TYPES], i;
     static int ticks, past[COUNT_TYPES];
     static char *netdevfmt;
@@ -191,14 +192,25 @@ GetNet (int Maximum, int data [3])
 	for (cp = buffer; *cp == ' '; cp++)
 	    continue;
 
-	if (cp[0] == 'l' && cp[1] == 'o')	/* skip loopback device */
-	    continue;
-	if (cp[0] == 's' && cp[0] == 'l' && cp[0] == 'i' && cp[0] == 'p')
-	    resp = present + SLIP_COUNT;
-	else if (cp[0] == 'p' && cp[0] == 'p' && cp[0] == 'p')
-	    resp = present + PPP_COUNT;
-	else
-	    resp = present + OTHER_COUNT;
+	resp = present + OTHER_COUNT;
+	switch (cp[0]) {
+	case 'l':		
+		if (cp[1] == 'o')
+			continue;
+		break;
+	case 's':
+		if (!strncmp (cp+1, "lip", 3))
+			resp = present + SLIP_COUNT;
+		break;
+	case 'p':
+		if (!strncmp (cp+1, "pp", 2))
+			resp = present + PPP_COUNT;
+		break;
+	case 'e':
+		if (!strncmp (cp+1, "th", 2))
+			resp = present + ETH_COUNT;
+		break;
+	}
 
 	if ((cp = strchr(buffer, ':')))
 	{
