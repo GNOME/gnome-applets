@@ -33,6 +33,8 @@ G_BEGIN_DECLS
 #define ICON_HEIGHT 10
 #define ICON_WIDTH  40
 
+extern const int icon_list_count;
+
 typedef struct _DriveData DriveData;
 
 struct _DriveData

@@ -29,9 +29,6 @@
 
 #define NEVER_SENSITIVE "never_sensitive"
 
-/* same as in drivemount.c: number of icons to choose from */
-static gint icon_list_count = 7;
-
 typedef struct _ResponseWidgets
 {
 	DriveData *dd;
@@ -110,7 +107,7 @@ properties_load(DriveData *dd)
 		}
 		dd->interval = MAX (dd->interval, 1);
 		dd->device_pixmap = panel_applet_gconf_get_int(PANEL_APPLET(dd->applet), "pixmap", NULL);
-		dd->device_pixmap =MIN (dd->device_pixmap, icon_list_count-1);
+		dd->device_pixmap = MIN (dd->device_pixmap, icon_list_count - 1);
 		dd->scale_applet = panel_applet_gconf_get_bool(PANEL_APPLET(dd->applet), "scale", NULL);
 		dd->auto_eject = panel_applet_gconf_get_bool(PANEL_APPLET(dd->applet), "auto_eject", NULL);
 		dd->mount_point = panel_applet_gconf_get_string(PANEL_APPLET(dd->applet), "mount_point", NULL);
