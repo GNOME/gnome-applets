@@ -265,6 +265,7 @@ properties_cb (BonoboUIComponent *uic,
         gtk_dialog_set_default_response(GTK_DIALOG (pbox), GTK_RESPONSE_CLOSE);
         gtk_dialog_set_has_separator (GTK_DIALOG (pbox), FALSE);
         gtk_container_set_border_width (GTK_CONTAINER (pbox), 5);
+	gtk_box_set_spacing (GTK_BOX (GTK_DIALOG (pbox)->vbox), 2);
 
         g_signal_connect (pbox, "response",
 			  G_CALLBACK (presponse_cb),
