@@ -1089,8 +1089,8 @@ after_mail_check (MailCheck *mc)
 		}
 		else {
 			if (mc->unreadmail) {
-				plural1 = g_strdup(ngettext ("%d unread", "%d unread",  mc->unreadmail));
-				plural2 = g_strdup(ngettext ("%d message", "%d messages", mc->totalmail));
+				plural1 = g_strdup_printf(ngettext ("%d unread", "%d unread",  mc->unreadmail), mc->unreadmail);
+				plural2 = g_strdup_printf(ngettext ("%d message", "%d messages", mc->totalmail), mc->totalmail);
 
 				/* translators: this is of the form "%d unread/%d messages" */
 				text = g_strdup_printf(_("%s/%s"), plural1, plural2);
