@@ -35,6 +35,8 @@
 #include <panel-applet-gconf.h>
 #include <glade/glade.h>
 
+#include <egg-screen-help.h>
+
 #define CFG_DEVICE "eth0"
 #define CFG_UPDATE_INTERVAL 2
 
@@ -87,12 +89,17 @@ static void show_warning_dialog (gchar*,...);
 static int wireless_applet_timeout_handler (WirelessApplet *applet);
 static void wireless_applet_properties_dialog (BonoboUIComponent *uic,
 		WirelessApplet *applet);
+static void wireless_applet_help_cb (BonoboUIComponent *uic,
+		WirelessApplet *applet);
 static void wireless_applet_about_cb (BonoboUIComponent *uic,
 		WirelessApplet *applet);
+static void prefs_response_cb (GtkDialog *dialog, gint response, gpointer data);
 
 static const BonoboUIVerb wireless_menu_verbs [] = {
 	BONOBO_UI_UNSAFE_VERB ("WirelessProperties",
 			wireless_applet_properties_dialog),
+	BONOBO_UI_UNSAFE_VERB ("WirelessHelp",
+			wireless_applet_help_cb),
 	BONOBO_UI_UNSAFE_VERB ("WirelessAbout",
 			wireless_applet_about_cb),
 	BONOBO_UI_VERB_END
@@ -500,7 +507,7 @@ wireless_applet_properties_dialog (BonoboUIComponent *uic,
 
 	g_signal_connect (GTK_OBJECT (applet->prefs),
 			"response", 
-			GTK_SIGNAL_FUNC (gtk_widget_destroy),
+			G_CALLBACK (prefs_response_cb),
 			NULL);
 	g_signal_connect (GTK_OBJECT (applet->prefs),
 			"destroy",
@@ -509,8 +516,33 @@ wireless_applet_properties_dialog (BonoboUIComponent *uic,
 
 	g_object_add_weak_pointer (G_OBJECT (applet->prefs),
 			(void**)&(applet->prefs));
-
+	gtk_window_set_screen (GTK_WINDOW (applet->prefs),
+			       gtk_widget_get_screen (GTK_WIDGET (applet)));
 	gtk_widget_show_all (applet->prefs);
+}
+
+static void
+wireless_applet_help_cb (BonoboUIComponent *uic, WirelessApplet *applet)
+{
+	GError *error = NULL;
+	egg_help_display_on_screen ("wireless", NULL,
+				   gtk_widget_get_screen (GTK_WIDGET (
+						applet)), &error);
+	if (error) {
+		GtkWidget *dialog =
+		gtk_message_dialog_new (NULL, GTK_DIALOG_MODAL,
+					GTK_MESSAGE_ERROR, GTK_BUTTONS_CLOSE,
+					_("There was an error displaying help: %s"),
+					error->message);
+		g_signal_connect (G_OBJECT (dialog), "response",
+				  G_CALLBACK (gtk_widget_destroy), NULL);
+		gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
+		gtk_window_set_screen (GTK_WINDOW (dialog),
+				       gtk_widget_get_screen (GTK_WIDGET (
+							      applet)));
+		gtk_widget_show (dialog);
+		g_error_free (error);
+	}
 }
 
 static void
@@ -557,6 +589,38 @@ wireless_applet_about_cb (BonoboUIComponent *uic, WirelessApplet *applet)
 			(void**)&about);
 
 	return;
+}
+
+static void
+prefs_response_cb (GtkDialog *dialog, gint response, gpointer data)
+{
+	GError *error = NULL;
+	if (response == GTK_RESPONSE_HELP) {
+		egg_help_display_on_screen ("wireless", "wireless-prefs",
+					    gtk_widget_get_screen (GTK_WIDGET (
+					    dialog)), &error);
+		if (error) {
+			GtkWidget *dlg =
+			gtk_message_dialog_new (GTK_WINDOW (dialog),
+						GTK_DIALOG_DESTROY_WITH_PARENT
+						|| GTK_DIALOG_MODAL,
+						GTK_MESSAGE_ERROR,
+						GTK_BUTTONS_CLOSE,
+						_("There was an error displaying help: %s"),
+						error->message);
+			g_signal_connect (G_OBJECT (dlg), "response",
+					  G_CALLBACK (gtk_widget_destroy),
+					  NULL);
+			gtk_window_set_resizable (GTK_WINDOW (dlg), FALSE);
+			gtk_window_set_screen (GTK_WINDOW (dlg),
+					       gtk_widget_get_screen (
+							GTK_WIDGET (dialog)));
+			gtk_widget_show (dlg);
+			g_error_free (error);
+		}
+	}
+	else
+		gtk_widget_hide (GTK_WIDGET (dialog));
 }
 
 static void
@@ -744,7 +808,7 @@ wireless_applet_factory (WirelessApplet *applet,
 
 PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_Panel_WirelessApplet_Factory",
 		wireless_applet_get_type (),
-		"Wireless applet",
+		"wireless",
 		"0",
 		(PanelAppletFactoryCallback) wireless_applet_factory,
 		NULL)
