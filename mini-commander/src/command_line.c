@@ -521,8 +521,9 @@ init_command_entry(MCData *mcdata)
     gtk_signal_connect(GTK_OBJECT(entry_command), "button_press_event",
 		       GTK_SIGNAL_FUNC(command_line_activate_cb),
 		       mcdata);
-#endif    
-    command_entry_update_color(entry_command, prop);
+#endif   
+    if (prop->show_default_theme != TRUE)
+        command_entry_update_color(entry_command, prop); 
     command_entry_update_size(entry_command, prop);
     
     return entry_command;

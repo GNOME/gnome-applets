@@ -177,6 +177,9 @@ load_session(MCData *mcdata)
     
     prop->show_time = FALSE;
     prop->show_date = FALSE;
+    prop->show_default_theme = panel_applet_gconf_get_bool (applet, 
+                                      			    "show_default_theme", 
+                                      		  	    NULL);
     prop->show_handle = panel_applet_gconf_get_bool (applet, "show_handle", NULL);
     prop->show_frame = panel_applet_gconf_get_bool(applet, "show_frame", NULL);
 
@@ -459,6 +462,35 @@ check_frame_toggled (GtkToggleButton *button, gpointer data)
 }
 
 static void
+check_theme_toggled (GtkToggleButton *button, gpointer data)
+{
+    MCData *mcdata = data;
+    PanelApplet *applet = mcdata->applet;
+    GtkWidget *fg_color_picker;
+    GtkWidget *bg_color_picker;
+    properties *prop;
+    gboolean toggled;
+    
+    prop = g_object_get_data (G_OBJECT (applet), "prop");
+    
+    toggled = gtk_toggle_button_get_active (button);
+    
+    if (toggled == prop->show_default_theme) 
+        return;
+        
+    prop->show_default_theme = toggled;
+    fg_color_picker = g_object_get_data ( G_OBJECT (applet), "fg_color_picker");
+    bg_color_picker = g_object_get_data ( G_OBJECT (applet), "bg_color_picker");
+    gtk_widget_set_sensitive( GTK_WIDGET (fg_color_picker), !(prop->show_default_theme));
+    gtk_widget_set_sensitive( GTK_WIDGET (bg_color_picker), !(prop->show_default_theme));
+    redraw_applet (mcdata);
+    panel_applet_gconf_set_bool (applet, "show_default_theme",
+                                 prop->show_default_theme,
+                                 NULL);
+
+}
+
+static void
 autocomplete_toggled (GtkToggleButton *button, gpointer data)
 {
     MCData *mcdata = data;
@@ -502,7 +534,8 @@ properties_box(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
     GtkWidget *vbox, *vbox1, *frame;
     GtkWidget *hbox;
     GtkWidget *table;
-    GtkWidget *check_time, *check_date, *check_handle, *check_frame, *check_auto_complete_history;
+    GtkWidget *check_time, *check_date, *check_handle, *check_frame, 
+              *check_auto_complete_history, *check_theme;
     GtkWidget *label;
     GtkWidget *entry;
     GtkWidget *spin;
@@ -707,22 +740,37 @@ properties_box(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
     gtk_container_set_border_width(GTK_CONTAINER(table), GNOME_PAD_SMALL);
     gtk_container_add(GTK_CONTAINER(frame), table);
 
+    /* default bg and fg theme */
+    check_theme = gtk_check_button_new_with_mnemonic("_Use default theme colors");
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_theme), prop->show_default_theme);
+    g_signal_connect (G_OBJECT (check_theme), "toggled",
+    		      G_CALLBACK (check_theme_toggled), mcdata); 
+    gtk_misc_set_alignment (GTK_MISC (check_theme), 1.0, 0.5); 
+    gtk_table_attach(GTK_TABLE(table),
+             check_theme,
+             0, 1,
+             0, 1,
+             0, 0,
+             0, 0);
+
     /* fg */
     label = gtk_label_new_with_mnemonic(_("Command line _foreground:"));
-    gtk_misc_set_alignment (GTK_MISC (label), 1.0, 0.5);
+    gtk_misc_set_alignment (GTK_MISC (label), 1.0, 0.5); 
     gtk_table_attach(GTK_TABLE(table), 
 		     label,
 		     0, 1,
-		     0, 1,
+		     1, 2,
 		     GTK_FILL, 0,
 		     0, 0);
 
     color_picker = gnome_color_picker_new();
+    g_object_set_data ( G_OBJECT (applet), "fg_color_picker", color_picker);
     gnome_color_picker_set_i16(GNOME_COLOR_PICKER(color_picker),
 			       prop->cmd_line_color_fg_r, 
 			       prop->cmd_line_color_fg_g, 
 			       prop->cmd_line_color_fg_b, 
 			       0);
+    gtk_widget_set_sensitive ( GTK_WIDGET (color_picker), !(prop->show_default_theme));
     set_atk_relation(label, color_picker);
     gtk_signal_connect(GTK_OBJECT(color_picker),
 		       "color_set",
@@ -734,7 +782,7 @@ properties_box(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
     gtk_table_attach(GTK_TABLE(table), 
 		     color_picker,
 		     1, 2,
-		     0, 1,
+		     1, 2,
 		     0, 0,
 		     0, 0);
     
@@ -745,15 +793,17 @@ properties_box(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
     gtk_table_attach(GTK_TABLE(table), 
 		     label,
 		     0, 1,
-		     1, 2,
+		     2, 3,
 		     GTK_FILL, 0,
 		     0, 0);
     color_picker = gnome_color_picker_new();
+    g_object_set_data ( G_OBJECT (applet), "bg_color_picker", color_picker);
     gnome_color_picker_set_i16(GNOME_COLOR_PICKER(color_picker),
 			       prop->cmd_line_color_bg_r, 
 			       prop->cmd_line_color_bg_g, 
 			       prop->cmd_line_color_bg_b, 
 			       0);
+    gtk_widget_set_sensitive ( GTK_WIDGET (color_picker), !(prop->show_default_theme));
     set_atk_relation(label, color_picker);
     gtk_signal_connect(GTK_OBJECT(color_picker),
 		       "color_set",
@@ -762,7 +812,7 @@ properties_box(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
     gtk_table_attach(GTK_TABLE(table), 
 		     color_picker,
 		     1, 2,
-		     1, 2,
+		     2, 3,
 		     0, 0,
 		     0, 0);
     

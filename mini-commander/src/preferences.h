@@ -20,6 +20,7 @@ struct struct_properties
     int show_date;
     int show_handle;
     int show_frame;
+    int show_default_theme;
     int auto_complete_history;
     int normal_size_x;
     int normal_size_y;
