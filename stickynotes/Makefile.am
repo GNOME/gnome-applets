@@ -2,11 +2,12 @@
 
 SUBDIRS = pixmaps #doc
 
-INCLUDES = -I. \
+INCLUDES = \
+	-I. \
 	-I$(srcdir) \
 	$(GNOME_APPLETS_CFLAGS) \
 	$(LIBGLADE_CFLAGS) \
-	-DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\" \ 
+	-DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\" \
 	-DGNOMEGLADEDIR=\"$(gladedir)\" \
 	-DPREFIX=\""$(prefix)"\" \
 	-DDATADIR=\""$(datadir)"\" \
