@@ -31,46 +31,6 @@ guint timeout_handle = -1;
 GConfClient *client;
 
 
-
-/* Applet transparency - Taken (and modified a bit) from Miguel's gen-util
- * printer applet (thanks to Inigo Serna who pointed this code out to me)
- * But that code was wrong - George */
-static void 
-applet_set_default_back (GtkWidget *dest, GtkWidget *src)
-{
-#ifdef FIXME
-	/* Not ported */
-	/* Deprecated - now use gtk_widget_set_style (GtkWidget *widget, GtkStyle *style) */
-	gtk_widget_set_rc_style(dest);
-        gtk_widget_queue_draw (dest);
-	return;
-	src = NULL;
-#endif
-}
-
-static void
-applet_set_back_color (GtkWidget *widget, GdkColor *color)
-{
-        GtkStyle *new_style;
-#ifdef FIXME
-        new_style = gtk_style_copy (widget->style);
-        gtk_style_ref (new_style);
-        new_style->bg[GTK_STATE_NORMAL] = *color;
-        new_style->bg[GTK_STATE_NORMAL].pixel = 1; /* bogus */
-        
-        if (new_style->bg_pixmap [GTK_STATE_NORMAL]) {
-
-                /*gdk_imlib_free_pixmap (new_style->bg_pixmap [GTK_STATE_NORMAL]);*/
-
-                new_style->bg_pixmap [GTK_STATE_NORMAL] = NULL;
-        }
-        
-        gtk_widget_set_style (widget, new_style);
-        gtk_style_unref (new_style);
-        gtk_widget_queue_draw (widget);
-#endif
-}
-
 static void
 applet_set_back_pixmap (GtkWidget *widget, gchar *pixmap)
 {
@@ -124,15 +84,23 @@ applet_back_change (PanelApplet *a,
 		    const gchar               *pixmap,
 		    EyesApplet *applet) 
 {
+	GtkRcStyle *rc_style = gtk_rc_style_new ();
+	gint i;
+                
 	switch (type) {
 	case PANEL_PIXMAP_BACKGOUND:
                 applet_set_back_pixmap (applet->fixed, pixmap);
 		break;
         case PANEL_COLOR_BACKGROUND:
-                applet_set_back_color(applet->hbox, color);
+                for (i = 0; i < eyes_applet.num_eyes; i++) {
+                	gtk_widget_modify_bg (applet->eyes[i], GTK_STATE_NORMAL,
+			    	       	      color);
+        	}
 		break;
 	default:
-                applet_set_default_back (applet->fixed, applet->hbox);
+                for (i = 0; i < eyes_applet.num_eyes; i++) {
+                	gtk_widget_modify_style (applet->eyes[i], rc_style);
+        	}
 		break;
 	}
 	return;
@@ -337,7 +305,7 @@ create_eyes (void)
 static gint
 delete_cb (GtkWidget *widget, GdkEvent *event, gpointer data)
 {
-
+g_print ("destroy \n");
 	gtk_timeout_remove (timeout_handle);
 	timeout_handle = -1;
 	return FALSE;
@@ -367,11 +335,11 @@ static const BonoboUIVerb geyes_applet_menu_verbs [] = {
 
 static const char geyes_applet_menu_xml [] =
 	"<popup name=\"button3\">\n"
-	"   <menuitem name=\"Item 1\" verb=\"Props\" _label=\"Properties\"/>\n"
+	"   <menuitem name=\"Item 1\" verb=\"Props\" _label=\"Properties\"\n"
 	"             pixtype=\"stock\" pixname=\"gtk-properties\"/>\n"
-	"   <menuitem name=\"Item 2\" verb=\"Help\" _label=\"Help\"/>\n"
+	"   <menuitem name=\"Item 2\" verb=\"Help\" _label=\"Help\"\n"
 	"             pixtype=\"stock\" pixname=\"gtk-help\"/>\n"
-	"   <menuitem name=\"Item 3\" verb=\"About\" _label=\"About\"/>\n"
+	"   <menuitem name=\"Item 3\" verb=\"About\" _label=\"About\"\n"
 	"             pixtype=\"stock\" pixname=\"gnome-stock-about\"/>\n"
 	"</popup>\n";
 
@@ -408,7 +376,7 @@ geyes_applet_fill (PanelApplet *applet)
 
 	g_signal_connect (G_OBJECT (eyes_applet.applet), "change_background",
 			  G_CALLBACK (applet_back_change), &eyes_applet);
-	g_signal_connect (G_OBJECT (eyes_applet.applet), "destroy_event",
+	g_signal_connect (G_OBJECT (eyes_applet.applet), "destroy",
 			  G_CALLBACK (delete_cb), NULL);
 	  
 	return TRUE;
