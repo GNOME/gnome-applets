@@ -1,4 +1,35 @@
-Mon Jul 26 00:31:45 1999  Fabrice Bellet <Fabrice.Bellet@imag.fr>
+1999-09-04  Fabrice Bellet <Fabrice.Bellet@creatis.insa-lyon.fr>
+
+	* Updated my email address.
+
+1999-08-31  Fabrice Bellet <Fabrice.Bellet@imag.fr>
+
+	* def-theme/{Makefile.am, themedata, Default-black.xpm,
+	Default-red.xpm} : Changed the theme structure. One pixmap is used
+	for black digits, representing the integer part of the displayed
+	value, and one pixmap for red digits, representing the decimal
+	part of the value. Added a themedata file to customize the aspect
+	(with ou without the decimal dot).
+	* themes, themes/Makefile.am : Added this directory to separate the
+	code from the themes.
+	* themes/{57chevy, A, bbldotg, o, smplst}/ : Added these theme
+	directories.
+	* odo.h: Added a second pixmap in the OdoApplet struct. Bumped
+	version number.
+	* odo.c (load_default_theme, change_theme) : moved these procedures
+	to a separate file.
+	* odo.c (draw_digit, draw_value) : changed these functions in order
+	to select the right pixmap according to the current position of the
+	digit compared to the digital dot.
+	* odo.c (init_applet) : new pixmap reset.
+	* properties.c (populate_theme_list) : changed the theme selection
+	scheme, previously based on file listing, and based now on directory
+	listing.
+	* theme.c : Added procedures still inspired from theme management
+	part of sound-monitor by John Ellis. They mainly implement the
+	themedata file parsing, and the theme/pixmap loading.
+
+1999-07-26  Fabrice Bellet <Fabrice.Bellet@imag.fr>
 
 	* odo.c, odo.h: Cleaned up the code, removed global variables.
 	* properties.c: Added support for a theme chooser, based on

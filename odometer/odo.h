@@ -2,7 +2,7 @@
  * GNOME odometer panel applet
  * (C) 1999 The Free software Foundation
  * 
- * Author : Fabrice Bellet <Fabrice.Bellet@imag.fr>
+ * Author : Fabrice Bellet <Fabrice.Bellet@creatis.insa-lyon.fr>
  *          adapted from kodo/Xodometer/Mouspedometa
  */
 
@@ -17,7 +17,7 @@
 #include <gnome.h>
 #include <applet-widget.h>
 
-#define ODO_VERSION "0.4"
+#define ODO_VERSION "0.5"
 #define UPDATE_TIMEOUT 75
 
 #define INCH 0
@@ -52,11 +52,13 @@ struct _OdoApplet {
 	/* Theme */
 	gchar *theme_file;
 	GtkWidget *theme_entry;
-	GdkPixmap *pixmap;
+	GdkPixmap *int_pixmap;
+	GdkPixmap *dec_pixmap;
 	gint width;
 	gint height;
 	gint digit_width;
 	gint digit_height;
+	gboolean with_decimal_dot;
 
 	/* Properties */
 	GtkWidget *pbox;
@@ -83,7 +85,9 @@ struct _OdoApplet {
 	Units trip_distance_unit;
 };
 
-void refresh (OdoApplet *);
-void properties_cb (AppletWidget *, gpointer);
-gint change_theme (gchar *, OdoApplet *);
-gint change_digits_nb (OdoApplet *);
+void properties_cb (AppletWidget *applet, gpointer data);
+
+void refresh (OdoApplet *oa);
+gint change_digits_nb (OdoApplet *oa);
+
+gint change_theme (gchar *path, OdoApplet *oa);

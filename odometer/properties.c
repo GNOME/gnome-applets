@@ -2,7 +2,7 @@
  * GNOME odometer panel applet
  * (C) 1999 The Free software Foundation
  * 
- * Author : Fabrice Bellet <Fabrice.Bellet@imag.fr>
+ * Author : Fabrice Bellet <Fabrice.Bellet@creatis.insa-lyon.fr>
  *          adapted from kodo/Xodometer/Mouspedometa
  *
  * The property dialog box is heavily inpired from the
@@ -129,7 +129,7 @@ populate_theme_list (GtkWidget *clist)
    row = gtk_clist_append(GTK_CLIST(clist),buf);
    gtk_clist_set_row_data(GTK_CLIST(clist), row, "");
 
-   themepath = gnome_unconditional_pixmap_file("odometer");
+   themepath = gnome_unconditional_datadir_file("odometer");
 
    if((dp = opendir(themepath))==NULL) {
    	/* dir not found */
@@ -145,7 +145,7 @@ populate_theme_list (GtkWidget *clist)
 
    		name = dir->d_name;
    		path = g_strconcat(themepath, "/", name, NULL);
-   		if (stat(path,&ent_sbuf) >= 0 && S_ISREG(ent_sbuf.st_mode)) {
+   		if (stat(path,&ent_sbuf) >= 0 && S_ISDIR(ent_sbuf.st_mode)) {
    			theme_list = g_list_insert_sorted(theme_list,
    				g_strdup(name),
    				(GCompareFunc) sort_theme_list_cb);
@@ -155,13 +155,18 @@ populate_theme_list (GtkWidget *clist)
    	}
    }
    closedir(dp);
+
    list = theme_list;
    while (list) {
-   	gchar *theme_file = g_strconcat(themepath, "/", list->data, NULL);
-   	buf[0] = list->data;
-   	row = gtk_clist_append(GTK_CLIST(clist),buf);
-   	gtk_clist_set_row_data_full(GTK_CLIST(clist), row,
-   		theme_file, (GtkDestroyNotify) g_free);
+   	gchar *themedata_file = g_strconcat(themepath, "/", list->data, "/themedata", NULL);
+   	if (g_file_exists(themedata_file)) {
+   		gchar *theme_file = g_strconcat (themepath, "/", list->data, NULL);
+   		buf[0] = list->data;
+   		row = gtk_clist_append(GTK_CLIST(clist),buf);
+   		gtk_clist_set_row_data_full(GTK_CLIST(clist), row,
+   			theme_file, (GtkDestroyNotify) g_free);
+	}
+   	g_free(themedata_file);
    	g_free(list->data);
    	list = list->next;
    }

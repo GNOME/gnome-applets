@@ -2,7 +2,7 @@
  * GNOME odometer panel applet
  * (C) 1999 The Free software Foundation
  * 
- * Author : Fabrice Bellet <Fabrice.Bellet@imag.fr>
+ * Author : Fabrice Bellet <Fabrice.Bellet@creatis.insa-lyon.fr>
  *          adapted from kodo/Xodometer/Mouspedometa
  *	
  */
@@ -105,7 +105,6 @@
 #include <math.h>
 #include <config.h>
 #include "odo.h"
-#include "B.xpm"
 
 static conversionEntry conversion_table[MAX_UNIT] = {
 { INCH, "inch", "inches", 12.0,   2.54,     "cm",     "cm",     100.0,  2 },
@@ -128,7 +127,7 @@ about_cb (AppletWidget *widget, gpointer data)
    GtkWidget *about;
 
    const gchar *authors[] = {
-   	"Fabrice Bellet <Fabrice.Bellet@imag.fr>",NULL};
+   	"Fabrice Bellet <Fabrice.Bellet@creatis.insa-lyon.fr>",NULL};
    about=gnome_about_new (_("Odometer"),
    	ODO_VERSION,
    	_("(C) 1999 The Free Software Foundation"),
@@ -207,74 +206,6 @@ delete_cb (GtkWidget *widget,GdkEvent *event, gpointer data)
    gtk_main_quit();
 }
 
-static gint
-load_default_theme (OdoApplet *oa)
-{
-  GdkBitmap *mask = NULL;
-  GtkStyle *style;
-  gint aw,ah;
-
-  if (oa->pixmap) gdk_pixmap_unref (oa->pixmap);
-  /*
-   * build the pixmap
-   */
-  style=gtk_widget_get_style(oa->applet);
-  oa->pixmap = gdk_pixmap_create_from_xpm_d(oa->darea1->window,&mask,
-       &style->bg[GTK_STATE_NORMAL], (gchar **)B_xpm);
-  gdk_window_get_size (oa->pixmap, &oa->width, &oa->height);
-  oa->digit_width=oa->width/11;
-  oa->digit_height=oa->height;
-
-  aw=oa->digit_width*oa->digits_nb;
-  ah=oa->digit_height;
-  gtk_drawing_area_size(GTK_DRAWING_AREA(oa->darea1),aw,ah);
-  gtk_drawing_area_size(GTK_DRAWING_AREA(oa->darea2),aw,ah);
-  return TRUE;
-}
-
-static gint
-load_theme (gchar *path,OdoApplet *oa)
-{
-  GdkBitmap *mask = NULL;
-  gint aw,ah;
-
-  if (!g_file_exists(path)) {
-     g_print ("Unable to find file %s.\n"
-     	"Falling back to default theme.\n",path);
-     return FALSE;
-  }
-  if (oa->pixmap) gdk_pixmap_unref(oa->pixmap);
-  gdk_imlib_load_file_to_pixmap(oa->theme_file,
-  	&oa->pixmap,
-  	&mask);
-  if (mask) gdk_imlib_free_bitmap(mask);
-  gdk_window_get_size (oa->pixmap, &oa->width, &oa->height);
-  oa->digit_width=oa->width/11;
-  oa->digit_height=oa->height;
-  if (oa->digit_width*11 != oa->width)
-  	g_print(_("Theme file width is not multiple of 11.\n"
-  		"Maybe it is malformed or it doesn't contains all 10 digits\n"
-  		"plus the dot.\n"));
-
-  aw=oa->digit_width*oa->digits_nb;
-  ah=oa->digit_height;
-  gtk_drawing_area_size(GTK_DRAWING_AREA(oa->darea1),aw,ah);
-  gtk_drawing_area_size(GTK_DRAWING_AREA(oa->darea2),aw,ah);
-  return TRUE;
-}
-
-gint
-change_theme (gchar *path, OdoApplet *oa)
-{
-  if (!path || !*path)
-  	return load_default_theme (oa);
-  else 
-  	if (!load_theme (path,oa))
-  		return load_default_theme (oa);
-	else
-		return TRUE;
-}
-
 gint
 change_digits_nb (OdoApplet *oa)
 {
@@ -320,10 +251,10 @@ Calcdistance(OdoApplet *oa)
  * at the location defined by x.
  */
 static void
-draw_digit(GtkWidget *darea,gint n,gint x,OdoApplet *oa)
+draw_digit(GtkWidget *darea,gint n,gint x,gboolean integer_part_digit,OdoApplet *oa)
 {
    gdk_draw_pixmap (darea->window,darea->style->fg_gc[GTK_WIDGET_STATE(darea)],
-   	oa->pixmap,
+   	(integer_part_digit ? oa->int_pixmap : oa->dec_pixmap),
    	n*oa->digit_width,0,
    	x*oa->digit_width,0,
    	oa->digit_width,oa->digit_height-1);
@@ -337,17 +268,30 @@ draw_digit(GtkWidget *darea,gint n,gint x,OdoApplet *oa)
 static void
 draw_value(GtkWidget *darea,gchar *string,OdoApplet *oa)
 {
-   gushort i=0;
-   gushort n=0;
+   gushort i;
+   gushort nb_drawn_digits;
+   gushort n;
+   /*
+    * this boolean is used to distinguish digits from the integer part
+    * of the value to digits from the decimal part.
+    */
+   gboolean integer_part_digit = TRUE;
 
-   for (i=0;i<oa->digits_nb;i++) {
-      if (string[i] == '.' || string[i] == '-')
-         n=10;
-      else if (isdigit (string[i]))
-         n=string[i]-'0';
-      else 
-         break;
-      draw_digit (darea,n,i,oa);
+   for (i=0, nb_drawn_digits=0; nb_drawn_digits<oa->digits_nb; i++) {
+   	if (string[i] == '-')
+   		n=0;
+	else if (string[i] == '.') {
+		if (oa->with_decimal_dot)
+			n=10;
+		else {
+			integer_part_digit = FALSE;
+			continue;
+		}
+	} else if (isdigit (string[i]))
+		n=string[i]-'0';
+	else 
+		break;
+	draw_digit (darea,n,nb_drawn_digits++,integer_part_digit,oa);
    }
 }
 
@@ -365,6 +309,7 @@ format_distance(gdouble in_dist,gchar **tag,gchar *string,OdoApplet *oa)
    gchar *string2;
    gdouble out_dist;
    gint precision;
+   gint digits_nb;
    Units unit=INCH;
    gushort l;
 
@@ -399,12 +344,20 @@ format_distance(gdouble in_dist,gchar **tag,gchar *string,OdoApplet *oa)
    }
    /*
     * format according to the number of digits after the decimal dot
+    *
+    * We need to add a supplemental digit to replace the missing dot,
+    * when the dot is not shown.
     */
-   string2 = g_malloc0 (oa->digits_nb+1);
+   if (oa->with_decimal_dot)
+   	digits_nb=oa->digits_nb;
+   else
+   	digits_nb=oa->digits_nb+1;
+
+   string2 = g_malloc0 (digits_nb+1);
    precision = conversion_table[unit].print_precision;
-   g_snprintf (string2,oa->digits_nb+1,"%.*f", precision, out_dist);
+   g_snprintf (string2,digits_nb+1,"%.*f", precision, out_dist);
    l=strlen(string2);
-   strcpy  (string+oa->digits_nb-l,string2);
+   strcpy  (string+digits_nb-l,string2);
    g_free (string2);
    return unit;
 }
@@ -568,7 +521,8 @@ init_applet (OdoApplet *oa)
    oa->digit_width=10;
    oa->digit_height=20;
 
-   oa->pixmap=NULL;
+   oa->int_pixmap=NULL;
+   oa->dec_pixmap=NULL;
    oa->theme_file=NULL;
    oa->theme_entry=NULL;
 }
