@@ -7,9 +7,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-applets 1.3.0\n"
-"POT-Creation-Date: 2001-03-20 18:16+0100\n"
-"PO-Revision-Date: 2001-03-04 15:25+01:00\n"
+"Project-Id-Version: gnome-applets 1.4.x\n"
+"POT-Creation-Date: 2001-05-24 22:26+0200\n"
+"PO-Revision-Date:2001-05-24 22:25+0200\n"
 "Last-Translator: Christian Meyer <chrisime@gnome.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -23,7 +23,7 @@ msgstr "Uhr-Einstellungen"
 #: another_clock/another_clock.c:267 asclock/dialogs.c:380
 #: battery/properties.c:83 clockmail/properties.c:421
 #: diskusage/properties.c:466 drivemount/properties.c:400
-#: gnotes/properties.c:190 gweather/gweather-pref.c:527
+#: gnotes/properties.c:190 gweather/gweather-pref.c:524
 #: mini-commander/src/preferences.c:801 modemlights/properties.c:486
 #: odometer/properties.c:293 screenshooter/screenshooter_applet.c:434
 #: slashapp/properties.c:412 sound-monitor/properties.c:424
@@ -59,8 +59,8 @@ msgstr "Farbe des Sekundenzeigers"
 msgid "Show seconds needle"
 msgstr "Sekundenzeiger darstellen?"
 
-#. languages which use font encodings that can't
-#. * display spanish 'ñ' should use 'n' instead
+#. if your encoding allows it, use ntilde (U00F1)
+#. * instead of the 'n' of 'Inigo'
 #: another_clock/another_clock.c:365
 msgid "Inigo Serna <inigo@gaztelan.bi.ehu.es>"
 msgstr "Iñigo Serna <inigo@gaztelan.bi.ehu.es>"
@@ -1509,7 +1509,7 @@ msgstr "Das GNOME-Wetter"
 msgid "Location:"
 msgstr "Ortsangabe:"
 
-#: gweather/gweather-dialog.c:132 gweather/gweather-pref.c:501
+#: gweather/gweather-dialog.c:132
 msgid "Update:"
 msgstr "Aktualisieren alle:"
 
@@ -1581,7 +1581,7 @@ msgstr ""
 "Bitte versuchen Sie es mit der detaillierten Vorhersage. Beachten Sie, dass "
 "IWIN-Vorhersagen nur für US-Städte verfügbar sind."
 
-#: gweather/gweather-pref.c:133
+#: gweather/gweather-pref.c:135
 msgid ""
 "Invalid location chosen!\n"
 "Properties remain unchanged."
@@ -1589,7 +1589,7 @@ msgstr ""
 "Ungültige Ortsangabe ausgewählt!\n"
 "Eigenschaften bleiben unverändert."
 
-#: gweather/gweather-pref.c:138
+#: gweather/gweather-pref.c:141
 msgid ""
 "Proxy URL is not of the form http://host:port/\n"
 "Properties remain unchanged."
@@ -1597,67 +1597,79 @@ msgstr ""
 "Proxy-URL hat nicht das Format http://rechner:port/\n"
 "Eigenschaften bleiben unverändert."
 
-#: gweather/gweather-pref.c:211
+#: gweather/gweather-pref.c:200
 msgid "Regions"
 msgstr "Regionen"
 
-#: gweather/gweather-pref.c:329
+#: gweather/gweather-pref.c:317
 msgid "GNOME Weather Properties"
 msgstr "Eigenschaften von GNOME Wetter"
 
-#: gweather/gweather-pref.c:363
+#: gweather/gweather-pref.c:356
 msgid "Location"
 msgstr "Ortsangabe"
 
-#: gweather/gweather-pref.c:383
+#: gweather/gweather-pref.c:376
 msgid "Use proxy"
 msgstr "Proxy verwenden"
 
-#: gweather/gweather-pref.c:387
+#: gweather/gweather-pref.c:380
 msgid "Proxy host:"
 msgstr "Proxyrechner:"
 
-#: gweather/gweather-pref.c:401
+#: gweather/gweather-pref.c:394
 msgid "Username:"
 msgstr "Benutzer:"
 
-#: gweather/gweather-pref.c:415
+#: gweather/gweather-pref.c:408
 msgid "Password:"
 msgstr "Passwort:"
 
-#: gweather/gweather-pref.c:430
+#: gweather/gweather-pref.c:423
 msgid ""
-"Caveat warning: Even though your password will\n"
-"be saved in the private configuration file, it will\n"
-"be unencrypted!"
+"Warning: Your password will be saved as\n"
+"unencrypted text in a private configuration\n"
+"file."
 msgstr ""
-"Warnung: Obwohl Ihr Passwort in einer privaten\n"
-"Konfigurationsdateigespeichert wird, wird es\n"
-"unverschlüsselt abgelegt!"
+"Warnung: Ihr Passwort wird unverschlüsselt\n"
+"in einer privaten Konfigurationsdatei gespeichert"
 
-#: gweather/gweather-pref.c:438
+#: gweather/gweather-pref.c:431
 msgid "Network"
 msgstr "Netzwerk"
 
-#: gweather/gweather-pref.c:483
-msgid "Update enabled"
-msgstr "Aktualisierung aktiv"
+#: gweather/gweather-pref.c:456
+msgid "Automatically update every"
+msgstr "Automatisch aktualisieren alle"
 
-#: gweather/gweather-pref.c:487
-msgid "Use metric"
-msgstr "Metrisch"
+#: gweather/gweather-pref.c:460
+msgid "Use metric system units"
+msgstr "Metrisches System verwenden"
 
-#: gweather/gweather-pref.c:491
-msgid "Detailed forecast"
-msgstr "Detaillierte Vorhersage"
+#: gweather/gweather-pref.c:464
+msgid "Enable detailed forecast"
+msgstr "Detaillierte Vorhersage aktivieren"
 
-#: gweather/gweather-pref.c:496
-msgid "Enable radar maps"
+#: gweather/gweather-pref.c:469
+msgid "Enable radar map"
 msgstr "Radarkarte aktivieren"
 
-#: gweather/gweather-pref.c:523
-msgid "(sec)"
-msgstr "(Sekunden)"
+#: gweather/gweather-pref.c:474
+msgid "Updates"
+msgstr "Aktualisierungen"
+
+#: gweather/gweather-pref.c:480
+msgid "Autmatically update every "
+msgstr "Automatische aktualisieren alle "
+
+#: gweather/gweather-pref.c:498
+msgid "minute(s)"
+msgstr "Minute(n):"
+
+#. The Miscellaneous frame
+#: gweather/gweather-pref.c:509
+msgid "Miscellaneous"
+msgstr "Verschiedenes"
 
 #: gweather/weather.c:110
 msgid "Location vector needs to be 4 elements long"
@@ -4872,3 +4884,8 @@ msgstr "Löschen"
 msgid "all entries in URL history"
 msgstr "alle Einträge in der URL-Chronik"
 
+#~ msgid "Update enabled"
+#~ msgstr "Aktualisierung aktiv"
+
+#~ msgid "(sec)"
+#~ msgstr "(Sekunden)"
