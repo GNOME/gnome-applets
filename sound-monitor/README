@@ -1,0 +1,53 @@
+###################################################################
+##                  GNOME Sound Monitor applet 0.7.0             ##
+##   This software is Copyright (C) 1999 by John Ellis.          ##
+##  Use this software at your own risk. I am not responsible for ##
+##        anything this software may do to your computer.        ##
+## This software falls under the GNU Public License. Please read ##
+##              the COPYING file for more information            ##
+###################################################################
+
+Author: John Ellis
+e-mail: gqview@email.com
+homepage: gqview.netpedia.net (The Rest->Sound Monitor)
+       or www.geocities.com/SiliconValley/Haven/5235/ (alternate site)
+
+Sound Monitor is a GNOME panel applet, it displays the current Volume
+output of the Esound daemon, also, optionally shows the Esound
+status: Off(error), Standby, Ready. The esound daemon can also be
+started, set to standby, and resumed from the applet's right click menu.
+The esound server's information can also be displayed(streams, sample info).
+Panning (left - right) can also be adjusted for streams and samples.
+
+A few sample skins are included / installed with the applet.
+
+Requirements:
+  - GNOME version 1.0.1 or higher. (http://www.gnome.org)
+  - Esound version 0.2.8 or higher. (http://www.tux.org/~ricdude/news.html)
+
+Notes for this release:
+  0.7.0 contains these changes from 0.6.1:
+  - The scope now displays points as segments (by default).
+  - Added configurable esd host to monitor (untested).
+  - Added option to monitor sound card input.
+      NOTE: This wants to hang my system when esound attempts to play a sound
+            while monitoring input. To enable this, uncomment the ADVANCED_OPTS
+            line in the Makefile, and the option will show up in the advanced
+            properties tab.
+  * Fix so scope always goes flat with no sound.
+
+  NOTE: esdpvd is unusable at this point as a memory leak in esound causes it to
+        gobble up memory, I will attempt to get the fix included with esound.
+
+Installation:
+  basically make ; make install should do it.
+
+  The applet can then be run by selecting:
+   'Panel'->'Add applet'->'Multimedia'->'Sound Monitor'
+
+Note:
+  - No autoconf scripts, so there.
+
+Additional themes go into (gnome-prefix)/share/sound-monitor
+To make your own theme, see the THEME-SPEC file.
+

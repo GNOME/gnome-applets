@@ -1,0 +1,45 @@
+###################################################################
+##            ESounD Persistent Volume Daemon 0.1.0              ##
+##   This software is Copyright (C) 1999 by John Ellis.          ##
+##  Use this software at your own risk. I am not responsible for ##
+##        anything this software may do to your computer.        ##
+## This software falls under the GNU Public License. Please read ##
+##              the COPYING file for more information            ##
+###################################################################
+
+Author: John Ellis
+e-mail: gqview@email.com
+homepage: gqview.netpedia.net (The Rest->Sound Monitor)
+       or www.geocities.com/SiliconValley/Haven/5235/ (alternate site)
+
+esdpvd is a small program that remembers the volume and balance of streams and
+samples active within esound. It then restores the values when a subsequent
+stream with the same id (name) connects to esound. This allows the volume and
+balance preferences to be kept between sound playback events and sessions.
+
+Requirements:
+  - GNOME version 1.0.1 or higher. (http://www.gnome.org)
+    (uses gnome-config. however, an X server is not needed since there is no gui)
+  - Esound version 0.2.8 or higher. (http://www.tux.org/~ricdude/news.html)
+
+Notes for this release:
+  - Initial release.
+
+  Functions to subscribe for change events is not implemented in esound at the
+  time of this releaase. So this app uses a method that involves more overhead
+  than the subscribe method.
+
+  Due to the same reason as above, settings are not instantly restored, you can
+  usually hear the sounds play at normal (default) volume and balance for a
+  moment during the start of a sound (unavoidable).
+
+Installation:
+  basically make ; make install should do it.
+
+  The executable is named esdpvd
+
+Settings:
+  Currently no run time options are implemented.
+  States of streams and samples are stored in ~/.gnome/esd_persistent_volumes
+
+

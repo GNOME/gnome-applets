@@ -1,0 +1,151 @@
+Wed Jul  7 17:54:18 1999  John Ellis  <johne@bellatlantic.net>
+
+	* main.c (update_display): Update vu items if data comes in even while
+	in autostandby.
+	* TODO: Removed done stuff, added more stuff to do.
+
+Tue Jul  6 06:40:13 1999  John Ellis  <johne@bellatlantic.net>
+
+	* main.c, theme.c: Removed compile warnings.
+
+Tue Jun  8 17:20:30 1999  John Ellis  <johne@bellatlantic.net>
+
+	* sound-monitor.h, README: Release 0.7.0
+
+Tue Jun  8 17:09:28 1999  John Ellis  <johne@bellatlantic.net>
+
+	* Makefile, sound-monitor.h, main.c, esdcalls.c, properties.c: Added
+	advance properties to configure the host to monitor. Also added option
+	to monitor sound card input, but this requires uncommenting a line
+	in the Makefile because it wants to hang the system when esd attempts
+	to play a sound while monitoring.
+	(My SB awe64 _is_ full duplex, must be a driver or esound bug?)
+
+Tue Jun  8 15:35:09 1999  John Ellis  <johne@bellatlantic.net>
+
+	* main.c, sound-monitor.h, theme.c, properties.c: Add option to draw 
+	scope with connected points. Enabled by default.
+	* main.c: Fix bug that caused scope to occasionally not go flat when
+	sound stops.
+
+Wed May 26 20:42:24 1999  John Ellis  <johne@bellatlantic.net>
+
+	* sound-monitor.h, README: Release 0.6.1
+
+Wed May 26 20:41:20 1999  John Ellis  <johne@bellatlantic.net>
+
+	* sound-monitor.spec: Added an rpm spec file, not tested. 
+
+Wed May 26 20:26:17 1999  John Ellis  <johne@bellatlantic.net>
+
+	* manager.c: Added volume control to the manager window for streams
+	and samples.
+	* dvp/*: Added the esdpvd program, which remembers the volume of each
+	sample and stream between playbacks and sessions. With the use of
+	esdpvd the manager window now has more useful purpose.
+	
+Thu Apr  1 10:39:53 1999  John Ellis  <johne@bellatlantic.net>
+
+	* README, sound-monitor.h: Release 0.6.0
+
+Thu Apr  1 10:28:58 1999  John Ellis  <johne@bellatlantic.net>
+
+	* manager.c: Add ability to adjust panning of streams and samples, and
+	added count of streams/samples to server info.
+	* esdcalls.c: Fix left/right reversal?
+
+Thu Apr  1 07:39:44 1999  John Ellis  <johne@bellatlantic.net>
+
+	* theme.c (draw_scope_item): Clear the clip mask after drawing, since
+	the mask was interfering with other drawing calls. Having multiple
+	sound-monitor type widgets on the panel works now.
+
+Thu Feb 25 12:45:17 1999  John Ellis  <johne@bellatlantic.net>
+
+	* sound-monitor.h: Release version 0.5.0
+
+Thu Feb 25 02:26:42 1999  John Ellis  <johne@bellatlantic.net>
+
+	* themes/scope*: Added 3 themes that use the scope widget.
+	scope, scope-larger(includes a vertical version), and scope-round.
+	* Makefile: added (un)install of above themes.
+
+Thu Feb 25 01:20:38 1999  John Ellis  <johne@bellatlantic.net>
+
+	* theme.c: Scopes can now be vertical (data streams from top down).
+
+Thu Feb 25 00:20:10 1999  John Ellis  <johne@bellatlantic.net>
+
+	* theme.c: Added a scope widget (guess what it does ;)
+	* main.c, sound-monitor.h: Use above scope widget.
+	* properties.c: Add scope scale factor, up maximum frame rate to
+	40 fps, so the scope can show more data (I like the scope at 40).
+
+Wed Feb 24 18:13:05 1999  John Ellis  <johne@bellatlantic.net>
+
+	* manager.c: Fixes to the update-window checks, clicking on the Length
+	column title of sample list toggles the display to minutes:seconds.
+
+Sat Feb 20 19:28:19 1999  John Ellis  <johne@bellatlantic.net>
+
+	* sound-monitor.h: Release version 0.4.0
+
+Sat Feb 20 19:18:48 1999  John Ellis  <johne@bellatlantic.net>
+
+	* manager.c: New file, contains the code for the 'manage window'.
+	The manage window displays  various information of the esd daemon
+	and allows cached samples to be played by clicking on them.
+	* main.c, sound-monitor.h: Changes necessary to open the above manager
+	from the pop-up menu, and to close the window on applet destruction.
+	* Makefile.am: Small updates.
+
+Wed Feb 17 06:33:54 1999  John Ellis  <johne@bellatlantic.net>
+
+	* sound-monitor.h: Release version 0.3.0
+
+Wed Feb 17 06:08:28 1999  John Ellis  <johne@bellatlantic.net>
+
+	* main.c: The connection to esound is now closed when the status
+	returns an error. The user is now notifyed by an error message
+	indicating esd has exited, or (gasp) crashed.
+
+Tue Feb 16 18:17:47 1999  John Ellis  <johne@bellatlantic.net>
+
+	* main.c:  added #include "config.h"
+	* sound-monitor.h: removed <config.h> from here, as it only makes
+	sense here when used with autoconf/make and we do not.
+
+Tue Feb 16 14:05:10 1999  John Ellis  <johne@bellatlantic.net>
+
+	* def_theme/status*.xpm: Updated for the new autostandby indicator.
+	* themes/*/*status*.png: Likewise.
+	* THEME-SPEC: Likewise.
+
+Tue Feb 16 13:32:17 1999  John Ellis  <johne@bellatlantic.net>
+
+	* esdcalls.c (esd_check_status): New function to return the status
+	of  teh esound daemon, uses the new esd_get_standby_mode() call.
+	Sound Monitor now requires a version of esound dated at least around
+	this entry's date stamp.
+	* theme.c: Added all status_item loads to use 4 display modes, the new
+	mode is to indicate autostandby.
+	* main.c: Use the new esd_check_status() function to optain esd's
+	status, when no sound data is received, reset the sound level meter to
+	zero (new function fro this: do_zero_volume_check() ). The esd control
+	menu item now works with autostandby status too.
+	* sound-monitor.h: Updates needed for the above changes.
+
+Mon Feb  8 13:28:12 1999  John Ellis  <johne@bellatlantic.net>
+
+	* sound-monitor.h, main.c: New files renamed from vumeter.h and
+	vumeter.c, respectivley.
+	* main.c, esdcalls.c : Added cleanup routines to shut down the 
+	connection to esound when an applet exits. Added Esound status control
+	on the right click menu.
+	* theme.c, def_theme/*.xpm : Changed the default theme, and moved the
+	default theme's image files top def_theme/*
+	* all files: Changes to the applets name, internal name id strings,
+	version bumped to 0.2.0
+
+
+
