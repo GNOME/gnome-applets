@@ -439,7 +439,7 @@ gkb_prop_list_load_keymaps (GkbPropertyBoxInfo * pbi)
  * Return Value: 
  **/
 GtkWidget *
-gkb_prop_create_scrolled_window (GkbPropertyBoxInfo * pbi)
+gkb_prop_create_scrolled_window (GkbPropertyBoxInfo * pbi, GtkWidget *label)
 {
   GtkWidget *scrolled_window;
   GtkTreeModel *model;
@@ -455,6 +455,7 @@ gkb_prop_create_scrolled_window (GkbPropertyBoxInfo * pbi)
   store = gtk_list_store_new (3, GDK_TYPE_PIXBUF, G_TYPE_STRING,G_TYPE_POINTER);	
   model = GTK_TREE_MODEL(store);	
   treeview = gtk_tree_view_new_with_model (model);
+  gtk_label_set_mnemonic_widget (GTK_LABEL (label), treeview);
   GTK_WIDGET_SET_FLAGS (treeview, GTK_CAN_DEFAULT);
     
   pbi->list = GTK_TREE_VIEW (treeview);

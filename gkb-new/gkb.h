@@ -195,7 +195,7 @@ GkbKeymap * loadprop (GKB *gkb, int i);
 
 /* prop-list.c */
 GtkWidget * gkb_prop_create_buttons_vbox (GkbPropertyBoxInfo *pbi);
-GtkWidget * gkb_prop_create_scrolled_window (GkbPropertyBoxInfo *pbi);
+GtkWidget * gkb_prop_create_scrolled_window (GkbPropertyBoxInfo *pbi, GtkWidget *label);
        void gkb_prop_list_reload (GkbPropertyBoxInfo *pbi);
 
 /* system.c */

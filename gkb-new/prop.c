@@ -460,11 +460,13 @@ gkb_prop_create_property_box (GkbPropertyBoxInfo * pbi)
   GtkWidget *display_category;
   GtkWidget *hotkey_category;
   GtkWidget *buttons_vbox;
-  GtkWidget *page_1_hbox;
+  GtkWidget *page_1_vbox;
   GtkWidget *page_2_vbox;
   GtkWidget *scrolled_window;
   GtkWidget *page_1_label;
   GtkWidget *page_2_label;
+  GtkWidget *label;
+  GtkWidget *hbox;
 
   /* Create property box */
   propwindow = gtk_dialog_new_with_buttons (_("Keyboard Layout Switcher Preferences"), NULL,
@@ -484,17 +486,23 @@ gkb_prop_create_property_box (GkbPropertyBoxInfo * pbi)
   gtk_widget_show (propnotebook);
 
   /* Add page 1 */
-  page_1_hbox = gtk_hbox_new (FALSE, 6);
-  gtk_container_set_border_width (GTK_CONTAINER (page_1_hbox), 12);
-  gtk_widget_show (page_1_hbox);
+  page_1_vbox = gtk_vbox_new (FALSE, 6);
+  gtk_container_set_border_width (GTK_CONTAINER (page_1_vbox), 12);
+  gtk_widget_show (page_1_vbox);
   page_1_label = gtk_label_new (_("Keyboards"));
-  gtk_notebook_append_page (GTK_NOTEBOOK (propnotebook), page_1_hbox, page_1_label);
+  gtk_notebook_append_page (GTK_NOTEBOOK (propnotebook), page_1_vbox, page_1_label);
 
   /* Page 1 Frame */
-  scrolled_window = gkb_prop_create_scrolled_window (pbi);
+  label = gtk_label_new_with_mnemonic (_("_Keyboards:"));
+  scrolled_window = gkb_prop_create_scrolled_window (pbi, label);
   buttons_vbox = gkb_prop_create_buttons_vbox (pbi);
-  gtk_box_pack_start (GTK_BOX (page_1_hbox), scrolled_window, TRUE, TRUE, 0);
-  gtk_box_pack_start (GTK_BOX (page_1_hbox), buttons_vbox, FALSE, TRUE, 0);
+  hbox = gtk_hbox_new (FALSE, 6); 
+  gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
+  gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5); 
+  gtk_box_pack_start (GTK_BOX (page_1_vbox), label, FALSE, FALSE, 0);
+  gtk_box_pack_start (GTK_BOX (hbox), scrolled_window, TRUE, TRUE, 0);
+  gtk_box_pack_start (GTK_BOX (page_1_vbox), hbox, TRUE, TRUE, 0);
+  gtk_box_pack_start (GTK_BOX (hbox), buttons_vbox, FALSE, TRUE, 0);
 
   /* Add page 2 */
   page_2_vbox = gtk_vbox_new (FALSE, 18);

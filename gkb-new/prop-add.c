@@ -88,6 +88,7 @@ tree_create (GtkTreeStore *model)
   column = gtk_tree_view_column_new_with_attributes (_("Keyboards (select and press add)"), cell,
                                                            "text", 0, NULL);
 
+  gtk_tree_view_set_headers_visible (GTK_TREE_VIEW (tree1), FALSE);
   gtk_tree_view_append_column (GTK_TREE_VIEW (tree1), column);
  
   while ((sets = g_list_next (sets)) != NULL)
@@ -410,6 +411,7 @@ gkb_prop_map_add (GkbPropertyBoxInfo * pbi)
   GtkWidget *tree1;
   GtkWidget *button;
   GtkWidget *scrolled1;
+  GtkWidget *label;
   GtkTreeSelection *selection;
   GKB *gkb = pbi->gkb;
  
@@ -439,11 +441,18 @@ gkb_prop_map_add (GkbPropertyBoxInfo * pbi)
   gtk_object_set_data (GTK_OBJECT (gkb->addwindow), "addbutton",
 		       button);
   
-  vbox1 = GTK_DIALOG (gkb->addwindow)->vbox;
+  vbox1 = gtk_vbox_new (FALSE, 6); 
+  gtk_box_pack_start (GTK_BOX (GTK_DIALOG (gkb->addwindow)->vbox), vbox1, FALSE, FALSE, 0);
+  gtk_container_set_border_width (GTK_CONTAINER (vbox1), 12);
   gtk_widget_show (vbox1);
   
+  label = gtk_label_new_with_mnemonic (_("_Keyboards (select and press add):"));
+  gtk_box_pack_start (GTK_BOX (vbox1), label, FALSE, FALSE, 0);
+  gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
+  gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+  gtk_widget_show (label);
+  
   scrolled1 = gtk_scrolled_window_new (NULL, NULL);
-  gtk_container_set_border_width (GTK_CONTAINER (scrolled1), 12);
   gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled1),
 				  GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
   gtk_widget_set_usize (scrolled1, 315, 202);
@@ -455,6 +464,7 @@ gkb_prop_map_add (GkbPropertyBoxInfo * pbi)
                G_TYPE_STRING, G_TYPE_STRING); 
 
   tree1 = tree_create (pbi->model);
+  gtk_label_set_mnemonic_widget (GTK_LABEL (label), tree1);
 
   gtk_widget_show (tree1);
 

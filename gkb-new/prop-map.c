@@ -269,14 +269,14 @@ gkb_prop_map_edit (GkbPropertyBoxInfo * pbi)
   mdi->dialog = gtk_dialog_new_with_buttons (_("Edit Keyboard"), NULL,
   				GTK_DIALOG_DESTROY_WITH_PARENT,
   				GTK_STOCK_HELP, GTK_RESPONSE_HELP,
-  				GTK_STOCK_OK, GTK_RESPONSE_OK,
+  				GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
   				NULL);
 
   gtk_window_set_transient_for (GTK_WINDOW (mdi->dialog), GTK_WINDOW (pbi->box));
   gtk_window_set_modal (GTK_WINDOW (mdi->dialog), TRUE);
 
   gtk_dialog_set_has_separator (GTK_DIALOG (mdi->dialog), FALSE);
-  gtk_dialog_set_default_response (GTK_DIALOG (mdi->dialog), GTK_RESPONSE_OK);
+  gtk_dialog_set_default_response (GTK_DIALOG (mdi->dialog), GTK_RESPONSE_CLOSE);
   gtk_window_set_resizable (GTK_WINDOW (mdi->dialog), FALSE);
 
   vbox1 = gtk_vbox_new (FALSE, 0);
