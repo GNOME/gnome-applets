@@ -21,6 +21,11 @@
 #include "popcheck.h"
 
 #define TIMEOUT 120
+
+#ifdef ENABLE_IPV6
+static gboolean have_ipv6(void);
+#endif
+
 static int get_server_port(const char *);
 static char* get_server_hostname(const char *);
 static int connect_socket(const char *, int);
@@ -31,10 +36,37 @@ static int is_imap_answer_untagged(const char *);
 static int is_imap_answer_ok(const char *);
 static char *wait_for_imap_answer(int, char *);
 
+#ifdef ENABLE_IPV6
+/*Check whether the node is IPv6 enabled.*/
+static gboolean have_ipv6(void)
+ {
+  int s;
+
+  s = socket(AF_INET6, SOCK_STREAM, 0);
+  if (s != -1) {
+   close(s);
+   return TRUE;
+  }
+  return FALSE;
+ }
+#endif
+
 static int get_server_port(const char *h)
  {
   char *x;
-  x = strchr(h, ':');
+  int cnt;
+
+  for (cnt = 0, x = h; *x; x++) {
+   if (*x == ':')
+     cnt ++;
+  }
+
+  x = strchr(h, ']');
+  if (x)
+   x = strchr(x, ':');
+  else
+   x = (cnt < 2) ? strchr(h, ':') : NULL;
+
   if (x)
    {
     return atoi(x+1);
@@ -45,25 +77,53 @@ static int get_server_port(const char *h)
  
 static char* get_server_hostname(const char *h)
  {
-  char *e;
+  char *e, *n;
+  int cnt;
   if (!h) return 0;
   
-  e = strchr(h, ':');
-  if (e)
+  for (cnt = 0, n = h; *n; n++) {
+   if (*n == ':')
+     cnt ++;
+  }
+
+  e = NULL;
+  n = strchr(h, ']');
+  if (n)
+   e = strchr(n, ':');
+  else {
+   if (cnt < 2)
+     e = strchr(h, ':');
+  }
+
+  if (e) 
    {
     char *x;
-    int l = e-h;
+    int l;
+    l = (n == NULL) ? (e-h) : (n-h-1);
+
     x = g_malloc(l+5);
-    strncpy(x, h, l);
+    if (n == NULL)
+      strncpy(x, h, l);
+    else
+      strncpy(x, h+1, l);
+
     x[l] = 0;
     return x;
    }
-  else
-   return strcpy((char*) g_malloc(strlen(h)+1), h); 
+  else 
+   {
+    if (n == NULL)
+      return strcpy((char*) g_malloc(strlen(h)+1), h); 
+    else 
+      return strncpy((char*) g_malloc(strlen(h)-1), h+1, n-h-1);
+   } 
  }
 
 static int connect_socket(const char *h, int def)
  {
+#if defined (ENABLE_IPV6) && defined (HAVE_GETADDRINFO)
+  struct addrinfo hints, *res, *result;
+#endif
   struct hostent *he;
   struct sockaddr_in peer;
   int fd, p;
@@ -79,30 +139,85 @@ static int connect_socket(const char *h, int def)
   p = get_server_port(h); 
   if (p == 0) p = def;
 
-  he = gethostbyname(hn);
-  g_free(hn);
-  
-  if (!he) {
-   if (h_errno == HOST_NOT_FOUND)
-     return INVALID_SERVER;
-   else
-     return NETWORK_ERROR;
-  }
+#if defined (ENABLE_IPV6) && defined (HAVE_GETADDRINFO)
+  result = NULL;
+  if (have_ipv6()) {
+   int status;
 
-  fd = socket(PF_INET, SOCK_STREAM, 0);
-  if (fd < 0) 
-   return NETWORK_ERROR;
+   fd = 0;
+   status = 0;
 
-  peer.sin_family = AF_INET;
-  peer.sin_port = htons(p);
-  peer.sin_addr = *(struct in_addr*) he->h_addr;
+   memset(&hints, 0, sizeof(hints));
+   hints.ai_socktype = SOCK_STREAM;
+   hints.ai_flags = AI_CANONNAME;
 
-  if (connect(fd, (struct sockaddr*) &peer, sizeof(peer)) < 0) 
-   {
-    close(fd);
-    return NETWORK_ERROR;
+   if (getaddrinfo(hn, NULL, &hints, &result) != 0) {
+     g_free(hn);
+
+     if (result == NULL) 
+       return INVALID_SERVER;
+     else 
+       return NETWORK_ERROR;
+   }
+
+   for (res = result; res; res = res->ai_next) {
+     if (res->ai_family != AF_INET6 && res->ai_family != AF_INET)
+       continue;
+
+     fd = socket(res->ai_family, SOCK_STREAM, 0);
+     if (fd < 0)
+       continue;
+
+     if (res->ai_family == AF_INET)
+       ((struct sockaddr_in *)res->ai_addr)->sin_port = htons(p);
+
+     if (res->ai_family == AF_INET6) 
+       ((struct sockaddr_in6 *)res->ai_addr)->sin6_port = htons(p);
+
+     status = connect(fd, res->ai_addr, res->ai_addrlen);
+     if (status != -1)
+       break;
+
+     close(fd);
    }
    
+   freeaddrinfo(result);
+
+   if (!res) {
+     if (fd < 0 || status < 0)
+       return NETWORK_ERROR;
+     else
+       return INVALID_SERVER;
+   }
+  }
+  else
+#endif
+   {
+    he = gethostbyname(hn);
+    g_free(hn);
+
+    if (!he) {
+     if (h_errno == HOST_NOT_FOUND)
+       return INVALID_SERVER;
+     else
+       return NETWORK_ERROR;
+    }
+
+    fd = socket(PF_INET, SOCK_STREAM, 0);
+    if (fd < 0) 
+      return NETWORK_ERROR;
+
+    peer.sin_family = AF_INET;
+    peer.sin_port = htons(p);
+    peer.sin_addr = *(struct in_addr*) he->h_addr;
+
+    if (connect(fd, (struct sockaddr*) &peer, sizeof(peer)) < 0) 
+     {
+      close(fd);
+      return NETWORK_ERROR;
+     }
+   } /*have_ipv6*/
+
   return fd; 
  }  
 

@@ -1,3 +1,13 @@
+2003-05-28  Shailesh Mittal <shailesh.mittal@wipro.com>
+
+ 	* popcheck.c:
+ 	(have_ipv6): Added to check for runtime IPv6 support.
+ 	(get_server_port): Modified to pick the port out of IPv6 formatted
+ 	host-port string.
+ 	(get_server_hostname): Modified to extract the hostname or address
+ 	out of IPv6 formatted ([host]:port) host-port string.
+ 	(connect_socket): Modified to deal with IPv6 addresses as well.
+
 2003-05-28  Kevin Vandersloot <kfv101@psu.edu>
 
 	* popcheck.c: up to timeout to 2 minutes so that checking doesn't fail if
