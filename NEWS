@@ -1,3 +1,31 @@
+News for gnome-applets-1.4.0.4 release:
+
+- general
+
+	* Updated translations (no, nn, ch_TW, pl + some)
+
+- asclock
+
+	* Removed the timezone stuff from properties since it doesn't
+	really do anything. (Kjartan)
+	* Make it not look for themes in the current dir if run from
+	the commandline. (Kjartan)
+
+- gtik
+
+	* Fix some corruption of stock symbol names. (Kjartan)
+	* Remove some gdk_font_unref() calls that were causing warnings.
+	
+- mixer
+
+	* Patch from David Woodhouse to fall back to PCM if there's no
+	master volume.
+
+- mini-commander
+
+	* Fix some missing strlen() calls in comparisons. (Leif Bergman)
+
+	 
 News for gnome-applets-1.4.0.3 release:
 
 - general
