@@ -144,9 +144,6 @@ static gint
 toggle_button_toggled_cb(GtkWidget *widget, gpointer data)
 {
   charpick_button_cb_data *cb_data = data;
-  gint i;
-  gint rows = cb_data->p_curr_data->properties->rows;
-  gint cols = cb_data->p_curr_data->properties->cols;
   gint button_index = cb_data->button_index;
   gint last_index = cb_data->p_curr_data->last_index;
   if ((GTK_TOGGLE_BUTTON (cb_data->p_curr_data->toggle_buttons[button_index])->active))
@@ -275,6 +272,9 @@ key_press_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
 }
 
 
+/* creates table of buttons, sets up their callbacks, and packs the table in
+   the event box */
+
 void
 build_table(charpick_data *p_curr_data)
 {
@@ -351,7 +351,7 @@ about (AppletWidget *applet, gpointer data)
   GtkWidget *about_box;
 
   about_box = gnome_about_new (_("Character Picker"),
-			       VERSION,
+			       CHARPICK_VERSION,
 			       _("Copyright (C) 1998"),
 			       authors,
 			       _("Gnome Panel applet for selecting strange "
@@ -367,12 +367,12 @@ int
 main (int argc, char *argv[])
 {
   GtkWidget *applet = NULL;
+  GtkWidget *frame = NULL;
   GtkWidget *event_box = NULL;
   GtkWidget *table = NULL;
   GtkWidget *toggle_button[9];
   GtkWidget *label[9];
   gint rows, cols;
-  int      i;
   /* initialize properties. when sm is added, these will be loaded
    * rather than simply copied from the defaults.
    */
@@ -407,6 +407,7 @@ main (int argc, char *argv[])
   curr_data.labels = label;
   curr_data.table = table;
   curr_data.event_box = event_box;
+  curr_data.frame = frame;
   curr_data.applet = applet;
   curr_data.properties = &default_properties;
   rows = default_properties.rows;
@@ -417,7 +418,7 @@ main (int argc, char *argv[])
   bindtextdomain (PACKAGE, GNOMELOCALEDIR);
   textdomain (PACKAGE);
   /* initialize applet */
-  applet_widget_init("charpick_applet", VERSION, argc, argv,
+  applet_widget_init("charpick_applet", CHARPICK_VERSION, argc, argv,
 			      NULL, 0, NULL);
 
   /* create a new applet_widget*/
@@ -435,9 +436,10 @@ main (int argc, char *argv[])
   GTK_WIDGET_SET_FLAGS (event_box, GTK_CAN_FOCUS);
 
   /* Create table */
-  build_table(&curr_data);
-
-  /*gtk_widget_grab_focus(event_box);*/
+  build_table (&curr_data);
+  frame = gtk_frame_new (NULL);
+  gtk_container_add (GTK_CONTAINER(frame), event_box);
+  gtk_frame_set_shadow_type (GTK_FRAME(frame), GTK_SHADOW_IN);
 
   /* Event signals */
   gtk_signal_connect (GTK_OBJECT (event_box), "key_press_event",
@@ -482,9 +484,10 @@ main (int argc, char *argv[])
 					 property_show,
 					 &curr_data);
 
-  applet_widget_add (APPLET_WIDGET (applet), event_box);
-  gtk_widget_show (event_box);
-  gtk_widget_show (applet);
+
+  
+  applet_widget_add (APPLET_WIDGET (applet), frame);
+  gtk_widget_show_all (applet);
   applet_widget_gtk_main ();
 
   return 0;

@@ -3,6 +3,7 @@
 #include <config.h>
 #include <gnome.h>
 #include <applet-widget.h>
+#define CHARPICK_VERSION "0.04"
 #define NO_LAST_INDEX -1
 #define DEFAULT_ROWS 2
 #define DEFAULT_COLS 4
@@ -31,6 +32,7 @@ struct _charpick_data {
   GtkWidget * *labels;
   GtkWidget *table;
   GtkWidget *event_box;
+  GtkWidget *frame;
   GtkWidget *applet;
   charpick_persistant_properties * properties;
 };
