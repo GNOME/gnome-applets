@@ -733,7 +733,6 @@ destroy_applet( GtkWidget *widget, gpointer data )
   g_free(pdata);
 
   return;
-  widget = NULL;
 }
 
 void
@@ -801,7 +800,6 @@ destroy_about (GtkWidget *w, gpointer data)
   battstat->about_box = NULL;
 
   return;
-  w = NULL;
 }
 
 void
@@ -840,7 +838,6 @@ about_cb (AppletWidget *widget, gpointer data)
 
   gtk_widget_show (battstat->about_box);
   return;
-  widget = NULL;
 }
 
 
@@ -876,7 +873,6 @@ applet_save_session(GtkWidget *w,
   gnome_config_drop_all ();
 
   return FALSE;
-  w = NULL;
 }
 
 void
@@ -1139,8 +1135,6 @@ font_set_cb (GtkWidget *ignored, int page, gpointer data)
   gnome_property_box_changed (GNOME_PROPERTY_BOX (battstat->prop_win));
 
   return;
-  ignored = NULL;
-  page = 0;
 }
 
 void
@@ -1235,7 +1229,6 @@ simul_cb(GtkWidget *ignored, gpointer data)
 
   }
   return;
-  ignored = NULL;
 }
 
 void
@@ -1287,7 +1280,6 @@ toggle_value_changed_cb ( GtkToggleButton *ignored, gpointer data )
   }
   gnome_property_box_changed (GNOME_PROPERTY_BOX (battstat->prop_win));
   return;
-  ignored = NULL;
 }
 
 
