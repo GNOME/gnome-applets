@@ -81,7 +81,6 @@ void set_diskusage_tooltip ()
 	gchar *tooltip;
 
 	cn = summary_info.n_filesystems;
-
 	l=0;
 	for (i = 0; i < cn; i++)
 		l += strlen(summary_info.filesystems[i].mount_dir);
@@ -100,6 +99,9 @@ void set_diskusage_tooltip ()
 	printf ("%s \n", tooltip);
 #endif
 	applet_widget_set_tooltip (APPLET_WIDGET(my_applet), tooltip);
+
+	free (tooltip);
+
 }
 
 
