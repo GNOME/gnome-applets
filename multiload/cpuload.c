@@ -27,9 +27,6 @@ static gint
 applet_save_session (GtkWidget *widget, char *privcfgpath,
 		     char *globcfgpath, gpointer data)
 {
-#if 0
-	save_cpu_properties (privcfgpath, &cpu_props);
-#endif
 	return FALSE;
 }
 
@@ -46,10 +43,6 @@ make_cpuload_applet (const gchar *goad_id)
        failed, error out */
     if (!applet)
 	g_error ("Can't create applet!\n");
-
-#if 0
-    load_cpu_properties (APPLET_WIDGET(applet)->privcfgpath, &cpu_props);
-#endif
 
     g = load_graph_new (4, N_("CPU Load"), &multiload_properties.cpuload,
 			500, 40, 40, GetLoad);

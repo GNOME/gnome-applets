@@ -27,9 +27,6 @@ static gint
 applet_save_session (GtkWidget *widget, char *privcfgpath,
 		     char *globcfgpath, gpointer data)
 {
-#if 0
-	save_mem_properties (privcfgpath, &mem_props);
-#endif
 	return FALSE;
 }
 
@@ -46,10 +43,6 @@ make_memload_applet (const gchar *goad_id)
        failed, error out */
     if (!applet)
 	g_error ("Can't create applet!\n");
-
-#if 0
-    load_mem_properties (APPLET_WIDGET(applet)->privcfgpath, &mem_props);
-#endif
 
     g = load_graph_new (4, N_("Memory Load"), &multiload_properties.memload,
 			500, 40, 40, GetMemory);

@@ -23,8 +23,6 @@
 
 #include "global.h"
 
-FILE *logfile;
-
 static const gchar *cpu_texts [4] = {
     N_("User"),  N_("Nice"),   N_("System"),  N_("Idle")
 };
@@ -75,23 +73,15 @@ applet_start_new_applet (const gchar *goad_id, const char **params, int nparams)
 int
 main (int argc, char **argv)
 {
-    GList *list = NULL, *c;
     const char *goad_id;
+    GList *c;
 
     /* Initialize the i18n stuff */
     bindtextdomain (PACKAGE, GNOMELOCALEDIR);
     textdomain (PACKAGE);
 
-    logfile = fopen ("/var/tmp/test", "a");
-    if (!logfile)
-	g_error ("Can't open logfile");
-
-    list = g_list_prepend(list,"multiload_cpuload_applet");
-    list = g_list_prepend(list,"multiload_memload_applet");
-    list = g_list_prepend(list,"multiload_swapload_applet");
     applet_widget_init ("multiload_applet", VERSION, argc, argv, NULL, 0, NULL);
-    applet_factory_new("multiload_applet", NULL, applet_start_new_applet);
-    g_list_free(list);
+    applet_factory_new ("multiload_applet", NULL, applet_start_new_applet);
 
     goad_id = goad_server_activation_id();
     if(!goad_id)
@@ -149,7 +139,7 @@ main (int argc, char **argv)
 
     /* Only do if factory wasn't requested. */
     if(strcmp(goad_id, "multiload_applet"))
-	    make_new_applet(goad_id);
+	make_new_applet(goad_id);
 
     applet_widget_gtk_main ();
 	

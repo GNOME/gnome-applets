@@ -27,9 +27,6 @@ make_swapload_applet (const gchar *goad_id);
 void
 multiload_properties_cb (AppletWidget *widget, gpointer data);
 
-/* Logfile. */
-extern FILE *logfile;
-
 /* Load graph properties descriptor. */
 extern GnomePropertyDescriptor LoadGraphProperty_Descriptor;
 

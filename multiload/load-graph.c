@@ -309,10 +309,6 @@ load_graph_new (guint n, gchar *label, LoadGraphProperties *prop_data,
     gtk_widget_show (box);
 
     g->frame = gtk_frame_new (NULL);
-#if 0
-    gtk_frame_set_shadow_type (GTK_FRAME (g->frame),
-			       cpu_props.look?GTK_SHADOW_OUT:GTK_SHADOW_IN);
-#endif
 
     g->disp = gtk_drawing_area_new ();
     gtk_signal_connect (GTK_OBJECT (g->disp), "expose_event",
@@ -337,8 +333,6 @@ load_graph_start (LoadGraph *g)
 {
     if (g->timer_index != -1)
 	gtk_timeout_remove (g->timer_index);
-
-    fprintf (stderr, "load_graph_start: %ld\n", g->prop_data->adj_data [0]);
 
     g->timer_index = gtk_timeout_add (g->prop_data->adj_data [0],
 				      (GtkFunction)load_graph_draw, g);

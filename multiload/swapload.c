@@ -27,9 +27,6 @@ static gint
 applet_save_session (GtkWidget *widget, char *privcfgpath,
 		     char *globcfgpath, gpointer data)
 {
-#if 0
-	save_swap_properties (privcfgpath, &swap_props);
-#endif
 	return FALSE;
 }
 
@@ -46,10 +43,6 @@ make_swapload_applet (const gchar *goad_id)
        failed, error out */
     if (!applet)
 	g_error ("Can't create applet!\n");
-
-#if 0
-    load_swap_properties (APPLET_WIDGET(applet)->privcfgpath, &swap_props);
-#endif
 
     g = load_graph_new (2, N_("Swap Load"), &multiload_properties.swapload,
 			500, 40, 40, GetSwap);
