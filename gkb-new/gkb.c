@@ -770,15 +770,9 @@ static const BonoboUIVerb gkb_menu_verbs [] = {
 	BONOBO_UI_VERB_END
 };
 
-static void gkb_destroy (GtkWidget * widget, gpointer data) {
-	gchar *cmd;
+static void gkb_destroy (GtkWidget * widget, gpointer data)
+{
 	GKB *gkb = (GKB *)data;
-
-	/* restore the default keymap before exiting */
-	cmd = g_strdup_printf ("xmodmap %s/.gkb_default.xmm", g_get_home_dir ());
-	system (cmd);
-	g_free (cmd);
-
 	g_free(gkb);
 }
 
