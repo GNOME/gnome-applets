@@ -39,7 +39,11 @@ static void applet_change_back(GtkWidget *applet, PanelBackType type, char *pixm
 static void destroy_applet(GtkWidget *widget, gpointer data);
 static AppData *create_new_app(GtkWidget *applet);
 static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data);
+
+#ifdef HAVE_PANEL_SIZE
 static void applet_change_size(GtkWidget *w, PanelSizeType s, gpointer data);
+#endif
+
 static gint applet_save_session(GtkWidget *widget, char *privcfgpath,
 					char *globcfgpath, gpointer data);
 static GtkWidget * applet_start_new_applet(const gchar *goad_id, const char **params, int nparams);
@@ -513,8 +517,11 @@ static AppData *create_new_app(GtkWidget *applet)
 
 	gtk_signal_connect(GTK_OBJECT(ad->applet),"change_orient",
 		GTK_SIGNAL_FUNC(applet_change_orient), ad);
+
+#ifdef HAVE_PANEL_SIZE
 	gtk_signal_connect(GTK_OBJECT(ad->applet),"change_size",
 		GTK_SIGNAL_FUNC(applet_change_size), ad);
+#endif
 
 	gtk_widget_set_usize(ad->applet, 5, 5); /* so that a large default is not shown */
 	gtk_widget_show(ad->applet);
@@ -555,6 +562,7 @@ static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
 	reload_skin(ad);
 }
 
+#ifdef HAVE_PANEL_SIZE
 static void applet_change_size(GtkWidget *w, PanelSizeType s, gpointer data)
 {
 	AppData *ad = data;
@@ -577,6 +585,7 @@ static void applet_change_size(GtkWidget *w, PanelSizeType s, gpointer data)
 
 	reload_skin(ad);
 }
+#endif
 
 static gint applet_save_session(GtkWidget *widget, gchar *privcfgpath,
 					gchar *globcfgpath, gpointer data)
