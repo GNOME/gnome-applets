@@ -60,7 +60,6 @@
 
 GtkObject *statusdock;
 
-guint acline_status=-1;
 int pixel_offset_top[]={ 5, 5, 6, 6, 6, 6, 6, 6, 6, 6, 5, 5 };
 int pixel_top_length[]={ 2, 3, 4, 4, 4, 4, 4, 4, 4, 4, 3, 2 };
 int pixel_offset_bottom[]={ 38, 38, 39, 39, 39, 39, 39, 39, 39, 39, 38, 38 };
@@ -306,13 +305,16 @@ pixmap_timeout( gpointer data )
   static guint last_batt_life=1000;
   static guint last_acline_status=1000;
   static guint last_batt_state=1000;
-  guint acline_status_new=1000;
+  static guint last_pixmap_index=1000;
+  static guint last_charging=1000;
+  guint batt_life;
+  guint acline_status;
+  guint batt_state;
   guint progress_value;
-  gint batt_life;
-  gint batt_time;
-  gint batt_state;
+  guint pixmap_index;
+  guint charging;
   gint i, x;
-  gboolean batterypresent=FALSE;
+  gboolean batterypresent;
   gchar new_label[80];
   gchar new_string[80];
   gchar *status[]={
@@ -346,152 +348,136 @@ pixmap_timeout( gpointer data )
       3 = Charging
   */
 
-  apm_readinfo();
+   apm_readinfo();
+   batterypresent = TRUE;
 #ifdef __FreeBSD__
-  acline_status_new = apminfo.ai_acline;
-  batt_life = apminfo.ai_batt_life;
-  batt_state = apminfo.ai_batt_stat;
-  if(acline_status_new < 0) acline_status_new = 0;
-  if(batt_life > 100) batt_life = 0;
-  if(batt_state == 255) {
-    batt_state = 0;
-    batterypresent = FALSE;
-  } else {
-    batterypresent = TRUE;
-  }
+   acline_status = apminfo.ai_acline ? 1 : 0;
+   batt_state = apminfo.ai_batt_stat;
+   batt_life = apminfo.ai_batt_life;
+   charging = (batt_state == 3) ? TRUE : FALSE;
 #elif __OpenBSD__
-  acline_status_new = apminfo.ac_state;
-  batt_life = apminfo.battery_life;
-  batt_state = apminfo.battery_state;
-  if(acline_status_new < 0) acline_status_new = 0;
-  if(batt_life > 100) batt_life = 0;
-  if(batt_state == APM_AC_ON) {
-    batt_state = 0;
-    batterypresent = FALSE;
-  } else {
-    batterypresent = TRUE;
-  }
+   acline_status = apminfo.ac_state ? 1 : 0;
+   batt_state = apminfo.battery_state;
+   batt_life = apminfo.battery_life;
+   charging = (batt_state == 3) ? TRUE : FALSE;
 #elif __linux__
-  acline_status_new = apminfo.ac_line_status;
-  batt_life = apminfo.battery_percentage;
-  batt_state = apminfo.battery_status;
-  batt_time = apminfo.battery_time;
-
-  if(acline_status_new == 255) acline_status_new = 0;
-  if(batt_life < 0) batt_life = 0;
-  if(batt_state == 255) {
+   acline_status = apminfo.ac_line_status ? 1 : 0;
+   batt_state = apminfo.battery_status;
+   batt_life = (guint) apminfo.battery_percentage;
+   charging = (apminfo.battery_flags & 0x8) ? TRUE : FALSE;
+#else
+   acline_status = 1;
+   batt_state = 0;
+   batt_life = 100;
+   charging = TRUE;
+   batterypresent = FALSE;
+#endif
+  if(batt_state > 3) {
     batt_state = 0;
     batterypresent = FALSE;
-  } else {
-    batterypresent = TRUE;
   }
-#else
-  acline_status_new = 1;
-  batt_life = 100;
-  batt_state = 0;
-  batterypresent = TRUE;
-#endif
-  
-  if (acline_status_new != acline_status) {
-    acline_status=acline_status_new;
-    if (acline_status==BATTERY) {
-      if (batt_life <= battery->red_val) {
-	 acline_status=WARNING;
-	 gtk_pixmap_set(GTK_PIXMAP (battery->statuspixmapwid),
-			statusimage[WARNING], statusmask[WARNING]);
-	 gtk_pixmap_set(GTK_PIXMAP (battery->pixmapdockwid),
-			statusimage[WARNING], statusmask[WARNING]);
-      } else if (batt_life > battery->red_val) {
-	 acline_status=BATTERY;
-	 gtk_pixmap_set(GTK_PIXMAP (battery->statuspixmapwid),
-			statusimage[BATTERY], statusmask[BATTERY]);
-	 gtk_pixmap_set(GTK_PIXMAP (battery->pixmapdockwid),
-			statusimage[BATTERY], statusmask[BATTERY]);
-      }
-    } else {
-       acline_status=AC;
-       gtk_pixmap_set(GTK_PIXMAP (battery->statuspixmapwid),
-		      statusimage[AC], statusmask[AC]);
-       gtk_pixmap_set(GTK_PIXMAP (battery->pixmapdockwid),
-		      statusimage[AC], statusmask[AC]);
-    }
+  if(batt_life == (guint)-1) {
+    batt_life = 0;
+    batterypresent = FALSE;
   }
-   
-   if(batt_state == 3 || flash == TRUE) {
-      flash^=-1;
-      if(flash) {
-	 acline_status=FLASH;
-      } else {
-	 acline_status=AC;
-      }
+  if(batt_life > 100) batt_life = 100;
+  if(batt_life == 100) charging = FALSE;
+  if(!acline_status) charging = FALSE;
+ 
+   flash = flash ? FALSE : TRUE;
+
+   pixmap_index = (acline_status) ?
+              (charging && flash ? FLASH : AC) :
+              (batt_life <= battery->red_val ? WARNING : BATTERY)
+   ;
+
+   if ( pixmap_index != last_pixmap_index ) {
       gtk_pixmap_set(GTK_PIXMAP (battery->statuspixmapwid),
-		     statusimage[acline_status], statusmask[acline_status]);
+                     statusimage[pixmap_index], statusmask[pixmap_index]);
       gtk_pixmap_set(GTK_PIXMAP (battery->pixmapdockwid),
-		     statusimage[acline_status], statusmask[acline_status]);
-      
-   } else if (batt_state != 3 && acline_status == FLASH) {
-      acline_status=AC;
-      gtk_pixmap_set(GTK_PIXMAP (battery->statuspixmapwid),
-		     statusimage[AC], statusmask[AC]);
-      gtk_pixmap_set(GTK_PIXMAP (battery->pixmapdockwid),
-		     statusimage[AC], statusmask[AC]);
-      
+                     statusimage[pixmap_index], statusmask[pixmap_index]);
    }
-   
-   
-   if(acline_status_new != last_acline_status) {
-      if(battery->showbattery == 0 && battery->showpercent == 0) {
-	 if(acline_status_new == 0) {
-	    /* 0 = Battery power */
+
+   if(
+     !last_acline_status
+     && !acline_status
+     && last_batt_life > battery->red_val
+     && batt_life <= battery->red_val
+   ) {
+      /* Warn that battery dropped below red_val */
+      if(battery->lowbattnotification) {
+         snprintf(new_label, sizeof(new_label),_("Battery low (%d%%) and AC is offline"),
+                  batt_life);
+         gnome_warning_dialog(new_label);
+    
+         if(battery->beep)
+            gdk_beep();
+    
+          battery->lowbattnotification=FALSE;
+      }
+      gnome_triggers_do ("", NULL, "battstat_applet", "LowBattery", NULL);
+   }
+
+   if(
+      last_charging
+      && last_acline_status
+      && last_acline_status!=1000
+      && !charging 
+      && acline_status
+      && batterypresent
+   ) {
+      /* Inform that battery now fully charged */
+      gnome_triggers_do ("", NULL, "battstat_applet", "BatteryFull", NULL);
+      if(battery->fullbattnot) {
+         gnome_ok_dialog( _("Battery is now fully re-charged!"));
+         if (battery->beep)
+            gdk_beep();
+       }
+   }
+
+   if(
+      acline_status != last_acline_status
+      || batt_life != last_batt_life
+      || batt_state != last_batt_state
+      || battery->colors_changed )
+   {
+      /* Something changed */
+
+      /* Update the tooltip */
+
+      if(!battery->showbattery && !battery->showpercent) {
+	 if(acline_status == 0) {
 	    snprintf(new_label, sizeof(new_label),
-		     /* This string will display as a tooltip over the status frame
-		      when the computer is using battery power and the battery meter
-		      and percent meter is hidden by the user.*/
 		     _("System is running on battery power\nBattery: %d%% (%s)"),
 		     batt_life, _(status[batt_state]));
 	 } else {
-	    /* 1 = AC power. I should really test it explicitly here. */
 	    snprintf(new_label, sizeof(new_label),
-		     /* This string will display as a tooltip over the status frame
-		      when the computer is using AC power and the battery meter
-		      and percent meter is hidden by the user.*/
 		     _("System is running on AC power\nBattery: %d%% (%s)"),
 		     batt_life, _(status[batt_state]));
 	 }
       } else {
-	 if(acline_status_new == 0) {
-	    /* 0 = Battery power */
+	 if(acline_status == 0) {
 	    snprintf(new_label, sizeof(new_label),
-		     /* This string will display as a tooltip over the status frame
-		      when the computer is using battery power.*/
 		     _("System is running on battery power"));
 	 } else {
-	    /* 1 = AC power. I should really test it explicitly here. */
 	    snprintf(new_label, sizeof(new_label),
-		     /* This string will display as a tooltip over the status frame
-		      when the computer is using AC power.*/
 		     _("System is running on AC power"));
 	 }
       }
+
       gtk_tooltips_set_tip (battery->ac_tip,
 			    battery->eventstatus,
 			    new_label,
 			    NULL);
-   }
-   last_acline_status = acline_status_new;
    
-   if(batt_life != last_batt_life || battery->colors_changed) {
       /* Update the battery meter, tooltip and label */
       
       if (batterypresent) {
 	 snprintf(new_label, sizeof(new_label),"%d%%", batt_life);
       } else {
-	 /* Displayed in the percentage label at the side of the battery meter
-	  * if the applet discovers that you have removed the battery
-	  * from the system and it only runs on AC power.
-	  */
 	 snprintf(new_label, sizeof(new_label),_("N/A"));
       }
+
       gtk_label_set_text ( GTK_LABEL (battery->percent), new_label);
       gtk_label_set_text ( GTK_LABEL (battery->statuspercent), new_label);
       
@@ -509,7 +495,7 @@ pixmap_timeout( gpointer data )
 	 darkcolor=darkgreen;
       }
       
-      if(battery->showbattery != 0) {
+      if(battery->showbattery) {
 	 if(battery->horizont)
 	   gdk_draw_pixmap(battery->pixmap,
 			   battery->pixgc,
@@ -531,20 +517,16 @@ pixmap_timeout( gpointer data )
 	    for(i=0; color[i].pixel!=-1; i++) {
 	       gdk_gc_set_foreground(battery->pixgc, &color[i]);
 	       if(battery->horizont) {
-		  if(batt_life > 0) {
-		     gdk_draw_line (battery->pixmap,
-				    battery->pixgc,
-				    pixel_offset_top[i], i+2,
-				    pixel_offset_top[i]+progress_value, i+2);
-		  }
+		  gdk_draw_line (battery->pixmap,
+				 battery->pixgc,
+				 pixel_offset_top[i], i+2,
+				 pixel_offset_top[i]+progress_value, i+2);
 	       }
 	       else {
-		  if(batt_life > 0) {
-		     gdk_draw_line (battery->pixmapy,
-				    battery->pixgc,
-				    i+2, pixel_offset_top[i],
-				    i+2, pixel_offset_top[i]+progress_value);
-		  }
+		  gdk_draw_line (battery->pixmapy,
+				 battery->pixgc,
+				 i+2, pixel_offset_top[i],
+				 i+2, pixel_offset_top[i]+progress_value);
 	       }
 	    }
 	    
@@ -568,20 +550,16 @@ pixmap_timeout( gpointer data )
 	    for(i=0; color[i].pixel!=-1; i++) {
 	       gdk_gc_set_foreground(battery->pixgc, &color[i]);
 	       if(battery->horizont) {
-		  if(batt_life > 0) {
-		     gdk_draw_line (battery->pixmap,
-				    battery->pixgc,
-				    pixel_offset_bottom[i], i+2,
-				    pixel_offset_bottom[i]-progress_value, i+2);
-		  }
+		  gdk_draw_line (battery->pixmap,
+				 battery->pixgc,
+				 pixel_offset_bottom[i], i+2,
+				 pixel_offset_bottom[i]-progress_value, i+2);
 	       }
 	       else {
-		  if(batt_life > 0) {
-		     gdk_draw_line (battery->pixmapy,
-				    battery->pixgc,
-				    i+2, pixel_offset_bottom[i]-1,
-				    i+2, pixel_offset_bottom[i]-progress_value);
-		  }
+		  gdk_draw_line (battery->pixmapy,
+				 battery->pixgc,
+				 i+2, pixel_offset_bottom[i]-1,
+				 i+2, pixel_offset_bottom[i]-progress_value);
 	       }
 	    }
 	    for(i=0; darkcolor[i].pixel!=-1; i++) {
@@ -589,21 +567,19 @@ pixmap_timeout( gpointer data )
 	       if(x < pixel_offset_top[i]) {
 		  x = pixel_offset_top[i];
 	       }
-	       if(batt_life > 0) {
-		  if(progress_value < 33) {
-		     gdk_gc_set_foreground(battery->pixgc, &darkcolor[i]);
+	       if(progress_value < 33) {
+		  gdk_gc_set_foreground(battery->pixgc, &darkcolor[i]);
 		     
-		     if(battery->horizont)
-		       gdk_draw_line (battery->pixmap,
-				      battery->pixgc,
-				      (pixel_offset_bottom[i]-progress_value)-1, i+2,
-				      x, i+2);
-		     else
-		       gdk_draw_line (battery->pixmapy,
-				      battery->pixgc,
-				      i+2, (pixel_offset_bottom[i]-progress_value)-1,
-				      i+2, x);
-		  }
+		  if(battery->horizont)
+		     gdk_draw_line (battery->pixmap,
+				    battery->pixgc,
+				    (pixel_offset_bottom[i]-progress_value)-1, i+2,
+				    x, i+2);
+		  else
+		     gdk_draw_line (battery->pixmapy,
+				    battery->pixgc,
+				    i+2, (pixel_offset_bottom[i]-progress_value)-1,
+				    i+2, x);
 	       }
 	    }
 	    
@@ -623,37 +599,10 @@ pixmap_timeout( gpointer data )
 			      -1,-1);
 	 }
       }
-      if(acline_status_new == 0 && batt_life <= battery->red_val) {
-	 if(battery->lowbattnotification) {
-	    if(acline_status_new == 0) {
-	       /* This message will be displayed in a Gnome Warning dialog
-		window when the laptop isn't connected to a power source
-		and the battery charge is dropping below the value
-		specified by the user. */
-	       snprintf(new_label, sizeof(new_label),_("Battery low (%d%%) and AC is offline"),
-			batt_life);
-	    } else {
-	       /* This message will be displayed in a Gnome Warning dialog
-		window when the battery charge is dropping below the
-		value specified by the user. Technically this shouldn't
-		happen if the battery is working properly.*/
-	       snprintf(new_label, sizeof(new_label),_("Battery low (%d%%) and AC is online"),
-			batt_life);
-	    }
-	    gnome_warning_dialog(new_label);
-	    
-	    if(battery->beep)
-	      gdk_beep();
-	    
-	    battery->lowbattnotification=FALSE;
-	 }
-	 gnome_triggers_do ("", NULL, "battstat_applet", "LowBattery", NULL);
-      }
       
       if (battery->showstatus == 0) {
-	 /* Showstatus=0 */
 	 if (batterypresent) {
-	    if(acline_status_new == 0) {
+	    if(acline_status == 0) {
 	       snprintf(new_string, sizeof(new_string), 
 			/* This string will display as a tooltip over the battery frame
 			 when the computer is using battery power.*/
@@ -669,7 +618,7 @@ pixmap_timeout( gpointer data )
 			_(status[batt_state]));
 	    }
 	 } else {
-	    if(acline_status_new == 0) {
+	    if(acline_status == 0) {
 	       snprintf(new_string, sizeof(new_string), 
 			/* This string will display as a tooltip over the
 			 battery frame when the computer is using battery
@@ -685,7 +634,7 @@ pixmap_timeout( gpointer data )
 	    }
 	 }
       } else {
-	 if (batterypresent) 
+	 if (batterypresent) {
 	   snprintf(new_string, sizeof(new_string), 
 		    /* Displayed as a tooltip over the battery meter when there is
 		     a battery present. %d will hold the current charge and %s will
@@ -693,7 +642,7 @@ pixmap_timeout( gpointer data )
 		    (_("Battery: %d%% (%s)")),
 		    batt_life,
 		    _(status[batt_state]));
-	 else {
+	 } else {
 	    snprintf(new_string, sizeof(new_string), 
 		     /* Displayed as a tooltip over the battery meter when no
 		      battery is present. */
@@ -711,23 +660,14 @@ pixmap_timeout( gpointer data )
 			   NULL);
       
       if (DEBUG) printf("Percent: %d, Status: %s\n", batt_life, status[batt_state]);
-      last_batt_life=batt_life;
    }
-   /* acline_status_new: AC line status, 0=Battery, 1=AC online 
-    */
-   if(last_batt_state == 3 && acline_status == 1) {
-      gnome_triggers_do ("", NULL, "battstat_applet", "BatteryFull", NULL);
-      if(battery->fullbattnot) {
-	 gnome_ok_dialog(
-			 /* Displayed in a Gnome OK dialog window when the battery is
-			  fully recharged. */
-			 _("Battery is now fully re-charged!"));
-	 if (battery->beep)
-	   gdk_beep();
-      }
-      last_batt_state=batt_state;
-   }
-   
+
+   last_charging = charging;
+   last_batt_state = batt_state;
+   last_batt_life=batt_life;
+   last_acline_status = acline_status;
+   last_pixmap_index = pixmap_index;
+
    return(TRUE);
 }
 
@@ -877,10 +817,9 @@ change_orient (GtkWidget *w, PanelOrientType o, gpointer data)
 {
    ProgressData *battstat = data;
    gchar new_label[80];
-   guint batt_life;
-   guint acline_status_new=1000;
-   guint batterypresent = FALSE;
+   guint acline_status;
    guint batt_state;
+   guint batt_life;
    gchar *status[]={
       /* The following four messages will be displayed as tooltips over
        the battery meter.  
@@ -896,51 +835,28 @@ change_orient (GtkWidget *w, PanelOrientType o, gpointer data)
    battstat->orienttype=o;
    
    if (DEBUG) g_print("change_orient()\n");
-   
+
    apm_readinfo();
 #ifdef __FreeBSD__
-   acline_status_new = apminfo.ai_acline;
-   batt_life = apminfo.ai_batt_life;
+   acline_status = apminfo.ai_acline ? 1 : 0;
    batt_state = apminfo.ai_batt_stat;
-   if(acline_status_new < 0) acline_status_new = 0;
-   if(batt_life == 255) batt_life = 0;
-   if(batt_state == 255) {
-      batt_state = 0;
-      batterypresent = FALSE;
-   } else {
-      batterypresent = TRUE;
-   }
+   batt_life = apminfo.ai_batt_life;
 #elif __OpenBSD__
-   acline_status_new = apminfo.ac_state;
-   batt_life = apminfo.battery_life;
+   acline_status = apminfo.ac_state ? 1 : 0;
    batt_state = apminfo.battery_state;
-   if(acline_status_new < 0) acline_status_new = 0;
-   if(batt_life > 100) batt_life = 0;
-   if(batt_state == APM_AC_ON) {
-      batt_state = 0;
-      batterypresent = FALSE;
-   } else {
-     batterypresent = TRUE;
-   }
+   batt_life = apminfo.battery_life;
 #elif __linux__
-   acline_status_new = apminfo.ac_line_status;
-   batt_life = apminfo.battery_percentage;
+   acline_status = apminfo.ac_line_status ? 1 : 0;
    batt_state = apminfo.battery_status;
-   if(acline_status_new == 255) acline_status_new = 0;
-   if(batt_life == -1) batt_life = 0;
-   if(batt_state == 255) {
-      batt_state = 0;
-      batterypresent = FALSE;
-   } else {
-      batterypresent = TRUE;
-   }
+   batt_life = apminfo.battery_percentage;
 #else
-   acline_status_new = 1;
-   batt_life = 100;
+   acline_status = 1;
    batt_state = 0;
-   batterypresent = TRUE;
+   batt_life = 100;
 #endif
-   
+   if(batt_state > 3) batt_state = 0;
+   if(batt_life > 100) batt_life = 100;
+
    switch(battstat->orienttype) {
     case ORIENT_UP:
       if(battstat->panelsize<40)
@@ -997,7 +913,7 @@ change_orient (GtkWidget *w, PanelOrientType o, gpointer data)
 	gtk_widget_show (battstat->framebattery):gtk_widget_hide (battstat->framebattery);
       
       if (battstat->showbattery == 0 && battstat->showpercent == 0) {
-	 if(acline_status_new == 0) {
+	 if(acline_status == 0) {
 	    snprintf(new_label, sizeof(new_label),
 		     /* This string will display as a tooltip over the status frame
 		      when the computer is using battery power and the battery meter
@@ -1017,7 +933,7 @@ change_orient (GtkWidget *w, PanelOrientType o, gpointer data)
 			       new_label,
 			       NULL);
       } else {
-	 if(acline_status_new == 0) {
+	 if(acline_status == 0) {
 	    /* 0 = Battery power */
 	    snprintf(new_label, sizeof(new_label),
 		     /* This string will display as a tooltip over the status frame
@@ -1076,7 +992,7 @@ change_orient (GtkWidget *w, PanelOrientType o, gpointer data)
 	 gtk_widget_show (battstat->statuspixmapwid);      
       }
       if(battstat->showbattery == 0 && battstat->showpercent == 0) {
-	 if(acline_status_new == 0) {
+	 if(acline_status == 0) {
 	    /* 0 = Battery power */
 	    snprintf(new_label, sizeof(new_label),
 		     /* This string will display as a tooltip over the status frame
@@ -1098,7 +1014,7 @@ change_orient (GtkWidget *w, PanelOrientType o, gpointer data)
 			       new_label,
 			       NULL);
       } else {
-	 if(acline_status_new == 0) {
+	 if(acline_status == 0) {
 	    /* 0 = Battery power */
 	    snprintf(new_label, sizeof(new_label),
 		     /* This string will display as a tooltip over the status frame

@@ -167,6 +167,14 @@
 	fixes a bug where the applet would draw the battery pixmap even
 	though you'd told the applet to hide it.
 	2001-10-19
-	-Changed variable names to more sane ones.
-	-Changed some if-conditions.
-	
+	- Changed variable names to more sane ones.
+	- Changed some if-conditions.
+	2001-10-26
+	- Applied patch from Thomas Hood <jdthood@mail.com>. Much needed
+	cleanup of certain areas of the code.
+	- Added a test for the Battery full notification to see if there
+	actually is a battery present in the laptop. Otherwise if the
+	laptop was recharging the battery and you would remove it, the
+	applet would claim that the battery was fully recharged even
+	though there wasn't any battery in the laptop at all.
+	- Release of 2.0.12
