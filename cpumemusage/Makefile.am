@@ -10,7 +10,8 @@ INCLUDES = -I. -I$(srcdir) 				\
 	-I$(top_srcdir)/intl -I$(top_builddir)/intl	\
 	-I$(srcdir)/../../panel				\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
-	-I$(includedir) $(GNOME_INCLUDEDIR)
+	-I$(includedir) $(GNOME_INCLUDEDIR)		\
+	-I$(LIBGTOP_INCS)
 
 bin_PROGRAMS = cpumemusage_applet
 
@@ -22,9 +23,10 @@ cpumemusage_applet_SOURCES = \
 	procbar.h
 
 
-cpumemusage_applet_LDADD = ../../panel/libpanel_applet.la \
+cpumemusage_applet_LDADD = -lpanel_applet \
 		     $(GNOME_LIBDIR) $(ORB_LIBS)      \
-		     $(GNOMEUI_LIBS) $(INTLLIBS)
+		     $(GNOMEUI_LIBS) $(INTLLIBS)	\
+		     $(LIBGTOP_LIBS) $(LIBGTOP_EXTRA_LIBS)
 
 cpumemusage_applet_LINK = $(CXXLINK)
 

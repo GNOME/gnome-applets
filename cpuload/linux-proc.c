@@ -4,6 +4,11 @@
 #include <fcntl.h>
 #include <unistd.h>
 
+#include <assert.h>
+
+#include <glibtop.h>
+#include <glibtop/cpu.h>
+
 #include "linux-proc.h"
 
 #define NCPUSTATES 4
@@ -11,31 +16,25 @@
 static long cp_time[NCPUSTATES];
 static long last[NCPUSTATES];
 
-static char *skip_token(const char *p)
-{
-	while (isspace(*p)) p++;
-        while (*p && !isspace(*p)) p++;
-        	return (char *)p;
-}  
+static unsigned needed_cpu_flags =
+(1 << GLIBTOP_CPU_USER) +
+(1 << GLIBTOP_CPU_NICE) +
+(1 << GLIBTOP_CPU_SYS) +
+(1 << GLIBTOP_CPU_IDLE);
 
 void GetLoad(int Maximum, int *usr, int *nice, int *sys, int *free)
 {
-  char buffer[100];/*[4096+1];*/
-  int fd, len;
+  glibtop_cpu cpu;
   int total;
-  char *p;
 
-  fd = open("/proc/stat", O_RDONLY);
-  len = read(fd, buffer, sizeof(buffer)-1);
-  close(fd);
-  buffer[len] = '\0';
+  glibtop_get_cpu (&cpu);
 
-  p = skip_token(buffer);               /* "cpu" */
+  assert ((cpu.flags & needed_cpu_flags) == needed_cpu_flags);
 
-  cp_time[0] = strtoul(p, &p, 0);       /* user   */
-  cp_time[1] = strtoul(p, &p, 0);       /* nice   */
-  cp_time[2] = strtoul(p, &p, 0);       /* system */
-  cp_time[3] = strtoul(p, &p, 0);       /* idle   */
+  cp_time[0] = cpu.user;
+  cp_time[1] = cpu.nice;
+  cp_time[2] = cpu.sys;
+  cp_time[3] = cpu.idle;
 
   *usr  = cp_time[0] - last[0];
   *nice = cp_time[1] - last[1];
