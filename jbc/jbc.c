@@ -25,9 +25,9 @@ struct tm atime;		/* this is the time structure */
 time_t thetime;  		/* variable to grab the time */
 int d[6];        		/* array of digits */
 int i;           		/* generic counter for the for's */
-static digits[6] =		/* more digits stuff */
-{0, 0, 0, 0, 0, 0};
+static int digits[6] = {0, 0, 0, 0, 0, 0};
 int blink = 0;			/* to blink, or not to blink */
+int timeout_id;
 char **xpms[] =			/* array of xpms. thanks miguel */
 {t0_xpm, t1_xpm, t2_xpm, t3_xpm, t4_xpm, t5_xpm, t6_xpm, t7_xpm, t8_xpm, t9_xpm};
 char wtitle[] = "jbc!";		/* wtitle is the window titlebar text */
@@ -37,7 +37,7 @@ char buf[128];
 /*
  * GtkWidget is the storage type for widgets 
  */
-GtkWidget *window, *box, *event_box, *menu, *menu_about, *menu_quit, *root_menu;
+GtkWidget *window, *box, *event_box;
 GnomePixmap *pw[10], *pwc[2], *pwbc[2];
 /*
  * GdkPixmap is the storage type for pixmaps
@@ -68,24 +68,17 @@ static void about_cb(AppletWidget *widget, gpointer data)
 		about = gnome_about_new( _("Jon's Binary Clock"), version,
 				_("(C) 1998"),
 				authors,
-				_("A binary clock for your panel\n"),
+				_("A binary clock for your panel\nhttp://snoopy.net/~jon/jbc/\n"),
 				NULL);
 		gtk_widget_show (about);
 }
 
-gint jbc_menu() {
-	menu = gtk_menu_new();
-	menu_about = gtk_menu_item_new_with_label("About..");
-	gtk_menu_append(GTK_MENU(menu), menu_about);
-	gtk_signal_connect_object(GTK_OBJECT(menu_about), "activate",
-		GTK_SIGNAL_FUNC(about_cb), (gpointer) g_strdup("About.."));
-	menu_quit = gtk_menu_item_new_with_label("Quit");
-	gtk_menu_append(GTK_MENU(menu), menu_quit);
-	gtk_signal_connect_object(GTK_OBJECT(menu_quit), "activate",
-		GTK_SIGNAL_FUNC(gtk_exit), (gpointer) g_strdup("quit"));
-	gtk_widget_show(menu_about);
-	gtk_widget_show(menu_quit);
-	gtk_menu_popup(GTK_MENU(menu), NULL, NULL, NULL, NULL, NULL, 20);
+static void
+destroy_clock(GtkWidget * widget, void *data)
+{
+	   GtkWidget *applet;
+           gtk_timeout_remove(timeout_id);
+           g_free(GTK_OBJECT(applet));
 }
 
 
@@ -170,6 +163,11 @@ main (int argc, char *argv[])
                                                       GNOME_STOCK_MENU_ABOUT,
                                                       _("About..."),
                                                       about_cb, applet);
+   
+                gtk_signal_connect(GTK_OBJECT(applet), "destroy",
+                              (GtkSignalFunc) destroy_clock,
+                              applet);
+   
 
   /* ??? */
 /*  style = gtk_widget_get_style (applet); */
@@ -177,26 +175,27 @@ main (int argc, char *argv[])
   /* create GdkPixmaps from the included xpms */
   for (i = 0; i < 10; ++i)
     {
-      pw[i] = gnome_pixmap_new_from_xpm_d ((gchar **)xpms[i]);
+      (GtkPixmap **)pw[i] = gnome_pixmap_new_from_xpm_d ((gchar **)xpms[i]);
     }
 
   /* not worth a for loop here */
-  pwc[0] = gnome_pixmap_new_from_xpm_d ((gchar **)tcolon_xpm);
-  pwc[1] = gnome_pixmap_new_from_xpm_d ((gchar **)tcolon_xpm);
-  pwbc[0] = gnome_pixmap_new_from_xpm_d ((gchar **)tbcolon_xpm);
-  pwbc[1] = gnome_pixmap_new_from_xpm_d ((gchar **)tbcolon_xpm);
+  
+  (GtkPixmap **)pwc[0] = gnome_pixmap_new_from_xpm_d ((gchar **)tcolon_xpm);
+  (GtkPixmap **)pwc[1] = gnome_pixmap_new_from_xpm_d ((gchar **)tcolon_xpm);
+  (GtkPixmap **)pwbc[0] = gnome_pixmap_new_from_xpm_d ((gchar **)tbcolon_xpm);
+  (GtkPixmap **)pwbc[1] = gnome_pixmap_new_from_xpm_d ((gchar **)tbcolon_xpm);
 
   /* show the pixmap widgets */
   for (i = 0; i < 10; ++i)
     {
-      gtk_widget_show (pw[i]);
+      gtk_widget_show (GTK_WIDGET(pw[i]));
     }
 
   /* again.. not enough for for's */
-  gtk_widget_show (pwc[0]);
-  gtk_widget_show (pwc[1]);
-  gtk_widget_show (pwbc[0]);
-  gtk_widget_show (pwbc[1]);
+  gtk_widget_show (GTK_WIDGET(pwc[0]));
+  gtk_widget_show (GTK_WIDGET(pwc[1]));
+  gtk_widget_show (GTK_WIDGET(pwbc[0]));
+  gtk_widget_show (GTK_WIDGET(pwbc[1]));
 
   /* create the gtk_hbox to pile these pixmap widgets into */
   box = gtk_hbox_new (FALSE, 0);
@@ -223,7 +222,7 @@ main (int argc, char *argv[])
 
 
   /* this tells gtk_main() to call do_clock() every 900 milliseconds */
-  gtk_timeout_add (900, do_clock, NULL);
+  (gint **)timeout_id = gtk_timeout_add (900, do_clock, NULL);
 
   /* call gtk_main that sits and waits for events */
 
