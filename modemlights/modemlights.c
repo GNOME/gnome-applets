@@ -141,13 +141,13 @@ static void about_cb (BonoboUIComponent *uic,
 			pixbuf);
 
 	if (pixbuf)
-		gdk_pixbuf_unref (pixbuf);
+		g_object_unref (pixbuf);
 
 	gtk_window_set_screen (GTK_WINDOW (about),
 			       gtk_widget_get_screen (GTK_WIDGET (applet)));
 	gtk_window_set_wmclass (GTK_WINDOW (about), "modem lights", "Modem Lights");
-	gtk_signal_connect( GTK_OBJECT(about), "destroy",
-			    GTK_SIGNAL_FUNC(gtk_widget_destroyed), &about );
+	g_signal_connect (G_OBJECT (about), "destroy",
+			  G_CALLBACK (gtk_widget_destroyed), &about);
 	gtk_widget_show (about);
 }
 
@@ -563,8 +563,9 @@ static void redraw_display(MLData *mldata)
 
 static void draw_digit(MLData *mldata, gint n, gint x, gint y)
 {
-	gdk_draw_pixmap (mldata->display, mldata->display_area->style->fg_gc[GTK_WIDGET_STATE(mldata->display_area)],
-			 mldata->digits, n * 5, 0, x, y, 5, 7);
+	gdk_draw_drawable (mldata->display,
+			   mldata->display_area->style->fg_gc[GTK_WIDGET_STATE(mldata->display_area)],
+			   mldata->digits, n * 5, 0, x, y, 5, 7);
 }
 
 static void draw_timer(MLData *mldata, gint seconds, gint force)
@@ -780,8 +781,9 @@ static void draw_light(MLData *mldata, int lit, int x, int y, ColorType color)
 	if (color == COLOR_RX) p += 18;
 	
 
-	gdk_draw_pixmap (mldata->display, mldata->display_area->style->fg_gc[GTK_WIDGET_STATE(mldata->display_area)],
-				 mldata->lights, 0, p, x, y, 9, 9);
+	gdk_draw_drawable (mldata->display,
+			   mldata->display_area->style->fg_gc[GTK_WIDGET_STATE(mldata->display_area)],
+			   mldata->lights, 0, p, x, y, 9, 9);
 }
 
 static void update_button(MLData *mldata, StatusType type)
@@ -789,13 +791,13 @@ static void update_button(MLData *mldata, StatusType type)
 	switch(type)
 		{
 		case STATUS_ON:
-			gtk_pixmap_set(GTK_PIXMAP(mldata->button_pixmap), mldata->button_on, mldata->button_mask);
+			gtk_image_set_from_pixmap(GTK_IMAGE(mldata->button_image), mldata->button_on, mldata->button_mask);
 			break;
 		case STATUS_WAIT:
-			gtk_pixmap_set(GTK_PIXMAP(mldata->button_pixmap), mldata->button_wait, mldata->button_mask);
+			gtk_image_set_from_pixmap(GTK_IMAGE(mldata->button_image), mldata->button_wait, mldata->button_mask);
 			break;
 		default:
-			gtk_pixmap_set(GTK_PIXMAP(mldata->button_pixmap), mldata->button_off, mldata->button_mask);
+			gtk_image_set_from_pixmap(GTK_IMAGE(mldata->button_image), mldata->button_off, mldata->button_mask);
 			break;
 		}
 }
@@ -859,14 +861,14 @@ static void button_blink(MLData *mldata, gint blink, gint status)
 		{
 		if (mldata->button_blink_id == -1)
 			{
-			mldata->button_blink_id = gtk_timeout_add(BUTTON_BLINK_INTERVAL, button_blink_cb, mldata);
+			mldata->button_blink_id = g_timeout_add(BUTTON_BLINK_INTERVAL, button_blink_cb, mldata);
 			}
 		}
 	else
 		{
 		if (mldata->button_blink_id != -1)
 			{
-			gtk_timeout_remove(mldata->button_blink_id);
+			g_source_remove(mldata->button_blink_id);
 			mldata->button_blink_id = -1;
 			}
 		}
@@ -985,8 +987,8 @@ void start_callback_update(MLData *mldata)
 {
 	gint delay;
 	delay = 1000 / mldata->UPDATE_DELAY;
-	if (mldata->update_timeout_id) gtk_timeout_remove(mldata->update_timeout_id);
-	mldata->update_timeout_id = gtk_timeout_add(delay, (GtkFunction)update_display, mldata);
+	if (mldata->update_timeout_id) g_source_remove(mldata->update_timeout_id);
+	mldata->update_timeout_id = g_timeout_add(delay, (GSourceFunc)update_display, mldata);
 
 }
 
@@ -1023,7 +1025,7 @@ static void create_background_pixmap(MLData *mldata)
 {
 	if (!mldata->layout_current) return;
 
-	if (mldata->display) gdk_pixmap_unref(mldata->display);
+	if (mldata->display) g_object_unref(mldata->display);
 
 	mldata->display = gdk_pixmap_new(mldata->display_area->window,
 				 mldata->layout_current->display_w, mldata->layout_current->display_h, -1);
@@ -1098,9 +1100,9 @@ static void pixmap_set_colors(MLData *mldata, GdkPixmap *pixmap, GdkColor *bg, G
 	guint32 fg_pixel = 0x00000000;
 	gint have_fg = FALSE;
 
-	gdk_window_get_size(pixmap, &w, &h);
+	gdk_drawable_get_size(pixmap, &w, &h);
 
-	image = gdk_image_get(pixmap, 0, 0, w, h);
+	image = gdk_drawable_get_image(pixmap, 0, 0, w, h);
 
 	/* always assume 0, 0 is background color */
 	bg_pixel = gdk_image_get_pixel(image, 0, 0);
@@ -1133,7 +1135,7 @@ static void pixmap_set_colors(MLData *mldata, GdkPixmap *pixmap, GdkColor *bg, G
 			}
 		}
 
-	gdk_image_destroy(image);
+	g_object_unref(image);
 }
 
 static void update_pixmaps(MLData *mldata)
@@ -1172,7 +1174,7 @@ static void update_pixmaps(MLData *mldata)
 		gdk_draw_rectangle(mldata->button_mask, mask_gc, TRUE, 2, 1, 6, 8);
 		gdk_draw_rectangle(mldata->button_mask, mask_gc, TRUE, 1, 2, 8, 6);
 
-		gdk_gc_unref(mask_gc);
+		g_object_unref(mask_gc);
 		}
 
 	draw_button_light(mldata, mldata->button_on, 0, 0, 10, TRUE, COLOR_STATUS_OK);
@@ -1272,11 +1274,11 @@ void reset_orientation(MLData *mldata)
 	create_background_pixmap(mldata);
 	update_pixmaps(mldata);
 
-	gtk_widget_set_usize(mldata->frame, mldata->layout_current->width, mldata->layout_current->height);
-	gtk_drawing_area_size(GTK_DRAWING_AREA(mldata->display_area),
+	gtk_widget_set_size_request(mldata->frame, mldata->layout_current->width, mldata->layout_current->height);
+	gtk_widget_set_size_request(GTK_WIDGET(mldata->display_area),
 			      mldata->layout_current->display_w, mldata->layout_current->display_h);
 
-	gtk_widget_set_usize(mldata->button, mldata->layout_current->button_w, mldata->layout_current->button_h);
+	gtk_widget_set_size_request(mldata->button, mldata->layout_current->button_w, mldata->layout_current->button_h);
 	gtk_fixed_move(GTK_FIXED(mldata->frame), mldata->display_area, mldata->layout_current->display_x, mldata->layout_current->display_y);
 	gtk_fixed_move(GTK_FIXED(mldata->frame), mldata->button, mldata->layout_current->button_x, mldata->layout_current->button_y);
 
@@ -1360,7 +1362,7 @@ static void
 destroy_cb (GtkWidget *widget, gpointer data)
 {
 	MLData *mldata = data;
-	gtk_timeout_remove (mldata->update_timeout_id);
+	g_source_remove (mldata->update_timeout_id);
 	if (mldata->propwindow)
 		gtk_widget_destroy (mldata->propwindow);
 	
@@ -1417,7 +1419,7 @@ modemlights_applet_fill (PanelApplet *applet)
 
 	mldata->layout_current = &layout_data[LAYOUT_HORIZONTAL];
 	
-	if (g_file_exists("/dev/modem"))
+	if (g_file_test("/dev/modem", G_FILE_TEST_EXISTS))
 		mldata->lock_file = g_strdup("/var/lock/LCK..modem");
 	else
 		mldata->lock_file = g_strdup("/var/lock/LCK..ttyS0");
@@ -1450,12 +1452,12 @@ modemlights_applet_fill (PanelApplet *applet)
 	gtk_container_add (GTK_CONTAINER (applet), mldata->frame);
 
 	mldata->display_area = gtk_drawing_area_new();
-	gtk_drawing_area_size(GTK_DRAWING_AREA(mldata->display_area),5,5);
+	gtk_widget_set_size_request(GTK_WIDGET(mldata->display_area),5,5);
 	gtk_fixed_put(GTK_FIXED(mldata->frame),mldata->display_area,0,0);
 	gtk_widget_show(mldata->display_area);
 
 	mldata->button = gtk_button_new();
-	gtk_widget_set_usize(mldata->button,5,5);
+	gtk_widget_set_size_request(mldata->button,5,5);
 	gtk_fixed_put(GTK_FIXED(mldata->frame),mldata->button,5,0);
 	g_signal_connect(G_OBJECT(mldata->button), "clicked",
 			 G_CALLBACK(dial_cb), mldata);
@@ -1469,21 +1471,21 @@ modemlights_applet_fill (PanelApplet *applet)
 	setup_colors(mldata);
 	update_pixmaps(mldata);	
 
-	mldata->button_pixmap = gtk_pixmap_new(mldata->button_off, mldata->button_mask);
-	gtk_container_add(GTK_CONTAINER(mldata->button), mldata->button_pixmap);
-	gtk_widget_show(mldata->button_pixmap);
+	mldata->button_image = gtk_image_new_from_pixmap(mldata->button_off, mldata->button_mask);
+	gtk_container_add(GTK_CONTAINER(mldata->button), mldata->button_image);
+	gtk_widget_show(mldata->button_image);
 	
 
-	gtk_signal_connect(GTK_OBJECT(applet),"change_orient",
-				GTK_SIGNAL_FUNC(applet_change_orient),
-				mldata);
+	g_signal_connect(G_OBJECT(applet),"change_orient",
+			 G_CALLBACK(applet_change_orient),
+			 mldata);
 
-	gtk_signal_connect(GTK_OBJECT(applet),"change_size",
-				GTK_SIGNAL_FUNC(applet_change_pixel_size),
-				mldata);
+	g_signal_connect(G_OBJECT(applet),"change_size",
+			 G_CALLBACK(applet_change_pixel_size),
+			 mldata);
 
-	gtk_signal_connect(GTK_OBJECT(applet),"style_set",
-		GTK_SIGNAL_FUNC(applet_style_change_cb), mldata);
+	g_signal_connect(G_OBJECT(applet),"style_set",
+			 G_CALLBACK(applet_style_change_cb), mldata);
 		
 	g_signal_connect (G_OBJECT (applet), "destroy",
 			  G_CALLBACK (destroy_cb), mldata);

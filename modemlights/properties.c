@@ -255,18 +255,21 @@ static void set_default_cb(GtkWidget *widget, gpointer data)
 	
 }
 
-static void box_color_cb(GnomeColorPicker *cp, guint nopr, guint nopg, guint nopb, guint nopa, gpointer data)
+static void box_color_cb(GtkColorButton *cp, gpointer data)
 {
 	MLData *mldata;
 	PanelApplet *applet;
 	ColorType color	= (ColorType)GPOINTER_TO_INT(data);
-	guint8 r, g, b, a;
+	GdkColor new_color;
 
-	gnome_color_picker_get_i8 (GNOME_COLOR_PICKER(cp), &r, &g, &b, &a);
+	gtk_color_button_get_color(cp, &new_color);
 	mldata = g_object_get_data (G_OBJECT (cp), "mldata");
 	
 	g_free(mldata->display_color_text[color]);
-	mldata->display_color_text[color] = g_strdup_printf("#%06X", (r << 16) + (g << 8) + b);
+	mldata->display_color_text[color] = g_strdup_printf("#%02X%02X%02X",
+							    new_color.red / 256,
+							    new_color.green / 256,
+							    new_color.blue / 256);
 	
 	reset_colors (mldata);
 	
@@ -302,9 +305,8 @@ static GtkWidget *box_add_color(MLData *mldata, GtkWidget *box,
 	gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
 	gtk_widget_show (label);
 
-	color_sel = gnome_color_picker_new();
-	gnome_color_picker_set_use_alpha(GNOME_COLOR_PICKER(color_sel), FALSE);
-	gnome_color_picker_set_i16(GNOME_COLOR_PICKER(color_sel), c.red, c.green, c.blue, 0);
+	color_sel = gtk_color_button_new();
+	gtk_color_button_set_color(GTK_COLOR_BUTTON(color_sel), &c);
 	gtk_label_set_mnemonic_widget (GTK_LABEL (label), color_sel);
 	g_signal_connect(G_OBJECT(color_sel), "color_set", 
 			 G_CALLBACK (box_color_cb), GINT_TO_POINTER((gint)color));
@@ -506,7 +508,8 @@ void property_show (BonoboUIComponent *uic,
         gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
 	gtk_widget_show(label);
 
-	mldata->connect_entry = gtk_entry_new_with_max_length(255);
+	mldata->connect_entry = gtk_entry_new ();
+	gtk_entry_set_max_length (GTK_ENTRY (mldata->connect_entry), 255);
 	gtk_label_set_mnemonic_widget (GTK_LABEL (label), mldata->connect_entry);
 	gtk_entry_set_text(GTK_ENTRY(mldata->connect_entry), mldata->command_connect);
 	g_signal_connect (G_OBJECT (mldata->connect_entry), "focus_out_event",
@@ -531,7 +534,8 @@ void property_show (BonoboUIComponent *uic,
 	gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
 	gtk_widget_show(label);
 
-	mldata->disconnect_entry = gtk_entry_new_with_max_length(255);
+	mldata->disconnect_entry = gtk_entry_new ();
+	gtk_entry_set_max_length (GTK_ENTRY (mldata->disconnect_entry), 255);
 	gtk_label_set_mnemonic_widget (GTK_LABEL (label), mldata->disconnect_entry);
 	gtk_entry_set_text(GTK_ENTRY(mldata->disconnect_entry), mldata->command_disconnect);
 	g_signal_connect (G_OBJECT (mldata->disconnect_entry), "focus_out_event",
@@ -641,7 +645,8 @@ void property_show (BonoboUIComponent *uic,
         gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
 	gtk_widget_show (label);
 
-	mldata->device_entry = gtk_entry_new_with_max_length (16);
+	mldata->device_entry = gtk_entry_new ();
+	gtk_entry_set_max_length (GTK_ENTRY(mldata->device_entry), 16);
 	gtk_label_set_mnemonic_widget (GTK_LABEL (label), mldata->device_entry);
 	gtk_entry_set_text (GTK_ENTRY (mldata->device_entry), mldata->device_name);
 	g_signal_connect (G_OBJECT (mldata->device_entry), "focus_out_event",
@@ -666,7 +671,8 @@ void property_show (BonoboUIComponent *uic,
         gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
 	gtk_widget_show (label);
 
-	mldata->lockfile_entry = gtk_entry_new_with_max_length(255);
+	mldata->lockfile_entry = gtk_entry_new ();
+	gtk_entry_set_max_length (GTK_ENTRY (mldata->lockfile_entry), 255);
 	gtk_label_set_mnemonic_widget (GTK_LABEL (label), mldata->lockfile_entry);
 	gtk_entry_set_text(GTK_ENTRY(mldata->lockfile_entry), mldata->lock_file);
 	g_signal_connect (G_OBJECT (mldata->lockfile_entry), "focus_out_event",

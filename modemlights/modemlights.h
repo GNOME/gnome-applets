@@ -129,7 +129,7 @@ struct _MLData
 	GtkWidget *frame;
 	GtkWidget *display_area;
 	GtkWidget *button;
-	GtkWidget *button_pixmap;
+	GtkWidget *button_image;
 	GdkPixmap *display;
 	GdkPixmap *digits;
 	GdkPixmap *lights;
