@@ -18,16 +18,10 @@
  * USA
  */
 
-
 /* If you think this code is a mess, you should see my flat ;) */
 
 #include "config.h"
 #include "screenshooter_applet.h"
-
-/* TODO For the application launches...
- * Use an array of pointers to strings, and execv, or popen instead
- * of all these system() calls. At least with popen I could get some
- * feedback from the app, and then be able to report errors... */
 
 void
 cb_about (AppletWidget * widget, gpointer data)
@@ -222,8 +216,7 @@ set_tooltip (GtkWidget * w, const gchar * tip)
   gtk_tooltips_set_tip (t, w, tip, NULL);
 }
 
-gboolean
-need_to_change_orientation (PanelOrientType o, gboolean size_tiny)
+gboolean need_to_change_orientation (PanelOrientType o, gboolean size_tiny)
 {
   gboolean need_to = FALSE;
   switch (o)
@@ -360,12 +353,8 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
   GtkWidget *pref_vbox;
   GtkWidget *pref_vbox_2;
   GtkWidget *pref_hbox;
-/*  GtkWidget *pref_hbox5; */
   GtkWidget *label;
   GtkWidget *button;
-/*  GtkWidget *directory_button; */
-  GtkObject *adj;
-  GtkWidget *hscale;
   GtkWidget *entry;
 
   if (ad->propwindow)
@@ -385,97 +374,40 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
   pref_vbox = gtk_vbox_new (FALSE, GNOME_PAD_SMALL);
   gtk_container_set_border_width (GTK_CONTAINER (pref_vbox), GNOME_PAD_SMALL);
 
-  button =
-    gtk_check_button_new_with_label (_
-				     ("Capture WM decorations when grabbing a window"));
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), ad->decoration);
-  gtk_signal_connect (GTK_OBJECT (button), "clicked",
-		      (GtkSignalFunc) decoration_cb, NULL);
-  gtk_box_pack_start (GTK_BOX (pref_vbox), button, FALSE, FALSE, 0);
-  gtk_widget_show (button);
+  create_bool_option (_
+		      ("Capture WM decorations when grabbing a window"),
+		      &(ad->decoration), pref_vbox);
 
-  button =
-    gtk_check_button_new_with_label (_
-				     ("Give audio feedback using the keyboard bell"));
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), ad->beep);
-  gtk_signal_connect (GTK_OBJECT (button), "clicked",
-		      (GtkSignalFunc) beep_cb, NULL);
-  gtk_box_pack_start (GTK_BOX (pref_vbox), button, FALSE, FALSE, 0);
-  gtk_widget_show (button);
+  create_bool_option (_
+		      ("Give audio feedback using the keyboard bell"),
+		      &(ad->beep), pref_vbox);
 
-  button =
-    gtk_check_button_new_with_label (_
-				     ("Display Spurious Options (I got carried away)"));
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), ad->spurious);
-  gtk_signal_connect (GTK_OBJECT (button), "clicked",
-		      (GtkSignalFunc) spurious_cb, NULL);
-  gtk_box_pack_start (GTK_BOX (pref_vbox), button, FALSE, FALSE, 0);
-  gtk_widget_show (button);
+  create_bool_option (_
+		      ("Display Spurious Options (I got carried away)"),
+		      &(ad->spurious), pref_vbox);
 
-  frame =
-    gtk_frame_new (_
-		   ("Delay (seconds) before taking shot (only for entire desktop shots)"));
-  gtk_box_pack_start (GTK_BOX (pref_vbox), frame, FALSE, FALSE, 0);
-  gtk_widget_show (frame);
+  create_slider_option (_
+			("Delay (seconds) before taking shot "
+			 "(only for entire desktop shots)"),
+			pref_vbox, &(ad->delay), 0.0, 60.0, 1.0, 1.0, 0.0);
 
-  pref_vbox_2 = gtk_hbox_new (FALSE, 0);
-  gtk_container_set_border_width (GTK_CONTAINER (pref_vbox_2),
-				  GNOME_PAD_SMALL);
-  gtk_container_add (GTK_CONTAINER (frame), pref_vbox_2);
-  gtk_widget_show (pref_vbox_2);
-
-  adj = gtk_adjustment_new (ad->delay, 0.0, 60.0, 1.0, 1.0, 0.0);
-  hscale = gtk_hscale_new (GTK_ADJUSTMENT (adj));
-  gtk_range_set_update_policy (GTK_RANGE (hscale), GTK_UPDATE_DELAYED);
-  gtk_scale_set_digits (GTK_SCALE (hscale), 0);
-  gtk_signal_connect (GTK_OBJECT (adj), "value_changed",
-		      GTK_SIGNAL_FUNC (delay_cb), ad);
-  gtk_box_pack_start (GTK_BOX (pref_vbox_2), hscale, TRUE, TRUE,
-		      GNOME_PAD_SMALL);
-  gtk_widget_show (hscale);
-
-  frame =
-    gtk_frame_new (_
-		   ("Compressed Quality (JPEG/MIFF/PNG mode) High: good quality/large file"));
-  gtk_box_pack_start (GTK_BOX (pref_vbox), frame, FALSE, FALSE, 0);
-  gtk_widget_show (frame);
-
-  pref_vbox_2 = gtk_hbox_new (FALSE, 0);
-  gtk_container_set_border_width (GTK_CONTAINER (pref_vbox_2),
-				  GNOME_PAD_SMALL);
-  gtk_container_add (GTK_CONTAINER (frame), pref_vbox_2);
-  gtk_widget_show (pref_vbox_2);
-
-  adj = gtk_adjustment_new (ad->quality, 0.0, 100.0, 10.0, 1.0, 0.0);
-  hscale = gtk_hscale_new (GTK_ADJUSTMENT (adj));
-  gtk_range_set_update_policy (GTK_RANGE (hscale), GTK_UPDATE_DELAYED);
-  gtk_scale_set_digits (GTK_SCALE (hscale), 0);
-  gtk_signal_connect (GTK_OBJECT (adj), "value_changed",
-		      GTK_SIGNAL_FUNC (quality_cb), ad);
-  gtk_box_pack_start (GTK_BOX (pref_vbox_2), hscale, TRUE, TRUE,
-		      GNOME_PAD_SMALL);
-  gtk_widget_show (hscale);
+  create_slider_option (_
+			("Compressed Quality (JPEG/MIFF/PNG mode) "
+			 "High: good quality/large file"),
+			pref_vbox, &(ad->quality), 0.0, 100.0, 10.0, 1.0,
+			0.0);
 
   ad->spurious_pref_vbox3 = gtk_vbox_new (FALSE, GNOME_PAD_SMALL);
   gtk_container_set_border_width (GTK_CONTAINER (ad->spurious_pref_vbox3), 0);
   gtk_box_pack_start (GTK_BOX (pref_vbox), ad->spurious_pref_vbox3, FALSE,
 		      FALSE, 0);
 
-  button = gtk_check_button_new_with_label (_ ("Create monochrome image"));
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), ad->monochrome);
-  gtk_signal_connect (GTK_OBJECT (button), "clicked",
-		      (GtkSignalFunc) monochrome_cb, NULL);
-  gtk_box_pack_start (GTK_BOX (ad->spurious_pref_vbox3), button, FALSE, FALSE,
-		      0);
-  gtk_widget_show (button);
+  create_bool_option (_
+		      ("Create monochrome image"),
+		      &(ad->monochrome), pref_vbox);
 
-  button = gtk_check_button_new_with_label (_ ("Invert colours in image"));
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), ad->negate);
-  gtk_signal_connect (GTK_OBJECT (button), "clicked",
-		      (GtkSignalFunc) negate_cb, NULL);
-  gtk_box_pack_start (GTK_BOX (ad->spurious_pref_vbox3), button, FALSE, FALSE,
-		      0);
-  gtk_widget_show (button);
+  create_bool_option (_ ("Invert colours in image"),
+		      &(ad->negate), pref_vbox);
 
   label = gtk_label_new (_ ("General"));
   gtk_widget_show (pref_vbox);
@@ -565,18 +497,13 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
   gtk_box_pack_start (GTK_BOX (pref_hbox), label, FALSE, FALSE, 0);
   gtk_widget_show (label);
 
-  button =
-    gtk_check_button_new_with_label (_ ("View screenshot after saving it"));
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), ad->view);
-  gtk_signal_connect (GTK_OBJECT (button), "clicked",
-		      (GtkSignalFunc) view_cb, NULL);
-  gtk_box_pack_start (GTK_BOX (pref_vbox), button, FALSE, FALSE, 0);
-  gtk_widget_show (button);
-
+  create_bool_option (_ ("View screenshot after saving it"),
+		      &(ad->view), pref_vbox);
 
   pref_hbox = gtk_hbox_new (FALSE, GNOME_PAD_SMALL);
   gtk_box_pack_start (GTK_BOX (pref_vbox), pref_hbox, FALSE, FALSE, 0);
   gtk_widget_show (pref_hbox);
+
   label = gtk_label_new (_ ("App to use for displaying screenshots:"));
   gtk_box_pack_start (GTK_BOX (pref_hbox), label, FALSE, FALSE, 0);
   gtk_widget_show (label);
@@ -600,55 +527,20 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
   pref_vbox = gtk_vbox_new (FALSE, GNOME_PAD_SMALL);
   gtk_container_set_border_width (GTK_CONTAINER (pref_vbox), GNOME_PAD_SMALL);
 
-  button =
-    gtk_check_button_new_with_label (_ ("Create thumbnail of image too"));
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), ad->thumb);
-  gtk_signal_connect (GTK_OBJECT (button), "clicked",
-		      (GtkSignalFunc) thumb_cb, NULL);
-  gtk_box_pack_start (GTK_BOX (pref_vbox), button, FALSE, FALSE, 0);
-  gtk_widget_show (button);
+  create_bool_option (_ ("Create thumbnail of image too"),
+		      &(ad->thumb), pref_vbox);
 
+  create_slider_option (_
+			("Thumbnail Size (percentage of original)"),
+			pref_vbox, &(ad->thumb_size), 1.0, 100.0, 10.0, 1.0,
+			0.0);
 
-  frame = gtk_frame_new (_ ("Thumbnail Size (percentage of original)"));
-  gtk_box_pack_start (GTK_BOX (pref_vbox), frame, FALSE, FALSE, 0);
-  gtk_widget_show (frame);
+  create_slider_option (_
+			("Thumbnail compression (JPEG/MIFF/PNG mode) "
+			 "High: good quality/large file"),
+			pref_vbox, &(ad->thumb_quality), 0.0, 100.0, 10.0,
+			1.0, 0.0);
 
-  pref_vbox_2 = gtk_hbox_new (FALSE, 0);
-  gtk_container_set_border_width (GTK_CONTAINER (pref_vbox_2),
-				  GNOME_PAD_SMALL);
-  gtk_container_add (GTK_CONTAINER (frame), pref_vbox_2);
-  gtk_widget_show (pref_vbox_2);
-
-  adj = gtk_adjustment_new (ad->thumb_size, 1.0, 100.0, 10.0, 1.0, 0.0);
-  hscale = gtk_hscale_new (GTK_ADJUSTMENT (adj));
-  gtk_range_set_update_policy (GTK_RANGE (hscale), GTK_UPDATE_DELAYED);
-  gtk_scale_set_digits (GTK_SCALE (hscale), 0);
-  gtk_signal_connect (GTK_OBJECT (adj), "value_changed",
-		      GTK_SIGNAL_FUNC (thumb_size_cb), ad);
-  gtk_box_pack_start (GTK_BOX (pref_vbox_2), hscale, TRUE, TRUE, 0);
-  gtk_widget_show (hscale);
-
-  frame =
-    gtk_frame_new (_
-		   ("Thumbnail compression (JPEG/MIFF/PNG mode) "
-		    "High: good quality/large file"));
-  gtk_box_pack_start (GTK_BOX (pref_vbox), frame, FALSE, FALSE, 0);
-  gtk_widget_show (frame);
-
-  pref_vbox_2 = gtk_hbox_new (FALSE, 0);
-  gtk_container_set_border_width (GTK_CONTAINER (pref_vbox_2),
-				  GNOME_PAD_SMALL);
-  gtk_container_add (GTK_CONTAINER (frame), pref_vbox_2);
-  gtk_widget_show (pref_vbox_2);
-
-  adj = gtk_adjustment_new (ad->thumb_quality, 0.0, 100.0, 10.0, 1.0, 0.0);
-  hscale = gtk_hscale_new (GTK_ADJUSTMENT (adj));
-  gtk_range_set_update_policy (GTK_RANGE (hscale), GTK_UPDATE_DELAYED);
-  gtk_scale_set_digits (GTK_SCALE (hscale), 0);
-  gtk_signal_connect (GTK_OBJECT (adj), "value_changed",
-		      GTK_SIGNAL_FUNC (thumb_quality_cb), ad);
-  gtk_box_pack_start (GTK_BOX (pref_vbox_2), hscale, TRUE, TRUE, 0);
-  gtk_widget_show (hscale);
 
   pref_hbox = gtk_hbox_new (FALSE, GNOME_PAD_SMALL);
   gtk_box_pack_start (GTK_BOX (pref_vbox), pref_hbox, FALSE, FALSE, 0);
@@ -682,16 +574,9 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
   gtk_container_add (GTK_CONTAINER (frame), pref_vbox_2);
   gtk_widget_show (pref_vbox_2);
 
-  button =
-    gtk_check_button_new_with_label (_
-				     ("Use high-quality intermediate "
-				      "for generating thumbnail"));
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button),
-				ad->thumbnail_intermediate);
-  gtk_signal_connect (GTK_OBJECT (button), "clicked",
-		      (GtkSignalFunc) thumbnail_intermediate_cb, NULL);
-  gtk_box_pack_start (GTK_BOX (pref_vbox_2), button, FALSE, FALSE, 0);
-  gtk_widget_show (button);
+  create_bool_option (_ ("Use high-quality intermediate "
+			 "for generating thumbnail"),
+		      &(ad->thumbnail_intermediate), pref_vbox_2);
 
   pref_hbox = gtk_hbox_new (FALSE, GNOME_PAD_SMALL);
   gtk_box_pack_start (GTK_BOX (pref_vbox_2), pref_hbox, FALSE, FALSE, 0);
@@ -739,109 +624,40 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
   gtk_box_pack_start (GTK_BOX (pref_vbox), pref_hbox, FALSE, FALSE, 0);
   gtk_widget_show (pref_hbox);
 
-  button =
-    gtk_check_button_new_with_label (_
-				     ("Normalize image (Span full range of "
-				      "color values to enhance contrast)"));
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), ad->normalize);
-  gtk_signal_connect (GTK_OBJECT (button), "clicked",
-		      (GtkSignalFunc) normalize_cb, NULL);
-  gtk_box_pack_start (GTK_BOX (pref_vbox), button, FALSE, FALSE, 0);
-  gtk_widget_show (button);
+  create_bool_option (_ ("Normalize image (Span full range of "
+			 "color values to enhance contrast)"),
+		      &(ad->normalize), pref_vbox);
 
-  button =
-    gtk_check_button_new_with_label (_
-				     ("Equalize image (Perform "
-				      "histogram equalization)"));
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), ad->equalize);
-  gtk_signal_connect (GTK_OBJECT (button), "clicked",
-		      (GtkSignalFunc) equalize_cb, NULL);
-  gtk_box_pack_start (GTK_BOX (pref_vbox), button, FALSE, FALSE, 0);
-  gtk_widget_show (button);
+  create_bool_option (_ ("Equalize image (Perform "
+			 "histogram equalization)"),
+		      &(ad->equalize), pref_vbox);
 
   pref_hbox = gtk_hbox_new (FALSE, GNOME_PAD_SMALL);
   gtk_box_pack_start (GTK_BOX (pref_vbox), pref_hbox, FALSE, FALSE, 0);
   gtk_widget_show (pref_hbox);
 
-  button =
-    gtk_check_button_new_with_label (_ ("Enhance image (reduce noise)"));
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), ad->enhance);
-  gtk_signal_connect (GTK_OBJECT (button), "clicked",
-		      (GtkSignalFunc) enhance_cb, NULL);
-  gtk_box_pack_start (GTK_BOX (pref_hbox), button, FALSE, FALSE, 0);
-  gtk_widget_show (button);
+  create_bool_option (_ ("Enhance image (reduce noise)"),
+		      &(ad->enhance), pref_hbox);
 
-  button =
-    gtk_check_button_new_with_label (_ ("Despeckle Image (reduce spots)"));
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), ad->despeckle);
-  gtk_signal_connect (GTK_OBJECT (button), "clicked",
-		      (GtkSignalFunc) despeckle_cb, NULL);
-  gtk_box_pack_start (GTK_BOX (pref_hbox), button, FALSE, FALSE, 0);
-  gtk_widget_show (button);
+  create_bool_option (_ ("Despeckle Image (reduce spots)"),
+		      &(ad->despeckle), pref_hbox);
 
-  frame = gtk_frame_new (_ ("Sharpen Image by what factor?"));
-  gtk_box_pack_start (GTK_BOX (pref_vbox), frame, FALSE, FALSE, 0);
-  gtk_widget_show (frame);
+  create_slider_option (_
+			("Sharpen Image by what factor?"),
+			pref_vbox, &(ad->sharpen_factor), 0.0, 100.0, 10.0,
+			1.0, 0.0);
 
-  pref_vbox_2 = gtk_hbox_new (FALSE, 0);
-  gtk_container_set_border_width (GTK_CONTAINER (pref_vbox_2),
-				  GNOME_PAD_SMALL);
-  gtk_container_add (GTK_CONTAINER (frame), pref_vbox_2);
-  gtk_widget_show (pref_vbox_2);
+  create_slider_option (_
+			("Rotate image clockwise by how many degrees?"),
+			pref_vbox, &(ad->rotate_degrees), 0.0, 360.0, 10.0,
+			1.0, 0.0);
 
-  adj = gtk_adjustment_new (ad->sharpen_factor, 0.0, 100.0, 10.0, 1.0, 0.0);
-  hscale = gtk_hscale_new (GTK_ADJUSTMENT (adj));
-  gtk_range_set_update_policy (GTK_RANGE (hscale), GTK_UPDATE_DELAYED);
-  gtk_scale_set_digits (GTK_SCALE (hscale), 0);
-  gtk_signal_connect (GTK_OBJECT (adj), "value_changed",
-		      GTK_SIGNAL_FUNC (sharpen_factor_cb), ad);
-  gtk_box_pack_start (GTK_BOX (pref_vbox_2), hscale, TRUE, TRUE, 0);
-  gtk_widget_show (hscale);
 
-  frame = gtk_frame_new (_ ("Rotate image clockwise by how many degrees?"));
-  gtk_box_pack_start (GTK_BOX (pref_vbox), frame, FALSE, FALSE, 0);
-  gtk_widget_show (frame);
+  create_bool_option (_ ("Adjust gamma"), &(ad->gamma), pref_vbox);
 
-  pref_vbox_2 = gtk_hbox_new (FALSE, 0);
-  gtk_container_set_border_width (GTK_CONTAINER (pref_vbox_2),
-				  GNOME_PAD_SMALL);
-  gtk_container_add (GTK_CONTAINER (frame), pref_vbox_2);
-  gtk_widget_show (pref_vbox_2);
-
-  adj = gtk_adjustment_new (ad->rotate_degrees, 0.0, 360.0, 10.0, 1.0, 0.0);
-  hscale = gtk_hscale_new (GTK_ADJUSTMENT (adj));
-  gtk_range_set_update_policy (GTK_RANGE (hscale), GTK_UPDATE_DELAYED);
-  gtk_scale_set_digits (GTK_SCALE (hscale), 0);
-  gtk_signal_connect (GTK_OBJECT (adj), "value_changed",
-		      GTK_SIGNAL_FUNC (rotate_degrees_cb), ad);
-  gtk_box_pack_start (GTK_BOX (pref_vbox_2), hscale, TRUE, TRUE, 0);
-  gtk_widget_show (hscale);
-
-  button = gtk_check_button_new_with_label (_ ("Adjust gamma"));
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), ad->gamma);
-  gtk_signal_connect (GTK_OBJECT (button), "clicked",
-		      (GtkSignalFunc) gamma_cb, NULL);
-  gtk_box_pack_start (GTK_BOX (pref_vbox), button, FALSE, FALSE, 0);
-  gtk_widget_show (button);
-
-  frame = gtk_frame_new (_ ("Gamma value"));
-  gtk_box_pack_start (GTK_BOX (pref_vbox), frame, FALSE, FALSE, 0);
-  gtk_widget_show (frame);
-
-  pref_vbox_2 = gtk_hbox_new (FALSE, 0);
-  gtk_container_set_border_width (GTK_CONTAINER (pref_vbox_2),
-				  GNOME_PAD_SMALL);
-  gtk_container_add (GTK_CONTAINER (frame), pref_vbox_2);
-  gtk_widget_show (pref_vbox_2);
-
-  adj = gtk_adjustment_new (ad->gamma_factor, 0.8, 2.3, 0.1, 0.1, 0.0);
-  hscale = gtk_hscale_new (GTK_ADJUSTMENT (adj));
-  gtk_range_set_update_policy (GTK_RANGE (hscale), GTK_UPDATE_DELAYED);
-  gtk_scale_set_digits (GTK_SCALE (hscale), 1);
-  gtk_signal_connect (GTK_OBJECT (adj), "value_changed",
-		      GTK_SIGNAL_FUNC (gamma_factor_cb), ad);
-  gtk_box_pack_start (GTK_BOX (pref_vbox_2), hscale, TRUE, TRUE, 0);
-  gtk_widget_show (hscale);
+  create_slider_option (_
+			("Gamma value"),
+			pref_vbox, &(ad->gamma), 0.8, 2.3, 0.1, 0.1, 0.0);
 
   pref_hbox = gtk_hbox_new (FALSE, GNOME_PAD_SMALL);
   gtk_box_pack_start (GTK_BOX (pref_vbox), pref_hbox, FALSE, FALSE, 0);
@@ -855,56 +671,24 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
   pref_vbox = gtk_vbox_new (FALSE, GNOME_PAD_SMALL);
   gtk_container_set_border_width (GTK_CONTAINER (pref_vbox), GNOME_PAD_SMALL);
 
-  button = gtk_check_button_new_with_label (_ ("Create frame around image"));
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), ad->frame);
-  gtk_signal_connect (GTK_OBJECT (button), "clicked",
-		      (GtkSignalFunc) frame_cb, NULL);
-  gtk_box_pack_start (GTK_BOX (pref_vbox), button, FALSE, FALSE, 0);
-  gtk_widget_show (button);
+  create_bool_option (_ ("Create frame around image"),
+		      &(ad->frame), pref_vbox);
 
-  frame = gtk_frame_new (_ ("Frame Width (pixels)"));
-  gtk_box_pack_start (GTK_BOX (pref_vbox), frame, FALSE, FALSE, 0);
-  gtk_widget_show (frame);
-
-  pref_vbox_2 = gtk_hbox_new (FALSE, 0);
-  gtk_container_set_border_width (GTK_CONTAINER (pref_vbox_2),
-				  GNOME_PAD_SMALL);
-  gtk_container_add (GTK_CONTAINER (frame), pref_vbox_2);
-  gtk_widget_show (pref_vbox_2);
-
-  adj = gtk_adjustment_new (ad->frame_size, 1.0, 50.0, 10.0, 1.0, 0.0);
-  hscale = gtk_hscale_new (GTK_ADJUSTMENT (adj));
-  gtk_range_set_update_policy (GTK_RANGE (hscale), GTK_UPDATE_DELAYED);
-  gtk_scale_set_digits (GTK_SCALE (hscale), 0);
-  gtk_signal_connect (GTK_OBJECT (adj), "value_changed",
-		      GTK_SIGNAL_FUNC (frame_size_cb), ad);
-  gtk_box_pack_start (GTK_BOX (pref_vbox_2), hscale, TRUE, TRUE, 0);
-  gtk_widget_show (hscale);
+  create_slider_option (_
+			("Frame Width (pixels)"),
+			pref_vbox, &(ad->frame_size), 1.0, 50.0, 10.0, 1.0,
+			0.0);
 
   pref_hbox = gtk_hbox_new (FALSE, GNOME_PAD_SMALL);
   gtk_box_pack_start (GTK_BOX (pref_vbox), pref_hbox, FALSE, FALSE, 0);
   gtk_widget_show (pref_hbox);
 
-  button = gtk_check_button_new_with_label (_ ("Mirror image vertically"));
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), ad->flip);
-  gtk_signal_connect (GTK_OBJECT (button), "clicked",
-		      (GtkSignalFunc) flip_cb, NULL);
-  gtk_box_pack_start (GTK_BOX (pref_hbox), button, FALSE, FALSE, 0);
-  gtk_widget_show (button);
+  create_bool_option (_ ("Mirror image vertically"), &(ad->flip), pref_hbox);
 
-  button = gtk_check_button_new_with_label (_ ("Mirror image horizontally"));
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), ad->flop);
-  gtk_signal_connect (GTK_OBJECT (button), "clicked",
-		      (GtkSignalFunc) flop_cb, NULL);
-  gtk_box_pack_start (GTK_BOX (pref_hbox), button, FALSE, FALSE, 0);
-  gtk_widget_show (button);
+  create_bool_option (_ ("Mirror image horizontally"),
+		      &(ad->flop), pref_hbox);
 
-  button = gtk_check_button_new_with_label (_ ("Emboss image"));
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), ad->emboss);
-  gtk_signal_connect (GTK_OBJECT (button), "clicked",
-		      (GtkSignalFunc) emboss_cb, NULL);
-  gtk_box_pack_start (GTK_BOX (pref_vbox), button, FALSE, FALSE, 0);
-  gtk_widget_show (button);
+  create_bool_option (_ ("Emboss image"), &(ad->emboss), pref_vbox);
 
   frame = gtk_frame_new (NULL);
   gtk_box_pack_start (GTK_BOX (pref_vbox), frame, FALSE, FALSE, 0);
@@ -916,15 +700,9 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
   gtk_container_add (GTK_CONTAINER (frame), pref_vbox_2);
   gtk_widget_show (pref_vbox_2);
 
-  button =
-    gtk_check_button_new_with_label (_
-				     ("When finished, send image and "
-				      "thumbnail filenames to script/program below"));
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), ad->use_script);
-  gtk_signal_connect (GTK_OBJECT (button), "clicked",
-		      (GtkSignalFunc) use_script_cb, NULL);
-  gtk_box_pack_start (GTK_BOX (pref_vbox_2), button, FALSE, FALSE, 0);
-  gtk_widget_show (button);
+  create_bool_option (_ ("When finished, send image and "
+			 "thumbnail filenames to script/program below"),
+		      &(ad->use_script), pref_vbox_2);
 
   pref_hbox = gtk_hbox_new (FALSE, GNOME_PAD_SMALL);
   gtk_box_pack_start (GTK_BOX (pref_vbox_2), pref_hbox, FALSE, FALSE, 0);
@@ -969,119 +747,36 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
   gtk_container_set_border_width (GTK_CONTAINER (ad->spurious_pref_vbox),
 				  GNOME_PAD_SMALL);
 
-  button = gtk_check_button_new_with_label (_ ("Blur Image"));
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), ad->blur);
-  gtk_signal_connect (GTK_OBJECT (button), "clicked",
-		      (GtkSignalFunc) blur_cb, NULL);
-  gtk_box_pack_start (GTK_BOX (ad->spurious_pref_vbox), button, FALSE, FALSE,
-		      0);
-  gtk_widget_show (button);
+  create_bool_option (_ ("Blur image"), &(ad->blur), ad->spurious_pref_vbox);
 
-  frame = gtk_frame_new (_ ("Blur image by what factor?"));
-  gtk_box_pack_start (GTK_BOX (ad->spurious_pref_vbox), frame, FALSE, FALSE,
-		      0);
-  gtk_widget_show (frame);
+  create_slider_option (_
+			("Blur image by what factor?"),
+			ad->spurious_pref_vbox, &(ad->blur_factor), 0.0,
+			100.0, 10.0, 1.0, 0.0);
 
-  pref_vbox_2 = gtk_hbox_new (FALSE, 0);
-  gtk_container_set_border_width (GTK_CONTAINER (pref_vbox_2),
-				  GNOME_PAD_SMALL);
-  gtk_container_add (GTK_CONTAINER (frame), pref_vbox_2);
-  gtk_widget_show (pref_vbox_2);
+  create_bool_option (_ ("Create Charcoal Effect"),
+		      &(ad->charcoal), ad->spurious_pref_vbox);
 
-  adj = gtk_adjustment_new (ad->blur_factor, 0.0, 100.0, 10.0, 1.0, 0.0);
-  hscale = gtk_hscale_new (GTK_ADJUSTMENT (adj));
-  gtk_range_set_update_policy (GTK_RANGE (hscale), GTK_UPDATE_DELAYED);
-  gtk_scale_set_digits (GTK_SCALE (hscale), 0);
-  gtk_signal_connect (GTK_OBJECT (adj), "value_changed",
-		      GTK_SIGNAL_FUNC (blur_factor_cb), ad);
-  gtk_box_pack_start (GTK_BOX (pref_vbox_2), hscale, TRUE, TRUE, 0);
-  gtk_widget_show (hscale);
+  create_slider_option (_
+			("Charcoal by what factor?"),
+			ad->spurious_pref_vbox, &(ad->charcoal_factor),
+			0.0, 100.0, 10.0, 1.0, 0.0);
 
+  create_bool_option (_ ("Find Edges in Image"),
+		      &(ad->edge), ad->spurious_pref_vbox);
 
-  button = gtk_check_button_new_with_label (_ ("Create Charcoal Effect"));
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), ad->charcoal);
-  gtk_signal_connect (GTK_OBJECT (button), "clicked",
-		      (GtkSignalFunc) charcoal_cb, NULL);
-  gtk_box_pack_start (GTK_BOX (ad->spurious_pref_vbox), button, FALSE, FALSE,
-		      0);
-  gtk_widget_show (button);
+  create_slider_option (_
+			("Find edges by what factor?"),
+			ad->spurious_pref_vbox, &(ad->edge_factor),
+			0.0, 100.0, 10.0, 1.0, 0.0);
 
-  frame = gtk_frame_new (_ ("Charcoal by what factor?"));
-  gtk_box_pack_start (GTK_BOX (ad->spurious_pref_vbox), frame, FALSE, FALSE,
-		      0);
-  gtk_widget_show (frame);
+  create_bool_option (_ ("Implode Image"),
+		      &(ad->implode), ad->spurious_pref_vbox);
 
-  pref_vbox_2 = gtk_hbox_new (FALSE, 0);
-  gtk_container_set_border_width (GTK_CONTAINER (pref_vbox_2),
-				  GNOME_PAD_SMALL);
-  gtk_container_add (GTK_CONTAINER (frame), pref_vbox_2);
-  gtk_widget_show (pref_vbox_2);
-
-  adj = gtk_adjustment_new (ad->charcoal_factor, 0.0, 100.0, 10.0, 1.0, 0.0);
-  hscale = gtk_hscale_new (GTK_ADJUSTMENT (adj));
-  gtk_range_set_update_policy (GTK_RANGE (hscale), GTK_UPDATE_DELAYED);
-  gtk_scale_set_digits (GTK_SCALE (hscale), 0);
-  gtk_signal_connect (GTK_OBJECT (adj), "value_changed",
-		      GTK_SIGNAL_FUNC (charcoal_factor_cb), ad);
-  gtk_box_pack_start (GTK_BOX (pref_vbox_2), hscale, TRUE, TRUE, 0);
-  gtk_widget_show (hscale);
-
-
-  button = gtk_check_button_new_with_label (_ ("Find Edges in Image"));
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), ad->edge);
-  gtk_signal_connect (GTK_OBJECT (button), "clicked",
-		      (GtkSignalFunc) edge_cb, NULL);
-  gtk_box_pack_start (GTK_BOX (ad->spurious_pref_vbox), button, FALSE, FALSE,
-		      0);
-  gtk_widget_show (button);
-
-  frame = gtk_frame_new (_ ("Find edges by what factor?"));
-  gtk_box_pack_start (GTK_BOX (ad->spurious_pref_vbox), frame, FALSE, FALSE,
-		      0);
-  gtk_widget_show (frame);
-
-  pref_vbox_2 = gtk_hbox_new (FALSE, 0);
-  gtk_container_set_border_width (GTK_CONTAINER (pref_vbox_2),
-				  GNOME_PAD_SMALL);
-  gtk_container_add (GTK_CONTAINER (frame), pref_vbox_2);
-  gtk_widget_show (pref_vbox_2);
-
-  adj = gtk_adjustment_new (ad->edge_factor, 0.0, 100.0, 10.0, 1.0, 0.0);
-  hscale = gtk_hscale_new (GTK_ADJUSTMENT (adj));
-  gtk_range_set_update_policy (GTK_RANGE (hscale), GTK_UPDATE_DELAYED);
-  gtk_scale_set_digits (GTK_SCALE (hscale), 0);
-  gtk_signal_connect (GTK_OBJECT (adj), "value_changed",
-		      GTK_SIGNAL_FUNC (edge_factor_cb), ad);
-  gtk_box_pack_start (GTK_BOX (pref_vbox_2), hscale, TRUE, TRUE, 0);
-  gtk_widget_show (hscale);
-
-  button = gtk_check_button_new_with_label (_ ("Implode Image"));
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), ad->implode);
-  gtk_signal_connect (GTK_OBJECT (button), "clicked",
-		      (GtkSignalFunc) implode_cb, NULL);
-  gtk_box_pack_start (GTK_BOX (ad->spurious_pref_vbox), button, FALSE, FALSE,
-		      0);
-  gtk_widget_show (button);
-
-  frame = gtk_frame_new (_ ("Implode by what factor?"));
-  gtk_box_pack_start (GTK_BOX (ad->spurious_pref_vbox), frame, FALSE, FALSE,
-		      0);
-  gtk_widget_show (frame);
-
-  pref_vbox_2 = gtk_hbox_new (FALSE, 0);
-  gtk_container_set_border_width (GTK_CONTAINER (pref_vbox_2),
-				  GNOME_PAD_SMALL);
-  gtk_container_add (GTK_CONTAINER (frame), pref_vbox_2);
-  gtk_widget_show (pref_vbox_2);
-
-  adj = gtk_adjustment_new (ad->implode_factor, 0.0, 100.0, 10.0, 1.0, 0.0);
-  hscale = gtk_hscale_new (GTK_ADJUSTMENT (adj));
-  gtk_range_set_update_policy (GTK_RANGE (hscale), GTK_UPDATE_DELAYED);
-  gtk_scale_set_digits (GTK_SCALE (hscale), 0);
-  gtk_signal_connect (GTK_OBJECT (adj), "value_changed",
-		      GTK_SIGNAL_FUNC (implode_factor_cb), ad);
-  gtk_box_pack_start (GTK_BOX (pref_vbox_2), hscale, TRUE, TRUE, 0);
-  gtk_widget_show (hscale);
+  create_slider_option (_
+			("Implode by what factor?"),
+			ad->spurious_pref_vbox, &(ad->implode_factor),
+			0.0, 100.0, 10.0, 1.0, 0.0);
 
 
   label = gtk_label_new (_ ("Spurious"));
@@ -1092,119 +787,37 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
   gtk_container_set_border_width (GTK_CONTAINER (ad->spurious_pref_vbox2),
 				  GNOME_PAD_SMALL);
 
+  create_bool_option (_ ("Create Painted Effect"),
+		      &(ad->paint), ad->spurious_pref_vbox2);
 
-  button = gtk_check_button_new_with_label (_ ("Create Painted Effect"));
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), ad->paint);
-  gtk_signal_connect (GTK_OBJECT (button), "clicked",
-		      (GtkSignalFunc) paint_cb, NULL);
-  gtk_box_pack_start (GTK_BOX (ad->spurious_pref_vbox2), button, FALSE, FALSE,
-		      0);
-  gtk_widget_show (button);
+  create_slider_option (_
+			("Paint what radius around each pixel?"),
+			ad->spurious_pref_vbox2, &(ad->paint_radius),
+			0.0, 20.0, 1.0, 1.0, 0.0);
 
-  frame = gtk_frame_new (_ ("Paint what radius around each pixel?"));
-  gtk_box_pack_start (GTK_BOX (ad->spurious_pref_vbox2), frame, FALSE, FALSE,
-		      0);
-  gtk_widget_show (frame);
+  create_bool_option (_ ("Solarise Image"),
+		      &(ad->solarize), ad->spurious_pref_vbox2);
 
-  pref_vbox_2 = gtk_hbox_new (FALSE, 0);
-  gtk_container_set_border_width (GTK_CONTAINER (pref_vbox_2),
-				  GNOME_PAD_SMALL);
-  gtk_container_add (GTK_CONTAINER (frame), pref_vbox_2);
-  gtk_widget_show (pref_vbox_2);
+  create_slider_option (_
+			("Solarize factor?"),
+			ad->spurious_pref_vbox2, &(ad->solarize_factor),
+			0.0, 100.0, 10.0, 1.0, 0.0);
 
-  adj = gtk_adjustment_new (ad->paint_radius, 0.0, 20.0, 1.0, 1.0, 0.0);
-  hscale = gtk_hscale_new (GTK_ADJUSTMENT (adj));
-  gtk_range_set_update_policy (GTK_RANGE (hscale), GTK_UPDATE_DELAYED);
-  gtk_scale_set_digits (GTK_SCALE (hscale), 0);
-  gtk_signal_connect (GTK_OBJECT (adj), "value_changed",
-		      GTK_SIGNAL_FUNC (paint_radius_cb), ad);
-  gtk_box_pack_start (GTK_BOX (pref_vbox_2), hscale, TRUE, TRUE, 0);
-  gtk_widget_show (hscale);
+  create_bool_option (_ ("Spread image pixels"),
+		      &(ad->spread), ad->spurious_pref_vbox2);
 
-  button = gtk_check_button_new_with_label (_ ("Solarise Image"));
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), ad->solarize);
-  gtk_signal_connect (GTK_OBJECT (button), "clicked",
-		      (GtkSignalFunc) solarize_cb, NULL);
-  gtk_box_pack_start (GTK_BOX (ad->spurious_pref_vbox2), button, FALSE, FALSE,
-		      0);
-  gtk_widget_show (button);
+  create_slider_option (_
+			("Radius to around each pixel to spread?"),
+			ad->spurious_pref_vbox2, &(ad->spread_radius),
+			0.0, 20.0, 1.0, 1.0, 0.0);
 
-  frame = gtk_frame_new (_ ("Solarize factor?"));
-  gtk_box_pack_start (GTK_BOX (ad->spurious_pref_vbox2), frame, FALSE, FALSE,
-		      0);
-  gtk_widget_show (frame);
+  create_bool_option (_ ("Swirl pixels. My favorite :-)"),
+		      &(ad->swirl), ad->spurious_pref_vbox2);
 
-  pref_vbox_2 = gtk_hbox_new (FALSE, 0);
-  gtk_container_set_border_width (GTK_CONTAINER (pref_vbox_2),
-				  GNOME_PAD_SMALL);
-  gtk_container_add (GTK_CONTAINER (frame), pref_vbox_2);
-  gtk_widget_show (pref_vbox_2);
-
-  adj = gtk_adjustment_new (ad->solarize_factor, 0.0, 100.0, 10.0, 1.0, 0.0);
-  hscale = gtk_hscale_new (GTK_ADJUSTMENT (adj));
-  gtk_range_set_update_policy (GTK_RANGE (hscale), GTK_UPDATE_DELAYED);
-  gtk_scale_set_digits (GTK_SCALE (hscale), 0);
-  gtk_signal_connect (GTK_OBJECT (adj), "value_changed",
-		      GTK_SIGNAL_FUNC (solarize_factor_cb), ad);
-  gtk_box_pack_start (GTK_BOX (pref_vbox_2), hscale, TRUE, TRUE, 0);
-  gtk_widget_show (hscale);
-
-  button = gtk_check_button_new_with_label (_ ("Spread image pixels"));
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), ad->spread);
-  gtk_signal_connect (GTK_OBJECT (button), "clicked",
-		      (GtkSignalFunc) spread_cb, NULL);
-  gtk_box_pack_start (GTK_BOX (ad->spurious_pref_vbox2), button, FALSE, FALSE,
-		      0);
-  gtk_widget_show (button);
-
-  frame = gtk_frame_new (_ ("Radius to around each pixel to spread?"));
-  gtk_box_pack_start (GTK_BOX (ad->spurious_pref_vbox2), frame, FALSE, FALSE,
-		      0);
-  gtk_widget_show (frame);
-
-  pref_vbox_2 = gtk_hbox_new (FALSE, 0);
-  gtk_container_set_border_width (GTK_CONTAINER (pref_vbox_2),
-				  GNOME_PAD_SMALL);
-  gtk_container_add (GTK_CONTAINER (frame), pref_vbox_2);
-  gtk_widget_show (pref_vbox_2);
-
-  adj = gtk_adjustment_new (ad->spread_radius, 0.0, 20.0, 1.0, 1.0, 0.0);
-  hscale = gtk_hscale_new (GTK_ADJUSTMENT (adj));
-  gtk_range_set_update_policy (GTK_RANGE (hscale), GTK_UPDATE_DELAYED);
-  gtk_scale_set_digits (GTK_SCALE (hscale), 0);
-  gtk_signal_connect (GTK_OBJECT (adj), "value_changed",
-		      GTK_SIGNAL_FUNC (spread_radius_cb), ad);
-  gtk_box_pack_start (GTK_BOX (pref_vbox_2), hscale, TRUE, TRUE, 0);
-  gtk_widget_show (hscale);
-
-  button =
-    gtk_check_button_new_with_label (_ ("Swirl pixels. My favorite :-)"));
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), ad->swirl);
-  gtk_signal_connect (GTK_OBJECT (button), "clicked",
-		      (GtkSignalFunc) swirl_cb, NULL);
-  gtk_box_pack_start (GTK_BOX (ad->spurious_pref_vbox2), button, FALSE, FALSE,
-		      0);
-  gtk_widget_show (button);
-
-  frame = gtk_frame_new (_ ("Radius to swirl pixels around?)"));
-  gtk_box_pack_start (GTK_BOX (ad->spurious_pref_vbox2), frame, FALSE, FALSE,
-		      0);
-  gtk_widget_show (frame);
-
-  pref_vbox_2 = gtk_hbox_new (FALSE, 0);
-  gtk_container_set_border_width (GTK_CONTAINER (pref_vbox_2),
-				  GNOME_PAD_SMALL);
-  gtk_container_add (GTK_CONTAINER (frame), pref_vbox_2);
-  gtk_widget_show (pref_vbox_2);
-
-  adj = gtk_adjustment_new (ad->swirl_degrees, 0.0, 360.0, 10.0, 1.0, 0.0);
-  hscale = gtk_hscale_new (GTK_ADJUSTMENT (adj));
-  gtk_range_set_update_policy (GTK_RANGE (hscale), GTK_UPDATE_DELAYED);
-  gtk_scale_set_digits (GTK_SCALE (hscale), 0);
-  gtk_signal_connect (GTK_OBJECT (adj), "value_changed",
-		      GTK_SIGNAL_FUNC (swirl_degrees_cb), ad);
-  gtk_box_pack_start (GTK_BOX (pref_vbox_2), hscale, TRUE, TRUE, 0);
-  gtk_widget_show (hscale);
+  create_slider_option (_
+			("Radius to swirl pixels around?)"),
+			ad->spurious_pref_vbox2, &(ad->swirl_degrees),
+			0.0, 360.0, 10.0, 1.0, 0.0);
 
   label = gtk_label_new (_ ("Spurious 2"));
   gnome_property_box_append_page (GNOME_PROPERTY_BOX (ad->propwindow),
@@ -1441,7 +1054,6 @@ grab_shot (user_preferences * opt, gboolean root)
     opt->post_process = TRUE;
   else
     opt->post_process = FALSE;
-
 
   g_snprintf (qual_buf, sizeof (qual_buf), "%d", opt->quality);
 
@@ -1881,8 +1493,8 @@ property_apply_cb (GtkWidget * w, gpointer data)
   buf =
     gtk_entry_get_text (GTK_ENTRY
 			(GTK_COMBO
-			 (GNOME_FILE_ENTRY (ad->directory_entry)->
-			  gentry)->entry));
+			 (GNOME_FILE_ENTRY (ad->directory_entry)->gentry)->
+			 entry));
 
   if ((buf) && (strcmp (buf, old->directory)))
     {
@@ -1952,390 +1564,11 @@ property_apply_cb (GtkWidget * w, gpointer data)
   data = NULL;
 }
 
-void
-quality_cb (GtkWidget * w, gpointer data)
-{
-  options.quality = GTK_ADJUSTMENT (w)->value;
-  gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
-  return;
-  data = NULL;
-}
-
-void
-gamma_factor_cb (GtkWidget * w, gpointer data)
-{
-  options.gamma_factor = GTK_ADJUSTMENT (w)->value;
-  gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
-  return;
-  data = NULL;
-}
-
-void
-frame_size_cb (GtkWidget * w, gpointer data)
-{
-  options.frame_size = GTK_ADJUSTMENT (w)->value;
-  gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
-  return;
-  data = NULL;
-}
-
-void
-thumb_quality_cb (GtkWidget * w, gpointer data)
-{
-  options.thumb_quality = GTK_ADJUSTMENT (w)->value;
-  gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
-  return;
-  data = NULL;
-}
-
-void
-thumb_size_cb (GtkWidget * w, gpointer data)
-{
-  options.thumb_size = GTK_ADJUSTMENT (w)->value;
-  gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
-  return;
-  data = NULL;
-}
-
-void
-delay_cb (GtkWidget * w, gpointer data)
-{
-  options.delay = GTK_ADJUSTMENT (w)->value;
-  gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
-  return;
-  data = NULL;
-}
-
-void
-directory_button_pressed (GtkWidget * w, gpointer data)
-{
-  gnome_ok_dialog ("I'll get there soon!");
-  return;
-  data = NULL;
-  w = NULL;
-}
-
-void
-decoration_cb (GtkWidget * w, gpointer data)
-{
-  options.decoration = GTK_TOGGLE_BUTTON (w)->active;
-  gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
-  return;
-  data = NULL;
-}
-
-void
-gamma_cb (GtkWidget * w, gpointer data)
-{
-  options.gamma = GTK_TOGGLE_BUTTON (w)->active;
-  gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
-  return;
-  data = NULL;
-}
-
-void
-enhance_cb (GtkWidget * w, gpointer data)
-{
-  options.enhance = GTK_TOGGLE_BUTTON (w)->active;
-  gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
-  return;
-  data = NULL;
-}
-
-void
-emboss_cb (GtkWidget * w, gpointer data)
-{
-  options.emboss = GTK_TOGGLE_BUTTON (w)->active;
-  gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
-  return;
-  data = NULL;
-}
-
-void
-normalize_cb (GtkWidget * w, gpointer data)
-{
-  options.normalize = GTK_TOGGLE_BUTTON (w)->active;
-  gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
-  return;
-  data = NULL;
-}
-
-void
-despeckle_cb (GtkWidget * w, gpointer data)
-{
-  options.despeckle = GTK_TOGGLE_BUTTON (w)->active;
-  gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
-  return;
-  data = NULL;
-}
-
-void
-equalize_cb (GtkWidget * w, gpointer data)
-{
-  options.equalize = GTK_TOGGLE_BUTTON (w)->active;
-  gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
-  return;
-  data = NULL;
-}
-
-void
-flip_cb (GtkWidget * w, gpointer data)
-{
-  options.flip = GTK_TOGGLE_BUTTON (w)->active;
-  gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
-  return;
-  data = NULL;
-}
-
-void
-flop_cb (GtkWidget * w, gpointer data)
-{
-  options.flop = GTK_TOGGLE_BUTTON (w)->active;
-  gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
-  return;
-  data = NULL;
-}
-
-void
-frame_cb (GtkWidget * w, gpointer data)
-{
-  options.frame = GTK_TOGGLE_BUTTON (w)->active;
-  gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
-  return;
-  data = NULL;
-}
-
-void
-thumbnail_intermediate_cb (GtkWidget * w, gpointer data)
-{
-  options.thumbnail_intermediate = GTK_TOGGLE_BUTTON (w)->active;
-  gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
-  return;
-  data = NULL;
-}
-
-void
-thumb_cb (GtkWidget * w, gpointer data)
-{
-  options.thumb = GTK_TOGGLE_BUTTON (w)->active;
-  gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
-  return;
-  data = NULL;
-}
-
-void
-monochrome_cb (GtkWidget * w, gpointer data)
-{
-  options.monochrome = GTK_TOGGLE_BUTTON (w)->active;
-  gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
-  return;
-  data = NULL;
-}
-
-void
-negate_cb (GtkWidget * w, gpointer data)
-{
-  options.negate = GTK_TOGGLE_BUTTON (w)->active;
-  gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
-  return;
-  data = NULL;
-}
-
-void
-beep_cb (GtkWidget * w, gpointer data)
-{
-  options.beep = GTK_TOGGLE_BUTTON (w)->active;
-  gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
-  return;
-  data = NULL;
-}
-
-void
-use_script_cb (GtkWidget * w, gpointer data)
-{
-  options.use_script = GTK_TOGGLE_BUTTON (w)->active;
-  gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
-  return;
-  data = NULL;
-}
-
-void
-view_cb (GtkWidget * w, gpointer data)
-{
-  options.view = GTK_TOGGLE_BUTTON (w)->active;
-  gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
-  return;
-  data = NULL;
-}
-
-gint
-property_destroy_cb (GtkWidget * w, gpointer data)
+gint property_destroy_cb (GtkWidget * w, gpointer data)
 {
   options.propwindow = NULL;
   return FALSE;
   w = NULL;
-  data = NULL;
-}
-
-void
-rotate_degrees_cb (GtkWidget * w, gpointer data)
-{
-  options.rotate_degrees = GTK_ADJUSTMENT (w)->value;
-  gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
-  return;
-  data = NULL;
-}
-
-void
-blur_factor_cb (GtkWidget * w, gpointer data)
-{
-  options.blur_factor = GTK_ADJUSTMENT (w)->value;
-  gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
-  return;
-  data = NULL;
-}
-
-void
-charcoal_factor_cb (GtkWidget * w, gpointer data)
-{
-  options.charcoal_factor = GTK_ADJUSTMENT (w)->value;
-  gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
-  return;
-  data = NULL;
-}
-
-void
-edge_factor_cb (GtkWidget * w, gpointer data)
-{
-  options.edge_factor = GTK_ADJUSTMENT (w)->value;
-  gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
-  return;
-  data = NULL;
-}
-
-void
-implode_factor_cb (GtkWidget * w, gpointer data)
-{
-  options.implode_factor = GTK_ADJUSTMENT (w)->value;
-  gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
-  return;
-  data = NULL;
-}
-
-void
-swirl_degrees_cb (GtkWidget * w, gpointer data)
-{
-  options.swirl_degrees = GTK_ADJUSTMENT (w)->value;
-  gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
-  return;
-  data = NULL;
-}
-
-void
-paint_radius_cb (GtkWidget * w, gpointer data)
-{
-  options.paint_radius = GTK_ADJUSTMENT (w)->value;
-  gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
-  return;
-  data = NULL;
-}
-
-void
-sharpen_factor_cb (GtkWidget * w, gpointer data)
-{
-  options.sharpen_factor = GTK_ADJUSTMENT (w)->value;
-  gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
-  return;
-  data = NULL;
-}
-
-void
-solarize_factor_cb (GtkWidget * w, gpointer data)
-{
-  options.solarize_factor = GTK_ADJUSTMENT (w)->value;
-  gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
-  return;
-  data = NULL;
-}
-
-void
-spread_radius_cb (GtkWidget * w, gpointer data)
-{
-  options.spread_radius = GTK_ADJUSTMENT (w)->value;
-  gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
-  return;
-  data = NULL;
-}
-
-void
-blur_cb (GtkWidget * w, gpointer data)
-{
-  options.blur = GTK_TOGGLE_BUTTON (w)->active;
-  gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
-  return;
-  data = NULL;
-}
-
-void
-charcoal_cb (GtkWidget * w, gpointer data)
-{
-  options.charcoal = GTK_TOGGLE_BUTTON (w)->active;
-  gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
-  return;
-  data = NULL;
-}
-
-void
-edge_cb (GtkWidget * w, gpointer data)
-{
-  options.edge = GTK_TOGGLE_BUTTON (w)->active;
-  gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
-  return;
-  data = NULL;
-}
-
-void
-implode_cb (GtkWidget * w, gpointer data)
-{
-  options.implode = GTK_TOGGLE_BUTTON (w)->active;
-  gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
-  return;
-  data = NULL;
-}
-
-void
-paint_cb (GtkWidget * w, gpointer data)
-{
-  options.paint = GTK_TOGGLE_BUTTON (w)->active;
-  gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
-  return;
-  data = NULL;
-}
-
-void
-solarize_cb (GtkWidget * w, gpointer data)
-{
-  options.solarize = GTK_TOGGLE_BUTTON (w)->active;
-  gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
-  return;
-  data = NULL;
-}
-
-void
-swirl_cb (GtkWidget * w, gpointer data)
-{
-  options.swirl = GTK_TOGGLE_BUTTON (w)->active;
-  gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
-  return;
-  data = NULL;
-}
-
-void
-spread_cb (GtkWidget * w, gpointer data)
-{
-  options.spread = GTK_TOGGLE_BUTTON (w)->active;
-  gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
-  return;
   data = NULL;
 }
 
@@ -2358,4 +1591,64 @@ spurious_cb (GtkWidget * w, gpointer data)
   gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
   return;
   data = NULL;
+}
+
+void
+slider_option_cb (GtkWidget * w, gpointer data)
+{
+  int *option = data;
+  *option = GTK_ADJUSTMENT (w)->value;
+  gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
+  return;
+  data = NULL;
+}
+
+void
+boolean_option_cb (GtkWidget * w, gpointer data)
+{
+  int *option = data;
+  *option = GTK_TOGGLE_BUTTON (w)->active;
+  gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
+  return;
+  data = NULL;
+}
+
+GtkWidget *
+create_bool_option (const gchar * label, int *opt, GtkWidget * target)
+{
+  GtkWidget *button = gtk_check_button_new_with_label (label);
+  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), *opt);
+  gtk_signal_connect (GTK_OBJECT (button), "clicked",
+		      (GtkSignalFunc) boolean_option_cb, opt);
+  gtk_box_pack_start (GTK_BOX (target), button, FALSE, FALSE, 0);
+  gtk_widget_show (button);
+  return button;
+}
+
+
+GtkWidget *
+create_slider_option (gchar * label, GtkWidget * target, int *option,
+		      gfloat a, gfloat b, gfloat c, gfloat d, gfloat e)
+{
+  GtkWidget *pref_vbox, *hscale;
+  GtkObject *adj;
+  GtkWidget *frame = gtk_frame_new (label);
+  gtk_box_pack_start (GTK_BOX (target), frame, FALSE, FALSE, 0);
+  gtk_widget_show (frame);
+
+  pref_vbox = gtk_hbox_new (FALSE, 0);
+  gtk_container_set_border_width (GTK_CONTAINER (pref_vbox), GNOME_PAD_SMALL);
+  gtk_container_add (GTK_CONTAINER (frame), pref_vbox);
+  gtk_widget_show (pref_vbox);
+
+  adj = gtk_adjustment_new (*option, a, b, c, d, e);
+  hscale = gtk_hscale_new (GTK_ADJUSTMENT (adj));
+  gtk_range_set_update_policy (GTK_RANGE (hscale), GTK_UPDATE_DELAYED);
+  gtk_scale_set_digits (GTK_SCALE (hscale), 0);
+  gtk_signal_connect (GTK_OBJECT (adj), "value_changed",
+		      GTK_SIGNAL_FUNC (slider_option_cb), option);
+  gtk_box_pack_start (GTK_BOX (pref_vbox), hscale, TRUE, TRUE,
+		      GNOME_PAD_SMALL);
+  gtk_widget_show (hscale);
+  return frame;
 }

@@ -21,8 +21,6 @@
 #include <config.h>
 
 #include <gnome.h>
-#include <gdk/gdkx.h>
-#include <gdk/gdkprivate.h>
 #include <applet-widget.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -102,66 +100,30 @@ user_preferences;
 
 void cb_about (AppletWidget * widget, gpointer data);
 void cb_properties_dialog (AppletWidget * widget, gpointer data);
-void quality_cb (GtkWidget * w, gpointer data);
-void frame_size_cb (GtkWidget * w, gpointer data);
-void thumb_quality_cb (GtkWidget * w, gpointer data);
-void gamma_factor_cb (GtkWidget * w, gpointer data);
-void thumb_size_cb (GtkWidget * w, gpointer data);
-void rotate_degrees_cb (GtkWidget * w, gpointer data);
-void blur_factor_cb (GtkWidget * w, gpointer data);
-void charcoal_factor_cb (GtkWidget * w, gpointer data);
-void edge_factor_cb (GtkWidget * w, gpointer data);
-void implode_factor_cb (GtkWidget * w, gpointer data);
-void paint_radius_cb (GtkWidget * w, gpointer data);
-void sharpen_factor_cb (GtkWidget * w, gpointer data);
-void solarize_factor_cb (GtkWidget * w, gpointer data);
-void spread_radius_cb (GtkWidget * w, gpointer data);
-void swirl_degrees_cb (GtkWidget * w, gpointer data);
-void blur_cb (GtkWidget * w, gpointer data);
-void spurious_cb (GtkWidget * w, gpointer data);
-void charcoal_cb (GtkWidget * w, gpointer data);
-void edge_cb (GtkWidget * w, gpointer data);
-void implode_cb (GtkWidget * w, gpointer data);
-void paint_cb (GtkWidget * w, gpointer data);
-void solarize_cb (GtkWidget * w, gpointer data);
-void swirl_cb (GtkWidget * w, gpointer data);
-void spread_cb (GtkWidget * w, gpointer data);
-void delay_cb (GtkWidget * w, gpointer data);
-void expand_cb (GtkWidget * w, gpointer data);
-void directory_button_pressed (GtkWidget * w, gpointer data);
 void property_apply_cb (GtkWidget * w, gpointer data);
-void decoration_cb (GtkWidget * w, gpointer data);
-void emboss_cb (GtkWidget * w, gpointer data);
-void enhance_cb (GtkWidget * w, gpointer data);
-void despeckle_cb (GtkWidget * w, gpointer data);
-void flip_cb (GtkWidget * w, gpointer data);
-void flop_cb (GtkWidget * w, gpointer data);
-void gamma_cb (GtkWidget * w, gpointer data);
-void frame_cb (GtkWidget * w, gpointer data);
-void thumbnail_intermediate_cb (GtkWidget * w, gpointer data);
-void thumb_cb (GtkWidget * w, gpointer data);
-void use_script_cb (GtkWidget * w, gpointer data);
-void beep_cb (GtkWidget * w, gpointer data);
-void view_cb (GtkWidget * w, gpointer data);
-void equalize_cb (GtkWidget * w, gpointer data);
-void normalize_cb (GtkWidget * w, gpointer data);
-void monochrome_cb (GtkWidget * w, gpointer data);
-void negate_cb (GtkWidget * w, gpointer data);
 gint property_destroy_cb (GtkWidget * w, gpointer data);
+void expand_cb (GtkWidget * w, gpointer data);
+void spurious_cb (GtkWidget * w, gpointer data);
 void cb_applet_change_orient (GtkWidget * w, PanelOrientType o,
-                              gpointer data);
+			      gpointer data);
 void window_button_press (GtkWidget * button, user_preferences * options);
 void desktop_button_press (GtkWidget * button, user_preferences * options);
 static void properties_save (gchar * path, gpointer data);
 void grab_shot (user_preferences * opt, gboolean root);
 void change_orientation (PanelOrientType o, gboolean size_is_tiny);
 gboolean need_to_change_orientation (PanelOrientType o,
-                                     gboolean size_is_tiny);
+				     gboolean size_is_tiny);
 void set_tooltip (GtkWidget * w, const gchar * tip);
 #ifdef HAVE_PANEL_PIXEL_SIZE
-static void applet_change_pixel_size (GtkWidget * w, int s,
-				      gpointer data);
+static void applet_change_pixel_size (GtkWidget * w, int s, gpointer data);
 #endif
+void slider_option_cb (GtkWidget * w, gpointer data);
+void boolean_option_cb (GtkWidget * w, gpointer data);
+GtkWidget *create_bool_option (const gchar * label, int *opt,
+			       GtkWidget * target);
+GtkWidget *
+create_slider_option (gchar * label, GtkWidget * target, int *option, gfloat a,
+		     gfloat b, gfloat c, gfloat d, gfloat e);
 
 /* Global variables */
 GtkWidget *applet;
