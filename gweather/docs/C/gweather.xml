@@ -2,9 +2,9 @@
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "2.8">
-  <!ENTITY manrevision "2.8">
-  <!ENTITY date "September 2004">
+  <!ENTITY appletversion "2.10">
+  <!ENTITY manrevision "2.10">
+  <!ENTITY date "March 2005">
   <!ENTITY applet "Weather Report">
 ]>
 <!-- 
@@ -20,7 +20,11 @@
    <!-- appropriate code -->
      
    <articleinfo>
-      <title>&applet; Applet Manual V2.4</title>  	 
+      <title>&applet; Manual V2.10</title>
+      <copyright>
+        <year>2005</year>
+	<holder>Davyd Madeley</holder>
+      </copyright>
       <copyright>
 	<year>2004</year>
 	<holder>Angela Boyle</holder>
@@ -62,6 +66,11 @@
            any of this. -->
       	 
       <authorgroup>
+        <author>
+	  <firstname>Davyd></firstname><surname>Madeley</surname>
+	  <email>davyd@madeley.id.au</email>
+	  <affiliation><orgname>GNOME Project</orgname></affiliation>
+	</author>
 	<author>
 	  <firstname>Anglea</firstname>
 	  <surname>Boyle</surname>
@@ -115,9 +124,16 @@
       </authorgroup>
       	 
       <revhistory>
+        <revision>
+	  <revnumber>Version 2.10</revnumber>
+	  <date>March 2005</date>
+	  <revdescription>
+	    <para role="author">Davyd Madeley</para>
+	  </revdescription>
+	</revision>
 	<revision>
-	  <revnumber>Version &manrevision;</revnumber>
-	  <date>&date;</date>
+	  <revnumber>Version 2.8</revnumber>
+	  <date>September 2004</date>
 	  <revdescription>
 	    <para role="author">Angela Boyle</para>
 	    <para role="publisher">GNOME Documentation Project</para>
@@ -205,14 +221,14 @@
       <!-- ==== Figure ============================================= -->
       	 
       <figure id="weather-applet-fig">
-	<title>&applet; Applet</title>  		
+	<title>&applet;</title>  		
          <screenshot>             		  
             <mediaobject>                 			 
                <imageobject>
                   <imagedata fileref="figures/gweather_applet.png" format="PNG"/>                  			 
                </imageobject>
                <textobject>
-                  <phrase>Shows Weather Report applet. Contains a weather icon and current temperature</phrase> 			 
+                  <phrase>Shows &applet;. Contains a weather icon and current temperature</phrase> 			 
                </textobject>
             </mediaobject>
          </screenshot>
@@ -220,7 +236,7 @@
        
       <!-- ==== End of Figure ======================================= -->
       <para>
-         The <application>&applet;</application> applet downloads weather information from the U.S National Weather Service (NWS) servers, including the Interactive Weather Information Network (IWIN). You can use <application>&applet;</application> to display current weather information and weather forecasts on your computer. 
+         The <application>&applet;</application> downloads weather information from the U.S National Weather Service (NWS) servers, including the Interactive Weather Information Network (IWIN) and other weather services. You can use <application>&applet;</application> to display current weather information and weather forecasts on your computer. 
       </para>
       <note id="proxies-note-1">
          <para>
@@ -233,7 +249,8 @@
       <itemizedlist>
          <listitem>
             <para>
-               A weather icon that represents the general weather conditions. For example, an icon of the sun represents sunny weather conditions. To view a text description of the general weather conditions, point to the applet to display a tooltip.
+               A weather icon that represents the general weather conditions.
+	       See <xref linkend="gweather-introduction-icons" />.
             </para>
          </listitem>
          <listitem>
@@ -242,6 +259,123 @@
             </para>
          </listitem>
       </itemizedlist>
+
+    <sect2 id="gweather-introduction-icons">
+     <title>Weather Icons on Panel</title>
+     <informaltable frame="all">
+      <tgroup cols="2" colsep="1" rowsep="1">
+       <colspec colname="COLSPEC0" colwidth="50*"/>
+       <colspec colname="COLSPEC1" colwidth="50*"/>
+       <thead>
+        <row valign="top">
+	 <entry colname="COLSPEC0"><para>Icon</para></entry>
+	 <entry colname="COLSPEC1"><para>Description</para></entry>
+	</row>
+       </thead>
+       <tbody>
+            <row valign="top">
+              <entry><para><inlinemediaobject><imageobject>
+	       <imagedata fileref="figures/stock_weather-sunny.png"
+	       		  format="PNG"/>
+	      </imageobject><textobject>
+	       <phrase>Stock Sunny</phrase>
+	      </textobject></inlinemediaobject></para></entry>
+              <entry><para>
+                  The weather is sunny and clear.
+                </para></entry>
+             </row>
+            <row valign="top">
+              <entry><para><inlinemediaobject><imageobject>
+	       <imagedata fileref="figures/stock_weather-few-clouds.png"
+	       		  format="PNG"/>
+	      </imageobject><textobject>
+	       <phrase>Stock Few Clouds</phrase>
+	      </textobject></inlinemediaobject></para></entry>
+              <entry><para>
+                  The weather is partly cloudy.
+                </para></entry>
+             </row>
+            <row valign="top">
+              <entry><para><inlinemediaobject><imageobject>
+	       <imagedata fileref="figures/stock_weather-cloudy.png"
+	       		  format="PNG"/>
+	      </imageobject><textobject>
+	       <phrase>Stock Cloudy</phrase>
+	      </textobject></inlinemediaobject></para></entry>
+              <entry><para>
+                  The weather is cloudy.
+                </para></entry>
+             </row>
+            <row valign="top">
+              <entry><para><inlinemediaobject><imageobject>
+	       <imagedata fileref="figures/stock_weather-fog.png"
+	       		  format="PNG"/>
+	      </imageobject><textobject>
+	       <phrase>Stock Fog</phrase>
+	      </textobject></inlinemediaobject></para></entry>
+              <entry><para>
+                  The weather is foggy or overcast.
+                </para></entry>
+             </row>
+            <row valign="top">
+              <entry><para><inlinemediaobject><imageobject>
+	       <imagedata fileref="figures/stock_weather-showers.png"
+	       		  format="PNG"/>
+	      </imageobject><textobject>
+	       <phrase>Stock Rain</phrase>
+	      </textobject></inlinemediaobject></para></entry>
+              <entry><para>
+                  The weather is rainy or wet.
+                </para></entry>
+             </row>
+            <row valign="top">
+              <entry><para><inlinemediaobject><imageobject>
+	       <imagedata fileref="figures/stock_weather-snow.png"
+	       		  format="PNG"/>
+	      </imageobject><textobject>
+	       <phrase>Stock Snow</phrase>
+	      </textobject></inlinemediaobject></para></entry>
+              <entry><para>
+                  The weather is snowing.
+                </para></entry>
+             </row>
+            <row valign="top">
+              <entry><para><inlinemediaobject><imageobject>
+	       <imagedata fileref="figures/stock_weather-storm.png"
+	       		  format="PNG"/>
+	      </imageobject><textobject>
+	       <phrase>Stock Fog</phrase>
+	      </textobject></inlinemediaobject></para></entry>
+              <entry><para>
+                  The weather is stormy.
+                </para></entry>
+             </row>
+            <row valign="top">
+              <entry><para><inlinemediaobject><imageobject>
+	       <imagedata fileref="figures/stock_weather-night-clear.png"
+	       		  format="PNG"/>
+	      </imageobject><textobject>
+	       <phrase>Stock Night</phrase>
+	      </textobject></inlinemediaobject></para></entry>
+              <entry><para>
+                  The weather is clear and it is night.
+                </para></entry>
+             </row>
+            <row valign="top">
+              <entry><para><inlinemediaobject><imageobject>
+	       <imagedata fileref="figures/stock_weather-night-few-clouds.png"
+	       		  format="PNG"/>
+	      </imageobject><textobject>
+	       <phrase>Stock Night Few Clouds</phrase>
+	      </textobject></inlinemediaobject></para></entry>
+              <entry><para>
+                  The weather is partly cloudy and it is night.
+                </para></entry>
+             </row>
+       </tbody>
+      </tgroup>
+     </informaltable>
+    </sect2>
 
     <sect2 id="gweather-introduction-add">
       <title>To Add &applet; to a Panel</title>
@@ -259,18 +393,33 @@
       <title>Customizing &applet;</title>
       <sect2 id="gweather-change-location">
          <title>Changing to Particular Location</title>
+      <figure id="weather-applet-prefs-locations-fig">
+	<title>Location Preferences</title>
+         <screenshot>
+            <mediaobject>                 			 
+               <imageobject>
+                  <imagedata fileref="figures/gweather-prefs-locations.png" format="PNG"/>                  			 
+               </imageobject>
+               <textobject>
+                  <phrase>Location Preferences</phrase>
+               </textobject>
+            </mediaobject>
+         </screenshot>
+      </figure>
          <para>
-            When you add the <application>&applet;</application> applet to a panel for the first time, the applet displays the weather for Pittsburg, Pennsylvania by default. To display the weather for a different location, perform the following steps:
+            When you add the <application>&applet;</application> to a panel for
+	    the first time, the application displays the weather for Pittsburg, Pennsylvania by default. To display the weather for a different location, perform the following steps:
          </para>
          <orderedlist>
             <listitem>
                <para>
-                  Right-click on the applet.
+                  Right-click on the application.
                </para>
             </listitem>
             <listitem>
                <para>
-                  Choose <guimenuitem>Preferences</guimenuitem> from the applet popup menu. The applet displays the <guilabel>Weather Preferences</guilabel> dialog.
+                  Choose <guimenuitem>Preferences</guimenuitem> from the
+		  application popup menu. The application displays the <guilabel>Weather Preferences</guilabel> dialog.
                </para>
             </listitem>
             <listitem>
@@ -290,7 +439,9 @@
             </listitem>
             <listitem>
                <para>
-                  Click on a location. While the applet retrieves the weather information for the new location, the tooltip "Updating" is displayed when you point to the applet.
+                  Click on a location. While the application retrieves the
+		  weather information for the new location, the tooltip
+		  "Updating" is displayed when you point to the icon.
                </para>
             </listitem>
             <listitem>
@@ -303,116 +454,40 @@
       <sect2 id="gweather-update">
          <title>Updating Weather Information</title>
          <para>
-            To update the weather information that the applet displays in the panel, right-click on the applet, then choose <guimenuitem>Update</guimenuitem>.
+            To update the weather information that the &applet; displays in the
+	    panel, right-click on the icon, then choose <guimenuitem>Update</guimenuitem>.
          </para>
          <para>To automatically update the weather information at regular intervals, perform the following steps:</para>
 	    <orderedlist>
                   <listitem><para>Go to the right-click menu and select <guimenuitem>Preferences</guimenuitem>.</para></listitem>
                    <listitem><para>In the <guilabel>Weather Preferences</guilabel> dialog under the <guilabel>General</guilabel> tab, select the <guilabel>Automatically update every ... minutes</guilabel> option.</para></listitem>
-		<listitem><para>Use the spin box to specify the interval at which the applet retrieves updated information from the weather server. The default is to check every thirty minutes.</para></listitem>
+		<listitem><para>Use the spin box to specify the interval at
+		which the &applet; retrieves updated information from the weather server. The default is to check every thirty minutes.</para></listitem>
                     <listitem><para>Click <guibutton>Close</guibutton> to close the <guilabel>Weather Preferences</guilabel> dialog.</para></listitem>
 	      </orderedlist>
          </sect2>
         <sect2 id="gweather-metric"> 
-               <title>Changing to the Metric System</title>
-                     <para>
-                        Go to the right-click menu and select <guimenuitem>Preferences</guimenuitem>. In the <guilabel>Weather Preferences</guilabel> dialog under the <guilabel>General</guilabel> tab, select the <guilabel>Use metric system units</guilabel> option to use metric units of measurement instead of imperial units of measurement in the applet. This option affects the following parameters:
+               <title>Changing Units</title>
+      <figure id="weather-applet-prefs-general-fig">
+	<title>General Preferences</title>
+         <screenshot>
+            <mediaobject>                 			 
+               <imageobject>
+                  <imagedata fileref="figures/gweather-prefs-general.png" format="PNG"/>
+               </imageobject>
+               <textobject>
+                  <phrase>General Preferences</phrase>
+               </textobject>
+            </mediaobject>
+         </screenshot>
+      </figure>
+		     <para>
+                        Go to the right-click menu and select
+			<guimenuitem>Preferences</guimenuitem>. In the
+			<guilabel>Weather Preferences</guilabel> dialog under
+			the <guilabel>General</guilabel> tab, select the
+			units of measurement you want to use.
                      </para>
-                     <informaltable>
-                        <tgroup cols="3">
-                           <colspec colname="COLSPEC0" colwidth="1.00*"/><colspec
-                           colname="col1"/><colspec colname="col2"/>
-                           <thead>
-                              <row valign="top">
-                                 <entry colname="COLSPEC0">
-                                    <para>
-                                       Parameter
-                                    </para>
-                                 </entry>
-                                 <entry colname="col1">
-                                    <para>
-                                       Imperial System
-                                    </para>
-                                 </entry>
-                                 <entry colname="col2">
-                                    <para>
-                                       Metric System
-                                    </para>
-                                 </entry>
-                              </row>
-                           </thead>
-                           <tbody>
-                              <row valign="top">
-                                 <entry colname="COLSPEC0">
-                                    <para>
-                                       Temperature and dew point
-                                    </para>
-                                 </entry>
-                                 <entry colname="col1">
-                                    <para>
-                                       degrees Fahrenheit
-                                    </para>
-                                 </entry>
-                                 <entry colname="col2">
-                                    <para>
-                                       degrees Celsius
-                                    </para>
-                                 </entry>
-                              </row>
-                              <row valign="top">
-                                 <entry colname="COLSPEC0">
-                                    <para>
-                                       Wind speed
-                                    </para>
-                                 </entry>
-                                 <entry colname="col1">
-                                    <para>
-                                       miles per hour (mph)
-                                    </para>
-                                 </entry>
-                                 <entry colname="col2">
-                                    <para>
-                                       kilometers per hour (kph)
-                                    </para>
-                                 </entry>
-                              </row>
-                              <row valign="top">
-                                 <entry colname="COLSPEC0">
-                                    <para>
-                                       Pressure
-                                    </para>
-                                 </entry>
-                                 <entry colname="col1">
-                                    <para>
-                                       inches of mercury (inHg)
-                                    </para>
-                                 </entry>
-                                 <entry colname="col2">
-                                    <para>
-                                       millimeters of mercury (mmHg)
-                                    </para>
-                                 </entry>
-                              </row>
-                              <row valign="top">
-                                 <entry colname="COLSPEC0">
-                                    <para>
-                                       Visibility
-                                    </para>
-                                 </entry>
-                                 <entry colname="col1">
-                                    <para>
-                                       miles
-                                    </para>
-                                 </entry>
-                                 <entry colname="col2">
-                                    <para>
-                                       kilometers
-                                    </para>
-                                 </entry>
-                              </row>
-                           </tbody>
-                        </tgroup>
-                     </informaltable>
           </sect2>
          
    </sect1>
@@ -421,7 +496,8 @@
       <title>Viewing Detailed Information</title>
 
          <para>
-            To view detailed weather information, right-click on the applet, then choose <guimenuitem>Forecast</guimenuitem>. The applet displays the <guilabel>Forecast</guilabel> dialog. The <guilabel>Forecast</guilabel> dialog contains the following default tabbed sections:
+            To view detailed weather information, right-click on the &applet;,
+	    then choose <guimenuitem>Forecast</guimenuitem>. The &applet; displays the <guilabel>Forecast</guilabel> dialog. The <guilabel>Forecast</guilabel> dialog contains the following default tabbed sections:
          </para>
          <itemizedlist>
             <listitem>
@@ -442,6 +518,19 @@
          </itemizedlist>
          <sect2 id="gweather-current-conditions">
             <title>Current Conditions</title>
+      <figure id="weather-applet-details-fig">
+	<title>&applet; Details</title>  		
+         <screenshot>             		  
+            <mediaobject>                 			 
+               <imageobject>
+                  <imagedata fileref="figures/gweather-details.png" format="PNG"/>                  			 
+               </imageobject>
+               <textobject>
+                  <phrase>&applet; details</phrase>
+               </textobject>
+            </mediaobject>
+         </screenshot>
+      </figure>
             <para>
                The <guilabel>Current Conditions</guilabel> tabbed section displays the following information:
             </para>
@@ -570,9 +659,33 @@
                            </para>
                         </entry>
                      </row>
+		     <row valign="top">
+		      <entry colname="col1">
+		       <para>Sunrise</para>
+		      </entry>
+		      <entry colname="col2">
+		       <para>The calculated sunrise time for your location</para>
+		      </entry>
+		     </row>
+		     <row valign="top">
+		      <entry colname="col1">
+		       <para>Sunset</para>
+		      </entry>
+		      <entry>
+		       <para>The calculated sunset time for your location</para>
+		      </entry>
+		     </row>
                   </tbody>
                </tgroup>
             </informaltable>
+
+	    <note><para>
+	     Sunrise and sunset times are calculated locally from
+	     latitude and longitude information stored on your computer. Some
+	     conditions, such as refraction of light through the air, are hard
+	     to model. Resultantly, the calculated values for sunrise and
+	     sunset may be off by up to 10 minutes.
+	    </para></note>
          </sect2>
          <sect2 id="gweather-forecast">
             <title>Forecast</title>
@@ -581,14 +694,19 @@
             </para>
             <note>
                <para>
-                  Forecasts are only available for some locations in the U.S.A.
+                  Forecasts are only available for some locations in the U.S.A,
+		  Australia and the United Kingdom.
                </para>
             </note>
          </sect2>
          <sect2 id="gweather-radar-map">
             <title>Radar Map</title>
             <para>
-               By default, the <guilabel>Radar Map</guilabel> tabbed section is not displayed in the <guilabel>Forecast</guilabel> dialog. <application>&applet;</application>  downloads the radar maps from www.weather.com. If the radar map is not available from www.weather.com, the applet displays a question mark. To go to the www.weather.com web site, click on the <guibutton>Visit Weather.com</guibutton> button.
+               By default, the <guilabel>Radar Map</guilabel> tabbed section is
+	       not displayed in the <guilabel>Forecast</guilabel> dialog.
+	       <application>&applet;</application>  downloads the radar maps
+	       from www.weather.com. If the radar map is not available from
+	       www.weather.com, &applet; displays a question mark. To go to the www.weather.com web site, click on the <guibutton>Visit Weather.com</guibutton> button.
             </para>
             <para>To enable the radar map, perform the following steps:
 	     <orderedlist>
