@@ -60,7 +60,7 @@ battery_session_load(gchar * cfgpath, BatteryData * bat)
   gnome_config_pop_prefix ();
 } /* battery_session_load */
 
-void
+int
 battery_session_save(GtkWidget * w,
 		     const char * privcfgpath,
 		     const char * globcfgpath,
@@ -97,6 +97,7 @@ battery_session_save(GtkWidget * w,
   gnome_config_sync();
   gnome_config_drop_all();
 
+  return FALSE;
 } /* battery_session_save */
 
 void
