@@ -10,30 +10,30 @@ INCLUDES = -I. -I$(srcdir) 				\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
 	-I$(includedir) $(GNOME_INCLUDEDIR) $(LIBGTOP_INCS)
 
-bin_PROGRAMS = cpuload_applet
+bin_PROGRAMS = multiload_applet
 
-cpuload_applet_SOURCES = cpuload.c 	\
-			 cpuload.h	\
-			 memload.c	\
-			 memload.h	\
-			 swapload.c	\
-			 swapload.h	\
-			 main.c		\
-			 linux-proc.h 	\
-			 linux-proc.c 	\
-			 properties-cpu.c	\
-			 properties-cpu.h	\
-			 properties-mem.c	\
-			 properties-mem.h	\
-			 properties-swap.c	\
-			 properties-swap.h
+multiload_applet_SOURCES = cpuload.c 	\
+			   cpuload.h	\
+			   memload.c	\
+			   memload.h	\
+			   swapload.c	\
+			   swapload.h	\
+			   main.c		\
+			   linux-proc.h 	\
+			   linux-proc.c 	\
+			   properties-cpu.c	\
+			   properties-cpu.h	\
+			   properties-mem.c	\
+			   properties-mem.h	\
+			   properties-swap.c	\
+			   properties-swap.h
 
-cpuload_applet_LDADD = -lpanel_applet \
+multiload_applet_LDADD = -lpanel_applet \
 		     $(GNOME_LIBDIR) $(ORB_LIBS)      \
 		     $(GNOMEUI_LIBS) $(INTLLIBS)	\
 		     $(LIBGTOP_LIBS) $(LIBGTOP_EXTRA_LIBS)
 
-cpuload_applet_LINK = $(CXXLINK)
+multiload_applet_LINK = $(CXXLINK)
 
 EXTRA_DIST = Multiload.desktop \
 		cpuload_applet.desktop memload_applet.desktop \
