@@ -12,8 +12,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
-"POT-Creation-Date: 2003-07-12 01:44+0200\n"
-"PO-Revision-Date: 2003-07-12 00:35+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-07-17 00:29+0200\n"
+"PO-Revision-Date: 2003-07-15 11:47+0100\n"
 "Last-Translator: Gnome PL Team <translators@gnome.pl>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -234,13 +235,11 @@ msgstr "Aplet nie będzie działał poprawnie (jeśli w ogóle).\n"
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
 #: battstat/battstat_applet.c:318 battstat/battstat_applet.c:883
-#: gweather/gweather-dialog.c:82
 msgid "High"
 msgstr "Wysoki"
 
 #. Low = The APM BIOS thinks that the battery charge is Low.
 #: battstat/battstat_applet.c:320 battstat/battstat_applet.c:885
-#: gweather/gweather-dialog.c:82
 msgid "Low"
 msgstr "Niski"
 
@@ -464,7 +463,7 @@ msgid "Battery Charge Monitor Preferences"
 msgstr "Preferencje monitora poziomu naładowania akumulatora"
 
 #: battstat/battstat_applet.glade.h:13 drivemount/properties.c:348
-#: gweather/gweather-pref.c:313 mailcheck/mailcheck.c:2026
+#: gweather/gweather-pref.c:738 mailcheck/mailcheck.c:2026
 #: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:552
 msgid "General"
 msgstr "Ogólne"
@@ -1077,38 +1076,42 @@ msgid "Number of configured keymaps"
 msgstr "Liczba skonfigurowanych układów klawiatur"
 
 #: gkb-new/gkb.schemas.in.h:7
-msgid "The command what switch your keymap tho this layout"
+msgid "The command that switches your keymap to this layout"
 msgstr "Polecenie przełączające na ten układ klawiatury"
 
 #: gkb-new/gkb.schemas.in.h:8
+msgid "The command what switch your keymap tho this layout"
+msgstr "Polecenie przełączające na ten układ klawiatury"
+
+#: gkb-new/gkb.schemas.in.h:9
 msgid "The country of the keyboard layout"
 msgstr "Kraj układu klawiatury"
 
-#: gkb-new/gkb.schemas.in.h:9
+#: gkb-new/gkb.schemas.in.h:10
 msgid "The label of the keyboard layout"
 msgstr "Etykieta układu klawiatury"
 
-#: gkb-new/gkb.schemas.in.h:10
+#: gkb-new/gkb.schemas.in.h:11
 msgid "The language of the keyboard layout"
 msgstr "Język układu klawiatury"
 
-#: gkb-new/gkb.schemas.in.h:11
+#: gkb-new/gkb.schemas.in.h:12
 msgid "The name of the keyboard layout"
 msgstr "Nazwa układu klawiatury"
 
-#: gkb-new/gkb.schemas.in.h:12
+#: gkb-new/gkb.schemas.in.h:13
 msgid "This flag will appear in flag field of the applet"
 msgstr "Ten znacznik pojawi się w polu znacznika apletu"
 
-#: gkb-new/gkb.schemas.in.h:13
+#: gkb-new/gkb.schemas.in.h:14
 msgid "This information helps you to identify your keyboard layout"
 msgstr "Ta informacja pomaga zidentyfikować układ klawiatury"
 
-#: gkb-new/gkb.schemas.in.h:14
+#: gkb-new/gkb.schemas.in.h:15
 msgid "This is the binding for keypress-based layout change"
 msgstr "Przypisany skrót klawiaturowy do zmiany układu klawiatury"
 
-#: gkb-new/gkb.schemas.in.h:15
+#: gkb-new/gkb.schemas.in.h:16
 msgid ""
 "This should be like \"gkb_xmmap us\", \"setxkbmap us\" or \"xmodmap "
 "something.xmm\""
@@ -1116,15 +1119,15 @@ msgstr ""
 "Powinno to być coś w rodzaju \"gkb_xmmap us\", \"setxkbmap us\" lib "
 "\"xmodmap cośtam.xmm\""
 
-#: gkb-new/gkb.schemas.in.h:16
+#: gkb-new/gkb.schemas.in.h:17
 msgid "This will appear in the label box of the applet"
 msgstr "Zawartość pola etykiety apletu"
 
-#: gkb-new/gkb.schemas.in.h:17
+#: gkb-new/gkb.schemas.in.h:18
 msgid "This will identify the layout in the list"
 msgstr "Identyfikacja układu klawiatury na liście"
 
-#: gkb-new/gkb.schemas.in.h:18
+#: gkb-new/gkb.schemas.in.h:19
 msgid "When this is true, the applet will be half size"
 msgstr "Jeżeli prawdziwe, aplet będzie o połowę mniejszy"
 
@@ -1197,7 +1200,8 @@ msgstr "Etykieta"
 msgid "Flag and Label"
 msgstr "Flaga i etykieta"
 
-#: gkb-new/prop.c:257 gtik/gtik.c:1528 gweather/gweather-pref.c:367
+#. The Miscellaneous frame
+#: gkb-new/prop.c:257 gtik/gtik.c:1528 gweather/gweather-pref.c:720
 #: modemlights/properties.c:437
 msgid "Display"
 msgstr "Wyświetlanie"
@@ -1301,7 +1305,7 @@ msgstr "_Odśwież"
 msgid "Could not retrieve the stock data."
 msgstr "Nie można pobrać danych giełdowych."
 
-#: gtik/gtik.c:289 gweather/gweather-applet.c:386
+#: gtik/gtik.c:289 gweather/gweather-applet.c:346
 msgid "Updating..."
 msgstr "Aktualizacja..."
 
@@ -1346,7 +1350,7 @@ msgstr "Symbole"
 msgid "Behavior"
 msgstr "Zachowanie"
 
-#: gtik/gtik.c:1441 gweather/gweather-pref.c:318
+#: gtik/gtik.c:1441 gweather/gweather-pref.c:679
 msgid "Update"
 msgstr "Odświeżanie"
 
@@ -1354,7 +1358,7 @@ msgstr "Odświeżanie"
 msgid "Stock update fre_quency:"
 msgstr "Częstotliwość _odświeżania:"
 
-#: gtik/gtik.c:1457 gweather/gweather-pref.c:357 mailcheck/mailcheck.c:2073
+#: gtik/gtik.c:1457 gweather/gweather-pref.c:705 mailcheck/mailcheck.c:2073
 #: mailcheck/mailcheck.c:2079
 msgid "minutes"
 msgstr "minut"
@@ -1538,469 +1542,627 @@ msgstr ""
 "\n"
 "Aplet monitorujący lokalne warunki pogodowe."
 
-#: gweather/gweather-applet.c:60
-#, c-format
-msgid ""
-"%s\n"
-"Today: %s\n"
-"Current temperature %d%s"
-msgstr ""
-"%s\n"
-"Dzisiaj: %s\n"
-"Aktualna temperatura %d%s"
+#: gweather/gweather-applet.c:237
+msgid "GNOME Weather"
+msgstr "Pogoda GNOME"
 
-#: gweather/gweather-applet.c:82
-#, c-format
-msgid ""
-"%s\n"
-"%s: %s\n"
-"Low %d%s, High %d%s"
-msgstr ""
-"%s\n"
-"%s: %s\n"
-"od %d%s do %d%s"
-
-#: gweather/gweather-applet.c:102
-msgid "There was an error retrieving the forecast"
-msgstr "Wystąpił błąd przy pobieraniu prognozy pogody"
-
-#: gweather/gweather-dialog.c:82
-msgid "Day"
-msgstr "Dzień"
-
-#: gweather/gweather-dialog.c:83
-msgid "Precipitation"
-msgstr "Opady"
-
-#: gweather/gweather-dialog.c:83
-msgid "Condition"
-msgstr "Warunki"
-
-#: gweather/gweather-dialog.c:86 gweather/gweather-dialog.c:182
+#: gweather/gweather-dialog.c:75 gweather/gweather-dialog.c:304
 msgid "Forecast"
 msgstr "Prognoza"
 
-#: gweather/gweather-dialog.c:108
-msgid "Current Conditions"
-msgstr "Aktualne warunki"
-
-#: gweather/gweather-dialog.c:115
+#: gweather/gweather-dialog.c:110
 msgid "City:"
 msgstr "Miasto:"
 
-#: gweather/gweather-dialog.c:122
+#: gweather/gweather-dialog.c:118
 msgid "Last update:"
 msgstr "Ostatnia aktualizacja:"
 
-#: gweather/gweather-dialog.c:129
+#: gweather/gweather-dialog.c:126
 msgid "Conditions:"
 msgstr "Warunki:"
 
-#: gweather/gweather-dialog.c:140
+#: gweather/gweather-dialog.c:134
+msgid "Sky:"
+msgstr "Niebo:"
+
+#: gweather/gweather-dialog.c:142
 msgid "Temperature:"
 msgstr "Temperatura:"
 
-#: gweather/gweather-dialog.c:147
-msgid "Feels like:"
-msgstr "Odczucie:"
+#: gweather/gweather-dialog.c:150
+msgid "Dew point:"
+msgstr "Punkt rosy:"
 
-#: gweather/gweather-dialog.c:154
+#: gweather/gweather-dialog.c:158
 msgid "Humidity:"
 msgstr "Wilgotność:"
 
-#: gweather/gweather-dialog.c:161
+#: gweather/gweather-dialog.c:166
 msgid "Wind:"
 msgstr "Wiatr:"
 
-#: gweather/gweather-dialog.c:168
-msgid "Visibility:"
-msgstr "Widoczność:"
-
-#: gweather/gweather-dialog.c:175
+#: gweather/gweather-dialog.c:174
 msgid "Pressure:"
 msgstr "Ciśnienie:"
 
-#: gweather/gweather-dialog.c:203
-msgid "Forecast list"
-msgstr "Lista prognoz"
+#: gweather/gweather-dialog.c:182
+msgid "Visibility:"
+msgstr "Widoczność:"
 
-#: gweather/gweather-dialog.c:204
-msgid "Shows forecast details for each day"
-msgstr "Wyświetla szczegóły prognozy dla każdego dnia"
+#: gweather/gweather-dialog.c:281
+msgid "Current Conditions"
+msgstr "Aktualne warunki"
 
-#: gweather/gweather-dialog.c:296
-#, c-format
-msgid "%s / %.1f %s"
-msgstr "%s / %.1f %s"
+#: gweather/gweather-dialog.c:294
+msgid "Forecast Report"
+msgstr "Raport pogodowy"
 
-#: gweather/gweather-pref.c:286
-msgid "Weather Preferences"
-msgstr "Ustawienia panelu pogodowego"
+#: gweather/gweather-dialog.c:294
+msgid "See the ForeCast Details"
+msgstr "Wyświetla szczegółową prognozę pogody"
 
-#: gweather/gweather-pref.c:322
-msgid "_Automatically update every:"
-msgstr "_Automatyczna aktualizacja co:"
+#: gweather/gweather-dialog.c:329
+msgid "_Visit Weather.com"
+msgstr "_Odwiedź Weather.com"
 
-#: gweather/gweather-pref.c:354
+#: gweather/gweather-dialog.c:330
+msgid "URL link Button"
+msgstr "Przycisk powiązany z URL-em"
+
+#: gweather/gweather-dialog.c:330
+msgid "Click to Enter Weather.com"
+msgstr "Kliknij, aby odwiedzić Weather.com"
+
+#: gweather/gweather-dialog.c:338
+msgid "_Radar map"
+msgstr "Mapa _radarowa"
+
+#: gweather/gweather-dialog.c:411
+msgid ""
+"Detailed forecast not available for this location.\n"
+"Please try the state forecast; note that IWIN forecasts are available only "
+"for US cities."
+msgstr ""
+"Szczegółowa prognoza pogody jest niedostępna w tej lokalizacji.\n"
+"Spróbuj wybrać stanową prognozę pogody; Zauważ że prognozy pogody IWIN są "
+"dostępne tylko dla miast USA."
+
+#: gweather/gweather-dialog.c:413
+msgid ""
+"State forecast not available for this location.\n"
+"Please try the detailed forecast; note that IWIN forecasts are available "
+"only for US cities."
+msgstr ""
+"Stanowa prognoza pogody jest niedostępna w tej lokalizacji.\n"
+"Spróbuj wybrać szczegółową prognozę pogody; Zauważ że prognozy pogody IWIN "
+"są dostępne tylko dla miast USA."
+
+#. Accessible Name and Description for the components in Preference Dialog
+#: gweather/gweather-pref.c:149
+msgid "Location view"
+msgstr "Widok położenia"
+
+#: gweather/gweather-pref.c:149
+msgid "Select Location from the list"
+msgstr "Wybierz położenie z listy"
+
+#: gweather/gweather-pref.c:151
 msgid "Update spin button"
 msgstr "Wejście liczbowe odświeżania"
 
-#: gweather/gweather-pref.c:355
+#: gweather/gweather-pref.c:151
 msgid "Spinbutton for updating"
 msgstr "Wejście liczbowe związane z odświeżaniem"
 
-#: gweather/gweather-pref.c:369
+#: gweather/gweather-pref.c:152
+msgid "Address Entry"
+msgstr "Wejście adresu"
+
+#: gweather/gweather-pref.c:152
+msgid "Enter the URL"
+msgstr "Wprowadź URL"
+
+#: gweather/gweather-pref.c:584
+msgid "Weather Preferences"
+msgstr "Ustawienia panelu pogodowego"
+
+#: gweather/gweather-pref.c:627
+msgid "_Automatically update every"
+msgstr "_Automatyczna aktualizacja co"
+
+#: gweather/gweather-pref.c:635
 msgid "Use _metric system units"
 msgstr "Wykorzystanie systemu m_etrycznego"
 
-#: gweather/gweather-pref.c:379
-msgid "Display _temperatures"
-msgstr "Wyświetlanie _temperatur:"
+#: gweather/gweather-pref.c:644
+msgid "Enable _radar map"
+msgstr "Mapa _radarowa"
 
-#: gweather/gweather-pref.c:392
-msgid "Number of _days to display:"
-msgstr "Liczba _dni do wyświetlenia:"
+#: gweather/gweather-pref.c:652
+msgid "Use cus_tom address for radar map"
+msgstr "Użycie _własnego adresu mapy radarowej"
 
-#: gweather/gweather-pref.c:406
-msgid "Number of days spin button"
-msgstr "Wejście liczbowe ilości dni"
+#: gweather/gweather-pref.c:665
+msgid "A_ddress :"
+msgstr "Adr_es :"
 
-#: gweather/gweather-pref.c:407
-msgid "Spinbutton for determining the number of days to show on the panel"
-msgstr "Wejście liczbowe określające liczbę dni wyświetlanych na panelu"
+#: gweather/gweather-pref.c:685
+msgid "_Automatically update every:"
+msgstr "_Automatyczna aktualizacja co:"
 
-#: gweather/gweather-pref.c:414
-msgid "days"
-msgstr "dni"
-
-#: gweather/gweather-pref.c:426 gweather/gweather-pref.c:431
-#: gweather/location.c:360
+#: gweather/gweather-pref.c:775
 msgid "Location"
 msgstr "Położenie"
 
-#: gweather/gweather-pref.c:435
-msgid "Current city:"
-msgstr "Bieżące miasto:"
-
-#: gweather/gweather-pref.c:445
-msgid "Available c_ountries:"
-msgstr "Dostępne k_raje:"
-
-#: gweather/gweather-pref.c:461
-msgid "Available c_ities:"
-msgstr "Dostępne m_iasta:"
-
 #: gweather/gweather.schemas.in.h:1
-msgid ""
-"If running the applet for the first time, prompt the user for the location"
-msgstr "Pytanie użytkownika o położenie przy pierwszym uruchomieniu"
-
-#: gweather/gweather.schemas.in.h:2
-msgid "Integer from 0 to 5. Determines how many days in advance are displayed"
-msgstr "Liczba całkowita od 0 do 5. Określa liczbę wyświetlanych naprzód dni"
-
-#: gweather/gweather.schemas.in.h:3
-msgid "Name of city"
-msgstr "Nazwa miasta"
-
-#: gweather/gweather.schemas.in.h:4
-msgid "Name of city to forecast weather"
-msgstr "Nazwa miasta, dla którego jest prognoza pogody"
-
-#: gweather/gweather.schemas.in.h:5
-msgid "Number of days to forecast"
-msgstr "Liczba dni prognozowanej pogody"
-
-#: gweather/gweather.schemas.in.h:6
-msgid "Show temperature label next to forecast icon"
-msgstr "Wyświetlanie etykiet temperatur obok ikon prognozy"
-
-#: gweather/gweather.schemas.in.h:7
-msgid "Show temperature labels on panel"
-msgstr "Wyświetlanie etykiet temperatur na panelu"
-
-#: gweather/gweather.schemas.in.h:8
-msgid "True if running applet for the first time"
-msgstr "Prawdziwy, przy pierwszym uruchomieniu apletu"
-
-#: gweather/gweather.schemas.in.h:9
-msgid "Url to download weather xml"
-msgstr "Adres URL z którego pobierany jest plik XML z prognozą"
-
-#: gweather/gweather.schemas.in.h:10
 msgid ""
 "determines whether the applet automatically updates its weather statistics "
 "or not."
 msgstr "Określa czy aplet automatycznie aktualizuje statystyki pogodowe."
 
-#: gweather/gweather.schemas.in.h:11
+#: gweather/gweather.schemas.in.h:2
 msgid "fetch a detailed forecast on each update."
 msgstr "Pobieranie szczegółowej prognozy przy każdej aktualizacji."
 
-#: gweather/gweather.schemas.in.h:12
+#: gweather/gweather.schemas.in.h:3
 msgid "fetch a radar map on each update."
 msgstr "Pobieranie mapy radarowej przy każdej aktualizacji."
 
-#: gweather/gweather.schemas.in.h:13
+#: gweather/gweather.schemas.in.h:4
 msgid "the interval, in seconds, between automatic updates."
 msgstr "Okres czasu, w sekundach, pomiędzy automatycznymi aktualizacjami."
 
-#: gweather/gweather.schemas.in.h:14
+#: gweather/gweather.schemas.in.h:5
 msgid "url for the radar map"
 msgstr "adres URL mapy radarowej"
 
-#: gweather/gweather.schemas.in.h:15
+#: gweather/gweather.schemas.in.h:6
 msgid "use custom url for the radar map"
 msgstr "użycie własnego adresu URL mapy radarowej"
 
-#: gweather/gweather.schemas.in.h:16
+#: gweather/gweather.schemas.in.h:7
 msgid "use metric units instead of english units."
 msgstr "wykorzystanie systemu metrycznego."
 
-#: gweather/gweather.schemas.in.h:17
+#: gweather/gweather.schemas.in.h:8
 msgid "weather location information."
 msgstr "Informacja położenia prognozy."
 
-#: gweather/location.c:184
-msgid "Could not download countries"
-msgstr "Nie można pobrać nazw krajów"
-
-#: gweather/location.c:186
-msgid "Could not download cities"
-msgstr "Nie można pobrać nazw miast"
-
-#: gweather/location.c:243
-msgid "Downloading Cities..."
-msgstr "Pobieranie nazw miast..."
-
-#: gweather/location.c:304
-msgid "Countries list"
-msgstr "Lista krajów"
-
-#: gweather/location.c:305
-msgid "Select the country from the list"
-msgstr "Wybierz kraj z listy"
-
-#: gweather/location.c:308
-msgid "Country"
-msgstr "Kraj"
-
-#: gweather/location.c:356
-msgid "Cities list"
-msgstr "Lista miast"
-
-#: gweather/location.c:357
-msgid "Select the city from the list"
-msgstr "Wybierz miasto z listy"
-
-#: gweather/location.c:394
-msgid "Downloading Countries..."
-msgstr "Pobieranie nazw krajów..."
-
-#: gweather/weather.c:49
+#: gweather/weather.c:57
 msgid "knots"
 msgstr "węzły"
 
-#: gweather/weather.c:49
+#: gweather/weather.c:57
 msgid "kph"
 msgstr "km/h"
 
-#: gweather/weather.c:54
+#: gweather/weather.c:62
 msgid "inHg"
 msgstr "inHg"
 
-#: gweather/weather.c:54
+#: gweather/weather.c:62
 msgid "hPa"
 msgstr "hPa"
 
-#: gweather/weather.c:58
+#: gweather/weather.c:66
 msgid "miles"
 msgstr "mile"
 
-#: gweather/weather.c:58
+#: gweather/weather.c:66
 msgid "kilometers"
 msgstr "kilometry"
 
-#: gweather/weather.c:63
-msgid "Clear Sky"
-msgstr "Czyste niebo"
-
-#: gweather/weather.c:64
-msgid "Broken clouds"
-msgstr "Urwanie Chmury"
-
-#: gweather/weather.c:65
-msgid "Scattered clouds"
-msgstr "Kłębiaste chmury"
-
-#: gweather/weather.c:66
-msgid "Few clouds"
-msgstr "Mało pochmurne"
-
-#: gweather/weather.c:67
-msgid "Overcast"
-msgstr "Pochmurno"
-
-#: gweather/weather.c:71
-msgid "Windy"
-msgstr "Wietrznie"
-
-#: gweather/weather.c:72
-msgid "Thunder Storms"
-msgstr "Burza z piorunami"
-
-#: gweather/weather.c:73
-msgid "Snow"
-msgstr "Śnieg"
-
-#: gweather/weather.c:74
-msgid "Rain"
-msgstr "Deszcz"
-
-#: gweather/weather.c:75
-msgid "Heavy Rain"
-msgstr "Obfity deszcz"
-
-#: gweather/weather.c:76
-msgid "Sleet"
-msgstr "Deszcz ze śniegiem"
-
-#: gweather/weather.c:77
-msgid "Light Flurries"
-msgstr "Zadymka"
-
-# Albo ulewy
-#: gweather/weather.c:78
-msgid "Flurries"
-msgstr "Śnieżyce"
-
-#: gweather/weather.c:79
-msgid "Snow and Wind"
-msgstr "Wiatr i śnieg"
-
-#: gweather/weather.c:80
-msgid "Dust"
-msgstr "Tumany kurzu"
-
-#: gweather/weather.c:81
-msgid "Fog"
-msgstr "Mgła"
-
-#: gweather/weather.c:82
-msgid "Haze"
-msgstr "Zamglenie"
-
-#: gweather/weather.c:83
-msgid "Smoke"
-msgstr "Dym"
-
-#: gweather/weather.c:84
-msgid "Cold"
-msgstr "Zimno"
-
-#: gweather/weather.c:85
-msgid "Cloudy"
-msgstr "Pochmurno"
-
-#: gweather/weather.c:86
-msgid "Mostly Cloudy"
-msgstr "Zachmurzenie duże"
-
-#: gweather/weather.c:87
-msgid "Partly Cloudy"
-msgstr "Zachmurzenie umiarkowane"
-
-#: gweather/weather.c:88
-msgid "Sunny"
-msgstr "Słonecznie"
-
-#: gweather/weather.c:89
-msgid "Mostly Sunny"
-msgstr "Słonecznie"
-
-#: gweather/weather.c:90
-msgid "Hot"
-msgstr "Gorąco"
-
-#: gweather/weather.c:91
-msgid "Nothing"
-msgstr "Nic"
-
-#: gweather/weather.c:95
+#: gweather/weather.c:132
 msgid "Variable"
 msgstr "Zmienne"
 
-#: gweather/weather.c:96
+#: gweather/weather.c:133
 msgid "North"
 msgstr "Północ"
 
-#: gweather/weather.c:96
+#: gweather/weather.c:133
 msgid "North - NorthEast"
 msgstr "Północ - północny wschód"
 
-#: gweather/weather.c:96
+#: gweather/weather.c:133
 msgid "Northeast"
 msgstr "Północny wschód"
 
-#: gweather/weather.c:96
+#: gweather/weather.c:133
 msgid "East - NorthEast"
 msgstr "Wschód - północny wschód"
 
-#: gweather/weather.c:97
+#: gweather/weather.c:134
 msgid "East"
 msgstr "Wschód"
 
-#: gweather/weather.c:97
+#: gweather/weather.c:134
 msgid "East - Southeast"
 msgstr "Wschód - południowy wschód"
 
-#: gweather/weather.c:97
+#: gweather/weather.c:134
 msgid "Southeast"
 msgstr "Południowy wschód"
 
-#: gweather/weather.c:97
+#: gweather/weather.c:134
 msgid "South - Southeast"
 msgstr "Południe - południowy wschód"
 
-#: gweather/weather.c:98
+#: gweather/weather.c:135
 msgid "South"
 msgstr "Południe"
 
-#: gweather/weather.c:98
+#: gweather/weather.c:135
 msgid "South - Southwest"
 msgstr "Południe - południowy zachód"
 
-#: gweather/weather.c:98
+#: gweather/weather.c:135
 msgid "Southwest"
 msgstr "Południowy zachód"
 
-#: gweather/weather.c:98
+#: gweather/weather.c:135
 msgid "West - Southwest"
 msgstr "Zachód - południowy zachód"
 
-#: gweather/weather.c:99
+#: gweather/weather.c:136
 msgid "West"
 msgstr "Zachód"
 
-#: gweather/weather.c:99
+#: gweather/weather.c:136
 msgid "West - Northwest"
 msgstr "Zachód - północny zachód"
 
-#: gweather/weather.c:99
+#: gweather/weather.c:136
 msgid "Northwest"
 msgstr "Północny zachód"
 
-#: gweather/weather.c:99
+#: gweather/weather.c:136
 msgid "North - Northwest"
 msgstr "Północ - północny zachód"
 
-#: gweather/weather.c:100
+#: gweather/weather.c:143 gweather/weather.c:160 gweather/weather.c:231
+msgid "Invalid"
+msgstr "Niewłaściwy"
+
+#: gweather/weather.c:149
+msgid "Clear Sky"
+msgstr "Czyste niebo"
+
+#: gweather/weather.c:150
+msgid "Broken clouds"
+msgstr "Urwanie Chmury"
+
+#: gweather/weather.c:151
+msgid "Scattered clouds"
+msgstr "Kłębiaste chmury"
+
+#: gweather/weather.c:152
+msgid "Few clouds"
+msgstr "Mało pochmurne"
+
+#: gweather/weather.c:153
+msgid "Overcast"
+msgstr "Pochmurno"
+
+#. TRANSLATOR: If you want to know what "blowing" "shallow" "partial"
+#. * etc means, you can go to http://www.weather.com/glossary/ and
+#. * http://www.crh.noaa.gov/arx/wx.tbl.html
+#. NONE
+#: gweather/weather.c:192 gweather/weather.c:194
+msgid "Thunderstorm"
+msgstr "Burza z piorunami"
+
+#. DRIZZLE
+#: gweather/weather.c:193
+msgid "Drizzle"
+msgstr "Mżawka"
+
+#: gweather/weather.c:193
+msgid "Light drizzle"
+msgstr "Łagodna mżawka"
+
+#: gweather/weather.c:193
+msgid "Moderate drizzle"
+msgstr "Umiarkowana mżawka"
+
+#: gweather/weather.c:193
+msgid "Heavy drizzle"
+msgstr "Obfita mżawka"
+
+#: gweather/weather.c:193
+msgid "Freezing drizzle"
+msgstr "Zmrożona mżawka"
+
+#. RAIN
+#: gweather/weather.c:194
+msgid "Rain"
+msgstr "Deszcz"
+
+#: gweather/weather.c:194
+msgid "Light rain"
+msgstr "Łagodny deszcz"
+
+#: gweather/weather.c:194
+msgid "Moderate rain"
+msgstr "Umiarkowany deszcz"
+
+#: gweather/weather.c:194
+msgid "Heavy rain"
+msgstr "Obfity deszcz"
+
+#: gweather/weather.c:194
+msgid "Rain showers"
+msgstr "Ulewy"
+
+#: gweather/weather.c:194
+msgid "Freezing rain"
+msgstr "Zmrożony deszcz"
+
+#. SNOW
+#: gweather/weather.c:195
+msgid "Snow"
+msgstr "Śnieg"
+
+#: gweather/weather.c:195
+msgid "Light snow"
+msgstr "Łagodny śnieg"
+
+#: gweather/weather.c:195
+msgid "Moderate snow"
+msgstr "Umiarkowany śnieg"
+
+#: gweather/weather.c:195
+msgid "Heavy snow"
+msgstr "Obfity śnieg"
+
+#: gweather/weather.c:195
+msgid "Snowstorm"
+msgstr "Sztorm śnieżny"
+
+#: gweather/weather.c:195
+msgid "Blowing snowfall"
+msgstr "Silny sztorm śnieżny"
+
+#: gweather/weather.c:195
+msgid "Snow showers"
+msgstr "Ulewy śnieżne"
+
+#: gweather/weather.c:195
+msgid "Drifting snow"
+msgstr "Przelotne opady śniegu"
+
+#. SNOW_GRAINS
+#: gweather/weather.c:196
+msgid "Snow grains"
+msgstr "Lekkie opady śniegu"
+
+#: gweather/weather.c:196
+msgid "Light snow grains"
+msgstr "Lekkie ziarna śniegu"
+
+#: gweather/weather.c:196
+msgid "Moderate snow grains"
+msgstr "Zmienne ziarna śniegu"
+
+#: gweather/weather.c:196
+msgid "Heavy snow grains"
+msgstr "Grad śnieżny"
+
+#. ICE_CRYSTALS
+#: gweather/weather.c:197
+msgid "Ice crystals"
+msgstr "Kryształy lodu"
+
+#. ICE_PELLETS
+#: gweather/weather.c:198
+msgid "Ice pellets"
+msgstr "Kulki lodowe"
+
+#: gweather/weather.c:198
+msgid "Few ice pellets"
+msgstr "Nieco kulek lodowych"
+
+#: gweather/weather.c:198
+msgid "Moderate ice pellets"
+msgstr "Umiarkowane kulki lodowe"
+
+#: gweather/weather.c:198
+msgid "Heavy ice pellets"
+msgstr "Obfite kulki lodowe"
+
+#: gweather/weather.c:198
+msgid "Ice pellet storm"
+msgstr "Burza z kulkami lodowymi"
+
+#: gweather/weather.c:198
+msgid "Showers of ice pellets"
+msgstr "Krótkotrwałe kulki lodowe"
+
+#. HAIL
+#: gweather/weather.c:199
+msgid "Hail"
+msgstr "Grad"
+
+#: gweather/weather.c:199
+msgid "Hailstorm"
+msgstr "Burza gradowa"
+
+#: gweather/weather.c:199
+msgid "Hail showers"
+msgstr "Krótkotrwały grad"
+
+#. SMALL_HAIL
+#: gweather/weather.c:200
+msgid "Small hail"
+msgstr "Gradzik"
+
+#: gweather/weather.c:200
+msgid "Small hailstorm"
+msgstr "Mała burza gradowa"
+
+#: gweather/weather.c:200
+msgid "Showers of small hail"
+msgstr "Krótkotrwały gradzik"
+
+#. PRECIPITATION
+#: gweather/weather.c:201
+msgid "Unknown precipitation"
+msgstr "Nieznane opady"
+
+#. MIST
+#: gweather/weather.c:202
+msgid "Mist"
+msgstr "Mgiełka"
+
+#. FOG
+#: gweather/weather.c:203
+msgid "Fog"
+msgstr "Mgła"
+
+#: gweather/weather.c:203
+msgid "Fog in the vicinity"
+msgstr "Nadchodząca mgła"
+
+#: gweather/weather.c:203
+msgid "Shallow fog"
+msgstr "Słaba mgła"
+
+#: gweather/weather.c:203
+msgid "Patches of fog"
+msgstr "Łagodna mgła"
+
+#: gweather/weather.c:203
+msgid "Partial fog"
+msgstr "Częściowa mgła"
+
+#: gweather/weather.c:203
+msgid "Freezing fog"
+msgstr "Utrzymująca się mgła"
+
+#. SMOKE
+#: gweather/weather.c:204
+msgid "Smoke"
+msgstr "Dym"
+
+#. VOLCANIC_ASH
+#: gweather/weather.c:205
+msgid "Volcanic ash"
+msgstr "Popiół wulkaniczny"
+
+#. SAND
+#: gweather/weather.c:206
+msgid "Sand"
+msgstr "Piasek"
+
+#: gweather/weather.c:206
+msgid "Blowing sand"
+msgstr "Szalejący piasek"
+
+#: gweather/weather.c:206
+msgid "Drifting sand"
+msgstr "Zbliżający się piasek"
+
+#. HAZE
+#: gweather/weather.c:207
+msgid "Haze"
+msgstr "Zamglenie"
+
+#. SPRAY
+#: gweather/weather.c:208
+msgid "Blowing sprays"
+msgstr "Szalejący pył wodny"
+
+#. DUST
+#: gweather/weather.c:209
+msgid "Dust"
+msgstr "Tumany kurzu"
+
+#: gweather/weather.c:209
+msgid "Blowing dust"
+msgstr "Szalejące tumany kurzu"
+
+#: gweather/weather.c:209
+msgid "Drifting dust"
+msgstr "Zbliżające się tumany kurzu"
+
+#. SQUALL
+#: gweather/weather.c:210
+msgid "Squall"
+msgstr "Szkwał"
+
+#. SANDSTORM
+#: gweather/weather.c:211
+msgid "Sandstorm"
+msgstr "Burza piaskowa"
+
+#: gweather/weather.c:211
+msgid "Sandstorm in the vicinity"
+msgstr "Bura piaskowa w pobliżu"
+
+#: gweather/weather.c:211
+msgid "Heavy sandstorm"
+msgstr "Ciężka burza piaskowa"
+
+#. DUSTSTORM
+#: gweather/weather.c:212
+msgid "Duststorm"
+msgstr "Burza kurzowa"
+
+#: gweather/weather.c:212
+msgid "Duststorm in the vicinity"
+msgstr "Burza kurzowa w pobliżu"
+
+#: gweather/weather.c:212
+msgid "Heavy duststorm"
+msgstr "Ciężka burza kurzowa"
+
+#. FUNNEL_CLOUD
+#: gweather/weather.c:213
+msgid "Funnel cloud"
+msgstr "Trąba powietrzna"
+
+#. TORNADO
+#: gweather/weather.c:214
+msgid "Tornado"
+msgstr "Tornado"
+
+#. DUST_WHIRLS
+#: gweather/weather.c:215
+msgid "Dust whirls"
+msgstr "Tumany kurzu"
+
+#: gweather/weather.c:215
+msgid "Dust whirls in the vicinity"
+msgstr "Tumany kurzu w pobliżu"
+
+#: gweather/weather.c:831 gweather/weather.c:871 gweather/weather.c:1444
+msgid "Failed to get METAR data.\n"
+msgstr "Nieudana próba pobrania danych METAR.\n"
+
+#: gweather/weather.c:863 gweather/weather.c:891 gweather/weather.c:1088
+msgid "WeatherInfo missing location"
+msgstr "Brak informacji o położeniu"
+
+#: gweather/weather.c:1778
+msgid "%a, %b %d / %H:%M"
+msgstr "%a, %b %d / %H:%M"
+
+#: gweather/weather.c:1782
+msgid "Unknown observation time"
+msgstr "Nieznany czas obserwacji"
+
+#: gweather/weather.c:1842
 msgid "Calm"
 msgstr "Spokojny"
 
-#: gweather/weather.c:561
-msgid "Could not download forecast"
-msgstr "Nie można pobrać prognozy pogody"
+#: gweather/weather.c:1868
+msgid "Unknown"
+msgstr "Nieznany"
+
+#: gweather/weather.c:1912
+msgid "Retrieval failed"
+msgstr "Pobranie nie powiodło się"
 
 #: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:1
 msgid "Alert you when new mail arrives"
@@ -2092,7 +2254,7 @@ msgid "No mail."
 msgstr "Brak poczty."
 
 #: mailcheck/mailcheck.c:1548 mailcheck/mailcheck.c:1549
-#: mailcheck/mailcheck.c:2800 mailcheck/mailcheck.c:2801
+#: mailcheck/mailcheck.c:2802 mailcheck/mailcheck.c:2803
 msgid "Status not updated"
 msgstr "Stan nie uaktualniony"
 
@@ -2217,15 +2379,15 @@ msgstr "Ustawienia monitora poczty"
 msgid "Inbox Monitor notifies you when new mail arrives in your mailbox"
 msgstr "Monitor poczty powiadamia o nadejściu nowych wiadomości"
 
-#: mailcheck/mailcheck.c:2771
+#: mailcheck/mailcheck.c:2773
 msgid "Text only"
 msgstr "Sam napis"
 
-#: mailcheck/mailcheck.c:2802
+#: mailcheck/mailcheck.c:2804
 msgid "Mail check"
 msgstr "Sprawdzenie poczty"
 
-#: mailcheck/mailcheck.c:2803
+#: mailcheck/mailcheck.c:2805
 msgid "Mail check notifies you when new mail arrives in your mailbox"
 msgstr "Sprawdzanie poczty powiadamia o nadejściu nowych wiadomości"
 
@@ -2512,7 +2674,7 @@ msgid "_Use default theme colors"
 msgstr "_Domyślne kolory motywu"
 
 #: mini-commander/src/mini-commander.schemas.in.h:1
-msgid "Autcomplete history"
+msgid "Autocomplete history"
 msgstr "Historia automatycznego uzupełniania"
 
 #: mini-commander/src/mini-commander.schemas.in.h:2
@@ -2907,7 +3069,7 @@ msgid "Status not connected color"
 msgstr "Kolor stanu braku połączenia"
 
 #: modemlights/modemlights.schemas.in.h:15
-msgid "Status wating connection color"
+msgid "Status waiting connection color"
 msgstr "Kolor stanu oczekiwania na połączenie"
 
 #: modemlights/modemlights.schemas.in.h:16
@@ -3321,7 +3483,7 @@ msgstr "Tworzenie, podgląd i zarządzanie notatkami na pulpicie"
 
 #  FIXME : Hack because libglade does not properly set these
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:3
-#: stickynotes/stickynotes_applet.c:364
+#: stickynotes/stickynotes_applet.c:339
 #: stickynotes/stickynotes_applet_callbacks.c:180
 msgid "Sticky Notes"
 msgstr "Notatki"
@@ -3687,7 +3849,8 @@ msgstr "Określa czy używane będą domyślne kolory systemowe"
 msgid "Whether to use the default system font"
 msgstr "Określa czy używana będzie domyślna czcionka systemowa"
 
-#: stickynotes/stickynotes_applet.c:364
+#: stickynotes/stickynotes_applet.c:339
+#, fuzzy
 msgid ""
 "%s\n"
 "%d note"
@@ -3763,3 +3926,642 @@ msgstr "Ustawienia monitora połączenia bezprzewodowego"
 #: wireless/wireless-applet.glade.h:4
 msgid "_Monitored device:"
 msgstr "M_onitorowane urządzenie:"
+
+#~ msgid "Location:"
+#~ msgstr "Położenie:"
+
+#~ msgid "Update:"
+#~ msgstr "Odświeżanie:"
+
+#~ msgid "Enable _detailed forecast"
+#~ msgstr "Prognoza _szczegółowa"
+
+#~ msgid "Updates"
+#~ msgstr "Aktualizacje"
+
+#~ msgid "_Automatically update every "
+#~ msgstr "_Automatyczna aktualizacja co "
+
+#~ msgid "minute(s)"
+#~ msgstr "minut(y)"
+
+#~ msgid "Miscellaneous"
+#~ msgstr "Różne"
+
+#~ msgid "Could not download countries"
+#~ msgstr "Nie można pobrać nazw krajów"
+
+#~ msgid "Could not download cities"
+#~ msgstr "Nie można pobrać nazw miast"
+
+#~ msgid "Downloading Cities..."
+#~ msgstr "Pobieranie nazw miast..."
+
+#~ msgid "Countries list"
+#~ msgstr "Lista krajów"
+
+#~ msgid "Select the country from the list"
+#~ msgstr "Wybierz kraj z listy"
+
+#~ msgid "Country"
+#~ msgstr "Kraj"
+
+#~ msgid "Cities list"
+#~ msgstr "Lista miast"
+
+#~ msgid "Select the city from the list"
+#~ msgstr "Wybierz miasto z listy"
+
+#~ msgid "Downloading Countries..."
+#~ msgstr "Pobieranie nazw krajów..."
+
+#~ msgid "Drizzle in the vicinity"
+#~ msgstr "Nadchodząca mżawka"
+
+#~ msgid "Shallow drizzle"
+#~ msgstr "Płytka mżawka"
+
+#~ msgid "Patches of drizzle"
+#~ msgstr "Lokalna mżawka"
+
+#~ msgid "Partial drizzle"
+#~ msgstr "Częściowa mżawka"
+
+#~ msgid "Windy drizzle"
+#~ msgstr "Wietrzna mżawka"
+
+#~ msgid "Showers"
+#~ msgstr "Ulewy"
+
+#~ msgid "Drifting drizzle"
+#~ msgstr "Przelotna mżawka"
+
+#~ msgid "Rain in the vicinity"
+#~ msgstr "Nadchodzący deszcz"
+
+#~ msgid "Shallow rain"
+#~ msgstr "Płytki deszcz"
+
+#~ msgid "Patches of rain"
+#~ msgstr "Przejściowy deszcz"
+
+#~ msgid "Partial rainfall"
+#~ msgstr "Częściowe opady"
+
+#~ msgid "Blowing rainfall"
+#~ msgstr "Opady z silnym wiatrem"
+
+#~ msgid "Drifting rain"
+#~ msgstr "Przelotny deszcz"
+
+#~ msgid "Snow in the vicinity"
+#~ msgstr "Nadchodzący śnieg"
+
+#~ msgid "Shallow snow"
+#~ msgstr "Płytki śnieg"
+
+#~ msgid "Patches of snow"
+#~ msgstr "Płaty śniegu"
+
+#~ msgid "Partial snowfall"
+#~ msgstr "Przelotne opady śniegu"
+
+#~ msgid "Freezing snow"
+#~ msgstr "Zmrożony śnieg"
+
+#~ msgid "Snow grains in the vicinity"
+#~ msgstr "Ziarna śniegu w pobliżu"
+
+#~ msgid "Shallow snow grains"
+#~ msgstr "Płytki grad śnieżny"
+
+#~ msgid "Patches of snow grains"
+#~ msgstr "Płaty ziaren śniegu"
+
+#~ msgid "Partial snow grains"
+#~ msgstr "Częściowe ziarna śniegu"
+
+#~ msgid "Blowing snow grains"
+#~ msgstr "Opady ziaren śnieżnych z silnym wiatrem"
+
+#~ msgid "Snow grain showers"
+#~ msgstr "Ulewy gradu śnieżnego"
+
+#~ msgid "Drifting snow grains"
+#~ msgstr "Przelotny grad śnieżny"
+
+#~ msgid "Freezing snow grains"
+#~ msgstr "Zmrożone ziarna śnieżne"
+
+#~ msgid "Ice crystals in the vicinity"
+#~ msgstr "Kryształy lodu w pobliżu"
+
+#~ msgid "Few ice crystals"
+#~ msgstr "Niewielkie kryształy lodu"
+
+#~ msgid "Moderate ice crystals"
+#~ msgstr "Umiarkowane kryształki lodowe"
+
+#~ msgid "Heavy ice crystals"
+#~ msgstr "Obfite kryształki lodowe"
+
+#~ msgid "Patches of ice crystals"
+#~ msgstr "Łagodne kryształki lodowe"
+
+#~ msgid "Partial ice crystals"
+#~ msgstr "Częściowe kryształki lodowe"
+
+#~ msgid "Ice crystal storm"
+#~ msgstr "Burza z kryształkami lodowymi"
+
+#~ msgid "Blowing ice crystals"
+#~ msgstr "Szalejące kryształki lodowe"
+
+#~ msgid "Showers of ice crystals"
+#~ msgstr "Krótkotrwałe kryształki lodu"
+
+#~ msgid "Drifting ice crystals"
+#~ msgstr "Zbliżające się kryształki lodu"
+
+#~ msgid "Freezing ice crystals"
+#~ msgstr "Utrzymujące się kryształki lodu"
+
+#~ msgid "Ice pellets in the vicinity"
+#~ msgstr "Nadchodzące kulki lodowe"
+
+#~ msgid "Shallow ice pellets"
+#~ msgstr "Słabe kulki lodowe"
+
+#~ msgid "Patches of ice pellets"
+#~ msgstr "Łagodne kulki lodowe"
+
+#~ msgid "Partial ice pellets"
+#~ msgstr "Częściowe kulki lodowe"
+
+#~ msgid "Blowing ice pellets"
+#~ msgstr "Szalejące kulki lodowe"
+
+#~ msgid "Drifting ice pellets"
+#~ msgstr "Zbliżające się kulki lodowe"
+
+#~ msgid "Freezing ice pellets"
+#~ msgstr "Utrzymujące się kulki lodowe"
+
+#~ msgid "Hail in the vicinity"
+#~ msgstr "Nadchodzący grad"
+
+#~ msgid "Light hail"
+#~ msgstr "Łagodny grad"
+
+#~ msgid "Moderate hail"
+#~ msgstr "Umiarkowany grad"
+
+#~ msgid "Heavy hail"
+#~ msgstr "Obfity grad"
+
+#~ msgid "Shallow hail"
+#~ msgstr "Słaby grad"
+
+#~ msgid "Patches of hail"
+#~ msgstr "Łagodny grad"
+
+#~ msgid "Partial hail"
+#~ msgstr "Częściowy grad"
+
+#~ msgid "Blowing hail"
+#~ msgstr "Szalejący grad"
+
+#~ msgid "Drifting hail"
+#~ msgstr "Zbliżający się grad"
+
+#~ msgid "Freezing hail"
+#~ msgstr "Utrzymujący się grad"
+
+#~ msgid "Small hail in the vicinity"
+#~ msgstr "Nadchodzący gradzik"
+
+#~ msgid "Moderate small hail"
+#~ msgstr "Umiarkowany gradzik"
+
+#~ msgid "Heavy small hail"
+#~ msgstr "Obfity gradzik"
+
+#~ msgid "Shallow small hail"
+#~ msgstr "Słaby gradzik"
+
+#~ msgid "Patches of small hail"
+#~ msgstr "Łagodny gradzik"
+
+#~ msgid "Partial small hail"
+#~ msgstr "Częściowy gradzik"
+
+#~ msgid "Blowing small hail"
+#~ msgstr "Szalejący gradzik"
+
+#~ msgid "Drifting small hail"
+#~ msgstr "Zbliżający się gradzik"
+
+#~ msgid "Freezing small hail"
+#~ msgstr "Utrzymujący się gradzik"
+
+#~ msgid "Precipitation in the vicinity"
+#~ msgstr "Nadchodzące opady"
+
+#~ msgid "Light precipitation"
+#~ msgstr "Łagodne opady"
+
+#~ msgid "Moderate precipitation"
+#~ msgstr "Umiarkowane opady"
+
+#~ msgid "Heavy precipitation"
+#~ msgstr "Obfite opady"
+
+#~ msgid "Shallow precipitation"
+#~ msgstr "Słabe opady"
+
+#~ msgid "Patches of precipitation"
+#~ msgstr "Łagodne opady"
+
+#~ msgid "Partial precipitation"
+#~ msgstr "Przelotne opady"
+
+#~ msgid "Unknown thunderstorm"
+#~ msgstr "Nieznana burza"
+
+#~ msgid "Blowing precipitation"
+#~ msgstr "Szalejące opady"
+
+#~ msgid "Showers, type unknown"
+#~ msgstr "Krótkotrwałe opady"
+
+#~ msgid "Drifting precipitation"
+#~ msgstr "Zbliżające się opady"
+
+#~ msgid "Freezing precipitation"
+#~ msgstr "Utrzymujące się opady"
+
+#~ msgid "Mist in the vicinity"
+#~ msgstr "Nadchodząca mgiełka"
+
+#~ msgid "Light mist"
+#~ msgstr "Łagodna mgiełka"
+
+#~ msgid "Moderate mist"
+#~ msgstr "Umiarkowana mgiełka"
+
+#~ msgid "Thick mist"
+#~ msgstr "Gęsta mgiełka"
+
+#~ msgid "Shallow mist"
+#~ msgstr "Słaba mgiełka"
+
+#~ msgid "Patches of mist"
+#~ msgstr "Lokalne zamglenia"
+
+#~ msgid "Partial mist"
+#~ msgstr "Częściowa mgiełka"
+
+#~ msgid "Mist with wind"
+#~ msgstr "Mgiełka z wiatrem"
+
+#~ msgid "Drifting mist"
+#~ msgstr "Zbliżająca się mgiełka"
+
+#~ msgid "Freezing mist"
+#~ msgstr "Utrzymująca się mgiełka"
+
+#~ msgid "Light fog"
+#~ msgstr "Łagodna mgła"
+
+#~ msgid "Moderate fog"
+#~ msgstr "Umiarkowana mgła"
+
+#~ msgid "Thick fog"
+#~ msgstr "Gęsta mgła"
+
+#~ msgid "Fog with wind"
+#~ msgstr "Mgła z wiatrem"
+
+#~ msgid "Drifting fog"
+#~ msgstr "Zbliżająca się mgła"
+
+#~ msgid "Smoke in the vicinity"
+#~ msgstr "Nadchodzący dym"
+
+#~ msgid "Thin smoke"
+#~ msgstr "Rzadki dym"
+
+#~ msgid "Moderate smoke"
+#~ msgstr "Umiarkowany dym"
+
+#~ msgid "Thick smoke"
+#~ msgstr "Gęsty dym"
+
+#~ msgid "Shallow smoke"
+#~ msgstr "Słaby dym"
+
+#~ msgid "Patches of smoke"
+#~ msgstr "Łagodny dym"
+
+#~ msgid "Partial smoke"
+#~ msgstr "Częściowy dym"
+
+#~ msgid "Smoke w/ thunders"
+#~ msgstr "Dym z grzmotami"
+
+#~ msgid "Smoke with wind"
+#~ msgstr "Dym z wiatrem"
+
+#~ msgid "Drifting smoke"
+#~ msgstr "Zbliżający się dym"
+
+#~ msgid "Volcanic ash in the vicinity"
+#~ msgstr "Nadchodzący popiół wulkaniczny"
+
+#~ msgid "Moderate volcanic ash"
+#~ msgstr "Umiarkowany popiół wulkaniczny"
+
+#~ msgid "Thick volcanic ash"
+#~ msgstr "Gęsty popiół wulkaniczny"
+
+#~ msgid "Shallow volcanic ash"
+#~ msgstr "Słaby popiół wulkaniczny"
+
+#~ msgid "Patches of volcanic ash"
+#~ msgstr "Łagodny popiół wulkaniczny"
+
+#~ msgid "Partial volcanic ash"
+#~ msgstr "Częściowy popiół wulkaniczny"
+
+#~ msgid "Volcanic ash w/ thunders"
+#~ msgstr "Popiół wulkaniczny z grzmotami"
+
+#~ msgid "Blowing volcanic ash"
+#~ msgstr "Szalejący popiół wulkaniczny"
+
+#~ msgid "Showers of volcanic ash "
+#~ msgstr "Krótkotrwały popiół wulkaniczny"
+
+#~ msgid "Drifting volcanic ash"
+#~ msgstr "Zbliżający się popiół wulkaniczny"
+
+#~ msgid "Freezing volcanic ash"
+#~ msgstr "Utrzymujący się popiół wulkaniczny"
+
+#~ msgid "Sand in the vicinity"
+#~ msgstr "Nadchodzący piasek"
+
+#~ msgid "Light sand"
+#~ msgstr "Lekki piasek"
+
+#~ msgid "Moderate sand"
+#~ msgstr "Umiarkowany piasek"
+
+#~ msgid "Heavy sand"
+#~ msgstr "Obfity piasek"
+
+#~ msgid "Patches of sand"
+#~ msgstr "Łagodny piasek"
+
+#~ msgid "Partial sand"
+#~ msgstr "Częściowy piasek"
+
+#~ msgid "Haze in the vicinity"
+#~ msgstr "Nadchodzące zamglenie"
+
+#~ msgid "Light haze"
+#~ msgstr "Lekkie zamglenie"
+
+#~ msgid "Moderate haze"
+#~ msgstr "Umiarkowane zamglenie"
+
+#~ msgid "Thick haze"
+#~ msgstr "Gęste zamglenie"
+
+#~ msgid "Shallow haze"
+#~ msgstr "Słabe zamglenie"
+
+#~ msgid "Patches of haze"
+#~ msgstr "Łagodne zamglenie"
+
+#~ msgid "Partial haze"
+#~ msgstr "Częściowe zamglenie"
+
+#~ msgid "Haze with wind"
+#~ msgstr "Zamglenie z wiatrem"
+
+#~ msgid "Drifting haze"
+#~ msgstr "Zbliżające się zamglenie"
+
+#~ msgid "Freezing haze"
+#~ msgstr "Utrzymujące się zamglenie"
+
+#~ msgid "Sprays"
+#~ msgstr "Mżawka"
+
+#~ msgid "Sprays in the vicinity"
+#~ msgstr "Nadchodzący pył wodny"
+
+#~ msgid "Light sprays"
+#~ msgstr "Lekki pył wodny"
+
+#~ msgid "Moderate sprays"
+#~ msgstr "Umiarkowany pył wodny"
+
+#~ msgid "Heavy sprays"
+#~ msgstr "Obfity pył wodny"
+
+#~ msgid "Shallow sprays"
+#~ msgstr "Słaby pył wodny"
+
+#~ msgid "Patches of sprays"
+#~ msgstr "Łagodny pył wodny"
+
+#~ msgid "Partial sprays"
+#~ msgstr "Częściowy pył wodny"
+
+#~ msgid "Drifting sprays"
+#~ msgstr "Zbliżający się pył wodny"
+
+#~ msgid "Freezing sprays"
+#~ msgstr "Utrzymujący się pył wodny"
+
+#~ msgid "Dust in the vicinity"
+#~ msgstr "Nadchodzące tumany kurzu"
+
+#~ msgid "Light dust"
+#~ msgstr "Kurz"
+
+#~ msgid "Moderate dust"
+#~ msgstr "Umiarkowane tumany kurzu"
+
+#~ msgid "Heavy dust"
+#~ msgstr "Obfite tumany kurzu"
+
+#~ msgid "Patches of dust"
+#~ msgstr "Łagodne tumany kurzu"
+
+#~ msgid "Partial dust"
+#~ msgstr "Częściowe tumany kurzu"
+
+#~ msgid "Squall in the vicinity"
+#~ msgstr "Szkwał w pobliżu"
+
+#~ msgid "Light squall"
+#~ msgstr "Lekki szkwał"
+
+#~ msgid "Moderate squall"
+#~ msgstr "Zmienny szkwał"
+
+#~ msgid "Heavy squall"
+#~ msgstr "Ciężki szkwał"
+
+#~ msgid "Partial squall"
+#~ msgstr "Częściowy szkwał"
+
+#~ msgid "Thunderous squall"
+#~ msgstr "Szkwał z piorunami"
+
+#~ msgid "Blowing squall"
+#~ msgstr "Szkwał z silnym wiatrem"
+
+#~ msgid "Drifting squall"
+#~ msgstr "Przesuwający się szkwał"
+
+#~ msgid "Freezing squall"
+#~ msgstr "Zmrożony szkwał"
+
+#~ msgid "Light standstorm"
+#~ msgstr "Lekka burza piaskowa"
+
+#~ msgid "Moderate sandstorm"
+#~ msgstr "Zmienna burza piaskowa"
+
+#~ msgid "Shallow sandstorm"
+#~ msgstr "Płytka burza piaskowa"
+
+#~ msgid "Partial sandstorm"
+#~ msgstr "Częściowa burza piaskowa"
+
+#~ msgid "Thunderous sandstorm"
+#~ msgstr "Burza piaskowa z piorunami"
+
+#~ msgid "Blowing sandstorm"
+#~ msgstr "Burza piaskowa z piorunami"
+
+#~ msgid "Drifting sandstorm"
+#~ msgstr "Przesuwająca się burza piaskowa"
+
+#~ msgid "Freezing sandstorm"
+#~ msgstr "Zmrożona burza piaskowa"
+
+#~ msgid "Light duststorm"
+#~ msgstr "Lekka burza kurzowa"
+
+#~ msgid "Moderate duststorm"
+#~ msgstr "Zmienna burza kurzowa"
+
+#~ msgid "Shallow duststorm"
+#~ msgstr "Płytka burza kurzowa"
+
+#~ msgid "Partial duststorm"
+#~ msgstr "Częściowa burza kurzowa"
+
+#~ msgid "Thunderous duststorm"
+#~ msgstr "Burza kurzowa z piorunami"
+
+#~ msgid "Blowing duststorm"
+#~ msgstr "Burza kurzowa z piorunami"
+
+#~ msgid "Drifting duststorm"
+#~ msgstr "Przesuwająca się burza piaskowa"
+
+#~ msgid "Freezing duststorm"
+#~ msgstr "Zmrożona burza piaskowa"
+
+#~ msgid "Funnel cloud in the vicinity"
+#~ msgstr "Nadchodząca trąba powietrzna"
+
+#~ msgid "Light funnel cloud"
+#~ msgstr "Lekka trąba powietrzna"
+
+#~ msgid "Moderate funnel cloud"
+#~ msgstr "Umiarkowana trąba powietrzna"
+
+#~ msgid "Thick funnel cloud"
+#~ msgstr "Gęsta trąba powietrzna"
+
+#~ msgid "Shallow funnel cloud"
+#~ msgstr "Słaba trąba powietrzna"
+
+#~ msgid "Patches of funnel clouds"
+#~ msgstr "Łagodna trąba powietrzna"
+
+#~ msgid "Partial funnel clouds"
+#~ msgstr "Częściowa trąba powietrzna"
+
+#~ msgid "Funnel cloud w/ wind"
+#~ msgstr "Trąba powietrzna z wiatrem"
+
+#~ msgid "Drifting funnel cloud"
+#~ msgstr "Zbliżająca się trąba powietrzna"
+
+#~ msgid "Tornado in the vicinity"
+#~ msgstr "Tornado w pobliżu"
+
+#~ msgid "Moderate tornado"
+#~ msgstr "Zmienne tornado"
+
+#~ msgid "Raging tornado"
+#~ msgstr "Szalejące tornado"
+
+#~ msgid "Partial tornado"
+#~ msgstr "Częściowe tornado"
+
+#~ msgid "Thunderous tornado"
+#~ msgstr "Tornado z piorunami"
+
+#~ msgid "Drifting tornado"
+#~ msgstr "Przesuwające się tornado"
+
+#~ msgid "Freezing tornado"
+#~ msgstr "Zamrożone tornado"
+
+#~ msgid "Light dust whirls"
+#~ msgstr "Lekkie tumany kurzu"
+
+#~ msgid "Moderate dust whirls"
+#~ msgstr "Zmienne tumany kurzu"
+
+#~ msgid "Heavy dust whirls"
+#~ msgstr "Ciężkie tumany kurzu"
+
+#~ msgid "Shallow dust whirls"
+#~ msgstr "Płytkie tumany kurzu"
+
+#~ msgid "Patches of dust whirls"
+#~ msgstr "Płaty tumanów kurzu"
+
+#~ msgid "Partial dust whirls"
+#~ msgstr "Częściowe tumany kurzu"
+
+#~ msgid "Blowing dust whirls"
+#~ msgstr "Tumany kurzu z silnym wiatrem"
+
+#~ msgid "Drifting dust whirls"
+#~ msgstr "Przelotne tumany kurzu"
+
+#~ msgid "Failed to get IWIN data.\n"
+#~ msgstr "Nie można uzyskać danych IWIN.\n"
+
+#~ msgid "Failed to get IWIN forecast data.\n"
+#~ msgstr "Nie można uzyskać danych na temat prognozy IWIN.\n"
+
+#~ msgid "Failed to get Met Office data.\n"
+#~ msgstr "Nie można uzyskać danych Met Office.\n"
+
+#~ msgid "Failed to get Met Office forecast data.\n"
+#~ msgstr "Nie można uzyskać danych prognozy pogody Met Office.\n"
+
+#~ msgid "Failed to get radar map image.\n"
+#~ msgstr "Nieudana próba pobrania obrazka mapy radaru.\n"
