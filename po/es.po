@@ -1,4 +1,4 @@
-# translation of es.po to 
+# translation of es.po to
 # translation of es.po to
 # traducción de es.po al Spanish
 # translation of es.po to Spanish
@@ -18,10 +18,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-11-28 15:32+0100\n"
-"PO-Revision-Date: 2004-11-28 15:43+0100\n"
-"Last-Translator: \n"
-"Language-Team:  <es@li.org>\n"
+"POT-Creation-Date: 2004-12-05 00:28+0100\n"
+"PO-Revision-Date: 2004-12-05 00:31+0100\n"
+"Last-Translator: Francisco Javier F. Serrador <serrador@cvs.gnome.org>\n"
+"Language-Team: Spanish <traductores@es.gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -83,7 +83,7 @@ msgstr "Muestra el estado de las características de accesibilidad del teclado"
 
 #: accessx-status/applet.c:136 battstat/battstat_applet.c:1070
 #: cdplayer/cdplayer.c:596 charpick/charpick.c:607
-#: cpufreq/src/cpufreq-applet.c:145 drivemount/drivemount.c:132
+#: cpufreq/src/cpufreq-applet.c:146 drivemount/drivemount.c:132
 #: geyes/geyes.c:201 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:574
 #: gtik/gtik.c:722 gweather/gweather-about.c:48 mini-commander/src/about.c:48
 #: modemlights/modemlights.c:116 multiload/main.c:56
@@ -150,7 +150,8 @@ msgstr "Error: %s"
 
 #: accessx-status/applet.c:1340
 msgid "Displays current state of keyboard accessibility features"
-msgstr "Muestra el estado actual de las características de accesibilidad del teclado"
+msgstr ""
+"Muestra el estado actual de las características de accesibilidad del teclado"
 
 #. The long name of the applet in the About dialog.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
@@ -801,7 +802,7 @@ msgid "Character Palette Preferences"
 msgstr "Preferencias de la tabla de caracteres"
 
 #: cpufreq/GNOME_CPUFreqApplet.server.in.in.h:1
-#: cpufreq/src/cpufreq-applet.c:161 cpufreq/src/cpufreq-applet.c:742
+#: cpufreq/src/cpufreq-applet.c:162 cpufreq/src/cpufreq-applet.c:743
 msgid "CPU Frequency Scaling Monitor"
 msgstr "Monitor de frecuencia de la CPU"
 
@@ -883,82 +884,71 @@ msgstr "CPU _monitorizada:"
 msgid "_Show in mode:"
 msgstr "_Mostrar en modo"
 
-#: cpufreq/src/cpufreq-applet.c:119 cpufreq/src/cpufreq-prefs.c:220
-msgid ""
-"Sorry, an internal error has occurred with the CPU Frequency Scaling Monitor "
-"help"
-msgstr ""
-"Lo siento, un error interno ha ocurrido con la ayuda del Monitor de Escala "
-"de Frecuencias de la CPU"
+#: cpufreq/src/cpufreq-applet.c:125 cpufreq/src/cpufreq-prefs.c:219
+msgid "Could not open help document"
+msgstr "No se pudo abrir el documento de ayuda"
 
-#: cpufreq/src/cpufreq-applet.c:123 cpufreq/src/cpufreq-prefs.c:223
-msgid "Sorry, the document can not be found"
-msgstr "Lo siento, el documento no se pudo encontrar"
-
-#: cpufreq/src/cpufreq-applet.c:137
+#: cpufreq/src/cpufreq-applet.c:138
 msgid "Graphic Arts:"
 msgstr "Grafismo:"
 
-#: cpufreq/src/cpufreq-applet.c:163
+#: cpufreq/src/cpufreq-applet.c:164
 msgid "Copyright (C) 2004 Free Software Foundation. Inc."
 msgstr "Copyright © 2004 Free Software Foundation. Inc."
 
-#: cpufreq/src/cpufreq-applet.c:164
+#: cpufreq/src/cpufreq-applet.c:165
 msgid "This utility shows the current CPU Frequency Scaling."
-msgstr "Esta utilidad muestra el estado actual del escalado de frecuencia de la CPU."
+msgstr ""
+"Esta utilidad muestra el estado actual del escalado de frecuencia de la CPU."
 
 #. If there is no cpufreq support it shows only the cpu frequency,
 #. * I thi	nk is better than do nothing. I have to notify it to the user, because
 #. * he could think	 that cpufreq is supported but it doesn't work succesfully
 #.
-#: cpufreq/src/cpufreq-applet.c:597
-msgid ""
-"There is no cpufreq support in your system, needed to use CPU Frequency "
-"Scaling Monitor.\n"
-"If your system already supports cpufreq, check whether /sys or /proc file "
-"systems are mounted.\n"
-"Now the applet will only show the current cpu frequency."
-msgstr ""
-"No hay soporte de escalado de frecuencia de la cpu en su sistema, necesario "
-"para usar el Monitor de Escalado de Frecuencia.\n"
-"Si su sistema soporta el escalado de frecuencia, compruebe que los sistemas /"
-"sys o /proc estén montados.\n"
-"Ahora la minialicación sólo mostrará la frecuencia actual de la cpu."
+#: cpufreq/src/cpufreq-applet.c:601
+msgid "CPU frequency scaling unsupported"
+msgstr "Escalado de frecuencia de la CPU no soportado"
 
-#: cpufreq/src/cpufreq-applet.c:606
+#: cpufreq/src/cpufreq-applet.c:602
+msgid ""
+"You will not be able to modify the frequency of your machine.  Your machine "
+"may be misconfigured or not have hardware support for CPU frequency scaling."
+msgstr "No podrá modificar la frecuencia de su máquina. Su máquina puede estar mal configurada o no tener soporte hardware para el escalado de frecuencia de la CPU."
+
+#: cpufreq/src/cpufreq-applet.c:607
 #, c-format
 msgid ""
-"CPU %d - cpufreq Not Supported\n"
-"%s (%s)"
+"CPU %d - Frequency Scaling Unsupported\n"
+"%s %s (%s)"
 msgstr ""
-"CPU %d - Sin soporte cpufreq\n"
-"%s (%s)"
+"CPU %d - Sin soporte de escalado de frecuencia\n"
+"%s %s (%s)"
 
-#: cpufreq/src/cpufreq-applet.c:612
-msgid "cpufreq Not Supported"
-msgstr "Sin soporte cpufreq"
+#: cpufreq/src/cpufreq-applet.c:613
+msgid "Frequency Scaling Unsupported"
+msgstr "Sin soporte para escalado de frecuencia"
 
-#: cpufreq/src/cpufreq-applet.c:743
+#: cpufreq/src/cpufreq-applet.c:744
 msgid "This utility shows the current CPU Frequency"
 msgstr "Esta utilidad muestra la frecuencia actual de la CPU"
 
-#: cpufreq/src/cpufreq-prefs.c:285
+#: cpufreq/src/cpufreq-prefs.c:280
 msgid "Graphic"
 msgstr "Gráfico"
 
-#: cpufreq/src/cpufreq-prefs.c:290 modemlights/properties.c:609
+#: cpufreq/src/cpufreq-prefs.c:285 modemlights/properties.c:609
 msgid "Text"
 msgstr "Texto"
 
-#: cpufreq/src/cpufreq-prefs.c:295
+#: cpufreq/src/cpufreq-prefs.c:290
 msgid "Graphic and Text"
 msgstr "Gráfico y texto"
 
-#: cpufreq/src/cpufreq.c:231 gweather/weather.c:232 gweather/weather.c:2200
-#: gweather/weather.c:2214 gweather/weather.c:2226 gweather/weather.c:2241
-#: gweather/weather.c:2257 gweather/weather.c:2288 gweather/weather.c:2300
-#: gweather/weather.c:2319 gweather/weather.c:2347 gweather/weather.c:2360
-#: gweather/weather.c:2380
+#: cpufreq/src/cpufreq.c:231 gweather/weather.c:301 gweather/weather.c:2407
+#: gweather/weather.c:2421 gweather/weather.c:2433 gweather/weather.c:2448
+#: gweather/weather.c:2464 gweather/weather.c:2495 gweather/weather.c:2507
+#: gweather/weather.c:2526 gweather/weather.c:2554 gweather/weather.c:2567
+#: gweather/weather.c:2587
 msgid "Unknown"
 msgstr "Desconocido"
 
@@ -979,7 +969,7 @@ msgstr "Fábrica para la miniaplicación montador de discos"
 msgid "Mount local disks and devices"
 msgstr "Monta dispositivos y discos locales"
 
-#: drivemount/drive-button.c:305 drivemount/drive-button.c:313
+#: drivemount/drive-button.c:319 drivemount/drive-button.c:327
 #, c-format
 msgid ""
 "%s\n"
@@ -988,7 +978,7 @@ msgstr ""
 "%s\n"
 "(montado)"
 
-#: drivemount/drive-button.c:307 drivemount/drive-button.c:315
+#: drivemount/drive-button.c:321 drivemount/drive-button.c:329
 #, c-format
 msgid ""
 "%s\n"
@@ -997,7 +987,7 @@ msgstr ""
 "%s\n"
 "(desmontado)"
 
-#: drivemount/drive-button.c:309
+#: drivemount/drive-button.c:323
 #, c-format
 msgid ""
 "%s\n"
@@ -1006,7 +996,7 @@ msgstr ""
 "%s\n"
 "(desconectado)"
 
-#: drivemount/drive-button.c:481
+#: drivemount/drive-button.c:495
 #, c-format
 msgid ""
 "<span weight=\"bold\" size=\"larger\">Cannot execute '%s'</span>\n"
@@ -1015,38 +1005,38 @@ msgstr ""
 "<span weight=\"bold\" size=\"larger\">No se puede ejecutar «%s»</span>\n"
 "%s"
 
-#: drivemount/drive-button.c:504
+#: drivemount/drive-button.c:518
 msgid "Mount Error"
 msgstr "Error al montar"
 
-#: drivemount/drive-button.c:507
+#: drivemount/drive-button.c:521
 msgid "Unmount Error"
 msgstr "Error al desmontar"
 
-#: drivemount/drive-button.c:510
+#: drivemount/drive-button.c:524
 msgid "Eject Error"
 msgstr "Error al expulsar"
 
-#: drivemount/drive-button.c:513
+#: drivemount/drive-button.c:527
 msgid "Error"
 msgstr "Error"
 
-#: drivemount/drive-button.c:658
+#: drivemount/drive-button.c:672
 #, c-format
 msgid "_Open %s"
 msgstr "_Abrir %s"
 
-#: drivemount/drive-button.c:667
+#: drivemount/drive-button.c:681
 #, c-format
 msgid "_Mount %s"
 msgstr "_Montar %s"
 
-#: drivemount/drive-button.c:674
+#: drivemount/drive-button.c:688
 #, c-format
 msgid "Un_mount %s"
 msgstr "Des_montar %s"
 
-#: drivemount/drive-button.c:681
+#: drivemount/drive-button.c:695
 #, c-format
 msgid "_Eject %s"
 msgstr "_Expulsar %s"
@@ -2227,9 +2217,9 @@ msgstr "Mapa de teclado danés xkb"
 msgid "Danish keymap"
 msgstr "Mapa de teclado danés"
 
-#: gkb-new/descs/Default.keyprop.desktop.in.h:1 gweather/gweather-pref.c:851
-#: gweather/gweather-pref.c:871 gweather/gweather-pref.c:895
-#: gweather/gweather-pref.c:921
+#: gkb-new/descs/Default.keyprop.desktop.in.h:1 gweather/gweather-pref.c:852
+#: gweather/gweather-pref.c:872 gweather/gweather-pref.c:896
+#: gweather/gweather-pref.c:922
 msgid "Default"
 msgstr "Predeterminado"
 
@@ -3065,7 +3055,7 @@ msgstr "Etiqueta"
 msgid "Flag and Label"
 msgstr "Bandera y etiqueta"
 
-#: gkb-new/prop.c:257 gtik/gtik.c:1511 gweather/gweather-pref.c:1037
+#: gkb-new/prop.c:257 gtik/gtik.c:1511 gweather/gweather-pref.c:1038
 #: modemlights/properties.c:444
 msgid "Display"
 msgstr "Mostrar"
@@ -3335,7 +3325,8 @@ msgstr "Mostrar banderas en el miniaplicación"
 
 #: gswitchit/gswitchit.schemas.in.h:8
 msgid "Show flags in the applet to indicate the current layout"
-msgstr "Mostrar banderas en el miniaplicación para indicar la distribución actual"
+msgstr ""
+"Mostrar banderas en el miniaplicación para indicar la distribución actual"
 
 #: gswitchit/gswitchit.schemas.in.h:9
 msgid "Show layout names instead of group names"
@@ -3362,7 +3353,7 @@ msgid "Stock Ticker"
 msgstr "Marcador de valores bursátiles"
 
 #: gtik/GNOME_GtikApplet.xml.h:4 gweather/GNOME_GWeatherApplet.xml.h:5
-#: gweather/gweather-dialog.c:156
+#: gweather/gweather-dialog.c:158
 msgid "_Update"
 msgstr "_Actualizar"
 
@@ -3419,7 +3410,7 @@ msgstr "Símbolos"
 msgid "Behavior"
 msgstr "Comportamiento"
 
-#: gtik/gtik.c:1424 gweather/gweather-pref.c:997
+#: gtik/gtik.c:1424 gweather/gweather-pref.c:998
 msgid "Update"
 msgstr "Actualizar"
 
@@ -3427,7 +3418,7 @@ msgstr "Actualizar"
 msgid "Stock update fre_quency:"
 msgstr "Fre_cuencia de actualización stocks:"
 
-#: gtik/gtik.c:1440 gweather/gweather-pref.c:1021
+#: gtik/gtik.c:1440 gweather/gweather-pref.c:1022
 msgid "minutes"
 msgstr "minutos"
 
@@ -3583,7 +3574,8 @@ msgstr "Desplazamiento de derecha a izquierda"
 
 #: gtik/gtik.schemas.in.h:10
 msgid "Shorter time means the stocks scroll by faster."
-msgstr "Un tiempo mas corto significa que las acciones se desplazarán mas rápido."
+msgstr ""
+"Un tiempo mas corto significa que las acciones se desplazarán mas rápido."
 
 #: gtik/gtik.schemas.in.h:11
 msgid "Show arrow buttons"
@@ -3724,87 +3716,95 @@ msgstr ""
 msgid "GNOME Weather"
 msgstr "Meteorología Gnome"
 
-#: gweather/gweather-dialog.c:154
+#: gweather/gweather-dialog.c:156
 msgid "Details"
 msgstr "Detalles"
 
-#: gweather/gweather-dialog.c:195
+#: gweather/gweather-dialog.c:197
 msgid "City:"
 msgstr "Ciudad:"
 
-#: gweather/gweather-dialog.c:203
+#: gweather/gweather-dialog.c:205
 msgid "Last update:"
 msgstr "Última actualización:"
 
-#: gweather/gweather-dialog.c:211
+#: gweather/gweather-dialog.c:213
 msgid "Conditions:"
 msgstr "Condiciones:"
 
-#: gweather/gweather-dialog.c:219
+#: gweather/gweather-dialog.c:221
 msgid "Sky:"
 msgstr "Cielo:"
 
-#: gweather/gweather-dialog.c:227
+#: gweather/gweather-dialog.c:229
 msgid "Temperature:"
 msgstr "Temperatura:"
 
-#: gweather/gweather-dialog.c:235
+#: gweather/gweather-dialog.c:237
 msgid "Feels like:"
 msgstr "Siente como:"
 
-#: gweather/gweather-dialog.c:243
+#: gweather/gweather-dialog.c:245
 msgid "Dew point:"
 msgstr "Punto de condensación:"
 
-#: gweather/gweather-dialog.c:251
+#: gweather/gweather-dialog.c:253
 msgid "Relative humidity:"
 msgstr "Humedad relativa:"
 
-#: gweather/gweather-dialog.c:259
+#: gweather/gweather-dialog.c:261
 msgid "Wind:"
 msgstr "Viento:"
 
-#: gweather/gweather-dialog.c:267
+#: gweather/gweather-dialog.c:269
 msgid "Pressure:"
 msgstr "Presión atmosférica:"
 
-#: gweather/gweather-dialog.c:275
+#: gweather/gweather-dialog.c:277
 msgid "Visibility:"
 msgstr "Visibilidad:"
 
-#: gweather/gweather-dialog.c:392
+#: gweather/gweather-dialog.c:285
+msgid "Sunrise:"
+msgstr "Salida del sol:"
+
+#: gweather/gweather-dialog.c:293
+msgid "Sunset:"
+msgstr "Puesta del sol:"
+
+#: gweather/gweather-dialog.c:428
 msgid "Current Conditions"
 msgstr "Condiciones actuales"
 
-#: gweather/gweather-dialog.c:409
+#: gweather/gweather-dialog.c:445
 msgid "Forecast Report"
 msgstr "Informe del pronóstico"
 
-#: gweather/gweather-dialog.c:409
+#: gweather/gweather-dialog.c:445
 msgid "See the ForeCast Details"
 msgstr "Ver los detalles del pronóstico"
 
-#: gweather/gweather-dialog.c:419
+#: gweather/gweather-dialog.c:455
 msgid "Forecast"
 msgstr "Pronóstico"
 
-#: gweather/gweather-dialog.c:427
+#: gweather/gweather-dialog.c:463
 msgid "Radar Map"
 msgstr "Mapa de radar"
 
-#: gweather/gweather-dialog.c:458
+#: gweather/gweather-dialog.c:494
 msgid "_Visit Weather.com"
 msgstr "_Visitar weather.com"
 
-#: gweather/gweather-dialog.c:459
+#: gweather/gweather-dialog.c:495
 msgid "Visit Weather.com"
 msgstr "Visitar weather.com"
 
-#: gweather/gweather-dialog.c:459
+#: gweather/gweather-dialog.c:495
 msgid "Click to Enter Weather.com"
 msgstr "Pulse para entrar en Weather.com"
 
-#: gweather/gweather-dialog.c:550
+#: gweather/gweather-dialog.c:588
 msgid "Forecast not currently available for this location."
 msgstr "Pronóstico no disponible actualmente para este lugar."
 
@@ -3817,32 +3817,32 @@ msgstr "Vista de la ubicación"
 msgid "Select Location from the list"
 msgstr "Seleccione la ubicación desde la lista"
 
-#: gweather/gweather-pref.c:193
+#: gweather/gweather-pref.c:192
 msgid "Update spin button"
 msgstr "Actualizar botón de opciones"
 
-#: gweather/gweather-pref.c:193
+#: gweather/gweather-pref.c:192
 msgid "Spinbutton for updating"
 msgstr "Botón de opciones para la actualización"
 
-#: gweather/gweather-pref.c:194
+#: gweather/gweather-pref.c:193
 msgid "Address Entry"
 msgstr "Dirección"
 
-#: gweather/gweather-pref.c:194
+#: gweather/gweather-pref.c:193
 msgid "Enter the URL"
 msgstr "Ingrese la URL"
 
 #. TRANSLATOR: This is the default unit to use for temperature measurements.
 #. Valid values are: "K" (Kelvin), "C" (Celsius) and "F" (Fahrenheit)
-#: gweather/gweather-pref.c:403 gweather/gweather-pref.c:412
+#: gweather/gweather-pref.c:404 gweather/gweather-pref.c:413
 msgid "DEFAULT_TEMP_UNIT"
 msgstr "C"
 
 #. TRANSLATOR: This is the default unit to use for wind speed.
 #. Valid values are: "m/s" (meters per second), "km/h" (kilometers per hour),
 #. "mph" (miles per hour) and "knots"
-#: gweather/gweather-pref.c:438 gweather/gweather-pref.c:448
+#: gweather/gweather-pref.c:439 gweather/gweather-pref.c:449
 msgid "DEFAULT_SPEED_UNIT"
 msgstr "km/h"
 
@@ -3850,139 +3850,139 @@ msgstr "km/h"
 #. Valid values are: "kPa" (kiloPascals), "hPa" (hectoPascals),
 #. "mb" (millibars), "mmHg" (millimeters of mercury) and
 #. "inHg" (inches of mercury)
-#: gweather/gweather-pref.c:476 gweather/gweather-pref.c:487
+#: gweather/gweather-pref.c:477 gweather/gweather-pref.c:488
 msgid "DEFAULT_PRESSURE_UNIT"
 msgstr "mmHg"
 
 #. TRANSLATOR: This is the default unit to use for visibility distance.
 #. Valid values are: "m" (meters), "km" (kilometers) and "mi" (miles)
-#: gweather/gweather-pref.c:513 gweather/gweather-pref.c:522
+#: gweather/gweather-pref.c:514 gweather/gweather-pref.c:523
 msgid "DEFAULT_DISTANCE_UNIT"
 msgstr "km"
 
-#: gweather/gweather-pref.c:800
+#: gweather/gweather-pref.c:801
 msgid "Weather Preferences"
 msgstr "Preferencias de GNOME Meteorología"
 
-#: gweather/gweather-pref.c:833 gweather/gweather-pref.c:1001
+#: gweather/gweather-pref.c:834 gweather/gweather-pref.c:1002
 msgid "_Automatically update every:"
 msgstr "_Actualizar automáticamente cada:"
 
 #. Temperature Unit
-#: gweather/gweather-pref.c:842
+#: gweather/gweather-pref.c:843
 msgid "_Temperature Unit:"
 msgstr "Unidad de _temperatura:"
 
-#: gweather/gweather-pref.c:852
+#: gweather/gweather-pref.c:853
 msgid "Kelvin"
 msgstr "Kelvin"
 
 #. TRANSLATORS: Celsius is sometimes referred Centigrade
-#: gweather/gweather-pref.c:854
+#: gweather/gweather-pref.c:855
 msgid "Celsius"
 msgstr "Centígrados"
 
-#: gweather/gweather-pref.c:855
+#: gweather/gweather-pref.c:856
 msgid "Fahrenheit"
 msgstr "Fahrenheit"
 
 #. Speed Unit
-#: gweather/gweather-pref.c:862
+#: gweather/gweather-pref.c:863
 msgid "_Wind Speed Unit:"
 msgstr "Unidad de velocidad del _viento:"
 
 #. TRANSLATOR: The wind speed unit "meters per second"
-#: gweather/gweather-pref.c:873
+#: gweather/gweather-pref.c:874
 msgid "m/s"
 msgstr "m/s"
 
 #. TRANSLATOR: The wind speed unit "kilometers per hour"
-#: gweather/gweather-pref.c:875
+#: gweather/gweather-pref.c:876
 msgid "km/h"
 msgstr "km/h"
 
 #. TRANSLATOR: The wind speed unit "miles per hour"
-#: gweather/gweather-pref.c:877
+#: gweather/gweather-pref.c:878
 msgid "mph"
 msgstr "mph"
 
 #. TRANSLATOR: The wind speed unit "knots"
-#: gweather/gweather-pref.c:879
+#: gweather/gweather-pref.c:880
 msgid "knots"
 msgstr "nudos"
 
 #. Pressure Unit
-#: gweather/gweather-pref.c:886
+#: gweather/gweather-pref.c:887
 msgid "_Pressure Unit:"
 msgstr "Unidad de _presión atmosférica:"
 
 #. TRANSLATOR: The pressure unit "kiloPascals"
-#: gweather/gweather-pref.c:897
+#: gweather/gweather-pref.c:898
 msgid "kPa"
 msgstr "kPa"
 
 #. TRANSLATOR: The pressure unit "hectoPascals"
-#: gweather/gweather-pref.c:899
+#: gweather/gweather-pref.c:900
 msgid "hPa"
 msgstr "hPa"
 
 #. TRANSLATOR: The pressure unit "millibars"
-#: gweather/gweather-pref.c:901
+#: gweather/gweather-pref.c:902
 msgid "mb"
 msgstr "mb"
 
 #. TRANSLATOR: The pressure unit "millibars of mercury"
-#: gweather/gweather-pref.c:903
+#: gweather/gweather-pref.c:904
 msgid "mmHg"
 msgstr "mmHg"
 
 #. TRANSLATOR: The pressure unit "inches of mercury"
-#: gweather/gweather-pref.c:905
+#: gweather/gweather-pref.c:906
 msgid "inHg"
 msgstr "inHg"
 
 #. Distance Unit
-#: gweather/gweather-pref.c:912
+#: gweather/gweather-pref.c:913
 msgid "_Visibility Unit:"
 msgstr "Unidad de _visibilidad:"
 
 #. TRANSLATOR: The distance unit "meters"
-#: gweather/gweather-pref.c:923
+#: gweather/gweather-pref.c:924
 msgid "meters"
 msgstr "metros"
 
 #. TRANSLATOR: The distance unit "kilometers"
-#: gweather/gweather-pref.c:925
+#: gweather/gweather-pref.c:926
 msgid "km"
 msgstr "km"
 
 #. TRANSLATOR: The distance unit "miles"
-#: gweather/gweather-pref.c:927
+#: gweather/gweather-pref.c:928
 msgid "miles"
 msgstr "millas"
 
-#: gweather/gweather-pref.c:952
+#: gweather/gweather-pref.c:953
 msgid "Enable _radar map"
 msgstr "Activar el mapa de _radar"
 
-#: gweather/gweather-pref.c:966
+#: gweather/gweather-pref.c:967
 msgid "Use _custom address for radar map"
 msgstr "Usar dirección _personalizada para el mapa de radar"
 
-#: gweather/gweather-pref.c:983
+#: gweather/gweather-pref.c:984
 msgid "A_ddress:"
 msgstr "Di_recciones:"
 
-#: gweather/gweather-pref.c:1052 mini-commander/src/mini-commander.glade.h:12
+#: gweather/gweather-pref.c:1053 mini-commander/src/mini-commander.glade.h:12
 #: modemlights/properties.c:563
 msgid "General"
 msgstr "General"
 
-#: gweather/gweather-pref.c:1065
+#: gweather/gweather-pref.c:1066
 msgid "_Select a location:"
 msgstr "_Seleccione una ubicación:"
 
-#: gweather/gweather-pref.c:1095
+#: gweather/gweather-pref.c:1096
 msgid "Location"
 msgstr "Ubicación"
 
@@ -3990,8 +3990,8 @@ msgstr "Ubicación"
 #. gweather/Locations file
 #. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
 #. so this should be translated as "KJFK"
-#: gweather/gweather.schemas.in.h:1 gweather/weather.c:136
-#: gweather/weather.c:141
+#: gweather/gweather.schemas.in.h:1 gweather/weather.c:191
+#: gweather/weather.c:196
 msgid "DEFAULT_CODE"
 msgstr "LEMD"
 
@@ -3999,8 +3999,8 @@ msgstr "LEMD"
 #. gweather/Locations file
 #. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
 #. so this should be translated as "New York-JFK Arpt"
-#: gweather/gweather.schemas.in.h:2 gweather/weather.c:115
-#: gweather/weather.c:120 gweather/weather.c:121
+#: gweather/gweather.schemas.in.h:2 gweather/weather.c:170
+#: gweather/weather.c:175 gweather/weather.c:176
 msgid "DEFAULT_LOCATION"
 msgstr "Madrid (Barajas)"
 
@@ -4008,8 +4008,8 @@ msgstr "Madrid (Barajas)"
 #. gweather/Locations file
 #. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
 #. so this should be translated as "nyc"
-#: gweather/gweather.schemas.in.h:3 gweather/weather.c:167
-#: gweather/weather.c:172
+#: gweather/gweather.schemas.in.h:3 gweather/weather.c:223
+#: gweather/weather.c:228
 msgid "DEFAULT_RADAR"
 msgstr "----"
 
@@ -4017,8 +4017,8 @@ msgstr "----"
 #. gweather/Locations file
 #. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
 #. so this should be translated as "NYZ076"
-#: gweather/gweather.schemas.in.h:4 gweather/weather.c:152
-#: gweather/weather.c:157
+#: gweather/gweather.schemas.in.h:4 gweather/weather.c:207
+#: gweather/weather.c:212
 msgid "DEFAULT_ZONE"
 msgstr "----"
 
@@ -4115,99 +4115,99 @@ msgstr "Usa unidades métricas en vez de las unidades inglesas."
 msgid "weather location information."
 msgstr "información del clima en un lugar."
 
-#: gweather/weather.c:128
+#: gweather/weather.c:183
 msgid "Pittsburgh"
 msgstr "Pittsburgh"
 
-#: gweather/weather.c:222
+#: gweather/weather.c:291
 msgid "Variable"
 msgstr "Variable"
 
-#: gweather/weather.c:223
+#: gweather/weather.c:292
 msgid "North"
 msgstr "Norte"
 
-#: gweather/weather.c:223
+#: gweather/weather.c:292
 msgid "North - NorthEast"
 msgstr "Norte - Noroeste"
 
-#: gweather/weather.c:223
+#: gweather/weather.c:292
 msgid "Northeast"
 msgstr "Noroeste"
 
-#: gweather/weather.c:223
+#: gweather/weather.c:292
 msgid "East - NorthEast"
 msgstr "Este - Noroeste"
 
-#: gweather/weather.c:224
+#: gweather/weather.c:293
 msgid "East"
 msgstr "Este"
 
-#: gweather/weather.c:224
+#: gweather/weather.c:293
 msgid "East - Southeast"
 msgstr "Este - Sureste"
 
-#: gweather/weather.c:224
+#: gweather/weather.c:293
 msgid "Southeast"
 msgstr "Sureste"
 
-#: gweather/weather.c:224
+#: gweather/weather.c:293
 msgid "South - Southeast"
 msgstr "Sur - Sureste"
 
-#: gweather/weather.c:225
+#: gweather/weather.c:294
 msgid "South"
 msgstr "Sur"
 
-#: gweather/weather.c:225
+#: gweather/weather.c:294
 msgid "South - Southwest"
 msgstr "Sur - Suroeste"
 
-#: gweather/weather.c:225
+#: gweather/weather.c:294
 msgid "Southwest"
 msgstr "Suroeste"
 
-#: gweather/weather.c:225
+#: gweather/weather.c:294
 msgid "West - Southwest"
 msgstr "Oeste - Suroeste"
 
-#: gweather/weather.c:226
+#: gweather/weather.c:295
 msgid "West"
 msgstr "Oeste"
 
-#: gweather/weather.c:226
+#: gweather/weather.c:295
 msgid "West - Northwest"
 msgstr "Oeste - Noroeste"
 
-#: gweather/weather.c:226
+#: gweather/weather.c:295
 msgid "Northwest"
 msgstr "Noroeste"
 
-#: gweather/weather.c:226
+#: gweather/weather.c:295
 msgid "North - Northwest"
 msgstr "Norte - Noroeste"
 
-#: gweather/weather.c:234 gweather/weather.c:251 gweather/weather.c:322
+#: gweather/weather.c:303 gweather/weather.c:320 gweather/weather.c:391
 msgid "Invalid"
 msgstr "Invalido"
 
-#: gweather/weather.c:240
+#: gweather/weather.c:309
 msgid "Clear Sky"
 msgstr "Cielo despejado"
 
-#: gweather/weather.c:241
+#: gweather/weather.c:310
 msgid "Broken clouds"
 msgstr "Nubosidad dispersa"
 
-#: gweather/weather.c:242
+#: gweather/weather.c:311
 msgid "Scattered clouds"
 msgstr "Nubes dispersas"
 
-#: gweather/weather.c:243
+#: gweather/weather.c:312
 msgid "Few clouds"
 msgstr "Poca nubosidad"
 
-#: gweather/weather.c:244
+#: gweather/weather.c:313
 msgid "Overcast"
 msgstr "Pronóstico adelantado"
 
@@ -4215,438 +4215,442 @@ msgstr "Pronóstico adelantado"
 #. * etc means, you can go to http://www.weather.com/glossary/ and
 #. * http://www.crh.noaa.gov/arx/wx.tbl.html
 #. NONE
-#: gweather/weather.c:283 gweather/weather.c:285
+#: gweather/weather.c:352 gweather/weather.c:354
 msgid "Thunderstorm"
 msgstr "Tormentas de truenos"
 
 #. DRIZZLE
-#: gweather/weather.c:284
+#: gweather/weather.c:353
 msgid "Drizzle"
 msgstr "Llovizna"
 
-#: gweather/weather.c:284
+#: gweather/weather.c:353
 msgid "Light drizzle"
 msgstr "Llovizna ligera"
 
-#: gweather/weather.c:284
+#: gweather/weather.c:353
 msgid "Moderate drizzle"
 msgstr "Llovizna moderada"
 
-#: gweather/weather.c:284
+#: gweather/weather.c:353
 msgid "Heavy drizzle"
 msgstr "Llovizna abundante"
 
-#: gweather/weather.c:284
+#: gweather/weather.c:353
 msgid "Freezing drizzle"
 msgstr "Llovizna helada"
 
 #. RAIN
-#: gweather/weather.c:285
+#: gweather/weather.c:354
 msgid "Rain"
 msgstr "Lluvia"
 
-#: gweather/weather.c:285
+#: gweather/weather.c:354
 msgid "Light rain"
 msgstr "Lluvia ligera"
 
-#: gweather/weather.c:285
+#: gweather/weather.c:354
 msgid "Moderate rain"
 msgstr "Lluvia moderada"
 
-#: gweather/weather.c:285
+#: gweather/weather.c:354
 msgid "Heavy rain"
 msgstr "Lluvia fuerte"
 
-#: gweather/weather.c:285
+#: gweather/weather.c:354
 msgid "Rain showers"
 msgstr "Aguaceros"
 
-#: gweather/weather.c:285
+#: gweather/weather.c:354
 msgid "Freezing rain"
 msgstr "Lluvia helada"
 
 #. SNOW
-#: gweather/weather.c:286
+#: gweather/weather.c:355
 msgid "Snow"
 msgstr "Nieve"
 
-#: gweather/weather.c:286
+#: gweather/weather.c:355
 msgid "Light snow"
 msgstr "Nieve ligera"
 
-#: gweather/weather.c:286
+#: gweather/weather.c:355
 msgid "Moderate snow"
 msgstr "Nieve moderada"
 
-#: gweather/weather.c:286
+#: gweather/weather.c:355
 msgid "Heavy snow"
 msgstr "Nieve abundante"
 
-#: gweather/weather.c:286
+#: gweather/weather.c:355
 msgid "Snowstorm"
 msgstr "Tormenta de nieve"
 
-#: gweather/weather.c:286
+#: gweather/weather.c:355
 msgid "Blowing snowfall"
 msgstr "Cascada de nieve"
 
-#: gweather/weather.c:286
+#: gweather/weather.c:355
 msgid "Snow showers"
 msgstr "Aguanieve"
 
-#: gweather/weather.c:286
+#: gweather/weather.c:355
 msgid "Drifting snow"
 msgstr "Corriente de nieve"
 
 #. SNOW_GRAINS
-#: gweather/weather.c:287
+#: gweather/weather.c:356
 msgid "Snow grains"
 msgstr "Granizada"
 
-#: gweather/weather.c:287
+#: gweather/weather.c:356
 msgid "Light snow grains"
 msgstr "Granizada ligera"
 
-#: gweather/weather.c:287
+#: gweather/weather.c:356
 msgid "Moderate snow grains"
 msgstr "Granizada moderada"
 
-#: gweather/weather.c:287
+#: gweather/weather.c:356
 msgid "Heavy snow grains"
 msgstr "Granizada abundante"
 
 #. ICE_CRYSTALS
-#: gweather/weather.c:288
+#: gweather/weather.c:357
 msgid "Ice crystals"
 msgstr "Cristales de hielo"
 
 #. ICE_PELLETS
-#: gweather/weather.c:289
+#: gweather/weather.c:358
 msgid "Ice pellets"
 msgstr "Bolitas de hielo"
 
-#: gweather/weather.c:289
+#: gweather/weather.c:358
 msgid "Few ice pellets"
 msgstr "Pocas bolitas de hielo"
 
-#: gweather/weather.c:289
+#: gweather/weather.c:358
 msgid "Moderate ice pellets"
 msgstr "Bolitas de hielo moderadas"
 
-#: gweather/weather.c:289
+#: gweather/weather.c:358
 msgid "Heavy ice pellets"
 msgstr "Bolitas de hielo abundante"
 
-#: gweather/weather.c:289
+#: gweather/weather.c:358
 msgid "Ice pellet storm"
 msgstr "Tormenta de bolitas de hielo"
 
-#: gweather/weather.c:289
+#: gweather/weather.c:358
 msgid "Showers of ice pellets"
 msgstr "Lluvia con bolitas de hielo"
 
 #. HAIL
-#: gweather/weather.c:290
+#: gweather/weather.c:359
 msgid "Hail"
 msgstr "Pedrisco"
 
-#: gweather/weather.c:290
+#: gweather/weather.c:359
 msgid "Hailstorm"
 msgstr "Tormenta de pedrisco"
 
-#: gweather/weather.c:290
+#: gweather/weather.c:359
 msgid "Hail showers"
 msgstr "Pedrisco con lluvia"
 
 #. SMALL_HAIL
-#: gweather/weather.c:291
+#: gweather/weather.c:360
 msgid "Small hail"
 msgstr "Granizo pequeño"
 
-#: gweather/weather.c:291
+#: gweather/weather.c:360
 msgid "Small hailstorm"
 msgstr "Pequeña tormenta de granizo"
 
-#: gweather/weather.c:291
+#: gweather/weather.c:360
 msgid "Showers of small hail"
 msgstr "Granizo con lluvia"
 
 #. PRECIPITATION
-#: gweather/weather.c:292
+#: gweather/weather.c:361
 msgid "Unknown precipitation"
 msgstr "Precipitación desconocida"
 
 #. MIST
-#: gweather/weather.c:293
+#: gweather/weather.c:362
 msgid "Mist"
 msgstr "Neblina"
 
 #. FOG
-#: gweather/weather.c:294
+#: gweather/weather.c:363
 msgid "Fog"
 msgstr "Niebla"
 
-#: gweather/weather.c:294
+#: gweather/weather.c:363
 msgid "Fog in the vicinity"
 msgstr "Niebla en los alrededores"
 
-#: gweather/weather.c:294
+#: gweather/weather.c:363
 msgid "Shallow fog"
 msgstr "Niebla muy gruesa"
 
-#: gweather/weather.c:294
+#: gweather/weather.c:363
 msgid "Patches of fog"
 msgstr "Lugares con niebla"
 
-#: gweather/weather.c:294
+#: gweather/weather.c:363
 msgid "Partial fog"
 msgstr "Niebla parcial"
 
-#: gweather/weather.c:294
+#: gweather/weather.c:363
 msgid "Freezing fog"
 msgstr "Niebla con hielo"
 
 #. SMOKE
-#: gweather/weather.c:295
+#: gweather/weather.c:364
 msgid "Smoke"
 msgstr "Humo"
 
 #. VOLCANIC_ASH
-#: gweather/weather.c:296
+#: gweather/weather.c:365
 msgid "Volcanic ash"
 msgstr "Cenizas volcánicas"
 
 #. SAND
-#: gweather/weather.c:297
+#: gweather/weather.c:366
 msgid "Sand"
 msgstr "Arena"
 
-#: gweather/weather.c:297
+#: gweather/weather.c:366
 msgid "Blowing sand"
 msgstr "Viento con arena"
 
-#: gweather/weather.c:297
+#: gweather/weather.c:366
 msgid "Drifting sand"
 msgstr "Corriente de arena"
 
 #. HAZE
-#: gweather/weather.c:298
+#: gweather/weather.c:367
 msgid "Haze"
 msgstr "Bruma"
 
 #. SPRAY
-#: gweather/weather.c:299
+#: gweather/weather.c:368
 msgid "Blowing sprays"
 msgstr "Cortina de rocío"
 
 #. DUST
-#: gweather/weather.c:300
+#: gweather/weather.c:369
 msgid "Dust"
 msgstr "Polvo"
 
-#: gweather/weather.c:300
+#: gweather/weather.c:369
 msgid "Blowing dust"
 msgstr "Cortina de polvo"
 
-#: gweather/weather.c:300
+#: gweather/weather.c:369
 msgid "Drifting dust"
 msgstr "Corriente de polvo"
 
 #. SQUALL
-#: gweather/weather.c:301
+#: gweather/weather.c:370
 msgid "Squall"
 msgstr "Chubasco"
 
 #. SANDSTORM
-#: gweather/weather.c:302
+#: gweather/weather.c:371
 msgid "Sandstorm"
 msgstr "Tormenta de arena"
 
-#: gweather/weather.c:302
+#: gweather/weather.c:371
 msgid "Sandstorm in the vicinity"
 msgstr "Tormenta de arena en los alrededores"
 
-#: gweather/weather.c:302
+#: gweather/weather.c:371
 msgid "Heavy sandstorm"
 msgstr "Tormenta de arena abundante"
 
 #. DUSTSTORM
-#: gweather/weather.c:303
+#: gweather/weather.c:372
 msgid "Duststorm"
 msgstr "Tormenta de polvo"
 
-#: gweather/weather.c:303
+#: gweather/weather.c:372
 msgid "Duststorm in the vicinity"
 msgstr "Tormenta de polvo en los alrededores"
 
-#: gweather/weather.c:303
+#: gweather/weather.c:372
 msgid "Heavy duststorm"
 msgstr "Tormenta de polvo abundante"
 
 #. FUNNEL_CLOUD
-#: gweather/weather.c:304
+#: gweather/weather.c:373
 msgid "Funnel cloud"
 msgstr "Nublado"
 
 #. TORNADO
-#: gweather/weather.c:305
+#: gweather/weather.c:374
 msgid "Tornado"
 msgstr "Tornado"
 
 #. DUST_WHIRLS
-#: gweather/weather.c:306
+#: gweather/weather.c:375
 msgid "Dust whirls"
 msgstr "Remolino de polvo"
 
-#: gweather/weather.c:306
+#: gweather/weather.c:375
 msgid "Dust whirls in the vicinity"
 msgstr "Remolino de polvo en los alrededores"
 
-#: gweather/weather.c:1022 gweather/weather.c:1064 gweather/weather.c:1783
+#: gweather/weather.c:1222 gweather/weather.c:1264 gweather/weather.c:1983
 msgid "Failed to get METAR data.\n"
 msgstr "Ha fallado la obtención de los datos METAR.\n"
 
-#: gweather/weather.c:1056 gweather/weather.c:1084 gweather/weather.c:1331
+#: gweather/weather.c:1256 gweather/weather.c:1284 gweather/weather.c:1531
 msgid "WeatherInfo missing location"
 msgstr "dirección perdida para WeatherInfo"
 
-#: gweather/weather.c:2114
+#: gweather/weather.c:2321
 msgid "%a, %b %d / %H:%M"
 msgstr "%a %d de %b / %H:%M"
 
-#: gweather/weather.c:2118
+#: gweather/weather.c:2325
 msgid "Unknown observation time"
 msgstr "Hora de observación desconocida"
 
 #. TRANSLATOR: This is the temperature in degrees fahrenheit, use the degree
 #. symbol Unicode 00B0 if possible
-#: gweather/weather.c:2150 gweather/weather.c:2153
+#: gweather/weather.c:2357 gweather/weather.c:2360
 #, c-format
 msgid "%.1f F"
 msgstr "%.1f F"
 
 #. TRANSLATOR: This is the temperature in degrees fahrenheit, use the degree
 #. symbol Unicode 00B0 if possible
-#: gweather/weather.c:2158 gweather/weather.c:2161
+#: gweather/weather.c:2365 gweather/weather.c:2368
 #, c-format
 msgid "%dF"
 msgstr "%dF"
 
 #. TRANSLATOR: This is the temperature in degrees centigrade , use the degree
 #. symbol Unicode 00B0 if possible
-#: gweather/weather.c:2169 gweather/weather.c:2172
+#: gweather/weather.c:2376 gweather/weather.c:2379
 #, c-format
 msgid "%.1f C"
 msgstr "%.1f C"
 
 #. TRANSLATOR: This is the temperature in degrees centigrade , use the degree
 #. symbol Unicode 00B0 if possible
-#: gweather/weather.c:2177 gweather/weather.c:2180
+#: gweather/weather.c:2384 gweather/weather.c:2387
 #, c-format
 msgid "%dC"
 msgstr "%dC"
 
 #. TRANSLATOR: This is the temperature in Kelvin
-#: gweather/weather.c:2189
+#: gweather/weather.c:2396
 #, c-format
 msgid "%.1f K"
 msgstr "%.1f K"
 
 #. TRANSLATOR: This is the temperature in Kelvin
-#: gweather/weather.c:2192
+#: gweather/weather.c:2399
 #, c-format
 msgid "%dK"
 msgstr "%dK"
 
 #. TRANSLATOR: This is the humidity in percent
-#: gweather/weather.c:2244
+#: gweather/weather.c:2451
 #, c-format
 msgid "%.f%%"
 msgstr "%.f%%"
 
 #. TRANSLATOR: This is the wind speed in knots
-#: gweather/weather.c:2269
+#: gweather/weather.c:2476
 #, c-format
 msgid "%0.1f knots"
 msgstr "%0.1f nudos"
 
 #. TRANSLATOR: This is the wind speed in miles per hour
-#: gweather/weather.c:2273
+#: gweather/weather.c:2480
 #, c-format
 msgid "%.1f mph"
 msgstr "%.1f mph"
 
 #. TRANSLATOR: This is the wind speed in kilometers per hour
-#: gweather/weather.c:2277
+#: gweather/weather.c:2484
 #, c-format
 msgid "%.1f km/h"
 msgstr "%.1f km/h"
 
 #. TRANSLATOR: This is the wind speed in meters per second
-#: gweather/weather.c:2281
+#: gweather/weather.c:2488
 #, c-format
 msgid "%.1f m/s"
 msgstr "%.1f m/s"
 
-#: gweather/weather.c:2302
+#: gweather/weather.c:2509
 msgid "Calm"
 msgstr "Calma"
 
 #. TRANSLATOR: This is 'wind direction' / 'wind speed'
-#: gweather/weather.c:2306
+#: gweather/weather.c:2513
 #, c-format
 msgid "%s / %s"
 msgstr "%s / %s"
 
 #. TRANSLATOR: This is pressure in inches of mercury
-#: gweather/weather.c:2324
+#: gweather/weather.c:2531
 #, c-format
 msgid "%.2f inHg"
 msgstr "%.2f inHg"
 
 #. TRANSLATOR: This is pressure in millimeters of mercury
-#: gweather/weather.c:2328
+#: gweather/weather.c:2535
 #, c-format
 msgid "%.1f mmHg"
 msgstr "%.1f mmHg"
 
 #. TRANSLATOR: This is pressure in kiloPascals
-#: gweather/weather.c:2332
+#: gweather/weather.c:2539
 #, c-format
 msgid "%.2f kPa"
 msgstr "%.2f kPa"
 
 #. TRANSLATOR: This is pressure in hectoPascals
-#: gweather/weather.c:2336
+#: gweather/weather.c:2543
 #, c-format
 msgid "%.2f hPa"
 msgstr "%.2f hPa"
 
 #. TRANSLATOR: This is pressure in millibars
-#: gweather/weather.c:2340
+#: gweather/weather.c:2547
 #, c-format
 msgid "%.2f mb"
 msgstr "%.2f mb"
 
 #. TRANSLATOR: This is the visibility in miles
-#: gweather/weather.c:2365
+#: gweather/weather.c:2572
 #, c-format
 msgid "%.1f miles"
 msgstr "%.1f millas"
 
 #. TRANSLATOR: This is the visibility in kilometers
-#: gweather/weather.c:2369
+#: gweather/weather.c:2576
 #, c-format
 msgid "%.1f km"
 msgstr "%.1f km"
 
 #. TRANSLATOR: This is the visibility in meters
-#: gweather/weather.c:2373
+#: gweather/weather.c:2580
 #, c-format
 msgid "%.0fm"
 msgstr "%.0fm"
 
-#: gweather/weather.c:2414
+#: gweather/weather.c:2608 gweather/weather.c:2628
+msgid "%H:%M"
+msgstr "%H:%M"
+
+#: gweather/weather.c:2661
 msgid "Retrieval failed"
 msgstr "Ha fallado la obtención"
 
@@ -4738,11 +4742,15 @@ msgstr "Error al sincronizar los datos de configuración: %s"
 
 #: mini-commander/src/mini-commander-global.schemas.in.h:1
 msgid "List of GConfValue entries containing strings for the macro commands."
-msgstr "Lista de entradas de GConfValue que contienen cadenas para los comandos de macro."
+msgstr ""
+"Lista de entradas de GConfValue que contienen cadenas para los comandos de "
+"macro."
 
 #: mini-commander/src/mini-commander-global.schemas.in.h:2
 msgid "List of GConfValue entries containing strings for the macro patterns."
-msgstr "Lista de entradas de GConfValue que contienen cadenas para los patrones de macro."
+msgstr ""
+"Lista de entradas de GConfValue que contienen cadenas para los patrones de "
+"macro."
 
 #: mini-commander/src/mini-commander-global.schemas.in.h:3
 #: mini-commander/src/mini-commander.schemas.in.h:10
@@ -4822,7 +4830,8 @@ msgstr "_Usar los colores predeterminados del tema"
 
 #: mini-commander/src/mini-commander.schemas.in.h:1
 msgid "Attempt to autocomplete a command from the history of commands entered."
-msgstr "Intenta autocompletar un comando desde el historial de comandos ingresados."
+msgstr ""
+"Intenta autocompletar un comando desde el historial de comandos ingresados."
 
 #: mini-commander/src/mini-commander.schemas.in.h:2
 msgid "Background color, blue component"
@@ -4944,7 +4953,8 @@ msgstr "Pulse sobre este botón para la lista de comandos anteriores"
 
 #: mini-commander/src/mini-commander_applet.c:343
 msgid "Command line has been disabled by your system administrator"
-msgstr "La línea de comandos ha sido desactivada por su administrador del sistema"
+msgstr ""
+"La línea de comandos ha sido desactivada por su administrador del sistema"
 
 #: mini-commander/src/mini-commander_applet.c:410
 msgid "Mini-Commander applet"
@@ -5037,7 +5047,8 @@ msgstr "No se encontraron elementos de control de volumen y/o dispositivos."
 
 #: mixer/mixer.schemas.in.h:1
 msgid "Channel controlled by applet. Only for OSS setups"
-msgstr "Canal controlado por la miniaplicación. Sólo para configuraciones de OSS"
+msgstr ""
+"Canal controlado por la miniaplicación. Sólo para configuraciones de OSS"
 
 #: mixer/mixer.schemas.in.h:2
 msgid "Saved mute state"
@@ -5127,7 +5138,8 @@ msgstr "Mostrar un diálogo de confirmación al conectarse o desconectarse."
 
 #: modemlights/modemlights.schemas.in.h:6
 msgid "Make the applet blink when the modem is connecting."
-msgstr "Hacer que la miniaplicación parpadee cuando el módem se esté conectando."
+msgstr ""
+"Hacer que la miniaplicación parpadee cuando el módem se esté conectando."
 
 #: modemlights/modemlights.schemas.in.h:7
 msgid "Modem device name"
@@ -5191,26 +5203,30 @@ msgstr "Color del borde del texto"
 
 #: modemlights/modemlights.schemas.in.h:21
 msgid "The background color of the button used to indicate data received."
-msgstr "El color de fondo del botón utilizado para indicar la recepción de datos."
+msgstr ""
+"El color de fondo del botón utilizado para indicar la recepción de datos."
 
 #: modemlights/modemlights.schemas.in.h:22
 msgid "The background color of the button used to indicate data sent."
 msgstr "El color de fondo del botón utilizado para indicar el envío de datos."
 
 #: modemlights/modemlights.schemas.in.h:23
-msgid "The color used to display the status button when the modem is connected."
+msgid ""
+"The color used to display the status button when the modem is connected."
 msgstr ""
 "El color utilizado para mostrar el botón de estado cuando el módem está "
 "conectado."
 
 #: modemlights/modemlights.schemas.in.h:24
-msgid "The color used to display the status button when the modem is connecting."
+msgid ""
+"The color used to display the status button when the modem is connecting."
 msgstr ""
 "El color usado para mostrar el botón de estado cuando el módem está "
 "conectándose."
 
 #: modemlights/modemlights.schemas.in.h:25
-msgid "The color used to display the status button when the modem is not connected."
+msgid ""
+"The color used to display the status button when the modem is not connected."
 msgstr ""
 "El color utilizado para mostrar el botón de estado cuando el módem no está "
 "conectado."
@@ -5510,7 +5526,8 @@ msgstr "El color del gráfico para el promedio de carga"
 
 #: multiload/multiload.schemas.in.h:15
 msgid "Graph color for nice-related CPU activity"
-msgstr "El color del gráfico para la actividad de la CPU relacionada con la prioridad"
+msgstr ""
+"El color del gráfico para la actividad de la CPU relacionada con la prioridad"
 
 #: multiload/multiload.schemas.in.h:16
 msgid "Graph color for other network usage"
@@ -5522,11 +5539,13 @@ msgstr "El color del gráfico para la memoria compartida"
 
 #: multiload/multiload.schemas.in.h:18
 msgid "Graph color for system-related CPU activity"
-msgstr "El color del gráfico para la actividad de la CPU relacionada con el sistema"
+msgstr ""
+"El color del gráfico para la actividad de la CPU relacionada con el sistema"
 
 #: multiload/multiload.schemas.in.h:19
 msgid "Graph color for user-related CPU activity"
-msgstr "El color del gráfico para la actividad de la CPU relacionada con el usuario"
+msgstr ""
+"El color del gráfico para la actividad de la CPU relacionada con el usuario"
 
 #: multiload/multiload.schemas.in.h:20
 msgid "Graph color for user-related memory usage"
@@ -5700,7 +5719,9 @@ msgstr "Algunos elementos del panel no están disponibles a partir de ahora"
 msgid ""
 "One or more panel items (also referred to as applets) are no longer "
 "available in the GNOME desktop."
-msgstr "Uno o más elementos del panel (también llamados miniaplicaciones) no están ya disponibles en el escritorio de gnome."
+msgstr ""
+"Uno o más elementos del panel (también llamados miniaplicaciones) no están "
+"ya disponibles en el escritorio de gnome."
 
 #: null_applet/null_applet.c:150
 msgid "These items will now be removed from your configuration:"
@@ -5804,7 +5825,8 @@ msgstr "Elija si las notas serán visibles en todas las áreas de trabajo"
 
 #: stickynotes/stickynotes.glade.h:18
 msgid "Choose if the default style is forced on all notes"
-msgstr "Seleccione si se debe forzar el estilo predeterminado en todas las notas"
+msgstr ""
+"Seleccione si se debe forzar el estilo predeterminado en todas las notas"
 
 #: stickynotes/stickynotes.glade.h:19
 msgid "Clic_k:"
@@ -5947,7 +5969,8 @@ msgstr "Formato de fecha del título de la nota"
 
 #: stickynotes/stickynotes.schemas.in.h:4
 msgid "Default click behavior of the applet"
-msgstr "Comportamiento predeterminado de la miniaplicación al pulsar ser pulsada"
+msgstr ""
+"Comportamiento predeterminado de la miniaplicación al pulsar ser pulsada"
 
 #: stickynotes/stickynotes.schemas.in.h:5
 msgid "Default color for new notes"
@@ -6038,7 +6061,8 @@ msgstr ""
 
 #: stickynotes/stickynotes.schemas.in.h:19
 msgid "Specifies whether the sticky notes are locked (non-editable) or not."
-msgstr "Especifica si las notas adhesivas están bloqueadas (no editables) o no."
+msgstr ""
+"Especifica si las notas adhesivas están bloqueadas (no editables) o no."
 
 #: stickynotes/stickynotes.schemas.in.h:20
 msgid ""
@@ -6185,7 +6209,8 @@ msgstr ""
 "inmediatamente?"
 
 #: trashapplet/src/trashapplet.c:733
-msgid "Cannot move some items to trash, do you want to delete these immediately?"
+msgid ""
+"Cannot move some items to trash, do you want to delete these immediately?"
 msgstr ""
 "No se pueden mover algunos elementos a la papelera, ¿quiere borrar estos "
 "inmediatamente?"
@@ -6249,3 +6274,28 @@ msgstr "Preferencias del monitor de enlace inalámbrico"
 msgid "_Monitored device:"
 msgstr "Dispositivo _monitorizado:"
 
+#~ msgid ""
+#~ "Sorry, an internal error has occurred with the CPU Frequency Scaling "
+#~ "Monitor help"
+#~ msgstr ""
+#~ "Lo siento, un error interno ha ocurrido con la ayuda del Monitor de "
+#~ "Escala de Frecuencias de la CPU"
+
+#~ msgid "Sorry, the document can not be found"
+#~ msgstr "Lo siento, el documento no se pudo encontrar"
+
+#~ msgid ""
+#~ "There is no cpufreq support in your system, needed to use CPU Frequency "
+#~ "Scaling Monitor.\n"
+#~ "If your system already supports cpufreq, check whether /sys or /proc file "
+#~ "systems are mounted.\n"
+#~ "Now the applet will only show the current cpu frequency."
+#~ msgstr ""
+#~ "No hay soporte de escalado de frecuencia de la cpu en su sistema, "
+#~ "necesario para usar el Monitor de Escalado de Frecuencia.\n"
+#~ "Si su sistema soporta el escalado de frecuencia, compruebe que los "
+#~ "sistemas /sys o /proc estén montados.\n"
+#~ "Ahora la minialicación sólo mostrará la frecuencia actual de la cpu."
+
+#~ msgid "cpufreq Not Supported"
+#~ msgstr "Sin soporte cpufreq"
