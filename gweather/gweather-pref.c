@@ -350,7 +350,7 @@ proxy_toggled (GtkToggleButton *button, gpointer data)
     			   toggled, NULL);
 }
 
-static void
+static gboolean
 proxy_port_changed (GtkWidget *entry, GdkEventFocus *event, gpointer data)
 {
     GWeatherApplet *gw_applet = data;
@@ -361,13 +361,14 @@ proxy_port_changed (GtkWidget *entry, GdkEventFocus *event, gpointer data)
     text = gtk_editable_get_chars (GTK_EDITABLE (entry), 0, -1);
     
     if (!text) 
-    	return;
+    	return FALSE;
     port = atoi (text);
     g_free (text);
     
     gconf_client_set_int (client, "/system/gnome-vfs/http-proxy-port", 
     			  port, NULL);
 
+    return FALSE;
 }
 
 static void
@@ -382,7 +383,7 @@ proxy_auth_toggled (GtkToggleButton *button, gpointer data)
     			   toggled, NULL);
 }
 
-static void
+static gboolean
 proxy_url_changed (GtkWidget *entry, GdkEventFocus *event, gpointer data)
 {
     GWeatherApplet *gw_applet = data;
@@ -392,14 +393,16 @@ proxy_url_changed (GtkWidget *entry, GdkEventFocus *event, gpointer data)
     text = gtk_editable_get_chars (GTK_EDITABLE (entry), 0, -1);
     
     if (!text) 
-    	return;
+    	return FALSE;
     
     gconf_client_set_string (client, "/system/gnome-vfs/http-proxy-host", 
     			     text, NULL);
     g_free (text);
+    
+    return FALSE;
 }
 
-static void
+static gboolean
 proxy_user_changed (GtkWidget *entry, GdkEventFocus *event, gpointer data)
 {
     GWeatherApplet *gw_applet = data;
@@ -409,15 +412,16 @@ proxy_user_changed (GtkWidget *entry, GdkEventFocus *event, gpointer data)
     text = gtk_editable_get_chars (GTK_EDITABLE (entry), 0, -1);
     
     if (!text)
-   	return;
+   	return FALSE;
 
     gconf_client_set_string (client, "/system/gnome-vfs/http-proxy-authorization-user", 
     			     text, NULL); 
     g_free (text);
 
+    return FALSE;
 }
 
-static void
+static gboolean
 proxy_password_changed (GtkWidget *entry, GdkEventFocus *event, gpointer data)
 {
     GWeatherApplet *gw_applet = data;
@@ -427,11 +431,13 @@ proxy_password_changed (GtkWidget *entry, GdkEventFocus *event, gpointer data)
     text = gtk_editable_get_chars (GTK_EDITABLE (entry), 0, -1);
     
     if (!text)
-   	return;
+   	return FALSE;
 
     gconf_client_set_string (client, "/system/gnome-vfs/http-proxy-authorization-password", 
     			     text, NULL);
     g_free (text);
+    
+    return FALSE;
 }
 
 static void
@@ -515,7 +521,7 @@ use_radar_url_toggled (GtkToggleButton *button, gpointer data)
     panel_applet_gconf_set_bool(gw_applet->applet, "use_custom_radar_url", toggled, NULL);
 }
 
-static void
+static gboolean
 radar_url_changed (GtkWidget *widget, GdkEventFocus *event, gpointer data)
 {
     GWeatherApplet *gw_applet = data;
@@ -535,6 +541,8 @@ radar_url_changed (GtkWidget *widget, GdkEventFocus *event, gpointer data)
     	
     panel_applet_gconf_set_string (gw_applet->applet, "radar", 
     				   gw_applet->gweather_pref.radar, NULL);
+    				   
+    return FALSE;
     				   
 }
 
@@ -653,7 +661,6 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     gtk_widget_show (proxy_box);
     gtk_container_set_border_width (GTK_CONTAINER (proxy_box), 8);
     gtk_container_add (GTK_CONTAINER (pref_notebook), proxy_box);
-    gtk_container_set_border_width (GTK_CONTAINER (proxy_box), 8);
     
     gw_applet->pref_net_proxy_btn = gtk_check_button_new_with_label (_("Use HTTP proxy"));
     gtk_widget_show (gw_applet->pref_net_proxy_btn);
