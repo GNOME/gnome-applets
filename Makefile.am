@@ -43,7 +43,8 @@ always_built_SUBDIRS = \
 	charpick	\
 	geyes		\
 	mini-commander	\
-	gkb-new	
+	gkb-new		\
+	wireless
 
 SUBDIRS = \
 	po			\
