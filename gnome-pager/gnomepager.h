@@ -11,6 +11,8 @@
 #include <X11/Xmd.h>
 #include <X11/Xlib.h>
 #include <X11/Xatom.h>
+#include <config.h>
+/* #include <string.h> */
 #include <gnome.h>
 #include <gdk/gdkx.h>
 #include <gdk/gdkprivate.h>

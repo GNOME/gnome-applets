@@ -1349,6 +1349,10 @@ main(int argc, char *argv[])
   GtkWidget *dlg;
   gint i, size, *da;
   
+  /* Initialize the i18n stuff */
+  bindtextdomain (PACKAGE, GNOMELOCALEDIR);
+  textdomain (PACKAGE);
+
   for (i = 0; i < 32; i++)
     {
       desk_name[i] = NULL;
