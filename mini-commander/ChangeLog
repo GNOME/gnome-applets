@@ -1,0 +1,1113 @@
+2003-03-04  Kevin Vandersloot <kfv101@psu.edu>
+
+	* mini-commander-applet.c: destroy the file_select dialog on destroy. Fixes bug
+	#104897. Patch from Pasupathi Duraisamy <pasupathi.duraisamy@wipro.com>.
+	
+	* mc-default-macros.h: change gnome-moz-remote to mozilla
+
+
+2003-01-22  Pat Costello <patrick.costello@sun.com>
+		Updated command-line.xml, command-line-C.omf for 
+		GNOME 2.2 release.
+
+2002-12-14  Fernando Herrera <fherrera@onirica.com>
+
+	* src/GNOME_MiniCommanderApplet.server.in.in: added bugzilla attributtes
+
+2002-12-02  Christian Neumair  <chris@gnome-de.org>
+
+	* PORTED_TO_GNOME_2: removed.
+
+2002-11-25  Kevin Vandersloot <kfv101@psu.edu>
+
+	* src/preferences.c: don't limit the width of the applet to 200. Fixes bug
+	#95704
+
+2002-11-22  Kevin Vandersloot <kfv101@psu.edu>
+
+	* src/command_line.c: don't scale the applet height to the panel size. Fixes
+	bug #91102.
+
+2002-11-22  Kevin Vandersloot <kfv101@psu.edu>
+
+	* mc-default-macros.h: remove gless macro and change gnome-moz-remote
+	to mozilla. Fixes bugs 94260 and 94854
+
+	* mini-commander.glade: change size increment to 5
+
+2002-11-14  Deepa Natarajan  <deepa.natarajan@wipro.com>
+
+       * src/mini-commander_applet.[ch]: Resize the icons based
+       on the size of the panel. Arrange the icons horizontally
+       beside the text field for panel sizes < Small (36 pixels)
+       and vertically beside the text field for panel
+       sizes >= Small. Fixes bug# 97656.
+
+2002-10-30  Deepa Natarajan  <deepa.natarajan@wipro.com>
+
+	* src/mini-commander_applet.c: register the browser and history
+	icons as stock icons so that they can be themed. Fixes bug# 96086.
+
+2002-11-21  Glynn Foster  <glynn.foster@sun.com>
+
+	* src/mini-commander.glade: Don't use duplicated
+	mnemonics - this dialog probably needs to get 
+	HIGized though.
+
+2002-11-21  Glynn Foster  <glynn.foster@sun.com>
+
+	* src/mini-commander.glade: Don't use mnemonics on 
+	notebook tab labels. Fixes #99159.
+
+2002-10-25  Deepa Natarajan
+
+	* src/command_line.c, src/mini-commander_applet.h:
+	Make sure the file selector dialog opens only once.
+	Fixes bug# 93280.
+
+2002-10-04  Mark McLoughlin  <mark@skynet.ie>
+
+	* src/mc-install-default-macros.c: (main): use
+	gconf_client_suggest_sync to ensure the defaults
+	actually get installed.
+
+2002-10-02  Arvind Samptur <arvind.samptur@wipro.com>
+
+	* src/command_line.c: (history_list_key_press_cb)
+	Ignore cltr+space key press. There is a default binding
+	for this combination in gtktreeview. Fixes #94077
+
+2002-09-25  jacob berkman  <jacob@ximian.com>
+
+	* src/Makefile.am (tool_PROGRAMS): install
+	mc-install-default-macros so packages can set up this stuff
+
+	* src/mc-install-default-macros.c (main): just return if
+	GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL is set in the environment
+
+2002-09-24  Jacob Berkman  <jacob@ximian.com>
+
+	* src/Makefile.am (EXTRA_DIST): add $(glade_DATA)
+
+2002-09-19  Mark McLoughlin  <mark@skynet.ie>
+
+	* src/about.c: (about_box):
+	* src/command_line.c: (mc_show_history), (mc_show_file_browser):
+	* src/exec.c: (mc_exec_command):
+	* src/help.c: (show_help):
+	* src/preferences.c: (macro_add), (mc_show_preferences):
+	kill the HAVE_GTK_MULTIHEAD conditionals. We require
+	gtk+ HEAD now.
+
+2002-08-12  Mark McLoughlin  <mark@skynet.ie>
+
+	* src/command_line.c: (mc_command_update_entry_size):
+	update the size of the entry even if its a flat
+	layout. Fixes #88975. Slightly modified version of
+	patch by Arvind.
+
+2002-08-12  Mark McLoughlin  <mark@skynet.ie>
+
+	* src/mc-install-default-macros.c: (main): how
+	silly of me. I was installing the schemas into
+	the user's prefs, not the system-wide db.
+
+	* src/Makefile.am: define GCONF_CONFIG_SOURCE
+	when invoking mc-install-default-macros.
+
+2002-08-10  Mark McLoughlin  <mark@skynet.ie>
+
+	* src/mini-commander.glade: swop around the add and
+	delete buttons and set 'can_default' on the close
+	button.
+
+	* src/preferences.c: (add_response), (show_macros_list),
+	(macro_edited), (mc_preferences_setup_dialog): fix up
+	the treeview code so that editing works properly.
+
+2002-08-09  Mark McLoughlin  <mark@skynet.ie>
+
+	* src/Makefile.am: link against libglade, build
+	mc-install-default-macros, run it at install time.
+
+	* src/about.c: (about_box): add ME :-)
+
+	* src/cmd_completion.c: small updates, remove unused code.
+
+	* src/command_line.c: ditto.
+
+	* src/exec.c: minor updates.
+
+	* src/history.c: ditto.
+
+	* src/macro.c: tidy up macro searching taking into
+	account that macros are now stored on a list, not
+	a fixed length array.
+
+	* src/mc-default-macros.h: define the default macros
+	here.
+
+	* src/mc-install-default-macros.c: install the default
+	macros schemas from here. It really sucks trying to
+	put them in a .schemas file.
+
+	* src/mini-commander.glade: gladify preferences dialog.
+
+	* src/mini-commander_applet.[ch]: tidy up a lot. Re-work
+	the MCData struct.
+
+	* src/preferences.[ch]: completely re-write. Gladify the
+	dialog, use a TreeView for editing the macros, use a sane
+	storage method for the macros. Use proper model-view
+	gconf implementation - you can now change preferences with
+	gconf-editor and the applet magically updates - wow ! :)
+
+2002-07-19 Padraig O'Briain (padraig.obriain@sun.com>
+
+        * src/command_line.c (command_key_event): Implement Ctrl+Tab to
+        move focus from text entry field to next widget, i.e. browser button.
+        Remove some redundant and unreachable code.
+
+2002-07-18  Mark McLoughlin  <mark@skynet.ie>
+
+	* src/Makefile.am: install applet into libexec.
+
+	* src/GNOME_MiniCommanderApplet.server.in: move .server.in to
+	.server.in.in to allow for libexec dir substitution.
+
+2002-07-11  Mark McLoughlin  <mark@skynet.ie>
+
+	* src/Makefile.am: add egg-screen-exec.[ch] to
+	the build.
+
+	* src/exec.c: (exec_command): execute commands
+	with DISPLAY set to make the default screen the
+	same as the screen on which the applet is realised.
+
+	* src/about.c: (about_box):
+	* src/command_line.c: (show_history_signal),
+	(show_file_browser_signal):
+	* src/preferences.c: (properties_box):
+	realise dialogs on the same screen as the applet.
+
+2002-07-10  Mark McLoughlin  <mark@skynet.ie>
+
+	* src/about.c: (about_box): use gtk_window_present.
+
+	* src/command_line.c: (show_history_signal),
+	(show_file_browser_signal): remove assignments after
+	return.
+
+	* src/exec.c: (exec_command): rip out how brew execing
+	and use gnome_execute_shell.
+
+	* src/mini-commander_applet.c: use unsafe verbs to
+	minimise casting.
+	(mini_commander_applet_fill): no need to init signal handler
+	anymore.
+
+2002-06-08  Kjartan Maraas  <kmaraas@gnome.org>
+
+	* src/preferences.c: Mark a string for translation.
+	
+2002-06-03  Arvind Samptur <arvind.samptur@wipro.com>
+
+	* src/mini-commander_applet.c: changed gtk_main_do_event
+	to gtk_propagate_event in button_press_hack
+	for avoiding crash due to gtk event queue corruption. Fixes 
+	#83186.
+
+2002-05-31 Kevin Vandersloot <kfv101@psu.edu>
+
+	* Makefile.am: Fix GNOMELOCALEDIR to point to correct
+	location. Fixes #83621. 
+
+2002-05-23  Kevin Vandersloot <kfv101@psu.edu>
+
+	* src/mini-commander_applet.c: get the button press hack
+	done right. Fixes bug #81510
+
+	* src/preferences.c: gconf sanity checking and error reporting
+
+2002-05-22  Kevin Vandersloot <kfv101@psu.edu>
+
+	* src/command_line.c: prepend the history list items so
+	that the most recent are at top. Fixes bug #82652
+
+2002-05-20  Kevin Vandersloot <kfv101@psu.edu>
+
+	* src/mini-commander_applet.c: set window icon
+
+2002-05-13  Satyajit Kanungo <satyajit.kanungo@wipro.com
+
+	*. preferences.c - added a "help" button and help callback 
+	   in the preference dialog box.
+
+2002-05-10  Deepa Natarajan <deepa.natarajan@wipro.com>
+
+    * .xml: added mnemonics for the popup menu
+
+2002-05-06  Deepa Natarajan  <deepa.natarajan@wipro.com>
+
+	* src/command_line.c: popup history list with label 
+	"no items in history" if the list is empty. 
+	Fixes bug# 80933
+
+2002-04-27  Dennis Cranston  <dennis_cranston@yahoo.com>
+
+	* src/about.c:  "About..." dialog fixes -- change the name
+	to "Command Line" to match that in the "Add to panel" menu. 
+	Also, use gnome-mini-commander.png for the logo and window
+	icon.
+	
+2002-04-20  Abel Cheung  <maddog@linux.org.hk>
+
+	* help/.cvsignore, help/C/.cvsignore: New files.
+	* src/about.c: Added translation_credit and documenters placeholders.
+
+2002-04-18  Deepa Natarajan <deepa.natarajan@wipro.com>
+
+       * src/mini-commander_applet.c: display tooltip even if the
+       handle is not shown.
+
+2002-04-18  Kevin Vandersloot <kfv101@psu.edu>
+
+	* src/command_line.c: fix the history popup. Make it show up next
+	to the applet, not the cursor. Fix selecting. Fixes bugs #77839,
+	and #77840
+
+2002-04-16  Kevin Vandersloot <kfv101@psu.edu>
+
+	* src/command_line.c: don't swallow ctrl-tab so key nav works.
+	Fixes bug #75908
+
+2002-04-10  Deepa Natarajan <deepa.natarajan@wipro.com>
+
+       * src/preferences.c: enable scroll bar to work with keyboard in
+       the Macros page. Fixes bug #77837
+
+2002-04-09  Kevin Vandersloot <kfv101@psu.edu>
+
+	* src/preferences.c: implement macros pref saving. Fixes 
+	bug #73249
+
+2002-04-07  Kevin Vandersloot <kfv101@psu.edu>
+
+	* src/preferences.c: get i16 color values. Fixes bug #77302. Also
+	don't cast a GtkCheckButton to a GtkMisc
+
+2002-04-02  Kevin Vandersloot <kfv101@psu.edu>
+
+	* src/*.xml: change properties to preferences
+
+	* src/preferences.c: change properties to preferences and
+	add mnmonics to macros tab. Fixes bug #76805
+
+2002-03-31  Deepa Natarajan <deepa.natarajan@wipro.com>
+
+	This fixes bug# 76744
+	* src/preferences.[ch]: provide option to enable/disable default
+	theme settings.
+
+	* src/command_line.c: don't set the fg & bg color for the entry box
+	if default themes is enabled.
+
+	* src/mini-commander.schemas: entry for default_theme_color 
+
+2002-03-24  Kevin Vandersloot <kfv101@psu.edu>
+
+	* src/command_line.c: don't do tab completion for shift-tab
+	so the keyboard users can get out of the entry. Another fix
+	for part of #75908
+
+2002-03-23  Deepa Natarajan <deepa.natarajan@wipro.com>
+
+       * src/prefrences: set mnemonics for the widgets in the properties
+       dialog & set Close as the default button. Fix label-for relation
+       to be set even if gail is not loaded. Also set atk relation between
+       label and color pick widgets.
+       This partially fixes the bug#75908.
+
+2002-03-17 Sandeep V honde <sandeep.honde@wipro.com>
+
+	* src/command_line.c : removed deprecated clist calls.
+
+	* src/mini-commander_applet.c : removed gnome_pixmap
+	deprecated calls
+
+2002-03-15  Deepa Natarajan <deepa.natarajan@wipro.com>
+
+	This fixes bug# 73545
+	* src/mini-commander_applet.c: set accessible name/desc and tooltip
+	* src/prefrences.c: set atk relation
+	* src/command_line.c: set accessibile name/desc for entry box
+	* src/mini-commander_applet.h: defined set_atk_name_description
+
+2002-03-04  Kevin Vandersloot <kfv101@psu.edu>
+
+	* src/mini-commander_applet.c: remove include of terminal.h
+
+2002-03-03  Kevin Vandersloot <kfv101@psu.edu>
+
+	* src/mini-commander.schemas: gconf suppport
+
+	* src/prefrences: load and save gconf values, Destroy the
+	prefs dialog since there seemed to be a crash associated.
+
+	* mini-commander_applet.c: implement hack to get right click
+	menu working on buttons. Also fix part of a long standing issue
+	where the applet doesn't save the frame settings - bug #37278
+
+2002-03-03  Kevin Vandersloot <kfv101@psu.edu>
+
+	* src/help.c: Try to get the right-click help option
+	working
+
+2002-03-03 John Fleck <jfleck@inkstain.net>
+
+	add
+	* help/Makefile.am
+	* help/C/Makefile.am
+	* help/C/command-line.xml
+	* help/C/legal.xml
+	* help/C/command-line-C.omf
+	* help/C/figures/command-line.png
+	adding help files
+
+2002-03-02  Kevin Vandersloot <kfv101@psu.edu>
+
+	* src/*.c: remove a lot of global variables. Fixes bug
+	#72169
+
+	* Makefile.am: hey, zvt is not even used anymore for this
+	applet so don't link to it
+
+	* preferences.c: remove the clock/data options since they
+	are dumb
+
+	* mini-commander_applet.c: make buttons horizontal when
+	size is really small so they don't get scrunched
+
+	* command_line.c: fix the color changing when the panel gets
+	focus
+
+	* message.c: #ifdef all the stuff here since it shouldn't
+	be used
+
+2002-02-21  Kevin Vandersloot <kfv101@psu.edu>
+
+	* src/command_line.c: fix file selection crash #71666. Also
+	get tooltips working
+
+2002-02-22  Mark McLoughlin  <mark@skynet.ie>
+
+	* src/Makefile.am: kill .desktop and .gnorba rules.
+
+	* src/mini-commander_applet.desktop.in: kill.
+
+2002-02-18  Todd Kulesza  <fflewddur@dropline.net>
+
+	* src/mini-commander_applet.c: fixed for small panels.
+	
+2002-02-17  Kevin Vandersloot <kfv101@psu.edu>
+
+	* src/GNOME..xml: fix 
+
+2002-02-16  Kjartan Maraas  <kmaraas@gnome.org>
+
+	* src/Makefile.am: Hook up the .xml file.
+	* src/mini-commander-applet.c: Move the applet menu into a file of its own.
+	* src/GNOME_MiniCommanderApplet.xml: New file containing the menu.
+	
+2002-02-11  Kjartan Maraas  <kmaraas@gnome.org>
+
+	* src/GNOME_MultiLoadApplet_Factory.server.in: Mark strings for l10n.
+	* src/*.[ch]: Fix #include <config.h>
+	
+2002-02-11  Mark McLoughlin  <mark@skynet.ie>
+
+	* src/GNOME_MiniCommanderApplet.server.in: move to Vertigo namespace.
+
+	* src/mini-commander_applet.c: update for factory macro change.
+	(applet_pixel_size_changed_cb): use idl constants.
+
+2002-02-09  Kevin Vandersloot <kfv101@psu.edu>
+
+	* properties.c: port To GtkDialog and instant apply
+
+	* mini-commander_applet.c: fix the right click icons and no
+	more save-session signal for applets. Kill the error warning
+	at startup
+
+	* replace config global variable since bonobo applets don't
+	like global variables at all
+
+2002-02-02  Kevin Vandersloot <kfv101@psu.edu>
+
+	* mini-commander.c: remove the reference to 
+	terminal_init so garnome won't barf
+
+2002-01-25  Kjartan Maraas  <kmaraas@gnome.org>
+
+	* src/preferences.c: Follow the styleguide for "autocompletion".
+	
+2002-01-19  Seth Nickell  <snickell@stanford.edu>
+
+	* src/GNOME_MiniCommanderApplet.server.in:
+
+	Rename to "Command Line"
+
+2002-01-13  Kevin Vandersloot <kfv101@psu.edu>
+
+	* src/*.xpm: make xpms const char to kill compiler warning
+
+	* src/mini-commander_applet.c: connect to the proper "change_size"
+	signal
+
+	* src/about.c, help.c, preferences.c: kill another warning - should
+	be gpointer data
+
+2002-01-09  Kevin Vandersloot <kfv101@psu.edu>
+
+	* src/Makefile.am: INTLTOOL_SERVER_RULE is needed so the .server.in file
+	is translated
+
+2002-01-06  Kevin Vandersloot <kfv101@psu.edu>
+
+	* src/Makefile.am: don't need intl stuff anymore
+
+2002-01-01  Oliver Maruhn  <oliver@maruhn.com>
+
+	* *: very first port to GNOME2
+
+2001-09-02  Oliver Maruhn  <oliver@maruhn.com>
+
+	* src/terminal.c (command_key_event): Inserted two more forgotten
+	strlen's [Thanks to Leif Bergman <lmb@csb.ki.se> and Kjartan
+	Maraas <kmaraas@online.no> for reporting these bugs].
+
+2001-08-27  Oliver Maruhn  <oliver@maruhn.com>
+
+	* src/terminal.c (term_key_cb): Inserted a forgotten strlen twice
+	[Thanks to Leif Bergman <lmb@biosci.ki.se> for reporting this
+	bug].
+
+2001-06-17  Kjartan Maraas  <kmaraas@gnome.org>
+
+	* src/command_line.c: Apply patch from Norman Stevens
+	<norman@arcady.u-net.com> to make the entry border draw with
+	correct theme colors.
+	
+2001-05-21  Benedikt Roth  <Benedikt.Roth@gmx.net>
+
+	* src/preferences.c: Modified default macros to use gnome-moz-remote
+	instead of netscape
+
+2001-03-12  Oliver Maruhn  <oliver@maruhn.com>
+
+	* src/command_line.c (history_auto_complete): Auto completion does
+	not ignore case any longer [fixes #6109 reported by Josh "Yoshi"
+	Steiner <josh@xiphoidprocess.com>].
+	
+	* src/mini-commander_applet.c (applet_pixel_size_changed_cb): Do
+	not change show_frame status on startup.  This prevents that the
+	preferences are ignored [fixes #9662 and #12458 reported by
+	<andreas.hyden@telia.com> and <acapnotic@users.sourceforge.net>].
+
+2001-03-11  Timur Bakeyev  <mc@bat.ru>
+
+	* src/macro.c, src/preferences.h: Added sys/types.h before regex.h,
+	as the last one can use some system types.
+	
+2001-03-10  Timur Bakeyev  <mc@bat.ru>
+
+	* src/exec.c: On some OS's none of the used signal flags do exist. Use
+	zero as a default value. Also changed strcpy() to strncpy() in command
+	duplication. Still, all the buffer allocation code should be verified
+	agains possible overruns.
+	
+2000-05-14  Andreas Hyden  <a.hyden@cyberpoint.se>
+
+	* src/mini-commander_applet.desktop: Added Swedish translation.
+
+2000-05-11  Oliver Maruhn  <oliver@maruhn.com>
+
+	* src/preferences.c (save_session_signal): Hide frequently "saving
+	prefs..." messages if panel size is small or tiny.
+
+2000-05-10  Dan Mueth <d-mueth@uchicago.edu>
+
+	* src/preferences.c: Modified how it calls up the documentation
+	when the Help button is pressed so it will correctly link to
+	the right part of the newly updated documentation.
+
+2000-04-25  Fatih Demir	<kabalak@gmx.net>
+	
+	* src/mini-commander_applet.desktop : Added [tr] section .
+
+2000-04-04  Jacob Berkman  <jacob@helixcode.com>
+
+	* src/mini-commander_applet.c (main): use the help icon
+
+2000-02-26  Martin Baulig  <martin@home-of-linux.org>
+
+	* docs/C/: New directory. Moved everything from `docs/' here.
+	* docs/C/mini-commander.sgml: Changed doctype to
+	"-//GNOME//DTD DocBook PNG Variant V1.0//EN".
+
+	* docs/gpl2.sgml: Removed.
+	* docs/mini-commander.sgml: Moved to `C' subdirectory.
+	* docs/screenshot0.gif: Likewise.
+	* docs/topic.dat: Likewise.
+
+2000-02-23  Peter Hawkins  <peterhawkins@ozemail.com.au>
+
+	* src/preferences.c : stopped about box from being opened multiple times at once.
+
+2000-02-22  Peter Hawkins  <peterhawkins@ozemail.com.au>
+
+	* src/preferences.c : fixed memory leak during loading history, stopped
+	preferences dialog from being opened multiple times at once.
+
+2000-02-11  Oliver Maruhn  <oliver@maruhn.com>
+
+	* src/message.c (hide_message): fixed small bug with message timing
+
+2000-02-10  Oliver Maruhn  <oliver@maruhn.com>
+
+	* src/message.c (show_message): Messages have not been visibile if
+ 	the panel size was small or tiny.  Now they are shown in a small
+ 	popup window.
+
+	(show_message): better positioning of message popup window
+
+	* src/command_line.c (command_line_activate_cb): Sometimes the
+ 	text entry does not get the keyboard focus although it should.
+  	Maybe this workaround fixes this problem.
+
+2000-02-06  Oliver Maruhn  <oliver@maruhn.com>
+
+	* src/macro.c (expand_command): bug fixed which prevented
+ 	executing plain commands (non-macros)
+
+2000-02-02  Oliver Maruhn  <oliver@maruhn.com>
+
+	* src/macro.c and other places: Macros are defined via regular
+ 	expressions instead of prefixes [this nice idea has been suggested
+ 	by Alejandro Forero Cuervo <bachue@bachue.com>]
+
+	* src/history.c (delete_history_entry): added
+
+	(append_history_entry): now really no dupes are stored in the
+ 	command history
+
+	* src/*.[ch]: modified naming scheme of function and variable
+ 	names
+
+Sat Jan 29 02:17:36 2000  Tom Gilbert  <gilbertt@tomgilbert.freeserve.co.uk>
+
+	* On an anti-warning hunt using CFLAGS="-O6 -g -W -Wall
+        -Wmissing-prototypes -Wmissing-declarations". Don't mind me.
+
+Thu Jan 27 17:36:01 2000  George Lebl <jirka@5z.com>
+
+	* src/cmd_completion.c, src/command_line.c, src/exec.c,
+	  src/preferences.c, src/terminal.c: fixed warnings and compilation
+	  errors
+
+Sun Oct 31 16:38:28 1999  George Lebl  <jirka@5z.com>
+
+	* src/{command_line.c,terminal.c,mini-commander_applet.c}: initialize
+	  globals, static vars, use gtk_widget_destroyed to avoid runtime
+	  warnings and segfaults and use the new pixel size stuff
+
+1999-10-05  Jacob Berkman  <jberkman@andrew.cmu.edu>
+
+        (merge from 1-0)
+	
+        * docs/Makefile.am (dist-hook): depend on index.html
+        so the docs get included with the dist
+
+        * docs/Makefile.am (EXTRA_DIST): fix
+
+        * docs/*.(css|html): removed
+
+        * docs/*.sgml: moved from docs/sgml/ to here
+	        
+        * docs/Makefile.am: copied stuff from 
+	gnome-terminal/C/Makefile.am so we can not store 
+	generated files in CVS
+
+        fixes bug #2411
+
+1999-09-26  Oliver Maruhn  <oliver@maruhn.com>
+
+	* src/cmd_completion.c (cmdc): The path environment variable was
+ 	modified by this function.  This caused bugs in other functions.
+  	Now a local copy of the path environment variable is made first.
+
+1999-09-25  Oliver Maruhn  <oliver@maruhn.com>
+
+	* src/Makefile.am (mini_commander_applet_SOURCES): terminal.[ch] added
+
+	* src/terminal.h: added
+
+	* src/terminal.c: added
+
+1999-09-09  Oliver Maruhn  <oliver@maruhn.com>
+
+	* src/command_line.c (command_entry_update_size): size will be
+ 	recalculated automatically if panel size changes
+
+	* src/mini-commander_applet.c (applet_size_changed_cb): added
+
+	(redraw_applet): applet size/layout will be modified automatically
+ 	if panel size changes
+
+	(applet_size_changed_cb): applet size will be recalculated
+ 	automatically if panel size changes
+
+1999-09-08  Oliver Maruhn  <oliver@maruhn.com>
+
+	* src/preferences.c (propertiesBox_apply_signal): use
+ 	redraw_applet() for modifying properties of the applet's widgets
+
+	(propertiesBox): hint 'Sometimes the applet has to be moved on the
+ 	panel\nto make a change of the size visible.' is no longer needed
+
+	(propertiesBox): Changing appearance is no longer 'experimental'.
+  	Changes are applied without needing to restart the whole applet.
+
+	* src/mini-commander_applet.c (redraw_applet): moved coded from
+ 	main() to this function
+
+1999-09-07  Oliver Maruhn  <oliver@maruhn.com>
+
+	* src/cmd_completion.c (cmdc): Added this new command completion
+ 	routine by Travis Hume <travishume@acm.org>.  I guess it will be
+ 	faster than my old completion function which was based on a bash
+ 	skript
+
+	(cmdCompletion_old): backup copy of the fomer function
+ 	cmdCompletion
+
+	(cmdCompletion): modified to work with Travis' new cmdc function.
+
+1999-08-23  Oliver Maruhn  <oliver@maruhn.com>
+
+	* src/command_line.c (historyAutoComplete): applied Halfline's
+ 	<halfline@hawaii.rr.com> patch with minor changes to fix a bug
+ 	that the applet segfaults when the history is not filled
+ 	completely and autocomplete is on
+
+1999-08-22  Oliver Maruhn  <oliver@maruhn.com>
+
+	* src/preferences.c: added new option "enable history based autocomplete"
+
+	* src/preferences.h (struct structProperties): added
+ 	autoCompleteHistory
+
+	* src/command_line.c (historyAutoComplete): added [Thanks to
+ 	Halfline <halfline@hawaii.rr.com> for his idea and initial version
+ 	of historyAutoComplete]
+
+	(commandKey_event): added Halfline's initial additions for
+ 	historyAutoComplete
+
+1999-07-11  Jacob Berkman  <jberkman@andrew.cmu.edu>
+
+	* src/preferences.c (saveSession): use VERSION instead of
+	INTERNAL_VERSION
+
+	* src/about.c (aboutBox): use VERSION
+
+	* src/mini-commander_applet.h: remove 'INTERNAL_VERSION'
+
+1999-05-30  Oliver Maruhn  <oliver@maruhn.com>
+
+	* src/preferences.h (struct structProperties): int showFrame added
+
+	* src/command_line.c (command_entry_update_color): added
+	(command_entry_update_size): added
+
+1999-05-29  Oliver Maruhn  <oliver@maruhn.com>
+
+	* sed s/om@linuxhq.com/oliver@maruhn.com/g
+
+1999-05-21  Jacob Berkman  <jberk+@cmu.edu>
+
+	* src/mini-commander_applet.c (main): This looks much better when
+	there is no handlebox
+
+1999-05-17  Oliver Maruhn  <oliver@maruhn.com>
+
+	* src/preferences.c (loadSession): Included macro updates from
+ 	Chad Powell <pxpx@usa.net>.
+
+Fri Apr 30 12:46:35 1999  George Lebl  <jirka@5z.com>
+
+	* src/exec.c: based on a patch from "Brandon S. Allbery"
+	  <allbery@ece.cmu.edu>, I added a SA_NOMASK define if it's
+	  not defined (set it to SA_NODEFER in that case) and initialize
+	  the whole sigaction structure to 0 instead of setting the
+	  sa_restorer
+
+1999-04-21  Oliver Maruhn  <oliver@maruhn.com>
+
+	* src/preferences.c (propertiesBox): Added a patch from Nick Lamb
+ 	<njl98r@ecs.soton.ac.uk> which make the handle box optional.  When
+ 	I have more time I will make some modifications to these changes.
+
+1999-04-19  Oliver Maruhn  <oliver@maruhn.com>
+
+	* src/exec.c (sighandle_sigchld): Using waitpid() instead of
+ 	wait().
+
+1999-04-16  Oliver Maruhn  <oliver@maruhn.com>
+
+	* v1.0.0 released. This version has all basic features.
+	
+	* src/exec.c (initExecSignalHandler): Using sigaction() instead of
+ 	signal().  Now the signal handler has not to be reinstalled
+ 	everytime the signal is catched.  Hopefully this will fix the
+ 	"zombie" problem [reported by Charles Duffy <cduffy@bigfoot.com>
+ 	and Brian J. Murrell].
+
+	* src/preferences.c (loadSession): Two other macros from Chad
+ 	Powell <pxpx@usa.net> which allow searching yahoo and freshmeat
+ 	have been added as an new default macro.  The "altavista" macro
+ 	has been updated.
+
+1999-04-03  Oliver Maruhn  <oliver@maruhn.com>
+
+	* src/preferences.c (loadSession): A very useful macro from Chad
+ 	Powell <pxpx@usa.net> which allows searches on altavista has been
+ 	added as a new default macro.
+
+	* src/macro.c (prefixNumber): prefix matching improved
+
+	* src/mini-commander_applet.c (main): allow pasting into the input
+ 	box with the middle mouse button [idea taken from the applet
+	WebControl by Garrett Smith]
+
+1999-01-19  Oliver Maruhn  <oliver@maruhn.com>
+
+	* docs/Makefile.am (docdir): doc files will be installed in the
+ 	right place
+
+1999-01-18  Nat Friedman  <nat@nat.org>
+
+	* src/help.c (showHelp): Use gnome_app_id for the name of the root
+ 	help directory.
+
+	* src/preferences.c (propertiesBox): Likewise.
+
+1999-01-18  Nat Friedman  <nat@nat.org>
+
+	* src/preferences.c (propertiesBox): Connected the help signal of
+ 	the GnomePropertyBox to gnome_help_pbox_display.
+
+1999-01-18  Oliver Maruhn  <oliver@maruhn.com>
+
+	* src/preferences.c (propertiesBox_apply_signal): wrong "date on"
+ 	message fixed
+
+1999-01-17  Oliver Maruhn  <oliver@maruhn.com>
+
+	* v0.0.14 released
+
+	* src/preferences.c (resetTemporaryPrefs): added
+	(propertiesBox_apply_signal): cleanup [now using resetTemporaryPrefs()]
+
+	* src/preferences.h (MAX_PREFIXES): now up to 99 macros are supported
+
+	* src/preferences.c (propertiesBox): macros put into a scrolled
+ 	window
+
+	* src/command_line.c (showHistory_signal): only add scrollbars when needed
+
+1999-01-16  Oliver Maruhn  <oliver@maruhn.com>
+
+	* src/command_line.c (commandKey_event): more control keys
+ 	supported
+
+	* src/cmd_completion.c (cmdCompletion): now command completion
+ 	delivers the largest possible completion [even if the given
+ 	command is not unique]
+
+	* src/macro.c (prefixLength_IncludingWhithespaces): added
+
+	* src/cmd_completion.c (cmdCompletion): now command completion
+ 	even works if a prefix is used
+
+	* src/macro.c (expandCommand): added
+	(prefixLength): added
+	(getPrefix): added
+
+	* src/macro.[ch]: added
+
+	* src/mini-commander_applet.c (main): tooltips added for
+ 	history/browser buttons
+
+	* src/preferences.c (loadSession): load history on program start
+	(saveSession): store history permanently
+
+	* src/history.c (existsHistoryEntry): added
+	(getHistoryEntry): added
+	(setHistoryEntry): added
+	(appendHistoryEntry): added
+
+	* src/command_line.c (commandKey_event): history related functions
+ 	moved to history.c
+
+	* src/history.[ch]: added
+
+	* src/mini-commander_applet.c (main): show history list directly
+ 	after the mouse button has been pressed down
+	(appletOrientChanged_cb): added [currently without any meaning]
+
+	* src/command_line.c (showHistory_signal): history window
+ 	converted into a popup window
+	(showHistory_signal): style support added [currently inactive]
+	(commandKey_event): "end of history list" messages added
+	(showHistory_signal): "history list empty"message added
+	(commandKey_event):   "(gchar) -173" replaced by "GDK_Right"
+
+1999-01-14  Oliver Maruhn  <oliver@maruhn.com>
+
+	* src/mini-commander_applet.c (main): icons for
+ 	file-browser/history-list buttons added
+
+	* src/command_line.c (showHistory_signal): history window added;
+ 	there is still fine-tuning needed
+
+1999-01-08  Oliver Maruhn  <oliver@maruhn.com>
+
+	* src/preferences.c (propertiesBox): found and fixed
+ 	preferences-mess-up bug [finally!]
+
+1999-01-06  Oliver Maruhn  <oliver@maruhn.com>
+
+	* src/mini-commander_applet.c (main): file-browser/history-list
+ 	buttons added
+
+	* src/command_line.c (fileBrowser*): file/command browser added
+
+	* src/mini-commander_applet.c (main): handle box added [I liked
+ 	this idea when I saw M. Watson's icewm-pager]
+	(appletDetached_signal): resize applet when it is
+ 	detached/attached
+
+1999-01-05  Oliver Maruhn  <oliver@maruhn.com>
+
+	* src/preferences.c (saveSession): save INTERNAL_VERSION instead
+ 	of VERSION of gnome-core
+
+	* src/command_line.c (commandKey_event): dupes are no longer
+ 	stored in command history
+
+	* src/exec.c (execCommand): better handling when /bin/sh can not
+ 	be started
+
+	* TODO (TODO): updated
+
+	* docs/sgml/mini-commander.sgml (Section History): synchronized
+ 	with NEWS
+
+	* NEWS: file added
+
+1998-12-30  Oliver Maruhn  <oliver@maruhn.com>
+
+	* docs/Makefile.am (%.html): .html files moved to docs/html/
+	(%.html): .html files moved back to docs/; .sgml files moved to
+ 	sgml/; now .html files are build automatically
+
+1998-12-29  Oliver Maruhn  <oliver@maruhn.com>
+
+	* mini-commander_applet.c (main): removed wrong menu stock icon
+
+	* help.c (showHelp): added missing parameters
+
+	* about.c: help text deleted because it is now part of the
+ 	SGML/LinuxDoc documentation
+	(INTERNAL_VERSION): set to 0.0.13
+
+	* mini-commander_applet.c (main): "Help" menu item added
+
+	* docs/mini-commander.sgml: help file created
+
+	* Makefile.am (mini_commander_applet_SOURCES): help.c, help.h entries added
+
+	* help.h (showHelp_action): file created
+
+	* help.c (showHelp_action): file created
+
+	* Makefile.am (SUBDIRS): subdir docs/ added
+
+1998-12-27  Oliver Maruhn  <oliver@maruhn.com>
+
+	* mini-commander_applet.c (main): layout fix: show command line at
+ 	the top
+
+1998-12-19  Oliver Maruhn  <oliver@maruhn.com>
+
+	* message.c (hideMessage): fixed bug that the layout was wrong
+ 	when no status message was shown layout
+ 
+1998-12-15  Federico Mena Quintero  <federico@nuclecu.unam.mx>
+
+	* Makefile.am (mini_commander_applet_SOURCES): Added a billion
+	missing header files, sigh...
+
+1998-12-14  Oliver Maruhn  <oliver@maruhn.com>
+
+	* command_line.c (commandKey_event): using key names from
+ 	gdk/gdkkeysyms.h instead of using hardcoded values
+	
+1998-12-13  Oliver Maruhn  <oliver@maruhn.com>
+
+	* src/mini-commander_applet.desktop (Exec): added needed argument
+
+	(Type): changed from "Applet" to "Application"
+
+	* src/mini-commander_applet.gnorba: file created
+
+	* src/mini-commander_applet.c (main): fixed deprecated arguments
+ 	for applet_widget_init_defaults and applet_widget_new; now the
+ 	source is compileable again
+
+1998-10-21  Oliver Maruhn  <oliver@maruhn.com>
+
+	* src/cmd_completion.c (cmdCompletion): first implemention of
+ 	command completion code
+
+1998-10-20  Oliver Maruhn  <oliver@maruhn.com>
+
+	* src/cmd_completion.c (cmdCompletion): new file for command
+ 	completion code
+
+	* src/command_line.c: new file
+
+	* src/message.c: new file
+
+	* src/mini-commander_applet.c (showMessage): redrawing of frame
+ 	each time a message is displayed is no longe needed; this fixes
+ 	flickering of the applet
+
+1998-10-19  Oliver Maruhn  <oliver@maruhn.com>
+
+	* mini-commander_applet.c splitted into mini-commander_applet.c,
+ 	preferences.c, about.c and exec.c
+
+	* src/mini-commander_applet.c (loadSession):
+ 	default-prefixes/commands routine rewritten and some defaults
+ 	changed [Kevin M Fox <kmfox@mail.bhi-erc.com> suggested to use
+ 	gnome-terminal instead of nxterm as default]
+
+1998-10-17  Oliver Maruhn  <oliver@maruhn.com>
+
+	* src/mini-commander_applet.c (propertiesBox_apply_signal): colors
+ 	of command line now configurable
+
+	(saveSession): preferences-save-bug fixed
+
+1998-10-16  Oliver Maruhn  <oliver@maruhn.com>
+
+	* src/mini-commander_applet.c (commandKey_event): bug in new
+ 	history feature fixed
+
+	(saveSession_signal): now using global properties instead of local
+
+	(propertiesBox): check if prefix and command strings don't point
+ 	to NULL before calling gtk_entry_set_text
+ 
+1998-10-14  Oliver Maruhn  <oliver@maruhn.com>
+
+	* src/mini-commander_applet.c (propertiesBox_apply_signal): option
+ 	enable/disable date added
+
+	(commandKey_event): remember current command [even when you press
+ 	KeyUp, KeyDown] [suggested by "Itamar S.-T." <itamars@ibm.net>]
+
+	(execCommand): prefix support completely rewritten
+
+	prefixes are now configurable
+
+1998-10-13  Oliver Maruhn  <oliver@maruhn.com>
+
+	* INSTALL: some more hints added
+
+	* po/de.po: german translation added
+
+	* po/*: support for internationalization [i18n] added
+
+	* acconfig.h: some lines added
+
+	* macros/*: all files updated [gnome-orbit-check added]
+
+	* support/*: all files updated
+
+1998-10-08  Oliver Maruhn  <oliver@maruhn.com>
+
+	* src/mini-commander_applet.c (propertiesBox): properties dialog
+ 	box added (currently you can only enable/disable the clock)
+
+	(propertiesBox): prefix/command fields added
+
+	(saveSession_signal): session management added
+
+	* src/Makefile.am (mini_commander_applet_LDADD): fixed wrong name
+ 	of binary
+
+1998-10-06  Oliver Maruhn  <oliver@maruhn.com>
+
+	* configure.in: now autoconf/automake is used for building (thanks
+ 	to Raja R Harinath <harinath@cs.umn.edu> for his gnome-standalone
+ 	example)
+
+	subdirectory support added
+
+1998-09-08  Oliver Maruhn  <oliver@maruhn.com>
+
+	* mini-commander_applet.c (execCommand): don't start netscape
+ 	again if it is still running; use "-remote openURL(...)" instead
+
+1998-09-06  Oliver Maruhn  <oliver@maruhn.com>
+
+	* mini-commander_applet.c: included patch from Jacob C. Berkman
+ 	<jberk+@cmu.edu> which adds a signal handler (no more zombies ;-))
+
+1998-09-05  Oliver Maruhn  <oliver@maruhn.com>
+
+	* mini-commander_applet.c: new outfit
+	(execCommand): fixed bug with storing wrong URL in history
+
+1998-09-03  Oliver Maruhn  <oliver@maruhn.com>
+
+	* mini-commander_applet.c: applet renamed to Mini Commander
+
+	* mini-commander_applet.c: support of URL's (suggested by Kevin M
+ 	Fox <kmfox@mail.bhi-erc.com>)
+
+	* mini-commander_applet.c: support of non-X programs
+
+	* mini-commander_applet.c: added clock
+
+	* mini-commander_applet.c (showMessage): added refresh of frame
+ 	when labelMessage changes
+
+1998-09-01  Oliver Maruhn  <oliver@maruhn.com>
+
+	* history added
+
+	* frame added
+
+	* status line added
+
+	* about box added
+	
+
+1998-08-31  Oliver Maruhn  <oliver@maruhn.com>
+
+	* very first version of Mini Command-line
+
