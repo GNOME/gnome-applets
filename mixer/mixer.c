@@ -610,7 +610,7 @@ mixer_value_changed_cb (GtkAdjustment *adj, MixerData *data)
 {
 	gint vol;
 
-	vol = -adj->value;
+	vol = adj->value;
 	
 	data->vol = vol;
 
@@ -751,8 +751,6 @@ mixer_update_slider (MixerData *data)
 {
 	gint vol = data->vol;
 
-	vol = -vol;
-	
 	gtk_adjustment_set_value (data->adj, vol);
 }
 
@@ -1034,12 +1032,12 @@ mixer_popup_show (MixerData *data)
 	if (IS_PANEL_HORIZONTAL (data->orientation)) {
 		box = gtk_vbox_new (FALSE, 0);
 		data->scale = gtk_vscale_new (data->adj);
-		gtk_widget_set_size_request (data->scale, -1, 100);			
+		gtk_widget_set_size_request (data->scale, -1, 100);
+		gtk_range_set_inverted (GTK_RANGE (data->scale), TRUE);
 	} else {
 		box = gtk_hbox_new (FALSE, 0);
 		data->scale = gtk_hscale_new (data->adj);
 		gtk_widget_set_size_request (data->scale, 100, -1);
-		gtk_range_set_inverted (GTK_RANGE (data->scale), TRUE);
 	}
 	
 	if (gail_loaded) {
@@ -1892,9 +1890,9 @@ mixer_applet_create (PanelApplet *applet)
 			  data);
 	
 	data->adj = GTK_ADJUSTMENT (
-		gtk_adjustment_new (-50,
-				    -VOLUME_MAX,
-				    0.0, 
+		gtk_adjustment_new (50,
+				    0.0,
+				    VOLUME_MAX, 
 				    VOLUME_MAX/20,
 				    VOLUME_MAX/10,
 				    0.0));

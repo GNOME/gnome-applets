@@ -1,3 +1,15 @@
+2004-06-10  Dennis Smit  <ds@nerds-incorporated.org>
+
+	* mixer.c (mixer_applet_create): Set the correct range value
+	for gtk_adjustment_new.
+	(mixer_value_changed_cb): Changed -adj->value to adj->value.
+	(mixer_update_slider): Removed vol = -vol (there is no need).
+	(mixer_popup_show): Set vscale to inverted.
+	
+	Patch by:  Vijaykumar Patwari <vijaykumar.patwari@wipro.com>
+
+	bug #125393.
+
 2004-06-07  Jorn Baayen  <jbaayen@gnome.org>
 
 	* mixer.c: (get_channel):
