@@ -220,6 +220,16 @@ void gweather_applet_create (int argc, char *argv[])
 
     gtk_tooltips_set_tip(tooltips, gweather_applet, "GNOME Weather", NULL);
 
+#ifdef HAVE_PANEL_PIXEL_SIZE
+    gweather_size = applet_widget_get_panel_pixel_size (APPLET_WIDGET (gweather_applet));
+#else /* HAVE_PANEL_PIXEL_SIZE */
+    gweather_size = 48;
+#endif /* HAVE_PANEL_PIXEL_SIZE */
+
+    gweather_orient = applet_widget_get_panel_orient (APPLET_WIDGET (gweather_applet));
+
+    place_widgets();
+    
     gtk_widget_show(gweather_applet);
 }
 
