@@ -34,17 +34,14 @@ icondir = $(datadir)/pixmaps/stickynotes
 gladedir = $(datadir)/stickynotes
 glade_DATA = stickynotes.glade
 
+uidir = $(datadir)/gnome-2.0/ui
+ui_DATA = GNOME_StickyNotesApplet.xml
+
 schemasdir = @GCONF_SCHEMA_FILE_DIR@
 schemas_in_files = stickynotes.schemas.in
 schemas_DATA = $(schemas_in_files:.schemas.in=.schemas)
 
 @INTLTOOL_SCHEMAS_RULE@
-
-xmldir = $(datadir)/gnome-2.0/ui
-xml_in_files = GNOME_StickyNotesApplet.xml.in
-xml_DATA = $(xml_in_files:.xml.in=.xml)
-
-@INTLTOOL_XML_RULE@
 
 serverdir       = $(libdir)/bonobo/servers
 server_in_files = GNOME_StickyNotesApplet.server.in
@@ -57,8 +54,8 @@ $(server_in_files): $(server_in_files:.server.in=.server.in.in)
 
 EXTRA_DIST = \
 	     $(glade_DATA) \
+	     $(ui_DATA) \
 	     $(schemas_in_files) \
-	     $(xml_in_files) \
 	     GNOME_StickyNotesApplet.server.in.in
 
 install-data-local:

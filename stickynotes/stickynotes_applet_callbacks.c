@@ -318,8 +318,9 @@ void preferences_color_cb(GnomeColorPicker *cp, guint r, guint g, guint b, guint
 /* Preferences Callback : Response. */
 void preferences_response_cb(GtkDialog *dialog, gint response, GladeXML *glade)
 {
-	if (response == GTK_RESPONSE_HELP)
+	if (response == GTK_RESPONSE_HELP) {
 		gnome_help_display("stickynotes_applet", "stickynotes-introduction", NULL);
+	}
 	
 	else /* if (response == GTK_RESPONSE_CLOSE || response == GTK_RESPONSE_NONE) */ {
 		gtk_widget_destroy(GTK_WIDGET(dialog));
