@@ -24,11 +24,9 @@ diskusage_applet_SOURCES = \
 	properties.c		\
 	properties.h
 
-MICO_VERS = 2.0.5
-MICO_LIBS = -lmicocoss$(MICO_VERS) -lmicoaux$(MICO_VERS) -lmico$(MICO_VERS)
 
 diskusage_applet_LDADD = ../../panel/libpanel_applet.la \
-		     $(GNOME_LIBDIR) $(MICO_LIBS) -lXt \
+		     $(GNOME_LIBDIR) $(MICO_LIBS)      \
 		     $(GNOMEUI_LIBS) $(INTLLIBS)
 
 diskusage_applet_LINK = $(CXXLINK)

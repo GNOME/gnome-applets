@@ -17,11 +17,8 @@ bin_PROGRAMS = batmon_applet
 
 batmon_applet_SOURCES = batmon.c
 
-MICO_VERS = 2.0.5
-MICO_LIBS = -lmicocoss$(MICO_VERS) -lmicoaux$(MICO_VERS) -lmico$(MICO_VERS)
-
 batmon_applet_LDADD = ../../panel/libpanel_applet.la \
-		     $(GNOME_LIBDIR) $(MICO_LIBS) -lXt \
+		     $(GNOME_LIBDIR) $(MICO_LIBS)      \
 		     $(GNOMEUI_LIBS) $(INTLLIBS)
 
 # some of the sources/libs use C++

@@ -17,11 +17,9 @@ wmpager_applet_SOURCES = \
 	wmpager_applet.c	\
 	WinMgr.h
 
-MICO_VERS = 2.0.5
-MICO_LIBS = -lmicocoss$(MICO_VERS) -lmicoaux$(MICO_VERS) -lmico$(MICO_VERS)
 
 wmpager_applet_LDADD = ../../panel/libpanel_applet.la \
-		     $(GNOME_LIBDIR) $(MICO_LIBS) -lXt \
+		     $(GNOME_LIBDIR) $(MICO_LIBS)      \
 		     $(GNOMEUI_LIBS) $(INTLLIBS) 
 
 wmpager_applet_LINK = $(CXXLINK)

@@ -17,11 +17,9 @@ bin_PROGRAMS = netwatch_applet
 
 netwatch_applet_SOURCES = netwatch.c
 
-MICO_VERS = 2.0.5
-MICO_LIBS = -lmicocoss$(MICO_VERS) -lmicoaux$(MICO_VERS) -lmico$(MICO_VERS)
 
 netwatch_applet_LDADD = ../../panel/libpanel_applet.la \
-                     $(GNOME_LIBDIR) $(MICO_LIBS) -lXt \
+                     $(GNOME_LIBDIR) $(MICO_LIBS)      \
                      $(GNOMEUI_LIBS) $(INTLLIBS)
 
 netwatch_applet_LINK = $(CXXLINK)
