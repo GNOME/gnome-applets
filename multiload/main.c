@@ -44,16 +44,18 @@ about_cb (BonoboUIComponent *uic,
     gchar            *file;
    
     static const gchar *authors[] =
-	{
+    {
 		"Martin Baulig <martin@home-of-linux.org>",
 		"Todd Kulesza <fflewddur@dropline.net>\n",
 		NULL
-	};
+    };
 
     const gchar *documenters[] =
-	{
+    {
+		"Chee Bin HOH <cbhoh@gnome.org>",
+		"Sun GNOME Documentation Team <gdocteam@sun.com>",
 		NULL
-	};
+    };
 
     const gchar *translator_credits = _("translator_credits");
 
