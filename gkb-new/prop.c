@@ -410,7 +410,7 @@ prophelp_cb (AppletWidget * applet, gpointer data)
 
 
 static GtkWidget *
-gkb_prop_create_property_box ()
+gkb_prop_create_property_box (GkbPropertyBoxInfo *pbi)
 {
   GtkWidget *propbox;
   GtkWidget *propnotebook;
@@ -460,7 +460,7 @@ gkb_prop_create_property_box ()
 
   /* Page 2 Frame */
   scrolled_window = gkb_prop_create_scrolled_window ();
-  buttons_vbox    = gkb_prop_create_buttons_vbox ();
+  buttons_vbox    = gkb_prop_create_buttons_vbox (pbi);
   gtk_box_pack_start (GTK_BOX (page_2_hbox), scrolled_window, TRUE, TRUE, 0);
   gtk_box_pack_start (GTK_BOX (page_2_hbox), buttons_vbox, FALSE, TRUE, 0);
 
@@ -476,34 +476,27 @@ gkb_prop_create_property_box ()
 void
 properties_dialog (AppletWidget * applet)
 {
-  GList * list;
-
+  GkbPropertyBoxInfo *pbi;
+  
   if (gkb->propbox)
     {
 	gtk_widget_destroy (gkb->propbox);
 	gkb->propbox= NULL;
     }
 
-  for (list = gkb->tempmaps; list != NULL; list = list->next)
-    {
-      GkbKeymapWg *actdata = list->data;
-      if (actdata)
-	{
-	  g_free (actdata->name);
-	  g_free (actdata->flag);
-	  g_free (actdata->command);
-	  g_free (actdata);
-	}
-    }
-  g_list_free (gkb->tempmaps);
-  gkb->tempmaps = NULL;
+  gkb_prop_list_free_tempmaps (gkb);
 
+  pbi = g_new0 (GkbPropertyBoxInfo, 1);
+  gkb->property_box = pbi;
+  
   gkb->tn = gkb->n;
+  gkb->propbox = gkb_prop_create_property_box (pbi);
 
-  gkb->propbox = gkb_prop_create_property_box ();
-
-  gtk_widget_show_all (gkb->propbox);
-  gdk_window_raise (gkb->propbox->window);
+  pbi->window = gkb->propbox->window;
+  pbi->box    = gkb->propbox;
+  
+  gtk_widget_show_all (pbi->box);
+  gdk_window_raise    (pbi->window);
 
   return;
 }

@@ -1022,7 +1022,7 @@ del_select_cb (GtkWidget * button)
 }
 
 static void
-move_select_cb (GtkWidget * button)
+move_select_cb (GtkWidget * button, gboolean up)
 {
  GtkWidget * upbutton;
  GtkWidget * downbutton;
@@ -1108,85 +1108,85 @@ move_select_cb (GtkWidget * button)
  return;
 }
 
+static void
+gkb_prop_list_button_clicked_cb (GtkWidget *button, GkbPropertyBoxInfo *pbi)
+{
+  if (button == pbi->add_button)
+    addwindow_cb (button);
+  else if (button == pbi->edit_button)
+    mapedit_cb ();
+  else if (button == pbi->delete_button)
+    del_select_cb (button);
+  else if (button == pbi->up_button)
+    move_select_cb (button, TRUE);
+  else if (button == pbi->down_button)
+    move_select_cb (button, FALSE);
 
+  g_print ("Click !\n");
+}
+
+/**
+ * gkb_prop_list_create_button:
+ * @name: 
+ * @pbi: 
+ * 
+ * Function to create a button for the keymaps list
+ * 
+ * Return Value: 
+ **/
+static GtkWidget *
+gkb_prop_list_create_button (const gchar *name, GkbPropertyBoxInfo *pbi)
+{
+  GtkWidget *button;
+  
+  button = gtk_button_new_with_label (name);
+  gtk_signal_connect (GTK_OBJECT (button), "clicked", 
+                      GTK_SIGNAL_FUNC (gkb_prop_list_button_clicked_cb),
+                      pbi);
+  gtk_container_add (GTK_CONTAINER (pbi->buttons_vbox), button);
+  GTK_WIDGET_SET_FLAGS (button, GTK_CAN_DEFAULT);
+
+  return button;
+}
+
+/**
+ * gkb_prop_create_buttons_vbox:
+ * @pbi: 
+ * 
+ * Creates the buttons vbox for the list of keymaps installed
+ * 
+ * Return Value: 
+ **/
 GtkWidget *
-gkb_prop_create_buttons_vbox (void)
+gkb_prop_create_buttons_vbox (GkbPropertyBoxInfo *pbi)
 {
   GtkWidget *vbox;
 
-  GtkWidget *button1, *button2, *button3, *button11;
-  GtkWidget *button4, *button5;
-  
   vbox = gtk_vbutton_box_new ();
   gtk_button_box_set_spacing (GTK_BUTTON_BOX (vbox), 0);
   gtk_button_box_set_child_size (GTK_BUTTON_BOX (vbox), 75, 25);
   gtk_button_box_set_child_ipadding (GTK_BUTTON_BOX (vbox), 2, 0);
 
-  button1 = gtk_button_new_with_label (_("Add"));
-  gtk_signal_connect (GTK_OBJECT(button1), "clicked", 
-                      GTK_SIGNAL_FUNC (addwindow_cb),
-                      NULL);
-
-  gtk_container_add (GTK_CONTAINER (vbox), button1);
-  GTK_WIDGET_SET_FLAGS (button1, GTK_CAN_DEFAULT);
-
-  button11 = gtk_button_new_with_label (_("New"));
-
-  gtk_object_set_data (GTK_OBJECT (button11),"wlabel","New");
-
-  gtk_signal_connect (GTK_OBJECT(button11), "clicked", 
-                      GTK_SIGNAL_FUNC (mapedit_cb),
-                      NULL);
-
-  gtk_container_add (GTK_CONTAINER (vbox), button11);
-  GTK_WIDGET_SET_FLAGS (button11, GTK_CAN_DEFAULT);
-
-  button2 = gtk_button_new_with_label (_("Edit"));
-  gtk_widget_set_sensitive (button2, FALSE);
-
-  gtk_object_set_data (GTK_OBJECT (button2),"wlabel","Edit");
-
-  gtk_signal_connect (GTK_OBJECT(button2), "clicked", 
-                      GTK_SIGNAL_FUNC (mapedit_cb),
-                      NULL);
-
-  gtk_container_add (GTK_CONTAINER (vbox), button2);
-  GTK_WIDGET_SET_FLAGS (button2, GTK_CAN_DEFAULT);
-
-  button3 = gtk_button_new_with_label (_("Up"));
-  gtk_widget_set_sensitive (button3, FALSE);
-
-  gtk_signal_connect (GTK_OBJECT(button3), "clicked", 
-                      GTK_SIGNAL_FUNC (move_select_cb),
-                      NULL);
-
-  gtk_container_add (GTK_CONTAINER (vbox), button3);
-  GTK_WIDGET_SET_FLAGS (button3, GTK_CAN_DEFAULT);
-
-  button4 = gtk_button_new_with_label (_("Down"));
-  gtk_widget_set_sensitive (button4, FALSE);
-
-  gtk_signal_connect (GTK_OBJECT(button4), "clicked", 
-                      GTK_SIGNAL_FUNC (move_select_cb),
-                      NULL);
-
-  gtk_container_add (GTK_CONTAINER (vbox), button4);
-  GTK_WIDGET_SET_FLAGS (button4, GTK_CAN_DEFAULT);
-
-  button5 = gtk_button_new_with_label (_("Delete"));
-  gtk_widget_set_sensitive (button5, FALSE);
-
-  gtk_signal_connect (GTK_OBJECT(button5), "clicked", 
-                      GTK_SIGNAL_FUNC (del_select_cb),
-                      NULL);
-
-  gtk_container_add (GTK_CONTAINER (vbox), button5);
-  GTK_WIDGET_SET_FLAGS (button5, GTK_CAN_DEFAULT);
+  pbi->buttons_vbox  = vbox;
+  pbi->add_button    = gkb_prop_list_create_button (_("Add"),    pbi);
+  pbi->edit_button   = gkb_prop_list_create_button (_("Edit"),   pbi);
+  pbi->up_button     = gkb_prop_list_create_button (_("Up"),     pbi);
+  pbi->down_button   = gkb_prop_list_create_button (_("Down"),   pbi);
+  pbi->delete_button = gkb_prop_list_create_button (_("Delete"), pbi);
 
   return vbox;
 }
 
 
+/**
+ * gkb_prop_create_scrolled_window:
+ * @void: 
+ * 
+ * Creates the scrolled window where the currently installed keymaps
+ * live
+ * 
+ * Return Value: 
+ **/
 GtkWidget *
 gkb_prop_create_scrolled_window (void)
 {
@@ -1197,14 +1197,40 @@ gkb_prop_create_scrolled_window (void)
 				  GTK_POLICY_AUTOMATIC,
 	                	  GTK_POLICY_AUTOMATIC);
   gkb->list1 = gtk_list_new();
-  gtk_scrolled_window_add_with_viewport (GTK_SCROLLED_WINDOW(scrolled_window),
+  gtk_scrolled_window_add_with_viewport (GTK_SCROLLED_WINDOW (scrolled_window),
 					 gkb->list1);
-  gkb_prop_list_init();
+  gkb_prop_list_init ();
 
-  gtk_signal_connect(GTK_OBJECT(gkb->list1),
-                       "selection_changed",
-                       GTK_SIGNAL_FUNC(list_select_cb),
-                       NULL);
+  gtk_signal_connect (GTK_OBJECT(gkb->list1),
+		      "selection_changed",
+		      GTK_SIGNAL_FUNC (list_select_cb),
+		      NULL);
 
   return scrolled_window;
+}
+
+/**
+ * gkb_prop_list_free_tempmaps:
+ * @gkb: 
+ * 
+ * Take care of freeing the gkb->tempas list (including contents)
+ **/
+void
+gkb_prop_list_free_tempmaps (GKB *gkb)
+{
+  GList *list;
+    
+  for (list = gkb->tempmaps; list != NULL; list = list->next)
+    {
+      GkbKeymapWg *actdata = list->data;
+      if (actdata)
+	{
+	  g_free (actdata->name);
+	  g_free (actdata->flag);
+	  g_free (actdata->command);
+	  g_free (actdata);
+	}
+    }
+  g_list_free (gkb->tempmaps);
+  gkb->tempmaps = NULL;
 }

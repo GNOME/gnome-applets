@@ -1,3 +1,4 @@
+/* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 2 -*- */
 /* File: gkb.h
  * Purpose: GNOME Keyboard switcher header file
  *
@@ -42,11 +43,27 @@
 
 #define debug(section,str) /*if (debug_turned_on) */ g_print ("%s:%d (%s) %s\n", __FILE__, __LINE__, __FUNCTION__, str); 
 
-typedef struct _GkbKeymap GkbKeymap;
-typedef struct _GkbKeymapWg GkbKeymapWg;
 typedef struct _GKB GKB;
+typedef struct _GkbKeymap          GkbKeymap;
+typedef struct _GkbKeymapWg        GkbKeymapWg;
+typedef struct _GkbPropertyBoxInfo GkbPropertyBoxInfo;
 
 GKB * gkb;
+
+struct _GkbPropertyBoxInfo
+{
+  GdkWindow *window;
+
+  GtkWidget *box;
+
+  /* Buttons */
+  GtkWidget *buttons_vbox;
+  GtkWidget *add_button;
+  GtkWidget *edit_button;
+  GtkWidget *up_button;
+  GtkWidget *down_button;
+  GtkWidget *delete_button;
+};
 
 struct _GkbKeymap
 {
@@ -62,7 +79,6 @@ struct _GkbKeymap
   gchar *codepage;
   gchar *arch;
   gchar *type;
-
 };
 
 struct _GKB
@@ -70,31 +86,30 @@ struct _GKB
   GtkWidget *applet;
   GtkWidget *frame;
   GtkWidget *darea;
-  GtkWidget *propbox;
   GtkWidget *mapedit;
   GtkWidget *addwindow;
   GtkWidget *list1;
+  GtkWidget *propbox;
 
   gint n;
-	gint tn;
-	gint cur;
-	gint size;
-	gint tempsize;
-	gint w;
-	gint h;
-
+  gint tn;
+  gint cur;
+  gint size;
+  gint tempsize;
+  gint w;
+  gint h;
   gint small, tempsmall;
-
   gint mode;
 
   gchar *key;
   guint keysym, state;
 
+  GkbPropertyBoxInfo *property_box;
+  
   GList *maps;
   GList *tempmaps;
   GkbKeymap *dact;
   PanelOrientType orient;
-
 };
 
 struct _GkbKeymapWg
@@ -136,9 +151,13 @@ char * convert_keysym_state_to_string(guint keysym,
 GList * find_presets ();
 GList * gkb_preset_load (GList * list);
 
+/* presets.c */
+GList *     find_presets (void);
+
 /* prop-list.c */
 void        gkb_prop_list_init (void);
-GtkWidget * gkb_prop_create_buttons_vbox (void);
+GtkWidget * gkb_prop_create_buttons_vbox (GkbPropertyBoxInfo *pbi);
 GtkWidget * gkb_prop_create_scrolled_window (void);
+void        gkb_prop_list_free_tempmaps (GKB *gkb);
 
 gchar * prefixdir;

@@ -725,6 +725,7 @@ gkb_activator (CORBA_Object poa_in,
   gkb = g_new0 (GKB, 1);
 
   gkb->applet = applet_widget_new (goad_id);
+  gkb->property_box = NULL;
 
   create_gkb_widget ();
 
