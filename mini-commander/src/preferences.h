@@ -45,5 +45,5 @@ void save_session(void);
 
 gint save_session_signal(GtkWidget *widget, const char *privcfgpath, const char *globcfgpath);
 
-void properties_box(BonoboUIComponent *uic, gpointer *data, const gchar *verbname);
+void properties_box(BonoboUIComponent *uic, gpointer data, const gchar *verbname);
 

@@ -26,7 +26,7 @@
 
 /* void about_box(AppletWidget *applet, gpointer data) */
 
-void about_box(BonoboUIComponent *uic, gpointer *data, const gchar *verbname){
+void about_box(BonoboUIComponent *uic, gpointer data, const gchar *verbname){
         static GtkWidget *about_box = NULL;
 	const gchar *authors[] = {(gchar *) "Oliver Maruhn <oliver@maruhn.com>", (gchar *) NULL};
 

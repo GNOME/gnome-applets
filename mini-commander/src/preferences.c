@@ -483,7 +483,7 @@ phelp_cb (GtkWidget *w, gint tab, gpointer data)
 
 
 void
-properties_box(BonoboUIComponent *uic, gpointer *data, const gchar *verbname)
+properties_box(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 {
    #if 0 /* FIXME */
     static GnomeHelpMenuEntry help_entry = { NULL,  "properties" };

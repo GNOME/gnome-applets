@@ -1,3 +1,13 @@
+2002-01-13  Kevin Vandersloot <kfv101@psu.edu>
+
+	* src/*.xpm: make xpms const char to kill compiler warning
+
+	* src/mini-commander_applet.c: connect to the proper "change_size"
+	signal
+
+	* src/about.c, help.c, preferences.c: kill another warning - should
+	be gpointer data
+
 2002-01-09  Kevin Vandersloot <kfv101@psu.edu>
 
 	* src/Makefile.am: INTLTOOL_SERVER_RULE is needed so the .server.in file

@@ -390,7 +390,7 @@ mini_commander_applet_fill(PanelApplet *applet_)
       since we need to get an initial change_pixel_size signal to set our
       initial size, and we get that during the _add call*/
     g_signal_connect(G_OBJECT(applet),
-		     "change_pixel_size",
+		     "change_size",
 		     G_CALLBACK(applet_pixel_size_changed_cb),
 		     NULL);
     

@@ -23,7 +23,7 @@
 #include "help.h"
 
 void 
-show_help(BonoboUIComponent *uic, gpointer *data, const gchar *verbname)
+show_help(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 {
     #if 0 /* FIXME */
     static GnomeHelpMenuEntry help_entry = { NULL, "index.html"};
