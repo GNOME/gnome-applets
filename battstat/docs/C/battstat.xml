@@ -2,8 +2,8 @@
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "2.7.3">
-  <!ENTITY manrevision "2.8">
+  <!ENTITY appletversion "2.9.7">
+  <!ENTITY manrevision "2.10">
   <!ENTITY date "September 2004">
   <!ENTITY applet "Battery Charge Monitor">
 ]>
@@ -22,6 +22,10 @@
 <!-- appropriate code -->
   <articleinfo> 
     <title>&applet; Applet Manual</title> 
+    <copyright>
+      <year>2005</year>
+      <holder>Davyd Madeley</holder>
+    </copyright>
     <copyright>
       <year>2004</year>
       <holder>Angela Boyle</holder>
@@ -86,6 +90,13 @@
 	  <orgname>GNOME Documentation Project</orgname>
 	</affiliation>
       </author>
+      <author>
+        <firstname>Davyd</firstname>
+	<surname>Madeley</surname>
+	<affiliation>
+	  <orgname>GNOME Project</orgname>
+	</affiliation>
+      </author>
         <!-- This is appropriate place for other contributors: translators,
              maintainers,  etc. Commented out by default.
              <othercredit role="translator">
@@ -103,8 +114,15 @@
 
     <revhistory>
       <revision>
-	<revnumber> Version &manrevision;</revnumber>
-	<date>&date;</date>
+        <revnumber>Version 2.10</revnumber>
+	<date>March 2005</date>
+	<revdescription>
+	 <para role="author">Davyd Madeley</para>
+	</revdescription>
+      </revision>
+      <revision>
+	<revnumber>Version 2.8</revnumber>
+	<date>Unknown</date>
 	<revdescription>
 	  <para role="author">Angela Boyle</para>
 	  <para role="publisher">GNOME Documentation Project</para>
@@ -174,23 +192,26 @@
     </figure>
 
     <para>
-      The <application>&applet;</application> applet shows the status of the power subsystem in your laptop. You can configure the applet to show the following components in the panel:
+      The <application>&applet;</application> panel application shows the status of any batteries in your laptop computer. You can configure the applet to show any of the following pieces of information on your panel:
     </para>
     <itemizedlist>
       <listitem>
         <para>
-          Power connection status 
+          Power connection status (battery or mains power);
         </para>
       </listitem>
       <listitem>
         <para>
-          Battery status
+          A graphical representation of battery charge;
         </para>
       </listitem>
       <listitem>
         <para>
-          Battery charge percentage
+          The current battery charge as a percentage; or
         </para>
+      </listitem>
+      <listitem>
+       <para>Battery time remaining/time remaining for recharge</para>
       </listitem>
     </itemizedlist>
 
@@ -410,9 +431,6 @@
         </tgroup>
       </informaltable>
       <para>
-        For information about how to set the battery color levels, see <xref linkend="battstat-appearance"/>.
-      </para>
-      <para>
         For information about how to display the current battery charge as a percentage, see <xref linkend="battstat-appearance"/>.
       </para>
     </sect2>
@@ -420,35 +438,58 @@
 <!-- ================ Customizing the Appearance ================================ -->
 
   <sect1 id="battstat-appearance">
-    <title>Customizing the Appearance</title>
+    <title>Customizing the &applet;</title>
+          <para>Right-click on the applet, then choose
+	  <guimenuitem>Preferences</guimenuitem></para>
+    <figure id="battstat-applet-prefs"> 
+      <title>Preferences Dialog</title> 
+      <screenshot> 
+        <mediaobject> 
+          <imageobject><imagedata
+            fileref="figures/battstat-preferences.png" format="PNG"/> 
+          </imageobject>
+          <textobject> 
+            <phrase>Preferences Dialog</phrase>
+          </textobject> 
+        </mediaobject> 
+      </screenshot> 
+    </figure>
       <variablelist>
         <varlistentry>
-          <term><guilabel>Layout</guilabel></term>
-          <listitem><para>Right-click on the applet, then choose
-	  <guimenuitem>Preferences</guimenuitem> and then the
-	  <guilabel>Appearance</guilabel> tab.</para>
+          <term><guilabel>Appearance</guilabel></term>
+	  <listitem>
 	  <variablelist>
 	    <varlistentry>
 	      <term><guilabel>Show battery status</guilabel></term>
 	      <listitem><para>The battery status is a progress bar within
-	      a battery image.  Select this option to display the battery
-	      status.</para></listitem>
+	      a battery image.  Select this option to display a graphical
+	      representation of the the battery status.
+	      For more details on what this representation means, a table is
+	      available in <xref linkend="battstat-usage-progress" />.
+	      </para></listitem>
 	    </varlistentry>
 	    <varlistentry>
 	      <term><guilabel>Show power connection status</guilabel></term>
 	      <listitem><para>The power connection status shows the current
 	      status of the laptop power supply.  Select this option to display
-	      the power connection status.</para></listitem>
+	      an icon representing the power connection status.
+	      A table of icons is available in
+	      <xref linkend="battstat-usage-power" />.
+	      </para></listitem>
 	    </varlistentry>
 	    <varlistentry>
-	      <term><guilabel>Show battery charge percentages</guilabel></term>
-	      <listitem><para>Select this option to display how much charge the
-	      battery currently contains as a percentage.</para></listitem>
+	      <term><guilabel>Show time/percentage remaining</guilabel></term>
+	      <listitem><para>Selecting this option will display one of two
+	      pieces of information. <guilabel>Show time remaining</guilabel>
+	      will tell you how many hours and minutes until the battery is
+	      fully discharged or recharged. <guilabel>Show percentage
+	      remaining</guilabel> will tell you the percentage charge remaining
+	      in the battery.</para></listitem>
 	    </varlistentry>
 	  </variablelist>
 	  </listitem>
         </varlistentry>
-        <varlistentry>
+        <!-- varlistentry>
           <term><guilabel>Battery Color Levels (%)</guilabel></term>
           <listitem><para>Right-click on the applet, then choose <guimenuitem>Preferences</guimenuitem> and then the <guilabel>General</guilabel> tab. Use this spin box to set the battery-charge level at which the progress bar changes from one color to the next. The color sequence, from full to empty battery, is green, yellow, orange, red.</para> 
                 <para><guilabel>Preview</guilabel> shows you how the progress bar changes when the battery level changes by moving the slider left and right. The percentage is shown above the slider on the right.</para>
@@ -476,53 +517,51 @@
               </listitem>
             </itemizedlist>
           </listitem>
-        </varlistentry>
+        </varlistentry -->
+	<varlistentry>
+	 <term><guilabel>Warnings</guilabel></term>
+	  <listitem>
+	  <itemizedlist>
+	   <listitem><para><guilabel>Warn when battery charge is
+	   low</guilabel></para>
+	   <para>
+	    Selecting this displays a warning dialog whenever your laptop
+	    battery reaches the Red Zone, indicating a critically low remaining
+	    charge. This warning dialog can either be closed by you, or will
+	    vanish automatically when you plug your laptop into mains power.
+	   </para>
+	   </listitem>
+	   <listitem>
+	    <para><guilabel>Warn when battery is fully
+	    re-charged</guilabel></para>
+	    <para>
+	     Selecting this options displays a warning dialog whenever your
+	     laptop has fully recharged.
+	    </para>
+	   </listitem>
+	  </itemizedlist>
+	  </listitem>
+	</varlistentry>
+	<varlistentry>
+	 <term><guilabel>Suspend</guilabel></term>
+	  <listitem><para>
+	  This is the command that will be run when you right click on the
+	  &applet; and select <guilabel>Suspend Computer</guilabel>.
+	  </para></listitem>
+	</varlistentry>
       </variablelist>
+   </sect1>
 
-  </sect1>
+<!-- ==================== Suspending the Computer ======================== -->
 
-  <!-- ============= Setting Warnings and Actions ============================= -->
-
-  <sect1 id="battstatt-warningsand">
-    <title>Setting Warnings and Actions</title>
-        <sect2 id="battstat-warnings">
-          <title><guilabel>Warnings</guilabel></title>
-          <para>Selecting these check boxes enables the action.</para>
-            <itemizedlist>
-              <listitem>
-                <para>
-                  <guilabel>Warn when battery charge is low</guilabel>
-                </para>
-                <para>
-                  Displays an information alert when the battery-charge level falls below the value specified in the <guilabel>Red</guilabel> spin box.
-                </para>
-              </listitem>
-              <listitem>
-                <para>
-                  <guilabel>Warn when battery is fully re-charged</guilabel>
-                </para>
-                <para>
-                  Displays an information alert when the battery is fully recharged.
-                </para>
-              </listitem>
-              <listitem>
-                <para>
-                  <guilabel>Beep when displaying a warning</guilabel>
-                </para>
-                <para>
-                  Plays a beep sound when an information alert is displayed.
-                </para>
-              </listitem>
-            </itemizedlist>
-    </sect2>
-<sect2 id="battstat-usage-suspend">
+<sect1 id="battstat-usage-suspend">
       <title>Suspending the Computer</title>
       <para>
          To suspend the computer, right-click on the applet, then choose <guimenuitem>Suspend Computer</guimenuitem>. </para>
       <para>
-	To set the command that will run when you suspend your computer, right-click on the applet, then choose <guimenuitem>Preferences</guimenuitem> and then the <guilabel>General</guilabel> tab. Use the <guilabel>Suspend command</guilabel> text box to specify which command to run when you choose <guimenuitem>Suspend Computer</guimenuitem> from the applet right-click popup menu. 
+       To configure the command that is run when you suspend the computer see
+       <xref linkend="battstat-appearance" />.
       </para>
-    </sect2>
   </sect1>
 
 </article> 
