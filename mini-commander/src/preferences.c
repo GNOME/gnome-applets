@@ -262,11 +262,11 @@ loadSession(void)
 		    break;
 		case 5:
 		    strcpy(defaultPrefix, "lynx:");
-		    strcpy(defaultCommand, "gnome-terminal -e sh -c 'lynx $1'");
+		    strcpy(defaultCommand, "gnome-terminal -e \"sh -c 'lynx $1'\"");
 		    break;
 		case 6:
 		    strcpy(defaultPrefix, "term:");
-		    strcpy(defaultCommand, "gnome-terminal -e sh -c '$1'");
+		    strcpy(defaultCommand, "gnome-terminal -e \"sh -c '$1'\"");
 		    break;
 		case 7:
 		    strcpy(defaultPrefix, "xterm:");
