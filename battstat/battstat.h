@@ -141,13 +141,12 @@ enum statusimagename {BATTERY,AC,FLASH,WARNING};
 GdkPixmap *statusimage[4];
 GdkBitmap *statusmask[4];
 
-//guint pixmap_type;
+/*guint pixmap_type;*/
 
 extern char * battery_gray_xpm[];
 
 void prop_cb (PanelApplet *, gpointer);
 int prop_cancel (GtkWidget *, gpointer);
-void prop_apply (GtkWidget *, int, gpointer);
 
 void apm_readinfo(void);
 void adj_value_changed_cb(GtkAdjustment *, gpointer);
@@ -164,5 +163,4 @@ void destroy_about (GtkWidget *, gpointer);
 void about_cb (PanelApplet *, gpointer);
 void change_size(PanelApplet *, gint, gpointer);
 gint create_layout(ProgressData *battstat);
-void save_preferences (ProgressData *battstat);
 void load_preferences(ProgressData *battstat);

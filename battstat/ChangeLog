@@ -1,3 +1,15 @@
+2002-02-15  Kevin Vandersloot <kfv101@psu.edu>
+
+	* battstat_applet.c: queue the redraw on the battery pixmaps instead
+	of the status. Save the color values. Prefs are now fully
+	instant apply. Wow this applet works properly now!
+
+	* properties.c: set the color changed boolean when changing prefs
+	so the applet gets updated
+
+	* battstat_applet.glade: remove the dock thing since it's not
+	ported. 
+
 2002-02-15  Michael Meeks  <michael@ximian.com>
 
 	* battstat_applet.c (pixmap_timeout): kill

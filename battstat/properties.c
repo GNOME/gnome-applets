@@ -70,42 +70,6 @@ extern struct apm_power_info apminfo;
 extern struct apm_info apminfo;
 #endif
 
-void
-prop_apply (GtkWidget *w, int page, gpointer data)
-{
-  ProgressData *battstat = data;
-  const gchar *buffer;
-
-  if (DEBUG) g_print("prop_apply()\n");
-
-  //pixmap_type=-1;
-
-  battstat->yellow_val = GTK_ADJUSTMENT (battstat->eyellow_adj)->value;
-  battstat->orange_val = GTK_ADJUSTMENT (battstat->eorange_adj)->value;
-  battstat->red_val = GTK_ADJUSTMENT (battstat->ered_adj)->value;
-
-  battstat->colors_changed=TRUE;
-  pixmap_timeout(battstat);
-  battstat->colors_changed=FALSE;
-#if 0
-  battstat->usedock = (GTK_TOGGLE_BUTTON (battstat->dock_toggle))->active;
-
-  if(battstat->usedock) {
-    gtk_widget_show(battstat->eventdock);
-    gtk_widget_show(battstat->pixmapdockwid);
-  } else {
-    gtk_widget_hide(battstat->eventdock);    
-  }
-#endif  
-
-  change_orient ( NULL, battstat->orienttype, battstat );
-
-  save_preferences (battstat);
-
-  return;
-  w = NULL;
-  page = 0;
-}
 
 static void
 show_bat_toggled (GtkToggleButton *button, gpointer data)
@@ -255,9 +219,10 @@ progdir_toggled (GtkToggleButton *button, gpointer data)
   battstat->draintop = gtk_toggle_button_get_active (button); 
   panel_applet_gconf_set_bool (applet,"drain_from_top", 
   			       battstat->draintop, NULL); 
-  			       
+
+  battstat->colors_changed = TRUE;			       
   pixmap_timeout(battstat); 
-  change_orient ( NULL, battstat->orienttype, battstat );				 
+  battstat->colors_changed = FALSE;				 
 }
 
 static void
@@ -402,9 +367,9 @@ prop_cb (PanelApplet *applet, gpointer data)
   } else {
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), 1);
   }
- 
+#if 0 
   battstat->dock_toggle = glade_xml_get_widget (glade_xml, "dock_toggle");
-
+#endif
   layout_table = glade_xml_get_widget (glade_xml, "layout_table");
 	
   battstat->radio_lay_batt_on = glade_xml_get_widget (glade_xml, "show_batt_radio");
@@ -453,11 +418,11 @@ prop_cb (PanelApplet *applet, gpointer data)
   gtk_table_attach (GTK_TABLE (layout_table), statuspixwid, 0, 1, 2, 3,
                     (GtkAttachOptions) (GTK_EXPAND),
                     (GtkAttachOptions) (GTK_EXPAND), 0, 0);
-
+#if 0
   if(battstat->usedock) {
     gtk_toggle_button_set_state (GTK_TOGGLE_BUTTON (battstat->dock_toggle), TRUE);
   }
-#if 0
+
    gtk_signal_connect (GTK_OBJECT (battstat->dock_toggle), "toggled",
 		       GTK_SIGNAL_FUNC (toggle_value_changed_cb), battstat);
 #endif

@@ -590,6 +590,7 @@ pixmap_timeout( gpointer data )
 			    0,0,
 			    0,0,
 			    -1,-1);
+	    gtk_widget_queue_draw (GTK_WIDGET (battery->pixmapwid));
 	 }
 	 else {
 	    GdkPixmap *pixmap;
@@ -600,6 +601,7 @@ pixmap_timeout( gpointer data )
 			    0,0,
 			    0,0,
 			    -1,-1);
+	    gtk_widget_queue_draw (GTK_WIDGET (battery->pixmapwidy));
 	 }
       }
       
@@ -671,8 +673,7 @@ pixmap_timeout( gpointer data )
    last_acline_status = acline_status;
    last_pixmap_index = pixmap_index;
 
-   gtk_widget_queue_draw (GTK_WIDGET (battery->statuspixmapwid));
-
+   
    return TRUE;
 }
 
@@ -1105,16 +1106,25 @@ void
 adj_value_changed_cb (GtkAdjustment *ignored, gpointer data)
 {
    ProgressData *battstat = data;
+   PanelApplet *applet = PANEL_APPLET (battstat->applet);
    
    GTK_ADJUSTMENT (battstat->ered_adj)->upper=(int)GTK_ADJUSTMENT (battstat->eorange_adj)->value-1;
    GTK_ADJUSTMENT (battstat->eorange_adj)->lower=(int)GTK_ADJUSTMENT (battstat->ered_adj)->value+1;
    GTK_ADJUSTMENT (battstat->eorange_adj)->upper=(int)GTK_ADJUSTMENT (battstat->eyellow_adj)->value-1;
    GTK_ADJUSTMENT (battstat->eyellow_adj)->lower=(int)GTK_ADJUSTMENT (battstat->eorange_adj)->value+1;
    
-   gnome_property_box_changed (GNOME_PROPERTY_BOX (battstat->prop_win));
-   
+   battstat->yellow_val = GTK_ADJUSTMENT (battstat->eyellow_adj)->value;
+   battstat->orange_val = GTK_ADJUSTMENT (battstat->eorange_adj)->value;
+   battstat->red_val = GTK_ADJUSTMENT (battstat->ered_adj)->value;
+   panel_applet_gconf_set_int (applet, "red_value", 
+   			       battstat->red_val, NULL);
+   panel_applet_gconf_set_int (applet, "orange_value",
+   			       battstat->orange_val,  NULL);
+   panel_applet_gconf_set_int (applet, "yellow_value", 
+   			       battstat->yellow_val, NULL);
    battstat->colors_changed = TRUE;
    simul_cb(NULL, battstat);
+   pixmap_timeout (battstat);
    battstat->colors_changed = FALSE;
 }
 
@@ -1188,22 +1198,6 @@ load_preferences(ProgressData *battstat)
   battstat->suspend_cmd = panel_applet_gconf_get_string (applet, GCONF_PATH "suspend_command", NULL);
   battstat->usedock = panel_applet_gconf_get_bool (applet, GCONF_PATH "use_dock", NULL);
 
-}
-
-void
-save_preferences(ProgressData *battstat)
-{
-  PanelApplet *applet = PANEL_APPLET (battstat->applet);
-
-  panel_applet_gconf_set_int    (applet, GCONF_PATH "red_value", battstat->red_val, NULL);
-  panel_applet_gconf_set_int    (applet, GCONF_PATH "orange_value",battstat->orange_val,  NULL);
-  panel_applet_gconf_set_int    (applet, GCONF_PATH "yellow_value", battstat->yellow_val, NULL);
-  
-  
-  panel_applet_gconf_set_bool   (applet, GCONF_PATH "horizontal", battstat->horizont, NULL);
-
- 
-  panel_applet_gconf_set_bool   (applet, GCONF_PATH "use_dock", battstat->usedock, NULL);
 }
 
 gint
