@@ -548,15 +548,15 @@ about_cb (BonoboUIComponent *uic,
   GdkPixbuf *pixbuf;
 
   static const gchar *authors[] = {
-		"Chema Celorio <chema@celorio.com>",
 	        "Szabolcs Ban <shooby@gnome.hu>",
+		"Chema Celorio <chema@celorio.com>",
 		NULL
 	};
   static const gchar *docauthors[] = {
-	        "Szabolcs Ban <shooby@gnome.hu>",
+		"Alexander Kirillov <kirillov@math.sunysb.edu>",
 		"Emese Kovacs <emese@gnome.hu>",
 		"David Mason <dcm@redhat.com>",
-		"Alexander Kirillov <kirillov@math.sunysb.edu>",
+	        "Szabolcs Ban <shooby@gnome.hu>",
 		NULL
 	};
 	
@@ -571,16 +571,18 @@ about_cb (BonoboUIComponent *uic,
   about = gnome_about_new (_("The GNOME KeyBoard Switcher Applet"),
 			   VERSION,
 			   _("(C) 1998-2000 Free Software Foundation"),
- 			   _("This applet switches between keyboard maps. "
-			    "It uses setxkbmap, or xmodmap.\n"
-			    "Mail me your flag, please (60x40 size), "
-			    "I will put it into CVS.\n"
-			    "So long, and thanks for all the fish.\n"
-			    "Thanks for Balazs Nagy (Kevin) "
-			    "<julian7@iksz.hu> for his help "
-			    "and Emese Kovacs <emese@gnome.hu> for "
-			    "her solidarity."),
-			    authors,
+                           _("This applet switches between keyboard maps "
+                             "using setxkbmap, or xmodmap.\n"
+                             "Mail me your flag and keyboard layout"
+                             "if you want support for your locale "
+                             "(my email address is shooby@gnome.hu).\n"
+                             "So long, and thanks for all the fish.\n"
+                             "Thanks for Balazs Nagy (Kevin) "
+                              "<julian7@iksz.hu> for his help "
+                              "and Emese Kovacs <emese@gnome.hu> for "
+                              "her solidarity, help from guys like KevinV."
+                              "\nShooby Ban <shooby@gnome.hu>"),
+                            authors,
 			    docauthors,
 			    NULL,
 			    pixbuf);
