@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets-1.1.0\n"
-"POT-Creation-Date: 2000-02-20 00:54+0100\n"
+"POT-Creation-Date: 2000-02-20 21:59+0100\n"
 "PO-Revision-Date: 1999-12-28 12:00+0100\n"
 "Last-Translator: Andreas Hyden <ahyden@staffanstorp.net>\n"
 "Language-Team: Swedish <sv@li.org>\n"
@@ -110,7 +110,7 @@ msgstr "Allmänt"
 
 #. frame for colors
 #: another_clock/another_clock.c:266 mini-commander/src/preferences.c:694
-#: multiload/load-graph.c:308
+#: multiload/load-graph.c:585 multiload/load-graph.c:777
 msgid "Colors"
 msgstr "Färger"
 
@@ -171,8 +171,8 @@ msgstr "Om..."
 #: drivemount/drivemount.c:653 geyes/geyes.c:380 gkb/gkb.c:739
 #: gnotes/gnotes_applet.c:167 gweather/gweather-applet.c:191
 #: mini-commander/src/mini-commander_applet.c:398
-#: modemlights/modemlights.c:1208 multiload/cpuload.c:53
-#: multiload/memload.c:53 multiload/swapload.c:53 odometer/odo.c:641
+#: modemlights/modemlights.c:1208 multiload/cpuload.c:64
+#: multiload/memload.c:64 multiload/swapload.c:64 odometer/odo.c:641
 #: screenshooter/screenshooter_applet.c:1002 slashapp/slashapp.c:55
 #: sound-monitor/main.c:340 tickastat/main.c:315 webcontrol/webcontrol.c:332
 msgid "Properties..."
@@ -2584,25 +2584,37 @@ msgstr "Använd ISDN"
 msgid "Advanced"
 msgstr "Avancerat"
 
-#: multiload/cpuload.c:40 multiload/main.c:178
+#: multiload/cpuload.c:44 multiload/main.c:203
 msgid "CPU Load"
 msgstr "Processorbelastning"
 
-#: multiload/cpuload.c:60 multiload/memload.c:60 multiload/swapload.c:60
+#: multiload/cpuload.c:57 multiload/memload.c:57 multiload/swapload.c:57
+msgid "Default Properties..."
+msgstr "Standardegenskaper..."
+
+#: multiload/cpuload.c:71 multiload/memload.c:71 multiload/swapload.c:71
 msgid "Run gtop..."
 msgstr "Kör gtop..."
 
-#: multiload/load-graph.c:26
+#: multiload/load-graph.c:35 multiload/load-graph.c:53
 msgid "Load Graph"
 msgstr "Belastningsgraf"
 
-#: multiload/load-graph.c:296
+#: multiload/load-graph.c:572 multiload/load-graph.c:764
 msgid "Speed:"
 msgstr "Hastighet:"
 
-#: multiload/load-graph.c:296
+#: multiload/load-graph.c:572 multiload/load-graph.c:764
 msgid "Size:"
 msgstr "Storlek:"
+
+#: multiload/load-graph.c:572 multiload/load-graph.c:764
+msgid "Maximum:"
+msgstr "Maximalt:"
+
+#: multiload/load-graph.c:803
+msgid "Use default properties"
+msgstr "Använd standardinställningar"
 
 #: multiload/main.c:27
 msgid "User"
@@ -2632,11 +2644,11 @@ msgstr "Delat"
 msgid "Buffers"
 msgstr "Buffertar"
 
-#: multiload/main.c:31 multiload/main.c:35
+#: multiload/main.c:31 multiload/main.c:35 multiload/main.c:43
 msgid "Free"
 msgstr "Ledigt"
 
-#: multiload/main.c:35
+#: multiload/main.c:35 multiload/main.c:43
 msgid "Used"
 msgstr "Utnyttjat"
 
@@ -2652,17 +2664,21 @@ msgstr "PPP"
 msgid "ETH"
 msgstr "ETH"
 
-#: multiload/main.c:182 multiload/memload.c:40
+#: multiload/main.c:207 multiload/memload.c:44
 msgid "Memory Load"
 msgstr "Minnesbelastning"
 
-#: multiload/main.c:186 multiload/swapload.c:40
+#: multiload/main.c:211 multiload/swapload.c:44
 msgid "Swap Load"
 msgstr "Swap-belastning"
 
-#: multiload/main.c:190
+#: multiload/main.c:215
 msgid "Net Load"
 msgstr "Nätverksbelastning"
+
+#: multiload/main.c:219
+msgid "Load Average"
+msgstr "Medelbelastning"
 
 #: odometer/odo.c:132
 msgid "Odometer"
