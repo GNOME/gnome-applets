@@ -971,17 +971,17 @@
 
 	/* Thanks to Mike Oliphant for inspiration. */
 
-	static void addToClist(GtkWidget *widget, gpointer data) {
+	static void addToClist(GtkWidget *widget_unused, gpointer entry) {
 		gchar *newsymbol[1];
 		gint row;
 		GtkWidget *clist;
 
-		clist = GTK_WIDGET(gtk_object_get_data(GTK_OBJECT(widget),
+		clist = GTK_WIDGET(gtk_object_get_data(GTK_OBJECT(entry),
 							"clist"));
 
-		newsymbol[0] = gtk_entry_get_text(GTK_ENTRY(widget));
+		newsymbol[0] = gtk_entry_get_text(GTK_ENTRY(entry));
 		row = gtk_clist_append(GTK_CLIST(clist),newsymbol);
-		gtk_entry_set_text(GTK_ENTRY(widget),"");
+		gtk_entry_set_text(GTK_ENTRY(entry),"");
 		gtk_clist_moveto(GTK_CLIST(clist),row,0,0,0);
 
 	}
@@ -1041,8 +1041,15 @@
 		gtk_object_set_data(GTK_OBJECT(entry),"clist",(gpointer)clist);
 		gtk_box_pack_start(GTK_BOX(hbox),entry,TRUE,TRUE,0);
 		gtk_signal_connect(GTK_OBJECT(entry),"activate",
-					GTK_SIGNAL_FUNC(addToClist),NULL);
+					GTK_SIGNAL_FUNC(addToClist), entry);
 		gtk_signal_connect_object(GTK_OBJECT(entry),"activate",
+				GTK_SIGNAL_FUNC(changed_cb),GTK_OBJECT(pb));
+		
+		button = gtk_button_new_with_label(_("Add"));
+		gtk_box_pack_start(GTK_BOX(hbox),button,TRUE,TRUE,0);
+		gtk_signal_connect(GTK_OBJECT(button),"clicked",
+					GTK_SIGNAL_FUNC(addToClist), entry);
+		gtk_signal_connect_object(GTK_OBJECT(button),"clicked",
 				GTK_SIGNAL_FUNC(changed_cb),GTK_OBJECT(pb));
 
 		gtk_box_pack_start(GTK_BOX(vbox),hbox,FALSE,FALSE,0);
