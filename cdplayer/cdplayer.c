@@ -172,11 +172,8 @@ applet_new ()
 
 	applet = cd->panel.applet = panel_applet_new (cdplayer);
 
-	if(strlen(cd->devpath) < 1)
-	{
-		g_free(cd->devpath);
-		cd->devpath = g_strdup(DEV_PATH);
-	}
+    cd->devpath = g_strdup(DEV_PATH);
+
 	cd->cdrom_device = cdrom_open(cd->devpath, &err);
 	cd->orient = panel_applet_get_orient (PANEL_APPLET (applet));
 	cd->size = panel_applet_get_size (PANEL_APPLET (applet));
