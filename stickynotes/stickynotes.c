@@ -76,19 +76,18 @@ StickyNote * stickynote_new(StickyNotesApplet *stickynotes)
 	g_signal_connect(G_OBJECT(note->window), "focus-in-event", G_CALLBACK(window_focus_cb), note);
 	g_signal_connect(G_OBJECT(note->window), "focus-out-event", G_CALLBACK(window_focus_cb), note);
 	
-	/* Other stuff */
+	/* Connect signals for window management on the sticky note */
 	{
 		GtkWidget *title_box = glade_xml_get_widget(note->glade, "title_box");
 		GtkWidget *resize_box = glade_xml_get_widget(note->glade, "resize_box");
 		GtkWidget *close_box = glade_xml_get_widget(note->glade, "close_box");
 		
-		/* Connect a popup menu to the title label */
-		gnome_popup_menu_attach(gnome_popup_menu_new(popup_menu), title_box, note);
-
-		/* Connect signals for window management on the sticky note */
 		g_signal_connect(G_OBJECT(title_box), "button-press-event", G_CALLBACK(window_move_edit_cb), note);
 		g_signal_connect(G_OBJECT(resize_box), "button-press-event", G_CALLBACK(window_resize_cb), note);
 		g_signal_connect(G_OBJECT(close_box), "button-release-event", G_CALLBACK(window_close_cb), note);
+
+		/* Connect a popup menu to the title label */
+		gnome_popup_menu_attach(gnome_popup_menu_new(popup_menu), title_box, note);
 	}
 
 	return note;
