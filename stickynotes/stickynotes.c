@@ -600,6 +600,9 @@ void stickynotes_load(GdkScreen *screen)
 				gchar *visible = xmlGetProp(node, "visible");
 				if (visible)
 					stickynote_set_visible(note, strcmp(visible, "true") == 0);
+				else
+					stickynote_set_visible(note, FALSE);
+				    
 				g_free(visible);
 			}
 		}
