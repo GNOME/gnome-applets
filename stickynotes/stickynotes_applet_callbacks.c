@@ -171,6 +171,12 @@ void menu_preferences_cb(BonoboUIComponent *uic, StickyNotesApplet *sticky, cons
 	GtkWidget *sticky_check = glade_xml_get_widget(glade, "sticky_check");
 	GtkWidget *note_color = glade_xml_get_widget(glade, "note_color");
 	GtkWidget *click_behavior_menu = glade_xml_get_widget(glade, "click_behavior_menu");
+
+	GtkSizeGroup *size= gtk_size_group_new(GTK_SIZE_GROUP_HORIZONTAL);
+	gtk_size_group_add_widget(size, glade_xml_get_widget(glade, "width_label"));
+	gtk_size_group_add_widget(size, glade_xml_get_widget(glade, "height_label"));
+	gtk_size_group_add_widget(size, glade_xml_get_widget(glade, "color_label"));
+	g_object_unref(size);
 	    
 	g_signal_connect(G_OBJECT(dialog), "response", G_CALLBACK(preferences_response_cb), glade);
 
@@ -204,6 +210,8 @@ void menu_preferences_cb(BonoboUIComponent *uic, StickyNotesApplet *sticky, cons
 	
 	gtk_window_set_transient_for(GTK_WINDOW(dialog), GTK_WINDOW(sticky->applet));
 	gtk_widget_show(dialog);
+
+	g_object_unref(glade);
 }
 
 /* Menu Callback : Show help */
@@ -284,14 +292,11 @@ void preferences_color_cb(GnomeColorPicker *cp, guint r, guint g, guint b, guint
 /* Preferences Callback : Response. */
 void preferences_response_cb(GtkDialog *dialog, gint response, GladeXML *glade)
 {
-	if (response == GTK_RESPONSE_HELP) {
+	if (response == GTK_RESPONSE_HELP)
 		gnome_help_display("stickynotes_applet", "stickynotes-introduction", NULL);
-	}
 	
-	else { /* if (response == GTK_RESPONSE_CLOSE || response == GTK_RESPONSE_NONE) */
+	else /* if (response == GTK_RESPONSE_CLOSE || response == GTK_RESPONSE_NONE) */
 		gtk_widget_destroy(GTK_WIDGET(dialog));
-		g_object_unref(glade);
-	}
 }
 
 /* Preferences Callback : Apply to existing notes. */

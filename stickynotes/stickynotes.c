@@ -47,7 +47,6 @@ StickyNote * stickynote_new()
 	note->x = 0;
 	note->y = 0;
 
-	/* FIXME : Hack because libglade does not properly set these */
 	gtk_image_set_from_file(GTK_IMAGE(glade_xml_get_widget(note->glade, "resize_img")), STICKYNOTES_ICONDIR "/resize.png");
 	gtk_image_set_from_file(GTK_IMAGE(glade_xml_get_widget(note->glade, "close_img")), STICKYNOTES_ICONDIR "/close.png");
 	
