@@ -2025,8 +2025,8 @@ static gint updateOutput(gpointer data)
 			quote->color = RED;
 		}
 		else {
-			var3 = g_strdup(_("(No"));
-			var4 = g_strdup(_("Change "));
+			var3 = g_strdup(_("(No Change"));
+			var4 = g_strdup("");
 			quote->color = WHITE;
 		}
 
