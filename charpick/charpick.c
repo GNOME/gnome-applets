@@ -350,7 +350,9 @@ static void applet_change_orient(PanelApplet *applet, PanelAppletOrient o, gpoin
 
 
 static void
-about (BonoboUIComponent *uic, gpointer data, const gchar *verbname)
+about (BonoboUIComponent *uic,
+       charpick_data     *curr_data,
+       const char        *verb)
 {
   static GtkWidget *about_box = NULL;
   GdkPixbuf   	   *pixbuf;
@@ -370,11 +372,9 @@ about (BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 
   const gchar *translator_credits = _("translator_credits");
 
-  if (about_box != NULL)
-  {
-	  gdk_window_show(about_box->window);
-	  gdk_window_raise(about_box->window);
-	  return;
+  if (about_box) {
+	gtk_window_present (GTK_WINDOW (about_box));
+	return;
   }
   
   file = gnome_program_locate_file (NULL, GNOME_FILE_DOMAIN_PIXMAP, "charpick.png", FALSE, NULL);
@@ -411,7 +411,9 @@ about (BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 
 
 static void
-help_cb (BonoboUIComponent *uic, gpointer user_data, const gchar *verbname)
+help_cb (BonoboUIComponent *uic,
+	 charpick_data     *curr_data,
+	 const char        *verb)
 {
   GError *error = NULL;
   gnome_help_display("char-palette",NULL,&error);
@@ -447,9 +449,9 @@ applet_destroy (GtkWidget *widget, gpointer data)
 }
 
 static const BonoboUIVerb charpick_applet_menu_verbs [] = {
-        BONOBO_UI_VERB ("Preferences", property_show),
-        BONOBO_UI_VERB ("Help", help_cb),
-        BONOBO_UI_VERB ("About", about),
+        BONOBO_UI_UNSAFE_VERB ("Preferences", show_preferences_dialog),
+        BONOBO_UI_UNSAFE_VERB ("Help",        help_cb),
+        BONOBO_UI_UNSAFE_VERB ("About",       about),
 
         BONOBO_UI_VERB_END
 };
