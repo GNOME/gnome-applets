@@ -532,8 +532,12 @@ mc_command_update_entry_size (MCData *mc)
     int size_x = -1;
     
     size_x = mc->preferences.normal_size_x - 17;
-
-    gtk_widget_set_size_request (GTK_WIDGET (mc->entry), size_x, mc->preferences.normal_size_y+4); 
+    if ((mc->orient == PANEL_APPLET_ORIENT_LEFT) || (mc->orient == PANEL_APPLET_ORIENT_RIGHT)) {
+      size_x = MIN(size_x, mc->preferences.panel_size_x - 17);
+      gtk_widget_set_size_request (GTK_WIDGET (mc->entry), size_x, -1);
+    } else {
+      gtk_widget_set_size_request (GTK_WIDGET (mc->entry), size_x, mc->preferences.normal_size_y+2);
+    }
 }
 
 

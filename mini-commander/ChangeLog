@@ -1,3 +1,18 @@
+2004-07-07  Vincent Noel  <vnoel@cox.net>
+
+	* src/command_line.c (mc_command_update_entry_size): use a
+	different size requisition for the entry line depending on the
+	panel orientation.
+
+	* src/mini-commander_applet.h: added an element to track panel
+	orientation to the MCData struct.
+
+	* src/mini-commander_applet.c (mc_applet_draw): Layout the applet
+	differently depending on the panel orientation.
+	(mc_orient_changed): added function to track panel orientation changes.
+	(mc_pixel_size_changed): follow the panel size using
+	size-allocate signal.
+
 2004-06-17  Dennis Smit  <ds@nerds-incorporated.org>
 
 	* src/exec (mc_exec_command, beep): Check gdk_spawn_on_screen,

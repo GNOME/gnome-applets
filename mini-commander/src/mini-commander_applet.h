@@ -62,6 +62,7 @@ struct _MCData {
 
     guint          listeners [MC_NUM_LISTENERS];
     gboolean       error;
+    PanelAppletOrient orient;
 };
 
 void mc_applet_draw (MCData *mc);

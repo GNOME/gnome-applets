@@ -47,6 +47,7 @@ typedef struct {
 
     int     normal_size_x;
     int     normal_size_y;
+    int     panel_size_x;
 
     int     cmd_line_color_fg_r;
     int     cmd_line_color_fg_g;
@@ -58,6 +59,7 @@ typedef struct {
     GSList *macros;
 
     guint   idle_macros_loader_id;
+
 } MCPreferences;
 
 typedef struct {

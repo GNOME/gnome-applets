@@ -183,7 +183,6 @@ mc_applet_draw (MCData *mc)
     GtkWidget *icon;
     GtkWidget *button;
     GtkWidget *hbox_buttons;
-    GtkWidget *hbox;
     MCPreferences prefs = mc->preferences;
     int        size_frames = 0;
     gchar     *command_text = NULL;
@@ -196,7 +195,12 @@ mc_applet_draw (MCData *mc)
     if (mc->applet_box) {
         gtk_widget_destroy (mc->applet_box);	
     }
-    mc->applet_box = gtk_hbox_new (FALSE, 0);
+
+    if ( ((mc->orient == PANEL_APPLET_ORIENT_LEFT) || (mc->orient == PANEL_APPLET_ORIENT_RIGHT)) && (prefs.panel_size_x < GNOME_Vertigo_PANEL_SMALL) )
+      mc->applet_box = gtk_vbox_new (FALSE, 0);
+    else
+      mc->applet_box = gtk_hbox_new (FALSE, 0);
+
     gtk_container_set_border_width (GTK_CONTAINER (mc->applet_box), 0);
 
     mc_create_command_entry (mc);
@@ -207,9 +211,15 @@ mc_applet_draw (MCData *mc)
     }
 
     /* hbox for message label and buttons */
-    if (prefs.normal_size_y > GNOME_Vertigo_PANEL_X_SMALL) 
+    if ((mc->orient == PANEL_APPLET_ORIENT_LEFT) || (mc->orient == PANEL_APPLET_ORIENT_RIGHT))
+      if (prefs.panel_size_x < GNOME_Vertigo_PANEL_SMALL)
 	hbox_buttons = gtk_vbox_new (TRUE, 0);
+      else
+	hbox_buttons = gtk_hbox_new (TRUE, 0);
     else
+      if (prefs.normal_size_y > GNOME_Vertigo_PANEL_SMALL)
+	hbox_buttons = gtk_vbox_new (TRUE, 0);
+      else
 	hbox_buttons = gtk_hbox_new (TRUE, 0);
 
     /* add file-browser button */
@@ -220,7 +230,7 @@ mc_applet_draw (MCData *mc)
     g_signal_connect (button, "button_press_event",
 		      G_CALLBACK (button_press_hack), mc);
 
-    icon = gtk_image_new_from_stock (COMMANDLINE_BROWSER_STOCK,   								      button_icon_size);
+    icon = gtk_image_new_from_stock (COMMANDLINE_BROWSER_STOCK, button_icon_size);
     gtk_container_add (GTK_CONTAINER (button), icon);
 
     gtk_tooltips_set_tip (mc->tooltips, button, _("Browser"), NULL);
@@ -248,11 +258,8 @@ mc_applet_draw (MCData *mc)
 			      _("History"),
 			      _("Click this button for the list of previous commands"));
     
-    hbox = gtk_hbox_new (FALSE, 2);
-    gtk_container_set_border_width (GTK_CONTAINER (hbox), 0);
-    gtk_box_pack_start (GTK_BOX (mc->applet_box), hbox, TRUE, TRUE, 0);
-    gtk_box_pack_start (GTK_BOX (hbox), mc->entry, TRUE, TRUE, 0);
-    gtk_box_pack_start (GTK_BOX (hbox), hbox_buttons, TRUE, TRUE, 0);
+    gtk_box_pack_start (GTK_BOX (mc->applet_box), mc->entry, TRUE, TRUE, 0);
+    gtk_box_pack_start (GTK_BOX (mc->applet_box), hbox_buttons, TRUE, TRUE, 0);
 
     gtk_container_add (GTK_CONTAINER (mc->applet), mc->applet_box);
     
@@ -293,13 +300,30 @@ mc_destroyed (GtkWidget *widget,
 }
 
 static void
+mc_orient_changed (PanelApplet *applet,
+		   PanelAppletOrient orient,
+		   MCData *mc)
+{
+  mc->orient = orient;
+  mc_applet_draw (mc);
+}
+
+static void
 mc_pixel_size_changed (PanelApplet *applet,
-		       guint        size,
+		       GtkAllocation *allocation,
 		       MCData      *mc)
 {
-    mc->preferences.normal_size_y = size;
+  if ((mc->orient == PANEL_APPLET_ORIENT_LEFT) || (mc->orient == PANEL_APPLET_ORIENT_RIGHT)) {
+    if (mc->preferences.panel_size_x == allocation->width)
+      return;
+    mc->preferences.panel_size_x = allocation->width;
+  } else {
+    if (mc->preferences.normal_size_y == allocation->height)
+      return;
+    mc->preferences.normal_size_y = allocation->height;
+  }
 
-    mc_applet_draw (mc);
+  mc_applet_draw (mc);
 }
 
 static gboolean
@@ -348,10 +372,14 @@ mini_commander_applet_fill (PanelApplet *applet)
     g_object_ref (mc->tooltips);
     gtk_object_sink (GTK_OBJECT (mc->tooltips));
   
-    g_signal_connect (mc->applet, "change_size",
+    g_signal_connect (mc->applet, "change_orient",
+		      G_CALLBACK (mc_orient_changed), mc);
+    g_signal_connect (mc->applet, "size_allocate",
 		      G_CALLBACK (mc_pixel_size_changed), mc);
-    mc_pixel_size_changed (mc->applet, panel_applet_get_size (applet), mc);
-
+    
+    mc->preferences.normal_size_y = panel_applet_get_size (applet);
+    mc->orient = panel_applet_get_orient (applet);
+    mc_applet_draw(mc);
     gtk_widget_show (GTK_WIDGET (mc->applet));
     
     g_signal_connect (mc->applet, "destroy", G_CALLBACK (mc_destroyed), mc); 
