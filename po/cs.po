@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-07-14 12:27+0200\n"
-"PO-Revision-Date: 2003-07-14 23:30+0200\n"
+"POT-Creation-Date: 2003-07-16 12:08+0200\n"
+"PO-Revision-Date: 2003-07-16 20:40+0200\n"
 "Last-Translator: Miloslav Trmac <mitr@volny.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -467,7 +467,7 @@ msgid "Battery Charge Monitor Preferences"
 msgstr "Nastavení Sledování stavu baterie"
 
 #: battstat/battstat_applet.glade.h:13 drivemount/properties.c:348
-#: gweather/gweather-pref.c:766 mailcheck/mailcheck.c:2026
+#: gweather/gweather-pref.c:738 mailcheck/mailcheck.c:2026
 #: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:552
 msgid "General"
 msgstr "Obecné"
@@ -1208,7 +1208,9 @@ msgstr "Popis"
 msgid "Flag and Label"
 msgstr "Vlajka a popis"
 
-#: gkb-new/prop.c:257 gtik/gtik.c:1528 modemlights/properties.c:437
+#. The Miscellaneous frame
+#: gkb-new/prop.c:257 gtik/gtik.c:1528 gweather/gweather-pref.c:720
+#: modemlights/properties.c:437
 msgid "Display"
 msgstr "Zobrazení"
 
@@ -1310,7 +1312,7 @@ msgstr "_Aktualizovat"
 msgid "Could not retrieve the stock data."
 msgstr "Nelze získat předdefinovaná data."
 
-#: gtik/gtik.c:289 gweather/gweather-applet.c:357
+#: gtik/gtik.c:289 gweather/gweather-applet.c:346
 msgid "Updating..."
 msgstr "Aktualizuji..."
 
@@ -1355,7 +1357,7 @@ msgstr "Symboly"
 msgid "Behavior"
 msgstr "Chování"
 
-#: gtik/gtik.c:1441
+#: gtik/gtik.c:1441 gweather/gweather-pref.c:679
 msgid "Update"
 msgstr "Aktualizovat"
 
@@ -1363,7 +1365,8 @@ msgstr "Aktualizovat"
 msgid "Stock update fre_quency:"
 msgstr "Fre_kvence aktualizace:"
 
-#: gtik/gtik.c:1457 mailcheck/mailcheck.c:2073 mailcheck/mailcheck.c:2079
+#: gtik/gtik.c:1457 gweather/gweather-pref.c:705 mailcheck/mailcheck.c:2073
+#: mailcheck/mailcheck.c:2079
 msgid "minutes"
 msgstr "minut"
 
@@ -1513,7 +1516,7 @@ msgstr "čas v milisekundách pro aktualizaci zobrazení"
 msgid "timeout"
 msgstr "časový interval"
 
-#: gweather/GNOME_GWeatherApplet.xml.h:2 gweather/gweather-dialog.c:304
+#: gweather/GNOME_GWeatherApplet.xml.h:2
 msgid "_Forecast"
 msgstr "_Předpověď"
 
@@ -1548,21 +1551,21 @@ msgstr ""
 "\n"
 "Aplet pro sledování místního počasí."
 
-#: gweather/gweather-applet.c:246
+#: gweather/gweather-applet.c:237
 msgid "GNOME Weather"
 msgstr "GNOME Počasí"
 
-#: gweather/gweather-dialog.c:75
+#: gweather/gweather-dialog.c:75 gweather/gweather-dialog.c:304
 msgid "Forecast"
 msgstr "Předpověď"
 
 #: gweather/gweather-dialog.c:110
-msgid "Location:"
-msgstr "Umístění:"
+msgid "City:"
+msgstr "Město:"
 
 #: gweather/gweather-dialog.c:118
-msgid "Update:"
-msgstr "Aktualizovat:"
+msgid "Last update:"
+msgstr "Poslední aktualizace:"
 
 #: gweather/gweather-dialog.c:126
 msgid "Conditions:"
@@ -1597,11 +1600,11 @@ msgid "Visibility:"
 msgstr "Viditelnost:"
 
 #: gweather/gweather-dialog.c:281
-msgid "C_urrent conditions"
-msgstr "_Aktuální podmínky"
+msgid "Current Conditions"
+msgstr "Aktuální podmínky"
 
 #: gweather/gweather-dialog.c:294
-msgid "ForeCast Report"
+msgid "Forecast Report"
 msgstr "Předpověď počasí"
 
 #: gweather/gweather-dialog.c:294
@@ -1631,7 +1634,8 @@ msgid ""
 "for US cities."
 msgstr ""
 "Detailní předpověď pro toto umístění není k dispozici.\n"
-"Zkuste prosím předpověď pro stát; předpovědi IWIN jsou k dispozici jen pro města v USA."
+"Zkuste prosím předpověď pro stát; předpovědi IWIN jsou k dispozici jen pro "
+"města v USA."
 
 #: gweather/gweather-dialog.c:413
 msgid ""
@@ -1640,7 +1644,8 @@ msgid ""
 "only for US cities."
 msgstr ""
 "Předpověď pro stát není pro toto umístění k dispozici.\n"
-"Zkuste prosím detailní předpověď; předpovědi IWIN jsou k dispozici jen pro města v USA."
+"Zkuste prosím detailní předpověď; předpovědi IWIN jsou k dispozici jen pro "
+"města v USA."
 
 #. Accessible Name and Description for the components in Preference Dialog
 #: gweather/gweather-pref.c:149
@@ -1667,52 +1672,35 @@ msgstr "Pole adresy"
 msgid "Enter the URL"
 msgstr "Zadejte URL"
 
-#: gweather/gweather-pref.c:604
+#: gweather/gweather-pref.c:584
 msgid "Weather Preferences"
 msgstr "Nastavení Počasí"
 
-#: gweather/gweather-pref.c:647
+#: gweather/gweather-pref.c:627
 msgid "_Automatically update every"
 msgstr "_Automaticky aktualizovat každých"
 
-#: gweather/gweather-pref.c:655
+#: gweather/gweather-pref.c:635
 msgid "Use _metric system units"
 msgstr "Používat _metrické jednotky"
 
-#: gweather/gweather-pref.c:663
-msgid "Enable _detailed forecast"
-msgstr "Povolit _detailní předpověď"
-
-#: gweather/gweather-pref.c:672
+#: gweather/gweather-pref.c:644
 msgid "Enable _radar map"
 msgstr "Povolit _mapu radaru"
 
-#: gweather/gweather-pref.c:680
+#: gweather/gweather-pref.c:652
 msgid "Use cus_tom address for radar map"
 msgstr "Používat _vlastní adresu pro mapu radaru"
 
-#: gweather/gweather-pref.c:693
+#: gweather/gweather-pref.c:665
 msgid "A_ddress :"
 msgstr "_Adresa:"
 
-#: gweather/gweather-pref.c:707
-msgid "Updates"
-msgstr "Aktualizace"
+#: gweather/gweather-pref.c:685
+msgid "_Automatically update every:"
+msgstr "_Automaticky aktualizovat každých:"
 
-#: gweather/gweather-pref.c:713
-msgid "_Automatically update every "
-msgstr "_Automaticky aktualizovat každých "
-
-#: gweather/gweather-pref.c:733
-msgid "minute(s)"
-msgstr "minut"
-
-#. The Miscellaneous frame
-#: gweather/gweather-pref.c:748
-msgid "Miscellaneous"
-msgstr "Různé"
-
-#: gweather/gweather-pref.c:806 gweather/location.c:360
+#: gweather/gweather-pref.c:775
 msgid "Location"
 msgstr "Umístění"
 
@@ -1749,42 +1737,6 @@ msgstr "používat metrické jednotky místo anglických."
 #: gweather/gweather.schemas.in.h:8
 msgid "weather location information."
 msgstr "informace o umístění počasí."
-
-#: gweather/location.c:184
-msgid "Could not download countries"
-msgstr "Nemohu stáhnout země"
-
-#: gweather/location.c:186
-msgid "Could not download cities"
-msgstr "Nemohu stáhnout města"
-
-#: gweather/location.c:243
-msgid "Downloading Cities..."
-msgstr "Stahuji města..."
-
-#: gweather/location.c:304
-msgid "Countries list"
-msgstr "Seznam zemí"
-
-#: gweather/location.c:305
-msgid "Select the country from the list"
-msgstr "Vyberte zemi ze seznamu"
-
-#: gweather/location.c:308
-msgid "Country"
-msgstr "Země"
-
-#: gweather/location.c:356
-msgid "Cities list"
-msgstr "Seznam měst"
-
-#: gweather/location.c:357
-msgid "Select the city from the list"
-msgstr "Vyberte město ze seznamu"
-
-#: gweather/location.c:394
-msgid "Downloading Countries..."
-msgstr "Stahuji země..."
 
 #: gweather/weather.c:57
 msgid "knots"
@@ -2969,27 +2921,6 @@ msgstr "Nemohu získat data METAR.\n"
 msgid "WeatherInfo missing location"
 msgstr "Chybí umístění WeatherInfo"
 
-#: gweather/weather.c:1047
-msgid "Failed to get IWIN data.\n"
-msgstr "Nemohu získat data IWIN.\n"
-
-#. forecast data is not really interesting anyway ;)
-#: gweather/weather.c:1091
-msgid "Failed to get IWIN forecast data.\n"
-msgstr "Nemohu získat data předpovědi IWIN.\n"
-
-#: gweather/weather.c:1290
-msgid "Failed to get Met Office data.\n"
-msgstr "Nemohu získat data Met Office.\n"
-
-#: gweather/weather.c:1324
-msgid "Failed to get Met Office forecast data.\n"
-msgstr "Nemohu získat data předpovědi Met Office.\n"
-
-#: gweather/weather.c:1468
-msgid "Failed to get radar map image.\n"
-msgstr "Nemohu získat obrázek mapy radaru.\n"
-
 #: gweather/weather.c:1771
 msgid "%a, %b %d / %H:%M"
 msgstr "%a %d. %b, %H:%M"
@@ -3100,7 +3031,7 @@ msgid "No mail."
 msgstr "Žádná pošta."
 
 #: mailcheck/mailcheck.c:1548 mailcheck/mailcheck.c:1549
-#: mailcheck/mailcheck.c:2800 mailcheck/mailcheck.c:2801
+#: mailcheck/mailcheck.c:2802 mailcheck/mailcheck.c:2803
 msgid "Status not updated"
 msgstr "Stav neaktualizován"
 
@@ -3227,15 +3158,15 @@ msgstr ""
 "Sledování poštovní schránky vás upozorňuje, když do vaší schránky přijde "
 "nová pošta"
 
-#: mailcheck/mailcheck.c:2771
+#: mailcheck/mailcheck.c:2773
 msgid "Text only"
 msgstr "Jen text"
 
-#: mailcheck/mailcheck.c:2802
+#: mailcheck/mailcheck.c:2804
 msgid "Mail check"
 msgstr "Kontrola pošty"
 
-#: mailcheck/mailcheck.c:2803
+#: mailcheck/mailcheck.c:2805
 msgid "Mail check notifies you when new mail arrives in your mailbox"
 msgstr "Kontrola pošty vás upozorňuje, když do vaší schránky přijde nová pošta"
 
@@ -4330,7 +4261,7 @@ msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "Vytvořit, zobrazit a spravovat lepicí poznámky na pracovní ploše"
 
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:3
-#: stickynotes/stickynotes_applet.c:364
+#: stickynotes/stickynotes_applet.c:339
 #: stickynotes/stickynotes_applet_callbacks.c:180
 msgid "Sticky Notes"
 msgstr "Lepicí poznámky"
@@ -4696,7 +4627,7 @@ msgstr "Zda-li se má použít výchozí barva tématu"
 msgid "Whether to use the default system font"
 msgstr "Zda-li se má použít výchozí písmo tématu"
 
-#: stickynotes/stickynotes_applet.c:364
+#: stickynotes/stickynotes_applet.c:339
 #, c-format
 msgid ""
 "%s\n"
@@ -4775,6 +4706,69 @@ msgstr "Nastavení Sledování bezdrátového spojení"
 msgid "_Monitored device:"
 msgstr "_Sledované zařízení:"
 
+#~ msgid "Location:"
+#~ msgstr "Umístění:"
+
+#~ msgid "Update:"
+#~ msgstr "Aktualizovat:"
+
+#~ msgid "Enable _detailed forecast"
+#~ msgstr "Povolit _detailní předpověď"
+
+#~ msgid "Updates"
+#~ msgstr "Aktualizace"
+
+#~ msgid "_Automatically update every "
+#~ msgstr "_Automaticky aktualizovat každých "
+
+#~ msgid "minute(s)"
+#~ msgstr "minut"
+
+#~ msgid "Miscellaneous"
+#~ msgstr "Různé"
+
+#~ msgid "Could not download countries"
+#~ msgstr "Nemohu stáhnout země"
+
+#~ msgid "Could not download cities"
+#~ msgstr "Nemohu stáhnout města"
+
+#~ msgid "Downloading Cities..."
+#~ msgstr "Stahuji města..."
+
+#~ msgid "Countries list"
+#~ msgstr "Seznam zemí"
+
+#~ msgid "Select the country from the list"
+#~ msgstr "Vyberte zemi ze seznamu"
+
+#~ msgid "Country"
+#~ msgstr "Země"
+
+#~ msgid "Cities list"
+#~ msgstr "Seznam měst"
+
+#~ msgid "Select the city from the list"
+#~ msgstr "Vyberte město ze seznamu"
+
+#~ msgid "Downloading Countries..."
+#~ msgstr "Stahuji země..."
+
+#~ msgid "Failed to get IWIN data.\n"
+#~ msgstr "Nemohu získat data IWIN.\n"
+
+#~ msgid "Failed to get IWIN forecast data.\n"
+#~ msgstr "Nemohu získat data předpovědi IWIN.\n"
+
+#~ msgid "Failed to get Met Office data.\n"
+#~ msgstr "Nemohu získat data Met Office.\n"
+
+#~ msgid "Failed to get Met Office forecast data.\n"
+#~ msgstr "Nemohu získat data předpovědi Met Office.\n"
+
+#~ msgid "Failed to get radar map image.\n"
+#~ msgstr "Nemohu získat obrázek mapy radaru.\n"
+
 #~ msgid ""
 #~ "%s\n"
 #~ "Today: %s\n"
@@ -4802,20 +4796,11 @@ msgstr "_Sledované zařízení:"
 #~ msgid "Condition"
 #~ msgstr "Podmínky"
 
-#~ msgid "City:"
-#~ msgstr "Město:"
-
-#~ msgid "Last update:"
-#~ msgstr "Poslední aktualizace:"
-
 #~ msgid "Feels like:"
 #~ msgstr "Pocit jako:"
 
 #~ msgid "Shows forecast details for each day"
 #~ msgstr "Zobrazí podrobnosti předpovědi pro každý den"
-
-#~ msgid "%s / %.1f %s"
-#~ msgstr "%s / %.1f %s"
 
 #~ msgid "Display _temperatures"
 #~ msgstr "Zobrazovat _teploty"
