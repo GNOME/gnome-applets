@@ -104,7 +104,7 @@ apm_readinfo (BatteryStatus *status)
   status->on_ac_power = apminfo.ai_acline ? 1 : 0;
   status->state = apminfo.ai_batt_stat;
   status->percent = apminfo.ai_batt_life;
-  status->charging = (batt_state == 3) ? TRUE : FALSE;
+  status->charging = (status->state == 3) ? TRUE : FALSE;
   status->minutes = apminfo.ai_batt_time;
 
   return NULL;
@@ -145,7 +145,7 @@ apm_readinfo (BatteryStatus *status)
   status->on_ac_power = apminfo.ac_state ? 1 : 0;
   status->state = apminfo.battery_state;
   status->percent = apminfo.battery_life;
-  status->charging = (batt_state == 3) ? TRUE : FALSE;
+  status->charging = (status->state == 3) ? TRUE : FALSE;
   status->minutes = apminfo.minutes_left;
 
   return NULL;
