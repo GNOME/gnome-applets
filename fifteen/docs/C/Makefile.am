@@ -1,5 +1,5 @@
 applet = fifteen
-figs =
+figs = fifteen_applet.png
 lang = C
 sgml_ents = $(applet).sgml
 include $(top_srcdir)/applet-docs.make
