@@ -24,7 +24,7 @@
 
 #include <libgnomeui/libgnomeui.h>
 #include <panel-applet.h>
- 
+#include <panel-applet-gconf.h> 
 #include <gtk/gtk.h>
 #include <time.h>
 
@@ -51,15 +51,15 @@
 	typedef struct
 	{
 		char *tik_syms;
-		char *output;
-		char *scroll;
-		char *arrows;
+		gboolean output;
+		gboolean scroll;
+		gboolean arrows;
 		gint timeout;
 		gchar *dcolor;
 		gchar *ucolor;
 		gchar *font;
 		gchar *font2;
-		gchar *buttons;
+		gboolean buttons;
 
 	} gtik_properties;
 
@@ -155,7 +155,7 @@
 			else
 				stockdata->small_font = gdk_fontset_load(stockdata->new_font);
 		}
-g_print ("new font \n");
+
 		if (!stockdata->my_font)
 			stockdata->my_font = gdk_fontset_load (stockdata->props.font);
 
@@ -170,7 +170,7 @@ g_print ("new font \n");
 		if (!stockdata->my_font)
 			g_error("Could not load fonts!");
 
-		if ( !stockdata->extra_font || (strcmp(stockdata->props.arrows,"noArrows")) == 0 ) {
+		if ( !stockdata->extra_font || (stockdata->props.arrows == FALSE ) ){
 			
 			if (stockdata->extra_font)
 				gdk_font_unref(stockdata->extra_font);
@@ -228,7 +228,7 @@ g_print ("%s \n", source_text_uri);
 g_print ("%s \n", stockdata->configFileName);
 	dest_uri = gnome_vfs_uri_new(stockdata->configFileName);
 	dests = g_list_append(dests, dest_uri);
-#if 1
+#if 0
 	if (GNOME_VFS_OK !=
 	    gnome_vfs_async_xfer(&vfshandle, sources, dests,
 				 GNOME_VFS_XFER_DEFAULT,
@@ -265,16 +265,59 @@ g_print ("hello \n");
 
 	/*-----------------------------------------------------------------*/
 	static void properties_load(StockData *stockdata) {
-		stockdata->props.tik_syms = g_strdup ("cald+rhat+corl");
-		stockdata->props.output = g_strdup ("default");
-		stockdata->props.scroll = g_strdup ("right2left");
-		stockdata->props.arrows = g_strdup ("arrows");
+		PanelApplet *applet = PANEL_APPLET (stockdata->applet);
+		/*stockdata->props.tik_syms = g_strdup ("cald+rhat+corl");
+		stockdata->props.output = FALSE;
+		stockdata->props.scroll = TRUE;
+		stockdata->props.arrows = TRUE;
 		stockdata->props.timeout = 5;
-		stockdata->props.dcolor = g_strdup ("#ff0000");
-		stockdata->props.ucolor = g_strdup ("#00ff00");
-		stockdata->props.font = g_strdup ("fixed");
-		stockdata->props.font2 = g_strdup ("-*-clean-medium-r-normal-*-*-100-*-*-c-*-iso8859-1");
-		stockdata->props.buttons = g_strdup ("yes");
+		
+		stockdata->props.buttons = TRUE;*/
+		
+		stockdata->props.tik_syms = panel_applet_gconf_get_string (applet,
+									   "tik_syms",
+									   NULL);
+		if (!stockdata->props.tik_syms)
+			stockdata->props.tik_syms = g_strdup ("cald+rhat+corl");
+		stockdata->props.output = panel_applet_gconf_get_bool (applet,
+									  "output",
+									  NULL);
+		stockdata->props.scroll = panel_applet_gconf_get_bool (applet,
+									  "scroll",
+									  NULL);
+		stockdata->props.arrows = panel_applet_gconf_get_bool (applet,
+									  "arrows",
+									  NULL);
+		stockdata->props.timeout = panel_applet_gconf_get_int (applet,
+								       "timeout",
+								       NULL);
+		stockdata->props.timeout = MAX (stockdata->props.timeout, 1);
+		stockdata->props.dcolor = panel_applet_gconf_get_string (applet,
+									 "dcolor",
+									 NULL);
+		if (!stockdata->props.dcolor)
+			stockdata->props.dcolor = g_strdup ("#ff0000");
+		
+		stockdata->props.ucolor = panel_applet_gconf_get_string (applet,
+									 "ucolor",
+									 NULL);
+		if (!stockdata->props.ucolor)
+			stockdata->props.ucolor = g_strdup ("#00ff00");
+		stockdata->props.font = panel_applet_gconf_get_string (applet,
+								       "font",
+								       NULL);
+		if (!stockdata->props.font)
+			stockdata->props.font = g_strdup ("fixed");
+		stockdata->props.font2 = panel_applet_gconf_get_string (applet,
+									"font2",
+									NULL);
+		if (!stockdata->props.font2)
+			stockdata->props.font2 = g_strdup ("-*-clean-medium-r-normal-*-*-100-*-*-c-*-iso8859-1");
+		
+		stockdata->props.buttons = panel_applet_gconf_get_bool(applet,
+									  "buttons",
+									  NULL);
+									
 #ifdef FIXME	
 		
 		gnome_config_push_prefix ("/");
@@ -341,7 +384,7 @@ g_print ("hello \n");
 
 	/*-----------------------------------------------------------------*/
 	static void properties_set (StockData *stockdata, gboolean update) {
-		if (!strcmp(stockdata->props.buttons,"yes")) {
+		if (stockdata->props.buttons == TRUE) {
 			gtk_widget_show(stockdata->leftButton);
 			gtk_widget_show(stockdata->rightButton);
 		}
@@ -586,7 +629,7 @@ g_print ("configured \n");
 		for(i=0;i<stockdata->setCounter;i++) {
 			totalLen += (gdk_string_width(my_font,
 				STOCK_QUOTE(quotes->data)[i].price) + 10);
-			if (!strcmp(stockdata->props.output,"default")) {
+			if (stockdata->props.output == FALSE) {
 				if (*(STOCK_QUOTE(quotes->data)[i].change)) {
 					totalLen += (gdk_text_width(extra_font,
 								    STOCK_QUOTE(quotes->data)[i].change,1) + 10);
@@ -604,7 +647,7 @@ g_print ("configured \n");
 		if (stockdata->MOVE == 1) {
 
 
-		  if (!strcmp(stockdata->props.scroll,"right2left")) {
+		  if (stockdata->props.scroll = TRUE) {
 			if (stockdata->location > comp) {
 				stockdata->location--;
 			}
@@ -647,7 +690,7 @@ g_print ("configured \n");
 			totalLoc += (gdk_string_width(my_font,tmpSym) + 10); 
 
 
-			if (!strcmp(stockdata->props.output,"default")) {
+			if (stockdata->props.output == FALSE) {
 				tmpSym = STOCK_QUOTE(quotes->data)[i].change;
 				if (*(STOCK_QUOTE(quotes->data)[i].change)) {
 					gdk_draw_text (stockdata->pixmap,extra_font,
@@ -716,31 +759,29 @@ g_print ("configured \n");
 	/*-----------------------------------------------------------------*/
 	static void zipLeft(GtkWidget *widget, gpointer data) {
 		StockData *stockdata = data;
-		gchar *current;
+		gboolean current;
 		gint i;
 
-		current = g_strdup(stockdata->props.scroll);
-		stockdata->props.scroll = g_strdup("right2left");
+		current = stockdata->props.scroll;
+		stockdata->props.scroll = TRUE;
 		for (i=0;i<151;i++) {
 			Repaint(stockdata);
 		}
-		stockdata->props.scroll = g_strdup(current);
-		g_free(current);
+		stockdata->props.scroll = current;
 	}
 
 	/*-----------------------------------------------------------------*/
 	static void zipRight(GtkWidget *widget, gpointer data) {
 		StockData *stockdata = data;
-		gchar *current;
+		gboolean current;
 		gint i;
 
-		current = g_strdup(stockdata->props.scroll);
-		stockdata->props.scroll = g_strdup("left2right");
+		current = stockdata->props.scroll;
+		stockdata->props.scroll = FALSE;
 		for (i=0;i<151;i++) {
 			Repaint(stockdata);
 		}
-		stockdata->props.scroll = g_strdup(current);
-		g_free(current);
+		stockdata->props.scroll = current;
 	}
 
 	/*-----------------------------------------------------------------*/
@@ -818,7 +859,7 @@ g_print ("configured \n");
 	static void apply_cb( GtkWidget *widget, void *data ) {
 
 		char *tmpText;
-
+#ifdef FIXME
 		tmpText = gtk_entry_get_text(GTK_ENTRY(tik_syms_entry));
 		props.tik_syms = g_strdup(tmpText);
 
@@ -855,7 +896,7 @@ g_print ("configured \n");
 		properties_save(APPLET_WIDGET(applet)->privcfgpath);
 
 		properties_set(TRUE);
-
+#endif
 	}
 
 
@@ -1208,16 +1249,16 @@ g_print ("configured \n");
 
 
 		/* Set the checkbox according to current prefs */
-		if (strcmp(stockdata->props.output,"default")!=0)
+		if (stockdata->props.output == TRUE)
 			gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check),
 							TRUE);
-		if (strcmp(stockdata->props.scroll,"right2left")!=0)
+		if (stockdata->props.scroll == FALSE)
 			gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check2),
 							TRUE);
-		if (strcmp(stockdata->props.buttons,"yes") == 0)
+		if (stockdata->props.buttons == TRUE)
 			gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check4),
 							TRUE);
-		if (strcmp(stockdata->props.arrows,"arrows") ==0)
+		if (stockdata->props.arrows == TRUE)
 			gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check3),
 							TRUE);
 
@@ -1345,7 +1386,8 @@ g_print ("configured \n");
 		"<popup name=\"button3\">\n"
 		"   <menuitem name=\"Item 1\" verb=\"Props\" _label=\"Properties\"\n"
 		"             pixtype=\"stock\" pixname=\"gtk-properties\"/>\n"
-		"   <menuitem name=\"Item 2\" verb=\"Refresh\" _label=\"Refresh\"/>\n"
+		"   <menuitem name=\"Item 2\" verb=\"Refresh\" _label=\"Refresh\"\n"
+		"             pixtype=\"stock\" pixname=\"gtk-refresh\"/>\n"
 		"   <menuitem name=\"Item 3\" verb=\"About\" _label=\"About\"\n"
 		"             pixtype=\"stock\" pixname=\"gnome-stock-about\"/>\n"
 		"</popup>\n";
@@ -1359,7 +1401,10 @@ g_print ("configured \n");
 
 		gnome_vfs_init();
 		
+		panel_applet_add_preferences (applet, "/schemas/apps/gtik/prefs", NULL);
+		
 		stockdata = g_new0 (StockData, 1);
+		stockdata->applet = GTK_WIDGET (applet);
 		stockdata->max_rgb_str_len = 7;
 		stockdata->max_rgb_str_size = 8;
 		stockdata->buttons = g_strdup ("blank");
@@ -1433,7 +1478,7 @@ g_print ("configured \n");
 				                          updateOutput,stockdata);
 
 
-		if (!strcmp(stockdata->props.buttons,"yes")) {
+		if (stockdata->props.buttons == TRUE) {
 			gtk_widget_show(stockdata->leftButton);
 			gtk_widget_show(stockdata->rightButton);
 		}
