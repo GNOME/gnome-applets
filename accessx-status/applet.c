@@ -840,7 +840,11 @@ accessx_status_applet_altgraph_icon_set (AccessxStatusApplet *sapplet, GtkWidget
 								       pixbuf, 
 								       fg, 
 								       bg,
-								       N_("æ"));
+				       /* 
+					* should be N_("ae"));
+					* need en_ locale for this
+					*/
+								       ("æ"));
 		gdk_pixbuf_composite (glyph_pixbuf, pixbuf, 0, 0, 
 				      gdk_pixbuf_get_width (pixbuf),
 				      gdk_pixbuf_get_height (pixbuf),
