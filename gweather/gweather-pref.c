@@ -377,7 +377,7 @@ static void gweather_pref_create (void)
     gtk_widget_show (pref_net_proxy_btn);
     gtk_container_add (GTK_CONTAINER (pref_net_proxy_alignment), pref_net_proxy_btn);
 
-    pref_net_proxy_url_lbl = gtk_label_new (_("Proxy host:"));
+    pref_net_proxy_url_lbl = gtk_label_new (_("Proxy URL:"));
     gtk_widget_show (pref_net_proxy_url_lbl);
     gtk_table_attach (GTK_TABLE (pref_net_table), pref_net_proxy_url_lbl, 0, 1, 1, 2,
 		      (GtkAttachOptions) (GTK_FILL),
