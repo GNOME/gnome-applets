@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 2.5.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-01-31 14:11+0100\n"
-"PO-Revision-Date: 2004-01-31 14:12+0100\n"
+"POT-Creation-Date: 2004-02-01 16:12+0100\n"
+"PO-Revision-Date: 2004-02-01 16:11+0100\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian <i18n-nb@lister.ping.uio.no>\n"
 "MIME-Version: 1.0\n"
@@ -2903,24 +2903,32 @@ msgid ""
 "The color used when the stock's values has lowered. Has no effect when the "
 "user chooses to use the default theme fonts and colors."
 msgstr ""
+"Farge som brukes når aksjens verdi har gått ned. Har ingen effekt når bruker "
+"velger å bruke forvalgt temas skrifter og farger."
 
 #: gtik/gtik.schemas.in.h:16
 msgid ""
 "The color used when the stock's values has not changed. Has no effect when "
 "the user chooses to use the default theme fonts and colors."
 msgstr ""
+"Farge som brukes når aksjens verdi ikke er endret. Har ingen effekt når "
+"bruker velger å bruke forvalgt temas skrifter og farger."
 
 #: gtik/gtik.schemas.in.h:17
 msgid ""
 "The color used when the stock's values has raised. Has no effect when the "
 "user chooses to use the default theme fonts and colors."
 msgstr ""
+"Farge som brukes når aksjens verdi har gått opp. Har ingen effekt når bruker "
+"velger å bruke forvalgt temas skrifter og farger."
 
 #: gtik/gtik.schemas.in.h:18
 msgid ""
 "The font used for the display. Has no effect when the user chooses to use "
 "the default theme fonts and colors."
 msgstr ""
+"Skrift som brukes. Har ingen effekt når bruker velger å bruke forvalgt temas "
+"skrifter og farger."
 
 #: gtik/gtik.schemas.in.h:19
 msgid "The time interval until when the applet updates the stock data."
@@ -3169,6 +3177,8 @@ msgid ""
 "If true, then retreive a radar map from a location specified by the \"radar"
 "\" key."
 msgstr ""
+"Hent et radarkart fra en lokasjon spesifisert i nøkkelen «radar» hvis denne "
+"er true."
 
 #: gweather/gweather.schemas.in.h:5
 #: mini-commander/src/mini-commander.schemas.in.h:14
@@ -3177,11 +3187,11 @@ msgstr "Ikke brukt lenger"
 
 #: gweather/gweather.schemas.in.h:6
 msgid "The custom url from where to retrieve a radar map."
-msgstr ""
+msgstr "Egendefinert URL for henting av radarkart."
 
 #: gweather/gweather.schemas.in.h:7
 msgid "The interval, in seconds, between automatic updates."
-msgstr ""
+msgstr "Intervall for automatisk oppdatering i sekunder."
 
 #: gweather/gweather.schemas.in.h:9
 msgid "Update the data automatically"
@@ -3914,14 +3924,16 @@ msgstr "Hvis denne er aktivert vil passordet lagres i GConf"
 #: mailcheck/mailcheck.schemas.in.h:12
 msgid "If this is set mail will be checked every update-freq milliseconds"
 msgstr ""
+"Hvis denne er satt vil det sjekkes etter e-post med intervall «update-freq» "
+"millisekunder"
 
 #: mailcheck/mailcheck.schemas.in.h:13
 msgid "If this is set, we should run the exec-command"
-msgstr ""
+msgstr "Hvis denne er satt skal «exec-command» kjøres"
 
 #: mailcheck/mailcheck.schemas.in.h:14
 msgid "If this is set, we should run the newmail-command"
-msgstr ""
+msgstr "Hvis denne er satt skal «newmail-command» kjøres"
 
 #: mailcheck/mailcheck.schemas.in.h:15
 msgid "Interval for checking mail"
@@ -3988,7 +4000,7 @@ msgstr "Kommando som kjøres når bruker klikker på innboksmonitor"
 
 #: mailcheck/mailcheck.schemas.in.h:30
 msgid "Whether to reset mail status when you click on Inbox Monitor"
-msgstr ""
+msgstr "Om e-poststatus skal nullstillles når du klikker på innboksmonitor"
 
 #: mailcheck/mailcheck.schemas.in.h:31
 msgid "You've got mail!"
@@ -4158,7 +4170,7 @@ msgstr "Br_uk farger fra forvalgt tema"
 
 #: mini-commander/src/mini-commander.schemas.in.h:1
 msgid "Attempt to autocomplete a command from the history of commands entered."
-msgstr ""
+msgstr "Forsøk å fullføre kommando automatisk fra kommandohistorikken."
 
 #: mini-commander/src/mini-commander.schemas.in.h:2
 msgid "Background color, blue component"
@@ -5344,6 +5356,8 @@ msgid ""
 "are created. This format is used; anything that can be parsed by strftime() "
 "is valid."
 msgstr ""
+"Gule lapper gis som forvalg dagens dato som tittel når de opprettes. Dette "
+"formatet brukes; alle formater som kan tolkes av strftime() er gyldig."
 
 #: stickynotes/stickynotes.schemas.in.h:3
 msgid "Date format of note's title"
@@ -5362,6 +5376,8 @@ msgid ""
 "Default color for new sticky notes. This should be in html hex "
 "specification, for example \"#30FF50\"."
 msgstr ""
+"Forvalgt farge for nytt notat. Dette oppgis i heksadesimal notasjon som i "
+"HTML. For eksempel «#30FF50»."
 
 #: stickynotes/stickynotes.schemas.in.h:7
 msgid "Default font for new notes"
@@ -5372,6 +5388,8 @@ msgid ""
 "Default font for new sticky notes. This should be a Pango Font Name, for "
 "example \"Sans Italic 10\""
 msgstr ""
+"Forvalgt skrift for nye lapper. Dette må være et Pango skriftnavn, for "
+"eksempel «Sans Italic 10»"
 
 #: stickynotes/stickynotes.schemas.in.h:9
 msgid "Default height for new notes"
@@ -5397,25 +5415,31 @@ msgstr "Tomme lapper slettes alltid uten bekreftelse"
 msgid ""
 "Every time the specified number of minutes pass, the sticky notes are "
 "automatically saved."
-msgstr ""
+msgstr "Lappene lagres automatisk hver gang oppgitt antall minutter er gått."
 
 #: stickynotes/stickynotes.schemas.in.h:15
 msgid ""
 "If this option is disabled, a custom color can be used as the default color "
 "for all sticky notes."
 msgstr ""
+"Hvis dette alternativet er deaktivert vil en egendefinert farge kunne brukes "
+"som forvalgt farge for alle lapper."
 
 #: stickynotes/stickynotes.schemas.in.h:16
 msgid ""
 "If this option is disabled, a custom font can be used as the default font "
 "for all sticky notes."
 msgstr ""
+"Hvis dette alternativet er deaktivert vil en egendefinert skrift kunne "
+"brukes som forvalgt skrift for alle lapper."
 
 #: stickynotes/stickynotes.schemas.in.h:17
 msgid ""
 "If this option is enabled, the custom colors and fonts that have been "
 "assigned to individual notes will be ignored."
 msgstr ""
+"Hvis dette alternativet er aktivert vil egendefinerte farger og skrifter som "
+"er tildelt individuelle lapper bli ignorert."
 
 #: stickynotes/stickynotes.schemas.in.h:18
 msgid ""
@@ -5423,16 +5447,21 @@ msgid ""
 "options are \"0\" for \"New Note\", \"1\" for \"Show/Hide All Notes\", and "
 "\"2\" for \"Lock/Unlock All Notes\"."
 msgstr ""
+"Gjelder når programmet venstreklikkes eller hvis «enter» trykkes ned. "
+"Alternativene er «0» for «Nytt notat», «1» for «Vis notater» og «2» for «Lås "
+"notater»."
 
 #: stickynotes/stickynotes.schemas.in.h:19
 msgid "Specifies whether the sticky notes are locked (non-editable) or not."
-msgstr ""
+msgstr "Oppgir om notat er låst (ikke redigerbar) eller eller ikke."
 
 #: stickynotes/stickynotes.schemas.in.h:20
 msgid ""
 "Specifies whether the sticky notes are visible on ALL workspaces on the "
 "desktop, or not."
 msgstr ""
+"Oppgir om notatene er synlige på alle arbeidsområder på skrivebordet eller "
+"ikke."
 
 #: stickynotes/stickynotes.schemas.in.h:21
 msgid "Specifies whether the sticky notes are visible or not."
@@ -5452,11 +5481,11 @@ msgstr "Tilhørighet til arbeidsområde for gul lapp"
 
 #: stickynotes/stickynotes.schemas.in.h:25
 msgid "Whether to ask for confirmation when deleting a note"
-msgstr ""
+msgstr "Om bekreftelse er nødvendig ved sletting av notat eller ikke"
 
 #: stickynotes/stickynotes.schemas.in.h:26
 msgid "Whether to force the default color and font on all notes"
-msgstr ""
+msgstr "Om forvalgt farge og skrift skal tvinges på alle notater"
 
 #: stickynotes/stickynotes.schemas.in.h:27
 msgid "Whether to use the default system color"
