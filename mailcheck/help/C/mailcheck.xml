@@ -3,8 +3,8 @@
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
   <!ENTITY appletversion "1.1">
-  <!ENTITY manrevision "2.2">
-  <!ENTITY date "September 2002">
+  <!ENTITY manrevision "2.3">
+  <!ENTITY date "August 2003">
   <!ENTITY applet "Inbox Monitor">
 ]>
 
@@ -23,7 +23,8 @@
   <articleinfo> 
 	 <title>&applet; Applet Manual V&manrevision;</title> 
 	 <copyright> 
-		<year>2002</year>  
+		<year>2002</year>
+		<year>2003</year>  
 		<holder>Sun Microsystems</holder> 
 	 </copyright>
 	 <copyright> 
@@ -62,7 +63,7 @@
 		  <surname>GNOME Documentation Team</surname> 
 		  <affiliation> 
 			 <orgname>Sun Microsystems</orgname> 
-			 <address> <email>gdocteam@sun.com</email> </address> 
+			 <address></address> 
 		  </affiliation> 
 		</author>
 		<author> 
@@ -100,17 +101,23 @@
 		  <revnumber>&applet; Applet Manual V&manrevision;</revnumber> 
 		  <date>&date;</date> 
 		  <revdescription> 
-			 <para role="author">Sun GNOME Documentation Team
-				<email>gdocteam@sun.com</email></para>	 
+			 <para role="author">Sun GNOME Documentation Team</para>	 
 			 <para role="publisher">GNOME Documentation Project</para> 
 		  </revdescription> 
 		</revision> 
 		<revision> 
+		  <revnumber>Inbox Monitor Applet Manual V2.2</revnumber> 
+		  <date>September 2002</date> 
+		  <revdescription> 
+			 <para role="author">Sun GNOME Documentation Team</para> 
+			 <para role="publisher">GNOME Documentation Project</para> 
+		  </revdescription> 
+		</revision>
+		<revision> 
 		  <revnumber>Inbox Monitor Applet Manual V2.1</revnumber> 
 		  <date>August 2002</date> 
 		  <revdescription> 
-			 <para role="author">Sun GNOME Documentation Team
-				<email>gdocteam@sun.com</email></para>
+			 <para role="author">Sun GNOME Documentation Team</para>
 			 <para role="author">Eric Baudais
 				<email>baudais@okstate.edu</email></para> 
 			 <para role="publisher">GNOME Documentation Project</para> 
@@ -120,8 +127,7 @@
 		  <revnumber>Inbox Monitor Applet Manual V2.0</revnumber> 
 		  <date>May 2002</date> 
 		  <revdescription> 
-			 <para role="author">Sun GNOME Documentation Team
-				<email>gdocteam@sun.com</email></para>
+			 <para role="author">Sun GNOME Documentation Team</para>
 			 <para role="author">Eric Baudais
 				<email>baudais@okstate.edu</email></para> 
 			 <para role="publisher">GNOME Documentation Project</para> 
@@ -221,7 +227,7 @@
 		  <varlistentry> 
 			 <term><guilabel>Check for mail every</guilabel></term> 
 			 <listitem> 
-			 <para>Use this spin box to specify how often <application>&applet;</application>
+			 <para>Use the spin boxes to specify how often <application>&applet;</application>
 			 checks the mail server to determine if there is new mail. </para> 
 			 </listitem> 
 		  </varlistentry> 
@@ -234,10 +240,11 @@
 			 </listitem> 
 		  </varlistentry>
 		  <varlistentry> 
-			 <term><guilabel>Set the number of unread mails to zero when clicked</guilabel></term> 
+			 <term><guilabel>Stop animation when double clicked</guilabel></term> 
 			 <listitem> 
-			 <para>Select this option to set the number of unread messages to zero 
-			 when you click on the applet.</para> 
+			 <para>If you select an animated image from the <guilabel>Select animation</guilabel>
+			 drop-down list, select this option to stop the animation when you double-click
+			 on the applet.</para> 
 			 </listitem> 
 		  </varlistentry> 
 		  <varlistentry> 
@@ -265,9 +272,9 @@
 			 </listitem> 
 		  </varlistentry> 
 		  <varlistentry> 
-			 <term><guilabel>When clicked</guilabel></term> 
+			 <term><guilabel>When double clicked</guilabel></term> 
 			 <listitem> 
-			 <para>Select this option to run a command when you click on the 
+			 <para>Select this option to run a command when you double-click on the 
 			 <application>&applet;</application> applet. Type the command in the text box provided. 
 			 For example, to start a <application>Netscape Messenger</application> window when you 
 			 click on the applet, type <command>netscape -mail</command> in the text box.</para> 
@@ -333,6 +340,14 @@
 			 <para>If you select <guilabel>Remote POP3-server</guilabel> or
 			 <guilabel>Remote IMAP-server</guilabel> as your mailbox location, 
 			 use this text box to specify the password to access the remote mail server.</para> 
+			 </listitem> 
+		  </varlistentry> 
+		  <varlistentry> 
+			 <term><guilabel>Save password to disk</guilabel></term> 
+			 <listitem> 
+			 <para>Select this option to save the password in encrypted format in 
+			 the <application>gconf</application> database. If you select this option, the applet does
+			 not prompt you to enter the password each time you want to access the mail server.</para> 
 			 </listitem> 
 		  </varlistentry> 
 		  <varlistentry> 
