@@ -2,8 +2,6 @@ INCLUDES =						\
 	-I$(srcdir)					\
 	-I$(top_srcdir)/screen-exec			\
 	-DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\"	\
-	-DGNOME_DISABLE_DEPRECATED=1	\
-	-DGTK_DISABLE_DEPRECATED=1	\
 	$(GNOME_APPLETS_CFLAGS)                         \
 	$(GTOP_APPLETS_CFLAGS)				\
 	-Wall
