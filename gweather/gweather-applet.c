@@ -112,10 +112,10 @@ void place_widgets (GWeatherApplet *gw_applet)
     if ((gw_applet->orient == PANEL_APPLET_ORIENT_LEFT) || 
          (gw_applet->orient == PANEL_APPLET_ORIENT_RIGHT)) {
 	 horiz = FALSE;
-         gw_applet->box = gtk_vbox_new (FALSE, 4);         
+         gw_applet->box = gtk_vbox_new (TRUE, 6);         
     }
     else {
-         gw_applet->box = gtk_hbox_new (FALSE, 4);
+         gw_applet->box = gtk_hbox_new (TRUE, 6);
 	 horiz = TRUE;
     }
     
@@ -167,9 +167,9 @@ void place_widgets (GWeatherApplet *gw_applet)
      		gw_applet->boxes[i] = gtk_vbox_new (FALSE, 0);
      		
      	gtk_container_add (GTK_CONTAINER (gw_applet->events[i]),  gw_applet->boxes[i]);
-     	gtk_box_pack_start (GTK_BOX (gw_applet->boxes[i]), gw_applet->images[i], FALSE, FALSE, 0);
+     	gtk_box_pack_start (GTK_BOX (gw_applet->boxes[i]), gw_applet->images[i], TRUE, FALSE, 0);
 	gtk_box_pack_start (GTK_BOX (gw_applet->boxes[i]), 
-				                      gw_applet->labels[i], FALSE, FALSE, 0);
+				                      gw_applet->labels[i], TRUE, FALSE, 0);
     }
     
     gtk_widget_show_all (GTK_WIDGET (gw_applet->applet));
