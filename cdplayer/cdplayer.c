@@ -338,6 +338,8 @@ activate_cb (GtkEntry     *entry,
     newpath = gtk_editable_get_chars (GTK_EDITABLE (entry), 0, -1);
     if(newpath && strlen(newpath) > 2 && strcmp(cd->devpath, newpath))
             {
+		if(cd_try_open(cd))
+		    cdrom_stop(cd->cdrom_device);
                 cd_close(cd);
                 cd->devpath = g_strdup(newpath);
                 if (!cd_try_open(cd)) {
