@@ -383,6 +383,8 @@ window_response (GtkWidget *w, int response, gpointer data)
                 gkb_prop_apply_clicked(w, data);
 	case GTK_RESPONSE_CLOSE:
                 gtk_widget_destroy (w);
+	case GTK_RESPONSE_HELP:
+                prophelp_cb (gkb->applet, data);
         }
 }
 
@@ -405,9 +407,10 @@ gkb_prop_create_property_box (GkbPropertyBoxInfo * pbi)
   /* Create property box */
   propwindow = gtk_dialog_new_with_buttons (_("GKB Properties"), NULL,
                                             GTK_DIALOG_DESTROY_WITH_PARENT,
+                                            GTK_STOCK_HELP, GTK_RESPONSE_HELP,
                                             GTK_STOCK_APPLY, GTK_RESPONSE_APPLY,
-                                            GTK_STOCK_OK, GTK_RESPONSE_OK,
                                             GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
+                                            GTK_STOCK_OK, GTK_RESPONSE_OK,
                                             NULL);
 
   propnotebook =  gtk_notebook_new ();
