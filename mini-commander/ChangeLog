@@ -1,3 +1,14 @@
+2002-03-31  Deepa Natarajan <deepa.natarajan@wipro.com>
+
+	This fixes bug# 76744
+	* src/preferences.[ch]: provide option to enable/disable default
+	theme settings.
+
+	* src/command_line.c: don't set the fg & bg color for the entry box
+	if default themes is enabled.
+
+	* src/mini-commander.schemas: entry for default_theme_color 
+
 2002-03-24  Kevin Vandersloot <kfv101@psu.edu>
 
 	* src/command_line.c: don't do tab completion for shift-tab
