@@ -250,9 +250,7 @@ multiload_applet_tooltip_update(LoadGraph *g)
 	
 	for (i = 0; i < (g->n - 1); i++)
 		total_used += g->data[0][i];
-	/* netload has a fifth data structute */
-	if (!strncmp(g->name, "netload", strlen("netload")))
-		total_used += g->data[0][g->n - 1];	
+	
 	percent = 100 * (gdouble)total_used / (gdouble)g->draw_height;
 
 	tooltip_text = g_strdup_printf(_("%s:\n%d%% in use"), name, percent);

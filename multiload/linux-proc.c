@@ -224,7 +224,7 @@ GetLoadAvg (int Maximum, int data [2], LoadGraph *g)
 }
 
 void
-GetNet (int Maximum, int data [4], LoadGraph *g)
+GetNet (int Maximum, int data [5], LoadGraph *g)
 {
 #define SLIP_COUNT	0
 #define PPP_COUNT	1
@@ -237,6 +237,8 @@ GetNet (int Maximum, int data [4], LoadGraph *g)
     char *cp, buffer[256];
     int found = 0;
     FILE *fp;
+    
+    /* FIXME: this is hosed for multiple applets with the static variables */
 
     /*
      * We use the maximum number of bits we've seen come through to scale
@@ -343,6 +345,7 @@ GetNet (int Maximum, int data [4], LoadGraph *g)
 	       data[0], data[1], data[2], Maximum);
 #endif
     }
+    data[4] = Maximum - data[3] - data[2] - data[1] - data[0];
     memcpy(past, present, sizeof(present));
 }
 

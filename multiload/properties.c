@@ -176,7 +176,7 @@ color_picker_set_cb(GnomeColorPicker *color_picker, guint arg1, guint arg2, guin
 	
 	gconf_path = g_object_get_data(G_OBJECT(object), "gconf_path");
 	ma = g_object_get_data(G_OBJECT(object), "applet");	
-	
+
 	prop_type = 0;
 	
 	if (strstr(gconf_path, "cpuload"))
@@ -394,6 +394,7 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	add_color_selector(page, _("PL_IP"), "netload_color1", ma);
 	add_color_selector(page, _("Et_hernet"), "netload_color2", ma);
 	add_color_selector(page, _("_Other"), "netload_color3", ma);
+	add_color_selector(page, _("_Background"), "netload_color4", ma);
 	
 	page = add_page(notebook,  _("Swap Space"));
 	add_color_selector(page, _("_Used"), "swapload_color0", ma);
