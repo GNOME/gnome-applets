@@ -142,8 +142,8 @@ about_cb (BonoboUIComponent          *uic,
 		return;
 	}
         
-	file = gnome_program_locate_file (NULL, GNOME_FILE_DOMAIN_APP_PIXMAP, 
-					  "accessx-status-applet.png", 
+	file = gnome_program_locate_file (NULL, GNOME_FILE_DOMAIN_PIXMAP, 
+					  "accessx-status-applet/ax-applet.png", 
 					  FALSE, NULL);
 	pixbuf = gdk_pixbuf_new_from_file (file, &error);
 	g_free (file);
