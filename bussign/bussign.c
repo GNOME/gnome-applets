@@ -24,8 +24,8 @@ create_bussign_widget(GtkWidget *a_parent);
 static int
 refresh_imagefile(void);
 
-static int
-bussign_refresh_widget_dummy(AppletWidget *a_applet, gpointer *a_data);
+static void
+bussign_refresh_widget_dummy(AppletWidget *a_applet, gpointer a_data);
 
 static int
 bussign_refresh(gpointer data);
@@ -50,8 +50,8 @@ session_save(GtkWidget *a_widget,
 	     const char *a_cfgpath,
 	     const char *a_global_cfgpath);
 
-static int
-bussign_refresh_widget_dummy(AppletWidget *a_applet, gpointer *a_data)
+static void
+bussign_refresh_widget_dummy(AppletWidget *a_applet, gpointer a_data)
 {
   bussign_refresh(NULL);
 }
