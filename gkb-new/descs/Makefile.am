@@ -1,7 +1,7 @@
 %.keyprop: %.keyprop.in 
 		$(top_srcdir)/intltool-merge -d -p $(top_srcdir)/po $< $(srcdir)/$*.keyprop
 
-preset_data_predata = AM_Armenian.keyprop.in \
+preset_data_predata = AM_Armenian.keyprop.in AR_Arabic.keyprop.in \
 		AZ_Azerbaidjani_Turkic.keyprop.in Armenian.keyprop.in \
 		BE_Dutch.keyprop.in BG_Bulgarian.keyprop.in \
 		BG_Bulgarian_x.keyprop.in BR_Portuguese.keyprop.in \

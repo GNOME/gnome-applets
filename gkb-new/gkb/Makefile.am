@@ -1,10 +1,14 @@
 GKB_BITMAPS = \
-	at.png be.png bg.png br.png ca.png ch.png cu.png cz.png de.png \
-	dk.png ee.png es.png fi.png fr.png gb.png gkb-foot.png gr.png \
-	hu.png il.png is.png it.png jp.png lt.png mx.png nl.png no.png \
-	pl.png pt.png qc.png ro.png ru.png se.png si.png sk.png th.png \
-	tr.png un.png us.png uy.png yu.png mk.png eu.png hr.png ar.png \
-        am.png az.png by.png cs.png ge.png la.png sv.png ua.png vn.png
+	ae.png am.png ar.png at.png az.png be.png bg.png bh.png br.png \
+	by.png ca.png ch.png cu.png cz.png cs.png de.png dj.png dk.png \
+	dz.png ee.png eg.png es.png eu.png fi.png fr.png gb.png ge.png \
+	gkb-foot.png gr.png hr.png hu.png il.png iq.png is.png it.png jo.png \
+	jp.png km.png kw.png la.png lb.png lt.png ly.png ma.png mk.png \
+	mx.png nl.png no.png om.png pl.png ps.png pt.png qa.png qc.png \
+	ro.png ru.png sa.png se.png si.png sk.png so.png su.png sv.png \
+	sy.png th.png tn.png tr.png ua.png uk.png un.png us.png uy.png \
+	vn.png ye.png yu.png
+
 
 EXTRA_DIST = $(GKB_BITMAPS)
 
