@@ -232,6 +232,7 @@ static void delete_if_empty(char *file)
 		if (fgets(buf, sizeof(buf), f) == NULL)
 			{
 			fclose(f);
+			unlink(file);
 			return;
 			}
 		buf[255] = '\0';
@@ -307,6 +308,11 @@ static GtkWidget *get_topic_image(gchar *topic, AppData *ad)
 	if (icon_file)
 		{
 		icon = gnome_pixmap_new_from_file_at_size(icon_file, 20, 24);
+		if (GNOME_PIXMAP(icon)->pixmap == NULL)
+			{
+			gtk_widget_destroy(icon);
+			icon = NULL;
+			}
 		}
 	
 	g_free(gif_file);
