@@ -288,17 +288,49 @@ preadd_cb (GtkTreeSelection *selection,
   return;
 }
 
+static gboolean
+comparefunc (GkbKeymap *k1, GkbKeymap *k2)
+{
+  if ((k1->name && k2->name) && (k1->country && k2->country))
+    return (strcmp (k1->name, k2->name) || strcmp (k1->country, k2->country));
+}
 
 static gint
 addwadd_cb (GtkWidget * addbutton, GkbPropertyBoxInfo * pbi)
 {
   GkbKeymap *tdata;
+  GtkWidget *dialog;
+  GKB * gkb = pbi->gkb;
   /* Do not add Language and Country rows */
 
   if (pbi->keymap_for_add) 
    {
    if (pbi->keymap_for_add->command != NULL)
     {
+      if (g_list_find_custom (pbi->keymaps, pbi->keymap_for_add, (GCompareFunc) comparefunc) != NULL)
+        { 
+          GtkWidget *dialog = NULL ; 
+          gchar *str;
+          str = _("Keymap `%s' for the country %s already exists");
+
+          dialog = gtk_message_dialog_new (GTK_WINDOW (gkb->addwindow),
+					   GTK_DIALOG_DESTROY_WITH_PARENT,
+					   GTK_MESSAGE_INFO,
+					   GTK_BUTTONS_OK,
+			                   str,
+					   pbi->keymap_for_add->name,
+					   pbi->keymap_for_add->country);
+
+          g_signal_connect_swapped (GTK_OBJECT (dialog),
+				    "response",
+				    G_CALLBACK (gtk_widget_destroy),
+				    GTK_OBJECT (dialog));
+
+          gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
+          gtk_widget_show (dialog);
+          return FALSE;
+        }
+
       tdata = g_new0 (GkbKeymap, 1);
 
       tdata->name = g_strdup (pbi->keymap_for_add->name);
