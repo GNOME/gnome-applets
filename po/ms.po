@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-11-15 04:59+0800\n"
-"PO-Revision-Date: 2003-11-15 04:59+0800\n"
+"POT-Creation-Date: 2004-01-01 14:18+0800\n"
+"PO-Revision-Date: 2004-01-01 14:17+0730\n"
 "Last-Translator: Hasbullah Bin Pit <sebol@ikhlas.com>\n"
 "Language-Team: Projek Gabai <gabai-penyumbang@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -26,6 +26,7 @@ msgstr ""
 #: multiload/GNOME_MultiloadApplet.xml.h:1
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:1
 #: wireless/GNOME_WirelessApplet.xml.h:1
+#: gswitchit/GNOME_GSwitchItApplet.xml.h:1
 msgid "_About..."
 msgstr "_Perihal..."
 
@@ -40,6 +41,7 @@ msgstr "_Perihal..."
 #: mixer/GNOME_MixerApplet.xml.h:2 modemlights/GNOME_ModemlightsApplet.xml.h:2
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:3
 #: wireless/GNOME_WirelessApplet.xml.h:2
+#: gswitchit/GNOME_GSwitchItApplet.xml.h:3
 msgid "_Help"
 msgstr "_Bantuan"
 
@@ -52,7 +54,7 @@ msgid "AccessX Status Applet Factory"
 msgstr "Kilang Aplet Status AccessX"
 
 #: accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:2
-#: accessx-status/applet.c:1177
+#: accessx-status/applet.c:1194
 msgid "Keyboard Accessibility Status"
 msgstr "Status Kebolehcapaian Papan Kekunci"
 
@@ -71,21 +73,22 @@ msgstr "Papar status bagi kebolehan kebolehcapaian papan kekunci"
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:5
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:4
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:3
+#: gswitchit/GNOME_GSwitchItApplet.server.in.in.h:5
 msgid "Utility"
 msgstr "Utiliti"
 
 #: accessx-status/applet.c:135 battstat/battstat_applet.c:894
-#: cdplayer/cdplayer.c:591 charpick/charpick.c:591 drivemount/drivemount.c:521
+#: cdplayer/cdplayer.c:591 charpick/charpick.c:591 drivemount/drivemount.c:540
 #: geyes/geyes.c:228 gkb-new/gkb-applet.c:84 gtik/gtik.c:775
 #: gweather/gweather-about.c:44 mailcheck/mailcheck.c:2442
 #: mini-commander/src/about.c:48 mixer/mixer.c:1062
 #: modemlights/modemlights.c:115 multiload/main.c:58
-#: stickynotes/stickynotes_applet_callbacks.c:191
-#: wireless/wireless-applet.c:560
+#: stickynotes/stickynotes_applet_callbacks.c:198
+#: wireless/wireless-applet.c:560 gswitchit/gswitchit-applet.c:483
 msgid "translator_credits"
 msgstr "Hasbullah Bin Pit <sebol@ikhlas.com>, Merlimau."
 
-#: accessx-status/applet.c:157 accessx-status/applet.c:1180
+#: accessx-status/applet.c:157 accessx-status/applet.c:1197
 msgid "AccessX Status"
 msgstr "Status AccessX"
 
@@ -107,11 +110,12 @@ msgstr "Terdapat ralat memapar pelihat bantuan: %s"
 msgid "There was an error launching the keyboard capplet : %s"
 msgstr "Terdapat ralat melancarkan aplet papankekunci: %s"
 
-#: accessx-status/applet.c:463 accessx-status/applet.c:496
+#. Note to translators: the first letter of the alphabet, not the indefinite article
+#: accessx-status/applet.c:461 accessx-status/applet.c:499
 msgid "a"
 msgstr "a"
 
-#: accessx-status/applet.c:1182
+#: accessx-status/applet.c:1199
 msgid "Displays current state of keyboard accessibility features"
 msgstr "Papar keadaan semasa bagi kebolehan kebolehcapaian papan kekunci"
 
@@ -420,7 +424,7 @@ msgstr "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 msgid "This utility shows the status of your laptop battery."
 msgstr "Utiliti Bateri ini memaparkan status bateri laptop anda."
 
-#: battstat/battstat_applet.c:1544
+#: battstat/battstat_applet.c:1531
 msgid ""
 "Can't access ACPI events in /var/run/acpid.socket! Make sure the ACPI "
 "subsystem is working and the acpid daemon is running."
@@ -474,9 +478,9 @@ msgstr "Penampilan"
 msgid "Battery Charge Monitor Preferences"
 msgstr "Keutamaan Monitor Cas Bateri"
 
-#: battstat/battstat_applet.glade.h:13 drivemount/properties.c:349
+#: battstat/battstat_applet.glade.h:13 drivemount/properties.c:352
 #: gweather/gweather-pref.c:759 mailcheck/mailcheck.c:2031
-#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:559
+#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:563
 msgid "General"
 msgstr "Umum"
 
@@ -532,11 +536,11 @@ msgstr "_Maklum bila cas bateri adalah rendah"
 msgid "_Yellow:"
 msgstr "_Kuning:"
 
-#: battstat/properties.c:296 drivemount/drivemount.c:479
-#: drivemount/properties.c:589 mailcheck/mailcheck.c:2298
+#: battstat/properties.c:296 drivemount/drivemount.c:498
+#: drivemount/properties.c:595 mailcheck/mailcheck.c:2298
 #: mailcheck/mailcheck.c:2547 mini-commander/src/preferences.c:393
-#: mixer/mixer.c:1170 stickynotes/stickynotes_applet_callbacks.c:169
-#: stickynotes/stickynotes_applet_callbacks.c:317
+#: mixer/mixer.c:1170 stickynotes/stickynotes_applet_callbacks.c:176
+#: stickynotes/stickynotes_applet_callbacks.c:324
 #: wireless/wireless-applet.c:535 wireless/wireless-applet.c:609
 #, c-format
 msgid "There was an error displaying help: %s"
@@ -691,7 +695,7 @@ msgstr ""
 "aplet ini"
 
 #: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:609
-#: charpick/charpick.c:753 charpick/properties.c:345
+#: charpick/charpick.c:755 charpick/properties.c:345
 msgid "Character Palette"
 msgstr "Palet Aksara"
 
@@ -699,7 +703,7 @@ msgstr "Palet Aksara"
 msgid "Charpicker Applet Factory"
 msgstr "Kilang Aplet Charpicker"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:3
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:3 charpick/charpick.c:755
 msgid "Insert characters"
 msgstr "Selit Aksara"
 
@@ -817,7 +821,7 @@ msgid "Character Palette Preferences"
 msgstr "Keutamaan Palet Aksara"
 
 #: drivemount/GNOME_DriveMountApplet.server.in.in.h:1
-#: drivemount/drivemount.c:539
+#: drivemount/drivemount.c:268 drivemount/drivemount.c:558
 msgid "Disk Mounter"
 msgstr "Pelekap Cakera"
 
@@ -841,41 +845,41 @@ msgstr "_Lungsur..."
 msgid "_Eject"
 msgstr "_Eject"
 
-#: drivemount/drivemount.c:420 mailcheck/mailcheck.c:659
+#: drivemount/drivemount.c:439 mailcheck/mailcheck.c:659
 #, c-format
 msgid "There was an error executing %s: %s"
 msgstr "Terdapat ralat melaksanakan %s : %s"
 
-#: drivemount/drivemount.c:427
+#: drivemount/drivemount.c:446
 msgid "Cannot browse device"
 msgstr "Tak dapat lungsuri peranti"
 
-#: drivemount/drivemount.c:485 drivemount/properties.c:595
+#: drivemount/drivemount.c:504 drivemount/properties.c:601
 #: mailcheck/mailcheck.c:2304 mailcheck/mailcheck.c:2553
 msgid "Error displaying help"
 msgstr "Ralat memapar bantuan"
 
-#: drivemount/drivemount.c:540
+#: drivemount/drivemount.c:559
 msgid "(C) 1999-2001 The GNOME Hackers\n"
 msgstr "(C) 1999-2001 Penggodek GNOME\n"
 
-#: drivemount/drivemount.c:542
+#: drivemount/drivemount.c:561
 msgid "Applet for mounting and unmounting block volumes."
 msgstr "Aplet untuk melekapkan dan mengenyahlekapkan isipadu blok."
 
-#: drivemount/drivemount.c:742
+#: drivemount/drivemount.c:761
 msgid " mounted"
 msgstr " dilekapkan"
 
-#: drivemount/drivemount.c:744
+#: drivemount/drivemount.c:763
 msgid " not mounted"
 msgstr "tidak dilekapkan"
 
-#: drivemount/drivemount.c:856
+#: drivemount/drivemount.c:875
 msgid "\" reported:\n"
 msgstr "\" melapor:\n"
 
-#: drivemount/drivemount.c:858
+#: drivemount/drivemount.c:877
 msgid ""
 "Drivemount command failed.\n"
 "\""
@@ -883,7 +887,7 @@ msgstr ""
 "Arahan pelekapan pemacu gagal.\n"
 "\""
 
-#: drivemount/drivemount.c:864
+#: drivemount/drivemount.c:883
 msgid "Cannot mount device"
 msgstr "tidak dapat melekapkan peranti"
 
@@ -895,84 +899,88 @@ msgstr "Selang hadmasa untuk menyemak status titik lepakan"
 msgid "Time in seconds between status updates"
 msgstr "Masa dalam saat di antara kemaskini status"
 
-#: drivemount/properties.c:327
+#: drivemount/properties.c:330
 msgid "Disk Mounter Preferences"
 msgstr "Keutamaan Pelekap Cakera"
 
-#: drivemount/properties.c:355
+#: drivemount/properties.c:358
 msgid "_Mount directory:"
 msgstr "Direktori _Lekapan:"
 
-#: drivemount/properties.c:361
+#: drivemount/properties.c:364
 msgid "Select Mount Directory"
 msgstr "Pilih Direktori Lekapan"
 
-#: drivemount/properties.c:383
+#: drivemount/properties.c:386
 msgid "_Update interval:"
 msgstr "Selang masa _kemaskini:"
 
-#: drivemount/properties.c:406 mailcheck/mailcheck.c:2102
-#: mailcheck/mailcheck.c:2108 modemlights/properties.c:466
+#: drivemount/properties.c:409 mailcheck/mailcheck.c:2102
+#: mailcheck/mailcheck.c:2108 modemlights/properties.c:468
 msgid "seconds"
 msgstr "saat"
 
-#: drivemount/properties.c:419
+#: drivemount/properties.c:422
 msgid "_Icon:"
 msgstr "_Ikon:"
 
-#: drivemount/properties.c:445
+#: drivemount/properties.c:448
 msgid "Floppy"
 msgstr "Liut"
 
-#: drivemount/properties.c:448
+#: drivemount/properties.c:451
 msgid "Cdrom"
 msgstr "CDROM"
 
-#: drivemount/properties.c:451
+#: drivemount/properties.c:454
 msgid "Cd Recorder"
 msgstr "Perekod CD"
 
-#: drivemount/properties.c:454
+#: drivemount/properties.c:457
 msgid "Zip Drive"
 msgstr "Pemacu Zip"
 
-#: drivemount/properties.c:457
+#: drivemount/properties.c:460
 msgid "Hard Disk"
 msgstr "Cakera Keras"
 
-#: drivemount/properties.c:460
+#: drivemount/properties.c:463
 msgid "Jaz Drive"
 msgstr "Pemacu Jaz"
 
-#: drivemount/properties.c:463
+#: drivemount/properties.c:466
+msgid "USB Stick"
+msgstr ""
+
+#: drivemount/properties.c:469
 msgid "Custom"
 msgstr "Sendiri"
 
-#: drivemount/properties.c:482
+#: drivemount/properties.c:488
 msgid "Select icon for mounted"
 msgstr "Pilih ikon pelekapan"
 
-#: drivemount/properties.c:489
+#: drivemount/properties.c:495
 msgid "Moun_ted icon:"
 msgstr "Ikon di_lekap:"
 
-#: drivemount/properties.c:510
+#: drivemount/properties.c:516
 msgid "Select icon for unmounted"
 msgstr "Pilih ikon untuk dinyahlekap"
 
-#: drivemount/properties.c:517
+#: drivemount/properties.c:523
 msgid "Unmou_nted icon:"
 msgstr "Ikon _nyahlekap:"
 
-#: drivemount/properties.c:533
+#: drivemount/properties.c:539
 msgid "_Scale size to panel"
 msgstr "_Skalakan saiz ke panel"
 
-#: drivemount/properties.c:540
+#: drivemount/properties.c:546
 msgid "_Eject disk when unmounting"
 msgstr "_Lenting  bila nyahlekap"
 
-#: drivemount/properties.c:550
+#: drivemount/properties.c:556
 msgid "Use _automount friendly status test"
 msgstr "Guna ujian status kemesraan _autolekap "
 
@@ -2370,7 +2378,7 @@ msgid "Flag and Label"
 msgstr "Flag dan Label"
 
 #: gkb-new/prop.c:257 gtik/gtik.c:1530 gweather/gweather-pref.c:745
-#: modemlights/properties.c:442
+#: modemlights/properties.c:444
 msgid "Display"
 msgstr "Paparan"
 
@@ -2409,7 +2417,7 @@ msgid "_Keyboards:"
 msgstr "_PapanKekunci:"
 
 # ui/galeon.glade.h:247
-#: gkb-new/prop.c:457 multiload/properties.c:420
+#: gkb-new/prop.c:457 multiload/properties.c:425
 msgid "Options"
 msgstr "Opsyen"
 
@@ -2563,7 +2571,7 @@ msgid "_Width:"
 msgstr "_Lebar:"
 
 #: gtik/gtik.c:1562 mini-commander/src/mini-commander.glade.h:24
-#: multiload/properties.c:483
+#: multiload/properties.c:488
 msgid "pixels"
 msgstr "piksel"
 
@@ -2591,7 +2599,7 @@ msgstr "Stok _turun:"
 msgid "Stock _unchanged:"
 msgstr "Stok Tak berubah:"
 
-#: gtik/gtik.c:1673 modemlights/properties.c:576
+#: gtik/gtik.c:1673 modemlights/properties.c:580
 msgid "_Background:"
 msgstr "Latar_Belakang:"
 
@@ -2611,11 +2619,11 @@ msgstr ""
 "Stock Ticker\n"
 "Peroleh kemaskini petikan stok berterusan"
 
-#: gtik/gtik.c:2020
+#: gtik/gtik.c:2021
 msgid "(No"
 msgstr "(Tiada"
 
-#: gtik/gtik.c:2021
+#: gtik/gtik.c:2022
 msgid "Change "
 msgstr "Penukaran"
 
@@ -3091,27 +3099,33 @@ msgstr "Barat laut"
 msgid "North - Northwest"
 msgstr "Utara - Barat Laut"
 
-#: gweather/weather.c:143 gweather/weather.c:160 gweather/weather.c:231
+#: gweather/weather.c:142 gweather/weather.c:1817 gweather/weather.c:1829
+#: gweather/weather.c:1841 gweather/weather.c:1853 gweather/weather.c:1871
+#: gweather/weather.c:1883
+msgid "Unknown"
+msgstr "Entah"
+
+#: gweather/weather.c:144 gweather/weather.c:161 gweather/weather.c:232
 msgid "Invalid"
 msgstr "Tak sah"
 
-#: gweather/weather.c:149
+#: gweather/weather.c:150
 msgid "Clear Sky"
 msgstr "Langit Cerah"
 
-#: gweather/weather.c:150
+#: gweather/weather.c:151
 msgid "Broken clouds"
 msgstr "Awan terpecah"
 
-#: gweather/weather.c:151
+#: gweather/weather.c:152
 msgid "Scattered clouds"
 msgstr "Awan berselerak"
 
-#: gweather/weather.c:152
+#: gweather/weather.c:153
 msgid "Few clouds"
 msgstr "Sedikit berawan"
 
-#: gweather/weather.c:153
+#: gweather/weather.c:154
 msgid "Overcast"
 msgstr "Mendung"
 
@@ -3119,323 +3133,319 @@ msgstr "Mendung"
 #. * etc means, you can go to http://www.weather.com/glossary/ and
 #. * http://www.crh.noaa.gov/arx/wx.tbl.html
 #. NONE
-#: gweather/weather.c:192 gweather/weather.c:194
+#: gweather/weather.c:193 gweather/weather.c:195
 msgid "Thunderstorm"
 msgstr "Ribut Petir"
 
 #. DRIZZLE
-#: gweather/weather.c:193
+#: gweather/weather.c:194
 msgid "Drizzle"
 msgstr ""
 
-#: gweather/weather.c:193
+#: gweather/weather.c:194
 msgid "Light drizzle"
 msgstr ""
 
-#: gweather/weather.c:193
+#: gweather/weather.c:194
 msgid "Moderate drizzle"
 msgstr ""
 
-#: gweather/weather.c:193
+#: gweather/weather.c:194
 #, fuzzy
 msgid "Heavy drizzle"
 msgstr "Hujan Lebat"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:194
 msgid "Freezing drizzle"
 msgstr ""
 
 #. RAIN
-#: gweather/weather.c:194
+#: gweather/weather.c:195
 msgid "Rain"
 msgstr "Hujan"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:195
 msgid "Light rain"
 msgstr ""
 
-#: gweather/weather.c:194
+#: gweather/weather.c:195
 msgid "Moderate rain"
 msgstr ""
 
-#: gweather/weather.c:194
+#: gweather/weather.c:195
 msgid "Heavy rain"
 msgstr "Hujan lebat"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:195
 msgid "Rain showers"
 msgstr "Pancuran hujan"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:195
 msgid "Freezing rain"
 msgstr "Hujan membeku"
 
 #. SNOW
-#: gweather/weather.c:195
+#: gweather/weather.c:196
 msgid "Snow"
 msgstr "Salji"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:196
 msgid "Light snow"
 msgstr ""
 
-#: gweather/weather.c:195
+#: gweather/weather.c:196
 msgid "Moderate snow"
 msgstr ""
 
-#: gweather/weather.c:195
+#: gweather/weather.c:196
 msgid "Heavy snow"
 msgstr "Salji lebat"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:196
 msgid "Snowstorm"
 msgstr "Ribut salji"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:196
 msgid "Blowing snowfall"
 msgstr ""
 
-#: gweather/weather.c:195
+#: gweather/weather.c:196
 msgid "Snow showers"
 msgstr "Pancuran salji"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:196
 msgid "Drifting snow"
 msgstr ""
 
 #. SNOW_GRAINS
-#: gweather/weather.c:196
+#: gweather/weather.c:197
 #, fuzzy
 msgid "Snow grains"
 msgstr "Sajli dan Berangin"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:197
 msgid "Light snow grains"
 msgstr ""
 
-#: gweather/weather.c:196
+#: gweather/weather.c:197
 msgid "Moderate snow grains"
 msgstr ""
 
-#: gweather/weather.c:196
+#: gweather/weather.c:197
 #, fuzzy
 msgid "Heavy snow grains"
 msgstr "Hujan Lebat"
 
 #. ICE_CRYSTALS
-#: gweather/weather.c:197
+#: gweather/weather.c:198
 msgid "Ice crystals"
 msgstr "Kristal ais"
 
 #. ICE_PELLETS
-#: gweather/weather.c:198
+#: gweather/weather.c:199
 msgid "Ice pellets"
 msgstr "Pelet ais"
 
-#: gweather/weather.c:198
+#: gweather/weather.c:199
 msgid "Few ice pellets"
 msgstr "Pelet ais sedikit"
 
-#: gweather/weather.c:198
+#: gweather/weather.c:199
 msgid "Moderate ice pellets"
 msgstr "Pelet ais sederhana"
 
-#: gweather/weather.c:198
+#: gweather/weather.c:199
 msgid "Heavy ice pellets"
 msgstr "Pelet ais lebat"
 
-#: gweather/weather.c:198
+#: gweather/weather.c:199
 msgid "Ice pellet storm"
 msgstr ""
 
-#: gweather/weather.c:198
+#: gweather/weather.c:199
 msgid "Showers of ice pellets"
 msgstr "Pancutan pelet ais"
 
 #. HAIL
-#: gweather/weather.c:199
+#: gweather/weather.c:200
 msgid "Hail"
 msgstr "Hujan batu"
 
-#: gweather/weather.c:199
+#: gweather/weather.c:200
 #, fuzzy
 msgid "Hailstorm"
 msgstr "Sejarah"
 
-#: gweather/weather.c:199
+#: gweather/weather.c:200
 msgid "Hail showers"
 msgstr "Pancuran hujan batu"
 
 #. SMALL_HAIL
-#: gweather/weather.c:200
+#: gweather/weather.c:201
 msgid "Small hail"
 msgstr "Hujan batu kecil"
 
-#: gweather/weather.c:200
+#: gweather/weather.c:201
 msgid "Small hailstorm"
 msgstr "Ribut hujan batu kecil"
 
-#: gweather/weather.c:200
+#: gweather/weather.c:201
 msgid "Showers of small hail"
 msgstr "Pancuran hujan batu kecil"
 
 #. PRECIPITATION
-#: gweather/weather.c:201
+#: gweather/weather.c:202
 msgid "Unknown precipitation"
 msgstr "Mendakan tak diketahui"
 
 #. MIST
-#: gweather/weather.c:202
+#: gweather/weather.c:203
 msgid "Mist"
 msgstr "Kabut"
 
 #. FOG
-#: gweather/weather.c:203
+#: gweather/weather.c:204
 msgid "Fog"
 msgstr "Kabus"
 
-#: gweather/weather.c:203
+#: gweather/weather.c:204
 msgid "Fog in the vicinity"
 msgstr "Kabus di kawasan sekitar"
 
-#: gweather/weather.c:203
+#: gweather/weather.c:204
 msgid "Shallow fog"
 msgstr "Kabus tidak tebal"
 
-#: gweather/weather.c:203
+#: gweather/weather.c:204
 msgid "Patches of fog"
 msgstr "Kabus di sana sini"
 
-#: gweather/weather.c:203
+#: gweather/weather.c:204
 msgid "Partial fog"
 msgstr "Kabus tidak menyeluruh"
 
-#: gweather/weather.c:203
+#: gweather/weather.c:204
 msgid "Freezing fog"
 msgstr "Kabus sejuk dingin"
 
 #. SMOKE
-#: gweather/weather.c:204
+#: gweather/weather.c:205
 msgid "Smoke"
 msgstr "Asap"
 
 #. VOLCANIC_ASH
-#: gweather/weather.c:205
+#: gweather/weather.c:206
 msgid "Volcanic ash"
 msgstr "Abu gunung berapi"
 
 #. SAND
-#: gweather/weather.c:206
+#: gweather/weather.c:207
 msgid "Sand"
 msgstr "Pasir"
 
-#: gweather/weather.c:206
+#: gweather/weather.c:207
 msgid "Blowing sand"
 msgstr "Pasir ditiup angin"
 
-#: gweather/weather.c:206
+#: gweather/weather.c:207
 msgid "Drifting sand"
 msgstr "Hanyutan pasir"
 
 #. HAZE
-#: gweather/weather.c:207
+#: gweather/weather.c:208
 msgid "Haze"
 msgstr "Berjerebu"
 
 #. SPRAY
-#: gweather/weather.c:208
+#: gweather/weather.c:209
 msgid "Blowing sprays"
 msgstr ""
 
 #. DUST
-#: gweather/weather.c:209
+#: gweather/weather.c:210
 msgid "Dust"
 msgstr "Berdebu"
 
-#: gweather/weather.c:209
+#: gweather/weather.c:210
 msgid "Blowing dust"
 msgstr "Debu ditiup angin"
 
-#: gweather/weather.c:209
+#: gweather/weather.c:210
 msgid "Drifting dust"
 msgstr "Hanyutan debu"
 
 #. SQUALL
-#: gweather/weather.c:210
+#: gweather/weather.c:211
 msgid "Squall"
 msgstr "Badai"
 
 #. SANDSTORM
-#: gweather/weather.c:211
+#: gweather/weather.c:212
 msgid "Sandstorm"
 msgstr "Ribut pasir"
 
-#: gweather/weather.c:211
+#: gweather/weather.c:212
 msgid "Sandstorm in the vicinity"
 msgstr "Ribut pasir di kawasan sekitar"
 
-#: gweather/weather.c:211
+#: gweather/weather.c:212
 msgid "Heavy sandstorm"
 msgstr "Ribut pasir kuat"
 
 #. DUSTSTORM
-#: gweather/weather.c:212
+#: gweather/weather.c:213
 msgid "Duststorm"
 msgstr "Ribut debu"
 
-#: gweather/weather.c:212
+#: gweather/weather.c:213
 msgid "Duststorm in the vicinity"
 msgstr "Ribut debu di kawasan sekitar"
 
-#: gweather/weather.c:212
+#: gweather/weather.c:213
 msgid "Heavy duststorm"
 msgstr "Ribut debu yang kuat"
 
 #. FUNNEL_CLOUD
-#: gweather/weather.c:213
+#: gweather/weather.c:214
 #, fuzzy
 msgid "Funnel cloud"
 msgstr "Sedikit berawan"
 
 #. TORNADO
-#: gweather/weather.c:214
+#: gweather/weather.c:215
 msgid "Tornado"
 msgstr "Tornado"
 
 #. DUST_WHIRLS
-#: gweather/weather.c:215
+#: gweather/weather.c:216
 msgid "Dust whirls"
 msgstr "Pusaran debu"
 
-#: gweather/weather.c:215
+#: gweather/weather.c:216
 msgid "Dust whirls in the vicinity"
 msgstr "Pusaran debu di kawasan sekitar"
 
-#: gweather/weather.c:831 gweather/weather.c:871 gweather/weather.c:1444
+#: gweather/weather.c:832 gweather/weather.c:872 gweather/weather.c:1445
 msgid "Failed to get METAR data.\n"
 msgstr "Gagal memperolehi data METAR.\n"
 
-#: gweather/weather.c:863 gweather/weather.c:891 gweather/weather.c:1088
+#: gweather/weather.c:864 gweather/weather.c:892 gweather/weather.c:1089
 msgid "WeatherInfo missing location"
 msgstr "WeatherInfo kehilangan lokasi"
 
-#: gweather/weather.c:1778
+#: gweather/weather.c:1781
 msgid "%a, %b %d / %H:%M"
 msgstr "%a, %b %d / %H:%M"
 
-#: gweather/weather.c:1782
+#: gweather/weather.c:1785
 msgid "Unknown observation time"
 msgstr "Masa pencerapan tak diketahui"
 
-#: gweather/weather.c:1842
+#: gweather/weather.c:1855
 msgid "Calm"
 msgstr "Tenang"
 
-#: gweather/weather.c:1868
-msgid "Unknown"
-msgstr "Entah"
-
-#: gweather/weather.c:1912
+#: gweather/weather.c:1928
 msgid "Retrieval failed"
 msgstr "Penerimaan gagal"
 
@@ -3831,15 +3841,15 @@ msgstr ""
 "versi terkemudian."
 
 #. build file select dialog
-#: mini-commander/src/command_line.c:440
+#: mini-commander/src/command_line.c:436
 msgid "Start program"
 msgstr "Mula program"
 
-#: mini-commander/src/command_line.c:483
+#: mini-commander/src/command_line.c:479
 msgid "Command line"
 msgstr "Arahan baris"
 
-#: mini-commander/src/command_line.c:484
+#: mini-commander/src/command_line.c:480
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "Taip arahan di sini dan Gnome akan melaksanakannya untuk anda"
 
@@ -3957,44 +3967,48 @@ msgid "Attempt to autocomplete a command from the history of commands entered."
 msgstr "Cuba autosempurna arahan drpd sejarah arahan yg telah dimasukkan."
 
 #: mini-commander/src/mini-commander.schemas.in.h:2
-msgid "Color background blue component"
-msgstr "Komponen biru warna latarbelakang"
+msgid "Background color, blue component"
+msgstr "Komponen biru, warna latarbelakang"
 
 #: mini-commander/src/mini-commander.schemas.in.h:3
-msgid "Color background green component"
-msgstr "Komponen hijau warna latarbelakang"
+msgid "Background color, green component"
+msgstr "Komponen hijau, warna latarbelakang"
 
 #: mini-commander/src/mini-commander.schemas.in.h:4
-msgid "Color background red component"
-msgstr "Komponen merah warna latarbelakang"
+msgid "Background color, red component"
+msgstr "Komponen merah, warna latarbelakang"
 
 #: mini-commander/src/mini-commander.schemas.in.h:5
-msgid "Color foreground blue component"
-msgstr "komponen biru bagi warna latar depan"
+msgid "Foreground color, blue component"
+msgstr "komponen biru, warna latar depan"
 
 #: mini-commander/src/mini-commander.schemas.in.h:6
-msgid "Color foreground green component"
-msgstr "komponen hijau bagi warna latar depan"
+msgid "Foreground color, green component"
+msgstr "komponen hijau, warna latar depan"
 
 #: mini-commander/src/mini-commander.schemas.in.h:7
-msgid "Color foreground red component"
-msgstr "komponen merah bagi warna latardepan"
+msgid "Foreground color, red component"
+msgstr "komponen merah, warna latardepan"
 
 #: mini-commander/src/mini-commander.schemas.in.h:8
 msgid "History list"
-msgstr "Senarai sjarah"
+msgstr "Senarai sejarah"
 
 #: mini-commander/src/mini-commander.schemas.in.h:9
 msgid "List of GConfValue entries containing strings for history entries."
 msgstr ""
+"Senarai bagi kemasukan GConfValue yg mengandungi rentetan bagi kemasukan "
+"sejarah."
 
 #: mini-commander/src/mini-commander.schemas.in.h:10
 msgid "List of GConfValue entries containing strings for the macro commands."
 msgstr ""
+"Senarai bagi kemasukan GConfValue yg mengandungi rentetan bagi arahan makro."
 
 #: mini-commander/src/mini-commander.schemas.in.h:11
 msgid "List of GConfValue entries containing strings for the macro patterns."
 msgstr ""
+"Senarai bagi kemasukan GConfValue yg mengandungi rentetan bagi corak makro."
 
 #: mini-commander/src/mini-commander.schemas.in.h:12
 msgid "Macro command list"
@@ -4475,7 +4489,7 @@ msgstr "Guna ISDN"
 
 #: modemlights/modemlights.schemas.in.h:33
 msgid "Use isdn instead of ppp to connect the modem."
-msgstr ""
+msgstr "Guna ppp isdn\" untuk menyambung modem."
 
 #: modemlights/modemlights.schemas.in.h:34
 msgid "Use this command to connect the modem."
@@ -4489,118 +4503,118 @@ msgstr "Guna arahan ini untuk memutuskan modem."
 msgid "Verify owner of lock file"
 msgstr "Tentusah pemilik fail kunci"
 
-#: modemlights/properties.c:421
+#: modemlights/properties.c:423
 msgid "Modem Lights Preferences"
 msgstr "Keutamaan Lampu Modem"
 
-#: modemlights/properties.c:449
+#: modemlights/properties.c:451
 msgid "U_pdate every:"
 msgstr "Ke_maskini setiap:"
 
 #. extra info checkbox
-#: modemlights/properties.c:474
+#: modemlights/properties.c:476
 msgid "Sho_w connect time and throughput"
 msgstr "Papa_r masa sambungan dan throughput"
 
-#: modemlights/properties.c:484
+#: modemlights/properties.c:486
 msgid "B_link connection status when connecting"
 msgstr "_Kerdipkan status sambungan bile menyambung"
 
-#: modemlights/properties.c:494
+#: modemlights/properties.c:496
 msgid "Connections"
 msgstr "Sambungan"
 
-#: modemlights/properties.c:503
+#: modemlights/properties.c:505
 msgid "Co_nnection command:"
 msgstr "Arahan menyambung:"
 
-#: modemlights/properties.c:528
+#: modemlights/properties.c:531
 msgid "_Disconnection command:"
 msgstr "Arahan me_mutus:"
 
 #. confirmation checkbox
-#: modemlights/properties.c:549
+#: modemlights/properties.c:553
 msgid "Con_firm connection"
 msgstr "Kepas_tian sambungan"
 
-#: modemlights/properties.c:568
+#: modemlights/properties.c:572
 msgid "Receive Data"
 msgstr "Terima Data"
 
-#: modemlights/properties.c:574
+#: modemlights/properties.c:578
 msgid "_Foreground:"
 msgstr "Latar_Depan:"
 
-#: modemlights/properties.c:579
+#: modemlights/properties.c:583
 msgid "Send Data"
 msgstr "Hantar Data"
 
-#: modemlights/properties.c:584
+#: modemlights/properties.c:588
 msgid "Foregroun_d:"
 msgstr "Latar_Depan:"
 
-#: modemlights/properties.c:586
+#: modemlights/properties.c:590
 msgid "Backg_round:"
 msgstr "La_tarBelakang:"
 
-#: modemlights/properties.c:589
+#: modemlights/properties.c:593
 msgid "Connection Status"
 msgstr "Status Sambungan"
 
-#: modemlights/properties.c:597
+#: modemlights/properties.c:601
 msgid "Co_nnected:"
 msgstr "Ter_sambung:"
 
-#: modemlights/properties.c:599
+#: modemlights/properties.c:603
 msgid "Disconnec_ted:"
 msgstr "Dipu_tus:"
 
-#: modemlights/properties.c:602
+#: modemlights/properties.c:606
 msgid "C_onnecting:"
 msgstr "Menyambung:"
 
-#: modemlights/properties.c:605
+#: modemlights/properties.c:609
 msgid "Text"
 msgstr "Teks"
 
-#: modemlights/properties.c:613
+#: modemlights/properties.c:617
 msgid "For_eground:"
 msgstr "LatarD_epan:"
 
-#: modemlights/properties.c:615
+#: modemlights/properties.c:619
 msgid "Bac_kground:"
 msgstr "Latar_Belakang:"
 
-#: modemlights/properties.c:617
+#: modemlights/properties.c:621
 msgid "O_utline"
 msgstr ""
 
-#: modemlights/properties.c:620 multiload/properties.c:528
+#: modemlights/properties.c:624 multiload/properties.c:533
 msgid "Colors"
 msgstr "Warna"
 
-#: modemlights/properties.c:629
+#: modemlights/properties.c:633
 msgid "Modem Options"
 msgstr "Opsyen Modem"
 
-#: modemlights/properties.c:638
+#: modemlights/properties.c:642
 msgid "_Device:"
 msgstr "_Peranti:"
 
-#: modemlights/properties.c:663
+#: modemlights/properties.c:668
 msgid "_Lock file:"
 msgstr "Fail _kunci:"
 
-#: modemlights/properties.c:683
+#: modemlights/properties.c:689
 msgid "_Verify owner of lock file"
 msgstr "_Tentusah pemilik fail kunci"
 
 #. ISDN checkbox
-#: modemlights/properties.c:694
+#: modemlights/properties.c:700
 msgid "U_se ISDN"
 msgstr "_Guna ISDN"
 
-#: modemlights/properties.c:711
+#: modemlights/properties.c:717
 msgid "Advanced"
 msgstr "Lanjutan"
 
@@ -4637,19 +4651,19 @@ msgstr ""
 "Monitor muatan sistem yang boleh memaparkan graf bagi CPU, ram dan fail swap "
 "yang digunakan, termasuk trafik rangkaian."
 
-#: multiload/main.c:273 multiload/properties.c:553
+#: multiload/main.c:273 multiload/properties.c:558
 msgid "Processor"
 msgstr "Pemproses"
 
-#: multiload/main.c:275 multiload/properties.c:560
+#: multiload/main.c:275 multiload/properties.c:565
 msgid "Memory"
 msgstr "Memori"
 
-#: multiload/main.c:277 multiload/properties.c:568
+#: multiload/main.c:277 multiload/properties.c:573
 msgid "Network"
 msgstr "Rangkaian"
 
-#: multiload/main.c:279 multiload/properties.c:576
+#: multiload/main.c:279 multiload/properties.c:581
 msgid "Swap Space"
 msgstr "Ruang Swap"
 
@@ -4782,115 +4796,115 @@ msgstr "Warna latarbelakang graf swap"
 msgid "Net Load"
 msgstr "Muatan Net"
 
-#: multiload/properties.c:326
+#: multiload/properties.c:331
 msgid "Monitored Resources"
 msgstr "Sumber dimonitor"
 
-#: multiload/properties.c:351
+#: multiload/properties.c:356
 msgid "_Processor"
 msgstr "_Pemproses"
 
-#: multiload/properties.c:364
+#: multiload/properties.c:369
 msgid "_Memory"
 msgstr "_Memori"
 
-#: multiload/properties.c:377
+#: multiload/properties.c:382
 msgid "_Network"
 msgstr "_Rangkaian"
 
-#: multiload/properties.c:390
+#: multiload/properties.c:395
 msgid "S_wap Space"
 msgstr "Ruang S_wap"
 
-#: multiload/properties.c:403
+#: multiload/properties.c:408
 msgid "_Load"
 msgstr "_Muatan"
 
-#: multiload/properties.c:450
+#: multiload/properties.c:455
 msgid "System m_onitor width: "
 msgstr "Lebar m_onitor sistem: "
 
-#: multiload/properties.c:452
+#: multiload/properties.c:457
 msgid "System m_onitor height: "
 msgstr "Tinggi m_onitor sistem: "
 
-#: multiload/properties.c:491
+#: multiload/properties.c:496
 msgid "Sys_tem monitor update interval: "
 msgstr "Kelajuan monitor sis_tem: "
 
-#: multiload/properties.c:517
+#: multiload/properties.c:522
 msgid "milliseconds"
 msgstr "milisaat"
 
-#: multiload/properties.c:555 multiload/properties.c:562
+#: multiload/properties.c:560 multiload/properties.c:567
 msgid "_User"
 msgstr "_Pengguna"
 
-#: multiload/properties.c:556
+#: multiload/properties.c:561
 msgid "S_ystem"
 msgstr "S_istem"
 
-#: multiload/properties.c:557
+#: multiload/properties.c:562
 msgid "N_ice"
 msgstr "E_lok"
 
-#: multiload/properties.c:558
+#: multiload/properties.c:563
 msgid "I_dle"
 msgstr "L_eka"
 
-#: multiload/properties.c:563
+#: multiload/properties.c:568
 msgid "Sh_ared"
 msgstr "Ter_kongsi"
 
-#: multiload/properties.c:564
+#: multiload/properties.c:569
 msgid "_Buffers"
 msgstr "_Penimbal"
 
-#: multiload/properties.c:565
+#: multiload/properties.c:570
 msgid "Cach_ed"
 msgstr "Cach_ed"
 
-#: multiload/properties.c:566
+#: multiload/properties.c:571
 msgid "F_ree"
 msgstr "B_ebas"
 
-#: multiload/properties.c:570
+#: multiload/properties.c:575
 msgid "_SLIP"
 msgstr "_SLIP"
 
-#: multiload/properties.c:571
+#: multiload/properties.c:576
 msgid "PL_IP"
 msgstr "PL_IP"
 
-#: multiload/properties.c:572
+#: multiload/properties.c:577
 msgid "_Ethernet"
 msgstr "_Ethernet"
 
-#: multiload/properties.c:573
+#: multiload/properties.c:578
 msgid "Othe_r"
 msgstr "_Lain-lain"
 
-#: multiload/properties.c:574 multiload/properties.c:584
+#: multiload/properties.c:579 multiload/properties.c:589
 msgid "_Background"
 msgstr "Latar_Belakang"
 
-#: multiload/properties.c:578
+#: multiload/properties.c:583
 msgid "_Used"
 msgstr "_Digunakan"
 
-#: multiload/properties.c:579
+#: multiload/properties.c:584
 msgid "_Free"
 msgstr "_Bebas"
 
-#: multiload/properties.c:581
+#: multiload/properties.c:586
 msgid "Load"
 msgstr "Muatan"
 
-#: multiload/properties.c:583
+#: multiload/properties.c:588
 msgid "_Average"
 msgstr "_Purata"
 
-#: multiload/properties.c:604
+#: multiload/properties.c:609
 msgid "System Monitor Preferences"
 msgstr "Keutamaan Monitor Sistem"
 
@@ -4903,8 +4917,8 @@ msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "Cipta, lihat dan urus nota lekat pada desktop"
 
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:3
-#: stickynotes/stickynotes_applet.c:349
-#: stickynotes/stickynotes_applet_callbacks.c:193
+#: stickynotes/stickynotes_applet.c:249 stickynotes/stickynotes_applet.c:355
+#: stickynotes/stickynotes_applet_callbacks.c:200
 msgid "Sticky Notes"
 msgstr "Nota Lekat"
 
@@ -4929,11 +4943,11 @@ msgstr "Nota Ba_ru"
 msgid "_Show Notes"
 msgstr "_Papar Nota"
 
-#: stickynotes/stickynotes.c:314
+#: stickynotes/stickynotes.c:316
 msgid "Locked note"
 msgstr "Nota dikunci"
 
-#: stickynotes/stickynotes.c:319
+#: stickynotes/stickynotes.c:321
 msgid "Unlocked note"
 msgstr "Nota dinyahkunci"
 
@@ -5093,7 +5107,7 @@ msgstr "Pa_dam Nota..."
 msgid "_Lock Note"
 msgstr "_Kunci Nota"
 
-#: stickynotes/stickynotes.glade.h:45
+#: stickynotes/stickynotes.glade.h:45 gswitchit/GNOME_GSwitchItApplet.xml.h:5
 msgid "_Properties..."
 msgstr "_Ciri-ciri..."
 
@@ -5127,6 +5141,9 @@ msgid ""
 "are created. This format is used; anything that can be parsed by strftime() "
 "is valid."
 msgstr ""
+"Secara defaukt, Nota lekat akan diberi tarikh semasa sebagai tajuk bila ia "
+"dicipta. Format ini digunakan; apa-apa yang boleh dihantar oleh strftime() "
+"adalah sah."
 
 #: stickynotes/stickynotes.schemas.in.h:3
 msgid "Date format of note's title"
@@ -5157,6 +5174,8 @@ msgid ""
 "Default font for new sticky notes. This should be a Pango Font Name, for "
 "example \"Sans Italic 10\""
 msgstr ""
+"Font default bagi nota lekat baru. Ini sepatutnya Nama Font Pango, sebagai "
+"contoh \"Sans Italic 10\""
 
 #: stickynotes/stickynotes.schemas.in.h:9
 msgid "Default height for new notes"
@@ -5207,6 +5226,8 @@ msgid ""
 "If this option is enabled, the custom colors and fonts that have been "
 "assigned to individual notes will be ignored."
 msgstr ""
+"Jika opsyen ini dihidupkan, warna dan font tersendiri yang diberikan kepada "
+"individu nota akan diabaikan."
 
 #: stickynotes/stickynotes.schemas.in.h:18
 msgid ""
@@ -5214,6 +5235,9 @@ msgid ""
 "options are \"0\" for \"New Note\", \"1\" for \"Show/Hide All Notes\", and "
 "\"2\" for \"Lock/Unlock All Notes\"."
 msgstr ""
+"Berlaku bila aplet  diklik-kiri atau \"enter\" ditekan. Opsyen adalah \"0\" "
+"bagi \"Nota Baru\", \"1\" bagi \"Papar/Sorok Semua Nota\", dan \"2\" bagi "
+"\"Kunci/Nyahkunci Semua Nota\"."
 
 #: stickynotes/stickynotes.schemas.in.h:19
 msgid "Specifies whether the sticky notes are locked (non-editable) or not."
@@ -5245,11 +5269,11 @@ msgstr "Kelekatan Ruangkerja nota lekat"
 
 #: stickynotes/stickynotes.schemas.in.h:25
 msgid "Whether to ask for confirmation when deleting a note"
-msgstr ""
+msgstr "Samada untuk bertanyakan kepastian bila memadam nota"
 
 #: stickynotes/stickynotes.schemas.in.h:26
 msgid "Whether to force the default color and font on all notes"
-msgstr ""
+msgstr "Samada untuk memaksa warna dan font default pada semua nota"
 
 #: stickynotes/stickynotes.schemas.in.h:27
 msgid "Whether to use the default system color"
@@ -5259,7 +5283,7 @@ msgstr "Samada menggunaakan warna tema default"
 msgid "Whether to use the default system font"
 msgstr "Samada menggunaakan font sistem default"
 
-#: stickynotes/stickynotes_applet.c:349
+#: stickynotes/stickynotes_applet.c:355
 #, fuzzy, c-format
 msgid ""
 "%s\n"
@@ -5274,12 +5298,11 @@ msgstr[1] ""
 "%s:\n"
 "%d%% sedang digunakan"
 
-#: stickynotes/stickynotes_applet_callbacks.c:195
-#, fuzzy
+#: stickynotes/stickynotes_applet_callbacks.c:202
 msgid "(c) 2002-2003 Loban A Rahman"
 msgstr "(c) 2002-2003 Loban A Rahman"
 
-#: stickynotes/stickynotes_applet_callbacks.c:196
+#: stickynotes/stickynotes_applet_callbacks.c:203
 msgid "Sticky Notes for the Gnome Desktop Environment"
 msgstr "Nota lekat bagi Persekitaran Desktop GNOME"
 
@@ -5324,317 +5347,148 @@ msgstr "Keutamaan Monitor Pautan Tanpa Wayar"
 msgid "_Monitored device:"
 msgstr "Peranti Di_monitor:"
 
-#: applet/GNOME_GSwitchItApplet.server.in.in.h:1
+#: gswitchit/GNOME_GSwitchItApplet.server.in.in.h:1
 msgid "GNOME XKB applet"
 msgstr "Applet XKB GNOME"
 
-#: applet/GNOME_GSwitchItApplet.server.in.in.h:2
+#: gswitchit/GNOME_GSwitchItApplet.server.in.in.h:2
 msgid "GNOME XKB applet factory"
 msgstr "Kilang aplet XKB GNOME"
 
-#: applet/GNOME_GSwitchItApplet.server.in.in.h:3
+#: gswitchit/GNOME_GSwitchItApplet.server.in.in.h:3
 msgid "GSwitchIt applet"
 msgstr "Aplet GSwitchIt"
 
-#: applet/GNOME_GSwitchItApplet.server.in.in.h:4
+#: gswitchit/GNOME_GSwitchItApplet.server.in.in.h:4
 msgid "GSwitchIt applet factory"
 msgstr "Kilang Aplet Gswitchit"
 
-#: applet/GNOME_GSwitchItApplet.xml.h:2
+#: gswitchit/GNOME_GSwitchItApplet.xml.h:2
 msgid "_Groups"
 msgstr "_Kumpulan"
 
-#: applet/GNOME_GSwitchItApplet.xml.h:4
+#: gswitchit/GNOME_GSwitchItApplet.xml.h:4
 msgid "_Plugins..."
 msgstr "_Plugin..."
 
-#: applet/gswitchit_applet.c:96
+#: gswitchit/gswitchit-applet.c:98
 #, c-format
 msgid "Keyboard switcher (%s)"
 msgstr "Penukar papan kekunci (%s)"
 
-#: applet/gswitchit_applet.c:483
+#: gswitchit/gswitchit-applet.c:490
 msgid "Copyright Sergey V. Udaltsov (C) 1999-2002"
 msgstr "Hakcipta Sergey V. Udaltsov (C) 1999-2002"
 
-#: applet/gswitchit_applet.c:484
+#: gswitchit/gswitchit-applet.c:491
 msgid "XKB toolkit for GNOME"
 msgstr "Toolkit XKB bagi GNOME"
 
-#: applet/gswitchit_applet.c:613
+#: gswitchit/gswitchit-applet.c:622
 msgid "XKB initialization error"
 msgstr "Ralat penginitialisasian XKB"
 
-#: applet/gswitchit_applet.c:622
+#: gswitchit/gswitchit-applet.c:631
 msgid "Error loading XKB configuration registry"
 msgstr "Ralat memuatkan pendaftar konfigurasi XKB"
 
-#: capplets/gswitchit_capplet.c:142
+#: gswitchit/gswitchit-capplet.c:149
 msgid ""
 "Make the layout accessible from the applet popup menu ONLY.\n"
 "No way to switch to this layout using the keyboard."
 msgstr ""
+"Jadikan susunatur boleh diakses drpd menu popup aplet SAHAJA.\n"
+" Tiada cara untuk bertukar ke susunatur ini menggunakan papankekunci."
 
-#: capplets/gswitchit_capplet.c:224
+#: gswitchit/gswitchit-capplet.c:228
 msgid "Exclude from keyboard switching"
-msgstr ""
+msgstr "Dikecualikan drpd penukaran papan kekunci"
 
-#: capplets/gswitchit_capplet.c:250
+#: gswitchit/gswitchit-capplet.c:254
 msgid "not used"
 msgstr "tidak didigunakan"
 
-#: capplets/gswitchit_capplet.c:307 capplets/gswitchit_plugins.c:288
+#: gswitchit/gswitchit-plugins.c:282
 #, c-format
 msgid "Failed to init GConf: %s\n"
 msgstr "Gagal menginitialisasilan GCong: %s\n"
 
-#: capplets/gswitchit-plugins.glade.h:1
+#: gswitchit/gswitchit-plugins.glade.h:1
 msgid "Activate more plugins"
 msgstr "Aktifkan lebih plugin"
 
-#: capplets/gswitchit-plugins.glade.h:2
+#: gswitchit/gswitchit-plugins.glade.h:2
 msgid "Add plugin"
 msgstr "Tambah plugin"
 
-#: capplets/gswitchit-plugins.glade.h:3
+#: gswitchit/gswitchit-plugins.glade.h:3
 msgid "Close the dialog"
 msgstr "Tutup dialog"
 
-#: capplets/gswitchit-plugins.glade.h:4
+#: gswitchit/gswitchit-plugins.glade.h:4
 msgid "Configure the selected plugin"
 msgstr "Konfigurasi plugin dipilih"
 
-#: capplets/gswitchit-plugins.glade.h:5
+#: gswitchit/gswitchit-plugins.glade.h:5
 msgid "Deactivate selected plugin"
 msgstr "Pasifkan plugin dipilih"
 
-#: capplets/gswitchit-plugins.glade.h:6
+#: gswitchit/gswitchit-plugins.glade.h:6
 msgid "Decrease the plugin priority"
 msgstr "Kurangkan prioriti plugin"
 
-#: capplets/gswitchit-plugins.glade.h:7
+#: gswitchit/gswitchit-plugins.glade.h:7
 msgid "GSwitchIt Plugins"
 msgstr "Plugin GSwitchIt"
 
-#: capplets/gswitchit-plugins.glade.h:8
+#: gswitchit/gswitchit-plugins.glade.h:8
 msgid "Increase the plugin priority"
 msgstr "Naikkan prioriti plugin"
 
-#: capplets/gswitchit-plugins.glade.h:9
+#: gswitchit/gswitchit-plugins.glade.h:9
 msgid "The list of active plugins"
 msgstr "Senarai plugin aktif"
 
-#: capplets/gswitchit-plugins.glade.h:10
+#: gswitchit/gswitchit-plugins.glade.h:10
 msgid "_Active plugins"
 msgstr "Plugin _aktif"
 
-#: capplets/gswitchit-plugins.glade.h:11
+#: gswitchit/gswitchit-plugins.glade.h:11
 msgid "_Available plugins:"
 msgstr "Plugin yang _ada:"
 
-#: capplets/gswitchit-properties.glade.h:1
+#: gswitchit/gswitchit-properties.glade.h:1
 msgid "Choose the default group (for newly created windows)."
 msgstr "Pilih kumpulan default (untuk tetingkap dicipta)."
 
-#: capplets/gswitchit-properties.glade.h:2
+#: gswitchit/gswitchit-properties.glade.h:2
 msgid "GSwitchIt Properties"
 msgstr "Ciri-ciri GSwitchit"
 
-#: capplets/gswitchit-properties.glade.h:3
+#: gswitchit/gswitchit-properties.glade.h:3
 msgid "Keep separate group for each application window."
-msgstr ""
+msgstr "Biarkan kumpulan berasingan bagi tetingkap aplikasi."
 
-#: capplets/gswitchit-properties.glade.h:4
+#: gswitchit/gswitchit-properties.glade.h:4
 msgid "Keep the state of indicators separately for each application window."
 msgstr ""
 
-#: capplets/gswitchit-properties.glade.h:5
+#: gswitchit/gswitchit-properties.glade.h:5
 msgid "Save/restore _indicators with group"
 msgstr "Simpan/pulih pe_nunjuk dengan kumpulan"
 
-#: capplets/gswitchit-properties.glade.h:6
+#: gswitchit/gswitchit-properties.glade.h:6
 msgid "Separate _group for each window"
 msgstr ""
 
-#: capplets/gswitchit-properties.glade.h:7
+#: gswitchit/gswitchit-properties.glade.h:7
 msgid "Show national flags as indicators of corresponding layouts"
-msgstr ""
+msgstr "Papar bendera negara sebagai penunjuk bagi susunatur tertentu"
 
-#: capplets/gswitchit-properties.glade.h:8
+#: gswitchit/gswitchit-properties.glade.h:8
 msgid "Use _flags as indicators"
 msgstr "Guna _bendera sebagai penunjuk"
 
-#: capplets/gswitchit-properties.glade.h:9
-#, fuzzy
+#: gswitchit/gswitchit-properties.glade.h:9
 msgid "_Default group:"
-msgstr "Kumpulan _default"
-
-#: gswitchit.schemas.in.h:1
-msgid "Beep on group switch"
-msgstr ""
-
-#: gswitchit.schemas.in.h:2
-msgid "Debug level"
-msgstr "Aras pepijat"
-
-#: gswitchit.schemas.in.h:3
-msgid "Default group, assigned on window creation"
-msgstr ""
-
-#: gswitchit.schemas.in.h:4
-#, fuzzy
-msgid "Keep and manage separate group per window"
-msgstr "Panel sentiasa di atas tetingkap lain"
-
-#: gswitchit.schemas.in.h:5
-msgid "Save/restore indicators together with layout groups"
-msgstr ""
-
-#: gswitchit.schemas.in.h:6
-#, fuzzy
-msgid "Secondary groups"
-msgstr "Warna Sekunder"
-
-#: gswitchit.schemas.in.h:7
-msgid "Show flags in the applet"
-msgstr "Papar bendera pada aplet"
-
-#: gswitchit.schemas.in.h:8
-msgid "Show flags in the applet to indicate the current layout"
-msgstr ""
-
-#: gswitchit.schemas.in.h:9
-msgid "Show layout names instead of group names"
-msgstr "Papar susunatur selain daripada nama kumpulan"
-
-#: gswitchit.schemas.in.h:10
-msgid ""
-"Show layout names instead of group names (only for versions of XFree "
-"supporting multiple layouts)"
-msgstr ""
-
-#~ msgid "Apply XKB configuration and quit"
-#~ msgstr "Terapkan Konfigurasi XKB dan keluar"
-
-#~ msgid "Could not initialize Bonobo"
-#~ msgstr "Tak dapat menginitialisasikan Bonobo"
-
-#~ msgid "..."
-#~ msgstr "..."
-
-#~ msgid "Postscript preview component is not available"
-#~ msgstr "Prebiu komponen postscript tidak wujud."
-
-#~ msgid "Keyboard layout preview"
-#~ msgstr "Prebiususunatur papan kekunci"
-
-#~ msgid "Bonobo Error"
-#~ msgstr "Ralat Bonobo"
-
-#~ msgid "Configure keyboard layouts"
-#~ msgstr "Konfigurasi  susunatur papan kekunci"
-
-#~ msgid "Keyboard layouts"
-#~ msgstr "Susunatur papan kekunci"
-
-# #-#-#-#-#  longgok.edited (longokan)  #-#-#-#-#
-# lucah ke ni?
-# #-#-#-#-#  longgok.edited (longokan)  #-#-#-#-#
-# lucah ke ni?
-#~ msgid "Choose the layout."
-#~ msgstr "Pilih susunatur"
-
-#~ msgid "Clear"
-#~ msgstr "Kosongkan"
-
-#~ msgid "Clear."
-#~ msgstr "Kosongkan."
-
-#~ msgid "Extra"
-#~ msgstr "Lanjutan"
-
-#~ msgid "Keyboard _model:"
-#~ msgstr "_Model papan kekunci:"
-
-#~ msgid "Keyboard layouts' settings: "
-#~ msgstr "Tetapan susunatur papan kekunci: "
-
-# #-#-#-#-#  longgok.edited (longokan)  #-#-#-#-#
-# ui/galeon.glade.h:247
-# #-#-#-#-#  longgok.edited (longokan)  #-#-#-#-#
-# ui/galeon.glade.h:247
-# #-#-#-#-#  longgok.edited (longokan)  #-#-#-#-#
-# ui/galeon.glade.h:247
-# #-#-#-#-#  longgok.edited (longokan)  #-#-#-#-#
-# ui/galeon.glade.h:247
-#~ msgid "Options 1"
-#~ msgstr "Opsyen 1"
-
-# #-#-#-#-#  longgok.edited (longokan)  #-#-#-#-#
-# ui/galeon.glade.h:247
-# #-#-#-#-#  longgok.edited (longokan)  #-#-#-#-#
-# ui/galeon.glade.h:247
-# #-#-#-#-#  longgok.edited (longokan)  #-#-#-#-#
-# ui/galeon.glade.h:247
-# #-#-#-#-#  longgok.edited (longokan)  #-#-#-#-#
-# ui/galeon.glade.h:247
-#~ msgid "Options 2"
-#~ msgstr "Opsyen 2"
-
-#~ msgid "Show _advanced parameters"
-#~ msgstr "Papar parameter _lanjutan"
-
-#~ msgid "_Custom"
-#~ msgstr "_Tersendiri"
-
-#, fuzzy
-#~ msgid "_Global Preconfigured"
-#~ msgstr "Menu global"
-
-#~ msgid "_Layouts:"
-#~ msgstr "_Susunatur:"
-
-#~ msgid "_Preview"
-#~ msgstr "_Pralihat"
-
-#, fuzzy
-#~ msgid "_Switch shortcut"
-#~ msgstr "Tetapkan Pintasan"
-
-#~ msgid "Default XKB setting"
-#~ msgstr "Tetapan Default XKB"
-
-#~ msgid "Right Control"
-#~ msgstr "Kawalan kanan"
-
-#~ msgid "Left Control"
-#~ msgstr "Kawalan Kiri"
-
-# ui/galeon.glade.h:268
-#~ msgid "Right Shift"
-#~ msgstr "Shif Kanan"
-
-#~ msgid "Left Shift"
-#~ msgstr "Shif Kiri"
-
-#, fuzzy
-#~ msgid "Grave"
-#~ msgstr "Gnotravex"
-
-#, fuzzy
-#~ msgid "The id of active switchcut"
-#~ msgstr "Lebar layout"
-
-#~ msgid "XKB keyboard layout"
-#~ msgstr "susunatur papan kekunci XKB"
-
-#~ msgid "XKB keyboard model"
-#~ msgstr "Model papan kekunci XKB"
-
-# #-#-#-#-#  longgok.edited (longokan)  #-#-#-#-#
-# libgnomeui/gnome-init.c:452
-#~ msgid "XKB options"
-#~ msgstr "Opsyen XKB"
-
-#~ msgid "XKB settings should be overridden"
-#~ msgstr "Tetapan XKB patut ditindih"
+msgstr "Kumpulan _default:"
