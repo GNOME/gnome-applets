@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 1.2.0\n"
 "POT-Creation-Date: 2000-08-21 17:58+0200\n"
-"PO-Revision-Date: 2000-11-11 15:50+01:00\n"
+"PO-Revision-Date: 2000-11-18 15:50+01:00\n"
 "Last-Translator: Keld Simonsen <keld@dkuug.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
 "MIME-Version: 1.0\n"
@@ -25,7 +25,7 @@ msgstr "Egenskaber for ur"
 #: battery/properties.c:83 clockmail/properties.c:421
 #: diskusage/properties.c:466 drivemount/properties.c:380
 #: gnotes/properties.c:190 mini-commander/src/preferences.c:801
-#: modemlights/properties.c:324 odometer/properties.c:293
+#: modemlights/properties.c:486 odometer/properties.c:293
 #: screenshooter/screenshooter_applet.c:434 slashapp/properties.c:337
 #: sound-monitor/properties.c:426 tickastat/properties.c:424
 msgid "General"
@@ -33,8 +33,8 @@ msgstr "Generelt"
 
 #. frame for colors
 #: another_clock/another_clock.c:277 diskusage/properties.c:352
-#: mini-commander/src/preferences.c:723 multiload/load-graph.c:587
-#: multiload/load-graph.c:779
+#: mini-commander/src/preferences.c:723 modemlights/properties.c:525
+#: multiload/load-graph.c:587 multiload/load-graph.c:779
 msgid "Colors"
 msgstr "Farver"
 
@@ -83,7 +83,7 @@ msgstr "Et analogt ur magen til det fra CDE panelet"
 #: gkb-new/gkb.c:471 gnotes/gnotes_applet.c:192 gtik/gtik.c:1388
 #: gweather/gweather-applet.c:194
 #: mini-commander/src/mini-commander_applet.c:398
-#: modemlights/modemlights.c:1373 multiload/cpuload.c:95
+#: modemlights/modemlights.c:1464 multiload/cpuload.c:95
 #: multiload/loadavg.c:170 multiload/memload.c:98 multiload/netload.c:94
 #: multiload/swapload.c:98 odometer/odo.c:661
 #: screenshooter/screenshooter_applet.c:1006 slashapp/slashapp.c:77
@@ -115,7 +115,7 @@ msgstr "Hjælp"
 #: gkb-new/gkb.c:499 gnotes/gnotes_applet.c:199 gtik/gtik.c:1397
 #: gweather/gweather-applet.c:204 jbc/jbc-applet.c:202 life/life.c:290
 #: mini-commander/src/mini-commander_applet.c:412 mixer/mixer.c:764
-#: modemlights/modemlights.c:1386 multiload/cpuload.c:115
+#: modemlights/modemlights.c:1477 multiload/cpuload.c:115
 #: multiload/loadavg.c:190 multiload/memload.c:118 multiload/netload.c:114
 #: multiload/swapload.c:118 odometer/odo.c:667 quicklaunch/quicklaunch.c:520
 #: screenshooter/screenshooter_applet.c:1017 slashapp/slashapp.c:80
@@ -2682,71 +2682,117 @@ msgstr "%#.1fMb modtaget / %#.1fMb sendt / tid: %.1d:%.2d"
 msgid "not connected"
 msgstr "ikke forbundet"
 
-#: modemlights/modemlights.c:1380
+#: modemlights/modemlights.c:1471
 msgid "Help..."
 msgstr "Hjælp..."
 
-#: modemlights/properties.c:234
+#: modemlights/properties.c:396
 msgid "Modem Lights Settings"
 msgstr "Indstillinger for Modemlys"
 
-#: modemlights/properties.c:239
+#: modemlights/properties.c:401
 msgid "Connecting"
 msgstr "Forbinder"
 
-#: modemlights/properties.c:253
+#: modemlights/properties.c:415
 msgid "Connect command:"
 msgstr "Opkoblingskommando:"
 
-#: modemlights/properties.c:270
+#: modemlights/properties.c:432
 msgid "Disconnect command:"
 msgstr "Frakoblingskommando:"
 
 #. confirmation checkbox
-#: modemlights/properties.c:283
+#: modemlights/properties.c:445
 msgid "Confirm connection"
 msgstr "Bekræft forbindelse"
 
-#: modemlights/properties.c:290 slashapp/properties.c:412
+#: modemlights/properties.c:452 slashapp/properties.c:412
 #: tickastat/properties.c:565
 msgid "Display"
 msgstr "Vis"
 
-#: modemlights/properties.c:304
+#: modemlights/properties.c:466
 msgid "Updates per second"
 msgstr "Opdateringer i sekundet"
 
 #. extra info checkbox
-#: modemlights/properties.c:317
+#: modemlights/properties.c:479
 msgid "Show connect time and throughput"
 msgstr "Vis forbindelsestid og gennemstrømning"
 
-#: modemlights/properties.c:333
+#: modemlights/properties.c:495
+msgid "Receive data"
+msgstr "Modtag data"
+
+#: modemlights/properties.c:497 modemlights/properties.c:502
+#: modemlights/properties.c:521
+msgid "Foreground"
+msgstr "Forgrund"
+
+#: modemlights/properties.c:498 modemlights/properties.c:503
+#: modemlights/properties.c:522
+msgid "Background"
+msgstr "Baggrund"
+
+#: modemlights/properties.c:500
+msgid "Send data"
+msgstr "Send data"
+
+#: modemlights/properties.c:505
+msgid "Connection status"
+msgstr "Forbindlsesstatus"
+
+#: modemlights/properties.c:507
+msgid "Connected"
+msgstr "Forbundet"
+
+#: modemlights/properties.c:508
+msgid "Not connected"
+msgstr "Ikke forbundet"
+
+#: modemlights/properties.c:509
+msgid "Awaiting connection"
+msgstr "Venter på forbindelse"
+
+#: modemlights/properties.c:512
+msgid "Blink"
+msgstr "Blink"
+
+#: modemlights/properties.c:519
+msgid "Text"
+msgstr "Tekst"
+
+#: modemlights/properties.c:523
+msgid "Outline"
+msgstr "Sammendrag"
+
+#: modemlights/properties.c:534
 msgid "Modem options"
 msgstr "Modem indstillinger"
 
-#: modemlights/properties.c:347
+#: modemlights/properties.c:548
 msgid "Modem lock file:"
 msgstr "Modemlåsefil:"
 
-#: modemlights/properties.c:359
+#: modemlights/properties.c:560
 msgid "Verify owner of lock file"
 msgstr "Bekræft ejer af låsefil"
 
-#: modemlights/properties.c:371
+#: modemlights/properties.c:572
 msgid "Device:"
 msgstr "Enhed:"
 
 #. ISDN checkbox
-#: modemlights/properties.c:384
+#: modemlights/properties.c:585
 msgid "Use ISDN"
 msgstr "Brug ISDN"
 
-#: modemlights/properties.c:404
+#: modemlights/properties.c:605
 msgid "Set options as default"
 msgstr "Sæt valg til standard"
 
-#: modemlights/properties.c:410 sound-monitor/properties.c:511
+#: modemlights/properties.c:611 sound-monitor/properties.c:511
 msgid "Advanced"
 msgstr "Avanceret"
 
