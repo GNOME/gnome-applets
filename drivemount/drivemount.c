@@ -346,8 +346,12 @@ void create_pixmaps(DriveData *dd)
 	char **pmap_d_in;
 	char **pmap_d_out;
 
+#ifdef HAVE_PANEL_SIZE
 	if (((dd->orient == ORIENT_LEFT || dd->orient == ORIENT_RIGHT) && dd->size!=SIZE_TINY) ||
 	    ((dd->orient == ORIENT_UP || dd->orient == ORIENT_DOWN) && dd->size==SIZE_TINY))
+#else
+	if (dd->orient == ORIENT_LEFT || dd->orient == ORIENT_RIGHT)
+#endif
 		{
 		switch (dd->device_pixmap)
 			{
@@ -440,8 +444,12 @@ static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
 
 	create_pixmaps(dd);
 
+#ifdef HAVE_PANEL_SIZE
 	if (((dd->orient == ORIENT_LEFT || dd->orient == ORIENT_RIGHT) && dd->size!=SIZE_TINY) ||
 	    ((dd->orient == ORIENT_UP || dd->orient == ORIENT_DOWN) && dd->size==SIZE_TINY))
+#else
+	if (dd->orient == ORIENT_LEFT || dd->orient == ORIENT_RIGHT)
+#endif
 		{
 		gtk_widget_set_usize(dd->button,46,16);
 		}
@@ -452,6 +460,7 @@ static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
 	redraw_pixmap(dd);
 }
 
+#ifdef HAVE_PANEL_SIZE
 static void applet_change_size(GtkWidget *w, PanelSizeType o, gpointer data)
 {
 	/* resize the applet and set the proper pixmaps */
@@ -471,6 +480,7 @@ static void applet_change_size(GtkWidget *w, PanelSizeType o, gpointer data)
 		}
 	redraw_pixmap(dd);
 }
+#endif
 
 static gint applet_save_session(GtkWidget *widget, gchar *privcfgpath, gchar *globcfgpath, gpointer data)
 {
@@ -534,9 +544,11 @@ static DriveData * create_drive_widget(GtkWidget *applet)
 	gtk_signal_connect(GTK_OBJECT(applet),"change_orient",
 				GTK_SIGNAL_FUNC(applet_change_orient),
 				dd);
+#ifdef HAVE_PANEL_SIZE
 	gtk_signal_connect(GTK_OBJECT(applet),"change_size",
 				GTK_SIGNAL_FUNC(applet_change_size),
 				dd);
+#endif
 	gtk_signal_connect(GTK_OBJECT(applet),"save_session",
 				GTK_SIGNAL_FUNC(applet_save_session),
 				dd);
