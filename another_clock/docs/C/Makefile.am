@@ -1,7 +1,10 @@
-applet = anotherclock
-figs = anotherclock-applet.png  anotherclock-properties.png
+figs = \
+	figures/anotherclock-applet.png	\
+	figures/anotherclock-properties.png
+docname = anotherclock_applet
 lang = C
 omffile = anotherclock_applet-C.omf
-sgml_ents = $(applet).sgml
-include $(top_srcdir)/applet-docs.make
-dist-hook: applet-dist-hook
+sgml_ents = anotherclock.sgml
+include $(top_srcdir)/sgmldocs.make
+dist-hook: app-dist-hook
+
