@@ -1,5 +1,7 @@
 SUBDIRS = docs pixmaps
 
+INCLUDES = $(GNOME_APPLETS_CFLAGS)
+
 libexec_PROGRAMS = accessx-status-applet
 
 accessx_status_applet_SOURCES = \
@@ -19,11 +21,8 @@ $(server_in_files): $(server_in_files:.server.in=.server.in.in)
 
 @INTLTOOL_SERVER_RULE@
 
-uidir = $(datadir)/gnome-2.0/ui
+uidir   = $(datadir)/gnome-2.0/ui
 ui_DATA = GNOME_AccessxApplet.xml
-
-INCLUDES   = $(GNOME_APPLETS_CFLAGS)			\
-	     -DGLADEDIR=\""$(gladedir)"\"
 
 CLEANFILES = $(server_in_files) $(server_DATA) $(ACCESSX_STATUS_APPLET_CLEANFILES)
 
