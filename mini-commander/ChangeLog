@@ -1,5 +1,12 @@
 2002-08-12  Mark McLoughlin  <mark@skynet.ie>
 
+	* src/command_line.c: (mc_command_update_entry_size):
+	update the size of the entry even if its a flat
+	layout. Fixes #88975. Slightly modified version of
+	patch by Arvind.
+
+2002-08-12  Mark McLoughlin  <mark@skynet.ie>
+
 	* src/mc-install-default-macros.c: (main): how
 	silly of me. I was installing the schemas into
 	the user's prefs, not the system-wide db.
