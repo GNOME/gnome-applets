@@ -1,0 +1,270 @@
+
+<sect1 id="diskusage-applet">
+  <title>
+    Applet Utilizzo del disco
+  </title> 
+  
+  <para>
+    L'applet <application>Utilizzo del disco</application>, mostrato nella <xref
+      linkend="diskusage-applet-fig1">, fornisce un controllo all'interno del
+      pannello relativo allo spazio in uso o disponibile sui dischi. Per
+      aggiungere questa applet al pannello, cliccate con il tasto destro del
+      mouse sul pannello e selezionate
+      <menuchoice>
+	<guimenu>Pannello</guimenu>
+	<guisubmenu>Aggiungi al pannello</guisubmenu>
+	<guisubmenu>Applet</guisubmenu>
+	<guisubmenu>Controllo</guisubmenu>
+	<guimenuitem>Utilizzo del disco</guimenuitem>
+      </menuchoice>
+  </para>
+  
+ 
+  <figure id="diskusage-applet-fig1">
+    <title>Applet Utilizzo del disco</title>
+    <screenshot>
+      <screeninfo>Applet Utilizzo del disco</screeninfo>
+      <graphic format="png" fileref="diskusage-applet" srccredit="John Fleck">
+      </graphic>
+    </screenshot>
+  </figure>
+
+   <!-- ============= Usage  ================================ -->
+
+  <sect2 id="diskusage-applet-usage">
+    <title>
+      Utilizzo
+    </title>
+    <para>
+      Applet <application>Utilizzo del disco</application> fornisce un controllo
+      in tempo reale dello spazio disponibile sul vostro disco.
+    </para>
+    <para>
+      Fornisce tre tipi di informazione. Il grafico a torta colorato rappresenta
+      graficamente quanto spazio è usato e quanto è libero.
+      <guilabel>MP:</guilabel> indica il mount point del disco controllato.
+      <guilabel>av:</guilabel> indica lo spazio disponibile sul disco
+      selezionato, in kilobytes. Cliccando sull'applet potete cambiare il disco
+      controllato. Cliccando ripetutamente cambia ciclicamente fra tutti i dischi disponibili.
+    </para>
+  
+    <para>
+      Cliccando con il tasto destro sull'applet viene mostrato il menù contenente le
+      seguenti voci:
+      <itemizedlist>
+        <listitem>
+	  <para>
+	    <guimenuitem>File system</guimenuitem> &mdash; permette di cambiare
+	    il file system che l'applet <application>Utilizzo del disco
+	    </application> controlla.
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    <guimenuitem>Proprietà...</guimenuitem>&mdash; apre la finestra 
+	    <link linkend="diskusage-applet-prefs">
+                <guilabel>Proprietà...</guilabel>
+            </link>
+	  </para>
+	</listitem>
+
+        <listitem>
+	  <para>
+	    <guimenuitem>Aggiorna</guimenuitem> &mdash; può essere utilizzato
+	    per forzare l'applet ad aggiornare la lista dei file system
+	    controllati da questa.     
+          </para>
+	</listitem>
+
+	<listitem>
+	  <para>
+	    <guimenuitem>Aiuto</guimenuitem> &mdash; mostra il manuale di questa
+	    applet.
+	  </para>
+	</listitem>
+
+	<listitem>
+	  <para>
+	    <guimenuitem>Informazioni su...&hellip;</guimenuitem> &mdash; mostra
+	    informazioni riguardo la applet <application>Utilizzo del
+	    disco</application>, come la versione di questa e il nome del suo
+	    autore.
+	  </para>
+	</listitem>
+	
+	
+
+      </itemizedlist>
+    </para>
+  </sect2>
+ <!-- ============= Customization ============================= -->
+  <sect2 id="diskusage-applet-prefs">
+    <title>
+      Personalizzazione
+    </title>
+    <para>
+      È possibile personalizzare l'applet <application>Utilizzo del
+	disco</application> cliccando con il tasto destro del mouse e
+      selezionando <guimenuitem>Proprietà</guimenuitem>. Con questo fate
+      partire la finestra di dialogo <interface>Proprietà&hellip;</interface>, che
+      permette di cambiare alcuni parametri.
+    </para>
+    <figure id="diskusage-applet-fig2">
+      <title>
+	Preferenze
+      </title>
+      <screenshot>
+	<screeninfo>Preferenze</screeninfo>
+	<graphic format="png" fileref="diskusage-applet-prefs" srccredit="John Fleck">
+	</graphic>
+      </screenshot>
+    </figure>
+    <para>
+      Le proprietà sono:
+      <itemizedlist>
+
+      
+	<listitem>
+	  <para>
+	    <guilabel>Colori</guilabel> &mdash;
+	    Per cambiare i colori usati dall'applet, cliccate sui
+	    <guibotton>bottoni colorati</guibotto> accanto a <guilabel>Spazio
+	    Usato</guilabel>, <guilabel>Spazio disponibile</guilabel>,
+	    <guilabel>Colore del testo</guilabel> e <guilabel>Colore dello
+	    sfondo</guilabel>. Apparirà un selettore di colori con le
+	    opzioni per i colori da cambiare. Quando avrete finito cliccate sul
+	    bottone <guibotton>OK</guibotton> del selettore dei colori.
+	  </para>
+	</listitem>
+
+	<listitem>
+	  <para>
+	    <guilabel>Dimensione</guilabel> &mdash; 
+	    <guilabel>Dimensione dell'applet</guilabel> e può essere utilizzato
+	    per cambiare l'altezza (per un pannello orizzontale) o la larghezza
+	    (per un pannello verticale) dell'applet.
+	  </para>
+
+	  <para>
+	    Cliccando sulla casella di spunta <guilabel>Scegli automaticamente
+	    la dimensione ottimale</guilabel> è possibile forzare l'applet
+	    <application>Utilizzo del disco</application> a scegliere
+	    automaticamente la dimensione appropriata per il pannello.
+	  </para>
+	</listitem>
+
+	<listitem>
+	  <para>
+	    <guilabel>Font</guilabel> &mdash; Cliccando sulla barra di questa
+	    finestra viene mostrata una finestra di dialogo per cambiare il font
+	    utilizzato nell'applet.
+	  </para>
+	</listitem>
+	<listitem>
+	  <para>
+	    <guilabel>Frequenza di aggiornamento</guilabel> &mdash; cambia il
+	    periodo di tempo, in secondi, fra gli aggiornamenti dell'applet
+	    <application>Utilizzo del disco</application>.
+	  </para>
+	</listitem>
+
+      </itemizedlist>
+    </para>
+
+
+    <para>
+      Fatti i cambiamenti voluti cliccate sul pulsante <guibotton>OK</guibotton>
+      per salvarli e chiudete la finestra di dialogo
+      <interface>Proprietà</interface>. Per annullare le modifiche e tornare
+      alle impostazioni precedenti, cliccate sul pulsante
+      <guibotton>Chiudi</guibotton>.
+    </para>
+  </sect2>
+  
+  <!-- ============= Authors ================================ -->
+
+  <sect2 id="authors">
+   <title>
+      Autori
+    </title>
+    <para>
+      Applet <application>Utilizzo del disco</application> è stata scritta da
+      Dave Finton <email>dfinton@d.umn.edu</email>, Bruno Widmann
+      <email>bwidmann@tks.fh-sbg.ac.at</email> and Martin Baulig
+      <email>martin@home-of-linux.org</email>. Inviate tutti i commenti,
+      suggerimenti e notifiche di errori al <ulink url="http://bugs.gnome.org"
+      type="http">GNOME bug tracking database</ulink>. (Le istruzioni per
+      riportare errori possono essere trovate <ulink
+      url="http://bugs.gnome.org/Reporting.html" type="http">on-line</ulink>. Se
+      state usando la versione di GNOME 1.1 o una più recente è possibile usare
+      anche il programma <application>bug-buddy</application>
+      (<command>bug-buddy</command>), che si trova nel sotto-menù
+      <guisubmenu>Utilità</guisubmenu> nel <guimenu>Menù Principale</guimenu>,
+      per riportare errori.
+   </para>
+
+   <para>
+      Questo manuale è stato scritto da John Fleck
+      (<email>jfleck@inkstain.net</email>). Inviate tutti i commenti e i
+      suggerimenti riguardo questo manuale allo <ulink type="http"
+      url="http://www.gnome.org/gdp">GNOME Documentation Project</ulink>
+      mandando un email a <email>docs@gnome.org</email>. È possibile anche
+      spedire commenti on-line usando lo <ulink type="http"
+      url="http://www.gnome.org/gdp/doctable/">GNOME Documentation Status
+      Table</ulink>.
+   </para>
+
+
+
+   <para>
+      La traduzione italiana è stata fatta da Leandro Noferini
+      (<email>lnoferin@cybervalley.org</email>). Inviate tutti i commenti e
+      suggerimenti riguardo questa traduzione a
+      <email>webmaster@www.it.gnome.org</email>.
+   </para>
+
+  </sect2>
+
+
+  <!-- ============= Application License ============================= -->
+
+  <sect2 id="license">
+    <title>
+      License
+    </title>
+   <para>
+      This program is free software; you can redistribute it and/or
+      modify it under the terms of the <citetitle>GNU General Public
+	License</citetitle> as published by the Free Software Foundation;
+      either version 2 of the License, or (at your option) any later
+      version.
+    </para>
+    <para>
+      This program is distributed in the hope that it will be useful, but
+      WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      <citetitle>GNU General Public License</citetitle> for more details.
+    </para>
+    <para>
+      A copy of the <citetitle>GNU General Public License</citetitle> is
+      included as an appendix to the <citetitle>GNOME Users
+	Guide</citetitle>.  You may also obtain a copy of the
+      <citetitle>GNU General Public License</citetitle> from the Free
+      Software Foundation by visiting <ulink type="http"
+      url="http://www.fsf.org">their Web site</ulink> or by writing to 
+      <address>Free Software Foundation, Inc.
+	<street>59 Temple Place</street> - Suite 330
+	<city>Boston</city>, <state>MA</state> <postcode>02111-1307</postcode>
+	<country>USA</country>
+      </address>
+    </para>
+  </sect2>
+</sect1>
+
+
+
+
+<!--  LocalWords:  MP
+ -->
+
+
