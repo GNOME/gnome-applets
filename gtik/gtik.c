@@ -158,11 +158,12 @@
 	/*-----------------------------------------------------------------*/
 	void load_fonts()
 	{
-		if (new_font != NULL)
+		if (new_font != NULL) {
 			if (whichlabel == 1)
 				my_font = gdk_font_load(new_font);
 			else
 				small_font = gdk_font_load(new_font);
+		}
 		if (!my_font)
 			my_font = gdk_font_load (props.font);
 
@@ -314,7 +315,7 @@
 		int  linenum=0;
 		int AllOneLine=0;
 		int flag=0;
-		char *section;
+		char *section = NULL; /* FIXME: correct? this gets rid of warning */
 		char *ptr;
 
 		if (strlen(line) > 64) AllOneLine=1;
@@ -694,7 +695,7 @@
 
 
 	/*-----------------------------------------------------------------*/
-	void refresh_cb(GtkWidget *widget, gpointer data) {
+	void refresh_cb(AppletWidget *widget, gpointer data) {
 		updateOutput();
 	}
 
@@ -790,9 +791,9 @@
 
 	/*-----------------------------------------------------------------*/
 	static void apply_cb( GtkWidget *widget, void *data ) {
+#if 0
 		char *tmpText;
 
-#if 0
 		tmpText = gtk_entry_get_text(GTK_ENTRY(tik_syms_entry));
 		props.tik_syms = g_strdup(tmpText);
 #endif
@@ -801,12 +802,12 @@
 			props.timeout = timeout > 0 ? timeout : props.timeout;
 		}
 
-		if (new_font != NULL) 
+		if (new_font != NULL) {
 			if (whichlabel == 1) 
 				props.font = g_strdup(new_font);
 			else
 				props.font2 = g_strdup(new_font);
-
+		}
 		properties_save(APPLET_WIDGET(applet)->privcfgpath);
 		properties_set();
 	}
@@ -841,6 +842,7 @@
 
                 gtk_widget_show(tmpWidget);
 
+		return FALSE;
 	}
 
         /*-----------------------------------------------------------------*/
@@ -848,17 +850,18 @@
 	gint font_cb(GtkWidget *widget, gpointer data) {
 		whichlabel = 1;
 		font_selector(widget,data);
+		return FALSE;
 	}
 
         /*-----------------------------------------------------------------*/
 	gint font2_cb(GtkWidget *widget, gpointer data) {
 		whichlabel = 2;
 		font_selector(widget,data);
+		return FALSE;
 	}
 
         /*-----------------------------------------------------------------*/
         gint OkClicked( GtkWidget *widget, void *fontDialog ) {
-                GtkWidget *tmpWidget;
                 gchar *newFont = NULL;
 
 
@@ -868,12 +871,12 @@
                 newFont = gtk_font_selection_dialog_get_font_name(fsd);
                 new_font = g_strdup(newFont);
                 gtk_widget_destroy(fontDialog);
+		return FALSE;
         }
 
         /*-----------------------------------------------------------------*/
         gint QuitFontDialog( GtkWidget *widget, void *data ) {
-                GtkWidget *tmpWidget;
-
+		return FALSE;
         }
 
 	/*-----------------------------------------------------------------*/
@@ -1042,17 +1045,19 @@
 		GtkWidget * vbox3;
 		GtkWidget * hbox3;
 		GtkWidget *hbox;
+#if 0
 		GtkWidget *urlcheck, *launchcheck;
+#endif
 
 		GtkWidget *panela, *panel1 ,*panel2;
-		GtkWidget *label1,*label2,*label3, *label4, *label5, *label6;
+		GtkWidget *label1, *label5;
 
 
 		GtkWidget *timeout_label,*timeout_c;
 		GtkObject *timeout_a;
 
 		GtkWidget *upColor, *downColor, *upLabel, *downLabel;
-		GtkWidget *check,*check2, *check3, *check4, *fontButton;
+		GtkWidget *check, *check2, *check3, *check4, *fontButton;
 
 		int ur,ug,ub, dr,dg,db; 
 
@@ -1133,7 +1138,7 @@
 		gtk_signal_connect_object(GTK_OBJECT(check4),"toggled",
 				GTK_SIGNAL_FUNC(changed_cb),GTK_OBJECT(pb));
 
-#if 0
+#if 1
 		gtk_signal_connect(GTK_OBJECT(check4),"toggled",
 				GTK_SIGNAL_FUNC(toggle_buttons_cb),NULL);
 		gtk_signal_connect(GTK_OBJECT(check3),"toggled",
@@ -1240,8 +1245,6 @@
 
 	/*-----------------------------------------------------------------*/
 	int main(int argc, char **argv) {
-		GtkWidget *label;
-
 		GtkWidget * vbox;
 		GtkWidget * frame;
 
@@ -1426,7 +1429,6 @@
 		char buff[128]="";
 		static char buff2[128]="";
 		char *var1, *var2;
-		int i;
 
 		strcpy(buff,data);
 		var1 = strtok(buff,":");
@@ -1445,7 +1447,6 @@
 		char buff[128]="";
 		static char buff2[128]="";
 		char *var1, *var2, *var3, *var4;
-		int i;
 
 		strcpy(buff,data);
 		var1 = strtok(buff,":");
@@ -1528,7 +1529,6 @@
 
 	void ucolor_set_cb(GnomeColorPicker *cp) {
 		guint8 r,g,b;
-		gchar *testucolor;	
 		gnome_color_picker_get_i8(cp,
 					&r,
 					&g,
