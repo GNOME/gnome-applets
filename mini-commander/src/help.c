@@ -25,13 +25,13 @@
 void 
 show_help(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 {
-    #if 0 /* FIXME */
-    static GnomeHelpMenuEntry help_entry = { NULL, "index.html"};
-
-    help_entry.name = gnome_app_id;
+    GError *error = NULL;
     
-    gnome_help_display(NULL, &help_entry);
-    #endif
+    gnome_help_display_desktop (NULL, "command-line", "command-line", NULL, &error);
+    if (error) {
+    	g_warning ("help error: %s\n", error->message);
+	g_error_free (error);
+    }
 
     show_message((gchar *) _("still not ported")); 
 
