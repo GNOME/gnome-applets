@@ -1,4 +1,5 @@
-figs = clockmail-prefs-general.png clockmail-prefs-theme.png
+figs = clockmail-prefs-general.png clockmail-prefs-theme.png \
+	clockmail_applet.png
 applet = clockmail
 lang = C
 sgml_ents = $(applet).sgml

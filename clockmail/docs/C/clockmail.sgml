@@ -1,91 +1,89 @@
-  <sect1 id="clockmail">
-   <title>ClockMail</title>
+ <sect1 id="clockmail">
+  <title>Clock and Mailcheck Applet</title>
+
    <para>
-     The GNOME <application>Clock and mail notify applet</application>
-     (or <application>clockmail_applet</application> for short)
-     is an applet which shows you the current time and how much mail is
-     in your mailbox currently. When more mail arrives, it flashes.
+   <application>Clock and Mailcheck</application> applet, shown in <xref
+   linkend="clockmailapplet-fig">, displays the current time and how
+   much mail is in your mailbox.  It also notifies you when new mail
+   arrives by flashing.   To add this
+   applet to a <interface>Panel</interface>, 
+   right-click on the <interface>Panel</interface> and choose
+   <menuchoice>
+    <guimenu>Panel</guimenu>
+    <guisubmenu>Add to panel</guisubmenu>
+    <guisubmenu>Applet</guisubmenu>
+    <guisubmenu>Clocks</guisubmenu>
+    <guimenuitem>Clock and Mailcheck</guimenuitem>
+   </menuchoice>.
+  </para>
+
+  <figure id="clockmailapplet-fig">
+   <title>Clock and Mailcheck Applet</title>
+   <screenshot>
+    <screeninfo>Clock and Mailcheck Applet</screeninfo>
+    <graphic format="png" fileref="clockmail_applet" 
+    srccredit="muet">
+    </graphic>
+   </screenshot>
+  </figure>
+
+
+  <!-- ============= Usage  ================================ -->
+  <sect2 id="clockmail-usage">
+   <title>Usage</title>
+   <para>
+    View the time and number of messages in your inbox in the applet's
+    display. The envelope will flash when new email arrives.
    </para>
+
    <para>
-     Until October GNOME it was in gnome-core, but it is now distributed
-     with gnome-applets. This part of the guide refers to the applet
-     as distributed in gnome-applets-1.1.2.
-   </para>     
-   <para>
-     To add the <application>clockmail_applet</application> to your panel,
-     you can click <mousebutton>mouse button 3</mousebutton> on an
-     empty part of the <interface>panel</interface> and follow the
-     sequence:
-    <menuchoice>
-     <guimenu>Applets</guimenu>
-     <guisubmenu>Clocks</guisubmenu>
-     <guimenuitem>Clock and Mailcheck</guimenuitem>
-    </menuchoice>
-     or you can type the following command at a command line:
-     <command>clockmail_applet --activate-goad-server=clockmail_applet</command>
+    Right-clicking on the applet brings up a menu containing the
+    following items:
+    <itemizedlist>
+
+     <listitem>
+      <para>
+       <guimenuitem>Properties&hellip;</guimenuitem> &mdash;
+       opens the <link linkend="clockmail-prefs">
+       <guilabel>Properties</guilabel></link> dialog.
+      </para>
+     </listitem>
+
+     <listitem>
+      <para>
+       <guimenuitem>Help</guimenuitem> &mdash;
+       displays this document.
+      </para>
+     </listitem>
+
+     <listitem>
+      <para>
+       <guimenuitem>About&hellip;</guimenuitem> &mdash;
+       shows basic information about <application>Clock and Mailcheck
+       Applet</application>, inluding the applet's version and the
+       author's name.
+      </para>
+     </listitem>
+
+    </itemizedlist>
    </para>
-<!--   <para>
-     The gnome clock was written by 
-     John Ellis (<email>johne@bellatlantic.net</email>). Please
-     report bugs in it to the 
-     <ulink type="http" url="http://bugs.gnome.org">GNOME bug
-     tracking system</ulink>. You can do this by following the
-     guidelines on that site or by using <application>bug-buddy</application>
-    from the command-line. For the package, put gnome-applets.
-   </para>-->
+  </sect2>
 
-   <sect2 id="clockmail-usage">
-    <title>Usage</title>
-    <para>
-      You don't need to do anything special to this clock. It will just
-      sit on your panel and tell you the time and how much mail is in
-      your mail inbox. Various options are available with the 
-      mouse:
-    </para>
 
-    <orderedlist>
-     <listitem>
-      <para>
-        Pressing the <mousebutton>left</mousebutton> mouse button brings up
-        a <guilabel>tooltip</guilabel> which shows the current date.
-        It may also start up another program (tyically Balsa, the mail
-        client) for you if this option has been selected in the general
-        <link linkend="clockmail-prefs">preference window</link>.
-      </para>
-     </listitem>
-     <listitem>
-      <para>
-        Holding down the <mousebutton>middle</mousebutton> mouse button allows you to 
-        move the clock about in the same way you move anything on the
-        panel.
-      </para>
-     </listitem>
-     <listitem>
-      <para>
-         Pressing the <mousebutton>right</mousebutton>mouse button brings
-         up the standard choices available for applets, including a
-         <guilabel>preferences menu</guilabel> explained <link
-         linkend="clockmail-prefs">below</link>, and an About box.
-      </para>
-     </listitem>
-    </orderedlist>
-   </sect2>     
-
-   <sect2 id="clockmail-prefs">
+  <!-- ============= Customization ============================= -->
+  <sect2 id="clockmail-prefs">
     <title>Customization</title>
     <para>
-      You can customize the <application>ClockMail</application>
+      You can customize <application>Clock and Mailcheck</application>
       applet by right-clicking on it and choosing
-      <guimenuitem>ClockMail Settings</guimenuitem>. This will open the
-      <link linkend="clockmail-prefs-fig"><interface>Properties</interface> dialog</link>
-      , which allows you to change various settings.
-      The <interface>Properties</interface> dialogue (which calls
-      itself <quote>ClockMail Settings</quote> rather than Properties) is divided
-      in two sections, one for general options and one for themes.
+      <guimenuitem>Properties&hellip;</guimenuitem>. This will open the
+      <interface>Properties</interface> dialog(shown in <xref
+      linkend="clockmail-settings-fig">), which allows you to
+      change various settings.
     </para>
 
-    <figure id="clockmail-prefs-fig">
-     <title>ClockMail Settings</title>
+    <figure id="clockmail-settings-fig">
+     <title>Properties dialog</title>
      <screenshot>
       <screeninfo>Properties dialog</screeninfo>
       <graphic format="png" fileref="clockmail-prefs-general"
@@ -94,144 +92,137 @@
      </screenshot>
     </figure>
 
-    <variablelist>
-     <varlistentry>
-      <term><link linkend="clockmail-prefs-fig">General preferences</link></term>
-      <listitem>
-       <para>
-         The <guilabel>General</guilabel> preferences tab has a variety
-         of options:
-       </para>
-       <variablelist>
-        <varlistentry>
-        <term>Display time in 12 hours format (AM/PM)</term>
-         <listitem>
-          <para>
-            When this <guibutton>checkbox</guibutton> is selected, the
-            time will be shown in a 12-hour format. The default is that
-            this is off and that time is shown as the 24-hour clock.
-          </para>
-         </listitem>
-        </varlistentry>
-        <varlistentry>
-         <term>Display time relative to GMT (Greenwich Mean Time)</term>
-         <listitem>
-          <para>
-            You can change the timezone <application>mailclock_applet</application>
-            uses. You can either type directly into the small box or use
-            the small <guibutton>arrow buttons</guibutton> to scroll
-            through the options. The time can be anything from twelve hours
-            ahead of GMT to twelve hours behind it. Remember also to apply
-            the <guibutton>checkbox</guibutton>, as otherwise the new
-            timezone will not be used. Note that you can only alter the
-            time by whole hours.
-          </para>
-         </listitem>
-        </varlistentry>
-        <varlistentry>
-         <term>Mail file</term>
-         <listitem>
-          <para>
-            This is the file that is checked for new mail. It will
-            probably say <filename>/var/spool/mail/yourusername</filename>
-            or something similar. If you filter or move mail into another
-            place, you will have to fill it in here. You cannot list
-            multiple files. The applet will only look at one file.
-          </para>
-         </listitem>
-        </varlistentry>
-        <varlistentry>
-         <term>When new mail is received, run...</term>
-         <listitem>
-          <para>
-            It is possible to make things happen when new mail arrives.
-            For example, it is very common for people to have a sound
-            file played as mail arrives. You can put the command to 
-            run and the file to run it on in this space and ensure the
-            <guibutton>checkbox</guibutton> is checked for it to occur.
-            If you have more than one command, you can separate them
-            by a semi-colon. For example,
-          </para>
-          <itemizedlist>
-           <listitem>
-            <para>
-              <command>esdplay /full/path/to/file.wav</command>
-            </para>
-           </listitem>
-           <listitem>
-            <para>
-              <command>cd /path/to/directory ; esdplay file.wav</command>
-            </para>
-           </listitem>
-          </itemizedlist>
-          <para>
-             These two have the same effect. You will need the full path
-             for this, without using shortcuts such as <command>cd ~</command>.
-          </para>
-         </listitem>
-        </varlistentry>
-        <varlistentry>
-         <term>Always blink when new mail is waiting</term>
-         <listitem>
-          <para>
-           If you select this <guibutton>checkbox</guibutton>, then the
-           graphic will blink until you read your unread email. Normally,
-           this is off, and the blinking lasts a few seconds only.
-          </para>
-         </listitem>
-        </varlistentry>
-        <varlistentry>
-         <term>Number of messages to consider mailbox full</term>
-         <listitem>
-          <para>
-            If the mailbox is full, some themes will show this. This
-            setting lets you choose how much email means 'full'.
-          </para>
-         </listitem>
-        </varlistentry>
-        <varlistentry>
-         <term>When clicked, run...</term>
-         <listitem>
-          <para>
-            When this is set, clicking <mousebutton>button 1</mousebutton>
-            of the mouse on the applet will run a program. The default is
-            to run the Balsa mail client (if it is installed. If it is
-            not installed, nothing will happen). If you don't want anything
-            to be run, just delete whatever is in this box.
-          </para>
-		<figure id="clockmail-prefs-theme-fig">
-		  <title>ClockMail Settings &mdash; Theme</title>
-		  <screenshot>
-		    <screeninfo>Properties dialog with theme tab</screeninfo>
-		    <graphic format="png" fileref="clockmail-prefs-theme"
-			     srccredit="Eric Baudais">
-		    </graphic>
-		  </screenshot>
-		</figure>
-         </listitem>
-        </varlistentry>
-       </variablelist>
-      </listitem>
-     </varlistentry>
-     <varlistentry>
-      <term><link linkend="clockmail-prefs-theme-fig">Theme preferences</link></term>
-      <listitem>
-       <para>
-         The <application>mailclock_applet</application> comes with a very
-         long list of themes, which it finds in
-         <filename>$PREFIX/clockmail/</filename>. By 
-         default, it uses none of them. Note that not all of them show both
-         the time and the state of your mailbox. Some display only one of
-         those. Just click on a theme and then on the <guilabel>Apply</guilabel> 
-         box to change it.
-       </para>
-      </listitem>
-     </varlistentry>
-    </variablelist>
-   </sect2>
+    <para>
+     The <interface>Properties</interface> dialogue is divided in two
+     sections, one for general options and one for themes.
+    </para>
 
-   <sect2 id="clockmail-bugs">
-    <title>Known Bugs and Limitations</title>
+    <para>
+     The properties in the <guilabel>General</guilabel> tab are:
+     <itemizedlist>
+
+      <listitem>
+       <para>
+        Display time in 12 hours format (AM/PM) &mdash;  Check this
+        button to show the time in 12-hour format. 
+       </para>
+      </listitem>
+
+      <listitem>
+       <para>
+        Display time relative to GMT (Greenwich Mean Time) &mdash;
+        This allows you to change the timezone
+        <application>Clock and Mailcheck</application> 
+        uses.  The time can be anything from twelve hours
+        ahead of GMT to twelve hours behind it. Remember also to select
+        the <guibutton>checkbox</guibutton>, to use the new
+        timezone. Note that you can only alter the
+        time by an integral number of hours.
+       </para>
+      </listitem>
+
+      <listitem>
+       <para>
+        Mail file  &mdash; Enter you email inbox file which should be 
+        checked for new mail. Typically, this is
+        <filename>/var/spool/mail/yourusername</filename>
+        or something similar. You can only enter one file.
+       </para>
+      </listitem>
+
+      <listitem>
+       <para>
+        When new mail is received, run... &mdash; It is possible to
+        execute commands when new mail arrives. 
+        For example, it is very common for people to have a sound
+        file played as mail arrives. You can put the command to 
+        run and the file to run it on in this space and ensure the
+        checkbox is checked for it to occur.
+        If you have more than one command, you can separate them
+        by a semi-colon. For example,
+        <itemizedlist>
+         <listitem>
+          <para>
+           <command>esdplay /full/path/to/file.wav</command>
+          </para>
+         </listitem>
+         <listitem>
+          <para>
+           <command>cd /path/to/directory ; esdplay file.wav</command>
+          </para>
+         </listitem>
+        </itemizedlist>
+        These two have the same effect. You will need the full path
+        for this, without using shortcuts such as <command>cd ~</command>.
+       </para>
+      </listitem>
+
+      <listitem>
+       <para>
+        Always blink when new mail is waiting &mdash; If you select
+        this <guibutton>checkbox</guibutton>, then the 
+        red envelope will blink until you read your unread email. Normally,
+        this is off, and the blinking lasts only a few seconds.
+       </para>
+      </listitem>
+
+      <listitem>
+       <para>
+        Number of messages to consider mailbox full &mdash; Set the
+        number of messages you mailbox must have to be considered
+        <quote>full</quote>.  Certain themes will show a special
+        symbol indicating the mailbox is full.
+       </para>
+      </listitem>
+
+      <listitem>
+       <para>
+        When clicked, run... &mdash; When this is set, clicking
+        the left mouse button on the applet will run a program. The default is
+        to run the <application>Balsa</application> mail client. (If
+        <application>Balsa</application> is not installed, nothing
+        will happen.) Set this to be your favorite email program.
+       </para>
+      </listitem>
+
+     </itemizedlist>
+    </para>
+
+    <para>
+     The properties in the <guilabel>Theme</guilabel> tab allows you
+     to set the appearance of <application>Clock and
+     Mailcheck</application> applet. <application>Clock and
+     Mailcheck</application> applet comes with many themes which are
+     stored in  <filename>$PREFIX/clockmail/</filename>. By 
+     default, it does not use a theme. Note that not all of the themes
+     show both the time and the state of your mailbox. 
+    </para>
+
+    <figure id="clockmail-settings-theme-fig">
+     <title>Properties dialog showing theme tab</title>
+     <screenshot>
+      <screeninfo>Properties dialog showing theme tab</screeninfo>
+      <graphic format="png" fileref="clockmail-prefs-theme"
+      srccredit="Eric Baudais">
+      </graphic>
+     </screenshot>
+    </figure>
+
+    <para> 
+      After you have made all the changes you want, click on
+      <guibutton>OK</guibutton> to apply the changes and close the
+      <interface>Properties</interface> dialog. To cancel the changes
+      and return to previous values, click the
+      <guibutton>Cancel</guibutton> button.
+    </para>
+  </sect2>
+
+  <!-- ============= Bugs ================================== -->
+  <!-- This section should describe known bugs and limitations of
+       the program if there are any - please be frank and list all
+       problems you know of -->
+  <sect2 id="clockmail-bugs">
+   <title>Known Bugs and Limitations</title>
     <orderedlist>
      <listitem>
       <para>
@@ -267,7 +258,8 @@
       </para>
      </listitem>
     </orderedlist>
-   </sect2>
+  </sect2>
+
 
   <!-- ============= Authors ================================ -->
 
