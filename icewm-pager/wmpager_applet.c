@@ -39,7 +39,7 @@ Atom _XA_WIN_STATE;
 
 int main(int argc, char *argv[])
 {
-    applet_widget_init_defaults("wmpager_applet", VERSION, argc, argv,
+    applet_widget_init("wmpager_applet", VERSION, argc, argv,
 				NULL, 0, NULL);
 
     /* Get the Atom for making a window sticky, so that the detached pager appears on all screens */

@@ -1,6 +1,7 @@
 INCLUDES = -I. -I$(srcdir) 				\
 	-I$(srcdir)/../../panel				\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
+	-I$(top_builddir)/panel \
 	-I$(includedir) $(GNOME_INCLUDEDIR)
 
 bin_PROGRAMS = gticker_applet

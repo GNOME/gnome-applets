@@ -132,7 +132,7 @@ main(int argc, char **argv)
   int i=0;
   poptContext ctx;
 
-  applet_widget_init_defaults("winlist_applet", VERSION, argc, argv, NULL, 0,
+  applet_widget_init("winlist_applet", VERSION, argc, argv, NULL, 0,
 			      NULL);
 
   winlist = g_hash_table_new(g_direct_hash, NULL);

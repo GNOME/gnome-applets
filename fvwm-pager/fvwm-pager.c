@@ -236,7 +236,7 @@ main(int argc, char* argv[])
   if (noapplet)
     gnome_init("fvwmpager", VERSION, argc, argv);
   else
-    applet_widget_init_defaults("#fvwmpager", VERSION, argc, argv,
+    applet_widget_init("#fvwmpager", VERSION, argc, argv,
 				NULL, 0, NULL);
 
   _XA_WIN_WORKSPACE           = XInternAtom(GDK_DISPLAY(), XA_WIN_WORKSPACE, False);

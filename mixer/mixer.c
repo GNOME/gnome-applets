@@ -552,7 +552,7 @@ int
 main(int argc, char **argv)
 {
 	openMixer("/dev/mixer");
-	applet_widget_init_defaults("mixer_applet", VERSION, argc, argv,
+	applet_widget_init("mixer_applet", VERSION, argc, argv,
 				    NULL, 0, NULL);
 
 	applet = applet_widget_new("mixer_applet");

@@ -646,7 +646,7 @@ int main (int argc, char *argv[])
 		load_hist_tx[i] = 0;
 		}
 
-	applet_widget_init_defaults("modemlights_applet", VERSION, argc, argv,
+	applet_widget_init("modemlights_applet", VERSION, argc, argv,
 				    NULL, 0, NULL);
 
 	lock_file = g_strdup("/var/lock/LCK..modem");

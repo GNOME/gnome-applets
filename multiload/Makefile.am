@@ -1,5 +1,6 @@
 INCLUDES = -I. -I$(srcdir) 				\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
+	-I$(top_builddir)/panel \
        -I$(srcdir)/../../panel                         \
 	-I$(includedir) $(GNOME_INCLUDEDIR) $(LIBGTOP_INCS)
 

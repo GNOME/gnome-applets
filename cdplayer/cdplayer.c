@@ -290,7 +290,7 @@ main(int argc, char **argv)
 {
 	GtkWidget *cdplayer;
 
-	applet_widget_init_defaults("cdplayer_applet", VERSION, argc, argv,
+	applet_widget_init("cdplayer_applet", VERSION, argc, argv,
 				    NULL, 0, NULL);
 
 	applet = applet_widget_new("cdplayer_applet");

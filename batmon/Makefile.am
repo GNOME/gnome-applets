@@ -1,7 +1,9 @@
 pixmapdir = $(datadir)/pixmaps
 
 INCLUDES = -I. -I$(srcdir) 				\
-	-I$(top_srcdir)/intl -I$(top_builddir)/intl	\
+	-I$(top_srcdir)/intl \
+	-I$(top_builddir)/intl	\
+	-I$(top_builddir)/panel	\
 	-I$(srcdir)/../../panel				\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
 	-I$(includedir) $(GNOME_INCLUDEDIR)

@@ -27,16 +27,11 @@
 int
 main(int argc, char ** argv)
 {
-	GList *list;
   /* Initialize i18n */
   bindtextdomain (PACKAGE, GNOMELOCALEDIR);
   textdomain (PACKAGE);
 
-  list = g_list_prepend(NULL,"battery_applet");
-  /* Initialize the applet */
-  applet_widget_init("battery_applet", VERSION, argc, argv, NULL, 0, NULL,
-		     TRUE,list, applet_start_new_applet, NULL);
-  g_list_free(list);
+  applet_widget_init("battery_applet", VERSION, argc, argv, NULL, 0, NULL);
 
   /* Create the battery applet widget */
   make_new_battery_applet();

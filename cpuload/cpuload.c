@@ -194,7 +194,7 @@ int main(int argc, char **argv)
         bindtextdomain (PACKAGE, GNOMELOCALEDIR);
 	textdomain (PACKAGE);
 
-        applet_widget_init_defaults("cpuload_applet", VERSION, argc,
+        applet_widget_init("cpuload_applet", VERSION, argc,
 				    argv, NULL, 0, NULL);
 
 	applet = applet_widget_new("cpuload_applet");

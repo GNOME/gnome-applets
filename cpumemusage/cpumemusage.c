@@ -169,7 +169,7 @@ static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
 
 int main(int argc, char **argv)
 {
-        applet_widget_init_defaults("cpumemusage_applet", VERSION, argc, argv,
+        applet_widget_init("cpumemusage_applet", VERSION, argc, argv,
 				    NULL, 0, NULL);
 
 	applet = applet_widget_new("cpumemusage_applet");

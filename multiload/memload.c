@@ -243,7 +243,7 @@ applet_save_session (GtkWidget *widget, char *privcfgpath,
 }
 
 /* start a new instance of the memload applet */
-void
+GtkWidget *
 make_memload_applet (const gchar *goad_id)
 {
         GtkWidget *applet;
@@ -276,4 +276,6 @@ make_memload_applet (const gchar *goad_id)
 					       _("Properties..."),
 					       mem_properties,
 					       memload);
+
+	return applet;
 }

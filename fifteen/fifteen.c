@@ -284,7 +284,7 @@ main (int argc, char **argv)
 	bindtextdomain (PACKAGE, GNOMELOCALEDIR);
 	textdomain (PACKAGE);
 
-	applet_widget_init_defaults ("fifteen_applet", VERSION, argc,
+	applet_widget_init ("fifteen_applet", VERSION, argc,
 				     argv, NULL, 0, NULL);
 
 	applet = applet_widget_new ("fifteen_applet");

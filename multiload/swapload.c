@@ -204,7 +204,7 @@ applet_save_session (GtkWidget *widget, char *privcfgpath,
 }
 
 /* start a new instance of the swapload applet */
-void
+GtkWidget *
 make_swapload_applet (const gchar *goad_id)
 {
         GtkWidget *applet;
@@ -237,4 +237,6 @@ make_swapload_applet (const gchar *goad_id)
 					       _("Properties..."),
 					       swap_properties,
 					       swapload);
+
+	return applet;
 }

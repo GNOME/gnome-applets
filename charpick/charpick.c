@@ -255,7 +255,7 @@ main (int argc, char *argv[])
   bindtextdomain (PACKAGE, GNOMELOCALEDIR);
   textdomain (PACKAGE);
   /* initialize applet */
-  applet_widget_init_defaults("charpick_applet", VERSION, argc, argv,
+  applet_widget_init("charpick_applet", VERSION, argc, argv,
 			      NULL, 0, NULL);
 
   /* create a new applet_widget */

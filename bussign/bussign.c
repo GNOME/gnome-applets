@@ -49,7 +49,7 @@ int main(int argc, char **argv)
   GtkWidget *l_applet = NULL;
   
   /* set up the usual stuff */
-  applet_widget_init_defaults("bussign_applet", VERSION, argc, argv, NULL, 0, NULL);
+  applet_widget_init("bussign_applet", VERSION, argc, argv, NULL, 0, NULL);
 
   l_applet = applet_widget_new("bussign_applet");
   if (!l_applet)

@@ -440,7 +440,7 @@ main(int argc, char **argv)
 {
 	GtkWidget *batmon;
 
-	applet_widget_init_defaults("batmon_applet", VERSION, argc,
+	applet_widget_init("batmon_applet", VERSION, argc,
 				    argv, NULL, 0, NULL);
 
 	applet = applet_widget_new("batmon_applet");

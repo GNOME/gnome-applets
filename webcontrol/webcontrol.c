@@ -276,7 +276,7 @@ main(int argc, char **argv)
 
 	/* intialize, this will basically set up the applet, corba and
 	   call gnome_init */
-	applet_widget_init_defaults("webcontrol_applet", VERSION, argc, argv,
+	applet_widget_init("webcontrol_applet", VERSION, argc, argv,
 				    NULL, 0, NULL);
 
 	/* create a new applet_widget */

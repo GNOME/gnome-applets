@@ -69,8 +69,8 @@ int main(int argc, char **argv)
 
         /* intialize, this will basically set up the applet, corba and
            call gnome_init */
-        applet_widget_init_defaults("mini-commander_applet", VERSION, argc, argv, NULL, 0,
-                                    NULL);
+        applet_widget_init("mini-commander_applet", VERSION, argc, argv, NULL, 0,
+			   NULL);
 
         /* create a new applet_widget */
 

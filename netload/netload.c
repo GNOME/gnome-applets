@@ -241,7 +241,7 @@ static gint applet_save_session(GtkWidget *widget, char *privcfgpath, char *glob
 void
 error_close_cb(GtkWidget *widget, void *data)
 {
-	applet_widget_remove_from_panel(APPLET_WIDGET(widget));
+  applet_widget_remove(APPLET_WIDGET(widget));
 }
 
 /*
@@ -312,7 +312,7 @@ int main(int argc, char **argv)
         bindtextdomain (PACKAGE, GNOMELOCALEDIR);
 	textdomain (PACKAGE);
 
-	applet_widget_init_defaults("netload_applet", VERSION, argc,
+	applet_widget_init("netload_applet", VERSION, argc,
 				    argv, NULL, 0, NULL);
 
 	applet = applet_widget_new("netload_applet");

@@ -21,46 +21,37 @@
 #include <gdk/gdkx.h>
 #include <applet-widget.h>
 
-void make_cpuload_applet  (const gchar *);
-void make_memload_applet  (const gchar *);
-void make_swapload_applet (const gchar *);
+extern GtkWidget* make_cpuload_applet  (const gchar *);
+extern GtkWidget* make_memload_applet  (const gchar *);
+extern GtkWidget* make_swapload_applet (const gchar *);
 
 
-static void
+static GtkWidget *
 make_new_applet (const gchar *goad_id)
 {
-	if (!strcmp (goad_id, "multiload_memload_applet"))
-		make_memload_applet (goad_id);
-	else if (!strcmp (goad_id, "multiload_swapload_applet"))
-		make_swapload_applet (goad_id);
-	else
-		make_cpuload_applet (goad_id);
-}
-
-/*when we get a command to start a new widget*/
-static void
-applet_start_new_applet (const gchar *goad_id, gpointer data)
-{
-	make_new_applet (goad_id);
+  if (!strcmp (goad_id, "multiload_memload_applet"))
+    return make_memload_applet (goad_id);
+  else if (!strcmp (goad_id, "multiload_swapload_applet"))
+    return make_swapload_applet (goad_id);
+  /* else *//* avoid gcc warning */
+  return make_cpuload_applet (goad_id);
 }
 
 int
 main (int argc, char **argv)
 {
-	GList *list = NULL;
-	char *goad_id;
+	const char *goad_id;
 
 	/* Initialize the i18n stuff */
         bindtextdomain (PACKAGE, GNOMELOCALEDIR);
 	textdomain (PACKAGE);
 
 
-	list = g_list_prepend(list,"multiload_cpuload_applet");
-	list = g_list_prepend(list,"multiload_memload_applet");
-	list = g_list_prepend(list,"multiload_swapload_applet");
 	applet_widget_init ("multiload_applet", VERSION, argc, argv, NULL, 0,
-			    NULL, TRUE, list, applet_start_new_applet, NULL);
-	g_list_free(list);
+			    NULL);
+
+	applet_factory_new("multiload_applet", NULL,
+			   (AppletFactoryActivator)make_cpuload_applet);
 
 	goad_id = goad_server_activation_id();
 	if(!goad_id)

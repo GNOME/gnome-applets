@@ -204,7 +204,7 @@ applet_save_session (GtkWidget *widget, char *privcfgpath,
 }
 
 /* start a new instance of the cpuload applet */
-void
+GtkWidget *
 make_cpuload_applet (const gchar *goad_id)
 {
         GtkWidget *applet;
@@ -237,4 +237,6 @@ make_cpuload_applet (const gchar *goad_id)
 					       _("Properties..."),
 					       cpu_properties,
 					       cpuload);
+
+	return applet;
 }
