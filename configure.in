@@ -1,0 +1,181 @@
+AC_INIT(sound-monitor/main.c)
+
+AM_CONFIG_HEADER(config.h)
+AM_INIT_AUTOMAKE(gnome-applets, 1.1.0-pre1)
+
+AM_MAINTAINER_MODE
+
+AM_ACLOCAL_INCLUDE(macros)
+
+gnome_cv_use_gnome=yes
+
+GNOME_INIT(applets)
+
+AC_ISC_POSIX
+AC_PROG_CC
+AC_STDC_HEADERS
+AC_ARG_PROGRAM
+AM_PROG_LIBTOOL
+AC_PROG_CXX
+AM_PROG_LEX
+AC_PROG_YACC
+
+GNOME_COMPILE_WARNINGS
+
+GNOME_X_CHECKS
+
+dnl utility conditional
+AM_CONDITIONAL(FALSE, test "x" = "y")
+
+dnl for slashapp etc
+GNOME_GHTTP_CHECK
+
+dnl esd-manager
+have_libesd=no
+AM_PATH_ESD(,have_libesd=yes,
+[AC_MSG_WARN([*** \`sound-monitor' will not be built ***])])
+AM_CONDITIONAL(HAVE_LIBESD, test yes = $have_libesd)
+
+dnl cdplayer
+AC_CANONICAL_HOST
+case "$host" in
+*linux*) CDROM_HOST=linux;;
+*solaris*) CDROM_HOST=solaris;;
+esac
+AM_CONDITIONAL(APPLET_CDPLAYER, test -n "$CDROM_HOST")
+AC_SUBST(CDROM_HOST)
+if test -z "$CDROM_HOST"; then
+  AC_MSG_WARN([*** \`cdplayer' applet will not be built ***])
+fi
+
+dnl mixer
+P_MIXER=
+AC_CHECK_HEADERS(linux/soundcard.h,[P_MIXER=mixer],[
+  AC_CHECK_HEADERS(machine/soundcard.h, [P_MIXER=mixer],[
+    AC_CHECK_HEADERS(sys/soundcard.h, [P_MIXER=mixer]) ]) ])
+AM_CONDITIONAL(APPLET_MIXER, test "$P_MIXER" = "mixer")
+if test "$P_MIXER" != "mixer"; then
+  AC_MSG_WARN([*** \`mixer' applet will not be built ***])
+fi
+
+dnl modemlights
+P_MODEMLIGHTS=
+AC_CHECK_HEADERS(net/ppp_defs.h,[P_MODEMLIGHTS=modemlights])
+AM_CONDITIONAL(APPLET_MODEMLIGHTS, test "$P_MODEMLIGHTS" = "modemlights")
+if test "$P_MODEMLIGHTS" != "modemlights"; then
+  AC_MSG_WARN([*** \`modemlights' applet will not be built ***])
+fi
+
+dnl Check for libgtop
+GNOME_LIBGTOP_HOOK(,applets_libgtop=yes)
+
+if test x$applets_libgtop != xyes; then
+  AC_MSG_WARN([*** \`cpuload' applet will not be built ***])
+  AC_MSG_WARN([*** \`cpumemusage' applet will not be built ***])
+  AC_MSG_WARN([*** \`diskusage' applet will not be built ***])
+  AC_MSG_WARN([*** \`multiload' applet will not be built ***])
+  AC_MSG_WARN([*** \`netload' applet will not be built ***])
+fi
+
+dnl Check for ghttp library
+AM_CONDITIONAL(HAVE_LIBGHTTP, test -n "$GHTTP_LIB")
+AC_SUBST(GHTTP_LIB)
+if test -z "$GHTTP_LIB"; then
+   AC_MSG_WARN([*** \`slashapp' applet will not be built ***])
+   AC_MSG_WARN([*** \`freshapp' applet will not be built ***])
+fi
+
+dnl Fvwm pager
+AC_CHECK_HEADER(fvwm.h, fvwm=true, fvwm=false)
+AM_CONDITIONAL(HAVE_FVWM, $fvwm)
+
+dnl ## all 'es_??' are only needed for format numbers different of 'es'
+ALL_LINGUAS="ca cs da de en_GB es es_DO es_GT es_HN es_MX es_PA es_PE es_SV eu fi fr ga hu it ja ko nl no pl pt ru sk sv wa zh_TW.Big5"
+AM_GNU_GETTEXT
+
+AC_SUBST(CFLAGS)
+AC_SUBST(CPPFLAGS)
+AC_SUBST(LDFLAGS)
+
+AC_OUTPUT([
+Makefile
+macros/Makefile
+intl/Makefile
+po/Makefile.in
+another_clock/Makefile
+asclock/Makefile
+asclock/default_theme/Makefile
+asclock/themes/Makefile
+asclock/themes/Orb/Makefile
+asclock/themes/Freeamp/Makefile
+asclock/themes/shaped/Makefile
+asclock/themes/classic/Makefile
+asclock/themes/beats/Makefile
+asclock/themes/Stone/Makefile
+asclock/themes/Newstone/Makefile
+battery/Makefile
+cdplayer/Makefile
+clockmail/Makefile
+clockmail/themes/Makefile
+clockmail/themes/analog-clock-blue/Makefile
+clockmail/themes/calendar/Makefile
+clockmail/themes/classic/Makefile
+clockmail/themes/clock-analog/Makefile
+clockmail/themes/clock-odometer/Makefile
+clockmail/themes/clockmail-G/Makefile
+clockmail/themes/lcd/Makefile
+clockmail/themes/mail-flap/Makefile
+clockmail/themes/mail-fuel-gauge/Makefile
+clockmail/themes/mailcounter/Makefile
+clockmail/themes/odometer/Makefile
+charpick/Makefile
+cpumemusage/Makefile
+diskusage/Makefile
+drivemount/Makefile
+fifteen/Makefile
+freshapp/Makefile
+geyes/Makefile
+geyes/themes/Makefile
+geyes/themes/Default/Makefile
+geyes/themes/Bizarre/Makefile
+geyes/themes/Bloodshot/Makefile
+gkb/Makefile
+gkb/gkb/Makefile
+gkb/xmodmap/Makefile
+gnome-pager/Makefile
+jbc/Makefile
+jbc/pixmaps/Makefile
+hal/Makefile
+life/Makefile
+mini-commander/Makefile
+mini-commander/docs/Makefile
+mini-commander/src/Makefile
+mixer/Makefile
+modemlights/Makefile
+multiload/Makefile
+slashapp/Makefile
+sound-monitor/Makefile
+sound-monitor/pvd/Makefile
+sound-monitor/def_theme/Makefile
+sound-monitor/themes/Makefile
+sound-monitor/themes/blue/Makefile
+sound-monitor/themes/grey/Makefile
+sound-monitor/themes/meters/Makefile
+sound-monitor/themes/meters2/Makefile
+sound-monitor/themes/original/Makefile
+sound-monitor/themes/scope/Makefile
+sound-monitor/themes/scope-larger/Makefile
+sound-monitor/themes/scope-round/Makefile
+tickastat/Makefile
+webcontrol/Makefile
+old/Makefile
+old/batmon/Makefile
+old/bussign/Makefile
+old/esd-manager/Makefile
+old/fvwm-pager/Makefile
+old/icewm-pager/Makefile
+old/netload/Makefile
+old/netwatch/Makefile
+old/slashapp/Makefile
+old/winlist/Makefile
+])
