@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets.HEAD.he\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-07-19 05:10+0200\n"
-"PO-Revision-Date: 2003-07-19 11:11+0300\n"
+"POT-Creation-Date: 2003-08-09 04:07+0200\n"
+"PO-Revision-Date: 2003-08-09 13:53+0300\n"
 "Last-Translator: Gil 'Dolfin' Osher <dolfin@rpg.org.il>\n"
 "Language-Team: Hebrew <he@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -77,13 +77,13 @@ msgid "Utility"
 msgstr "תוכנית שירות"
 
 #: accessx-status/applet.c:135 battstat/battstat_applet.c:839
-#: cdplayer/cdplayer.c:574 charpick/charpick.c:582 drivemount/drivemount.c:515
+#: cdplayer/cdplayer.c:575 charpick/charpick.c:582 drivemount/drivemount.c:515
 #: geyes/geyes.c:228 gkb-new/gkb-applet.c:84 gtik/gtik.c:774
-#: gweather/gweather-about.c:44 mailcheck/mailcheck.c:2434
+#: gweather/gweather-about.c:44 mailcheck/mailcheck.c:2435
 #: mini-commander/src/about.c:48 mixer/mixer.c:1060
 #: modemlights/modemlights.c:115 multiload/main.c:57
 #: stickynotes/stickynotes_applet_callbacks.c:178
-#: wireless/wireless-applet.c:735
+#: wireless/wireless-applet.c:532
 msgid "translator_credits"
 msgstr ""
 "גיל אשר\n"
@@ -155,24 +155,24 @@ msgid "_Suspend Computer..."
 msgstr "_השהה מחשב..."
 
 #: battstat/battstat.schemas.in.h:1
-msgid "Beep?"
-msgstr "צפצף?"
+msgid "Beep for warnings"
+msgstr "צפצף לאזהרות"
 
 #: battstat/battstat.schemas.in.h:2
+msgid "Beep when displaying a warning"
+msgstr "צפצף כאשר מציגים אזהרה"
+
+#: battstat/battstat.schemas.in.h:3
 msgid "Command to send to suspend the computer"
 msgstr "פקודה לשליחה להשהיית המחשב"
 
-#: battstat/battstat.schemas.in.h:3
+#: battstat/battstat.schemas.in.h:4
 msgid "Drain from top"
 msgstr "התרוקן מהקצה העליון"
 
-#: battstat/battstat.schemas.in.h:4
+#: battstat/battstat.schemas.in.h:5
 msgid "Full Battery Notification"
 msgstr "התרעת סוללה מלאה"
-
-#: battstat/battstat.schemas.in.h:5
-msgid "Horizontal"
-msgstr "אופקי"
 
 #: battstat/battstat.schemas.in.h:6
 msgid "Low Battery Notification"
@@ -187,12 +187,12 @@ msgid "Notify user when the battery is low"
 msgstr "הודע למשתמש כאשר הסוללה ריקה"
 
 #: battstat/battstat.schemas.in.h:9
-msgid "Orange Value"
-msgstr "ערך כתום"
+msgid "Orange value level"
+msgstr "רמת ערך כתום"
 
 #: battstat/battstat.schemas.in.h:10
-msgid "Red Value"
-msgstr "ערך אדום"
+msgid "Red value level"
+msgstr "רמת ערך אדום"
 
 #: battstat/battstat.schemas.in.h:11
 msgid "Show battery status"
@@ -215,18 +215,26 @@ msgid "Suspend Command"
 msgstr "פקודת השהייה"
 
 #: battstat/battstat.schemas.in.h:16
-msgid "Use dock"
-msgstr "השתמש בעגינה"
+msgid "The battery level below which the battery is displayed as orange."
+msgstr "רמת הסוללה מטה אשר בה הסוללה מוצגת כתומה."
 
 #: battstat/battstat.schemas.in.h:17
-msgid "Yellow Value"
-msgstr "ערך צהוב"
+msgid "The battery level below which the battery is displayed as red."
+msgstr "רמת הסוללה מטה אשר בה הסוללה מוצגת אדומה."
+
+#: battstat/battstat.schemas.in.h:18
+msgid "The battery level below which the battery is displayed as yellow."
+msgstr "רמת הסוללה מטה אשר בה הסוללה מוצגת צהובה."
+
+#: battstat/battstat.schemas.in.h:19
+msgid "Yellow value level"
+msgstr "רמת ערך צהוב"
 
 #. Message displayed if user tries to run applet
 #. on unsupported platform
 #: battstat/battstat_applet.c:286
 msgid "Your platform is not supported!\n"
-msgstr "הפלטפורמה שלך אינה נתמכת!\n"
+msgstr "הפלטפורמה שלך איננה נתמכת!\n"
 
 #: battstat/battstat_applet.c:287
 msgid "The applet will not work properly (if at all).\n"
@@ -451,7 +459,7 @@ msgstr "<b>השהה</b>"
 msgid "<b>Warnings</b>"
 msgstr "<b>אזהרות</b>"
 
-#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1521
+#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1522
 msgid "Appearance"
 msgstr "מראה"
 
@@ -459,9 +467,9 @@ msgstr "מראה"
 msgid "Battery Charge Monitor Preferences"
 msgstr "העדפות צג טעינת הסוללה"
 
-#: battstat/battstat_applet.glade.h:13 drivemount/properties.c:348
-#: gweather/gweather-pref.c:760 mailcheck/mailcheck.c:2026
-#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:552
+#: battstat/battstat_applet.glade.h:13 drivemount/properties.c:349
+#: gweather/gweather-pref.c:761 mailcheck/mailcheck.c:2026
+#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:553
 msgid "General"
 msgstr "כללי"
 
@@ -518,8 +526,8 @@ msgid "_Yellow:"
 msgstr "_צהוב:"
 
 #: battstat/properties.c:296 drivemount/drivemount.c:473
-#: drivemount/properties.c:588 mailcheck/mailcheck.c:2291
-#: mailcheck/mailcheck.c:2539 mini-commander/src/preferences.c:393
+#: drivemount/properties.c:589 mailcheck/mailcheck.c:2291
+#: mailcheck/mailcheck.c:2540 mini-commander/src/preferences.c:393
 #: mixer/mixer.c:1167
 #, c-format
 msgid "There was an error displaying help: %s"
@@ -537,8 +545,8 @@ msgstr "סוללה נטענה מחדש לגמרי"
 msgid "Battery power low"
 msgstr "עוצמת סוללה נמוכה"
 
-#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:592
-#: cdplayer/cdplayer.c:1040
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:593
+#: cdplayer/cdplayer.c:1041
 msgid "CD Player"
 msgstr "נגן תקליטורים"
 
@@ -563,23 +571,23 @@ msgstr "יישומון לוח לניגון תקליטורי שמע"
 msgid "_Open CD Player"
 msgstr "_פתח נגן תקליטורים"
 
-#: cdplayer/cdplayer.c:171 cdplayer/cdplayer.c:1030
+#: cdplayer/cdplayer.c:171 cdplayer/cdplayer.c:1031
 msgid "Stop"
 msgstr "עצור"
 
-#: cdplayer/cdplayer.c:175 cdplayer/cdplayer.c:1032
+#: cdplayer/cdplayer.c:175 cdplayer/cdplayer.c:1033
 msgid "Play / Pause"
 msgstr "נגן / הפסק"
 
-#: cdplayer/cdplayer.c:179 cdplayer/cdplayer.c:1034
+#: cdplayer/cdplayer.c:179 cdplayer/cdplayer.c:1035
 msgid "Eject"
 msgstr "הוצא"
 
-#: cdplayer/cdplayer.c:183 cdplayer/cdplayer.c:1036
+#: cdplayer/cdplayer.c:183 cdplayer/cdplayer.c:1037
 msgid "Previous Track"
 msgstr "מסילה קודמת"
 
-#: cdplayer/cdplayer.c:187 cdplayer/cdplayer.c:1038
+#: cdplayer/cdplayer.c:187 cdplayer/cdplayer.c:1039
 msgid "Next Track"
 msgstr "מסילה הבאה"
 
@@ -601,23 +609,23 @@ msgstr "לא נראה כי %s הוא נגן תקליטורים"
 msgid "CD Player Preferences"
 msgstr "העדפות נגן התקליטורים"
 
-#: cdplayer/cdplayer.c:494
+#: cdplayer/cdplayer.c:495
 msgid "Device _path:"
 msgstr "_נתיב התקן:"
 
-#: cdplayer/cdplayer.c:503
+#: cdplayer/cdplayer.c:504
 msgid "Device Path"
 msgstr "נתיב התקן"
 
-#: cdplayer/cdplayer.c:503
+#: cdplayer/cdplayer.c:504
 msgid "Set the device path here"
 msgstr "קבע את נתיב ההתקן כאן"
 
-#: cdplayer/cdplayer.c:506
+#: cdplayer/cdplayer.c:507
 msgid "Use _Default"
 msgstr "השתמש _בברירת מחדל"
 
-#: cdplayer/cdplayer.c:593
+#: cdplayer/cdplayer.c:594
 msgid ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
@@ -625,39 +633,39 @@ msgstr ""
 "(C) 1997 המוסד לתוכנה חופשית\n"
 "(C) 2001 Chris Phelps (הסבה ל GNOME 2)"
 
-#: cdplayer/cdplayer.c:595 cdplayer/cdplayer.c:1041
+#: cdplayer/cdplayer.c:596 cdplayer/cdplayer.c:1042
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr "יישומון נגן התקליטורים הינו נגן תקליטורים פשוט ללוח שלך"
 
-#: cdplayer/cdplayer.c:870 cdplayer/cdplayer.c:881
+#: cdplayer/cdplayer.c:871 cdplayer/cdplayer.c:882
 msgid "Elapsed time"
 msgstr "זמן שחלף"
 
-#: cdplayer/cdplayer.c:873 cdplayer/cdplayer.c:883
+#: cdplayer/cdplayer.c:874 cdplayer/cdplayer.c:884
 msgid "Track number"
 msgstr "מספר רצועה"
 
-#: cdplayer/cdplayer.c:939
+#: cdplayer/cdplayer.c:940
 msgid "Audio device is busy, or being used by another application"
 msgstr "התקן השמע עסוק, או בשימוש על-ידי יישום אחר"
 
-#: cdplayer/cdplayer.c:1031
+#: cdplayer/cdplayer.c:1032
 msgid "Click this button to Stop playing the CD"
 msgstr "לחץ על כפתור זה כדי לעצור את נגינת התקליטור"
 
-#: cdplayer/cdplayer.c:1033
+#: cdplayer/cdplayer.c:1034
 msgid "Click this button to Play or Pause the CD"
 msgstr "לחץ על כפתור זה כדי לנגן או להפסיק את התקליטור"
 
-#: cdplayer/cdplayer.c:1035
+#: cdplayer/cdplayer.c:1036
 msgid "Click this button to eject the CD"
 msgstr "לחץ על כפתור זה כדי להוציא את התקליטור"
 
-#: cdplayer/cdplayer.c:1037
+#: cdplayer/cdplayer.c:1038
 msgid "Click this button to Play the previous track in the CD"
 msgstr "לחץ על כפתור זה כדי לנגן את הרצועה הקודמת בתקליטור"
 
-#: cdplayer/cdplayer.c:1039
+#: cdplayer/cdplayer.c:1040
 msgid "Click this button to Play the next track in the CD"
 msgstr "לחץ על כפתור זה כדי לנגן את הרצועה הבאה בתקליטור"
 
@@ -672,7 +680,7 @@ msgid ""
 msgstr "זהו הנתיב המלא של ההתקן שיהיה בשימוש לניגון תקליטורים מיישומון זה"
 
 #: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:600
-#: charpick/charpick.c:744 charpick/properties.c:332
+#: charpick/charpick.c:744 charpick/properties.c:333
 msgid "Character Palette"
 msgstr "פלטת תווים"
 
@@ -684,7 +692,7 @@ msgstr "יצרן יישומון בוחר תווים"
 msgid "Insert characters"
 msgstr "הכנס תווים"
 
-#: charpick/charpick.c:322 charpick/properties.c:124
+#: charpick/charpick.c:322 charpick/properties.c:125
 msgid "Add Palette"
 msgstr "הוסף פלטה"
 
@@ -730,59 +738,71 @@ msgstr "תווים המופיעים בהפעלת היישומון"
 msgid "DEPRECATED - Characters shown on applet startup"
 msgstr "מגונה - תווים המופיעים בהפעלת היישומון"
 
-#: charpick/charpick.schemas.in.h:3 charpick/properties.c:259
+#: charpick/charpick.schemas.in.h:3 charpick/properties.c:260
 msgid "List of available palettes"
 msgstr "רשימה של פלטות זמינות"
 
-#: charpick/properties.c:87
+#: charpick/charpick.schemas.in.h:4
+msgid "List of strings containing the available palettes"
+msgstr "רשימה של מחרוזות המכילות את הפלטות הזמינות"
+
+#: charpick/charpick.schemas.in.h:5
+msgid ""
+"The string that the user had selected when the applet was last used. This "
+"string will be displayed when the user starts the applet."
+msgstr ""
+"המחרוזת שהמשתמש בחר כאשר היישומון היה לאחרונה בשימוש. מחרוזת "
+"זו תוצג כאשר המשתמש מתחיל את היישומון."
+
+#: charpick/properties.c:88
 msgid "_Palette:"
 msgstr "_פלטה:"
 
-#: charpick/properties.c:94
+#: charpick/properties.c:95
 msgid "Palette entry"
 msgstr "ערך פלטה"
 
-#: charpick/properties.c:95
+#: charpick/properties.c:96
 msgid "Modify a palette by adding or removing chacters"
 msgstr "שנה פלטה באמצעות הוספת או הסרת תווים"
 
-#: charpick/properties.c:159
+#: charpick/properties.c:160
 msgid "Edit Palette"
 msgstr "ערוך פלטה"
 
-#: charpick/properties.c:258
+#: charpick/properties.c:259
 msgid "Palettes list"
 msgstr "רשימת פלטות"
 
-#: charpick/properties.c:337
+#: charpick/properties.c:338
 msgid "Pal_ettes:"
 msgstr "פל_טות:"
 
-#: charpick/properties.c:353
+#: charpick/properties.c:354
 msgid "Add button"
 msgstr "הוסף כפתור"
 
-#: charpick/properties.c:354
+#: charpick/properties.c:355
 msgid "Click to add a new palette"
 msgstr "לחץ כדי להוסיף פלטה חדשה"
 
-#: charpick/properties.c:361
+#: charpick/properties.c:362
 msgid "Edit button"
 msgstr "ערוך כפתור"
 
-#: charpick/properties.c:362
+#: charpick/properties.c:363
 msgid "Click to edit the selected palette"
 msgstr "לחץ כדי לערוך את הפלטה שנבחרה"
 
-#: charpick/properties.c:369
+#: charpick/properties.c:370
 msgid "Delete button"
 msgstr "מחק כפתור"
 
-#: charpick/properties.c:370
+#: charpick/properties.c:371
 msgid "Click to delete the selected palette"
 msgstr "לחץ כדי למחוק את הפלטה שנבחרה"
 
-#: charpick/properties.c:422
+#: charpick/properties.c:423
 msgid "Character Palette Preferences"
 msgstr "העדפות פלטת התווים"
 
@@ -820,8 +840,8 @@ msgstr "ארעה שגיאה בהפעלת %s: %s"
 msgid "Cannot browse device"
 msgstr "לא ניתן לעיין בהתקן"
 
-#: drivemount/drivemount.c:479 drivemount/properties.c:594
-#: mailcheck/mailcheck.c:2297 mailcheck/mailcheck.c:2545
+#: drivemount/drivemount.c:479 drivemount/properties.c:595
+#: mailcheck/mailcheck.c:2297 mailcheck/mailcheck.c:2546
 msgid "Error displaying help"
 msgstr "שגיאה בהצגת העזרה"
 
@@ -869,80 +889,80 @@ msgstr "זמן בשניות בין עדכוני מצב"
 msgid "Disk Mounter Preferences"
 msgstr "העדפות מחבר דיסקים"
 
-#: drivemount/properties.c:354
+#: drivemount/properties.c:355
 msgid "_Mount directory:"
 msgstr "ספריית _חיבור:"
 
-#: drivemount/properties.c:360
+#: drivemount/properties.c:361
 msgid "Select Mount Directory"
 msgstr "בחר ספריית חיבור"
 
-#: drivemount/properties.c:382
+#: drivemount/properties.c:383
 msgid "_Update interval:"
 msgstr "השהיית _עדכון:"
 
-#: drivemount/properties.c:405 mailcheck/mailcheck.c:2097
-#: mailcheck/mailcheck.c:2103 modemlights/properties.c:461
+#: drivemount/properties.c:406 mailcheck/mailcheck.c:2097
+#: mailcheck/mailcheck.c:2103 modemlights/properties.c:462
 msgid "seconds"
 msgstr "שניות"
 
-#: drivemount/properties.c:418
+#: drivemount/properties.c:419
 msgid "_Icon:"
 msgstr "_סמל:"
 
-#: drivemount/properties.c:444
+#: drivemount/properties.c:445
 msgid "Floppy"
 msgstr "תקליטון"
 
-#: drivemount/properties.c:447
+#: drivemount/properties.c:448
 msgid "Cdrom"
 msgstr "תקליטור"
 
-#: drivemount/properties.c:450
+#: drivemount/properties.c:451
 msgid "Cd Recorder"
 msgstr "צורב תקליטורים"
 
-#: drivemount/properties.c:453
+#: drivemount/properties.c:454
 msgid "Zip Drive"
 msgstr "כונן Zip"
 
-#: drivemount/properties.c:456
+#: drivemount/properties.c:457
 msgid "Hard Disk"
 msgstr "דיסק קשיח"
 
-#: drivemount/properties.c:459
+#: drivemount/properties.c:460
 msgid "Jaz Drive"
 msgstr "כונן Jaz"
 
-#: drivemount/properties.c:462
+#: drivemount/properties.c:463
 msgid "Custom"
 msgstr "מותאם אישית"
 
-#: drivemount/properties.c:481
+#: drivemount/properties.c:482
 msgid "Select icon for mounted"
 msgstr "בחר סמל למחובר"
 
-#: drivemount/properties.c:488
+#: drivemount/properties.c:489
 msgid "Moun_ted icon:"
 msgstr "סמל מ_חובר:"
 
-#: drivemount/properties.c:509
+#: drivemount/properties.c:510
 msgid "Select icon for unmounted"
 msgstr "בחר סמל למנותק"
 
-#: drivemount/properties.c:516
+#: drivemount/properties.c:517
 msgid "Unmou_nted icon:"
 msgstr "סמל למ_נותק:"
 
-#: drivemount/properties.c:532
+#: drivemount/properties.c:533
 msgid "_Scale size to panel"
 msgstr "ה_רחב גודל ללוח"
 
-#: drivemount/properties.c:539
+#: drivemount/properties.c:540
 msgid "_Eject disk when unmounting"
 msgstr "_הוצא דיסק בניתוק"
 
-#: drivemount/properties.c:549
+#: drivemount/properties.c:550
 msgid "Use _automount friendly status test"
 msgstr "השתמש בבדיקת המצב הידידותית לחיבור ה_אוטומטי"
 
@@ -983,11 +1003,11 @@ msgstr "הספרייה בה ערכת הנושא נמצאת"
 msgid "Geyes Preferences"
 msgstr "העדפות Geyes"
 
-#: geyes/themes.c:288
+#: geyes/themes.c:289
 msgid "Themes"
 msgstr "ערכות נושא"
 
-#: geyes/themes.c:309
+#: geyes/themes.c:310
 msgid "_Select a theme:"
 msgstr "_בחר ערכת נושא:"
 
@@ -1053,16 +1073,16 @@ msgid "Flag image for the keyboard layout"
 msgstr "תמונת דגל לפריסת המקלדת"
 
 #: gkb-new/gkb.schemas.in.h:3
-msgid "Is the applet size small?"
-msgstr "האם גודל היישומון הוא קטן?"
+msgid "It can be \"Flag and Label\", \"Label\" or \"Flag\""
+msgstr "זה יכול להיות \"דגל ותווית\", \"תווית\" או \"דגל\""
 
 #: gkb-new/gkb.schemas.in.h:4
-msgid "It can be \"Flag and Label\", \"Label\" and \"Flag\""
-msgstr "זה יכול להיות \"דגל ותווית\", \"תווית\" ו \"דגל\""
+msgid "Keybinding for switching layout"
+msgstr "שיוכי מקשים להחלפת פריסה"
 
 #: gkb-new/gkb.schemas.in.h:5
-msgid "Keybinding for switch by keypress"
-msgstr "שיוכי מקשים להחלפה על-ידי לחיצת מקש"
+msgid "No longer used"
+msgstr "לא בשימוש יותר"
 
 #: gkb-new/gkb.schemas.in.h:6
 msgid "Number of configured keymaps"
@@ -1073,38 +1093,34 @@ msgid "The command that switches your keymap to this layout"
 msgstr "הפקודה המחליפה את מפת התווים שלך לפריסה זו"
 
 #: gkb-new/gkb.schemas.in.h:8
-msgid "The command what switch your keymap tho this layout"
-msgstr "הפקודה המחליפה את מפת התווים מפריסה זו"
-
-#: gkb-new/gkb.schemas.in.h:9
 msgid "The country of the keyboard layout"
 msgstr "המדינה של פריסת המקלדת"
 
-#: gkb-new/gkb.schemas.in.h:10
+#: gkb-new/gkb.schemas.in.h:9
 msgid "The label of the keyboard layout"
 msgstr "התווית של פריסת המקלדת"
 
-#: gkb-new/gkb.schemas.in.h:11
+#: gkb-new/gkb.schemas.in.h:10
 msgid "The language of the keyboard layout"
 msgstr "השפה של פריסת המקלדת"
 
-#: gkb-new/gkb.schemas.in.h:12
+#: gkb-new/gkb.schemas.in.h:11
 msgid "The name of the keyboard layout"
 msgstr "השם של פריסת המקלדת"
 
-#: gkb-new/gkb.schemas.in.h:13
+#: gkb-new/gkb.schemas.in.h:12
 msgid "This flag will appear in flag field of the applet"
 msgstr "דגל זה יופיע בשדה הדגל של היישומון"
 
-#: gkb-new/gkb.schemas.in.h:14
+#: gkb-new/gkb.schemas.in.h:13
 msgid "This information helps you to identify your keyboard layout"
 msgstr "מידע זה עוזר לך לזהות את פריסת המקלדת"
 
-#: gkb-new/gkb.schemas.in.h:15
+#: gkb-new/gkb.schemas.in.h:14
 msgid "This is the binding for keypress-based layout change"
 msgstr "זה השיוך ללחיצת המקש לשינוי הפריסה"
 
-#: gkb-new/gkb.schemas.in.h:16
+#: gkb-new/gkb.schemas.in.h:15
 msgid ""
 "This should be like \"gkb_xmmap us\", \"setxkbmap us\" or \"xmodmap "
 "something.xmm\""
@@ -1112,17 +1128,13 @@ msgstr ""
 "זה צריך להיות כמו \"gkb_xmmap us\", \"setxkbmap us\" או \"xmodmap something."
 "xmm\""
 
-#: gkb-new/gkb.schemas.in.h:17
+#: gkb-new/gkb.schemas.in.h:16
 msgid "This will appear in the label box of the applet"
 msgstr "זה יופיע בתיבת התווית של היישומון"
 
-#: gkb-new/gkb.schemas.in.h:18
+#: gkb-new/gkb.schemas.in.h:17
 msgid "This will identify the layout in the list"
 msgstr "זה יזהה את הפריסה ברשימה"
-
-#: gkb-new/gkb.schemas.in.h:19
-msgid "When this is true, the applet will be half size"
-msgstr "כאשר זה אמת, היישומון יהיה חצי מגודלו"
 
 #: gkb-new/keygrab.c:69 gkb-new/keygrab.c:148
 msgid "Disabled"
@@ -1149,7 +1161,7 @@ msgstr "מפת המקלדת `%s' למדינה %s כבר קיימת"
 msgid "Select Keyboard"
 msgstr "בחר מקלדת"
 
-#: gkb-new/prop-add.c:352
+#: gkb-new/prop-add.c:353
 msgid "_Keyboards (select and press add):"
 msgstr "_מקלדות (בחר ולחץ הוסף):"
 
@@ -1165,19 +1177,19 @@ msgstr "?"
 msgid "Edit Keyboard"
 msgstr "ערוך מקלדת"
 
-#: gkb-new/prop-map.c:296
+#: gkb-new/prop-map.c:297
 msgid "_Name:"
 msgstr "_שם:"
 
-#: gkb-new/prop-map.c:300
+#: gkb-new/prop-map.c:301
 msgid "_Label:"
 msgstr "_תווית:"
 
-#: gkb-new/prop-map.c:303 mini-commander/src/mini-commander.glade.h:8
+#: gkb-new/prop-map.c:304 mini-commander/src/mini-commander.glade.h:8
 msgid "Co_mmand:"
 msgstr "_פקודה:"
 
-#: gkb-new/prop-map.c:306
+#: gkb-new/prop-map.c:307
 msgid "_Flag:"
 msgstr "_דגל:"
 
@@ -1193,8 +1205,8 @@ msgstr "תווית"
 msgid "Flag and Label"
 msgstr "דגל ותווית"
 
-#: gkb-new/prop.c:257 gtik/gtik.c:1528 gweather/gweather-pref.c:745
-#: modemlights/properties.c:437
+#: gkb-new/prop.c:257 gtik/gtik.c:1529 gweather/gweather-pref.c:746
+#: modemlights/properties.c:438
 msgid "Display"
 msgstr "תצוגה"
 
@@ -1223,16 +1235,16 @@ msgstr "העדפות מחליף פריסות לוח-מקשים"
 msgid "Keyboard Layout Selector"
 msgstr "בוחר פריסות מקלדת"
 
-#: gkb-new/prop.c:433
+#: gkb-new/prop.c:434
 msgid "Keyboards"
 msgstr "מקלדות"
 
 #. Page 1 Frame
-#: gkb-new/prop.c:437
+#: gkb-new/prop.c:438
 msgid "_Keyboards:"
 msgstr "_מקלדות:"
 
-#: gkb-new/prop.c:456 multiload/properties.c:420
+#: gkb-new/prop.c:457 multiload/properties.c:420
 msgid "Options"
 msgstr "אפשרויות"
 
@@ -1306,7 +1318,7 @@ msgid ""
 "ABSOLUTELY NO WARRANTY.  Do not use the GNOME Stock Ticker for making "
 "investment decisions; it is for informational purposes only."
 msgstr ""
-"תוכנית זו מתחברת לאתר פופלארי ומורידה את מחירי המניות.  טיקר המניות של GNOME "
+"תוכנית זו מתחברת לאתר פופולארי ומורידה את מחירי המניות.  טיקר המניות של GNOME "
 "הינו יישום חופשי מבוסס אינטרנט.  הוא מגיע לחלוטין ללא אחריות. אל תשתמש בטיקר "
 "המניות של GNOME לביצוע החלטות השקעה; הוא לצורכי מידע בלבד."
 
@@ -1330,106 +1342,106 @@ msgstr "_הסר"
 msgid "Stock Ticker Preferences"
 msgstr "העדפות טיקר מניות"
 
-#: gtik/gtik.c:1431
+#: gtik/gtik.c:1432
 msgid "Symbols"
 msgstr "סמלים"
 
-#: gtik/gtik.c:1438 mailcheck/mailcheck.c:2365
+#: gtik/gtik.c:1439 mailcheck/mailcheck.c:2366
 msgid "Behavior"
 msgstr "התנהגות"
 
-#: gtik/gtik.c:1441 gweather/gweather-pref.c:704
+#: gtik/gtik.c:1442 gweather/gweather-pref.c:705
 msgid "Update"
 msgstr "עדכן"
 
-#: gtik/gtik.c:1445
+#: gtik/gtik.c:1446
 msgid "Stock update fre_quency:"
 msgstr "_תדירות עדכון המניות:"
 
-#: gtik/gtik.c:1457 gweather/gweather-pref.c:728 mailcheck/mailcheck.c:2074
+#: gtik/gtik.c:1458 gweather/gweather-pref.c:729 mailcheck/mailcheck.c:2074
 #: mailcheck/mailcheck.c:2080
 msgid "minutes"
 msgstr "דקות"
 
-#: gtik/gtik.c:1463
+#: gtik/gtik.c:1464
 msgid "Scrolling"
 msgstr "גולל"
 
-#: gtik/gtik.c:1467
+#: gtik/gtik.c:1468
 msgid "_Scroll speed:"
 msgstr "מהירות _גלילה:"
 
-#: gtik/gtik.c:1471
+#: gtik/gtik.c:1472
 msgid "Slow"
 msgstr "איטית"
 
-#: gtik/gtik.c:1473
+#: gtik/gtik.c:1474
 msgid "Medium"
 msgstr "בינונית"
 
-#: gtik/gtik.c:1475
+#: gtik/gtik.c:1476
 msgid "Fast"
 msgstr "מהירה"
 
-#: gtik/gtik.c:1495
+#: gtik/gtik.c:1496
 msgid "_Enable scroll buttons"
 msgstr "_אפשר כפתורי גלילה"
 
-#: gtik/gtik.c:1507
+#: gtik/gtik.c:1508
 msgid "Scroll _left to right"
 msgstr "גלול מ_שמל לימין"
 
-#: gtik/gtik.c:1533
+#: gtik/gtik.c:1534
 msgid "Displa_y only symbols and price"
 msgstr "ה_צג רק סמלים ומחירים"
 
-#: gtik/gtik.c:1546 mini-commander/src/mini-commander.glade.h:23
+#: gtik/gtik.c:1547 mini-commander/src/mini-commander.glade.h:23
 #: stickynotes/stickynotes.glade.h:48
 msgid "_Width:"
 msgstr "_רוחב:"
 
-#: gtik/gtik.c:1560 mini-commander/src/mini-commander.glade.h:24
+#: gtik/gtik.c:1561 mini-commander/src/mini-commander.glade.h:24
 #: multiload/properties.c:483
 msgid "pixels"
 msgstr "פיקסלים"
 
-#: gtik/gtik.c:1569
+#: gtik/gtik.c:1570
 msgid "Font and Colors"
 msgstr "גופן וצבעים"
 
-#: gtik/gtik.c:1575
+#: gtik/gtik.c:1576
 msgid "Use _default theme font and colors"
 msgstr "השתמש בערכת נושא לגופנים וצבעים _ברירת מחדל"
 
-#: gtik/gtik.c:1590 stickynotes/stickynotes.glade.h:42
+#: gtik/gtik.c:1591 stickynotes/stickynotes.glade.h:42
 msgid "_Font:"
 msgstr "_גופן:"
 
-#: gtik/gtik.c:1614
+#: gtik/gtik.c:1615
 msgid "Stock _raised:"
 msgstr "_עליית מניה:"
 
-#: gtik/gtik.c:1633
+#: gtik/gtik.c:1634
 msgid "Stock _lowered:"
 msgstr "_ירידת מנייה:"
 
-#: gtik/gtik.c:1652
+#: gtik/gtik.c:1653
 msgid "Stock _unchanged:"
 msgstr "מניה _ללא שינוי:"
 
-#: gtik/gtik.c:1671 modemlights/properties.c:569
+#: gtik/gtik.c:1672 modemlights/properties.c:570
 msgid "_Background:"
 msgstr "_רקע:"
 
-#: gtik/gtik.c:1804
+#: gtik/gtik.c:1805
 msgid "Skip forward"
 msgstr "דלג קדימה"
 
-#: gtik/gtik.c:1805
+#: gtik/gtik.c:1806
 msgid "Skip backward"
 msgstr "דלג אחורה"
 
-#: gtik/gtik.c:1813
+#: gtik/gtik.c:1814
 msgid ""
 "Stock Ticker\n"
 "Get continuously updated stock quotes"
@@ -1437,65 +1449,154 @@ msgstr ""
 "טיקר מניות\n"
 "קבל עדכונים מתמשכים על מחירי מניות"
 
-#: gtik/gtik.c:2004
+#: gtik/gtik.c:2005
 msgid "(No"
 msgstr "(לא"
 
-#: gtik/gtik.c:2005
+#: gtik/gtik.c:2006
 msgid "Change "
 msgstr "שנה "
 
 #: gtik/gtik.schemas.in.h:1
+msgid "Applet scrolls right to left when this key is set to true."
+msgstr "היישומון נגלל ימינה ושמאלה כאשר מפתח זה נקבע כאמת."
+
+#: gtik/gtik.schemas.in.h:2
+msgid "Background color"
+msgstr "צבע רקע"
+
+#: gtik/gtik.schemas.in.h:3
+msgid ""
+"Display only stock symbols along with their value. Do not diplay changes in "
+"value."
+msgstr ""
+"הצג רק סמלי מניות יחד עם ערכיהן. אל תציג שינויים "
+"בערך."
+
+#: gtik/gtik.schemas.in.h:4
 msgid "Display only symbols and price"
 msgstr "הצג רק סמלים ומחיר"
 
-#: gtik/gtik.schemas.in.h:2
+#: gtik/gtik.schemas.in.h:5
+msgid "Font"
+msgstr "גופן"
+
+#: gtik/gtik.schemas.in.h:6
+msgid ""
+"List containing the stocks to be displayed. Consists of the stock id "
+"separated by \"+\""
+msgstr ""
+"רשימה המכילה את המניות שיוצגו. המורכבת מזיהוי המניה "
+"המופרדת על-ידי \"+\""
+
+#: gtik/gtik.schemas.in.h:7
+msgid "Lowered color"
+msgstr "צבע פחיתה"
+
+#: gtik/gtik.schemas.in.h:8
+msgid "Raised color"
+msgstr "צבע גדילה"
+
+#: gtik/gtik.schemas.in.h:9
+msgid "Right to left scrolling"
+msgstr "גלילה מימין לשמאל"
+
+#: gtik/gtik.schemas.in.h:10
+msgid "Shorter time means the stocks scroll by faster."
+msgstr "זמן קצר יותר אומר שהמניות נגללות מהר יותר."
+
+#: gtik/gtik.schemas.in.h:11
+msgid "Show arrow buttons"
+msgstr "הצג כפתורי חצים"
+
+#: gtik/gtik.schemas.in.h:12
+msgid ""
+"Show arrow buttons on the side of the display so that the user can scroll "
+"forward or backward."
+msgstr ""
+"הצג כפתורי חצים בצד התצוגה כך שהמשתמש יכול לגלול "
+"קדימה או אחורה."
+
+#: gtik/gtik.schemas.in.h:13
 msgid "Stocks to monitor - must be seperated by a +"
 msgstr "מניות להצגה - חייבים להיות מופרדים על-ידי +"
 
-#: gtik/gtik.schemas.in.h:3
+#: gtik/gtik.schemas.in.h:14
+msgid ""
+"The color of the background of the display. Has no effect when the user "
+"chooses to use the default theme fonts and colors."
+msgstr ""
+"צבע רקע התצוגה. אין לזה השפעה כאשר המשתמש "
+"בוחר להשתמש בערכת הנושא ברירת המחדל לגופנים ולצבעים."
+
+#: gtik/gtik.schemas.in.h:15
+msgid ""
+"The color used when the stock's values has lowered. Has no effect when the "
+"user chooses to use the default theme fonts and colors."
+msgstr ""
+"הצבע לשימוש כאשר ערכי המניה ירדו. אין לזה השפעה כאשר "
+"המשתמש בוחר להשתמש בערכת הנושא ברירת המחדל לגופנים ולצבעים."
+
+#: gtik/gtik.schemas.in.h:16
+msgid ""
+"The color used when the stock's values has not changed. Has no effect when "
+"the user chooses to use the default theme fonts and colors."
+msgstr ""
+"הצבע לשימוש כאשר ערכי המניה לא השתנו. אין לזה השפעה כאשר "
+"המשתמש בוחר להשתמש בערכת הנושא ברירת המחדל לגופנים ולצבעים."
+
+#: gtik/gtik.schemas.in.h:17
+msgid ""
+"The color used when the stock's values has raised. Has no effect when the "
+"user chooses to use the default theme fonts and colors."
+msgstr ""
+"הצבע לשימוש כאשר ערכי המניה עלו. אין לזה השפעה כאשר "
+"המשתמש בוחר להשתמש בערכת הנושא ברירת המחדל לגופנים ולצבעים."
+
+#: gtik/gtik.schemas.in.h:18
+msgid ""
+"The font used for the display. Has no effect when the user chooses to use "
+"the default theme fonts and colors."
+msgstr ""
+"הגופן המשמש לתצוגה. אין לזה השפעה כאשר המשתמש בוחר להשתמש "
+"בערכת הנושא ברירת המחדל לגופנים ולצבעים."
+
+#: gtik/gtik.schemas.in.h:19
+msgid "The time interval until when the applet updates the stock data."
+msgstr "פרק הזמן עד שהיישומון מעדכן את מידע המניות."
+
+#: gtik/gtik.schemas.in.h:20
+msgid "The width in pixels of the applet."
+msgstr "הרוחב בפיקסלים של היישומון."
+
+#: gtik/gtik.schemas.in.h:21
+msgid "Time in milliseconds for display update"
+msgstr "זמן במילי-שניות להצגת עדכון"
+
+#: gtik/gtik.schemas.in.h:22
+msgid "Unchanged color"
+msgstr "צבע ללא שינוי"
+
+#: gtik/gtik.schemas.in.h:23 gweather/gweather.schemas.in.h:8
+#: modemlights/modemlights.schemas.in.h:31
+msgid "Update interval"
+msgstr "השהיית עדכון:"
+
+#: gtik/gtik.schemas.in.h:24
+msgid "Use default theme fonts and colors"
+msgstr "השתמש בערכת נושא ברירת מחדל לגופנים ולצבעים"
+
+#: gtik/gtik.schemas.in.h:25
 msgid "Use default theme fonts and colors instead of custom ones"
 msgstr "השתמש בערכת נושא ברירת מחדל לגופנים וצבעים במקום ערכת נושא מותאמת אישית"
 
-#: gtik/gtik.schemas.in.h:4 mini-commander/src/mini-commander.schemas.in.h:7
+#: gtik/gtik.schemas.in.h:26 mini-commander/src/mini-commander.schemas.in.h:29
 msgid "Width of the applet"
 msgstr "רוחב היישומון"
 
-#: gtik/gtik.schemas.in.h:5
-msgid "bg color"
-msgstr "צבע רקע"
-
-#: gtik/gtik.schemas.in.h:6
-msgid "color"
-msgstr "צבע"
-
-#: gtik/gtik.schemas.in.h:7
-msgid "color for no change text"
-msgstr "צבע לטקסט לא משתנה"
-
-#: gtik/gtik.schemas.in.h:8
-msgid "font"
-msgstr "גופן"
-
-#: gtik/gtik.schemas.in.h:9
+#: gtik/gtik.schemas.in.h:27
 msgid "font 2 - No Longer used"
 msgstr "גופן 2 - לא בשימוש יותר"
-
-#: gtik/gtik.schemas.in.h:10
-msgid "set to true for right to left scrolling"
-msgstr "קבע כאמת לגלילה מימין לשמאל"
-
-#: gtik/gtik.schemas.in.h:11
-msgid "show buttons"
-msgstr "הצג כפתורים"
-
-#: gtik/gtik.schemas.in.h:12
-msgid "time in miliseconds for display update"
-msgstr "זמן במילי-שניות להצגת העדכון"
-
-#: gtik/gtik.schemas.in.h:13
-msgid "timeout"
-msgstr "פרק זמן"
 
 #: gweather/GNOME_GWeatherApplet.xml.h:2
 msgid "_Forecast"
@@ -1608,7 +1709,7 @@ msgstr "לחץ כדי להכנס ל Weather.com"
 msgid "Radar Map"
 msgstr "מפת ראדר"
 
-#: gweather/gweather-dialog.c:409
+#: gweather/gweather-dialog.c:410
 msgid ""
 "Detailed forecast not available for this location.\n"
 "Please try the state forecast; note that IWIN forecasts are available only "
@@ -1617,7 +1718,7 @@ msgstr ""
 "תחזית מפורטת לאזור זה אינה זמינה.\n"
 "אנא נסה את התחזית המדינית; שים לב שתחזיות IWIN זמינות רק לערים בארה\"ב."
 
-#: gweather/gweather-dialog.c:411
+#: gweather/gweather-dialog.c:412
 msgid ""
 "State forecast not available for this location.\n"
 "Please try the detailed forecast; note that IWIN forecasts are available "
@@ -1655,65 +1756,90 @@ msgstr "הזן כתובת"
 msgid "Weather Preferences"
 msgstr "העדפות מזג-האויר"
 
-#: gweather/gweather-pref.c:643 gweather/gweather-pref.c:708
+#: gweather/gweather-pref.c:644 gweather/gweather-pref.c:709
 msgid "_Automatically update every:"
 msgstr "עדכן _אוטומטית כל:"
 
-#: gweather/gweather-pref.c:651
+#: gweather/gweather-pref.c:652
 msgid "Use _metric system units"
 msgstr "השתמש ביחידות מידה _מטריות"
 
-#: gweather/gweather-pref.c:659
+#: gweather/gweather-pref.c:660
 msgid "Enable _radar map"
 msgstr "אפשר מפת _ראדר"
 
-#: gweather/gweather-pref.c:673
+#: gweather/gweather-pref.c:674
 msgid "Use cus_tom address for radar map"
 msgstr "השתמש בכתובת מו_תאמת אישית למפות הראדר"
 
-#: gweather/gweather-pref.c:690
+#: gweather/gweather-pref.c:691
 msgid "A_ddress:"
 msgstr "_כתובת:"
 
-#: gweather/gweather-pref.c:773
+#: gweather/gweather-pref.c:774
 msgid "_Select a location:"
 msgstr "_בחר מיקום:"
 
-#: gweather/gweather-pref.c:802
+#: gweather/gweather-pref.c:803
 msgid "Location"
 msgstr "מיקום"
 
 #: gweather/gweather.schemas.in.h:1
 msgid ""
-"determines whether the applet automatically updates its weather statistics "
+"Determines whether the applet automatically updates its weather statistics "
 "or not."
-msgstr "מזהה אם היישומון מעדכן אוטומטית את סטטיסטיקות מזג-האויר שלו או לא."
+msgstr ""
+"מזהה אם היישומון מעדכן אוטומטית את סטטיסטיקות מזג-האויר שלו "
+"או לא."
 
 #: gweather/gweather.schemas.in.h:2
-msgid "fetch a detailed forecast on each update."
-msgstr "קבל תחזית מפורטת בכל עדכון."
+msgid "Display radar map"
+msgstr "הצג מפת ראדר"
 
 #: gweather/gweather.schemas.in.h:3
-msgid "fetch a radar map on each update."
+msgid "Fetch a radar map on each update."
 msgstr "קבל מפת ראדר בכל עדכון."
 
 #: gweather/gweather.schemas.in.h:4
-msgid "the interval, in seconds, between automatic updates."
-msgstr "ההשהיה, בשניות, בין עדכונים אוטומטיים."
+msgid ""
+"If true, then retreive a radar map from a location specified by the \"radar"
+"\" key."
+msgstr "אם אמת, אזי קבל מפת ראדר מהמיקום המצוין על-ידי המפתח \"radar\"."
 
 #: gweather/gweather.schemas.in.h:5
-msgid "url for the radar map"
-msgstr "כתובת למפות הראדר"
+#: mini-commander/src/mini-commander.schemas.in.h:14
+msgid "Not used anymore"
+msgstr "לא בשימוש יותר"
 
 #: gweather/gweather.schemas.in.h:6
-msgid "use custom url for the radar map"
-msgstr "השתמש בכתובת מותאמת אישית למפות הראדר"
+msgid "The custom url from where to retrieve a radar map."
+msgstr "הכתובת המותאמת אישית ממנה לקבל את מפת הראדר"
 
 #: gweather/gweather.schemas.in.h:7
-msgid "use metric units instead of english units."
-msgstr "השתמש ביחידות מידה מטריות במקום יחידות אנגליות."
+msgid "The interval, in seconds, between automatic updates."
+msgstr "ההשהיה, בשניות, בין עדכונים אוטומטיים."
 
-#: gweather/gweather.schemas.in.h:8
+#: gweather/gweather.schemas.in.h:9
+msgid "Update the data automatically"
+msgstr "עדכן את המידע אוטומטית"
+
+#: gweather/gweather.schemas.in.h:10
+msgid "Url for the radar map"
+msgstr "כתובת למפת הראדר"
+
+#: gweather/gweather.schemas.in.h:11
+msgid "Use custom url for the radar map"
+msgstr "השתמש בכתובת מותאמת אישית למפת הראדר"
+
+#: gweather/gweather.schemas.in.h:12
+msgid "Use metric units"
+msgstr "השתמש ביחידות מטריות"
+
+#: gweather/gweather.schemas.in.h:13
+msgid "Use metric units instead of english units."
+msgstr "השתמש ביחידות מטריות במקום יחידות אנגליות."
+
+#: gweather/gweather.schemas.in.h:14
 msgid "weather location information."
 msgstr "מידע מיקום מזג-האויר."
 
@@ -2161,7 +2287,7 @@ msgid "Factory for creating inbox monitors."
 msgstr "יצרן ליצירת צגי תיבות דואר נכנס."
 
 #: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:3
-#: mailcheck/mailcheck.c:791 mailcheck/mailcheck.c:2447
+#: mailcheck/mailcheck.c:791 mailcheck/mailcheck.c:2448
 msgid "Inbox Monitor"
 msgstr "צג תיבת דואר נכנס"
 
@@ -2242,11 +2368,11 @@ msgid "No mail."
 msgstr "אין דואר."
 
 #: mailcheck/mailcheck.c:1548 mailcheck/mailcheck.c:1549
-#: mailcheck/mailcheck.c:2804 mailcheck/mailcheck.c:2805
+#: mailcheck/mailcheck.c:2805 mailcheck/mailcheck.c:2806
 msgid "Status not updated"
 msgstr "המצב לא התעדכן."
 
-#: mailcheck/mailcheck.c:1751 mailcheck/mailcheck.c:2369
+#: mailcheck/mailcheck.c:1751 mailcheck/mailcheck.c:2370
 msgid "Inbox Settings"
 msgstr "הגדרות תיבת דואר נכנס"
 
@@ -2363,19 +2489,19 @@ msgstr "פקודה לביצוע כאשר נלחץ"
 msgid "Inbox Monitor Preferences"
 msgstr "העדפות צג תיבת דואר נכנס"
 
-#: mailcheck/mailcheck.c:2449
+#: mailcheck/mailcheck.c:2450
 msgid "Inbox Monitor notifies you when new mail arrives in your mailbox"
 msgstr "צג תיבת הדואר הנכנס מודיע לך כאשר דואר חדש מגיע לתיבת הדואר שלך"
 
-#: mailcheck/mailcheck.c:2775
+#: mailcheck/mailcheck.c:2776
 msgid "Text only"
 msgstr "טקסט בלבד"
 
-#: mailcheck/mailcheck.c:2806
+#: mailcheck/mailcheck.c:2807
 msgid "Mail check"
 msgstr "בדיקת דואר"
 
-#: mailcheck/mailcheck.c:2807
+#: mailcheck/mailcheck.c:2808
 msgid "Mail check notifies you when new mail arrives in your mailbox"
 msgstr "בדיקת דואר מודיע לך כשאר דואר חדש מגיע לתיבת הדואר שלך"
 
@@ -2658,60 +2784,112 @@ msgid "_Use default theme colors"
 msgstr "_השתמש בצבעי ערכת נושא ברירת מחדל"
 
 #: mini-commander/src/mini-commander.schemas.in.h:1
-msgid "Autocomplete history"
-msgstr "השלם אוטומטית היסטורייה"
+msgid "Attempt to autocomplete a command from the history of commands entered."
+msgstr "נסה להשלים אוטומטית פקודה מהיסטוריית הפקודות שנכתבו."
 
 #: mini-commander/src/mini-commander.schemas.in.h:2
-msgid "Height of the applet"
-msgstr "גובה היישומון"
+msgid "Color background blue component"
+msgstr "רכיב צבע רקע כחול"
 
 #: mini-commander/src/mini-commander.schemas.in.h:3
-msgid "Height of the entry"
-msgstr "גובה הערך"
+msgid "Color background green component"
+msgstr "רכיב צבע רקע ירוק"
 
 #: mini-commander/src/mini-commander.schemas.in.h:4
-msgid "Show an ugly frame around the whole applet wasting useful space"
-msgstr "הצג מסגרת מכוערת סביב כל היישומון המבזבזת מקום חיוני"
+msgid "Color background red component"
+msgstr "רכיב צבע רקע אדום"
 
 #: mini-commander/src/mini-commander.schemas.in.h:5
-msgid "Show the handle thingy so you can detach the command thingy"
-msgstr "הצג מעיין ידית כדי שתוכל לנתק את שורת הפקודה"
+msgid "Color foreground blue component"
+msgstr "רכיב צבע חזית כחול"
 
 #: mini-commander/src/mini-commander.schemas.in.h:6
-msgid "Use the default theme colors for entry fg and bg"
-msgstr "השתמש בצבעי ערכת נושא ברירת מחדל לערכי רקע וחזית"
+msgid "Color foreground green component"
+msgstr "רכיב צבע חזית ירוק"
+
+#: mini-commander/src/mini-commander.schemas.in.h:7
+msgid "Color foreground red component"
+msgstr "רכיב צבע חזית אדום"
 
 #: mini-commander/src/mini-commander.schemas.in.h:8
-msgid "bg blue"
-msgstr "רקע כחול"
+msgid "History list"
+msgstr "רשימת היסטוריה"
 
 #: mini-commander/src/mini-commander.schemas.in.h:9
-msgid "bg red"
-msgstr "רקע אדום"
+msgid "List of GConfValue entries containing strings for history entries."
+msgstr "רשימה של ערכי GConfValue המכילים מחרוזות לערכי ההיסטוריה."
 
 #: mini-commander/src/mini-commander.schemas.in.h:10
-msgid "fg blue"
-msgstr "חזית כחולה"
+msgid "List of GConfValue entries containing strings for the macro commands."
+msgstr "רשימה של ערכי GConfValue המכילים מחרוזות לפקודת המאקרו."
 
 #: mini-commander/src/mini-commander.schemas.in.h:11
-msgid "fg green"
-msgstr "חזית ירוקה"
+msgid "List of GConfValue entries containing strings for the macro patterns."
+msgstr "רשימה של ערכי GConfValue המכילים מחרוזות לדפוסי המאקרו."
 
 #: mini-commander/src/mini-commander.schemas.in.h:12
-msgid "fg red"
-msgstr "חזית אדומה"
+msgid "Macro command list"
+msgstr "רשימת פקודות מאקרו"
 
 #: mini-commander/src/mini-commander.schemas.in.h:13
-msgid "list of GConfValue entries containing strings for history entries"
-msgstr "רשימה של ערכי GConfValue המכילים מחרוזות לערכי ההיסטוריה"
-
-#: mini-commander/src/mini-commander.schemas.in.h:14
-msgid "list of GConfValue entries containing strings for the macro commands"
-msgstr "רשימה של ערכי GConfValue המכילים מחרוזות לפקודת מאקרו"
+msgid "Macro pattern list"
+msgstr "רשימת דפוסי מאקרו"
 
 #: mini-commander/src/mini-commander.schemas.in.h:15
-msgid "list of GConfValue entries containing strings for the macro patterns"
-msgstr "רשימה של ערכי GConfValue המכילים מחרוזות לדפוסי מאקרו"
+msgid "Perform history autocompletion"
+msgstr "בצע השלמה אוטומטית מבוססת היסטוריה"
+
+#: mini-commander/src/mini-commander.schemas.in.h:16
+msgid "Show a frame surrounding the applet."
+msgstr "הצג מסגרת המקיפה את היישומון."
+
+#: mini-commander/src/mini-commander.schemas.in.h:17
+msgid "Show a handle so the applet can be detached from the panel."
+msgstr "הצג ידית אשר בעזרתה ניתן לנתק את היישומון מהלוח."
+
+#: mini-commander/src/mini-commander.schemas.in.h:18
+msgid "Show frame"
+msgstr "הצג מסגרת"
+
+#: mini-commander/src/mini-commander.schemas.in.h:19
+msgid "Show handle"
+msgstr "הצג ידית"
+
+#: mini-commander/src/mini-commander.schemas.in.h:20
+msgid "The blue component of the background color."
+msgstr "הרכיב הכחול לצבע הרקע."
+
+#: mini-commander/src/mini-commander.schemas.in.h:21
+msgid "The blue component of the foreground color."
+msgstr "הרכיב הכחול לצבע החזית."
+
+#: mini-commander/src/mini-commander.schemas.in.h:22
+msgid "The green component of the background color."
+msgstr "הרכיב הירוק לצבע הרקע."
+
+#: mini-commander/src/mini-commander.schemas.in.h:23
+msgid "The green component of the foreground color."
+msgstr "הרכיב הירוק לצבע החזית."
+
+#: mini-commander/src/mini-commander.schemas.in.h:24
+msgid "The red component of the background color."
+msgstr "הרכיב האדום לצבע הרקע."
+
+#: mini-commander/src/mini-commander.schemas.in.h:25
+msgid "The red component of the foreground color."
+msgstr "הרכיב האדום לצבע החזית."
+
+#: mini-commander/src/mini-commander.schemas.in.h:26
+msgid "Use the default theme colors"
+msgstr "השתמש בצבעי ערכת נושא ברירת מחדל"
+
+#: mini-commander/src/mini-commander.schemas.in.h:27
+msgid "Use theme colors instead of custom ones."
+msgstr "השתמש בצבעי ערכת נושא במקום במותאמים אישית."
+
+#: mini-commander/src/mini-commander.schemas.in.h:28
+msgid "Width"
+msgstr "רוחב"
 
 #: mini-commander/src/mini-commander_applet.c:222
 #: mini-commander/src/mini-commander_applet.c:226
@@ -2918,15 +3096,15 @@ msgstr "בקרת העצמה נותנת לך לשנות את רמת העצמה ב
 msgid "Volume Control Preferences"
 msgstr "העדפות בקרת העצמה"
 
-#: mixer/mixer.c:1240
+#: mixer/mixer.c:1241
 msgid "Audio Channels"
 msgstr "ערוצי שמע"
 
-#: mixer/mixer.c:1256
+#: mixer/mixer.c:1257
 msgid "_Select channel to control:"
 msgstr "_בחר ערוץ לבקרה:"
 
-#: mixer/mixer.c:1586
+#: mixer/mixer.c:1587
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr "בקרת העצמה נותנת לך לקבוע את רמת העצמה לשולחן העבודה שלך"
 
@@ -2987,82 +3165,146 @@ msgid "not connected"
 msgstr "לא מחובר"
 
 #: modemlights/modemlights.schemas.in.h:1
-msgid "Ask for confirmation when connecting"
-msgstr "בקש אישור כאשר מתחברים"
+msgid "Ask for confirmation when connecting/disconnecting"
+msgstr "בקש אישור כאשר מתחברים/מתנתקים"
 
 #: modemlights/modemlights.schemas.in.h:2
+msgid "Blink when connecting"
+msgstr "הבהב כאשר מתחברים"
+
+#: modemlights/modemlights.schemas.in.h:3
 msgid "Command executed when connecting"
 msgstr "פקודה לביצוע כאשר מתחברים"
 
-#: modemlights/modemlights.schemas.in.h:3
+#: modemlights/modemlights.schemas.in.h:4
 msgid "Command executed when disconnecting"
 msgstr "פקודה לביצוע כאשר מתנתקים"
 
-#: modemlights/modemlights.schemas.in.h:4
-msgid "Delay"
-msgstr "השהייה"
-
 #: modemlights/modemlights.schemas.in.h:5
-msgid "Device name of modem"
-msgstr "שם התקן המודם"
+msgid "Display a confirmation dialog when connecting or disconnecting."
+msgstr "הצג דו-שיח אישור כאשר מתחברים או מתנתקים."
 
 #: modemlights/modemlights.schemas.in.h:6
-msgid "Make it blink baby"
-msgstr "תעשה שזה יהבהב, בובה"
+msgid "Make the applet blink when the modem is connecting."
+msgstr "עשה שהיישומון יהבהב כאשר המודם מתחבר."
 
 #: modemlights/modemlights.schemas.in.h:7
+msgid "Modem device name"
+msgstr "שם התקן המודם"
+
+#: modemlights/modemlights.schemas.in.h:8
 msgid "Modem lock file"
 msgstr "קובץ נעילת מודם"
 
-#: modemlights/modemlights.schemas.in.h:8
+#: modemlights/modemlights.schemas.in.h:9
 msgid "Receive background color"
 msgstr "קבל את צבע הרקע"
 
-#: modemlights/modemlights.schemas.in.h:9
+#: modemlights/modemlights.schemas.in.h:10
 msgid "Receive foreground color"
 msgstr "קבל את צבע החזית"
 
-#: modemlights/modemlights.schemas.in.h:10
+#: modemlights/modemlights.schemas.in.h:11
 msgid "Send background color"
 msgstr "שלח צבע רקע"
 
-#: modemlights/modemlights.schemas.in.h:11
+#: modemlights/modemlights.schemas.in.h:12
 msgid "Send foreground color"
 msgstr "שלח צבע חזית"
 
-#: modemlights/modemlights.schemas.in.h:12
+#: modemlights/modemlights.schemas.in.h:13
 msgid "Show connect time and throughput"
 msgstr "הצג זמן חיבור וקצב העברה"
 
-#: modemlights/modemlights.schemas.in.h:13
-msgid "Status connect color"
+#: modemlights/modemlights.schemas.in.h:14
+msgid ""
+"Show extra information about the connect time and amount of data transmitted "
+"and received."
+msgstr ""
+"הצג מידע נוסף על זמן החיבור וכמות המידע שנשלחה "
+"והתקבלה."
+
+#: modemlights/modemlights.schemas.in.h:15
+msgid "Status connected color"
 msgstr "צבע מצב מחובר"
 
-#: modemlights/modemlights.schemas.in.h:14
+#: modemlights/modemlights.schemas.in.h:16
 msgid "Status not connected color"
 msgstr "צבע מצב לא מחובר"
 
-#: modemlights/modemlights.schemas.in.h:15
+#: modemlights/modemlights.schemas.in.h:17
 msgid "Status waiting connection color"
 msgstr "צבע מצב ממתין לחיבור"
 
-#: modemlights/modemlights.schemas.in.h:16
+#: modemlights/modemlights.schemas.in.h:18
 msgid "Text background color"
 msgstr "צבע רקע הטקסט"
 
-#: modemlights/modemlights.schemas.in.h:17
+#: modemlights/modemlights.schemas.in.h:19
 msgid "Text foreground color"
 msgstr "צבע חזית הטקסט"
 
-#: modemlights/modemlights.schemas.in.h:18
+#: modemlights/modemlights.schemas.in.h:20
 msgid "Text outline color"
 msgstr "צבע מתאר טקסט"
 
-#: modemlights/modemlights.schemas.in.h:19
+#: modemlights/modemlights.schemas.in.h:21
+msgid "The background color of the button used to indicate data received."
+msgstr "צבע הרקע של הכפתור המשמש לציון המידע שהתקבל."
+
+#: modemlights/modemlights.schemas.in.h:22
+msgid "The background color of the button used to indicate data sent."
+msgstr "צבע הרקע של הכפתור המשמש לציון המידע שנשלח."
+
+#: modemlights/modemlights.schemas.in.h:23
+msgid "The color used to display the status button when the modem is connected."
+msgstr "הצבע המשמש להצגת כפתור המצב כאשר המודם מחובר."
+
+#: modemlights/modemlights.schemas.in.h:24
+msgid "The color used to display the status button when the modem is connecting."
+msgstr "הצבע המשמש להצגת כפתור המצב כאשר המודם מתחבר."
+
+#: modemlights/modemlights.schemas.in.h:25
+msgid "The color used to display the status button when the modem is not connected."
+msgstr "הצבע המשמש להצגת כפתור המצב כאשר המודם לא מחובר."
+
+#: modemlights/modemlights.schemas.in.h:26
+msgid "The color used to indicate that data has been received."
+msgstr "הצבע המשמש לציון מידע שהתקבל."
+
+#: modemlights/modemlights.schemas.in.h:27
+msgid "The color used to indicate that data has been sent."
+msgstr "הצבע המשמש לציון מידע שנשלח."
+
+#: modemlights/modemlights.schemas.in.h:28
+msgid "The fraction of a second until the applet updates."
+msgstr "חלק השניה עד שהיישומון מתעדכן."
+
+#: modemlights/modemlights.schemas.in.h:29
+msgid "The name of the modem device."
+msgstr "שם התקן המודם."
+
+#: modemlights/modemlights.schemas.in.h:30
+msgid "The name of the modem lock file."
+msgstr "שם קובץ נעילת המודם."
+
+#: modemlights/modemlights.schemas.in.h:32
 msgid "Use isdn"
 msgstr "השתמש ב ISDN"
 
-#: modemlights/modemlights.schemas.in.h:20
+#: modemlights/modemlights.schemas.in.h:33
+msgid "Use isdn instead of ppp to connect the modem."
+msgstr "השתמש ב ISDN במקום PPP לחיבור המודם."
+
+#: modemlights/modemlights.schemas.in.h:34
+msgid "Use this command to connect the modem."
+msgstr "השתמש בפקודה זו לחיבור המודם."
+
+#: modemlights/modemlights.schemas.in.h:35
+msgid "Use this command to disconnect the modem."
+msgstr "השתמש בפקודה זו לניתוק המודם."
+
+#: modemlights/modemlights.schemas.in.h:36
 msgid "Verify owner of lock file"
 msgstr "ודא בעלים של קובץ הנעילה"
 
@@ -3070,114 +3312,114 @@ msgstr "ודא בעלים של קובץ הנעילה"
 msgid "Modem Lights Preferences"
 msgstr "העדפות נוריות מודם"
 
-#: modemlights/properties.c:444
+#: modemlights/properties.c:445
 msgid "U_pdate every:"
 msgstr "_עדכן כל:"
 
 #. extra info checkbox
-#: modemlights/properties.c:469
+#: modemlights/properties.c:470
 msgid "Sho_w connect time and throughput"
 msgstr "הצ_ג זמן חיבור וקצב העברה"
 
-#: modemlights/properties.c:479
+#: modemlights/properties.c:480
 msgid "B_link connection status when connecting"
 msgstr "ה_בהב מצב חיבור כאשר מתחברים"
 
-#: modemlights/properties.c:489
+#: modemlights/properties.c:490
 msgid "Connections"
 msgstr "חיבורים"
 
-#: modemlights/properties.c:498
+#: modemlights/properties.c:499
 msgid "Co_nnection command:"
 msgstr "פקודת הת_חברות:"
 
-#: modemlights/properties.c:522
+#: modemlights/properties.c:523
 msgid "_Disconnection command:"
 msgstr "פקודת הת_נתקות:"
 
 #. confirmation checkbox
-#: modemlights/properties.c:542
+#: modemlights/properties.c:543
 msgid "Con_firm connection"
 msgstr "א_שר התחברות"
 
-#: modemlights/properties.c:561
+#: modemlights/properties.c:562
 msgid "Receive Data"
 msgstr "קבלת מידע"
 
-#: modemlights/properties.c:567
+#: modemlights/properties.c:568
 msgid "_Foreground:"
 msgstr "_חזית:"
 
-#: modemlights/properties.c:572
+#: modemlights/properties.c:573
 msgid "Send Data"
 msgstr "שליחת מידע"
 
-#: modemlights/properties.c:577
+#: modemlights/properties.c:578
 msgid "Foregroun_d:"
 msgstr "ח_זית:"
 
-#: modemlights/properties.c:579
+#: modemlights/properties.c:580
 msgid "Backg_round:"
 msgstr "ר_קע:"
 
-#: modemlights/properties.c:582
+#: modemlights/properties.c:583
 msgid "Connection Status"
 msgstr "מצב התחברות"
 
-#: modemlights/properties.c:590
+#: modemlights/properties.c:591
 msgid "Co_nnected:"
 msgstr "מ_חובר:"
 
-#: modemlights/properties.c:592
+#: modemlights/properties.c:593
 msgid "Disconnec_ted:"
 msgstr "מ_נותק:"
 
-#: modemlights/properties.c:595
+#: modemlights/properties.c:596
 msgid "C_onnecting:"
 msgstr "מ_תחבר:"
 
-#: modemlights/properties.c:598
+#: modemlights/properties.c:599
 msgid "Text"
 msgstr "טקסט"
 
-#: modemlights/properties.c:606
+#: modemlights/properties.c:607
 msgid "For_eground:"
 msgstr "חז_ית:"
 
-#: modemlights/properties.c:608
+#: modemlights/properties.c:609
 msgid "Bac_kground:"
 msgstr "רק_ע:"
 
-#: modemlights/properties.c:610
+#: modemlights/properties.c:611
 msgid "O_utline"
 msgstr "מ_תאר"
 
-#: modemlights/properties.c:613 multiload/properties.c:528
+#: modemlights/properties.c:614 multiload/properties.c:528
 msgid "Colors"
 msgstr "צבעים"
 
-#: modemlights/properties.c:622
+#: modemlights/properties.c:623
 msgid "Modem Options"
 msgstr "אפשרויות מודם"
 
-#: modemlights/properties.c:631
+#: modemlights/properties.c:632
 msgid "_Device:"
 msgstr "_התקן:"
 
-#: modemlights/properties.c:655
+#: modemlights/properties.c:656
 msgid "_Lock file:"
 msgstr "קובץ _נעילה:"
 
-#: modemlights/properties.c:674
+#: modemlights/properties.c:675
 msgid "_Verify owner of lock file"
 msgstr "_ודא בעלים של קובץ הנעילה"
 
 #. ISDN checkbox
-#: modemlights/properties.c:685
+#: modemlights/properties.c:686
 msgid "U_se ISDN"
 msgstr "ה_שתמש ב ISDN"
 
-#: modemlights/properties.c:702
+#: modemlights/properties.c:703
 msgid "Advanced"
 msgstr "מתקדם"
 
@@ -3248,88 +3490,112 @@ msgid "Memory Load"
 msgstr "הספק זיכרון"
 
 #: multiload/multiload.schemas.in.h:1
-msgid "Network background"
-msgstr "רקע רשת"
+msgid "Applet refresh rate in milliseconds"
+msgstr "קצב הרענון של היישומון במילי-שניות"
 
 #: multiload/multiload.schemas.in.h:2
-msgid "Network other usage"
-msgstr "שימוש אחר ברשת"
+msgid "CPU graph background color"
+msgstr "צבע רקע גרף המעבד"
 
 #: multiload/multiload.schemas.in.h:3
-msgid "enable the cpuload graph in multiload."
-msgstr "אפשר גרף הספק מעבד בריבוי הספקים."
+msgid "Enable CPU load graph"
+msgstr "אפשר גרף עומס מעבד"
 
 #: multiload/multiload.schemas.in.h:4
-msgid "enable the loadavg graph in multiload."
-msgstr "אפשר גרף ממוצע הספקים בריבוי הספקים."
+msgid "Enable load average graph"
+msgstr "אפשר גרף עומס ממוצע"
 
 #: multiload/multiload.schemas.in.h:5
-msgid "enable the memload graph in multiload."
-msgstr "אפשר גרף הספק זיכרון בריבוי הספקים."
+msgid "Enable memory load graph"
+msgstr "אפשר גרף עומס זיכרון"
 
 #: multiload/multiload.schemas.in.h:6
-msgid "enable the netload graph in multiload."
-msgstr "אפשר גרף הספק רשת בריבוי הספקים."
+msgid "Enable network load graph"
+msgstr "אפשר גרף עומס רשת"
 
 #: multiload/multiload.schemas.in.h:7
-msgid "enable the swapload graph in multiload."
-msgstr "אפשר גרף הספק תחלופה בריבוי הספקים."
+msgid "Enable swap load graph"
+msgstr "אפשר גרף טעינת תחלופה"
 
 #: multiload/multiload.schemas.in.h:8
 msgid ""
-"for horizontal panels, the width of the applets in pixels. for verticle "
-"panels, this is the height of the applets."
+"For horizontal panels, the width of the graphs in pixels. For vertical "
+"panels, this is the height of the graphs."
 msgstr ""
-"ללוחות אופקיים, הרוחב של היישומונים בפיקסלים. ללוחות אנכיים, זהו הגובה של "
-"היישומונים."
+"ללוחות אופקיים, הרוחב של הגרפים בפיקסלים. ללוחות "
+"אנכיים, זהו הגובה של הגרפים."
 
 #: multiload/multiload.schemas.in.h:9
-msgid "the applet's background color."
-msgstr "צבע הרקע של היישומון."
+msgid "Graph color for Ethernet network activity"
+msgstr "צבע הגרף לפעילות רשת Ethernet"
 
 #: multiload/multiload.schemas.in.h:10
-msgid "the graph color for buffer memor."
-msgstr "צבע הגרף למאגר הזיכרון."
+msgid "Graph color for PLIP network activity"
+msgstr "צבע הגרף לפעילות רשת PLIP"
 
 #: multiload/multiload.schemas.in.h:11
-msgid "the graph color for buffer memory."
-msgstr "צבע הגרף למאגר הזיכרון."
+msgid "Graph color for SLIP network activity"
+msgstr "צבע הגרף לפעילות רשת SLIP"
 
 #: multiload/multiload.schemas.in.h:12
-msgid "the graph color for cached memor."
-msgstr "צבע הגרף לזיכרון המטמון."
+msgid "Graph color for buffer memory"
+msgstr "צבע הגרף למאגר הזיכרון"
 
 #: multiload/multiload.schemas.in.h:13
-msgid "the graph color for cached memory."
-msgstr "צבע הגרף לזיכרון המטמון."
+msgid "Graph color for cached memory"
+msgstr "צבע הגרף לזיכרון המטמון"
 
 #: multiload/multiload.schemas.in.h:14
-msgid "the graph color for nice-related cpu activity."
-msgstr "צבע הגרף לפעילות מעבד nice-related."
+msgid "Graph color for load average"
+msgstr "צבע הגרף לעומס ממוצע"
 
 #: multiload/multiload.schemas.in.h:15
-msgid "the graph color for shared memory."
-msgstr "צבע הגרף לזיכרון משותף."
+msgid "Graph color for nice-related CPU activity"
+msgstr "צבע הגרף לפעילות מעבד nice-related"
 
 #: multiload/multiload.schemas.in.h:16
-msgid "the graph color for system-related cpu activity."
-msgstr "צבע הגרף לפעילות מעבד system-related."
+msgid "Graph color for other network usage"
+msgstr "צבע הגרף לשימוש רשת אחר"
 
 #: multiload/multiload.schemas.in.h:17
-msgid "the graph color for user-related cpu activity."
-msgstr "צבע הגרף לפעילות מעבד user-related."
+msgid "Graph color for shared memory"
+msgstr "צבע הגרף לזיכרון משותף"
 
 #: multiload/multiload.schemas.in.h:18
-msgid "the graph color for user-related mem usage."
-msgstr "צבע הגרף לפעילות זיכרון user-related."
+msgid "Graph color for system-related CPU activity"
+msgstr "צבע הגרף לפעילות מעבד system-related"
 
 #: multiload/multiload.schemas.in.h:19
-msgid "the refresh rate of the applets in milliseconds"
-msgstr "קצב הרענון של היישומונים במילי-שניות"
+msgid "Graph color for user-related CPU activity"
+msgstr "צבע הגרף לפעילות מעבד user-related"
 
 #: multiload/multiload.schemas.in.h:20
-msgid "the refresh rate of the applets in milliseconds."
-msgstr "קצב הרענון של היישומונים במילי-שניות"
+msgid "Graph color for user-related memory usage"
+msgstr "צבע הגרף לפעילות זיכרון user-related"
+
+#: multiload/multiload.schemas.in.h:21
+msgid "Graph color for user-related swap usage"
+msgstr "צבע הגרף לפעילות תחלופה user-related"
+
+#: multiload/multiload.schemas.in.h:22
+msgid "Graph size"
+msgstr "גודל הגרף"
+
+#: multiload/multiload.schemas.in.h:23
+msgid "Load graph background color"
+msgstr "צבע הרקע של גרף עומס"
+
+#: multiload/multiload.schemas.in.h:24
+msgid "Memory graph background color"
+msgstr "צבע הרקע של גרף זיכרון"
+
+#: multiload/multiload.schemas.in.h:25
+msgid "Network graph background color"
+msgstr "צבע הרקע של גרף רשת"
+
+#: multiload/multiload.schemas.in.h:26
+msgid "Swap graph background color"
+msgstr "צבע הרקע של גרף תחלופה"
 
 #: multiload/netload.c:49
 msgid "Net Load"
@@ -3845,23 +4111,15 @@ msgid "Monitor the quality of a wireless network link"
 msgstr "מציג את איכות חיבור הרשת האל-חוטית"
 
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:3
-#: wireless/wireless-applet.c:750
+#: wireless/wireless-applet.c:547
 msgid "Wireless Link Monitor"
 msgstr "צג קישור אל-חוטי"
 
-#: wireless/wireless-applet.c:351
-msgid ""
-"The images necessary to run the wireless monitor are missing.\n"
-"Please make sure that it is correctly installed."
-msgstr ""
-"התמונות ההכרחיות להפעלת צג האל-חוט חסרות.\n"
-"אנא ודא כי זה מותקן נכון."
-
-#: wireless/wireless-applet.c:537 wireless/wireless-applet.c:695
+#: wireless/wireless-applet.c:355 wireless/wireless-applet.c:492
 msgid "No Wireless Devices"
 msgstr "אין התקנים אל-חוטיים"
 
-#: wireless/wireless-applet.c:539
+#: wireless/wireless-applet.c:357
 msgid ""
 "There doesn't seem to be any wireless devices configured on your system.\n"
 "Please verify your configuration if you think this is incorrect."
@@ -3869,29 +4127,131 @@ msgstr ""
 "לא נראה כי ישנם התקנים אל-חוטיים מוגדרים במערכת שלך.\n"
 "אנא ודא את ההגדרות שלך אם אתה חושב שזה לא נכון."
 
-#: wireless/wireless-applet.c:752
+#: wireless/wireless-applet.c:549
 msgid "(C) 2001, 2002 Free Software Foundation "
 msgstr "(C) 2001, 2002 ארגון התוכנה החופשית "
 
-#: wireless/wireless-applet.c:753
+#: wireless/wireless-applet.c:550
 msgid "This utility shows the status of a wireless link."
 msgstr "תוכנית שירות זו מציגה את מצב החיבור האל-חוטי."
 
 #: wireless/wireless-applet.glade.h:1
-msgid "Show _dialog boxes"
-msgstr "הצג תיבות _דו-שיח"
-
-#: wireless/wireless-applet.glade.h:2
 msgid "Show signal strength in _percentage"
 msgstr "הצג את חוזק האות ב_אחוזים"
 
-#: wireless/wireless-applet.glade.h:3
+#: wireless/wireless-applet.glade.h:2
 msgid "Wireless Link Monitor Preferences"
 msgstr "העדפות צג קישור אל-חוטי"
 
-#: wireless/wireless-applet.glade.h:4
+#: wireless/wireless-applet.glade.h:3
 msgid "_Monitored device:"
 msgstr "התקנים _מוצגים:"
+
+#~ msgid "Beep?"
+#~ msgstr "צפצף?"
+
+#~ msgid "Horizontal"
+#~ msgstr "אופקי"
+
+#~ msgid "Use dock"
+#~ msgstr "השתמש בעגינה"
+
+#~ msgid "Is the applet size small?"
+#~ msgstr "האם גודל היישומון הוא קטן?"
+
+#~ msgid "The command what switch your keymap tho this layout"
+#~ msgstr "הפקודה המחליפה את מפת התווים מפריסה זו"
+
+#~ msgid "When this is true, the applet will be half size"
+#~ msgstr "כאשר זה אמת, היישומון יהיה חצי מגודלו"
+
+#~ msgid "color"
+#~ msgstr "צבע"
+
+#~ msgid "color for no change text"
+#~ msgstr "צבע לטקסט לא משתנה"
+
+#~ msgid "font"
+#~ msgstr "גופן"
+
+#~ msgid "timeout"
+#~ msgstr "פרק זמן"
+
+#~ msgid "fetch a detailed forecast on each update."
+#~ msgstr "קבל תחזית מפורטת בכל עדכון."
+
+#~ msgid "Autocomplete history"
+#~ msgstr "השלם אוטומטית היסטורייה"
+
+#~ msgid "Height of the applet"
+#~ msgstr "גובה היישומון"
+
+#~ msgid "Height of the entry"
+#~ msgstr "גובה הערך"
+
+#~ msgid "Show an ugly frame around the whole applet wasting useful space"
+#~ msgstr "הצג מסגרת מכוערת סביב כל היישומון המבזבזת מקום חיוני"
+
+#~ msgid "Show the handle thingy so you can detach the command thingy"
+#~ msgstr "הצג מעיין ידית כדי שתוכל לנתק את שורת הפקודה"
+
+#~ msgid "Use the default theme colors for entry fg and bg"
+#~ msgstr "השתמש בצבעי ערכת נושא ברירת מחדל לערכי רקע וחזית"
+
+#~ msgid "bg blue"
+#~ msgstr "רקע כחול"
+
+#~ msgid "bg red"
+#~ msgstr "רקע אדום"
+
+#~ msgid "fg blue"
+#~ msgstr "חזית כחולה"
+
+#~ msgid "fg green"
+#~ msgstr "חזית ירוקה"
+
+#~ msgid "fg red"
+#~ msgstr "חזית אדומה"
+
+#~ msgid "Delay"
+#~ msgstr "השהייה"
+
+#~ msgid "Device name of modem"
+#~ msgstr "שם התקן המודם"
+
+#~ msgid "Make it blink baby"
+#~ msgstr "תעשה שזה יהבהב, בובה"
+
+#~ msgid "Network other usage"
+#~ msgstr "שימוש אחר ברשת"
+
+#~ msgid "enable the cpuload graph in multiload."
+#~ msgstr "אפשר גרף הספק מעבד בריבוי הספקים."
+
+#~ msgid "enable the loadavg graph in multiload."
+#~ msgstr "אפשר גרף ממוצע הספקים בריבוי הספקים."
+
+#~ msgid "enable the memload graph in multiload."
+#~ msgstr "אפשר גרף הספק זיכרון בריבוי הספקים."
+
+#~ msgid "enable the netload graph in multiload."
+#~ msgstr "אפשר גרף הספק רשת בריבוי הספקים."
+
+#~ msgid "the graph color for buffer memor."
+#~ msgstr "צבע הגרף למאגר הזיכרון."
+
+#~ msgid "the refresh rate of the applets in milliseconds."
+#~ msgstr "קצב הרענון של היישומונים במילי-שניות"
+
+#~ msgid ""
+#~ "The images necessary to run the wireless monitor are missing.\n"
+#~ "Please make sure that it is correctly installed."
+#~ msgstr ""
+#~ "התמונות ההכרחיות להפעלת צג האל-חוט חסרות.\n"
+#~ "אנא ודא כי זה מותקן נכון."
+
+#~ msgid "Show _dialog boxes"
+#~ msgstr "הצג תיבות _דו-שיח"
 
 #~ msgid "Location:"
 #~ msgstr "מיקום:"
