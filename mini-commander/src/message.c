@@ -28,28 +28,28 @@
 #include "mini-commander_applet.h"
 #include "preferences.h"
 
-GtkWidget *labelMessage;
-static int messageLocked = FALSE;
+GtkWidget *label_message;
+static int message_locked = FALSE;
 
-static gint hideMessage(gpointer data);
-static gint showInterestingInformation(gpointer data);
+static gint hide_message(gpointer data);
+static gint show_interesting_information(gpointer data);
 
 
 void
-initMessageLabel(void)
+init_message_label(void)
 {
-    labelMessage = gtk_label_new((gchar *) "");
-    gtk_timeout_add(15*1000, (GtkFunction) showInterestingInformation, (gpointer) NULL);
+    label_message = gtk_label_new((gchar *) "");
+    gtk_timeout_add(15*1000, (GtkFunction) show_interesting_information, (gpointer) NULL);
 }
 
-void showMessage(gchar *message)
+void show_message(gchar *message)
 {
-    messageLocked = TRUE;
+    message_locked = TRUE;
     /* I don't know why, but if I don't call gtp_widget_hide then the
        label update doesn't work the way it should */
 
     /* gtk_widget_hide (applet); */
-    gtk_label_set_text(GTK_LABEL(labelMessage), message);
+    gtk_label_set_text(GTK_LABEL(label_message), message);
     /* refresh frame; otherwise it is covered by the label;
        a bug in gtk? */
     /*    gtk_widget_hide (frame);
@@ -57,24 +57,24 @@ void showMessage(gchar *message)
 
     /* gtk_widget_show (applet); */
     
-    gtk_timeout_add(2000, (GtkFunction) hideMessage, (gpointer) message);
+    gtk_timeout_add(2000, (GtkFunction) hide_message, (gpointer) message);
 }
 
 static gint
-hideMessage(gpointer data)
+hide_message(gpointer data)
 {
     gchar *message = (char *) data;
-    gchar *currentMessage;
+    gchar *current_message;
 
-    gtk_label_get(GTK_LABEL(labelMessage), &currentMessage);
-    if(strcmp((char *) message, (char *) currentMessage) == 0)
+    gtk_label_get(GTK_LABEL(label_message), &current_message);
+    if(strcmp((char *) message, (char *) current_message) == 0)
 	{
 	    /* this is the message which has to be removed;
 	       otherwise don't hide this message */
 	    /* gtk_widget_hide (applet); */
-	    gtk_label_set_text(GTK_LABEL(labelMessage), " "); 
+	    gtk_label_set_text(GTK_LABEL(label_message), " "); 
 	    /* gtk_widget_show (applet); */
-	    messageLocked = FALSE;
+	    message_locked = FALSE;
 	}
 
     /* stop timeout function */
@@ -82,31 +82,31 @@ hideMessage(gpointer data)
 }
 
 static gint
-showInterestingInformation(gpointer data)
+show_interesting_information(gpointer data)
 {
     /* shows intersting information while there is no text
        in the mesage label
        currently only time is shown*/
     char message[21];
-    char *timeFormat;
-    gchar *currentMessage;
+    char *time_format;
+    gchar *current_message;
 
     time_t seconds = time((time_t *) 0);
     struct tm *tm;
 
-    if (messageLocked == FALSE)
+    if (message_locked == FALSE)
 	{
-	    if(prop.showTime || prop.showDate)
+	    if(prop.show_time || prop.show_date)
 		{
-		    if(prop.showTime && prop.showDate)
-			timeFormat = _("%H:%M - %d. %b");
-		    else if(prop.showTime && !prop.showDate)
-/* 			timeFormat = _("%H:%M %Z"); */
-			timeFormat = _("%H:%M");
-		    else if(!prop.showTime && prop.showDate)
-			timeFormat = _("%d. %b");
+		    if(prop.show_time && prop.show_date)
+			time_format = _("%H:%M - %d. %b");
+		    else if(prop.show_time && !prop.show_date)
+/* 			time_format = _("%H:%M %Z"); */
+			time_format = _("%H:%M");
+		    else if(!prop.show_time && prop.show_date)
+			time_format = _("%d. %b");
 		    else
-			timeFormat = "-";
+			time_format = "-";
 		    
 		    /* sprintf(message, "%s", ctime(&seconds)); */
 
@@ -123,11 +123,11 @@ showInterestingInformation(gpointer data)
 /* 		    unsetenv("TZ"); */
 /*  		    tzset();  */
 		    tm = localtime(&seconds);
-		    strftime(message, 20, timeFormat, tm);
-		    gtk_label_get(GTK_LABEL(labelMessage), &currentMessage);
-		    if(strcmp(message, currentMessage) != 0)
+		    strftime(message, 20, time_format, tm);
+		    gtk_label_get(GTK_LABEL(label_message), &current_message);
+		    if(strcmp(message, current_message) != 0)
 			{
-			    gtk_label_set_text(GTK_LABEL(labelMessage), message); 
+			    gtk_label_set_text(GTK_LABEL(label_message), message); 
 			    /* refresh frame; otherwise it is covered by the label;
 			       a bug in gtk? */
 			    /*			    gtk_widget_hide (frame);

@@ -1,4 +1,4 @@
-extern GtkWidget *labelMessage;
+extern GtkWidget *label_message;
 
-void initMessageLabel(void);
-void showMessage(gchar *message);
+void init_message_label(void);
+void show_message(gchar *message);

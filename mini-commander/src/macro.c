@@ -29,12 +29,12 @@
 #include "message.h"
 
 
-static int prefixNumber(char *command);
+static int prefix_number(char *command);
 
 
 /* search for the longest matching prefix */
 static int
-prefixNumber(char *command)
+prefix_number(char *command)
 {
     int i;
     int found_prefix_no = -1;
@@ -56,9 +56,9 @@ prefixNumber(char *command)
 }
 
 int
-prefixLength(char *command)
+prefix_length(char *command)
 {
-    int pn = prefixNumber(command);
+    int pn = prefix_number(command);
 
     if(pn > -1)
 	return strlen(prop.prefix[pn]);
@@ -68,22 +68,22 @@ prefixLength(char *command)
 }
 
 int
-prefixLength_IncludingWhithespaces(char *command)
+prefix_length_Including_whithespaces(char *command)
 {
-    char *cPtr;
+    char *c_ptr;
 
-    cPtr = command + prefixLength(command);
+    c_ptr = command + prefix_length(command);
 
-    while(*cPtr != '\000' && *cPtr == ' ')
-	cPtr++;
+    while(*c_ptr != '\000' && *c_ptr == ' ')
+	c_ptr++;
 
-    return(cPtr - command);
+    return(c_ptr - command);
 }
 
 char *
-getPrefix(char *command)
+get_prefix(char *command)
 {
-    int pn = prefixNumber(command);
+    int pn = prefix_number(command);
 
     if(pn > -1)
 	return((char *) prop.prefix[pn]);
@@ -94,16 +94,16 @@ getPrefix(char *command)
 
 
 void
-expandCommand(char *command)
+expand_command(char *command)
 {
     /* FIXME: code cleanup needed */
-    int pn = prefixNumber(command);
-    int prefixLen = prefixLength_IncludingWhithespaces(command);
+    int pn = prefix_number(command);
+    int prefix_len = prefix_length_Including_whithespaces(command);
     char *prefix = (pn > -1) ? prop.prefix[pn] : (char *) NULL;
     char *macro = (pn > -1) ? prop.command[pn] : (char *) NULL;
-    char commandExec[1000];
+    char command_exec[1000];
     char buffer[1000];
-    char *substPtr;
+    char *subst_ptr;
     int j;
 
     if(prefix == NULL)
@@ -111,33 +111,33 @@ expandCommand(char *command)
 
     /* there is a prefix */
     strcpy(buffer, macro);
-    if ((substPtr = strstr(buffer, "$1")) != (char *) NULL)
+    if ((subst_ptr = strstr(buffer, "$1")) != (char *) NULL)
 	{
 	    /* "$1" found */
-	    *substPtr = '\000';
-		    strcpy(commandExec, buffer);
-		    strcat(commandExec, command + prefixLen);
-		    strcat(commandExec, substPtr + 2);
+	    *subst_ptr = '\000';
+		    strcpy(command_exec, buffer);
+		    strcat(command_exec, command + prefix_len);
+		    strcat(command_exec, subst_ptr + 2);
 	}
     else
 	{
 	    /* no $1 in this macro */
-	    strcpy(commandExec, macro); 
+	    strcpy(command_exec, macro); 
 	}
 
     for(j=0; j<10; j++)
 	{
 	    /* substitute up to ten $1's */
-	    strcpy(buffer, commandExec);
-	    if ((substPtr = strstr(buffer, "$1")) != (char *) NULL)
+	    strcpy(buffer, command_exec);
+	    if ((subst_ptr = strstr(buffer, "$1")) != (char *) NULL)
 		{
 		    /* "$1" found */
-		    *substPtr = '\000';
-		    strcpy(commandExec, buffer);
-		    strcat(commandExec, command + prefixLen);
-		    strcat(commandExec, substPtr + 2);
+		    *subst_ptr = '\000';
+		    strcpy(command_exec, buffer);
+		    strcat(command_exec, command + prefix_len);
+		    strcat(command_exec, subst_ptr + 2);
 		}
 	}
     
-    strcpy(command, commandExec);
+    strcpy(command, command_exec);
 }

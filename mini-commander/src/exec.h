@@ -1,3 +1,3 @@
-void execCommand(char *cmd);
-void initExecSignalHandler(void);
+void exec_command(char *cmd);
+void init_exec_signal_handler(void);
 

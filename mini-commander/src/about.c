@@ -24,19 +24,19 @@
 #include "mini-commander_applet.h"
 
 
-void aboutBox(AppletWidget *applet, gpointer data)
+void about_box(AppletWidget *applet, gpointer data)
 {
-        GtkWidget *aboutBox;
+        GtkWidget *about_box;
 	const gchar *authors[] = {(gchar *) "Oliver Maruhn <oliver@maruhn.com>", (gchar *) NULL};
 
-        aboutBox = gnome_about_new (_("Mini-Commander Applet"), 
+        about_box = gnome_about_new (_("Mini-Commander Applet"), 
 				    VERSION,
 				    "(C) 1998-2000 Oliver Maruhn",
 				    authors,
 _("This GNOME applet adds a command line to the panel. It features command completion, command history, changeable macros and an optional built-in clock.\n\n\
 This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version."),
 				    (gchar *) NULL);
-        gtk_widget_show (aboutBox);
+        gtk_widget_show (about_box);
 	return;
 	applet = NULL;
 	data = NULL;

@@ -1,4 +1,4 @@
 #include <gnome.h>
 #include <applet-widget.h>
 
-void aboutBox(AppletWidget *applet, gpointer data);
+void about_box(AppletWidget *applet, gpointer data);

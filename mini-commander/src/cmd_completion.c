@@ -42,24 +42,24 @@
 
 
 static GList*    cmdc( char* );
-static void      processDir( const gchar* );
+static void      process_dir( const gchar* );
 static void      cleanup( void );
 static gint      g_list_str_cmp( gconstpointer, gconstpointer );
 
 /* global declaration so g_atexit() can reference it to free it.
  * (not strictly necessary).
  */
-static GList *pathElements = NULL;
+static GList *path_elements = NULL;
 
 
 
 void
-cmdCompletion(char *cmd)
+cmd_completion(char *cmd)
 {
     char buffer[MAX_COMMAND_LENGTH] = "";
-    char largestPossibleCompletion[MAX_COMMAND_LENGTH] = "";
-    int completionNotUnique = FALSE;   
-    int numWhitespaces, i, pos;
+    char largest_possible_completion[MAX_COMMAND_LENGTH] = "";
+    int completion_not_unique = FALSE;   
+    int num_whitespaces, i, pos;
 
     GList *possible_completions_list = NULL;
     GList *completion_element;
@@ -67,72 +67,72 @@ cmdCompletion(char *cmd)
   
     if(strlen(cmd) == 0)
 	{
-	    showMessage((gchar *) _("not unique"));
+	    show_message((gchar *) _("not unique"));
 	    return;
 	}
 
-    showMessage((gchar *) _("completing..."));
-    numWhitespaces = prefixLength_IncludingWhithespaces(cmd) - prefixLength(cmd);
-    possible_completions_list = cmdc(cmd + prefixLength_IncludingWhithespaces(cmd));
+    show_message((gchar *) _("completing..."));
+    num_whitespaces = prefix_length_Including_whithespaces(cmd) - prefix_length(cmd);
+    possible_completions_list = cmdc(cmd + prefix_length_Including_whithespaces(cmd));
 
     /* get first possible completion */
     completion_element = g_list_first(possible_completions_list);
     if(completion_element)
-	strcpy(largestPossibleCompletion, (char *) completion_element->data);
+	strcpy(largest_possible_completion, (char *) completion_element->data);
     else
-	strcpy(largestPossibleCompletion, "");
+	strcpy(largest_possible_completion, "");
 
     /* get the rest */
     while((completion_element = g_list_next(completion_element)))
 	{
 	    strcpy(buffer, (char *) completion_element->data);
-	    completionNotUnique = TRUE;
+	    completion_not_unique = TRUE;
 	    pos = 0;
-	    while(largestPossibleCompletion[pos] != '\000' 
+	    while(largest_possible_completion[pos] != '\000' 
 		  && buffer[pos] != '\000'
-		  && strncmp(largestPossibleCompletion, buffer, pos + 1) == 0)
+		  && strncmp(largest_possible_completion, buffer, pos + 1) == 0)
 		pos++;
-	    strncpy(largestPossibleCompletion, buffer, pos);
+	    strncpy(largest_possible_completion, buffer, pos);
 	    /* strncpy does not add \000 to the end */
-	    largestPossibleCompletion[pos] = '\000';
+	    largest_possible_completion[pos] = '\000';
 	}
       
-    if(strlen(largestPossibleCompletion) > 0)
+    if(strlen(largest_possible_completion) > 0)
 	{
-	    if(getPrefix(cmd) != NULL)
-		strcpy(cmd, getPrefix(cmd));
+	    if(get_prefix(cmd) != NULL)
+		strcpy(cmd, get_prefix(cmd));
 	    else
 		strcpy(cmd, "");
 
 	    /* fill up the whitespaces */
-	    for(i = 0; i < numWhitespaces; i++)
+	    for(i = 0; i < num_whitespaces; i++)
 		strcat(cmd, " ");	
 
-	    strcat(cmd, largestPossibleCompletion);
+	    strcat(cmd, largest_possible_completion);
 
-	    if(!completionNotUnique)
-		showMessage((gchar *) _("completed"));
+	    if(!completion_not_unique)
+		show_message((gchar *) _("completed"));
 	    else
-		showMessage((gchar *) _("not unique"));		
+		show_message((gchar *) _("not unique"));		
 	}
     else
-	showMessage((gchar *) _("not found"));
+	show_message((gchar *) _("not found"));
 }
 
 
 
 #if 0
 static void
-cmdCompletion_old(char *cmd)
+cmd_completion_old(char *cmd)
 {
     FILE *pipe_fp;
     char buffer[MAX_COMMAND_LENGTH] = "";
-    char shellCommand[2048];
-    char largestPossibleCompletion[MAX_COMMAND_LENGTH] = "";
-    int completionNotUnique = FALSE;   
-    int numWhitespaces, i, pos;
+    char shell_command[2048];
+    char largest_possible_completion[MAX_COMMAND_LENGTH] = "";
+    int completion_not_unique = FALSE;   
+    int num_whitespaces, i, pos;
 
-    static char shellScript[] = 
+    static char shell_script[] = 
 "\n\
 for dir in `echo $PATH|sed \"s/^:/. /; s/:$/ ./; s/::/ . /g; s/:/ /g\"`\n\
 do\n\
@@ -149,61 +149,61 @@ done\n\
   
     if(strlen(cmd) == 0)
 	{
-	    showMessage((gchar *) _("not unique"));
+	    show_message((gchar *) _("not unique"));
 	    return;
 	}
 
-    showMessage((gchar *) _("completing..."));
+    show_message((gchar *) _("completing..."));
 
-    numWhitespaces = prefixLength_IncludingWhithespaces(cmd) - prefixLength(cmd);
+    num_whitespaces = prefix_length_Including_whithespaces(cmd) - prefix_length(cmd);
 
-    strcpy(shellCommand, "/bin/sh -c '");
-    strcat(shellCommand, "cmd=\"");
-    strcat(shellCommand, cmd + prefixLength_IncludingWhithespaces(cmd));
-    strcat(shellCommand, "\"\n");
-    strcat(shellCommand, shellScript);
-    strcat(shellCommand, "'");
+    strcpy(shell_command, "/bin/sh -c '");
+    strcat(shell_command, "cmd=\"");
+    strcat(shell_command, cmd + prefix_length_Including_whithespaces(cmd));
+    strcat(shell_command, "\"\n");
+    strcat(shell_command, shell_script);
+    strcat(shell_command, "'");
     
-    if((pipe_fp = popen(shellCommand, "r")) == NULL)
-	showMessage((gchar *) _("no /bin/sh"));
+    if((pipe_fp = popen(shell_command, "r")) == NULL)
+	show_message((gchar *) _("no /bin/sh"));
 
     /* get first line from shell script answer */
-    fscanf(pipe_fp, "%s\n", largestPossibleCompletion);
+    fscanf(pipe_fp, "%s\n", largest_possible_completion);
 
     /* get the rest */
     while(fscanf(pipe_fp, "%s\n", buffer) == 1){
-	completionNotUnique = TRUE;
+	completion_not_unique = TRUE;
 	pos = 0;
-	while(largestPossibleCompletion[pos] != '\000' 
+	while(largest_possible_completion[pos] != '\000' 
 	      && buffer[pos] != '\000'
-	      && strncmp(largestPossibleCompletion, buffer, pos + 1) == 0)
+	      && strncmp(largest_possible_completion, buffer, pos + 1) == 0)
 	    pos++;
-	strncpy(largestPossibleCompletion, buffer, pos);
+	strncpy(largest_possible_completion, buffer, pos);
 	/* strncpy does not add \000 to the end */
-	largestPossibleCompletion[pos] = '\000';
+	largest_possible_completion[pos] = '\000';
     }
     pclose(pipe_fp);
       
-    if(strlen(largestPossibleCompletion) > 0)
+    if(strlen(largest_possible_completion) > 0)
 	{
-	    if(getPrefix(cmd) != NULL)
-		strcpy(cmd, getPrefix(cmd));
+	    if(get_prefix(cmd) != NULL)
+		strcpy(cmd, get_prefix(cmd));
 	    else
 		strcpy(cmd, "");
 
 	    /* fill up the whitespaces */
-	    for(i = 0; i < numWhitespaces; i++)
+	    for(i = 0; i < num_whitespaces; i++)
 		strcat(cmd, " ");	
 
-	    strcat(cmd, largestPossibleCompletion);
+	    strcat(cmd, largest_possible_completion);
 
-	    if(!completionNotUnique)
-		showMessage((gchar *) _("completed"));
+	    if(!completion_not_unique)
+		show_message((gchar *) _("completed"));
 	    else
-		showMessage((gchar *) _("not unique"));		
+		show_message((gchar *) _("not unique"));		
 	}
     else
-	showMessage((gchar *) _("not found"));
+	show_message((gchar *) _("not found"));
 }
 #endif
 
@@ -222,13 +222,13 @@ static GList *
 cmdc( char *s )
 {
    GCompletion        *completion  = NULL;
-   GList              *retList     = NULL;
-   static GHashTable  *pathHash    = NULL;
+   GList              *ret_list     = NULL;
+   static GHashTable  *path_hash    = NULL;
    static char        *path        = NULL;
-   gchar              *pathElem;
+   gchar              *path_elem;
    struct stat         buf;
    static gboolean     inited      = FALSE;
-   gpointer            hashKey     = NULL;
+   gpointer            hash_key     = NULL;
 
 
    /*
@@ -244,12 +244,12 @@ cmdc( char *s )
       path = (char *) malloc(sizeof(char) * (strlen(getenv("PATH")) + 1));
       strcpy(path, getenv("PATH"));
       
-      pathHash = g_hash_table_new( g_str_hash, g_str_equal );
+      path_hash = g_hash_table_new( g_str_hash, g_str_equal );
 
-      for( pathElem = strtok( path, ":" ); pathElem;
-            pathElem = strtok( NULL, ":" ))
+      for( path_elem = strtok( path, ":" ); path_elem;
+            path_elem = strtok( NULL, ":" ))
       {
-         if( stat( pathElem, &buf ))
+         if( stat( path_elem, &buf ))
             continue;
 
          if( buf.st_mode & S_IFDIR )
@@ -257,15 +257,15 @@ cmdc( char *s )
             /* keep a hash of processed paths, to avoid reprocessing
              * dupped path entries.
              */
-            hashKey = g_hash_table_lookup( pathHash, pathElem );
-            if( hashKey )
+            hash_key = g_hash_table_lookup( path_hash, path_elem );
+            if( hash_key )
                continue;   /* duplicate $PATH entry */
             else
             {
                g_hash_table_insert(
-                     pathHash, (gpointer)pathElem, (gpointer)pathElem );
+                     path_hash, (gpointer)path_elem, (gpointer)path_elem );
 
-               processDir( pathElem );
+               process_dir( path_elem );
             }
          }
       }
@@ -277,11 +277,11 @@ cmdc( char *s )
    }
 
    completion = g_completion_new( NULL );
-   g_completion_add_items( completion, pathElements );
-   retList = g_list_copy( g_completion_complete( completion, s, NULL ));
+   g_completion_add_items( completion, path_elements );
+   ret_list = g_list_copy( g_completion_complete( completion, s, NULL ));
    g_completion_free( completion );
 
-   return g_list_sort( retList, (GCompareFunc)g_list_str_cmp );
+   return g_list_sort( ret_list, (GCompareFunc)g_list_str_cmp );
 }
 
 
@@ -302,13 +302,13 @@ g_list_str_cmp( gconstpointer a, gconstpointer b )
  * Initial version by Travis Hume <travishume@acm.org>.
  */
 static void
-processDir( const char *d )
+process_dir( const char *d )
 {
    DIR            *dir;
    struct dirent  *de;
    struct stat     buf;
    gpointer        data;
-   gchar          *pathStr;
+   gchar          *path_str;
 
 
    if( (dir = opendir( d )) == NULL )
@@ -319,13 +319,13 @@ processDir( const char *d )
       if( strcmp( de->d_name, "." ) == 0 || strcmp( de->d_name, "..") == 0)
          continue;
 
-      pathStr = (gchar *)g_malloc( strlen( d ) + 1 + strlen( de->d_name ) + 1);
-      strcpy( pathStr, d );
-      strcat( pathStr, "/" );
-      strcat( pathStr, de->d_name );
-      if( stat( pathStr, &buf ) != 0)
+      path_str = (gchar *)g_malloc( strlen( d ) + 1 + strlen( de->d_name ) + 1);
+      strcpy( path_str, d );
+      strcat( path_str, "/" );
+      strcat( path_str, de->d_name );
+      if( stat( path_str, &buf ) != 0)
          continue;
-      g_free( (gpointer)pathStr );
+      g_free( (gpointer)path_str );
 
       if( S_ISDIR( buf.st_mode ) )
          continue;
@@ -333,7 +333,7 @@ processDir( const char *d )
       data = g_malloc( strlen( (gchar *)de->d_name ) + 1 );
       strcpy( (gchar *)data, (gchar *)(de->d_name) );
       if( buf.st_mode & S_IXUSR )
-         pathElements = g_list_append( pathElements, data );
+         path_elements = g_list_append( path_elements, data );
    }
    closedir( dir );
 }
@@ -345,5 +345,5 @@ processDir( const char *d )
 static void
 cleanup( void )
 {
-   g_list_free( pathElements );
+   g_list_free( path_elements );
 }

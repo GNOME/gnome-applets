@@ -46,7 +46,7 @@
 
 
 void
-execCommand(char *cmd)
+exec_command(char *cmd)
 {
     pid_t pid;
     char *argv[5];
@@ -57,12 +57,12 @@ execCommand(char *cmd)
        changing cmd (important for history) */
     strcpy(command, cmd);
 
-    expandCommand(command);
+    expand_command(command);
 
     /* execute command */
-    showMessage((gchar *) _("starting...")); 	    
+    show_message((gchar *) _("starting...")); 	    
     if ((pid = fork()) < 0) {
-	showMessage((gchar *) _("fork error")); 
+	show_message((gchar *) _("fork error")); 
     }
     else if (pid == 0) 
 	{
@@ -97,16 +97,16 @@ execCommand(char *cmd)
 static
 void sighandle_sigchld(int sig)
 {
-    int show_message = 0;
+    int show_a_message = 0;
 
     /* call waitpid to remove the child process and to prevent that it
        becomes a zombie */
 
     while(waitpid(0, NULL, WNOHANG) > 0)
-	show_message = 1;
+	show_a_message = 1;
 
-    if(show_message)
-	showMessage((gchar *) _("child exited"));
+    if(show_a_message)
+	show_message((gchar *) _("child exited"));
     return;
     sig = 0;
 }
@@ -118,7 +118,7 @@ void sighandle_sigalrm(int sig)
        message is not overwritten by the "child exited" message */
     sleep(1);
 
-    showMessage((gchar *) _("no /bin/sh"));
+    show_message((gchar *) _("no /bin/sh"));
    
     /*
        gnome_dialog_run
@@ -134,7 +134,7 @@ void sighandle_sigalrm(int sig)
 }
 
 void
-initExecSignalHandler(void)
+init_exec_signal_handler(void)
 {
     struct sigaction act = {{0}}; /*this sets all fields to 0, no
 				  matter how many fields there are*/

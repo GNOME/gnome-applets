@@ -23,7 +23,7 @@
 #include "help.h"
 
 void 
-showHelp(AppletWidget *applet, gpointer data)
+show_help(AppletWidget *applet, gpointer data)
 {
     static GnomeHelpMenuEntry help_entry = { NULL, "index.html"};
 

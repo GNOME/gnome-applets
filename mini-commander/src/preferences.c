@@ -30,138 +30,138 @@
 #include "message.h"
 #include "mini-commander_applet.h"
 
-static void resetTemporaryPrefs(void);
+static void reset_temporary_prefs(void);
 
 properties prop;
-properties propTmp;
+properties prop_tmp;
 
 static void
-checkBoxToggled_signal(GtkWidget *checkBoxWidget, int *data)
+checkbox_toggled_signal(GtkWidget *check_box_widget, int *data)
 {
-    *data = GTK_TOGGLE_BUTTON(checkBoxWidget)->active;
+    *data = GTK_TOGGLE_BUTTON(check_box_widget)->active;
 }
 
 static void
-entryChanged_signal(GtkWidget *entryWidget, char **data)
+entry_changed_signal(GtkWidget *entry_widget, char **data)
 {
     free(*data);
-    *data = (char *) malloc(sizeof(char) * (strlen(gtk_entry_get_text(GTK_ENTRY(entryWidget))) + 1));
-    strcpy(*data, gtk_entry_get_text(GTK_ENTRY(entryWidget)));
+    *data = (char *) malloc(sizeof(char) * (strlen(gtk_entry_get_text(GTK_ENTRY(entry_widget))) + 1));
+    strcpy(*data, gtk_entry_get_text(GTK_ENTRY(entry_widget)));
 }
 
 static void
-entryIntChanged_signal(GtkWidget *entryWidget, int *data)
+entry_integer_changed_signal(GtkWidget *entry_widget, int *data)
 {
-    *data = atoi(gtk_entry_get_text(GTK_ENTRY(entryWidget)));
+    *data = atoi(gtk_entry_get_text(GTK_ENTRY(entry_widget)));
 }
 
 static void
-colorCmdFgChanged_signal(GtkWidget *colorPickerWidget, gpointer *data)
+color_cmd_fg_changed_signal(GtkWidget *color_picker_widget, gpointer *data)
 {
     gushort r, g, b;
 
-    gnome_color_picker_get_i16(GNOME_COLOR_PICKER(colorPickerWidget), &r, &g, &b, NULL);
+    gnome_color_picker_get_i16(GNOME_COLOR_PICKER(color_picker_widget), &r, &g, &b, NULL);
 
-    propTmp.cmdLineColorFgR = (int) r;
-    propTmp.cmdLineColorFgG = (int) g; 
-    propTmp.cmdLineColorFgB = (int) b;
+    prop_tmp.cmd_line_color_fg_r = (int) r;
+    prop_tmp.cmd_line_color_fg_g = (int) g; 
+    prop_tmp.cmd_line_color_fg_b = (int) b;
     return;
     data = NULL;
 }
 
 static void
-colorCmdBgChanged_signal(GtkWidget *colorPickerWidget, gpointer *data)
+color_cmd_bg_changed_signal(GtkWidget *color_picker_widget, gpointer *data)
 {
     gushort r, g, b;
 
-    gnome_color_picker_get_i16(GNOME_COLOR_PICKER(colorPickerWidget), &r, &g, &b, NULL);
+    gnome_color_picker_get_i16(GNOME_COLOR_PICKER(color_picker_widget), &r, &g, &b, NULL);
 
-    propTmp.cmdLineColorBgR = (int) r;
-    propTmp.cmdLineColorBgG = (int) g; 
-    propTmp.cmdLineColorBgB = (int) b;
+    prop_tmp.cmd_line_color_bg_r = (int) r;
+    prop_tmp.cmd_line_color_bg_g = (int) g; 
+    prop_tmp.cmd_line_color_bg_b = (int) b;
     return;
     data = NULL;
 }
 
 static void
-resetTemporaryPrefs(void)
+reset_temporary_prefs(void)
 {
     /* reset temporary prefereces */
-    propTmp.showTime = -1;
-    propTmp.showDate = -1;
-    propTmp.showHandle = -1;
-    propTmp.showFrame = -1;
-    propTmp.autoCompleteHistory = -1;
-    propTmp.normalSizeX = -1;
-    propTmp.normalSizeY = -1;
-    propTmp.reducedSizeX = -1;
-    propTmp.reducedSizeY = -1;
-    propTmp.autoCompleteHistory = -1;
-    propTmp.cmdLineY = -1;
-    propTmp.flatLayout = -1;
-    propTmp.cmdLineColorFgR = -1;
-    propTmp.cmdLineColorFgG = -1;
-    propTmp.cmdLineColorFgB = -1;
-    propTmp.cmdLineColorBgR = -1;
-    propTmp.cmdLineColorBgG = -1;
-    propTmp.cmdLineColorBgB = -1;
+    prop_tmp.show_time = -1;
+    prop_tmp.show_date = -1;
+    prop_tmp.show_handle = -1;
+    prop_tmp.show_frame = -1;
+    prop_tmp.auto_complete_history = -1;
+    prop_tmp.normal_size_x = -1;
+    prop_tmp.normal_size_y = -1;
+    prop_tmp.reduced_size_x = -1;
+    prop_tmp.reduced_size_y = -1;
+    prop_tmp.auto_complete_history = -1;
+    prop_tmp.cmd_line_size_y = -1;
+    prop_tmp.flat_layout = -1;
+    prop_tmp.cmd_line_color_fg_r = -1;
+    prop_tmp.cmd_line_color_fg_g = -1;
+    prop_tmp.cmd_line_color_fg_b = -1;
+    prop_tmp.cmd_line_color_bg_r = -1;
+    prop_tmp.cmd_line_color_bg_g = -1;
+    prop_tmp.cmd_line_color_bg_b = -1;
 }
 
 
 static void
-propertiesBox_apply_signal(GnomePropertyBox *propertyBoxWidget, gint page, gpointer data)
+properties_box_apply_signal(GnomePropertyBox *property_box_widget, gint page, gpointer data)
 {
     int i;
 
-    if(propTmp.showTime != -1)
+    if(prop_tmp.show_time != -1)
 	/* checkbox has been changed */
-	prop.showTime = propTmp.showTime;
+	prop.show_time = prop_tmp.show_time;
 
-    if(propTmp.showDate != -1)
+    if(prop_tmp.show_date != -1)
 	/* checkbox has been changed */
-	prop.showDate = propTmp.showDate;
+	prop.show_date = prop_tmp.show_date;
 
-    if(propTmp.showHandle != -1)
+    if(prop_tmp.show_handle != -1)
 	/* checkbox has been changed */
-        prop.showHandle = propTmp.showHandle;
+        prop.show_handle = prop_tmp.show_handle;
 
-    if(propTmp.showFrame != -1)
+    if(prop_tmp.show_frame != -1)
 	/* checkbox has been changed */
-        prop.showFrame = propTmp.showFrame;
+        prop.show_frame = prop_tmp.show_frame;
 
-    if(propTmp.autoCompleteHistory != -1)
+    if(prop_tmp.auto_complete_history != -1)
 	/* checkbox has been changed */
-        prop.autoCompleteHistory = propTmp.autoCompleteHistory;
+        prop.auto_complete_history = prop_tmp.auto_complete_history;
 
-    if(propTmp.showTime != -1 || propTmp.showDate != -1) {
+    if(prop_tmp.show_time != -1 || prop_tmp.show_date != -1) {
 	/* checkbox has been changed */
-	if(prop.showTime && prop.showDate)
-	    showMessage((gchar *) _("time & date on")); 
-	else if(prop.showTime && !prop.showDate)
-	    showMessage((gchar *) _("time on")); 
-	else if(!prop.showTime && prop.showDate)
-	    showMessage((gchar *) _("date on")); 
+	if(prop.show_time && prop.show_date)
+	    show_message((gchar *) _("time & date on")); 
+	else if(prop.show_time && !prop.show_date)
+	    show_message((gchar *) _("time on")); 
+	else if(!prop.show_time && prop.show_date)
+	    show_message((gchar *) _("date on")); 
 	else
-	    showMessage((gchar *) _("clock off")); 
+	    show_message((gchar *) _("clock off")); 
     }
 
-    if(propTmp.normalSizeX != -1)
-	prop.normalSizeX = propTmp.normalSizeX;
-    if(propTmp.normalSizeY != -1)
-	prop.normalSizeY = propTmp.normalSizeY;
-    if(propTmp.reducedSizeX != -1)
-	prop.reducedSizeX = propTmp.reducedSizeX;
-    if(propTmp.reducedSizeY != -1)
-	prop.reducedSizeY = propTmp.reducedSizeY;
-    if(propTmp.cmdLineY != -1)
-	prop.cmdLineY = propTmp.cmdLineY;
+    if(prop_tmp.normal_size_x != -1)
+	prop.normal_size_x = prop_tmp.normal_size_x;
+    if(prop_tmp.normal_size_y != -1)
+	prop.normal_size_y = prop_tmp.normal_size_y;
+    if(prop_tmp.reduced_size_x != -1)
+	prop.reduced_size_x = prop_tmp.reduced_size_x;
+    if(prop_tmp.reduced_size_y != -1)
+	prop.reduced_size_y = prop_tmp.reduced_size_y;
+    if(prop_tmp.cmd_line_size_y != -1)
+	prop.cmd_line_size_y = prop_tmp.cmd_line_size_y;
 
-    if(propTmp.normalSizeX != -1 || propTmp.normalSizeY != -1 || 
-       propTmp.reducedSizeX != -1 || propTmp.reducedSizeY != -1)
+    if(prop_tmp.normal_size_x != -1 || prop_tmp.normal_size_y != -1 || 
+       prop_tmp.reduced_size_x != -1 || prop_tmp.reduced_size_y != -1)
 	{
 	    /* size was changed * /
 	    gtk_container_set_resize_mode(GTK_CONTAINER(applet), GTK_RESIZE_IMMEDIATE);
-	    gtk_widget_set_usize(GTK_WIDGET(applet), prop.normalSizeX, prop.normalSizeY);
+	    gtk_widget_set_usize(GTK_WIDGET(applet), prop.normal_size_x, prop.normal_size_y);
 	    gtk_widget_show (applet);
 	    gtk_widget_queue_resize(applet);
 	    gtk_widget_queue_draw(applet);
@@ -173,89 +173,89 @@ propertiesBox_apply_signal(GnomePropertyBox *propertyBoxWidget, gint page, gpoin
 	}
 
     /* colors */
-    if(propTmp.cmdLineColorFgR != -1)
+    if(prop_tmp.cmd_line_color_fg_r != -1)
 	{
-	    prop.cmdLineColorFgR = propTmp.cmdLineColorFgR;
-	    prop.cmdLineColorFgG = propTmp.cmdLineColorFgG;
-	    prop.cmdLineColorFgB = propTmp.cmdLineColorFgB;
+	    prop.cmd_line_color_fg_r = prop_tmp.cmd_line_color_fg_r;
+	    prop.cmd_line_color_fg_g = prop_tmp.cmd_line_color_fg_g;
+	    prop.cmd_line_color_fg_b = prop_tmp.cmd_line_color_fg_b;
 	}
-    if(propTmp.cmdLineColorBgR != -1)
+    if(prop_tmp.cmd_line_color_bg_r != -1)
 	{
-	    prop.cmdLineColorBgR = propTmp.cmdLineColorBgR;
-	    prop.cmdLineColorBgG = propTmp.cmdLineColorBgG;
-	    prop.cmdLineColorBgB = propTmp.cmdLineColorBgB;
+	    prop.cmd_line_color_bg_r = prop_tmp.cmd_line_color_bg_r;
+	    prop.cmd_line_color_bg_g = prop_tmp.cmd_line_color_bg_g;
+	    prop.cmd_line_color_bg_b = prop_tmp.cmd_line_color_bg_b;
 	}
 
     /* macros */
     for(i=0; i<=MAX_PREFIXES-1; i++)
 	{
-	    if (propTmp.prefix[i] != (char *) NULL)
+	    if (prop_tmp.prefix[i] != (char *) NULL)
 		{
 		    free(prop.prefix[i]);
-		    prop.prefix[i] = propTmp.prefix[i];
-		    propTmp.prefix[i] = (char *) NULL;
+		    prop.prefix[i] = prop_tmp.prefix[i];
+		    prop_tmp.prefix[i] = (char *) NULL;
 		}
 
-	    if (propTmp.command[i] != (char *) NULL)
+	    if (prop_tmp.command[i] != (char *) NULL)
 		{
 		    free(prop.command[i]);
-		    prop.command[i] = propTmp.command[i];
-		    propTmp.command[i] = (char *) NULL;
+		    prop.command[i] = prop_tmp.command[i];
+		    prop_tmp.command[i] = (char *) NULL;
 		}
 	}    
 
-    if(propTmp.showHandle != -1
-       || propTmp.showFrame != -1
-       || propTmp.cmdLineY != -1
-       || propTmp.cmdLineColorFgR != -1 
-       || propTmp.cmdLineColorBgR != -1)
+    if(prop_tmp.show_handle != -1
+       || prop_tmp.show_frame != -1
+       || prop_tmp.cmd_line_size_y != -1
+       || prop_tmp.cmd_line_color_fg_r != -1 
+       || prop_tmp.cmd_line_color_bg_r != -1)
 	redraw_applet();
 
-    resetTemporaryPrefs();
+    reset_temporary_prefs();
 
     /* Why is this not done automatically??? */
     /* Ok, looks like this is done right now. */
-    /*    saveSession(); */
+    /*    save_session(); */
     return;
-    propertyBoxWidget = NULL;
+    property_box_widget = NULL;
     page = 0;
     data = NULL;
 }
 
 void
-loadSession(void)
+load_session(void)
 {
     int i;
     char section[MAX_COMMAND_LENGTH + 100];
-    char defaultPrefix[MAX_PREFIX_LENGTH];
-    char defaultCommand[MAX_COMMAND_LENGTH];
+    char default_prefix[MAX_PREFIX_LENGTH];
+    char default_command[MAX_COMMAND_LENGTH];
     
     /* read properties */
     /* gnome_config_push_prefix(APPLET_WIDGET(applet)->globcfgpath); */
     gnome_config_push_prefix("/mini-commander/");
 
-    prop.showTime = gnome_config_get_bool("mini_commander/show_time=true");
-    prop.showDate = gnome_config_get_bool("mini_commander/show_date=false");
-    prop.showHandle = gnome_config_get_bool("mini_commander/show_handle=false");
-    prop.showFrame = gnome_config_get_bool("mini_commander/show_frame=false");
+    prop.show_time = gnome_config_get_bool("mini_commander/show_time=true");
+    prop.show_date = gnome_config_get_bool("mini_commander/show_date=false");
+    prop.show_handle = gnome_config_get_bool("mini_commander/show_handle=false");
+    prop.show_frame = gnome_config_get_bool("mini_commander/show_frame=false");
 
-    prop.autoCompleteHistory = gnome_config_get_bool("mini_commander/autocomplete_history=true");
+    prop.auto_complete_history = gnome_config_get_bool("mini_commander/autocomplete_history=true");
 
     /* size */
-    prop.normalSizeX = gnome_config_get_int("mini_commander/normal_size_x=148");
-    prop.normalSizeY = gnome_config_get_int("mini_commander/normal_size_y=48");
-    prop.reducedSizeX = gnome_config_get_int("mini_commander/reduced_size_x=50");
-    prop.reducedSizeY = gnome_config_get_int("mini_commander/reduced_size_y=48");
-    prop.cmdLineY = gnome_config_get_int("mini_commander/cmd_line_y=24");
+    prop.normal_size_x = gnome_config_get_int("mini_commander/normal_size_x=148");
+    prop.normal_size_y = gnome_config_get_int("mini_commander/normal_size_y=48");
+    prop.reduced_size_x = gnome_config_get_int("mini_commander/reduced_size_x=50");
+    prop.reduced_size_y = gnome_config_get_int("mini_commander/reduced_size_y=48");
+    prop.cmd_line_size_y = gnome_config_get_int("mini_commander/cmd_line_y=24");
 
     /* colors */
-    prop.cmdLineColorFgR = gnome_config_get_int("mini_commander/cmd_line_color_fg_r=54613");
-    prop.cmdLineColorFgG = gnome_config_get_int("mini_commander/cmd_line_color_fg_g=54613");
-    prop.cmdLineColorFgB = gnome_config_get_int("mini_commander/cmd_line_color_fg_b=54613");
+    prop.cmd_line_color_fg_r = gnome_config_get_int("mini_commander/cmd_line_color_fg_r=54613");
+    prop.cmd_line_color_fg_g = gnome_config_get_int("mini_commander/cmd_line_color_fg_g=54613");
+    prop.cmd_line_color_fg_b = gnome_config_get_int("mini_commander/cmd_line_color_fg_b=54613");
 
-    prop.cmdLineColorBgR = gnome_config_get_int("mini_commander/cmd_line_color_bg_r=0");
-    prop.cmdLineColorBgG = gnome_config_get_int("mini_commander/cmd_line_color_bg_g=0");
-    prop.cmdLineColorBgB = gnome_config_get_int("mini_commander/cmd_line_color_bg_b=0");
+    prop.cmd_line_color_bg_r = gnome_config_get_int("mini_commander/cmd_line_color_bg_r=0");
+    prop.cmd_line_color_bg_g = gnome_config_get_int("mini_commander/cmd_line_color_bg_g=0");
+    prop.cmd_line_color_bg_b = gnome_config_get_int("mini_commander/cmd_line_color_bg_b=0");
 
     /* macros */
     for(i=0; i<=MAX_PREFIXES-1; i++)
@@ -264,88 +264,88 @@ loadSession(void)
 		/* set default macros */
 		{
 		case 1:
-		    strcpy(defaultPrefix, "http://");
-		    strcpy(defaultCommand, "netscape -remote openURL\\(http://$1\\) || netscape http://$1");
+		    strcpy(default_prefix, "http://");
+		    strcpy(default_command, "netscape -remote open_uRL\\(http://$1\\) || netscape http://$1");
 		    break;
 		case 2:
-		    strcpy(defaultPrefix, "ftp://");
-		    strcpy(defaultCommand, "netscape -remote openURL\\(ftp://$1\\) || netscape ftp://$1");
+		    strcpy(default_prefix, "ftp://");
+		    strcpy(default_command, "netscape -remote open_uRL\\(ftp://$1\\) || netscape ftp://$1");
 		    break;
 		case 3:
-		    strcpy(defaultPrefix, "www.");
-		    strcpy(defaultCommand, "netscape -remote openURL\\(http://www.$1\\) || netscape http://www.$1");
+		    strcpy(default_prefix, "www.");
+		    strcpy(default_command, "netscape -remote open_uRL\\(http://www.$1\\) || netscape http://www.$1");
 		    break;
 		case 4:
-		    strcpy(defaultPrefix, "ftp.");
-		    strcpy(defaultCommand, "netscape -remote openURL\\(ftp.://ftp.$1\\) || netscape ftp://ftp.$1");
+		    strcpy(default_prefix, "ftp.");
+		    strcpy(default_command, "netscape -remote open_uRL\\(ftp.://ftp.$1\\) || netscape ftp://ftp.$1");
 		    break;
 		case 5:
-		    strcpy(defaultPrefix, "lynx:");
-		    strcpy(defaultCommand, "gnome-terminal -e \"sh -c 'lynx $1'\"");
+		    strcpy(default_prefix, "lynx:");
+		    strcpy(default_command, "gnome-terminal -e \"sh -c 'lynx $1'\"");
 		    break;
 		case 6:
-		    strcpy(defaultPrefix, "term:");
-		    strcpy(defaultCommand, "gnome-terminal -e \"sh -c '$1'\"");
+		    strcpy(default_prefix, "term:");
+		    strcpy(default_command, "gnome-terminal -e \"sh -c '$1'\"");
 		    break;
 		case 7:
-		    strcpy(defaultPrefix, "xterm:");
-		    strcpy(defaultCommand, "xterm -e sh -c '$1'");
+		    strcpy(default_prefix, "xterm:");
+		    strcpy(default_command, "xterm -e sh -c '$1'");
 		    break;
 		case 8:
-		    strcpy(defaultPrefix, "nxterm:");
-		    strcpy(defaultCommand, "nxterm -e sh -c '$1'");
+		    strcpy(default_prefix, "nxterm:");
+		    strcpy(default_command, "nxterm -e sh -c '$1'");
 		    break;
 		case 9:
-		    strcpy(defaultPrefix, "rxvt:");
-		    strcpy(defaultCommand, "rxvt -e sh -c '$1'");
+		    strcpy(default_prefix, "rxvt:");
+		    strcpy(default_command, "rxvt -e sh -c '$1'");
 		    break;
 		case 10:
-		    strcpy(defaultPrefix, "less:");
-		    strcpy(defaultCommand, "$1 | gless");
+		    strcpy(default_prefix, "less:");
+		    strcpy(default_command, "$1 | gless");
 		    break;
 		case 11:
-		    strcpy(defaultPrefix, "av:");
-		    strcpy(defaultCommand, "set altavista search by Chad Powell; gnome-moz-remote --newwin http://www.altavista.net/cgi-bin/query?pg=q\\&kl=XX\\&q=$(echo '$1'|sed -e ': p;s/+/%2B/;t p;: s;s/\\ /+/;t s;: q;s/\\\"/%22/;t q')");
+		    strcpy(default_prefix, "av:");
+		    strcpy(default_command, "set altavista search by Chad Powell; gnome-moz-remote --newwin http://www.altavista.net/cgi-bin/query?pg=q\\&kl=XX\\&q=$(echo '$1'|sed -e ': p;s/+/%2B/;t p;: s;s/\\ /+/;t s;: q;s/\\\"/%22/;t q')");
 		    break;
 		case 12:
-		    strcpy(defaultPrefix, "yahoo:");
-		    strcpy(defaultCommand, "set yahoo search by Chad Powell; gnome-moz-remote --newwin http://ink.yahoo.com/bin/query?p=$(echo '$1'|sed -e ': p;s/+/%2B/;t p;: s;s/\\ /+/;t s;: q;s/\\\"/%22/;t q')");
+		    strcpy(default_prefix, "yahoo:");
+		    strcpy(default_command, "set yahoo search by Chad Powell; gnome-moz-remote --newwin http://ink.yahoo.com/bin/query?p=$(echo '$1'|sed -e ': p;s/+/%2B/;t p;: s;s/\\ /+/;t s;: q;s/\\\"/%22/;t q')");
 		    break;
 		case 13:
-		    strcpy(defaultPrefix, "fm:");
-		    strcpy(defaultCommand, "set freshmeat search by Chad Powell; gnome-moz-remote --newwin http://core.freshmeat.net/search.php3?query=$(echo '$1'|tr \" \" +)");
+		    strcpy(default_prefix, "fm:");
+		    strcpy(default_command, "set freshmeat search by Chad Powell; gnome-moz-remote --newwin http://core.freshmeat.net/search.php3?query=$(echo '$1'|tr \" \" +)");
 		    break;
 		case 14:
-		    strcpy(defaultPrefix, "dictionary:");
-		    strcpy(defaultCommand, "set dictionary search by Chad Powell; gnome-moz-remote --newwin http://www.dictionary.com/cgi-bin/dict.pl?term=$1");
+		    strcpy(default_prefix, "dictionary:");
+		    strcpy(default_command, "set dictionary search by Chad Powell; gnome-moz-remote --newwin http://www.dictionary.com/cgi-bin/dict.pl?term=$1");
 		    break;
 		case 15:
-		    strcpy(defaultPrefix, "t");
-		    strcpy(defaultCommand, "gnome-terminal");
+		    strcpy(default_prefix, "t");
+		    strcpy(default_command, "gnome-terminal");
 		    break;
 		case 16:
-		    strcpy(defaultPrefix, "nx");
-		    strcpy(defaultCommand, "nxterm");
+		    strcpy(default_prefix, "nx");
+		    strcpy(default_command, "nxterm");
 		    break;
 		case 17:
-		    strcpy(defaultPrefix, "n");
-		    strcpy(defaultCommand, "netscape");
+		    strcpy(default_prefix, "n");
+		    strcpy(default_command, "netscape");
 		    break;
 		default:
-		    strcpy(defaultPrefix, "");
-		    strcpy(defaultCommand, "");		   
+		    strcpy(default_prefix, "");
+		    strcpy(default_command, "");		   
 		}
 
-	    g_snprintf(section, sizeof(section), "mini_commander/prefix_%d=%s", i+1, defaultPrefix);
+	    g_snprintf(section, sizeof(section), "mini_commander/prefix_%d=%s", i+1, default_prefix);
 	    free(prop.prefix[i]);
 	    prop.prefix[i] = (char *) gnome_config_get_string((gchar *) section);
 
-	    g_snprintf(section, sizeof(section), "mini_commander/command_%d=%s", i+1, defaultCommand);
+	    g_snprintf(section, sizeof(section), "mini_commander/command_%d=%s", i+1, default_command);
 	    free(prop.command[i]);
 	    prop.command[i] = (char *) gnome_config_get_string((gchar *) section);
 
-	    propTmp.prefix[i] = (char *) NULL;
-	    propTmp.command[i] = (char *) NULL;
+	    prop_tmp.prefix[i] = (char *) NULL;
+	    prop_tmp.command[i] = (char *) NULL;
 	}    
 
     /* history */
@@ -353,7 +353,7 @@ loadSession(void)
 	{
 	    g_snprintf(section, sizeof(section), "mini_commander/history_%d=%s", i, "");
 	    if(strcmp("", (char *) gnome_config_get_string((gchar *) section)) != 0)
-	       appendHistoryEntry(gnome_config_get_string((gchar *) section));
+	       append_history_entry(gnome_config_get_string((gchar *) section));
 	}
 
     gnome_config_pop_prefix();
@@ -361,7 +361,7 @@ loadSession(void)
 
 
 void
-saveSession(void)
+save_session(void)
 {
     int i;
     char section[100];
@@ -374,28 +374,28 @@ saveSession(void)
     gnome_config_set_string("mini_commander/version", (gchar *) VERSION);
 
     /* clock */
-    gnome_config_set_bool("mini_commander/show_time", prop.showTime);
-    gnome_config_set_bool("mini_commander/show_date", prop.showDate);
-    gnome_config_set_bool("mini_commander/show_handle", prop.showHandle);
-    gnome_config_set_bool("mini_commander/show_frame", prop.showFrame);
+    gnome_config_set_bool("mini_commander/show_time", prop.show_time);
+    gnome_config_set_bool("mini_commander/show_date", prop.show_date);
+    gnome_config_set_bool("mini_commander/show_handle", prop.show_handle);
+    gnome_config_set_bool("mini_commander/show_frame", prop.show_frame);
 
-    gnome_config_set_bool("mini_commander/autocomplete_history", prop.autoCompleteHistory);
+    gnome_config_set_bool("mini_commander/autocomplete_history", prop.auto_complete_history);
 
     /* size */
-    gnome_config_set_int("mini_commander/normal_size_x", prop.normalSizeX);
-    gnome_config_set_int("mini_commander/normal_size_y", prop.normalSizeY);
-    gnome_config_set_int("mini_commander/reduced_size_x", prop.reducedSizeX);
-    gnome_config_set_int("mini_commander/reduced_size_y", prop.reducedSizeY);
-    gnome_config_set_int("mini_commander/cmd_line_y", prop.cmdLineY);
+    gnome_config_set_int("mini_commander/normal_size_x", prop.normal_size_x);
+    gnome_config_set_int("mini_commander/normal_size_y", prop.normal_size_y);
+    gnome_config_set_int("mini_commander/reduced_size_x", prop.reduced_size_x);
+    gnome_config_set_int("mini_commander/reduced_size_y", prop.reduced_size_y);
+    gnome_config_set_int("mini_commander/cmd_line_y", prop.cmd_line_size_y);
 
     /* colors */
-    gnome_config_set_int("mini_commander/cmd_line_color_fg_r", prop.cmdLineColorFgR);
-    gnome_config_set_int("mini_commander/cmd_line_color_fg_g", prop.cmdLineColorFgG);
-    gnome_config_set_int("mini_commander/cmd_line_color_fg_b", prop.cmdLineColorFgB);
+    gnome_config_set_int("mini_commander/cmd_line_color_fg_r", prop.cmd_line_color_fg_r);
+    gnome_config_set_int("mini_commander/cmd_line_color_fg_g", prop.cmd_line_color_fg_g);
+    gnome_config_set_int("mini_commander/cmd_line_color_fg_b", prop.cmd_line_color_fg_b);
 
-    gnome_config_set_int("mini_commander/cmd_line_color_bg_r", prop.cmdLineColorBgR);
-    gnome_config_set_int("mini_commander/cmd_line_color_bg_g", prop.cmdLineColorBgG);
-    gnome_config_set_int("mini_commander/cmd_line_color_bg_b", prop.cmdLineColorBgB);
+    gnome_config_set_int("mini_commander/cmd_line_color_bg_r", prop.cmd_line_color_bg_r);
+    gnome_config_set_int("mini_commander/cmd_line_color_bg_g", prop.cmd_line_color_bg_g);
+    gnome_config_set_int("mini_commander/cmd_line_color_bg_b", prop.cmd_line_color_bg_b);
 
     /* macros */
     for(i=0; i<=MAX_PREFIXES-1; i++)
@@ -406,16 +406,16 @@ saveSession(void)
 	    g_snprintf(section, sizeof(section), "mini_commander/command_%d", i+1);
 	    gnome_config_set_string((gchar *) section, (gchar *) prop.command[i]);
 
-	    propTmp.prefix[i] = (char *) NULL;
-	    propTmp.command[i] = (char *) NULL;
+	    prop_tmp.prefix[i] = (char *) NULL;
+	    prop_tmp.command[i] = (char *) NULL;
 	}    
 
     /* history */
     for(i = 0; i < HISTORY_DEPTH; i++)
 	{
 	    g_snprintf(section, sizeof(section), "mini_commander/history_%d", i);
-	    if(existsHistoryEntry(i))
-		gnome_config_set_string((gchar *) section, (gchar *) getHistoryEntry(i));
+	    if(exists_history_entry(i))
+		gnome_config_set_string((gchar *) section, (gchar *) get_history_entry(i));
 	    else
 		gnome_config_set_string((gchar *) section, (gchar *) "");
 	}
@@ -429,10 +429,10 @@ saveSession(void)
 }
 
 gint
-saveSession_signal(GtkWidget *widget, const char *privcfgpath, const char *globcfgpath)
+save_session_signal(GtkWidget *widget, const char *privcfgpath, const char *globcfgpath)
 {       
-    showMessage((gchar *) _("saving prefs...")); 	    
-    saveSession();
+    show_message((gchar *) _("saving prefs...")); 	    
+    save_session();
 
     /* make sure you return FALSE, otherwise your applet might not
        work compeltely, there are very few circumstances where you
@@ -442,34 +442,37 @@ saveSession_signal(GtkWidget *widget, const char *privcfgpath, const char *globc
        other state such as the panel you are on, position,
        parameter, etc ... */
     return FALSE;
-    widget = NULL;
-    privcfgpath = NULL;
-    globcfgpath = NULL;
+
+    /*
+      widget = NULL;
+      privcfgpath = NULL;
+      globcfgpath = NULL;
+    */
 }
 
 void
-propertiesBox(AppletWidget *applet, gpointer data)
+properties_box(AppletWidget *applet, gpointer data)
 {
-    static GnomeHelpMenuEntry helpEntry = { NULL,  "properties" };
-    GtkWidget *propertiesBox;
+    static GnomeHelpMenuEntry help_entry = { NULL,  "properties" };
+    GtkWidget *properties_box;
     GtkWidget *vbox, *vbox1, *frame;
     GtkWidget *hbox;
     GtkWidget *table;
-    GtkWidget *checkTime, *checkDate, *checkHandle, *checkFrame, *checkAutoCompleteHistory;
+    GtkWidget *check_time, *check_date, *check_handle, *check_frame, *check_auto_complete_history;
     GtkWidget *label;
     GtkWidget *entry;
-    GtkWidget *colorPicker;
-    GtkWidget *scrolledWindow;
-    char textLabel[50], buffer[50];
+    GtkWidget *color_picker;
+    GtkWidget *scrolled_window;
+    char text_label[50], buffer[50];
     int i;
 
-    helpEntry.name = gnome_app_id;
+    help_entry.name = gnome_app_id;
 
-    resetTemporaryPrefs();
+    reset_temporary_prefs();
 
-    propertiesBox = gnome_property_box_new();
+    properties_box = gnome_property_box_new();
     
-    gtk_window_set_title(GTK_WINDOW(propertiesBox), _("Mini-Commander Properties"));
+    gtk_window_set_title(GTK_WINDOW(properties_box), _("Mini-Commander Properties"));
     
     /* time & date */
     vbox = gtk_vbox_new(FALSE, GNOME_PAD_BIG);
@@ -483,28 +486,28 @@ propertiesBox(AppletWidget *applet, gpointer data)
     gtk_container_add(GTK_CONTAINER(frame), vbox1);
 
     /* show time check box */
-    checkTime = gtk_check_button_new_with_label (_("Show time"));
-    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(checkTime), prop.showTime);
-    gtk_signal_connect(GTK_OBJECT(checkTime),
+    check_time = gtk_check_button_new_with_label (_("Show time"));
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_time), prop.show_time);
+    gtk_signal_connect(GTK_OBJECT(check_time),
 		       "toggled",
-		       GTK_SIGNAL_FUNC(checkBoxToggled_signal),
-		       &propTmp.showTime);
-    gtk_signal_connect_object(GTK_OBJECT(checkTime), "toggled",
+		       GTK_SIGNAL_FUNC(checkbox_toggled_signal),
+		       &prop_tmp.show_time);
+    gtk_signal_connect_object(GTK_OBJECT(check_time), "toggled",
 			      GTK_SIGNAL_FUNC(gnome_property_box_changed),
-			      GTK_OBJECT(propertiesBox));  
-    gtk_box_pack_start(GTK_BOX(vbox1), checkTime, FALSE, TRUE, 0);
+			      GTK_OBJECT(properties_box));  
+    gtk_box_pack_start(GTK_BOX(vbox1), check_time, FALSE, TRUE, 0);
 
     /* show date check box */
-    checkDate = gtk_check_button_new_with_label (_("Show date"));
-    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(checkDate), prop.showDate);
-    gtk_signal_connect(GTK_OBJECT(checkDate),
+    check_date = gtk_check_button_new_with_label (_("Show date"));
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_date), prop.show_date);
+    gtk_signal_connect(GTK_OBJECT(check_date),
 		       "toggled",
-		       GTK_SIGNAL_FUNC(checkBoxToggled_signal),
-		       &propTmp.showDate);
-    gtk_signal_connect_object(GTK_OBJECT(checkDate), "toggled",
+		       GTK_SIGNAL_FUNC(checkbox_toggled_signal),
+		       &prop_tmp.show_date);
+    gtk_signal_connect_object(GTK_OBJECT(check_date), "toggled",
 			      GTK_SIGNAL_FUNC(gnome_property_box_changed),
-			      GTK_OBJECT(propertiesBox));
-    gtk_box_pack_start(GTK_BOX(vbox1), checkDate, FALSE, TRUE, 0);
+			      GTK_OBJECT(properties_box));
+    gtk_box_pack_start(GTK_BOX(vbox1), check_date, FALSE, TRUE, 0);
 
 
     /* appearance frame */
@@ -516,28 +519,28 @@ propertiesBox(AppletWidget *applet, gpointer data)
     gtk_container_add(GTK_CONTAINER(frame), vbox1);
 
     /* show handle check box */
-    checkHandle = gtk_check_button_new_with_label (_("Show handle"));
-    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(checkHandle), prop.showHandle);
-    gtk_signal_connect(GTK_OBJECT(checkHandle),
+    check_handle = gtk_check_button_new_with_label (_("Show handle"));
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_handle), prop.show_handle);
+    gtk_signal_connect(GTK_OBJECT(check_handle),
                        "toggled",
-                       GTK_SIGNAL_FUNC(checkBoxToggled_signal),
-                       &propTmp.showHandle);
-    gtk_signal_connect_object(GTK_OBJECT(checkHandle), "toggled",
+                       GTK_SIGNAL_FUNC(checkbox_toggled_signal),
+                       &prop_tmp.show_handle);
+    gtk_signal_connect_object(GTK_OBJECT(check_handle), "toggled",
                               GTK_SIGNAL_FUNC(gnome_property_box_changed),
-                              GTK_OBJECT(propertiesBox));
-    gtk_box_pack_start(GTK_BOX(vbox1), checkHandle, FALSE, TRUE, 0);
+                              GTK_OBJECT(properties_box));
+    gtk_box_pack_start(GTK_BOX(vbox1), check_handle, FALSE, TRUE, 0);
 
     /* show frame check box */
-    checkFrame = gtk_check_button_new_with_label (_("Show frame"));
-    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(checkFrame), prop.showFrame);
-    gtk_signal_connect(GTK_OBJECT(checkFrame),
+    check_frame = gtk_check_button_new_with_label (_("Show frame"));
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_frame), prop.show_frame);
+    gtk_signal_connect(GTK_OBJECT(check_frame),
                        "toggled",
-                       GTK_SIGNAL_FUNC(checkBoxToggled_signal),
-                       &propTmp.showFrame);
-    gtk_signal_connect_object(GTK_OBJECT(checkFrame), "toggled",
+                       GTK_SIGNAL_FUNC(checkbox_toggled_signal),
+                       &prop_tmp.show_frame);
+    gtk_signal_connect_object(GTK_OBJECT(check_frame), "toggled",
                               GTK_SIGNAL_FUNC(gnome_property_box_changed),
-                              GTK_OBJECT(propertiesBox));
-    gtk_box_pack_start(GTK_BOX(vbox1), checkFrame, FALSE, TRUE, 0);
+                              GTK_OBJECT(properties_box));
+    gtk_box_pack_start(GTK_BOX(vbox1), check_frame, FALSE, TRUE, 0);
 
 
 
@@ -550,16 +553,16 @@ propertiesBox(AppletWidget *applet, gpointer data)
     gtk_container_add(GTK_CONTAINER(frame), vbox1);
 
     /* show history autocomplete */
-    checkAutoCompleteHistory = gtk_check_button_new_with_label (_("Enable history based auto completion"));
-    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(checkAutoCompleteHistory), prop.autoCompleteHistory);
-    gtk_signal_connect(GTK_OBJECT(checkAutoCompleteHistory),
+    check_auto_complete_history = gtk_check_button_new_with_label (_("Enable history based auto completion"));
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_auto_complete_history), prop.auto_complete_history);
+    gtk_signal_connect(GTK_OBJECT(check_auto_complete_history),
                        "toggled",
-                       GTK_SIGNAL_FUNC(checkBoxToggled_signal),
-                       &propTmp.autoCompleteHistory);
-    gtk_signal_connect_object(GTK_OBJECT(checkAutoCompleteHistory), "toggled",
+                       GTK_SIGNAL_FUNC(checkbox_toggled_signal),
+                       &prop_tmp.auto_complete_history);
+    gtk_signal_connect_object(GTK_OBJECT(check_auto_complete_history), "toggled",
                               GTK_SIGNAL_FUNC(gnome_property_box_changed),
-                              GTK_OBJECT(propertiesBox));
-    gtk_box_pack_start(GTK_BOX(vbox1), checkAutoCompleteHistory, FALSE, TRUE, 0);
+                              GTK_OBJECT(properties_box));
+    gtk_box_pack_start(GTK_BOX(vbox1), check_auto_complete_history, FALSE, TRUE, 0);
 
     /* Size */
     frame = gtk_frame_new(_("Size"));
@@ -584,17 +587,17 @@ propertiesBox(AppletWidget *applet, gpointer data)
 		     0, 0);
     
     entry = gtk_entry_new_with_max_length(4);
-    g_snprintf(buffer, sizeof(buffer), "%d", prop.normalSizeX);
+    g_snprintf(buffer, sizeof(buffer), "%d", prop.normal_size_x);
     gtk_entry_set_text(GTK_ENTRY(entry), (gchar *) buffer);
     gtk_widget_set_usize(entry, 50, -1);
     gtk_signal_connect(GTK_OBJECT(entry),
 		       "changed",
-		       GTK_SIGNAL_FUNC(entryIntChanged_signal),
-		       &propTmp.normalSizeX);
+		       GTK_SIGNAL_FUNC(entry_integer_changed_signal),
+		       &prop_tmp.normal_size_x);
     gtk_signal_connect_object(GTK_OBJECT(entry),
 			      "changed",
 			      GTK_SIGNAL_FUNC(gnome_property_box_changed),
-			      GTK_OBJECT(propertiesBox));      
+			      GTK_OBJECT(properties_box));      
     gtk_table_attach(GTK_TABLE(table), 
 		     entry,
 		     1, 2,
@@ -613,17 +616,17 @@ propertiesBox(AppletWidget *applet, gpointer data)
 		     0, 0);
 
     entry = gtk_entry_new_with_max_length(4);
-    g_snprintf(buffer, sizeof(buffer), "%d", prop.normalSizeY);
+    g_snprintf(buffer, sizeof(buffer), "%d", prop.normal_size_y);
     gtk_entry_set_text(GTK_ENTRY(entry), (gchar *) buffer);
     gtk_widget_set_usize(entry, 50, -1);
     gtk_signal_connect(GTK_OBJECT(entry),
 		       "changed",
-		       GTK_SIGNAL_FUNC(entryIntChanged_signal),
-		       &propTmp.normalSizeY);
+		       GTK_SIGNAL_FUNC(entry_integer_changed_signal),
+		       &prop_tmp.normal_size_y);
     gtk_signal_connect_object(GTK_OBJECT(entry),
 			      "changed",
 			      GTK_SIGNAL_FUNC(gnome_property_box_changed),
-			      GTK_OBJECT(propertiesBox));      
+			      GTK_OBJECT(properties_box));      
     gtk_table_attach(GTK_TABLE(table), 
 		     entry,
 		     1, 2,
@@ -642,17 +645,17 @@ propertiesBox(AppletWidget *applet, gpointer data)
 		     0, 0);
 
     entry = gtk_entry_new_with_max_length(4);
-    g_snprintf(buffer, sizeof(buffer), "%d", prop.cmdLineY);
+    g_snprintf(buffer, sizeof(buffer), "%d", prop.cmd_line_size_y);
     gtk_entry_set_text(GTK_ENTRY(entry), (gchar *) buffer);
     gtk_widget_set_usize(entry, 50, -1);
     gtk_signal_connect(GTK_OBJECT(entry),
 		       "changed",
-		       GTK_SIGNAL_FUNC(entryIntChanged_signal),
-		       &propTmp.cmdLineY);
+		       GTK_SIGNAL_FUNC(entry_integer_changed_signal),
+		       &prop_tmp.cmd_line_size_y);
     gtk_signal_connect_object(GTK_OBJECT(entry),
 			      "changed",
 			      GTK_SIGNAL_FUNC(gnome_property_box_changed),
-			      GTK_OBJECT(propertiesBox));      
+			      GTK_OBJECT(properties_box));      
     gtk_table_attach(GTK_TABLE(table), 
 		     entry,
 		     1, 2,
@@ -662,7 +665,7 @@ propertiesBox(AppletWidget *applet, gpointer data)
     
     /* hint */
     /*
-    label = gtk_label_new((gchar *) _("\nSometimes the applet has to be moved on the panel\nto make a change of the size visible."));
+    label = gtk_label_new((gchar *) _("\n_sometimes the applet has to be moved on the panel\nto make a change of the size visible."));
     gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.0);
     gtk_label_set_justify(GTK_LABEL(label), GTK_JUSTIFY_LEFT);
     gtk_table_attach(GTK_TABLE(table), 
@@ -693,25 +696,25 @@ propertiesBox(AppletWidget *applet, gpointer data)
 		     GTK_FILL, 0,
 		     0, 0);
 
-    colorPicker = gnome_color_picker_new();
-    gnome_color_picker_set_i16(GNOME_COLOR_PICKER(colorPicker),
-			       prop.cmdLineColorFgR, 
-			       prop.cmdLineColorFgG, 
-			       prop.cmdLineColorFgB, 
+    color_picker = gnome_color_picker_new();
+    gnome_color_picker_set_i16(GNOME_COLOR_PICKER(color_picker),
+			       prop.cmd_line_color_fg_r, 
+			       prop.cmd_line_color_fg_g, 
+			       prop.cmd_line_color_fg_b, 
 			       0);
-    gtk_signal_connect(GTK_OBJECT(colorPicker),
+    gtk_signal_connect(GTK_OBJECT(color_picker),
 		       "color_set",
-		       GTK_SIGNAL_FUNC(colorCmdFgChanged_signal),
+		       GTK_SIGNAL_FUNC(color_cmd_fg_changed_signal),
 		       (gpointer *) NULL);
-    gtk_signal_connect_object(GTK_OBJECT(colorPicker),
+    gtk_signal_connect_object(GTK_OBJECT(color_picker),
 			      "color_set",
 			      GTK_SIGNAL_FUNC(gnome_property_box_changed),
-			      GTK_OBJECT(propertiesBox));      
+			      GTK_OBJECT(properties_box));      
     /*
-      gtk_box_pack_start(GTK_BOX(hbox), colorPicker, FALSE, TRUE, 0);
+      gtk_box_pack_start(GTK_BOX(hbox), color_picker, FALSE, TRUE, 0);
     */
     gtk_table_attach(GTK_TABLE(table), 
-		     colorPicker,
+		     color_picker,
 		     1, 2,
 		     0, 1,
 		     0, 0,
@@ -727,22 +730,22 @@ propertiesBox(AppletWidget *applet, gpointer data)
 		     1, 2,
 		     GTK_FILL, 0,
 		     0, 0);
-    colorPicker = gnome_color_picker_new();
-    gnome_color_picker_set_i16(GNOME_COLOR_PICKER(colorPicker),
-			       prop.cmdLineColorBgR, 
-			       prop.cmdLineColorBgG, 
-			       prop.cmdLineColorBgB, 
+    color_picker = gnome_color_picker_new();
+    gnome_color_picker_set_i16(GNOME_COLOR_PICKER(color_picker),
+			       prop.cmd_line_color_bg_r, 
+			       prop.cmd_line_color_bg_g, 
+			       prop.cmd_line_color_bg_b, 
 			       0);
-    gtk_signal_connect(GTK_OBJECT(colorPicker),
+    gtk_signal_connect(GTK_OBJECT(color_picker),
 		       "color_set",
-		       GTK_SIGNAL_FUNC(colorCmdBgChanged_signal),
+		       GTK_SIGNAL_FUNC(color_cmd_bg_changed_signal),
 		       (gpointer *) NULL);
-    gtk_signal_connect_object(GTK_OBJECT(colorPicker),
+    gtk_signal_connect_object(GTK_OBJECT(color_picker),
 			      "color_set",
 			      GTK_SIGNAL_FUNC(gnome_property_box_changed),
-			      GTK_OBJECT(propertiesBox));      
+			      GTK_OBJECT(properties_box));      
     gtk_table_attach(GTK_TABLE(table), 
-		     colorPicker,
+		     color_picker,
 		     1, 2,
 		     1, 2,
 		     0, 0,
@@ -750,7 +753,7 @@ propertiesBox(AppletWidget *applet, gpointer data)
     
 
 
-    gnome_property_box_append_page(GNOME_PROPERTY_BOX(propertiesBox),
+    gnome_property_box_append_page(GNOME_PROPERTY_BOX(properties_box),
 				   vbox,
 				   gtk_label_new(_("General")));
 
@@ -761,17 +764,17 @@ propertiesBox(AppletWidget *applet, gpointer data)
 
     gtk_container_set_border_width(GTK_CONTAINER(frame), GNOME_PAD_SMALL); 
     
-    scrolledWindow = gtk_scrolled_window_new(NULL, NULL);
-    gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(scrolledWindow),
+    scrolled_window = gtk_scrolled_window_new(NULL, NULL);
+    gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(scrolled_window),
 				   GTK_POLICY_AUTOMATIC,
 				   GTK_POLICY_AUTOMATIC);
-    gtk_container_set_border_width(GTK_CONTAINER(scrolledWindow), GNOME_PAD_SMALL); 
-    gtk_container_add(GTK_CONTAINER(frame), scrolledWindow); 
+    gtk_container_set_border_width(GTK_CONTAINER(scrolled_window), GNOME_PAD_SMALL); 
+    gtk_container_add(GTK_CONTAINER(frame), scrolled_window); 
 
     vbox1 = gtk_vbox_new(TRUE, GNOME_PAD_SMALL);
     gtk_container_set_border_width(GTK_CONTAINER(vbox1), GNOME_PAD_SMALL);
-    /* gtk_container_add(GTK_CONTAINER(scrolledWindow), vbox1); does not work */
-    gtk_scrolled_window_add_with_viewport(GTK_SCROLLED_WINDOW(scrolledWindow), vbox1);
+    /* gtk_container_add(GTK_CONTAINER(scrolled_window), vbox1); does not work */
+    gtk_scrolled_window_add_with_viewport(GTK_SCROLLED_WINDOW(scrolled_window), vbox1);
 
     for(i=0; i < MAX_PREFIXES; i++)
 	{
@@ -779,8 +782,8 @@ propertiesBox(AppletWidget *applet, gpointer data)
   	    gtk_box_pack_start(GTK_BOX(vbox1), hbox, TRUE, TRUE, 0);   
 	    
 	    /* prefix */    
-	    g_snprintf(textLabel, sizeof(textLabel), _("Prefix %.2d:"), i+1);
-	    gtk_box_pack_start(GTK_BOX(hbox), gtk_label_new(textLabel), FALSE, TRUE, 0);
+	    g_snprintf(text_label, sizeof(text_label), _("Prefix %.2d:"), i+1);
+	    gtk_box_pack_start(GTK_BOX(hbox), gtk_label_new(text_label), FALSE, TRUE, 0);
 	    
 	    entry = gtk_entry_new_with_max_length(MAX_PREFIX_LENGTH);
 	    gtk_widget_set_usize(entry, 75, -1);
@@ -788,47 +791,47 @@ propertiesBox(AppletWidget *applet, gpointer data)
 		gtk_entry_set_text(GTK_ENTRY(entry), (gchar *) prop.prefix[i]);
 	    gtk_signal_connect(GTK_OBJECT(entry),
 			       "changed",
-			       GTK_SIGNAL_FUNC(entryChanged_signal),
-			       &propTmp.prefix[i]);
+			       GTK_SIGNAL_FUNC(entry_changed_signal),
+			       &prop_tmp.prefix[i]);
 	    gtk_signal_connect_object(GTK_OBJECT(entry),
 				      "changed",
 				      GTK_SIGNAL_FUNC(gnome_property_box_changed),
-				      GTK_OBJECT(propertiesBox));      
+				      GTK_OBJECT(properties_box));      
 	    gtk_box_pack_start(GTK_BOX(hbox), entry, FALSE, TRUE, 0);
 	    
 	    /* command */
-	    g_snprintf(textLabel, sizeof(textLabel), _("   Macro %.2d:"), i+1);
-	    gtk_box_pack_start(GTK_BOX(hbox), gtk_label_new(textLabel), FALSE, TRUE, 0);
+	    g_snprintf(text_label, sizeof(text_label), _("   Macro %.2d:"), i+1);
+	    gtk_box_pack_start(GTK_BOX(hbox), gtk_label_new(text_label), FALSE, TRUE, 0);
 	    
 	    entry = gtk_entry_new_with_max_length(MAX_COMMAND_LENGTH);
 	    if (prop.command[i] != (gchar *) NULL)
 		gtk_entry_set_text(GTK_ENTRY(entry), prop.command[i]);
 	    gtk_signal_connect(GTK_OBJECT(entry),
 			       "changed",
-			       GTK_SIGNAL_FUNC(entryChanged_signal),
-			       &propTmp.command[i]);
+			       GTK_SIGNAL_FUNC(entry_changed_signal),
+			       &prop_tmp.command[i]);
 	    gtk_signal_connect_object(GTK_OBJECT(entry),
 				      "changed",
 				      GTK_SIGNAL_FUNC(gnome_property_box_changed),
-				      GTK_OBJECT(propertiesBox));  
+				      GTK_OBJECT(properties_box));  
 	    gtk_box_pack_start(GTK_BOX(hbox), entry, TRUE, TRUE, 0);
 	}
 
-    gnome_property_box_append_page(GNOME_PROPERTY_BOX(propertiesBox),
+    gnome_property_box_append_page(GNOME_PROPERTY_BOX(properties_box),
 				   frame,
 				   gtk_label_new((gchar *) _("Macros")));
 
-    gtk_signal_connect(GTK_OBJECT(propertiesBox), 
+    gtk_signal_connect(GTK_OBJECT(properties_box), 
 		       "apply",
-		       GTK_SIGNAL_FUNC(propertiesBox_apply_signal),
+		       GTK_SIGNAL_FUNC(properties_box_apply_signal),
 		       NULL);
 
-    gtk_signal_connect(GTK_OBJECT(propertiesBox),
+    gtk_signal_connect(GTK_OBJECT(properties_box),
 		       "help",
 		       GTK_SIGNAL_FUNC(gnome_help_pbox_display),
-		       &helpEntry);
+		       &help_entry);
     
-    gtk_widget_show_all(propertiesBox);
+    gtk_widget_show_all(properties_box);
     return;
     applet = NULL;
     data = NULL;

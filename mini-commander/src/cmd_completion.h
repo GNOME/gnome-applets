@@ -1,1 +1,1 @@
-void cmdCompletion(char *cmd);
+void cmd_completion(char *cmd);

@@ -37,19 +37,19 @@
 
 GtkWidget *terminal_zvt = NULL;
 #if 0
-static int historyPosition = HISTORY_DEPTH;
-static char browsedFilename[300] = "";
+static int history_position = HISTORY_DEPTH;
+static char browsed_filename[300] = "";
 
-static gchar * historyAutoComplete(GtkWidget *widget, GdkEventKey *event);
+static gchar * history_auto_complete(GtkWidget *widget, GdkEventKey *event);
 
 static gint
-commandKey_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
+command_key_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
 {
     guint key = event->keyval;
     char *command;
-    static char currentCommand[MAX_COMMAND_LENGTH];
+    static char current_command[MAX_COMMAND_LENGTH];
     char buffer[MAX_COMMAND_LENGTH];
-    int propagateEvent = TRUE;
+    int propagate_event = TRUE;
 
     /* printf("%d,%d,%d;  ", (gint16) event->keyval, event->state, event->length); */
 
@@ -59,10 +59,10 @@ commandKey_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
 	{
 	    /* tab key pressed */
 	    strcpy(buffer, (char *) gtk_entry_get_text(GTK_ENTRY(widget)));
-	    cmdCompletion(buffer);
+	    cmd_completion(buffer);
 	    gtk_entry_set_text(GTK_ENTRY(widget), (gchar *) buffer);
 
-	    propagateEvent = FALSE;
+	    propagate_event = FALSE;
 	}
     else if(key == GDK_Up
 	    || key == GDK_KP_Up
@@ -70,19 +70,19 @@ commandKey_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
 	    || key == GDK_Pointer_Up)
 	{
 	    /* up key pressed */
-	    if(historyPosition == HISTORY_DEPTH)
+	    if(history_position == HISTORY_DEPTH)
 		{	    
 		    /* store current command line */
-		    strcpy(currentCommand, (char *) gtk_entry_get_text(GTK_ENTRY(widget)));
+		    strcpy(current_command, (char *) gtk_entry_get_text(GTK_ENTRY(widget)));
 		}
-	    if(historyPosition > 0 && existsHistoryEntry(historyPosition - 1))
+	    if(history_position > 0 && exists_history_entry(history_position - 1))
 		{
-		    gtk_entry_set_text(GTK_ENTRY(widget), (gchar *) getHistoryEntry(--historyPosition));
+		    gtk_entry_set_text(GTK_ENTRY(widget), (gchar *) get_history_entry(--history_position));
 		}
 	    else
-		showMessage((gchar *) _("end of history list"));
+		show_message((gchar *) _("end of history list"));
 
-	    propagateEvent = FALSE;
+	    propagate_event = FALSE;
 	}
     else if(key == GDK_Down
 	    || key == GDK_KP_Down
@@ -90,19 +90,19 @@ commandKey_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
 	    || key == GDK_Pointer_Down)
 	{
 	    /* down key pressed */
-	    if(historyPosition <  HISTORY_DEPTH - 1)
+	    if(history_position <  HISTORY_DEPTH - 1)
 		{
-		    gtk_entry_set_text(GTK_ENTRY(widget), (gchar *) getHistoryEntry(++historyPosition));
+		    gtk_entry_set_text(GTK_ENTRY(widget), (gchar *) get_history_entry(++history_position));
 		}
-	    else if(historyPosition == HISTORY_DEPTH - 1)
+	    else if(history_position == HISTORY_DEPTH - 1)
 		{	    
-		    gtk_entry_set_text(GTK_ENTRY(widget), (gchar *) currentCommand);
-		    ++historyPosition;
+		    gtk_entry_set_text(GTK_ENTRY(widget), (gchar *) current_command);
+		    ++history_position;
 		}
 	    else
-		showMessage((gchar *) _("end of history list"));
+		show_message((gchar *) _("end of history list"));
 
-	    propagateEvent = FALSE;
+	    propagate_event = FALSE;
 	}
     else if(key == GDK_Return
 	    || key == GDK_KP_Enter
@@ -110,42 +110,42 @@ commandKey_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
 	    || key == GDK_3270_Enter)
 	{
 	    /* enter pressed -> exec command */
-	    showMessage((gchar *) _("starting...")); 
+	    show_message((gchar *) _("starting...")); 
 	    command = (char *) malloc(sizeof(char) * MAX_COMMAND_LENGTH);
 	    strcpy(command, (char *) gtk_entry_get_text(GTK_ENTRY(widget)));
 	    /* printf("%s\n", command); */
-	    execCommand(command);
+	    exec_command(command);
 
-	    appendHistoryEntry((char *) command);
-	    historyPosition = HISTORY_DEPTH;		   
+	    append_history_entry((char *) command);
+	    history_position = HISTORY_DEPTH;		   
 	    free(command);
 
-	    strcpy(currentCommand, "");
+	    strcpy(current_command, "");
 	    gtk_entry_set_text(GTK_ENTRY(widget), (gchar *) "");
-	    propagateEvent = FALSE;
+	    propagate_event = FALSE;
 	}
-    else if(prop.autoCompleteHistory && key >= GDK_space && key <= GDK_asciitilde )
+    else if(prop.auto_complete_history && key >= GDK_space && key <= GDK_asciitilde )
 	{
-            char *completedCommand;
-	    gint currentPosition = gtk_editable_get_position(GTK_EDITABLE(widget));
+            char *completed_command;
+	    gint current_position = gtk_editable_get_position(GTK_EDITABLE(widget));
 	    
-	    if(currentPosition != 0)
+	    if(current_position != 0)
 		{
-		    gtk_editable_delete_text( GTK_EDITABLE(widget), currentPosition, -1 );
-		    completedCommand = historyAutoComplete(widget, event);
+		    gtk_editable_delete_text( GTK_EDITABLE(widget), current_position, -1 );
+		    completed_command = history_auto_complete(widget, event);
 		    
-		    if(completedCommand != NULL)
+		    if(completed_command != NULL)
 			{
-			    gtk_entry_set_text(GTK_ENTRY(widget), completedCommand);
-			    gtk_editable_set_position(GTK_EDITABLE(widget), currentPosition );
-			    propagateEvent = FALSE;
-			    showMessage((gchar *) _("autocompleted"));
+			    gtk_entry_set_text(GTK_ENTRY(widget), completed_command);
+			    gtk_editable_set_position(GTK_EDITABLE(widget), current_position );
+			    propagate_event = FALSE;
+			    show_message((gchar *) _("autocompleted"));
 			}
 		}	    
 	}
     
 
-    if(propagateEvent == FALSE)
+    if(propagate_event == FALSE)
 	{
 	    /* I have to do this to stop gtk from propagating this event;
 	       error in gtk? */
@@ -153,27 +153,27 @@ commandKey_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
 	    event->state = 0;
 	    event->length = 0;  
 	}
-    return (propagateEvent == FALSE);
+    return (propagate_event == FALSE);
 }
 
 
 /* Thanks to Halfline <halfline@hawaii.rr.com> for his initial version
-   of historyAutoComplete */
+   of history_auto_complete */
 static gchar *
-historyAutoComplete(GtkWidget *widget, GdkEventKey *event)
+history_auto_complete(GtkWidget *widget, GdkEventKey *event)
 {
-    gchar currentCommand[MAX_COMMAND_LENGTH];
-    gchar* completedCommand;
+    gchar current_command[MAX_COMMAND_LENGTH];
+    gchar* completed_command;
     int i;
 
-    sprintf(currentCommand, "%s%s", gtk_entry_get_text(GTK_ENTRY(widget)), event->string); 
+    sprintf(current_command, "%s%s", gtk_entry_get_text(GTK_ENTRY(widget)), event->string); 
     for(i = HISTORY_DEPTH - 1; i >= 0; i--) 
   	{
-	    if(!existsHistoryEntry(i))
+	    if(!exists_history_entry(i))
 		break;
-  	    completedCommand = getHistoryEntry(i); 
-  	    if(!g_strncasecmp(completedCommand, currentCommand, strlen( currentCommand))) 
-		return completedCommand; 
+  	    completed_command = get_history_entry(i); 
+  	    if(!g_strncasecmp(completed_command, current_command, strlen( current_command))) 
+		return completed_command; 
   	} 
     
     return NULL;
@@ -186,7 +186,7 @@ term_key_cb(GtkWidget *widget, GdkEventKey *event, gpointer data)
 {
     guint key = event->keyval;
     char buffer[MAX_COMMAND_LENGTH];
-    int propagateEvent = TRUE;
+    int propagate_event = TRUE;
 
     /* printf("%d,%d,%d;  ", (gint16) event->keyval, event->state, event->length); */
 
@@ -196,10 +196,10 @@ term_key_cb(GtkWidget *widget, GdkEventKey *event, gpointer data)
 	{
 	    /* tab key pressed */
 	    strcpy(buffer, (char *) gtk_entry_get_text(GTK_ENTRY(widget)));
-	    cmdCompletion(buffer);
+	    cmd_completion(buffer);
 	    gtk_entry_set_text(GTK_ENTRY(widget), (gchar *) buffer);
 
-	    propagateEvent = FALSE;
+	    propagate_event = FALSE;
 	}
     else
 	{
@@ -219,7 +219,7 @@ term_key_cb(GtkWidget *widget, GdkEventKey *event, gpointer data)
 static gint
 term_focus_in_cb(GtkWidget *widget, gpointer data)
 {
-    printf("focusIn\n");
+    printf("focus_in\n");
     gtk_widget_grab_focus(GTK_WIDGET(terminal_zvt));
     
     /* go on */
@@ -265,13 +265,13 @@ terminal_init(void)
 	}
 
     /*
-    red[16] = (gushort) prop.cmdLineColorFgR;
-    green[16] = (gushort) prop.cmdLineColorFgG;
-    blue[16] = (gushort) prop.cmdLineColorFgB;
+    red[16] = (gushort) prop.cmd_line_color_fg_r;
+    green[16] = (gushort) prop.cmd_line_color_fg_g;
+    blue[16] = (gushort) prop.cmd_line_color_fg_b;
     
-    red[17] = (gushort) prop.cmdLineColorBgR;
-    green[17] = (gushort) prop.cmdLineColorBgG;
-    blue[17] = (gushort) prop.cmdLineColorBgB;*/
+    red[17] = (gushort) prop.cmd_line_color_bg_r;
+    green[17] = (gushort) prop.cmd_line_color_bg_g;
+    blue[17] = (gushort) prop.cmd_line_color_bg_b;*/
 
     /* zvt_term_set_color_scheme(ZVT_TERM(terminal_zvt), red, green, blue); */
 

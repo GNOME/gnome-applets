@@ -27,46 +27,46 @@
 #include "preferences.h"
 #include "message.h"
 
-static char *historyCommand[HISTORY_DEPTH];
+static char *history_command[HISTORY_DEPTH];
 
 
 int
-existsHistoryEntry(int pos)
+exists_history_entry(int pos)
 {
-    return(historyCommand[pos] != NULL);
+    return(history_command[pos] != NULL);
 }
 
 char *
-getHistoryEntry(int pos)
+get_history_entry(int pos)
 {
-    return(historyCommand[pos]);
+    return(history_command[pos]);
 }
 
 void
-setHistoryEntry(int pos, char * entry)
+set_history_entry(int pos, char * entry)
 {
-    free(historyCommand[pos]);
-    historyCommand[pos] = (char *) malloc(sizeof(char) * (strlen(entry) + 1));
-    strcpy(historyCommand[pos], entry);
+    free(history_command[pos]);
+    history_command[pos] = (char *) malloc(sizeof(char) * (strlen(entry) + 1));
+    strcpy(history_command[pos], entry);
 }
 
 void
-appendHistoryEntry(char * entry)
+append_history_entry(char * entry)
 {
     int pos;
 
-    if(historyCommand[HISTORY_DEPTH - 1] == NULL
-       || strcmp(entry, historyCommand[HISTORY_DEPTH - 1]) != 0)
+    if(history_command[HISTORY_DEPTH - 1] == NULL
+       || strcmp(entry, history_command[HISTORY_DEPTH - 1]) != 0)
 	{
 	    /* this command is no dupe -> update history */
-	    free(historyCommand[0]);
+	    free(history_command[0]);
 	    for(pos = 0; pos < HISTORY_DEPTH - 1; pos++)
 		{
-		    historyCommand[pos] = historyCommand[pos+1];
-		    /* printf("%s\n", historyCommand[pos]); */
+		    history_command[pos] = history_command[pos+1];
+		    /* printf("%s\n", history_command[pos]); */
 		}
-	    historyCommand[HISTORY_DEPTH - 1] = (char *) malloc(sizeof(char) * (strlen(entry) + 1));
-	    strcpy(historyCommand[HISTORY_DEPTH - 1], entry);
+	    history_command[HISTORY_DEPTH - 1] = (char *) malloc(sizeof(char) * (strlen(entry) + 1));
+	    strcpy(history_command[HISTORY_DEPTH - 1], entry);
 	}
 }
 
