@@ -1,0 +1,482 @@
+ <sect1 id="charpickapplet">
+<!--
+  <title>Character Picker Applet</title>
+-->
+  <title>キャラクタピッカーアプレット</title>
+
+  <para>
+<!--
+   <application>Character Picker</application> applet, shown in <xref
+   linkend="charpickapplet-fig">, allows you to easily write many
+   characters which are not available on standard keyboards such as
+   accented characters, certain mathemathical symbols and punctuation,
+   and some other special symbols.  To add this applet to a 
+   <interface>Panel</interface>, 
+   right-click on the <interface>Panel</interface> and choose
+-->
+   <xref linkend="charpickapplet-fig">のような外観を持つ<application>キャラクタピッカー</application>アプレットを利用すれば、一般的なキーボードでは入力できないアクセント文字や数学記号、句読点や他の特殊な記号などを簡単に入力できるようになります。このアプレットを<interface>パネル</interface>に追加するには、<interface>パネル</interface>を右クリックして、
+
+   <menuchoice>
+<!--
+    <guimenu>Panel</guimenu>
+    <guisubmenu>Add to panel</guisubmenu>
+    <guisubmenu>Applet</guisubmenu>
+    <guisubmenu>Utility</guisubmenu>
+    <guimenuitem>Character Picker</guimenuitem>
+-->
+    <guimenu>パネル</guimenu>
+    <guisubmenu>パネルに追加</guisubmenu>
+    <guisubmenu>アプレット</guisubmenu>
+    <guisubmenu>ユーティリティ</guisubmenu>
+    <guimenuitem>キャラクタピッカー</guimenuitem>
+   </menuchoice>
+   と選択します。
+  </para>
+
+  <figure id="charpickapplet-fig">
+<!--
+   <title>Character Picker Applet</title>
+-->
+   <title>キャラクタピッカーアプレット</title>
+   <screenshot>
+<!--
+    <screeninfo>Character Picker Applet</screeninfo>
+-->
+    <screeninfo>キャラクタピッカーアプレット</screeninfo>
+    <graphic format="png" fileref="figures/charpick_applet" 
+    srccredit="muet">
+    </graphic>
+   </screenshot>
+  </figure>
+
+  <!-- ============= Usage  ================================ -->
+  <sect2 id="charpickapplet-usage">
+<!--
+   <title>Usage</title>
+-->
+   <title>使い方</title>
+   <para>
+<!--
+    First, bring the cursor focus to the <application>Character
+    Picker</application> applet by left-clicking on one of the
+    characters displayed in the applet.  Specify the character group
+    by pressing the corresponding key on your keyboard. (For a
+    complete list of the character groups and corresponding keys, see
+    <xref linkend="charpickapplet-characters">.) For example,
+    to see the  various accented versions of the "a" letter, press
+    "a".  After you have found the correct letter or symbol,
+    left-click on it to copy the symbol into the buffer.  The
+    character should appear as a depressed button.  This is similar to
+    the common Copy command available in many programs.  To paste the
+    symbol in any window, just click in the window with the middle
+    mouse button.  Most applications which have Copy and Paste
+    features will also allow you to paste the symbol using its Paste
+    command.
+-->
+    はじめに、<application>キャラクタピッカー</application>に表示されているキャラクタのうちの一つを左クリックしてフォーカスをアプレットに移動させます。関連付けられているキーをキーボードから入力して、キャラクタグループを指定します(キャラクタグループと関連付けられているキーの完全なリストは<xref linkend="charpickapplet-characters">を参照)。例えば、さまざまなアクセントの付いた"a"という文字を見るときは、キーボードの"a"を押してください。求めている文字あるいは記号が見つかったらそれを左クリックして、バッファにコピーします。アプレット上のキャラクタは、押された状態になって表示されます。これは多くのプログラムで利用できる一般的なコピーコマンドに似ています。キャラクタをウィンドウに貼り付けるには、ウィンドウ内でマウスの中ボタンをクリックするだけです。コピーと貼り付けの機能を持つほとんどのアプリケーションでは、貼り付けコマンドでキャラクタを貼り付けることもできます。
+   </para>
+
+   <note>
+<!--
+    <title>ISO-8859-1 (Latin-1) character support</title>
+-->
+    <title>ISO-8859-1(Latin-1)キャラクタサポート</title>
+    <para>
+<!--
+     Note that some applications do not support ISO-8859-1
+     characters.  These applications will not display some characters
+     from the <application>Character Picker</application> applet.
+-->
+     ISO-8859-1キャラクタをサポートしていないアプリケーションもあることに注意してください。このようなアプリケーションでは<application>キャラクタピッカー</application>アプレットからのキャラクタを表示できない場合もあります。
+    </para>
+   </note>
+
+   <note>
+<!--
+    <title>Cut and Paste in X</title>
+-->
+    <title>Xにおけるコピーと貼り付け</title>
+    <para>
+<!--
+     The X Windows system allows you to copy and paste text by 
+     highlighting it with the first mouse button to copy the text and
+     then pasting the text by pressing the middle mouse button.  
+     Note that <application>Character Picker</application> uses the
+     same copy buffer as X uses. Thus, when you
+     select a character in the <application>Character
+     Picker</application> it replaces any previous text in the buffer
+     from highlighting text.  Similarly, if you have selected a
+     character in <application>Character Picker</application> and then
+     highlight text, the highlighted text will replace the character
+     in the buffer and the character's button will no longer appear
+     depressed. 
+-->
+     Xウィンドウシステムでは、マウスの左ボタンでテキストをハイライトさせてテキストをコピーし、中ボタンを押してテキストを貼り付けます。<application>キャラクタピッカー</application>はXが利用するのと同じコピーバッファを利用することに注意してください。従って、<application>キャラクタピッカー</application>でキャラクタを選択すると、先にハイライトさせてコピーしたテキストのバッファは失われます。同じように、<application>キャラクタピッカー</application>でキャラクタを選択してからテキストをハイライトさせると、ハイライトしたテキストがバッファのキャラクタに置き換えられ、アプレットのキャラクタボタンは押された状態ではなくなります。
+    </para>
+   </note>
+
+   <para>
+<!--
+    Right-clicking on the applet brings up a menu containing the
+    following items:
+-->
+    右クリックで表示されるポップアップメニューには次の項目があります：
+    <itemizedlist>
+
+     <listitem>
+      <para>
+<!--
+       <guimenuitem>Properties&hellip;</guimenuitem> &mdash;
+       opens the <link linkend="charpickapplet-prefs">
+       <guilabel>Properties</guilabel></link> dialog.
+-->
+       <guimenuitem>設定&hellip;</guimenuitem> &mdash;
+       <link linkend="charpickapplet-prefs">設定<guilabel>Properties</guilabel></link>ダイアログを表示します。
+      </para>
+     </listitem>
+
+     <listitem>
+      <para>
+<!--
+       <guimenuitem>Help</guimenuitem> &mdash;
+       displays this document.
+-->
+       <guimenuitem>ヘルプ</guimenuitem> &mdash;
+       このドキュメントを表示します。
+      </para>
+     </listitem>
+
+     <listitem>
+      <para>
+<!--
+       <guimenuitem>About&hellip;</guimenuitem> &mdash;
+       shows basic information about <application>Character Picker
+       Applet</application>, inluding the applet's version and the
+       author's name.
+-->
+       <guimenuitem>情報&hellip;</guimenuitem> &mdash;
+       アプレットのバージョンや作者名といった、<application>キャラクタピッカー</application>アプレットについての基本的な情報を表示します。
+      </para>
+     </listitem>
+
+    </itemizedlist>
+   </para>
+  </sect2>
+
+
+  <!-- ============= Customization ============================= -->
+  <sect2 id="charpickapplet-prefs">
+<!--
+    <title>Customization</title>
+-->
+    <title>カスタマイズ</title>
+    <para>
+<!--
+      You can customize <application>Character Picker</application>
+      applet by right-clicking on it and choosing
+      <guimenuitem>Properties&hellip;</guimenuitem>. This will open the
+      <interface>Properties</interface> dialog(shown in <xref
+      linkend="charpickapplet-settings-fig">), which allows you to
+      change various settings.
+-->
+      <application>キャラクタピッカー</application>アプレットをカスタマイズするには、アプレットを右クリックして<guimenuitem>設定&hellip;</guimenuitem>を選択します。<interface>設定</interface>ダイアログ(<xref linkend="charpickapplet-settings-fig">参照)が表示され、さまざまな設定を変更できるようになります。
+    </para>
+
+    <figure id="charpickapplet-settings-fig">
+<!--
+     <title>Properties dialog</title>
+-->
+     <title>設定ダイアログ</title>
+     <screenshot>
+<!--
+      <screeninfo>Properties dialog</screeninfo>
+-->
+      <screeninfo>設定ダイアログ</screeninfo>
+      <graphic format="png" fileref="figures/charpick_applet_settings"
+<!--
+      srccredit="muet">
+-->
+      srccredit="KAMAGASAKO Masatoshi">
+      </graphic>
+     </screenshot>
+    </figure>
+
+    <para>
+<!--
+     The properties in the <guilabel>Size</guilabel> tab are:
+-->
+     <guilabel>サイズ</guilabel>タブには以下の設定項目があります：
+     <itemizedlist>
+
+      <listitem>
+       <para>
+<!--
+        <guibutton>Follow panel size</guibutton> &mdash; If this
+        button is checked, the
+        <application>Character Picker</application> applet will
+        automatically set the appropriate number of columns and rows
+        of characters to fit in the <interface>Panel</interface>.
+-->
+        <guibutton>パネルの大きさに合わせる</guibutton> &mdash;
+        <application>キャラクタピッカー</application>アプレットは、<interface>パネル</interface>にのサイズに合うように自動的に適切なキャラクタの行数や列数に設定します。
+       </para>
+      </listitem>
+
+      <listitem>
+       <para>
+<!--
+        <guilabel>Minimum number of cells</guilabel>: (for autosize)
+        &mdash; This sets the
+        minimum number of character buttons (or "cells") which will be
+        shown. The actual number of character buttons may exceed this
+        number, depending upon the <interface>Panel</interface> size
+        and number chosen.  Note that if this number is too small,
+        some characters may not be visible. (This variable does not
+        influence the cell layout if the <guibutton>Follow panel
+        size</guibutton> button is not selected.)
+-->
+        <guibutton>セルの最小の数</guibutton>(サイズは自動的に変更) &mdash;
+        表示されるキャラクタのボタン(セル)の数を設定します。実際のセルの数は、<interface>パネル</interface>のサイズや設定した数によってはこの数より増えるかも知れません。この数が少なすぎると表示されないキャラクタが出てくるかも知れないことに注意してください(<guibutton>パネルの大きさに合わせる</guibutton>ボタンが有効になっていると、この数値はセルのレイアウトに影響しません)。
+       </para>
+      </listitem>
+
+      <listitem>
+       <para>
+<!--
+        <guilabel>Number of rows of buttons</guilabel>: &mdash; This
+        determines the number
+        of rows of character buttons (or "cells") that appear in the
+        applet. (This variable does not influence the cell layout if
+        the <guibutton>Follow panel size</guibutton> button is selected.)
+-->
+        <guibutton>ボタンの行数(横)</guibutton> &mdash;
+        アプレットに表示されるキャラクタボタン(あるいは"セル")の行数を設定します(<guibutton>パネルの大きさに合わせる</guibutton>ボタンが有効になっていると、この数値はセルのレイアウトに影響しません)。
+       </para>
+      </listitem>
+
+      <listitem>
+       <para>
+<!--
+        <guilabel>Number of columns of buttons</guilabel>: &mdash;
+        This determines the number
+        of columns of character buttons (or "cells") that appear in the
+        applet. (This variable does not influence the cell layout if
+        the <guibutton>Follow panel size</guibutton> button is selected.)
+-->
+        <guibutton>ボタンの列数(縦)</guibutton> &mdash;
+        アプレットに表示されるキャラクタボタン(あるいは"セル")の列数を設定します(<guibutton>パネルの大きさに合わせる</guibutton>ボタンが有効になっていると、この数値はセルのレイアウトに影響しません)。
+       </para>
+      </listitem>
+
+      <listitem>
+       <para>
+<!--
+        <guilabel>Size of button</guilabel>: (pixels) &mdash; This is
+        the size (in pixels)
+        of each character button in the applet.
+-->
+        <guibutton>ボタンのサイズ</guibutton>(ピクセル) &mdash;
+        表示されるキャラクタボタンのサイズを設定します。
+       </para>
+      </listitem>
+
+     </itemizedlist>
+    </para>
+
+    <para>
+<!--
+     The properties in the <guilabel>Default List</guilabel> tab are:
+-->
+     <guilabel>デフォルトのリスト</guilabel>タブには以下の設定項目があります：
+     <itemizedlist>
+
+      <listitem>
+       <para>
+<!--
+        <guilabel>Default character list</guilabel> &mdash; This is
+        the list of characters
+        which will be shown in the applet when you press the space
+        bar. This is a convenient way to keep a list of your most
+        frequently used characters. Just enter your most frequently
+        used characters here.
+-->
+        <guilabel>デフォルトのキャラクタリスト</guilabel> &mdash;
+        アプレット上でスペースキーを押したときに表示されるキャラクタのリストを設定します。最も頻繁に利用するキャラクタのリストにすると便利です。ここには最も頻繁に利用するキャラクタを入力しましょう。
+       </para>
+      </listitem>
+
+     </itemizedlist>
+    </para>
+
+    <para> 
+<!--
+      After you have made all the changes you want, click on
+      <guibutton>OK</guibutton> to apply the changes and close the
+      <interface>Properties</interface> dialog. Click
+      <guibutton>Apply</guibutton> to apply changes without closing.
+      <guibutton>Close</guibutton> closes
+      <interface>Properties</interface> without saving changes which
+      have not been applied.  Applied changes cannot be cancelled.
+-->
+      変更を終えたら<guibutton>OK</guibutton>ボタンをクリックして変更を適用し、<interface>設定</interface>ダイアログを閉じます。<guibutton>適用</guibutton>ボタンをクリックすると変更は適用されますが、ダイアログは閉じません。変更を適用せずに<interface>設定</interface>ダイアログを閉じるには<guibutton>閉じる</guibutton>ボタンをクリックします。適用した変更はキャンセルできません。
+    </para>
+  </sect2>
+
+  <!-- ============= Characters ================================== -->
+  <sect2 id="charpickapplet-characters">
+<!--
+   <title>Characters</title>
+-->
+   <title>キャラクタ</title>
+   <para>
+<!--
+    <application>Character Picker</application> applet has all
+    the characters from the 
+    ISO-8859-1(Latin 1) character set which are not on standard US
+    keyboards. They are mapped onto the standard characters as shown in
+    <xref linkend="charpickapplet-characters-fig">.  The bold
+    characters in the first column of each half and to the left of the
+    dotted lines are the characters you
+    must type in the <application>Character Picker</application>
+    applet to obtain 
+    the corresponding characters shown to the right.
+-->
+    <application>キャラクタピッカー</application>アプレットは、一般的なUSキーボードにないISO-8859-1(Latin 1)キャラクタセットのすべてのキャラクタを用意しています。これらを<xref linkend="charpickapplet-characters-fig">のように一般的なキャラクタにマッピングしています。一列目のボールド文字が、<application>キャラクタピッカー</application>アプレット上でこの表の右側に表示されているキャラクタに関連付けられているキーです。
+   </para>
+   <figure id="charpickapplet-characters-fig">
+<!--
+    <title>Character Picker's Character Key</title>
+-->
+    <title>キャラクタピッカー キャラクタキー</title>
+    <screenshot>
+<!--
+     <screeninfo>Character Picker's Character Key</screeninfo>
+-->
+     <screeninfo>キャラクタピッカー キャラクタキー</screeninfo>
+     <graphic format="png" fileref="figures/charpick_characters.png" 
+     srccredit="muet">
+     </graphic>
+    </screenshot>
+   </figure>
+  </sect2>
+
+  <!-- ============= Bugs ================================== -->
+  <!-- This section should describe known bugs and limitations of
+       the program if there are any - please be frank and list all
+       problems you know of -->
+  <sect2 id="charpickapplet-bugs">
+<!--
+   <title>Known Bugs and Limitations</title>
+-->
+   <title>既知のバグと制限</title>
+   <para>
+<!--
+    This applet has no known bugs.
+-->
+    このアプレットには既知のバグはありません。
+   </para>
+  </sect2>
+
+
+  <!-- ============= Authors ================================ -->
+
+  <sect2 id="charpickapplet-authors">
+<!--
+   <title>Authors</title>
+-->
+   <title>作者</title>
+   <para>
+<!--
+    <application>Character Picker</application> was written by Alexandre Mu&ntilde;iz
+    (<email>munizao@xprt.net</email>).  Please send all comments,
+    suggestions, and bug 
+    reports to the <ulink url="http://bugs.gnome.org" type="http">GNOME
+    bug tracking database</ulink>. (Instructions for submitting bug
+    reports can be found <ulink
+    url="http://bugs.gnome.org/Reporting.html" type="http">
+    on-line</ulink>. If you are using
+    GNOME 1.1 or later, you can also use <application>Bug Report
+    Tool</application> (<command>bug-buddy</command>), available in the
+    <guisubmenu>Utilities</guisubmenu> submenu of <guimenu>Main
+    Menu</guimenu>, for submitting bug reports.
+-->
+    このアプレットはAlexandre Mu&ntilde;iz (<email>munizao@xprt.net</email>)によって書かれました。コメント、提案、バグレポートなどはすべて<ulink url="http://bugs.gnome.org" type="http">GNOMEバグ追跡データベース</ulink>へお願いします(バグレポートの利用法は<ulink url="http://bugs.gnome.org/Reporting.html" type="http">オンライン</ulink>で参照できます)。もしあなたがGNOME 1.1あるいはそれ以降の版を利用しているのなら、<application>バグレポートツール</application>(<command>bug-buddy</command>)を利用できます。これは<guimenu>メインメニュー</guimenu>の<guisubmenu>ユーティリティ</guisubmenu>サブメニューにあり、バグレポートの送信に利用します。
+   </para>
+
+   <para>
+<!--
+    This manual was written by Dan Mueth
+    (<email>d-mueth@uchicago.edu</email>). Please send all comments and
+    suggestions regarding this manual to the <ulink type="http"
+    url="http://www.gnome.org/gdp">GNOME Documentation Project</ulink> 
+    by sending an email to <email>docs@gnome.org</email>. You can also
+    submit comments online by using the <ulink type="http"
+    url="http://www.gnome.org/gdp/doctable/">GNOME Documentation Status
+    Table</ulink>.
+-->
+    このマニュアルはDan Mueth (<email>d-mueth@uchicago.edu</email>)によって書かれました。このマニュアルに関するコメントや提案は<ulink type="http" url="http://developer.gnome.org/projects/gdp/">GNOMEドキュメンテーションプロジェクト</ulink>へ<email>docs@gnome.org</email>宛にお寄せください。また、<ulink type="http" url="http://www.gnome.org/gdp/doctable/">GNOMEドキュメンテーションステータステーブル</ulink>を利用してあなたのコメントをオンラインで加えることもできます。
+   </para>
+
+   <!-- For translations: uncomment this:
+   <para>
+    Latin translation was done by ME
+    (<email>MYNAME@MYADDRESS</email>). Please send all  comments  and
+    suggestions regarding this translation to SOMEWHERE.
+   </para>
+   -->
+
+   <para>
+    この日本語翻訳は鎌ヶ迫正俊(<email>emerald@gnome.gr.jp</email>)によるものです。この翻訳に関するコメントや提案はすべて<email>emerald@gnome.gr.jp</email>へお寄せください。
+   </para>
+
+  </sect2>
+
+
+  <!-- ============= Application License ============================= -->
+
+  <sect2 id="license">
+<!--
+   <title>License</title>
+-->
+   <title>ライセンス</title>
+   <para>
+<!--
+    This program is free software; you can redistribute it and/or
+    modify it under the terms of the <citetitle>GNU General Public
+    License</citetitle> as published by the Free Software Foundation;
+    either version 2 of the License, or (at your option) any later
+    version.
+-->
+    このプログラムはフリーソフトウェアです。フリーソフトウェア財団発行の<citetitle>GNU 一般公有使用許諾契約書</citetitle>第二版あるいは(あなたの選択で)後の版の下おいて再配布や改変することができます。
+   </para>
+   <para>
+<!--
+    This program is distributed in the hope that it will be useful, but
+    WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    <citetitle>GNU General Public License</citetitle> for more details.
+-->
+    このプログラムは有用であることを期待して配布していますが、無保証です。商業目的や特定の目的に適合した場合の暗黙の保証すら含まれておりません。詳細は<citetitle>GNU 一般公有使用許諾契約書</citetitle>をご覧ください。
+   </para>
+   <para>
+<!--
+    A copy of the <citetitle>GNU General Public License</citetitle> is
+    included as an appendix to the <citetitle>GNOME Users
+    Guide</citetitle>.  You may also obtain a copy of the
+    <citetitle>GNU General Public License</citetitle> from the Free
+    Software Foundation by visiting <ulink type="http"
+    url="http://www.fsf.org">their Web site</ulink> or by writing to
+-->
+    <citetitle>GNU 一般公有使用許諾契約書</citetitle>の複写は<citetitle>GNOMEユーザーズガイド</citetitle>の付録として収録されています。<citetitle>GNU 一般公有使用許諾契約書</citetitle>の複写はフリーソフトウェア財団から、彼らの<ulink type="http" url="http://www.fsf.org">ウェブサイト</ulink>を訪れることにより、また、以下の住所に手紙を書くことによっても入手することも可能です。
+    <address>
+     Free Software Foundation, Inc.
+     <street>59 Temple Place</street> - Suite 330
+     <city>Boston</city>, <state>MA</state> <postcode>02111-1307</postcode>
+     <country>USA</country>
+    </address>
+   </para>
+  </sect2>
+
+ </sect1>
+
+
