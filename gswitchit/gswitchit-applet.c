@@ -643,12 +643,10 @@ GSwitchItAppletSetupGroupsSubmenu (GSwitchItApplet * sia)
 	unsigned i, nGroups;
 	GSList *nameNode = globals.groupNames;
 	BonoboUIComponent *popup;
-	GSList *layout;
 	popup =
 	    panel_applet_get_popup_component (PANEL_APPLET (sia->applet));
-	XklDebug (160, "Registered group submenu\n");
-	nGroups = XklGetNumGroups ();
-	layout = globals.kbdConfig.layouts;
+	XklDebug (160, "Registering group submenu\n");
+	nGroups = g_slist_length (globals.groupNames);
 	for (i = 0; i < nGroups; i++) {
 		char verb[40];
 		BonoboUINode *node;
@@ -678,7 +676,6 @@ GSwitchItAppletSetupGroupsSubmenu (GSwitchItApplet * sia)
 			  "Registered group menu item \'%s\' as \'%s\'\n",
 			  verb, nameNode->data);
 		nameNode = g_slist_next (nameNode);
-		layout = g_slist_next (layout);
 	}
 }
 
