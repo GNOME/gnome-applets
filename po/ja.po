@@ -14,8 +14,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets HEAD\n"
-"POT-Creation-Date: 2003-05-11 20:05+0900\n"
-"PO-Revision-Date: 2003-05-11 20:08+0900\n"
+"POT-Creation-Date: 2003-05-14 23:29+0900\n"
+"PO-Revision-Date: 2003-05-14 23:30+0900\n"
 "Last-Translator: KAMAGASAKO Masatoshi <emerald@gnome.gr.jp>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
 "MIME-Version: 1.0\n"
@@ -280,7 +280,7 @@ msgstr "Jorgen Pehrson <jp@spektr.eu.org>"
 #: charpick/charpick.c:500 drivemount/drivemount.c:490 geyes/geyes.c:228
 #: gkb-new/gkb.c:622 gtik/gtik.c:706 gweather/gweather-about.c:44
 #: mailcheck/mailcheck.c:1875 mini-commander/src/about.c:48 mixer/mixer.c:992
-#: modemlights/modemlights.c:209 multiload/main.c:57
+#: modemlights/modemlights.c:115 multiload/main.c:57
 #: stickynotes/stickynotes.glade.h:37 stickynotes/stickynotes_applet.c:252
 #: wireless/wireless-applet.c:733
 msgid "translator_credits"
@@ -352,7 +352,7 @@ msgstr "バッテリ充電モニタ設定"
 
 #: battstat/battstat_applet.glade.h:13 drivemount/properties.c:304
 #: gweather/gweather-pref.c:293 mailcheck/mailcheck.c:1518
-#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:474
+#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:483
 msgid "General"
 msgstr "全般"
 
@@ -481,8 +481,8 @@ msgstr "あなたには CD プレイヤーを使用する権限がありませ�
 #: cdplayer/cdplayer.c:334 drivemount/drivemount.c:399 mixer/mixer.c:958
 #: multiload/main.c:118
 #, c-format
-msgid "There was an error executing '%s' : %s"
-msgstr "'%s' を実行する際にエラーが発生しました: %s"
+msgid "There was an error executing '%s': %s"
+msgstr "'%s' を実行した際にエラーが発生しました: %s"
 
 #: cdplayer/cdplayer.c:385
 #, c-format
@@ -690,7 +690,7 @@ msgid "_Update interval:"
 msgstr "更新間隔(_U):"
 
 #: drivemount/properties.c:347 mailcheck/mailcheck.c:1570
-#: mailcheck/mailcheck.c:1574 modemlights/properties.c:405
+#: mailcheck/mailcheck.c:1574 modemlights/properties.c:414
 msgid "seconds"
 msgstr "秒"
 
@@ -783,15 +783,15 @@ msgstr "GNOME パネル用のキュートなお目々"
 msgid "The eyes look in the direction of the mouse pointer"
 msgstr "目玉がマウスのポインタの方向を向きます"
 
-#: geyes/themes.c:233
+#: geyes/themes.c:237
 msgid "Geyes Preferences"
 msgstr "目玉の設定"
 
-#: geyes/themes.c:263
+#: geyes/themes.c:267
 msgid "Themes"
 msgstr "テーマ"
 
-#: geyes/themes.c:284
+#: geyes/themes.c:288
 msgid "_Select a theme:"
 msgstr "テーマを選択して下さい(_S):"
 
@@ -920,7 +920,7 @@ msgid "Flag and Label"
 msgstr "国旗とラベル"
 
 #: gkb-new/prop.c:323 gtik/gtik.c:1408 gweather/gweather-pref.c:329
-#: modemlights/properties.c:385
+#: modemlights/properties.c:394
 msgid "Display"
 msgstr "表示"
 
@@ -1122,7 +1122,7 @@ msgstr "ピクセル"
 msgid "_Font:"
 msgstr "フォント(_F):"
 
-#: gtik/gtik.c:1450 modemlights/properties.c:535 multiload/properties.c:438
+#: gtik/gtik.c:1450 modemlights/properties.c:544 multiload/properties.c:438
 msgid "Colors"
 msgstr "色"
 
@@ -1138,7 +1138,7 @@ msgstr "株価の低下(_L):"
 msgid "Stock _unchanged:"
 msgstr "株価の不動(_U):"
 
-#: gtik/gtik.c:1500 modemlights/properties.c:491
+#: gtik/gtik.c:1500 modemlights/properties.c:500
 msgid "_Background:"
 msgstr "背景色(_B):"
 
@@ -1954,12 +1954,12 @@ msgstr "ここにコマンドを入力すると GNOME がそれを実行しま�
 
 #: mini-commander/src/mc-install-default-macros.c:71
 #, c-format
-msgid "Cannot get schema for %s : %s"
+msgid "Cannot get schema for %s: %s"
 msgstr "%s のスキーマを取得できません: %s"
 
 #: mini-commander/src/mc-install-default-macros.c:99
 #, c-format
-msgid "Cannot set schema for %s : %s"
+msgid "Cannot set schema for %s: %s"
 msgstr "%s のスキーマを設定できません: %s"
 
 #: mini-commander/src/mc-install-default-macros.c:105
@@ -2268,11 +2268,11 @@ msgid "The volume control lets you set the volume level for your desktop"
 msgstr "このボリューム・コントロールでデスクトップの音量を設定できます"
 
 #: modemlights/GNOME_ModemLightsApplet.server.in.in.h:2
-#: modemlights/modemlights.c:227
+#: modemlights/modemlights.c:133
 msgid "Modem Lights"
 msgstr "モデム・モニタ"
 
-#: modemlights/modemlights.c:229
+#: modemlights/modemlights.c:135
 msgid ""
 "Released under the GNU general public license.\n"
 "A modem status indicator and dialer.\n"
@@ -2282,7 +2282,7 @@ msgstr ""
 "モデム・ステータスの表示器です。\n"
 "ライトは上または左から順に送信と受信を表します。"
 
-#: modemlights/modemlights.c:558
+#: modemlights/modemlights.c:464
 msgid ""
 "You are currently connected.\n"
 "Do you want to disconnect?"
@@ -2290,131 +2290,127 @@ msgstr ""
 "現在接続されています。\n"
 "切断しますか？"
 
-#: modemlights/modemlights.c:573
+#: modemlights/modemlights.c:479
 msgid "Do you want to connect?"
 msgstr "接続しますか？"
 
-#: modemlights/modemlights.c:601
+#: modemlights/modemlights.c:506
 #, c-format
 msgid "%#.1fMb received / %#.1fMb sent / time: %.1d:%.2d"
 msgstr "%#.1fMb 受信 / %#.1fMb 送信 / 時間: %.1d:%.2d"
 
-#: modemlights/modemlights.c:606
+#: modemlights/modemlights.c:511
 msgid "not connected"
 msgstr "接続されていません。"
 
-#: modemlights/properties.c:365
+#: modemlights/properties.c:374
 msgid "Modem Lights Preferences"
 msgstr "モデム・モニタの設定"
 
-#: modemlights/properties.c:392
+#: modemlights/properties.c:401
 msgid "U_pdate every:"
 msgstr "更新間隔(_P):"
 
 #. extra info checkbox
-#: modemlights/properties.c:410
+#: modemlights/properties.c:419
 msgid "Sho_w connect time and throughput"
 msgstr "接続時間とスループットを表示する(_W)"
 
-#: modemlights/properties.c:417
+#: modemlights/properties.c:426
 msgid "B_link connection status when connecting"
 msgstr "接続したら接続ステータスを点滅させる(_L)"
 
-#: modemlights/properties.c:424
+#: modemlights/properties.c:433
 msgid "Connections"
 msgstr "接続"
 
-#: modemlights/properties.c:433
+#: modemlights/properties.c:442
 msgid "Co_nnection command:"
 msgstr "接続時のコマンド(_N):"
 
-#: modemlights/properties.c:452
+#: modemlights/properties.c:461
 msgid "_Disconnection command:"
 msgstr "切断時のコマンド(_D):"
 
 #. confirmation checkbox
-#: modemlights/properties.c:467
+#: modemlights/properties.c:476
 msgid "Con_firm connection"
 msgstr "接続を確認する(_F)"
 
-#: modemlights/properties.c:483
+#: modemlights/properties.c:492
 msgid "Receive Data"
 msgstr "データの受信"
 
-#: modemlights/properties.c:489
+#: modemlights/properties.c:498
 msgid "_Foreground:"
 msgstr "前景色(_F):"
 
-#: modemlights/properties.c:494
+#: modemlights/properties.c:503
 msgid "Send Data"
 msgstr "データの送信"
 
-#: modemlights/properties.c:499
+#: modemlights/properties.c:508
 msgid "Foregroun_d:"
 msgstr "前景色(_D):"
 
-#: modemlights/properties.c:501
+#: modemlights/properties.c:510
 msgid "Backg_round:"
 msgstr "背景色(_R):"
 
-#: modemlights/properties.c:504
+#: modemlights/properties.c:513
 msgid "Connection Status"
 msgstr "接続ステータス"
 
-#: modemlights/properties.c:512
+#: modemlights/properties.c:521
 msgid "Co_nnected:"
 msgstr "接続済み(_N):"
 
-#: modemlights/properties.c:514
+#: modemlights/properties.c:523
 msgid "Disconnec_ted:"
 msgstr "接続断(_T):"
 
-#: modemlights/properties.c:517
+#: modemlights/properties.c:526
 msgid "C_onnecting:"
 msgstr "接続中(_O):"
 
-#: modemlights/properties.c:520
+#: modemlights/properties.c:529
 msgid "Text"
 msgstr "文字"
 
-#: modemlights/properties.c:528
+#: modemlights/properties.c:537
 msgid "For_eground:"
 msgstr "前景色(_E):"
 
-#: modemlights/properties.c:530
+#: modemlights/properties.c:539
 msgid "Bac_kground:"
 msgstr "背景色(_K):"
 
-#: modemlights/properties.c:532
+#: modemlights/properties.c:541
 msgid "O_utline"
 msgstr "アウトライン(_U)"
 
-#: modemlights/properties.c:544
+#: modemlights/properties.c:553
 msgid "Modem Options"
 msgstr "モデムのオプション"
 
-#: modemlights/properties.c:553
+#: modemlights/properties.c:562
 msgid "_Device:"
 msgstr "デバイス(_D):"
 
-#: modemlights/properties.c:572
+#: modemlights/properties.c:581
 msgid "_Lock file:"
 msgstr "ロックファイル(_L):"
 
-#: modemlights/properties.c:586
+#: modemlights/properties.c:595
 msgid "_Verify owner of lock file"
 msgstr "ロックファイルの所有者を確認する(_V)"
 
 #. ISDN checkbox
-#: modemlights/properties.c:594
+#: modemlights/properties.c:603
 msgid "U_se ISDN"
 msgstr "ISDN を使用する(_S)"
 
-#: modemlights/properties.c:614
-msgid "Set options as default"
-msgstr "オプションをデフォルトに設定する"
-
-#: modemlights/properties.c:620
+#: modemlights/properties.c:617
 msgid "Advanced"
 msgstr "拡張"
 
@@ -2435,7 +2431,7 @@ msgstr "システムモニタの起動(_R)"
 msgid "CPU Load"
 msgstr "CPU 負荷"
 
-#: multiload/loadavg.c:107 multiload/main.c:244
+#: multiload/loadavg.c:107 multiload/main.c:291
 msgid "Load Average"
 msgstr "負荷平均"
 
@@ -2451,27 +2447,27 @@ msgstr ""
 "CPU、RAM、スワップの使用率とネットワーク負荷のグラフを表示できるシステム負荷"
 "モニタです。"
 
-#: multiload/main.c:236 multiload/properties.c:463
+#: multiload/main.c:283 multiload/properties.c:463
 msgid "Processor"
 msgstr "プロセッサ"
 
-#: multiload/main.c:238 multiload/properties.c:470
+#: multiload/main.c:285 multiload/properties.c:470
 msgid "Memory"
 msgstr "メモリ"
 
-#: multiload/main.c:240 multiload/properties.c:478
+#: multiload/main.c:287 multiload/properties.c:478
 msgid "Network"
 msgstr "ネットワーク"
 
-#: multiload/main.c:242 multiload/properties.c:486
+#: multiload/main.c:289 multiload/properties.c:486
 msgid "Swap Space"
 msgstr "スワップ"
 
-#: multiload/main.c:246
+#: multiload/main.c:293
 msgid "Resource"
 msgstr "リソース"
 
-#: multiload/main.c:256
+#: multiload/main.c:303
 #, c-format
 msgid ""
 "%s:\n"
@@ -2933,3 +2929,6 @@ msgstr "ワイヤレス接続モニタの設定"
 #: wireless/wireless-applet.glade.h:4
 msgid "_Monitored device:"
 msgstr "監視対象デバイス(_M):"
+
+#~ msgid "Set options as default"
+#~ msgstr "オプションをデフォルトに設定する"
