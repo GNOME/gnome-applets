@@ -31,7 +31,11 @@ Monitorsdir	= $(appletdir)/Monitors
 Monitors_DATA	= cpuload_applet.desktop memload_applet.desktop \
 		  swapload_applet.desktop netload_applet.desktop
 
-EXTRA_DIST	= $(Monitors_DATA) multiload_applet.gnorba
+pixmaps = gnome-cpu.png gnome-mem.png
+pixmapdir = $(datadir)/pixmaps
+pixmap_DATA = $(pixmaps)
+
+EXTRA_DIST	= $(Monitors_DATA) multiload_applet.gnorba $(pixmaps)
 
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = multiload_applet.gnorba 
