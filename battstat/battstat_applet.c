@@ -407,8 +407,8 @@ pixmap_timeout( gpointer data )
    }
 
    if(
-     !last_acline_status
-     && !acline_status
+     !acline_status
+     && last_batt_life != 1000
      && last_batt_life > battery->red_val
      && batt_life <= battery->red_val
    ) {
