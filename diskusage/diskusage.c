@@ -75,6 +75,8 @@ void create_gc(void);
 void start_timer(void);
 void change_filesystem_cb (AppletWidget *applet, gpointer data);
 void add_mount_list_menu_items (void);
+static void browse_cb (AppletWidget *widget, gpointer data);
+
 GtkWidget *diskusage_widget(void);
 
 GString **mpoints;
@@ -665,9 +667,30 @@ void update_mount_list_menu_items () {
 
   }
 
-
-
 }
+
+static void browse_cb (AppletWidget *widget, gpointer data)
+{
+        const char *buf[2];
+
+        
+	buf[0] = mount_list [summary_info.selected_filesystem].mountdir;
+        buf[1] = NULL;
+
+/*      I assume the first (commented out) call is mor correct, but:
+ *      use  "IDL:GNOME/FileManagerWindow:1.0"  ?
+ *      how do we correctly construct this string? In the event version != 1.0 ?
+ */
+
+/*      goad_server_activate_with_repo_id(NULL, "IDL:GNOME/FileManagerWindow:1.0",
+                        GOAD_ACTIVATE_REMOTE | GOAD_ACTIVATE_ASYNC, buf);
+*/
+
+        goad_server_activate_with_id(NULL, "gmc_filemanager_window",
+                        0, buf);
+}
+
+
 
 GtkWidget *diskusage_widget(void)
 {
@@ -776,6 +799,13 @@ int main(int argc, char **argv)
 					      _("Properties..."),
 					      properties,
 					      NULL);
+
+	applet_widget_register_stock_callback(APPLET_WIDGET(applet),
+                                              "browse",
+                                              GNOME_STOCK_MENU_OPEN,
+                                              _("Browse..."),
+                                              browse_cb,
+                                              NULL);
 
 	applet_widget_gtk_main();
 
