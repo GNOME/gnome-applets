@@ -28,6 +28,7 @@
 #include "message.h"
 
 static char *history_command[HISTORY_DEPTH];
+static void delete_history_entry(int element_number);
 
 
 int
@@ -45,8 +46,9 @@ get_history_entry(int pos)
 void
 set_history_entry(int pos, char * entry)
 {
-    free(history_command[pos]);
-    history_command[pos] = (char *) malloc(sizeof(char) * (strlen(entry) + 1));
+    if(history_command[pos] != NULL)
+	free(history_command[pos]);
+    history_command[pos] = (char *)malloc(sizeof(char) * (strlen(entry) + 1));
     strcpy(history_command[pos], entry);
 }
 
@@ -55,18 +57,40 @@ append_history_entry(char * entry)
 {
     int pos;
 
-    if(history_command[HISTORY_DEPTH - 1] == NULL
-       || strcmp(entry, history_command[HISTORY_DEPTH - 1]) != 0)
+    /* remove older dupes */
+    for(pos = 0; pos <= HISTORY_DEPTH - 1; pos++)
 	{
-	    /* this command is no dupe -> update history */
-	    free(history_command[0]);
-	    for(pos = 0; pos < HISTORY_DEPTH - 1; pos++)
+	    if(exists_history_entry(pos) && strcmp(entry, history_command[pos]) == 0)
 		{
-		    history_command[pos] = history_command[pos+1];
-		    /* printf("%s\n", history_command[pos]); */
+		    /* dupe found */
+		    printf("%d: %s\n", pos, history_command[pos]);
+		    delete_history_entry(pos);
 		}
-	    history_command[HISTORY_DEPTH - 1] = (char *) malloc(sizeof(char) * (strlen(entry) + 1));
-	    strcpy(history_command[HISTORY_DEPTH - 1], entry);
 	}
+
+    /* delete oldest entry */
+    if(history_command[0] != NULL)
+	free(history_command[0]);
+
+    /* move entries */
+    for(pos = 0; pos < HISTORY_DEPTH - 1; pos++)
+	{
+	    history_command[pos] = history_command[pos+1];
+	    /* printf("%s\n", history_command[pos]); */
+	}
+
+    /* append entry */
+    history_command[HISTORY_DEPTH - 1] = (char *)malloc(sizeof(char) * (strlen(entry) + 1));
+    strcpy(history_command[HISTORY_DEPTH - 1], entry);
 }
 
+void
+delete_history_entry(int element_number)
+{
+    int pos;
+
+    for(pos = element_number; pos > 0; --pos)
+	history_command[pos] = history_command[pos - 1];
+
+    history_command[0] = NULL;   
+}
