@@ -102,15 +102,17 @@ static gboolean clicked_cb (GtkWidget *widget, GdkEventButton *ev, gpointer data
     return FALSE;
 }
 
-static void about_cb (BonoboUIComponent *uic, gpointer data, const gchar *verbname)
+static void about_cb (BonoboUIComponent *uic,
+		      GWeatherApplet    *gw_applet,
+		      const gchar       *verbname)
 {
 
-    gweather_about_run();
-    return;
-
+    gweather_about_run (gw_applet);
 }
 
-static void help_cb (BonoboUIComponent *uic, gpointer data, const gchar *verbname)
+static void help_cb (BonoboUIComponent *uic,
+		     GWeatherApplet    *gw_applet,
+		     const gchar       *verbname)
 {
     GError *error = NULL;
     gnome_help_display("gweather",NULL,&error);
@@ -122,38 +124,34 @@ static void help_cb (BonoboUIComponent *uic, gpointer data, const gchar *verbnam
     }
 }
 
-static void pref_cb (BonoboUIComponent *uic, gpointer data, const gchar *verbname)
+static void pref_cb (BonoboUIComponent *uic,
+		     GWeatherApplet    *gw_applet,
+		     const gchar       *verbname)
 {
-    GWeatherApplet *gw_applet = data;
-    gweather_pref_run(gw_applet);
-    return;
+    gweather_pref_run (gw_applet);
 }
 
-static void forecast_cb (BonoboUIComponent *uic, gpointer data, const gchar *verbname)
+static void forecast_cb (BonoboUIComponent *uic,
+		         GWeatherApplet    *gw_applet,
+			 const gchar       *verbname)
 {
-    GWeatherApplet *gw_applet = data;
-
-    gweather_dialog_open(gw_applet);
-
-    return;
+    gweather_dialog_open (gw_applet);
 }
 
-static void update_cb (BonoboUIComponent *uic, gpointer data, const gchar *verbname)
+static void update_cb (BonoboUIComponent *uic,
+		       GWeatherApplet    *gw_applet,
+		       const gchar       *verbname)
 {
-    GWeatherApplet *gw_applet = data;
-
-    gweather_update(gw_applet);
-
-    return;
+    gweather_update (gw_applet);
 }
 
 
 static const BonoboUIVerb weather_applet_menu_verbs [] = {
-	BONOBO_UI_VERB ("Forecast", forecast_cb),
-	BONOBO_UI_VERB ("Update", update_cb),
-        BONOBO_UI_VERB ("Props", pref_cb),
-        BONOBO_UI_VERB ("Help", help_cb), 
-        BONOBO_UI_VERB ("About", about_cb),
+	BONOBO_UI_UNSAFE_VERB ("Forecast", forecast_cb),
+	BONOBO_UI_UNSAFE_VERB ("Update", update_cb),
+        BONOBO_UI_UNSAFE_VERB ("Props", pref_cb),
+        BONOBO_UI_UNSAFE_VERB ("Help", help_cb), 
+        BONOBO_UI_UNSAFE_VERB ("About", about_cb),
 
         BONOBO_UI_VERB_END
 };
