@@ -18,6 +18,8 @@
 #include <unistd.h>
 #include <applet-widget.h>
 #include <libgnomeui/gnome-window-icon.h>
+#include <gdk-pixbuf/gdk-pixbuf.h>
+#include <gdk-pixbuf/gnome-canvas-pixbuf.h>
 #include "jbc-applet.h"
 
 #define CANVAS_WIDTH 82
@@ -25,7 +27,7 @@
 
 
 GnomeCanvasItem *item[16];
-GdkImlibImage *pix[16], *tpix[2];
+GdkPixbuf *pix[16], *tpix[2];
 struct tm atime;
 time_t thetime;
 int i;
@@ -85,14 +87,14 @@ do_flicker ()
     {
       if (blink == 0)
 	{
-	  gnome_canvas_item_set (item[2], "image", tpix[0], NULL);
-	  gnome_canvas_item_set (item[5], "image", tpix[0], NULL);
+	  gnome_canvas_item_set (item[2], "pixbuf", tpix[0], NULL);
+	  gnome_canvas_item_set (item[5], "pixbuf", tpix[0], NULL);
 	  blink = 1;
 	}
       else
 	{
-	  gnome_canvas_item_set (item[2], "image", tpix[1], NULL);
-	  gnome_canvas_item_set (item[5], "image", tpix[1], NULL);
+	  gnome_canvas_item_set (item[2], "pixbuf", tpix[1], NULL);
+	  gnome_canvas_item_set (item[5], "pixbuf", tpix[1], NULL);
 	  blink = 0;
 	}
     }
@@ -102,7 +104,7 @@ do_flicker ()
 	{
 	  if (i != 2 || i != 5)
 	    {
-	      gnome_canvas_item_set (item[i], "image", pix[d[i]], NULL);
+	      gnome_canvas_item_set (item[i], "pixbuf", pix[d[i]], NULL);
 	      digits[i] = d[i];
 	    }
 
@@ -171,6 +173,9 @@ main (int argc, char **argv)
   textdomain (PACKAGE);
 
   applet_widget_init ("jbc_applet", VERSION, argc, argv, NULL, 0, NULL);
+
+  gdk_rgb_init();
+
   gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gnome-jbc.png");
 
   applet = applet_widget_new ("jbc_applet");
@@ -211,33 +216,36 @@ main (int argc, char **argv)
 			 "y2", (double) CANVAS_HEIGHT,
 			 "fill_color", "black",
 			 NULL);
+ 
+  tpix[0] = gdk_pixbuf_new_from_xpm_data (tcolon_xpm);
+  tpix[1] = gdk_pixbuf_new_from_xpm_data (tbcolon_xpm);
+  
+  pix[0] = gdk_pixbuf_new_from_xpm_data (t0_xpm);
+  pix[1] = gdk_pixbuf_new_from_xpm_data (t1_xpm);
+  pix[2] = gdk_pixbuf_new_from_xpm_data (t2_xpm);
+  pix[3] = gdk_pixbuf_new_from_xpm_data (t3_xpm);
+  pix[4] = gdk_pixbuf_new_from_xpm_data (t4_xpm);
+  pix[5] = gdk_pixbuf_new_from_xpm_data (t5_xpm);
+  pix[6] = gdk_pixbuf_new_from_xpm_data (t6_xpm);
+  pix[7] = gdk_pixbuf_new_from_xpm_data (t7_xpm);
+  pix[8] = gdk_pixbuf_new_from_xpm_data (t8_xpm);
+  pix[9] = gdk_pixbuf_new_from_xpm_data (t9_xpm);
 
-  tpix[0] = gdk_imlib_create_image_from_xpm_data (tcolon_xpm);
-  tpix[1] = gdk_imlib_create_image_from_xpm_data (tbcolon_xpm);
-
-  pix[0] = gdk_imlib_create_image_from_xpm_data (t0_xpm);
-  pix[1] = gdk_imlib_create_image_from_xpm_data (t1_xpm);
-  pix[2] = gdk_imlib_create_image_from_xpm_data (t2_xpm);
-  pix[3] = gdk_imlib_create_image_from_xpm_data (t3_xpm);
-  pix[4] = gdk_imlib_create_image_from_xpm_data (t4_xpm);
-  pix[5] = gdk_imlib_create_image_from_xpm_data (t5_xpm);
-  pix[6] = gdk_imlib_create_image_from_xpm_data (t6_xpm);
-  pix[7] = gdk_imlib_create_image_from_xpm_data (t7_xpm);
-  pix[8] = gdk_imlib_create_image_from_xpm_data (t8_xpm);
-  pix[9] = gdk_imlib_create_image_from_xpm_data (t9_xpm);
-
-
-  ytmp = 25;
+  ytmp = 0;
 
   for (i = 0; i < 8; ++i)
     {
       if (i == 0)
-	{
-	  xtmp = 6;
-	}
-      else if (i == 2 || i == 3 || i == 5 || i == 6)
-	{
-	  xtmp = xtmp + 8.5;
+        {
+          xtmp = 0;
+        }
+      else if (i == 2 || i == 5)
+        {
+          xtmp = xtmp + 13;
+        }
+      else if (i == 3 || i == 6)
+        {
+          xtmp = xtmp + 4;
 	}
       else
 	{
@@ -246,23 +254,19 @@ main (int argc, char **argv)
       if (i == 2 || i == 5)
 	{
 	  item[i] = gnome_canvas_item_new (gnome_canvas_root (GNOME_CANVAS (canvas)),
-					   gnome_canvas_image_get_type (),
-					   "image", tpix[0],
+					   gnome_canvas_pixbuf_get_type (),
+					   "pixbuf", tpix[0],
 					   "x", (double) xtmp,
 					   "y", (double) ytmp,
-					   "width", (double) 5,
-					   "height", (double) 50,
 					   NULL);
 	}
       else
 	{
 	  item[i] = gnome_canvas_item_new (gnome_canvas_root (GNOME_CANVAS (canvas)),
-					   gnome_canvas_image_get_type (),
-					   "image", pix[0],
+					   gnome_canvas_pixbuf_get_type (),
+					   "pixbuf", pix[0],
 					   "x", (double) xtmp,
 					   "y", (double) ytmp,
-					   "width", (double) 12,
-					   "height", (double) 50,
 					   NULL);
 	}
     }
