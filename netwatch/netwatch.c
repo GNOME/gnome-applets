@@ -13,9 +13,37 @@
 #include "panel.h"
 #include "mico-parse.h"
 
+typedef void (*NetwatchUpdateFunc) (GtkWidget *);
+
+typedef struct {
+   int                timeout;
+   NetwatchUpdateFunc update_func;
+   PanelOrientType    orient;
+} NetwatchData;
+
 GtkWidget  *plug = NULL;
 GtkWidget  *netwatchw = NULL;
+NetwatchData *nd = NULL;
 int applet_id = (-1);
+
+static void
+free_data (GtkWidget *widget, gpointer data)
+{
+   g_free (data);
+}
+
+static int
+netwatch_timeout_callback (gpointer data)
+{
+   return 1;
+}
+
+static void
+destroy_netwatch (GtkWidget *widget, void *data)
+{
+   gtk_timeout_remove (nd->timeout);
+   g_free (nd);
+}
 
 static GtkWidget *
 create_netwatch_widget (void)
@@ -23,10 +51,15 @@ create_netwatch_widget (void)
    GtkWidget *parent_widget;
    GtkWidget *label;
 
+   nd = g_new (NetwatchData, 1);
+   nd->orient = ORIENT_UP;
    parent_widget = gtk_hbox_new (FALSE, 0);
    label = gtk_label_new ("Netwatch!");
    gtk_widget_show (label);
    gtk_container_add (GTK_CONTAINER (parent_widget), label);
+   gtk_signal_connect (GTK_OBJECT (parent_widget), "destroy",
+                       (GtkSignalFunc) destroy_netwatch,
+                       NULL);
    return parent_widget;
 }
 /*these are commands sent over corba:*/
