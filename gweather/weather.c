@@ -57,6 +57,7 @@ static gboolean weather_radar = FALSE;
 #define WINDSPEED_KNOTS_TO_MPH(knots)  ((knots) * 1.150779)
 #define WINDSPEED_KNOTS_TO_MS(knots)   ((knots) * 0.514444)
 
+#define PRESSURE_INCH_TO_KPA(inch)   ((inch) * 3.386)
 #define PRESSURE_INCH_TO_HPA(inch)   ((inch) * 33.86)
 #define PRESSURE_INCH_TO_MM(inch)    ((inch) * 25.40005)
 #define PRESSURE_INCH_TO_MB(inch)    (PRESSURE_INCH_TO_HPA(inch))
@@ -2359,6 +2360,10 @@ const gchar *weather_info_get_pressure (WeatherInfo *info)
         case PRESSURE_UNIT_MM_HG:
             /* TRANSLATOR: This is pressure in millimeters of mercury */
             g_snprintf (buf, sizeof (buf), _("%.1f mmHg"), PRESSURE_INCH_TO_MM(info->pressure));
+            break;
+        case PRESSURE_UNIT_KPA:
+            /* TRANSLATOR: This is pressure in kiloPascals */
+            g_snprintf (buf, sizeof (buf), _("%.2f kPa"), PRESSURE_INCH_TO_KPA(info->pressure));
             break;
         case PRESSURE_UNIT_HPA:
             /* TRANSLATOR: This is pressure in hectoPascals */

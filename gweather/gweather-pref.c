@@ -74,6 +74,7 @@ static GConfEnumStringPair speed_unit_enum_map [] = {
 
 static GConfEnumStringPair pressure_unit_enum_map [] = {
     { PRESSURE_UNIT_DEFAULT, "Default" },
+	{ PRESSURE_UNIT_KPA,     "kPa"     },
 	{ PRESSURE_UNIT_HPA,     "hPa"     },
 	{ PRESSURE_UNIT_MB,      "mb"      },
     { PRESSURE_UNIT_MM_HG,   "mmHg"    },
@@ -478,8 +479,9 @@ static void parse_pressure_string (const gchar *gconf_str, GWeatherPrefs *prefs)
     }	
     else {
         /* TRANSLATOR: This is the default unit to use for atmospheric pressure. */
-        /* Valid values are: "hPa" (hectoPascals), "mb" (millibars), "mmHg"  */
-		/* (millimeters of mercury) and "inHg" (inches of mercury) */
+        /* Valid values are: "kPa" (kiloPascals), "hPa" (hectoPascals),
+           "mb" (millibars), "mmHg" (millimeters of mercury) and
+           "inHg" (inches of mercury) */
         if (gconf_string_to_enum (pressure_unit_enum_map, _("DEFAULT_PRESSURE_UNIT"), &value) ) {
             prefs->pressure_unit = value;
         }
@@ -888,6 +890,8 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
 	gw_applet->pref_basic_pres_combo = pres_combo;
     gtk_label_set_mnemonic_widget (GTK_LABEL (pres_label), pres_combo);
     gtk_combo_box_append_text (GTK_COMBO_BOX (pres_combo), _("Default"));
+    /* TRANSLATOR: The pressure unit "kiloPascals" */
+    gtk_combo_box_append_text (GTK_COMBO_BOX (pres_combo), _("kPa"));
     /* TRANSLATOR: The pressure unit "hectoPascals" */
     gtk_combo_box_append_text (GTK_COMBO_BOX (pres_combo), _("hPa"));
     /* TRANSLATOR: The pressure unit "millibars" */

@@ -46,6 +46,7 @@ typedef enum {
 typedef enum {
     PRESSURE_UNIT_INVALID = 0,
     PRESSURE_UNIT_DEFAULT,
+	PRESSURE_UNIT_KPA,    /* kiloPascal */
 	PRESSURE_UNIT_HPA,    /* hectoPascal */
 	PRESSURE_UNIT_MB,     /* 1 millibars = 1 hectoPascal */
     PRESSURE_UNIT_MM_HG,  /* millimeters of mecury */
