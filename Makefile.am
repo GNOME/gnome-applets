@@ -52,13 +52,13 @@ always_built_SUBDIRS = \
 ##	battery		\
 	fifteen		\
 	odometer	\
+  	geyes		\
  	whereami	
 ## 	another_clock	\
 ## 	asclock		\
 ## 	charpick	\
 ## 	clockmail	\
 ## 	drivemount	\
-##  	geyes		\
 ## 	gnotes		\
 ## 	gkb-new		\
 ## 	jbc		\
