@@ -70,7 +70,7 @@ static gint hideMessage(gpointer data)
 	    /* this is the message which has to be removed;
 	       otherwise don't hide this message */
 	    /* gtk_widget_hide (applet); */
-	    gtk_label_set(GTK_LABEL(labelMessage), ""); 
+	    gtk_label_set(GTK_LABEL(labelMessage), " "); 
 	    /* gtk_widget_show (applet); */
 	    messageLocked = FALSE;
 	}
