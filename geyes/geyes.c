@@ -238,7 +238,7 @@ destroy_eyes (void)
         int i;
         gtk_signal_disconnect_by_func (GTK_OBJECT (eyes_applet.applet),
                                        GTK_SIGNAL_FUNC (applet_back_change),
-                                       eyes_applet.fixed);
+                                       &eyes_applet);
 		
 		
         for (i = 0; i < eyes_applet.num_eyes; i++) {
