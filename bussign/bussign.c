@@ -8,6 +8,10 @@
 
 static GdkImlibImage *sg_bus = NULL;
 static GtkWidget     *sg_pixmap = NULL;
+static GtkWidget     *sg_post_dialog = NULL;
+static GtkWidget     *sg_post_box = NULL;
+static GtkWidget     *sg_post_button = NULL;
+static GtkWidget     *sg_post_text = NULL;
 
 /* some prototypes */
 
@@ -28,6 +32,15 @@ destroy_applet(GtkWidget *widget, gpointer data);
 
 static void
 about_window(AppletWidget *a_widget, gpointer a_data);
+
+static gint
+show_post_window(AppletWidget *a_widget, gpointer a_data);
+
+static gint
+hide_post_window(GtkWidget *a_widget, gpointer a_data);
+
+static void
+post_message(GtkWidget *a_widget, gpointer a_data);
 
 int main(int argc, char **argv)
 {
@@ -66,7 +79,30 @@ int main(int argc, char **argv)
 					_("Refresh Image"),
 					bussign_refresh_widget_dummy,
 					NULL);
-
+  /* create the widgets for the posting interface */
+  sg_post_dialog = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+  sg_post_box = gtk_hbox_new(FALSE, 0);
+  sg_post_button = gtk_button_new_with_label("Post Message");
+  sg_post_text = gtk_entry_new_with_max_length(128);
+  gtk_container_border_width(GTK_CONTAINER(sg_post_dialog), 4);
+  gtk_container_add(GTK_CONTAINER(sg_post_dialog), sg_post_box);
+  gtk_box_pack_start(GTK_BOX(sg_post_box), sg_post_text, TRUE, TRUE, 0);
+  gtk_box_pack_start(GTK_BOX(sg_post_box), sg_post_button, TRUE, TRUE, 0);
+  /* show all of the widgets, not the dialog */
+  gtk_widget_show_all(sg_post_box);
+  /* make sure that it will get closed */
+  gtk_signal_connect(GTK_OBJECT(sg_post_dialog), "delete_event",
+		     GTK_SIGNAL_FUNC(hide_post_window), NULL);
+  /* connect the button to the pressed function */
+  gtk_signal_connect(GTK_OBJECT(sg_post_button), "clicked",
+		     GTK_SIGNAL_FUNC(post_message), NULL);
+  /* attach it to the bar */
+  applet_widget_register_callback(APPLET_WIDGET(l_applet),
+				  "post",
+				  "Post Message",
+				  show_post_window,
+				  NULL);
+						      
   /* do it. */
   applet_widget_gtk_main();
   return 0;
@@ -208,4 +244,44 @@ about_window(AppletWidget *a_widget, gpointer a_data)
 			      NULL);
   gtk_widget_show(l_about);
   return;
+}
+
+static gint
+show_post_window(AppletWidget *a_widget, gpointer a_data)
+{
+  gtk_widget_show_all(sg_post_dialog);
+  return TRUE;
+}
+
+static gint
+hide_post_window(GtkWidget *a_widget, gpointer a_data)
+{
+  gtk_widget_hide(sg_post_dialog);
+  return TRUE;
+}
+
+static void
+post_message(GtkWidget *a_widget, gpointer a_data)
+{
+  ghttp_request *l_req = NULL;
+  char          *l_post_body = NULL;
+  int            l_post_len = 0;
+  char          *l_post_text = NULL;
+  
+  l_post_text = gtk_entry_get_text(GTK_ENTRY(sg_post_text));
+  l_req = ghttp_request_new();
+  ghttp_set_uri(l_req, "http://people.netscape.com/mtoy/sign/sign.cgi");
+  l_post_len = 5 + strlen(l_post_text);
+  l_post_body = malloc(l_post_len);
+  memset(l_post_body, 0, l_post_len);
+  memcpy(l_post_body, "data=", 5);
+  memcpy(l_post_body + 5, l_post_text, strlen(l_post_text));
+  ghttp_set_type(l_req, ghttp_type_post);
+  ghttp_set_body(l_req, l_post_body, l_post_len);
+  ghttp_prepare(l_req);
+  ghttp_process(l_req);
+  ghttp_close(l_req);
+  ghttp_request_destroy(l_req);
+  free(l_post_body);
+  hide_post_window(NULL, NULL);
 }
