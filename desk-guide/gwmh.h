@@ -27,6 +27,17 @@
 extern "C" {
 #endif /* __cplusplus */
 
+/* FIXME: this works around old glib versions (pre 1.2.2) */
+#undef G_GNUC_FUNCTION
+#undef G_GNUC_PRETTY_FUNCTION
+#ifdef  __GNUC__
+#define G_GNUC_FUNCTION         __FUNCTION__
+#define G_GNUC_PRETTY_FUNCTION  __PRETTY_FUNCTION__
+#else   /* !__GNUC__ */
+#define G_GNUC_FUNCTION         ""
+#define G_GNUC_PRETTY_FUNCTION  ""
+#endif  /* !__GNUC__ */
+
 
 /* --- preinitialized Atoms --- */
 extern gulong GWMHA_WIN_SUPPORTING_WM_CHECK;
