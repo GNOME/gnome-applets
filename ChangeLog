@@ -1,10 +1,17 @@
+Sat Oct 07 11:26:05 2000  George Lebl <jirka@5z.com>
+
+	* diskusage/diskusage.c: Added a modified fix from Paul Hirst
+	  <p.hirst@jach.hawaii.edu> to fix it reporting free space above
+	  4GB.  Basically we just assume we get the kB and we don't multiply
+	  by 1024 to get bytes.
+
 2000-10-02  Christophe Merlet  <christophe@merlet.net>
 
 	* */*.desktop : Added french strings when needed.
 
 Wed Sep 27 17:10:50 2000  George Lebl <jirka@5z.com>
 
-	* cdplyaer/cdplayer.[ch]: store the path to the device in the
+	* cdplayer/cdplayer.[ch]: store the path to the device in the
 	  CDPlayerData structure.  This fixes a problem of the cdplayer
 	  not working sometimes as it was using freed data.
 
@@ -2234,7 +2241,7 @@ Fri May 22 00:48:16 1998  George Lebl  <jirka@5z.com>
 Thu May 21 03:45:42 1998  George Lebl  <jirka@5z.com>
 
 	* clock/clock.c: clock is now a multi applet, meaning if it's
-	  already started, adding a clock won't run anotehr process,
+	  already started, adding a clock won't run another process,
 	  but just contact the running clock for a new copy
 
 Sun May 17 12:44:46 1998  Havoc Pennington  <hp@pobox.com>
@@ -2254,7 +2261,7 @@ Sat May 16 00:59:12 1998  George Lebl  <jirka@5z.com>
 
 Thu May 07 18:57:42 1998  George Lebl  <jirka@5z.com>
 
-	* fish/*: added teh fish applet
+	* fish/*: added the fish applet
 
 	* applet-dirs/{Makefile.am,Amusements.directory}: added
 	  amusements directory

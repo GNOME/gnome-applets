@@ -298,23 +298,19 @@ draw_h (void)
 	free_space = fsu.bavail; /* Free blocks available to non-superuser. */
 #endif
 
-	/* Is 1024 correct for the "block size" ? */
-	free_space *= 1024;
+	/* ??? Are blocks always in kB ??? */
 
-	if (free_space >= 1073741824) /* bigger than a GB */
+	if (free_space >= 1048576) /* bigger than a GB */
 		g_snprintf (avail_buf2, sizeof (avail_buf2), "av: %.3f GB",
-			    free_space / 1073741824.0);
-	else if (free_space >= 1048576) /* bigger than a MB */
-		g_snprintf (avail_buf2, sizeof(avail_buf2), "av: %.3f MB",
 			    free_space / 1048576.0);
-	else if (free_space >= 1024) /* bigger than a kB */
-		g_snprintf (avail_buf2, sizeof(avail_buf2), "av: %.3f kB",
+	else if (free_space >= 1024) /* bigger than a MB */
+		g_snprintf (avail_buf2, sizeof(avail_buf2), "av: %.3f MB",
 			    free_space / 1024.0);
-	else /* less than 1 kB */
-		g_snprintf (avail_buf2, sizeof(avail_buf2), "av: %u",
-			    free_space);
+	else /* kB */
+		g_snprintf (avail_buf2, sizeof(avail_buf2), "av: %.3f kB",
+			    (double)free_space);
 
-	free_space /= 1024;
+	/* Note that we get the stuff in kB already, so we can't do bytes */
 
 	gdk_gc_set_foreground (gc, &bcolor);
 	
@@ -468,53 +464,42 @@ draw_v (void)
 #endif
 
 
-	free_space *= 1024;
+	/* ??? Are blocks always in kB ??? */
 
 	if (summary_info.pixel_size <= PIXEL_SIZE_STANDARD) {
-		if (free_space >= 1073741824) 
+		if (free_space >= 1048576) 
 			g_snprintf (avail_buf2, sizeof(avail_buf2),"%uG",
-				    free_space / 1073741824);
-		else if (free_space >= 1048576) 
-			g_snprintf (avail_buf2, sizeof(avail_buf2),"%uM",
 				    free_space / 1048576);
 		else if (free_space >= 1024) 
-			g_snprintf (avail_buf2, sizeof(avail_buf2),"%uk",
+			g_snprintf (avail_buf2, sizeof(avail_buf2),"%uM",
 				    free_space / 1024);
 		else
-			g_snprintf (avail_buf2, sizeof(avail_buf2),"%u",
+			g_snprintf (avail_buf2, sizeof(avail_buf2),"%uk",
 				    free_space);
 
 	}
 	else if (summary_info.pixel_size <= PIXEL_SIZE_LARGE) {
-		if (free_space >= 1073741824) 
+		if (free_space >= 1048576) 
 			g_snprintf (avail_buf2, sizeof(avail_buf2),"%.1f GB",
-				    free_space / 1073741824.0);
-		else if (free_space >= 1048576) 
-			g_snprintf (avail_buf2, sizeof(avail_buf2),"%.1f MB",
 				    free_space / 1048576.0);
 		else if (free_space >= 1024) 
-			g_snprintf (avail_buf2, sizeof(avail_buf2),"%.1f kB",
+			g_snprintf (avail_buf2, sizeof(avail_buf2),"%.1f MB",
 				    free_space / 1024.0);
 		else
-			g_snprintf (avail_buf2, sizeof(avail_buf2),"%u",
+			g_snprintf (avail_buf2, sizeof(avail_buf2),"%u kB",
 				    free_space);
 	}
 	else {
-		if (free_space >= 1073741824)
+		if (free_space >= 1048576) 
 			g_snprintf (avail_buf2, sizeof(avail_buf2),"%.3f GB",
-				    free_space / 1073741824.0);
-		else if (free_space >= 1048576) 
-			g_snprintf (avail_buf2, sizeof(avail_buf2),"%.3f MB",
 				    free_space / 1048576.0);
 		else if (free_space >= 1024) 
-			g_snprintf (avail_buf2, sizeof(avail_buf2),"%.3f kB",
+			g_snprintf (avail_buf2, sizeof(avail_buf2),"%.3f MB",
 				    free_space / 1024.0);
 		else
-			g_snprintf (avail_buf2, sizeof(avail_buf2),"%u",
+			g_snprintf (avail_buf2, sizeof(avail_buf2),"%u kB",
 				    free_space);
 	}
-
-	free_space /= 1024;
 
 	/* draw text strings 2nd part*/
 	gdk_draw_string (pixmap, my_font, gc,
