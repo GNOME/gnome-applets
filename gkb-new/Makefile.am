@@ -26,7 +26,7 @@ GKB_ICON = gkb.png
 
 EXTRA_DIST = gkb_applet.desktop $(GKB_ICON) \
 	gkb_applet.gnorba \
-        gnome-wm
+        gkb_xmmap
 
 sysdir = $(datadir)/applets/Utility
 sys_DATA = gkb_applet.desktop
