@@ -5,7 +5,7 @@
  * 
  * (C) Copyright 2001, Richard Hult
  *
- * Author: Richard Hult <rhult@codefactory.se>
+ * Author: Richard Hult <richard@imendio.com>
  *
  *
  * Loosely based on the mixer applet:
@@ -1318,7 +1318,7 @@ mixer_about_cb (BonoboUIComponent *uic,
         GdkPixbuf *pixbuf             = NULL;
         gchar *file;
         static const gchar *authors[] = {
-		"Richard Hult <rhult@codefactory.se>",
+		"Richard Hult <richard@imendio.com>",
                 NULL
         };
 
@@ -1527,6 +1527,8 @@ mixer_pref_cb (BonoboUIComponent *uic,
 	gtk_box_pack_start (GTK_BOX (vbox3), label, FALSE, FALSE, 0);
 	
 	scrolled = gtk_scrolled_window_new(NULL,NULL);
+	gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolled),
+					     GTK_SHADOW_IN);
 	gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(scrolled),
 						GTK_POLICY_AUTOMATIC,
 						GTK_POLICY_AUTOMATIC);
