@@ -242,6 +242,9 @@ prop_apply (GtkWidget *w, int page, gpointer data)
     }
 
   bat->graph_interval = GTK_ADJUSTMENT(bat->graph_speed_adj)->value;
+  gtk_timeout_remove (bat->graph_timeout_id);
+  bat->graph_timeout_id = gtk_timeout_add(1000 * bat->graph_interval,
+					  (GtkFunction) battery_update, bat);
   /* FIXME: set the direction! */
 
   gnome_color_picker_get_i8 ( bat->graph_ac_on_color_sel,

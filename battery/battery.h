@@ -37,6 +37,7 @@ typedef struct BatteryData {
 
   /* Configurable elements of graph mode... */
   gint graph_interval;
+  guint graph_timeout_id;
   gint graph_direction;
 #define BATTERY_GRAPH_LEFT_TO_RIGHT 1
 #define BATTERY_GRAPH_RIGHT_TO_LEFT 2

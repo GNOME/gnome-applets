@@ -523,8 +523,8 @@ make_new_battery_applet(void)
   /* Nothing is drawn until this is set. */
   bat->setup = TRUE;
 
-  gtk_timeout_add(500, (GtkFunction) battery_update,  bat);
-
+  bat->graph_timeout_id = gtk_timeout_add(1000 * bat->graph_interval,
+					  (GtkFunction) battery_update, bat);
 } /* make_new_battery_applet */
 
 void
