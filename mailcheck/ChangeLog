@@ -1,3 +1,11 @@
+2003-05-25  Kevin Vandersloot <kfv101@psu.edu>
+
+	* mailcheck.c: change behavior and pref so that when applet is clicked just
+	stop animation. Previously there wasn't a way to actually set the number of unread
+	mails to zero and hence the pref didn't make any sense. Fixes bug #112914. Also
+	if no mail dir is located then set it to the user mail dir. Don't quit the applet if
+	USER can be found
+
 2003-05-22  Dennis Cranston <dennis_cranston at yahoo com>
 
 	* mailcheck.c:  Correct grammar and capitalization for a few error messages.

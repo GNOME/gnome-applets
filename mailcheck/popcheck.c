@@ -178,6 +178,7 @@ int pop3_check(const char *h, const char* n, const char* e)
   if (!h || !n || !e) return -1;
   
   s = connect_socket(h, 110);
+
   if (s > 0) {
     if (!is_pop3_answer_ok(read_line(s))) {
       close(s);

@@ -57,8 +57,9 @@ struct _MailCheck {
 	/* interval to check for mails in milliseconds */
 	guint update_freq;
 
-	/* whether to set mc->newmail and mc->unreadmail to 0 if the applet was clicked */
+	/* Pref is reset_on_clicked. Show animation is intended to restart animation for newmail */
 	gboolean reset_on_clicked;
+	gboolean show_animation;
 
 	/* execute a command when the applet is clicked (launch email prog) */
 	char *clicked_cmd;
@@ -411,6 +412,10 @@ error_handler (int error, gpointer data)
 	}
 		
 	set_tooltip (GTK_WIDGET (mc->applet), details);
+	if (mc->animation_tag != 0){
+		gtk_timeout_remove (mc->animation_tag);
+		mc->animation_tag = 0;
+	}
 }
 
 static void
@@ -588,7 +593,7 @@ after_mail_check (MailCheck *mc)
 		}
 		else {
 			if(mc->unreadmail)
-				text = g_strdup_printf(_("%d/%d messages"), mc->unreadmail, mc->totalmail);
+				text = g_strdup_printf(_("%d unread/ %d messages"), mc->unreadmail, mc->totalmail);
 			else
 				text = g_strdup_printf(_("%d messages"), mc->totalmail);
 		} 
@@ -597,6 +602,8 @@ after_mail_check (MailCheck *mc)
 		text = g_strdup_printf(_("No mail."));
 
 	if (mc->newmail) {
+		mc->show_animation = TRUE;
+		
 		if(mc->play_sound)
 			gnome_triggers_vdo("You've got new mail!", "program", supinfo);
 
@@ -610,7 +617,7 @@ after_mail_check (MailCheck *mc)
 	case REPORT_MAIL_USE_ANIMATION:
 		if (mc->anymail){
 			if (mc->unreadmail){
-				if (mc->animation_tag == 0){
+				if (mc->animation_tag == 0 && mc->show_animation){
 					mc->animation_tag = gtk_timeout_add (150, next_frame, mc);
 					mc->nframe = 1;
 				}
@@ -710,13 +717,17 @@ exec_clicked_cmd (GtkWidget *widget, GdkEventButton *event, gpointer data)
 	gboolean retval = FALSE;
 
 	if (event->button == 1) {
-		
+
 		if (mc->clicked_enabled && mc->clicked_cmd && (strlen(mc->clicked_cmd) > 0))
 			mailcheck_execute_shell (mc, mc->clicked_cmd);
-		
+
 		if (mc->reset_on_clicked) {
-			mc->newmail = mc->unreadmail = 0;
-			after_mail_check (mc);
+	
+			mc->show_animation = FALSE;
+			if (mc->animation_tag != 0){
+				gtk_timeout_remove (mc->animation_tag);
+				mc->animation_tag = 0;
+			}
 		}
 
 		retval = TRUE;
@@ -1575,13 +1586,6 @@ mailcheck_properties_page (MailCheck *mc)
 	gtk_widget_show(mc->play_sound_check);
 	gtk_box_pack_start(GTK_BOX (control_vbox), mc->play_sound_check, TRUE, TRUE, 0);
 
-	l = gtk_check_button_new_with_mnemonic (_("Set the number of unread mails to _zero when clicked"));
-	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(l), mc->reset_on_clicked);
-	g_signal_connect(G_OBJECT(l), "toggled",
-			   G_CALLBACK(reset_on_clicked_toggled), mc);
-	gtk_widget_show(l);
-	gtk_box_pack_start(GTK_BOX (control_vbox), l, TRUE, TRUE, 0);
-
 	hbox = gtk_hbox_new (FALSE, 12);
 	gtk_box_pack_start (GTK_BOX (control_vbox), hbox, TRUE, TRUE, 0);
 	gtk_widget_show (hbox);
@@ -1594,6 +1598,14 @@ mailcheck_properties_page (MailCheck *mc)
 	gtk_box_pack_start (GTK_BOX (hbox), animation_option_menu, FALSE, FALSE, 0);
 	set_atk_relation (animation_option_menu, l, ATK_RELATION_LABELLED_BY);
 	make_check_widgets_sensitive(mc);
+	
+	/*l = gtk_check_button_new_with_mnemonic (_("Set the number of unread mails to _zero when clicked"));*/
+	l = gtk_check_button_new_with_mnemonic (_("Sto_p animation when clicked"));
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(l), mc->reset_on_clicked);
+	g_signal_connect(G_OBJECT(l), "toggled",
+			   G_CALLBACK(reset_on_clicked_toggled), mc);
+	gtk_widget_show(l);
+	gtk_box_pack_start(GTK_BOX (control_vbox), l, TRUE, TRUE, 0);
 
 	category_vbox = gtk_vbox_new (FALSE, 6);
 	gtk_box_pack_start (GTK_BOX (categories_vbox), category_vbox, TRUE, TRUE, 0);
@@ -2016,27 +2028,25 @@ mailcheck_applet_fill (PanelApplet *applet)
 	mc->animation_tag = 0;
 	mc->password_dialog = NULL;
 	mc->oldsize = 0;
+	mc->show_animation = TRUE;
 
 	/*initial state*/
 	mc->report_mail_mode = REPORT_MAIL_USE_ANIMATION;
 	
-	mc->mail_file = NULL;
+	mc->mail_file = NULL;	
 
-	if (mc->mail_file == NULL) {
+	panel_applet_add_preferences (applet, "/schemas/apps/mailcheck_applet/prefs", NULL);
+	applet_load_prefs(mc);
+	if (mc->mail_file == NULL || strlen(mc->mail_file)==0) {
 		const char *mail_file = g_getenv ("MAIL");
 		if (mail_file == NULL) {
 			const char *user = g_getenv ("USER");
-			if (user == NULL)
-				return FALSE;
-
-			mc->mail_file = g_strdup_printf ("/var/spool/mail/%s",
+			if (user != NULL)
+				mc->mail_file = g_strdup_printf ("/var/spool/mail/%s",
 							 user);
 		} else
 			mc->mail_file = g_strdup (mail_file);
 	}
-
-	panel_applet_add_preferences (applet, "/schemas/apps/mailcheck_applet/prefs", NULL);
-	applet_load_prefs(mc);
 
 	mc->mailcheck_text_only = _("Text only");
 
