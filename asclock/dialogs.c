@@ -122,7 +122,7 @@ void properties_dialog(AppletWidget *applet, gpointer data)
   gtk_clist_set_column_width(GTK_CLIST(list), 0, 200);
   gtk_widget_set_usize(list, 260, 320);
 
-  gtk_clist_set_policy(GTK_CLIST(list), GTK_POLICY_ALWAYS, GTK_POLICY_AUTOMATIC); 
+  /*gtk_clist_set_policy(GTK_CLIST(list), GTK_POLICY_ALWAYS, GTK_POLICY_AUTOMATIC); */
 
   gtk_box_pack_start(GTK_BOX(hbox), list, TRUE, TRUE, 5);
   gtk_widget_show(list);
