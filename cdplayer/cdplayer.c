@@ -277,6 +277,11 @@ destroy_cdplayer(GtkWidget * widget, void *data)
 	g_free(cd);
 }
 
+void
+cdpanel_realized(GtkWidget *cdpanel, CDPlayerData *cd)
+{
+	cd_panel_update(cdpanel, cd);
+}
 
 static GtkWidget *
 create_cdplayer_widget(GtkWidget *window, char *globcfgpath)
@@ -303,9 +308,10 @@ create_cdplayer_widget(GtkWidget *window, char *globcfgpath)
 
 	gtk_object_set_user_data(GTK_OBJECT(cdpanel), cd);
 	gtk_signal_connect(GTK_OBJECT(cdpanel), "destroy",
-			   (GtkSignalFunc) destroy_cdplayer,
+			   GTK_SIGNAL_FUNC (destroy_cdplayer),
 			   NULL);
-	cd_panel_update(cdpanel, cd);
+	gtk_signal_connect(GTK_OBJECT (cdpanel), "realize",
+			   GTK_SIGNAL_FUNC (cdpanel_realized), cd);
 
 	return cdpanel;
 }
