@@ -150,7 +150,10 @@ gkb_preset_load (GList * list)
 	  val->label = gnome_config_get_string ("Label");
 
 	  val->lang = gnome_config_get_translated_string ("Language");
+	  if (val->lang == NULL) val->lang = g_strdup(_("Undefined"));
+
 	  val->country = gnome_config_get_translated_string ("Country");
+	  if (val->country == NULL) val->country = g_strdup(_("Undefined"));
 	
 	  retlist = g_list_append (retlist, val);
 

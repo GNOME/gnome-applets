@@ -390,9 +390,8 @@ gkb_prop_create_buttons_vbox (GkbPropertyBoxInfo * pbi)
   GtkWidget *vbox;
 
   vbox = gtk_vbutton_box_new ();
-  gtk_button_box_set_spacing (GTK_BUTTON_BOX (vbox), 4);
-  gtk_button_box_set_child_size (GTK_BUTTON_BOX (vbox), 75, 25);
-  gtk_container_set_border_width (GTK_CONTAINER (vbox), 4);
+  gtk_button_box_set_spacing (GTK_BUTTON_BOX (vbox), 6);
+  gtk_container_set_border_width (GTK_CONTAINER (vbox), 0);
   gtk_button_box_set_layout (GTK_BUTTON_BOX (vbox), GTK_BUTTONBOX_START);
       
   pbi->buttons_vbox = vbox;

@@ -110,9 +110,8 @@ gkb_prop_label_at (GtkWidget * table, gint row, gint col,
 		    row, row + 1, col, col + 1,
 		    (GtkAttachOptions) (GTK_FILL),
 		    (GtkAttachOptions) (0), 0, 0);
-  gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_RIGHT);
-  gtk_misc_set_padding (GTK_MISC (label), 5, 0);
-  gtk_misc_set_alignment (GTK_MISC (label), 1, 0.5);
+  gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
+  gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
 }
 
 
@@ -258,8 +257,8 @@ gkb_prop_option_menu_at (GtkWidget * table, gint row, gint col,
 
   gtk_table_attach (GTK_TABLE (table), option_menu,
 		    row, row + 1, col, col + 1,
-		    (GtkAttachOptions) (GTK_FILL),
-		    (GtkAttachOptions) (GTK_EXPAND), 0, 0);
+		    (GtkAttachOptions) (GTK_EXPAND | GTK_FILL),
+		    (GtkAttachOptions) (0), 0, 0);
 
   gtk_label_set_mnemonic_widget(GTK_LABEL(label), option_menu );                
   if (gail_loaded)                                                              
@@ -267,46 +266,72 @@ gkb_prop_option_menu_at (GtkWidget * table, gint row, gint col,
       add_atk_relation(option_menu, label, ATK_RELATION_LABELLED_BY);               }
 }
 
+static GtkWidget *
+create_hig_category (GtkWidget *main_box, gchar *title)
+{
+	GtkWidget *vbox, *vbox2, *hbox;
+	GtkWidget *label;
+	gchar *tmp;
+		
+	vbox = gtk_vbox_new (FALSE, 6);
+	gtk_box_pack_start (GTK_BOX (main_box), vbox, FALSE, FALSE, 0);
+	
+	tmp = g_strdup_printf ("<b>%s</b>", title);
+	label = gtk_label_new (NULL);
+	gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+	gtk_label_set_markup (GTK_LABEL (label), tmp);
+	g_free (tmp);
+	gtk_box_pack_start (GTK_BOX (vbox), label, TRUE, FALSE, 0);
+
+	hbox = gtk_hbox_new (FALSE, 0);
+	gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, FALSE, 0);
+	
+	label = gtk_label_new ("    ");
+	gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
+	
+	vbox2 = gtk_vbox_new (FALSE, 6);
+	gtk_box_pack_start (GTK_BOX (hbox), vbox2, TRUE, TRUE, 0);
+
+	return vbox2;
+		
+}
 
 /**
- * gkb_prop_create_display_frame:
+ * gkb_prop_create_display_category:
  * @GkbPropertyBoxInfo * pbi: PropBox Information
  * 
- * Implement the display frame
+ * Implement the display category
  * 
- * Return Value: the display frame widget
+ * Return Value: the display category widget
  **/
 static GtkWidget *
-gkb_prop_create_display_frame (GkbPropertyBoxInfo * pbi)
+gkb_prop_create_display_category (GkbPropertyBoxInfo * pbi)
 {
   GList *mode;
   GList *sizes;
 
-  GtkWidget *frame;
+  GtkWidget *vbox;
+  GtkWidget *vbox2;
   gchar *pixmap_filename;
   GtkWidget *hbox;
   GtkWidget *pixmap;
   GtkWidget *table;
   gint size;
 
-  frame = gtk_frame_new (_("Display"));
+  vbox = gtk_vbox_new(FALSE, 0);
+  gtk_container_set_border_width (GTK_CONTAINER (vbox), 0);
+  gtk_widget_show (vbox);
+  
+  vbox2 = create_hig_category (vbox, _("Display"));
 
-  hbox = gtk_hbox_new (FALSE, 0);
-  gtk_container_add (GTK_CONTAINER (frame), hbox);
-
-  /* Load the pixmap */
-  pixmap = gtk_type_new (gnome_pixmap_get_type ());
-  pixmap_filename = gnome_pixmap_file ("gkb.png");
-  if (pixmap_filename)
-    gnome_pixmap_load_file (GNOME_PIXMAP (pixmap), pixmap_filename);
-  g_free (pixmap_filename);
-  gtk_box_pack_start (GTK_BOX (hbox), pixmap, FALSE, FALSE, 23);
+  hbox = gtk_hbox_new (FALSE, 6);
+  gtk_box_pack_start (GTK_BOX (vbox2), hbox, FALSE, FALSE, 0);
+  gtk_widget_show (hbox);
 
   /* Create the table */
-  table = gtk_table_new (2, 2, TRUE);
+  table = gtk_table_new (2, 2, FALSE);
   gtk_box_pack_start (GTK_BOX (hbox), table, TRUE, TRUE, 0);
-  gtk_container_set_border_width (GTK_CONTAINER (table), 5);
-  gtk_table_set_row_spacings (GTK_TABLE (table), 15);
+  gtk_table_set_row_spacings (GTK_TABLE (table), 6);
 
   /* Labels and option Menus */
   gkb_prop_label_at (table, 0, 0, _("_Appearance: "));
@@ -320,7 +345,7 @@ gkb_prop_create_display_frame (GkbPropertyBoxInfo * pbi)
   /* hopeful fix for "bug" #76223 */
   if (size > GKB_SMALL_PANEL_SIZE) {
   
-     gkb_prop_label_at (table, 0, 1, _("Applet _size: "));
+     gkb_prop_label_at (table, 0, 1, _("_Size: "));
                                                                                      
      sizes = gkb_prop_get_sizes ();
      gkb_prop_option_menu_at (table, 1, 1, sizes,
@@ -328,39 +353,52 @@ gkb_prop_create_display_frame (GkbPropertyBoxInfo * pbi)
                            pbi, pbi->is_small ? 0 : 1);
      g_list_free (sizes);
   }
-  return frame;
+  return vbox;
 }
 
 
 /**
- * gkb_prop_create_hotkey_frame:
+ * gkb_prop_create_hotkey_category:
  * @GkbProbertyBoxInfo * pbi: Propbox info
  * 
- * Implement the hotkey properties frame
+ * Implement the hotkey properties category
  * 
- * Return Value: the hotkey frame widget
+ * Return Value: the hotkey category widget
  **/
 static GtkWidget *
-gkb_prop_create_hotkey_frame (GkbPropertyBoxInfo * pbi, GtkWidget * widget)
+gkb_prop_create_hotkey_category (GkbPropertyBoxInfo * pbi, GtkWidget * widget)
 {
-  GtkWidget *frame;
+  GtkWidget *category;
   GtkWidget *button;
   GtkWidget *hbox;
+  GtkWidget *vbox;
+  GtkWidget *label;
   GKB *gkb = pbi->gkb;
 
-  frame = gtk_frame_new (_("Hotkey for switching between layouts"));
-  hbox = gtk_hbox_new (TRUE, 0);
+  vbox = gtk_vbox_new (FALSE, 0);
+  gtk_container_set_border_width (GTK_CONTAINER(vbox), 0);
+  gtk_widget_show (vbox);
+  
+  category = create_hig_category (vbox, _("Keyboard Shortcuts"));
+  hbox = gtk_hbox_new (FALSE, 6);
 
-  gtk_container_add (GTK_CONTAINER (frame), hbox);
-  gtk_container_set_border_width (GTK_CONTAINER (hbox), 10);
+  gtk_container_add (GTK_CONTAINER (category), hbox);
+  gtk_container_set_border_width (GTK_CONTAINER (hbox), 0);
+  
+  label = gtk_label_new_with_mnemonic (_("S_witch layout:"));
+  gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
+  gtk_misc_set_alignment (GTK_MISC (label), 0, 0.5);
 
   if (pbi->hotkey_entry)
     gtk_widget_destroy (pbi->hotkey_entry);
 
   pbi->hotkey_entry = gtk_entry_new ();
   gtk_entry_set_text (GTK_ENTRY (pbi->hotkey_entry), gkb->key);
+  gtk_editable_set_editable (GTK_EDITABLE (pbi->hotkey_entry), FALSE);
+  gtk_entry_set_activates_default (GTK_ENTRY (pbi->hotkey_entry), TRUE);
+  gtk_label_set_mnemonic_widget (GTK_LABEL(label), pbi->hotkey_entry);
 
-  button = gtk_button_new_with_mnemonic (_("_Grab hotkey"));
+  button = gtk_button_new_with_mnemonic (_("_Grab keys"));
   if (gail_loaded)                                                              
     {                                                                           
       add_atk_relation(GTK_WIDGET(pbi->hotkey_entry),
@@ -368,8 +406,9 @@ gkb_prop_create_hotkey_frame (GkbPropertyBoxInfo * pbi, GtkWidget * widget)
       add_atk_relation(button, GTK_WIDGET(pbi->hotkey_entry),
 			ATK_RELATION_CONTROLLER_FOR );                              }
                                                                            
-  gtk_box_pack_start (GTK_BOX (hbox), button, TRUE, FALSE, 0);
-  gtk_box_pack_start (GTK_BOX (hbox), pbi->hotkey_entry, FALSE, TRUE, 0);
+  gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);                                                                         
+  gtk_box_pack_start (GTK_BOX (hbox), pbi->hotkey_entry, TRUE, TRUE, 0);
+  gtk_box_pack_start (GTK_BOX (hbox), button, FALSE, FALSE, 0);
 
 /*  g_signal_connect (pbi->hotkey_entry, "changed",
 		      G_CALLBACK (changed_cb), pb);
@@ -378,7 +417,7 @@ gkb_prop_create_hotkey_frame (GkbPropertyBoxInfo * pbi, GtkWidget * widget)
 		      G_CALLBACK (grab_button_pressed),
 		      pbi);
 
-  return frame;
+  return vbox;
 }
 
 static void
@@ -418,8 +457,8 @@ static GtkWidget *
 gkb_prop_create_property_box (GkbPropertyBoxInfo * pbi)
 {
   GtkWidget *propnotebook;
-  GtkWidget *display_frame;
-  GtkWidget *hotkey_frame;
+  GtkWidget *display_category;
+  GtkWidget *hotkey_category;
   GtkWidget *buttons_vbox;
   GtkWidget *page_1_hbox;
   GtkWidget *page_2_vbox;
@@ -435,6 +474,8 @@ gkb_prop_create_property_box (GkbPropertyBoxInfo * pbi)
                                             NULL);
   gtk_window_set_screen (GTK_WINDOW (propwindow),
 			 gtk_widget_get_screen (pbi->gkb->applet));
+  gtk_dialog_set_default_response (GTK_DIALOG (propwindow), GTK_RESPONSE_CLOSE);
+  gtk_dialog_set_has_separator (GTK_DIALOG (propwindow), FALSE);
 
   propnotebook =  gtk_notebook_new ();
   gtk_box_pack_start (GTK_BOX (GTK_DIALOG (propwindow)->vbox), propnotebook,
@@ -443,9 +484,10 @@ gkb_prop_create_property_box (GkbPropertyBoxInfo * pbi)
   gtk_widget_show (propnotebook);
 
   /* Add page 1 */
-  page_1_hbox = gtk_hbox_new (FALSE, 0);
+  page_1_hbox = gtk_hbox_new (FALSE, 6);
+  gtk_container_set_border_width (GTK_CONTAINER (page_1_hbox), 12);
   gtk_widget_show (page_1_hbox);
-  page_1_label = gtk_label_new (_("Keymaps"));
+  page_1_label = gtk_label_new (_("Keyboards"));
   gtk_notebook_append_page (GTK_NOTEBOOK (propnotebook), page_1_hbox, page_1_label);
 
   /* Page 1 Frame */
@@ -455,18 +497,19 @@ gkb_prop_create_property_box (GkbPropertyBoxInfo * pbi)
   gtk_box_pack_start (GTK_BOX (page_1_hbox), buttons_vbox, FALSE, TRUE, 0);
 
   /* Add page 2 */
-  page_2_vbox = gtk_vbox_new (FALSE, 0);
+  page_2_vbox = gtk_vbox_new (FALSE, 18);
+  gtk_container_set_border_width (GTK_CONTAINER (page_2_vbox), 12);
   gtk_widget_show (page_2_vbox);
   page_2_label = gtk_label_new (_("Options"));
   gtk_notebook_append_page (GTK_NOTEBOOK (propnotebook), page_2_vbox, page_2_label);
  
 
   /* Page 2 Frames */
-  display_frame = gkb_prop_create_display_frame (pbi);
-  hotkey_frame =
-    gkb_prop_create_hotkey_frame (pbi, propnotebook);
-  gtk_box_pack_start (GTK_BOX (page_2_vbox), display_frame, TRUE, TRUE, 0);
-  gtk_box_pack_start (GTK_BOX (page_2_vbox), hotkey_frame, TRUE, FALSE, 2);
+  display_category = gkb_prop_create_display_category (pbi);
+  hotkey_category =
+    gkb_prop_create_hotkey_category (pbi, propnotebook);
+  gtk_box_pack_start (GTK_BOX (page_2_vbox), display_category, FALSE, FALSE, 0);
+  gtk_box_pack_start (GTK_BOX (page_2_vbox), hotkey_category, FALSE, FALSE, 0);
 
   g_signal_connect (G_OBJECT (propwindow), "response",
                     G_CALLBACK (window_response),

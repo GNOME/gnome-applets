@@ -431,6 +431,7 @@ gkb_prop_map_add (GkbPropertyBoxInfo * pbi)
   gtk_widget_set_sensitive (button, FALSE);
   
   gtk_dialog_set_default_response (GTK_DIALOG (gkb->addwindow), 100);
+  gtk_dialog_set_has_separator (GTK_DIALOG (gkb->addwindow), FALSE);
   gtk_window_set_screen (GTK_WINDOW (gkb->addwindow),
 			 gtk_widget_get_screen (gkb->applet));
   gtk_object_set_data (GTK_OBJECT (gkb->addwindow), "addwindow",
@@ -442,6 +443,7 @@ gkb_prop_map_add (GkbPropertyBoxInfo * pbi)
   gtk_widget_show (vbox1);
   
   scrolled1 = gtk_scrolled_window_new (NULL, NULL);
+  gtk_container_set_border_width (GTK_CONTAINER (scrolled1), 12);
   gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled1),
 				  GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
   gtk_widget_set_usize (scrolled1, 315, 202);
