@@ -221,6 +221,7 @@ void preferences_apply_cb(GConfClient *client, guint cnxn_id, GConfEntry *entry,
 			StickyNote *note = g_list_nth_data(stickynotes->notes, i);
 			stickynote_set_locked(note, gconf_value_get_bool(entry->value));
 		}
+		stickynotes_save();
 	}
 
 	else if (strcmp(entry->key, GCONF_PATH "/settings/visible") == 0) {
@@ -228,6 +229,7 @@ void preferences_apply_cb(GConfClient *client, guint cnxn_id, GConfEntry *entry,
 			StickyNote *note = g_list_nth_data(stickynotes->notes, i);
 			stickynote_set_visible(note, gconf_value_get_bool(entry->value));
 		}
+		stickynotes_save();
 	}
 
 	if (strcmp(entry->key, GCONF_PATH "/settings/force_default_color") == 0 ||
