@@ -523,18 +523,27 @@ static void dial_cb(GtkWidget *widget, gpointer data)
 
 static void update_tooltip(int connected, int rx, int tx)
 {
-	gchar text[64];
+	gchar *text;
 	if (connected)
 		{
-		g_snprintf(text,sizeof(text),"%#.1fM / %#.1fM",(float)rx / 1000000, (float)tx / 1000000);
+		gint t;
+		gint h, m;
+
+		t = get_connect_time(FALSE);
+
+		h = t / 3600;
+		m = (t - (h * 3600)) / 60;
+
+		text = g_strdup_printf(_("%#.1fMb received / %#.1fMb sent / time: %.1d:%.2d"),
+				       (float)rx / 1000000, (float)tx / 1000000, h, m);
 		}
 	else
 		{
-		strncpy(text, _("not connected"), sizeof(text));
-		text[sizeof(text) - 1] = 0;
+		text = g_strdup(_("not connected"));
 		}
 
-	applet_widget_set_widget_tooltip(APPLET_WIDGET(applet),button,text);
+	applet_widget_set_widget_tooltip(APPLET_WIDGET(applet), button, text);
+	g_free(text);
 }
 
 /*
@@ -909,7 +918,7 @@ static gint update_display(void)
 			tooltip_counter++;
 			if (tooltip_counter > 10)
 				{
-				update_tooltip(TRUE,rx,tx);
+				update_tooltip(TRUE, rx, tx);
 				tooltip_counter = 0;
 				}
 
