@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- -*- indent-tabs-mode: nil -*- -->
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+<!ENTITY legal SYSTEM "legal.xml">
+<!ENTITY appletversion "2.8">
+<!ENTITY manrevision "2.8">
+<!ENTITY date "August 2004">
+<!ENTITY applet "Keyboard Indicator">
+<!ENTITY ug "GNOME Desktop User Guide">
+]>
+<!-- 
+(Do not remove this comment block.)
+Maintained by the GNOME Documentation Project
+http://developer.gnome.org/projects/gdp
+Template version: 2.0 beta
+Template last modified Feb 12, 2002
+-->
+<article id="index" lang="uk">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+<articleinfo> 
+  <title>Довідка з аплету "Індикатор клавіатури"</title>       
+
+  <copyright> 
+    <year>2004</year>
+    <holder>Angela Boyle</holder> 
+  </copyright>
+  <copyright>
+    <year>2004</year>
+    <holder>Сергій Удальцов</holder>
+  </copyright><copyright><year>2004, 2005</year><holder>Максим Дзюманенко (mvd@mylinux.com.ua)</holder></copyright>
+  <!-- translators: uncomment this:
+       <copyright>
+       <year>2003</year>
+       <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+       </copyright>
+  -->
+
+  <publisher> 
+    <publishername>Проект документування GNOME</publishername> 
+  </publisher> 
+
+  &legal;
+  <!-- This file  contains link to license for the documentation (GNU FDL), and 
+       other legal stuff such as "NO WARRANTY" statement. Please do not change 
+       any of this. -->
+
+  <authorgroup> 
+    <author> 
+      <firstname>Angela</firstname>
+      <surname>Boyle</surname> 
+      <email>aboyle@aboyle.com</email>
+    </author>
+    <author>
+      <firstname>Сергій</firstname>
+      <surname>Удальцов</surname>
+      <email>svu@gnome.org</email>
+    </author>
+    <!-- This is appropriate place for other contributors: translators,
+         maintainers,  etc. Commented out by default.
+         <othercredit role="translator">
+         <firstname>Latin</firstname> 
+         <surname>Translator 1</surname> 
+         <affiliation> 
+         <orgname>Latin Translation Team</orgname> 
+         <address> <email>translator@gnome.org</email> </address> 
+         </affiliation>
+         <contrib>Latin translation</contrib>
+         </othercredit>
+    -->
+  </authorgroup>
+
+  <releaseinfo>Ця довідка описує аплет "Індикатор клавіатури" версії 2.8.</releaseinfo> 
+
+  <legalnotice> 
+    <title>Зворотній зв'язок</title> 
+    <para>Щоб сповістити про помилку або внести пропозицію відносно аплету "Індикатор клавіатури"або цієї довідки, дотримуйтесь інструкцій на сторінці <ulink url="ghelp:gnome-feedback" type="help">Зворотний зв'язок з GNOME</ulink>.</para>
+    <!-- Translators may also add here feedback address for translations -->
+  </legalnotice> 
+</articleinfo> 
+
+<indexterm> 
+  <primary>Індикатор клавіатури</primary> 
+</indexterm>
+
+<sect1 id="gswitchit-applet-intro">
+  <title>Вступ</title>
+
+  <para>Аплет <application>Індикатор клавіатури</application> відображає активну групу клавіатури. Аплет відображає групу, яку ви зараз використовуєте. Окрім стандартних пунктів меню аплету, аплет <application>Індикатор клавіатури</application> дозволяє відкривати вікно Параметри та перемикати групи мов.</para>
+
+  <para>Щоб додати <application>Індикатор клавіатури</application> до панелі, натисніть правою кнопкою на панелі, потім виберіть <guimenuitem>Додати до панелі</guimenuitem>. У діалоговому вікні <application>Додати до панелі</application> виберіть <application>Індикатор клавіатури</application>, потім натисніть <guibutton>Гаразд</guibutton>.</para>
+
+  <para>Щоб відкрити діалогове вікно <guilabel>Параметри клавіатури</guilabel>, виберіть у меню аплету <guimenuitem>Відкрити параметри клавіатури</guimenuitem>. У цьому вікні можна налаштувати клавіатуру (вибрати модель, розкладки, параметри, тощо). Щоб переглянути довідку з вікна <guilabel>Параметри клавіатури</guilabel>, перегляньте <ulink url="ghelp:user-guide#goscustperiph-2">Налаштовування параметрів клавіатури</ulink>.</para>
+</sect1>
+
+<sect1 id="gswitchit-applet-switching">
+  <title>Перемикання мови</title>
+
+  <para>По-перше, слід знати, що група - це набір символів певної мови, чи символи, що не відносяться до жодної мови, наприклад дворак. Кожна мова може мати більш ніж один піднабір символів, та кожен піднабір називається групою. Є кілька шляхів перемикання групи символів вашої клавіатури.</para>
+
+  <variablelist><varlistentry><term>Клацанням мишею</term><listitem><para>Можете перемикати групи одним клацанням на значку аплету на панелі. Групи перемикаються циклічно, відповідно до поточної конфігурації.</para></listitem></varlistentry><varlistentry><term>Контекстне меню</term><listitem><para>Щоб вибрати певну групу виберіть її з меню <guisubmenu>Групи</guisubmenu>. </para></listitem></varlistentry><varlistentry><term>Клавіатурою</term><listitem><para>У <guilabel>Параметри клавіатури</guilabel> можна вибрати комбінацію клавіш якою ви бажаєте перемикати групи. Щоб відкрити вікно <guilabel>Параметри клавіатури</guilabel>, виберіть у контекстному вікні <guimenuitem>Відкрити параметри клавіатури</guimenuitem>. Докладніше про <guilabel>Параметри клавіатури</guilabel>, дивіться <ulink url="ghelp:user-guide#goscustperiph-2">Налаштовування параметрів клавіатури</ulink>.</para></listitem></varlistentry></variablelist>
+</sect1>
+
+<sect1 id="gswitchit-applet-prefs">
+  <title>Налаштовування поведінки</title>
+  <para>Щоб налаштувати аплет <application>Параметри клавіатури</application>, натисніть правою кнопкою миші на аплеті, потім виберіть <guimenuitem>Параметри</guimenuitem>. Відкриється діалогове вікно <guilabel>Параметри клавіатури</guilabel>. Усі зроблені у вікні <guilabel>Параметри</guilabel> зміни стануть активними негайно після натискання кнопки <guibutton>Закрити</guibutton>.</para>
+  <note>
+    <title>Доступні параметри</title>
+    <para>Усі параметри вікна <guilabel>Параметри клавіатури</guilabel> працюють навіть без аплету, але усі параметри у аплеті <guilabel>Параметри клавіатури</guilabel> працюють лише при запущеному аплеті.</para>
+  </note>
+  <variablelist><varlistentry><term><guibutton>Типова група</guibutton></term><listitem><para>Цей розкривний список визначає групу, яка буде використовуватись при створенні нового вікна. Також можна вибрати запис <guimenuitem>не використовувати</guimenuitem>, тоді нові вікна будуть використовувати поточну активну групу.</para></listitem></varlistentry><varlistentry><term><guibutton>Окрема група для кожного вікна</guibutton></term><listitem><para>При відміченні цього параметра аплет буде зберігати та активну групу незалежну для кожного вікна. Зауважте, цей параметр доступний лише якщо аплет на панелі.</para></listitem></varlistentry><varlistentry><term><guibutton>Збігати/відновлювати індикатори для групи</guibutton></term><listitem><para>При відміченні цього параметра, аплет буде зберігати/обробляти незалежні набори індикаторів клавіатури (Caps Lock, Num Lock, Scroll Lock, тощо.) для кожного вікна на екрані. Наприклад, якщо CapsLock активний для вікна OpenOffice, та не активний для вікна Evolution, він автоматично відновлюється при перемиканні між цими вікнами -- на стан "Увімкнено у вікні OpenOffice та стан "Вимкнено" для вікна Evolution. Цей параметр діє, лише якщо відмічено параметр <guibutton>Окрема група для кожного вікна</guibutton>.</para><note><para>Наведений вище параметр може входити у протиріччя з параметрами, що призначені індикаторам групи. Наприклад, у вкладці <guilabel>Розкладка</guilabel>, є параметри які дозволяють використовувати NumLock як індикатор групи №2. Тож, навіть якщо ви не відмітили <guilabel>Зберігати/відновлювати індикатори</guilabel> (та відмітили <guilabel>Окрема група для кожного вікна</guilabel>), індикатор NumLock все одно буде відновлюватись разом з групою.</para></note></listitem></varlistentry><varlistentry><term><guilabel>Виключати з циклу перемикання</guilabel></term><listitem><para>Цей параметр запобігає перемиканню на цю групу з клавіатури. Кількість елементів відповідає кількості увімкнених груп, тому ви можете виключати кожну групу окремо.</para></listitem></varlistentry></variablelist>
+</sect1>
+
+<sect1 id="gswitchit-applet-plugins">
+  <title>Модулі</title>        
+  <para>Щоб відкрити вікно <guilabel>Модулі індикатора клавіатури</guilabel>, виберіть з контекстного меню аплету <guimenuitem>Модулі</guimenuitem>. Встановлені модулі показуються у списку <guilabel>Активні модулі</guilabel>.</para> 
+  <variablelist><varlistentry><term>Додавання нового модуля</term><listitem><para>Натисніть кнопку <guibutton>Додати</guibutton>. У вікні <guilabel>Додавання модуля</guilabel> виберіть модуль зі списку <guilabel>Наявні модулі</guilabel> та натисніть <guibutton>Гаразд</guibutton>.</para></listitem></varlistentry><varlistentry><term>Видалення модуля</term><listitem><para>Виділіть зайвий модуль у списку <guilabel>Активні модулі</guilabel> та натисніть <guibutton>Видалити</guibutton>.</para></listitem></varlistentry><varlistentry><term>Переміщення елементів списку модулів</term><listitem><para>Для переміщення елементів у списку <guilabel>Активні модулі</guilabel> вгору та вниз, виділіть потрібний модуль та натисніть <guibutton>Вгору</guibutton> чи <guibutton>Вниз</guibutton>. Також для переміщення виділеного елементу вгору чи вниз можна користуватись клавішами зі стрілками.</para></listitem></varlistentry><varlistentry><term>Зміна властивостей модуля</term><listitem><para>Щоб змінити параметри модуля виберіть потрібний модуль та натисніть <guibutton>Параметри</guibutton>. У кожного модуля свій набір параметрів.</para></listitem></varlistentry></variablelist>
+</sect1>
+</article>
