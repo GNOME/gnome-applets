@@ -971,14 +971,11 @@ static gint update_display(MLData *mldata)
 		update_lights(mldata, light_rx, light_tx, TRUE, rx, FALSE);
 		if (mldata->load_count > mldata->UPDATE_DELAY * 2)
 			{
-			static int load_rx, load_tx;
-			static int tooltip_counter;
-
-			tooltip_counter++;
-			if (tooltip_counter > 10)
+			mldata->tooltip_counter++;
+			if (mldata->tooltip_counter > 10)
 				{
 				update_tooltip(mldata,TRUE, rx, tx);
-				tooltip_counter = 0;
+				mldata->tooltip_counter = 0;
 				}
 
 	/* This is a check to see if the modem was running before the program
@@ -987,16 +984,16 @@ static gint update_display(MLData *mldata)
 	(the bytes that accumulated before program start will make max_load too high) */
 			if (!mldata->modem_was_on)
 				{
-				load_rx = rx;
-				load_tx = tx;
+				mldata->load_rx = rx;
+				mldata->load_tx = tx;
 				update_tooltip(mldata, TRUE,rx,tx);
 				mldata->modem_was_on = TRUE;
 				}
 		
 			mldata->load_count = 0;
-			draw_load(mldata, rx - load_rx, tx - load_tx);
-			load_rx = rx;
-			load_tx = tx;
+			draw_load(mldata, rx - mldata->load_rx, tx - mldata->load_tx);
+			mldata->load_rx = rx;
+			mldata->load_tx = tx;
 			}
 		mldata->old_rx = rx;
 		mldata->old_tx = tx;
@@ -1010,10 +1007,10 @@ static gint update_display(MLData *mldata)
 			}
 		button_blink(mldata, FALSE, FALSE);
 		update_lights(mldata, FALSE, FALSE, FALSE, -1, FALSE);
-		if (mldata->modem_was_on)
+		if (mldata->tooltip_counter > 0)
 			{
-			update_tooltip(mldata, FALSE,0,0);
-			mldata->modem_was_on = FALSE;
+			update_tooltip(mldata, FALSE, 0, 0);
+			mldata->tooltip_counter = 0;
 			}
 		if (mldata->last_time_was_connected)
 			{
@@ -1569,7 +1566,8 @@ modemlights_applet_fill (PanelApplet *applet)
 					      "hidden", "1",
 					      NULL);
 	}
-				 
+	update_tooltip(mldata, FALSE, 0, 0);
+
 	/* by now we know the geometry */
 	mldata->setup_done = TRUE;
 

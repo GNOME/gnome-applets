@@ -107,6 +107,8 @@ struct _MLData
 	int old_rx,old_tx;
 	int load_count;
 	int modem_was_on;
+	int tooltip_counter;
+	int load_rx,load_tx;
 	gint last_time_was_connected;
 	GdkColor display_color[COLOR_COUNT];
 	gchar *display_color_text[COLOR_COUNT];
