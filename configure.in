@@ -35,7 +35,6 @@ SCROLLKEEPER_REQUIRED=0.1.4
 LIBPANEL_REQUIRED=1.5.9
 LIBGTOP_REQUIRED=1.90.0
 LIBWNCK_REQUIRED=0.1
-LIBZVT_REQUIRED=0.1
 LIBGLADE_REQUIRED=1.99.5
 
 dnl configure argument fo disable schema install
@@ -101,15 +100,6 @@ PKG_CHECK_MODULES(GTOP_APPLETS,
 AC_SUBST(GTOP_APPLETS_CFLAGS)
 AC_SUBST(GTOP_APPLETS_LIBS)
 AM_CONDITIONAL(BUILD_GTOP_APPLETS, $build_gtop_applets)
-
-build_zvt_applets=false
-PKG_CHECK_MODULES(ZVT_APPLETS, [libzvt-2.0 >= $LIBZVT_REQUIRED],
-				build_zvt_applets=true,
-				AC_MSG_WARN([libzvt not found.  Not building terminal applets.]))
-AC_SUBST(ZVT_APPLETS_CFLAGS)
-AC_SUBST(ZVT_APPLETS_LIBS)
-AM_CONDITIONAL(BUILD_ZVT_APPLETS, $build_zvt_applets)
-
 
 dnl ************************
 dnl **   Set up gettext   **

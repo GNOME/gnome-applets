@@ -17,12 +17,6 @@ if BUILD_GNOME_VFS_APPLETS
 vfs_SUBDIRS = $(vfs_applets)
 endif
 
-zvt_applets = \
-	mini-commander
-if BUILD_ZVT_APPLETS
-zvt_SUBDIRS = $(zvt_applets)
-endif
-
 ## esd_applets = \
 ## 	sound-monitor
 ## if HAVE_LIBESD
@@ -69,8 +63,7 @@ SUBDIRS = \
 	$(always_built_SUBDIRS)	\
 	$(gtop_SUBDIRS)		\
 	$(vfs_SUBDIRS)		\
-	$(battstat_SUBDIR)	\
-	$(zvt_SUBDIRS)
+	$(battstat_SUBDIR)		
 ## 	$(esd_SUBDIRS)		\
 ## 	omf-install
 
