@@ -23,18 +23,12 @@
 #include "panel.h"
 #include "mico-parse.h"
 
-#define CLOCK_DATA "clock_data"
-
-typedef void (*ClockUpdateFunc) (GtkWidget * clock, time_t current_time);
-
-GtkWidget *plug = NULL;
-
-int applet_id = (-1); /*this is our id we use to comunicate with the panel */
-
+typedef void (*ClockUpdateFunc) (GtkWidget *, time_t);
 
 typedef struct {
 	int timeout;
 	ClockUpdateFunc update_func;
+	PanelOrientType orient;
 } ClockData;
 
 typedef struct {
@@ -42,6 +36,12 @@ typedef struct {
 	GtkWidget *time;
 } ComputerClock;
 
+GtkWidget *plug = NULL;
+GtkWidget *clockw = NULL;
+
+ClockData *cd = NULL;
+
+int applet_id = (-1); /*this is our id we use to comunicate with the panel */
 
 static void
 free_data(GtkWidget * widget, gpointer data)
@@ -53,21 +53,16 @@ static int
 clock_timeout_callback(gpointer data)
 {
 	time_t current_time;
-	GtkWidget *clock;
-	ClockData *cd;
 
 	time(&current_time);
 
-	clock = data;
-	cd = gtk_object_get_data(GTK_OBJECT(clock), CLOCK_DATA);
-
-	(*cd->update_func) (clock, current_time);
+	(*cd->update_func) (clockw, current_time);
 
 	return 1;
 }
 
 static void
-computer_clock_update_func(GtkWidget * clock, time_t current_time)
+computer_clock_update_func(GtkWidget *clock, time_t current_time)
 {
 	ComputerClock *cc;
 	char *strtime;
@@ -77,6 +72,8 @@ computer_clock_update_func(GtkWidget * clock, time_t current_time)
 
 	strtime = ctime(&current_time);
 
+	if(cd->orient == ORIENT_LEFT || cd->orient == ORIENT_RIGHT)
+		strtime[3] ='\n';
 	strncpy(date, strtime, 10);
 	date[10] = '\0';
 	gtk_label_set(GTK_LABEL(cc->date), date);
@@ -96,7 +93,7 @@ create_computer_clock_widget(GtkWidget ** clock, ClockUpdateFunc * update_func)
 	ComputerClock *cc;
 
 	frame = gtk_frame_new(NULL);
-	gtk_frame_set_shadow_type(GTK_FRAME(frame), GTK_SHADOW_ETCHED_IN);
+	gtk_frame_set_shadow_type(GTK_FRAME(frame), GTK_SHADOW_IN);
 	gtk_widget_show(frame);
 
 	align = gtk_alignment_new(0.5, 0.5, 0.0, 0.0);
@@ -129,19 +126,13 @@ create_computer_clock_widget(GtkWidget ** clock, ClockUpdateFunc * update_func)
 static void
 destroy_clock(GtkWidget * widget, void *data)
 {
-	ClockData *cd;
-
-	cd = gtk_object_get_data(GTK_OBJECT(widget), CLOCK_DATA);
-
 	gtk_timeout_remove(cd->timeout);
-
 	g_free(cd);
 }
 
 static GtkWidget *
 create_clock_widget(void)
 {
-	ClockData *cd;
 	GtkWidget *clock;
 	time_t current_time;
 
@@ -154,7 +145,7 @@ create_clock_widget(void)
 
 	cd->timeout = gtk_timeout_add(3000, clock_timeout_callback, clock);
 
-	gtk_object_set_data(GTK_OBJECT(clock), CLOCK_DATA, cd);
+	cd->orient = ORIENT_UP;
 
 	gtk_signal_connect(GTK_OBJECT(clock), "destroy",
 			   (GtkSignalFunc) destroy_clock,
@@ -173,11 +164,11 @@ void
 change_orient(int id, int orient)
 {
 	PanelOrientType o = (PanelOrientType) orient;
-	
-	/*if(o == ORIENT_LEFT || o == ORIENT_RIGHT)
-		gtk_widget_set_usize(GTK_WIDGET(plug),48,100);
-	else
-		gtk_widget_set_usize(GTK_WIDGET(plug),100,48);*/
+	time_t current_time;
+
+	time(&current_time);
+	cd->orient = o;
+	(*cd->update_func) (clockw, current_time);
 }
 
 void
@@ -193,7 +184,6 @@ destroy_plug(GtkWidget *widget, gpointer data)
 	return FALSE;
 }
 
-
 /*
 void
 test_callback(int id, gpointer data)
@@ -206,7 +196,6 @@ test_callback(int id, gpointer data)
 int
 main(int argc, char **argv)
 {
-	GtkWidget *clock;
 	char *result;
 	char *cfgpath;
 	char *globcfgpath;
@@ -238,14 +227,13 @@ main(int argc, char **argv)
 
 	plug = gtk_plug_new(winid);
 
-	clock = create_clock_widget();
-	gtk_widget_show(clock);
-	gtk_container_add(GTK_CONTAINER(plug), clock);
+	clockw = create_clock_widget();
+	gtk_widget_show(clockw);
+	gtk_container_add(GTK_CONTAINER(plug), clockw);
 	gtk_widget_show(plug);
 	gtk_signal_connect(GTK_OBJECT(plug),"destroy",
 			   GTK_SIGNAL_FUNC(destroy_plug),
 			   NULL);
-
 
 	result = gnome_panel_applet_register(plug, applet_id);
 	if (result)
