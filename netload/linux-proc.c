@@ -8,6 +8,26 @@
 #include "linux-proc.h"
 #include "netload.h"
 
+#include <config.h>
+
+/* Make sure we have a recent version of LibGTop. */
+#if (defined LIBGTOP_VERSION_CODE) && (LIBGTOP_VERSION_CODE >= 26005)
+#define NETLOAD_LIBGTOP 1
+#else
+#ifdef __FreeBSD__
+#warning "You need LibGTop >= 0.26.5 to make this work on your system."
+#endif
+#endif
+
+#ifdef NETLOAD_LIBGTOP
+
+#include <glibtop.h>
+#include <glibtop/netload.h>
+
+#define REQUIRED_NETLOAD_FLAGS (1 << GLIBTOP_NETLOAD_BYTES_TOTAL)
+
+#else /* not NETLOAD_LIBGTOP */
+
 static char *skip_token(const char *p)
 {
 	while (isspace(*p)) p++;
@@ -58,6 +78,8 @@ Device_Info *ReadProc()
 	return retval;
 }	
 
+#endif
+
 /*
  * Return the byte count for a single device. Cache the result from reading the /proc file.
  * refresh = 1 means reload the /proc file.
@@ -65,6 +87,16 @@ Device_Info *ReadProc()
 unsigned long int
 GetTraffic(int refresh, char *device)
 {
+#ifdef NETLOAD_LIBGTOP
+	glibtop_netload netload;
+
+	glibtop_get_netload (&netload, device);
+
+	if (netload.flags & REQUIRED_NETLOAD_FLAGS)
+		return netload.bytes_total;
+	else
+		return netload.packets_total;
+#else
 	static	Device_Info	*di = NULL;
 	Device_Info	*d;
 	static	error_printed = 0;
@@ -85,4 +117,5 @@ GetTraffic(int refresh, char *device)
 	error_printed = 1;
 	error_dialog("IP accounting is enabled, but not activated for the specified device. Either activate it (with a command like \nipfwadm -A -i -P all -W <device name>\nwhere device name is something like ppp0 or eth0.\nAlso check that the device properties are set properly.", 0);
 	return 0;
+#endif
 }
