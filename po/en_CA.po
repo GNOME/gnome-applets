@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-12-22 02:35-0500\n"
-"PO-Revision-Date: 2004-12-22 16:42-0400\n"
+"POT-Creation-Date: 2004-12-29 03:09-0500\n"
+"PO-Revision-Date: 2004-12-29 16:42-0400\n"
 "Last-Translator: Adam Weinberger <adamw@gnome.org>\n"
 "Language-Team: English/Canada <adamw@FreeBSD.org>\n"
 "MIME-Version: 1.0\n"
@@ -70,8 +70,8 @@ msgstr "See the status of keyboard accessibility features"
 
 #: accessx-status/applet.c:136 battstat/battstat_applet.c:1070
 #: cdplayer/cdplayer.c:596 charpick/charpick.c:607
-#: cpufreq/src/cpufreq-applet.c:146 drivemount/drivemount.c:132
-#: geyes/geyes.c:201 gswitchit/gswitchit-applet.c:562 gtik/gtik.c:722
+#: cpufreq/src/cpufreq-applet.c:231 drivemount/drivemount.c:132
+#: geyes/geyes.c:201 gswitchit/gswitchit-applet.c:572 gtik/gtik.c:722
 #: gweather/gweather-about.c:48 mini-commander/src/about.c:48
 #: modemlights/modemlights.c:116 multiload/main.c:56
 #: stickynotes/stickynotes_applet_callbacks.c:282
@@ -353,6 +353,7 @@ msgstr "Battery status unknown"
 msgid "No battery present"
 msgstr "No battery present"
 
+#. Displayed if the APM device couldn't be opened. (Used under *BSD)
 #: battstat/battstat_applet.c:962
 msgid ""
 "Can't open the APM device!\n"
@@ -365,6 +366,7 @@ msgstr ""
 "Make sure you have read permission to the\n"
 "APM device."
 
+#. Displayed if the APM system is disabled (Used under *BSD)
 #: battstat/battstat_applet.c:971
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
@@ -765,7 +767,7 @@ msgid "Character Palette Preferences"
 msgstr "Character Palette Preferences"
 
 #: cpufreq/GNOME_CPUFreqApplet.server.in.in.h:1
-#: cpufreq/src/cpufreq-applet.c:162 cpufreq/src/cpufreq-applet.c:743
+#: cpufreq/src/cpufreq-applet.c:224 cpufreq/src/cpufreq-applet.c:786
 msgid "CPU Frequency Scaling Monitor"
 msgstr "CPU Frequency Scaling Monitor"
 
@@ -847,31 +849,47 @@ msgstr "_Monitored CPU:"
 msgid "_Show in mode:"
 msgstr "_Show in mode:"
 
-#: cpufreq/src/cpufreq-applet.c:125 cpufreq/src/cpufreq-prefs.c:219
+#: cpufreq/src/cpufreq-applet.c:184 cpufreq/src/cpufreq-prefs.c:246
 msgid "Could not open help document"
 msgstr "Could not open help document"
 
-#: cpufreq/src/cpufreq-applet.c:138
-msgid "Graphic Arts:"
-msgstr "Graphic Arts:"
-
-#: cpufreq/src/cpufreq-applet.c:164
+#: cpufreq/src/cpufreq-applet.c:226
 msgid "Copyright (C) 2004 Free Software Foundation. Inc."
 msgstr "Copyright (C) 2004 Free Software Foundation, Inc."
 
-#: cpufreq/src/cpufreq-applet.c:165
+#: cpufreq/src/cpufreq-applet.c:227
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr "This utility shows the current CPU Frequency Scaling."
 
+#: cpufreq/src/cpufreq-applet.c:787
+msgid "This utility shows the current CPU Frequency"
+msgstr "This utility shows the current CPU Frequency"
+
+#: cpufreq/src/cpufreq-prefs.c:310
+msgid "Graphic"
+msgstr "Graphic"
+
+#: cpufreq/src/cpufreq-prefs.c:315 modemlights/properties.c:609
+msgid "Text"
+msgstr "Text"
+
+#: cpufreq/src/cpufreq-prefs.c:320
+msgid "Graphic and Text"
+msgstr "Graphic and Text"
+
+#: cpufreq/src/cpufreq-monitor-cpuinfo.c:183
+msgid "Frequency Scaling Unsupported"
+msgstr "Frequency Scaling Unsupported"
+
 #. If there is no cpufreq support it shows only the cpu frequency,
-#. * I thi	nk is better than do nothing. I have to notify it to the user, because
-#. * he could think	 that cpufreq is supported but it doesn't work succesfully
+#. * I thi nk is better than do nothing. I have to notify it to the user, because
+#. * he could think   that cpufreq is supported but it doesn't work succesfully
 #.
-#: cpufreq/src/cpufreq-applet.c:601
+#: cpufreq/src/cpufreq-monitor-factory.c:44
 msgid "CPU frequency scaling unsupported"
 msgstr "CPU frequency scaling unsupported"
 
-#: cpufreq/src/cpufreq-applet.c:602
+#: cpufreq/src/cpufreq-monitor-factory.c:45
 msgid ""
 "You will not be able to modify the frequency of your machine.  Your machine "
 "may be misconfigured or not have hardware support for CPU frequency scaling."
@@ -880,40 +898,11 @@ msgstr ""
 "may be misconfigured or may not have hardware support for CPU frequency "
 "scaling."
 
-#: cpufreq/src/cpufreq-applet.c:607
-#, c-format
-msgid ""
-"CPU %d - Frequency Scaling Unsupported\n"
-"%s %s (%s)"
-msgstr ""
-"CPU %d - Frequency Scaling Unsupported\n"
-"%s %s (%s)"
-
-#: cpufreq/src/cpufreq-applet.c:613
-msgid "Frequency Scaling Unsupported"
-msgstr "Frequency Scaling Unsupported"
-
-#: cpufreq/src/cpufreq-applet.c:744
-msgid "This utility shows the current CPU Frequency"
-msgstr "This utility shows the current CPU Frequency"
-
-#: cpufreq/src/cpufreq-prefs.c:280
-msgid "Graphic"
-msgstr "Graphic"
-
-#: cpufreq/src/cpufreq-prefs.c:285 modemlights/properties.c:609
-msgid "Text"
-msgstr "Text"
-
-#: cpufreq/src/cpufreq-prefs.c:290
-msgid "Graphic and Text"
-msgstr "Graphic and Text"
-
-#: cpufreq/src/cpufreq.c:231 gweather/weather.c:277 gweather/weather.c:1081
-#: gweather/weather.c:1095 gweather/weather.c:1107 gweather/weather.c:1122
-#: gweather/weather.c:1138 gweather/weather.c:1169 gweather/weather.c:1181
-#: gweather/weather.c:1200 gweather/weather.c:1228 gweather/weather.c:1241
-#: gweather/weather.c:1261
+#: cpufreq/src/cpufreq-monitor-procfs.c:249 cpufreq/src/cpufreq-popup.c:215
+#: gweather/weather.c:277 gweather/weather.c:1081 gweather/weather.c:1095
+#: gweather/weather.c:1107 gweather/weather.c:1122 gweather/weather.c:1138
+#: gweather/weather.c:1169 gweather/weather.c:1181 gweather/weather.c:1200
+#: gweather/weather.c:1228 gweather/weather.c:1241 gweather/weather.c:1261
 msgid "Unknown"
 msgstr "Unknown"
 
@@ -1704,7 +1693,7 @@ msgid "GNOME keyboard layout indicator"
 msgstr "GNOME keyboard layout indicator"
 
 #: gswitchit/GNOME_KeyboardApplet.server.in.in.h:3
-#: gswitchit/gswitchit-applet.c:567
+#: gswitchit/gswitchit-applet.c:577
 msgid "Keyboard Indicator"
 msgstr "Keyboard Indicator"
 
@@ -1717,19 +1706,19 @@ msgstr "Keyboard applet factory"
 msgid "Keyboard Indicator (%s)"
 msgstr "Keyboard Indicator (%s)"
 
-#: gswitchit/gswitchit-applet.c:570
+#: gswitchit/gswitchit-applet.c:580
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "Copyright (c) Sergey V. Udaltsov 1999-2004"
 
-#: gswitchit/gswitchit-applet.c:572
+#: gswitchit/gswitchit-applet.c:582
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "Keyboard layout indicator applet for GNOME"
 
-#: gswitchit/gswitchit-applet.c:729
+#: gswitchit/gswitchit-applet.c:738
 msgid "XKB initialization error"
 msgstr "XKB initialization error"
 
-#: gswitchit/gswitchit-applet.c:737
+#: gswitchit/gswitchit-applet.c:746
 msgid "Error loading XKB configuration registry"
 msgstr "Error loading XKB configuration registry"
 
@@ -2486,6 +2475,16 @@ msgstr "_Select a location:"
 msgid "Location"
 msgstr "Location"
 
+#: gweather/weather-iwin.c:242 gweather/weather-metar.c:528
+#: gweather/weather-metar.c:556
+msgid "WeatherInfo missing location"
+msgstr "WeatherInfo missing location"
+
+#: gweather/weather-metar.c:494 gweather/weather-metar.c:536
+#: gweather/weather-wx.c:51
+msgid "Failed to get METAR data.\n"
+msgstr "Failed to get METAR data.\n"
+
 #. TRANSLATOR: Change this to the default location code (2nd parameter) in the
 #. gweather/Locations file
 #. For example for New York (JFK) the entry is loc14=New\\ York-JFK\\ Arpt KJFK NYZ076 nyc
@@ -2497,7 +2496,7 @@ msgstr "CYOW"
 
 #: gweather/gweather.schemas.in.h:2
 msgid "DEFAULT_COORDINATES"
-msgstr "DEFAULT_COORDINATES"
+msgstr "45-19N 075-40W"
 
 #. TRANSLATOR: Change this to the default location name (1st parameter) in the
 #. gweather/Locations file
