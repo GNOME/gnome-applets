@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-appets 1.2.0\n"
-"POT-Creation-Date: 2002-10-18 20:34+0200\n"
-"PO-Revision-Date: 2002-10-18 20:38+0200\n"
+"POT-Creation-Date: 2002-12-04 16:44+0100\n"
+"PO-Revision-Date: 2002-12-04 16:50+0100\n"
 "Last-Translator: Emese Kovacs <emese@gnome.hu>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -260,12 +260,12 @@ msgstr ""
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jorgen Pehrson <jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:828 cdplayer/cdplayer.c:481
+#: battstat/battstat_applet.c:828 cdplayer/cdplayer.c:499
 #: charpick/charpick.c:374 drivemount/drivemount.c:453 geyes/geyes.c:217
-#: gkb-new/gkb.c:594 gtik/gtik.c:708 gweather/gweather-about.c:43
-#: mini-commander/src/about.c:48 mixer/mixer.c:794
+#: gkb-new/gkb.c:594 gtik/gtik.c:704 gweather/gweather-about.c:43
+#: mini-commander/src/about.c:48 mixer/mixer.c:814
 #: modemlights/modemlights.c:209 multiload/main.c:57
-#: panel-menu/panel-menu.c:674 wireless/wireless-applet.c:704
+#: panel-menu/panel-menu.c:674 wireless/wireless-applet.c:703
 msgid "translator_credits"
 msgstr ""
 "Bán Szabolcs (Shooby) <shooby@gnome.hu>\n"
@@ -285,7 +285,7 @@ msgstr "Ez az applet a laptop akkumulátorának töltöttségi állapotát jelzi
 msgid "100%"
 msgstr "100%"
 
-#: battstat/battstat_applet.glade.h:3
+#: battstat/battstat_applet.glade.h:3 gtik/gtik.c:1456
 #: mini-commander/src/mini-commander.glade.h:3
 msgid "Appearance"
 msgstr "Megjelenés"
@@ -307,7 +307,8 @@ msgstr "Akkumulátor szintek színei (100%)"
 msgid "Beep when either of the above is true"
 msgstr "Sípoljon, ha a fentiek közül valamelyik bekövetkezik"
 
-#: battstat/battstat_applet.glade.h:9
+#: battstat/battstat_applet.glade.h:9 gweather/gweather-pref.c:707
+#: mini-commander/src/mini-commander.glade.h:12 modemlights/properties.c:428
 msgid "General"
 msgstr "Általános"
 
@@ -379,8 +380,8 @@ msgstr "Az akkumulátor teljesen feltöltődött"
 msgid "Battery power low"
 msgstr "Az akkumulátor töltöttsége alacsony"
 
-#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:171
-#: cdplayer/cdplayer.c:499 cdplayer/cdplayer.c:914
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:189
+#: cdplayer/cdplayer.c:517 cdplayer/cdplayer.c:910
 msgid "CD Player"
 msgstr "CD-lejátszó"
 
@@ -405,61 +406,61 @@ msgstr "Applet audio CD-k lejátszásához"
 msgid "_Run External CD Player"
 msgstr "_Külső CD-lejátszó program futtatása"
 
-#: cdplayer/cdplayer.c:159 cdplayer/cdplayer.c:904
+#: cdplayer/cdplayer.c:169 cdplayer/cdplayer.c:900
 msgid "Stop"
 msgstr "Állj"
 
-#: cdplayer/cdplayer.c:161 cdplayer/cdplayer.c:906
+#: cdplayer/cdplayer.c:173 cdplayer/cdplayer.c:902
 msgid "Play / Pause"
 msgstr "Lejátszás / Pause"
 
-#: cdplayer/cdplayer.c:163 cdplayer/cdplayer.c:908
+#: cdplayer/cdplayer.c:177 cdplayer/cdplayer.c:904
 msgid "Eject"
 msgstr "Lemezkiadás"
 
-#: cdplayer/cdplayer.c:165 cdplayer/cdplayer.c:910
+#: cdplayer/cdplayer.c:181 cdplayer/cdplayer.c:906
 msgid "Previous Track"
 msgstr "Előző sáv"
 
-#: cdplayer/cdplayer.c:167 cdplayer/cdplayer.c:912
+#: cdplayer/cdplayer.c:185 cdplayer/cdplayer.c:908
 msgid "Next Track"
 msgstr "Következő sáv"
 
-#: cdplayer/cdplayer.c:283 drivemount/drivemount.c:399 mixer/mixer.c:760
+#: cdplayer/cdplayer.c:301 drivemount/drivemount.c:399 mixer/mixer.c:780
 #: multiload/main.c:118
 #, c-format
 msgid "There was an error executing '%s' : %s"
 msgstr "Hiba történt '%s' végrehajtásakor: %s"
 
-#: cdplayer/cdplayer.c:388
+#: cdplayer/cdplayer.c:406
 msgid "CD Player Preferences"
 msgstr "CD-lejátszó beállításai"
 
-#: cdplayer/cdplayer.c:406
+#: cdplayer/cdplayer.c:424
 msgid "Disc Image"
 msgstr "Lemez image fájl"
 
-#: cdplayer/cdplayer.c:406
+#: cdplayer/cdplayer.c:424
 msgid "An image of a cd-rom disc"
 msgstr "Egy CDROM lemez image fájlja"
 
-#: cdplayer/cdplayer.c:408
+#: cdplayer/cdplayer.c:426
 msgid "Device _Path:"
 msgstr "Eszköz _elérési útja:"
 
-#: cdplayer/cdplayer.c:417
+#: cdplayer/cdplayer.c:435
 msgid "Device Path"
 msgstr "Eszköz elérési útja"
 
-#: cdplayer/cdplayer.c:417
+#: cdplayer/cdplayer.c:435
 msgid "Set the device path here"
 msgstr "Itt állítsd be az elérési utat"
 
-#: cdplayer/cdplayer.c:420
+#: cdplayer/cdplayer.c:438
 msgid "Use _Default"
 msgstr "_Alapértelmezett használata"
 
-#: cdplayer/cdplayer.c:500
+#: cdplayer/cdplayer.c:518
 msgid ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
@@ -467,35 +468,35 @@ msgstr ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
 
-#: cdplayer/cdplayer.c:502 cdplayer/cdplayer.c:915
+#: cdplayer/cdplayer.c:520 cdplayer/cdplayer.c:911
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr "A CD-lejátszó applet egy egyszerű CD-lejátszó a panelon"
 
-#: cdplayer/cdplayer.c:785 cdplayer/cdplayer.c:796
+#: cdplayer/cdplayer.c:779 cdplayer/cdplayer.c:790
 msgid "Elapsed time"
 msgstr "Eltelt idő"
 
-#: cdplayer/cdplayer.c:788 cdplayer/cdplayer.c:798
+#: cdplayer/cdplayer.c:782 cdplayer/cdplayer.c:792
 msgid "Track number"
 msgstr "Sáv száma"
 
-#: cdplayer/cdplayer.c:905
+#: cdplayer/cdplayer.c:901
 msgid "Click this button to Stop playing the CD"
 msgstr "A lejátszás leállításához nyomd meg ezt a gombot"
 
-#: cdplayer/cdplayer.c:907
+#: cdplayer/cdplayer.c:903
 msgid "Click this button to Play or Pause the CD"
 msgstr "A CD elindításához vagy megállításához nyomd meg ezt a gombot"
 
-#: cdplayer/cdplayer.c:909
+#: cdplayer/cdplayer.c:905
 msgid "Click this button to eject the CD"
 msgstr "Nyomd meg a gombot, hogy a CD-t kiadja a lejátszó"
 
-#: cdplayer/cdplayer.c:911
+#: cdplayer/cdplayer.c:907
 msgid "Click this button to Play the previous track in the CD"
 msgstr "Az előző szám lejátszásához nyomd meg ezt a gombot"
 
-#: cdplayer/cdplayer.c:913
+#: cdplayer/cdplayer.c:909
 msgid "Click this button to Play the next track in the CD"
 msgstr "A következő szám lejátszásához nyomd meg ezt a gombot"
 
@@ -721,8 +722,8 @@ msgid "Geyes Preferences"
 msgstr "Geyes beállításai"
 
 #: geyes/themes.c:239
-msgid "T_heme Name"
-msgstr "Té_ma neve"
+msgid "_Theme Name:"
+msgstr "Té_ma neve:"
 
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:1
 msgid "Change the keyboard layout"
@@ -793,388 +794,43 @@ msgstr ""
 msgid "Keyboards (select and press add)"
 msgstr "Billentyűzet kiosztások (válaszd ki, majd nyomd meg a hozzáadást)"
 
-#: gkb-new/prop-add.c:376
+#: gkb-new/prop-add.c:393
 msgid "Select Keyboard"
 msgstr "Válassz kiosztást"
 
-#: gkb-new/prop-list.c:398 gtik/gtik.c:1167
-msgid "_Add"
-msgstr "_Hozzáadás"
-
-#: gkb-new/prop-list.c:399
-msgid "_Edit"
-msgstr "_Szerkesztés"
-
-#: gkb-new/prop-list.c:400
-msgid "_Up"
-msgstr "_Fel"
-
-#: gkb-new/prop-list.c:401
-msgid "Dow_n"
-msgstr "_Le"
-
-#: gkb-new/prop-list.c:402
-msgid "_Delete"
-msgstr "_Törlés"
-
-#: gkb-new/prop-map.c:206
-msgid "Armenia"
-msgstr "Örményország"
-
-#: gkb-new/prop-map.c:207
-msgid "Australia"
-msgstr "Ausztrália"
-
-#: gkb-new/prop-map.c:208
-msgid "Austria"
-msgstr "Ausztria"
-
-#: gkb-new/prop-map.c:209
-msgid "Belgium"
-msgstr "Belgium"
-
-#: gkb-new/prop-map.c:210
-msgid "Brazil"
-msgstr "Brazília"
-
-#: gkb-new/prop-map.c:211
-msgid "Bulgaria"
-msgstr "Bulgária"
-
-#: gkb-new/prop-map.c:212
-msgid "Canada"
-msgstr "Kanada"
-
 #: gkb-new/prop-map.c:213
-msgid "Caribic"
-msgstr "Karib-szigetek"
-
-#: gkb-new/prop-map.c:214
-msgid "France"
-msgstr "Franciaország"
-
-#: gkb-new/prop-map.c:215
-msgid "Georgia"
-msgstr "Grúzia"
-
-#: gkb-new/prop-map.c:216
-msgid "Germany"
-msgstr "Németország"
-
-#: gkb-new/prop-map.c:217
-msgid "Great Britain"
-msgstr "Nagy Britannia"
-
-#: gkb-new/prop-map.c:218
-msgid "Greece"
-msgstr "Görögország"
-
-#: gkb-new/prop-map.c:219
-msgid "Hungary"
-msgstr "Magyarország"
-
-#: gkb-new/prop-map.c:220
-msgid "Jamaica"
-msgstr "Jamaika"
-
-#: gkb-new/prop-map.c:221
-msgid "New Zealand"
-msgstr "Új-Zéland"
-
-#: gkb-new/prop-map.c:222
-msgid "Norway"
-msgstr "Norvégia"
-
-#: gkb-new/prop-map.c:223
-msgid "Poland"
-msgstr "Lengyelország"
-
-#: gkb-new/prop-map.c:224
-msgid "Portugal"
-msgstr "Portugália"
-
-#: gkb-new/prop-map.c:225
-msgid "Russia"
-msgstr "Oroszország"
-
-#: gkb-new/prop-map.c:226
-msgid "Slovak Republic"
-msgstr "Szlovákia"
-
-#: gkb-new/prop-map.c:227
-msgid "Slovenia"
-msgstr "Szlovénia"
-
-#: gkb-new/prop-map.c:228
-msgid "South Africa"
-msgstr "Dél-Afrika"
-
-#: gkb-new/prop-map.c:229
-msgid "Spain"
-msgstr "Spanyolország"
-
-#: gkb-new/prop-map.c:230
-msgid "Sweden"
-msgstr "Svédország"
-
-#: gkb-new/prop-map.c:231
-msgid "Switzerland"
-msgstr "Svájc"
-
-#: gkb-new/prop-map.c:232
-msgid "Thailand"
-msgstr "Thaiföld"
-
-#: gkb-new/prop-map.c:233
-msgid "Turkey"
-msgstr "Törökország"
-
-#: gkb-new/prop-map.c:234
-msgid "United Kingdom"
-msgstr "Egyesült Királyság"
-
-#: gkb-new/prop-map.c:235
-msgid "United States"
-msgstr "Egyesült Államok"
-
-#: gkb-new/prop-map.c:236
-msgid "Yugoslavia"
-msgstr "Jugoszlávia"
-
-#: gkb-new/prop-map.c:256
-msgid "Armenian"
-msgstr "Örmény"
-
-#: gkb-new/prop-map.c:257
-msgid "Basque"
-msgstr "Baszk"
-
-#: gkb-new/prop-map.c:258
-msgid "Bulgarian"
-msgstr "Bolgár"
-
-#: gkb-new/prop-map.c:259
-msgid "Dutch"
-msgstr "Holland"
-
-#: gkb-new/prop-map.c:260
-msgid "English"
-msgstr "Angol"
-
-#: gkb-new/prop-map.c:261
-msgid "French"
-msgstr "Francia"
-
-#: gkb-new/prop-map.c:262
-msgid "Georgian"
-msgstr "Grúz"
-
-#: gkb-new/prop-map.c:263
-msgid "German"
-msgstr "Német"
-
-#: gkb-new/prop-map.c:264
-msgid "Greek"
-msgstr "Görög"
-
-#: gkb-new/prop-map.c:265
-msgid "Hungarian"
-msgstr "Magyar"
-
-#: gkb-new/prop-map.c:266
-msgid "Norwegian"
-msgstr "Norvég"
-
-#: gkb-new/prop-map.c:267
-msgid "Polish"
-msgstr "Lengyel"
-
-#: gkb-new/prop-map.c:268
-msgid "Portuguese"
-msgstr "Portugál"
-
-#: gkb-new/prop-map.c:269
-msgid "Russian"
-msgstr "Orosz"
-
-#: gkb-new/prop-map.c:270
-msgid "Slovak"
-msgstr "Szlovák"
-
-#: gkb-new/prop-map.c:271
-msgid "Slovenian"
-msgstr "Szlovén"
-
-#: gkb-new/prop-map.c:272
-msgid "Swedish"
-msgstr "Svéd"
-
-#: gkb-new/prop-map.c:273
-msgid "Thai"
-msgstr "Thai"
-
-#: gkb-new/prop-map.c:274
-msgid "Turkish"
-msgstr "Török"
-
-#: gkb-new/prop-map.c:275
-msgid "Wallon"
-msgstr "Vallon"
-
-#: gkb-new/prop-map.c:276
-msgid "Yugoslavian"
-msgstr "Jugoszláv"
-
-#: gkb-new/prop-map.c:294
-msgid "105"
-msgstr "105"
-
-#: gkb-new/prop-map.c:295
-msgid "101"
-msgstr "101"
-
-#: gkb-new/prop-map.c:296
-msgid "102"
-msgstr "102"
-
-#: gkb-new/prop-map.c:297
-msgid "450"
-msgstr "450"
-
-#: gkb-new/prop-map.c:298
-msgid "84"
-msgstr "84"
-
-#: gkb-new/prop-map.c:299
-msgid "mklinux"
-msgstr "mklinux"
-
-#: gkb-new/prop-map.c:300
-msgid "type5"
-msgstr "type5"
-
-#: gkb-new/prop-map.c:320
-msgid "iso-8859-1"
-msgstr "iso-8859-1"
-
-#: gkb-new/prop-map.c:321
-msgid "iso-8859-2"
-msgstr "iso-8859-2"
-
-#: gkb-new/prop-map.c:322
-msgid "iso-8859-7"
-msgstr "iso-8859-7"
-
-#: gkb-new/prop-map.c:323
-msgid "iso-8859-9"
-msgstr "iso-8859-9"
-
-#: gkb-new/prop-map.c:324
-msgid "am-armscii8"
-msgstr "am-armscii8"
-
-#: gkb-new/prop-map.c:325
-msgid "be-latin1"
-msgstr "be-latin1"
-
-#: gkb-new/prop-map.c:326
-msgid "cp1251"
-msgstr "cp1251"
-
-#: gkb-new/prop-map.c:327
-msgid "georgian-academy"
-msgstr "grúz-akadémiai"
-
-#: gkb-new/prop-map.c:328
-msgid "koi8-r"
-msgstr "koi8-r"
-
-#: gkb-new/prop-map.c:329
-msgid "tis620"
-msgstr "tis620"
-
-#: gkb-new/prop-map.c:347
-msgid "ix86"
-msgstr "ix86"
-
-#: gkb-new/prop-map.c:348
-msgid "Sun"
-msgstr "Sun"
-
-#: gkb-new/prop-map.c:349
-msgid "mac"
-msgstr "mac"
-
-#: gkb-new/prop-map.c:350
-msgid "sgi"
-msgstr "sgi"
-
-#: gkb-new/prop-map.c:351
-msgid "dec"
-msgstr "dec"
-
-#: gkb-new/prop-map.c:352
-msgid "ibm"
-msgstr "ibm"
-
-#: gkb-new/prop-map.c:591
 msgid "Edit Keyboard"
 msgstr "Kiosztás szerkesztése"
 
-#. Add the labels  and entries/combos/icon_entry
-#: gkb-new/prop-map.c:619 panel-menu/panel-menu-directory.c:674
+#: gkb-new/prop-map.c:232 panel-menu/panel-menu-directory.c:674
 #: panel-menu/panel-menu-documents.c:398 panel-menu/panel-menu-documents.c:435
 #: panel-menu/panel-menu-links.c:404 panel-menu/panel-menu-links.c:440
 msgid "_Name:"
 msgstr "_Név:"
 
-#: gkb-new/prop-map.c:623
+#: gkb-new/prop-map.c:235
 msgid "_Label:"
 msgstr "_Címke:"
 
-#: gkb-new/prop-map.c:627
-msgid "Lan_guage:"
-msgstr "N_yelv:"
-
-#: gkb-new/prop-map.c:633
-msgid "Count_ry:"
-msgstr "_Ország:"
-
-#: gkb-new/prop-map.c:640
-msgid ""
-"_Flag\n"
-"Pixmap:"
-msgstr ""
-"_Zászló\n"
-"Pixmap"
-
-#: gkb-new/prop-map.c:644
-msgid "Arch_itecture:"
-msgstr "Arc_hitektúra:"
-
-#: gkb-new/prop-map.c:650
-msgid "_Type:"
-msgstr "_Típus:"
-
-#: gkb-new/prop-map.c:656
-msgid "Code_page:"
-msgstr "Kódla_p:"
-
-#: gkb-new/prop-map.c:663
+#: gkb-new/prop-map.c:238
 msgid "Co_mmand:"
 msgstr "Paran_cs:"
 
-#: gkb-new/prop-map.c:670
+#: gkb-new/prop-map.c:246
 msgid ""
 "Where command can be:\n"
-"* xmodmap /full/path/xmodmap.hu\n"
-"* gkb__xmmap hu\n"
-"* setxkbmap hu"
+" * xmodmap /full/path/xmodmap.hu\n"
+" * gkb_xmmap hu\n"
+" * setxkbmap hu"
 msgstr ""
 "Ahol a parancs a következő lehet:\n"
 "* xmodmap /teljes/eleres/xmodmap.hu\n"
-"* gkb__xmmap hu\n"
+"* gkb_xmmap hu\n"
 "* setxkbmap hu"
+
+#: gkb-new/prop-map.c:279
+msgid "_Flag"
+msgstr "_Zászló"
 
 #: gkb-new/prop.c:132 gkb-new/prop.c:202
 msgid "Normal"
@@ -1223,16 +879,39 @@ msgid "Keyboard Layout Switcher Preferences"
 msgstr "Billentyűzetkiosztás-kapcsoló beállítások"
 
 #: gkb-new/prop.c:440
-msgid "_Keymaps"
-msgstr "_Kiosztások"
+msgid "Keymaps"
+msgstr "Kiosztások"
 
-#: gkb-new/prop.c:452
-msgid "_Options"
-msgstr "_Beállítások"
+#.
+#. check_box = gtk_check_button_new_with_mnemonic(_("_Average"));
+#. gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_box),
+#. panel_applet_gconf_get_bool(multiload_applet->applet, "view_loadavg", NULL));
+#. gtk_box_pack_start(GTK_BOX(hbox), check_box, FALSE, FALSE, 0);
+#.
+#: gkb-new/prop.c:452 multiload/properties.c:313
+msgid "Options"
+msgstr "Beállítások"
 
-#: gkb-new/system.c:45
-msgid "The keymap switching command returned with error!"
-msgstr "A billentyűzet-átkapcsoló parancs hibával tért vissza!"
+#: gkb-new/system.c:46
+#, c-format
+msgid ""
+"An error occured.\n"
+"\n"
+"Keymap `%s' is not supported on this system. Please choose another keymap.\n"
+"\n"
+"The command was: %s"
+msgstr ""
+
+#: gkb-new/system.c:51
+#, c-format
+msgid ""
+"An error occured.\n"
+"\n"
+"Unable to load keymap `%s', probably because command `xmodmap' could not be "
+"located in your PATH.\n"
+"\n"
+"The command was: %s"
+msgstr ""
 
 #: gtik/GNOME_GtikApplet.server.in.in.h:1
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:1
@@ -1247,7 +926,7 @@ msgstr "Folyamatosan frissülő részvényárfolyamok"
 msgid "Gtik Applet Factory"
 msgstr "Gtik Applet factory"
 
-#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:724
+#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:720
 msgid "Stock Ticker"
 msgstr "Részvényfigyelő"
 
@@ -1259,7 +938,7 @@ msgstr "_Frissítés"
 msgid "No data available or properties not set"
 msgstr "Nincs elérhető adat, vagy a tulajdonságok nincsenek beállítva"
 
-#: gtik/gtik.c:726
+#: gtik/gtik.c:722
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.  "
 "The GNOME Stock Ticker is a free Internet-based application.  It comes with "
@@ -1272,83 +951,83 @@ msgstr ""
 "használd a GNOME Tőzsdekövetőt a pénzügyi döntések meghozatalához. A program "
 "csak információs célt szolgál."
 
-#: gtik/gtik.c:1156
+#: gtik/gtik.c:1147
 msgid "_New Symbol:"
 msgstr "Ú_j szimbólum:"
 
-#: gtik/gtik.c:1178
+#: gtik/gtik.c:1158
+msgid "_Add"
+msgstr "_Hozzáadás"
+
+#: gtik/gtik.c:1169
 msgid "_Remove Selected"
 msgstr "A kijelölt _törlése"
 
-#: gtik/gtik.c:1260
+#: gtik/gtik.c:1251
 msgid "Stock Ticker Preferences"
 msgstr "Részvény Ticker beállításai"
 
-#: gtik/gtik.c:1284
+#: gtik/gtik.c:1275
 msgid "Stock update Fre_quency in minutes:"
 msgstr "Frissítések gya_korisága percben:"
 
-#: gtik/gtik.c:1303
+#: gtik/gtik.c:1294
 msgid "Scroll Speed :"
 msgstr ""
 
-#: gtik/gtik.c:1323
+#: gtik/gtik.c:1314
 msgid "_Width :"
 msgstr "_Szélesség:"
 
-#: gtik/gtik.c:1335
+#: gtik/gtik.c:1326
 msgid "Displa_y only symbols and price"
 msgstr "Csak a szimbólumokat és az árakat _mutassa"
 
-#: gtik/gtik.c:1338
+#: gtik/gtik.c:1329
 msgid "Scroll _left to right"
 msgstr "Balról _jobbra görgetés"
 
-#: gtik/gtik.c:1341
+#: gtik/gtik.c:1332
 msgid "_Enable scroll buttons"
 msgstr "A _görgetőgombok engedélyezése"
 
-#: gtik/gtik.c:1365
-msgid "+ C_olor"
+#: gtik/gtik.c:1356
+msgid "+ C_olor:"
 msgstr "+ _Szín"
 
-#: gtik/gtik.c:1385
-msgid "- Colo_r"
+#: gtik/gtik.c:1376
+msgid "- Colo_r:"
 msgstr "- S_zín"
 
-#: gtik/gtik.c:1402
-msgid "_Unchanged Color"
-msgstr "_Változatlan szín"
+#: gtik/gtik.c:1393
+msgid "_Unchanged Color:"
+msgstr "_Változatlan szín:"
 
-#: gtik/gtik.c:1419
-msgid "Back_ground Color"
-msgstr "_Háttérszín"
+#: gtik/gtik.c:1410
+msgid "Back_ground Color:"
+msgstr "_Háttérszín:"
 
-#: gtik/gtik.c:1441
+#: gtik/gtik.c:1432
 msgid "_Font:"
 msgstr "_Betűkészlet:"
 
-#: gtik/gtik.c:1461
-msgid "_Symbols"
-msgstr "_Szimbólumok"
+#: gtik/gtik.c:1452
+msgid "Symbols"
+msgstr "Szimbólumok"
 
-#: gtik/gtik.c:1463
-msgid "_Behavior"
-msgstr "_Viselkedés"
+#: gtik/gtik.c:1454
+msgid "Behavior"
+msgstr "Viselkedés"
 
-#: gtik/gtik.c:1465
-msgid "_Appearance"
-msgstr "_Megjelenés"
-
-#: gtik/gtik.c:1550
+#: gtik/gtik.c:1541
 msgid "Skip forward"
 msgstr "Kihagy egyet"
 
-#: gtik/gtik.c:1551
+#: gtik/gtik.c:1542
 msgid "Skip backward"
 msgstr "Előzőre lép"
 
-#: gtik/gtik.c:1552
+#: gtik/gtik.c:1543
 msgid ""
 "Stock Ticker\n"
 "Get continuously updated stock quotes"
@@ -1356,11 +1035,11 @@ msgstr ""
 "StockTicker\n"
 "Folyamatosan frissülő részvényárfolyamok"
 
-#: gtik/gtik.c:1739
+#: gtik/gtik.c:1731
 msgid "(No"
 msgstr "(Nincs"
 
-#: gtik/gtik.c:1740
+#: gtik/gtik.c:1732
 msgid "Change "
 msgstr "változás "
 
@@ -1528,55 +1207,50 @@ msgstr "Írd be az URL-t"
 msgid "Weather Preferences"
 msgstr "Időjárás beállításai"
 
-#: gweather/gweather-pref.c:610
-msgid "_Location"
-msgstr "_Hely"
-
-#: gweather/gweather-pref.c:641
+#: gweather/gweather-pref.c:604
 msgid "_Automatically update every"
 msgstr "_Automatikus frissítés minden"
 
-#: gweather/gweather-pref.c:647
+#: gweather/gweather-pref.c:610
 msgid "Use _metric system units"
 msgstr "_Metrikus mértékegységrendszer használata"
 
-#: gweather/gweather-pref.c:653
+#: gweather/gweather-pref.c:616
 msgid "Enable _detailed forecast"
 msgstr "_Részletes előrejelzés engedélyezése"
 
-#: gweather/gweather-pref.c:660
+#: gweather/gweather-pref.c:623
 msgid "Enable _radar map"
 msgstr "_Műholdas térképek engedélyezése"
 
-#: gweather/gweather-pref.c:666
+#: gweather/gweather-pref.c:629
 msgid "Use cus_tom address for radar map"
 msgstr "A radar térkép he_lyének beállítása"
 
-#: gweather/gweather-pref.c:677
+#: gweather/gweather-pref.c:640
 msgid "A_ddress :"
 msgstr "_Cím :"
 
-#: gweather/gweather-pref.c:689
+#: gweather/gweather-pref.c:652
 msgid "Updates"
 msgstr "Frissítések"
 
-#: gweather/gweather-pref.c:695
+#: gweather/gweather-pref.c:658
 msgid "_Automatically update every "
 msgstr "_Automatikus frissítés minden"
 
-#: gweather/gweather-pref.c:715
+#: gweather/gweather-pref.c:678
 msgid "minute(s)"
 msgstr "percben"
 
 #. The Miscellaneous frame
-#: gweather/gweather-pref.c:726
+#: gweather/gweather-pref.c:689
 msgid "Miscellaneous"
 msgstr "Egyéb"
 
-#: gweather/gweather-pref.c:744 mini-commander/src/mini-commander.glade.h:19
-#: modemlights/properties.c:428
-msgid "_General"
-msgstr "_Alap"
+#: gweather/gweather-pref.c:744
+msgid "Location"
+msgstr "Hely"
 
 #: gweather/weather.c:57
 msgid "knots"
@@ -2752,7 +2426,7 @@ msgstr "Söprő poros forgószél"
 msgid "Drifting dust whirls"
 msgstr "Átvonuló poros forgószél"
 
-#: gweather/weather.c:824 gweather/weather.c:864 gweather/weather.c:1436
+#: gweather/weather.c:824 gweather/weather.c:864 gweather/weather.c:1437
 msgid "Failed to get METAR data.\n"
 msgstr "A METAR adatok lekérdezése sikertelen.\n"
 
@@ -2777,33 +2451,33 @@ msgstr "Met Office adatot lekérdezése sikertelen.\n"
 msgid "Failed to get Met Office forecast data.\n"
 msgstr "Met Office előrejelzések lekérdezése sikertelen.\n"
 
-#: gweather/weather.c:1466
+#: gweather/weather.c:1468
 msgid "Failed to get radar map image.\n"
 msgstr "Radarkép letöltése sikertelen.\n"
 
-#: gweather/weather.c:1769
+#: gweather/weather.c:1771
 msgid "%a, %b %d / %H:%M"
 msgstr "%a, %b %d / %H:%M"
 
-#: gweather/weather.c:1773
+#: gweather/weather.c:1775
 msgid "Unknown observation time"
 msgstr "Ismeretlen megfigyelési idő"
 
-#: gweather/weather.c:1833
+#: gweather/weather.c:1835
 msgid "Calm"
 msgstr "Szélcsend"
 
-#: gweather/weather.c:1859
+#: gweather/weather.c:1861
 msgid "Unknown"
 msgstr "Ismeretlen"
 
-#: gweather/weather.c:1893
+#: gweather/weather.c:1895
 msgid "Retrieval failed"
 msgstr "A letöltés sikertelen"
 
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:1
 #: mini-commander/src/about.c:66
-#: mini-commander/src/mini-commander_applet.c:313
+#: mini-commander/src/mini-commander_applet.c:353
 msgid "Command Line"
 msgstr "Parancssor"
 
@@ -2834,15 +2508,15 @@ msgstr ""
 "bármelyik későbbi változatában foglaltak betartásával."
 
 #. build file select dialog
-#: mini-commander/src/command_line.c:427
+#: mini-commander/src/command_line.c:430
 msgid "Start program"
 msgstr "Program indítása"
 
-#: mini-commander/src/command_line.c:470
+#: mini-commander/src/command_line.c:473
 msgid "Command line"
 msgstr "Parancssor"
 
-#: mini-commander/src/command_line.c:471
+#: mini-commander/src/command_line.c:474
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "Írj be egy parancsot ide, a Gnome elindítja neked"
 
@@ -2895,7 +2569,8 @@ msgstr "_Applet szélessége:"
 msgid "Autocompletion"
 msgstr "Automatikus kiegészítés"
 
-#: mini-commander/src/mini-commander.glade.h:6 multiload/properties.c:365
+#: mini-commander/src/mini-commander.glade.h:6 modemlights/properties.c:468
+#: multiload/properties.c:365
 msgid "Colors"
 msgstr "Színek"
 
@@ -2916,93 +2591,93 @@ msgid "Command:"
 msgstr "Parancs:"
 
 #: mini-commander/src/mini-commander.glade.h:11
-msgid "Enable _history based autocompletion"
+msgid "E_nable history based autocompletion"
 msgstr "_Előzménylista alapján kiegészítés engedélyezése"
 
-#: mini-commander/src/mini-commander.glade.h:12
+#: mini-commander/src/mini-commander.glade.h:13
+msgid "Macros"
+msgstr "Makrók"
+
+#: mini-commander/src/mini-commander.glade.h:14
 msgid "Pattern:"
 msgstr "Minta:"
 
-#: mini-commander/src/mini-commander.glade.h:13
+#: mini-commander/src/mini-commander.glade.h:15
 msgid "Pick a color"
 msgstr "Színkiválasztás"
 
-#: mini-commander/src/mini-commander.glade.h:14
+#: mini-commander/src/mini-commander.glade.h:16
 msgid "Show fram_e"
 msgstr "_Keret mutatása"
 
-#: mini-commander/src/mini-commander.glade.h:15
+#: mini-commander/src/mini-commander.glade.h:17
 msgid "Show han_dle"
 msgstr "_Fül mutatása"
 
-#: mini-commander/src/mini-commander.glade.h:16
+#: mini-commander/src/mini-commander.glade.h:18
 msgid "Size"
 msgstr "Méret"
 
-#: mini-commander/src/mini-commander.glade.h:17
+#: mini-commander/src/mini-commander.glade.h:19
 msgid "_Add new macro..."
 msgstr "Ú_j makró hozzáadása..."
 
-#: mini-commander/src/mini-commander.glade.h:18
+#: mini-commander/src/mini-commander.glade.h:20
 msgid "_Delete Macro"
 msgstr "_Makró törlése"
-
-#: mini-commander/src/mini-commander.glade.h:20
-msgid "_Macros"
-msgstr "_Makrók"
 
 #: mini-commander/src/mini-commander.glade.h:21
 msgid "_Use default theme colors"
 msgstr "_Használja az alapértelmezett téma színeit"
 
-#: mini-commander/src/mini-commander_applet.c:143
-#: mini-commander/src/mini-commander_applet.c:147
+#: mini-commander/src/mini-commander_applet.c:189
+#: mini-commander/src/mini-commander_applet.c:193
 msgid "Browser"
 msgstr "Böngésző"
 
-#: mini-commander/src/mini-commander_applet.c:148
+#: mini-commander/src/mini-commander_applet.c:194
 msgid "Click this button to start the browser"
 msgstr "Kattints erre a gombra böngésző indításához"
 
-#: mini-commander/src/mini-commander_applet.c:164
-#: mini-commander/src/mini-commander_applet.c:168
+#: mini-commander/src/mini-commander_applet.c:208
+#: mini-commander/src/mini-commander_applet.c:212
 msgid "History"
 msgstr "Napló"
 
-#: mini-commander/src/mini-commander_applet.c:169
+#: mini-commander/src/mini-commander_applet.c:213
 msgid "Click this button for the list of previous commands"
 msgstr "Ezzel a gombbal az előző parancsokat tudod listázni"
 
-#: mini-commander/src/mini-commander_applet.c:311
+#: mini-commander/src/mini-commander_applet.c:351
 msgid "Mini-Commander applet"
 msgstr "Mini-Commander applet"
 
-#: mini-commander/src/mini-commander_applet.c:312
+#: mini-commander/src/mini-commander_applet.c:352
 msgid "This applet adds a command line to the panel"
 msgstr "Ez az applet egy parancssort ad a panelhez"
 
 #: mini-commander/src/preferences.c:343
 msgid "You must specify a pattern"
-msgstr ""
+msgstr "Meg kell adni egy mintát"
 
 #: mini-commander/src/preferences.c:347
 msgid "You must specify a pattern and a command"
-msgstr ""
+msgstr "Meg kell adni egy mintát és egy parancsot"
 
 #: mini-commander/src/preferences.c:348
 msgid "You must specify a command"
-msgstr ""
+msgstr "Meg kell adni egy parancsot"
 
 #: mini-commander/src/preferences.c:351
 msgid "You may not specify duplicate patterns"
-msgstr ""
+msgstr "Nem lehet többször megadni egy mintát"
 
 #: mixer/GNOME_MixerApplet.server.in.in.h:1
 msgid "Adjust the sound volume"
 msgstr "Hangerő állítása"
 
-#: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:130
-#: mixer/mixer.c:807
+#: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:143
+#: mixer/mixer.c:827
 msgid "Volume Control"
 msgstr "Hangerőszabályzó"
 
@@ -3014,11 +2689,11 @@ msgstr "_Némítás"
 msgid "_Run Volume Control..."
 msgstr "_Hangerőszabályzó..."
 
-#: mixer/mixer.c:131
+#: mixer/mixer.c:144
 msgid "Volume Control (muted)"
 msgstr "Hangerőszabályzó (elnémítva)"
 
-#: mixer/mixer.c:183
+#: mixer/mixer.c:196
 msgid ""
 "warning: this version of gmix was compiled with a different version of\n"
 "soundcard.h.\n"
@@ -3026,37 +2701,37 @@ msgstr ""
 "figyelmeztetés: ez a gmix verzió más soundcard.h-val volt\n"
 "fordítva.\n"
 
-#: mixer/mixer.c:194
+#: mixer/mixer.c:207
 #, c-format
 msgid "Querying available channels of mixer device %s failed\n"
 msgstr "Keverőcsatornák lekérdezése a %s mixer eszközön sikertelen\n"
 
-#: mixer/mixer.c:201
+#: mixer/mixer.c:214
 msgid "warning: mixer has no volume channel - using PCM instead.\n"
 msgstr "figyelem: a mixernek nincs hangerő csatornája - a PCM-et használom.\n"
 
-#: mixer/mixer.c:204
+#: mixer/mixer.c:217
 #, c-format
 msgid "Mixer device %s has neither volume nor PCM channels.\n"
 msgstr "Nincs a %s eszköznek sem hangerő sem PCM csatornája.\n"
 
-#: mixer/mixer.c:552
+#: mixer/mixer.c:572
 msgid "Volume Controller"
 msgstr "Hangerőszabályzó"
 
-#: mixer/mixer.c:553
+#: mixer/mixer.c:573
 msgid "Use Up/Down arrow keys to change volume"
 msgstr "Használd a fel-le nyilakat a hangerő változtatásához"
 
-#: mixer/mixer.c:808
+#: mixer/mixer.c:828
 msgid "(C) 2001 Richard Hult"
 msgstr "(C) 2001 Richard Hult"
 
-#: mixer/mixer.c:809
+#: mixer/mixer.c:829
 msgid "The volume control lets you set the volume level for your desktop."
 msgstr "A hangerőszabályzó a felület hangerejének szabályozására szolgál."
 
-#: mixer/mixer.c:1019
+#: mixer/mixer.c:1074
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr "A hangerőszabályzó a felület hangerejének szabályozására szolgál"
 
@@ -3190,10 +2865,6 @@ msgstr "Hátté_r"
 msgid "O_utline"
 msgstr "_Kihúzás"
 
-#: modemlights/properties.c:468
-msgid "C_olors"
-msgstr "_Színek"
-
 #: modemlights/properties.c:477
 msgid "Modem options"
 msgstr "Modem beállításai"
@@ -3220,8 +2891,8 @@ msgid "Set options as default"
 msgstr "A beállítások alapértelmezetté tétele"
 
 #: modemlights/properties.c:554
-msgid "_Advanced"
-msgstr "_Haladó"
+msgid "Advanced"
+msgstr "Haladó"
 
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:1
 msgid "A system load indicator"
@@ -3256,19 +2927,19 @@ msgstr ""
 "A rendszer terheltség figyelő a cpu, ram és swap fájl használat figyelésére "
 "használható"
 
-#: multiload/main.c:236
+#: multiload/main.c:236 multiload/properties.c:373
 msgid "Processor"
 msgstr "Processzor"
 
-#: multiload/main.c:238
+#: multiload/main.c:238 multiload/properties.c:379
 msgid "Memory"
 msgstr "Memória"
 
-#: multiload/main.c:240
+#: multiload/main.c:240 multiload/properties.c:385
 msgid "Network"
 msgstr "Hálózat"
 
-#: multiload/main.c:242
+#: multiload/main.c:242 multiload/properties.c:391
 msgid "Swap File"
 msgstr "Lapozófájl"
 
@@ -3313,16 +2984,6 @@ msgstr "_Hálózat"
 msgid "_Swap File"
 msgstr "_Lapozófájl"
 
-#.
-#. check_box = gtk_check_button_new_with_mnemonic(_("_Average"));
-#. gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_box),
-#. panel_applet_gconf_get_bool(multiload_applet->applet, "view_loadavg", NULL));
-#. gtk_box_pack_start(GTK_BOX(hbox), check_box, FALSE, FALSE, 0);
-#.
-#: multiload/properties.c:313
-msgid "Options"
-msgstr "Beállítások"
-
 #: multiload/properties.c:326
 msgid "System m_onitor width: "
 msgstr "Rendszer_figyelő szélessége: "
@@ -3343,10 +3004,6 @@ msgstr "Rendszerfigyelő _frissítési időköze: "
 msgid "milliseconds"
 msgstr "milliszekundum"
 
-#: multiload/properties.c:373
-msgid "P_rocessor"
-msgstr "P_rocesszor"
-
 #: multiload/properties.c:374
 msgid "_User"
 msgstr "_Felhasználó"
@@ -3362,10 +3019,6 @@ msgstr "N_ice"
 #: multiload/properties.c:377
 msgid "I_dle"
 msgstr "Ür_esjárat"
-
-#: multiload/properties.c:379
-msgid "M_emory"
-msgstr "Memóri_a"
 
 #: multiload/properties.c:380
 msgid "Ot_her"
@@ -3383,10 +3036,6 @@ msgstr "_Pufferek"
 msgid "F_ree"
 msgstr "_Szabad"
 
-#: multiload/properties.c:385
-msgid "Net_work"
-msgstr "Háló_zat"
-
 #: multiload/properties.c:386
 msgid "S_LIP"
 msgstr "S_LIP"
@@ -3402,10 +3051,6 @@ msgstr "Et_hernet"
 #: multiload/properties.c:389
 msgid "_Other"
 msgstr "_Más"
-
-#: multiload/properties.c:391
-msgid "Swap _File"
-msgstr "Lapozó_fájl"
 
 #: multiload/properties.c:392
 msgid "_Used"
@@ -3626,32 +3271,32 @@ msgstr ""
 msgid "Help document %s/%s not found"
 msgstr ""
 
-#: wireless/wireless-applet.c:344
+#: wireless/wireless-applet.c:343
 msgid ""
 "The images necessary to run the wireless monitor are missing.\n"
 "Please make sure that it is correctly installed."
 msgstr ""
 
-#: wireless/wireless-applet.c:525
+#: wireless/wireless-applet.c:524
 msgid "No Wireless Devices"
-msgstr ""
+msgstr "Nincs drótnélküli eszköz"
 
-#: wireless/wireless-applet.c:527
+#: wireless/wireless-applet.c:526
 msgid ""
 "There doesn't seem to be any wireless devices configured on your system.\n"
 "Please verify your configuration if you think this is incorrect."
 msgstr ""
 
-#: wireless/wireless-applet.c:719
+#: wireless/wireless-applet.c:718
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:2
 msgid "Wireless Link Monitor"
 msgstr ""
 
-#: wireless/wireless-applet.c:721
+#: wireless/wireless-applet.c:720
 msgid "(C) 2001, 2002 Free Software Foundation "
 msgstr "(C) 2001, 2002 Free Software Foundation "
 
-#: wireless/wireless-applet.c:722
+#: wireless/wireless-applet.c:721
 msgid "This utility shows the status of a wireless link."
 msgstr "Ez az applet a drótnélküli kapcsolat állapotát jelzi."
 
@@ -3669,11 +3314,300 @@ msgstr ""
 
 #: wireless/wireless-applet.glade.h:4
 msgid "Wireless Link Monitor Preferences"
-msgstr "Lemezbeillesztő beállításai"
+msgstr "Drótnélküli kapcsolat megfigyelőjének beállításai"
 
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:1
 msgid "Monitor the quality of a wireless network link"
 msgstr ""
+
+#~ msgid "_Edit"
+#~ msgstr "_Szerkesztés"
+
+#~ msgid "_Up"
+#~ msgstr "_Fel"
+
+#~ msgid "Dow_n"
+#~ msgstr "_Le"
+
+#~ msgid "_Delete"
+#~ msgstr "_Törlés"
+
+#~ msgid "Armenia"
+#~ msgstr "Örményország"
+
+#~ msgid "Australia"
+#~ msgstr "Ausztrália"
+
+#~ msgid "Austria"
+#~ msgstr "Ausztria"
+
+#~ msgid "Belgium"
+#~ msgstr "Belgium"
+
+#~ msgid "Brazil"
+#~ msgstr "Brazília"
+
+#~ msgid "Bulgaria"
+#~ msgstr "Bulgária"
+
+#~ msgid "Canada"
+#~ msgstr "Kanada"
+
+#~ msgid "Caribic"
+#~ msgstr "Karib-szigetek"
+
+#~ msgid "France"
+#~ msgstr "Franciaország"
+
+#~ msgid "Georgia"
+#~ msgstr "Grúzia"
+
+#~ msgid "Germany"
+#~ msgstr "Németország"
+
+#~ msgid "Great Britain"
+#~ msgstr "Nagy Britannia"
+
+#~ msgid "Greece"
+#~ msgstr "Görögország"
+
+#~ msgid "Hungary"
+#~ msgstr "Magyarország"
+
+#~ msgid "Jamaica"
+#~ msgstr "Jamaika"
+
+#~ msgid "New Zealand"
+#~ msgstr "Új-Zéland"
+
+#~ msgid "Norway"
+#~ msgstr "Norvégia"
+
+#~ msgid "Poland"
+#~ msgstr "Lengyelország"
+
+#~ msgid "Portugal"
+#~ msgstr "Portugália"
+
+#~ msgid "Russia"
+#~ msgstr "Oroszország"
+
+#~ msgid "Slovak Republic"
+#~ msgstr "Szlovákia"
+
+#~ msgid "Slovenia"
+#~ msgstr "Szlovénia"
+
+#~ msgid "South Africa"
+#~ msgstr "Dél-Afrika"
+
+#~ msgid "Spain"
+#~ msgstr "Spanyolország"
+
+#~ msgid "Sweden"
+#~ msgstr "Svédország"
+
+#~ msgid "Switzerland"
+#~ msgstr "Svájc"
+
+#~ msgid "Thailand"
+#~ msgstr "Thaiföld"
+
+#~ msgid "Turkey"
+#~ msgstr "Törökország"
+
+#~ msgid "United Kingdom"
+#~ msgstr "Egyesült Királyság"
+
+#~ msgid "United States"
+#~ msgstr "Egyesült Államok"
+
+#~ msgid "Yugoslavia"
+#~ msgstr "Jugoszlávia"
+
+#~ msgid "Armenian"
+#~ msgstr "Örmény"
+
+#~ msgid "Basque"
+#~ msgstr "Baszk"
+
+#~ msgid "Bulgarian"
+#~ msgstr "Bolgár"
+
+#~ msgid "Dutch"
+#~ msgstr "Holland"
+
+#~ msgid "English"
+#~ msgstr "Angol"
+
+#~ msgid "French"
+#~ msgstr "Francia"
+
+#~ msgid "Georgian"
+#~ msgstr "Grúz"
+
+#~ msgid "German"
+#~ msgstr "Német"
+
+#~ msgid "Greek"
+#~ msgstr "Görög"
+
+#~ msgid "Hungarian"
+#~ msgstr "Magyar"
+
+#~ msgid "Norwegian"
+#~ msgstr "Norvég"
+
+#~ msgid "Polish"
+#~ msgstr "Lengyel"
+
+#~ msgid "Portuguese"
+#~ msgstr "Portugál"
+
+#~ msgid "Russian"
+#~ msgstr "Orosz"
+
+#~ msgid "Slovak"
+#~ msgstr "Szlovák"
+
+#~ msgid "Slovenian"
+#~ msgstr "Szlovén"
+
+#~ msgid "Swedish"
+#~ msgstr "Svéd"
+
+#~ msgid "Thai"
+#~ msgstr "Thai"
+
+#~ msgid "Turkish"
+#~ msgstr "Török"
+
+#~ msgid "Wallon"
+#~ msgstr "Vallon"
+
+#~ msgid "Yugoslavian"
+#~ msgstr "Jugoszláv"
+
+#~ msgid "105"
+#~ msgstr "105"
+
+#~ msgid "101"
+#~ msgstr "101"
+
+#~ msgid "102"
+#~ msgstr "102"
+
+#~ msgid "450"
+#~ msgstr "450"
+
+#~ msgid "84"
+#~ msgstr "84"
+
+#~ msgid "mklinux"
+#~ msgstr "mklinux"
+
+#~ msgid "type5"
+#~ msgstr "type5"
+
+#~ msgid "iso-8859-1"
+#~ msgstr "iso-8859-1"
+
+#~ msgid "iso-8859-2"
+#~ msgstr "iso-8859-2"
+
+#~ msgid "iso-8859-7"
+#~ msgstr "iso-8859-7"
+
+#~ msgid "iso-8859-9"
+#~ msgstr "iso-8859-9"
+
+#~ msgid "am-armscii8"
+#~ msgstr "am-armscii8"
+
+#~ msgid "be-latin1"
+#~ msgstr "be-latin1"
+
+#~ msgid "cp1251"
+#~ msgstr "cp1251"
+
+#~ msgid "georgian-academy"
+#~ msgstr "grúz-akadémiai"
+
+#~ msgid "koi8-r"
+#~ msgstr "koi8-r"
+
+#~ msgid "tis620"
+#~ msgstr "tis620"
+
+#~ msgid "ix86"
+#~ msgstr "ix86"
+
+#~ msgid "Sun"
+#~ msgstr "Sun"
+
+#~ msgid "mac"
+#~ msgstr "mac"
+
+#~ msgid "sgi"
+#~ msgstr "sgi"
+
+#~ msgid "dec"
+#~ msgstr "dec"
+
+#~ msgid "ibm"
+#~ msgstr "ibm"
+
+#~ msgid "Lan_guage:"
+#~ msgstr "N_yelv:"
+
+#~ msgid "Count_ry:"
+#~ msgstr "_Ország:"
+
+#~ msgid ""
+#~ "_Flag\n"
+#~ "Pixmap:"
+#~ msgstr ""
+#~ "_Zászló\n"
+#~ "Pixmap"
+
+#~ msgid "Arch_itecture:"
+#~ msgstr "Arc_hitektúra:"
+
+#~ msgid "_Type:"
+#~ msgstr "_Típus:"
+
+#~ msgid "Code_page:"
+#~ msgstr "Kódla_p:"
+
+#~ msgid "_Options"
+#~ msgstr "_Beállítások"
+
+#~ msgid "The keymap switching command returned with error!"
+#~ msgstr "A billentyűzet-átkapcsoló parancs hibával tért vissza!"
+
+#~ msgid "_Appearance"
+#~ msgstr "_Megjelenés"
+
+#~ msgid "_Location"
+#~ msgstr "_Hely"
+
+#~ msgid "_General"
+#~ msgstr "_Alap"
+
+#~ msgid "C_olors"
+#~ msgstr "_Színek"
+
+#~ msgid "P_rocessor"
+#~ msgstr "P_rocesszor"
+
+#~ msgid "M_emory"
+#~ msgstr "Memóri_a"
+
+#~ msgid "Net_work"
+#~ msgstr "Háló_zat"
+
+#~ msgid "Swap _File"
+#~ msgstr "Lapozó_fájl"
 
 #~ msgid "Settings"
 #~ msgstr "Beállítások"
