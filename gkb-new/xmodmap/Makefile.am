@@ -19,4 +19,5 @@ GKB_MAPS = \
 	xmodmap.tr_q xmodmap.uk xmodmap.us xmodmap.us-101 xmodmap.us-84 \
 	xmodmap.us-dec xmodmap.us-ibm xmodmap.us-int xmodmap.us-mac \
 	xmodmap.us-sgi-101 xmodmap.us-sun xmodmap.us.old xmodmap.us_intl \
-	xmodmap.yu 
+	xmodmap.yu xmodmap.ro
+
