@@ -482,6 +482,8 @@ prop_cb (BonoboUIComponent *uic,
   g_signal_connect (G_OBJECT(battstat->suspend_entry), "changed",
 		    G_CALLBACK(suspend_changed), battstat);
 
+  g_warning ("%s", battstat->suspend_cmd ? battstat->suspend_cmd : "ARSE");
+  gtk_entry_set_text (GTK_ENTRY (battstat->suspend_entry), battstat->suspend_cmd); 
   if ( ! key_writable (PANEL_APPLET (battstat->applet), "suspend_command") ||
       inhibit_command_line) {
 	  hard_set_sensitive (battstat->suspend_entry, FALSE);

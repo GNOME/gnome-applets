@@ -1,3 +1,11 @@
+2004-01-07  Glynn Foster  <glynn.foster@sun.com>
+
+	* battstat.schemas.in: Give a default command. Assume APM for now, 
+	but really this should probably be something like ACPI in the future?
+	* battstat_applet.c: (suspend_cb): Give a better warning message.
+	* properties.c: (prop_cb): Actually remember the suspend command when
+	you load up the preference dialog. Fixes #130641.
+
 2003-01-04  Kevin Vandersloot
 
 	* acpi-linux.c: Fix for acpi events bug. Patch by Brian Perkins. 

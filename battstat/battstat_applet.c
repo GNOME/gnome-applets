@@ -842,7 +842,10 @@ suspend_cb (BonoboUIComponent *uic,
 		      msg = g_strdup_printf(_("An error occured while launching the Suspend command: %s\nPlease try to correct this error"), err->message);
 	      } else {
 		      /* Probably because the shell_ret is != 0 */
-		      msg = g_strdup_printf(_("An error occured while launching the Suspend command, the command returned \"%d\"\nPlease try to correct this error"), shell_ret);
+		      if (battstat->suspend_cmd)
+		          msg = g_strdup_printf(_("The Suspend command '%s' was unsuccessful."), battstat->suspend_cmd);
+		      else
+		          msg = g_strdup_printf(_("The Suspend command was unsuccessful."));
 	      }
 	      battstat_error_dialog (PANEL_APPLET (battstat->applet), msg);
 	      g_free(msg);
