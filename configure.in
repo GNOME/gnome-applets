@@ -35,6 +35,18 @@ AC_ARG_ENABLE(install_schemas,
 	[  --disable-install-schemas        Disable installation of the gconf schemas])
 AM_CONDITIONAL(INSTALL_SCHEMAS, test x$enable_install_schemas != xno)
 
+dnl configure argument for disabling gstreamer usage
+
+AC_ARG_ENABLE(gstreamer,
+AC_HELP_STRING([--enable-gstreamer],[use gstreamer, if available]),
+[case "${enableval}" in
+  yes) ENABLE_GSTREAMER=yes ;;
+  no)  ENABLE_GSTREAMER=no ;;
+  *) AC_MSG_ERROR(bad value ${enableval} for --enable-gstreamer) ;;
+esac], 
+[ENABLE_GSTREAMER=yes]) dnl Default value
+
+
 dnl ******************************************
 dnl ** pkg-config dependacy checks          **
 dnl ******************************************
@@ -224,15 +236,30 @@ dnl ** mixer applet check                    **
 dnl *******************************************
 
 P_MIXER=
+MIXER_CFLAGS=
 MIXER_LIBS=
-AC_CHECK_HEADERS(linux/soundcard.h,[P_MIXER=mixer],[
-  AC_CHECK_HEADERS(machine/soundcard.h, [P_MIXER=mixer],[
-    AC_CHECK_HEADERS(sys/soundcard.h, [P_MIXER=mixer],[
-      AC_CHECK_HEADERS(soundcard.h, [P_MIXER=mixer; MIXER_LIBS="-lossaudio"],[
-        AC_CHECK_HEADERS(sys/audioio.h, [P_MIXER=mixer],[
-          AC_CHECK_HEADERS(sys/audio.io.h, [P_MIXER=mixer],[
-            AC_CHECK_HEADERS(sun/audioio.h, [P_MIXER=mixer],[
-	      AC_CHECK_HEADERS(dmedia/audio.h, [P_MIXER=mixer]),]) ]) ]) ]) ]) ]) ])
+
+if test "x$ENABLE_GSTREAMER" = "xyes"; then
+  PKG_CHECK_MODULES(MIXER, gstreamer-interfaces-0.7 >= 0.7.3.1, [P_MIXER=mixer; HAVE_GSTREAMER=true], [HAVE_GSTREAMER=false])
+  if test "x$HAVE_GSTREAMER" = "xtrue"; then
+    MIXER_CFLAGS="-DHAVE_GSTREAMER $MIXER_CFLAGS"
+  fi
+else
+   AC_MSG_RESULT(*** GStreamer has been explicitly disabled ***)
+fi
+
+if test "x$P_MIXER" = "x"; then
+  AC_CHECK_HEADERS(linux/soundcard.h,[P_MIXER=mixer],[
+    AC_CHECK_HEADERS(machine/soundcard.h, [P_MIXER=mixer],[
+      AC_CHECK_HEADERS(sys/soundcard.h, [P_MIXER=mixer],[
+        AC_CHECK_HEADERS(soundcard.h, [P_MIXER=mixer; MIXER_LIBS="-lossaudio"],[
+          AC_CHECK_HEADERS(sys/audioio.h, [P_MIXER=mixer],[
+            AC_CHECK_HEADERS(sys/audio.io.h, [P_MIXER=mixer],[
+              AC_CHECK_HEADERS(sun/audioio.h, [P_MIXER=mixer],[
+	        AC_CHECK_HEADERS(dmedia/audio.h, [P_MIXER=mixer]),]) ]) ]) ]) ]) ]) ])
+fi
+
+AC_SUBST(MIXER_CFLAGS)
 AC_SUBST(MIXER_LIBS)
 
 AM_CONDITIONAL(APPLET_MIXER, test "$P_MIXER" = "mixer")

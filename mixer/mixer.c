@@ -1,3 +1,5 @@
+/* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*- */
+
 /*
  * Mixer (volume control) applet.
  * 
@@ -75,18 +77,28 @@
 #elif HAVE_DMEDIA_AUDIO_H
 #define IRIX_API
 #include <dmedia/audio.h>
+#elif HAVE_GSTREAMER
+#define GSTREAMER_API
+#include <gst/gst.h>
+#include <gst/mixer/mixer.h>
+#include <gst/propertyprobe/propertyprobe.h>
 #else
 #error No soundcard defenition!
 #endif /* SOUNDCARD_H */
 
 #ifdef OSS_API
 #define VOLUME_MAX 100
+#define ALLOW_PREFERENCES
 #endif
 #ifdef SUN_API
 #define VOLUME_MAX 255
 #endif
 #ifdef IRIX_API
 #define VOLUME_MAX 255
+#endif
+#ifdef GSTREAMER_API
+#define VOLUME_MAX 100
+#define ALLOW_PREFERENCES
 #endif
 
 #define VOLUME_STOCK_MUTE             "volume-mute"
@@ -118,6 +130,16 @@ static gchar *channel_names [] = {
 	N_("Digital2"), N_("Digital3"), 
 	N_("Phone Input"), N_("Phone Output"), N_("Video"), N_("Radio"), N_("Monitor")
 };
+#endif
+
+
+#ifdef GSTREAMER_API
+typedef struct {
+	gint           channel;
+	const gchar   *name;
+	GstMixer      *mixer;
+	GstMixerTrack *track;
+} ChannelData;
 #endif
 
 typedef struct {
@@ -176,6 +198,220 @@ static const gchar *access_name = N_("Volume Control");
 static const gchar *access_name_mute = N_("Volume Control (muted)");
 static const gchar *access_name_nodevice = N_("No audio device");
 gboolean gail_loaded = FALSE;  
+
+
+/*
+ * GStreamer-specific code
+ */
+
+#ifdef GSTREAMER_API
+
+static ChannelData *
+gstreamer_find_mixer_channel (MixerData *data)
+{
+	const GList *iter;
+	ChannelData *cdata;
+
+	for (iter = data->channels; iter != NULL; iter = iter->next) {
+		cdata = iter->data;
+		if (cdata->channel == data->mixerchannel)
+			return cdata;
+	}
+	
+	return NULL;
+}
+
+/*
+  Map a volume value from the track's [min_volume, max_volume]
+   to [0, VOLUME_MAX].
+*/
+static gint
+gstreamer_normalize_volume (GstMixerTrack *track,
+			    int            vol)
+{
+	double t;
+
+	vol = CLAMP (vol, track->min_volume, track->max_volume);
+
+	t = (vol - track->min_volume) /
+		(double) (track->max_volume - track->min_volume);
+
+	return (gint) (VOLUME_MAX * t);
+}
+
+/*
+  Map a volume value from [0, VOLUME_MAX] to the track's
+  [min_volume, max_volume].
+*/
+static gint
+gstreamer_trackify_volume (GstMixerTrack *track,
+			   int            vol)
+{
+	double t;
+
+	vol = CLAMP (vol, 0, VOLUME_MAX);
+
+	t = vol / (double) VOLUME_MAX;
+	
+	return (gint) (t * (track->max_volume - track->min_volume)
+		       + track->min_volume);
+}
+
+static int
+gstreamer_get_volume (MixerData *data)
+{
+	ChannelData *cdata;
+	gint *volumes;
+	gint i;
+	double vol = 0;
+	
+	cdata = gstreamer_find_mixer_channel (data);
+	if (cdata == NULL)
+		return 0; /* This is sort of lame */
+
+	volumes = g_new0 (gint, cdata->track->num_channels);
+	gst_mixer_get_volume (cdata->mixer, cdata->track, volumes);
+	for (i = 0; i < cdata->track->num_channels; ++i) {
+		vol += volumes[i];
+	}
+	g_free (volumes);
+	
+	vol /= cdata->track->num_channels;
+
+	return gstreamer_normalize_volume (cdata->track, (gint) vol);
+}
+
+static void
+gstreamer_set_volume (MixerData *data, gint vol)
+{
+	ChannelData *cdata;
+	gint *volumes;
+	gint i;
+
+	cdata = gstreamer_find_mixer_channel (data);
+	if (cdata == NULL)
+		return; /* This is also sort of lame */
+
+	vol = gstreamer_trackify_volume (cdata->track, vol);
+	
+	volumes = g_new0 (gint, cdata->track->num_channels);
+	for (i = 0; i < cdata->track->num_channels; ++i) {
+		volumes[i] = vol;
+	}
+	gst_mixer_set_volume (cdata->mixer, cdata->track, volumes);
+	g_free (volumes);
+}
+
+/*
+  This code is stolen from gnome-media's gst-mixer
+*/
+static void
+gstreamer_discover_mixers (MixerData *data)
+{
+	const GList *elements;
+	gint num = 0, channel_count = 0;
+	
+	/* go through all elements of a certain class and check whether
+	 * they implement a mixer. If so, add a page */
+	elements = gst_registry_pool_feature_list (GST_TYPE_ELEMENT_FACTORY);
+	for ( ; elements != NULL; elements = elements->next) {
+		GstElementFactory *factory = GST_ELEMENT_FACTORY (elements->data);
+		gchar *title = NULL;
+		const gchar *klass;
+		GstElement *element = NULL;
+		const GParamSpec *devspec;
+		GstPropertyProbe *probe;
+		GValueArray *array = NULL;
+		gint n;
+		const GList *tracks;
+		
+		/* check category */
+		klass = gst_element_factory_get_klass (factory);
+		if (strcmp (klass, "Generic/Audio"))
+			goto next;
+		
+		/* create element */
+		title = g_strdup_printf ("gst-mixer-%d", num);
+		element = gst_element_factory_create (factory, title);
+		if (!element)
+			goto next;
+		
+		if (!GST_IS_PROPERTY_PROBE (element))
+			goto next;
+		
+		probe = GST_PROPERTY_PROBE (element);
+		if (!(devspec = gst_property_probe_get_property (probe, "device")))
+			goto next;
+		array = gst_property_probe_probe_and_get_values (probe, devspec);
+		
+		/* set all devices and test for mixer */
+		for (n = 0; n < array->n_values; n++) {
+			GValue *device = g_value_array_get_nth (array, n);
+			
+			/* set this device */
+			g_object_set_property (G_OBJECT (element), "device", device);
+			if (gst_element_set_state (element,
+						   GST_STATE_READY) == GST_STATE_FAILURE)
+				continue;
+			
+			/* Is this device a mixer?  If so, add it to the list. */
+			if (!GST_IS_MIXER (element)) {
+				gst_element_set_state (element, GST_STATE_NULL);
+				continue;
+			}
+			
+			tracks = gst_mixer_list_tracks (GST_MIXER (element));
+			for (; tracks != NULL; tracks = tracks->next) {
+				ChannelData *cdata;
+				GstMixerTrack *track = tracks->data;
+				
+				cdata = g_new0 (ChannelData, 1);
+				cdata->channel = channel_count;
+				cdata->name = track->label;
+				cdata->mixer = GST_MIXER (element);
+				cdata->track = track;
+				
+				g_object_ref (cdata->mixer);
+				g_object_ref (cdata->track);
+				
+				data->channels = g_list_append (data->channels, cdata);
+				channel_count++;
+			}
+			
+			num++;
+			
+			/* and recreate this object, since we give it to the mixer */
+			title = g_strdup_printf ("gst-mixer-%d", num);
+			element = gst_element_factory_create (factory, title);
+		}
+		
+	next:
+		if (element)
+			gst_object_unref (GST_OBJECT (element));
+		if (array)
+			g_value_array_free (array);
+		g_free (title);
+	}
+}
+
+static void
+gstreamer_channel_data_free (ChannelData *cdata)
+{
+	g_object_unref (cdata->mixer);
+	g_object_unref (cdata->track);
+	g_free (cdata);
+}
+
+static gboolean
+gstreamer_init (MixerData *data)
+{
+	if (! gst_init_check (NULL, NULL))
+		return FALSE;
+	gstreamer_discover_mixers (data);
+	return TRUE;
+}
+
+#endif
 
 
 #ifdef IRIX_API
@@ -241,6 +477,7 @@ get_channels (MixerData *data)
 }
 #endif
 
+
 /********************** Mixer related Code *******************/
 /*  Mostly based on the gmix code                            */
 /*************************************************************/
@@ -294,8 +531,11 @@ openMixer(const gchar *device_name, MixerData *data)
 static int
 readMixer(MixerData *data)
 {
-	gint vol, r, l;
+#ifdef GSTREAMER_API
+  return gstreamer_get_volume (data);
+#endif
 #ifdef OSS_API
+        gint vol, r, l;
 	/* if we couldn't open the mixer */
 	if (mixerfd < 0) return 0;
 
@@ -327,6 +567,9 @@ static void
 setMixer(gint vol, MixerData *data)
 {
 	gint tvol;
+#ifdef GSTREAMER_API
+	gstreamer_set_volume (data, vol);
+#endif
 #ifdef OSS_API
 	/* if we couldn't open the mixer */
 	if (mixerfd < 0) return;
@@ -958,8 +1201,28 @@ mixer_popup_hide (MixerData *data, gboolean revert)
 static void
 destroy_mixer_cb (GtkWidget *widget, MixerData *data)
 {
+
+#ifdef GSTREAMER_API
+	GList *iter;
+	for (iter = data->channels; iter != NULL; iter = iter->next) {
+		ChannelData *cdata = iter->data;
+		gstreamer_channel_data_free (cdata);
+	}
+#endif
+
+#ifdef OSS_API
+	GList *iter;
+	for (iter = data->channels; iter != NULL; iter = iter->next) {
+		ChannelData *cdata = iter->data;
+		g_free (cdata);
+	}
+#endif
+
+	if (data->channels != NULL)
+		g_list_free (data->channels);
+
 	if (data->timeout != 0) {
-		gtk_timeout_remove (data->timeout);
+		g_source_remove (data->timeout);
 		data->timeout = 0;
 	}
 	if (data->error_dialog)
@@ -1119,7 +1382,7 @@ mixer_mute_cb (BonoboUIComponent *uic,
 {
 }
 
-#ifdef OSS_API
+#ifdef ALLOW_PREFERENCES
 
 static gboolean
 cb_row_selected (GtkTreeSelection *selection, MixerData *data)
@@ -1202,7 +1465,7 @@ mixer_pref_cb (BonoboUIComponent *uic,
 {
 	GtkWidget *dialog;
 	GtkWidget *vbox, *vbox1, *vbox2, *vbox3;
-	GtkWidget *hbox, *hbox2;
+	GtkWidget *hbox;
 	GtkWidget *label;
 	GtkWidget *tree;
 	GtkListStore *model;
@@ -1392,7 +1655,6 @@ static void
 get_prefs (MixerData *data)
 {
 	PanelApplet *applet = PANEL_APPLET (data->applet);
-	BonoboUIComponent *component;
 	gboolean mute;
 	
 	data->vol = panel_applet_gconf_get_int (applet, "vol", NULL);
@@ -1507,7 +1769,7 @@ const BonoboUIVerb mixer_applet_menu_verbs [] = {
 	BONOBO_UI_UNSAFE_VERB ("Mute",     mixer_mute_cb),
 	BONOBO_UI_UNSAFE_VERB ("Help",     mixer_help_cb),
 	BONOBO_UI_UNSAFE_VERB ("About",    mixer_about_cb),
-#ifdef OSS_API
+#ifdef ALLOW_PREFERENCES
 	BONOBO_UI_UNSAFE_VERB ("Pref",    mixer_pref_cb),
 #endif
         BONOBO_UI_VERB_END
@@ -1524,7 +1786,7 @@ mixer_applet_create (PanelApplet *applet)
 {
 	MixerData         *data;
 	BonoboUIComponent *component;
-	const gchar *device;
+	const gchar *device = NULL;
 	gboolean retval;
 #ifdef SUN_API
 	gchar *ctl = NULL;
@@ -1551,6 +1813,10 @@ mixer_applet_create (PanelApplet *applet)
 	device = g_strdup_printf("%sctl",ctl);
 	retval = openMixer(device, data);
 #endif
+#ifdef GSTREAMER_API
+	retval = gstreamer_init (data);
+#endif
+
 	mixer_init_stock_icons ();
 	if (!retval) {
 		device_present = FALSE;
@@ -1634,9 +1900,9 @@ mixer_applet_create (PanelApplet *applet)
 	/* Install timeout handler, that keeps the applet up-to-date if the
 	 * volume is changed somewhere else.
 	 */
-	data->timeout = gtk_timeout_add (500,
-					 (GSourceFunc) mixer_timeout_cb,
-					 data);
+	data->timeout = g_timeout_add (500,
+				       (GSourceFunc) mixer_timeout_cb,
+				       data);
 
 	g_signal_connect (applet,
 			  "destroy",
@@ -1698,7 +1964,7 @@ mixer_applet_create (PanelApplet *applet)
 	if (run_mixer_cmd == NULL)
 		bonobo_ui_component_rm (component, "/popups/popup/RunMixer", NULL);
 		
-#ifndef OSS_API
+#ifndef ALLOW_PREFERENCES
 	bonobo_ui_component_rm (component, "/popups/popup/Pref", NULL);
 #endif
 
