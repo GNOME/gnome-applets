@@ -90,6 +90,7 @@ void cb_showhide(GtkWidget * widget, Task *t);
 void cb_shade(GtkWidget * widget, Task *t);
 void cb_kill(GtkWidget * widget, Task *t);
 void cb_nuke(GtkWidget * widget, Task *t);
+void cb_stick(GtkWidget * widget, Task *t);
 void emtpy_task_widgets(void);
 void desktroy_task_widgets(void);
 GtkWidget *find_task_widget(Task *t);
