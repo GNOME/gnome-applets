@@ -1,13 +1,30 @@
 a theme for clockmail contains the following:
 
-* the them is contained within a directory.
+* the theme is contained within a directory.
 * the layout and filenames for images are specified in a file
   name clockmaildata (see the example included in the source)
 * Only the Background image is required, all other items are
   optional. eg: you can omit seconds, or even the mail part if
   you only want a clock, or vice-versa.
+* a clockmaildata file contains 1 or 2 sections. [Horizontal] is
+  required, [Vertical] is used if the theme supports orientation.
+  Both sections support all the flags below.
 
-Mail_Image filename sections x y
+Internationalization:
+  Item_* types support internationalization by adding another tag
+  to the clockmaildata file and supplying a suitable image.
+  Example:
+    To internationalize A day of week item for 'es' do this:
+
+    keep the default line:     Item_Week_Text=week.png 2 20
+    and add a translated line: Item_Week_text[es]=weekes.png
+        (do not add coordinates to the translated lines)
+
+  Note: the translated image should be the same size as the default,
+        and in the case of Item_Mail must contain the same number
+        of animation frames.
+
+Mail_Image=filename sections x y
   filename: name of the image file for mail, this file contains
             images vertically the last image is the one displayed
             to show mail, all the others are animated (flipped
@@ -15,12 +32,19 @@ Mail_Image filename sections x y
   sections: total number of mail pics within the image file
   x, y: coordinates to place the image within the window
 
-Digit_Small/Large filename
+Digit_Small/Large=filename
   filename: image file, contains horizontally the digits 0 through
             9 and a blank space.
 
-Number_Hour/Minutes/Seconds Large/Small x y
+Number_Hour/Minutes/Seconds/Year/Month/Day=Large/Small x y
   Large/Small: the digit to use for this number, Large or Small must
                have been specified with the Digit_* line (above)
   x, y: coordinates to place the numbers within the window
+
+Item_Week_Text=filename x y
+  filename: image file, contains vertically the days of the week
+            from Sunday through Saturday (7)
+
+Item_Month_Text=filename x y
+  filename: image file, contains vertically the months of the year (12)
 

@@ -57,11 +57,16 @@ struct _SkinData
 	gint height;
 	GdkPixmap *background;
 	ItemData *mail;
+	ItemData *month_txt;
+	ItemData *week_txt;
 	DigitData *dig_small;
 	DigitData *dig_large;
 	NumberData *hour;
 	NumberData *min;
 	NumberData *sec;
+	NumberData *month;
+	NumberData *day;
+	NumberData *year;
 };
 
 typedef struct _AppData AppData;
@@ -78,6 +83,7 @@ struct _AppData
 	GtkWidget *applet;
 	GtkWidget *display_area;
 	GtkTooltips *tooltips;
+	PanelOrientType orient;
 	gint update_timeout_id;
 	gint blink_timeout_id;
 	gint anymail;
@@ -103,6 +109,7 @@ struct _AppData
 	gint old_n;
 	gint blink_lit;
 	gint blink_count;
+	gint old_week;
 
 	SkinData *skin;
 	SkinData *skin_v;
@@ -115,6 +122,8 @@ void property_load(gchar *path, AppData *ad);
 void property_save(gchar *path, AppData *ad);
 void property_show(AppletWidget *applet, gpointer data);
 
+void sync_window_to_skin(AppData *ad);
+void free_skin(SkinData *s);
 void redraw_skin(AppData *ad);
 void draw_number(NumberData *number, gint n, AppData *ad);
 void draw_item(ItemData *item, gint section, AppData *ad);

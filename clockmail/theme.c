@@ -21,15 +21,13 @@ static ItemData *new_item_from_data(gchar **data, gint sections, gint x, gint y)
 static ItemData *new_item_from_file(gchar *file, gint sections, gint x, gint y);
 static void free_item(ItemData *item);
 static SkinData *new_skin();
-static void sync_window_to_skin(AppData *ad);
-static void free_skin(SkinData *s);
 static void draw_digit(DigitData *digit, gint n, gint x, gint y, AppData *ad);
 static SkinData *load_default_skin();
-static ItemData *get_mail_item(gchar *path, gchar *datafile, gint vertical);
+static ItemData *get_item(gchar *path, gchar *datafile, gchar *name, gint sections, gint vertical);
 static DigitData *get_digit(gchar *path, gchar *datafile, gchar *name, gint vertical);
 static NumberData *get_number(gchar *path, gchar *datafile, gchar *name, gint zeros, gint vertical, SkinData *skin);
 static GdkPixmap *get_background(gchar *path, gchar *datafile, gint vertical);
-static SkinData *load_skin(gchar *skin_path);
+static SkinData *load_skin(gchar *skin_path, gint vertical);
 
 static GdkPixmap *get_pixmap_from_data(gchar **data)
 {
@@ -175,7 +173,7 @@ static SkinData *new_skin()
 	return s;
 }
 
-static void sync_window_to_skin(AppData *ad)
+void sync_window_to_skin(AppData *ad)
 {
 	if (!ad->skin) return;
 
@@ -185,18 +183,32 @@ static void sync_window_to_skin(AppData *ad)
 	gtk_widget_set_usize(ad->display_area, ad->skin->width, ad->skin->height);
 	gtk_widget_set_usize(ad->applet, ad->skin->width, ad->skin->height);
 	redraw_skin(ad);
+
+	if (ad->skin->mail)
+		ad->mail_sections = ad->skin->mail->sections;
+	else
+		ad->mail_sections = 1;
+
+	/* we are forcing some redraws here */
+	ad->old_week = -1;
+	ad->old_n = -1;
 }
 
-static void free_skin(SkinData *s)
+void free_skin(SkinData *s)
 {
 	if (!s) return;
 	if (s->background) gdk_imlib_free_pixmap(s->background);
 	free_number(s->hour);
 	free_number(s->min);
 	free_number(s->sec);
+	free_number(s->month);
+	free_number(s->day);
+	free_number(s->year);
 	free_digit(s->dig_small);
 	free_digit(s->dig_large);
 	free_item(s->mail);
+	free_item(s->month_txt);
+	free_item(s->week_txt);
 	g_free(s);
 }
 
@@ -272,7 +284,7 @@ static SkinData *load_default_skin()
 	s->dig_large = new_digit_from_data((gchar **)digmed_xpm);
 
 	s->hour = new_number(s->dig_large, 2, FALSE, 3, 4);
-	s->min = new_number(s->dig_large, 2, TRUE, 25, 4);
+	s->min = new_number(s->dig_large, 2, TRUE, 26, 4);
 
 	s->mail = new_item_from_data((gchar **)mailpics_xpm, 10, 3, 23);
 	return s;
@@ -280,13 +292,13 @@ static SkinData *load_default_skin()
 
 /* the following are functions for loading external skins */
 
-static ItemData *get_mail_item(gchar *path, gchar *datafile, gint vertical)
+static ItemData *get_item(gchar *path, gchar *datafile, gchar *name, gint sections, gint vertical)
 {
 	ItemData *item;
 	gchar **vector = NULL;
 	gint length;
 	gchar *filename;
-	gint sections;
+	gchar *lang_filename = NULL;
 	gint x;
 	gint y;
 	gchar *prefix;
@@ -299,15 +311,54 @@ static ItemData *get_mail_item(gchar *path, gchar *datafile, gint vertical)
 	gnome_config_push_prefix (prefix);
 	g_free (prefix);
 
-	gnome_config_get_vector("Mail_Image=", &length, &vector);
+	gnome_config_get_vector(name, &length, &vector);
+	lang_filename = gnome_config_get_translated_string (name);
 	gnome_config_pop_prefix();
 
-	if (!vector || length < 4) return NULL;
+	if (sections > 0)
+		{
+		if (!vector || length < 3)
+			{
+			g_free(lang_filename);
+			gnome_string_array_free (vector);
+			return NULL;
+			}
+		}
+	else
+		{
+		if (!vector || length < 4)
+			{
+			g_free(lang_filename);
+			gnome_string_array_free (vector);
+			return NULL;
+			}
+		}
 
-	filename = g_strconcat(path, "/", vector[0], NULL);
-	sections = strtol(vector[1], NULL, 0);
-	x = strtol(vector[2], NULL, 0);
-	y = strtol(vector[3], NULL, 0);
+	/* if the language specific file exists, load it instead of the default */
+	if (lang_filename)
+		{
+		filename = g_strconcat(path, "/", lang_filename, NULL);
+		g_free (lang_filename);
+		if (!g_file_exists(filename))
+			{
+			g_free(filename);
+			filename = g_strconcat(path, "/", vector[0], NULL);
+			}
+		}
+	else
+		filename = g_strconcat(path, "/", vector[0], NULL);
+
+	if (sections > 0)
+		{
+		x = strtol(vector[1], NULL, 0);
+		y = strtol(vector[2], NULL, 0);
+		}
+	else
+		{
+		sections = strtol(vector[1], NULL, 0);
+		x = strtol(vector[2], NULL, 0);
+		y = strtol(vector[3], NULL, 0);
+		}
 
 	gnome_string_array_free (vector);
 
@@ -382,7 +433,11 @@ static NumberData *get_number(gchar *path, gchar *datafile, gchar *name, gint ze
 	gnome_config_get_vector(name, &length, &vector);
 	gnome_config_pop_prefix();
 
-	if (!vector || length < 3) return NULL;
+	if (!vector || length < 3)
+		{
+		gnome_string_array_free (vector);
+		return NULL;
+		}
 
 	filename = g_strdup(vector[0]);
 	x = strtol(vector[1], NULL, 0);
@@ -443,7 +498,7 @@ static GdkPixmap *get_background(gchar *path, gchar *datafile, gint vertical)
 	return pixmap;
 }
 
-static SkinData *load_skin(gchar *skin_path)
+static SkinData *load_skin(gchar *skin_path, gint vertical)
 {
 	SkinData *s;
 	gchar *datafile = g_strconcat(skin_path, "/clockmaildata", NULL);
@@ -459,7 +514,7 @@ static SkinData *load_skin(gchar *skin_path)
 
 	/* background */
 
-	s->background = get_background(skin_path, datafile, FALSE);
+	s->background = get_background(skin_path, datafile, vertical);
 	if (s->background)
 		{
 		gint width, height;
@@ -474,12 +529,17 @@ static SkinData *load_skin(gchar *skin_path)
 		return NULL;
 		}
 
-	s->mail = get_mail_item(skin_path, datafile, FALSE);
-	s->dig_small = get_digit(skin_path, datafile, "Digit_Small=", FALSE);
-	s->dig_large = get_digit(skin_path, datafile, "Digit_Large=", FALSE);
-	s->hour = get_number(skin_path, datafile, "Number_Hour=", FALSE, FALSE, s);
-	s->min = get_number(skin_path, datafile, "Number_Minutes=", TRUE, FALSE, s);
-	s->sec = get_number(skin_path, datafile, "Number_Seconds=", TRUE, FALSE, s);
+	s->dig_small = get_digit(skin_path, datafile, "Digit_Small=", vertical);
+	s->dig_large = get_digit(skin_path, datafile, "Digit_Large=", vertical);
+	s->hour = get_number(skin_path, datafile, "Number_Hour=", FALSE, vertical, s);
+	s->min = get_number(skin_path, datafile, "Number_Minutes=", TRUE, vertical, s);
+	s->sec = get_number(skin_path, datafile, "Number_Seconds=", TRUE, vertical, s);
+	s->month = get_number(skin_path, datafile, "Number_Month=", FALSE, vertical, s);
+	s->day = get_number(skin_path, datafile, "Number_Day=", FALSE, vertical, s);
+	s->year = get_number(skin_path, datafile, "Number_Year=", TRUE, vertical, s);
+	s->mail = get_item(skin_path, datafile, "Mail_Image=", 0, vertical);
+	s->month_txt = get_item(skin_path, datafile, "Item_Month_Text=", 12, vertical);
+	s->week_txt = get_item(skin_path, datafile, "Item_Week_text=", 7, vertical);
 
 	g_free(datafile);
 	return s;
@@ -487,28 +547,34 @@ static SkinData *load_skin(gchar *skin_path)
 
 gint change_to_skin(gchar *path, AppData *ad)
 {
-	SkinData *ns = NULL;
-	SkinData *os = ad->skin;
+	SkinData *nsh = NULL;
+	SkinData *nsv = NULL;
+	SkinData *osh = ad->skin_h;
+	SkinData *osv = ad->skin_v;
 
 	if (!path)
 		{
-		ns = load_default_skin();
+		nsh = load_default_skin();
 		}
 	else
 		{
-		ns = load_skin(path);
+		nsh = load_skin(path, FALSE);
+		nsv = load_skin(path, TRUE);
 		}
 
-	if (!ns) return FALSE;
+	if (!nsh) return FALSE;
 
-	ad->skin = ns;
+	ad->skin_h = nsh;
+	ad->skin_v = nsv;
 
-	if (ns->mail)
-		ad->mail_sections = ns->mail->sections;
-	else
-		ad->mail_sections = 1;
+	ad->skin = nsh;
+	if (nsv && (ad->orient == ORIENT_LEFT || ad->orient == ORIENT_RIGHT))
+		{
+		ad->skin = nsv;
+		}
 
 	sync_window_to_skin(ad);
-	free_skin(os);
+	free_skin(osh);
+	free_skin(osv);
 	return TRUE;
 }

@@ -11,6 +11,7 @@ static void update_mail_display(int n, AppData *ad);
 static void update_time_count(gint h, gint m, gint s, AppData *ad);
 static gint blink_callback(gpointer data);
 static gint update_display(gpointer data);
+static void destroy_applet(GtkWidget *widget, gpointer data);
 static AppData *create_new_app(GtkWidget *applet);
 static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data);
 static gint applet_save_session(GtkWidget *widget, char *privcfgpath,
@@ -62,6 +63,9 @@ void check_mail_file_status (int reset, AppData *ad)
 		return;
 		}
 
+	/* no need to continue if a mail item is not available */
+	if (!ad->skin->mail) return;
+
 	/* check if mail file contains something */
 	if (!ad->mail_file) return;
 
@@ -107,7 +111,7 @@ static void update_mail_display(int n, AppData *ad)
 {
 	if (n != ad->old_n)
 		{
-		draw_item(ad->skin->mail, n,ad);
+		draw_item(ad->skin->mail, n, ad);
 		ad->old_n = n;
 		}
 }
@@ -122,6 +126,20 @@ static void update_time_count(gint h, gint m, gint s, AppData *ad)
 	draw_number(ad->skin->hour, h, ad);
 	draw_number(ad->skin->min, m, ad);
 	draw_number(ad->skin->sec, s, ad);
+}
+
+static void update_date_displays(gint year, gint month, gint day, gint weekday, AppData *ad)
+{
+	/* no point in drawing things again if they don't change */
+	if (ad->old_week == weekday) return;
+
+	draw_number(ad->skin->year, year, ad);
+	draw_number(ad->skin->month, month, ad);
+	draw_number(ad->skin->day, day, ad);
+	draw_item(ad->skin->month_txt, month, ad);
+	draw_item(ad->skin->week_txt, weekday, ad);
+
+	ad->old_week = weekday;
 }
 
 static gint blink_callback(gpointer data)
@@ -175,6 +193,10 @@ static gint update_display(gpointer data)
 	/* update time */
 	update_time_count(time_data->tm_hour,time_data->tm_min, time_data->tm_sec, ad);
 
+	/* update date */
+	update_date_displays(time_data->tm_year, time_data->tm_mon, time_data->tm_mday,
+				time_data->tm_wday, ad);
+
 	/* now check mail */
 	check_mail_file_status (FALSE, ad);
 
@@ -200,8 +222,9 @@ static gint update_display(gpointer data)
 			{
 			update_mail_display(0, ad);
 			}
-		redraw_display(ad);
 		}
+
+	redraw_display(ad);
 
 	/* set tooltip to the date */
 	set_tooltip(date, ad);
@@ -209,17 +232,38 @@ static gint update_display(gpointer data)
 	return TRUE;
 }
 
+/* clean up function to free all the applet's memory and stop timers */
+static void destroy_applet(GtkWidget *widget, gpointer data)
+{
+	AppData *ad = data;
+
+	gtk_timeout_remove(ad->update_timeout_id);
+	if (ad->blinking)
+		gtk_timeout_remove(ad->blink_timeout_id);
+
+	free_skin(ad->skin_h);
+	free_skin(ad->skin_v);
+
+	g_free(ad->mail_file);
+	g_free(ad->newmail_exec_cmd);
+	g_free(ad->theme_file);
+	g_free(ad->tiptext);
+	g_free(ad);
+}
+
 static AppData *create_new_app(GtkWidget *applet)
 {
         AppData *ad;
 
-        ad = g_new(AppData, 1);
+        ad = g_new0(AppData, 1);
 
 	ad->applet = applet;
 	ad->propwindow = NULL;
+	ad->orient = ORIENT_UP;
 
 	ad->oldsize = 0;
 	ad->oldtime = 0;
+	ad->old_week = -1;
 	ad->tiptext = NULL;
 	ad->old_n = 0;
 	ad->blink_lit = 0;
@@ -227,7 +271,7 @@ static AppData *create_new_app(GtkWidget *applet)
 
 	/* (duration = BLINK_DELAY / 1000 * BLINK_TIMES) */
 	ad->blink_delay = 166;
-	ad->blink_times = 20;
+	ad->blink_times = 16;
 
 	ad->am_pm_enable = FALSE;
 	ad->always_blink = FALSE;
@@ -240,6 +284,8 @@ static AppData *create_new_app(GtkWidget *applet)
 	ad->exec_cmd_on_newmail = FALSE;
 
 	ad->skin = NULL;
+	ad->skin_h = NULL;
+	ad->skin_v = NULL;
 
 	ad->theme_file = NULL;
 
@@ -255,14 +301,15 @@ static AppData *create_new_app(GtkWidget *applet)
 		}
 
 	gtk_signal_connect(GTK_OBJECT(ad->applet),"change_orient",
-			   GTK_SIGNAL_FUNC(applet_change_orient),
-			   ad);
+		GTK_SIGNAL_FUNC(applet_change_orient), ad);
 
 	/* create a tooltip widget to display song title */
 	ad->tooltips = gtk_tooltips_new();
 	set_tooltip(_("date"), ad);
 
 	ad->display_area = gtk_drawing_area_new();
+	gtk_signal_connect(GTK_OBJECT(ad->display_area), "destroy",
+		GTK_SIGNAL_FUNC(destroy_applet), ad);
 	gtk_widget_show(ad->display_area);
 
 	applet_widget_add(APPLET_WIDGET(ad->applet), ad->display_area);
@@ -303,8 +350,24 @@ static AppData *create_new_app(GtkWidget *applet)
 
 static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
 {
-/*	AppData *ad = data;
-	orient change (nothing is done in this applet yet) */
+	AppData *ad = data;
+	ad->orient = o;
+	if (ad->orient == ORIENT_LEFT || ad->orient == ORIENT_RIGHT)
+		{
+		if (ad->skin_v && ad->skin != ad->skin_v)
+			{
+			ad->skin = ad->skin_v;
+			sync_window_to_skin(ad);
+			}
+		}
+	else
+		{
+		if (ad->skin != ad->skin_h)
+			{
+			ad->skin = ad->skin_h;
+			sync_window_to_skin(ad);
+			}
+		}
 }
 
 static gint applet_save_session(GtkWidget *widget, gchar *privcfgpath,
