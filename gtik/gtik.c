@@ -1294,7 +1294,7 @@ static gint updateOutput(gpointer data)
 		GtkWidget * notebook;
 		GtkWidget * vbox, *behav_vbox, *appear_vbox;
 		GtkWidget * vbox2;
-		GtkWidget *hbox, *hbox2;
+		GtkWidget *hbox, *hbox2, *hbox3;
 		GtkWidget * label, *spin, *check;
 		GtkWidget *color;
 		GtkWidget *font;
@@ -1323,6 +1323,7 @@ static gint updateOutput(gpointer data)
 		gtk_dialog_set_default_response (GTK_DIALOG (stockdata->pb), 
 		                                 GTK_RESPONSE_CLOSE);
 		gtk_dialog_set_has_separator (GTK_DIALOG (stockdata->pb), FALSE);
+		gtk_container_set_border_width (GTK_CONTAINER (stockdata->pb), 5);
 		notebook = gtk_notebook_new ();
 		gtk_box_pack_start (GTK_BOX (GTK_DIALOG (stockdata->pb)->vbox), notebook,
 				    TRUE, TRUE, 0);
@@ -1330,7 +1331,7 @@ static gint updateOutput(gpointer data)
 		hbox = symbolManager(stockdata);
 		label = gtk_label_new (_("Symbols"));
 		gtk_notebook_append_page (GTK_NOTEBOOK (notebook), hbox, label);
-		gtk_container_set_border_width (GTK_CONTAINER (notebook), 12);
+		gtk_container_set_border_width (GTK_CONTAINER (notebook), 5);
 		
 		behav_vbox = gtk_vbox_new (FALSE, 18);
 		gtk_container_set_border_width (GTK_CONTAINER (behav_vbox), 12);
@@ -1344,14 +1345,17 @@ static gint updateOutput(gpointer data)
 		label = gtk_label_new_with_mnemonic (_("Stock update fre_quency:"));
 		gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
 		gtk_box_pack_start (GTK_BOX (hbox2), label, FALSE, FALSE, 0);
+		
+		hbox3 = gtk_hbox_new (FALSE, 6);
+		gtk_box_pack_start (GTK_BOX (hbox2), hbox3, FALSE, FALSE, 0);
 		spin = gtk_spin_button_new_with_range (1, 1000, 1);
 		gtk_label_set_mnemonic_widget (GTK_LABEL (label), spin);
 		gtk_spin_button_set_value (GTK_SPIN_BUTTON (spin), stockdata->props.timeout);
 		g_signal_connect (G_OBJECT (spin), "focus_out_event",
 					   G_CALLBACK (timeout_cb), stockdata);
-		gtk_box_pack_start (GTK_BOX (hbox2), spin, FALSE, FALSE, 0);
+		gtk_box_pack_start (GTK_BOX (hbox3), spin, FALSE, FALSE, 0);
 		label = gtk_label_new (_("minutes"));
-		gtk_box_pack_start (GTK_BOX (hbox2), label, FALSE, FALSE, 0);
+		gtk_box_pack_start (GTK_BOX (hbox3), label, FALSE, FALSE, 0);
 		
 		vbox = create_hig_catagory (behav_vbox, _("Scrolling"));
 		
@@ -1361,11 +1365,11 @@ static gint updateOutput(gpointer data)
 		gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
 		gtk_box_pack_start (GTK_BOX (hbox2), label, FALSE, FALSE, 0);
 		menu = gtk_menu_new ();
-		menuitem = gtk_menu_item_new_with_mnemonic (_("_Slow"));
+		menuitem = gtk_menu_item_new_with_label (_("Slow"));
 		gtk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);
-		menuitem = gtk_menu_item_new_with_mnemonic (_("_Medium"));
+		menuitem = gtk_menu_item_new_with_label (_("Medium"));
 		gtk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);
-		menuitem = gtk_menu_item_new_with_mnemonic (_("_Fast"));
+		menuitem = gtk_menu_item_new_with_label (_("Fast"));
 		gtk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);		
 		option = gtk_option_menu_new ();
 		gtk_label_set_mnemonic_widget (GTK_LABEL (label), option);
@@ -1422,14 +1426,17 @@ static gint updateOutput(gpointer data)
 		gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
 		gtk_box_pack_start (GTK_BOX (hbox2), label, FALSE, FALSE, 0);
 		gtk_size_group_add_widget (size, label);
+		
+		hbox3 = gtk_hbox_new (FALSE, 6);
+		gtk_box_pack_start (GTK_BOX (hbox2), hbox3, FALSE, FALSE, 0);
 		spin = gtk_spin_button_new_with_range (20, 500, 10);
 		gtk_label_set_mnemonic_widget (GTK_LABEL (label), spin);
 		gtk_spin_button_set_value (GTK_SPIN_BUTTON (spin), stockdata->props.width);
 		g_signal_connect (G_OBJECT (spin), "focus_out_event",
 					   G_CALLBACK (width_changed), stockdata);
-		gtk_box_pack_start (GTK_BOX (hbox2), spin, FALSE, FALSE, 0);
+		gtk_box_pack_start (GTK_BOX (hbox3), spin, FALSE, FALSE, 0);
 		label = gtk_label_new (_("pixels"));
-		gtk_box_pack_start (GTK_BOX (hbox2), label, FALSE, FALSE, 0);
+		gtk_box_pack_start (GTK_BOX (hbox3), label, FALSE, FALSE, 0);
 							   
 		hbox2 = gtk_hbox_new (FALSE, 12);
 		gtk_box_pack_start (GTK_BOX (vbox), hbox2, FALSE, FALSE, 0);
