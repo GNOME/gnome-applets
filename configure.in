@@ -281,7 +281,7 @@ if test "x$P_MIXER" = "x"; then
             AC_CHECK_HEADERS(sys/audio.io.h, [P_MIXER=mixer],[
               AC_CHECK_HEADERS(sun/audioio.h, [P_MIXER=mixer],[
 	        AC_CHECK_HEADERS(dmedia/audio.h, [P_MIXER=mixer],[
-                  AC_CHECK_HEADERS(sys/audio.h, [P_MIXER=mixer]),]),]) ]) ]) ]) ]) ]) ])
+                  AC_CHECK_HEADERS(sys/audio.h, [P_MIXER=mixer]) ]) ]) ]) ]) ]) ]) ]) ])
 fi
 
 AC_SUBST(MIXER_CFLAGS)
