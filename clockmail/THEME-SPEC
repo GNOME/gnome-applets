@@ -1,0 +1,26 @@
+a theme for clockmail contains the following:
+
+* the them is contained within a directory.
+* the layout and filenames for images are specified in a file
+  name clockmaildata (see the example included in the source)
+* Only the Background image is required, all other items are
+  optional. eg: you can omit seconds, or even the mail part if
+  you only want a clock, or vice-versa.
+
+Mail_Image filename sections x y
+  filename: name of the image file for mail, this file contains
+            images vertically the last image is the one displayed
+            to show mail, all the others are animated (flipped
+            through) to show new mail.
+  sections: total number of mail pics within the image file
+  x, y: coordinates to place the image within the window
+
+Digit_Small/Large filename
+  filename: image file, contains horizontally the digits 0 through
+            9 and a blank space.
+
+Number_Hour/Minutes/Seconds Large/Small x y
+  Large/Small: the digit to use for this number, Large or Small must
+               have been specified with the Digit_* line (above)
+  x, y: coordinates to place the numbers within the window
+

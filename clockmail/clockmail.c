@@ -1,22 +1,16 @@
 /*###################################################################*/
-/*##                         clock & mail applet 0.1.5             ##*/
+/*##                         clock & mail applet 0.2.0             ##*/
 /*###################################################################*/
 
 #include "clockmail.h"
-
-#include "backgrnd.xpm"
-#include "digmed.xpm"
-#include "mailpics.xpm"
 
 static void about_cb (AppletWidget *widget, gpointer data);
 static void set_tooltip(gchar *newtext, AppData *ad);
 static void redraw_display(AppData *ad);
 static void update_mail_display(int n, AppData *ad);
-static void draw_big_digit(int n,int x,int y, AppData *ad);
-static void update_time_count(gint h, gint m, AppData *ad);
-static gint blink_callback(AppData *ad);
-static gint update_display(AppData *ad);
-static void create_pixmaps(AppData *ad);
+static void update_time_count(gint h, gint m, gint s, AppData *ad);
+static gint blink_callback(gpointer data);
+static gint update_display(gpointer data);
 static AppData *create_new_app(GtkWidget *applet);
 static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data);
 static gint applet_save_session(GtkWidget *widget, char *privcfgpath,
@@ -106,88 +100,41 @@ static void set_tooltip(gchar *newtext, AppData *ad)
 
 static void redraw_display(AppData *ad)
 {
-	gdk_window_set_back_pixmap(ad->display_area->window,ad->display,FALSE);
-	gdk_window_clear(ad->display_area->window);
+	redraw_skin(ad);
 }
 
 static void update_mail_display(int n, AppData *ad)
 {
 	if (n != ad->old_n)
 		{
-		switch (n)
-		{
-		case 0:
-			gdk_draw_pixmap (ad->display,
-				ad->display_area->style->fg_gc[GTK_WIDGET_STATE(ad->display_area)],
-				ad->mailpics, 0, 0, 2, 21, 42, 18);
-			break;
-		case 1:
-			gdk_draw_pixmap (ad->display,
-				ad->display_area->style->fg_gc[GTK_WIDGET_STATE(ad->display_area)],
-				ad->mailpics, 0, 18, 2, 21, 42, 18);
-			break;
-		case 2:
-			gdk_draw_pixmap (ad->display,
-				ad->display_area->style->fg_gc[GTK_WIDGET_STATE(ad->display_area)],
-				ad->mailpics, 0, 36, 2, 21, 42, 18);
-			break;
-		default:
-			break;
-		}
+		draw_item(ad->skin->mail, n,ad);
 		ad->old_n = n;
 		}
 }
 
-
-static void draw_big_digit(int n,int x,int y, AppData *ad)
+static void update_time_count(gint h, gint m, gint s, AppData *ad)
 {
-	if (n == -1) gdk_draw_pixmap (ad->display,
-			ad->display_area->style->fg_gc[GTK_WIDGET_STATE(ad->display_area)],
-			ad->digmed, 90, 0, x, y, 9, 16);
-	if (n >= 0 && n <= 9)
-		gdk_draw_pixmap (ad->display,
-			ad->display_area->style->fg_gc[GTK_WIDGET_STATE(ad->display_area)],
-			ad->digmed, n*9, 0, x, y, 9, 16);
-}
-
-static void update_time_count(gint h, gint m, AppData *ad)
-{
-	gint hl,hr;
-	gint ml,mr;
-
 	if (ad->am_pm_enable)
 		{
 		if (h > 12) h -= 12;
 		if (h == 0) h = 12;
 		}
-
-	hl = h / 10;
-	hr = h - (hl * 10);
-	if (hl == 0) hl = -1;
-	ml = m / 10;
-	mr = m - (ml * 10);
-	draw_big_digit(hl,2,3, ad);
-	draw_big_digit(hr,12,3, ad);
-	draw_big_digit(ml,25,3, ad);
-	draw_big_digit(mr,35,3, ad);
+	draw_number(ad->skin->hour, h, ad);
+	draw_number(ad->skin->min, m, ad);
+	draw_number(ad->skin->sec, s, ad);
 }
 
-static gint blink_callback(AppData *ad)
+static gint blink_callback(gpointer data)
 {
-	if (ad->blink_count == 0) ad->blink_lit = FALSE;
+	AppData *ad = data;
+	ad->blink_lit++;
 
-	ad->blink_count++;
-
-	if (ad->blink_lit)
+	if (ad->blink_lit >= ad->mail_sections - 1)
 		{
-		ad->blink_lit = FALSE;
-		update_mail_display(1, ad);
+		ad->blink_lit = 0;
+		ad->blink_count++;
 		}
-	else
-		{
-		ad->blink_lit = TRUE;
-		update_mail_display(0, ad);
-		}
+	update_mail_display(ad->blink_lit, ad);
 	redraw_display(ad);
 
 	if (ad->blink_count >= ad->blink_times || !ad->anymail)
@@ -198,9 +145,11 @@ static gint blink_callback(AppData *ad)
 			}
 		else
 			{
+			/* reset counters for next time */
 			ad->blink_count = 0;
+			ad->blink_lit = 0;
 			if (ad->anymail)
-				update_mail_display(2, ad);
+				update_mail_display(ad->mail_sections - 1, ad);
 			else
 				update_mail_display(0, ad);
 			redraw_display(ad);
@@ -212,8 +161,9 @@ static gint blink_callback(AppData *ad)
 	return TRUE;
 }
 
-static gint update_display(AppData *ad)
+static gint update_display(gpointer data)
 {
+	AppData *ad = data;
 	time_t current_time;
 	struct tm *time_data;
 	gchar date[128];
@@ -223,7 +173,7 @@ static gint update_display(AppData *ad)
 	strftime(date, 128, "%a, %b %d", time_data);
 
 	/* update time */
-	update_time_count(time_data->tm_hour,time_data->tm_min, ad);
+	update_time_count(time_data->tm_hour,time_data->tm_min, time_data->tm_sec, ad);
 
 	/* now check mail */
 	check_mail_file_status (FALSE, ad);
@@ -233,7 +183,6 @@ static gint update_display(AppData *ad)
 		if (ad->anymail)
 			if (ad->newmail || ad->always_blink)
 				{
-				update_mail_display(1, ad);
 				ad->blinking = TRUE;
 				ad->blink_timeout_id = gtk_timeout_add(ad->blink_delay,
 						(GtkFunction)blink_callback, ad);
@@ -245,7 +194,7 @@ static gint update_display(AppData *ad)
 				}
 			else
 				{
-				update_mail_display(2, ad);
+				update_mail_display(ad->mail_sections - 1, ad);
 				}
 		else
 			{
@@ -260,20 +209,6 @@ static gint update_display(AppData *ad)
 	return TRUE;
 }
 
-static void create_pixmaps(AppData *ad)
-{
-	GdkBitmap *mask;
-	GtkStyle *style;
-	style = gtk_widget_get_style(ad->applet);
-
-	ad->display_back = gdk_pixmap_create_from_xpm_d(ad->display_area->window, &mask,
-		&style->bg[GTK_STATE_NORMAL], (gchar **)backgrnd_xpm);
-	ad->digmed = gdk_pixmap_create_from_xpm_d(ad->display_area->window, &mask,
-		&style->bg[GTK_STATE_NORMAL], (gchar **)digmed_xpm);
-	ad->mailpics = gdk_pixmap_create_from_xpm_d(ad->display_area->window, &mask,
-		&style->bg[GTK_STATE_NORMAL], (gchar **)mailpics_xpm);
-}
-
 static AppData *create_new_app(GtkWidget *applet)
 {
         AppData *ad;
@@ -281,6 +216,7 @@ static AppData *create_new_app(GtkWidget *applet)
         ad = g_new(AppData, 1);
 
 	ad->applet = applet;
+	ad->propwindow = NULL;
 
 	ad->oldsize = 0;
 	ad->oldtime = 0;
@@ -290,7 +226,7 @@ static AppData *create_new_app(GtkWidget *applet)
 	ad->blink_count = 0;
 
 	/* (duration = BLINK_DELAY / 1000 * BLINK_TIMES) */
-	ad->blink_delay = 750;
+	ad->blink_delay = 166;
 	ad->blink_times = 20;
 
 	ad->am_pm_enable = FALSE;
@@ -302,6 +238,10 @@ static AppData *create_new_app(GtkWidget *applet)
 	/* execute a command on new mail */
 	ad->newmail_exec_cmd = NULL;
 	ad->exec_cmd_on_newmail = FALSE;
+
+	ad->skin = NULL;
+
+	ad->theme_file = NULL;
 
 	property_load(APPLET_WIDGET(applet)->privcfgpath, ad);
 
@@ -322,25 +262,18 @@ static AppData *create_new_app(GtkWidget *applet)
 	ad->tooltips = gtk_tooltips_new();
 	set_tooltip(_("date"), ad);
 
-	/* frame for all widgets */
-	ad->frame = gtk_frame_new(NULL);
-	gtk_frame_set_shadow_type(GTK_FRAME(ad->frame), GTK_SHADOW_IN);
-	gtk_widget_show(ad->frame);
-
 	ad->display_area = gtk_drawing_area_new();
-	gtk_drawing_area_size(GTK_DRAWING_AREA(ad->display_area),46,42);
-	gtk_container_add(GTK_CONTAINER(ad->frame),ad->display_area);
 	gtk_widget_show(ad->display_area);
 
-	applet_widget_add(APPLET_WIDGET(ad->applet), ad->frame);
+	applet_widget_add(APPLET_WIDGET(ad->applet), ad->display_area);
 
 	gtk_widget_realize(ad->display_area);
 
-	ad->display = gdk_pixmap_new(ad->display_area->window,46,42,-1);
-
-	create_pixmaps(ad);
-
-	gtk_widget_show(ad->frame);
+	if (!change_to_skin(ad->theme_file, ad))
+		{
+		printf("Failed to load skin %s, loading default\n", ad->theme_file);
+		change_to_skin(NULL, ad);
+		}
 
 	gtk_widget_show(ad->applet);
 
@@ -361,13 +294,9 @@ static AppData *create_new_app(GtkWidget *applet)
 						about_cb,
 						NULL);
 
-	gdk_draw_pixmap (ad->display,
-		ad->display_area->style->fg_gc[GTK_WIDGET_STATE(ad->display_area)],
-		ad->display_back, 0, 0, 0, 0, 46, 42);
-
 	update_display(ad);
 
-	ad->update_timeout_id = gtk_timeout_add(10000, (GtkFunction)update_display, ad);
+	ad->update_timeout_id = gtk_timeout_add(1000, (GtkFunction)update_display, ad);
 	
 	return ad;
 }

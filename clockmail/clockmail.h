@@ -1,5 +1,5 @@
 /*###################################################################*/
-/*##                         clock & mail applet 0.1.5             ##*/
+/*##                         clock & mail applet 0.2.0             ##*/
 /*###################################################################*/
 
 #include <sys/types.h>
@@ -18,8 +18,51 @@
 #include "applet-widget.h"
 
 #define CLOCKMAIL_APPLET_VERSION_MAJ 0
-#define CLOCKMAIL_APPLET_VERSION_MIN 1
-#define CLOCKMAIL_APPLET_VERSION_REV 5
+#define CLOCKMAIL_APPLET_VERSION_MIN 2
+#define CLOCKMAIL_APPLET_VERSION_REV 0
+
+typedef struct _ItemData ItemData;
+struct _ItemData
+{
+        GdkPixmap *pixmap;
+	gint sections;
+	gint width;
+	gint height;
+	gint x;
+	gint y;
+};
+
+typedef struct _DigitData DigitData;
+struct _DigitData
+{
+        GdkPixmap *pixmap;
+	gint width;
+	gint height;
+};
+
+typedef struct _NumberData NumberData;
+struct _NumberData
+{
+	DigitData *digits;
+	gint x;
+	gint y;
+	gint length;
+	gint zeros;
+};
+
+typedef struct _SkinData SkinData;
+struct _SkinData
+{
+	gint width;
+	gint height;
+	GdkPixmap *background;
+	ItemData *mail;
+	DigitData *dig_small;
+	DigitData *dig_large;
+	NumberData *hour;
+	NumberData *min;
+	NumberData *sec;
+};
 
 typedef struct _AppData AppData;
 struct _AppData
@@ -31,14 +74,10 @@ struct _AppData
 	gchar *mail_file;
 	gchar *newmail_exec_cmd;
 	gint exec_cmd_on_newmail;
+	gchar *theme_file;
 	GtkWidget *applet;
-	GtkWidget *frame;
 	GtkWidget *display_area;
 	GtkTooltips *tooltips;
-	GdkPixmap *display;
-	GdkPixmap *display_back;
-	GdkPixmap *digmed;
-	GdkPixmap *mailpics;
 	gint update_timeout_id;
 	gint blink_timeout_id;
 	gint anymail;
@@ -46,6 +85,7 @@ struct _AppData
 	gint unreadmail;
 	gint mailcleared;
 	gint blinking;
+	gint mail_sections;
 
 	/* the properties window widgets */
 	GtkWidget *propwindow;
@@ -54,6 +94,7 @@ struct _AppData
 	gint p_am_pm_enable;
 	gint p_always_blink;
 	gint p_exec_cmd_on_newmail;
+	GtkWidget *theme_entry;
 
 	/* variables for mail status and remebering past states */
 	off_t oldsize;
@@ -62,6 +103,10 @@ struct _AppData
 	gint old_n;
 	gint blink_lit;
 	gint blink_count;
+
+	SkinData *skin;
+	SkinData *skin_v;
+	SkinData *skin_h;
 };
 
 void check_mail_file_status (int reset, AppData *ad);
@@ -69,4 +114,9 @@ void check_mail_file_status (int reset, AppData *ad);
 void property_load(gchar *path, AppData *ad);
 void property_save(gchar *path, AppData *ad);
 void property_show(AppletWidget *applet, gpointer data);
+
+void redraw_skin(AppData *ad);
+void draw_number(NumberData *number, gint n, AppData *ad);
+void draw_item(ItemData *item, gint section, AppData *ad);
+gint change_to_skin(gchar *path, AppData *ad);
 

@@ -1,5 +1,5 @@
 /*###################################################################*/
-/*##                         clock & mail applet 0.1.5             ##*/
+/*##                         clock & mail applet 0.2.0             ##*/
 /*###################################################################*/
 
 #include "clockmail.h"
@@ -12,26 +12,28 @@ static gint property_destroy_cb(GtkWidget *widget, gpointer data);
 
 void property_load(gchar *path, AppData *ad)
 {
-        if (ad->mail_file) free(ad->mail_file);
-
+        if (ad->mail_file) g_free(ad->mail_file);
+	if (ad->theme_file) g_free(ad->theme_file);
 	gnome_config_push_prefix (path);
-        ad->am_pm_enable = gnome_config_get_int("clock/12hour=0");
-	ad->always_blink = gnome_config_get_int("mail/blink=0");
-	ad->mail_file = gnome_config_get_string("mail/mailfile=default");
-	ad->newmail_exec_cmd = gnome_config_get_string("mail/newmail_command=");
-	ad->exec_cmd_on_newmail = gnome_config_get_int("mail/newmail_command_enable=0");
+        ad->am_pm_enable = gnome_config_get_int("clockmail/12hour=0");
+	ad->always_blink = gnome_config_get_int("clockmail/blink=0");
+	ad->mail_file = gnome_config_get_string("clockmail/mailfile=default");
+	ad->newmail_exec_cmd = gnome_config_get_string("clockmail/newmail_command=");
+	ad->exec_cmd_on_newmail = gnome_config_get_int("clockmail/newmail_command_enable=0");
+	ad->theme_file = gnome_config_get_string("clockmail/theme=");
         gnome_config_pop_prefix ();
 }
 
 void property_save(gchar *path, AppData *ad)
 {
         gnome_config_push_prefix(path);
-        gnome_config_set_int("clock/12hour", ad->am_pm_enable);
-        gnome_config_set_int("mail/blink", ad->always_blink);
-	gnome_config_set_string("mail/mailfile", ad->mail_file);
-	gnome_config_set_string("mail/newmail_command", ad->newmail_exec_cmd);
-        gnome_config_set_int("mail/newmail_command_enable",
+        gnome_config_set_int("clockmail/12hour", ad->am_pm_enable);
+        gnome_config_set_int("clockmail/blink", ad->always_blink);
+	gnome_config_set_string("clockmail/mailfile", ad->mail_file);
+	gnome_config_set_string("clockmail/newmail_command", ad->newmail_exec_cmd);
+        gnome_config_set_int("clockmail/newmail_command_enable",
 			     ad->exec_cmd_on_newmail);
+	gnome_config_set_string("clockmail/theme", ad->theme_file);
 	gnome_config_sync();
         gnome_config_pop_prefix();
 }
@@ -60,20 +62,41 @@ static void always_blink_cb(GtkWidget *w, gpointer data)
 static void property_apply_cb(GtkWidget *widget, void *nodata, gpointer data)
 {
 	AppData *ad = data;
-	gchar *new_text;
-	gchar *command;
+	gchar *buf;
 
-	new_text = gtk_entry_get_text(GTK_ENTRY(ad->mail_file_entry));
-	if (strcmp(new_text,ad->mail_file) != 0)
+	buf = gtk_entry_get_text(GTK_ENTRY(ad->mail_file_entry));
+	if (strcmp(buf,ad->mail_file) != 0)
 		{
 		if (ad->mail_file) g_free(ad->mail_file);
-		ad->mail_file = g_strdup(new_text);
+		ad->mail_file = g_strdup(buf);
 		check_mail_file_status (TRUE, ad);
 		}
 
-	command = gtk_entry_get_text(GTK_ENTRY(ad->newmail_exec_cmd_entry));
+	buf = gtk_entry_get_text(GTK_ENTRY(ad->newmail_exec_cmd_entry));
 	if (ad->newmail_exec_cmd) g_free (ad->newmail_exec_cmd);
-	ad->newmail_exec_cmd = g_strdup(command);
+	ad->newmail_exec_cmd = g_strdup(buf);
+
+	buf = gtk_entry_get_text(GTK_ENTRY(ad->theme_entry));
+	if (buf && ad->theme_file && strcmp(buf, ad->theme_file) != 0)
+		{
+		g_free (ad->theme_file);
+		ad->theme_file = g_strdup(buf);
+		if (!change_to_skin(ad->theme_file, ad))
+			change_to_skin(NULL, ad);
+		}
+	else if (buf && strlen(buf) != 0)
+		{
+		if (ad->theme_file) g_free (ad->theme_file);
+		ad->theme_file = g_strdup(buf);
+		if (!change_to_skin(ad->theme_file, ad))
+			change_to_skin(NULL, ad);
+		}
+	else
+		{
+		if (ad->theme_file) g_free (ad->theme_file);
+		ad->theme_file = NULL;
+		change_to_skin(NULL, ad);
+		}
 
         ad->am_pm_enable = ad->p_am_pm_enable;
 	ad->always_blink = ad->p_always_blink;
@@ -163,6 +186,31 @@ void property_show(AppletWidget *applet, gpointer data)
 	gtk_widget_show(ad->newmail_exec_cmd_entry);
 
         label = gtk_label_new(_("General"));
+        gtk_widget_show(frame);
+        gnome_property_box_append_page( GNOME_PROPERTY_BOX(ad->propwindow),frame ,label);
+
+	/* theme tab */
+
+	frame = gtk_vbox_new(5, TRUE);
+
+	hbox = gtk_hbox_new(FALSE, 5);
+	gtk_box_pack_start( GTK_BOX(frame), hbox, FALSE, FALSE, 5);
+	gtk_widget_show(hbox);
+
+	label = gtk_label_new(_("Theme file (directory):"));
+	gtk_box_pack_start( GTK_BOX(hbox), label, FALSE, FALSE, 5);
+	gtk_widget_show(label);
+
+	ad->theme_entry = gtk_entry_new_with_max_length(255);
+	if (ad->theme_file)
+		gtk_entry_set_text(GTK_ENTRY(ad->theme_entry), ad->theme_file);
+	gtk_signal_connect_object(GTK_OBJECT(ad->theme_entry), "changed",
+				GTK_SIGNAL_FUNC(gnome_property_box_changed),
+				GTK_OBJECT(ad->propwindow));
+	gtk_box_pack_start( GTK_BOX(hbox),ad->theme_entry , TRUE, TRUE, 5);
+	gtk_widget_show(ad->theme_entry);
+
+        label = gtk_label_new(_("Theme"));
         gtk_widget_show(frame);
         gnome_property_box_append_page( GNOME_PROPERTY_BOX(ad->propwindow),frame ,label);
 

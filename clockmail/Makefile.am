@@ -9,7 +9,8 @@ bin_PROGRAMS = clockmail_applet
 clockmail_applet_SOURCES = \
 	clockmail.c	\
 	clockmail.h	\
-	properties.c
+	properties.c	\
+	theme.c
 
 
 clockmail_applet_LDADD = ../../panel/libpanel_applet.la \
@@ -20,7 +21,9 @@ EXTRA_DIST = \
 	clockmail_applet.desktop	\
 	backgrnd.xpm			\
 	digmed.xpm			\
-	mailpics.xpm
+	mailpics.xpm			\
+	clockmaildata			\
+	THEME-SPECS
 
 sysdir = $(datadir)/applets/Utility
 sys_DATA = clockmail_applet.desktop
