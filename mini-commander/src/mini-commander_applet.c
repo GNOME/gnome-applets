@@ -140,9 +140,13 @@ mc_applet_draw (MCData *mc)
     GtkWidget *frame;
     MCPreferences prefs = mc->preferences;
     int        size_frames = 0;
+    gchar     *command_text = NULL;
 
     if (mc->preferences.show_frame)
 	size_frames += 6;
+
+    if (mc->entry != NULL)
+	command_text = g_strdup (gtk_editable_get_chars (GTK_EDITABLE (mc->entry), 0, -1));
 
     mc->cmd_line_size_y = mc->preferences.normal_size_y - size_frames;   
 
@@ -153,6 +157,11 @@ mc_applet_draw (MCData *mc)
     gtk_container_set_border_width (GTK_CONTAINER (mc->applet_box), 0);
 
     mc_create_command_entry (mc);
+
+    if (command_text != NULL) {
+	gtk_entry_set_text (GTK_ENTRY (mc->entry), command_text);
+	g_free (command_text);
+    }
 
     /* hbox for message label and buttons */
     if (prefs.normal_size_y > GNOME_Vertigo_PANEL_X_SMALL) 
