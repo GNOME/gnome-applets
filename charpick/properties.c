@@ -127,6 +127,17 @@ add_palette (GtkButton *buttonk, charpick_data *curr_data)
 		return;
 		
 	list = g_list_append (list, new);
+
+	if (curr_data->chartable == NULL) {
+		curr_data->chartable = list;
+		curr_data->charlist = curr_data->chartable->data;
+		build_table (curr_data);
+		if (key_writable (PANEL_APPLET (curr_data->applet), "current_list"))
+			panel_applet_gconf_set_string (PANEL_APPLET (curr_data->applet),
+						      "current_list", 
+					  	       curr_data->charlist, NULL);
+	}
+
 	save_chartable (curr_data);
   	populate_menu (curr_data);
   	
@@ -195,7 +206,8 @@ delete_palette (GtkButton *button, charpick_data *curr_data)
 	curr_data->chartable = g_list_remove (curr_data->chartable, charlist);
 	
 	if (g_ascii_strcasecmp (curr_data->charlist, charlist) == 0) {
-		curr_data->charlist = curr_data->chartable->data;
+		curr_data->charlist = curr_data->chartable != NULL ? 
+				      curr_data->chartable->data : "";
 		build_table (curr_data);
 		if (key_writable (PANEL_APPLET (curr_data->applet), "current_list"))
 			panel_applet_gconf_set_string (PANEL_APPLET (curr_data->applet), "current_list", curr_data->charlist, NULL);
@@ -212,8 +224,8 @@ delete_palette (GtkButton *button, charpick_data *curr_data)
 	else {
 		GtkTreePath *path;
 		path = gtk_tree_model_get_path (model, &iter);
-		gtk_tree_path_prev (path);
-		gtk_tree_selection_select_path (selection, path);
+		if (gtk_tree_path_prev (path))
+			gtk_tree_selection_select_path (selection, path);
 		gtk_tree_path_free (path);
 	}
 	gtk_list_store_remove (GTK_LIST_STORE (model), &iter);
