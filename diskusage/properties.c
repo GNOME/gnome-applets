@@ -19,6 +19,9 @@
 GtkWidget *propbox=NULL;
 static diskusage_properties temp_props;
 
+static const int max_rgb_str_len = 7;
+static const int max_rgb_str_size = 8;
+
 extern GtkWidget *disp;
 extern diskusage_properties props;
 extern DiskusageInfo   summary_info;
@@ -38,14 +41,26 @@ void apply_cb( GtkWidget *widget, void *data );
 gint destroy_cb( GtkWidget *widget, void *data );
 GtkWidget *create_frame(void);
 
-void load_properties( char *path, diskusage_properties *prop )
+void load_properties( const char *path, diskusage_properties *prop )
 {
 	gnome_config_push_prefix (path);
 	prop->startfs   = gnome_config_get_int    ("disk/startfs=0");
 	prop->ucolor	= gnome_config_get_string ("disk/ucolor=#cf5f5f");
+        if (prop->ucolor && (strlen(prop->ucolor) < max_rgb_str_len))
+          prop->ucolor = g_realloc(prop->ucolor, max_rgb_str_size);
+
 	prop->fcolor	= gnome_config_get_string ("disk/fcolor=#008f00");
+        if (prop->fcolor && (strlen(prop->fcolor) < max_rgb_str_len))
+          prop->fcolor = g_realloc(prop->fcolor, max_rgb_str_size);
+
 	prop->tcolor	= gnome_config_get_string ("disk/tcolor=#bbbbbb");
+        if (prop->tcolor && (strlen(prop->tcolor) < max_rgb_str_len))
+          prop->tcolor = g_realloc(prop->tcolor, max_rgb_str_size);
+
 	prop->bcolor	= gnome_config_get_string ("disk/bcolor=#000000");
+        if (prop->bcolor && (strlen(prop->bcolor) < max_rgb_str_len))
+          prop->bcolor = g_realloc(prop->bcolor, max_rgb_str_size);
+
 	prop->speed	= gnome_config_get_int    ("disk/speed=2000");
 	prop->height 	= gnome_config_get_int	  ("disk/height=40");
 	prop->width 	= gnome_config_get_int	  ("disk/width=120");
@@ -55,7 +70,7 @@ void load_properties( char *path, diskusage_properties *prop )
 
 
 
-void save_properties( char *path, diskusage_properties *prop )
+void save_properties( const char *path, diskusage_properties *prop )
 {
 	gnome_config_push_prefix (path);
 	gnome_config_set_int   ( "disk/startfs", prop->startfs );
@@ -80,7 +95,8 @@ void ucolor_set_cb(GnomeColorPicker *cp)
 			&g, 
 			&b,
 			NULL);
-	sprintf( temp_props.ucolor, "#%02x%02x%02x", r, g, b );
+	g_snprintf( temp_props.ucolor, max_rgb_str_size, 
+		    "#%02x%02x%02x", r, g, b );
         gnome_property_box_changed(GNOME_PROPERTY_BOX(propbox));
 }
 void fcolor_set_cb(GnomeColorPicker *cp)
@@ -91,7 +107,8 @@ void fcolor_set_cb(GnomeColorPicker *cp)
 			&g, 
 			&b,
 			NULL);
-	sprintf( temp_props.fcolor, "#%02x%02x%02x", r, g, b );
+	g_snprintf( temp_props.fcolor, max_rgb_str_size, 
+		 "#%02x%02x%02x", r, g, b );
         gnome_property_box_changed(GNOME_PROPERTY_BOX(propbox));
 }
 void tcolor_set_cb(GnomeColorPicker *cp)
@@ -102,7 +119,8 @@ void tcolor_set_cb(GnomeColorPicker *cp)
 			&g, 
 			&b,
 			NULL);
-	sprintf( temp_props.tcolor, "#%02x%02x%02x", r, g, b );
+	g_snprintf( temp_props.tcolor, max_rgb_str_size,
+		    "#%02x%02x%02x", r, g, b );
         gnome_property_box_changed(GNOME_PROPERTY_BOX(propbox));
 }
 void bcolor_set_cb(GnomeColorPicker *cp)
@@ -113,7 +131,8 @@ void bcolor_set_cb(GnomeColorPicker *cp)
 			&g, 
 			&b,
 			NULL);
-	sprintf( temp_props.bcolor, "#%02x%02x%02x", r, g, b );
+	g_snprintf( temp_props.bcolor, max_rgb_str_size,
+		    "#%02x%02x%02x", r, g, b );
         gnome_property_box_changed(GNOME_PROPERTY_BOX(propbox));
 }
 

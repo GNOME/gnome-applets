@@ -192,7 +192,7 @@ batmon_timeout_callback (gpointer *data)
 
 	batpct = aip.ai_batt_life;
 
-	sprintf(str, "%d.%d", aip.ai_major, aip.ai_minor);
+	g_snprintf(str, sizeof(str), "%d.%d", aip.ai_major, aip.ai_minor);
 
 	gtk_label_set (GTK_LABEL (bioslabel), str);
 
@@ -237,15 +237,19 @@ batmon_timeout_callback (gpointer *data)
 		(gfloat) batpct / 100);
 	if (batmin == -1)
 	  {
-		strcpy(str, _("unknown minutes of battery."));
-		sprintf(tipstr, _("unknown minutes of battery (%d%%)"),
-			batpct);
+		strncpy(str, sizeof(str), _("unknown minutes of battery."));
+		str[sizeof(str) - 1] = 0;
+		g_snprintf(tipstr, sizeof(tipstr),
+			   _("unknown minutes of battery (%d%%)"),
+			   batpct);
 	  }
 	else if (batmin < 100000000)
 	  {
-		sprintf (str, _("%d minutes of battery"), batmin);
-		sprintf(tipstr, _("%d minutes of battery (%d%%)"),
-			batmin, batpct);
+		g_snprintf (str, sizeof(str),
+			    _("%d minutes of battery"), batmin);
+		g_snprintf(tipstr, sizeof(tipstr),
+			   _("%d minutes of battery (%d%%)"),
+			   batmin, batpct);
 	  }
 	else {	/* would have to be an error */
 		g_warning (_("More than 100,000,000 minutes of battery life?!?"));

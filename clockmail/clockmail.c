@@ -26,8 +26,10 @@ static void about_cb (AppletWidget *widget, gpointer data)
 	const gchar *authors[2];
 	gchar version[32];
 
-	sprintf(version,_("%d.%d.%d"),CLOCKMAIL_APPLET_VERSION_MAJ,
-		CLOCKMAIL_APPLET_VERSION_MIN, CLOCKMAIL_APPLET_VERSION_REV);
+	g_snprintf(version, sizeof(version), _("%d.%d.%d"),
+		   CLOCKMAIL_APPLET_VERSION_MAJ,
+		   CLOCKMAIL_APPLET_VERSION_MIN,
+		   CLOCKMAIL_APPLET_VERSION_REV);
 
 	authors[0] = _("John Ellis <johne@bellatlantic.net>");
 	authors[1] = NULL;
@@ -110,7 +112,8 @@ static void set_tooltip(struct tm *time_data, AppData *ad)
 			else
 				{
 				gchar gmt_text[32];
-				sprintf(gmt_text, _(" (GMT %+d)"), ad->gmt_offset);
+				g_snprintf(gmt_text, sizeof(gmt_text), 
+					   _(" (GMT %+d)"), ad->gmt_offset);
 				buf = g_strconcat (date, gmt_text, NULL);
 				}
 			gtk_tooltips_set_tip (ad->tooltips, ad->applet, buf, NULL);

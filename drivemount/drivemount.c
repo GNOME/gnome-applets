@@ -42,8 +42,10 @@ static void about_cb (AppletWidget *widget, gpointer data)
 	const gchar *authors[2];
 	gchar version[32];
 
-	sprintf(version,"%d.%d.%d",DRIVEMOUNT_APPLET_VERSION_MAJ,
-		DRIVEMOUNT_APPLET_VERSION_MIN, DRIVEMOUNT_APPLET_VERSION_REV);
+	g_snprintf(version, sizeof(version), "%d.%d.%d",
+		   DRIVEMOUNT_APPLET_VERSION_MAJ,
+		   DRIVEMOUNT_APPLET_VERSION_MIN,
+		   DRIVEMOUNT_APPLET_VERSION_REV);
 
 	authors[0] = "John Ellis <johne@bellatlantic.net>";
 	authors[1] = NULL;
@@ -173,9 +175,11 @@ static int mount_cb(GtkWidget *widget, gpointer data)
 	gint check = device_is_mounted(dd);
 
 	if (!check)
-		sprintf(command_line, "mount %s 2>&1", dd->mount_point);
+		g_snprintf(command_line, sizeof(command_line),
+			   "mount %s 2>&1", dd->mount_point);
 	else
-		sprintf(command_line, "umount %s 2>&1", dd->mount_point);
+		g_snprintf(command_line, sizeof(command_line),
+			   "umount %s 2>&1", dd->mount_point);
 
 	fp = popen(command_line, "r");
 
@@ -253,9 +257,9 @@ static void eject_cb(AppletWidget *applet, gpointer data)
 	}
 
 	if (dd->mounted)
-		sprintf (command_line, "eject -u %s", dn);
+		g_snprintf (command_line, sizeof(command_line), "eject -u %s", dn);
 	else	
-		sprintf (command_line, "eject %s", dn);
+		g_snprintf (command_line, sizeof(command_line), "eject %s", dn);
 
 	system (command_line);
 

@@ -52,7 +52,7 @@ get_piece_color (int piece)
 	g = ((4 - y) * 255) / 4;
 	b = 128;
 
-	sprintf (buf, "#%02x%02x%02x", r, g, b);
+	g_snprintf (buf, sizeof(buf), "#%02x%02x%02x", r, g, b);
 
 	return buf;
 }
@@ -180,7 +180,7 @@ create_fifteen (void)
 				       "width_pixels", 0,
 				       NULL);
 
-		sprintf (buf, "%d", i + 1);
+		g_snprintf (buf, sizeof(buf), "%d", i + 1);
 
 		text = gnome_canvas_item_new (GNOME_CANVAS_GROUP (board[i]),
 					      gnome_canvas_text_get_type (),
