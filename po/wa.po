@@ -10,7 +10,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 1.2.0\n"
-"POT-Creation-Date: 2001-04-13 14:29+0200\n"
+"POT-Creation-Date: 2001-05-21 21:59+0200\n"
 "PO-Revision-Date: 1999-03-18 23:11+0100\n"
 "Last-Translator: Pablo Saratxaga <srtxg@chanae.alphanet.ch>\n"
 "Language-Team: walon <linux-wa@chanae.alphanet.ch>\n"
@@ -25,7 +25,7 @@ msgstr "Apontiaedjes di l' Ôrlodje"
 #: another_clock/another_clock.c:267 asclock/dialogs.c:380
 #: battery/properties.c:83 clockmail/properties.c:421
 #: diskusage/properties.c:466 drivemount/properties.c:400
-#: gnotes/properties.c:190 gweather/gweather-pref.c:527
+#: gnotes/properties.c:190 gweather/gweather-pref.c:524
 #: mini-commander/src/preferences.c:801 modemlights/properties.c:486
 #: odometer/properties.c:293 screenshooter/screenshooter_applet.c:434
 #: slashapp/properties.c:412 sound-monitor/properties.c:424
@@ -386,7 +386,10 @@ msgstr "Nombe di rîleyes di botons:"
 msgid "Number of columns of buttons:"
 msgstr "Nombe di colones di botons:"
 
-#. Size
+#. 	gtk_widget_set (best_size,
+#. 			"border_width", 2,
+#. 			"spacing", 2,
+#. 			NULL);
 #: charpick/properties.c:254 diskusage/properties.c:365
 #: mini-commander/src/preferences.c:611 tickastat/properties.c:500
 msgid "Size"
@@ -1510,7 +1513,7 @@ msgstr "Tchimin del Aidance di GNOME"
 msgid "Location:"
 msgstr "Eplaeçmint:"
 
-#: gweather/gweather-dialog.c:132 gweather/gweather-pref.c:501
+#: gweather/gweather-dialog.c:132
 msgid "Update:"
 msgstr "Metaedje a djoû:"
 
@@ -1581,78 +1584,95 @@ msgid ""
 "only for US cities."
 msgstr ""
 
-#: gweather/gweather-pref.c:133
+#: gweather/gweather-pref.c:135
 msgid ""
 "Invalid location chosen!\n"
 "Properties remain unchanged."
 msgstr ""
 
-#: gweather/gweather-pref.c:138
+#: gweather/gweather-pref.c:141
 msgid ""
 "Proxy URL is not of the form http://host:port/\n"
 "Properties remain unchanged."
 msgstr ""
 
-#: gweather/gweather-pref.c:211
+#: gweather/gweather-pref.c:200
 msgid "Regions"
 msgstr "Redjons"
 
-#: gweather/gweather-pref.c:329
+#: gweather/gweather-pref.c:317
 msgid "GNOME Weather Properties"
 msgstr "Prôpietés di GNOME Weather"
 
-#: gweather/gweather-pref.c:363
+#: gweather/gweather-pref.c:356
 msgid "Location"
 msgstr "Eplaeçmint"
 
-#: gweather/gweather-pref.c:383
+#: gweather/gweather-pref.c:376
 msgid "Use proxy"
 msgstr "Eployî proxy"
 
-#: gweather/gweather-pref.c:387
+#: gweather/gweather-pref.c:380
 msgid "Proxy host:"
 msgstr "Proxy:"
 
-#: gweather/gweather-pref.c:401
+#: gweather/gweather-pref.c:394
 msgid "Username:"
 msgstr "No d' ûzeu:"
 
-#: gweather/gweather-pref.c:415
+#: gweather/gweather-pref.c:408
 msgid "Password:"
 msgstr "Mot di passe:"
 
-#: gweather/gweather-pref.c:430
+#: gweather/gweather-pref.c:423
 msgid ""
-"Caveat warning: Even though your password will\n"
-"be saved in the private configuration file, it will\n"
-"be unencrypted!"
+"Warning: Your password will be saved as\n"
+"unencrypted text in a private configuration\n"
+"file."
 msgstr ""
 
-#: gweather/gweather-pref.c:438
+#: gweather/gweather-pref.c:431
 msgid "Network"
 msgstr "Rantoele"
 
-#: gweather/gweather-pref.c:483
-msgid "Update enabled"
-msgstr "Metaedje a djoû èn alaedje"
+#: gweather/gweather-pref.c:456
+#, fuzzy
+msgid "Automatically update every"
+msgstr "Tchwezi åtomaticmint li meyeuse grandeu pol aplikete"
 
-#: gweather/gweather-pref.c:487
-msgid "Use metric"
+#: gweather/gweather-pref.c:460
+#, fuzzy
+msgid "Use metric system units"
 msgstr "Eployî unités metrikes"
 
-#: gweather/gweather-pref.c:491
+#: gweather/gweather-pref.c:464
 #, fuzzy
-msgid "Detailed forecast"
+msgid "Enable detailed forecast"
 msgstr "Vey _totafwait"
 
-#: gweather/gweather-pref.c:496
+#: gweather/gweather-pref.c:469
 #, fuzzy
-msgid "Enable radar maps"
+msgid "Enable radar map"
 msgstr "Mete èn oûve les animåcions"
 
-#: gweather/gweather-pref.c:523
-msgid "(sec)"
-msgstr "(seg)"
+#: gweather/gweather-pref.c:474
+#, fuzzy
+msgid "Updates"
+msgstr "Mete a djoû"
+
+#: gweather/gweather-pref.c:480
+msgid "Autmatically update every "
+msgstr ""
+
+#: gweather/gweather-pref.c:498
+#, fuzzy
+msgid "minute(s)"
+msgstr "Roye (s):"
+
+#. The Miscellaneous frame
+#: gweather/gweather-pref.c:509
+msgid "Miscellaneous"
+msgstr ""
 
 #: gweather/weather.c:110
 msgid "Location vector needs to be 4 elements long"
@@ -3787,8 +3807,8 @@ msgid ""
 "jpg, jpeg, bmp, cgm, cmyk, dib, eps, fig, fpx, gif, ico, map, miff, pcx,\n"
 "pict, pix, png, pnm, ppm, psd, rgb, rgba, rla, rle, tiff, tga, xbm, xpm,\n"
 "and several obscure ones. Try your luck with something interesting!\n"
-"Eg .html for a client-side image map. You'll get a .gif, .html, and a "
-".shtml\n"
+"Eg .html for a client-side image map. You'll get a .gif, .html, and a ."
+"shtml\n"
 "\n"
 "Recommendations:\n"
 "Small file, pretty good quality:   jpg, 75% quality\n"
@@ -4976,6 +4996,12 @@ msgstr "Netyî"
 msgid "all entries in URL history"
 msgstr "totes les intréyes èl istwere des hårdéyes"
 
+#~ msgid "Update enabled"
+#~ msgstr "Metaedje a djoû èn alaedje"
+
+#~ msgid "(sec)"
+#~ msgstr "(seg)"
+
 #~ msgid "Loading plugin %s..."
 #~ msgstr "Dji tchedje li plugin %s..."
 
@@ -5013,12 +5039,12 @@ msgstr "totes les intréyes èl istwere des hårdéyes"
 #~ msgstr "Drovî ene novele purnea"
 
 #~ msgid ""
-#~ "This applet currently sends getURL commands to netscape throught the -remote "
-#~ "interface.  Hopefully later more webrowsers will be supported."
+#~ "This applet currently sends getURL commands to netscape throught the -"
+#~ "remote interface.  Hopefully later more webrowsers will be supported."
 #~ msgstr ""
-#~ "Pol moumint, ciste aplikete evoye des cmandes getURL a Netscape å d' truviè "
-#~ "di l' eterface -remote. Si tot va bén, pus tård, des ôtes betchteus seront "
-#~ "sopoirtés eto."
+#~ "Pol moumint, ciste aplikete evoye des cmandes getURL a Netscape å d' "
+#~ "truviè di l' eterface -remote. Si tot va bén, pus tård, des ôtes "
+#~ "betchteus seront sopoirtés eto."
 
 #~ msgid "Url:"
 #~ msgstr "Hårdeye:"
@@ -5083,5 +5109,5 @@ msgstr "totes les intréyes èl istwere des hårdéyes"
 
 #~ msgid "Hal 2001 applet"
 #~ msgstr ""
-#~ "Cnoxhoz HAL? Li copiutrece di 2001, ene odyseye di l' espåce; volla metou èn "
-#~ "aplikete"
+#~ "Cnoxhoz HAL? Li copiutrece di 2001, ene odyseye di l' espåce; volla metou "
+#~ "èn aplikete"

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-core 1.2.0\n"
-"POT-Creation-Date: 2001-04-13 14:29+0200\n"
+"POT-Creation-Date: 2001-05-21 21:59+0200\n"
 "PO-Revision-Date: 1999-05-09 20:40+02:00\n"
 "Last-Translator: Softcatala <linux@softcatala.org>\n"
 "Language-Team: linux-ca@chanae.alphanet.ch\n"
@@ -21,7 +21,7 @@ msgstr "Propietats del Rellotge"
 #: another_clock/another_clock.c:267 asclock/dialogs.c:380
 #: battery/properties.c:83 clockmail/properties.c:421
 #: diskusage/properties.c:466 drivemount/properties.c:400
-#: gnotes/properties.c:190 gweather/gweather-pref.c:527
+#: gnotes/properties.c:190 gweather/gweather-pref.c:524
 #: mini-commander/src/preferences.c:801 modemlights/properties.c:486
 #: odometer/properties.c:293 screenshooter/screenshooter_applet.c:434
 #: slashapp/properties.c:412 sound-monitor/properties.c:424
@@ -392,7 +392,10 @@ msgstr "Nombre de files de botons"
 msgid "Number of columns of buttons:"
 msgstr "Nombre de columnes de botons"
 
-#. Size
+#. 	gtk_widget_set (best_size,
+#. 			"border_width", 2,
+#. 			"spacing", 2,
+#. 			NULL);
 #: charpick/properties.c:254 diskusage/properties.c:365
 #: mini-commander/src/preferences.c:611 tickastat/properties.c:500
 msgid "Size"
@@ -434,8 +437,8 @@ msgid ""
 "Gnome panel applet for copying and retrieving selections with a history "
 "list. Released under GNU General Public Licence."
 msgstr ""
-"Applet del quadre de GNOME per copiar i recuperar seleccions amb "
-"l'historial.Lliurat sota la llicència pública general GNU."
+"Applet del quadre de GNOME per copiar i recuperar seleccions amb l'historial."
+"Lliurat sota la llicència pública general GNU."
 
 # És que li deuen agafar el gustet al _(...)
 #: clockmail/clockmail.c:40 slashapp/slashapp.c:226 sound-monitor/main.c:26
@@ -1579,7 +1582,7 @@ msgstr "El temps a GNOME"
 msgid "Location:"
 msgstr "Ubicació:"
 
-#: gweather/gweather-dialog.c:132 gweather/gweather-pref.c:501
+#: gweather/gweather-dialog.c:132
 msgid "Update:"
 msgstr "Actualitza:"
 
@@ -1654,13 +1657,13 @@ msgstr ""
 "Si us plau, trieu el pronòstic detallat; fixeu-vos que el temps d'IWIN\n"
 "només està disponible a les ciutats dels EE.UU."
 
-#: gweather/gweather-pref.c:133
+#: gweather/gweather-pref.c:135
 msgid ""
 "Invalid location chosen!\n"
 "Properties remain unchanged."
 msgstr "Canvi d'ubicació invàlida!Les propietats restants no s'han canviat."
 
-#: gweather/gweather-pref.c:138
+#: gweather/gweather-pref.c:141
 msgid ""
 "Proxy URL is not of the form http://host:port/\n"
 "Properties remain unchanged."
@@ -1668,72 +1671,90 @@ msgstr ""
 "L'URL del proxy no té la forma http://ordinador_central:port/\n"
 "Les propietats restants no s'han canviat"
 
-#: gweather/gweather-pref.c:211
+#: gweather/gweather-pref.c:200
 msgid "Regions"
 msgstr "Regions"
 
-#: gweather/gweather-pref.c:329
+#: gweather/gweather-pref.c:317
 #, fuzzy
 msgid "GNOME Weather Properties"
 msgstr "Paràmetres del llançador"
 
-#: gweather/gweather-pref.c:363
+#: gweather/gweather-pref.c:356
 msgid "Location"
 msgstr "Ubicació"
 
-#: gweather/gweather-pref.c:383
+#: gweather/gweather-pref.c:376
 #, fuzzy
 msgid "Use proxy"
 msgstr "Utilitza un proxy"
 
-#: gweather/gweather-pref.c:387
+#: gweather/gweather-pref.c:380
 msgid "Proxy host:"
 msgstr "Ordinador central proxy:"
 
-#: gweather/gweather-pref.c:401
+#: gweather/gweather-pref.c:394
 #, fuzzy
 msgid "Username:"
 msgstr "Nom d'usuari:"
 
-#: gweather/gweather-pref.c:415
+#: gweather/gweather-pref.c:408
 msgid "Password:"
 msgstr "Contrasenya:"
 
-#: gweather/gweather-pref.c:430
+#: gweather/gweather-pref.c:423
+#, fuzzy
 msgid ""
-"Caveat warning: Even though your password will\n"
-"be saved in the private configuration file, it will\n"
-"be unencrypted!"
+"Warning: Your password will be saved as\n"
+"unencrypted text in a private configuration\n"
+"file."
 msgstr ""
 "Advertència del Caveat: A continuació la vostra contrasenya\n"
 "es desarà en un fitxer de configuració privat, aquest fitxer\n"
 "pot ser desxifrat!"
 
-#: gweather/gweather-pref.c:438
+#: gweather/gweather-pref.c:431
 #, fuzzy
 msgid "Network"
 msgstr "Xarxa"
 
-#: gweather/gweather-pref.c:483
-#, fuzzy
-msgid "Update enabled"
-msgstr "Actualització habilitada:"
+#: gweather/gweather-pref.c:456
+msgid "Automatically update every"
+msgstr ""
 
-#: gweather/gweather-pref.c:487
-msgid "Use metric"
+#: gweather/gweather-pref.c:460
+#, fuzzy
+msgid "Use metric system units"
 msgstr "Sistema mètric"
 
-#: gweather/gweather-pref.c:491
-msgid "Detailed forecast"
+#: gweather/gweather-pref.c:464
+#, fuzzy
+msgid "Enable detailed forecast"
 msgstr "Pronòstic detallat"
 
-#: gweather/gweather-pref.c:496
-msgid "Enable radar maps"
+#: gweather/gweather-pref.c:469
+#, fuzzy
+msgid "Enable radar map"
 msgstr "Habilita els mapes del radar"
 
-#: gweather/gweather-pref.c:523
-msgid "(sec)"
-msgstr "(seg)"
+#: gweather/gweather-pref.c:474
+#, fuzzy
+msgid "Updates"
+msgstr "Actualitza"
+
+#: gweather/gweather-pref.c:480
+msgid "Autmatically update every "
+msgstr ""
+
+#: gweather/gweather-pref.c:498
+#, fuzzy
+msgid "minute(s)"
+msgstr "Línia (s)"
+
+#. The Miscellaneous frame
+#: gweather/gweather-pref.c:509
+msgid "Miscellaneous"
+msgstr ""
 
 #: gweather/weather.c:110
 msgid "Location vector needs to be 4 elements long"
@@ -3803,8 +3824,8 @@ msgid ""
 "jpg, jpeg, bmp, cgm, cmyk, dib, eps, fig, fpx, gif, ico, map, miff, pcx,\n"
 "pict, pix, png, pnm, ppm, psd, rgb, rgba, rla, rle, tiff, tga, xbm, xpm,\n"
 "and several obscure ones. Try your luck with something interesting!\n"
-"Eg .html for a client-side image map. You'll get a .gif, .html, and a "
-".shtml\n"
+"Eg .html for a client-side image map. You'll get a .gif, .html, and a ."
+"shtml\n"
 "\n"
 "Recommendations:\n"
 "Small file, pretty good quality:   jpg, 75% quality\n"
@@ -3817,8 +3838,8 @@ msgstr ""
 "jpg, jpeg, bmp, cgm, cmyk, dib, eps, fig, fpx, gif, ico, map, miff, pcx,\n"
 "pict, pix, png, pnm, ppm, psd, rgb, rgba, rla, rle, tiff, tga, xbm, xpm,\n"
 "i d'altres més desconegudes. Trieu la que cregueu més interessant!\n"
-"Ex .html per una imatge a clients de pàgines. Haureu d'escollir un .gif, "
-".html, i .shtml\n"
+"Ex .html per una imatge a clients de pàgines. Haureu d'escollir un .gif, ."
+"html, i .shtml\n"
 "\n"
 "Recomanacions:\n"
 "Fitxer petit, qualitat força bona:   jpg, qualitat al 75%\n"
@@ -5052,6 +5073,13 @@ msgstr "Esborra"
 msgid "all entries in URL history"
 msgstr ""
 
+#, fuzzy
+#~ msgid "Update enabled"
+#~ msgstr "Actualització habilitada:"
+
+#~ msgid "(sec)"
+#~ msgstr "(seg)"
+
 #~ msgid "Basic"
 #~ msgstr "Bàsic"
 
@@ -5092,8 +5120,8 @@ msgstr ""
 #~ msgstr "Obre una nova finestra"
 
 #~ msgid ""
-#~ "This applet currently sends getURL commands to netscape throught the -remote "
-#~ "interface.  Hopefully later more webrowsers will be supported."
+#~ "This applet currently sends getURL commands to netscape throught the -"
+#~ "remote interface.  Hopefully later more webrowsers will be supported."
 #~ msgstr ""
 #~ "Aquest applet actualment envia comandes getURL al netscape mitjançant la "
 #~ "interfície -remote.  Esperem que altres navegadors siguin suportats més "
@@ -5295,14 +5323,14 @@ msgstr ""
 
 #~ msgid ""
 #~ "This applet is released under the terms and conditions of the GNU Public "
-#~ "Licence.This applet shows the load on a network device. It requires the "
-#~ "/proc/net/ip_acct interface to be present and set up correctly for the "
+#~ "Licence.This applet shows the load on a network device. It requires the /"
+#~ "proc/net/ip_acct interface to be present and set up correctly for the "
 #~ "device."
 #~ msgstr ""
-#~ "Aquest applet es lliura sota els termes i condicions de la llicència pública "
-#~ "GNU. Aquest applet mostra la càrrega a un dispositiu de xarxa. Requereix que "
-#~ "la interfície /proc/net/ip_acct sigui present i correctament configurada pel "
-#~ "dispositiu."
+#~ "Aquest applet es lliura sota els termes i condicions de la llicència "
+#~ "pública GNU. Aquest applet mostra la càrrega a un dispositiu de xarxa. "
+#~ "Requereix que la interfície /proc/net/ip_acct sigui present i "
+#~ "correctament configurada pel dispositiu."
 
 #~ msgid "Network Traffic"
 #~ msgstr "Tràfic de la xarxa"

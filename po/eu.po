@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-core 1.2.0\n"
-"POT-Creation-Date: 2001-04-13 14:29+0200\n"
+"POT-Creation-Date: 2001-05-21 21:59+0200\n"
 "PO-Revision-Date: 1999-04-01 17:11+0200\n"
 "Last-Translator: nobody yet\n"
 "Language-Team: euskara <linux-eu@chanae.alphanet.ch>\n"
@@ -20,7 +20,7 @@ msgstr ""
 #: another_clock/another_clock.c:267 asclock/dialogs.c:380
 #: battery/properties.c:83 clockmail/properties.c:421
 #: diskusage/properties.c:466 drivemount/properties.c:400
-#: gnotes/properties.c:190 gweather/gweather-pref.c:527
+#: gnotes/properties.c:190 gweather/gweather-pref.c:524
 #: mini-commander/src/preferences.c:801 modemlights/properties.c:486
 #: odometer/properties.c:293 screenshooter/screenshooter_applet.c:434
 #: slashapp/properties.c:412 sound-monitor/properties.c:424
@@ -371,7 +371,10 @@ msgstr ""
 msgid "Number of columns of buttons:"
 msgstr ""
 
-#. Size
+#. 	gtk_widget_set (best_size,
+#. 			"border_width", 2,
+#. 			"spacing", 2,
+#. 			NULL);
 #: charpick/properties.c:254 diskusage/properties.c:365
 #: mini-commander/src/preferences.c:611 tickastat/properties.c:500
 msgid "Size"
@@ -1469,7 +1472,7 @@ msgstr ""
 msgid "Location:"
 msgstr ""
 
-#: gweather/gweather-dialog.c:132 gweather/gweather-pref.c:501
+#: gweather/gweather-dialog.c:132
 msgid "Update:"
 msgstr ""
 
@@ -1536,78 +1539,91 @@ msgid ""
 "only for US cities."
 msgstr ""
 
-#: gweather/gweather-pref.c:133
+#: gweather/gweather-pref.c:135
 msgid ""
 "Invalid location chosen!\n"
 "Properties remain unchanged."
 msgstr ""
 
-#: gweather/gweather-pref.c:138
+#: gweather/gweather-pref.c:141
 msgid ""
 "Proxy URL is not of the form http://host:port/\n"
 "Properties remain unchanged."
 msgstr ""
 
-#: gweather/gweather-pref.c:211
+#: gweather/gweather-pref.c:200
 msgid "Regions"
 msgstr ""
 
-#: gweather/gweather-pref.c:329
+#: gweather/gweather-pref.c:317
 #, fuzzy
 msgid "GNOME Weather Properties"
 msgstr "Ezaugarriak..."
 
-#: gweather/gweather-pref.c:363
+#: gweather/gweather-pref.c:356
 msgid "Location"
 msgstr ""
 
-#: gweather/gweather-pref.c:383
+#: gweather/gweather-pref.c:376
 #, fuzzy
 msgid "Use proxy"
 msgstr "Erabiltzailea"
 
-#: gweather/gweather-pref.c:387
+#: gweather/gweather-pref.c:380
 msgid "Proxy host:"
 msgstr ""
 
-#: gweather/gweather-pref.c:401
+#: gweather/gweather-pref.c:394
 #, fuzzy
 msgid "Username:"
 msgstr "Erabiltzailea"
 
-#: gweather/gweather-pref.c:415
+#: gweather/gweather-pref.c:408
 msgid "Password:"
 msgstr ""
 
-#: gweather/gweather-pref.c:430
+#: gweather/gweather-pref.c:423
 msgid ""
-"Caveat warning: Even though your password will\n"
-"be saved in the private configuration file, it will\n"
-"be unencrypted!"
+"Warning: Your password will be saved as\n"
+"unencrypted text in a private configuration\n"
+"file."
 msgstr ""
 
-#: gweather/gweather-pref.c:438
+#: gweather/gweather-pref.c:431
 msgid "Network"
 msgstr ""
 
-#: gweather/gweather-pref.c:483
-msgid "Update enabled"
+#: gweather/gweather-pref.c:456
+msgid "Automatically update every"
 msgstr ""
 
-#: gweather/gweather-pref.c:487
-msgid "Use metric"
+#: gweather/gweather-pref.c:460
+msgid "Use metric system units"
 msgstr ""
 
-#: gweather/gweather-pref.c:491
-msgid "Detailed forecast"
+#: gweather/gweather-pref.c:464
+msgid "Enable detailed forecast"
 msgstr ""
 
-#: gweather/gweather-pref.c:496
-msgid "Enable radar maps"
+#: gweather/gweather-pref.c:469
+msgid "Enable radar map"
 msgstr ""
 
-#: gweather/gweather-pref.c:523
-msgid "(sec)"
+#: gweather/gweather-pref.c:474
+msgid "Updates"
+msgstr ""
+
+#: gweather/gweather-pref.c:480
+msgid "Autmatically update every "
+msgstr ""
+
+#: gweather/gweather-pref.c:498
+msgid "minute(s)"
+msgstr ""
+
+#. The Miscellaneous frame
+#: gweather/gweather-pref.c:509
+msgid "Miscellaneous"
 msgstr ""
 
 #: gweather/weather.c:110
@@ -3569,8 +3585,8 @@ msgid ""
 "jpg, jpeg, bmp, cgm, cmyk, dib, eps, fig, fpx, gif, ico, map, miff, pcx,\n"
 "pict, pix, png, pnm, ppm, psd, rgb, rgba, rla, rle, tiff, tga, xbm, xpm,\n"
 "and several obscure ones. Try your luck with something interesting!\n"
-"Eg .html for a client-side image map. You'll get a .gif, .html, and a "
-".shtml\n"
+"Eg .html for a client-side image map. You'll get a .gif, .html, and a ."
+"shtml\n"
 "\n"
 "Recommendations:\n"
 "Small file, pretty good quality:   jpg, 75% quality\n"
