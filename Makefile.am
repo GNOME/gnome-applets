@@ -12,7 +12,7 @@ endif
 
 vfs_applets = \
 	gtik	\
- 	gweather 
+	gweather 
 if BUILD_GNOME_VFS_APPLETS
 vfs_SUBDIRS = $(vfs_applets)
 endif
@@ -64,7 +64,7 @@ SUBDIRS = \
 	$(modemlights_SUBDIRS)	\
 	$(cdplayer_SUBDIRS)	\
 	$(always_built_SUBDIRS)	\
- 	$(gtop_SUBDIRS)		\
+	$(gtop_SUBDIRS)		\
 	$(vfs_SUBDIRS)	\
 	$(zvt_SUBDIRS)
 ## 	$(esd_SUBDIRS)		\
@@ -74,7 +74,6 @@ DIST_SUBDIRS = \
 	po		\
 	mixer		\
 	modemlights	\
-	screenshooter	\
 	cdplayer	\
 	drivemount	\
 	panel-menu	\
@@ -85,7 +84,7 @@ DIST_SUBDIRS = \
 	battstat	\
 	multiload	\
 	gtik		\
- 	gweather 	\
+	gweather 	\
 	mini-commander	\
 	man
 
