@@ -7,18 +7,15 @@
  */
 
 #include <stdio.h>
-#ifdef HAVE_LIBINTL
-#    include <libintl.h>
-#endif
 #include <sys/stat.h>
 #include <unistd.h>
 #include <dirent.h>
 #include <string.h>
 #include <time.h>
+#include <config.h>
 #include <gnome.h>
 #include <gdk/gdkx.h>
-#include "applet-lib.h"
-#include "applet-widget.h"
+#include <applet-widget.h>
 
 #include "diskusage.h"
 #include "procbar.h"
@@ -281,13 +278,6 @@ diskusage_widget ()
 	return frame;
 }
 
-static gint
-destroy_applet(GtkWidget *widget, gpointer data)
-{
-	gtk_exit(0);
-	return FALSE;
-}
-
 static void
 about_cb (AppletWidget *widget, gpointer data)
 {
@@ -314,11 +304,10 @@ int main(int argc, char **argv)
 {
 	GtkWidget *applet;
 
-        panel_corba_register_arguments();
+        applet_widget_init_defaults("diskusage_applet", NULL, argc, argv, 0,
+				    NULL,argv[0]);
 
-        gnome_init("diskusage_applet", NULL, argc, argv, 0, NULL);
-
-	applet = applet_widget_new(argv[0]);
+	applet = applet_widget_new();
 	if (!applet)
 		g_error("Can't create applet!\n");
 
@@ -334,9 +323,6 @@ int main(int argc, char **argv)
 	applet_widget_set_tooltip	(APPLET_WIDGET(applet), "Disk Usage");
 
         gtk_widget_show(applet);
-	gtk_signal_connect(GTK_OBJECT(applet),"destroy",
-			   GTK_SIGNAL_FUNC(destroy_applet),
-			   NULL);
        	
 	applet_widget_register_callback(APPLET_WIDGET(applet),
 					     "about",
