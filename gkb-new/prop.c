@@ -99,8 +99,8 @@ gkb_prop_apply_clicked (GtkWidget * pb, gint page, GkbPropertyBoxInfo * pbi)
   XGrabKey (GDK_DISPLAY (), key, gkb->state,
 	    GDK_ROOT_WINDOW (), True, GrabModeAsync, GrabModeAsync);
 
-  applet_widget_sync_config (APPLET_WIDGET (gkb->applet));
-
+/*  applet_widget_sync_config (APPLET_WIDGET (gkb->applet));
+*/
   /* Render & update */
   gkb_sized_render (gkb);
   gkb_update (gkb, TRUE);
@@ -379,12 +379,14 @@ gkb_prop_create_hotkey_frame (GkbPropertyBoxInfo * pbi, GnomePropertyBox * pb)
 }
 
 static void
-prophelp_cb (AppletWidget * applet, gpointer data)
+prophelp_cb (PanelApplet * applet, gpointer data)
 {
+/* TODO:
   GnomeHelpMenuEntry help_entry =
     { "gkb_applet", "index.html#GKBAPPLET-PREFS" };
 
   gnome_help_display (NULL, &help_entry);
+*/
 }
 
 static GtkWidget *
@@ -473,7 +475,9 @@ gkb_prop_box_destroy (GtkWidget * box, GkbPropertyBoxInfo * pbi)
 }
 
 void
-properties_dialog (AppletWidget * applet)
+properties_dialog (BonoboUIComponent *uic,
+	           GKB       *gkb,
+	           const gchar	  *verbname)
 {
   GkbPropertyBoxInfo *pbi;
 

@@ -1,5 +1,5 @@
 /* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 2 -*- */
-/* File: prop.c
+/* File: prop-add.c
  * Purpose: GNOME Keyboard switcher property box
  *
  * Copyright (C) 1998-2000 Free Software Foundation
@@ -308,8 +308,10 @@ gkb_prop_map_add (GkbPropertyBoxInfo * pbi)
 static void
 addhelp_cb (AppletWidget * applet, gpointer data)
 {
+/*
   GnomeHelpMenuEntry help_entry =
     { "gkb_applet", "index.html#GKBAPPLET-PREFS-ADD" };
 
   gnome_help_display (NULL, &help_entry);
+*/
 }

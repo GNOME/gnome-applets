@@ -29,7 +29,8 @@
 #include <config.h>
 #include <string.h>
 #include <gnome.h>
-#include <applet-widget.h>
+
+#include <panel-applet.h>
 
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include <libart_lgpl/art_alphagamma.h>
@@ -47,7 +48,6 @@ typedef struct _GkbKeymap          GkbKeymap;
 typedef struct _GkbWindow          GkbWindow;
 typedef struct _GkbKeymapWg        GkbKeymapWg;
 typedef struct _GkbPropertyBoxInfo GkbPropertyBoxInfo;
-
 
 typedef enum {
   GKB_LABEL,
@@ -110,7 +110,7 @@ struct _GKB
   GList *maps;
   
   /* Properties */
-  PanelOrientType orient;
+  PanelAppletOrient orient;
   GkbMode mode;
   gint is_small;
   gint w;
@@ -168,7 +168,9 @@ void gkb_update (GKB *gkb, gboolean set_command);
 
 
 /* prop.c */
-void properties_dialog (AppletWidget * applet);
+void properties_dialog (BonoboUIComponent *uic,
+                        GKB	 *gkb,
+                        const gchar	 *verbname);
 void gkb_sized_render (GKB * gkb);
 
 /* presets.c */
@@ -209,8 +211,12 @@ char * convert_keysym_state_to_string(guint keysym,
 					guint state);
 void grab_button_pressed (GtkButton *button, gpointer data);
 
-
-
 /* Globals */
 gchar * prefixdir;
 GKB * gkb;
+
+G_BEGIN_DECLS
+
+gboolean fill_gkb_applet(PanelApplet *applet);
+
+G_END_DECLS

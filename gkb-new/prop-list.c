@@ -317,9 +317,12 @@ gkb_prop_list_selection_changed (GtkWidget * list, GkbPropertyBoxInfo * pbi)
 static void
 gkb_prop_list_button_clicked_cb (GtkWidget * button, GkbPropertyBoxInfo * pbi)
 {
+/* TODO:
   if (button == pbi->add_button)
     gkb_prop_map_add (pbi);
-  else if (button == pbi->edit_button)
+   else
+*/
+  if (button == pbi->edit_button)
     gkb_prop_map_edit (pbi);
   else if (button == pbi->delete_button)
     gkb_prop_list_delete_clicked (pbi);

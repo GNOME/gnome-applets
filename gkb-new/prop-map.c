@@ -143,10 +143,12 @@ gkb_prop_map_ok_clicked (GkbMapDialogInfo * mdi)
 static void
 gkb_prop_map_help_clicked (GkbMapDialogInfo * mdi)
 {
+/* TODO:
   GnomeHelpMenuEntry help_entry =
     { "gkb_applet", "index.html#GKBAPPLET-PREFS-EDIT" };
 
   gnome_help_display (NULL, &help_entry);
+*/
 }
 
 
@@ -371,7 +373,7 @@ gkb_prop_map_load_stock_button (const gchar * stock_button,
 {
   GtkWidget *button;
 
-  button = gnome_stock_button (stock_button);
+  button = gtk_button_new_from_stock (stock_button);
 
   gtk_signal_connect (GTK_OBJECT (button), "clicked",
 		      GTK_SIGNAL_FUNC (gkb_prop_map_button_clicked), mdi);
@@ -500,10 +502,12 @@ gkb_prop_map_pixmap_at (GtkWidget * table, gint row, gint col,
 
   gnome_icon_entry_set_icon (GNOME_ICON_ENTRY (icon_entry), flag);
 
+/* TODO:
   gtk_signal_connect (GTK_OBJECT (GNOME_ICON_ENTRY (icon_entry)->pickbutton),
 		      "clicked", GTK_SIGNAL_FUNC (gkb_prop_map_data_changed),
 		      mdi);
 
+*/
   return icon_entry;
 }
 
@@ -644,16 +648,17 @@ gkb_prop_map_edit (GkbPropertyBoxInfo * pbi)
   button_box = GTK_CONTAINER (gtk_hbutton_box_new ());
   gtk_box_pack_start (GTK_BOX (vbox2), GTK_WIDGET (button_box), TRUE, TRUE,
 		      0);
-  mdi->ok_button =
-    gkb_prop_map_load_stock_button (GNOME_STOCK_BUTTON_OK, button_box, mdi);
+  mdi->help_button =
+    gkb_prop_map_load_stock_button (GNOME_STOCK_BUTTON_HELP, button_box, mdi);
   mdi->apply_button =
     gkb_prop_map_load_stock_button (GNOME_STOCK_BUTTON_APPLY, button_box,
 				    mdi);
   mdi->close_button =
     gkb_prop_map_load_stock_button (GNOME_STOCK_BUTTON_CLOSE, button_box,
 				    mdi);
-  mdi->help_button =
-    gkb_prop_map_load_stock_button (GNOME_STOCK_BUTTON_HELP, button_box, mdi);
+  mdi->ok_button =
+    gkb_prop_map_load_stock_button (GNOME_STOCK_BUTTON_OK, button_box, mdi);
+
   gtk_widget_set_sensitive (mdi->apply_button, FALSE);
 
   /* Go, go go !! */

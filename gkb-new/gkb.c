@@ -32,16 +32,28 @@
 #include <X11/Xatom.h>
 #include <gdk/gdkx.h>
 #include <sys/stat.h>
+
+#include <panel-applet.h>
+
+#include <gtk/gtk.h>
+#include <libbonobo.h>
+#include <libgnomeui/libgnomeui.h>
+#include <libgnome/libgnome.h>
+
 #include "gkb.h"
 
 int NumLockMask, CapsLockMask, ScrollLockMask;
 
 GtkWidget *bah_window = NULL;
 
-static void gkb_button_press_event_cb (GtkWidget * widget,
+static gint gkb_button_press_event_cb (GtkWidget * widget,
 				       GdkEventButton * e);
-static void about_cb (AppletWidget * widget);
-static void help_cb (AppletWidget * widget);
+static void about_cb (BonoboUIComponent *uic,
+			GKB	  *gkb,
+			const gchar	  *verbname);
+static void help_cb (BonoboUIComponent *uic,
+		        GKB       *gkb,
+	            const gchar	  *verbname);
 static GdkFilterReturn
 event_filter (GdkXEvent * gdk_xevent, GdkEvent * event, gpointer data);
 
@@ -51,7 +63,7 @@ makepix (GkbKeymap * keymap, char *fname, int w, int h)
   GdkPixbuf *pix;
   int width, height;
 
-  pix = gdk_pixbuf_new_from_file (fname);
+  pix = gdk_pixbuf_new_from_file (fname,NULL);
   if (pix != NULL)
     {
       double affine[6];
@@ -139,7 +151,9 @@ gkb_draw (GKB * gkb)
       gtk_label_set_text (GTK_LABEL (gkb->label2), gkb->keymap->label);
     }
 
-  applet_widget_set_tooltip (APPLET_WIDGET (gkb->applet), gkb->keymap->name);
+ /* TODO: tooltip support
+  applet_widget_set_tooltip (PANEL_APPLET (gkb->applet), gkb->keymap->name);
+  */
 }
 
 
@@ -166,19 +180,19 @@ gkb_count_sizes (GKB * gkb)
 
   gint size;
 
-  size = applet_widget_get_panel_pixel_size (APPLET_WIDGET (gkb->applet));
+  size = panel_applet_get_size (PANEL_APPLET (gkb->applet));
 
   /* Determine if this pannel requires different handling because it is very small */
   switch (gkb->orient)
     {
-    case ORIENT_UP:
-    case ORIENT_DOWN:
+    case PANEL_APPLET_ORIENT_UP:
+    case PANEL_APPLET_ORIENT_DOWN:
       panel_height = size;
       if (size < GKB_SMALL_PANEL_SIZE)
 	small_panel = TRUE;
       break;
-    case ORIENT_RIGHT:
-    case ORIENT_LEFT:
+    case PANEL_APPLET_ORIENT_RIGHT:
+    case PANEL_APPLET_ORIENT_LEFT:
       panel_width = size;
       if (size < GKB_SMALL_PANEL_SIZE)
 	small_panel = TRUE;
@@ -195,18 +209,18 @@ gkb_count_sizes (GKB * gkb)
    * v.s. beeing top-bottom */
   if (gkb->mode == GKB_FLAG_AND_LABEL)
     {
-      if (gkb->orient == ORIENT_UP && small_panel)
+      if (gkb->orient == PANEL_APPLET_ORIENT_UP && small_panel)
 	label_in_vbox = FALSE;
-      if (gkb->orient == ORIENT_UP && !gkb->is_small)
+      if (gkb->orient == PANEL_APPLET_ORIENT_UP && !gkb->is_small)
 	label_in_vbox = FALSE;
-      if (gkb->orient == ORIENT_DOWN && small_panel)
+      if (gkb->orient == PANEL_APPLET_ORIENT_DOWN && small_panel)
 	label_in_vbox = FALSE;
-      if (gkb->orient == ORIENT_DOWN && !gkb->is_small)
+      if (gkb->orient == PANEL_APPLET_ORIENT_DOWN && !gkb->is_small)
 	label_in_vbox = FALSE;
-      if (gkb->orient == ORIENT_RIGHT && !small_panel)
+      if (gkb->orient == PANEL_APPLET_ORIENT_RIGHT && !small_panel)
 	if (gkb->is_small)
 	  label_in_vbox = FALSE;
-      if (gkb->orient == ORIENT_LEFT && !small_panel)
+      if (gkb->orient == PANEL_APPLET_ORIENT_LEFT && !small_panel)
 	if (gkb->is_small)
 	  label_in_vbox = FALSE;
     }
@@ -352,7 +366,7 @@ gkb_update (GKB * gkb, gboolean set_command)
 }
 
 static void
-gkb_change_orient (GtkWidget * w, PanelOrientType new_orient, gpointer data)
+gkb_change_orient (GtkWidget * w, PanelAppletOrient new_orient, gpointer data)
 {
   GKB *gkb = data;
 
@@ -479,7 +493,7 @@ loadprop (int i)
     }
 
   actdata->pix = NULL;
-  gkb->orient = applet_widget_get_panel_orient (APPLET_WIDGET (gkb->applet));
+  gkb->orient = panel_applet_get_orient (PANEL_APPLET (gkb->applet));
 
   return actdata;
 }
@@ -525,16 +539,18 @@ load_properties (GKB * gkb)
 
   gnome_config_pop_prefix ();
 
-  /* tell the panel to save our configuration data */
+  /* tell the panel to save our configuration data 
   applet_widget_sync_config (APPLET_WIDGET (gkb->applet));
+  */
 }
 
 
-static void
+static gint
 gkb_button_press_event_cb (GtkWidget * widget, GdkEventButton * event)
 {
-  if (event->button != 1)	/* Ignore mouse buttons 2 and 3 */
-    return;
+   if (event->button != 1)	
+    return FALSE;
+
 
   if (gkb->cur + 1 < gkb->n)
     gkb->keymap = g_list_nth_data (gkb->maps, ++gkb->cur);
@@ -545,6 +561,7 @@ gkb_button_press_event_cb (GtkWidget * widget, GdkEventButton * event)
     }
 
   gkb_update (gkb, TRUE);
+  return TRUE;
 }
 
 static int
@@ -591,6 +608,7 @@ create_gkb_widget ()
 
   gtk_signal_connect (GTK_OBJECT (gkb->eventbox), "button_press_event",
 		      GTK_SIGNAL_FUNC (gkb_button_press_event_cb), NULL);
+	      
 #if 0
   gtk_signal_connect (GTK_OBJECT (gkb->eventbox), "expose_event",
 		      GTK_SIGNAL_FUNC (gkb_expose), NULL);
@@ -633,32 +651,42 @@ create_gkb_widget ()
 }
 
 static void
-about_cb (AppletWidget * widget)
+about_cb (BonoboUIComponent *uic,
+          GKB     *gkb,
+          const gchar     *verbname)
 {
   static GtkWidget *about;
-  const char *authors[3];	/* Emese is genius */
   GtkWidget *link;
+  gchar *file;	
+  GdkPixbuf *pixbuf;
 
-/*
-  if (about)
-    {
-      gtk_widget_show (about);
-      gdk_window_raise (about->window);
-      return;
-    }
-*/
+  static const gchar *authors[] = {
+		" "," ",
+		"Chema Celorio <chema@celorio.com>",
+	        "Szabolcs Ban <shooby@gnome.hu>",
+		NULL
+	};
+  static const gchar *docauthors[] = {
+		" "," "," "," ",
+	        "Szabolcs Ban <shooby@gnome.hu>\n",
+		"Emese Kovacs <emese@gnome.hu>",
+		"David Mason <dcm@redhat.com>",
+		"Alexander Kirillov <kirillov@math.sunysb.edu>",
+		NULL
+	};
+	
 
-  authors[0] = N_("Szabolcs BAN <shooby@gnome.hu>");
-  authors[1] = N_("Chema Celorio <chema@celorio.com>");
-  authors[2] = NULL;
+  pixbuf = NULL;
+  file = gnome_program_locate_file (NULL, GNOME_FILE_DOMAIN_PIXMAP, "gkb-icon.png", TRUE, NULL);
+  if (!file) {
+         g_warning (G_STRLOC ": gkb-icon.png cannot be found");
+         pixbuf = gdk_pixbuf_new_from_file (file, NULL);
+  }
 
   about = gnome_about_new (_("The GNOME KeyBoard Switcher Applet"),
 			   VERSION,
-			   _
-			   ("(C) 1998-2000 Free Software Foundation"),
-			   authors,
-			   _
-			   ("This applet switches between keyboard maps. "
+			   _("(C) 1998-2000 Free Software Foundation"),
+ 			   _("This applet switches between keyboard maps. "
 			    "It uses setxkbmap, or xmodmap.\n"
 			    "Mail me your flag, please (60x40 size), "
 			    "I will put it to CVS.\n"
@@ -666,25 +694,43 @@ about_cb (AppletWidget * widget)
 			    "Thanks for Balazs Nagy (Kevin) "
 			    "<julian7@kva.hu> for his help "
 			    "and Emese Kovacs <emese@eik.bme.hu> for "
-			    "her solidarity."), "gkb-icon.png");
+			    "her solidarity."),
+			    authors,
+			    docauthors,
+			    NULL,
+			    pixbuf);
 
   link = gnome_href_new ("http://projects.gnome.hu/gkb",
 			 _("GKB Home Page (http://projects.gnome.hu/gkb)"));
+
   gtk_box_pack_start (GTK_BOX (GNOME_DIALOG (about)->vbox), link, TRUE,
 		      FALSE, 0);
-  gtk_signal_connect (GTK_OBJECT (about), "destroy",
-		      GTK_SIGNAL_FUNC (gtk_widget_destroyed), &about);
+
+  gtk_window_set_wmclass (GTK_WINDOW (about), "gkb", "Gkb");
+
+  if (pixbuf) {
+                gtk_window_set_icon (GTK_WINDOW (about), pixbuf);
+                g_object_unref (pixbuf);
+  }
+
+  g_signal_connect (G_OBJECT(about), "destroy",
+                          (GCallback)gtk_widget_destroyed, &about);
+
   gtk_widget_show_all (about);
 
   return;
 }
 
 static void
-help_cb (AppletWidget * applet)
+help_cb (BonoboUIComponent *uic,
+         GKB	 *gkb,
+         const gchar	 *verbname)
 {
+/* TODO:
   GnomeHelpMenuEntry help_entry = { "gkb_applet", "index.html" };
 
   gnome_help_display (NULL, &help_entry);
+*/
 }
 
 static GdkFilterReturn
@@ -719,56 +765,6 @@ event_filter (GdkXEvent * gdk_xevent, GdkEvent * event, gpointer data)
       return global_key_filter (gdk_xevent, event);
     }
   return GDK_FILTER_CONTINUE;
-}
-
-/**
- * gkb_activator_connect_signals:
- * @gkb: 
- * 
- * Connect the signaals for gkb->applet
- **/
-static void
-gkb_activator_connect_signals (GKB * gkb)
-{
-  g_return_if_fail (gkb != NULL);
-  g_return_if_fail (GTK_IS_WIDGET (gkb->applet));
-
-  gtk_signal_connect (GTK_OBJECT (gkb->applet), "change_orient",
-		      GTK_SIGNAL_FUNC (gkb_change_orient), gkb);
-
-  gtk_signal_connect (GTK_OBJECT (gkb->applet), "change_pixel_size",
-		      GTK_SIGNAL_FUNC (gkb_change_pixel_size), gkb);
-}
-
-/**
- * gkb_applet_widget_register_callbacks:
- * @gkb: 
- * 
- * Register the callbacks for the applet widget
- **/
-static void
-gkb_activator_register_callbacks (GKB * gkb)
-{
-  g_return_if_fail (gkb != NULL);
-  g_return_if_fail (GTK_IS_WIDGET (gkb->applet));
-
-  applet_widget_register_stock_callback (APPLET_WIDGET (gkb->applet),
-					 "properties",
-					 GNOME_STOCK_MENU_PROP,
-					 _("Properties..."),
-					 GTK_SIGNAL_FUNC
-					 (properties_dialog), NULL);
-  applet_widget_register_stock_callback (APPLET_WIDGET (gkb->applet),
-					 "help",
-					 GNOME_STOCK_MENU_BOOK_OPEN,
-					 _("Help"),
-					 GTK_SIGNAL_FUNC (help_cb), NULL);
-  applet_widget_register_stock_callback (APPLET_WIDGET (gkb->applet),
-					 "about",
-					 GNOME_STOCK_MENU_ABOUT,
-					 _("About..."),
-					 GTK_SIGNAL_FUNC (about_cb), NULL);
-
 }
 
 static gboolean
@@ -841,22 +837,32 @@ find_input_client (Display * display, Window xwindow, Atom state_atom)
   return xwindow;
 }
 
-static CORBA_Object
-gkb_activator (CORBA_Object poa_in,
-	       const char *goad_id,
-	       const char **params,
-	       gpointer * impl_ptr, CORBA_Environment * ev)
+static const char gkb_menu_xml [] =
+	"<popup name=\"button3\">\n"
+	"   <menuitem name=\"GKB Properties Item\" verb=\"GKBProperties\" _label=\"Properties ...\"\n"
+	"             pixtype=\"stock\" pixname=\"gtk-properties\"/>\n"
+	"   <menuitem name=\"GKB Help Item\" verb=\"GKBHelp\" _label=\"Help\"\n"
+	"             pixtype=\"stock\" pixname=\"gtk-help\"/>\n"
+	"   <menuitem name=\"GKB About Item\" verb=\"GKBAbout\" _label=\"About ...\"\n"
+	"             pixtype=\"stock\" pixname=\"gnome-stock-about\"/>\n"
+	"</popup>\n";
+
+static const BonoboUIVerb gkb_menu_verbs [] = {
+	BONOBO_UI_UNSAFE_VERB ("GKBProperties",   properties_dialog),
+	BONOBO_UI_UNSAFE_VERB ("GKBHelp",	  help_cb),
+	BONOBO_UI_UNSAFE_VERB ("GKBAbout",	  about_cb),
+	BONOBO_UI_VERB_END
+};
+
+gboolean fill_gkb_applet(PanelApplet *applet)
 {
-  static guint key = 0;
-  PortableServer_POA poa = (PortableServer_POA) poa_in;
-  XWindowAttributes attribs = { 0, };
   int keycode, modifiers;
 
   gkb = g_new0 (GKB, 1);
 
   gkb->n = 0;
   gkb->cur = 0;
-  gkb->applet = applet_widget_new (goad_id);
+  gkb->applet = GTK_WIDGET (applet);
 
   gtk_widget_push_visual (gdk_rgb_get_visual ());
   gtk_widget_push_colormap (gdk_rgb_get_cmap ());
@@ -872,14 +878,14 @@ gkb_activator (CORBA_Object poa_in,
 
   load_properties (gkb);
 
-  gkb_activator_connect_signals (gkb);
-
   gkb->keymap = g_list_nth_data (gkb->maps, 0);
 
   create_gkb_widget ();
 
   gtk_widget_show (gkb->darea_frame);
-  applet_widget_add (APPLET_WIDGET (gkb->applet), gkb->eventbox);
+  gtk_container_add (GTK_CONTAINER (gkb->applet), gkb->eventbox);
+
+
   gtk_widget_show (gkb->applet);
 
   gtk_signal_connect (GTK_OBJECT (gkb->applet), "save_session",
@@ -906,74 +912,40 @@ gkb_activator (CORBA_Object poa_in,
 
   gdk_window_add_filter (GDK_ROOT_PARENT (), event_filter, NULL);
 
-  gkb_activator_register_callbacks (gkb);
+  g_signal_connect (G_OBJECT (gkb->applet),
+                          "change_orient",
+                          G_CALLBACK (gkb_change_orient),
+                          gkb);
 
-  return applet_widget_corba_activate (gkb->applet, poa, goad_id,
-				       params, impl_ptr, ev);
+  g_signal_connect (G_OBJECT (gkb->applet),
+                          "change_size",
+                          G_CALLBACK (gkb_change_pixel_size),
+                          gkb);
+
+  panel_applet_setup_menu (PANEL_APPLET (gkb->applet), 
+  				gkb_menu_xml, 
+  				gkb_menu_verbs, 
+  				gkb);
+
+
+  return TRUE;
 }
 
-static void
-gkb_deactivator (CORBA_Object poa_in,
-		 const char *goad_id,
-		 gpointer impl_ptr, CORBA_Environment * ev)
+static gboolean
+gkb_factory (PanelApplet *applet,
+		const gchar *iid,
+		gpointer     data)
 {
-  PortableServer_POA poa = (PortableServer_POA) poa_in;
+ 	gboolean retval = FALSE;
 
-  gdk_window_remove_filter (GDK_ROOT_PARENT (), event_filter, NULL);
+        if (!strcmp (iid, "OAFIID:GNOME_KeyboardApplet"))
+		retval = fill_gkb_applet (applet);
 
-  applet_widget_corba_deactivate (poa, goad_id, impl_ptr, ev);
+	return retval;
 }
 
-#if 0 || defined(SHLIB_APPLETS)
-static const char *repo_id[] = { "IDL:GNOME/Applet:1.0", NULL };
-static GnomePluginObject applets_list[] = {
-  {repo_id, "gkb_applet", NULL, "GNOME Keyboard switcher",
-   &gkb_activator, &gkb_deactivator},
-  {NULL}
-};
-
-GnomePlugin GNOME_Plugin_info = {
-  applets_list, NULL
-};
-#else
-
-int
-main (int argc, char *argv[])
-{
-  gpointer gkb_impl;
-  XModifierKeymap *xmk=NULL;
-  KeyCode *map;
-  int m, k;
-      
-  /* Initialize the i18n stuff */
-
-  bindtextdomain (PACKAGE, GNOMELOCALEDIR);
-  textdomain (PACKAGE);
-
-  applet_widget_init ("gkb_applet", VERSION, argc, argv, NULL, 0, NULL);
-
-  APPLET_ACTIVATE (gkb_activator, "gkb_applet", &gkb_impl);
-
-  if(xmk)
-    {
-      map=xmk->modifiermap;
-          for(m=0;m<8;m++)
-          	for(k=0;k<xmk->max_keypermod; k++, map++)
-          	{
-                  if(*map==XKeysymToKeycode(GDK_DISPLAY (), XK_Num_Lock))
-                  	  NumLockMask=(1<<m);
-                  if(*map==XKeysymToKeycode(GDK_DISPLAY (), XK_Caps_Lock))
-                  	  CapsLockMask=(1<<m);
-                  if(*map==XKeysymToKeycode(GDK_DISPLAY (), XK_Scroll_Lock))
-                  	  ScrollLockMask=(1<<m);
-                }
-    XFreeModifiermap(xmk);
-   }
-
-  applet_widget_gtk_main ();
-
-  APPLET_DEACTIVATE (gkb_deactivator, "gkb_applet", gkb_impl);
-
-  return 0;
-}
-#endif
+PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_KeyboardApplet_Factory",
+                             "GKB_keyboard_layout_switcher",
+                             "0",
+                             gkb_factory,
+                             NULL)
