@@ -194,10 +194,10 @@ static	char *basemaps[36]= {
 	}
         
 	gtk_combo_set_popdown_strings (GTK_COMBO (combo1), combo1_items);
-   
-        gtk_signal_connect (GTK_OBJECT (combo1_items), "row_select",
-                 	    (GtkSignalFunc) apply_cb, gkb);
-
+        gtk_signal_connect (GTK_OBJECT (GTK_COMBO(combo1)->entry),
+	                            "changed",
+				    (GtkSignalFunc) apply_cb, gkb);
+								
 	g_list_free (combo1_items);
    
         table2 = gtk_table_new(2,2,FALSE);
@@ -224,8 +224,10 @@ static	char *basemaps[36]= {
 	}
    
         gtk_combo_set_popdown_strings (GTK_COMBO (combo2), combo2_items);
-        gtk_signal_connect (GTK_OBJECT (combo2_items), "row_select",
-                 	    (GtkSignalFunc) apply_cb, gkb);
+        gtk_signal_connect (GTK_OBJECT (GTK_COMBO(combo2)->entry),
+	                            "changed",
+	                        (GtkSignalFunc) apply_cb, gkb);
+					
         g_list_free (combo2_items);
    
         hbox5 = gtk_vbox_new (FALSE, 0);
