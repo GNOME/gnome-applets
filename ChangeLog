@@ -1,3 +1,10 @@
+1999-07-12  Jacob Berkman  <jberkman@andrew.cmu.edu>
+
+	* battery/battery.c (make_new_battery_applet): Do a test run of
+	battery_read_charge() so we can do an error box and die before
+	we make an applet  (I tried putting this where the other dialog
+	was, but it would put 4 dialogs up)
+
 1999-07-11  Jacob Berkman  <jberkman@andrew.cmu.edu>
 
 	* gkb/gkb.c (gkb_activator): load properties after creating widget

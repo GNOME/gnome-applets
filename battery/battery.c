@@ -633,6 +633,18 @@ make_new_battery_applet (const gchar *goad_id)
   GtkStyle *label_style;
   gchar * param = "battery_applet";
 
+  char p, a, h, m;
+
+  if (! battery_read_charge (&p, &a, &h, &m))
+    {
+      GtkWidget *d;
+      d = gnome_error_dialog (_("Error querying battery charge.\n\n"
+				"Make sure that your kernel was "
+				"built with APM support."));
+      gnome_dialog_run (GNOME_DIALOG (d));
+      gtk_exit (1);
+    }
+
   bat = g_new0 (BatteryData, 1);
 
   bat->applet = applet_widget_new (goad_id);
