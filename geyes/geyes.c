@@ -236,12 +236,13 @@ about_cb (void)
 		return;
 	}
         
-        about = gnome_about_new (_("gEyes"), VERSION, _("Copyright (C) 1999 Dave Camp"),
+        about = gnome_about_new (_("gEyes"), VERSION,
+				 _("Copyright (C) 1999 Dave Camp"),
                                  authors,
                                  _("A goofy little xeyes clone for the GNOME panel."),
                                  NULL);
-	gtk_signal_connect( GTK_OBJECT(about), "destroy",
-			    GTK_SIGNAL_FUNC(gtk_widget_destroyed), &about );
+	gtk_signal_connect (GTK_OBJECT(about), "destroy",
+			    GTK_SIGNAL_FUNC(gtk_widget_destroyed), &about);
         gtk_widget_show (about);
 }
 
@@ -371,25 +372,25 @@ help_cb (AppletWidget *applet, gpointer data)
 static void
 create_eyes_applet (void)
 {
-	    eyes_applet.applet = applet_widget_new ("geyes_applet");
+	eyes_applet.applet = applet_widget_new ("geyes_applet");
 	
-	    if (!eyes_applet.applet)
-				g_error ("Can't create applet!\n");
+	if (!eyes_applet.applet)
+		g_error ("Can't create applet!\n");
         
         gtk_signal_connect (GTK_OBJECT (eyes_applet.applet),
                             "save_session",
                             GTK_SIGNAL_FUNC (save_session_cb), 
                             NULL);
-		gtk_signal_connect (GTK_OBJECT (eyes_applet.applet),
-							"delete_event",
-							GTK_SIGNAL_FUNC (delete_cb),
-							NULL);
+	gtk_signal_connect (GTK_OBJECT (eyes_applet.applet),
+			    "delete_event",
+			    GTK_SIGNAL_FUNC (delete_cb),
+			    NULL);
         
         applet_widget_register_stock_callback (APPLET_WIDGET (eyes_applet.applet),
-                                               "properties",
-                                               GNOME_STOCK_MENU_PROP,
-                                               _("Properties..."),
-                                               (AppletCallbackFunc)properties_cb,
+                                               "about",
+                                               GNOME_STOCK_MENU_ABOUT,
+                                               _("About..."),
+                                               (AppletCallbackFunc)about_cb,
                                                NULL);
 	applet_widget_register_stock_callback (APPLET_WIDGET (eyes_applet.applet),
 					       "help",
@@ -397,10 +398,10 @@ create_eyes_applet (void)
 					       _("Help"),
 					       help_cb, NULL);
         applet_widget_register_stock_callback (APPLET_WIDGET (eyes_applet.applet),
-                                               "about",
-                                               GNOME_STOCK_MENU_ABOUT,
-                                               _("About..."),
-                                               (AppletCallbackFunc)about_cb,
+                                               "properties",
+                                               GNOME_STOCK_MENU_PROP,
+                                               _("Properties..."),
+                                               (AppletCallbackFunc)properties_cb,
                                                NULL);
         
         gtk_widget_realize (eyes_applet.applet);
