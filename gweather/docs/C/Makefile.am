@@ -1,7 +1,11 @@
-figs =	gweather_applet.png	gweather_settings.png \
-	gweather_weather.png
-applet = gweather
+figs = \
+	figures/gweather_applet.png	\
+	figures/gweather_weather.png	\
+	figures/gweather_settings.png
+docname = gweather_applet
 lang = C
-sgml_ents = 
-include $(top_srcdir)/applet-docs.make
-dist-hook: applet-dist-hook
+omffile = gweather_applet-C.omf
+sgml_ents = gweather.sgml
+include $(top_srcdir)/sgmldocs.make
+dist-hook: app-dist-hook
+

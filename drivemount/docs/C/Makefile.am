@@ -1,8 +1,12 @@
 figs = \
-	drivemount_applet_all.png     drivemount_applet_settings.png	\
-	drivemount_applet_floppy.png  drivemount_applet_tooltip.png
-applet = drivemount
+	figures/drivemount_applet_all.png	\
+	figures/drivemount_applet_settings.png	\
+	figures/drivemount_applet_floppy.png	\
+	figures/drivemount_applet_tooltip.png
+docname = drivemount_applet
 lang = C
-sgml_ents = $(applet).sgml
-include $(top_srcdir)/applet-docs.make
-dist-hook: applet-dist-hook
+omffile = drivemount_applet-C.omf
+sgml_ents = drivemount.sgml
+include $(top_srcdir)/sgmldocs.make
+dist-hook: app-dist-hook
+

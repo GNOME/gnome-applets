@@ -1,6 +1,9 @@
-figs = quicklaunch_applet.png
-applet = quicklaunch
+figs = \
+	figures/quicklaunch_applet.png
+docname = quicklaunch_applet
 lang = C
-sgml_ents = $(applet).sgml
-include $(top_srcdir)/applet-docs.make
-dist-hook: applet-dist-hook
+omffile = quicklaunch_applet-C.omf
+sgml_ents = quicklaunch.sgml
+include $(top_srcdir)/sgmldocs.make
+dist-hook: app-dist-hook
+

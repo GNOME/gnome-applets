@@ -1,6 +1,11 @@
-figs = odometer_applet.png odometer_settings.png odometer_themes.png
-applet = odometer
+figs = \
+	figures/odometer_applet.png	\
+	figures/odometer_themes.png	\
+	figures/odometer_settings.png
+docname = odometer_applet
 lang = C
-sgml_ents = $(applet).sgml
-include $(top_srcdir)/applet-docs.make
-dist-hook: applet-dist-hook
+omffile = odometer_applet-C.omf
+sgml_ents = odometer.sgml
+include $(top_srcdir)/sgmldocs.make
+dist-hook: app-dist-hook
+

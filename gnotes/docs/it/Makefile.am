@@ -1,9 +1,10 @@
 figs = \
-	gnotes-fig.png	\
-	gnotes-properties.png
-applet = gnotes
+	figures/gnotes-fig.png	\
+	figures/gnotes-properties.png
+docname = gnotes_applet
 lang = it
-sgml_ents = $(applet).sgml
-include $(top_srcdir)/applet-docs.make
-dist-hook: applet-dist-hook
+omffile = gnotes_applet-it.omf
+sgml_ents = gnotes.sgml
+include $(top_srcdir)/sgmldocs.make
+dist-hook: app-dist-hook
 

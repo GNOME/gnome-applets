@@ -1,6 +1,9 @@
-figs = jbc_applet.png
-applet = jbc
+figs = \
+	figures/jbc_applet.png
+docname = jbc_applet
 lang = C
-sgml_ents = $(applet).sgml
-include $(top_srcdir)/applet-docs.make
-dist-hook: applet-dist-hook
+omffile = jbc_applet-C.omf
+sgml_ents = jbc.sgml
+include $(top_srcdir)/sgmldocs.make
+dist-hook: app-dist-hook
+

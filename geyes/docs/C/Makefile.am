@@ -1,6 +1,10 @@
-figs = geyes_applet.png geyes_settings.png
-applet = geyes
+figs = \
+	figures/geyes_applet.png	\
+	figures/geyes_settings.png
+docname = geyes_applet
 lang = C
-sgml_ents = $(applet).sgml
-include $(top_srcdir)/applet-docs.make
-dist-hook: applet-dist-hook
+omffile = geyes_applet-C.omf
+sgml_ents = geyes.sgml
+include $(top_srcdir)/sgmldocs.make
+dist-hook: app-dist-hook
+

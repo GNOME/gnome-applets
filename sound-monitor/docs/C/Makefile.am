@@ -1,10 +1,12 @@
 figs = \
-	soundmonitor_applet.png			\
-	soundmonitor_applet_themes.png		\
-	soundmonitor_applet_settings.png	\
-	soundmonitor_manager_server.png
-applet = sound-monitor
+	figures/soundmonitor_applet.png			\
+	figures/soundmonitor_applet_settings.png	\
+	figures/soundmonitor_applet_themes.png		\
+	figures/soundmonitor_manager_server.png
+docname = soundmonitor_applet
 lang = C
-sgml_ents = $(applet).sgml
-include $(top_srcdir)/applet-docs.make
-dist-hook: applet-dist-hook
+omffile = soundmonitor_applet-C.omf
+sgml_ents = soundmonitor.sgml
+include $(top_srcdir)/sgmldocs.make
+dist-hook: app-dist-hook
+
