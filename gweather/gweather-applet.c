@@ -133,28 +133,39 @@ static void change_background_cb (
 				GdkColor *color, GdkPixmap *pixmap, 
 				gpointer data)
 {
+	/* taken from the TrashApplet */
 	GWeatherApplet *gw_applet = (GWeatherApplet *) data;
-	GtkRcStyle *rc_style = gtk_rc_style_new ();
+	GtkRcStyle *rc_style;
+	GtkStyle *style;
+
+	/* reset style */
+	gtk_widget_set_style (GTK_WIDGET (gw_applet->applet), NULL);
+	rc_style = gtk_rc_style_new ();
+	gtk_widget_modify_style (GTK_WIDGET (gw_applet->applet), rc_style);
+	g_object_unref (rc_style);
 
 	switch (type) {
-		case PANEL_PIXMAP_BACKGROUND:
-			gtk_widget_modify_style (GTK_WIDGET (gw_applet->applet), rc_style);
+		case PANEL_COLOR_BACKGROUND:
+			gtk_widget_modify_bg (GTK_WIDGET (gw_applet->applet),
+					GTK_STATE_NORMAL, color);
 			break;
 
-		case PANEL_COLOR_BACKGROUND:
-			gtk_widget_modify_bg (GTK_WIDGET (gw_applet->applet), GTK_STATE_NORMAL, color);
+		case PANEL_PIXMAP_BACKGROUND:
+			style = gtk_style_copy (
+					GTK_WIDGET (gw_applet->applet)->style);
+			if (style->bg_pixmap[GTK_STATE_NORMAL])
+				g_object_unref
+					(style->bg_pixmap[GTK_STATE_NORMAL]);
+			style->bg_pixmap[GTK_STATE_NORMAL] = g_object_ref
+				(pixmap);
+			gtk_widget_set_style (GTK_WIDGET (gw_applet->applet),
+					style);
 			break;
 
 		case PANEL_NO_BACKGROUND:
-			gtk_widget_modify_style (GTK_WIDGET (gw_applet->applet), rc_style);
-			break;
-
 		default:
-			gtk_widget_modify_style (GTK_WIDGET (gw_applet->applet), rc_style);
 			break;
 	}
-
-	gtk_rc_style_unref (rc_style);
 }
 
 
