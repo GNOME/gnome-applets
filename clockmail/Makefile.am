@@ -29,8 +29,11 @@ EXTRA_DIST = \
 	THEME-SPEC			\
 	clockmail_applet.gnorba
 
-sysdir = $(datadir)/applets/Clocks
-sys_DATA = clockmail_applet.desktop
+clocksdir = $(datadir)/applets/Clocks
+clocks_DATA = clockmail_applet.desktop
+
+netdir = $(datadir)/applets/Network
+net_DATA = clockmail_applet.desktop
 
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = clockmail_applet.gnorba
