@@ -1,17 +1,18 @@
 # French translation of gnome-applets.
-# Copyright (C) 1998-2003 Free Software Foundation, Inc.
+# Copyright (C) 1998-2004 Free Software Foundation, Inc.
+# This file is distributed under the same license as the gnome-applets package.
 #
 # Vincent Renardias <vincent@ldsol.com>, 1998-2000.
 # Fabrice Bellet <Fabrice.Bellet@creatis.insa-lyon.fr>, 2000.
-# maintainer: Christophe Merlet (RedFox) <redfox@redfoxcenter.org>, 2000-2003.
+# maintainer: Christophe Merlet (RedFox) <redfox@redfoxcenter.org>, 2000-2004.
 # Christophe Fergeau <teuf@users.sourceforge.net>, 2002.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 2.4.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-11-07 09:47+0100\n"
-"PO-Revision-Date: 2003-11-07 09:44+0100\n"
+"POT-Creation-Date: 2004-07-04 00:09+0200\n"
+"PO-Revision-Date: 2004-07-04 00:09+0200\n"
 "Last-Translator: Christophe Merlet (RedFox) <redfox@redfoxcenter.org>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
 "MIME-Version: 1.0\n"
@@ -57,7 +58,7 @@ msgid "AccessX Status Applet Factory"
 msgstr "Fabrique pour l'applet d'état AccessX"
 
 #: accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:2
-#: accessx-status/applet.c:1166
+#: accessx-status/applet.c:1183
 msgid "Keyboard Accessibility Status"
 msgstr "État d'accessibilité du clavier"
 
@@ -80,8 +81,8 @@ msgid "Utility"
 msgstr "Utilitaire"
 
 #: accessx-status/applet.c:135 battstat/battstat_applet.c:895
-#: cdplayer/cdplayer.c:580 charpick/charpick.c:581 drivemount/drivemount.c:510
-#: geyes/geyes.c:228 gkb-new/gkb-applet.c:84 gtik/gtik.c:775
+#: cdplayer/cdplayer.c:580 charpick/charpick.c:591 drivemount/drivemount.c:510
+#: geyes/geyes.c:228 gkb-new/gkb-applet.c:84 gtik/gtik.c:714
 #: gweather/gweather-about.c:44 mailcheck/mailcheck.c:2435
 #: mini-commander/src/about.c:48 mixer/mixer.c:1062
 #: modemlights/modemlights.c:115 multiload/main.c:57
@@ -95,7 +96,7 @@ msgstr ""
 "Contributeur :\n"
 "Christophe Fergeau <teuf@users.sourceforge.net>"
 
-#: accessx-status/applet.c:157 accessx-status/applet.c:1169
+#: accessx-status/applet.c:157 accessx-status/applet.c:1186
 msgid "AccessX Status"
 msgstr "État AccessX"
 
@@ -117,11 +118,12 @@ msgstr "Il y a eu une erreur au lancement du visionneur d'aide : %s"
 msgid "There was an error launching the keyboard capplet : %s"
 msgstr "Il y a eu une erreur au lancement de la capplet clavier : %s"
 
-#: accessx-status/applet.c:463 accessx-status/applet.c:496
+#. Note to translators: the first letter of the alphabet, not the indefinite article
+#: accessx-status/applet.c:461 accessx-status/applet.c:499
 msgid "a"
 msgstr "a"
 
-#: accessx-status/applet.c:1171
+#: accessx-status/applet.c:1188
 msgid "Displays current state of keyboard accessibility features"
 msgstr "Affiche l'état courant des fonctionnalités d'accessibilité du clavier"
 
@@ -266,7 +268,7 @@ msgstr "Critique"
 #. Charging = The APM BIOS thinks that the battery is recharging.
 #: battstat/battstat_applet.c:367 battstat/battstat_applet.c:945
 msgid "Charging"
-msgstr "Changement"
+msgstr "Chargement"
 
 #: battstat/battstat_applet.c:448
 #, c-format
@@ -307,6 +309,7 @@ msgstr ""
 #. when the computer is using battery power.
 #: battstat/battstat_applet.c:501 battstat/battstat_applet.c:1035
 #: battstat/battstat_applet.c:1124
+#, c-format
 msgid "System is running on battery power"
 msgstr "Le système utilise sur sa batterie"
 
@@ -314,15 +317,20 @@ msgstr "Le système utilise sur sa batterie"
 #. when the computer is using AC power.
 #: battstat/battstat_applet.c:504 battstat/battstat_applet.c:1041
 #: battstat/battstat_applet.c:1130
+#, c-format
 msgid "System is running on AC power"
 msgstr "Le système utilise le courant du secteur"
 
 #: battstat/battstat_applet.c:518
+#, c-format
 msgid "N/A"
 msgstr "N/D"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
+#. This string will display as a tooltip over the status frame
+#. when the computer is using battery power and the battery meter
+#. and percent meter is hidden by the user.
 #: battstat/battstat_applet.c:642 battstat/battstat_applet.c:1015
 #, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
@@ -330,6 +338,9 @@ msgstr "Le système fonctionne sur la batterie. Batterie : %d%% (%s)"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
+#. This string will display as a tooltip over the status frame
+#. when the computer is using AC power and the battery meter
+#. and percent meter is hidden by the user.
 #: battstat/battstat_applet.c:649 battstat/battstat_applet.c:1022
 #, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
@@ -340,6 +351,7 @@ msgstr "Le système fonctionne sur le secteur. Batterie : %d%% (%s)"
 #. power and the battery isn't present. Not a
 #. possible combination, I guess... :)
 #: battstat/battstat_applet.c:660
+#, c-format
 msgid "System is running on battery power. Battery: Not present"
 msgstr "Le système fonctionne sur la batterie. Batterie : Non présente"
 
@@ -347,6 +359,7 @@ msgstr "Le système fonctionne sur la batterie. Batterie : Non présente"
 #. battery frame when the computer is using AC
 #. power and the battery isn't present.
 #: battstat/battstat_applet.c:666
+#, c-format
 msgid "System is running on AC power. Battery: Not present"
 msgstr "Le système fonctionne sur le secteur. Batterie : Non présente"
 
@@ -361,10 +374,10 @@ msgstr "Batterie : %d%% (%s)"
 #. Displayed as a tooltip over the battery meter when no
 #. battery is present.
 #: battstat/battstat_applet.c:682
+#, c-format
 msgid "Battery: Not present"
 msgstr "Batterie : absente"
 
-#. Displayed if the APM device couldn't be opened. (Used under *BSD)
 #: battstat/battstat_applet.c:778
 msgid ""
 "Can't open the APM device!\n"
@@ -376,7 +389,6 @@ msgstr ""
 "\n"
 "Vérifiez que vous avez les droits de lecture sur ce périphérique."
 
-#. Displayed if the APM system is disabled (Used under *BSD)
 #: battstat/battstat_applet.c:787
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
@@ -470,7 +482,7 @@ msgstr "<b>Mise en veille</b>"
 msgid "<b>Warnings</b>"
 msgstr "<b>Avertissements</b>"
 
-#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1523
+#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1462
 msgid "Appearance"
 msgstr "Apparence"
 
@@ -698,8 +710,8 @@ msgstr ""
 "C'est le chemin complet du périphérique qui sera utilisé pour jouer les CD à "
 "partir de cette applet"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:599
-#: charpick/charpick.c:743 charpick/properties.c:333
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:609
+#: charpick/charpick.c:753 charpick/properties.c:345
 msgid "Character Palette"
 msgstr "Table de caractères"
 
@@ -715,33 +727,33 @@ msgstr "Insére des caractères"
 msgid "Add Palette"
 msgstr "Ajouter une palette"
 
-#: charpick/charpick.c:362
+#: charpick/charpick.c:372
 msgid "Add a palette..."
 msgstr "Ajouter une palette..."
 
-#: charpick/charpick.c:445
+#: charpick/charpick.c:455
 msgid "Available palettes"
 msgstr "Palettes disponibles"
 
-#: charpick/charpick.c:482
+#: charpick/charpick.c:492
 msgid "Insert special characters"
 msgstr "Insérer des caractères spéciaux"
 
 #. If your charset supports it, please use U00F1 to replace the "n"
 #. * in "Muniz".
-#: charpick/charpick.c:572
+#: charpick/charpick.c:582
 msgid "Alexandre Muniz <munizao@xprt.net>"
 msgstr "Alexandre Muniz <munizao@xprt.net>"
 
-#: charpick/charpick.c:573
+#: charpick/charpick.c:583
 msgid "Kevin Vandersloot"
 msgstr "Kevin Vandersloot"
 
-#: charpick/charpick.c:601
+#: charpick/charpick.c:611
 msgid "Copyright (C) 1998"
 msgstr "Copyright © 1998"
 
-#: charpick/charpick.c:602
+#: charpick/charpick.c:612
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -758,7 +770,7 @@ msgstr "Caractères affichés au démarrage de l'applet"
 msgid "DEPRECATED - Characters shown on applet startup"
 msgstr "Obsolète - Caractères affichés au démarrage de l'applet"
 
-#: charpick/charpick.schemas.in.h:3 charpick/properties.c:260
+#: charpick/charpick.schemas.in.h:3 charpick/properties.c:272
 msgid "List of available palettes"
 msgstr "Liste des palettes disponibles"
 
@@ -787,43 +799,43 @@ msgstr "Entrée de palette"
 msgid "Modify a palette by adding or removing chacters"
 msgstr "Modifier une paletet en ajoutant ou supprimant des caractères"
 
-#: charpick/properties.c:160
+#: charpick/properties.c:171
 msgid "Edit Palette"
 msgstr "Éditer la palette"
 
-#: charpick/properties.c:259
+#: charpick/properties.c:271
 msgid "Palettes list"
 msgstr "Liste des palettes"
 
-#: charpick/properties.c:338
+#: charpick/properties.c:350
 msgid "Pal_ettes:"
 msgstr "Pal_ettes :"
 
-#: charpick/properties.c:354
+#: charpick/properties.c:366
 msgid "Add button"
 msgstr "Ajouter un bouton"
 
-#: charpick/properties.c:355
+#: charpick/properties.c:367
 msgid "Click to add a new palette"
 msgstr "Cliquez pour ajouter une nouvelle palette"
 
-#: charpick/properties.c:362
+#: charpick/properties.c:374
 msgid "Edit button"
 msgstr "Éditer le bouton"
 
-#: charpick/properties.c:363
+#: charpick/properties.c:375
 msgid "Click to edit the selected palette"
 msgstr "Cliquez pour éditer la palette sélectionnée"
 
-#: charpick/properties.c:370
+#: charpick/properties.c:382
 msgid "Delete button"
 msgstr "Supprimer le bouton"
 
-#: charpick/properties.c:371
+#: charpick/properties.c:383
 msgid "Click to delete the selected palette"
 msgstr "Cliquez pour supprimer la palette sélectionnée"
 
-#: charpick/properties.c:423
+#: charpick/properties.c:435
 msgid "Character Palette Preferences"
 msgstr "Préférences de la palette de caractères"
 
@@ -2379,7 +2391,7 @@ msgstr "Étiquette"
 msgid "Flag and Label"
 msgstr "Drapeau et étiquette"
 
-#: gkb-new/prop.c:257 gtik/gtik.c:1530 gweather/gweather-pref.c:746
+#: gkb-new/prop.c:257 gtik/gtik.c:1469 gweather/gweather-pref.c:746
 #: modemlights/properties.c:437
 msgid "Display"
 msgstr "Affichage"
@@ -2470,7 +2482,7 @@ msgstr ""
 msgid "Gtik Applet Factory"
 msgstr "Fabrique pour l'applet Gtik"
 
-#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:791
+#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:730
 msgid "Stock Ticker"
 msgstr "Téléscripteur de valeurs boursières"
 
@@ -2483,11 +2495,11 @@ msgstr "_Mettre à jour"
 msgid "Could not retrieve the stock data."
 msgstr "Ne peut récupérer les données boursières."
 
-#: gtik/gtik.c:289 gweather/gweather-applet.c:346
+#: gtik/gtik.c:304 gweather/gweather-applet.c:346
 msgid "Updating..."
 msgstr "Mise à jour..."
 
-#: gtik/gtik.c:793
+#: gtik/gtik.c:732
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.  "
 "The GNOME Stock Ticker is a free Internet-based application.  It comes with "
@@ -2501,126 +2513,126 @@ msgstr ""
 "pour décider vos investissements ; il n'est conçu qu'a des fins "
 "d'informations."
 
-#: gtik/gtik.c:1279
+#: gtik/gtik.c:1218
 msgid "Current _stocks:"
 msgstr "_Valeurs actuelles :"
 
-#: gtik/gtik.c:1287
+#: gtik/gtik.c:1226
 msgid "_New symbol:"
 msgstr "_Nouveau symbole :"
 
-#: gtik/gtik.c:1296
+#: gtik/gtik.c:1235
 msgid "_Add"
 msgstr "A_jouter"
 
-#: gtik/gtik.c:1305
+#: gtik/gtik.c:1244
 msgid "_Remove"
 msgstr "_Supprimer"
 
-#: gtik/gtik.c:1411
+#: gtik/gtik.c:1350
 msgid "Stock Ticker Preferences"
 msgstr "Préférences du téléscripteur de valeurs boursières"
 
-#: gtik/gtik.c:1433
+#: gtik/gtik.c:1372
 msgid "Symbols"
 msgstr "Symboles"
 
-#: gtik/gtik.c:1440 mailcheck/mailcheck.c:2366
+#: gtik/gtik.c:1379 mailcheck/mailcheck.c:2366
 msgid "Behavior"
 msgstr "Comportement"
 
-#: gtik/gtik.c:1443 gweather/gweather-pref.c:705
+#: gtik/gtik.c:1382 gweather/gweather-pref.c:705
 msgid "Update"
 msgstr "Mettre à jour"
 
-#: gtik/gtik.c:1447
+#: gtik/gtik.c:1386
 msgid "Stock update fre_quency:"
 msgstr "Fré_quence de mise à jour des valeurs :"
 
-#: gtik/gtik.c:1459 gweather/gweather-pref.c:729 mailcheck/mailcheck.c:2074
+#: gtik/gtik.c:1398 gweather/gweather-pref.c:729 mailcheck/mailcheck.c:2074
 #: mailcheck/mailcheck.c:2080
 msgid "minutes"
 msgstr "minutes"
 
-#: gtik/gtik.c:1465
+#: gtik/gtik.c:1404
 msgid "Scrolling"
 msgstr "Défilement"
 
-#: gtik/gtik.c:1469
+#: gtik/gtik.c:1408
 msgid "_Scroll speed:"
 msgstr "_Vitesse de défilement :"
 
-#: gtik/gtik.c:1473
+#: gtik/gtik.c:1412
 msgid "Slow"
 msgstr "Lent"
 
-#: gtik/gtik.c:1475
+#: gtik/gtik.c:1414
 msgid "Medium"
 msgstr "Moyen"
 
-#: gtik/gtik.c:1477
+#: gtik/gtik.c:1416
 msgid "Fast"
 msgstr "Rapide"
 
-#: gtik/gtik.c:1497
+#: gtik/gtik.c:1436
 msgid "_Enable scroll buttons"
 msgstr "_Activer les boutons de défilement"
 
-#: gtik/gtik.c:1509
+#: gtik/gtik.c:1448
 msgid "Scroll _left to right"
 msgstr "_Défiler de gauche à droite"
 
-#: gtik/gtik.c:1535
+#: gtik/gtik.c:1474
 msgid "Displa_y only symbols and price"
 msgstr "_Afficher seulement les symboles et prix"
 
-#: gtik/gtik.c:1548 mini-commander/src/mini-commander.glade.h:23
+#: gtik/gtik.c:1487 mini-commander/src/mini-commander.glade.h:23
 #: stickynotes/stickynotes.glade.h:48
 msgid "_Width:"
 msgstr "_Largeur :"
 
-#: gtik/gtik.c:1562 mini-commander/src/mini-commander.glade.h:24
+#: gtik/gtik.c:1501 mini-commander/src/mini-commander.glade.h:24
 #: multiload/properties.c:483
 msgid "pixels"
 msgstr "pixels"
 
-#: gtik/gtik.c:1571
+#: gtik/gtik.c:1510
 msgid "Font and Colors"
 msgstr "Police et couleurs"
 
-#: gtik/gtik.c:1577
+#: gtik/gtik.c:1516
 msgid "Use _default theme font and colors"
 msgstr "_Utiliser la police et les couleurs du thème par défaut"
 
-#: gtik/gtik.c:1592 stickynotes/stickynotes.glade.h:42
+#: gtik/gtik.c:1531 stickynotes/stickynotes.glade.h:42
 msgid "_Font:"
 msgstr "_Police :"
 
-#: gtik/gtik.c:1616
+#: gtik/gtik.c:1555
 msgid "Stock _raised:"
 msgstr "Valeurs en _hausse :"
 
-#: gtik/gtik.c:1635
+#: gtik/gtik.c:1574
 msgid "Stock _lowered:"
 msgstr "Valeurs en _baisse :"
 
-#: gtik/gtik.c:1654
+#: gtik/gtik.c:1593
 msgid "Stock _unchanged:"
 msgstr "Valeurs _constantes :"
 
-#: gtik/gtik.c:1673 modemlights/properties.c:569
+#: gtik/gtik.c:1612 modemlights/properties.c:569
 msgid "_Background:"
 msgstr "_Arrière-plan :"
 
-#: gtik/gtik.c:1806
+#: gtik/gtik.c:1745
 msgid "Skip forward"
 msgstr "Avancer"
 
-#: gtik/gtik.c:1807
+#: gtik/gtik.c:1746
 msgid "Skip backward"
 msgstr "Reculer"
 
-#: gtik/gtik.c:1815
+#: gtik/gtik.c:1754
 msgid ""
 "Stock Ticker\n"
 "Get continuously updated stock quotes"
@@ -2628,11 +2640,11 @@ msgstr ""
 "Téléscripteur de valeurs boursières\n"
 "Obtient continuellement les cotations des valeurs mises à jour"
 
-#: gtik/gtik.c:2009
+#: gtik/gtik.c:1951
 msgid "(No"
 msgstr "(Aucun"
 
-#: gtik/gtik.c:2010
+#: gtik/gtik.c:1952
 msgid "Change "
 msgstr "Changement "
 
@@ -3905,12 +3917,14 @@ msgid "Set default list value for %s\n"
 msgstr "Définit la liste de valeur par défaut pour %s\n"
 
 #: mini-commander/src/mc-install-default-macros.c:117
+#, c-format
 msgid "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL is set, not installing schemas\n"
 msgstr ""
 "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL est définit, n'installe pas les "
 "schémas\n"
 
 #: mini-commander/src/mc-install-default-macros.c:125
+#, c-format
 msgid "Must set the GCONF_CONFIG_SOURCE environment variable\n"
 msgstr "Vous devez définir la vavriable d'environnement GCONF_CONFIG_SOURCE\n"
 
@@ -4995,11 +5009,11 @@ msgstr "_Nouvelle note"
 msgid "_Show Notes"
 msgstr "_Afficher les notes"
 
-#: stickynotes/stickynotes.c:314
+#: stickynotes/stickynotes.c:324
 msgid "Locked note"
 msgstr "Note verrouillée"
 
-#: stickynotes/stickynotes.c:319
+#: stickynotes/stickynotes.c:329
 msgid "Unlocked note"
 msgstr "Note déverrouillée"
 
