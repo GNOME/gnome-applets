@@ -3,19 +3,19 @@
 # Urban Borstnik <urban@cmm.ki.si>, 2000.
 # Nejc Novak <nejc.novak@guest.arnes.si>, 2002.
 # Andraz Tori <andraz.tori1@guest.arnes.si>, 2003.
-
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 2.4\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-08-22 22:47+0200\n"
+"POT-Creation-Date: 2003-09-01 11:54-0400\n"
 "PO-Revision-Date: 2002-06-16 13:59+0500\n"
 "Last-Translator: Andraz Tori <andraz.tori1@guest.arnes.si>\n"
 "Language-Team: Slovenian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
+"Report-Msgid-Bugs-To: \n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
+"%100==4 ? 2 : 3);\n"
 
 #: accessx-status/GNOME_AccessxApplet.xml.h:1
 #: battstat/GNOME_BattstatApplet.xml.h:1 cdplayer/GNOME_CDPlayerApplet.xml.h:1
@@ -77,7 +77,7 @@ msgid "Utility"
 msgstr "Orodje"
 
 #: accessx-status/applet.c:135 battstat/battstat_applet.c:839
-#: cdplayer/cdplayer.c:575 charpick/charpick.c:582 drivemount/drivemount.c:515
+#: cdplayer/cdplayer.c:575 charpick/charpick.c:582 drivemount/drivemount.c:510
 #: geyes/geyes.c:228 gkb-new/gkb-applet.c:84 gtik/gtik.c:774
 #: gweather/gweather-about.c:44 mailcheck/mailcheck.c:2435
 #: mini-commander/src/about.c:48 mixer/mixer.c:1060
@@ -102,12 +102,15 @@ msgid "Shows the state of AccessX features such as latched modifiers"
 msgstr "Kaže stanje možnosti AccessX"
 
 #: accessx-status/applet.c:198
+#, c-format
 msgid "There was an error launching the help viewer : %s"
 msgstr "Ob poganjanju pregledovalnika pomoči se je zgodila napaka : %s"
 
 #: accessx-status/applet.c:221
+#, c-format
 msgid "There was an error launching the keyboard capplet : %s"
-msgstr "Ob poganjanju nastavitvenega vstavka tipkovnice se je zgodila napaka : %s"
+msgstr ""
+"Ob poganjanju nastavitvenega vstavka tipkovnice se je zgodila napaka : %s"
 
 #: accessx-status/applet.c:462 accessx-status/applet.c:496
 msgid "a"
@@ -435,6 +438,7 @@ msgid "100%"
 msgstr "100%"
 
 #: battstat/battstat_applet.glade.h:6
+#, no-c-format
 msgid "<b>Battery Color Levels (%)</b>"
 msgstr "<b>Barve nivojev baterije (%)</b>"
 
@@ -521,10 +525,11 @@ msgstr "_Opozori, ko je napolnjenost baterije nizka"
 msgid "_Yellow:"
 msgstr "_Rumena:"
 
-#: battstat/properties.c:296 drivemount/drivemount.c:473
+#: battstat/properties.c:296 drivemount/drivemount.c:468
 #: drivemount/properties.c:589 mailcheck/mailcheck.c:2291
 #: mailcheck/mailcheck.c:2540 mini-commander/src/preferences.c:393
 #: mixer/mixer.c:1167
+#, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Ob prikazovanju pomoči se je zgodila napaka: %s"
 
@@ -591,6 +596,7 @@ msgid "You do not have permission to use the CD player."
 msgstr "Nimate dovoljenj za uporabo predvajalnika CDjev."
 
 #: cdplayer/cdplayer.c:357 mixer/mixer.c:1026 multiload/main.c:118
+#, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "Ob izvrševanju '%s' se je zgodila napaka: %s"
 
@@ -672,7 +678,8 @@ msgid ""
 "This is the full path of the device that will be used to play cd's from this "
 "applet"
 msgstr ""
-"To je polna pot do naprave, ki se bo uporabila za predvajanje CDjev iz tega vstavka."
+"To je polna pot do naprave, ki se bo uporabila za predvajanje CDjev iz tega "
+"vstavka."
 
 #: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:600
 #: charpick/charpick.c:744 charpick/properties.c:333
@@ -746,8 +753,8 @@ msgid ""
 "The string that the user had selected when the applet was last used. This "
 "string will be displayed when the user starts the applet."
 msgstr ""
-"Niz, ki ga je izbral uporabnik, ko je bil vstavek zadnjič uporabljen. "
-"Ta niz bo prikazan, ko uporabnik zažene vstavek."
+"Niz, ki ga je izbral uporabnik, ko je bil vstavek zadnjič uporabljen. Ta niz "
+"bo prikazan, ko uporabnik zažene vstavek."
 
 #: charpick/properties.c:88
 msgid "_Palette:"
@@ -802,7 +809,7 @@ msgid "Character Palette Preferences"
 msgstr "Nastavitve palete znakov"
 
 #: drivemount/GNOME_DriveMountApplet.server.in.in.h:1
-#: drivemount/drivemount.c:533
+#: drivemount/drivemount.c:528
 msgid "Disk Mounter"
 msgstr "Prilopnik pogonov"
 
@@ -826,41 +833,42 @@ msgstr "_Brskaj..."
 msgid "_Eject"
 msgstr "_Izvrzi"
 
-#: drivemount/drivemount.c:414 mailcheck/mailcheck.c:659
+#: drivemount/drivemount.c:409 mailcheck/mailcheck.c:659
+#, c-format
 msgid "There was an error executing %s: %s"
 msgstr "Ob izvrševanju %s se je zgodila napaka: %s"
 
-#: drivemount/drivemount.c:421
+#: drivemount/drivemount.c:416
 msgid "Cannot browse device"
 msgstr "Ne morem brskati naprave"
 
-#: drivemount/drivemount.c:479 drivemount/properties.c:595
+#: drivemount/drivemount.c:474 drivemount/properties.c:595
 #: mailcheck/mailcheck.c:2297 mailcheck/mailcheck.c:2546
 msgid "Error displaying help"
 msgstr "Napaka ob prikazovanju pomoči"
 
-#: drivemount/drivemount.c:534
+#: drivemount/drivemount.c:529
 msgid "(C) 1999-2001 The GNOME Hackers\n"
 msgstr "(C) 1999-2001 Hekerji GNOME\n"
 
-#: drivemount/drivemount.c:536
+#: drivemount/drivemount.c:531
 msgid "Applet for mounting and unmounting block volumes."
 msgstr "Vstavek za priklaplanje in odklaplanje pogonov."
 
-#: drivemount/drivemount.c:736
+#: drivemount/drivemount.c:731
 msgid " mounted"
 msgstr " prikljopljen"
 
-#: drivemount/drivemount.c:738
+#: drivemount/drivemount.c:733
 msgid " not mounted"
 msgstr " ni prikljopljen"
 
-#: drivemount/drivemount.c:850
+#: drivemount/drivemount.c:845
 msgid "\" reported:\n"
 msgstr "\" sporočeno:\n"
 
 # @ Maybe it's ,,prijavljeno``?
-#: drivemount/drivemount.c:852
+#: drivemount/drivemount.c:847
 msgid ""
 "Drivemount command failed.\n"
 "\""
@@ -868,7 +876,7 @@ msgstr ""
 "Ukaz za priklop je spodletel.\n"
 "\""
 
-#: drivemount/drivemount.c:858
+#: drivemount/drivemount.c:853
 msgid "Cannot mount device"
 msgstr "Ne morem priklopiti naprave"
 
@@ -897,6 +905,7 @@ msgid "_Update interval:"
 msgstr "Čas po_sodabljanja (sekund):"
 
 #: drivemount/properties.c:406 mailcheck/mailcheck.c:2097
+#: mailcheck/mailcheck.c:2103 modemlights/properties.c:462
 msgid "seconds"
 msgstr "sekund"
 
@@ -2272,10 +2281,8 @@ msgid ""
 "This should be like \"gkb_xmmap us\", \"setxkbmap us\" or \"xmodmap "
 "something.xmm\""
 msgstr ""
-"To mora biti nekaj takega kot \"gkb_xmmap us\", \"setxkbmap us\" ali \"xmodmap "
-"nekaj.xmm\""
-
-
+"To mora biti nekaj takega kot \"gkb_xmmap us\", \"setxkbmap us\" ali "
+"\"xmodmap nekaj.xmm\""
 
 #: gkb-new/gkb.schemas.in.h:16
 msgid "This will appear in the label box of the applet"
@@ -2509,6 +2516,7 @@ msgid "Stock update fre_quency:"
 msgstr "Pogostost osveževanja delnic:"
 
 #: gtik/gtik.c:1458 gweather/gweather-pref.c:729 mailcheck/mailcheck.c:2074
+#: mailcheck/mailcheck.c:2080
 msgid "minutes"
 msgstr "minut(o)"
 
@@ -2608,7 +2616,8 @@ msgstr "Spremeni "
 
 #: gtik/gtik.schemas.in.h:1
 msgid "Applet scrolls right to left when this key is set to true."
-msgstr "Vstavek drsi od desne proti levi, kadar je ta ključ nastavljen na resnično."
+msgstr ""
+"Vstavek drsi od desne proti levi, kadar je ta ključ nastavljen na resnično."
 
 #: gtik/gtik.schemas.in.h:2
 msgid "Background color"
@@ -2619,7 +2628,8 @@ msgid ""
 "Display only stock symbols along with their value. Do not diplay changes in "
 "value."
 msgstr ""
-"Kaži le simbole delnic skupaj z njihovo vrednostjo. Ne kaži sprememb v vrednosti."
+"Kaži le simbole delnic skupaj z njihovo vrednostjo. Ne kaži sprememb v "
+"vrednosti."
 
 #: gtik/gtik.schemas.in.h:4
 msgid "Display only symbols and price"
@@ -2634,7 +2644,8 @@ msgid ""
 "List containing the stocks to be displayed. Consists of the stock id "
 "separated by \"+\""
 msgstr ""
-"Seznam, ki vsebuje delnice, ki bodo prikazane. Sestavljen je iz idjev delnic ločenimi z \"+\"."
+"Seznam, ki vsebuje delnice, ki bodo prikazane. Sestavljen je iz idjev delnic "
+"ločenimi z \"+\"."
 
 #: gtik/gtik.schemas.in.h:7
 msgid "Lowered color"
@@ -2661,7 +2672,8 @@ msgid ""
 "Show arrow buttons on the side of the display so that the user can scroll "
 "forward or backward."
 msgstr ""
-"Kaži gumbe puščic na straneh prikaza, tako da lahko uporabnik sam drsi naprej ali nazaj."
+"Kaži gumbe puščic na straneh prikaza, tako da lahko uporabnik sam drsi "
+"naprej ali nazaj."
 
 #: gtik/gtik.schemas.in.h:13
 msgid "Stocks to monitor - must be seperated by a +"
@@ -2672,7 +2684,8 @@ msgid ""
 "The color of the background of the display. Has no effect when the user "
 "chooses to use the default theme fonts and colors."
 msgstr ""
-"Barva ozadja zaslona. Nima vpliva, ko uporabnik izbere uporabo pisav in barv privzete teme."
+"Barva ozadja zaslona. Nima vpliva, ko uporabnik izbere uporabo pisav in barv "
+"privzete teme."
 
 #: gtik/gtik.schemas.in.h:15
 msgid ""
@@ -2703,9 +2716,8 @@ msgid ""
 "The font used for the display. Has no effect when the user chooses to use "
 "the default theme fonts and colors."
 msgstr ""
-"Pisava uporabljena za prikaz. Nima vpliva, ko "
-"uporabnik izbere uporabo pisav in barv privzete teme."
-
+"Pisava uporabljena za prikaz. Nima vpliva, ko uporabnik izbere uporabo pisav "
+"in barv privzete teme."
 
 #: gtik/gtik.schemas.in.h:19
 msgid "The time interval until when the applet updates the stock data."
@@ -2719,6 +2731,7 @@ msgstr "Širina vstavka v pikslih."
 msgid "Time in milliseconds for display update"
 msgstr "Čas v milisekundah za posodobitev prikaza"
 
+#: gtik/gtik.schemas.in.h:22
 msgid "Unchanged color"
 msgstr "Nespremenjena barva"
 
@@ -2935,7 +2948,8 @@ msgid ""
 "Determines whether the applet automatically updates its weather statistics "
 "or not."
 msgstr ""
-"Ali naj vstavek samodejno posodablja svoje statistične podatke o vremenu ali ne."
+"Ali naj vstavek samodejno posodablja svoje statistične podatke o vremenu ali "
+"ne."
 
 #: gweather/gweather.schemas.in.h:2
 msgid "Display radar map"
@@ -2950,7 +2964,8 @@ msgid ""
 "If true, then retreive a radar map from a location specified by the \"radar"
 "\" key."
 msgstr ""
-"Če je resnično, potem dobi radarsko sliko iz mesta navedenega v ključu \"radar\"."
+"Če je resnično, potem dobi radarsko sliko iz mesta navedenega v ključu "
+"\"radar\"."
 
 #: gweather/gweather.schemas.in.h:5
 #: mini-commander/src/mini-commander.schemas.in.h:14
@@ -3459,7 +3474,7 @@ msgid ""
 "You didn't set a password in the preferences for the Inbox Monitor,\n"
 "so you have to enter it each time it starts up."
 msgstr ""
-"V nastavitvah za nadzornik dohodne pošte niste nastavili gesla, \n" 
+"V nastavitvah za nadzornik dohodne pošte niste nastavili gesla, \n"
 "zato ga morate vpisati vsakič, ko se zažene."
 
 #: mailcheck/mailcheck.c:805
@@ -3640,7 +3655,8 @@ msgstr "Lastnosti Nadzornika dohodnega predala"
 
 #: mailcheck/mailcheck.c:2450
 msgid "Inbox Monitor notifies you when new mail arrives in your mailbox"
-msgstr "Nadzornik dohodnega predala vas obvešča o prhodu nove pošte v vaš nabiralnik"
+msgstr ""
+"Nadzornik dohodnega predala vas obvešča o prhodu nove pošte v vaš nabiralnik"
 
 #: mailcheck/mailcheck.c:2776
 msgid "Text only"
@@ -3696,7 +3712,8 @@ msgstr "Če je to vklopljeno, se bo geslo shranilo v gconf"
 
 #: mailcheck/mailcheck.schemas.in.h:12
 msgid "If this is set mail will be checked every update-freq milliseconds"
-msgstr "Če je to nastavljeno se bo pošta pregledovala vsakih update-freq milisekund"
+msgstr ""
+"Če je to nastavljeno se bo pošta pregledovala vsakih update-freq milisekund"
 
 #: mailcheck/mailcheck.schemas.in.h:13
 msgid "If this is set, we should run the exec-command"
@@ -3811,10 +3828,10 @@ msgstr ""
 "Ta GNOME vstavek pultu doda ukazno vrstico.  Vsebuje dokončavanje ukaza, "
 "zgodovino ukazov in spremenljive makre.\n"
 "\n"
-"To je prosto programje; lahko ga razširjate in/ali speminjate v "
-"skladu s Splošno javno licenco GNU, ki jo je objavila Fundacija za prosto "
-"programje; lahko uporabite drugo ali (po lastni presoji) katerokoli kasnejšo "
-"različico licence."
+"To je prosto programje; lahko ga razširjate in/ali speminjate v skladu s "
+"Splošno javno licenco GNU, ki jo je objavila Fundacija za prosto programje; "
+"lahko uporabite drugo ali (po lastni presoji) katerokoli kasnejšo različico "
+"licence."
 
 #. build file select dialog
 #: mini-commander/src/command_line.c:440
@@ -3830,10 +3847,12 @@ msgid "Type a command here and Gnome will execute it for you"
 msgstr "Vpiši ukaz tukaj in Gnome ga bo izvršul zate"
 
 #: mini-commander/src/mc-install-default-macros.c:71
+#, c-format
 msgid "Cannot get schema for %s: %s"
 msgstr "Nisem mogel dobiti sheme za %s: %s"
 
 #: mini-commander/src/mc-install-default-macros.c:99
+#, c-format
 msgid "Cannot set schema for %s: %s"
 msgstr "Nisem mogel nastaviti sheme za %s: %s"
 
@@ -3936,7 +3955,8 @@ msgstr "_Uporabi privzete barve tem"
 
 #: mini-commander/src/mini-commander.schemas.in.h:1
 msgid "Attempt to autocomplete a command from the history of commands entered."
-msgstr "Poskusi samodejno dokončevati ukaz temelječ na zgodovini že vpisanih ukazov."
+msgstr ""
+"Poskusi samodejno dokončevati ukaz temelječ na zgodovini že vpisanih ukazov."
 
 #: mini-commander/src/mini-commander.schemas.in.h:2
 msgid "Color background blue component"
@@ -4105,6 +4125,7 @@ msgstr "_Odpri nastavitve glasnosti"
 msgid "Main Volume"
 msgstr "Glavna glasnost"
 
+#: mixer/mixer.c:113
 msgid "Bass"
 msgstr "Bas"
 
@@ -4371,7 +4392,8 @@ msgid ""
 "Show extra information about the connect time and amount of data transmitted "
 "and received."
 msgstr ""
-"Kaži dodatne podatke o času trajanja povezave in količini oddanih in prejetih podatkov."
+"Kaži dodatne podatke o času trajanja povezave in količini oddanih in "
+"prejetih podatkov."
 
 #: modemlights/modemlights.schemas.in.h:15
 msgid "Status connected color"
@@ -4408,20 +4430,17 @@ msgstr "Barva ozadja gumba, ki kaže oddane podatke"
 #: modemlights/modemlights.schemas.in.h:23
 msgid ""
 "The color used to display the status button when the modem is connected."
-msgstr ""
-"Barva, ki naj se uporabi za prikaz stanja, ko je modem povezan."
+msgstr "Barva, ki naj se uporabi za prikaz stanja, ko je modem povezan."
 
 #: modemlights/modemlights.schemas.in.h:24
 msgid ""
 "The color used to display the status button when the modem is connecting."
-msgstr ""
-"Barva, ki naj se uporabi za gumb stanja, ko se modem povezuje."
+msgstr "Barva, ki naj se uporabi za gumb stanja, ko se modem povezuje."
 
 #: modemlights/modemlights.schemas.in.h:25
 msgid ""
 "The color used to display the status button when the modem is not connected."
-msgstr ""
-"Barva, ki naj se uporabi za gumb stanja, ko modem ni povezan."
+msgstr "Barva, ki naj se uporabi za gumb stanja, ko modem ni povezan."
 
 #: modemlights/modemlights.schemas.in.h:26
 msgid "The color used to indicate that data has been received."
@@ -4608,8 +4627,8 @@ msgid ""
 msgstr ""
 "Izdano pod Splošno javno licenco GNU.\n"
 "\n"
-"Sistemski nadzornik obremenitve, sposoben prikazovanja grafov uporabe CPU, ram in "
-"izmenjevalnega prostora ter omrežnega prometa."
+"Sistemski nadzornik obremenitve, sposoben prikazovanja grafov uporabe CPU, "
+"ram in izmenjevalnega prostora ter omrežnega prometa."
 
 #: multiload/main.c:272 multiload/properties.c:553
 msgid "Processor"
@@ -4676,8 +4695,7 @@ msgstr "Vključi graf zasedenosti imenjevalne datoteke"
 msgid ""
 "For horizontal panels, the width of the graphs in pixels. For vertical "
 "panels, this is the height of the graphs."
-msgstr ""
-"Za vodoravne pulte, širina grafa v pikslih. Za navpične, višina grafa."
+msgstr "Za vodoravne pulte, širina grafa v pikslih. Za navpične, višina grafa."
 
 #: multiload/multiload.schemas.in.h:9
 msgid "Graph color for Ethernet network activity"
@@ -4902,11 +4920,11 @@ msgstr "_Nova opomba"
 msgid "_Show Notes"
 msgstr "_Kaži opombe"
 
-#: stickynotes/stickynotes.c:313
+#: stickynotes/stickynotes.c:314
 msgid "Locked note"
 msgstr "Zaklenjena opomba"
 
-#: stickynotes/stickynotes.c:318
+#: stickynotes/stickynotes.c:319
 msgid "Unlocked note"
 msgstr "Nezaklenjena opomba"
 
@@ -4937,7 +4955,6 @@ msgstr ""
 "<b>Zbriši to lepljivo opombo?</b>\n"
 "\n"
 "Spremembe bodo takoj shranjene."
-
 
 #: stickynotes/stickynotes.glade.h:11
 msgid "<b>Properties</b>"
@@ -5101,8 +5118,8 @@ msgid ""
 "are created. This format is used; anything that can be parsed by strftime() "
 "is valid."
 msgstr ""
-"Privzeto se lepljivim opombam ob ustvarjanju prida trenutni datum. Uporabljena je ta oblika; "
-"veljavno je vse kar lahko razčleni strftime()."
+"Privzeto se lepljivim opombam ob ustvarjanju prida trenutni datum. "
+"Uporabljena je ta oblika; veljavno je vse kar lahko razčleni strftime()."
 
 #: stickynotes/stickynotes.schemas.in.h:3
 msgid "Date format of note's title"
@@ -5121,8 +5138,8 @@ msgid ""
 "Default color for new sticky notes. This should be in html hex "
 "specification, for example \"#30FF50\"."
 msgstr ""
-"Privzeta barva za nove lepljive opombe. Biti mora v obliki šestnajstiške številke HTML,"
-"na primer: \"#30FF50\"."
+"Privzeta barva za nove lepljive opombe. Biti mora v obliki šestnajstiške "
+"številke HTML,na primer: \"#30FF50\"."
 
 #: stickynotes/stickynotes.schemas.in.h:7
 msgid "Default font for new notes"
@@ -5133,8 +5150,8 @@ msgid ""
 "Default font for new sticky notes. This should be a Pango Font Name, for "
 "example \"Sans Italic 10\""
 msgstr ""
-"Privzeta pisava za nove opombe Biti mora ime pisave Pango, na primer: "
-"\"Sans Italic 10\""
+"Privzeta pisava za nove opombe Biti mora ime pisave Pango, na primer: \"Sans "
+"Italic 10\""
 
 #: stickynotes/stickynotes.schemas.in.h:9
 msgid "Default height for new notes"
@@ -5161,21 +5178,24 @@ msgid ""
 "Every time the specified number of minutes pass, the sticky notes are "
 "automatically saved."
 msgstr ""
-"Vsakič, ko preteče navedeno število minut, se lepljive opombe samodejno shranijo."
+"Vsakič, ko preteče navedeno število minut, se lepljive opombe samodejno "
+"shranijo."
 
 #: stickynotes/stickynotes.schemas.in.h:15
 msgid ""
 "If this option is disabled, a custom color can be used as the default color "
 "for all sticky notes."
 msgstr ""
-"Če je ta možnost izključena, se lahko uporabi poljubna barva za privzeto barvo vseh lepljivih opomb."
+"Če je ta možnost izključena, se lahko uporabi poljubna barva za privzeto "
+"barvo vseh lepljivih opomb."
 
 #: stickynotes/stickynotes.schemas.in.h:16
 msgid ""
 "If this option is disabled, a custom font can be used as the default font "
 "for all sticky notes."
 msgstr ""
-"Če je ta možnost izključena, se lahko uporabi poljubna pisava za privzeto pisavo vseh lepljivih opomb."
+"Če je ta možnost izključena, se lahko uporabi poljubna pisava za privzeto "
+"pisavo vseh lepljivih opomb."
 
 #: stickynotes/stickynotes.schemas.in.h:17
 msgid ""
@@ -5197,14 +5217,16 @@ msgstr ""
 
 #: stickynotes/stickynotes.schemas.in.h:19
 msgid "Specifies whether the sticky notes are locked (non-editable) or not."
-msgstr "Navaja ali so lepljive opombe zaklenjene (jih ni mogoče spreminjati) ali ne."
+msgstr ""
+"Navaja ali so lepljive opombe zaklenjene (jih ni mogoče spreminjati) ali ne."
 
 #: stickynotes/stickynotes.schemas.in.h:20
 msgid ""
 "Specifies whether the sticky notes are visible on ALL workspaces on the "
 "desktop, or not."
 msgstr ""
-"Navaja ali so lepljive opombe vidne na vseh delovnih površinah namizja ali ne."
+"Navaja ali so lepljive opombe vidne na vseh delovnih površinah namizja ali "
+"ne."
 
 #: stickynotes/stickynotes.schemas.in.h:21
 msgid "Specifies whether the sticky notes are visible or not."
@@ -5239,6 +5261,7 @@ msgid "Whether to use the default system font"
 msgstr "Ali naj se uporabi privzeta sistemska pisava"
 
 #: stickynotes/stickynotes_applet.c:339
+#, c-format
 msgid ""
 "%s\n"
 "%d note"
