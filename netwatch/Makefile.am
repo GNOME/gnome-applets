@@ -1,15 +1,17 @@
+# trick Automake into defining $(CXXLINK)
+if FALSE
+BUILT_SOURCES = dummy.cc
+
+dummy.cc:
+	@touch dummy.cc
+endif
+
 pixmapdir = $(datadir)/panel/
 
 INCLUDES = 			\
 	-I. -I$(srcdir)		\
 	-I$(srcdir)/../../panel	\
 	-I$(includedir) $(GNOME_INCLUDEDIR)
-
-BUILT_SOURCES = dummy.cc
-
-dummy.cc:
-	@touch dummy.cc
-
 
 bin_PROGRAMS = netwatch_applet
 

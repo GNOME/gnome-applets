@@ -1,3 +1,11 @@
+# trick Automake into defining $(CXXLINK)
+if FALSE
+BUILT_SOURCES = dummy.cc
+
+dummy.cc:
+	@touch dummy.cc
+endif
+
 pixmapdir = $(datadir)/pixmaps
 
 INCLUDES = -I. -I$(srcdir) 				\
@@ -6,11 +14,6 @@ INCLUDES = -I. -I$(srcdir) 				\
 	-I$(includedir) $(GNOME_INCLUDEDIR)
 
 bin_PROGRAMS = batmon_applet
-
-BUILT_SOURCES = dummy.cc
-
-dummy.cc:
-	@touch dummy.cc
 
 batmon_applet_SOURCES = batmon.c
 
