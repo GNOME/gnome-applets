@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-12-21 23:17+0000\n"
-"PO-Revision-Date: 2003-09-06 11:35+0800\n"
+"POT-Creation-Date: 2004-02-29 15:19+0100\n"
+"PO-Revision-Date: 2004-03-01 00:41+0800\n"
 "Last-Translator: Funda Wang <fundawang@linux.net.cn>\n"
 "Language-Team: zh_CN <i18n-translation@lists.linux.net.cn>\n"
 "MIME-Version: 1.0\n"
@@ -31,7 +31,8 @@ msgstr ""
 #: battstat/GNOME_BattstatApplet.xml.h:1 cdplayer/GNOME_CDPlayerApplet.xml.h:1
 #: charpick/GNOME_CharpickerApplet.xml.h:1
 #: drivemount/GNOME_DriveMountApplet.xml.h:1 geyes/GNOME_GeyesApplet.xml.h:1
-#: gkb-new/GNOME_KeyboardApplet.xml.h:1 gtik/GNOME_GtikApplet.xml.h:1
+#: gkb-new/GNOME_KeyboardApplet.xml.h:1
+#: gswitchit/GNOME_GSwitchItApplet.xml.h:2 gtik/GNOME_GtikApplet.xml.h:1
 #: gweather/GNOME_GWeatherApplet.xml.h:1
 #: mailcheck/GNOME_MailCheckApplet.xml.h:1
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
@@ -39,7 +40,6 @@ msgstr ""
 #: multiload/GNOME_MultiloadApplet.xml.h:1
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:1
 #: wireless/GNOME_WirelessApplet.xml.h:1
-#: gswitchit/GNOME_GSwitchItApplet.xml.h:1
 msgid "_About..."
 msgstr "关于(_A)..."
 
@@ -53,14 +53,15 @@ msgstr "关于(_A)..."
 #: battstat/GNOME_BattstatApplet.xml.h:2 cdplayer/GNOME_CDPlayerApplet.xml.h:2
 #: charpick/GNOME_CharpickerApplet.xml.h:2
 #: drivemount/GNOME_DriveMountApplet.xml.h:4 geyes/GNOME_GeyesApplet.xml.h:2
-#: gkb-new/GNOME_KeyboardApplet.xml.h:2 gtik/GNOME_GtikApplet.xml.h:2
+#: gkb-new/GNOME_KeyboardApplet.xml.h:2
+#: gswitchit/GNOME_GSwitchItApplet.xml.h:4 gtik/GNOME_GtikApplet.xml.h:2
 #: gweather/GNOME_GWeatherApplet.xml.h:3
 #: mailcheck/GNOME_MailCheckApplet.xml.h:2
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
 #: mixer/GNOME_MixerApplet.xml.h:2 modemlights/GNOME_ModemlightsApplet.xml.h:2
+#: multiload/GNOME_MultiloadApplet.xml.h:2
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:3
 #: wireless/GNOME_WirelessApplet.xml.h:2
-#: gswitchit/GNOME_GSwitchItApplet.xml.h:3
 msgid "_Help"
 msgstr "帮助(_H)"
 
@@ -75,7 +76,7 @@ msgid "AccessX Status Applet Factory"
 msgstr "AccessX 状态小程序工厂"
 
 #: accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:2
-#: accessx-status/applet.c:1194
+#: accessx-status/applet.c:1247
 msgid "Keyboard Accessibility Status"
 msgstr "键盘辅助功能状态"
 
@@ -99,58 +100,63 @@ msgstr "显示键盘辅助功能特性的状态"
 #: charpick/GNOME_CharpickerApplet.server.in.in.h:4
 #: drivemount/GNOME_DriveMountApplet.server.in.in.h:5
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:5
+#: gswitchit/GNOME_KeyboardApplet.server.in.in.h:5
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:4
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:3
-#: gswitchit/GNOME_GSwitchItApplet.server.in.in.h:5
 msgid "Utility"
 msgstr "工具"
 
-#: accessx-status/applet.c:135 battstat/battstat_applet.c:894
-#: cdplayer/cdplayer.c:591 charpick/charpick.c:591 drivemount/drivemount.c:540
-#: geyes/geyes.c:228 gkb-new/gkb-applet.c:84 gtik/gtik.c:775
-#: gweather/gweather-about.c:44 mailcheck/mailcheck.c:2442
-#: mini-commander/src/about.c:48 mixer/mixer.c:1062
-#: modemlights/modemlights.c:115 multiload/main.c:58
-#: stickynotes/stickynotes_applet_callbacks.c:198
-#: wireless/wireless-applet.c:560 gswitchit/gswitchit-applet.c:476
+#: accessx-status/applet.c:134 battstat/battstat_applet.c:898
+#: cdplayer/cdplayer.c:603 charpick/charpick.c:556 drivemount/drivemount.c:553
+#: geyes/geyes.c:202 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:562
+#: gtik/gtik.c:717 gweather/gweather-about.c:47 mailcheck/mailcheck.c:2461
+#: mini-commander/src/about.c:50 mixer/mixer.c:1332
+#: modemlights/modemlights.c:115 multiload/main.c:60
+#: stickynotes/stickynotes_applet_callbacks.c:230
+#: wireless/wireless-applet.c:572
 msgid "translator_credits"
 msgstr "开源软件国际化简体中文组(http://i18n.linux.net.cn)"
 
-#: accessx-status/applet.c:157 accessx-status/applet.c:1197
+#: accessx-status/applet.c:155 accessx-status/applet.c:985
+#: accessx-status/applet.c:1083 accessx-status/applet.c:1250
 msgid "AccessX Status"
 msgstr "AccessX 状态"
 
-#: accessx-status/applet.c:158
+#: accessx-status/applet.c:156
 msgid "Copyright (C) 2003 Sun Microsystems"
 msgstr "版权 (C) 2003 Sun Microsystems"
 
-#: accessx-status/applet.c:159
+#: accessx-status/applet.c:157
 msgid "Shows the state of AccessX features such as latched modifiers"
 msgstr "显示 AccessX 特性的状态，如插销修饰"
 
-#: accessx-status/applet.c:198
+#: accessx-status/applet.c:193
 #, c-format
 msgid "There was an error launching the help viewer : %s"
 msgstr "调用帮助查看器时发出错：%s"
 
-#: accessx-status/applet.c:221
+#: accessx-status/applet.c:228
 #, c-format
 msgid "There was an error launching the keyboard capplet : %s"
 msgstr "调用键盘小程序时出错：%s"
 
 #. Note to translators: the first letter of the alphabet, not the indefinite article
-#: accessx-status/applet.c:461 accessx-status/applet.c:499
+#: accessx-status/applet.c:476 accessx-status/applet.c:514
 msgid "a"
 msgstr "a"
 
-#: accessx-status/applet.c:1199
+#: accessx-status/applet.c:986 accessx-status/applet.c:1084
+msgid "Shows keyboard status when accessibility features are used."
+msgstr "显示使用辅助功能时键盘的状态。"
+
+#: accessx-status/applet.c:1252
 msgid "Displays current state of keyboard accessibility features"
 msgstr "显示键盘辅助功能特性的当前状态"
 
 # battstat/GNOME_BattstatApplet.server.in.h:1
 #. The long name of the applet in the About dialog.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:907
+#: battstat/battstat_applet.c:919 battstat/battstat_applet.c:1671
 msgid "Battery Charge Monitor"
 msgstr "电池电量监视器"
 
@@ -161,6 +167,7 @@ msgstr "电池状态工厂"
 
 # battstat/GNOME_BattstatApplet.server.in.h:3
 #: battstat/GNOME_BattstatApplet.server.in.in.h:3
+#: battstat/battstat_applet.c:1672
 msgid "Monitor a laptop's remaining power"
 msgstr "监视笔记本计算机电池的剩余电量"
 
@@ -168,12 +175,13 @@ msgstr "监视笔记本计算机电池的剩余电量"
 #: battstat/GNOME_BattstatApplet.xml.h:3 cdplayer/GNOME_CDPlayerApplet.xml.h:4
 #: charpick/GNOME_CharpickerApplet.xml.h:3
 #: drivemount/GNOME_DriveMountApplet.xml.h:5 geyes/GNOME_GeyesApplet.xml.h:3
-#: gkb-new/GNOME_KeyboardApplet.xml.h:3 gtik/GNOME_GtikApplet.xml.h:3
+#: gkb-new/GNOME_KeyboardApplet.xml.h:3
+#: gswitchit/GNOME_GSwitchItApplet.xml.h:6 gtik/GNOME_GtikApplet.xml.h:3
 #: gweather/GNOME_GWeatherApplet.xml.h:4
 #: mailcheck/GNOME_MailCheckApplet.xml.h:3
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
 #: mixer/GNOME_MixerApplet.xml.h:5 modemlights/GNOME_ModemlightsApplet.xml.h:3
-#: multiload/GNOME_MultiloadApplet.xml.h:3
+#: multiload/GNOME_MultiloadApplet.xml.h:4
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:6
 #: wireless/GNOME_WirelessApplet.xml.h:3
 msgid "_Preferences..."
@@ -266,12 +274,12 @@ msgstr "黄色值级别"
 # battstat/battstat_applet.c:284
 #. Message displayed if user tries to run applet
 #. on unsupported platform
-#: battstat/battstat_applet.c:329
+#: battstat/battstat_applet.c:338
 msgid "Your platform is not supported!\n"
 msgstr "不支持您的平台！\n"
 
 # battstat/battstat_applet.c:285
-#: battstat/battstat_applet.c:330
+#: battstat/battstat_applet.c:339
 msgid "The applet will not work properly (if at all).\n"
 msgstr "小程序将不能正常工作。\n"
 
@@ -279,34 +287,34 @@ msgstr "小程序将不能正常工作。\n"
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:361 battstat/battstat_applet.c:938
+#: battstat/battstat_applet.c:370 battstat/battstat_applet.c:956
 msgid "High"
 msgstr "高"
 
 #. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:363 battstat/battstat_applet.c:940
+#: battstat/battstat_applet.c:372 battstat/battstat_applet.c:958
 msgid "Low"
 msgstr "低"
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:365 battstat/battstat_applet.c:942
+#: battstat/battstat_applet.c:374 battstat/battstat_applet.c:960
 msgid "Critical"
 msgstr "过低"
 
 # battstat/battstat_applet.c:322 battstat/battstat_applet.c:840
 #. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:367 battstat/battstat_applet.c:944
+#: battstat/battstat_applet.c:376 battstat/battstat_applet.c:962
 msgid "Charging"
 msgstr "充电中"
 
 # battstat/battstat_applet.c:403
-#: battstat/battstat_applet.c:448
+#: battstat/battstat_applet.c:457
 #, c-format
 msgid "Battery low (%d%%) and AC is offline"
 msgstr "电量不足 (%d%%) 并且未接交流电源"
 
 # battstat/battstat_applet.c:426
-#: battstat/battstat_applet.c:472
+#: battstat/battstat_applet.c:481
 msgid "Battery is now fully re-charged!"
 msgstr "电池现已充满！"
 
@@ -314,7 +322,7 @@ msgstr "电池现已充满！"
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:491 battstat/battstat_applet.c:1102
+#: battstat/battstat_applet.c:500 battstat/battstat_applet.c:1120
 #, c-format
 msgid ""
 "System is running on battery power\n"
@@ -327,7 +335,7 @@ msgstr ""
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:495 battstat/battstat_applet.c:1110
+#: battstat/battstat_applet.c:504 battstat/battstat_applet.c:1128
 #, c-format
 msgid ""
 "System is running on AC power\n"
@@ -340,8 +348,9 @@ msgstr ""
 # battstat/battstat_applet.c:1018
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:501 battstat/battstat_applet.c:1034
-#: battstat/battstat_applet.c:1123
+#: battstat/battstat_applet.c:510 battstat/battstat_applet.c:1052
+#: battstat/battstat_applet.c:1141
+#, c-format
 msgid "System is running on battery power"
 msgstr "系统正使用电池运行"
 
@@ -349,20 +358,25 @@ msgstr "系统正使用电池运行"
 # battstat/battstat_applet.c:1024
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:504 battstat/battstat_applet.c:1040
-#: battstat/battstat_applet.c:1129
+#: battstat/battstat_applet.c:513 battstat/battstat_applet.c:1058
+#: battstat/battstat_applet.c:1147
+#, c-format
 msgid "System is running on AC power"
 msgstr "系统正使用交流电源运行"
 
 # battstat/battstat_applet.c:472
-#: battstat/battstat_applet.c:518
+#: battstat/battstat_applet.c:527 wireless/wireless-applet.c:146
+#, c-format
 msgid "N/A"
 msgstr "不可用"
 
 # battstat/battstat_applet.c:596 battstat/battstat_applet.c:909
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:642 battstat/battstat_applet.c:1014
+#. This string will display as a tooltip over the status frame
+#. when the computer is using battery power and the battery meter
+#. and percent meter is hidden by the user.
+#: battstat/battstat_applet.c:651 battstat/battstat_applet.c:1032
 #, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
 msgstr "系统正使用电池运行。电池：%d%% (%s)"
@@ -370,7 +384,10 @@ msgstr "系统正使用电池运行。电池：%d%% (%s)"
 # battstat/battstat_applet.c:603 battstat/battstat_applet.c:916
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:649 battstat/battstat_applet.c:1021
+#. This string will display as a tooltip over the status frame
+#. when the computer is using AC power and the battery meter
+#. and percent meter is hidden by the user.
+#: battstat/battstat_applet.c:658 battstat/battstat_applet.c:1039
 #, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
 msgstr "系统正使用交流电源运行。电池：%d%% (%s)"
@@ -380,7 +397,8 @@ msgstr "系统正使用交流电源运行。电池：%d%% (%s)"
 #. battery frame when the computer is using battery
 #. power and the battery isn't present. Not a
 #. possible combination, I guess... :)
-#: battstat/battstat_applet.c:660
+#: battstat/battstat_applet.c:669
+#, c-format
 msgid "System is running on battery power. Battery: Not present"
 msgstr "系统正使用电池运行。电池：不存在"
 
@@ -388,7 +406,8 @@ msgstr "系统正使用电池运行。电池：不存在"
 #. This string will display as a tooltip over the
 #. battery frame when the computer is using AC
 #. power and the battery isn't present.
-#: battstat/battstat_applet.c:666
+#: battstat/battstat_applet.c:675
+#, c-format
 msgid "System is running on AC power. Battery: Not present"
 msgstr "系统正使用交流电源运行。电池：不存在"
 
@@ -396,7 +415,7 @@ msgstr "系统正使用交流电源运行。电池：不存在"
 #. Displayed as a tooltip over the battery meter when there is
 #. a battery present. %d will hold the current charge and %s will
 #. hold the status of the battery, (High, Low, Critical, Charging.
-#: battstat/battstat_applet.c:675
+#: battstat/battstat_applet.c:684
 #, c-format
 msgid "Battery: %d%% (%s)"
 msgstr "电池：%d%% (%s)"
@@ -404,13 +423,14 @@ msgstr "电池：%d%% (%s)"
 # battstat/battstat_applet.c:636
 #. Displayed as a tooltip over the battery meter when no
 #. battery is present.
-#: battstat/battstat_applet.c:682
+#: battstat/battstat_applet.c:691
+#, c-format
 msgid "Battery: Not present"
 msgstr "电池：不存在"
 
 # battstat/battstat_applet.c:711
 #. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: battstat/battstat_applet.c:777
+#: battstat/battstat_applet.c:789
 msgid ""
 "Can't open the APM device!\n"
 "\n"
@@ -423,7 +443,7 @@ msgstr ""
 
 # battstat/battstat_applet.c:719
 #. Displayed if the APM system is disabled (Used under *BSD)
-#: battstat/battstat_applet.c:786
+#: battstat/battstat_applet.c:798
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
@@ -434,7 +454,7 @@ msgstr ""
 "是否有用。\n"
 
 # battstat/battstat_applet.c:767
-#: battstat/battstat_applet.c:842
+#: battstat/battstat_applet.c:854
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -443,20 +463,17 @@ msgstr ""
 "运行挂起命令时出现错误：%s\n"
 "请尝试纠正该错误"
 
-# battstat/battstat_applet.c:770
-#. Probably because the shell_ret is != 0
-#: battstat/battstat_applet.c:845
+#: battstat/battstat_applet.c:858
 #, c-format
-msgid ""
-"An error occured while launching the Suspend command, the command returned "
-"\"%d\"\n"
-"Please try to correct this error"
-msgstr ""
-"运行挂起命令时出现错误，命令返回“%d”\n"
-"请尝试改正该错误"
+msgid "The Suspend command '%s' was unsuccessful."
+msgstr "挂起命令“%s”不成功。"
+
+#: battstat/battstat_applet.c:860
+msgid "The Suspend command was unsuccessful."
+msgstr "挂起命令不成功。"
 
 # battstat/battstat_applet.c:778
-#: battstat/battstat_applet.c:853
+#: battstat/battstat_applet.c:868
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -466,27 +483,29 @@ msgstr ""
 
 #. if your charset supports it, please replace the "o" in
 #. * "Jorgen" into U00F6
-#: battstat/battstat_applet.c:884
+#: battstat/battstat_applet.c:886
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jorgen Pehrson <jp@spektr.eu.org>"
 
 # battstat/battstat_applet.c:809
-#: battstat/battstat_applet.c:909
+#: battstat/battstat_applet.c:921
 msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 msgstr "(C) 2000 The Gnulix Society，(C) 2002 自由软件基金会"
 
 # battstat/battstat_applet.c:810
-#: battstat/battstat_applet.c:910
+#: battstat/battstat_applet.c:922
 msgid "This utility shows the status of your laptop battery."
 msgstr "该工具显示您的笔记本电脑电池的状态。"
 
-#: battstat/battstat_applet.c:1531
+#: battstat/battstat_applet.c:1597
 msgid ""
 "Can't access ACPI events in /var/run/acpid.socket! Make sure the ACPI "
 "subsystem is working and the acpid daemon is running."
 msgstr ""
+"无法访问 /var/run/acpid.socket 中的 ACPI 事件！请确定 ACPI 子系统"
+"工作正常，且 acpid 守护程序正在运行。"
 
-#: battstat/battstat_applet.glade.h:1
+#: battstat/battstat_applet.glade.h:1 gswitchit/gswitchit-properties.glade.h:1
 #: mini-commander/src/mini-commander.glade.h:1
 #: stickynotes/stickynotes.glade.h:1
 msgid "    "
@@ -528,7 +547,7 @@ msgstr "<b>挂起</b>"
 msgid "<b>Warnings</b>"
 msgstr "<b>警告</b>"
 
-#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1523
+#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1476
 msgid "Appearance"
 msgstr "外观"
 
@@ -537,8 +556,8 @@ msgstr "外观"
 msgid "Battery Charge Monitor Preferences"
 msgstr "电池电量监视器首选项"
 
-#: battstat/battstat_applet.glade.h:13 drivemount/properties.c:352
-#: gweather/gweather-pref.c:759 mailcheck/mailcheck.c:2031
+#: battstat/battstat_applet.glade.h:13 drivemount/properties.c:358
+#: gweather/gweather-pref.c:753 mailcheck/mailcheck.c:2047
 #: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:563
 msgid "General"
 msgstr "常规"
@@ -605,12 +624,12 @@ msgstr "当电池电量低时提醒我(_W)"
 msgid "_Yellow:"
 msgstr "黄色(_Y)："
 
-#: battstat/properties.c:296 drivemount/drivemount.c:498
-#: drivemount/properties.c:595 mailcheck/mailcheck.c:2298
-#: mailcheck/mailcheck.c:2547 mini-commander/src/preferences.c:393
-#: mixer/mixer.c:1170 stickynotes/stickynotes_applet_callbacks.c:176
-#: stickynotes/stickynotes_applet_callbacks.c:324
-#: wireless/wireless-applet.c:535 wireless/wireless-applet.c:609
+#: battstat/properties.c:297 drivemount/drivemount.c:510
+#: drivemount/properties.c:604 mailcheck/mailcheck.c:2314
+#: mailcheck/mailcheck.c:2602 mini-commander/src/preferences.c:393
+#: mixer/mixer.c:1445 stickynotes/stickynotes_applet_callbacks.c:207
+#: stickynotes/stickynotes_applet_callbacks.c:371
+#: wireless/wireless-applet.c:542 wireless/wireless-applet.c:626
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "显示帮助时发生错误：%s"
@@ -630,8 +649,8 @@ msgid "Battery power low"
 msgstr "电池电量低"
 
 # cdplayer/GNOME_CDPlayerApplet.server.in.h:1
-#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:609
-#: cdplayer/cdplayer.c:1072
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:620
+#: cdplayer/cdplayer.c:1084
 msgid "CD Player"
 msgstr "CD 播放机"
 
@@ -663,70 +682,70 @@ msgid "_Open CD Player"
 msgstr "打开 CD 播放机(_O)"
 
 # cdplayer/cdplayer.c:149
-#: cdplayer/cdplayer.c:171 cdplayer/cdplayer.c:1062
+#: cdplayer/cdplayer.c:178 cdplayer/cdplayer.c:1074
 msgid "Stop"
 msgstr "停止"
 
 # cdplayer/cdplayer.c:151
-#: cdplayer/cdplayer.c:175 cdplayer/cdplayer.c:1064
+#: cdplayer/cdplayer.c:182 cdplayer/cdplayer.c:1076
 msgid "Play / Pause"
 msgstr "播放 / 暂停"
 
 # cdplayer/cdplayer.c:153 drivemount/GNOME_DriveMountApplet.xml.h:3
-#: cdplayer/cdplayer.c:179 cdplayer/cdplayer.c:1066
+#: cdplayer/cdplayer.c:186 cdplayer/cdplayer.c:1078
 msgid "Eject"
 msgstr "弹出"
 
 # cdplayer/cdplayer.c:155
-#: cdplayer/cdplayer.c:183 cdplayer/cdplayer.c:1068
+#: cdplayer/cdplayer.c:190 cdplayer/cdplayer.c:1080
 msgid "Previous Track"
 msgstr "上一曲"
 
 # cdplayer/cdplayer.c:157
-#: cdplayer/cdplayer.c:187 cdplayer/cdplayer.c:1070
+#: cdplayer/cdplayer.c:194 cdplayer/cdplayer.c:1082
 msgid "Next Track"
 msgstr "下一曲"
 
-#: cdplayer/cdplayer.c:246
+#: cdplayer/cdplayer.c:253
 msgid "You do not have permission to use the CD player."
 msgstr "您没有权限使用 CD 播放机。"
 
-#: cdplayer/cdplayer.c:373 mixer/mixer.c:1028 multiload/main.c:119
+#: cdplayer/cdplayer.c:385 mixer/mixer.c:1299 multiload/main.c:144
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "执行“%s”时发生错误：%s"
 
-#: cdplayer/cdplayer.c:424
+#: cdplayer/cdplayer.c:436
 #, c-format
 msgid "%s does not seem to be a CD player"
 msgstr "%s 好像不是 CD 播放机"
 
 # cdplayer/cdplayer.c:311
-#: cdplayer/cdplayer.c:490
+#: cdplayer/cdplayer.c:502
 msgid "CD Player Preferences"
 msgstr "CD 播放机首选项"
 
 # cdplayer/cdplayer.c:325
-#: cdplayer/cdplayer.c:511
+#: cdplayer/cdplayer.c:523
 msgid "Device _path:"
 msgstr "设备路径(_P)："
 
 # cdplayer/cdplayer.c:325
-#: cdplayer/cdplayer.c:520
+#: cdplayer/cdplayer.c:532
 msgid "Device Path"
 msgstr "设备路径"
 
 # charpick/properties.c:88
-#: cdplayer/cdplayer.c:520
+#: cdplayer/cdplayer.c:532
 msgid "Set the device path here"
 msgstr "在此设置设备路径"
 
-#: cdplayer/cdplayer.c:523
+#: cdplayer/cdplayer.c:535
 msgid "Use _Default"
 msgstr "使用默认值(_D)"
 
 # cdplayer/cdplayer.c:373
-#: cdplayer/cdplayer.c:610
+#: cdplayer/cdplayer.c:621
 msgid ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
@@ -735,39 +754,39 @@ msgstr ""
 "(C) 2001 Chris Phelps (GNOME 2 移植)"
 
 # cdplayer/cdplayer.c:375
-#: cdplayer/cdplayer.c:612 cdplayer/cdplayer.c:1073
+#: cdplayer/cdplayer.c:623 cdplayer/cdplayer.c:1085
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr "CD 播放机小程序是您面板上的简单音频 CD 播放机"
 
-#: cdplayer/cdplayer.c:887 cdplayer/cdplayer.c:898
+#: cdplayer/cdplayer.c:899 cdplayer/cdplayer.c:910
 msgid "Elapsed time"
 msgstr "已听时间"
 
-#: cdplayer/cdplayer.c:890 cdplayer/cdplayer.c:900
+#: cdplayer/cdplayer.c:902 cdplayer/cdplayer.c:912
 msgid "Track number"
 msgstr "曲目编号"
 
-#: cdplayer/cdplayer.c:961
+#: cdplayer/cdplayer.c:973
 msgid "Audio device is busy, or being used by another application"
 msgstr "音效设备忙，或正被其它应用程序使用"
 
-#: cdplayer/cdplayer.c:1063
+#: cdplayer/cdplayer.c:1075
 msgid "Click this button to Stop playing the CD"
 msgstr "单击此按钮以停止播放光盘"
 
-#: cdplayer/cdplayer.c:1065
+#: cdplayer/cdplayer.c:1077
 msgid "Click this button to Play or Pause the CD"
 msgstr "单击此按钮来播放或暂停播放光盘"
 
-#: cdplayer/cdplayer.c:1067
+#: cdplayer/cdplayer.c:1079
 msgid "Click this button to eject the CD"
 msgstr "单击此按钮弹出光盘"
 
-#: cdplayer/cdplayer.c:1069
+#: cdplayer/cdplayer.c:1081
 msgid "Click this button to Play the previous track in the CD"
 msgstr "单击此按钮播放光盘中的上一曲目"
 
-#: cdplayer/cdplayer.c:1071
+#: cdplayer/cdplayer.c:1083
 msgid "Click this button to Play the next track in the CD"
 msgstr "单击此按钮播放光盘中的下一曲目"
 
@@ -782,8 +801,8 @@ msgid ""
 msgstr "这里指定的设备完整路径，将用于从此小程序中播放 CD"
 
 # charpick/GNOME_CharpickerApplet.server.in.h:1 charpick/charpick.c:443
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:609
-#: charpick/charpick.c:753 charpick/properties.c:345
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:576
+#: charpick/charpick.c:727 charpick/properties.c:425
 msgid "Character Palette"
 msgstr "字符板"
 
@@ -793,44 +812,36 @@ msgid "Charpicker Applet Factory"
 msgstr "字符拾取小程序工厂"
 
 # charpick/GNOME_CharpickerApplet.server.in.h:3
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:3
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:3 charpick/charpick.c:727
 msgid "Insert characters"
 msgstr "插入字符"
 
-#: charpick/charpick.c:321 charpick/properties.c:125
-msgid "Add Palette"
-msgstr "添加字符板"
-
-#: charpick/charpick.c:372
-msgid "Add a palette..."
-msgstr "添加字符板..."
-
-#: charpick/charpick.c:455
+#: charpick/charpick.c:419
 msgid "Available palettes"
 msgstr "可用的字符板"
 
 # charpick/charpick.c:442
-#: charpick/charpick.c:492
+#: charpick/charpick.c:456
 msgid "Insert special characters"
 msgstr "插入特殊字符"
 
 #. If your charset supports it, please use U00F1 to replace the "n"
 #. * in "Muniz".
-#: charpick/charpick.c:582
+#: charpick/charpick.c:545
 msgid "Alexandre Muniz <munizao@xprt.net>"
 msgstr "Alexandre Muniz <munizao@xprt.net>"
 
-#: charpick/charpick.c:583
+#: charpick/charpick.c:546
 msgid "Kevin Vandersloot"
 msgstr "Kevin Vandersloot"
 
 # charpick/charpick.c:363
-#: charpick/charpick.c:611
+#: charpick/charpick.c:578
 msgid "Copyright (C) 1998"
 msgstr "版权 (C) 1998"
 
 # charpick/charpick.c:364
-#: charpick/charpick.c:612
+#: charpick/charpick.c:579
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -845,7 +856,7 @@ msgstr "小程序启动时显示的字符"
 msgid "DEPRECATED - Characters shown on applet startup"
 msgstr "不推荐 - 小程序启动时显示的字符"
 
-#: charpick/charpick.schemas.in.h:3 charpick/properties.c:272
+#: charpick/charpick.schemas.in.h:3 charpick/properties.c:352
 msgid "List of available palettes"
 msgstr "可用字符板列表"
 
@@ -859,65 +870,68 @@ msgid ""
 "string will be displayed when the user starts the applet."
 msgstr "小程序上次使用时用户所选的字符串。此字符串将会在用户启动小程序时显示。"
 
-#: charpick/properties.c:88
+#: charpick/properties.c:90
 msgid "_Palette:"
 msgstr "字符板(_P)："
 
-#: charpick/properties.c:95
+#: charpick/properties.c:98
 msgid "Palette entry"
 msgstr "字符板项"
 
-#: charpick/properties.c:96
-#, fuzzy
+#: charpick/properties.c:99
 msgid "Modify a palette by adding or removing characters"
 msgstr "添加/删除字符来修改字符板"
 
+#: charpick/properties.c:213
+msgid "Add Palette"
+msgstr "添加字符板"
+
 # panel-menu/panel-menu-path.c:682
-#: charpick/properties.c:171
+#: charpick/properties.c:250
 msgid "Edit Palette"
 msgstr "编辑字符板"
 
-#: charpick/properties.c:271
+#: charpick/properties.c:351
 msgid "Palettes list"
 msgstr "字符板列表"
 
-#: charpick/properties.c:350
+#: charpick/properties.c:430
 msgid "Pal_ettes:"
 msgstr "字符板(_E)："
 
-#: charpick/properties.c:366
+#: charpick/properties.c:446
 msgid "Add button"
 msgstr "添加按钮"
 
-#: charpick/properties.c:367
+#: charpick/properties.c:447
 msgid "Click to add a new palette"
 msgstr "单击以添加新字符板"
 
 # panel-menu/panel-menu-path.c:682
-#: charpick/properties.c:374
+#: charpick/properties.c:454
 msgid "Edit button"
 msgstr "编辑按钮"
 
-#: charpick/properties.c:375
+#: charpick/properties.c:455
 msgid "Click to edit the selected palette"
 msgstr "单击以编辑选中字符板"
 
-#: charpick/properties.c:382
+#: charpick/properties.c:462
 msgid "Delete button"
 msgstr "删除按钮"
 
-#: charpick/properties.c:383
+#: charpick/properties.c:463
 msgid "Click to delete the selected palette"
 msgstr "单击以删除选中字符板"
 
 # charpick/properties.c:143
-#: charpick/properties.c:435
+#: charpick/properties.c:515
 msgid "Character Palette Preferences"
 msgstr "字符板首选项"
 
 # drivemount/GNOME_DriveMountApplet.server.in.h:1
 #: drivemount/GNOME_DriveMountApplet.server.in.in.h:1
-#: drivemount/drivemount.c:268 drivemount/drivemount.c:558
+#: drivemount/drivemount.c:268 drivemount/drivemount.c:572
 msgid "Disk Mounter"
 msgstr "磁盘挂载者"
 
@@ -946,47 +960,47 @@ msgstr "浏览(_B)..."
 msgid "_Eject"
 msgstr "弹出(_E)"
 
-#: drivemount/drivemount.c:439 mailcheck/mailcheck.c:659
+#: drivemount/drivemount.c:451 mailcheck/mailcheck.c:661
 #, c-format
 msgid "There was an error executing %s: %s"
 msgstr "执行 %s 时发生错误：%s"
 
-#: drivemount/drivemount.c:446
+#: drivemount/drivemount.c:458
 msgid "Cannot browse device"
 msgstr "无法浏览设备"
 
-#: drivemount/drivemount.c:504 drivemount/properties.c:601
-#: mailcheck/mailcheck.c:2304 mailcheck/mailcheck.c:2553
+#: drivemount/drivemount.c:516 drivemount/properties.c:610
+#: mailcheck/mailcheck.c:2320 mailcheck/mailcheck.c:2608
 msgid "Error displaying help"
 msgstr "显示帮助时发生错误"
 
 # drivemount/drivemount.c:420
-#: drivemount/drivemount.c:559
+#: drivemount/drivemount.c:573
 msgid "(C) 1999-2001 The GNOME Hackers\n"
 msgstr "(C) 1999-2001 The GNOME Hackers\n"
 
 # drivemount/drivemount.c:422
-#: drivemount/drivemount.c:561
+#: drivemount/drivemount.c:575
 msgid "Applet for mounting and unmounting block volumes."
 msgstr "用于挂载和卸载块设备的小程序。"
 
 # drivemount/drivemount.c:612
-#: drivemount/drivemount.c:761
+#: drivemount/drivemount.c:777
 msgid " mounted"
 msgstr " 已挂载"
 
 # drivemount/drivemount.c:614
-#: drivemount/drivemount.c:763
+#: drivemount/drivemount.c:779
 msgid " not mounted"
 msgstr " 未挂载"
 
 # drivemount/drivemount.c:733
-#: drivemount/drivemount.c:875
+#: drivemount/drivemount.c:891
 msgid "\" reported:\n"
 msgstr "\"报告：\n"
 
 # drivemount/drivemount.c:735
-#: drivemount/drivemount.c:877
+#: drivemount/drivemount.c:893
 msgid ""
 "Drivemount command failed.\n"
 "\""
@@ -995,7 +1009,7 @@ msgstr ""
 "\""
 
 # drivemount/drivemount.c:614
-#: drivemount/drivemount.c:883
+#: drivemount/drivemount.c:899
 msgid "Cannot mount device"
 msgstr "无法挂载设备"
 
@@ -1008,105 +1022,105 @@ msgid "Time in seconds between status updates"
 msgstr "每次状态更新之间等待的秒数"
 
 # drivemount/properties.c:241
-#: drivemount/properties.c:330
+#: drivemount/properties.c:336
 msgid "Disk Mounter Preferences"
 msgstr "磁盘挂载器首选项"
 
 # drivemount/properties.c:260
-#: drivemount/properties.c:358
+#: drivemount/properties.c:364
 msgid "_Mount directory:"
 msgstr "挂载目录(_M)："
 
-#: drivemount/properties.c:364
+#: drivemount/properties.c:370
 msgid "Select Mount Directory"
 msgstr "选择挂载目录"
 
 # drivemount/properties.c:277
-#: drivemount/properties.c:386
+#: drivemount/properties.c:392
 msgid "_Update interval:"
 msgstr "更新间隔(_U)："
 
 # multiload/properties.c:356
-#: drivemount/properties.c:409 mailcheck/mailcheck.c:2102
-#: mailcheck/mailcheck.c:2108 modemlights/properties.c:468
+#: drivemount/properties.c:415 mailcheck/mailcheck.c:2118
+#: mailcheck/mailcheck.c:2124 modemlights/properties.c:468
 msgid "seconds"
 msgstr "秒"
 
 # drivemount/properties.c:292
-#: drivemount/properties.c:422
+#: drivemount/properties.c:428
 msgid "_Icon:"
 msgstr "图标(_I)："
 
 # drivemount/properties.c:309
-#: drivemount/properties.c:448
+#: drivemount/properties.c:454
 msgid "Floppy"
 msgstr "软驱"
 
 # drivemount/properties.c:312
-#: drivemount/properties.c:451
+#: drivemount/properties.c:457
 msgid "Cdrom"
 msgstr "光驱"
 
 # drivemount/properties.c:315
-#: drivemount/properties.c:454
+#: drivemount/properties.c:460
 msgid "Cd Recorder"
 msgstr "CD 刻录机"
 
 # drivemount/properties.c:318
-#: drivemount/properties.c:457
+#: drivemount/properties.c:463
 msgid "Zip Drive"
 msgstr "Zip 驱动器"
 
 # drivemount/properties.c:321
-#: drivemount/properties.c:460
+#: drivemount/properties.c:466
 msgid "Hard Disk"
 msgstr "硬盘"
 
 # drivemount/properties.c:324
-#: drivemount/properties.c:463
+#: drivemount/properties.c:469
 msgid "Jaz Drive"
 msgstr "Jaz 驱动器"
 
-#: drivemount/properties.c:466
+#: drivemount/properties.c:472
 msgid "USB Stick"
-msgstr ""
+msgstr "USB 闪存盘"
 
 # drivemount/properties.c:327
-#: drivemount/properties.c:469
+#: drivemount/properties.c:475
 msgid "Custom"
 msgstr "定制"
 
 # drivemount/properties.c:340
-#: drivemount/properties.c:488
+#: drivemount/properties.c:494
 msgid "Select icon for mounted"
 msgstr "为已挂载驱动器选择图标"
 
 # drivemount/properties.c:260
-#: drivemount/properties.c:495
+#: drivemount/properties.c:501
 msgid "Moun_ted icon:"
 msgstr "挂载后的图标(_T)："
 
 # drivemount/properties.c:355
-#: drivemount/properties.c:516
+#: drivemount/properties.c:522
 msgid "Select icon for unmounted"
 msgstr "为未挂载驱动器选择图标"
 
-#: drivemount/properties.c:523
+#: drivemount/properties.c:529
 msgid "Unmou_nted icon:"
 msgstr "为挂载的图标(_N)："
 
 # drivemount/properties.c:371
-#: drivemount/properties.c:539
+#: drivemount/properties.c:545
 msgid "_Scale size to panel"
 msgstr "依照面板缩放尺寸(_S)"
 
 # drivemount/properties.c:378
-#: drivemount/properties.c:546
+#: drivemount/properties.c:552
 msgid "_Eject disk when unmounting"
 msgstr "卸载时弹出磁盘(_E)"
 
 # drivemount/properties.c:385
-#: drivemount/properties.c:556
+#: drivemount/properties.c:562
 msgid "Use _automount friendly status test"
 msgstr "使用自动加载友好状态测试(_A)"
 
@@ -1120,8 +1134,8 @@ msgstr "用于您的面板的一组眼球"
 msgid "Amusements"
 msgstr "娱乐"
 
-#: geyes/GNOME_GeyesApplet.server.in.in.h:3 geyes/geyes.c:248
-#: geyes/geyes.c:465 geyes/geyes.c:467
+#: geyes/GNOME_GeyesApplet.server.in.in.h:3 geyes/geyes.c:222
+#: geyes/geyes.c:452 geyes/geyes.c:454
 msgid "Geyes"
 msgstr "Geyes"
 
@@ -1131,16 +1145,16 @@ msgid "Geyes Applet Factory"
 msgstr "Geyes 小程序工厂"
 
 # geyes/geyes.c:210
-#: geyes/geyes.c:249
+#: geyes/geyes.c:223
 msgid "Copyright (C) 1999 Dave Camp"
 msgstr "版权所有 (C) 1999 Dave Camp"
 
 # geyes/geyes.c:211
-#: geyes/geyes.c:250
+#: geyes/geyes.c:224
 msgid "A goofy little xeyes clone for the GNOME panel."
 msgstr "与 xeyes 功能类似的 GNOME 面板小程序。"
 
-#: geyes/geyes.c:468
+#: geyes/geyes.c:455
 msgid "The eyes look in the direction of the mouse pointer"
 msgstr "一双凝视着鼠标光标方向的眼睛"
 
@@ -1148,16 +1162,24 @@ msgstr "一双凝视着鼠标光标方向的眼睛"
 msgid "Directory in which the theme is located"
 msgstr "主题所在的目录"
 
+#: geyes/themes.c:123
+msgid "Can not launch the eyes applet."
+msgstr "无法调用 eyes 小程序。"
+
+#: geyes/themes.c:124
+msgid "There was a fatal error while trying to load the theme."
+msgstr "试图装入主题时发生了严重错误。"
+
 # panel-menu/panel-menu-preferences.c:78
-#: geyes/themes.c:257
+#: geyes/themes.c:294
 msgid "Geyes Preferences"
 msgstr "Geyes 首选项"
 
-#: geyes/themes.c:289
+#: geyes/themes.c:326
 msgid "Themes"
 msgstr "主题"
 
-#: geyes/themes.c:310
+#: geyes/themes.c:347
 msgid "_Select a theme:"
 msgstr "选择主题(_S)："
 
@@ -1195,15 +1217,15 @@ msgid "Armenian Sun keymap"
 msgstr "亚美尼亚语 Sun 键盘映射"
 
 #: gkb-new/descs.sun/presets.xml.in.h:4 gkb-new/descs/presets.xml.in.h:9
-msgid "Azerbaidjan"
+msgid "Azerbaijan"
 msgstr "阿塞拜疆"
 
 #: gkb-new/descs.sun/presets.xml.in.h:5 gkb-new/descs/presets.xml.in.h:10
-msgid "Azerbaidjani Turkic"
+msgid "Azerbaijani Turkish"
 msgstr "阿塞拜疆土耳其语"
 
 #: gkb-new/descs.sun/presets.xml.in.h:6
-msgid "Azerbaidjani Turkic Sun keymap"
+msgid "Azerbaijani Turkish Sun keymap"
 msgstr "阿塞拜疆土耳其语 Sun 键盘映射"
 
 #: gkb-new/descs.sun/presets.xml.in.h:7 gkb-new/descs/presets.xml.in.h:14
@@ -1490,11 +1512,11 @@ msgstr "马其顿语"
 msgid "Macedonian Sun keymap"
 msgstr "马其顿语 Sun 键盘映射"
 
-#: gkb-new/descs.sun/presets.xml.in.h:78 gkb-new/descs/presets.xml.in.h:135
+#: gkb-new/descs.sun/presets.xml.in.h:78 gkb-new/descs/presets.xml.in.h:136
 msgid "Norway"
 msgstr "挪威"
 
-#: gkb-new/descs.sun/presets.xml.in.h:79 gkb-new/descs/presets.xml.in.h:136
+#: gkb-new/descs.sun/presets.xml.in.h:79 gkb-new/descs/presets.xml.in.h:137
 msgid "Norwegian"
 msgstr "挪威语"
 
@@ -1502,11 +1524,11 @@ msgstr "挪威语"
 msgid "Norwegian Sun keymap"
 msgstr "挪威语 Sun 键盘映射"
 
-#: gkb-new/descs.sun/presets.xml.in.h:81 gkb-new/descs/presets.xml.in.h:141
+#: gkb-new/descs.sun/presets.xml.in.h:81 gkb-new/descs/presets.xml.in.h:142
 msgid "Poland"
 msgstr "波兰"
 
-#: gkb-new/descs.sun/presets.xml.in.h:82 gkb-new/descs/presets.xml.in.h:142
+#: gkb-new/descs.sun/presets.xml.in.h:82 gkb-new/descs/presets.xml.in.h:143
 msgid "Polish"
 msgstr "波兰语"
 
@@ -1514,7 +1536,7 @@ msgstr "波兰语"
 msgid "Polish Sun keymap"
 msgstr "波兰语 Sun 键盘映射"
 
-#: gkb-new/descs.sun/presets.xml.in.h:84 gkb-new/descs/presets.xml.in.h:145
+#: gkb-new/descs.sun/presets.xml.in.h:84 gkb-new/descs/presets.xml.in.h:146
 msgid "Portugal"
 msgstr "葡萄牙"
 
@@ -1562,11 +1584,11 @@ msgstr "塞尔维亚语 Sun 标准键盘映射"
 msgid "Serbo-Croatian"
 msgstr "塞尔维亚-克罗地亚语"
 
-#: gkb-new/descs.sun/presets.xml.in.h:96 gkb-new/descs/presets.xml.in.h:165
+#: gkb-new/descs.sun/presets.xml.in.h:96 gkb-new/descs/presets.xml.in.h:166
 msgid "Slovak"
 msgstr "斯洛伐克语"
 
-#: gkb-new/descs.sun/presets.xml.in.h:97 gkb-new/descs/presets.xml.in.h:166
+#: gkb-new/descs.sun/presets.xml.in.h:97 gkb-new/descs/presets.xml.in.h:167
 msgid "Slovak Republic"
 msgstr "斯洛伐克共和国"
 
@@ -1574,11 +1596,11 @@ msgstr "斯洛伐克共和国"
 msgid "Slovak Sun keymap"
 msgstr "斯洛伐克 Sun 键盘映射"
 
-#: gkb-new/descs.sun/presets.xml.in.h:99 gkb-new/descs/presets.xml.in.h:168
+#: gkb-new/descs.sun/presets.xml.in.h:99 gkb-new/descs/presets.xml.in.h:169
 msgid "Slovenia"
 msgstr "斯洛文尼亚"
 
-#: gkb-new/descs.sun/presets.xml.in.h:100 gkb-new/descs/presets.xml.in.h:169
+#: gkb-new/descs.sun/presets.xml.in.h:100 gkb-new/descs/presets.xml.in.h:170
 msgid "Slovenian"
 msgstr "斯洛文尼亚语"
 
@@ -1586,11 +1608,11 @@ msgstr "斯洛文尼亚语"
 msgid "Slovenian Sun keymap"
 msgstr "斯洛文尼亚语 Sun 键盘映射"
 
-#: gkb-new/descs.sun/presets.xml.in.h:102 gkb-new/descs/presets.xml.in.h:173
+#: gkb-new/descs.sun/presets.xml.in.h:102 gkb-new/descs/presets.xml.in.h:174
 msgid "Spain"
 msgstr "西班牙"
 
-#: gkb-new/descs.sun/presets.xml.in.h:103 gkb-new/descs/presets.xml.in.h:174
+#: gkb-new/descs.sun/presets.xml.in.h:103 gkb-new/descs/presets.xml.in.h:175
 msgid "Spanish"
 msgstr "西班牙语"
 
@@ -1606,11 +1628,11 @@ msgstr "西班牙语 Sun USB 键盘映射"
 msgid "Spanish Sun keymap"
 msgstr "西班牙语 Sun 键盘映射"
 
-#: gkb-new/descs.sun/presets.xml.in.h:107 gkb-new/descs/presets.xml.in.h:180
+#: gkb-new/descs.sun/presets.xml.in.h:107 gkb-new/descs/presets.xml.in.h:181
 msgid "Sweden"
 msgstr "瑞典"
 
-#: gkb-new/descs.sun/presets.xml.in.h:108 gkb-new/descs/presets.xml.in.h:181
+#: gkb-new/descs.sun/presets.xml.in.h:108 gkb-new/descs/presets.xml.in.h:182
 msgid "Swedish"
 msgstr "瑞典语"
 
@@ -1630,11 +1652,11 @@ msgstr "瑞典语 Sun 键盘映射"
 msgid "Swiss German Sun keymap"
 msgstr "瑞士德语 Sun 键盘映射"
 
-#: gkb-new/descs.sun/presets.xml.in.h:113 gkb-new/descs/presets.xml.in.h:185
+#: gkb-new/descs.sun/presets.xml.in.h:113 gkb-new/descs/presets.xml.in.h:186
 msgid "Switzerland"
 msgstr "瑞士"
 
-#: gkb-new/descs.sun/presets.xml.in.h:114 gkb-new/descs/presets.xml.in.h:189
+#: gkb-new/descs.sun/presets.xml.in.h:114 gkb-new/descs/presets.xml.in.h:190
 msgid "Thai"
 msgstr "泰语"
 
@@ -1642,15 +1664,15 @@ msgstr "泰语"
 msgid "Thai Sun keymap"
 msgstr "泰语 Sun 键盘映射"
 
-#: gkb-new/descs.sun/presets.xml.in.h:116 gkb-new/descs/presets.xml.in.h:193
+#: gkb-new/descs.sun/presets.xml.in.h:116 gkb-new/descs/presets.xml.in.h:194
 msgid "Thailand"
 msgstr "泰国"
 
-#: gkb-new/descs.sun/presets.xml.in.h:117 gkb-new/descs/presets.xml.in.h:195
+#: gkb-new/descs.sun/presets.xml.in.h:117 gkb-new/descs/presets.xml.in.h:196
 msgid "Turkey"
 msgstr "土耳其"
 
-#: gkb-new/descs.sun/presets.xml.in.h:118 gkb-new/descs/presets.xml.in.h:196
+#: gkb-new/descs.sun/presets.xml.in.h:118 gkb-new/descs/presets.xml.in.h:197
 msgid "Turkish"
 msgstr "土耳其语"
 
@@ -1670,11 +1692,11 @@ msgstr "美国 Sun USB 键盘映射"
 msgid "US Sun type5 keyboard"
 msgstr "美国 Sun Type-5 键盘映射"
 
-#: gkb-new/descs.sun/presets.xml.in.h:123 gkb-new/descs/presets.xml.in.h:215
+#: gkb-new/descs.sun/presets.xml.in.h:123 gkb-new/descs/presets.xml.in.h:216
 msgid "Ukraine"
 msgstr "乌克兰"
 
-#: gkb-new/descs.sun/presets.xml.in.h:124 gkb-new/descs/presets.xml.in.h:216
+#: gkb-new/descs.sun/presets.xml.in.h:124 gkb-new/descs/presets.xml.in.h:217
 msgid "Ukrainian"
 msgstr "乌克兰语"
 
@@ -1682,19 +1704,19 @@ msgstr "乌克兰语"
 msgid "Ukrainian Sun keymap"
 msgstr "乌克兰语 Sun 键盘映射"
 
-#: gkb-new/descs.sun/presets.xml.in.h:126 gkb-new/descs/presets.xml.in.h:219
+#: gkb-new/descs.sun/presets.xml.in.h:126 gkb-new/descs/presets.xml.in.h:220
 msgid "United Kingdom"
 msgstr "英国"
 
-#: gkb-new/descs.sun/presets.xml.in.h:127 gkb-new/descs/presets.xml.in.h:221
+#: gkb-new/descs.sun/presets.xml.in.h:127 gkb-new/descs/presets.xml.in.h:222
 msgid "United States"
 msgstr "美国"
 
-#: gkb-new/descs.sun/presets.xml.in.h:128 gkb-new/descs/presets.xml.in.h:224
+#: gkb-new/descs.sun/presets.xml.in.h:128 gkb-new/descs/presets.xml.in.h:223
 msgid "Vietnam"
 msgstr "越南"
 
-#: gkb-new/descs.sun/presets.xml.in.h:129
+#: gkb-new/descs.sun/presets.xml.in.h:129 gkb-new/descs/presets.xml.in.h:224
 msgid "Vietnamese"
 msgstr "越南语"
 
@@ -1731,7 +1753,7 @@ msgid "Austria"
 msgstr "奥地利"
 
 #: gkb-new/descs/presets.xml.in.h:11
-msgid "Azerbaidjani Turkic xkb keymap"
+msgid "Azerbaijani Turkish xkb keymap"
 msgstr "阿塞拜疆土耳其语 xkb 键盘映射"
 
 #: gkb-new/descs/presets.xml.in.h:12
@@ -2075,40 +2097,40 @@ msgid "Mongolian phonetic keymap"
 msgstr "蒙古语语音键盘映射"
 
 #: gkb-new/descs/presets.xml.in.h:134
+msgid "Morocco"
+msgstr "摩洛哥"
+
+#: gkb-new/descs/presets.xml.in.h:135
 msgid "Netherlands"
 msgstr "荷兰"
 
-#: gkb-new/descs/presets.xml.in.h:137
+#: gkb-new/descs/presets.xml.in.h:138
 msgid "Norwegian xkb keymap"
 msgstr "挪威语 xkb 键盘映射"
 
-#: gkb-new/descs/presets.xml.in.h:138
+#: gkb-new/descs/presets.xml.in.h:139
 msgid "Oman"
 msgstr "阿曼"
 
-#: gkb-new/descs/presets.xml.in.h:139
+#: gkb-new/descs/presets.xml.in.h:140
 msgid "Palestinian Territory"
 msgstr "巴勒斯坦地区"
 
-#: gkb-new/descs/presets.xml.in.h:140
+#: gkb-new/descs/presets.xml.in.h:141
 msgid "Plain Russian keymap"
 msgstr "简单俄语键盘映射"
 
-#: gkb-new/descs/presets.xml.in.h:143
+#: gkb-new/descs/presets.xml.in.h:144
 msgid "Polish deadkeys"
 msgstr "波兰语哑键"
 
-#: gkb-new/descs/presets.xml.in.h:144
+#: gkb-new/descs/presets.xml.in.h:145
 msgid "Polish xkb keymap"
 msgstr "波兰语 xkb 键盘映射"
 
-#: gkb-new/descs/presets.xml.in.h:146
+#: gkb-new/descs/presets.xml.in.h:147
 msgid "Portugal Deadkeys"
 msgstr "葡萄牙语哑键"
-
-#: gkb-new/descs/presets.xml.in.h:147
-msgid "Portuglese"
-msgstr "葡萄牙语"
 
 #: gkb-new/descs/presets.xml.in.h:149
 msgid "Portuguese keymap"
@@ -2147,186 +2169,186 @@ msgid "Serb"
 msgstr "塞尔维亚语"
 
 #: gkb-new/descs/presets.xml.in.h:162
-msgid "Serb keymap"
-msgstr "塞尔维亚语键盘映射"
-
-#: gkb-new/descs/presets.xml.in.h:163
 msgid "Serb standard xkb keymap"
 msgstr "塞尔维亚语标准 xkb 键盘映射"
 
-#: gkb-new/descs/presets.xml.in.h:164
+#: gkb-new/descs/presets.xml.in.h:163
 msgid "Serbia and Montenegro"
 msgstr "塞尔维亚和黑山"
 
-#: gkb-new/descs/presets.xml.in.h:167
+#: gkb-new/descs/presets.xml.in.h:164
+msgid "Serbian"
+msgstr "塞尔维亚语"
+
+#: gkb-new/descs/presets.xml.in.h:165
+msgid "Serbian keymap"
+msgstr "塞尔维亚语键盘映射"
+
+#: gkb-new/descs/presets.xml.in.h:168
 msgid "Slovak keymap"
 msgstr "斯洛伐克语键盘映射"
 
-#: gkb-new/descs/presets.xml.in.h:170
+#: gkb-new/descs/presets.xml.in.h:171
 msgid "Slovenian keymap"
 msgstr "斯洛文尼亚语键盘映射"
 
-#: gkb-new/descs/presets.xml.in.h:171
+#: gkb-new/descs/presets.xml.in.h:172
 msgid "Slovenian xkb keymap"
 msgstr "斯洛文尼亚语 xkb 键盘映射"
 
-#: gkb-new/descs/presets.xml.in.h:172
+#: gkb-new/descs/presets.xml.in.h:173
 msgid "Somalia"
 msgstr "索马里"
 
-#: gkb-new/descs/presets.xml.in.h:175
+#: gkb-new/descs/presets.xml.in.h:176
 msgid "Spanish PC/AT 101 keyboard"
 msgstr "西班牙语 PC/AT 101 键盘"
 
-#: gkb-new/descs/presets.xml.in.h:176
+#: gkb-new/descs/presets.xml.in.h:177
 msgid "Spanish keymap"
 msgstr "西班牙语键盘映射"
 
-#: gkb-new/descs/presets.xml.in.h:177
+#: gkb-new/descs/presets.xml.in.h:178
 msgid "Spanish xkb keymap"
 msgstr "西班牙语 xkb 键盘映射"
 
-#: gkb-new/descs/presets.xml.in.h:178
+#: gkb-new/descs/presets.xml.in.h:179
 msgid "Sudan"
 msgstr "苏丹"
 
-#: gkb-new/descs/presets.xml.in.h:179
+#: gkb-new/descs/presets.xml.in.h:180
 msgid "Sun (!not PC!) type5 Hungarian latin 2"
 msgstr "Sun (!非 PC!) type5 匈牙利语拉丁 2"
 
-#: gkb-new/descs/presets.xml.in.h:182
+#: gkb-new/descs/presets.xml.in.h:183
 msgid "Swedish keymap"
 msgstr "瑞典语键盘映射"
 
-#: gkb-new/descs/presets.xml.in.h:183
+#: gkb-new/descs/presets.xml.in.h:184
 msgid "Swedish xkb keymap"
 msgstr "瑞典语 xkb 键盘映射"
 
-#: gkb-new/descs/presets.xml.in.h:184
+#: gkb-new/descs/presets.xml.in.h:185
 msgid "Swiss keymap"
 msgstr "瑞士键盘映射"
 
-#: gkb-new/descs/presets.xml.in.h:186
+#: gkb-new/descs/presets.xml.in.h:187
 msgid "Syria"
 msgstr "叙利亚"
 
-#: gkb-new/descs/presets.xml.in.h:187
+#: gkb-new/descs/presets.xml.in.h:188
 msgid "Syriac"
 msgstr "叙利亚语"
 
-#: gkb-new/descs/presets.xml.in.h:188
+#: gkb-new/descs/presets.xml.in.h:189
 msgid "Syriac Phonetic"
 msgstr "叙利亚语音"
 
-#: gkb-new/descs/presets.xml.in.h:190
+#: gkb-new/descs/presets.xml.in.h:191
 msgid "Thai Kedmanee"
 msgstr "泰国凯德曼尼语"
 
-#: gkb-new/descs/presets.xml.in.h:191
+#: gkb-new/descs/presets.xml.in.h:192
 msgid "Thai keymap"
 msgstr "泰语键盘映射"
 
-#: gkb-new/descs/presets.xml.in.h:192
+#: gkb-new/descs/presets.xml.in.h:193
 msgid "Thai xkb keymap"
 msgstr "泰语 xkb 键盘映射"
 
-#: gkb-new/descs/presets.xml.in.h:194
+#: gkb-new/descs/presets.xml.in.h:195
 msgid "Tunisia"
 msgstr "突尼斯"
 
-#: gkb-new/descs/presets.xml.in.h:197
+#: gkb-new/descs/presets.xml.in.h:198
 msgid "Turkish \"F\" keyboard"
 msgstr "土耳其语“F”键盘"
 
-#: gkb-new/descs/presets.xml.in.h:198
+#: gkb-new/descs/presets.xml.in.h:199
 msgid "Turkish \"Q\" keyboard"
 msgstr "土耳其语“Q”键盘"
 
-#: gkb-new/descs/presets.xml.in.h:199
+#: gkb-new/descs/presets.xml.in.h:200
 msgid "Turkish keymap"
 msgstr "土耳其语键盘映射"
 
-#: gkb-new/descs/presets.xml.in.h:200
+#: gkb-new/descs/presets.xml.in.h:201
 msgid "Turkish xkb keymap"
 msgstr "土耳其语 xkb 键盘映射"
 
-#: gkb-new/descs/presets.xml.in.h:201
+#: gkb-new/descs/presets.xml.in.h:202
 msgid "UK 105-key"
 msgstr "UK 105 键"
 
-#: gkb-new/descs/presets.xml.in.h:202
+#: gkb-new/descs/presets.xml.in.h:203
 msgid "UK PC/AT keyboard"
 msgstr "英国 PC/AT 键盘"
 
-#: gkb-new/descs/presets.xml.in.h:203
+#: gkb-new/descs/presets.xml.in.h:204
 msgid "US 101-key keyboard"
 msgstr "UK 101 键键盘"
 
-#: gkb-new/descs/presets.xml.in.h:204
+#: gkb-new/descs/presets.xml.in.h:205
 msgid "US 105-key keyboard (with windows keys)"
 msgstr "美国 105 键键盘 （带有 Windows 键）"
 
-#: gkb-new/descs/presets.xml.in.h:205
+#: gkb-new/descs/presets.xml.in.h:206
 msgid "US 84-key"
 msgstr "美国 84 键"
 
-#: gkb-new/descs/presets.xml.in.h:206
+#: gkb-new/descs/presets.xml.in.h:207
 msgid "US DEC 450"
 msgstr "美国 DEC 450"
 
-#: gkb-new/descs/presets.xml.in.h:207
+#: gkb-new/descs/presets.xml.in.h:208
 msgid "US IBM RS/6000"
 msgstr "美国 IBM RS/6000"
 
-#: gkb-new/descs/presets.xml.in.h:208
+#: gkb-new/descs/presets.xml.in.h:209
 msgid "US International"
 msgstr "美国国际"
 
-#: gkb-new/descs/presets.xml.in.h:209
+#: gkb-new/descs/presets.xml.in.h:210
 msgid "US International xkb keymap"
 msgstr "美国国际 xkb 键盘映射"
 
-#: gkb-new/descs/presets.xml.in.h:210
+#: gkb-new/descs/presets.xml.in.h:211
 msgid "US Macintosh"
 msgstr "美国麦金托什"
 
-#: gkb-new/descs/presets.xml.in.h:211
+#: gkb-new/descs/presets.xml.in.h:212
 msgid "US PC/AT 101 keyboard"
 msgstr "美国 PC/AT 101 键盘"
 
-#: gkb-new/descs/presets.xml.in.h:212
+#: gkb-new/descs/presets.xml.in.h:213
 msgid "US Silicon Graphics 101-key"
 msgstr "美国 Silicon Graphics 101 键"
 
-#: gkb-new/descs/presets.xml.in.h:213
+#: gkb-new/descs/presets.xml.in.h:214
 msgid "US Sun type5"
 msgstr "美国 Sun type5"
 
-#: gkb-new/descs/presets.xml.in.h:214
+#: gkb-new/descs/presets.xml.in.h:215
 msgid "US xkb keymap"
 msgstr "美国 xkb 键盘映射"
 
-#: gkb-new/descs/presets.xml.in.h:217
+#: gkb-new/descs/presets.xml.in.h:218
 msgid "Ukrainian xkb keymap"
 msgstr "乌可兰语键盘映射"
 
-#: gkb-new/descs/presets.xml.in.h:218
+#: gkb-new/descs/presets.xml.in.h:219
 msgid "United Arab Emirates"
 msgstr "阿拉伯联合酋长国"
 
-#: gkb-new/descs/presets.xml.in.h:220
+#: gkb-new/descs/presets.xml.in.h:221
 msgid "United Kingdom xkb keymap"
 msgstr "英国 xkb 键盘映射"
 
-#: gkb-new/descs/presets.xml.in.h:222
-msgid "Viet_namese"
-msgstr "越南语(_N)"
-
-#: gkb-new/descs/presets.xml.in.h:223
-msgid "Viet_namese xkb keymap"
-msgstr "越南语 xkb 键盘映射(_N)"
-
 #: gkb-new/descs/presets.xml.in.h:225
+msgid "Vietnamese xkb keymap"
+msgstr "越南语 xkb 键盘映射"
+
+#: gkb-new/descs/presets.xml.in.h:226
 msgid "Yemen"
 msgstr "也门"
 
@@ -2491,29 +2513,29 @@ msgid "?"
 msgstr "?"
 
 # gkb-new/prop-map.c:573
-#: gkb-new/prop-map.c:277
+#: gkb-new/prop-map.c:278
 msgid "Edit Keyboard"
 msgstr "编辑键盘"
 
 # panel-menu/panel-menu-directory.c:601 panel-menu/panel-menu-documents.c:398
 # panel-menu/panel-menu-documents.c:434 panel-menu/panel-menu-links.c:400
 # panel-menu/panel-menu-links.c:436
-#: gkb-new/prop-map.c:302
+#: gkb-new/prop-map.c:303
 msgid "_Name:"
 msgstr "名称(_N)："
 
 # gkb-new/prop-map.c:605
-#: gkb-new/prop-map.c:306
+#: gkb-new/prop-map.c:307
 msgid "_Label:"
 msgstr "文字(_L)："
 
 # gkb-new/prop-map.c:645
-#: gkb-new/prop-map.c:309 mini-commander/src/mini-commander.glade.h:8
+#: gkb-new/prop-map.c:310 mini-commander/src/mini-commander.glade.h:8
 msgid "Co_mmand:"
 msgstr "命令(_M)："
 
 # gkb-new/prop.c:140 gkb-new/util.c:41 gkb-new/util.c:48 gkb-new/util.c:74
-#: gkb-new/prop-map.c:314
+#: gkb-new/prop-map.c:315
 msgid "_Flag:"
 msgstr "国旗(_F)："
 
@@ -2533,7 +2555,7 @@ msgid "Flag and Label"
 msgstr "国旗和文字"
 
 # gkb-new/prop.c:278 modemlights/properties.c:371
-#: gkb-new/prop.c:257 gtik/gtik.c:1530 gweather/gweather-pref.c:745
+#: gkb-new/prop.c:257 gtik/gtik.c:1483 gweather/gweather-pref.c:739
 #: modemlights/properties.c:444
 msgid "Display"
 msgstr "显示"
@@ -2577,7 +2599,7 @@ msgid "_Keyboards:"
 msgstr "键盘(_K)："
 
 # multiload/properties.c:311
-#: gkb-new/prop.c:457 multiload/properties.c:425
+#: gkb-new/prop.c:457 multiload/properties.c:426
 msgid "Options"
 msgstr "选项"
 
@@ -2612,6 +2634,216 @@ msgstr ""
 "\n"
 "命令是：%s"
 
+#: gswitchit/GNOME_GSwitchItApplet.xml.h:1
+msgid "Pl_ugins..."
+msgstr "插件(_U)..."
+
+#: gswitchit/GNOME_GSwitchItApplet.xml.h:3
+msgid "_Groups"
+msgstr "群组(_G)"
+
+# gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:3
+#: gswitchit/GNOME_GSwitchItApplet.xml.h:5
+msgid "_Open Keyboard Preferences"
+msgstr "打开键盘首选项(_O)"
+
+# gtik/GNOME_GtikApplet.server.in.h:3
+#: gswitchit/GNOME_KeyboardApplet.server.in.in.h:1
+msgid "GNOME keyboard applet factory"
+msgstr "GNOME 键盘小程序工厂"
+
+# gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:3
+#: gswitchit/GNOME_KeyboardApplet.server.in.in.h:2
+msgid "GNOME keyboard layout indicator"
+msgstr "GNOME 键盘布局标识器"
+
+#: gswitchit/GNOME_KeyboardApplet.server.in.in.h:3
+#: gswitchit/gswitchit-applet.c:567
+msgid "Keyboard Indicator"
+msgstr "键盘标识器"
+
+# geyes/GNOME_GeyesApplet.server.in.h:4
+#: gswitchit/GNOME_KeyboardApplet.server.in.in.h:4
+msgid "Keyboard applet factory"
+msgstr "键盘小程序工厂"
+
+# gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:3
+#: gswitchit/gswitchit-applet.c:107
+#, c-format
+msgid "Keyboard Indicator (%s)"
+msgstr "键盘标识器(%s)"
+
+#: gswitchit/gswitchit-applet.c:570
+msgid "Copyright (c) Sergey V. Oudaltsov 1999-2004"
+msgstr "版权 (c) Sergey V. Oudaltsov 1999-2004"
+
+# gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:3
+#: gswitchit/gswitchit-applet.c:572
+msgid "Keyboard layout indicator applet for GNOME"
+msgstr "GNOME 的键盘布局标识器小程序"
+
+#: gswitchit/gswitchit-applet.c:726
+msgid "XKB initialization error"
+msgstr "XKB 初始化错误"
+
+#: gswitchit/gswitchit-applet.c:734
+msgid "Error loading XKB configuration registry"
+msgstr "装入 XKB 配置注册表错误"
+
+#: gswitchit/gswitchit-capplet.c:185
+msgid ""
+"Make the layout accessible from the applet popup menu ONLY.\n"
+"No way to switch to this layout using the keyboard."
+msgstr ""
+"让布局仅能够从小程序的弹出菜单中使用。\n"
+"无法用键盘切换到这种布局。"
+
+#: gswitchit/gswitchit-capplet.c:265
+msgid "_Exclude from keyboard switching"
+msgstr "从键盘切换中排除(_E)"
+
+#: gswitchit/gswitchit-capplet.c:296
+msgid "Not used"
+msgstr "未使用"
+
+#: gswitchit/gswitchit-plugins-add.c:105 gswitchit/gswitchit-plugins.c:117
+msgid "No description."
+msgstr "无描述。"
+
+#: gswitchit/gswitchit-plugins.c:331
+#, c-format
+msgid "Failed to init GConf: %s\n"
+msgstr "初始化 GConf 失败：%s\n"
+
+#: gswitchit/gswitchit-plugins.glade.h:1
+msgid "Activate more plugins"
+msgstr "激活更多插件"
+
+#: gswitchit/gswitchit-plugins.glade.h:2
+msgid "Active _plugins:"
+msgstr "激活插件(_P)："
+
+#: gswitchit/gswitchit-plugins.glade.h:3
+msgid "Add Plugin"
+msgstr "添加插件"
+
+#: gswitchit/gswitchit-plugins.glade.h:4
+msgid "Close the dialog"
+msgstr "关闭对话框"
+
+#: gswitchit/gswitchit-plugins.glade.h:5
+msgid "Configure the selected plugin"
+msgstr "配置选中插件"
+
+#: gswitchit/gswitchit-plugins.glade.h:6
+msgid "Deactivate selected plugin"
+msgstr "取消激活选中插件"
+
+#: gswitchit/gswitchit-plugins.glade.h:7
+msgid "Decrease the plugin priority"
+msgstr "降低插件优先级"
+
+#: gswitchit/gswitchit-plugins.glade.h:8
+msgid "Increase the plugin priority"
+msgstr "增加插件优先级"
+
+#: gswitchit/gswitchit-plugins.glade.h:9
+msgid "Keyboard Indicator Plugins"
+msgstr "键盘标识器插件"
+
+#: gswitchit/gswitchit-plugins.glade.h:10
+msgid "The list of active plugins"
+msgstr "激活的插件列表"
+
+#: gswitchit/gswitchit-plugins.glade.h:11
+msgid "_Available plugins:"
+msgstr "可用插件(_A)："
+
+# gtik/gtik.c:1489
+#: gswitchit/gswitchit-properties.glade.h:2 stickynotes/stickynotes.glade.h:3
+msgid "<b>Behavior</b>"
+msgstr "<b>行为</b>"
+
+#: gswitchit/gswitchit-properties.glade.h:3
+msgid "Choose the default group (for newly created windows)."
+msgstr "选择默认群组(用于新创建的窗口)。"
+
+#: gswitchit/gswitchit-properties.glade.h:4
+msgid "Keep separate group for each application window."
+msgstr "每个应用程序窗口保持独立的群组。"
+
+#: gswitchit/gswitchit-properties.glade.h:5
+msgid "Keep the state of indicators separately for each application window."
+msgstr "为每个程序的窗口单独保留指示器的状态。"
+
+# gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:3
+#: gswitchit/gswitchit-properties.glade.h:6
+msgid "Keyboard Indicator Preferences"
+msgstr "键盘标识器首选项"
+
+#: gswitchit/gswitchit-properties.glade.h:7
+msgid "Save/restore _indicators with group"
+msgstr "保存/恢复群组的标识器(_I)"
+
+#: gswitchit/gswitchit-properties.glade.h:8
+msgid "Separate _group for each window"
+msgstr "每个窗口独立群组(_G)"
+
+#: gswitchit/gswitchit-properties.glade.h:9
+msgid "Show national flags as indicators of corresponding layouts"
+msgstr "布局的标识器中显示相应的国旗"
+
+#: gswitchit/gswitchit-properties.glade.h:10
+msgid "Use _flags as indicators"
+msgstr "使用国旗作为标识符(_F)"
+
+#: gswitchit/gswitchit-properties.glade.h:11
+msgid "_Default group:"
+msgstr "默认群组(_D)："
+
+#: gswitchit/gswitchit.schemas.in.h:1
+msgid "Beep on group switch"
+msgstr "切换群组时响铃"
+
+#: gswitchit/gswitchit.schemas.in.h:2
+msgid "Debug level"
+msgstr "调试级别"
+
+#: gswitchit/gswitchit.schemas.in.h:3
+msgid "Default group, assigned on window creation"
+msgstr "默认群组，在窗口创建时指派"
+
+#: gswitchit/gswitchit.schemas.in.h:4
+msgid "Keep and manage separate group per window"
+msgstr "每个窗口保持并管理单独的群组"
+
+#: gswitchit/gswitchit.schemas.in.h:5
+msgid "Save/restore indicators together with layout groups"
+msgstr "与布局群组一起保存/恢复标识器"
+
+#: gswitchit/gswitchit.schemas.in.h:6
+msgid "Secondary groups"
+msgstr "次选群组"
+
+#: gswitchit/gswitchit.schemas.in.h:7
+msgid "Show flags in the applet"
+msgstr "在小程序中显示国旗"
+
+#: gswitchit/gswitchit.schemas.in.h:8
+msgid "Show flags in the applet to indicate the current layout"
+msgstr "在小程序中显示国旗以标识当前布局"
+
+#: gswitchit/gswitchit.schemas.in.h:9
+msgid "Show layout names instead of group names"
+msgstr "显示布局名称而非群组名称"
+
+#: gswitchit/gswitchit.schemas.in.h:10
+msgid ""
+"Show layout names instead of group names (only for versions of XFree "
+"supporting multiple layouts)"
+msgstr ""
+"显示布局名称而非群组名称(仅对支持多布局的 XFree 版本而言)"
+
 # gtik/GNOME_GtikApplet.server.in.h:1
 # gweather/GNOME_GWeatherApplet_Factory.server.in.h:1
 #: gtik/GNOME_GtikApplet.server.in.in.h:1
@@ -2631,7 +2863,7 @@ msgid "Gtik Applet Factory"
 msgstr "Gtik 小程序工厂"
 
 # gtik/GNOME_GtikApplet.server.in.h:4
-#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:791
+#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:740
 msgid "Stock Ticker"
 msgstr "股票行情指示器"
 
@@ -2641,17 +2873,17 @@ msgstr "股票行情指示器"
 msgid "_Update"
 msgstr "更新(_U)"
 
-#: gtik/gtik.c:255
+#: gtik/gtik.c:258
 msgid "Could not retrieve the stock data."
 msgstr "无法收取股票数据。"
 
 # gweather/gweather-applet.c:330
-#: gtik/gtik.c:289 gweather/gweather-applet.c:357
+#: gtik/gtik.c:307 gweather/gweather-applet.c:426
 msgid "Updating..."
 msgstr "正在更新..."
 
 # gtik/gtik.c:656
-#: gtik/gtik.c:793
+#: gtik/gtik.c:742
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.  "
 "The GNOME Stock Ticker is a free Internet-based application.  It comes with "
@@ -2663,146 +2895,146 @@ msgstr ""
 "只是为了提供信息而存在的。"
 
 # gweather/gweather-dialog.c:277
-#: gtik/gtik.c:1279
+#: gtik/gtik.c:1232
 msgid "Current _stocks:"
 msgstr "当前股市(_S)："
 
 # gtik/gtik.c:1137
-#: gtik/gtik.c:1287
+#: gtik/gtik.c:1240
 msgid "_New symbol:"
 msgstr "新建代码(_N)："
 
 # gkb-new/prop-list.c:389 gtik/gtik.c:1147
-#: gtik/gtik.c:1296
+#: gtik/gtik.c:1249
 msgid "_Add"
 msgstr "添加(_A)"
 
-#: gtik/gtik.c:1305
+#: gtik/gtik.c:1258
 msgid "_Remove"
 msgstr "删除(_R)"
 
 # gtik/gtik.c:1334
-#: gtik/gtik.c:1411
+#: gtik/gtik.c:1364
 msgid "Stock Ticker Preferences"
 msgstr "股票行情显示器首选项"
 
 # gtik/gtik.c:1487
-#: gtik/gtik.c:1433
+#: gtik/gtik.c:1386
 msgid "Symbols"
 msgstr "代码"
 
 # gtik/gtik.c:1489
-#: gtik/gtik.c:1440 mailcheck/mailcheck.c:2373
+#: gtik/gtik.c:1393 mailcheck/mailcheck.c:2389
 msgid "Behavior"
 msgstr "行为"
 
 # gweather/GNOME_GWeatherApplet.xml.h:4
-#: gtik/gtik.c:1443 gweather/gweather-pref.c:705
+#: gtik/gtik.c:1396 gweather/gweather-pref.c:699
 msgid "Update"
 msgstr "更新"
 
 # gtik/gtik.c:1355
-#: gtik/gtik.c:1447
+#: gtik/gtik.c:1400
 msgid "Stock update fre_quency:"
 msgstr "股票更新周期(_Q)："
 
 # gweather/gweather-pref.c:847
-#: gtik/gtik.c:1459 gweather/gweather-pref.c:729 mailcheck/mailcheck.c:2079
-#: mailcheck/mailcheck.c:2085
+#: gtik/gtik.c:1412 gweather/gweather-pref.c:723 mailcheck/mailcheck.c:2095
+#: mailcheck/mailcheck.c:2101
 msgid "minutes"
 msgstr "分钟"
 
-#: gtik/gtik.c:1465
+#: gtik/gtik.c:1418
 msgid "Scrolling"
 msgstr "滚动"
 
-#: gtik/gtik.c:1469
+#: gtik/gtik.c:1422
 msgid "_Scroll speed:"
 msgstr "滚动速度(_S)："
 
-#: gtik/gtik.c:1473
+#: gtik/gtik.c:1426
 msgid "Slow"
 msgstr "慢"
 
-#: gtik/gtik.c:1475
+#: gtik/gtik.c:1428
 msgid "Medium"
 msgstr "中"
 
 # gweather/GNOME_GWeatherApplet.xml.h:2 gweather/gweather-dialog.c:75
 # gweather/gweather-dialog.c:299
-#: gtik/gtik.c:1477
+#: gtik/gtik.c:1430
 msgid "Fast"
 msgstr "快"
 
 # gtik/gtik.c:1390
-#: gtik/gtik.c:1497
+#: gtik/gtik.c:1450
 msgid "_Enable scroll buttons"
 msgstr "启用滚动按钮(_E)"
 
 # gtik/gtik.c:1384
-#: gtik/gtik.c:1509
+#: gtik/gtik.c:1462
 msgid "Scroll _left to right"
 msgstr "从左到右滚动(_L)"
 
 # gtik/gtik.c:1381
-#: gtik/gtik.c:1535
+#: gtik/gtik.c:1488
 msgid "Displa_y only symbols and price"
 msgstr "只显示股票代码和股价(_Y)"
 
-#: gtik/gtik.c:1548 mini-commander/src/mini-commander.glade.h:23
+#: gtik/gtik.c:1501 mini-commander/src/mini-commander.glade.h:23
 #: stickynotes/stickynotes.glade.h:48
 msgid "_Width:"
 msgstr "宽度(_W)："
 
 # multiload/properties.c:339
-#: gtik/gtik.c:1562 mini-commander/src/mini-commander.glade.h:24
-#: multiload/properties.c:488
+#: gtik/gtik.c:1515 mini-commander/src/mini-commander.glade.h:24
+#: multiload/properties.c:489
 msgid "pixels"
 msgstr "像素"
 
-#: gtik/gtik.c:1571
+#: gtik/gtik.c:1524
 msgid "Font and Colors"
 msgstr "字体和颜色"
 
-#: gtik/gtik.c:1577
+#: gtik/gtik.c:1530
 msgid "Use _default theme font and colors"
 msgstr "使用默认的主题字体和颜色(_D)"
 
-#: gtik/gtik.c:1592 stickynotes/stickynotes.glade.h:42
+#: gtik/gtik.c:1545 stickynotes/stickynotes.glade.h:42
 msgid "_Font:"
 msgstr "字体(_F)："
 
 # gtik/gtik.c:1465
-#: gtik/gtik.c:1616
+#: gtik/gtik.c:1569
 msgid "Stock _raised:"
 msgstr "升值股票(_R)："
 
 # gtik/GNOME_GtikApplet.server.in.h:4
-#: gtik/gtik.c:1635
+#: gtik/gtik.c:1588
 msgid "Stock _lowered:"
 msgstr "贬值股票(_L)："
 
 # gtik/gtik.c:1465
-#: gtik/gtik.c:1654
+#: gtik/gtik.c:1607
 msgid "Stock _unchanged:"
 msgstr "持平股票(_U)："
 
 # modemlights/properties.c:418 modemlights/properties.c:423
 # modemlights/properties.c:442
-#: gtik/gtik.c:1673 modemlights/properties.c:580
+#: gtik/gtik.c:1626 modemlights/properties.c:580
 msgid "_Background:"
 msgstr "背景(_B)："
 
-#: gtik/gtik.c:1806
+#: gtik/gtik.c:1769
 msgid "Skip forward"
 msgstr "向前跳转"
 
-#: gtik/gtik.c:1807
+#: gtik/gtik.c:1770
 msgid "Skip backward"
 msgstr "向后跳转"
 
 # gtik/GNOME_GtikApplet.server.in.h:2
-#: gtik/gtik.c:1815
+#: gtik/gtik.c:1778
 msgid ""
 "Stock Ticker\n"
 "Get continuously updated stock quotes"
@@ -2811,12 +3043,12 @@ msgstr ""
 "获取连续更新的股票报价"
 
 # gtik/gtik.c:1712
-#: gtik/gtik.c:2021
+#: gtik/gtik.c:1990
 msgid "(No"
 msgstr "(无"
 
 # gtik/gtik.c:1713
-#: gtik/gtik.c:2022
+#: gtik/gtik.c:1991
 msgid "Change "
 msgstr "更改 "
 
@@ -2976,17 +3208,17 @@ msgstr "当前气象条件和气象预报监视器"
 
 # gweather/GNOME_GWeatherApplet_Factory.server.in.h:5
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:5
-#: gweather/gweather-about.c:64
+#: gweather/gweather-about.c:68
 msgid "Weather Report"
 msgstr "气象报告"
 
 # gweather/gweather-about.c:43
-#: gweather/gweather-about.c:65
+#: gweather/gweather-about.c:69
 msgid "Copyright (c)1999 by S. Papadimitriou"
 msgstr "版权所有 (c)1999 S. Papadimitriou"
 
 # gweather/gweather-about.c:44
-#: gweather/gweather-about.c:66
+#: gweather/gweather-about.c:70
 msgid ""
 "Released under the GNU General Public License.\n"
 "\n"
@@ -2996,7 +3228,7 @@ msgstr ""
 "\n"
 "用于监视本地天气情况的小程序。"
 
-#: gweather/gweather-applet.c:237
+#: gweather/gweather-applet.c:306
 msgid "GNOME Weather"
 msgstr "GNOME 天气"
 
@@ -3131,37 +3363,37 @@ msgid "Enter the URL"
 msgstr "输入 URL"
 
 # gweather/gweather-pref.c:608
-#: gweather/gweather-pref.c:611
+#: gweather/gweather-pref.c:605
 msgid "Weather Preferences"
 msgstr "天气首选项"
 
 # gweather/gweather-pref.c:773
-#: gweather/gweather-pref.c:644 gweather/gweather-pref.c:709
+#: gweather/gweather-pref.c:638 gweather/gweather-pref.c:703
 msgid "_Automatically update every:"
 msgstr "自动更新的间隔(_A)："
 
 # gweather/gweather-pref.c:779
-#: gweather/gweather-pref.c:652
+#: gweather/gweather-pref.c:646
 msgid "Use _metric system units"
 msgstr "使用公制单位(_M)"
 
-#: gweather/gweather-pref.c:660
+#: gweather/gweather-pref.c:654
 msgid "Enable _radar map"
 msgstr "启用雷达图(_R)"
 
-#: gweather/gweather-pref.c:674
+#: gweather/gweather-pref.c:668
 msgid "Use cus_tom address for radar map"
 msgstr "对雷达图使用自定义地址(_T)"
 
-#: gweather/gweather-pref.c:691
+#: gweather/gweather-pref.c:685
 msgid "A_ddress:"
 msgstr "地址(_D)："
 
-#: gweather/gweather-pref.c:772
+#: gweather/gweather-pref.c:766
 msgid "_Select a location:"
 msgstr "选择位置(_S)："
 
-#: gweather/gweather-pref.c:801
+#: gweather/gweather-pref.c:795
 msgid "Location"
 msgstr "位置"
 
@@ -3225,150 +3457,150 @@ msgid "weather location information."
 msgstr "天气位置信息。"
 
 # gweather/weather.c:57
-#: gweather/weather.c:57
+#: gweather/weather.c:58
 msgid "knots"
 msgstr "节"
 
 # gweather/weather.c:57
-#: gweather/weather.c:57
+#: gweather/weather.c:58
 msgid "kph"
-msgstr "公里/小时"
+msgstr "千米/小时"
 
 # gweather/weather.c:62
-#: gweather/weather.c:62
+#: gweather/weather.c:63
 msgid "inHg"
 msgstr "英寸汞柱"
 
 # gweather/weather.c:62
-#: gweather/weather.c:62
+#: gweather/weather.c:63
 msgid "hPa"
 msgstr "百帕"
 
 # gweather/weather.c:66
-#: gweather/weather.c:66
+#: gweather/weather.c:67
 msgid "miles"
 msgstr "英里"
 
 # gweather/weather.c:66
-#: gweather/weather.c:66
+#: gweather/weather.c:67
 msgid "kilometers"
 msgstr "公里"
 
 # gweather/weather.c:117
-#: gweather/weather.c:132
+#: gweather/weather.c:133
 msgid "Variable"
 msgstr "变量"
 
 # gweather/weather.c:118
-#: gweather/weather.c:133
+#: gweather/weather.c:134
 msgid "North"
 msgstr "北"
 
 # gweather/weather.c:118
-#: gweather/weather.c:133
+#: gweather/weather.c:134
 msgid "North - NorthEast"
 msgstr "东北偏北"
 
-#: gweather/weather.c:133
+#: gweather/weather.c:134
 msgid "Northeast"
 msgstr "东北"
 
 # gweather/weather.c:118
-#: gweather/weather.c:133
+#: gweather/weather.c:134
 msgid "East - NorthEast"
 msgstr "东北偏东"
 
 # gweather/weather.c:119
-#: gweather/weather.c:134
+#: gweather/weather.c:135
 msgid "East"
 msgstr "东"
 
 # gweather/weather.c:119
-#: gweather/weather.c:134
+#: gweather/weather.c:135
 msgid "East - Southeast"
 msgstr "东南偏东"
 
 # gweather/weather.c:119
-#: gweather/weather.c:134
+#: gweather/weather.c:135
 msgid "Southeast"
 msgstr "东南"
 
 # gweather/weather.c:119
-#: gweather/weather.c:134
+#: gweather/weather.c:135
 msgid "South - Southeast"
 msgstr "东南偏南"
 
-#: gweather/weather.c:135
+#: gweather/weather.c:136
 msgid "South"
 msgstr "南"
 
 # gweather/weather.c:120
-#: gweather/weather.c:135
+#: gweather/weather.c:136
 msgid "South - Southwest"
 msgstr "西南偏南"
 
 # gweather/weather.c:120
-#: gweather/weather.c:135
+#: gweather/weather.c:136
 msgid "Southwest"
 msgstr "西南"
 
 # gweather/weather.c:120
-#: gweather/weather.c:135
+#: gweather/weather.c:136
 msgid "West - Southwest"
 msgstr "西南偏西"
 
 # gweather/weather.c:121
-#: gweather/weather.c:136
+#: gweather/weather.c:137
 msgid "West"
 msgstr "西"
 
 # gweather/weather.c:121
-#: gweather/weather.c:136
+#: gweather/weather.c:137
 msgid "West - Northwest"
 msgstr "西北偏西"
 
 # gweather/weather.c:121
-#: gweather/weather.c:136
+#: gweather/weather.c:137
 msgid "Northwest"
 msgstr "西北"
 
 # gweather/weather.c:121
-#: gweather/weather.c:136
+#: gweather/weather.c:137
 msgid "North - Northwest"
 msgstr "西北偏北"
 
-#: gweather/weather.c:142 gweather/weather.c:1817 gweather/weather.c:1829
-#: gweather/weather.c:1841 gweather/weather.c:1853 gweather/weather.c:1871
-#: gweather/weather.c:1883
+#: gweather/weather.c:143 gweather/weather.c:1971 gweather/weather.c:1983
+#: gweather/weather.c:1995 gweather/weather.c:2007 gweather/weather.c:2025
+#: gweather/weather.c:2037
 msgid "Unknown"
 msgstr "未知"
 
-#: gweather/weather.c:144 gweather/weather.c:161 gweather/weather.c:232
+#: gweather/weather.c:145 gweather/weather.c:162 gweather/weather.c:233
 msgid "Invalid"
 msgstr "无效"
 
 # gweather/weather.c:134
-#: gweather/weather.c:150
+#: gweather/weather.c:151
 msgid "Clear Sky"
 msgstr "晴"
 
 # gweather/weather.c:135
-#: gweather/weather.c:151
+#: gweather/weather.c:152
 msgid "Broken clouds"
 msgstr "碎云"
 
 # gweather/weather.c:136
-#: gweather/weather.c:152
+#: gweather/weather.c:153
 msgid "Scattered clouds"
 msgstr "散云"
 
 # gweather/weather.c:137
-#: gweather/weather.c:153
+#: gweather/weather.c:154
 msgid "Few clouds"
 msgstr "薄云"
 
 # gweather/weather.c:138
-#: gweather/weather.c:154
+#: gweather/weather.c:155
 msgid "Overcast"
 msgstr "阴天"
 
@@ -3377,331 +3609,331 @@ msgstr "阴天"
 #. * etc means, you can go to http://www.weather.com/glossary/ and
 #. * http://www.crh.noaa.gov/arx/wx.tbl.html
 #. NONE
-#: gweather/weather.c:193 gweather/weather.c:195
+#: gweather/weather.c:194 gweather/weather.c:196
 msgid "Thunderstorm"
 msgstr "雷暴"
 
 #. DRIZZLE
-#: gweather/weather.c:194
+#: gweather/weather.c:195
 msgid "Drizzle"
 msgstr "细雨"
 
 # gweather/weather.c:171
-#: gweather/weather.c:194
+#: gweather/weather.c:195
 msgid "Light drizzle"
 msgstr "小细雨"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:195
 msgid "Moderate drizzle"
 msgstr "中细雨"
 
 # gweather/weather.c:172
-#: gweather/weather.c:194
+#: gweather/weather.c:195
 msgid "Heavy drizzle"
 msgstr "大细雨"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:195
 msgid "Freezing drizzle"
 msgstr "冻雾雨"
 
 #. RAIN
-#: gweather/weather.c:195
+#: gweather/weather.c:196
 msgid "Rain"
 msgstr "雨"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:196
 msgid "Light rain"
 msgstr "小雨"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:196
 msgid "Moderate rain"
 msgstr "中雨"
 
 # gweather/weather.c:172
-#: gweather/weather.c:195
+#: gweather/weather.c:196
 msgid "Heavy rain"
 msgstr "大雨"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:196
 msgid "Rain showers"
 msgstr "阵雨"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:196
 msgid "Freezing rain"
 msgstr "冻雨"
 
 # gweather/weather.c:173
 #. SNOW
-#: gweather/weather.c:196
+#: gweather/weather.c:197
 msgid "Snow"
 msgstr "雪"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:197
 msgid "Light snow"
 msgstr "小雪"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:197
 msgid "Moderate snow"
 msgstr "中雪"
 
 # gweather/weather.c:172
-#: gweather/weather.c:196
+#: gweather/weather.c:197
 msgid "Heavy snow"
 msgstr "大雪"
 
 # gweather/weather.c:173
-#: gweather/weather.c:196
+#: gweather/weather.c:197
 msgid "Snowstorm"
 msgstr "暴雪"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:197
 msgid "Blowing snowfall"
 msgstr "风雪"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:197
 msgid "Snow showers"
 msgstr "阵雪"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:197
 msgid "Drifting snow"
 msgstr "积雪"
 
 # gweather/weather.c:174
 #. SNOW_GRAINS
-#: gweather/weather.c:197
+#: gweather/weather.c:198
 msgid "Snow grains"
 msgstr "米雪"
 
-#: gweather/weather.c:197
+#: gweather/weather.c:198
 msgid "Light snow grains"
 msgstr "小米雪"
 
-#: gweather/weather.c:197
+#: gweather/weather.c:198
 msgid "Moderate snow grains"
 msgstr "中米雪"
 
 # gweather/weather.c:172
-#: gweather/weather.c:197
+#: gweather/weather.c:198
 msgid "Heavy snow grains"
 msgstr "大米雪"
 
 #. ICE_CRYSTALS
-#: gweather/weather.c:198
+#: gweather/weather.c:199
 msgid "Ice crystals"
 msgstr "冰晶"
 
 #. ICE_PELLETS
-#: gweather/weather.c:199
+#: gweather/weather.c:200
 msgid "Ice pellets"
 msgstr "冰丸"
 
-#: gweather/weather.c:199
+#: gweather/weather.c:200
 msgid "Few ice pellets"
 msgstr "小冰丸"
 
-#: gweather/weather.c:199
+#: gweather/weather.c:200
 msgid "Moderate ice pellets"
 msgstr "中冰丸"
 
-#: gweather/weather.c:199
+#: gweather/weather.c:200
 msgid "Heavy ice pellets"
 msgstr "大冰丸"
 
-#: gweather/weather.c:199
+#: gweather/weather.c:200
 msgid "Ice pellet storm"
 msgstr "暴冰丸"
 
-#: gweather/weather.c:199
+#: gweather/weather.c:200
 msgid "Showers of ice pellets"
 msgstr "阵冰丸"
 
 #. HAIL
-#: gweather/weather.c:200
+#: gweather/weather.c:201
 msgid "Hail"
 msgstr "雹"
 
 # mini-commander/src/mini-commander_applet.c:277
-#: gweather/weather.c:200
+#: gweather/weather.c:201
 msgid "Hailstorm"
 msgstr "雹暴"
 
-#: gweather/weather.c:200
+#: gweather/weather.c:201
 msgid "Hail showers"
 msgstr "阵雹"
 
 #. SMALL_HAIL
-#: gweather/weather.c:201
+#: gweather/weather.c:202
 msgid "Small hail"
 msgstr "小雹"
 
-#: gweather/weather.c:201
+#: gweather/weather.c:202
 msgid "Small hailstorm"
 msgstr "小雹暴"
 
-#: gweather/weather.c:201
+#: gweather/weather.c:202
 msgid "Showers of small hail"
 msgstr "小阵雹"
 
 # gweather/weather.c:179
 #. PRECIPITATION
-#: gweather/weather.c:202
+#: gweather/weather.c:203
 msgid "Unknown precipitation"
 msgstr "未知预测"
 
 #. MIST
-#: gweather/weather.c:203
+#: gweather/weather.c:204
 msgid "Mist"
 msgstr "细雾"
 
 # gweather/weather.c:181
 #. FOG
-#: gweather/weather.c:204
+#: gweather/weather.c:205
 msgid "Fog"
 msgstr "雾"
 
-#: gweather/weather.c:204
+#: gweather/weather.c:205
 msgid "Fog in the vicinity"
 msgstr "临近有雾"
 
-#: gweather/weather.c:204
+#: gweather/weather.c:205
 msgid "Shallow fog"
 msgstr "浅雾"
 
-#: gweather/weather.c:204
+#: gweather/weather.c:205
 msgid "Patches of fog"
 msgstr "局部地区有雾"
 
-#: gweather/weather.c:204
+#: gweather/weather.c:205
 msgid "Partial fog"
 msgstr "部分有雾"
 
-#: gweather/weather.c:204
+#: gweather/weather.c:205
 msgid "Freezing fog"
 msgstr "冻雾"
 
 # gweather/weather.c:182
 #. SMOKE
-#: gweather/weather.c:205
+#: gweather/weather.c:206
 msgid "Smoke"
 msgstr "烟"
 
 #. VOLCANIC_ASH
-#: gweather/weather.c:206
+#: gweather/weather.c:207
 msgid "Volcanic ash"
 msgstr "火山灰"
 
 #. SAND
-#: gweather/weather.c:207
+#: gweather/weather.c:208
 msgid "Sand"
 msgstr "沙"
 
-#: gweather/weather.c:207
+#: gweather/weather.c:208
 msgid "Blowing sand"
 msgstr "高吹沙"
 
-#: gweather/weather.c:207
+#: gweather/weather.c:208
 msgid "Drifting sand"
 msgstr "流砂"
 
 # gweather/weather.c:185
 #. HAZE
-#: gweather/weather.c:208
+#: gweather/weather.c:209
 msgid "Haze"
 msgstr "霾"
 
 #. SPRAY
-#: gweather/weather.c:209
+#: gweather/weather.c:210
 msgid "Blowing sprays"
 msgstr "有风冰雾"
 
 #. DUST
-#: gweather/weather.c:210
+#: gweather/weather.c:211
 msgid "Dust"
 msgstr "粉尘"
 
-#: gweather/weather.c:210
+#: gweather/weather.c:211
 msgid "Blowing dust"
 msgstr "有风粉尘"
 
-#: gweather/weather.c:210
+#: gweather/weather.c:211
 msgid "Drifting dust"
 msgstr "微风粉尘"
 
 #. SQUALL
-#: gweather/weather.c:211
+#: gweather/weather.c:212
 msgid "Squall"
 msgstr "暴风"
 
 #. SANDSTORM
-#: gweather/weather.c:212
+#: gweather/weather.c:213
 msgid "Sandstorm"
 msgstr "沙暴"
 
-#: gweather/weather.c:212
+#: gweather/weather.c:213
 msgid "Sandstorm in the vicinity"
 msgstr "临近有沙暴"
 
 # gweather/weather.c:172
-#: gweather/weather.c:212
+#: gweather/weather.c:213
 msgid "Heavy sandstorm"
 msgstr "大沙暴"
 
 # drivemount/properties.c:327
 #. DUSTSTORM
-#: gweather/weather.c:213
+#: gweather/weather.c:214
 msgid "Duststorm"
 msgstr "尘暴"
 
-#: gweather/weather.c:213
+#: gweather/weather.c:214
 msgid "Duststorm in the vicinity"
 msgstr "临近有尘暴"
 
-#: gweather/weather.c:213
+#: gweather/weather.c:214
 msgid "Heavy duststorm"
 msgstr "大尘暴"
 
 # gweather/weather.c:137
 #. FUNNEL_CLOUD
-#: gweather/weather.c:214
+#: gweather/weather.c:215
 msgid "Funnel cloud"
 msgstr "漏斗云"
 
 #. TORNADO
-#: gweather/weather.c:215
+#: gweather/weather.c:216
 msgid "Tornado"
 msgstr "龙卷风"
 
 #. DUST_WHIRLS
-#: gweather/weather.c:216
+#: gweather/weather.c:217
 msgid "Dust whirls"
 msgstr "尘卷风"
 
-#: gweather/weather.c:216
+#: gweather/weather.c:217
 msgid "Dust whirls in the vicinity"
 msgstr "邻近有尘卷风"
 
-#: gweather/weather.c:832 gweather/weather.c:872 gweather/weather.c:1445
+#: gweather/weather.c:836 gweather/weather.c:876 gweather/weather.c:1597
 msgid "Failed to get METAR data.\n"
 msgstr "获取 METAR 数据失败。\n"
 
-#: gweather/weather.c:864 gweather/weather.c:892 gweather/weather.c:1089
+#: gweather/weather.c:868 gweather/weather.c:896 gweather/weather.c:1134
 msgid "WeatherInfo missing location"
 msgstr "天气信息缺少位置"
 
-#: gweather/weather.c:1781
+#: gweather/weather.c:1935
 msgid "%a, %b %d / %H:%M"
-msgstr "%-m月%-d日%A/%-H:%M"
+msgstr "%-m月%-d日%A %H:%M"
 
-#: gweather/weather.c:1785
+#: gweather/weather.c:1939
 msgid "Unknown observation time"
 msgstr "未知的观测时间"
 
 # gweather/weather.c:1803
-#: gweather/weather.c:1855
+#: gweather/weather.c:2009
 msgid "Calm"
 msgstr "平静"
 
-#: gweather/weather.c:1928
+#: gweather/weather.c:2082
 msgid "Retrieval failed"
 msgstr "获取失败"
 
@@ -3715,7 +3947,7 @@ msgid "Factory for creating inbox monitors."
 msgstr "用于创建收件箱监视器的工厂。"
 
 #: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:3
-#: mailcheck/mailcheck.c:791 mailcheck/mailcheck.c:2455
+#: mailcheck/mailcheck.c:805 mailcheck/mailcheck.c:2475
 msgid "Inbox Monitor"
 msgstr "收件箱监视器"
 
@@ -3729,11 +3961,11 @@ msgstr "收件箱监视器工厂"
 msgid "Internet"
 msgstr "互联网"
 
-#: mailcheck/mailcheck.c:666
+#: mailcheck/mailcheck.c:668
 msgid "Error checking mail"
 msgstr "检查邮件出错"
 
-#: mailcheck/mailcheck.c:797
+#: mailcheck/mailcheck.c:811
 msgid ""
 "You didn't set a password in the preferences for the Inbox Monitor,\n"
 "so you have to enter it each time it starts up."
@@ -3741,201 +3973,209 @@ msgstr ""
 "您没有在收件箱监视器的首选项中给出密码，\n"
 "所以您必须在每次启动的时候输入密码。"
 
-#: mailcheck/mailcheck.c:805
+#: mailcheck/mailcheck.c:819
 msgid "Please enter your mailserver's _password:"
 msgstr "请输入您的邮件服务器的密码(_P)："
 
-#: mailcheck/mailcheck.c:810 mailcheck/mailcheck.c:1932
+#: mailcheck/mailcheck.c:824 mailcheck/mailcheck.c:1948
 msgid "Password Entry box"
 msgstr "密码条目框"
 
-#: mailcheck/mailcheck.c:830 mailcheck/mailcheck.c:1959
+#: mailcheck/mailcheck.c:839 mailcheck/mailcheck.c:1975
 msgid "_Save password to disk"
 msgstr "将密码保存到磁盘(_S)"
 
-#: mailcheck/mailcheck.c:888
+#: mailcheck/mailcheck.c:895
 msgid "Could not connect to the Internet."
 msgstr "无法连接到互联网。"
 
-#: mailcheck/mailcheck.c:892
+#: mailcheck/mailcheck.c:899
 msgid "The username or password is incorrect."
 msgstr "用户名或密码不正确。"
 
-#: mailcheck/mailcheck.c:895
+#: mailcheck/mailcheck.c:902
 msgid "The server name is incorrect."
 msgstr "服务器名称不正确。"
 
-#: mailcheck/mailcheck.c:899
+#: mailcheck/mailcheck.c:906
 msgid "Error connecting to mail server."
 msgstr "连接到邮件服务器出错。"
 
-#: mailcheck/mailcheck.c:904
+#: mailcheck/mailcheck.c:911
 msgid "Error"
 msgstr "错误"
 
-#: mailcheck/mailcheck.c:1083
+#: mailcheck/mailcheck.c:1087
 msgid "You have new mail."
 msgstr "您有新邮件。"
 
-#: mailcheck/mailcheck.c:1085
+#: mailcheck/mailcheck.c:1089
 msgid "You have mail."
 msgstr "您有邮件。"
 
-#: mailcheck/mailcheck.c:1089
+#: mailcheck/mailcheck.c:1093
 #, c-format
-msgid "%d unread/ %d messages"
-msgstr "%d 封未读/%d 封邮件"
+msgid "%d unread"
+msgid_plural "%d unread"
+msgstr[0] "%d 封未读"
 
-#: mailcheck/mailcheck.c:1091
+#: mailcheck/mailcheck.c:1094 mailcheck/mailcheck.c:1103
 #, c-format
-msgid "%d messages"
-msgstr "%d 封邮件"
+msgid "%d message"
+msgid_plural "%d messages"
+msgstr[0] "%d 封邮件"
+
+#. translators: this is of the form "%d unread/%d messages"
+#: mailcheck/mailcheck.c:1097
+#, c-format
+msgid "%s/%s"
+msgstr "%s/%s"
 
 # gkb-new/prop.c:121 gkb-new/prop.c:189
-#: mailcheck/mailcheck.c:1095
+#: mailcheck/mailcheck.c:1110
 msgid "No mail."
 msgstr "无邮件。"
 
-#: mailcheck/mailcheck.c:1548 mailcheck/mailcheck.c:1549
-#: mailcheck/mailcheck.c:2823 mailcheck/mailcheck.c:2824
+#: mailcheck/mailcheck.c:1564 mailcheck/mailcheck.c:1565
+#: mailcheck/mailcheck.c:2886 mailcheck/mailcheck.c:2887
 msgid "Status not updated"
 msgstr "状态未更新"
 
-#: mailcheck/mailcheck.c:1751 mailcheck/mailcheck.c:2377
+#: mailcheck/mailcheck.c:1767 mailcheck/mailcheck.c:2393
 msgid "Inbox Settings"
 msgstr "收件箱设置"
 
-#: mailcheck/mailcheck.c:1777
+#: mailcheck/mailcheck.c:1793
 msgid "Mailbox _resides on:"
 msgstr "邮件箱在(_R)："
 
-#: mailcheck/mailcheck.c:1788
+#: mailcheck/mailcheck.c:1804
 msgid "Local mailspool"
 msgstr "本地邮件缓冲"
 
-#: mailcheck/mailcheck.c:1796
+#: mailcheck/mailcheck.c:1812
 msgid "Local maildir"
 msgstr "本地邮件目录"
 
-#: mailcheck/mailcheck.c:1804
+#: mailcheck/mailcheck.c:1820
 msgid "Remote POP3-server"
 msgstr "远程 POP3 服务器"
 
-#: mailcheck/mailcheck.c:1812
+#: mailcheck/mailcheck.c:1828
 msgid "Remote IMAP-server"
 msgstr "远程 IMAP 服务器"
 
-#: mailcheck/mailcheck.c:1837
+#: mailcheck/mailcheck.c:1853
 msgid "Mail _spool file:"
 msgstr "邮件脱机文件(_S)："
 
 # mini-commander/src/mini-commander_applet.c:263
-#: mailcheck/mailcheck.c:1844
+#: mailcheck/mailcheck.c:1860
 msgid "Browse"
 msgstr "浏览"
 
-#: mailcheck/mailcheck.c:1864
+#: mailcheck/mailcheck.c:1880
 msgid "Mail s_erver:"
 msgstr "邮件服务器(_E)："
 
-#: mailcheck/mailcheck.c:1873
+#: mailcheck/mailcheck.c:1889
 msgid "Mail Server Entry box"
 msgstr "邮件服务器条目框"
 
 # gtik/gtik.c:1252 gweather/gweather-pref.c:715
-#: mailcheck/mailcheck.c:1892
+#: mailcheck/mailcheck.c:1908
 msgid "_Username:"
 msgstr "用户名(_U)："
 
-#: mailcheck/mailcheck.c:1903
+#: mailcheck/mailcheck.c:1919
 msgid "Username Entry box"
 msgstr "用户名输入框"
 
 # gtik/gtik.c:1265 gweather/gweather-pref.c:731
-#: mailcheck/mailcheck.c:1921
+#: mailcheck/mailcheck.c:1937
 msgid "_Password:"
 msgstr "密码(_P)："
 
-#: mailcheck/mailcheck.c:1974
+#: mailcheck/mailcheck.c:1990
 msgid "_Folder:"
 msgstr "文件夹(_F)："
 
-#: mailcheck/mailcheck.c:1985
+#: mailcheck/mailcheck.c:2001
 msgid "Folder Entry box"
 msgstr "文件夹条目框"
 
-#: mailcheck/mailcheck.c:2057
+#: mailcheck/mailcheck.c:2073
 msgid "Check for mail _every:"
 msgstr "检查邮件的间隔(_E)："
 
-#: mailcheck/mailcheck.c:2079
+#: mailcheck/mailcheck.c:2095
 msgid "Choose time interval in minutes to check mail"
 msgstr "选择检查邮件间隔的分钟数"
 
-#: mailcheck/mailcheck.c:2102
+#: mailcheck/mailcheck.c:2118
 msgid "Choose time interval in seconds to check mail"
 msgstr "选择检查邮件间隔的秒数"
 
-#: mailcheck/mailcheck.c:2119
+#: mailcheck/mailcheck.c:2135
 msgid "Play a _sound when new mail arrives"
 msgstr "当新邮件到达时播放的声音(_S)"
 
 #. l = gtk_check_button_new_with_mnemonic (_("Set the number of unread mails to _zero when clicked"));
-#: mailcheck/mailcheck.c:2129
+#: mailcheck/mailcheck.c:2145
 msgid "Sto_p animation when double clicked"
 msgstr "双击时停止动画(_P)"
 
-#: mailcheck/mailcheck.c:2142
+#: mailcheck/mailcheck.c:2158
 msgid "Select a_nimation:"
 msgstr "选择动画(_N)："
 
 # gkb-new/prop-map.c:645
-#: mailcheck/mailcheck.c:2160
+#: mailcheck/mailcheck.c:2176
 msgid "Commands"
 msgstr "命令"
 
-#: mailcheck/mailcheck.c:2189
+#: mailcheck/mailcheck.c:2205
 msgid "Before each _update:"
 msgstr "在每次更新前(_U)："
 
-#: mailcheck/mailcheck.c:2206
+#: mailcheck/mailcheck.c:2222
 msgid "Command to execute before each update"
 msgstr "在每次更新前执行的命令"
 
-#: mailcheck/mailcheck.c:2218
+#: mailcheck/mailcheck.c:2234
 msgid "When new mail _arrives:"
 msgstr "当收到新邮件时(_A)："
 
-#: mailcheck/mailcheck.c:2233 mailcheck/mailcheck.schemas.in.h:2
+#: mailcheck/mailcheck.c:2249 mailcheck/mailcheck.schemas.in.h:2
 msgid "Command to execute when new mail arrives"
 msgstr "当收到新邮件到达时执行的命令"
 
-#: mailcheck/mailcheck.c:2245
+#: mailcheck/mailcheck.c:2261
 msgid "When double clicke_d:"
 msgstr "当双击时(_D)："
 
-#: mailcheck/mailcheck.c:2260
+#: mailcheck/mailcheck.c:2276
 msgid "Command to execute when clicked"
 msgstr "单击时执行的命令"
 
 # multiload/properties.c:409
-#: mailcheck/mailcheck.c:2346
+#: mailcheck/mailcheck.c:2362
 msgid "Inbox Monitor Preferences"
 msgstr "收件箱监视器首选项"
 
-#: mailcheck/mailcheck.c:2457
+#: mailcheck/mailcheck.c:2477
 msgid "Inbox Monitor notifies you when new mail arrives in your mailbox"
 msgstr "当新邮件到达您的邮件箱时收件箱监视器提醒您"
 
-#: mailcheck/mailcheck.c:2783
+#: mailcheck/mailcheck.c:2839
 msgid "Text only"
 msgstr "纯文本"
 
-#: mailcheck/mailcheck.c:2825
+#: mailcheck/mailcheck.c:2888
 msgid "Mail check"
 msgstr "收邮件"
 
-#: mailcheck/mailcheck.c:2826
+#: mailcheck/mailcheck.c:2889
 msgid "Mail check notifies you when new mail arrives in your mailbox"
 msgstr "当新邮件到达您的邮件箱时邮件检查提醒您"
 
@@ -4070,7 +4310,7 @@ msgid "New Mail"
 msgstr "新邮件"
 
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:1
-#: mini-commander/src/about.c:66
+#: mini-commander/src/about.c:69
 msgid "Command Line"
 msgstr "命令行"
 
@@ -4085,32 +4325,36 @@ msgid "MiniCommander Applet Factory"
 msgstr "小型命令行小程序工厂"
 
 # mini-commander/src/about.c:42
-#: mini-commander/src/about.c:69
+#: mini-commander/src/about.c:72
 msgid ""
 "This GNOME applet adds a command line to the panel. It features command "
 "completion, command history, and changeable macros.\n"
 "\n"
-"This program is free software; you can redistribute it and/or modify it "
+"\\ This program is free software; you can redistribute it and/or modify it "
 "under the terms of the GNU General Public License as published by the Free "
 "Software Foundation; either version 2 of the License, or (at your option) "
 "any later version."
 msgstr ""
 "本 GNOME 小程序为面板添加了一个命令行。它有命令补齐、命令历史、可修改的宏。\n"
 "\n"
-"本程序是自由软件；您可以依照由自由软件基金会出版的 GNU 通用公共许可证的条款发"
+"\\ 本程序是自由软件；您可以依照由自由软件基金会出版的 GNU 通用公共许可证的条款发"
 "行以及/或者修改它；您可以采用该许可证的第二版或更新的版本。"
+
+#: mini-commander/src/command_line.c:315
+msgid "No items in history"
+msgstr "历史中无项目"
 
 # mini-commander/src/command_line.c:434
 #. build file select dialog
-#: mini-commander/src/command_line.c:436
+#: mini-commander/src/command_line.c:439
 msgid "Start program"
 msgstr "启动程序"
 
-#: mini-commander/src/command_line.c:479
+#: mini-commander/src/command_line.c:482
 msgid "Command line"
 msgstr "命令行"
 
-#: mini-commander/src/command_line.c:480
+#: mini-commander/src/command_line.c:483
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "在此键入命令让 GNOME 执行"
 
@@ -4130,10 +4374,12 @@ msgid "Set default list value for %s\n"
 msgstr "设置 %s 的默认列表值\n"
 
 #: mini-commander/src/mc-install-default-macros.c:117
+#, c-format
 msgid "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL is set, not installing schemas\n"
 msgstr "已设置 GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL，将不安装模式\n"
 
 #: mini-commander/src/mc-install-default-macros.c:125
+#, c-format
 msgid "Must set the GCONF_CONFIG_SOURCE environment variable\n"
 msgstr "必须设置 GCONF_CONFIG_SOURCE 环境变量\n"
 
@@ -4226,41 +4472,35 @@ msgstr "图案(_P)："
 
 #: mini-commander/src/mini-commander.glade.h:22
 msgid "_Use default theme colors"
-msgstr "使用默认主题颜色(_U)"
+msgstr "使用主题的默认颜色(_U)"
 
 #: mini-commander/src/mini-commander.schemas.in.h:1
 msgid "Attempt to autocomplete a command from the history of commands entered."
 msgstr "试图根据输入的命令历史自动不全命令。"
 
 #: mini-commander/src/mini-commander.schemas.in.h:2
-#, fuzzy
 msgid "Background color, blue component"
-msgstr "背景颜色的蓝色分量"
+msgstr "背景颜色，蓝色分量"
 
 #: mini-commander/src/mini-commander.schemas.in.h:3
-#, fuzzy
 msgid "Background color, green component"
-msgstr "背景颜色的绿色分量"
+msgstr "背景颜色，绿色分量"
 
 #: mini-commander/src/mini-commander.schemas.in.h:4
-#, fuzzy
 msgid "Background color, red component"
-msgstr "背景颜色的红色分量"
+msgstr "背景颜色，红色分量"
 
 #: mini-commander/src/mini-commander.schemas.in.h:5
-#, fuzzy
 msgid "Foreground color, blue component"
-msgstr "前景颜色的蓝色分量"
+msgstr "前景颜色，蓝色分量"
 
 #: mini-commander/src/mini-commander.schemas.in.h:6
-#, fuzzy
 msgid "Foreground color, green component"
-msgstr "前景颜色的绿色分量"
+msgstr "前景颜色，绿色分量"
 
 #: mini-commander/src/mini-commander.schemas.in.h:7
-#, fuzzy
 msgid "Foreground color, red component"
-msgstr "前景颜色的红色分量"
+msgstr "前景颜色，红色分量"
 
 # mini-commander/src/mini-commander_applet.c:277
 #: mini-commander/src/mini-commander.schemas.in.h:8
@@ -4367,16 +4607,16 @@ msgstr "历史"
 msgid "Click this button for the list of previous commands"
 msgstr "单击此按钮查看以前的命令的列表"
 
-#: mini-commander/src/mini-commander_applet.c:360
+#: mini-commander/src/mini-commander_applet.c:363
 msgid "Command line has been disabled by your system administrator"
-msgstr ""
+msgstr "命令行已经被您的系统管理员禁用"
 
 # mini-commander/src/about.c:39
-#: mini-commander/src/mini-commander_applet.c:421
+#: mini-commander/src/mini-commander_applet.c:426
 msgid "Mini-Commander applet"
 msgstr "小型命令行小程序"
 
-#: mini-commander/src/mini-commander_applet.c:422
+#: mini-commander/src/mini-commander_applet.c:427
 msgid "This applet adds a command line to the panel"
 msgstr "此小程序在面板上添加一个命令行工具"
 
@@ -4396,14 +4636,23 @@ msgstr "您必须指定一个命令"
 msgid "You may not specify duplicate patterns"
 msgstr "您不能指定重复的模式"
 
+#: mini-commander/src/preferences.c:850
+msgid "Pattern"
+msgstr "图案"
+
+# gkb-new/prop-map.c:645
+#: mini-commander/src/preferences.c:860
+msgid "Command"
+msgstr "命令"
+
 # mixer/GNOME_MixerApplet.server.in.h:1
 #: mixer/GNOME_MixerApplet.server.in.in.h:1
 msgid "Adjust the sound volume"
 msgstr "调整音量"
 
 # mixer/GNOME_MixerApplet.server.in.h:3 mixer/mixer.c:723
-#: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:175
-#: mixer/mixer.c:1075
+#: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:199
+#: mixer/mixer.c:1346
 msgid "Volume Control"
 msgstr "音量控制"
 
@@ -4417,175 +4666,175 @@ msgstr "静音(_M)"
 msgid "_Open Volume Control"
 msgstr "打开音量控制(_O)"
 
-#: mixer/mixer.c:113
+#: mixer/mixer.c:125
 msgid "Main Volume"
 msgstr "主音量"
 
-#: mixer/mixer.c:113
+#: mixer/mixer.c:125
 msgid "Bass"
 msgstr "低音"
 
-#: mixer/mixer.c:113
+#: mixer/mixer.c:125
 msgid "Treble"
 msgstr "高音"
 
-#: mixer/mixer.c:113
+#: mixer/mixer.c:125
 msgid "Synth"
 msgstr "合成器"
 
-#: mixer/mixer.c:114
+#: mixer/mixer.c:126
 msgid "Pcm"
 msgstr "波形"
 
-#: mixer/mixer.c:114
+#: mixer/mixer.c:126
 msgid "Speaker"
 msgstr "扬声器"
 
-#: mixer/mixer.c:114
+#: mixer/mixer.c:126
 msgid "Line"
 msgstr "线路"
 
-#: mixer/mixer.c:115
+#: mixer/mixer.c:127
 msgid "Microphone"
 msgstr "话筒"
 
-#: mixer/mixer.c:115
+#: mixer/mixer.c:127
 msgid "CD"
 msgstr "CD"
 
-#: mixer/mixer.c:115
+#: mixer/mixer.c:127
 msgid "Mix"
 msgstr "混音器"
 
-#: mixer/mixer.c:115
+#: mixer/mixer.c:127
 msgid "Pcm2"
 msgstr "波形2"
 
-#: mixer/mixer.c:116
+#: mixer/mixer.c:128
 msgid "Recording Level"
 msgstr "录音级别"
 
-#: mixer/mixer.c:116
+#: mixer/mixer.c:128
 msgid "Input Gain"
 msgstr "输入增益"
 
-#: mixer/mixer.c:116
+#: mixer/mixer.c:128
 msgid "Output Gain"
 msgstr "输出增益"
 
-#: mixer/mixer.c:117
+#: mixer/mixer.c:129
 msgid "Line1"
 msgstr "线路1"
 
-#: mixer/mixer.c:117
+#: mixer/mixer.c:129
 msgid "Line2"
 msgstr "线路2"
 
-#: mixer/mixer.c:117
+#: mixer/mixer.c:129
 msgid "Line3"
 msgstr "线路3"
 
-#: mixer/mixer.c:117
+#: mixer/mixer.c:129
 msgid "Digital1"
 msgstr "数码1"
 
-#: mixer/mixer.c:118
+#: mixer/mixer.c:130
 msgid "Digital2"
 msgstr "数码2"
 
-#: mixer/mixer.c:118
+#: mixer/mixer.c:130
 msgid "Digital3"
 msgstr "数码3"
 
-#: mixer/mixer.c:119
+#: mixer/mixer.c:131
 msgid "Phone Input"
 msgstr "话筒输入"
 
-#: mixer/mixer.c:119
+#: mixer/mixer.c:131
 msgid "Phone Output"
 msgstr "话筒输出"
 
 # battstat/battstat_applet.glade.h:10
-#: mixer/mixer.c:119
+#: mixer/mixer.c:131
 msgid "Video"
 msgstr "视频"
 
 # gweather/weather.c:172
-#: mixer/mixer.c:119
+#: mixer/mixer.c:131
 msgid "Radio"
 msgstr "收音机"
 
-#: mixer/mixer.c:119
+#: mixer/mixer.c:131
 msgid "Monitor"
 msgstr "监视器"
 
 # mixer/GNOME_MixerApplet.server.in.h:3 mixer/mixer.c:723
-#: mixer/mixer.c:176
+#: mixer/mixer.c:200
 msgid "Volume Control (muted)"
 msgstr "音量控制(静音)"
 
-#: mixer/mixer.c:177
+#: mixer/mixer.c:201
 msgid "No audio device"
 msgstr "没有音频设备"
 
 # mixer/mixer.c:182
-#: mixer/mixer.c:278
+#: mixer/mixer.c:518
 msgid ""
 "warning: this version of gmix was compiled with a different version of\n"
 "soundcard.h.\n"
 msgstr "警告：该版本的 gmix 是用不同版本的 soundcard.h 编译的。\n"
 
-#: mixer/mixer.c:632
+#: mixer/mixer.c:878
 #, c-format
 msgid "Couldn't open mixer device %s\n"
-msgstr ""
+msgstr "无法打开混音器设备 %s\n"
 
 # mixer/GNOME_MixerApplet.server.in.h:3 mixer/mixer.c:723
-#: mixer/mixer.c:801
+#: mixer/mixer.c:1047
 msgid "Volume Controller"
 msgstr "音量控制器"
 
-#: mixer/mixer.c:802
+#: mixer/mixer.c:1048
 msgid "Use Up/Down arrow keys to change volume"
 msgstr "使用上/下箭头键改变音量"
 
 #. Translators - The + and - refer to increasing and decreasing the volume.
 #. ** I don't know if there are sensible alternatives in other languages
-#: mixer/mixer.c:826
+#: mixer/mixer.c:1072
 msgid "+"
 msgstr "+"
 
-#: mixer/mixer.c:827
+#: mixer/mixer.c:1073
 msgid "-"
 msgstr "-"
 
 # mixer/mixer.c:724
-#: mixer/mixer.c:1076
+#: mixer/mixer.c:1347
 msgid "(C) 2001 Richard Hult"
 msgstr "(C) 2001 Richard Hult"
 
 # mixer/mixer.c:725
-#: mixer/mixer.c:1077
+#: mixer/mixer.c:1348
 msgid "The volume control lets you set the volume level for your desktop."
 msgstr "音量控制器使您能够在您的桌面上设定音量。"
 
 # mixer/GNOME_MixerApplet.server.in.h:3 mixer/mixer.c:723
-#: mixer/mixer.c:1220
+#: mixer/mixer.c:1495
 msgid "Volume Control Preferences"
 msgstr "音量控制器首选项"
 
 # gtik/gtik.c:1713
-#: mixer/mixer.c:1244
+#: mixer/mixer.c:1519
 msgid "Audio Channels"
 msgstr "声道"
 
 # drivemount/properties.c:340
-#: mixer/mixer.c:1260
+#: mixer/mixer.c:1535
 msgid "_Select channel to control:"
 msgstr "选择要控制的声道(_S)："
 
 # mixer/mixer.c:725
-#: mixer/mixer.c:1592
+#: mixer/mixer.c:1874
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr "音量控制器使您能够在您的桌面上设定音量"
 
@@ -4603,12 +4852,12 @@ msgstr "保存音量以便在启动时恢复"
 
 # modemlights/GNOME_ModemLightsApplet.server.in.h:2
 #: modemlights/GNOME_ModemLightsApplet.server.in.in.h:2
-#: modemlights/modemlights.c:133
+#: modemlights/modemlights.c:135 modemlights/modemlights.c:1582
 msgid "Modem Lights"
 msgstr "调制解调器指示"
 
 # modemlights/modemlights.c:207
-#: modemlights/modemlights.c:135
+#: modemlights/modemlights.c:137
 msgid ""
 "Released under the GNU general public license.\n"
 "A modem status indicator and dialer.\n"
@@ -4619,7 +4868,7 @@ msgstr ""
 "上方或左方的灯指示接收数据，下方或右方的灯指示发送数据。"
 
 # modemlights/modemlights.c:531
-#: modemlights/modemlights.c:485
+#: modemlights/modemlights.c:518
 msgid ""
 "You are currently connected.\n"
 "Do you want to disconnect?"
@@ -4628,28 +4877,28 @@ msgstr ""
 "想要断开吗？"
 
 # modemlights/properties.c:352
-#: modemlights/modemlights.c:489
+#: modemlights/modemlights.c:526
 msgid "_Disconnect"
 msgstr "断开(_D)"
 
 # modemlights/modemlights.c:546
-#: modemlights/modemlights.c:510
+#: modemlights/modemlights.c:553
 msgid "Do you want to connect?"
 msgstr "你想建立连接吗？"
 
 # modemlights/properties.c:322
-#: modemlights/modemlights.c:513
+#: modemlights/modemlights.c:560
 msgid "C_onnect"
 msgstr "连接(_O)"
 
 # modemlights/modemlights.c:574
-#: modemlights/modemlights.c:536
+#: modemlights/modemlights.c:584
 #, c-format
 msgid "%#.1fMb received / %#.1fMb sent / time: %.1d:%.2d"
 msgstr "接收 %#.1fMb / 发送 %#.1fMb / 时间： %.1d:%.2d"
 
 # modemlights/modemlights.c:579
-#: modemlights/modemlights.c:541
+#: modemlights/modemlights.c:589
 msgid "not connected"
 msgstr "未连接"
 
@@ -4922,7 +5171,7 @@ msgstr "背景(_K)："
 msgid "O_utline"
 msgstr "轮廓(_U)"
 
-#: modemlights/properties.c:624 multiload/properties.c:533
+#: modemlights/properties.c:624 multiload/properties.c:534
 msgid "Colors"
 msgstr "颜色"
 
@@ -4964,12 +5213,12 @@ msgstr "系统负载指示器"
 
 # multiload/GNOME_MultiLoadApplet_Factory.server.in.h:2
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:2
-#: multiload/main.c:79
+#: multiload/main.c:80
 msgid "System Monitor"
 msgstr "系统监视器"
 
 # multiload/GNOME_MultiLoadApplet_Factory.server.in.h:2
-#: multiload/GNOME_MultiloadApplet.xml.h:2
+#: multiload/GNOME_MultiloadApplet.xml.h:3
 msgid "_Open System Monitor"
 msgstr "打开系统监视器(_O)"
 
@@ -4979,12 +5228,12 @@ msgid "CPU Load"
 msgstr "CPU 负载"
 
 # multiload/loadavg.c:94
-#: multiload/loadavg.c:107 multiload/main.c:281
+#: multiload/loadavg.c:107 multiload/main.c:345
 msgid "Load Average"
 msgstr "负载均值"
 
 # multiload/main.c:55
-#: multiload/main.c:81
+#: multiload/main.c:82
 msgid ""
 "Released under the GNU General Public License.\n"
 "\n"
@@ -4997,32 +5246,32 @@ msgstr ""
 "器。"
 
 # multiload/main.c:177 multiload/properties.c:369
-#: multiload/main.c:273 multiload/properties.c:558
+#: multiload/main.c:337 multiload/properties.c:559
 msgid "Processor"
 msgstr "处理器"
 
 # multiload/main.c:179 multiload/properties.c:375
-#: multiload/main.c:275 multiload/properties.c:565
+#: multiload/main.c:339 multiload/properties.c:566
 msgid "Memory"
 msgstr "内存"
 
 # multiload/main.c:181 multiload/properties.c:381
-#: multiload/main.c:277 multiload/properties.c:573
+#: multiload/main.c:341 multiload/properties.c:574
 msgid "Network"
 msgstr "网络"
 
 # multiload/main.c:183 multiload/properties.c:387
-#: multiload/main.c:279 multiload/properties.c:581
+#: multiload/main.c:343 multiload/properties.c:582
 msgid "Swap Space"
 msgstr "交换空间"
 
 # multiload/main.c:185
-#: multiload/main.c:283
+#: multiload/main.c:347
 msgid "Resource"
 msgstr "资源"
 
 # multiload/main.c:197
-#: multiload/main.c:294
+#: multiload/main.c:358
 #, c-format
 msgid ""
 "%s:\n"
@@ -5148,139 +5397,139 @@ msgid "Net Load"
 msgstr "网络负载"
 
 # multiload/properties.c:256
-#: multiload/properties.c:331
+#: multiload/properties.c:332
 msgid "Monitored Resources"
 msgstr "已监视的资源"
 
 # multiload/properties.c:264
-#: multiload/properties.c:356
+#: multiload/properties.c:357
 msgid "_Processor"
 msgstr "处理器(_P)"
 
 # multiload/properties.c:274
-#: multiload/properties.c:369
+#: multiload/properties.c:370
 msgid "_Memory"
 msgstr "内存(_M)"
 
 # multiload/properties.c:284
-#: multiload/properties.c:382
+#: multiload/properties.c:383
 msgid "_Network"
 msgstr "网络(_N)"
 
 # multiload/main.c:183 multiload/properties.c:387
-#: multiload/properties.c:395
+#: multiload/properties.c:396
 msgid "S_wap Space"
 msgstr "交换空间(_W)"
 
 # multiload/cpuload.c:39
-#: multiload/properties.c:408
+#: multiload/properties.c:409
 msgid "_Load"
 msgstr "负载(_L)"
 
 # multiload/properties.c:324
-#: multiload/properties.c:455
+#: multiload/properties.c:456
 msgid "System m_onitor width: "
 msgstr "系统监视器宽度(_O)："
 
 # multiload/properties.c:326
-#: multiload/properties.c:457
+#: multiload/properties.c:458
 msgid "System m_onitor height: "
 msgstr "系统监视器高度(_O)："
 
 # multiload/properties.c:345
-#: multiload/properties.c:496
+#: multiload/properties.c:497
 msgid "Sys_tem monitor update interval: "
 msgstr "系统监视器更新间隔(_T)："
 
 # multiload/properties.c:356
-#: multiload/properties.c:522
+#: multiload/properties.c:523
 msgid "milliseconds"
 msgstr "毫秒"
 
 # multiload/properties.c:370
-#: multiload/properties.c:560 multiload/properties.c:567
+#: multiload/properties.c:561 multiload/properties.c:568
 msgid "_User"
 msgstr "用户(_U)"
 
 # multiload/properties.c:371
-#: multiload/properties.c:561
+#: multiload/properties.c:562
 msgid "S_ystem"
 msgstr "系统(_Y)"
 
 # multiload/properties.c:372
-#: multiload/properties.c:562
+#: multiload/properties.c:563
 msgid "N_ice"
 msgstr "优先级(_I)"
 
 # multiload/properties.c:373
-#: multiload/properties.c:563
+#: multiload/properties.c:564
 msgid "I_dle"
 msgstr "闲置(_D)"
 
 # multiload/properties.c:377
-#: multiload/properties.c:568
+#: multiload/properties.c:569
 msgid "Sh_ared"
 msgstr "共享(_A)"
 
 # multiload/properties.c:378
-#: multiload/properties.c:569
+#: multiload/properties.c:570
 msgid "_Buffers"
 msgstr "缓冲(_B)"
 
-#: multiload/properties.c:570
+#: multiload/properties.c:571
 msgid "Cach_ed"
 msgstr "缓存(_E)"
 
-#: multiload/properties.c:571
+#: multiload/properties.c:572
 msgid "F_ree"
 msgstr "空闲(_R)"
 
 # multiload/properties.c:382
-#: multiload/properties.c:575
+#: multiload/properties.c:576
 msgid "_SLIP"
 msgstr "_SLIP"
 
 # multiload/properties.c:383
-#: multiload/properties.c:576
+#: multiload/properties.c:577
 msgid "PL_IP"
 msgstr "PL_IP"
 
 # multiload/properties.c:384
-#: multiload/properties.c:577
+#: multiload/properties.c:578
 msgid "_Ethernet"
 msgstr "以太网(_E)"
 
 # multiload/properties.c:376 multiload/properties.c:385
-#: multiload/properties.c:578
+#: multiload/properties.c:579
 msgid "Othe_r"
 msgstr "其它(_R)"
 
 # modemlights/properties.c:418 modemlights/properties.c:423
 # modemlights/properties.c:442
-#: multiload/properties.c:579 multiload/properties.c:589
+#: multiload/properties.c:580 multiload/properties.c:590
 msgid "_Background"
 msgstr "背景(_B)"
 
 # multiload/properties.c:388
-#: multiload/properties.c:583
+#: multiload/properties.c:584
 msgid "_Used"
 msgstr "已用(_U)"
 
-#: multiload/properties.c:584
+#: multiload/properties.c:585
 msgid "_Free"
 msgstr "空闲(_F)"
 
-#: multiload/properties.c:586
+#: multiload/properties.c:587
 msgid "Load"
 msgstr "负载"
 
 # multiload/loadavg.c:94
-#: multiload/properties.c:588
+#: multiload/properties.c:589
 msgid "_Average"
 msgstr "均值(_A)"
 
 # multiload/properties.c:409
-#: multiload/properties.c:609
+#: multiload/properties.c:613
 msgid "System Monitor Preferences"
 msgstr "系统监视器首选项"
 
@@ -5294,8 +5543,8 @@ msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "在桌面上创建、查看和管理置顶备忘录"
 
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:3
-#: stickynotes/stickynotes_applet.c:249 stickynotes/stickynotes_applet.c:355
-#: stickynotes/stickynotes_applet_callbacks.c:200
+#: stickynotes/stickynotes_applet.c:307 stickynotes/stickynotes_applet.c:419
+#: stickynotes/stickynotes_applet_callbacks.c:240
 msgid "Sticky Notes"
 msgstr "置顶备忘录"
 
@@ -5321,18 +5570,13 @@ msgstr "新建备忘录(_N)"
 msgid "_Show Notes"
 msgstr "显示备忘录(_S)"
 
-#: stickynotes/stickynotes.c:316
+#: stickynotes/stickynotes.c:334
 msgid "Locked note"
 msgstr "锁定的备忘录"
 
-#: stickynotes/stickynotes.c:321
+#: stickynotes/stickynotes.c:339
 msgid "Unlocked note"
 msgstr "取消锁定的备忘录"
-
-# gtik/gtik.c:1489
-#: stickynotes/stickynotes.glade.h:3
-msgid "<b>Behavior</b>"
-msgstr "<b>行为</b>"
 
 #: stickynotes/stickynotes.glade.h:4
 msgid "<b>Default Note Properties</b>"
@@ -5497,7 +5741,7 @@ msgid "_Lock Note"
 msgstr "锁定备忘录(_L)"
 
 # panel-menu/panel-menu-preferences.c:78
-#: stickynotes/stickynotes.glade.h:45 gswitchit/GNOME_GSwitchItApplet.xml.h:5
+#: stickynotes/stickynotes.glade.h:45
 msgid "_Properties..."
 msgstr "属性(_P)..."
 
@@ -5662,7 +5906,7 @@ msgid "Whether to use the default system font"
 msgstr "是否使用系统默认字体"
 
 # multiload/main.c:197
-#: stickynotes/stickynotes_applet.c:355
+#: stickynotes/stickynotes_applet.c:419
 #, c-format
 msgid ""
 "%s\n"
@@ -5674,11 +5918,11 @@ msgstr[0] ""
 "%s\n"
 "%d 个备忘录"
 
-#: stickynotes/stickynotes_applet_callbacks.c:202
+#: stickynotes/stickynotes_applet_callbacks.c:242
 msgid "(c) 2002-2003 Loban A Rahman"
 msgstr "(c) 2002-2003 Loban A Rahman"
 
-#: stickynotes/stickynotes_applet_callbacks.c:203
+#: stickynotes/stickynotes_applet_callbacks.c:243
 msgid "Sticky Notes for the Gnome Desktop Environment"
 msgstr "用于 Gnome 桌面环境的置顶备忘录"
 
@@ -5687,15 +5931,15 @@ msgid "Monitor the quality of a wireless network link"
 msgstr "监视无线网络链路的信号质量"
 
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:3
-#: wireless/wireless-applet.c:575
+#: wireless/wireless-applet.c:588 wireless/wireless-applet.c:835
 msgid "Wireless Link Monitor"
 msgstr "无线网络链路监视器"
 
-#: wireless/wireless-applet.c:358 wireless/wireless-applet.c:495
+#: wireless/wireless-applet.c:365 wireless/wireless-applet.c:502
 msgid "No Wireless Devices"
 msgstr "没有无线设备"
 
-#: wireless/wireless-applet.c:360
+#: wireless/wireless-applet.c:367
 msgid ""
 "There doesn't seem to be any wireless devices configured on your system.\n"
 "Please verify your configuration if you think this is incorrect."
@@ -5704,14 +5948,19 @@ msgstr ""
 "如果您觉得这是不正常的，请检查您的配置情况。"
 
 # gkb-new/gkb.c:578
-#: wireless/wireless-applet.c:577
+#: wireless/wireless-applet.c:590
 msgid "(C) 2001, 2002 Free Software Foundation "
 msgstr "(C) 2001，2002 自由软件基金会 "
 
 # battstat/battstat_applet.c:810
-#: wireless/wireless-applet.c:578
+#: wireless/wireless-applet.c:591
 msgid "This utility shows the status of a wireless link."
 msgstr "该工具显示无线网络链路的状态。"
+
+# battstat/battstat_applet.c:810
+#: wireless/wireless-applet.c:836
+msgid "This utility shows the status of a wireless link"
+msgstr "该工具显示无线网络链路的状态"
 
 #: wireless/wireless-applet.glade.h:1
 msgid "Show signal strength in _percentage"
@@ -5727,457 +5976,3 @@ msgstr "无线网络链路监视器首选项"
 msgid "_Monitored device:"
 msgstr "监视的设备(_M)："
 
-#: gswitchit/GNOME_GSwitchItApplet.server.in.in.h:1
-msgid "GNOME XKB applet"
-msgstr ""
-
-# gtik/GNOME_GtikApplet.server.in.h:3
-#: gswitchit/GNOME_GSwitchItApplet.server.in.in.h:2
-#, fuzzy
-msgid "GNOME XKB applet factory"
-msgstr "Gtik 小程序工厂"
-
-#: gswitchit/GNOME_GSwitchItApplet.server.in.in.h:3
-#, fuzzy
-msgid "GSwitchIt applet"
-msgstr "小程序的宽度"
-
-# gweather/GNOME_GWeatherApplet_Factory.server.in.h:3
-#: gswitchit/GNOME_GSwitchItApplet.server.in.in.h:4
-#, fuzzy
-msgid "GSwitchIt applet factory"
-msgstr "Gnome 天气小程序工厂"
-
-#: gswitchit/GNOME_GSwitchItApplet.xml.h:2
-msgid "_Groups"
-msgstr ""
-
-#: gswitchit/GNOME_GSwitchItApplet.xml.h:4
-msgid "_Plugins..."
-msgstr ""
-
-# gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:3
-#: gswitchit/gswitchit-applet.c:96
-#, fuzzy, c-format
-msgid "Keyboard switcher (%s)"
-msgstr "键盘布局切换器"
-
-#: gswitchit/gswitchit-applet.c:483
-msgid "Copyright Sergey V. Udaltsov (C) 1999-2002"
-msgstr ""
-
-#: gswitchit/gswitchit-applet.c:484
-msgid "XKB toolkit for GNOME"
-msgstr ""
-
-#: gswitchit/gswitchit-applet.c:613
-msgid "XKB initialization error"
-msgstr ""
-
-#: gswitchit/gswitchit-applet.c:622
-msgid "Error loading XKB configuration registry"
-msgstr ""
-
-#: capplets/gswitchit_capplet.c:142
-#, fuzzy
-msgid ""
-"Make the layout accessible from the applet popup menu ONLY.\n"
-"No way to switch to this layout using the keyboard."
-msgstr ""
-"让布局仅能够从插件的弹出菜单中使用。\n"
-"无法用键盘切换到这种布局。"
-
-#: capplets/gswitchit_capplet.c:224
-msgid "Exclude from keyboard switching"
-msgstr ""
-
-#: capplets/gswitchit_capplet.c:250
-msgid "not used"
-msgstr "未使用"
-
-#: capplets/gswitchit_capplet.c:307 capplets/gswitchit_plugins.c:288
-#, c-format
-msgid "Failed to init GConf: %s\n"
-msgstr "初始化GConf失败：%s\n"
-
-#: capplets/gswitchit-plugins.glade.h:1
-msgid "Activate more plugins"
-msgstr ""
-
-#: capplets/gswitchit-plugins.glade.h:2
-msgid "Add plugin"
-msgstr ""
-
-#: capplets/gswitchit-plugins.glade.h:3
-#, fuzzy
-msgid "Close the dialog"
-msgstr "选择布局。"
-
-#: capplets/gswitchit-plugins.glade.h:4
-msgid "Configure the selected plugin"
-msgstr ""
-
-#: capplets/gswitchit-plugins.glade.h:5
-msgid "Deactivate selected plugin"
-msgstr ""
-
-#: capplets/gswitchit-plugins.glade.h:6
-msgid "Decrease the plugin priority"
-msgstr ""
-
-#: capplets/gswitchit-plugins.glade.h:7
-#, fuzzy
-msgid "GSwitchIt Plugins"
-msgstr "属性"
-
-#: capplets/gswitchit-plugins.glade.h:8
-msgid "Increase the plugin priority"
-msgstr ""
-
-#: capplets/gswitchit-plugins.glade.h:9
-#, fuzzy
-msgid "The list of active plugins"
-msgstr "选择切换快捷键。"
-
-#: capplets/gswitchit-plugins.glade.h:10
-msgid "_Active plugins"
-msgstr ""
-
-#: capplets/gswitchit-plugins.glade.h:11
-msgid "_Available plugins:"
-msgstr ""
-
-#: capplets/gswitchit-properties.glade.h:1
-#, fuzzy
-msgid "Choose the default group (for newly created windows)."
-msgstr "选择默认布局(用于新创建的窗口)。"
-
-#: capplets/gswitchit-properties.glade.h:2
-#, fuzzy
-msgid "GSwitchIt Properties"
-msgstr "属性"
-
-#: capplets/gswitchit-properties.glade.h:3
-#, fuzzy
-msgid "Keep separate group for each application window."
-msgstr "独立每个窗口的布局"
-
-#: capplets/gswitchit-properties.glade.h:4
-msgid "Keep the state of indicators separately for each application window."
-msgstr "为每个程序的窗口单独保留指示器的状态。"
-
-#: capplets/gswitchit-properties.glade.h:5
-#, fuzzy
-msgid "Save/restore _indicators with group"
-msgstr "保存/恢复布局的指示器(_I)"
-
-#: capplets/gswitchit-properties.glade.h:6
-#, fuzzy
-msgid "Separate _group for each window"
-msgstr "每个窗口独立布局(_L)"
-
-#: capplets/gswitchit-properties.glade.h:7
-msgid "Show national flags as indicators of corresponding layouts"
-msgstr ""
-
-#: capplets/gswitchit-properties.glade.h:8
-msgid "Use _flags as indicators"
-msgstr ""
-
-#: capplets/gswitchit-properties.glade.h:9
-#, fuzzy
-msgid "_Default group:"
-msgstr "默认布局(_D)"
-
-#: gswitchit.schemas.in.h:1
-msgid "Beep on group switch"
-msgstr ""
-
-#: gswitchit.schemas.in.h:2
-msgid "Debug level"
-msgstr "调试级别"
-
-#: gswitchit.schemas.in.h:3
-msgid "Default group, assigned on window creation"
-msgstr ""
-
-#: gswitchit.schemas.in.h:4
-msgid "Keep and manage separate group per window"
-msgstr ""
-
-#: gswitchit.schemas.in.h:5
-#, fuzzy
-msgid "Save/restore indicators together with layout groups"
-msgstr "保存/恢复布局的指示器(_I)"
-
-#: gswitchit.schemas.in.h:6
-#, fuzzy
-msgid "Secondary groups"
-msgstr "中等的"
-
-#: gswitchit.schemas.in.h:7
-msgid "Show flags in the applet"
-msgstr ""
-
-#: gswitchit.schemas.in.h:8
-msgid "Show flags in the applet to indicate the current layout"
-msgstr ""
-
-#: gswitchit.schemas.in.h:9
-msgid "Show layout names instead of group names"
-msgstr ""
-
-#: gswitchit.schemas.in.h:10
-msgid ""
-"Show layout names instead of group names (only for versions of XFree "
-"supporting multiple layouts)"
-msgstr ""
-
-#~ msgid "There was an error displaying help : %s"
-#~ msgstr "显示帮助时发生错误：%s"
-
-#, fuzzy
-#~ msgid "Apply XKB configuration and quit"
-#~ msgstr "XKB配置已被修改"
-
-#, fuzzy
-#~ msgid ""
-#~ "Error activating XKB configuration.\n"
-#~ "Probably internal X server problem.\n"
-#~ "\n"
-#~ "X server version data:\n"
-#~ "%s\n"
-#~ "%d%s"
-#~ msgstr "XKB配置已被修改"
-
-#~ msgid "Could not initialize Bonobo"
-#~ msgstr "无法初始化 Bonobo"
-
-#~ msgid "Failed to init XklConfigRegistry\n"
-#~ msgstr "初始化 XklConfigRegistry 失败\n"
-
-#~ msgid "..."
-#~ msgstr "..."
-
-#~ msgid "Bonobo Error"
-#~ msgstr "Bonobo 错误"
-
-#, fuzzy
-#~ msgid "Configure keyboard layouts"
-#~ msgstr "键盘型号(_M)："
-
-#, fuzzy
-#~ msgid "Keyboard layouts"
-#~ msgstr "键盘型号(_M)："
-
-#~ msgid "Choose the layout."
-#~ msgstr "选择布局。"
-
-#~ msgid "Choose the layout. Note: one layout can provide several groups."
-#~ msgstr "选择布局。注意：一个布局可能提供多个组。"
-
-#~ msgid "Choose the model of the keyboard (brand, number of keys, etc.)."
-#~ msgstr "选择键盘型号(品牌、按键数量等)。"
-
-#~ msgid "Clear"
-#~ msgstr "清除"
-
-#~ msgid "Clear."
-#~ msgstr "清除。"
-
-#~ msgid "Keyboard _model:"
-#~ msgstr "键盘型号(_M)："
-
-#, fuzzy
-#~ msgid "Keyboard layouts' settings: "
-#~ msgstr "键盘型号(_M)："
-
-#~ msgid "Options 1"
-#~ msgstr "选项 1"
-
-#~ msgid "Options 2"
-#~ msgstr "选项 2"
-
-#, fuzzy
-#~ msgid ""
-#~ "This version of XFree86 does not support multiple layouts, so only one "
-#~ "layout can be choosen."
-#~ msgstr "该版本的 XFree86 不支持多个布局，只能选用一个布局。"
-
-#, fuzzy
-#~ msgid "Use custom settings, ignore global configuration set in XF86Config."
-#~ msgstr "使用自定义的XKB设置，忽略 XFree86Config 中的全局配置。"
-
-#, fuzzy
-#~ msgid "Use global configuration set in XF86Config."
-#~ msgstr "使用 XF86Config 中的全局 XKB 配置。"
-
-#~ msgid "_Custom"
-#~ msgstr "自定义(_C)"
-
-#~ msgid "_Global Preconfigured"
-#~ msgstr "全局预配置(_G)"
-
-#~ msgid "_Layouts:"
-#~ msgstr "布局(_L)："
-
-#, fuzzy
-#~ msgid "_Preview"
-#~ msgstr "预览"
-
-#~ msgid "_Switch shortcut"
-#~ msgstr "切换快捷键(_S)"
-
-#~ msgid "Default XKB setting"
-#~ msgstr "默认XKB设置"
-
-#~ msgid "Right Control"
-#~ msgstr "右Control键"
-
-#~ msgid "Left Control"
-#~ msgstr "左Control键"
-
-#~ msgid "Right Shift"
-#~ msgstr "右Shift键"
-
-#~ msgid "Left Shift"
-#~ msgstr "左Shift键"
-
-#~ msgid "Grave"
-#~ msgstr "严重的"
-
-#, fuzzy
-#~ msgid "The id of active switchcut"
-#~ msgstr "选择切换快捷键。"
-
-#, fuzzy
-#~ msgid "XKB keyboard model"
-#~ msgstr "键盘型号(_M)："
-
-#, fuzzy
-#~ msgid "XKB options"
-#~ msgstr "XKB设置："
-
-#, fuzzy
-#~ msgid "Choose the color"
-#~ msgstr "选择布局。"
-
-#, fuzzy
-#~ msgid "Highlights the applet on the GNOME panel"
-#~ msgstr "GNOME面板的键盘选择小程序"
-
-#, fuzzy
-#~ msgid "Keyboard events"
-#~ msgstr "键盘型号(_M)："
-
-#, fuzzy
-#~ msgid "Test GSwitchIt plugin"
-#~ msgstr "属性"
-
-#~ msgid "Enable _beep"
-#~ msgstr "开启beep声(_B)"
-
-#~ msgid "Use the system beep to indicate the switch."
-#~ msgstr "使用系统响铃来表明切换。"
-
-#~ msgid "Secondary"
-#~ msgstr "中等的"
-
-#, fuzzy
-#~ msgid "XKB Properties"
-#~ msgstr "属性"
-
-#~ msgid "XKB settings: "
-#~ msgstr "XKB设置："
-
-#, fuzzy
-#~ msgid "General XKB Properties"
-#~ msgstr "属性"
-
-#~ msgid "To _default"
-#~ msgstr "默认(_D)"
-
-#~ msgid "To _fit"
-#~ msgstr "适合(_F)"
-
-#~ msgid "Update the preview. Can take some time."
-#~ msgstr "更新预览。需要一点时间。"
-
-#~ msgid "Zoom"
-#~ msgstr "缩放"
-
-#~ msgid "Zoom in."
-#~ msgstr "放大。"
-
-#~ msgid "Zoom out."
-#~ msgstr "缩小。"
-
-#~ msgid "Zoom to default."
-#~ msgstr "缩放至默认大小。"
-
-#~ msgid "Zoom to fit."
-#~ msgstr "缩放以适合。"
-
-#~ msgid "_In"
-#~ msgstr "放大(_I)"
-
-#~ msgid "_Out"
-#~ msgstr "缩小(_O)"
-
-#~ msgid "_Update preview"
-#~ msgstr "更新预览(_U)"
-
-#~ msgid "GSwitchIt web page @ Sourceforge.net"
-#~ msgstr "GSwitchIt web page @ Sourceforge.net"
-
-#~ msgid "DLEVEL"
-#~ msgstr "DLEVEL"
-
-#~ msgid "Display notification on XKB configuration changes"
-#~ msgstr "XKB配置改变时显示通告"
-
-#~ msgid ""
-#~ "Cannot grab switchcut.\n"
-#~ "Probably, another instance of the applet is already running."
-#~ msgstr ""
-#~ "无法获取快捷键。\n"
-#~ "可能有另一程序实例在运行。"
-
-#~ msgid "Layouts"
-#~ msgstr "布局"
-
-#~ msgid "Home page..."
-#~ msgstr "主页..."
-
-#~ msgid "Press your switchcut key(s).."
-#~ msgstr "按下快捷方式键..."
-
-#~ msgid "Left Control - Right Control"
-#~ msgstr "左Control键 - 右Control键"
-
-#~ msgid "Left Shift - Right Shift"
-#~ msgstr "左Shift键 - 右Shift键"
-
-#~ msgid "Alt - Left Control"
-#~ msgstr "Alt键 - 左Control键"
-
-#~ msgid "Alt - Right Control"
-#~ msgstr "Alt键 - 右Control键"
-
-#~ msgid "Alt - Left Shift"
-#~ msgstr "Alt键 - 左Shift键"
-
-#~ msgid "Alt - Right Shift"
-#~ msgstr "Alt键 - 右Shift键"
-
-#~ msgid "Control - Left Shift"
-#~ msgstr "Control键 - 左Shift键"
-
-#~ msgid "Control - Right Shift"
-#~ msgstr "Control键 - 右Shift键"
-
-#~ msgid "None"
-#~ msgstr "无"
-
-#~ msgid "User defined:"
-#~ msgstr "用户自定义："
