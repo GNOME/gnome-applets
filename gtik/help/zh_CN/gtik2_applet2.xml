@@ -1,13 +1,13 @@
 <?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
-"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+"http://cdedesk2.ireland/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "1.104.0">
-  <!ENTITY manrevision "2.2">
-  <!ENTITY date "August 2002">
+  <!ENTITY appletversion "2.3.6">
+  <!ENTITY manrevision "2.4.1">
+  <!ENTITY date "December 2003">
   <!ENTITY applet "Stock Ticker">
 ]>
 
-<!-- 
+<!-- http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd
       (Do not remove this comment block.)
   Maintained by the GNOME Documentation Project
   http://developer.gnome.org/projects/gdp
@@ -22,13 +22,14 @@
   <articleinfo>
 	 <title>&applet; 小程序手册 V&manrevision;</title>
 	 <copyright> 
-		<year>2002</year>  
+		<year>2002</year> 
+		<year>2003</year> 
 		<holder>Sun Microsystems</holder> 
 	 </copyright> 
 <!-- translators: uncomment this:
 
   <copyright>
-   <year>2002</year>
+   <year>2003</year>
    <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
   </copyright>
 
@@ -45,7 +46,7 @@
 		  <surname>GNOME Documentation Team</surname> 
 		  <affiliation> 
 			 <orgname>Sun Microsystems</orgname> 
-			 <address> <email>gdocteam@sun.com</email> </address>
+			 <address></address>
 		  </affiliation>
 		</author>
       <!-- This is appropriate place for other contributors: translators,
@@ -63,38 +64,53 @@
 	 </authorgroup>
 
 	 <revhistory>
-		<revision> 
-		  <revnumber>&applet; 小程序手册 V&manrevision;</revnumber> 
+		<revision> <revnumber>&applet; 小程序手册 V&manrevision;</revnumber> 
 		  <date>&date;</date> 
 		  <revdescription> 
-			 <para role="author">Sun GNOME Documentation Team
-				<email>gdocteam@sun.com</email></para>
+			 <para role="author">Sun GNOME Documentation Team</para>
 			 <para role="publisher">GNOME Documentation Project</para>
 		  </revdescription>
 		</revision>
-		<revision> 
-		  <revnumber>股票行情自动收录器小程序手册 V2.1</revnumber> 
+		<revision><revnumber>股票行情自动收录器小程序手册 V2.4</revnumber> 
+		  <date>2003 年 9 月</date> 
+		  <revdescription> 
+			 <para role="author">Sun GNOME Documentation Team</para>
+			 <para role="publisher">GNOME Documentation Project</para>
+		  </revdescription>
+		</revision>
+		<revision> <revnumber>股票行情自动收录器小程序手册 V2.3</revnumber> 
+		  <date>2003 年 1 月</date> 
+		  <revdescription> 
+			 <para role="author">Sun GNOME Documentation Team</para>
+			 <para role="publisher">GNOME Documentation Project</para>
+		  </revdescription>
+		</revision>
+		<revision> <revnumber>股票行情自动收录器小程序手册 V2.2</revnumber> 
+		  <date>2002 年 8 月</date> 
+		  <revdescription> 
+			 <para role="author">Sun GNOME Documentation Team</para>
+			 <para role="publisher">GNOME Documentation Project</para>
+		  </revdescription>
+		</revision>
+		<revision> <revnumber>股票行情自动收录器小程序手册 V2.1</revnumber> 
 		  <date>2002 年 7 月</date> 
 		  <revdescription> 
-			 <para role="author">Sun GNOME Documentation Team
-				<email>gdocteam@sun.com</email></para>
+			 <para role="author">Sun GNOME Documentation Team</para>
 			 <para role="publisher">GNOME Documentation Project</para>
 		  </revdescription>
 		</revision>
 		<revision> 
-		  <revnumber>股票行情自动收录器小程序手册 V2.0</revnumber> 
+<revnumber>股票行情自动收录器小程序手册 V2.0</revnumber> 
 		  <date>2002 年 5 月</date> 
 		  <revdescription> 
-			 <para role="author">Sun GNOME Documentation Team
-				<email>gdocteam@sun.com</email></para>
+			 <para role="author">Sun GNOME Documentation Team</para>
 			 <para role="publisher">GNOME Documentation Project</para>
 		  </revdescription>
 		</revision>
 	 </revhistory>
 	 <releaseinfo> 本手册介绍 &applet; &appletversion; 版。
 		</releaseinfo>
-	 <legalnotice> 
-		<title>反馈</title>
+	 <legalnotice><title>反馈</title>
 		<para>要报告关于 &applet; 小程序或本手册的错误或提出建议，请遵循 <ulink url="ghelp:gnome-feedback" type="help">GNOME 反馈页</ulink>中的指导。</para>
 		
 	 </legalnotice>
@@ -103,18 +119,16 @@
 	 <primary>股票行情自动收录器</primary> 
   </indexterm> 
     <indexterm> 
-	 <primary>自动收录器,股票行情</primary> 
+	 <primary>自动收录器, 股票行情</primary> 
   </indexterm> 
 <!-- ============= Document Body ============================= -->
 
-<sect1 id="gtik-introduction">
-<title>简介</title>
+<sect1 id="gtik-introduction"><title>简介</title>
 	 <!-- ==== Figure ============================================= -->
-	 <figure id="stockticker-fig"> 
-		<title>&applet; 小程序</title>
+	 <figure id="stockticker-fig"><title>&applet; 小程序</title>
 		<screenshot>
 		  <mediaobject>
-			 <imageobject><imagedata fileref="figures/gtik_applet.png"  format="PNG"/> 
+			 <imageobject><imagedata fileref="figures/gtik_applet.png" format="PNG"/> 
 			 </imageobject>
 			 <textobject>
 				<phrase>显示股票行情自动收录器小程序。包含滚动显示区域，向后按钮和向前按钮。</phrase>
@@ -124,7 +138,6 @@
 	 </figure>
     	 <!-- ==== End of Figure ======================================= -->
 <para><application>&applet;</application> 小程序会从互联网下载当前的股票报价，并将报价显示在该小程序的滚动显示区域中。该小程序从 Yahoo!  Finance 下载股票行情信息。 </para>
-<para>要将 <application>&applet;</application> 添加到面板，请右击该面板，然后选择<menuchoice><guimenu>"添加到面板"</guimenu><guisubmenu>"附件"</guisubmenu><guimenuitem>"股票行情自动收录器"</guimenuitem></menuchoice>。</para>
 <note id="proxies-note-1">
 <para>如果您的计算机安装在防火墙后面，必须使用代理服务器才能成功运行 <application>&applet;</application>。
 有关如何指定代理服务器的更多信息，请参阅 <xref linkend="gtik-set-proxy"/>。</para>
@@ -137,149 +150,144 @@
 <listitem><para>报价的跌涨金额。</para></listitem>
 <listitem><para>报价的跌涨百分比。</para></listitem>
 </itemizedlist>
+
+    <sect2 id="gtik-introduction-add"><title>向面板中添加 &applet;</title>
+      <para>要向面板中添加 &applet;，请执行下列步骤：
+     </para>
+      <orderedlist>
+        <listitem>
+          <para>右击面板。
+          </para>
+        </listitem>
+        <listitem>
+          <para>选择<menuchoice><guimenu>添加到面板</guimenu><guisubmenu>附件</guisubmenu><guimenuitem>&applet;</guimenuitem></menuchoice>。
+          </para>
+        </listitem>
+      </orderedlist>
+    </sect2>
+
 </sect1>
 
-<sect1 id="gtik-usage">
-<title>用法</title>
+<sect1 id="gtik-usage"><title>用法</title>
 
-<sect2 id="gtik-move-forward-back">
-<title>在股票行情显示区域中向前或向后移动</title>
+<sect2 id="gtik-move-forward-back"><title>在股票行情显示区域中向前或向后移动</title>
 <para>要在滚动显示区域中向前或向后移动，可使用位于该小程序显示区域右侧和左侧的箭头按钮。</para>
 </sect2>
 
-<sect2 id="gtik-add-stocks">
-<title>将公司股票行情报价添加到小程序</title>
+<sect2 id="gtik-add-stocks"><title>将公司股票行情报价添加到小程序</title>
 <para>有关如何向小程序显示区域添加股票行情报价的信息，请参阅 <xref linkend="gtik-settings-symbols"/>。</para>
 </sect2>
 
-<sect2 id="gtik-refresh">
-<title>更新显示</title>
-<para><application>&applet;</application> 自动以小程序首选项中指定的频率更新股票行情信息。 有关小程序首选项的更多信息，请参阅 <xref linkend="gtik-settings-behavior"/>。要立即更新显示在该小程序中的信息，请右击该小程序，然后选择<guimenuitem>"刷新"</guimenuitem>。 </para>
+<sect2 id="gtik-refresh"><title>更新显示</title>
+<para><application>&applet;</application> 自动以小程序首选项中指定的频率更新股票行情信息。 有关小程序首选项的更多信息，请参阅 <xref linkend="gtik-settings-behavior"/>。要立即更新显示在该小程序中的信息，请右击该小程序，然后选择<guimenuitem>更新</guimenuitem>。 </para>
 </sect2>
 
 </sect1>
 
-<sect1 id="gtik-settings">
-<title>首选项</title>
+<sect1 id="gtik-settings"><title>首选项</title>
 
-<sect2 id="gtik-set-proxy">
-<title>设置代理服务器</title>
+<sect2 id="gtik-set-proxy"><title>设置代理服务器</title>
 <para>如果您的计算机安装在防火墙后面，必须使用代理服务器才能成功运行 <application>&applet;</application>。
-要将 GNOME 配置为使用代理服务器，请选择<menuchoice><guimenu>"应用程序"</guimenu><guisubmenu>"桌面首选项"</guisubmenu><guimenuitem>"网络代理"</guimenuitem></menuchoice>。</para>
+要配置 GNOME 使用代理服务器，请使用首选项工具指定用于互联网 连接的网络代理服务器。</para>
 </sect2>
 
-<sect2 id="gtik-configure">
-<title>配置 &applet;</title>
-<para>要配置 <application>&applet;</application>，请右击该小程序，然后选择<guimenu>"首选项"</guimenu>。 
-<guilabel>"股票行情自动收录器首选项"</guilabel>对话框包含以下选项卡式部分：</para>
+<sect2 id="gtik-configure"><title>配置 &applet;</title>
+<para>要配置 <application>&applet;</application>，请右击该小程序，然后选择<guimenu>首选项</guimenu>。 
+<guilabel>股票行情自动收录器首选项</guilabel>对话框包含以下选项卡式部分：</para>
 <itemizedlist>
 <listitem><para><xref linkend="gtik-settings-symbols"/></para></listitem>
 <listitem><para><xref linkend="gtik-settings-behavior"/></para></listitem>
 <listitem><para><xref linkend="gtik-settings-appearance"/></para></listitem>
 </itemizedlist>
 
-<sect3 id="gtik-settings-symbols">
-<title>代码</title>
-<para><guilabel>"代码"</guilabel>选项卡式部分使您能够将股票行情报价添加到该小程序显示中，或者将其从中删除掉。</para>
+<sect3 id="gtik-settings-symbols"><title>代码</title>
+<para><guilabel>代码</guilabel>选项卡式部分使您能够在该小程序显示中添加或删除股票行情报价。</para>
 <para>要将股票行情报价添加到小程序，请执行以下步骤：</para>
 <orderedlist>
 <listitem><para>确定公司的股票代码。</para></listitem>
-<listitem><para>在<guilabel>"新建代码"</guilabel>文本框中键入公司的股票代码。</para></listitem>
-<listitem><para>单击<guibutton>"添加"</guibutton>将该代码添加到小程序显示这些代码报价的代码列表中。</para></listitem>
-<listitem><para>单击<guibutton>"确定"</guibutton>保存更改并关闭该对话框。</para></listitem>
+<listitem><para>在<guilabel>新代码</guilabel>文本框中键入公司的股票代码。</para></listitem>
+<listitem><para>单击<guibutton>添加</guibutton>将该代码添加到小程序显示这些代码报价的代码列表中。</para></listitem>
+<listitem><para>单击<guibutton>关闭</guibutton>保存更改并关闭该对话框。</para></listitem>
 </orderedlist>
 
 <para>要从小程序中删除股票行情报价，请执行以下步骤：</para>
 <orderedlist>
 <listitem><para>选择公司的股票代码。</para></listitem>
-<listitem><para>单击<guibutton>"删除选定内容"</guibutton>将该代码从小程序为其显示报价的代码列表中删除掉。</para></listitem>
-<listitem><para>单击<guibutton>"确定"</guibutton>保存更改并关闭该对话框。</para></listitem>
+<listitem><para>单击<guibutton>删除</guibutton>将该代码从小程序为其显示报价的代码列表中删除。</para></listitem>
+<listitem><para>单击<guibutton>关闭</guibutton>保存更改并关闭该对话框。</para></listitem>
 </orderedlist>
 
 </sect3>
 
-<sect3 id="gtik-settings-behavior">
-
-<title>行为</title>
+<sect3 id="gtik-settings-behavior"><title>行为</title>
 <variablelist>
-<varlistentry>
-<term><guilabel>更新频率（分钟）</guilabel> </term>
+<varlistentry><term><guilabel>股票行情更新频率</guilabel> </term>
 <listitem>
-<para>使用此旋转框增大或减小小程序从互联网下载最新股票行情信息的频率。</para>
-<para>默认值：5 分钟。</para>
+<para>使用此旋转框增大或减小小程序从互联网下载最新股票行情信息的频率，以分钟为单位。</para>
 </listitem>
 </varlistentry>
-<varlistentry>
-<term><guilabel>启用卷动按钮</guilabel> </term>
+<varlistentry><term><guilabel>滚动速度</guilabel> </term>
+<listitem>
+<para>使用此下拉列表更改小程序在滚动显示区域中显示报价的速度。</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><guilabel>启用滚动按钮</guilabel> </term>
 <listitem>
 <para>选择此选项可以显示小程序上的向前和向后箭头按钮，利用这些按钮能够在小程序显示区域中向前或向后移动。</para>
-<para>默认值：选中。</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><guilabel>从左向右滚动</guilabel> </term>
+<listitem>
+<para>选择此选项将逆转小程序显示区域滚动的方向。如果选择此选项，显示区域将从左向右滚动，而不是从右向左滚动。</para>
 </listitem>
 </varlistentry>
 </variablelist>
 
 </sect3>
 
-<sect3 id="gtik-settings-appearance">
-<title>外观</title>
+<sect3 id="gtik-settings-appearance"><title>外观</title>
 <variablelist>
-
-<varlistentry>
-<term><guilabel>只显示代码和价格</guilabel> </term>
+<varlistentry><term><guilabel>只显示代码和股价</guilabel> </term>
 <listitem>
 <para>选择此选项后，在小程序显示区域中将只显示公司代码和当前股票行情报价。</para>
-<para>默认值：未选中。</para>
 </listitem>
 </varlistentry>
-<varlistentry>
-<term><guilabel>从左向右卷动</guilabel> </term>
+<varlistentry><term><guilabel>宽度</guilabel> </term>
 <listitem>
-<para>选择此选项将逆转小程序显示区域卷动的方向。如果选择此选项，显示区域将从左向右卷动，而不是从右向左卷动。</para>
-<para>默认值：未选中。</para>
+<para>使用此旋转框可以增加或减少面板中小程序的宽度。</para>
 </listitem>
 </varlistentry>
-<varlistentry>
-<term><guilabel>+ 颜色</guilabel> </term>
+<varlistentry><term><guilabel>使用默认主题字体和颜色</guilabel> </term>
 <listitem>
-<para>单击此按钮可以选择一种颜色，用来显示与前一个股票行情报价相比上涨了的股票行情报价。单击颜色按钮可以显示颜色选择器对话框 。使用颜色选择器对话框上的颜色轮或滑块选择一种颜色。</para>
-<para>默认值：绿色。</para>
+<para>选择此选项可以对小程序应用标准应用程序字体和颜色。如果取消选择此选项，则可以使用<guilabel>字体和颜色</guilabel>组框中的其他选项。</para>
 </listitem>
 </varlistentry>
-<varlistentry>
-<term><guilabel>- 颜色</guilabel> </term>
-<listitem>
-<para>单击此按钮可以选择一种颜色，用于显示与前一个股票行情报价相比下跌的股票行情报价。 </para>
-<para>默认值：红色。</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term><guilabel>不变的颜色</guilabel> </term>
-<listitem>
-<para>单击此按钮可以选择一种颜色，显示与前一个股票行情报价相比没有变化的股票行情报价。  </para>
-<para>默认值：黑色。</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term><guilabel>背景色</guilabel> </term>
-<listitem>
-<para>使用此按钮选择小程序的显示区域的背景色。</para>
-<para>默认值：白色。</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term><guilabel>股票代码</guilabel> </term>
+<varlistentry><term><guilabel>字体</guilabel> </term>
 <listitem>
 <para>单击此按钮可以选择用于显示股票代码和当前价格的字体。</para>
-<para>默认值：未指定。</para>
 </listitem>
 </varlistentry>
-<varlistentry>
-<term><guilabel>股价变化</guilabel> </term>
+<varlistentry><term><guilabel>上涨的股票</guilabel> </term>
 <listitem>
-<para>单击此按钮可以选择用于显示股价变化的字体。</para>
-<para>默认值：未指定。</para>
+<para>单击此按钮可以选择一种颜色，用来显示与前一个股票行情报价相比上涨了的股票行情报价。单击颜色按钮可以显示颜色选择器对话框 。使用颜色选择器对话框上的颜色轮或滑块选择一种颜色。</para>
 </listitem>
 </varlistentry>
+<varlistentry><term><guilabel>下跌的股票</guilabel> </term>
+<listitem>
+<para>单击此按钮可以选择一种颜色，用于显示与前一个股票行情报价相比下跌的股票行情报价。 </para>
+</listitem>
+</varlistentry>
+<varlistentry><term><guilabel>不变的股票</guilabel> </term>
+<listitem>
+<para>单击此按钮可以选择一种颜色，显示与前一个股票行情报价相比没有变化的股票行情报价。  </para>
+</listitem>
+</varlistentry>
+<varlistentry><term><guilabel>背景</guilabel> </term>
+<listitem>
+<para>使用此按钮选择小程序的显示区域的背景色。</para>
+</listitem>
+</varlistentry>
+
 </variablelist>
 
 </sect3>

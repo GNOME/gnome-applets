@@ -1,13 +1,14 @@
-<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
-"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+<?xml version="1.0"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://cdedesk2.ireland/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "1.104.0">
-  <!ENTITY manrevision "2.2">
-  <!ENTITY date "August 2002">
+  <!ENTITY appletversion "2.3.6">
+  <!ENTITY manrevision "2.4.1">
+  <!ENTITY date "December 2003">
   <!ENTITY applet "Stock Ticker">
 ]>
 
-<!-- 
+<!-- http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd
       (Do not remove this comment block.)
   Maintained by the GNOME Documentation Project
   http://developer.gnome.org/projects/gdp
@@ -22,13 +23,14 @@
   <articleinfo>
 	 <title>&applet; 애플릿 설명서 V&manrevision;</title>
 	 <copyright> 
-		<year>2002</year>  
+		<year>2002</year> 
+		<year>2003</year> 
 		<holder>Sun Microsystems</holder> 
 	 </copyright> 
 <!-- translators: uncomment this:
 
   <copyright>
-   <year>2002</year>
+   <year>2003</year>
    <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
   </copyright>
 
@@ -42,11 +44,10 @@
 	 <authorgroup>
 		<author> 
 		  <firstname>Sun</firstname> 
-		  <surname>그놈 문서 팀
-</surname> 
+		  <surname>그놈 문서 팀</surname> 
 		  <affiliation> 
 			 <orgname>Sun Microsystems</orgname> 
-			 <address> <email>gdocteam@sun.com</email> </address>
+			 <address></address>
 		  </affiliation>
 		</author>
       <!-- This is appropriate place for other contributors: translators,
@@ -68,9 +69,31 @@
 		  <revnumber>&applet; 애플릿 설명서 V&manrevision;</revnumber> 
 		  <date>&date;</date> 
 		  <revdescription> 
-			 <para role="author">Sun 그놈 문서 팀
-
-<email>gdocteam@sun.com</email></para>
+			 <para role="author">Sun 그놈 문서 팀</para>
+			 <para role="publisher">그놈 문서 프로젝트</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>증권 시세기 애플릿 설명서 V2.4</revnumber> 
+		  <date>2003년 9월</date> 
+		  <revdescription> 
+			 <para role="author">Sun 그놈 문서 팀</para>
+			 <para role="publisher">그놈 문서 프로젝트</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>증권 시세기 애플릿 설명서 V2.3</revnumber> 
+		  <date>2003년 1월</date> 
+		  <revdescription> 
+			 <para role="author">Sun 그놈 문서 팀</para>
+			 <para role="publisher">그놈 문서 프로젝트</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>증권 시세기 애플릿 설명서 V2.2</revnumber> 
+		  <date>2002년 8월</date> 
+		  <revdescription> 
+			 <para role="author">Sun 그놈 문서 팀</para>
 			 <para role="publisher">그놈 문서 프로젝트</para>
 		  </revdescription>
 		</revision>
@@ -78,8 +101,7 @@
 		  <revnumber>증권 시세기 애플릿 설명서 V2.1</revnumber> 
 		  <date>2002년 7월</date> 
 		  <revdescription> 
-			 <para role="author">Sun 그놈 문서 팀
-				<email>gdocteam@sun.com</email></para>
+			 <para role="author">Sun 그놈 문서 팀</para>
 			 <para role="publisher">그놈 문서 프로젝트</para>
 		  </revdescription>
 		</revision>
@@ -87,8 +109,7 @@
 		  <revnumber>증권 시세기 애플릿 설명서 V2.0</revnumber> 
 		  <date>2002년 5월</date> 
 		  <revdescription> 
-			 <para role="author">Sun 그놈 문서 팀
-				<email>gdocteam@sun.com</email></para>
+			 <para role="author">Sun 그놈 문서 팀</para>
 			 <para role="publisher">그놈 문서 프로젝트</para>
 		  </revdescription>
 		</revision>
@@ -118,7 +139,7 @@
 		<title>&applet; 애플릿</title>
 		<screenshot>
 		  <mediaobject>
-			 <imageobject><imagedata fileref="figures/gtik_applet.png"  format="PNG"/> 
+			 <imageobject><imagedata fileref="figures/gtik_applet.png" format="PNG"/> 
 			 </imageobject>
 			 <textobject>
 				<phrase>증권 시세기 애플릿을 표시합니다. 스크롤 표시 영역, 뒤로 및 앞으로 버튼이 포함됩니다.</phrase>
@@ -127,12 +148,7 @@
 		</screenshot>
 	 </figure>
     	 <!-- ==== End of Figure ======================================= -->
-<para><application>&applet;</application> 애플릿은 인터넷에서 현재 주식 시세를 다운로드하여 애플릿의 스크롤 표시 영역에 시세를 표시합니다. 이 애플릿은 Yahoo!에서 증권 정보를 다운로드합니다. </para>
-<para>패널에 <application>&applet;</application>을(를) 추가하려면 패널을 마우스 오른쪽 버튼으로 클릭한 다음 <menuchoice>
-<guimenu>패널에 추가</guimenu>
-<guisubmenu>액세서리</guisubmenu>
-<guimenuitem>증권 시세기</guimenuitem>
-</menuchoice>를 선택합니다.</para>
+<para><application>&applet;</application> 애플릿은 인터넷에서 현재 증권 시세를 다운로드하여 애플릿의 스크롤 표시 영역에 시세를 표시합니다. 이 애플릿은 Yahoo!에서 증권 정보를 다운로드합니다. </para>
 <note id="proxies-note-1">
 <para>컴퓨터가 방화벽 뒤에 있으면 프록시 서버를 사용하여 <application>&applet;</application>을(를) 실행해야 합니다. 
 프록시 서버를 지정하는 방법에 대한 자세한 내용은 <xref linkend="gtik-set-proxy"/>을(를) 참조하십시오.</para>
@@ -145,6 +161,30 @@
 <listitem><para>시세의 상승 또는 하락 금액</para></listitem>
 <listitem><para>시세의 상승 또는 하락 비율</para></listitem>
 </itemizedlist>
+
+    <sect2 id="gtik-introduction-add">
+      <title>&applet;을(를) 패널에 추가하려면</title>
+      <para>
+        &applet;을(를) 패널에 추가하려면 다음 단계를 수행합니다.
+      </para>
+      <orderedlist>
+        <listitem>
+          <para>
+            패널을 마우스 오른쪽 버튼으로 클릭합니다.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <menuchoice>
+              <guimenu>패널에 추가</guimenu>
+              <guisubmenu>액세서리</guisubmenu>
+              <guimenuitem>&applet;</guimenuitem>
+            </menuchoice>을(를) 선택합니다.
+          </para>
+        </listitem>
+      </orderedlist>
+    </sect2>
+
 </sect1>
 
 <sect1 id="gtik-usage">
@@ -161,24 +201,22 @@
 </sect2>
 
 <sect2 id="gtik-refresh">
-<title>표시 영역을 갱신하려면</title>
-<para><application>&applet;</application>은(는) 애플릿 환경 설정에 지정된 주기마다 증권 정보를 자동으로 갱신합니다. 애플릿 환경 설정에 대한 자세한 내용은 <xref linkend="gtik-settings-behavior"/>을(를) 참조하십시오. 애플릿에 표시되는 정보를 즉시 갱신하려면 애플릿을 마우스 오른쪽 버튼으로 클릭한 다음 <guimenuitem>새로 고침</guimenuitem>을 클릭합니다. </para>
+<title>표시 영역을 업데이트하려면</title>
+<para><application>&applet;</application>은(는) 애플릿 환경 설정에 지정된 주기마다 증권 정보를 자동으로 업데이트합니다. 애플릿 환경 설정에 대한 자세한 내용은 <xref linkend="gtik-settings-behavior"/>을(를) 참조하십시오. 애플릿에 표시되는 정보를 즉시 업데이트하려면 애플릿을 마우스 오른쪽 버튼으로
+클릭한 다음 <guimenuitem>업데이트</guimenuitem>를 선택합니다. </para>
 </sect2>
 
 </sect1>
 
-<sect1 id="gtik-settings"> 
+<sect1 id="gtik-settings">	
 <title>환경 설정</title>
 
 <sect2 id="gtik-set-proxy">
 <title>프록시 서버를 설정하려면</title>
 <para>컴퓨터가 방화벽 뒤에 있으면 프록시 서버를 사용하여 <application>&applet;</application>을(를) 실행해야 합니다. 
-그놈이 프록시 서버를 사용하도록 구성하려면 
-<menuchoice>
-<guimenu>응용프로그램</guimenu>
-<guisubmenu>데스크탑 환경 설정</guisubmenu> 
-<guimenuitem>네트워크 프록시</guimenuitem>
-</menuchoice>를 선택합니다.</para>
+프록시 서버를 사용하도록 그놈을 구성하려면 
+환경 설정 도구를 사용하여 인터넷 연결에 대한
+네트워크 프록시 서버를 지정해야 합니다.</para>
 </sect2>
 
 <sect2 id="gtik-configure">
@@ -193,20 +231,20 @@
 
 <sect3 id="gtik-settings-symbols">
 <title>기호</title>
-<para><guilabel>기호</guilabel> 탭 섹션을 사용하면 애플릿 표시 영역에서 주식 시세를 추가하거나 제거할 수 있습니다.</para>
-<para>애플릿에 주식 시세를 추가하려면 다음 단계를 수행합니다.</para>
+<para><guilabel>기호</guilabel> 탭 섹션을 사용하면 애플릿 표시 영역에서 증권 시세를 추가하거나 제거할 수 있습니다.</para>
+<para>애플릿에 증권 시세를 추가하려면 다음 단계를 수행합니다.</para>
 <orderedlist>
-<listitem><para>회사의 주식 기호를 확인합니다. </para></listitem>
-<listitem><para><guilabel>새 기호</guilabel> 텍스트 상자에 회사의 주식 기호를 입력합니다.</para></listitem>
+<listitem><para>회사의 증권 기호를 확인합니다. </para></listitem>
+<listitem><para><guilabel>새 기호</guilabel> 텍스트 상자에 회사의 증권 기호를 입력합니다.</para></listitem>
 <listitem><para><guibutton>추가</guibutton>를 클릭하여 해당 기호를 시세가 표시되는 기호 목록에 추가합니다.</para></listitem>
-<listitem><para><guibutton>확인</guibutton>을 클릭하여 변경 사항을 저장하고 대화 상자를 닫습니다.</para></listitem>
+<listitem><para><guibutton>닫기</guibutton>를 클릭하여 변경 사항을 저장하고 대화 상자를 닫습니다.</para></listitem>
 </orderedlist>
 
-<para>애플릿에서 주식 시세를 제거하려면 다음 단계를 수행합니다.</para>
+<para>애플릿에서 증권 시세를 제거하려면 다음 단계를 수행합니다.</para>
 <orderedlist>
-<listitem><para>회사의 주식 기호를 선택합니다.</para></listitem>
-<listitem><para><guibutton>선택한 것 제거</guibutton>를 클릭하여 시세가 표시되는 기호 목록에서 해당 기호를 제거합니다.</para></listitem>
-<listitem><para><guibutton>확인</guibutton>을 클릭하여 변경 사항을 저장하고 대화 상자를 닫습니다.</para></listitem>
+<listitem><para>회사의 증권 기호를 선택합니다.</para></listitem>
+<listitem><para><guibutton>지우기</guibutton>를 클릭하여 시세가 표시되는 기호 목록에서 해당 기호를 제거합니다.</para></listitem>
+<listitem><para><guibutton>닫기</guibutton>를 클릭하여 변경 사항을 저장하고 대화 상자를 닫습니다.</para></listitem>
 </orderedlist>
 
 </sect3>
@@ -216,17 +254,27 @@
 <title>동작</title>
 <variablelist>
 <varlistentry>
-<term><guilabel>주기를 분 단위로 갱신</guilabel> </term>
+<term><guilabel>주식 업데이트 주기</guilabel> </term>
 <listitem>
-<para>이 스핀 상자를 사용하면 애플릿이 인터넷에서 최신 주식 정보를 다운로드하는 주기를 늘리거나 줄일 수 있습니다. </para>
-<para>기본값: 5분</para>
+<para>이 스핀 상자를 사용하여 애플릿이 인터넷에서 최신 주식 정보를 다운로드하는 분 단위 주기를 늘리거나 줄일 수 있습니다. </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><guilabel>스크롤 속도</guilabel> </term>
+<listitem>
+<para>이 드롭다운 목록을 사용하여 애플릿이 스크롤 표시 영역에 시세를 표시하는 속도를 변경할 수 있습니다.</para>
 </listitem>
 </varlistentry>
 <varlistentry>
 <term><guilabel>스크롤 버튼 사용</guilabel> </term>
 <listitem>
 <para>이 옵션을 선택하면 애플릿에 앞으로 버튼과 뒤로 버튼이 표시되므로 애플릿 표시 영역에서 앞으로 또는 뒤로 이동할 수 있습니다. </para>
-<para>기본값: 선택됨</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><guilabel>왼쪽에서 오른쪽으로 스크롤</guilabel> </term>
+<listitem>
+<para>이 옵션을 선택하면 애플릿이 스크롤을 표시하는 방향이 반대로 바뀝니다. 이 옵션을 선택하면 표시 영역이 오른쪽에서 왼쪽 대신 왼쪽에서 오른쪽으로 스크롤됩니다. </para>
 </listitem>
 </varlistentry>
 </variablelist>
@@ -236,63 +284,55 @@
 <sect3 id="gtik-settings-appearance">
 <title>모양</title>
 <variablelist>
-
 <varlistentry>
 <term><guilabel>기호와 가격만 표시</guilabel> </term>
 <listitem>
-<para>이 옵션을 선택하면 애플릿 표시 영역에 회사 기호와 현재 주식 시세만 표시됩니다.</para>
-<para>기본값: 선택되지 않음</para>
+<para>이 옵션을 선택하면 애플릿 표시 영역에 회사 기호와 현재 증권 시세만 표시됩니다.</para>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term><guilabel>왼쪽에서 오른쪽으로 스크롤</guilabel> </term>
+<term><guilabel>너비</guilabel> </term>
 <listitem>
-<para>이 옵션을 선택하면 애플릿이 스크롤을 표시하는 방향이 반대로 바뀝니다. 이 옵션을 선택하면 표시 영역이 오른쪽에서 왼쪽 대신 왼쪽에서 오른쪽으로 스크롤됩니다. </para>
-<para>기본값: 선택되지 않음</para>
+<para>이 스핀 상자를 사용하여 패널에 있는 애플릿의 너비를 늘리거나 줄일 수 있습니다.</para>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term><guilabel>+ 색상</guilabel> </term>
+<term><guilabel>기본 테마 글꼴 및 색상 사용</guilabel> </term>
 <listitem>
-<para>이 버튼을 클릭하면 이전 주식 시세보다 상승한 주식 시세를 표시하는 데 사용할 색상을 선택할 수 있습니다. 색상 버튼을 클릭하여 색상 선택 대화 상자를 표시합니다. 색상 선택 대화 상자에서 색상환이나 슬라이더를 사용하여 색상을 선택합니다. </para>
-<para>기본값: 녹색</para>
+<para>이 옵션을 선택하면 애플릿에 표준 응용프로그램 글꼴과 색상이 사용됩니다. 이 옵션을 선택하지 않으면 <guilabel>글꼴 및 색상</guilabel> 그룹 상자의 나머지 옵션을 사용할 수 있습니다. </para>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term><guilabel>- 색상</guilabel> </term>
+<term><guilabel>글꼴</guilabel> </term>
 <listitem>
-<para>이 버튼을 클릭하면 이전 주식 시세보다 하락한 주식 시세를 표시하는 데 사용할 색상을 선택할 수 있습니다. </para>
-<para>기본값: 빨강</para>
+<para>이 버튼을 클릭하면 증권 기호와 현재 시세를 표시하는 데 사용할 글꼴을 선택할 수 있습니다. </para>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term><guilabel>변경되지 않은 색상</guilabel> </term>
+<term><guilabel>오른 주식</guilabel> </term>
 <listitem>
-<para>이 버튼을 클릭하면 이전 주식 시세 이후 변동이 없는 시세를 표시하는 데 사용할 색상을 선택할 수 있습니다. </para>
-<para>기본값: 검정색</para>
+<para>이 버튼을 클릭하면 이전 증권 시세보다 상승한 증권 시세를 표시하는 데 사용할 색상을 선택할 수 있습니다. 색상 버튼을 클릭하여 색상 선택기 대화 상자를 표시합니다. 색상 선택기 대화 상자에서 색상환이나 슬라이더를 사용하여 색상을 선택합니다. </para>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term><guilabel>배경색</guilabel> </term>
+<term><guilabel>내린 주식</guilabel> </term>
 <listitem>
-<para>이 버튼을 클릭하면 애플릿에 있는 표시 영역의 배경색을 선택할 수 있습니다. </para>
-<para>기본값: 흰색</para>
+<para>이 버튼을 클릭하면 이전 증권 시세보다 하락한 증권 시세를 표시하는 데 사용할 색상을 선택할 수 있습니다. </para>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term><guilabel>주식 기호</guilabel> </term>
+<term><guilabel>보합 주식</guilabel> </term>
 <listitem>
-<para>이 버튼을 클릭하면 주식 기호 및 현재 가격을 표시하는 데 사용할 색상을 선택할 수 있습니다. </para>
-<para>기본값:지정되지 않음</para>
+<para>이 버튼을 클릭하면 이전 증권 시세 이후 변동이 없는 증권 시세를 표시하는 데 사용할 색상을 선택할 수 있습니다. </para>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term><guilabel>주식 변동</guilabel> </term>
+<term><guilabel>배경 색상</guilabel> </term>
 <listitem>
-<para>이 버튼을 클릭하면 주식 가격 변동을 표시하는 데 사용할 글꼴을 선택할 수 있습니다. </para>
-<para>기본값:지정되지 않음</para>
+<para>이 버튼을 클릭하면 애플릿 표시 영역의 배경색을 선택할 수 있습니다. </para>
 </listitem>
 </varlistentry>
+
 </variablelist>
 
 </sect3>

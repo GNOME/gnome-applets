@@ -1,13 +1,13 @@
 <?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
-"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+"http://cdedesk2.ireland/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "1.104.0">
-  <!ENTITY manrevision "2.2">
-  <!ENTITY date "Agosto 2002">
-  <!ENTITY applet "Stock Ticker">
+  <!ENTITY appletversion "2.3.6">
+  <!ENTITY manrevision "2.4.1">
+  <!ENTITY date "Dicembre 2003">
+  <!ENTITY applet "Quotazioni di borsa">
 ]>
 
-<!-- 
+<!-- http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd
       (Do not remove this comment block.)
   Maintained by the GNOME Documentation Project
   http://developer.gnome.org/projects/gdp
@@ -22,13 +22,14 @@
   <articleinfo>
 	 <title>Manuale dell'applet &applet; V&manrevision;</title>
 	 <copyright> 
-		<year>2003</year>  
+		<year>2002</year> 
+		<year>2003</year> 
 		<holder>Sun Microsystems</holder> 
 	 </copyright> 
 <!-- translators: uncomment this:
 
   <copyright>
-   <year>2002</year>
+   <year>2003</year>
    <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
   </copyright>
 
@@ -45,7 +46,7 @@
 		  <surname>GNOME Documentation Team</surname> 
 		  <affiliation> 
 			 <orgname>Sun Microsystems</orgname> 
-			 <address> <email>gdocteam@sun.com</email> </address>
+			 <address></address>
 		  </affiliation>
 		</author>
       <!-- This is appropriate place for other contributors: translators,
@@ -67,26 +68,47 @@
 		  <revnumber>Manuale dell'applet &applet; V&manrevision;</revnumber> 
 		  <date>&date;</date> 
 		  <revdescription> 
-			 <para role="author">Sun GNOME Documentation Team
-				<email>gdocteam@sun.com</email></para>
+			 <para role="author">Sun GNOME Documentation Team</para>
 			 <para role="publisher">GNOME Documentation Project</para>
 		  </revdescription>
 		</revision>
 		<revision> 
-		  <revnumber>Manuale dell'applet Stock Ticker V2.1</revnumber> 
+		  <revnumber>Manuale dell'applet Quotazioni di borsa V2.4</revnumber> 
+		  <date>Settembre 2003</date> 
+		  <revdescription> 
+			 <para role="author">Sun GNOME Documentation Team</para>
+			 <para role="publisher">GNOME Documentation Project</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>Manuale dell'applet Quotazioni di borsa V2.3</revnumber> 
+		  <date>Gennaio 2003</date> 
+		  <revdescription> 
+			 <para role="author">Sun GNOME Documentation Team</para>
+			 <para role="publisher">GNOME Documentation Project</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>Manuale dell'applet Quotazioni di borsa V2.2</revnumber> 
+		  <date>Agosto 2002</date> 
+		  <revdescription> 
+			 <para role="author">Sun GNOME Documentation Team</para>
+			 <para role="publisher">GNOME Documentation Project</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>Manuale dell'applet Quotazioni di borsa V2.1</revnumber> 
 		  <date>Luglio 2002</date> 
 		  <revdescription> 
-			 <para role="author">Sun GNOME Documentation Team
-				<email>gdocteam@sun.com</email></para>
+			 <para role="author">Sun GNOME Documentation Team</para>
 			 <para role="publisher">GNOME Documentation Project</para>
 		  </revdescription>
 		</revision>
 		<revision> 
-		  <revnumber>Manuale dell'applet Stock Ticker V2.0</revnumber> 
+		  <revnumber>Manuale dell'applet Quotazioni di borsa V2.0</revnumber> 
 		  <date>Maggio 2002</date> 
 		  <revdescription> 
-			 <para role="author">Sun GNOME Documentation Team
-				<email>gdocteam@sun.com</email></para>
+			 <para role="author">Sun GNOME Documentation Team</para>
 			 <para role="publisher">GNOME Documentation Project</para>
 		  </revdescription>
 		</revision>
@@ -100,51 +122,69 @@
 	 </legalnotice>
   </articleinfo>
   <indexterm> 
-	 <primary>Stock Ticker</primary> 
+	 <primary>Quotazioni di borsa</primary> 
   </indexterm> 
     <indexterm> 
-	 <primary>titoli, visualizzazione quotazioni</primary> 
+	 <primary>borsa, quotazioni</primary> 
   </indexterm> 
 <!-- ============= Document Body ============================= -->
 
-<sect1 id="gtik-introduction">
+<sect1 id="gtik-introduction">  
 <title>Introduzione</title>
 	 <!-- ==== Figure ============================================= -->
 	 <figure id="stockticker-fig"> 
 		<title>Applet &applet;</title>
 		<screenshot>
 		  <mediaobject>
-			 <imageobject><imagedata fileref="figures/gtik_applet.png"  format="PNG"/> 
+			 <imageobject><imagedata fileref="figures/gtik_applet.png" format="PNG"/> 
 			 </imageobject>
 			 <textobject>
-				<phrase>Mostra l'applet Stock Ticker. La finestra contiene un'area di visualizzazione a scorrimento e pulsanti per scorrere in avanti o all'indietro.</phrase>
+				<phrase>Mostra l'applet Quotazioni di borsa. La finestra contiene un'area di visualizzazione a scorrimento e pulsanti per scorrere in avanti o all'indietro.</phrase>
 			 </textobject>
 		  </mediaobject>
 		</screenshot>
 	 </figure>
     	 <!-- ==== End of Figure ======================================= -->
-<para>L'applet <application>&applet;</application> scarica le quotazioni di borsa correnti da Internet e le visualizza in un'area di testo scorrevole. L'applet scarica le informazioni di borsa da Yahoo! Finance. </para>
-<para>Per aggiungere <application>&applet;</application> a un pannello, fare clic con il pulsante destro del mouse sul pannello, quindi scegliere 
-	<menuchoice>
-	<guimenu>Aggiungi al pannello</guimenu> 
-<guisubmenu>Accessori</guisubmenu> 
-<guimenuitem>Stock Ticker</guimenuitem>
-</menuchoice>.</para>
+<para>L'applet <application>&applet;</application> scarica le quotazioni di borsa aggiornate da Internet e le visualizza in un'area di testo scorrevole. L'applet preleva le informazioni di borsa da Yahoo! Finance. </para>
 <note id="proxies-note-1">
 <para>Se il computer &egrave; protetto da un firewall, per eseguire l'applet <application>&applet;</application> &egrave; necessario usare un server proxy. 
-Per maggiori informazioni sulla configurazione di un server proxy, vedere <xref linkend="gtik-set-proxy"/> .</para>
+Per maggiori informazioni sulla configurazione di un server proxy, vedere <xref linkend="gtik-set-proxy"/>.</para>
 </note>
 <para>L'applet <application>&applet;</application> visualizza le seguenti informazioni per ogni titolo definito nelle preferenze:</para>
 <itemizedlist>
 <listitem><para>Il simbolo del titolo che rappresenta l'azienda quotata.</para></listitem>
-<listitem><para>La quotazione corrente.</para></listitem>
+<listitem><para>La quotazione attuale.</para></listitem>
 <listitem><para>Una freccia indicante se la quotazione &egrave; in salita o in discesa.</para></listitem>
 <listitem><para>Il valore dell'aumento o della diminuzione della quotazione.</para></listitem>
 <listitem><para>La percentuale dell'aumento o della diminuzione della quotazione.</para></listitem>
 </itemizedlist>
+
+    <sect2 id="gtik-introduction-add">
+      <title>Aggiungere &applet; a un pannello</title>
+      <para>
+        Per aggiungere l'applet &applet; a un pannello, procedere come segue:
+      </para>
+      <orderedlist>
+        <listitem>
+          <para>
+            Fare clic con il pulsante destro del mouse sul pannello.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Scegliere <menuchoice>
+              <guimenu>Aggiungi al pannello</guimenu>
+              <guisubmenu>Accessori</guisubmenu>
+              <guimenuitem>&applet;</guimenuitem>
+            </menuchoice>.
+          </para>
+        </listitem>
+      </orderedlist>
+    </sect2>
+
 </sect1>
 
-<sect1 id="gtik-usage">
+<sect1 id="gtik-usage"> 
 <title>Utilizzo</title>
 
 <sect2 id="gtik-move-forward-back">
@@ -159,28 +199,24 @@ Per maggiori informazioni sulla configurazione di un server proxy, vedere <xref 
 
 <sect2 id="gtik-refresh">
 <title>Aggiornare la visualizzazione</title>
-<para>L'applet <application>&applet;</application> aggiorna automaticamente le quotazioni con la frequenza specificata nelle preferenze. Per informazioni sull'impostazione delle preferenze per l'applet, vedere <xref linkend="gtik-settings-behavior"/>. Per aggiornare immediatamente le informazioni visualizzate nell'applet, fare clic con il pulsante destro del mouse sull'applet e scegliere <guimenuitem>Aggiorna</guimenuitem>. </para>
+<para>L'applet <application>&applet;</application> aggiorna automaticamente le quotazioni con la frequenza specificata nelle preferenze. Per informazioni sull'impostazione delle preferenze per l'applet, vedere <xref linkend="gtik-settings-behavior"/>. Per aggiornare subito le informazioni visualizzate nell'applet, fare clic con il pulsante destro del mouse e scegliere <guimenuitem>Aggiorna</guimenuitem>. </para>
 </sect2>
 
 </sect1>
 
-<sect1 id="gtik-settings">
+<sect1 id="gtik-settings">	
 <title>Preferenze</title>
 
 <sect2 id="gtik-set-proxy">
 <title>Configurare un server proxy</title>
 <para>Se il computer &egrave; protetto da un firewall, per eseguire l'applet <application>&applet;</application> &egrave; necessario usare un server proxy. 
-Per configurare GNOME per l'uso di un server proxy, scegliere <menuchoice>
-<guimenu>Programmi</guimenu>
-<guisubmenu>Preferenze del desktop</guisubmenu> 
-<guimenuitem>Proxy di rete</guimenuitem>
-</menuchoice>.</para>
+Per configurare GNOME per l'uso di un server proxy, aprire la finestra di preferenze e specificare il proxy di rete da utilizzare per le connessioni a Internet.</para>
 </sect2>
 
 <sect2 id="gtik-configure">
 <title>Configurare &applet;</title>
-<para>Per configurare <application>&applet;</application>, fare clic con il pulsante destro del mouse sull'applet, quindi scegliere <guimenu>Preferenze</guimenu>. 
-La finestra di dialogo <guilabel>Propriet&agrave; di Stock Ticker</guilabel> contiene le seguenti schede:</para>
+<para>Per configurare l'applet <application>&applet;</application>, farvi clic con il pulsante destro del mouse e scegliere <guimenu>Preferenze</guimenu>. 
+La finestra di dialogo <guilabel>Propriet&agrave; delle Quotazioni di borsa</guilabel> contiene le seguenti schede:</para>
 <itemizedlist>
 <listitem><para><xref linkend="gtik-settings-symbols"/></para></listitem>
 <listitem><para><xref linkend="gtik-settings-behavior"/></para></listitem>
@@ -192,17 +228,17 @@ La finestra di dialogo <guilabel>Propriet&agrave; di Stock Ticker</guilabel> con
 <para>La scheda <guilabel>Simboli</guilabel> permette di aggiungere e rimuovere le quotazioni di titoli specifici all'interno dell'applet.</para>
 <para>Per aggiungere la quotazione di un titolo, procedere come segue:</para>
 <orderedlist>
-<listitem><para>Controllare il simbolo del titolo quotato. </para></listitem>
+<listitem><para>Determinare il simbolo del titolo quotato. </para></listitem>
 <listitem><para>Inserire il simbolo del titolo nella casella di testo <guilabel>Nuovo simbolo</guilabel>.</para></listitem>
-<listitem><para>Fare clic su <guibutton>Aggiungi</guibutton> per aggiungere il simbolo all'elenco dei simboli visualizzati dall'applet.</para></listitem>
-<listitem><para>Fare clic su <guibutton>OK</guibutton> per salvare le modifiche e chiudere la finestra di dialogo.</para></listitem>
+<listitem><para>Fare clic su <guibutton>Aggiungi</guibutton> per aggiungere il simbolo all'elenco dei titoli visualizzati dall'applet.</para></listitem>
+<listitem><para>Fare clic su <guibutton>Chiudi</guibutton> per salvare le modifiche e chiudere la finestra di dialogo.</para></listitem>
 </orderedlist>
 
 <para>Per rimuovere un titolo dalla visualizzazione dell'applet, procedere come segue:</para>
 <orderedlist>
 <listitem><para>Selezionare il simbolo del titolo quotato.</para></listitem>
-<listitem><para>Fare clic su <guibutton>Rimuovi selezione</guibutton> per rimuovere il simbolo dall'elenco delle quotazioni visualizzate.</para></listitem>
-<listitem><para>Fare clic su <guibutton>OK</guibutton> per salvare le modifiche e chiudere la finestra di dialogo.</para></listitem>
+<listitem><para>Fare clic su <guibutton>Rimuovi</guibutton> per rimuovere il simbolo dall'elenco delle quotazioni visualizzate.</para></listitem>
+<listitem><para>Fare clic su <guibutton>Chiudi</guibutton> per salvare le modifiche e chiudere la finestra di dialogo.</para></listitem>
 </orderedlist>
 
 </sect3>
@@ -212,17 +248,27 @@ La finestra di dialogo <guilabel>Propriet&agrave; di Stock Ticker</guilabel> con
 <title>Comportamento</title>
 <variablelist>
 <varlistentry>
-<term><guilabel>Frequenza di aggiornamento in minuti</guilabel> </term>
+<term><guilabel>Frequenza di aggiornamento</guilabel> </term>
 <listitem>
-<para>Questa casella di selezione permette di aumentare o ridurre la frequenza con cui l'applet scarica le quotazioni dei titoli da Internet. </para>
-<para>Impostazione predefinita:  5 minuti.</para>
+<para>Questa casella di selezione permette di aumentare o ridurre la frequenza (in minuti) con cui l'applet scarica le quotazioni dei titoli da Internet. </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><guilabel>Velocit&agrave; di scorrimento</guilabel> </term>
+<listitem>
+<para>Usare questa casella di riepilogo per cambiare la velocit&agrave; di scorrimento delle quotazioni.</para>
 </listitem>
 </varlistentry>
 <varlistentry>
 <term><guilabel>Mostra i pulsanti di scorrimento</guilabel> </term>
 <listitem>
-<para>Selezionare questa opzione per visualizzare i pulsanti a freccia nell'applet utilizzabili per scorrere in avanti e all'indietro nella visualizzazione. </para>
-<para>Impostazione predefinita:  selezionato.</para>
+<para>Selezionare questa opzione per visualizzare nell'applet i pulsanti a freccia che consentono di scorrere in avanti e all'indietro nella visualizzazione. </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><guilabel>Scorri da sinistra a destra</guilabel> </term>
+<listitem>
+<para>Selezionare questa opzione per invertire la direzione di scorrimento delle quotazioni. Selezionando questa opzione, la visualizzazione scorrer&agrave; da sinistra a destra anzich&eacute; da destra a sinistra. </para>
 </listitem>
 </varlistentry>
 </variablelist>
@@ -232,63 +278,55 @@ La finestra di dialogo <guilabel>Propriet&agrave; di Stock Ticker</guilabel> con
 <sect3 id="gtik-settings-appearance">
 <title>Aspetto</title>
 <variablelist>
-
 <varlistentry>
 <term><guilabel>Mostra solo i simboli e il valore</guilabel> </term>
 <listitem>
 <para>Selezionare questa opzione per visualizzare nell'applet solo il simbolo del titolo e la quotazione corrente.</para>
-<para>Impostazione predefinita:  non selezionato.</para>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term><guilabel>Scorri da sinistra a destra</guilabel> </term>
+<term><guilabel>Larghezza</guilabel> </term>
 <listitem>
-<para>Selezionare questa opzione per invertire la direzione di scorrimento delle quotazioni. Selezionando questa opzione, la visualizzazione scorrer&agrave; da sinistra a destra anzich&eacute; da destra a sinistra. </para>
-<para>Impostazione predefinita:  non selezionato.</para>
+<para>Usare questa casella di selezione per aumentare o diminuire la larghezza dell'applet nel pannello.</para>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term><guilabel>+ Colore</guilabel> </term>
+<term><guilabel>Usa i colori e il carattere del tema predefinito</guilabel> </term>
+<listitem>
+<para>Selezionare questa opzione per usare per l'applet il carattere e i colori standard delle applicazioni. Deselezionando questa opzione si rendono disponibili le altre opzioni della casella di gruppo <guilabel>Caratteri e colori</guilabel>. </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><guilabel>Carattere</guilabel> </term>
+<listitem>
+<para>Fare clic su questo pulsante per scegliere il carattere con cui visualizzare il simbolo del titolo e il prezzo attuale. </para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><guilabel>Azione in rialzo</guilabel> </term>
 <listitem>
 <para>Fare clic su questo pulsante per scegliere il colore con cui visualizzare le quotazioni dei titoli in salita rispetto alla quotazione precedente. Facendo clic sul pulsante del colore viene aperta una finestra di dialogo per la selezione del colore. Usare i controlli disponibili nella finestra di dialogo per selezionare il colore desiderato. </para>
-<para>Impostazione predefinita:  verde.</para>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term><guilabel>- Colore</guilabel> </term>
+<term><guilabel>Azione in ribasso</guilabel> </term>
 <listitem>
 <para>Fare clic su questo pulsante per scegliere il colore con cui visualizzare le quotazioni dei titoli in discesa rispetto alla quotazione precedente. </para>
-<para>Impostazione predefinita:  rosso.</para>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term><guilabel>Colore non modificato</guilabel> </term>
+<term><guilabel>Azione invariata</guilabel> </term>
 <listitem>
 <para>Fare clic su questo pulsante per scegliere il colore con cui visualizzare le quotazioni dei titoli rimasti invariati rispetto alla quotazione precedente. </para>
-<para>Impostazione predefinita:  nero.</para>
 </listitem>
 </varlistentry>
 <varlistentry>
-<term><guilabel>Colore dello sfondo</guilabel> </term>
+<term><guilabel>Sfondo</guilabel> </term>
 <listitem>
 <para>Fare clic su questo pulsante per scegliere il colore di sfondo per l'area di visualizzazione dell'applet. </para>
-<para>Impostazione predefinita:  bianco.</para>
 </listitem>
 </varlistentry>
-<varlistentry>
-<term><guilabel>Simbolo delle azioni</guilabel> </term>
-<listitem>
-<para>Fare clic su questo pulsante per scegliere il tipo di carattere con cui visualizzare il simbolo dell'azione e il prezzo. </para>
-<para>Impostazione predefinita:  non specificato.</para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term><guilabel>Cambio delle azioni</guilabel> </term>
-<listitem>
-<para>Fare clic su questo pulsante per scegliere il tipo di carattere con cui visualizzare la modifica nel prezzo dell'azione. </para>
-<para>Impostazione predefinita:  non specificato.</para>
-</listitem>
-</varlistentry>
+
 </variablelist>
 
 </sect3>
