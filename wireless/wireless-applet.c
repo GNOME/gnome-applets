@@ -47,7 +47,7 @@ typedef enum {
 	PIX_SIGNAL_2,
 	PIX_SIGNAL_3,
 	PIX_SIGNAL_4,
-	PIX_NUMBER,
+	PIX_NUMBER
 } PixmapState;
 
 static char * pixmap_names[] = {
