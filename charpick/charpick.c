@@ -76,8 +76,8 @@ static gunichar currency_code[] = {164, 163, 165, 162, 36, 8364, -1};
 /* sup1 frac12 */
 /* static const gchar *one_list = "¹œŒ"; */
 static gunichar one_code[] = {185, 178, 179, 188, 189, 190, -1};
-/* µ ¶ ® ¿ |  */
-static gunichar misc_code[] = {181, 182, 174, 191, 124, -1};
+/* µ ¶ ® ¿ ¡ |  */
+static gunichar misc_code[] = {181, 182, 174, 191, 161, 124, -1};
 
 static const gunichar *chartable[] = {
 	def_code,
