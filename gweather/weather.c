@@ -355,7 +355,7 @@ close_cb (GnomeVFSAsyncHandle *handle, GnomeVFSResult result, gpointer data)
 #define TIME_RE_STR  "^([0-9]{6})Z$"
 #define WIND_RE_STR  "^(([0-9]{3})|VRB)([0-9]?[0-9]{2})(G[0-9]?[0-9]{2})?KT$"
 #define VIS_RE_STR   "^(([0-9]?[0-9])|(M?1/[0-9]?[0-9]))SM$"
-#define CLOUD_RE_STR "^(CLR|BKN|SCT|FEW|OVC|SKC)([0-9]{3})?$"
+#define CLOUD_RE_STR "^(CLR|BKN|SCT|FEW|OVC|SKC|NSC)([0-9]{3})?(CB|TCU)?$"
 #define TEMP_RE_STR  "^(M?[0-9][0-9])/(M?(//|[0-9][0-9]))$"
 #define PRES_RE_STR  "^(A|Q)([0-9]{4})$"
 #define COND_RE_STR  "^(-|\\+)?(VC|MI|BC|PR|TS|BL|SH|DR|FZ)?(DZ|RA|SN|SG|IC|PE|GR|GS|UP|BR|FG|FU|VA|SA|HZ|PY|DU|SQ|SS|DS|PO|\\+?FC)$"
@@ -602,6 +602,8 @@ static gboolean metar_tok_cloud (gchar *tokp, WeatherInfo *info)
     if (!strcmp(stype, "CLR")) {
         info->sky = SKY_CLEAR;
     } else if (!strcmp(stype, "SKC")) {
+        info->sky = SKY_CLEAR;
+    } else if (!strcmp(stype, "NSC")) {
         info->sky = SKY_CLEAR;
     } else if (!strcmp(stype, "BKN")) {
         info->sky = SKY_BROKEN;
