@@ -1,4 +1,3 @@
-/* -*- Mode: C; tab-width: 8; indent-tabs-mode: f; c-basic-offset: 5 -*- */
 /* File: gkb.c
  * Purpose: GNOME Keyboard switcher
  *
@@ -28,6 +27,7 @@
 #include <X11/keysym.h>
 #include <gdk/gdkx.h>
 #include <X11/Xlib.h>
+#include <sys/stat.h>
 #include "gkb.h"
 
 GtkWidget *bah_window = NULL;
@@ -204,10 +204,19 @@ gkb_sized_render (GKB * gkb)
     {
       gchar buf[256];
       gchar *pixmapname;
+      struct stat tempbuf;
 
       sprintf (buf, "gkb/%s", actdata->flag);
       pixmapname = gnome_unconditional_pixmap_file (buf);
-      makepix (actdata, pixmapname, gkb->w - 4, gkb->h - 4);
+      if (stat (pixmapname, &tempbuf))
+	{
+	  pixmapname = gnome_unconditional_pixmap_file ("gkb/gkb-foot.png");
+	  makepix (actdata, pixmapname, gkb->w - 4, gkb->h - 4);
+	}
+      else
+	{
+	  makepix (actdata, pixmapname, gkb->w - 4, gkb->h - 4);
+	}
       g_free (pixmapname);
     }
 }
@@ -302,6 +311,7 @@ loadprop (int i)
   Prop *actdata;
   char buf[256];
   char *pixmapname;
+  struct stat tempbuf;
 
   debug (FALSE, "");
 
@@ -344,7 +354,7 @@ loadprop (int i)
       g_snprintf (buf, 256, _("keymap_%d/lang=English"), i);
       actdata->lang = gnome_config_get_string (buf);
 
-      g_snprintf (buf, 256, _("keymap_%d/flag=us.png"), i);
+      g_snprintf (buf, 256, _("keymap_%d/flag=nyet.png"), i);
       actdata->flag = gnome_config_get_string (buf);
 
       g_snprintf (buf, 256, _("keymap_%d/command=gkb_xmmap us"), i);
@@ -374,7 +384,15 @@ loadprop (int i)
 
   sprintf (buf, "gkb/%s", actdata->flag);
   pixmapname = gnome_unconditional_pixmap_file (buf);
-  makepix (actdata, pixmapname, gkb->w, gkb->h);
+  if (stat (pixmapname, &tempbuf))
+    {
+      pixmapname = gnome_unconditional_pixmap_file ("gkb/gkb-foot.png");
+      makepix (actdata, pixmapname, gkb->w - 4, gkb->h - 4);
+    }
+  else
+    {
+      makepix (actdata, pixmapname, gkb->w - 4, gkb->h - 4);
+    }
   g_free (pixmapname);
 
   return actdata;
