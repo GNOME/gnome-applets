@@ -22,14 +22,11 @@
 #include <config.h>
 #endif
 
-#include <gnome.h>
+#include <libgnomeui/libgnomeui.h>
 #include <panel-applet.h>
  
 #include <gtk/gtk.h>
 #include <time.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
 
 #include <libgnomevfs/gnome-vfs.h>
 #include <sys/stat.h>
@@ -632,15 +629,15 @@ g_print ("configured \n");
 		for (i=0;i<stockdata->setCounter;i++) {
 
 			/* COLOR */
-			/*if (STOCK_QUOTE(quotes->data)[i].color == GREEN) {
+			if (STOCK_QUOTE(quotes->data)[i].color == GREEN) {
 				gdk_gc_set_foreground( gc, &stockdata->gdkUcolor );
 			}
 			else if (STOCK_QUOTE(quotes->data)->color == RED) {
 				gdk_gc_set_foreground( gc, &stockdata->gdkDcolor );
 			}
-			else {*/
+			else {
 				gdk_gc_copy( gc, drawing_area->style->white_gc );
-			/*}*/
+			}
 
 			tmpSym = STOCK_QUOTE(quotes->data)[i].price;
 			gdk_draw_string (stockdata->pixmap,my_font, gc,
@@ -816,10 +813,10 @@ g_print ("configured \n");
 
 
 
-
+#ifdef FIXME
 	/*-----------------------------------------------------------------*/
 	static void apply_cb( GtkWidget *widget, void *data ) {
-#if 0
+
 		char *tmpText;
 
 		tmpText = gtk_entry_get_text(GTK_ENTRY(tik_syms_entry));
@@ -858,22 +855,13 @@ g_print ("configured \n");
 		properties_save(APPLET_WIDGET(applet)->privcfgpath);
 
 		properties_set(TRUE);
-#endif
+
 	}
 
-
-
-#if 0
-	/*-----------------------------------------------------------------*/
-	static gint destroy_cb( GtkWidget *widget, void *data ) {
-		pb = NULL;
-		return FALSE;
-	}
-#endif
 
 	/*-----------------------------------------------------------------*/
         static gint font_selector( GtkWidget *widget, void *data ) {
-#ifdef FIXME
+
 		if (!fontDialog) {
 			fontDialog = gtk_font_selection_dialog_new("Font Selector");
 			gtk_signal_connect (GTK_OBJECT (GTK_FONT_SELECTION_DIALOG(fontDialog)->ok_button),
@@ -890,10 +878,10 @@ g_print ("configured \n");
             		gtk_widget_show(fontDialog);
 		} else
 			gdk_window_raise(fontDialog->window);
-#endif			
+		
 		return FALSE;
 	}
-
+#endif	
         /*-----------------------------------------------------------------*/
 
 	gint font_cb(GtkWidget *widget, gpointer data) {
@@ -915,9 +903,10 @@ g_print ("configured \n");
 
         /*-----------------------------------------------------------------*/
         gint OkClicked( GtkWidget *widget, void *fontDialog ) {
+#ifdef FIXME
                 gchar *newFont = NULL;
 
-#ifdef FIXME
+
                 GtkFontSelectionDialog *fsd = 
 			GTK_FONT_SELECTION_DIALOG(fontDialog);
 
@@ -927,10 +916,12 @@ g_print ("configured \n");
 #endif
 		return FALSE;
         }
-#ifdef FIXME
+
         /*-----------------------------------------------------------------*/
         gint QuitFontDialog( GtkWidget *widget, void *data ) {
-		fontDialog = NULL;
+        
+		/*fontDialog = NULL;*/
+	
 		return FALSE;
         }
 
@@ -976,13 +967,13 @@ g_print ("configured \n");
 		return ret;
 	}
 
-	static void populateClist(GtkWidget *clist) {
+	static void populateClist(StockData *stockdata, GtkWidget *clist) {
 	
 		gchar *symbol[1];
 		gchar *syms;
 		gchar *temp;
 
-		syms = g_strdup(props.tik_syms);
+		syms = g_strdup(stockdata->props.tik_syms);
 
 		if ((temp=strtok(syms,"+")))
 			symbol[0] = g_strdup(temp);
@@ -1043,7 +1034,7 @@ g_print ("configured \n");
 			gtk_clist_remove(GTK_CLIST(clist), GPOINTER_TO_INT(clist->selection->data));
 	}
 
-	static GtkWidget *symbolManager() { 
+	static GtkWidget *symbolManager(StockData *stockdata) { 
 		GtkWidget *vbox;
 		GtkWidget *mainhbox;
 		GtkWidget *hbox;
@@ -1054,7 +1045,7 @@ g_print ("configured \n");
 		static GtkWidget *button;
 
 		clist = gtk_clist_new(1);
-		tik_syms_entry = clist;
+		stockdata->tik_syms_entry = clist;
 		gtk_clist_set_selection_mode(GTK_CLIST(clist),
 						GTK_SELECTION_EXTENDED);
 		gtk_clist_column_titles_passive(GTK_CLIST(clist));
@@ -1062,7 +1053,7 @@ g_print ("configured \n");
 		gtk_clist_set_column_width(GTK_CLIST(clist),0,60);
 		gtk_clist_set_reorderable(GTK_CLIST(clist),TRUE);
 		gtk_signal_connect_object(GTK_OBJECT(clist),"drag_drop",
-				GTK_SIGNAL_FUNC(changed_cb),GTK_OBJECT(pb));
+				GTK_SIGNAL_FUNC(changed_cb),GTK_OBJECT(stockdata->pb));
 
 		swindow = gtk_scrolled_window_new(NULL,NULL);
 		gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(swindow),
@@ -1070,7 +1061,7 @@ g_print ("configured \n");
 						GTK_POLICY_AUTOMATIC);
 		gtk_container_add(GTK_CONTAINER(swindow),clist);
 
-		populateClist(clist);
+		populateClist(stockdata, clist);
 
 		hbox = gtk_hbox_new(FALSE,5);
 		vbox = gtk_vbox_new(FALSE,5);
@@ -1084,14 +1075,14 @@ g_print ("configured \n");
 		gtk_signal_connect(GTK_OBJECT(entry),"activate",
 					GTK_SIGNAL_FUNC(addToClist), entry);
 		gtk_signal_connect_object(GTK_OBJECT(entry),"activate",
-				GTK_SIGNAL_FUNC(changed_cb),GTK_OBJECT(pb));
+				GTK_SIGNAL_FUNC(changed_cb),GTK_OBJECT(stockdata->pb));
 		
 		button = gtk_button_new_with_label(_("Add"));
 		gtk_box_pack_start(GTK_BOX(hbox),button,TRUE,TRUE,0);
 		gtk_signal_connect(GTK_OBJECT(button),"clicked",
 					GTK_SIGNAL_FUNC(addToClist), entry);
 		gtk_signal_connect_object(GTK_OBJECT(button),"clicked",
-				GTK_SIGNAL_FUNC(changed_cb),GTK_OBJECT(pb));
+				GTK_SIGNAL_FUNC(changed_cb),GTK_OBJECT(stockdata->pb));
 
 		gtk_box_pack_start(GTK_BOX(vbox),hbox,FALSE,FALSE,0);
 
@@ -1104,7 +1095,7 @@ g_print ("configured \n");
 		gtk_signal_connect(GTK_OBJECT(button),"clicked",
 					GTK_SIGNAL_FUNC(remFromClist),NULL);
 		gtk_signal_connect_object(GTK_OBJECT(button),"clicked",
-				GTK_SIGNAL_FUNC(changed_cb),GTK_OBJECT(pb));
+				GTK_SIGNAL_FUNC(changed_cb),GTK_OBJECT(stockdata->pb));
 		gtk_widget_set_sensitive(button,FALSE);
 		gtk_box_pack_start(GTK_BOX(hbox),button,FALSE,FALSE,0);
 
@@ -1119,19 +1110,29 @@ g_print ("configured \n");
 		return(mainhbox);
 
 	}
-#endif	
+	
+	static void
+	response_cb (GtkDialog *dialog, gint id, gpointer data)
+	{
+		gtk_widget_destroy (GTK_WIDGET (dialog));
+		
+	}
+
 	/*-----------------------------------------------------------------*/
 	static void properties_cb (BonoboUIComponent *uic, gpointer data, 
 				   const gchar *verbname) {
+		StockData * stockdata = data;
+		GtkWidget * notebook;
 		GtkWidget * vbox;
 		GtkWidget * vbox2;
 		GtkWidget * vbox3;
 		GtkWidget * hbox3;
 		GtkWidget *hbox;
+		GtkWidget * label;
 #if 0
 		GtkWidget *urlcheck, *launchcheck;
 #endif
-#ifdef FIXME
+
 		GtkWidget *panela, *panel1 ,*panel2;
 		GtkWidget *label1, *label5;
 
@@ -1144,11 +1145,17 @@ g_print ("configured \n");
 
 		int ur,ug,ub, dr,dg,db; 
 
-		pb = gnome_property_box_new();
-
-		gtk_window_set_title(GTK_WINDOW(pb), 
-			_("Gnome Stock Ticker Properties"));
-
+		stockdata->pb = gtk_dialog_new_with_buttons (_("Stock Ticker Properties"), 
+							     NULL,
+						  	     GTK_DIALOG_DESTROY_WITH_PARENT,
+						             GTK_STOCK_CLOSE, 
+						             GTK_RESPONSE_CLOSE,
+						  	     NULL);
+		
+		notebook = gtk_notebook_new ();
+		gtk_box_pack_start (GTK_BOX (GTK_DIALOG (stockdata->pb)->vbox), notebook,
+				    TRUE, TRUE, 0);
+				    
 		vbox = gtk_vbox_new(GNOME_PAD, FALSE);
 		vbox2 = gtk_vbox_new(GNOME_PAD, FALSE);
 
@@ -1160,7 +1167,7 @@ g_print ("configured \n");
 		gtk_container_set_border_width(GTK_CONTAINER(vbox2), GNOME_PAD);
 
 		timeout_label = gtk_label_new(_("Update Frequency in minutes:"));
-		timeout_a = gtk_adjustment_new( timeout, 0.5, 128, 1, 8, 8 );
+		timeout_a = gtk_adjustment_new( stockdata->timeout, 0.5, 128, 1, 8, 8 );
 		timeout_c  = gtk_spin_button_new( GTK_ADJUSTMENT(timeout_a), 1, 0 );
 		gtk_widget_set_usize(timeout_c,60,-1);
 
@@ -1168,7 +1175,7 @@ g_print ("configured \n");
 		gtk_box_pack_start_defaults( GTK_BOX(panel2), timeout_c );
 		gtk_box_pack_start(GTK_BOX(vbox), panel2, FALSE,
 				    FALSE, GNOME_PAD);
-	
+#ifdef FIXME	
 		gtk_signal_connect_object(GTK_OBJECT(timeout_c), "changed",GTK_SIGNAL_FUNC(changed_cb),GTK_OBJECT(pb));
 
 		gtk_signal_connect( GTK_OBJECT(timeout_a),"value_changed",
@@ -1177,13 +1184,16 @@ g_print ("configured \n");
 		GTK_SIGNAL_FUNC(timeout_cb), timeout_c );
 		gtk_spin_button_set_update_policy( GTK_SPIN_BUTTON(timeout_c),
 		GTK_UPDATE_ALWAYS );
-
+#endif
 		label1 = gtk_label_new(_("Enter symbols delimited with \"+\" in the box below."));
 
-		tik_syms_entry = gtk_entry_new_with_max_length(60);
+		stockdata->tik_syms_entry = gtk_entry_new_with_max_length(60);
 
-		gtk_entry_set_text(GTK_ENTRY(tik_syms_entry), props.tik_syms ? props.tik_syms : "");
-		gtk_signal_connect_object(GTK_OBJECT(tik_syms_entry), "changed",GTK_SIGNAL_FUNC(changed_cb),GTK_OBJECT(pb));
+		gtk_entry_set_text(GTK_ENTRY(stockdata->tik_syms_entry), 
+			stockdata->props.tik_syms ? stockdata->props.tik_syms : "");
+		gtk_signal_connect_object(GTK_OBJECT(stockdata->tik_syms_entry), 
+					  "changed",GTK_SIGNAL_FUNC(changed_cb),
+					  GTK_OBJECT(stockdata->pb));
 
 		check = gtk_check_button_new_with_label(_("Display only symbols and price"));
 		check2 = gtk_check_button_new_with_label(_("Scroll left to right"));
@@ -1198,27 +1208,27 @@ g_print ("configured \n");
 
 
 		/* Set the checkbox according to current prefs */
-		if (strcmp(props.output,"default")!=0)
+		if (strcmp(stockdata->props.output,"default")!=0)
 			gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check),
 							TRUE);
-		if (strcmp(props.scroll,"right2left")!=0)
+		if (strcmp(stockdata->props.scroll,"right2left")!=0)
 			gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check2),
 							TRUE);
-		if (strcmp(props.buttons,"yes") == 0)
+		if (strcmp(stockdata->props.buttons,"yes") == 0)
 			gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check4),
 							TRUE);
-		if (strcmp(props.arrows,"arrows") ==0)
+		if (strcmp(stockdata->props.arrows,"arrows") ==0)
 			gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check3),
 							TRUE);
 
 		gtk_signal_connect_object(GTK_OBJECT(check),"toggled",
-				GTK_SIGNAL_FUNC(changed_cb),GTK_OBJECT(pb));
+				GTK_SIGNAL_FUNC(changed_cb),GTK_OBJECT(stockdata->pb));
 		gtk_signal_connect_object(GTK_OBJECT(check2),"toggled",
-				GTK_SIGNAL_FUNC(changed_cb),GTK_OBJECT(pb));
+				GTK_SIGNAL_FUNC(changed_cb),GTK_OBJECT(stockdata->pb));
 		gtk_signal_connect_object(GTK_OBJECT(check3),"toggled",
-				GTK_SIGNAL_FUNC(changed_cb),GTK_OBJECT(pb));
+				GTK_SIGNAL_FUNC(changed_cb),GTK_OBJECT(stockdata->pb));
 		gtk_signal_connect_object(GTK_OBJECT(check4),"toggled",
-				GTK_SIGNAL_FUNC(changed_cb),GTK_OBJECT(pb));
+				GTK_SIGNAL_FUNC(changed_cb),GTK_OBJECT(stockdata->pb));
 
 #if 1
 		gtk_signal_connect(GTK_OBJECT(check4),"toggled",
@@ -1235,7 +1245,7 @@ g_print ("configured \n");
 		upLabel = gtk_label_new(_("+ Color"));
 		upColor = gnome_color_picker_new();
 	
-		sscanf( props.ucolor, "#%02x%02x%02x", &ur,&ug,&ub );
+		sscanf( stockdata->props.ucolor, "#%02x%02x%02x", &ur,&ug,&ub );
 	
 		gnome_color_picker_set_i8(GNOME_COLOR_PICKER (upColor), 
 					  ur, ug, ub, 255);
@@ -1252,7 +1262,7 @@ g_print ("configured \n");
 		downLabel = gtk_label_new(_("- Color"));
 		downColor = gnome_color_picker_new();
 
-		sscanf( props.dcolor, "#%02x%02x%02x", &dr,&dg,&db );
+		sscanf( stockdata->props.dcolor, "#%02x%02x%02x", &dr,&dg,&db );
 
 		gnome_color_picker_set_i8(GNOME_COLOR_PICKER (downColor), 
 					  dr, dg, db, 255);
@@ -1275,9 +1285,9 @@ g_print ("configured \n");
                 gtk_box_pack_start_defaults(GTK_BOX(hbox3),fontButton);
                 gtk_box_pack_start_defaults(GTK_BOX(vbox3),hbox3);
                 gtk_signal_connect_object(GTK_OBJECT(fontButton),"clicked",
-                                GTK_SIGNAL_FUNC(font_cb),GTK_OBJECT(pb));
+                                GTK_SIGNAL_FUNC(font_cb),GTK_OBJECT(stockdata->pb));
                 gtk_signal_connect_object(GTK_OBJECT(fontButton),"clicked",
-                                GTK_SIGNAL_FUNC(changed_cb),GTK_OBJECT(pb));
+                                GTK_SIGNAL_FUNC(changed_cb),GTK_OBJECT(stockdata->pb));
 
 		hbox3 = gtk_hbox_new(FALSE, 5);
 		label5 = gtk_label_new(_("Stock Change:"));
@@ -1286,9 +1296,9 @@ g_print ("configured \n");
                 gtk_box_pack_start_defaults(GTK_BOX(hbox3),fontButton);
                 gtk_box_pack_start_defaults(GTK_BOX(vbox3),hbox3);
                 gtk_signal_connect_object(GTK_OBJECT(fontButton),"clicked",
-                                GTK_SIGNAL_FUNC(font2_cb),GTK_OBJECT(pb));
+                                GTK_SIGNAL_FUNC(font2_cb),GTK_OBJECT(stockdata->pb));
                 gtk_signal_connect_object(GTK_OBJECT(fontButton),"clicked",
-                                GTK_SIGNAL_FUNC(changed_cb),GTK_OBJECT(pb));
+                                GTK_SIGNAL_FUNC(changed_cb),GTK_OBJECT(stockdata->pb));
 
 		gtk_box_pack_start_defaults(GTK_BOX(panela),vbox3);
 
@@ -1300,14 +1310,15 @@ g_print ("configured \n");
 		gtk_box_pack_start(GTK_BOX(vbox2), panela, FALSE,
 				    FALSE, GNOME_PAD);
 
-		hbox = symbolManager();
+		hbox = symbolManager(stockdata);
 
-		gnome_property_box_append_page(GNOME_PROPERTY_BOX(pb), hbox,
-		gtk_label_new(_("Symbols")));
-		gnome_property_box_append_page(GNOME_PROPERTY_BOX(pb), vbox,
-		gtk_label_new(_("Behavior")));
-		gnome_property_box_append_page(GNOME_PROPERTY_BOX(pb), vbox2,
-		gtk_label_new(_("Appearance")));
+		label = gtk_label_new_with_mnemonic (_("_Symbols"));
+		gtk_notebook_append_page (GTK_NOTEBOOK (notebook), hbox, label);
+		label = gtk_label_new_with_mnemonic (_("_Behavior"));
+		gtk_notebook_append_page (GTK_NOTEBOOK (notebook), vbox, label);
+		label = gtk_label_new_with_mnemonic (_("_Appearance"));
+		gtk_notebook_append_page (GTK_NOTEBOOK (notebook), vbox2, label);
+		
 
 #if 0
 		gtk_signal_connect_object(GTK_OBJECT(tik_syms_entry), 
@@ -1315,11 +1326,11 @@ g_print ("configured \n");
 				   GTK_OBJECT(pb));
 #endif
 
-		gtk_signal_connect(GTK_OBJECT(pb), "apply",
-				    GTK_SIGNAL_FUNC(apply_cb), NULL);
+		gtk_widget_show_all(stockdata->pb);
+		
+		g_signal_connect (G_OBJECT (stockdata->pb), "response",
+				  G_CALLBACK (response_cb), NULL);
 
-		gtk_widget_show_all(pb);
-#endif
 	}
 
 	static const BonoboUIVerb gtik_applet_menu_verbs [] = {
@@ -1437,7 +1448,7 @@ g_print ("configured \n");
 			     const gchar *iid,
 			     gpointer     data)
 	{
-		gboolean retval;
+		gboolean retval = FALSE;
     
 		if (!strcmp (iid, "OAFIID:GNOME_GtikApplet"))
 			retval = gtik_applet_fill (applet); 
