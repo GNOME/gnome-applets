@@ -1,3 +1,13 @@
+Sun Feb 21 02:24:25 1999  George Lebl  <jirka@5z.com>
+
+	* gnomepager_applet.c,gnomepager.h: when doing XSelectInput on
+	  our own windows, get their previous event mask, all the hints
+	  that deal with 32bit quantities are now CARD32's, and while I
+	  was at it, I couldn't help myself and cleaned up the config
+	  dialog to not use zillions of functions and the init_gui
+	  functions are combined ... for a grand total of about 200 less
+	  lines of code
+
 Sat Feb 20 19:59:22 1999  George Lebl  <jirka@5z.com>
 
 	* gnomepager_applet.c,gnomepager.h: added an option to make tasklist

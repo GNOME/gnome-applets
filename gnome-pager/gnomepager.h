@@ -32,7 +32,7 @@ typedef struct _task
   gchar               sticky;
   gint                desktop;
   GdkWindow          *gdkwin;
-  GtkWidget          *dummy;
+  /*GtkWidget          *dummy;*/
   GdkWindow          *frame_gdkwin;
 }
 Task;
@@ -41,19 +41,7 @@ int main(int argc, char **argv);
 
 void cb_applet_orient_change(GtkWidget *w, PanelOrientType o, gpointer data);
 void cb_applet_about(AppletWidget * widget, gpointer data);
-void cb_check_show_icons(GtkWidget *widget, gpointer data);
-void cb_check_fixed_tasklist(GtkWidget *widget, gpointer data);
-void cb_check_show_arrow(GtkWidget *widget, gpointer data);
-void cb_check_pager_size(GtkWidget *widget, gpointer data);
-void cb_check_all_tasks(GtkWidget *widget, gpointer data);
-void cb_check_show_tasks(GtkWidget *widget, gpointer data);
-void cb_check_show_pager(GtkWidget *widget, gpointer data);
-void cb_adj_max_width(GtkAdjustment *adj, GtkAdjustment *adj1);
-void cb_adj_max_vwidth(GtkAdjustment *adj, GtkAdjustment *adj1);
-void cb_adj_rows_h(GtkAdjustment *adj, GtkAdjustment *adj1);
-void cb_adj_rows_v(GtkAdjustment *adj, GtkAdjustment *adj1);
-void cb_adj_rows(GtkAdjustment *adj, GtkAdjustment *adj1);
-void cb_prop_apply(GtkWidget *widget, gpointer data);
+void cb_prop_apply(GtkWidget *widget, int page, gpointer data);
 void cb_applet_properties(AppletWidget * widget, gpointer data);
 
 void *util_get_atom(Window win, gchar *atom, Atom type, gint *size);
@@ -78,15 +66,13 @@ void task_get_info(Task *t);
 gint task_add(Window win);
 void task_delete(Window win);
 Task *task_find(Window win);
-void tasks_match(Window * win, guint num);
+void tasks_match(CARD32 * win, guint num);
 void tasks_update(void);
 void get_desktop_names(void);
 
 void select_root_properties(void);
 
-void init_applet_gui(void);
-void init_applet_gui_horiz(void);
-void init_applet_gui_vert(void);
+void init_applet_gui(gint horizontal);
 
 void desktop_draw(gint i);
 int actual_redraw(gpointer data);
