@@ -1,5 +1,3 @@
-#SUBDIRS = 57chevy A bbldotg o smplst
-
 Chevydir = $(datadir)/odometer/57chevy
 Chevy_DATA =
 chevy_stuff = \
@@ -32,12 +30,20 @@ smplst_stuff = \
 	smplst/themedata	\
 	smplst/smplst.png
 
+defaultdir = $(datadir)/odometer/default
+default_DATA =
+default_stuff = \
+	default/themedata		\
+	default/default-black.png	\
+	default/default-red.png
+
 zodometerdir = $(datadir)/odometer
 zodometer_DATA = \
 	$(chevy_stuff)		\
 	$(a_stuff)		\
 	$(bbldotg_stuff)	\
 	$(o_stuff)		\
-	$(smplst_stuff)
+	$(smplst_stuff)		\
+	$(default_stuff)
 
 EXTRA_DIST = $(zodometer_DATA)

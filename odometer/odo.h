@@ -17,7 +17,7 @@
 #include <gnome.h>
 #include <applet-widget.h>
 
-#define ODO_VERSION "0.5"
+#define ODO_VERSION "0.7"
 #define UPDATE_TIMEOUT 75
 
 #define INCH 0
@@ -25,6 +25,9 @@
 #define MILE 2
 #define MAX_UNIT 3
 #undef	DEBUG
+
+#define INTEGER 0
+#define DECIMAL 1
 
 typedef int Units;
 
@@ -48,14 +51,16 @@ struct _OdoApplet {
 	GtkWidget *darea1,*darea2;
 	GtkWidget *vbox;
 	GdkPixmap *digits;
+	PanelOrientType orient;
+	int size;
 
 	/* Theme */
 	gchar *theme_file;
 	GtkWidget *theme_entry;
-	GdkPixmap *int_pixmap;
-	GdkPixmap *dec_pixmap;
+	GdkImlibImage *image[2];
 	gint width;
 	gint height;
+	gint digit_width_in_image;
 	gint digit_width;
 	gint digit_height;
 	gboolean with_decimal_dot;
@@ -67,6 +72,7 @@ struct _OdoApplet {
 	gboolean enabled,p_enabled;
 	gboolean auto_reset,p_auto_reset;
 	gint digits_nb,p_digits_nb;
+	gboolean scale_applet,p_scale_applet;
 
 	/* Odometer */
 	int last_x_coord;

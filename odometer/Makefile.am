@@ -27,4 +27,4 @@ EXTRA_DIST = \
 	$(gnorba_DATA)	\
 	$(pixmap_DATA)
 
-SUBDIRS = def_theme themes
+SUBDIRS = themes

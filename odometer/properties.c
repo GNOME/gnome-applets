@@ -53,18 +53,32 @@ digits_number_changed_cb (GtkWidget *widget, gpointer data)
    widget = NULL;
 }
 
+static int
+scale_applet_cb (GtkWidget *b, gpointer data)
+{
+   OdoApplet *oa = data;
+
+   oa->p_scale_applet=GTK_TOGGLE_BUTTON (b)->active;
+   gnome_property_box_changed(GNOME_PROPERTY_BOX(oa->pbox));
+   return FALSE;
+}
+
 static void
 properties_apply_cb (GtkWidget *b, gint page_num, gpointer data)
 {
    OdoApplet *oa = data;
    gchar *buf;
 
-   oa->enabled = oa->p_enabled;
-   oa->auto_reset = oa->p_auto_reset;
    oa->use_metric = oa->p_use_metric;
+   oa->auto_reset = oa->p_auto_reset;
+   oa->enabled = oa->p_enabled;
    if (oa->digits_nb != oa->p_digits_nb) {
    	oa->digits_nb = oa->p_digits_nb;
    	change_digits_nb (oa);
+   }
+   if (oa->scale_applet != oa->p_scale_applet) {
+	oa->scale_applet = oa->p_scale_applet;
+	change_theme(oa->theme_file, oa);
    }
 
    buf = gtk_entry_get_text(GTK_ENTRY(oa->theme_entry));
@@ -146,8 +160,9 @@ populate_theme_list (GtkWidget *clist)
    }
 
    while ((dir = readdir(dp)) != NULL) {
-   	/* skips removed files */
-   	if (dir->d_ino > 0) {
+   	/* skips removed files and also skips the default dir */
+   	if (dir->d_ino > 0
+   		&& strcmp (dir->d_name, "default")) {
    		gchar *name;
    		gchar *path;
 
@@ -211,6 +226,7 @@ properties_cb (AppletWidget *applet, gpointer data)
    oa->p_enabled = oa->enabled;
    oa->p_auto_reset = oa->auto_reset;
    oa->p_digits_nb = oa->digits_nb;
+   oa->p_scale_applet = oa->scale_applet;
 
    oa->pbox=gnome_property_box_new();
    gtk_window_set_title (
@@ -255,6 +271,12 @@ properties_cb (AppletWidget *applet, gpointer data)
    gtk_container_add (GTK_CONTAINER (frame2), oa->spinner);
    gtk_signal_connect (GTK_OBJECT (adj),"value_changed",
    	GTK_SIGNAL_FUNC (digits_number_changed_cb),oa);
+
+   label = gtk_check_button_new_with_label (_("Scale size to panel"));
+   gtk_box_pack_start(GTK_BOX(vbox), label, FALSE, FALSE, 0);
+   gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(label),oa->p_scale_applet);
+   gtk_signal_connect (GTK_OBJECT(label), "clicked", (GtkSignalFunc)
+   	scale_applet_cb, oa);
 
    gtk_widget_show(frame);
 

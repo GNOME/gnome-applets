@@ -154,6 +154,7 @@ properties_save (gchar *path, OdoApplet *oa)
    gnome_config_set_bool ("odometer/auto_reset",oa->auto_reset);
    gnome_config_set_bool ("odometer/enabled",oa->enabled);
    gnome_config_set_int ("odometer/digits_nb",oa->digits_nb);
+   gnome_config_set_bool ("odometer/scale_applet",oa->scale_applet);
    gnome_config_set_float ("odometer/trip_distance",oa->trip_distance);
    gnome_config_set_float ("odometer/distance",oa->distance);
    gnome_config_set_string ("odometer/theme_file",oa->theme_file);
@@ -170,6 +171,7 @@ properties_load (gchar *path,OdoApplet *oa)
    oa->auto_reset=gnome_config_get_bool_with_default ("odometer/auto_reset=true",NULL);
    oa->enabled=gnome_config_get_bool_with_default ("odometer/enabled=true",NULL);
    oa->digits_nb=gnome_config_get_int_with_default ("odometer/digits_nb=5",NULL);
+   oa->scale_applet=gnome_config_get_bool_with_default ("odometer/scale_applet=true",NULL);
    oa->trip_distance=gnome_config_get_float_with_default ("odometer/trip_distance=0",NULL);
    oa->distance=gnome_config_get_float_with_default ("odometer/distance=0",NULL);
 
@@ -180,6 +182,13 @@ properties_load (gchar *path,OdoApplet *oa)
 #endif
    gnome_config_pop_prefix ();
    if (oa->auto_reset) oa->trip_distance=0;
+#ifdef HAVE_PANEL_PIXEL_SIZE
+   oa->orient = applet_widget_get_panel_orient (APPLET_WIDGET(oa->applet));
+   oa->size   = applet_widget_get_panel_pixel_size (APPLET_WIDGET(oa->applet));
+#else
+   oa->orient = ORIENT_UP;
+   oa->size   = SIZEHINT_DEFAULT;
+#endif
 }
 
 /*
@@ -260,10 +269,10 @@ Calcdistance(OdoApplet *oa)
  * at the location defined by x.
  */
 static void
-draw_digit(GtkWidget *darea,gint n,gint x,gboolean integer_part_digit,OdoApplet *oa)
+draw_digit(GtkWidget *darea,gint n,gint x,gint image_number,OdoApplet *oa)
 {
    gdk_draw_pixmap (darea->window,darea->style->fg_gc[GTK_WIDGET_STATE(darea)],
-   	(integer_part_digit ? oa->int_pixmap : oa->dec_pixmap),
+   	oa->image[image_number]->pixmap,
    	n*oa->digit_width,0,
    	x*oa->digit_width,0,
    	oa->digit_width,oa->digit_height-1);
@@ -281,10 +290,10 @@ draw_value(GtkWidget *darea,gchar *string,OdoApplet *oa)
    gushort nb_drawn_digits;
    gushort n;
    /*
-    * this boolean is used to distinguish digits from the integer part
+    * this value is used to distinguish digits from the integer part
     * of the value to digits from the decimal part.
     */
-   gboolean integer_part_digit = TRUE;
+   gint image_number = INTEGER;
 
    for (i=0, nb_drawn_digits=0; nb_drawn_digits<oa->digits_nb; i++) {
    	if (string[i] == '-')
@@ -293,14 +302,14 @@ draw_value(GtkWidget *darea,gchar *string,OdoApplet *oa)
 		if (oa->with_decimal_dot)
 			n=10;
 		else {
-			integer_part_digit = FALSE;
+			image_number = DECIMAL;
 			continue;
 		}
 	} else if (isdigit (string[i]))
 		n=string[i]-'0';
 	else 
 		break;
-	draw_digit (darea,n,nb_drawn_digits++,integer_part_digit,oa);
+	draw_digit (darea,n,nb_drawn_digits++,image_number,oa);
    }
 }
 
@@ -470,6 +479,55 @@ darea_expose (GtkWidget *widget, GdkEventExpose *event,gpointer data)
 }
 
 static void
+sized_render (OdoApplet *oa)
+{
+   change_theme (oa->theme_file, oa);
+}
+
+static void
+odo_change_orient (GtkWidget *widget, PanelOrientType orient, gpointer data)
+{
+   OdoApplet *oa = data;
+
+#ifdef DEBUG
+   g_print ("odo_change_orient event catched :");
+   switch (orient) {
+	case ORIENT_LEFT : g_print ("ORIENT_LEFT\n"); break;
+	case ORIENT_RIGHT : g_print ("ORIENT_RIGHT\n"); break;
+	case ORIENT_UP : g_print ("ORIENT_UP\n"); break;
+	case ORIENT_DOWN : g_print ("ORIENT_DOWN\n"); break;
+	default : g_assert_not_reached();
+   }
+#endif
+
+   /*
+    * FIXME : why must I use applet_widget_get_panel_orient() here to
+    * get the correct orientation ? The callback 2nd parameter is
+    * always zero except at the first time this callback is called.
+    */
+
+   /* oa->orient = orient; */
+
+   oa->orient = applet_widget_get_panel_orient
+   	(APPLET_WIDGET (oa->applet));
+   sized_render (oa);
+}
+
+#ifdef HAVE_PANEL_PIXEL_SIZE
+static void 
+odo_change_pixel_size (GtkWidget *widget, int size, gpointer data)
+{
+   OdoApplet *oa = data;
+
+#ifdef DEBUG
+   g_print ("odo_change_pixel_size event catched!\n");
+#endif
+   oa->size = size;
+   sized_render (oa);
+}
+#endif
+
+static void
 create_odo(OdoApplet *oa)
 {
    gint aw,ah;
@@ -521,10 +579,12 @@ init_applet (OdoApplet *oa)
    oa->use_metric=TRUE;
    oa->enabled=TRUE;
    oa->auto_reset=TRUE;
+   oa->scale_applet=TRUE;
 
    oa->p_use_metric=TRUE;
    oa->p_enabled=TRUE;
    oa->p_auto_reset=TRUE;
+   oa->p_scale_applet=TRUE;
 
    oa->digits_nb=9;
    oa->p_digits_nb=9;
@@ -532,8 +592,8 @@ init_applet (OdoApplet *oa)
    oa->digit_width=10;
    oa->digit_height=20;
 
-   oa->int_pixmap=NULL;
-   oa->dec_pixmap=NULL;
+   oa->image[INTEGER]=NULL;
+   oa->image[DECIMAL]=NULL;
    oa->theme_file=NULL;
    oa->theme_entry=NULL;
 }
@@ -561,7 +621,13 @@ main (int argc, char *argv[])
    gtk_signal_connect (GTK_OBJECT (oa->applet),
    	"delete_event",GTK_SIGNAL_FUNC(delete_cb),NULL);
    gtk_signal_connect (GTK_OBJECT (oa->applet),
-   	"expose_event",(GtkSignalFunc)darea_expose,oa);
+   	"expose_event",GTK_SIGNAL_FUNC(darea_expose),oa);
+#ifdef HAVE_PANEL_PIXEL_SIZE
+   gtk_signal_connect (GTK_OBJECT (oa->applet),
+   	"change_pixel_size",GTK_SIGNAL_FUNC(odo_change_pixel_size),oa);
+#endif
+   gtk_signal_connect (GTK_OBJECT (oa->applet),
+   	"change_orient",GTK_SIGNAL_FUNC(odo_change_orient),oa);
 
    applet_widget_register_callback (APPLET_WIDGET (oa->applet),
    	"reset",_("Reset"),GTK_SIGNAL_FUNC(reset_cb),oa);

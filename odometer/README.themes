@@ -1,6 +1,6 @@
-This version of odometer supports theme digits. Adding new themes is
-really easy. Please feel free to contribute. You can find many counter
-pictures from web counter for example.
+This version of odometer supports themes digits from arbitrary size.
+Adding new themes is really easy. Please feel free to contribute. You
+can find many counter pictures from web counter for example.
 
 The themedata file contains the following information :
 
@@ -8,12 +8,13 @@ The themedata file contains the following information :
 with_decimal_dot=1
 
   This is a boolean value that indicates if the decimal dot is
-  part of the pixmap, and if it must be displayed. Distance
+  part of the image, and if it must be displayed. Distance
   counters in car have black rolling digits that display
   the integer part of the distance, and red rolling digits
   for the decimal part. In this case, the dot doesn't need
-  to be displayed. Of course, with digital digits (A, bbldotg
-  for example), the dot has to be plotted.
+  to be displayed. Of course, when displaying a counter made 
+  of digital digits (like A, bbldotg for example), the dot has
+  to be plotted.
 
 integer_pixmap=file1.png
 decimal_pixmap=file2.png
@@ -21,8 +22,18 @@ decimal_pixmap=file2.png
   These files contain the list of digits "0123456789" or "0123456789."
   This order must be respected, and the dot must appear if required.
 
-digit_width=n
+NOTE :
 
-  n indicates the size of the digits in the previous files. Humm, this
-  seems a redundant information. Need to be fixed.
+  Since version 0.6 of the odometer applet, the digits images are
+  handled by the GdkImlibImages structs, which allows to render them
+  into pixmaps of different sizes. This is useful to adjust pixmap size
+  to the panel size, without having to provide a different set of images
+  for each possible size of the panel.
 
+  The images are actually well suited for the default panel size,
+  48 pixels. When using these images with a bigger display size,
+  you'll notice a pixelization effect. If you want a perfect image
+  render at the higer panel size (80 pixels), you have to provide
+  images with at least a height of 80 pixels. The drawback
+  is that you'll use more memory than really required if you switch
+  back to the default panel size.

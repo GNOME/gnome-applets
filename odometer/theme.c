@@ -9,49 +9,10 @@
 
 #include "odo.h"
 
-#include "def_theme/Default-black.xpm"
-#include "def_theme/Default-red.xpm"
-
-static gint
-load_default_theme (OdoApplet *oa)
+static GdkImlibImage *
+get_image (gchar *path, gchar *string)
 {
-  GdkBitmap *mask = NULL;
-  GtkStyle *style;
-  gint area_width, area_height;
-
-  if (oa->int_pixmap) gdk_pixmap_unref (oa->int_pixmap);
-  if (oa->dec_pixmap) gdk_pixmap_unref (oa->dec_pixmap);
-  /*
-   * build the first pixmap
-   */
-  style=gtk_widget_get_style(oa->applet);
-  oa->int_pixmap = gdk_pixmap_create_from_xpm_d(oa->darea1->window, &mask,
-	&style->bg[GTK_STATE_NORMAL], (gchar **)Default_black_xpm);
-  gdk_window_get_size (oa->int_pixmap, &oa->width, &oa->height);
-  oa->digit_width=oa->width/10;
-  oa->digit_height=oa->height;
-  oa->with_decimal_dot=0;
-
-  /*
-   * build the pixmaps for the decimal digits
-   */
-  oa->dec_pixmap = gdk_pixmap_create_from_xpm_d(oa->darea1->window, &mask,
-	&style->bg[GTK_STATE_NORMAL], (gchar **)Default_red_xpm);
-
-  /*
-   * Here, we assumes that both default pixmaps have the same size.
-   */
-  area_width=oa->digit_width*oa->digits_nb;
-  area_height=oa->digit_height;
-  gtk_drawing_area_size(GTK_DRAWING_AREA(oa->darea1),area_width,area_height);
-  gtk_drawing_area_size(GTK_DRAWING_AREA(oa->darea2),area_width,area_height);
-  return TRUE;
-}
-
-static GdkPixmap *
-get_pixmap (gchar *path, gchar *string)
-{
-  GtkWidget *pixmap = NULL;
+  GdkImlibImage *image = NULL;
   gchar * buf = NULL;
   gchar *filename;
 
@@ -66,9 +27,9 @@ get_pixmap (gchar *path, gchar *string)
   	g_free (filename);
   	return NULL;
   }
-  pixmap = gnome_pixmap_new_from_file (filename);
+  image = gdk_imlib_load_image (filename);
   g_free (filename);
-  return GNOME_PIXMAP(pixmap)->pixmap;
+  return image;
 }
 
 static gint
@@ -77,9 +38,13 @@ load_theme (gchar *path, OdoApplet *oa)
   gchar *datafile = g_strconcat (path, "/themedata", NULL);
   gchar *prefix;
   gint area_width, area_height;
-  gint nb_digits_in_pixmap;
-  gint decimal_pixmap_width, decimal_pixmap_height;
+  gint digits_nb, digits_nb_in_image;
+  gdouble ratioXY [2];
 
+  if (oa->size == 0) {
+  	g_assert_not_reached();
+  	return FALSE;
+  }
   if (!g_file_exists (datafile)) {
   	g_print ("Unable to open theme data file: %s\n", datafile);
   	g_free (datafile);
@@ -89,82 +54,105 @@ load_theme (gchar *path, OdoApplet *oa)
   gnome_config_push_prefix (prefix);
   g_free (prefix);
 
+  /*
+   * Loading images
+   */
+  if (oa->image[INTEGER])
+  	gdk_imlib_destroy_image (oa->image[INTEGER]);
+  if (oa->image[DECIMAL])
+  	gdk_imlib_destroy_image (oa->image[DECIMAL]);
+  oa->image[INTEGER] = get_image (path, "integer_image=");
+  oa->image[DECIMAL] = get_image (path, "decimal_image=");
+
+
+  /*
+   * compute the ratio for the RGB image
+   */
   oa->with_decimal_dot = gnome_config_get_int ("with_decimal_dot=");
-  oa->digit_width = gnome_config_get_int ("digit_width=");
 
-  /*
-   * Loading pixmap for the integer part of the counter
-   */
-  if (oa->int_pixmap)	gdk_pixmap_unref (oa->int_pixmap);
-  oa->int_pixmap = get_pixmap (path, "integer_pixmap=");
-  if (oa->int_pixmap)
-  	gdk_window_get_size (oa->int_pixmap, &oa->width, &oa->height);
-  else {
-  	g_free (datafile);
-  	gnome_config_pop_prefix();
-  	return FALSE;
-  }
-  /*
-   * Checking size consistencies
-   */
+  digits_nb_in_image=10;
+  digits_nb=oa->digits_nb;
   if (oa->with_decimal_dot)
-  	nb_digits_in_pixmap = 11;
-  else
-  	nb_digits_in_pixmap = 10;
-  if (nb_digits_in_pixmap * oa->digit_width != oa->width) {
-  	gdk_pixmap_unref (oa->int_pixmap);
-  	g_free (datafile);
-  	gnome_config_pop_prefix();
-  	return FALSE;
-  }
+  	digits_nb_in_image++;
+  ratioXY [INTEGER]=((float)oa->image [INTEGER]->rgb_width/
+  	(float)digits_nb_in_image)/(float)oa->image[INTEGER]->rgb_height;
+  ratioXY [DECIMAL]=((float)oa->image [DECIMAL]->rgb_width/
+  	(float)digits_nb_in_image)/(float)oa->image[DECIMAL]->rgb_height;
 
   /*
-   * Loading pixmap for the decimal part of the counter
+   * define the pixmap size from the panel size
+   * and the ratio of the RGB image
    */
-  if (oa->dec_pixmap)	gdk_pixmap_unref (oa->dec_pixmap);
-  oa->dec_pixmap = get_pixmap (path, "decimal_pixmap=");
-  if (oa->dec_pixmap)
-  	gdk_window_get_size (oa->int_pixmap,
-  		&decimal_pixmap_width,
-  		&decimal_pixmap_height);
-  else {
-  	gdk_pixmap_unref (oa->int_pixmap);
-  	g_free (datafile);
-  	gnome_config_pop_prefix();
-  	return FALSE;
+  if ((oa->orient == ORIENT_LEFT) || (oa->orient == ORIENT_RIGHT)) {
+	if (oa->scale_applet) {
+#ifdef HAVE_PANEL_PIXEL_SIZE
+		oa->size   = applet_widget_get_panel_pixel_size
+				(APPLET_WIDGET(oa->applet));
+#else
+		oa->size   = SIZEHINT_DEFAULT;
+#endif
+	} else 
+		oa->size = (oa->image [INTEGER]->rgb_width * digits_nb)
+				/digits_nb_in_image;
+  	oa->width = oa->size;
+  	area_width = oa->size - 0;
+  	oa->digit_width = area_width / digits_nb;
+  	oa->digit_height = oa->digit_width / ratioXY [INTEGER];
+  	area_height = oa->digit_height;
+  	oa->height = (oa->digit_height << 1) + 2;
+  } else {
+	if (oa->scale_applet) {
+#ifdef HAVE_PANEL_PIXEL_SIZE
+		oa->size   = applet_widget_get_panel_pixel_size
+				(APPLET_WIDGET(oa->applet));
+#else
+		oa->size   = SIZEHINT_DEFAULT;
+#endif
+	} else
+		oa->size = (oa->image [INTEGER]->rgb_height << 1) + 2;
+	oa->height = oa->size;
+	area_height = (oa->size - 2) >> 1;
+	oa->digit_height = area_height;
+	oa->digit_width = oa->digit_height * ratioXY [INTEGER];
+	area_width = oa->digit_width * digits_nb;
+	oa->width = area_width + 0;
   }
-  /*
-   * Checking size consistencies
-   */
-  if (oa->width != decimal_pixmap_width
-  	|| oa->height != decimal_pixmap_height) {
-  	gdk_pixmap_unref (oa->dec_pixmap);
-  	gdk_pixmap_unref (oa->int_pixmap);
-  	g_free (datafile);
-  	gnome_config_pop_prefix();
-  	return FALSE;
 
-  }
+  gdk_imlib_render (oa->image [INTEGER], 
+  	oa->digit_width * digits_nb_in_image,
+  	oa->digit_height);
+  gdk_imlib_render (oa->image [DECIMAL],
+  	oa->digit_width * digits_nb_in_image,
+  	oa->digit_height);
 
   /*
-   * Finishing setup
+   * Adjust widget sizes
    */
-  oa->digit_height = oa->height;
-  area_width = oa->digit_width * oa->digits_nb;
-  area_height = oa->height;
+
   gtk_drawing_area_size (GTK_DRAWING_AREA(oa->darea1),area_width,area_height);
   gtk_drawing_area_size (GTK_DRAWING_AREA(oa->darea2),area_width,area_height);
+  gtk_widget_set_usize (GTK_WIDGET(oa->applet),oa->width,oa->height);
+
   return TRUE;
 }
 
 gint
 change_theme (gchar *path, OdoApplet *oa)
 {
+  gchar *themepath;
+  gchar *themefile;
+  gint retval = TRUE;
+
+  themepath = gnome_unconditional_datadir_file ("odometer");
+  themefile = g_strconcat (themepath, "/default", NULL);
+
   if (!path || !*path)
-  	return load_default_theme (oa);
+  	retval = load_theme ("/usr/local/gnome/share/odometer/default",oa);
   else
   	if (!load_theme (path, oa))
-  		return load_default_theme (oa);
-	else
-		return TRUE;
+  		retval = load_theme
+  			("/usr/local/gnome/share/odometer/default",oa);
+  g_free (themefile);
+  g_free (themepath);
+  return retval;
 }

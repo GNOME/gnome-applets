@@ -1,7 +1,39 @@
+2000-01-30  Fabrice Bellet <Fabrice.Bellet@creatis.insa-lyon.fr>
+
+	* odo.[hc], properties.c, theme.c : added a checkbutton in
+	the properties box to let the user choose to adapt or not
+	the applet to the panel size.
+
+2000-01-30  Fabrice Bellet <Fabrice.Bellet@creatis.insa-lyon.fr>
+
+	* properties.c: fixed the case of the default theme, that
+	doesn't have to appear twice in the theme's list.
+	* README.themes: updated doc.
+	* theme.c (removed load_default_theme, change_theme modified),
+	def_theme/Default-black.xpm removed,
+	def_theme/Default-red.xpm removed,
+	def_theme/themedata removed,
+	def_theme/Makefile.am removed,
+	Makefile.am,
+	themes/default/default-black.png added,
+	themes/default/default-red.png added,
+	themes/default/themedata added: removed the default_theme pixmap.
+	This default theme is now banalized with others themes.
+	* odo.c (draw_digit, draw_value),
+	odo.h (removed get_pixmap, added get_image, load_theme),
+	theme.c: changed the theme management from pixmaps to
+	GdkImlibImage structs. The advantage is that GdkImlibImage
+	automagically handle rendering at different sizes.
+	* odo.c (size_render, odo_change_orient, odo_change_pixel_size):
+	Added handlers for panel pixel size changes and panel orientation
+	changes.
+	* themes/*/themedata: removed digit_width, which can be computed
+	from the RGB image width.
+
 Sat Jan 29 16:56:51 2000  Tom Gilbert  <gilbertt@tomgilbert.freeserve.co.uk>
 
 	* On an anti-warning hunt using CFLAGS="-O6 -g -W -Wall
-        -Wmissing-prototypes -Wmissing-declarations". Don't mind me.
+	-Wmissing-prototypes -Wmissing-declarations". Don't mind me.
 
 1999-10-18  Jacob Berkman  <jberkman@andrew.cmu.edu>
 
