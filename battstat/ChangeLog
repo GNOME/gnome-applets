@@ -83,4 +83,13 @@
         2000-10-20 
 	The applet has been ported to OpenBSD by Joe Ammond
 	<jra@twinight.org>. 
-	
+
+2.0.9:
+	2001-02-07
+	Rewrote the applet to open the APM device, get the power
+	status and then close the device immediately. Previously I kept the
+	device opened for as long as the applet was running.
+	2001-02-13
+	Thomas Hood pointed out that under Linux there's no need to open the APM
+	device at all. apm_read() will take care of that by reading from /proc and not
+	directly from the device.

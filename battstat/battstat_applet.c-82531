@@ -199,7 +199,6 @@ GdkColor darkred[] = {
   {-1,0x0000,0x0000,0x0000}
 };
 
-int fd;
 #ifdef __OpenBSD__
 struct apm_power_info apminfo;
 #else
@@ -210,33 +209,53 @@ struct apm_info apminfo;
 void
 apm_readinfo(void)
 {
+  /* This is how I read the information from the APM subsystem under FreeBSD.
+     Each time this functions is called (once every second) the APM device is
+     opened, read from and the closed.
+  */
+  int fd;
   if (DEBUG) g_print("apm_readinfo() (FreeBSD)\n");
+
+  fd = open(APMDEVICE, O_RDONLY);
+  if (fd == -1) cleanup(1);
 
   if (ioctl(fd, APMIO_GETINFO, &apminfo) == -1)
     err(1, "ioctl(APMIO_GETINFO)");
+
+  close(fd);
 }
 #elif __OpenBSD__
 void
 apm_readinfo(void)
 {
+  /* Code for OpenBSD by Joe Ammond <jra@twinight.org>. Using the same procedure
+     as for FreeBSD.
+  */
+  int fd;
   if (DEBUG) g_print("apm_readinfo() (OpenBSD)\n");
 
+  fd = open(APMDEVICE, O_RDONLY);
+  if (fd == -1) cleanup(1);
   if (ioctl(fd, APM_IOC_GETPOWER, &apminfo) == -1)
     err(1, "ioctl(APM_IOC_GETPOWER)");
+  close(fd);
 }
 #elif __linux__
 void
 apm_readinfo(void)
 {
+  /* Code for Linux by Thomas Hood <jdthood@mail.com>. apm_read() will read from 
+     /proc/... instead and here we do not need to open the device ourselves.
+  */
   if (DEBUG) g_print("apm_readinfo() (Linux)\n");
-
   apm_read(&apminfo);
 }
 #else
 void
 apm_readinfo(void)
 {
-  if (DEBUG) g_print("apm_readinfo() (Generic)\n");
+  if (DEBUG) g_print("apm_readinfo() (Generic)\n Your platform is not supported!\n");
+  if (DEBUG) g_print("The applet will not work properly (if at all).\n");
 
   return;
 }
@@ -271,8 +290,8 @@ pixmap_timeout( gpointer data )
   static guint lastacstatus=1000;
   guint pix_type_new=1000;
   guint progress_value;
-  guint batt_life;
-  guint ac_status;
+  gint batt_life;
+  gint ac_status;
   gint i, x;
   gboolean batterypresent=FALSE;
   gchar new_label[80];
@@ -329,7 +348,7 @@ pixmap_timeout( gpointer data )
   ac_status = 0;
   batterypresent = TRUE;
 #endif
-
+  
   if (pix_type_new != pixmap_type) {
     pixmap_type=pix_type_new;
     if (pixmap_type==BATTERY) {
@@ -352,13 +371,6 @@ pixmap_timeout( gpointer data )
 		     statusimage[AC], statusmask[AC]);
       gtk_pixmap_set(GTK_PIXMAP (battery->pixmapdockwid),
 		     statusimage[AC], statusmask[AC]);
-
-      /* Why did I do this? Weird. Since lowbatt_toggle is NULL, this
-	 will result in a crash.
-	 if (battery->lowbattnotification == FALSE) {
-	 battery->lowbattnotification = (GTK_TOGGLE_BUTTON (battery->lowbatt_toggle))->active;
-      } 
-      */
     }
   }
 
@@ -447,16 +459,22 @@ pixmap_timeout( gpointer data )
 
       for(i=0; color[i].pixel!=-1; i++) {
 	gdk_gc_set_foreground(battery->pixgc, &color[i]);
-	if(battery->horizont)
-	  gdk_draw_line (battery->pixmap,
-			 battery->pixgc,
-			 pixel_offset_top[i], i+2,
-			 pixel_offset_top[i]+progress_value, i+2);
-	else
-	  gdk_draw_line (battery->pixmapy,
-			 battery->pixgc,
-			 i+2, pixel_offset_top[i],
-			 i+2, pixel_offset_top[i]+progress_value);
+	if(battery->horizont) {
+	  if(batt_life > 0) {
+	    gdk_draw_line (battery->pixmap,
+			   battery->pixgc,
+			   pixel_offset_top[i], i+2,
+			   pixel_offset_top[i]+progress_value, i+2);
+	  }
+	}
+	else {
+	  if(batt_life > 0) {
+	    gdk_draw_line (battery->pixmapy,
+			   battery->pixgc,
+			   i+2, pixel_offset_top[i],
+			   i+2, pixel_offset_top[i]+progress_value);
+	  }
+	}
       }
 
       if(battery->horizont)
@@ -478,35 +496,43 @@ pixmap_timeout( gpointer data )
 
       for(i=0; color[i].pixel!=-1; i++) {
 	gdk_gc_set_foreground(battery->pixgc, &color[i]);
-	if(battery->horizont)
-	  gdk_draw_line (battery->pixmap,
-			 battery->pixgc,
-			 pixel_offset_bottom[i], i+2,
-			 pixel_offset_bottom[i]-progress_value, i+2);
-	else
-	  gdk_draw_line (battery->pixmapy,
-			 battery->pixgc,
-			 i+2, pixel_offset_bottom[i]-1,
-			 i+2, pixel_offset_bottom[i]-progress_value);
+	if(battery->horizont) {
+	  if(batt_life > 0) {
+	    gdk_draw_line (battery->pixmap,
+			   battery->pixgc,
+			   pixel_offset_bottom[i], i+2,
+			   pixel_offset_bottom[i]-progress_value, i+2);
+	  }
+	}
+	else {
+	  if(batt_life > 0) {
+	    gdk_draw_line (battery->pixmapy,
+			   battery->pixgc,
+			   i+2, pixel_offset_bottom[i]-1,
+			   i+2, pixel_offset_bottom[i]-progress_value);
+	  }
+	}
       }
       for(i=0; darkcolor[i].pixel!=-1; i++) {
 	x=(pixel_offset_bottom[i]-progress_value)-pixel_top_length[i];
 	if(x < pixel_offset_top[i]) {
 	  x = pixel_offset_top[i];
 	}
-	if(progress_value < 33) {
-	  gdk_gc_set_foreground(battery->pixgc, &darkcolor[i]);
-
-	  if(battery->horizont)
-	    gdk_draw_line (battery->pixmap,
-			   battery->pixgc,
-			   (pixel_offset_bottom[i]-progress_value)-1, i+2,
-			   x, i+2);
-	  else
-	    gdk_draw_line (battery->pixmapy,
-			   battery->pixgc,
-			   i+2, (pixel_offset_bottom[i]-progress_value)-1,
-			   i+2, x);
+	if(batt_life > 0) {
+	  if(progress_value < 33) {
+	    gdk_gc_set_foreground(battery->pixgc, &darkcolor[i]);
+	    
+	    if(battery->horizont)
+	      gdk_draw_line (battery->pixmap,
+			     battery->pixgc,
+			     (pixel_offset_bottom[i]-progress_value)-1, i+2,
+			     x, i+2);
+	    else
+	      gdk_draw_line (battery->pixmapy,
+			     battery->pixgc,
+			     i+2, (pixel_offset_bottom[i]-progress_value)-1,
+			     i+2, x);
+	  }
 	}
       }
 
@@ -599,13 +625,6 @@ destroy_applet( GtkWidget *widget, gpointer data )
   gdk_bitmap_unref(pdata->masky);
   gdk_bitmap_unref(pdata->pixmask);
   g_free(pdata);
-#ifdef __FreeBSD__
-  close(fd);
-#elif __OpenBSD__
-  close(fd);
-#elif __Linux__
-  apm_close(fd);
-#endif
 
   return;
   widget = NULL;
@@ -621,13 +640,12 @@ cleanup(int status)
     g_error (_("Can't open the APM device!\n\n"
 	       "Make sure you have read permission to the\n"
 	       "APM device."));
-    exit(-1);
+    exit(1);
     break;
   case 2:
-    g_error (_("The APM Managment subsystem seems to be disabled.\n"
+    g_error (_("The APM Management subsystem seems to be disabled.\n"
 	       "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
 	       "that helps.\n"));
-    close(fd);
     gtk_main_quit();
     break;
   }
@@ -1742,21 +1760,10 @@ main(int argc, char *argv[])
 {
   ProgressData *battstat;
 
-#ifdef __FreeBSD__
-  fd = open(APMDEVICE, O_RDONLY);
-  if (fd == -1) cleanup(1);
-#elif __OpenBSD__
-  fd = open(APMDEVICE, O_RDONLY);
-  if (fd == -1) cleanup(1);
-#elif __linux__
-  fd = apm_open();
-  /* Error handling for Linux needed here. */
-#endif
   if (DEBUG) g_print("main()\n");
 
   apm_readinfo();
-  /* Linux code needed in the above function.
-   */
+
 #ifdef __FreeBSD__
   if(apminfo.ai_status == 0) cleanup(2);
 #endif
