@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 1.4.1\n"
-"POT-Creation-Date: 2002-07-11 20:29+0200\n"
-"PO-Revision-Date: 2002-07-11 20:32+0200\n"
+"POT-Creation-Date: 2002-07-28 18:21+0200\n"
+"PO-Revision-Date: 2002-07-28 18:21+0200\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian <no@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -14,24 +14,25 @@ msgstr ""
 "Content-Transfer-Encoding: 8-bit\n"
 
 #. The long name of the applet in the About dialog.
-#: battstat/GNOME_BattstatApplet.server.in.h:1 battstat/battstat_applet.c:839
+#: battstat/GNOME_BattstatApplet.server.in.in.h:1
+#: battstat/battstat_applet.c:839
 msgid "Battery Charge Monitor"
 msgstr "Overvåking av batterilading"
 
-#: battstat/GNOME_BattstatApplet.server.in.h:2
+#: battstat/GNOME_BattstatApplet.server.in.in.h:2
 msgid "Battstat Factory"
 msgstr "Battstat-factory"
 
-#: battstat/GNOME_BattstatApplet.server.in.h:3
+#: battstat/GNOME_BattstatApplet.server.in.in.h:3
 msgid "Monitor a laptop's remaining power"
 msgstr "Overvåk gjenværende strøm på en bærbar"
 
-#: battstat/GNOME_BattstatApplet.server.in.h:4
-#: charpick/GNOME_CharpickerApplet.server.in.h:4
-#: drivemount/GNOME_DriveMountApplet.server.in.h:5
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:5
-#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:4
-#: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:3
+#: battstat/GNOME_BattstatApplet.server.in.in.h:4
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:4
+#: drivemount/GNOME_DriveMountApplet.server.in.in.h:5
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:5
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:4
+#: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:3
 #: panel-menu/GNOME_PanelMenuApplet.server.in.h:4
 msgid "Utility"
 msgstr "Verktøy"
@@ -257,7 +258,7 @@ msgstr ""
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jorgen Pehrson <jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:826 cdplayer/cdplayer.c:466
+#: battstat/battstat_applet.c:826 cdplayer/cdplayer.c:467
 #: charpick/charpick.c:373 drivemount/drivemount.c:449 geyes/geyes.c:215
 #: gkb-new/gkb.c:592 gtik/gtik.c:715 gweather/gweather-about.c:43
 #: mini-commander/src/about.c:46 mixer/mixer.c:784
@@ -279,8 +280,9 @@ msgstr "Dette verktøyet viser status for batteriet på din bærbare."
 msgid "100%"
 msgstr "100%"
 
-#: battstat/battstat_applet.glade.h:3
-msgid "Apperance"
+#. appearance frame
+#: battstat/battstat_applet.glade.h:3 mini-commander/src/preferences.c:743
+msgid "Appearance"
 msgstr "Utseende"
 
 #: battstat/battstat_applet.glade.h:4
@@ -372,25 +374,25 @@ msgstr "Batteriet er fullt oppladet"
 msgid "Battery power low"
 msgstr "Lav strømstyrke"
 
-#: cdplayer/GNOME_CDPlayerApplet.server.in.h:1 cdplayer/cdplayer.c:169
-#: cdplayer/cdplayer.c:482 cdplayer/cdplayer.c:900
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:169
+#: cdplayer/cdplayer.c:483 cdplayer/cdplayer.c:896
 msgid "CD Player"
 msgstr "CD-spiller"
 
-#: cdplayer/GNOME_CDPlayerApplet.server.in.h:2
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:2
 msgid "CD Player Applet Factory"
 msgstr "Factory for CD-spiller-applet"
 
-#: cdplayer/GNOME_CDPlayerApplet.server.in.h:3
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:3
 msgid "Factory for CD player applet"
 msgstr "Factory for CD-spiller-applet"
 
-#: cdplayer/GNOME_CDPlayerApplet.server.in.h:4
-#: mixer/GNOME_MixerApplet.server.in.h:2
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:4
+#: mixer/GNOME_MixerApplet.server.in.in.h:2
 msgid "Multimedia"
 msgstr "Multimedia"
 
-#: cdplayer/GNOME_CDPlayerApplet.server.in.h:5
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:5
 msgid "Panel applet for playing audio CDs"
 msgstr "Panelapplet for avspilling av lyd-CDer"
 
@@ -398,66 +400,67 @@ msgstr "Panelapplet for avspilling av lyd-CDer"
 msgid "_Run External CD Player"
 msgstr "Kjø_r ekstern CD-spiller"
 
-#: cdplayer/cdplayer.c:157 cdplayer/cdplayer.c:890
+#: cdplayer/cdplayer.c:157 cdplayer/cdplayer.c:886
 msgid "Stop"
 msgstr "Stopp"
 
-#: cdplayer/cdplayer.c:159 cdplayer/cdplayer.c:892
+#: cdplayer/cdplayer.c:159 cdplayer/cdplayer.c:888
 msgid "Play / Pause"
 msgstr "Spill / pause"
 
-#: cdplayer/cdplayer.c:161 cdplayer/cdplayer.c:894
+#: cdplayer/cdplayer.c:161 cdplayer/cdplayer.c:890
 msgid "Eject"
 msgstr "Løs ut"
 
-#: cdplayer/cdplayer.c:163 cdplayer/cdplayer.c:896
+#: cdplayer/cdplayer.c:163 cdplayer/cdplayer.c:892
 msgid "Previous Track"
 msgstr "Forrige spor"
 
-#: cdplayer/cdplayer.c:165 cdplayer/cdplayer.c:898
+#: cdplayer/cdplayer.c:165 cdplayer/cdplayer.c:894
 msgid "Next Track"
 msgstr "Neste spor"
 
-#: cdplayer/cdplayer.c:280
+#: cdplayer/cdplayer.c:280 drivemount/drivemount.c:397 mixer/mixer.c:751
+#: multiload/main.c:111
 #, c-format
-msgid "There was an error executing gnome-cd : %s"
-msgstr "Det oppsto en feil ved kjøring av gnome-cd : %s"
+msgid "There was an error executing '%s' : %s"
+msgstr "Det oppsto en feil ved kjøring av «%s» : %s"
 
-#: cdplayer/cdplayer.c:378
+#: cdplayer/cdplayer.c:379
 msgid "CD Player Preferences"
 msgstr "Brukervalg for CD-spiller"
 
-#: cdplayer/cdplayer.c:394
+#: cdplayer/cdplayer.c:395
 msgid "Disc Image"
 msgstr "Diskbilde"
 
-#: cdplayer/cdplayer.c:394
+#: cdplayer/cdplayer.c:395
 msgid "An image of a cd-rom disc"
 msgstr "Et bilde av en CD-ROM-plate"
 
-#: cdplayer/cdplayer.c:396
+#: cdplayer/cdplayer.c:397
 msgid "Device _Path:"
 msgstr "St_i til enhet:"
 
-#: cdplayer/cdplayer.c:405
+#: cdplayer/cdplayer.c:406
 msgid "Device Path"
 msgstr "Sti til enhet"
 
-#: cdplayer/cdplayer.c:405
+#: cdplayer/cdplayer.c:406
 msgid "Set the device path here"
 msgstr "Sett sti til enhet her"
 
-#: cdplayer/cdplayer.c:408
+#: cdplayer/cdplayer.c:409
 msgid "Use _Default"
 msgstr "Bruk _forvalg"
 
-#: cdplayer/cdplayer.c:483
+#: cdplayer/cdplayer.c:484
 msgid ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
 msgstr "© 2001 Chris Phelps (GNOME 2 port)"
 
-#: cdplayer/cdplayer.c:485 cdplayer/cdplayer.c:901
+#: cdplayer/cdplayer.c:486 cdplayer/cdplayer.c:897
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr ""
 "CD-spiller appleten er et enkelt program for avspilling av lyd-CDer for "
@@ -471,36 +474,36 @@ msgstr "Medgått tid"
 msgid "Track number"
 msgstr "Spornummer"
 
-#: cdplayer/cdplayer.c:891
+#: cdplayer/cdplayer.c:887
 msgid "Click this button to Stop playing the CD"
 msgstr "Klikk på denne knappen for å stoppe avspilling av CD"
 
-#: cdplayer/cdplayer.c:893
+#: cdplayer/cdplayer.c:889
 msgid "Click this button to Play or Pause the CD"
 msgstr "Klikk på denne knappen for å spille av eller pause CDen"
 
-#: cdplayer/cdplayer.c:895
+#: cdplayer/cdplayer.c:891
 msgid "Click this button to eject the CD"
 msgstr "Klikk på denne knappen for å utløse CDen"
 
-#: cdplayer/cdplayer.c:897
+#: cdplayer/cdplayer.c:893
 msgid "Click this button to Play the previous track in the CD"
 msgstr "Klikk på denne knappen for å spille av forrige spor på CDen"
 
-#: cdplayer/cdplayer.c:899
+#: cdplayer/cdplayer.c:895
 msgid "Click this button to Play the next track in the CD"
 msgstr "Klikk på denne knappen for å spille av neste spor på CDen"
 
-#: charpick/GNOME_CharpickerApplet.server.in.h:1 charpick/charpick.c:389
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:389
 #: charpick/charpick.c:482
 msgid "Character Palette"
 msgstr "Tegnpalett"
 
-#: charpick/GNOME_CharpickerApplet.server.in.h:2
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:2
 msgid "Charpicker Applet Factory"
 msgstr "Factory for tegnvelger"
 
-#: charpick/GNOME_CharpickerApplet.server.in.h:3
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:3
 msgid "Insert characters"
 msgstr "Sett inn tegn"
 
@@ -550,19 +553,20 @@ msgstr ""
 msgid "Character Palette Preferences"
 msgstr "Brukervalg for tegnpalett"
 
-#: drivemount/GNOME_DriveMountApplet.server.in.h:1 drivemount/drivemount.c:465
+#: drivemount/GNOME_DriveMountApplet.server.in.in.h:1
+#: drivemount/drivemount.c:465
 msgid "Disk Mounter"
 msgstr "Diskmontering"
 
-#: drivemount/GNOME_DriveMountApplet.server.in.h:2
+#: drivemount/GNOME_DriveMountApplet.server.in.in.h:2
 msgid "Drive Mount Applet Factory"
 msgstr "Factory for diskmonteringsapplet"
 
-#: drivemount/GNOME_DriveMountApplet.server.in.h:3
+#: drivemount/GNOME_DriveMountApplet.server.in.in.h:3
 msgid "Factory for drive mount applet"
 msgstr "Factory for diskmonteringsapplet"
 
-#: drivemount/GNOME_DriveMountApplet.server.in.h:4
+#: drivemount/GNOME_DriveMountApplet.server.in.in.h:4
 msgid "Mount local disks and devices"
 msgstr "Monter lokale disker og enheter"
 
@@ -573,11 +577,6 @@ msgstr "_Bla gjennom..."
 #: drivemount/GNOME_DriveMountApplet.xml.h:3
 msgid "_Eject"
 msgstr "_Løs ut"
-
-#: drivemount/drivemount.c:397
-#, c-format
-msgid "There was an error executing '%s' : %s"
-msgstr "Det oppsto en feil ved kjøring av «%s» : %s"
 
 #: drivemount/drivemount.c:466
 msgid "(C) 1999-2001 The GNOME Hackers\n"
@@ -614,6 +613,10 @@ msgstr ""
 #: drivemount/properties.c:252
 msgid "Disk Mounter Preferences"
 msgstr "Brukervalg for diskmontering"
+
+#: drivemount/properties.c:258
+msgid "Settings"
+msgstr "Innstillinger"
 
 #: drivemount/properties.c:271
 msgid "_Mount point:"
@@ -683,20 +686,20 @@ msgstr "_Utløs ved avmontering"
 msgid "Use _automount friendly status test"
 msgstr "Bruk _automount-vennlig statustest"
 
-#: geyes/GNOME_GeyesApplet.server.in.h:1
+#: geyes/GNOME_GeyesApplet.server.in.in.h:1
 msgid "A set of eyeballs for your panel"
 msgstr "Et sett øyne for ditt panel"
 
-#: geyes/GNOME_GeyesApplet.server.in.h:2
+#: geyes/GNOME_GeyesApplet.server.in.in.h:2
 msgid "Amusements"
 msgstr "Underholdning"
 
-#: geyes/GNOME_GeyesApplet.server.in.h:3 geyes/geyes.c:232 geyes/geyes.c:419
-#: geyes/geyes.c:421
+#: geyes/GNOME_GeyesApplet.server.in.in.h:3 geyes/geyes.c:232
+#: geyes/geyes.c:419 geyes/geyes.c:421
 msgid "Geyes"
 msgstr "Geyes"
 
-#: geyes/GNOME_GeyesApplet.server.in.h:4
+#: geyes/GNOME_GeyesApplet.server.in.in.h:4
 msgid "Geyes Applet Factory"
 msgstr "Factory for geyes-applet"
 
@@ -720,19 +723,19 @@ msgstr "Brukervalg for Geyes"
 msgid "T_heme Name"
 msgstr "_Navn på tema"
 
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:1
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:1
 msgid "Change the keyboard layout"
 msgstr "Endre tastaturutforming"
 
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:2
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:2
 msgid "GKB Factory"
 msgstr "GKB-factory"
 
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:3 gkb-new/gkb.c:603
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:3 gkb-new/gkb.c:603
 msgid "Keyboard Layout Switcher"
 msgstr "Valg av tastaturutforming"
 
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:4
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:4
 msgid "Produces keyboard layout switcher applets."
 msgstr "Lager appleter for tastaturutforming."
 
@@ -1228,20 +1231,20 @@ msgstr "_Alternativer"
 msgid "The keymap switching command returned with error!"
 msgstr "Kommando for bytting av tastaturkart returnerte med feil!"
 
-#: gtik/GNOME_GtikApplet.server.in.h:1
-#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:1
+#: gtik/GNOME_GtikApplet.server.in.in.h:1
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:1
 msgid "Accessories"
 msgstr "Tilbehør"
 
-#: gtik/GNOME_GtikApplet.server.in.h:2
+#: gtik/GNOME_GtikApplet.server.in.in.h:2
 msgid "Get continuously updated stock quotes"
 msgstr "Hent oppdaterte aksjekurser"
 
-#: gtik/GNOME_GtikApplet.server.in.h:3
+#: gtik/GNOME_GtikApplet.server.in.in.h:3
 msgid "Gtik Applet Factory"
 msgstr "Factory for gtik-applet"
 
-#: gtik/GNOME_GtikApplet.server.in.h:4 gtik/gtik.c:731
+#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:731
 msgid "Stock Ticker"
 msgstr "Aksjeovervåker"
 
@@ -1361,19 +1364,19 @@ msgstr "Endre "
 msgid "_Forecast"
 msgstr "_Værmelding"
 
-#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:2
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:2
 msgid "Factory for creating the weather applet."
 msgstr "Factory for oppretting av værmeldingsapplet."
 
-#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:3
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:3
 msgid "Gweather Applet Factory"
 msgstr "Factory for værmeldingsapplet"
 
-#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:4
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:4
 msgid "Monitor the current weather conditions, and forecasts"
 msgstr "Overvåk værtilstand og få værmeldinger"
 
-#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:5
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:5
 #: gweather/gweather-about.c:61
 msgid "Weather Report"
 msgstr "Værmelding"
@@ -1396,7 +1399,7 @@ msgstr ""
 msgid "GNOME Weather"
 msgstr "GNOME Værmelding"
 
-#: gweather/gweather-applet.c:322
+#: gweather/gweather-applet.c:319
 msgid "Updating..."
 msgstr "Oppdaterer..."
 
@@ -1519,56 +1522,56 @@ msgstr "Adresseoppføring"
 msgid "Enter the URL"
 msgstr "Skriv inn URL"
 
-#: gweather/gweather-pref.c:559
+#: gweather/gweather-pref.c:560
 msgid "Weather Preferences"
 msgstr "Brukervalg for værmelding"
 
-#: gweather/gweather-pref.c:606
+#: gweather/gweather-pref.c:607
 msgid "_Location"
 msgstr "P_lassering"
 
-#: gweather/gweather-pref.c:637
+#: gweather/gweather-pref.c:638
 msgid "_Automatically update every"
 msgstr "_Automatisk oppdatering hver(t)"
 
-#: gweather/gweather-pref.c:643
+#: gweather/gweather-pref.c:644
 msgid "Use _metric system units"
 msgstr "Bruk _metriske måleenheter"
 
-#: gweather/gweather-pref.c:649
+#: gweather/gweather-pref.c:650
 msgid "Enable _detailed forecast"
 msgstr "Aktiver _detaljert melding"
 
-#: gweather/gweather-pref.c:656
+#: gweather/gweather-pref.c:657
 msgid "Enable _radar map"
 msgstr "Aktiver _radarkart"
 
-#: gweather/gweather-pref.c:662
+#: gweather/gweather-pref.c:663
 msgid "Use cus_tom address for radar map"
 msgstr "Bruk egendefiner_t adresse for radarkart"
 
-#: gweather/gweather-pref.c:673
+#: gweather/gweather-pref.c:674
 msgid "A_ddress :"
 msgstr "A_dresse :"
 
-#: gweather/gweather-pref.c:685
+#: gweather/gweather-pref.c:686
 msgid "Updates"
 msgstr "Oppdateringer"
 
-#: gweather/gweather-pref.c:691
+#: gweather/gweather-pref.c:692
 msgid "_Automatically update every "
 msgstr "_Automatisk oppdatering hver(t) "
 
-#: gweather/gweather-pref.c:711
+#: gweather/gweather-pref.c:712
 msgid "minute(s)"
 msgstr "minutt(er)"
 
 #. The Miscellaneous frame
-#: gweather/gweather-pref.c:722
+#: gweather/gweather-pref.c:723
 msgid "Miscellaneous"
 msgstr "Forskjellig"
 
-#: gweather/gweather-pref.c:740 mini-commander/src/preferences.c:972
+#: gweather/gweather-pref.c:741 mini-commander/src/preferences.c:972
 #: modemlights/properties.c:424
 msgid "_General"
 msgstr "_Generelt"
@@ -2796,17 +2799,17 @@ msgstr "Ukjent"
 msgid "Retrieval failed"
 msgstr "Henting feilet"
 
-#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:1
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:1
 #: mini-commander/src/about.c:62
-#: mini-commander/src/mini-commander_applet.c:316
+#: mini-commander/src/mini-commander_applet.c:317
 msgid "Command Line"
 msgstr "Kommandolinje"
 
-#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:2
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:2
 msgid "Mini-Commander"
 msgstr "Mini-kommander"
 
-#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:3
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:3
 msgid "MiniCommander Applet Factory"
 msgstr "Factory for mini-kommander-applet"
 
@@ -2854,41 +2857,41 @@ msgstr "ikke funnet"
 msgid "no /bin/sh"
 msgstr "ingen /bin/sh"
 
-#: mini-commander/src/command_line.c:94 mini-commander/src/command_line.c:114
+#: mini-commander/src/command_line.c:98 mini-commander/src/command_line.c:118
 msgid "end of history list"
 msgstr "slutten på historikken"
 
 #. enter pressed -> exec command
-#: mini-commander/src/command_line.c:124
+#: mini-commander/src/command_line.c:128
 msgid "starting..."
 msgstr "starter..."
 
-#: mini-commander/src/command_line.c:153
+#: mini-commander/src/command_line.c:157
 msgid "autocompleted"
 msgstr "autoutfylt"
 
 #. build file select dialog
-#: mini-commander/src/command_line.c:510
+#: mini-commander/src/command_line.c:498
 msgid "Start program"
 msgstr "Start program"
 
-#: mini-commander/src/command_line.c:546
+#: mini-commander/src/command_line.c:534
 msgid "Command line"
 msgstr "Kommandolinje"
 
-#: mini-commander/src/command_line.c:547
+#: mini-commander/src/command_line.c:535
 msgid "Type a command here and Gnome will execute it for you"
 msgstr "Skriv inn en kommando her og GNOME vil kjøre den for deg"
 
-#: mini-commander/src/message.c:155
+#: mini-commander/src/message.c:149
 msgid "%H:%M - %d. %b"
 msgstr "%H:%M - %d. %b"
 
-#: mini-commander/src/message.c:157
+#: mini-commander/src/message.c:151
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: mini-commander/src/message.c:159
+#: mini-commander/src/message.c:153
 msgid "%d. %b"
 msgstr "%d. %b"
 
@@ -2909,25 +2912,25 @@ msgstr "Leser"
 msgid "Click this button to start the browser"
 msgstr "Klikk på denne knappen for å se «bla gjennom»-dialogen"
 
-#: mini-commander/src/mini-commander_applet.c:308
-#: mini-commander/src/mini-commander_applet.c:311
+#: mini-commander/src/mini-commander_applet.c:309
+#: mini-commander/src/mini-commander_applet.c:312
 msgid "History"
 msgstr "Historikk"
 
-#: mini-commander/src/mini-commander_applet.c:312
+#: mini-commander/src/mini-commander_applet.c:313
 msgid "Click this button for the list of previous commands"
 msgstr ""
 "Klikk på denne knappen for å se listen over tidligere utførte kommandoer"
 
-#: mini-commander/src/mini-commander_applet.c:313
+#: mini-commander/src/mini-commander_applet.c:314
 msgid "Mini-Commander applet"
 msgstr "Mini-Commander-applet"
 
-#: mini-commander/src/mini-commander_applet.c:314
+#: mini-commander/src/mini-commander_applet.c:315
 msgid "This applet adds a command line to the panel"
 msgstr "Denne appleten legger til en kommandolinje på panelet"
 
-#: mini-commander/src/mini-commander_applet.c:445
+#: mini-commander/src/mini-commander_applet.c:448
 msgid "ready..."
 msgstr "klar..."
 
@@ -2948,11 +2951,6 @@ msgstr "Vis tid"
 #: mini-commander/src/preferences.c:735
 msgid "Show date"
 msgstr "Vis dato"
-
-#. appearance frame
-#: mini-commander/src/preferences.c:743
-msgid "Appearance"
-msgstr "Utseende"
 
 #. show handle check box
 #: mini-commander/src/preferences.c:751
@@ -3030,11 +3028,12 @@ msgstr "   Makro _%.2d:"
 msgid "_Macros"
 msgstr "_Makroer"
 
-#: mixer/GNOME_MixerApplet.server.in.h:1
+#: mixer/GNOME_MixerApplet.server.in.in.h:1
 msgid "Adjust the sound volume"
 msgstr "Justering av lydvolum"
 
-#: mixer/GNOME_MixerApplet.server.in.h:3 mixer/mixer.c:131 mixer/mixer.c:795
+#: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:131
+#: mixer/mixer.c:795
 msgid "Volume Control"
 msgstr "Volumkontroll"
 
@@ -3080,11 +3079,6 @@ msgstr "Volumkontroll"
 msgid "Use Up/Down arrow keys to change volume"
 msgstr "Bruk opp/ned pilene for å endre volumet"
 
-#: mixer/mixer.c:751
-#, c-format
-msgid "There was an error executing %s : %s"
-msgstr "Det oppsto en feil ved kjøring av %s : %s"
-
 #: mixer/mixer.c:796
 msgid "(C) 2001 Richard Hult"
 msgstr "© 2001 Richard Hult"
@@ -3097,11 +3091,11 @@ msgstr "Volumkontroll lar deg sette volumnivå for ditt skrivebord."
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr "Volumkontroll lar deg sette volumnivå for ditt skrivebord"
 
-#: modemlights/GNOME_ModemLightsApplet.server.in.h:1
+#: modemlights/GNOME_ModemLightsApplet.server.in.in.h:1
 msgid "Internet"
 msgstr "Internett"
 
-#: modemlights/GNOME_ModemLightsApplet.server.in.h:2
+#: modemlights/GNOME_ModemLightsApplet.server.in.in.h:2
 #: modemlights/modemlights.c:224
 msgid "Modem Lights"
 msgstr "Modemlys"
@@ -3260,11 +3254,12 @@ msgstr "Sett alternativer som standard"
 msgid "_Advanced"
 msgstr "_Avansert"
 
-#: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:1
+#: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:1
 msgid "A system load indicator"
 msgstr "Måler systembelasning"
 
-#: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:2 multiload/main.c:75
+#: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:2
+#: multiload/main.c:75
 msgid "System Monitor"
 msgstr "Systemmonitor"
 
@@ -3292,32 +3287,27 @@ msgstr ""
 "Systemmonitor som kan vis grafer for bruk av cpu, ram og bruk av swap i "
 "tillegg til nettverkstrafikk."
 
-#: multiload/main.c:111
-#, c-format
-msgid "There was an error executing 'gnome-system-monitor' : %s"
-msgstr "Det oppsto en feil ved kjøring av «gnome-system-monitor» : %s"
-
-#: multiload/main.c:226
+#: multiload/main.c:227
 msgid "Processor"
 msgstr "Prosessor"
 
-#: multiload/main.c:228
+#: multiload/main.c:229
 msgid "Memory"
 msgstr "Minne"
 
-#: multiload/main.c:230
+#: multiload/main.c:231
 msgid "Network"
 msgstr "Nettverk"
 
-#: multiload/main.c:232
+#: multiload/main.c:233
 msgid "Swap File"
 msgstr "Swap-fil"
 
-#: multiload/main.c:234
+#: multiload/main.c:235
 msgid "Resource"
 msgstr "Ressurs"
 
-#: multiload/main.c:246
+#: multiload/main.c:247
 #, c-format
 msgid ""
 "%s:\n"
@@ -3634,39 +3624,3 @@ msgstr "© 2001 Chris Phelps"
 #: panel-menu/panel-menu.c:692
 msgid "The Menu Bar allows you to display customized menubars on your panels."
 msgstr "Menylinjen lar deg vise egendefinerte menylinjer på dine paneler."
-
-#~ msgid "Bulgarian xkb keymap"
-#~ msgstr "Bulgarsk xkb tastaturkart"
-
-#~ msgid "Bulgarian keymap"
-#~ msgstr "Bulgarsk tastaturkart"
-
-#~ msgid "Belarus"
-#~ msgstr "Hviterussland"
-
-#~ msgid "Belarussian"
-#~ msgstr "Hviterussisk"
-
-#~ msgid "_Refresh"
-#~ msgstr "Oppdate_r"
-
-#~ msgid "fork error"
-#~ msgstr "fork feil"
-
-#~ msgid "child exited"
-#~ msgstr "barn avsluttet"
-
-#~ msgid "name_%d"
-#~ msgstr "navn_%d"
-
-#~ msgid "label_%d"
-#~ msgstr "etikett_%d"
-
-#~ msgid "country_%d"
-#~ msgstr "land_%d"
-
-#~ msgid "lang_%d"
-#~ msgstr "språk_%d"
-
-#~ msgid "command_%d"
-#~ msgstr "kommando_%d"
