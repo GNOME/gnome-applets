@@ -2,7 +2,7 @@
 #include "applet-lib.h"
 #include "applet-widget.h"
 
-#define IMAGE_FILENAME "livefishcamsmall.cgi?livesigncamsmall"
+#define IMAGE_FILENAME "test_image"
 
 typedef struct _bussign_properties bussign_properties;
 
@@ -173,7 +173,7 @@ create_bussign_widget(GtkWidget *a_parent)
   /* refresh the image */
   if (refresh_imagefile() < 0)
     {
-      fprintf(stderr, "Failed to exec wget: %s\n", strerror(errno));
+      fprintf(stderr, "Failed to refresh image: %s\n", strerror(errno));
       exit(1);
     }
     
@@ -209,27 +209,37 @@ destroy_applet(GtkWidget *widget, gpointer data)
 static int
 refresh_imagefile(void)
 {
-  char *l_image_location = NULL;
   int   l_return = 0;
+  FILE *l_file = NULL;
   
+  if ((l_file = fopen(IMAGE_FILENAME, "w+")) == NULL)
+    {
+      fprintf(stderr, "Failed to open file \"%s\": %s\n", IMAGE_FILENAME, strerror(errno));
+      l_return = -1;
+      goto ec;
+    }
+  if (http_get_to_file("www1.netscape.com", 80, "/fishcam/livefishcamsmall.cgi?livesigncamsmall",
+		       l_file) < 1)
+    {
+      l_return = -1;
+      goto ec;
+    }
+  fclose(l_file);
   /*
-    l_image_location = g_malloc(strlen(sg_properties.url) + 5 + 2);
-    strcpy(l_image_location, "wget ");
-    strcat(l_image_location, sg_properties.url);
+    l_return = system("wget -q http://www1.netscape.com/fishcam/livefishcamsmall.cgi?livesigncamsmall");
   */
-  
-  unlink (IMAGE_FILENAME);
-  l_return = system("wget -q http://www1.netscape.com/fishcam/livefishcamsmall.cgi?livesigncamsmall");
-  /* 
-     g_free(l_image_location);
-  */
+ ec:
   return l_return;
 }
 
 static int
 bussign_refresh(gpointer data)
 {
-  refresh_imagefile();
+  if (refresh_imagefile() < 0)
+    {
+      fprintf(stderr, "Failed to refresh image: %s\n", strerror(errno));
+      goto ec;
+    }
   /* kill the image and flush it */
   gdk_imlib_kill_image(sg_bus);
   gdk_imlib_changed_image(sg_bus);
@@ -241,6 +251,7 @@ bussign_refresh(gpointer data)
   gtk_pixmap_set(GTK_PIXMAP(sg_pixmap), sg_bus->pixmap, sg_bus->shape_mask);
   /* redraw that sucker. */
   gtk_widget_queue_draw(sg_pixmap);
+ ec:
   return TRUE;
 }
 
