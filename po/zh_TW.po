@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 2.0\n"
-"POT-Creation-Date: 2001-11-06 07:47-0500\n"
+"POT-Creation-Date: 2002-02-19 17:36+0800\n"
 "PO-Revision-Date: 2001-11-07 06:01+0800\n"
 "Last-Translator: Abel Cheung <maddog@linux.org.hk>\n"
 "Language-Team: traditional chinese <zh-l10n@linux.org.tw>\n"
@@ -15,615 +15,368 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: another_clock/another_clock.c:252
-msgid "Clock Settings"
-msgstr "時鐘設定"
+#. Message displayed if user tries to run applet
+#. on unsupported platform
+#: battstat/battstat_applet.c:284
+msgid "Your platform is not supported!\n"
+msgstr "不支援此平台！\n"
 
-#: another_clock/another_clock.c:261 asclock/dialogs.c:378
-#: battery/properties.c:83 clockmail/properties.c:417
-#: diskusage/properties.c:463 drivemount/properties.c:391
-#: gnotes/properties.c:190 gweather/gweather-pref.c:524
-#: mini-commander/src/preferences.c:801 modemlights/properties.c:486
-#: odometer/properties.c:293 screenshooter/screenshooter_applet.c:434
-#: slashapp/properties.c:412 sound-monitor/properties.c:425
-#: tickastat/properties.c:424
-msgid "General"
-msgstr "一般"
+#: battstat/battstat_applet.c:285
+msgid "The applet will not work properly (if at all).\n"
+msgstr "此面板程式將不能正常運作（如果它仍能啟動）。\n"
 
-#. frame for colors
-#: another_clock/another_clock.c:271 diskusage/properties.c:351
-#: mini-commander/src/preferences.c:723 modemlights/properties.c:525
-#: multiload/load-graph.c:587 multiload/load-graph.c:779
-msgid "Colors"
-msgstr "色彩"
+# src/battstat_applet.c:313 src/battstat_applet.c:792
+#. The following four messages will be displayed as tooltips over
+#. the battery meter.
+#. High = The APM BIOS thinks that the battery charge is High.
+#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:798
+msgid "High"
+msgstr "高"
 
-#: another_clock/another_clock.c:281
-msgid "Clock color"
-msgstr "時鐘的顏色"
+# src/battstat_applet.c:314 src/battstat_applet.c:793
+#. Low = The APM BIOS thinks that the battery charge is Low.
+#: battstat/battstat_applet.c:324 battstat/battstat_applet.c:800
+msgid "Low"
+msgstr "低"
 
-#: another_clock/another_clock.c:295
-msgid "Hour needle color"
-msgstr "時針的顏色"
+# src/battstat_applet.c:315 src/battstat_applet.c:794
+#. Critical = The APM BIOS thinks that the battery charge is Critical.
+#: battstat/battstat_applet.c:326 battstat/battstat_applet.c:802
+msgid "Critical"
+msgstr "極低"
 
-#: another_clock/another_clock.c:307
-msgid "Minute needle color"
-msgstr "分針的顏色"
+# src/battstat_applet.c:316 src/battstat_applet.c:795
+#. Charging = The APM BIOS thinks that the battery is recharging.
+#: battstat/battstat_applet.c:328 battstat/battstat_applet.c:804
+msgid "Charging"
+msgstr "正在充電"
 
-#: another_clock/another_clock.c:319
-msgid "Second needle color"
-msgstr "秒針的顏色"
+# src/battstat_applet.c:565
+#: battstat/battstat_applet.c:409
+#, c-format
+msgid "Battery low (%d%%) and AC is offline"
+msgstr "電池電量為低（%d%%）而且沒有交流電"
 
-#. second needle visible?
-#: another_clock/another_clock.c:335
-msgid "Show seconds needle"
-msgstr "顯示秒針"
+# src/battstat_applet.c:614
+#: battstat/battstat_applet.c:432
+msgid "Battery is now fully re-charged!"
+msgstr "電池已滿格！"
 
-#. if your encoding allows it, use ntilde (U00F1)
-#. * instead of the 'n' of 'Inigo'
-#: another_clock/another_clock.c:357
-msgid "Inigo Serna <inigo@gaztelan.bi.ehu.es>"
-msgstr "Inigo Serna <inigo@gaztelan.bi.ehu.es>"
+# src/battstat_applet.c:414
+#. This string will display as a tooltip over the status frame
+#. when the computer is using battery power and the battery meter
+#. and percent meter is hidden by the user.
+#: battstat/battstat_applet.c:451 battstat/battstat_applet.c:961
+#, c-format
+msgid ""
+"System is running on battery power\n"
+"Battery: %d%% (%s)"
+msgstr ""
+"系統正在使用電池\n"
+"電池︰%d%%（%s）"
 
-#: another_clock/another_clock.c:375
-msgid "Another Clock Applet"
-msgstr "另類時鐘面板程式"
+# src/battstat_applet.c:414
+#. This string will display as a tooltip over the status frame
+#. when the computer is using AC power and the battery meter
+#. and percent meter is hidden by the user.
+#: battstat/battstat_applet.c:455 battstat/battstat_applet.c:969
+#, c-format
+msgid ""
+"System is running on AC power\n"
+"Battery: %d%% (%s)"
+msgstr ""
+"系統正在使用交流電\n"
+"電池︰%d%%（%s）"
 
-#: another_clock/another_clock.c:377
-msgid "(C) 1999 the Free Software Foundation"
-msgstr "(C) 1999 the Free Software Foundation"
+# src/battstat_applet.c:417
+#. This string will display as a tooltip over the status frame
+#. when the computer is using battery power.
+#: battstat/battstat_applet.c:461 battstat/battstat_applet.c:893
+#: battstat/battstat_applet.c:982
+msgid "System is running on battery power"
+msgstr "系統正在使用電池"
 
-#: another_clock/another_clock.c:379
-msgid "An analog clock similar to that in CDE panel."
-msgstr "一個跟 CDE 面板上的時鐘相似的時鐘"
+# src/battstat_applet.c:417
+#. This string will display as a tooltip over the status frame
+#. when the computer is using AC power.
+#: battstat/battstat_applet.c:464 battstat/battstat_applet.c:899
+#: battstat/battstat_applet.c:988
+msgid "System is running on AC power"
+msgstr "系統正在使用交流電"
 
-#: another_clock/another_clock.c:710 asclock/asclock.c:598
-#: battery/battery.c:951 charpick/charpick.c:573 clockmail/clockmail.c:324
-#: diskusage/diskusage.c:1050 drivemount/drivemount.c:742 geyes/geyes.c:405
-#: gkb-new/gkb.c:757 gnotes/gnotes_applet.c:198 gtik/gtik.c:1355
-#: gweather/gweather-applet.c:198
-#: mini-commander/src/mini-commander_applet.c:401
-#: modemlights/modemlights.c:1499 multiload/cpuload.c:95
-#: multiload/loadavg.c:170 multiload/memload.c:98 multiload/netload.c:94
-#: multiload/swapload.c:98 odometer/odo.c:683
-#: screenshooter/screenshooter_applet.c:1017 slashapp/slashapp.c:94
-#: sound-monitor/main.c:269 tickastat/main.c:349 webcontrol/webcontrol.c:398
-msgid "Properties..."
-msgstr "內容..."
+#: battstat/battstat_applet.c:478
+msgid "N/A"
+msgstr "不適用"
 
-#: another_clock/another_clock.c:716 asclock/asclock.c:604
-#: battery/battery.c:957 cdplayer/cdplayer.c:603 charpick/charpick.c:580
-#: clockmail/clockmail.c:331 cpumemusage/cpumemusage.c:297
-#: diskusage/diskusage.c:1073 drivemount/drivemount.c:748
-#: fifteen/fifteen.c:384 geyes/geyes.c:411 gkb-new/gkb.c:763
-#: gnotes/gnotes_applet.c:202 gweather/gweather-applet.c:203
-#: jbc/jbc-applet.c:204 life/life.c:279
-#: mini-commander/src/mini-commander_applet.c:408 mixer/mixer.c:836
-#: multiload/cpuload.c:108 multiload/loadavg.c:183 multiload/memload.c:111
-#: multiload/netload.c:107 multiload/swapload.c:111 odometer/odo.c:686
-#: quicklaunch/quicklaunch.c:536 screenshooter/screenshooter_applet.c:1023
-#: sound-monitor/main.c:276 tickastat/main.c:355 webcontrol/webcontrol.c:405
-#: whereami/whereami.c:241
+# src/battstat_applet.c:579 src/battstat_applet.c:898
+# src/battstat_applet.c:955
+#. This string will display as a tooltip over the battery frame
+#. when the computer is using battery power.
+#: battstat/battstat_applet.c:602 battstat/battstat_applet.c:873
+#, c-format
+msgid "System is running on battery power. Battery: %d%% (%s)"
+msgstr "系統正在使用電池。電池︰%d%%（%s）"
+
+# src/battstat_applet.c:579 src/battstat_applet.c:898
+# src/battstat_applet.c:955
+#. This string will display as a tooltip over the battery frame
+#. when the computer is using AC power.
+#: battstat/battstat_applet.c:609 battstat/battstat_applet.c:880
+#, c-format
+msgid "System is running on AC power. Battery: %d%% (%s)"
+msgstr "系統正在使用交流電。電池︰%d%%（%s）"
+
+# src/battstat_applet.c:584
+#. This string will display as a tooltip over the
+#. battery frame when the computer is using battery
+#. power and the battery isn't present. Not a
+#. possible combination, I guess... :)
+#: battstat/battstat_applet.c:620
+msgid "System is running on battery power. Battery: Not present"
+msgstr "系統正在使用電池。電池︰不存在"
+
+# src/battstat_applet.c:584
+#. This string will display as a tooltip over the
+#. battery frame when the computer is using AC
+#. power and the battery isn't present.
+#: battstat/battstat_applet.c:626
+msgid "System is running on AC power. Battery: Not present"
+msgstr "系統正在使用交流電。電池︰不存在"
+
+# src/battstat_applet.c:590
+#. Displayed as a tooltip over the battery meter when there is
+#. a battery present. %d will hold the current charge and %s will
+#. hold the status of the battery, (High, Low, Critical, Charging.
+#: battstat/battstat_applet.c:635
+#, c-format
+msgid "Battery: %d%% (%s)"
+msgstr "電池︰%d%%（%s）"
+
+# src/battstat_applet.c:594
+#. Displayed as a tooltip over the battery meter when no
+#. battery is present.
+#: battstat/battstat_applet.c:642
+msgid "Battery: Not present"
+msgstr "電池︰不存在"
+
+# src/battstat_applet.c:653
+#. Displayed if the APM device couldn't be opened. (Used under *BSD)
+#: battstat/battstat_applet.c:698
+msgid ""
+"Can't open the APM device!\n"
+"\n"
+"Make sure you have read permission to the\n"
+"APM device."
+msgstr ""
+"無法開啟 APM 裝置！\n"
+"\n"
+"請確定你可以讀取 APM 裝置。"
+
+# src/battstat_applet.c:659
+#. Displayed if the APM system is disabled (Used under *BSD)
+#: battstat/battstat_applet.c:706
+msgid ""
+"The APM Management subsystem seems to be disabled.\n"
+"Try executing \"apm -e 1\" (FreeBSD) and see if \n"
+"that helps.\n"
+msgstr ""
+"APM 管理系統像是失效了。\n"
+"請執行 \"apm -e 1\"（FreeBSD）\n"
+"看看有沒有效。\n"
+
+# src/battstat_applet.c:732
+#. The long name of the applet in the About dialog.
+#: battstat/battstat_applet.c:771
+msgid "Battery status utility"
+msgstr "電池狀態公用程式"
+
+#: battstat/battstat_applet.c:773
+#, fuzzy
+msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
+msgstr "(C) 2000 the Free Software Foundation"
+
+# src/battstat_applet.c:735
+#: battstat/battstat_applet.c:774
+msgid "This utility show the status of your laptop battery."
+msgstr "此公用程式能顯示筆記型電腦的電池狀態。"
+
+#: battstat/GNOME_BattstatApplet.server.in.h:1
+msgid "Battery Charge Monitor"
+msgstr "電池電量監測器"
+
+#: battstat/GNOME_BattstatApplet.server.in.h:2
+msgid "Battstat Factory"
+msgstr ""
+
+#: battstat/GNOME_BattstatApplet.server.in.h:3
+#, fuzzy
+msgid "Laptop battery monitor applet"
+msgstr "GNOME 天氣監控面板程式"
+
+# src/battstat_applet.c:1379
+#: battstat/GNOME_BattstatApplet.xml.h:1 cdplayer/GNOME_CDPlayerApplet.xml.h:1
+#: charpick/GNOME_CharpickerApplet.xml.h:1
+#: drivemount/GNOME_DriveMountApplet.xml.h:1 geyes/GNOME_GeyesApplet.xml.h:1
+#: gkb-new/GNOME_KeyboardApplet.xml.h:1 gtik/GNOME_GtikApplet.xml.h:1
+#: gweather/GNOME_GWeatherApplet.xml.h:1
+#: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
+#: mixer/GNOME_MixerApplet.xml.h:1 modemlights/GNOME_ModemlightsApplet.xml.h:1
+#: multiload/GNOME_MultiloadApplet.xml.h:1
+msgid "About..."
+msgstr "關於…"
+
+# src/battstat_applet.c:1385
+#: battstat/GNOME_BattstatApplet.xml.h:2 cdplayer/GNOME_CDPlayerApplet.xml.h:2
+#: charpick/GNOME_CharpickerApplet.xml.h:2
+#: drivemount/GNOME_DriveMountApplet.xml.h:4 geyes/GNOME_GeyesApplet.xml.h:2
+#: gkb-new/GNOME_KeyboardApplet.xml.h:2
+#: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
+#: mixer/GNOME_MixerApplet.xml.h:2 modemlights/GNOME_ModemlightsApplet.xml.h:2
 msgid "Help"
 msgstr "輔助說明"
 
-#: another_clock/another_clock.c:720 asclock/asclock.c:609
-#: battery/battery.c:962 cdplayer/cdplayer.c:610 charpick/charpick.c:586
-#: clipboard/clipboard.c:324 clockmail/clockmail.c:336
-#: cpumemusage/cpumemusage.c:303 diskusage/diskusage.c:1080
-#: drivemount/drivemount.c:753 fifteen/fifteen.c:389 geyes/geyes.c:416
-#: gkb-new/gkb.c:768 gnotes/gnotes_applet.c:205 gtik/gtik.c:1364
-#: gweather/gweather-applet.c:208 jbc/jbc-applet.c:209 life/life.c:283
-#: mini-commander/src/mini-commander_applet.c:415 mixer/mixer.c:841
-#: modemlights/modemlights.c:1512 multiload/cpuload.c:115
-#: multiload/loadavg.c:190 multiload/memload.c:118 multiload/netload.c:114
-#: multiload/swapload.c:118 odometer/odo.c:689 quicklaunch/quicklaunch.c:540
-#: screenshooter/screenshooter_applet.c:1028 slashapp/slashapp.c:97
-#: sound-monitor/main.c:281 tickastat/main.c:360 webcontrol/webcontrol.c:412
-#: whereami/whereami.c:243
-msgid "About..."
-msgstr "關於..."
+# src/battstat_applet.c:1373
+#: battstat/GNOME_BattstatApplet.xml.h:3 cdplayer/GNOME_CDPlayerApplet.xml.h:3
+#: charpick/GNOME_CharpickerApplet.xml.h:3
+#: drivemount/GNOME_DriveMountApplet.xml.h:5 geyes/GNOME_GeyesApplet.xml.h:3
+#: gkb-new/GNOME_KeyboardApplet.xml.h:3 gtik/GNOME_GtikApplet.xml.h:2
+#: gweather/GNOME_GWeatherApplet.xml.h:3
+#: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
+#: modemlights/GNOME_ModemlightsApplet.xml.h:3
+#: multiload/GNOME_MultiloadApplet.xml.h:2
+msgid "Properties..."
+msgstr "特性…"
 
-#: asclock/dialogs.c:27
-msgid "ASClock"
-msgstr "ASClock"
-
-#: asclock/dialogs.c:29
-msgid "(C) 1998 the Free Software Foundation"
-msgstr "(C) 1998 the Free Software Foundation"
-
-#: asclock/dialogs.c:31
-msgid "Who said NeXT is dead?"
-msgstr "誰說 NeXT 沒落了？"
-
-#: asclock/dialogs.c:163
-msgid ""
-"Since you are root, would you like to set the system's default timezone?"
-msgstr "身為 root 的你，是不是要設定系統預設的時區？"
-
-#: asclock/dialogs.c:165
-msgid "My Title"
-msgstr "我的標題"
-
-#: asclock/dialogs.c:266
-msgid "Continent/City"
-msgstr "大陸/城市"
-
-#: asclock/dialogs.c:267
-msgid "Clock Theme"
-msgstr "時鐘佈景主題"
-
-#: asclock/dialogs.c:299
-msgid "ASClock Settings"
-msgstr "ASClock 設定"
-
-#. show ampm toggle button
-#: asclock/dialogs.c:331 clockmail/properties.c:306
-msgid "Display time in 12 hour format (AM/PM)"
-msgstr "用上下午格式顯示時間"
-
-#. show ampm toggle button
-#: asclock/dialogs.c:339
-msgid "Blinking elements in clock"
-msgstr "時鐘上有閃爍的部份"
-
-#: asclock/dialogs.c:383
-msgid "Timezone"
-msgstr "時區"
-
-#: battery/battery.c:150
-msgid "The battery is low."
-msgstr "電池快沒電了。"
-
-#: battery/battery.c:165
-msgid "The battery is fully charged."
-msgstr "電池滿格。"
-
-#: battery/battery.c:706
-msgid "Internal error: invalid mode in battery_set_mode"
-msgstr "內部錯誤：battery_set_mode 的模式不正確"
-
-#: battery/battery.c:788 jbc/jbc-applet.c:183 multiload/cpuload.c:69
-#: multiload/memload.c:72 multiload/netload.c:68 multiload/swapload.c:72
-#: screenshooter/screenshooter_applet.c:908
-msgid "Can't create applet!\n"
-msgstr "無法建立面板程式！\n"
-
-#: battery/battery.c:792
-msgid ""
-"Error querying battery charge.\n"
-"\n"
-"Make sure that your kernel was built with APM support."
+#: battstat/GNOME_BattstatApplet.xml.h:4
+msgid "Suspend Computer..."
 msgstr ""
-"查詢電池電量時發生錯誤。\n"
-"\n"
-"請確定你的系統核心有支援 APM。"
 
-#: battery/battery.c:1038
-msgid "The GNOME Battery Monitor Applet"
-msgstr "GNOME 電池電量監控面板程式"
+#: cdplayer/cdplayer.c:300
+#, fuzzy
+msgid "CD Player Properties"
+msgstr "CD 播放器面板程式"
 
-#: battery/battery.c:1039
-msgid " (C) 1997-1998 The Free Software Foundation"
-msgstr " (C) 1997-1998 the Free Software Foundation"
+#: cdplayer/cdplayer.c:314
+#, fuzzy
+msgid "Device Path:"
+msgstr "裝置："
 
-#: battery/battery.c:1041
-msgid ""
-"This applet monitors the charge of your laptop's battery.  Click on it to "
-"change display modes."
-msgstr "這個面板程式會監視你筆記型電腦的電池電量，你可以按它來選擇顯示的模式。"
-
-#: battery/battery.c:1241
-msgid "Could not allocate space for graph values"
-msgstr "無法獲得繪圖所需的空間"
-
-#: battery/properties.c:74
-msgid "Battery Monitor Settings"
-msgstr "電池電量監控設定"
-
-#. the follow_panel_size check button
-#: battery/properties.c:85 charpick/properties.c:164
-msgid "Follow panel size"
-msgstr "跟隨面板尺寸"
-
-#. Applet height
-#: battery/properties.c:93
-msgid "Applet Height:"
-msgstr "面板程式的高度："
-
-#. Applet width
-#: battery/properties.c:104 diskusage/properties.c:304
-msgid "Applet Width:"
-msgstr "面板程式的寬度："
-
-#. Update interval
-#: battery/properties.c:116
-msgid "Update Interval (seconds):"
-msgstr "更新的周期（秒）："
-
-#. Low battery value
-#: battery/properties.c:130
-msgid "Low Charge Threshold:"
-msgstr "低電量警報的臨界值："
-
-#. Applet mode label
-#: battery/properties.c:144
-msgid "Applet Mode:"
-msgstr "顯示模式："
-
-#: battery/properties.c:145 battery/properties.c:229
-msgid "Graph"
-msgstr "動態圖"
-
-#: battery/properties.c:147 battery/properties.c:173
-msgid "Readout"
-msgstr "數值"
-
-#: battery/properties.c:204 battery/properties.c:264
-msgid "AC-On Battery Color:"
-msgstr "充電中的電池顏色："
-
-#: battery/properties.c:210 battery/properties.c:270
-msgid "AC-Off Battery Color:"
-msgstr "不充電時電池顏色："
-
-#: battery/properties.c:216
-msgid "Low Battery Color:"
-msgstr "低電量時的顏色："
-
-#: battery/properties.c:276
-msgid "Graph Battery Low Color:"
-msgstr "繪動態圖時表示低電量的顏色："
-
-#: battery/properties.c:282
-msgid "Graph Tick Color:"
-msgstr "一般繪動態圖用的顏色："
-
-#: battery/properties.c:289
-msgid "Graph Direction:"
-msgstr "繪動態圖的方向："
-
-#: battery/properties.c:292
-msgid "Left to Right"
-msgstr "由左至右"
-
-#: battery/properties.c:294
-msgid "Right to Left"
-msgstr "由右至左"
-
-#: battery/properties.c:314
-msgid "Battery Charge Messages"
-msgstr "電池電量訊息"
-
-#: battery/properties.c:317
-msgid "Enable Low Battery Warning"
-msgstr "低電量時發出警告"
-
-#: battery/properties.c:322
-msgid "Warn if the battery charge dips below:"
-msgstr "電池電量低於此數值時發出警告："
-
-#: battery/properties.c:336
-msgid "Enable Full-Charge Notification"
-msgstr "電量滿格時發出通知"
-
-#: battery/read-battery.c:68
-msgid ""
-"Cannot open /proc/apm!  Make sure that you built APM support into your "
-"kernel.\n"
-msgstr "無法開啟 /proc/apm！請確定你的系統核心支援 APM。\n"
-
-#: battery/read-battery.c:103
-#, c-format
-msgid "Could not dup() APM file descriptor: %s\n"
-msgstr "無法 dup() APM 檔案描述子：%s\n"
-
-#: battery/read-battery.c:176 battery/read-battery.c:210
-msgid "Cannot open /dev/apm; can't get data."
-msgstr "無法開啟 /dev/apm；無法獲得資料。"
-
-#: battery/read-battery.c:181 battery/read-battery.c:215
-msgid "ioctl failed on /dev/apm."
-msgstr "/dev/apm 輸出入控制失敗。"
-
-#: battery/read-battery.c:192
-msgid "APM is disabled!  Cannot read battery charge information."
-msgstr "APM 已停止使用！無法讀入電池的電量資料。"
-
-#: cdplayer/cdplayer.c:176
+#: cdplayer/cdplayer.c:361
 msgid "CD Player Applet"
 msgstr "CD 播放器面板程式"
 
-#: cdplayer/cdplayer.c:177
-msgid "(c) 1997 The Free Software Foundation"
+#: cdplayer/cdplayer.c:362
+#, fuzzy
+msgid ""
+"(C) 1997 The Free Software Foundation\n"
+"(C) 2001 Chris Phelps (GNOME 2 Port)"
 msgstr "(C) 1997 the Free Software Foundation"
 
-#: cdplayer/cdplayer.c:179
+#: cdplayer/cdplayer.c:364
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr "CD 播放器面板程式是面板上的小型音樂 CD 播放器"
 
-#: cdplayer/cdplayer.c:596
-msgid "Run CD Player..."
+#: cdplayer/GNOME_CDPlayerApplet.server.in.h:1
+msgid "CD Player"
+msgstr "CD 播放器"
+
+#: cdplayer/GNOME_CDPlayerApplet.server.in.h:2
+#, fuzzy
+msgid "CD Player Applet Factory"
+msgstr "CD 播放器面板程式"
+
+#: cdplayer/GNOME_CDPlayerApplet.server.in.h:3
+#, fuzzy
+msgid "Factory for CD player applet"
+msgstr "CD 播放器面板程式"
+
+#: cdplayer/GNOME_CDPlayerApplet.server.in.h:4
+msgid "Panel applet for playing audio CDs"
+msgstr ""
+
+#: cdplayer/GNOME_CDPlayerApplet.xml.h:4
+#, fuzzy
+msgid "Run External CD Player"
 msgstr "執行 CD 播放器..."
 
-#: charpick/charpick.c:433 charpick/charpick_applet.desktop.in.h:1
+#: charpick/charpick.c:358 charpick/charpick_applet.desktop.in.h:1
 msgid "Character Picker"
 msgstr "特殊字元選擇程式"
 
-#: charpick/charpick.c:435
+#: charpick/charpick_applet.desktop.in.h:2
+msgid "Character picker"
+msgstr "特殊字元選擇程式"
+
+#: charpick/charpick.c:360
 msgid "Copyright (C) 1998"
 msgstr "版權所有 (C) 1998"
 
-#: charpick/charpick.c:437
+#: charpick/charpick.c:361
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
 msgstr ""
 "用來選擇在鍵盤上找不到的特殊字元的 Gnome 面板程式。依 GPL 使用條款發行。"
 
-#: charpick/properties.c:158
-msgid "Minimum number of cells: (for autosize)"
-msgstr "最小格數：(自動改變尺寸時使用)"
+#: charpick/GNOME_CharpickerApplet.server.in.h:1
+#, fuzzy
+msgid "Character Palette"
+msgstr "特殊字元選擇程式"
 
-#: charpick/properties.c:159
-msgid "Size of button: (pixels)"
-msgstr "按鈕大小：(畫素)"
+#: charpick/GNOME_CharpickerApplet.server.in.h:2
+msgid "Charpicker Applet Factory"
+msgstr ""
 
-#: charpick/properties.c:160
-msgid "Number of rows of buttons:"
-msgstr "每一行的按鈕數："
+#: charpick/GNOME_CharpickerApplet.server.in.h:3
+#, fuzzy
+msgid "Insert characters"
+msgstr "預設的字元列表："
 
-#: charpick/properties.c:161
-msgid "Number of columns of buttons:"
-msgstr "每一列的按鈕數："
-
-#. gtk_widget_set (best_size,
-#. "border_width", 2,
-#. "spacing", 2,
-#. NULL);
-#: charpick/properties.c:249 diskusage/properties.c:364
-#: mini-commander/src/preferences.c:611 tickastat/properties.c:500
-msgid "Size"
-msgstr "大小"
-
-#: charpick/properties.c:268
+#: charpick/properties.c:55
 msgid "Default character list:"
 msgstr "預設的字元列表："
 
-#: charpick/properties.c:272
+#: charpick/properties.c:63
 msgid ""
 "These characters will appear when the panel is started. To return to this "
 "list, hit <space> while the applet has focus."
 msgstr "這些字元將會在面板啟動時出現。要回到這個列表，請按下空白鍵。"
 
-#. add tab to propwindow
-#: charpick/properties.c:288
-msgid "Default List"
-msgstr "預設列表"
-
-#: charpick/properties.c:324
-msgid "Character Picker Settings"
+#: charpick/properties.c:116
+#, fuzzy
+msgid "Character Palette Properties"
 msgstr "特殊字元選擇程式設定"
 
-#: clipboard/clipboard.c:172
-msgid "Clipboard Applet"
-msgstr "剪貼簿面板程式"
-
-#: clipboard/clipboard.c:174
-msgid "Copyright (C) 1999"
-msgstr "版權所有 (C) 1999"
-
-#: clipboard/clipboard.c:176
-msgid ""
-"Gnome panel applet for copying and retrieving selections with a history "
-"list. Released under GNU General Public Licence."
-msgstr ""
-"這是用來複製與讀取選擇內容的 Gnome 面板程式，\n"
-"並附有紀錄列表。依 GPL 使用條款發行。"
-
-#: clockmail/clockmail.c:40 slashapp/slashapp.c:226 sound-monitor/main.c:26
-#: tickastat/main.c:191
-msgid "John Ellis <johne@bellatlantic.net>"
-msgstr "John Ellis <johne@bellatlantic.net>"
-
-#: clockmail/clockmail.c:43
-msgid "Clock and Mail Notify Applet"
-msgstr "時鐘和來信通知面板程式"
-
-#: clockmail/clockmail.c:44
-msgid "(C) 2000"
-msgstr "(C) 2000"
-
-#: clockmail/clockmail.c:46
-msgid ""
-"Released under the GNU general public license.\n"
-"Basic digital clock with date in a tooltip. Optional 12/24 time display. "
-"Mail blinking can be for any unread mail, or only briefly when new mail "
-"arrives."
-msgstr ""
-"依 GPL 使用條款發行。\n"
-"一個簡單的數位式時鐘，有日期顯示、12/24 小時顯示切換、可設定在有任何未讀電子"
-"郵件或有新郵件到達時閃爍。"
-
-#: clockmail/clockmail.c:127
-msgid "%a, %b %d"
-msgstr "%b %d(%a)"
-
-#: clockmail/clockmail.c:134
-msgid " (GMT)"
-msgstr " (GMT)"
-
-#: clockmail/clockmail.c:140
-#, c-format
-msgid " (GMT %+d)"
-msgstr " (GMT %+d)"
-
-#. add default theme
-#: clockmail/properties.c:139 odometer/properties.c:151
-#: sound-monitor/properties.c:167
-msgid "None (default)"
-msgstr "無（預設值）"
-
-#: clockmail/properties.c:275 odometer/properties.c:228
-msgid "Themes:"
-msgstr "佈景主題："
-
-#: clockmail/properties.c:292
-msgid "ClockMail Settings"
-msgstr "時鐘和來信通知面板程式的設定"
-
-#: clockmail/properties.c:297 mini-commander/src/preferences.c:524
-msgid "Clock"
-msgstr "時鐘"
-
-#: clockmail/properties.c:316
-msgid "Display time relative to GMT (Greenwich Mean Time):"
-msgstr "顯示相對於格林威治時間（GMT）的時差︰"
-
-#: clockmail/properties.c:330
-msgid "Mail"
-msgstr "郵件"
-
-#: clockmail/properties.c:344
-msgid "Mail file:"
-msgstr "郵箱位置："
-
-#: clockmail/properties.c:361
-msgid "When new mail is received run:"
-msgstr "收到新郵件時執行："
-
-#: clockmail/properties.c:376
-msgid "Always blink when any mail is waiting."
-msgstr "有任何郵件等著你看時就閃爍。"
-
-#: clockmail/properties.c:386
-msgid "Number of messages to consider mailbox full:"
-msgstr "要儲存多少郵件才算郵箱爆滿："
-
-#: clockmail/properties.c:404
-msgid "When clicked, run:"
-msgstr "被按下時執行："
-
-#: clockmail/properties.c:435 sound-monitor/properties.c:443
-msgid "Theme file (directory):"
-msgstr "佈景主題檔（目錄）："
-
-#: clockmail/properties.c:466 odometer/properties.c:335
-#: sound-monitor/properties.c:471
-msgid "Theme"
-msgstr "佈景主題"
-
-#: cpumemusage/cpumemusage.c:175
-msgid "CPU/Mem Usage Applet"
-msgstr "CPU/記憶體使用量面板程式"
-
-#: cpumemusage/cpumemusage.c:176
-msgid "(c) 1997 the Free Software Foundation"
-msgstr "(c) 1997 the Free Software Foundation"
-
-#: cpumemusage/cpumemusage.c:178
-msgid ""
-"The CPU/Mem usage applet displays your system resources with 3 colorful "
-"stacked bar graphs (processor, memory, swap)"
-msgstr ""
-"CPU/記憶體使用量面板程式以三個彩色條狀列顯示系統資源（處理器、記憶體、交換"
-"檔）"
-
-#: diskusage/diskusage.c:171 diskusage/diskusage.c:283
-#, c-format
-msgid "MP: %s"
-msgstr "掛載點：%s"
-
-#: diskusage/diskusage.c:746
-msgid "File Systems"
-msgstr "檔案系統"
-
-#: diskusage/diskusage.c:800
-msgid "File System Changed!\n"
-msgstr "檔案系統有更改！\n"
-
-#: diskusage/diskusage.c:966
-msgid "Disk Usage Applet"
-msgstr "磁碟使用量面板程式"
-
-#: diskusage/diskusage.c:969
-msgid ""
-"Released under the GNU general public license.\n"
-"Monitors the amount of space in use and available on your disk drives."
-msgstr ""
-"依 GPL 使用條款發行。\n"
-"監控磁碟的使用量與剩餘空間。"
-
-#: diskusage/diskusage.c:1058 drivemount/drivemount.c:723
-msgid "Browse..."
-msgstr "瀏覽..."
-
-#: diskusage/diskusage.c:1066
-msgid "Update..."
-msgstr "更新..."
-
-#: diskusage/properties.c:242
-msgid "Used Diskspace:"
-msgstr "已用的磁碟空間："
-
-#: diskusage/properties.c:257
-msgid "Text:"
-msgstr "文字："
-
-#: diskusage/properties.c:272
-msgid "Free Diskspace:"
-msgstr "剩餘磁碟空間："
-
-#: diskusage/properties.c:288
-msgid "Background:"
-msgstr "背景顏色："
-
-#: diskusage/properties.c:310
-msgid "Automatically pick best applet size"
-msgstr "自動選擇最佳的顯示尺寸"
-
-#: diskusage/properties.c:333
-msgid "Update Frequency (seconds):"
-msgstr "更新周期（秒）："
-
-#: diskusage/properties.c:373
-msgid "Fonts"
-msgstr "字型"
-
-#: diskusage/properties.c:377
-msgid "Font:"
-msgstr "字型："
-
-#: diskusage/properties.c:459
-msgid "Diskusage Settings"
-msgstr "磁碟使用量監控設定"
-
-#: drivemount/drivemount.c:130
+#: drivemount/drivemount.c:418
 msgid "Drive Mount Applet"
 msgstr "檔案系統掛載面板程式"
 
-#: drivemount/drivemount.c:133
-msgid ""
-"Released under the GNU general public license.\n"
-"Mounts and Unmounts drives."
+#: drivemount/drivemount.c:419
+msgid "(C) 1999-2001 The GNOME Hackers\n"
 msgstr ""
-"依 GPL 使用條款發行。\n"
-"用來掛上與卸下檔案系統。"
 
-#: drivemount/drivemount.c:374
+#: drivemount/drivemount.c:421
+msgid "Applet for mounting and unmounting block volumes."
+msgstr ""
+
+#: drivemount/drivemount.c:609
 msgid " mounted"
 msgstr " 已掛上"
 
-#: drivemount/drivemount.c:378
+#: drivemount/drivemount.c:611
 msgid " not mounted"
 msgstr " 未掛上"
 
-#. the mount status is the same, print
-#. the returned output from (u)mount, we are assuming an error
-#: drivemount/drivemount.c:503
+#: drivemount/drivemount.c:722
+#, fuzzy
+msgid "Drive Mount Applet Warning"
+msgstr "檔案系統掛載面板程式"
+
+#: drivemount/drivemount.c:730
 msgid "\" reported:\n"
 msgstr "\" 報告：\n"
 
-#: drivemount/drivemount.c:505
+#: drivemount/drivemount.c:732
 msgid ""
 "Drivemount command failed.\n"
 "\""
@@ -631,228 +384,204 @@ msgstr ""
 "掛上磁碟的指令發生錯誤。\n"
 "\""
 
-#: drivemount/drivemount.c:733
+#: drivemount/GNOME_DriveMountApplet.server.in.h:1
+#, fuzzy
+msgid "Disk Mounter"
+msgstr "檔案系統掛載"
+
+#: drivemount/GNOME_DriveMountApplet.server.in.h:2
+#, fuzzy
+msgid "Drive Mount Applet Factory"
+msgstr "檔案系統掛載面板程式"
+
+#: drivemount/GNOME_DriveMountApplet.server.in.h:3
+#, fuzzy
+msgid "Factory for drive mount applet"
+msgstr "檔案系統掛載面板程式"
+
+#: drivemount/GNOME_DriveMountApplet.server.in.h:4
+msgid "Panel applet for mounting block volumes"
+msgstr ""
+
+#: drivemount/GNOME_DriveMountApplet.xml.h:2 panel-menu/panel-menu-path.c:730
+msgid "Browse..."
+msgstr "瀏覽..."
+
+#: drivemount/GNOME_DriveMountApplet.xml.h:3
 msgid "Eject"
 msgstr "彈出"
 
-#: drivemount/properties.c:256
-msgid "Drive Mount Applet Properties"
+#: drivemount/properties.c:236
+#, fuzzy
+msgid "Disk Mounter Properties"
 msgstr "檔案系統掛載面板程式內容"
 
-#: drivemount/properties.c:270
+#: drivemount/properties.c:255
 msgid "Mount point:"
 msgstr "掛上的位置："
 
-#: drivemount/properties.c:286
-msgid "Update in seconds:"
-msgstr "更新周期（秒）："
+#: drivemount/properties.c:272
+#, fuzzy
+msgid "Update interval (seconds):"
+msgstr "更新的周期（秒）："
 
-#: drivemount/properties.c:298
-msgid "Icon:"
+#: drivemount/properties.c:287
+#, fuzzy
+msgid "Icon :"
 msgstr "圖示："
 
-#: drivemount/properties.c:305
+#: drivemount/properties.c:304
 msgid "Floppy"
 msgstr "軟碟"
 
-#: drivemount/properties.c:309
+#: drivemount/properties.c:307
 msgid "Cdrom"
 msgstr "光碟"
+
+#: drivemount/properties.c:310
+msgid "Cd Recorder"
+msgstr ""
 
 #: drivemount/properties.c:313
 msgid "Zip Drive"
 msgstr "Zip 磁碟"
 
-#: drivemount/properties.c:317
+#: drivemount/properties.c:316
 msgid "Hard Disk"
 msgstr "硬碟"
 
-#: drivemount/properties.c:321
+#: drivemount/properties.c:319
 msgid "Jaz Drive"
 msgstr "Jaz 磁碟"
 
-#: drivemount/properties.c:325
+#: drivemount/properties.c:322
 msgid "Custom"
 msgstr "自訂"
 
-#: drivemount/properties.c:343
+#: drivemount/properties.c:335
 msgid "Select icon for mounted"
 msgstr "選擇掛載的圖示"
 
-#: drivemount/properties.c:351
+#: drivemount/properties.c:342
 msgid "Custom icon for mounted:"
 msgstr "掛載的自訂圖示："
 
-#: drivemount/properties.c:359
+#: drivemount/properties.c:350
 msgid "Select icon for unmounted"
 msgstr "選擇未掛載的圖示"
 
-#: drivemount/properties.c:367
+#: drivemount/properties.c:357
 msgid "Custom icon for not mounted:"
 msgstr "未掛載的自訂圖示："
 
-#: drivemount/properties.c:373 odometer/properties.c:285
+#: drivemount/properties.c:366
 msgid "Scale size to panel"
 msgstr "縮放至配合面板尺寸"
 
-#: drivemount/properties.c:379
+#: drivemount/properties.c:373
 msgid "Eject on unmount"
 msgstr "卸載後退出碟片"
 
-#: drivemount/properties.c:385
+#: drivemount/properties.c:380
 msgid "Use automount friendly status test"
 msgstr "使用相容於 automount 的狀態測試方式"
 
-#: fifteen/fifteen.c:46
-msgid ""
-"You win!\n"
-"Moves"
-msgstr ""
-"你贏囉！\n"
-"步數"
+#: geyes/geyes_applet.desktop.in.h:1
+msgid "An applet that watches your mouse."
+msgstr "一個會因應鼠標位置移動的面板程式。"
 
-#: fifteen/fifteen.c:304
-msgid "Fifteen sliding pieces"
-msgstr "'十五' 智慧拼圖"
-
-#: fifteen/fifteen.c:306 life/life.c:204
-msgid "Copyright (C) The Free Software Foundation"
-msgstr "版權所有 (C) the Free Software Foundation"
-
-#: fifteen/fifteen.c:308
-msgid ""
-"Sam Lloyd's all-time favorite game, now for your delight in the Gnome Panel. "
-"Guaranteed to be a productivity buster."
-msgstr ""
-"Sam Lloyd's 最喜歡的遊戲， 現在可以讓你在 GNOME 面板上面玩了。 保証可以減低你"
-"的工作效率。"
-
-#: fifteen/fifteen.c:358
-msgid "Can't create fifteen applet!"
-msgstr "無法建立'十五'面板程式！"
-
-#: fifteen/fifteen.c:377
-msgid "Scramble pieces"
-msgstr "弄亂拼圖"
-
-#: geyes/geyes.c:249
-msgid "Dave Camp <campd@oit.edu>"
-msgstr "Dave Camp <campd@oit.edu>"
-
-#: geyes/geyes.c:258 geyes/geyes_applet.desktop.in.h:2
+#: geyes/geyes.c:209 geyes/geyes_applet.desktop.in.h:2
 msgid "gEyes"
 msgstr "gEyes"
 
-#: geyes/geyes.c:259
+#: geyes/geyes.c:200
+msgid "Dave Camp <campd@oit.edu>"
+msgstr "Dave Camp <campd@oit.edu>"
+
+#: geyes/geyes.c:210
 msgid "Copyright (C) 1999 Dave Camp"
 msgstr "版權所有 (C) 1999 Dave Camp"
 
-#: geyes/geyes.c:261
+#: geyes/geyes.c:211
 msgid "A goofy little xeyes clone for the GNOME panel."
 msgstr "Gnome 面板上與 xeyes 同類的程式"
 
-#: geyes/themes.c:183
+#: geyes/GNOME_GeyesApplet.server.in.h:1
+#, fuzzy
+msgid "A set of eyeballs for your panel"
+msgstr "使用面板的全部空間"
+
+#: geyes/GNOME_GeyesApplet.server.in.h:2
+#, fuzzy
+msgid "Geyes Applet"
+msgstr "音量調整面板程式"
+
+#: geyes/GNOME_GeyesApplet.server.in.h:3
+msgid "Geyes Applet Factory"
+msgstr ""
+
+#: geyes/themes.c:185
 msgid "Theme Name"
 msgstr "佈景主題名稱"
 
-#: geyes/themes.c:213
-msgid "gEyes Settings"
-msgstr "gEyes 程式設定"
+#: geyes/themes.c:198
+#, fuzzy
+msgid "Properties"
+msgstr "內容..."
 
-#: geyes/themes.c:238
-msgid "Themes"
-msgstr "佈景主題"
+#: gkb-new/gkb_applet.desktop.in.h:1
+msgid "GKB Keyboard Switcher"
+msgstr "GNOME 鍵盤切換"
 
-#: gkb-new/gkb.c:439
+#: gkb-new/gkb_applet.desktop.in.h:2
+msgid "GKB, the Gnome Keyboard Layout Switcher Applet"
+msgstr "GKB，GNOME 鍵盤配置切換面板程式"
+
+#: gkb-new/gkb.c:405
 #, c-format
-msgid "keymap_%d/name=US 105 key keyboard (with windows keys)"
-msgstr "keymap_%d/name=美式 105 鍵鍵盤（配有 windows 鍵）"
+msgid "name_%d"
+msgstr ""
 
-#: gkb-new/gkb.c:442
-#, c-format
-msgid "keymap_%d/label=us"
-msgstr "keymap_%d/label=us"
+#: gkb-new/gkb.c:408
+#, fuzzy, c-format
+msgid "label_%d"
+msgstr "標籤"
 
-#: gkb-new/gkb.c:445
-#, c-format
-msgid "keymap_%d/country=United States"
-msgstr "keymap_%d/country=美國"
+#: gkb-new/gkb.c:411
+#, fuzzy, c-format
+msgid "country_%d"
+msgstr "國家"
 
-#: gkb-new/gkb.c:448
-#, c-format
-msgid "keymap_%d/lang=English"
-msgstr "keymap_%d/lang=英語"
+#: gkb-new/gkb.c:414
+#, fuzzy, c-format
+msgid "lang_%d"
+msgstr "波蘭"
 
-#: gkb-new/gkb.c:454
-#, c-format
-msgid "keymap_%d/command=gkb_xmmap us"
-msgstr "keymap_%d/command=gkb_xmmap us"
+#: gkb-new/gkb.c:420
+#, fuzzy, c-format
+msgid "command_%d"
+msgstr "指令"
 
-#: gkb-new/gkb.c:460
-#, c-format
-msgid "keymap_%d/name=Hungarian 105 keys latin2"
-msgstr "keymap_%d/name=Hungarian 105 keys latin2"
-
-#: gkb-new/gkb.c:463
-#, c-format
-msgid "keymap_%d/label=hu"
-msgstr "keymap_%d/label=hu"
-
-#: gkb-new/gkb.c:466
-#, c-format
-msgid "keymap_%d/country=Hungary"
-msgstr "keymap_%d/country=匈牙利"
-
-#: gkb-new/gkb.c:469
-#, c-format
-msgid "keymap_%d/lang=Hungarian"
-msgstr "keymap_%d/lang=匈牙利語"
-
-#: gkb-new/gkb.c:472
-#, c-format
-msgid "keymap_%d/flag=hu.png"
-msgstr "keymap_%d/flag=hu.png"
-
-#: gkb-new/gkb.c:475
-#, c-format
-msgid "keymap_%d/command=gkb_xmmap hu"
-msgstr "keymap_%d/command=gkb_xmmap hu"
-
-#: gkb-new/gkb.c:613 gkb-new/gkb.c:620
+#: gkb-new/gkb.c:524 gkb-new/gkb.c:531
 msgid "GKB"
 msgstr "GKB"
 
-#.
-#. if (about)
-#. {
-#. gtk_widget_show (about);
-#. gdk_window_raise (about->window);
-#. return;
-#. }
-#.
-#: gkb-new/gkb.c:650
-msgid "Szabolcs BAN <shooby@gnome.hu>"
-msgstr "Szabolcs BAN <shooby@gnome.hu>"
-
-#: gkb-new/gkb.c:651
-msgid "Chema Celorio <chema@celorio.com>"
-msgstr "Chema Celorio <chema@celorio.com>"
-
-#: gkb-new/gkb.c:654
+#: gkb-new/gkb.c:571
 msgid "The GNOME KeyBoard Switcher Applet"
 msgstr "GNOME 鍵盤切換面板程式"
 
-#: gkb-new/gkb.c:657
+#: gkb-new/gkb.c:573
 msgid "(C) 1998-2000 Free Software Foundation"
 msgstr "(C) 1998-2000 the Free Software Foundation"
 
-#: gkb-new/gkb.c:660
+#: gkb-new/gkb.c:574
+#, fuzzy
 msgid ""
 "This applet switches between keyboard maps. It uses setxkbmap, or xmodmap.\n"
-"Mail me your flag, please (60x40 size), I will put it to CVS.\n"
+"Mail me your flag, please (60x40 size), I will put it into CVS.\n"
 "So long, and thanks for all the fish.\n"
-"Thanks for Balazs Nagy (Kevin) <julian7@kva.hu> for his help and Emese "
-"Kovacs <emese@eik.bme.hu> for her solidarity."
+"Thanks for Balazs Nagy (Kevin) <julian7@iksz.hu> for his help and Emese "
+"Kovacs <emese@gnome.hu> for her solidarity."
 msgstr ""
 "這個面板程式是用來切換不同的鍵盤排列設定。它會使用 setxkbmap 或 xmodmap。\n"
 "請寄你們國旗圖案給作者（尺寸為 60x40），作者會將它收錄在套件裡面，謝謝囉 :)\n"
@@ -860,405 +589,428 @@ msgstr ""
 "感謝 Balazs Nagy（Kevin）<julian7@kva.hu> 的幫助及 Emese Kovacs <emese@eik."
 "bme.hu> 的熱心。"
 
-#: gkb-new/gkb.c:671
+#: gkb-new/gkb.c:589
 msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
 msgstr "GKB 網頁（http://projects.gnome.hu/gkb）"
 
-#: gkb-new/keygrab.c:59 gkb-new/keygrab.c:134
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:1
+msgid "GKB Factory"
+msgstr ""
+
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:2
+#, fuzzy
+msgid "Keyboard Layout Switcher"
+msgstr "GNOME 鍵盤切換"
+
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:3
+#, fuzzy
+msgid "Keyboard Layout Switcher Applet"
+msgstr "GKB，GNOME 鍵盤配置切換面板程式"
+
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:4
+#, fuzzy
+msgid "Produces keyboard layout switcher applets."
+msgstr "GKB，GNOME 鍵盤配置切換面板程式"
+
+#: gkb-new/keygrab.c:69 gkb-new/keygrab.c:144
 msgid "Disabled"
 msgstr "停用"
 
-#: gkb-new/keygrab.c:261
-msgid "Press a key..."
-msgstr "按下任何一鍵..."
+#: gkb-new/keygrab.c:292
+msgid "Press a key or press Esc to cancel"
+msgstr ""
 
-#: gkb-new/prop.c:155 gkb-new/prop.c:219
+#: gkb-new/prop-add.c:86
+msgid "Keymaps (select and press add)"
+msgstr ""
+
+#: gkb-new/prop-add.c:357
+msgid "Select layout"
+msgstr "選擇配置"
+
+#: gkb-new/prop.c:120 gkb-new/prop.c:188
 msgid "Normal"
 msgstr "一般"
 
-#: gkb-new/prop.c:156 gkb-new/prop.c:223
+#: gkb-new/prop.c:121 gkb-new/prop.c:192
 msgid "Big"
 msgstr "較大"
 
-#: gkb-new/prop.c:174 gkb-new/util.c:37 gkb-new/util.c:44 gkb-new/util.c:70
+#: gkb-new/prop.c:139 gkb-new/util.c:41 gkb-new/util.c:48 gkb-new/util.c:74
 msgid "Flag"
 msgstr "國旗"
 
-#: gkb-new/prop-map.c:581 gkb-new/prop.c:175 gkb-new/util.c:34
-#: gkb-new/util.c:67
+#: gkb-new/prop-map.c:585 gkb-new/prop.c:140 gkb-new/util.c:38
+#: gkb-new/util.c:71
 msgid "Label"
 msgstr "標籤"
 
-#: gkb-new/prop.c:176 gkb-new/util.c:40 gkb-new/util.c:73
+#: gkb-new/prop.c:141 gkb-new/util.c:44 gkb-new/util.c:77
 msgid "Flag and Label"
 msgstr "國旗和標籤"
 
-#: gkb-new/prop.c:301 modemlights/properties.c:452 slashapp/properties.c:487
-#: tickastat/properties.c:565
+#: gkb-new/prop.c:273 modemlights/properties.c:371
 msgid "Display"
 msgstr "顯示"
 
 #. Labels
-#: gkb-new/prop.c:321
+#: gkb-new/prop.c:293
 msgid "Appearance "
 msgstr "外觀 "
 
-#: gkb-new/prop.c:322
+#: gkb-new/prop.c:294
 msgid "Applet size "
 msgstr "面板程式尺寸"
 
-#: gkb-new/prop.c:355
+#: gkb-new/prop.c:328
 msgid "Hotkey for switching between layouts"
 msgstr "切換配置所使用的熱鍵"
 
-#: gkb-new/prop.c:367
+#: gkb-new/prop.c:340
 msgid "Grab hotkey"
 msgstr "取得熱鍵"
 
-#: gkb-new/prop.c:409
+#. Create property box
+#: gkb-new/prop.c:392
 msgid "GKB Properties"
 msgstr "GKB 內容"
 
-#: gkb-new/prop.c:420
-msgid "Keymaps"
+#: gkb-new/prop.c:406
+#, fuzzy
+msgid "_Keymaps"
 msgstr "鍵盤對應名稱"
 
-#: gkb-new/prop.c:435
-msgid "Options"
+#: gkb-new/prop.c:418
+#, fuzzy
+msgid "_Options"
 msgstr "選項"
 
-#: gkb-new/prop-add.c:249
-msgid "Select layout"
-msgstr "選擇配置"
-
-#: gkb-new/prop-add.c:277 gkb-new/prop-list.c:378 gtik/gtik.c:1032
-#: webcontrol/properties.c:574
+#: gkb-new/prop-list.c:383
 msgid "Add"
 msgstr "加入"
 
-#: gkb-new/prop-list.c:379 webcontrol/properties.c:583
+#: gkb-new/prop-list.c:384
 msgid "Edit"
 msgstr "修改"
 
-#: gkb-new/prop-list.c:380
+#: gkb-new/prop-list.c:385
 msgid "Up"
 msgstr "向上移"
 
-#: gkb-new/prop-list.c:381
+#: gkb-new/prop-list.c:386
 msgid "Down"
 msgstr "向下移"
 
-#: gkb-new/prop-list.c:382
+#: gkb-new/prop-list.c:387
 msgid "Delete"
 msgstr "刪除"
 
-#: gkb-new/prop-map.c:186
+#: gkb-new/prop-map.c:190
 msgid "Armenia"
 msgstr "亞美尼亞"
 
-#: gkb-new/prop-map.c:187
+#: gkb-new/prop-map.c:191
 msgid "Australia"
 msgstr "澳洲"
 
-#: gkb-new/prop-map.c:188
+#: gkb-new/prop-map.c:192
 msgid "Austria"
 msgstr "奧地利"
 
-#: gkb-new/prop-map.c:189
+#: gkb-new/prop-map.c:193
 msgid "Belgium"
 msgstr "比利時"
 
-#: gkb-new/prop-map.c:190
+#: gkb-new/prop-map.c:194
 msgid "Brazil"
 msgstr "巴西"
 
-#: gkb-new/prop-map.c:191
+#: gkb-new/prop-map.c:195
 msgid "Bulgaria"
 msgstr "保加利亞"
 
-#: gkb-new/prop-map.c:192
+#: gkb-new/prop-map.c:196
 msgid "Canada"
 msgstr "加拿大"
 
-#: gkb-new/prop-map.c:193
+#: gkb-new/prop-map.c:197
 msgid "Caribic"
 msgstr "加勒比海區域"
 
-#: gkb-new/prop-map.c:194
+#: gkb-new/prop-map.c:198
 msgid "France"
 msgstr "法國"
 
-#: gkb-new/prop-map.c:195
+#: gkb-new/prop-map.c:199
 msgid "Georgia"
 msgstr "格魯吉亞"
 
-#: gkb-new/prop-map.c:196
+#: gkb-new/prop-map.c:200
 msgid "Germany"
 msgstr "德國"
 
-#: gkb-new/prop-map.c:197
+#: gkb-new/prop-map.c:201
 msgid "Great Britain"
 msgstr "大不列顛"
 
-#: gkb-new/prop-map.c:198
+#: gkb-new/prop-map.c:202
 msgid "Hungary"
 msgstr "匈牙利"
 
-#: gkb-new/prop-map.c:199
+#: gkb-new/prop-map.c:203
 msgid "Jamaica"
 msgstr "牙買加"
 
-#: gkb-new/prop-map.c:200
+#: gkb-new/prop-map.c:204
 msgid "New Zealand"
 msgstr "新西蘭"
 
-#: gkb-new/prop-map.c:201
+#: gkb-new/prop-map.c:205
 msgid "Norway"
 msgstr "挪威"
 
-#: gkb-new/prop-map.c:202
+#: gkb-new/prop-map.c:206
 msgid "Poland"
 msgstr "波蘭"
 
-#: gkb-new/prop-map.c:203
+#: gkb-new/prop-map.c:207
 msgid "Portugal"
 msgstr "葡萄牙"
 
-#: gkb-new/prop-map.c:204
+#: gkb-new/prop-map.c:208
 msgid "Russia"
 msgstr "俄羅斯"
 
-#: gkb-new/prop-map.c:205
+#: gkb-new/prop-map.c:209
 msgid "Slovak Republic"
 msgstr "斯洛伐克"
 
-#: gkb-new/prop-map.c:206
+#: gkb-new/prop-map.c:210
 msgid "Slovenia"
 msgstr "斯洛文尼亞"
 
-#: gkb-new/prop-map.c:207
+#: gkb-new/prop-map.c:211
 msgid "South Africa"
 msgstr "南非"
 
-#: gkb-new/prop-map.c:208
+#: gkb-new/prop-map.c:212
 msgid "Spain"
 msgstr "西班牙"
 
-#: gkb-new/prop-map.c:209
+#: gkb-new/prop-map.c:213
 msgid "Sweden"
 msgstr "瑞典"
 
-#: gkb-new/prop-map.c:210
+#: gkb-new/prop-map.c:214
 msgid "Switzerland"
 msgstr "瑞士"
 
-#: gkb-new/prop-map.c:211
+#: gkb-new/prop-map.c:215
 msgid "Thailand"
 msgstr "泰國"
 
-#: gkb-new/prop-map.c:212
+#: gkb-new/prop-map.c:216
 msgid "Turkey"
 msgstr "土耳其"
 
-#: gkb-new/prop-map.c:213
+#: gkb-new/prop-map.c:217
 msgid "United Kingdom"
 msgstr "英國"
 
-#: gkb-new/prop-map.c:214
+#: gkb-new/prop-map.c:218
 msgid "United States"
 msgstr "美國"
 
-#: gkb-new/prop-map.c:215
+#: gkb-new/prop-map.c:219
 msgid "Yugoslavia"
 msgstr "南斯拉夫"
 
-#: gkb-new/prop-map.c:235
+#: gkb-new/prop-map.c:239
 msgid "Armenian"
 msgstr "亞美尼亞語"
 
-#: gkb-new/prop-map.c:236
+#: gkb-new/prop-map.c:240
 msgid "Basque"
 msgstr "巴斯克語"
 
-#: gkb-new/prop-map.c:237
+#: gkb-new/prop-map.c:241
 msgid "Bulgarian"
 msgstr "保加利亞語"
 
-#: gkb-new/prop-map.c:238
+#: gkb-new/prop-map.c:242
 msgid "Dutch"
 msgstr "荷蘭語"
 
-#: gkb-new/prop-map.c:239
+#: gkb-new/prop-map.c:243
 msgid "English"
 msgstr "英語"
 
-#: gkb-new/prop-map.c:240
+#: gkb-new/prop-map.c:244
 msgid "French"
 msgstr "法語"
 
-#: gkb-new/prop-map.c:241
+#: gkb-new/prop-map.c:245
 msgid "Georgian"
 msgstr "格魯吉亞語"
 
-#: gkb-new/prop-map.c:242
+#: gkb-new/prop-map.c:246
 msgid "German"
 msgstr "德語"
 
-#: gkb-new/prop-map.c:243
+#: gkb-new/prop-map.c:247
 msgid "Hungarian"
 msgstr "匈牙利語"
 
-#: gkb-new/prop-map.c:244
+#: gkb-new/prop-map.c:248
 msgid "Norwegian"
 msgstr "挪威語"
 
-#: gkb-new/prop-map.c:245
+#: gkb-new/prop-map.c:249
 msgid "Polish"
 msgstr "波蘭語"
 
-#: gkb-new/prop-map.c:246
+#: gkb-new/prop-map.c:250
 msgid "Portuguese"
 msgstr "葡萄牙語"
 
-#: gkb-new/prop-map.c:247
+#: gkb-new/prop-map.c:251
 msgid "Russian"
 msgstr "俄語"
 
-#: gkb-new/prop-map.c:248
+#: gkb-new/prop-map.c:252
 msgid "Slovak"
 msgstr "斯洛伐克語"
 
-#: gkb-new/prop-map.c:249
+#: gkb-new/prop-map.c:253
 msgid "Slovenian"
 msgstr "斯洛文尼亞語"
 
-#: gkb-new/prop-map.c:250
+#: gkb-new/prop-map.c:254
 msgid "Swedish"
 msgstr "瑞典語"
 
-#: gkb-new/prop-map.c:251
+#: gkb-new/prop-map.c:255
 msgid "Thai"
 msgstr "泰語"
 
-#: gkb-new/prop-map.c:252
+#: gkb-new/prop-map.c:256
 msgid "Turkish"
 msgstr "土耳其語"
 
-#: gkb-new/prop-map.c:253
+#: gkb-new/prop-map.c:257
 msgid "Wallon"
 msgstr "華隆語"
 
-#: gkb-new/prop-map.c:254
+#: gkb-new/prop-map.c:258
 msgid "Yugoslavian"
 msgstr "南斯拉夫語"
 
-#: gkb-new/prop-map.c:272
+#: gkb-new/prop-map.c:276
 msgid "105"
 msgstr "105"
 
-#: gkb-new/prop-map.c:273
+#: gkb-new/prop-map.c:277
 msgid "101"
 msgstr "101"
 
-#: gkb-new/prop-map.c:274
+#: gkb-new/prop-map.c:278
 msgid "102"
 msgstr "102"
 
-#: gkb-new/prop-map.c:275
+#: gkb-new/prop-map.c:279
 msgid "450"
 msgstr "450"
 
-#: gkb-new/prop-map.c:276
+#: gkb-new/prop-map.c:280
 msgid "84"
 msgstr "84"
 
-#: gkb-new/prop-map.c:277
+#: gkb-new/prop-map.c:281
 msgid "mklinux"
 msgstr "mklinux"
 
-#: gkb-new/prop-map.c:278
+#: gkb-new/prop-map.c:282
 msgid "type5"
 msgstr "type5"
 
-#: gkb-new/prop-map.c:298
+#: gkb-new/prop-map.c:302
 msgid "iso-8859-1"
 msgstr "iso-8859-1"
 
-#: gkb-new/prop-map.c:299
+#: gkb-new/prop-map.c:303
 msgid "iso-8859-2"
 msgstr "iso-8859-2"
 
-#: gkb-new/prop-map.c:300
+#: gkb-new/prop-map.c:304
 msgid "iso-8859-9"
 msgstr "iso-8859-9"
 
-#: gkb-new/prop-map.c:301
+#: gkb-new/prop-map.c:305
 msgid "am-armscii8"
 msgstr "am-armscii8"
 
-#: gkb-new/prop-map.c:302
+#: gkb-new/prop-map.c:306
 msgid "be-latin1"
 msgstr "be-latin1"
 
-#: gkb-new/prop-map.c:303
+#: gkb-new/prop-map.c:307
 msgid "cp1251"
 msgstr "cp1251"
 
-#: gkb-new/prop-map.c:304
+#: gkb-new/prop-map.c:308
 msgid "georgian-academy"
 msgstr "georgian-academy"
 
-#: gkb-new/prop-map.c:305
+#: gkb-new/prop-map.c:309
 msgid "koi8-r"
 msgstr "koi8-r"
 
-#: gkb-new/prop-map.c:306
+#: gkb-new/prop-map.c:310
 msgid "tis620"
 msgstr "tis620"
 
-#: gkb-new/prop-map.c:324
+#: gkb-new/prop-map.c:328
 msgid "ix86"
 msgstr "ix86"
 
-#: gkb-new/prop-map.c:325
+#: gkb-new/prop-map.c:329
 msgid "sun"
 msgstr "sun"
 
-#: gkb-new/prop-map.c:326
+#: gkb-new/prop-map.c:330
 msgid "mac"
 msgstr "mac"
 
-#: gkb-new/prop-map.c:327
+#: gkb-new/prop-map.c:331
 msgid "sgi"
 msgstr "sgi"
 
-#: gkb-new/prop-map.c:328
+#: gkb-new/prop-map.c:332
 msgid "dec"
 msgstr "dec"
 
-#: gkb-new/prop-map.c:329
+#: gkb-new/prop-map.c:333
 msgid "ibm"
 msgstr "ibm"
 
-#: gkb-new/prop-map.c:552
+#: gkb-new/prop-map.c:556
 msgid "Edit keymap"
 msgstr "修改鍵盤對應"
 
 #. Add the labels
-#: gkb-new/prop-map.c:580 sound-monitor/manager.c:1150
-#: sound-monitor/manager.c:1151 tickastat/mod_news.c:1206
+#: gkb-new/prop-map.c:584
 msgid "Name"
 msgstr "名稱"
 
-#: gkb-new/prop-map.c:582
+#: gkb-new/prop-map.c:586
 msgid "Language"
 msgstr "語言"
 
-#: gkb-new/prop-map.c:583
+#: gkb-new/prop-map.c:587
 msgid "Country"
 msgstr "國家"
 
-#: gkb-new/prop-map.c:584
+#: gkb-new/prop-map.c:588
 msgid ""
 "Flag\n"
 "Pixmap"
@@ -1266,23 +1018,23 @@ msgstr ""
 "國旗\n"
 "圖案"
 
-#: gkb-new/prop-map.c:586
+#: gkb-new/prop-map.c:590
 msgid "Architecture"
 msgstr "系統架構"
 
-#: gkb-new/prop-map.c:587 sound-monitor/manager.c:1150
+#: gkb-new/prop-map.c:591
 msgid "Type"
 msgstr "鍵盤類別"
 
-#: gkb-new/prop-map.c:588
+#: gkb-new/prop-map.c:592
 msgid "Codepage"
 msgstr "Codepage"
 
-#: gkb-new/prop-map.c:589
+#: gkb-new/prop-map.c:593
 msgid "Command"
 msgstr "指令"
 
-#: gkb-new/prop-map.c:634
+#: gkb-new/prop-map.c:638
 msgid ""
 "Where command can be:\n"
 "* xmodmap /full/path/xmodmap.hu\n"
@@ -1298,75 +1050,36 @@ msgstr ""
 msgid "The keymap switching command returned with error!"
 msgstr "切換鍵盤對應的指令失敗了！"
 
-#: gnotes/gnote.c:224
-msgid "Raise Note"
-msgstr "將備忘放到前景"
+#: gtik/GNOME_GtikApplet.server.in.h:1
+msgid "Gtik Applet Factory"
+msgstr ""
 
-#: gnotes/gnote.c:229
-msgid "Lower Note"
-msgstr "將備忘放到背景"
+#: gtik/GNOME_GtikApplet.server.in.h:2
+#, fuzzy
+msgid "Stock Ticker"
+msgstr "GNOME 股市行情指示器"
 
-#: gnotes/gnote.c:234
-msgid "Hide Note"
-msgstr "隱藏備忘"
+#: gtik/GNOME_GtikApplet.xml.h:3
+msgid "Refresh"
+msgstr "重新整理"
 
-#: gnotes/gnote.c:239
-msgid "Delete Note"
-msgstr "刪除備忘"
+#: gtik/gtik2_applet.desktop.in.h:1
+msgid "GNOME Stock Ticker"
+msgstr "GNOME 股市行情指示器"
 
-#: gnotes/gnotes_applet.c:102 gnotes/gnotes_applet.desktop.in.h:1
-msgid "GNotes!"
-msgstr "GNotes!"
+#: gtik/gtik2_applet.desktop.in.h:2
+msgid "GNOME Stock Ticker Panel Applet"
+msgstr "GNOME 股市行情面板程式"
 
-#: gnotes/gnotes_applet.c:103
-msgid "Copyright (C) 1998-1999"
-msgstr "版權 (C) 1998-1999"
-
-#: gnotes/gnotes_applet.c:105
-msgid "Create sticky notes on your screen."
-msgstr "在你的畫面上建立固定的備忘記事"
-
-#: gnotes/gnotes_applet.c:171
-msgid "Can't create GNotes applet!"
-msgstr "無法建立 GNotes 面板程式！"
-
-#: gnotes/gnotes_applet.c:189
-msgid "Raise Notes"
-msgstr "將備忘放到前景"
-
-#: gnotes/gnotes_applet.c:191
-msgid "Lower Notes"
-msgstr "將備忘放到背景"
-
-#: gnotes/gnotes_applet.c:193
-msgid "Hide Notes"
-msgstr "隱藏備忘"
-
-#: gnotes/gnotes_applet.c:195
-msgid "Show Notes"
-msgstr "顯示備忘"
-
-#: gnotes/properties.c:145
-msgid "GNotes Settings"
-msgstr "GNotes 設定"
-
-#: gnotes/properties.c:154
-msgid "Default Height"
-msgstr "預設高度"
-
-#: gnotes/properties.c:174
-msgid "Default Width"
-msgstr "預設寬度"
-
-#: gtik/gtik.c:212
+#: gtik/gtik.c:199
 msgid "No data available or properties not set"
 msgstr "沒有資料或是未設定偏好"
 
-#: gtik/gtik.c:659
+#: gtik/gtik.c:652
 msgid "The GNOME Stock Ticker"
 msgstr "GNOME 股市行情顯示器"
 
-#: gtik/gtik.c:662
+#: gtik/gtik.c:654
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.  "
 "The GNOME Stock Ticker is a free Internet-based application.  It comes with "
@@ -1376,183 +1089,205 @@ msgstr ""
 "此程式會接駁某個著名網站並下載現時的股價。GNOME 股市行情顯示器是一個可自由使"
 "用的軟件。它沒有使用擔保。不要使用它作投資的決定；僅作為參考資料而已。"
 
-#: gtik/gtik.c:1021
+#: gtik/gtik.c:1060
 msgid "New Symbol:"
 msgstr "加入代碼："
 
-#: gtik/gtik.c:1043
-msgid "Remove Selected"
+#: gtik/gtik.c:1070
+#, fuzzy
+msgid "_Add"
+msgstr "加入"
+
+#: gtik/gtik.c:1081
+#, fuzzy
+msgid "_Remove Selected"
 msgstr "移除選擇項目"
 
-#: gtik/gtik.c:1092
-msgid "Gnome Stock Ticker Properties"
+#: gtik/gtik.c:1126
+#, fuzzy
+msgid "Stock Ticker Properties"
 msgstr "Gnome 股市行情顯示器內容"
 
-#: gtik/gtik.c:1104
+#: gtik/gtik.c:1147
 msgid "Update Frequency in minutes:"
 msgstr "更新的周期(分鐘)："
 
-#: gtik/gtik.c:1123
+#: gtik/gtik.c:1163
 msgid "Enter symbols delimited with \"+\" in the box below."
 msgstr "在下方的空格填入以「+」分隔的代碼。"
 
-#: gtik/gtik.c:1130
+#: gtik/gtik.c:1173
 msgid "Display only symbols and price"
 msgstr "只顯示股票代碼及股價"
 
-#: gtik/gtik.c:1131
+#: gtik/gtik.c:1176
 msgid "Scroll left to right"
 msgstr "由左至右捲動"
 
-#: gtik/gtik.c:1132
+#: gtik/gtik.c:1179
 msgid "Display arrows instead of -/+"
 msgstr "顯示箭頭以代替加減號"
 
-#: gtik/gtik.c:1133
+#: gtik/gtik.c:1182
 msgid "Enable scroll buttons"
 msgstr "顯示捲動按紐"
 
 #. COLOR
-#: gtik/gtik.c:1177
+#: gtik/gtik.c:1208
 msgid "+ Color"
 msgstr "+ 的色彩"
 
-#: gtik/gtik.c:1194
+#: gtik/gtik.c:1225
 msgid "- Color"
 msgstr "- 的色彩"
 
-#: gtik/gtik.c:1214
+#: gtik/gtik.c:1245
 msgid "Stock Symbol:"
 msgstr "股票代碼："
 
-#: gtik/gtik.c:1215 gtik/gtik.c:1226
+#: gtik/gtik.c:1246 gtik/gtik.c:1257
 msgid "Select Font"
 msgstr "選擇字型"
 
-#: gtik/gtik.c:1225
+#: gtik/gtik.c:1256
 msgid "Stock Change:"
 msgstr "股值改變︰"
 
-#: gtik/gtik.c:1248
-msgid "Symbols"
+#: gtik/gtik.c:1278
+#, fuzzy
+msgid "_Symbols"
 msgstr "股票代碼"
 
-#: gtik/gtik.c:1250 webcontrol/properties.c:668
-msgid "Behavior"
+#: gtik/gtik.c:1280
+#, fuzzy
+msgid "_Behavior"
 msgstr "表現"
 
-#. appearance frame
-#: gtik/gtik.c:1252 mini-commander/src/preferences.c:557
-#: webcontrol/properties.c:487
-msgid "Appearance"
+#: gtik/gtik.c:1282
+#, fuzzy
+msgid "_Appearance"
 msgstr "外觀"
 
-#: gtik/gtik.c:1345 slashapp/slashapp.c:103
-msgid "Refresh"
-msgstr "重新整理"
-
-#: gtik/gtik.c:1473
+#: gtik/gtik.c:1496
 msgid "(No"
 msgstr "(沒有"
 
-#: gtik/gtik.c:1474
+#: gtik/gtik.c:1497
 msgid "Change "
 msgstr "改變"
 
-#: gweather/gweather-about.c:41
-msgid "Copyright (c)1999 by S. Papadimitriou"
-msgstr "版權所有 (c)1999 S. Papadimitriou"
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:1
+#, fuzzy
+msgid "Factory for creating the weather applet."
+msgstr "無法建立里程表面板程式！"
 
-#: gweather/gweather-about.c:43
-msgid ""
-"GNOME weather monitor applet.\n"
-"Web: http://gweather.dhs.org/"
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:2
+msgid "Gweather Applet Factory"
 msgstr ""
-"GNOME 天氣監測面板程式。\n"
-"Web: http://gweather.dhs.org/"
 
-#: gweather/gweather-applet.c:180
-msgid "Cannot create applet!\n"
-msgstr "無法建立面板程式！\n"
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:3
+#, fuzzy
+msgid "The GNOME weather monitor"
+msgstr "GNOME 天氣監控面板程式"
 
-#: gweather/gweather-applet.c:188
-msgid "Detailed Forecast"
-msgstr "詳細預報"
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:4
+msgid "Weather Report"
+msgstr ""
 
-#: gweather/gweather-applet.c:193
+#: gweather/GNOME_GWeatherApplet.xml.h:2 gweather/gweather-dialog.c:75
+#: gweather/gweather-dialog.c:297
+msgid "Forecast"
+msgstr "預報"
+
+#: gweather/GNOME_GWeatherApplet.xml.h:4
 msgid "Update"
 msgstr "更新"
 
-#: gweather/gweather-applet.c:250 gweather/gweather-dialog.c:96
+#: gweather/gweather-about.c:42 gweather/gweather-applet.c:229
 #: gweather/gweather.desktop.in.h:1
 msgid "GNOME Weather"
 msgstr "Gnome 天氣面板程式"
 
-#: gweather/gweather-applet.c:364
+#: gweather/gweather-about.c:43
+msgid "Copyright (c)1999 by S. Papadimitriou"
+msgstr "版權所有 (c)1999 S. Papadimitriou"
+
+#: gweather/gweather-about.c:44
+#, fuzzy
+msgid ""
+"Released under the GNU General Public License.\n"
+"\n"
+"An applet for monitoring local weather conditions."
+msgstr ""
+"依 GPL 使用條款發行。\n"
+"\n"
+"網絡負載監測面板程式。"
+
+#: gweather/gweather-applet.c:361
 msgid "Updating..."
 msgstr "正在更新..."
 
-#: gweather/gweather-applet.c:388
+#: gweather/gweather-applet.c:387
 msgid "Update failed! Maybe another update was already in progress?"
 msgstr "更新失敗！可能是另一次更新已經進行中？"
 
-#: gweather/gweather-dialog.c:125
+#: gweather/gweather.desktop.in.h:2
+msgid "GNOME weather monitor applet"
+msgstr "GNOME 天氣監控面板程式"
+
+#: gweather/gweather-dialog.c:106
 msgid "Location:"
 msgstr "地點："
 
-#: gweather/gweather-dialog.c:133
+#: gweather/gweather-dialog.c:114
 msgid "Update:"
 msgstr "更新："
 
-#: gweather/gweather-dialog.c:141
+#: gweather/gweather-dialog.c:122
 msgid "Conditions:"
 msgstr "狀況："
 
-#: gweather/gweather-dialog.c:149
+#: gweather/gweather-dialog.c:130
 msgid "Sky:"
 msgstr "天氣："
 
-#: gweather/gweather-dialog.c:157
+#: gweather/gweather-dialog.c:138
 msgid "Temperature:"
 msgstr "溫度："
 
-#: gweather/gweather-dialog.c:165
+#: gweather/gweather-dialog.c:146
 msgid "Dew point:"
 msgstr "露點："
 
-#: gweather/gweather-dialog.c:173
+#: gweather/gweather-dialog.c:154
 msgid "Humidity:"
 msgstr "溼度："
 
-#: gweather/gweather-dialog.c:181
+#: gweather/gweather-dialog.c:162
 msgid "Wind:"
 msgstr "風向："
 
-#: gweather/gweather-dialog.c:189
+#: gweather/gweather-dialog.c:170
 msgid "Pressure:"
 msgstr "氣壓："
 
-#: gweather/gweather-dialog.c:197
+#: gweather/gweather-dialog.c:178
 msgid "Visibility:"
 msgstr "能見度："
 
-#: gweather/gweather-dialog.c:296
+#: gweather/gweather-dialog.c:277
 msgid "Current conditions"
 msgstr "目前的狀況"
 
-#: gweather/gweather-dialog.c:316
-msgid "Forecast"
-msgstr "預報"
-
-#: gweather/gweather-dialog.c:349
+#: gweather/gweather-dialog.c:329
 msgid "Visit Weather.com"
 msgstr "光臨 Weather.com"
 
-#: gweather/gweather-dialog.c:357
+#: gweather/gweather-dialog.c:337
 msgid "Radar map"
 msgstr "雷達圖"
 
-#: gweather/gweather-dialog.c:437
+#: gweather/gweather-dialog.c:407
 msgid ""
 "Detailed forecast not available for this location.\n"
 "Please try the state forecast; note that IWIN forecasts are available only "
@@ -1561,7 +1296,7 @@ msgstr ""
 "不存在這個地點的天氣預報。\n"
 "請嘗試每州的預報，注意 IWIN 預報只提供美國城市的資訊。"
 
-#: gweather/gweather-dialog.c:439
+#: gweather/gweather-dialog.c:409
 msgid ""
 "State forecast not available for this location.\n"
 "Please try the detailed forecast; note that IWIN forecasts are available "
@@ -1570,15 +1305,7 @@ msgstr ""
 "不存在這個州的預報。\n"
 "請嘗試詳細預報，注意 IWIN 預報只提供美國城市的資訊。"
 
-#: gweather/gweather-pref.c:135
-msgid ""
-"Invalid location chosen!\n"
-"Properties remain unchanged."
-msgstr ""
-"地點選擇錯誤！\n"
-"內容維持不變。"
-
-#: gweather/gweather-pref.c:141
+#: gweather/gweather-pref.c:136
 msgid ""
 "Proxy URL is not of the form http://host:port/\n"
 "Properties remain unchanged."
@@ -1586,35 +1313,33 @@ msgstr ""
 "代理伺服器的 URL 不是 http://host:port/ 的形式\n"
 "內容維持不變。"
 
-#: gweather/gweather-pref.c:200
-msgid "Regions"
-msgstr "區域"
-
-#: gweather/gweather-pref.c:317
-msgid "GNOME Weather Properties"
+#: gweather/gweather-pref.c:476
+#, fuzzy
+msgid "Weather Properties"
 msgstr "GNOME 天氣面板程式內容"
 
-#: gweather/gweather-pref.c:356
+#: gweather/gweather-pref.c:521
 msgid "Location"
 msgstr "位置"
 
-#: gweather/gweather-pref.c:376
+#: gweather/gweather-pref.c:541
 msgid "Use proxy"
 msgstr "使用代理伺服器"
 
-#: gweather/gweather-pref.c:380
-msgid "Proxy host:"
+#: gweather/gweather-pref.c:547
+#, fuzzy
+msgid "Proxy URL:"
 msgstr "代理伺服器位址："
 
-#: gweather/gweather-pref.c:394
+#: gweather/gweather-pref.c:563
 msgid "Username:"
 msgstr "使用者："
 
-#: gweather/gweather-pref.c:408
+#: gweather/gweather-pref.c:579
 msgid "Password:"
 msgstr "密碼："
 
-#: gweather/gweather-pref.c:423
+#: gweather/gweather-pref.c:596
 msgid ""
 "Warning: Your password will be saved as\n"
 "unencrypted text in a private configuration\n"
@@ -1623,160 +1348,162 @@ msgstr ""
 "警告：你的密碼已經以未加密的\n"
 "文字方式儲存在私人設定檔中。"
 
-#: gweather/gweather-pref.c:431
+#: gweather/gweather-pref.c:604 multiload/main.c:178
+#: multiload/properties.c:416
 msgid "Network"
 msgstr "網絡"
 
-#: gweather/gweather-pref.c:456
+#: gweather/gweather-pref.c:629
 msgid "Automatically update every"
 msgstr "自動更新相隔："
 
-#: gweather/gweather-pref.c:460
+#: gweather/gweather-pref.c:635
 msgid "Use metric system units"
 msgstr "使用公制"
 
-#: gweather/gweather-pref.c:464
+#: gweather/gweather-pref.c:641
 msgid "Enable detailed forecast"
 msgstr "使用詳細預報"
 
-#: gweather/gweather-pref.c:469
+#: gweather/gweather-pref.c:648
 msgid "Enable radar map"
 msgstr "使用雷達圖"
 
-#: gweather/gweather-pref.c:474
+#: gweather/gweather-pref.c:655
 msgid "Updates"
 msgstr "更新"
 
-#: gweather/gweather-pref.c:480
+#: gweather/gweather-pref.c:661
 msgid "Automatically update every "
 msgstr "自動更新相隔："
 
-#: gweather/gweather-pref.c:498
+#: gweather/gweather-pref.c:681
 msgid "minute(s)"
 msgstr "分鐘"
 
 #. The Miscellaneous frame
-#: gweather/gweather-pref.c:509
+#: gweather/gweather-pref.c:692
 msgid "Miscellaneous"
 msgstr "雜項"
 
-#: gweather/weather.c:55
+# src/properties.c:197
+#: gweather/gweather-pref.c:707
+msgid "General"
+msgstr "一般"
+
+#: gweather/weather.c:59
 msgid "knots"
 msgstr "海里"
 
-#: gweather/weather.c:55
+#: gweather/weather.c:59
 msgid "kph"
 msgstr "kph"
 
-#: gweather/weather.c:60
+#: gweather/weather.c:64
 msgid "inHg"
 msgstr "inHg"
 
-#: gweather/weather.c:60
+#: gweather/weather.c:64
 msgid "mmHg"
 msgstr "mmHg"
 
-#: gweather/weather.c:64
+#: gweather/weather.c:68
 msgid "miles"
 msgstr "英里"
 
-#: gweather/weather.c:64
+#: gweather/weather.c:68
 msgid "kilometers"
 msgstr "千米"
 
-#: gweather/weather.c:113
-msgid "Location vector needs to be 4 elements long"
-msgstr "每個位置都需要 4 個參數"
-
-#: gweather/weather.c:147
+#: gweather/weather.c:123
 msgid "Variable"
 msgstr "無定向"
 
-#: gweather/weather.c:148
+#: gweather/weather.c:124
 msgid "North"
 msgstr "北"
 
-#: gweather/weather.c:148
+#: gweather/weather.c:124
 msgid "North - NorthEast"
 msgstr "東北偏北"
 
-#: gweather/weather.c:148
+#: gweather/weather.c:124
 msgid "Northeast"
 msgstr "東北"
 
-#: gweather/weather.c:148
+#: gweather/weather.c:124
 msgid "East - NorthEast"
 msgstr "東北偏東"
 
-#: gweather/weather.c:149
+#: gweather/weather.c:125
 msgid "East"
 msgstr "東"
 
-#: gweather/weather.c:149
+#: gweather/weather.c:125
 msgid "East - Southeast"
 msgstr "東南偏東"
 
-#: gweather/weather.c:149
+#: gweather/weather.c:125
 msgid "Southeast"
 msgstr "東南"
 
-#: gweather/weather.c:149
+#: gweather/weather.c:125
 msgid "South - Southeast"
 msgstr "東南偏南"
 
-#: gweather/weather.c:150
+#: gweather/weather.c:126
 msgid "South"
 msgstr "南"
 
-#: gweather/weather.c:150
+#: gweather/weather.c:126
 msgid "South - Southwest"
 msgstr "西南偏南"
 
-#: gweather/weather.c:150
+#: gweather/weather.c:126
 msgid "Southwest"
 msgstr "西南"
 
-#: gweather/weather.c:150
+#: gweather/weather.c:126
 msgid "West - Southwest"
 msgstr "西南偏西"
 
-#: gweather/weather.c:151
+#: gweather/weather.c:127
 msgid "West"
 msgstr "西"
 
-#: gweather/weather.c:151
+#: gweather/weather.c:127
 msgid "West - Northwest"
 msgstr "西北偏西"
 
-#: gweather/weather.c:151
+#: gweather/weather.c:127
 msgid "Northwest"
 msgstr "西北"
 
-#: gweather/weather.c:151
+#: gweather/weather.c:127
 msgid "North - Northwest"
 msgstr "西北偏北"
 
-#: gweather/weather.c:158 gweather/weather.c:175 gweather/weather.c:239
+#: gweather/weather.c:134 gweather/weather.c:151 gweather/weather.c:215
 msgid "Invalid"
 msgstr "不正確"
 
-#: gweather/weather.c:164
+#: gweather/weather.c:140
 msgid "Clear Sky"
 msgstr "天氣晴朗"
 
-#: gweather/weather.c:165
+#: gweather/weather.c:141
 msgid "Broken clouds"
 msgstr "不連續的雲"
 
-#: gweather/weather.c:166
+#: gweather/weather.c:142
 msgid "Scattered clouds"
 msgstr "稀疏的雲"
 
-#: gweather/weather.c:167
+#: gweather/weather.c:143
 msgid "Few clouds"
 msgstr "薄雲"
 
-#: gweather/weather.c:168
+#: gweather/weather.c:144
 msgid "Overcast"
 msgstr "多雲"
 
@@ -1784,1139 +1511,1115 @@ msgstr "多雲"
 #. ******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
 #. NONE
 #. DRIZZLE
-#: gweather/weather.c:201
+#: gweather/weather.c:177
 msgid "Drizzle"
 msgstr "細雨"
 
-#: gweather/weather.c:201
+#: gweather/weather.c:177
 msgid "Drizzle in the vicinity"
 msgstr "鄰近有細雨"
 
-#: gweather/weather.c:201
+#: gweather/weather.c:177
 msgid "Light drizzle"
 msgstr "少量細雨"
 
-#: gweather/weather.c:201
+#: gweather/weather.c:177
 msgid "Moderate drizzle"
 msgstr "中度細雨"
 
-#: gweather/weather.c:201
+#: gweather/weather.c:177
 msgid "Heavy drizzle"
 msgstr "多量細雨"
 
-#: gweather/weather.c:201
+#: gweather/weather.c:177
 msgid "Shallow drizzle"
 msgstr "極少細雨"
 
-#: gweather/weather.c:201
+#: gweather/weather.c:177
 msgid "Patches of drizzle"
 msgstr "局部地區性細雨"
 
-#: gweather/weather.c:201
+#: gweather/weather.c:177
 msgid "Partial drizzle"
 msgstr "部分細雨"
 
-#: gweather/weather.c:201 gweather/weather.c:202
+#: gweather/weather.c:177 gweather/weather.c:178
 msgid "Thunderstorm"
 msgstr "雷暴"
 
-#: gweather/weather.c:201
+#: gweather/weather.c:177
 msgid "Windy drizzle"
 msgstr "有風的細雨"
 
-#: gweather/weather.c:201
+#: gweather/weather.c:177
 msgid "Showers"
 msgstr "驟雨"
 
-#: gweather/weather.c:201
+#: gweather/weather.c:177
 msgid "Drifting drizzle"
 msgstr "微風細雨"
 
-#: gweather/weather.c:201
+#: gweather/weather.c:177
 msgid "Freezing drizzle"
 msgstr "低於冰點的細雨"
 
 #. RAIN
-#: gweather/weather.c:202
+#: gweather/weather.c:178
 msgid "Rain"
 msgstr "有雨"
 
-#: gweather/weather.c:202
+#: gweather/weather.c:178
 msgid "Rain in the vicinity"
 msgstr "鄰近有雨"
 
-#: gweather/weather.c:202
+#: gweather/weather.c:178
 msgid "Light rain"
 msgstr "微雨"
 
-#: gweather/weather.c:202
+#: gweather/weather.c:178
 msgid "Moderate rain"
 msgstr "有雨"
 
-#: gweather/weather.c:202
+#: gweather/weather.c:178
 msgid "Heavy rain"
 msgstr "豪雨"
 
-#: gweather/weather.c:202
+#: gweather/weather.c:178
 msgid "Shallow rain"
 msgstr "極少量雨"
 
-#: gweather/weather.c:202
+#: gweather/weather.c:178
 msgid "Patches of rain"
 msgstr "局部地區性有雨"
 
-#: gweather/weather.c:202
+#: gweather/weather.c:178
 msgid "Partial rainfall"
 msgstr "部分下雨"
 
-#: gweather/weather.c:202
+#: gweather/weather.c:178
 msgid "Blowing rainfall"
 msgstr "大風雨"
 
-#: gweather/weather.c:202
+#: gweather/weather.c:178
 msgid "Rain showers"
 msgstr "驟雨"
 
-#: gweather/weather.c:202
+#: gweather/weather.c:178
 msgid "Drifting rain"
 msgstr "風雨"
 
-#: gweather/weather.c:202
+#: gweather/weather.c:178
 msgid "Freezing rain"
 msgstr "低於冰點的雨"
 
 #. SNOW
-#: gweather/weather.c:203
+#: gweather/weather.c:179
 msgid "Snow"
 msgstr "雪"
 
-#: gweather/weather.c:203
+#: gweather/weather.c:179
 msgid "Snow in the vicinity"
 msgstr "鄰近有雪"
 
-#: gweather/weather.c:203
+#: gweather/weather.c:179
 msgid "Light snow"
 msgstr "少量的雪"
 
-#: gweather/weather.c:203
+#: gweather/weather.c:179
 msgid "Moderate snow"
 msgstr "中度的雪"
 
-#: gweather/weather.c:203
+#: gweather/weather.c:179
 msgid "Heavy snow"
 msgstr "多量的雪"
 
-#: gweather/weather.c:203
+#: gweather/weather.c:179
 msgid "Shallow snow"
 msgstr "極少的雪"
 
-#: gweather/weather.c:203
+#: gweather/weather.c:179
 msgid "Patches of snow"
 msgstr "局部地區性下雪"
 
-#: gweather/weather.c:203
+#: gweather/weather.c:179
 msgid "Partial snowfall"
 msgstr "部分下雪"
 
-#: gweather/weather.c:203 gweather/weather.c:204
+#: gweather/weather.c:179 gweather/weather.c:180
 msgid "Snowstorm"
 msgstr "暴風雪"
 
-#: gweather/weather.c:203
+#: gweather/weather.c:179
 msgid "Blowing snowfall"
 msgstr "風雪"
 
-#: gweather/weather.c:203
+#: gweather/weather.c:179
 msgid "Snow showers"
 msgstr "驟雪"
 
-#: gweather/weather.c:203
+#: gweather/weather.c:179
 msgid "Drifting snow"
 msgstr "雪，有微風"
 
-#: gweather/weather.c:203
+#: gweather/weather.c:179
 msgid "Freezing snow"
 msgstr "低於冰點的雪"
 
 #. SNOW_GRAINS
-#: gweather/weather.c:204
+#: gweather/weather.c:180
 msgid "Snow grains"
 msgstr "冰雪"
 
-#: gweather/weather.c:204
+#: gweather/weather.c:180
 msgid "Snow grains in the vicinity"
 msgstr "鄰近有冰雪"
 
-#: gweather/weather.c:204
+#: gweather/weather.c:180
 msgid "Light snow grains"
 msgstr "少量冰雪"
 
-#: gweather/weather.c:204
+#: gweather/weather.c:180
 msgid "Moderate snow grains"
 msgstr "中度冰雪"
 
-#: gweather/weather.c:204
+#: gweather/weather.c:180
 msgid "Heavy snow grains"
 msgstr "大量冰雪"
 
-#: gweather/weather.c:204
+#: gweather/weather.c:180
 msgid "Shallow snow grains"
 msgstr "極少冰雪"
 
-#: gweather/weather.c:204
+#: gweather/weather.c:180
 msgid "Patches of snow grains"
 msgstr "局部地區性冰雪"
 
-#: gweather/weather.c:204
+#: gweather/weather.c:180
 msgid "Partial snow grains"
 msgstr "部分冰雪"
 
-#: gweather/weather.c:204
+#: gweather/weather.c:180
 msgid "Blowing snow grains"
 msgstr "冰雪，有風"
 
-#: gweather/weather.c:204
+#: gweather/weather.c:180
 msgid "Snow grain showers"
 msgstr "驟降冰雪"
 
-#: gweather/weather.c:204
+#: gweather/weather.c:180
 msgid "Drifting snow grains"
 msgstr "冰雪，有微風"
 
-#: gweather/weather.c:204
+#: gweather/weather.c:180
 msgid "Freezing snow grains"
 msgstr "低於冰點的冰雪"
 
 #. ICE_CRYSTALS
-#: gweather/weather.c:205
+#: gweather/weather.c:181
 msgid "Ice crystals"
 msgstr "冰晶"
 
-#: gweather/weather.c:205
+#: gweather/weather.c:181
 msgid "Ice crystals in the vicinity"
 msgstr "鄰近有冰晶"
 
-#: gweather/weather.c:205
+#: gweather/weather.c:181
 msgid "Few ice crystals"
 msgstr "少量冰晶"
 
-#: gweather/weather.c:205
+#: gweather/weather.c:181
 msgid "Moderate ice crystals"
 msgstr "中度冰晶"
 
-#: gweather/weather.c:205
+#: gweather/weather.c:181
 msgid "Heavy ice crystals"
 msgstr "多量冰晶"
 
-#: gweather/weather.c:205
+#: gweather/weather.c:181
 msgid "Patches of ice crystals"
 msgstr "局部地區性冰晶"
 
-#: gweather/weather.c:205
+#: gweather/weather.c:181
 msgid "Partial ice crystals"
 msgstr "部分冰晶"
 
-#: gweather/weather.c:205
+#: gweather/weather.c:181
 msgid "Ice crystal storm"
 msgstr "冰晶暴"
 
-#: gweather/weather.c:205
+#: gweather/weather.c:181
 msgid "Blowing ice crystals"
 msgstr "冰晶，有風"
 
-#: gweather/weather.c:205
+#: gweather/weather.c:181
 msgid "Showers of ice crystals"
 msgstr "驟降冰晶"
 
-#: gweather/weather.c:205
+#: gweather/weather.c:181
 msgid "Drifting ice crystals"
 msgstr "冰晶，有微風"
 
-#: gweather/weather.c:205
+#: gweather/weather.c:181
 msgid "Freezing ice crystals"
 msgstr "低於冰點的冰晶"
 
 #. ICE_PELLETS
-#: gweather/weather.c:206
+#: gweather/weather.c:182
 msgid "Ice pellets"
 msgstr "冰粒"
 
-#: gweather/weather.c:206
+#: gweather/weather.c:182
 msgid "Ice pellets in the vicinity"
 msgstr "鄰近有冰粒"
 
-#: gweather/weather.c:206
+#: gweather/weather.c:182
 msgid "Few ice pellets"
 msgstr "少量冰粒"
 
-#: gweather/weather.c:206
+#: gweather/weather.c:182
 msgid "Moderate ice pellets"
 msgstr "中度冰粒"
 
-#: gweather/weather.c:206
+#: gweather/weather.c:182
 msgid "Heavy ice pellets"
 msgstr "多量冰粒"
 
-#: gweather/weather.c:206
+#: gweather/weather.c:182
 msgid "Shallow ice pellets"
 msgstr "極少冰粒"
 
-#: gweather/weather.c:206
+#: gweather/weather.c:182
 msgid "Patches of ice pellets"
 msgstr "局部地區性冰粒"
 
-#: gweather/weather.c:206
+#: gweather/weather.c:182
 msgid "Partial ice pellets"
 msgstr "部分冰粒"
 
-#: gweather/weather.c:206
+#: gweather/weather.c:182
 msgid "Ice pellet storm"
 msgstr "冰暴"
 
-#: gweather/weather.c:206
+#: gweather/weather.c:182
 msgid "Blowing ice pellets"
 msgstr "冰粒，有風"
 
-#: gweather/weather.c:206
+#: gweather/weather.c:182
 msgid "Showers of ice pellets"
 msgstr "驟降冰粒"
 
-#: gweather/weather.c:206
+#: gweather/weather.c:182
 msgid "Drifting ice pellets"
 msgstr "冰粒，有微風"
 
-#: gweather/weather.c:206
+#: gweather/weather.c:182
 msgid "Freezing ice pellets"
 msgstr "低於冰點的冰粒"
 
 #. HAIL
-#: gweather/weather.c:207
+#: gweather/weather.c:183
 msgid "Hail"
 msgstr "冰雹"
 
-#: gweather/weather.c:207
+#: gweather/weather.c:183
 msgid "Hail in the vicinity"
 msgstr "鄰近有冰雹"
 
-#: gweather/weather.c:207 gweather/weather.c:208
+#: gweather/weather.c:183 gweather/weather.c:184
 msgid "Light hail"
 msgstr "少量冰雹"
 
-#: gweather/weather.c:207
+#: gweather/weather.c:183
 msgid "Moderate hail"
 msgstr "中度冰雹"
 
-#: gweather/weather.c:207
+#: gweather/weather.c:183
 msgid "Heavy hail"
 msgstr "多量冰雹"
 
-#: gweather/weather.c:207
+#: gweather/weather.c:183
 msgid "Shallow hail"
 msgstr "極少冰雹"
 
-#: gweather/weather.c:207
+#: gweather/weather.c:183
 msgid "Patches of hail"
 msgstr "局部地區性冰雹"
 
-#: gweather/weather.c:207
+#: gweather/weather.c:183
 msgid "Partial hail"
 msgstr "部分冰雹"
 
-#: gweather/weather.c:207
+#: gweather/weather.c:183
 msgid "Hailstorm"
 msgstr "雹暴"
 
-#: gweather/weather.c:207
+#: gweather/weather.c:183
 msgid "Blowing hail"
 msgstr "冰雹，有風"
 
-#: gweather/weather.c:207
+#: gweather/weather.c:183
 msgid "Hail showers"
 msgstr "驟降冰雹"
 
-#: gweather/weather.c:207
+#: gweather/weather.c:183
 msgid "Drifting hail"
 msgstr "冰雹，有微風"
 
-#: gweather/weather.c:207
+#: gweather/weather.c:183
 msgid "Freezing hail"
 msgstr "低於冰點的冰雹"
 
 #. SMALL_HAIL
-#: gweather/weather.c:208
+#: gweather/weather.c:184
 msgid "Small hail"
 msgstr "小冰雹"
 
-#: gweather/weather.c:208
+#: gweather/weather.c:184
 msgid "Small hail in the vicinity"
 msgstr "鄰近有小冰雹"
 
-#: gweather/weather.c:208
+#: gweather/weather.c:184
 msgid "Moderate small hail"
 msgstr "中度小冰雹"
 
-#: gweather/weather.c:208
+#: gweather/weather.c:184
 msgid "Heavy small hail"
 msgstr "多量小冰雹"
 
-#: gweather/weather.c:208
+#: gweather/weather.c:184
 msgid "Shallow small hail"
 msgstr "極少小冰雹"
 
-#: gweather/weather.c:208
+#: gweather/weather.c:184
 msgid "Patches of small hail"
 msgstr "局部地區性小冰雹"
 
-#: gweather/weather.c:208
+#: gweather/weather.c:184
 msgid "Partial small hail"
 msgstr "部分小冰雹"
 
-#: gweather/weather.c:208
+#: gweather/weather.c:184
 msgid "Small hailstorm"
 msgstr "小型雹暴"
 
-#: gweather/weather.c:208
+#: gweather/weather.c:184
 msgid "Blowing small hail"
 msgstr "小冰雹，有風"
 
-#: gweather/weather.c:208
+#: gweather/weather.c:184
 msgid "Showers of small hail"
 msgstr "驟降小冰雹"
 
-#: gweather/weather.c:208
+#: gweather/weather.c:184
 msgid "Drifting small hail"
 msgstr "小冰雹，有微風"
 
-#: gweather/weather.c:208
+#: gweather/weather.c:184
 msgid "Freezing small hail"
 msgstr "低於冰點的小冰雹"
 
 #. PRECIPITATION
-#: gweather/weather.c:209
+#: gweather/weather.c:185
 msgid "Unknown precipitation"
 msgstr "未知的降水"
 
-#: gweather/weather.c:209
+#: gweather/weather.c:185
 msgid "Precipitation in the vicinity"
 msgstr "鄰近有降水"
 
-#: gweather/weather.c:209
+#: gweather/weather.c:185
 msgid "Light precipitation"
 msgstr "小量降水"
 
-#: gweather/weather.c:209
+#: gweather/weather.c:185
 msgid "Moderate precipitation"
 msgstr "中度降水"
 
-#: gweather/weather.c:209
+#: gweather/weather.c:185
 msgid "Heavy precipitation"
 msgstr "多量降水"
 
-#: gweather/weather.c:209
+#: gweather/weather.c:185
 msgid "Shallow precipitation"
 msgstr "極少降水"
 
-#: gweather/weather.c:209
+#: gweather/weather.c:185
 msgid "Patches of precipitation"
 msgstr "局部地區性降水"
 
-#: gweather/weather.c:209
+#: gweather/weather.c:185
 msgid "Partial precipitation"
 msgstr "部分降水"
 
-#: gweather/weather.c:209
+#: gweather/weather.c:185
 msgid "Unknown thunderstorm"
 msgstr "未知的雷暴"
 
-#: gweather/weather.c:209
+#: gweather/weather.c:185
 msgid "Blowing precipitation"
 msgstr "大風降水"
 
-#: gweather/weather.c:209
+#: gweather/weather.c:185
 msgid "Showers, type unknown"
 msgstr "驟雨，類別未知"
 
-#: gweather/weather.c:209
+#: gweather/weather.c:185
 msgid "Drifting precipitation"
 msgstr "帶風降水"
 
-#: gweather/weather.c:209
+#: gweather/weather.c:185
 msgid "Freezing precipitation"
 msgstr "低於冰點的降水"
 
 #. MIST
-#: gweather/weather.c:210
+#: gweather/weather.c:186
 msgid "Mist"
 msgstr "靄"
 
-#: gweather/weather.c:210
+#: gweather/weather.c:186
 msgid "Mist in the vicinity"
 msgstr "鄰近有靄"
 
-#: gweather/weather.c:210
+#: gweather/weather.c:186
 msgid "Light mist"
 msgstr "小量的靄"
 
-#: gweather/weather.c:210
+#: gweather/weather.c:186
 msgid "Moderate mist"
 msgstr "中度的靄"
 
-#: gweather/weather.c:210
+#: gweather/weather.c:186
 msgid "Thick mist"
 msgstr "濃靄"
 
-#: gweather/weather.c:210
+#: gweather/weather.c:186
 msgid "Shallow mist"
 msgstr "極少的靄"
 
-#: gweather/weather.c:210
+#: gweather/weather.c:186
 msgid "Patches of mist"
 msgstr "局部地區性有靄"
 
-#: gweather/weather.c:210
+#: gweather/weather.c:186
 msgid "Partial mist"
 msgstr "部分有靄"
 
-#: gweather/weather.c:210
+#: gweather/weather.c:186
 msgid "Mist with wind"
 msgstr "靄，有風"
 
-#: gweather/weather.c:210
+#: gweather/weather.c:186
 msgid "Drifting mist"
 msgstr "靄，有微風"
 
-#: gweather/weather.c:210
+#: gweather/weather.c:186
 msgid "Freezing mist"
 msgstr "低於冰點的靄"
 
 #. FOG
-#: gweather/weather.c:211
+#: gweather/weather.c:187
 msgid "Fog"
 msgstr "霧"
 
-#: gweather/weather.c:211
+#: gweather/weather.c:187
 msgid "Fog in the vicinity"
 msgstr "鄰近有霧"
 
-#: gweather/weather.c:211
+#: gweather/weather.c:187
 msgid "Light fog"
 msgstr "薄霧"
 
-#: gweather/weather.c:211
+#: gweather/weather.c:187
 msgid "Moderate fog"
 msgstr "中度的霧"
 
-#: gweather/weather.c:211
+#: gweather/weather.c:187
 msgid "Thick fog"
 msgstr "濃霧"
 
-#: gweather/weather.c:211
+#: gweather/weather.c:187
 msgid "Shallow fog"
 msgstr "極少的霧"
 
-#: gweather/weather.c:211
+#: gweather/weather.c:187
 msgid "Patches of fog"
 msgstr "局部地區性有霧"
 
-#: gweather/weather.c:211
+#: gweather/weather.c:187
 msgid "Partial fog"
 msgstr "部分有霧"
 
-#: gweather/weather.c:211
+#: gweather/weather.c:187
 msgid "Fog with wind"
 msgstr "霧，有風"
 
-#: gweather/weather.c:211
+#: gweather/weather.c:187
 msgid "Drifting fog"
 msgstr "霧，有微風"
 
-#: gweather/weather.c:211
+#: gweather/weather.c:187
 msgid "Freezing fog"
 msgstr "低於冰點的霧"
 
 #. SMOKE
-#: gweather/weather.c:212
+#: gweather/weather.c:188
 msgid "Smoke"
 msgstr "煙霞"
 
-#: gweather/weather.c:212
+#: gweather/weather.c:188
 msgid "Smoke in the vicinity"
 msgstr "鄰近有煙霞"
 
-#: gweather/weather.c:212
+#: gweather/weather.c:188
 msgid "Thin smoke"
 msgstr "薄煙霞"
 
-#: gweather/weather.c:212
+#: gweather/weather.c:188
 msgid "Moderate smoke"
 msgstr "中度的煙霞"
 
-#: gweather/weather.c:212
+#: gweather/weather.c:188
 msgid "Thick smoke"
 msgstr "濃煙霞"
 
-#: gweather/weather.c:212
+#: gweather/weather.c:188
 msgid "Shallow smoke"
 msgstr "極少的煙霞"
 
-#: gweather/weather.c:212
+#: gweather/weather.c:188
 msgid "Patches of smoke"
 msgstr "局部地區性有煙霞"
 
-#: gweather/weather.c:212
+#: gweather/weather.c:188
 msgid "Partial smoke"
 msgstr "部分有煙霞"
 
-#: gweather/weather.c:212
+#: gweather/weather.c:188
 msgid "Smoke w/ thunders"
 msgstr "煙霞並有雷"
 
-#: gweather/weather.c:212
+#: gweather/weather.c:188
 msgid "Smoke with wind"
 msgstr "煙霞，有風"
 
-#: gweather/weather.c:212
+#: gweather/weather.c:188
 msgid "Drifting smoke"
 msgstr "煙霞，有微風"
 
 #. VOLCANIC_ASH
-#: gweather/weather.c:213
+#: gweather/weather.c:189
 msgid "Volcanic ash"
 msgstr "火山灰"
 
-#: gweather/weather.c:213
+#: gweather/weather.c:189
 msgid "Volcanic ash in the vicinity"
 msgstr "鄰近有火山灰"
 
-#: gweather/weather.c:213
+#: gweather/weather.c:189
 msgid "Moderate volcanic ash"
 msgstr "中度火山灰"
 
-#: gweather/weather.c:213
+#: gweather/weather.c:189
 msgid "Thick volcanic ash"
 msgstr "大量火山灰"
 
-#: gweather/weather.c:213
+#: gweather/weather.c:189
 msgid "Shallow volcanic ash"
 msgstr "極少的火山灰"
 
-#: gweather/weather.c:213
+#: gweather/weather.c:189
 msgid "Patches of volcanic ash"
 msgstr "局部地區性有火山灰"
 
-#: gweather/weather.c:213
+#: gweather/weather.c:189
 msgid "Partial volcanic ash"
 msgstr "部分有火山灰"
 
-#: gweather/weather.c:213
+#: gweather/weather.c:189
 msgid "Volcanic ash w/ thunders"
 msgstr "火山灰並有雷"
 
-#: gweather/weather.c:213
+#: gweather/weather.c:189
 msgid "Blowing volcanic ash"
 msgstr "火山灰，有風"
 
-#: gweather/weather.c:213
+#: gweather/weather.c:189
 msgid "Showers of volcanic ash "
 msgstr "驟降火山灰"
 
-#: gweather/weather.c:213
+#: gweather/weather.c:189
 msgid "Drifting volcanic ash"
 msgstr "火山灰，有微風"
 
-#: gweather/weather.c:213
+#: gweather/weather.c:189
 msgid "Freezing volcanic ash"
 msgstr "低於冰點的火山灰"
 
 #. SAND
-#: gweather/weather.c:214
+#: gweather/weather.c:190
 msgid "Sand"
 msgstr "沙"
 
-#: gweather/weather.c:214
+#: gweather/weather.c:190
 msgid "Sand in the vicinity"
 msgstr "鄰近有沙"
 
-#: gweather/weather.c:214
+#: gweather/weather.c:190
 msgid "Light sand"
 msgstr "少量的沙"
 
-#: gweather/weather.c:214
+#: gweather/weather.c:190
 msgid "Moderate sand"
 msgstr "中度的沙"
 
-#: gweather/weather.c:214
+#: gweather/weather.c:190
 msgid "Heavy sand"
 msgstr "大量的沙"
 
-#: gweather/weather.c:214
+#: gweather/weather.c:190
 msgid "Patches of sand"
 msgstr "局部地區性有沙"
 
-#: gweather/weather.c:214
+#: gweather/weather.c:190
 msgid "Partial sand"
 msgstr "部分有沙"
 
-#: gweather/weather.c:214
+#: gweather/weather.c:190
 msgid "Blowing sand"
 msgstr "風沙"
 
-#: gweather/weather.c:214
+#: gweather/weather.c:190
 msgid "Drifting sand"
 msgstr "沙，有微風"
 
 #. HAZE
-#: gweather/weather.c:215
+#: gweather/weather.c:191
 msgid "Haze"
 msgstr "塵"
 
-#: gweather/weather.c:215
+#: gweather/weather.c:191
 msgid "Haze in the vicinity"
 msgstr "鄰近有塵"
 
-#: gweather/weather.c:215
+#: gweather/weather.c:191
 msgid "Light haze"
 msgstr "薄塵"
 
-#: gweather/weather.c:215
+#: gweather/weather.c:191
 msgid "Moderate haze"
 msgstr "中度的塵"
 
-#: gweather/weather.c:215
+#: gweather/weather.c:191
 msgid "Thick haze"
 msgstr "濃塵"
 
-#: gweather/weather.c:215
+#: gweather/weather.c:191
 msgid "Shallow haze"
 msgstr "極少的塵"
 
-#: gweather/weather.c:215
+#: gweather/weather.c:191
 msgid "Patches of haze"
 msgstr "局部地區性有塵"
 
-#: gweather/weather.c:215
+#: gweather/weather.c:191
 msgid "Partial haze"
 msgstr "部分有塵"
 
-#: gweather/weather.c:215
+#: gweather/weather.c:191
 msgid "Haze with wind"
 msgstr "風塵"
 
-#: gweather/weather.c:215
+#: gweather/weather.c:191
 msgid "Drifting haze"
 msgstr "塵，有微風"
 
-#: gweather/weather.c:215
+#: gweather/weather.c:191
 msgid "Freezing haze"
 msgstr "低於冰點的塵"
 
 #. SPRAY
-#: gweather/weather.c:216
+#: gweather/weather.c:192
 msgid "Sprays"
 msgstr "冰霧"
 
-#: gweather/weather.c:216
+#: gweather/weather.c:192
 msgid "Sprays in the vicinity"
 msgstr "鄰近有冰霧"
 
-#: gweather/weather.c:216
+#: gweather/weather.c:192
 msgid "Light sprays"
 msgstr "薄冰霧"
 
-#: gweather/weather.c:216
+#: gweather/weather.c:192
 msgid "Moderate sprays"
 msgstr "中度冰霧"
 
-#: gweather/weather.c:216
+#: gweather/weather.c:192
 msgid "Heavy sprays"
 msgstr "濃密冰霧"
 
-#: gweather/weather.c:216
+#: gweather/weather.c:192
 msgid "Shallow sprays"
 msgstr "極少冰霧"
 
-#: gweather/weather.c:216
+#: gweather/weather.c:192
 msgid "Patches of sprays"
 msgstr "局部地區性有冰霧"
 
-#: gweather/weather.c:216
+#: gweather/weather.c:192
 msgid "Partial sprays"
 msgstr "部分冰霧"
 
-#: gweather/weather.c:216
+#: gweather/weather.c:192
 msgid "Blowing sprays"
 msgstr "冰霧，帶風"
 
-#: gweather/weather.c:216
+#: gweather/weather.c:192
 msgid "Drifting sprays"
 msgstr "冰霧，帶微風"
 
-#: gweather/weather.c:216
+#: gweather/weather.c:192
 msgid "Freezing sprays"
 msgstr "低於冰點的冰霧"
 
 #. DUST
-#: gweather/weather.c:217
+#: gweather/weather.c:193
 msgid "Dust"
 msgstr "粉塵"
 
-#: gweather/weather.c:217
+#: gweather/weather.c:193
 msgid "Dust in the vicinity"
 msgstr "鄰近有粉塵"
 
-#: gweather/weather.c:217
+#: gweather/weather.c:193
 msgid "Light dust"
 msgstr "少量粉塵"
 
-#: gweather/weather.c:217
+#: gweather/weather.c:193
 msgid "Moderate dust"
 msgstr "中度粉塵"
 
-#: gweather/weather.c:217
+#: gweather/weather.c:193
 msgid "Heavy dust"
 msgstr "大量粉塵"
 
-#: gweather/weather.c:217
+#: gweather/weather.c:193
 msgid "Patches of dust"
 msgstr "局部地區性有粉塵"
 
-#: gweather/weather.c:217
+#: gweather/weather.c:193
 msgid "Partial dust"
 msgstr "部分粉塵"
 
-#: gweather/weather.c:217
+#: gweather/weather.c:193
 msgid "Blowing dust"
 msgstr "粉塵，帶風"
 
-#: gweather/weather.c:217
+#: gweather/weather.c:193
 msgid "Drifting dust"
 msgstr "粉塵，帶微風"
 
 #. SQUALL
-#: gweather/weather.c:218
+#: gweather/weather.c:194
 msgid "Squall"
 msgstr "暴風"
 
-#: gweather/weather.c:218
+#: gweather/weather.c:194
 msgid "Squall in the vicinity"
 msgstr "鄰近有暴風"
 
-#: gweather/weather.c:218
+#: gweather/weather.c:194
 msgid "Light squall"
 msgstr "輕度暴風"
 
-#: gweather/weather.c:218
+#: gweather/weather.c:194
 msgid "Moderate squall"
 msgstr "中度暴風"
 
-#: gweather/weather.c:218
+#: gweather/weather.c:194
 msgid "Heavy squall"
 msgstr "強勁暴風"
 
-#: gweather/weather.c:218
+#: gweather/weather.c:194
 msgid "Partial squall"
 msgstr "部分暴風"
 
-#: gweather/weather.c:218
+#: gweather/weather.c:194
 msgid "Thunderous squall"
 msgstr "雷與暴風"
 
-#: gweather/weather.c:218
+#: gweather/weather.c:194
 msgid "Blowing squall"
 msgstr "風與暴風"
 
-#: gweather/weather.c:218
+#: gweather/weather.c:194
 msgid "Drifting squall"
 msgstr "陣暴風"
 
-#: gweather/weather.c:218
+#: gweather/weather.c:194
 msgid "Freezing squall"
 msgstr "低於冰點的暴風"
 
 #. SANDSTORM
-#: gweather/weather.c:219
+#: gweather/weather.c:195
 msgid "Sandstorm"
 msgstr "沙暴"
 
-#: gweather/weather.c:219
+#: gweather/weather.c:195
 msgid "Sandstorm in the vicinity"
 msgstr "鄰近有沙暴"
 
-#: gweather/weather.c:219
+#: gweather/weather.c:195
 msgid "Light standstorm"
 msgstr "少量沙暴"
 
-#: gweather/weather.c:219
+#: gweather/weather.c:195
 msgid "Moderate sandstorm"
 msgstr "中度沙暴"
 
-#: gweather/weather.c:219
+#: gweather/weather.c:195
 msgid "Heavy sandstorm"
 msgstr "大量沙暴"
 
-#: gweather/weather.c:219
+#: gweather/weather.c:195
 msgid "Shallow sandstorm"
 msgstr "極少沙暴"
 
-#: gweather/weather.c:219
+#: gweather/weather.c:195
 msgid "Partial sandstorm"
 msgstr "部分沙暴"
 
-#: gweather/weather.c:219
+#: gweather/weather.c:195
 msgid "Thunderous sandstorm"
 msgstr "雷與沙暴"
 
-#: gweather/weather.c:219
+#: gweather/weather.c:195
 msgid "Blowing sandstorm"
 msgstr "風與沙暴"
 
-#: gweather/weather.c:219
+#: gweather/weather.c:195
 msgid "Drifting sandstorm"
 msgstr "陣沙暴"
 
-#: gweather/weather.c:219
+#: gweather/weather.c:195
 msgid "Freezing sandstorm"
 msgstr "低於冰點的沙暴"
 
 #. DUSTSTORM
-#: gweather/weather.c:220
+#: gweather/weather.c:196
 msgid "Duststorm"
 msgstr "塵暴"
 
-#: gweather/weather.c:220
+#: gweather/weather.c:196
 msgid "Duststorm in the vicinity"
 msgstr "鄰近有塵暴"
 
-#: gweather/weather.c:220
+#: gweather/weather.c:196
 msgid "Light duststorm"
 msgstr "少量塵暴"
 
-#: gweather/weather.c:220
+#: gweather/weather.c:196
 msgid "Moderate duststorm"
 msgstr "中度塵暴"
 
-#: gweather/weather.c:220
+#: gweather/weather.c:196
 msgid "Heavy duststorm"
 msgstr "大量塵暴"
 
-#: gweather/weather.c:220
+#: gweather/weather.c:196
 msgid "Shallow duststorm"
 msgstr "極少塵暴"
 
-#: gweather/weather.c:220
+#: gweather/weather.c:196
 msgid "Partial duststorm"
 msgstr "部分塵暴"
 
-#: gweather/weather.c:220
+#: gweather/weather.c:196
 msgid "Thunderous duststorm"
 msgstr "雷與塵暴"
 
-#: gweather/weather.c:220
+#: gweather/weather.c:196
 msgid "Blowing duststorm"
 msgstr "風與塵暴"
 
-#: gweather/weather.c:220
+#: gweather/weather.c:196
 msgid "Drifting duststorm"
 msgstr "陣塵暴"
 
-#: gweather/weather.c:220
+#: gweather/weather.c:196
 msgid "Freezing duststorm"
 msgstr "低於冰點的塵暴"
 
 #. FUNNEL_CLOUD
-#: gweather/weather.c:221
+#: gweather/weather.c:197
 msgid "Funnel cloud"
 msgstr "漏斗雲"
 
-#: gweather/weather.c:221
+#: gweather/weather.c:197
 msgid "Funnel cloud in the vicinity"
 msgstr "鄰近有漏斗雲"
 
-#: gweather/weather.c:221
+#: gweather/weather.c:197
 msgid "Light funnel cloud"
 msgstr "薄漏斗雲"
 
-#: gweather/weather.c:221
+#: gweather/weather.c:197
 msgid "Moderate funnel cloud"
 msgstr "中度漏斗雲"
 
-#: gweather/weather.c:221
+#: gweather/weather.c:197
 msgid "Thick funnel cloud"
 msgstr "濃密漏斗雲"
 
-#: gweather/weather.c:221
+#: gweather/weather.c:197
 msgid "Shallow funnel cloud"
 msgstr "極少漏斗雲"
 
-#: gweather/weather.c:221
+#: gweather/weather.c:197
 msgid "Patches of funnel clouds"
 msgstr "局部地區性漏斗雲"
 
-#: gweather/weather.c:221
+#: gweather/weather.c:197
 msgid "Partial funnel clouds"
 msgstr "部分漏斗雲"
 
-#: gweather/weather.c:221
+#: gweather/weather.c:197
 msgid "Funnel cloud w/ wind"
 msgstr "漏斗雲，有風"
 
-#: gweather/weather.c:221
+#: gweather/weather.c:197
 msgid "Drifting funnel cloud"
 msgstr "陣漏斗雲"
 
 #. TORNADO
-#: gweather/weather.c:222
+#: gweather/weather.c:198
 msgid "Tornado"
 msgstr "龍捲風"
 
-#: gweather/weather.c:222
+#: gweather/weather.c:198
 msgid "Tornado in the vicinity"
 msgstr "鄰近有龍捲風"
 
-#: gweather/weather.c:222
+#: gweather/weather.c:198
 msgid "Moderate tornado"
 msgstr "中度龍捲風"
 
-#: gweather/weather.c:222
+#: gweather/weather.c:198
 msgid "Raging tornado"
 msgstr "強烈龍捲風"
 
-#: gweather/weather.c:222
+#: gweather/weather.c:198
 msgid "Partial tornado"
 msgstr "部分龍捲風"
 
-#: gweather/weather.c:222
+#: gweather/weather.c:198
 msgid "Thunderous tornado"
 msgstr "帶雷龍捲風"
 
-#: gweather/weather.c:222
+#: gweather/weather.c:198
 msgid "Drifting tornado"
 msgstr "陣龍捲風"
 
-#: gweather/weather.c:222
+#: gweather/weather.c:198
 msgid "Freezing tornado"
 msgstr "低於冰點的龍捲風"
 
 #. DUST_WHIRLS
-#: gweather/weather.c:223
+#: gweather/weather.c:199
 msgid "Dust whirls"
 msgstr "塵旋風"
 
-#: gweather/weather.c:223
+#: gweather/weather.c:199
 msgid "Dust whirls in the vicinity"
 msgstr "鄰近有塵旋風"
 
-#: gweather/weather.c:223
+#: gweather/weather.c:199
 msgid "Light dust whirls"
 msgstr "小型塵旋風"
 
-#: gweather/weather.c:223
+#: gweather/weather.c:199
 msgid "Moderate dust whirls"
 msgstr "中型塵旋風"
 
-#: gweather/weather.c:223
+#: gweather/weather.c:199
 msgid "Heavy dust whirls"
 msgstr "大型塵旋風"
 
-#: gweather/weather.c:223
+#: gweather/weather.c:199
 msgid "Shallow dust whirls"
 msgstr "極少的塵旋風"
 
-#: gweather/weather.c:223
+#: gweather/weather.c:199
 msgid "Patches of dust whirls"
 msgstr "局部地區性塵旋風"
 
-#: gweather/weather.c:223
+#: gweather/weather.c:199
 msgid "Partial dust whirls"
 msgstr "部分塵旋風"
 
-#: gweather/weather.c:223
+#: gweather/weather.c:199
 msgid "Blowing dust whirls"
 msgstr "塵旋風"
 
-#: gweather/weather.c:223
+#: gweather/weather.c:199
 msgid "Drifting dust whirls"
 msgstr "陣塵旋風"
 
-#: gweather/weather.c:801 gweather/weather.c:852 gweather/weather.c:1005
-msgid "WeatherInfo missing location"
-msgstr "WeatherInfo 缺少了位置"
-
-#: gweather/weather.c:808
+#: gweather/weather.c:825 gweather/weather.c:864 gweather/weather.c:1437
 msgid "Failed to get METAR data.\n"
 msgstr "無法取得 METAR 資料。\n"
 
-#: gweather/weather.c:1012
+#: gweather/weather.c:857 gweather/weather.c:884 gweather/weather.c:1081
+msgid "WeatherInfo missing location"
+msgstr "WeatherInfo 缺少了位置"
+
+#: gweather/weather.c:1049
+#, fuzzy
+msgid "Failed to get IWIN data.\n"
+msgstr "無法取得 IWIN 預報資料。\n"
+
+#: gweather/weather.c:1089
 msgid "Failed to get IWIN forecast data.\n"
 msgstr "無法取得 IWIN 預報資料。\n"
 
-#: gweather/weather.c:1206
+#: gweather/weather.c:1289
+#, fuzzy
+msgid "Failed to get Met Office data.\n"
+msgstr "無法取得 Met Office 預報資料。\n"
+
+#: gweather/weather.c:1321
 msgid "Failed to get Met Office forecast data.\n"
 msgstr "無法取得 Met Office 預報資料。\n"
 
-#: gweather/weather.c:1324
+#: gweather/weather.c:1471
 msgid "Failed to get radar map image.\n"
 msgstr "無法取得雷達圖像。\n"
 
-#: gweather/weather.c:1384
+#: gweather/weather.c:1530
 msgid "Another update already in progress!\n"
 msgstr "另一次更新已經在進行中！\n"
 
-#: gweather/weather.c:1608
+#: gweather/weather.c:1776
 msgid "%a, %b %d / %H:%M"
 msgstr "%b %d(%a)/ %H:%M"
 
-#: gweather/weather.c:1612
+#: gweather/weather.c:1780
 msgid "Unknown observation time"
 msgstr "觀測時間不詳"
 
-#: gweather/weather.c:1672
+#: gweather/weather.c:1840
 msgid "Calm"
 msgstr "平靜"
 
-#: gweather/weather.c:1698
+#: gweather/weather.c:1866
 msgid "Unknown"
 msgstr "不詳"
 
-#: gweather/weather.c:1730
+#: gweather/weather.c:1898
 msgid "Retrieval failed"
 msgstr "接收失敗"
 
-#: jbc/jbc-applet.c:57
-msgid "Jon's Binary Clock"
-msgstr "Jon 的二進位時鐘"
-
-#: jbc/jbc-applet.c:59
-msgid "(C) 1999"
-msgstr "(C) 1999"
-
-#: jbc/jbc-applet.c:61
-msgid ""
-"Released under the GNU general public license.\n"
-"Displays time in Binary Coded Decimal\n"
-"http://snoopy.net/~jon/jbc/."
-msgstr ""
-"依 GPL 使用條款發行。\n"
-"以二進位編碼顯示時間。\n"
-"http://snoopy.net/~jon/jbc/。"
-
-#: life/life.c:202
-msgid "The Game of Life"
-msgstr "生命遊戲"
-
-#: life/life.c:206
-msgid "A complete waste of perfectly good CPU cycles."
-msgstr "浪費 CPU 工作周期的絕佳方式。"
-
-#: life/life.c:254
-msgid "Can't create life applet!"
-msgstr "無法建立生命遊戲面板程式！"
-
-#: life/life.c:273
-msgid "Randomize"
-msgstr "隨機化"
-
-#: mini-commander/src/about.c:38
+#: mini-commander/src/about.c:39
 msgid "Mini-Commander Applet"
 msgstr "小型命令窗程式"
 
@@ -2939,203 +2642,266 @@ msgstr ""
 "GPL 第二版或以後版本的使用條款來散佈/修改這\n"
 "個程式。"
 
-#: mini-commander/src/cmd_completion.c:68
-#: mini-commander/src/cmd_completion.c:114
-#: mini-commander/src/cmd_completion.c:150
-#: mini-commander/src/cmd_completion.c:201
+#: mini-commander/src/cmd_completion.c:69
+#: mini-commander/src/cmd_completion.c:115
+#: mini-commander/src/cmd_completion.c:151
+#: mini-commander/src/cmd_completion.c:202
 msgid "not unique"
 msgstr "並非唯一"
 
-#: mini-commander/src/cmd_completion.c:72
-#: mini-commander/src/cmd_completion.c:154
+#: mini-commander/src/cmd_completion.c:73
+#: mini-commander/src/cmd_completion.c:155
 msgid "completing..."
 msgstr "補齊中..."
 
-#: mini-commander/src/cmd_completion.c:112
-#: mini-commander/src/cmd_completion.c:199
+#: mini-commander/src/cmd_completion.c:113
+#: mini-commander/src/cmd_completion.c:200
 msgid "completed"
 msgstr "補齊"
 
-#: mini-commander/src/cmd_completion.c:117
-#: mini-commander/src/cmd_completion.c:204
+#: mini-commander/src/cmd_completion.c:118
+#: mini-commander/src/cmd_completion.c:205
 msgid "not found"
 msgstr "沒有找到"
 
-#: mini-commander/src/cmd_completion.c:166 mini-commander/src/exec.c:116
+#: mini-commander/src/cmd_completion.c:167 mini-commander/src/exec.c:117
 msgid "no /bin/sh"
 msgstr "找不到 /bin/sh"
 
-#: mini-commander/src/command_line.c:87 mini-commander/src/command_line.c:107
-#: mini-commander/src/terminal.c:89 mini-commander/src/terminal.c:109
+#: mini-commander/src/command_line.c:89 mini-commander/src/command_line.c:109
+#: mini-commander/src/terminal.c:91 mini-commander/src/terminal.c:111
 msgid "end of history list"
 msgstr "紀錄列表結尾"
 
 #. enter pressed -> exec command
-#: mini-commander/src/command_line.c:117 mini-commander/src/exec.c:58
-#: mini-commander/src/terminal.c:119
+#: mini-commander/src/command_line.c:119 mini-commander/src/exec.c:59
+#: mini-commander/src/terminal.c:121
 msgid "starting..."
 msgstr "啟動中..."
 
-#: mini-commander/src/command_line.c:146 mini-commander/src/terminal.c:151
+#: mini-commander/src/command_line.c:148 mini-commander/src/terminal.c:153
 msgid "autocompleted"
 msgstr "自動補齊"
 
-#: mini-commander/src/command_line.c:288
+#: mini-commander/src/command_line.c:293
 msgid "history list empty"
 msgstr "紀錄列表是空的"
 
 #. title
-#: mini-commander/src/command_line.c:306
+#: mini-commander/src/command_line.c:311
 msgid "Command history"
 msgstr "指令紀錄"
 
 #. build file select dialog
-#: mini-commander/src/command_line.c:426
+#: mini-commander/src/command_line.c:429
 msgid "Start program"
 msgstr "啟動程式"
 
-#: mini-commander/src/exec.c:60
+#: mini-commander/src/exec.c:61
 msgid "fork error"
 msgstr "程式產生錯誤"
 
-#: mini-commander/src/exec.c:104
+#: mini-commander/src/exec.c:105
 msgid "child exited"
 msgstr "子程式結束"
 
-#: mini-commander/src/message.c:142
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:1
+#, fuzzy
+msgid "Command Line"
+msgstr "指令"
+
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:2
+#: mini-commander/src/mini-commander_applet.desktop.in.h:1
+msgid "Mini-Commander"
+msgstr "小型命令窗"
+
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:3
+#, fuzzy
+msgid "MiniCommander Applet Factory"
+msgstr "小型命令窗程式"
+
+#: mini-commander/src/help.c:36
+#, fuzzy
+msgid "still not ported"
+msgstr " 未掛上"
+
+#: mini-commander/src/message.c:148
 msgid "%H:%M - %d. %b"
 msgstr "%H:%M - %d. %b"
 
-#: mini-commander/src/message.c:144
+#: mini-commander/src/message.c:150
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: mini-commander/src/message.c:146
+#: mini-commander/src/message.c:152
 msgid "%d. %b"
 msgstr "%d. %b"
 
-#: mini-commander/src/mini-commander_applet.c:96
+#: mini-commander/src/mini-commander_applet.c:111
 msgid "orient. changed"
 msgstr "更改了方向"
 
-#: mini-commander/src/mini-commander_applet.c:112
+#: mini-commander/src/mini-commander_applet.c:130
 msgid "size changed"
 msgstr "更改了尺寸"
 
-#: mini-commander/src/mini-commander_applet.c:231
+#: mini-commander/src/mini-commander_applet.c:250
 msgid "Browser"
 msgstr "瀏覽器"
 
-#: mini-commander/src/mini-commander_applet.c:244
+#: mini-commander/src/mini-commander_applet.c:265
 msgid "History"
 msgstr "紀錄"
 
-#: mini-commander/src/mini-commander_applet.c:419
+#: mini-commander/src/mini-commander_applet.c:407
 msgid "ready..."
 msgstr "準備好..."
 
-#: mini-commander/src/preferences.c:139
+#: mini-commander/src/preferences.c:113
 msgid "time & date on"
 msgstr "開啟時間與日期"
 
-#: mini-commander/src/preferences.c:141
+#: mini-commander/src/preferences.c:115
 msgid "time on"
 msgstr "開啟時間"
 
-#: mini-commander/src/preferences.c:143
+#: mini-commander/src/preferences.c:117
 msgid "date on"
 msgstr "開啟日期"
 
-#: mini-commander/src/preferences.c:145
+#: mini-commander/src/preferences.c:119
 msgid "clock off"
 msgstr "關閉時鐘"
 
-#: mini-commander/src/preferences.c:456 mini-commander/src/preferences.c:458
-msgid "saving prefs..."
-msgstr "儲存設定..."
-
-#: mini-commander/src/preferences.c:514
-msgid "Mini-Commander Properties"
+#: mini-commander/src/preferences.c:573
+#, fuzzy
+msgid "Command Line Properties"
 msgstr "小型命令窗內容"
 
+#: mini-commander/src/preferences.c:586
+msgid "Clock"
+msgstr "時鐘"
+
 #. show time check box
-#: mini-commander/src/preferences.c:532
+#: mini-commander/src/preferences.c:594
 msgid "Show time"
 msgstr "顯示時間"
 
 #. show date check box
-#: mini-commander/src/preferences.c:544
+#: mini-commander/src/preferences.c:601
 msgid "Show date"
 msgstr "顯示日期"
 
+# src/properties.c:401
+#. appearance frame
+#: mini-commander/src/preferences.c:609
+msgid "Appearance"
+msgstr "外觀"
+
 #. show handle check box
-#: mini-commander/src/preferences.c:565
+#: mini-commander/src/preferences.c:617
 msgid "Show handle"
 msgstr "顯示控制"
 
 #. show frame check box
-#: mini-commander/src/preferences.c:577
+#: mini-commander/src/preferences.c:624
 msgid "Show frame"
 msgstr "顯示頁框"
 
 #. auto complete frame
-#: mini-commander/src/preferences.c:591
-msgid "Auto Completion"
+#: mini-commander/src/preferences.c:633
+#, fuzzy
+msgid "Autocompletion"
 msgstr "自動補齊"
 
 #. show history autocomplete
-#: mini-commander/src/preferences.c:599
-msgid "Enable history based auto completion"
+#: mini-commander/src/preferences.c:641
+#, fuzzy
+msgid "Enable history based autocompletion"
 msgstr "啟用自動補齊指令紀錄"
 
+#. Size
+#: mini-commander/src/preferences.c:648
+msgid "Size"
+msgstr "大小"
+
 #. applet width
-#: mini-commander/src/preferences.c:623
+#: mini-commander/src/preferences.c:660
 msgid "Applet width:"
 msgstr "面板程式寬度："
 
 #. applet height
-#: mini-commander/src/preferences.c:652
+#: mini-commander/src/preferences.c:689
 msgid "Applet height:"
 msgstr "面板程式高度："
 
 #. cmd line height
-#: mini-commander/src/preferences.c:681
+#: mini-commander/src/preferences.c:718
 msgid "Command line height:"
 msgstr "指令行高度："
 
+#. Color
+#: mini-commander/src/preferences.c:760 modemlights/properties.c:445
+#: multiload/properties.c:395
+msgid "Colors"
+msgstr "色彩"
+
 #. fg
-#: mini-commander/src/preferences.c:733
+#: mini-commander/src/preferences.c:770
 msgid "Command line foreground:"
 msgstr "指令行前景顏色："
 
 #. bg
-#: mini-commander/src/preferences.c:768
+#: mini-commander/src/preferences.c:801
 msgid "Command line background:"
 msgstr "指令行背景顏色："
 
+#: mini-commander/src/preferences.c:829 modemlights/properties.c:405
+#, fuzzy
+msgid "_General"
+msgstr "一般"
+
 #. prefix
-#: mini-commander/src/preferences.c:828
+#: mini-commander/src/preferences.c:854
 #, c-format
 msgid "Regex %.2d:"
 msgstr "正規表示式 %.2d："
 
 #. command
-#: mini-commander/src/preferences.c:846
+#: mini-commander/src/preferences.c:870
 #, c-format
 msgid "   Macro %.2d:"
 msgstr "   巨集 %.2d："
 
-#: mini-commander/src/preferences.c:865
-msgid "Macros"
+#: mini-commander/src/preferences.c:886
+#, fuzzy
+msgid "_Macros"
 msgstr "巨集"
 
+#: mixer/GNOME_MixerApplet.server.in.h:1
+msgid "Applet for adjusting the sound volume"
+msgstr ""
+
+#: mixer/GNOME_MixerApplet.server.in.h:2 mixer/mixer.c:694
+#, fuzzy
+msgid "Volume Control"
+msgstr "小型網頁控制"
+
+#: mixer/GNOME_MixerApplet.xml.h:3
+msgid "Mute"
+msgstr ""
+
+#: mixer/GNOME_MixerApplet.xml.h:4
+msgid "Run Audio Mixer..."
+msgstr "執行音量調整程式..."
+
 #. probably should die more gracefully
-#: mixer/mixer.c:161
+#: mixer/mixer.c:167
 #, c-format
 msgid "Couldn't open mixer device %s\n"
 msgstr "無法開啟音量調整裝置 %s\n"
 
-#: mixer/mixer.c:175
+#: mixer/mixer.c:181
 msgid ""
 "warning: this version of gmix was compiled with a different version of\n"
 "soundcard.h.\n"
@@ -3143,47 +2909,42 @@ msgstr ""
 "警告：這個版本的音量調整程式是用不同\n"
 "版本的 soundcard.h 編譯出來的。\n"
 
-#: mixer/mixer.c:186
+#: mixer/mixer.c:192
 #, c-format
 msgid "Querying available channels of mixer device %s failed\n"
 msgstr "查詢混音裝置 %s 的可用頻道時出現錯誤\n"
 
-#: mixer/mixer.c:193
+#: mixer/mixer.c:199
 msgid "warning: mixer has no volume channel - using PCM instead.\n"
 msgstr "警告：混音器沒有音量頻道 - 會使用 PCM。\n"
 
-#: mixer/mixer.c:196
+#: mixer/mixer.c:202
 #, c-format
 msgid "Mixer device %s has neither volume nor PCM channels.\n"
 msgstr "混合裝置 %s 沒有音量和 PCM 頻道。\n"
 
-#: mixer/mixer.c:559
-msgid "Main Volume and Mute"
-msgstr "主音量與靜音"
+#: mixer/mixer.c:695
+msgid "(C) 2001 Richard Hult"
+msgstr ""
 
-#: mixer/mixer.c:690
-msgid "Mixer Applet"
-msgstr "音量調整面板程式"
+#: mixer/mixer.c:696
+msgid "The volume control lets you set the volume level for your desktop."
+msgstr ""
 
-#: mixer/mixer.c:691
-msgid "(c) 1998 The Free Software Foundation"
-msgstr "(C) 1998 the Free Software Foundation"
+#: modemlights/GNOME_ModemLightsApplet.server.in.h:1
+#: modemlights/modemlights_applet.desktop.in.h:1
+msgid "Modem Lights"
+msgstr "數據機燈號"
 
-#: mixer/mixer.c:693
-msgid ""
-"The mixer applet gives you instant access to setting the master volume level "
-"on your soundcard device"
-msgstr "音量調整面板程式提供你快速調整你音效卡的主要音量"
-
-#: mixer/mixer.c:829
-msgid "Run Audio Mixer..."
-msgstr "執行音量調整程式..."
+#: modemlights/modemlights_applet.desktop.in.h:2
+msgid "Show modem status"
+msgstr "顯示數據機狀態"
 
 #: modemlights/modemlights.c:205
 msgid "Modem Lights Applet"
 msgstr "數據機燈號面板程式"
 
-#: modemlights/modemlights.c:208
+#: modemlights/modemlights.c:207
 msgid ""
 "Released under the GNU general public license.\n"
 "A modem status indicator and dialer.\n"
@@ -3193,7 +2954,7 @@ msgstr ""
 "顯示數據機的狀態並可用來撥號，\n"
 "燈號依序為 RX 與 TX (從上到下或左到右)。"
 
-#: modemlights/modemlights.c:530
+#: modemlights/modemlights.c:531
 msgid ""
 "You are currently connected.\n"
 "Do you want to disconnect?"
@@ -3201,1562 +2962,124 @@ msgstr ""
 "你目前還在連線狀態中，\n"
 "確定要切斷連線嗎？"
 
-#: modemlights/modemlights.c:545
+#: modemlights/modemlights.c:546
 msgid "Do you want to connect?"
 msgstr "你要撥接連線嗎？"
 
-#: modemlights/modemlights.c:571
+#: modemlights/modemlights.c:574
 #, c-format
 msgid "%#.1fMb received / %#.1fMb sent / time: %.1d:%.2d"
 msgstr "收到 %#.1fMb / 送出 %#.1fMb / 時間: %.1d:%.2d"
 
-#: modemlights/modemlights.c:576
+#: modemlights/modemlights.c:579
 msgid "not connected"
 msgstr "沒有連線"
 
-#: modemlights/modemlights.c:1506
-msgid "Help..."
-msgstr "說明..."
-
-#: modemlights/properties.c:396
-msgid "Modem Lights Settings"
+#: modemlights/properties.c:310
+#, fuzzy
+msgid "Modem Lights Properties"
 msgstr "數據機燈號程式設定"
 
-#: modemlights/properties.c:401
+#: modemlights/properties.c:322
 msgid "Connecting"
 msgstr "連線中"
 
-#: modemlights/properties.c:415
+#: modemlights/properties.c:336
 msgid "Connect command:"
 msgstr "連線用指令："
 
-#: modemlights/properties.c:432
+#: modemlights/properties.c:352
 msgid "Disconnect command:"
 msgstr "斷線用指令："
 
 #. confirmation checkbox
-#: modemlights/properties.c:445
+#: modemlights/properties.c:364
 msgid "Confirm connection"
 msgstr "確認連線狀態"
 
-#: modemlights/properties.c:466
+#: modemlights/properties.c:385
 msgid "Updates per second"
 msgstr "每秒更新次數"
 
 #. extra info checkbox
-#: modemlights/properties.c:479
+#: modemlights/properties.c:398
 msgid "Show connect time and throughput"
 msgstr "顯示連線時間與流量"
 
-#: modemlights/properties.c:495
+#: modemlights/properties.c:415
 msgid "Receive data"
 msgstr "接收資料"
 
-#: modemlights/properties.c:497 modemlights/properties.c:502
-#: modemlights/properties.c:521
+#: modemlights/properties.c:417 modemlights/properties.c:422
+#: modemlights/properties.c:441
 msgid "Foreground"
 msgstr "前景"
 
-#: modemlights/properties.c:498 modemlights/properties.c:503
-#: modemlights/properties.c:522
+#: modemlights/properties.c:418 modemlights/properties.c:423
+#: modemlights/properties.c:442
 msgid "Background"
 msgstr "背景"
 
-#: modemlights/properties.c:500
+#: modemlights/properties.c:420
 msgid "Send data"
 msgstr "送出資料"
 
-#: modemlights/properties.c:505
+#: modemlights/properties.c:425
 msgid "Connection status"
 msgstr "連線狀態"
 
-#: modemlights/properties.c:507
+#: modemlights/properties.c:427
 msgid "Connected"
 msgstr "已接上"
 
-#: modemlights/properties.c:508
+#: modemlights/properties.c:428
 msgid "Not connected"
 msgstr "沒有接上"
 
-#: modemlights/properties.c:509
+#: modemlights/properties.c:429
 msgid "Awaiting connection"
 msgstr "等待連線"
 
-#: modemlights/properties.c:512
+#: modemlights/properties.c:432
 msgid "Blink"
 msgstr "閃爍"
 
-#: modemlights/properties.c:519
+#: modemlights/properties.c:439
 msgid "Text"
 msgstr "文字"
 
-#: modemlights/properties.c:523
+#: modemlights/properties.c:443
 msgid "Outline"
 msgstr "輪廓"
 
-#: modemlights/properties.c:534
+#: modemlights/properties.c:454
 msgid "Modem options"
 msgstr "數據機選項"
 
-#: modemlights/properties.c:548
+#: modemlights/properties.c:468
 msgid "Modem lock file:"
 msgstr "數據機鎖定檔："
 
-#: modemlights/properties.c:560
+#: modemlights/properties.c:479
 msgid "Verify owner of lock file"
 msgstr "檢查鎖定檔的擁有人"
 
-#: modemlights/properties.c:572
+#: modemlights/properties.c:491
 msgid "Device:"
 msgstr "裝置："
 
 #. ISDN checkbox
-#: modemlights/properties.c:585
+#: modemlights/properties.c:503
 msgid "Use ISDN"
 msgstr "使用 ISDN"
 
-#: modemlights/properties.c:605
+#: modemlights/properties.c:523
 msgid "Set options as default"
 msgstr "使用現時選項作為預設"
 
-#: modemlights/properties.c:611 sound-monitor/properties.c:508
+#: modemlights/properties.c:529
 msgid "Advanced"
 msgstr "進階"
-
-#: multiload/cpuload.c:43
-msgid "CPU Load Applet"
-msgstr "CPU 負載面板程式"
-
-#: multiload/cpuload.c:46
-msgid ""
-"Released under the GNU general public license.\n"
-"\n"
-"CPU Load Meter Applet."
-msgstr ""
-"依 GPL 使用條款發行。\n"
-"\n"
-"CPU 負載監測面板程式。"
-
-#: multiload/cpuload.c:74 multiload/cpuload.c:118 multiload/main.c:220
-msgid "CPU Load"
-msgstr "CPU 負載"
-
-#: multiload/cpuload.c:88 multiload/loadavg.c:163 multiload/memload.c:91
-#: multiload/netload.c:87 multiload/swapload.c:91
-msgid "Default Properties..."
-msgstr "預設內容..."
-
-#: multiload/cpuload.c:102 multiload/loadavg.c:177 multiload/memload.c:105
-#: multiload/netload.c:101 multiload/swapload.c:105
-msgid "Run gtop..."
-msgstr "執行 gtop..."
-
-#: multiload/loadavg.c:27
-msgid "Load average over 1 minute"
-msgstr "一分鐘內平均負載"
-
-#: multiload/loadavg.c:28
-msgid "Load average over 5 minutes"
-msgstr "五分鐘內平均負載"
-
-#: multiload/loadavg.c:29
-msgid "Load average over 15 minutes"
-msgstr "十五分鐘內平均負載"
-
-#: multiload/loadavg.c:103 multiload/loadavg_applet.desktop.in.h:2
-msgid "Load Average Applet"
-msgstr "平均負載面板程式"
-
-#: multiload/loadavg.c:106
-msgid ""
-"Released under the GNU general public license.\n"
-"\n"
-"Load Average Meter Applet."
-msgstr ""
-"依 GPL 使用條款發行。\n"
-"\n"
-"平均負載監測程式。"
-
-#: multiload/loadavg.c:134 multiload/loadavg.c:146
-#: multiload/loadavg_applet.desktop.in.h:1 multiload/main.c:236
-msgid "Load Average"
-msgstr "平均負載"
-
-#: multiload/load-graph.c:35 multiload/load-graph.c:53
-msgid "Load Graph"
-msgstr "負載圖"
-
-#: multiload/load-graph.c:574
-msgid "Interval:"
-msgstr "相距時間："
-
-#: multiload/load-graph.c:574 multiload/load-graph.c:766
-msgid "Size:"
-msgstr "大小："
-
-#: multiload/load-graph.c:574 multiload/load-graph.c:766
-msgid "Maximum:"
-msgstr "最大："
-
-#: multiload/load-graph.c:766
-msgid "Speed:"
-msgstr "速度："
-
-#: multiload/load-graph.c:805
-msgid "Use default properties"
-msgstr "使用預設內容"
-
-#: multiload/main.c:28
-msgid "User"
-msgstr "使用者"
-
-#: multiload/main.c:28
-msgid "System"
-msgstr "系統"
-
-#: multiload/main.c:28
-msgid "Nice"
-msgstr "優先值"
-
-#: multiload/main.c:28
-msgid "Idle"
-msgstr "閑置"
-
-#: multiload/main.c:32 multiload/main.c:40
-msgid "Other"
-msgstr "其它"
-
-#: multiload/main.c:32
-msgid "Shared"
-msgstr "共用"
-
-#: multiload/main.c:32
-msgid "Buffers"
-msgstr "緩衝"
-
-#: multiload/main.c:32 multiload/main.c:36 multiload/main.c:44
-msgid "Free"
-msgstr "未使用"
-
-#: multiload/main.c:36 multiload/main.c:44
-msgid "Used"
-msgstr "使用中"
-
-#: multiload/main.c:40
-msgid "SLIP"
-msgstr "SLIP"
-
-#: multiload/main.c:40
-msgid "PPP"
-msgstr "PPP"
-
-#: multiload/main.c:40
-msgid "ETH"
-msgstr "ETH"
-
-#: multiload/main.c:224 multiload/memload.c:77 multiload/memload.c:121
-msgid "Memory Load"
-msgstr "記憶體負載"
-
-#: multiload/main.c:228 multiload/swapload.c:77 multiload/swapload.c:121
-msgid "Swap Load"
-msgstr "交換檔負載"
-
-#: multiload/main.c:232 multiload/netload.c:73
-msgid "Net Load"
-msgstr "網絡負載"
-
-#: multiload/memload.c:44
-msgid "Memory Load Applet"
-msgstr "記憶體負載面板程式"
-
-#: multiload/memload.c:47
-msgid ""
-"Released under the GNU general public license.\n"
-"\n"
-"Memory Load Applet."
-msgstr ""
-"依 GPL 使用條款發行。\n"
-"\n"
-"記憶體負載面板程式。"
-
-#: multiload/netload.c:42
-msgid "Network Load Applet"
-msgstr "網絡負載面板程式"
-
-#: multiload/netload.c:45
-msgid ""
-"Released under the GNU general public license.\n"
-"\n"
-"Network Load Meter Applet."
-msgstr ""
-"依 GPL 使用條款發行。\n"
-"\n"
-"網絡負載監測面板程式。"
-
-#: multiload/netload.c:117
-msgid "Network Load"
-msgstr "網絡負載"
-
-#: multiload/swapload.c:44
-msgid "Swap Load Applet"
-msgstr "交換檔負載面板程式"
-
-#: multiload/swapload.c:47
-msgid ""
-"Released under the GNU general public license.\n"
-"\n"
-"Swap Load Meter Applet."
-msgstr ""
-"依 GPL 使用條款發行。\n"
-"\n"
-"交換檔負載程式。"
-
-#: odometer/odo.c:142 odometer/odometer_applet.desktop.in.h:2
-msgid "Odometer"
-msgstr "里程表"
-
-#: odometer/odo.c:144
-msgid "(C) 1999 The Free Software Foundation"
-msgstr "(C) 1999 the Free Software Foundation"
-
-#: odometer/odo.c:146
-msgid ""
-"a GNOME applet that tracks and measures the movements of your mouse pointer "
-"across the desktop."
-msgstr "一個 GNOME 面板程式，可以追蹤並記錄你滑鼠在桌面移動的距離。"
-
-#: odometer/odo.c:664
-msgid "Can't create odometer applet!"
-msgstr "無法建立里程表面板程式！"
-
-#: odometer/odo.c:680
-msgid "Reset"
-msgstr "重設"
-
-#: odometer/properties.c:244
-msgid "Odometer setting"
-msgstr "里程表設定"
-
-#: odometer/properties.c:255
-msgid "Use Metric"
-msgstr "使用公制"
-
-#: odometer/properties.c:261
-msgid "auto_reset"
-msgstr "自動重設"
-
-#: odometer/properties.c:267 tickastat/mod_news.c:1260
-msgid "enabled"
-msgstr "啟動"
-
-#: odometer/properties.c:273
-msgid "Digits number"
-msgstr "位數"
-
-#: odometer/properties.c:308
-msgid "Theme file:"
-msgstr "佈景主題檔："
-
-#: quicklaunch/quicklaunch.c:65
-msgid "The QuickLaunch Applet"
-msgstr "快速啟動面板程式"
-
-#: quicklaunch/quicklaunch.c:67
-msgid ""
-"This applet adds some pretty small icons for your launchers to your panel, "
-"like the windowish QuickLaunch toolbar, avoiding that annoying huge GNOME "
-"launchers."
-msgstr ""
-"這個面板程式加入一些很小的圖示在你面板\n"
-"成為啟動圖示，就像是快速啟動工具列，避免\n"
-"了巨大的 Gnome 啟動圖示。"
-
-#: quicklaunch/quicklaunch.c:136
-msgid "Launcher Properties"
-msgstr "啟動圖示內容"
-
-#: quicklaunch/quicklaunch.c:251
-msgid ""
-"drop launchers from\n"
-"the menu here"
-msgstr ""
-"從選單這裡\n"
-"放下啟動圖示"
-
-#: quicklaunch/quicklaunch.c:292
-msgid "Launcher properties..."
-msgstr "啟動圖示內容..."
-
-#: quicklaunch/quicklaunch.c:304
-msgid "Delete launcher"
-msgstr "刪除啟動圖示"
-
-#: quicklaunch/quicklaunch.c:413
-#, c-format
-msgid "File '%s' does not exist"
-msgstr "檔案 '%s' 不存在"
-
-#: quicklaunch/quicklaunch.c:422
-#, c-format
-msgid "Don't know how to make a launcher out of: '%s'"
-msgstr "不知道如何用 '%s' 產生啟動圖示"
-
-#: quicklaunch/quicklaunch.c:503
-msgid ""
-"Cannot create directory:\n"
-"~/.gnome/quicklaunch.\n"
-"Aborting"
-msgstr ""
-"無法建立目錄：\n"
-"~/.gnome/quicklaunch。\n"
-"放棄。"
-
-#: screenshooter/screenshooter_applet.c:48
-msgid "Screen-Shooter Applet"
-msgstr "畫面抓圖面板程式"
-
-#: screenshooter/screenshooter_applet.c:50
-msgid "Copyright (C) 1999 Tom Gilbert"
-msgstr "版權所有 (C) 1999 Tom Gilbert"
-
-#: screenshooter/screenshooter_applet.c:51
-msgid ""
-"A useful little screengrabber.\n"
-"The left/top button allows you to grab either:\n"
-"a window (click to select which one)\n"
-"or an area (click and drag to select a rectangle.)\n"
-"The right/bottom button will grab the entire desktop.\n"
-"Share and Enjoy ;)"
-msgstr ""
-"一個有用的小型畫面抓圖程式。\n"
-"使用左/上箭咀鍵可抓取：\n"
-"一個視窗（按滑鼠鍵選擇）\n"
-"或區域（按滑鼠鍵並拖曳範圍）\n"
-"使用右/下箭咀鍵以抓取整個桌面。\n"
-"歡迎使用 ;)"
-
-#: screenshooter/screenshooter_applet.c:61
-msgid "Visit the author's Website"
-msgstr "光臨作者的網站"
-
-#: screenshooter/screenshooter_applet.c:389
-msgid "Screen-Shooter Settings"
-msgstr "畫面抓圖設定"
-
-#: screenshooter/screenshooter_applet.c:395
-msgid "Capture WM decorations when grabbing a window"
-msgstr "當抓取視窗時，同時抓取視窗管理員的裝飾"
-
-#: screenshooter/screenshooter_applet.c:399
-msgid "Give audio feedback using the keyboard bell"
-msgstr "使用鍵盤鈴聲提供聲音回饋"
-
-#: screenshooter/screenshooter_applet.c:404
-msgid "Display Spurious Options (I got carried away)"
-msgstr "顯示圖像處理選項(我很感動)"
-
-#: screenshooter/screenshooter_applet.c:412
-msgid "Delay (seconds) before taking shot (only for entire desktop shots)"
-msgstr "在抓取畫面前延遲(秒)"
-
-#: screenshooter/screenshooter_applet.c:417
-msgid "Compressed Quality (JPEG/MIFF/PNG mode) High: good quality/large file"
-msgstr "壓縮的品質（JPEG/MIGG/PNG 模式）高：品質較佳/檔案較大"
-
-#: screenshooter/screenshooter_applet.c:428
-msgid "Create monochrome image"
-msgstr "建立黑白圖像"
-
-#: screenshooter/screenshooter_applet.c:431
-msgid "Invert colours in image"
-msgstr "在圖像中使用補色"
-
-#: screenshooter/screenshooter_applet.c:447
-msgid "Directory to save images in:"
-msgstr "儲存圖像的目錄："
-
-#: screenshooter/screenshooter_applet.c:471
-msgid "Image filename:"
-msgstr "圖像檔名："
-
-#: screenshooter/screenshooter_applet.c:486
-msgid "Show expanded filename"
-msgstr "顯示擴展的檔名"
-
-#. The % sign screws over xgettext ;)
-#: screenshooter/screenshooter_applet.c:508
-#, no-c-format
-msgid ""
-"Filetype is determined from filename suffix.\n"
-"Default filetype (if no extension or unrecognised extension) is miff.\n"
-"Recognised suffixes are:\n"
-"jpg, jpeg, bmp, cgm, cmyk, dib, eps, fig, fpx, gif, ico, map, miff, pcx,\n"
-"pict, pix, png, pnm, ppm, psd, rgb, rgba, rla, rle, tiff, tga, xbm, xpm,\n"
-"and several obscure ones. Try your luck with something interesting!\n"
-"Eg .html for a client-side image map. You'll get a .gif, .html, and a ."
-"shtml\n"
-"\n"
-"Recommendations:\n"
-"Small file, pretty good quality:   jpg, 75% quality\n"
-"Slightly larger file but lossless: png, as much compression as you like.\n"
-"- compressing pngs takes longer at higher ratios, but is still lossless"
-msgstr ""
-"檔案類別是由延伸檔名所決定的。\n"
-"預設的檔案類別（如果沒有或認不出延伸檔名）為 miff。\n"
-"已知的延伸檔名為：\n"
-"jpg、jpeg、bmp、cgm、cmyk、dib、eps、fig、fpx、gif、ico、map、miff、pcx、\n"
-"pict、pix、png、pnm、ppm、psd、rgb、rgba、rla、rle、tiff、tga、xbm、xpm\n"
-"與其它未知的。試試你的運氣以得到有趣的結果！\n"
-"例如輸入 .html 為客戶端 image map。你會得到一個 .gif、.html 與一個 .shtml\n"
-"\n"
-"建議：\n"
-"檔案小，品質不錯：jpg，75% 品質\n"
-"檔案較大但品質損失較少：png，任何你希望的壓縮率\n"
-"- 壓縮高比率的 png 要較長的時間，但仍然損失較少"
-
-#: screenshooter/screenshooter_applet.c:524
-msgid "View screenshot after saving it"
-msgstr "在儲存後檢視抓取的畫面"
-
-#: screenshooter/screenshooter_applet.c:531
-msgid "App to use for displaying screenshots:"
-msgstr "顯示抓取畫面要用的程式："
-
-#: screenshooter/screenshooter_applet.c:546
-msgid "Files, Apps"
-msgstr "檔案，應用程式"
-
-#: screenshooter/screenshooter_applet.c:554
-msgid "Create thumbnail of image too"
-msgstr "同時建立圖像的縮圖"
-
-#: screenshooter/screenshooter_applet.c:558
-msgid "Thumbnail Size (percentage of original)"
-msgstr "縮圖尺寸（本來尺寸的百分比）"
-
-#: screenshooter/screenshooter_applet.c:563
-msgid ""
-"Thumbnail compression (JPEG/MIFF/PNG mode) High: good quality/large file"
-msgstr "縮圖的壓縮率（JPEG/MIFF/PNG 模式）高：較好品質/檔案較大"
-
-#: screenshooter/screenshooter_applet.c:573
-msgid "Prefix to attach to thumbnail filename:"
-msgstr "縮圖檔案前置的名稱："
-
-#: screenshooter/screenshooter_applet.c:601
-msgid "Use high-quality intermediate for generating thumbnail"
-msgstr "使用高品質的中介步驟以產生縮圖"
-
-#: screenshooter/screenshooter_applet.c:610
-msgid ""
-"(This'll chug loads of CPU, but will prevent compressing the image twice if "
-"a\n"
-"lossy file format is used)\n"
-"Don't use this if you're using a lossless compression format, or if you "
-"cherish\n"
-"speed and don't mind imperfection in your thumbnails."
-msgstr ""
-"（這將會增加 CPU 的負載，但可以避免當使用高失真的格式時壓縮二次）\n"
-"當你使用不會失真的壓縮格式時不要用這個選項\n"
-"或你在意速度而不是縮圖品質時也不要使用。"
-
-#: screenshooter/screenshooter_applet.c:617
-msgid "Thumbnails"
-msgstr "縮圖"
-
-#: screenshooter/screenshooter_applet.c:640
-msgid ""
-"All post-processing, frill and spurious options will chug more CPU than a\n"
-"simple screenshot, due to the creation and then conversion of an "
-"intermediate\n"
-"image. Intensive operations may take some time on less spiffy CPUs."
-msgstr ""
-"所有後續的處理，修飾與裝飾選項都會用掉更多的 CPU 時間，\n"
-"這是因為要建立一個轉換的中介圖像檔。密集的處理在低速 CPU 可能耗時較久。"
-
-#: screenshooter/screenshooter_applet.c:651
-msgid "Normalize image (Span full range of color values to enhance contrast)"
-msgstr "標準化圖像（將使用的色彩擴散至整個色彩範圍以增強反差）"
-
-#: screenshooter/screenshooter_applet.c:655
-msgid "Equalize image (Perform histogram equalization)"
-msgstr "等化圖像（將圖像的亮度擴散至整個可使用的亮度範圍）"
-
-#: screenshooter/screenshooter_applet.c:663
-msgid "Enhance image (reduce noise)"
-msgstr "加強圖像品質"
-
-#: screenshooter/screenshooter_applet.c:666
-msgid "Despeckle Image (reduce spots)"
-msgstr "減少圖像斑點"
-
-#: screenshooter/screenshooter_applet.c:670
-msgid "Sharpen Image by what factor?"
-msgstr "要圖像清淅到哪個程度？"
-
-#: screenshooter/screenshooter_applet.c:675
-msgid "Rotate image clockwise by how many degrees?"
-msgstr "圖像要順時針旋轉幾度？"
-
-#: screenshooter/screenshooter_applet.c:680
-msgid "Adjust gamma"
-msgstr "調整 Gamma 值"
-
-#: screenshooter/screenshooter_applet.c:683
-msgid "Gamma value"
-msgstr "Gamma 值"
-
-#: screenshooter/screenshooter_applet.c:690
-msgid "Post Processing"
-msgstr "後續處理"
-
-#: screenshooter/screenshooter_applet.c:698
-msgid "Create frame around image"
-msgstr "在圖像周圍建立邊框"
-
-#: screenshooter/screenshooter_applet.c:702
-msgid "Frame Width (pixels)"
-msgstr "邊框寬度（畫素）"
-
-#: screenshooter/screenshooter_applet.c:710
-msgid "Mirror image vertically"
-msgstr "垂直鏡射圖像"
-
-#: screenshooter/screenshooter_applet.c:712
-msgid "Mirror image horizontally"
-msgstr "水平鏡射圖像"
-
-#: screenshooter/screenshooter_applet.c:715
-msgid "Emboss image"
-msgstr "浮雕圖像"
-
-#: screenshooter/screenshooter_applet.c:727
-msgid ""
-"When finished, send image and thumbnail filenames to script/program below"
-msgstr "當完成後，把圖像與縮圖檔名送到下面的命令稿或程式"
-
-#: screenshooter/screenshooter_applet.c:735
-msgid "Script or program to launch:"
-msgstr "要啟動的命令稿或程式"
-
-#: screenshooter/screenshooter_applet.c:756
-msgid ""
-"Script/program will be launched after image creation with the image "
-"filenames\n"
-"specified on the commandline as follows:\n"
-"{Script_Name} {Image_Filename} {Thumbnail_filename_if_specified}\n"
-"Hint: I use a script to update my website screenshot page.\n"
-"An example script should've been included in the tarball, or at my website."
-msgstr ""
-"要用於圖像建立後圖像檔名的命令稿或程式\n"
-"請以下列的方式指定命令行：\n"
-"[命令稿名稱] [圖像檔名] [縮圖檔名]\n"
-"提示：我使用一個命令稿更新網頁上的擷取畫面。\n"
-"在壓縮檔或我的網頁上應該附上了一個範例程式。"
-
-#: screenshooter/screenshooter_applet.c:765
-msgid "Frills"
-msgstr "修飾"
-
-#: screenshooter/screenshooter_applet.c:774
-msgid "Blur image"
-msgstr "使圖像模糊"
-
-#: screenshooter/screenshooter_applet.c:777
-msgid "Blur image by what factor?"
-msgstr "圖像模糊的程度？"
-
-#: screenshooter/screenshooter_applet.c:781
-msgid "Create Charcoal Effect"
-msgstr "建立碳筆畫效果"
-
-#: screenshooter/screenshooter_applet.c:785
-msgid "Charcoal by what factor?"
-msgstr "碳筆畫效果的程度？"
-
-#: screenshooter/screenshooter_applet.c:789
-msgid "Find Edges in Image"
-msgstr "找尋圖像的邊緣"
-
-#: screenshooter/screenshooter_applet.c:793
-msgid "Find edges by what factor?"
-msgstr "找尋圖像邊緣的精確度？"
-
-#: screenshooter/screenshooter_applet.c:797
-msgid "Implode Image"
-msgstr "破裂圖像"
-
-#: screenshooter/screenshooter_applet.c:801
-msgid "Implode by what factor?"
-msgstr "圖像破裂的程度？"
-
-#: screenshooter/screenshooter_applet.c:806
-msgid "Spurious"
-msgstr "圖像處理"
-
-#: screenshooter/screenshooter_applet.c:814
-msgid "Create Painted Effect"
-msgstr "建立油畫效果"
-
-#: screenshooter/screenshooter_applet.c:818
-msgid "Paint what radius around each pixel?"
-msgstr "油畫效果中畫筆的半徑？"
-
-#: screenshooter/screenshooter_applet.c:822
-msgid "Solarise Image"
-msgstr "令圖像過度曝光"
-
-#: screenshooter/screenshooter_applet.c:826
-msgid "Solarize factor?"
-msgstr "過度曝光的程度？"
-
-#: screenshooter/screenshooter_applet.c:830
-msgid "Spread image pixels"
-msgstr "擴散圖像畫素"
-
-#: screenshooter/screenshooter_applet.c:834
-msgid "Radius to around each pixel to spread?"
-msgstr "每個畫素要擴散的距離？"
-
-#: screenshooter/screenshooter_applet.c:838
-msgid "Swirl pixels. My favorite :-)"
-msgstr "漩渦畫素。我最喜歡的 :-)"
-
-#: screenshooter/screenshooter_applet.c:842
-msgid "Radius to swirl pixels around?)"
-msgstr "漩渦畫素周圍的半徑？"
-
-#: screenshooter/screenshooter_applet.c:846
-msgid "Spurious 2"
-msgstr "圖像處理 2"
-
-#: screenshooter/screenshooter_applet.c:965
-#: screenshooter/screenshooter_applet.c:968
-msgid "Grab a shot of a specific window or area"
-msgstr "在指定的視窗或區域抓取畫面"
-
-#: screenshooter/screenshooter_applet.c:966
-#: screenshooter/screenshooter_applet.c:969
-msgid "Grab a shot of your entire desktop"
-msgstr "抓取整個桌面"
-
-#: screenshooter/screenshooter_applet.c:1129
-msgid ""
-"There was a word expansion error\n"
-"I think you have stuck something funny in the directory box\n"
-"Screenshot aborted"
-msgstr ""
-"發生文字擴展錯誤\n"
-"可能你在目錄對話盒中填入了奇怪的東西\n"
-"放棄擷取畫面"
-
-#: screenshooter/screenshooter_applet.c:1145
-msgid ""
-"There was a word expansion error\n"
-"I think you have stuck something funny in the filename box\n"
-"Screenshot aborted"
-msgstr ""
-"發生文字擴展錯誤\n"
-"可能你在檔案名稱對話盒中填入了奇怪的東西\n"
-"放棄擷取畫面"
-
-#: screenshooter/screenshooter_applet.c:1493
-msgid ""
-"There was a word expansion error\n"
-"I think you have stuck something funny in the filename box"
-msgstr ""
-"發生文字擴展錯誤\n"
-"可能你在檔案名稱對話盒中填入了奇怪的東西"
-
-#: screenshooter/screenshooter_applet.c:1505
-#, c-format
-msgid ""
-"The specified filename:\n"
-"%s\n"
-"expands to:\n"
-"%s\n"
-"when passed to a shell"
-msgstr ""
-"送到命令殼時，指定的檔名：\n"
-"%s\n"
-"將擴展成：\n"
-"%s"
-
-#: slashapp/properties.c:293
-msgid "Site"
-msgstr "網站"
-
-#: slashapp/properties.c:302
-msgid "Slashdot"
-msgstr "Slashdot"
-
-#: slashapp/properties.c:312
-msgid "Gnotices"
-msgstr "Gnotices"
-
-#: slashapp/properties.c:322 slashapp/slashapp.c:100
-msgid "Articles"
-msgstr "文章"
-
-#: slashapp/properties.c:353
-msgid "Delay between articles (10 = 1 sec):"
-msgstr "文章之間延遲（10 = 1 秒）："
-
-#: slashapp/properties.c:367
-msgid "Use Proxy"
-msgstr "使用代理伺服器"
-
-#: slashapp/properties.c:378
-msgid "Proxy Host: "
-msgstr "代理伺服器位址："
-
-#: slashapp/properties.c:395
-msgid "Proxy Port: "
-msgstr "代理伺服器連接埠："
-
-#: slashapp/properties.c:408
-msgid "(These settings do not take effect until a refresh)"
-msgstr "（這些設定要重新整理才會生效）"
-
-#: slashapp/properties.c:421 tickastat/properties.c:434
-msgid "Scrolling"
-msgstr "捲動"
-
-#: slashapp/properties.c:430 tickastat/properties.c:443
-msgid "Smooth scroll"
-msgstr "平滑捲動"
-
-#: slashapp/properties.c:436 tickastat/properties.c:449
-msgid "Smooth type"
-msgstr "順滑顯示文字"
-
-#: slashapp/properties.c:442 tickastat/properties.c:455
-msgid "Speed"
-msgstr "速度"
-
-#: slashapp/properties.c:455 tickastat/properties.c:468
-msgid "Delay when wrapping text:"
-msgstr "跳行時延遲（秒）："
-
-#: slashapp/properties.c:473 tickastat/properties.c:486
-msgid "Scroll speed between lines (Smooth scroll):"
-msgstr "每行之間的捲動速度（平滑捲動）："
-
-#: slashapp/slashapp.c:114
-msgid "Loading headlines..."
-msgstr "載入標題中..."
-
-#: slashapp/slashapp.c:152
-#, c-format
-msgid "Creating user directory: %s\n"
-msgstr "建立使用者目錄：%s\n"
-
-#: slashapp/slashapp.c:154
-#, c-format
-msgid "Unable to create user directory: %s\n"
-msgstr "無法建立使用者目錄：%s\n"
-
-#: slashapp/slashapp.c:223 tickastat/main.c:188
-#, c-format
-msgid "%d.%d.%d"
-msgstr "%d.%d.%d"
-
-#: slashapp/slashapp.c:225
-msgid "Justin Maurer <justin@helixcode.com>"
-msgstr "Justin Maurer <justin@helixcode.com>"
-
-#: slashapp/slashapp.c:227
-msgid "Craig Small <csmall@eye-net.com.au>"
-msgstr "Craig Small <csmall@eye-net.com.au>"
-
-#: slashapp/slashapp.c:228
-msgid "Frederic Devernay <devernay@istar.fr>"
-msgstr "Frederic Devernay <devernay@istar.fr>"
-
-#: slashapp/slash_applet.desktop.in.h:2 slashapp/slashapp.c:231
-msgid "SlashApp"
-msgstr "SlashApp"
-
-#: slashapp/slashapp.c:232
-msgid "(C) 1998-2000"
-msgstr "(C) 1998-2000"
-
-#: slashapp/slashapp.c:234
-msgid "A stock ticker-like applet\n"
-msgstr "一個像報告股市行情的面板程式\n"
-
-#: slashapp/slashapp.c:253
-msgid "SlashApp Article List"
-msgstr "SlashApp 文章列表"
-
-#: slashapp/slashapp.c:344
-msgid "No articles"
-msgstr "沒有文章"
-
-#: slashapp/slashapp.c:405 slashapp/slashapp.c:414
-msgid "Unable to parse document\n"
-msgstr "無法分析文件\n"
-
-#: slashapp/slashapp.c:406 slashapp/slashapp.c:415
-msgid "Can't parse XML. Net connection down?"
-msgstr "無法分析 XML。是否未接通網絡？"
-
-#: slashapp/slashapp.c:445
-msgid "Unable to initialize request. Shouldn't happen\n"
-msgstr "無法初始化要求。這不應該發生\n"
-
-#: slashapp/slashapp.c:474
-msgid "Unable to prepare request.\n"
-msgstr "無法準備要求\n"
-
-#: slashapp/slashapp.c:478
-msgid "Unable to process request.\n"
-msgstr "無法處理要求\n"
-
-#: slashapp/slashapp.c:517
-msgid "No title"
-msgstr "沒有標題"
-
-#: slashapp/slashapp.c:518
-msgid "No url"
-msgstr "沒有網址"
-
-#: sound-monitor/main.c:29
-msgid "Sound Monitor Applet"
-msgstr "音效監控面板程式"
-
-#: sound-monitor/main.c:30
-msgid "(C) 2000 John Ellis"
-msgstr "(C) 2000 John Ellis"
-
-#: sound-monitor/main.c:32
-msgid ""
-"Sound monitor interface to Esound\n"
-"\n"
-"Released under the GNU general public license."
-msgstr ""
-"Esound 的聲音監控介面\n"
-"\n"
-"依 GPL 使用條款發行。"
-
-#: sound-monitor/main.c:77
-msgid "Place Esound in standby"
-msgstr "Esound 進入待命模式"
-
-#: sound-monitor/main.c:81
-msgid "Resume Esound"
-msgstr "繼續 Esound"
-
-#: sound-monitor/main.c:85 sound-monitor/main.c:262
-msgid "Start Esound"
-msgstr "啟動 Esound"
-
-#: sound-monitor/main.c:255
-msgid "Manager..."
-msgstr "管理者..."
-
-#: sound-monitor/manager.c:934 sound-monitor/manager.c:1151
-msgid "Length"
-msgstr "長度"
-
-#: sound-monitor/manager.c:939
-msgid "Time"
-msgstr "時間"
-
-#: sound-monitor/manager.c:1150 sound-monitor/manager.c:1151
-msgid "Id"
-msgstr "Id"
-
-#: sound-monitor/manager.c:1150 sound-monitor/manager.c:1151
-msgid "Rate"
-msgstr "速率"
-
-#: sound-monitor/manager.c:1150 sound-monitor/manager.c:1151
-msgid "Bits"
-msgstr "位元"
-
-#: sound-monitor/manager.c:1150 sound-monitor/manager.c:1151
-msgid "Format"
-msgstr "格式"
-
-#: sound-monitor/manager.c:1150 sound-monitor/manager.c:1151
-#: sound-monitor/manager.c:1283 sound-monitor/manager.c:1371
-msgid "Volume"
-msgstr "音量"
-
-#: sound-monitor/manager.c:1151
-msgid "P"
-msgstr "P"
-
-#: sound-monitor/manager.c:1151
-msgid "L"
-msgstr "L"
-
-#: sound-monitor/manager.c:1175
-msgid "Sound Monitor - Manager"
-msgstr "音效監控 - 管理程式"
-
-#. server info
-#: sound-monitor/manager.c:1200
-msgid "Server information:"
-msgstr "伺服程式資料："
-
-#: sound-monitor/manager.c:1203
-msgid "Server"
-msgstr "伺服程式"
-
-#. stream info
-#: sound-monitor/manager.c:1223
-msgid "Connected streams:"
-msgstr "已連接的串流："
-
-#: sound-monitor/manager.c:1226
-msgid "Streams"
-msgstr "串流"
-
-#: sound-monitor/manager.c:1299 sound-monitor/manager.c:1387
-msgid "Balance"
-msgstr "平衡"
-
-#. sample info
-#: sound-monitor/manager.c:1305
-msgid "Cached samples: (select to play)"
-msgstr "暫存的音效樣本：（請選擇並播放）"
-
-#: sound-monitor/manager.c:1308
-msgid "Samples"
-msgstr "音效樣本"
-
-#: sound-monitor/properties.c:135
-msgid ""
-"You have enabled the \"Monitor sound input\" option.\n"
-"\n"
-"If your sound card is not fully 100% FULL DUPLEX (can do input and output "
-"simultaneously),\n"
-"then this may touch bugs in sound drivers/esound that may hang the system.\n"
-"\n"
-"You have been warned!"
-msgstr ""
-"你已經啟動了「監控音效輸入」選項。\n"
-"\n"
-"如果你的音效卡不是完整的全雙工支援（可以同時輸出/入聲音），\n"
-"這可能會觸發音效驅動程式的錯誤，並導致當機。\n"
-"\n"
-"請注意以上警告！"
-
-#: sound-monitor/properties.c:333
-msgid "Sound Monitor Applet Settings"
-msgstr "音效監控面板程式設定"
-
-#: sound-monitor/properties.c:338
-msgid "Peak indicator"
-msgstr "峰值指示器"
-
-#: sound-monitor/properties.c:347
-msgid "off"
-msgstr "關"
-
-#: sound-monitor/properties.c:354
-msgid "active"
-msgstr "啟動"
-
-#: sound-monitor/properties.c:361
-msgid "smooth"
-msgstr "平滑"
-
-#: sound-monitor/properties.c:368
-msgid "Peak indicator falloff speed"
-msgstr "峰值指示器下落速度"
-
-#: sound-monitor/properties.c:385
-msgid "Scope (scale 1:X, where X = ? )"
-msgstr "範圍（比例 1:X，X = ?）"
-
-#: sound-monitor/properties.c:402
-msgid "Connect points in scope"
-msgstr "範圍的連接點"
-
-#: sound-monitor/properties.c:408
-msgid "Screen refresh (frames per second)"
-msgstr "畫面更新速度（每秒頁框數）"
-
-#: sound-monitor/properties.c:489
-msgid "ESD host to monitor:"
-msgstr "要監控的 ESD 主機："
-
-#: sound-monitor/properties.c:502
-msgid "Monitor sound input (only use if sound card is FULL DUPLEX)"
-msgstr "監控音效輸入（只有全雙工音效卡才能使用）"
-
-#: tickastat/main.c:46
-msgid "Tick-a-Stat event log"
-msgstr "Tick-a-Stat 事件紀錄"
-
-#: tickastat/main.c:129
-msgid "%Y%m%d-%H-%M-%S"
-msgstr "%Y%m%d-%H-%M-%S"
-
-#: tickastat/main.c:131
-msgid "%m-%d-%Y %H:%M:%S"
-msgstr "%Y-%m-%d %H:%M:%S"
-
-#: tickastat/main.c:194 tickastat/tickastat_applet.desktop.in.h:2
-msgid "Tick-a-Stat"
-msgstr "Tick-a-Stat"
-
-#: tickastat/main.c:195
-msgid "(C) 1999 John Ellis"
-msgstr "(C) 1999 John Ellis"
-
-#: tickastat/main.c:197
-msgid "A ticker to display various information and statistics.\n"
-msgstr "顯示不同資訊與統計的顯示器。\n"
-
-#: tickastat/main.c:289
-#, c-format
-msgid "unable to create user directory: %s\n"
-msgstr "無法建立使用者目錄：%s\n"
-
-#: tickastat/main.c:333
-msgid "The unique information and status ticker."
-msgstr "獨特的資訊與狀態顯示器。"
-
-#: tickastat/main.c:344
-msgid "Event log..."
-msgstr "事件紀錄..."
-
-#: tickastat/mod_coredump.c:91
-msgid "Core dump information (Tick-a-Stat)"
-msgstr "核心傾印資訊 (Tick-a-Stat)"
-
-#: tickastat/mod_coredump.c:240
-msgid "Core dump module (Tick-A-Stat)"
-msgstr "核心傾印模組 (Tick-a-Stat)"
-
-#: tickastat/mod_coredump.c:241
-msgid ""
-"The core dump module is\n"
-"processing a core file..."
-msgstr ""
-"核心傾印模組\n"
-"正在處理 core 檔案..."
-
-#: tickastat/mod_coredump.c:469
-msgid "Core Dump Module"
-msgstr "核心傾印模組"
-
-#: tickastat/mod_coredump.c:476 tickastat/mod_loadavg.c:518
-#: tickastat/mod_news.c:1224 tickastat/mod_tail.c:419 tickastat/mod_test.c:133
-msgid "Enable this module"
-msgstr "啟動此模組"
-
-#: tickastat/mod_coredump.c:482
-msgid "Show backtrace dialog on new core files"
-msgstr "顯示新的 core 檔的 backtrace 對話窗"
-
-#: tickastat/mod_coredump.c:492
-msgid "Path to monitor:"
-msgstr "要監視的路徑："
-
-#: tickastat/mod_coredump.c:621
-msgid "Core dump catcher"
-msgstr "核心傾印捕捉器"
-
-#: tickastat/mod_coredump.c:622
-msgid ""
-"This module monitors a path for core dumps, if one is\n"
-" found it is time stamped and a backtrace logged (using gdb)."
-msgstr ""
-"這個模組監視某個路徑中的 core 檔。如果有找到，\n"
-"將會紀錄時間及透過 gdb 紀錄它的 backtrace。"
-
-#: tickastat/mod_loadavg.c:108
-msgid "Load Average information (Tick-a-Stat)"
-msgstr "平均負載資訊 (Tick-a-Stat)"
-
-#: tickastat/mod_loadavg.c:325
-msgid "The Load average is very high."
-msgstr "平均負載相當高。"
-
-#: tickastat/mod_loadavg.c:326
-msgid "Load average is at a critical point, help me!"
-msgstr "平均負載在臨界點，救命！"
-
-#: tickastat/mod_loadavg.c:511
-msgid "Load Average Module"
-msgstr "平均負載模組"
-
-#: tickastat/mod_loadavg.c:528
-msgid "Check every:"
-msgstr "檢查間隔："
-
-#: tickastat/mod_loadavg.c:540
-msgid "Seconds"
-msgstr "秒"
-
-#. Warning dialog
-#: tickastat/mod_loadavg.c:546
-msgid "Warning options"
-msgstr "警告選項"
-
-#: tickastat/mod_loadavg.c:555 tickastat/mod_loadavg.c:600
-msgid "Show pop-up dialog for this event"
-msgstr "對這個事件顯示跳出對話框"
-
-#: tickastat/mod_loadavg.c:565 tickastat/mod_loadavg.c:610
-msgid "Load average threshhold:"
-msgstr "平均負載的限制："
-
-#: tickastat/mod_loadavg.c:577 tickastat/mod_loadavg.c:622
-msgid "Text to display:"
-msgstr "要顯示的文字："
-
-#. Danger dialog
-#: tickastat/mod_loadavg.c:591
-msgid "Alert options"
-msgstr "警告選項"
-
-#: tickastat/mod_loadavg.c:780
-msgid "Load average monitor"
-msgstr "平均負載監控"
-
-#: tickastat/mod_loadavg.c:781
-msgid ""
-"This module monitors the system load average,\n"
-" and displays warning when it rises above certain points."
-msgstr ""
-"這個模組監視系統的平均負載，\n"
-"並在提升到特定點時提出警告。"
-
-#: tickastat/mod_news.c:548
-msgid "script \""
-msgstr "命令稿 \""
-
-#: tickastat/mod_news.c:549
-msgid "Tick-a-Stat script encountered an error:\n"
-msgstr "Tick-a-Stat 命令稿發現一個錯誤：\n"
-
-#: tickastat/mod_news.c:1205
-msgid "Enabled"
-msgstr "啟動"
-
-#: tickastat/mod_news.c:1207
-msgid "Line delay"
-msgstr "每行延遲"
-
-#: tickastat/mod_news.c:1208
-msgid "Update interval"
-msgstr "更新的周期"
-
-#: tickastat/mod_news.c:1209
-msgid "D"
-msgstr "D"
-
-#: tickastat/mod_news.c:1210
-msgid "T"
-msgstr "T"
-
-#: tickastat/mod_news.c:1211
-msgid "I"
-msgstr "I"
-
-#: tickastat/mod_news.c:1212
-msgid "B"
-msgstr "B"
-
-#: tickastat/mod_news.c:1217
-msgid "News and Information Module"
-msgstr "新聞與資訊模組"
-
-#. This is the number of lines shown in the display.
-#: tickastat/mod_news.c:1271
-msgid "Line (s):"
-msgstr "行數："
-
-#. The update interval in minutes.
-#: tickastat/mod_news.c:1285
-msgid "Update (m):"
-msgstr "更新(分鐘)："
-
-#: tickastat/mod_news.c:1303
-msgid "body"
-msgstr "主體"
-
-#: tickastat/mod_news.c:1308
-msgid "image"
-msgstr "圖像"
-
-#: tickastat/mod_news.c:1313
-msgid "topic"
-msgstr "標題"
-
-#: tickastat/mod_news.c:1318
-msgid "date"
-msgstr "日期"
-
-#: tickastat/mod_news.c:1323
-msgid "Show:"
-msgstr "顯示："
-
-#: tickastat/mod_news.c:1506
-msgid "News and information ticker"
-msgstr "新聞與資訊模組"
-
-#: tickastat/mod_news.c:1507
-msgid "This module can display news and other information."
-msgstr "這個模組可以顯示新聞與其它資訊。"
-
-#: tickastat/mod_tail.c:77
-msgid "File tail view file (Tick-a-Stat)"
-msgstr "檢視檔案尾端 (Tick-a-Stat)"
-
-#: tickastat/mod_tail.c:87
-msgid "no file specified"
-msgstr "沒有指定檔案"
-
-#: tickastat/mod_tail.c:134
-msgid "File tail information (Tick-a-Stat)"
-msgstr "檔案尾端資訊 (Tick-a-Stat)"
-
-#: tickastat/mod_tail.c:143
-msgid "File tail for "
-msgstr "檔案尾端給 "
-
-#: tickastat/mod_tail.c:412
-msgid "File Tail Module"
-msgstr "檔案尾端模組"
-
-#: tickastat/mod_tail.c:429
-msgid "Path to tail:"
-msgstr "要 tail 的路徑："
-
-#: tickastat/mod_tail.c:434
-msgid "Choose a file to tail"
-msgstr "選擇一個要看的檔案"
-
-#: tickastat/mod_tail.c:443
-msgid "Show pop up dialog for new lines."
-msgstr "對新的行顯示彈出式對話窗。"
-
-#: tickastat/mod_tail.c:561
-msgid "File tailer"
-msgstr "檔案尾端顯示器"
-
-#: tickastat/mod_tail.c:562
-msgid ""
-"This module monitors a file for appended text,\n"
-" and prints it. Useful for log files."
-msgstr ""
-"這個模組檢視並印出檔案增加的文字，\n"
-"對紀錄檔很有用。"
-
-#: tickastat/mod_test.c:57
-msgid "Testing line from test module :)"
-msgstr "這是測試模組的輸出 :)"
-
-#: tickastat/mod_test.c:58
-msgid "You clicked on me"
-msgstr "你按下了我"
-
-#: tickastat/mod_test.c:126 tickastat/mod_test.c:218
-msgid "Test Module"
-msgstr "測試模組"
-
-#: tickastat/mod_test.c:219
-msgid "This is the test module's description line."
-msgstr "這是測試模組的說明行。"
-
-#. left pane will be filled in select cb
-#: tickastat/properties.c:381
-msgid "Modules"
-msgstr "模組"
-
-#: tickastat/properties.c:390
-msgid "Event Log"
-msgstr "事件紀錄"
-
-#: tickastat/properties.c:399
-msgid "Enable logging of events"
-msgstr "啟動事件紀錄"
-
-#: tickastat/properties.c:409
-msgid "Log path:"
-msgstr "紀錄路徑："
-
-#: tickastat/properties.c:414
-msgid "Choose a log file"
-msgstr "選擇紀錄檔"
-
-#: tickastat/properties.c:513
-msgid "Width:"
-msgstr "寬度："
-
-#: tickastat/properties.c:528
-msgid "Use all room on panel"
-msgstr "使用面板的全部空間"
-
-#: tickastat/properties.c:541
-msgid "Height:"
-msgstr "高度："
-
-#: tickastat/properties.c:556
-msgid "Use panel size hint"
-msgstr "使用面板大小提示"
-
-#: webcontrol/webcontrol.c:47
-msgid "The Web Browser Controller"
-msgstr "網頁瀏覽器控制器"
-
-#: webcontrol/webcontrol.c:49
-msgid "(C) 2000 the Free Software Foundation"
-msgstr "(C) 2000 the Free Software Foundation"
-
-#: webcontrol/webcontrol.c:51
-msgid ""
-"An applet to launch URLs in a web browser, search using various web sites "
-"and have a ton of fun!"
-msgstr ""
-"一個可開啟瀏覽器進入網址的面板程式，同時能利用不同的搜尋器找出網站。別有一番"
-"樂趣！"
-
-#: webcontrol/webcontrol.c:242
-msgid "URL:"
-msgstr "網址："
-
-#: webcontrol/webcontrol.c:265
-msgid " GO "
-msgstr "瀏覽"
-
-#: webcontrol/webcontrol.c:284
-msgid " Clear "
-msgstr "清除"
-
-#: webcontrol/webcontrol.c:312
-msgid "Launch new window"
-msgstr "開啟新視窗"
-
-#: whereami/whereami.c:47 whereami/whereami_applet.desktop.in.h:2
-msgid "Where Am I?"
-msgstr "我在哪兒？"
-
-#: whereami/whereami.c:48
-msgid "Copyright 1999 John Kodis"
-msgstr "版權所有 1999 John Kodis"
-
-#: whereami/whereami.c:49
-msgid ""
-"A cursor position reporting applet.\n"
-"= Clicking mouse button 1 grabs the cursor.\n"
-"= Dragging with mouse button 1 held down shows the size of the region."
-msgstr ""
-"鼠標位置回報面板程式。\n"
-"= 按下滑鼠鍵 1 以取得鼠標。\n"
-"= 以滑鼠鍵 1 拖曳顯示範圍大小。"
-
-#: whereami/whereami.c:210
-msgid "whereami_applet"
-msgstr "「我在哪」面板程式"
-
-#: cdplayer/cdplayer_applet.desktop.in.h:1
-msgid "CD Player"
-msgstr "CD 播放器"
-
-#: gweather/gweather.desktop.in.h:2
-msgid "GNOME weather monitor applet"
-msgstr "GNOME 天氣監控面板程式"
-
-#: tickastat/tickastat_applet.desktop.in.h:1
-msgid "Info and status ticker"
-msgstr "資訊狀態指示器"
-
-#: clipboard/clipboard_applet.desktop.in.h:1
-msgid "Clipboard"
-msgstr "剪貼簿"
-
-#: clipboard/clipboard_applet.desktop.in.h:2
-msgid "Copy multiple selections into a persistant clipboard"
-msgstr "將所選擇的內容複製到剪貼簿內"
-
-#: asclock/asclock_applet.desktop.in.h:1
-msgid "AfterStep Clock"
-msgstr "AfterStep 時鐘"
-
-#: asclock/asclock_applet.desktop.in.h:2
-msgid "Just another clock"
-msgstr "另類時鐘"
-
-#: drivemount/drivemount_applet.desktop.in.h:1
-msgid "Drive Mount"
-msgstr "檔案系統掛載"
-
-#: drivemount/drivemount_applet.desktop.in.h:2
-msgid "Mount and unmount drives"
-msgstr "掛上/卸下檔案系統"
-
-#: cpumemusage/cpumemusage_applet.desktop.in.h:1
-msgid "CPU/MEM usage"
-msgstr "CPU/記憶體使用量"
-
-#: cpumemusage/cpumemusage_applet.desktop.in.h:2
-msgid "CPU/MEM usage meter"
-msgstr "CPU/記憶體使用量指示器"
-
-#: battery/battery_applet.desktop.in.h:1
-msgid "Battery Charge Monitor"
-msgstr "電池電量監測器"
-
-#: another_clock/another_clock_applet.desktop.in.h:1
-msgid "An analog clock similar to that in CDE panel"
-msgstr "一個跟 CDE 面板上的時鐘相似的時鐘"
-
-#: another_clock/another_clock_applet.desktop.in.h:2
-msgid "Another Clock"
-msgstr "另類時鐘"
-
-#: gkb-new/gkb_applet.desktop.in.h:1
-msgid "GKB Keyboard Switcher"
-msgstr "GNOME 鍵盤切換"
-
-#: gkb-new/gkb_applet.desktop.in.h:2
-msgid "GKB, the Gnome Keyboard Layout Switcher Applet"
-msgstr "GKB，GNOME 鍵盤配置切換面板程式"
-
-#: clockmail/clockmail_applet.desktop.in.h:1
-msgid "Clock and Mailcheck"
-msgstr "時鐘/來信通知"
-
-#: clockmail/clockmail_applet.desktop.in.h:2
-msgid "Displays new mail and time"
-msgstr "顯示來信通知及時間"
-
-#: slashapp/slash_applet.desktop.in.h:1
-msgid "Show last news from slashdot.org"
-msgstr "顯示最新的 slashdot.org 新聞"
-
-#: multiload/netload_applet.desktop.in.h:1
-msgid "NetLoad"
-msgstr "網絡負載"
-
-#: multiload/netload_applet.desktop.in.h:2
-msgid "Network Activity Meter"
-msgstr "網絡負載指示器"
-
-#: multiload/memload_applet.desktop.in.h:1
-msgid "MemLoad"
-msgstr "記憶體負載"
-
-#: multiload/memload_applet.desktop.in.h:2
-msgid "Memory Load Meter"
-msgstr "記憶體負載指示器"
-
-#: multiload/swapload_applet.desktop.in.h:1
-msgid "Swap Load Meter"
-msgstr "交換檔負載指示器"
-
-#: multiload/swapload_applet.desktop.in.h:2
-msgid "SwapLoad"
-msgstr "交換檔記憶負載"
 
 #: multiload/cpuload_applet.desktop.in.h:1
 msgid "CPU Load Meter"
@@ -4766,221 +3089,524 @@ msgstr "CPU 負載指示器"
 msgid "CPULoad"
 msgstr "CPU 負載"
 
-#: mini-commander/src/mini-commander_applet.desktop.in.h:1
-msgid "Mini-Commander"
-msgstr "小型命令窗"
+#: multiload/cpuload.c:39
+msgid "CPU Load"
+msgstr "CPU 負載"
 
-#: whereami/whereami_applet.desktop.in.h:1
-msgid "Shows Cursor Position"
-msgstr "顯示鼠標位置"
+#: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:1
+#, fuzzy
+msgid "A system load indicator"
+msgstr "峰值指示器"
 
-#: modemlights/modemlights_applet.desktop.in.h:1
-msgid "Modem Lights"
-msgstr "數據機燈號"
-
-#: modemlights/modemlights_applet.desktop.in.h:2
-msgid "Show modem status"
-msgstr "顯示數據機狀態"
-
-#: fifteen/fifteen_applet.desktop.in.h:1
-msgid "Fifteen"
-msgstr "'十五' 智慧拼圖"
-
-#: fifteen/fifteen_applet.desktop.in.h:2
-msgid "Fifteen cells game"
-msgstr "'十五' 智慧拼圖"
-
-#: charpick/charpick_applet.desktop.in.h:2
-msgid "Character picker"
-msgstr "特殊字元選擇程式"
-
-#: sound-monitor/sound-monitor_applet.desktop.in.h:1
-msgid "Sound Monitor"
+#: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:2
+#, fuzzy
+msgid "System Monitor"
 msgstr "音效監控"
 
-#: sound-monitor/sound-monitor_applet.desktop.in.h:2
-msgid "Sound Monitor for Esound"
-msgstr "音效監控（給 Esound 使用）"
+#: multiload/GNOME_MultiloadApplet.xml.h:3
+msgid "Run detailed system monitor"
+msgstr ""
 
-#: webcontrol/webcontrol_applet.desktop.in.h:1
-msgid "WebControl"
-msgstr "小型網頁控制"
+#: multiload/loadavg.c:94 multiload/loadavg_applet.desktop.in.h:1
+msgid "Load Average"
+msgstr "平均負載"
 
-#: mixer/mixer_applet.desktop.in.h:1
-msgid "Audio Mixer"
-msgstr "音量調整程式"
+#: multiload/loadavg_applet.desktop.in.h:2
+msgid "Load Average Applet"
+msgstr "平均負載面板程式"
 
-#: mixer/mixer_applet.desktop.in.h:2
-msgid "Mixer"
-msgstr "音量調整程式"
+#: multiload/main.c:53
+#, fuzzy
+msgid "System Monitor Applet"
+msgstr "音效監控面板程式"
 
-#: geyes/geyes_applet.desktop.in.h:1
-msgid "An applet that watches your mouse."
-msgstr "一個會因應鼠標位置移動的面板程式。"
+#: multiload/main.c:55
+#, fuzzy
+msgid ""
+"Released under the GNU General Public License.\n"
+"\n"
+"A system load monitor capable of displaying graphs for CPU, ram, and swap "
+"file use, plus network traffic."
+msgstr ""
+"依 GPL 使用條款發行。\n"
+"監控磁碟的使用量與剩餘空間。"
 
-#: quicklaunch/quicklaunch_applet.desktop.in.h:1
-msgid "QuickLaunch"
-msgstr "快速啟動"
+#: multiload/main.c:174 multiload/properties.c:404
+#, fuzzy
+msgid "Processor"
+msgstr "氣壓："
 
-#: quicklaunch/quicklaunch_applet.desktop.in.h:2
-msgid "Small Launchers "
-msgstr "小型啟動圖示"
+#: multiload/main.c:176 multiload/properties.c:410
+#, fuzzy
+msgid "Memory"
+msgstr "記憶體負載"
 
-#: odometer/odometer_applet.desktop.in.h:1
-msgid "Mouse movements counter"
-msgstr "鼠標移動計數器"
+#: multiload/main.c:180 multiload/properties.c:422
+#, fuzzy
+msgid "Swap File"
+msgstr "音效樣本"
 
-#: screenshooter/screenshooter_applet.desktop.in.h:1
-msgid "Screen Shooter is a screenshot grabber"
-msgstr "「畫面抓圖」是一個畫面擷取程式"
+#: multiload/main.c:182
+#, fuzzy
+msgid "Resource"
+msgstr "重設"
 
-#: screenshooter/screenshooter_applet.desktop.in.h:2
-msgid "ScreenShooter"
-msgstr "畫面抓圖"
-
-#: diskusage/diskusage_applet.desktop.in.h:1
-msgid "Disk Usage"
-msgstr "磁碟使用量"
-
-#: diskusage/diskusage_applet.desktop.in.h:2
-msgid "Disk usage meter"
-msgstr "磁碟使用量指示器"
-
-#: life/life_applet.desktop.in.h:1
-msgid "Game of Life"
-msgstr "生命遊戲"
-
-#: life/life_applet.desktop.in.h:2
-msgid "The Game of Life (to waste your time)"
-msgstr "生命遊戲（用來消磨時間）"
-
-#: gtik/gtik2_applet.desktop.in.h:1
-msgid "GNOME Stock Ticker"
-msgstr "GNOME 股市行情指示器"
-
-#: gtik/gtik2_applet.desktop.in.h:2
-msgid "GNOME Stock Ticker Panel Applet"
-msgstr "GNOME 股市行情面板程式"
-
-#: jbc/jbc_applet.desktop.in.h:1
-msgid "Displays the time in binary representation"
-msgstr "使用二進位來顯示時間"
-
-#: jbc/jbc_applet.desktop.in.h:2
-msgid "JBC Binary Clock"
-msgstr "Jon 的二進位時鐘"
-
-#. help
-#: sound-monitor/pvd/esdpvd.c:459
+#: multiload/main.c:194
 #, c-format
-msgid "ESounD Persistent Volume Daemon version %s\n"
-msgstr "ESounD 音量伺服程式版本 %s\n"
+msgid ""
+"%s:\n"
+"%d%% in use"
+msgstr ""
 
-#: sound-monitor/pvd/esdpvd.c:460
-msgid "options:\n"
-msgstr "選項：\n"
+#: multiload/memload_applet.desktop.in.h:1
+msgid "MemLoad"
+msgstr "記憶體負載"
 
-#: sound-monitor/pvd/esdpvd.c:461
-msgid "  -n, --noX     Allow to run without X server\n"
-msgstr "  -n, --noX     可在沒有 X 的情況下執行\n"
+#: multiload/memload_applet.desktop.in.h:2
+msgid "Memory Load Meter"
+msgstr "記憶體負載指示器"
 
-#: webcontrol/properties.c:205
-msgid "Are you sure you want to remove this browser?"
-msgstr "你是否確定要移除此瀏覽器？"
+#: multiload/memload.c:39
+msgid "Memory Load"
+msgstr "記憶體負載"
 
-#: webcontrol/properties.c:245
-msgid "Configure Browser"
-msgstr "設定瀏覽器"
+#: multiload/netload_applet.desktop.in.h:1
+msgid "NetLoad"
+msgstr "網絡負載"
 
-#: webcontrol/properties.c:253
-msgid "Browser Name:"
-msgstr "瀏覽器名稱："
+#: multiload/netload_applet.desktop.in.h:2
+msgid "Network Activity Meter"
+msgstr "網絡負載指示器"
 
-#: webcontrol/properties.c:270
-msgid "Browser Command:"
-msgstr "瀏覽器指令："
+#: multiload/netload.c:38
+msgid "Net Load"
+msgstr "網絡負載"
 
-#: webcontrol/properties.c:287
-msgid "New Window Option:"
-msgstr "開啟新視窗的選項︰"
+#: multiload/properties.c:290
+msgid "Monitored Resources"
+msgstr ""
 
-#: webcontrol/properties.c:304
-msgid "No New Window Option:"
-msgstr "不開啟新視窗的選項︰"
+#: multiload/properties.c:298
+#, fuzzy
+msgid "_Processor"
+msgstr "氣壓："
 
-#: webcontrol/properties.c:396
-msgid "WebControl Properties"
+#: multiload/properties.c:308
+#, fuzzy
+msgid "_Memory"
+msgstr "記憶體負載"
+
+#: multiload/properties.c:318
+#, fuzzy
+msgid "_Network"
+msgstr "網絡"
+
+#: multiload/properties.c:328
+msgid "_Swap File"
+msgstr ""
+
+#.
+#. check_box = gtk_check_button_new_with_mnemonic(_("_Average"));
+#. gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_box),
+#. panel_applet_gconf_get_bool(multiload_applet->applet, "view_loadavg", NULL));
+#. gtk_box_pack_start(GTK_BOX(hbox), check_box, FALSE, FALSE, 0);
+#.
+#: multiload/properties.c:345
+msgid "Options"
+msgstr "選項"
+
+#: multiload/properties.c:358
+msgid "System monitor width: "
+msgstr ""
+
+#: multiload/properties.c:360
+msgid "System monitor height: "
+msgstr ""
+
+#: multiload/properties.c:373
+msgid "pixels"
+msgstr ""
+
+#: multiload/properties.c:379
+msgid "System monitor speed: "
+msgstr ""
+
+#: multiload/properties.c:390
+#, fuzzy
+msgid "milliseconds"
+msgstr "秒"
+
+#: multiload/properties.c:405
+msgid "User"
+msgstr "使用者"
+
+#: multiload/properties.c:406
+msgid "System"
+msgstr "系統"
+
+#: multiload/properties.c:407
+msgid "Nice"
+msgstr "優先值"
+
+#: multiload/properties.c:408
+msgid "Idle"
+msgstr "閑置"
+
+#: multiload/properties.c:411 multiload/properties.c:420
+msgid "Other"
+msgstr "其它"
+
+#: multiload/properties.c:412
+msgid "Shared"
+msgstr "共用"
+
+#: multiload/properties.c:413
+msgid "Buffers"
+msgstr "緩衝"
+
+#: multiload/properties.c:414 multiload/properties.c:424
+msgid "Free"
+msgstr "未使用"
+
+#: multiload/properties.c:417
+msgid "SLIP"
+msgstr "SLIP"
+
+#: multiload/properties.c:418
+#, fuzzy
+msgid "PLIP"
+msgstr "SLIP"
+
+#: multiload/properties.c:419
+#, fuzzy
+msgid "Ethernet"
+msgstr "其它"
+
+#: multiload/properties.c:423
+msgid "Used"
+msgstr "使用中"
+
+#: multiload/properties.c:445
+#, fuzzy
+msgid "System Monitor Properties"
 msgstr "網頁控制內容"
 
-#. create size properties
-#: webcontrol/properties.c:404
-msgid "URL bar width:"
-msgstr "網址方格的寬度︰"
+#: multiload/swapload_applet.desktop.in.h:1
+msgid "Swap Load Meter"
+msgstr "交換檔負載指示器"
 
-#. create Show Go button property
-#: webcontrol/properties.c:429
-msgid "Display GO Button"
-msgstr "顯示 GO 按鈕"
+#: multiload/swapload_applet.desktop.in.h:2
+msgid "SwapLoad"
+msgstr "交換檔記憶負載"
 
-#. create Launch New Window property
-#: webcontrol/properties.c:443
-msgid "Display \"launch new window\" option"
-msgstr "顯示「開啟新視窗」選項"
+#: multiload/swapload.c:39
+msgid "Swap Load"
+msgstr "交換檔負載"
 
-#. create show clear button property
-#: webcontrol/properties.c:457
-msgid "Display \"Clear\" button"
-msgstr "顯示「清除」按鈕"
+#: panel-menu/GNOME_PanelMenuApplet.server.in.h:1
+msgid "Factory for Panel Menu Applet"
+msgstr ""
 
-#. create clear button on top property
-#: webcontrol/properties.c:472
-msgid "\"Clear\" button on top?"
-msgstr "是否將「清除」按鈕放在頂部？"
+#: panel-menu/GNOME_PanelMenuApplet.server.in.h:2
+msgid "Panel Menu Applet Factory"
+msgstr ""
 
-#: webcontrol/properties.c:497
-msgid " URL Activation "
-msgstr "啟用 URL"
+#: panel-menu/GNOME_PanelMenuApplet.server.in.h:3
+#, fuzzy
+msgid "Panel applet for displaying menus"
+msgstr "顯示抓取畫面要用的程式："
 
-#: webcontrol/properties.c:504
-msgid "Use default MIME handler"
-msgstr "使用預設的 MIME 處理程式"
+#: panel-menu/GNOME_PanelMenuApplet.server.in.h:4
+msgid "Utility"
+msgstr ""
 
-#: webcontrol/properties.c:512
-msgid "Use custom browser:"
-msgstr "使用自訂的瀏覽器︰"
+#: panel-menu/panel-menu-actions.c:96
+#, fuzzy
+msgid "Actions"
+msgstr "選項"
 
-#: webcontrol/properties.c:592
-msgid "Remove"
-msgstr "移除"
+#: panel-menu/panel-menu-add.c:76
+msgid "Add items to the Menu Bar"
+msgstr ""
 
-#. URL history frame
-#: webcontrol/properties.c:611
-msgid " URL History "
-msgstr "URL 紀錄"
+#: panel-menu/panel-menu-add.c:234 panel-menu/panel-menu-links.c:139
+#: panel-menu/panel-menu-links.c:401
+#, fuzzy
+msgid "Shortcuts"
+msgstr "驟雨"
 
-#: webcontrol/properties.c:620
-msgid "Size of URL history: "
-msgstr "URL 紀錄的大小"
+#: panel-menu/panel-menu-add.c:240
+msgid "My Documents"
+msgstr ""
 
-#: webcontrol/properties.c:646
-msgid "Clear"
-msgstr "清除"
+#: panel-menu/panel-menu-add.c:246 panel-menu/panel-menu-documents.c:134
+#: panel-menu/panel-menu-documents.c:399
+msgid "Documents"
+msgstr ""
 
-#: webcontrol/properties.c:656
-msgid "all entries in URL history"
-msgstr "所有 URL 紀錄"
+#: panel-menu/panel-menu-applications.c:80
+#, fuzzy
+msgid "Applications"
+msgstr "選項"
 
-#~ msgid "keymap_%d/flag=us.png"
-#~ msgstr "keymap_%d/flag=us.png"
+#: panel-menu/panel-menu.c:681
+#, fuzzy
+msgid "PanelMenu Applet"
+msgstr "音量調整面板程式"
 
-#~ msgid "Page Load"
-#~ msgstr "記憶體分頁負載"
+#: panel-menu/panel-menu.c:681
+msgid "(c) 2001 Chris Phelps"
+msgstr ""
 
-#~ msgid "PAGE Load"
-#~ msgstr "記憶體分頁負載"
+#: panel-menu/panel-menu.c:681
+msgid ""
+"The Panel Menu Applet allows you to display customized menubars on your "
+"panels."
+msgstr ""
 
-#~ msgid "Shade / Unshade"
-#~ msgstr "遮蓋 / 顯露"
+#: panel-menu/panel-menu-directory.c:496
+#, fuzzy
+msgid "Create directory item..."
+msgstr "建立使用者目錄：%s\n"
 
-#~ msgid "Stick / Unstick"
-#~ msgstr "固定 / 不固定"
+#: panel-menu/panel-menu-directory.c:499
+msgid "Home"
+msgstr ""
+
+#: panel-menu/panel-menu-directory.c:542
+msgid "Edit directory item..."
+msgstr ""
+
+#: panel-menu/panel-menu-directory.c:601 panel-menu/panel-menu-documents.c:398
+#: panel-menu/panel-menu-documents.c:434 panel-menu/panel-menu-links.c:400
+#: panel-menu/panel-menu-links.c:436
+#, fuzzy
+msgid "Name:"
+msgstr "名稱"
+
+#: panel-menu/panel-menu-directory.c:611 panel-menu/panel-menu-path.c:721
+msgid "Path:"
+msgstr ""
+
+#: panel-menu/panel-menu-directory.c:621
+msgid "Depth level:"
+msgstr ""
+
+#: panel-menu/panel-menu-documents.c:397
+msgid "Create documents item..."
+msgstr ""
+
+#: panel-menu/panel-menu-documents.c:433
+msgid "Rename documents item..."
+msgstr ""
+
+#: panel-menu/panel-menu-links.c:323 panel-menu/panel-menu-path.c:573
+msgid "KDE Menus"
+msgstr ""
+
+#: panel-menu/panel-menu-links.c:326 panel-menu/panel-menu-path.c:233
+#: panel-menu/panel-menu-path.c:576
+msgid "Programs"
+msgstr ""
+
+#: panel-menu/panel-menu-links.c:399
+msgid "Create links item..."
+msgstr ""
+
+#: panel-menu/panel-menu-links.c:435
+msgid "Rename links item..."
+msgstr ""
+
+#: panel-menu/panel-menu-path.c:224
+msgid "KDE"
+msgstr ""
+
+#: panel-menu/panel-menu-path.c:650
+msgid "Create menu path item..."
+msgstr ""
+
+#: panel-menu/panel-menu-path.c:682
+msgid "Edit path item..."
+msgstr ""
+
+#: panel-menu/panel-menu-preferences.c:78
+msgid "Preferences"
+msgstr ""
+
+#: panel-menu/panel-menu-properties.c:71
+#, fuzzy
+msgid "Menu Bar Properties"
+msgstr "GKB 內容"
+
+#: panel-menu/panel-menu-properties.c:75
+#, fuzzy
+msgid "Layout"
+msgstr "數值"
+
+#: panel-menu/panel-menu-properties.c:90
+msgid "Preferences Menu"
+msgstr ""
+
+#: panel-menu/panel-menu-properties.c:110
+msgid "Applications Menu"
+msgstr ""
+
+#: panel-menu/panel-menu-properties.c:130
+#, fuzzy
+msgid "Select an icon for the Applications menu"
+msgstr "選擇掛載的圖示"
+
+#: panel-menu/panel-menu-properties.c:146
+msgid "Actions Menu"
+msgstr ""
+
+#: panel-menu/panel-menu-properties.c:157
+msgid "Windows Menu"
+msgstr ""
+
+#: panel-menu/panel-menu-properties.c:168
+msgid "Workspaces Menu"
+msgstr ""
+
+#: panel-menu/panel-menu-windows.c:99
+#, fuzzy
+msgid "Windows"
+msgstr "風向："
+
+#: panel-menu/panel-menu-workspaces.c:80
+msgid "Workspaces"
+msgstr ""
+
+# src/battstat_applet.c:733
+#~ msgid "(C) 2000 The Gnulix Society"
+#~ msgstr "(C) 2000 The Gnulix Society"
+
+# src/battstat_applet.c:867
+#~ msgid "You can't hide all elements of the applet!"
+#~ msgstr "不可隱藏整個面板程式！"
+
+# src/battstat_applet.c:1221
+#~ msgid "Can't create applet!\n"
+#~ msgstr "不能建立面板程式！\n"
+
+# src/battstat_applet.c:1390
+#~ msgid "Suspend laptop"
+#~ msgstr "讓筆記型電腦進入待機模式"
+
+# src/properties.c:128
+#~ msgid ""
+#~ "You have chosen to enable the Suspend function. This can potentially be a "
+#~ "security risk."
+#~ msgstr "你選擇了啟用待機功能。這有可能造成保安上的問題。"
+
+# src/battstat_applet.c:732
+#~ msgid "Battery Status Utility"
+#~ msgstr "電池狀態公用程式"
+
+# src/battstat_applet.c:735
+#~ msgid "Shows the status of the battery"
+#~ msgstr "顯示電池的狀態"
+
+# src/battstat_applet.c:565
+#~ msgid "Battery low (%d%%) and AC is online"
+#~ msgstr "電池電量為低（%d%%）而交流電存在"
+
+# src/properties.c:192
+#~ msgid "Battstat Settings"
+#~ msgstr "Battstat 設定"
+
+# src/properties.c:203
+#~ msgid "Battery color levels (%)"
+#~ msgstr "不同電量的電池顏色（%）"
+
+# src/properties.c:213
+#~ msgid "Yellow:"
+#~ msgstr "黃︰"
+
+# src/properties.c:228
+#~ msgid "Orange:"
+#~ msgstr "橙︰"
+
+# src/properties.c:242
+#~ msgid "Red:"
+#~ msgstr "紅︰"
+
+# src/properties.c:257
+#~ msgid "Preview"
+#~ msgstr "預覽"
+
+# src/properties.c:313
+#~ msgid "Warnings"
+#~ msgstr "警告"
+
+# src/properties.c:318
+#~ msgid "Notify me when battery charge is low"
+#~ msgstr "當電量太低時請通知我"
+
+# src/properties.c:319
+#~ msgid "Notify me when battery is fully re-charged"
+#~ msgstr "當電量滿時請通知我"
+
+# src/properties.c:320
+#~ msgid "Beep when either of the above is true"
+#~ msgstr "遇到以上情況時發出嗶聲"
+
+# src/properties.c:345
+#~ msgid "Fonts"
+#~ msgstr "字型"
+
+# src/properties.c:353
+#~ msgid "Use my own font instead of the default GNOME font"
+#~ msgstr "使用自定的字型"
+
+# src/properties.c:355
+#~ msgid "Percentage text:"
+#~ msgstr "百分比字型︰"
+
+# src/properties.c:384
+#~ msgid "Suspend"
+#~ msgstr "待機"
+
+# src/properties.c:389
+#~ msgid "Suspend command:"
+#~ msgstr "待機指令︰"
+
+# src/properties.c:410
+#~ msgid "Progress bar direction"
+#~ msgstr "進度棒的方向"
+
+# src/properties.c:416
+#~ msgid "Move towards top"
+#~ msgstr "向上"
+
+# src/properties.c:418
+#~ msgid "Move towards bottom"
+#~ msgstr "向下"
+
+# src/properties.c:428
+#~ msgid "Status dock"
+#~ msgstr "嵌入式狀態顯示"
+
+# src/properties.c:431
+#~ msgid "Use the status dock"
+#~ msgstr "使用嵌入式狀態顯示"
+
+# src/properties.c:437
+#~ msgid "Applet layout"
+#~ msgstr "面板程式配置"
+
+# src/properties.c:493
+#~ msgid "Show"
+#~ msgstr "顯示"
+
+# src/properties.c:497
+#~ msgid "Hide"
+#~ msgstr "隱藏"
+
+# src/battstat_applet.c:566
+#~ msgid "online"
+#~ msgstr "正在使用中"
+
+# src/battstat_applet.c:566
+#~ msgid "offline"
+#~ msgstr "不存在"
