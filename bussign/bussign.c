@@ -25,6 +25,9 @@ static int
 refresh_imagefile(void);
 
 static int
+bussign_refresh_widget_dummy(AppletWidget *a_applet, gpointer *a_data);
+
+static int
 bussign_refresh(gpointer data);
 
 static gint
@@ -46,6 +49,12 @@ static gint
 session_save(GtkWidget *a_widget,
 	     const char *a_cfgpath,
 	     const char *a_global_cfgpath);
+
+static int
+bussign_refresh_widget_dummy(AppletWidget *a_applet, gpointer *a_data)
+{
+  bussign_refresh(NULL);
+}
 
 static gint
 session_save(GtkWidget *a_widget,
@@ -139,6 +148,12 @@ int main(int argc, char **argv)
 				  "Properties...",
 				  properties_window,
 				  NULL);
+  /* attach a refresh button */
+  applet_widget_register_callback(APPLET_WIDGET(l_applet),
+				  "refresh",
+				  "Refresh Image",
+				  bussign_refresh_widget_dummy,
+				  NULL);
 
   /* do it. */
   applet_widget_gtk_main();
@@ -155,7 +170,6 @@ create_bussign_widget(GtkWidget *a_parent)
   gtk_widget_push_colormap(gdk_imlib_get_colormap());
   l_style = gtk_widget_get_style(a_parent);
   
-  fprintf(stderr, "Refreshing Image.\n");
   /* refresh the image */
   if (refresh_imagefile() < 0)
     {
@@ -215,7 +229,6 @@ refresh_imagefile(void)
 static int
 bussign_refresh(gpointer data)
 {
-
   refresh_imagefile();
   /* kill the image and flush it */
   gdk_imlib_kill_image(sg_bus);
