@@ -76,6 +76,13 @@ fi
 
 AM_GCONF_SOURCE_2
 
+dnl checking for xsltproc
+
+AC_PATH_PROG(XSLTPROC, xsltproc, no)
+
+if test x"$XSLTPROC" = xno; then
+  AC_MSG_ERROR([xsltproc executable not found in your path - should be installed with libxslt])
+fi
 
 dnl Still need to decide on the checks for these
 

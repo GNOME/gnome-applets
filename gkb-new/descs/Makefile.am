@@ -71,13 +71,24 @@ preset_data_predata = \
 presetdir = $(datadir)/gnome/gkb
 preset_in_files = $(preset_data_predata)
 preset_DATA = $(preset_in_files:.keyprop.desktop.in=.keyprop)
-EXTRA_DIST = $(preset_DATA) $(xml_DATA) $(preset_in_files) $(xml_in_files)
+EXTRA_DIST = $(xml_DATA) $(xml_in_files) \
+	$(preset_DATA) $(preset_in_files) \
+	$(xmm_xml_DATA) $(xmm_xml_in_data) presets2base.xsl
 
 xml_in_files = presets.xml.in
 XMLS = $(xml_in_files:.xml.in=.xml)
 
 xmldir = $(datadir)/gnome/gkb
 xml_DATA = $(XMLS)
+
+xmm_xml_in_files = base.xml.in
+XMM_XMLS = $(xmm_xml_in_files:.xml.in=.xml)
+
+xmm_xmldir = $(datadir)/xmodmap
+xmm_xml_DATA = $(XMM_XMLS)
+
+base.xml.in: presets.xml.in
+	$(XSLTPROC) presets2base.xsl $< > $@
 
 %.xml: %.xml.in $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*.po)
 		$(INTLTOOL_MERGE) $(top_srcdir)/po $< $@ -x -u \
