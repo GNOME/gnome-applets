@@ -1030,7 +1030,7 @@ mc_load_preferences (MCData *mc)
 	error = NULL;
 	mc->preferences.normal_size_x = MC_DEFAULT_NORMAL_SIZE_X;
     }
-    mc->preferences.normal_size_x = CLAMP (mc->preferences.normal_size_x, 50, 200);
+    mc->preferences.normal_size_x = MAX (mc->preferences.normal_size_x, 50);
 
     mc->preferences.normal_size_y =
 		panel_applet_gconf_get_int (mc->applet, "normal_size_y", &error);
