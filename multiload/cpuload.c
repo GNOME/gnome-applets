@@ -36,7 +36,7 @@ make_cpuload_applet (const gchar *goad_id)
 {
     GtkWidget *applet;
     LoadGraph *g;
-    
+
     /* create a new applet_widget */
     applet = applet_widget_new(goad_id);
     /* in the rare case that the communication with the panel
@@ -66,9 +66,10 @@ make_cpuload_applet (const gchar *goad_id)
 					   g);
 
     applet_widget_register_callback (APPLET_WIDGET(applet),
-				      "run_gtop",
-				      _("Run gtop..."),
-				      start_gtop_cb, NULL);
+				     "run_gtop",
+				     _("Run gtop..."),
+				     start_gtop_cb,
+				     NULL);
 
     return applet;
 }

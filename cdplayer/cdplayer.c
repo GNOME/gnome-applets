@@ -49,7 +49,7 @@ cd_try_open(CDPlayerData *cd)
 	return TRUE;
 }
 
-static void 
+static void
 cd_panel_update(GtkWidget * cdplayer, CDPlayerData * cd)
 {
 	cdrom_device_status_t stat;
@@ -85,7 +85,7 @@ cd_panel_update(GtkWidget * cdplayer, CDPlayerData * cd)
 		led_nodisc(cd->panel.time, cd->panel.track);
 }
 
-static int 
+static int
 cdplayer_play_pause(GtkWidget * w, gpointer data)
 {
 	CDPlayerData *cd = data;
@@ -126,9 +126,9 @@ static void start_gtcd_cb()
 {
 	gnome_execute_shell(NULL, "gtcd");
 }
-                
 
-static int 
+
+static int
 cdplayer_stop(GtkWidget * w, gpointer data)
 {
 	CDPlayerData *cd = data;
@@ -138,7 +138,7 @@ cdplayer_stop(GtkWidget * w, gpointer data)
 	return 0;
 }
 
-static int 
+static int
 cdplayer_prev(GtkWidget * w, gpointer data)
 {
 	CDPlayerData *cd = data;
@@ -148,7 +148,7 @@ cdplayer_prev(GtkWidget * w, gpointer data)
 	return 0;
 }
 
-static int 
+static int
 cdplayer_next(GtkWidget * w, gpointer data)
 {
 	CDPlayerData *cd = data;
@@ -158,7 +158,7 @@ cdplayer_next(GtkWidget * w, gpointer data)
 	return 0;
 }
 
-static int 
+static int
 cdplayer_eject(GtkWidget * w, gpointer data)
 {
 	cdrom_device_status_t stat;
@@ -180,7 +180,7 @@ cdplayer_eject(GtkWidget * w, gpointer data)
 	return 0;
 }
 
-static int 
+static int
 cdplayer_timeout_callback(gpointer data)
 {
 	GtkWidget *cdplayer;
@@ -265,7 +265,7 @@ create_cdpanel_widget(GtkWidget *window, CDPlayerData * cd)
 	return frame;
 }
 
-static void 
+static void
 destroy_cdplayer(GtkWidget * widget, void *data)
 {
 	CDPlayerData *cd;
@@ -277,7 +277,7 @@ destroy_cdplayer(GtkWidget * widget, void *data)
 	g_free(cd);
 }
 
-void
+static void
 cdpanel_realized(GtkWidget *cdpanel, CDPlayerData *cd)
 {
 	cd_panel_update(cdpanel, cd);
@@ -341,10 +341,10 @@ main(int argc, char **argv)
 	}
 
         applet_widget_register_callback(APPLET_WIDGET(applet),
-		"run_gtcd",         
-	        _("Run gtcd..."),
-	        start_gtcd_cb, NULL);
-                                                                                                                                                                                                        
+					"run_gtcd",
+					_("Run gtcd..."),
+					start_gtcd_cb, NULL);
+
 	gtk_widget_show(cdplayer);
 	applet_widget_add (APPLET_WIDGET (applet), cdplayer);
 	gtk_widget_show (applet);
