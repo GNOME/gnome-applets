@@ -26,7 +26,7 @@ void about_dialog(AppletWidget *applet, gpointer data)
         return;
 }
 
-static GtkWidget * properties_timezone_render(asclock *my_asclock, GtkWidget *parent, char *timezone, float lat, float lon)
+static GtkWidget * properties_timezone_render(asclock *my_asclock, GtkWidget *parent, float lat, float lon)
 {
   GdkPixmap *pmap;
   GdkBitmap * mask;
@@ -46,17 +46,13 @@ static GtkWidget * properties_timezone_render(asclock *my_asclock, GtkWidget *pa
 
   yloc = 160.0 - (sin((lat/180.0)*3.1415926))*160*0.95;
   
-  if(timezone)
+  if(strlen(my_asclock->timezone)>0)
    {
      gdk_draw_rectangle(pmap, my_asclock->black_gc, 1, 158, fabs(yloc)-2, 4, 4);
      gdk_draw_rectangle(pmap, my_asclock->white_gc, 1, 159, fabs(yloc)-1, 2, 2);
 
-     if(strncmp(my_asclock->timezone, timezone, MAX_PATH_LEN)==0) 
-     {
+     if(strncmp(my_asclock->timezone, my_asclock->selected_timezone, MAX_PATH_LEN)!=0)
        gnome_property_box_changed( GNOME_PROPERTY_BOX(my_asclock->pwin));
-       my_asclock->timezone_changed = TRUE;
-     }
-    strncpy(my_asclock->timezone, timezone, MAX_PATH_LEN);
   }
 
   if(my_asclock->pic) 
@@ -75,18 +71,15 @@ static void theme_selected(GtkWidget *list, gint row, gint column, GdkEventButto
 {
   gchar *line;
   GtkStyle *style;
+  asclock *my_asclock = (asclock *) data;
 
   gtk_clist_get_text(GTK_CLIST(list), row, 0, &line);
 
-  if(!loadTheme(line)) return;
-  style = gtk_widget_get_style( list );
+  strncpy(my_asclock->selected_theme_filename, line, MAX_PATH_LEN);
 
-  /* get all pixmaps and store size of the clock pixmap for further usage */
-  load_pixmaps(list, style);
-  postconfig();
+  if(strncmp(my_asclock->selected_theme_filename, my_asclock->theme_filename, MAX_PATH_LEN)!=0)
+    gnome_property_box_changed( GNOME_PROPERTY_BOX(my_asclock->pwin));
 
-  set_clock_pixmap();
-  
 }
 
 static void location_selected(GtkWidget *list, gint row, gint column, GdkEventButton *event, gpointer data)
@@ -101,7 +94,9 @@ static void location_selected(GtkWidget *list, gint row, gint column, GdkEventBu
 
   gtk_clist_get_text(GTK_CLIST(list), row, 1, &line);
 
-  properties_timezone_render(my_asclock, list, line, my->lat, my->lon);
+  strncpy(my_asclock->selected_timezone, line, MAX_PATH_LEN);
+
+  properties_timezone_render(my_asclock, list, my->lat, my->lon);
 
 }
 
@@ -130,7 +125,7 @@ static void dialog_clicked_cb(GnomeDialog * dialog, gint button_number,
 static int property_apply_cb(AppletWidget *applet, gpointer data)
 {
 
-  if(static_my_asclock->timezone_changed) {
+  if(strncmp(static_my_asclock->timezone, static_my_asclock->selected_timezone, MAX_PATH_LEN)!=0) {
     if(0==getuid())
       {
 	GtkWidget * label;
@@ -153,13 +148,26 @@ static int property_apply_cb(AppletWidget *applet, gpointer data)
 	gtk_window_set_modal(GTK_WINDOW(dialog), TRUE);
       }
 
-    static_my_asclock->timezone_changed = FALSE;
+    strncpy(static_my_asclock->timezone, static_my_asclock->selected_timezone, MAX_PATH_LEN);
 
     setenv("TZ", static_my_asclock->timezone, TRUE);
     tzset();
 
   }
+
+  if(strncmp(static_my_asclock->selected_theme_filename, static_my_asclock->theme_filename, MAX_PATH_LEN)!=0)
+  {
+    if(!loadTheme(static_my_asclock->selected_theme_filename)) return FALSE;
+
+    /* get all pixmaps and store size of the clock pixmap for further usage */
+    load_pixmaps(static_my_asclock->window, static_my_asclock->style);
+    postconfig();
+
+    set_clock_pixmap();
   
+    strncpy(static_my_asclock->theme_filename, static_my_asclock->selected_theme_filename, MAX_PATH_LEN);
+  }
+
   return FALSE;
 }
 
@@ -273,7 +281,7 @@ void properties_dialog(AppletWidget *applet, gpointer data)
 
   label = gtk_label_new(_("Timezone"));
 
-  properties_timezone_render(my_asclock, frame, NULL, 0, 0);
+  properties_timezone_render(my_asclock, frame, 0, 0);
 
   hbox = gtk_hbox_new(FALSE, 5);
   gtk_box_pack_start(GTK_BOX(hbox), my_asclock->pic, FALSE, FALSE, 5);

@@ -363,32 +363,32 @@ static gint update_clock(gpointer data)
   return 1;
 }
 
-static asclock my;
+static asclock *my = NULL;
 
 void set_clock_pixmap()
 {
     GdkPixmap *pixmap;
     GdkWindowPrivate *clk = (GdkWindowPrivate *) clock_pixmap;
-    my.width=clk->width;
-    my.height=clk->height;
+    my->width=clk->width;
+    my->height=clk->height;
 
-    gdk_pixmap_unref(my.pixmap);
+    gdk_pixmap_unref(my->pixmap);
 
-    pixmap = gdk_pixmap_new(my.window->window, my.width, my.height, -1);
-    my.pixmap = pixmap;
+    pixmap = gdk_pixmap_new(my->window->window, my->width, my->height, -1);
+    my->pixmap = pixmap;
 
-    gdk_draw_pixmap(pixmap, my.white_gc,
-                clock_pixmap, 0, 0, 0, 0, my.width, my.height);
+    gdk_draw_pixmap(pixmap, my->white_gc,
+                clock_pixmap, 0, 0, 0, 0, my->width, my->height);
 
-    my.actual_time = 0;
-    update_clock((gpointer)&my);
+    my->actual_time = 0;
+    update_clock((gpointer)my);
 
-    gtk_pixmap_set(GTK_PIXMAP(my.p), pixmap, clock_mask);
-    gtk_widget_set_usize(my.fixed, my.width, my.height);
+    gtk_pixmap_set(GTK_PIXMAP(my->p), pixmap, clock_mask);
+    gtk_widget_set_usize(my->fixed, my->width, my->height);
 
 #ifdef ASCLOCK_GNOME
     {
-      GdkWindowPrivate *sock_win = (GdkWindowPrivate *) GTK_PLUG(my.window)->socket_window;
+      GdkWindowPrivate *sock_win = (GdkWindowPrivate *) GTK_PLUG(my->window)->socket_window;
       Window root_return;
       Window parent_return;
       Window *children_return;
@@ -405,7 +405,7 @@ void set_clock_pixmap()
          ShapeSet);
     }
 #endif
-    gtk_widget_shape_combine_mask(my.window, clock_mask, 0, 0);
+    gtk_widget_shape_combine_mask(my->window, clock_mask, 0, 0);
 }
 
 #ifdef ASCLOCK_GNOME
@@ -421,14 +421,12 @@ static gint save_session_cb(GtkWidget *widget, gchar *privcfgpath,
 int main( int argc, char *argv[] )
 {
     /* GtkWidget is the storage type for widgets */
-    GtkWidget *box;
-    GtkWidget *window, *p;
-    GdkPixmap *pixmap;
     GdkWindowPrivate *clk;
-    GtkStyle  *style;
     GdkColor colour;
     GdkColormap *cmap;
 
+    my = (asclock *)malloc(sizeof(asclock));
+    memset(my, sizeof(my), 0);
     config();
     
     /* create the main window, and attach delete_event signal to terminating
@@ -437,39 +435,28 @@ int main( int argc, char *argv[] )
 
    applet_widget_init("asclock_applet", ASCLOCK_VERSION, argc, argv,
                                  NULL, 0, NULL);
-   { char *
-   goad_id = (char *)goad_server_activation_id();
-     printf("goad_id = %s\n", goad_id);
-   } 
-   window = applet_widget_new("asclock_applet");
-
-   my.pic = NULL;
-   my.pwin = NULL;
-   my.timezone[0]=0;
-
+   my->window = applet_widget_new("asclock_applet");
 
 #else
 #ifdef ASCLOCK_GTK
-    parseArgs(&my, argc, argv);
+    parseArgs(my, argc, argv);
     gtk_init( &argc, &argv );
-    window = gtk_window_new( GTK_WINDOW_TOPLEVEL );
-    gtk_window_set_title (GTK_WINDOW (window), ASCLOCK_VERSION);
+    my->window = gtk_window_new( GTK_WINDOW_TOPLEVEL );
+    gtk_window_set_title (GTK_WINDOW (my->window), ASCLOCK_VERSION);
 
-    gtk_signal_connect( GTK_OBJECT (window), "delete_event",
+    gtk_signal_connect( GTK_OBJECT (my->window), "delete_event",
                         GTK_SIGNAL_FUNC (close_application), NULL );
 
 #else
 #error use either ASCLOCK_GNOME or ASCLOCK_GTK to buid
 #endif
 #endif
-    my.window = window;
 
     /* now for the pixmap from gdk */
-    style = gtk_widget_get_style( window );
-    my.style = style;
-    gtk_widget_realize(window);
+    my->style = gtk_widget_get_style( my->window );
+    gtk_widget_realize(my->window);
 
-    my.white_gc = gdk_gc_new(window->window);
+    my->white_gc = gdk_gc_new(my->window->window);
     /* Get the system colour map and allocate the colour red */
     cmap = gdk_colormap_get_system();
     colour.red = 0x00;
@@ -479,8 +466,8 @@ int main( int argc, char *argv[] )
       g_error("couldn't allocate colour");
     }
 
-    my.black_gc = gdk_gc_new(window->window);
-    gdk_gc_set_foreground(my.black_gc, &colour);
+    my->black_gc = gdk_gc_new(my->window->window);
+    gdk_gc_set_foreground(my->black_gc, &colour);
 
     colour.red = 0xffff;
     colour.green = 0xffff;
@@ -489,57 +476,63 @@ int main( int argc, char *argv[] )
       g_error("couldn't allocate colour");
     }
 
-    my.white_gc = gdk_gc_new(window->window);
-    gdk_gc_set_foreground(my.white_gc, &colour);
+    my->white_gc = gdk_gc_new(my->window->window);
+    gdk_gc_set_foreground(my->white_gc, &colour);
 
 #ifdef ASCLOCK_GNOME
-   printf("config path = %s\n", APPLET_WIDGET(window)->privcfgpath);
-   get_gnome_config(&my, APPLET_WIDGET(window)->privcfgpath);
+   get_gnome_config(my, APPLET_WIDGET(my->window)->privcfgpath);
+   /* set the timezone */
+   if(strlen(my->timezone)>0)
+   { 
+     setenv("TZ", my->timezone, TRUE);
+     tzset();
+   }
+   /* set the theme */
+   if(strlen(my->theme_filename)>0)
+     if(!loadTheme(my->theme_filename))
+       config();
 #endif
 
     /* get all pixmaps and store size of the clock pixmap for further usage */
-    load_pixmaps(window, style);
+    load_pixmaps(my->window, my->style);
     postconfig();
 
     clk = (GdkWindowPrivate *) clock_pixmap;
-    my.width=clk->width;
-    my.height=clk->height;
+    my->width=clk->width;
+    my->height=clk->height;
 
-    pixmap = gdk_pixmap_new(window->window, my.width, my.height, -1);
-    my.pixmap = pixmap;
+    my->pixmap = gdk_pixmap_new(my->window->window, my->width, my->height, -1);
 
-    gdk_draw_pixmap(pixmap, my.white_gc,
-                clock_pixmap, 0, 0, 0, 0, my.width, my.height);
+    gdk_draw_pixmap(my->pixmap, my->white_gc,
+                clock_pixmap, 0, 0, 0, 0, my->width, my->height);
 
-    p = gtk_pixmap_new(pixmap, clock_mask);
-    my.p = p;
-    gtk_widget_show(p);
+    my->p = gtk_pixmap_new(my->pixmap, clock_mask);
+    gtk_widget_show(my->p);
 
-    box = gtk_fixed_new();
-    my.fixed= box;
-    gtk_fixed_put(GTK_FIXED(box), p, 0, 0);
+    my->fixed = gtk_fixed_new();
+    gtk_fixed_put(GTK_FIXED(my->fixed), my->p, 0, 0);
 
-    gtk_widget_set_usize(box, my.width, my.height);
+    gtk_widget_set_usize(my->fixed, my->width, my->height);
 #ifdef ASCLOCK_GNOME
-    applet_widget_add(APPLET_WIDGET(window), box);
+    applet_widget_add(APPLET_WIDGET(my->window), my->fixed);
 #else
 #ifdef ASCLOCK_GTK
-    gtk_container_add(GTK_CONTAINER(window), box);
+    gtk_container_add(GTK_CONTAINER(my->window), my->fixed);
 #else
 #error use either ASCLOCK_GNOME or ASCLOCK_GTK to build
 #endif
 #endif
 
-    gtk_widget_show(box);
+    gtk_widget_show(my->fixed);
      
 
     /* callback for updating the time */
-    gtk_timeout_add(100, update_clock, &my);
+    gtk_timeout_add(100, update_clock, my);
 
     /* set the mask */
 #ifdef ASCLOCK_GNOME
     {
-      GdkWindowPrivate *sock_win = (GdkWindowPrivate *) GTK_PLUG(window)->socket_window;
+      GdkWindowPrivate *sock_win = (GdkWindowPrivate *) GTK_PLUG(my->window)->socket_window;
       Window root_return;
       Window parent_return;
       Window *children_return;
@@ -556,14 +549,14 @@ int main( int argc, char *argv[] )
 	 ShapeSet);
     }
 #endif
-    gtk_widget_shape_combine_mask(window, clock_mask, 0, 0);
+    gtk_widget_shape_combine_mask(my->window, clock_mask, 0, 0);
 
     /* show the window */
-    gtk_container_border_width (GTK_CONTAINER (window), 0);
-    gtk_widget_show(window);
+    gtk_container_border_width (GTK_CONTAINER (my->window), 0);
+    gtk_widget_show(my->window);
 
     /* fetch information about our display */
-    visual = gdk_window_get_visual(window->window);
+    visual = gdk_window_get_visual(my->window->window);
     visual_depth = gdk_visual_get_best_depth();
 
     if(analog_visible && !((visual_depth>=15) || (visual_depth==8)))
@@ -572,23 +565,23 @@ int main( int argc, char *argv[] )
 	exit(-1);
       }
 
-    cmap = gdk_window_get_colormap(window->window);
+    cmap = gdk_window_get_colormap(my->window->window);
 #ifdef ASCLOCK_GNOME
-    applet_widget_register_callback(APPLET_WIDGET(window),
+    applet_widget_register_callback(APPLET_WIDGET(my->window),
                                     "hello",
                                     _("About"),
                                     about_dialog,
                                     NULL);
  
  
-    applet_widget_register_callback(APPLET_WIDGET(window),
+    applet_widget_register_callback(APPLET_WIDGET(my->window),
                                     "properties",
                                     _("Properties..."),
                                     properties_dialog,
-                                    &my);
-    gtk_signal_connect(GTK_OBJECT(window),"save_session",
+                                    my);
+    gtk_signal_connect(GTK_OBJECT(my->window),"save_session",
                        GTK_SIGNAL_FUNC(save_session_cb),
-                       &my);
+                       my);
 
     applet_widget_gtk_main ();
 #else
@@ -596,22 +589,22 @@ int main( int argc, char *argv[] )
   
     if(itdocks) 
       {
-	Display *dpy = ((GdkWindowPrivate *)window->window)->xdisplay;
-	Window win = ((GdkWindowPrivate *)window->window)->xwindow;
+	Display *dpy = ((GdkWindowPrivate *)my->window->window)->xdisplay;
+	Window win = ((GdkWindowPrivate *)my->window->window)->xwindow;
 	XWMHints mywmhints;
 	Pixel back_pix, fore_pix;
 	
 	back_pix = WhitePixel(dpy, DefaultScreen(dpy));
 	fore_pix = BlackPixel(dpy, DefaultScreen(dpy));
 	
-	my.iconwin = XCreateSimpleWindow(dpy, win, 0, 0, 
-					 my.width, my.height,
+	my->iconwin = XCreateSimpleWindow(dpy, win, 0, 0, 
+					 my->width, my->height,
 					 0, fore_pix, back_pix);
 
-	XShapeCombineMask(dpy, my.iconwin, ShapeBounding, 0, 0, 
+	XShapeCombineMask(dpy, my->iconwin, ShapeBounding, 0, 0, 
 			  ((GdkWindowPrivate *)clock_mask)->xwindow, ShapeSet);
 
-	mywmhints.icon_window = my.iconwin;
+	mywmhints.icon_window = my->iconwin;
 	mywmhints.flags = StateHint | IconWindowHint | WindowGroupHint;
 	mywmhints.initial_state = WithdrawnState;
 	mywmhints.window_group = win;

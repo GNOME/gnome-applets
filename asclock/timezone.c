@@ -25,19 +25,24 @@ void enum_timezones(asclock *my_asclock, GtkWidget *clist )
     return;
   }
 
-  len = readlink("/etc/localtime", line, sizeof(line)-1);
-  if(len>=0)
-    {
-      line [len] = 0;
+  /* if we do not have a timezone set, use the one from /etc/localtime */
+  if(strlen(my_asclock->timezone)==0) 
+  {
+    len = readlink("/etc/localtime", line, sizeof(line)-1);
+    if(len>=0)
+      {
+        line [len] = 0;
  
-      pos = strstr (line, "zoneinfo/");
-      if (pos)
-	{
-	  pos += strlen ("zoneinfo/");
-	  strncpy(my_asclock->timezone, g_strdup (pos), MAX_PATH_LEN);
-	  my_asclock->timezone_changed = FALSE;
-	}
-    }
+        pos = strstr (line, "zoneinfo/");
+        if (pos)
+	  {
+	    pos += strlen ("zoneinfo/");
+	    strncpy(my_asclock->timezone, g_strdup (pos), MAX_PATH_LEN);
+ 	  }
+      }
+  }
+  strcpy(my_asclock->selected_timezone, "");
+
   my = NULL;
 
   while(1)

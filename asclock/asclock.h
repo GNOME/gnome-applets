@@ -53,10 +53,11 @@ struct _asclock
   int itblinks;
 #ifdef ASCLOCK_GNOME
   char theme_filename[MAX_PATH_LEN];
+  char selected_theme_filename[MAX_PATH_LEN];
   char timezone[MAX_PATH_LEN];
+  char selected_timezone[MAX_PATH_LEN];
   GtkWidget *pwin;
   GtkWidget *pic;
-  int timezone_changed;
 #endif
 };
 
