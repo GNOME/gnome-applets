@@ -775,7 +775,7 @@ static void calc_display_sizes(AppData *ad)
 {
 	if (ad->follow_hint_width)
 		{
-#ifdef HAVE_PANEL_SIZE
+#ifdef HAVE_PANEL_PIXEL_SIZE
 		ad->width_hint = applet_widget_get_free_space(APPLET_WIDGET(ad->applet));
 		if (ad->width_hint < 8) ad->width_hint = 200; /* no space or corner panel */
 #endif

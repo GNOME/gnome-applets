@@ -138,26 +138,12 @@ static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
 	resized_app_display(ad, FALSE);
 }
 
-#ifdef HAVE_PANEL_SIZE
-static void applet_change_size(GtkWidget *w, PanelSizeType s, gpointer data)
+#ifdef HAVE_PANEL_PIXEL_SIZE
+static void applet_change_pixel_size(GtkWidget *w, int size, gpointer data)
 {
 	AppData *ad = data;
 
-	switch (s)
-		{
-		case SIZE_TINY:
-			ad->sizehint = 24;
-			break;
-		case SIZE_STANDARD:
-			ad->sizehint = 48;
-			break;
-		case SIZE_LARGE:
-			ad->sizehint = 64;
-			break;
-		case SIZE_HUGE:
-			ad->sizehint = 80;
-			break;
-		}
+	ad->sizehint = size;
 
 	if (!ad->draw_area) return; /* we are done if in startup */
 
@@ -285,9 +271,9 @@ static AppData *create_new_app(GtkWidget *applet)
 /* applet geometry signals*/
 	gtk_signal_connect(GTK_OBJECT(ad->applet),"change_orient",
                 GTK_SIGNAL_FUNC(applet_change_orient), ad);
-#ifdef HAVE_PANEL_SIZE
-	gtk_signal_connect(GTK_OBJECT(ad->applet),"change_size",
-                GTK_SIGNAL_FUNC(applet_change_size), ad);
+#ifdef HAVE_PANEL_PIXEL_SIZE
+	gtk_signal_connect(GTK_OBJECT(ad->applet),"change_pixel_size",
+                GTK_SIGNAL_FUNC(applet_change_pixel_size), ad);
 #endif
 
 	gtk_widget_set_usize(ad->applet, 10, 10);

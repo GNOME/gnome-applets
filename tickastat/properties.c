@@ -508,7 +508,7 @@ void property_show(AppletWidget *applet, gpointer data)
         gtk_spin_button_set_update_policy(GTK_SPIN_BUTTON(spin), GTK_UPDATE_ALWAYS);
         gtk_widget_show(spin);
 
-#ifdef HAVE_PANEL_SIZE
+#ifdef HAVE_PANEL_PIXEL_SIZE
 	button = gtk_check_button_new_with_label (_("Use all room on panel"));
 	gtk_box_pack_start(GTK_BOX(hbox), button, FALSE, FALSE, 0);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(button), ad->p_follow_hint_width);
@@ -536,7 +536,7 @@ void property_show(AppletWidget *applet, gpointer data)
         gtk_spin_button_set_update_policy(GTK_SPIN_BUTTON(spin), GTK_UPDATE_ALWAYS);
         gtk_widget_show(spin);
 
-#ifdef HAVE_PANEL_SIZE
+#ifdef HAVE_PANEL_PIXEL_SIZE
 	button = gtk_check_button_new_with_label (_("Use panel size hint"));
 	gtk_box_pack_start(GTK_BOX(hbox), button, FALSE, FALSE, 0);
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(button), ad->p_follow_hint_height);
