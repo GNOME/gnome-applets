@@ -1,3 +1,4 @@
+/* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 2 -*- */
 /* GNOME Volume Applet
  * Copyright (C) 2004 Ronald Bultje <rbultje@ronald.bitfreak.net>
  *
@@ -74,6 +75,9 @@ typedef struct _GnomeVolumeApplet {
 
   /* preferences */
   GtkWidget *prefs;
+
+  /* icon theme */
+  GtkIconTheme *icon_theme;
 } GnomeVolumeApplet;
 
 typedef struct _GnomeVolumeAppletClass {

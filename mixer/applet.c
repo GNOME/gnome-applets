@@ -1,3 +1,4 @@
+/* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 2 -*- */
 /* GNOME Volume Applet
  * Copyright (C) 2004 Ronald Bultje <rbultje@ronald.bitfreak.net>
  *
@@ -59,7 +60,8 @@ static void	gnome_volume_applet_orientation	(PanelApplet *applet,
 static void	gnome_volume_applet_size	(PanelApplet *applet,
 						 guint      size);
 
-static void	gnome_volume_applet_refresh	(GnomeVolumeApplet *applet);
+static void	gnome_volume_applet_refresh	(GnomeVolumeApplet *applet,
+						 gboolean           force_refresh);
 static gboolean	cb_check			(gpointer   data);
 
 static void	cb_volume			(GtkAdjustment *adj,
@@ -79,6 +81,8 @@ static void	cb_ui_event			(BonoboUIComponent *comp,
 						 Bonobo_UIComponent_EventType type,
 						 const gchar       *state_string,
 						 gpointer           data);
+static void	cb_theme_change                (GtkIconTheme *icon_theme,
+						gpointer      data);
 
 static PanelAppletClass *parent_class = NULL;
 static struct {
@@ -167,14 +171,12 @@ init_pixbufs (GnomeVolumeApplet *applet)
 {
   gint n;
   
-  /* FIXME: implement "changed" signal from GtkIconTheme */
-  /* FIXME: load new icons on panel resize */
   for (n = 0; pix[n].filename != NULL; n++) {
     if (pix[n].pixbuf)
       g_object_unref (pix[n].pixbuf);
     
     pix[n].pixbuf = gtk_icon_theme_load_icon (
-      	    gtk_icon_theme_get_default (),
+      	    applet->icon_theme,
       	    pix[n].filename,
       	    panel_applet_get_size (&applet->parent),
       	    0,
@@ -221,7 +223,8 @@ gnome_volume_applet_init (GnomeVolumeApplet *applet)
   applet->lock = FALSE;
   applet->state = -1;
   applet->prefs = NULL;
-  
+  applet->icon_theme = gtk_icon_theme_get_default ();
+
   /* init pixbufs */
   init_pixbufs (applet);
 
@@ -238,6 +241,11 @@ gnome_volume_applet_init (GnomeVolumeApplet *applet)
   tooltips = gtk_tooltips_new ();
   gtk_tooltips_set_tip (tooltips, GTK_WIDGET (applet),
 			_("Volume Control"), NULL);
+
+  /* handle icon theme changes */
+  g_signal_connect (G_OBJECT (applet->icon_theme),
+		    "changed", G_CALLBACK (cb_theme_change),
+		    applet);
 
   /* other stuff */
   panel_applet_add_preferences (PANEL_APPLET (applet),
@@ -343,7 +351,7 @@ gnome_volume_applet_setup (GnomeVolumeApplet *applet,
   g_signal_connect (adj, "value-changed",
 		    G_CALLBACK (cb_volume), applet);
 
-  gnome_volume_applet_refresh (applet);
+  gnome_volume_applet_refresh (applet, FALSE);
   applet->timeout = g_timeout_add (100, cb_check, applet);
 
   /* menu - done here because bonobo is intialized now */
@@ -538,7 +546,7 @@ gnome_volume_applet_toggle_mute (GnomeVolumeApplet *applet)
 
   /* update graphic - this should happen automagically after the next
    * idle call, but apparently doesn't for some people... */
-  gnome_volume_applet_refresh (applet);
+  gnome_volume_applet_refresh (applet, FALSE);
 }
 
 /*
@@ -747,7 +755,8 @@ static void
 gnome_volume_applet_size (PanelApplet *applet,
 			  guint        size)
 {
-  gnome_volume_applet_refresh (GNOME_VOLUME_APPLET (applet));
+  init_pixbufs (GNOME_VOLUME_APPLET (applet));
+  gnome_volume_applet_refresh (GNOME_VOLUME_APPLET (applet), TRUE);
 
   if (PANEL_APPLET_CLASS (parent_class)->change_size)
     PANEL_APPLET_CLASS (parent_class)->change_size (applet, size);
@@ -814,13 +823,14 @@ cb_volume (GtkAdjustment *adj,
  * Automatic timer. Check for changes.
  */
 
-#define STATE(vol,m) ((vol << 1) | m)
+#define STATE(vol,m) ((vol << 1) | m != FALSE)
 
 static void
-gnome_volume_applet_refresh (GnomeVolumeApplet *applet)
+gnome_volume_applet_refresh (GnomeVolumeApplet *applet,
+			     gboolean           force_refresh)
 {
   BonoboUIComponent *component;
-  GdkPixbuf *scaled, *orig;
+  GdkPixbuf *pixbuf;
   guint size;
   gint n, *volumes, volume = 0;
   gboolean mute;
@@ -847,25 +857,13 @@ gnome_volume_applet_refresh (GnomeVolumeApplet *applet)
   if (n >= 5)
     n = 4;
 
-  if (STATE (n, mute) != applet->state) {
-    if (mute) {
-      orig = gdk_pixbuf_copy (pix[applet->state >> 1].pixbuf);
-      gdk_pixbuf_composite (pix[0].pixbuf, orig, 0, 0,
-			    gdk_pixbuf_get_width (orig),
-			    gdk_pixbuf_get_height (orig),
-			    0, 0, 1.0, 1.0,
-			    GDK_INTERP_BILINEAR, 255);
-    } else {
-      orig = pix[n].pixbuf;
-    }
-
-    size = panel_applet_get_size (PANEL_APPLET (applet));
-    scaled = gdk_pixbuf_scale_simple (orig, size, size,
-				      GDK_INTERP_BILINEAR);
-    gtk_image_set_from_pixbuf (applet->image, scaled);
+  if ((STATE (n, mute) != applet->state) || force_refresh) {
     if (mute)
-      gdk_pixbuf_unref (orig);
-    gdk_pixbuf_unref (scaled);
+      pixbuf = pix[0].pixbuf;
+    else
+      pixbuf = pix[n].pixbuf;
+
+    gtk_image_set_from_pixbuf (applet->image, pixbuf);
 
     applet->state = STATE (n, mute);
   }
@@ -885,7 +883,7 @@ gnome_volume_applet_refresh (GnomeVolumeApplet *applet)
 static gboolean
 cb_check (gpointer data)
 {
-  gnome_volume_applet_refresh (GNOME_VOLUME_APPLET (data));
+  gnome_volume_applet_refresh (GNOME_VOLUME_APPLET (data), FALSE);
 
   return TRUE;
 }
@@ -1073,4 +1071,14 @@ cb_ui_event (BonoboUIComponent *comp,
   } else {
     g_warning ("Unknown bonobo command '%s'", verbname);
   }
+}
+
+static void
+cb_theme_change (GtkIconTheme *icon_theme,
+		 gpointer data)
+{
+  GnomeVolumeApplet *applet = GNOME_VOLUME_APPLET (data);
+
+  init_pixbufs (applet);
+  gnome_volume_applet_refresh (applet, TRUE);
 }
