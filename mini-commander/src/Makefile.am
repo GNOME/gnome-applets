@@ -60,7 +60,6 @@ install-data-local:
 @INTLTOOL_SERVER_RULE@
 
 EXTRA_DIST =					\
-	update-from-egg.sh			\
 	GNOME_MiniCommanderApplet.server.in.in	\
 	$(pixmap_DATA)				\
 	$(bitmaps_DATA)				\
