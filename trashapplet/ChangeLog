@@ -1,3 +1,13 @@
+2004-11-02  James Henstridge  <james@jamesh.id.au>
+
+	* src/trash-monitor.h (TRASH_MONITOR): fix up typo in macro
+	definition.
+
+	* src/trashapplet.[ch]: convert TrashApplet to a PanelApplet
+	subclass and refactor the code a bit.
+	Use gtk_image_set_from_icon_name() so that GTK is responsible for
+	keeping the icon up to date when the icon theme changes.
+
 2004-10-22  Michiel Sikkes  <michiel@eyesopened.nl>
 
 	* src/eel-extension.c:

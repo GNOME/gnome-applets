@@ -1,4 +1,5 @@
-/* trashapplet.h
+/* -*- mode: c; c-basic-offset: 8 -*-
+ * trashapplet.h
  *
  * Copyright (c) 2004  Michiel Sikkes <michiel@eyesopened.nl>,
  *               2004  Emmanuele Bassi <ebassi@gmail.com>
@@ -26,6 +27,13 @@
 #include <libgnomevfs/gnome-vfs.h>
 #include "trash-monitor.h"
 
+#define TRASH_TYPE_APPLET (trash_applet_get_type ())
+#define TRASH_APPLET(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), TRASH_TYPE_APPLET, TrashApplet))
+#define TRASH_APPLET_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), TRASH_TYPE_APPLET, TrashAppletClass))
+#define TRASH_IS_APPLET(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), TRASH_TYPE_APPLET))
+#define TRASH_IS_APPLET_CLASS(obj) (G_TYPE_CHECK_CLASS_TYPE ((obj), TRASH_TYPE_APPLET))
+#define TRASH_APPLET_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), TRASH_TYPE_APPLET, TrashAppletClass))
+
 #define TRASH_ICON_EMPTY	"gnome-fs-trash-empty"
 #define TRASH_ICON_EMPTY_ACCEPT "gnome-fs-trash-empty-accept"
 #define TRASH_ICON_FULL		"gnome-fs-trash-full"
@@ -37,25 +45,30 @@ typedef enum {
 	TRASH_STATE_ACCEPT
 } TrashState;
 
-typedef struct _TrashApplet	TrashApplet;
+typedef struct _TrashApplet	 TrashApplet;
+typedef struct _TrashAppletClass TrashAppletClass;
 struct _TrashApplet
 {
-	PanelApplet *applet;
-	PanelAppletOrient orient;
-
-	GtkIconTheme *icon_theme;
-	TrashState icon_state;
-	GdkPixbuf *icon;
-	GtkWidget *image;
-	GtkTooltips *tooltips;
+	PanelApplet applet;
 
 	guint size;
+	PanelAppletOrient orient;
+
+	GtkTooltips *tooltips;
+	GtkWidget *image;
+	TrashState icon_state;
+
 	gint item_count;
 	gboolean is_empty;
 	gboolean drag_hover;
 
 	TrashMonitor *monitor;
 	guint monitor_signal_id;
+
+	guint update_id;
+};
+struct _TrashAppletClass {
+	PanelAppletClass parent_class;
 };
 
 #endif /* __TRASH_APPLET_H__ */

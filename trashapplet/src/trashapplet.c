@@ -1,4 +1,5 @@
-/* trashapplet.c
+/* -*- mode: c; c-basic-offset: 8 -*-
+ * trashapplet.c
  *
  * Copyright (c) 2004  Michiel Sikkes <michiel@eyesopened.nl>,
  *               2004  Emmanuele Bassi <ebassi@gmail.com>
@@ -26,10 +27,7 @@
 #include <string.h>
 #include <time.h>
 
-#include <gtk/gtktooltips.h>
-#include <gtk/gtkimage.h>
-#include <gtk/gtkstock.h>
-#include <gtk/gtkmessagedialog.h>
+#include <gtk/gtk.h>
 #include <gconf/gconf-client.h>
 #include <libgnome/libgnome.h>
 #include <libgnomeui/libgnomeui.h>
@@ -38,23 +36,54 @@
 #include "trashapplet.h"
 #include "trash-monitor.h"
 
-static void	trash_applet_do_empty 	(BonoboUIComponent *component,
-					 TrashApplet *ta,
-					 const gchar *cname);
-static void	trash_applet_show_about	(BonoboUIComponent *component,
-					 TrashApplet *ta,
-					 const gchar *cname);
-static void	trash_applet_open_folder (BonoboUIComponent *component,
-					  TrashApplet *ta,
-					  const gchar *cname);
-static void	trash_applet_show_help (BonoboUIComponent *component,
-					TrashApplet *ta,
-					const gchar *cname);
+static GConfClient *client = NULL;
 
-static gboolean		trash_applet_is_empty	(TrashApplet *trash_applet);
-static void		trash_applet_update_icon (TrashApplet *trash_applet);
-static void 		trash_applet_update_tip (TrashApplet *trash_applet);
+G_DEFINE_TYPE(TrashApplet, trash_applet, PANEL_TYPE_APPLET);
 
+static void     trash_applet_destroy            (GtkObject         *object);
+
+static void     trash_applet_size_allocate      (GtkWidget         *widget,
+						 GdkRectangle     *allocation);
+static gboolean trash_applet_button_release     (GtkWidget         *widget,
+						 GdkEventButton    *event);
+static gboolean trash_applet_key_press          (GtkWidget         *widget,
+						 GdkEventKey       *event);
+static void     trash_applet_drag_leave         (GtkWidget         *widget,
+						 GdkDragContext    *context,
+						 guint              time_);
+static gboolean trash_applet_drag_motion        (GtkWidget         *widget,
+						 GdkDragContext    *context,
+						 gint               x,
+						 gint               y,
+						 guint              time_);
+static void     trash_applet_drag_data_received (GtkWidget         *widget,
+						 GdkDragContext    *context,
+						 gint               x,
+						 gint               y,
+						 GtkSelectionData  *selectiondata,
+						 guint              info,
+						 guint              time_);
+
+static void     trash_applet_change_orient      (PanelApplet     *panel_applet,
+						 PanelAppletOrient  orient);
+
+static void trash_applet_do_empty    (BonoboUIComponent *component,
+				      TrashApplet       *applet,
+				      const gchar       *cname);
+static void trash_applet_show_about  (BonoboUIComponent *component,
+				      TrashApplet       *applet,
+				      const gchar       *cname);
+static void trash_applet_open_folder (BonoboUIComponent *component,
+				      TrashApplet       *applet,
+				      const gchar       *cname);
+static void trash_applet_show_help   (BonoboUIComponent *component,
+				      TrashApplet       *applet,
+				      const gchar       *cname);
+
+static const GtkTargetEntry drop_types[] = {
+	{ "text/uri-list", 0, 0 }
+};
+static const gint n_drop_types = G_N_ELEMENTS (drop_types);
 static const BonoboUIVerb trash_applet_menu_verbs [] = {
 	BONOBO_UI_UNSAFE_VERB ("EmptyTrash", trash_applet_do_empty),
 	BONOBO_UI_UNSAFE_VERB ("OpenTrash", trash_applet_open_folder),
@@ -63,18 +92,322 @@ static const BonoboUIVerb trash_applet_menu_verbs [] = {
 	BONOBO_UI_VERB_END
 };
 
-static GtkTargetEntry drop_types[] =
+static void trash_applet_queue_update (TrashApplet  *applet);
+static void item_count_changed        (TrashMonitor *monitor,
+				       TrashApplet  *applet);
+
+static void
+trash_applet_class_init (TrashAppletClass *class)
 {
-	{ "text/uri-list", 0, 0 }
-};
+	GTK_OBJECT_CLASS (class)->destroy = trash_applet_destroy;
+	GTK_WIDGET_CLASS (class)->size_allocate = trash_applet_size_allocate;
+	GTK_WIDGET_CLASS (class)->button_release_event = trash_applet_button_release;
+	GTK_WIDGET_CLASS (class)->key_press_event = trash_applet_key_press;
+	GTK_WIDGET_CLASS (class)->drag_leave = trash_applet_drag_leave;
+	GTK_WIDGET_CLASS (class)->drag_motion = trash_applet_drag_motion;
+	GTK_WIDGET_CLASS (class)->drag_data_received = trash_applet_drag_data_received;
+	PANEL_APPLET_CLASS (class)->change_orient = trash_applet_change_orient;
+}
 
-static gint n_drop_types = sizeof (drop_types) / sizeof (drop_types[0]);
+static void
+trash_applet_init (TrashApplet *applet)
+{
+	GnomeVFSResult res;
+	GnomeVFSURI *trash_uri;
 
-static GConfClient *client = NULL;
+	panel_applet_set_flags (PANEL_APPLET (applet),
+				PANEL_APPLET_EXPAND_MINOR);
+	/* get the default gconf client */
+	if (!client)
+		client = gconf_client_get_default ();
+
+	applet->size = panel_applet_get_size (PANEL_APPLET (applet));
+	switch (panel_applet_get_orient (PANEL_APPLET (applet))) {
+	case PANEL_APPLET_ORIENT_LEFT:
+	case PANEL_APPLET_ORIENT_RIGHT:
+		applet->orient = GTK_ORIENTATION_VERTICAL;
+		break;
+	case PANEL_APPLET_ORIENT_UP:
+	case PANEL_APPLET_ORIENT_DOWN:
+		applet->orient = GTK_ORIENTATION_HORIZONTAL;
+		break;
+	}
+	applet->tooltips = gtk_tooltips_new ();
+	g_object_ref (applet->tooltips);
+	gtk_object_sink (GTK_OBJECT (applet->tooltips));
+
+	applet->image = gtk_image_new ();
+	gtk_container_add (GTK_CONTAINER (applet), applet->image);
+	gtk_widget_show (applet->image);
+	applet->icon_state = TRASH_STATE_UNKNOWN;
+	gtk_image_set_pixel_size (GTK_IMAGE (applet->image), applet->size);
+
+	/* create local trash directory if needed */
+	res = gnome_vfs_find_directory (NULL,
+					GNOME_VFS_DIRECTORY_KIND_TRASH,
+					&trash_uri,
+					TRUE,
+					TRUE,
+					0700);
+	if (trash_uri)
+		gnome_vfs_uri_unref (trash_uri);
+	if (res != GNOME_VFS_OK) {
+		g_warning (_("Unable to find the Trash directory: %s"),
+				gnome_vfs_result_to_string (res));
+	}
+
+	/* set up trash monitor */
+	applet->monitor = trash_monitor_get ();
+	applet->monitor_signal_id =
+		g_signal_connect (applet->monitor, "item_count_changed",
+				  G_CALLBACK (item_count_changed), applet);
+
+	/* initial state */
+	applet->item_count = -1;
+	applet->is_empty = TRUE;
+	applet->drag_hover = FALSE;
+
+	/* set up DnD target */
+        gtk_drag_dest_set (GTK_WIDGET (applet),
+                           GTK_DEST_DEFAULT_ALL,
+                           drop_types, n_drop_types,
+                           GDK_ACTION_MOVE);
+}
+
+static void
+trash_applet_destroy (GtkObject *object)
+{
+	TrashApplet *applet = TRASH_APPLET (object);
+	
+	applet->image = NULL;
+	if (applet->tooltips)
+		g_object_unref (applet->tooltips);
+	applet->tooltips = NULL;
+
+	if (applet->monitor_signal_id)
+		g_signal_handler_disconnect (applet->monitor,
+					     applet->monitor_signal_id);
+	applet->monitor_signal_id = 0;
+
+	if (applet->update_id)
+		g_source_remove (applet->update_id);
+	applet->update_id = 0;
+
+	(* GTK_OBJECT_CLASS (trash_applet_parent_class)->destroy) (object);
+}
+
+static void
+trash_applet_size_allocate (GtkWidget    *widget,
+			    GdkRectangle *allocation)
+{
+	TrashApplet *applet = TRASH_APPLET (widget);
+	gint new_size;
+
+	if (applet->orient == GTK_ORIENTATION_HORIZONTAL)
+		new_size = allocation->height;
+	else
+		new_size = allocation->width;
+
+	if (new_size != applet->size) {
+		applet->size =  new_size;
+		gtk_image_set_pixel_size (GTK_IMAGE (applet->image), new_size);
+	}
+
+	(* GTK_WIDGET_CLASS (trash_applet_parent_class)->size_allocate) (widget, allocation);
+}
+
+static void
+trash_applet_change_orient (PanelApplet       *panel_applet,
+			    PanelAppletOrient  orient)
+{
+	TrashApplet *applet = TRASH_APPLET (panel_applet);
+	gint new_size;
+
+	switch (orient) {
+	case PANEL_APPLET_ORIENT_LEFT:
+	case PANEL_APPLET_ORIENT_RIGHT:
+		applet->orient = GTK_ORIENTATION_VERTICAL;
+		new_size = GTK_WIDGET (applet)->allocation.width;
+		break;
+	case PANEL_APPLET_ORIENT_UP:
+	case PANEL_APPLET_ORIENT_DOWN:
+		applet->orient = GTK_ORIENTATION_HORIZONTAL;
+		new_size = GTK_WIDGET (applet)->allocation.height;
+		break;
+	}
+	if (new_size != applet->size) {
+		applet->size =  new_size;
+		gtk_image_set_pixel_size (GTK_IMAGE (applet->image), new_size);
+	}
+
+	if (PANEL_APPLET_CLASS (trash_applet_parent_class)->change_orient)
+		(* PANEL_APPLET_CLASS (trash_applet_parent_class)->change_orient) (panel_applet, orient);
+}
+
+static gboolean
+trash_applet_button_release (GtkWidget      *widget,
+			     GdkEventButton *event)
+{
+	TrashApplet *applet = TRASH_APPLET (widget);
+
+	if (event->button == 1) {
+		trash_applet_open_folder (NULL, applet, NULL);
+		return TRUE;
+	}
+	if (GTK_WIDGET_CLASS (trash_applet_parent_class)->button_release_event)
+		return (* GTK_WIDGET_CLASS (trash_applet_parent_class)->button_release_event) (widget, event);
+	else
+		return FALSE;
+}
+static gboolean
+trash_applet_key_press (GtkWidget   *widget,
+			GdkEventKey *event)
+{
+	TrashApplet *applet = TRASH_APPLET (widget);
+
+	switch (event->keyval) {
+	case GDK_KP_Enter:
+	case GDK_ISO_Enter:
+	case GDK_3270_Enter:
+	case GDK_Return:
+	case GDK_space:
+	case GDK_KP_Space:
+		trash_applet_open_folder(NULL, applet, NULL);
+		return TRUE;
+	default:
+		break;
+	}
+	if (GTK_WIDGET_CLASS (trash_applet_parent_class)->key_press_event)
+		return (* GTK_WIDGET_CLASS (trash_applet_parent_class)->key_press_event) (widget, event);
+	else
+		return FALSE;
+}
+
+static void
+trash_applet_drag_leave (GtkWidget      *widget,
+			 GdkDragContext *context,
+			 guint           time_)
+{
+	TrashApplet *applet = TRASH_APPLET (widget);
+
+	g_message ("drag_leave");
+	if (applet->drag_hover) {
+		applet->drag_hover = FALSE;
+		trash_applet_queue_update (applet);
+	}
+}
+
+static gboolean
+trash_applet_drag_motion (GtkWidget      *widget,
+			  GdkDragContext *context,
+			  gint            x,
+			  gint            y,
+			  guint           time_)
+{
+	TrashApplet *applet = TRASH_APPLET (widget);
+
+	g_message ("drag_motion");
+	if (!applet->drag_hover) {
+		applet->drag_hover = TRUE;
+		trash_applet_queue_update (applet);
+	}
+	gdk_drag_status (context, context->suggested_action, time_);
+
+	return TRUE;
+}
+
+static void
+item_count_changed (TrashMonitor *monitor,
+		    TrashApplet  *applet)
+{
+	trash_applet_queue_update (applet);
+}
+
+static gboolean
+trash_applet_update (gpointer user_data)
+{
+	TrashApplet *applet = TRASH_APPLET (user_data);
+	gint new_item_count;
+	BonoboUIComponent *popup_component;
+	char *tip_text;
+	TrashState new_state = TRASH_STATE_UNKNOWN;
+	const char *new_icon;
+	GdkScreen *screen;
+	GtkIconTheme *icon_theme;
+
+	g_message ("update");
+	applet->update_id = 0;
+
+	new_item_count = trash_monitor_get_item_count (applet->monitor);
+	if (new_item_count != applet->item_count) {
+		applet->item_count = new_item_count;
+		applet->is_empty = (applet->item_count == 0);
+
+		/* set sensitivity on the "empty trash" context menu item */
+		popup_component = panel_applet_get_popup_component (PANEL_APPLET (applet));
+		bonobo_ui_component_set_prop (popup_component,
+					      "/commands/EmptyTrash",
+					      "sensitive",
+					      applet->is_empty ? "0" : "1",
+					      NULL);
+
+		switch (applet->item_count) {
+		case 0:
+			tip_text = g_strdup (_("No Items in Trash"));
+			break;
+		case 1:
+			tip_text = g_strdup (_("1 Item in Trash"));
+			break;
+		default:
+			tip_text = g_strdup_printf (_("%d Items in Trash"), 
+						    applet->item_count);
+		}
+		gtk_tooltips_set_tip (applet->tooltips, GTK_WIDGET (applet),
+				      tip_text, NULL);
+		g_free (tip_text);
+	}
+
+	/* work out what icon to use */
+	if (applet->drag_hover) {
+		new_state = TRASH_STATE_ACCEPT;
+		new_icon = TRASH_ICON_EMPTY_ACCEPT;
+	} else if (applet->is_empty) {
+		new_state = TRASH_STATE_EMPTY;
+		new_icon = TRASH_ICON_EMPTY;
+	} else {
+		new_state = TRASH_STATE_FULL;
+		new_icon = TRASH_ICON_FULL;
+	}
+
+	if (applet->image && applet->icon_state != new_state) {
+		/* not all themes have the "accept" variant */
+		if (new_state == TRASH_STATE_ACCEPT) {
+			screen = gtk_widget_get_screen (GTK_WIDGET (applet));
+			icon_theme = gtk_icon_theme_get_for_screen (screen);
+			if (!gtk_icon_theme_has_icon (icon_theme, new_icon))
+				new_icon = applet->is_empty
+					? TRASH_ICON_EMPTY
+					: TRASH_ICON_FULL;
+		}
+		gtk_image_set_from_icon_name (GTK_IMAGE (applet->image),
+					      new_icon, -1);
+	}
+
+	return FALSE;
+}
+static void
+trash_applet_queue_update (TrashApplet *applet)
+{
+	g_message ("queue_update");
+	if (applet->update_id == 0) {
+		applet->update_id = g_idle_add (trash_applet_update, applet);
+	}
+
+}
 
 /* TODO - Must HIGgify this dialog */
 static void
-error_dialog (TrashApplet *ta, const gchar *error, ...)
+error_dialog (TrashApplet *applet, const gchar *error, ...)
 {
 	va_list args;
 	gchar *error_string;
@@ -99,151 +432,10 @@ error_dialog (TrashApplet *ta, const gchar *error, ...)
 
 	gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
 	gtk_window_set_screen (GTK_WINDOW(dialog),
-			gtk_widget_get_screen (GTK_WIDGET (ta->applet)));
+			       gtk_widget_get_screen (GTK_WIDGET (applet)));
 	gtk_widget_show (dialog);
 
 	g_free (error_string);
-}
-
-static GnomeVFSURI *
-trash_applet_get_main_trash_directory_uri (void)
-{
-	GnomeVFSResult trash_check;
-	GnomeVFSURI *retval;
-
-	trash_check = gnome_vfs_find_directory (NULL,
-			GNOME_VFS_DIRECTORY_KIND_TRASH,
-			&retval,
-			FALSE,
-			FALSE,
-			0);
-
-	if (trash_check != GNOME_VFS_OK) {
-		g_warning (_("Unable to find the Trash directory: %s"),
-				gnome_vfs_result_to_string (trash_check));
-		return NULL;
-	}
-
-	return retval;
-}
-
-static void
-trash_applet_update_item_count (TrashApplet *trash_applet)
-{
-	BonoboUIComponent *popup_component;
-
-	g_return_if_fail (trash_applet != NULL);
-	
-	trash_applet->item_count = trash_monitor_get_item_count (trash_applet->monitor);
-
-	trash_applet->is_empty = (trash_applet->item_count == 0);
-
-	/* set sensitivity on the "empty trash" context menu item */
-	popup_component = panel_applet_get_popup_component (trash_applet->applet);
-	bonobo_ui_component_set_prop (popup_component,
-				      "/commands/EmptyTrash",
-				      "sensitive",
-				      trash_applet->is_empty ? "0" : "1",
-				      NULL);
-}
-
-static guint
-trash_applet_items_count (TrashApplet *trash_applet)
-{
-	g_return_val_if_fail (trash_applet != NULL, 0);
-
-	return trash_applet->item_count;
-}
-
-
-static gboolean
-trash_applet_is_empty (TrashApplet *trash_applet)
-{
-	g_return_val_if_fail (trash_applet != NULL, FALSE);
-
-	return trash_applet->is_empty;
-}
-
-static void
-trash_applet_update_icon (TrashApplet *trash_applet)
-{
-	TrashState new_state = TRASH_STATE_UNKNOWN;
-	gchar *icon_name = NULL;
-	GdkPixbuf *new_icon;
-	
-	g_return_if_fail (trash_applet != NULL);
-
-	if (trash_applet->icon == NULL)
-		return;
-
-	if (trash_applet->drag_hover) {
-		new_state = TRASH_STATE_ACCEPT;
-		icon_name = TRASH_ICON_EMPTY_ACCEPT;
-	} else if (trash_applet->is_empty) {
-		new_state = TRASH_STATE_EMPTY;
-		icon_name = TRASH_ICON_EMPTY;
-	} else {
-		new_state = TRASH_STATE_FULL;
-		icon_name = TRASH_ICON_FULL;
-	}
-
-	/* if the icon is up to date, return */
-	if (trash_applet->icon && trash_applet->icon_state == new_state)
-		return;
-
-	new_icon = gtk_icon_theme_load_icon (trash_applet->icon_theme,
-					     icon_name,
-					     trash_applet->size,
-					     0,
-					     NULL);
-
-	/* Handle themes that do not have a -accept icon variant */
-	if (!new_icon && new_state == TRASH_STATE_ACCEPT) {
-		icon_name = trash_applet->is_empty
-			? TRASH_ICON_EMPTY : TRASH_ICON_FULL;
-		new_icon = gtk_icon_theme_load_icon (trash_applet->icon_theme,
-						     icon_name,
-						     trash_applet->size,
-						     0,
-						     NULL);
-	}
-
-	if (trash_applet->icon)
-		g_object_unref (G_OBJECT (trash_applet->icon));
-
-	trash_applet->icon = new_icon;
-	trash_applet->icon_state = new_state;
-	
-	gtk_image_set_from_pixbuf (GTK_IMAGE (trash_applet->image), trash_applet->icon);
-	
-	return;
-}
-
-static void
-trash_applet_update_tip (TrashApplet *trash_applet)
-{
-	gchar *tip_text;
-	guint items;
-
-	items = trash_applet_items_count (trash_applet);
-	switch (items) {
-		case 0:
-			tip_text = g_strdup (_("No Items in Trash"));
-			break;
-		case 1:
-			tip_text = g_strdup (_("1 Item in Trash"));
-			break;
-		default:
-			tip_text = g_strdup_printf (_("%d Items in Trash"), 
-							items);
-	}
-
-	gtk_tooltips_set_tip (GTK_TOOLTIPS (trash_applet->tooltips),
-			     GTK_WIDGET (trash_applet->applet),
-			     tip_text,
-			     NULL);
-
-	g_free (tip_text);
 }
 
 static gint
@@ -252,7 +444,7 @@ update_transfer_callback (GnomeVFSAsyncHandle *handle,
                          gpointer user_data)
 {
        /* UI updates here */
-       TrashApplet *ta = (TrashApplet *) user_data;
+       TrashApplet *applet = TRASH_APPLET (user_data);
 
        return 1;
 }
@@ -360,34 +552,34 @@ confirm_empty_trash (GtkWidget *parent_view)
 
 static void
 trash_applet_do_empty (BonoboUIComponent *component,
-		    TrashApplet *ta,
-		    const gchar *cname)
+		       TrashApplet       *applet,
+		       const gchar       *cname)
 {
-       GnomeVFSAsyncHandle *hnd;
+	GnomeVFSAsyncHandle *hnd;
 
-       g_return_if_fail (PANEL_IS_APPLET (ta->applet));
+	g_return_if_fail (TRASH_IS_APPLET (applet));
 
-       if (trash_applet_is_empty (ta))
-               return;
+	if (applet->is_empty)
+		return;
 
-       if (!confirm_empty_trash (GTK_WIDGET (ta->applet)))
-	       return;
+	if (!confirm_empty_trash (GTK_WIDGET (applet)))
+		return;
 
-       trash_monitor_empty_trash (ta->monitor,
-				  &hnd, update_transfer_callback, ta);
+	trash_monitor_empty_trash (applet->monitor,
+				   &hnd, update_transfer_callback, applet);
 }
 
 static void
 trash_applet_open_folder (BonoboUIComponent *component,
-			  TrashApplet *ta,
-			  const gchar *cname)
+			  TrashApplet       *applet,
+			  const gchar       *cname)
 {
 	/* Open the "trash:" URI with gnome-open */
 	gchar *argv[] = { "gnome-open", EEL_TRASH_URI, NULL };
 	GError *err = NULL;
 	gboolean res;	
 
-        g_return_if_fail (PANEL_IS_APPLET (ta->applet));
+        g_return_if_fail (TRASH_IS_APPLET (applet));
 
 	res = g_spawn_async (NULL,
 			     argv, NULL,
@@ -397,42 +589,39 @@ trash_applet_open_folder (BonoboUIComponent *component,
 			     &err);
 	
 	if (! res) {
-		error_dialog (ta, _("Error while spawing nautilus:\n%s"), err->message);
+		error_dialog (applet, _("Error while spawing nautilus:\n%s"),
+			      err->message);
 		g_error_free (err);
 	}
 }
 
 static void
 trash_applet_show_help (BonoboUIComponent *component,
-                  TrashApplet *ta,
-                  const gchar *cname)
+			TrashApplet       *applet,
+			const gchar       *cname)
 {
-        GError *error = NULL;
+        GError *err = NULL;
 
-        g_return_if_fail (PANEL_IS_APPLET (ta->applet));
+        g_return_if_fail (TRASH_IS_APPLET (applet));
 
-       /* FIXME - Actually, we need a user guide */
-        gnome_help_display_desktop_on_screen (
-                NULL, "trashapplet", "trashapplet", NULL,
-                gtk_widget_get_screen (GTK_WIDGET (ta->applet)),
-               &error);
+	/* FIXME - Actually, we need a user guide */
+        gnome_help_display_desktop_on_screen
+		(NULL, "trashapplet", "trashapplet", NULL,
+		 gtk_widget_get_screen (GTK_WIDGET (applet)),
+		 &err);
 
-        if (error) {
-        	error_dialog (ta, _("There was an error displaying help: %s"), error->message);
-        	g_error_free (error);
+        if (err) {
+        	error_dialog (applet, _("There was an error displaying help: %s"), err->message);
+        	g_error_free (err);
         }
 }
 
 
 static void
 trash_applet_show_about (BonoboUIComponent *component,
-		    TrashApplet *ta,
-		    const gchar *cname)
+			 TrashApplet       *applet,
+			 const gchar       *cname)
 {
-	GdkPixbuf *pixbuf;
-	GtkWidget *about;
-	gchar *translator_credits = _("translator_credits");
-	
 	static const char *authors[] = {
 		"Michiel Sikkes <michiel@eyesopened.nl>",
 		"Emmanuele Bassi <ebassi@gmail.com>",
@@ -440,64 +629,24 @@ trash_applet_show_about (BonoboUIComponent *component,
 		"James Henstridge <james.henstridge@canonical.com>",
 		NULL
 	};
-
 	static const char *documenters[] = {
 		"Michiel Sikkes <michiel@eyesopened.nl>",
 		NULL
 	};
 
-	pixbuf = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (),
-			"gnome-fs-trash-full", 48, 0, NULL);
-
-	about = gnome_about_new ("Trash Applet", VERSION,
-			_("Copyright (c) 2004 Michiel Sikkes"),
-			_("A GNOME trash bin that lives in your panel. You can "
-			  "use it to view the trash or drag and drop items "
-			  "into the trash."),
-			authors,
-			documenters,
-			strcmp (translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
-			pixbuf);
-
-	if (pixbuf)
-		g_object_unref (pixbuf);
-
-	gtk_widget_show(about);
-
-}
-
-static void 
-update_icon_cb (GtkWidget *applet, gpointer data)
-{
-	TrashApplet *trash_applet = (TrashApplet *) data;
-
-	trash_applet->icon_state = TRASH_STATE_UNKNOWN;
-	trash_applet_update_icon(trash_applet);
-}
-
-static gboolean 
-button_release_cb (GtkWidget *applet, GdkEventButton *event, TrashApplet *ta)
-{
-  if (event->type == GDK_BUTTON_RELEASE)
-    trash_applet_open_folder(NULL, ta, NULL);
-
-  return FALSE;
-}
-
-static void
-destroy_cb (GtkWidget *applet, gpointer data)
-{
-	TrashApplet *trash_applet = (TrashApplet *) data;
-	
-	if (trash_applet) {
-	       g_signal_handler_disconnect (trash_applet->monitor,
-					    trash_applet->monitor_signal_id);
-
-               g_object_unref (trash_applet->icon);
-               g_object_unref (trash_applet->tooltips);
-
-               g_free (trash_applet);
-	}
+	gtk_show_about_dialog
+		(GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (applet))),
+		 "name", _("Trash Applet"),
+		 "version", VERSION,
+		 "copyright", "Copyright \xC2\xA9 2004 Michiel Sikkes",
+		 "comments", _("A GNOME trash bin that lives in your panel. "
+			       "You can use it to view the trash or drag "
+			       "and drop items into the trash."),
+		 "authors", authors,
+		 "documenters", documenters,
+		 "translator-credits", _("translator_credits"),
+		 "logo_icon_name", "gnome-fs-trash-full",
+		 NULL);
 }
 
 static gboolean
@@ -585,17 +734,20 @@ confirm_delete_immediately (GtkWidget *parent_view,
 }
 
 static void
-drag_data_received_cb (GtkWidget *applet, GdkDragContext *context,
-		       gint x, gint y,
-		       GtkSelectionData *selection_data,
-		       guint info, guint time, gpointer data)
+trash_applet_drag_data_received (GtkWidget        *widget,
+				 GdkDragContext   *context,
+				 gint              x,
+				 gint              y,
+				 GtkSelectionData *selectiondata,
+				 guint             info,
+				 guint             time_)
 {
+	TrashApplet *applet = TRASH_APPLET (widget);
   	GList *list, *scan;
 	GList *source_uri_list, *target_uri_list, *unmovable_uri_list;
 	GnomeVFSResult result;
-	TrashApplet *trash_applet = (TrashApplet *) data;
 
-	list = gnome_vfs_uri_list_parse (selection_data->data);
+	list = gnome_vfs_uri_list_parse (selectiondata->data);
 
 	source_uri_list = NULL;
 	target_uri_list = NULL;
@@ -633,7 +785,7 @@ drag_data_received_cb (GtkWidget *applet, GdkDragContext *context,
 	gnome_vfs_uri_list_free(list);
 
 	/* we might have added a trash dir, so recheck */
-	trash_monitor_recheck_trash_dirs (trash_applet->monitor);
+	trash_monitor_recheck_trash_dirs (applet->monitor);
 
 	if (source_uri_list) {
 		result = gnome_vfs_xfer_uri_list (source_uri_list, target_uri_list,
@@ -645,12 +797,12 @@ drag_data_received_cb (GtkWidget *applet, GdkDragContext *context,
 		gnome_vfs_uri_list_free (source_uri_list);
 		gnome_vfs_uri_list_free (target_uri_list);
 		if (result != GNOME_VFS_OK) {
-			error_dialog (trash_applet, _("Unable to move to trash:\n%s"),
+			error_dialog (applet, _("Unable to move to trash:\n%s"),
 				      gnome_vfs_result_to_string (result));
 		}
 	}
 	if (unmovable_uri_list) {
-		if (confirm_delete_immediately (GTK_WIDGET (trash_applet->applet),
+		if (confirm_delete_immediately (widget,
 						g_list_length (unmovable_uri_list),
 						source_uri_list == NULL)) {
 			result = gnome_vfs_xfer_delete_list (unmovable_uri_list,
@@ -662,64 +814,14 @@ drag_data_received_cb (GtkWidget *applet, GdkDragContext *context,
 		}
 		gnome_vfs_uri_list_free (unmovable_uri_list);
 		if (result != GNOME_VFS_OK) {
-			error_dialog (trash_applet, _("Unable to move to trash:\n%s"),
+			error_dialog (applet, _("Unable to move to trash:\n%s"),
 				      gnome_vfs_result_to_string (result));
 		}
 	}
+	gtk_drag_finish (context, TRUE, FALSE, time_);
 }
 
-static gboolean
-drag_motion_cb (GtkWidget      *applet,
-		GdkDragContext *context,
-		gint            x,
-		gint            y,
-		guint           time,
-		TrashApplet    *trash_applet)
-{
-	if (!trash_applet->drag_hover) {
-		trash_applet->drag_hover = TRUE;
-		trash_applet_update_icon (trash_applet);
-	}
-	gdk_drag_status (context, context->suggested_action, time);
-	return TRUE;
-}
-
-static void
-drag_leave_cb (GtkWidget      *applet,
-	       GdkDragContext *context,
-	       guint           time,
-	       TrashApplet    *trash_applet)
-{
-	if (trash_applet->drag_hover) {
-		trash_applet->drag_hover = FALSE;
-		trash_applet_update_icon (trash_applet);
-	}
-}
-
-static void
-changed_orient_cb (GtkWidget         *applet,
-                  PanelAppletOrient orient,
-                  TrashApplet       *trash_applet)
-{
-       GtkOrientation new_orient;
-       switch (orient) {
-               case PANEL_APPLET_ORIENT_LEFT:
-               case PANEL_APPLET_ORIENT_RIGHT:
-                       new_orient = GTK_ORIENTATION_VERTICAL;
-                       break;
-               case PANEL_APPLET_ORIENT_UP:
-               case PANEL_APPLET_ORIENT_DOWN:
-               default:
-                       new_orient = GTK_ORIENTATION_HORIZONTAL;
-                       break;
-       }
-       if (new_orient == trash_applet->orient)
-               return;
-       trash_applet->orient = new_orient;
-       trash_applet->icon_state = TRASH_STATE_UNKNOWN;
-       trash_applet_update_icon (trash_applet);
-}
-
+#if 0
 static void
 changed_background_cb (PanelApplet               *applet,
                       PanelAppletBackgroundType  type,
@@ -745,210 +847,7 @@ changed_background_cb (PanelApplet               *applet,
                                      color);
        }
 }
-
-static void
-size_allocate_cb (PanelApplet *applet,
-		  GtkAllocation *allocation,
-		  gpointer    data)
-{
-       TrashApplet *trash_applet = (TrashApplet *) data;
-       PanelAppletOrient orient;
-
-       orient = panel_applet_get_orient (applet);
-
-       if (orient == PANEL_APPLET_ORIENT_UP || orient == PANEL_APPLET_ORIENT_DOWN) {
-	 if (trash_applet->size == allocation->height)
-	   return;
-	 trash_applet->size = allocation->height;
-       } else {
-	 if (trash_applet->size == allocation->width)
-	   return;
-	 trash_applet->size = allocation->width;
-       }
-
-       trash_applet->icon_state = TRASH_STATE_UNKNOWN;
-
-       trash_applet_update_icon (trash_applet);
-       trash_applet_update_tip (trash_applet);
-}
-
-static void
-item_count_changed_cb (TrashMonitor *monitor,
-		       TrashApplet *trash_applet)
-{
-       trash_applet_update_item_count (trash_applet);
-
-       trash_applet_update_icon (trash_applet);
-       trash_applet_update_tip (trash_applet);
-}
-
-static gboolean
-key_press_cb (GtkWidget *widget, GdkEventKey *event, TrashApplet *ta)
-{
-        switch (event->keyval) {
-                case GDK_KP_Enter:
-                case GDK_ISO_Enter:
-                case GDK_3270_Enter:
-                case GDK_Return:
-                case GDK_space:
-                case GDK_KP_Space:
-                        trash_applet_open_folder(NULL, ta, NULL);
-                        break;
-                default:
-                        break;
-        }
-        return FALSE;
-}
-
-static gboolean
-trash_applet_fill (PanelApplet *applet)
-{
-	GtkWidget *box;
-	guint size;
-	TrashApplet *ta;
-        gchar *trash_dir;
-        GnomeVFSResult res;
-        GnomeVFSURI *trash_dir_uri;
-        GnomeVFSMonitorHandle *hnd;
-
-	/* get default gconf client */
-	if (!client)
-		client = gconf_client_get_default ();
-
-	panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);
-	
-	ta = g_new0 (TrashApplet, 1);
-	
-	/* init applet data */
-	ta->applet = applet;
-
-        ta->size = panel_applet_get_size (ta->applet);
-        switch (panel_applet_get_orient (ta->applet)) {
-                case PANEL_APPLET_ORIENT_LEFT:
-                case PANEL_APPLET_ORIENT_RIGHT:
-                        ta->orient = GTK_ORIENTATION_VERTICAL;
-                        break;
-                case PANEL_APPLET_ORIENT_UP:
-                case PANEL_APPLET_ORIENT_DOWN:
-                default:
-                        ta->orient = GTK_ORIENTATION_HORIZONTAL;
-                        break;
-        }
-
-	ta->item_count = 0;
-	ta->is_empty = TRUE;
-	ta->drag_hover = FALSE;
-
-	trash_dir = g_build_filename (g_get_home_dir (), ".Trash", NULL);
-	if (!g_file_test (trash_dir, G_FILE_TEST_EXISTS))
-	  mkdir (trash_dir, 0700);
-
-	g_free(trash_dir);
-	trash_dir = NULL;	  
-	  
-	trash_dir_uri = trash_applet_get_main_trash_directory_uri ();
-	if (trash_dir_uri != NULL)
-	  trash_dir = gnome_vfs_uri_to_string (trash_dir_uri, GNOME_VFS_URI_HIDE_NONE);
-
-	ta->monitor = trash_monitor_get ();
-	ta->monitor_signal_id =
-		g_signal_connect (ta->monitor, "item_count_changed",
-				  G_CALLBACK (item_count_changed_cb), ta);
-
-        /* fetch the icon theme */
-        ta->icon_theme = gtk_icon_theme_get_default ();
-	ta->icon_state = TRASH_STATE_UNKNOWN;
-			
- 
-        /* use the trash icon from the icon theme */
-        if (ta->icon == NULL) {
-                ta->icon = gtk_icon_theme_load_icon (ta->icon_theme,
-                                (trash_applet_is_empty (ta) ?
-                                 TRASH_ICON_EMPTY : TRASH_ICON_FULL),
-                                ta->size,
-                                0,
-                                NULL);
-        }
-
-        if (ta->icon) {
-                ta->image = gtk_image_new_from_pixbuf (ta->icon);
-        } else {
-                ta->image = gtk_image_new_from_stock (GTK_STOCK_MISSING_IMAGE,
-                                                      GTK_ICON_SIZE_SMALL_TOOLBAR);
-        }
- 
-        ta->tooltips = gtk_tooltips_new ();
- 
-        box = gtk_hbox_new(TRUE, 0);
-
-        gtk_box_pack_start (GTK_BOX(box), ta->image, TRUE, TRUE, 0);
-
-        gtk_drag_dest_set (GTK_WIDGET (ta->applet),
-                           GTK_DEST_DEFAULT_ALL,
-                           drop_types, n_drop_types,
-                           GDK_ACTION_MOVE | GDK_ACTION_COPY);
-
-        g_signal_connect (G_OBJECT (ta->applet),
-                          "destroy",
-                          G_CALLBACK (destroy_cb),
-                          ta);
-        g_signal_connect (G_OBJECT (ta->applet),
-                          "drag_data_received",
-                          G_CALLBACK (drag_data_received_cb),
-                          ta);
-	g_signal_connect (G_OBJECT (ta->applet),
-			  "drag_motion",
-			  G_CALLBACK (drag_motion_cb),
-			  ta);
-	g_signal_connect (G_OBJECT (ta->applet),
-			  "drag_leave",
-			  G_CALLBACK (drag_leave_cb),
-			  ta);
-        g_signal_connect (G_OBJECT (ta->applet),
-                          "change_orient",
-                          G_CALLBACK (changed_orient_cb),
-                          ta);
-        g_signal_connect (G_OBJECT (ta->applet),
-                          "size_allocate",
-                          G_CALLBACK (size_allocate_cb),
-			  ta);
-
-        g_signal_connect (G_OBJECT (ta->applet),
-                          "change_background",
-                          G_CALLBACK (changed_background_cb),
-                          ta);
-        g_signal_connect (G_OBJECT (ta->applet),
-                          "button-release-event",
-                          G_CALLBACK (button_release_cb),
-                          ta);
-	g_signal_connect (G_OBJECT (ta->icon_theme),
-			"changed",
-			G_CALLBACK(update_icon_cb),
-			ta);
-	g_signal_connect (G_OBJECT (ta->applet),
-			  "key_release_event",
-			  G_CALLBACK(key_press_cb),
-			  ta);
- 
-        gtk_container_add (GTK_CONTAINER(ta->applet), box);
-	
-	/* Set up the menu */
-	panel_applet_setup_menu_from_file (ta->applet,
-			NULL,
-			"GNOME_Panel_TrashApplet.xml",
-			NULL,
-			trash_applet_menu_verbs,
-			ta);
-
-        /* update display */
-	trash_applet_update_item_count (ta);
-        trash_applet_update_icon (ta);
-        trash_applet_update_tip (ta);
-
-	gtk_widget_show_all (GTK_WIDGET(ta->applet));
-
-	return TRUE;
-}	
+#endif
 
 static gboolean
 trash_applet_factory (PanelApplet *applet,
@@ -957,15 +856,51 @@ trash_applet_factory (PanelApplet *applet,
 {
 	gboolean retval = FALSE;
 
-  	if (!strcmp (iid, "OAFIID:GNOME_Panel_TrashApplet"))
-    		retval = trash_applet_fill (applet);
+	g_message ("factory: %s", iid);
+  	if (!strcmp (iid, "OAFIID:GNOME_Panel_TrashApplet")) {
+		/* Set up the menu */
+		panel_applet_setup_menu_from_file (applet,
+						   NULL,
+						   "GNOME_Panel_TrashApplet.xml",
+						   NULL,
+						   trash_applet_menu_verbs,
+						   applet);
+
+		trash_applet_queue_update (TRASH_APPLET (applet));
+		gtk_widget_show (GTK_WIDGET (applet));
+
+		retval = TRUE;
+	}
 
   	return retval;
 }
 
+#if 0
 PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_Panel_TrashApplet_Factory",
-		PANEL_TYPE_APPLET,
-		"trashapplet",
-		"0",
-		trash_applet_factory,
-		NULL);
+               TRASH_TYPE_APPLET,
+               "trashapplet",
+               "0",
+               trash_applet_factory,
+               NULL);
+#else
+int
+main (int argc, char *argv [])
+{
+	/* gettext stuff */
+        bindtextdomain (GETTEXT_PACKAGE, GNOMELOCALEDIR);
+        bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+        textdomain (GETTEXT_PACKAGE);
+
+	gnome_authentication_manager_init();
+
+        gnome_program_init ("trashapplet", VERSION,
+                            LIBGNOMEUI_MODULE,
+                            argc, argv,
+                            GNOME_CLIENT_PARAM_SM_CONNECT, FALSE,
+                            GNOME_PROGRAM_STANDARD_PROPERTIES,
+                            NULL);
+        return panel_applet_factory_main
+		("OAFIID:GNOME_Panel_TrashApplet_Factory", TRASH_TYPE_APPLET,
+		 trash_applet_factory, NULL);
+}
+#endif

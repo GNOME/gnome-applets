@@ -29,7 +29,7 @@ typedef struct _TrashMonitor TrashMonitor;
 typedef struct _TrashMonitorClass TrashMonitorClass;
 
 #define TRASH_TYPE_MONITOR (trash_monitor_get_type ())
-#define TRASH_MONITOR(obj) (G_TYPE_CHECK_INSTANCE_CASE ((obj), TRASH_TYPE_MONITOR, TrashMonitor))
+#define TRASH_MONITOR(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), TRASH_TYPE_MONITOR, TrashMonitor))
 #define TRASH_MONITOR_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), TRASH_TYPE_MONITOR, TrashMonitorClass))
 #define TRASH_IS_MONITOR(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), TRASH_TYPE_MONITOR))
 #define TRASH_IS_MONITOR_CLASS(obj) (G_TYPE_CHECK_CLASS_TYPE ((obj), TRASH_TYPE_MONITOR))
