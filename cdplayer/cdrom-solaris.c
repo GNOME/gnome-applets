@@ -18,14 +18,29 @@ int
 cdrom_play(cdrom_device_t cdp, int start, int stop)
 {
 	struct cdrom_ti ti;
+ 	struct cdrom_msf msf;
 
-	ti.cdti_trk0 = start;
-	ti.cdti_ind0 = 1;
-	ti.cdti_trk1 = stop;
-	ti.cdti_ind1 = 1;
-	if (ioctl(cdp->device, CDROMPLAYTRKIND, &ti) == -1) {
-		cdp->my_errno = errno;
-		return DISC_IO_ERROR;
+ 	/* Set up CDROMPLAYMSF call. If this fails try CDROMPLAYTRKIND */
+ 	msf.cdmsf_min0 = cdp->track_info[start-1].address.minute;
+ 	msf.cdmsf_sec0 = cdp->track_info[start-1].address.second;
+ 	msf.cdmsf_frame0 = cdp->track_info[start-1].address.frame;
+ 
+ 	msf.cdmsf_min1 = cdp->track_info[stop].address.minute;
+ 	msf.cdmsf_sec1 = cdp->track_info[stop].address.second;
+ 	msf.cdmsf_frame1 = cdp->track_info[stop].address.frame - 1;
+ 
+ 	msf.cdmsf_min1 += (msf.cdmsf_sec1 / 60);
+ 	msf.cdmsf_sec1 %= 60;
+
+ 	if (ioctl(cdp->device, CDROMPLAYMSF, &msf) == -1) {
+	  ti.cdti_trk0 = start;
+	  ti.cdti_ind0 = 1;
+	  ti.cdti_trk1 = stop;
+	  ti.cdti_ind1 = 1;
+	  if (ioctl(cdp->device, CDROMPLAYTRKIND, &ti) == -1) {
+	    cdp->my_errno = errno;
+	    return DISC_IO_ERROR;
+	  }
 	}
 	return DISC_NO_ERROR;
 }
@@ -163,7 +178,11 @@ cdrom_get_status(cdrom_device_t cdp, cdrom_device_status_t * stat)
 	default:
 		stat->audio_status = DISC_ERROR;
 	}
-	stat->track = subchnl.cdsc_trk;
+ 	/* If stopped we're on track zero */
+ 	if (stat->audio_status != DISC_STOP)
+ 	  stat->track = subchnl.cdsc_trk;
+ 	else
+ 	  stat->track = 0;
 	ASSIGN_MSF(stat->relative_address, subchnl.cdsc_reladdr.msf);
 	ASSIGN_MSF(stat->absolute_address, subchnl.cdsc_absaddr.msf);
 	return DISC_NO_ERROR;
@@ -228,7 +247,10 @@ cdrom_next(cdrom_device_t cdp)
 	    (cdrom_get_status(cdp, &stat) == DISC_IO_ERROR))
 		return DISC_IO_ERROR;
 	track = stat.track + 1;
-	return cdrom_play(cdp, stat.track + 1, cdp->track1);
+	/* Don't advance if on the last track */
+	if (track <= cdp->track1)
+	  return cdrom_play(cdp, stat.track + 1, cdp->track1);
+	return DISC_NO_ERROR;
 }
 
 int 
@@ -241,7 +263,10 @@ cdrom_prev(cdrom_device_t cdp)
 	    (cdrom_get_status(cdp, &stat) == DISC_IO_ERROR))
 		return DISC_IO_ERROR;
 	track = stat.track - 1;
-	return cdrom_play(cdp, stat.track - 1, cdp->track1);
+	/* Don't go back if stopped or on the first track */
+	if (track > 0)
+	  return cdrom_play(cdp, stat.track - 1, cdp->track1);
+	return DISC_NO_ERROR;
 }
 
 int

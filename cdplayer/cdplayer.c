@@ -487,7 +487,18 @@ create_cdplayer_widget(GtkWidget *window, char *globcfgpath)
 
 	gnome_config_push_prefix(globcfgpath);
 	/* NOTE THAT devpath is GLOBAL!, EEK! */
+
+	/* default to the right thing on solaris */
+#if defined(sun) || defined(__sun__)
+#if defined(SVR4) || defined(__svr4__)
+	cd->devpath = gnome_config_get_string("cdplayer/devpath=/vol/dev/aliases/cdrom0");
+#else
+	cd->devpath = gnome_config_get_string("cdplayer/devpath=/dev/rcd0");
+#endif
+#else
+	/* everything else including linux */
 	cd->devpath = gnome_config_get_string("cdplayer/devpath=/dev/cdrom");
+#endif
 	gnome_config_pop_prefix();
 	cd->cdrom_device = cdrom_open(cd->devpath, &err);
 	
