@@ -10,13 +10,13 @@ if HAVE_WORDEXP
 wordexp_SUBDIRS = $(wordexp_applets)
 endif
 
-## ghttp_applets = \
-## 	gtik
+vfs_applets = \
+	gtik
 ## 	gweather 
-## if HAVE_LIBGHTTP
-## ghttp_SUBDIRS = $(ghttp_applets)
-## endif
-## 
+if BUILD_GNOME_VFS_APPLETS
+vfs_SUBDIRS = $(vfs_applets)
+endif
+
 ## esd_applets = \
 ## 	sound-monitor
 ## if HAVE_LIBESD
@@ -58,8 +58,8 @@ SUBDIRS = \
 	$(wordexp_SUBDIRS)      \
 	$(cdplayer_SUBDIRS)	\
 	$(always_built_SUBDIRS)	\
- 	$(gtop_SUBDIRS)		
-## 	$(ghttp_SUBDIRS)	\
+ 	$(gtop_SUBDIRS)		\
+	$(vfs_SUBDIRS)	
 ## 	$(esd_SUBDIRS)		\
 ## 	omf-install
 

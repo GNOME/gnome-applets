@@ -298,24 +298,6 @@ dnl ******************************************
 dnl ******************************************
 
 
-
-dnl Check for gnome-vfs library 
-dnl AC_MSG_CHECKING(for gnome-vfs)
-dnl if gnome-config --libs vfs; then
-dnl    AC_MSG_RESULT(yes)
-dnl    VFS_LIBS=`gnome-config --libs vfs`
-dnl    VFS_CFLAGS=`gnome-config --cflags vfs`
-dnl    HAVE_GNOME_VFS=true
-dnl else
-dnl    AC_MSG_RESULT(no)
-dnl    HAVE_GNOME_VFS=false
-dnl    AC_MSG_WARN([*** \`gtik' applet will not be built ***])
-dnl fi
-dnl AC_SUBST(VFS_LIBS)
-dnl AC_SUBST(VFS_CFLAGS)
-dnl AM_CONDITIONAL(HAVE_GNOME_VFS, $HAVE_GNOME_VFS)
-
-
 AC_SUBST(CFLAGS)
 AC_SUBST(CPPFLAGS)
 AC_SUBST(LDFLAGS)
@@ -346,6 +328,9 @@ gkb-new/descs/Makefile
 gkb-new/gkb_xmmap.in
 panel-menu/Makefile
 charpick/Makefile
+gtik/Makefile
+gweather/Makefile
+gweather/pixmaps/Makefile
 ])
 
 dnl Mostly Ported Applets
@@ -385,8 +370,7 @@ dnl charpick/docs/C/Makefile
 dnl charpick/docs/es/Makefile
 dnl charpick/docs/it/Makefile
 dnl charpick/docs/ja/Makefile
-dnl gweather/Makefile
-dnl gweather/pixmaps/Makefile
+
 dnl gweather/docs/Makefile
 dnl gweather/docs/C/Makefile
 dnl gweather/docs/it/Makefile
@@ -448,7 +432,7 @@ dnl drivemount/docs/C/Makefile
 dnl drivemount/docs/es/Makefile
 dnl drivemount/docs/it/Makefile
 dnl drivemount/docs/ja/Makefile
-dnl gtik/Makefile
+
 
 
 
