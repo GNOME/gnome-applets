@@ -80,6 +80,7 @@ static void update_pixmap (DriveData *dd, gint t);
 static gint drive_update_cb (gpointer data);
 static void mount_cb (GtkWidget *widget, DriveData *dd);
 static void eject (DriveData *dd);
+static gboolean key_press_cb (GtkWidget *widget, GdkEventKey *event, DriveData *dd);
 
 static void browse_cb (BonoboUIComponent *uic,
 		       DriveData         *drivemount,
@@ -215,6 +216,9 @@ applet_fill (PanelApplet *applet)
 			  G_CALLBACK (applet_change_pixel_size), dd);
 	g_signal_connect (GTK_OBJECT (applet), "destroy",
 			  G_CALLBACK (destroy_drive_widget), dd);
+			  
+	g_signal_connect (applet, "key_press_event",
+				  G_CALLBACK (key_press_cb), dd);
 
 	panel_applet_setup_menu_from_file (PANEL_APPLET (applet),
                                            NULL,
@@ -922,4 +926,28 @@ eject (DriveData *dd)
 		gnome_execute_shell (NULL, command_line);
 		g_free (command_line);
 	}
+}
+
+static gboolean 
+key_press_cb (GtkWidget *widget, GdkEventKey *event, DriveData *dd)
+{
+	if (event->state != GDK_CONTROL_MASK)
+		return FALSE;
+	else {
+		switch (event->keyval) {
+	
+		case GDK_e:
+			eject (dd);
+			return TRUE;
+		case GDK_b:
+			browse_cb (NULL, dd, NULL);
+			return TRUE;
+		default:
+			break;
+		}
+	}
+
+	return FALSE;
+
+
 }
