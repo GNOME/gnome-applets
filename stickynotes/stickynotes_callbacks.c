@@ -118,10 +118,16 @@ gboolean stickynote_focus_cb(GtkWidget *widget, GdkEventFocus *event, StickyNote
 		stickynotes_save();
 
 	/* Show the resize bar if in focus */
-	if (event->in)
-		gtk_widget_show(glade_xml_get_widget(note->glade, "resize_bar"));
-	else
-		gtk_widget_hide(glade_xml_get_widget(note->glade, "resize_bar"));
+	if (event->in) {
+		gtk_widget_show(note->w_lock);
+		gtk_widget_show(note->w_close);
+		gtk_widget_show(glade_xml_get_widget(note->window, "resize_bar"));
+	}
+	else {
+		gtk_widget_hide(note->w_lock);
+		gtk_widget_hide(note->w_close);
+		gtk_widget_hide(glade_xml_get_widget(note->window, "resize_bar"));
+	}
 
 	return FALSE;
 }

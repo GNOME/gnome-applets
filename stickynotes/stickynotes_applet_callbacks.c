@@ -216,17 +216,17 @@ void preferences_apply_cb(GConfClient *client, guint cnxn_id, GConfEntry *entry,
 			}
 	}
 
-	else if (strcmp(entry->key, GCONF_PATH "/settings/visible") == 0) {
-		for (i = 0; i < g_list_length(stickynotes->notes); i++) {
-			StickyNote *note = g_list_nth_data(stickynotes->notes, i);
-			stickynote_set_visible(note, gconf_value_get_bool(entry->value));
-		}
-	}
-
 	else if (strcmp(entry->key, GCONF_PATH "/settings/locked") == 0) {
 		for (i = 0; i < g_list_length(stickynotes->notes); i++) {
 			StickyNote *note = g_list_nth_data(stickynotes->notes, i);
 			stickynote_set_locked(note, gconf_value_get_bool(entry->value));
+		}
+	}
+
+	else if (strcmp(entry->key, GCONF_PATH "/settings/visible") == 0) {
+		for (i = 0; i < g_list_length(stickynotes->notes); i++) {
+			StickyNote *note = g_list_nth_data(stickynotes->notes, i);
+			stickynote_set_visible(note, gconf_value_get_bool(entry->value));
 		}
 	}
 

@@ -27,11 +27,11 @@ StickyNotes *stickynotes = NULL;
 /* Popup menu on the applet */
 static const BonoboUIVerb stickynotes_applet_menu_verbs[] = 
 {
-        BONOBO_UI_UNSAFE_VERB ("create", menu_create_cb),
-        BONOBO_UI_UNSAFE_VERB ("destroy_all", menu_destroy_all_cb),
-        BONOBO_UI_UNSAFE_VERB ("preferences", menu_preferences_cb),
-        BONOBO_UI_UNSAFE_VERB ("help", menu_help_cb),
-        BONOBO_UI_UNSAFE_VERB ("about", menu_about_cb),
+        BONOBO_UI_VERB ("create", menu_create_cb),
+        BONOBO_UI_VERB ("destroy_all", menu_destroy_all_cb),
+        BONOBO_UI_VERB ("preferences", menu_preferences_cb),
+        BONOBO_UI_VERB ("help", menu_help_cb),
+        BONOBO_UI_VERB ("about", menu_about_cb),
         BONOBO_UI_VERB_END
 };
 
@@ -83,24 +83,6 @@ void stickynotes_applet_init()
 	/* Load sticky notes */
 	stickynotes_load();
 	
-	/* Show sticky notes if necessary */
-	if (gconf_client_get_bool(stickynotes->gconf, GCONF_PATH "/settings/visible", NULL)) {
-		gint i;
-		for (i = 0; i < g_list_length(stickynotes->notes); i++) {
-			StickyNote *note = g_list_nth_data(stickynotes->notes, i);
-			stickynote_set_visible(note, TRUE);
-		}
-	}
-
-	/* Lock sticky notes if necessary */
-	if (gconf_client_get_bool(stickynotes->gconf, GCONF_PATH "/settings/locked", NULL)) {
-		gint i;
-		for (i = 0; i < g_list_length(stickynotes->notes); i++) {
-			StickyNote *note = g_list_nth_data(stickynotes->notes, i);
-			stickynote_set_locked(note, TRUE);
-		}
-	}
-
 	/* Auto-save every so minutes (default 5) */
 	g_timeout_add(1000 * 60 * gconf_client_get_int(stickynotes->gconf, GCONF_PATH "/settings/autosave_time", NULL),
 		      (GSourceFunc) applet_save_cb, NULL);
@@ -121,8 +103,8 @@ void stickynotes_applet_init_about()
 		g_object_set(G_OBJECT(stickynotes->w_about), "logo", logo);
 		g_object_unref(logo);
 	}
-	if (strcmp(_("translator-credits"), "translator-credits") == 0)
-		g_object_set(G_OBJECT(stickynotes->w_about), "translator-credits", NULL);
+	if (strcmp(_("translator_credits"), "translator_credits") == 0)
+		g_object_set(G_OBJECT(stickynotes->w_about), "translator_credits", NULL);
 	
 	g_signal_connect(G_OBJECT(stickynotes->w_about), "response", G_CALLBACK(about_response_cb), NULL);
 }

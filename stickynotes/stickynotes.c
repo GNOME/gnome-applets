@@ -23,17 +23,6 @@
 #include <stickynotes_callbacks.h>
 #include <util.h>
 
-/* Popup menu on all sticky notes */
-static GnomeUIInfo popup_menu[] =
-{
-	GNOMEUIINFO_ITEM_STOCK	(N_("_New Note"), NULL, popup_create_cb, GTK_STOCK_NEW),
-	GNOMEUIINFO_ITEM_STOCK	(N_("_Delete Note"), NULL, popup_destroy_cb, GTK_STOCK_DELETE),
-	GNOMEUIINFO_SEPARATOR,
-	GNOMEUIINFO_ITEM	(N_("Change _Title"), NULL, popup_change_title_cb, NULL),
-	GNOMEUIINFO_ITEM	(N_("Change _Color"), NULL, popup_change_color_cb, NULL),
-	GNOMEUIINFO_END
-};
-
 /* Create a new (empty) Sticky Note */
 StickyNote * stickynote_new()
 {
@@ -41,16 +30,19 @@ StickyNote * stickynote_new()
 	StickyNote *note = g_new(StickyNote, 1);
 	
 	/* Create and initialize a Sticky Note */
-	note->glade = glade_xml_new(GLADE_PATH, "stickynote_window", NULL);
-	note->w_window = glade_xml_get_widget(note->glade, "stickynote_window");
-	note->w_title = glade_xml_get_widget(note->glade, "title_label");
-	note->w_body = glade_xml_get_widget(note->glade, "body_text");
-	note->w_lock = glade_xml_get_widget(note->glade, "lock_button");
-	note->w_close = glade_xml_get_widget(note->glade, "close_button");
-	note->w_resize_se = glade_xml_get_widget(note->glade, "resize_se_box");
-	note->w_resize_sw = glade_xml_get_widget(note->glade, "resize_sw_box");
+	note->window = glade_xml_new(GLADE_PATH, "stickynote_window", NULL);
+	note->menu = glade_xml_new(GLADE_PATH, "stickynote_menu", NULL);
+	note->w_window = glade_xml_get_widget(note->window, "stickynote_window");
+	note->w_menu = glade_xml_get_widget(note->menu, "stickynote_menu");
+	note->w_title = glade_xml_get_widget(note->window, "title_label");
+	note->w_body = glade_xml_get_widget(note->window, "body_text");
+	note->w_lock = glade_xml_get_widget(note->window, "lock_button");
+	note->w_close = glade_xml_get_widget(note->window, "close_button");
+	note->w_resize_se = glade_xml_get_widget(note->window, "resize_se_box");
+	note->w_resize_sw = glade_xml_get_widget(note->window, "resize_sw_box");
 	note->color = NULL;
 	note->locked = FALSE;
+	note->visible = FALSE;
 	note->x = 0;
 	note->y = 0;
 	note->w = 0;
@@ -64,14 +56,22 @@ StickyNote * stickynote_new()
 						      gconf_client_get_int(stickynotes->gconf, GCONF_PATH "/defaults/height", NULL));
 
 	/* Set the button images */
-	gtk_image_set_from_file(GTK_IMAGE(glade_xml_get_widget(note->glade, "close_img")), STICKYNOTES_ICONDIR "/close.png");
-	gtk_image_set_from_file(GTK_IMAGE(glade_xml_get_widget(note->glade, "resize_se_img")), STICKYNOTES_ICONDIR "/resize_se.png");
-	gtk_image_set_from_file(GTK_IMAGE(glade_xml_get_widget(note->glade, "resize_sw_img")), STICKYNOTES_ICONDIR "/resize_sw.png");
+	gtk_image_set_from_file(GTK_IMAGE(glade_xml_get_widget(note->window, "close_img")), STICKYNOTES_ICONDIR "/close.png");
+	gtk_image_set_from_file(GTK_IMAGE(glade_xml_get_widget(note->window, "resize_se_img")), STICKYNOTES_ICONDIR "/resize_se.png");
+	gtk_image_set_from_file(GTK_IMAGE(glade_xml_get_widget(note->window, "resize_sw_img")), STICKYNOTES_ICONDIR "/resize_sw.png");
 	
-	/* Customize the title and colors, and unlock */
+	/* Customize the title and colors, hide and unlock */
 	stickynote_set_title(note, NULL);
 	stickynote_set_color(note, NULL);
 	stickynote_set_locked(note, FALSE);
+	stickynote_set_visible(note, FALSE);
+
+	/* Connect a popup menu to all buttons and title */
+	gnome_popup_menu_attach(note->w_menu, note->w_window, note);
+	gnome_popup_menu_attach(note->w_menu, note->w_lock, note);
+	gnome_popup_menu_attach(note->w_menu, note->w_close, note);
+	gnome_popup_menu_attach(note->w_menu, note->w_resize_se, note);
+	gnome_popup_menu_attach(note->w_menu, note->w_resize_sw, note);
 
 	/* Connect signals to the sticky note */
 	g_signal_connect(G_OBJECT(note->w_lock), "clicked", G_CALLBACK(stickynote_toggle_lock_cb), note);
@@ -88,13 +88,12 @@ StickyNote * stickynote_new()
 	g_signal_connect(G_OBJECT(note->w_window), "focus-in-event", G_CALLBACK(stickynote_focus_cb), note);
 	g_signal_connect(G_OBJECT(note->w_window), "focus-out-event", G_CALLBACK(stickynote_focus_cb), note);
 	
-	/* Connect a popup menu to all buttons and title */
-	gnome_popup_menu_attach(gnome_popup_menu_new(popup_menu), note->w_window, note);
-	gnome_popup_menu_attach(gnome_popup_menu_new(popup_menu), note->w_lock, note);
-	gnome_popup_menu_attach(gnome_popup_menu_new(popup_menu), note->w_close, note);
-	gnome_popup_menu_attach(gnome_popup_menu_new(popup_menu), note->w_resize_se, note);
-	gnome_popup_menu_attach(gnome_popup_menu_new(popup_menu), note->w_resize_sw, note);
-
+	g_signal_connect(G_OBJECT(glade_xml_get_widget(note->menu, "popup_create")), "activate", G_CALLBACK(popup_create_cb), note);
+	g_signal_connect(G_OBJECT(glade_xml_get_widget(note->menu, "popup_destroy")), "activate", G_CALLBACK(popup_destroy_cb), note);
+	g_signal_connect(G_OBJECT(glade_xml_get_widget(note->menu, "popup_toggle_lock")), "toggled", G_CALLBACK(popup_toggle_lock_cb), note);
+	g_signal_connect(G_OBJECT(glade_xml_get_widget(note->menu, "popup_change_title")), "activate", G_CALLBACK(popup_change_title_cb), note);
+	g_signal_connect(G_OBJECT(glade_xml_get_widget(note->menu, "popup_change_color")), "activate", G_CALLBACK(popup_change_color_cb), note);
+	
 	return note;
 }
 
@@ -102,7 +101,7 @@ StickyNote * stickynote_new()
 void stickynote_free(StickyNote *note)
 {
 	gtk_widget_destroy(note->w_window);
-	g_object_unref(note->glade);
+	g_object_unref(note->window);
 	g_free(note->color);
 	g_free(note);
 }
@@ -208,20 +207,6 @@ void stickynote_set_color(StickyNote *note, const gchar *color_str)
 	g_object_unref(G_OBJECT(style));
 }
 
-/* Show/Hide a sticky note */
-void stickynote_set_visible(StickyNote *note, gboolean visible)
-{
-	if (visible) {
-		/* Show & raise sticky note, then move to the corrected location on screen. */
-		gtk_window_present(GTK_WINDOW(note->w_window));
-		gtk_window_move(GTK_WINDOW(note->w_window), note->x, note->y);
-	}
-	else {
-		/* Hide sticky note */
-		gtk_widget_hide(note->w_window);
-	}
-}
-
 /* Lock/Unlock a sticky note from editing */
 void stickynote_set_locked(StickyNote *note, gboolean locked)
 {
@@ -231,14 +216,32 @@ void stickynote_set_locked(StickyNote *note, gboolean locked)
 	gtk_text_view_set_editable(GTK_TEXT_VIEW(note->w_body), !locked);
 	gtk_text_view_set_cursor_visible(GTK_TEXT_VIEW(note->w_body), !locked);
 
-	/* Show appropriate icon */
-	if (!locked) {
-		gtk_image_set_from_file(GTK_IMAGE(glade_xml_get_widget(note->glade, "lock_img")), STICKYNOTES_ICONDIR "/lock.png");
-		gtk_tooltips_set_tip(stickynotes->tooltips, note->w_lock, _("Lock note"), NULL);
+	/* Show appropriate icon and tooltip */
+	if (locked) {
+		gtk_image_set_from_file(GTK_IMAGE(glade_xml_get_widget(note->window, "lock_img")), STICKYNOTES_ICONDIR "/unlock.png");
+		gtk_tooltips_set_tip(stickynotes->tooltips, note->w_lock, _("Unlock note"), NULL);
 	}
 	else {
-		gtk_image_set_from_file(GTK_IMAGE(glade_xml_get_widget(note->glade, "lock_img")), STICKYNOTES_ICONDIR "/unlock.png");
-		gtk_tooltips_set_tip(stickynotes->tooltips, note->w_lock, _("Unlock note"), NULL);
+		gtk_image_set_from_file(GTK_IMAGE(glade_xml_get_widget(note->window, "lock_img")), STICKYNOTES_ICONDIR "/lock.png");
+		gtk_tooltips_set_tip(stickynotes->tooltips, note->w_lock, _("Lock note"), NULL);
+	}
+
+	//gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(glade_xml_get_widget(note->menu, "popup_toggle_lock")), locked);
+}
+
+/* Show/Hide a sticky note */
+void stickynote_set_visible(StickyNote *note, gboolean visible)
+{
+	note->visible = visible;
+
+	if (visible) {
+		/* Show & raise sticky note, then move to the corrected location on screen. */
+		gtk_window_present(GTK_WINDOW(note->w_window));
+		gtk_window_move(GTK_WINDOW(note->w_window), note->x, note->y);
+	}
+	else {
+		/* Hide sticky note */
+		gtk_widget_hide(note->w_window);
 	}
 }
 
@@ -331,6 +334,8 @@ void stickynotes_save()
 			xmlNewProp(node, "title", title);
 			if (note->color)
 				xmlNewProp(node, "color", note->color);
+			if (note->visible)
+				xmlNewProp(node, "visible", "true");
 			if (note->locked)
 				xmlNewProp(node, "locked", "true");
 			xmlNewProp(node, "x", x_str);
@@ -448,12 +453,20 @@ void stickynotes_load()
 				g_free(body);
 			}
 
-			/* Retrieve and set the locked state of the note */
+			/* Retrieve and set the locked state of the note, by default unlocked */
 			{
 				gchar *locked = xmlGetProp(node, "locked");
 				if (locked)
 					stickynote_set_locked(note, strcmp(locked, "true") == 0);
 				g_free(locked);
+			}
+
+			/* Retrieve and set the visibility of the note, be default invisible */
+			{
+				gchar *visible = xmlGetProp(node, "visible");
+				if (visible)
+					stickynote_set_visible(note, strcmp(visible, "true") == 0);
+				g_free(visible);
 			}
 		}
 		
