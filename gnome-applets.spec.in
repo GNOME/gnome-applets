@@ -127,7 +127,7 @@ function BuildFiles() {
      sed "s:^$RPM_BUILD_ROOT%{_prefix}/share::g"` ; do
     echo $i
     case $i in
-     /applets|/asclock|/clockmail|/geyes|/gnome|/gweather|/odometer|/sound-monitor|/pixmaps|/tickastat|/xmodmap)
+     /applets|/asclock|/clockmail|/geyes|/gnome|/gweather|/odometer|/sound-monitor|/pixmaps|/tickastat|/xmodmap|/omf)
 
          ProcessDir $RPM_BUILD_ROOT%{_prefix}/share$i %{name}.files "0444, bin, bin, 0555"
          ;;
@@ -149,4 +149,3 @@ BuildFiles
 
 %files -f %{name}.files
 %doc AUTHORS COPYING ChangeLog NEWS README
-
