@@ -1,9 +1,9 @@
-<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+﻿<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "1.99.0">
-  <!ENTITY manrevision "2.1">
-  <!ENTITY date "August 2002">
+  <!ENTITY appletversion "2.3.6">
+  <!ENTITY manrevision "2.5">
+  <!ENTITY date "September 2003">
   <!ENTITY applet "Volume Control">
 ]>
 
@@ -22,7 +22,8 @@
   <articleinfo>
 	 <title>&applet; 小程序手册 V&manrevision;</title>
 	 <copyright> 
-		<year>2002</year>  
+		<year>2002</year> 
+		<year>2003</year> 
 		<holder>Sun Microsystems</holder> 
 	 </copyright> 
 	 <copyright> 
@@ -32,7 +33,7 @@
 <!-- translators: uncomment this:
 
   <copyright>
-   <year>2002</year>
+   <year>2003</year>
    <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
   </copyright>
 
@@ -45,15 +46,14 @@
 &legal;
 
 
-	 <authorgroup>
+	 <authorgroup> 
 		<author> 
 		  <firstname>Sun</firstname> 
 		  <surname>GNOME Documentation Team</surname> 
 		  <affiliation> 
 			 <orgname>Sun Microsystems</orgname> 
-			 <address> <email>gdocteam@sun.com</email> </address>
-		  </affiliation>
-		</author>
+		  </affiliation> 
+		</author> 
 		<author> 
 		  <firstname>Dan</firstname> 
 		  <surname>Mueth</surname> 
@@ -82,7 +82,43 @@
 		  <date>&date;</date> 
 		  <revdescription> 
 			 <para role="author">Sun GNOME Documentation Team
-				<email>gdocteam@sun.com</email></para>
+				</para>
+			 <para role="publisher">GNOME Documentation Project</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>音量控制小程序手册 V2.4</revnumber> 
+		  <date>2003 年 8 月</date> 
+		  <revdescription> 
+			 <para role="author">Sun GNOME Documentation Team
+				</para>
+			 <para role="publisher">GNOME Documentation Project</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>音量控制小程序手册 V2.3</revnumber> 
+		  <date>2003 年 3 月</date> 
+		  <revdescription> 
+			 <para role="author">Sun GNOME Documentation Team
+				</para>
+			 <para role="publisher">GNOME Documentation Project</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>音量控制小程序手册 V2.2</revnumber> 
+		  <date>2003 年 1 月</date> 
+		  <revdescription> 
+			 <para role="author">Sun GNOME Documentation Team
+				</para>
+			 <para role="publisher">GNOME Documentation Project</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>音量控制小程序手册 V2.1</revnumber> 
+		  <date>2002 年 8 月</date> 
+		  <revdescription> 
+			 <para role="author">Sun GNOME Documentation Team
+				</para>
 			 <para role="publisher">GNOME Documentation Project</para>
 		  </revdescription>
 		</revision>
@@ -91,13 +127,13 @@
 		  <date>2002 年 4 月</date> 
 		  <revdescription> 
 			 <para role="author">Sun GNOME Documentation Team
-				<email>gdocteam@sun.com</email></para>
+				</para>
 			 <para role="publisher">GNOME Documentation Project</para>
 		  </revdescription>
 		</revision>
 		<revision> 
-		  <revnumber>混合器小程序</revnumber> 
-		  <date>2000</date> 
+		  <revnumber>混音器小程序</revnumber> 
+		  <date>2000 年</date> 
 		  <revdescription> 
 			 <para role="author">Dan Mueth
 				<email>d-mueth@uchicago.edu</email></para>
@@ -105,11 +141,11 @@
 		  </revdescription>
 		</revision>
 	 </revhistory>
-	 <releaseinfo>本手册介绍 &applet; &appletversion; 版。
+	 <releaseinfo> 本手册介绍 &applet; &appletversion; 版。
 		</releaseinfo>
 	 <legalnotice> 
 		<title>反馈</title>
-		<para> 要报告关于 &applet; 小程序或本手册的错误或提出建议，请遵循 <ulink url="ghelp:gnome-feedback" type="help">GNOME 反馈页</ulink>中的指导。</para>
+		<para>要报告关于 &applet; 小程序或本手册的错误或提出建议，请遵循 <ulink url="ghelp:gnome-feedback" type="help">GNOME 反馈页</ulink>中的指导。</para>
 		
 	 </legalnotice>
   </articleinfo>
@@ -129,35 +165,58 @@
 			 <imageobject><imagedata fileref="figures/volumecontrol_applet.png" format="PNG"/> 
 			 </imageobject>
 			 <textobject>
-				<phrase>显示音量控制小程序。包含扬声器的图像。</phrase>
+				<phrase>显示 Volume Control 小程序。包含扬声器的图像。</phrase>
 			 </textobject>
 		  </mediaobject>
 		</screenshot>
 	 </figure>
     <!-- ==== End of Figure ======================================= -->
 <para><application>&applet;</application> 小程序使您能够控制系统音量。小程序的图标随着您选定的音量级别而改变。例如，如果您选择低音量级别，小程序图标就会显示一条声波从扬声器中散播出来。随着您把音量提高，该图标就改为显示更多的声波。</para>
-<para>要将 <application>&applet;</application> 添加到面板，请右击该面板，然后选择<menuchoice><guimenu>"添加到面板"</guimenu><guisubmenu>"多媒体"</guisubmenu><guimenuitem>"音量控制"</guimenuitem></menuchoice>。</para>
+<para>要将 <application>&applet;</application> 添加到面板，请右击该面板，然后选择<menuchoice><guimenu>&ldquo;添加到面板l&rdquo;</guimenu><guisubmenu>&ldquo;多媒体&rdquo;</guisubmenu><guimenuitem>&ldquo;音量控制&rdquo;</guimenuitem></menuchoice>。</para>
 </sect1>
 
 <sect1 id="volumecontrol-usage">
 <title>用法</title>
 
 	<sect2 id="volumecontrol-adjust">
-	<title>调整音量</title>
-	<para>单击此小程序，系统会显示一个滑块控件。要提高音量，将滑块往上移动。要降低音量，将滑块往下移动。</para>
+<title>调整音量</title>
+	<para>单击此小程序，系统会显示一个滑块控件。要增大音量，将滑块往上移动。要降低音量，将滑块往下移动。</para>
 	</sect2>
 	
 	<sect2 id="volumecontrol-off">
 	<title>关闭声音</title>
-	<para>要关闭声音，请右击小程序，然后选择<guimenuitem>"静音"</guimenuitem>。 </para>
+	<para>要关闭声音，请右击小程序，然后选择<guimenuitem>&ldquo;静音&rdquo;</guimenuitem>。 </para>
 	</sect2>
 	
 	<sect2 id="volumecontrol-add">
 	<title>访问附加的功能</title>
-	<para>要访问处理音量的其它功能，右击此小程序，然后选择<guimenuitem>"运行音频混合器"</guimenuitem>。音频混合器应用程序启动后，您就能控制音频回放和录音的音量和平衡级别。</para>
+	<para>要访问处理音量的其它功能，请右击该小程序，然后选择<guimenuitem>&ldquo;打开音量控制&rdquo;</guimenuitem>。音量控制应用程序启动后，您就可以控制音频回放和录音的音量和平衡级别。</para>
 	</sect2>
-
 
 </sect1>
 
+<sect1 id="volumecontrol-prefs">
+<title>首选项</title>
+<para>要配置 <application>&applet;</application>，请右击该小程序，然后选择<guimenuitem>&ldquo;首选项&rdquo;</guimenuitem>。</para>
+
+<variablelist>
+		  <varlistentry> 
+			 <term><guilabel>音频频道</guilabel></term> 
+			 <listitem>
+			 <para>使用 <application>&applet;</application> 小程序选择要控制的音频输出频道：</para>
+			 <itemizedlist>
+			 	<listitem><para><guilabel>主音量</guilabel></para></listitem>
+			 	<listitem><para><guilabel>合成器</guilabel></para></listitem>
+			 	<listitem><para><guilabel>Pcm</guilabel></para></listitem>
+				<listitem><para><guilabel>扬声器</guilabel></para></listitem>
+				<listitem><para><guilabel>线路</guilabel></para></listitem>
+				<listitem><para><guilabel>麦克风</guilabel></para></listitem>
+				<listitem><para><guilabel>CD</guilabel></para></listitem>
+			 </itemizedlist>
+			 </listitem>
+		  </varlistentry>
+		</variablelist>
+<para>单击<guibutton>&ldquo;关闭&rdquo;</guibutton>关闭<guilabel>&ldquo;音量控制首选项&rdquo;</guilabel>对话框。</para>
+
+</sect1>
 </article>

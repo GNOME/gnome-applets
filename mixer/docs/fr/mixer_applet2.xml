@@ -1,9 +1,9 @@
 <?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "1.99.0">
-  <!ENTITY manrevision "2.1">
-  <!ENTITY date "August 2002">
+  <!ENTITY appletversion "2.3.6">
+  <!ENTITY manrevision "2.5">
+  <!ENTITY date "September 2003">
   <!ENTITY applet "Volume Control">
 ]>
 
@@ -20,9 +20,10 @@
 <!-- please do not change the id; for translations, change lang to -->
 <!-- appropriate code -->
   <articleinfo>
-	 <title>Manuel de l'applet &applet; V&manrevision;</title>
+	 <title>&applet; Manuel de l'applet V&manrevision;</title>
 	 <copyright> 
-		<year>2003</year>  
+		<year>2002</year> 
+		<year>2003</year> 
 		<holder>Sun Microsystems</holder> 
 	 </copyright> 
 	 <copyright> 
@@ -32,7 +33,7 @@
 <!-- translators: uncomment this:
 
   <copyright>
-   <year>2002</year>
+   <year>2003</year>
    <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
   </copyright>
 
@@ -45,15 +46,14 @@
 &legal;
 
 
-	 <authorgroup>
+	 <authorgroup> 
 		<author> 
 		  <firstname>Sun</firstname> 
-		  <surname>&Eacute;quipe de documentation GNOME</surname> 
+		  <surname>GNOME Documentation Team</surname> 
 		  <affiliation> 
 			 <orgname>Sun Microsystems</orgname> 
-			 <address> <email>gdocteam@sun.com</email> </address>
-		  </affiliation>
-		</author>
+		  </affiliation> 
+		</author> 
 		<author> 
 		  <firstname>Dan</firstname> 
 		  <surname>Mueth</surname> 
@@ -80,9 +80,40 @@
 		<revision> 
 		  <revnumber>Manuel de l'applet &applet; V&manrevision;</revnumber> 
 		  <date>&date;</date> 
+		<revdescription> 
+			 <para role="author">&Eacute;quipe de documentation Sun GNOME</para>
+			 <para role="publisher">Projet de documentation GNOME</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>Manuel de l'applet Contr&ocirc;le du volume V2.4</revnumber> 
+		  <date>Ao&ucirc;t 2003</date> 
 		  <revdescription> 
-			 <para role="author">&Eacute;quipe de documentation Sun GNOME
-				<email>gdocteam@sun.com</email></para>
+			 <para role="author">&Eacute;quipe de documentation Sun GNOME</para>
+			 <para role="publisher">Projet de documentation GNOME</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>Manuel de l'applet Contr&ocirc;le du volume V2.3</revnumber> 
+		  <date>Mars 2003</date> 
+		  <revdescription> 
+			 <para role="author">&Eacute;quipe de documentation Sun GNOME</para>
+			 <para role="publisher">Projet de documentation GNOME</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>Manuel de l'applet Contr&ocirc;le du volume V2.2</revnumber> 
+		  <date>Janvier 2003</date> 
+		  <revdescription> 
+			 <para role="author">&Eacute;quipe de documentation Sun GNOME</para>
+			 <para role="publisher">Projet de documentation GNOME</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>Manuel de l'applet Contr&ocirc;le du volume V2.1</revnumber> 
+		  <date>Ao&ucirc;t 2002</date> 
+		  <revdescription> 
+			 <para role="author">&Eacute;quipe de documentation Sun GNOME</para>
 			 <para role="publisher">Projet de documentation GNOME</para>
 		  </revdescription>
 		</revision>
@@ -90,13 +121,12 @@
 		  <revnumber>Manuel de l'applet Contr&ocirc;le du volume V2.0</revnumber> 
 		  <date>Avril 2002</date> 
 		  <revdescription> 
-			 <para role="author">&Eacute;quipe de documentation Sun GNOME
-				<email>gdocteam@sun.com</email></para>
+			 <para role="author">&Eacute;quipe de documentation Sun GNOME</para>
 			 <para role="publisher">Projet de documentation GNOME</para>
 		  </revdescription>
 		</revision>
 		<revision> 
-		  <revnumber>Applet Mixeur</revnumber> 
+		  <revnumber>Applet Mixer</revnumber> 
 		  <date>2000</date> 
 		  <revdescription> 
 			 <para role="author">Dan Mueth
@@ -138,13 +168,13 @@
 <para>L'applet <application>&applet;</application> vous permet de contr&ocirc;ler le volume sonore de votre syst&egrave;me. L'ic&ocirc;ne de l'applet varie en fonction du niveau sonore s&eacute;lectionn&eacute;. Par exemple, si le volume sonore est faible, l'ic&ocirc;ne affiche une vague sonore sortant du haut-parleur. Si vous augmentez le volume, l'ic&ocirc;ne affiche plus de vagues. </para>
 <para>Pour ajouter <application>&applet;</application> &agrave; un tableau de bord, cliquez avec le bouton droit sur celui-ci, puis s&eacute;lectionnez <menuchoice>
 	<guimenu>Ajouter au tableau de bord</guimenu>
-	<guisubmenu>Multim&eacute;dia</guisubmenu>
+	<guisubmenu>Multimedia</guisubmenu>
 	<guimenuitem>Contr&ocirc;le du volume</guimenuitem>
 	</menuchoice>.</para>
 </sect1>
 
 <sect1 id="volumecontrol-usage">
-<title>Utilisation</title>
+	<title>Utilisation</title>
 
 	<sect2 id="volumecontrol-adjust">
 <title>R&eacute;glage du volume</title>
@@ -153,16 +183,40 @@
 	
 	<sect2 id="volumecontrol-off">
 	<title>D&eacute;sactivation du volume</title>
-	<para>Pour d&eacute;sactiver le volume, cliquez avec le bouton droit sur l'applet, puis s&eacute;lectionnez <guimenuitem>Sourdine</guimenuitem>. </para>
+	<para>Pour d&eacute;sactiver le volume, cliquez avec le bouton droit sur l'applet, puis s&eacute;lectionnez <guimenuitem>Mute</guimenuitem>. </para>
 	</sect2>
 	
 	<sect2 id="volumecontrol-add">
 	<title>Acc&egrave;s aux autres fonctions</title>
-	<para>Pour acc&eacute;der aux autres fonctions associ&eacute;es au r&eacute;glage du volume, cliquez avec le bouton droit sur l'applet, puis s&eacute;lectionnez <guimenuitem>ancer le mixeur audio</guimenuitem>. Une application de mixeur audio d&eacute;marre . Elle vous permet de r&eacute;gler le volume et la balance lors de la lecture et de l'enregistrement de sons.</para>
+	<para>Pour acc&eacute;der aux autres fonctions associ&eacute;es au r&eacute;glage du volume, cliquez avec le bouton droit de la souris sur l'applet, puis s&eacute;lectionnez <guimenuitem>Ouvrir le Contr&ocirc;le du volume</guimenuitem>. Une application de contr&ocirc;le de volume d&eacute;marre pour vous permettre de r&eacute;gler le volume et la balance lors de la lecture et de l'enregistrement de sons.</para>
 	</sect2>
-
 
 </sect1>
 
-</article>
+<sect1 id="volumecontrol-prefs"> 
+<title>Pr&eacute;f&eacute;rences</title>
+<para>Pour configurer <application>&applet;</application>, cliquez avec le bouton droit de la souris sur l'applet, puis s&eacute;lectionnez <guimenuitem>Pr&eacute;f&eacute;rences</guimenuitem>. </para>
 
+<variablelist>
+		  <varlistentry> 
+			 <term><guilabel>Cha&icirc;nes audio</guilabel></term> 
+			 <listitem>
+			 <para>S&eacute;lectionnez la cha&icirc;ne de sortie audio &agrave; contr&ocirc;ler &agrave; l'aide de l'applet  
+			 <application>&applet;</application> :</para>
+			 <itemizedlist>
+			 	<listitem><para><guilabel>Volume principal</guilabel></para></listitem>
+			 	<listitem><para><guilabel>Synth</guilabel></para></listitem>
+			 	<listitem><para><guilabel>Pcm</guilabel></para></listitem>
+				<listitem><para><guilabel>Speaker</guilabel></para></listitem>
+				<listitem><para><guilabel>Ligne</guilabel></para></listitem>
+				<listitem><para><guilabel>Microphone</guilabel></para></listitem>
+				<listitem><para><guilabel>CD</guilabel></para></listitem>
+			 </itemizedlist>
+			 </listitem>
+		  </varlistentry>
+		</variablelist>
+<para>Cliquez sur le bouton <guibutton>Fermer</guibutton> pour fermer la bo&icirc;te de dialogue 
+<guilabel>Pr&eacute;f&eacute;rences du contr&ocirc;le de volume</guilabel> dialog.</para>
+
+</sect1>
+</article>

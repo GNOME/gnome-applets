@@ -1,9 +1,9 @@
 <?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "1.99.0">
-  <!ENTITY manrevision "2.1">
-  <!ENTITY date "August 2002">
+  <!ENTITY appletversion "2.3.6">
+  <!ENTITY manrevision "2.5">
+  <!ENTITY date "September 2003">
   <!ENTITY applet "Volume Control">
 ]>
 
@@ -22,7 +22,8 @@
   <articleinfo>
 	 <title>&applet; 애플릿 설명서 V&manrevision;</title>
 	 <copyright> 
-		<year>2002</year>  
+		<year>2002</year> 
+		<year>2003</year> 
 		<holder>Sun Microsystems</holder> 
 	 </copyright> 
 	 <copyright> 
@@ -32,7 +33,7 @@
 <!-- translators: uncomment this:
 
   <copyright>
-   <year>2002</year>
+   <year>2003</year>
    <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
   </copyright>
 
@@ -45,16 +46,14 @@
 &legal;
 
 
-	 <authorgroup>
+	 <authorgroup> 
 		<author> 
 		  <firstname>Sun</firstname> 
-		  <surname>그놈 문서 팀
-</surname> 
+		  <surname>그놈 문서 팀</surname> 
 		  <affiliation> 
 			 <orgname>Sun Microsystems</orgname> 
-			 <address> <email>gdocteam@sun.com</email> </address>
-		  </affiliation>
-		</author>
+		  </affiliation> 
+		</author> 
 		<author> 
 		  <firstname>Dan</firstname> 
 		  <surname>Mueth</surname> 
@@ -82,8 +81,40 @@
 		  <revnumber>&applet; 애플릿 설명서 V&manrevision;</revnumber> 
 		  <date>&date;</date> 
 		  <revdescription> 
+			 <para role="author">Sun 그놈 문서 팀</para>
+			 <para role="publisher">그놈 문서 프로젝트</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>볼륨 조절 애플릿 설명서 V2.4</revnumber> 
+		  <date>2003년 8월</date> 
+		  <revdescription> 
 			 <para role="author">Sun 그놈 문서 팀
-				<email>gdocteam@sun.com</email></para>
+				</para>
+			 <para role="publisher">그놈 문서 프로젝트</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>볼륨 조절 애플릿 설명서 V2.3</revnumber> 
+		  <date>2003년 3월</date> 
+		  <revdescription> 
+			 <para role="author">Sun 그놈 문서 팀</para>
+			 <para role="publisher">그놈 문서 프로젝트</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>볼륨 조절 애플릿 설명서 V2.2</revnumber> 
+		  <date>2003년 1월</date> 
+		  <revdescription> 
+			 <para role="author">Sun 그놈 문서 팀</para>
+			 <para role="publisher">그놈 문서 프로젝트</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>볼륨 조절 애플릿 설명서 V2.1</revnumber> 
+		  <date>2002년 8월</date> 
+		  <revdescription> 
+			 <para role="author">Sun 그놈 문서 팀</para>
 			 <para role="publisher">그놈 문서 프로젝트</para>
 		  </revdescription>
 		</revision>
@@ -91,8 +122,7 @@
 		  <revnumber>볼륨 조절 애플릿 설명서 V2.0</revnumber> 
 		  <date>2002년 4월</date> 
 		  <revdescription> 
-			 <para role="author">Sun 그놈 문서 팀
-				<email>gdocteam@sun.com</email></para>
+			 <para role="author">Sun 그놈 문서 팀</para>
 			 <para role="publisher">그놈 문서 프로젝트</para>
 		  </revdescription>
 		</revision>
@@ -111,9 +141,9 @@
 		</releaseinfo>
 	 <legalnotice> 
 		<title>피드백</title>
-		<para>&applet; 애플릿 또는 이 설명서에 대한 버그를 보고하거나
+		<para>&applet; 애플릿이나 이 설명서에 대한 버그를 보고하거나
 		  의견을 제시하려면 
-		  <ulink url="ghelp:gnome-feedback" type="help">그놈 피드백 페이지</ulink>에 있는 지시 사항을 따르십시오. </para>
+		  <ulink url="ghelp:gnome-feedback" type="help">그놈 피드백 페이지</ulink>의 지시 사항을 따르십시오. </para>
 		
 	 </legalnotice>
   </articleinfo>
@@ -133,18 +163,18 @@
 			 <imageobject><imagedata fileref="figures/volumecontrol_applet.png" format="PNG"/> 
 			 </imageobject>
 			 <textobject>
-				<phrase>볼륨 조절 애플릿을 표시합니다. 스피커 이미지가 포함되어 있습니다.</phrase>
+				<phrase>볼륨 조절 애플릿을 표시합니다. 스피커 그림이 포함되어 있습니다.</phrase>
 			 </textobject>
 		  </mediaobject>
 		</screenshot>
 	 </figure>
     <!-- ==== End of Figure ======================================= -->
-<para><application>&applet;</application> 애플릿을 사용하면 시스템의 소리 볼륨을 조절할 수 있습니다. 애플릿 아이콘은 선택한 볼륨 수준에 따라 변경됩니다. 예를 들어, 낮은 볼륨 수준을 선택하면 애플릿 아이콘에는 스피커에서 소리 파형 하나가 나오는 아이콘이 표시됩니다. 볼륨을 늘리면 더 많은 소리 파형이 나오는 아이콘으로 바뀝니다. </para>
-<para>패널에 <application>&applet;</application>을(를) 추가하려면 패널을 마우스 오른쪽 버튼으로 클릭한 다음 <menuchoice>
+<para><application>&applet;</application> 애플릿을 사용하면 시스템에서 소리 볼륨을 조절할 수 있습니다. 애플릿 아이콘은 선택한 볼륨 레벨에 따라 변경됩니다. 예를 들어, 낮은 볼륨 레벨을 선택하면 애플릿 아이콘에는 스피커에서 소리 파형 하나가 나오는 아이콘이 표시됩니다. 볼륨을 크게 하면 더 많은 소리 파형이 나오는 아이콘으로 바뀝니다. </para>
+<para><application>&applet;</application>을(를) 패널에 추가하려면 패널을 마우스 오른쪽 버튼으로 클릭하고 
+<menuchoice>
 <guimenu>패널에 추가</guimenu>
 <guisubmenu>멀티미디어</guisubmenu>
-<guimenuitem>볼륨 조절</guimenuitem>
-</menuchoice>을 선택합니다.</para>
+<guimenuitem>볼륨 조절</guimenuitem></menuchoice>을 선택합니다.</para>
 </sect1>
 
 <sect1 id="volumecontrol-usage">
@@ -152,22 +182,46 @@
 
 	<sect2 id="volumecontrol-adjust">
 	<title>볼륨을 조절하려면</title>
-	<para>애플릿을 클릭하여 슬라이더 컨트롤을 표시합니다. 볼륨을 키우려면 슬라이더를 위로 이동합니다. 볼륨을 줄이려면 슬라이더를 아래로 이동합니다.</para>
+	<para>애플릿을 클릭하여 슬라이더 컨트롤을 표시합니다. 볼륨을 크게 하려면 슬라이더를 위로 이동합니다. 볼륨을 작게 하려면 슬라이더를 아래로 이동합니다.</para>
 	</sect2>
 	
 	<sect2 id="volumecontrol-off">
 	<title>볼륨을 끄려면</title>
-	<para>볼륨을 끄려면 애플릿을 마우스 오른쪽 버튼으로 클릭한 다음 
-	<guimenuitem>음소거</guimenuitem>를 선택합니다. </para>
+	<para>볼륨을 끄려면 애플릿을 마우스 오른쪽 버튼으로 클릭하고 <guimenuitem>음소거</guimenuitem>를 선택합니다. </para>
 	</sect2>
 	
 	<sect2 id="volumecontrol-add">
 	<title>추가 기능에 액세스하려면</title>
-	<para>볼륨을 조작하는 추가 기능에 액세스하려면 애플릿을 마우스 오른쪽 버튼으로 클릭하고 <guimenuitem>오디오 믹서 실행</guimenuitem>을 선택합니다. 오디오 믹서 응용프로그램을 시작하면 오디오 재생 및 녹음을 위해 볼륨을 
-	조절하고 수준을 맞출 수 있습니다.</para>
+	<para>볼륨을 조작하는 추가 기능에 액세스하려면 애플릿을 마우스 오른쪽 버튼으로 클릭하고 
+	<guimenuitem>볼륨 조절 열기</guimenuitem>를 선택합니다. 볼륨 조절 응용프로그램을 시작하면 오디오 재생 및 녹음을 위해
+	볼륨을 조절하고 레벨을 맞출 수 있습니다.</para>
 	</sect2>
-
 
 </sect1>
 
+<sect1 id="volumecontrol-prefs">
+<title>환경 설정</title>
+<para><application>&applet;</application>을(를) 구성하려면 애플릿을 마우스 오른쪽 버튼으로 클릭하고 <guimenuitem>환경 설정</guimenuitem>을 선택합니다.</para>
+
+<variablelist>
+		  <varlistentry> 
+			 <term><guilabel>오디오 채널</guilabel></term> 
+			 <listitem>
+			 <para><application>&applet;</application> 애플릿을 사용하여 조절하려는 오디오 출력 채널을 선택합니다.</para>
+			 <itemizedlist>
+			 	<listitem><para><guilabel>주 볼륨</guilabel></para></listitem>
+			 	<listitem><para><guilabel>신시</guilabel></para></listitem>
+			 	<listitem><para><guilabel>PCM</guilabel></para></listitem>
+				<listitem><para><guilabel>스피커</guilabel></para></listitem>
+				<listitem><para><guilabel>라인</guilabel></para></listitem>
+				<listitem><para><guilabel>마이크</guilabel></para></listitem>
+				<listitem><para><guilabel>CD</guilabel></para></listitem>
+			 </itemizedlist>
+			 </listitem>
+		  </varlistentry>
+		</variablelist>
+<para><guibutton>닫기</guibutton>를 클릭하여 
+<guilabel>볼륨 조절 환경 설정</guilabel> 대화 상자를 닫습니다.</para>
+
+</sect1>
 </article>

@@ -1,10 +1,10 @@
-﻿<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "1.99.0">
-  <!ENTITY manrevision "2.1">
-  <!ENTITY date "August 2002">
-  <!ENTITY applet "Volume Control">
+  <!ENTITY appletversion "2.3.6">
+  <!ENTITY manrevision "2.5">
+  <!ENTITY date "September 2003">
+  <!ENTITY applet "Lautst&auml;rkeregler">
 ]>
 
 <!-- 
@@ -22,7 +22,8 @@
   <articleinfo>
 	 <title>&applet; Applet-Handbuch V&manrevision;</title>
 	 <copyright> 
-		<year>2003</year>  
+		<year>2002</year> 
+		<year>2003</year> 
 		<holder>Sun Microsystems</holder> 
 	 </copyright> 
 	 <copyright> 
@@ -32,33 +33,32 @@
 <!-- translators: uncomment this:
 
   <copyright>
-   <year>2002</year>
+   <year>2003</year>
    <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
   </copyright>
 
    -->
 
 	 <publisher> 
-		<publishername>GNOME-Dokumentationsprojekt</publishername> 
+		<publishername>GNOME Dokumentationsprojekt</publishername> 
 	 </publisher> 
 
 &legal;
 
 
-	 <authorgroup>
+	 <authorgroup> 
 		<author> 
 		  <firstname>Sun</firstname> 
-		  <surname>GNOME-Dokumentationsteam</surname> 
+		  <surname>GNOME Dokumentationsteam</surname> 
 		  <affiliation> 
 			 <orgname>Sun Microsystems</orgname> 
-			 <address> <email>gdocteam@sun.com</email> </address>
-		  </affiliation>
-		</author>
+		  </affiliation> 
+		</author> 
 		<author> 
 		  <firstname>Dan</firstname> 
 		  <surname>Mueth</surname> 
 		  <affiliation> 
-			 <orgname>GNOME-Dokumentationsprojekt</orgname> 
+			 <orgname>GNOME Dokumentationsprojekt</orgname> 
 			 <address> <email>d-mueth@uchicago.edu</email> </address>
 		  </affiliation>
 		</author>
@@ -78,11 +78,42 @@
 
 	 <revhistory>
 		<revision> 
-		  <revnumber>&applet; Applet-Handbuch V&manrevision;</revnumber> 
+		  <revnumber>&applet;-Applet-Handbuch V&manrevision;</revnumber> 
 		  <date>&date;</date> 
 		  <revdescription> 
-			 <para role="author">Sun GNOME-Dokumentationsteam
-				<email>gdocteam@sun.com</email></para>
+			 <para role="author">Sun GNOME Dokumentationsteam</para>
+			 <para role="publisher">GNOME-Dokumentationsprojekt</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>Lautst&auml;rkeregler-Applet-Handbuch V2.4</revnumber> 
+		  <date>August 2003</date> 
+		  <revdescription> 
+			 <para role="author">Sun GNOME Dokumentationsteam</para>
+			 <para role="publisher">GNOME-Dokumentationsprojekt</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>Lautst&auml;rkeregler-Applet-Handbuch V2.3</revnumber> 
+		  <date>M&auml;rz 2003</date> 
+		  <revdescription> 
+			 <para role="author">Sun GNOME Dokumentationsteam</para>
+			 <para role="publisher">GNOME-Dokumentationsprojekt</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>Lautst&auml;rkeregler-Applet-Handbuch V2.2</revnumber> 
+		  <date>Januar 2003</date> 
+		  <revdescription> 
+			 <para role="author">Sun GNOME Dokumentationsteam</para>
+			 <para role="publisher">GNOME-Dokumentationsprojekt</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>Lautst&auml;rkeregler-Applet-Handbuch V2.1</revnumber> 
+		  <date>August 2002</date> 
+		  <revdescription> 
+			 <para role="author">Sun GNOME Dokumentationsteam</para>
 			 <para role="publisher">GNOME-Dokumentationsprojekt</para>
 		  </revdescription>
 		</revision>
@@ -90,8 +121,7 @@
 		  <revnumber>Lautst&auml;rkeregler-Applet-Handbuch V2.0</revnumber> 
 		  <date>April 2002</date> 
 		  <revdescription> 
-			 <para role="author">Sun GNOME-Dokumentationsteam
-				<email>gdocteam@sun.com</email></para>
+			 <para role="author">Sun GNOME Dokumentationsteam</para>
 			 <para role="publisher">GNOME-Dokumentationsprojekt</para>
 		  </revdescription>
 		</revision>
@@ -105,7 +135,7 @@
 		  </revdescription>
 		</revision>
 	 </revhistory>
-	 <releaseinfo>In diesem Handbuch wird Version &appletversion; von &applet; beschrieben.
+	 <releaseinfo> In diesem Handbuch wird Version &appletversion; von &applet; beschrieben.
 		</releaseinfo>
 	 <legalnotice> 
 		<title>Feedback</title>
@@ -137,9 +167,9 @@
 		</screenshot>
 	 </figure>
     <!-- ==== End of Figure ======================================= -->
-<para>Mit dem Applet <application>&applet;</application> k&ouml;nnen Sie die Lautst&auml;rke Ihres Systems einstellen. Das Applet-Symbol &auml;ndert sich 
+<para>Mit dem <application>&applet;</application>-Applet k&ouml;nnen Sie die Lautst&auml;rke in Ihrem System regulieren. Das Applet-Symbol &auml;ndert sich 
 entsprechend der eingestellten Lautst&auml;rke. W&auml;hlen Sie z. B. eine niedrige Lautst&auml;rke, wird der Lautsprecher im 
-Applet-Symbol mit nur einer Schallwelle dargestellt. Je h&ouml;her die Lautst&auml;rke, desto mehr Schallwellen werden im Symbol angezeigt. </para>
+Applet-Symbol mit nur einer Schallwelle dargestellt. Je weiter Sie die Lautst&auml;rke erh&ouml;hen, desto mehr Schallwellen werden im Symbol angezeigt. </para>
 <para>Zum Hinzuf&uuml;gen des Applets <application>&applet;</application> in ein Panel klicken Sie mit der rechten Maustaste auf das Panel, und w&auml;hlen Sie <menuchoice>
 <guimenu>Zum Panel hinzuf&uuml;gen</guimenu>
 <guisubmenu>Multimedia</guisubmenu>
@@ -151,9 +181,9 @@ Applet-Symbol mit nur einer Schallwelle dargestellt. Je h&ouml;her die Lautst&au
 <title>Verwendung</title>
 
 	<sect2 id="volumecontrol-adjust">
-	<title>So stellen Sie die Lautst&auml;rke ein</title>
-	<para>Klicken Sie auf das Applet, um einen Schieberegler anzuzeigen. Bewegen Sie den Schieberegler nach oben,
-	um die Lautst&auml;rke zu erh&ouml;hen. Ziehen Sie ihn nach unten, um die Lautst&auml;rke zu verringern.</para>
+<title>So stellen Sie die Lautst&auml;rke ein</title>
+	<para>Klicken Sie auf das Applet, um sich einen Schieberegler anzeigen zu lassen. Bewegen Sie den Schieberegler nach oben,
+	um die Lautst&auml;rke zu erh&ouml;hen. F&uuml;hren Sie ihn nach unten, um die Lautst&auml;rke zu verringern.</para>
 	</sect2>
 	
 	<sect2 id="volumecontrol-off">
@@ -163,12 +193,37 @@ Applet-Symbol mit nur einer Schallwelle dargestellt. Je h&ouml;her die Lautst&au
 	</sect2>
 	
 	<sect2 id="volumecontrol-add">
-	<title>So greifen Sie auf weitere Funktionen zu</title>
-	<para>Zugriff auf weitere Funktionen des Lautst&auml;rkereglers erhalten Sie, indem Sie mit der rechten Maustaste auf das Applet klicken und den Befehl <guimenuitem>Audio-Mixer ausf&uuml;hren</guimenuitem> w&auml;hlen. In der Anwendung Audio-Mixer k&ouml;nnen Sie die 
+	<title>So greifen Sie auf zus&auml;tzliche Funktionen zu</title>
+	<para>Zugriff auf weitere Funktionen des Lautst&auml;rkereglers erhalten Sie, indem Sie mit der rechten Maustaste auf das Applet klicken und den Befehl <guimenuitem>Lautst&auml;rkeregelung aufrufen</guimenuitem> w&auml;hlen. In der Lautst&auml;rkeregler-Anwendung k&ouml;nnen Sie die 
 	Lautst&auml;rke und Balance der Audio-Wiedergabe und Aufnahme einstellen.</para>
 	</sect2>
 
-
 </sect1>
 
+<sect1 id="volumecontrol-prefs">	
+<title>Einstellungen</title>
+<para>Zur Konfiguration von <application>&applet;</application> klicken Sie mit der rechten Maustaste auf das 
+	 Applet, und w&auml;hlen Sie <guimenuitem>Einstellungen</guimenuitem>.</para>
+
+<variablelist>
+		  <varlistentry> 
+			 <term><guilabel>Audio-Kan&auml;le</guilabel></term> 
+			 <listitem>
+			 <para>W&auml;hlen Sie den Audio-Ausgabekanal, den Sie &uuml;ber das Applet  <application>&applet;</application> regeln m&ouml;chten:</para>
+			 <itemizedlist>
+			 	<listitem><para><guilabel>Hauptlautst&auml;rke</guilabel></para></listitem>
+			 	<listitem><para><guilabel>Synth</guilabel></para></listitem>
+			 	<listitem><para><guilabel>PCM</guilabel></para></listitem>
+				<listitem><para><guilabel>Lautsprecher</guilabel></para></listitem>
+				<listitem><para><guilabel>Extern</guilabel></para></listitem>
+				<listitem><para><guilabel>Mikrofon</guilabel></para></listitem>
+				<listitem><para><guilabel>CD</guilabel></para></listitem>
+			 </itemizedlist>
+			 </listitem>
+		  </varlistentry>
+		</variablelist>
+<para>Klicken Sie auf <guibutton>Schlie&szlig;en</guibutton>, um das Dialogfeld 
+<guilabel>Einstellungen der Lautst&auml;rkeregelung</guilabel> zu schlie&szlig;en.</para>
+
+</sect1>
 </article>

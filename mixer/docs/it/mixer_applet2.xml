@@ -1,9 +1,9 @@
 <?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "1.99.0">
-  <!ENTITY manrevision "2.1">
-  <!ENTITY date "Agosto 2002">
+  <!ENTITY appletversion "2.3.6">
+  <!ENTITY manrevision "2.5">
+  <!ENTITY date "Settembre 2003">
   <!ENTITY applet "Controllo volume">
 ]>
 
@@ -22,7 +22,8 @@
   <articleinfo>
 	 <title>Manuale dell'applet &applet; V&manrevision;</title>
 	 <copyright> 
-		<year>2003</year>  
+		<year>2002</year> 
+		<year>2003</year> 
 		<holder>Sun Microsystems</holder> 
 	 </copyright> 
 	 <copyright> 
@@ -32,7 +33,7 @@
 <!-- translators: uncomment this:
 
   <copyright>
-   <year>2002</year>
+   <year>2003</year>
    <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
   </copyright>
 
@@ -45,15 +46,14 @@
 &legal;
 
 
-	 <authorgroup>
+	 <authorgroup> 
 		<author> 
 		  <firstname>Sun</firstname> 
 		  <surname>GNOME Documentation Team</surname> 
 		  <affiliation> 
 			 <orgname>Sun Microsystems</orgname> 
-			 <address> <email>gdocteam@sun.com</email> </address>
-		  </affiliation>
-		</author>
+		  </affiliation> 
+		</author> 
 		<author> 
 		  <firstname>Dan</firstname> 
 		  <surname>Mueth</surname> 
@@ -82,16 +82,52 @@
 		  <date>&date;</date> 
 		  <revdescription> 
 			 <para role="author">Sun GNOME Documentation Team
-				<email>gdocteam@sun.com</email></para>
+				</para>
 			 <para role="publisher">GNOME Documentation Project</para>
 		  </revdescription>
 		</revision>
 		<revision> 
-		  <revnumber>Manuale dell'applet Volume Control V2.0</revnumber> 
+		  <revnumber>Manuale dell'applet Controllo volume V2.4</revnumber> 
+		  <date>Agosto 2003</date> 
+		  <revdescription> 
+			 <para role="author">Sun GNOME Documentation Team
+				</para>
+			 <para role="publisher">GNOME Documentation Project</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>Manuale dell'applet Controllo volume V2.3</revnumber> 
+		  <date>Marzo 2003</date> 
+		  <revdescription> 
+			 <para role="author">Sun GNOME Documentation Team
+				</para>
+			 <para role="publisher">GNOME Documentation Project</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>Manuale dell'applet Controllo volume V2.2</revnumber> 
+		  <date>Gennaio 2003</date> 
+		  <revdescription> 
+			 <para role="author">Sun GNOME Documentation Team
+				</para>
+			 <para role="publisher">GNOME Documentation Project</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>Manuale dell'applet Controllo volume V2.1</revnumber> 
+		  <date>Agosto 2002</date> 
+		  <revdescription> 
+			 <para role="author">Sun GNOME Documentation Team
+				</para>
+			 <para role="publisher">GNOME Documentation Project</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>Manuale dell'applet Controllo volume V2.0</revnumber> 
 		  <date>Aprile 2002</date> 
 		  <revdescription> 
 			 <para role="author">Sun GNOME Documentation Team
-				<email>gdocteam@sun.com</email></para>
+				</para>
 			 <para role="publisher">GNOME Documentation Project</para>
 		  </revdescription>
 		</revision>
@@ -144,25 +180,48 @@
 </menuchoice>.</para>
 </sect1>
 
-<sect1 id="volumecontrol-usage">
+<sect1 id="volumecontrol-usage"> 
 <title>Utilizzo</title>
 
-	<sect2 id="volumecontrol-adjust">
-<title>Regolare il volume</title>
+	<sect2 id="volumecontrol-adjust"><title>Regolare il volume</title>
 	<para>Fare clic sull'applet per visualizzare il controllo a scorrimento. Per aumentare il volume, spostare il controllo verso l'alto. Per abbassare il volume, spostare il controllo verso il basso.</para>
 	</sect2>
 	
 	<sect2 id="volumecontrol-off">
 	<title>Azzerare il volume</title>
-	<para>Per azzerare il volume, fare clic con il pulsante destro del mouse sull'applet, quindi scegliere <guimenuitem>Escludi sonoro</guimenuitem>. </para>
+	<para>Per abbassare il volume al minimo, fare clic con il pulsante destro del mouse sull'applet, quindi scegliere <guimenuitem>Muto</guimenuitem>. </para>
 	</sect2>
 	
 	<sect2 id="volumecontrol-add">
 	<title>Accedere ad altre funzioni</title>
-	<para>Per accedere alle altre funzionalit&agrave; disponibili per il controllo del volume, fare clic con il pulsante destro del mouse sull'applet e scegliere <guimenuitem>Controllo volume</guimenuitem>. Viene aperto un mixer audio che permette di controllare i livelli del volume e del bilanciamento per la riproduzione e la registrazione audio.</para>
+	<para>Per accedere alle altre funzionalit&agrave; disponibili per il controllo del volume, fare clic con il pulsante destro del mouse sull'applet e scegliere <guimenuitem>Apri controllo volume</guimenuitem>. Viene aperta l'applicazione Controllo volume, che permette di controllare i livelli del volume e del bilanciamento per la riproduzione e la registrazione audio.</para>
 	</sect2>
-
 
 </sect1>
 
+<sect1 id="volumecontrol-prefs">
+<title>Preferenze</title>
+<para>Per configurare il <application>&applet;</application>, fare clic con il pulsante destro del mouse sull'applet, quindi scegliere <guimenuitem>Preferenze</guimenuitem>. </para>
+
+<variablelist>
+		  <varlistentry> 
+			 <term><guilabel>Canali audio</guilabel></term> 
+			 <listitem>
+			 <para>Selezionare il canale di uscita audio che si desidera controllare con l'applet <application>&applet;</application>:</para>
+			 <itemizedlist>
+			 	<listitem><para><guilabel>Volume principale</guilabel></para></listitem>
+			 	<listitem><para><guilabel>Synt</guilabel></para></listitem>
+			 	<listitem><para><guilabel>PCM</guilabel></para></listitem>
+				<listitem><para><guilabel>Altoparlante</guilabel></para></listitem>
+				<listitem><para><guilabel>Linea</guilabel></para></listitem>
+				<listitem><para><guilabel>Microfono</guilabel></para></listitem>
+				<listitem><para><guilabel>CD</guilabel></para></listitem>
+			 </itemizedlist>
+			 </listitem>
+		  </varlistentry>
+		</variablelist>
+<para>Fare clic su <guibutton>Chiudi</guibutton> per chiudere la finestra di dialogo
+<guilabel>Preferenze Controllo Volume</guilabel>.</para>
+
+</sect1>
 </article>
