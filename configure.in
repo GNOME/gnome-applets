@@ -47,6 +47,10 @@ dnl ******************************************
 dnl ** pkg-config dependacy checks          **
 dnl ******************************************
 
+PKG_CHECK_MODULES(GAILUTIL, gail >= 0.0.3)
+AC_SUBST(GAILUTIL_CFLAGS)
+AC_SUBST(GAILUTIL_LIBS)
+
 PKG_CHECK_MODULES(GNOME_APPLETS, libpanelapplet-2.0 >= $LIBPANEL_REQUIRED)
 AC_SUBST(GNOME_APPLETS_CFLAGS)
 AC_SUBST(GNOME_APPLETS_LIBS)
@@ -309,6 +313,7 @@ charpick/Makefile
 charpick/help/Makefile
 charpick/help/C/Makefile
 gtik/Makefile
+gtik/access/Makefile
 gweather/Makefile
 gweather/pixmaps/Makefile
 geyes/Makefile
