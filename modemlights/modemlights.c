@@ -37,7 +37,6 @@ static GdkPixmap *button_off;
 static GdkGC *gc;
 static GdkColor rxcolor;
 static GdkColor txcolor;
-static GtkTooltips *tooltip;
 
 static int update_timeout_id = FALSE;
 static int ip_socket;
@@ -133,7 +132,7 @@ static void update_tooltip(int connected, int rx, int tx)
 	else
 		strcpy(text, _("not connected"));
 
-	gtk_tooltips_set_tip(tooltip, button, text, NULL);
+	applet_widget_set_widget_tooltip(APPLET_WIDGET(applet),button,text);
 }
 
 static void redraw_display()
@@ -477,8 +476,6 @@ int main (int argc, char *argv[])
 	/* frame for all widgets */
 	frame = gtk_fixed_new();
 	gtk_widget_show(frame);
-
-	tooltip = gtk_tooltips_new();
 
 	display_area = gtk_drawing_area_new();
 	gtk_drawing_area_size(GTK_DRAWING_AREA(display_area),20,30);
