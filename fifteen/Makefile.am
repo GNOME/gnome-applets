@@ -1,29 +1,29 @@
 SUBDIRS = docs
 
 INCLUDES = -I. -I$(srcdir) 				\
-	-I$(top_srcdir)/intl -I$(top_builddir)/intl	\
+	$(GNOME_APPLETS_CFLAGS)				\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
 	-I$(includedir) 
 
-bin_PROGRAMS = fifteen_applet
+bin_PROGRAMS = fifteen_applet2
 
-fifteen_applet_SOURCES = fifteen.c
+fifteen_applet2_SOURCES = fifteen.c
 
-fifteen_applet_LDADD = \
+fifteen_applet2_LDADD = \
 		       $(GNOME_APPLETS_LIBS) $(INTLLIBS) 
 
-sysdir = $(datadir)/applets/Amusements
-sys_predata = fifteen_applet.desktop.in
-sys_DATA = $(sys_predata:.desktop.in=.desktop)
-@XML_I18N_MERGE_DESKTOP_RULE@
+
 
 pixmapdir = $(datadir)/pixmaps
 pixmap_DATA = gnome-fifteen.png
 
-gnorbadir  = $(sysconfdir)/CORBA/servers
-gnorba_DATA = fifteen_applet.gnorba
+serverdir       = $(libdir)/bonobo/servers
+server_in_files = GNOME_FifteenApplet.server.in
+server_DATA     = $(server_in_files:.server.in=.server)
+
+@XML_I18N_MERGE_SERVER_RULE@
 
 EXTRA_DIST = \
-	$(pixmap_DATA)	\
-	$(gnorba_DATA) $(sys_DATA) $(sys_predata)
+	$(server_in_files) $(pixmap_DATA)	\
+	
 	

@@ -8,8 +8,8 @@
  */
 
 #include <config.h>
-#include <applet-widget.h>
-#include <libgnomeui/gnome-window-icon.h>
+#include <gnome.h>
+#include <panel-applet.h>
 #include <assert.h>
 
 /* the piece size is for 48 and will be scaled to the proper size */
@@ -152,18 +152,16 @@ piece_event (GnomeCanvasItem *item, GdkEvent *event, gpointer data)
 	return FALSE;
 }
 
-static GtkWidget *
-create_fifteen (int size, GtkWidget **canvas)
+static void
+create_fifteen (GtkWidget *frame, int size, GtkWidget **canvas)
 {
-	GtkWidget *frame;
 	GnomeCanvasItem **board;
 	GnomeCanvasItem *text;
 	int i, x, y;
 	char buf[20];
 	double scale_factor = size/48.0;
 
-	frame = gtk_frame_new (NULL);
-	gtk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_IN);
+	
 
 	*canvas = gnome_canvas_new ();
 	gnome_canvas_set_pixels_per_unit (GNOME_CANVAS (*canvas),
@@ -231,11 +229,10 @@ create_fifteen (int size, GtkWidget **canvas)
 
 	/* Done */
 
-	return frame;
 }
 
 static void
-scramble (AppletWidget *applet, gpointer data)
+scramble (BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 {
 	GnomeCanvas *canvas;
 	GnomeCanvasItem **board;
@@ -290,7 +287,7 @@ scramble (AppletWidget *applet, gpointer data)
 }
 
 static void
-about (AppletWidget *applet, gpointer data)
+about (BonoboUIComponent *uic, gpointer user_data, const gchar *verbname)
 {
 	static const char *authors[] = { "Federico Mena", NULL };
 	static GtkWidget *about_box = NULL;
@@ -304,10 +301,12 @@ about (AppletWidget *applet, gpointer data)
 	about_box = gnome_about_new (_("Fifteen sliding pieces"),
 				     VERSION,
 				     _("Copyright (C) The Free Software Foundation"),
-				     authors,
 				     _("Sam Lloyd's all-time favorite game, "
 				       "now for your delight in the Gnome Panel. "
 				       "Guaranteed to be a productivity buster."),
+				     authors,
+				     NULL,
+				     NULL,
 				     NULL);
 	gtk_signal_connect( GTK_OBJECT(about_box), "destroy",
 			    GTK_SIGNAL_FUNC(gtk_widget_destroyed), &about_box );
@@ -317,7 +316,7 @@ about (AppletWidget *applet, gpointer data)
 }
 
 static void
-change_pixel_size(GtkWidget *w, int size, gpointer data)
+geyes_applet_size_change(PanelApplet *applet, gint size, gpointer data)
 {
 	GnomeCanvas *canvas = data;
 	double scale_factor = size/48.0;
@@ -331,66 +330,98 @@ change_pixel_size(GtkWidget *w, int size, gpointer data)
 	return;
 }
 
+
 static void
-help_cb (AppletWidget *applet, gpointer data)
+help_cb (BonoboUIComponent *uic, gpointer user_data, const gchar *verbname)
 {
+#ifdef FIXME
     GnomeHelpMenuEntry help_entry = { "fifteen_applet", "index.html"};
     gnome_help_display(NULL, &help_entry);
+#endif
 }
 
-int
-main (int argc, char **argv)
+static const BonoboUIVerb fifteen_applet_menu_verbs [] = {
+        BONOBO_UI_VERB ("Scramble", scramble),
+        BONOBO_UI_VERB ("Help", help_cb),
+        BONOBO_UI_VERB ("About", about),
+
+        BONOBO_UI_VERB_END
+};
+
+static const char fifteen_applet_menu_xml [] =
+	"<popup name=\"button3\">\n"
+	"   <menuitem name=\"Item 1\" verb=\"Scramble\" _label=\"Scramble pieces\"/>\n"
+	"   <menuitem name=\"Item 2\" verb=\"Help\" _label=\"Help\"/>\n"
+	"   <menuitem name=\"Item 3\" verb=\"About\" _label=\"About\"/>\n"
+	"</popup>\n";
+
+
+static BonoboObject *
+fifteen_applet_new (void)
 {
 	GtkWidget *applet;
 	GtkWidget *fifteen;
 	GtkWidget *canvas = NULL;
 	int size;
+	
+	fifteen = gtk_frame_new (NULL);
+	gtk_frame_set_shadow_type (GTK_FRAME (fifteen), GTK_SHADOW_IN);
+	
+	applet = panel_applet_new (fifteen);
+	size = panel_applet_get_size(PANEL_APPLET(applet));
+	
+	create_fifteen (fifteen, size, &canvas);
+	
+	gtk_widget_show_all (applet);
+	
+	panel_applet_setup_menu (PANEL_APPLET (applet),
+				 fifteen_applet_menu_xml,
+				 fifteen_applet_menu_verbs,
+				 fifteen);
+	
+	g_signal_connect (G_OBJECT (applet),
+			  "change_size",
+			  G_CALLBACK (geyes_applet_size_change),
+			  canvas);
 
-	bindtextdomain (PACKAGE, GNOMELOCALEDIR);
-	textdomain (PACKAGE);
+#ifdef FIXME
+	
 
-	applet_widget_init ("fifteen_applet", VERSION, argc,
-			    argv, NULL, 0, NULL);
-	gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gnome-fifteen.png");
+	test_applet_setup_tooltips (GTK_WIDGET (applet));
 
-	applet = applet_widget_new ("fifteen_applet");
-	if (!applet)
-		g_error (_("Can't create fifteen applet!"));
+	g_signal_connect (G_OBJECT (applet),
+			  "change_orient",
+			  G_CALLBACK (test_applet_handle_orient_change),
+			  label);
 
-	size = applet_widget_get_panel_pixel_size(APPLET_WIDGET(applet));
-	fifteen = create_fifteen (size, &canvas);
-	applet_widget_add (APPLET_WIDGET (applet), fifteen);
-	gtk_widget_show (fifteen);
+	g_signal_connect (G_OBJECT (applet),
+			  "change_background",
+			  G_CALLBACK (test_applet_handle_background_change),
+			  label);
 
-	/* here it is ok to connect here, this is because we have already
-	 * gotten the size before, and thus don't care about the initial
-	 * signal */
-	gtk_signal_connect(GTK_OBJECT(applet),"change_pixel_size",
-			   GTK_SIGNAL_FUNC(change_pixel_size),
-			   canvas);
-
-
-	gtk_widget_show (applet);
-
-	applet_widget_register_callback (APPLET_WIDGET (applet),
-					 "scramble",
-					 _("Scramble pieces"),
-					 scramble,
-					 fifteen);
-
-	applet_widget_register_stock_callback (APPLET_WIDGET (applet),
-					       "help",
-					       GNOME_STOCK_PIXMAP_HELP,
-					       _("Help"), help_cb, NULL);
-
-	applet_widget_register_stock_callback (APPLET_WIDGET (applet),
-					       "about",
-					       GNOME_STOCK_MENU_ABOUT,
-					       _("About..."),
-					       about,
-					       NULL);
-
-	applet_widget_gtk_main ();
-
-	return 0;
+	g_signal_connect (G_OBJECT (applet),
+			  "save_yourself",
+			  G_CALLBACK (test_applet_handle_save_yourself),
+			  label);
+#endif			  
+	return BONOBO_OBJECT (panel_applet_get_control (PANEL_APPLET (applet)));
 }
+
+static BonoboObject *
+fifteen_applet_factory (BonoboGenericFactory *this,
+		     const gchar          *iid,
+		     gpointer              data)
+{
+	BonoboObject *applet = NULL;
+    
+	if (!strcmp (iid, "OAFIID:GNOME_FifteenApplet"))
+		applet = fifteen_applet_new (); 
+    
+	return applet;
+}
+
+PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_FifteenApplet_Factory",
+			     "Fifteen Applet",
+			     "0",
+			     fifteen_applet_factory,
+			     NULL)
