@@ -7,6 +7,11 @@ INCLUDES = -I. -I$(srcdir) 				\
 
 bin_PROGRAMS = batmon_applet
 
+BUILT_SOURCES = dummy.cc
+
+dummy.cc:
+	@touch dummy.cc
+
 batmon_applet_SOURCES = batmon.c
 
 MICO_VERS = 2.0.5

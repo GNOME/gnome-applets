@@ -3,6 +3,11 @@ INCLUDES = -I. -I$(srcdir) 				\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
 	-I$(includedir) $(GNOME_INCLUDEDIR)
 
+BUILT_SOURCES = dummy.cc
+
+dummy.cc:
+	@touch dummy.cc
+
 bin_PROGRAMS = clock_applet
 
 clock_applet_SOURCES = clock.c
