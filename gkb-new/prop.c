@@ -65,6 +65,7 @@ static GtkWidget *label = NULL;
 void
 gkb_apply (GkbPropertyBoxInfo * pbi)
 {
+  gint selected;
   /* Swap the lists of keymaps */
   gkb_keymap_free_list (gkb->maps);
   gkb->maps = gkb_keymap_copy_list (pbi->keymaps);
@@ -73,15 +74,17 @@ gkb_apply (GkbPropertyBoxInfo * pbi)
   gkb->n = g_list_length (gkb->maps);
   gkb->cur = 0;
   gkb->keymap = g_list_nth_data (gkb->maps, 0);
-
  
   /* Render & update */
   gkb_sized_render (gkb);
   gkb_update (gkb, TRUE);
 
+  selected = g_list_index(pbi->keymaps,pbi->selected_keymap);
+
   /* We need keymap->parent to be valid, reload list */
   gkb_keymap_free_list (pbi->keymaps);
   pbi->keymaps = gkb_keymap_copy_list (gkb->maps);
+  pbi->selected_keymap = g_list_nth_data (pbi->keymaps,selected);
   gkb_prop_list_reload (pbi);
 
 }

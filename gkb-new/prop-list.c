@@ -116,7 +116,7 @@ gkb_prop_list_reload (GkbPropertyBoxInfo * pbi)
   GList *list;
 
   g_return_if_fail (pbi != NULL);
-
+  
   selected_keymap = pbi->selected_keymap;
   
   gtk_list_store_clear (GTK_LIST_STORE(gtk_tree_view_get_model(GTK_TREE_VIEW(pbi->list))));
@@ -126,19 +126,29 @@ gkb_prop_list_reload (GkbPropertyBoxInfo * pbi)
     {
       keymap = (GkbKeymap *) list->data;
       gkb_prop_list_create_item (keymap, pbi->list, &item);
-      if (keymap == selected_keymap)
+      if (keymap == selected_keymap) {
 	selected_child = gtk_tree_iter_copy (&item);
+      }
     }
 
   if (selected_child) {
       GtkTreePath *path;
+      GtkTreeSelection *selection;
   	
       path = gtk_tree_model_get_path (gtk_tree_view_get_model(GTK_TREE_VIEW(pbi->list)),
       				      selected_child);
-      gtk_tree_view_set_cursor (GTK_TREE_VIEW(pbi->list), path, NULL, FALSE);
+      if (path) {
+        gtk_tree_view_set_cursor (GTK_TREE_VIEW(pbi->list), path, NULL, FALSE);
+        selection = gtk_tree_view_get_selection (GTK_TREE_VIEW(pbi->list));
+        gtk_tree_selection_select_path (selection, path);
+      } 
+
       gtk_tree_path_free (path);
-      gtk_tree_iter_free (selected_child);		
+      gtk_tree_iter_free (selected_child);
   }
+
+  gtk_widget_grab_focus (GTK_WIDGET (pbi->list));
+
   gtk_widget_show_all (GTK_WIDGET (pbi->list));
 }
 
@@ -220,9 +230,13 @@ gkb_prop_list_up_down_clicked (GkbPropertyBoxInfo * pbi, gboolean up)
   else
     gkb_util_g_list_swap (keymap_node, keymap_node->next);
   
-  /*FIXME */ 
+  /* FIXME 
 
   pbi->selected_keymap = NULL;
+
+  */
+
+  gkb_prop_list_reload (pbi);
 
   gkb_apply(pbi);
 
@@ -321,14 +335,18 @@ gkb_prop_list_button_clicked_cb (GtkWidget * button, GkbPropertyBoxInfo * pbi)
   if (button == pbi->add_button)
     gkb_prop_map_add (pbi);
    else
-  if (button == pbi->edit_button)
-    gkb_prop_map_edit (pbi);
+  if (button == pbi->edit_button) {
+    gkb_prop_map_edit (pbi); 
+    gkb_prop_list_reload (pbi);
+    }
   else if (button == pbi->delete_button)
     gkb_prop_list_delete_clicked (pbi);
   else if (button == pbi->up_button)
     gkb_prop_list_up_down_clicked (pbi, TRUE);
   else if (button == pbi->down_button)
     gkb_prop_list_up_down_clicked (pbi, FALSE);
+
+  gkb_prop_list_update_sensitivity(pbi);
 
 }
 
@@ -352,9 +370,9 @@ gkb_prop_list_create_button (const gchar * name, GkbPropertyBoxInfo * pbi)
   gtk_container_add (GTK_CONTAINER (pbi->buttons_vbox), button);
   /* FIXME, we don't want to flag the GTK_CAN_DEFAULT but if
    * we don't the widgets look ugly. This a hacky solution for
-   * a cosmetic problem. */
+   * a cosmetic problem. 
   GTK_WIDGET_SET_FLAGS (button, GTK_CAN_DEFAULT);
-
+*/
   return button;
 }
 
@@ -406,6 +424,7 @@ gkb_prop_list_load_keymaps (GkbPropertyBoxInfo * pbi)
 
   pbi->keymaps = gkb_keymap_copy_list (gkb->maps);
 
+  g_print("reload\n");
   gkb_prop_list_reload (pbi);
   gtk_widget_show (GTK_WIDGET(pbi->list));
 }
@@ -436,6 +455,8 @@ gkb_prop_create_scrolled_window (GkbPropertyBoxInfo * pbi)
   store = gtk_list_store_new (3, GDK_TYPE_PIXBUF, G_TYPE_STRING,G_TYPE_POINTER);	
   model = GTK_TREE_MODEL(store);	
   treeview = gtk_tree_view_new_with_model (model);
+  GTK_WIDGET_SET_FLAGS (treeview, GTK_CAN_DEFAULT);
+    
   pbi->list = GTK_TREE_VIEW (treeview);
   
   column = gtk_tree_view_column_new ();
@@ -462,6 +483,7 @@ gkb_prop_create_scrolled_window (GkbPropertyBoxInfo * pbi)
 
   g_object_unref (G_OBJECT (model));
   gtk_container_add (GTK_CONTAINER (scrolled_window), GTK_WIDGET(treeview));	
+
 
   gtk_widget_show (GTK_WIDGET(treeview));
   gkb_prop_list_load_keymaps (pbi);
