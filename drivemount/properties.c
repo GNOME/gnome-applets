@@ -1,8 +1,15 @@
 /*#####################################################*/
-/*##           drivemount applet 0.1.1 beta          ##*/
+/*##           drivemount applet 0.2.0               ##*/
 /*#####################################################*/
 
 #include "drivemount.h"
+
+static void pixmap_cdrom_cb(GtkWidget *widget, gpointer data);
+static void pixmap_zipdrive_cb(GtkWidget *widget, gpointer data);
+static void pixmap_harddisk_cb(GtkWidget *widget, gpointer data);
+static void update_delay_cb( GtkWidget *widget, gpointer data );
+static void property_apply_cb( GtkWidget *widget, void *data, DriveData *dd);
+static gint property_destroy_cb( GtkWidget *w, DriveData *dd);
 
 void property_load(char *path, DriveData *dd)
 {
@@ -36,35 +43,35 @@ void pixmap_floppy_cb(GtkWidget *widget, gpointer data)
         gnome_property_box_changed(GNOME_PROPERTY_BOX(dd->propwindow));
 }
 
-void pixmap_cdrom_cb(GtkWidget *widget, gpointer data)
+static void pixmap_cdrom_cb(GtkWidget *widget, gpointer data)
 {
 	DriveData *dd = data;
 	dd->prop_device_pixmap = 1;
         gnome_property_box_changed(GNOME_PROPERTY_BOX(dd->propwindow));
 }
 
-void pixmap_zipdrive_cb(GtkWidget *widget, gpointer data)
+static void pixmap_zipdrive_cb(GtkWidget *widget, gpointer data)
 {
 	DriveData *dd = data;
 	dd->prop_device_pixmap = 2;
         gnome_property_box_changed(GNOME_PROPERTY_BOX(dd->propwindow));
 }
 
-void pixmap_harddisk_cb(GtkWidget *widget, gpointer data)
+static void pixmap_harddisk_cb(GtkWidget *widget, gpointer data)
 {
 	DriveData *dd = data;
 	dd->prop_device_pixmap = 3;
         gnome_property_box_changed(GNOME_PROPERTY_BOX(dd->propwindow));
 }
 
-void update_delay_cb( GtkWidget *widget, gpointer data )
+static void update_delay_cb( GtkWidget *widget, gpointer data )
 {
 	DriveData *dd = data;
         dd->prop_interval = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(dd->prop_spin));
         gnome_property_box_changed(GNOME_PROPERTY_BOX(dd->propwindow));
 }
 
-void property_apply_cb( GtkWidget *widget, void *data, DriveData *dd)
+static void property_apply_cb( GtkWidget *widget, void *data, DriveData *dd)
 {
 	gchar *new_file;
 	new_file = gtk_entry_get_text(GTK_ENTRY(dd->mount_point_entry));
@@ -83,7 +90,7 @@ void property_apply_cb( GtkWidget *widget, void *data, DriveData *dd)
 	applet_widget_sync_config(APPLET_WIDGET(dd->applet));
 }
 
-gint property_destroy_cb( GtkWidget *w, DriveData *dd)
+static gint property_destroy_cb( GtkWidget *w, DriveData *dd)
 {
         dd->propwindow = NULL;
 	return FALSE;
@@ -95,7 +102,6 @@ void property_show(AppletWidget *applet, gpointer data)
 	GtkWidget *frame;
 	GtkWidget *hbox;
 	GtkWidget *label;
-	GtkWidget *button;
 	GtkWidget *omenu;
 	GtkWidget *menu;
 	GtkWidget *item;

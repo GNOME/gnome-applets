@@ -1,5 +1,5 @@
 /*#####################################################*/
-/*##           drivemount applet 0.1.1 beta          ##*/
+/*##           drivemount applet 0.2.0               ##*/
 /*#####################################################*/
 
 #include "drivemount.h"
@@ -20,6 +20,20 @@
 #include "harddisk_v_out.xpm"
 #include "harddisk_h_in.xpm"
 #include "harddisk_h_out.xpm"
+
+static void about_cb (AppletWidget *widget, gpointer data);
+static dev_t get_device(gchar *file);
+static gint device_is_mounted(DriveData *dd);
+static void update_pixmap(DriveData *dd, gint t);
+static gint drive_update_cb(gpointer data);
+static int mount_cb(GtkWidget *widget, gpointer data);
+static void eject_cb(AppletWidget *applet, gpointer data);
+static void free_pixmaps(DriveData *dd);
+static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data);
+static gint applet_save_session(GtkWidget *widget, char *privcfgpath, char *globcfgpath, gpointer data);
+static void destroy_drive_widget(GtkWidget *widget, gpointer data);
+static DriveData * create_drive_widget(GtkWidget *applet);
+static void applet_start_new_applet(const gchar *param, gpointer data);
 
 static void about_cb (AppletWidget *widget, gpointer data)
 {
@@ -43,7 +57,7 @@ static void about_cb (AppletWidget *widget, gpointer data)
 	gtk_widget_show (about);
 }
 
-static dev_t get_device(char *file)
+static dev_t get_device(gchar *file)
 {
 	struct stat file_info;
 	dev_t t;
@@ -56,11 +70,19 @@ static dev_t get_device(char *file)
 	return t;
 }
 
-static void update_pixmap(DriveData *dd, int t)
+static gint device_is_mounted(DriveData *dd)
+{
+	if (get_device(dd->mount_base) == get_device(dd->mount_point))
+		return FALSE;
+	else
+		return TRUE;
+}
+
+static void update_pixmap(DriveData *dd, gint t)
 {
 	GdkPixmap *pixmap;
-	char * text;
-	gchar * tiptext;
+	gchar *text;
+	gchar *tiptext;
 	if (t)
 		{
 		pixmap = dd->pixmap_for_in;
@@ -81,7 +103,7 @@ static gint drive_update_cb(gpointer data)
 {
 	DriveData *dd = data;
 
-	if (get_device(dd->mount_base) == get_device(dd->mount_point))
+	if (!device_is_mounted(dd))
 		{
 		/* device not mounted */
 		if (dd->mounted)
@@ -106,17 +128,48 @@ static gint drive_update_cb(gpointer data)
 static int mount_cb(GtkWidget *widget, gpointer data)
 {
 	DriveData *dd = data;
-	char command_line[300];
+	gchar command_line[300];
+	gchar buf[200];
+	FILE *fp;
+	GString *str;
+	gint check = device_is_mounted(dd);
 
-	if (get_device(dd->mount_base) == get_device(dd->mount_point))
-		{
-		sprintf(command_line, "mount %s", dd->mount_point);
-		}
+	if (!check)
+		sprintf(command_line, "mount %s 2>&1", dd->mount_point);
 	else
-		{
-		sprintf(command_line, "umount %s", dd->mount_point);
-		}
+		sprintf(command_line, "umount %s 2>&1", dd->mount_point);
+
 	system (command_line);
+
+	fp = popen(command_line, "r");
+
+	if (!fp)
+		{
+		printf("unable to run command: %s\n", command_line);
+		return FALSE;
+		}
+
+	str = g_string_new(NULL);
+
+	while (fgets(buf, 200, fp) != NULL)
+		{
+		gchar *b = buf;
+		g_string_append(str, b);
+		}
+
+	pclose (fp);
+
+	/* now if the mount status is the same print
+	   the returned output from (u)mount, we are assuming an error */
+	if (check == device_is_mounted(dd))
+		{
+		g_string_prepend(str, "\" reported:\n");
+		g_string_prepend(str, command_line);
+		g_string_prepend(str, "Drivemount command failed.\n\"");
+		gnome_warning_dialog(str->str);
+		}
+
+	g_string_free(str, TRUE);
 	drive_update_cb(dd);
 	return FALSE;
 }
@@ -186,6 +239,15 @@ void start_callback_update(DriveData *dd)
 
 }
 
+static void free_pixmaps(DriveData *dd)
+{
+	if (dd->pixmap_for_in) gdk_pixmap_unref(dd->pixmap_for_in);
+	if (dd->pixmap_for_out) gdk_pixmap_unref(dd->pixmap_for_out);
+	dd->pixmap_for_in = NULL;
+	dd->pixmap_for_out = NULL;
+}
+
+
 void create_pixmaps(DriveData *dd)
 {
 	GdkBitmap *mask;
@@ -248,6 +310,8 @@ void create_pixmaps(DriveData *dd)
 	
 	style = gtk_widget_get_style(dd->applet);
 
+	free_pixmaps(dd);
+
 	dd->pixmap_for_in = gdk_pixmap_create_from_xpm_d(dd->applet->window, &mask,
 		&style->bg[GTK_STATE_NORMAL], (gchar **)pmap_d_in);
 	dd->pixmap_for_out = gdk_pixmap_create_from_xpm_d(dd->applet->window, &mask,
@@ -294,6 +358,15 @@ static gint applet_save_session(GtkWidget *widget, char *privcfgpath, char *glob
         return FALSE;
 }
 
+static void destroy_drive_widget(GtkWidget *widget, gpointer data)
+{
+	DriveData *dd = data;
+	free_pixmaps(dd);
+	g_free(dd->mount_point);
+	g_free(dd->mount_base);
+	g_free(dd);
+}
+
 static DriveData * create_drive_widget(GtkWidget *applet)
 {
 	DriveData *dd;
@@ -305,11 +378,14 @@ static DriveData * create_drive_widget(GtkWidget *applet)
 	dd->device_pixmap = 0;
 	dd->mount_point = NULL;
 	dd->propwindow = NULL;
-	dd->mount_base = strdup("/mnt");
+	dd->mount_base = g_strdup("/mnt");
 
 	property_load(APPLET_WIDGET(applet)->privcfgpath, dd);
 
 	dd->button=gtk_button_new();
+	gtk_signal_connect(GTK_OBJECT(applet),"destroy",
+				GTK_SIGNAL_FUNC(destroy_drive_widget),
+				dd);
 	gtk_signal_connect(GTK_OBJECT(dd->button),"clicked",
 				GTK_SIGNAL_FUNC(mount_cb),
 				dd);
@@ -318,6 +394,9 @@ static DriveData * create_drive_widget(GtkWidget *applet)
 	dd->tooltip=gtk_tooltips_new();
 
 	gtk_widget_realize(dd->applet);
+
+	dd->pixmap_for_in = NULL;
+	dd->pixmap_for_out = NULL;
 	create_pixmaps(dd);
 
 	dd->button_pixmap = gtk_pixmap_new(dd->pixmap_for_out, NULL);

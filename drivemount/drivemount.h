@@ -1,5 +1,5 @@
 /*#####################################################*/
-/*##           drivemount applet 0.1.1 beta          ##*/
+/*##           drivemount applet 0.2.0               ##*/
 /*#####################################################*/
 
 #include <config.h>
@@ -13,8 +13,8 @@
 #include "applet-widget.h"
 
 #define DRIVEMOUNT_APPLET_VERSION_MAJ 0
-#define DRIVEMOUNT_APPLET_VERSION_MIN 1
-#define DRIVEMOUNT_APPLET_VERSION_REV 1
+#define DRIVEMOUNT_APPLET_VERSION_MIN 2
+#define DRIVEMOUNT_APPLET_VERSION_REV 0
 
 typedef struct _DriveData DriveData;
 struct _DriveData
