@@ -1,4 +1,5 @@
 applet = anotherclock
+figs = anotherclock-applet.png  anotherclock-properties.png
 lang = C
 sgml_ents = $(applet).sgml
 include $(top_srcdir)/applet-docs.make
