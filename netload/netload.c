@@ -58,15 +58,15 @@ int draw(void)
 		data = (unsigned long int *)calloc(width, sizeof(unsigned long int));
 	}
 	
-	bytes = GetTraffic(1, "ppp0");
+	bytes = GetTraffic(1, props.device);
 
 	if (! init){
 		init = 1;
-		old_bytes = GetTraffic(1, "ppp0");
+		old_bytes = GetTraffic(1, props.device);
 	}
 
 	/* The MAX is in case the stats get reset or wrap. It'll get one wrong sample. */
-	data[front] = MAX(0, ((signed int)(bytes - old_bytes))/ (props.speed/1000));
+	data[front] = MAX(0, ((signed int)(bytes - old_bytes))/ ((float)props.speed/1000));
 
 	if (front == max_delta_pos){
 		/* The maximum has scrolled off. Rescale. */
@@ -245,14 +245,13 @@ void
 error_close_cb(GtkWidget *widget, void *data)
 {
 	gnome_panel_applet_remove_from_panel(applet_id);
-	g_print("Hello!\n");
 }
 
 /*
  * An error occured.
  */
 void
-error_dialog(char *message)
+error_dialog(char *message, int fatal)
 {
 	static GtkWidget	*error = NULL;
 	GtkWidget	*less, *label;
@@ -276,8 +275,9 @@ error_dialog(char *message)
 	gnome_less_fixed_font(GNOME_LESS(less));
 	gnome_dialog_set_modal(GNOME_DIALOG(error));
 
-	gtk_signal_connect( GTK_OBJECT(error),
-		"clicked", GTK_SIGNAL_FUNC(error_close_cb), NULL );
+	if (fatal)
+		gtk_signal_connect( GTK_OBJECT(error),
+			"clicked", GTK_SIGNAL_FUNC(error_close_cb), NULL );
 
 	gtk_widget_show(less);
 	gtk_widget_show(label);
@@ -294,7 +294,7 @@ about_cb (AppletWidget *widget, gpointer data)
 	  NULL
 	  };
 
-	about = gnome_about_new ( "The GNOME Network Load Applet", "0.0.2",
+	about = gnome_about_new ( "The GNOME Network Load Applet", "0.0.3",
 			"(C) 1998 the Free Software Foundation",
 			authors,
 			"This applet shows the load on a network device. "

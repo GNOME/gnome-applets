@@ -14,7 +14,8 @@
 #include "properties.h"
 
 GtkWidget *propbox;
-netload_properties props;
+extern netload_properties props;
+static netload_properties new_props;
 
 void setup_colors(void);
 void start_timer( void );
@@ -66,19 +67,19 @@ void color_changed_cb( GnomeColorSelector *widget, gchar **color )
 
 void height_cb( GtkWidget *widget, GtkWidget *spin )
 {
-	props.height = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spin));
+	new_props.height = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spin));
         gnome_property_box_changed(GNOME_PROPERTY_BOX(propbox));
 }
 
 void width_cb( GtkWidget *widget, GtkWidget *spin )
 {
-	props.width = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spin));
+	new_props.width = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spin));
         gnome_property_box_changed(GNOME_PROPERTY_BOX(propbox));
 }
 
 void freq_cb( GtkWidget *widget, GtkWidget *spin )
 {
-	props.speed = gtk_spin_button_get_value_as_float(GTK_SPIN_BUTTON(spin))*1000;
+	new_props.speed = gtk_spin_button_get_value_as_float(GTK_SPIN_BUTTON(spin))*1000;
         gnome_property_box_changed(GNOME_PROPERTY_BOX(propbox));
 }	
 
@@ -144,8 +145,8 @@ GtkWidget *create_general_frame(void)
 
 	label = gtk_label_new("Update Frequency");
 
-	freq_a = gtk_adjustment_new( (float)props.speed/1000, 0.1, 60, 0.1, 5, 5 );
-	freq  = gtk_spin_button_new( GTK_ADJUSTMENT(freq_a), 0.1, 1 );
+	freq_a = gtk_adjustment_new( (float)props.speed/1000, 1, 60, 0.1, 5, 5 );
+	freq  = gtk_spin_button_new( GTK_ADJUSTMENT(freq_a), 1, 1 );
 
 	gtk_box_pack_start( GTK_BOX(speed), label,TRUE, FALSE, 0 );
 	gtk_box_pack_start( GTK_BOX(speed), freq, TRUE, TRUE, 0 );
@@ -165,20 +166,56 @@ GtkWidget *create_general_frame(void)
 	return box;
 }
 
+void device_cb( GtkWidget *widget, GtkWidget *value )
+{
+	new_props.device = gtk_entry_get_text (GTK_ENTRY(value));
+        gnome_property_box_changed(GNOME_PROPERTY_BOX(propbox));
+}	
+
+void line_cb( GtkWidget *widget, GtkWidget *spin )
+{
+	new_props.line_spacing = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spin)) << 10;
+        gnome_property_box_changed(GNOME_PROPERTY_BOX(propbox));
+}
+
 GtkWidget *create_device_frame(void)
 {
-	GtkWidget *box;
-	        
+	GtkWidget *box, *label, *device_box, *device, *line_box, *line_a, *line;
+
 	box = gtk_vbox_new( 5, TRUE );
+
+	device_box = gtk_hbox_new(5, FALSE);
+	label = gtk_label_new("Device name (like ppp0 or eth0)");
+	gtk_box_pack_start_defaults( GTK_BOX(device_box), label);
+	device = gtk_entry_new_with_max_length(4);
+	gtk_entry_set_text(GTK_ENTRY(device), props.device);
+	gtk_signal_connect( GTK_OBJECT(device), "changed", GTK_SIGNAL_FUNC(device_cb), device);
+	gtk_box_pack_start_defaults( GTK_BOX(device_box), device);
+
+	line_box = gtk_hbox_new(5, TRUE);
+	label = gtk_label_new("Vertical spacing of bars (in kilobytes)");
+	gtk_box_pack_start_defaults( GTK_BOX(line_box), label);
+	line_a = gtk_adjustment_new( props.line_spacing >> 10, 1, 1024, 1, 10, 10 );
+	line = gtk_spin_button_new( GTK_ADJUSTMENT(line_a), 1, 0 );
+	gtk_box_pack_start_defaults( GTK_BOX(line_box), line_a);
+	gtk_box_pack_start_defaults( GTK_BOX(line_box), line);
+
+        gtk_signal_connect( GTK_OBJECT(line_a),"value_changed",
+       		GTK_SIGNAL_FUNC(line_cb), line );
+        gtk_spin_button_set_update_policy( GTK_SPIN_BUTTON(line),
+        	GTK_UPDATE_ALWAYS );
+		
+	gtk_box_pack_start_defaults( GTK_BOX(box), device_box);
+	gtk_box_pack_start_defaults( GTK_BOX(box), line_box);
 	gtk_widget_show_all(box);
 
 	return box;
 }
 
-
 void apply_cb( GtkWidget *widget, void *data )
 {
-	save_properties(&props);
+	save_properties(&new_props);
+	load_properties(&props);
         setup_colors();
 	start_timer();
 }
@@ -195,6 +232,7 @@ void properties(int id, gpointer data)
 	if( propbox )
 		return;
 
+	load_properties(&new_props);
 	load_properties(&props);
 	
         if (!(propbox = gnome_property_box_new())){

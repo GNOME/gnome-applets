@@ -28,7 +28,7 @@ Device_Info *ReadProc()
 	if (!fp){
 		/* Read /proc/net/ip_acct. */
 		if (!(fp = fopen("/proc/net/ip_acct", "r"))){
-			error_dialog("Failed to open the /proc/net/ip_acct file. Please ensure IP accounting is enabled in this kernel.");
+			error_dialog("Failed to open the /proc/net/ip_acct file. Please ensure IP accounting is enabled in this kernel.", 1);
 			return NULL;
 		}
 	}
@@ -66,6 +66,7 @@ GetTraffic(int refresh, char *device)
 {
 	static	Device_Info	*di = NULL;
 	Device_Info	*d;
+	static	error_printed = 0;
 
 	if (refresh || !di){
 		if (di)
@@ -80,6 +81,7 @@ GetTraffic(int refresh, char *device)
 		}
 		d++;
 	}
-	error_dialog("IP accounting is enabled, but not activated for the specified device. Either activate it (with a command like \nipfwadm -A -i -P all -W <device name>\nwhere device name is something like ppp0 or eth0.\nNetload will now exit.");
+	error_printed = 1;
+	error_dialog("IP accounting is enabled, but not activated for the specified device. Either activate it (with a command like \nipfwadm -A -i -P all -W <device name>\nwhere device name is something like ppp0 or eth0.\nAlso check that the device properties are set properly.", 0);
 	return 0;
 }
