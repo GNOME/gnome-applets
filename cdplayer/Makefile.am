@@ -4,7 +4,8 @@ INCLUDES = -I. \
 -I$(top_builddir)/intl	\
 -DGNOMELOCALEDIR=\""$(datadir)/locale"\" \
 -I$(includedir) \
-$(GNOME_APPLETS_CFLAGS)
+$(GNOME_APPLETS_CFLAGS) \
+$(GCONF_APPLETS_CFLAGS) \
 $(CDROM_CFLAGS)
 
 bin_PROGRAMS = cdplayer_applet2
@@ -19,8 +20,12 @@ cdrom-$(CDROM_HOST).c
 
 cdplayer_applet2_LDADD = \
 $(GNOME_APPLETS_LIBS) \
+$(GCONF_APPLETS_LIBS) \
 $(INTLLIBS) \
 $(CDROM_LIBS)
+
+icondir   = $(datadir)/pixmaps
+icon_DATA = gnome-cdplayer-icon.png
 
 serverdir   = $(libdir)/bonobo/servers
 server_DATA = GNOME_CDPlayerApplet.server
@@ -36,4 +41,5 @@ images/cdplayer-prev.xpm \
 images/led.xpm \
 cdrom-linux.c \
 cdrom-solaris.c \
+$(icon_DATA) \
 $(server_DATA)

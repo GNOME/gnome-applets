@@ -62,7 +62,7 @@ void
 led_stop(GtkWidget *time, GtkWidget *track)
 {
 	GdkPixbuf *pixbuf;
-	
+
 	if(!GTK_WIDGET_REALIZED(time)) return;
 
 	pixbuf = gtk_image_get_pixbuf(GTK_IMAGE(time));

@@ -31,6 +31,7 @@ typedef struct {
 	PanelAppletOrient orient;
 	char *devpath;
 	struct {
+		GtkWidget *applet;
 		GtkWidget *frame;
 		/* Main box for all bits 
 		   changes depending on orientation,size,etc. */ 

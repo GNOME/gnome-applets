@@ -48,7 +48,7 @@ endif
 
 
 always_built_SUBDIRS = \
-##	battery		\
+	drivemount	\
 	fifteen		\
 	odometer	\
 	geyes		\
