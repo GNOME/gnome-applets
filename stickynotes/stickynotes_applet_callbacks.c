@@ -30,7 +30,7 @@ gboolean applet_button_cb(GtkWidget *widget, GdkEventButton *event, StickyNotesA
 		applet->pressed = TRUE;
 	
 	else if (event->type == GDK_BUTTON_RELEASE && event->button == 1) {
-		stickynotes_applet_do_default_action();	
+		stickynotes_applet_do_default_action(gtk_widget_get_screen(applet->w_applet));	
 		applet->pressed = FALSE;
 	}
 	
@@ -46,7 +46,7 @@ gboolean applet_button_cb(GtkWidget *widget, GdkEventButton *event, StickyNotesA
 gboolean applet_key_cb(GtkWidget *widget, GdkEventKey *event, StickyNotesApplet *applet)
 {
 	if (event->type == GDK_KEY_PRESS && event->keyval == GDK_Return)
-		stickynotes_applet_do_default_action();	
+		stickynotes_applet_do_default_action(gtk_widget_get_screen(applet->w_applet));	
 	else
 		return FALSE;
 	
@@ -123,7 +123,7 @@ void applet_destroy_cb (PanelApplet *panel_applet, StickyNotesApplet *applet)
 /* Menu Callback : Create a new sticky note */
 void menu_create_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gchar *verbname)
 {
-	stickynotes_add();
+	stickynotes_add(gtk_widget_get_screen(applet->w_applet));
 }
 
 /* Menu Callback : Destroy all sticky notes */

@@ -153,7 +153,7 @@ gboolean stickynote_focus_cb(GtkWidget *widget, GdkEventFocus *event, StickyNote
 /* Popup Menu Callback : Create a new sticky note */
 void popup_create_cb(GtkWidget *widget, StickyNote *note)
 {
-	stickynotes_add();
+	stickynotes_add(gtk_widget_get_screen(note->w_window));
 }
 
 /* Popup Menu Callback : Destroy selected sticky note */

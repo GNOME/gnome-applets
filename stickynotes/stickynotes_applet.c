@@ -50,15 +50,15 @@ static gboolean stickynotes_applet_factory(PanelApplet *panel_applet, const gcha
 {
 	if (!strcmp(iid, "OAFIID:GNOME_StickyNotesApplet")) {
 		if (!stickynotes)
-			stickynotes_applet_init(panel_applet);
+			stickynotes_applet_init (panel_applet);
 			
 		panel_applet_set_flags (panel_applet, PANEL_APPLET_EXPAND_MINOR);
 
 		/* Add applet to linked list of all applets */
-		stickynotes->applets = g_list_append(stickynotes->applets, stickynotes_applet_new(panel_applet));
+		stickynotes->applets = g_list_append (stickynotes->applets, stickynotes_applet_new(panel_applet));
 
-		stickynotes_applet_update_menus();
-		stickynotes_applet_update_tooltips();
+		stickynotes_applet_update_menus ();
+		stickynotes_applet_update_tooltips ();
 
 		return TRUE;
 	}
@@ -150,7 +150,7 @@ void stickynotes_applet_init(PanelApplet *panel_applet)
 	gconf_client_notify_add(stickynotes->gconf, GCONF_PATH "/settings", (GConfClientNotifyFunc) preferences_apply_cb, NULL, NULL, NULL);
 	
 	/* Load sticky notes */
-	stickynotes_load();
+	stickynotes_load(gtk_widget_get_screen(GTK_WIDGET(panel_applet)));
 	
 	/* Auto-save every so minutes (default 5) */
 	g_timeout_add(1000 * 60 * gconf_client_get_int(stickynotes->gconf, GCONF_PATH "/settings/autosave_time", NULL),
@@ -420,7 +420,7 @@ void stickynotes_applet_update_tooltips()
 	g_free(tooltip);
 }
 
-void stickynotes_applet_do_default_action()
+void stickynotes_applet_do_default_action(GdkScreen *screen)
 {
 	StickyNotesDefaultAction click_behavior = gconf_client_get_int(stickynotes->gconf, GCONF_PATH "/settings/click_behavior", NULL);
 
@@ -429,7 +429,7 @@ void stickynotes_applet_do_default_action()
 
 	switch (click_behavior) {
 		case STICKYNOTES_NEW:
-			stickynotes_add();
+			stickynotes_add(screen);
 			break;
 
 		case STICKYNOTES_SET_VISIBLE:

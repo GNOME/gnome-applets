@@ -26,7 +26,7 @@
 static void response_cb (GtkWidget *dialog, gint id, gpointer data);
 
 /* Create a new (empty) Sticky Note */
-StickyNote * stickynote_new()
+StickyNote * stickynote_new(GdkScreen *screen)
 {
 	/* Create Sticky Note instance */
 	StickyNote *note = g_new(StickyNote, 1);
@@ -36,8 +36,13 @@ StickyNote * stickynote_new()
 	note->menu = glade_xml_new(GLADE_PATH, "stickynote_menu", NULL);
 	note->properties = glade_xml_new(GLADE_PATH, "stickynote_properties", NULL);
 	note->w_window = glade_xml_get_widget(note->window, "stickynote_window");
+	gtk_window_set_screen(GTK_WINDOW(note->w_window),screen);
+
 	note->w_menu = glade_xml_get_widget(note->menu, "stickynote_menu");
+
 	note->w_properties = glade_xml_get_widget(note->properties, "stickynote_properties");
+	gtk_window_set_screen(GTK_WINDOW(note->w_properties),screen);
+
 	note->w_entry = glade_xml_get_widget(note->properties, "title_entry");
 	note->w_color = glade_xml_get_widget(note->properties, "note_color");
 	note->w_font = glade_xml_get_widget(note->properties, "note_font");
@@ -49,6 +54,7 @@ StickyNote * stickynote_new()
 	note->w_close = glade_xml_get_widget(note->window, "close_button");
 	note->w_resize_se = glade_xml_get_widget(note->window, "resize_se_box");
 	note->w_resize_sw = glade_xml_get_widget(note->window, "resize_sw_box");
+
 	note->color = NULL;
 	note->font = NULL;
 	note->locked = FALSE;
@@ -353,9 +359,9 @@ void stickynote_set_visible(StickyNote *note, gboolean visible)
 }
 
 /* Add a sticky note */
-void stickynotes_add()
+void stickynotes_add(GdkScreen *screen)
 {
-	StickyNote *note = stickynote_new();
+	StickyNote *note = stickynote_new(screen);
 
 	/* Add the note to the linked-list of all notes */
 	stickynotes->notes = g_list_append(stickynotes->notes, note);
@@ -477,7 +483,7 @@ void stickynotes_save()
 }
 
 /* Load all sticky notes from an XML configuration file */
-void stickynotes_load()
+void stickynotes_load(GdkScreen *screen)
 {
 	xmlDocPtr doc;
 	xmlNodePtr root;
@@ -510,7 +516,7 @@ void stickynotes_load()
 	while (node) {
 		if (!xmlStrcmp(node->name, (const xmlChar *) "note")) {
 			/* Create a new note */
-			StickyNote *note = stickynote_new();
+			StickyNote *note = stickynote_new(screen);
 			stickynotes->notes = g_list_append(stickynotes->notes, note);
 
 			/* Retrieve and set title of the note */

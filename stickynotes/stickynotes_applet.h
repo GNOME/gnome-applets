@@ -94,7 +94,7 @@ typedef enum
 
 extern StickyNotes *stickynotes;
 
-void stickynotes_applet_init();
+void stickynotes_applet_init(PanelApplet *panel_applet);
 void stickynotes_applet_init_icons();
 void stickynotes_applet_init_prefs();
 
@@ -105,6 +105,6 @@ void stickynotes_applet_update_prefs();
 void stickynotes_applet_update_menus();
 void stickynotes_applet_update_tooltips();
 
-void stickynotes_applet_do_default_action();
+void stickynotes_applet_do_default_action(GdkScreen *screen);
 
 #endif /* __STICKYNOTES_APPLET_H__ */
