@@ -42,11 +42,14 @@ static int history_position = MC_HISTORY_LIST_LENGTH;
 static gchar *browsed_folder = NULL;
 
 static gboolean
-button_press_cb (GtkEntry   *entry,
-		 GdkEventKey *event,
-		 MCData      *mc)
+button_press_cb (GtkEntry       *entry,
+		 GdkEventButton *event,
+		 MCData         *mc)
 {
     const gchar *str;
+
+    panel_applet_request_focus (mc->applet, event->time);
+
     if (mc->error) { 
 	   mc->error = FALSE; 
 	   str = gtk_editable_get_chars (GTK_EDITABLE (entry), 0, -1);

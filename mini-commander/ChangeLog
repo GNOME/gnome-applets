@@ -1,3 +1,12 @@
+2005-01-07  Elijah Newren  <newren@gmail.com>
+
+	Since the panel won't be automatically focused on click anymore,
+	be sure to manually request focus.  Fixes #161736.
+
+	* src/command_line.c (button_press_cb): call
+	panel_applet_request_focus() first, also make the trivial
+	correction of s/GdkEventKey/GdkEventButton/
+
 2004-11-10  Mark McLoughlin  <mark@skynet.ie>
 
 	Fix to make old configurations continue to work with
