@@ -34,7 +34,9 @@ gboolean window_resize_cb(GtkWidget *widget, GdkEventButton *event, StickyNote *
 	if (event->type == GDK_BUTTON_PRESS && event->button == 1)
 		gtk_window_begin_resize_drag(GTK_WINDOW(note->window), GDK_WINDOW_EDGE_NORTH_WEST,
 					     event->button, event->x_root, event->y_root, event->time);
-	
+	else
+		return FALSE;
+			
 	return TRUE;
 }
 
@@ -45,6 +47,8 @@ gboolean window_move_cb(GtkWidget *widget, GdkEventButton *event, StickyNote *no
 		gtk_window_begin_move_drag(GTK_WINDOW(note->window), event->button, event->x_root, event->y_root, event->time);
 	else if (event->type == GDK_2BUTTON_PRESS && event->button == 1)
 		stickynote_edit_title(note);
+	else
+		return FALSE;
 
 	return TRUE;
 }
