@@ -1072,18 +1072,18 @@ static void metar_tok_cond (gchar *tokp, WeatherInfo *info)
 #define WIND_RE_STR  "^(([0-9]{3})|VRB)([0-9]?[0-9]{2})(G[0-9]?[0-9]{2})?KT"
 #define VIS_RE_STR   "^((([0-9]?[0-9])|(M?([12] )?([1357]/1?[0-9])))SM)|" \
                      "([0-9]{4}(N|NE|E|SE|S|SW|W|NW( [0-9]{4}(N|NE|E|SE|S|SW|W|NW))?)?)"
-#define CLOUD_RE_STR "^(((CLR|BKN|SCT|FEW|OVC|SKC|NSC)([0-9]{3})?(CB|TCU)? ?)+|CAVOK)"
+#define COND_RE_STR  "^(-|\\+)?(VC|MI|BC|PR|TS|BL|SH|DR|FZ)?(DZ|RA|SN|SG|IC|PE|GR|GS|UP|BR|FG|FU|VA|SA|HZ|PY|DU|SQ|SS|DS|PO|\\+?FC)"
+#define CLOUD_RE_STR "^(((CLR|BKN|SCT|FEW|OVC|SKC|NSC)([0-9]{3})?(CB|TCU)?)|CAVOK)"
 #define TEMP_RE_STR  "^(M?[0-9][0-9])/(M?(//|[0-9][0-9]))"
 #define PRES_RE_STR  "^(A|Q)([0-9]{4})"
-#define COND_RE_STR  "^(-|\\+)?(VC|MI|BC|PR|TS|BL|SH|DR|FZ)?(DZ|RA|SN|SG|IC|PE|GR|GS|UP|BR|FG|FU|VA|SA|HZ|PY|DU|SQ|SS|DS|PO|\\+?FC)"
 
 #define TIME_RE   0
 #define WIND_RE   1
 #define VIS_RE    2
-#define CLOUD_RE  3
-#define TEMP_RE   4
-#define PRES_RE   5
-#define COND_RE   6
+#define COND_RE   3
+#define CLOUD_RE  4
+#define TEMP_RE   5
+#define PRES_RE   6
 
 #define RE_NUM   7
 
@@ -1100,18 +1100,18 @@ static void metar_init_re (void)
     regcomp(&metar_re[TIME_RE], TIME_RE_STR, REG_EXTENDED);
     regcomp(&metar_re[WIND_RE], WIND_RE_STR, REG_EXTENDED);
     regcomp(&metar_re[VIS_RE], VIS_RE_STR, REG_EXTENDED);
+    regcomp(&metar_re[COND_RE], COND_RE_STR, REG_EXTENDED);
     regcomp(&metar_re[CLOUD_RE], CLOUD_RE_STR, REG_EXTENDED);
     regcomp(&metar_re[TEMP_RE], TEMP_RE_STR, REG_EXTENDED);
     regcomp(&metar_re[PRES_RE], PRES_RE_STR, REG_EXTENDED);
-    regcomp(&metar_re[COND_RE], COND_RE_STR, REG_EXTENDED);
 
     metar_f[TIME_RE] = metar_tok_time;
     metar_f[WIND_RE] = metar_tok_wind;
     metar_f[VIS_RE] = metar_tok_vis;
+    metar_f[COND_RE] = metar_tok_cond;
     metar_f[CLOUD_RE] = metar_tok_cloud;
     metar_f[TEMP_RE] = metar_tok_temp;
     metar_f[PRES_RE] = metar_tok_pres;
-    metar_f[COND_RE] = metar_tok_cond;
 }
 
 /*static*/ gboolean metar_parse (gchar *metar, WeatherInfo *info)
@@ -1119,6 +1119,7 @@ static void metar_init_re (void)
     gchar *p;
     gint ntoks;
     gint i;
+    gboolean isSet;
     regmatch_t rm;
     gchar *tokp;
 
@@ -1129,14 +1130,17 @@ static void metar_init_re (void)
     p = metar;
     
     for (i = 0; i < RE_NUM; i++) {
-        if (*p == '\0' || !strncmp(p, "RMK", 3))
-	    break;
+	for (isSet = FALSE;
+	     *p && strncmp(p, "RMK", 3)
+	       && (0 == regexec(&metar_re[i], p, 1, &rm, 0));
+	     isSet = TRUE) {
 
-        if (regexec(&metar_re[i], p, 1, &rm, 0) == 0) {
-	    tokp = g_strndup(p+rm.rm_so, rm.rm_eo);
-	    metar_f[i](tokp, info);
-	    g_free (tokp);
-	    p += rm.rm_so + rm.rm_eo;
+	    if (!isSet) {
+	        tokp = g_strndup(p+rm.rm_so, rm.rm_eo-rm.rm_so);
+		metar_f[i](tokp, info);
+		g_free (tokp);
+	    }
+	    p += rm.rm_eo;
 	    p += strspn(p, " ");
 	}
     }
