@@ -54,6 +54,7 @@ always_built_SUBDIRS = \
 	geyes		\
 	mini-commander	\
 	life		\
+	gkb-new		\
 	whereami	
 ## 	another_clock	\
 ## 	asclock		\
@@ -61,7 +62,6 @@ always_built_SUBDIRS = \
 ## 	clockmail	\
 ## 	drivemount	\
 ## 	gnotes		\
-## 	gkb-new		\
 ## 	jbc		\
 ## 	quicklaunch	\
 ## 	tickastat	\
