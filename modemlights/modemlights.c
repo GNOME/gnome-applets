@@ -239,6 +239,7 @@ static int get_modem_stats(int *in, int *out)
 	*in = *out = 0;
 	return FALSE;
 #endif
+#else
 		if ((ioctl(ip_socket,SIOCGPPPSTATS,(caddr_t)&ifreq) < 0))
 #endif /* __FreeBSD__ */
 			{
