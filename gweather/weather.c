@@ -1509,7 +1509,8 @@ gboolean _weather_info_fill (GWeatherApplet *applet, WeatherInfo *info, WeatherL
 
     /* FIXME: i'm not sure this works as intended anymore */
     if (!info) {
-        info = g_new0(WeatherInfo, 1);
+    	info = g_new0(WeatherInfo, 1);
+        applet->gweather_info = info;
         info->metar_handle = NULL;
     	info->iwin_handle = NULL;
     	info->wx_handle = NULL;

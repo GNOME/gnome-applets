@@ -1,3 +1,10 @@
+2002-07-01  Kevin Vandersloot <kfv101@psu.edu>
+
+	* weather.c: set gweather_applet->gweather_info to the newly
+	created info structure. Hopefully fixes bug #86631 and maybe some
+	others. Prevents multiple http requests when the location has been
+	changed and updated
+
 2002-06-02  Kevin Vandersloot <kfv101@psu.edu>
 
 	* gweather-pref.c: destroy prefs dialog so it doesn't crash
