@@ -1,4 +1,3 @@
-SUBDIRS = macros
 
 INCLUDES = $(GNOME_INCLUDEDIR)
 
@@ -12,9 +11,9 @@ gtik_applet_LDADD = 	$(GNOME_LIBDIR) \
 			$(GHTTP_LIB)
 
 EXTRA_DIST = \
-	gtik_applet.desktop gtik_applet.gnorba
+	gtik_applet.desktop gtik_applet.gnorba README AUTHORS
 
-sysdir = $(datadir)/applets/Amusements
+sysdir = $(datadir)/applets/Network
 sys_DATA = gtik_applet.desktop
 
 gnorbadir  = $(sysconfdir)/CORBA/servers
