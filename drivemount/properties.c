@@ -14,26 +14,15 @@
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  */
 
-#include <gconf/gconf.h>
-#include <gconf/gconf-client.h>
+#include <panel-applet.h>
+#include <panel-applet-gconf.h>
 
 #include "drivemount.h"
 #include "properties.h"
 
-static void gconf_extensions_client_free(void);
-static GConfClient *gconf_extensions_client_get(void);
-static void gconf_extensions_set_string(gchar *path, gchar *key, gchar *string_value);
-static gchar *gconf_extensions_get_string(gchar *path, gchar *key, gchar *default_value);
-static void gconf_extensions_set_boolean(gchar *path, gchar *key, gboolean boolean_value);
-static gboolean gconf_extensions_get_boolean(gchar *path, const char *key, gboolean default_value);
-static void gconf_extensions_set_integer(gchar *path, gchar *key, int int_value);
-static gint gconf_extensions_get_integer(gchar *path, gchar *key, gint default_value);
-static void gconf_extensions_suggest_sync(void);
-static gboolean gconf_extensions_handle_error (GError **error);
-
 typedef struct _ResponseWidgets
 {
-    DriveData *dd;
+	DriveData *dd;
 	GtkWidget *mount_entry;
 	GtkWidget *update_spin;
 	GtkWidget *omenu;
@@ -52,44 +41,31 @@ static void browse_icons_dialog_popup_handler(GnomeIconEntry *entry, GtkWidget *
 static gchar *remove_level_from_path(const gchar *path);
 static void sync_mount_base(DriveData *dd);
 
-static GConfClient *gconf_client = NULL;
-
 void
 properties_load(DriveData *dd)
 {
-    gchar *key;
-
-    key = panel_applet_get_preferences_key(PANEL_APPLET(dd->applet));
-    g_return_if_fail(key != NULL);
-
-	dd->interval = gconf_extensions_get_integer(key, "interval", 10);
-	dd->device_pixmap = gconf_extensions_get_integer(key, "pixmap", 0);
-	dd->scale_applet = gconf_extensions_get_boolean(key, "scale", FALSE);
-	dd->auto_eject = gconf_extensions_get_boolean(key, "auto-eject", FALSE);
-	dd->mount_point = gconf_extensions_get_string(key, "mount-point", "mnt/floppy");
-	dd->autofs_friendly = gconf_extensions_get_boolean(key, "autofs-friendly", FALSE);
-	dd->custom_icon_in = gconf_extensions_get_string(key, "custom-icon-mounted", NULL);
-	dd->custom_icon_out = gconf_extensions_get_string(key, "custom-icon-unmounted", NULL);
+	dd->interval = panel_applet_gconf_get_int(PANEL_APPLET(dd->applet), "interval", NULL);
+	dd->device_pixmap = panel_applet_gconf_get_int(PANEL_APPLET(dd->applet), "pixmap", NULL);
+	dd->scale_applet = panel_applet_gconf_get_bool(PANEL_APPLET(dd->applet), "scale", NULL);
+	dd->auto_eject = panel_applet_gconf_get_bool(PANEL_APPLET(dd->applet), "auto-eject", NULL);
+	dd->mount_point = panel_applet_gconf_get_string(PANEL_APPLET(dd->applet), "mount-point", NULL);
+	dd->autofs_friendly = panel_applet_gconf_get_bool(PANEL_APPLET(dd->applet), "autofs-friendly", NULL);
+	dd->custom_icon_in = panel_applet_gconf_get_string(PANEL_APPLET(dd->applet), "custom-icon-mounted", NULL);
+	dd->custom_icon_out = panel_applet_gconf_get_string(PANEL_APPLET(dd->applet), "custom-icon-unmounted", NULL);
 	sync_mount_base(dd);
 }
 
 void
 properties_save(DriveData *dd)
 {
-    gchar *key;
-
-    key = panel_applet_get_preferences_key(PANEL_APPLET(dd->applet));
-    g_return_if_fail(key != NULL);
-
-	gconf_extensions_set_integer(key, "interval", dd->interval);
-	gconf_extensions_set_integer(key, "pixmap", dd->device_pixmap);
-	gconf_extensions_set_boolean(key, "scale", dd->scale_applet);
-	gconf_extensions_set_boolean(key, "auto-eject", dd->auto_eject);
-	gconf_extensions_set_string(key, "mount-point", dd->mount_point);
-	gconf_extensions_set_boolean(key, "autofs-friendly", dd->autofs_friendly);
-	gconf_extensions_set_string(key, "custom-icon-mounted", dd->custom_icon_in);
-	gconf_extensions_set_string(key, "custom-icon-unmounted", dd->custom_icon_out);
-	gconf_extensions_suggest_sync();
+	panel_applet_gconf_set_int(PANEL_APPLET(dd->applet), "interval", dd->interval, NULL);
+	panel_applet_gconf_set_int(PANEL_APPLET(dd->applet), "pixmap", dd->device_pixmap, NULL);
+	panel_applet_gconf_set_bool(PANEL_APPLET(dd->applet), "scale", dd->scale_applet, NULL);
+	panel_applet_gconf_set_bool(PANEL_APPLET(dd->applet), "auto-eject", dd->auto_eject, NULL);
+	panel_applet_gconf_set_string(PANEL_APPLET(dd->applet), "mount-point", dd->mount_point, NULL);
+	panel_applet_gconf_set_bool(PANEL_APPLET(dd->applet), "autofs-friendly", dd->autofs_friendly, NULL);
+	panel_applet_gconf_set_string(PANEL_APPLET(dd->applet), "custom-icon-mounted", dd->custom_icon_in, NULL);
+	panel_applet_gconf_set_string(PANEL_APPLET(dd->applet), "custom-icon-unmounted", dd->custom_icon_out, NULL);
 }
 
 void
@@ -108,16 +84,16 @@ properties_show(PanelApplet *applet, gpointer data)
 	ResponseWidgets *widgets;
 	gint response;
 
-    widgets = g_new0(ResponseWidgets, 1);
-    dialog = gtk_dialog_new_with_buttons(_("Drive Mount Applet Properties"),
+	widgets = g_new0(ResponseWidgets, 1);
+	dialog = gtk_dialog_new_with_buttons(_("Drive Mount Applet Properties"),
 										 NULL, GTK_DIALOG_MODAL,
 										 GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
 										 GTK_STOCK_OK, GTK_RESPONSE_OK, NULL);
 
-    box = GTK_DIALOG(dialog)->vbox;
+	box = GTK_DIALOG(dialog)->vbox;
 	frame = gtk_frame_new("Settings");
 	gtk_container_set_border_width(GTK_CONTAINER(frame), GNOME_PAD_SMALL);
-    gtk_box_pack_start(GTK_BOX(box), frame, TRUE, TRUE, 0);
+	gtk_box_pack_start(GTK_BOX(box), frame, TRUE, TRUE, 0);
 
 	vbox = gtk_vbox_new(FALSE, GNOME_PAD_SMALL);
 	gtk_container_set_border_width(GTK_CONTAINER(vbox), GNOME_PAD_SMALL);
@@ -215,10 +191,10 @@ properties_show(PanelApplet *applet, gpointer data)
 	gtk_box_pack_end(GTK_BOX(hbox), label, FALSE, FALSE, 0);
 	gtk_widget_show(label);
 
-    if(dd->device_pixmap < 0)
-       gtk_widget_set_sensitive(fbox, TRUE);
-    else
-       gtk_widget_set_sensitive(fbox, FALSE);
+	if(dd->device_pixmap < 0)
+		gtk_widget_set_sensitive(fbox, TRUE);
+	else
+		gtk_widget_set_sensitive(fbox, FALSE);
 
 	widgets->scale_toggle = gtk_check_button_new_with_label (_("Scale size to panel"));
 	gtk_box_pack_start(GTK_BOX(vbox), widgets->scale_toggle, FALSE, FALSE, 0);
@@ -236,15 +212,15 @@ properties_show(PanelApplet *applet, gpointer data)
 	gtk_widget_show(widgets->automount_toggle);
 	gtk_widget_show_all(frame);
 
-    widgets->dd = dd;
-    g_signal_connect(G_OBJECT(dialog), "response", G_CALLBACK(handle_response_cb), widgets);
-    gtk_widget_show_all(dialog);
+	widgets->dd = dd;
+	g_signal_connect(G_OBJECT(dialog), "response", G_CALLBACK(handle_response_cb), widgets);
+	gtk_widget_show_all(dialog);
 }
 
 static void
 handle_response_cb(GtkDialog *dialog, gint response, ResponseWidgets *widgets)
 {
-    gchar *temp;
+	gchar *temp;
 	gint history;
 
 	if(response == GTK_RESPONSE_OK)
@@ -254,7 +230,7 @@ handle_response_cb(GtkDialog *dialog, gint response, ResponseWidgets *widgets)
 		if(temp) widgets->dd->mount_point = g_strdup(temp);
 		else widgets->dd->mount_point = NULL;
 
-    	widgets->dd->interval = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(widgets->update_spin));
+		widgets->dd->interval = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(widgets->update_spin));
 
 		history = gtk_option_menu_get_history(GTK_OPTION_MENU(widgets->omenu));
 		widgets->dd->device_pixmap = history < 5 ? history : -1;
@@ -269,9 +245,9 @@ handle_response_cb(GtkDialog *dialog, gint response, ResponseWidgets *widgets)
 		if(temp) widgets->dd->custom_icon_out = temp;
 		else widgets->dd->custom_icon_out = NULL;
 
-        widgets->dd->scale_applet = GTK_TOGGLE_BUTTON(widgets->scale_toggle)->active;
-        widgets->dd->auto_eject = GTK_TOGGLE_BUTTON(widgets->eject_toggle)->active;
-        widgets->dd->autofs_friendly = GTK_TOGGLE_BUTTON(widgets->automount_toggle)->active;
+		widgets->dd->scale_applet = GTK_TOGGLE_BUTTON(widgets->scale_toggle)->active;
+		widgets->dd->auto_eject = GTK_TOGGLE_BUTTON(widgets->eject_toggle)->active;
+		widgets->dd->autofs_friendly = GTK_TOGGLE_BUTTON(widgets->automount_toggle)->active;
 		redraw_pixmap(widgets->dd);
 		start_callback_update(widgets->dd);
 		properties_save(widgets->dd);
@@ -332,201 +308,4 @@ sync_mount_base(DriveData *dd)
 {
 	g_free(dd->mount_base);
 	dd->mount_base = remove_level_from_path(dd->mount_point);
-}
-
-void
-gconf_extensions_client_setup ()
-{
-    if (!gconf_is_initialized ())
-    {
-        char *argv[] = { "cdplayer-applet-preferences", NULL };
-        if(!gconf_init (1, argv, NULL))
-            exit(1);
-    }
-    if (gconf_client == NULL)
-    {
-        gconf_client = gconf_client_get_default ();
-        g_atexit (gconf_extensions_client_free);
-    }
-}
-
-static void
-gconf_extensions_client_free ()
-{
-    if (gconf_client != NULL)
-    {
-        g_object_unref(G_OBJECT(gconf_client));
-        gconf_client = NULL;
-    }
-}
-
-static GConfClient *
-gconf_extensions_client_get ()
-{
-    return(gconf_client);
-}
-
-static void
-gconf_extensions_set_boolean(gchar *path, gchar *key, gboolean boolean_value)
-{
-    GConfClient *client;
-    GError *error = NULL;
-    gchar *full;
-    
-    g_return_if_fail(path != NULL);
-    g_return_if_fail(key != NULL);
-
-    client = gconf_extensions_client_get();
-    g_return_if_fail(client != NULL);
-
-    full = g_strconcat(path, "/", key, NULL);
-    gconf_client_set_bool(client, full, boolean_value, &error);
-    g_free(full);
-    gconf_extensions_handle_error(&error);
-}
-
-static gboolean
-gconf_extensions_get_boolean(gchar *path, const char *key, gboolean default_value)
-{
-    gboolean result;
-    GConfClient *client;
-    GError *error = NULL;
-    gchar *full;
-
-    g_return_val_if_fail(path != NULL, FALSE);
-    g_return_val_if_fail(key != NULL, FALSE);
-
-    client = gconf_extensions_client_get();
-    g_return_val_if_fail(client != NULL, FALSE);
-
-    full = g_strconcat(path, "/", key, NULL);
-    if(gconf_client_dir_exists(client, full, NULL))
-        result = gconf_client_get_bool(client, path, &error);
-    else
-        result = default_value;
-    g_free(full);
-
-    if(gconf_extensions_handle_error(&error))
-    {
-        result = default_value;
-    }
-    return(result);
-}
-
-static void
-gconf_extensions_set_integer(gchar *path, gchar *key, int int_value)
-{
-    GConfClient *client;
-    GError *error = NULL;
-    gchar *full;
-
-    g_return_if_fail(path != NULL);
-    g_return_if_fail(key != NULL);
-
-    client = gconf_extensions_client_get();
-    g_return_if_fail(client != NULL);
-
-    full = g_strconcat(path, "/", key, NULL);
-    gconf_client_set_int(client, full, int_value, &error);
-    g_free(full);
-    gconf_extensions_handle_error (&error);
-}
-
-static gint
-gconf_extensions_get_integer(gchar *path, gchar *key, gint default_value)
-{
-    int result;
-    GConfClient *client;
-    GError *error = NULL;
-    gchar *full;
-
-    g_return_val_if_fail(path != NULL, 0);
-    g_return_val_if_fail(key != NULL, 0);
-
-    client = gconf_extensions_client_get();
-    g_return_val_if_fail(client != NULL, 0);
-
-    full = g_strconcat(path, "/", key, NULL);
-    if(gconf_client_dir_exists(client, path, NULL))
-        result = gconf_client_get_int(client, full, &error);
-    else
-        result = default_value;
-    g_free(full);
-
-    if(gconf_extensions_handle_error(&error))
-    {
-        result = default_value;
-    }
-    return(result);
-}
-
-static void
-gconf_extensions_set_string(gchar *path, gchar *key, gchar *string_value)
-{
-    GConfClient *client;
-    GError *error = NULL;
-    gchar *full;
-
-    g_return_if_fail(path != NULL);
-    g_return_if_fail(key != NULL);
-
-    client = gconf_extensions_client_get();
-    g_return_if_fail(client != NULL);
-    
-    full = g_strconcat(path, "/", key, NULL);
-    gconf_client_set_string(client, full, string_value ? string_value : "", &error);
-    g_free(full);
-    gconf_extensions_handle_error(&error);
-}
-
-static gchar *
-gconf_extensions_get_string(gchar *path, gchar *key, gchar *default_value)
-{
-    GConfClient *client;
-    GError *error = NULL;
-    gchar *result = NULL;
-    gchar *full;
-
-    g_return_val_if_fail (key != NULL, NULL);
-
-    client = gconf_extensions_client_get();
-    g_return_val_if_fail (client != NULL, NULL);
-    
-    full = g_strconcat(path, "/", key, NULL);
-    if(gconf_client_dir_exists(client, path, NULL))
-    {
-        result = gconf_client_get_string(client, full, &error);
-        gconf_extensions_handle_error(&error);
-    }
-    g_free(full);
-    if(!result) result = g_strdup(default_value ? default_value : "");
-    return(result);
-}
-
-static void
-gconf_extensions_suggest_sync()
-{
-    GConfClient *client;
-    GError *error = NULL;
-
-    client = gconf_extensions_client_get();
-    g_return_if_fail(client != NULL);
-
-    gconf_client_suggest_sync(client, &error);
-    gconf_extensions_handle_error(&error);
-}
-
-static gboolean
-gconf_extensions_handle_error (GError **error)
-{
-    g_return_val_if_fail (error != NULL, FALSE);
-
-    if (*error != NULL)
-    {
-        g_warning ("GConf error:\n  %s", (*error)->message);
-        g_error_free (*error);
-        *error = NULL;
-        return TRUE;
-    }
-    return FALSE;
 }

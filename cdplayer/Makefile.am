@@ -8,7 +8,7 @@ $(CDROM_CFLAGS)
 
 bin_PROGRAMS = cdplayer_applet2
 
-cdplayer_applet2_SOURCES =	\
+cdplayer_applet2_SOURCES = \
 cdplayer.c \
 cdplayer.h \
 cdrom-interface.h \
@@ -30,6 +30,9 @@ server_DATA     = $(server_in_files:.server.in=.server)
 
 @INTLTOOL_SERVER_RULE@
 
+schemadir   = $(sysconfdir)/gconf/schemas
+schema_DATA = cdplayer.schemas
+
 EXTRA_DIST = \
 images/cdplayer-backward.xpm \
 images/cdplayer-eject.xpm \
@@ -44,4 +47,8 @@ cdrom-irix.c \
 cdrom-linux.c \
 cdrom-solaris.c \
 $(icon_DATA) \
-$(server_in_files)
+$(server_in_files) \
+$(schema_DATA)
+
+install-data-local:
+	GCONF_CONFIG_SOURCE=$(GCONF_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schema_DATA)

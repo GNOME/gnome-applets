@@ -31,8 +31,7 @@
 #include <libgnomeui/libgnomeui.h>
 #include <gdk/gdkx.h>
 #include <panel-applet.h>
-#include <gconf/gconf.h>
-#include <gconf/gconf-client.h>
+#include <panel-applet-gconf.h>
 
 #include "led.h"
 #include "cdrom-interface.h"
@@ -92,16 +91,6 @@ static void cdplayer_prev(GtkWidget * w, gpointer data);
 static void cdplayer_next(GtkWidget * w, gpointer data);
 static void cdplayer_eject(GtkWidget * w, gpointer data);
 
-static void gconf_extensions_client_setup(void);
-static void gconf_extensions_client_free(void);
-static GConfClient *gconf_extensions_client_get(void);
-static void gconf_extensions_set_string(gchar *path, gchar *key, gchar *string_value);
-static gchar *gconf_extensions_get_string(gchar *path, gchar *key, gchar *default_value);
-static void gconf_extensions_suggest_sync(void);
-static gboolean gconf_extensions_handle_error (GError **error);
-
-static GConfClient *gconf_client = NULL;
-
 /* Bonobo Verbs for our popup menu */
 static const BonoboUIVerb applet_menu_verbs [] = {
     BONOBO_UI_UNSAFE_VERB ("RunGTCD", start_gtcd_cb),
@@ -137,8 +126,6 @@ applet_factory (PanelApplet *applet,
         gpointer     data)
 {
     gboolean retval = FALSE;
-
-    gconf_extensions_client_setup ();
 
     if (!strcmp (iid, "OAFIID:GNOME_CDPlayerApplet"))
         retval = applet_fill (applet);
@@ -176,6 +163,7 @@ applet_fill (PanelApplet *applet)
     cd->panel.applet = GTK_WIDGET (applet);
     gtk_container_add (GTK_CONTAINER (applet), cdplayer);
 
+    panel_applet_add_preferences (applet, "/schemas/apps/cdplayer-applet/prefs", NULL);
     cdplayer_load_config(cd);
 
     cd->cdrom_device = cdrom_open(cd->devpath, &err);
@@ -201,22 +189,19 @@ applet_fill (PanelApplet *applet)
 static void
 cdplayer_load_config(CDPlayerData *cd)
 {
-    gchar *key;
-
-    key = panel_applet_get_preferences_key(PANEL_APPLET(cd->panel.applet));
-    g_return_if_fail(key != NULL);
-    cd->devpath = gconf_extensions_get_string(key, "device-path", DEV_PATH);
+    g_free(cd->devpath);
+    cd->devpath = panel_applet_gconf_get_string(PANEL_APPLET(cd->panel.applet), "device-path", NULL);
+    if (!cd->devpath && !strcmp(cd->devpath, "none"))
+    {
+        g_free(cd->devpath);
+        cd->devpath = g_strdup(DEV_PATH);
+    }
 }
 
 static void
 cdplayer_save_config(CDPlayerData *cd)
 {
-    gchar *key;
-
-    key = panel_applet_get_preferences_key(PANEL_APPLET(cd->panel.applet));
-    g_return_if_fail(key != NULL);
-    gconf_extensions_set_string(key, "device-path", cd->devpath);
-    gconf_extensions_suggest_sync();
+    panel_applet_gconf_set_string(PANEL_APPLET(cd->panel.applet), "device-path", cd->devpath, NULL);
 }
 
 static void
@@ -710,109 +695,4 @@ cdplayer_eject(GtkWidget * w, gpointer data)
     cd_close(cd);
     return;
         w = NULL;
-}
-
-
-static void
-gconf_extensions_client_setup ()
-{
-    if (!gconf_is_initialized ())
-    {
-        char *argv[] = { "cdplayer-applet-preferences", NULL };
-        if(!gconf_init (1, argv, NULL))
-            exit(1);
-    }
-    if (gconf_client == NULL)
-    {
-        gconf_client = gconf_client_get_default ();
-        g_atexit (gconf_extensions_client_free);
-    }
-}
-
-static void
-gconf_extensions_client_free ()
-{
-    if (gconf_client == NULL)
-    {
-        return;
-    }
-    g_object_unref(G_OBJECT(gconf_client));
-    gconf_client = NULL;
-}
-
-static GConfClient *
-gconf_extensions_client_get ()
-{
-    return(gconf_client);
-}
-
-static void
-gconf_extensions_set_string(gchar *path, gchar *key, gchar *string_value)
-{
-    GConfClient *client;
-    GError *error = NULL;
-    gchar *full;
-
-    g_return_if_fail(path != NULL);
-    g_return_if_fail(key != NULL);
-
-    client = gconf_extensions_client_get();
-    g_return_if_fail(client != NULL);
-    
-    full = g_strconcat(path, "/", key, NULL);
-    gconf_client_set_string(client, full, string_value ? string_value : "", &error);
-    g_free(full);
-    gconf_extensions_handle_error(&error);
-}
-
-static gchar *
-gconf_extensions_get_string(gchar *path, gchar *key, gchar *default_value)
-{
-    GConfClient *client;
-    GError *error = NULL;
-    gchar *result = NULL;
-    gchar *full;
-
-    g_return_val_if_fail (key != NULL, NULL);
-
-    client = gconf_extensions_client_get();
-    g_return_val_if_fail (client != NULL, NULL);
-    
-    full = g_strconcat(path, "/", key, NULL);
-    if(gconf_client_dir_exists(client, path, NULL))
-    {
-        result = gconf_client_get_string(client, full, &error);
-        gconf_extensions_handle_error(&error);
-    }
-    g_free(full);
-    if(!result) result = g_strdup(default_value ? default_value : "");
-    return(result);
-}
-
-static void
-gconf_extensions_suggest_sync()
-{
-    GConfClient *client;
-    GError *error = NULL;
-
-    client = gconf_extensions_client_get();
-    g_return_if_fail(client != NULL);
-
-    gconf_client_suggest_sync(client, &error);
-    gconf_extensions_handle_error(&error);
-}
-
-static gboolean
-gconf_extensions_handle_error (GError **error)
-{
-    g_return_val_if_fail (error != NULL, FALSE);
-
-    if (*error != NULL)
-    {
-        g_warning ("GConf error:\n  %s", (*error)->message);
-        g_error_free (*error);
-        *error = NULL;
-        return TRUE;
-    }
-    return FALSE;
 }

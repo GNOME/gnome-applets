@@ -21,6 +21,9 @@ server_DATA     = $(server_in_files:.server.in=.server)
 
 @INTLTOOL_SERVER_RULE@
 
+schemadir   = $(sysconfdir)/gconf/schemas
+schema_DATA = drivemount.schemas
+
 EXTRA_DIST = \
 cdrom_h_in.xpm \
 cdrom_h_out.xpm \
@@ -42,4 +45,8 @@ jazdrive_h_in.xpm \
 jazdrive_h_out.xpm \
 jazdrive_v_in.xpm \
 jazdrive_v_out.xpm \
-$(server_in_files)
+$(server_in_files) \
+$(schema_DATA)
+
+install-data-local:
+	GCONF_CONFIG_SOURCE=$(GCONF_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schema_DATA)

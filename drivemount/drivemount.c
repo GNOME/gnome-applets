@@ -132,7 +132,7 @@ static const BonoboUIVerb applet_menu_verbs [] = {
 	BONOBO_UI_UNSAFE_VERB ("Properties", properties_show),
 	BONOBO_UI_UNSAFE_VERB ("Help", help_cb),
 	BONOBO_UI_UNSAFE_VERB ("About", about_cb),
-    BONOBO_UI_VERB_END
+	BONOBO_UI_VERB_END
 };
 
 /* and the XML definition for the popup menu */
@@ -177,9 +177,8 @@ applet_factory (PanelApplet *applet,
 
 	if (!strcmp (iid, "OAFIID:GNOME_DriveMountApplet"))
 	{
-	    gconf_extensions_client_setup ();
 		retval = applet_fill (applet);
-    }
+	}
 	return retval;
 }
 
@@ -188,11 +187,9 @@ applet_fill (PanelApplet *applet)
 {
 	DriveData *dd;
 	BonoboUIComponent *component;
-	gchar *global_key;
-	gchar *private_key;
-	gchar *current_key;
 	gchar *tmp_path;
 
+	panel_applet_add_preferences (applet, "/schemas/apps/drivemount-applet/prefs", NULL);
 	dd = create_drive_widget();
 
 	gtk_container_add (GTK_CONTAINER (applet), dd->button);
