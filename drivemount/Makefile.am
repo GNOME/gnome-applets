@@ -20,7 +20,7 @@ server_DATA     = $(server_in_files:.server.in=.server)
 
 @INTLTOOL_SERVER_RULE@
 
-schemadir   = $(sysconfdir)/gconf/schemas
+schemadir   = @GCONF_SCHEMA_FILE_DIR@
 schema_DATA = drivemount.schemas
 
 EXTRA_DIST = \
@@ -48,4 +48,4 @@ $(server_in_files) \
 $(schema_DATA)
 
 install-data-local:
-	GCONF_CONFIG_SOURCE=$(GCONF_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schema_DATA)
+	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schema_DATA)

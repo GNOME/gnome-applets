@@ -49,7 +49,7 @@
 
 static gboolean applet_factory (PanelApplet *applet, const gchar *iid, gpointer data);
 static gboolean applet_fill (PanelApplet *applet);
-static DriveData *create_drive_widget(void);
+static DriveData *create_drive_widget(PanelApplet *applet);
 static void dnd_init(DriveData *dd);
 static void dnd_drag_begin_cb(GtkWidget *widget, GdkDragContext *context, gpointer data);
 static void dnd_set_data_cb(GtkWidget *widget, GdkDragContext *context, GtkSelectionData *selection_data, guint info, guint time, gpointer data);
@@ -190,7 +190,7 @@ applet_fill (PanelApplet *applet)
 	gchar *tmp_path;
 
 	panel_applet_add_preferences (applet, "/schemas/apps/drivemount-applet/prefs", NULL);
-	dd = create_drive_widget();
+	dd = create_drive_widget(applet);
 
 	gtk_container_add (GTK_CONTAINER (applet), dd->button);
 
@@ -224,11 +224,12 @@ applet_fill (PanelApplet *applet)
 }
 
 static DriveData *
-create_drive_widget()
+create_drive_widget(PanelApplet *applet)
 {
 	DriveData *dd;
 
 	dd = g_new0 (DriveData, 1);
+	dd->applet = GTK_WIDGET (applet);
 	dd->scale_applet = FALSE;
 	dd->device_pixmap = 0;
 	dd->button_pixmap = NULL;
