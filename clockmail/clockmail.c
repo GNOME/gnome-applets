@@ -65,8 +65,8 @@ void check_mail_file_status (int reset, AppData *ad)
 		return;
 		}
 
-	/* no need to continue if a mail item is not available */
-	if (!ad->skin->mail) return;
+	/* no need to continue if no mail item is available */
+	if (!ad->skin->mail && !ad->skin->mail_amount && !ad->skin->mail_count) return;
 
 	/* check if mail file contains something */
 	if (!ad->mail_file) return;
@@ -147,6 +147,7 @@ static void update_mail_amount_display(AppData *ad)
 				p = ad->skin->mail_amount->sections - 1;
 			else
 				p = (float)ad->mailsize / ( ad->mail_max * 1024 ) * ad->skin->mail_amount->sections;
+			if (p == 0 && ad->anymail && ad->skin->mail_amount->sections > 1) p = 1;
 			draw_item(ad->skin->mail_amount, p, ad);
 			}
 		draw_number(ad->skin->mail_count, ad->mailsize / 1024, ad);
