@@ -124,11 +124,11 @@ static void change_size_cb (AppletWidget *w, PanelSizeType s)
 #endif /* HAVE_PANEL_SIZE */
 
 #ifdef HAVE_SAVE_SESSION_SIGNAL
-static int save_session_cb (AppletWidget *w, gchar *cfgpath, gchar *globcfgpath)
+static int save_session_cb (AppletWidget *w, gchar *privcfgpath, gchar *globcfgpath)
 {
-    /* FIX ? */
-    gweather_pref_save();
-    gnome_config_drop_all();
+    /* fprintf(stderr, "save_session_cb: %s\n", privcfgpath); */
+    gweather_pref_save(privcfgpath);
+    gweather_info_save(privcfgpath);
     return FALSE;
 }
 #endif /* HAVE_SAVE_SESSION_SIGNAL */
@@ -221,29 +221,39 @@ void gweather_applet_create (int argc, char *argv[])
 }
 
 
-void gweather_info_save (void)
+void gweather_info_save (const gchar *path)
 {
     gchar *prefix;
 
     g_return_if_fail(gweather_info != NULL);
+    g_return_if_fail(path != NULL);
 
-    prefix = g_strconcat ("/", gnome_app_id, "/WeatherInfo/", NULL);
-
+    prefix = g_strconcat (path, "WeatherInfo/", NULL);
     gnome_config_push_prefix(prefix);
-    weather_info_config_write(gweather_info);
-    gnome_config_sync();
-    gnome_config_pop_prefix();
+    /* fprintf(stderr, "gweather_info_save: %s\n", prefix); */
     g_free(prefix);
+
+    weather_info_config_write(gweather_info);
+
+    gnome_config_pop_prefix();
+    gnome_config_sync();
+    gnome_config_drop_all();
 }
 
-void gweather_info_load (void)
+void gweather_info_load (const gchar *path)
 {
-    gchar *prefix = g_strconcat ("/", gnome_app_id, "/WeatherInfo/", NULL);
+    gchar *prefix;
 
+    g_return_if_fail(path != NULL);
+
+    prefix = g_strconcat (path, "WeatherInfo/", NULL);
     gnome_config_push_prefix(prefix);
-    gweather_info = weather_info_config_read();
-    gnome_config_pop_prefix();
+    /* fprintf(stderr, "gweather_info_save: %s\n", prefix); */
     g_free(prefix);
+
+    gweather_info = weather_info_config_read();
+
+    gnome_config_pop_prefix();
 }
 
 static guint timeout_tag = -1;
@@ -260,7 +270,7 @@ static void update_finish (WeatherInfo *info)
     gweather_info = info;
 
     /* Store current conditions */
-    gweather_info_save();
+    /* gweather_info_save(APPLET_WIDGET(gweather_applet)->privcfgpath); */
 
     /* Update applet pixmap */
     weather_info_get_pixmap_mini(gweather_info, &cond_pixmap, &cond_mask);

@@ -34,8 +34,8 @@ extern GWeatherPrefs gweather_pref;
 
 extern void gweather_pref_run (void);
 
-extern void gweather_pref_load (void);
-extern void gweather_pref_save (void);
+extern void gweather_pref_load (const gchar *path);
+extern void gweather_pref_save (const gchar *path);
 
 #endif /* __GWEATHER_PREF_H_ */
 

@@ -20,6 +20,7 @@
 #include <ctype.h>
 
 #include <gnome.h>
+#include <applet-widget.h>
 
 #include "gweather-applet.h"
 #include "gweather-pref.h"
@@ -540,14 +541,15 @@ static void gweather_pref_create (void)
 }
 
 
-void gweather_pref_load (void)
+void gweather_pref_load (const gchar *path)
 {
     gchar *prefix;
+    g_return_if_fail(path != NULL);
 
-    g_return_if_fail(gnome_app_id != NULL);
-
-    prefix = g_strconcat ("/", gnome_app_id, "/Preferences/", NULL);
+    prefix = g_strconcat (path, "Preferences/", NULL);
     gnome_config_push_prefix(prefix);
+    /* fprintf(stderr, "gweather_pref_load: %s\n", prefix); */
+    g_free(prefix);
 
     gweather_pref.update_interval = gnome_config_get_int("update_interval=1800");
     gweather_pref.update_enabled = gnome_config_get_bool("update_enabled=TRUE");
@@ -561,17 +563,18 @@ void gweather_pref_load (void)
     gweather_pref.use_proxy = gnome_config_get_bool("use_proxy=FALSE");
 
     gnome_config_pop_prefix();
-    g_free(prefix);
 }
 
-void gweather_pref_save (void)
+void gweather_pref_save (const gchar *path)
 {
     gchar *prefix;
 
-    g_return_if_fail(gnome_app_id != NULL);
+    g_return_if_fail(path != NULL);
 
-    prefix = g_strconcat ("/", gnome_app_id, "/Preferences/", NULL);
+    prefix = g_strconcat (path, "Preferences/", NULL);
     gnome_config_push_prefix(prefix);
+    /* fprintf(stderr, "gweather_pref_save: %s\n", prefix); */
+    g_free(prefix);
 
     gnome_config_set_int("update_interval", gweather_pref.update_interval);
     gnome_config_set_bool("update_enabled", gweather_pref.update_enabled);
@@ -585,9 +588,9 @@ void gweather_pref_save (void)
     gnome_config_set_bool("use_proxy", gweather_pref.use_proxy);
 
     gnome_config_pop_prefix();
-    g_free(prefix);
 
     gnome_config_sync();
+    gnome_config_drop_all();
 }
 
 void gweather_pref_run (void)
@@ -604,7 +607,7 @@ void gweather_pref_run (void)
         gnome_dialog_set_sensitive(GNOME_DIALOG(pref), 1, FALSE);
         btn = gnome_dialog_run(GNOME_DIALOG(pref));
         if (btn == 1) {  /* Apply */
-            gweather_pref_save();
+            applet_widget_sync_config(APPLET_WIDGET(gweather_applet));
             gweather_update();
         }
     } while (btn == 1);
@@ -612,7 +615,7 @@ void gweather_pref_run (void)
     gtk_widget_hide(pref);
 
     if (btn == 0) {  /* OK */
-        gweather_pref_save();
+        applet_widget_sync_config(APPLET_WIDGET(gweather_applet));
         gweather_update();
     }
 

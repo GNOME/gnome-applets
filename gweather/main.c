@@ -15,6 +15,7 @@
 #endif
 
 #include <gnome.h>
+#include <applet-widget.h>
 
 #include "gweather-pref.h"
 #include "gweather-dialog.h"
@@ -29,14 +30,12 @@ int main (int argc, char *argv[])
 
     gweather_applet_create(argc, argv);
 
-    gweather_pref_load();
-    gweather_info_load();
+    gweather_pref_load(APPLET_WIDGET(gweather_applet)->privcfgpath);
+    gweather_info_load(APPLET_WIDGET(gweather_applet)->privcfgpath);
 
     gweather_update();
 
     applet_widget_gtk_main();
-
-    gweather_pref_save();
 
     return 0;
 }
