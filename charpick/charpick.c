@@ -460,9 +460,12 @@ main (int argc, char *argv[])
   charpick_persistant_properties default_properties = 
   {
     NULL, /* a_list */
+    TRUE,
+    8,
     2,
     2,
-    17
+    17,
+
   };
   /*
   charpick_data curr_data =

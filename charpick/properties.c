@@ -56,17 +56,14 @@ void property_load (char *path, gpointer data)
 void property_save (char *path, charpick_persistant_properties *properties)
 {
   gnome_config_push_prefix(path);
-  gnome_config_set_int("charpick/buttonsize", temp_properties.size);
-  gnome_config_set_int("charpick/rows", temp_properties.rows);
-  gnome_config_set_int("charpick/cols", temp_properties.cols);
-  gnome_config_set_int("charpick/min_cells", temp_properties.min_cells);
+  gnome_config_set_int("charpick/buttonsize", properties->size);
+  gnome_config_set_int("charpick/rows", properties->rows);
+  gnome_config_set_int("charpick/cols", properties->cols);
+  gnome_config_set_int("charpick/min_cells", properties->min_cells);
   gnome_config_set_bool("charpick/follow_panel_size",
-			temp_properties.follow_panel_size);
-  gnome_config_sync();
-  gnome_config_drop_all();
+			properties->follow_panel_size);
   gnome_config_pop_prefix();
-  return;
-  properties = NULL;
+  gnome_config_sync();
 }
 
 static void update_spin_cb( GtkWidget *spin, gint *data)
