@@ -127,6 +127,7 @@ void solarize_cb (GtkWidget * w, gpointer data);
 void swirl_cb (GtkWidget * w, gpointer data);
 void spread_cb (GtkWidget * w, gpointer data);
 void delay_cb (GtkWidget * w, gpointer data);
+void expand_cb (GtkWidget * w, gpointer data);
 void directory_button_pressed (GtkWidget * w, gpointer data);
 void property_apply_cb (GtkWidget * w, gpointer data);
 void decoration_cb (GtkWidget * w, gpointer data);

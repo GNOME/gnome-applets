@@ -36,7 +36,7 @@ cb_about (AppletWidget * widget, gpointer data)
   GtkWidget *my_url;
   static const char *authors[] =
     { "Tom Gilbert <gilbertt@tomgilbert.freeserve.co.uk>",
-	"Telsa Gwynne <hobbit@aloss.ukuu.org.uk> (typo fixes, documentation)",
+    "Telsa Gwynne <hobbit@aloss.ukuu.org.uk> (typo fixes, documentation)",
     "The Sirius Cybernetics Corporation <Ursa-minor>", NULL
   };
 
@@ -54,7 +54,8 @@ cb_about (AppletWidget * widget, gpointer data)
   my_url = gnome_href_new ("http://www.tomgilbert.freeserve.co.uk",
 			   "Visit the author's Website");
   gtk_widget_show (my_url);
-  gtk_box_pack_start (GTK_BOX ((GNOME_DIALOG(about))->vbox), my_url, FALSE, FALSE, 0);
+  gtk_box_pack_start (GTK_BOX ((GNOME_DIALOG (about))->vbox), my_url, FALSE,
+		      FALSE, 0);
 
   gtk_widget_show (about);
   data = NULL;
@@ -171,7 +172,7 @@ properties_load (gchar * path, gpointer data)
     g_strdup (gnome_config_get_string ("screenshooter/directory=~/"));
   options.filename =
     g_strdup (gnome_config_get_string
-	      ("screenshooter/filename=`date +%d-%m-%y_%H%M%S`_screenshot.jpg"));
+	      ("screenshooter/filename=`date +%Y_%m_%d_%H%M%S`_shot.jpg"));
   options.thumb_filename =
     g_strdup (gnome_config_get_string
 	      ("screenshooter/thumb_filename=thumb-"));
@@ -315,8 +316,7 @@ cb_applet_change_orient (GtkWidget * w, PanelOrientType o, gpointer data)
 {
   gboolean size_tiny = FALSE;
 #ifdef HAVE_PANEL_PIXEL_SIZE
-  int panelsize =
-    applet_widget_get_panel_pixel_size (APPLET_WIDGET (applet));
+  int panelsize = applet_widget_get_panel_pixel_size (APPLET_WIDGET (applet));
   /* Switch stuff so it lies flat on a tiny panel */
   if (panelsize < PIXEL_SIZE_STANDARD)
     size_tiny = TRUE;
@@ -496,9 +496,10 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
 
   ad->directory_entry = gnome_file_entry_new ("output_dir",
 					      "Select directory");
-  gnome_file_entry_set_directory(GNOME_FILE_ENTRY(ad->directory_entry), TRUE);
+  gnome_file_entry_set_directory (GNOME_FILE_ENTRY (ad->directory_entry),
+				  TRUE);
   entry = GTK_COMBO (GNOME_FILE_ENTRY (ad->directory_entry)->gentry)->entry;
-  
+
   if (ad->directory)
     gtk_entry_set_text (GTK_ENTRY (entry), ad->directory);
 
@@ -513,7 +514,7 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
   pref_hbox = gtk_hbox_new (FALSE, GNOME_PAD_SMALL);
   gtk_box_pack_start (GTK_BOX (pref_vbox), pref_hbox, FALSE, FALSE, 0);
   gtk_widget_show (pref_hbox);
-  label = gtk_label_new (_ ("Filename for images:"));
+  label = gtk_label_new (_ ("Image filename:"));
   gtk_box_pack_start (GTK_BOX (pref_hbox), label, FALSE, FALSE, 0);
   gtk_widget_show (label);
 
@@ -527,6 +528,12 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
 
   gtk_box_pack_start (GTK_BOX (pref_hbox), ad->filename_entry, TRUE, TRUE, 0);
   gtk_widget_show (ad->filename_entry);
+
+  button = gtk_button_new_with_label (_ ("Show expanded filename"));
+  gtk_signal_connect (GTK_OBJECT (button), "clicked",
+		      (GtkSignalFunc) expand_cb, NULL);
+  gtk_box_pack_start (GTK_BOX (pref_hbox), button, FALSE, FALSE, 0);
+  gtk_widget_show (button);
 
   frame = gtk_frame_new (NULL);
   gtk_box_pack_start (GTK_BOX (pref_vbox), frame, FALSE, FALSE, 0);
@@ -549,7 +556,11 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
 			  "jpg, jpeg, bmp, cgm, cmyk, dib, eps, fig, fpx, gif, ico, map, miff, pcx,\n"
 			  "pict, pix, png, pnm, ppm, psd, rgb, rgba, rla, rle, tiff, tga, xbm, xpm,\n"
 			  "and several obscure ones. Try your luck with something interesting!\n"
-			  "Eg .html for a client-side image map. You'll get a .gif, .html, and a .shtml"));
+			  "Eg .html for a client-side image map. You'll get a .gif, .html, and a .shtml\n\n"
+			  "Recommendations:\n"
+			  "Small file, pretty good quality:   jpg, 75% quality\n"
+			  "Slightly larger file but lossless: png, as much compression as you like.\n"
+			  "- compressing pngs takes longer at higher ratios, but is still lossless"));
   gtk_label_set_justify (GTK_LABEL (label), GTK_JUSTIFY_LEFT);
   gtk_box_pack_start (GTK_BOX (pref_hbox), label, FALSE, FALSE, 0);
   gtk_widget_show (label);
@@ -874,16 +885,14 @@ cb_properties_dialog (AppletWidget * widget, gpointer data)
   gtk_box_pack_start (GTK_BOX (pref_vbox), pref_hbox, FALSE, FALSE, 0);
   gtk_widget_show (pref_hbox);
 
-  button =
-    gtk_check_button_new_with_label (_ ("Mirror image vertically"));
+  button = gtk_check_button_new_with_label (_ ("Mirror image vertically"));
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), ad->flip);
   gtk_signal_connect (GTK_OBJECT (button), "clicked",
 		      (GtkSignalFunc) flip_cb, NULL);
   gtk_box_pack_start (GTK_BOX (pref_hbox), button, FALSE, FALSE, 0);
   gtk_widget_show (button);
 
-  button =
-    gtk_check_button_new_with_label (_ ("Mirror image horizontally"));
+  button = gtk_check_button_new_with_label (_ ("Mirror image horizontally"));
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), ad->flop);
   gtk_signal_connect (GTK_OBJECT (button), "clicked",
 		      (GtkSignalFunc) flop_cb, NULL);
@@ -1382,34 +1391,34 @@ main (int argc, char *argv[])
 void
 window_button_press (GtkWidget * button, user_preferences * opt)
 {
-    grab_shot (opt, FALSE);
-    return;
-    button = NULL;
+  grab_shot (opt, FALSE);
+  return;
+  button = NULL;
 }
 
 void
 desktop_button_press (GtkWidget * button, user_preferences * opt)
 {
   grab_shot (opt, TRUE);
-    return;
-    button = NULL;
+  return;
+  button = NULL;
 }
 
 void
 grab_shot (user_preferences * opt, gboolean root)
 {
-  gchar *sys=NULL;
+  gchar *sys = NULL;
   gchar qual_buf[10];
   gchar thumb_qual_buf[10];
-  gchar *dir_buf=NULL;
-  gchar *file_buf=NULL;
-  gchar *temp_dir_file_buf=NULL;
+  gchar *dir_buf = NULL;
+  gchar *file_buf = NULL;
+  gchar *temp_dir_file_buf = NULL;
   gchar dec_buf[10];
   gchar mono_buf[25];
   gchar neg_buf[15];
   gchar beep_buf[10];
   gchar delay_buf[15];
-  gchar *thumb_image=NULL;
+  gchar *thumb_image = NULL;
   wordexp_t mywordexp;
   int wordexpret = 0;
 
@@ -1563,7 +1572,7 @@ grab_shot (user_preferences * opt, gboolean root)
 		       "-window", "root", "-quality", qual_buf, lastimage,
 		       NULL);
     }
-  system(sys);
+  system (sys);
 
   if (opt->post_process)
     {
@@ -1827,6 +1836,41 @@ grab_shot (user_preferences * opt, gboolean root)
 }
 
 void
+expand_cb (GtkWidget * w, gpointer data)
+{
+  wordexp_t mywordexp;
+  int wordexpret = 0;
+  gchar *filename = NULL;
+  gchar *message = NULL;
+  gchar *buf = NULL;
+
+  filename = gtk_entry_get_text (GTK_ENTRY (options.filename_entry));
+
+  if ((wordexpret = wordexp (filename, &mywordexp, 0) != 0))
+    {
+      gnome_ok_dialog (_ ("There was a word expansion error\n"
+			  "I think you have stuck something funny in the filename box"));
+      wordfree (&mywordexp);
+      return;
+    }
+  else
+    {
+      buf = g_strjoinv ("", mywordexp.we_wordv);
+
+      /* display expanded filename */
+      message = g_strdup_printf
+	(_
+	 ("The specified filename:\n%s\nexpands to:\n%s\nwhen passed to a shell"),
+	 filename, buf);
+      gnome_ok_dialog (message);
+      wordfree (&mywordexp);
+    }
+  return;
+  data = NULL;
+  w = NULL;
+}
+
+void
 property_apply_cb (GtkWidget * w, gpointer data)
 {
   user_preferences *ad = &options;
@@ -1834,8 +1878,11 @@ property_apply_cb (GtkWidget * w, gpointer data)
   gchar *buf;
   gint info_changed = FALSE;
 
-  buf = gtk_entry_get_text (GTK_ENTRY (
-    GTK_COMBO (GNOME_FILE_ENTRY (ad->directory_entry)->gentry)->entry));
+  buf =
+    gtk_entry_get_text (GTK_ENTRY
+			(GTK_COMBO
+			 (GNOME_FILE_ENTRY (ad->directory_entry)->
+			  gentry)->entry));
 
   if ((buf) && (strcmp (buf, old->directory)))
     {
