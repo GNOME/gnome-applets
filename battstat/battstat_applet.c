@@ -686,6 +686,21 @@ destroy_applet (GtkWidget *widget, gpointer data)
    return;
 }
 
+static void
+battstat_error_dialog(gchar *msg)
+{
+	GtkWidget *dialog;
+
+	dialog = gtk_message_dialog_new(NULL,
+			0,
+			GTK_MESSAGE_ERROR,
+			GTK_BUTTONS_OK,
+			msg);
+
+	gtk_dialog_run (GTK_DIALOG(dialog));
+	gtk_widget_destroy (dialog);
+}
+
 void
 cleanup(int status)
 {
@@ -693,7 +708,7 @@ cleanup(int status)
    
    switch (status) {
     case 1:
-      g_error (
+      battstat_error_dialog (
 	       /* Displayed if the APM device couldn't be opened. (Used under *BSD)*/
 	       _("Can't open the APM device!\n\n"
 		 "Make sure you have read permission to the\n"
@@ -701,7 +716,7 @@ cleanup(int status)
       exit(1);
       break;
     case 2:
-      g_error (
+      battstat_error_dialog (
 	       /* Displayed if the APM system is disabled (Used under *BSD)*/	     
 	       _("The APM Management subsystem seems to be disabled.\n"
 		 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
@@ -739,7 +754,30 @@ suspend_cb (PanelApplet *applet, gpointer data)
    ProgressData *battstat = data;
    
    if(battstat->suspend_cmd && strlen(battstat->suspend_cmd)>0) {
-      gnome_execute_shell(NULL, battstat->suspend_cmd);
+      GError *err = NULL;
+      gboolean ret;
+      gint shell_ret = 0;
+
+      ret = g_spawn_command_line_sync(battstat->suspend_cmd,
+		      NULL, NULL, &shell_ret, &err);
+      if (ret == FALSE || shell_ret != 0)
+      {
+	      gchar *msg;
+
+	      if (err != NULL)
+	      {
+		      msg = g_strdup_printf(_("An error occured while launching the Suspend command: %s\nPlease try to correct this error"), err->message);
+	      } else {
+		      /* Probably because the shell_ret is != 0 */
+		      msg = g_strdup_printf(_("An error occured while launching the Suspend command, the command returned \"%d\"\nPlease try to correct this error"), shell_ret);
+	      }
+	      battstat_error_dialog(msg);
+	      g_free(msg);
+	      if (err != NULL)
+		      g_error_free(err);
+      }
+   } else {
+      battstat_error_dialog(_("Suspend command wasn't setup correctly in the preferences.\nPlease change the preferences and try again."));
    }
    
    return;

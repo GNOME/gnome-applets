@@ -1,5 +1,12 @@
 2002-02-18  Bastien Nocera  <hadess@hadess.net>
 
+	* battstat_applet.c: (battstat_error_dialog), (cleanup),
+	(suspend_cb): use g_spawn_* instead of gnome_execute_*
+	(which means better error checking), use dialog error boxes
+	instead of printing it on the stdout
+
+2002-02-18  Bastien Nocera  <hadess@hadess.net>
+
 	* sounds/Makefile.am: install soundlist in the right place
 
 2002-02-17  Kevin Vandersloot <kfv101@psu.edu>
