@@ -88,6 +88,7 @@ struct _GkbPropertyBoxInfo
   GkbMode mode;
 };
 
+
 struct _GkbKeymap
 {
   gint i;
@@ -132,7 +133,6 @@ struct _GKB
   GtkWidget *image;
   GtkWidget *addwindow;
   GtkTooltips *tooltips;
-  GtkWidget *popupwin;
 
   gint n;
   gint cur;
