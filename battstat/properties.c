@@ -383,6 +383,8 @@ prop_cb (BonoboUIComponent *uic,
   
   battstat->eyellow_adj = GTK_OBJECT (gtk_spin_button_get_adjustment (GTK_SPIN_BUTTON (widget)));
 
+  g_signal_connect (G_OBJECT (battstat->prop_win), "delete_event", G_CALLBACK (gtk_true), NULL);
+
   gtk_signal_connect (GTK_OBJECT (battstat->eyellow_adj), "value_changed",
 		       GTK_SIGNAL_FUNC (adj_value_changed_cb), battstat);
 
