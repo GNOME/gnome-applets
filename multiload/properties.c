@@ -63,12 +63,48 @@ spin_button_changed_cb(GtkWidget *widget, gpointer name)
 	
 	return;
 }
+
+/* create a new page in the notebook widget, add it, and return a pointer to it */
+GtkWidget *
+add_page(GtkWidget *notebook, gchar *label)
+{
+	GtkWidget *page;
+	GtkWidget *page_label;
 	
+	page = gtk_hbox_new(TRUE, 0);
+	page_label = gtk_label_new(label);
+	
+	gtk_notebook_append_page(GTK_NOTEBOOK(notebook), page, page_label);
+	
+	return page;
+}
+
+/* create a color selector */
+void
+add_color_selector(GtkWidget *page, gchar *name, gchar *gconf_path)
+{
+	GtkWidget *vbox;
+	GtkWidget *label;
+	GtkWidget *button;
+	
+	button = gtk_button_new();
+	gtk_button_set_relief(GTK_BUTTON(button), GTK_RELIEF_NONE);
+	vbox = gtk_vbox_new(FALSE, 0);
+	label = gtk_label_new(name);
+	
+	gtk_container_add(GTK_CONTAINER(button), vbox);
+	gtk_box_pack_start(GTK_BOX(vbox), label, FALSE, FALSE, 0);
+	
+	gtk_box_pack_start(GTK_BOX(page), button, TRUE, TRUE, 3);
+	
+	return;
+}
+
 /* creates the properties dialog using up-to-the-minute info from gconf */
 void
 fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 {
-	GtkWidget *notebook;
+	GtkWidget *notebook, *page;
 	GtkWidget *hbox, *vbox;
 	GtkWidget *check_box;
 	GtkWidget *frame;
@@ -118,6 +154,13 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 				G_CALLBACK(property_toggled_cb), "view_swapload");
 	gtk_box_pack_start(GTK_BOX(hbox), check_box, FALSE, FALSE, 2);
 
+	/*	
+	check_box = gtk_check_button_new_with_mnemonic(_("_Average"));
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_box),
+				panel_applet_gconf_get_bool(multiload_applet->applet, "view_loadavg", NULL));
+	gtk_box_pack_start(GTK_BOX(hbox), check_box, FALSE, FALSE, 0);
+	*/
+
 	frame = gtk_frame_new(_("Options"));
 	gtk_container_set_border_width(GTK_CONTAINER(frame), 5);
 	gtk_box_pack_start(GTK_BOX(GTK_DIALOG(dialog)->vbox), frame, FALSE, FALSE, 0);
@@ -131,9 +174,9 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	
 	orient = panel_applet_get_orient(ma->applet);
 	if ( (orient == PANEL_APPLET_ORIENT_UP) || (orient == PANEL_APPLET_ORIENT_DOWN) )
-		label_text = g_strdup(_("Load monitor width"));
+		label_text = g_strdup(_("System monitor width: "));
 	else
-		label_text = g_strdup(_("Load monitor height"));
+		label_text = g_strdup(_("System monitor height: "));
 	
 	label = gtk_label_new(label_text);
 	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 3);
@@ -144,11 +187,13 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	g_signal_connect(G_OBJECT(spin_button), "value_changed",
 				G_CALLBACK(spin_button_changed_cb), "size");
 	gtk_box_pack_start(GTK_BOX(hbox), spin_button, FALSE, FALSE, 3);
+	label = gtk_label_new(_("pixels"));
+	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
 	
 	hbox = gtk_hbox_new(FALSE, 0);
 	gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 1);
 	
-	label = gtk_label_new(_("Load monitor speed"));
+	label = gtk_label_new(_("System monitor speed: "));
 	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 3);
 	spin_button = gtk_spin_button_new_with_range(0, 9999, 10);
 	g_object_set_data(G_OBJECT(spin_button), "user_data", ma);
@@ -157,14 +202,41 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	g_signal_connect(G_OBJECT(spin_button), "value_changed",
 				G_CALLBACK(spin_button_changed_cb), "speed");
 	gtk_box_pack_start(GTK_BOX(hbox), spin_button, FALSE, FALSE, 3);
+	label = gtk_label_new(_("milliseconds"));
+	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
 	
-/*	
-	check_box = gtk_check_button_new_with_mnemonic(_("_Average"));
-	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_box),
-				panel_applet_gconf_get_bool(multiload_applet->applet, "view_loadavg", NULL));
-	gtk_box_pack_start(GTK_BOX(hbox), check_box, FALSE, FALSE, 0);
-*/
 	g_free(label_text);
+	
+	frame = gtk_frame_new(_("Colors"));
+	gtk_container_set_border_width(GTK_CONTAINER(frame), 5);
+	gtk_box_pack_start(GTK_BOX(GTK_DIALOG(dialog)->vbox), frame, FALSE, FALSE, 0);
+	
+	notebook = gtk_notebook_new();
+	gtk_notebook_set_homogeneous_tabs(GTK_NOTEBOOK(notebook), TRUE);
+	gtk_container_set_border_width(GTK_CONTAINER(notebook), 5);
+	gtk_container_add(GTK_CONTAINER(frame), notebook);
+	
+	page = add_page(notebook,  _("Processor"));
+	add_color_selector(page, _("User"), "cpuload_color0");
+	add_color_selector(page, _("System"), "cpuload_color1");
+	add_color_selector(page, _("Nice"), "cpuload_color2");
+	add_color_selector(page, _("Idle"), "cpuload_color3");
+	
+	page = add_page(notebook,  _("Memory"));
+	add_color_selector(page, _("Other"), "memload_color0");
+	add_color_selector(page, _("Shared"), "memload_color1");
+	add_color_selector(page, _("Buffers"), "memload_color2");
+	add_color_selector(page, _("Free"), "memload_color3");
+	
+	page = add_page(notebook,  _("Network"));
+	add_color_selector(page, _("SLIP"), "netload_color0");
+	add_color_selector(page, _("PLIP"), "netload_color1");
+	add_color_selector(page, _("Ethernet"), "netload_color2");
+	add_color_selector(page, _("Other"), "netload_color3");
+	
+	page = add_page(notebook,  _("Swap File"));
+	add_color_selector(page, _("Used"), "swapload_color0");
+	add_color_selector(page, _("Free"), "swapload_color1");
 	
 	return;
 }
