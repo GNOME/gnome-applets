@@ -90,10 +90,12 @@ void gweather_dialog_create (void)
   GtkWidget *forecast_hbox;
   GtkWidget *weather_action_area;
   GtkWidget *close_button;
+  GtkWidget *ebox;
 
   g_return_if_fail(gweather_dialog == NULL);
 
   gweather_dialog = gnome_dialog_new (_("GNOME Weather"), NULL);
+
   if (gweather_pref.radar_enabled)
       gtk_widget_set_usize (gweather_dialog, 570, 440);
   else
@@ -320,9 +322,24 @@ void gweather_dialog_create (void)
       gtk_container_add (GTK_CONTAINER (weather_notebook), radar_vbox);
       gtk_container_set_border_width (GTK_CONTAINER (radar_vbox), 6);
 
+
+      /* PUSH */
+      gtk_widget_push_visual (gdk_rgb_get_visual ());
+      gtk_widget_push_colormap (gdk_rgb_get_cmap ());
+
+      ebox = gtk_event_box_new ();
+      gtk_widget_show (ebox);
+      gtk_box_pack_start (GTK_BOX (radar_vbox), ebox, FALSE, FALSE, 0);
+
+
       radar_pixmap = gtk_pixmap_new (pixmap, mask);  /* Tmp hack */
       gtk_widget_show (radar_pixmap);
-      gtk_box_pack_start (GTK_BOX (radar_vbox), radar_pixmap, FALSE, FALSE, 0);
+      gtk_container_add (GTK_CONTAINER (ebox), radar_pixmap);
+
+      /* POP */
+      gtk_widget_pop_colormap ();
+      gtk_widget_pop_visual ();
+
 
       radar_link_alignment = gtk_alignment_new (0.5, 0.5, 0, 0);
       gtk_widget_show (radar_link_alignment);
@@ -382,7 +399,7 @@ void gweather_dialog_display_toggle (void)
 
 void gweather_dialog_update (void)
 {
-    gchar *forecast;
+    const gchar *forecast;
 
     g_return_if_fail(gweather_info != NULL);
 

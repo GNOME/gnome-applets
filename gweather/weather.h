@@ -56,7 +56,7 @@ enum _WeatherWindDirection {
 
 typedef enum _WeatherWindDirection WeatherWindDirection;
 
-extern gchar *weather_wind_direction_string (WeatherWindDirection wind);
+extern const gchar *weather_wind_direction_string (WeatherWindDirection wind);
 
 enum _WeatherSky {
     SKY_CLEAR,
@@ -68,7 +68,7 @@ enum _WeatherSky {
 
 typedef enum _WeatherSky WeatherSky;
 
-extern gchar *weather_sky_string (WeatherSky sky);
+extern const gchar *weather_sky_string (WeatherSky sky);
 
 enum _WeatherConditionPhenomenon {
    PHENOMENON_NONE,
@@ -130,7 +130,7 @@ struct _WeatherConditions {
 
 typedef struct _WeatherConditions WeatherConditions;
 
-extern gchar *weather_conditions_string (WeatherConditions cond);
+extern const gchar *weather_conditions_string (WeatherConditions cond);
 
 enum _WeatherUnits {
     UNITS_IMPERIAL,
@@ -199,20 +199,20 @@ extern WeatherInfo *weather_info_config_read (void);
 extern void weather_info_to_metric (WeatherInfo *info);
 extern void weather_info_to_imperial (WeatherInfo *info);
 
-extern gchar *weather_info_get_location (WeatherInfo *info);
-extern gchar *weather_info_get_update (WeatherInfo *info);
-extern gchar *weather_info_get_sky (WeatherInfo *info);
-extern gchar *weather_info_get_conditions (WeatherInfo *info);
-extern gchar *weather_info_get_temp (WeatherInfo *info);
-extern gchar *weather_info_get_dew (WeatherInfo *info);
-extern gchar *weather_info_get_humidity (WeatherInfo *info);
-extern gchar *weather_info_get_wind (WeatherInfo *info);
-extern gchar *weather_info_get_pressure (WeatherInfo *info);
-extern gchar *weather_info_get_visibility (WeatherInfo *info);
-extern gchar *weather_info_get_forecast (WeatherInfo *info);
+extern const gchar *weather_info_get_location (WeatherInfo *info);
+extern const gchar *weather_info_get_update (WeatherInfo *info);
+extern const gchar *weather_info_get_sky (WeatherInfo *info);
+extern const gchar *weather_info_get_conditions (WeatherInfo *info);
+extern const gchar *weather_info_get_temp (WeatherInfo *info);
+extern const gchar *weather_info_get_dew (WeatherInfo *info);
+extern const gchar *weather_info_get_humidity (WeatherInfo *info);
+extern const gchar *weather_info_get_wind (WeatherInfo *info);
+extern const gchar *weather_info_get_pressure (WeatherInfo *info);
+extern const gchar *weather_info_get_visibility (WeatherInfo *info);
+extern const gchar *weather_info_get_forecast (WeatherInfo *info);
 extern GdkPixmap *weather_info_get_radar (WeatherInfo *info);
 
-extern gchar *weather_info_get_temp_summary (WeatherInfo *info);
+extern const gchar *weather_info_get_temp_summary (WeatherInfo *info);
 extern gchar *weather_info_get_weather_summary (WeatherInfo *info);
 
 extern time_t make_time (gint date, gint hour, gint min);

@@ -177,6 +177,10 @@ void gweather_applet_create (int argc, char *argv[])
                        NULL, 0, NULL);
     gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gweather/tstorm.xpm");
 
+    /* PUSH */
+    gtk_widget_push_visual (gdk_rgb_get_visual ());
+    gtk_widget_push_colormap (gdk_rgb_get_cmap ());
+
     if ((gweather_applet = applet_widget_new("gweather")) == NULL)
         g_error(_("Cannot create applet!\n"));
 
@@ -256,6 +260,10 @@ void gweather_applet_create (int argc, char *argv[])
     place_widgets();
     
     gtk_widget_show(gweather_applet);
+
+    /* POP */
+    gtk_widget_pop_colormap ();
+    gtk_widget_pop_visual ();
 }
 
 
@@ -354,7 +362,7 @@ void gweather_update (void)
     /* Let user know we are updating */
     weather_info_get_pixmap_mini(gweather_info, &cond_pixmap, &cond_mask);
     gtk_pixmap_set(GTK_PIXMAP(pixmap), cond_pixmap, cond_mask);
-    gtk_tooltips_set_tip(tooltips, gweather_applet, "Updating...", NULL);
+    gtk_tooltips_set_tip(tooltips, gweather_applet, _("Updating..."), NULL);
 
     /* Set preferred units */
     weather_units_set(gweather_pref.use_metric ? UNITS_METRIC : UNITS_IMPERIAL);

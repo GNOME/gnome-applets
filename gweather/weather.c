@@ -26,6 +26,8 @@
 #include <unistd.h>
 
 #include <gnome.h>
+#include <gdk-pixbuf/gdk-pixbuf.h>
+#include <gdk-pixbuf/gdk-pixbuf-loader.h>
 #include <ghttp.h>
 
 #include "http.h"
@@ -63,16 +65,15 @@ WeatherLocation *weather_location_new (const gchar *name, const gchar *code, con
 {
     WeatherLocation *location;
 
-    g_return_val_if_fail(strlen(name) <= WEATHER_LOCATION_NAME_MAX_LEN, NULL);
-    g_return_val_if_fail(strlen(code) == WEATHER_LOCATION_CODE_LEN, NULL);
-    g_return_val_if_fail(strlen(zone) == WEATHER_LOCATION_ZONE_LEN, NULL);
-    g_return_val_if_fail(strlen(radar) == WEATHER_LOCATION_RADAR_LEN, NULL);
-
     location = g_new(WeatherLocation, 1);
-    strcpy(location->name, name);
-    strcpy(location->code, code);
-    strcpy(location->zone, zone);
-    strcpy(location->radar, radar);
+    strncpy(location->name, name, WEATHER_LOCATION_NAME_MAX_LEN);
+    location->name[WEATHER_LOCATION_NAME_MAX_LEN] = '\0';
+    strncpy(location->code, code, WEATHER_LOCATION_CODE_LEN);
+    location->code[WEATHER_LOCATION_CODE_LEN] = '\0';
+    strncpy(location->zone, zone, WEATHER_LOCATION_ZONE_LEN);
+    location->zone[WEATHER_LOCATION_ZONE_LEN] = '\0';
+    strncpy(location->radar, radar, WEATHER_LOCATION_RADAR_LEN);
+    location->radar[WEATHER_LOCATION_RADAR_LEN] = '\0';
 
     return location;
 }
@@ -104,7 +105,13 @@ WeatherLocation *weather_location_config_read (gchar *prefix)
     prefix_with_default = g_strconcat(prefix, "=Pittsburgh KPIT PAZ021 pit", NULL);
 
     gnome_config_get_vector(prefix_with_default, &nlocdata, &locdata);
-    g_return_val_if_fail(nlocdata == 4, NULL);
+
+    if (nlocdata != 4) {
+	    g_warning (_("Location vector needs to be 4 elements long"));
+	    g_free(prefix_with_default);
+	    g_strfreev(locdata);
+	    return NULL;
+    }
     location = weather_location_new(locdata[0], locdata[1], locdata[2], locdata[3]);
     g_strfreev(locdata);
 
@@ -133,7 +140,7 @@ gboolean weather_location_equal (const WeatherLocation *location1, const Weather
     return (strcmp(location1->code, location2->code) == 0);
 }
 
-static gchar *wind_direction_str[] = {
+static const gchar *wind_direction_str[] = {
     N_("Variable"),
     N_("North"), N_("North - NorthEast"), N_("Northeast"), N_("East - NorthEast"),
     N_("East"), N_("East - Southeast"), N_("Southeast"), N_("South - Southeast"),
@@ -141,12 +148,16 @@ static gchar *wind_direction_str[] = {
     N_("West"), N_("West - Northwest"), N_("Northwest"), N_("North - Northwest")
 };
 
-gchar *weather_wind_direction_string (WeatherWindDirection wind)
+const gchar *weather_wind_direction_string (WeatherWindDirection wind)
 {
-    return _(wind_direction_str[(int)wind]);
+	if (wind < 0 ||
+	    wind >= (sizeof (wind_direction_str) / sizeof (char *)))
+		return _("Invalid");
+
+	return _(wind_direction_str[(int)wind]);
 }
 
-static gchar *sky_str[] = {
+static const gchar *sky_str[] = {
     N_("Clear Sky"),
     N_("Broken clouds"),
     N_("Scattered clouds"),
@@ -154,9 +165,13 @@ static gchar *sky_str[] = {
     N_("Overcast")
 };
 
-gchar *weather_sky_string (WeatherSky sky)
+const gchar *weather_sky_string (WeatherSky sky)
 {
-    return _(sky_str[(int)sky]);
+	if (sky < 0 ||
+	    sky >= (sizeof (sky_str) / sizeof (char *)))
+		return _("Invalid");
+
+	return _(sky_str[(int)sky]);
 }
 
 
@@ -172,7 +187,11 @@ gchar *weather_sky_string (WeatherSky sky)
  * ever comes up in the weather conditions field, let me know...
  */
 
-static gchar *conditions_str[24][13] = {
+/*
+ * Note, magic numbers, when you change the size here, make sure to change
+ * the below function so that new values are recognized
+ */
+static const gchar *conditions_str[24][13] = {
 /*                   NONE                         VICINITY                             LIGHT                      MODERATE                      HEAVY                      SHALLOW                      PATCHES                         PARTIAL                      THUNDERSTORM                    BLOWING                      SHOWERS                         DRIFTING                      FREEZING                      */
 /*               *******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /* NONE          */ {"",                          "",                                  "",                        "",                           "",                        "",                          "",                             "",                          "",                             "",                          "",                             "",                           "",                          },
@@ -201,15 +220,21 @@ static gchar *conditions_str[24][13] = {
 /* DUST_WHIRLS   */ {N_("Dust whirls"),           N_("Dust whirls in the vicinity") ,  N_("Light dust whirls"),   N_("Moderate dust whirls"),   N_("Heavy dust whirls"),   N_("Shallow dust whirls"),   N_("Patches of dust whirls"),   N_("Partial dust whirls"),   "??",                           N_("Blowing dust whirls"),   "??",                           N_("Drifting dust whirls"),   "??"                         }
 };
 
-gchar *weather_conditions_string (WeatherConditions cond)
+const gchar *weather_conditions_string (WeatherConditions cond)
 {
-    gchar *str;
+    const gchar *str;
 
     if (!cond.significant) {
-        return "-";
+	    return "-";
     } else {
-        str = _(conditions_str[(int)cond.phenomenon][(int)cond.qualifier]);
-        return (strlen(str) > 0) ? str : "-";
+	    if (cond.phenomenon >= 0 &&
+		cond.phenomenon < 24 &&
+		cond.qualifier >= 0 &&
+		cond.qualifier < 13)
+		    str = _(conditions_str[(int)cond.phenomenon][(int)cond.qualifier]);
+	    else
+		    str = _("Invalid");
+	    return (strlen(str) > 0) ? str : "-";
     }
 }
 
@@ -222,7 +247,7 @@ static ghttp_request *metar_request = NULL,
                      *wx_request = NULL;
 static gboolean requests_pending = FALSE;
 
-static __inline gboolean requests_init (WeatherInfoFunc cb, WeatherInfo *info)
+static inline gboolean requests_init (WeatherInfoFunc cb, WeatherInfo *info)
 {
     if (requests_pending)
         return FALSE;
@@ -237,7 +262,7 @@ static __inline gboolean requests_init (WeatherInfoFunc cb, WeatherInfo *info)
     return TRUE;
 }
 
-static __inline void request_done (ghttp_request **req)
+static inline void request_done (ghttp_request **req)
 {
     g_return_if_fail(req != NULL);
 
@@ -245,7 +270,7 @@ static __inline void request_done (ghttp_request **req)
     *req = NULL;
 }
 
-static __inline void requests_done_check (void)
+static inline void requests_done_check (void)
 {
     g_return_if_fail(requests_pending);
 
@@ -296,7 +321,7 @@ static void metar_init_re (void)
     regcomp(&metar_re[COND_RE], COND_RE_STR, REG_EXTENDED);
 }
 
-static __inline gint days_in_month (gint month, gint year)
+static inline gint days_in_month (gint month, gint year)
 {
     if (month == 1)
         return ((year % 4) == 0) ? 29 : 28;
@@ -551,7 +576,7 @@ static gboolean metar_tok_pres (gchar *tokp, WeatherInfo *info)
 /* Relative humidity computation - thanks to <Olof.Oberg@modopaper.modogroup.com> */
 
 
-static __inline gint calc_humidity(gdouble temp, gdouble dewp)
+static inline gint calc_humidity(gdouble temp, gdouble dewp)
 {
     gdouble esat, esurf;
 
@@ -607,7 +632,8 @@ static gboolean metar_tok_cond (gchar *tokp, WeatherInfo *info)
     squal[pphen - tokp] = 0;
 
     memset(sphen, 0, sizeof(sphen));
-    strcpy(sphen, pphen);
+    strncpy(sphen, pphen, sizeof(sphen));
+    sphen[sizeof(sphen)-1] = '\0';
 
     /* Defaults */
     info->cond.qualifier = QUALIFIER_NONE;
@@ -766,29 +792,38 @@ static void metar_get_finish (ghttp_request *req, ghttp_status status, gpointer 
     g_return_if_fail(info != NULL);
     info->forecast = NULL;
     loc = info->location;
-    g_return_if_fail(loc != NULL);
+    if (loc == NULL) {
+	    g_warning (_("WeatherInfo missing location"));
+	    return;
+    }
 
     if (status == ghttp_error) {
         g_warning(_("Failed to get METAR data.\n"));
     } else {
         body = ghttp_get_body(metar_request);
         body_len = ghttp_get_body_len(metar_request);
-        g_return_if_fail(body != NULL);
-        g_return_if_fail(body_len > 0);
+
+	if (body == NULL ||
+	    body_len <= 0) {
+		request_done(&metar_request);
+		requests_done_check();
+		return;
+	}
+
         body[body_len-1] = 0;  /* quick hack */
 
-        sprintf(searchkey, "\n%s", loc->code);
+        g_snprintf (searchkey, sizeof (searchkey), "\n%s", loc->code);
         metar = strstr(body, searchkey);
         if (metar == NULL) {
             success = FALSE;
         } else {
             metar += WEATHER_LOCATION_CODE_LEN + 2;
             eoln = strchr(metar, '\n');
-            g_return_if_fail(eoln !=  NULL);
-
-            *eoln = 0;
+	    if (eoln != NULL)
+		    *eoln = 0;
             success = metar_parse(metar, info);
-            *eoln = '\n';
+	    if (eoln != NULL)
+		    *eoln = '\n';
         }
 
         info->valid = success;
@@ -807,7 +842,10 @@ static void metar_get_start (WeatherInfo *info)
     g_return_if_fail(info != NULL);
     info->valid = FALSE;
     loc = info->location;
-    g_return_if_fail(loc != NULL);
+    if (loc == NULL) {
+	    g_warning (_("WeatherInfo missing location"));
+	    return;
+    }
 
     metar_request = ghttp_request_new();
     url = g_strdup_printf("http://weather.noaa.gov/cgi-bin/mgetmetar.pl?cccc=%s", loc->code);
@@ -908,7 +946,8 @@ static gchar *iwin_parse (gchar *iwin, WeatherLocation *loc)
 
     g_return_val_if_fail(iwin != NULL, NULL);
     g_return_val_if_fail(loc != NULL, NULL);
-    g_return_val_if_fail(loc->name[0] != '-', NULL);
+    if (loc->name[0] == '-')
+        return NULL;
 
     /* fprintf(stderr, "iwin_parse\n"); */
 
@@ -948,15 +987,23 @@ static void iwin_get_finish (ghttp_request *req, ghttp_status status, gpointer d
     g_return_if_fail(info != NULL);
     info->forecast = NULL;
     loc = info->location;
-    g_return_if_fail(loc != NULL);
+    if (loc == NULL) {
+	    g_warning (_("WeatherInfo missing location"));
+	    return;
+    }
 
     if (status == ghttp_error) {
         g_warning(_("Failed to get IWIN forecast data.\n"));
     } else {
         body = ghttp_get_body(iwin_request);
         body_len = ghttp_get_body_len(iwin_request);
-        g_return_if_fail(body != NULL);
-        g_return_if_fail(body_len > 0);
+
+	if (body == NULL ||
+	    body_len <= 0) {
+		request_done(&iwin_request);
+		requests_done_check();
+		return;
+	}
         body[body_len-1] = 0;  /* quick hack */
 
         forecast = iwin_parse(body, loc);
@@ -1001,21 +1048,25 @@ static void iwin_get_start (WeatherInfo *info)
 static GdkPixmap *wx_construct (gpointer data, gint data_len)
 {
     GdkPixmap *pixmap;
-    char *tmpname = g_strdup(tmpnam(NULL));
-    FILE *fp;
+    GdkPixbuf *pixbuf;
+    GdkPixbufLoader *pixbuf_loader;
 
     /* fprintf(stderr, "wx_get\n"); */
-    /* fprintf(stderr, "tmpname: %s\n", tmpname); */
 
-    fp = fopen(tmpname, "wb");
-    g_return_val_if_fail(fp != NULL, NULL);
-    fwrite(data, data_len, 1, fp);
-    fclose(fp);
+    pixbuf_loader = gdk_pixbuf_loader_new ();
 
-    gdk_imlib_load_file_to_pixmap(tmpname, &pixmap, NULL);
+    gdk_pixbuf_loader_write (pixbuf_loader, data, data_len);
+    gdk_pixbuf_loader_close (pixbuf_loader);
 
-    unlink(tmpname);
-    g_free(tmpname);
+    pixbuf = gdk_pixbuf_loader_get_pixbuf (pixbuf_loader);
+
+    pixmap = NULL;
+
+    if (pixbuf != NULL) {
+	    gdk_pixbuf_render_pixmap_and_mask (pixbuf, &pixmap, NULL, 127);
+    }
+
+    gtk_object_unref (GTK_OBJECT (pixbuf_loader));
 
     return pixmap;
 }
@@ -1087,7 +1138,11 @@ gboolean _weather_info_fill (WeatherInfo *info, WeatherLocation *location, Weath
     } else {
         location = info->location;
         g_free(info->forecast);
-        gdk_imlib_free_pixmap(info->radar);
+        info->forecast = NULL;
+	if (info->radar != NULL) {
+		gdk_pixmap_unref (info->radar);
+		info->radar = NULL;
+	}
     }
 
     /* FIX */
@@ -1179,11 +1234,23 @@ WeatherInfo *weather_info_clone (const WeatherInfo *info)
     WeatherInfo *clone;
     
     g_return_val_if_fail(info != NULL, NULL);
+
     clone = g_new(WeatherInfo, 1);
+
+
+    /* move everything */
     g_memmove(clone, info, sizeof(WeatherInfo));
+
+
+    /* special moves */
     clone->location = weather_location_clone(info->location);
     /* This handles null correctly */
     clone->forecast = g_strdup(info->forecast);
+
+    clone->radar = info->radar;
+    if (clone->radar != NULL)
+	    gdk_pixmap_ref (clone->radar);
+
     return clone;
 }
 
@@ -1194,8 +1261,10 @@ void weather_info_free (WeatherInfo *info)
         info->location = NULL;
         g_free(info->forecast);
         info->forecast = NULL;
-        gdk_imlib_free_pixmap(info->radar);
-        info->radar = NULL;
+	if (info->radar != NULL) {
+		gdk_pixmap_unref (info->radar);
+		info->radar = NULL;
+	}
     }
     g_free(info);
 }
@@ -1283,14 +1352,14 @@ void weather_info_to_imperial (WeatherInfo *info)
 }
 
 
-gchar *weather_info_get_location (WeatherInfo *info)
+const gchar *weather_info_get_location (WeatherInfo *info)
 {
     g_return_val_if_fail(info != NULL, NULL);
     g_return_val_if_fail(info->location != NULL, NULL);
     return info->location->name;
 }
 
-gchar *weather_info_get_update (WeatherInfo *info)
+const gchar *weather_info_get_update (WeatherInfo *info)
 {
     static gchar buf[200];
 
@@ -1302,15 +1371,18 @@ gchar *weather_info_get_update (WeatherInfo *info)
     if (info->update != 0) {
         struct tm *tm;
         tm = localtime(&info->update);
-        strftime(buf, 90, _("%a, %b %d / %H:%M"), tm);
+        if (strftime(buf, sizeof(buf), _("%a, %b %d / %H:%M"), tm) <= 0)
+		strcpy (buf, "???");
+	buf[sizeof(buf)-1] = '\0';
     } else {
-        strcpy(buf, _("Unknown observation time"));
+        strncpy(buf, _("Unknown observation time"), sizeof (buf));
+	buf[sizeof(buf)-1] = '\0';
     }
 
     return buf;
 }
 
-gchar *weather_info_get_sky (WeatherInfo *info)
+const gchar *weather_info_get_sky (WeatherInfo *info)
 {
     g_return_val_if_fail(info != NULL, NULL);
     if (!info->valid)
@@ -1318,7 +1390,7 @@ gchar *weather_info_get_sky (WeatherInfo *info)
     return weather_sky_string(info->sky);
 }
 
-gchar *weather_info_get_conditions (WeatherInfo *info)
+const gchar *weather_info_get_conditions (WeatherInfo *info)
 {
     g_return_val_if_fail(info != NULL, NULL);
     if (!info->valid)
@@ -1326,61 +1398,63 @@ gchar *weather_info_get_conditions (WeatherInfo *info)
     return weather_conditions_string(info->cond);
 }
 
-gchar *weather_info_get_temp (WeatherInfo *info)
+const gchar *weather_info_get_temp (WeatherInfo *info)
 {
     static gchar buf[10];
     g_return_val_if_fail(info != NULL, NULL);
     if (!info->valid)
         return "-";
-    sprintf(buf, "%.1f%s", info->temp, TEMP_UNIT_STR(info->units));
+    g_snprintf(buf, sizeof (buf), "%.1f%s", info->temp, TEMP_UNIT_STR(info->units));
     return buf;
 }
 
-gchar *weather_info_get_dew (WeatherInfo *info)
+const gchar *weather_info_get_dew (WeatherInfo *info)
 {
     static gchar buf[10];
     g_return_val_if_fail(info != NULL, NULL);
     if (!info->valid)
         return "-";
-    sprintf(buf, "%.1f%s", info->dew, TEMP_UNIT_STR(info->units));
+    g_snprintf(buf, sizeof (buf), "%.1f%s", info->dew, TEMP_UNIT_STR(info->units));
     return buf;
 }
 
-gchar *weather_info_get_humidity (WeatherInfo *info)
+const gchar *weather_info_get_humidity (WeatherInfo *info)
 {
     static gchar buf[10];
     g_return_val_if_fail(info != NULL, NULL);
     if (!info->valid)
         return "-";
-    sprintf(buf, "%d%%", info->humidity);
+    g_snprintf(buf, sizeof (buf), "%d%%", info->humidity);
     return buf;
 }
 
-gchar *weather_info_get_wind (WeatherInfo *info)
+const gchar *weather_info_get_wind (WeatherInfo *info)
 {
     static gchar buf[100];
     g_return_val_if_fail(info != NULL, NULL);
     if (!info->valid)
         return "-";
-    if (info->windspeed == 0.00)
-        strcpy(buf, _("Calm"));
-    else
-        sprintf(buf, "%s / %d %s", weather_wind_direction_string(info->wind),
-                                   info->windspeed, WINDSPEED_UNIT_STR(info->units));
+    if (info->windspeed == 0.00) {
+        strncpy(buf, _("Calm"), sizeof(buf));
+	buf[sizeof(buf)-1] = '\0';
+    } else
+        g_snprintf(buf, sizeof(buf), "%s / %d %s",
+		   weather_wind_direction_string(info->wind),
+		   info->windspeed, WINDSPEED_UNIT_STR(info->units));
     return buf;
 }
 
-gchar *weather_info_get_pressure (WeatherInfo *info)
+const gchar *weather_info_get_pressure (WeatherInfo *info)
 {
     static gchar buf[30];
     g_return_val_if_fail(info != NULL, NULL);
     if (!info->valid)
         return "-";
-    sprintf(buf, "%.2f %s", info->pressure, PRESSURE_UNIT_STR(info->units));
+    g_snprintf(buf, sizeof (buf), "%.2f %s", info->pressure, PRESSURE_UNIT_STR(info->units));
     return buf;
 }
 
-gchar *weather_info_get_visibility (WeatherInfo *info)
+const gchar *weather_info_get_visibility (WeatherInfo *info)
 {
     static gchar buf[40];
     g_return_val_if_fail(info != NULL, NULL);
@@ -1388,11 +1462,11 @@ gchar *weather_info_get_visibility (WeatherInfo *info)
         return "-";
     if (info->visibility < 0.0)
         return _("Unknown");
-    sprintf(buf, "%.1f %s", info->visibility, VISIBILITY_UNIT_STR(info->units));
+    g_snprintf(buf, sizeof (buf), "%.1f %s", info->visibility, VISIBILITY_UNIT_STR(info->units));
     return buf;
 }
 
-gchar *weather_info_get_forecast (WeatherInfo *info)
+const gchar *weather_info_get_forecast (WeatherInfo *info)
 {
     g_return_val_if_fail(info != NULL, NULL);
     return info->forecast;
@@ -1404,19 +1478,19 @@ GdkPixmap *weather_info_get_radar (WeatherInfo *info)
     return info->radar;
 }
 
-gchar *weather_info_get_temp_summary (WeatherInfo *info)
+const gchar *weather_info_get_temp_summary (WeatherInfo *info)
 {
     static gchar buf[10];
     g_return_val_if_fail(info != NULL, NULL);
     if (!info->valid)
         return "--";
-    sprintf(buf, "%d\260", (int)info->temp);
+    g_snprintf(buf, sizeof (buf), "%d\260", (int)info->temp);
     return buf;
 }
 
 gchar *weather_info_get_weather_summary (WeatherInfo *info)
 {
-    gchar *buf;
+    const gchar *buf;
     g_return_val_if_fail(info != NULL, NULL);
     if (!info->valid)
       return g_strdup (_("Retrieval failed"));
@@ -1427,10 +1501,10 @@ gchar *weather_info_get_weather_summary (WeatherInfo *info)
 }
 
 
-static GdkPixmap **weather_pixmaps_mini;
-static GdkBitmap **weather_pixmaps_mini_mask;
-static GdkPixmap **weather_pixmaps;
-static GdkBitmap **weather_pixmaps_mask;
+static GdkPixmap **weather_pixmaps_mini = NULL;
+static GdkBitmap **weather_pixmaps_mini_mask = NULL;
+static GdkPixmap **weather_pixmaps = NULL;
+static GdkBitmap **weather_pixmaps_mask = NULL;
 
 #include "pixmaps/unknown-mini.xpm"
 #include "pixmaps/sun-mini.xpm"
@@ -1461,6 +1535,21 @@ static GdkBitmap **weather_pixmaps_mask;
 
 #define NUM_PIX       8
 
+static void
+xpm_to_pixmap (char **xpm_data, GdkPixmap **pixmap, GdkBitmap **mask)
+{
+	GdkPixbuf *pixbuf = gdk_pixbuf_new_from_xpm_data ((const char **)xpm_data);
+
+	*pixmap = NULL;
+	*mask = NULL;
+
+	if (pixbuf != NULL) {
+		gdk_pixbuf_render_pixmap_and_mask (pixbuf, pixmap, mask, 127);
+
+		gdk_pixbuf_unref (pixbuf);
+	}
+}
+
 static void init_pixmaps (void)
 {
     static gboolean initialized = FALSE;
@@ -1471,25 +1560,25 @@ static void init_pixmaps (void)
 
     weather_pixmaps_mini = g_new(GdkPixmap *, NUM_PIX);
     weather_pixmaps_mini_mask = g_new(GdkBitmap *, NUM_PIX);
-    gdk_imlib_data_to_pixmap(unknown_mini_xpm, &weather_pixmaps_mini[PIX_UNKNOWN], &weather_pixmaps_mini_mask[PIX_UNKNOWN]);
-    gdk_imlib_data_to_pixmap(sun_mini_xpm, &weather_pixmaps_mini[PIX_SUN], &weather_pixmaps_mini_mask[PIX_SUN]);
-    gdk_imlib_data_to_pixmap(suncloud_mini_xpm, &weather_pixmaps_mini[PIX_SUNCLOUD], &weather_pixmaps_mini_mask[PIX_SUNCLOUD]);
-    gdk_imlib_data_to_pixmap(cloud_mini_xpm, &weather_pixmaps_mini[PIX_CLOUD], &weather_pixmaps_mini_mask[PIX_CLOUD]);
-    gdk_imlib_data_to_pixmap(rain_mini_xpm, &weather_pixmaps_mini[PIX_RAIN], &weather_pixmaps_mini_mask[PIX_RAIN]);
-    gdk_imlib_data_to_pixmap(tstorm_mini_xpm, &weather_pixmaps_mini[PIX_TSTORM], &weather_pixmaps_mini_mask[PIX_TSTORM]);
-    gdk_imlib_data_to_pixmap(snow_mini_xpm, &weather_pixmaps_mini[PIX_SNOW], &weather_pixmaps_mini_mask[PIX_SNOW]);
-    gdk_imlib_data_to_pixmap(fog_mini_xpm, &weather_pixmaps_mini[PIX_FOG], &weather_pixmaps_mini_mask[PIX_FOG]);
+    xpm_to_pixmap (unknown_mini_xpm, &weather_pixmaps_mini[PIX_UNKNOWN], &weather_pixmaps_mini_mask[PIX_UNKNOWN]);
+    xpm_to_pixmap (sun_mini_xpm, &weather_pixmaps_mini[PIX_SUN], &weather_pixmaps_mini_mask[PIX_SUN]);
+    xpm_to_pixmap (suncloud_mini_xpm, &weather_pixmaps_mini[PIX_SUNCLOUD], &weather_pixmaps_mini_mask[PIX_SUNCLOUD]);
+    xpm_to_pixmap (cloud_mini_xpm, &weather_pixmaps_mini[PIX_CLOUD], &weather_pixmaps_mini_mask[PIX_CLOUD]);
+    xpm_to_pixmap (rain_mini_xpm, &weather_pixmaps_mini[PIX_RAIN], &weather_pixmaps_mini_mask[PIX_RAIN]);
+    xpm_to_pixmap (tstorm_mini_xpm, &weather_pixmaps_mini[PIX_TSTORM], &weather_pixmaps_mini_mask[PIX_TSTORM]);
+    xpm_to_pixmap (snow_mini_xpm, &weather_pixmaps_mini[PIX_SNOW], &weather_pixmaps_mini_mask[PIX_SNOW]);
+    xpm_to_pixmap (fog_mini_xpm, &weather_pixmaps_mini[PIX_FOG], &weather_pixmaps_mini_mask[PIX_FOG]);
 
     weather_pixmaps = g_new(GdkPixmap *, NUM_PIX);
     weather_pixmaps_mask = g_new(GdkBitmap *, NUM_PIX);
-    gdk_imlib_data_to_pixmap(unknown_xpm, &weather_pixmaps[PIX_UNKNOWN], &weather_pixmaps_mask[PIX_UNKNOWN]);
-    gdk_imlib_data_to_pixmap(sun_xpm, &weather_pixmaps[PIX_SUN], &weather_pixmaps_mask[PIX_SUN]);
-    gdk_imlib_data_to_pixmap(suncloud_xpm, &weather_pixmaps[PIX_SUNCLOUD], &weather_pixmaps_mask[PIX_SUNCLOUD]);
-    gdk_imlib_data_to_pixmap(cloud_xpm, &weather_pixmaps[PIX_CLOUD], &weather_pixmaps_mask[PIX_CLOUD]);
-    gdk_imlib_data_to_pixmap(rain_xpm, &weather_pixmaps[PIX_RAIN], &weather_pixmaps_mask[PIX_RAIN]);
-    gdk_imlib_data_to_pixmap(tstorm_xpm, &weather_pixmaps[PIX_TSTORM], &weather_pixmaps_mask[PIX_TSTORM]);
-    gdk_imlib_data_to_pixmap(snow_xpm, &weather_pixmaps[PIX_SNOW], &weather_pixmaps_mask[PIX_SNOW]);
-    gdk_imlib_data_to_pixmap(fog_xpm, &weather_pixmaps[PIX_FOG], &weather_pixmaps_mask[PIX_FOG]);
+    xpm_to_pixmap (unknown_xpm, &weather_pixmaps[PIX_UNKNOWN], &weather_pixmaps_mask[PIX_UNKNOWN]);
+    xpm_to_pixmap (sun_xpm, &weather_pixmaps[PIX_SUN], &weather_pixmaps_mask[PIX_SUN]);
+    xpm_to_pixmap (suncloud_xpm, &weather_pixmaps[PIX_SUNCLOUD], &weather_pixmaps_mask[PIX_SUNCLOUD]);
+    xpm_to_pixmap (cloud_xpm, &weather_pixmaps[PIX_CLOUD], &weather_pixmaps_mask[PIX_CLOUD]);
+    xpm_to_pixmap (rain_xpm, &weather_pixmaps[PIX_RAIN], &weather_pixmaps_mask[PIX_RAIN]);
+    xpm_to_pixmap (tstorm_xpm, &weather_pixmaps[PIX_TSTORM], &weather_pixmaps_mask[PIX_TSTORM]);
+    xpm_to_pixmap (snow_xpm, &weather_pixmaps[PIX_SNOW], &weather_pixmaps_mask[PIX_SNOW]);
+    xpm_to_pixmap (fog_xpm, &weather_pixmaps[PIX_FOG], &weather_pixmaps_mask[PIX_FOG]);
 }
 
 void _weather_info_get_pixmap (WeatherInfo *info, gboolean mini, GdkPixmap **pixmap, GdkBitmap **mask)
