@@ -33,10 +33,7 @@
 #include <gdk/gdkx.h>
 #include <sys/stat.h>
 #include <X11/Xlib.h>
-#include <dirent.h>
 #include "gkb.h"
-
-
 
 typedef struct _KeymapData KeymapData;
 struct _KeymapData
@@ -46,29 +43,121 @@ struct _KeymapData
 };
 
 static void
-switch_normal_cb (GnomePropertyBox * pb)
-{
- gkb->tempsmall = 0;
- gkb->tempsize =
-    applet_widget_get_panel_pixel_size (APPLET_WIDGET (gkb->applet));
- gnome_property_box_changed (GNOME_PROPERTY_BOX (gkb->propbox));
-}
-
-static void
 changed_cb (GnomePropertyBox * pb)
 {
  gnome_property_box_changed (GNOME_PROPERTY_BOX (gkb->propbox));
 }
 
 static void
-switch_small_cb (GnomePropertyBox * pb)
+switch_normal_cb (GnomePropertyBox * pb, GkbPropertyBoxInfo * pbi)
 {
- gkb->tempsmall = 1;
+ pbi->is_small = 0;
+ pbi->size =
+    applet_widget_get_panel_pixel_size (APPLET_WIDGET (gkb->applet));
  gnome_property_box_changed (GNOME_PROPERTY_BOX (gkb->propbox));
 }
 
+static void
+switch_small_cb (GnomePropertyBox * pb, GkbPropertyBoxInfo * pbi)
+{
+ pbi->is_small = 1;
+ pbi->size =
+    applet_widget_get_panel_pixel_size (APPLET_WIDGET (gkb->applet)) / 2;
+ gnome_property_box_changed (GNOME_PROPERTY_BOX (gkb->propbox));
+}
+
+#if 0
+void
+apply_cb (GtkWidget * pb, gint page, GkbPropertyBoxInfo * pbi)
+{
+  GList * list;
+  GkbKeymap * tdata;
+  GkbKeymap * data;
+
+  if (page != -1)
+    return;
+
+  for(list = gkb->maps; list != NULL; list = list->next) {
+	  GkbKeymapWg *p = list->data;
+	  if(p) {
+		  g_free(p->name);
+		  g_free(p->command);
+		  g_free(p->flag);
+		  g_free(p);
+	  }
+  }
+  
+  g_list_free(gkb->maps);
+  gkb->maps = NULL;
+
+  for(list = pbi->keymaps; list != NULL; list = list->next) 
+   {
+
+    tdata = list->data;   
+    data = g_new0 (GkbKeymap,1);
+    data->name = g_strdup (tdata->name);
+    data->flag = g_strdup (tdata->flag);
+    data->command = g_strdup (tdata->command);
+    data->type = g_strdup (tdata->type);
+    data->arch = g_strdup (tdata->arch);
+    data->codepage = g_strdup (tdata->codepage);
+    data->lang = g_strdup (tdata->lang);
+    data->label = g_strdup (tdata->label);
+    data->country = g_strdup (tdata->country);
+
+    gkb->maps = g_list_append(gkb->maps, data);
+
+    g_free(tdata->name);
+    g_free(tdata->command);
+    g_free(tdata->flag);
+    g_free(tdata->lang);
+    g_free(tdata->label);
+    g_free(tdata->codepage);
+    g_free(tdata->country);
+    g_free(tdata->type);
+    g_free(tdata->arch);
+    g_free(tdata);
+
+  }
+
+  if (pbi->keymaps)
+   g_list_free (pbi->keymaps);
+
+  gkb->n = g_list_length(gkb->maps);
+
+  gkb->cur = 0;
+
+  gkb->dact = g_list_nth_data (gkb->maps, 0);
+
+  gkb->small = ->tempsmall;
+  gkb->size = gkb->tempsize;
+
+/*  entry1 = gtk_object_get_data (GTK_OBJECT(gkb->propbox), "entry1");
+  gkb->key = g_strdup (gtk_entry_get_text(GTK_ENTRY(entry1)));
+  convert_string_to_keysym_state(gkb->key,
+                                &gkb->keysym,
+                                &gkb->state);		
+                                                                                                               
+*/
+
+  gkb_update (gkb, FALSE);
+  gkb_update (gkb, TRUE);
+
+  applet_widget_sync_config(APPLET_WIDGET(gkb->applet));
+}
+#endif
+
+
+/**
+ * gkb_prop_create_display_frame:
+ * @GkbPropertyBoxInfo * pbi: PropBox Information
+ * 
+ * Implement the display frame
+ * 
+ * Return Value: the display frame widget
+ **/
 static GtkWidget *
-gkb_prop_create_display_frame ()
+gkb_prop_create_display_frame (GkbPropertyBoxInfo * pbi)
 {
   GtkWidget *frame;
   gchar *pixmap1_filename;
@@ -104,13 +193,18 @@ gkb_prop_create_display_frame ()
   optionmenu1_menu = gtk_menu_new ();
   prop_menuitem = gtk_menu_item_new_with_label (_("Normal"));
   gtk_widget_show (prop_menuitem);  
+
   gtk_signal_connect (GTK_OBJECT (prop_menuitem), "activate",
-                        (GtkSignalFunc) switch_normal_cb, NULL);
+                     (GtkSignalFunc) switch_normal_cb, 
+                     pbi);
+
   gtk_menu_append (GTK_MENU (optionmenu1_menu), prop_menuitem);
   prop_menuitem = gtk_menu_item_new_with_label (_("Small"));
   gtk_widget_show (prop_menuitem);
+
   gtk_signal_connect (GTK_OBJECT (prop_menuitem), "activate",
-                        (GtkSignalFunc) switch_small_cb, NULL);
+                     (GtkSignalFunc) switch_small_cb,
+                     pbi);
 
   gtk_menu_append (GTK_MENU (optionmenu1_menu), prop_menuitem);
   gtk_option_menu_set_menu (GTK_OPTION_MENU (optionmenu1), optionmenu1_menu);
@@ -157,7 +251,7 @@ gkb_prop_create_display_frame ()
  * 
  * Implement the hotkey properties frame
  * 
- * Return Value: 
+ * Return Value: the hotkey frame widget
  **/
 static GtkWidget *
 gkb_prop_create_hotkey_frame (void)
@@ -200,7 +294,6 @@ prophelp_cb (AppletWidget * applet, gpointer data)
   gnome_help_display (NULL, &help_entry);
 }
 
-
 static GtkWidget *
 gkb_prop_create_property_box (GkbPropertyBoxInfo *pbi)
 {
@@ -237,7 +330,7 @@ gkb_prop_create_property_box (GkbPropertyBoxInfo *pbi)
   gtk_notebook_set_tab_label (GTK_NOTEBOOK (propnotebook), page, page_1_label);
 
   /* Page 1 Frames */
-  display_frame = gkb_prop_create_display_frame ();
+  display_frame = gkb_prop_create_display_frame (pbi);
   hotkey_frame  = gkb_prop_create_hotkey_frame ();
   gtk_box_pack_start (GTK_BOX (page_1_vbox), display_frame, TRUE, TRUE, 0);
   gtk_box_pack_start (GTK_BOX (page_1_vbox), hotkey_frame, TRUE, FALSE, 2);
@@ -258,9 +351,18 @@ gkb_prop_create_property_box (GkbPropertyBoxInfo *pbi)
 
   /* Connect the signals */
   gtk_signal_connect (GTK_OBJECT (propbox), "destroy",
-		      GTK_SIGNAL_FUNC (gtk_widget_destroyed), &gkb->propbox);
+		      GTK_SIGNAL_FUNC (gtk_widget_destroyed),
+		      &gkb->propbox);
+
+#if 0
+  gtk_signal_connect (GTK_OBJECT (propbox), "apply",
+		      GTK_SIGNAL_FUNC (apply_cb), 
+		      pbi);
+#endif
+
   gtk_signal_connect (GTK_OBJECT (propbox), "help",
-		      GTK_SIGNAL_FUNC (prophelp_cb), NULL);
+		      GTK_SIGNAL_FUNC (prophelp_cb), 
+		      NULL);
   
   return propbox;
 }

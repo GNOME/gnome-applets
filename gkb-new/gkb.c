@@ -177,7 +177,7 @@ gkb_sized_render (GKB * gkb)
 
   debug (FALSE, "");
 
-  if (gkb->small)
+  if (gkb->is_small)
     gkb->size = applet_widget_get_panel_pixel_size (APPLET_WIDGET (gkb->applet)) / 2;
 
   if (gkb->orient == ORIENT_UP || gkb->orient == ORIENT_DOWN)
@@ -280,9 +280,9 @@ gkb_switch_normal (AppletWidget * applet, gpointer gkbx)
 
   debug (FALSE, "");
 
-  if (gkb->small)
+  if (gkb->is_small)
     {
-      gkb->small = FALSE;
+      gkb->is_small = FALSE;
       gkb->size =
 	applet_widget_get_panel_pixel_size (APPLET_WIDGET (gkb->applet));
       gkb_update (gkb, FALSE);
@@ -296,9 +296,9 @@ gkb_switch_small (AppletWidget * applet, gpointer gkbx)
 
   debug (FALSE, "");
 
-  if (!gkb->small)
+  if (!gkb->is_small)
     {
-      gkb->small = TRUE;
+      gkb->is_small = TRUE;
       gkb_update (gkb, FALSE);
     }
 }
@@ -364,7 +364,7 @@ loadprop (int i)
   actdata->pix = NULL;
   gkb->orient = applet_widget_get_panel_orient (APPLET_WIDGET (gkb->applet));
 
-  if (gkb->small)
+  if (gkb->is_small)
     gkb->size =
       applet_widget_get_panel_pixel_size (APPLET_WIDGET (gkb->applet)) / 2;
   else
@@ -416,7 +416,7 @@ load_properties ()
   gkb->key = gnome_config_get_string ("gkb/key=Mod1-Shift_L");
   convert_string_to_keysym_state (gkb->key, &gkb->keysym, &gkb->state);
 
-  gkb->small = gnome_config_get_int ("gkb/small=0");
+  gkb->is_small = gnome_config_get_int ("gkb/small=0");
 
   if (gkb->n == 0)
     {
@@ -583,7 +583,7 @@ applet_save_session (GtkWidget * w,
 
   gnome_config_push_prefix (privcfgpath);
   gnome_config_set_int ("gkb/num", gkb->n);
-  gnome_config_set_int ("gkb/small", gkb->small);
+  gnome_config_set_int ("gkb/small", gkb->is_small);
   gnome_config_set_string ("gkb/key", gkb->key);
 
   while (list)
