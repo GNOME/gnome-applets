@@ -72,6 +72,10 @@ WeatherLocation *weather_location_new (const gchar *name, const gchar *code, con
 {
     WeatherLocation *location;
 
+    if ((name == NULL) || (code == NULL) || (zone == NULL)
+		    || (radar == NULL))
+	    return NULL;
+
     location = g_new(WeatherLocation, 1);
     strncpy(location->name, name, WEATHER_LOCATION_NAME_MAX_LEN);
     location->name[WEATHER_LOCATION_NAME_MAX_LEN] = '\0';
