@@ -78,8 +78,7 @@ cd_panel_update(GtkWidget * cdplayer, CDPlayerData * cd)
 		case DISC_STOP:
 		case DISC_ERROR:
 			led_stop(cd->panel.time, cd->panel.track);
-		default:
-
+			break;
 		}
 	} else
 		led_nodisc(cd->panel.time, cd->panel.track);

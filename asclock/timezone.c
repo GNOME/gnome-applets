@@ -15,9 +15,12 @@ void enum_timezones(asclock *my_asclock, GtkWidget *clist )
   FILE *tz;
   GSList * my;
   char line[1024], *pos;
-  char *newelem[3] = { line, NULL, NULL };
+  char *newelem[3];
   gpointer localtime_data = NULL;
   int inspos, len, row;
+
+  newelem[0] = line;
+  newelem[1] = newelem[2] = NULL;
 
   tz = fopen("/usr/share/zoneinfo/zone.tab", "r");
   if(!tz) {
@@ -92,7 +95,9 @@ void enum_timezones(asclock *my_asclock, GtkWidget *clist )
   inspos = 0;
   while(my)
     {
-      char *elems[2] = { ((location *)my->data)->name, NULL };
+      char *elems[2];
+      elems[0] = ((location *)my->data)->name;
+      elems[1] = NULL;
 
       if ((strlen(my_asclock->timezone)>0) && !strcmp (elems [0], my_asclock->timezone))
 	localtime_data = (location *) my->data;

@@ -282,9 +282,11 @@ void properties_dialog(AppletWidget *applet, gpointer data)
     {
 
       if((dfd = opendir(*cpp)) != NULL){
+	gchar *elems[2];
+	elems[0] = filename;
+	elems[2] = NULL;
         while((dp = readdir(dfd)) != NULL){
           if ( dp->d_name[0]!='.' ) {
-	    gchar *elems[2] = { filename, NULL };
 	    strcpy(filename, *cpp);
 	    strcat(filename, dp->d_name);
             gtk_clist_append(GTK_CLIST(list), elems );

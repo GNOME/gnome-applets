@@ -340,7 +340,7 @@ main (int argc, char *argv[])
 
   charpick_persistant_properties default_properties = 
   {
-    a_list,
+    NULL, /* a_list */
     2,
     2,
     17
@@ -359,6 +359,8 @@ main (int argc, char *argv[])
     &default_properties
   };
   */
+
+  default_properties.default_charlist = a_list;
   curr_data.charlist = default_properties.default_charlist;
   curr_data.selected_char = ' ';
   curr_data.last_index = NO_LAST_INDEX;
