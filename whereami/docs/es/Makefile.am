@@ -2,7 +2,7 @@ figs = \
 	figures/whereami_applet.png
 docname = whereami_applet
 lang = es
-omffile = whereami_applet-C.omf
+omffile = whereami_applet-es.omf
 sgml_ents = whereami.sgml \
 	license.sgml \
 	licencia-es.sgml \
