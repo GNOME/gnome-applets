@@ -40,7 +40,8 @@ clockmail_applet_LDADD = \
 		@PIXBUF_LIBS@
 
 clocksdir = $(datadir)/applets/Clocks
-clocks_DATA = clockmail_applet.desktop
+clocks_in_files = clockmail_applet.desktop.in
+clocks_DATA = $(clocks_in_files:.desktop.in=.desktop)
 
 sysdir = $(datadir)/applets/Network
 

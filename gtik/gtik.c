@@ -143,7 +143,7 @@
 
 	/* For fonts */
 	GdkFont * my_font;
-	gchar * new_font=NULL;
+	gchar * new_font = NULL;
 	GdkFont * extra_font;
 	GdkFont * small_font;
 	static gint symbolfont = 1;
@@ -185,18 +185,22 @@
 			g_error("Could not load fonts!");
 
 		if ( !extra_font || (strcmp(props.arrows,"noArrows")) == 0 ) {
-			gdk_font_unref(extra_font);
+			
+			if (extra_font)
+				gdk_font_unref(extra_font);
 			extra_font = gdk_font_load("fixed");
 			symbolfont = 0;
 		}
 		else {
-			gdk_font_unref(extra_font);
+			if (extra_font)
+				gdk_font_unref(extra_font);
 			extra_font = gdk_font_load ("-*-symbol-medium-r-normal-*-*-140-*-*-p-*-adobe-fontspecific");
 			symbolfont = 1;
 
 		}
 		if (!small_font) {
-			gdk_font_unref(small_font);
+			if (small_font)
+				gdk_font_unref(small_font);
 			small_font = gdk_font_load("fixed");
 		}
 	}
@@ -968,8 +972,6 @@
 		if ((temp=strtok(syms,"+")))
 			symbol[0] = g_strdup(temp);
 
-		g_free(syms);
-		
 		while (symbol[0]) {
 			gtk_clist_append(GTK_CLIST(clist),symbol);
 			if ((temp=strtok(NULL,"+")))
@@ -982,7 +984,6 @@
 			symbol[0] = g_strdup(temp);
 			gtk_clist_append(GTK_CLIST(clist),symbol);
 		}
-		g_free(temp);		
 	}
 
 	/*-----------------------------------------------------------------*/

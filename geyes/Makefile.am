@@ -16,7 +16,7 @@ geyes_applet_LDADD = \
 	$(GNOME_LIBDIR) \
 	$(GNOME_APPLETS_LIBS) $(INTLLIBS)
 
-EXTRA_DIST = geyes_applet.desktop \
+EXTRA_DIST = geyes_applet.desktop.in \
 	     geyes_applet.gnorba \
 	     geyes.h \
 	     gnome-eyes.png
