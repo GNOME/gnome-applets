@@ -11,7 +11,6 @@ INCLUDES = \
 	$(GNOME_VFS_APPLETS_CFLAGS) 				\
 	$(LIBGLADE_CFLAGS)           				\
 	-DICONDIR=\""$(datadir)/pixmaps"\"                      \
-	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"                \
 	-DG_DISABLE_DEPRECATED -DGDK_DISABLE_DEPRECATED         \
 	-DGNOME_DISABLE_DEPRECATED
 
