@@ -389,48 +389,29 @@ error_handler (int error, gpointer data)
 	MailCheck *mc = data;
 	GtkWidget *dialog;
 	gchar *details;
-
-	/* Disable automatic updating */
-	mc->auto_update = FALSE;
-
-	if(mc->mail_timeout != 0) {
-		gtk_timeout_remove(mc->mail_timeout);
-		mc->mail_timeout = 0;
-	}
-
+	
 	switch (error) {
 	case NETWORK_ERROR:
-		details = _("The Network may be down.");
+		details = _("Could not connect to the Internet.");
 		break;
 	case INVALID_USER:
-		details = _("The User id or Password is not correct.");
-		break;
 	case INVALID_PASS:
-		details = _("The User id or Password is not correct.");
+		details = _("The Username or Password is not correct.");
 		break;	
 	case INVALID_SERVER:
-		details = _("The Server name may be wrong.");
+		details = _("The Server name is be wrong.");
 		break;
 	case NO_SERVER_INFO:
 	default:
-		details = _("Maybe you used a wrong server, username or password?");
+		details = _("Error connecting to mail server.");
 		break;
 	}
-	
-	/* Notify about an error and keep the current mail status */
-	dialog = gtk_message_dialog_new (NULL,
-					 0,/* Flags */
-					 GTK_MESSAGE_ERROR,
-					 GTK_BUTTONS_OK,
-					 _("The Inbox Monitor failed to check your mails from %s and thus automatic updating has been deactivated for now.\n%s"), mc->remote_server, details);
-
-	gtk_window_set_screen (GTK_WINDOW (dialog),
-			       gtk_widget_get_screen (GTK_WIDGET (mc->applet)));
-
-	g_signal_connect_swapped (G_OBJECT (dialog), "response",
-				  G_CALLBACK (gtk_widget_destroy),
-				  dialog);
-	gtk_widget_show_all (dialog);
+	/* FIXME: Show some sort of error images for non text mode */
+	if (mc->report_mail_mode == REPORT_MAIL_USE_TEXT) {
+		gtk_label_set_text (GTK_LABEL (mc->label), _("Error"));
+	}
+		
+	set_tooltip (GTK_WIDGET (mc->applet), details);
 }
 
 static void
@@ -1837,11 +1818,7 @@ static void
 applet_load_prefs(MailCheck *mc)
 {
 	mc->animation_file = panel_applet_gconf_get_string(mc->applet, "animation_file", NULL);
-	if(!mc->animation_file) {
-		g_free(mc->animation_file);
-		mc->animation_file = NULL;
-	}
-
+	
 	mc->auto_update = panel_applet_gconf_get_bool(mc->applet, "auto_update", NULL);
 	mc->reset_on_clicked = panel_applet_gconf_get_bool (mc->applet, "reset_on_clicked", NULL);
 	mc->update_freq = panel_applet_gconf_get_int(mc->applet, "update_frequency", NULL);
