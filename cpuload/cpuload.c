@@ -1,5 +1,4 @@
-/*
- * GNOME cpuload panel applet
+/* GNOME cpuload panel applet
  * (C) 1997 The Free Software Foundation
  *
  * Author: Tim P. Gerla
@@ -23,30 +22,34 @@
 #include "mico-parse.h"
 
 #include "linux-proc.h"
+#include "properties.h"
 
 GtkWidget *cpuload;
 GdkPixmap *pixmap;
 GtkWidget *disp;
 GdkGC *gc;
-GdkColor darkgrey;
+GdkColor ucolor, scolor;
+cpuload_properties props;
+int applet_id = -1, height, width;
 
-int applet_id = -1;
-
-#define APPLET_HEIGHT 40
-#define APPLET_WIDTH  40
-
-guchar data[APPLET_WIDTH];
-guchar odata[APPLET_WIDTH];
+guchar udata[128];
+guchar oudata[128];
+guchar sdata[128];
+guchar osdata[128];
 
 int draw(void)
 {
 	int usr=0, sys=0, nice=0, free=0, i;
 
-	GetLoad(APPLET_HEIGHT, &usr, &nice, &sys, &free );
+	GetLoad(height, &usr, &nice, &sys, &free );
 
-	for( i=0; i < APPLET_WIDTH-1; i++ )
-		data[i+1] = odata[i];
-	data[0] = usr;
+	for( i=0; i < width-1; i++ )
+	{
+		udata[i+1] = oudata[i];
+		sdata[i+1] = osdata[i];
+	}
+	udata[0] = usr;
+	sdata[0] = sys;
 	
 	/* Erase Rectangle */
 	gdk_draw_rectangle( pixmap,
@@ -54,13 +57,25 @@ int draw(void)
 		TRUE, 0,0,
 		disp->allocation.width,
 		disp->allocation.height );
-	for( i=0; i < APPLET_WIDTH; i++ )
+	
+	gdk_gc_set_foreground( gc, &ucolor );
+	for( i=0; i < width; i++ )
 	{
-		if( data[i] )
+		if( udata[i] )
 			gdk_draw_line( pixmap,
 			       gc,
-			       i,APPLET_HEIGHT,
-			       i,(APPLET_HEIGHT-data[i]) );
+			       i,height,
+			       i,(height-udata[i]) );
+	}
+	
+	gdk_gc_set_foreground( gc, &scolor );
+	for( i=0; i < width; i++ )
+	{
+		if( sdata[i] )
+			gdk_draw_line( pixmap,
+			       gc,
+			       i,(height-udata[i]),
+			       i,(height-udata[i])-sdata[i] );
 	}
 	gdk_draw_pixmap(disp->window,
 		disp->style->fg_gc[GTK_WIDGET_STATE(disp)],
@@ -70,8 +85,11 @@ int draw(void)
 	        disp->allocation.width,
 	        disp->allocation.height);
 
-	for( i=0; i < APPLET_WIDTH; i++ )
-		odata[i] = data[i];
+	for( i=0; i < width; i++ )
+	{
+		oudata[i] = udata[i];
+		osdata[i] = sdata[i];
+	}
 	return TRUE;
 }
 
@@ -80,7 +98,7 @@ static gint cpuload_configure(GtkWidget *widget, GdkEventConfigure *event)
         pixmap = gdk_pixmap_new( widget->window,
                                  widget->allocation.width,
                                  widget->allocation.height,
-                                 -1 );
+                                 gtk_widget_get_visual(disp)->depth );
         gdk_draw_rectangle( pixmap,
                             widget->style->black_gc,
                             TRUE, 0,0,
@@ -111,55 +129,53 @@ GtkWidget *cpuload_new( void )
 {
 	GtkWidget *frame, *box;
 
-	g_print( "entering cpuload_new\n" );
-
 	box = gtk_vbox_new(FALSE, FALSE);
 	gtk_widget_show(box);
 
 	frame = gtk_frame_new(NULL);
-	gtk_frame_set_shadow_type( GTK_FRAME(frame), GTK_SHADOW_IN );
+	gtk_frame_set_shadow_type( GTK_FRAME(frame), props.look?GTK_SHADOW_OUT:GTK_SHADOW_IN );
 
 	disp = gtk_drawing_area_new();
 	gtk_signal_connect( GTK_OBJECT(disp), "expose_event",
                 (GtkSignalFunc)cpuload_expose, NULL);
         gtk_signal_connect( GTK_OBJECT(disp),"configure_event",
                 (GtkSignalFunc)cpuload_configure, NULL);
-        gtk_widget_set_events( disp, GDK_EXPOSURE_MASK
-        				  | GDK_LEAVE_NOTIFY_MASK
-					  | GDK_BUTTON_PRESS_MASK
-					  | GDK_POINTER_MOTION_MASK 
-                			  | GDK_POINTER_MOTION_HINT_MASK);
+        gtk_widget_set_events( disp, GDK_EXPOSURE_MASK );
 
 	gtk_box_pack_start_defaults( GTK_BOX(box), disp );
 	gtk_container_add( GTK_CONTAINER(frame), box );
 
-	gtk_widget_set_usize(disp, APPLET_WIDTH, APPLET_HEIGHT);
+	gtk_widget_set_usize(disp, width, height);
 
-        gtk_timeout_add(3000, (GtkFunction)draw, NULL);
+        gtk_timeout_add(props.speed, (GtkFunction)draw, NULL);
         
         gtk_widget_show_all(frame);
 	return frame;
 }
 
-void create_gc(void)
+void setup_colors(void)
 {
 	GdkColormap *colormap;
 
-        gc = gdk_gc_new( disp->window );
-        gdk_gc_copy( gc, disp->style->white_gc );
-        
 	colormap = gtk_widget_get_colormap(disp);
                 
-        gdk_color_parse("#606060", &darkgrey);
-        gdk_color_alloc(colormap, &darkgrey);
-                                
+        gdk_color_parse(props.ucolor, &ucolor);
+        gdk_color_alloc(colormap, &ucolor);
+
+        gdk_color_parse(props.scolor, &scolor);
+        gdk_color_alloc(colormap, &scolor);
+}
+	        
+void create_gc(void)
+{
+        gc = gdk_gc_new( disp->window );
+        gdk_gc_copy( gc, disp->style->white_gc );
 }
 
-static gint
-destroy_plug(GtkWidget *widget, gpointer data)
+static gint destroy_plug(GtkWidget *widget, gpointer data)
 {
-	gtk_exit(0);
-	return FALSE;
+        gtk_exit(0);
+        return FALSE;
 }
 
 int main(int argc, char **argv)
@@ -174,7 +190,10 @@ int main(int argc, char **argv)
         panel_corba_register_arguments();
 
         gnome_init("cpuload_applet", NULL, argc, argv, 0, NULL);
-
+        load_properties(&props);
+	height = props.height;
+	width = props.width;
+        
 	if (!gnome_panel_applet_init_corba())
                 g_error("Could not comunicate with the panel\n");
         result = gnome_panel_applet_request_id(myinvoc, &applet_id,
@@ -191,18 +210,24 @@ int main(int argc, char **argv)
         cpuload = cpuload_new();
         gtk_container_add( GTK_CONTAINER(plug), cpuload );
         gtk_widget_show(plug);
-	gtk_signal_connect(GTK_OBJECT(plug),"destroy",
-			   GTK_SIGNAL_FUNC(destroy_plug),
-			   NULL);
 	
 	create_gc();
+	setup_colors();
+        gtk_signal_connect(GTK_OBJECT(plug),"destroy",
+                           GTK_SIGNAL_FUNC(destroy_plug),
+                           NULL);
 
-        result = gnome_panel_applet_register(plug, applet_id);
+	result = gnome_panel_applet_register(plug, applet_id);
         if (result)
                 g_error("Could not talk to the Panel: %s\n", result);
 	
-	applet_corba_gtk_main("IDL:GNOME/Applet:1.0");
+       	gnome_panel_applet_register_callback(applet_id,
+					     "properties",
+                                             _("Properties..."),
+                                             properties,
+                                             NULL);
 
+	applet_corba_gtk_main("IDL:GNOME/Applet:1.0");
         return 0;
 }
 
