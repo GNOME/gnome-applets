@@ -28,6 +28,7 @@
 #include "gweather-applet.h"
 #include "gweather-pref.h"
 
+/* A global preferences variable variable */
 GWeatherPrefs gweather_pref = {NULL, 1800, TRUE, FALSE, FALSE, TRUE,
                                NULL, NULL, NULL, FALSE};
 
@@ -63,7 +64,7 @@ static gboolean update_dialog (void)
 
     g_return_val_if_fail(gweather_pref.location != NULL, FALSE);
 
-    gtk_spin_button_set_value(GTK_SPIN_BUTTON(pref_basic_update_spin), gweather_pref.update_interval);
+    gtk_spin_button_set_value(GTK_SPIN_BUTTON(pref_basic_update_spin), gweather_pref.update_interval / 60);
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(pref_basic_update_btn), gweather_pref.update_enabled);
     gtk_widget_set_sensitive(pref_basic_update_spin, gweather_pref.update_enabled);
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(pref_basic_metric_btn), gweather_pref.use_metric);
@@ -144,7 +145,7 @@ static gboolean update_pref (void)
     weather_location_free(gweather_pref.location);
     gweather_pref.location = weather_location_clone(loc);
 
-    gweather_pref.update_interval = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(pref_basic_update_spin));
+    gweather_pref.update_interval = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(pref_basic_update_spin)) * 60;
     gweather_pref.update_enabled = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(pref_basic_update_btn));
     gweather_pref.use_metric = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(pref_basic_metric_btn));
     gweather_pref.detailed = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(pref_basic_detailed_btn));
@@ -284,7 +285,6 @@ static void gweather_pref_create (void)
 {
     GtkWidget *pref_vbox;
     GtkWidget *pref_notebook;
-    GtkWidget *pref_basic_table;
     GtkWidget *pref_basic_metric_alignment;
     GtkWidget *pref_basic_detailed_alignment;
 #ifdef RADARMAP
@@ -307,6 +307,10 @@ static void gweather_pref_create (void)
     GtkWidget *pref_loc_note_lbl;
     GtkWidget *pref_action_area;
     GtkWidget *scrolled_window;
+
+    GtkWidget *pref_basic_vbox;
+    GtkWidget *vbox;
+    GtkWidget *frame;
 
     g_return_if_fail (pref == NULL);
 
@@ -432,86 +436,90 @@ static void gweather_pref_create (void)
    * General settings page.
    */
 
-#ifdef RADARMAP
-    pref_basic_table = gtk_table_new (5, 2, FALSE);
-#else /* RADARMAP */
-    pref_basic_table = gtk_table_new (4, 2, FALSE);
-#endif /* RADARMAP */
-    gtk_widget_show (pref_basic_table);
-    gtk_container_add (GTK_CONTAINER (pref_notebook), pref_basic_table);
-    gtk_container_set_border_width (GTK_CONTAINER (pref_basic_table), 8);
-    gtk_table_set_row_spacings (GTK_TABLE (pref_basic_table), 4);
-    gtk_table_set_col_spacings (GTK_TABLE (pref_basic_table), 4);
+    pref_basic_vbox = gtk_vbox_new (FALSE, 0);
+    gtk_container_add (GTK_CONTAINER (pref_notebook), pref_basic_vbox);
 
     pref_basic_update_alignment = gtk_alignment_new (0, 0.5, 0, 1);
     gtk_widget_show (pref_basic_update_alignment);
-    gtk_table_attach (GTK_TABLE (pref_basic_table), pref_basic_update_alignment, 0, 2, 1, 2,
-		      (GtkAttachOptions) (GTK_FILL),
-		      (GtkAttachOptions) (0), 0, 0);
 
     pref_basic_metric_alignment = gtk_alignment_new (0, 0.5, 0, 1);
     gtk_widget_show (pref_basic_metric_alignment);
-    gtk_table_attach (GTK_TABLE (pref_basic_table), pref_basic_metric_alignment, 0, 2, 2, 3,
-		      (GtkAttachOptions) (GTK_FILL),
-		      (GtkAttachOptions) (0), 0, 0);
 
     pref_basic_detailed_alignment = gtk_alignment_new (0, 0.5, 0, 1);
     gtk_widget_show (pref_basic_detailed_alignment);
-    gtk_table_attach (GTK_TABLE (pref_basic_table), pref_basic_detailed_alignment, 0, 2, 3, 4,
-		      (GtkAttachOptions) (GTK_FILL),
-		      (GtkAttachOptions) (0), 0, 0);
 
 #ifdef RADARMAP
     pref_basic_radar_alignment = gtk_alignment_new (0, 0.5, 0, 1);
     gtk_widget_show (pref_basic_radar_alignment);
-    gtk_table_attach (GTK_TABLE (pref_basic_table), pref_basic_radar_alignment, 0, 2, 4, 5,
-		      (GtkAttachOptions) (GTK_FILL),
-		      (GtkAttachOptions) (0), 0, 0);
 #endif /* RADARMAP */
 
-    pref_basic_update_btn = gtk_check_button_new_with_label (_("Update enabled"));
+    pref_basic_update_btn = gtk_check_button_new_with_label (_("Automatically update every"));
     gtk_widget_show (pref_basic_update_btn);
     gtk_container_add (GTK_CONTAINER (pref_basic_update_alignment), pref_basic_update_btn);
 
-    pref_basic_metric_btn = gtk_check_button_new_with_label (_("Use metric"));
+    pref_basic_metric_btn = gtk_check_button_new_with_label (_("Use metric system units"));
     gtk_widget_show (pref_basic_metric_btn);
     gtk_container_add (GTK_CONTAINER (pref_basic_metric_alignment), pref_basic_metric_btn);
 
-    pref_basic_detailed_btn = gtk_check_button_new_with_label (_("Detailed forecast"));
+    pref_basic_detailed_btn = gtk_check_button_new_with_label (_("Enable detailed forecast"));
     gtk_widget_show (pref_basic_detailed_btn);
     gtk_container_add (GTK_CONTAINER (pref_basic_detailed_alignment), pref_basic_detailed_btn);
 
 #ifdef RADARMAP
-    pref_basic_radar_btn = gtk_check_button_new_with_label (_("Enable radar maps"));
+    pref_basic_radar_btn = gtk_check_button_new_with_label (_("Enable radar map"));
     gtk_widget_show (pref_basic_radar_btn);
     gtk_container_add (GTK_CONTAINER (pref_basic_radar_alignment), pref_basic_radar_btn);
 #endif /* RADARMAP */
 
-    pref_basic_update_lbl = gtk_label_new (_("Update:"));
+    frame = gtk_frame_new (_("Updates"));
+    gtk_container_border_width (GTK_CONTAINER (frame), GNOME_PAD_SMALL);
+
+    pref_basic_update_hbox = gtk_hbox_new (FALSE, GNOME_PAD_SMALL);
+    gtk_container_border_width (GTK_CONTAINER (pref_basic_update_hbox), GNOME_PAD_SMALL);
+
+    pref_basic_update_lbl = gtk_label_new (_("Autmatically update every "));
     gtk_widget_show (pref_basic_update_lbl);
-    gtk_table_attach (GTK_TABLE (pref_basic_table), pref_basic_update_lbl, 0, 1, 0, 1,
-		      (GtkAttachOptions) (GTK_FILL),
-		      (GtkAttachOptions) (0), 0, 0);
+
+/*
     gtk_label_set_justify (GTK_LABEL (pref_basic_update_lbl), GTK_JUSTIFY_RIGHT);
     gtk_misc_set_alignment (GTK_MISC (pref_basic_update_lbl), 1, 0.5);
+*/
 
-    pref_basic_update_hbox = gtk_hbox_new (FALSE, 2);
     gtk_widget_show (pref_basic_update_hbox);
-    gtk_table_attach (GTK_TABLE (pref_basic_table), pref_basic_update_hbox, 1, 2, 0, 1,
-		      (GtkAttachOptions) (GTK_FILL),
-		      (GtkAttachOptions) (GTK_FILL), 0, 0);
 
-    pref_basic_update_spin_adj = gtk_adjustment_new (300, 30, 7200, 10, 30, 30);
+    pref_basic_update_spin_adj = gtk_adjustment_new (30, 1, 60, 1, 5, 1);
     pref_basic_update_spin = gtk_spin_button_new (GTK_ADJUSTMENT (pref_basic_update_spin_adj), 1, 0);
     gtk_widget_show (pref_basic_update_spin);
-    gtk_box_pack_start (GTK_BOX (pref_basic_update_hbox), pref_basic_update_spin, TRUE, TRUE, 0);
-    gtk_widget_set_usize (pref_basic_update_spin, 80, -2);
+//    gtk_box_pack_start (GTK_BOX (pref_basic_update_hbox), pref_basic_update_spin, TRUE, FALSE, 0);
+/*    gtk_widget_set_usize (pref_basic_update_spin, 80, -2); */
     gtk_spin_button_set_numeric (GTK_SPIN_BUTTON (pref_basic_update_spin), TRUE);
     gtk_spin_button_set_update_policy (GTK_SPIN_BUTTON (pref_basic_update_spin), GTK_UPDATE_IF_VALID);
 
-    pref_basic_update_sec_lbl = gtk_label_new (_("(sec)"));
+    pref_basic_update_sec_lbl = gtk_label_new (_("minute(s)"));
     gtk_widget_show (pref_basic_update_sec_lbl);
+
+    gtk_box_pack_start (GTK_BOX (pref_basic_update_hbox), pref_basic_update_alignment, FALSE, TRUE, 0);
+    gtk_box_pack_start (GTK_BOX (pref_basic_update_hbox), pref_basic_update_spin, FALSE, FALSE, 0);
     gtk_box_pack_start (GTK_BOX (pref_basic_update_hbox), pref_basic_update_sec_lbl, FALSE, FALSE, 0);
+
+    gtk_container_add (GTK_CONTAINER (frame), pref_basic_update_hbox);
+    gtk_box_pack_start (GTK_BOX (pref_basic_vbox), frame, FALSE, TRUE, 0);
+
+    /* The Miscellaneous frame */
+    frame = gtk_frame_new (_("Miscellaneous"));
+    gtk_container_border_width (GTK_CONTAINER (frame), GNOME_PAD_SMALL);
+
+    vbox = gtk_vbox_new (FALSE, GNOME_PAD_SMALL);
+    gtk_container_border_width (GTK_CONTAINER (vbox), GNOME_PAD_SMALL);
+
+    gtk_box_pack_start (GTK_BOX (vbox), pref_basic_metric_alignment, FALSE, TRUE, 0);
+    gtk_box_pack_start (GTK_BOX (vbox), pref_basic_detailed_alignment, FALSE, TRUE, 0);
+#ifdef RADARMAP
+    gtk_box_pack_start (GTK_BOX (vbox), pref_basic_radar_alignment, FALSE, TRUE, 0);
+#endif /* RADARMAP */
+
+    gtk_container_add (GTK_CONTAINER (frame), vbox);
+    gtk_box_pack_start (GTK_BOX (pref_basic_vbox), frame, FALSE, TRUE, 0);
 
     pref_basic_note_lbl = gtk_label_new (_("General"));
     gtk_widget_show (pref_basic_note_lbl);
