@@ -1250,6 +1250,8 @@ destroy_mixer_cb (GtkWidget *widget, MixerData *data)
 		gtk_widget_destroy (data->error_dialog);
 	if (data->tooltips)
 		g_object_unref (data->tooltips);
+	if (data->device)
+		g_free (data->device);
 	g_free (data);
 }
 
