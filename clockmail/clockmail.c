@@ -473,15 +473,18 @@ static gint applet_save_session(GtkWidget *widget, gchar *privcfgpath,
         return FALSE;
 }
 
-static GtkWidget * applet_start_new_applet(const gchar *goad_id, const char **params, int nparams)
+static GtkWidget * applet_start_new_applet(const gchar *goad_id,
+					   const char **params, int nparams)
 {
 	GtkWidget *applet;
 
 	applet = applet_widget_new(goad_id);
-		if (!applet)
-			g_error("Can't create applet!\n");
+
+	if (!applet)
+	  g_error("Can't create applet!\n");
 
 	create_new_app(applet);
+
 	return applet;
 }
 
@@ -495,7 +498,9 @@ int main (int argc, char *argv[])
 
 	applet_widget_init("clockmail_applet", VERSION, argc, argv, NULL, 0,
 			   NULL);
-	applet_factory_new("clockmail_applet_factory", NULL, applet_start_new_applet);
+
+	applet_factory_new("clockmail_applet_factory", NULL,
+			   applet_start_new_applet);
 
 	applet = applet_widget_new("clockmail_applet");
 	if (!applet)
