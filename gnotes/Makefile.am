@@ -1,5 +1,3 @@
-CFLAGS = -g -O
-
 INCLUDES = -I. -I$(srcdir)                              \
         -I$(top_srcdir)/intl -I$(top_builddir)/intl     \
         -DGNOMELOCALEDIR=\""$(datadir)/locale"\"        \
