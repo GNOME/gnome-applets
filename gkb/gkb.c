@@ -60,13 +60,10 @@ struct _GKB {
       	int height;
 };
 
-static void gkb_draw(GtkWidget *, GKB *);
 static void do_that_command(GKB *);
-static void gkb_draw(GtkWidget *darea, GKB *gkb);
 static void gkb_cb(GtkWidget * widget, GdkEventButton * e, GKB * gkb);
 static void gkb_draw(GtkWidget *darea, GKB *gkb);                        
 static int  gkb_expose(GtkWidget *darea, GdkEventExpose *event, GKB *gkb);
-static int  gkb_empty(GtkWidget *darea, GdkEventExpose *event, GKB *gkb);
 void        properties_dialog(AppletWidget *applet, gpointer gkbx);
 void        about_cb (AppletWidget *widget, gpointer gkbx);
 
@@ -499,7 +496,7 @@ static void
 gkb_draw(GtkWidget * darea,
 	GKB *gkb)
 {
-	if(gkb->darea!=NULL ||
+	if(!gkb->darea ||
 	   !GTK_WIDGET_REALIZED(gkb->darea) ||
 	   !gkb->pix[gkb->properties.curpix]->pixmap)
 		return;
@@ -535,8 +532,6 @@ gkb_cb(GtkWidget * widget,
 	GdkEventButton * e, 
 	GKB * gkb)
 {
-
-
         if (e->button != 1) {
 		/* Ignore buttons 2 and 3 */
 		return; 
@@ -548,18 +543,6 @@ gkb_cb(GtkWidget * widget,
 	do_that_command(gkb);
 	return;
 	widget = NULL;
-}
-
-static int
-gkb_empty(GtkWidget *darea,
-	GdkEventExpose *event,
-	GKB *gkb)
-{
-
-    return FALSE;
-    darea = NULL;
-    event = NULL;
-    gkb = NULL;
 }
 
 static int
@@ -601,8 +584,6 @@ create_gkb_widget(GKB *gkb)
 			   GTK_SIGNAL_FUNC(gkb_draw), gkb);
 	gtk_signal_connect(GTK_OBJECT(gkb->darea), "expose_event",
 			   GTK_SIGNAL_FUNC(gkb_expose), gkb);
-	gtk_signal_connect(GTK_OBJECT(gkb->darea), "event",
-			   GTK_SIGNAL_FUNC(gkb_empty), gkb);
 
         gtk_widget_show(gkb->darea);
         gkb->properties.curpix = 0;
