@@ -291,12 +291,12 @@ cpufreq_monitor_run (CPUFreqMonitor *monitor)
 GList *
 cpufreq_monitor_get_available_frequencies (CPUFreqMonitor *monitor)
 {
-	   g_return_if_fail (IS_CPUFREQ_MONITOR (monitor));
+	   g_return_val_if_fail (IS_CPUFREQ_MONITOR (monitor), NULL);
 
 	   if (CPUFREQ_MONITOR_GET_CLASS (monitor)->get_available_frequencies) {
 			 return CPUFREQ_MONITOR_GET_CLASS (monitor)->get_available_frequencies (monitor);
 	   } else {
-			 return;
+			 return NULL;
 	   }
 }
 
@@ -305,7 +305,7 @@ cpufreq_monitor_get_cpu (CPUFreqMonitor *monitor)
 {
 	   CPUFreqMonitorProtected *private;
 	   
-	   g_return_if_fail (IS_CPUFREQ_MONITOR (monitor));
+	   g_return_val_if_fail (IS_CPUFREQ_MONITOR (monitor), 0);
 
 	   private = CPUFREQ_MONITOR_GET_PROTECTED (monitor);
 
@@ -317,7 +317,7 @@ cpufreq_monitor_get_governor (CPUFreqMonitor *monitor)
 {
 	   CPUFreqMonitorProtected *private;
 	   
-	   g_return_if_fail (IS_CPUFREQ_MONITOR (monitor));
+	   g_return_val_if_fail (IS_CPUFREQ_MONITOR (monitor), NULL);
 
 	   private = CPUFREQ_MONITOR_GET_PROTECTED (monitor);
 
@@ -329,7 +329,7 @@ cpufreq_monitor_get_frequency (CPUFreqMonitor *monitor)
 {
 	   CPUFreqMonitorProtected *private;
 	   
-	   g_return_if_fail (IS_CPUFREQ_MONITOR (monitor));
+	   g_return_val_if_fail (IS_CPUFREQ_MONITOR (monitor), NULL);
 
 	   private = CPUFREQ_MONITOR_GET_PROTECTED (monitor);
 
@@ -341,7 +341,7 @@ cpufreq_monitor_get_percentage (CPUFreqMonitor *monitor)
 {
 	   CPUFreqMonitorProtected *private;
 	   
-	   g_return_if_fail (IS_CPUFREQ_MONITOR (monitor));
+	   g_return_val_if_fail (IS_CPUFREQ_MONITOR (monitor), NULL);
 
 	   private = CPUFREQ_MONITOR_GET_PROTECTED (monitor);
 
@@ -353,7 +353,7 @@ cpufreq_monitor_get_unit (CPUFreqMonitor *monitor)
 {
 	   CPUFreqMonitorProtected *private;
 	   
-	   g_return_if_fail (IS_CPUFREQ_MONITOR (monitor));
+	   g_return_val_if_fail (IS_CPUFREQ_MONITOR (monitor), NULL);
 
 	   private = CPUFREQ_MONITOR_GET_PROTECTED (monitor);
 

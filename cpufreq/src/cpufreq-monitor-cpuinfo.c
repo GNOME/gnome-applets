@@ -205,8 +205,6 @@ cpufreq_monitor_cpuinfo_get (gpointer gdata)
 static void
 cpufreq_monitor_cpuinfo_run (CPUFreqMonitor *monitor)
 {
-	   CPUFreqMonitorProtected *private;
-	   
 	   g_return_if_fail (IS_CPUFREQ_MONITOR_CPUINFO (monitor));
 
 	   cpufreq_monitor_cpuinfo_get (monitor);

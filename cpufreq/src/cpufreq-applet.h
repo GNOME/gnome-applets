@@ -51,7 +51,6 @@ typedef enum {
 struct _CPUFreqApplet {
 	   PanelApplet base;
 	   
-	   guint cpu;
 	   guint mcpu; /* Max cpu number (0 in a single cpu system) */
 
 	   CPUFreqShowMode     show_mode;

@@ -29,7 +29,7 @@
 CPUFreqMonitor *
 cpufreq_monitor_factory_create_monitor (guint cpu)
 {
-	   CPUFreqMonitor *monitor;
+	   CPUFreqMonitor *monitor = NULL;
 	   
 	   if (g_file_test ("/sys/devices/system/cpu/cpu0/cpufreq", G_FILE_TEST_EXISTS)) { /* 2.6 kernel */
 			 monitor = cpufreq_monitor_sysfs_new (cpu);

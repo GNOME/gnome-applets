@@ -48,6 +48,7 @@ static void     cpufreq_applet_about_cb          (BonoboUIComponent *uic, CPUFre
 static gint     cpufreq_applet_get_max_cpu       (void);
 static void     cpufreq_applet_pixmap_set_image  (CPUFreqApplet *applet, const gchar *percentage);
 
+static void     cpufreq_applet_setup             (CPUFreqApplet *applet);
 static void     cpufreq_applet_update            (CPUFreqMonitor *monitor, gpointer gdata);
 static void     cpufreq_applet_refresh           (CPUFreqApplet *applet);
 
@@ -59,21 +60,10 @@ static void     cpufreq_applet_change_orient     (PanelApplet *pa, PanelAppletOr
 static void     cpufreq_applet_change_background (PanelApplet *pa, PanelAppletBackgroundType type,
 										GdkColor *color, GdkPixmap *pixmap);
 
-static gboolean cpufreq_applet_fill              (CPUFreqApplet *applet);
 static gboolean cpufreq_applet_factory           (CPUFreqApplet *applet, const gchar *iid,
 										gpointer gdata);
 
 static PanelAppletClass *parent_class = NULL;
-
-static const BonoboUIVerb cpufreq_applet_menu_verbs[] = {
-	   BONOBO_UI_UNSAFE_VERB ("CPUFreqAppletPreferences",
-						 cpufreq_applet_preferences_cb),
-	   BONOBO_UI_UNSAFE_VERB ("CPUFreqAppletHelp",
-						 cpufreq_applet_help_cb),
-	   BONOBO_UI_UNSAFE_VERB ("CPUFreqAppletAbout",
-						 cpufreq_applet_about_cb),
-	   BONOBO_UI_VERB_END
-};
 
 GType
 cpufreq_applet_get_type (void)
@@ -103,81 +93,31 @@ cpufreq_applet_get_type (void)
 static void
 cpufreq_applet_init (CPUFreqApplet *applet)
 {
-	   AtkObject *atk_obj;
-	   gint       i;
-	   GError    *error;
-	   guint      cpu;
+	   gint i;
 
 	   applet->mcpu = cpufreq_applet_get_max_cpu ();
 	   applet->prefs = NULL;
 	   applet->popup = NULL;
+	   applet->monitor = NULL;
 
 	   applet->label = NULL;
 	   applet->unit_label = NULL;
 	   applet->pixmap = NULL;
 	   applet->box = NULL;
 	   
-	   for (i = 0; i <= 4; i++)
-			 applet->pixbufs[i] = NULL;
-
-	   applet->tips = gtk_tooltips_new ();
-	   g_object_ref (G_OBJECT (applet->tips));
-
 	   applet->container = gtk_alignment_new (0.5, 0.5, 0, 0);
 	   gtk_container_add (GTK_CONTAINER (applet), applet->container);
-
-	   panel_applet_add_preferences (PANEL_APPLET (applet),
-							   "/schemas/apps/cpufreq-applet/prefs", NULL);
+	   
+	   applet->tips = gtk_tooltips_new ();
+	   g_object_ref (G_OBJECT (applet->tips));
+	   
+	   for (i = 0; i <= 4; i++)
+			 applet->pixbufs[i] = NULL;
 
 	   panel_applet_set_flags (PANEL_APPLET (applet), PANEL_APPLET_EXPAND_MINOR);
 
 	   applet->size = panel_applet_get_size (PANEL_APPLET (applet));
 	   applet->orient = panel_applet_get_orient (PANEL_APPLET (applet));
-	   
-	   error = NULL;
-	   cpu = panel_applet_gconf_get_int (PANEL_APPLET (applet),
-								  "cpu", &error);
-
-	   /* In case anything went wrong with gconf, get back to the default */
-	   if (error || cpu < 0) {
-			 cpu = 0;
-			 if (error)
-				    g_error_free (error);
-	   }
-	   
-	   error = NULL;
-	   applet->show_mode = panel_applet_gconf_get_int (PANEL_APPLET (applet),
-											 "show_mode", &error);
-	   
-        /* In case anything went wrong with gconf, get back to the default */
-	   if (error || applet->show_mode < MODE_GRAPHIC || applet->show_mode > MODE_BOTH) {
-			 applet->show_mode = MODE_BOTH;
-			 if (error)
-				    g_error_free (error);
-	   }
-
-	   error = NULL;
-	   applet->show_text_mode = panel_applet_gconf_get_int (PANEL_APPLET (applet),
-												  "show_text_mode", &error);
-
-	   /* In case anything went wrong with gconf, get back to the default */
-	   if (error || applet->show_text_mode < MODE_TEXT_FREQUENCY ||
-		  applet->show_text_mode > MODE_TEXT_PERCENTAGE) {
-			 applet->show_text_mode = MODE_TEXT_FREQUENCY_UNIT;
-			 g_error_free (error);
-	   }
-	   
-	   atk_obj = gtk_widget_get_accessible (GTK_WIDGET (applet));
-
-	   if (GTK_IS_ACCESSIBLE (atk_obj)) {
-			 atk_object_set_name (atk_obj, _("CPU Frequency Scaling Monitor"));
-			 atk_object_set_description (atk_obj, _("This utility shows the current CPU Frequency"));
-	   }
-
-	   applet->monitor = cpufreq_monitor_factory_create_monitor (cpu);
-	   g_signal_connect (G_OBJECT (applet->monitor), "changed",
-					 G_CALLBACK (cpufreq_applet_update),
-					 (gpointer) applet);
 }
 
 static void
@@ -400,36 +340,36 @@ cpufreq_applet_update (CPUFreqMonitor *monitor, gpointer gdata)
 	   unit = cpufreq_monitor_get_unit (monitor);
 	   governor = cpufreq_monitor_get_governor (monitor);
 
+	   /* Setup widgets */
+	   if (applet->show_text_mode == MODE_TEXT_PERCENTAGE)
+			 gtk_label_set_text (GTK_LABEL (applet->label), perc);
+	   else
+			 gtk_label_set_text (GTK_LABEL (applet->label), freq);
+	   
+	   gtk_label_set_text (GTK_LABEL (applet->unit_label), unit);
+	   cpufreq_applet_pixmap_set_image (applet, perc);
+
+	   /* Show or hide */
 	   if (applet->show_mode != MODE_GRAPHIC) {
-			 if (applet->show_mode == MODE_TEXT) {
+			 if (applet->show_mode == MODE_TEXT)
 				    gtk_widget_hide (applet->pixmap);
-			 } else {
-				    cpufreq_applet_pixmap_set_image (applet, perc);
+			 else
 				    gtk_widget_show (applet->pixmap);
-			 }
 
 			 switch (applet->show_text_mode) {
 			 case MODE_TEXT_FREQUENCY:
-				    gtk_label_set_text (GTK_LABEL (applet->label), freq);
+			 case MODE_TEXT_PERCENTAGE:
 				    gtk_widget_hide (applet->unit_label);
 
 				    break;
 			 case MODE_TEXT_FREQUENCY_UNIT:
-				    gtk_label_set_text (GTK_LABEL (applet->label), freq);
-				    gtk_label_set_text (GTK_LABEL (applet->unit_label), unit);
 				    gtk_widget_show (applet->unit_label);
 
-				    break;
-			 case MODE_TEXT_PERCENTAGE:
-				    gtk_label_set_text (GTK_LABEL (applet->label), perc);
-				    
 				    break;
 			 }
 			 
 			 gtk_widget_show (applet->label);
 	   } else {
-			 cpufreq_applet_pixmap_set_image (applet, perc);
-			 
 			 gtk_widget_show (applet->pixmap);
 			 gtk_widget_hide (applet->label);
 			 gtk_widget_hide (applet->unit_label);
@@ -452,12 +392,6 @@ cpufreq_applet_update (CPUFreqMonitor *monitor, gpointer gdata)
 	   
 	   gtk_tooltips_set_tip (applet->tips, GTK_WIDGET (applet), text_tip, NULL);
 	   g_free (text_tip);
-}
-
-static void
-free_string (gpointer str, gpointer gdata)
-{
-	   if (str) g_free (str);
 }
 
 static void
@@ -552,9 +486,15 @@ cpufreq_applet_refresh (CPUFreqApplet *applet)
 
 	   g_return_if_fail (PANEL_IS_APPLET (PANEL_APPLET (applet)));
 
-	   freq = cpufreq_monitor_get_frequency (applet->monitor);
-	   perc = cpufreq_monitor_get_percentage (applet->monitor);
-	   unit = cpufreq_monitor_get_unit (applet->monitor);
+	   if (applet->monitor) {
+			 freq = cpufreq_monitor_get_frequency (applet->monitor);
+			 perc = cpufreq_monitor_get_percentage (applet->monitor);
+			 unit = cpufreq_monitor_get_unit (applet->monitor);
+	   } else {
+			 freq = NULL;
+			 perc = NULL;
+			 unit = NULL;
+	   }
 	   
 	   panel_size = applet->size - 1; /* 1 pixel margin */
 
@@ -757,18 +697,72 @@ cpufreq_applet_change_background (PanelApplet *pa,
 	   }
 }
 
-static gboolean
-cpufreq_applet_fill (CPUFreqApplet *applet)
+static void
+cpufreq_applet_setup (CPUFreqApplet *applet)
 {
-	   BonoboUIComponent *popup_component;
+	   BonoboUIComponent        *popup_component;
+	   AtkObject                *atk_obj;
+	   GError                   *error;
+	   guint                     cpu;
+	   static const BonoboUIVerb cpufreq_applet_menu_verbs[] = {
+			 BONOBO_UI_UNSAFE_VERB ("CPUFreqAppletPreferences",
+							    cpufreq_applet_preferences_cb),
+			 BONOBO_UI_UNSAFE_VERB ("CPUFreqAppletHelp",
+							    cpufreq_applet_help_cb),
+			 BONOBO_UI_UNSAFE_VERB ("CPUFreqAppletAbout",
+							    cpufreq_applet_about_cb),
+			 BONOBO_UI_VERB_END
+	   };
 	   
-	   g_return_val_if_fail (PANEL_IS_APPLET (PANEL_APPLET (applet)), FALSE);
-	   
-	   gnome_window_icon_set_default_from_file
-			 (ICONDIR"/cpufreq-applet/cpufreq-applet.png");
+	   g_return_if_fail (PANEL_IS_APPLET (PANEL_APPLET (applet)));
 
 	   glade_gnome_init ();
 
+	   gtk_window_set_default_icon_from_file (ICONDIR"/cpufreq-applet/cpufreq-applet.png", NULL);
+
+	   panel_applet_add_preferences (PANEL_APPLET (applet),
+							   "/schemas/apps/cpufreq-applet/prefs", NULL);
+	   
+	   error = NULL;
+	   cpu = panel_applet_gconf_get_int (PANEL_APPLET (applet),
+								  "cpu", &error);
+
+	   /* In case anything went wrong with gconf, get back to the default */
+	   if (error || cpu < 0) {
+			 cpu = 0;
+			 if (error)
+				    g_error_free (error);
+	   }
+	   
+	   error = NULL;
+	   applet->show_mode = panel_applet_gconf_get_int (PANEL_APPLET (applet),
+											 "show_mode", &error);
+	   
+        /* In case anything went wrong with gconf, get back to the default */
+	   if (error || applet->show_mode < MODE_GRAPHIC || applet->show_mode > MODE_BOTH) {
+			 applet->show_mode = MODE_BOTH;
+			 if (error)
+				    g_error_free (error);
+	   }
+
+	   error = NULL;
+	   applet->show_text_mode = panel_applet_gconf_get_int (PANEL_APPLET (applet),
+												  "show_text_mode", &error);
+
+	   /* In case anything went wrong with gconf, get back to the default */
+	   if (error || applet->show_text_mode < MODE_TEXT_FREQUENCY ||
+		  applet->show_text_mode > MODE_TEXT_PERCENTAGE) {
+			 applet->show_text_mode = MODE_TEXT_FREQUENCY_UNIT;
+			 if (error)
+				    g_error_free (error);
+	   }
+
+	   applet->monitor = cpufreq_monitor_factory_create_monitor (cpu);
+	   cpufreq_monitor_run (applet->monitor);
+	   g_signal_connect (G_OBJECT (applet->monitor), "changed",
+					 G_CALLBACK (cpufreq_applet_update),
+					 (gpointer) applet);
+	   
 	   /* Setup the menus */
 	   panel_applet_setup_menu_from_file (PANEL_APPLET (applet),
 								   DATADIR,
@@ -786,13 +780,14 @@ cpufreq_applet_fill (CPUFreqApplet *applet)
 									 NULL);
 	   }
 
-	   cpufreq_applet_refresh (applet);
+	   atk_obj = gtk_widget_get_accessible (GTK_WIDGET (applet));
 
-	   cpufreq_monitor_run (applet->monitor);
-	   
-	   gtk_widget_show (GTK_WIDGET (applet));
-	   
-	   return TRUE;
+	   if (GTK_IS_ACCESSIBLE (atk_obj)) {
+			 atk_object_set_name (atk_obj, _("CPU Frequency Scaling Monitor"));
+			 atk_object_set_description (atk_obj, _("This utility shows the current CPU Frequency"));
+	   }
+
+	   cpufreq_applet_refresh (applet);
 }
 
 static gboolean
@@ -800,8 +795,13 @@ cpufreq_applet_factory (CPUFreqApplet *applet, const gchar *iid, gpointer gdata)
 {
 	   gboolean retval = FALSE;
 
-	   if (!strcmp (iid, "OAFIID:GNOME_CPUFreqApplet"))
-			 retval = cpufreq_applet_fill (applet);
+	   if (!strcmp (iid, "OAFIID:GNOME_CPUFreqApplet")) {
+			 cpufreq_applet_setup (applet);
+
+			 gtk_widget_show (GTK_WIDGET (applet));
+			 
+			 retval = TRUE;
+	   }
 
 	   return retval;
 }

@@ -188,6 +188,7 @@ cpufreq_monitor_procfs_parse (CPUFreqMonitorProcfs *monitor, gint *cpu, gint *fm
 			 return FALSE;
 	   }
 
+	   count = 0;
 	   lines = g_strsplit (file, "\n", -1);
 	   for (i=0; lines[i]; i++) {
 			 if (g_ascii_strncasecmp (lines[i], "CPU", 3) == 0) {
@@ -317,7 +318,6 @@ cpufreq_monitor_procfs_get_available_frequencies (CPUFreqMonitor *monitor)
 	   gint                     fmax, fmin, cpu, freq;
 	   gint                     pmin, pmax;
 	   gchar                    mode[21];
-	   GList                   *list = NULL;
 	   CPUFreqMonitorProtected *private;
 
 	   g_return_val_if_fail (IS_CPUFREQ_MONITOR_PROCFS (monitor), NULL);
