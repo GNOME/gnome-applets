@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 1.1.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-11-14 20:11+0000\n"
-"PO-Revision-Date: 2004-11-14 20:14+0100\n"
+"POT-Creation-Date: 2004-11-21 21:35+0000\n"
+"PO-Revision-Date: 2004-11-21 21:36+0100\n"
 "Last-Translator: David Lodge <dave@cirt.net>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -20,6 +20,7 @@ msgstr ""
 #: battstat/GNOME_BattstatApplet.xml.h:1
 #: cdplayer/GNOME_CDPlayerApplet.xml.h:1
 #: charpick/GNOME_CharpickerApplet.xml.h:1
+#: cpufreq/GNOME_CPUFreqApplet.xml.h:1
 #: drivemount/GNOME_DriveMountApplet.xml.h:1
 #: geyes/GNOME_GeyesApplet.xml.h:1
 #: gkb-new/GNOME_KeyboardApplet.xml.h:1
@@ -170,6 +171,7 @@ msgstr "Monitor a laptop's remaining power"
 #: battstat/GNOME_BattstatApplet.xml.h:3
 #: cdplayer/GNOME_CDPlayerApplet.xml.h:4
 #: charpick/GNOME_CharpickerApplet.xml.h:3
+#: cpufreq/GNOME_CPUFreqApplet.xml.h:3
 #: geyes/GNOME_GeyesApplet.xml.h:3
 #: gkb-new/GNOME_KeyboardApplet.xml.h:3
 #: gswitchit/GNOME_GSwitchItApplet.xml.h:6
@@ -460,6 +462,7 @@ msgid "Can't access ACPI events in /var/run/acpid.socket! Make sure the ACPI sub
 msgstr "Can't access ACPI events in /var/run/acpid.socket! Make sure the ACPI subsystem is working and the acpid daemon is running."
 
 #: battstat/battstat_applet.glade.h:1
+#: cpufreq/cpufreq-preferences.glade.h:1
 #: gswitchit/gswitchit-properties.glade.h:1
 #: mini-commander/src/mini-commander.glade.h:1
 #: stickynotes/stickynotes.glade.h:1
@@ -483,32 +486,32 @@ msgid "Battery Charge Monitor Preferences"
 msgstr "Battery Charge Monitor Preferences"
 
 #: battstat/battstat_applet.glade.h:6
+msgid "S_uspend command:"
+msgstr "S_uspend command:"
+
+#: battstat/battstat_applet.glade.h:7
 msgid "Show _battery status"
 msgstr "Show _battery status"
 
-#: battstat/battstat_applet.glade.h:7
+#: battstat/battstat_applet.glade.h:8
 msgid "Show _percentage remaining"
 msgstr "Show _percentage remaining"
 
-#: battstat/battstat_applet.glade.h:8
+#: battstat/battstat_applet.glade.h:9
 msgid "Show _time remaining"
 msgstr "Show _time remaining"
 
-#: battstat/battstat_applet.glade.h:9
+#: battstat/battstat_applet.glade.h:10
 msgid "Show power _connection status"
 msgstr "Show power _connection status"
 
-#: battstat/battstat_applet.glade.h:10
+#: battstat/battstat_applet.glade.h:11
 msgid "War_n when battery is fully re-charged"
 msgstr "War_n when battery is fully re-charged"
 
-#: battstat/battstat_applet.glade.h:11
+#: battstat/battstat_applet.glade.h:12
 msgid "_Show time/percentage remaining:"
 msgstr "_Show time/percentage remaining:"
-
-#: battstat/battstat_applet.glade.h:12
-msgid "_Suspend command:"
-msgstr "_Suspend command:"
 
 #: battstat/battstat_applet.glade.h:13
 msgid "_Warn when battery charge is low"
@@ -815,14 +818,6 @@ msgstr "Monitor the CPU Frequency Scaling"
 msgid "Utility"
 msgstr "Utility"
 
-#: cpufreq/GNOME_CPUFreqApplet.xml.h:1
-msgid "_About..."
-msgstr "_About..."
-
-#: cpufreq/GNOME_CPUFreqApplet.xml.h:3
-msgid "_Preferences..."
-msgstr "_Preferences..."
-
 #: cpufreq/cpufreq-applet.schemas.in.h:1
 msgid "A 0 value mean to show cpu frequency, 1 to show frequency and units and 2 to show percentage instead of frequency."
 msgstr "A 0 value mean to show cpu frequency, 1 to show frequency and units and 2 to show percentage instead of frequency."
@@ -847,21 +842,17 @@ msgstr "Mode to show when show_mode is text or both"
 msgid "Set the CPU to monitor. In a single processor system you don't have to change it."
 msgstr "Set the CPU to monitor. In a single processor system you don't have to change it."
 
-#: cpufreq/cpufreq-preferences.glade.h:1
+#: cpufreq/cpufreq-preferences.glade.h:2
 msgid "<b>Display Settings</b>"
 msgstr "<b>Display Settings</b>"
 
-#: cpufreq/cpufreq-preferences.glade.h:2
+#: cpufreq/cpufreq-preferences.glade.h:3
 msgid "<b>Monitor Settings</b>"
 msgstr "<b>Monitor Settings</b>"
 
-#: cpufreq/cpufreq-preferences.glade.h:3
-msgid "CPUFreq Monitor Preferences"
-msgstr "CPUFreq Monitor Preferences"
-
 #: cpufreq/cpufreq-preferences.glade.h:4
-msgid "Monitored CPU"
-msgstr "Monitored CPU"
+msgid "CPU Frequency Monitor Preferences"
+msgstr "CPU Frequency Monitor Preferences"
 
 #: cpufreq/cpufreq-preferences.glade.h:5
 msgid "Show CPU frequency as _frequency"
@@ -876,8 +867,12 @@ msgid "Show frequency _units"
 msgstr "Show frequency _units"
 
 #: cpufreq/cpufreq-preferences.glade.h:8
-msgid "Show in Mode "
-msgstr "Show in Mode "
+msgid "_Monitored CPU:"
+msgstr "_Monitored CPU:"
+
+#: cpufreq/cpufreq-preferences.glade.h:9
+msgid "_Show in mode:"
+msgstr "_Show in mode:"
 
 #: cpufreq/src/cpufreq-applet.c:119
 #: cpufreq/src/cpufreq-prefs.c:220
@@ -4865,11 +4860,11 @@ msgstr "Volume Applet"
 msgid "A GNOME/GStreamer-based volume control applet"
 msgstr "A GNOME/GStreamer-based volume control applet"
 
-#: mixer/dock.c:116
+#: mixer/dock.c:117
 msgid "+"
 msgstr "+"
 
-#: mixer/dock.c:144
+#: mixer/dock.c:145
 msgid "-"
 msgstr "-"
 
@@ -4888,11 +4883,11 @@ msgid "No volume control elements and/or devices found."
 msgstr "No volume control elements and/or devices found."
 
 #. make window look cute
-#: mixer/preferences.c:112
+#: mixer/preferences.c:113
 msgid "Volume Control Preferences"
 msgstr "Volume Control Preferences"
 
-#: mixer/preferences.c:125
+#: mixer/preferences.c:126
 msgid "Select the device and track to control."
 msgstr "Select the device and track to control."
 
