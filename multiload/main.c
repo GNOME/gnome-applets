@@ -28,9 +28,9 @@
 #include <libgnomeui/gnome-window-icon.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include <libart_lgpl/libart.h>
+#include <egg-screen-exec.h>
 
 #include "global.h"
-#include "egg-screen-exec.h"
 
 static void
 about_cb (BonoboUIComponent *uic,

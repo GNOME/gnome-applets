@@ -289,7 +289,7 @@ static GtkWidget *color_frame_new(GtkWidget *vbox, const gchar *text)
 static void
 phelp_cb (GtkWidget *w, gint tab, gpointer data)
 {
-#ifdef FIXME
+#ifdef FIXME /* use (egg|gnome)_screen_help_display */
 	GnomeHelpMenuEntry help_entry = { "modemlights_applet",
 					  "index.html#MODEMLIGHTS-PREFS" };
 	gnome_help_display(NULL, &help_entry);

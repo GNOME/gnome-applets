@@ -25,6 +25,7 @@
 #include <gnome.h>
 #include <panel-applet.h>
 #include <gconf/gconf-client.h>
+#include <egg-screen-help.h>
 
 #include "gweather.h"
 #include "gweather-pref.h"
@@ -39,7 +40,7 @@ enum
 
 
 static void gweather_pref_set_accessibility (GWeatherApplet *gw_applet);
-static void help_cb (void);
+static void help_cb (GtkDialog *dialog);
 
 
 /* sets up ATK Relation between the widgets */
@@ -517,7 +518,7 @@ response_cb (GtkDialog *dialog, gint id, gpointer data)
     GWeatherApplet *gw_applet = data;
   
     if(id == GTK_RESPONSE_HELP){
-        help_cb ();
+        help_cb (dialog);
 	return;
     }
     free_tree (gw_applet);
@@ -793,12 +794,19 @@ void gweather_pref_load (GWeatherApplet *gw_applet)
     return;
 }
 
-static void help_cb (void)
+static void help_cb (GtkDialog *dialog)
 {
     GError *error = NULL;
-    gnome_help_display("gweather","gweather-prefs",&error);
 
-    if (error) {
+#ifdef HAVE_GTK_MULTIHEAD
+    egg_screen_help_display (
+		gtk_window_get_screen (GTK_WINDOW (dialog)),
+		"gweather", "gweather-prefs", &error);
+#else
+    gnome_help_display("gweather","gweather-prefs",&error);
+#endif
+
+    if (error) { /* FIXME: the user needs to see this error */
         g_warning ("help error: %s\n", error->message);
         g_error_free (error);
         error = NULL;

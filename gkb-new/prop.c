@@ -38,6 +38,7 @@
 #include <sys/stat.h>
 #include <X11/Xlib.h>
 #include <panel-applet-gconf.h>
+#include <egg-screen-help.h>
 #include "gkb.h"
 
 
@@ -374,7 +375,16 @@ static void
 prophelp_cb (GtkWidget *widget, gpointer data)
 {
 	GError *error = NULL;
+
+#ifdef HAVE_GTK_MULTIHEAD
+        egg_screen_help_display (
+		gtk_widget_get_screen (widget),
+		"gkb", "gkb-prefs", &error);
+#else
         gnome_help_display("gkb","gkb-prefs",&error);
+#endif
+
+	/* FIXME: display error to the user */
 }
 
 static void

@@ -4,6 +4,7 @@
 
 #include <config.h>
 #include <panel-applet.h>
+#include <egg-screen-help.h>
 #include "charpick.h"
 
 
@@ -424,9 +425,16 @@ help_cb (BonoboUIComponent *uic,
 	 const char        *verb)
 {
   GError *error = NULL;
-  gnome_help_display("char-palette",NULL,&error);
 
-  if (error) {
+#ifdef HAVE_GTK_MULTIHEAD
+  egg_screen_help_display (
+		gtk_widget_get_screen (curr_data->applet),
+		"char-palette", NULL, &error);
+#else
+  gnome_help_display("char-palette",NULL,&error);
+#endif
+
+  if (error) { /* FIXME: the user needs to see this */
     g_warning ("help error: %s\n", error->message);
     g_error_free (error);
     error = NULL;

@@ -53,9 +53,9 @@ PKG_CHECK_MODULES(GNOME_APPLETS, libpanelapplet-2.0 >= $LIBPANEL_REQUIRED)
 AC_SUBST(GNOME_APPLETS_CFLAGS)
 AC_SUBST(GNOME_APPLETS_LIBS)
 
-dnl PKG_CHECK_MODULES(GNOME_LIBS2, libgnome-2.0 >= $LIBGNOME_REQUIRED libgnomeui-2.0 >= $LIBGNOMEUI_REQUIRED)
-dnl AC_SUBST(GNOME_LIBS2_CFLAGS)
-dnl AC_SUBST(GNOME_LIBS2_LIBS)
+PKG_CHECK_MODULES(GNOME_LIBS2, libgnome-2.0 >= $LIBGNOME_REQUIRED libgnomeui-2.0 >= $LIBGNOMEUI_REQUIRED)
+AC_SUBST(GNOME_LIBS2_CFLAGS)
+AC_SUBST(GNOME_LIBS2_LIBS)
 
 dnl build_xml_applets=false
 dnl PKG_CHECK_MODULES(GNOME_XML_APPLETS,
@@ -304,6 +304,7 @@ AC_OUTPUT([
 gnome-applets.spec
 Makefile
 po/Makefile.in
+screen-exec/Makefile
 mini-commander/Makefile
 mini-commander/src/Makefile
 mini-commander/help/Makefile

@@ -45,6 +45,8 @@
 #include <gdk/gdkkeysyms.h>
 #include <libgnomeui/gnome-about.h>
 #include <panel-applet.h>
+#include <egg-screen-exec.h>
+#include <egg-screen-help.h>
 
 #ifdef HAVE_LINUX_SOUNDCARD_H
 #include <linux/soundcard.h>
@@ -831,13 +833,20 @@ mixer_about_cb (BonoboUIComponent *uic,
 
 static void
 mixer_help_cb (BonoboUIComponent *uic,
-	       gpointer           data,
+	       MixerData         *data,
 	       const gchar       *verbname)
 {
         GError *error = NULL;
-        
+
+#ifdef HAVE_GTK_MULTIHEAD
+	egg_screen_help_display (
+		gtk_widget_get_screen (data->applet),
+		"mixer_applet2", NULL, &error);
+#else
 	gnome_help_display("mixer_applet2",NULL,&error);
-	if (error) {
+#endif
+
+	if (error) { /* FIXME: the user needs to see this error */
 		g_print ("%s \n", error->message);
 		g_error_free (error);
 		error = NULL;

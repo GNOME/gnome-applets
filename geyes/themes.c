@@ -25,6 +25,7 @@
 #include <ctype.h>
 
 #include <panel-applet-gconf.h>
+#include <egg-screen-help.h>
 #include "geyes.h"
 
 gchar *theme_directories[] = {
@@ -163,11 +164,19 @@ theme_selected_cb (GtkTreeSelection *selection, gpointer data)
 }
 
 static void
-phelp_cb ()
+phelp_cb (GtkDialog *dialog)
 {
 	GError *error = NULL;
+
+#ifdef HAVE_GTK_MULTIHEAD
+	egg_screen_help_display (
+		gtk_window_get_screen (GTK_WINDOW (dialog)),
+		"geyes", "geyes-settings", &error);
+#else
 	gnome_help_display("geyes","geyes-settings",&error);
-	if (error) {
+#endif
+
+	if (error) { /* FIXME: the user needs to see this */
 		g_warning ("help error: %s\n", error->message);
 		g_error_free (error);
 		error = NULL;
@@ -179,7 +188,7 @@ presponse_cb (GtkDialog *dialog, gint id, gpointer data)
 {
 	EyesApplet *eyes_applet = data;
 	if(id == GTK_RESPONSE_HELP){
-		phelp_cb ();
+		phelp_cb (dialog);
 		return;
 	}
 

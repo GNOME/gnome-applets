@@ -23,12 +23,11 @@
 #include <string.h>
 
 #include <libgnome/gnome-exec.h>
-#include "egg-screen-exec.h"
+#include <egg-screen-exec.h>
 
 #include "exec.h"
 #include "macro.h"
 #include "preferences.h"
-#include "egg-screen-exec.h"
 
 void
 mc_exec_command (MCData     *mc,

@@ -35,11 +35,12 @@
 #include <gdk/gdkx.h>
 #include <panel-applet.h>
 #include <panel-applet-gconf.h>
+#include <egg-screen-exec.h>
+#include <egg-screen-help.h>
 
 #include "led.h"
 #include "cdrom-interface.h"
 #include "cdplayer.h"
-#include "egg-screen-exec.h"
 
 #include "images/cdplayer-stop.xpm"
 #include "images/cdplayer-play-pause.xpm"
@@ -72,7 +73,7 @@ static void about_cb       (BonoboUIComponent *component,
 			    CDPlayerData      *cd,
 			    const char        *verb);
 
-static void phelp_cb (GtkWidget *w, gpointer data);
+static void phelp_cb (GtkDialog *dialog, gpointer data);
 static void applet_change_size(GtkWidget *w, int size, gpointer data);
 static void applet_change_orient(GtkWidget *w, PanelAppletOrient o, gpointer data);
 static void ui_component_event (BonoboUIComponent *comp, const gchar *path, Bonobo_UIComponent_EventType type, const gchar *state_string, CDPlayerData *data);
@@ -307,7 +308,7 @@ static void
 response_cb (GtkDialog *dialog, gint id, gpointer data)
 {
     if(id == GTK_RESPONSE_HELP){
-         phelp_cb (NULL,data);
+         phelp_cb (dialog,data);
 	 return;
     }
     gtk_widget_destroy (GTK_WIDGET (dialog));
@@ -449,8 +450,15 @@ help_cb (BonoboUIComponent *component,
 {
     GError *error = NULL;
 
+#ifdef HAVE_GTK_MULTIHEAD
+    egg_screen_help_display (
+		gtk_widget_get_screen (cd->panel.applet),
+		"cdplayer", NULL, &error);
+#else
     gnome_help_display ("cdplayer", NULL, &error);
-    if (error) {
+#endif
+
+    if (error) { /* FIXME: the user needs to see this */
         g_warning ("help error: %s\n", error->message);
         g_error_free (error);
         error = NULL;
@@ -965,15 +973,21 @@ set_atk_relation(GtkWidget *label, GtkWidget *widget)
 }
 
 static void
-phelp_cb (GtkWidget *w, gpointer data)
+phelp_cb (GtkDialog *dialog, gpointer data)
 {
     GError *error = NULL;
+
+#ifdef HAVE_GTK_MULTIHEAD
+    egg_screen_help_display (
+		gtk_window_get_screen (GTK_WINDOW (dialog)),
+		"cdplayer", "cdplayer_applet_prefs", &error);
+#else
     gnome_help_display ("cdplayer", "cdplayer_applet_prefs", &error);
+#endif
     
-    if (error) {
+    if (error) { /* FIXME: the user needs to see this */
         g_warning ("help error: %s\n", error->message);
         g_error_free (error);
         error = NULL;
     }
-    return;
 }

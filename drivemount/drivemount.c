@@ -24,10 +24,10 @@
 #include <libgnome/libgnome.h>
 #include <libgnomeui/libgnomeui.h>
 #include <panel-applet.h>
+#include <egg-screen-exec.h>
 
 #include "drivemount.h"
 #include "properties.h"
-#include "egg-screen-exec.h"
 
 #include "floppy_v_in.xpm"
 #include "floppy_v_out.xpm"

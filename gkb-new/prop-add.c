@@ -36,7 +36,9 @@
 
 #include "gkb.h"
 
-static void addhelp_cb (PanelApplet * widget, gpointer data);
+#include <egg-screen-help.h>
+
+static void addhelp_cb (GtkDialog *dialog, gpointer data);
 
 typedef struct _LangData LangData;
 struct _LangData
@@ -343,7 +345,7 @@ response_cb (GtkDialog *dialog, gint id, gpointer data)
     addwadd_cb (NULL, pbi);
     break;
   case GTK_RESPONSE_HELP:
-    addhelp_cb (NULL, NULL);
+    addhelp_cb (dialog, NULL);
     break;
   default:
     gtk_widget_destroy (GTK_WIDGET (dialog));
@@ -426,8 +428,17 @@ gkb_prop_map_add (GkbPropertyBoxInfo * pbi)
 }
 
 static void
-addhelp_cb (PanelApplet * applet, gpointer data)
+addhelp_cb (GtkDialog *dialog, gpointer data)
 {
         GError *error = NULL;
+
+#ifdef HAVE_GTK_MULTIHEAD
+        egg_screen_help_display (
+		gtk_window_get_screen (GTK_WINDOW (dialog)),
+		"gkb", "gkb-modify-list", &error);
+#else
         gnome_help_display("gkb","gkb-modify-list",&error);
+#endif
+
+	/* FIXME: display error to the user */
 }

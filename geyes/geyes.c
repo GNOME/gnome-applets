@@ -22,6 +22,7 @@
 #include <gnome.h>
 #include <panel-applet.h>
 #include <panel-applet-gconf.h>
+#include <egg-screen-help.h>
 #include "geyes.h"
 
 #define UPDATE_TIMEOUT 75
@@ -368,9 +369,16 @@ help_cb (BonoboUIComponent *uic,
 	 const char        *verbname)
 {
 	GError *error = NULL;
-	gnome_help_display("geyes",NULL,&error);
 
-	if (error) {
+#ifdef HAVE_GTK_MULTIHEAD
+	egg_screen_help_display (
+		gtk_widget_get_screen (GTK_WIDGET (eyes_applet->applet)),
+		"geyes", NULL, &error);
+#else
+	gnome_help_display("geyes",NULL,&error);
+#endif
+
+	if (error) { /* FIXME: the user needs to see this */
 		g_warning ("help error: %s\n", error->message);
 		g_error_free (error);
 		error = NULL;

@@ -42,6 +42,7 @@
 #include <libgnomeui/libgnomeui.h>
 #include <libgnome/libgnome.h>
 #include <panel-applet-gconf.h>
+#include <egg-screen-help.h>
 #include "gkb.h"
 
 int NumLockMask, CapsLockMask, ScrollLockMask;
@@ -646,7 +647,16 @@ help_cb (BonoboUIComponent *uic,
          const gchar	 *verbname)
 {
 	GError *error = NULL;
+
+#ifdef HAVE_GTK_MULTIHEAD
+	egg_screen_help_display (
+			gtk_widget_get_screen (gkb->applet),
+			"gkb", NULL, &error);
+#else
         gnome_help_display("gkb",NULL,&error);
+#endif
+
+	/* FIXME: display error to the user */
 }
 
 static GdkFilterReturn

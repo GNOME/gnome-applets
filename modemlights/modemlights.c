@@ -27,6 +27,7 @@
 
 #include "modemlights.h"
 #include <panel-applet.h>
+#include <egg-screen-help.h>
 #include "digits.xpm"
 
 #include <stdlib.h>
@@ -1421,9 +1422,17 @@ button_press_hack (GtkWidget      *widget,
 }
 
 
-static void show_help_cb(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
+static void show_help_cb (BonoboUIComponent *uic,
+			  PanelApplet       *applet,
+			  const char        *verbname)
 {
+#ifdef HAVE_GTK_MULTIHEAD
+	egg_screen_help_display (
+		gtk_widget_get_screen (GTK_WIDGET (applet)),
+		"modemlights_applet", NULL, NULL);
+#else
 	gnome_help_display ("modemlights_applet", NULL, NULL);
+#endif
 }
 
 static const BonoboUIVerb modem_applet_menu_verbs [] = {

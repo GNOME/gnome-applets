@@ -4,6 +4,7 @@ SUBDIRS = pixmaps docs
 
 INCLUDES = \
 	-I$(srcdir)	-I$(srcdir)/pixmaps	\
+	-I$(top_srcdir)/screen-exec		\
 	-DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\" \
 	-DGTK_ENABLE_BROKEN	\
 	$(GNOME_APPLETS_CFLAGS)	\
@@ -21,6 +22,7 @@ gweather_applet_2_SOURCES = \
 	weather.c weather.h
 
 gweather_applet_2_LDADD = \
+	$(top_builddir)/screen-exec/libscreen-exec.la \
 	$(GNOME_APPLETS_LIBS)	\
 	$(GNOME_VFS_APPLETS_LIBS)
 

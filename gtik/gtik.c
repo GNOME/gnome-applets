@@ -25,6 +25,7 @@
 #include <libgnomeui/libgnomeui.h>
 #include <panel-applet.h>
 #include <panel-applet-gconf.h> 
+#include <egg-screen-help.h>
 #include <gconf/gconf-client.h>
 #include <gtk/gtk.h>
 #include <time.h>
@@ -753,12 +754,19 @@ static gint updateOutput(gpointer data)
 		return;
 	}
 
-	static void help_cb (BonoboUIComponent *uic, gpointer data, 
-			     const gchar *verbname) 
+	static void help_cb (BonoboUIComponent *uic,
+			     StockData         *stockdata, 
+			     const char        *verbname) 
 	{
+#ifdef HAVE_GTK_MULTIHEAD
+		egg_screen_help_display (
+				gtk_widget_get_screen (stockdata->applet),
+				"gtik2_applet2", NULL, NULL);
+#else
 		gnome_help_display ("gtik2_applet2", NULL, NULL);
-		
-	
+#endif
+
+	/* FIXME: display error to the user */
 	}
 
 	/*-----------------------------------------------------------------*/
@@ -1169,17 +1177,25 @@ static gint updateOutput(gpointer data)
 	
 	
 	static void
-	phelp_cb (void)
+	phelp_cb (GtkDialog *dialog)
 	{
   		GError *error = NULL;
+
+#ifdef HAVE_GTK_MULTIHEAD
+  		egg_screen_help_display (
+			gtk_window_get_screen (GTK_WINDOW (dialog)),
+			"gtik2_applet2", "gtik-settings", &error);
+#else
   		gnome_help_display("gtik2_applet2","gtik-settings",&error);
+#endif
 
   		if (error) {
      			g_warning ("help error: %s\n", error->message);
      			g_error_free (error);
      			error = NULL;
   		}
-	
+
+		/* FIXME: display error to the user */
 	}
 	
 	static void
@@ -1187,7 +1203,7 @@ static gint updateOutput(gpointer data)
 	{
 		StockData *stockdata = data;
 			if(id == GTK_RESPONSE_HELP){
-			phelp_cb ();
+			phelp_cb (dialog);
 			return;
 		}
 

@@ -6,6 +6,7 @@ INCLUDES = 						\
 	$(WARN_CFLAGS)					\
 	-I.						\
 	-I$(srcdir)					\
+	-I$(top_srcdir)/screen-exec			\
 	-DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\"	\
 	-DMC_GLADEDIR=\""$(gladedir)"\"			\
 	$(GNOME_INCLUDEDIR)
@@ -14,10 +15,7 @@ libexec_PROGRAMS = mini_commander_applet
 
 noinst_PROGRAMS = mc-install-default-macros
 
-EGGFILES = egg-screen-exec.h egg-screen-exec.c
-
 mini_commander_applet_SOURCES =			\
-	$(EGGFILES)				\
 	about.c					\
 	about.h					\
 	cmd_completion.c			\
@@ -39,6 +37,7 @@ mini_commander_applet_SOURCES =			\
 	mc-default-macros.h
 
 mini_commander_applet_LDADD =				\
+	$(top_builddir)/screen-exec/libscreen-exec.la	\
 	$(GNOME_APPLETS_LIBS)				\
 	$(LIBGLADE_LIBS)
 
@@ -78,13 +77,7 @@ install-data-local:
 
 @INTLTOOL_SERVER_RULE@
 
-EGGDIR = $(srcdir)/../../../libegg/libegg/screen-exec
-
-regenerate-built-sources:
-	EGGFILES="$(EGGFILES)" EGGDIR="$(EGGDIR)" $(srcdir)/update-from-egg.sh
-
 EXTRA_DIST =					\
-	update-from-egg.sh			\
 	GNOME_MiniCommanderApplet.server.in.in	\
 	$(pixmap_DATA)				\
 	$(bitmaps_DATA)				\

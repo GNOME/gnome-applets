@@ -2,6 +2,7 @@
 INCLUDES = \
 -I. -I$(srcdir) \
 -DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\" \
+-I$(top_srcdir)/screen-exec \
 $(GNOME_APPLETS_CFLAGS) 
 
 libexec_PROGRAMS = drivemount_applet2
@@ -9,16 +10,15 @@ libexec_PROGRAMS = drivemount_applet2
 desktop_iconsdir = $(datadir)/pixmaps
 desktop_icons_DATA = drivemount-applet.png
 
-EGGFILES = egg-screen-exec.h egg-screen-exec.c
-
 drivemount_applet2_SOURCES = \
-$(EGGFILES) \
 drivemount.c \
 drivemount.h \
 properties.c \
 properties.h
 
-drivemount_applet2_LDADD = $(GNOME_APPLETS_LIBS) 
+drivemount_applet2_LDADD =				\
+	$(top_builddir)/screen-exec/libscreen-exec.la	\
+	$(GNOME_APPLETS_LIBS) 
 
 serverdir       = $(libdir)/bonobo/servers
 server_in_files = GNOME_DriveMountApplet.server.in
@@ -63,13 +63,7 @@ jazdrive_v_out.xpm \
 GNOME_DriveMountApplet.server.in.in \
 $(schema_DATA)	\
 $(ui_DATA)	\
-update-from-egg.sh \
 drivemount-applet.png
 
 install-data-local:
 	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schema_DATA) ;
-
-EGGDIR = $(srcdir)/../../libegg/libegg/screen-exec
-
-regenerate-built-sources:
-	EGGFILES="$(EGGFILES)" EGGDIR="$(EGGDIR)" $(srcdir)/update-from-egg.sh

@@ -21,6 +21,7 @@
 #include <gnome.h>
 #include <panel-applet.h>
 #include <libgnomeui/gnome-window-icon.h>
+#include <egg-screen-help.h>
 
 #include "weather.h"
 #include "gweather.h"
@@ -115,9 +116,16 @@ static void help_cb (BonoboUIComponent *uic,
 		     const gchar       *verbname)
 {
     GError *error = NULL;
+
+#ifdef HAVE_GTK_MULTIHEAD
+    egg_screen_help_display (
+		gtk_widget_get_screen (GTK_WIDGET (gw_applet->applet)),
+		"gweather", NULL, &error);
+#else
     gnome_help_display("gweather",NULL,&error);
+#endif
  
-    if (error) {
+    if (error) { /* FIXME: the user needs to see this error */
         g_warning ("help error: %s\n", error->message);
         g_error_free (error);
         error = NULL;

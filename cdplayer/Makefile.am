@@ -2,6 +2,7 @@ SUBDIRS = docs
 INCLUDES = -I. \
 $(GNOME_APPLETS_CFLAGS) \
 -I$(srcdir) \
+-I$(top_srcdir)/screen-exec \
 -DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\"  \
 $(CDROM_CFLAGS)
 
@@ -16,8 +17,6 @@ CDROM_CDDA_DEPS = \
 endif
 
 libexec_PROGRAMS = cdplayer_applet2
-
-EGGFILES = egg-screen-exec.h egg-screen-exec.c
 
 cdplayer_applet2_SOURCES = \
 cdplayer.c \
@@ -38,7 +37,8 @@ $(CDROM_CDDA_DEPS)
 
 cdplayer_applet2_LDADD = \
 $(GNOME_APPLETS_LIBS) \
-$(CDROM_LIBS)
+$(CDROM_LIBS) \
+$(top_builddir)/screen-exec/libscreen-exec.la
 
 icondir   = $(datadir)/pixmaps
 icon_DATA = gnome-cdplayer-icon.png
@@ -59,7 +59,6 @@ uidir = $(datadir)/gnome-2.0/ui
 ui_DATA = GNOME_CDPlayerApplet.xml
 
 EXTRA_DIST = \
-update-from-egg.sh \
 images/cdplayer-backward.xpm \
 images/cdplayer-eject.xpm \
 images/cdplayer-forward.xpm \
@@ -80,8 +79,3 @@ $(ui_DATA)
 
 install-data-local:
 	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schema_DATA) ;
-
-EGGDIR = $(srcdir)/../../libegg/libegg/screen-exec
-
-regenerate-built-sources:
-	EGGFILES="$(EGGFILES)" EGGDIR="$(EGGDIR)" $(srcdir)/update-from-egg.sh

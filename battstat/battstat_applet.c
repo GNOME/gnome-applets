@@ -738,7 +738,7 @@ help_cb (BonoboUIComponent *uic,
 	 ProgressData      *battstat,
 	 const char        *verb)
 {
-  /* FIXME
+  /* FIXME: use (egg|gnome)_screen_help_display
    GnomeHelpMenuEntry help_entry = {
       "battstat_applet", "index.html"
    };
@@ -749,7 +749,7 @@ help_cb (BonoboUIComponent *uic,
 void
 helppref_cb (PanelApplet *applet, gpointer data)
 {
-  /* FIXME
+  /* FIXME: use (egg|gnome)_screen_help_display
        GnomeHelpMenuEntry help_entry = {
       "battstat_applet", "index.html#BATTSTAT_PREFS"
    };

@@ -1,6 +1,7 @@
 SUBDIRS = help
 
 INCLUDES = -I. -I$(srcdir) 				\
+	-I$(top_srcdir)/screen-exec			\
 	$(GNOME_APPLETS_CFLAGS)				\
 	-DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\"
 
@@ -12,6 +13,7 @@ charpick_applet2_SOURCES = charpick.c \
                           properties.c
 
 charpick_applet2_LDADD = \
+	$(top_builddir)/screen-exec/libscreen-exec.la \
 		       $(GNOME_APPLETS_LIBS)
 
 charpickbitmapsdir = $(datadir)/pixmaps/

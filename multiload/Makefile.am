@@ -1,5 +1,6 @@
 INCLUDES =						\
 	-I$(srcdir)					\
+	-I$(top_srcdir)/screen-exec			\
 	-DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\"	\
 	-DGNOME_DISABLE_DEPRECATED=1	\
 	-DGTK_DISABLE_DEPRECATED=1	\
@@ -9,10 +10,7 @@ INCLUDES =						\
 
 libexec_PROGRAMS = multiload-applet-2
 
-EGGFILES = egg-screen-exec.h egg-screen-exec.c
-
 multiload_applet_2_SOURCES = \
-			$(EGGFILES)	\
 			global.h	\
 			linux-proc.h	\
 			load-graph.h	\
@@ -27,6 +25,7 @@ multiload_applet_2_SOURCES = \
 			swapload.c
 
 multiload_applet_2_LDADD = \
+	$(top_builddir)/screen-exec/libscreen-exec.la	\
 				$(GNOME_APPLETS_LIBS) 	\
 				$(GTOP_APPLETS_LIBS)
 
@@ -42,7 +41,7 @@ install-data-local:
 	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schema_DATA) ;
 		
 EXTRA_DIST =	\
-		update-from-egg.sh \
+		GNOME_MultiLoadApplet_Factory.server.in \
 		GNOME_MultiLoadApplet_Factory.server.in.in \
 		multiload.schemas \
 		$(pixmaps) \
@@ -59,9 +58,3 @@ $(server_in_files): $(server_in_files:.server.in=.server.in.in)
 	sed -e "s|\@LIBEXECDIR\@|$(libexecdir)|" $< > $@
 
 @INTLTOOL_SERVER_RULE@
-
-EGGDIR = $(srcdir)/../../libegg/libegg/screen-exec
-
-regenerate-built-sources:
-	EGGFILES="$(EGGFILES)" EGGDIR="$(EGGDIR)" $(srcdir)/update-from-egg.sh
-

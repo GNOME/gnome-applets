@@ -36,6 +36,8 @@
 
 #include "gkb.h"
 
+#include <egg-screen-help.h>
+
 extern gboolean gail_loaded;
 static GtkWidget *label_prop_map = NULL;
 
@@ -159,7 +161,16 @@ static void
 gkb_prop_map_help_clicked (GkbMapDialogInfo * mdi)
 {
 	GError *error = NULL;
+
+#ifdef HAVE_GTK_MULTIHEAD
+        egg_screen_help_display (
+  		gtk_window_get_screen (GTK_WINDOW (mdi->dialog)),
+		"gkb", "gkb-edit-layout", &error);
+#else
         gnome_help_display("gkb","gkb-edit-layout",&error);
+#endif
+
+	/* FIXME: display error to the user */
 }
 
 

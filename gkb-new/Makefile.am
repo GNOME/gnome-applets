@@ -1,4 +1,5 @@
 INCLUDES =                                           \
+	-I$(top_srcdir)/screen-exec			\
 	-DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\"      \
 	$(GNOME_APPLETS_CFLAGS)                                                            
 
@@ -22,6 +23,7 @@ gkb_applet_2_SOURCES = \
 
 
 gkb_applet_2_LDADD = \
+	$(top_builddir)/screen-exec/libscreen-exec.la \
 	$(GNOME_APPLETS_LIBS) $(X_LIBS) $(INTLLIBS)
 
 @INTLTOOL_SERVER_RULE@
