@@ -167,7 +167,7 @@ properties_dialog(AppletWidget *applet,
 
 static	char *basemaps[]= {
 	"be", "bg", "ch", "cz", "de", "dk", "dvorak",
-	"es", "fi", "fr", "gr", "hu", "il", "is", 
+	"es", "fi", "fr", "fr-2", "gr", "hu", "il", "is", 
 	"it", "la", "nl", "no", "pl", "pt", "pt-dead", "qc", 
 	"ru", "ru_koi8", "se", "sf", "sg", "si", "sk", 
 	"th", "tr_f", "tr_q", "uk", "us", "yu", 0 
