@@ -31,7 +31,8 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "ghttp.h"
+#include "ghttp.h" // FIXME:
+#include <libgnomevfs/gnome-vfs.h>
 #include <sys/stat.h>
 #include <unistd.h>
 #include <dirent.h>
@@ -118,9 +119,6 @@
 	void removeSpace(char *buffer); 
 	int configured(void);
 	void timeout_cb( GtkWidget *widget, GtkWidget *spin );
-	static int http_get_to_file(gchar *a_host, gint a_port, 
-				gchar *a_resource, FILE *a_file);
-	int http_got(void);
 	void properties_save(char *path) ;
 	static void destroy_applet(GtkWidget *widget, gpointer data) ;
 	char *getSymsFromClist(GtkWidget *clist) ;
@@ -201,14 +199,55 @@
 		}
 	}
 
-	/*-----------------------------------------------------------------*/
-	static void updateOutput(void) {
-		if ( http_got() == -1 || !(configured()) ) {  
+/*-----------------------------------------------------------------*/
+static void xfer_callback (GnomeVFSAsyncHandle *handle, GnomeVFSXferProgressInfo *info, gpointer data)
+{
+	if (info->phase == GNOME_VFS_XFER_PHASE_COMPLETED) {
+		if (!configured()) {
 			reSetOutputArray();
 			fprintf(stderr, "No data!\n");
 			setOutputArray(_("No data available or properties not set"));
 		}
 	}
+}
+
+/*-----------------------------------------------------------------*/
+static void updateOutput(void)
+{
+	GList *sources, *dests;
+	GnomeVFSURI *source_uri, *dest_uri;
+	char *source_text_uri;
+	GnomeVFSAsyncHandle *vfshandle;
+
+	source_text_uri = g_strconcat("http://finance.yahoo.com/q?s=",
+				      props.tik_syms,
+				      "&d=v2",
+				      NULL);
+	source_uri = gnome_vfs_uri_new(source_text_uri);
+	sources = g_list_append(NULL, source_uri);
+	g_free(source_text_uri);
+
+	dest_uri = gnome_vfs_uri_new(configFileName);
+	dests = g_list_append(NULL, dest_uri);
+
+	if (GNOME_VFS_OK !=
+	    gnome_vfs_async_xfer(&vfshandle, sources, dests,
+				 GNOME_VFS_XFER_DEFAULT,
+				 GNOME_VFS_XFER_ERROR_MODE_ABORT,
+				 GNOME_VFS_XFER_OVERWRITE_MODE_REPLACE,
+				 (GnomeVFSAsyncXferProgressCallback) xfer_callback,
+				 NULL, NULL, NULL)) {
+		GnomeVFSXferProgressInfo info;
+		info.phase = GNOME_VFS_XFER_PHASE_COMPLETED;
+		xfer_callback(NULL, &info, NULL);
+	}	
+
+	g_list_free(sources);
+	g_list_free(dests);
+
+	gnome_vfs_uri_unref(source_uri);
+	gnome_vfs_uri_unref(dest_uri);
+}
 
 
 
@@ -462,83 +501,6 @@
 
 		return retVar;
 	}
-
-
-	/*-----------------------------------------------------------------*/
-	/* Shamelessly stolen from the Slashapp applet
-	 */
-	static int http_get_to_file(gchar *a_host, gint a_port, 
-				    gchar *a_resource, FILE *a_file) {
-		int length = -1;
-		ghttp_request *request = NULL;
-		gchar s_port[8];
-		gchar *uri = NULL;
-		gchar *body;
-		gchar *proxy = g_getenv("http_proxy");
-
-		g_snprintf(s_port, sizeof(s_port), "%d", a_port);
-		uri = g_strconcat("http://", a_host, ":", s_port, 
-						a_resource, NULL);
-
-#ifdef DEBUG
-		fprintf(stderr,"Asking for %s\n", uri);
-#endif
-
-		request = ghttp_request_new();
-		if (!request)
-			goto ec;
-		if (proxy && (ghttp_set_proxy(request,proxy) != 0))
-			goto ec;
-
-		if (ghttp_set_uri(request, uri) != 0)
-			goto ec;
-		ghttp_set_header(request, http_hdr_Connection, "close");
-		if (ghttp_prepare(request) != 0)
-			goto ec;
-		if (ghttp_process(request) != ghttp_done)
-			goto ec;
-		length = ghttp_get_body_len(request);
-		body = ghttp_get_body(request);
-		if (body != NULL)
-			fwrite(body, length, 1, a_file);
-
-		ec:
-			if (request)
-				ghttp_request_destroy(request);
-			if (uri)
-				
-				g_free(uri);
-		return length;
-	}
-
-
-
-
-	/*-----------------------------------------------------------------*/
-	int http_got() {
-
-		int retVar;
-		FILE *local_file;
-
-		char *tmpBuff;
-
-		tmpBuff = g_strconcat ("/q?s=", props.tik_syms, "&d=v2", NULL);
-
-		retVar = 0;
-
-		local_file = fopen(configFileName, "w");
-		retVar = http_get_to_file("finance.yahoo.com", 80, 
-						tmpBuff, local_file);
-
-		fclose(local_file);
-
-		g_free (tmpBuff);
-
-		return retVar;
-	}
-
-
-
 
 
 	/*-----------------------------------------------------------------*/
@@ -1319,18 +1281,6 @@
 
 
 	/*-----------------------------------------------------------------*/
-	/* Do the first update in an idle since we block (UGLY UGLY UGLY)
-	 * and thus this is at least marginally better behaviour since the
-	 * user will at least see something on the screen */
-	static gboolean
-	first_update (gpointer data)
-	{
-		updateOutput ();
-		return FALSE;
-	}
-
-
-	/*-----------------------------------------------------------------*/
 	int main(int argc, char **argv) {
 		GtkWidget * vbox;
 		GtkWidget * frame;
@@ -1346,6 +1296,7 @@
 		call gnome_init */
 		applet_widget_init(GTIK_APPLET_NAME, VERSION, argc, argv,
 				    NULL, 0, NULL);
+		gnome_vfs_init();
 
 		/* create a new applet_widget */
 		applet = applet_widget_new(GTIK_APPLET_NAME);
@@ -1451,7 +1402,7 @@
 			gtk_widget_show(rightButton);
 		}
 
-		g_idle_add (first_update, NULL);
+		updateOutput();
 
 		/* special corba main loop */
 		applet_widget_gtk_main ();

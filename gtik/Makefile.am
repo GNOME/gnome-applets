@@ -10,7 +10,8 @@ gtik2_applet_SOURCES = gtik.c
 gtik2_applet_LDADD = 	$(GNOME_LIBDIR) \
 			$(GNOMEUI_LIBS) \
 			$(GNOME_APPLETS_LIBS) \
-			$(GHTTP_LIB)
+			$(GHTTP_LIB) \
+			-lgnomevfs
 
 sysdir = $(datadir)/applets/Network
 sys_predata = gtik2_applet.desktop.in
