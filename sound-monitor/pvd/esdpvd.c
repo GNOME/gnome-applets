@@ -458,7 +458,7 @@ int main (int argc, char *argv[])
 			/* help */
 			printf(_("ESounD Persistent Volume Daemon version %s\n"), VERSION);
 			printf(_("options:\n"));
-			printf(_("  -n, --noX     Allow to run with X server\n"));
+			printf(_("  -n, --noX     Allow to run without X server\n"));
 			}
 		}
 
