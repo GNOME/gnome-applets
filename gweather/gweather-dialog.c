@@ -350,6 +350,7 @@ void gweather_dialog_open (GWeatherApplet *gw_applet)
     if (!gw_applet->gweather_dialog)
         gweather_dialog_create(gw_applet);
     gweather_dialog_update(gw_applet);
+    gtk_window_set_resizable(GTK_WINDOW(gw_applet->gweather_dialog), TRUE);
     gtk_widget_show(gw_applet->gweather_dialog);
 }
 
