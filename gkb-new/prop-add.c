@@ -219,7 +219,7 @@ addwadd_cb (GtkWidget * addbutton, GtkWidget * ctree, GkbPropertyBoxInfo *pbi)
  gkb_prop_list_reload (pbi);
  
  if ( g_list_length(pbi->keymaps) > 1 )
-  gnome_property_box_changed (GNOME_PROPERTY_BOX (gkb->propbox));
+  gnome_property_box_changed (GNOME_PROPERTY_BOX (pbi->box));
  return FALSE;
 }
 
@@ -230,8 +230,6 @@ wdestroy_cb (GtkWidget * closebutton, GtkWidget * window)
 	
  if (window == gkb->addwindow)
   gkb->addwindow=NULL;
- else
-  gkb->mapedit=NULL;
  gtk_widget_destroy(window);
   
  return FALSE;

@@ -42,13 +42,23 @@
 #include <dirent.h>		/* for opendir() et al. */
 #include <string.h>		/* for strncmp() */
 
-#define debug(section,str) /*if (debug_turned_on) */ g_print ("%s:%d (%s) %s\n", __FILE__, __LINE__, __FUNCTION__, str); 
+#if 1
+#define debug(section,str) /*if (debug_turned_on) */ g_print ("%s:%d (%s) %s\n", __FILE__, __LINE__, __FUNCTION__, str);
+#else
+#define debug(section,str) /*if (debug_turned_on) */ ;
+#endif
 
 typedef struct _GKB GKB;
 typedef struct _GkbKeymap          GkbKeymap;
 typedef struct _GkbKeymapWg        GkbKeymapWg;
 typedef struct _GkbPropertyBoxInfo GkbPropertyBoxInfo;
 
+
+typedef enum {
+  GKB_LABEL,
+  GKB_FLAG,
+  GKB_FLAG_AND_LABEL,
+} GkbAppeareance;
 
 struct _GkbPropertyBoxInfo
 {
@@ -73,6 +83,7 @@ struct _GkbPropertyBoxInfo
   /* Other properties */
   gint is_small;
   gint size;
+  GkbAppeareance appeareance;
 };
 
 struct _GkbKeymap
@@ -93,27 +104,30 @@ struct _GkbKeymap
 
 struct _GKB
 {
+  /* Properties */
+  PanelOrientType orient;
+  GkbAppeareance appeareance;
+  gint size;
+  gint is_small;
+  gint w;
+  gint h;
+
+  /* Widgets */
   GtkWidget *applet;
   GtkWidget *frame;
   GtkWidget *darea;
-  GtkWidget *mapedit;
   GtkWidget *addwindow;
-  GtkWidget *propbox;
 
   gint n;
   gint cur;
-  gint size;
-  gint w;
-  gint h;
-  gint is_small;
   gint mode;
 
   gchar *key;
   guint keysym, state;
 
+  /* Keymaps */
+  GkbKeymap *keymap; /* This is the currently selected keymap */
   GList *maps;
-  GkbKeymap *dact;
-  PanelOrientType orient;
 };
 
 struct _GkbKeymapWg
@@ -161,9 +175,24 @@ GtkWidget * gkb_prop_create_scrolled_window (GkbPropertyBoxInfo *pbi);
        void gkb_prop_list_free_keymaps (GkbPropertyBoxInfo *pbi);
        void gkb_prop_list_reload (GkbPropertyBoxInfo *pbi);
 
+/* system.c */
+void gkb_system_set_keymap (GKB * gkb);
+
+/* keymap.c */
+GkbKeymap * gkb_keymap_copy (GkbKeymap *keymap);
+    GList * gkb_keymap_copy_list (GList *list_in);
+       void gkb_keymap_free_internals (GkbKeymap *keymap);
+       void gkb_keymap_free (GkbKeymap *keymap);
+       void gkb_keymap_free_list (GList *list_in);
+
 /* prop-map.h */
 void gkb_prop_map_edit (GkbPropertyBoxInfo *pbi);
 void gkb_prop_map_add (GkbPropertyBoxInfo *pbi);
+
+
+/* util.c */
+const gchar *  gkb_util_get_text_from_appeareance (GkbAppeareance appeareance);
+GkbAppeareance gkb_util_get_appeareance_from_text (const gchar *text);
 
 /* keygrab.c */
 gboolean convert_string_to_keysym_state(const char *string,
@@ -172,6 +201,8 @@ gboolean convert_string_to_keysym_state(const char *string,
 char * convert_keysym_state_to_string(guint keysym,
 					guint state);
 void grab_button_pressed (GtkButton *button, gpointer data);
+
+
 
 /* Globals */
 gchar * prefixdir;

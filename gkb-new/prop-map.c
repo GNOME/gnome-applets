@@ -40,6 +40,7 @@ struct _GkbMapDialogInfo
 {
   GkbPropertyBoxInfo *pbi;
   GkbKeymap *keymap;
+  GtkWidget *dialog;
   gboolean changed;
   
   /* Buttons */
@@ -63,28 +64,7 @@ struct _GkbMapDialogInfo
 };
 
 
-/**
- * gkb_utils_free_keymap_internals:
- * @keymap: 
- * 
- * Frees the internals of a keymap
- **/
-static void
-gkb_utils_free_keymap_internals (GkbKeymap *keymap)
-{
-  debug (FALSE, "");
-  
-  g_free (keymap->name);
-  g_free (keymap->label);
-  g_free (keymap->lang);
-  g_free (keymap->country);
-  g_free (keymap->codepage);
-  g_free (keymap->type);
-  g_free (keymap->arch);
-  g_free (keymap->command);
-  g_free (keymap->flag);
-}
-  
+
 
 /**
  * gkb_prop_map_apply_clicked:
@@ -101,7 +81,7 @@ gkb_prop_map_apply_clicked (GkbMapDialogInfo *mdi)
   
   keymap = mdi->keymap;
 
-  gkb_utils_free_keymap_internals (keymap);
+  gkb_keymap_free_internals (keymap);
 
   keymap->name     = g_strdup (gtk_entry_get_text (GTK_ENTRY (mdi->name_entry)));
   keymap->label    = g_strdup (gtk_entry_get_text (GTK_ENTRY (mdi->label_entry)));
@@ -128,8 +108,8 @@ gkb_prop_map_apply_clicked (GkbMapDialogInfo *mdi)
 static void
 gkb_prop_map_close_clicked (GkbMapDialogInfo *mdi)
 {
-  gtk_widget_destroy (gkb->mapedit);
-  gkb->mapedit = NULL;
+  gtk_widget_destroy (mdi->dialog);
+  mdi->dialog = NULL;
 }
 
 
@@ -537,6 +517,7 @@ gkb_prop_map_edit (GkbPropertyBoxInfo *pbi)
   GkbMapDialogInfo *mdi;
   GtkContainer *button_box;
   GkbKeymap *keymap;
+  GtkWidget *dialog;
   GtkWidget *left_table;
   GtkWidget *right_table;
   GtkWidget *vseparator;
@@ -562,13 +543,14 @@ gkb_prop_map_edit (GkbPropertyBoxInfo *pbi)
   
   keymap = pbi->selected_keymap;
   
-  gkb->mapedit = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_window_set_modal(GTK_WINDOW (gkb->mapedit), TRUE);
-  gtk_object_set_data (GTK_OBJECT (gkb->mapedit), "mapedit", gkb->mapedit);
-  gtk_window_set_title (GTK_WINDOW (gkb->mapedit), _("Edit keymap"));
+  dialog = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+  mdi->dialog = dialog;
+  gtk_window_set_modal(GTK_WINDOW (dialog), TRUE);
+  gtk_object_set_data (GTK_OBJECT (dialog), "mapedit", dialog);
+  gtk_window_set_title (GTK_WINDOW (dialog), _("Edit keymap"));
 
   vbox2 = gtk_vbox_new (FALSE, 0);
-  gtk_container_add (GTK_CONTAINER (gkb->mapedit), vbox2);
+  gtk_container_add (GTK_CONTAINER (dialog), vbox2);
 
   hbox1 = gtk_hbox_new (FALSE, 0);
   gtk_box_pack_start (GTK_BOX (vbox2), hbox1, TRUE, TRUE, 0);
@@ -660,7 +642,7 @@ gkb_prop_map_edit (GkbPropertyBoxInfo *pbi)
   gtk_widget_set_sensitive (mdi->apply_button, FALSE);
 
   /* Go, go go !! */
-  gtk_widget_show_all (gkb->mapedit);
+  gtk_widget_show_all (dialog);
   
   return;
 }

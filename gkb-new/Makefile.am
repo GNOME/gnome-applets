@@ -11,12 +11,15 @@ bin_SCRIPTS = gkb_xmmap
 gkb_applet_SOURCES = \
 		gkb.c 		\
 		gkb.h		\
+		keygrab.c		\
+		keymap.c		\
 		prop.c 		\
 		prop-add.c	\
 		prop-list.c	\
 		prop-map.c	\
 		preset.c		\
-		keygrab.c
+		system.c		\
+		util.c
 
 #lib_LTLIBRARIES=libgkb_applet.la
 

@@ -108,61 +108,17 @@ gkb_draw (GKB * gkb)
   debug (FALSE, "");
 
   g_return_if_fail (gkb->darea != NULL);
-  g_return_if_fail (gkb->dact != NULL);
-  g_return_if_fail (gkb->dact->pix != NULL);
+  g_return_if_fail (gkb->keymap != NULL);
+  g_return_if_fail (gkb->keymap->pix != NULL);
   g_return_if_fail (GTK_WIDGET_REALIZED (gkb->darea));
 
   gdk_draw_pixmap (gkb->darea->window,
-		   gkb->darea->style->fg_gc[GTK_WIDGET_STATE (gkb->darea)],
-		   gkb->dact->pix, 0, 0, 0, 0, gkb->w, gkb->h);
+		   gkb->darea->style->fg_gc [GTK_WIDGET_STATE (gkb->darea)],
+		   gkb->keymap->pix, 0, 0, 0, 0, gkb->w, gkb->h);
 
-  applet_widget_set_tooltip (APPLET_WIDGET (gkb->applet), gkb->dact->name);
+  applet_widget_set_tooltip (APPLET_WIDGET (gkb->applet), gkb->keymap->name);
 }
 
-
-/**
- * gkb_set_system_keymap:
- * @gkb: 
- * 
- * Executes the system comand to set the keymap selected
- * used the keymap info in gkb->dact->kcode.
- * TODO: Implement advanced settings so that the user can specify
- *       the GKB_COMMAND to use, hardcoded for now.
- * TODO: The system call blocks the execution of the applet, trow it
- *       inside a gtk_idle loop to make it "seem" faster. This means
- *       that we are going to display the flag, but the command is not
- *       going to get executed imidiatelly (which is not a problem at all)
- **/
-static void
-gkb_set_system_keymap (GKB * gkb)
-{
-#if 1
-  g_print ("Executing %s\n", gkb->dact->command);
-  if (system (gkb->dact->command))
-    gnome_error_dialog (_
-			("The keymap switching command returned with error!"));
-#else
-  static gchar *last_command = NULL;
-  gchar *command;
-
-  g_return_if_fail (gkb != NULL);
-  g_return_if_fail (gkb->dact != NULL);
-  g_return_if_fail (gkb->dact->kcode != NULL);
-
-  if (last_command != NULL)
-    g_free (last_command);
-
-  command = g_strdup_printf (GKB_COMMAND " %s", gkb->dact->kcode);
-
-  /* Only execute the command if it is different than the last one
-   * we executed
-   */
-  if (last_command && strcmp (command, last_command) != 0)
-    system (command);
-
-  last_command = command;
-#endif
-}
 
 /**
  * gkb_sized_render:
@@ -242,7 +198,7 @@ gkb_update (GKB * gkb, gboolean set_command)
    * have changed size. In other words, we can't change size &
    * keymap at the same time */
   if (set_command)
-    gkb_set_system_keymap (gkb);
+    gkb_system_set_keymap (gkb);
   else
     gkb_sized_render (gkb);
 }
@@ -406,6 +362,7 @@ static void
 load_properties ()
 {
   GkbKeymap *actdata;
+  gchar *text;
   int i;
 
   debug (FALSE, "");
@@ -420,6 +377,9 @@ load_properties ()
   convert_string_to_keysym_state (gkb->key, &gkb->keysym, &gkb->state);
 
   gkb->is_small = gnome_config_get_int ("gkb/small=0");
+  text = gnome_config_get_string ("gkb/appeareance=Flag");
+  gkb->appeareance = gkb_util_get_appeareance_from_text (text);
+  g_free (text);
 
   if (gkb->n == 0)
     {
@@ -454,11 +414,11 @@ gkb_button_press_event_cb (GtkWidget * widget, GdkEventButton * event)
     return;
 
   if (gkb->cur + 1 < gkb->n)
-    gkb->dact = g_list_nth_data (gkb->maps, ++gkb->cur);
+    gkb->keymap = g_list_nth_data (gkb->maps, ++gkb->cur);
   else
     {
       gkb->cur = 0;
-      gkb->dact = g_list_nth_data (gkb->maps, gkb->cur);
+      gkb->keymap = g_list_nth_data (gkb->maps, gkb->cur);
     }
 
   gkb_update (gkb, TRUE);
@@ -467,7 +427,7 @@ gkb_button_press_event_cb (GtkWidget * widget, GdkEventButton * event)
 static int
 gkb_expose (GtkWidget * darea, GdkEventExpose * event)
 {
-  GkbKeymap *d = gkb->dact;
+  GkbKeymap *d = gkb->keymap;
 
   debug (FALSE, "");
 
@@ -499,14 +459,14 @@ create_gkb_widget ()
 			 gtk_widget_get_events (gkb->darea) |
 			 GDK_BUTTON_PRESS_MASK);
 
-  gtk_widget_show (gkb->darea);
-
   gtk_signal_connect (GTK_OBJECT (gkb->darea), "button_press_event",
 		      GTK_SIGNAL_FUNC (gkb_button_press_event_cb), NULL);
   gtk_signal_connect (GTK_OBJECT (gkb->darea), "expose_event",
 		      GTK_SIGNAL_FUNC (gkb_expose), NULL);
 
-  gkb->dact = g_list_nth_data (gkb->maps, 0);
+  gtk_widget_show (gkb->darea);
+
+  gkb->keymap = g_list_nth_data (gkb->maps, 0);
 
   gkb->frame = gtk_frame_new (NULL);
   gtk_frame_set_shadow_type (GTK_FRAME (gkb->frame), GTK_SHADOW_IN);
@@ -577,10 +537,11 @@ static gboolean
 applet_save_session (GtkWidget * w,
 		     const char *privcfgpath, const char *globcfgpath)
 {
+  const gchar *text;
   GkbKeymap *actdata;
-  int i = 0;
-  char str[100];
   GList *list = gkb->maps;
+  gchar str[100];
+  int i = 0;
 
   debug (FALSE, "");
 
@@ -588,6 +549,8 @@ applet_save_session (GtkWidget * w,
   gnome_config_set_int ("gkb/num", gkb->n);
   gnome_config_set_int ("gkb/small", gkb->is_small);
   gnome_config_set_string ("gkb/key", gkb->key);
+  text = gkb_util_get_text_from_appeareance (gkb->appeareance);
+  gnome_config_set_string ("gkb/appeareance", text);
 
   while (list)
     {
@@ -628,11 +591,11 @@ global_key_filter (GdkXEvent * gdk_xevent, GdkEvent * event)
   if (event->key.keyval == gkb->keysym && event->key.state == gkb->state)
     {
       if (gkb->cur + 1 < gkb->n)
-	gkb->dact = g_list_nth_data (gkb->maps, ++gkb->cur);
+	gkb->keymap = g_list_nth_data (gkb->maps, ++gkb->cur);
       else
 	{
 	  gkb->cur = 0;
-	  gkb->dact = g_list_nth_data (gkb->maps, gkb->cur);
+	  gkb->keymap = g_list_nth_data (gkb->maps, gkb->cur);
 	}
 
       gkb_update (gkb, TRUE);
@@ -749,7 +712,7 @@ gkb_activator (CORBA_Object poa_in,
   load_properties ();
   gkb_activator_connect_signals (gkb);
 
-  gkb->dact = g_list_nth_data (gkb->maps, 0);
+  gkb->keymap = g_list_nth_data (gkb->maps, 0);
 
   gkb_activator_register_callbacks (gkb);
 

@@ -1,5 +1,47 @@
 2000-12-08  Chema Celorio  <chema@celorio.com>
 
+	* Makefile.am (gkb_applet_SOURCES): add util.c
+
+	* prop.c (gkb_get_text_from_appeareance): implement
+	(gkb_get_appeareance_from_text): implement
+
+	* gkb.h (struct _GkbPropertyBoxInfo): add GkbAppeareance
+	(struct _GKB): ditto
+	add GkbAppeareance enums	
+
+	* prop.c (gkb_prop_label_at): implement.
+	(gkb_prop_create_display_frame): use here
+
+	* keymap.c (gkb_keymap_copy_list): implement.
+
+	* Makefile.am (gkb_applet_SOURCES): add keymap.c
+
+	* keymap.c: new file move the following functions here
+	(gkb_keymap_free_internals): 
+	(gkb_keymap_free): 
+	(gkb_keymap_free_list): 
+	(gkb_keymap_copy): 
+
+	* system.c: new file, this will take care off doing the system
+	call to set the keyboard.
+	(gkb_system_set_keymap_idle): implement
+	(gkb_system_set_keymap): set the keyboard in an idle loop,
+	this makes the applet "look" a lot faster, they keyboard layout
+	call is done in an gtk_idle_loop.
+
+	* Makefile.am (INCLUDES): ad system.c
+
+	* gkb.h: disable debug.
+	(struct _GKB): remove mapdialog and update accordingly
+	(struct _GKB): rename dact to keymap, update code accord.
+
+	* prop-map.c (struct _GkbMapDialogInfo): dialog
+
+	* prop.c (properties_dialog): kill a leak by :
+	(gkb_prop_box_destroy): using me
+
+2000-12-08  Chema Celorio  <chema@celorio.com>
+	
 	* prop-map.c: move all the add stuff to :
 	* prop-add.c: here
 
