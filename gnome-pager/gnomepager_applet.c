@@ -552,7 +552,7 @@ add_task(Window win)
       GNOMEUIINFO_END
     };
 
-  val = AtomGet(win, "WM_HINTS", XA_CARDINAL, &size);
+  val = AtomGet(win, "WIN_HINTS", XA_CARDINAL, &size);
   if (val)
     {
       if ((*val) & GWIN_HINTS_SKIP_TASKBAR)
