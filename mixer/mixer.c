@@ -373,7 +373,7 @@ create_computer_mixer_widget(GtkWidget ** mixer,
         gtk_scale_set_draw_value(GTK_SCALE(vscale), FALSE);
         gtk_scale_set_draw_value(GTK_SCALE(hscale), FALSE);
 
-	gtk_widget_set_usize(GTK_WIDGET(vscale), 25, 32);
+	gtk_widget_set_usize(GTK_WIDGET(vscale), 18, 32);
 	gtk_widget_set_usize(GTK_WIDGET(hscale), 36, 20);
 
 	gtk_widget_set_usize(GTK_WIDGET(vbutton),12 , 15);
