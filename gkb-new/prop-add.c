@@ -346,7 +346,8 @@ response_cb (GtkDialog *dialog, gint id, gpointer data)
     addhelp_cb (NULL, NULL);
     break;
   default:
-    gtk_widget_hide (GTK_WIDGET (dialog));
+    gtk_widget_destroy (GTK_WIDGET (dialog));
+    gkb->addwindow = NULL;
     break;
   }
  

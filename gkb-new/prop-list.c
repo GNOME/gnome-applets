@@ -424,7 +424,6 @@ gkb_prop_list_load_keymaps (GkbPropertyBoxInfo * pbi)
 
   pbi->keymaps = gkb_keymap_copy_list (gkb->maps);
 
-  g_print("reload\n");
   gkb_prop_list_reload (pbi);
   gtk_widget_show (GTK_WIDGET(pbi->list));
 }

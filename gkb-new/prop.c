@@ -380,17 +380,16 @@ prophelp_cb (GtkWidget *widget, gpointer data)
 static void
 window_response (GtkWidget *w, int response, gpointer data)
 {
-  GkbPropertyBoxInfo * pbi = data;	
+  GkbPropertyBoxInfo * pbi = data;
+
   if (response == GTK_RESPONSE_HELP)
     prophelp_cb (gkb->applet, data);
   else {
-#if 0
     gtk_list_store_clear (GTK_LIST_STORE (gtk_tree_view_get_model 
                           (GTK_TREE_VIEW (pbi->list))));
     g_free (pbi);
     gtk_widget_destroy (w);
-#endif
-    gtk_widget_hide (propwindow);
+    propwindow = NULL;
   }
        
 }
@@ -455,27 +454,7 @@ gkb_prop_create_property_box (GkbPropertyBoxInfo * pbi)
   return propwindow;
 }
 
-static gint
-gkb_prop_box_destroy (GtkWidget * box, GkbPropertyBoxInfo * pbi)
-{
-  g_return_val_if_fail (pbi != NULL, TRUE);
-  g_return_val_if_fail (box == pbi->box, TRUE);
-
-  gtk_widget_destroy (GTK_WIDGET (box));
-  /* This is hackish, but I could not find the correct
-   * solution for it. The problem is that when we destroy
-   * the list, the selection changes if there is a selected
-   * row, so we need to clear the selection so that the
-   * gkb_prop_list_selection_changed function is not reached.
-   * if you know of a way to solve this, enlighten me. Chema */
-  gtk_list_store_clear (GTK_LIST_STORE (gtk_tree_view_get_model 
-                        (GTK_TREE_VIEW (pbi->list))));
-  g_free (pbi);
-
-  return FALSE;
-}
-
-void
+void	
 properties_dialog (BonoboUIComponent *uic,
 	           GKB       *gkb,
 	           const gchar	  *verbname)
@@ -483,6 +462,7 @@ properties_dialog (BonoboUIComponent *uic,
   GkbPropertyBoxInfo *pbi;
   
   if (propwindow != NULL) {
+  	gtk_widget_show (propwindow);
   	gtk_window_present (GTK_WINDOW (propwindow));
   	return;
   }
@@ -502,7 +482,6 @@ properties_dialog (BonoboUIComponent *uic,
   pbi->box = gkb_prop_create_property_box (pbi);
 
   gtk_widget_show_all (pbi->box);
-  gdk_window_raise (pbi->box->window);
-
+  
   return;
 }
