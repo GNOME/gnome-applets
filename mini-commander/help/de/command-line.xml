@@ -1,10 +1,10 @@
 <?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "1.104.0">
-  <!ENTITY manrevision "2.2">
-  <!ENTITY date "August 2002">
-  <!ENTITY applet "Command Line">
+  <!ENTITY appletversion "2.3.6">
+  <!ENTITY manrevision "2.6">
+  <!ENTITY date "September 2003">
+  <!ENTITY applet "Befehlszeile">
 ]>
 <!-- 
       (Do not remove this comment block.)
@@ -21,17 +21,23 @@
   <articleinfo>
  <title>&applet; Applet-Handbuch V&manrevision;</title>
      <copyright> 
+			<year>2002</year>
         <year>2003</year> 
         <holder>Sun Microsystems</holder> 
-     </copyright> 
+     </copyright>    
+      
      <copyright> 
         <year>1998</year> 
         <holder>Oliver Maruhn</holder> 
      </copyright>
+     <copyright> 
+        <year>1998</year> 
+        <holder>Dan Mueth</holder> 
+     </copyright>
 <!-- translators: uncomment this:
 
   <copyright>
-   <year>2002</year>
+   <year>2003</year>
    <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
   </copyright>
 
@@ -40,7 +46,7 @@
      not specified, the publisher/author is the same for all versions of the 
      document.  -->
      <publisher> 
-        <publishername> GNOME-Dokumentationsprojekt </publishername> 
+        <publishername> GNOME Dokumentationsprojekt </publishername> 
      </publisher> &legal;
 <!-- This file  contains link to license for the documentation (GNU FDL), and 
      other legal stuff such as "NO WARRANTY" statement. Please do not change 
@@ -51,7 +57,7 @@
           <surname>GNOME-Dokumentationsteam</surname> 
           <affiliation> 
              <orgname>Sun Microsystems</orgname> 
-             <address> <email>gdocteam@sun.com</email> </address>
+             <address></address>
           </affiliation>
         </author>
         <author> 
@@ -60,6 +66,14 @@
           <affiliation> 
              <orgname>GNOME-Dokumentationsprojekt</orgname> 
              <address> <email>oliver@maruhn.com</email> </address>
+          </affiliation>
+        </author>
+        <author> 
+          <firstname>Dan </firstname> 
+          <surname> Mueth</surname> 
+          <affiliation> 
+             <orgname>GNOME Dokumentationsprojekt</orgname> 
+             <address> <email>d-mueth@uchicago.edu</email> </address>
           </affiliation>
         </author>
       <!-- This is appropriate place for other contributors: translators,
@@ -81,19 +95,72 @@
           <date>&date;</date> 
           <revdescription> 
              <para role="author">
-                Sun Microsystems <email>gdocteam@sun.com</email>
+                Sun Microsystems
              </para>
              <para role="publisher">
                 GNOME-Dokumentationsprojekt
              </para>
           </revdescription>
         </revision>
+
+			<revision> 
+          <revnumber>Befehlszeilen-Applet-Handbuch V2.5</revnumber> 
+          <date>August 2003</date> 
+          <revdescription> 
+             <para role="author">
+                Sun Microsystems
+             </para>
+             <para role="publisher">
+                GNOME-Dokumentationsprojekt
+             </para>
+          </revdescription>
+        </revision>
+			<revision> 
+          <revnumber>Befehlszeilen-Applet-Handbuch V2.4</revnumber> 
+          <date>April 2003</date> 
+          <revdescription> 
+             <para role="author">
+                Sun Microsystems
+             </para>
+             <para role="publisher">
+                GNOME-Dokumentationsprojekt
+             </para>
+          </revdescription>
+        </revision>
+        
+			<revision> 
+          <revnumber>Befehlszeilen-Applet-Handbuch V2.3</revnumber> 
+          <date>Januar 2003</date> 
+          <revdescription> 
+             <para role="author">
+                Sun Microsystems
+             </para>
+             <para role="publisher">
+                GNOME-Dokumentationsprojekt
+             </para>
+          </revdescription>
+        </revision>
+
+        <revision> 
+          <revnumber>Befehlszeilen-Applet-Handbuch V2.2</revnumber> 
+          <date>August 2002</date> 
+          <revdescription> 
+             <para role="author">
+                Sun Microsystems
+             </para>
+             <para role="publisher">
+                GNOME-Dokumentationsprojekt
+             </para>
+          </revdescription>
+        </revision>
+        
+         
         <revision> 
           <revnumber>Befehlszeilen-Applet-Handbuch V2.1</revnumber> 
           <date>Juli 2002</date> 
           <revdescription> 
              <para role="author">
-                Sun Microsystems <email>gdocteam@sun.com</email>
+                Sun Microsystems
              </para>
              <para role="publisher">
                 GNOME-Dokumentationsprojekt
@@ -105,7 +172,7 @@
           <date>M&auml;rz 2002</date> 
           <revdescription> 
              <para role="author">
-                Sun Microsystems <email>gdocteam@sun.com</email>
+                Sun Microsystems
              </para>
              <para role="publisher">
                 GNOME-Dokumentationsprojekt
@@ -131,7 +198,7 @@
           </revdescription>
         </revision>
      </revhistory>
-     <releaseinfo>In diesem Handbuch wird Version &appletversion; von &applet; beschrieben.
+     <releaseinfo> In diesem Handbuch wird Version &appletversion; von &applet; beschrieben.
         </releaseinfo>
      <legalnotice> 
         <title>Feedback</title>
@@ -223,7 +290,7 @@
              <listitem>
                 <para>
                   Sie k&ouml;nnen Befehle direkt von der Protokollliste ausf&uuml;hren.
-                  Sie k&ouml;nnen den Inhalt auch &uuml;ber das <guilabel>Eingabefeld</guilabel> durchsuchen, um Befehle anzuzeigen und anschlie&szlig;end auszuf&uuml;hren. Wenn Sie <application>&applet;</application> aus einem Panel entfernen und das Applet zu einem sp&auml;teren Zeitpunkt in der Sitzung einem anderen Panel hinzuf&uuml;gen, bleiben alle vorherigen Befehle in der Protokollliste gespeichert. Wenn die Protokollliste mehr als 20 Befehle enth&auml;lt, wird eine vertikale Bildlaufleiste angezeigt.
+                  Sie k&ouml;nnen den Inhalt auch &uuml;ber das <guilabel>Eingabefeld</guilabel> durchsuchen, um Befehle anzuzeigen und anschlie&szlig;end auszuf&uuml;hren. Wenn die Protokollliste mehr als 20 Befehle enth&auml;lt, wird eine vertikale Bildlaufleiste angezeigt.
                 </para>
              </listitem>
           </varlistentry>
@@ -326,7 +393,7 @@
                   </entry>
                   <entry>
                      <para>
-                        Startet ein GNOME-Terminal. 
+                        Startet ein Terminal 
                      </para>
                   </entry>
                 </row>
@@ -338,7 +405,7 @@
                   </entry>
                   <entry>
                      <para>
-                        Startet einen Netscape-Browser.
+                        Startet einen Netscape-Browser
                      </para>
                   </entry>
                 </row>
@@ -364,7 +431,7 @@
           Klicken Sie auf die <guibutton>Schaltfl&auml;che "Durchsuchen"</guibutton>, um das Dateisystem aufzurufen, und doppelklicken Sie auf das Programm, das ausgef&uuml;hrt werden soll. 
         </para>
         <para>
-          Sie k&ouml;nnen mit <application>&applet;</application> Skripts, ausf&uuml;hrbare Dateien und andere Programme von Ihrem Dateisystem ausf&uuml;hren. 
+          Sie k&ouml;nnen mit <application>&applet;</application> Skripts, Befehle und andere Programme von Ihrem Dateisystem ausf&uuml;hren. 
         </para>
      </sect2>
      <sect2 id="command-line-histlist"> 
@@ -420,49 +487,40 @@
 		<term><guilabel>Handle anzeigen</guilabel> </term>
 		<listitem>
 		<para>W&auml;hlen Sie diese Option, um am Rand des Applets ein Handle anzuf&uuml;gen. Mit dem Handle k&ouml;nnen Sie das <application>&applet;</application>-Fenster frei auf dem Desktop verschieben. </para>
-		<para>Standard:  Nicht aktiviert</para>
 		</listitem>
 		</varlistentry>
 		<varlistentry>
 		<term><guilabel>Rahmen anzeigen</guilabel> </term>
 		<listitem>
 		<para>W&auml;hlen Sie diese Option, um das Applet <application>&applet;</application> mit einem Rahmen zu umgeben.</para>
-		<para>Standard:  Nicht aktiviert</para>
 		</listitem>
 		</varlistentry>
-		<varlistentry>
-		<term><guilabel>Protokollbasiertes Auto-Vervollst&auml;ndigen aktivieren</guilabel> </term>
+		<varlistentry id="autocompletion">
+		<term><guilabel>Verlaufsbasierte automatische Vervollst&auml;ndigung aktivieren</guilabel> </term>
 		<listitem>
-		<para id="autocompletion">W&auml;hlen Sie diese Option, um <application>&applet;</application> anzuweisen, das <guilabel>Eingabefeld</guilabel> mit der Protokollliste zu vergleichen, und Befehle im Falle einer &Uuml;bereinstimmung zu vervollst&auml;ndigen. </para>
-		<para>Standard: Aktiviert</para>
+		<para>W&auml;hlen Sie diese Option, um <application>&applet;</application> anzuweisen, das <guilabel>Eingabefeld</guilabel> mit der Protokollliste zu vergleichen, und Befehle im Falle einer &Uuml;bereinstimmung zu vervollst&auml;ndigen. </para>
 		</listitem>
 		</varlistentry>
 		<varlistentry>
-		<term><guilabel>Applet-Breite</guilabel> </term>
+		<term><guilabel>Breite</guilabel> </term>
 		<listitem>
 		<para>Legen Sie mithilfe dieses Drehfeldes die Applet-Breite in Pixeln fest.</para>
-		<para>Standard:  150 Pixel</para>
 		</listitem>
 		</varlistentry>
 		<varlistentry>
-		<term><guilabel>Farben des Standardthemas verwenden</guilabel> </term>
+		<term><guilabel>Farben des Standardmotivs verwenden</guilabel> </term>
 		<listitem>
 		<para>W&auml;hlen Sie diese Option, um die Farben des GNOME-Standardthemas zu verwenden.</para>
-		<para>Standard: Aktiviert</para>
 		</listitem>
 		</varlistentry>
-		<varlistentry>
-		<term><guilabel>Befehlszeilen-Vordergrund</guilabel> </term>
+		<varlistentry>		<term><guilabel>Befehlszeilen-Vordergrund</guilabel> </term>
 		<listitem>
-		<para>Klicken Sie auf diese Schaltfl&auml;che, um eine Farbe f&uuml;r den Befehlszeilentext zu w&auml;hlen. Diese Schaltfl&auml;che steht nicht zur Verf&uuml;gung, wenn das Kontrollk&auml;stchen <guilabel>Farben des Standardthemas verwenden</guilabel> aktiviert ist.</para>
-		<para>Standard: Weiss</para>
+		<para>Klicken Sie auf diese Schaltfl&auml;che, um eine Farbe f&uuml;r den Befehlszeilentext zu w&auml;hlen. Diese Schaltfl&auml;che steht nicht zur Verf&uuml;gung, wenn das Kontrollk&auml;stchen <guilabel>Farben des Standardmotivs verwenden</guilabel> aktiviert ist.</para>
 		</listitem>
 		</varlistentry>
-		<varlistentry>
-		<term><guilabel>Befehlszeilen-Hintergrund</guilabel> </term>
+		<varlistentry>		<term><guilabel>Befehlszeilen-Hintergrund</guilabel> </term>
 		<listitem>
-		<para>Klicken Sie auf diese Schaltfl&auml;che, um eine Farbe f&uuml;r das <guilabel>Eingabefeld</guilabel> zu w&auml;hlen. Diese Schaltfl&auml;che steht nicht zur Verf&uuml;gung, wenn das Kontrollk&auml;stchen <guilabel>Farben des Standardthemas verwenden</guilabel> aktiviert ist.</para>
-		<para>Standard: Schwarz</para>
+		<para>Klicken Sie auf diese Schaltfl&auml;che, um eine Farbe f&uuml;r das <guilabel>Eingabefeld</guilabel> auszuw&auml;hlen. Diese Schaltfl&auml;che steht nicht zur Verf&uuml;gung, wenn das Kontrollk&auml;stchen <guilabel>Farben des Standardmotivs verwenden</guilabel> aktiviert ist.</para>
 		</listitem>
 		</varlistentry>	
 	</variablelist>
@@ -473,10 +531,11 @@
         <title>Makros</title>
         <para>
         Diese Registerkarte enth&auml;lt eine Liste von Makros, die mit <application>&applet;</application> verwendet werden k&ouml;nnen. Die Liste enth&auml;lt folgende Informationen:
+			</para>
           <itemizedlist>
              <listitem>
                 <para>
-                  Eine Liste mit regul&auml;ren UNIX-Ausdr&uuml;cken in der linken Spalte 
+                  Eine Liste mit regul&auml;ren UNIX-Ausdr&uuml;cken in der Spalte <guilabel>Muster</guilabel> 
                 </para>
                 <para>
                   Ein regul&auml;rer Ausdruck ist ein Zeichen- oder Zahlenmuster, das 
@@ -485,14 +544,16 @@
              </listitem>
              <listitem>
                 <para>
-                  Eine Liste der Makros in der rechten Spalte 
+                  Eine Liste mit Befehlen in der Spalte <guilabel>Befehl</guilabel>. 
                 </para>
                 <para>
-                  Ein Makro wird ausgef&uuml;hrt, wenn der entsprechende regul&auml;re Ausdruck mit dem Befehl &uuml;bereinstimmt, der in das <application>&applet;</application>-<guilabel>Eingabefeld</guilabel> eingegeben wurde. Makros sind Befehle, die Parameter aufnehmen k&ouml;nnen, die von dem regul&auml;ren Ausdruck analysiert wurden.
+                  Ein Befehl wird dann ausgef&uuml;hrt, wenn das dazugeh&ouml;rige Muster auf den Text im <guilabel>Eingabefeld</guilabel> passt. Makros sind Befehle, die Parameter aufnehmen k&ouml;nnen, die von dem regul&auml;ren Ausdruck analysiert wurden.
                 </para>
              </listitem>
-          </itemizedlist>Sie k&ouml;nnen regul&auml;re Ausdr&uuml;cke oder Makros beliebig hinzuf&uuml;gen oder bearbeiten. 
-        </para>
+          </itemizedlist>
+		<para>Um ein neues Makro hinzuzuf&uuml;gen, klicken Sie auf die Schaltfl&auml;che <guibutton>Makro hinzuf&uuml;gen</guibutton>. 
+		Um ein Makro zu l&ouml;schen, w&auml;hlen Sie es aus und klicken auf 	<guibutton>Makro l&ouml;schen</guibutton>. 
+     </para>
      </sect2>
   </sect1>
 </article>

@@ -1,10 +1,10 @@
-<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+﻿<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "1.104.0">
-  <!ENTITY manrevision "2.2">
-  <!ENTITY date "August 2002">
-  <!ENTITY applet "Command Line">
+  <!ENTITY appletversion "2.3.6">
+  <!ENTITY manrevision "2.6">
+  <!ENTITY date "September 2003">
+  <!ENTITY applet "Kommandorad">
 ]>
 <!-- 
       (Do not remove this comment block.)
@@ -21,17 +21,23 @@
   <articleinfo>
      <title>Manual f&ouml;r panelprogrammet &applet;, version&nbsp;&manrevision;</title>
      <copyright> 
+			<year>2002</year>
         <year>2003</year> 
         <holder>Sun Microsystems</holder> 
-     </copyright> 
+     </copyright>    
+      
      <copyright> 
         <year>1998</year> 
         <holder>Oliver Maruhn</holder> 
      </copyright>
+     <copyright> 
+        <year>1998</year> 
+        <holder>Dan Mueth</holder> 
+     </copyright>
 <!-- translators: uncomment this:
 
   <copyright>
-   <year>2002</year>
+   <year>2003</year>
    <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
   </copyright>
 
@@ -40,7 +46,7 @@
      not specified, the publisher/author is the same for all versions of the 
      document.  -->
      <publisher> 
-        <publishername> Dokumentationsprojekt f&ouml;r GNOME</publishername> 
+        <publishername> Dokumentationsprojekt f&ouml;r GNOME  </publishername> 
      </publisher> &legal;
 <!-- This file  contains link to license for the documentation (GNU FDL), and 
      other legal stuff such as "NO WARRANTY" statement. Please do not change 
@@ -51,7 +57,7 @@
           <surname>GNOME-dokumentationsteam</surname> 
           <affiliation> 
              <orgname>Sun Microsystems</orgname> 
-             <address> <email>gdocteam@sun.com</email> </address>
+             <address></address>
           </affiliation>
         </author>
         <author> 
@@ -60,6 +66,14 @@
           <affiliation> 
              <orgname>Dokumentationsprojekt f&ouml;r GNOME</orgname> 
              <address> <email>oliver@maruhn.com</email> </address>
+          </affiliation>
+        </author>
+        <author> 
+          <firstname>Dan </firstname> 
+          <surname> Mueth</surname> 
+          <affiliation> 
+             <orgname>Dokumentationsprojekt f&ouml;r GNOME</orgname> 
+             <address> <email>d-mueth@uchicago.edu</email> </address>
           </affiliation>
         </author>
       <!-- This is appropriate place for other contributors: translators,
@@ -81,19 +95,72 @@
           <date>&date;</date> 
           <revdescription> 
              <para role="author">
-                Sun Microsystems <email>gdocteam@sun.com</email>
+                Sun Microsystems
              </para>
              <para role="publisher">
                 Dokumentationsprojekt f&ouml;r GNOME
              </para>
           </revdescription>
         </revision>
+
+			<revision> 
+          <revnumber>Manual f&ouml;r panelprogrammet Kommandorad, V2.5</revnumber> 
+          <date>Augusti 2003</date> 
+          <revdescription> 
+             <para role="author">
+                Sun Microsystems
+             </para>
+             <para role="publisher">
+                Dokumentationsprojekt f&ouml;r GNOME
+             </para>
+          </revdescription>
+        </revision>
+			<revision> 
+          <revnumber>Manual f&ouml;r panelprogrammet Kommandorad, V2.4</revnumber> 
+          <date>Augusti 2003</date> 
+          <revdescription> 
+             <para role="author">
+                Sun Microsystems
+             </para>
+             <para role="publisher">
+                Dokumentationsprojekt f&ouml;r GNOME
+             </para>
+          </revdescription>
+        </revision>
+        
+			<revision> 
+          <revnumber>Manual f&ouml;r panelprogrammet Kommandorad, V2.3</revnumber> 
+          <date>Januari 2003</date> 
+          <revdescription> 
+             <para role="author">
+                Sun Microsystems
+             </para>
+             <para role="publisher">
+                Dokumentationsprojekt f&ouml;r GNOME
+             </para>
+          </revdescription>
+        </revision>
+
+        <revision> 
+          <revnumber>Manual f&ouml;r panelprogrammet Kommandorad, V2.2</revnumber> 
+          <date>Augusti 2002</date> 
+          <revdescription> 
+             <para role="author">
+                Sun Microsystems
+             </para>
+             <para role="publisher">
+                Dokumentationsprojekt f&ouml;r GNOME
+             </para>
+          </revdescription>
+        </revision>
+        
+         
         <revision> 
           <revnumber>Manual f&ouml;r panelprogrammet Kommandorad, version&nbsp;2.1</revnumber> 
           <date>Juli 2002</date> 
           <revdescription> 
              <para role="author">
-                Sun Microsystems <email>gdocteam@sun.com</email>
+                Sun Microsystems
              </para>
              <para role="publisher">
                 Dokumentationsprojekt f&ouml;r GNOME
@@ -105,7 +172,7 @@
           <date>Mars 2002</date> 
           <revdescription> 
              <para role="author">
-                Sun Microsystems <email>gdocteam@sun.com</email>
+                Sun Microsystems
              </para>
              <para role="publisher">
                 Dokumentationsprojekt f&ouml;r GNOME
@@ -134,7 +201,7 @@
      <releaseinfo> I den h&auml;r manualen beskrivs version &appletversion; av &applet;.
         </releaseinfo>
      <legalnotice> 
-        <title>Feedback</title>
+      <title>Feedback</title>
         <para>
           Om du vill rapportera ett fel eller ge f&ouml;rslag betr&auml;ffande panelprogrammet &applet; 
           eller den h&auml;r manualen, f&ouml;ljer du instruktionerna p&aring; 
@@ -172,8 +239,7 @@
         <para>Du l&auml;gger till <application>&applet;</application> p&aring; en panel genom att h&ouml;gerklicka p&aring; panelen och v&auml;lja <menuchoice> 
           <guimenu>L&auml;gg till p&aring; panelen</guimenu> 
           <guisubmenu>Verktyg</guisubmenu> 
-          <guimenuitem>&applet;</guimenuitem> 
-        </menuchoice>.
+          <guimenuitem>&applet;</guimenuitem></menuchoice>.
      </para>
      <para>
         I <application>&applet;</application> finns f&ouml;ljande interaktiva
@@ -227,9 +293,7 @@
                   Du kan k&ouml;ra kommandon direkt fr&aring;n historiklistan.
                   Vidare kan du g&aring; igenom historiklistans inneh&aring;ll i 
                   <guilabel>inmatningsf&auml;ltet</guilabel> och d&auml;rifr&aring;n k&ouml;ra ett
-                  kommando. Om du tar bort <application>&applet;</application> fr&aring;n en panel och sedan
-                  l&auml;gger till panelprogrammet p&aring; nytt i samma session, finns alla tidigare
-                  kommandon kvar. En lodr&auml;t rullningslist visas n&auml;r listan inneh&aring;ller fler &auml;n
+                  kommando. En lodr&auml;t rullningslist visas n&auml;r listan inneh&aring;ller fler &auml;n
                   20 kommandon.
                 </para>
              </listitem>
@@ -349,7 +413,7 @@
                   </entry>
                   <entry>
                      <para>
-                        Startar en GNOME-terminal. 
+                        Startar en terminal. 
                      </para>
                   </entry>
                 </row>
@@ -391,7 +455,7 @@
         </para>
         <para>
           Du kan anv&auml;nda <application>&applet;</application> f&ouml;r att k&ouml;ra skript,
-          k&ouml;rbara filer eller andra program i filsystemet. 
+          k&ouml;ra kommandon eller andra program i filsystemet. 
         </para>
      </sect2>
      <sect2 id="command-line-histlist"> 
@@ -432,7 +496,7 @@
         <guimenuitem>Inst&auml;llningar</guimenuitem>.
      </para>
      <para>
-        Dialogrutan 
+        Dialogf&ouml;nstret 
         <guilabel>Inst&auml;llningar</guilabel> inneh&aring;ller f&ouml;ljande
         flikar:
      </para>
@@ -457,59 +521,45 @@
 		<varlistentry>
 		<term><guilabel>Visa handtag</guilabel> </term>
 		<listitem>
-		<para>Markera det h&auml;r alternativet om du vill f&auml;sta ett handtag vid kanten av panelprogrammet. Anv&auml;nd
-		handtaget f&ouml;r att dra <application>&applet;</application> 
-		till &ouml;nskad plats p&aring; skrivbordet. </para>
-		<para>Standard: ej markerat.</para>
+		<para>Markera det h&auml;r alternativet om du vill f&auml;sta ett handtag vid kanten av panelprogrammet. Anv&auml;nd handtaget f&ouml;r att dra <application>&applet;</application> till &ouml;nskad plats p&aring; skrivbordet. </para>
 		</listitem>
 		</varlistentry>
 		<varlistentry>
-		<term><guilabel>Visa ram</guilabel> </term>
+<term><guilabel>Visa ram</guilabel> </term>
 		<listitem>
 		<para>Ange det h&auml;r alternativet om du vill visa en ram kring <application>&applet;</application>.</para>
-		<para>Standard: ej markerat.</para>
 		</listitem>
 		</varlistentry>
-		<varlistentry>
-		<term><guilabel>Anv&auml;nd historikbaserad automatisk ifyllnad</guilabel> </term>
+		<varlistentry id="autocompletion">
+<term><guilabel>Anv&auml;nd historikbaserad automatisk ifyllnad</guilabel> </term>
 		<listitem>
-		<para id="autocompletion">Ange det h&auml;r alternativet om du vill att 
-		<application>&applet;</application> ska j&auml;mf&ouml;ra inneh&aring;llet i 
-		<guilabel>inmatningsf&auml;ltet</guilabel> med historiklistan och fylla i 
-		matchande kommandon. </para>
-		<para>Standard: markerat.</para>
+		<para>Ange det h&auml;r alternativet om du vill att 
+<application>&applet;</application> ska j&auml;mf&ouml;ra inneh&aring;llet i 
+<guilabel>inmatningsf&auml;ltet</guilabel> med historiklistan och fylla i matchande kommandon. </para>
 		</listitem>
 		</varlistentry>
 		<varlistentry>
-		<term><guilabel>Panelprogramsbredd</guilabel> </term>
+		<term><guilabel>Bredd</guilabel> </term>
 		<listitem>
 		<para>Anv&auml;nd den h&auml;r rotationsrutan om du vill ange panelprogrammets bredd i bildpunkter.</para>
-		<para>Standard: 150 bildpunkter.</para>
 		</listitem>
 		</varlistentry>
 		<varlistentry>
-		<term><guilabel>Anv&auml;nd standardtemaf&auml;rger</guilabel> </term>
+<term><guilabel>Anv&auml;nd standardtemaf&auml;rger</guilabel> </term>
 		<listitem>
 		<para>Ange det h&auml;r alternativet om du vill anv&auml;nda f&auml;rgerna fr&aring;n GNOME:s standardschema.</para>
-		<para>Standard: markerat.</para>
 		</listitem>
 		</varlistentry>
 		<varlistentry>
-		<term><guilabel>F&ouml;rgrundsf&auml;rg f&ouml;r kommandorad</guilabel> </term>
+<term><guilabel>F&ouml;rgrundsf&auml;rg f&ouml;r kommandorad</guilabel> </term>
 		<listitem>
-		<para>Klicka p&aring; den h&auml;r knappen om du vill ange en ny f&auml;rg f&ouml;r 
-		kommandoradstexten. Den h&auml;r knappen &auml;r inte tillg&auml;nglig om kryssrutan <guilabel>Anv&auml;nd standardtemaf&auml;rger</guilabel>
-		&auml;r markerad.</para>
-		<para>Standard: vit.</para>
+		<para>Klicka p&aring; den h&auml;r knappen om du vill ange en f&auml;rg f&ouml;r  kommandoradstexten. Den h&auml;r knappen &auml;r inte tillg&auml;nglig om kryssrutan <guilabel>Anv&auml;nd standardtemaf&auml;rger</guilabel> &auml;r markerad.</para>
 		</listitem>
 		</varlistentry>
 		<varlistentry>
-		<term><guilabel>Bakgrundsf&auml;rg f&ouml;r kommandorad</guilabel> </term>
+<term><guilabel>Bakgrundsf&auml;rg f&ouml;r kommandorad</guilabel> </term>
 		<listitem>
-		<para>Klicka p&aring; den h&auml;r knappen om du vill ange en ny f&auml;rg f&ouml;r bakgrunden i 
-		<guilabel>inmatningsf&auml;ltet</guilabel>. Den h&auml;r knappen &auml;r inte tillg&auml;nglig om kryssrutan
-		<guilabel>Anv&auml;nd standardtemaf&auml;rger</guilabel> &auml;r markerad.</para>
-		<para>Standard: svart.</para>
+		<para>Klicka p&aring; den h&auml;r knappen om du vill ange en f&auml;rg f&ouml;r bakgrunden i  <guilabel>inmatningsf&auml;ltet</guilabel>. Den h&auml;r knappen &auml;r inte tillg&auml;nglig om kryssrutan <guilabel>Anv&auml;nd standardtemaf&auml;rger</guilabel> &auml;r markerad.</para>
 		</listitem>
 		</varlistentry>	
 	</variablelist>
@@ -521,10 +571,11 @@
         <para>
           Det h&auml;r fliken inneh&aring;ller en lista p&aring; makron som du kan anv&auml;nda i
           <application>&applet;</application>. Listan inneh&aring;ller f&ouml;ljande information:
+			</para>
           <itemizedlist>
              <listitem>
                 <para>
-                  En lista med regulj&auml;ra uttryck (UNIX) i v&auml;nsterkolumnen. 
+                  En lista med regulj&auml;ra UNIX-uttryck i <guilabel>M&ouml;nster</guilabel>-kolumnen. 
                 </para>
                 <para>
                   Ett regulj&auml;rt uttryck &auml;r ett m&ouml;nster av tecken eller siffror som
@@ -535,19 +586,20 @@
              </listitem>
              <listitem>
                 <para>
-                  En lista med makron i h&ouml;gerkolumnen. 
+                  En lista med kommandon i <guilabel>Kommando</guilabel>-kolumnen. 
                 </para>
                 <para>
-                  Ett makro utf&ouml;rs om dess motsvarande regulj&auml;ra uttryck
-                  matchar det kommando du skrev in i 
-                  <guilabel> inmatningsf&auml;ltet</guilabel> i panelprogrammet 
-                  <application>&applet;</application>. Makrona &auml;r kommandon som
+                  Ett kommando k&ouml;rs om motsvarande m&ouml;nster
+                  matchar den text du skriver i  
+                  <guilabel>inmatningsf&auml;ltet</guilabel>. Makrona &auml;r kommandon som
                   kan ta parametrar, tolkade av det regulj&auml;ra uttrycket.
                 </para>
              </listitem>
-          </itemizedlist> Du kan redigera valfritt regulj&auml;rt uttryck eller makro eller
-          l&auml;gga till fler. 
-        </para>
+          </itemizedlist>
+		<para>Om du vill l&auml;gga till ett nytt makro klickar du p&aring; knappen <guibutton>L&auml;gg till makro</guibutton>. 
+		Om du vill ta bort ett makro markerar du det och klickar sedan p&aring; knappen 
+		<guibutton>Ta bort makro</guibutton>. 
+     </para>
      </sect2>
   </sect1>
 </article>

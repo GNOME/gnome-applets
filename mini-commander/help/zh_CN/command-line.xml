@@ -1,9 +1,9 @@
-<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+﻿<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "1.104.0">
-  <!ENTITY manrevision "2.2">
-  <!ENTITY date "August 2002">
+  <!ENTITY appletversion "2.3.6">
+  <!ENTITY manrevision "2.6">
+  <!ENTITY date "September 2003">
   <!ENTITY applet "Command Line">
 ]>
 <!-- 
@@ -20,19 +20,24 @@
 <!-- appropriate code -->
   <articleinfo>
      <title>&applet; 小程序手册 V&manrevision;</title>
-     
-<copyright> 
-        <year>2002</year> 
+     <copyright> 
+			<year>2002</year>
+        <year>2003</year> 
         <holder>Sun Microsystems</holder> 
-     </copyright> 
+     </copyright>    
+      
      <copyright> 
         <year>1998</year> 
         <holder>Oliver Maruhn</holder> 
      </copyright>
+     <copyright> 
+        <year>1998</year> 
+        <holder>Dan Mueth</holder> 
+     </copyright>
 <!-- translators: uncomment this:
 
   <copyright>
-   <year>2002</year>
+   <year>2003</year>
    <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
   </copyright>
 
@@ -52,7 +57,7 @@
           <surname>GNOME Documentation Team</surname> 
           <affiliation> 
              <orgname>Sun Microsystems</orgname> 
-             <address> <email>gdocteam@sun.com</email> </address>
+             <address></address>
           </affiliation>
         </author>
         <author> 
@@ -61,6 +66,14 @@
           <affiliation> 
              <orgname>GNOME Documentation Project</orgname> 
              <address> <email>oliver@maruhn.com</email> </address>
+          </affiliation>
+        </author>
+        <author> 
+          <firstname>Dan </firstname> 
+          <surname> Mueth</surname> 
+          <affiliation> 
+             <orgname>GNOME Documentation Project</orgname> 
+             <address> <email>d-mueth@uchicago.edu</email> </address>
           </affiliation>
         </author>
       <!-- This is appropriate place for other contributors: translators,
@@ -82,19 +95,72 @@
           <date>&date;</date> 
           <revdescription> 
              <para role="author">
-                Sun Microsystems <email>gdocteam@sun.com</email>
+                Sun Microsystems
              </para>
              <para role="publisher">
                 GNOME Documentation Project
              </para>
           </revdescription>
         </revision>
+
+			<revision> 
+          <revnumber>命令行小程序手册 V2.5</revnumber> 
+          <date>2003 年 8 月</date> 
+          <revdescription> 
+             <para role="author">
+                Sun Microsystems
+             </para>
+             <para role="publisher">
+                GNOME Documentation Project
+             </para>
+          </revdescription>
+        </revision>
+			<revision> 
+          <revnumber>命令行小程序手册 V2.4</revnumber> 
+          <date>2003 年 4 月</date> 
+          <revdescription> 
+             <para role="author">
+                Sun Microsystems
+             </para>
+             <para role="publisher">
+                GNOME Documentation Project
+             </para>
+          </revdescription>
+        </revision>
+        
+			<revision> 
+          <revnumber>命令行小程序手册 V2.3</revnumber> 
+          <date>2003 年 1 月</date> 
+          <revdescription> 
+             <para role="author">
+                Sun Microsystems
+             </para>
+             <para role="publisher">
+                GNOME Documentation Project
+             </para>
+          </revdescription>
+        </revision>
+
         <revision> 
-          <revnumber>命令行小程序手册 V2.1</revnumber> 
+          <revnumber>命令行小程序手册 V2.2</revnumber> 
+          <date>2002 年 8 月</date> 
+          <revdescription> 
+             <para role="author">
+                Sun Microsystems
+             </para>
+             <para role="publisher">
+                GNOME Documentation Project
+             </para>
+          </revdescription>
+        </revision>
+        
+         
+        <revision> 
+          <revnumber>Command Line 小程序手册 V2.1</revnumber> 
           <date>2002 年 7 月</date> 
           <revdescription> 
              <para role="author">
-                Sun Microsystems <email>gdocteam@sun.com</email>
+                Sun Microsystems
              </para>
              <para role="publisher">
                 GNOME Documentation Project
@@ -102,11 +168,11 @@
           </revdescription>
         </revision>
         <revision> 
-          <revnumber>命令行小程序手册 V2.0</revnumber> 
+          <revnumber>Command Line 小程序手册 V2.0</revnumber> 
           <date>2002 年 3 月</date> 
           <revdescription> 
              <para role="author">
-                Sun Microsystems <email>gdocteam@sun.com</email>
+                Sun Microsystems
              </para>
              <para role="publisher">
                 GNOME Documentation Project
@@ -165,59 +231,59 @@
         </screenshot>
      </figure>
      <para><application>&applet;</application> 小程序提供了命令行，您可以在桌面上的任何面板中使用它。 </para>
-        <para>要将 <application>&applet;</application> 添加到面板，请右击该面板，然后选择<menuchoice><guimenu>"添加到面板"</guimenu><guisubmenu>"实用程序"</guisubmenu><guimenuitem>"&applet;"</guimenuitem></menuchoice>。
+        <para>要将 <application>&applet;</application> 添加到面板，请右击该面板，然后选择<menuchoice><guimenu>&ldquo;添加到面板&rdquo;</guimenu><guisubmenu>&ldquo;实用程序&rdquo;</guisubmenu><guimenuitem>&ldquo;&applet;&rdquo;</guimenuitem></menuchoice>。
      </para>
-     <para>        <application>&applet;</application> 包含以下交互式元素：  </para>
+     <para>        <application>&applet;</application> 包含以下交互式元素： </para>
         
         <variablelist>
           <varlistentry>
              <term>
-                <guilabel>输入字段</guilabel></term>
+                <guilabel>输入区</guilabel></term>
              <listitem>
-                <para>您可以在<guilabel>"输入字段"</guilabel>中输入命令、宏和程序。
+                <para>您可以在<guilabel>输入区</guilabel>中输入命令、宏和程序。
                 </para>
              </listitem>
           </varlistentry>
           <varlistentry>
              <term>
-                <guilabel>"浏览器"按钮</guilabel></term>
+                <guilabel>&ldquo;浏览器&rdquo;按钮</guilabel></term>
              <listitem>
-                <para>您可以使用<guibutton>"浏览器"按钮</guibutton>在文件系统中查找程序。这个<guibutton>"浏览器"按钮</guibutton>由一个实心圆圈图标来标识。
+                <para>您可以使用<guibutton>&ldquo;浏览器&rdquo;按钮</guibutton>在文件系统中查找程序。这个<guibutton>&ldquo;浏览器&rdquo;按钮</guibutton>由一个实心圆圈图标来标识。
                 </para>
              </listitem>
           </varlistentry>
           <varlistentry>
              <term>
-                <guibutton>"历史"按钮</guibutton></term>
+                <guibutton>&ldquo;历史&rdquo;按钮</guibutton></term>
              <listitem>
-                <para>您可以使用<guibutton>"历史"按钮</guibutton>来再次调用以前的命令。这个<guibutton>"历史"按钮</guibutton>由一个向下箭头图标来标识。
+                <para>您可以使用<guibutton>&ldquo;历史&rdquo;按钮</guibutton>来再次调用以前的命令。这个<guibutton>&ldquo;历史&rdquo;按钮</guibutton>由一个向下箭头图标来标识。
                 </para>
              </listitem>
           </varlistentry>
         </variablelist>
         
-        <para><application>&applet;</application> 提供以下功能：  </para>
+        <para><application>&applet;</application> 提供以下功能： </para>
         
         <variablelist>
           <varlistentry>
              <term>以前执行的命令的历史列表</term>
              <listitem>
                 <para>您可以直接执行历史列表中显示的命令。
-也可以通过<guilabel>"输入字段"</guilabel>浏览所有的历史列表内容，以便显示然后执行某条命令。如果从面板中删除 <application>&applet;</application>，稍后在同一会话中将其添加到任何面板中，历史列表将保留所有以前的命令。当历史列表中的命令超过 20 条，就会出现一个垂直滚动条。
+也可以通过<guilabel>输入区</guilabel>循环通过历史列表内容，以显示然后执行某条命令。当历史列表中的命令超过 20 条，就会出现一个垂直滚动条。
                 </para>
              </listitem>
           </varlistentry>
           <varlistentry>
              <term>基于历史的自动完成功能</term>
              <listitem>
-                <para><application> &applet;</application> 使用基于历史的自动完成功能来完成<guilabel>"输入字段"</guilabel>中的命令。该功能会将<guilabel>"输入字段"</guilabel>的内容与历史列表进行比较。如果 <application>&applet;</application> 找到匹配命令，那么小程序就会完成该命令。
+                <para><application> &applet;</application> 使用基于历史的自动完成功能来完成<guilabel>输入区</guilabel>中的命令。该功能会将<guilabel> 输入区</guilabel>的内容与历史列表进行比较。如果 <application>&applet;</application> 找到匹配命令，那么小程序就会完成该命令。
                 </para>
              </listitem>
           </varlistentry>
           <varlistentry>
              <term>用户可请求的命令完成功能</term>
              <listitem>
-                <para>该命令完成功能会将<guilabel>"输入字段"</guilabel>中的字符串与用户路径中的命令进行比较。
+                <para>该命令完成功能会将<guilabel>&ldquo;entry field&rdquo;</guilabel>中的字符串与用户路径中的命令进行比较。
 如果您不知道命令的确切字符顺序或拼写，该命令完成功能就很有用。在键入命令名称的前几个字母之后，按下<keycap>缩进</keycap>键。如果 <application>&applet;</application> 确认该字母序列是唯一时，它就会完成该命令名称。
                 </para>
              </listitem>
@@ -236,12 +302,12 @@
      <title>用法</title>
      
      <sect2 id="command-line-run">
-        <title>从输入字段运行命令</title>
-        <para>要从<guilabel>"输入字段"</guilabel>运行命令，请执行以下步骤：
+        <title>从输入区运行命令</title>
+        <para>要从<guilabel>输入区</guilabel>运行命令，请执行以下步骤：
         </para>
         <orderedlist>
           <listitem>
-             <para>在<guilabel>"输入字段"</guilabel>中键入命令。
+             <para>在<guilabel>输入区</guilabel>中键入命令。
              </para>
           </listitem>
           <listitem>
@@ -249,7 +315,7 @@
              </para>
           </listitem>
           <listitem>
-             <para>在<guilabel>"输入字段"</guilabel>中键入所有想要和该命令一起运行的命令选项。
+             <para>在<guilabel>输入区</guilabel>中键入所有想要和该命令一起运行的命令选项。
              </para>
           </listitem>
           <listitem>
@@ -257,12 +323,12 @@
              </para>
           </listitem>
         </orderedlist>
-        <para>如果在执行步骤 1 到步骤 3 期间选择了 <xref linkend="autocompletion"/> 选项，则 <application>&applet;</application> 会在历史列表中搜索匹配的命令。如果历史列表中有匹配的命令，<application>&applet;</application> 就会完成该命令。要接受该命令，请按下<keycap>回车</keycap>键。如果您不想接受该命令，可在<guilabel>"输入字段"</guilabel>中键入更多字符。
+        <para>如果在执行步骤 1 到步骤 3 期间选择了 <xref linkend="autocompletion"/> 选项，则 <application>&applet;</application> 会在历史列表中搜索匹配的命令。如果历史列表中有匹配的命令，<application>&applet;</application> 就会完成该命令。要接受该命令，请按下<keycap>回车</keycap>键。如果您不想接受该命令，可在<guilabel>&ldquo;输入字段&rdquo;</guilabel>中键入更多字符。
         </para>
      </sect2>
      <sect2 id="command-line-runmacro"> 
-        <title>从输入字段运行宏</title>
-        <para>要运行 <application>&applet;</application> <xref linkend="command-line-prefs-2"/> 列表中定义的宏，请在<guilabel>"输入字段"</guilabel>中输入宏，然后按<keycap>回车</keycap>键。        </para>
+        <title>从输入区运行宏</title>
+        <para>要运行 <application>&applet;</application> <xref linkend="command-line-prefs-2"/> 列表中定义的宏，请在<guilabel>&ldquo;输入字段&rdquo;</guilabel>中输入宏，然后按<keycap>回车</keycap>键。        </para>
         <para>
           <xref linkend="autocompletion"/> 函数也作用于宏。
         </para>
@@ -278,7 +344,7 @@
                      </para>
                   </entry>
                   <entry>
-                     <para>启动 GNOME 终端。
+                     <para>启动终端。
                      </para>
                   </entry>
                 </row>
@@ -310,20 +376,20 @@
      </sect2>
      <sect2 id="command-line-filesys"> 
         <title>从您的文件系统运行程序</title>
-        <para>单击<guibutton>"浏览器"按钮</guibutton>，显示文件系统，然后双击您想要运行的程序。
+        <para>单击<guibutton>&ldquo;浏览器&rdquo;按钮</guibutton>，显示文件系统，然后双击您想要运行的程序。
         </para>
-        <para>您可以使用 <application>&applet;</application> 来运行文件系统中的脚本、可执行文件或其它程序。
+        <para>您可以使用 <application>&applet;</application> 来运行文件系统中的脚本、可执行命令或其它程序。
         </para>
      </sect2>
      <sect2 id="command-line-histlist"><title>运行历史列表中的前一个命令、宏或程序</title>
         <para>您可以通过以下一种方式来运行历史列表中以前执行的命令、宏或程序。
           <itemizedlist>
              <listitem>
-                <para>单击<guibutton>"历史"</guibutton>按钮可以显示历史列表。单击一条历史列表项，可以运行您需要的命令、宏或程序。
+                <para>单击<guibutton>&ldquo;历史&rdquo;</guibutton>按钮可以显示历史列表。单击一条历史列表项，可以运行您需要的命令、宏或程序。
                 </para>
              </listitem>
              <listitem>
-                <para>单击<guilabel>"输入字段"</guilabel>，然后使用键盘的上下箭头来循环显示历史列表。当您想要的历史列表项显示在<guilabel>"输入字段"</guilabel>中，请按下<keycap>回车</keycap>键，从而运行特定的命令、宏或程序。
+                <para>单击<guilabel>输入区</guilabel>，然后使用键盘的上下箭头来循环显示历史列表。当您想要的历史列表项显示在<guilabel>输入区</guilabel>中，请按下<keycap>回车</keycap>键，从而运行特定的命令、宏或程序。
                 </para>
              </listitem>
           </itemizedlist>
@@ -333,9 +399,9 @@
 <!-- ============= Preferences ============================= -->
   <sect1 id="command-line-prefs-0"> 
      <title>首选项</title>
-     <para>要配置 <application>&applet;</application>，请右击交互式元素外的小程序区域，然后选择<guimenuitem>"首选项"</guimenuitem>。
+     <para>要配置 <application>&applet;</application>，请右击交互式元素外的小程序区域，然后选择<guimenuitem>&ldquo;首选项&rdquo;</guimenuitem>。
      </para>
-     <para><guilabel>"首选项"</guilabel>对话框包含以下选项卡式部分：
+     <para><guilabel>&ldquo;首选项&rdquo;</guilabel>对话框包含以下选项卡式部分：
      </para>
      <itemizedlist>
         <listitem>
@@ -359,49 +425,42 @@
 		<term><guilabel>显示手柄</guilabel> </term>
 		<listitem>
 		<para>选择此选项就会在小程序边缘附加一个手柄。您可以使用手柄将 <application>&applet;</application> 显示拖到桌面上的任何位置。</para>
-		<para>默认值：未选中。</para>
 		</listitem>
 		</varlistentry>
 		<varlistentry>
 		<term><guilabel>显示边框</guilabel> </term>
 		<listitem>
 		<para>选择此选项会在 <application>&applet;</application> 周围显示边框。</para>
-		<para>默认值：未选中。</para>
 		</listitem>
 		</varlistentry>
-		<varlistentry>
+		<varlistentry id="autocompletion">
 		<term><guilabel>启用基于历史的自动完成</guilabel> </term>
 		<listitem>
-		<para id="autocompletion">如果选择该选项，系统就会指示 <application>&applet;</application> 将<guilabel>"输入字段"</guilabel>和历史列表进行比较，并在存在匹配项时完成命令。</para>
-		<para>默认值：选中。</para>
+		<para>如果选择该选项，系统就会指示 <application>&applet;</application> 将<guilabel>&ldquo;输入区&rdquo;</guilabel>和历史列表进行比较，并在存在匹配项时完成命令。</para>
 		</listitem>
 		</varlistentry>
 		<varlistentry>
-		<term><guilabel>小程序宽度</guilabel> </term>
+		<term><guilabel>宽度</guilabel> </term>
 		<listitem>
 		<para>使用此旋转框可以指定小程序的宽度（以像素为单位）。</para>
-		<para>默认值：150 像素。</para>
 		</listitem>
 		</varlistentry>
 		<varlistentry>
 		<term><guilabel>使用默认主题颜色</guilabel> </term>
 		<listitem>
-		<para>选择此选项将使用默认的 GNOME 主题的颜色。</para>
-		<para>默认值：选中。</para>
+		<para>选择此选项将使用默认 GNOME 主题中的颜色。</para>
 		</listitem>
 		</varlistentry>
 		<varlistentry>
 		<term><guilabel>命令行前景</guilabel> </term>
 		<listitem>
-		<para>单击该按钮可以为命令行文本选择一种颜色。如果选中<guilabel>"使用默认主题颜色"</guilabel>复选框，该按钮将不可用。</para>
-		<para>默认值：白色。</para>
+		<para>单击该按钮可以为命令行文本选择一种颜色。如果选中<guilabel>&ldquo;使用默认主题颜色&rdquo;</guilabel>复选框，该按钮将不可用。</para>
 		</listitem>
 		</varlistentry>
 		<varlistentry>
 		<term><guilabel>命令行背景</guilabel> </term>
 		<listitem>
-		<para>单击该按钮可以为<guilabel>"输入字段"</guilabel>背景选择一种颜色。 如果选中<guilabel>"使用默认主题颜色"</guilabel>复选框，该按钮将不可用。</para>
-		<para>默认值：黑色。</para>
+		<para>单击该按钮可以为<guilabel>&ldquo;输入区&rdquo;</guilabel>背景选择一种颜色。 如果选中<guilabel>&ldquo;使用默认主题颜色&rdquo;</guilabel>复选框，该按钮将不可用。</para>
 		</listitem>
 		</varlistentry>	
 	</variablelist>
@@ -411,21 +470,26 @@
      <sect2 id="command-line-prefs-2"> 
         <title>宏</title>
         <para>此选项卡式部分包含一个宏命令的列表，您可以在 <application>&applet;</application> 中使用它们。本列表包含以下信息：
+			</para>
           <itemizedlist>
              <listitem>
-                <para>左列是一个 UNIX 正则表达式的列表。
+                <para><guilabel>&ldquo;模式&rdquo;</guilabel>列是一个 UNIX 正则表达式的列表。
                 </para>
                 <para>正则表达式是一种用于匹配字符串的字符或数字模式。有关如何构建正则表达式的详细信息，请参阅 <command>regex</command> 手册页。
                 </para>
              </listitem>
              <listitem>
-                <para>右列是一个宏列表。
+                <para>
+                 <guilabel>&ldquo;命令&rdquo;</guilabel>列是一个命令列表。
                 </para>
-                <para>如果有正则表达式成功匹配您键入 <application>&applet;</application><guilabel>"输入字段"</guilabel>中的命令，系统就会执行相应的宏。宏是可以采用由正则表达式解析的参数的命令。
+                <para>
+                  如果相应的模式成功匹配您在<guilabel>&ldquo;输入区&rdquo;</guilabel>键入的文本，则执行一条命令。宏是可以采用由正则表达式解析的参数的命令。
                 </para>
              </listitem>
-          </itemizedlist>您可以添加或修改任何正则表达式或宏。
-        </para>
+          </itemizedlist>
+		<para>要添加新的宏，请单击<guibutton>&ldquo;添加宏&rdquo;</guibutton>按钮。
+		要删除宏，请选择该宏，然后单击<guibutton>&ldquo;删除宏&rdquo;</guibutton>按钮。
+     </para>
      </sect2>
   </sect1>
 </article>

@@ -1,9 +1,9 @@
 <?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "1.104.0">
-  <!ENTITY manrevision "2.2">
-  <!ENTITY date "August 2002">
+  <!ENTITY appletversion "2.3.6">
+  <!ENTITY manrevision "2.6">
+  <!ENTITY date "September 2003">
   <!ENTITY applet "Command Line">
 ]>
 <!-- 
@@ -21,17 +21,23 @@
   <articleinfo>
  <title>&applet; 애플릿 설명서 V&manrevision;</title>
      <copyright> 
-        <year>2002</year> 
+			<year>2002</year>
+        <year>2003</year> 
         <holder>Sun Microsystems</holder> 
-     </copyright> 
+     </copyright>    
+      
      <copyright> 
         <year>1998</year> 
         <holder>Oliver Maruhn</holder> 
      </copyright>
+     <copyright> 
+        <year>1998</year> 
+        <holder>Dan Mueth</holder> 
+     </copyright>
 <!-- translators: uncomment this:
 
   <copyright>
-   <year>2002</year>
+   <year>2003</year>
    <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
   </copyright>
 
@@ -40,7 +46,7 @@
      not specified, the publisher/author is the same for all versions of the 
      document.  -->
      <publisher> 
-        <publishername> 그놈 문서 프로젝트</publishername> 
+        <publishername> 그놈 문서 프로젝트 </publishername> 
      </publisher> &legal;
 <!-- This file  contains link to license for the documentation (GNU FDL), and 
      other legal stuff such as "NO WARRANTY" statement. Please do not change 
@@ -51,7 +57,7 @@
           <surname>그놈 문서 팀</surname> 
           <affiliation> 
              <orgname>Sun Microsystems</orgname> 
-             <address> <email>gdocteam@sun.com</email> </address>
+             <address></address>
           </affiliation>
         </author>
         <author> 
@@ -60,6 +66,14 @@
           <affiliation> 
              <orgname>그놈 문서 프로젝트</orgname> 
              <address> <email>oliver@maruhn.com</email> </address>
+          </affiliation>
+        </author>
+        <author> 
+          <firstname>Dan </firstname> 
+          <surname> Mueth</surname> 
+          <affiliation> 
+             <orgname>그놈 문서 프로젝트</orgname> 
+             <address> <email>d-mueth@uchicago.edu</email> </address>
           </affiliation>
         </author>
       <!-- This is appropriate place for other contributors: translators,
@@ -82,19 +96,72 @@ V&manrevision;</revnumber>
           <date>&date;</date> 
           <revdescription> 
              <para role="author">
-                Sun Microsystems <email>gdocteam@sun.com</email>
+                Sun Microsystems
              </para>
              <para role="publisher">
                 그놈 문서 프로젝트
              </para>
           </revdescription>
         </revision>
+
+			<revision> 
+          <revnumber>명령줄 애플릿 설명서 V2.5</revnumber> 
+          <date>2003년 8월</date> 
+          <revdescription> 
+             <para role="author">
+                Sun Microsystems
+             </para>
+             <para role="publisher">
+                그놈 문서 프로젝트
+             </para>
+          </revdescription>
+        </revision>
+			<revision> 
+          <revnumber>명령줄 애플릿 설명서 V2.4</revnumber> 
+          <date>2003년 4월</date> 
+          <revdescription> 
+             <para role="author">
+                Sun Microsystems
+             </para>
+             <para role="publisher">
+                그놈 문서 프로젝트
+             </para>
+          </revdescription>
+        </revision>
+        
+			<revision> 
+          <revnumber>명령줄 애플릿 설명서 V2.3</revnumber> 
+          <date>2003년 1월</date> 
+          <revdescription> 
+             <para role="author">
+                Sun Microsystems
+             </para>
+             <para role="publisher">
+                그놈 문서 프로젝트
+             </para>
+          </revdescription>
+        </revision>
+
+        <revision> 
+          <revnumber>명령줄 애플릿 설명서 V2.2</revnumber> 
+          <date>2002년 8월</date> 
+          <revdescription> 
+             <para role="author">
+                Sun Microsystems
+             </para>
+             <para role="publisher">
+                그놈 문서 프로젝트
+             </para>
+          </revdescription>
+        </revision>
+        
+         
         <revision> 
           <revnumber>명령줄 애플릿 설명서 V2.1</revnumber> 
           <date>2002년 7월</date> 
           <revdescription> 
              <para role="author">
-                Sun Microsystems <email>gdocteam@sun.com</email>
+                Sun Microsystems
              </para>
              <para role="publisher">
                 그놈 문서 프로젝트
@@ -106,7 +173,7 @@ V&manrevision;</revnumber>
           <date>2002년 3월</date> 
           <revdescription> 
              <para role="author">
-                Sun Microsystems <email>gdocteam@sun.com</email>
+                Sun Microsystems
              </para>
              <para role="publisher">
                 그놈 문서 프로젝트
@@ -114,7 +181,7 @@ V&manrevision;</revnumber>
           </revdescription>
         </revision>
         <revision> 
-          <revnumber>작은 명령기 애플릿 설명서</revnumber> 
+          <revnumber>작은 명령 실행기 애플릿 설명서</revnumber> 
           <date>1998년</date> 
           <revdescription> 
              <para role="author">
@@ -134,8 +201,8 @@ V&manrevision;</revnumber>
      </revhistory>
      <releaseinfo> 이 설명서에서는 &applet;의 버전 &appletversion;에 대해 설명합니다.
         </releaseinfo>
-     <legalnotice>
-         <title>피드백</title>
+     <legalnotice> 
+        <title>피드백</title>
         <para>
            &applet; 애플릿 또는 이 설명서에 대한 버그를 
 보고하거나
@@ -170,8 +237,8 @@ V&manrevision;</revnumber>
         </screenshot>
      </figure>
      <para>
-        <application>&applet;</application> 애플릿은 데스크탑의 패널에서 사용할 수 있는 명령줄을 제공합니다. </para>
-        <para>패널에 <application>&applet;</application>을(를) 추가하려면 패널을 마우스 오른쪽 버튼으로 클릭한 다음 
+        <application>&applet;</application> 애플릿은 데스크탑의 모든 패널에서 사용할 수 있는 명령줄을 제공합니다. </para>
+        <para>패널에 <application>&applet;</application>을(를) 추가하려면 패널을 마우스 오른쪽 버튼으로 클릭하고 
         <menuchoice> 
           <guimenu>패널에 추가</guimenu> 
           <guisubmenu>유틸리티</guisubmenu> 
@@ -184,11 +251,11 @@ V&manrevision;</revnumber>
         <variablelist>
           <varlistentry>
              <term>
-                <guilabel>입력 필드</guilabel></term>
+                <guilabel>항목 필드</guilabel></term>
              <listitem>
                 <para>
                    
-                  <guilabel>입력 필드</guilabel>에는 명령, 매크로 및 프로그램을 입력할 수 있습니다.
+                  <guilabel>항목 필드</guilabel>에는 명령, 매크로 및 프로그램을 입력할 수 있습니다.
                 </para>
              </listitem>
           </varlistentry>
@@ -225,7 +292,7 @@ V&manrevision;</revnumber>
                 <para>
                   표시된 내역 목록에서 직접 명령을 실행할 수 있습니다.
                   
-                  <guilabel>입력 필드</guilabel>에 있는 내역 목록 내용을 순환하며 명령을 표시한 후 실행할 수도 있습니다. 패널에서 <application>&applet;</application>을(를) 제거한 후 나중에 이 애플릿을 해당 세션에서 임의의 패널에 다시 추가한 경우 내역 목록에는 이전 명령이 모두 유지됩니다. 내역 목록에 있는 명령이 20개를 초과하면 세로 스크롤 바가 나타납니다.
+                  <guilabel>항목 필드</guilabel>에 있는 내역 목록 내용을 순환하며 명령을 표시한 후 실행할 수도 있습니다. 내역 목록에 있는 명령이 20개를 초과하면 세로 스크롤 바가 나타납니다.
                 </para>
              </listitem>
           </varlistentry>
@@ -233,11 +300,11 @@ V&manrevision;</revnumber>
              <term>내역을 참고한 자동 완성 기능</term>
              <listitem>
                 <para>
-                  <application> &applet;</application>은(는) 내역을 참고한
+                  <application> &applet;</application>은(는) 내역 기반의
                    자동 완성 기능을 사용하여 
-                  <guilabel>입력 필드</guilabel>의 명령을 완성합니다. 
+                  <guilabel>항목 필드</guilabel>의 명령을 완성합니다. 
 이 기능은
-                   <guilabel>입력 필드</guilabel>의 내용을 내역 목록과 비교합니다. 
+                   <guilabel>항목 필드</guilabel>의 내용을 내역 목록과 비교합니다. 
 <application>&applet;</application>이(가) 일치하는 항목을 찾으면 명령을 완성합니다.
                 </para>
              </listitem>
@@ -249,9 +316,10 @@ V&manrevision;</revnumber>
                   
 
 	이 명령 완성 기능은
-                  <guilabel>입력 필드</guilabel>의 문자열을 사용자 경로의 명령과 비교합니다.
+                  <guilabel>항목 필드</guilabel>의 문자열과 사용자 경로의 명령을 비교합니다.
                   명령 완성 기능은 명령의 정확한 문자 시퀀스나 철자를 모르는 경우에 유용합니다. 
-명령 이름의 처음 몇 글자를 입력한 다음 <keycap>Tab</keycap> 키를 누릅니다. <application>&applet;</application>이(가) 해당 문자 시퀀스를 고유한 것으로 인식하면 명령 이름을 완성합니다.
+명령 이름의 처음 몇 글자를 입력하고
+                   <keycap>Tab</keycap> 키를 누릅니다. <application>&applet;</application>이(가) 해당 문자 시퀀스를 고유한 것으로 인식하면 명령 이름을 완성합니다.
                 </para>
              </listitem>
           </varlistentry>
@@ -267,19 +335,19 @@ V&manrevision;</revnumber>
   </sect1>
 <!-- ================ Usage =======-->
   <sect1 id="command-line-usage"> 
-     <title>사용</title>
+     <title>사용법</title>
      
      <sect2 id="command-line-run">
-        <title>입력 필드에서 명령을 실행하려면</title>
+        <title>항목 필드에서 명령을 실행하려면</title>
         <para>
           
-                  <guilabel>입력 필드</guilabel>에서 명령을 실행하려면 다음 단계를 수행합니다.
+                  <guilabel>항목 필드</guilabel>에서 명령을 실행하려면 다음 단계를 수행합니다.
         </para>
         <orderedlist>
           <listitem>
              <para>
                 
-                  <guilabel>입력 필드</guilabel>에 명령을 입력합니다. 
+                  <guilabel>항목 필드</guilabel>에 명령을 입력합니다. 
              </para>
           </listitem>
           <listitem>
@@ -292,7 +360,7 @@ V&manrevision;</revnumber>
           <listitem>
              <para>
                 해당 명령과 함께 실행할 옵션을
-                <guilabel>입력 필드</guilabel>에 입력합니다. 
+                <guilabel>항목 필드</guilabel>에 입력합니다. 
              </para>
           </listitem>
           <listitem>
@@ -306,17 +374,16 @@ V&manrevision;</revnumber>
           
           <xref linkend="autocompletion"/> 옵션이 선택되어 있으면 1단계에서 3단계까지
           <application>&applet;</application>은(는) 내역 목록에서 일치되는 내용을 검색합니다.
-          내역 목록에 일치되는 항목이 있으면 
-          <application>&applet;</application>이(가) 명령을 완성합니다. 명령을 그대로 사용하려면 
+          내역 목록에 일치되는 항목이 있으면 <application>&applet;</application>이(가) 명령을 완성합니다. 명령을 그대로 사용하려면 
           <keycap>Return</keycap> 키를 누릅니다. 해당 명령을 사용하지 않으려면
-              <guilabel>입력 필드</guilabel>에 문자를 추가로 입력합니다.
+              <guilabel>항목 필드</guilabel>에 문자를 추가로 입력합니다.
         </para>
      </sect2>
      <sect2 id="command-line-runmacro"> 
-        <title>입력 필드에서 매크로를 실행하려면</title>
+        <title>항목 필드에서 매크로를 실행하려면</title>
         <para>
           <application>&applet;</application> 
-          <xref linkend="command-line-prefs-2"/> 목록에 정의된 매크로를 실행하려면 <guilabel>입력 필드</guilabel>에 매크로를 입력한 다음 <keycap>Return</keycap> 키를 누릅니다.
+          <xref linkend="command-line-prefs-2"/> 목록에 정의된 매크로를 실행하려면 <guilabel>항목 필드</guilabel>에 매크로를 입력하고 <keycap>Return</keycap> 키를 누릅니다.
         </para>
         <para>
           <xref linkend="autocompletion"/> 기능을 매크로에 사용할 수도 있습니다. 
@@ -335,7 +402,7 @@ V&manrevision;</revnumber>
                   </entry>
                   <entry>
                      <para>
-                        그놈 터미널을 시작합니다. 
+                        터미널을 시작합니다. 
                      </para>
                   </entry>
                 </row>
@@ -371,11 +438,11 @@ V&manrevision;</revnumber>
         <title>파일 시스템에서 프로그램을 실행하려면</title>
         <para>
           
-           <guibutton>브라우저  버튼</guibutton>을 클릭하여 파일 시스템을 표시한 다음 
+           <guibutton>브라우저 버튼</guibutton>을 클릭하여 파일 시스템을 표시한 후 
            실행할 프로그램을 두 번 클릭합니다. 
         </para>
         <para>
-          <application>&applet;</application>을(를) 사용하면 파일 시스템에서 스크립트, 실행 가능 파일 또는 기타 프로그램을 실행할 수 있습니다. 
+          <application>&applet;</application>을(를) 사용하여 스크립트 또는 명령을 실행하거나 파일 시스템의 다른 프로그램을 실행합니다. 
         </para>
      </sect2>
      <sect2 id="command-line-histlist"> 
@@ -393,8 +460,8 @@ V&manrevision;</revnumber>
              <listitem>
                 <para>
                   
-                  <guilabel>입력 필드</guilabel>를 클릭한 다음 키보드에서 위 및 아래 화살표를 사용하여 내역 목록을 순환합니다. 원하는 내역 목록 항목이
-                  <guilabel>입력 필드</guilabel>에 표시되면 <keycap>Return</keycap> 키를 눌러 특정 명령, 매크로 또는 프로그램을 실행합니다.
+                  <guilabel>항목 필드</guilabel>를 클릭하고 키보드에서 위쪽 및 아래쪽 화살표를 사용하여 내역 목록을 순환합니다. 원하는 내역 목록 항목이
+                  <guilabel>항목 필드</guilabel>에 표시되면 <keycap>Return</keycap> 키를 눌러 특정 명령, 매크로 또는 프로그램을 실행합니다.
                 </para>
              </listitem>
           </itemizedlist>
@@ -405,7 +472,7 @@ V&manrevision;</revnumber>
   <sect1 id="command-line-prefs-0"> 
      <title>환경 설정</title>
      <para>
-        <application>&applet;</application>을(를) 구성하려면 대화형 요소 바깥쪽의 애플릿 영역을 마우스 오른쪽 버튼으로 클릭한 다음 <guimenuitem>환경 설정</guimenuitem>을 선택합니다.
+        <application>&applet;</application>을(를) 구성하려면 대화형 요소 바깥쪽의 애플릿 영역을 마우스 오른쪽 버튼으로 클릭하고 <guimenuitem>환경 설정</guimenuitem>을 선택합니다.
      </para>
      <para>
         
@@ -434,54 +501,50 @@ V&manrevision;</revnumber>
 		<listitem>
 		<para>애플릿 가장자리에 핸들을 첨부하려면 이 옵션을 선택합니다. 
 핸들을 사용하면 
-<application>&applet;</application> 창을 바탕 화면에서 원하는 위치로 끌어 올 수 있습니다. </para>
-		<para>기본값: 선택되지 않음</para>
+<application>&applet;</application> 표시 영역을 바탕 화면의 원하는 위치로 끌어 올 수 있습니다. </para>
 		</listitem>
 		</varlistentry>
 		<varlistentry>
 		<term><guilabel>프레임 표시</guilabel> </term>
 		<listitem>
-		<para><application>&applet;</application> 주위에 프레임을 표시하려면 이 옵션을 선택합니다.</para>
-		<para>기본값: 선택되지 않음</para>
+		<para><application>&applet;</application> 둘레에 프레임을 표시하려면 이 옵션을 선택합니다.</para>
 		</listitem>
 		</varlistentry>
-		<varlistentry>
-		<term><guilabel>내역을 참고하여 자동 완성</guilabel> </term>
-		<listitem>
-		<para id="autocompletion"> 
-		<application>&applet;</application>이(가) 
-		<guilabel>입력 필드</guilabel>와 내역 목록을 비교하여 일치되는 항목이 있는 경우에 명령을 완성하도록 하려면 이 옵션을 선택합니다. </para>
-		<para>기본값: 선택됨</para>
-		</listitem>
-		</varlistentry>
-		<varlistentry>
-		<term><guilabel>애플릿 너비</guilabel> </term>
-		<listitem>
-		<para>이 스핀 상자를 사용하여 애플릿 너비를 픽셀 단위로 지정합니다.</para>
-		<para>기본값: 150픽셀</para>
-		</listitem>
-		</varlistentry>
-		<varlistentry>
-		<term><guilabel>기본 테마 색상 사용</guilabel> </term>
-		<listitem>
-		<para>기본 그놈 테마의 색상을 사용하려면 이 옵션을 선택합니다.</para>
-		<para>기본값: 선택됨</para>
-		</listitem>
-		</varlistentry>
-		<varlistentry>
-		<term><guilabel>명령줄 전경색</guilabel> </term>
-		<listitem>
-		<para>명령줄 텍스트의 색상을 선택하려면 이 버튼을 클릭합니다. <guilabel>기본 테마 색상 사용</guilabel> 체크 상자가 선택된 경우에는 이 버튼을 사용할 수 없습니다.</para>
-		<para>기본값: 흰색</para>
-		</listitem>
-		</varlistentry>
-		<varlistentry>
-		<term><guilabel>명령줄 배경색</guilabel> </term>
+		<varlistentry id="autocompletion">
+		<term><guilabel>내역을 참고하여 자동 완성</guilabel></term>
 		<listitem>
 		<para> 
-		<guilabel>입력 필드</guilabel> 배경의 색상을 선택하려면 이 버튼을 클릭합니다.  
-		<guilabel>기본 테마 색상 사용</guilabel> 체크 상자가 선택된 경우에는 이 버튼을 사용할 수 없습니다.</para>
-		<para>기본값: 검정색</para>
+		<application>&applet;</application>에서 
+		<guilabel>항목 필드</guilabel>와 내역 목록을 비교하여 일치하는 항목이 있는 경우 명령이 자동 완성되게 하려면 이 옵션을 선택합니다. </para>
+		</listitem>
+		</varlistentry>
+		<varlistentry>
+		<term><guilabel>너비</guilabel> </term>
+		<listitem>
+		<para>이 스핀 상자를 사용하여 애플릿 너비를 픽셀 단위로 지정합니다.</para>
+		</listitem>
+		</varlistentry>
+		<varlistentry>
+		<term><guilabel>기본 테마 색상 사용
+</guilabel> </term>
+		<listitem>
+		<para>기본 그놈 테마의 색상을 사용하려면 이 옵션을 선택합니다.</para>
+		</listitem>
+		</varlistentry>
+		<varlistentry>
+		<term><guilabel>명령줄 전경색
+</guilabel> </term>
+		<listitem>
+		<para>명령줄 텍스트의 색상을 선택하려면 이 버튼을 클릭합니다. <guilabel>기본 테마 색상 사용</guilabel> 확인란이 선택된 경우에는 이 버튼을 사용할 수 없습니다.</para>
+		</listitem>
+		</varlistentry>
+		<varlistentry>
+		<term><guilabel>명령줄 배경색
+</guilabel> </term>
+		<listitem>
+		<para> 
+		<guilabel>항목 필드</guilabel> 배경의 색상을 선택하려면 이 버튼을 클릭합니다.  
+		<guilabel>기본 테마 색상 사용</guilabel> 확인란이 선택된 경우에는 이 버튼을 사용할 수 없습니다.</para>
 		</listitem>
 		</varlistentry>	
 	</variablelist>
@@ -493,10 +556,11 @@ V&manrevision;</revnumber>
         <para>
           이 탭 섹션에는
           <application>&applet;</application>에 사용할 수 있는 매크로의 목록이 들어 있습니다. 이 목록은 다음 정보로 구성되어 있습니다.
+			</para>
           <itemizedlist>
              <listitem>
                 <para>
-                  UNIX 정규식 목록(왼쪽 열) 
+                  <guilabel>패턴</guilabel> 열에 있는 UNIX 정규식 목록 
                 </para>
                 <para>
                   정규식은 문자열 일치에 사용되는 문자 또는 숫자의 패턴입니다. 정규식 구성 방법에 대한 자세한 내용은
@@ -505,17 +569,17 @@ V&manrevision;</revnumber>
              </listitem>
              <listitem>
                 <para>
-                 매크로 목록(오른쪽 열) 
+                  <guilabel>명령</guilabel> 열에 있는 명령 목록입니다. 
                 </para>
                 <para>
-                  
-	매크로는 해당 정규식이
-                  <application>&applet;</application> 
-                  <guilabel>입력 필드</guilabel>에 입력한 명령과 일치하는 경우에 실행됩니다. 매크로는 정규식에 의해 구문 분석된 매개변수를 사용할 수 있는 명령입니다.
+                  <guilabel>항목 필드</guilabel>에 입력한 텍스트와
+                  해당 패턴이 일치하는 경우 명령을 실행합니다. 매크로는 정규식에 의해 구문 분석된 매개변수를 사용할 수 있는 명령입니다.
                 </para>
              </listitem>
-          </itemizedlist> 모든 정규식 또는 매크로를 추가하거나 수정할 수 있습니다. 
-        </para>
+          </itemizedlist>
+		<para><guibutton>매크로 추가</guibutton> 버튼을 클릭하여 새 매크로를 추가합니다. 
+		<guibutton>매크로 삭제</guibutton> 버튼을 클릭하여 매크로를 삭제합니다. 
+     </para>
      </sect2>
   </sect1>
 </article>
