@@ -1,8 +1,8 @@
 #ifndef LINUX_PROC_H__
 #define LINUX_PROC_H__
 
-void GetLoad(int Maximum, int *usr, int *nice, int *sys, int *free);
-void GetMemory(int Maximum, int *used, int *shared, int *buffer, int *cached);
-void GetSwap (int Maximum, int *used, int *free);
+void GetLoad (int Maximum, int data [4]);
+void GetMemory (int Maximum, int data [4]);
+void GetSwap (int Maximum, int data [2]);
 
 #endif

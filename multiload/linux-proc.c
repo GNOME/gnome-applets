@@ -31,98 +31,99 @@ static unsigned needed_mem_flags =
 static unsigned needed_swap_flags = 0;
 
 void
-GetLoad (int Maximum, int *usr, int *nice, int *sys, int *free)
+GetLoad (int Maximum, int data [4])
 {
-	glibtop_cpu cpu;
-	int total;
-	
-	glibtop_get_cpu (&cpu);
-	
-	assert ((cpu.flags & needed_cpu_flags) == needed_cpu_flags);
-	
-	cp_time [0] = cpu.user;
-	cp_time [1] = cpu.nice;
-	cp_time [2] = cpu.sys;
-	cp_time [3] = cpu.idle;
-	
-	*usr  = cp_time [0] - last [0];
-	*nice = cp_time [1] - last [1];
-	*sys  = cp_time [2] - last [2];
-	*free = cp_time [3] - last [3];
+    static int init = 0;
+    int usr, nice, sys, free;
+    int total;
 
-	total = *usr + *nice + *sys + *free;
+    glibtop_cpu cpu;
 	
-	last [0] = cp_time [0];
-	last [1] = cp_time [1];
-	last [2] = cp_time [2];
-	last [3] = cp_time [3];
+    glibtop_get_cpu (&cpu);
 	
-	*usr  = rint (Maximum * (float)(*usr)  / total);
-	*nice = rint (Maximum * (float)(*nice) / total);
-	*sys  = rint (Maximum * (float)(*sys)  / total);
-	*free = rint (Maximum * (float)(*free) / total);
+    assert ((cpu.flags & needed_cpu_flags) == needed_cpu_flags);
+    
+    cp_time [0] = cpu.user;
+    cp_time [1] = cpu.nice;
+    cp_time [2] = cpu.sys;
+    cp_time [3] = cpu.idle;
 
-#ifdef DEBUG
-	fprintf (stderr, "CPU: %d - %d - (%d, %d, %d, %d)\n",
-		 Maximum, total, *usr, *sys, *nice, *free);
-#endif
+    if (!init) {
+	memcpy (last, cp_time, sizeof (last));
+	init = 1;
+    }
+
+    usr  = cp_time [0] - last [0];
+    nice = cp_time [1] - last [1];
+    sys  = cp_time [2] - last [2];
+    free = cp_time [3] - last [3];
+
+    total = usr + nice + sys + free;
+
+    last [0] = cp_time [0];
+    last [1] = cp_time [1];
+    last [2] = cp_time [2];
+    last [3] = cp_time [3];
+
+    if (!total) total = Maximum;
+
+    usr  = rint (Maximum * (float)(usr)  / total);
+    nice = rint (Maximum * (float)(nice) / total);
+    sys  = rint (Maximum * (float)(sys)  / total);
+    free = rint (Maximum * (float)(free) / total);
+
+    data [0] = usr;
+    data [1] = sys;
+    data [2] = nice;
+    data [3] = free;
 }
 
 void
-GetMemory (int Maximum, int *used, int *shared, int *buffer, int *cached)
+GetMemory (int Maximum, int data [4])
 {
-	glibtop_mem mem;
+    int used, shared, buffer, cached;
+
+    glibtop_mem mem;
 	
-	glibtop_get_mem (&mem);
+    glibtop_get_mem (&mem);
 	
-	assert ((mem.flags & needed_mem_flags) == needed_mem_flags);
+    assert ((mem.flags & needed_mem_flags) == needed_mem_flags);
 
-#ifdef DEBUG
-	fprintf (stderr, "Memory: %Lu - %Lu - %Lu - (%Lu, %Lu, %Lu)\n",
-		 mem.total, mem.free, mem.used, mem.shared, mem.buffer,
-		 mem.cached);
-#endif
+    mem.total = mem.free + mem.used + mem.shared +
+	mem.buffer + mem.cached;
 
-	mem.total = mem.free + mem.used + mem.shared +
-		mem.buffer + mem.cached;
+    used    = rint (Maximum * (float)mem.used   / mem.total);
+    shared  = rint (Maximum * (float)mem.shared / mem.total);
+    buffer  = rint (Maximum * (float)mem.buffer / mem.total);
+    cached  = rint (Maximum * (float)mem.cached / mem.total);
 
-	*used    = rint (Maximum * (float)mem.used   / mem.total);
-	*shared  = rint (Maximum * (float)mem.shared / mem.total);
-	*buffer  = rint (Maximum * (float)mem.buffer / mem.total);
-	*cached  = rint (Maximum * (float)mem.cached / mem.total);
-
-#ifdef DEBUG
-	fprintf (stderr, "MEM: %d - %Lu - (%d, %d, %d, %d)\n",
-		 Maximum, mem.total, *used, *shared, *buffer, *cached);
-#endif
+    data [0] = used;
+    data [1] = shared;
+    data [2] = buffer;
+    data [3] = cached;
 }
 
 void
-GetSwap (int Maximum, int *used, int *free)
+GetSwap (int Maximum, int data [2])
 {
-	glibtop_swap swap;
+    int used, free;
+
+    glibtop_swap swap;
 	
-	glibtop_get_swap (&swap);
+    glibtop_get_swap (&swap);
 	
-	assert ((swap.flags & needed_swap_flags) == needed_swap_flags);
+    assert ((swap.flags & needed_swap_flags) == needed_swap_flags);
 
-#ifdef DEBUG
-	fprintf (stderr, "Swap: %Lu - %Lu - %Lu\n",
-		 swap.total, swap.free, swap.used);
-#endif
+    swap.total = swap.free + swap.used;
 
-	swap.total = swap.free + swap.used;
+    if (swap.total == 0) {	/* Avoid division by zero */
+	used = free = 0;
+	return;
+    }
 
-	if (swap.total == 0) {	/* Avoid division by zero */
-		*used = *free = 0;
-		return;
-	}
+    used    = rint (Maximum * (float)swap.used / swap.total);
+    free    = rint (Maximum * (float)swap.free / swap.total);
 
-	*used    = rint (Maximum * (float)swap.used / swap.total);
-	*free    = rint (Maximum * (float)swap.free / swap.total);
-
-#ifdef DEBUG
-	fprintf (stderr, "SWAP: %d - %Lu - (%d, %d)\n",
-		 Maximum, swap.total, *used, *free);
-#endif
+    data [0] = used;
+    data [1] = free;
 }
