@@ -67,21 +67,40 @@ static void
 gkb_prop_map_close_clicked (GkbMapDialogInfo * mdi)
 {
   GkbKeymap *keymap;
+  gchar *name, *label, *command, *flag;
                                                                                 
   keymap = mdi->keymap;
                                                                                 
-  gkb_keymap_free_internals (keymap);
-                                                                                
-  keymap->name = g_strdup (gtk_entry_get_text (GTK_ENTRY (mdi->name_entry)));
-  keymap->label =
+  name = g_strdup (gtk_entry_get_text (GTK_ENTRY (mdi->name_entry)));
+  if (name) {
+  	 if  (keymap->name)
+  		g_free (keymap->name);
+  	keymap->name = name;
+  }
+  label =
     g_strdup (gtk_entry_get_text (GTK_ENTRY (mdi->label_entry)));
-  keymap->command =
+  if (label) {
+  	 if  (keymap->label)
+  		g_free (keymap->label);
+  	keymap->label = label;
+  }
+  command =
     g_strdup (gtk_entry_get_text (GTK_ENTRY (mdi->command_entry)));
-  keymap->flag =
+  if (command) {
+  	 if  (keymap->command)
+  		g_free (keymap->command);
+  	keymap->command = command;
+  }
+  flag =
     g_strdup (g_basename
               (gnome_icon_entry_get_filename
                (GNOME_ICON_ENTRY (mdi->flag_entry))));
-                                                                                
+  if (flag) {
+  	 if  (keymap->flag)
+  		g_free (keymap->flag);
+  	keymap->flag = flag;
+  }
+                                                                              
   mdi->pbi->selected_keymap = keymap;
                                                                                 
   gkb_prop_list_reload (mdi->pbi);

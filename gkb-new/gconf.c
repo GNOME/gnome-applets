@@ -28,6 +28,9 @@ gboolean gconf_applet_set_string (PanelApplet *parent,
 	gchar *full_key;
 	gboolean success;
 
+	if (!value)
+		return FALSE;
+		
 	if (client == NULL) {
 		client = gconf_client_get_default ();
 	}

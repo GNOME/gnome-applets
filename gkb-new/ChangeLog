@@ -1,3 +1,10 @@
+2003-03-10  Kevin Vandersloot <kfv101@psu.edu>
+
+	* gconf.c: check for NULL strings before setting gconf value
+	
+	* prop-map.c: don't free the whole keymap since we are only changing
+	a few items. SHould fix bug #107938
+
 2003-03-07  Mark McLoughlin  <mark@skynet.ie>
 
 	* gkb.c: (help_cb):
