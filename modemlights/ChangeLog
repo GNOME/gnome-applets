@@ -1,3 +1,11 @@
+Mon Oct 23 22:17:28 2000  John Ellis  <johne@bellatlantic.net>
+
+	* modemlights.c: The connect light now blinks until the
+	connection is established (rx or tx has a byte count other than 0), or
+	if ppp status returns error. This should/might work for ISDN too?
+	(get_modem_stats): Fixed, I did not see how this could possibly compile
+	cleanly when SIOCDEVPRIVATE is not defined.
+
 Mon Oct 23 16:15:45 2000  John Ellis  <johne@bellatlantic.net>
 
 	* modemlights.[ch], properties.c: Some const stuff, fix apply_cb

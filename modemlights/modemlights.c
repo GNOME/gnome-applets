@@ -44,6 +44,8 @@
 static unsigned long *isdn_stats = NULL;
 #endif
 
+#define BUTTON_BLINK_INTERVAL 700
+
 typedef enum {
 	COLOR_RX,
 	COLOR_RX_BG,
@@ -135,6 +137,10 @@ gchar *command_disconnect;
 gint ask_for_confirmation = TRUE;	/* do we ask for confirmation? */
 gint use_ISDN = FALSE;		/* do we use ISDN? */
 gint show_extra_info = FALSE;	/* display larger version with time/byte count */
+
+static gint button_blinking = FALSE;
+static gint button_blink_on = 0;
+static gint button_blink_id = -1;
 
 GtkWidget *applet;
 static GtkWidget *frame;
@@ -358,21 +364,20 @@ static int get_modem_stats(int *in, int *out)
 #ifdef SIOCDEVPRIVATE
 	if ((ioctl(ip_socket,SIOCDEVPRIVATE,(caddr_t)&ifreq) < 0))
 #else
-	*in = *out = 0;
-	return FALSE;
+	if (FALSE)
 #endif
 #endif /* FreeBSD or OpenBSD */
-			{
-				/* failure means ppp is not up */
-				*in = *out = 0;
-				return FALSE;
-			}
-		else
-			{
-				*in = stats.p.ppp_ibytes;
-				*out = stats.p.ppp_obytes;
-				return TRUE;
-			}
+		{
+		/* failure means ppp is not up */
+		*in = *out = 0;
+		return FALSE;
+		}
+	else
+		{
+		*in = stats.p.ppp_ibytes;
+		*out = stats.p.ppp_obytes;
+		return TRUE;
+		}
 }
 
 static int get_ISDN_stats(int *in, int *out)
@@ -776,6 +781,14 @@ static void draw_light(int lit, int x, int y, ColorType color)
 				 lights, 0, p, x, y, 9, 9);
 }
 
+static void update_button(gint lit)
+{
+	if (lit)
+		gtk_pixmap_set(GTK_PIXMAP(button_pixmap), button_on, button_mask);
+	else
+		gtk_pixmap_set(GTK_PIXMAP(button_pixmap), button_off, button_mask);
+}
+
 /* to minimize drawing (pixmap manipulations) we only draw a light if it has changed */
 static void update_lights(int rx, int tx, int cd, int rx_bytes, gint force)
 {
@@ -798,13 +811,10 @@ static void update_lights(int rx, int tx, int cd, int rx_bytes, gint force)
 		draw_light(tx, layout_current->tx_x, layout_current->tx_y, COLOR_TX);
 		redraw_required = TRUE;
 		}
-	if (cd != o_cd)
+	if (cd != o_cd && !button_blinking)
 		{
 		o_cd = cd;
-		if (cd)
-			gtk_pixmap_set(GTK_PIXMAP(button_pixmap), button_on, button_mask);
-		else
-			gtk_pixmap_set(GTK_PIXMAP(button_pixmap), button_off, button_mask);
+		update_button(cd);
 		}
 
 	/* we do the extra info redraws here too */
@@ -815,6 +825,48 @@ static void update_lights(int rx, int tx, int cd, int rx_bytes, gint force)
 
 	if (redraw_required) redraw_display();
 }
+
+static gint button_blink_cb(gpointer data)
+{
+	if (button_blink_on)
+		{
+		button_blink_on = FALSE;
+		}
+	else
+		{
+		button_blink_on = TRUE;
+		}
+	update_button(button_blink_on);
+
+	return TRUE;
+	data = NULL;
+}
+
+static void button_blink(gint blink, gint status)
+{
+	if (button_blinking == blink) return;
+
+	if (blink)
+		{
+		if (button_blink_id == -1)
+			{
+			button_blink_id = gtk_timeout_add(BUTTON_BLINK_INTERVAL, button_blink_cb, NULL);
+			}
+		}
+	else
+		{
+		if (button_blink_id != -1)
+			{
+			gtk_timeout_remove(button_blink_id);
+			button_blink_id = -1;
+			}
+		}
+
+	button_blinking = blink;
+	button_blink_on = status;
+	update_button(button_blink_on);
+}
+
 
 /*
  *-------------------------------------
@@ -842,12 +894,14 @@ static gint update_display(void)
 			last_time_was_connected = TRUE;
 			}
 
-		if (!get_stats (&rx, &tx))
+		if (!get_stats (&rx, &tx) || (rx == 0 && tx == 0))
 			{
 			old_rx = old_tx = 0;
+			button_blink(TRUE, TRUE);
 			}
 		else
 			{
+			button_blink(FALSE, TRUE);
 			if (rx > old_rx) light_rx = TRUE;
 			if (tx > old_tx) light_tx = TRUE;
 			}
@@ -892,6 +946,7 @@ static gint update_display(void)
 			load_count = 0;
 			draw_load(0,0);
 			}
+		button_blink(FALSE, FALSE);
 		update_lights(FALSE, FALSE, FALSE, -1, FALSE);
 		if (modem_was_on)
 			{
