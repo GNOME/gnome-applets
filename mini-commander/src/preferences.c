@@ -1008,7 +1008,7 @@ mc_setup_listeners (MCData *mc)
                                 NULL, NULL);
     g_free (key);
 
-    key = panel_applet_gconf_get_full_key (PANEL_APPLET (mc->applet), "auto_complete_history");
+    key = panel_applet_gconf_get_full_key (PANEL_APPLET (mc->applet), "autocomplete_history");
     mc->listeners [i++] = gconf_client_notify_add (
 				client, key,
 				(GConfClientNotifyFunc) auto_complete_history_changed,
