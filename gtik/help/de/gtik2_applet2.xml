@@ -1,0 +1,299 @@
+<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "1.104.0">
+  <!ENTITY manrevision "2.2">
+  <!ENTITY date "August 2002">
+  <!ENTITY applet "Stock Ticker">
+]>
+
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Mar 12, 2002
+  
+-->
+<!-- =============Document Header ============================= -->
+<article id="index" lang="de">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo>
+	 <title>&applet; Applet-Handbuch V&manrevision;</title>
+	 <copyright> 
+		<year>2003</year>  
+		<holder>Sun Microsystems</holder> 
+	 </copyright> 
+<!-- translators: uncomment this:
+
+  <copyright>
+   <year>2002</year>
+   <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+  </copyright>
+
+   -->
+	 <publisher> 
+		<publishername> GNOME-Dokumentationsprojekt </publishername> 
+	 </publisher> 
+
+&legal;
+
+	 <authorgroup>
+		<author> 
+		  <firstname>Sun</firstname> 
+		  <surname>GNOME-Dokumentationsteam</surname> 
+		  <affiliation> 
+			 <orgname>Sun Microsystems</orgname> 
+			 <address> <email>gdocteam@sun.com</email> </address>
+		  </affiliation>
+		</author>
+      <!-- This is appropriate place for other contributors: translators,
+           maintainers,  etc. Commented out by default.
+           <othercredit role="translator">
+	     <firstname>Latin</firstname> 
+	     <surname>Translator 1</surname> 
+	     <affiliation> 
+	       <orgname>Latin Translation Team</orgname> 
+	       <address> <email>translator@gnome.org</email> </address> 
+	     </affiliation>
+	     <contrib>Latin translation</contrib>
+           </othercredit>
+-->
+	 </authorgroup>
+
+	 <revhistory>
+		<revision> 
+		  <revnumber>&applet;-Applet-Handbuch V&manrevision;</revnumber> 
+		  <date>&date;</date> 
+		  <revdescription> 
+			 <para role="author">Sun GNOME-Dokumentationsteam
+				<email>gdocteam@sun.com</email></para>
+			 <para role="publisher">GNOME-Dokumentationsprojekt</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>B&ouml;rsenticker-Applet-Handbuch Version 2.1</revnumber> 
+		  <date>Juli 2002</date> 
+		  <revdescription> 
+			 <para role="author">Sun GNOME-Dokumentationsteam
+				<email>gdocteam@sun.com</email></para>
+			 <para role="publisher">GNOME-Dokumentationsprojekt</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>B&ouml;rsenticker-Applet-Handbuch Version 2.0</revnumber> 
+		  <date>Mai 2002</date> 
+		  <revdescription> 
+			 <para role="author">Sun GNOME-Dokumentationsteam
+				<email>gdocteam@sun.com</email></para>
+			 <para role="publisher">GNOME-Dokumentationsprojekt</para>
+		  </revdescription>
+		</revision>
+	 </revhistory>
+	 <releaseinfo>In diesem Handbuch wird Version &appletversion; von &applet; beschrieben.
+		</releaseinfo>
+	 <legalnotice> 
+		<title>Feedback</title>
+		<para> Wenn Sie einen Programmfehler melden m&ouml;chten oder Verbesserungsvorschl&auml;ge zum &applet;-Applet oder diesem Handbuch haben, befolgen Sie die Anweisungen auf der <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>. </para>
+		
+	 </legalnotice>
+  </articleinfo>
+  <indexterm> 
+	 <primary>B&ouml;rsenticker</primary> 
+  </indexterm> 
+    <indexterm> 
+	 <primary>Ticker, B&ouml;rse</primary> 
+  </indexterm> 
+<!-- ============= Document Body ============================= -->
+
+<sect1 id="gtik-introduction">
+<title>Einf&uuml;hrung</title>
+	 <!-- ==== Figure ============================================= -->
+	 <figure id="stockticker-fig"> 
+		<title>&applet;-Applet</title>
+		<screenshot>
+		  <mediaobject>
+			 <imageobject><imagedata fileref="figures/gtik_applet.png"  format="PNG"/> 
+			 </imageobject>
+			 <textobject>
+				<phrase>Zeigt das B&ouml;rsenticker-Applet an. Enth&auml;lt den Bildlaufanzeigebereich sowie die Schaltfl&auml;chen "Weiter" und "Zur&uuml;ck"</phrase>
+			 </textobject>
+		  </mediaobject>
+		</screenshot>
+	 </figure>
+    	 <!-- ==== End of Figure ======================================= -->
+<para>Das <application>&applet;</application>-Applet l&auml;dt aktuelle Aktienkurse aus dem Internet und zeigt die Kurse in einem Fenster mit Bildlaufleiste im Applet an. Die Aktieninformationen werden von Yahoo! Finanzen heruntergeladen. </para>
+<para>Um <application>&applet;</application> zu einem Panel hinzuzuf&uuml;gen, klicken Sie mit der rechten Maustaste auf das Panel, und w&auml;hlen Sie anschlie&szlig;end <menuchoice>
+<guimenu>Zum Panel hinzuf&uuml;gen</guimenu> 
+<guisubmenu>Zubeh&ouml;r</guisubmenu> 
+<guimenuitem>B&ouml;rsenticker</guimenuitem>
+</menuchoice>.</para>
+<note id="proxies-note-1">
+<para>Wenn sich Ihr Computer hinter einer Firewall befindet, m&uuml;ssen Sie einen Proxy-Server verwenden, damit <application>&applet;</application> erfolgreich ausgef&uuml;hrt werden kann. 
+Weitere Informationen zum Einrichten eines Proxy-Servers finden Sie unter <xref linkend="gtik-set-proxy"/> .</para>
+</note>
+<para><application>&applet;</application> zeigt die folgenden Informationen f&uuml;r jedes Aktiensymbol, das in den Applet-Einstellungen angegeben ist, an:</para>
+<itemizedlist>
+<listitem><para>Das ein Unternehmen repr&auml;sentierendes Aktiensymbol</para></listitem>
+<listitem><para>Den aktuellen Kurs</para></listitem>
+<listitem><para>Einen Pfeil, der einen steigenden oder fallenden Kurs anzeigt</para></listitem>
+<listitem><para>Die H&ouml;he des Anstiegs oder R&uuml;ckgangs des Kurses</para></listitem>
+<listitem><para>Der Prozentsatz des Anstiegs oder R&uuml;ckgangs des Kurses</para></listitem>
+</itemizedlist>
+</sect1>
+
+<sect1 id="gtik-usage">
+<title>Verwendung</title>
+
+<sect2 id="gtik-move-forward-back">
+<title>Vor- oder Zur&uuml;ckbl&auml;ttern in der B&ouml;rsenanzeige</title>
+<para>Zum Vor- oder Zur&uuml;ckbl&auml;ttern verwenden Sie die Pfeilschaltfl&auml;chen, die sich rechts und links neben der Appletanzeige befinden. </para>
+</sect2>
+
+<sect2 id="gtik-add-stocks">
+<title>Hinzuf&uuml;gen von Aktienkursen zum Applet</title>
+<para>Unter <xref linkend="gtik-settings-symbols"/> finden Sie weitere Informationen zum Hinzuf&uuml;gen von Aktienkursen zur Appletanzeige. </para>
+</sect2>
+
+<sect2 id="gtik-refresh">
+<title>Aktualisieren der Anzeige</title>
+<para>Die Aktieninformationen werden von <application>&applet;</application> automatisch in der H&auml;ufigkeit aktualisiert, die in den Applet-Einstellungen angegeben ist. Unter <xref linkend="gtik-settings-behavior"/> finden Sie weitere Informationen zu den Applet-Einstellungen. Um die im Applet angezeigten Informationen sofort zu aktualisieren, klicken Sie mit der rechten Maustaste auf das Applet, und w&auml;hlen Sie anschlie&szlig;end <guimenuitem>Aktualisieren</guimenuitem>. </para>
+</sect2>
+
+</sect1>
+
+<sect1 id="gtik-settings">
+<title>Einstellungen</title>
+
+<sect2 id="gtik-set-proxy">
+<title>Einstellen eines Proxy-Servers</title>
+<para>Wenn sich Ihr Computer hinter einer Firewall befindet, m&uuml;ssen Sie einen Proxy-Server verwenden, damit <application>&applet;</application> erfolgreich ausgef&uuml;hrt werden kann. 
+Um GNOME zur Verwendung eines Proxy-Servers zu konfigurieren, w&auml;hlen Sie <menuchoice>
+<guimenu>Anwendungen</guimenu>
+<guisubmenu>Desktop-Einstellungen</guisubmenu> 
+<guimenuitem>Netzwerk-Proxy-Server</guimenuitem>
+</menuchoice>.</para>
+</sect2>
+
+<sect2 id="gtik-configure">
+<title>Konfigurieren von &applet;</title>
+<para>Um <application>&applet;</application> zu konfigurieren, klicken Sie mit der rechten Maustaste auf das Applet, und w&auml;hlen Sie dann <guimenu>Einstellungen</guimenu>. 
+Das Dialogfeld <guilabel>B&ouml;rsenticker-Einstellungen</guilabel> enth&auml;lt die folgenden Registerkarten:</para>
+<itemizedlist>
+<listitem><para><xref linkend="gtik-settings-symbols"/></para></listitem>
+<listitem><para><xref linkend="gtik-settings-behavior"/></para></listitem>
+<listitem><para><xref linkend="gtik-settings-appearance"/></para></listitem>
+</itemizedlist>
+
+<sect3 id="gtik-settings-symbols">
+<title>Symbole</title>
+<para>&Uuml;ber die Registerkarte <guilabel>Symbole</guilabel> k&ouml;nnen Sie der Appletanzeige Aktienkurse hinzuf&uuml;gen oder diese daraus entfernen.</para>
+<para>Um dem Applet einen Aktienkurs hinzuzuf&uuml;gen, gehen Sie folgenderma&szlig;en vor:</para>
+<orderedlist>
+<listitem><para>Stellen Sie das Aktiensymbol f&uuml;r das gew&uuml;nschte Unternehmen fest. </para></listitem>
+<listitem><para>Geben Sie das Aktiensymbol f&uuml;r das Unternehmen in das Textfeld <guilabel>Neues Symbol</guilabel> ein.</para></listitem>
+<listitem><para>Klicken Sie auf <guibutton>Hinzuf&uuml;gen</guibutton>, um das Symbol der Liste der anzuzeigenden Aktienkurse hinzuzuf&uuml;gen.</para></listitem>
+<listitem><para>Klicken Sie auf <guibutton>OK</guibutton>, um die &Auml;nderung zu speichern, und schlie&szlig;en Sie das Dialogfeld.</para></listitem>
+</orderedlist>
+
+<para>Zum Entfernen eines Aktienkurses aus dem Applet gehen Sie folgenderma&szlig;en vor:</para>
+<orderedlist>
+<listitem><para>W&auml;hlen Sie das Aktiensymbol f&uuml;r das betreffende Unternehmen aus.</para></listitem>
+<listitem><para>Klicken Sie auf <guibutton>Ausgew&auml;hlte entfernen</guibutton>, um das Symbol aus der Liste der anzuzeigenden Aktienkurse zu entfernen.</para></listitem>
+<listitem><para>Klicken Sie auf <guibutton>OK</guibutton>, um die &Auml;nderung zu speichern, und schlie&szlig;en Sie das Dialogfeld.</para></listitem>
+</orderedlist>
+
+</sect3>
+
+<sect3 id="gtik-settings-behavior">
+
+<title>Verhalten</title>
+<variablelist>
+<varlistentry>
+<term><guilabel>Zeit zwischen Aktualisierungen in Minuten</guilabel> </term>
+<listitem>
+<para>Mit diesem Drehfeld k&ouml;nnen Sie die H&auml;ufigkeit erh&ouml;hen oder verringern, in der das Applet die neuesten B&ouml;rsenkurse aus dem Internet herunterl&auml;dt. </para>
+<para>Standard:  5 Minuten</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><guilabel>Bildlaufschaltfl&auml;chen aktivieren</guilabel> </term>
+<listitem>
+<para>W&auml;hlen Sie diese Option, um Pfeilschaltfl&auml;chen zum Vor- und Zur&uuml;ckbl&auml;ttern im Appletfenster anzuzeigen. </para>
+<para>Standard: Aktiviert</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+
+<sect3 id="gtik-settings-appearance">
+<title>Erscheinungsbild</title>
+<variablelist>
+
+<varlistentry>
+<term><guilabel>Nur Symbol und Preis anzeigen</guilabel> </term>
+<listitem>
+<para>W&auml;hlen Sie diese Option, wenn nur das Unternehmenssymbol und der aktuelle Aktienkurs im Applet angezeigt werden sollen.</para>
+<para>Standard:  Nicht aktiviert</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><guilabel>Von links nach rechts rollen</guilabel> </term>
+<listitem>
+<para>Mit dieser Option k&ouml;nnen Sie die Richtung umkehren, in der das Applet weiterbl&auml;ttert. Wenn diese Option ausgew&auml;hlt ist, wird von links nach rechts anstatt von rechts nach links gebl&auml;ttert. </para>
+<para>Standard:  Nicht aktiviert</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><guilabel>+ Farbe</guilabel> </term>
+<listitem>
+<para>&Uuml;ber diese Schaltfl&auml;che k&ouml;nnen Sie eine Farbe f&uuml;r die Anzeige von Aktienkursen ausw&auml;hlen, die seit der letzten Notierung gestiegen sind.  Klicken Sie zum Aufrufen einer Farbauswahl auf die Schaltfl&auml;che "Farbe". Mit dem Farbkreis oder den Schiebern im Dialogfeld "Farbe" k&ouml;nnen Sie eine Farbe ausw&auml;hlen. </para>
+<para>Standard:  Gr&uuml;n</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><guilabel>- Farbe</guilabel> </term>
+<listitem>
+<para>&Uuml;ber diese Schaltfl&auml;che k&ouml;nnen Sie eine Farbe f&uuml;r die Anzeige von Aktienkursen ausw&auml;hlen, die seit der letzten Notierung gefallen sind.  </para>
+<para>Standard:  Rot</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><guilabel>Unver&auml;nderte Farbe</guilabel> </term>
+<listitem>
+<para>&Uuml;ber diese Schaltfl&auml;che k&ouml;nnen Sie eine Farbe f&uuml;r die Anzeige von Aktienkursen ausw&auml;hlen, die seit der letzten Notierung unver&auml;ndert sind.  </para>
+<para>Standard: Schwarz</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><guilabel>Hintergrundfarbe</guilabel> </term>
+<listitem>
+<para>Klicken Sie auf diese Schaltfl&auml;che, um eine Hintergrundfarbe f&uuml;r den Anzeigebereich des Applets auszuw&auml;hlen. </para>
+<para>Standard: Weiss</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><guilabel>Aktiensymbol</guilabel> </term>
+<listitem>
+<para>&Uuml;ber diese Schaltfl&auml;che w&auml;hlen Sie die Schriftart aus, in der das Aktiensymbol und der aktuelle Preis dargestellt werden. </para>
+<para>Standard:  Keine Vorgabe.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><guilabel>Aktien&auml;nderung</guilabel> </term>
+<listitem>
+<para>&Uuml;ber diese Schaltfl&auml;che w&auml;hlen Sie die Schriftart aus, in der die &Auml;nderung des Aktienkurses dargestellt wird. </para>
+<para>Standard:  Keine Vorgabe.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+
+</sect2>
+
+</sect1>
+
+</article>

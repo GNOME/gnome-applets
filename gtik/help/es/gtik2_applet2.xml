@@ -1,0 +1,280 @@
+<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "1.104.0">
+  <!ENTITY manrevision "2.2">
+  <!ENTITY date "Agosto 2002">
+  <!ENTITY applet "Marcador de cotizaciones">
+]>
+
+<!--
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Mar 12, 2002
+
+-->
+<!-- =============Document Header ============================= -->
+<article id="index" lang="es">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo>
+	 <title>Manual del aplique &applet; V&manrevision;</title>
+	 <copyright>
+		<year>2003</year>
+
+		<holder>Sun Microsystems</holder>
+	 </copyright>
+<!-- translators: uncomment this:
+
+  <copyright>
+   <year>2002</year>
+   <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+  </copyright>
+
+   -->
+	 <publisher>
+		<publishername> Proyecto de documentaci&oacute;n de GNOME </publishername>
+	 </publisher>
+
+&legal;
+
+	 <authorgroup>
+		<author>
+		  <firstname>Equipo de documentaci&oacute;n de</firstname>
+		  <surname>Sun GNOME</surname>
+		  <affiliation>
+			 <orgname>Sun Microsystems</orgname>
+			 <address> <email>gdocteam@sun.com</email> </address>
+		  </affiliation>
+		</author>
+      <!-- This is appropriate place for other contributors: translators,
+           maintainers,  etc. Commented out by default.
+           <othercredit role="translator">
+	     <firstname>Latin</firstname>
+	     <surname>Translator 1</surname>
+	     <affiliation>
+	       <orgname>Latin Translation Team</orgname>
+	       <address> <email>translator@gnome.org</email> </address>
+	     </affiliation>
+	     <contrib>Latin translation</contrib>
+           </othercredit>
+-->
+	 </authorgroup>
+
+	 <revhistory>
+		<revision>
+		  <revnumber>&applet; Manual del aplique V&manrevision;</revnumber>
+		  <date>&date;</date>
+		  <revdescription>
+			 <para role="author">Equipo de documentaci&oacute;n de Sun GNOME				<email>gdocteam@sun.com</email></para>
+			 <para role="publisher">Proyecto de documentaci&oacute;n de GNOME</para>
+		  </revdescription>
+		</revision>
+		<revision>
+		  <revnumber>Manual del aplique Marcador de cotizaciones V2.1</revnumber>
+		  <date>Julio 2002</date>
+		  <revdescription>
+			 <para role="author">Equipo de documentaci&oacute;n de Sun GNOME				<email>gdocteam@sun.com</email></para>
+			 <para role="publisher">Proyecto de documentaci&oacute;n de GNOME</para>
+		  </revdescription>
+		</revision>
+		<revision>
+		  <revnumber>Manual del aplique Marcador de cotizaciones V2.0</revnumber>
+		  <date>Mayo 2002</date>
+		  <revdescription>
+			 <para role="author">Equipo de documentaci&oacute;n de Sun GNOME				<email>gdocteam@sun.com</email></para>
+			 <para role="publisher">Proyecto de documentaci&oacute;n de GNOME</para>
+		  </revdescription>
+		</revision>
+	 </revhistory>
+	 <releaseinfo> Este manual describe la versi&oacute;n &appletversion; de &applet;.
+		</releaseinfo>
+	 <legalnotice>
+		<title>Comentarios</title>
+		<para> Para informar de un defecto o hacer una sugerencia sobre el aplique &applet; o el presente manual, siga las indicaciones que aparecen en la
+		  <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>. </para>
+
+	 </legalnotice>
+  </articleinfo>
+  <indexterm>
+	 <primary>Marcador de cotizaciones</primary>
+  </indexterm>
+    <indexterm>
+	 <primary>marcador, cotizaciones</primary>
+  </indexterm>
+<!-- ============= Document Body ============================= -->
+
+<sect1 id="gtik-introduction"><title>Introducci&oacute;n</title>
+	 <!-- ==== Figure ============================================= -->
+	 <figure id="stockticker-fig">
+		<title>Aplique de &applet;</title>
+		<screenshot>
+		  <mediaobject>
+			 <imageobject><imagedata fileref="figures/gtik_applet.png"  format="PNG"/>
+			 </imageobject>
+			 <textobject>
+				<phrase>Muestra el aplique Marcador de cotizaciones. Contiene un &aacute;rea de visualizaci&oacute;n desplazable y botones de avanzar y retroceder.</phrase>
+			 </textobject>
+		  </mediaobject>
+		</screenshot>
+	 </figure>
+    	 <!-- ==== End of Figure ======================================= -->
+<para>El aplique <application>&applet;</application> descarga cotizaciones de bolsa de Internet y muestra los valores en una cinta continua del aplique. El aplique descarga la informaci&oacute;n de las acciones de Yahoo! Finanzas. </para>
+<para>Para a&ntilde;adir <application>&applet;</application> a un panel, haga clic con el bot&oacute;n derecho del rat&oacute;n en el panel y luego seleccione <menuchoice>
+	<guimenu>A&ntilde;adir al panel</guimenu>
+	<guisubmenu>Accesorios</guisubmenu>
+	<guimenuitem>Marcador de cotizaciones</guimenuitem>
+	</menuchoice>.</para>
+<note id="proxies-note-1">
+<para>Si su sistema est&aacute; situado detr&aacute;s de un cortafuegos, es necesario usar un servidor proxy para ejecutar <application>&applet;</application> satisfactoriamente.
+Para obtener m&aacute;s informaci&oacute;n sobre c&oacute;mo especificar un servidor proxy, consulte <xref linkend="gtik-set-proxy"/>.</para>
+</note>
+<para><application>&applet;</application> muestra la informaci&oacute;n siguiente en cada s&iacute;mbolo de la acci&oacute;n definido en las preferencias del aplique:</para>
+<itemizedlist>
+<listitem><para>El s&iacute;mbolo de la acci&oacute;n que representa a la empresa.</para></listitem>
+<listitem><para>La cotizaci&oacute;n actual.</para></listitem>
+<listitem><para>Una flecha para indicar una subida o bajada en la cotizaci&oacute;n.</para></listitem>
+<listitem><para>La cantidad de la subida o bajada de la cotizaci&oacute;n.</para></listitem>
+<listitem><para>El porcentaje de subida o bajada de la cotizaci&oacute;n.</para></listitem>
+</itemizedlist>
+</sect1>
+
+<sect1 id="gtik-usage">
+	<title>Uso</title>
+
+<sect2 id="gtik-move-forward-back"><title>Moverse hacia adelante o hacia atr&aacute;s en la cinta de visualizaci&oacute;n de cotizaciones</title>
+<para>Para moverse hacia adelante o hacia atr&aacute;s en la cinta continua, use los botones de flecha situados a derecha e izquierda del &aacute;rea de visualizaci&oacute;n del aplique. </para>
+</sect2>
+
+<sect2 id="gtik-add-stocks">
+<title>Agregar cotizaciones de empresas al aplique</title>
+<para>Consulte <xref linkend="gtik-settings-symbols"/> para obtener informaci&oacute;n sobre c&oacute;mo a&ntilde;adir cotizaciones de bolsa a la pantalla del aplique. </para>
+</sect2>
+
+<sect2 id="gtik-refresh"><title>Actualizar la visualizaci&oacute;n</title>
+<para><application>&applet;</application> actualiza autom&aacute;ticamente la informaci&oacute;n sobre las cotizaciones con la frecuencia que se haya especificado en las preferencias del aplique. Consulte <xref linkend="gtik-settings-behavior"/> para obtener m&aacute;s informaci&oacute;n sobre las preferencias del aplique. Para actualizar inmediatamente la informaci&oacute;n que aparece en el aplique, haga clic con el bot&oacute;n derecho del rat&oacute;n encima de &eacute;ste y luego seleccione <guimenuitem>Actualizar</guimenuitem>. </para>
+</sect2>
+
+</sect1>
+
+<sect1 id="gtik-settings">
+<title>Preferencias</title>
+
+<sect2 id="gtik-set-proxy"><title>Configurar un servidor proxy</title>
+<para>Si su sistema est&aacute; situado detr&aacute;s de un cortafuegos, es necesario usar un servidor proxy para ejecutar <application>&applet;</application> satisfactoriamente.
+Para configurar GNOME para el uso de un servidor proxy, seleccione <menuchoice>
+<guimenu>Aplicaciones</guimenu>
+<guisubmenu>Preferencias</guisubmenu>
+<guimenuitem>Red</guimenuitem>
+</menuchoice>.</para>
+</sect2>
+
+<sect2 id="gtik-configure"><title>Configurar &applet;</title>
+<para>Para configurar <application>&applet;</application>, haga clic con el bot&oacute;n derecho del rat&oacute;n en el aplique y,  a continuaci&oacute;n, seleccione Preferencias.<guimenu></guimenu>
+El di&aacute;logo <guilabel>Propiedades del Marcador de cotizaciones</guilabel> contiene las pesta&ntilde;as siguientes:</para>
+<itemizedlist>
+<listitem><para><xref linkend="gtik-settings-symbols"/></para></listitem>
+<listitem><para><xref linkend="gtik-settings-behavior"/></para></listitem>
+<listitem><para><xref linkend="gtik-settings-appearance"/></para></listitem>
+</itemizedlist>
+
+<sect3 id="gtik-settings-symbols"><title>S&iacute;mbolos</title>
+<para>La pesta&ntilde;a <guilabel>S&iacute;mbolos</guilabel> permite a&ntilde;adir y eliminar cotizaciones de la pantalla del aplique.</para>
+<para>Para a&ntilde;adir una cotizaci&oacute;n al aplique, lleve a cabo los pasos siguientes:</para>
+<orderedlist>
+<listitem><para>Averig&uuml;e el s&iacute;mbolo de la acci&oacute;n de la empresa. </para></listitem>
+<listitem><para>A continuaci&oacute;n, escr&iacute;balo en el cuadro de texto <guilabel>Nuevo s&iacute;mbolo</guilabel>.</para></listitem>
+<listitem><para>Haga clic en <guibutton>A&ntilde;adir</guibutton> para agregar el s&iacute;mbolo a la lista de cotizaciones que el aplique muestra.</para></listitem>
+<listitem><para>Haga clic en <guibutton>Aceptar</guibutton> para guardar el cambio y cerrar el cuadro de di&aacute;logo.</para></listitem>
+</orderedlist>
+
+<para>Para eliminar una cotizaci&oacute;n del aplique, lleve a cabo los pasos siguientes:</para>
+<orderedlist>
+<listitem><para>Seleccione el s&iacute;mbolo de la acci&oacute;n de la empresa. </para></listitem>
+<listitem><para>Haga clic en <guibutton>Suprimir selecci&oacute;n</guibutton> para eliminar el s&iacute;mbolo de la lista de cotizaciones que el aplique muestra.</para></listitem>
+<listitem><para>Haga clic en <guibutton>Aceptar</guibutton> para guardar el cambio y cerrar el cuadro de di&aacute;logo.</para></listitem>
+</orderedlist>
+
+</sect3>
+
+<sect3 id="gtik-settings-behavior"><title>Comportamiento</title>
+<variablelist>
+<varlistentry><term><guilabel>Frecuencia de actualizaci&oacute;n en minutos</guilabel> </term>
+<listitem>
+<para>Use este cuadro de incremento para aumentar o disminuir la frecuencia a la que el aplique descarga de Internet la informaci&oacute;n sobre cotizaciones m&aacute;s reciente. </para>
+<para>Valor predeterminado:   5 minutos.</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><guilabel>Activar botones de desplazamiento</guilabel> </term>
+<listitem>
+<para>Seleccione esta opci&oacute;n para que se muestren botones de flecha en el aplique que le permitan moverse hacia adelante y hacia atr&aacute;s por la informaci&oacute;n que se muestra en el aplique. </para>
+<para>Valor predeterminado:  seleccionado.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+
+<sect3 id="gtik-settings-appearance"><title>Apariencia</title>
+<variablelist>
+
+<varlistentry><term><guilabel>Mostrar s&oacute;lo s&iacute;mbolos y precios</guilabel> </term>
+<listitem>
+<para>Seleccione esta opci&oacute;n para que en el &aacute;rea de visualizaci&oacute;n del aplique s&oacute;lo se muestren los s&iacute;mbolos de las empresas y su cotizaci&oacute;n actual.</para>
+<para>Valor predeterminado:  no seleccionado.</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><guilabel>Desplazamiento de izquierda a derecha</guilabel> </term>
+<listitem>
+<para>Seleccione esta opci&oacute;n para invertir la direcci&oacute;n en la que se desplaza la visualizaci&oacute;n del aplique. Si selecciona esta opci&oacute;n, la visualizaci&oacute;n se desplaza de izquierda a derecha, en lugar de hacerlo de derecha a izquierda. </para>
+<para>Valor predeterminado:  no seleccionado.</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><guilabel>+ Color</guilabel> </term>
+<listitem>
+<para>Use este bot&oacute;n para seleccionar un color con el que mostrar las acciones que han subido desde la &uacute;ltima vez que se comprobaron. Haga clic en el bot&oacute;n de color para que se muestre un cuadro de di&aacute;logo de selecci&oacute;n de color. Para elegir un color, use la rueda de color o los deslizadores del di&aacute;logo selector de color. </para>
+<para>Valor predeterminado:   verde.</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><guilabel>- Color</guilabel> </term>
+<listitem>
+<para>Use este bot&oacute;n para seleccionar un color con el que mostrar las acciones que han bajado desde la &uacute;ltima vez que se comprobaron. </para>
+<para>Valor predeterminado:   rojo.</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><guilabel>Color sin cambios</guilabel> </term>
+<listitem>
+<para>Use este bot&oacute;n para seleccionar un color con el que mostrar las acciones que no han sufrido cambios desde la &uacute;ltima vez que se comprobaron. </para>
+<para>Valor predeterminado:  negro.</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><guilabel>Color de fondo</guilabel> </term>
+<listitem>
+<para>Use este bot&oacute;n para seleccionar un color de fondo para el &aacute;rea de visualizaci&oacute;n del aplique. </para>
+<para>Valor predeterminado:  blanco.</para>
+</listitem>
+</varlistentry>
+<varlistentry>
+<term><guilabel>S&iacute;mbolo de la acci&oacute;n</guilabel> </term>
+<listitem>
+<para>Use este bot&oacute;n para seleccionar la fuente que desea utilizar para visualizar el s&iacute;mbolo de la acci&oacute;n y el precio actual. </para>
+<para>Valor predeterminado:  no especificado.</para>
+</listitem>
+</varlistentry>
+<varlistentry><term><guilabel>Cambio en la cotizaci&oacute;n</guilabel> </term>
+<listitem>
+<para>Use este bot&oacute;n para seleccionar la fuente que desea utilizar para visualizar el cambio en el precio de la acci&oacute;n. </para>
+<para>Valor predeterminado:  no especificado.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect3>
+
+</sect2>
+
+</sect1>
+
+</article>

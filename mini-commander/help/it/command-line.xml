@@ -1,0 +1,481 @@
+<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "1.104.0">
+  <!ENTITY manrevision "2.2">
+  <!ENTITY date "Agosto 2002">
+  <!ENTITY applet "Riga di comando">
+]>
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp 
+  Template version: 2.0 beta
+  Template last modified Feb 12, 2002
+  
+-->
+<!-- =============Document Header ============================= -->
+<article id="index" lang="it">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo>
+ <title>Manuale dell'applet &applet; V&manrevision;</title>
+     <copyright> 
+        <year>2003</year> 
+        <holder>Sun Microsystems</holder> 
+     </copyright> 
+     <copyright> 
+        <year>1998</year> 
+        <holder>Oliver Maruhn</holder> 
+     </copyright>
+<!-- translators: uncomment this:
+
+  <copyright>
+   <year>2002</year>
+   <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+  </copyright>
+
+   -->
+<!-- An address can be added to the publisher information.  If a role is 
+     not specified, the publisher/author is the same for all versions of the 
+     document.  -->
+     <publisher> 
+        <publishername> GNOME Documentation Project </publishername> 
+     </publisher> &legal;
+<!-- This file  contains link to license for the documentation (GNU FDL), and 
+     other legal stuff such as "NO WARRANTY" statement. Please do not change 
+     any of this. -->
+     <authorgroup>
+        <author>
+          <firstname>Sun </firstname> 
+          <surname>GNOME Documentation Team</surname> 
+          <affiliation> 
+             <orgname>Sun Microsystems</orgname> 
+             <address> <email>gdocteam@sun.com</email> </address>
+          </affiliation>
+        </author>
+        <author> 
+          <firstname>Oliver </firstname> 
+          <surname> Maruhn</surname> 
+          <affiliation> 
+             <orgname>GNOME Documentation Project</orgname> 
+             <address> <email>oliver@maruhn.com</email> </address>
+          </affiliation>
+        </author>
+      <!-- This is appropriate place for other contributors: translators,
+           maintainers,  etc. Commented out by default.
+           <othercredit role="translator">
+         <firstname>Latin</firstname> 
+         <surname>Translator 1</surname> 
+         <affiliation> 
+           <orgname>Latin Translation Team</orgname> 
+           <address> <email>translator@gnome.org</email> </address> 
+         </affiliation>
+         <contrib>Latin translation</contrib>
+           </othercredit>
+-->
+     </authorgroup>
+     <revhistory>
+        <revision> 
+          <revnumber>Manuale dell'applet &applet; V&manrevision;</revnumber> 
+          <date>&date;</date> 
+          <revdescription> 
+             <para role="author">
+                Sun Microsystems <email>gdocteam@sun.com</email>
+             </para>
+             <para role="publisher">
+                GNOME Documentation Project
+             </para>
+          </revdescription>
+        </revision>
+        <revision> 
+          <revnumber>Manuale dell'applet Command Line V2.1</revnumber> 
+          <date>Luglio 2002</date> 
+          <revdescription> 
+             <para role="author">
+                Sun Microsystems <email>gdocteam@sun.com</email>
+             </para>
+             <para role="publisher">
+                GNOME Documentation Project
+             </para>
+          </revdescription>
+        </revision>
+        <revision> 
+          <revnumber>Manuale dell'applet Command line V2.0</revnumber> 
+          <date>Marzo 2002</date> 
+          <revdescription> 
+             <para role="author">
+                Sun Microsystems <email>gdocteam@sun.com</email>
+             </para>
+             <para role="publisher">
+                GNOME Documentation Project
+             </para>
+          </revdescription>
+        </revision>
+        <revision> 
+          <revnumber>Manuale dell'applet Mini-Commander</revnumber> 
+          <date>1998</date> 
+          <revdescription> 
+             <para role="author">
+                Oliver Maruhn <email>oliver@maruhn.com</email>
+             </para>
+             <para role="publisher">
+                GNOME Documentation Project
+             </para>
+             <para role="author">
+                Dan Mueth <email>d-mueth@uchicago.edu</email>
+             </para>
+             <para role="publisher">
+                GNOME Documentation Project
+             </para>
+          </revdescription>
+        </revision>
+     </revhistory>
+     <releaseinfo> Questo manuale descrive la versione &appletversion; di &applet;.
+        </releaseinfo>
+     <legalnotice> 
+        <title>Commenti</title>
+        <para>
+          Per segnalare un problema o inviare suggerimenti sull'applet &applet; o su questo manuale, seguire le istruzioni presenti alla 
+          <ulink url="ghelp:gnome-feedback" type="help">Pagina di commenti su GNOME</ulink>. 
+        </para>
+     </legalnotice>
+  </articleinfo>
+  <indexterm zone="index"> 
+     <primary>Command Line</primary> 
+  </indexterm> 
+  <indexterm zone="index"> 
+     <primary>applet command line</primary> 
+  </indexterm>
+
+<!-- ============= Introduction =====-->
+  <sect1 id="command-line-introduction">     <title>Introduzione</title>
+     
+     <!-- ==== Figure ==================-->
+     <figure id="applet-fig"> 
+        <title>Applet &applet;</title>
+        <screenshot>
+          <mediaobject>
+             <imageobject><imagedata fileref="figures/command-line.png"                 format="PNG"/> 
+             </imageobject>
+             <textobject>
+                <phrase>Mostra l'applet &applet;. </phrase>
+             </textobject>
+          </mediaobject>
+        </screenshot>
+     </figure>
+     <para>
+        L'applet <application>&applet;</application> fornisce una riga di comando che pu&ograve; essere utilizzata in qualsiasi pannello del desktop. </para>
+        <para>Per aggiungere la <application>&applet;</application> a un pannello, fare clic con il pulsante destro del mouse sul pannello, quindi scegliere
+<menuchoice>
+            <guimenu>Aggiungi al pannello</guimenu> 
+            <guisubmenu>Utilit&agrave;</guisubmenu> 
+            <guimenuitem>&applet;</guimenuitem>
+         </menuchoice>.
+     </para>
+     <para>
+        La <application>&applet;</application> contiene i seguenti elementi interattivi: </para>
+        
+        <variablelist>
+          <varlistentry>
+             <term>
+                <guilabel>Campo di inserimento</guilabel></term>
+             <listitem>
+                <para>
+                  &Egrave; possibile inserire comandi, macro e programmi nel <guilabel>Campo di inserimento</guilabel>.
+                </para>
+             </listitem>
+          </varlistentry>
+          <varlistentry>
+             <term>
+                <guilabel>Pulsante Browser</guilabel></term>
+             <listitem>
+                <para>
+                  &Egrave; possibile usare il <guibutton>pulsante Browser</guibutton> per ricercare i programmi all'interno del file system. Il <guibutton>pulsante Browser</guibutton> &egrave; rappresentato da un'icona con un circoletto pieno.
+                </para>
+             </listitem>
+          </varlistentry>
+          <varlistentry>
+             <term>
+                <guibutton>Pulsante Cronologia</guibutton></term>
+             <listitem>
+                <para>
+                  Il <guibutton>pulsante Cronologia</guibutton> pu&ograve; essere utilizzato per richiamare i comandi inseriti in precedenza. Questo pulsante &egrave; rappresentato da un'icona con una freccia in gi&ugrave;.
+                </para>
+             </listitem>
+          </varlistentry>
+        </variablelist>
+        
+        <para>La <application>&applet;</application> offre le seguenti funzioni: </para>
+        
+        <variablelist>
+          <varlistentry>
+             <term>Cronologia dei comandi inseriti in precedenza</term>
+             <listitem>
+                <para>
+                  &Egrave; possibile eseguire i comandi direttamente dall'elenco della cronologia.
+                  &Egrave; anche possibile scorrere tutte le voci della cronologia tramite il <guilabel>campo di inserimento</guilabel> per visualizzarle e quindi eseguire un comando. Se si rimuove l'applet <application>&applet;</application> da un pannello e quindi la si aggiunge a un altro pannello nel corso della stessa sessione, la cronologia conserva tutti i comandi inseriti in precedenza. Quando la cronologia comprende pi&ugrave; di 20 comandi, viene visualizzata una barra di scorrimento verticale.
+                </para>
+             </listitem>
+          </varlistentry>
+          <varlistentry>
+             <term>Funzioni di completamento automatico</term>
+             <listitem>
+                <para>
+                  L'applet <application>&applet;</application> utilizza una funzione di completamento automatico per completare i comandi presenti nel <guilabel>campo di inserimento</guilabel>. Questa funzione confronta il contenuto del <guilabel> campo di inserimento</guilabel> con la cronologia. Se  <application>&applet;</application> trova una voce corrispondente, l'applet completa il comando.
+                </para>
+             </listitem>
+          </varlistentry>
+          <varlistentry>
+             <term> Funzione di completamento dei comandi a richiesta</term>
+             <listitem>
+                <para>
+                  Questa funzione di completamento dei comandi confronta le stringhe presenti nel <guilabel>campo di inserimento</guilabel> con i comandi del percorso di ricerca dell'utente.
+                  Questa funzione &egrave; utile se si conosce l'esatta sequenza di caratteri o il nome preciso di un comando. Dopo avere digitato le prime lettere del nome del comando, premere il tasto <keycap>Tab</keycap>. Se l'applet <application>&applet;</application>
+                  riconosce la sequenza di caratteri in modo inequivoco, completa automaticamente il comando.
+                </para>
+             </listitem>
+          </varlistentry>
+          <varlistentry>
+             <term>Funzioni macro</term>
+             <listitem>
+                <para>
+                  La funzionalit&agrave; macro permette di utilizzare scelte rapide per un massimo di 99 comandi. In aggiunta ai comandi predefiniti, &egrave; possibile creare i propri comandi personalizzati e utilizzarli con l'applet 
+                  <application>&applet;</application>.
+                </para>
+             </listitem>
+          </varlistentry>
+        </variablelist>
+  </sect1>
+<!-- ================ Usage =======-->
+  <sect1 id="command-line-usage"> 
+     <title>Utilizzo</title>
+     
+     <sect2 id="command-line-run">
+        <title>Eseguire un comando dal campo di inserimento</title>
+        <para>
+          Per eseguire un comando dal <guilabel>campo di inserimento</guilabel>, procedere come segue:
+        </para>
+        <orderedlist>
+          <listitem>
+             <para>
+                Digitare il comando nel <guilabel>campo di inserimento</guilabel>. 
+             </para>
+          </listitem>
+          <listitem>
+             <para>
+                &Egrave; possibile chiedere all'applet <application>&applet;
+                </application> di completare automaticamente il nome del comando. Premere il tasto <keycap>Tab</keycap> per eseguire il completamento automatico.
+             </para>
+          </listitem>
+          <listitem>
+             <para>
+                Digitare le opzioni richieste dal comando da eseguire nel 
+                <guilabel>campo di inserimento</guilabel>. 
+             </para>
+          </listitem>
+          <listitem>
+             <para>
+                Premere  
+                <keycap>Return</keycap>. 
+             </para>
+          </listitem>
+        </orderedlist>
+        <para>
+          Se l'opzione <xref linkend="autocompletion"/> &egrave; stata selezionata ai punti 1-3,
+          <application>&applet;</application> ricerca una corrispondenza nella cronologia.
+          Se questa viene trovata, <application>&applet;</application> completa il comando. Per accettare il comando, premere 
+          <keycap>Return</keycap>. Se non si intende accettare il comando, digitare altri caratteri nel 
+          <guilabel> campo di inserimento</guilabel>.
+        </para>
+     </sect2>
+     <sect2 id="command-line-runmacro"> 
+        <title>Eseguire una macro dal campo di inserimento</title>
+        <para>
+          Per eseguire una macro definita nell'elenco <xref linkend="command-line-prefs-2"/> dell'applet  <application>&applet;</application>, digitarla nel <guilabel>campo di inserimento</guilabel> e quindi premere <keycap>Return</keycap>.         </para>
+        <para>
+          La funzione <xref linkend="autocompletion"/> opera correttamente anche con le macro. 
+        </para>
+        <para>
+          L'elenco seguente mostra alcuni esempi di macro dell'applet  <application>&applet;</application>:
+        </para>
+        <informaltable frame="none">
+          <tgroup cols="2" colsep="0" rowsep="0"><colspec              colwidth="29.29*"/><colspec colwidth="70.71*"/> 
+             <tbody>
+                <row valign="top">
+                  <entry>
+                     <para>
+                        <userinput>t</userinput>
+                     </para>
+                  </entry>
+                  <entry>
+                     <para>
+                        Avvia un terminale GNOME. 
+                     </para>
+                  </entry>
+                </row>
+                <row valign="top">
+                  <entry>
+                     <para>
+                        <userinput>n</userinput>
+                     </para>
+                  </entry>
+                  <entry>
+                     <para>
+                        Avvia il browser Netscape.
+                     </para>
+                  </entry>
+                </row>
+                <row valign="top">
+                  <entry>
+                     <para>
+                        <userinput>dictionary</userinput>
+                     </para>
+                  </entry>
+                  <entry>
+                     <para>
+                        Avvia il browser Netscape e visualizza una pagina di ricerca in un dizionario. 
+                     </para>
+                  </entry>
+                </row>
+             </tbody>
+          </tgroup>
+        </informaltable>
+     </sect2>
+     <sect2 id="command-line-filesys"> 
+        <title>Eseguire un programma dal file system</title>
+        <para>
+          Fare clic sul <guibutton>pulsante Browser</guibutton> per visualizzare il contenuto del file system, quindi fare doppio clic sul programma da eseguire. 
+        </para>
+        <para>
+          L'applet <application>&applet;</application> pu&ograve; essere utilizzata per eseguire script, file eseguibili o altri programmi presenti nel file system. 
+        </para>
+     </sect2>
+     <sect2 id="command-line-histlist"> 
+        <title>Eseguire un comando, una macro o un programma dalla cronologia
+          </title>
+        <para>
+          &Egrave; possibile eseguire direttamente dalla cronologia un comando, una macro o un programma digitati in precedenza, nei seguenti modi:
+          <itemizedlist>
+             <listitem>
+                <para>
+                  Fare clic sul pulsante <guibutton>Cronologia</guibutton> per visualizzare la cronologia. Fare clic su un elemento della cronologia per eseguire il comando, la macro o il programma indicati.
+                </para>
+             </listitem>
+             <listitem>
+                <para>
+                  Fare clic sul <guilabel>campo di inserimento</guilabel>, quindi usare i tasti freccia in su e in gi&ugrave; per scorrere la cronologia avanti e indietro. Premere 
+                  <keycap>Return</keycap> per eseguire uno specifico comando, una macro o un programma quando l'elemento desiderato &egrave; visualizzato nel <guilabel>campo di inserimento</guilabel>.
+                </para>
+             </listitem>
+          </itemizedlist>
+        </para>
+     </sect2>
+  </sect1>
+<!-- ============= Preferences ============================= -->
+  <sect1 id="command-line-prefs-0">
+      <title>Preferenze</title>
+     <para>
+       Per configurare <application>&applet;</application>, fare clic con il pulsante destro del mouse in un'area non interattiva dell'applet, quindi scegliere  <guimenuitem>Preferenze</guimenuitem>.
+     </para>
+     <para>
+        La finestra di dialogo <guilabel>Preferenze</guilabel> contiene le seguenti schede:
+     </para>
+     <itemizedlist>
+        <listitem>
+          <para>
+             <xref linkend="command-line-prefs-1"/>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+             <xref linkend="command-line-prefs-2"/>
+          </para>
+        </listitem>
+     </itemizedlist>
+     
+     <sect2 id="command-line-prefs-1"> 
+     
+        <title>Generale</title>
+        
+        <variablelist>
+		<varlistentry>
+		<term><guilabel>Mostra punto di aggancio</guilabel> </term>
+		<listitem>
+		<para>Selezionare questa opzione per visualizzare un rettangolo di spostamento lungo un lato dell'applet. Questo rettangolo pu&ograve; essere usato per trascinare la <application>&applet;</application> in qualsiasi posizione del desktop. </para>
+		<para>Impostazione predefinita:  non selezionato.</para>
+		</listitem>
+		</varlistentry>
+		<varlistentry>
+		<term><guilabel>Mostra cornice</guilabel> </term>
+		<listitem>
+		<para>Selezionare questa opzione per visualizzare una cornice intorno all'applet <application>&applet;</application>. </para>
+		<para>Impostazione predefinita:  non selezionato.</para>
+		</listitem>
+		</varlistentry>
+		<varlistentry>
+		<term><guilabel>Abilita autocompletamento in base alla cronologia</guilabel> </term>
+		<listitem>
+		<para id="autocompletion">Selezionare questa opzione per indicare a <application>&applet;</application> di confrontare il contenuto del campo di inserimento con la cronologia e di completare i comandi se viene individuata una corrispondenza. </para>
+		<para>Impostazione predefinita:  selezionato.</para>
+		</listitem>
+		</varlistentry>
+		<varlistentry>
+		<term><guilabel>Larghezza applet</guilabel> </term>
+		<listitem>
+		<para>Usare questa casella di selezione per specificare la larghezza dell'applet in pixel. </para>
+		<para>Impostazione predefinita:  150 pixel.</para>
+		</listitem>
+		</varlistentry>
+		<varlistentry>
+		<term><guilabel>Usa colori del tema predefinito</guilabel> </term>
+		<listitem>
+		<para>Selezionare questa opzione per usare i colori del tema predefinito di GNOME.</para>
+		<para>Impostazione predefinita:  selezionato.</para>
+		</listitem>
+		</varlistentry>
+		<varlistentry>
+		<term><guilabel>Colore della riga di comando</guilabel> </term>
+		<listitem>
+		<para>Fare clic su questo pulsante per selezionare il colore del testo della riga di comando. Il pulsante non &egrave; disponibile se la casella di controllo <guilabel>Usa colori del tema predefinito</guilabel> &egrave; selezionata.</para>
+		<para>Impostazione predefinita:  bianco.</para>
+		</listitem>
+		</varlistentry>
+		<varlistentry>
+		<term><guilabel>Sfondo della riga di comando</guilabel> </term>
+		<listitem>
+		<para>Fare clic su questo pulsante per selezionare il colore del testo del  <guilabel>campo di inserimento</guilabel>. Il pulsante non &egrave; disponibile se la casella di controllo <guilabel>Usa colori del tema predefinito</guilabel> &egrave; selezionata.</para>
+		<para>Impostazione predefinita:  nero.</para>
+		</listitem>
+		</varlistentry>	
+	</variablelist>
+        
+     </sect2>
+     
+     <sect2 id="command-line-prefs-2"> 
+        <title>Macro</title>
+        <para>
+          Questa scheda contiene un elenco di macro che &egrave; possibile utilizzare con <application>&applet;</application>. L'elenco comprende le seguenti informazioni:
+          <itemizedlist>
+             <listitem>
+                <para>
+                  Un elenco di espressioni regolari UNIX nella colonna di sinistra. 
+                </para>
+                <para>
+                  Le espressioni regolari sono serie di caratteri o numeri che permettono di trovare corrispondenze nelle stringhe. Vedere la pagina man <command>regex</command> per ulteriori informazioni sulla creazione di espressioni regolari. 
+                </para>
+             </listitem>
+             <listitem>
+                <para>
+                  Un elenco di macro nella colonna di destra. 
+                </para>
+                <para>
+                  Le macro vengono eseguite se la relativa espressione regolare corrisponde al comando inserito nel <guilabel> campo di inserimento</guilabel> di
+                  <application>&applet;</application>. Le macro sono comandi in grado di utilizzare i parametri analizzati dall'espressione regolare.
+                </para>
+             </listitem>
+          </itemizedlist> &Egrave; possibile modificare le espressioni regolari esistenti e aggiungerne di nuove. 
+        </para>
+     </sect2>
+  </sect1>
+</article>

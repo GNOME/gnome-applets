@@ -1,9 +1,8 @@
 figs = \
 	figures/geyes_applet.png
-docname = geyes_applet
+docname = geyes
 lang = it
-omffile = geyes_applet-it.omf
-sgml_ents = geyes.sgml
-include $(top_srcdir)/sgmldocs.make
+omffile = geyes-it.omf
+entities = legal.xml
+include $(top_srcdir)/xmldocs.make
 dist-hook: app-dist-hook
-

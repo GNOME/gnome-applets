@@ -1,0 +1,174 @@
+﻿<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "1.99.0">
+  <!ENTITY manrevision "2.1">
+  <!ENTITY date "August 2002">
+  <!ENTITY applet "Volume Control">
+]>
+
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Mar 12, 2002
+  
+-->
+
+<article id="index" lang="de">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo>
+	 <title>&applet; Applet-Handbuch V&manrevision;</title>
+	 <copyright> 
+		<year>2003</year>  
+		<holder>Sun Microsystems</holder> 
+	 </copyright> 
+	 <copyright> 
+		<year>2000</year> 
+		<holder>Dan Mueth</holder> 
+	 </copyright>
+<!-- translators: uncomment this:
+
+  <copyright>
+   <year>2002</year>
+   <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+  </copyright>
+
+   -->
+
+	 <publisher> 
+		<publishername>GNOME-Dokumentationsprojekt</publishername> 
+	 </publisher> 
+
+&legal;
+
+
+	 <authorgroup>
+		<author> 
+		  <firstname>Sun</firstname> 
+		  <surname>GNOME-Dokumentationsteam</surname> 
+		  <affiliation> 
+			 <orgname>Sun Microsystems</orgname> 
+			 <address> <email>gdocteam@sun.com</email> </address>
+		  </affiliation>
+		</author>
+		<author> 
+		  <firstname>Dan</firstname> 
+		  <surname>Mueth</surname> 
+		  <affiliation> 
+			 <orgname>GNOME-Dokumentationsprojekt</orgname> 
+			 <address> <email>d-mueth@uchicago.edu</email> </address>
+		  </affiliation>
+		</author>
+      <!-- This is appropriate place for other contributors: translators,
+           maintainers,  etc. Commented out by default.
+           <othercredit role="translator">
+	     <firstname>Latin</firstname> 
+	     <surname>Translator 1</surname> 
+	     <affiliation> 
+	       <orgname>Latin Translation Team</orgname> 
+	       <address> <email>translator@gnome.org</email> </address> 
+	     </affiliation>
+	     <contrib>Latin translation</contrib>
+           </othercredit>
+-->
+	 </authorgroup>
+
+	 <revhistory>
+		<revision> 
+		  <revnumber>&applet; Applet-Handbuch V&manrevision;</revnumber> 
+		  <date>&date;</date> 
+		  <revdescription> 
+			 <para role="author">Sun GNOME-Dokumentationsteam
+				<email>gdocteam@sun.com</email></para>
+			 <para role="publisher">GNOME-Dokumentationsprojekt</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>Lautst&auml;rkeregler-Applet-Handbuch V2.0</revnumber> 
+		  <date>April 2002</date> 
+		  <revdescription> 
+			 <para role="author">Sun GNOME-Dokumentationsteam
+				<email>gdocteam@sun.com</email></para>
+			 <para role="publisher">GNOME-Dokumentationsprojekt</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>Mixer-Applet</revnumber> 
+		  <date>2000</date> 
+		  <revdescription> 
+			 <para role="author">Dan Mueth
+				<email>d-mueth@uchicago.edu</email></para>
+			 <para role="publisher">GNOME-Dokumentationsprojekt</para>
+		  </revdescription>
+		</revision>
+	 </revhistory>
+	 <releaseinfo>In diesem Handbuch wird Version &appletversion; von &applet; beschrieben.
+		</releaseinfo>
+	 <legalnotice> 
+		<title>Feedback</title>
+		<para> Wenn Sie einen Programmfehler melden m&ouml;chten oder Vorschl&auml;ge zum Applet &applet; oder zu diesem Handbuch haben,
+		  folgen Sie den Anweisungen auf der
+		  <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>. </para>
+		
+	 </legalnotice>
+  </articleinfo>
+  <indexterm> 
+	 <primary>Lautst&auml;rkeregler</primary> 
+  </indexterm> 
+
+<!-- ============= Document Body ============================= -->
+<!-- ============= Introduction ============================== -->
+<sect1 id="volumecontrol-introduction">
+<title>Einf&uuml;hrung</title>
+<!-- ==== Figure ============================================= -->
+	 <figure id="volumecontrol-fig"> 
+		<title>&applet;-Applet</title>
+		<screenshot>
+		  <mediaobject>
+			 <imageobject><imagedata fileref="figures/volumecontrol_applet.png" format="PNG"/> 
+			 </imageobject>
+			 <textobject>
+				<phrase>&Ouml;ffnet das Applet Lautst&auml;rkeregler. Enth&auml;lt die Abbildung eines Lautsprechers.</phrase>
+			 </textobject>
+		  </mediaobject>
+		</screenshot>
+	 </figure>
+    <!-- ==== End of Figure ======================================= -->
+<para>Mit dem Applet <application>&applet;</application> k&ouml;nnen Sie die Lautst&auml;rke Ihres Systems einstellen. Das Applet-Symbol &auml;ndert sich 
+entsprechend der eingestellten Lautst&auml;rke. W&auml;hlen Sie z. B. eine niedrige Lautst&auml;rke, wird der Lautsprecher im 
+Applet-Symbol mit nur einer Schallwelle dargestellt. Je h&ouml;her die Lautst&auml;rke, desto mehr Schallwellen werden im Symbol angezeigt. </para>
+<para>Zum Hinzuf&uuml;gen des Applets <application>&applet;</application> in ein Panel klicken Sie mit der rechten Maustaste auf das Panel, und w&auml;hlen Sie <menuchoice>
+<guimenu>Zum Panel hinzuf&uuml;gen</guimenu>
+<guisubmenu>Multimedia</guisubmenu>
+<guimenuitem>Lautst&auml;rkeregler</guimenuitem>
+</menuchoice>.</para>
+</sect1>
+
+<sect1 id="volumecontrol-usage">
+<title>Verwendung</title>
+
+	<sect2 id="volumecontrol-adjust">
+	<title>So stellen Sie die Lautst&auml;rke ein</title>
+	<para>Klicken Sie auf das Applet, um einen Schieberegler anzuzeigen. Bewegen Sie den Schieberegler nach oben,
+	um die Lautst&auml;rke zu erh&ouml;hen. Ziehen Sie ihn nach unten, um die Lautst&auml;rke zu verringern.</para>
+	</sect2>
+	
+	<sect2 id="volumecontrol-off">
+	<title>So schalten Sie den Ton aus</title>
+	<para>Wenn Sie den Ton ausschalten m&ouml;chten, klicken Sie mit der rechten Maustaste auf das Applet, 
+	und w&auml;hlen Sie <guimenuitem>Stumm</guimenuitem>. </para>
+	</sect2>
+	
+	<sect2 id="volumecontrol-add">
+	<title>So greifen Sie auf weitere Funktionen zu</title>
+	<para>Zugriff auf weitere Funktionen des Lautst&auml;rkereglers erhalten Sie, indem Sie mit der rechten Maustaste auf das Applet klicken und den Befehl <guimenuitem>Audio-Mixer ausf&uuml;hren</guimenuitem> w&auml;hlen. In der Anwendung Audio-Mixer k&ouml;nnen Sie die 
+	Lautst&auml;rke und Balance der Audio-Wiedergabe und Aufnahme einstellen.</para>
+	</sect2>
+
+
+</sect1>
+
+</article>

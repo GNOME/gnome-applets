@@ -1,0 +1,163 @@
+<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "1.99.0">
+  <!ENTITY manrevision "2.1">
+  <!ENTITY date "August 2002">
+  <!ENTITY applet "Volume Control">
+]>
+
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Mar 12, 2002
+  
+-->
+
+<article id="index" lang="zh_cn">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo>
+	 <title>&applet; 小程序手册 V&manrevision;</title>
+	 <copyright> 
+		<year>2002</year>  
+		<holder>Sun Microsystems</holder> 
+	 </copyright> 
+	 <copyright> 
+		<year>2000</year> 
+		<holder>Dan Mueth</holder> 
+	 </copyright>
+<!-- translators: uncomment this:
+
+  <copyright>
+   <year>2002</year>
+   <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+  </copyright>
+
+   -->
+
+	 <publisher> 
+		<publishername>GNOME Documentation Project</publishername> 
+	 </publisher> 
+
+&legal;
+
+
+	 <authorgroup>
+		<author> 
+		  <firstname>Sun</firstname> 
+		  <surname>GNOME Documentation Team</surname> 
+		  <affiliation> 
+			 <orgname>Sun Microsystems</orgname> 
+			 <address> <email>gdocteam@sun.com</email> </address>
+		  </affiliation>
+		</author>
+		<author> 
+		  <firstname>Dan</firstname> 
+		  <surname>Mueth</surname> 
+		  <affiliation> 
+			 <orgname>GNOME Documentation Project</orgname> 
+			 <address> <email>d-mueth@uchicago.edu</email> </address>
+		  </affiliation>
+		</author>
+      <!-- This is appropriate place for other contributors: translators,
+           maintainers,  etc. Commented out by default.
+           <othercredit role="translator">
+	     <firstname>Latin</firstname> 
+	     <surname>Translator 1</surname> 
+	     <affiliation> 
+	       <orgname>Latin Translation Team</orgname> 
+	       <address> <email>translator@gnome.org</email> </address> 
+	     </affiliation>
+	     <contrib>Latin translation</contrib>
+           </othercredit>
+-->
+	 </authorgroup>
+
+	 <revhistory>
+		<revision> 
+		  <revnumber>&applet; 小程序手册 V&manrevision;</revnumber> 
+		  <date>&date;</date> 
+		  <revdescription> 
+			 <para role="author">Sun GNOME Documentation Team
+				<email>gdocteam@sun.com</email></para>
+			 <para role="publisher">GNOME Documentation Project</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>音量控制小程序手册 V2.0</revnumber> 
+		  <date>2002 年 4 月</date> 
+		  <revdescription> 
+			 <para role="author">Sun GNOME Documentation Team
+				<email>gdocteam@sun.com</email></para>
+			 <para role="publisher">GNOME Documentation Project</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>混合器小程序</revnumber> 
+		  <date>2000</date> 
+		  <revdescription> 
+			 <para role="author">Dan Mueth
+				<email>d-mueth@uchicago.edu</email></para>
+			 <para role="publisher">GNOME Documentation Project</para>
+		  </revdescription>
+		</revision>
+	 </revhistory>
+	 <releaseinfo>本手册介绍 &applet; &appletversion; 版。
+		</releaseinfo>
+	 <legalnotice> 
+		<title>反馈</title>
+		<para> 要报告关于 &applet; 小程序或本手册的错误或提出建议，请遵循 <ulink url="ghelp:gnome-feedback" type="help">GNOME 反馈页</ulink>中的指导。</para>
+		
+	 </legalnotice>
+  </articleinfo>
+  <indexterm> 
+	 <primary>音量控制</primary> 
+  </indexterm> 
+
+<!-- ============= Document Body ============================= -->
+<!-- ============= Introduction ============================== -->
+<sect1 id="volumecontrol-introduction">
+<title>简介</title>
+<!-- ==== Figure ============================================= -->
+	 <figure id="volumecontrol-fig"> 
+		<title>&applet; 小程序</title>
+		<screenshot>
+		  <mediaobject>
+			 <imageobject><imagedata fileref="figures/volumecontrol_applet.png" format="PNG"/> 
+			 </imageobject>
+			 <textobject>
+				<phrase>显示音量控制小程序。包含扬声器的图像。</phrase>
+			 </textobject>
+		  </mediaobject>
+		</screenshot>
+	 </figure>
+    <!-- ==== End of Figure ======================================= -->
+<para><application>&applet;</application> 小程序使您能够控制系统音量。小程序的图标随着您选定的音量级别而改变。例如，如果您选择低音量级别，小程序图标就会显示一条声波从扬声器中散播出来。随着您把音量提高，该图标就改为显示更多的声波。</para>
+<para>要将 <application>&applet;</application> 添加到面板，请右击该面板，然后选择<menuchoice><guimenu>"添加到面板"</guimenu><guisubmenu>"多媒体"</guisubmenu><guimenuitem>"音量控制"</guimenuitem></menuchoice>。</para>
+</sect1>
+
+<sect1 id="volumecontrol-usage">
+<title>用法</title>
+
+	<sect2 id="volumecontrol-adjust">
+	<title>调整音量</title>
+	<para>单击此小程序，系统会显示一个滑块控件。要提高音量，将滑块往上移动。要降低音量，将滑块往下移动。</para>
+	</sect2>
+	
+	<sect2 id="volumecontrol-off">
+	<title>关闭声音</title>
+	<para>要关闭声音，请右击小程序，然后选择<guimenuitem>"静音"</guimenuitem>。 </para>
+	</sect2>
+	
+	<sect2 id="volumecontrol-add">
+	<title>访问附加的功能</title>
+	<para>要访问处理音量的其它功能，右击此小程序，然后选择<guimenuitem>"运行音频混合器"</guimenuitem>。音频混合器应用程序启动后，您就能控制音频回放和录音的音量和平衡级别。</para>
+	</sect2>
+
+
+</sect1>
+
+</article>

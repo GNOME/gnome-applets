@@ -1,0 +1,436 @@
+<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "1.104.0">
+  <!ENTITY manrevision "2.2">
+  <!ENTITY date "August 2002">
+  <!ENTITY applet "Command Line">
+]>
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp 
+  Template version: 2.0 beta
+  Template last modified Feb 12, 2002
+  
+-->
+<!-- =============Document Header ============================= -->
+<article id="index" lang="fr">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo>
+     <title>Manuel de l'applet &applet; V&manrevision;</title>
+     <copyright> 
+        <year>2003</year> 
+        <holder>Sun Microsystems</holder> 
+     </copyright> 
+     <copyright> 
+        <year>1998</year> 
+        <holder>Oliver Maruhn</holder> 
+     </copyright>
+<!-- translators: uncomment this:
+
+  <copyright>
+   <year>2002</year>
+   <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+  </copyright>
+
+   -->
+<!-- An address can be added to the publisher information.  If a role is 
+     not specified, the publisher/author is the same for all versions of the 
+     document.  -->
+     <publisher> 
+        <publishername>Projet de documentation GNOME</publishername> 
+     </publisher> &legal;
+<!-- This file  contains link to license for the documentation (GNU FDL), and 
+     other legal stuff such as "NO WARRANTY" statement. Please do not change 
+     any of this. -->
+     <authorgroup>
+        <author>
+          <firstname>Sun </firstname> 
+          <surname>Equipe de documentation GNOME</surname> 
+          <affiliation> 
+             <orgname>Sun Microsystems</orgname> 
+             <address> <email>gdocteam@sun.com</email> </address>
+          </affiliation>
+        </author>
+        <author> 
+          <firstname>Oliver </firstname> 
+          <surname> Maruhn</surname> 
+          <affiliation> 
+             <orgname>Projet de documentation GNOME</orgname> 
+             <address> <email>oliver@maruhn.com</email> </address>
+          </affiliation>
+        </author>
+      <!-- This is appropriate place for other contributors: translators,
+           maintainers,  etc. Commented out by default.
+           <othercredit role="translator">
+         <firstname>Latin</firstname> 
+         <surname>Translator 1</surname> 
+         <affiliation> 
+           <orgname>Latin Translation Team</orgname> 
+           <address> <email>translator@gnome.org</email> </address> 
+         </affiliation>
+         <contrib>Latin translation</contrib>
+           </othercredit>
+-->
+     </authorgroup>
+     <revhistory>
+        <revision> 
+          <revnumber>Manuel de l'applet &applet; V&manrevision;</revnumber> 
+          <date>&date;</date> 
+          <revdescription> 
+             <para role="author">
+                Sun Microsystems <email>gdocteam@sun.com</email>
+             </para>
+             <para role="publisher">Projet de documentation GNOME            </para>
+          </revdescription>
+        </revision>
+        <revision> 
+          <revnumber>Manuel de l'applet Ligne de commande V2.1</revnumber> 
+          <date>Juillet 2002</date> 
+          <revdescription> 
+             <para role="author">
+                Sun Microsystems <email>gdocteam@sun.com</email>
+             </para>
+             <para role="publisher">Projet de documentation GNOME            </para>
+          </revdescription>
+        </revision>
+        <revision> 
+          <revnumber>Manuel de l'applet Ligne de commande  V2.0</revnumber> 
+          <date>Mars 2002</date> 
+          <revdescription> 
+             <para role="author">
+                Sun Microsystems <email>gdocteam@sun.com</email>
+             </para>
+             <para role="publisher">Projet de documentation GNOME            </para>
+          </revdescription>
+        </revision>
+        <revision> 
+          <revnumber>Manuel de l'applet Mini-Commander</revnumber> 
+          <date>1998</date> 
+          <revdescription> 
+             <para role="author">
+                Oliver Maruhn <email>oliver@maruhn.com</email>
+             </para>
+             <para role="publisher">Projet de documentation GNOME            </para>
+             <para role="author">
+                Dan Mueth <email>d-mueth@uchicago.edu</email>
+             </para>
+             <para role="publisher">Projet de documentation GNOME            </para>
+          </revdescription>
+        </revision>
+     </revhistory>
+     <releaseinfo>Le pr&eacute;sent manuel d&eacute;crit la version &appletversion; de &applet;.
+        </releaseinfo>
+     <legalnotice> 
+        <title>Votre avis</title>
+        <para>Pour signaler un probl&egrave;me ou faire une suggestion concernant l'applet &applet; ou le pr&eacute;sent manuel, proc&eacute;dez comme indiqu&eacute; &agrave; la <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback
+             Page</ulink>. 
+        </para>
+     </legalnotice>
+  </articleinfo>
+  <indexterm zone="index"> 
+     <primary>Ligne de commande</primary> 
+  </indexterm> 
+  <indexterm zone="index"> 
+     <primary>Applet Ligne de commande</primary> 
+  </indexterm>
+<!-- ============= Document Body ==-->
+<!-- ============= Introduction =====-->
+  <sect1 id="command-line-introduction"> 
+     <title>Introduction</title>
+     
+     <!-- ==== Figure ==================-->
+     <figure id="applet-fig"> 
+        <title>Applet &applet;</title>
+        <screenshot>
+          <mediaobject>
+             <imageobject><imagedata fileref="figures/command-line.png"                 format="PNG"/> 
+             </imageobject>
+             <textobject>
+                <phrase>Affiche l'applet &applet;.</phrase>
+             </textobject>
+          </mediaobject>
+        </screenshot>
+     </figure>
+     <para>L'applet <application>&applet;</application> propose une ligne de commande utilisable dans tous les tableaux de bord du bureau. </para>
+        <para>Pour ajouter <application>&applet;</application> &agrave; un tableau de bord, cliquez avec le bouton droit sur celui-ci, puis s&eacute;lectionnez
+        <menuchoice> 
+          <guimenu>Ajouter au tableau de bord</guimenu> 
+          <guisubmenu>Utilitaires</guisubmenu> 
+          <guimenuitem>&applet;</guimenuitem> 
+        </menuchoice>.
+     </para>
+     <para>
+        <application>&applet;</application> contient les &eacute;l&eacute;ments interactifs suivants : </para>
+        
+        <variablelist>
+          <varlistentry>
+             <term>
+                <guilabel>Zone de saisie</guilabel></term>
+             <listitem>
+                <para>Vous pouvez indiquer les commandes, les macros et les programmes dans la <guilabel>zone de saisie</guilabel>.
+                </para>
+             </listitem>
+          </varlistentry>
+          <varlistentry>
+             <term>
+                <guilabel>Bouton Navigateur</guilabel></term>
+             <listitem>
+                <para>Vous pouvez utiliser ce bouton pour rechercher des programmes dans votre syst&egrave;me de fichiers. Il est reconnaissable &agrave; une ic&ocirc;ne en forme de cercle.
+                </para>
+             </listitem>
+          </varlistentry>
+          <varlistentry>
+             <term>
+                <guibutton>Bouton Historique</guibutton></term>
+             <listitem>
+                <para>Vous pouvez utiliser ce bouton pour rappeler des commandes ant&eacute;rieures. Il est reconnaissable &agrave; son ic&ocirc;ne en forme de fl&egrave;che dirig&eacute;e vers le bas.
+                </para>
+             </listitem>
+          </varlistentry>
+        </variablelist>
+        
+        <para><application>&applet;</application> propose les fonctions suivantes : </para>
+        
+        <variablelist>
+          <varlistentry>
+             <term>Historique des commandes ex&eacute;cut&eacute;es auparavant</term>
+             <listitem>
+                <para>Vous pouvez ex&eacute;cuter des commandes directement depuis l'historique.
+Vous pouvez &eacute;galement parcourir le contenu de l'historique en l'affichant dans la <guilabel>zone de saisie</guilabel>, puis ex&eacute;cuter une commande. Si vous supprimez <application>&applet;</application> d'un tableau de bord et que vous l'ajoutez &agrave; un autre au cours de la m&ecirc;me session, l'historique conserve toutes les commandes ant&eacute;rieures. Une barre de d&eacute;filement verticale appara&icirc;t lorsque l'historique contient plus de 20 commandes.
+                </para>
+             </listitem>
+          </varlistentry>
+          <varlistentry>
+             <term>Fonction de terminaison automatique bas&eacute;e sur l'historique</term>
+             <listitem>
+                <para>
+                  <application> &applet;</application> utilise la fonction de terminaison automatique bas&eacute;e sur l'historique pour ex&eacute;cuter les commandes contenues dans la <guilabel>zone de saisie</guilabel>. Cette fonction compare le contenu de la zone <guilabel>zone de saisie</guilabel> &agrave; l'historique. Si <application>&applet;</application> peut &eacute;tablir une correspondance, il compl&egrave;te la commande.
+                </para>
+             </listitem>
+          </varlistentry>
+          <varlistentry> <term>Fonction de terminaison de la commande demand&eacute;e par l'utilisateur</term>
+             <listitem>
+                <para>Cette fonction de terminaison de la commande compare les cha&icirc;nes de caract&egrave;res de la <guilabel>zone de saisie</guilabel> aux commandes contenues dans le chemin utilisateur.
+La fonction de terminaison de la commande peut &ecirc;tre utile si vous ne connaissez pas l'orthographe ou la s&eacute;quence de caract&egrave;res exactes d'une commande. Apr&egrave;s avoir tap&eacute; les premi&egrave;res lettres du nom de la commande, appuyez sur la touche <keycap>Tab</keycap>. Si <application>&applet;</application> reconna&icirc;t la s&eacute;quence de caract&egrave;res comme une suite unique, il compl&egrave;te le nom de la commande.
+                </para>
+             </listitem>
+          </varlistentry>
+          <varlistentry>
+             <term>Macros</term>
+             <listitem>
+                <para>Les macros proposent jusqu'&agrave; 99 raccourcis de commande. Outre les commandes pr&eacute;d&eacute;finies, vous pouvez &eacute;galement cr&eacute;er vos propres commandes et les utiliser avec <application>&applet;</application>.
+                </para>
+             </listitem>
+          </varlistentry>
+        </variablelist>
+  </sect1>
+<!-- ================ Usage =======-->
+  <sect1 id="command-line-usage"> 
+    <title>Utilisation</title>
+     
+     <sect2 id="command-line-run">
+        <title>Ex&eacute;cution d'une commande depuis la zone de saisie</title>
+        <para>Pour ex&eacute;cuter une commande depuis la <guilabel>zone de saisie</guilabel>, proc&eacute;dez comme suit :
+        </para>
+        <orderedlist>
+          <listitem>
+             <para>Entrez la commande dans la <guilabel>zone de saisie</guilabel>. 
+             </para>
+          </listitem>
+          <listitem>
+             <para>Si vous le souhaitez, vous pouvez indiquer &agrave; <application>&applet;</application> d'essayer de compl&eacute;ter le nom de la commande. Appuyez sur la touche <keycap>Tab</keycap> pour lui donner cette instruction.
+             </para>
+          </listitem>
+          <listitem>
+             <para>Entrez les options &agrave; ex&eacute;cuter avec la commande dans la <guilabel>zone de saisie</guilabel>. 
+             </para>
+          </listitem>
+          <listitem>
+             <para>Appuyez sur <keycap>Entr&eacute;e</keycap>. 
+             </para>
+          </listitem>
+        </orderedlist>
+        <para>Si l'option <xref linkend="autocompletion"/> est s&eacute;lectionn&eacute;e pendant les &eacute;tapes 1 &agrave; 3,  <application>&applet;</application> recherche une correspondance dans la liste des historiques.
+Si <application>&applet;</application> en trouve une, il compl&egrave;te la commande. Pour accepter la commande, appuyez sur        <keycap>Entr&eacute;e</keycap>. Dans le cas contraire, tapez d'autres caract&egrave;res dans la <guilabel>zone de saisie</guilabel>.
+        </para>
+     </sect2>
+     <sect2 id="command-line-runmacro"> <title>Ex&eacute;cution d'une macro depuis la zone de saisie</title>
+        <para>Pour ex&eacute;cuter une macro d&eacute;finie dans la liste
+<xref linkend="command-line-prefs-2"/> de <application>&applet;</application>,entrez la macro dans la
+          <guilabel> zone de saisie</guilabel>, puis appuyez sur
+          <keycap>Entr&eacute;e</keycap>. 
+        </para>
+        <para>La fonction <xref linkend="autocompletion"/> s'applique &eacute;galement aux macros.
+        </para>
+        <para>La liste suivante pr&eacute;sente quelques exemples de macros de <application>&applet;</application> :
+        </para>
+        <informaltable frame="none">
+          <tgroup cols="2" colsep="0" rowsep="0"><colspec              colwidth="29.29*"/><colspec colwidth="70.71*"/> 
+             <tbody>
+                <row valign="top">
+                  <entry>
+                     <para>
+                        <userinput>t</userinput>
+                     </para>
+                  </entry>
+                  <entry>
+                     <para>
+                        D&eacute;marre un terminal GNOME. 
+                     </para>
+                  </entry>
+                </row>
+                <row valign="top">
+                  <entry>
+                     <para>
+                        <userinput>n</userinput>
+                     </para>
+                  </entry>
+                  <entry>
+                     <para>
+                        D&eacute;marre un navigateur Netscape.
+                     </para>
+                  </entry>
+                </row>
+                <row valign="top">
+                  <entry>
+                     <para>
+                        <userinput>dictionary</userinput>
+                     </para>
+                  </entry>
+                  <entry>
+                     <para>
+                        D&eacute;marre un navigateur Netscape affichant la page de recherche du dictionnaire. 
+                     </para>
+                  </entry>
+                </row>
+             </tbody>
+          </tgroup>
+        </informaltable>
+     </sect2>
+     <sect2 id="command-line-filesys"> 
+        <title>Ex&eacute;cution d'un programme depuis votre syst&egrave;me de fichiers</title>
+        <para>Cliquez sur le bouton <guibutton>Navigateur</guibutton> pour afficher le syst&egrave;me de fichiers, puis cliquez deux fois sur le programme &agrave; ex&eacute;cuter. 
+        </para>
+        <para>Vous pouvez utiliser <application>&applet;</application> pour ex&eacute;cuter des scripts, des fichiers ex&eacute;cutables ou d'autres programmes depuis votre syst&egrave;me de fichiers. 
+        </para>
+     </sect2>
+     <sect2 id="command-line-histlist"> 
+        <title>Ex&eacute;cution d'une commande, d'une macro ou d'un programme d&eacute;j&agrave; ex&eacute;cut&eacute;s depuis l'historique</title>
+        <para>Il est possible d'ex&eacute;cuter une commande, une macro ou un programme d&eacute;j&agrave; ex&eacute;cut&eacute;s depuis l'historique. Pour ce faire, proc&eacute;dez comme suit :
+          <itemizedlist>
+             <listitem>
+                <para>Cliquez sur le bouton <guibutton>Historique</guibutton> pour afficher l'historique. Cliquez sur un &eacute;l&eacute;ment de l'historique pour l'ex&eacute;cuter.
+                </para>
+             </listitem>
+             <listitem>
+                <para>Cliquez sur la <guilabel>zone de saisie</guilabel>, puis utilisez les touches fl&egrave;ches vers le haut et vers le bas du clavier pour parcourir l'historique. Appuyez sur <keycap>Entr&eacute;e</keycap> pour ex&eacute;cuter l'&eacute;l&eacute;ment de l'historique souhait&eacute; lorsque celui-ci appara&icirc;t dans la <guilabel>zone de saisie</guilabel>.
+                </para>
+             </listitem>
+          </itemizedlist>
+        </para>
+     </sect2>
+  </sect1>
+<!-- ============= Preferences ============================= -->
+  <sect1 id="command-line-prefs-0"> 
+     <title>Pr&eacute;f&eacute;rences</title>
+     <para>Pour configurer <application>&applet;</application>, cliquez avec le bouton droit sur une zone de l'applet situ&eacute;e en dehors des &eacute;l&eacute;ments interactifs, puis s&eacute;lectionnez      <guimenuitem>Pr&eacute;f&eacute;rences</guimenuitem>.
+     </para>
+     <para>La bo&icirc;te de dialogue <guilabel>Pr&eacute;f&eacute;rences</guilabel> contient les onglets suivants :
+     </para>
+     <itemizedlist>
+        <listitem>
+          <para>
+             <xref linkend="command-line-prefs-1"/>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+             <xref linkend="command-line-prefs-2"/>
+          </para>
+        </listitem>
+     </itemizedlist>
+     
+     <sect2 id="command-line-prefs-1"> 
+     
+        <title>G&eacute;n&eacute;ral</title>
+        
+        <variablelist>
+		<varlistentry>
+		<term><guilabel>Afficher la poign&eacute;e</guilabel> </term>
+		<listitem>
+		<para>Cette option permet de fixer une poign&eacute;e au bord de l'applet. Vous pouvez utiliser la poign&eacute;e pour faire glisser <application>&applet;</application> vers un emplacement de votre choix sur le bureau. </para>
+		<para>Par d&eacute;faut :d&eacute;s&eacute;lectionn&eacute;e.</para>
+		</listitem>
+		</varlistentry>
+		<varlistentry>
+		<term><guilabel>Afficher le cadre</guilabel> </term>
+		<listitem>
+		<para>Cette option permet d'afficher un cadre autour de <application>&applet;</application>.</para>
+		<para>Par d&eacute;faut :d&eacute;s&eacute;lectionn&eacute;e.</para>
+		</listitem>
+		</varlistentry>
+		<varlistentry>
+		<term><guilabel>Activer la terminaison automatique bas&eacute;e sur l'historique</guilabel> </term>
+		<listitem>
+		<para id="autocompletion">Cette option permet d'indiquer &agrave; <application>&applet;</application> de comparer le contenu de la <guilabel>zone de saisie</guilabel> &agrave; l'historique et de compl&eacute;ter les commandes quand une correspondance existe. </para>
+		<para>Par d&eacute;faut : s&eacute;lectionn&eacute;e.</para>
+		</listitem>
+		</varlistentry>
+		<varlistentry>
+		<term><guilabel>Largeur de l'applet</guilabel> </term>
+		<listitem>
+		<para>Cette zone de s&eacute;lection num&eacute;rique permet de sp&eacute;cifier la largeur de l'applet en pixels.</para>
+		<para>Par d&eacute;faut : 150 pixels.</para>
+		</listitem>
+		</varlistentry>
+		<varlistentry>
+		<term><guilabel>Utiliser les couleurs du th&egrave;me par d&eacute;faut</guilabel> </term>
+		<listitem>
+		<para>Cette option permet d'utiliser les couleurs du th&egrave;me par d&eacute;faut de GNOME.</para>
+		<para>Par d&eacute;faut : s&eacute;lectionn&eacute;e.</para>
+		</listitem>
+		</varlistentry>
+		<varlistentry>
+		<term><guilabel>Couleur des caract&egrave;res de la ligne de commande</guilabel> </term>
+		<listitem>
+		<para>Ce bouton permet de s&eacute;lectionner une couleur pour le texte de la ligne de commande. Il n'est pas disponible si vous avez coch&eacute; la case <guilabel>Utiliser les couleurs du th&egrave;me par d&eacute;faut</guilabel>.</para>
+		<para>Par d&eacute;faut :blanc.</para>
+		</listitem>
+		</varlistentry>
+		<varlistentry>
+		<term><guilabel>Couleur d'arri&egrave;re-plan de la ligne de commande</guilabel> </term>
+		<listitem>
+		<para>Ce bouton permet de s&eacute;lectionner une couleur pour l'arri&egrave;re-plan de la <guilabel>zone de saisie</guilabel>. Il n'est pas disponible si vous avez coch&eacute; la case <guilabel>Utiliser les couleurs du th&egrave;me par d&eacute;faut</guilabel>.</para>
+		<para>Par d&eacute;faut :noir.</para>
+		</listitem>
+		</varlistentry>	
+	</variablelist>
+        
+     </sect2>
+     
+     <sect2 id="command-line-prefs-2"> 
+        <title>Macros</title>
+        <para>Cet onglet contient une liste des macros que vous pouvez utiliser avec <application>&applet;</application>. Elle contient les informations suivantes :
+          <itemizedlist>
+             <listitem>
+                <para>Une liste des expressions r&eacute;guli&egrave;res UNIX dans la colonne de gauche. 
+                </para>
+                <para>Une expression r&eacute;guli&egrave;re est un mod&egrave;le de caract&egrave;res ou de nombres utilis&eacute; pour &eacute;tablir des correspondances avec des cha&icirc;nes. Consultez les pages du manuel relatives &agrave; <command>regex</command> pour plus d'informations sur la construction des expressions r&eacute;guli&egrave;res. 
+                </para>
+             </listitem>
+             <listitem>
+                <para>Une liste de macros dans la colonne de droite. 
+                </para>
+                <para>Une macro s'ex&eacute;cute si l'expression r&eacute;guli&egrave;re qui lui est associ&eacute;e correspond parfaitement &agrave; la commande entr&eacute;e dans la <guilabel>zone de saisie</guilabel> de <application>&applet;</application>.
+       Les macros sont des commandes qui peuvent utiliser les param&egrave;tres analys&eacute;s par l'expression r&eacute;guli&egrave;re.
+                </para>
+             </listitem>
+          </itemizedlist>Vous pouvez ajouter ou modifier des expressions r&eacute;guli&egrave;res ou des macros. 
+        </para>
+     </sect2>
+  </sect1>
+</article>
+

@@ -1,0 +1,175 @@
+<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "1.104.0">
+  <!ENTITY manrevision "2.2">
+  <!ENTITY date "Agosto 2002">
+  <!ENTITY applet "gEyes">
+]>
+
+<!--
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Mar 12, 2002
+
+-->
+
+<article id="index" lang="es">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo>
+	 <title>Manual del aplique &applet; V&manrevision;</title>
+	 <copyright>
+		<year>2003</year>
+		<holder>Sun Microsystems</holder>
+	 </copyright>
+	 <copyright>
+		<year>2000</year>
+		<holder>Telsa Gwynne</holder>
+	 </copyright>
+<!-- translators: uncomment this:
+
+  <copyright>
+   <year>2002</year>
+   <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+  </copyright>
+
+   -->
+
+	 <publisher>
+		<publishername>Proyecto de documentaci&oacute;n de GNOME</publishername>
+	 </publisher>
+&legal;
+
+	 <authorgroup>
+		<author>
+		  <firstname>Equipo de documentaci&oacute;n de</firstname>
+		  <surname>Sun GNOME</surname>
+		  <affiliation>
+			 <orgname>Sun Microsystems</orgname>
+			 <address> <email>gdocteam@sun.com</email> </address>
+		  </affiliation>
+		</author>
+		<author>
+		  <firstname>Telsa</firstname>
+		  <surname>Gwynne</surname>
+		  <affiliation>
+			 <orgname>Proyecto de documentaci&oacute;n de GNOME</orgname>
+			 <address> <email>hobbit@aloss.ukuu.org.uk</email> </address>
+		  </affiliation>
+		</author>
+		<author>
+		  <firstname>Arjan</firstname>
+		  <surname>Scherpenisse</surname>
+		  <affiliation>
+			 <orgname>Proyecto de documentaci&oacute;n de GNOME</orgname>
+			 <address> <email>acscherp@wins.uva.nl</email> </address>
+		  </affiliation>
+		</author>
+      <!-- This is appropriate place for other contributors: translators,
+           maintainers,  etc. Commented out by default.
+           <othercredit role="translator">
+	     <firstname>Latin</firstname>
+	     <surname>Translator 1</surname>
+	     <affiliation>
+	       <orgname>Latin Translation Team</orgname>
+	       <address> <email>translator@gnome.org</email> </address>
+	     </affiliation>
+	     <contrib>Latin translation</contrib>
+           </othercredit>
+-->
+	 </authorgroup>
+
+	 <revhistory>
+		<revision>
+		  <revnumber>Manual del aplique &applet; V&manrevision;</revnumber>
+		  <date>&date;</date>
+		  <revdescription>
+			 <para role="author">Equipo de documentaci&oacute;n de Sun GNOME				<email>gdocteam@sun.com</email></para>
+			 <para role="publisher">Proyecto de documentaci&oacute;n de GNOME</para>
+		  </revdescription>
+		</revision>
+		<revision>
+		  <revnumber>Manual del aplique de Geyes V2.1</revnumber>
+		  <date>Junio 2002</date>
+		  <revdescription>
+			 <para role="author">Equipo de documentaci&oacute;n de Sun GNOME				<email>gdocteam@sun.com</email></para>
+			 <para role="publisher">Proyecto de documentaci&oacute;n de GNOME</para>
+		  </revdescription>
+		</revision>
+		<revision>
+		  <revnumber>Manual del aplique de Geyes V2.0</revnumber>
+		  <date>Marzo 2002</date>
+		  <revdescription>
+			 <para role="author">Equipo de documentaci&oacute;n de Sun GNOME				<email>gdocteam@sun.com</email></para>
+			 <para role="publisher">Proyecto de documentaci&oacute;n de GNOME</para>
+		  </revdescription>
+		</revision>
+		<revision>
+		  <revnumber>Aplique gEyes</revnumber>
+		  <date>2000</date>
+		  <revdescription>
+			 <para role="author">Telsa Gwynne
+				<email>hobbit@aloss.ukuu.org.uk</email></para>
+			 <para role="author">Arjan Scherpenisse
+				<email>acscherp@wins.uva.nl</email></para>
+			 <para role="publisher">Proyecto de documentaci&oacute;n de GNOME</para>
+		  </revdescription>
+		</revision>
+	 </revhistory>
+	 <releaseinfo> Este manual describe la versi&oacute;n &appletversion; de &applet;.
+		</releaseinfo>
+	 <legalnotice>
+		<title>Comentarios</title>
+		<para> Para informar de un defecto o hacer una sugerencia sobre el aplique &applet; o el presente manual, siga las indicaciones que aparecen en la
+		  <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>. </para>
+
+	 </legalnotice>
+  </articleinfo>
+  <indexterm>
+	 <primary>Geyes</primary>
+  </indexterm>
+
+<!-- ============= Document Body ============================= -->
+<!-- ============= Introduction ============================== -->
+<sect1 id="geyes-introduction"><title>Introducci&oacute;n</title>
+<!-- ==== Figure ============================================= -->
+	 <figure id="geyes-fig">
+		<title>Aplique de &applet; </title>
+		<screenshot>
+		  <mediaobject>
+			 <imageobject><imagedata fileref="figures/geyes_applet.png" format="PNG"/>
+			 </imageobject>
+			 <textobject>
+				<phrase>Muestra el aplique de Geyes</phrase>
+			 </textobject>
+		  </mediaobject>
+		</screenshot>
+	 </figure>
+    <!-- ==== End of Figure ======================================= -->
+<para>El aplique de <application>&applet;</application> permite seguir el movimiento del puntero por el escritorio. El aplique es una imagen de uno o m&aacute;s ojos que sigue el puntero del rat&oacute;n por toda la pantalla.</para>
+<para>Para a&ntilde;adir <application>&applet;</application> a un panel, haga clic con el bot&oacute;n derecho del rat&oacute;n en el panel y luego seleccione <menuchoice>
+	<guimenu>A&ntilde;adir al panel</guimenu>
+	<guisubmenu>Entretenimientos</guisubmenu>
+	<guimenuitem>Geyes</guimenuitem>
+	</menuchoice>.</para>
+</sect1>
+<!-- ============= Preferences  ================================ -->
+<sect1 id="geyes-settings">
+<title>Preferencias</title>
+<para>Para configurar <application>&applet;</application>, haga clic con el bot&oacute;n derecho del rat&oacute;n en el aplique y, a continuaci&oacute;n, seleccione <guimenu>Preferencias</guimenu>. </para>
+<variablelist>
+<varlistentry>
+<term><guilabel>Nombre del tema</guilabel> </term>
+<listitem>
+<para>En la lista que aparece a continuaci&oacute;n, elija un dise&ntilde;o para <application>&applet;</application>.
+Los dise&ntilde;os var&iacute;an entre Horrid y Bizarre, lo que permite ofrecer una presentaci&oacute;n diferente de <application>
+&applet;</application>.</para>
+<para>Valor predeterminado:   <guilabel>.../Default-tiny</guilabel>.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+</sect1>
+</article>

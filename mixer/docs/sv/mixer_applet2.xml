@@ -1,0 +1,173 @@
+<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "1.99.0">
+  <!ENTITY manrevision "2.1">
+  <!ENTITY date "August 2002">
+  <!ENTITY applet "Volume Control">
+]>
+
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Mar 12, 2002
+  
+-->
+
+<article id="index" lang="sv">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo>
+	 <title>Manual f&ouml;r panelprogrammet &applet;, version&nbsp;&manrevision;</title>
+	 <copyright> 
+		<year>2003</year>  
+		<holder>Sun Microsystems</holder> 
+	 </copyright> 
+	 <copyright> 
+		<year>2000</year> 
+		<holder>Dan Mueth</holder> 
+	 </copyright>
+<!-- translators: uncomment this:
+
+  <copyright>
+   <year>2002</year>
+   <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+  </copyright>
+
+   -->
+
+	 <publisher> 
+		<publishername>Dokumentationsprojekt f&ouml;r GNOME</publishername> 
+	 </publisher> 
+
+&legal;
+
+
+	 <authorgroup>
+		<author> 
+		  <firstname>Suns</firstname> 
+		  <surname>GNOME-dokumentationsteam</surname> 
+		  <affiliation> 
+			 <orgname>Sun Microsystems</orgname> 
+			 <address> <email>gdocteam@sun.com</email> </address>
+		  </affiliation>
+		</author>
+		<author> 
+		  <firstname>Dan</firstname> 
+		  <surname>Mueth</surname> 
+		  <affiliation> 
+			 <orgname>Dokumentationsprojekt f&ouml;r GNOME</orgname> 
+			 <address> <email>d-mueth@uchicago.edu</email> </address>
+		  </affiliation>
+		</author>
+      <!-- This is appropriate place for other contributors: translators,
+           maintainers,  etc. Commented out by default.
+           <othercredit role="translator">
+	     <firstname>Latin</firstname> 
+	     <surname>Translator 1</surname> 
+	     <affiliation> 
+	       <orgname>Latin Translation Team</orgname> 
+	       <address> <email>translator@gnome.org</email> </address> 
+	     </affiliation>
+	     <contrib>Latin translation</contrib>
+           </othercredit>
+-->
+	 </authorgroup>
+
+	 <revhistory>
+		<revision> 
+		  <revnumber>Manual f&ouml;r panelprogrammet &applet;, version &manrevision;</revnumber> 
+		  <date>&date;</date> 
+		  <revdescription> 
+			 <para role="author">Suns GNOME-dokumentationsteam
+				<email>gdocteam@sun.com</email></para>
+			 <para role="publisher">Dokumentationsprojekt f&ouml;r GNOME</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>Manual f&ouml;r panelprogrammet Volymkontroll, version 2.0</revnumber> 
+		  <date>April 2002</date> 
+		  <revdescription> 
+			 <para role="author">Suns GNOME-dokumentationsteam
+				<email>gdocteam@sun.com</email></para>
+			 <para role="publisher">Dokumentationsprojekt f&ouml;r GNOME</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>Panelprogrammet Mixer</revnumber> 
+		  <date>2000</date> 
+		  <revdescription> 
+			 <para role="author">Dan Mueth
+				<email>d-mueth@uchicago.edu</email></para>
+			 <para role="publisher">Dokumentationsprojekt f&ouml;r GNOME</para>
+		  </revdescription>
+		</revision>
+	 </revhistory>
+	 <releaseinfo> I den h&auml;r manualen beskrivs version &appletversion; av &applet;.
+		</releaseinfo>
+	 <legalnotice> 
+		<title>Feedback</title>
+		<para> Om du vill rapportera ett fel eller ge f&ouml;rslag om panelprogrammet &applet;
+		  eller den h&auml;r manualen f&ouml;ljer du instruktionerna p&aring; 
+		  <ulink url="ghelp:gnome-feedback" type="help">GNOME:s feedbacksida</ulink>. </para>
+		
+	 </legalnotice>
+  </articleinfo>
+  <indexterm> 
+	 <primary>Volymkontroll</primary> 
+  </indexterm> 
+
+<!-- ============= Document Body ============================= -->
+<!-- ============= Introduction ============================== -->
+<sect1 id="volumecontrol-introduction">
+<title>Introduktion</title>
+<!-- ==== Figure ============================================= -->
+	 <figure id="volumecontrol-fig"> 
+		<title>Panelprogrammet &applet;</title>
+		<screenshot>
+		  <mediaobject>
+			 <imageobject><imagedata fileref="figures/volumecontrol_applet.png" format="PNG"/> 
+			 </imageobject>
+			 <textobject>
+				<phrase>Visar panelprogrammet Volymkontroll. Inneh&aring;ller en bild av en h&ouml;gtalare.</phrase>
+			 </textobject>
+		  </mediaobject>
+		</screenshot>
+	 </figure>
+    <!-- ==== End of Figure ======================================= -->
+<para>Med panelprogrammet <application>&applet;</application> kan du kontrollera volymen i systemet. Programikonen &auml;ndras 
+beroende p&aring; vilken volymniv&aring; du v&auml;ljer. Om du till exempel v&auml;ljer en l&aring;g volym visar ikonen en ljudv&aring;g fr&aring;n h&ouml;gtalaren i panelprogrammets ikon. Om du h&ouml;jer volymen &auml;ndras ikonen s&aring; att den visar fler ljudv&aring;gor. </para>
+<para>Du l&auml;gger till <application>&applet;</application> p&aring; en panel genom att h&ouml;gerklicka p&aring; panelen och v&auml;lja <menuchoice>
+	<guimenu>L&auml;gg till p&aring; panelen</guimenu>
+	<guisubmenu>Multimedia</guisubmenu>
+	<guimenuitem>Volymkontroll</guimenuitem>
+	</menuchoice>.</para>
+</sect1>
+
+<sect1 id="volumecontrol-usage">
+<title>Anv&auml;ndning</title>
+
+	<sect2 id="volumecontrol-adjust">
+<title>S&aring; h&auml;r &auml;ndrar du volymen</title>
+	<para>Klicka p&aring; panelprogrammet f&ouml;r att visa ett skjutreglage. Om du vill h&ouml;ja volymen flyttar 
+	du reglaget upp&aring;t. Om du vill s&auml;nka volymen flyttar du reglaget ned&aring;t. </para>
+	</sect2>
+	
+	<sect2 id="volumecontrol-off">
+	<title>S&aring; h&auml;r st&auml;nger du av volymen</title>
+	<para>Du st&auml;nger av volymen genom att h&ouml;gerklicka p&aring; panelprogrammet och sedan 
+	v&auml;lja <guimenuitem>Tyst</guimenuitem>. </para>
+	</sect2>
+	
+	<sect2 id="volumecontrol-add">
+	<title>S&aring; h&auml;r kommer du &aring;t ytterligare funktioner</title>
+	<para>Om du vill komma &aring;t ytterligare volymfunktioner h&ouml;gerklickar du p&aring; panelprogrammet och v&auml;ljer sedan 
+	<guimenuitem>K&ouml;r ljudmixer</guimenuitem>. D&aring; startas ett ljudmixerprogram med vilket du kan kontrollera volym och balans f&ouml;r uppspelning och inspelning av ljud.</para>
+	</sect2>
+
+
+</sect1>
+
+</article>

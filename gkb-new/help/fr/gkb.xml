@@ -1,0 +1,348 @@
+<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "1.101.0">
+  <!ENTITY manrevision "2.1">
+  <!ENTITY date "August 2002">
+  <!ENTITY applet "Keyboard Layout Switcher">
+]>
+
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Apr 11, 2002
+  
+-->
+<!-- =============Document Header ============================= -->
+<article id="index" lang="fr">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo>
+	 <title>&applet; Manuel de l'applet V&manrevision;</title>
+	 <copyright> 
+		<year>2003</year>  
+		<holder>Sun Microsystems</holder> 
+	 </copyright> 
+	 <copyright> 
+		<year>2000</year>  
+		<holder>Szabolcs (Shooby) BAN et Dan Mueth</holder> 
+	 </copyright> 
+<!-- translators: uncomment this:
+
+  <copyright>
+   <year>2002</year>
+   <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+  </copyright>
+
+   -->
+
+	 <publisher> 
+		<publishername>Projet de documentation GNOME</publishername> 
+	 </publisher> 
+
+&legal;
+<!-- This file  contains link to license for the documentation (GNU FDL), and 
+     other legal stuff such as "NO WARRANTY" statement. Please do not change 
+     any of this. -->
+
+	 <authorgroup>
+		<author> 
+		  <firstname>Sun</firstname> 
+		  <surname>&Eacute;quipe de documentation GNOME</surname> 
+		  <affiliation> 
+			 <orgname>Sun Microsystems</orgname> 
+			 <address> <email>gdocteam@sun.com</email> </address>
+		  </affiliation>
+		</author>
+		<author> 
+		  <firstname>Emese</firstname> 
+		  <surname>Kovacs</surname> 
+		  <affiliation> 
+			 <orgname>Projet de documentation GNOME</orgname> 
+			 <address> <email>emese@gnome.hu</email> </address>
+		  </affiliation>
+		</author>
+		<author> 
+		  <firstname>Szabolcs (Shooby)</firstname> 
+		  <surname>BAN</surname> 
+		  <affiliation> 
+			 <orgname>Projet de documentation GNOME</orgname> 
+			 <address> <email>shooby@gnome.hu</email> </address>
+		  </affiliation>
+		</author>
+		<author> 
+		  <firstname>Dan</firstname> 
+		  <surname>Mueth</surname> 
+		  <affiliation> 
+			 <orgname>Projet de documentation GNOME</orgname> 
+			 <address> <email>d-mueth@uchicago.edu</email> </address>
+		  </affiliation>
+		</author>
+      <!-- This is appropriate place for other contributors: translators,
+           maintainers,  etc. Commented out by default.
+        <othercredit role="translator">
+	      <firstname>Latin</firstname> 
+	      <surname>Translator 1</surname> 
+	      <affiliation> 
+	      	<orgname>Latin Translation Team</orgname> 
+	       	<address> <email>translator@gnome.org</email> </address> 
+	      </affiliation>
+	      <contrib>Latin translation</contrib>
+        </othercredit>
+-->
+	 </authorgroup>
+	  
+	 <revhistory>
+		<revision> 
+		  <revnumber>Manuel de l'applet &applet; V&manrevision;</revnumber> 
+		  <date>&date;</date> 
+		<revdescription> 
+			 <para role="author">&Eacute;quipe de documentation Sun GNOME
+				<email>gdocteam@sun.com</email></para>
+			 <para role="publisher">Projet de documentation GNOME</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>Manuel de l'applet Keyboard Layout Switcher V2.0</revnumber> 
+		  <date>Mai 2002</date> 
+		<revdescription> 
+			 <para role="author">&Eacute;quipe de documentation Sun GNOME
+				<email>gdocteam@sun.com</email></para>
+			 <para role="publisher">Projet de documentation GNOME</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>Applet GNOME Keyboard</revnumber> 
+		  <date>Janvier 2002</date>
+		  <revdescription> 
+			 <para role="author">Emese Kovacs
+				<email>emese@gnome.hu</email></para>	
+			 <para role="publisher">Projet de documentation GNOME</para>
+		  </revdescription>		  
+		</revision>
+		<revision> 
+		  <revnumber>Applet GNOME Keyboard</revnumber> 
+		  <date>2000</date>
+		  <revdescription> 
+			 <para role="author">Szabolcs (Shooby) BAN
+				<email>shooby@gnome.hu</email></para>
+			 <para role="author">Dan Mueth
+				<email>d-mueth@uchicago.edu</email></para>
+			 <para role="author">Emese Kovacs
+				<email>emese@gnome.hu</email></para>	
+			 <para role="publisher">Projet de documentation GNOME</para>
+		  </revdescription>		  
+		</revision>
+	 </revhistory>
+	 <releaseinfo>Le pr&eacute;sent manuel d&eacute;crit la version &appletversion; de &applet;.
+		</releaseinfo>
+	 <legalnotice> 
+		<title>Votre avis</title>
+		<para>Pour signaler un probl&egrave;me ou faire une suggestion concernant l'applet &applet; ou le pr&eacute;sent manuel, proc&eacute;dez comme indiqu&eacute; &agrave; la <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>. </para>
+		
+	 </legalnotice>
+  </articleinfo>
+  <indexterm> 
+	 <primary>Keyboard Layout Switcher</primary> 
+  </indexterm> 
+
+<!-- ============= Document Body ============================= -->
+<!-- ============= Introduction ============================== -->
+
+  <sect1 id="gkb-introduction"> 
+
+	 <title>Introduction</title>
+
+	 <figure id="gkb-fig"> 
+		<title>Applet &applet;</title>
+		<screenshot>
+		  <mediaobject>
+			 <imageobject><imagedata fileref="figures/gkb_applet.png" format="PNG"/> 
+			 </imageobject>
+			 <textobject>
+				<phrase>Affiche l'applet &applet;. Contient le drapeau et l'&eacute;tiquette de la disposition de clavier courante.
+				</phrase>
+			 </textobject>
+		  </mediaobject>
+		</screenshot>
+	 </figure>
+
+	 <para>L'applet <application>&applet;</application> vous permet de modifier la disposition du clavier afin de l'adapter aux param&egrave;tres r&eacute;gionaux. Il affiche le drapeau et l'&eacute;tiquette associ&eacute;s &agrave; la disposition de clavier courante.</para>
+	 <para>Pour ajouter <application>&applet;</application> &agrave; un tableau de bord, cliquez avec le bouton droit sur celui-ci, puis s&eacute;lectionnez 
+		<menuchoice> 
+		<guimenu>Ajouter au tableau de bord</guimenu>
+		<guisubmenu>Utilitaires</guisubmenu> 
+		  <guimenuitem>&applet;</guimenuitem> 
+		</menuchoice>.</para>
+  </sect1>
+
+
+  <sect1 id="gkb-usage">
+   
+	 <title>Utilisation</title>
+
+	 <para>Pour activer une autre disposition de clavier, cliquez plusieurs fois sur l'applet jusqu'&agrave; ce qu'il propose la disposition souhait&eacute;e. Si la disposition de clavier voulue n'appara&icirc;t pas, vous pouvez l'ajouter &agrave; l'applet. Pour cela, consultez <xref linkend="gkb-keymaps"/> pour obtenir des informations sur la proc&eacute;dure &agrave; suivre.</para>
+
+  </sect1>
+
+
+  <sect1 id="gkb-prefs"> 
+	 <title>Pr&eacute;f&eacute;rences</title>
+	 <para>Pour configurer <application>&applet;</application>, cliquez avec le bouton droit sur celui-ci, puis s&eacute;lectionnez <guimenuitem>Pr&eacute;f&eacute;rences</guimenuitem>.</para>
+
+	 <sect2 id="gkb-keymaps"> 
+		
+		<title>Tables de caract&egrave;res</title>
+		
+		<para>L'onglet <guilabel>Tables de caract&egrave;res</guilabel> pr&eacute;sente les dispositions de clavier actuellement prises en charge par l'applet. </para>
+		
+		<sect3 id="gkb-modify-list">
+		
+		<title>Modification de la liste des dispositions de clavier</title>
+		
+		<para>Pour ajouter une disposition de clavier &agrave; la liste <guilabel>Tables de caract&egrave;res</guilabel>, proc&eacute;dez comme suit :</para>
+		<orderedlist>
+			<listitem><para>Cliquez sur <guibutton>Ajouter</guibutton> dans l'onglet <guilabel>Tables de caract&egrave;res</guilabel>. L'applet affiche la bo&icirc;te de dialogue <guilabel>S&eacute;lectionner un clavier</guilabel>.</para></listitem>
+			<listitem><para>Cliquez sur la fl&egrave;che situ&eacute;e en regard du pays correspondant au clavier &agrave; ajouter, puis s&eacute;lectionnez la disposition de clavier souhait&eacute;e. </para></listitem>
+			<listitem><para>Cliquez sur le bouton <guibutton>Ajouter</guibutton> pour ajouter la disposition de clavier &agrave; la liste <guilabel>Tables de caract&egrave;res</guilabel>.</para></listitem>
+		</orderedlist>
+		
+		<para>Pour supprimer une disposition de clavier de la liste, s&eacute;lectionnez-la, puis cliquez sur <guibutton>Supprimer</guibutton>.</para>
+		
+		<para>Pour d&eacute;placer une disposition de clavier vers le haut de la liste <guilabel>Tables de caract&egrave;res</guilabel>, s&eacute;lectionnez-la, puis cliquez sur <guibutton>Haut</guibutton>. Pour d&eacute;placer une disposition de clavier vers le bas de la liste <guilabel>Tables de caract&egrave;res</guilabel>, s&eacute;lectionnez-la, puis cliquez sur <guibutton>Bas</guibutton>. </para>
+		
+		</sect3>
+		
+		<sect3 id="gkb-edit-layout">
+		
+		<title>&Eacute;dition d'une disposition de clavier</title>
+		<para>Pour &eacute;diter une disposition de clavier, s&eacute;lectionnez-la, puis cliquez sur <guibutton>&Eacute;dition</guibutton>. La bo&icirc;te de dialogue <guilabel>Tables de caract&egrave;res</guilabel> contient les &eacute;l&eacute;ments suivants :</para>
+		
+		<table frame="topbot" id="tbl-edit-layout">
+    		<title>El&eacute;ments d'&eacute;dition du clavier</title>
+		<tgroup cols="2" colsep="1" rowsep="1">
+		<colspec colname="COLSPEC0" colwidth="33*"/>
+		<colspec colname="COLSPEC1" colwidth="33*"/>
+		<thead>
+		 <row valign="top">
+		  <entry>
+		  <para>El&eacute;ment de la bo&icirc;te de dialogue</para></entry>
+		  <entry>
+		  <para>Description</para></entry>
+		 </row>
+	 	</thead>
+		<tbody>
+		 <row valign="top">
+		  <entry>
+		  <para><guilabel>Nom</guilabel></para></entry>
+		  <entry>
+		  <para>Nom de la disposition de clavier. Ce nom figure dans l'onglet <guilabel>Tables de caract&egrave;res</guilabel> de la bo&icirc;te de dialogue <guilabel>Pr&eacute;f&eacute;rences</guilabel>.</para></entry>
+		 </row>
+		 <row valign="top">
+		  <entry>
+		  <para><guilabel>&Eacute;tiquette</guilabel></para></entry>
+		  <entry>
+		  <para>Etiquette d&eacute;signant la disposition de clavier. Par exemple, la d&eacute;signation d'un clavier anglais (Etats-Unis) est <guilabel>us</guilabel>. Par d&eacute;faut, l'applet affiche le drapeau et l'&eacute;tiquette de la disposition de clavier. </para></entry>
+		 </row>
+		 <row valign="top">
+		  <entry>
+		  <para><guilabel>Langue</guilabel></para></entry>
+		  <entry>
+		  <para>Langue &agrave; laquelle la disposition de clavier est adapt&eacute;e.</para></entry>
+		 </row>
+		 <row valign="top">
+		  <entry>
+		  <para><guilabel>Pays</guilabel></para></entry>
+		  <entry>
+		  <para>Pays o&ugrave; la disposition de clavier est utilis&eacute;e.</para></entry>
+		 </row>
+		 <row valign="top">
+		  <entry>
+		  <para><guilabel>Drapeau Pixmap</guilabel></para></entry>
+		  <entry>
+		  <para>Drapeau qui repr&eacute;sente le pays dans lequel la disposition de clavier est utilis&eacute;e. Par d&eacute;faut, l'applet affiche le drapeau et l'&eacute;tiquette de la disposition de clavier courante. Cliquez sur le drapeau pour afficher la bo&icirc;te de dialogue de s&eacute;lection de drapeau. </para></entry>
+		 </row>
+		 <row valign="top">
+		  <entry>
+		  <para><guilabel>Architecture</guilabel></para></entry>
+		  <entry>
+		  <para>Type de syst&egrave;me mat&eacute;riel.</para></entry>
+		 </row>
+		 <row valign="top">
+		  <entry>
+		  <para><guilabel>Type</guilabel></para></entry>
+		  <entry>
+		  <para>Type de clavier, par exemple, 101 touches, 105 touches, etc.</para></entry>
+		 </row>
+		 <row valign="top">
+		  <entry>
+		  <para><guilabel>Page de code</guilabel></para></entry>
+		  <entry>
+		  <para>Jeu de codes utilis&eacute; par la langue du clavier. Par exemple, l'anglais (Etats-Unis) utilise le code d'Europe occidentale ISO-8859-1 par d&eacute;faut.</para></entry>
+		 </row>
+		 <row valign="top">
+		  <entry>
+		  <para><guilabel>Commande</guilabel></para></entry>
+		  <entry>
+		  <para>Commande utilis&eacute;e par l'applet pour modifier la disposition de clavier. Vous pouvez utiliser n'importe laquelle des commandes suivantes pour modifier la disposition de clavier :</para>
+		  <para><command>gkb_xmmap <replaceable>us</replaceable></command> o&ugrave; <replaceable>us</replaceable> repr&eacute;sente l'extension du fichier <filename>xmodmap</filename> de la disposition de clavier ;</para>
+		  <para><command>xmodmap <replaceable>/path/xmodmap.us</replaceable></command> o&ugrave; <replaceable>/path/xmodmap.us</replaceable> repr&eacute;sente le fichier <filename>xmodmap</filename> de la disposition de clavier ;</para>
+		  <para><command>setxkbmap <replaceable>us</replaceable></command> o&ugrave; <replaceable>us</replaceable> repr&eacute;sente l'extension du fichier <filename>xmodmap</filename> de la disposition de clavier.</para>
+		  </entry>
+		 </row>
+	 	</tbody>
+		</tgroup>
+		</table>
+		</sect3>
+		
+	 </sect2>
+	 
+	 <sect2 id="gkb-options">
+	 
+	 	<title>Options</title>
+	 	<variablelist>
+		  <varlistentry> 
+			 <term><guilabel>Apparance</guilabel></term> 
+			 <listitem>
+			 <para>S&eacute;lectionnez l'une des options suivantes dans la zone de liste d&eacute;roulante pour sp&eacute;cifier ce que l'applet doit afficher dans le tableau de bord :</para>
+			 <itemizedlist>
+			 	<listitem><para><guilabel>Drapeau</guilabel></para>
+			 	<para>Affiche un drapeau uniquement.</para></listitem>
+			 	<listitem><para><guilabel>&Eacute;tiquette</guilabel></para>
+			 	<para>Affiche une &eacute;tiquette uniquement.</para></listitem>
+			 	<listitem><para><guilabel>Drapeau et &eacute;tiquette</guilabel></para>
+			 	<para>Affiche un drapeau et une &eacute;tiquette.</para></listitem>
+			 </itemizedlist>
+			 <para>Vous devez red&eacute;marrer votre ordinateur pour que les modifications apport&eacute;es &agrave; ce param&egrave;tre soient prises en compte.</para>
+			 <para>Par d&eacute;faut : <guilabel>Drapeau et &eacute;tiquette</guilabel>.</para>
+			 </listitem>
+		  </varlistentry>
+		  <varlistentry> 
+			 <term><guilabel>Taille</guilabel></term> 
+			 <listitem>
+			 <para>S&eacute;lectionnez l'une des options suivantes dans la zone de liste d&eacute;roulante pour sp&eacute;cifier la taille de l'applet dans le tableau de bord : </para>
+			 <itemizedlist>
+			 	<listitem><para><guilabel>Normal</guilabel></para></listitem>
+			 	<listitem><para><guilabel>Grand</guilabel></para></listitem>
+			 </itemizedlist>
+			 <para>Vous devez red&eacute;marrer votre ordinateur pour que les modifications apport&eacute;es &agrave; ce param&egrave;tre soient prises en compte.</para>
+			 <para>Par d&eacute;faut : <guilabel>Grand</guilabel>.</para>
+			 </listitem>
+		  </varlistentry>
+		  <varlistentry> 
+			 <term><guilabel>Touche de raccourci pour basculer entre les dispositions</guilabel></term> 
+			 <listitem>
+			 <para>Vous pouvez utiliser un raccourci clavier pour basculer entre les dispositions de clavier. Pour le personnaliser, cliquez sur <guibutton>Capturer la touche de raccourci</guibutton>, puis appuyez sur les touches &agrave; utiliser. L'applet affiche la touche de raccourci dans la zone de texte. Le raccourci clavier par d&eacute;faut est <keycombo><keycap>Alt</keycap><keycap>Maj</keycap></keycombo>, qui appara&icirc;t dans la zone de texte de l'applet sous la forme de Mod1-Shift_L.</para>
+			 <para>Par d&eacute;faut : Mod1-Shift_L.</para>
+			 </listitem>
+		  </varlistentry>
+		</variablelist>
+	 
+	 </sect2>
+
+  </sect1>
+
+</article>
+

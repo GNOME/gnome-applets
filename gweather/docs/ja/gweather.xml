@@ -1,0 +1,598 @@
+<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "1.104.0">
+  <!ENTITY manrevision "2.2">
+  <!ENTITY date "2002 年 8 月">
+  <!ENTITY applet "天気概況">
+]>
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Feb 12, 2002
+-->
+<!-- =============Document Header ============================= -->
+<article id="index" lang="ja">
+   <!-- please do not change the id; for translations, change lang to -->
+   <!-- appropriate code -->
+     
+   <articleinfo>
+      <title>&applet; アプレットのマニュアル V&manrevision;</title>	 
+      <copyright>
+		<year>2002</year>
+		<holder>Sun GNOME ドキュメンテーションチーム</holder>    	 
+      </copyright>
+        	 
+      <copyright>
+		<year>1999</year>  		
+		<year>2000</year>
+		<holder>Spiros Papadimitriou, Dan Mueth</holder>  	 
+      </copyright>
+      <!-- translators: uncomment this:
+      
+        <copyright>
+         <year>2002</year>
+         <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+        </copyright>
+      
+         -->
+      <!-- An address can be added to the publisher information.  If a role is 
+           not specified, the publisher/author is the same for all versions of the 
+           document.  -->
+      	 
+      <publisher>
+		<publishername> GNOME ドキュメンテーションプロジェクト </publishername>  	 
+      </publisher>
+        &legal;
+      <!-- This file  contains link to license for the documentation (GNU FDL), and 
+           other legal stuff such as "NO WARRANTY" statement. Please do not change 
+           any of this. -->
+      	 
+      <authorgroup>
+           		
+	<author>
+	<firstname>Sun </firstname>  		  
+	<surname>GNOME ドキュメンテーションチーム</surname>            		  
+
+            <affiliation>
+		<orgname>Sun Microsystems</orgname>  			 
+		<address><email>gdocteam@sun.com</email></address>		  
+            </affiliation>
+              		
+        </author>
+           		
+        <author>
+	<firstname>Spiros</firstname>  		  
+	<surname>Papadimitriou</surname>
+             		  
+            <affiliation>
+		<orgname>GNOME ドキュメンテーションプロジェクト</orgname>  			 
+		<address><email>spapadim+@cs.cmu.edu</email> </address>		  
+            </affiliation>
+              		
+         </author>
+           		
+         <author>
+	 <firstname>Dan</firstname>
+	 <surname>Mueth</surname>  	
+	  
+	     <affiliation>
+ 		<orgname>GNOME ドキュメンテーションプロジェクト</orgname>  			 
+		<address><email>d-mueth@uchicago.edu</email> </address>		  
+             </affiliation>
+              		
+         </author>
+               
+         <!-- This is appropriate place for other contributors: translators,
+                    maintainers,  etc. Commented out by default.
+                    <othercredit role="translator">
+         	     <firstname>Latin</firstname> 
+         	     <surname>Translator 1</surname> 
+         	     <affiliation> 
+         	       <orgname>Latin Translation Team</orgname> 
+         	       <address> <email>translator@gnome.org</email> </address> 
+         	     </affiliation>
+         	     <contrib>Latin translation</contrib>
+                    </othercredit>
+         -->
+         	 
+      </authorgroup>
+      	 
+      <revhistory>
+         		
+         <revision>
+              	<revnumber>&applet; アプレットのマニュアル V&manrevision;</revnumber>  		
+             	<date>2002 年 8 月</date>  		  
+            	<revdescription>
+                 			 
+		<para role="author">Sun GNOME ドキュメンテーションチーム <email>gdocteam@sun.com</email>
+		</para>
+                 			 
+		<para role="publisher">
+                  GNOME ドキュメンテーションプロジェクト
+                </para>
+                 		  
+            </revdescription>
+              		
+         </revision>
+         
+         <revision>
+              	<revnumber>天気概況アプレットのマニュアル V2.1</revnumber>  		
+             	<date>2002 年 7 月</date>  		  
+            	<revdescription>
+                 			 
+		<para role="author">Sun GNOME ドキュメンテーションチーム <email>gdocteam@sun.com</email>
+		</para>
+                 			 
+		<para role="publisher">
+                  GNOME ドキュメンテーションプロジェクト
+                </para>
+                 		  
+            </revdescription>
+              		
+         </revision>
+         
+         <revision>
+              	<revnumber>天気概況アプレットのマニュアル V2.0</revnumber>  		
+             	<date>2002 年 3 月</date>  		  
+            	<revdescription>
+                 			 
+		<para role="author">Sun GNOME ドキュメンテーションチーム <email>gdocteam@sun.com</email>
+		</para>
+                 			 
+		<para role="publisher">
+                  GNOME ドキュメンテーションプロジェクト
+                </para>
+                 		  
+            </revdescription>
+              		
+         </revision>
+           		
+         <revision>
+		<revnumber>GNOME Weather アプレット</revnumber>  		  
+		<date>2000 年</date>
+             		  
+            <revdescription>
+                 			 
+               <para role="author">
+                  Spiros Papadimitriou 				
+		  <email>spapadim+@cs.cmu.edu</email>
+               </para>
+                 			 
+               <para role="author">
+                  Dan Mueth 				
+		  <email>d-mueth@uchicago.edu</email>
+               </para>
+               			 
+               <para role="publisher">
+                  GNOME ドキュメンテーションプロジェクト
+               </para>
+                 		  
+            </revdescription>
+              		
+         </revision>
+           	 
+      </revhistory>
+        	 
+      <releaseinfo>このマニュアルは &applet; のバージョン &appletversion; について説明します。		
+      </releaseinfo>
+        	 
+      <legalnotice> 
+      <title>フィードバック</title>		
+         <para>&applet; アプレットまたはこのマニュアルに関してバグやご意見をご報告いただく場合は、<ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink> にある説明に従ってください。 
+ </para>
+         		 	 
+      </legalnotice>
+          
+   </articleinfo>
+       <indexterm>  	 
+       <primary>天気概況</primary>    
+       </indexterm> 
+   <!-- ============= Document Body ============================= -->
+   <!-- ============= Introduction ============================== -->
+   <sect1 id="gweather-introduction"> 
+    <title>概要</title>
+      <!-- ==== Figure ============================================= -->
+      	 
+      <figure id="weather-applet-fig">
+	<title>&applet; アプレット</title>		
+         <screenshot>		  
+            <mediaobject>			 
+               <imageobject>
+                  <imagedata fileref="figures/gweather_applet.png" format="PNG"/>                  			 
+               </imageobject>
+               <textobject>
+                  <phrase>天気概況アプレットを表示。 天気アイコンと現在の温度を含む。</phrase> 			 
+               </textobject>
+            </mediaobject>
+         </screenshot>
+      </figure>
+       
+      <!-- ==== End of Figure ======================================= -->
+      <para><application>&applet;</application> アプレットでは、Interactive Weather Information Network (IWIN) など、U.S National Weather Service (NWS) サーバーから気象情報をダウンロードします。<application>&applet;</application> では、最新の気象情報や天気予報をユーザーのコンピュータに表示できます。
+</para>
+      <para><application>&applet;</application> をパネルに追加するには、パネルを右クリックして、<menuchoice><guimenu>「パネルに追加」</guimenu><guisubmenu>「アクセサリ」</guisubmenu><guimenuitem>「&applet;」</guimenuitem></menuchoice>を選択します。</para>
+      <note id="proxies-note-1">
+         <para>ユーザーのコンピュータがファイアウォールの内側にある場合は、気象サーバーにアクセスするには、プロキシサーバーを使用する必要があります。プロキシサーバーの指定方法については、<xref linkend="gweather-set-proxy"/>を参照してください。
+ </para>
+      </note>
+      <para>
+         <application>&applet;</application> は、デフォルトの場所または指定された場所に関して、次の情報を表示します。
+</para>
+      <itemizedlist>
+         <listitem>
+            <para>一般的な気象状況を表す気象アイコン。たとえば、太陽のアイコンは晴天を表しています。一般的な気象状況をテキストで表示する場合は、アプレットをポイントしてツールチップを表示します。
+            </para>
+         </listitem>
+         <listitem>
+            <para>現在の気温
+            </para>
+         </listitem>
+      </itemizedlist>
+      
+   </sect1>
+   <!-- ============= Usage ===================================== -->
+   <sect1 id="gweather-usage"> 
+     <title>使用方法</title>
+      <sect2 id="gweather-change-location">
+         <title>特定の場所の気象情報を表示する</title>
+         <para><application>&applet;</application> アプレットをパネルに最初に追加したときには、アプレットは、デフォルトでペンシルバニア州ピッツバーグの気象を表示するように設定されています。これとは異なる場所の気象を表示する手順は次のとおりです。
+ </para>
+         <orderedlist>
+            <listitem>
+               <para>アプレットを右クリックします。
+               </para>
+            </listitem>
+            <listitem>
+               <para>アプレットポップアップメニューの<guimenuitem>「設定」</guimenuitem>を選択します。表示される<guilabel>「お天気 GNOME のプロパティ」</guilabel>ダイアログの
+<guilabel>「位置」</guilabel>タブセクションに、地方とその中の地域、さらに特定の場所が表示されます。
+               </para>
+            </listitem>
+            <listitem>
+               <para>地方の横にある矢印をクリックして、その中の地域を表示します。
+               </para>
+            </listitem>
+            <listitem>
+               <para>地域の横にある矢印をクリックして、その中の場所を表示します。
+               </para>
+            </listitem>
+            <listitem>
+               <para>場所をクリックします。アプレットが新しい場所の気象情報を取り出している間にアプレットをポイントすると、ツールチップ「更新中」が表示されます。
+               </para>
+            </listitem>
+            <listitem>
+               <para><guibutton>「閉じる」</guibutton>をクリックして<guilabel>「お天気 GNOME のプロパティ」</guilabel>ダイアログを閉じます。
+               </para>
+            </listitem>
+         </orderedlist>
+      </sect2>
+      <sect2 id="gweather-update">
+         <title>気象情報を更新する</title>
+         <para>パネルに表示された気象情報を更新するには、アプレットを右クリックしてから<guimenuitem>「更新」</guimenuitem>を選択します。
+ </para>
+         <para>ユーザーは、一定間隔で情報を自動的に更新するようにアプレットを構成することができます。アプレットの構成方法については、<xref linkend="gweather-configure"/>を参照してください。
+ </para>
+      </sect2>
+      <sect2 id="gweather-detailed">
+         <title>詳しい気象情報を表示する</title>
+         <para>詳しい気象情報を表示するには、アプレットを右クリックしてから<guimenuitem>「予報」</guimenuitem>を選択します。表示される<guilabel>「予報」</guilabel>ダイアログには、タブで区切られた次のデフォルトセクションがあります。
+ </para>
+         <itemizedlist>
+            <listitem>
+               <para>
+                  <guilabel>「今の天気」</guilabel>
+               </para>
+            </listitem>
+            <listitem>
+               <para>
+                  <guilabel>「予報」</guilabel>
+               </para>
+            </listitem>
+         </itemizedlist>
+         <sect3 id="gweather-current-conditions">
+            <title>今の天気</title>
+            <para><guilabel>「今の天気」</guilabel>タブセクションには、次の情報が表示されます。
+            </para>
+            <informaltable>
+               <tgroup cols="2">
+                  <colspec colname="col1" colwidth="0.81*"/><colspec colname="col2"                   colwidth="1.19*"/>
+                  <tbody>
+                     <row valign="top">
+                        <entry colname="col1">
+                           <para>
+                              位置
+                           </para>
+                        </entry>
+                        <entry colname="col2">
+                           <para>現在の気象状況が適用されている場所
+                           </para>
+                        </entry>
+                     </row>
+                     <row valign="top">
+                        <entry colname="col1">
+                           <para>
+                              時刻
+                           </para>
+                        </entry>
+                        <entry colname="col2">
+                           <para>気象サーバー上で気象状況が最後に更新された時刻
+                           </para>
+                        </entry>
+                     </row>
+                     <row valign="top">
+                        <entry colname="col1">
+                           <para>
+                              状況
+                           </para>
+                        </entry>
+                        <entry colname="col2">
+                           <para>一般的な気象状況
+                           </para>
+                        </entry>
+                     </row>
+                     <row valign="top">
+                        <entry colname="col1">
+                           <para>
+                              空模様
+                           </para>
+                        </entry>
+                        <entry colname="col2">
+                           <para>一般的な空模様
+                           </para>
+                        </entry>
+                     </row>
+                     <row valign="top">
+                        <entry colname="col1">
+                           <para>
+                              気温
+                           </para>
+                        </entry>
+                        <entry colname="col2">
+                           <para>現在の気温
+                           </para>
+                        </entry>
+                     </row>
+                     <row valign="top">
+                        <entry colname="col1">
+                           <para>
+                              結露点
+                           </para>
+                        </entry>
+                        <entry colname="col2">
+                           <para>結露が発生する気温
+                           </para>
+                        </entry>
+                     </row>
+                     <row valign="top">
+                        <entry colname="col1">
+                           <para>
+                              湿度
+                           </para>
+                        </entry>
+                        <entry colname="col2">
+                           <para>大気中の湿度
+                           </para>
+                        </entry>
+                     </row>
+                     <row valign="top">
+                        <entry colname="col1">
+                           <para>
+                              風
+                           </para>
+                        </entry>
+                        <entry colname="col2">
+                           <para>風向きと風速
+                           </para>
+                        </entry>
+                     </row>
+                     <row valign="top">
+                        <entry colname="col1">
+                           <para>
+                              気圧
+                           </para>
+                        </entry>
+                        <entry colname="col2">
+                           <para>気圧 (水銀柱インチ)
+                           </para>
+                        </entry>
+                     </row>
+                     <row valign="top">
+                        <entry colname="col1">
+                           <para>
+                              視程
+                           </para>
+                        </entry>
+                        <entry colname="col2">
+                           <para>光と大気の条件で決まる視界
+                           </para>
+                        </entry>
+                     </row>
+                  </tbody>
+               </tgroup>
+            </informaltable>
+         </sect3>
+         <sect3 id="gweather-forecast">
+            <title>予報</title>
+            <para><guilabel>「予報」</guilabel>タブセクションには、特定の場所の今後数日 (通常は 5 日) の気象予報が表示されます。
+            </para>
+            <note>
+               <para>予報は、米国のいくつかの場所に限られます。
+               </para>
+            </note>
+         </sect3>
+         <sect3 id="gweather-radar-map">
+            <title>お天気レーダー</title>
+            <para>デフォルトでは、<guilabel>「お天気レーダー」</guilabel>タブセクションは<guilabel>「予報」</guilabel>ダイアログに表示されません。レーダーマップを表示するようにアプレットを構成する方法については、<xref linkend="gweather-configure"/>を参照してください。<application>&applet;</application>は、レーダーマップを www.weather.com からダウンロードしますが、そこにレーダーマップがない場合は、代わりに疑問符を表示します。 www.weather.com の Web サイトを表示するには、<guibutton>「Weather.com を見よう」</guibutton>ボタンをクリックします。
+            </para>
+         </sect3>
+      </sect2>
+   </sect1>
+   <!-- ============= Preferences ================================== -->
+   <sect1 id="gweather-settings"> 
+     <title>設定</title>
+      
+      <sect2 id="gweather-set-proxy">
+      <title>プロキシサーバーを設定する</title>
+      <para>ユーザーのコンピュータがファイアウォールの内側にある場合は、<application>&applet;</application> を正しく実行するには、プロキシサーバーを使用する必要があります。
+プロキシサーバーを使用するように GNOME を構成するには、
+      <menuchoice>
+      <guimenu>「アプリケーション」</guimenu>
+      <guisubmenu>「デスクトップ設定」</guisubmenu> 
+      <guimenuitem>「ネットワークプロキシ」</guimenuitem>
+      </menuchoice>を選択します。</para>
+      </sect2>
+      
+      <sect2 id="gweather-configure">
+      <title>&applet; を構成する</title>
+      <para><application>&applet;</application> を構成するには、アプレットを右クリックして、<guimenuitem>「Preferences」</guimenuitem>を選択します。<guilabel>「お天気 GNOME のプロパティ」</guilabel>ダイアログには、タブで区切られた次のセクションがあります。
+</para>
+      <itemizedlist>
+         <listitem>
+            <para>
+               <link linkend="gweather-location">位置</link>
+            </para>
+         </listitem>
+         <listitem>
+            <para>
+               <link linkend="gweather-general">一般</link>
+            </para>
+         </listitem>
+      </itemizedlist>
+            
+      
+      <sect3 id="gweather-location">
+         <title>位置</title>
+         <para><guilabel>「位置」</guilabel>タブセクションでは、どの場所に対する現在の気象状況と気象予報を表示するのかを指定します。場所を選択する方法については、<xref linkend="gweather-change-location"/>を参照してください。
+ </para>
+      </sect3>
+      
+      <sect3 id="gweather-general">
+         <title>一般</title>
+           <variablelist>
+               <varlistentry>
+                  <term><guilabel>「xx分ごとに自動的に更新」</guilabel>
+                  </term>
+                  <listitem>
+                     <para>一定の間隔で気象サーバーから更新された情報を自動的に取り出す場合は、このオプションを選択します。さらに、更新された情報を気象サーバーから取り出す間隔 (分単位) を指定する場合は、スピンボックスを使用します。
+                     </para>
+                     <para>
+                  初期値:選択されています、30 分
+                     </para>
+                  </listitem>
+               </varlistentry>
+               <varlistentry>
+                  <term><guilabel>「メートル表記を使用」</guilabel> </term>
+                  <listitem>
+                     <para>アプレットの中で華氏と英国式単位を使用する代わりに摂氏とメートル法を使用する場合は、このオプションを選択します。このオプションと、アプレットの中で表示される単位との関係は次のようになります。
+                     </para>
+                     <informaltable>
+                        <tgroup cols="3">
+                           <colspec colname="COLSPEC0" colwidth="1.00*"/><colspec                            colname="col1"/><colspec colname="col2"/>
+                           <thead>
+                              <row valign="top">
+                                 <entry colname="COLSPEC0">
+                                    <para>項目</para>
+                                 </entry>
+                                 <entry colname="col1">
+                                    <para>
+                                       <guilabel>「メートル表記を使用」</guilabel>オプションが選択されていない場合
+                                    </para>
+                                 </entry>
+                                 <entry colname="col2">
+                                    <para>
+                                       <guilabel>「メートル表記を使用」</guilabel> オプションが選択されている場合                                    </para>
+                                 </entry>
+                              </row>
+                           </thead>
+                           <tbody>
+                              <row valign="top">
+                                 <entry colname="COLSPEC0">
+                                    <para>気温と結露点
+                                    </para>
+                                 </entry>
+                                 <entry colname="col1">
+                                    <para>度 (華氏)
+                                    </para>
+                                 </entry>
+                                 <entry colname="col2">
+                                    <para>度 (摂氏)
+                                    </para>
+                                 </entry>
+                              </row>
+                              <row valign="top">
+                                 <entry colname="COLSPEC0">
+                                    <para>風速
+                                    </para>
+                                 </entry>
+                                 <entry colname="col1">
+                                    <para>マイル/時 (mph)
+                                    </para>
+                                 </entry>
+                                 <entry colname="col2">
+                                    <para>キロメートル/時 (kph)
+                                    </para>
+                                 </entry>
+                              </row>
+                              <row valign="top">
+                                 <entry colname="COLSPEC0">
+                                    <para>気圧
+                                    </para>
+                                 </entry>
+                                 <entry colname="col1">
+                                    <para>水銀柱インチ (inHg)
+                                    </para>
+                                 </entry>
+                                 <entry colname="col2">
+                                    <para>水銀柱ミリメートル (mmHg)
+                                    </para>
+                                 </entry>
+                              </row>
+                              <row valign="top">
+                                 <entry colname="COLSPEC0">
+                                    <para>視界
+                                    </para>
+                                 </entry>
+                                 <entry colname="col1">
+                                    <para>マイル
+                                    </para>
+                                 </entry>
+                                 <entry colname="col2">
+                                    <para>キロメートル
+                                    </para>
+                                 </entry>
+                              </row>
+                           </tbody>
+                        </tgroup>
+                     </informaltable>
+                     <para>
+                  初期値:選択解除
+                     </para>
+                  </listitem>
+               </varlistentry>
+               <varlistentry>
+                  <term><guilabel>「レーダーマップを有効にする」</guilabel> </term>
+                  <listitem>
+                     <para><guilabel>「予報」</guilabel>ダイアログの<guilabel>「お天気レーダー」</guilabel>タブセクションにレーダーマップを表示する場合は、このオプションを選択します。
+                     </para>
+                     <para>
+                  初期値:選択解除
+                     </para>
+                  </listitem>
+               </varlistentry>
+               <varlistentry>
+                  <term><guilabel>「レーダーマップに特別なアドレスを使用」</guilabel> </term>
+                  <listitem>
+                     <para><application>&applet;</application> は、デフォルトでレーダーマップを www.weather.com からダウンロードします。他のインターネットアドレスからレーダーマップをダウンロードする場合は、このオプションを使用します。 その場合には、アドレスを<guilabel>「アドレス」</guilabel>テキストボックスに入力します。
+                     </para>
+                     <para>
+                  初期値:選択解除
+                     </para>
+                  </listitem>
+               </varlistentry>
+            </variablelist>
+      </sect3>
+      </sect2>
+   </sect1>
+</article>

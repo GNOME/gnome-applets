@@ -1,0 +1,317 @@
+<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "1.101.0">
+  <!ENTITY manrevision "2.1">
+  <!ENTITY date "August 2002">
+  <!ENTITY applet "Keyboard Layout Switcher">
+]>
+
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Apr 11, 2002
+  
+-->
+<!-- =============Document Header ============================= -->
+<article id="index" lang="zh_tw">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo>
+	 <title>&applet; Applet 手冊 V&manrevision;</title>
+	 <copyright> 
+		<year>2002</year>  
+		<holder>Sun Microsystems</holder> 
+	 </copyright> 
+	 <copyright> 
+		<year>2000</year>  
+		<holder>Szabolcs (Shooby) BAN 和 Dan Mueth</holder> 
+	 </copyright> 
+<!-- translators: uncomment this:
+
+  <copyright>
+   <year>2002</year>
+   <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+  </copyright>
+
+   -->
+
+	 <publisher> 
+		<publishername>GNOME 文件專案</publishername> 
+	 </publisher> 
+
+&legal;
+<!-- This file  contains link to license for the documentation (GNU FDL), and 
+     other legal stuff such as "NO WARRANTY" statement. Please do not change 
+     any of this. -->
+
+	 <authorgroup>
+		<author> 
+		  <firstname>Sun</firstname> 
+		  <surname>GNOME 文件小組</surname> 
+		  <affiliation> 
+			 <orgname>Sun Microsystems</orgname> 
+			 <address> <email>gdocteam@sun.com</email> </address>
+		  </affiliation>
+		</author>
+		<author> 
+		  <firstname>Emese</firstname> 
+		  <surname>Kovacs</surname> 
+		  <affiliation> 
+			 <orgname>GNOME 文件專案</orgname> 
+			 <address> <email>emese@gnome.hu</email> </address>
+		  </affiliation>
+		</author>
+		<author> 
+		  <firstname>Szabolcs (Shooby)</firstname> 
+		  <surname>BAN</surname> 
+		  <affiliation> 
+			 <orgname>GNOME 文件專案</orgname> 
+			 <address> <email>shooby@gnome.hu</email> </address>
+		  </affiliation>
+		</author>
+		<author> 
+		  <firstname>Dan</firstname> 
+		  <surname>Mueth</surname> 
+		  <affiliation> 
+			 <orgname>GNOME 文件專案</orgname> 
+			 <address> <email>d-mueth@uchicago.edu</email> </address>
+		  </affiliation>
+		</author>
+      <!-- This is appropriate place for other contributors: translators,
+           maintainers,  etc. Commented out by default.
+        <othercredit role="translator">
+	      <firstname>Latin</firstname> 
+	      <surname>Translator 1</surname> 
+	      <affiliation> 
+	      	<orgname>Latin Translation Team</orgname> 
+	       	<address> <email>translator@gnome.org</email> </address> 
+	      </affiliation>
+	      <contrib>Latin translation</contrib>
+        </othercredit>
+-->
+	 </authorgroup>
+	  
+	 <revhistory>
+		<revision> 
+		  <revnumber>&applet; Applet 手冊 V&manrevision;</revnumber> 
+		  <date>&date;</date> 
+		<revdescription> 
+			 <para role="author">Sun GNOME 文件小組
+				<email>gdocteam@sun.com</email></para>
+			 <para role="publisher">GNOME 文件專案</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>鍵盤版面配置切換器 Applet 手冊 V2.0</revnumber> 
+		  <date>2002 年 5 月</date> 
+		<revdescription> 
+			 <para role="author">Sun GNOME 文件小組
+				<email>gdocteam@sun.com</email></para>
+			 <para role="publisher">GNOME 文件專案</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>GNOME 鍵盤 Applet</revnumber> 
+		  <date>2002 年 1 月</date>
+		  <revdescription> 
+			 <para role="author">Emese Kovacs
+				<email>emese@gnome.hu</email></para>	
+			 <para role="publisher">GNOME 文件專案</para>
+		  </revdescription>		  
+		</revision>
+		<revision> 
+		  <revnumber>GNOME 鍵盤 Applet</revnumber> 
+		  <date>2000</date>
+		  <revdescription> 
+			 <para role="author">Szabolcs (Shooby) BAN
+				<email>shooby@gnome.hu</email></para>
+			 <para role="author">Dan Mueth
+				<email>d-mueth@uchicago.edu</email></para>
+			 <para role="author">Emese Kovacs
+				<email>emese@gnome.hu</email></para>	
+			 <para role="publisher">GNOME 文件專案</para>
+		  </revdescription>		  
+		</revision>
+	 </revhistory>
+	 <releaseinfo>本手冊的內容是說明 &appletversion; 版的 &applet;。
+		</releaseinfo>
+	 <legalnotice><title>回饋</title>
+		<para> 關於 &applet; applet 或本手冊，如果要報告錯誤或是提出建議，請遵照 <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink> 的指示。</para>
+		
+	 </legalnotice>
+  </articleinfo>
+  <indexterm><primary>鍵盤版面配置切換器</primary></indexterm><!-- ============= Document Body ============================= --><!-- ============= Introduction ============================== -->
+  <sect1 id="gkb-introduction"><title>介紹</title>
+
+	 <figure id="gkb-fig"><title>&applet; Applet</title>
+		<screenshot>
+		  <mediaobject>
+			 <imageobject><imagedata fileref="figures/gkb_applet.png" format="PNG"/> 
+			 </imageobject>
+			 <textobject>
+				<phrase>顯示 &applet; Applet。 包含目前鍵盤版面配置的旗標及標籤。
+				</phrase>
+			 </textobject>
+		  </mediaobject>
+		</screenshot>
+	 </figure>
+
+	 <para><application>&applet;</application> applet 可以讓您為鍵盤指派不同的版面配置，以便配合不同的語言環境使用。Applet 會顯示與目前鍵盤版面配置相關的旗標與標籤。</para>
+	 <para>如果要將 <application>&applet;</application> 加入面板，請在面板上按滑鼠右鍵，然後選擇<menuchoice><guimenu>加入面板</guimenu><guisubmenu>公用程式</guisubmenu><guimenuitem>&applet;</guimenuitem></menuchoice>。</para>
+  </sect1>
+
+
+  <sect1 id="gkb-usage"><title>使用</title>
+
+	 <para>如果要切換到不同的鍵盤版面配置，請重複在 Applet 上按一下，直到 Applet 顯示的鍵盤版面配置是您所想要的為止。如果 applet 中沒有您想要的鍵盤版面配置，請參閱<xref linkend="gkb-keymaps"/>，以便獲得如何在 applet 中新增鍵盤版面配置的相關資訊。</para>
+
+  </sect1>
+
+
+  <sect1 id="gkb-prefs"><title>個人喜好</title>
+	 <para>如果要配置 <application>&applet;</application>，請在 Applet 上按滑鼠右鍵，然後選擇<guimenuitem>個人喜好</guimenuitem>。</para>
+
+	 <sect2 id="gkb-keymaps"><title>鍵位表</title>
+		
+		<para><guilabel>鍵位表</guilabel>標籤區段會列出目前配置給 Applet 的鍵盤版面配置。</para>
+		
+		<sect3 id="gkb-modify-list"><title>修改鍵盤版面配置的清單</title>
+		
+		<para>如果要在<guilabel>鍵位表</guilabel>清單中，新增鍵盤版面配置，請執行下列步驟：</para>
+		<orderedlist>
+			<listitem><para>在<guilabel>鍵位表</guilabel>標籤區段中，按一下<guibutton>新增</guibutton>。Applet 便會顯示<guilabel>選擇鍵盤</guilabel>對話方塊。</para></listitem>
+			<listitem><para>請在您想要新增鍵盤版面配置的國家旁，按一下旁邊的箭頭，然後再選擇想要新增的鍵盤版面配置。</para></listitem>
+			<listitem><para>請按一下<guibutton>新增</guibutton>，將鍵盤版面配置新增至<guilabel>鍵位表</guilabel>清單中。</para></listitem>
+		</orderedlist>
+		
+		<para>如果要刪除<guilabel>鍵位表</guilabel>清單中的鍵盤版面配置，請選取該鍵盤版面配置，然後按一下<guibutton>刪除</guibutton>。</para>
+		
+		<para>如果要將<guilabel>鍵位表</guilabel>清單中的鍵盤版面配置往上移動，請先選取鍵盤版面配置，然後按一下<guibutton>上移</guibutton>。如果要將<guilabel>鍵位表</guilabel>清單中的鍵盤版面配置往下移動，請選擇鍵盤版面配置，然後按一下<guibutton>下移</guibutton>。</para>
+		
+		</sect3>
+		
+		<sect3 id="gkb-edit-layout"><title>編輯鍵盤版面配置</title>
+		<para>如果要編輯鍵盤版面配置，請先選取鍵盤版面配置，然後按一下<guibutton>編輯</guibutton>。在<guilabel>編輯鍵盤</guilabel>對話方塊中，包含了下列元素：</para>
+		
+		<table frame="topbot" id="tbl-edit-layout"><title>編輯鍵盤元素</title>
+		<tgroup cols="2" colsep="1" rowsep="1">
+		<colspec colname="COLSPEC0" colwidth="33*"/>
+		<colspec colname="COLSPEC1" colwidth="33*"/>
+		<thead>
+		 <row valign="top">
+		  <entry>
+		  <para>對話方塊元素</para></entry>
+		  <entry>
+		  <para>說明</para></entry>
+		 </row>
+	 	</thead>
+		<tbody>
+		 <row valign="top">
+		  <entry>
+		  <para><guilabel>名稱</guilabel></para></entry>
+		  <entry>
+		  <para>鍵盤版面配置的名稱。 這個名稱會顯示在<guilabel>個人喜好</guilabel>對話方塊中，<guilabel>鍵位表</guilabel>標籤區段裡。</para></entry>
+		 </row>
+		 <row valign="top">
+		  <entry>
+		  <para><guilabel>標籤</guilabel></para></entry>
+		  <entry>
+		  <para>鍵盤版面配置的簡短標籤。 例如，United States English 鍵盤版面配置的標籤即為<guilabel>us</guilabel>。依預設值，Applet 會在 Applet 顯示中，顯示目前鍵盤版面配置的旗標及標籤。</para></entry>
+		 </row>
+		 <row valign="top">
+		  <entry>
+		  <para><guilabel>語言</guilabel></para></entry>
+		  <entry>
+		  <para>鍵盤版面配置所採用的語言。</para></entry>
+		 </row>
+		 <row valign="top">
+		  <entry>
+		  <para><guilabel>國家</guilabel></para></entry>
+		  <entry>
+		  <para>使用該鍵盤版面配置的國家。</para></entry>
+		 </row>
+		 <row valign="top">
+		  <entry>
+		  <para><guilabel>旗標像素對映</guilabel></para></entry>
+		  <entry>
+		  <para>代表使用該鍵盤版面配置國家的旗標。依預設值，Applet 會在 Applet 顯示中，顯示目前鍵盤版面配置的旗標及標籤。清按一下旗標，顯示旗標選擇器對話方塊。</para></entry>
+		 </row>
+		 <row valign="top">
+		  <entry>
+		  <para><guilabel>架構</guilabel></para></entry>
+		  <entry>
+		  <para>硬體系統的類型。</para></entry>
+		 </row>
+		 <row valign="top">
+		  <entry>
+		  <para><guilabel>類型</guilabel></para></entry>
+		  <entry>
+		  <para>鍵盤的類型，例如 101 鍵、105 鍵等等。</para></entry>
+		 </row>
+		 <row valign="top">
+		  <entry>
+		  <para><guilabel>頁碼</guilabel></para></entry>
+		  <entry>
+		  <para>鍵盤的語言所使用的程式碼集。 例如，依預設值，United States English 使用的便是 Western European ISO-8859-1 程式碼集。</para></entry>
+		 </row>
+		 <row valign="top">
+		  <entry>
+		  <para><guilabel>指令</guilabel></para></entry>
+		  <entry>
+		  <para>Applet 用來變更鍵盤版面配置的指令。 您可以使用下列任一種指令，變更鍵盤版面配置：</para>
+		  <para><command>gkb_xmmap <replaceable>us</replaceable></command>，其中<replaceable>us</replaceable>是鍵盤版面配置<filename>xmodmap</filename> 檔案的副檔名。</para>
+		  <para><command>xmodmap <replaceable>/path/xmodmap.us</replaceable></command>，其中 <replaceable>/path/xmodmap.us</replaceable> 是鍵盤版面配置的 <filename>xmodmap</filename> 檔案。		  </para>
+		  <para><command>setxkbmap <replaceable>us</replaceable></command>，其中 <replaceable>us</replaceable> 
+是鍵盤版面配置 <filename>xmodmap</filename> 檔案的副檔名。</para>
+		  </entry>
+		 </row>
+	 	</tbody>
+		</tgroup>
+		</table>
+		</sect3>
+		
+	 </sect2>
+	 
+	 <sect2 id="gkb-options"><title>選項</title>
+	 	<variablelist>
+		  <varlistentry><term><guilabel>外觀</guilabel></term> 
+			 <listitem>
+			 <para>請從下拉式清單方塊中，選擇下列任一項選項，指定 Applet 在面板中的顯示方式：</para>
+			 <itemizedlist>
+			 	<listitem><para><guilabel>旗標</guilabel></para>
+			 	<para>僅顯示旗標。</para></listitem>
+			 	<listitem><para><guilabel>標籤</guilabel></para>
+			 	<para>僅顯示標籤。</para></listitem>
+			 	<listitem><para><guilabel>旗標及標籤</guilabel></para>
+			 	<para>顯示旗標和標籤。</para></listitem>
+			 </itemizedlist>
+			 <para>您必須重新啟動機器，才能讓這個設定的變更生效。</para>
+			 <para>預設值： <guilabel>旗標及標籤</guilabel>。</para>
+			 </listitem>
+		  </varlistentry>
+		  <varlistentry><term><guilabel>Applet 大小</guilabel></term> 
+			 <listitem>
+			 <para>請從下拉式清單方塊中，選取下列任一項選項，指定 Applet 在面板中的大小：</para>
+			 <itemizedlist>
+			 	<listitem><para><guilabel>一般</guilabel></para></listitem>
+			 	<listitem><para><guilabel>大</guilabel></para></listitem>
+			 </itemizedlist>
+			 <para>您必須重新啟動機器，才能讓這個設定的變更生效。</para>
+			 <para>預設值： <guilabel>大</guilabel>。</para>
+			 </listitem>
+		  </varlistentry>
+		  <varlistentry><term><guilabel>在版面配置之間切換的快速鍵</guilabel></term><listitem>
+			 <para>您可以使用捷徑鍵，切換鍵盤版面配置。 如果要自訂捷徑鍵，請按一下<guibutton>抓取快速鍵</guibutton>，然後按一下您想要使用的鍵盤組合。Applet 會將捷徑鍵顯示在文字方塊中。 預設的捷徑鍵是 <keycombo><keycap>Alt</keycap><keycap>Shift</keycap></keycombo>，Applet 在文字方塊中會顯示為 Mod1-Shift_L。</para>
+			 <para>預設值： Mod1-Shift_L。</para>
+			 </listitem>
+		  </varlistentry>
+		</variablelist>
+	 
+	 </sect2>
+
+  </sect1>
+
+</article>

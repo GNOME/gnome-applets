@@ -1,13 +1,8 @@
 figs = \
-	figures/mixer_applet.png
-docname = mixer_applet
+	figures/volumecontrol_applet.png
+docname = mixer_applet2
 lang = es
-omffile = mixer_applet-es.omf
-sgml_ents = mixer.sgml \
-	authors.sgml \
-	licencia-es.sgml \
-	licencia-nota-es.sgml \
-	license.sgml
-include $(top_srcdir)/sgmldocs.make
+omffile = mixer_applet2-es.omf
+entities = legal.xml
+include $(top_srcdir)/xmldocs.make
 dist-hook: app-dist-hook
-
