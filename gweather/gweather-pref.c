@@ -707,7 +707,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     pref_basic_note_lbl = gtk_label_new (_("General"));
     gtk_widget_show (pref_basic_note_lbl);
     gtk_notebook_set_tab_label (GTK_NOTEBOOK (pref_notebook), 
-    				gtk_notebook_get_nth_page (GTK_NOTEBOOK (pref_notebook), 1),
+    				gtk_notebook_get_nth_page (GTK_NOTEBOOK (pref_notebook), 0),
     				pref_basic_note_lbl);
 
   /*
@@ -743,7 +743,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
 
     pref_loc_note_lbl = gtk_label_new (_("Location"));
     gtk_widget_show (pref_loc_note_lbl);
-    gtk_notebook_set_tab_label (GTK_NOTEBOOK (pref_notebook), gtk_notebook_get_nth_page (GTK_NOTEBOOK (pref_notebook), 0), pref_loc_note_lbl);
+    gtk_notebook_set_tab_label (GTK_NOTEBOOK (pref_notebook), gtk_notebook_get_nth_page (GTK_NOTEBOOK (pref_notebook), 1), pref_loc_note_lbl);
 
 
     g_signal_connect (G_OBJECT (gw_applet->pref), "response",
