@@ -791,14 +791,16 @@ make_new_battery_applet (const gchar *goad_id)
    * hiding/showing the entire graph mode.
    */
   bat->graph_frame = gtk_frame_new (NULL);
-  gtk_frame_set_shadow_type (GTK_FRAME (bat->graph_frame), GTK_SHADOW_IN);
+  gtk_frame_set_shadow_type (GTK_FRAME (bat->graph_frame), 
+			     GTK_SHADOW_ETCHED_IN);
 
   /*
    * The 'readout frame' is the root widget of the entire readout
    * mode.
    */
   bat->readout_frame = gtk_frame_new (NULL);
-  gtk_frame_set_shadow_type (GTK_FRAME (bat->readout_frame), GTK_SHADOW_IN);
+  gtk_frame_set_shadow_type (GTK_FRAME (bat->readout_frame), 
+			     GTK_SHADOW_ETCHED_IN);
      
   gtk_box_pack_start_defaults (GTK_BOX (root), bat->graph_frame);
   gtk_box_pack_start_defaults (GTK_BOX (root), bat->readout_frame);
