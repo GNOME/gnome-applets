@@ -314,13 +314,17 @@ addwadd_cb (GtkWidget * addbutton, GkbPropertyBoxInfo * pbi)
   return FALSE;
 }
 
-static void
-row_activated_cb (GtkTreeView *tree, GtkTreePath *path, 
-		  GtkTreeViewColumn *column, gpointer data)
+static gboolean
+row_activated_cb (GtkWidget *widget, GdkEventButton *event, gpointer data)
 {
   GkbPropertyBoxInfo * pbi = data;
   
-  addwadd_cb (NULL, pbi);
+  if (event->type == GDK_2BUTTON_PRESS) {
+  	addwadd_cb (NULL, pbi);
+  	return TRUE;
+  }
+  
+  return FALSE;
   
 }
 
@@ -355,6 +359,7 @@ gkb_prop_map_add (GkbPropertyBoxInfo * pbi)
  
   if (gkb->addwindow)
     {
+      gtk_widget_show (gkb->addwindow);
       gtk_window_present (GTK_WINDOW (gkb->addwindow));
       return;
     }
@@ -396,7 +401,7 @@ gkb_prop_map_add (GkbPropertyBoxInfo * pbi)
   g_signal_connect (selection, "changed",
 		      G_CALLBACK (preadd_cb), pbi);
   /* Signal for double clicks or user pressing space */
-  g_signal_connect (G_OBJECT (tree1), "row_activated",
+  g_signal_connect (G_OBJECT (tree1), "button_press_event",
                     G_CALLBACK (row_activated_cb), pbi);
        
   g_signal_connect (G_OBJECT (gkb->addwindow), "response",
