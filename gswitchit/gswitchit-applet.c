@@ -250,10 +250,9 @@ GSwitchItAppletRevalidate (GSwitchItApplet * sia)
 static void
 GSwitchItAppletCleanupNotebook (GSwitchItApplet * sia)
 {
-	GtkNotebook *notebook =
-	    GTK_NOTEBOOK (GTK_BIN (sia->applet)->child);
-
 	int i;
+	GtkNotebook *notebook = GTK_NOTEBOOK (sia->notebook);
+
 	/* Do not remove the first page! It is the default page */
 	for (i = gtk_notebook_get_n_pages (notebook); --i > 0;) {
 		gtk_notebook_remove_page (notebook, i);
@@ -299,7 +298,6 @@ GSwitchItAppletPrepareDrawing (GSwitchItApplet * sia, int group)
 		flagImg = gtk_image_new_from_pixbuf (scaled);
 		gtk_container_add (GTK_CONTAINER (sia->ebox), flagImg);
 		g_object_unref (G_OBJECT (scaled));
-		//sia->ebox = NULL;	// not used in this case!
 	} else {
 		char *layoutName;
 		char *allocLayoutName = NULL;
@@ -355,10 +353,9 @@ GSwitchItAppletPrepareDrawing (GSwitchItApplet * sia, int group)
 static void
 GSwitchItAppletFillNotebook (GSwitchItApplet * sia)
 {
-	GtkNotebook *notebook;
 	int grp;
 	int totalGroups = XklGetNumGroups ();
-	notebook = GTK_NOTEBOOK (GTK_BIN (sia->applet)->child);
+	GtkNotebook *notebook = GTK_NOTEBOOK (sia->notebook);
 
 	for (grp = 0; grp < totalGroups; grp++) {
 		GtkWidget *page, *decoratedPage;
@@ -388,11 +385,9 @@ void
 GSwitchItAppletRevalidateGroup (GSwitchItApplet * sia, int group)
 {
 	const char *pname;
-	GtkNotebook *notebook;
 	XklDebug (200, "Revalidating for group %d\n", group);
-	notebook = GTK_NOTEBOOK (GTK_BIN (sia->applet)->child);
 
-	gtk_notebook_set_current_page (notebook, group + 1);
+	gtk_notebook_set_current_page (GTK_NOTEBOOK (sia->notebook), group + 1);
 
 	pname = sia->groupNames[group];
 	GSwitchItAppletSetTooltip (sia, pname);
@@ -418,33 +413,29 @@ GSwitchItAppletChangeBackground (PanelApplet *
 
 	switch (type) {
 	case PANEL_PIXMAP_BACKGROUND:
-		if (sia->ebox != NULL)
-			gtk_widget_modify_style (GTK_WIDGET (sia->ebox),
-						 rc_style);
+		gtk_widget_modify_style (GTK_WIDGET (sia->ebox),
+					 rc_style);
 		gtk_widget_modify_style (GTK_WIDGET (sia->applet),
 					 rc_style);
 		break;
 
 	case PANEL_COLOR_BACKGROUND:
-		if (sia->ebox != NULL)
-			gtk_widget_modify_bg (GTK_WIDGET (sia->ebox),
-					      GTK_STATE_NORMAL, color);
+		gtk_widget_modify_bg (GTK_WIDGET (sia->ebox),
+				      GTK_STATE_NORMAL, color);
 		gtk_widget_modify_bg (GTK_WIDGET (sia->applet),
 				      GTK_STATE_NORMAL, color);
 		break;
 
 	case PANEL_NO_BACKGROUND:
-		if (sia->ebox != NULL)
-			gtk_widget_modify_style (GTK_WIDGET (sia->ebox),
-						 rc_style);
+		gtk_widget_modify_style (GTK_WIDGET (sia->ebox),
+					 rc_style);
 		gtk_widget_modify_style (GTK_WIDGET (sia->applet),
 					 rc_style);
 		break;
 
 	default:
-		if (sia->ebox != NULL)
-			gtk_widget_modify_style (GTK_WIDGET (sia->ebox),
-						 rc_style);
+		gtk_widget_modify_style (GTK_WIDGET (sia->ebox),
+					 rc_style);
 		gtk_widget_modify_style (GTK_WIDGET (sia->applet),
 					 rc_style);
 		break;
@@ -572,7 +563,7 @@ void
 GSwitchItAppletCmdHelp (BonoboUIComponent
 			* uic, GSwitchItApplet * sia, const gchar * verb)
 {
-	GSwitchItHelp (GTK_WIDGET (sia->applet), "gswitchitApplet");
+	GSwitchItHelp (GTK_WIDGET (sia->applet), "gswitchit-applet-intro");
 }
 
 void
@@ -749,7 +740,7 @@ GSwitchItAppletInit (GSwitchItApplet * sia, PanelApplet * applet)
 
 	panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);
 
-	notebook = GTK_NOTEBOOK (gtk_notebook_new ());
+	notebook = GTK_NOTEBOOK (sia->notebook = gtk_notebook_new ());
 	gtk_notebook_set_show_tabs (notebook, FALSE);
 	gtk_notebook_set_show_border (notebook, FALSE);
 
@@ -816,11 +807,11 @@ GSwitchItAppletInit (GSwitchItApplet * sia, PanelApplet * applet)
 	GSwitchItAppletFillNotebook (sia);
 	GSwitchItAppletRevalidate (sia);
 	g_signal_connect (G_OBJECT (sia->applet), "change_size",
-			  G_CALLBACK (GSwitchItAppletChangePixelSize),
-			  sia);
+			  G_CALLBACK (GSwitchItAppletChangePixelSize), sia);
 	g_signal_connect (G_OBJECT (sia->applet), "change_background",
-			  G_CALLBACK (GSwitchItAppletChangeBackground),
-			  sia);
+			  G_CALLBACK (GSwitchItAppletChangeBackground), sia);
+	g_signal_connect (G_OBJECT (sia->applet), "button_press_event",
+			  G_CALLBACK (GSwitchItAppletButtonPressed), sia);
 
 	GSwitchItAppletStartListen (sia);
 	gtk_widget_add_events (sia->applet, GDK_BUTTON_PRESS_MASK);

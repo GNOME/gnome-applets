@@ -29,8 +29,9 @@ typedef struct _GSwitchItApplet {
 	GSwitchItXkbConfig xkbConfig;
 	GSwitchItPluginManager pluginManager;
 
-	GtkWidget *ebox;
 	GtkWidget *applet;
+	GtkWidget *notebook;
+	GtkWidget *ebox;
 	GtkWidget *aboutDialog;
 	GtkWidget *propsDialog;
 
