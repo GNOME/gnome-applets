@@ -164,7 +164,7 @@ main(int argc, char **argv)
     gtk_signal_connect(GTK_OBJECT(button), "clicked",
 		       GTK_SIGNAL_FUNC(showFileBrowser_signal),
 		       NULL);
-    gtk_widget_set_usize(GTK_WIDGET(button), 12, 10);
+    gtk_widget_set_usize(GTK_WIDGET(button), 13, 10);
     icon = gnome_pixmap_new_from_xpm_d (browser_mini_xpm);
     gtk_container_add(GTK_CONTAINER(button), icon);
     gtk_box_pack_start(GTK_BOX(hboxButtons), button, TRUE, TRUE, 0);
@@ -174,7 +174,7 @@ main(int argc, char **argv)
     gtk_signal_connect(GTK_OBJECT(button), "clicked",
 		       GTK_SIGNAL_FUNC(showHistory_signal),
 		       NULL);
-    gtk_widget_set_usize(GTK_WIDGET(button), 12, 10);
+    gtk_widget_set_usize(GTK_WIDGET(button), 13, 10);
     icon = gnome_pixmap_new_from_xpm_d (history_mini_xpm);
     gtk_container_add(GTK_CONTAINER(button), icon);
     gtk_box_pack_end(GTK_BOX(hboxButtons), button, TRUE, TRUE, 0);
