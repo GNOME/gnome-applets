@@ -12,6 +12,7 @@ gkb_applet_SOURCES = \
 		gkb.c 		\
 		gkb.h		\
 		prop.c 		\
+		prop-add.c	\
 		prop-list.c	\
 		prop-map.c	\
 		preset.c		\

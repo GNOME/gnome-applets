@@ -1,5 +1,38 @@
 2000-12-08  Chema Celorio  <chema@celorio.com>
 
+	* prop-map.c: move all the add stuff to :
+	* prop-add.c: here
+
+	* Makefile.am (gkb_applet_SOURCES): add prop-add.c
+
+	* prop-map.c (gkb_prop_map_edit): set the apply button unsensitive
+	(gkb_prop_map_data_changed): when data changes, set the apply button's
+	sensitivity
+	(gkb_prop_map_apply_clicked): when apply is clicked, set the button
+	unsentivite.
+	(struct _GkbMapDialogInfo): added the gboolean changed flag 
+	(gkb_prop_map_ok_clicked): only apply the settings if something has
+	been changed.
+	(gkb_prop_map_pixmap_at): call data_changed when the icon_entry
+	is clicked.
+
+	* prop-list.c (gkb_prop_create_buttons_vbox): update the buttons
+	sensitivity after createing them
+
+	* prop-map.c (gkb_prop_map_combo_at): implement
+	(gkb_prop_map_entry_at): implement
+	(gkb_prop_map_load_stock_button): implement
+	(gkb_prop_map_button_clicked): implement
+	(gkb_prop_map_label_at): implement
+	(gkb_prop_map_get_arquitectures): implement
+	(gkb_prop_map_get_codepages): implement
+	(gkb_prop_map_get_types): implement
+	(gkb_prop_map_get_languages): implement
+	(gkb_prop_map_get_countries): implement
+	(gkb_prop_map_pixmap_at): implement
+
+2000-12-08  Chema Celorio  <chema@celorio.com>
+	
 	* prop.c (apply_cb): make static to avoid compile warning
 
 	* prop-list.c (gkb_prop_list_reload): make public as

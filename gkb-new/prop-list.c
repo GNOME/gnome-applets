@@ -39,6 +39,54 @@
 #define GKB_KEYMAP_TAG  "GkbKeymapTag"
 
 /**
+ * gkb_util_copy_keymap:
+ * @keymap: 
+ * 
+ * Copy an incoming keymap and return a pointer to a newly allocated one.
+ * 
+ * Return Value: 
+ **/
+static GkbKeymap *
+gkb_util_copy_keymap (GkbKeymap *keymap)
+{
+  GkbKeymap *new_keymap;
+
+  debug (FALSE, "");
+  
+  new_keymap = g_new0 (GkbKeymap, 1);
+  new_keymap->name    = g_strdup (keymap->name);
+  new_keymap->command = g_strdup (keymap->name);
+  new_keymap->flag    = g_strdup (keymap->flag);
+  new_keymap->country = g_strdup (keymap->country);
+  new_keymap->command = g_strdup (keymap->command);
+  new_keymap->lang    = g_strdup (keymap->lang);
+  new_keymap->label   = g_strdup (keymap->label);
+
+  return new_keymap;
+}
+
+
+/**
+ * gkb_util_free_keymap:
+ * @keymap: 
+ * 
+ * Free a keymap
+ **/
+static void
+gkb_util_free_keymap (GkbKeymap *keymap)
+{
+  debug (FALSE, "");
+	
+  g_free (keymap->name);
+  g_free (keymap->flag);
+  g_free (keymap->country);
+  g_free (keymap->command);
+  g_free (keymap->lang);
+  g_free (keymap->label);
+  g_free (keymap);
+}
+  
+/**
  * gkb_util_get_pixmap_name:
  * @keymap: 
  * 
@@ -165,6 +213,8 @@ gkb_prop_list_delete_clicked (GkbPropertyBoxInfo *pbi)
   }
 
   pbi->keymaps = g_list_remove (pbi->keymaps, pbi->selected_keymap);
+  gkb_util_free_keymap (pbi->selected_keymap);
+  pbi->selected_keymap = NULL;
   
   gkb_prop_list_reload (pbi);
 
@@ -391,59 +441,10 @@ gkb_prop_create_buttons_vbox (GkbPropertyBoxInfo *pbi)
   pbi->down_button   = gkb_prop_list_create_button (_("Down"),   pbi);
   pbi->delete_button = gkb_prop_list_create_button (_("Delete"), pbi);
 
+  gkb_prop_list_update_sensitivity (pbi);    
+  
   return vbox;
 }
-
-
-
-/**
- * gkb_utils_copy_keymap:
- * @keymap: 
- * 
- * Copy an incoming keymap and return a pointer to a newly allocated one.
- * 
- * Return Value: 
- **/
-static GkbKeymap *
-gkb_utils_copy_keymap (GkbKeymap *keymap)
-{
-  GkbKeymap *new_keymap;
-
-  debug (FALSE, "");
-  
-  new_keymap = g_new0 (GkbKeymap, 1);
-  new_keymap->name    = g_strdup (keymap->name);
-  new_keymap->command = g_strdup (keymap->name);
-  new_keymap->flag    = g_strdup (keymap->flag);
-  new_keymap->country = g_strdup (keymap->country);
-  new_keymap->command = g_strdup (keymap->command);
-  new_keymap->lang    = g_strdup (keymap->lang);
-  new_keymap->label   = g_strdup (keymap->label);
-
-  return new_keymap;
-}
-
-
-/**
- * gkb_utils_free_keymap:
- * @keymap: 
- * 
- * Free a keymap
- **/
-static void
-gkb_utils_free_keymap (GkbKeymap *keymap)
-{
-  debug (FALSE, "");
-	
-  g_free (keymap->name);
-  g_free (keymap->flag);
-  g_free (keymap->country);
-  g_free (keymap->command);
-  g_free (keymap->lang);
-  g_free (keymap->label);
-  g_free (keymap);
-}
-  
 
 /**
  * gkb_prop_list_free_keymaps:
@@ -460,7 +461,7 @@ gkb_prop_list_free_keymaps (GkbPropertyBoxInfo *pbi)
   
   list = pbi->keymaps;
   for (; list != NULL; list = list->next)
-      gkb_utils_free_keymap ((GkbKeymap *) list->data);
+      gkb_util_free_keymap ((GkbKeymap *) list->data);
 
   g_list_free (pbi->keymaps);
   pbi->keymaps = NULL;
@@ -491,7 +492,7 @@ gkb_prop_list_load_keymaps (GkbPropertyBoxInfo *pbi)
   list = gkb->maps;
   for (; list != NULL; list = list->next) {
     keymap = list->data;
-    new_keymap = gkb_utils_copy_keymap ((GkbKeymap *) list->data);
+    new_keymap = gkb_util_copy_keymap ((GkbKeymap *) list->data);
     new_list = g_list_prepend (new_list, new_keymap);
   }
 
