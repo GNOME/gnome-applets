@@ -174,7 +174,7 @@ main (int argc, char **argv)
 	}
       if (i == 2 || i == 5)
 	{
-	  item[i] = gnome_canvas_item_new (gnome_canvas_root (canvas),
+	  item[i] = gnome_canvas_item_new (gnome_canvas_root (GNOME_CANVAS (canvas)),
 					   gnome_canvas_image_get_type (),
 					   "image", tpix[0],
 					   "x", (double) xtmp,
@@ -185,7 +185,7 @@ main (int argc, char **argv)
 	}
       else
 	{
-	  item[i] = gnome_canvas_item_new (gnome_canvas_root (canvas),
+	  item[i] = gnome_canvas_item_new (gnome_canvas_root (GNOME_CANVAS (canvas)),
 					   gnome_canvas_image_get_type (),
 					   "image", pix[0],
 					   "x", (double) xtmp,
