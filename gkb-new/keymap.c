@@ -40,10 +40,9 @@
  * Frees the internals of a keymap
  **/
 void
-gkb_keymap_free_internals (GkbKeymap *keymap)
+gkb_keymap_free_internals (GkbKeymap * keymap)
 {
-  debug (FALSE, "");
-  
+
   g_free (keymap->name);
   g_free (keymap->label);
   g_free (keymap->lang);
@@ -54,7 +53,7 @@ gkb_keymap_free_internals (GkbKeymap *keymap)
   g_free (keymap->command);
   g_free (keymap->flag);
 }
-  
+
 
 /**
  * gkb_util_free_keymap:
@@ -63,10 +62,8 @@ gkb_keymap_free_internals (GkbKeymap *keymap)
  * Free a keymap
  **/
 void
-gkb_keymap_free (GkbKeymap *keymap)
+gkb_keymap_free (GkbKeymap * keymap)
 {
-  debug (FALSE, "");
-
   gkb_keymap_free_internals (keymap);
   g_free (keymap);
 }
@@ -78,19 +75,20 @@ gkb_keymap_free (GkbKeymap *keymap)
  * Free a list of keymaps
  **/
 void
-gkb_keymap_free_list (GList *list_in)
+gkb_keymap_free_list (GList * list_in)
 {
   GList *list;
   GkbKeymap *keymap;
-  
+
   list = list_in;
-  for (; list != NULL; list = list->next) {
-    keymap = (GkbKeymap *)list->data;
-    gkb_keymap_free (keymap);
-  }
+  for (; list != NULL; list = list->next)
+    {
+      keymap = (GkbKeymap *) list->data;
+      gkb_keymap_free (keymap);
+    }
   g_list_free (list_in);
 }
-		
+
 
 /**
  * gkb_keymap_copy:
@@ -101,21 +99,19 @@ gkb_keymap_free_list (GList *list_in)
  * Return Value: 
  **/
 GkbKeymap *
-gkb_keymap_copy (GkbKeymap *keymap)
+gkb_keymap_copy (GkbKeymap * keymap)
 {
   GkbKeymap *new_keymap;
 
-  debug (FALSE, "");
-  
   new_keymap = g_new0 (GkbKeymap, 1);
-  new_keymap->name    = g_strdup (keymap->name);
-  new_keymap->flag    = g_strdup (keymap->flag);
+  new_keymap->name = g_strdup (keymap->name);
+  new_keymap->flag = g_strdup (keymap->flag);
   new_keymap->country = g_strdup (keymap->country);
   new_keymap->command = g_strdup (keymap->command);
-  new_keymap->lang    = g_strdup (keymap->lang);
-  new_keymap->label   = g_strdup (keymap->label);
-  new_keymap->pix     = NULL;
-  new_keymap->parent  = NULL;
+  new_keymap->lang = g_strdup (keymap->lang);
+  new_keymap->label = g_strdup (keymap->label);
+  new_keymap->pix = NULL;
+  new_keymap->parent = NULL;
 
   return new_keymap;
 }
@@ -130,18 +126,19 @@ gkb_keymap_copy (GkbKeymap *keymap)
  * Return Value: 
  **/
 GList *
-gkb_keymap_copy_list (GList *list_in)
+gkb_keymap_copy_list (GList * list_in)
 {
   GkbKeymap *keymap;
   GList *new_list = NULL;
   GList *list;
 
   list = list_in;
-  for (; list != NULL; list = list->next) {
-    keymap = gkb_keymap_copy ((GkbKeymap *) list->data);
-    keymap->parent = (GkbKeymap *)list->data;
-    new_list = g_list_prepend (new_list, keymap);
-  }
+  for (; list != NULL; list = list->next)
+    {
+      keymap = gkb_keymap_copy ((GkbKeymap *) list->data);
+      keymap->parent = (GkbKeymap *) list->data;
+      new_list = g_list_prepend (new_list, keymap);
+    }
 
   new_list = g_list_reverse (new_list);
 

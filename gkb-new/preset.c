@@ -66,18 +66,18 @@ find_presets ()
 GList *
 gkb_preset_load (GList * list)
 {
-  GkbKeymap * val;
-  GList * retlist, * templist;
-  gchar * prefix;
-  gchar * tname, * tcodepage;
-  gchar * ttype, * tarch, * tcommand;
-  gchar * set, * filename;
+  GkbKeymap *val;
+  GList *retlist, *templist;
+  gchar *prefix;
+  gchar *tname, *tcodepage;
+  gchar *ttype, *tarch, *tcommand;
+  gchar *set, *filename;
   gint i, knum = 1;
 
   templist = list;
   retlist = NULL;
 
-  for(templist =list; templist != NULL ;templist = g_list_next (templist))
+  for (templist = list; templist != NULL; templist = g_list_next (templist))
     {
 
       filename = templist->data;
@@ -117,13 +117,13 @@ gkb_preset_load (GList * list)
 	  val->arch = g_strdup (tarch);
 	  val->command = g_strdup (tcommand);
 
-          val->flag = gnome_config_get_string ("Flag");
-          val->label = gnome_config_get_string ("Label");
+	  val->flag = gnome_config_get_string ("Flag");
+	  val->label = gnome_config_get_string ("Label");
 
 	  val->lang = gnome_config_get_translated_string ("Language");
 	  val->country = gnome_config_get_translated_string ("Country");
 
-	  retlist = g_list_append(retlist,val);
+	  retlist = g_list_append (retlist, val);
 
 	  gnome_config_pop_prefix ();
 	}

@@ -37,18 +37,10 @@
 #include <libart_lgpl/art_pixbuf.h>
 #include <libart_lgpl/art_rgb_rgba_affine.h>
 #include <libart_lgpl/art_affine.h>
-
-#include <X11/Xlib.h>
  
 #include <sys/types.h>
 #include <dirent.h>		/* for opendir() et al. */
 #include <string.h>		/* for strncmp() */
-
-#if 1
-#define debug(section,str) /*if (debug_turned_on) */ g_print ("%s:%d (%s) %s\n", __FILE__, __LINE__, __FUNCTION__, str);
-#else
-#define debug(section,str) /*if (debug_turned_on) */ ;
-#endif
 
 typedef struct _GKB GKB;
 typedef struct _GkbKeymap          GkbKeymap;
@@ -85,15 +77,12 @@ struct _GkbPropertyBoxInfo
   /* Hotkey Entry */
   GtkWidget *hotkey_entry;
 
-  /* Window based switching */
-  GtkWidget *switch_checkbox;
-
   /* Selected keymap to add */
   GkbKeymap *keymap_for_add;
 
   /* Other properties */
-  gint is_small;
-  GkbMode mode;
+  gint is_small; 
+  GkbMode mode;;
 };
 
 struct _GkbKeymap
@@ -113,23 +102,11 @@ struct _GkbKeymap
   GkbKeymap *parent; /* The temp keymaps that are copied have a reference to their parents */
 };
 
-struct _GkbWindow
-{
-  Window xwin;
-  gint n;
-};
-
 struct _GKB
 {
   /* Keymaps */
   GkbKeymap *keymap; /* This is the currently selected keymap */
 
-  /* Window-change based switching events */
-  gint window_switch; /* Do we need to switch with window changes? */
-  GList *windows; /* windows on the desktop */
-  GkbWindow *focused; /* Focused window */
-
-  /* Keyboard maps */
   GList *maps;
   
   /* Properties */

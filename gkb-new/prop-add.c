@@ -37,200 +37,195 @@ static void addhelp_cb (AppletWidget * widget, gpointer data);
 typedef struct _LangData LangData;
 struct _LangData
 {
-  GtkWidget * widget;
-  GHashTable * countries;
+  GtkWidget *widget;
+  GHashTable *countries;
 };
 
 typedef struct _CountryData CountryData;
 struct _CountryData
 {
-  GtkWidget * widget;
-  GList * keymaps;
+  GtkWidget *widget;
+  GList *keymaps;
 };
 
 
 
 
 static void
-treeitems_create(GtkWidget *tree)
+treeitems_create (GtkWidget * tree)
 {
-	GList * sets = NULL;
-	GList * retval = NULL;
-        GtkWidget *sitem, *titem, *subitem, *subtree, *subtree2;
+  GList *sets = NULL;
+  GList *retval = NULL;
+  GtkWidget *sitem, *titem, *subitem, *subtree, *subtree2;
 
-	GHashTable * langs = g_hash_table_new(g_str_hash, g_str_equal);
-	LangData * ldata;
-	CountryData * cdata;
+  GHashTable *langs = g_hash_table_new (g_str_hash, g_str_equal);
+  LangData *ldata;
+  CountryData *cdata;
 
 
-	debug (FALSE, "");
-	/* TODO: Error checking... */
-	sets = gkb_preset_load(find_presets());
-	retval = sets;
-        
-        while ((sets = g_list_next(sets)) != NULL)
-         {
-	  GkbKeymap * item; 
+  /* TODO: Error checking... */
+  sets = gkb_preset_load (find_presets ());
+  retval = sets;
 
-	  item = sets->data;
+  while ((sets = g_list_next (sets)) != NULL)
+    {
+      GkbKeymap *item;
 
-	  if ((ldata = g_hash_table_lookup (langs,item->lang)) != NULL)
-	   {
-	    /* There is lang */
-	    if ((cdata = g_hash_table_lookup (ldata->countries,item->country)) != NULL)
-	     {
+      item = sets->data;
+
+      if ((ldata = g_hash_table_lookup (langs, item->lang)) != NULL)
+	{
+	  /* There is lang */
+	  if ((cdata = g_hash_table_lookup (ldata->countries, item->country))
+	      != NULL)
+	    {
 	      /* There is country */
-             sitem = gtk_tree_item_new_with_label (item->name);
-             gtk_tree_append (GTK_TREE(cdata->widget), sitem);
-             gtk_widget_show(sitem);
+	      sitem = gtk_tree_item_new_with_label (item->name);
+	      gtk_tree_append (GTK_TREE (cdata->widget), sitem);
+	      gtk_widget_show (sitem);
 
-             cdata->keymaps = g_list_append(cdata->keymaps,item);
+	      cdata->keymaps = g_list_append (cdata->keymaps, item);
 
-             gtk_object_set_data (GTK_OBJECT(sitem),"item",item);
+	      gtk_object_set_data (GTK_OBJECT (sitem), "item", item);
 
-	     }
-	     else
-	     {
+	    }
+	  else
+	    {
 	      /* There is no country */
 
 	      subitem = gtk_tree_item_new_with_label (item->country);
-	      gtk_tree_append (GTK_TREE(ldata->widget), subitem);
+	      gtk_tree_append (GTK_TREE (ldata->widget), subitem);
 	      gtk_widget_show (subitem);
 
-              subtree = gtk_tree_new();
-              gtk_tree_set_selection_mode (GTK_TREE(subtree),
-                                 GTK_SELECTION_SINGLE);
-              gtk_tree_set_view_mode (GTK_TREE(subtree), GTK_TREE_VIEW_ITEM);
-              gtk_tree_item_set_subtree (GTK_TREE_ITEM(subitem), subtree);
-              subitem = gtk_tree_item_new_with_label (item->name);
-              gtk_tree_append (GTK_TREE(subtree), subitem);
+	      subtree = gtk_tree_new ();
+	      gtk_tree_set_selection_mode (GTK_TREE (subtree),
+					   GTK_SELECTION_SINGLE);
+	      gtk_tree_set_view_mode (GTK_TREE (subtree), GTK_TREE_VIEW_ITEM);
+	      gtk_tree_item_set_subtree (GTK_TREE_ITEM (subitem), subtree);
+	      subitem = gtk_tree_item_new_with_label (item->name);
+	      gtk_tree_append (GTK_TREE (subtree), subitem);
 	      gtk_widget_show (subitem);
 
-	      cdata = g_new0 (CountryData,1);
+	      cdata = g_new0 (CountryData, 1);
 
 	      cdata->widget = subtree;
 	      cdata->keymaps = NULL;
 
-              cdata->keymaps = g_list_append (cdata->keymaps,item);
-              gtk_object_set_data (GTK_OBJECT(subitem),"item",item);
+	      cdata->keymaps = g_list_append (cdata->keymaps, item);
+	      gtk_object_set_data (GTK_OBJECT (subitem), "item", item);
 
 	      g_hash_table_insert (ldata->countries, item->country, cdata);
-	     }
-	   }
-	  else
-	   {
-	    /* There is no lang */
-
-	    titem = gtk_tree_item_new_with_label (item->lang);
-	    gtk_tree_append (GTK_TREE(tree), titem);
-	    gtk_widget_show (titem);
-
-	    subtree = gtk_tree_new();
-	    gtk_tree_set_selection_mode (GTK_TREE(subtree),
-                                 GTK_SELECTION_SINGLE);
-	    gtk_tree_set_view_mode (GTK_TREE(subtree), GTK_TREE_VIEW_ITEM);
-	    gtk_tree_item_set_subtree (GTK_TREE_ITEM(titem), subtree);
-	    subitem = gtk_tree_item_new_with_label (item->country);
- 	    gtk_tree_append (GTK_TREE(subtree), subitem);
-	    gtk_widget_show (subitem);
-
-	    subtree2 = gtk_tree_new();
-	    gtk_tree_set_selection_mode (GTK_TREE(subtree2),
-                                 GTK_SELECTION_SINGLE);
-	    gtk_tree_set_view_mode (GTK_TREE(subtree2), GTK_TREE_VIEW_ITEM);
-	    gtk_tree_item_set_subtree (GTK_TREE_ITEM(subitem), subtree2);
-            sitem = gtk_tree_item_new_with_label (item->name);
-            gtk_tree_append (GTK_TREE(subtree2), sitem);
-            gtk_widget_show (sitem);
-
-	    ldata = g_new0 (LangData, 1);
-            cdata = g_new0 (CountryData,1);
-
-            cdata->widget = subtree2;
-            cdata->keymaps = NULL;
-	    
-	    ldata->widget = subtree;
-
-	    ldata->countries = g_hash_table_new (g_str_hash, g_str_equal);
-
-            cdata->keymaps = g_list_append(cdata->keymaps,item);
-            gtk_object_set_data (GTK_OBJECT(sitem),"item",item);
-
-	    g_hash_table_insert (ldata->countries, item->country, cdata);
-
-            g_hash_table_insert (langs, item->lang, ldata);
-	   }
-	  
+	    }
 	}
+      else
+	{
+	  /* There is no lang */
+
+	  titem = gtk_tree_item_new_with_label (item->lang);
+	  gtk_tree_append (GTK_TREE (tree), titem);
+	  gtk_widget_show (titem);
+
+	  subtree = gtk_tree_new ();
+	  gtk_tree_set_selection_mode (GTK_TREE (subtree),
+				       GTK_SELECTION_SINGLE);
+	  gtk_tree_set_view_mode (GTK_TREE (subtree), GTK_TREE_VIEW_ITEM);
+	  gtk_tree_item_set_subtree (GTK_TREE_ITEM (titem), subtree);
+	  subitem = gtk_tree_item_new_with_label (item->country);
+	  gtk_tree_append (GTK_TREE (subtree), subitem);
+	  gtk_widget_show (subitem);
+
+	  subtree2 = gtk_tree_new ();
+	  gtk_tree_set_selection_mode (GTK_TREE (subtree2),
+				       GTK_SELECTION_SINGLE);
+	  gtk_tree_set_view_mode (GTK_TREE (subtree2), GTK_TREE_VIEW_ITEM);
+	  gtk_tree_item_set_subtree (GTK_TREE_ITEM (subitem), subtree2);
+	  sitem = gtk_tree_item_new_with_label (item->name);
+	  gtk_tree_append (GTK_TREE (subtree2), sitem);
+	  gtk_widget_show (sitem);
+
+	  ldata = g_new0 (LangData, 1);
+	  cdata = g_new0 (CountryData, 1);
+
+	  cdata->widget = subtree2;
+	  cdata->keymaps = NULL;
+
+	  ldata->widget = subtree;
+
+	  ldata->countries = g_hash_table_new (g_str_hash, g_str_equal);
+
+	  cdata->keymaps = g_list_append (cdata->keymaps, item);
+	  gtk_object_set_data (GTK_OBJECT (sitem), "item", item);
+
+	  g_hash_table_insert (ldata->countries, item->country, cdata);
+
+	  g_hash_table_insert (langs, item->lang, ldata);
+	}
+
+    }
 }
 
 static void
-preadd_cb (GtkWidget * tree, GkbPropertyBoxInfo *pbi)
+preadd_cb (GtkWidget * tree, GkbPropertyBoxInfo * pbi)
 {
   GList *i;
   GtkLabel *label;
   GtkWidget *item;
 
-  debug (FALSE, "");
-  
   g_return_if_fail (tree != NULL);
 
-  if((i = GTK_TREE_SELECTION(tree)) != NULL)
-  {
-   item = GTK_WIDGET (i->data);
-   label = GTK_LABEL (GTK_BIN (item)->child);
-   if (GTK_IS_LABEL(label))
+  if ((i = GTK_TREE_SELECTION (tree)) != NULL)
     {
-     pbi->keymap_for_add = gtk_object_get_data (GTK_OBJECT(item),"item");
+      item = GTK_WIDGET (i->data);
+      label = GTK_LABEL (GTK_BIN (item)->child);
+      if (GTK_IS_LABEL (label))
+	{
+	  pbi->keymap_for_add =
+	    gtk_object_get_data (GTK_OBJECT (item), "item");
+	}
     }
-   }
- return;
+  return;
 }
 
 
-static gint 
-addwadd_cb (GtkWidget * addbutton, GkbPropertyBoxInfo *pbi)
+static gint
+addwadd_cb (GtkWidget * addbutton, GkbPropertyBoxInfo * pbi)
 {
- GkbKeymap * tdata;
+  GkbKeymap *tdata;
 
- debug (FALSE, "");
- 
- if (pbi->keymap_for_add)
- {
-  tdata = g_new0 (GkbKeymap,1);
+  if (pbi->keymap_for_add)
+    {
+      tdata = g_new0 (GkbKeymap, 1);
 
-  tdata->name = g_strdup (pbi->keymap_for_add->name);
-  tdata->flag = g_strdup (pbi->keymap_for_add->flag);
-  tdata->command = g_strdup (pbi->keymap_for_add->command);
-  tdata->country = g_strdup (pbi->keymap_for_add->country);
-  tdata->label = g_strdup (pbi->keymap_for_add->label);
-  tdata->lang = g_strdup (pbi->keymap_for_add->lang);
+      tdata->name = g_strdup (pbi->keymap_for_add->name);
+      tdata->flag = g_strdup (pbi->keymap_for_add->flag);
+      tdata->command = g_strdup (pbi->keymap_for_add->command);
+      tdata->country = g_strdup (pbi->keymap_for_add->country);
+      tdata->label = g_strdup (pbi->keymap_for_add->label);
+      tdata->lang = g_strdup (pbi->keymap_for_add->lang);
 
-  pbi->keymaps = g_list_append (pbi->keymaps, tdata);
- }
+      pbi->keymaps = g_list_append (pbi->keymaps, tdata);
+    }
 
- gkb_prop_list_reload (pbi);
- 
- if ( g_list_length(pbi->keymaps) > 1 )
-  gnome_property_box_changed (GNOME_PROPERTY_BOX (pbi->box));
- return FALSE;
+  gkb_prop_list_reload (pbi);
+
+  if (g_list_length (pbi->keymaps) > 1)
+    gnome_property_box_changed (GNOME_PROPERTY_BOX (pbi->box));
+  return FALSE;
 }
 
-static gint 
+static gint
 wdestroy_cb (GtkWidget * closebutton, GtkWidget * window)
 {
-  debug (FALSE, "");
-	
- if (window == gkb->addwindow)
-  gkb->addwindow=NULL;
- gtk_widget_destroy(window);
-  
- return FALSE;
+  if (window == gkb->addwindow)
+    gkb->addwindow = NULL;
+  gtk_widget_destroy (window);
+
+  return FALSE;
 }
 
 
 void
-gkb_prop_map_add (GkbPropertyBoxInfo *pbi)
+gkb_prop_map_add (GkbPropertyBoxInfo * pbi)
 {
   GtkWidget *vbox1;
   GtkWidget *tree1;
@@ -240,8 +235,6 @@ gkb_prop_map_add (GkbPropertyBoxInfo *pbi)
   GtkWidget *button5;
   GtkWidget *button6;
 
-  debug (FALSE, "");
-
   if (gkb->addwindow)
     {
       gtk_widget_show_now (gkb->addwindow);
@@ -250,8 +243,9 @@ gkb_prop_map_add (GkbPropertyBoxInfo *pbi)
     }
 
   gkb->addwindow = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-  gtk_window_set_modal(GTK_WINDOW(gkb->addwindow), TRUE);
-  gtk_object_set_data (GTK_OBJECT (gkb->addwindow), "addwindow", gkb->addwindow);
+  gtk_window_set_modal (GTK_WINDOW (gkb->addwindow), TRUE);
+  gtk_object_set_data (GTK_OBJECT (gkb->addwindow), "addwindow",
+		       gkb->addwindow);
   gtk_window_set_title (GTK_WINDOW (gkb->addwindow), _("Select layout"));
 
   vbox1 = gtk_vbox_new (FALSE, 0);
@@ -260,8 +254,7 @@ gkb_prop_map_add (GkbPropertyBoxInfo *pbi)
 
   scrolled1 = gtk_scrolled_window_new (NULL, NULL);
   gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled1),
-                                  GTK_POLICY_AUTOMATIC,
-	                	  GTK_POLICY_AUTOMATIC);
+				  GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
   gtk_widget_set_usize (scrolled1, 315, 202);
   gtk_box_pack_start (GTK_BOX (vbox1), scrolled1, TRUE, TRUE, 0);
   gtk_widget_show (scrolled1);
@@ -272,13 +265,14 @@ gkb_prop_map_add (GkbPropertyBoxInfo *pbi)
 
   treeitems_create (tree1);
 
-  gtk_scrolled_window_add_with_viewport (GTK_SCROLLED_WINDOW(scrolled1),
-                                         tree1);
+  gtk_scrolled_window_add_with_viewport (GTK_SCROLLED_WINDOW (scrolled1),
+					 tree1);
 
   hbuttonbox1 = gtk_hbutton_box_new ();
   gtk_widget_show (hbuttonbox1);
   gtk_box_pack_start (GTK_BOX (vbox1), hbuttonbox1, FALSE, TRUE, 0);
-  gtk_button_box_set_layout (GTK_BUTTON_BOX (hbuttonbox1), GTK_BUTTONBOX_SPREAD);
+  gtk_button_box_set_layout (GTK_BUTTON_BOX (hbuttonbox1),
+			     GTK_BUTTONBOX_SPREAD);
 
   button4 = gtk_button_new_with_label (_("Add"));
 
@@ -296,20 +290,17 @@ gkb_prop_map_add (GkbPropertyBoxInfo *pbi)
   gtk_container_add (GTK_CONTAINER (hbuttonbox1), button6);
   GTK_WIDGET_SET_FLAGS (button6, GTK_CAN_DEFAULT);
 
-  gtk_signal_connect (GTK_OBJECT(tree1), "selection_changed",
-                      GTK_SIGNAL_FUNC(preadd_cb),
-                      pbi);
-  gtk_signal_connect (GTK_OBJECT(button4), "clicked",
-                      GTK_SIGNAL_FUNC(addwadd_cb),
-                      pbi);
-  gtk_signal_connect (GTK_OBJECT(button5), "clicked",
-                      GTK_SIGNAL_FUNC(wdestroy_cb),
-                      GTK_OBJECT(gkb->addwindow));
-  gtk_signal_connect (GTK_OBJECT(button6), "clicked",
-                      GTK_SIGNAL_FUNC(addhelp_cb),
-                      GTK_OBJECT(tree1));
+  gtk_signal_connect (GTK_OBJECT (tree1), "selection_changed",
+		      GTK_SIGNAL_FUNC (preadd_cb), pbi);
+  gtk_signal_connect (GTK_OBJECT (button4), "clicked",
+		      GTK_SIGNAL_FUNC (addwadd_cb), pbi);
+  gtk_signal_connect (GTK_OBJECT (button5), "clicked",
+		      GTK_SIGNAL_FUNC (wdestroy_cb),
+		      GTK_OBJECT (gkb->addwindow));
+  gtk_signal_connect (GTK_OBJECT (button6), "clicked",
+		      GTK_SIGNAL_FUNC (addhelp_cb), GTK_OBJECT (tree1));
 
-  gtk_widget_show(gkb->addwindow);
+  gtk_widget_show (gkb->addwindow);
 
   return;
 }
@@ -322,5 +313,3 @@ addhelp_cb (AppletWidget * applet, gpointer data)
 
   gnome_help_display (NULL, &help_entry);
 }
-
-

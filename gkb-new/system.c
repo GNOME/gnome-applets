@@ -38,12 +38,12 @@
  * Return Value: 
  **/
 static gboolean
-gkb_system_set_keymap_idle (GkbKeymap *keymap)
+gkb_system_set_keymap_idle (GkbKeymap * keymap)
 {
-  g_print ("Executing [%s]\n", gkb->keymap->command);
   if (system (gkb->keymap->command))
-    gnome_error_dialog (_("The keymap switching command returned with error!"));
-  
+    gnome_error_dialog (_
+			("The keymap switching command returned with error!"));
+
   return FALSE;
 }
 
@@ -68,4 +68,3 @@ gkb_system_set_keymap (GKB * gkb)
 
   gtk_idle_add ((GtkFunction) gkb_system_set_keymap_idle, gkb->keymap);
 }
-

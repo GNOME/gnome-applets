@@ -32,7 +32,7 @@ gkb_util_get_text_from_mode (GkbMode mode)
 {
   if (mode == GKB_LABEL)
     return _("Label");
-  
+
   if (mode == GKB_FLAG)
     return _("Flag");
 
@@ -40,16 +40,15 @@ gkb_util_get_text_from_mode (GkbMode mode)
     return _("Flag and Label");
 
   g_warning ("Invalid mode [%i]\n", mode);
-  
+
   return _("Flag");
 }
 
-gint
-gkb_util_get_int_from_mode (GkbMode mode)
+gint gkb_util_get_int_from_mode (GkbMode mode)
 {
   if (mode == GKB_LABEL)
     return 1;
-  
+
   if (mode == GKB_FLAG)
     return 0;
 
@@ -57,25 +56,24 @@ gkb_util_get_int_from_mode (GkbMode mode)
     return 2;
 
   g_warning ("Invalid mode [%i]\n", mode);
-  
+
   return 0;
 }
-  
-GkbMode
-gkb_util_get_mode_from_text (const gchar *text)
+
+GkbMode gkb_util_get_mode_from_text (const gchar * text)
 {
   g_return_val_if_fail (text != NULL, GKB_FLAG);
-  
+
   if (strcmp (text, _("Label")) == 0)
     return GKB_LABEL;
 
-  if (strcmp (text, _("Flag")) == 0) 
-    return  GKB_FLAG;
+  if (strcmp (text, _("Flag")) == 0)
+    return GKB_FLAG;
 
-  if (strcmp (text, _("Flag and Label")) == 0) 
+  if (strcmp (text, _("Flag and Label")) == 0)
     return GKB_FLAG_AND_LABEL;
-  
+
   g_warning ("Could not interpret size change [%s]\n", text);
-  
+
   return GKB_FLAG;
 }

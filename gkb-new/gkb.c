@@ -49,8 +49,6 @@ makepix (GkbKeymap * keymap, char *fname, int w, int h)
   GdkPixbuf *pix;
   int width, height;
 
-  debug (FALSE, "");
-
   pix = gdk_pixbuf_new_from_file (fname);
   if (pix != NULL)
     {
@@ -114,8 +112,6 @@ makepix (GkbKeymap * keymap, char *fname, int w, int h)
 static void
 gkb_draw (GKB * gkb)
 {
-  debug (FALSE, "");
-
   g_return_if_fail (gkb->darea != NULL);
   g_return_if_fail (gkb->keymap != NULL);
   g_return_if_fail (GTK_WIDGET_REALIZED (gkb->darea));
@@ -129,9 +125,9 @@ gkb_draw (GKB * gkb)
       g_return_if_fail (gkb->darea->window);
 
       gdk_draw_pixmap (gkb->darea->window,
-		       gkb->darea->style->
-		       fg_gc[GTK_WIDGET_STATE (gkb->darea)], gkb->keymap->pix,
-		       0, 0, 0, 0, gkb->w, gkb->h);
+		       gkb->darea->
+		       style->fg_gc[GTK_WIDGET_STATE (gkb->darea)],
+		       gkb->keymap->pix, 0, 0, 0, 0, gkb->w, gkb->h);
 
     }
 
@@ -271,8 +267,6 @@ gkb_sized_render (GKB * gkb)
   GList *list;
   gboolean label_in_vbox;
 
-  debug (FALSE, "");
-
   label_in_vbox = gkb_count_sizes (gkb);
 
   /* Hide or show the flag */
@@ -308,8 +302,6 @@ gkb_sized_render (GKB * gkb)
       gchar *name;
       gchar *real_name;
       keymap = (GkbKeymap *) list->data;
-      g_print ("Inside size render. About to make pix for keymap [%i]\n",
-	       GPOINTER_TO_INT (keymap));
       name = g_strdup_printf ("gkb/%s", keymap->flag);
       real_name = gnome_unconditional_pixmap_file (name);
       if (g_file_exists (real_name))
@@ -343,8 +335,6 @@ gkb_sized_render (GKB * gkb)
 void
 gkb_update (GKB * gkb, gboolean set_command)
 {
-  debug (FALSE, "");
-
   g_return_if_fail (gkb->maps);
 
   /* When the size is changed, we don't need to change the actual
@@ -364,8 +354,6 @@ gkb_change_orient (GtkWidget * w, PanelOrientType new_orient, gpointer data)
 {
   GKB *gkb = data;
 
-  debug (FALSE, "");
-
   if (gkb->orient != new_orient)
     {
       gkb->orient = new_orient;
@@ -377,8 +365,6 @@ static void
 gkb_change_pixel_size (GtkWidget * w, gint new_size, gpointer data)
 {
   GKB *gkb = data;
-
-  debug (FALSE, "");
 
 #if 0
   if (gkb->size != new_size)
@@ -401,13 +387,10 @@ applet_save_session (GtkWidget * w,
   gchar str[100];
   int i = 0;
 
-  debug (FALSE, "");
-
   gnome_config_push_prefix (privcfgpath);
   g_print ("Pushing prefix .. [%s]\n", privcfgpath);
   gnome_config_set_int ("gkb/num", gkb->n);
   gnome_config_set_bool ("gkb/small", gkb->is_small);
-  gnome_config_set_bool ("gkb/window_switch", gkb->window_switch);
   gnome_config_set_string ("gkb/key", gkb->key);
   text = gkb_util_get_text_from_mode (gkb->mode);
   gnome_config_set_string ("gkb/mode", text);
@@ -448,8 +431,6 @@ loadprop (int i)
 {
   GkbKeymap *actdata;
   char buf[256];
-
-  debug (FALSE, "");
 
   actdata = g_new0 (GkbKeymap, 1);
 
@@ -510,12 +491,7 @@ load_properties (GKB * gkb)
   gchar *text;
   int i;
 
-  debug (FALSE, "");
-
   gkb->maps = NULL;
-
-  gkb->windows = NULL;
-  gkb->focused = NULL;
 
   gnome_config_push_prefix (APPLET_WIDGET (gkb->applet)->privcfgpath);
 
@@ -525,8 +501,6 @@ load_properties (GKB * gkb)
   convert_string_to_keysym_state (gkb->key, &gkb->keysym, &gkb->state);
 
   gkb->is_small = gnome_config_get_bool ("gkb/small=true");
-
-  gkb->window_switch = gnome_config_get_bool ("gkb/window_switch=false");
 
   text = gnome_config_get_string ("gkb/mode=Flag and Label");
   gkb->mode = gkb_util_get_mode_from_text (text);
@@ -559,41 +533,16 @@ load_properties (GKB * gkb)
 static void
 gkb_button_press_event_cb (GtkWidget * widget, GdkEventButton * event)
 {
-  debug (FALSE, "");
-
   if (event->button != 1)	/* Ignore mouse buttons 2 and 3 */
     return;
 
- if (gkb->window_switch)
-  {
-   if (gkb->cur + 1 < gkb->n)
+  if (gkb->cur + 1 < gkb->n)
     gkb->keymap = g_list_nth_data (gkb->maps, ++gkb->cur);
-   else
+  else
     {
       gkb->cur = 0;
       gkb->keymap = g_list_nth_data (gkb->maps, gkb->cur);
     }
-  }
-  else
-  {
-   g_print("AAAAAAAAAAAAAAAAAAAAA Switch...\n");
-   gkb->keymap = g_list_nth_data (gkb->maps, ++gkb->focused->n);
-  }
-
-  gkb_update (gkb, TRUE);
-}
-
-
-static void
-gkb_switch_to (gint n, GKB * gkb)
-{
-  debug (FALSE, "");
-
-  if (n > gkb->n)		/* Ignore mouse buttons 2 and 3 */
-    return;
-
-  gkb->cur = n;
-  gkb->keymap = g_list_nth_data (gkb->maps, gkb->cur);
 
   gkb_update (gkb, TRUE);
 }
@@ -601,8 +550,6 @@ gkb_switch_to (gint n, GKB * gkb)
 static int
 gkb_expose (GtkWidget * darea, GdkEventExpose * event)
 {
-  debug (FALSE, "");
-
   gdk_draw_pixmap (gkb->darea->window,
 		   gkb->darea->style->fg_gc[GTK_WIDGET_STATE (gkb->darea)],
 		   gkb->keymap->pix,
@@ -617,8 +564,6 @@ static void
 create_gkb_widget ()
 {
   GtkStyle *style;
-
-  debug (FALSE, "");
 
   gtk_widget_push_visual (gdk_rgb_get_visual ());
   gtk_widget_push_colormap (gdk_rgb_get_cmap ());
@@ -684,10 +629,6 @@ create_gkb_widget ()
   gtk_widget_pop_visual ();
 
   gkb_sized_render (gkb);
-
-  if (gkb->window_switch)
-    gkb_switch_focused(gkb);
-
   gkb_update (gkb, TRUE);
 }
 
@@ -697,8 +638,6 @@ about_cb (AppletWidget * widget)
   static GtkWidget *about;
   const char *authors[3];	/* Emese is genius */
   GtkWidget *link;
-
-  debug (FALSE, "");
 
 /*
   if (about)
@@ -745,71 +684,12 @@ help_cb (AppletWidget * applet)
 {
   GnomeHelpMenuEntry help_entry = { "gkb_applet", "index.html" };
 
-  debug (FALSE, "");
-
   gnome_help_display (NULL, &help_entry);
-}
-
-static void
-gkb_switch_focused (GKB * gkb)
-{
-  GList *list = gkb->windows;
-  Window focus;
-  int revert_to;
-
-  XGetInputFocus (GDK_DISPLAY (), &focus, &revert_to);
-
-  while (list)
-    {
-      GkbWindow *data = list->data;
-
-      printf (" + Lookup: %p\n", focus);
-      fflush (stdout);
-
-      if (data->xwin == focus)
-	break;
-      list = list->next;
-    }
-  if (list == NULL)
-    {
-      GkbWindow *new = g_new0 (GkbWindow, 1);
-
-      printf (" ------------------ New focused: %p\n", focus);
-      fflush (stdout);
-      new->xwin = focus;
-      new->n = gkb->cur;
-      gkb->windows = g_list_append (gkb->windows, new);
-    }
-  else
-    {
-      GkbWindow *data = list->data;
-
-      printf (" ///////////////// Switching to: %d\n", data->n);
-      fflush (stdout);
-      gkb_switch_to (data->n, gkb);
-    }
-}
-
-static GdkFilterReturn
-root_event_monitor (GdkXEvent * gdk_xevent, GdkEvent * event, gpointer data)
-{
-  XEvent *xevent = gdk_xevent;
-  GKB *gkb = data;
-
-  if ((xevent->type == PropertyNotify) ||
-      (xevent->type == FocusIn) || (xevent->type == FocusOut))
-    {
-     if (gkb->window_switch)
-      gkb_switch_focused (gkb);
-    }
-  return GDK_FILTER_CONTINUE;
 }
 
 static GdkFilterReturn
 global_key_filter (GdkXEvent * gdk_xevent, GdkEvent * event)
 {
-  debug (FALSE, "");
-
   if (event->key.keyval == gkb->keysym && event->key.state == gkb->state)
     {
       if (gkb->cur + 1 < gkb->n)
@@ -832,8 +712,6 @@ event_filter (GdkXEvent * gdk_xevent, GdkEvent * event, gpointer data)
 {
   XEvent *xevent;
 
-  debug (FALSE, "");
-
   xevent = (XEvent *) gdk_xevent;
 
   if (xevent->type == KeyRelease)
@@ -852,8 +730,6 @@ event_filter (GdkXEvent * gdk_xevent, GdkEvent * event, gpointer data)
 static void
 gkb_activator_connect_signals (GKB * gkb)
 {
-  debug (FALSE, "");
-
   g_return_if_fail (gkb != NULL);
   g_return_if_fail (GTK_IS_WIDGET (gkb->applet));
 
@@ -876,8 +752,6 @@ gkb_activator_register_callbacks (GKB * gkb)
   g_return_if_fail (gkb != NULL);
   g_return_if_fail (GTK_IS_WIDGET (gkb->applet));
 
-  debug (FALSE, "");
-
   applet_widget_register_stock_callback (APPLET_WIDGET (gkb->applet),
 					 "properties",
 					 GNOME_STOCK_MENU_PROP,
@@ -897,6 +771,75 @@ gkb_activator_register_callbacks (GKB * gkb)
 
 }
 
+static gboolean
+check_client (Display * display, Window xwindow, Atom state_atom)
+{
+  gboolean valid_client = TRUE;
+
+  if (valid_client)
+    {
+      Atom dummy1;
+      int format = 0;
+      unsigned long dummy2, nitems = 0, *prop = NULL;
+
+      XGetWindowProperty (display, xwindow, state_atom, 0, 1024, False,
+			  state_atom, &dummy1, &format, &nitems, &dummy2,
+			  (unsigned char **) &prop);
+      if (prop)
+	{
+	  valid_client = format == 32 && nitems > 0 && (prop[0] == NormalState
+							|| prop[0] ==
+							IconicState);
+	  XFree (prop);
+	}
+    }
+
+  if (valid_client)
+    {
+      XWindowAttributes attributes = { 0, };
+
+      XGetWindowAttributes (display, xwindow, &attributes);
+      valid_client = (attributes.class == InputOutput &&
+		      attributes.map_state == IsViewable);
+    }
+
+  if (valid_client)
+    {
+      XWMHints *hints = XGetWMHints (display, xwindow);
+
+      valid_client &= hints && (hints->flags & InputHint) && hints->input;
+      if (hints)
+	XFree (hints);
+    }
+
+  return valid_client;
+}
+
+
+static Window
+find_input_client (Display * display, Window xwindow, Atom state_atom)
+{
+  Window dummy1, dummy2, *children = NULL;
+  unsigned int n_children = 0;
+  guint i;
+
+  if (check_client (display, xwindow, state_atom))
+    return xwindow;
+
+  if (!XQueryTree (display, xwindow, &dummy1, &dummy2, &children, &n_children)
+      || !children)
+    return None;
+
+  for (i = 0; i < n_children; i++)
+    {
+      xwindow = find_input_client (display, children[i], state_atom);
+      if (xwindow)
+	break;
+    }
+  XFree (children);
+
+  return xwindow;
+}
 
 static CORBA_Object
 gkb_activator (CORBA_Object poa_in,
@@ -907,8 +850,6 @@ gkb_activator (CORBA_Object poa_in,
   static guint key = 0;
   PortableServer_POA poa = (PortableServer_POA) poa_in;
   XWindowAttributes attribs = { 0, };
-
-  debug (FALSE, "");
 
   gkb = g_new0 (GKB, 1);
 
@@ -950,7 +891,6 @@ gkb_activator (CORBA_Object poa_in,
 		StructureNotifyMask | FocusChangeMask | PropertyChangeMask);
 
   gdk_window_add_filter (GDK_ROOT_PARENT (), event_filter, NULL);
-  gdk_window_add_filter (GDK_ROOT_PARENT (), root_event_monitor, gkb);
 
   key = XKeysymToKeycode (GDK_DISPLAY (), gkb->keysym);
 
@@ -969,9 +909,8 @@ gkb_deactivator (CORBA_Object poa_in,
 		 gpointer impl_ptr, CORBA_Environment * ev)
 {
   PortableServer_POA poa = (PortableServer_POA) poa_in;
-/*  gdk_window_remove_filter(GDK_ROOT_PARENT(), event_filter, NULL);
-*/
-  debug (FALSE, "");
+
+  gdk_window_remove_filter (GDK_ROOT_PARENT (), event_filter, NULL);
 
   applet_widget_corba_deactivate (poa, goad_id, impl_ptr, ev);
 }
@@ -995,8 +934,6 @@ main (int argc, char *argv[])
   gpointer gkb_impl;
 
   /* Initialize the i18n stuff */
-
-  debug (FALSE, "");
 
   bindtextdomain (PACKAGE, GNOMELOCALEDIR);
   textdomain (PACKAGE);
