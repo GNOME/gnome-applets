@@ -165,16 +165,26 @@ theme_selected_cb (GtkTreeSelection *selection, gpointer data)
 }
 
 static void
-phelp_cb (GtkWidget *w, gint tab, gpointer data)
+phelp_cb ()
 {
 	GError *error = NULL;
-        gnome_help_display("geyes",NULL,&error);
+	gnome_help_display("geyes","geyes-settings",&error);
+	if (error) {
+		g_warning ("help error: %s\n", error->message);
+		g_error_free (error);
+		error = NULL;
+	}
 }
 
 static void
 presponse_cb (GtkDialog *dialog, gint id, gpointer data)
 {
 	EyesApplet *eyes_applet = data;
+	if(id == GTK_RESPONSE_HELP){
+		phelp_cb ();
+		return;
+	}
+
 
 	gtk_widget_destroy (GTK_WIDGET (dialog));
 
@@ -207,6 +217,7 @@ properties_cb (BonoboUIComponent *uic, gpointer user_data, const gchar *verbname
         pbox = gtk_dialog_new_with_buttons (_("Geyes Preferences"), NULL,
         				     GTK_DIALOG_DESTROY_WITH_PARENT,
 					     GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
+					     GTK_STOCK_HELP, GTK_RESPONSE_HELP,
 					     NULL);
         gtk_dialog_set_default_response(GTK_DIALOG (pbox), GTK_RESPONSE_CLOSE);
 
