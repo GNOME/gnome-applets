@@ -14,7 +14,8 @@
 #include <gnome.h>
 #include <gdk/gdkx.h>
 #include <gdk/gdkprivate.h>
-#include <applet-widget.h>
+#include "applet-lib.h"
+#include "applet-widget.h"
 
 typedef struct _task
 {
@@ -101,6 +102,10 @@ void desktroy_task_widgets(void);
 GtkWidget *find_task_widget(Task *t);
 void set_task_info_to_button(Task *t);
 void populate_tasks(void);
+
+void desktop_set_area(int ax, int ay);
+void create_popbox(void);
+void showpop_cb(GtkWidget *widget, gpointer data);
 
 #include "icon1.xpm"
 #include "icon2.xpm"

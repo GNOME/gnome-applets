@@ -9,16 +9,18 @@ bin_PROGRAMS = gnomepager_applet
 
 gnomepager_applet_SOURCES = \
 	gnomepager_applet.c \
-	gnomepager.h
+	gnomepager.h \
+	icon1.xpm \
+	icon2.xpm \
+	icon3.xpm
+	stripe.xbm
 
 gnomepager_applet_LDADD = ../../panel/libpanel_applet.la \
-		     $(GNOME_LIBDIR) \
-		     $(GNOMEGNORBA_LIBS) $(INTLLIBS) 
+		     $(GNOME_LIBDIR) $(ORB_LIBS)      \
+		     $(GNOMEUI_LIBS) $(INTLLIBS) 
 
-EXTRA_DIST = gnomepager_applet.desktop gnomepager_applet.gnorba
+EXTRA_DIST = gnomepager_applet.desktop
 
 sysdir = $(datadir)/applets/Utility
 sys_DATA = gnomepager_applet.desktop
 
-gnorbadir  = $(sysconfdir)/CORBA/servers
-gnorba_DATA = gnomepager_applet.gnorba 
