@@ -121,12 +121,18 @@ static void props_ok (GtkWidget *wid, int page, gpointer *data)
     applet_widget_sync_config (APPLET_WIDGET(applet));
     set_colors(clk.area);
     update_clock (NULL);
+    return;
+    wid = NULL;
+    page = 0;
+    data = NULL;
 }
 
 
 static void props_cancel (GtkWidget *widget, GtkWidget **win)
 {
     *win = NULL;
+    return;
+    widget = NULL;
 }
 
 
@@ -183,6 +189,8 @@ static void sec_needle_changed (GtkWidget *widget, GtkWidget **sec)
     props_tmp.secneedle = props_tmp.secneedle ? FALSE : TRUE;
     gtk_widget_set_sensitive (GTK_WIDGET(sec), props_tmp.secneedle);
     gnome_property_box_changed (GNOME_PROPERTY_BOX(props_window));
+    return;
+    widget = NULL;
 }
 
 
@@ -315,6 +323,8 @@ gtk_widget_set_sensitive (colorpicker, FALSE);
     gtk_widget_show (props_window);
 
     return;
+    applet = NULL;
+    data = NULL;
 }
 
 
@@ -346,6 +356,8 @@ static void cb_about (AppletWidget *applet, gpointer data)
     gtk_widget_show (about);
 
     return;
+    applet = NULL;
+    data = NULL;
 }
 
 
@@ -354,6 +366,8 @@ static gint save_session (GtkWidget *widget, char *privcfgpath,
 {
     properties_save (privcfgpath);
     return FALSE;
+    widget = NULL;
+    globcfgpath = NULL;
 }
 
 static void
@@ -388,6 +402,9 @@ change_pixel_size(GtkWidget *w, int size, gpointer data)
     gdk_flush();
 
     update_clock (NULL);
+    return;
+    w = NULL;
+    data = NULL;
 }
 
 
@@ -479,7 +496,9 @@ static void applet_back_change (GtkWidget *widget, PanelBackType type,
     else if (type == PANEL_BACK_COLOR)
         applet_set_back_color (w, color);
     else
-        applet_set_default_back (w);
+	applet_set_default_back (w);
+    return;
+    widget = NULL;
 }
 
 
@@ -601,6 +620,7 @@ static gint update_clock (gpointer data)
     gdk_gc_destroy(gc);
 
     return TRUE;
+    data = NULL;
 }
 
 /*****************

@@ -43,6 +43,8 @@ _property_entry_adjustment_changed_cb (GtkWidget *widget,
 	*(cb_data->value) = cb_data->adjustment->value;
 
 	gnome_property_object_changed (cb_data->object);
+	return;
+	widget = NULL;
 }
 
 GtkWidget *

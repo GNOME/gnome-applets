@@ -153,6 +153,9 @@ static gboolean update_pref (void)
 static void ok_cb (GtkButton *button, gpointer user_data)
 {
     update_pref();
+    return;
+    button = NULL;
+    user_data = NULL;
 }
 
 static void apply_cb (GtkButton *button, gpointer user_data)
@@ -160,6 +163,9 @@ static void apply_cb (GtkButton *button, gpointer user_data)
     gnome_dialog_set_sensitive(GNOME_DIALOG(pref), 0, FALSE);
     gnome_dialog_set_sensitive(GNOME_DIALOG(pref), 1, FALSE);
     update_pref();
+    return;
+    button = NULL;
+    user_data = NULL;
 }
 
 static void change_cb (GtkButton *button, gpointer user_data)
@@ -170,6 +176,9 @@ static void change_cb (GtkButton *button, gpointer user_data)
     gtk_widget_set_sensitive(pref_net_proxy_url_entry, gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(pref_net_proxy_btn)));
     gtk_widget_set_sensitive(pref_net_proxy_user_entry, gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(pref_net_proxy_btn)));
     gtk_widget_set_sensitive(pref_net_proxy_passwd_entry, gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(pref_net_proxy_btn)));
+    return;
+    button = NULL;
+    user_data = NULL;
 }
 
 static void tree_select_row_cb (GtkCTree     *ctree,
@@ -179,6 +188,9 @@ static void tree_select_row_cb (GtkCTree     *ctree,
     pref_loc_sel_node = row;
     if (gtk_ctree_node_get_row_data(GTK_CTREE(pref_loc_ctree), GTK_CTREE_NODE(pref_loc_sel_node)) != NULL)
         change_cb(NULL, NULL);
+    return;
+    ctree = NULL;
+    column = 0;
 }
 
 static void load_locations (void)

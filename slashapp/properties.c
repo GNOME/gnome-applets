@@ -147,6 +147,9 @@ static void property_apply_cb(GtkWidget *widget, void *nodata, gpointer data)
 	ad->new_browser_window = ad->p_new_browser_window;
 
 	applet_widget_sync_config(APPLET_WIDGET(ad->applet));
+	return;
+	widget = NULL;
+	nodata = NULL;
 }
 
 static gint property_destroy_cb(GtkWidget *widget, gpointer data)
@@ -154,6 +157,7 @@ static gint property_destroy_cb(GtkWidget *widget, gpointer data)
 	AppData *ad = data;
 	ad->propwindow = NULL;
 	return FALSE;
+	widget = NULL;
 }
 
 void property_show(AppletWidget *applet, gpointer data)
@@ -167,7 +171,7 @@ void property_show(AppletWidget *applet, gpointer data)
 	GtkWidget *button;
 	GtkObject *adj;
 	GtkWidget *spin;
-	GtkWidget *entry;
+	/* GtkWidget *entry; */
 
 	if(ad->propwindow)
 		{
@@ -427,4 +431,6 @@ void property_show(AppletWidget *applet, gpointer data)
 	gtk_signal_connect( GTK_OBJECT(ad->propwindow),"destroy", GTK_SIGNAL_FUNC(property_destroy_cb), ad );
 
         gtk_widget_show_all(ad->propwindow);
+	return;
+	applet = NULL;
 } 

@@ -23,6 +23,8 @@ multiload_properties_cb (AppletWidget *widget, gpointer data)
 	multiload_show_properties (PROP_NETLOAD);
     else
 	g_assert_not_reached();
+    return;
+    widget = NULL;
 }
 
 void

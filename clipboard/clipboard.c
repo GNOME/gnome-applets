@@ -233,6 +233,9 @@ applet_change_orient (GtkWidget *w, PanelOrientType o, gpointer data)
 			relayout (FALSE);
 		break;
 	}
+	return;
+	w = NULL;
+	data = NULL;
 }
 
 static void
@@ -255,6 +258,9 @@ applet_change_pixel_size (GtkWidget *w, int size, gpointer data)
 			relayout (FALSE);
 		break;
 	}
+	return;
+	w = NULL;
+	data = NULL;
 }
 
 int

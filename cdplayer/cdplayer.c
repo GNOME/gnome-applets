@@ -34,6 +34,8 @@
 
 #define TIMEOUT_VALUE 500
 
+void cdpanel_realized(GtkWidget *cdpanel, CDPlayerData *cd);
+    
 GtkWidget *applet = NULL;
 
 char *devpath;
@@ -53,7 +55,7 @@ static void
 cd_panel_update(GtkWidget * cdplayer, CDPlayerData * cd)
 {
 	cdrom_device_status_t stat;
-	int retval;
+	/* int retval; */
 
 	if (cd_try_open(cd) &&
 	    cdrom_get_status(cd->cdrom_device, &stat) == DISC_NO_ERROR) {
@@ -81,7 +83,9 @@ cd_panel_update(GtkWidget * cdplayer, CDPlayerData * cd)
 			break;
 		}
 	} else
-		led_nodisc(cd->panel.time, cd->panel.track);
+	      led_nodisc(cd->panel.time, cd->panel.track);
+	return;
+	cdplayer = NULL;
 }
 
 static int 
@@ -119,6 +123,7 @@ cdplayer_play_pause(GtkWidget * w, gpointer data)
 	}
 
 	return 0;
+	w = NULL;
 }
 
 static void start_gtcd_cb()
@@ -135,6 +140,7 @@ cdplayer_stop(GtkWidget * w, gpointer data)
 		return 0;
 	cdrom_stop(cd->cdrom_device);
 	return 0;
+        w = NULL;
 }
 
 static int 
@@ -145,6 +151,7 @@ cdplayer_prev(GtkWidget * w, gpointer data)
 		return 0;
 	cdrom_prev(cd->cdrom_device);
 	return 0;
+        w = NULL;
 }
 
 static int 
@@ -155,6 +162,7 @@ cdplayer_next(GtkWidget * w, gpointer data)
 		return 0;
 	cdrom_next(cd->cdrom_device);
 	return 0;
+        w = NULL;
 }
 
 static int 
@@ -177,6 +185,7 @@ cdplayer_eject(GtkWidget * w, gpointer data)
 	else
 		cdrom_eject(cd->cdrom_device);
 	return 0;
+        w = NULL;
 }
 
 static int 
@@ -274,6 +283,8 @@ destroy_cdplayer(GtkWidget * widget, void *data)
 	if(cd->cdrom_device)
 		cdrom_close(cd->cdrom_device);
 	g_free(cd);
+	return;
+	data = NULL;
 }
 
 void
@@ -289,7 +300,7 @@ create_cdplayer_widget(GtkWidget *window, char *globcfgpath)
 	CDPlayerData *cd;
 	GtkWidget *cdpanel;
 	int err;
-	int i;
+	/* int i; */
 
 	cd = g_new(CDPlayerData, 1);
 

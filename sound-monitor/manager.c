@@ -738,6 +738,9 @@ static void stream_selected_cb(GtkWidget *widget, gint row, gint col,
 	if (!sd) return;
 
 	panning_widget_set_stream(sd, md);
+	return;
+	widget = NULL;
+	col = 0;
 }
 
 /*
@@ -916,6 +919,9 @@ static void sample_selected_cb(GtkWidget *widget, gint row, gint col,
 
 	sample_play_by_id(md, sd->id);
 	panning_widget_set_sample(sd, md);
+	return;
+	widget = NULL;
+	col = 0;
 }
 
 static void sample_time_clicked_cb(GtkWidget *widget, gint col, gpointer data)
@@ -933,6 +939,8 @@ static void sample_time_clicked_cb(GtkWidget *widget, gint col, gpointer data)
 		}
 	sample_list_mark_updated(md->samples);
 	refresh_sample_list_window(md);
+	return;
+	widget = NULL;
 }
 
 /*
@@ -1100,12 +1108,17 @@ static void manager_window_close_cb(GtkWidget *w, gpointer data)
 	mgr_data_free(md);
 
 	ad->manager = NULL;
+	return;
+	w = NULL;
 }
 
 static void manager_window_delete_cb(GtkWidget *w, GdkEvent *event, gpointer data)
 {
 	MgrData *md = data;
 	manager_window_close_cb(NULL, md);
+	return;
+	w = NULL;
+	event = NULL;
 }
 
 void manager_window_close(AppData *ad)

@@ -267,7 +267,8 @@ battery_update (gpointer data)
   if ( (last_percentage != percentage) || (last_ac_online != ac_online)
        || bat->force_update)
     {
-      int height, y, body_perc, i;
+      int height, y, body_perc;
+      /* int i; */
       int nipple_width, nipple_height;
 
       /* Clear the readout pixmap to grey. */
@@ -505,13 +506,14 @@ battery_expose_handler (GtkWidget * widget, GdkEventExpose * expose,
 gint
 battery_orient_handler (GtkWidget * w, PanelOrientType o, gpointer data)
 {
-  BatteryData * bat = data;
+  /* BatteryData * bat = data; */
 
   /* FIXME: What do we do here? */
 
   return FALSE;
   w = NULL;
   o = (PanelOrientType) 0;
+  data = NULL;
 } /* battery_orient_handler */
 
 gint
@@ -641,7 +643,7 @@ make_new_battery_applet (const gchar *goad_id)
   GtkWidget *root, *graph_box, *readout_box, *readout_text_table;
   GtkWidget *readout_battery_frame;
   GtkStyle *label_style;
-  gchar * param = "battery_applet";
+  /* gchar * param = "battery_applet"; */
 
   char p, a, h, m;
 
@@ -844,9 +846,10 @@ make_new_battery_applet (const gchar *goad_id)
 void
 destroy_about (GtkWidget *w, gpointer data)
 {
-  BatteryData *bat = data;
+  /* BatteryData *bat = data; */
   return;
   w = NULL;
+  data = NULL;
 } /* destroy_about */
 
 void

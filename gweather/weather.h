@@ -215,6 +215,8 @@ extern GdkPixmap *weather_info_get_radar (WeatherInfo *info);
 extern gchar *weather_info_get_temp_summary (WeatherInfo *info);
 extern gchar *weather_info_get_weather_summary (WeatherInfo *info);
 
+extern time_t make_time (gint date, gint hour, gint min);
+
 extern void _weather_info_get_pixmap (WeatherInfo *info, gboolean mini, GdkPixmap **pixmap, GdkBitmap **mask);
 #define weather_info_get_pixmap_mini(info,pixmap,mask) _weather_info_get_pixmap((info), TRUE, (pixmap), (mask))
 #define weather_info_get_pixmap(info,pixmap,mask) _weather_info_get_pixmap((info), FALSE, (pixmap), (mask))

@@ -121,6 +121,8 @@ properties_save (gchar * path, gpointer data)
   gnome_config_pop_prefix ();
   gnome_config_sync ();
   gnome_config_drop_all ();
+  return;
+  data = NULL;
 }
 
 static void
@@ -208,6 +210,8 @@ properties_load (gchar * path, gpointer data)
   options.thumbnail_intermediate =
     gnome_config_get_bool ("screenshooter/thumbnail_intermediate=FALSE");
   gnome_config_pop_prefix ();
+  return;
+  data = NULL;
 }
 
 void
@@ -1220,6 +1224,9 @@ applet_save_session (GtkWidget * widget, gchar * privcfgpath,
 {
   properties_save (privcfgpath, NULL);
   return FALSE;
+  widget = NULL;
+  globcfgpath = NULL;
+  data = NULL;
 }
 
 int
@@ -1375,13 +1382,17 @@ main (int argc, char *argv[])
 void
 window_button_press (GtkWidget * button, user_preferences * opt)
 {
-  grab_shot (opt, FALSE);
+    grab_shot (opt, FALSE);
+    return;
+    button = NULL;
 }
 
 void
 desktop_button_press (GtkWidget * button, user_preferences * opt)
 {
   grab_shot (opt, TRUE);
+    return;
+    button = NULL;
 }
 
 void
@@ -1889,6 +1900,9 @@ property_apply_cb (GtkWidget * w, gpointer data)
       /* Re-copy options for next comparison */
       memcpy (&old_options, &options, sizeof (user_preferences));
     }
+  return;
+  w = NULL;
+  data = NULL;
 }
 
 void
@@ -1896,6 +1910,8 @@ quality_cb (GtkWidget * w, gpointer data)
 {
   options.quality = GTK_ADJUSTMENT (w)->value;
   gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
+  return;
+  data = NULL;
 }
 
 void
@@ -1903,6 +1919,8 @@ gamma_factor_cb (GtkWidget * w, gpointer data)
 {
   options.gamma_factor = GTK_ADJUSTMENT (w)->value;
   gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
+  return;
+  data = NULL;
 }
 
 void
@@ -1910,6 +1928,8 @@ frame_size_cb (GtkWidget * w, gpointer data)
 {
   options.frame_size = GTK_ADJUSTMENT (w)->value;
   gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
+  return;
+  data = NULL;
 }
 
 void
@@ -1917,6 +1937,8 @@ thumb_quality_cb (GtkWidget * w, gpointer data)
 {
   options.thumb_quality = GTK_ADJUSTMENT (w)->value;
   gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
+  return;
+  data = NULL;
 }
 
 void
@@ -1924,6 +1946,8 @@ thumb_size_cb (GtkWidget * w, gpointer data)
 {
   options.thumb_size = GTK_ADJUSTMENT (w)->value;
   gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
+  return;
+  data = NULL;
 }
 
 void
@@ -1931,12 +1955,17 @@ delay_cb (GtkWidget * w, gpointer data)
 {
   options.delay = GTK_ADJUSTMENT (w)->value;
   gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
+  return;
+  data = NULL;
 }
 
 void
 directory_button_pressed (GtkWidget * w, gpointer data)
 {
   gnome_ok_dialog ("I'll get there soon!");
+  return;
+  data = NULL;
+  w = NULL;
 }
 
 void
@@ -1944,6 +1973,8 @@ decoration_cb (GtkWidget * w, gpointer data)
 {
   options.decoration = GTK_TOGGLE_BUTTON (w)->active;
   gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
+  return;
+  data = NULL;
 }
 
 void
@@ -1951,6 +1982,8 @@ gamma_cb (GtkWidget * w, gpointer data)
 {
   options.gamma = GTK_TOGGLE_BUTTON (w)->active;
   gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
+  return;
+  data = NULL;
 }
 
 void
@@ -1958,6 +1991,8 @@ enhance_cb (GtkWidget * w, gpointer data)
 {
   options.enhance = GTK_TOGGLE_BUTTON (w)->active;
   gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
+  return;
+  data = NULL;
 }
 
 void
@@ -1965,6 +2000,8 @@ emboss_cb (GtkWidget * w, gpointer data)
 {
   options.emboss = GTK_TOGGLE_BUTTON (w)->active;
   gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
+  return;
+  data = NULL;
 }
 
 void
@@ -1972,6 +2009,8 @@ normalize_cb (GtkWidget * w, gpointer data)
 {
   options.normalize = GTK_TOGGLE_BUTTON (w)->active;
   gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
+  return;
+  data = NULL;
 }
 
 void
@@ -1979,6 +2018,8 @@ despeckle_cb (GtkWidget * w, gpointer data)
 {
   options.despeckle = GTK_TOGGLE_BUTTON (w)->active;
   gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
+  return;
+  data = NULL;
 }
 
 void
@@ -1986,6 +2027,8 @@ equalize_cb (GtkWidget * w, gpointer data)
 {
   options.equalize = GTK_TOGGLE_BUTTON (w)->active;
   gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
+  return;
+  data = NULL;
 }
 
 void
@@ -1993,6 +2036,8 @@ flip_cb (GtkWidget * w, gpointer data)
 {
   options.flip = GTK_TOGGLE_BUTTON (w)->active;
   gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
+  return;
+  data = NULL;
 }
 
 void
@@ -2000,6 +2045,8 @@ flop_cb (GtkWidget * w, gpointer data)
 {
   options.flop = GTK_TOGGLE_BUTTON (w)->active;
   gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
+  return;
+  data = NULL;
 }
 
 void
@@ -2007,6 +2054,8 @@ frame_cb (GtkWidget * w, gpointer data)
 {
   options.frame = GTK_TOGGLE_BUTTON (w)->active;
   gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
+  return;
+  data = NULL;
 }
 
 void
@@ -2014,6 +2063,8 @@ thumbnail_intermediate_cb (GtkWidget * w, gpointer data)
 {
   options.thumbnail_intermediate = GTK_TOGGLE_BUTTON (w)->active;
   gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
+  return;
+  data = NULL;
 }
 
 void
@@ -2021,6 +2072,8 @@ thumb_cb (GtkWidget * w, gpointer data)
 {
   options.thumb = GTK_TOGGLE_BUTTON (w)->active;
   gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
+  return;
+  data = NULL;
 }
 
 void
@@ -2028,6 +2081,8 @@ monochrome_cb (GtkWidget * w, gpointer data)
 {
   options.monochrome = GTK_TOGGLE_BUTTON (w)->active;
   gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
+  return;
+  data = NULL;
 }
 
 void
@@ -2035,6 +2090,8 @@ negate_cb (GtkWidget * w, gpointer data)
 {
   options.negate = GTK_TOGGLE_BUTTON (w)->active;
   gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
+  return;
+  data = NULL;
 }
 
 void
@@ -2042,6 +2099,8 @@ beep_cb (GtkWidget * w, gpointer data)
 {
   options.beep = GTK_TOGGLE_BUTTON (w)->active;
   gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
+  return;
+  data = NULL;
 }
 
 void
@@ -2049,6 +2108,8 @@ use_script_cb (GtkWidget * w, gpointer data)
 {
   options.use_script = GTK_TOGGLE_BUTTON (w)->active;
   gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
+  return;
+  data = NULL;
 }
 
 void
@@ -2056,6 +2117,8 @@ view_cb (GtkWidget * w, gpointer data)
 {
   options.view = GTK_TOGGLE_BUTTON (w)->active;
   gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
+  return;
+  data = NULL;
 }
 
 gint
@@ -2063,6 +2126,8 @@ property_destroy_cb (GtkWidget * w, gpointer data)
 {
   options.propwindow = NULL;
   return FALSE;
+  w = NULL;
+  data = NULL;
 }
 
 void
@@ -2070,6 +2135,8 @@ rotate_degrees_cb (GtkWidget * w, gpointer data)
 {
   options.rotate_degrees = GTK_ADJUSTMENT (w)->value;
   gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
+  return;
+  data = NULL;
 }
 
 void
@@ -2077,6 +2144,8 @@ blur_factor_cb (GtkWidget * w, gpointer data)
 {
   options.blur_factor = GTK_ADJUSTMENT (w)->value;
   gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
+  return;
+  data = NULL;
 }
 
 void
@@ -2084,6 +2153,8 @@ charcoal_factor_cb (GtkWidget * w, gpointer data)
 {
   options.charcoal_factor = GTK_ADJUSTMENT (w)->value;
   gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
+  return;
+  data = NULL;
 }
 
 void
@@ -2091,6 +2162,8 @@ edge_factor_cb (GtkWidget * w, gpointer data)
 {
   options.edge_factor = GTK_ADJUSTMENT (w)->value;
   gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
+  return;
+  data = NULL;
 }
 
 void
@@ -2098,6 +2171,8 @@ implode_factor_cb (GtkWidget * w, gpointer data)
 {
   options.implode_factor = GTK_ADJUSTMENT (w)->value;
   gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
+  return;
+  data = NULL;
 }
 
 void
@@ -2105,6 +2180,8 @@ swirl_degrees_cb (GtkWidget * w, gpointer data)
 {
   options.swirl_degrees = GTK_ADJUSTMENT (w)->value;
   gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
+  return;
+  data = NULL;
 }
 
 void
@@ -2112,6 +2189,8 @@ paint_radius_cb (GtkWidget * w, gpointer data)
 {
   options.paint_radius = GTK_ADJUSTMENT (w)->value;
   gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
+  return;
+  data = NULL;
 }
 
 void
@@ -2119,6 +2198,8 @@ sharpen_factor_cb (GtkWidget * w, gpointer data)
 {
   options.sharpen_factor = GTK_ADJUSTMENT (w)->value;
   gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
+  return;
+  data = NULL;
 }
 
 void
@@ -2126,6 +2207,8 @@ solarize_factor_cb (GtkWidget * w, gpointer data)
 {
   options.solarize_factor = GTK_ADJUSTMENT (w)->value;
   gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
+  return;
+  data = NULL;
 }
 
 void
@@ -2133,6 +2216,8 @@ spread_radius_cb (GtkWidget * w, gpointer data)
 {
   options.spread_radius = GTK_ADJUSTMENT (w)->value;
   gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
+  return;
+  data = NULL;
 }
 
 void
@@ -2140,6 +2225,8 @@ blur_cb (GtkWidget * w, gpointer data)
 {
   options.blur = GTK_TOGGLE_BUTTON (w)->active;
   gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
+  return;
+  data = NULL;
 }
 
 void
@@ -2147,6 +2234,8 @@ charcoal_cb (GtkWidget * w, gpointer data)
 {
   options.charcoal = GTK_TOGGLE_BUTTON (w)->active;
   gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
+  return;
+  data = NULL;
 }
 
 void
@@ -2154,6 +2243,8 @@ edge_cb (GtkWidget * w, gpointer data)
 {
   options.edge = GTK_TOGGLE_BUTTON (w)->active;
   gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
+  return;
+  data = NULL;
 }
 
 void
@@ -2161,6 +2252,8 @@ implode_cb (GtkWidget * w, gpointer data)
 {
   options.implode = GTK_TOGGLE_BUTTON (w)->active;
   gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
+  return;
+  data = NULL;
 }
 
 void
@@ -2168,6 +2261,8 @@ paint_cb (GtkWidget * w, gpointer data)
 {
   options.paint = GTK_TOGGLE_BUTTON (w)->active;
   gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
+  return;
+  data = NULL;
 }
 
 void
@@ -2175,6 +2270,8 @@ solarize_cb (GtkWidget * w, gpointer data)
 {
   options.solarize = GTK_TOGGLE_BUTTON (w)->active;
   gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
+  return;
+  data = NULL;
 }
 
 void
@@ -2182,6 +2279,8 @@ swirl_cb (GtkWidget * w, gpointer data)
 {
   options.swirl = GTK_TOGGLE_BUTTON (w)->active;
   gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
+  return;
+  data = NULL;
 }
 
 void
@@ -2189,6 +2288,8 @@ spread_cb (GtkWidget * w, gpointer data)
 {
   options.spread = GTK_TOGGLE_BUTTON (w)->active;
   gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
+  return;
+  data = NULL;
 }
 
 void
@@ -2208,4 +2309,6 @@ spurious_cb (GtkWidget * w, gpointer data)
       gtk_widget_hide (options.spurious_pref_vbox3);
     }
   gnome_property_box_changed (GNOME_PROPERTY_BOX (options.propwindow));
+  return;
+  data = NULL;
 }

@@ -97,6 +97,8 @@ toggle_visibility(GtkWidget *w, GtkWidget *win)
     gtk_editable_delete_text(GTK_EDITABLE(bugd.desc_text), 0, -1);
     gtk_widget_show(win);
   }
+  return;
+  w = NULL;
 }
 
 static gboolean do_hide(GtkWidget *w, GdkEvent *ev, GtkWidget *win)
@@ -104,6 +106,7 @@ static gboolean do_hide(GtkWidget *w, GdkEvent *ev, GtkWidget *win)
   toggle_visibility(w, win);
 
   return TRUE;
+  ev = NULL;
 }
 
 int main(int argc, char *argv[])

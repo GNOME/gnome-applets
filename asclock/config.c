@@ -70,7 +70,7 @@ static int findTheme(char*input, char *ret)
 {
   char **dir;
   DIR *d;
-  int n;
+  unsigned int n;
 
   n = MAX_PATH_LEN - strlen(input);
 
@@ -254,4 +254,7 @@ void parseArgs(asclock *my, int argc, char **argv)
     }
   }
 #endif
+  return;
+  argc = 0;
+  argv = NULL;
 }

@@ -55,7 +55,7 @@ proc_read_mem (ProcInfo *ps)
 {
 	glibtop_mem mem;
 	glibtop_swap swap;
-	int i;
+	/* int i; */
 
 	glibtop_get_mem (&mem);
 

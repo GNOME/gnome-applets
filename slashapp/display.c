@@ -553,6 +553,7 @@ static int display_click(GtkWidget *w, GdkEventButton *event, gpointer data)
 		}
 
 	return TRUE;
+	w = NULL;
 }
 
 static void display_motion(GtkWidget *w, GdkEventMotion *event, gpointer data)
@@ -579,7 +580,9 @@ static void display_motion(GtkWidget *w, GdkEventMotion *event, gpointer data)
 	if (proximity)
 		set_mouse_cursor (ad, GDK_HAND2);
 	else
-		set_mouse_cursor (ad, GDK_LEFT_PTR);
+	      set_mouse_cursor (ad, GDK_LEFT_PTR);
+	return;
+	w = NULL;
 }
 
 void init_app_display(AppData *ad)

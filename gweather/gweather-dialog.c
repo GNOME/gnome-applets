@@ -48,11 +48,17 @@ static GdkBitmap *mask = NULL;
 static void close_cb (GtkButton *button, gpointer data)
 {
     gweather_dialog_close();
+    return;
+    button = NULL;
+    data = NULL;
 }
 
 static void link_cb (GtkButton *button, gpointer data)
 {
     gnome_url_show("http://www.weather.com/");
+    return;
+    button = NULL;
+    data = NULL;
 }
 
 void gweather_dialog_create (void)

@@ -83,12 +83,12 @@ void weather_location_config_write (gchar *prefix, WeatherLocation *location)
 
     g_return_if_fail(prefix != NULL);
 
-    locdata = g_new(char *, 4);
+    locdata = g_new(gchar *, 4);
     locdata[0] = location->name;
     locdata[1] = location->code;
     locdata[2] = location->zone;
     locdata[3] = location->radar;
-    gnome_config_set_vector(prefix, 4, locdata);
+    gnome_config_set_vector(prefix, 4, (const char **)locdata);
     g_free(locdata);
 }
 

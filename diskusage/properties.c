@@ -17,8 +17,8 @@
 GtkWidget *propbox=NULL;
 static diskusage_properties temp_props;
 
-static const int max_rgb_str_len = 7;
-static const int max_rgb_str_size = 8;
+static const unsigned int max_rgb_str_len = 7;
+static const unsigned int max_rgb_str_size = 8;
 
 extern GtkWidget *disp;
 extern diskusage_properties props;
@@ -138,17 +138,23 @@ void height_cb( GtkWidget *widget, GtkWidget *spin )
 {
 	temp_props.height = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spin));
         gnome_property_box_changed(GNOME_PROPERTY_BOX(propbox));
+	return;
+	widget = NULL;
 }
 void width_cb( GtkWidget *widget, GtkWidget *spin )
 {
 	temp_props.width = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spin));
         gnome_property_box_changed(GNOME_PROPERTY_BOX(propbox));
+        return;
+        widget = NULL;
 }
 
 void freq_cb( GtkWidget *widget, GtkWidget *spin )
 {
 	temp_props.speed = gtk_spin_button_get_value_as_float(GTK_SPIN_BUTTON(spin))*1000;
         gnome_property_box_changed(GNOME_PROPERTY_BOX(propbox));
+        return;
+        widget = NULL;
 }	
 
 GtkWidget *create_frame(void)
@@ -280,13 +286,17 @@ void apply_cb( GtkWidget *widget, void *data )
         setup_colors();
 	start_timer();
 	diskusage_resize();
-
+        return;
+	widget = NULL;
+	data = NULL;
 }
 
 gint destroy_cb( GtkWidget *widget, void *data )
 {
 	propbox = NULL;
 	return FALSE;
+        widget = NULL;
+	data = NULL;
 }
 
 void properties(AppletWidget *applet, gpointer data)
@@ -330,4 +340,7 @@ void properties(AppletWidget *applet, gpointer data)
 			    &help_entry);
 
 	gtk_widget_show_all(propbox);
+        return;
+        applet = NULL;
+        data = NULL;	
 }

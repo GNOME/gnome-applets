@@ -79,13 +79,18 @@ static GtkWidget *
 applet_start_new_applet (const gchar *goad_id, const char **params, int nparams)
 {
     return make_new_applet (goad_id);
+    params = NULL;
+    nparams = 0;
 }
 
 /* run gtop (better location for this function?) */
 void 
 start_gtop_cb (AppletWidget *widget, gpointer data)
 {
-	gnome_execute_shell(NULL, "gtop");
+    gnome_execute_shell(NULL, "gtop");
+    return;
+    widget = NULL;
+    data = NULL;
 }
               
 

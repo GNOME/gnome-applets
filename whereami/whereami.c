@@ -42,6 +42,9 @@ about(AppletWidget *applet, gpointer data)
     NULL);
 
   gtk_widget_show(about_box);
+  return;
+  applet = NULL;
+  data = NULL;
 }
 
 static void
@@ -66,6 +69,8 @@ motion_handler(GtkWidget *widget, GdkEventMotion *motion, gpointer data)
     }
   
   gtk_label_set_text(GTK_LABEL(GTK_BIN(widget)->child), where);
+  return;
+  data = NULL;
 }
 
 static void
@@ -96,6 +101,8 @@ button_handler(GtkWidget *widget, GdkEventButton *button, gpointer data)
 	  state = IDLE;
 	}
     }
+  return;
+  data = NULL;
 }
 
 static int

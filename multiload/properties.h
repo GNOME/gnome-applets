@@ -22,7 +22,7 @@ struct _LoadGraphProperties {
     const gchar **texts;
     const gchar **color_defs;
     GdkColor *colors;
-    glong adj_data [3];
+    gulong adj_data [3];
 };
 
 struct _MultiLoadProperties {

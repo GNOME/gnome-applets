@@ -406,6 +406,8 @@ static void applet_change_pixel_size(GtkWidget *widget, int size)
 {
   curr_data.panel_size = size;
   build_table (&curr_data);
+  return;
+  widget = NULL;
 }
 
 static void applet_change_orient(GtkWidget *widget, PanelOrientType o)
@@ -416,6 +418,8 @@ static void applet_change_orient(GtkWidget *widget, PanelOrientType o)
   else
     curr_data.panel_vertical = TRUE;
   build_table (&curr_data);
+  return;
+  widget = NULL;
 }
 
 static void

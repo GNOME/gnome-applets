@@ -50,6 +50,7 @@ digits_number_changed_cb (GtkWidget *widget, gpointer data)
    oa->p_digits_nb = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON(oa->spinner));
    gnome_property_box_changed(GNOME_PROPERTY_BOX(oa->pbox));
    return FALSE;
+   widget = NULL;
 }
 
 static void
@@ -85,6 +86,9 @@ properties_apply_cb (GtkWidget *b, gint page_num, gpointer data)
 
    applet_widget_sync_config (APPLET_WIDGET (oa->applet));
    refresh(oa);
+   return;
+   b = NULL;
+   page_num = 0;
 }
 
 static gint
@@ -93,6 +97,7 @@ properties_destroy_cb (GtkWidget *widget, gpointer data)
    OdoApplet *oa = data;
    oa->pbox = NULL;
    return FALSE;
+   widget = NULL;
 }
 
 static void
@@ -104,6 +109,9 @@ theme_selected_cb (GtkWidget *clist,
   OdoApplet *oa = data;
   gchar *text = gtk_clist_get_row_data(GTK_CLIST(clist), row);
   if (text) gtk_entry_set_text(GTK_ENTRY(oa->theme_entry),text);
+  return;
+  col = 0;
+  event = NULL;
 }
 
 static gint
@@ -301,5 +309,7 @@ properties_cb (AppletWidget *applet, gpointer data)
    	"destroy", GTK_SIGNAL_FUNC (properties_destroy_cb), oa);
 
    gtk_widget_show_all(oa->pbox);
+   return;
+   applet = NULL;
 }
 

@@ -271,7 +271,7 @@ int
 cdrom_rewind(cdrom_device_t cdp)
 {
 	cdrom_device_status_t stat;
-	int track;
+	/* int track; */
 
 	if ((cdrom_read_track_info(cdp) == DISC_IO_ERROR) ||
 	    (cdrom_get_status(cdp, &stat) == DISC_IO_ERROR))
@@ -291,7 +291,7 @@ int
 cdrom_ff(cdrom_device_t cdp)
 {
 	cdrom_device_status_t stat;
-	int track;
+	/* int track; */
 
 	if ((cdrom_read_track_info(cdp) == DISC_IO_ERROR) ||
 	    (cdrom_get_status(cdp, &stat) == DISC_IO_ERROR))

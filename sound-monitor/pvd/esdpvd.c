@@ -425,6 +425,7 @@ static gint update_cb(gpointer data)
 	gnome_config_sync_file(datafile_path);
 
 	return TRUE;
+	data = NULL;
 }
 
 	GMainLoop *loop;
@@ -447,5 +448,7 @@ int main (int argc, char *argv[])
 	g_main_destroy (loop);
 
 	return 0;
+	argc = 0;
+	argv = NULL;
 }
 

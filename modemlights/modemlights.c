@@ -113,6 +113,9 @@ static void about_cb (AppletWidget *widget, gpointer data)
 			"Lights in order from the top or left are Send data and Receive data."),
 			NULL);
 	gtk_widget_show (about);
+	return;
+	widget = NULL;
+	data = NULL;
 }
 
 static int is_Modem_on()
@@ -379,17 +382,23 @@ static void command_connect_cb( gint button, gpointer data)
 {
 	confirm_dialog = FALSE;
 	if (!button) gnome_execute_shell(NULL, command_connect);
+        return;
+        data = NULL;
 }
 
 static void command_disconnect_cb( gint button, gpointer data)
 {
 	confirm_dialog = FALSE;
 	if (!button) gnome_execute_shell(NULL, command_disconnect);
+        return;
+        data = NULL;
 }
 
 static void confirm_dialog_destroy (GtkObject *o)
 {
  	confirm_dialog = FALSE;
+        return;
+        o = NULL;
 }
 
 static void dial_cb()
@@ -1060,12 +1069,19 @@ void reset_orientation(void)
 static void applet_style_change_cb(GtkWidget *widget, GtkStyle *previous_style, gpointer data)
 {
 	reset_orientation();
+	return;
+	widget = NULL;
+	previous_style = NULL;
+	data = NULL;
 }
 
 static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
 {
 	orient = o;
 	if (setup_done) reset_orientation();
+	return;
+	w = NULL;
+	data = NULL;
 }
 
 #ifdef HAVE_PANEL_PIXEL_SIZE
@@ -1073,6 +1089,9 @@ static void applet_change_pixel_size(GtkWidget *w, int s, gpointer data)
 {
 	sizehint = s;
 	if (setup_done) reset_orientation();
+        return;
+        w = NULL;
+        data = NULL;
 }
 #endif
 
@@ -1080,6 +1099,8 @@ static gint applet_save_session(GtkWidget *widget, char *privcfgpath, char *glob
 {
 	property_save(privcfgpath);
         return FALSE;
+        widget = NULL;
+        globcfgpath = NULL;
 }
 
 int main (int argc, char *argv[])

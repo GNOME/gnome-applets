@@ -136,6 +136,8 @@ static void
 free_data(GtkWidget * widget, gpointer data)
 {
 	g_free(data);
+	return;
+	widget = NULL;
 }
 
 static void 
@@ -219,6 +221,7 @@ mixer_timeout_callback(gpointer data)
 	(*md->update_func) (mixerw, mvol);
 
 	return 1;
+	data = NULL;
 }
 
 static void
@@ -484,7 +487,7 @@ create_computer_mixer_widget(GtkWidget ** mixer,
 }
 
 static void
-	start_gmix_cb()
+start_gmix_cb()
 {
 	gnome_execute_shell(NULL, "gmix");
 }
@@ -494,6 +497,9 @@ destroy_mixer(GtkWidget * widget, void *data)
 {
 	gtk_timeout_remove(md->timeout);
 	g_free(md);
+	return;
+	widget = NULL;
+	data = NULL;
 }
 
 static GtkWidget *

@@ -26,6 +26,8 @@ void about_dialog(AppletWidget *applet, gpointer data)
         gtk_widget_show (about);
 
         return;
+	applet = NULL;
+	data = NULL;
 }
 
 static GtkWidget * properties_timezone_render(asclock *my_asclock, GtkWidget *parent, float lat, float lon)
@@ -74,12 +76,13 @@ static GtkWidget * properties_timezone_render(asclock *my_asclock, GtkWidget *pa
   unlink(fname);
   free(fname);
   return NULL;
+  parent = NULL;
 }
 
 static void theme_selected(GtkWidget *list, gint row, gint column, GdkEventButton *event, gpointer data)
 {
   gchar *line;
-  GtkStyle *style;
+  /* GtkStyle *style; */
   asclock *my_asclock = (asclock *) data;
 
   gtk_clist_get_text(GTK_CLIST(list), row, 0, &line);
@@ -88,7 +91,9 @@ static void theme_selected(GtkWidget *list, gint row, gint column, GdkEventButto
 
   if(strncmp(my_asclock->selected_theme_filename, my_asclock->theme_filename, MAX_PATH_LEN)!=0)
     gnome_property_box_changed( GNOME_PROPERTY_BOX(my_asclock->pwin));
-
+  return;
+  column = 0;
+  event = NULL;
 }
 
 static void location_selected(GtkWidget *list, gint row, gint column, GdkEventButton *event, gpointer data)
@@ -106,7 +111,9 @@ static void location_selected(GtkWidget *list, gint row, gint column, GdkEventBu
   strncpy(my_asclock->selected_timezone, line, MAX_PATH_LEN);
 
   properties_timezone_render(my_asclock, list, my->lat, my->lon);
-
+  return;
+  column = 0;
+  event = NULL;
 }
 
 static asclock *static_my_asclock;
@@ -129,6 +136,8 @@ static void dialog_clicked_cb(GnomeDialog * dialog, gint button_number,
     g_assert_not_reached();
   };
   gnome_dialog_close(dialog);
+  return;
+  data = NULL;
 }
          
 static int property_apply_cb(AppletWidget *applet, gpointer data)
@@ -196,6 +205,8 @@ static int property_apply_cb(AppletWidget *applet, gpointer data)
   static_my_asclock->itblinks = static_my_asclock->selected_itblinks;
 
   return FALSE;
+  data = NULL;
+  applet = NULL;
 }
 
 static int showampm_selected_cb(GtkWidget *b, gpointer data)
@@ -228,6 +239,7 @@ static int property_close_cb(AppletWidget *applet, gpointer data)
   my_asclock->pic = NULL;
 
   return FALSE;
+  applet = NULL;
 }
 
 void properties_dialog(AppletWidget *applet, gpointer data)
@@ -398,11 +410,6 @@ void properties_dialog(AppletWidget *applet, gpointer data)
   enum_timezones(my_asclock, list);
 
   gtk_widget_show_all(my_asclock->pwin);
+  return;
+  applet = NULL;
 } 
-
-
-
-
-
-
-

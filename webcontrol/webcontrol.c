@@ -65,6 +65,8 @@ about_cb (AppletWidget *widget, gpointer data)
 	gtk_widget_show (about);
 
 	return;
+	widget = NULL;
+	data = NULL;
 }
 
 
@@ -75,7 +77,9 @@ static void check_box_toggled(GtkWidget *check, int *data)
 
 static void clear_callback(GtkWidget *button, GtkWidget *input)
 {
-  gtk_entry_set_text(GTK_ENTRY(input), "");
+    gtk_entry_set_text(GTK_ENTRY(input), "");
+    return;
+    button = NULL;
 }
 
 static void goto_callback(GtkWidget *entry, GtkWidget *check)
@@ -106,7 +110,9 @@ static void goto_callback(GtkWidget *entry, GtkWidget *check)
         		argv[2] = NULL;
         		gnome_execute_async (NULL, 2, argv);
         	}
-        }
+	}
+	return;
+	check = NULL;
 }
 
 static void create_widget(void)
@@ -168,7 +174,7 @@ static void create_widget(void)
 static void
 apply_cb(GnomePropertyBox * pb, gint page, gpointer data)
 {
-	gchar * new_name;
+	/* gchar * new_name; */
 
 	if (page != -1) return; /* Only honor global apply */
 	
@@ -191,6 +197,9 @@ apply_cb(GnomePropertyBox * pb, gint page, gpointer data)
 	}
 	
 	gtk_widget_queue_resize(WC.applet);
+	return;
+	pb = NULL;
+	data = NULL;
 }
 
 static void
@@ -235,6 +244,9 @@ properties_cb (AppletWidget *widget, gpointer data)
 			   NULL);
 
 	gtk_widget_show_all(pb);
+	return;
+	widget = NULL;
+	data = NULL;
 }
 
 /* sesion save signal handler*/
@@ -262,16 +274,20 @@ applet_save_session(GtkWidget *w,
 	   other state such as the panel you are on, position,
 	   parameter, etc ... */
 	return FALSE;
+	w = NULL;
+	globcfgpath = NULL;
 }
 
 int
 main(int argc, char **argv)
 {
-	GtkWidget *label;
-	GtkWidget *input;
-	GtkWidget *hbox, *vbox;
-	GtkWidget *check;
-		
+       /*
+        * GtkWidget *label;
+	* GtkWidget *input;
+	* GtkWidget *hbox, *vbox;
+	* GtkWidget *check;
+	*/
+	
 	/* Initialize the i18n stuff */
         bindtextdomain (PACKAGE, GNOMELOCALEDIR);
 	textdomain (PACKAGE);

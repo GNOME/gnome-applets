@@ -105,6 +105,8 @@ void destroy_applet(GtkWidget *widget, gpointer data)
 	gtk_widget_destroy(ad->disp_buf_w);
 	gtk_widget_destroy(ad->background_w);
 	g_free(ad);
+	return;
+	widget = NULL;
 }
 
 gint applet_save_session(GtkWidget *widget, gchar *privcfgpath, 
@@ -113,6 +115,7 @@ gint applet_save_session(GtkWidget *widget, gchar *privcfgpath,
 	AppData *ad = data;
 	property_save(privcfgpath, ad);
 	return FALSE;
+	widget = NULL;
 }
 
 void about_cb(AppletWidget *widget, gpointer data)
@@ -135,6 +138,9 @@ void about_cb(AppletWidget *widget, gpointer data)
 			_("A stock ticker-like applet\n"),
 			NULL);
 	gtk_widget_show(about);
+	return;
+	widget = NULL;
+	data = NULL;
 }
 
 void show_article_window(AppletWidget *applet, gpointer data)
@@ -164,6 +170,8 @@ void show_article_window(AppletWidget *applet, gpointer data)
 
 	populate_article_window(ad);
 	gtk_widget_show(ad->article_window);
+	return;
+	applet = NULL;
 }
 
 void populate_article_window(AppData *ad)
@@ -252,6 +260,8 @@ void refresh_cb(AppletWidget *widget, gpointer data)
 	if(ad->startup_timeout_id > 0)
 		return;
 	ad->startup_timeout_id = gtk_timeout_add(5000, startup_delay_cb, ad);
+	return;
+	widget = NULL;
 }
 
 int startup_delay_cb(gpointer data)
@@ -360,6 +370,8 @@ int http_get_to_file(gchar *host, gint port, gchar *proxy,
 		fwrite(body, length, 1, file);
 
 	return length;
+        proxy = NULL;
+	data = NULL;
 }
 
 void tree_walk(xmlNodePtr root, gpointer data)
@@ -367,7 +379,7 @@ void tree_walk(xmlNodePtr root, gpointer data)
 	AppData *ad = data;
 	InfoData *id; 
 	xmlNodePtr walk = root->childs;
-	xmlNodePtr image = NULL;
+	/* xmlNodePtr image = NULL; */
 	xmlNodePtr item[16];
 	int i=0;
 	int items=0, itemcount=0;
@@ -402,6 +414,8 @@ void destroy_article_window(GtkWidget *widget, gpointer data)
 {
 	AppData *ad = data;
 	ad->article_window = NULL;
+	return;
+	widget = NULL;
 }
 
 void article_button_cb(GtkWidget *widget, gpointer data)
@@ -409,6 +423,8 @@ void article_button_cb(GtkWidget *widget, gpointer data)
 	AppData *ad = data;
 	gchar *url = gtk_object_get_user_data(GTK_OBJECT(widget));
 	gnome_url_show(url);
+	return;
+	ad = NULL;
 }
 			
 char *layer_find(xmlNodePtr node, char *match, char *fail)
@@ -430,5 +446,7 @@ void click_headline_cb(AppData *ad, gpointer data)
 {
 	gchar *url = data;
 	if(url)
-		gnome_url_show(url);
+	      gnome_url_show(url);
+	return;
+	ad = NULL;
 }

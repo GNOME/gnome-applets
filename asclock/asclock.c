@@ -67,6 +67,10 @@ gint visual_depth=0;
  */
 static void close_application( GtkWidget *widget, GdkEvent *event, gpointer *data ) {
     gtk_main_quit();
+    return;
+    widget = NULL;
+    event = NULL;
+    data = NULL;
 }
 
 static void fail2load(char *filename)
@@ -424,7 +428,9 @@ static gint save_session_cb(GtkWidget *widget, gchar *privcfgpath,
 {
         asclock *my = (asclock *) data;
         set_gnome_config(my, privcfgpath);
-        return FALSE;
+	return FALSE;
+	widget = NULL;
+	globcfgpath = NULL;
 }
 #endif
 

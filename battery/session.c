@@ -125,7 +125,7 @@ battery_session_save(GtkWidget * w,
 		     gpointer data)
 {
   BatteryData * bat = data;
-  char col[24];
+  /* char col[24]; */
 
   gnome_config_push_prefix (privcfgpath);
 

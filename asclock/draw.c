@@ -33,6 +33,8 @@ void analog(asclock *my, GdkPixmap *p, GdkGC *gc, struct tm *clk)
   }
   
   gdk_draw_image(p, gc, clock_img, 0, 0, 0, 0, clock_img->width, clock_img->height);
+  return;
+  my = NULL;
 }
 
 void swatch_beats(asclock *my, GdkPixmap *p, GdkGC *gc, struct tm *clk, int beats)

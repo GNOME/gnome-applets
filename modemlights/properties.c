@@ -83,24 +83,32 @@ static void show_extra_info_cb( GtkWidget *widget, gpointer data )
 {
 	P_show_extra_info = GTK_TOGGLE_BUTTON (widget)->active;
 	gnome_property_box_changed(GNOME_PROPERTY_BOX(propwindow));
+	return;
+	data = NULL;
 }
 
 static void verify_lock_file_cb( GtkWidget *widget, gpointer data )
 {
 	P_verify_lock_file = GTK_TOGGLE_BUTTON (widget)->active;
 	gnome_property_box_changed(GNOME_PROPERTY_BOX(propwindow));
+        return;
+        data = NULL;
 }
 
 static void update_delay_cb( GtkWidget *widget, GtkWidget *spin )
 {
         P_UPDATE_DELAY = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spin));
         gnome_property_box_changed(GNOME_PROPERTY_BOX(propwindow));
+        return;
+        widget = NULL;
 }
 
 static void confirm_checkbox_cb( GtkWidget *widget, gpointer data )
 {
 	P_ask_for_confirmation = GTK_TOGGLE_BUTTON (widget)->active;
 	gnome_property_box_changed(GNOME_PROPERTY_BOX(propwindow));
+        return;
+        data = NULL;
 }
 
 static void isdn_checkbox_cb( GtkWidget *widget, gpointer data )
@@ -112,6 +120,8 @@ static void isdn_checkbox_cb( GtkWidget *widget, gpointer data )
 	gtk_widget_set_sensitive(verify_checkbox, !P_use_ISDN);
 
 	gnome_property_box_changed(GNOME_PROPERTY_BOX(propwindow));
+        return;
+        data = NULL;
 }
 
 static void property_apply_cb( GtkWidget *widget, void *data )
@@ -149,12 +159,17 @@ static void property_apply_cb( GtkWidget *widget, void *data )
 	start_callback_update();
 
 	applet_widget_sync_config(APPLET_WIDGET(applet));
+	return;
+	widget = NULL;
+        data = NULL;
 }
 
 static gint property_destroy_cb( GtkWidget *widget, void *data )
 {
         propwindow = NULL;
 	return FALSE;
+        widget = NULL;
+        data = NULL;
 }
 
 void property_show(AppletWidget *applet, gpointer data)
@@ -361,4 +376,7 @@ void property_show(AppletWidget *applet, gpointer data)
 			    &help_entry );
 
         gtk_widget_show_all(propwindow);
+        return;
+        applet = NULL;
+        data = NULL;
 } 

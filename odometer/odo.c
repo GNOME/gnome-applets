@@ -119,6 +119,7 @@ reset_cb (AppletWidget *widget, gpointer data)
    oa->trip_distance=0.;
    refresh(oa);
    return;
+   widget = NULL;
 }
 
 static void
@@ -137,6 +138,8 @@ about_cb (AppletWidget *widget, gpointer data)
    	NULL);
    gtk_widget_show (about);
    return;
+   widget = NULL;
+   data = NULL;
 }
 
 static void
@@ -195,6 +198,8 @@ save_session_cb (GtkWidget *widget,
 #endif
    properties_save (privcfgpath,oa);
    return FALSE;
+   widget = NULL;
+   globcfgpath = NULL;
 }
 
 static void
@@ -204,6 +209,10 @@ delete_cb (GtkWidget *widget,GdkEvent *event, gpointer data)
    g_print ("delete_cb\n");
 #endif
    gtk_main_quit();
+   return;
+   widget = NULL;
+   event = NULL;
+   data = NULL;
 }
 
 gint
@@ -456,6 +465,8 @@ darea_expose (GtkWidget *widget, GdkEventExpose *event,gpointer data)
 #endif
    refresh(oa);
    return FALSE;
+   widget = NULL;
+   event = NULL;
 }
 
 static void

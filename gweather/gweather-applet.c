@@ -98,6 +98,8 @@ static void change_orient_cb (AppletWidget *w, PanelOrientType o)
 {
     gweather_orient = o;
     place_widgets();
+    return;
+    w = NULL;
 }
 
 #ifdef HAVE_PANEL_PIXEL_SIZE
@@ -105,6 +107,8 @@ static void change_pixel_size_cb (AppletWidget *w, int s)
 {
     gweather_size = s;
     place_widgets();
+    return;
+    w = NULL;
 }
 #endif /* HAVE_PANEL_PIXEL_SIZE */
 
@@ -115,6 +119,8 @@ static int save_session_cb (AppletWidget *w, gchar *privcfgpath, gchar *globcfgp
     gweather_pref_save(privcfgpath);
     gweather_info_save(privcfgpath);
     return FALSE;
+    w = NULL;
+    globcfgpath = NULL;
 }
 #endif /* HAVE_SAVE_SESSION_SIGNAL */
 
@@ -124,21 +130,33 @@ static void clicked_cb (GtkWidget *widget, GdkEventButton *ev, gpointer data)
         return;
 
     gweather_dialog_display_toggle();
+    return;
+    widget = NULL;
+    data = NULL;
 }
 
 static void about_cb (AppletWidget *widget, gpointer data)
 {
     gweather_about_run();
+    return;
+    widget = NULL;
+    data = NULL;
 }
 
 static void pref_cb (AppletWidget *widget, gpointer data)
 {
     gweather_pref_run();
+    return;
+    widget = NULL;
+    data = NULL;
 }
 
 static void update_cb (AppletWidget *widget, gpointer data)
 {
     gweather_update();
+    return;
+    widget = NULL;
+    data = NULL;
 }
 
 void gweather_applet_create (int argc, char *argv[])
@@ -247,6 +265,7 @@ static gint timeout_cb (gpointer data)
 {
     gweather_update();
     return 0;  /* Do not repeat timeout (will be re-set by gweather_update) */
+    data = NULL;
 }
 
 static void update_finish (WeatherInfo *info)
@@ -310,12 +329,12 @@ void gweather_update (void)
             weather_info_new(gweather_pref.location, update_finish);
         }
     } else {
-        if (gweather_info)
+        if (gweather_info) {
             if (gweather_pref.use_metric)
                 weather_info_to_metric(gweather_info);
             else
-                weather_info_to_imperial(gweather_info);
+		  weather_info_to_imperial(gweather_info);
+	}
         update_finish(gweather_info);
     }
 }
-

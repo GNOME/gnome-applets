@@ -94,7 +94,7 @@ void diskusage_resize ()
 /* Get list of currently mounted filesystems. */
 void diskusage_read ()
 {
-	int i;
+	unsigned int i;
 
 	if (mount_list != NULL)
 		free (mount_list);
@@ -436,6 +436,9 @@ applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
 
 	diskusage_resize();
 
+	return;
+	w = NULL;
+        data = NULL;
 }
 
 
@@ -480,6 +483,7 @@ static gint diskusage_configure(GtkWidget *widget, GdkEventConfigure *event)
                 disp->allocation.width,
                 disp->allocation.height);
 	return TRUE;
+	event = NULL;
 } 
 
 static gint diskusage_expose(GtkWidget *widget, GdkEventExpose *event)
@@ -496,7 +500,7 @@ static gint diskusage_expose(GtkWidget *widget, GdkEventExpose *event)
 /* Left click on the applet switches to next filesystem */
 static gint diskusage_clicked_cb(GtkWidget * widget, GdkEventButton * e, 
 				gpointer data) {
-	int n;
+	unsigned int n;
 
 	if (e->button != 1) {
 		/* Ignore buttons 2 and 3 */
@@ -525,6 +529,8 @@ static gint diskusage_clicked_cb(GtkWidget * widget, GdkEventButton * e,
 	update_values();
 	
 	return TRUE; 
+	widget = NULL;
+	data = NULL;
 }
 
 void change_filesystem_cb (AppletWidget *applet, gpointer data) {
@@ -542,7 +548,8 @@ void change_filesystem_cb (AppletWidget *applet, gpointer data) {
   props.startfs = summary_info.selected_filesystem;
 
   update_values ();
-
+  return;
+  applet = NULL;
 }
 
 void add_mount_list_menu_items (void) {
@@ -687,7 +694,10 @@ static void browse_cb (AppletWidget *widget, gpointer data)
 */
 
         goad_server_activate_with_id(NULL, "gmc_filemanager_window",
-                        0, buf);
+		0, buf);
+	return;
+	widget = NULL;
+	data = NULL;
 }
 
 
@@ -752,6 +762,9 @@ static gint applet_save_session(GtkWidget *widget, char *privcfgpath, char *glob
 {
 	save_properties(privcfgpath,&props);
 	return FALSE;
+	widget = NULL;
+	data = NULL;
+	globcfgpath = NULL;
 }
 
 int main(int argc, char **argv)

@@ -28,6 +28,10 @@ applet_save_session (GtkWidget *widget, char *privcfgpath,
 		     char *globcfgpath, gpointer data)
 {
 	return FALSE;
+	widget = NULL;
+	privcfgpath = NULL;
+	globcfgpath = NULL;
+	data = NULL;
 }
 
 /* start a new instance of the memload applet */

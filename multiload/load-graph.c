@@ -38,7 +38,7 @@ GnomePropertyDescriptor LoadGraphProperty_Descriptor = {
 static void
 load_graph_draw (LoadGraph *g)
 {
-    gint i, j;
+    guint i, j;
 
     /* we might get called before the configure event so that
      * g->disp->allocation may not have the correct size
@@ -106,7 +106,7 @@ load_graph_draw (LoadGraph *g)
 static int
 load_graph_update (LoadGraph *g)
 {
-    gint i, j;
+    guint i, j;
 
     g->get_data (g->height, g->data [0]);
 
@@ -142,6 +142,7 @@ load_graph_configure (GtkWidget *widget, GdkEventConfigure *event,
 		     c->disp->allocation.width,
 		     c->disp->allocation.height);
     return TRUE;
+    event = NULL;
 }
 
 static gint
@@ -167,14 +168,17 @@ load_graph_destroy (GtkWidget *widget, gpointer data_ptr)
     load_graph_stop (g);
 
     object_list = g_list_remove (object_list, g);
+    return;
+    widget = NULL;
 }
 
 static GtkWidget *
 load_graph_properties_init (GnomePropertyObject *object)
 {
-    GtkWidget *vb, *frame, *label, *entry, *button, *table, *spin;
+    GtkWidget *vb, *frame;
+    /* GtkWidget *label, *entry, *button, *table, *spin; */
     LoadGraphProperties *prop_data = object->prop_data;
-    guint i;
+    /* guint i; */
 
     static const gchar *adj_data_texts [3] = {
 	N_("Speed:"), N_("Width:"), N_("Height:")
@@ -271,13 +275,15 @@ static void
 load_graph_properties_changed (GnomePropertyObject *object)
 {
     multiload_properties_changed ();
+    return;
+    object = NULL;
 }
 
 static void
 load_graph_properties_update (GnomePropertyObject *object)
 {
     GList *c;
-    gint i;
+    guint i;
 
     for (c = object_list; c; c = c->next) {
 	LoadGraph *g = (LoadGraph *) c->data;
@@ -362,6 +368,8 @@ load_graph_properties_update (GnomePropertyObject *object)
 
 	load_graph_draw (g);
     }
+    return;
+    object = NULL;
 }
 
 LoadGraph *
@@ -422,6 +430,7 @@ load_graph_new (guint n, gchar *label, LoadGraphProperties *prop_data,
 
     gtk_widget_show_all (g->frame);
     return g;
+    label = NULL;
 }
 
 void

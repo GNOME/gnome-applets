@@ -76,6 +76,8 @@ static void update_levels (gpointer data, gint source, GdkInputCondition conditi
 	ad->vu_l = bigl;
 	ad->vu_r = bigr;
 	ad->new_vu_data = TRUE;
+	return;
+	condition = (GdkInputCondition) 0;
 }
 
 /* returns TRUE if successful, FALSE if failed */

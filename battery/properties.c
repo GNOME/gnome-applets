@@ -363,10 +363,11 @@ battery_properties_window (AppletWidget * applet, gpointer data)
 static int
 prop_cancel (GtkWidget * w, gpointer data)
 {
-  BatteryData * bat = data;
+  /* BatteryData * bat = data; */
 
   return FALSE;
   w = NULL;
+  data = NULL;
 } /* prop_cancel */
 
 static void
