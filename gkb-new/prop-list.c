@@ -35,7 +35,12 @@
 #include <sys/stat.h>
 
 #include "gkb.h"
-/* --- list --- */
+
+
+
+static void gkb_prop_list_update_sensitivity (GkbPropertyBoxInfo *pbi);
+
+
 
 static void addhelp_cb (AppletWidget * widget, gpointer data);
 static void edithelp_cb (AppletWidget * widget);
@@ -65,30 +70,36 @@ static void
 gkb_prop_list_reload (GkbPropertyBoxInfo *pbi)
 {
   GList * list;
-
-
   GtkWidget * hbox1;
   GtkWidget * label3, * pixmap1, * list_item;
   GkbKeymap * tdata;
   gchar *pixmapname;
   gint counter;
+
+  debug (FALSE, "");
   
   gtk_list_clear_items (pbi->list, 0, -1);
  
   counter=0;
 
   list = pbi->keymaps;
-  for (; list != NULL ; list = list->next)
+  for (; list != NULL; list = list->next)
     {
       char buf[30];
       struct stat tempbuf;
-      
+
+      g_print ("Foo 1 ! [%i][%i]%i\n",
+	       GPOINTER_TO_INT (list),
+	       GPOINTER_TO_INT (list->next),
+	       g_list_length (pbi->keymaps));
       tdata = list->data;
 
       hbox1 = gtk_hbox_new (FALSE, 0);
       gtk_widget_ref (hbox1);
       gtk_widget_show (hbox1);
-     
+
+      g_print ("Foo 2 !\n");
+      
       pixmap1 = gtk_type_new (gnome_pixmap_get_type ());
       sprintf(buf,"gkb/%s",tdata->flag);
       pixmapname = gnome_unconditional_pixmap_file (buf);
@@ -99,6 +110,8 @@ gkb_prop_list_reload (GkbPropertyBoxInfo *pbi)
       gtk_widget_ref (pixmap1); 
       gtk_widget_show (pixmap1);
       gtk_box_pack_start (GTK_BOX (hbox1), pixmap1, FALSE, TRUE, 0);
+
+      g_print ("Foo 3 !\n");
       
       label3 = gtk_label_new (tdata->name);
       gtk_widget_ref (label3);
@@ -106,9 +119,13 @@ gkb_prop_list_reload (GkbPropertyBoxInfo *pbi)
       gtk_box_pack_start (GTK_BOX (hbox1), label3, TRUE, TRUE, 0);
       gtk_misc_set_alignment (GTK_MISC (label3), 0, 0.5);
       gtk_misc_set_padding (GTK_MISC (label3), 3, 0);
+
+      g_print ("Foo 4 !\n");
       
       list_item = gtk_list_item_new ();
-      gtk_container_add(GTK_CONTAINER(list_item), hbox1);
+      g_print ("Foo 5 !\n");
+      
+      gtk_container_add (GTK_CONTAINER(list_item), hbox1);
 #if 0	
       gtk_object_set_data (GTK_OBJECT(list_item),"hbox",hbox1);
       gtk_object_set_data (GTK_OBJECT(list_item),"flag",tdata->flag);
@@ -116,11 +133,17 @@ gkb_prop_list_reload (GkbPropertyBoxInfo *pbi)
 #else	
       gtk_object_set_data (GTK_OBJECT (list_item), GKB_KEYMAP_TAG, tdata);
 #endif
+      g_print ("Foo 6 !\n");
+      
       gtk_container_add (GTK_CONTAINER (pbi->list), list_item);
-      gtk_widget_show(list_item);
+      gtk_widget_show (list_item);
+      g_print ("Foo 7 !\n");
+      
     }
 
   gtk_widget_show (GTK_WIDGET (pbi->list));
+
+  debug (FALSE, "end");
 }
 
 
@@ -137,6 +160,8 @@ treeitems_create(GtkWidget *tree)
 	LangData * ldata;
 	CountryData * cdata;
 
+
+	debug (FALSE, "");
 	/* TODO: Error checking... */
 	sets = gkb_preset_load(find_presets());
 	retval = sets;
@@ -244,18 +269,17 @@ preadd_cb (GtkWidget * tree, GtkWidget * button)
   GtkLabel *label;
   GtkWidget *item;
 
+  debug (FALSE, "");
+  
   g_return_if_fail (tree != NULL);
   g_return_if_fail (button != NULL);
 
-  gtk_widget_set_sensitive (button, FALSE);
- 
   if((i = GTK_TREE_SELECTION(tree)) != NULL)
   {
    item = GTK_WIDGET (i->data);
    label = GTK_LABEL (GTK_BIN (item)->child);
    if (GTK_IS_LABEL(label))
     {
-     gtk_widget_set_sensitive (button, TRUE);
      a_keymap = gtk_object_get_data (GTK_OBJECT(item),"item");
     }
    }
@@ -268,6 +292,8 @@ addwadd_cb (GtkWidget * addbutton, GtkWidget * ctree, GkbPropertyBoxInfo *pbi)
 {
  GkbKeymap * tdata;
 
+ debug (FALSE, "");
+ 
  if (a_keymap)
  {
   tdata = g_new0 (GkbKeymap,1);
@@ -292,6 +318,8 @@ addwadd_cb (GtkWidget * addbutton, GtkWidget * ctree, GkbPropertyBoxInfo *pbi)
 static gint 
 wdestroy_cb (GtkWidget * closebutton, GtkWidget * window)
 {
+  debug (FALSE, "");
+	
  if (window == gkb->addwindow)
   gkb->addwindow=NULL;
  else
@@ -313,6 +341,8 @@ addwindow_cb (GtkWidget *addbutton)
   GtkWidget *button5;
   GtkWidget *button6;
 
+  debug (FALSE, "");
+  
   if (gkb->addwindow)
     {
       gtk_widget_show_now (gkb->addwindow);
@@ -356,7 +386,6 @@ addwindow_cb (GtkWidget *addbutton)
   gtk_widget_show (button4);
   gtk_container_add (GTK_CONTAINER (hbuttonbox1), button4);
   GTK_WIDGET_SET_FLAGS (button4, GTK_CAN_DEFAULT);
-  gtk_widget_set_sensitive (button4, FALSE);
 
   button5 = gnome_stock_button (GNOME_STOCK_BUTTON_CLOSE);
   gtk_widget_show (button5);
@@ -396,6 +425,8 @@ apply_edited_cb (GtkWidget * button, gint pos, GkbPropertyBoxInfo *pbi)
  GtkWidget * typeentry;
 
  GkbKeymap * data = g_list_nth_data (pbi->keymaps, pos);
+
+ debug (FALSE, "");
  
  g_free(data->name);
  g_free(data->label);
@@ -496,6 +527,8 @@ mapedit_cb (GkbPropertyBoxInfo *pbi)
   gint pos;
   GkbKeymap * data;
 
+  debug (FALSE, "");
+  
   mlist = GTK_LIST(pbi->list)->selection;
 
   if (mlist){
@@ -842,7 +875,9 @@ del_select_cb (GtkWidget * button, GkbPropertyBoxInfo *pbi)
  GtkObject *list_item;
  GtkWidget *hbox;
  gint pos;
- 
+
+ debug (FALSE, "");
+	
  mlist=GTK_LIST(pbi->list)->selection;
 
  g_return_if_fail (mlist != NULL);
@@ -855,7 +890,6 @@ del_select_cb (GtkWidget * button, GkbPropertyBoxInfo *pbi)
   pbi->keymaps = g_list_remove (pbi->keymaps,g_list_nth_data(pbi->keymaps, pos));
 
   deletebutton = gtk_object_get_data(GTK_OBJECT(gkb->propbox),"deletebutton");
-  gtk_widget_set_sensitive (deletebutton, FALSE); 
  }
 
  gkb_prop_list_reload (pbi);
@@ -894,6 +928,22 @@ del_select_cb (GtkWidget * button, GkbPropertyBoxInfo *pbi)
 
 /* -------------------------------------------------------- EVERY THING BELOW THIS POINT HAS BEEN CLEANED ---------------------------- */
 
+/**
+ * gkb_g_list_swap:
+ * @item1: 
+ * @item2: 
+ * 
+ * Swap the data of two list items
+ **/
+static void
+gkb_util_g_list_swap (GList *item1, GList *item2)
+{
+  gpointer temp;
+
+  temp = item1->data;
+  item1->data = item2->data;
+  item2->data = temp;
+}
 
 /**
  * gkb_prop_list_move_clicked:
@@ -903,96 +953,40 @@ del_select_cb (GtkWidget * button, GkbPropertyBoxInfo *pbi)
  * 
  **/
 static void
-gkb_prop_list_move_clicked (GkbPropertyBoxInfo *pbi, gboolean up)
+gkb_prop_list_up_down_clicked (GkbPropertyBoxInfo *pbi, gboolean up)
 {
- 
-#warning FIXME  
-#if 0
- GtkWidget * upbutton;
- GtkWidget * downbutton;
- GtkWidget * list_item;
- GList *mlist;
- GkbKeymap * data;
- gint pos;
- GList * row, * nextr, * prevr;
+  GList *list;
+  GList *list_item;
+  GList *prev;
+  GList *next;
+  
+  debug (FALSE, "");
 
-
- mlist=GTK_LIST(pbi->list)->selection;
- g_return_if_fail (mlist != NULL);
-
- downbutton = gtk_object_get_data(GTK_OBJECT(gkb->propbox),"downbutton");
- upbutton = gtk_object_get_data(GTK_OBJECT(gkb->propbox),"upbutton");
- 
- if (mlist) {
-  list_item=GTK_WIDGET(mlist->data);
-  pos = gtk_list_child_position (GTK_LIST(pbi->list), list_item);
-
-  row = g_list_nth(pbi->keymaps,pos);
-  data = g_list_nth_data(pbi->keymaps,pos);
-
-  printf("POS:%d, N: %s\n",pos, data->name);fflush(stdout);
-
-  if (button == upbutton) 
-   { 
-    prevr = row->prev;
-    if ((row->prev = prevr->prev) == NULL)
-     {
-      pbi->keymaps = row;
-     }
-     else
-     {
-      prevr->prev->next = row;
-     }
-
-    if ((nextr = row->next) != NULL) {
-      nextr->prev = prevr;
-    }
-
-    row->next = prevr;
-
-    prevr->prev = row;
-
-    prevr->next = nextr;
-
-    pos--;
-   }
-   else 
-   {
-    nextr = row->next;
-    if ((prevr = row->prev) != NULL) {
-     prevr->next = nextr;
-    } else {
-     pbi->keymaps = nextr;
-    }
-    row->next = nextr->next;
-    row->prev = nextr;
-    nextr->next = row;
-    nextr->prev = prevr;
-    pos++;
-   }
-
-  list_show(pos);
-
-  if (pos == 0) 
-    {
-     gtk_widget_set_sensitive (downbutton, TRUE);
-     gtk_widget_set_sensitive (upbutton, FALSE);
-    } else 
-    {
-     gtk_widget_set_sensitive (upbutton, TRUE);
-     gtk_widget_set_sensitive (downbutton, FALSE);
-     if (pos < (g_list_length(pbi->keymaps) - 1)) 
-      {
-      gtk_widget_set_sensitive (downbutton, TRUE);
-      }
-    }
+  g_return_if_fail (pbi != NULL);
+  g_return_if_fail (GTK_IS_WIDGET (pbi->add_button));
+  
+  if (!pbi->selected_keymap) {
+    g_warning ("Why is the UP/DOWN button sensitive ???");
+    return;
   }
 
- if ( g_list_length(pbi->keymaps) > 1 )
-  gnome_property_box_changed (GNOME_PROPERTY_BOX (gkb->propbox));
+  list = pbi->keymaps;
+  list_item = g_list_find (list, pbi->selected_keymap);
 
-#endif	
- return;
+  prev = list_item->prev;
+  next = list_item->next;
+  
+  if (up) {
+    g_return_if_fail (prev != NULL);
+    gkb_util_g_list_swap (prev, list_item);
+  } else {
+    g_return_if_fail (next != NULL);
+    gkb_util_g_list_swap (list_item, next);
+  }
+
+  gkb_prop_list_reload (pbi);
+  
+  return;
 }
 
 /**
@@ -1006,23 +1000,39 @@ static void
 gkb_prop_list_update_sensitivity (GkbPropertyBoxInfo *pbi)
 {
   gboolean row_selected = FALSE;
-  gboolean one_row = FALSE; /* True if there is only 1 row */
+  gboolean is_top = FALSE;
+  gboolean is_bottom = FALSE;
   
   debug (FALSE, "");
 
   g_return_if_fail (pbi != NULL);
   g_return_if_fail (GTK_IS_WIDGET (pbi->add_button));
 
-  if (GTK_LIST (pbi->list)->selection)
-    row_selected = TRUE;
-  if (g_list_length (GTK_LIST (pbi->list)->children) == 1)
-    one_row = TRUE;
+  if (pbi->selected_keymap) {
+    GList *list_item;
 
+    row_selected = TRUE;
+
+    g_print ("Foo..\n");
+    list_item = g_list_find (pbi->keymaps, pbi->selected_keymap);
+    g_print ("Foo.. END\n");    
+    g_return_if_fail (list_item);
+    
+    if (list_item->next == NULL)
+      is_bottom = TRUE;
+    
+    if (list_item->prev == NULL)
+      is_top = TRUE;
+  }
+    
   gtk_widget_set_sensitive (pbi->add_button,    TRUE);
   gtk_widget_set_sensitive (pbi->edit_button,   row_selected);
-  gtk_widget_set_sensitive (pbi->up_button,     row_selected && !one_row);
-  gtk_widget_set_sensitive (pbi->down_button,   row_selected && !one_row);
-  gtk_widget_set_sensitive (pbi->delete_button, row_selected && !one_row);
+  gtk_widget_set_sensitive (pbi->up_button,     row_selected && !is_top);
+  gtk_widget_set_sensitive (pbi->down_button,   row_selected && !is_bottom);
+  gtk_widget_set_sensitive (pbi->delete_button, row_selected && !(is_bottom && is_top));
+
+  debug (FALSE, "end");
+  
 }
 
 /**
@@ -1043,8 +1053,6 @@ gkb_prop_list_selection_changed (GtkWidget *list, GkbPropertyBoxInfo *pbi)
   g_return_if_fail (pbi != NULL);
   g_return_if_fail (GTK_IS_WIDGET (pbi->add_button));
 
-  gkb_prop_list_update_sensitivity (pbi);
-
   selection = GTK_LIST(pbi->list)->selection;
   
   if (selection) {
@@ -1058,6 +1066,10 @@ gkb_prop_list_selection_changed (GtkWidget *list, GkbPropertyBoxInfo *pbi)
   } else {
     pbi->selected_keymap = NULL;
   }
+
+  gkb_prop_list_update_sensitivity (pbi);
+
+  debug (FALSE, "end");
   
   return;
 }
@@ -1072,6 +1084,8 @@ gkb_prop_list_selection_changed (GtkWidget *list, GkbPropertyBoxInfo *pbi)
 static void
 gkb_prop_list_button_clicked_cb (GtkWidget *button, GkbPropertyBoxInfo *pbi)
 {
+  debug (FALSE, "");
+    
   if (button == pbi->add_button)
     addwindow_cb (button);
   else if (button == pbi->edit_button)
@@ -1079,9 +1093,11 @@ gkb_prop_list_button_clicked_cb (GtkWidget *button, GkbPropertyBoxInfo *pbi)
   else if (button == pbi->delete_button)
     del_select_cb (button, pbi);
   else if (button == pbi->up_button)
-    gkb_prop_list_move_clicked (pbi, TRUE);
+    gkb_prop_list_up_down_clicked (pbi, TRUE);
   else if (button == pbi->down_button)
-    gkb_prop_list_move_clicked (pbi, FALSE);
+    gkb_prop_list_up_down_clicked (pbi, FALSE);
+
+  debug (FALSE, "end");
 }
 
 /**
@@ -1097,7 +1113,9 @@ static GtkWidget *
 gkb_prop_list_create_button (const gchar *name, GkbPropertyBoxInfo *pbi)
 {
   GtkWidget *button;
-  
+
+  debug (FALSE, "");
+	
   button = gtk_button_new_with_label (name);
   gtk_signal_connect (GTK_OBJECT (button), "clicked", 
                       GTK_SIGNAL_FUNC (gkb_prop_list_button_clicked_cb),
@@ -1124,6 +1142,8 @@ gkb_prop_create_buttons_vbox (GkbPropertyBoxInfo *pbi)
 {
   GtkWidget *vbox;
 
+  debug (FALSE, "");
+	
   vbox = gtk_vbutton_box_new ();
   gtk_button_box_set_spacing (GTK_BUTTON_BOX (vbox), 0);
   gtk_button_box_set_child_size (GTK_BUTTON_BOX (vbox), 75, 25);
@@ -1178,7 +1198,8 @@ gkb_utils_copy_keymap (GkbKeymap *keymap)
 static void
 gkb_utils_free_keymap (GkbKeymap *keymap)
 {
-
+  debug (FALSE, "");
+	
   g_free (keymap->name);
   g_free (keymap->flag);
   g_free (keymap->country);
@@ -1200,6 +1221,8 @@ gkb_prop_list_free_keymaps (GkbPropertyBoxInfo *pbi)
 {
   GList *list;
 
+  debug (FALSE, "");
+  
   list = pbi->keymaps;
   for (; list != NULL; list = list->next)
       gkb_utils_free_keymap ((GkbKeymap *) list->data);
@@ -1222,6 +1245,8 @@ gkb_prop_list_load_keymaps (GkbPropertyBoxInfo *pbi)
   GkbKeymap *keymap;
   GList *new_list = NULL;
   GList *list;
+
+  debug (FALSE, "");
  
   if (pbi->keymaps) {
     g_warning ("Dude ! you forgot to free the keymaps list somewhere.");
@@ -1253,6 +1278,8 @@ GtkWidget *
 gkb_prop_create_scrolled_window (GkbPropertyBoxInfo *pbi)
 {
   GtkWidget *scrolled_window;
+
+  debug (FALSE, "");
 
   scrolled_window = gtk_scrolled_window_new (NULL, NULL);
   gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled_window),
