@@ -1,0 +1,521 @@
+<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "2.3.6">
+  <!ENTITY manrevision "2.0.1">
+  <!ENTITY date "December 2003">
+  <!ENTITY applet "Battery Charge Monitor">
+]>
+
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Feb 12, 2002
+-->
+
+<!-- =============Document Header ============================= -->
+<article id="index" lang="zh_cn">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo>
+<title>&applet; 小程序手册 V&manrevision;</title>
+    <copyright>
+      <year>2003</year>
+      <holder>Sun Microsystems</holder>
+    </copyright>
+    <copyright>
+      <year>2002</year>
+      <holder>Trevor Curtis</holder>
+    </copyright>
+    <copyright> 
+      <year>1999</year> 
+      <year>2000</year> 
+      <holder>Jorgen Pehrson</holder> 
+    </copyright>
+<!-- translators: uncomment this:
+
+    <copyright>
+     <year>2002</year>
+     <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+    </copyright>
+
+   -->
+
+    <publisher> 
+      <publishername> GNOME Documentation Project </publishername> 
+    </publisher> 
+  
+    &legal;
+<!-- This file  contains link to license for the documentation (GNU FDL), and 
+     other legal stuff such as "NO WARRANTY" statement. Please do not change 
+     any of this. -->
+
+    <authorgroup> 
+      <author>
+        <firstname>Sun</firstname>
+        <surname>GNOME Documentation Team</surname>
+        <affiliation><orgname>Sun Microsystems</orgname></affiliation>
+      </author>
+      <author>
+        <firstname>Trevor</firstname>
+        <surname>Curtis</surname>
+        <affiliation>
+          <orgname>GNOME Documentation Project</orgname>
+          <address> <email>tcurtis@somaradio.ca</email> </address>
+        </affiliation>
+      </author>
+      <author> 
+        <firstname>Jorgen </firstname> 
+        <surname> Pehrson</surname> 
+        <affiliation> 
+          <orgname>GNOME Documentation Project</orgname> 
+          <address> <email>jp@spektr.eu.org</email> </address>
+        </affiliation>
+      </author>
+        <!-- This is appropriate place for other contributors: translators,
+             maintainers,  etc. Commented out by default.
+             <othercredit role="translator">
+	       <firstname>Latin</firstname> 
+	       <surname>Translator 1</surname> 
+	       <affiliation> 
+	         <orgname>Latin Translation Team</orgname> 
+	         <address> <email>translator@gnome.org</email> </address> 
+	       </affiliation>
+	       <contrib>Latin translation</contrib>
+             </othercredit>
+-->
+
+    </authorgroup>
+
+    <revhistory>
+      <revision><revnumber>电池电量监视器小程序手册 V&manrevision;</revnumber>
+        <date>&date;</date>
+        <revdescription>
+          <para role="author">Sun GNOME Documentation Team</para>
+          <para role="publisher">GNOME Documentation Project</para>
+        </revdescription>
+      </revision>
+      <revision><revnumber>电池电量监视器小程序手册 V2.0</revnumber>
+        <date>2002 年 5 月</date>
+        <revdescription>
+          <para role="author">Trevor Curtis
+            <email>tcurtis@somaradio.ca</email>
+          </para>
+          <para role="author">Jorgen Pehrson
+            <email>jp@spektr.eu.org</email>
+          </para>
+          <para role="publisher">GNOME Documentation Project</para>
+        </revdescription>
+      </revision>
+    </revhistory>
+                                                                                                  
+    <releaseinfo>本手册介绍 &applet; &appletversion; 版。
+    </releaseinfo>
+                                                                                                  
+    <legalnotice><title>反馈</title>
+      <para>要报告关于 &applet; 小程序或本手册的错误或提出建议，请遵循 <ulink url="ghelp:gnome-feedback" type="help">GNOME 反馈页</ulink>中的指导。
+     </para>
+    </legalnotice>
+  </articleinfo>
+
+  <indexterm zone="index"> 
+	 <primary>电池电量监视器小程序</primary> 
+  </indexterm> 
+
+  <indexterm zone="index"> 
+	 <primary>Battstat 小程序</primary> 
+  </indexterm> 
+
+<!-- ============= Document Body ============================= -->
+<!-- ============= Introduction ============================== -->
+  <sect1 id="battstat-introduction"><title>简介</title>
+
+    <figure id="battstat-applet-fig"><title>&applet; 小程序</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject><imagedata              fileref="figures/battstat-applet_window.png" format="PNG"/> 
+          </imageobject>
+          <textobject>
+            <phrase>&applet; 小程序。</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+    </figure>
+
+    <para><application>&applet;</application> 小程序显示膝上型计算机电源子系统的状态。您可以配置该小程序，以便在面板中显示以下组件：
+    </para>
+    <itemizedlist>
+      <listitem>
+        <para>电源连接状态
+        </para>
+      </listitem>
+      <listitem>
+        <para>电池状态
+        </para>
+      </listitem>
+      <listitem>
+        <para> 电池电量百分比
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <sect2 id="battstat-introduction-add"><title>向面板中添加 &applet;</title>
+      <para>要向面板中添加 <application>&applet;</application>，请执行下列步骤：
+     </para>
+      <orderedlist>
+        <listitem>
+          <para>右击面板。
+          </para>
+        </listitem>
+        <listitem>
+          <para>选择<menuchoice><guimenu>添加到面板</guimenu><guisubmenu>公用程序</guisubmenu><guimenuitem>&applet;</guimenuitem></menuchoice>。
+          </para>
+        </listitem>
+      </orderedlist>
+      <para><application>&applet;</application> 小程序的布局根据小程序所在的面板的大小和类型而变化。
+     </para>
+    </sect2>
+
+</sect1>
+
+<!-- ================ Usage ================================ -->
+
+  <sect1 id="battstat-usage"><title>用法</title>
+
+    <sect2 id="battstat-usage-power"><title>确定电源连接状态</title>
+      <para>电源连接状态显示膝上型计算机电源的当前状态：
+     </para>
+      <informaltable frame="all">
+        <tgroup cols="2" colsep="1" rowsep="1">
+          <colspec colname="COLSPEC0" colwidth="50*"/>
+          <colspec colname="COLSPEC1" colwidth="50*"/>
+          <thead>
+            <row valign="top">
+              <entry colname="COLSPEC0">
+                <para>图标</para></entry>
+              <entry colname="COLSPEC1">
+                <para>电源状态</para></entry>
+            </row>
+          </thead>
+          <tbody>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/ac_small.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>显示 AC 电源的图标。</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>膝上型计算机连接到电源。
+                </para>
+              </entry>
+            </row>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/flash_small.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>显示电池充电图标。</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>膝上型计算机电池正在充电。
+                </para>
+              </entry>
+            </row>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/battery_small.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>显示电池电源的图标。</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>膝上型计算机正在使用电池电源。
+                </para>
+              </entry>
+            </row>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/warning_small.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>显示低电量图标。</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>膝上型计算机电量非常低。
+                </para>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </sect2>
+
+    <sect2 id="battstat-usage-progress"><title>确定电池状态</title>
+      <para>电池状态图标是电池图像内的进度栏。
+该进度栏的大小和颜色表示电池中所剩电量的多少：
+     </para>
+      <informaltable frame="all">
+        <tgroup cols="2" colsep="1" rowsep="1">
+          <colspec colname="COLSPEC0" colwidth="50*"/>
+          <colspec colname="COLSPEC1" colwidth="50*"/>
+          <thead>
+            <row valign="top">
+              <entry colname="COLSPEC0">
+                <para>图标</para></entry>
+              <entry colname="COLSPEC1">
+                <para>电池电量水平</para></entry>
+            </row>
+          </thead>
+          <tbody>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/batt_green.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>显示高电池电量水平的图标。</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>高
+                </para>
+              </entry>
+            </row>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/batt_yellow.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>显示中电池电量水平的图标。</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>中
+                </para>
+              </entry>
+            </row>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/batt_orange.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>显示低电池电量水平的图标。</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>低
+                </para>
+              </entry>
+            </row>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/batt_red.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>显示非常低电池电量水平的图标。</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para> 非常低
+                </para>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+      <para>有关如何设置电池颜色水平的信息，请参阅 <xref linkend="battstat-prefs-general"/>。
+     </para>
+      <para> 有关如何以百分比形式显示当前电池电量的信息，请参阅 <xref linkend="battstat-prefs-appearance"/>。
+     </para>
+    </sect2>
+
+    <sect2 id="battstat-usage-suspend"><title>挂起计算机</title>
+      <para>要挂起计算机，请右击该小程序，然后选择<guimenuitem>挂起计算机</guimenuitem>。
+有关如何指定在选择<guimenuitem>挂起计算机</guimenuitem>时运行的命令的信息，请参阅 <xref linkend="battstatt-prefs"/>。
+     </para>
+    </sect2>
+
+  </sect1>
+
+  <!-- ============= Customization ============================= -->
+
+  <sect1 id="battstatt-prefs"><title>首选项</title>
+    <para>要配置 <application>&applet;</application> 小程序，请右击小程序，然后选择<guimenuitem>首选项</guimenuitem>。 
+<guilabel>首选项</guilabel>对话框包含以下选项卡式部分：
+    </para>
+    <itemizedlist>
+      <listitem>
+        <para><xref linkend="battstat-prefs-general"/></para>
+      </listitem>
+      <listitem>
+        <para><xref linkend="battstat-prefs-appearance"/></para>
+      </listitem>
+    </itemizedlist>
+                                                                                                  
+    <sect2 id="battstat-prefs-general"><title>常规</title>
+      <variablelist>
+        <varlistentry><term><guilabel>电池颜色水平 %</guilabel></term>
+          <listitem>
+            <itemizedlist>
+              <listitem>
+                <para><guilabel>黄色</guilabel>
+                </para>
+                <para> 使用此旋转框设置进度栏从绿色变为黄色的电池电量水平。
+                </para>
+              </listitem>
+              <listitem>
+                <para><guilabel>橙色</guilabel>
+                </para>
+                <para>使用此旋转框设置进度栏从黄色变为橙色的电池电量水平。
+                </para>
+              </listitem>
+              <listitem>
+                <para> <guilabel>红色</guilabel>
+                </para>
+                <para>使用此旋转框设置进度栏从橙色变为红色的电池电量水平。
+                </para>
+              </listitem>
+              <listitem>
+                <para><guilabel>预览</guilabel>
+                </para>
+                <para>移动滑块显示电池电量水平变化时进度栏如何变化。
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+        <varlistentry><term><guilabel>警告</guilabel></term>
+          <listitem>
+            <itemizedlist>
+              <listitem>
+                <para><guilabel>电池电量低时发出警告</guilabel>
+                </para>
+                <para>选择此选项会在电池电量水平低于<guilabel>红色</guilabel>旋转框中指定的值时显示信息报警。
+                </para>
+              </listitem>
+              <listitem>
+                <para><guilabel>当电池充满电时发出警告</guilabel>
+                </para>
+                <para>选择此选项会在电池充满电时显示信息报警。
+                </para>
+              </listitem>
+              <listitem>
+                <para><guilabel>当显示警告时发出蜂鸣</guilabel>
+                </para>
+                <para>选择此选项会在显示信息报警时播放蜂鸣声。
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+        <varlistentry><term><guilabel>挂起</guilabel></term>
+          <listitem>
+            <itemizedlist>
+              <listitem>
+                <para><guilabel>挂起命令</guilabel>
+                </para>
+                <para>使用此文本框可以指定当您在小程序右击弹出菜单中选择<guimenuitem>挂起计算机</guimenuitem>时运行的命令。
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+    <sect2 id="battstat-prefs-appearance"><title>外观</title>
+      <variablelist>
+        <varlistentry><term><guilabel>布局</guilabel></term>
+          <listitem>
+            <itemizedlist>
+              <listitem>
+                <para><guilabel>显示电池状态</guilabel>
+                </para>
+                <para>选择此选项可以显示电池状态。
+                </para>
+              </listitem>
+              <listitem>
+                <para><guilabel>显示电源连接状态</guilabel>
+                </para>
+                <para>选择此选项可以显示电源连接状态。
+                </para>
+              </listitem>
+              <listitem>
+                <para><guilabel>显示电池电量百分比</guilabel>
+                </para>
+                <para>选择此选项可以显示电池当前有多少电量，以百分比的形式表示。
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+        <varlistentry><term><guilabel>进度栏方向</guilabel></term>
+          <listitem>
+            <itemizedlist>
+              <listitem>
+                <para><guilabel>向顶部移动</guilabel>
+                </para>
+                <para>选择此选项指定进度栏从右向左减少。
+                </para>
+              </listitem>
+              <listitem>
+                <para><guilabel>向底部移动</guilabel>
+                </para>
+                <para>选择此选项指定进度栏从左向右减少。
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+  </sect1>
+
+</article>

@@ -1,0 +1,590 @@
+<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "2.3.6">
+  <!ENTITY manrevision "2.0.1">
+  <!ENTITY date "Dezember 2003">
+  <!ENTITY applet "Batterieladeanzeige">
+]>
+
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Feb 12, 2002
+-->
+
+<!-- =============Document Header ============================= -->
+<article id="index" lang="de">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo>
+ <title>&applet; Applet-Handbuch V&manrevision;</title>
+    <copyright>
+      <year>2003</year>
+      <holder>Sun Microsystems</holder>
+    </copyright>
+    <copyright>
+      <year>2002</year>
+      <holder>Trevor Curtis</holder>
+    </copyright>
+    <copyright> 
+      <year>1999</year> 
+      <year>2000</year> 
+      <holder>Jorgen Pehrson</holder> 
+    </copyright>
+<!-- translators: uncomment this:
+
+    <copyright>
+     <year>2002</year>
+     <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+    </copyright>
+
+   -->
+
+    <publisher> 
+      <publishername> GNOME Dokumentationsprojekt </publishername> 
+    </publisher> 
+  
+    &legal;
+<!-- This file  contains link to license for the documentation (GNU FDL), and 
+     other legal stuff such as "NO WARRANTY" statement. Please do not change 
+     any of this. -->
+
+    <authorgroup> 
+      <author>
+        <firstname>Sun</firstname>
+        <surname>GNOME Dokumentationsteam</surname>
+        <affiliation><orgname>Sun Microsystems</orgname></affiliation>
+      </author>
+      <author>
+        <firstname>Trevor</firstname>
+        <surname>Curtis</surname>
+        <affiliation>
+          <orgname>GNOME Dokumentationsprojekt</orgname>
+          <address> <email>tcurtis@somaradio.ca</email> </address>
+        </affiliation>
+      </author>
+      <author> 
+        <firstname>Jorgen </firstname> 
+        <surname> Pehrson</surname> 
+        <affiliation> 
+          <orgname>GNOME Dokumentationsprojekt</orgname> 
+          <address> <email>jp@spektr.eu.org</email> </address>
+        </affiliation>
+      </author>
+        <!-- This is appropriate place for other contributors: translators,
+             maintainers,  etc. Commented out by default.
+             <othercredit role="translator">
+	       <firstname>Latin</firstname> 
+	       <surname>Translator 1</surname> 
+	       <affiliation> 
+	         <orgname>Latin Translation Team</orgname> 
+	         <address> <email>translator@gnome.org</email> </address> 
+	       </affiliation>
+	       <contrib>Latin translation</contrib>
+             </othercredit>
+-->
+
+    </authorgroup>
+
+    <revhistory>
+      <revision>
+        <revnumber>Batterieladeanzeige-Applet-Handbuch V&manrevision;</revnumber>
+        <date>&date;</date>
+        <revdescription>
+          <para role="author">Sun GNOME Dokumentationsteam</para>
+          <para role="publisher">GNOME-Dokumentationsprojekt</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>Batterieladeanzeige-Applet-Handbuch V2.0</revnumber>
+        <date>Mai 2002</date>
+        <revdescription>
+          <para role="author">Trevor Curtis
+            <email>tcurtis@somaradio.ca</email>
+          </para>
+          <para role="author">Jorgen Pehrson
+            <email>jp@spektr.eu.org</email>
+          </para>
+          <para role="publisher">GNOME-Dokumentationsprojekt</para>
+        </revdescription>
+      </revision>
+    </revhistory>
+                                                                                                  
+    <releaseinfo>In diesem Handbuch wird Version &appletversion; von &applet; beschrieben.
+    </releaseinfo>
+                                                                                                  
+    <legalnotice> 
+      <title>Feedback</title>
+      <para>Wenn Sie Fehler finden oder Vorschl&auml;ge zum Applet &applet; oder zu diesem Handbuch haben, folgen Sie den Anweisungen auf der <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>. 
+      </para>
+    </legalnotice>
+  </articleinfo>
+
+  <indexterm zone="index"> 
+	 <primary>Batterieladeanzeige-Applet</primary> 
+  </indexterm> 
+
+  <indexterm zone="index"> 
+	 <primary>Battstat-Applet</primary> 
+  </indexterm> 
+
+<!-- ============= Document Body ============================= -->
+<!-- ============= Introduction ============================== -->
+  <sect1 id="battstat-introduction"> 
+     <title>Einf&uuml;hrung</title>
+
+    <figure id="battstat-applet-fig"> 
+        <title>&applet;-Applet</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject><imagedata              fileref="figures/battstat-applet_window.png" format="PNG"/> 
+          </imageobject>
+          <textobject>
+            <phrase>Das Applet &applet;.</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+    </figure>
+
+    <para>
+      Das Applet <application>&applet;</application> zeigt den Status Ihres Laptop-Batteriesystems an. Das Applet l&auml;sst sich f&uuml;r die Anzeige folgender Elemente im Panel konfigurieren:
+    </para>
+    <itemizedlist>
+      <listitem>
+        <para>
+          Status der Netzanbindung
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Batteriestatus
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Ladezustand der Batterie in Prozent
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <sect2 id="battstat-introduction-add">
+      <title>So f&uuml;gen Sie das Applet &applet; einem Panel hinzu</title>
+      <para>
+        Wenn Sie das Applet <application>&applet;</application> in ein Panel einf&uuml;gen m&ouml;chten, gehen Sie folgenderma&szlig;en vor:
+      </para>
+      <orderedlist>
+        <listitem>
+          <para>
+            Rechtsklicken Sie auf das Panel.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            W&auml;hlen Sie <menuchoice>
+              <guimenu>Zum Panel hinzuf&uuml;gen</guimenu>
+              <guisubmenu>Dienstprogramm</guisubmenu>
+              <guimenuitem>&applet;</guimenuitem>
+            </menuchoice>. 
+          </para>
+        </listitem>
+      </orderedlist>
+      <para>
+        Die Darstellung des Applets <application>&applet;</application> richtet sich nach Gr&ouml;&szlig;e und Art des enthaltenden Panels.
+      </para>
+    </sect2>
+
+</sect1>
+
+<!-- ================ Usage ================================ -->
+
+  <sect1 id="battstat-usage"> 
+    <title>Verwendung</title>
+
+    <sect2 id="battstat-usage-power">
+      <title>So stellen Sie den Status der Netzanbindung fest</title>
+      <para>
+Am Netzanbindungs-Status sehen Sie, ob Ihr Laptop momentan ans Netz angeschlossen ist:
+      </para>
+      <informaltable frame="all">
+        <tgroup cols="2" colsep="1" rowsep="1">
+          <colspec colname="COLSPEC0" colwidth="50*"/>
+          <colspec colname="COLSPEC1" colwidth="50*"/>
+          <thead>
+            <row valign="top">
+              <entry colname="COLSPEC0">
+                <para>Symbol</para></entry>
+              <entry colname="COLSPEC1">
+                <para>Netzstatus</para></entry>
+            </row>
+          </thead>
+          <tbody>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/ac_small.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>Symbol f&uuml;r Netzanbindung.</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  Der Laptop ist ans Netz angeschlossen. 
+                </para>
+              </entry>
+            </row>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/flash_small.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>Symbol f&uuml;r Ladevorgang.</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  Die Laptopbatterie wird gerade wieder aufgeladen.
+                </para>
+              </entry>
+            </row>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/battery_small.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>Symbol f&uuml;r Batteriebetrieb.</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  Der Laptop l&auml;uft im Batteriebetrieb.
+                </para>
+              </entry>
+            </row>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/warning_small.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>Symbol f&uuml;r niedrigen Ladestand.</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  Der Ladestand der Laptopbatterie ist kritisch niedrig.
+                </para>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </sect2>
+
+    <sect2 id="battstat-usage-progress">
+      <title>So stellen Sie den Batteriestatus fest</title>
+      <para>
+        Der Batteriestatus wird durch ein Batteriesymbol mit einem Ladebalken dargestellt.
+        Anhand der Gr&ouml;&szlig;e und Farbe des Ladebalkens k&ouml;nnen Sie ablesen, wie der aktuelle Ladezustand der Batterie ist.
+      </para>
+      <informaltable frame="all">
+        <tgroup cols="2" colsep="1" rowsep="1">
+          <colspec colname="COLSPEC0" colwidth="50*"/>
+          <colspec colname="COLSPEC1" colwidth="50*"/>
+          <thead>
+            <row valign="top">
+              <entry colname="COLSPEC0">
+                <para>Symbol</para></entry>
+              <entry colname="COLSPEC1">
+                <para>Batterieladestand</para></entry>
+            </row>
+          </thead>
+          <tbody>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/batt_green.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>Symbol f&uuml;r guten Ladezustand.</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  Hoch
+                </para>
+              </entry>
+            </row>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/batt_yellow.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>Symbol f&uuml;r mittleren Ladezustand.</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  Mittel
+                </para>
+              </entry>
+            </row>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/batt_orange.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>Symbol f&uuml;r niedrigen Ladezustand.</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  Niedrig
+                </para>
+              </entry>
+            </row>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/batt_red.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>Symbol f&uuml;r sehr niedrigen Ladezustand.</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  Sehr niedrig
+                </para>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+      <para>
+        Im Abschnitt <xref linkend="battstat-prefs-general"/> erfahren Sie, wie Sie den einzelnen Ladezust&auml;nden Farben zuweisen k&ouml;nnen.
+      </para>
+      <para>
+        Der aktuelle Ladezustand kann auch in Prozent angezeigt werden; mehr &uuml;ber die entsprechenden Einstellungen erfahren Sie im Abschnitt <xref linkend="battstat-prefs-appearance"/>.
+      </para>
+    </sect2>
+
+    <sect2 id="battstat-usage-suspend">
+      <title>So versetzen Sie den Computer in den Ruhezustand</title>
+      <para>
+        Um das System in den Ruhezustand zu versetzen, rechtsklicken Sie auf das Applet und w&auml;hlen <guimenuitem>Computer in Ruhezustand versetzen</guimenuitem>.
+        Sie k&ouml;nnen einrichten, welchen Befehl der Men&uuml;punkt <guimenuitem>Computer in Ruhezustand versetzen</guimenuitem> ausl&ouml;st. Die entsprechende Einstellung ist im Abschnitt <xref linkend="battstatt-prefs"/> beschrieben.
+      </para>
+    </sect2>
+
+  </sect1>
+
+  <!-- ============= Customization ============================= -->
+
+  <sect1 id="battstatt-prefs"> 
+    <title>Einstellungen</title>
+    <para>Zur Konfiguration des Applets <application>&applet;</application> klicken Sie mit der rechten Maustaste auf das Applet und w&auml;hlen  <guimenuitem>Einstellungen</guimenuitem>. 
+          Das Dialogfeld <guilabel>Einstellungen</guilabel> umfasst folgende Registerabschnitte:
+    </para>
+    <itemizedlist>
+      <listitem>
+        <para><xref linkend="battstat-prefs-general"/></para>
+      </listitem>
+      <listitem>
+        <para><xref linkend="battstat-prefs-appearance"/></para>
+      </listitem>
+    </itemizedlist>
+                                                                                                  
+    <sect2 id="battstat-prefs-general"> 
+        <title>Allgemein</title>
+      <variablelist>
+        <varlistentry>
+          <term><guilabel>Batteriefarbstufen (%)</guilabel></term>
+          <listitem>
+            <itemizedlist>
+              <listitem>
+                <para>
+                  <guilabel>Gelb</guilabel>
+                </para>
+                <para>
+                  Mit diesem Drehfeld legen Sie den Ladezustand (in Prozent) fest, bei dem die Farbe des Ladebalkens von gr&uuml;n auf gelb wechselt.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <guilabel>Orange</guilabel>
+                </para>
+                <para>
+                  Mit diesem Drehfeld legen Sie den Ladezustand (in Prozent) fest, bei dem die Farbe des Ladebalkens von gelb auf orange wechselt.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <guilabel>Rot</guilabel>
+                </para>
+                <para>
+                  Mit diesem Drehfeld legen Sie den Ladezustand (in Prozent) fest, bei dem die Farbe des Ladebalkens von orange auf rot wechselt.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <guilabel>Vorschau</guilabel>
+                </para>
+                <para>
+                  Mit dem Schieberegler k&ouml;nnen Sie simulieren, wie sich das Aussehen des Ladebalkens bei unterschiedlichen Ladezust&auml;nden &auml;ndert.
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Warnungen</guilabel></term>
+          <listitem>
+            <itemizedlist>
+              <listitem>
+                <para>
+                  <guilabel>Warnen, falls der Batteriestand niedrig ist</guilabel>
+                </para>
+                <para>
+                  Ist diese Option aktiviert, so erscheint eine Warnmeldung, wenn der Ladestand unter den im Drehfeld <guilabel>Rot</guilabel> festgelegten Wert f&auml;llt.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <guilabel>Warnen, sobald die Batterie voll aufgeladen ist</guilabel>
+                </para>
+                <para>
+                  Ist die Option aktiviert, so erscheint eine Meldung, sobald die Batterie wieder voll aufgeladen ist.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <guilabel>Beim Anzeigen einer Warnung einen Signalton ausgeben</guilabel>
+                </para>
+                <para>
+                  Aktivieren Sie diese Option, wenn bei der Anzeige von Warnmeldungen zus&auml;tzlich ein Signalton ausgegeben werden soll.
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Ruhezustand</guilabel></term>
+          <listitem>
+            <itemizedlist>
+              <listitem>
+                <para>
+                  <guilabel>Ruhezustandsbefehl</guilabel>
+                </para>
+                <para>
+                  In diesem Textfeld k&ouml;nnen Sie den Befehl eintragen, der ausgef&uuml;hrt werden soll, wenn Sie im Kontextmen&uuml; des Applets den Befehl <guimenuitem>Computer in Ruhezustand versetzen</guimenuitem> ausw&auml;hlen.
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+    <sect2 id="battstat-prefs-appearance">
+      <title>Erscheinungsbild</title>
+      <variablelist>
+        <varlistentry>
+          <term><guilabel>Anordnung</guilabel></term>
+          <listitem>
+            <itemizedlist>
+              <listitem>
+                <para>
+                  <guilabel>Batteriestatus anzeigen</guilabel>
+                </para>
+                <para>
+                Aktivieren Sie diese Option, damit der Batteriestatus angezeigt wird. 
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <guilabel>Netzstrom-Verbindungsstatus anzeigen</guilabel>
+                </para>
+                <para>
+                Aktivieren Sie diese Option, damit der Status der Netzanbindung angezeigt wird. 
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <guilabel>Batterieladezustand in Prozent anzeigen</guilabel>
+                </para>
+                <para>
+                  Aktivieren Sie diese Option, damit der Ladezustand der Batterie in Prozent angezeigt wird. 
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Richtung des Ladebalkens</guilabel></term>
+          <listitem>
+            <itemizedlist>
+              <listitem>
+                <para>
+                  <guilabel>An den Anfang bewegen</guilabel>
+                </para>
+                <para>
+                  Wenn diese Option aktiviert ist, wird der Ladebalken von rechts nach links kleiner.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <guilabel>Ans Ende bewegen</guilabel>
+                </para>
+                <para>
+                  Wenn diese Option aktiviert ist, wird der Ladebalken von links nach rechts kleiner.
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+  </sect1>
+
+</article>

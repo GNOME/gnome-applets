@@ -1,0 +1,610 @@
+<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "2.3.6">
+  <!ENTITY manrevision "2.0.1">
+  <!ENTITY date "December 2003">
+  <!ENTITY applet "Batteri&ouml;vervakare">
+]>
+
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Feb 12, 2002
+-->
+
+<!-- =============Document Header ============================= -->
+<article id="index" lang="sv">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo>
+    <title>Handbok f&ouml;r panelprogrammet &applet;, version &manrevision;</title>
+    <copyright>
+      <year>2003</year>
+      <holder>Sun Microsystems</holder>
+    </copyright>
+    <copyright>
+      <year>2002</year>
+      <holder>Trevor Curtis</holder>
+    </copyright>
+    <copyright> 
+      <year>1999</year> 
+      <year>2000</year> 
+      <holder>Jorgen Pehrson</holder> 
+    </copyright>
+<!-- translators: uncomment this:
+
+    <copyright>
+     <year>2002</year>
+     <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+    </copyright>
+
+   -->
+
+    <publisher> 
+      <publishername> Dokumentationsprojekt f&ouml;r GNOME  </publishername> 
+    </publisher> 
+  
+    &legal;
+<!-- This file  contains link to license for the documentation (GNU FDL), and 
+     other legal stuff such as "NO WARRANTY" statement. Please do not change 
+     any of this. -->
+
+    <authorgroup> 
+      <author>
+        <firstname>Suns</firstname>
+        <surname>GNOME-dokumentationsteam</surname>
+        <affiliation><orgname>Sun Microsystems</orgname></affiliation>
+      </author>
+      <author>
+        <firstname>Trevor</firstname>
+        <surname>Curtis</surname>
+        <affiliation>
+          <orgname>Dokumentationsprojekt f&ouml;r GNOME</orgname>
+          <address> <email>tcurtis@somaradio.ca</email> </address>
+        </affiliation>
+      </author>
+      <author> 
+        <firstname>Jorgen </firstname> 
+        <surname> Pehrson</surname> 
+        <affiliation> 
+          <orgname>Dokumentationsprojekt f&ouml;r GNOME</orgname> 
+          <address> <email>jp@spektr.eu.org</email> </address>
+        </affiliation>
+      </author>
+        <!-- This is appropriate place for other contributors: translators,
+             maintainers,  etc. Commented out by default.
+             <othercredit role="translator">
+	       <firstname>Latin</firstname> 
+	       <surname>Translator 1</surname> 
+	       <affiliation> 
+	         <orgname>Latin Translation Team</orgname> 
+	         <address> <email>translator@gnome.org</email> </address> 
+	       </affiliation>
+	       <contrib>Latin translation</contrib>
+             </othercredit>
+-->
+
+    </authorgroup>
+
+    <revhistory>
+      <revision>
+        <revnumber>Handbok f&ouml;r panelprogrammet Batteri&ouml;vervakare,  version &manrevision;</revnumber>
+        <date>&date;</date>
+        <revdescription>
+          <para role="author">Suns GNOME-dokumentationsteam</para>
+          <para role="publisher">Dokumentationsprojekt f&ouml;r GNOME</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>Handbok f&ouml;r panelprogrammet Batteri&ouml;vervakare, version 2.0</revnumber>
+        <date>Maj 2002</date>
+        <revdescription>
+          <para role="author">Trevor Curtis
+            <email>tcurtis@somaradio.ca</email>
+          </para>
+          <para role="author">Jorgen Pehrson
+            <email>jp@spektr.eu.org</email>
+          </para>
+          <para role="publisher">Dokumentationsprojekt f&ouml;r GNOME</para>
+        </revdescription>
+      </revision>
+    </revhistory>
+                                                                                                  
+    <releaseinfo> I den h&auml;r handboken beskrivs version &appletversion; av &applet;.
+    </releaseinfo>
+                                                                                                  
+    <legalnotice>
+      <title>Feedback</title>
+      <para>F&ouml;lj instruktionerna p&aring; <ulink url="ghelp:gnome-feedback" type="help">GNOME:s feedbacksida</ulink> om du vill rapportera ett fel eller ge f&ouml;rslag betr&auml;ffande det h&auml;r programmet eller den h&auml;r handboken. 
+      </para>
+    </legalnotice>
+  </articleinfo>
+
+  <indexterm zone="index"> 
+	 <primary>Panelprogrammet Batteri&ouml;vervakare</primary> 
+  </indexterm> 
+
+  <indexterm zone="index"> 
+	 <primary>Panelprogrammet Battstat</primary> 
+  </indexterm> 
+
+<!-- ============= Document Body ============================= -->
+<!-- ============= Introduction ============================== -->
+  <sect1 id="battstat-introduction"> 
+     <title>Introduktion</title>
+
+    <figure id="battstat-applet-fig"> 
+      <title>Panelprogrammet &applet;</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject><imagedata              fileref="figures/battstat-applet_window.png" format="PNG"/> 
+          </imageobject>
+          <textobject>
+            <phrase>Panelprogrammet &applet;.</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+    </figure>
+
+    <para>
+      Panelprogrammet <application>&applet;</application> visar status f&ouml;r
+      den b&auml;rbara datorns str&ouml;mf&ouml;rs&ouml;rjningssystem. Du kan konfigurera panelprogrammet s&aring;
+      att det visar f&ouml;ljande komponenter i panelen:
+    </para>
+    <itemizedlist>
+      <listitem>
+        <para>
+          N&auml;tanslutningsstatus 
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Batteristatus
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Batteriladdningsandel
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <sect2 id="battstat-introduction-add">
+      <title>S&aring; h&auml;r l&auml;gger du till &applet; i en panel</title>
+      <para>
+        Du l&auml;gger till <application>&applet;</application> i en panel genom att utf&ouml;ra f&ouml;ljande steg:
+      </para>
+      <orderedlist>
+        <listitem>
+          <para>
+            H&ouml;gerklicka p&aring; panelen.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            V&auml;lj
+            <menuchoice>
+              <guimenu>L&auml;gg till i panelen</guimenu>
+              <guisubmenu>Verktyg</guisubmenu>
+              <guimenuitem>&applet;</guimenuitem>
+            </menuchoice>.
+          </para>
+        </listitem>
+      </orderedlist>
+      <para>
+        Layouten i panelprogrammet <application>&applet;</application> varierar
+        beroende p&aring; storlek och typ hos den panel d&auml;r panelprogrammet finns.
+      </para>
+    </sect2>
+
+</sect1>
+
+<!-- ================ Usage ================================ -->
+
+  <sect1 id="battstat-usage"> 
+     <title>Anv&auml;ndning</title>
+
+    <sect2 id="battstat-usage-power">
+      <title>S&aring; h&auml;r best&auml;mmer du n&auml;tanslutningsstatus</title>
+      <para>
+        N&auml;tanslutningsstatus visar aktuell status f&ouml;r den b&auml;rbara datorns str&ouml;mf&ouml;rs&ouml;rjning:
+      </para>
+      <informaltable frame="all">
+        <tgroup cols="2" colsep="1" rowsep="1">
+          <colspec colname="COLSPEC0" colwidth="50*"/>
+          <colspec colname="COLSPEC1" colwidth="50*"/>
+          <thead>
+            <row valign="top">
+              <entry colname="COLSPEC0">
+                <para>Ikon</para></entry>
+              <entry colname="COLSPEC1">
+                <para>N&auml;tstatus</para></entry>
+            </row>
+          </thead>
+          <tbody>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/ac_small.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>Visar en ikon f&ouml;r n&auml;tsp&auml;nning.</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  Den b&auml;rbara datorn &auml;r ansluten till en str&ouml;mk&auml;lla. 
+                </para>
+              </entry>
+            </row>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/flash_small.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>Visar en ikon f&ouml;r uppladdning av batteri.</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  Den b&auml;rbara datorns batteri laddas.
+                </para>
+              </entry>
+            </row>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/battery_small.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>Visar en ikon f&ouml;r batteriets laddning.</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  Den b&auml;rbara datorn k&ouml;rs p&aring; batteri.
+                </para>
+              </entry>
+            </row>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/warning_small.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>Visar en ikon f&ouml;r l&aring;g laddning.</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  Den b&auml;rbara datorns laddning &auml;r mycket l&aring;g.
+                </para>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </sect2>
+
+    <sect2 id="battstat-usage-progress">
+      <title>S&aring; h&auml;r best&auml;mmer du batteristatus</title>
+      <para>
+        Ikonen f&ouml;r batteristatus &auml;r en f&ouml;rloppsindikator inuti en bild av ett batteri.
+        F&ouml;rloppsindikatorns storlek och f&auml;rg anger hur mycket laddning som &aring;terst&aring;r i batteriet:
+      </para>
+      <informaltable frame="all">
+        <tgroup cols="2" colsep="1" rowsep="1">
+          <colspec colname="COLSPEC0" colwidth="50*"/>
+          <colspec colname="COLSPEC1" colwidth="50*"/>
+          <thead>
+            <row valign="top">
+              <entry colname="COLSPEC0">
+                <para>Ikon</para></entry>
+              <entry colname="COLSPEC1">
+                <para>Batteriladdningsniv&aring;</para></entry>
+            </row>
+          </thead>
+          <tbody>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/batt_green.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>Visar en ikon f&ouml;r h&ouml;g batteriladdningsniv&aring;.</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  H&ouml;g
+                </para>
+              </entry>
+            </row>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/batt_yellow.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>Visar en ikon f&ouml;r mellanh&ouml;g batteriladdningsniv&aring;.</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  Mellan
+                </para>
+              </entry>
+            </row>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/batt_orange.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>Visar en ikon f&ouml;r l&aring;g batteriladdningsniv&aring;.</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  L&aring;g
+                </para>
+              </entry>
+            </row>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/batt_red.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>Visar en ikon f&ouml;r mycket l&aring;g batteriladdningsniv&aring;.</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  Mycket l&aring;g
+                </para>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+      <para>
+        Mer information om hur du anger f&auml;rgniv&aring;er f&ouml;r batteriladdning
+        finns i <xref linkend="battstat-prefs-general"/>.
+      </para>
+      <para>
+        Mer information om hur du visar aktuell batteriladdning som ett procenttal 
+        finns i <xref linkend="battstat-prefs-appearance"/>.
+      </para>
+    </sect2>
+
+    <sect2 id="battstat-usage-suspend">
+      <title>S&aring; h&auml;r pausar du datorn</title>
+      <para>
+        Du pausar datorn genom att h&ouml;gerklicka p&aring; panelprogrammet 
+        och sedan v&auml;lja <guimenuitem>Pausa datorn</guimenuitem>.
+        Mer information om hur du anger vilket kommando som ska k&ouml;ras n&auml;r du v&auml;ljer <guimenuitem>Pausa datorn</guimenuitem>
+        finns i <xref linkend="battstatt-prefs"/>.
+      </para>
+    </sect2>
+
+  </sect1>
+
+  <!-- ============= Customization ============================= -->
+
+  <sect1 id="battstatt-prefs">
+    <title>Inst&auml;llningar</title>
+    <para>
+      Du konfigurerar panelprogrammet <application>&applet;</application> genom att h&ouml;gerklicka p&aring; det och sedan v&auml;lja <guimenuitem>Inst&auml;llningar</guimenuitem>.
+      Dialogf&ouml;nstret <guilabel>Inst&auml;llningar</guilabel> inneh&aring;ller f&ouml;ljande
+      flikavsnitt:
+    </para>
+    <itemizedlist>
+      <listitem>
+        <para><xref linkend="battstat-prefs-general"/></para>
+      </listitem>
+      <listitem>
+        <para><xref linkend="battstat-prefs-appearance"/></para>
+      </listitem>
+    </itemizedlist>
+                                                                                                  
+    <sect2 id="battstat-prefs-general">
+      <title>Allm&auml;nt</title>
+      <variablelist>
+        <varlistentry>
+          <term><guilabel>F&auml;rgniv&aring;er f&ouml;r batteri %</guilabel></term>
+          <listitem>
+            <itemizedlist>
+              <listitem>
+                <para>
+                  <guilabel>Gul</guilabel>
+                </para>
+                <para>
+                  Anv&auml;nd den h&auml;r rotationsrutan f&ouml;r att ange vid vilken batteriladdningsniv&aring;  f&ouml;rloppsindikatorn
+                  ska &auml;ndras fr&aring;n gr&ouml;n till gul.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <guilabel>Orange</guilabel>
+                </para>
+                <para>
+                  Anv&auml;nd den h&auml;r rotationsrutan f&ouml;r att ange vid vilken batteriladdningsniv&aring;  f&ouml;rloppsindikatorn
+                  ska &auml;ndras fr&aring;n gul till orange.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <guilabel>R&ouml;d</guilabel>
+                </para>
+                <para>
+                  Anv&auml;nd den h&auml;r rotationsrutan f&ouml;r att ange vid vilken batteriladdningsniv&aring;  f&ouml;rloppsindikatorn
+                  ska &auml;ndras fr&aring;n orange till r&ouml;d.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <guilabel>F&ouml;rhandsgranska</guilabel>
+                </para>
+                <para>
+                  Visa genom att flytta skjutreglaget hur f&ouml;rloppsindikatorn ska
+                  &auml;ndras n&auml;r batteriets laddningsniv&aring; &auml;ndras.
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Varningar</guilabel></term>
+          <listitem>
+            <itemizedlist>
+              <listitem>
+                <para>
+                  <guilabel>Varna n&auml;r batteriladdningen &auml;r l&aring;g</guilabel>
+                </para>
+                <para>
+                  V&auml;lj det h&auml;r alternativet om du vill visa ett varningsmeddelande n&auml;r batteriets laddningsniv&aring; 
+                  understiger det v&auml;rde som &auml;r angivet i rotationsrutan <guilabel>R&ouml;d</guilabel>.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <guilabel>Varna n&auml;r batteriet &auml;r helt uppladdat</guilabel>
+                </para>
+                <para>
+                  V&auml;lj det h&auml;r alternativet om du vill visa ett varningsmeddelande n&auml;r 
+                  batteriet &auml;r helt uppladdat.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <guilabel>Pip d&aring; en varning visas</guilabel>
+                </para>
+                <para>
+                  V&auml;lj det h&auml;r alternativet om du vill spela upp ett pip n&auml;r ett varningsmeddelande visas.
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>F&ouml;rs&auml;tt i vilol&auml;ge</guilabel></term>
+          <listitem>
+            <itemizedlist>
+              <listitem>
+                <para>
+                  <guilabel>Kommando f&ouml;r att f&ouml;rs&auml;tta i vilol&auml;ge</guilabel>
+                </para>
+                <para>
+                  Anv&auml;nd det h&auml;r textf&auml;ltet f&ouml;r att ange vilket kommando som ska k&ouml;ras n&auml;r du v&auml;ljer <guimenuitem>Pausa datorn</guimenuitem>
+                  p&aring; popupmenyn som visas n&auml;r du h&ouml;gerklickar p&aring; panelprogrammet.
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+    <sect2 id="battstat-prefs-appearance">
+      <title>Utseende</title>
+      <variablelist>
+        <varlistentry>
+          <term><guilabel>Layout</guilabel></term>
+          <listitem>
+            <itemizedlist>
+              <listitem>
+                <para>
+                  <guilabel>Visa batteristatus</guilabel>
+                </para>
+                <para>
+                  V&auml;lj det h&auml;r alternativet om du vill visa batteriets status.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <guilabel>Visa n&auml;tanslutningsstatus</guilabel>
+                </para>
+                <para>
+                  V&auml;lj det h&auml;r alternativet om du vill visa n&auml;tanslutningsstatus.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <guilabel>Visa batteriladdningsandelar</guilabel>
+                </para>
+                <para>
+                  V&auml;lj det h&auml;r alternativet om du vill visa hur mycket laddning
+                  batteriet har f&ouml;r n&auml;rvarande, uttryckt som ett procenttal.
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>F&ouml;rloppsindikatorriktning</guilabel></term>
+          <listitem>
+            <itemizedlist>
+              <listitem>
+                <para>
+                  <guilabel>G&aring; mot toppen</guilabel>
+                </para>
+                <para>
+                  V&auml;lj det h&auml;r alternativet om du vill ange att f&ouml;rloppsindikatorn
+                  ska minska fr&aring;n h&ouml;ger till v&auml;nster.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <guilabel>G&aring;r mot botten</guilabel>
+                </para>
+                <para>
+                  V&auml;lj det h&auml;r alternativet om du vill ange att f&ouml;rloppsindikatorn
+                  ska minska fr&aring;n v&auml;nster till h&ouml;ger.
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+  </sect1>
+
+</article>

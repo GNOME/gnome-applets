@@ -1,0 +1,607 @@
+<?xml version="1.0"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "2.3.6">
+  <!ENTITY manrevision "2.0.1">
+  <!ENTITY date "December 2003">
+  <!ENTITY applet "Battery Charge Monitor">
+]>
+
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Feb 12, 2002
+-->
+
+<!-- =============Document Header ============================= -->
+<article id="index" lang="ko">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo>
+    <title>&applet; 애플릿 설명서 V&manrevision;</title>
+    <copyright>
+      <year>2003</year>
+      <holder>Sun Microsystems</holder>
+    </copyright>
+    <copyright>
+      <year>2002</year>
+      <holder>Trevor Curtis</holder>
+    </copyright>
+    <copyright> 
+      <year>1999</year> 
+      <year>2000</year> 
+      <holder>Jorgen Pehrson</holder> 
+    </copyright>
+<!-- translators: uncomment this:
+
+    <copyright>
+     <year>2002</year>
+     <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+    </copyright>
+
+   -->
+
+    <publisher> 
+      <publishername> 그놈 문서 프로젝트 </publishername> 
+    </publisher> 
+  
+    &legal;
+<!-- This file  contains link to license for the documentation (GNU FDL), and 
+     other legal stuff such as "NO WARRANTY" statement. Please do not change 
+     any of this. -->
+
+    <authorgroup> 
+      <author>
+        <firstname>Sun</firstname>
+        <surname>그놈 문서 팀</surname>
+        <affiliation><orgname>Sun Microsystems</orgname></affiliation>
+      </author>
+      <author>
+        <firstname>Trevor</firstname>
+        <surname>Curtis</surname>
+        <affiliation>
+          <orgname>그놈 문서 프로젝트</orgname>
+          <address> <email>tcurtis@somaradio.ca</email> </address>
+        </affiliation>
+      </author>
+      <author> 
+        <firstname>Jorgen </firstname> 
+        <surname> Pehrson</surname> 
+        <affiliation> 
+          <orgname>그놈 문서 프로젝트</orgname> 
+          <address> <email>jp@spektr.eu.org</email> </address>
+        </affiliation>
+      </author>
+        <!-- This is appropriate place for other contributors: translators,
+             maintainers,  etc. Commented out by default.
+             <othercredit role="translator">
+	       <firstname>Latin</firstname> 
+	       <surname>Translator 1</surname> 
+	       <affiliation> 
+	         <orgname>Latin Translation Team</orgname> 
+	         <address> <email>translator@gnome.org</email> </address> 
+	       </affiliation>
+	       <contrib>Latin translation</contrib>
+             </othercredit>
+-->
+
+    </authorgroup>
+
+    <revhistory>
+      <revision>
+        <revnumber>배터리 충전 감시기 애플릿 설명서 V&manrevision;</revnumber>
+        <date>&date;</date>
+        <revdescription>
+          <para role="author">Sun 그놈 문서 팀</para>
+          <para role="publisher">그놈 문서 프로젝트</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>배터리 충전 감시기 애플릿 설명서 V2.0</revnumber>
+        <date>2002년 5월</date>
+        <revdescription>
+          <para role="author">Trevor Curtis
+            <email>tcurtis@somaradio.ca</email>
+          </para>
+          <para role="author">Jorgen Pehrson
+            <email>jp@spektr.eu.org</email>
+          </para>
+          <para role="publisher">그놈 문서 프로젝트</para>
+        </revdescription>
+      </revision>
+    </revhistory>
+                                                                                                  
+    <releaseinfo> 이 설명서에서는 &applet;의 버전 &appletversion;에 대해 설명합니다.
+    </releaseinfo>
+                                                                                                  
+    <legalnotice> 
+      <title>피드백</title>
+      <para>
+         &applet; 애플릿 또는 이 설명서에 대한 버그를 보고하거나 의견을 제시하려면 <ulink url="ghelp:gnome-feedback" type="help">그놈 피드백 페이지</ulink>에 있는 지시 사항을 따르십시오. 
+      </para>
+    </legalnotice>
+  </articleinfo>
+
+  <indexterm zone="index"> 
+	 <primary>배터리 충전 감시기 애플릿</primary> 
+  </indexterm> 
+
+  <indexterm zone="index"> 
+	 <primary>Battstat 애플릿</primary> 
+  </indexterm> 
+
+<!-- ============= Document Body ============================= -->
+<!-- ============= Introduction ============================== -->
+  <sect1 id="battstat-introduction"> 
+    <title>소개</title>
+
+    <figure id="battstat-applet-fig"> 
+      <title>&applet; 애플릿</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject><imagedata              fileref="figures/battstat-applet_window.png" format="PNG"/> 
+          </imageobject>
+          <textobject>
+            <phrase>&applet; 애플릿입니다.</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+    </figure>
+
+    <para>
+      <application>&applet;</application> 애플릿은 랩탑의 전원 서브 시스템 상태를 표시합니다. 패널에 다음 구성 요소를 표시하도록 애플릿을 구성할 수 있습니다.
+    </para>
+    <itemizedlist>
+      <listitem>
+        <para>
+          전원 연결 상태 
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          배터리 상태
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          배터리 충전량 퍼센트
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <sect2 id="battstat-introduction-add">
+      <title>&applet;을(를) 패널에 추가하려면</title>
+      <para>
+        <application>&applet;</application>을(를) 패널에 추가하려면 다음 단계를 수행합니다.
+      </para>
+      <orderedlist>
+        <listitem>
+          <para>
+            패널을 마우스 오른쪽 버튼으로 클릭합니다.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <menuchoice>
+              <guimenu>패널에 추가</guimenu>
+              <guisubmenu>유틸리티</guisubmenu>
+              <guimenuitem>&applet;</guimenuitem>
+            </menuchoice>을(를) 선택합니다.
+          </para>
+        </listitem>
+      </orderedlist>
+      <para>
+        <application>&applet;</application> 애플릿의 레이아웃은
+        애플릿이 위치하는 패널의 크기와 종류에 따라 다릅니다.
+      </para>
+    </sect2>
+
+</sect1>
+
+<!-- ================ Usage ================================ -->
+
+  <sect1 id="battstat-usage"> 
+    <title>사용</title>
+
+    <sect2 id="battstat-usage-power">
+      <title>전원 연결 상태를 확인하려면</title>
+      <para>
+        전원 연결 상태는 랩탑 전원 공급 장치의 현재 상태를 나타냅니다.
+      </para>
+      <informaltable frame="all">
+        <tgroup cols="2" colsep="1" rowsep="1">
+          <colspec colname="COLSPEC0" colwidth="50*"/>
+          <colspec colname="COLSPEC1" colwidth="50*"/>
+          <thead>
+            <row valign="top">
+              <entry colname="COLSPEC0">
+                <para>아이콘</para></entry>
+              <entry colname="COLSPEC1">
+                <para>전원 상태</para></entry>
+            </row>
+          </thead>
+          <tbody>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/ac_small.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>AC 전원 아이콘을 표시합니다.</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  랩탑이 전원 공급 장치에 연결되어 있습니다. 
+                </para>
+              </entry>
+            </row>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/flash_small.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>배터리 충전 아이콘을 표시합니다.</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  랩탑 배터리가 충전되고 있습니다.
+                </para>
+              </entry>
+            </row>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/battery_small.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>배터리 전원 아이콘을 표시합니다.</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  랩탑이 배터리 전원을 사용하고 있습니다.
+                </para>
+              </entry>
+            </row>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/warning_small.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>전원 부족 아이콘을 표시합니다.</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  랩탑 전원이 매우 부족합니다.
+                </para>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </sect2>
+
+    <sect2 id="battstat-usage-progress">
+      <title>배터리 상태를 확인하려면</title>
+      <para>
+        배터리 상태 아이콘은 배터리 이미지 안에 있는 진행률 표시줄입니다.
+        진행률 표시줄의 크기와 색상은 남아 있는 배터리 충전량을 나타냅니다.
+      </para>
+      <informaltable frame="all">
+        <tgroup cols="2" colsep="1" rowsep="1">
+          <colspec colname="COLSPEC0" colwidth="50*"/>
+          <colspec colname="COLSPEC1" colwidth="50*"/>
+          <thead>
+            <row valign="top">
+              <entry colname="COLSPEC0">
+                <para>아이콘</para></entry>
+              <entry colname="COLSPEC1">
+                <para>배터리 충전량 수준</para></entry>
+            </row>
+          </thead>
+          <tbody>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/batt_green.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>충분한 배터리 충전량 수준에 대한 아이콘을 표시합니다.</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  충분
+                </para>
+              </entry>
+            </row>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/batt_yellow.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>중간 배터리 충전량 수준에 대한 아이콘을 표시합니다.</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  중간
+                </para>
+              </entry>
+            </row>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/batt_orange.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>부족한 배터리 충전량 수준에 대한 아이콘을 표시합니다.</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  부족
+                </para>
+              </entry>
+            </row>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/batt_red.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>매우 부족한 배터리 충전량 수준에 대한 아이콘을 표시합니다.</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  매우 부족
+                </para>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+      <para>
+        배터리 색상 단계를 설정하는 방법에 대한 내용은
+        <xref linkend="battstat-prefs-general"/>을(를) 참조하십시오.
+      </para>
+      <para>
+        현재 배터리 충전량을 퍼센트로 표시하는 방법에 대한 내용은 
+        <xref linkend="battstat-prefs-appearance"/>을(를) 참조하십시오.
+      </para>
+    </sect2>
+
+    <sect2 id="battstat-usage-suspend">
+      <title>컴퓨터를 일시 중지하려면</title>
+      <para>
+        컴퓨터를 일시 중지하려면 애플릿을 마우스 오른쪽 버튼으로 클릭한 다음 
+        <guimenuitem>컴퓨터 일시 중지</guimenuitem>를 선택합니다.
+        <guimenuitem>컴퓨터 일시 중지</guimenuitem>를 선택할 때
+        실행할 명령을 지정하는 방법에 대한 내용은
+        <xref linkend="battstatt-prefs"/>을(를) 참조하십시오.
+      </para>
+    </sect2>
+
+  </sect1>
+
+  <!-- ============= Customization ============================= -->
+
+  <sect1 id="battstatt-prefs"> 
+    <title>환경 설정</title>
+    <para>
+      <application>&applet;</application> 애플릿을 구성하려면 애플릿을
+      마우스 오른쪽 버튼으로 클릭한 다음 <guimenuitem>환경 설정</guimenuitem>을 선택합니다. 
+      <guilabel>환경 설정</guilabel> 대화 상자에는 다음과 같은 탭 섹션이 있습니다.
+    </para>
+    <itemizedlist>
+      <listitem>
+        <para><xref linkend="battstat-prefs-general"/></para>
+      </listitem>
+      <listitem>
+        <para><xref linkend="battstat-prefs-appearance"/></para>
+      </listitem>
+    </itemizedlist>
+                                                                                                  
+    <sect2 id="battstat-prefs-general"> 
+      <title>일반</title>
+      <variablelist>
+        <varlistentry>
+          <term><guilabel>배터리 색상 단계 %</guilabel></term>
+          <listitem>
+            <itemizedlist>
+              <listitem>
+                <para>
+                  <guilabel>노랑</guilabel>
+                </para>
+                <para>
+                  이 스핀 상자를 사용하여 진행률 표시줄이 녹색에서 노랑으로
+                  변경될 때의 배터리 충전량 수준을 설정할 수 있습니다.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <guilabel>주황</guilabel>
+                </para>
+                <para>
+                  이 스핀 상자를 사용하여 진행률 표시줄이 노랑에서 주황으로
+                  변경될 때의 배터리 충전량 수준을 설정할 수 있습니다.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <guilabel>빨강</guilabel>
+                </para>
+                <para>
+                  이 스핀 상자를 사용하여 진행률 표시줄이 주황에서 빨강으로
+                  변경될 때의 배터리 충전량 수준을 설정할 수 있습니다.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <guilabel>미리 보기</guilabel>
+                </para>
+                <para>
+                  슬라이더를 움직여서 배터리 충전량 수준이 변경될 때 
+                  진행률 표시줄이 어떻게 변경되는지 표시할 수 있습니다.
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>경고</guilabel></term>
+          <listitem>
+            <itemizedlist>
+              <listitem>
+                <para>
+                  <guilabel>배터리 충전량이 부족하면 경고하기</guilabel>
+                </para>
+                <para>
+                  이 옵션을 선택하면 배터리 충전량이 <guilabel>빨강</guilabel> 스핀 상자에 지정된 값 아래로 떨어질 때 경고 정보가 표시됩니다.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <guilabel>배터리가 완전히 충전되면 알려주기</guilabel>
+                </para>
+                <para>
+                  이 옵션을 선택하면 배터리가 완전히 충전되었을 때 알림 정보가 표시됩니다.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <guilabel>경고를 보여줄 때 삑 소리 내기</guilabel>
+                </para>
+                <para>
+                  이 옵션을 선택하면 경고 정보가 표시될 때 삑 소리가 납니다.
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>일시 중지</guilabel></term>
+          <listitem>
+            <itemizedlist>
+              <listitem>
+                <para>
+                  <guilabel>일시 중지 명령</guilabel>
+                </para>
+                <para>
+                  이 텍스트 상자를 사용하면 애플릿을 마우스 오른쪽 버튼으로 클릭하여
+                  나타나는 팝업 메뉴에서 <guimenuitem>컴퓨터 일시 중지</guimenuitem>를 선택할 때 실행되는 명령을 지정할 수 있습니다.
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+    <sect2 id="battstat-prefs-appearance">
+      <title>모양</title>
+      <variablelist>
+        <varlistentry>
+          <term><guilabel>레이아웃</guilabel></term>
+          <listitem>
+            <itemizedlist>
+              <listitem>
+                <para>
+                  <guilabel>배터리 상태 표시</guilabel>
+                </para>
+                <para>
+                  이 옵션을 선택하면 배터리 상태가 표시됩니다.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <guilabel>전원 연결 상태 보여주기</guilabel>
+                </para>
+                <para>
+                  이 옵션을 선택하면 전원 연결 상태가 표시됩니다.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <guilabel>배터리 충전량을 퍼센트로 보여주기</guilabel>
+                </para>
+                <para>
+                  이 옵션을 선택하면 남아 있는 배터리 충전량이 퍼센트로 표시됩니다.
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>진행률 표시줄 방향</guilabel></term>
+          <listitem>
+            <itemizedlist>
+              <listitem>
+                <para>
+                  <guilabel>위쪽으로 움직임</guilabel>
+                </para>
+                <para>
+                  이 옵션을 선택하면 진행률 표시줄이 오른쪽에서 왼쪽으로
+                  감소하도록 지정할 수 있습니다.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <guilabel>아래쪽으로 움직임</guilabel>
+                </para>
+                <para>
+                  이 옵션을 선택하면 진행률 표시줄이 왼쪽에서 오른쪽으로
+                  감소하도록 지정할 수 있습니다.
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+  </sect1>
+
+</article>

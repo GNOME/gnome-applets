@@ -1,0 +1,472 @@
+<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "2.3.6">
+  <!ENTITY manrevision "2.0.1">
+  <!ENTITY date "December 2003">
+  <!ENTITY applet "Battery Charge Monitor">
+]>
+
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Feb 12, 2002
+-->
+
+<!-- =============Document Header ============================= -->
+<article id="index" lang="zh_hk">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo>
+<title>&applet; Applet 手冊 V&manrevision;</title>
+    <copyright><year>2003</year><holder>Sun Microsystems</holder>
+    </copyright><copyright><year>2002</year><holder>Trevor Curtis</holder></copyright><copyright><year>1999</year><year>2000</year><holder>Jorge Pehrson</holder> 
+    </copyright><!-- translators: uncomment this:
+
+    <copyright>
+     <year>2002</year>
+     <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+    </copyright>
+
+   --><publisher> <publishername> GNOME 文件專案</publishername> </publisher> &legal;<!-- This file  contains link to license for the documentation (GNU FDL), and 
+     other legal stuff such as "NO WARRANTY" statement. Please do not change 
+     any of this. -->
+    <authorgroup><author><firstname>Sun</firstname><surname>GNOME 文件小組</surname><affiliation><orgname>Sun Microsystems</orgname></affiliation></author><author><firstname>Trevor</firstname><surname>Curtis</surname><affiliation><orgname>GNOME 文件專案</orgname>
+          <address><email>tcurtis@somaradio.ca</email> </address>
+        </affiliation>
+      </author>
+      <author><firstname>Jorgen </firstname><surname>Pehrson</surname><affiliation><orgname>GNOME 文件專案</orgname> 
+          <address><email>jp@spektr.eu.org</email> </address>
+        </affiliation>
+      </author>
+        <!-- This is appropriate place for other contributors: translators,
+             maintainers,  etc. Commented out by default.
+             <othercredit role="translator">
+	       <firstname>Latin</firstname> 
+	       <surname>Translator 1</surname> 
+	       <affiliation> 
+	         <orgname>Latin Translation Team</orgname> 
+	         <address> <email>translator@gnome.org</email> </address> 
+	       </affiliation>
+	       <contrib>Latin translation</contrib>
+             </othercredit>
+-->
+
+    </authorgroup>
+
+    <revhistory>
+      <revision><revnumber>電池電量監控 Applet 手冊 V&manrevision;</revnumber>    <date>&date;</date><revdescription>
+          <para role="author">Sun GNOME 文件小組</para>
+          <para role="publisher">GNOME 文件專案</para>
+        </revdescription>
+      </revision>
+      <revision><revnumber>電池電量監控 Applet 手冊 V2.0</revnumber><date>2002 年 5 月</date><revdescription>
+          <para role="author">Trevor Curtis <email>tcurtis@somaradio.ca</email>
+          </para>
+          <para role="author">Jorgen Pehrson <email>jp@spektr.eu.org</email>
+          </para>
+          <para role="publisher">GNOME 文件專案</para>
+        </revdescription>
+      </revision>
+    </revhistory>
+                                                                                                  
+    <releaseinfo>本手冊說明第 &appletversion; 版的 &applet;。
+    </releaseinfo>
+                                                                                                  
+    <legalnotice><title>意見反應</title>
+      <para>如果要對 &applet; Applet 或本手冊提出相關錯誤報告或建議，請遵照 <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink> 的指示。
+      </para>
+    </legalnotice>
+  </articleinfo>
+
+  <indexterm zone="index"> <primary>電池電量監控 Applet</primary></indexterm><indexterm zone="index"> <primary>Battstat Applet</primary></indexterm><!-- ============= Document Body ============================= --><!-- ============= Introduction ============================== -->
+  <sect1 id="battstat-introduction"><title>介紹</title>
+
+    <figure id="battstat-applet-fig"><title>&applet; Applet</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject><imagedata              fileref="figures/battstat-applet_window.png" format="PNG"/> 
+          </imageobject>
+          <textobject>
+            <phrase>&applet; Applet。</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+    </figure>
+
+    <para><application>&applet;</application> Applet 顯示在您膝上型電腦中的電源子系統狀態。您可以配置此 Applet 以便在面板中顯示下列元件：
+    </para>
+    <itemizedlist>
+      <listitem>
+        <para>電源連線狀態
+        </para>
+      </listitem>
+      <listitem>
+        <para>電池狀態
+        </para>
+      </listitem>
+      <listitem>
+        <para>電池電量百分比</para>
+      </listitem>
+    </itemizedlist>
+
+    <sect2 id="battstat-introduction-add"><title>將 &applet; 加入面板</title>
+      <para>若要將 <application>&applet;</application> 加入面板，請執行下列步驟：
+     </para>
+      <orderedlist>
+        <listitem>
+          <para>對面板按滑鼠右鍵。
+</para>
+        </listitem>
+        <listitem>
+          <para>選擇<menuchoice><guimenu>「加入面板」</guimenu><guisubmenu>「公用程式」</guisubmenu><guimenuitem>&applet;</guimenuitem></menuchoice>。
+          </para>
+        </listitem>
+      </orderedlist>
+      <para>取決於 Applet 所在面板的大小與類型，<application>&applet;</application> Applet 的佈局會有所不同。
+      </para>
+    </sect2>
+
+</sect1>
+
+<!-- ================ Usage ================================ -->
+
+  <sect1 id="battstat-usage"><title>使用</title>
+
+    <sect2 id="battstat-usage-power"><title>決定電源連線狀態</title>
+      <para>電源連線狀態顯示膝上型電腦電源供應器的目前狀態：
+      </para>
+      <informaltable frame="all">
+        <tgroup cols="2" colsep="1" rowsep="1">
+          <colspec colname="COLSPEC0" colwidth="50*"/>
+          <colspec colname="COLSPEC1" colwidth="50*"/>
+          <thead>
+            <row valign="top">
+              <entry colname="COLSPEC0">
+                <para>圖示</para></entry>
+              <entry colname="COLSPEC1">
+                <para>電源狀態</para></entry>
+            </row>
+          </thead>
+          <tbody>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/ac_small.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>顯示 AC 電源圖示。</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>膝上型電腦已經連線至電源供應器。
+                </para>
+              </entry>
+            </row>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/flash_small.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>顯示電池充電圖示。</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>膝上型電腦的電池正在充電。
+                </para>
+              </entry>
+            </row>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/battery_small.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>顯示電池電力圖示。</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>膝上型電腦正在使用電池電力。
+                </para>
+              </entry>
+            </row>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/warning_small.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>顯示低電量圖示。</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>膝上型電腦的電量相當低。
+</para>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </sect2>
+
+    <sect2 id="battstat-usage-progress"><title>決定電池狀態</title>
+      <para>電池狀態圖示是具有進度指示表的電池影像。
+此進度指示表的大小與顏色指示電池中剩餘的電量：
+      </para>
+      <informaltable frame="all">
+        <tgroup cols="2" colsep="1" rowsep="1">
+          <colspec colname="COLSPEC0" colwidth="50*"/>
+          <colspec colname="COLSPEC1" colwidth="50*"/>
+          <thead>
+            <row valign="top">
+              <entry colname="COLSPEC0">
+                <para>圖示</para></entry>
+              <entry colname="COLSPEC1">
+                <para>電池電量等級</para></entry>
+            </row>
+          </thead>
+          <tbody>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/batt_green.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>顯示高電量等級圖示。</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>高
+                </para>
+              </entry>
+            </row>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/batt_yellow.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>顯示中等電量等級圖示。</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>中等
+                </para>
+              </entry>
+            </row>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/batt_orange.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>顯示低電量等級圖示。</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>低
+                </para>
+              </entry>
+            </row>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/batt_red.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>顯示極低電量等級圖示。</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>極低
+                </para>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+      <para>若需如何設定電池顏色等級的相關資訊，請參閱 <xref linkend="battstat-prefs-general"/>。
+      </para>
+      <para>若需如何以百分比顯示目前電池電量等級的相關資訊，請參閱 <xref linkend="battstat-prefs-appearance"/>。
+      </para>
+    </sect2>
+
+    <sect2 id="battstat-usage-suspend"><title>暫停電腦</title>
+      <para>若要暫停電腦，請對 Applet 按滑鼠右鍵，然後選擇<guimenuitem>「暫停電腦」</guimenuitem>。
+若需如何在選擇<guimenuitem>「暫停電腦」</guimenuitem>時指定要執行指令的相關資訊， 請參閱 <xref linkend="battstatt-prefs"/>。
+</para>
+    </sect2>
+
+  </sect1>
+
+  <!-- ============= Customization ============================= -->
+
+  <sect1 id="battstatt-prefs"><title>個人喜好</title>
+    <para>若要配置 <application>&applet;</application> Applet， 請對 Applet 按滑鼠右鍵，然後選擇<guimenuitem>「個人喜好」</guimenuitem>。
+<guilabel>「個人喜好」</guilabel>對話方塊包括下列標籤區段：
+    </para>
+    <itemizedlist>
+      <listitem>
+        <para><xref linkend="battstat-prefs-general"/></para>
+      </listitem>
+      <listitem>
+        <para><xref linkend="battstat-prefs-appearance"/></para>
+      </listitem>
+    </itemizedlist>
+                                                                                                  
+    <sect2 id="battstat-prefs-general"><title>一般</title>
+      <variablelist>
+        <varlistentry><term><guilabel>電池顏色等級 %</guilabel></term>
+          <listitem>
+            <itemizedlist>
+              <listitem>
+                <para><guilabel>黃色</guilabel>
+                </para>
+                <para>請使用此旋轉方塊設定進度指示表由綠色變為黃色的電池電量等級。
+                </para>
+              </listitem>
+              <listitem>
+                <para><guilabel>橙色</guilabel>
+                </para>
+                <para>請使用此旋轉方塊設定進度指示表由黃色變為橙色的電池電量等級。
+                </para>
+              </listitem>
+              <listitem>
+                <para><guilabel>紅色</guilabel>
+                </para>
+                <para>請使用此旋轉方塊設定進度指示表由橙色變為紅色的電池電量等級。
+                </para>
+              </listitem>
+              <listitem>
+                <para><guilabel>預覽</guilabel>
+                </para>
+                <para>移動滑動軸以顯示進度指示表在電池電量等級變更時所產生的改變。
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+        <varlistentry><term><guilabel>警告</guilabel></term>
+          <listitem>
+            <itemizedlist>
+              <listitem>
+                <para><guilabel>在電池電量等級變低時提出警告</guilabel>
+                </para>
+                <para>選取此選項，即可在電池電量等級降到<guilabel>「紅色」</guilabel>旋轉方塊的指定值以後，顯示出資訊警示。
+                </para>
+              </listitem>
+              <listitem>
+                <para><guilabel>在電池電量全滿時提出警告</guilabel>
+                </para>
+                <para>選取此選項，即可在電池電量全滿時，顯示出資訊警示。
+                </para>
+              </listitem>
+              <listitem>
+                <para><guilabel>在顯示警告時播放鳴聲</guilabel>
+                </para>
+                <para>選取此選項，即可在顯示資訊警示時播放鳴聲。
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+        <varlistentry><term><guilabel>暫停</guilabel></term>
+          <listitem>
+            <itemizedlist>
+              <listitem>
+                <para><guilabel>暫停指令</guilabel>
+                </para>
+                <para>使用此文字方塊以指定在對 Applet 按滑鼠右鍵而出現的蹦現式功能表中選擇<guimenuitem>「暫停電腦」</guimenuitem>時，應該執行那項指令。
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+    <sect2 id="battstat-prefs-appearance"><title>外觀</title>
+      <variablelist>
+        <varlistentry><term><guilabel>佈局</guilabel></term>
+          <listitem>
+            <itemizedlist>
+              <listitem>
+                <para><guilabel>顯示電池狀態</guilabel>
+                </para>
+                <para>選取此選項以顯示電池狀態。
+                </para>
+              </listitem>
+              <listitem>
+                <para><guilabel>顯示電源連線狀態</guilabel>
+                </para>
+                <para>選取此選項以顯示電源連線狀態。
+                </para>
+              </listitem>
+              <listitem>
+                <para><guilabel>顯示電池電量百分比</guilabel>
+                </para>
+                <para>選取此選項即可以百分比的形式，顯示出電池所含的電量。
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+        <varlistentry><term><guilabel>進度指示表方向</guilabel></term>
+          <listitem>
+            <itemizedlist>
+              <listitem>
+                <para><guilabel>向上移動</guilabel>
+                </para>
+                <para>選取此選項以指定進度指示表由右至左減少。
+                </para>
+              </listitem>
+              <listitem>
+                <para><guilabel>向下移動</guilabel>
+                </para>
+                <para>選取此選項以指定進度指示表由左至右減少。
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+  </sect1>
+
+</article>

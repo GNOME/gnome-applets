@@ -1,0 +1,593 @@
+<?xml version="1.0"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "2.3.6">
+  <!ENTITY manrevision "2.0.1">
+  <!ENTITY date "December 2003">
+  <!ENTITY applet "Battery Charge Monitor">
+]>
+
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Feb 12, 2002
+-->
+
+<!-- =============Document Header ============================= -->
+<article id="index" lang="fr">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo>
+    <title>Manuel de l'applet &applet; V&manrevision;</title>
+    <copyright>
+      <year>2003</year>
+      <holder>Sun Microsystems</holder>
+    </copyright>
+    <copyright>
+      <year>2002</year>
+      <holder>Trevor Curtis</holder>
+    </copyright>
+    <copyright> 
+      <year>1999</year> 
+      <year>2000</year> 
+      <holder>Jorgen Pehrson</holder> 
+    </copyright>
+<!-- translators: uncomment this:
+
+    <copyright>
+     <year>2002</year>
+     <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+    </copyright>
+
+   -->
+
+    <publisher> 
+      <publishername> Projet de documentation GNOME </publishername> 
+    </publisher> 
+  
+    &legal;
+<!-- This file  contains link to license for the documentation (GNU FDL), and 
+     other legal stuff such as "NO WARRANTY" statement. Please do not change 
+     any of this. -->
+
+    <authorgroup> 
+      <author>
+        <firstname>Sun</firstname>
+        <surname>&Eacute;quipe de documentation GNOME</surname>
+        <affiliation><orgname>Sun Microsystems</orgname></affiliation>
+      </author>
+      <author>
+        <firstname>Trevor</firstname>
+        <surname>Curtis</surname>
+        <affiliation>
+          <orgname>Projet de documentation GNOME</orgname>
+          <address> <email>tcurtis@somaradio.ca</email> </address>
+        </affiliation>
+      </author>
+      <author> 
+        <firstname>Jorgen </firstname> 
+        <surname> Pehrson</surname> 
+        <affiliation> 
+          <orgname>Projet de documentation GNOME</orgname> 
+          <address> <email>jp@spektr.eu.org</email> </address>
+        </affiliation>
+      </author>
+        <!-- This is appropriate place for other contributors: translators,
+             maintainers,  etc. Commented out by default.
+             <othercredit role="translator">
+	       <firstname>Latin</firstname> 
+	       <surname>Translator 1</surname> 
+	       <affiliation> 
+	         <orgname>Latin Translation Team</orgname> 
+	         <address> <email>translator@gnome.org</email> </address> 
+	       </affiliation>
+	       <contrib>Latin translation</contrib>
+             </othercredit>
+-->
+
+    </authorgroup>
+
+    <revhistory>
+      <revision>
+        <revnumber>Manuel de l'applet Moniteur de charge de la batterie V&manrevision;</revnumber>
+        <date>&date;</date>
+        <revdescription>
+          <para role="author">&Eacute;quipe de documentation Sun GNOME</para>
+          <para role="publisher">Projet de documentation GNOME</para>
+        </revdescription>
+      </revision>
+      <revision>
+        <revnumber>Manuel de l'applet Moniteur de charge de la batterie V2.0</revnumber>
+        <date>Mai 2002</date>
+        <revdescription>
+          <para role="author">Trevor Curtis
+            <email>tcurtis@somaradio.ca</email>
+          </para>
+          <para role="author">Jorgen Pehrson
+            <email>jp@spektr.eu.org</email>
+          </para>
+          <para role="publisher">Projet de documentation GNOME</para>
+        </revdescription>
+      </revision>
+    </revhistory>
+                                                                                                  
+    <releaseinfo>Le pr&eacute;sent manuel d&eacute;crit la version &appletversion; de &applet;.
+    </releaseinfo>
+                                                                                                  
+    <legalnotice> 
+      <title>Votre avis</title>
+      <para>
+Pour signaler un probl&egrave;me ou &eacute;mettre une suggestion concernant l'applet &applet;  ou le pr&eacute;sent manuel, proc&eacute;dez comme indiqu&eacute; &agrave; la <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>.
+      </para>
+    </legalnotice>
+  </articleinfo>
+
+  <indexterm zone="index"> 
+	 <primary>Applet Moniteur de charge de la batterie</primary> 
+  </indexterm> 
+
+  <indexterm zone="index"> 
+	 <primary>Applet Battstat</primary> 
+  </indexterm> 
+
+<!-- ============= Document Body ============================= -->
+<!-- ============= Introduction ============================== -->
+  <sect1 id="battstat-introduction"> 
+    <title>Introduction</title>
+
+    <figure id="battstat-applet-fig"> 
+      <title>Applet &applet;</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject><imagedata              fileref="figures/battstat-applet_window.png" format="PNG"/> 
+          </imageobject>
+          <textobject>
+            <phrase>L'applet &applet;.</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+    </figure>
+
+    <para>
+L'applet <application>&applet;</application> permet d'afficher l'&eacute;tat du sous-syst&egrave;me d'alimentation de votre ordinateur portable. L'applet peut &ecirc;tre configur&eacute; de mani&egrave;re &agrave; afficher sur le panneau les &eacute;l&eacute;ments suivants :
+    </para>
+    <itemizedlist>
+      <listitem>
+        <para>
+          &eacute;tat de l'alimentation ;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          &eacute;tat de la batterie ;
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          pourcentage de charge de la batterie.
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <sect2 id="battstat-introduction-add">
+      <title>Ajout de &applet; &agrave; un panneau</title>
+      <para>
+        Pour ajouter <application>&applet;</application> &agrave; un panneau, proc&eacute;dez comme suit :
+      </para>
+      <orderedlist>
+        <listitem>
+          <para>
+            Cliquez sur le panneau &agrave; l'aide du bouton droit de la souris.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Choisissez
+            <menuchoice>
+              <guimenu>Ajouter au panneau</guimenu>
+              <guisubmenu>Utilitaire</guisubmenu>
+              <guimenuitem>&applet;</guimenuitem>
+            </menuchoice>.
+          </para>
+        </listitem>
+      </orderedlist>
+      <para>
+        La pr&eacute;sentation de l'applet <application>&applet;</application> varie en fonction de la taille et du type de panneau dans lequel il se trouve.
+      </para>
+    </sect2>
+
+</sect1>
+
+<!-- ================ Usage ================================ -->
+
+  <sect1 id="battstat-usage"> 
+    <title>Utilisation</title>
+
+    <sect2 id="battstat-usage-power">
+      <title>D&eacute;termination de l'&eacute;tat de l'alimentation</title>
+      <para>
+        L'&eacute;tat de l'alimentation indique l'&eacute;tat actuel de l'alimentation de l'ordinateur portable :
+      </para>
+      <informaltable frame="all">
+        <tgroup cols="2" colsep="1" rowsep="1">
+          <colspec colname="COLSPEC0" colwidth="50*"/>
+          <colspec colname="COLSPEC1" colwidth="50*"/>
+          <thead>
+            <row valign="top">
+              <entry colname="COLSPEC0">
+                <para>Ic&ocirc;ne</para></entry>
+              <entry colname="COLSPEC1">
+                <para>&Eacute;tat de l'alimentation</para></entry>
+            </row>
+          </thead>
+          <tbody>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/ac_small.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>Affiche une ic&ocirc;ne repr&eacute;sentant l'alimentation en courant alternatif.</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  L'ordinateur est connect&eacute; &agrave; une alimentation &eacute;lectrique. 
+                </para>
+              </entry>
+            </row>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/flash_small.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>Affiche une ic&ocirc;ne repr&eacute;sentant la recharge de la batterie.</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  La batterie de l'ordinateur portable est en cours de recharge.
+                </para>
+              </entry>
+            </row>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/battery_small.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>Affiche une ic&ocirc;ne repr&eacute;sentant la charge de la batterie.</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  L'ordinateur fonctionne sur batterie.
+                </para>
+              </entry>
+            </row>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/warning_small.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>Affiche une ic&ocirc;ne repr&eacute;sentant une charge faible.</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  La charge d'alimentation de l'ordinateur est tr&egrave;s faible.
+                </para>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </sect2>
+
+    <sect2 id="battstat-usage-progress">
+      <title>D&eacute;termination de l'&eacute;tat de la batterie</title>
+      <para>
+        L'ic&ocirc;ne de l'&eacute;tat de la batterie est une barre de progression situ&eacute;e &agrave; l'int&eacute;rieur de l'image de la batterie.
+        La taille et la couleur de la barre de progression indiquent le niveau de charge de la batterie :
+      </para>
+      <informaltable frame="all">
+        <tgroup cols="2" colsep="1" rowsep="1">
+          <colspec colname="COLSPEC0" colwidth="50*"/>
+          <colspec colname="COLSPEC1" colwidth="50*"/>
+          <thead>
+            <row valign="top">
+              <entry colname="COLSPEC0">
+                <para>Ic&ocirc;ne</para></entry>
+              <entry colname="COLSPEC1">
+                <para>Niveau de charge de la batterie</para></entry>
+            </row>
+          </thead>
+          <tbody>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/batt_green.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>Affiche une ic&ocirc;ne repr&eacute;sentant un niveau de charge &eacute;lev&eacute;.</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  &Eacute;lev&eacute;
+                </para>
+              </entry>
+            </row>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/batt_yellow.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>Affiche une ic&ocirc;ne repr&eacute;sentant un niveau de charge moyen.</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  Moyen
+                </para>
+              </entry>
+            </row>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/batt_orange.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>Affiche une ic&ocirc;ne repr&eacute;sentant un niveau de charge faible.</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  Faible
+                </para>
+              </entry>
+            </row>
+            <row valign="top">
+              <entry>
+                <para>
+                  <inlinemediaobject>
+                    <imageobject>
+                      <imagedata fileref="figures/batt_red.png" format="PNG"/>
+                    </imageobject>
+                    <textobject>
+                      <phrase>Affiche une ic&ocirc;ne repr&eacute;sentant un niveau de charge tr&egrave;s faible.</phrase>
+                    </textobject>
+                  </inlinemediaobject>
+                </para>
+              </entry>
+              <entry>
+                <para>
+                  Tr&egrave;s faible
+                </para>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+      <para>
+        Pour de plus amples informations sur la d&eacute;finition des niveaux de couleurs, reportez-vous &agrave; la rubrique <xref linkend="battstat-prefs-general"/>.
+      </para>
+      <para>
+        Pour de plus amples informations sur l'affichage de la charge de la batterie en pourcentage, reportez-vous &agrave; la rubrique <xref linkend="battstat-prefs-appearance"/>.
+      </para>
+    </sect2>
+
+    <sect2 id="battstat-usage-suspend">
+      <title>Suspension de l'ordinateur</title>
+      <para>
+        Pour suspendre l'ordinateur, cliquez  &agrave; l'aide du bouton droit de la souris sur l'applet, puis choisissez <guimenuitem>Suspendre l'ordinateur</guimenuitem>.
+Pour de plus amples informations sur la commande &agrave; ex&eacute;cuter lorsque vous choisissez <guimenuitem>Suspendre l'ordinateur</guimenuitem>, reportez-vous &agrave; la rubrique <xref linkend="battstatt-prefs"/>.
+      </para>
+    </sect2>
+
+  </sect1>
+
+  <!-- ============= Customization ============================= -->
+
+  <sect1 id="battstatt-prefs"> 
+     <title>Pr&eacute;f&eacute;rences</title>
+    <para>Pour configurer <application>&applet;</application>, cliquez sur l'applet &agrave; l'aide du bouton droit de la souris, puis choisissez  <guimenuitem>Pr&eacute;f&eacute;rences</guimenuitem>.
+      La bo&icirc;te de dialogue <guilabel>Pr&eacute;f&eacute;rences</guilabel> contient les onglets suivants :
+    </para>
+    <itemizedlist>
+      <listitem>
+        <para><xref linkend="battstat-prefs-general"/></para>
+      </listitem>
+      <listitem>
+        <para><xref linkend="battstat-prefs-appearance"/></para>
+      </listitem>
+    </itemizedlist>
+                                                                                                  
+    <sect2 id="battstat-prefs-general"> 
+        <title>G&eacute;n&eacute;ral</title>
+      <variablelist>
+        <varlistentry>
+          <term><guilabel>Pourcentage applicable aux niveaux de couleur de la batterie</guilabel></term>
+          <listitem>
+            <itemizedlist>
+              <listitem>
+                <para>
+                  <guilabel>Jaune</guilabel>
+                </para>
+                <para>
+Cette zone de s&eacute;lection num&eacute;rique permet de d&eacute;finir le niveau de charge de la batterie auquel la barre de progression passe du vert au jaune.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <guilabel>Orange</guilabel>
+                </para>
+                <para>
+                  Cette zone de s&eacute;lection num&eacute;rique permet de d&eacute;finir le niveau de charge de la batterie auquel la barre de progression passe du jaune &agrave; l'orange.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <guilabel>Rouge</guilabel>
+                </para>
+                <para>
+                  Cette zone de s&eacute;lection num&eacute;rique permet de d&eacute;finir le niveau de charge de la batterie auquel la barre de progression passe de l'orange au rouge.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <guilabel>Aper&ccedil;u</guilabel>
+                </para>
+                <para>
+Pour observer la modification de la barre de progression en fonction du niveau de charge de la batterie, d&eacute;placez la case de d&eacute;filement.
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Avertissements</guilabel></term>
+          <listitem>
+            <itemizedlist>
+              <listitem>
+                <para>
+                  <guilabel>Avertir en cas de niveau de charge faible</guilabel>
+                </para>
+                <para>
+                  Cette option permet d'afficher un message d'avertissement lorsque le niveau de charge de la batterie descend en-dessous de la valeur sp&eacute;cifi&eacute;e dans la zone de s&eacute;lection num&eacute;rique <guilabel>Rouge</guilabel>.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <guilabel>Avertir lorsque la batterie est compl&egrave;tement recharg&eacute;e</guilabel>
+                </para>
+                <para>
+                  Cette option permet d'afficher un message d'avertissement lorsque la batterie est totalement recharg&eacute;e.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <guilabel>Signal sonore &agrave; l'affichage d'un avertissement</guilabel>
+                </para>
+                <para>
+                  Cette option permet l'&eacute;mission d'un signal sonore au moment de l'affichage d'un message d'avertissement.
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Suspendre</guilabel></term>
+          <listitem>
+            <itemizedlist>
+              <listitem>
+                <para>
+                  <guilabel>Commande de suspension</guilabel>
+                </para>
+                <para>
+                  Cette zone de texte permet de sp&eacute;cifier la commande &agrave; ex&eacute;cuter lorsque vous choisissez <guimenuitem>Suspendre l'ordinateur</guimenuitem> dans le menu contextuel qui appara&icirc;t en cliquant sur l'applet &agrave; l'aide du bouton droit de la souris.
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+    <sect2 id="battstat-prefs-appearance">
+      <title>Apparence</title>
+      <variablelist>
+        <varlistentry>
+          <term><guilabel>Pr&eacute;sentation</guilabel></term>
+          <listitem>
+            <itemizedlist>
+              <listitem>
+                <para>
+                  <guilabel>Afficher l'&eacute;tat de la batterie</guilabel>
+                </para>
+                <para>
+                 Cette option permet d'afficher l'&eacute;tat de la batterie.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <guilabel>Afficher l'&eacute;tat de l'alimentation</guilabel>
+                </para>
+                <para>
+                  Cette option permet d'afficher l'&eacute;tat de l'alimentation.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <guilabel>Afficher les pourcentages de charge de la batterie</guilabel>
+                </para>
+                <para>
+                  Cette option permet d'afficher la charge actuelle de la batterie sous forme de pourcentage.
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Sens de la barre de progression</guilabel></term>
+          <listitem>
+            <itemizedlist>
+              <listitem>
+                <para>
+                  <guilabel>D&eacute;placement vers le haut</guilabel>
+                </para>
+                <para>
+                  Cette option permet de sp&eacute;cifier que la barre de progression d&eacute;cro&icirc;t de la droite vers la gauche.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <guilabel>D&eacute;placement vers le bas</guilabel>
+                </para>
+                <para>
+                  Cette option permet de sp&eacute;cifier que la barre de progression d&eacute;cro&icirc;t de la gauche vers la droite.
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+  </sect1>
+
+</article>
