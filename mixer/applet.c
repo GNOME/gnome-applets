@@ -686,10 +686,11 @@ gnome_volume_applet_button (GtkWidget      *widget,
 {
   GnomeVolumeApplet *applet = GNOME_VOLUME_APPLET (widget);
 
-  if (event->window != GTK_WIDGET (applet)->window) {
+  if (event->window != GTK_WIDGET (applet)->window &&
+      event->type == GDK_BUTTON_PRESS) {
     gnome_volume_applet_popdown_dock (applet);
     return TRUE;
-  } else {
+  } else if (event->window == GTK_WIDGET (applet)->window) {
     switch (event->button) {
       case 1:
         switch (event->type) {
