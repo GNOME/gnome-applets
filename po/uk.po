@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 1.1.3cvs\n"
 "POT-Creation-Date: 2002-06-06 20:50+0300\n"
-"PO-Revision-Date: 2002-06-06 20:06+0200\n"
+"PO-Revision-Date: 2002-06-07 09:42+0200\n"
 "Last-Translator: Yuriy Syrota <yuri@renome.rovno.ua>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -135,7 +135,8 @@ msgstr "Батарею повністю перезаряджено"
 #: battstat/battstat_applet.c:1022
 msgid "System is running on battery power\n"
 "Battery: %d%% (%s)"
-msgstr ""
+msgstr "Система працює від батареї\n"
+"Батарея: %d%% (%s)"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
@@ -144,7 +145,8 @@ msgstr ""
 #: battstat/battstat_applet.c:1030
 msgid "System is running on AC power\n"
 "Battery: %d%% (%s)"
-msgstr ""
+msgstr "Система працює від мережі змінного струму\n"
+"Батарея: %d%% (%s)"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
@@ -152,7 +154,7 @@ msgstr ""
 #: battstat/battstat_applet.c:954
 #: battstat/battstat_applet.c:1043
 msgid "System is running on battery power"
-msgstr ""
+msgstr "Система працює від батареї"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
@@ -160,7 +162,7 @@ msgstr ""
 #: battstat/battstat_applet.c:960
 #: battstat/battstat_applet.c:1049
 msgid "System is running on AC power"
-msgstr ""
+msgstr "Вивтема працює від мережі змінного струму"
 
 #: battstat/battstat_applet.c:473
 msgid "N/A"
@@ -171,14 +173,14 @@ msgstr "Н/Д"
 #: battstat/battstat_applet.c:597
 #: battstat/battstat_applet.c:934
 msgid "System is running on battery power. Battery: %d%% (%s)"
-msgstr ""
+msgstr "Система працює від батареї. Батарея: %d%% (%s)"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
 #: battstat/battstat_applet.c:604
 #: battstat/battstat_applet.c:941
 msgid "System is running on AC power. Battery: %d%% (%s)"
-msgstr ""
+msgstr "Система працює від мережі змінного струму. Батарея: %d%% (%s)"
 
 #. This string will display as a tooltip over the
 #. battery frame when the computer is using battery
@@ -186,14 +188,14 @@ msgstr ""
 #. possible combination, I guess... :)
 #: battstat/battstat_applet.c:615
 msgid "System is running on battery power. Battery: Not present"
-msgstr ""
+msgstr "Система працює від батареї. Батарея: немає даних"
 
 #. This string will display as a tooltip over the
 #. battery frame when the computer is using AC
 #. power and the battery isn't present.
 #: battstat/battstat_applet.c:621
 msgid "System is running on AC power. Battery: Not present"
-msgstr ""
+msgstr "Система працює від мережі змінного струму. Батарея: відсутня"
 
 #. Displayed as a tooltip over the battery meter when there is
 #. a battery present. %d will hold the current charge and %s will
@@ -216,6 +218,10 @@ msgid ""
 "Make sure you have read permission to the\n"
 "APM device."
 msgstr ""
+"Неможливо відкрити пристрій APM!\n"
+"\n"
+"Переконайтесь, що ви має право на\n"
+"зчитування з пристрою APM."
 
 #. Displayed if the APM system is disabled (Used under *BSD)
 #: battstat/battstat_applet.c:720
@@ -263,7 +269,7 @@ msgstr ""
 #: multiload/main.c:54
 #: panel-menu/panel-menu.c:672
 msgid "translator_credits"
-msgstr "Юрій Сирота"
+msgstr "Юрій Сирота <yuri@renome.rovno.ua>"
 
 #: battstat/battstat_applet.c:833
 #, fuzzy
@@ -558,19 +564,16 @@ msgstr "Властивості палітри символів"
 
 #: drivemount/GNOME_DriveMountApplet.server.in.h:1
 #: drivemount/drivemount.c:442
-#, fuzzy
 msgid "Disk Mounter"
-msgstr "Властивості монтування дисків"
+msgstr "Монтування дисків"
 
 #: drivemount/GNOME_DriveMountApplet.server.in.h:2
-#, fuzzy
 msgid "Drive Mount Applet Factory"
-msgstr "Аплет монтування пристроїв"
+msgstr "Фабрика аплета монтування"
 
 #: drivemount/GNOME_DriveMountApplet.server.in.h:3
-#, fuzzy
 msgid "Factory for drive mount applet"
-msgstr "Аплет монтування пристроїв"
+msgstr "Фабрика для аплета монтування дисків"
 
 #: drivemount/GNOME_DriveMountApplet.server.in.h:4
 msgid "Mount local disks and devices"
@@ -1247,9 +1250,8 @@ msgstr "Команда перемикання розкладки клавіат�
 
 #: gtik/GNOME_GtikApplet.server.in.h:1
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.h:1
-#, fuzzy
 msgid "Accessories"
-msgstr "Процесор"
+msgstr "Стандартні"
 
 #: gtik/GNOME_GtikApplet.server.in.h:2
 msgid "Get continuously updated stock quotes"
@@ -1331,14 +1333,12 @@ msgid "Back_ground Color"
 msgstr "Колір _тла"
 
 #: gtik/gtik.c:1378
-#, fuzzy
 msgid "Stock Sy_mbol:"
-msgstr "Позначення акції:"
+msgstr "_Позначення акції:"
 
 #: gtik/gtik.c:1392
-#, fuzzy
 msgid "Stock C_hange:"
-msgstr "Зміна акції:"
+msgstr "_Зміна акції:"
 
 #: gtik/gtik.c:1416
 msgid "_Symbols"
@@ -1379,9 +1379,8 @@ msgid "_Forecast"
 msgstr "_Погода"
 
 #: gweather/GNOME_GWeatherApplet.xml.h:5
-#, fuzzy
 msgid "_Update"
-msgstr "Поновити"
+msgstr "По_новити"
 
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.h:2
 msgid "Factory for creating the weather applet."
@@ -1397,9 +1396,8 @@ msgstr ""
 
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.h:5
 #: gweather/gweather-about.c:63
-#, fuzzy
 msgid "Weather Report"
-msgstr "Прогноз погоди"
+msgstr "Зведення погоди"
 
 #: gweather/gweather-about.c:64
 msgid "Copyright (c)1999 by S. Papadimitriou"
@@ -1494,9 +1492,8 @@ msgid "Click to Enter Weather.com"
 msgstr "Відвідати Weather.com"
 
 #: gweather/gweather-dialog.c:336
-#, fuzzy
 msgid "_Radar map"
-msgstr "Мапа радара"
+msgstr "_Радарна мапа"
 
 #: gweather/gweather-dialog.c:408
 msgid "Detailed forecast not available for this location.\n"
@@ -1557,9 +1554,8 @@ msgid "Enable _detailed forecast"
 msgstr "_Детальний прогноз"
 
 #: gweather/gweather-pref.c:656
-#, fuzzy
 msgid "Enable _radar map"
-msgstr "Мапа радарів"
+msgstr "Увімкнути _радарну мапу"
 
 #: gweather/gweather-pref.c:662
 msgid "Use cus_tom address for radar map"
@@ -2807,14 +2803,12 @@ msgid "Command Line"
 msgstr "Командний рядок"
 
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:2
-#, fuzzy
 msgid "Mini-Commander"
-msgstr "Аплет Mini-Commander"
+msgstr "Мінікомандор"
 
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:3
-#, fuzzy
 msgid "MiniCommander Applet Factory"
-msgstr "Аплет Mini-Commander"
+msgstr "Фабрика аплета Мінікомандор"
 
 #: mini-commander/src/about.c:65
 msgid ""
@@ -2928,9 +2922,8 @@ msgid "Click this button for the list of previous commands"
 msgstr ""
 
 #: mini-commander/src/mini-commander_applet.c:313
-#, fuzzy
 msgid "Mini-Commander applet"
-msgstr "Аплет Mini-Commander"
+msgstr "Аплет Мінікомандор"
 
 #: mini-commander/src/mini-commander_applet.c:314
 msgid "This applet adds a command line to the panel"
@@ -3046,19 +3039,16 @@ msgid "Volume Control"
 msgstr "Реґулятор гучності"
 
 #: mixer/GNOME_MixerApplet.xml.h:3
-#, fuzzy
 msgid "_Mute"
-msgstr "Контур"
+msgstr "_Вимкнути"
 
 #: mixer/GNOME_MixerApplet.xml.h:4
-#, fuzzy
 msgid "_Run Volume Control..."
-msgstr "Реґулятор гучності"
+msgstr "_Запустити керування гучністю"
 
 #: mixer/mixer.c:132
-#, fuzzy
 msgid "Volume Control (muted)"
-msgstr "WebControl"
+msgstr "Герування гучністю (вимкнено)"
 
 #: mixer/mixer.c:184
 msgid "warning: this version of gmix was compiled with a different version of\n"
@@ -3081,9 +3071,8 @@ msgid "Mixer device %s has neither volume nor PCM channels.\n"
 msgstr ""
 
 #: mixer/mixer.c:531
-#, fuzzy
 msgid "Volume Controller"
-msgstr "WebControl"
+msgstr "Герування гучністю"
 
 #: mixer/mixer.c:532
 msgid "Use Up/Down arrow keys to change volume"
@@ -3107,9 +3096,8 @@ msgstr "Інтернет"
 
 #: modemlights/GNOME_ModemLightsApplet.server.in.h:2
 #: modemlights/modemlights.c:224
-#, fuzzy
 msgid "Modem Lights"
-msgstr "Аплет Modem Lights"
+msgstr "Інликатори модема"
 
 #: modemlights/modemlights.c:226
 msgid ""
@@ -3165,9 +3153,8 @@ msgstr "_Поновлень на секунду"
 
 #. extra info checkbox
 #: modemlights/properties.c:409
-#, fuzzy
 msgid "Sho_w connect time and throughput"
-msgstr "Показати час з'єднання та пропускну швидкість"
+msgstr "Показувати _час з'єднання та пропускну швидкість"
 
 #: modemlights/properties.c:426
 msgid "Receive data"
@@ -3198,24 +3185,20 @@ msgid "Connection status"
 msgstr "Стан з'єднання"
 
 #: modemlights/properties.c:438
-#, fuzzy
 msgid "Co_nnected"
-msgstr "З'єднання встановлено"
+msgstr "З'єднання вс_тановлено"
 
 #: modemlights/properties.c:439
-#, fuzzy
 msgid "No_t connected"
-msgstr "З'єднання відсутнє"
+msgstr "З'єднання _відсутнє"
 
 #: modemlights/properties.c:440
-#, fuzzy
 msgid "A_waiting connection"
-msgstr "Очікування з'єднання"
+msgstr "_Очікування з'єднання"
 
 #: modemlights/properties.c:443
-#, fuzzy
 msgid "B_link"
-msgstr "Блимаючий"
+msgstr "_Блимання"
 
 #: modemlights/properties.c:450
 msgid "Text"
@@ -3230,9 +3213,8 @@ msgid "Bac_kground"
 msgstr "_Тло"
 
 #: modemlights/properties.c:454
-#, fuzzy
 msgid "O_utline"
-msgstr "Контур"
+msgstr "Під_креслений"
 
 #: modemlights/properties.c:456
 msgid "C_olors"
@@ -3243,14 +3225,12 @@ msgid "Modem options"
 msgstr "Параметри модема"
 
 #: modemlights/properties.c:479
-#, fuzzy
 msgid "_Modem lock file:"
-msgstr "Файл блокування модема:"
+msgstr "Файл блокування _модема:"
 
 #: modemlights/properties.c:491
-#, fuzzy
 msgid "_Verify owner of lock file"
-msgstr "Перевіряти власника файлу блокування"
+msgstr "_Перевіряти власника файлу блокування"
 
 #: modemlights/properties.c:503
 msgid "_Device:"
@@ -3266,9 +3246,8 @@ msgid "Set options as default"
 msgstr "Встановити параметри як типові"
 
 #: modemlights/properties.c:542
-#, fuzzy
 msgid "_Advanced"
-msgstr "Додаткові"
+msgstr "_Додатково"
 
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:1
 msgid "A system load indicator"
@@ -3281,9 +3260,8 @@ msgid "System Monitor"
 msgstr "Системний монітор"
 
 #: multiload/GNOME_MultiloadApplet.xml.h:3
-#, fuzzy
 msgid "_Run detailed system monitor"
-msgstr "Запустити докладний системній монітор"
+msgstr "_Запустити докладний системній монітор"
 
 #: multiload/cpuload.c:50
 msgid "CPU Load"
@@ -3326,7 +3304,8 @@ msgstr "Ресурс"
 #: multiload/main.c:223
 msgid "%s:\n"
 "%d%% in use"
-msgstr ""
+msgstr "%s:\n"
+"%d%% використовується"
 
 #: multiload/memload.c:50
 msgid "Memory Load"
@@ -3367,23 +3346,20 @@ msgid "Options"
 msgstr "Параметри"
 
 #: multiload/properties.c:324
-#, fuzzy
 msgid "System m_onitor width: "
-msgstr "Ширина Системного монітора:"
+msgstr "_Ширина системного монітора:"
 
 #: multiload/properties.c:326
-#, fuzzy
 msgid "System m_onitor height: "
-msgstr "Висота Системного монітора:"
+msgstr "_Висота системного монітора:"
 
 #: multiload/properties.c:340
 msgid "pixels"
 msgstr "точок"
 
 #: multiload/properties.c:346
-#, fuzzy
 msgid "Sys_tem monitor update interval: "
-msgstr "Висота Системного монітора:"
+msgstr "Швидкість _оновлення системного монітора:"
 
 #: multiload/properties.c:358
 msgid "milliseconds"
@@ -3402,9 +3378,8 @@ msgid "S_ystem"
 msgstr "_Система"
 
 #: multiload/properties.c:374
-#, fuzzy
 msgid "N_ice"
-msgstr "Пріоритет"
+msgstr "_Люб'язність"
 
 #: multiload/properties.c:375
 msgid "I_dle"
