@@ -618,7 +618,7 @@ ModuleData *mod_coredump_init(AppData *ad)
 	md = g_new0(ModuleData, 1);
 
 	md->ad = ad;
-	md->title = "Core dump catcher";
+	md->title = _("Core dump catcher");
 	md->description = _("This module monitors a path for core dumps, if one is\n found it is time stamped and a backtrace logged (using gdb).");
 
 	md->start_func = mod_coredump_start;

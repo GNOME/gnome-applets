@@ -777,7 +777,7 @@ ModuleData *mod_loadavg_init(AppData *ad)
 	md = g_new0(ModuleData, 1);
 
 	md->ad = ad;
-	md->title = "Load average monitor";
+	md->title = _("Load average monitor");
 	md->description = _("This module monitors the system load average,\n and displays warning when it rises above certain points.");
 
 	md->start_func = mod_loadavg_start;

@@ -1494,7 +1494,7 @@ ModuleData *mod_news_init(AppData *ad)
 	md = g_new0(ModuleData, 1);
 
 	md->ad = ad;
-	md->title = "News and information ticker";
+	md->title = _("News and information ticker");
 	md->description = _("This module can display news and other information.");
 
 	md->start_func = mod_news_start;

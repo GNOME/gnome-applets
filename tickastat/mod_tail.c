@@ -558,7 +558,7 @@ ModuleData *mod_tail_init(AppData *ad)
 	md = g_new0(ModuleData, 1);
 
 	md->ad = ad;
-	md->title = "File tailer";
+	md->title = _("File tailer");
 	md->description = _("This module monitors a file for appended text,\n and prints it. Useful for log files.");
 
 	md->start_func = mod_tail_start;

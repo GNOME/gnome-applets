@@ -215,7 +215,7 @@ ModuleData *mod_test_init(AppData *ad)
 	md = g_new0(ModuleData, 1);
 
 	md->ad = ad;
-	md->title = "Test Module";
+	md->title = _("Test Module");
 	md->description = _("This is the test module's description line.");
 
 	md->start_func =  start;
