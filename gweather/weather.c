@@ -573,7 +573,7 @@ static gboolean metar_tok_wind (gchar *tokp, WeatherInfo *info)
         info->wind = WIND_SSW;
     else if ((214 <= dir) && (dir <= 236))
         info->wind = WIND_SW;
-    else if ((247 <= dir) && (dir <= 258))
+    else if ((237 <= dir) && (dir <= 258))
         info->wind = WIND_WSW;
     else if ((259 <= dir) && (dir <= 281))
         info->wind = WIND_W;
