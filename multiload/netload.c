@@ -17,15 +17,10 @@
 #include <dirent.h>
 #include <string.h>
 #include <time.h>
-#include <gnome.h>
 #include <panel-applet.h>
 
 #include <gtk/gtk.h>
-#include <libgnomeui/libgnomeui.h>
-#include <libgnome/libgnome.h>
-#include <libgnomeui/gnome-window-icon.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
-#include <libart_lgpl/libart.h>
 
 #include "global.h"
 

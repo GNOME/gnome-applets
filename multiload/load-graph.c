@@ -9,7 +9,6 @@
 #include <glib.h>
 #include <gdk/gdkx.h>
 #include <gtk/gtk.h>
-#include <gnome.h>
 #include <panel-applet.h>
 
 #include "global.h"
@@ -155,8 +154,8 @@ load_graph_alloc (LoadGraph *g)
     if (g->allocated)
 		return;
 
-    g->data = g_new0 (guint *, g->draw_width);
-    g->odata = g_new0 (guint *, g->draw_width);
+    g->data = g_new0 (gint *, g->draw_width);
+    g->odata = g_new0 (gint *, g->draw_width);
     g->pos = g_new0 (guint, g->draw_width);
 
     g->data_size = sizeof (guint) * g->n;

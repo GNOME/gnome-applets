@@ -18,17 +18,13 @@
 #include <dirent.h>
 #include <string.h>
 #include <time.h>
-#include <gnome.h>
-#include <panel-applet.h>
-#include <gconf/gconf-client.h>
-#include <panel-applet-gconf.h>
 
+#include <gdk/gdkkeysyms.h>
 #include <gtk/gtk.h>
-#include <libgnomeui/libgnomeui.h>
-#include <libgnome/libgnome.h>
-#include <libgnomeui/gnome-window-icon.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
-#include <libart_lgpl/libart.h>
+#include <gconf/gconf-client.h>
+#include <panel-applet.h>
+#include <panel-applet-gconf.h>
 
 #include "global.h"
 

@@ -1,16 +1,11 @@
 #ifndef __GLOBAL_H__
 #define __GLOBAL_H__
 
-#include <gnome.h>
-#include <panel-applet.h>
-#include <panel-applet-gconf.h>
-
-#include <gtk/gtk.h>
-#include <libgnomeui/libgnomeui.h>
-#include <libgnome/libgnome.h>
-#include <libgnomeui/gnome-window-icon.h>
+#include <glib.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
-#include <libart_lgpl/libart.h>
+#include <gtk/gtkwidget.h>
+#include <gtk/gtktooltips.h>
+#include <panel-applet.h>
 
 G_BEGIN_DECLS
 
@@ -33,7 +28,7 @@ struct _LoadGraph {
     guint allocated;
 
     GdkColor *colors;
-    guint **data, **odata;
+    gint **odata, **data;
     guint data_size;
     guint *pos;
 

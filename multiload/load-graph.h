@@ -1,7 +1,7 @@
 #ifndef LOAD_GRAPH_H__
 #define LOAD_GRAPH_H__
 
-#include <global.h>
+#include "global.h"
 
 /* Create new load graph. */
 LoadGraph *
