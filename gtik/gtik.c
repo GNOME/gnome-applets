@@ -1769,6 +1769,8 @@ static gint updateOutput(gpointer data)
 		GtkWidget * vbox;
 		GtkWidget * frame;
 		GtkWidget *event;
+		GtkWidget *left_arrow;
+		GtkWidget *right_arrow;
 
 		gnome_vfs_init();
 		
@@ -1788,8 +1790,16 @@ static gint updateOutput(gpointer data)
 		properties_load(stockdata);	
 
 		vbox = gtk_hbox_new (FALSE,0);
-		stockdata->leftButton = gtk_button_new_with_label("<<");
-		stockdata->rightButton = gtk_button_new_with_label(">>");
+		stockdata->leftButton = gtk_button_new();
+		stockdata->rightButton = gtk_button_new();
+		left_arrow = gtk_arrow_new (GTK_ARROW_LEFT, GTK_SHADOW_OUT);
+		right_arrow = gtk_arrow_new (GTK_ARROW_RIGHT, GTK_SHADOW_OUT);
+		gtk_container_add (GTK_CONTAINER (stockdata->leftButton),
+				   left_arrow);
+		gtk_container_add (GTK_CONTAINER (stockdata->rightButton),
+				   right_arrow);
+		gtk_widget_show_all (stockdata->leftButton);
+		gtk_widget_show_all (stockdata->rightButton);				
 		gtk_signal_connect (GTK_OBJECT (stockdata->leftButton),
 					"clicked",
 					GTK_SIGNAL_FUNC(zipLeft),stockdata);
