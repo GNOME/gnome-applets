@@ -147,6 +147,7 @@
 			gdk_font_unref (stockdata->my_font);
 		font = pango_font_description_from_string (stockdata->props.font);
 		stockdata->my_font = gdk_font_from_description (font);
+		pango_font_description_free (font);
 		
 
 		if (!stockdata->extra_font) {
@@ -157,7 +158,7 @@
 				gdk_font_unref(stockdata->small_font);
 		font = pango_font_description_from_string (stockdata->props.font2);
 		stockdata->small_font = gdk_font_from_description (font);
-
+		pango_font_description_free (font);
 
 		/* If fonts do not load */
 		if (!stockdata->my_font)
@@ -169,6 +170,7 @@
 				gdk_font_unref(stockdata->extra_font);
 			font = pango_font_description_from_string ("fixed 12");
 			stockdata->extra_font = gdk_font_from_description (font);
+			pango_font_description_free (font);
 			stockdata->symbolfont = 0;
 		}
 		else {
@@ -811,8 +813,15 @@ static gint updateOutput(gpointer data)
 		gchar *tmp;
 		
 		symbol = gtk_editable_get_chars (GTK_EDITABLE (entry), 0, -1);
-		if (!symbol || (strlen (symbol) < 1))
+		if (!symbol)
 			return;
+		
+		g_strstrip (symbol);
+		
+		if (strlen (symbol) < 1) {
+			g_free (symbol);
+			return;
+		}
 		
 		tmp = stockdata->props.tik_syms;
 		stockdata->props.tik_syms = g_strconcat (tmp, "+", symbol, NULL);
@@ -828,6 +837,7 @@ static gint updateOutput(gpointer data)
 					    0, symbol, -1);
 					    
 		gtk_entry_set_text (entry, "");
+		g_free (symbol);
 		
 	}
 	
@@ -939,24 +949,29 @@ static gint updateOutput(gpointer data)
 
 		if ((temp=strtok(syms,"+")))
 			symbol = g_strdup(temp);
-
+		
 		model = gtk_tree_view_get_model (GTK_TREE_VIEW (list));
 		while (symbol) {
 			gtk_list_store_append (GTK_LIST_STORE (model), &row);
 			gtk_list_store_set (GTK_LIST_STORE (model), &row, 
 					    0, symbol, -1);
-			if ((temp=strtok(NULL,"+")))
+			g_free (symbol);
+			if ((temp=strtok(NULL,"+"))) 
 				symbol = g_strdup(temp);
 			else
 				symbol=NULL;
 		}
-
+		
 		if ((temp=strtok(NULL,""))) {
 			symbol = g_strdup(temp);
 			gtk_list_store_append (GTK_LIST_STORE (model), &row);
 			gtk_list_store_set (GTK_LIST_STORE (model), &row, 
 					    0, symbol, -1);
+			g_free (symbol);
 		}
+		
+		g_free (syms);
+		
 	}
 
 
@@ -1050,7 +1065,9 @@ static gint updateOutput(gpointer data)
 	static void
 	response_cb (GtkDialog *dialog, gint id, gpointer data)
 	{
+		StockData *stockdata = data;
 		gtk_widget_destroy (GTK_WIDGET (dialog));
+		stockdata->pb = NULL;
 		
 	}
 
@@ -1074,6 +1091,11 @@ static gint updateOutput(gpointer data)
 		GtkWidget *font_picker;
 
 		int ur,ug,ub, dr,dg,db; 
+		
+		if (stockdata->pb) {
+			gtk_window_present (GTK_WINDOW (stockdata->pb));
+			return;
+		}
 
 		stockdata->pb = gtk_dialog_new_with_buttons (_("Stock Ticker Properties"), 
 							     NULL,
@@ -1234,7 +1256,7 @@ static gint updateOutput(gpointer data)
 		gtk_widget_show_all(stockdata->pb);
 		
 		g_signal_connect (G_OBJECT (stockdata->pb), "response",
-				  G_CALLBACK (response_cb), NULL);
+				  G_CALLBACK (response_cb), stockdata);
 
 	}
 
@@ -1284,6 +1306,7 @@ static gint updateOutput(gpointer data)
 
 		gtk_widget_show(stockdata->drawing_area);
 		gtk_container_add(GTK_CONTAINER(frame),stockdata->drawing_area);
+		
 		gtk_widget_show(frame);
 
 		gtk_box_pack_start(GTK_BOX(vbox),stockdata->leftButton,FALSE,FALSE,0);
@@ -1308,8 +1331,8 @@ static gint updateOutput(gpointer data)
 
 
 		gtk_widget_show (GTK_WIDGET (applet));
+		
 		create_gc(stockdata);
-
 
 		properties_load(stockdata);
 		properties_set(stockdata,FALSE);
@@ -1368,8 +1391,16 @@ static gint updateOutput(gpointer data)
 			gtk_timeout_remove(stockdata->drawTimeID); }
 		if (stockdata->updateTimeID >0) { 
 			gtk_timeout_remove(stockdata->updateTimeID); }
-		gtk_widget_destroy(stockdata->drawing_area);
-
+		/*gtk_widget_destroy(stockdata->drawing_area);*/
+		
+		if (stockdata->configFileName)
+			g_free (stockdata->configFileName);
+		if (stockdata->my_font)
+			gdk_font_unref (stockdata->my_font);
+		if (stockdata->extra_font)
+			gdk_font_unref (stockdata->extra_font);
+		if (stockdata->small_font)
+			gdk_font_unref (stockdata->small_font);
 	}
 
 
@@ -1475,7 +1506,7 @@ static gint updateOutput(gpointer data)
 		GdkColormap *colormap;
 
 		colormap = gtk_widget_get_colormap(stockdata->drawing_area);
-
+		
 		gdk_color_parse(stockdata->props.ucolor, &stockdata->gdkUcolor);
 		gdk_color_alloc(colormap, &stockdata->gdkUcolor);
 
