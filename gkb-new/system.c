@@ -38,7 +38,7 @@
  * Return Value: 
  **/
 static gboolean
-gkb_system_set_keymap_idle (GkbKeymap * keymap)
+gkb_system_set_keymap_idle (GKB *gkb)
 {
   if (system (gkb->keymap->command))
     gnome_error_dialog (_
@@ -66,5 +66,5 @@ gkb_system_set_keymap (GKB * gkb)
 {
   g_return_if_fail (gkb->keymap != NULL);
 
-  gtk_idle_add ((GtkFunction) gkb_system_set_keymap_idle, gkb->keymap);
+  gtk_idle_add ((GtkFunction) gkb_system_set_keymap_idle, gkb);
 }

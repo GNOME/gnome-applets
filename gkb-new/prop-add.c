@@ -315,7 +315,7 @@ addwadd_cb (GtkWidget * addbutton, GkbPropertyBoxInfo * pbi)
   gkb_prop_list_reload (pbi);
 
   gkb_apply(pbi);
-  applet_save_session();
+  applet_save_session(pbi->gkb);
 
   return FALSE;
 }
@@ -349,7 +349,7 @@ response_cb (GtkDialog *dialog, gint id, gpointer data)
     break;
   default:
     gtk_widget_destroy (GTK_WIDGET (dialog));
-    gkb->addwindow = NULL;
+    pbi->gkb->addwindow = NULL;
     break;
   }
  
@@ -363,6 +363,7 @@ gkb_prop_map_add (GkbPropertyBoxInfo * pbi)
   GtkWidget *tree1;
   GtkWidget *scrolled1;
   GtkTreeSelection *selection;
+  GKB *gkb = pbi->gkb;
  
   if (gkb->addwindow)
     {
