@@ -2,6 +2,7 @@
 <!ENTITY gweather "<application>GNOME Weather</application>">
 <!ENTITY gnome "<application>GNOME</application>">
 <!ENTITY gnome-applets "<application>gnome-applets</application>">
+<!ENTITY gnome-vfs "<application>gnome-vfs</application>">
 ]>
 
 <book id="index" revision="$Revision$">
@@ -321,12 +322,11 @@
         interface requests that were buffered will be
         executed).</para>
 
-        <para>Unfortunately, as far as I can tell, there is not much
-        that can be done about this in &gweather;.  Hopefully, future
-        versions of the panel will resolve this issue.  There is also
-        an experimental version of &gweather; that uses a separate
-        thread for HTTP processing, which may be incorporated in the
-        next release.</para>
+        <para>There is an experimental version of &gweather; that uses
+        a separate thread for HTTP processing, which may be incorporated
+        (temporarily) in the next release.  However, the final solution
+        is &gnome-vfs; (which will be part of &gnome; 2.0) offers
+        cross-platform support for fully asynchronous I/O.</para>
       </sect2>
       
 <!--

@@ -32,7 +32,9 @@ static GtkWidget *pref = NULL;
 
 static GtkWidget *pref_basic_metric_btn;
 static GtkWidget *pref_basic_detailed_btn;
+#ifdef RADARMAP
 static GtkWidget *pref_basic_radar_btn;
+#endif /* RADARMAP */
 static GtkWidget *pref_basic_update_spin;
 static GtkWidget *pref_basic_update_btn;
 static GtkWidget *pref_net_proxy_btn;
@@ -61,7 +63,9 @@ static gboolean update_dialog (void)
     gtk_widget_set_sensitive(pref_basic_update_spin, gweather_pref.update_enabled);
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(pref_basic_metric_btn), gweather_pref.use_metric);
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(pref_basic_detailed_btn), gweather_pref.detailed);
+#ifdef RADARMAP
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(pref_basic_radar_btn), gweather_pref.radar_enabled);
+#endif /* RADARMAP */
 
     gtk_entry_set_text(GTK_ENTRY(pref_net_proxy_url_entry), gweather_pref.proxy_url ? gweather_pref.proxy_url : "");
     gtk_entry_set_text(GTK_ENTRY(pref_net_proxy_passwd_entry), gweather_pref.proxy_passwd ? gweather_pref.proxy_passwd : "");
@@ -138,7 +142,9 @@ static gboolean update_pref (void)
     gweather_pref.update_enabled = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(pref_basic_update_btn));
     gweather_pref.use_metric = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(pref_basic_metric_btn));
     gweather_pref.detailed = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(pref_basic_detailed_btn));
+#ifdef RADARMAP
     gweather_pref.radar_enabled = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(pref_basic_radar_btn));
+#endif /* RADARMAP */
 
     gweather_pref.use_proxy = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(pref_net_proxy_btn));
     update_string(proxy_url, &gweather_pref.proxy_url);
@@ -297,7 +303,9 @@ static void gweather_pref_create (void)
   GtkWidget *pref_basic_table;
   GtkWidget *pref_basic_metric_alignment;
   GtkWidget *pref_basic_detailed_alignment;
+#ifdef RADARMAP
   GtkWidget *pref_basic_radar_alignment;
+#endif /* RADARMAP */
   GtkWidget *pref_basic_update_alignment;
   GtkWidget *pref_basic_update_lbl;
   GtkWidget *pref_basic_update_hbox;
@@ -334,7 +342,11 @@ static void gweather_pref_create (void)
   gtk_widget_show (pref_notebook);
   gtk_box_pack_start (GTK_BOX (pref_vbox), pref_notebook, TRUE, TRUE, 0);
 
+#ifdef RADARMAP
   pref_basic_table = gtk_table_new (5, 2, FALSE);
+#else /* RADARMAP */
+  pref_basic_table = gtk_table_new (4, 2, FALSE);
+#endif /* RADARMAP */
   gtk_widget_show (pref_basic_table);
   gtk_container_add (GTK_CONTAINER (pref_notebook), pref_basic_table);
   gtk_container_set_border_width (GTK_CONTAINER (pref_basic_table), 8);
@@ -359,11 +371,13 @@ static void gweather_pref_create (void)
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
 
+#ifdef RADARMAP
   pref_basic_radar_alignment = gtk_alignment_new (0, 0.5, 0, 1);
   gtk_widget_show (pref_basic_radar_alignment);
   gtk_table_attach (GTK_TABLE (pref_basic_table), pref_basic_radar_alignment, 0, 2, 4, 5,
                     (GtkAttachOptions) (GTK_FILL),
                     (GtkAttachOptions) (0), 0, 0);
+#endif /* RADARMAP */
 
   pref_basic_update_btn = gtk_check_button_new_with_label (_("Update enabled"));
   gtk_widget_show (pref_basic_update_btn);
@@ -377,9 +391,11 @@ static void gweather_pref_create (void)
   gtk_widget_show (pref_basic_detailed_btn);
   gtk_container_add (GTK_CONTAINER (pref_basic_detailed_alignment), pref_basic_detailed_btn);
 
+#ifdef RADARMAP
   pref_basic_radar_btn = gtk_check_button_new_with_label (_("Enable radar maps"));
   gtk_widget_show (pref_basic_radar_btn);
   gtk_container_add (GTK_CONTAINER (pref_basic_radar_alignment), pref_basic_radar_btn);
+#endif /* RADARMAP */
 
   pref_basic_update_lbl = gtk_label_new (_("Update:"));
   gtk_widget_show (pref_basic_update_lbl);
@@ -538,8 +554,10 @@ static void gweather_pref_create (void)
                       GTK_SIGNAL_FUNC (change_cb), NULL);
   gtk_signal_connect (GTK_OBJECT (pref_basic_detailed_btn), "toggled",
                       GTK_SIGNAL_FUNC (change_cb), NULL);
+#ifdef RADARMAP
   gtk_signal_connect (GTK_OBJECT (pref_basic_radar_btn), "toggled",
                       GTK_SIGNAL_FUNC (change_cb), NULL);
+#endif /* RADARMAP */
   gtk_signal_connect (GTK_OBJECT (pref_basic_update_btn), "toggled",
                       GTK_SIGNAL_FUNC (change_cb), NULL);
   gtk_signal_connect (GTK_OBJECT (pref_net_proxy_btn), "toggled",

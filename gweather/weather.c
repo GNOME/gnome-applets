@@ -33,7 +33,7 @@
 
 static WeatherUnits weather_units = UNITS_IMPERIAL;
 static WeatherForecastType weather_forecast = FORECAST_STATE;
-static gboolean weather_radar = TRUE;
+static gboolean weather_radar = FALSE;
 
 static gchar *weather_proxy_url = NULL;
 static gchar *weather_proxy_user = NULL;
@@ -1414,7 +1414,7 @@ gchar *weather_info_get_weather_summary (WeatherInfo *info)
     static gchar buf[200];
     g_return_val_if_fail(info != NULL, NULL);
     if (!info->valid)
-        return "----";
+        return _("Retrieval failed");
     strcpy(buf, weather_info_get_conditions(info));
     if (!strcmp(buf, "-"))
         strcpy(buf, weather_info_get_sky(info));
