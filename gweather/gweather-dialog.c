@@ -331,7 +331,7 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
       gtk_signal_connect (GTK_OBJECT (radar_link_btn), "clicked",
                           GTK_SIGNAL_FUNC (link_cb), NULL);
 
-      radar_note_lbl = gtk_label_new_with_mnemonic (_("_Radar map"));
+      radar_note_lbl = gtk_label_new_with_mnemonic (_("Radar Map"));
       gtk_widget_show (radar_note_lbl);
       gtk_notebook_set_tab_label (GTK_NOTEBOOK (weather_notebook), gtk_notebook_get_nth_page (GTK_NOTEBOOK (weather_notebook), 2), radar_note_lbl);
   }
