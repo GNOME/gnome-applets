@@ -95,8 +95,8 @@ load_graph_update (LoadGraph *g)
 
 	if (g->tooltip_update)
 		multiload_applet_tooltip_update(g);
-		
-    g->get_data (g->draw_height, g->data [0], g);
+	else		
+	    g->get_data (g->draw_height, g->data [0], g);
 
     for (i=0; i < g->draw_width-1; i++)
 		for (j=0; j < g->n; j++)
@@ -322,23 +322,6 @@ load_graph_new (PanelApplet *applet, guint n, gchar *label,
     }
 
     load_graph_load_config (g);
-
-/*
-    if (g->global_prop_data == &multiload_properties.cpuload)
-	g->prop_data->type = PROP_CPULOAD;
-    else if (g->global_prop_data == &multiload_properties.memload)
-	g->prop_data->type = PROP_MEMLOAD;
-    else if (g->global_prop_data == &multiload_properties.swapload)
-	g->prop_data->type = PROP_SWAPLOAD;
-    else if (g->global_prop_data == &multiload_properties.netload)
-	g->prop_data->type = PROP_NETLOAD;
-    else if (g->global_prop_data == &multiload_properties.loadavg)
-	g->prop_data->type = PROP_LOADAVG;
-    else
-	g_assert_not_reached();
-
-    g->local_prop_data->type = g->prop_data->type;
-*/
 
     g->get_data = get_data;
 
