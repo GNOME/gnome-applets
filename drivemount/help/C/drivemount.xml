@@ -110,7 +110,7 @@
       <para>
        <guimenuitem>About&hellip;</guimenuitem> &mdash;
        shows basic information about <application>Drive Mount
-       Applet</application>, inluding the applet's version and the
+       Applet</application>, including the applet's version and the
        author's name.
       </para>
      </listitem>
@@ -276,7 +276,7 @@
       <guibutton>OK</guibutton> to apply the changes and close the
       <interface>Properties</interface> dialog. To cancel the changes
       and return to previous values, click the
-      <guibutton>Cancel</guibutton> button.
+      <guibutton>Close</guibutton> button.
     </para>
   </sect2>
 
@@ -394,6 +394,24 @@
        commonly caused by having the write filesystem type, such as
        trying to mount a music CDROM as if it held data, or trying to
        mount an msdos formatted floppy as ext2.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <quote>mount /mnt/cdrom 2>&1 reported: mount: No medium
+       found</quote>&mdash; This error indicates the drive, in
+       this case the CDROM drive, is empty.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <quote>umount /mnt/cdrom 2>&1 reported: umount: /mnt/cdrom:
+       device is busy</quote>&mdash; This error indicates that the
+       drive cannot be unmounted because the drive is being used by
+       the computer.  This often happens if you have the
+       <application>GNOME File Manager</application> open to a
+       directory on the drive or if you have a terminal window open
+       with the working directory on the drive.
       </para>
      </listitem>
      <listitem>
