@@ -48,14 +48,14 @@ diskusage_read (DiskusageInfo *ps)
 		if ((ps->filesystems + i)->dev_name)
 			free ((ps->filesystems + i)->dev_name);
 		(ps->filesystems + i)->dev_name = 
-			g_new(gchar, strlen (me->me_devname));
+			g_new(gchar, strlen (me->me_devname)+1);
 		strcpy ((ps->filesystems + i)->dev_name, 
 				me->me_devname);
 
 		if ((ps->filesystems + i)->mount_dir)
 			free ((ps->filesystems + i)->mount_dir);
 		(ps->filesystems + i)->mount_dir = 
-			g_new(gchar, strlen (me->me_mountdir));
+			g_new(gchar, strlen (me->me_mountdir)+1);
 		strcpy ((ps->filesystems + i)->mount_dir, 
 				me->me_mountdir);
 
