@@ -15,14 +15,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 1.2.0\n"
-"POT-Creation-Date: 2003-09-01 11:54-0400\n"
-"PO-Revision-Date: 2003-08-12 22:48+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-09-21 17:06+0200\n"
+"PO-Revision-Date: 2003-09-21 17:09+0200\n"
 "Last-Translator: Ole Laursen <olau@hardworking.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Report-Msgid-Bugs-To: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: accessx-status/GNOME_AccessxApplet.xml.h:1
@@ -85,12 +85,12 @@ msgid "Utility"
 msgstr "Værktøj"
 
 #: accessx-status/applet.c:135 battstat/battstat_applet.c:839
-#: cdplayer/cdplayer.c:575 charpick/charpick.c:582 drivemount/drivemount.c:510
-#: geyes/geyes.c:228 gkb-new/gkb-applet.c:84 gtik/gtik.c:774
+#: cdplayer/cdplayer.c:575 charpick/charpick.c:584 drivemount/drivemount.c:510
+#: geyes/geyes.c:228 gkb-new/gkb-applet.c:84 gtik/gtik.c:775
 #: gweather/gweather-about.c:44 mailcheck/mailcheck.c:2435
 #: mini-commander/src/about.c:48 mixer/mixer.c:1060
 #: modemlights/modemlights.c:115 multiload/main.c:57
-#: stickynotes/stickynotes_applet_callbacks.c:178
+#: stickynotes/stickynotes_applet_callbacks.c:191
 #: wireless/wireless-applet.c:528
 msgid "translator_credits"
 msgstr "Ole Laursen <olau@hardworking.dk>"
@@ -465,7 +465,7 @@ msgstr "<b>Dvale</b>"
 msgid "<b>Warnings</b>"
 msgstr "<b>Advarsler</b>"
 
-#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1522
+#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1523
 msgid "Appearance"
 msgstr "Udseende"
 
@@ -534,7 +534,8 @@ msgstr "_Gul:"
 #: battstat/properties.c:296 drivemount/drivemount.c:468
 #: drivemount/properties.c:589 mailcheck/mailcheck.c:2291
 #: mailcheck/mailcheck.c:2540 mini-commander/src/preferences.c:393
-#: mixer/mixer.c:1167
+#: mixer/mixer.c:1167 stickynotes/stickynotes_applet_callbacks.c:169
+#: stickynotes/stickynotes_applet_callbacks.c:317
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Der opstod en fejl ved visning af hjælp: %s"
@@ -687,8 +688,8 @@ msgstr ""
 "Dette er den komplette sti til den enhed som vil blive brugt til at afspille "
 "cd'er fra"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:600
-#: charpick/charpick.c:744 charpick/properties.c:333
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:602
+#: charpick/charpick.c:746 charpick/properties.c:333
 msgid "Character Palette"
 msgstr "Tegnpalet"
 
@@ -700,37 +701,37 @@ msgstr "Fabrik for tegnvælgerpanelprogram"
 msgid "Insert characters"
 msgstr "Indsæt tegn"
 
-#: charpick/charpick.c:322 charpick/properties.c:125
+#: charpick/charpick.c:324 charpick/properties.c:125
 msgid "Add Palette"
 msgstr "Tilføj palet"
 
-#: charpick/charpick.c:363
+#: charpick/charpick.c:365
 msgid "Add a palette..."
 msgstr "Tilføj en palet..."
 
-#: charpick/charpick.c:446
+#: charpick/charpick.c:448
 msgid "Available palettes"
 msgstr "Tilgængelige paletter"
 
-#: charpick/charpick.c:483
+#: charpick/charpick.c:485
 msgid "Insert special characters"
 msgstr "Indsæt specialtegn"
 
 #. If your charset supports it, please use U00F1 to replace the "n"
 #. * in "Muniz".
-#: charpick/charpick.c:573
+#: charpick/charpick.c:575
 msgid "Alexandre Muniz <munizao@xprt.net>"
 msgstr "Alexandre Muñiz <munizao@xprt.net>"
 
-#: charpick/charpick.c:574
+#: charpick/charpick.c:576
 msgid "Kevin Vandersloot"
 msgstr "Kevin Vandersloot"
 
-#: charpick/charpick.c:602
+#: charpick/charpick.c:604
 msgid "Copyright (C) 1998"
 msgstr "Copyright © 1998"
 
-#: charpick/charpick.c:603
+#: charpick/charpick.c:605
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -2363,7 +2364,7 @@ msgstr "Etiket"
 msgid "Flag and Label"
 msgstr "Flag og etiket"
 
-#: gkb-new/prop.c:257 gtik/gtik.c:1529 gweather/gweather-pref.c:746
+#: gkb-new/prop.c:257 gtik/gtik.c:1530 gweather/gweather-pref.c:746
 #: modemlights/properties.c:438
 msgid "Display"
 msgstr "Vis"
@@ -2453,7 +2454,7 @@ msgstr "Få løbende opdaterede børsnoteringer"
 msgid "Gtik Applet Factory"
 msgstr "Fabrik for børsnoteringspanelprogram"
 
-#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:790
+#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:791
 msgid "Stock Ticker"
 msgstr "Børsnoteringer"
 
@@ -2470,7 +2471,7 @@ msgstr "Kunne ikke hente aktiedata."
 msgid "Updating..."
 msgstr "Opdaterer..."
 
-#: gtik/gtik.c:792
+#: gtik/gtik.c:793
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.  "
 "The GNOME Stock Ticker is a free Internet-based application.  It comes with "
@@ -2482,136 +2483,136 @@ msgstr ""
 "Lad være med at bruge aktieoplysningerne til investeringsbeslutninger; det "
 "er kun til informeringsformål."
 
-#: gtik/gtik.c:1278
+#: gtik/gtik.c:1279
 msgid "Current _stocks:"
 msgstr "Aktuelle _aktier:"
 
-#: gtik/gtik.c:1286
+#: gtik/gtik.c:1287
 msgid "_New symbol:"
 msgstr "_Nyt symbol:"
 
-#: gtik/gtik.c:1295
+#: gtik/gtik.c:1296
 msgid "_Add"
 msgstr "_Tilføj"
 
-#: gtik/gtik.c:1304
+#: gtik/gtik.c:1305
 msgid "_Remove"
 msgstr "_Fjern"
 
-#: gtik/gtik.c:1410
+#: gtik/gtik.c:1411
 msgid "Stock Ticker Preferences"
 msgstr "Indstillinger for børsnoteringer"
 
-#: gtik/gtik.c:1432
+#: gtik/gtik.c:1433
 msgid "Symbols"
 msgstr "Symboler"
 
-#: gtik/gtik.c:1439 mailcheck/mailcheck.c:2366
+#: gtik/gtik.c:1440 mailcheck/mailcheck.c:2366
 msgid "Behavior"
 msgstr "Opførsel"
 
-#: gtik/gtik.c:1442 gweather/gweather-pref.c:705
+#: gtik/gtik.c:1443 gweather/gweather-pref.c:705
 msgid "Update"
 msgstr "Opdatér"
 
-#: gtik/gtik.c:1446
+#: gtik/gtik.c:1447
 msgid "Stock update fre_quency:"
 msgstr "Opdaterings_interval:"
 
-#: gtik/gtik.c:1458 gweather/gweather-pref.c:729 mailcheck/mailcheck.c:2074
+#: gtik/gtik.c:1459 gweather/gweather-pref.c:729 mailcheck/mailcheck.c:2074
 #: mailcheck/mailcheck.c:2080
 msgid "minutes"
 msgstr "minutter"
 
-#: gtik/gtik.c:1464
+#: gtik/gtik.c:1465
 msgid "Scrolling"
 msgstr "Rulning"
 
-#: gtik/gtik.c:1468
+#: gtik/gtik.c:1469
 msgid "_Scroll speed:"
 msgstr "_Rullehastighed:"
 
-#: gtik/gtik.c:1472
+#: gtik/gtik.c:1473
 msgid "Slow"
 msgstr "Langsom"
 
-#: gtik/gtik.c:1474
+#: gtik/gtik.c:1475
 msgid "Medium"
 msgstr "Mellem"
 
-#: gtik/gtik.c:1476
+#: gtik/gtik.c:1477
 msgid "Fast"
 msgstr "Hurtig"
 
-#: gtik/gtik.c:1496
+#: gtik/gtik.c:1497
 msgid "_Enable scroll buttons"
 msgstr "Vis _rulleknapper"
 
-#: gtik/gtik.c:1508
+#: gtik/gtik.c:1509
 msgid "Scroll _left to right"
 msgstr "Rul fra _venstre mod højre"
 
-#: gtik/gtik.c:1534
+#: gtik/gtik.c:1535
 msgid "Displa_y only symbols and price"
 msgstr "Vis kun s_ymboler og pris"
 
-#: gtik/gtik.c:1547 mini-commander/src/mini-commander.glade.h:23
+#: gtik/gtik.c:1548 mini-commander/src/mini-commander.glade.h:23
 #: stickynotes/stickynotes.glade.h:48
 msgid "_Width:"
 msgstr "_Bredde:"
 
-#: gtik/gtik.c:1561 mini-commander/src/mini-commander.glade.h:24
+#: gtik/gtik.c:1562 mini-commander/src/mini-commander.glade.h:24
 #: multiload/properties.c:483
 msgid "pixels"
 msgstr "punkter"
 
-#: gtik/gtik.c:1570
+#: gtik/gtik.c:1571
 msgid "Font and Colors"
 msgstr "Skrifttype og farver"
 
-#: gtik/gtik.c:1576
+#: gtik/gtik.c:1577
 msgid "Use _default theme font and colors"
 msgstr "_Benyt temaets skrifttype og -farver"
 
-#: gtik/gtik.c:1591 stickynotes/stickynotes.glade.h:42
+#: gtik/gtik.c:1592 stickynotes/stickynotes.glade.h:42
 msgid "_Font:"
 msgstr "Skrift_type:"
 
-#: gtik/gtik.c:1615
+#: gtik/gtik.c:1616
 msgid "Stock _raised:"
 msgstr "Aktie _steget:"
 
-#: gtik/gtik.c:1634
+#: gtik/gtik.c:1635
 msgid "Stock _lowered:"
 msgstr "Aktie _dalet:"
 
-#: gtik/gtik.c:1653
+#: gtik/gtik.c:1654
 msgid "Stock _unchanged:"
 msgstr "Aktie _uændret:"
 
-#: gtik/gtik.c:1672 modemlights/properties.c:570
+#: gtik/gtik.c:1673 modemlights/properties.c:570
 msgid "_Background:"
 msgstr "_Baggrund:"
 
-#: gtik/gtik.c:1805
+#: gtik/gtik.c:1806
 msgid "Skip forward"
 msgstr "Spring fremad"
 
-#: gtik/gtik.c:1806
+#: gtik/gtik.c:1807
 msgid "Skip backward"
 msgstr "Spring bagud"
 
-#: gtik/gtik.c:1814
+#: gtik/gtik.c:1815
 msgid ""
 "Stock Ticker\n"
 "Get continuously updated stock quotes"
 msgstr "Få løbende opdaterede børsnoteringer"
 
-#: gtik/gtik.c:2005
+#: gtik/gtik.c:2009
 msgid "(No"
 msgstr "(Ingen"
 
-#: gtik/gtik.c:2006
+#: gtik/gtik.c:2010
 msgid "Change "
 msgstr "Ændring "
 
@@ -4234,6 +4235,11 @@ msgstr ""
 "advarsel: denne version af gmix blev oversat med en anden version af "
 "soundcard.h\n"
 
+#: mixer/mixer.c:632
+#, c-format
+msgid "Couldn't open mixer device %s\n"
+msgstr "Kunne ikke åbne mixerenheden %s\n"
+
 #: mixer/mixer.c:801
 msgid "Volume Controller"
 msgstr "Lydstyrkekontrol"
@@ -4893,8 +4899,8 @@ msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "Opret, vis og håndtér notessedler på skrivebordet"
 
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:3
-#: stickynotes/stickynotes_applet.c:339
-#: stickynotes/stickynotes_applet_callbacks.c:180
+#: stickynotes/stickynotes_applet.c:338
+#: stickynotes/stickynotes_applet_callbacks.c:193
 msgid "Sticky Notes"
 msgstr "Notessedler"
 
@@ -5257,7 +5263,7 @@ msgstr "Om temaets farve skal benyttes"
 msgid "Whether to use the default system font"
 msgstr "Om temaets skrifttype skal benyttes"
 
-#: stickynotes/stickynotes_applet.c:339
+#: stickynotes/stickynotes_applet.c:338
 #, c-format
 msgid ""
 "%s\n"
@@ -5272,11 +5278,11 @@ msgstr[1] ""
 "%s\n"
 "%d noter"
 
-#: stickynotes/stickynotes_applet_callbacks.c:182
+#: stickynotes/stickynotes_applet_callbacks.c:195
 msgid "(c) 2002-2003 Loban A Rahman"
 msgstr "© 2002-2003 Loban A. Rahman"
 
-#: stickynotes/stickynotes_applet_callbacks.c:183
+#: stickynotes/stickynotes_applet_callbacks.c:196
 msgid "Sticky Notes for the Gnome Desktop Environment"
 msgstr "Notessedler til Gnome."
 
