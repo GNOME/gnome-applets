@@ -140,7 +140,7 @@ cb_mount_activate (GtkEditable *entry, gpointer data)
 		return;
 		
 	if (dd->mount_point) {
-		if (!g_strcasecmp (text, dd->mount_point)) {
+		if (!g_ascii_strcasecmp (text, dd->mount_point)) {
 			g_free (text);
 			return;
 		}
