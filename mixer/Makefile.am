@@ -15,8 +15,12 @@ bin_PROGRAMS = mixer_applet
 
 mixer_applet_SOURCES = \
 	mixer.c		\
-	slider.c	\
-	slider.h
+	vslider.c	\
+	vslider.h	\
+	hslider.c	\
+	hslider.h	\
+	lamp-small.xpm  \
+	lamp-small-red.xpm 
 
 
 mixer_applet_LDADD = ../../panel/libpanel_applet.la \
