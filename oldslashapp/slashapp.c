@@ -507,7 +507,7 @@ static void about_cb (AppletWidget *widget, gpointer data)
 	sprintf(version,_("%d.%d.%d"),APPLET_VERSION_MAJ,
 		APPLET_VERSION_MIN, APPLET_VERSION_REV);
 
-	authors[0] = _("Justin Maurer <mike911@clark.net>");
+	authors[0] = _("Justin Maurer <justin@openprojects.net>");
 	authors[1] = _("Craig Small <csmall@small.dropbear.co.uk>");
 	authors[2] = _("John Ellis <johne@bellatlantic.net> - Display engine");
 	authors[3] = NULL;
