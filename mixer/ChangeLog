@@ -1,3 +1,20 @@
+2005-02-09  Mark McLoughlin  <mark@skynet.ie>
+
+	Fixes crash when we select a track with no channels.
+	See Fedora bug:
+	  https://bugzilla.redhat.com/beta/show_bug.cgi?id=147282
+	Thanks to Neil Paris <neilparis@gmail.com> for isolating
+	the problem.
+
+	* applet.[ch]:
+	(select_track), (select_element_and_track): new functions.
+	(gnome_volume_applet_setup): re-work mixer/track selection so
+	that we never end up with a track with no channels.
+	
+	* load.c: (gnome_volume_applet_factory): don't pop up an
+	error dialog if we can't find a mixer here. Allow
+	gnome_volume_applet_setup() to do it instead.
+
 2005-01-22  Ronald S. Bultje  <rbultje@ronald.bitfreak.net>
 
 	* applet.c: (gnome_volume_applet_init),

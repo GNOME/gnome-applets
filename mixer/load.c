@@ -157,21 +157,7 @@ gnome_volume_applet_factory (PanelApplet *applet,
   }
 
   elements = create_mixer_collection ();
-  if (!elements) {
-    GtkWidget *dialog;
-
-    dialog = gtk_message_dialog_new (NULL, 0, GTK_MESSAGE_ERROR,
-				     GTK_BUTTONS_CLOSE,
-				     _("No volume control elements and/or devices found."));
-    gtk_widget_show (dialog);
-    gtk_dialog_run (GTK_DIALOG (dialog));
-    gtk_widget_destroy (dialog);
-
-    return FALSE;
-  }
-  gnome_volume_applet_setup (GNOME_VOLUME_APPLET (applet), elements);
-
-  return TRUE;
+  return gnome_volume_applet_setup (GNOME_VOLUME_APPLET (applet), elements);
 }
 
 PANEL_APPLET_BONOBO_FACTORY (

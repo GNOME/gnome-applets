@@ -84,9 +84,9 @@ typedef struct _GnomeVolumeAppletClass {
   PanelAppletClass klass;
 } GnomeVolumeAppletClass;
 
-GType	gnome_volume_applet_get_type	(void);
-void	gnome_volume_applet_setup	(GnomeVolumeApplet *applet,
-					 GList *elements);
+GType    gnome_volume_applet_get_type (void);
+gboolean gnome_volume_applet_setup    (GnomeVolumeApplet *applet,
+				       GList             *elements);
 
 G_END_DECLS
 

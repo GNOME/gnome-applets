@@ -256,15 +256,101 @@ gnome_volume_applet_init (GnomeVolumeApplet *applet)
 			  PANEL_APPLET_EXPAND_MINOR);
 }
 
-void
+static GstMixerTrack *
+select_track (GstElement *element,
+	      const char *active_track_name)
+{
+  const GList *tracks, *l;
+  GstMixerTrack *active_track;
+
+  gst_element_set_state (element, GST_STATE_READY);
+  tracks = gst_mixer_list_tracks (GST_MIXER (element));
+
+  active_track = NULL;
+  for (l = tracks; l; l = l->next) {
+    GstMixerTrack *track = l->data;
+
+    if (!track->num_channels)
+      continue;
+
+    if (!active_track)
+      active_track = track;
+
+    if (GST_MIXER_TRACK_HAS_FLAG (track, GST_MIXER_TRACK_MASTER))
+      active_track = track;
+
+    if (active_track_name && !strcmp (track->label, active_track_name)) {
+      active_track = track;
+      break;
+    }
+  }
+
+  if (!active_track)
+    gst_element_set_state (element, GST_STATE_NULL);
+
+  return active_track;
+}
+
+static gboolean
+select_element_and_track (GnomeVolumeApplet *applet,
+			  GList             *elements,
+			  const char        *active_element_name,
+			  const char        *active_track_name)
+{
+  GList *l;
+  GstElement *active_element;
+  GstMixerTrack *active_track;
+
+  applet->elements = elements;
+
+  active_element = NULL;
+  if (active_element_name) {
+    for (l = elements; l; l = l->next) {
+      GstElement *element = l->data;
+      const char *element_name;
+
+      element_name = g_object_get_data (G_OBJECT (element),
+				      "gnome-volume-applet-name");
+
+      if (!strcmp (element_name, active_element_name)) {
+	active_element = element;
+	break;
+      }
+    }
+  }
+
+  active_track = NULL;
+  if (active_element)
+    active_track = select_track (active_element, active_track_name);
+
+  if (!active_track) {
+    active_element = NULL;
+    for (l = elements; l; l = l->next) {
+      GstElement *element = l->data;
+
+      if ((active_track = select_track (element, active_track_name))) {
+	active_element = element;
+	break;
+      }
+    }
+  }
+
+  if (!active_element)
+    return FALSE;
+
+  applet->mixer = g_object_ref (active_element);
+  applet->track = g_object_ref (active_track);
+  g_assert (applet->track->num_channels != 0);
+
+  return TRUE;
+}
+
+gboolean
 gnome_volume_applet_setup (GnomeVolumeApplet *applet,
 			   GList *elements)
 {
   GConfValue *value;
   GtkObject *adj;
-  GstElement *active_element;
-  GstMixerTrack *active_track;
-  const GList *item;
   gint page;
   BonoboUIComponent *component;
   static const BonoboUIVerb verbs[] = {
@@ -276,69 +362,35 @@ gnome_volume_applet_setup (GnomeVolumeApplet *applet,
     BONOBO_UI_VERB_END
   };
   gchar *key;
+  gchar *active_element_name;
+  gchar *active_track_name;
 
-  /* default element to first */
-  g_return_if_fail (elements != NULL);
-  active_element = elements->data;
+  active_element_name = panel_applet_gconf_get_string (PANEL_APPLET (applet),
+						       GNOME_VOLUME_APPLET_KEY_ACTIVE_ELEMENT,
+						       NULL);
 
-  applet->elements = elements;
+  active_track_name = panel_applet_gconf_get_string (PANEL_APPLET (applet),
+						     GNOME_VOLUME_APPLET_KEY_ACTIVE_TRACK,
+						     NULL);
 
-  /* get active element, if any (otherwise we use the default) */
-  if ((value = panel_applet_gconf_get_value (PANEL_APPLET (applet),
-				 GNOME_VOLUME_APPLET_KEY_ACTIVE_ELEMENT,
-				 NULL)) != NULL &&
-      value->type == GCONF_VALUE_STRING) {
-    const gchar *active_el_str, *cur_el_str;
+  if (!select_element_and_track (applet, elements, active_element_name, active_track_name)) {
+    GtkWidget *dialog;
 
-    active_el_str = gconf_value_get_string (value);
-    for (item = elements; item != NULL; item = item->next) {
-      cur_el_str = g_object_get_data (item->data, "gnome-volume-applet-name");
-      if (!strcmp (active_el_str, cur_el_str)) {
-        active_element = item->data;
-        break;
-      }
-    }
+    g_free (active_element_name);
+    g_free (active_track_name);
+
+    dialog = gtk_message_dialog_new (NULL, 0, GTK_MESSAGE_ERROR,
+				     GTK_BUTTONS_CLOSE,
+				     _("No volume control elements and/or devices found."));
+    gtk_widget_show (dialog);
+    gtk_dialog_run (GTK_DIALOG (dialog));
+    gtk_widget_destroy (dialog);
+
+    return FALSE;
   }
 
-  /* use the active element */
-  gst_element_set_state (active_element, GST_STATE_READY);
-  applet->mixer = GST_MIXER (active_element);
-  gst_object_ref (GST_OBJECT (active_element));
-
-  /* default track: first */
-  item = gst_mixer_list_tracks (applet->mixer);
-  active_track = item->data;
-  /* FIXME:
-   * - what if first has 0 channels?
-   */
-
-  /* get active track, if any (otherwise we use the default) */
-  if ((value = panel_applet_gconf_get_value (PANEL_APPLET (applet),
-				 GNOME_VOLUME_APPLET_KEY_ACTIVE_TRACK,
-				 NULL)) != NULL &&
-      value->type == GCONF_VALUE_STRING) {
-    const gchar *track_name = gconf_value_get_string (value);
-
-    for ( ; item != NULL; item = item->next) {
-      GstMixerTrack *track = item->data;
-
-      if (!track->num_channels)
-        continue;
-
-      if (!strcmp (track_name, track->label)) {
-        active_track = item->data;
-        break;
-      } else if (!track &&
-		 GST_MIXER_TRACK_HAS_FLAG (track,
-					   GST_MIXER_TRACK_MASTER)) {
-        active_track = item->data;
-      }
-    }
-  }
-
-  /* use the active track */
-  applet->track = active_track;
-  g_object_ref (G_OBJECT (active_track));
+  g_free (active_element_name);
+  g_free (active_track_name);
 
   /* tell the dock */
   page = (applet->track->max_volume - applet->track->min_volume) / 10;
@@ -381,6 +433,8 @@ gnome_volume_applet_setup (GnomeVolumeApplet *applet,
   g_free (key);
 
   gtk_widget_show (GTK_WIDGET (applet));
+
+  return TRUE;
 }
 
 static void
