@@ -342,7 +342,8 @@ gstreamer_discover_mixers (MixerData *data)
 		probe = GST_PROPERTY_PROBE (element);
 		if (!(devspec = gst_property_probe_get_property (probe, "device")))
 			goto next;
-		array = gst_property_probe_probe_and_get_values (probe, devspec);
+		if (!(array = gst_property_probe_probe_and_get_values (probe, devspec)))   
+      			goto next;                                                                
 		
 		/* set all devices and test for mixer */
 		for (n = 0; n < array->n_values; n++) {
