@@ -1,3 +1,14 @@
+2003-06-05  Kevin Vandersloot
+
+	* prop.c: remove the size option from the UI. Fixes bug #76223 since
+	the default behavior is sane and saves space.
+	
+	* gkb.c: Expand for Fitts' law. Set button_click signal to the applet for full Fitts' law
+	effect. Change the sizing of the pixbufs so they look better. Also change the dafult name
+	to default not gkb. Fixes bug #94153
+	
+	* descs/default.keymap.in: change name to Default
+
 2003-05-17  Dennis Cranston <dennis_cranston at yahoo com>
 
 	* prop.c, prop-add.c, prop-map.c:  HIGify the action area of the 

@@ -94,8 +94,8 @@ gkb_draw (GKB * gkb)
       g_return_if_fail (gkb->keymap != NULL);
       g_return_if_fail (gkb->keymap->pixbuf != NULL);
       
-      tmp = gdk_pixbuf_scale_simple (gkb->keymap->pixbuf, gkb->w * 0.9, 
-      				     gkb->h * 0.9, GDK_INTERP_HYPER); 
+      tmp = gdk_pixbuf_scale_simple (gkb->keymap->pixbuf, gkb->w, 
+      				     gkb->h , GDK_INTERP_HYPER); 
       if (tmp) {     
         gtk_image_set_from_pixbuf (GTK_IMAGE (gkb->image), tmp);
         g_object_unref (tmp);
@@ -133,6 +133,7 @@ gkb_count_sizes (GKB * gkb)
   gint flag_height = 0;
   gint label_height = 0;
   gint label_width = 0;
+  gboolean horizontal = TRUE;
 
   gint size;
 
@@ -146,12 +147,14 @@ gkb_count_sizes (GKB * gkb)
       panel_height = size;
       if (size < GKB_SMALL_PANEL_SIZE)
 	small_panel = TRUE;
+      horizontal = TRUE;
       break;
     case PANEL_APPLET_ORIENT_RIGHT:
     case PANEL_APPLET_ORIENT_LEFT:
       panel_width = size;
       if (size < GKB_SMALL_PANEL_SIZE)
 	small_panel = TRUE;
+      horizontal = FALSE;
       break;
     default:
       g_assert_not_reached ();
@@ -207,8 +210,14 @@ gkb_count_sizes (GKB * gkb)
   gkb->w = flag_width - 1;
   /* FIXME the applet is just a little bigger than panel, so I add the -2 here*/
   gkb->h = flag_height - 1;
-  gtk_widget_set_size_request (gkb->label_frame1, gkb->w, gkb->h);
-  gtk_widget_set_size_request (gkb->label_frame2, gkb->w, gkb->h);
+  if (horizontal) {
+    gtk_widget_set_size_request (gkb->label_frame1, -1, gkb->h);
+    gtk_widget_set_size_request (gkb->label_frame2, -1, gkb->h);
+  }
+  else {
+    gtk_widget_set_size_request (gkb->label_frame1, gkb->w, -1);
+    gtk_widget_set_size_request (gkb->label_frame2, gkb->w, -1);
+  }
   gtk_widget_set_size_request (gkb->darea_frame, gkb->w, gkb->h);
 
   return label_in_vbox;
@@ -294,7 +303,7 @@ void gkb_update_handlers (GKB *gkb, gboolean disconnect)
   if (disconnect)
   {
     if (gkb->button_press_id != -1)
-      g_signal_handler_disconnect (gkb->eventbox, gkb->button_press_id);
+      g_signal_handler_disconnect (gkb->applet, gkb->button_press_id);
     gkb->button_press_id = -1;
 
     gdk_window_remove_filter (root_window, event_filter, gkb);
@@ -303,7 +312,7 @@ void gkb_update_handlers (GKB *gkb, gboolean disconnect)
     gdk_window_add_filter (root_window, event_filter, gkb);
 
     if (gkb->button_press_id == -1)
-      gkb->button_press_id = g_signal_connect (gkb->eventbox, "button_press_event",
+      gkb->button_press_id = g_signal_connect (gkb->applet, "button_press_event",
                                                G_CALLBACK (gkb_button_press_event_cb), gkb);
 
   }
@@ -428,11 +437,11 @@ loadprop (GKB *gkb, int i)
 
 
   buf = g_strdup_printf ("name_%d",i);
-  actdata->name = gkb_load_pref (gkb, buf, (i?"US 105 key keyboard":"Gnome Keyboard default"));
+  actdata->name = gkb_load_pref (gkb, buf, (i?"US 105 key keyboard":"Gnome Keyboard Default"));
   g_free (buf);
 
   buf = g_strdup_printf ("label_%d", i);
-  actdata->label = gkb_load_pref (gkb, buf, (i?"us":"gkb"));
+  actdata->label = gkb_load_pref (gkb, buf, (i?"us":"default"));
   g_free (buf);
   
   buf = g_strdup_printf ("country_%d", i);
@@ -554,9 +563,9 @@ create_gkb_widget (GKB *gkb)
   gkb->eventbox = gtk_event_box_new ();
   gtk_widget_show (gkb->eventbox);
 
-  gkb->vbox = gtk_vbox_new (TRUE, 0);
+  gkb->vbox = gtk_vbox_new (FALSE, 0);
   gtk_widget_show (gkb->vbox);
-  gkb->hbox = gtk_hbox_new (TRUE, 0);
+  gkb->hbox = gtk_hbox_new (FALSE, 0);
   gtk_widget_show (gkb->hbox);
 
   gtk_container_add (GTK_CONTAINER (gkb->eventbox), gkb->hbox);
@@ -564,7 +573,7 @@ create_gkb_widget (GKB *gkb)
 
   gkb->image = gtk_image_new ();
 
-  gkb->button_press_id = g_signal_connect (gkb->eventbox, "button_press_event",
+  gkb->button_press_id = g_signal_connect (gkb->applet, "button_press_event",
                                            G_CALLBACK (gkb_button_press_event_cb), gkb);
 
   gkb->darea_frame = gtk_frame_new (NULL);
@@ -823,6 +832,7 @@ gboolean fill_gkb_applet(PanelApplet *applet)
   gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gkb.png");
   
   panel_applet_add_preferences (applet, "/schemas/apps/gkb-applet/prefs", NULL);
+  panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);
 
   do_at_first_run(gkb);
 
@@ -834,7 +844,6 @@ gboolean fill_gkb_applet(PanelApplet *applet)
 
   gtk_widget_show (gkb->darea_frame);
   gtk_container_add (GTK_CONTAINER (gkb->applet), gkb->eventbox);
-
 
   keycode = XKeysymToKeycode(GDK_DISPLAY(), gkb->keysym);
 

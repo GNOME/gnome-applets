@@ -341,17 +341,6 @@ gkb_prop_create_display_category (GkbPropertyBoxInfo * pbi)
   g_list_free (mode);
   size = panel_applet_get_size (PANEL_APPLET (pbi->gkb->applet));
 
-  /* hopeful fix for "bug" #76223 */
-  if (size > GKB_SMALL_PANEL_SIZE) {
-  
-     gkb_prop_label_at (table, 0, 1, _("_Size: "));
-                                                                                     
-     sizes = gkb_prop_get_sizes ();
-     gkb_prop_option_menu_at (table, 1, 1, sizes,
-			   GTK_SIGNAL_FUNC (gkb_prop_size_changed),
-                           pbi, pbi->is_small ? 0 : 1);
-     g_list_free (sizes);
-  }
   return vbox;
 }
 
