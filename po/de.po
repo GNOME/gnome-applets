@@ -9,8 +9,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 1.1.8\n"
-"POT-Creation-Date: 2000-04-13 04:21+0200\n"
-"PO-Revision-Date: 2000-04-13 04:50+02:00\n"
+"POT-Creation-Date: 2000-04-14 08:25+0200\n"
+"PO-Revision-Date: 2000-04-14 08:31+02:00\n"
 "Last-Translator: Matthias Warkus <mawa@iname.com>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -159,7 +159,7 @@ msgid "An analog clock similar to that in CDE panel."
 msgstr "Eine analoge Uhr ähnlich der im CDE-Panel."
 
 #: another_clock/another_clock.c:725 asclock/asclock.c:608
-#: battery/battery.c:944 charpick/charpick.c:582 clockmail/clockmail.c:561
+#: battery/battery.c:944 charpick/charpick.c:587 clockmail/clockmail.c:561
 #: diskusage/diskusage.c:1071 drivemount/drivemount.c:694 geyes/geyes.c:392
 #: gkb/gkb.c:666 gnotes/gnotes_applet.c:180 gweather/gweather-applet.c:193
 #: mini-commander/src/mini-commander_applet.c:398
@@ -171,7 +171,7 @@ msgid "Properties..."
 msgstr "Eigenschaften..."
 
 #: another_clock/another_clock.c:731 asclock/asclock.c:614
-#: battery/battery.c:950 charpick/charpick.c:589 clockmail/clockmail.c:568
+#: battery/battery.c:950 charpick/charpick.c:594 clockmail/clockmail.c:568
 #: diskusage/diskusage.c:1094 drivemount/drivemount.c:700
 #: fifteen/fifteen.c:361 geyes/geyes.c:398 gkb/gkb.c:673
 #: gnotes/gnotes_applet.c:184 gweather/gweather-applet.c:198
@@ -185,7 +185,7 @@ msgid "Help"
 msgstr "Hilfe"
 
 #: another_clock/another_clock.c:735 asclock/asclock.c:619
-#: battery/battery.c:955 cdplayer/cdplayer.c:386 charpick/charpick.c:595
+#: battery/battery.c:955 cdplayer/cdplayer.c:386 charpick/charpick.c:600
 #: clipboard/clipboard.c:339 clockmail/clockmail.c:573
 #: diskusage/diskusage.c:1101 drivemount/drivemount.c:705
 #: fifteen/fifteen.c:366 geyes/geyes.c:403 gkb/gkb.c:680
@@ -299,7 +299,7 @@ msgid "Battery Monitor Settings"
 msgstr "Batteriestatus:"
 
 #. the follow_panel_size check button
-#: battery/properties.c:85 charpick/properties.c:182
+#: battery/properties.c:85 charpick/properties.c:169
 msgid "Follow panel size"
 msgstr "An Panelgröße anpassen"
 
@@ -441,15 +441,15 @@ msgstr ""
 "Gnome-Panelapplet, um Auswahlbereiche zu kopieren, wiedereinzufügen und in "
 "einer Chronik festzuhalten. Freigegeben unter der GNU General Public License."
 
-#: charpick/charpick.c:440
+#: charpick/charpick.c:445
 msgid "Character Picker"
 msgstr "Zeichenwähler"
 
-#: charpick/charpick.c:442
+#: charpick/charpick.c:447
 msgid "Copyright (C) 1998"
 msgstr "Copyright (C) 1998"
 
-#: charpick/charpick.c:444
+#: charpick/charpick.c:449
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -458,40 +458,49 @@ msgstr ""
 "meiner Tastatur sind. Freigegeben unter der GNU General Public\n"
 "License."
 
-#: charpick/properties.c:168
-msgid "Character Picker Settings"
-msgstr "Zeichenwähler-Einstellungen"
-
-#: charpick/properties.c:176
+#: charpick/properties.c:163
 msgid "Minimum number of cells: (for autosize)"
 msgstr "Minmale Anzahl Zellen: (für automatische Anpassung)"
 
-#: charpick/properties.c:177
+#: charpick/properties.c:164
 msgid "Size of button: (pixels)"
 msgstr "Größe der Knöpfe (in Pixel):"
 
-#: charpick/properties.c:178
+#: charpick/properties.c:165
 msgid "Number of rows of buttons:"
 msgstr "Anzahl Zeilen für Knöpfe:"
 
-#: charpick/properties.c:179
+#: charpick/properties.c:166
 msgid "Number of columns of buttons:"
 msgstr "Anzahl Spalten für Knöpfe:"
 
 #. Size
-#: charpick/properties.c:267 diskusage/properties.c:365
+#: charpick/properties.c:254 diskusage/properties.c:365
 #: mini-commander/src/preferences.c:596 tickastat/properties.c:492
 msgid "Size"
 msgstr "Größe"
 
-#: charpick/properties.c:285
+#: charpick/properties.c:273
 msgid "Default character list:"
 msgstr "Standard-Zeichenliste:"
 
+#: charpick/properties.c:277
+msgid ""
+"These characters will appear when the panel is started. To return to this "
+"list, hit <space> while the applet has focus."
+msgstr ""
+"Diese Zeichen werden erscheinen, wenn das Panel gestartet wird.  Drücken Sie\n"
+"bitte die <Leertaste>, wenn das Applet den Focus hat, um zu dieser Liste\n"
+"zurückzugelangen."
+
 #. add tab to propwindow
-#: charpick/properties.c:300
+#: charpick/properties.c:293
 msgid "Default List"
 msgstr "Standardliste"
+
+#: charpick/properties.c:330
+msgid "Character Picker Settings"
+msgstr "Zeichenwähler-Einstellungen"
 
 #: clockmail/clockmail.c:62 slashapp/slashapp.c:137 sound-monitor/main.c:41
 #: tickastat/main.c:190
@@ -855,7 +864,11 @@ msgid ""
 "to CVS.So long, and thanks for all the fish.\n"
 "Thanks for Balazs Nagy (Kevin)<julian7@kva.hu> for minor help."
 msgstr ""
-"Dieses Applet schaltet zwischen Tastaturbelegungen zuschalten. Nicht mehr. Es benutzt setxkbmap oder xmodmap. Die Haupt-Web-Site dieses Programms ist vorübergehend zur URL http://lsc.kva.hu/gkb umgezogen. Schicken Sie mir ihre Flagge, bitte (Größe 60x40), ich werde sie ins CVS einbringen. Macht's gut, und danke für den Fisch.\n"
+"Dieses Applet schaltet zwischen Tastaturbelegungen zuschalten. Nicht mehr. "
+"Es benutzt setxkbmap oder xmodmap. Die Haupt-Web-Site dieses Programms ist "
+"vorübergehend zur URL http://lsc.kva.hu/gkb umgezogen. Schicken Sie mir ihre "
+"Flagge, bitte (Größe 60x40), ich werde sie ins CVS einbringen. Macht's gut, "
+"und danke für den Fisch.\n"
 "Mein Dank gilt Balazs Nagy (Kevin)<julian7@kva.hu> für ein wenig Hilfe."
 
 #: gnotes/gnote.c:225
