@@ -499,7 +499,7 @@ gkb_prop_map_combo_at (GtkWidget * table, gint row, gint col,
   g_signal_connect (entry, "changed",
 		      G_CALLBACK (gkb_prop_map_data_changed), mdi);
 
-  gtk_label_set_mnemonic_widget(GTK_LABEL(label_prop_map), entry);
+  gtk_label_set_mnemonic_widget(GTK_LABEL(label_prop_map), entry); 
   if (gail_loaded)
     {
       add_atk_relation(combo, label_prop_map, ATK_RELATION_LABELLED_BY);
@@ -536,10 +536,10 @@ gkb_prop_map_pixmap_at (GtkWidget * table, gint row, gint col,
 		      "changed", G_CALLBACK (gkb_prop_map_data_changed),
 		      mdi);
   
+  gtk_label_set_mnemonic_widget(GTK_LABEL(label_prop_map), icon_entry); 
   if (gail_loaded)
   {
     add_atk_relation(icon_entry, label_prop_map, ATK_RELATION_LABELLED_BY);
-    add_atk_relation(label_prop_map, icon_entry, ATK_RELATION_LABEL_FOR);
   }
   return icon_entry;
 }
@@ -637,7 +637,7 @@ gkb_prop_map_edit (GkbPropertyBoxInfo * pbi)
   mdi->country_entry = entry;
   g_list_free (list);
 
-  gkb_prop_map_label_at (right_table, 0, 4, _("Flag\nPixmap"));
+  gkb_prop_map_label_at (right_table, 0, 4, _("_Flag\nPixmap:"));
   mdi->icon_entry =
     gkb_prop_map_pixmap_at (right_table, 1, 4, mdi, keymap->flag);
 
