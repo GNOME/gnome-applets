@@ -448,9 +448,9 @@ create_computer_mixer_widget(GtkWidget ** mixer,
 	hscale = hslider_new();
 	
         hadj=(GtkAdjustment *) gtk_adjustment_new (-50, -VOLUME_MAX, 0.0, 
-					50.0, 25.0, 0.0);
+					VOLUME_MAX/100, VOLUME_MAX/10, 0.0);
         vadj=(GtkAdjustment *) gtk_adjustment_new (-50, -VOLUME_MAX, 0.0, 
-					50.0, 25.0, 0.0);
+					VOLUME_MAX/100, VOLUME_MAX/10, 0.0);
 
 	hlightwid = gnome_pixmap_new_from_xpm_d(lamp_small_xpm);
 	vlightwid = gnome_pixmap_new_from_xpm_d(lamp_small_xpm);
