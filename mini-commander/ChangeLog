@@ -1,4 +1,11 @@
+2002-10-04  Mark McLoughlin  <mark@skynet.ie>
+
+	* src/mc-install-default-macros.c: (main): use
+	gconf_client_suggest_sync to ensure the defaults
+	actually get installed.
+
 2002-10-02  Arvind Samptur <arvind.samptur@wipro.com>
+
 	* src/command_line.c: (history_list_key_press_cb)
 	Ignore cltr+space key press. There is a default binding
 	for this combination in gtktreeview. Fixes #94077

@@ -145,11 +145,19 @@ main (int argc, char **argv)
 	}
 
 	client = gconf_client_get_for_engine (conf);
-	gconf_engine_unref (conf);
 
 	install_default_macros_list (client, MC_PATTERNS_SHEMA_KEY, G_STRUCT_OFFSET (MCDefaultMacro, pattern));
 	install_default_macros_list (client, MC_COMMANDS_SHEMA_KEY, G_STRUCT_OFFSET (MCDefaultMacro, command));
 
+	gconf_client_suggest_sync (client, &error);
+	if (error) {
+		fprintf (stderr, _("Error syncing config data: %s"),
+			 error->message);
+		g_error_free (error);
+		return 1;
+	}
+
+	gconf_engine_unref (conf);
 	g_object_unref (client);
 
 	return 0;
