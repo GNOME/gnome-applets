@@ -4,7 +4,7 @@
   <para>
    <application>Character Picker</application> applet, shown in <xref
    linkend="charpickapplet-fig">, allows you to easily write many
-   characters which are not available on standard keyboards, such as
+   characters which are not available on standard keyboards such as
    accented characters, certain mathemathical symbols and punctuation,
    and some other special symbols.  To add this applet to a 
    <interface>Panel</interface>, 
@@ -43,7 +43,7 @@
     left-click on it to copy the symbol into the buffer.  The
     character should appear as a depressed button.  This is similar to
     the common Copy command available in many programs.  To paste the
-    symbol in any window, just click in the window with the center
+    symbol in any window, just click in the window with the middle
     mouse button.  Most applications which have Copy and Paste
     features will also allow you to paste the symbol using its Paste
     command.
@@ -54,7 +54,7 @@
     <para>
      Note that some applications do not support ISO-8859-1
      characters.  These applications will not display some characters
-     in the <application>Character Picker</application> applet.
+     from the <application>Character Picker</application> applet.
     </para>
    </note>
 
@@ -65,7 +65,7 @@
      highlighting it with the first mouse button to copy the text and
      then pasting the text by pressing the middle mouse button.  
      Note that <application>Character Picker</application> uses the
-     same buffer for storing its character that X uses. Thus, when you
+     same copy buffer as X uses. Thus, when you
      select a character in the <application>Character
      Picker</application> it replaces any previous text in the buffer
      from highlighting text.  Similarly, if you have selected a
@@ -138,7 +138,8 @@
 
       <listitem>
        <para>
-        Follow panel size &mdash; If this button is checked, the
+        <guibutton>Follow panel size</guibutton> &mdash; If this
+        button is checked, the
         <application>Character Picker</application> applet will
         automatically set the appropriate number of columns and rows
         of characters to fit in the <interface>Panel</interface>.
@@ -147,7 +148,8 @@
 
       <listitem>
        <para>
-        Minimum number of cells: (for autosize) &mdash; This sets the
+        <guilabel>Minimum number of cells</guilabel>: (for autosize)
+        &mdash; This sets the
         minimum number of character buttons (or "cells") which will be
         shown. The actual number of character buttons may exceed this
         number, depending upon the <interface>Panel</interface> size
@@ -160,7 +162,8 @@
 
       <listitem>
        <para>
-        Number of rows of buttons: &mdash; This determines the number
+        <guilabel>Number of rows of buttons</guilabel>: &mdash; This
+        determines the number
         of rows of character buttons (or "cells") that appear in the
         applet. (This variable does not influence the cell layout if
         the <guibutton>Follow panel size</guibutton> button is selected.)
@@ -169,7 +172,8 @@
 
       <listitem>
        <para>
-        Number of columns of buttons: &mdash; This determines the number
+        <guilabel>Number of columns of buttons</guilabel>: &mdash;
+        This determines the number
         of columns of character buttons (or "cells") that appear in the
         applet. (This variable does not influence the cell layout if
         the <guibutton>Follow panel size</guibutton> button is selected.)
@@ -178,7 +182,8 @@
 
       <listitem>
        <para>
-        Size of button: (pixels) &mdash; This is the size (in pixels)
+        <guilabel>Size of button</guilabel>: (pixels) &mdash; This is
+        the size (in pixels)
         of each character button in the applet.
        </para>
       </listitem>
@@ -192,11 +197,12 @@
 
       <listitem>
        <para>
-        Default character list &mdash; This is the list of characters
+        <guilabel>Default character list</guilabel> &mdash; This is
+        the list of characters
         which will be shown in the applet when you press the space
         bar. This is a convenient way to keep a list of your most
         frequently used characters. Just enter your most frequently
-        used characters in this entry.
+        used characters here.
        </para>
       </listitem>
 
@@ -206,9 +212,11 @@
     <para> 
       After you have made all the changes you want, click on
       <guibutton>OK</guibutton> to apply the changes and close the
-      <interface>Properties</interface> dialog. To cancel the changes
-      and return to previous values, click the
-      <guibutton>Cancel</guibutton> button.
+      <interface>Properties</interface> dialog. Click
+      <guibutton>Apply</guibutton> to apply changes without closing.
+      <guibutton>Close</guibutton> closes
+      <interface>Properties</interface> without saving changes which
+      have not been applied.  Applied changes cannot be cancelled.
     </para>
   </sect2>
 
