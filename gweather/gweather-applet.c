@@ -259,6 +259,36 @@ applet_destroy (GtkWidget *widget, GWeatherApplet *gw_applet)
 
     if (gw_applet->gweather_dialog)
        gtk_widget_destroy (gw_applet->gweather_dialog);
+
+    if (gw_applet->timeout_tag > 0) {
+       gtk_timeout_remove(gw_applet->timeout_tag);
+       gw_applet->timeout_tag = 0;
+    }
+	
+    if (gw_applet->gweather_info->metar_handle) {
+       gnome_vfs_async_cancel(gw_applet->gweather_info->metar_handle);
+       gw_applet->gweather_info->metar_handle = 0;
+    }
+
+    if (gw_applet->gweather_info->iwin_handle) {
+       gnome_vfs_async_cancel(gw_applet->gweather_info->iwin_handle);
+       gw_applet->gweather_info->iwin_handle = 0;
+    }
+
+    if (gw_applet->gweather_info->wx_handle) {
+       gnome_vfs_async_cancel(gw_applet->gweather_info->wx_handle);
+       gw_applet->gweather_info->wx_handle = 0;
+    }
+
+    if (gw_applet->gweather_info->met_handle) {
+       gnome_vfs_async_cancel(gw_applet->gweather_info->met_handle);
+       gw_applet->gweather_info->met_handle = 0;
+    }
+
+    if (gw_applet->gweather_info->bom_handle) {
+       gnome_vfs_async_cancel(gw_applet->gweather_info->bom_handle);
+       gw_applet->gweather_info->bom_handle = 0;
+    }
 }
 
 void gweather_applet_create (GWeatherApplet *gw_applet)
