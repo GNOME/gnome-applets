@@ -1,5 +1,13 @@
 2005-03-28  Ryan Lortie  <desrt@desrt.ca>
 
+	* gweather-xml.c: Lots of fixes:
+	Fix translatability of locations which has been broken for a while.
+	Don't use gnome_i18n_get_language_list anymore (bug #170196).
+	Don't pass around the locale preferences string.
+	Remove the special casing of 'cities' as being entirely separate.
+
+2005-03-28  Ryan Lortie  <desrt@desrt.ca>
+
 	* gweather-pref.c: Fix the check to ensure that spurious gconf
 	updates are not performed to consider the 'use_default' flags
 	for each of the 4 unit types (temperature, pressure, wind speed,
