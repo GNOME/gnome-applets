@@ -29,6 +29,8 @@
 #include "button_off.xpm"
 #include "button_on.xpm"
 
+#include <stdlib.h>
+#include <signal.h>
 #include <errno.h>
 #include <ctype.h>
 
@@ -127,12 +129,26 @@ static void about_cb (AppletWidget *widget, gpointer data)
 static int is_Modem_on()
 {
 	FILE *f = 0;
+	gchar buf[64];
+	gchar *ptr;
+	pid_t pid = -1;
 
 	f = fopen(lock_file, "r");
 
 	if(!f) return FALSE;
 
+	if (fgets(buf, sizeof(buf), f) == NULL)
+		{
+		fclose(f);
+		return FALSE;
+		}
 	fclose(f);
+
+	ptr = buf;
+	while (*ptr == '0' || *ptr == ' ') ptr++;
+	pid = (pid_t)strtol(ptr, NULL, 0);
+	if (pid < 1 || (kill (pid, 0) == -1 && errno != EPERM)) return FALSE;
+
 	return TRUE;
 }
 
