@@ -706,7 +706,6 @@ static gint updateOutput(gpointer data)
 	static void about_cb (BonoboUIComponent *uic,
 			      StockData         *stockdata, 
 			      const gchar       *verbname) {
-		GdkPixbuf *pixbuf;
 
 		static const gchar *authors[] = {
 			"Jayson Lorenzen <jayson_lorenzen@yahoo.com>",
@@ -720,45 +719,25 @@ static gint updateOutput(gpointer data)
 			NULL
 		};
 
-		const gchar *translator_credits = _("translator_credits");
-
-		if (stockdata->about_dialog) {
-			gtk_window_set_screen (GTK_WINDOW (stockdata->about_dialog),
-					       gtk_widget_get_screen (stockdata->applet));
-
-			gtk_window_present (GTK_WINDOW (stockdata->about_dialog));
-			return;
-		}
-
-		pixbuf = gtk_icon_theme_load_icon (
-				gtk_icon_theme_get_default (),
-				"gnome-money", 48, 0, NULL);
-
-		stockdata->about_dialog = gnome_about_new (_("Stock Ticker"), VERSION,
-		"(C) 2000 Jayson Lorenzen, Jim Garrison, Rached Blili",
-		_("This program connects to "
-		"a popular site and downloads current stock quotes.  "
-		"The GNOME Stock Ticker is a free Internet-based application.  "
-		"It comes with ABSOLUTELY NO WARRANTY.  "
-		"Do not use the GNOME Stock Ticker for making investment decisions; it is for "
-		"informational purposes only."),
-		authors,
-		documenters,
-		strcmp (translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
-		pixbuf);
-		
-		if (pixbuf)
-			gdk_pixbuf_unref (pixbuf);
-
-		gtk_window_set_screen (GTK_WINDOW (stockdata->about_dialog),
-				       gtk_widget_get_screen (stockdata->applet));
-
-		g_signal_connect(G_OBJECT (stockdata->about_dialog), "destroy",
-				 G_CALLBACK (gtk_widget_destroyed), &stockdata->about_dialog);
-
-		gtk_widget_show (stockdata->about_dialog);
-
-		return;
+		gtk_show_about_dialog(NULL,
+			"name",		_("Stock Ticker"),
+			"version",	VERSION,
+			"copyright",	"\xC2\xA9 2000 Jayson Lorenzen, "
+					"Jim Garrison, Rached Blili",
+			"comments",	_("This program connects to "
+					"a popular site and downloads current "
+					"stock quotes.\n\n"
+					"The GNOME Stock Ticker is a free "
+					"Internet-based application. It comes "
+					"with ABSOLUTELY NO WARRANTY.\n\n"
+					"Do not use the GNOME Stock Ticker for "
+					"making investment decisions; it is "
+					"for informational purposes only."),
+			"authors",	authors,
+			"documenters",	documenters,
+			"translator-credits",	_("translator-credits"),
+			"logo_icon_name",	"gnome-money",
+			NULL);
 	}
 
 	static void help_cb (BonoboUIComponent *uic,
@@ -1266,7 +1245,7 @@ static gint updateOutput(gpointer data)
 		
 		hbox = gtk_hbox_new (FALSE, 12);
 		gtk_box_pack_start (GTK_BOX (mainhbox), hbox, FALSE, FALSE, 0);
-		label = gtk_label_new_with_mnemonic (_("_New symbol:"));
+		label = gtk_label_new_with_mnemonic (_("Add _new symbol:"));
 		gtk_box_pack_start(GTK_BOX(hbox),label,TRUE,TRUE,0);
 		entry = gtk_entry_new();
 		g_object_set_data(G_OBJECT(entry),"list",(gpointer)list);
@@ -1274,9 +1253,7 @@ static gint updateOutput(gpointer data)
 		g_signal_connect (G_OBJECT (entry), "activate",
 				  G_CALLBACK (add_symbol), stockdata);		
 		set_relation (entry, GTK_LABEL (label));
-		size_group = gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);		
-		button = gtk_button_new_with_mnemonic(_("_Add"));
-		gtk_size_group_add_widget (size_group, button);
+		button = gtk_button_new_from_stock (GTK_STOCK_ADD);
 		g_object_set_data (G_OBJECT (button), "entry", entry);
 		gtk_box_pack_start(GTK_BOX(hbox),button,TRUE,TRUE,0);
 		soft_set_sensitive (button, FALSE);
@@ -1284,8 +1261,7 @@ static gint updateOutput(gpointer data)
 				  G_CALLBACK (add_button_clicked), stockdata);
 		g_signal_connect (G_OBJECT (entry), "changed",
 					  G_CALLBACK (entry_changed), button);
-		button = gtk_button_new_with_mnemonic(_("_Remove"));
-		gtk_size_group_add_widget (size_group, button);
+		button = gtk_button_new_from_stock (GTK_STOCK_REMOVE);
 		g_object_set_data (G_OBJECT (button), "list", list);
 		g_signal_connect (G_OBJECT (button), "clicked",
 				  G_CALLBACK (remove_symbol), stockdata);
