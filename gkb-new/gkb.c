@@ -191,6 +191,9 @@ gkb_count_sizes (GKB * gkb)
   gint size;
 
   size = panel_applet_get_size (PANEL_APPLET (gkb->applet));
+  size = panel_applet_get_size (PANEL_APPLET (gkb->applet));
+
+  printf(" a %d size panel",size);fflush(stdout);
 
   /* Determine if this pannel requires different handling because it is very small */
   switch (gkb->orient)
@@ -947,7 +950,7 @@ gboolean fill_gkb_applet(PanelApplet *applet)
 
   gtk_widget_show (GTK_WIDGET(gkb->applet));
 
-  alert(_("Welcome at GKB! Please visit my preferences!"));
+  gkb_update(gkb,TRUE);
 
   return TRUE;
 }
