@@ -88,6 +88,8 @@ gswitchit_plugins_capplet_SOURCES = gswitchit-plugins.c \
 gswitchit_plugins_capplet_CFLAGS = $(COMMON_CFLAGS) \
             $(GNOME_LIBS2_CFLAGS)
 
+gswitchit_plugins_capplet_LDFLAGS = -export-dynamic
+
 gswitchit_plugins_capplet_LDADD = $(COMMON_LIBS) \
             $(GNOME_LIBS2_LIBS) \
             $(top_builddir)/libgswitchit/libgswitchit.a  \
