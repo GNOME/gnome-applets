@@ -84,7 +84,40 @@ WIDTH="100%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->1999-01-16  Oliver Maruhn  &#60;om@linuxhq.com&#62;
+>1999-01-17  Oliver Maruhn  &#60;om@linuxhq.com&#62;
+
+	* src/preferences.c (resetTemporaryPrefs): added
+	(propertiesBox_apply_signal): cleanup [now using resetTemporaryPrefs()]
+
+	* src/preferences.h (MAX_PREFIXES): now up to 99 macros are supported
+
+	* src/preferences.c (propertiesBox): macros put into a scrolled
+ 	window
+
+	* src/command_line.c (showHistory_signal): only add scrollbars when needed
+
+1999-01-16  Oliver Maruhn  &#60;om@linuxhq.com&#62;
+
+	* src/command_line.c (commandKey_event): more control keys
+ 	supported
+
+	* src/cmd_completion.c (cmdCompletion): now command completion
+ 	delivers the largest possible completion [even if the given
+ 	command is not unique]
+
+	* src/macro.c (prefixLength_IncludingWhithespaces): added
+
+	* src/cmd_completion.c (cmdCompletion): now command completion
+ 	even works if a prefix is used
+
+	* src/macro.c (expandCommand): added
+	(prefixLength): added
+	(getPrefix): added
+
+	* src/macro.[ch]: added
+
+	* src/mini-commander_applet.c (main): tooltips added for
+ 	history/browser buttons
 
 	* src/preferences.c (loadSession): load history on program start
 	(saveSession): store history permanently
