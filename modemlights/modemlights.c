@@ -87,13 +87,13 @@ static int Modem_on()
 static void command_connect_cb( gint button, gpointer data)
 {
 	confirm_dialog = FALSE;
-	if (!button) system(command_connect);
+	if (!button) gnome_execute_shell(NULL, command_connect);
 }
 
 static void command_disconnect_cb( gint button, gpointer data)
 {
 	confirm_dialog = FALSE;
-	if (!button) system(command_disconnect);
+	if (!button) gnome_execute_shell(NULL, command_disconnect);
 }
 
 static void dial_cb()
