@@ -5,10 +5,11 @@
  *
  */
 
+#include <math.h>
+
 #include "clockmail.h"
 #include "pixbuf_ops.h"
 
-#include "math.h"
 
 /*
  * Copies src to dest, optionally applying alpha
