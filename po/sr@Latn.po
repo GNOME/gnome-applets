@@ -7,17 +7,16 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-applets 2.4\n"
+"Project-Id-Version: gnome-applets 2.5\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-10-04 02:54+0200\n"
-"PO-Revision-Date: 2003-10-04 03:15+0200\n"
+"POT-Creation-Date: 2003-10-23 20:56+0200\n"
+"PO-Revision-Date: 2003-10-23 20:57+0200\n"
 "Last-Translator: Danilo Šegan <danilo@prevod.org>\n"
 "Language-Team: Serbian (sr) <serbiangnome-lista@nongnu.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3;    plural=n%10==1 && n%100!=11 ? 0 :    n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3;    plural=n%10==1 && n%100!=11 ? 0 :    n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
 #: accessx-status/GNOME_AccessxApplet.xml.h:1
 #: battstat/GNOME_BattstatApplet.xml.h:1 cdplayer/GNOME_CDPlayerApplet.xml.h:1
@@ -57,7 +56,7 @@ msgid "AccessX Status Applet Factory"
 msgstr "Proizvodnja programčeta za stanje upotrebljivosti"
 
 #: accessx-status/GNOME_AccessxStatusApplet.server.in.in.h:2
-#: accessx-status/applet.c:1189
+#: accessx-status/applet.c:1177
 msgid "Keyboard Accessibility Status"
 msgstr "Stanje upotrebljivosti tastature"
 
@@ -79,8 +78,8 @@ msgstr "Prikazuje stanje za mogućonosti u vezi sa upotrebljivošću tastature"
 msgid "Utility"
 msgstr "Pomoćni alati"
 
-#: accessx-status/applet.c:135 battstat/battstat_applet.c:839
-#: cdplayer/cdplayer.c:586 charpick/charpick.c:584 drivemount/drivemount.c:521
+#: accessx-status/applet.c:135 battstat/battstat_applet.c:894
+#: cdplayer/cdplayer.c:591 charpick/charpick.c:584 drivemount/drivemount.c:521
 #: geyes/geyes.c:228 gkb-new/gkb-applet.c:84 gtik/gtik.c:775
 #: gweather/gweather-about.c:44 mailcheck/mailcheck.c:2442
 #: mini-commander/src/about.c:48 mixer/mixer.c:1060
@@ -93,7 +92,7 @@ msgstr ""
 "\n"
 "Prevod.org — prevod na srpski jezik."
 
-#: accessx-status/applet.c:157 accessx-status/applet.c:1192
+#: accessx-status/applet.c:157 accessx-status/applet.c:1180
 msgid "AccessX Status"
 msgstr "Stanje upotrebljivosti"
 
@@ -118,17 +117,17 @@ msgid "There was an error launching the keyboard capplet : %s"
 msgstr ""
 "Došlo je do greške pri pokretanju kontrolnog programčeta za tastaturu: %s"
 
-#: accessx-status/applet.c:462 accessx-status/applet.c:496
+#: accessx-status/applet.c:463 accessx-status/applet.c:496
 msgid "a"
 msgstr "a"
 
-#: accessx-status/applet.c:1194
+#: accessx-status/applet.c:1182
 msgid "Displays current state of keyboard accessibility features"
 msgstr "Prikazuje tekuće stanje mogućnosti u vezi sa upotrebljivošću tastature"
 
 #. The long name of the applet in the About dialog.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:852
+#: battstat/battstat_applet.c:907
 msgid "Battery Charge Monitor"
 msgstr "Praćenje stanja baterije"
 
@@ -236,49 +235,49 @@ msgstr "Vrednost za žuto"
 
 #. Message displayed if user tries to run applet
 #. on unsupported platform
-#: battstat/battstat_applet.c:286
+#: battstat/battstat_applet.c:329
 msgid "Your platform is not supported!\n"
 msgstr "Vaša platforma nije podržana!\n"
 
-#: battstat/battstat_applet.c:287
+#: battstat/battstat_applet.c:330
 msgid "The applet will not work properly (if at all).\n"
 msgstr "Aplet neće ispravno raditi (ako uopšte radi).\n"
 
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:883
+#: battstat/battstat_applet.c:361 battstat/battstat_applet.c:938
 msgid "High"
 msgstr "Puna"
 
 #. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:885
+#: battstat/battstat_applet.c:363 battstat/battstat_applet.c:940
 msgid "Low"
 msgstr "Slaba"
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:887
+#: battstat/battstat_applet.c:365 battstat/battstat_applet.c:942
 msgid "Critical"
 msgstr "Kritično"
 
 #. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:324 battstat/battstat_applet.c:889
+#: battstat/battstat_applet.c:367 battstat/battstat_applet.c:944
 msgid "Charging"
 msgstr "Punjenje"
 
-#: battstat/battstat_applet.c:405
+#: battstat/battstat_applet.c:448
 #, c-format
 msgid "Battery low (%d%%) and AC is offline"
 msgstr "Baterija je prazna (%d%%) a napajanje nije uključeno"
 
-#: battstat/battstat_applet.c:429
+#: battstat/battstat_applet.c:472
 msgid "Battery is now fully re-charged!"
 msgstr "Baterija je u potpunosti napunjena!"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:448 battstat/battstat_applet.c:1047
+#: battstat/battstat_applet.c:491 battstat/battstat_applet.c:1102
 #, c-format
 msgid ""
 "System is running on battery power\n"
@@ -290,7 +289,7 @@ msgstr ""
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:452 battstat/battstat_applet.c:1055
+#: battstat/battstat_applet.c:495 battstat/battstat_applet.c:1110
 #, c-format
 msgid ""
 "System is running on AC power\n"
@@ -301,32 +300,32 @@ msgstr ""
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:458 battstat/battstat_applet.c:979
-#: battstat/battstat_applet.c:1068
+#: battstat/battstat_applet.c:501 battstat/battstat_applet.c:1034
+#: battstat/battstat_applet.c:1123
 msgid "System is running on battery power"
 msgstr "Sistem radi na baterije"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:461 battstat/battstat_applet.c:985
-#: battstat/battstat_applet.c:1074
+#: battstat/battstat_applet.c:504 battstat/battstat_applet.c:1040
+#: battstat/battstat_applet.c:1129
 msgid "System is running on AC power"
 msgstr "Sistem se napaja iz električne mreže"
 
-#: battstat/battstat_applet.c:475
+#: battstat/battstat_applet.c:518
 msgid "N/A"
 msgstr "Nedostupno"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:599 battstat/battstat_applet.c:959
+#: battstat/battstat_applet.c:642 battstat/battstat_applet.c:1014
 #, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
 msgstr "Sistem radi na baterije. Baterija: %d%% (%s)"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:606 battstat/battstat_applet.c:966
+#: battstat/battstat_applet.c:649 battstat/battstat_applet.c:1021
 #, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
 msgstr "Sistem se napaja iz električne mreže. Baterija: %d%% (%s)"
@@ -335,33 +334,33 @@ msgstr "Sistem se napaja iz električne mreže. Baterija: %d%% (%s)"
 #. battery frame when the computer is using battery
 #. power and the battery isn't present. Not a
 #. possible combination, I guess... :)
-#: battstat/battstat_applet.c:617
+#: battstat/battstat_applet.c:660
 msgid "System is running on battery power. Battery: Not present"
 msgstr "Sistem radi na baterije. Baterija: pazi kad je nema!"
 
 #. This string will display as a tooltip over the
 #. battery frame when the computer is using AC
 #. power and the battery isn't present.
-#: battstat/battstat_applet.c:623
+#: battstat/battstat_applet.c:666
 msgid "System is running on AC power. Battery: Not present"
 msgstr "Sistem se napaja iz električne mreže. Baterija: Nije prisutna"
 
 #. Displayed as a tooltip over the battery meter when there is
 #. a battery present. %d will hold the current charge and %s will
 #. hold the status of the battery, (High, Low, Critical, Charging.
-#: battstat/battstat_applet.c:632
+#: battstat/battstat_applet.c:675
 #, c-format
 msgid "Battery: %d%% (%s)"
 msgstr "Baterija: %d%% (%s)"
 
 #. Displayed as a tooltip over the battery meter when no
 #. battery is present.
-#: battstat/battstat_applet.c:639
+#: battstat/battstat_applet.c:682
 msgid "Battery: Not present"
 msgstr "Baterija: nije prisutna"
 
 #. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: battstat/battstat_applet.c:722
+#: battstat/battstat_applet.c:777
 msgid ""
 "Can't open the APM device!\n"
 "\n"
@@ -373,7 +372,7 @@ msgstr ""
 "Proverite da li imate dozvole za upotrebu APM uređaja."
 
 #. Displayed if the APM system is disabled (Used under *BSD)
-#: battstat/battstat_applet.c:731
+#: battstat/battstat_applet.c:786
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
@@ -383,7 +382,7 @@ msgstr ""
 "Pokušajte sa pokretanjem „apm -e 1“ (FreeBSD) i \n"
 "proverite da li je to pomoglo.\n"
 
-#: battstat/battstat_applet.c:787
+#: battstat/battstat_applet.c:842
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -393,7 +392,7 @@ msgstr ""
 "Pokušajte da ispravite ovu grešku"
 
 #. Probably because the shell_ret is != 0
-#: battstat/battstat_applet.c:790
+#: battstat/battstat_applet.c:845
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command, the command returned "
@@ -404,7 +403,7 @@ msgstr ""
 "d“\n"
 "Pokušajte da ispravite ovu grešku"
 
-#: battstat/battstat_applet.c:798
+#: battstat/battstat_applet.c:853
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -414,17 +413,23 @@ msgstr ""
 
 #. if your charset supports it, please replace the "o" in
 #. * "Jorgen" into U00F6
-#: battstat/battstat_applet.c:829
+#: battstat/battstat_applet.c:884
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jurgen Person <jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:854
+#: battstat/battstat_applet.c:909
 msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 msgstr "©2000 Gnuliks Društvo, ©2002 Zadužbina za Slobodni Softver"
 
-#: battstat/battstat_applet.c:855
+#: battstat/battstat_applet.c:910
 msgid "This utility shows the status of your laptop battery."
 msgstr "Ova alatka prikazuje stanje baterije vašeg prenosnog računara."
+
+#: battstat/battstat_applet.c:1544
+msgid ""
+"Can't access ACPI events in /var/run/acpid.socket! Make sure the ACPI "
+"subsystem is working and the acpid daemon is running."
+msgstr "Ne mogu da pristupim ACPI događajima preko /var/run/acpid.socket! Proverite da li ACPI podsistem radi i da li je uslužni program acpid pokrenut."
 
 #: battstat/battstat_applet.glade.h:1
 #: mini-commander/src/mini-commander.glade.h:1
@@ -474,7 +479,7 @@ msgstr "Postavke praćenja stanja baterije"
 
 #: battstat/battstat_applet.glade.h:13 drivemount/properties.c:349
 #: gweather/gweather-pref.c:761 mailcheck/mailcheck.c:2031
-#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:560
+#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:559
 msgid "General"
 msgstr "Opšte"
 
@@ -552,8 +557,8 @@ msgstr "Baterija u potpunosti napunjena"
 msgid "Battery power low"
 msgstr "Baterija slaba"
 
-#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:604
-#: cdplayer/cdplayer.c:1052
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:609
+#: cdplayer/cdplayer.c:1057
 msgid "CD Player"
 msgstr "Puštanje CD-a"
 
@@ -578,23 +583,23 @@ msgstr "Aplet panela za puštanje muzičkih CD-a"
 msgid "_Open CD Player"
 msgstr "P_okreni puštanje CD-a"
 
-#: cdplayer/cdplayer.c:171 cdplayer/cdplayer.c:1042
+#: cdplayer/cdplayer.c:171 cdplayer/cdplayer.c:1047
 msgid "Stop"
 msgstr "Zaustavi"
 
-#: cdplayer/cdplayer.c:175 cdplayer/cdplayer.c:1044
+#: cdplayer/cdplayer.c:175 cdplayer/cdplayer.c:1049
 msgid "Play / Pause"
 msgstr "Pusti / Pauza"
 
-#: cdplayer/cdplayer.c:179 cdplayer/cdplayer.c:1046
+#: cdplayer/cdplayer.c:179 cdplayer/cdplayer.c:1051
 msgid "Eject"
 msgstr "Izbaci"
 
-#: cdplayer/cdplayer.c:183 cdplayer/cdplayer.c:1048
+#: cdplayer/cdplayer.c:183 cdplayer/cdplayer.c:1053
 msgid "Previous Track"
 msgstr "Prethodna pesma"
 
-#: cdplayer/cdplayer.c:187 cdplayer/cdplayer.c:1050
+#: cdplayer/cdplayer.c:187 cdplayer/cdplayer.c:1055
 msgid "Next Track"
 msgstr "Sledeća pesma"
 
@@ -602,37 +607,37 @@ msgstr "Sledeća pesma"
 msgid "You do not have permission to use the CD player."
 msgstr "Nemate dovoljno ovlašćenja da puštate CD-e."
 
-#: cdplayer/cdplayer.c:368 mixer/mixer.c:1026 multiload/main.c:119
+#: cdplayer/cdplayer.c:373 mixer/mixer.c:1026 multiload/main.c:119
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "Došlo je do greške pri izvršavanju „%s“: %s"
 
-#: cdplayer/cdplayer.c:419
+#: cdplayer/cdplayer.c:424
 #, c-format
 msgid "%s does not seem to be a CD player"
 msgstr "Čini se da %s ne predstavlja CD uređaj"
 
-#: cdplayer/cdplayer.c:485
+#: cdplayer/cdplayer.c:490
 msgid "CD Player Preferences"
 msgstr "Postavke za puštanje CD-a"
 
-#: cdplayer/cdplayer.c:506
+#: cdplayer/cdplayer.c:511
 msgid "Device _path:"
 msgstr "_Putanja uređaja:"
 
-#: cdplayer/cdplayer.c:515
+#: cdplayer/cdplayer.c:520
 msgid "Device Path"
 msgstr "Putanja do uređaja"
 
-#: cdplayer/cdplayer.c:515
+#: cdplayer/cdplayer.c:520
 msgid "Set the device path here"
 msgstr "Ovde postavite putanju do uređaja"
 
-#: cdplayer/cdplayer.c:518
+#: cdplayer/cdplayer.c:523
 msgid "Use _Default"
 msgstr "Koristiti _podrazumevano"
 
-#: cdplayer/cdplayer.c:605
+#: cdplayer/cdplayer.c:610
 msgid ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
@@ -640,39 +645,39 @@ msgstr ""
 "© 1997 Zadužbina za Slobodni Softver\n"
 "© 2001 Kris Felps (GNOME 2 izdanje)"
 
-#: cdplayer/cdplayer.c:607 cdplayer/cdplayer.c:1053
+#: cdplayer/cdplayer.c:612 cdplayer/cdplayer.c:1058
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr "Aplet za puštanje CD-a je jednostavan program za vaš panel"
 
-#: cdplayer/cdplayer.c:882 cdplayer/cdplayer.c:893
+#: cdplayer/cdplayer.c:887 cdplayer/cdplayer.c:898
 msgid "Elapsed time"
 msgstr "Proteklo vreme"
 
-#: cdplayer/cdplayer.c:885 cdplayer/cdplayer.c:895
+#: cdplayer/cdplayer.c:890 cdplayer/cdplayer.c:900
 msgid "Track number"
 msgstr "Broj pesme"
 
-#: cdplayer/cdplayer.c:951
+#: cdplayer/cdplayer.c:956
 msgid "Audio device is busy, or being used by another application"
 msgstr "Uređaj za zvuk je zauzet, ili ga koristi neki drugi program"
 
-#: cdplayer/cdplayer.c:1043
+#: cdplayer/cdplayer.c:1048
 msgid "Click this button to Stop playing the CD"
 msgstr "Pritisnite ovo dugme da zaustavite puštanje CD-a"
 
-#: cdplayer/cdplayer.c:1045
+#: cdplayer/cdplayer.c:1050
 msgid "Click this button to Play or Pause the CD"
 msgstr "Pritisnite ovo dugme da pustite ili pauzirate CD"
 
-#: cdplayer/cdplayer.c:1047
+#: cdplayer/cdplayer.c:1052
 msgid "Click this button to eject the CD"
 msgstr "Pritisnite ovo dugme da izbacite CD"
 
-#: cdplayer/cdplayer.c:1049
+#: cdplayer/cdplayer.c:1054
 msgid "Click this button to Play the previous track in the CD"
 msgstr "Pritisnite ovo dugme da pustite prethodnu pesmu sa CD-a"
 
-#: cdplayer/cdplayer.c:1051
+#: cdplayer/cdplayer.c:1056
 msgid "Click this button to Play the next track in the CD"
 msgstr "Pritisnite ovo dugme da pustite sledeću pesmu sa CD-a"
 
@@ -911,7 +916,7 @@ msgid "_Update interval:"
 msgstr "_Vreme između provera:"
 
 #: drivemount/properties.c:406 mailcheck/mailcheck.c:2102
-#: mailcheck/mailcheck.c:2108 modemlights/properties.c:467
+#: mailcheck/mailcheck.c:2108 modemlights/properties.c:466
 msgid "seconds"
 msgstr "sekundi"
 
@@ -2367,7 +2372,7 @@ msgid "Flag and Label"
 msgstr "Zastava i oznaka"
 
 #: gkb-new/prop.c:257 gtik/gtik.c:1530 gweather/gweather-pref.c:746
-#: modemlights/properties.c:443
+#: modemlights/properties.c:442
 msgid "Display"
 msgstr "Prikaz"
 
@@ -2593,7 +2598,7 @@ msgstr "Akcija _opala:"
 msgid "Stock _unchanged:"
 msgstr "Akcija ne_izmenjena:"
 
-#: gtik/gtik.c:1673 modemlights/properties.c:577
+#: gtik/gtik.c:1673 modemlights/properties.c:576
 msgid "_Background:"
 msgstr "_Pozadina:"
 
@@ -4509,115 +4514,115 @@ msgstr "Proveri vlasnika datoteke za zaključavanje"
 msgid "Modem Lights Preferences"
 msgstr "Postavke lampica modema"
 
-#: modemlights/properties.c:450
+#: modemlights/properties.c:449
 msgid "U_pdate every:"
 msgstr "O_sveži svakih:"
 
 # "protok" vise odgovara za "bandwidth", ali zasto da ne i ovako?
 #. extra info checkbox
-#: modemlights/properties.c:475
+#: modemlights/properties.c:474
 msgid "Sho_w connect time and throughput"
 msgstr "Pri_kaži vreme trajanja veze i protok"
 
-#: modemlights/properties.c:485
+#: modemlights/properties.c:484
 msgid "B_link connection status when connecting"
 msgstr "Sta_nje veze treperi pri povezivanju"
 
-#: modemlights/properties.c:495
+#: modemlights/properties.c:494
 msgid "Connections"
 msgstr "Veze"
 
-#: modemlights/properties.c:504
+#: modemlights/properties.c:503
 msgid "Co_nnection command:"
 msgstr "_Naredba za povezivanje:"
 
-#: modemlights/properties.c:529
+#: modemlights/properties.c:528
 msgid "_Disconnection command:"
 msgstr "Naredba za _raskid veze:"
 
 #. confirmation checkbox
-#: modemlights/properties.c:550
+#: modemlights/properties.c:549
 msgid "Con_firm connection"
 msgstr "_Potvrditi uspostavljanje veze"
 
-#: modemlights/properties.c:569
+#: modemlights/properties.c:568
 msgid "Receive Data"
 msgstr "Primljeni podaci"
 
-#: modemlights/properties.c:575
+#: modemlights/properties.c:574
 msgid "_Foreground:"
 msgstr "_Boja:"
 
-#: modemlights/properties.c:580
+#: modemlights/properties.c:579
 msgid "Send Data"
 msgstr "Poslati podaci"
 
-#: modemlights/properties.c:585
+#: modemlights/properties.c:584
 msgid "Foregroun_d:"
 msgstr "Bo_ja:"
 
-#: modemlights/properties.c:587
+#: modemlights/properties.c:586
 msgid "Backg_round:"
 msgstr "Pozad_ina:"
 
-#: modemlights/properties.c:590
+#: modemlights/properties.c:589
 msgid "Connection Status"
 msgstr "Stanje veze"
 
-#: modemlights/properties.c:598
+#: modemlights/properties.c:597
 msgid "Co_nnected:"
 msgstr "Po_vezan:"
 
-#: modemlights/properties.c:600
+#: modemlights/properties.c:599
 msgid "Disconnec_ted:"
 msgstr "Veza _raskinuta:"
 
-#: modemlights/properties.c:603
+#: modemlights/properties.c:602
 msgid "C_onnecting:"
 msgstr "Usp_ostavlja vezu:"
 
-#: modemlights/properties.c:606
+#: modemlights/properties.c:605
 msgid "Text"
 msgstr "Tekst"
 
-#: modemlights/properties.c:614
+#: modemlights/properties.c:613
 msgid "For_eground:"
 msgstr "_Boja:"
 
-#: modemlights/properties.c:616
+#: modemlights/properties.c:615
 msgid "Bac_kground:"
 msgstr "Po_zadina:"
 
-#: modemlights/properties.c:618
+#: modemlights/properties.c:617
 msgid "O_utline"
 msgstr "U_gašene brojke"
 
-#: modemlights/properties.c:621 multiload/properties.c:528
+#: modemlights/properties.c:620 multiload/properties.c:528
 msgid "Colors"
 msgstr "Boje"
 
-#: modemlights/properties.c:630
+#: modemlights/properties.c:629
 msgid "Modem Options"
 msgstr "Podešavanje modema"
 
-#: modemlights/properties.c:639
+#: modemlights/properties.c:638
 msgid "_Device:"
 msgstr "_Uređaj:"
 
-#: modemlights/properties.c:664
+#: modemlights/properties.c:663
 msgid "_Lock file:"
 msgstr "Dato_teka za zaključavanje:"
 
-#: modemlights/properties.c:684
+#: modemlights/properties.c:683
 msgid "_Verify owner of lock file"
 msgstr "_Proveri vlasnika datoteke za zaključavanje"
 
 #. ISDN checkbox
-#: modemlights/properties.c:695
+#: modemlights/properties.c:694
 msgid "U_se ISDN"
 msgstr "_Koristi ISDN"
 
-#: modemlights/properties.c:712
+#: modemlights/properties.c:711
 msgid "Advanced"
 msgstr "Napredno"
 
