@@ -132,7 +132,7 @@ ALL_LINGUAS="am ar az be bg bn bs ca cs cy da de el en_CA en_GB es et eu fa fi f
 GETTEXT_PACKAGE=gnome-applets-2.0
 AC_SUBST(GETTEXT_PACKAGE)
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE", [Gettext Package])
-AC_DEFINE_UNQUOTED(GNOMELOCALEDIR, "${datadir}/locale", [locale directory])
+AC_DEFINE_DIR(GNOMELOCALEDIR, "${datadir}/locale", [locale directory])
 AM_GLIB_GNU_GETTEXT
 
 # this is the directory where the *.{mo,gmo} files are installed
@@ -407,12 +407,12 @@ AC_SUBST(pixmapsdir)
 
 #defined the below to enable help to work for applets 
 
-AC_DEFINE_UNQUOTED(GNOME_ICONDIR, "${iconsdir}", [Gnome Icon Directory])
-AC_DEFINE_UNQUOTED(GNOME_PIXMAPSDIR, "${datadir}/pixmaps", [Gnome Pixmaps Directory])
-AC_DEFINE_UNQUOTED(DATADIR, "${prefix}/share", [datadir])
-AC_DEFINE_UNQUOTED(SYSCONFDIR, "${prefix}/etc", [sysconfdir])
-AC_DEFINE_UNQUOTED(LIBDIR, "${prefix}/lib", [libdir])
-AC_DEFINE_UNQUOTED(PREFIX, "$prefix", [install prefix])
+AC_DEFINE_DIR(GNOME_ICONDIR, "${iconsdir}", [Gnome Icon Directory])
+AC_DEFINE_DIR(GNOME_PIXMAPSDIR, "${datadir}/pixmaps", [Gnome Pixmaps Directory])
+AC_DEFINE_DIR(DATADIR, "${datadir}", [datadir])
+AC_DEFINE_DIR(SYSCONFDIR, "${sysconfdir}", [sysconfdir])
+AC_DEFINE_DIR(LIBDIR, "${libdir}", [libdir])
+AC_DEFINE_DIR(PREFIX, "$prefix", [install prefix])
 
 AC_OUTPUT([
 gnome-applets.spec

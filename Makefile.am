@@ -95,6 +95,7 @@ DIST_SUBDIRS = \
 	null_applet
 
 EXTRA_DIST = \
+	m4/ac-define-dir.m4	\
 	COPYING-DOCS		\
 	gnome-applets.spec.in	\
 	gnome-applets.spec	\
@@ -108,6 +109,8 @@ EXTRA_DIST = \
 # mess behind.
 distuninstallcheck_listfiles = 	\
         find -regex '.*/var/scrollkeeper/.*' -prune -or -type f -print
+
+ACLOCAL_AMFLAGS = -I m4
 
 DISTCLEANFILES = intltool-extract	\
 		 intltool-merge		\
