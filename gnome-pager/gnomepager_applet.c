@@ -24,6 +24,7 @@ GdkPixmap          *p_1 = NULL, *p_2 = NULL, *p_3 = NULL;
 GdkPixmap          *m_1 = NULL, *m_2 = NULL, *m_3 = NULL;
 
 typedef struct {
+        gint                reverse_order; /*bool*/
 	gint                pager_rows;
 	gint                pager_size; /*bool*/
 	gint                tasks_all; /*bool*/
@@ -229,6 +230,16 @@ cb_applet_properties(AppletWidget * widget, gpointer data)
   gtk_object_set_data(GTK_OBJECT(check), "prop", prop);
   gtk_box_pack_start(GTK_BOX(vbox),check,FALSE,FALSE,0);
   
+  check = gtk_check_button_new_with_label(_("Place pagers after tasklist"));
+  gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check), config.reverse_order);
+  gtk_signal_connect(GTK_OBJECT(check), "toggled",
+		     GTK_SIGNAL_FUNC(cb_check), &o_config.reverse_order);
+  gtk_object_set_data(GTK_OBJECT(check), "prop", prop);
+  gtk_box_pack_start(GTK_BOX(vbox), check, FALSE, FALSE, 0);
+  gtk_signal_connect(GTK_OBJECT(sh), "toggled",
+		     GTK_SIGNAL_FUNC(cb_check_enable), check);
+  cb_check_enable(sh,check);
+
   check = gtk_check_button_new_with_label(_("Use small pagers"));
   gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check), config.pager_size);
   gtk_signal_connect(GTK_OBJECT(check), "toggled",
@@ -1408,6 +1419,7 @@ cb_applet_save_session(GtkWidget *w,
   gnome_config_set_int("stuff/show_pager", config.show_pager);
   gnome_config_set_int("stuff/show_icons", config.show_icons);
   gnome_config_set_int("stuff/show_arrow", config.show_arrow);
+  gnome_config_set_bool("stuff/reverse_order", config.reverse_order);
   gnome_config_set_int("stuff/fixed_tasklist", config.fixed_tasklist);
   gnome_config_set_int("stuff/pager_w_0", config.pager_w_0);
   gnome_config_set_int("stuff/pager_h_0", config.pager_h_0);
@@ -1574,6 +1586,7 @@ main(int argc, char *argv[])
   config.show_icons = gnome_config_get_int("stuff/show_icons=1");
   config.show_arrow = gnome_config_get_int("stuff/show_arrow=1");
   config.fixed_tasklist = gnome_config_get_int("stuff/fixed_tasklist=0");
+  config.reverse_order = gnome_config_get_bool("stuff/reverse_order=false");
 
   gdk_error_warnings = 0;  
   get_desktop_names();
@@ -2081,7 +2094,11 @@ init_applet_gui(int horizontal)
   align = gtk_alignment_new(0.5, 0.5, 0.0, 0.0);
   if (config.show_pager)
     gtk_widget_show(align);
-  gtk_box_pack_start(GTK_BOX(main_box), align, FALSE, FALSE, 0);
+
+  if (config.reverse_order)
+     gtk_box_pack_end(GTK_BOX(main_box), align, FALSE, FALSE, 0);
+  else
+     gtk_box_pack_start(GTK_BOX(main_box), align, FALSE, FALSE, 0);
   
   frame = gtk_frame_new(NULL);
   gtk_frame_set_shadow_type(GTK_FRAME(frame), GTK_SHADOW_IN);
@@ -2153,11 +2170,17 @@ init_applet_gui(int horizontal)
      gtk_widget_show(arrow);
      gtk_container_add(GTK_CONTAINER(arrow_button), arrow);
 
-     gtk_box_pack_start(GTK_BOX(main_box), box, FALSE, FALSE, 0);
+     if (config.reverse_order)
+       gtk_box_pack_end(GTK_BOX(main_box), box, FALSE, FALSE, 0);
+     else
+       gtk_box_pack_start(GTK_BOX(main_box), box, FALSE, FALSE, 0);
     }
   
   frame = gtk_frame_new(NULL);
-  gtk_box_pack_start(GTK_BOX(main_box), frame, FALSE, FALSE, 0);
+  if (config.reverse_order)
+    gtk_box_pack_end(GTK_BOX(main_box), frame, FALSE, FALSE, 0);
+  else
+    gtk_box_pack_start(GTK_BOX(main_box), frame, FALSE, FALSE, 0);
   gtk_frame_set_shadow_type(GTK_FRAME(frame), GTK_SHADOW_IN);
   if (config.show_tasks)
     gtk_widget_show(frame);
