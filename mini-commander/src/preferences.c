@@ -38,7 +38,6 @@ static void resetTemporaryPrefs(void);
 properties prop;
 properties propTmp;
 
-
 static void
 checkBoxToggled_signal(GtkWidget *checkBoxWidget, int *data)
 {
@@ -411,6 +410,8 @@ saveSession_signal(GtkWidget *widget, const char *privcfgpath, const char *globc
 void
 propertiesBox(AppletWidget *applet, gpointer data)
 {
+    static GnomeHelpMenuEntry helpEntry = {"mini-commander_applet",
+					   "properties" };
     GtkWidget *propertiesBox;
     GtkWidget *vbox, *vbox1, *frame;
     GtkWidget *hbox, *hbox1;
@@ -724,6 +725,11 @@ propertiesBox(AppletWidget *applet, gpointer data)
 		       "apply",
 		       GTK_SIGNAL_FUNC(propertiesBox_apply_signal),
 		       NULL);
+
+    gtk_signal_connect(GTK_OBJECT(propertiesBox),
+		       "help",
+		       GTK_SIGNAL_FUNC(gnome_help_pbox_display),
+		       &helpEntry);
     
     gtk_widget_show_all(propertiesBox);
 }
