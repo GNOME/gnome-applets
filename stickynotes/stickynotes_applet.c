@@ -27,11 +27,11 @@ StickyNotes *stickynotes = NULL;
 /* Popup menu on the applet */
 static const BonoboUIVerb stickynotes_applet_menu_verbs[] = 
 {
-        BONOBO_UI_VERB ("create", menu_create_cb),
-        BONOBO_UI_VERB ("destroy_all", menu_destroy_all_cb),
-        BONOBO_UI_VERB ("preferences", menu_preferences_cb),
-        BONOBO_UI_VERB ("help", menu_help_cb),
-        BONOBO_UI_VERB ("about", menu_about_cb),
+        BONOBO_UI_UNSAFE_VERB ("create", menu_create_cb),
+        BONOBO_UI_UNSAFE_VERB ("destroy_all", menu_destroy_all_cb),
+        BONOBO_UI_UNSAFE_VERB ("preferences", menu_preferences_cb),
+        BONOBO_UI_UNSAFE_VERB ("help", menu_help_cb),
+        BONOBO_UI_UNSAFE_VERB ("about", menu_about_cb),
         BONOBO_UI_VERB_END
 };
 
