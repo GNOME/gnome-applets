@@ -1,9 +1,21 @@
+2004-06-08  Denins Smit  <ds@nerds-incorporated.org>
+
+	* cdplayer.c (cdplayer_play_pause): Fixed two compile
+	warnings.
+
+2004-06-08  Michael Terry  <mike@mterry.name>
+
+	* cdplayer.c, cdplayer.h: Use /apps/gnome-cd/device as
+	default cdrom device instead of our own home-brewed gconf key.  Fixes
+	bug 93620.
+	* Makefile.am: Remove references to now-unused schema file.
+
 2004-06-01  Dennis Smit  <ds@nerds-incorporated.org>
 
 	* cdplayer.h: Added error_io_dialog and error_busy_dialog widgets
 	to the applet structure.
 
-	* cdplayer.c (pplet_fill): Initialize the error dialogs with NULL.
+	* cdplayer.c (applet_fill): Initialize the error dialogs with NULL.
 	(cdplayer_destroy): Destroy the error dialogs.
 	(cdplayer_play_pause): Show an dialog on IO error, and let both
 	dialogs be privates per instance.

@@ -49,11 +49,6 @@ $(server_in_files): $(server_in_files:.server.in=.server.in.in)
 
 @INTLTOOL_SERVER_RULE@
 
-schemasdir   = @GCONF_SCHEMA_FILE_DIR@
-schemas_in_files = cdplayer.schemas.in
-schemas_DATA = $(schemas_in_files:.schemas.in=.schemas)
-
-@INTLTOOL_SCHEMAS_RULE@
 uidir = $(datadir)/gnome-2.0/ui
 ui_DATA = GNOME_CDPlayerApplet.xml
 
@@ -91,11 +86,5 @@ cdrom-solaris.c \
 reader-solaris.c \
 writer-solaris.c \
 GNOME_CDPlayerApplet.server.in.in \
-$(schemas_in_files)	\
 $(ui_DATA) \
 $(IMAGES)
-
-if GCONF_SCHEMAS_INSTALL
-install-data-local:
-	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(schemas_DATA);
-endif

@@ -52,6 +52,8 @@
 #define CDPLAYER_NEXT           "media-next"
 #define CDPLAYER_EJECT          "media-eject"
 
+#define GCONF_DEVICE_KEY        "/apps/gnome-cd/device"
+
 /* Function prototypes */
 static gboolean cdplayer_applet_factory (PanelApplet *applet, const gchar *iid, gpointer data);
 static gboolean applet_fill (PanelApplet *applet);
@@ -156,6 +158,7 @@ applet_fill (PanelApplet *applet)
     cdplayer_init_stock_icons ();
       
     cd = g_new0(CDPlayerData, 1);
+    cd->gconf_client = gconf_client_get_default ();
     cd->panel.applet = GTK_WIDGET (applet);
 
     cd->about_dialog = NULL;
@@ -265,29 +268,11 @@ show_error (CDPlayerData *cd)
     gtk_widget_show (dialog);
 }
 
-static gboolean
-key_writable (PanelApplet *applet, const char *key)
-{
-	gboolean writable;
-	char *fullkey;
-	static GConfClient *client = NULL;
-	if (client == NULL)
-		client = gconf_client_get_default ();
-
-	fullkey = panel_applet_gconf_get_full_key (applet, key);
-
-	writable = gconf_client_key_is_writable (client, fullkey, NULL);
-
-	g_free (fullkey);
-
-	return writable;
-}
-
 static void
 cdplayer_load_config(CDPlayerData *cd)
 {
     g_free(cd->devpath);
-    cd->devpath = panel_applet_gconf_get_string(PANEL_APPLET(cd->panel.applet), "device_path", NULL);
+    cd->devpath = gconf_client_get_string(cd->gconf_client, GCONF_DEVICE_KEY, NULL);
     if (!cd->devpath || !strcmp(cd->devpath, "none"))
     {
         g_free(cd->devpath);
@@ -298,8 +283,8 @@ cdplayer_load_config(CDPlayerData *cd)
 static void
 cdplayer_save_config(CDPlayerData *cd)
 {
-    if (key_writable (PANEL_APPLET (cd->panel.applet), "device_path"))
-        panel_applet_gconf_set_string(PANEL_APPLET(cd->panel.applet), "device_path", cd->devpath, NULL);
+    if (gconf_client_key_is_writable (cd->gconf_client, GCONF_DEVICE_KEY, NULL))
+        gconf_client_set_string (cd->gconf_client, GCONF_DEVICE_KEY, cd->devpath, NULL);
 }
 
 static void
@@ -346,6 +331,8 @@ cdplayer_destroy(GtkWidget * widget, gpointer data)
 
     if (cd->error_io_dialog)
       gtk_widget_destroy (cd->error_io_dialog);
+
+    g_object_unref (cd->gconf_client);
 
     cd->devpath = NULL;
     g_free(cd);
@@ -545,7 +532,7 @@ preferences_cb (BonoboUIComponent *component,
     g_object_set_data (G_OBJECT (button), "entry", entry);
     gtk_widget_show (button);
 
-    if ( ! key_writable (PANEL_APPLET (cd->panel.applet), "device_path")) {
+    if ( ! gconf_client_key_is_writable (cd->gconf_client, GCONF_DEVICE_KEY, NULL)) {
 	    gtk_widget_set_sensitive (label, FALSE);
 	    gtk_widget_set_sensitive (entry, FALSE);
 	    gtk_widget_set_sensitive (button, FALSE);
@@ -976,7 +963,7 @@ cdplayer_play_pause(GtkWidget * w, gpointer data)
     if (ret == DISC_DEVICE_BUSY) {
 	    if (cd->error_busy_dialog) {
 		    gtk_window_set_screen (GTK_WINDOW (cd->error_busy_dialog),
-				    gtk_window_get_screen (cd->panel.applet));
+				    gtk_window_get_screen (GTK_WINDOW (cd->panel.applet)));
 
 		    gtk_window_present (GTK_WINDOW (cd->error_busy_dialog));
 
@@ -1003,7 +990,7 @@ cdplayer_play_pause(GtkWidget * w, gpointer data)
     if (ret == DISC_IO_ERROR) {
 	    if (cd->error_io_dialog) {
 		    gtk_window_set_screen (GTK_WINDOW (cd->error_io_dialog),
-				    gtk_window_get_screen (cd->panel.applet));
+				    gtk_window_get_screen (GTK_WINDOW (cd->panel.applet)));
 
 		    gtk_window_present (GTK_WINDOW (cd->error_io_dialog));
 
