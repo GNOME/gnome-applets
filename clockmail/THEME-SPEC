@@ -38,18 +38,21 @@ Digit_Small/Large=filename
   filename: Image file, contains horizontally the digits 0 through
             9 and a blank space.
 
-Number_Hour/Minutes/Seconds/Year/Month/Day=Large/Small x y
+Number_Hour/Minutes/Seconds/Year/Month/Day=Large/Small x y [center]
   Large/Small: The digit to use for this number, Large or Small must
                have been specified with the Digit_* line (above).
   x, y: Coordinates to place the numbers within the window.
+  center: True or False, if 'TRUE', draw numbers centered. Optional.
 
-Number_Mail=Large/Small x y
+Number_Mail=Large/Small x y [center]
   Same as above, except this is a number for the amount of mail in
   the mailbox (in Kbytes). It requires space for 4 digits long.
+  center: True or False, if 'TRUE', draw numbers centered. Optional.
 
-Number_Messages=Large/Small x y
+Number_Messages=Large/Small x y [center]
   Same as above, except this is the number of messages in the file
   monitored for mail. It requires space for 3 digits long.
+  center: True or False, if 'TRUE', draw numbers centered. Optional.
 
 Item_Week_Text=filename x y
   filename: Image file, contains vertically the days of the week

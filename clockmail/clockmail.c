@@ -48,17 +48,11 @@ static void about_cb (AppletWidget *widget, gpointer data)
 {
 	GtkWidget *about;
 	const gchar *authors[2];
-	gchar version[32];
-
-	g_snprintf(version, sizeof(version), _("%d.%d.%d"),
-		   CLOCKMAIL_APPLET_VERSION_MAJ,
-		   CLOCKMAIL_APPLET_VERSION_MIN,
-		   CLOCKMAIL_APPLET_VERSION_REV);
 
 	authors[0] = _("John Ellis <johne@bellatlantic.net>");
 	authors[1] = NULL;
 
-        about = gnome_about_new ( _("Clock and Mail Notify Applet"), version,
+        about = gnome_about_new ( _("Clock and Mail Notify Applet"), VERSION,
 			_("(C) 1999"),
 			authors,
 			_("Released under the GNU general public license.\n"
@@ -533,18 +527,18 @@ static AppData *create_new_app(GtkWidget *applet)
 		GTK_SIGNAL_FUNC(applet_change_back), ad);
 
 	applet_widget_register_stock_callback(APPLET_WIDGET(ad->applet),
-						"about",
-						GNOME_STOCK_MENU_ABOUT,
-						_("About..."),
-						about_cb,
-						NULL);
-
-	applet_widget_register_stock_callback(APPLET_WIDGET(ad->applet),
 						"properties",
 						GNOME_STOCK_MENU_PROP,
 						_("Properties..."),
 						property_show,
 						ad);
+
+	applet_widget_register_stock_callback(APPLET_WIDGET(ad->applet),
+						"about",
+						GNOME_STOCK_MENU_ABOUT,
+						_("About..."),
+						about_cb,
+						NULL);
 
 	update_display(ad);
 

@@ -19,10 +19,6 @@
 #include <gnome.h>
 #include <applet-widget.h>
 
-#define CLOCKMAIL_APPLET_VERSION_MAJ 1
-#define CLOCKMAIL_APPLET_VERSION_MIN 1
-#define CLOCKMAIL_APPLET_VERSION_REV 0
-
 enum {
 	SIZEHINT_TINY,
 	SIZEHINT_STANDARD,
@@ -57,6 +53,7 @@ struct _NumberData
 	gint y;
 	gint length;
 	gint zeros;
+	gint centered;
 };
 
 typedef struct _ButtonData ButtonData;

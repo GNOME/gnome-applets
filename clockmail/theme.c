@@ -23,7 +23,7 @@ static DigitData *new_digit(GdkPixmap *pixmap);
 static DigitData *new_digit_from_data(gchar **data);
 static DigitData *new_digit_from_file(gchar *file);
 static void free_digit(DigitData *digit);
-static NumberData *new_number(DigitData *digits, gint length, gint zeros, gint x, gint y);
+static NumberData *new_number(DigitData *digits, gint length, gint zeros, gint centered, gint x, gint y);
 static void free_number(NumberData *number);
 static ItemData *new_item(GdkPixmap *pixmap, gint sections, gint x, gint y);
 static ItemData *new_item_from_data(gchar **data, gint sections, gint x, gint y);
@@ -133,7 +133,7 @@ static void free_digit(DigitData *digit)
 	g_free(digit);
 }
 
-static NumberData *new_number(DigitData *digits, gint length, gint zeros, gint x, gint y)
+static NumberData *new_number(DigitData *digits, gint length, gint zeros, gint centered, gint x, gint y)
 {
 	NumberData *number;
 	number = g_new0(NumberData, 1);
@@ -141,6 +141,7 @@ static NumberData *new_number(DigitData *digits, gint length, gint zeros, gint x
 	number->digits = digits;
 	number->length = length;
 	number->zeros = zeros;
+	number->centered = centered;
 	number->x = x;
 	number->y = y;
 
@@ -279,21 +280,50 @@ void draw_number(NumberData *number, gint n, AppData *ad)
 
 	if (!number) return;
 
-	x = number->x;
-	z = number->zeros;
 	digit = number->digits;
+	x = number->x + (number->length * digit->width);
+	z = number->zeros;
+	
+	for (i=0; i< number->length - 1; i++) t *= 10;
 
-	for (i=0; i< number->length - 1; i++) t = t * 10;
-	x += number->length * digit->width;
+	if (number->centered && n < t)
+		{
+		gint b = FALSE;
+		for (i=number->length; i > 0; i--)
+			{
+			draw_digit(digit, -1, x - (i * digit->width), number->y, ad);
+			}
+		for (i=number->length; i > 0; i--)
+			{
+			d = n / t;
+			n -= d * t;
+			t = t / 10;
+			if (!(d == 0 && i>1 && !b))
+				{
+				if (!b)
+					{
+					x = number->x + (number->length * digit->width / 2) + (i * digit->width / 2);
+					b = TRUE;
+					}
+				draw_digit(digit, d, x - (i * digit->width), number->y, ad);
+				}
+			}
+		return;
+		}
+
 	for (i=number->length; i > 0; i--)
 		{
 		d = n / t;
 		n -= d * t;
 		t = t / 10;
 		if (d == 0 && i>1 && (!z))
+			{
 			d = -1;
+			}
 		else
+			{
 			z = TRUE;
+			}
 		draw_digit(digit, d, x - (i * digit->width), number->y, ad);
 		}
 }
@@ -641,9 +671,9 @@ void draw_clock(AnalogData *c, gint h, gint m, gint s, AppData *ad)
 
 	img = gdk_image_get(c->back, 0, 0, c->width, c->height);
 
-	draw_hand(c->hour,  c->cx, c->cy, (float)h / 12 * 360, img, ad);
-	draw_hand(c->minute, c->cx, c->cy, (float)m / 60 * 360, img, ad);
-	draw_hand(c->second, c->cx, c->cy, (float)s / 60 * 360, img, ad);
+	draw_hand(c->hour,  c->cx, c->cy, h * 30 + ((float)m * 0.5), img, ad);
+	draw_hand(c->minute, c->cx, c->cy, m * 6 + ((float)s * 0.1), img, ad);
+	draw_hand(c->second, c->cx, c->cy, s * 6, img, ad);
 
 	gdk_draw_image (ad->skin->background,
 		ad->display_area->style->fg_gc[GTK_WIDGET_STATE(ad->display_area)],
@@ -682,10 +712,10 @@ static SkinData *load_default_skin(AppData *ad)
 		s->dig_large = new_digit_from_data((gchar **)digmed_xpm);
 		s->dig_small = new_digit_from_data((gchar **)digsml_xpm);
 
-		s->hour = new_number(s->dig_large, 2, FALSE, 3, 4);
-		s->min = new_number(s->dig_large, 2, TRUE, 26, 4);
+		s->hour = new_number(s->dig_large, 2, FALSE, FALSE, 3, 4);
+		s->min = new_number(s->dig_large, 2, TRUE, FALSE, 26, 4);
 
-		s->messages = new_number(s->dig_small, 3, FALSE, 72, 8);
+		s->messages = new_number(s->dig_small, 3, FALSE, FALSE, 72, 8);
 
 		s->mail = new_item_from_data((gchar **)mailpics_xpm, 10, 49, 5);
 
@@ -708,10 +738,10 @@ static SkinData *load_default_skin(AppData *ad)
 	s->dig_large = new_digit_from_data((gchar **)digmed_xpm);
 	s->dig_small = new_digit_from_data((gchar **)digsml_xpm);
 
-	s->hour = new_number(s->dig_large, 2, FALSE, 3, 5);
-	s->min = new_number(s->dig_large, 2, TRUE, 26, 5);
+	s->hour = new_number(s->dig_large, 2, FALSE, FALSE, 3, 5);
+	s->min = new_number(s->dig_large, 2, TRUE, FALSE, 26, 5);
 
-	s->messages = new_number(s->dig_small, 3, FALSE, 26, 32);
+	s->messages = new_number(s->dig_small, 3, FALSE, FALSE, 26, 32);
 
 	s->mail = new_item_from_data((gchar **)mailpics_xpm, 10, 3, 29);
 
@@ -916,6 +946,7 @@ static NumberData *get_number(gchar *path, gchar *name, gint count, gint zeros, 
 	gchar *filename;
 	gint x;
 	gint y;
+	gint centered = FALSE;
 
 	gnome_config_get_vector(name, &length, &vector);
 
@@ -929,6 +960,11 @@ static NumberData *get_number(gchar *path, gchar *name, gint count, gint zeros, 
 	x = strtol(vector[1], NULL, 0);
 	y = strtol(vector[2], NULL, 0);
 
+	if (length > 3 && (*vector[3] == 'T' || *vector[3] == 't') )
+		{
+		centered = TRUE;
+		}
+
 	g_strfreev (vector);
 
 	if (!strcasecmp(filename, "Large"))
@@ -941,7 +977,7 @@ static NumberData *get_number(gchar *path, gchar *name, gint count, gint zeros, 
 		return NULL;
 		}
 
-	number = new_number(digit, count, zeros, x, y);
+	number = new_number(digit, count, zeros, centered, x, y);
 	g_free(filename);
 	return number;
 }
