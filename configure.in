@@ -1,14 +1,10 @@
 AC_INIT(drivemount/drivemount.c)
 AM_CONFIG_HEADER(config.h)
-AM_INIT_AUTOMAKE(gnome-applets, 2.0.0)
+AM_INIT_AUTOMAKE(gnome-applets, 2.1.0)
 
 AM_MAINTAINER_MODE
 
 AC_PROG_INTLTOOL
-
-dnl Just going to comment stuff out that I don't think we'll need for now
-dnl AM_ACLOCAL_INCLUDE(macros)
-dnl GNOME_INIT(applets)
 
 AC_ISC_POSIX
 AC_PROG_CC
@@ -26,7 +22,6 @@ dnl Stuff we might need, not quite sure yet
 GTK_REQUIRED=2.1.0
 LIBGNOME_REQUIRED=2.0.0
 LIBGNOMEUI_REQUIRED=2.0.0
-LIBXML_REQUIRED=2.4.11
 GNOME_VFS_REQUIRED=1.9.16
 GCONF_REQUIRED=1.1.11
 SCROLLKEEPER_REQUIRED=0.1.4
@@ -57,14 +52,6 @@ PKG_CHECK_MODULES(GNOME_LIBS2, libgnome-2.0 >= $LIBGNOME_REQUIRED libgnomeui-2.0
 AC_SUBST(GNOME_LIBS2_CFLAGS)
 AC_SUBST(GNOME_LIBS2_LIBS)
 
-dnl build_xml_applets=false
-dnl PKG_CHECK_MODULES(GNOME_XML_APPLETS,
-dnl 		  [libxml-2.0 >= $LIBXML_REQUIRED],
-dnl 		  build_xml_applets=true,)
-dnl AC_SUBST(GNOME_XML_APPLETS_CFLAGS)
-dnl AC_SUBST(GNOME_XML_APPLETS_LIBS)
-dnl AM_CONDITIONAL(BUILD_XML_APPLETS, $build_xml_applets)
-
 build_gnome_vfs_applets=false
 PKG_CHECK_MODULES(GNOME_VFS_APPLETS, 
 		  [gnome-vfs-2.0 >= $GNOME_VFS_REQUIRED],
@@ -72,12 +59,6 @@ PKG_CHECK_MODULES(GNOME_VFS_APPLETS,
 AC_SUBST(GNOME_VFS_APPLETS_CFLAGS)
 AC_SUBST(GNOME_VFS_APPLETS_LIBS)
 AM_CONDITIONAL(BUILD_GNOME_VFS_APPLETS, $build_gnome_vfs_applets)
-
-dnl PKG_CHECK_MODULES(GCONF_APPLETS, gconf-2.0 >= $GCONF_REQUIRED, , AC_MSG_ERROR([
-dnl                    *** gconf-2.0 not found. You can find it on ftp://ftp.gnome.org/pub/earthquake
-dnl                        $GCONF_APPLETS_PKG_ERRORS]))
-dnl  AC_SUBST(GCONF_APPLETS_CFLAGS)
-dnl AC_SUBST(GCONF_APPLETS_LIBS)
 
 PKG_CHECK_MODULES(LIBGLADE, libglade-2.0 >= $LIBGLADE_REQUIRED)
 AC_SUBST(LIBGLADE_CFLAGS)
@@ -144,22 +125,6 @@ else
 fi
 AM_CONDITIONAL(HAVE_JW, test "x$HAVE_JW" = "xyes")
 AC_SUBST(HAVE_JW)
-
-dnl ******************************************
-dnl ******************************************
-
-dnl ******************************************
-dnl ** ESound Library                       **
-dnl ******************************************
-
-dnl have_libesd=no
-dnl AM_PATH_ESD(,have_libesd=yes,
-dnl [AC_MSG_WARN([*** \`sound-monitor' will not be built ***])])
-dnl AM_CONDITIONAL(HAVE_LIBESD, test yes = $have_libesd)
-
-dnl ******************************************
-dnl ******************************************
-
 
 dnl ******************************************
 dnl ** cdplayer applet check                **
@@ -286,8 +251,6 @@ AC_DEFINE_UNQUOTED(SYSCONFDIR, "${prefix}/etc")
 AC_DEFINE_UNQUOTED(LIBDIR, "${prefix}/lib")
 AC_DEFINE_UNQUOTED(PREFIX, "$prefix")
 
-dnl Okay..uncomment the stuff and add in you want to work on :)
-
 AC_OUTPUT([
 gnome-applets.spec
 Makefile
@@ -342,194 +305,3 @@ man/Makefile
 wireless/Makefile
 omf-install/Makefile
 ])
-
-
-dnl Mostly Ported Applets
-dnl whereami/Makefile
-
-
-dnl geyes/docs/Makefile
-dnl geyes/docs/C/Makefile
-dnl geyes/docs/it/Makefile
-dnl geyes/docs/es/Makefile
-dnl mixer/docs/Makefile
-dnl mixer/docs/C/Makefile
-dnl mixer/docs/es/Makefile
-dnl mixer/docs/it/Makefile
-dnl modemlights/docs/Makefile
-dnl modemlights/docs/C/Makefile
-dnl modemlights/docs/es/Makefile
-dnl modemlights/docs/it/Makefile
-dnl screenshooter/docs/Makefile
-dnl screenshooter/docs/C/Makefile
-dnl screenshooter/docs/it/Makefile
-dnl mini-commander/docs/Makefile
-dnl mini-commander/docs/C/Makefile
-dnl mini-commander/docs/it/Makefile
-dnl mini-commander/docs/es/Makefile
-
-
-dnl Not Ported Applets
-dnl charpick/docs/Makefile
-dnl charpick/docs/C/Makefile
-dnl charpick/docs/es/Makefile
-dnl charpick/docs/it/Makefile
-dnl charpick/docs/ja/Makefile
-
-dnl gweather/docs/Makefile
-dnl gweather/docs/C/Makefile
-dnl gweather/docs/it/Makefile
-dnl multiload/docs/Makefile
-dnl multiload/docs/C/Makefile
-dnl multiload/docs/C/cpuload/Makefile
-dnl multiload/docs/C/loadavg/Makefile
-dnl multiload/docs/C/memload/Makefile
-dnl multiload/docs/C/netload/Makefile
-dnl multiload/docs/C/swapload/Makefile
-dnl multiload/docs/es/Makefile
-dnl multiload/docs/es/cpuload/Makefile
-dnl multiload/docs/es/loadavg/Makefile
-dnl multiload/docs/es/memload/Makefile
-dnl multiload/docs/es/netload/Makefile
-dnl multiload/docs/es/swapload/Makefile
-dnl multiload/docs/it/Makefile
-dnl multiload/docs/it/cpuload/Makefile
-dnl multiload/docs/it/loadavg/Makefile
-dnl multiload/docs/it/memload/Makefile
-dnl multiload/docs/it/netload/Makefile
-dnl multiload/docs/it/swapload/Makefile
-dnl multiload/docs/es/Makefile
-dnl multiload/docs/es/cpuload/Makefile
-dnl multiload/docs/es/memload/Makefile
-dnl multiload/docs/es/netload/Makefile
-dnl multiload/docs/es/swapload/Makefile
-dnl whereami/docs/Makefile
-dnl whereami/docs/C/Makefile
-dnl whereami/docs/it/Makefile
-dnl whereami/docs/es/Makefile
-
-
-dnl cdplayer/docs/Makefile
-dnl cdplayer/docs/C/Makefile
-dnl cdplayer/docs/es/Makefile
-dnl cdplayer/docs/it/Makefile
-dnl cdplayer/docs/ja/Makefile
-
-dnl sound-monitor/Makefile
-dnl sound-monitor/def_theme/Makefile
-dnl sound-monitor/docs/Makefile
-dnl sound-monitor/docs/C/Makefile
-dnl sound-monitor/docs/it/Makefile
-dnl sound-monitor/pvd/Makefile
-dnl sound-monitor/themes/Makefile
-
-
-dnl don't do these 2 for now
-dnl docs/Makefile
-dnl docs/C/Makefile
-dnl gkb-new/docs/Makefile
-dnl gkb-new/docs/C/Makefile
-dnl gkb-new/docs/hu/Makefile
-dnl gkb-new/docs/it/Makefile
-dnl drivemount/Makefile
-dnl drivemount/docs/Makefile
-dnl drivemount/docs/C/Makefile
-dnl drivemount/docs/es/Makefile
-dnl drivemount/docs/it/Makefile
-dnl drivemount/docs/ja/Makefile
-
-
-dnl This should be replaced by panel screenshooter
-dnl screenshooter/Makefile
-
-
-
-dnl extunct applets
-dnl another_clock/Makefile
-dnl another_clock/docs/Makefile
-dnl another_clock/docs/C/Makefile
-dnl another_clock/docs/es/Makefile
-dnl another_clock/docs/it/Makefile
-dnl another_clock/docs/uk/Makefile
-dnl asclock/Makefile
-dnl asclock/default_theme/Makefile
-dnl asclock/docs/Makefile
-dnl asclock/docs/C/Makefile
-dnl asclock/docs/it/Makefile
-dnl asclock/docs/ja/Makefile
-dnl asclock/themes/Makefile
-dnl clockmail/Makefile
-dnl clockmail/docs/Makefile
-dnl clockmail/docs/C/Makefile
-dnl clockmail/docs/it/Makefile
-dnl clockmail/docs/ja/Makefile
-dnl clockmail/themes/Makefile
-dnl cpumemusage/Makefile
-dnl cpumemusage/docs/Makefile
-dnl cpumemusage/docs/C/Makefile
-dnl cpumemusage/docs/it/Makefile
-dnl cpumemusage/docs/ja/Makefile
-dnl cpumemusage/docs/es/Makefile
-dnl cpumemusage/docs/ru/Makefile
-dnl jbc/Makefile
-dnl jbc/docs/Makefile
-dnl jbc/docs/C/Makefile
-dnl jbc/docs/es/Makefile
-dnl jbc/docs/it/Makefile
-dnl jbc/pixmaps/Makefile
-dnl quicklaunch/Makefile
-dnl quicklaunch/docs/Makefile
-dnl quicklaunch/docs/C/Makefile
-dnl quicklaunch/docs/it/Makefile
-dnl life/Makefile
-dnl odometer/Makefile
-dnl odometer/themes/Makefile
-dnl odometer/docs/Makefile
-dnl odometer/docs/C/Makefile
-dnl odometer/docs/fr/Makefile
-dnl odometer/docs/it/Makefile
-dnl fifteen/Makefile
-dnl fifteen/docs/Makefile
-dnl fifteen/docs/C/Makefile
-dnl fifteen/docs/it/Makefile
-dnl slashapp/Makefile
-dnl webcontrol/Makefile
-dnl webcontrol/docs/Makefile
-dnl webcontrol/docs/C/Makefile
-dnl webcontrol/docs/it/Makefile
-dnl gnotes/Makefile
-dnl gnotes/docs/Makefile
-dnl gnotes/docs/C/Makefile
-dnl gnotes/docs/it/Makefile
-dnl tickastat/Makefile
-dnl tickastat/docs/Makefile
-dnl tickastat/docs/C/Makefile
-dnl tickastat/docs/it/Makefile
-dnl tickastat/news_scripts/Makefile
-dnl life/docs/Makefile
-dnl life/docs/C/Makefile
-dnl life/docs/es/Makefile
-dnl life/docs/it/Makefile
-dnl clipboard/Makefile
-dnl diskusage/Makefile
-dnl diskusage/docs/Makefile
-dnl diskusage/docs/C/Makefile
-dnl diskusage/docs/it/Makefile
-dnl diskusage/docs/ja/Makefile
-dnl diskusage/docs/es/Makefile
-dnl batmon/Makefilese
-dnl bussign/Makefile
-dnl esd-manager/Makefile
-dnl fvwm-pager/Makefile
-dnl gnome-pager/Makefile
-dnl gticker/Makefile
-dnl gumma/Makefile
-dnl gumma/cd/Makefile
-dnl gumma/gqmpeg/Makefile
-dnl gumma/xmms/Makefile
-dnl icewm-pager/Makefile
-dnl netload/Makefile
-dnl netwatch/Makefile
-dnl oldslashapp/Makefile
-dnl winlist/Makefile
-

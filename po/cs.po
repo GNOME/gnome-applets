@@ -8,13 +8,79 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.4.0\n"
-"POT-Creation-Date: 2002-04-16 19:25-0400\n"
+"POT-Creation-Date: 2002-10-04 14:23+1200\n"
 "PO-Revision-Date: 2001-06-25 15:15+0200\n"
 "Last-Translator: George Lebl <jirka@5z.com>\n"
 "Language-Team: czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-2\n"
 "Content-Transfer-Encoding: 8-bit\n"
+
+#. The long name of the applet in the About dialog.
+#: battstat/GNOME_BattstatApplet.server.in.in.h:1
+#: battstat/battstat_applet.c:841
+#, fuzzy
+msgid "Battery Charge Monitor"
+msgstr "Zprávy o nabíjení akumulátoru"
+
+#: battstat/GNOME_BattstatApplet.server.in.in.h:2
+msgid "Battstat Factory"
+msgstr ""
+
+#: battstat/GNOME_BattstatApplet.server.in.in.h:3
+msgid "Monitor a laptop's remaining power"
+msgstr ""
+
+#: battstat/GNOME_BattstatApplet.server.in.in.h:4
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:4
+#: drivemount/GNOME_DriveMountApplet.server.in.in.h:5
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:5
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:4
+#: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:3
+#: panel-menu/GNOME_PanelMenuApplet.server.in.h:4
+msgid "Utility"
+msgstr ""
+
+#: battstat/GNOME_BattstatApplet.xml.h:1 cdplayer/GNOME_CDPlayerApplet.xml.h:1
+#: charpick/GNOME_CharpickerApplet.xml.h:1
+#: drivemount/GNOME_DriveMountApplet.xml.h:1 geyes/GNOME_GeyesApplet.xml.h:1
+#: gkb-new/GNOME_KeyboardApplet.xml.h:1 gtik/GNOME_GtikApplet.xml.h:1
+#: gweather/GNOME_GWeatherApplet.xml.h:1
+#: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
+#: mixer/GNOME_MixerApplet.xml.h:1 modemlights/GNOME_ModemlightsApplet.xml.h:1
+#: multiload/GNOME_MultiloadApplet.xml.h:1
+#: wireless/GNOME_WirelessApplet.xml.h:1
+#, fuzzy
+msgid "_About..."
+msgstr "O programu..."
+
+#: battstat/GNOME_BattstatApplet.xml.h:2 cdplayer/GNOME_CDPlayerApplet.xml.h:2
+#: charpick/GNOME_CharpickerApplet.xml.h:2
+#: drivemount/GNOME_DriveMountApplet.xml.h:4 geyes/GNOME_GeyesApplet.xml.h:2
+#: gkb-new/GNOME_KeyboardApplet.xml.h:2 gtik/GNOME_GtikApplet.xml.h:2
+#: gweather/GNOME_GWeatherApplet.xml.h:3
+#: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
+#: mixer/GNOME_MixerApplet.xml.h:2 modemlights/GNOME_ModemlightsApplet.xml.h:2
+#, fuzzy
+msgid "_Help"
+msgstr "Nápovìda"
+
+#: battstat/GNOME_BattstatApplet.xml.h:3 cdplayer/GNOME_CDPlayerApplet.xml.h:3
+#: charpick/GNOME_CharpickerApplet.xml.h:3
+#: drivemount/GNOME_DriveMountApplet.xml.h:5 geyes/GNOME_GeyesApplet.xml.h:3
+#: gkb-new/GNOME_KeyboardApplet.xml.h:3 gtik/GNOME_GtikApplet.xml.h:3
+#: gweather/GNOME_GWeatherApplet.xml.h:4
+#: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
+#: modemlights/GNOME_ModemlightsApplet.xml.h:3
+#: multiload/GNOME_MultiloadApplet.xml.h:2
+#: wireless/GNOME_WirelessApplet.xml.h:2
+#, fuzzy
+msgid "_Preferences..."
+msgstr "Vlastnosti..."
+
+#: battstat/GNOME_BattstatApplet.xml.h:4
+msgid "_Suspend Computer..."
+msgstr ""
 
 #. Message displayed if user tries to run applet
 #. on unsupported platform
@@ -29,33 +95,34 @@ msgstr ""
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:316 battstat/battstat_applet.c:834
+#: battstat/battstat_applet.c:316 battstat/battstat_applet.c:872
 #, fuzzy
 msgid "High"
 msgstr "Vý¹ka:"
 
 #. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:836
+#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:874
 msgid "Low"
 msgstr ""
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:838
+#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:876
 #, fuzzy
 msgid "Critical"
 msgstr "Karibik"
 
 #. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:840
+#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:878
 #, fuzzy
 msgid "Charging"
 msgstr "startuje..."
 
 #: battstat/battstat_applet.c:403
+#, c-format
 msgid "Battery low (%d%%) and AC is offline"
 msgstr ""
 
-#: battstat/battstat_applet.c:426
+#: battstat/battstat_applet.c:427
 #, fuzzy
 msgid "Battery is now fully re-charged!"
 msgstr "Baterie jsou plnì nabity."
@@ -63,7 +130,8 @@ msgstr "Baterie jsou plnì nabity."
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:445 battstat/battstat_applet.c:997
+#: battstat/battstat_applet.c:446 battstat/battstat_applet.c:1036
+#, c-format
 msgid ""
 "System is running on battery power\n"
 "Battery: %d%% (%s)"
@@ -72,7 +140,8 @@ msgstr ""
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:449 battstat/battstat_applet.c:1005
+#: battstat/battstat_applet.c:450 battstat/battstat_applet.c:1044
+#, c-format
 msgid ""
 "System is running on AC power\n"
 "Battery: %d%% (%s)"
@@ -80,31 +149,33 @@ msgstr ""
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:455 battstat/battstat_applet.c:929
-#: battstat/battstat_applet.c:1018
+#: battstat/battstat_applet.c:456 battstat/battstat_applet.c:968
+#: battstat/battstat_applet.c:1057
 msgid "System is running on battery power"
 msgstr ""
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:458 battstat/battstat_applet.c:935
-#: battstat/battstat_applet.c:1024
+#: battstat/battstat_applet.c:459 battstat/battstat_applet.c:974
+#: battstat/battstat_applet.c:1063
 msgid "System is running on AC power"
 msgstr ""
 
-#: battstat/battstat_applet.c:472
+#: battstat/battstat_applet.c:473
 msgid "N/A"
 msgstr ""
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:596 battstat/battstat_applet.c:909
+#: battstat/battstat_applet.c:597 battstat/battstat_applet.c:948
+#, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
 msgstr ""
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:603 battstat/battstat_applet.c:916
+#: battstat/battstat_applet.c:604 battstat/battstat_applet.c:955
+#, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
 msgstr ""
 
@@ -112,32 +183,33 @@ msgstr ""
 #. battery frame when the computer is using battery
 #. power and the battery isn't present. Not a
 #. possible combination, I guess... :)
-#: battstat/battstat_applet.c:614
+#: battstat/battstat_applet.c:615
 msgid "System is running on battery power. Battery: Not present"
 msgstr ""
 
 #. This string will display as a tooltip over the
 #. battery frame when the computer is using AC
 #. power and the battery isn't present.
-#: battstat/battstat_applet.c:620
+#: battstat/battstat_applet.c:621
 msgid "System is running on AC power. Battery: Not present"
 msgstr ""
 
 #. Displayed as a tooltip over the battery meter when there is
 #. a battery present. %d will hold the current charge and %s will
 #. hold the status of the battery, (High, Low, Critical, Charging.
-#: battstat/battstat_applet.c:629
+#: battstat/battstat_applet.c:630
+#, c-format
 msgid "Battery: %d%% (%s)"
 msgstr ""
 
 #. Displayed as a tooltip over the battery meter when no
 #. battery is present.
-#: battstat/battstat_applet.c:636
+#: battstat/battstat_applet.c:637
 msgid "Battery: Not present"
 msgstr ""
 
 #. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: battstat/battstat_applet.c:711
+#: battstat/battstat_applet.c:717
 msgid ""
 "Can't open the APM device!\n"
 "\n"
@@ -146,14 +218,14 @@ msgid ""
 msgstr ""
 
 #. Displayed if the APM system is disabled (Used under *BSD)
-#: battstat/battstat_applet.c:719
+#: battstat/battstat_applet.c:726
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
 "that helps.\n"
 msgstr ""
 
-#: battstat/battstat_applet.c:767
+#: battstat/battstat_applet.c:776
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -161,7 +233,7 @@ msgid ""
 msgstr ""
 
 #. Probably because the shell_ret is != 0
-#: battstat/battstat_applet.c:770
+#: battstat/battstat_applet.c:779
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command, the command returned "
@@ -169,84 +241,133 @@ msgid ""
 "Please try to correct this error"
 msgstr ""
 
-#: battstat/battstat_applet.c:778
+#: battstat/battstat_applet.c:787
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
 msgstr ""
 
-#. The long name of the applet in the About dialog.
-#: battstat/battstat_applet.c:807
-#, fuzzy
-msgid "Battery status utility"
-msgstr "Nastavení monitoru baterií"
+#. if your charset supports it, please replace the "o" in
+#. * "Jorgen" into U00F6
+#: battstat/battstat_applet.c:818
+msgid "Jorgen Pehrson <jp@spektr.eu.org>"
+msgstr ""
 
-#: battstat/battstat_applet.c:809
+#: battstat/battstat_applet.c:828 cdplayer/cdplayer.c:481
+#: charpick/charpick.c:374 drivemount/drivemount.c:453 geyes/geyes.c:217
+#: gkb-new/gkb.c:593 gtik/gtik.c:708 gweather/gweather-about.c:43
+#: mini-commander/src/about.c:48 mixer/mixer.c:794
+#: modemlights/modemlights.c:209 multiload/main.c:57
+#: panel-menu/panel-menu.c:674 wireless/wireless-applet.c:704
+msgid "translator_credits"
+msgstr ""
+
+#: battstat/battstat_applet.c:843
 #, fuzzy
 msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 msgstr "(C) 1999 Free Software Foundation"
 
-#: battstat/battstat_applet.c:810
+#: battstat/battstat_applet.c:844
 msgid "This utility show the status of your laptop battery."
 msgstr ""
 
-#: battstat/GNOME_BattstatApplet.server.in.h:1
+#: battstat/battstat_applet.glade.h:2
+#, no-c-format
+msgid "100%"
+msgstr ""
+
+#: battstat/battstat_applet.glade.h:3
+#: mini-commander/src/mini-commander.glade.h:3
+msgid "Appearance"
+msgstr "Vzhled"
+
+#: battstat/battstat_applet.glade.h:4
 #, fuzzy
-msgid "Battery Charge Monitor"
+msgid "Applet layout"
+msgstr "Re¾im apletu:"
+
+#: battstat/battstat_applet.glade.h:5
+#, fuzzy
+msgid "Battery Charge Monitor Preferences"
 msgstr "Zprávy o nabíjení akumulátoru"
 
-#: battstat/GNOME_BattstatApplet.server.in.h:2
-msgid "Battstat Factory"
+#: battstat/battstat_applet.glade.h:7
+#, no-c-format
+msgid "Battery color levels (%)"
 msgstr ""
 
-#: battstat/GNOME_BattstatApplet.server.in.h:3
-msgid "Monitor a laptop's remaining power"
+#: battstat/battstat_applet.glade.h:8
+msgid "Beep when either of the above is true"
 msgstr ""
 
-#: battstat/GNOME_BattstatApplet.server.in.h:4
-#: charpick/GNOME_CharpickerApplet.server.in.h:4
-#: drivemount/GNOME_DriveMountApplet.server.in.h:5
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:5
-#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:4
-#: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:3
-#: panel-menu/GNOME_PanelMenuApplet.server.in.h:4
-msgid "Utility"
-msgstr ""
+#: battstat/battstat_applet.glade.h:9
+msgid "General"
+msgstr "Obecné"
 
-#: battstat/GNOME_BattstatApplet.xml.h:1 cdplayer/GNOME_CDPlayerApplet.xml.h:1
-#: charpick/GNOME_CharpickerApplet.xml.h:1
-#: drivemount/GNOME_DriveMountApplet.xml.h:1 geyes/GNOME_GeyesApplet.xml.h:1
-#: gkb-new/GNOME_KeyboardApplet.xml.h:1 gtik/GNOME_GtikApplet.xml.h:1
-#: gweather/GNOME_GWeatherApplet.xml.h:1
-#: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
-#: mixer/GNOME_MixerApplet.xml.h:1 modemlights/GNOME_ModemlightsApplet.xml.h:1
-#: multiload/GNOME_MultiloadApplet.xml.h:1
-msgid "About..."
-msgstr "O programu..."
-
-#: battstat/GNOME_BattstatApplet.xml.h:2 cdplayer/GNOME_CDPlayerApplet.xml.h:2
-#: charpick/GNOME_CharpickerApplet.xml.h:2
-#: drivemount/GNOME_DriveMountApplet.xml.h:4 geyes/GNOME_GeyesApplet.xml.h:2
-#: gkb-new/GNOME_KeyboardApplet.xml.h:2
-#: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
-#: mixer/GNOME_MixerApplet.xml.h:2 modemlights/GNOME_ModemlightsApplet.xml.h:2
-msgid "Help"
-msgstr "Nápovìda"
-
-#: battstat/GNOME_BattstatApplet.xml.h:3 cdplayer/GNOME_CDPlayerApplet.xml.h:3
-#: charpick/GNOME_CharpickerApplet.xml.h:3
-#: drivemount/GNOME_DriveMountApplet.xml.h:5 geyes/GNOME_GeyesApplet.xml.h:3
-#: gkb-new/GNOME_KeyboardApplet.xml.h:3 gtik/GNOME_GtikApplet.xml.h:2
-#: gweather/GNOME_GWeatherApplet.xml.h:3
-#: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
-#: modemlights/GNOME_ModemlightsApplet.xml.h:3
-#: multiload/GNOME_MultiloadApplet.xml.h:2
+#: battstat/battstat_applet.glade.h:10
 #, fuzzy
-msgid "Preferences..."
-msgstr "Vlastnosti..."
+msgid "Hide"
+msgstr "Skrýt poznámku"
 
-#: battstat/GNOME_BattstatApplet.xml.h:4
-msgid "Suspend Computer..."
+#: battstat/battstat_applet.glade.h:11
+msgid "Move towards bottom"
+msgstr ""
+
+#: battstat/battstat_applet.glade.h:12
+msgid "Move towards top"
+msgstr ""
+
+#: battstat/battstat_applet.glade.h:13
+#, fuzzy
+msgid "Notify me when battery charge is low"
+msgstr "Varování pøi vybití baterie pod:"
+
+#: battstat/battstat_applet.glade.h:14
+#, fuzzy
+msgid "Notify me when battery is fully re-charged"
+msgstr "Baterie jsou plnì nabity."
+
+#: battstat/battstat_applet.glade.h:15
+#, fuzzy
+msgid "Orange:"
+msgstr "Francie"
+
+#: battstat/battstat_applet.glade.h:16
+#, fuzzy
+msgid "Preview:"
+msgstr "Zaøízení:"
+
+#: battstat/battstat_applet.glade.h:17
+msgid "Progress bar direction"
+msgstr ""
+
+#: battstat/battstat_applet.glade.h:18
+#, fuzzy
+msgid "Red:"
+msgstr "Rychlost:"
+
+#: battstat/battstat_applet.glade.h:19
+#, fuzzy
+msgid "Show"
+msgstr "Sníh"
+
+#: battstat/battstat_applet.glade.h:20
+#, fuzzy
+msgid "Suspend"
+msgstr "Rychlost"
+
+#: battstat/battstat_applet.glade.h:21
+#, fuzzy
+msgid "Suspend command:"
+msgstr "Pøipojovací pøíkaz:"
+
+#: battstat/battstat_applet.glade.h:22
+#, fuzzy
+msgid "Warnings"
+msgstr "startuje..."
+
+#: battstat/battstat_applet.glade.h:23
+msgid "Yellow:"
 msgstr ""
 
 #: battstat/sounds/battstat_applet.soundlist.in.h:1
@@ -264,142 +385,160 @@ msgstr "Baterie jsou plnì nabity."
 msgid "Battery power low"
 msgstr "Barva témìø vybité baterie:"
 
-#: cdplayer/cdplayer.c:146 cdplayer/cdplayer.c:818
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:171
+#: cdplayer/cdplayer.c:499 cdplayer/cdplayer.c:914
+msgid "CD Player"
+msgstr "CD Pøehrávaè"
+
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:2
+#, fuzzy
+msgid "CD Player Applet Factory"
+msgstr "CD Pøehrávaè aplet"
+
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:3
+#, fuzzy
+msgid "Factory for CD player applet"
+msgstr "CD Pøehrávaè aplet"
+
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:4
+#: mixer/GNOME_MixerApplet.server.in.in.h:2
+msgid "Multimedia"
+msgstr ""
+
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:5
+msgid "Panel applet for playing audio CDs"
+msgstr ""
+
+#: cdplayer/GNOME_CDPlayerApplet.xml.h:4
+#, fuzzy
+msgid "_Run External CD Player"
+msgstr "Spustit CD Pøehrávaè"
+
+#: cdplayer/cdplayer.c:159 cdplayer/cdplayer.c:904
 msgid "Stop"
 msgstr ""
 
-#: cdplayer/cdplayer.c:148 cdplayer/cdplayer.c:820
+#: cdplayer/cdplayer.c:161 cdplayer/cdplayer.c:906
 msgid "Play / Pause"
 msgstr ""
 
-#: cdplayer/cdplayer.c:150 cdplayer/cdplayer.c:822
-#: drivemount/GNOME_DriveMountApplet.xml.h:3
+#: cdplayer/cdplayer.c:163 cdplayer/cdplayer.c:908
 msgid "Eject"
 msgstr "Vysunout"
 
-#: cdplayer/cdplayer.c:152 cdplayer/cdplayer.c:824
+#: cdplayer/cdplayer.c:165 cdplayer/cdplayer.c:910
 msgid "Previous Track"
 msgstr ""
 
-#: cdplayer/cdplayer.c:154 cdplayer/cdplayer.c:826
+#: cdplayer/cdplayer.c:167 cdplayer/cdplayer.c:912
 #, fuzzy
 msgid "Next Track"
 msgstr "Sí»ový pøenos"
 
-#: cdplayer/GNOME_CDPlayerApplet.server.in.h:1 cdplayer/cdplayer.c:159
-#: cdplayer/cdplayer.c:828
-msgid "CD Player"
-msgstr "CD Pøehrávaè"
+#: cdplayer/cdplayer.c:283 drivemount/drivemount.c:399 mixer/mixer.c:760
+#: multiload/main.c:118
+#, c-format
+msgid "There was an error executing '%s' : %s"
+msgstr ""
 
-#: cdplayer/cdplayer.c:346
+#: cdplayer/cdplayer.c:388
 #, fuzzy
 msgid "CD Player Preferences"
 msgstr "CD Pøehrávaè aplet"
 
-#: cdplayer/cdplayer.c:361
+#: cdplayer/cdplayer.c:406
 #, fuzzy
 msgid "Disc Image"
 msgstr "Aplet vyu¾ití disku"
 
-#: cdplayer/cdplayer.c:361
+#: cdplayer/cdplayer.c:406
 msgid "An image of a cd-rom disc"
 msgstr ""
 
-#: cdplayer/cdplayer.c:363
+#: cdplayer/cdplayer.c:408
 #, fuzzy
 msgid "Device _Path:"
 msgstr "Zaøízení:"
 
-#: cdplayer/cdplayer.c:372
+#: cdplayer/cdplayer.c:417
 #, fuzzy
 msgid "Device Path"
 msgstr "Zaøízení:"
 
-#: cdplayer/cdplayer.c:372
+#: cdplayer/cdplayer.c:417
 msgid "Set the device path here"
 msgstr ""
 
-#: cdplayer/cdplayer.c:375
+#: cdplayer/cdplayer.c:420
 #, fuzzy
 msgid "Use _Default"
 msgstr "®ádné (standard)"
 
-#: cdplayer/cdplayer.c:420
-msgid "CD Player Applet"
-msgstr "CD Pøehrávaè aplet"
-
-#: cdplayer/cdplayer.c:421
+#: cdplayer/cdplayer.c:500
 #, fuzzy
 msgid ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
 msgstr "(C) 1997 Free Software Foundation"
 
-#: cdplayer/cdplayer.c:423 cdplayer/cdplayer.c:829
+#: cdplayer/cdplayer.c:502 cdplayer/cdplayer.c:915
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr "Tento aplet je jednoduchý cd pøehrávaè pro vá¹ panel"
 
-#: cdplayer/cdplayer.c:697 cdplayer/cdplayer.c:706
+#: cdplayer/cdplayer.c:785 cdplayer/cdplayer.c:796
 msgid "Elapsed time"
 msgstr ""
 
-#: cdplayer/cdplayer.c:700 cdplayer/cdplayer.c:708
+#: cdplayer/cdplayer.c:788 cdplayer/cdplayer.c:798
 msgid "Track number"
 msgstr ""
 
-#: cdplayer/cdplayer.c:819
+#: cdplayer/cdplayer.c:905
 msgid "Click this button to Stop playing the CD"
 msgstr ""
 
-#: cdplayer/cdplayer.c:821
+#: cdplayer/cdplayer.c:907
 msgid "Click this button to Play or Pause the CD"
 msgstr ""
 
-#: cdplayer/cdplayer.c:823
+#: cdplayer/cdplayer.c:909
 msgid "Click this button to eject the CD"
 msgstr ""
 
-#: cdplayer/cdplayer.c:825
+#: cdplayer/cdplayer.c:911
 msgid "Click this button to Play the previous track in the CD"
 msgstr ""
 
-#: cdplayer/cdplayer.c:827
+#: cdplayer/cdplayer.c:913
 msgid "Click this button to Play the next track in the CD"
 msgstr ""
 
-#: cdplayer/GNOME_CDPlayerApplet.server.in.h:2
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:392
+#: charpick/charpick.c:490
 #, fuzzy
-msgid "CD Player Applet Factory"
-msgstr "CD Pøehrávaè aplet"
-
-#: cdplayer/GNOME_CDPlayerApplet.server.in.h:3
-#, fuzzy
-msgid "Factory for CD player applet"
-msgstr "CD Pøehrávaè aplet"
-
-#: cdplayer/GNOME_CDPlayerApplet.server.in.h:4
-#: mixer/GNOME_MixerApplet.server.in.h:2
-msgid "Multimedia"
-msgstr ""
-
-#: cdplayer/GNOME_CDPlayerApplet.server.in.h:5
-msgid "Panel applet for playing audio CDs"
-msgstr ""
-
-#: cdplayer/GNOME_CDPlayerApplet.xml.h:4
-#, fuzzy
-msgid "Run External CD Player"
-msgstr "Spustit CD Pøehrávaè"
-
-#: charpick/charpick.c:363
-msgid "Character Picker"
+msgid "Character Palette"
 msgstr "Výbìr znaku"
 
-#: charpick/charpick.c:365
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:2
+msgid "Charpicker Applet Factory"
+msgstr ""
+
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:3
+#, fuzzy
+msgid "Insert characters"
+msgstr "Standardní list znakù:"
+
+#. If your charset supports it, please use U00F1 to replace the "n"
+#. * in "Muniz".
+#: charpick/charpick.c:366
+msgid "Alexandre Muniz <munizao@xprt.net>"
+msgstr ""
+
+#: charpick/charpick.c:394
 msgid "Copyright (C) 1998"
 msgstr "Copyright (C) 1998"
 
-#: charpick/charpick.c:366
+#: charpick/charpick.c:395
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -407,41 +546,27 @@ msgstr ""
 "Aplet pro panel Gnome slou¾ící k výbìru znakù, které není mo¾no zadat z "
 "klávesnice. Distribováno pod Obecnou Veøejnou licencí GNU."
 
-#: charpick/charpick.c:444
+#: charpick/charpick.c:489
 #, fuzzy
 msgid "Insert special characters"
 msgstr "Standardní list znakù:"
 
-#: charpick/GNOME_CharpickerApplet.server.in.h:1 charpick/charpick.c:445
-#, fuzzy
-msgid "Character Palette"
-msgstr "Výbìr znaku"
-
-#: charpick/GNOME_CharpickerApplet.server.in.h:2
-msgid "Charpicker Applet Factory"
-msgstr ""
-
-#: charpick/GNOME_CharpickerApplet.server.in.h:3
-#, fuzzy
-msgid "Insert characters"
-msgstr "Standardní list znakù:"
-
-#: charpick/properties.c:79
+#: charpick/properties.c:80
 #, fuzzy
 msgid "_Default character list:"
 msgstr "Standardní list znakù:"
 
-#: charpick/properties.c:88
+#: charpick/properties.c:89
 #, fuzzy
 msgid "Default list of characters"
 msgstr "Standardní list znakù:"
 
-#: charpick/properties.c:89
+#: charpick/properties.c:90
 #, fuzzy
 msgid "Set the default character list here"
 msgstr "Standardní list znakù:"
 
-#: charpick/properties.c:91
+#: charpick/properties.c:92
 #, fuzzy
 msgid ""
 "These characters will appear when the panel is started. To return to this "
@@ -450,41 +575,67 @@ msgstr ""
 "Tyto znaky se objeví kdy¾ spustíte panel. Pokud se chcete navrátit k tomuto "
 "listu, stiskìte <space> na apletu."
 
-#: charpick/properties.c:144
+#: charpick/properties.c:156
 #, fuzzy
 msgid "Character Palette Preferences"
 msgstr "Vlastnosti výbìru znaku"
 
-#: drivemount/drivemount.c:419
-msgid "Drive Mount Applet"
+#: drivemount/GNOME_DriveMountApplet.server.in.in.h:1
+#: drivemount/drivemount.c:471
+#, fuzzy
+msgid "Disk Mounter"
 msgstr "Aplet pøipojování diskù"
 
-#: drivemount/drivemount.c:420
+#: drivemount/GNOME_DriveMountApplet.server.in.in.h:2
+#, fuzzy
+msgid "Drive Mount Applet Factory"
+msgstr "Aplet pøipojování diskù"
+
+#: drivemount/GNOME_DriveMountApplet.server.in.in.h:3
+#, fuzzy
+msgid "Factory for drive mount applet"
+msgstr "Aplet pøipojování diskù"
+
+#: drivemount/GNOME_DriveMountApplet.server.in.in.h:4
+msgid "Mount local disks and devices"
+msgstr ""
+
+#: drivemount/GNOME_DriveMountApplet.xml.h:2
+#, fuzzy
+msgid "_Browse..."
+msgstr "Probírat..."
+
+#: drivemount/GNOME_DriveMountApplet.xml.h:3
+#, fuzzy
+msgid "_Eject"
+msgstr "Vysunout"
+
+#: drivemount/drivemount.c:472
 msgid "(C) 1999-2001 The GNOME Hackers\n"
 msgstr ""
 
-#: drivemount/drivemount.c:422
+#: drivemount/drivemount.c:474
 msgid "Applet for mounting and unmounting block volumes."
 msgstr ""
 
-#: drivemount/drivemount.c:612
+#: drivemount/drivemount.c:672
 msgid " mounted"
 msgstr " pøipojen"
 
-#: drivemount/drivemount.c:614
+#: drivemount/drivemount.c:674
 msgid " not mounted"
 msgstr " není pøipojen"
 
-#: drivemount/drivemount.c:725
+#: drivemount/drivemount.c:786
 #, fuzzy
 msgid "Drive Mount Applet Warning"
 msgstr "Aplet pøipojování diskù"
 
-#: drivemount/drivemount.c:733
+#: drivemount/drivemount.c:796
 msgid "\" reported:\n"
 msgstr "\" oznámeno:\n"
 
-#: drivemount/drivemount.c:735
+#: drivemount/drivemount.c:798
 msgid ""
 "Drivemount command failed.\n"
 "\""
@@ -492,200 +643,163 @@ msgstr ""
 "Pøíkaz na pøipojení selhal.\n"
 "\""
 
-#: drivemount/GNOME_DriveMountApplet.server.in.h:1
-#, fuzzy
-msgid "Disk Mounter"
-msgstr "Aplet pøipojování diskù"
-
-#: drivemount/GNOME_DriveMountApplet.server.in.h:2
-#, fuzzy
-msgid "Drive Mount Applet Factory"
-msgstr "Aplet pøipojování diskù"
-
-#: drivemount/GNOME_DriveMountApplet.server.in.h:3
-#, fuzzy
-msgid "Factory for drive mount applet"
-msgstr "Aplet pøipojování diskù"
-
-#: drivemount/GNOME_DriveMountApplet.server.in.h:4
-msgid "Mount local disks and devices"
-msgstr ""
-
-#: drivemount/GNOME_DriveMountApplet.xml.h:2
-msgid "Browse..."
-msgstr "Probírat..."
-
-#: drivemount/properties.c:239
+#: drivemount/properties.c:252
 #, fuzzy
 msgid "Disk Mounter Preferences"
 msgstr "Nastevení apletu pøipojování diskù"
 
-#: drivemount/properties.c:258
+#: drivemount/properties.c:273
 #, fuzzy
 msgid "_Mount point:"
 msgstr "Pøipojovací adresáø:"
 
-#: drivemount/properties.c:276
+#: drivemount/properties.c:291
 #, fuzzy
 msgid "_Update interval (seconds):"
 msgstr "Interval obnovování (sekundy):"
 
-#: drivemount/properties.c:292
+#: drivemount/properties.c:307 panel-menu/panel-menu-properties.c:111
 #, fuzzy
 msgid "_Icon :"
 msgstr "Ikona:"
 
-#: drivemount/properties.c:310
+#: drivemount/properties.c:325
 msgid "Floppy"
 msgstr "Disketa"
 
-#: drivemount/properties.c:313
+#: drivemount/properties.c:328
 msgid "Cdrom"
 msgstr "Cdrom"
 
-#: drivemount/properties.c:316
+#: drivemount/properties.c:331
 msgid "Cd Recorder"
 msgstr ""
 
-#: drivemount/properties.c:319
+#: drivemount/properties.c:334
 msgid "Zip Drive"
 msgstr "Jednotka Zip"
 
-#: drivemount/properties.c:322
+#: drivemount/properties.c:337
 msgid "Hard Disk"
 msgstr "Hard Disk"
 
-#: drivemount/properties.c:325
+#: drivemount/properties.c:340
 msgid "Jaz Drive"
 msgstr "Jednotka Jaz"
 
-#: drivemount/properties.c:328
+#: drivemount/properties.c:343
 msgid "Custom"
 msgstr "Vlastní"
 
-#: drivemount/properties.c:341
+#: drivemount/properties.c:356
 msgid "Select icon for mounted"
 msgstr "Výbìr ikony pro 'pøipojen'"
 
-#: drivemount/properties.c:348
+#: drivemount/properties.c:363
 #, fuzzy
 msgid "Custom icon for moun_ted:"
 msgstr "Vlastní ikona pro pripojený:"
 
-#: drivemount/properties.c:357
+#: drivemount/properties.c:372
 msgid "Select icon for unmounted"
 msgstr "Výbìr ikony pro 'nepøipojen'"
 
-#: drivemount/properties.c:364
+#: drivemount/properties.c:379
 #, fuzzy
 msgid "Custom icon for not mou_nted:"
 msgstr "Vlastní ikona pro nepripojený:"
 
-#: drivemount/properties.c:374
+#: drivemount/properties.c:389
 #, fuzzy
 msgid "_Scale size to panel"
 msgstr "Zmìnit velikost dle panelu"
 
-#: drivemount/properties.c:381
+#: drivemount/properties.c:396
 #, fuzzy
 msgid "_Eject on unmount"
 msgstr "Vysunout pøi odpojení"
 
-#: drivemount/properties.c:388
+#: drivemount/properties.c:403
 #, fuzzy
 msgid "Use _automount friendly status test"
 msgstr "Pou¾ít test odpovídající programu automount"
 
-#: geyes/geyes.c:200
-msgid "Dave Camp <campd@oit.edu>"
-msgstr "Dave Camp <campd@oit.edu>"
-
-#: geyes/geyes.c:209
-msgid "gEyes"
-msgstr "gEyes"
-
-#: geyes/geyes.c:210
-msgid "Copyright (C) 1999 Dave Camp"
-msgstr "Copyright (C) 1999 Dave Camp"
-
-#: geyes/geyes.c:211
-msgid "A goofy little xeyes clone for the GNOME panel."
-msgstr "Malá blbá imitace xeyes pro panel GNOME."
-
-#: geyes/GNOME_GeyesApplet.server.in.h:1
+#: geyes/GNOME_GeyesApplet.server.in.in.h:1
 #, fuzzy
 msgid "A set of eyeballs for your panel"
 msgstr "Pou¾ít v¹e zbylé místo na panelu"
 
-#: geyes/GNOME_GeyesApplet.server.in.h:2
+#: geyes/GNOME_GeyesApplet.server.in.in.h:2
 msgid "Amusements"
 msgstr ""
 
-#: geyes/GNOME_GeyesApplet.server.in.h:3
+#: geyes/GNOME_GeyesApplet.server.in.in.h:3 geyes/geyes.c:237
+#: geyes/geyes.c:429 geyes/geyes.c:431
 #, fuzzy
 msgid "Geyes"
 msgstr "gEyes"
 
-#: geyes/GNOME_GeyesApplet.server.in.h:4
+#: geyes/GNOME_GeyesApplet.server.in.in.h:4
 msgid "Geyes Applet Factory"
 msgstr ""
 
-#: geyes/themes.c:210
+#: geyes/geyes.c:238
+msgid "Copyright (C) 1999 Dave Camp"
+msgstr "Copyright (C) 1999 Dave Camp"
+
+#: geyes/geyes.c:239
+msgid "A goofy little xeyes clone for the GNOME panel."
+msgstr "Malá blbá imitace xeyes pro panel GNOME."
+
+#: geyes/geyes.c:432
+msgid "The eyes look in the direction of the mouse pointer"
+msgstr ""
+
+#: geyes/themes.c:223
 msgid "Geyes Preferences"
 msgstr ""
 
-#: geyes/themes.c:222
+#: geyes/themes.c:239
 #, fuzzy
 msgid "T_heme Name"
 msgstr "Jméno témata"
 
-#: gkb-new/gkb.c:114
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:1
+msgid "Change the keyboard layout"
+msgstr ""
+
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:2
+msgid "GKB Factory"
+msgstr ""
+
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:3 gkb-new/gkb.c:604
+#, fuzzy
+msgid "Keyboard Layout Switcher"
+msgstr "Aplet klávesnice pro GNOME"
+
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:4
+#, fuzzy
+msgid "Produces keyboard layout switcher applets."
+msgstr "Aplet klávesnice pro GNOME"
+
+#: gkb-new/gkb.c:112
 msgid ""
 "Press the hotkey to switch between layouts. The hotkey can be set through "
 "Properties dialog"
 msgstr ""
 
-#: gkb-new/gkb.c:404
-#, c-format
-msgid "name_%d"
-msgstr ""
-
-#: gkb-new/gkb.c:408
-#, fuzzy, c-format
-msgid "label_%d"
-msgstr "Popis"
-
-#: gkb-new/gkb.c:412
-#, fuzzy, c-format
-msgid "country_%d"
-msgstr "Zemì"
-
-#: gkb-new/gkb.c:416
-#, fuzzy, c-format
-msgid "lang_%d"
-msgstr "Polsko"
-
-#: gkb-new/gkb.c:424
-#, fuzzy, c-format
-msgid "command_%d"
-msgstr "Pøíkaz"
-
-#: gkb-new/gkb.c:527 gkb-new/gkb.c:534
+#: gkb-new/gkb.c:551 gkb-new/gkb.c:558
 msgid "GKB"
 msgstr ""
 
-#: gkb-new/gkb.c:576
-msgid "The GNOME KeyBoard Switcher Applet"
-msgstr "Aplet na pøepínání klávesnice pro GNOME"
-
-#: gkb-new/gkb.c:578
+#: gkb-new/gkb.c:606
 msgid "(C) 1998-2000 Free Software Foundation"
 msgstr "(C) 1998-2000 Free Software Foundation"
 
-#: gkb-new/gkb.c:579
+#: gkb-new/gkb.c:607
 #, fuzzy
 msgid ""
-"This applet switches between keyboard maps using setxkbmap, or xmodmap.\n"
+"This applet switches between keyboard maps using setxkbmap or xmodmap.\n"
 "Mail me your flag and keyboard layout if you want support for your locale "
 "(my email address is shooby@gnome.hu).\n"
 "So long, and thanks for all the fish.\n"
@@ -699,446 +813,384 @@ msgstr ""
 "Podìkování pro Balazse Nagyho (Kevin) <julian7@kva.hu> za malou pomoc a "
 "Emese Kovacs <emese@eik.bme.hu> za její solidaritu."
 
-#: gkb-new/gkb.c:596
+#: gkb-new/gkb.c:624
 msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
 msgstr "Domovská stránka GKB (http://projects.gnome.hu/gkb)"
-
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:1
-msgid "Change the keyboard layout"
-msgstr ""
-
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:2
-msgid "GKB Factory"
-msgstr ""
-
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:3
-#, fuzzy
-msgid "Keyboard Layout Switcher"
-msgstr "Aplet klávesnice pro GNOME"
-
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:4
-#, fuzzy
-msgid "Produces keyboard layout switcher applets."
-msgstr "Aplet klávesnice pro GNOME"
 
 #: gkb-new/keygrab.c:69 gkb-new/keygrab.c:144
 msgid "Disabled"
 msgstr "Zakázané"
 
-#: gkb-new/keygrab.c:292
+#: gkb-new/keygrab.c:303
 msgid "Press a key or press Esc to cancel"
 msgstr ""
 
-#: gkb-new/prop-add.c:86
+#: gkb-new/prop-add.c:88
 msgid "Keyboards (select and press add)"
 msgstr ""
 
-#: gkb-new/prop-add.c:367
+#: gkb-new/prop-add.c:375
 #, fuzzy
 msgid "Select Keyboard"
 msgstr "Vybrat rozlo¾ení"
 
-#: gkb-new/prop.c:121 gkb-new/prop.c:189
-msgid "Normal"
-msgstr "Normální"
-
-#: gkb-new/prop.c:122 gkb-new/prop.c:193
-msgid "Big"
-msgstr "Velké"
-
-#: gkb-new/prop.c:140 gkb-new/util.c:41 gkb-new/util.c:48 gkb-new/util.c:74
-msgid "Flag"
-msgstr "Vlajka"
-
-#: gkb-new/prop.c:141 gkb-new/util.c:38 gkb-new/util.c:71
-msgid "Label"
-msgstr "Popis"
-
-#: gkb-new/prop.c:142 gkb-new/util.c:44 gkb-new/util.c:77
-msgid "Flag and Label"
-msgstr "Vlajka a popis"
-
-#: gkb-new/prop.c:278 modemlights/properties.c:374
-msgid "Display"
-msgstr "Zobrazování"
-
-#. Labels and option Menus
-#: gkb-new/prop.c:298
-#, fuzzy
-msgid "_Appearance: "
-msgstr "Vzhled "
-
-#: gkb-new/prop.c:305
-#, fuzzy
-msgid "Applet _size: "
-msgstr "Velikost apletu "
-
-#: gkb-new/prop.c:331
-msgid "Hotkey for switching between layouts"
-msgstr "Klávesa pro pøepínání mezi mapami"
-
-#: gkb-new/prop.c:343
-msgid "Grab hotkey"
-msgstr "Zachytit klávesu"
-
-#. Create property box
-#: gkb-new/prop.c:405
-#, fuzzy
-msgid "Keyboard Layout Switcher Preferences"
-msgstr "Aplet klávesnice pro GNOME"
-
-#: gkb-new/prop.c:419
-#, fuzzy
-msgid "_Keymaps"
-msgstr "Klávesové mapy"
-
-#: gkb-new/prop.c:431
-#, fuzzy
-msgid "_Options"
-msgstr "Volby"
-
-#: gkb-new/prop-list.c:389 gtik/gtik.c:1163
+#: gkb-new/prop-list.c:398 gtik/gtik.c:1167
 #, fuzzy
 msgid "_Add"
 msgstr "Pøidat"
 
-#: gkb-new/prop-list.c:390
+#: gkb-new/prop-list.c:399
 #, fuzzy
 msgid "_Edit"
 msgstr "Upravit"
 
-#: gkb-new/prop-list.c:391
+#: gkb-new/prop-list.c:400
 #, fuzzy
 msgid "_Up"
 msgstr "Nahoru"
 
-#: gkb-new/prop-list.c:392
+#: gkb-new/prop-list.c:401
 #, fuzzy
 msgid "Dow_n"
 msgstr "Dolu"
 
-#: gkb-new/prop-list.c:393
+#: gkb-new/prop-list.c:402
 #, fuzzy
 msgid "_Delete"
 msgstr "Zru¹it"
 
-#: gkb-new/prop-map.c:193
+#: gkb-new/prop-map.c:206
 msgid "Armenia"
 msgstr "Arménie"
 
-#: gkb-new/prop-map.c:194
+#: gkb-new/prop-map.c:207
 msgid "Australia"
 msgstr "Austrálie"
 
-#: gkb-new/prop-map.c:195
+#: gkb-new/prop-map.c:208
 msgid "Austria"
 msgstr "Rakousko"
 
-#: gkb-new/prop-map.c:196
+#: gkb-new/prop-map.c:209
 msgid "Belgium"
 msgstr "Belgie"
 
-#: gkb-new/prop-map.c:197
+#: gkb-new/prop-map.c:210
 msgid "Brazil"
 msgstr "Brazílie"
 
-#: gkb-new/prop-map.c:198
+#: gkb-new/prop-map.c:211
 msgid "Bulgaria"
 msgstr "Bulharsko"
 
-#: gkb-new/prop-map.c:199
+#: gkb-new/prop-map.c:212
 msgid "Canada"
 msgstr "Kanada"
 
-#: gkb-new/prop-map.c:200
+#: gkb-new/prop-map.c:213
 msgid "Caribic"
 msgstr "Karibik"
 
-#: gkb-new/prop-map.c:201
+#: gkb-new/prop-map.c:214
 msgid "France"
 msgstr "Francie"
 
-#: gkb-new/prop-map.c:202
+#: gkb-new/prop-map.c:215
 msgid "Georgia"
 msgstr "Gruzie"
 
-#: gkb-new/prop-map.c:203
+#: gkb-new/prop-map.c:216
 msgid "Germany"
 msgstr "Nìmecko"
 
-#: gkb-new/prop-map.c:204
+#: gkb-new/prop-map.c:217
 msgid "Great Britain"
 msgstr "Velká Británie"
 
-#: gkb-new/prop-map.c:205
+#: gkb-new/prop-map.c:218
+msgid "Greece"
+msgstr ""
+
+#: gkb-new/prop-map.c:219
 msgid "Hungary"
 msgstr "Maïarsko"
 
-#: gkb-new/prop-map.c:206
+#: gkb-new/prop-map.c:220
 msgid "Jamaica"
 msgstr "Jamajka"
 
-#: gkb-new/prop-map.c:207
+#: gkb-new/prop-map.c:221
 msgid "New Zealand"
 msgstr "Nový Zéland"
 
-#: gkb-new/prop-map.c:208
+#: gkb-new/prop-map.c:222
 msgid "Norway"
 msgstr "Norsko"
 
-#: gkb-new/prop-map.c:209
+#: gkb-new/prop-map.c:223
 msgid "Poland"
 msgstr "Polsko"
 
-#: gkb-new/prop-map.c:210
+#: gkb-new/prop-map.c:224
 msgid "Portugal"
 msgstr "Portugalsko"
 
-#: gkb-new/prop-map.c:211
+#: gkb-new/prop-map.c:225
 msgid "Russia"
 msgstr "Rusko"
 
-#: gkb-new/prop-map.c:212
+#: gkb-new/prop-map.c:226
 msgid "Slovak Republic"
 msgstr "Slovenská republika"
 
-#: gkb-new/prop-map.c:213
+#: gkb-new/prop-map.c:227
 msgid "Slovenia"
 msgstr "Slovinsko"
 
-#: gkb-new/prop-map.c:214
+#: gkb-new/prop-map.c:228
 msgid "South Africa"
 msgstr "Ji¾ní Afrika"
 
-#: gkb-new/prop-map.c:215
+#: gkb-new/prop-map.c:229
 msgid "Spain"
 msgstr "©panelsko"
 
-#: gkb-new/prop-map.c:216
+#: gkb-new/prop-map.c:230
 msgid "Sweden"
 msgstr "©védsko"
 
-#: gkb-new/prop-map.c:217
+#: gkb-new/prop-map.c:231
 msgid "Switzerland"
 msgstr "©výcarsko"
 
-#: gkb-new/prop-map.c:218
+#: gkb-new/prop-map.c:232
 msgid "Thailand"
 msgstr "Thajsko"
 
-#: gkb-new/prop-map.c:219
+#: gkb-new/prop-map.c:233
 msgid "Turkey"
 msgstr "Turecko"
 
-#: gkb-new/prop-map.c:220
+#: gkb-new/prop-map.c:234
 msgid "United Kingdom"
 msgstr "Spojené království"
 
-#: gkb-new/prop-map.c:221
+#: gkb-new/prop-map.c:235
 msgid "United States"
 msgstr "Spojené státy"
 
-#: gkb-new/prop-map.c:222
+#: gkb-new/prop-map.c:236
 msgid "Yugoslavia"
 msgstr "Jugoslávie"
 
-#: gkb-new/prop-map.c:242
+#: gkb-new/prop-map.c:256
 msgid "Armenian"
 msgstr "Arménská"
 
-#: gkb-new/prop-map.c:243
+#: gkb-new/prop-map.c:257
 msgid "Basque"
 msgstr "Baskická"
 
-#: gkb-new/prop-map.c:244
+#: gkb-new/prop-map.c:258
 msgid "Bulgarian"
 msgstr "Bulharská"
 
-#: gkb-new/prop-map.c:245
+#: gkb-new/prop-map.c:259
 msgid "Dutch"
 msgstr "Holandská"
 
-#: gkb-new/prop-map.c:246
+#: gkb-new/prop-map.c:260
 msgid "English"
 msgstr "Anglická"
 
-#: gkb-new/prop-map.c:247
+#: gkb-new/prop-map.c:261
 msgid "French"
 msgstr "Francouzská"
 
-#: gkb-new/prop-map.c:248
+#: gkb-new/prop-map.c:262
 msgid "Georgian"
 msgstr "Gruzínská"
 
-#: gkb-new/prop-map.c:249
+#: gkb-new/prop-map.c:263
 msgid "German"
 msgstr "Nìmecká"
 
-#: gkb-new/prop-map.c:250
+#: gkb-new/prop-map.c:264
+#, fuzzy
+msgid "Greek"
+msgstr "Volno"
+
+#: gkb-new/prop-map.c:265
 msgid "Hungarian"
 msgstr "Maïarská"
 
-#: gkb-new/prop-map.c:251
+#: gkb-new/prop-map.c:266
 msgid "Norwegian"
 msgstr "Norská"
 
-#: gkb-new/prop-map.c:252
+#: gkb-new/prop-map.c:267
 msgid "Polish"
 msgstr "Polská"
 
-#: gkb-new/prop-map.c:253
+#: gkb-new/prop-map.c:268
 msgid "Portuguese"
 msgstr "Portugalská"
 
-#: gkb-new/prop-map.c:254
+#: gkb-new/prop-map.c:269
 msgid "Russian"
 msgstr "Ruská"
 
-#: gkb-new/prop-map.c:255
+#: gkb-new/prop-map.c:270
 msgid "Slovak"
 msgstr "Slovenská"
 
-#: gkb-new/prop-map.c:256
+#: gkb-new/prop-map.c:271
 msgid "Slovenian"
 msgstr "Slovinská"
 
-#: gkb-new/prop-map.c:257
+#: gkb-new/prop-map.c:272
 msgid "Swedish"
 msgstr "©védská"
 
-#: gkb-new/prop-map.c:258
+#: gkb-new/prop-map.c:273
 msgid "Thai"
 msgstr "Thajská"
 
-#: gkb-new/prop-map.c:259
+#: gkb-new/prop-map.c:274
 msgid "Turkish"
 msgstr "Turecká"
 
-#: gkb-new/prop-map.c:260
+#: gkb-new/prop-map.c:275
 msgid "Wallon"
 msgstr "Valonská"
 
-#: gkb-new/prop-map.c:261
+#: gkb-new/prop-map.c:276
 msgid "Yugoslavian"
 msgstr "Jugoslávská"
 
-#: gkb-new/prop-map.c:279
+#: gkb-new/prop-map.c:294
 msgid "105"
 msgstr "105"
 
-#: gkb-new/prop-map.c:280
+#: gkb-new/prop-map.c:295
 msgid "101"
 msgstr "101"
 
-#: gkb-new/prop-map.c:281
+#: gkb-new/prop-map.c:296
 msgid "102"
 msgstr "102"
 
-#: gkb-new/prop-map.c:282
+#: gkb-new/prop-map.c:297
 msgid "450"
 msgstr "450"
 
-#: gkb-new/prop-map.c:283
+#: gkb-new/prop-map.c:298
 msgid "84"
 msgstr "84"
 
-#: gkb-new/prop-map.c:284
+#: gkb-new/prop-map.c:299
 msgid "mklinux"
 msgstr "mklinux"
 
-#: gkb-new/prop-map.c:285
+#: gkb-new/prop-map.c:300
 msgid "type5"
 msgstr "type5"
 
-#: gkb-new/prop-map.c:305
+#: gkb-new/prop-map.c:320
 msgid "iso-8859-1"
 msgstr "iso-8859-1"
 
-#: gkb-new/prop-map.c:306
+#: gkb-new/prop-map.c:321
 msgid "iso-8859-2"
 msgstr "iso-8859-2"
 
-#: gkb-new/prop-map.c:307
+#: gkb-new/prop-map.c:322
+#, fuzzy
+msgid "iso-8859-7"
+msgstr "iso-8859-1"
+
+#: gkb-new/prop-map.c:323
 msgid "iso-8859-9"
 msgstr "iso-8859-9"
 
-#: gkb-new/prop-map.c:308
+#: gkb-new/prop-map.c:324
 msgid "am-armscii8"
 msgstr "am-armscii8"
 
-#: gkb-new/prop-map.c:309
+#: gkb-new/prop-map.c:325
 msgid "be-latin1"
 msgstr "be-latin1"
 
-#: gkb-new/prop-map.c:310
+#: gkb-new/prop-map.c:326
 msgid "cp1251"
 msgstr "cp1251"
 
-#: gkb-new/prop-map.c:311
+#: gkb-new/prop-map.c:327
 msgid "georgian-academy"
 msgstr "georgian-academy"
 
-#: gkb-new/prop-map.c:312
+#: gkb-new/prop-map.c:328
 msgid "koi8-r"
 msgstr "koi8-r"
 
-#: gkb-new/prop-map.c:313
+#: gkb-new/prop-map.c:329
 msgid "tis620"
 msgstr "tis620"
 
-#: gkb-new/prop-map.c:331
+#: gkb-new/prop-map.c:347
 msgid "ix86"
 msgstr "ix86"
 
-#: gkb-new/prop-map.c:332
-msgid "sun"
+#: gkb-new/prop-map.c:348
+#, fuzzy
+msgid "Sun"
 msgstr "sun"
 
-#: gkb-new/prop-map.c:333
+#: gkb-new/prop-map.c:349
 msgid "mac"
 msgstr "mac"
 
-#: gkb-new/prop-map.c:334
+#: gkb-new/prop-map.c:350
 msgid "sgi"
 msgstr "sgi"
 
-#: gkb-new/prop-map.c:335
+#: gkb-new/prop-map.c:351
 msgid "dec"
 msgstr "dec"
 
-#: gkb-new/prop-map.c:336
+#: gkb-new/prop-map.c:352
 msgid "ibm"
 msgstr "ibm"
 
-#: gkb-new/prop-map.c:573
+#: gkb-new/prop-map.c:591
 #, fuzzy
 msgid "Edit Keyboard"
 msgstr "Upravit mapu klávesnice"
 
 #. Add the labels  and entries/combos/icon_entry
-#: gkb-new/prop-map.c:601 panel-menu/panel-menu-directory.c:624
-#: panel-menu/panel-menu-documents.c:398 panel-menu/panel-menu-documents.c:434
+#: gkb-new/prop-map.c:619 panel-menu/panel-menu-directory.c:674
+#: panel-menu/panel-menu-documents.c:398 panel-menu/panel-menu-documents.c:435
 #: panel-menu/panel-menu-links.c:404 panel-menu/panel-menu-links.c:440
 #, fuzzy
 msgid "_Name:"
 msgstr "Jméno"
 
-#: gkb-new/prop-map.c:605
+#: gkb-new/prop-map.c:623
 #, fuzzy
 msgid "_Label:"
 msgstr "Popis"
 
-#: gkb-new/prop-map.c:609
+#: gkb-new/prop-map.c:627
 #, fuzzy
 msgid "Lan_guage:"
 msgstr "Jazyk"
 
-#: gkb-new/prop-map.c:615
+#: gkb-new/prop-map.c:633
 #, fuzzy
 msgid "Count_ry:"
 msgstr "Zemì"
 
-#: gkb-new/prop-map.c:622
+#: gkb-new/prop-map.c:640
 msgid ""
 "Flag\n"
 "Pixmap"
@@ -1146,27 +1198,27 @@ msgstr ""
 "Obrázek\n"
 "Vlajky"
 
-#: gkb-new/prop-map.c:626
+#: gkb-new/prop-map.c:644
 #, fuzzy
 msgid "Arc_hitecture:"
 msgstr "Architektura"
 
-#: gkb-new/prop-map.c:632
+#: gkb-new/prop-map.c:650
 #, fuzzy
 msgid "_Type:"
 msgstr "Typ"
 
-#: gkb-new/prop-map.c:638
+#: gkb-new/prop-map.c:656
 #, fuzzy
 msgid "Code_page:"
 msgstr "Kódová stránka"
 
-#: gkb-new/prop-map.c:645
+#: gkb-new/prop-map.c:663
 #, fuzzy
 msgid "Co_mmand:"
 msgstr "Pøíkaz"
 
-#: gkb-new/prop-map.c:652
+#: gkb-new/prop-map.c:670
 msgid ""
 "Where command can be:\n"
 "* xmodmap /full/path/xmodmap.hu\n"
@@ -1174,41 +1226,97 @@ msgid ""
 "* setxkbmap hu"
 msgstr ""
 
+#: gkb-new/prop.c:131 gkb-new/prop.c:199
+msgid "Normal"
+msgstr "Normální"
+
+#: gkb-new/prop.c:132 gkb-new/prop.c:203
+msgid "Big"
+msgstr "Velké"
+
+#: gkb-new/prop.c:150 gkb-new/util.c:41 gkb-new/util.c:48 gkb-new/util.c:74
+msgid "Flag"
+msgstr "Vlajka"
+
+#: gkb-new/prop.c:151 gkb-new/util.c:38 gkb-new/util.c:71
+msgid "Label"
+msgstr "Popis"
+
+#: gkb-new/prop.c:152 gkb-new/util.c:44 gkb-new/util.c:77
+msgid "Flag and Label"
+msgstr "Vlajka a popis"
+
+#: gkb-new/prop.c:288 modemlights/properties.c:393
+msgid "Display"
+msgstr "Zobrazování"
+
+#. Labels and option Menus
+#: gkb-new/prop.c:308
+#, fuzzy
+msgid "_Appearance: "
+msgstr "Vzhled "
+
+#: gkb-new/prop.c:315
+#, fuzzy
+msgid "Applet _size: "
+msgstr "Velikost apletu "
+
+#: gkb-new/prop.c:341
+msgid "Hotkey for switching between layouts"
+msgstr "Klávesa pro pøepínání mezi mapami"
+
+#: gkb-new/prop.c:353
+msgid "Grab hotkey"
+msgstr "Zachytit klávesu"
+
+#. Create property box
+#: gkb-new/prop.c:418
+#, fuzzy
+msgid "Keyboard Layout Switcher Preferences"
+msgstr "Aplet klávesnice pro GNOME"
+
+#: gkb-new/prop.c:435
+#, fuzzy
+msgid "_Keymaps"
+msgstr "Klávesové mapy"
+
+#: gkb-new/prop.c:447
+#, fuzzy
+msgid "_Options"
+msgstr "Volby"
+
 #: gkb-new/system.c:45
 msgid "The keymap switching command returned with error!"
 msgstr ""
 
-#: gtik/GNOME_GtikApplet.server.in.h:1
-#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:1
+#: gtik/GNOME_GtikApplet.server.in.in.h:1
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:1
 #, fuzzy
 msgid "Accessories"
 msgstr "Tlak:"
 
-#: gtik/GNOME_GtikApplet.server.in.h:2
+#: gtik/GNOME_GtikApplet.server.in.in.h:2
 msgid "Get continuously updated stock quotes"
 msgstr ""
 
-#: gtik/GNOME_GtikApplet.server.in.h:3
+#: gtik/GNOME_GtikApplet.server.in.in.h:3
 msgid "Gtik Applet Factory"
 msgstr ""
 
-#: gtik/GNOME_GtikApplet.server.in.h:4
+#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:724
 msgid "Stock Ticker"
 msgstr ""
 
-#: gtik/GNOME_GtikApplet.xml.h:3
-msgid "Refresh"
-msgstr "Aktualizuj"
+#: gtik/GNOME_GtikApplet.xml.h:4 gweather/GNOME_GWeatherApplet.xml.h:5
+#, fuzzy
+msgid "_Update"
+msgstr "Obnovit"
 
-#: gtik/gtik.c:217 gtik/gtik.c:799
+#: gtik/gtik.c:202
 msgid "No data available or properties not set"
 msgstr ""
 
-#: gtik/gtik.c:668
-msgid "The GNOME Stock Ticker"
-msgstr ""
-
-#: gtik/gtik.c:670
+#: gtik/gtik.c:726
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.  "
 "The GNOME Stock Ticker is a free Internet-based application.  It comes with "
@@ -1216,169 +1324,140 @@ msgid ""
 "investment decisions; it is for informational purposes only."
 msgstr ""
 
-#: gtik/gtik.c:1152
+#: gtik/gtik.c:1156
 #, fuzzy
 msgid "_New Symbol:"
 msgstr "Nový symbol:"
 
-#: gtik/gtik.c:1174
+#: gtik/gtik.c:1178
 #, fuzzy
 msgid "_Remove Selected"
 msgstr "Odstranit vybraný"
 
-#: gtik/gtik.c:1222 gweather/gweather-pref.c:764
-#, fuzzy
-msgid "_Use HTTP proxy"
-msgstr "Pou¾ít proxy"
-
-#: gtik/gtik.c:1232
-#, fuzzy
-msgid "_Location :"
-msgstr "Místo:"
-
-#: gtik/gtik.c:1248 gweather/gweather-pref.c:791
-msgid "P_ort :"
-msgstr ""
-
 #: gtik/gtik.c:1260
-msgid "Pro_xy requires a uername and password"
-msgstr ""
-
-#: gtik/gtik.c:1271 gweather/gweather-pref.c:814
-#, fuzzy
-msgid "Us_ername:"
-msgstr "U¾ivatel:"
-
-#: gtik/gtik.c:1286 gweather/gweather-pref.c:830
-#, fuzzy
-msgid "Pass_word:"
-msgstr "Heslo:"
-
-#: gtik/gtik.c:1357
 #, fuzzy
 msgid "Stock Ticker Preferences"
 msgstr "Vlastnosti spou¹tìèe"
 
-#: gtik/gtik.c:1378
+#: gtik/gtik.c:1284
 #, fuzzy
-msgid "Update Fre_quency in minutes:"
+msgid "Stock update Fre_quency in minutes:"
 msgstr "Obnovovací frekvence v minutách:"
 
-#: gtik/gtik.c:1396
-msgid "Enter symbols delimited with \"+\" in the box below."
-msgstr ""
+#: gtik/gtik.c:1303
+#, fuzzy
+msgid "Scroll Speed :"
+msgstr "Rychlost:"
 
-#: gtik/gtik.c:1406
+#: gtik/gtik.c:1323
+#, fuzzy
+msgid "_Width :"
+msgstr "©íøka:"
+
+#: gtik/gtik.c:1335
 msgid "Displa_y only symbols and price"
 msgstr ""
 
-#: gtik/gtik.c:1409
+#: gtik/gtik.c:1338
 #, fuzzy
 msgid "Scroll _left to right"
 msgstr "Posunovat doprava"
 
-#: gtik/gtik.c:1412
-#, fuzzy
-msgid "Display a_rrows instead of -/+"
-msgstr "Zobrazit ¹ipky namísto -/+"
-
-#: gtik/gtik.c:1415
+#: gtik/gtik.c:1341
 #, fuzzy
 msgid "_Enable scroll buttons"
 msgstr "Povolit posunovací èudlíky"
 
-#. COLOR
-#: gtik/gtik.c:1441
+#: gtik/gtik.c:1365
 #, fuzzy
 msgid "+ C_olor"
 msgstr "+ Barva"
 
-#: gtik/gtik.c:1460
+#: gtik/gtik.c:1385
 #, fuzzy
 msgid "- Colo_r"
 msgstr "- Barva"
 
-#: gtik/gtik.c:1482
-#, fuzzy
-msgid "Stock Sy_mbol:"
-msgstr "Akciový symbol:"
+#: gtik/gtik.c:1402
+msgid "_Unchanged Color"
+msgstr ""
 
-#: gtik/gtik.c:1496
+#: gtik/gtik.c:1419
 #, fuzzy
-msgid "Stock C_hange:"
-msgstr "Zmìna akcie:"
+msgid "Back_ground Color"
+msgstr "Pozadí"
 
-#: gtik/gtik.c:1520
+#: gtik/gtik.c:1441
+#, fuzzy
+msgid "_Font:"
+msgstr "Font:"
+
+#: gtik/gtik.c:1461
 #, fuzzy
 msgid "_Symbols"
 msgstr "Symboly"
 
-#: gtik/gtik.c:1522
+#: gtik/gtik.c:1463
 #, fuzzy
 msgid "_Behavior"
 msgstr "Chování"
 
-#: gtik/gtik.c:1524
+#: gtik/gtik.c:1465
 #, fuzzy
 msgid "_Appearance"
 msgstr "Vzhled"
 
-#: gtik/gtik.c:1526 gweather/gweather-pref.c:843
-#, fuzzy
-msgid "_Proxy"
-msgstr "Pou¾ít proxy"
-
-#: gtik/gtik.c:1575
+#: gtik/gtik.c:1550
 msgid "Skip forward"
 msgstr ""
 
-#: gtik/gtik.c:1576
-msgid "Skip backword"
+#: gtik/gtik.c:1551
+msgid "Skip backward"
 msgstr ""
 
-#: gtik/gtik.c:1755
+#: gtik/gtik.c:1552
+msgid ""
+"Stock Ticker\n"
+"Get continuously updated stock quotes"
+msgstr ""
+
+#: gtik/gtik.c:1739
 msgid "(No"
 msgstr ""
 
-#: gtik/gtik.c:1756
+#: gtik/gtik.c:1740
 #, fuzzy
 msgid "Change "
 msgstr "startuje..."
 
-#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:2
+#: gweather/GNOME_GWeatherApplet.xml.h:2 gweather/gweather-dialog.c:304
+#, fuzzy
+msgid "_Forecast"
+msgstr "Pøedpovìï"
+
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:2
 #, fuzzy
 msgid "Factory for creating the weather applet."
 msgstr "Aplet \"Patnáct\" nelze vytvoøit!"
 
-#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:3
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:3
 msgid "Gweather Applet Factory"
 msgstr ""
 
-#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:4
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:4
 msgid "Monitor the current weather conditions, and forecasts"
 msgstr ""
 
-#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:5
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:5
+#: gweather/gweather-about.c:63
 msgid "Weather Report"
 msgstr ""
 
-#: gweather/GNOME_GWeatherApplet.xml.h:2 gweather/gweather-dialog.c:75
-msgid "Forecast"
-msgstr "Pøedpovìï"
-
-#: gweather/GNOME_GWeatherApplet.xml.h:4
-msgid "Update"
-msgstr "Obnovit"
-
-#: gweather/gweather-about.c:42 gweather/gweather-applet.c:196
-msgid "GNOME Weather"
-msgstr "Poèasí GNOME"
-
-#: gweather/gweather-about.c:43
+#: gweather/gweather-about.c:64
 msgid "Copyright (c)1999 by S. Papadimitriou"
 msgstr "Copyright (c)1999 S. Papadimitriou"
 
-#: gweather/gweather-about.c:44
+#: gweather/gweather-about.c:65
 #, fuzzy
 msgid ""
 "Released under the GNU General Public License.\n"
@@ -1388,89 +1467,92 @@ msgstr ""
 "Distribuováno pod Obecnou veøejnou licencí GNU.\n"
 "Pøipojuje a odpojuje disky..."
 
-#: gweather/gweather-applet.c:324
+#: gweather/gweather-applet.c:198
+msgid "GNOME Weather"
+msgstr "Poèasí GNOME"
+
+#: gweather/gweather-applet.c:323
 msgid "Updating..."
 msgstr "Obnovuje se..."
 
-#: gweather/gweather-dialog.c:106
+#: gweather/gweather-dialog.c:75
+msgid "Forecast"
+msgstr "Pøedpovìï"
+
+#: gweather/gweather-dialog.c:110
 msgid "Location:"
 msgstr "Místo:"
 
-#: gweather/gweather-dialog.c:114
+#: gweather/gweather-dialog.c:118
 msgid "Update:"
 msgstr "Obnoveno:"
 
-#: gweather/gweather-dialog.c:122
+#: gweather/gweather-dialog.c:126
 msgid "Conditions:"
 msgstr "Podmínky:"
 
-#: gweather/gweather-dialog.c:130
+#: gweather/gweather-dialog.c:134
 msgid "Sky:"
 msgstr "Obloha:"
 
-#: gweather/gweather-dialog.c:138
+#: gweather/gweather-dialog.c:142
 msgid "Temperature:"
 msgstr "Teplota:"
 
-#: gweather/gweather-dialog.c:146
+#: gweather/gweather-dialog.c:150
 msgid "Dew point:"
 msgstr "Rosný bod:"
 
-#: gweather/gweather-dialog.c:154
+#: gweather/gweather-dialog.c:158
 msgid "Humidity:"
 msgstr "Vlhkost:"
 
-#: gweather/gweather-dialog.c:162
+#: gweather/gweather-dialog.c:166
 msgid "Wind:"
 msgstr "Vítr:"
 
-#: gweather/gweather-dialog.c:170
+#: gweather/gweather-dialog.c:174
 msgid "Pressure:"
 msgstr "Tlak:"
 
-#: gweather/gweather-dialog.c:178
+#: gweather/gweather-dialog.c:182
 msgid "Visibility:"
 msgstr "Viditelnost:"
 
-#: gweather/gweather-dialog.c:277
+#: gweather/gweather-dialog.c:281
 #, fuzzy
 msgid "C_urrent conditions"
 msgstr "Nynìjsí podmínky"
 
-#: gweather/gweather-dialog.c:290
+#: gweather/gweather-dialog.c:294
 #, fuzzy
 msgid "ForeCast Report"
 msgstr "Pøedpovìï"
 
-#: gweather/gweather-dialog.c:290
+#: gweather/gweather-dialog.c:294
 msgid "See the ForeCast Details"
 msgstr ""
 
-#: gweather/gweather-dialog.c:300
-#, fuzzy
-msgid "_Forecast"
-msgstr "Pøedpovìï"
-
-#: gweather/gweather-dialog.c:332
+#: gweather/gweather-dialog.c:329
 #, fuzzy
 msgid "_Visit Weather.com"
 msgstr "Nav¹tívit Weather.com"
 
-#: gweather/gweather-dialog.c:333
+#: gweather/gweather-dialog.c:330
 msgid "URL link Button"
 msgstr ""
 
-#: gweather/gweather-dialog.c:333
+#: gweather/gweather-dialog.c:330
 #, fuzzy
 msgid "Click to Enter Weather.com"
 msgstr "Nav¹tívit Weather.com"
 
-#: gweather/gweather-dialog.c:341
+#: gweather/gweather-dialog.c:338
 #, fuzzy
 msgid "_Radar map"
 msgstr "Radarová mapa"
 
-#: gweather/gweather-dialog.c:413
+#: gweather/gweather-dialog.c:410
 msgid ""
 "Detailed forecast not available for this location.\n"
 "Please try the state forecast; note that IWIN forecasts are available only "
@@ -1480,7 +1562,7 @@ msgstr ""
 "Zkuste prosím státní pøedpovìï. IWIN pøedpovìï je k dispozici pouze pro "
 "mìsta v USA."
 
-#: gweather/gweather-dialog.c:415
+#: gweather/gweather-dialog.c:412
 msgid ""
 "State forecast not available for this location.\n"
 "Please try the detailed forecast; note that IWIN forecasts are available "
@@ -1491,140 +1573,122 @@ msgstr ""
 "mìsta v USA.<"
 
 #. Accessible Name and Description for the components in Preference Dialog
-#: gweather/gweather-pref.c:125
+#: gweather/gweather-pref.c:108
 #, fuzzy
 msgid "Location view"
 msgstr "Místo"
 
-#: gweather/gweather-pref.c:125
+#: gweather/gweather-pref.c:108
 #, fuzzy
 msgid "Select Location from the list"
 msgstr "Výbìr ikony pro 'pøipojen'"
 
-#: gweather/gweather-pref.c:126
-#, fuzzy
-msgid "URL Entry"
-msgstr " Historie URL "
-
-#: gweather/gweather-pref.c:126
-#, fuzzy
-msgid "Enter the Location"
-msgstr "Místo"
-
-#: gweather/gweather-pref.c:127
-msgid "Port Entry"
-msgstr ""
-
-#: gweather/gweather-pref.c:127
-msgid "Enter the Port number"
-msgstr ""
-
-#: gweather/gweather-pref.c:128
-#, fuzzy
-msgid "User Entry"
-msgstr "Pou¾ít proxy"
-
-#: gweather/gweather-pref.c:128
-msgid "Enter the user name"
-msgstr ""
-
-#: gweather/gweather-pref.c:129
-#, fuzzy
-msgid "Password Entry"
-msgstr "Heslo:"
-
-#: gweather/gweather-pref.c:129
-msgid "Enter the Password"
-msgstr ""
-
-#: gweather/gweather-pref.c:131
+#: gweather/gweather-pref.c:110
 #, fuzzy
 msgid "Update spin button"
 msgstr "Obnovit ka¾dých (sekund):"
 
-#: gweather/gweather-pref.c:131
+#: gweather/gweather-pref.c:110
 msgid "Spinbutton for updating"
 msgstr ""
 
-#: gweather/gweather-pref.c:132
+#: gweather/gweather-pref.c:111
 msgid "Address Entry"
 msgstr ""
 
-#: gweather/gweather-pref.c:132
+#: gweather/gweather-pref.c:111
 msgid "Enter the URL"
 msgstr ""
 
-#: gweather/gweather-pref.c:707
+#: gweather/gweather-pref.c:561
 #, fuzzy
 msgid "Weather Preferences"
 msgstr "Vlastnosti GNOME Poèasí"
 
-#: gweather/gweather-pref.c:752
+#: gweather/gweather-pref.c:610
 #, fuzzy
 msgid "_Location"
 msgstr "Místo"
 
-#: gweather/gweather-pref.c:775
-#, fuzzy
-msgid "Locat_ion :"
-msgstr "Místo:"
-
-#: gweather/gweather-pref.c:803
-msgid "Pro_xy requires a username and password"
-msgstr ""
-
-#: gweather/gweather-pref.c:872
+#: gweather/gweather-pref.c:641
 #, fuzzy
 msgid "_Automatically update every"
 msgstr "Automaticky nastavit nejlepsí velikost apletu"
 
-#: gweather/gweather-pref.c:878
+#: gweather/gweather-pref.c:647
 #, fuzzy
 msgid "Use _metric system units"
 msgstr "Pou¾ívat metrické"
 
-#: gweather/gweather-pref.c:884
+#: gweather/gweather-pref.c:653
 #, fuzzy
 msgid "Enable _detailed forecast"
 msgstr "Detailní pøedpovìï"
 
-#: gweather/gweather-pref.c:891
+#: gweather/gweather-pref.c:660
 #, fuzzy
 msgid "Enable _radar map"
 msgstr "Povolit radarové mapy"
 
-#: gweather/gweather-pref.c:897
+#: gweather/gweather-pref.c:666
 msgid "Use cus_tom address for radar map"
 msgstr ""
 
-#: gweather/gweather-pref.c:908
+#: gweather/gweather-pref.c:677
 msgid "A_ddress :"
 msgstr ""
 
-#: gweather/gweather-pref.c:920
+#: gweather/gweather-pref.c:689
 #, fuzzy
 msgid "Updates"
 msgstr "Obnovit"
 
-#: gweather/gweather-pref.c:926
+#: gweather/gweather-pref.c:695
 #, fuzzy
 msgid "_Automatically update every "
 msgstr "Automaticky nastavit nejlepsí velikost apletu"
 
-#: gweather/gweather-pref.c:946
+#: gweather/gweather-pref.c:715
 msgid "minute(s)"
 msgstr ""
 
 #. The Miscellaneous frame
-#: gweather/gweather-pref.c:957
+#: gweather/gweather-pref.c:726
 msgid "Miscellaneous"
 msgstr ""
 
-#: gweather/gweather-pref.c:975 mini-commander/src/preferences.c:953
-#: modemlights/properties.c:409
+#: gweather/gweather-pref.c:744 mini-commander/src/mini-commander.glade.h:19
+#: modemlights/properties.c:428
 #, fuzzy
 msgid "_General"
 msgstr "Obecné"
+
+#: gweather/weather.c:57
+#, fuzzy
+msgid "knots"
+msgstr "Gnotices"
+
+#: gweather/weather.c:57
+msgid "kph"
+msgstr ""
+
+#: gweather/weather.c:62
+msgid "inHg"
+msgstr ""
+
+#: gweather/weather.c:62
+msgid "hPa"
+msgstr ""
+
+#: gweather/weather.c:66
+#, fuzzy
+msgid "miles"
+msgstr "Èlánky"
+
+#: gweather/weather.c:66
+#, fuzzy
+msgid "kilometers"
+msgstr "Odometr"
 
 #: gweather/weather.c:132
 msgid "Variable"
@@ -2776,60 +2840,73 @@ msgstr ""
 msgid "Drifting dust whirls"
 msgstr ""
 
-#: gweather/weather.c:824 gweather/weather.c:862 gweather/weather.c:1431
+#: gweather/weather.c:824 gweather/weather.c:864 gweather/weather.c:1436
 msgid "Failed to get METAR data.\n"
 msgstr ""
 
-#: gweather/weather.c:854 gweather/weather.c:882 gweather/weather.c:1077
+#: gweather/weather.c:856 gweather/weather.c:884 gweather/weather.c:1081
 msgid "WeatherInfo missing location"
 msgstr ""
 
-#: gweather/weather.c:1045
+#: gweather/weather.c:1047
 msgid "Failed to get IWIN data.\n"
 msgstr ""
 
 #. forecast data is not really interesting anyway ;)
-#: gweather/weather.c:1087
+#: gweather/weather.c:1091
 msgid "Failed to get IWIN forecast data.\n"
 msgstr ""
 
-#: gweather/weather.c:1286
+#: gweather/weather.c:1290
 msgid "Failed to get Met Office data.\n"
 msgstr ""
 
-#: gweather/weather.c:1318
+#: gweather/weather.c:1324
 msgid "Failed to get Met Office forecast data.\n"
 msgstr ""
 
-#: gweather/weather.c:1461
+#: gweather/weather.c:1466
 msgid "Failed to get radar map image.\n"
 msgstr ""
 
-#: gweather/weather.c:1754
+#: gweather/weather.c:1769
 msgid "%a, %b %d / %H:%M"
 msgstr "%a, %e. %b / %H:%M"
 
-#: gweather/weather.c:1758
+#: gweather/weather.c:1773
 msgid "Unknown observation time"
 msgstr "Neznámý èas pozorování"
 
-#: gweather/weather.c:1818
+#: gweather/weather.c:1833
 msgid "Calm"
 msgstr "Bezvìtøí"
 
-#: gweather/weather.c:1844
+#: gweather/weather.c:1859
 msgid "Unknown"
 msgstr "Neznámé"
 
-#: gweather/weather.c:1878
+#: gweather/weather.c:1893
 msgid "Retrieval failed"
 msgstr ""
 
-#: mini-commander/src/about.c:39
-msgid "Mini-Commander Applet"
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:1
+#: mini-commander/src/about.c:66
+#: mini-commander/src/mini-commander_applet.c:313
+#, fuzzy
+msgid "Command Line"
+msgstr "Pøíkaz"
+
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:2
+#, fuzzy
+msgid "Mini-Commander"
 msgstr "Aplet Mini-Commander"
 
-#: mini-commander/src/about.c:42
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:3
+#, fuzzy
+msgid "MiniCommander Applet Factory"
+msgstr "Aplet Mini-Commander"
+
+#: mini-commander/src/about.c:69
 msgid ""
 "This GNOME applet adds a command line to the panel. It features command "
 "completion, command history, changeable macros and an optional built-in "
@@ -2848,262 +2925,204 @@ msgstr ""
 "pod ustanoveními Obecné veøejné licence GNU a to buï verze 2 této licence\n"
 "nebo (podle va¹í volby) jakékoli verze pozdìj¹í."
 
-#: mini-commander/src/cmd_completion.c:69
-#: mini-commander/src/cmd_completion.c:115
-#: mini-commander/src/cmd_completion.c:151
-#: mini-commander/src/cmd_completion.c:202
-msgid "not unique"
-msgstr "není unikátní"
-
-#: mini-commander/src/cmd_completion.c:73
-#: mini-commander/src/cmd_completion.c:155
-msgid "completing..."
-msgstr "doplòování..."
-
-#: mini-commander/src/cmd_completion.c:113
-#: mini-commander/src/cmd_completion.c:200
-msgid "completed"
-msgstr "doplnìno"
-
-#: mini-commander/src/cmd_completion.c:118
-#: mini-commander/src/cmd_completion.c:205
-msgid "not found"
-msgstr "nenalezeno"
-
-#: mini-commander/src/cmd_completion.c:167 mini-commander/src/exec.c:117
-msgid "no /bin/sh"
-msgstr "neexistuje /bin/sh"
-
-#: mini-commander/src/command_line.c:94 mini-commander/src/command_line.c:114
-msgid "end of history list"
-msgstr "konec historie"
-
-#. enter pressed -> exec command
-#: mini-commander/src/command_line.c:124 mini-commander/src/exec.c:59
-msgid "starting..."
-msgstr "spou¹tìno..."
-
-#: mini-commander/src/command_line.c:153
-msgid "autocompleted"
-msgstr "doplnìno"
-
-#: mini-commander/src/command_line.c:313
-msgid "history list empty"
-msgstr "seznam historie prázdný"
-
-#. title
-#: mini-commander/src/command_line.c:331
-msgid "Command history"
-msgstr "Historie pøíkazù"
-
 #. build file select dialog
-#: mini-commander/src/command_line.c:462
+#: mini-commander/src/command_line.c:427
 msgid "Start program"
 msgstr "Odstartovat program"
 
-#: mini-commander/src/command_line.c:501
+#: mini-commander/src/command_line.c:470
 #, fuzzy
 msgid "Command line"
 msgstr "Pøíkaz"
 
-#: mini-commander/src/command_line.c:502
+#: mini-commander/src/command_line.c:471
 msgid "Type a command here and Gnome will execute it for you"
 msgstr ""
 
-#: mini-commander/src/exec.c:61
-msgid "fork error"
-msgstr "chyba volání fork()"
-
-#: mini-commander/src/exec.c:105
-msgid "child exited"
-msgstr "potomek skonèil"
-
-#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:1
-#: mini-commander/src/mini-commander_applet.c:355
-#, fuzzy
-msgid "Command Line"
-msgstr "Pøíkaz"
-
-#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:2
-#, fuzzy
-msgid "Mini-Commander"
-msgstr "Aplet Mini-Commander"
-
-#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:3
-#, fuzzy
-msgid "MiniCommander Applet Factory"
-msgstr "Aplet Mini-Commander"
-
-#: mini-commander/src/message.c:155
-msgid "%H:%M - %d. %b"
-msgstr "%H:%M - %e. %b"
-
-#: mini-commander/src/message.c:157
-msgid "%H:%M"
-msgstr "%H:%M"
-
-#: mini-commander/src/message.c:159
-msgid "%d. %b"
-msgstr "%e. %b"
-
-#: mini-commander/src/mini-commander_applet.c:123
-msgid "orient. changed"
-msgstr "orientace zmìnìna"
-
-#: mini-commander/src/mini-commander_applet.c:140
-msgid "size changed"
-msgstr "velikost zmìnìna"
-
-#: mini-commander/src/mini-commander_applet.c:287
-#: mini-commander/src/mini-commander_applet.c:290
-msgid "Browser"
-msgstr "Prohlí¾eè"
-
-#: mini-commander/src/mini-commander_applet.c:291
-msgid "Click this button to start the browser"
+#: mini-commander/src/mc-install-default-macros.c:71
+#, c-format
+msgid "Cannot get schema for %s : %s"
 msgstr ""
 
-#: mini-commander/src/mini-commander_applet.c:305
-#: mini-commander/src/mini-commander_applet.c:308
-msgid "History"
-msgstr "Historie"
-
-#: mini-commander/src/mini-commander_applet.c:309
-msgid "Click this button for the list of previous commands"
+#: mini-commander/src/mc-install-default-macros.c:99
+#, c-format
+msgid "Cannot set schema for %s : %s"
 msgstr ""
 
-#: mini-commander/src/mini-commander_applet.c:310
-#, fuzzy
-msgid "Mini-Commander applet"
-msgstr "Aplet Mini-Commander"
-
-#: mini-commander/src/mini-commander_applet.c:311
-msgid "This applet adds a command line to the panel"
+#: mini-commander/src/mc-install-default-macros.c:105
+#, c-format
+msgid "Set default list value for %s\n"
 msgstr ""
 
-#: mini-commander/src/mini-commander_applet.c:443
-msgid "ready..."
-msgstr "ok..."
+#: mini-commander/src/mc-install-default-macros.c:117
+msgid "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL is set, not installing schemas\n"
+msgstr ""
 
-#: mini-commander/src/preferences.c:685
-#, fuzzy
-msgid "Command Line Preferences"
-msgstr "Vlastnost apletu Mini-Commander"
+#: mini-commander/src/mc-install-default-macros.c:125
+msgid "Must set the GCONF_CONFIG_SOURCE environment variable\n"
+msgstr ""
 
-#: mini-commander/src/preferences.c:701
-msgid "Clock"
-msgstr "Hodiny"
+#: mini-commander/src/mc-install-default-macros.c:142
+#, c-format
+msgid "Failed to access configuration source(s): %s\n"
+msgstr ""
 
-#. show time check box
-#: mini-commander/src/preferences.c:709
-msgid "Show time"
-msgstr "Ukazovat èas"
+#: mini-commander/src/mc-install-default-macros.c:154
+#, c-format
+msgid "Error syncing config data: %s"
+msgstr ""
 
-#. show date check box
-#: mini-commander/src/preferences.c:716
-msgid "Show date"
-msgstr "Ukazovat datum"
+#: mini-commander/src/mini-commander.glade.h:1
+msgid "*"
+msgstr ""
 
-#. appearance frame
-#: mini-commander/src/preferences.c:724
-msgid "Appearance"
-msgstr "Vzhled"
+#: mini-commander/src/mini-commander.glade.h:2
+msgid "Add New Macro"
+msgstr ""
 
-#. show handle check box
-#: mini-commander/src/preferences.c:732
-#, fuzzy
-msgid "Show han_dle"
-msgstr "Ukazovat dr¾adlo"
-
-#. show frame check box
-#: mini-commander/src/preferences.c:739
-#, fuzzy
-msgid "Show fram_e"
-msgstr "Ukazovat rámeèek"
-
-#. auto complete frame
-#: mini-commander/src/preferences.c:748
-#, fuzzy
-msgid "Autocompletion"
-msgstr "Automatické doplòování"
-
-#. show history autocomplete
-#: mini-commander/src/preferences.c:756
-#, fuzzy
-msgid "Enable _history based autocompletion"
-msgstr "Povol doplòování z historie"
-
-#. Size
-#: mini-commander/src/preferences.c:763
-msgid "Size"
-msgstr "Velikost"
-
-#. applet width
-#: mini-commander/src/preferences.c:775
+#: mini-commander/src/mini-commander.glade.h:4
 #, fuzzy
 msgid "Applet _width:"
 msgstr "©íøka apletu"
 
-#. applet height
-#: mini-commander/src/preferences.c:809
-msgid "Applet height:"
-msgstr "Vý¹ka apletu"
+#: mini-commander/src/mini-commander.glade.h:5
+#, fuzzy
+msgid "Autocompletion"
+msgstr "Automatické doplòování"
 
-#. cmd line height
-#: mini-commander/src/preferences.c:831
-msgid "Command line height:"
-msgstr "Vý¹ka pøíkazové øádky"
-
-#. Color
-#: mini-commander/src/preferences.c:866 multiload/properties.c:363
+#: mini-commander/src/mini-commander.glade.h:6 multiload/properties.c:365
 msgid "Colors"
 msgstr "Barvy"
 
-#. fg
-#: mini-commander/src/preferences.c:888
+#: mini-commander/src/mini-commander.glade.h:7
 #, fuzzy
-msgid "Command line _foreground:"
-msgstr "Barva popøedí pøíkazové øádky"
+msgid "Command Line Preferences"
+msgstr "Vlastnost apletu Mini-Commander"
 
-#. bg
-#: mini-commander/src/preferences.c:922
+#: mini-commander/src/mini-commander.glade.h:8
 #, fuzzy
 msgid "Command line _background:"
 msgstr "Barva pozadí pøíkazové øádky"
 
-#. prefix
-#: mini-commander/src/preferences.c:982
-#, fuzzy, c-format
-msgid "Regex _%.2d:"
-msgstr "Prefix %.2d:"
+#: mini-commander/src/mini-commander.glade.h:9
+#, fuzzy
+msgid "Command line _foreground:"
+msgstr "Barva popøedí pøíkazové øádky"
 
-#. command
-#: mini-commander/src/preferences.c:1002
-#, fuzzy, c-format
-msgid "   Macro _%.2d:"
-msgstr "   Makro %.2d:"
+#: mini-commander/src/mini-commander.glade.h:10
+#, fuzzy
+msgid "Command:"
+msgstr "Pøíkaz"
 
-#: mini-commander/src/preferences.c:1022
+#: mini-commander/src/mini-commander.glade.h:11
+#, fuzzy
+msgid "Enable _history based autocompletion"
+msgstr "Povol doplòování z historie"
+
+#: mini-commander/src/mini-commander.glade.h:12
+#, fuzzy
+msgid "Pattern:"
+msgstr "Mìnic ploch"
+
+#: mini-commander/src/mini-commander.glade.h:13
+#, fuzzy
+msgid "Pick a color"
+msgstr "Barva hodin"
+
+#: mini-commander/src/mini-commander.glade.h:14
+#, fuzzy
+msgid "Show fram_e"
+msgstr "Ukazovat rámeèek"
+
+#: mini-commander/src/mini-commander.glade.h:15
+#, fuzzy
+msgid "Show han_dle"
+msgstr "Ukazovat dr¾adlo"
+
+#: mini-commander/src/mini-commander.glade.h:16
+msgid "Size"
+msgstr "Velikost"
+
+#: mini-commander/src/mini-commander.glade.h:17
+msgid "_Add new macro..."
+msgstr ""
+
+#: mini-commander/src/mini-commander.glade.h:18
+#, fuzzy
+msgid "_Delete Macro"
+msgstr "Vymazat spou¹teè"
+
+#: mini-commander/src/mini-commander.glade.h:20
 #, fuzzy
 msgid "_Macros"
 msgstr "Makra"
 
-#: mixer/GNOME_MixerApplet.server.in.h:1
+#: mini-commander/src/mini-commander.glade.h:21
+#, fuzzy
+msgid "_Use default theme colors"
+msgstr "Pou¾ít standardní vlastnosti"
+
+#: mini-commander/src/mini-commander_applet.c:143
+#: mini-commander/src/mini-commander_applet.c:147
+msgid "Browser"
+msgstr "Prohlí¾eè"
+
+#: mini-commander/src/mini-commander_applet.c:148
+msgid "Click this button to start the browser"
+msgstr ""
+
+#: mini-commander/src/mini-commander_applet.c:164
+#: mini-commander/src/mini-commander_applet.c:168
+msgid "History"
+msgstr "Historie"
+
+#: mini-commander/src/mini-commander_applet.c:169
+msgid "Click this button for the list of previous commands"
+msgstr ""
+
+#: mini-commander/src/mini-commander_applet.c:311
+#, fuzzy
+msgid "Mini-Commander applet"
+msgstr "Aplet Mini-Commander"
+
+#: mini-commander/src/mini-commander_applet.c:312
+msgid "This applet adds a command line to the panel"
+msgstr ""
+
+#: mini-commander/src/preferences.c:343
+msgid "You must specify a pattern"
+msgstr ""
+
+#: mini-commander/src/preferences.c:347
+msgid "You must specify a pattern and a command"
+msgstr ""
+
+#: mini-commander/src/preferences.c:348
+msgid "You must specify a command"
+msgstr ""
+
+#: mini-commander/src/preferences.c:351
+msgid "You may not specify duplicate patterns"
+msgstr ""
+
+#: mixer/GNOME_MixerApplet.server.in.in.h:1
 msgid "Adjust the sound volume"
 msgstr ""
 
-#: mixer/GNOME_MixerApplet.server.in.h:3 mixer/mixer.c:130 mixer/mixer.c:750
+#: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:130
+#: mixer/mixer.c:807
 #, fuzzy
 msgid "Volume Control"
 msgstr "Vlastnosti programu WebControl"
 
 #: mixer/GNOME_MixerApplet.xml.h:3
-msgid "Mute"
+msgid "_Mute"
 msgstr ""
 
 #: mixer/GNOME_MixerApplet.xml.h:4
-msgid "Run Audio Mixer..."
-msgstr "Spustit zvukovou mixá¾..."
+#, fuzzy
+msgid "_Run Volume Control..."
+msgstr "Vlastnosti programu WebControl"
 
 #: mixer/mixer.c:131
 #, fuzzy
@@ -3132,41 +3151,38 @@ msgstr ""
 msgid "Mixer device %s has neither volume nor PCM channels.\n"
 msgstr ""
 
-#: mixer/mixer.c:516
+#: mixer/mixer.c:552
 #, fuzzy
 msgid "Volume Controller"
 msgstr "Vlastnosti programu WebControl"
 
-#: mixer/mixer.c:517
+#: mixer/mixer.c:553
 msgid "Use Up/Down arrow keys to change volume"
 msgstr ""
 
-#: mixer/mixer.c:751
+#: mixer/mixer.c:808
 msgid "(C) 2001 Richard Hult"
 msgstr ""
 
-#: mixer/mixer.c:752
+#: mixer/mixer.c:809
 msgid "The volume control lets you set the volume level for your desktop."
 msgstr ""
 
-#: mixer/mixer.c:924
+#: mixer/mixer.c:1019
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr ""
 
-#: modemlights/GNOME_ModemLightsApplet.server.in.h:1
+#: modemlights/GNOME_ModemLightsApplet.server.in.in.h:1
 #, fuzzy
 msgid "Internet"
 msgstr "Jiné"
 
-#: modemlights/GNOME_ModemLightsApplet.server.in.h:2
+#: modemlights/GNOME_ModemLightsApplet.server.in.in.h:2
+#: modemlights/modemlights.c:227
 msgid "Modem Lights"
 msgstr "Kontrolky modemu"
 
-#: modemlights/modemlights.c:205
-msgid "Modem Lights Applet"
-msgstr "Aplet 'Kontrolky modemu'"
-
-#: modemlights/modemlights.c:207
+#: modemlights/modemlights.c:229
 msgid ""
 "Released under the GNU general public license.\n"
 "A modem status indicator and dialer.\n"
@@ -3176,7 +3192,7 @@ msgstr ""
 "Aplet ukazuje stav modemu a vytáèí pøipojení.\n"
 "Kontrolky v poøadí shora nebo zleva jsou Posílání dat a Pøíjem dat."
 
-#: modemlights/modemlights.c:531
+#: modemlights/modemlights.c:558
 msgid ""
 "You are currently connected.\n"
 "Do you want to disconnect?"
@@ -3184,189 +3200,185 @@ msgstr ""
 "Právì jste pøipojeni.\n"
 "Chcete se odpojit?"
 
-#: modemlights/modemlights.c:546
+#: modemlights/modemlights.c:573
 msgid "Do you want to connect?"
 msgstr "Chcete se pøipojit?"
 
-#: modemlights/modemlights.c:574
+#: modemlights/modemlights.c:601
 #, c-format
 msgid "%#.1fMb received / %#.1fMb sent / time: %.1d:%.2d"
 msgstr "pøijato %#.1fMb / odesláno %#.1fMb / èas: %.1d:%.2d"
 
-#: modemlights/modemlights.c:579
+#: modemlights/modemlights.c:606
 msgid "not connected"
 msgstr "nepøipojeno"
 
-#: modemlights/properties.c:311
+#: modemlights/properties.c:328
 #, fuzzy
 msgid "Modem Lights Preferences"
 msgstr "Nastavení 'Kontrolek modemu'"
 
-#: modemlights/properties.c:323
+#: modemlights/properties.c:342
 msgid "Connecting"
 msgstr "Pøipojuje se"
 
-#: modemlights/properties.c:337
+#: modemlights/properties.c:356
 #, fuzzy
 msgid "Co_nnect command:"
 msgstr "Pøipojovací pøíkaz:"
 
-#: modemlights/properties.c:354
+#: modemlights/properties.c:373
 #, fuzzy
 msgid "_Disconnect command:"
 msgstr "Odpojovací pøikaz:"
 
 #. confirmation checkbox
-#: modemlights/properties.c:367
+#: modemlights/properties.c:386
 #, fuzzy
 msgid "Con_firm connection"
 msgstr "Potvrzení pøipojení"
 
-#: modemlights/properties.c:388
+#: modemlights/properties.c:407
 #, fuzzy
 msgid "U_pdates per second"
 msgstr "Aktualizací za sekundu"
 
 #. extra info checkbox
-#: modemlights/properties.c:402
+#: modemlights/properties.c:421
 #, fuzzy
 msgid "Sho_w connect time and throughput"
 msgstr "Ukazovat rychlost a dobu pøipojení"
 
-#: modemlights/properties.c:419
+#: modemlights/properties.c:438
 msgid "Receive data"
 msgstr ""
 
-#: modemlights/properties.c:421
+#: modemlights/properties.c:440
 msgid "_Foreground"
 msgstr ""
 
-#: modemlights/properties.c:422
+#: modemlights/properties.c:441
 #, fuzzy
 msgid "_Background"
 msgstr "Pozadí"
 
-#: modemlights/properties.c:424
+#: modemlights/properties.c:443
 msgid "Send data"
 msgstr ""
 
-#: modemlights/properties.c:426
-msgid "Foregroun_d"
-msgstr ""
-
-#: modemlights/properties.c:427
-#, fuzzy
-msgid "Backg_round"
-msgstr "Pozadí"
-
-#: modemlights/properties.c:429
-msgid "Connection status"
-msgstr "Status pøipojení"
-
-#: modemlights/properties.c:431
-#, fuzzy
-msgid "Co_nnected"
-msgstr "Pøipojeno"
-
-#: modemlights/properties.c:432
-#, fuzzy
-msgid "No_t connected"
-msgstr "Nepøipojeno"
-
-#: modemlights/properties.c:433
-#, fuzzy
-msgid "A_waiting connection"
-msgstr "Èeká se na pøipojení"
-
-#: modemlights/properties.c:436
-msgid "B_link"
-msgstr ""
-
-#: modemlights/properties.c:443
-msgid "Text"
-msgstr "Text"
-
 #: modemlights/properties.c:445
-msgid "For_eground"
+msgid "Foregroun_d"
 msgstr ""
 
 #: modemlights/properties.c:446
 #, fuzzy
+msgid "Backg_round"
+msgstr "Pozadí"
+
+#: modemlights/properties.c:448
+msgid "Connection status"
+msgstr "Status pøipojení"
+
+#: modemlights/properties.c:450
+#, fuzzy
+msgid "Co_nnected"
+msgstr "Pøipojeno"
+
+#: modemlights/properties.c:451
+#, fuzzy
+msgid "No_t connected"
+msgstr "Nepøipojeno"
+
+#: modemlights/properties.c:452
+#, fuzzy
+msgid "A_waiting connection"
+msgstr "Èeká se na pøipojení"
+
+#: modemlights/properties.c:455
+msgid "B_link"
+msgstr ""
+
+#: modemlights/properties.c:462
+msgid "Text"
+msgstr "Text"
+
+#: modemlights/properties.c:464
+msgid "For_eground"
+msgstr ""
+
+#: modemlights/properties.c:465
+#, fuzzy
 msgid "Bac_kground"
 msgstr "Pozadí"
 
-#: modemlights/properties.c:447
+#: modemlights/properties.c:466
 msgid "O_utline"
 msgstr ""
 
-#: modemlights/properties.c:449
+#: modemlights/properties.c:468
 #, fuzzy
 msgid "C_olors"
 msgstr "Barvy"
 
-#: modemlights/properties.c:458
+#: modemlights/properties.c:477
 msgid "Modem options"
 msgstr "Volby modemu"
 
-#: modemlights/properties.c:472
+#: modemlights/properties.c:491
 #, fuzzy
 msgid "_Modem lock file:"
 msgstr "Uzamykací soubor modemu:"
 
-#: modemlights/properties.c:484
+#: modemlights/properties.c:503
 #, fuzzy
 msgid "_Verify owner of lock file"
 msgstr "Ovìøit vlastníka uzamykacího souboru"
 
-#: modemlights/properties.c:496
+#: modemlights/properties.c:515
 #, fuzzy
 msgid "_Device:"
 msgstr "Zaøízení:"
 
 #. ISDN checkbox
-#: modemlights/properties.c:509
+#: modemlights/properties.c:528
 #, fuzzy
 msgid "U_se ISDN"
 msgstr "Pou¾ít ISDN"
 
-#: modemlights/properties.c:529
+#: modemlights/properties.c:548
 msgid "Set options as default"
 msgstr ""
 
-#: modemlights/properties.c:535
+#: modemlights/properties.c:554
 #, fuzzy
 msgid "_Advanced"
 msgstr "Pokroèilé"
 
-#: multiload/cpuload.c:39
-msgid "CPU Load"
-msgstr "Zátì¾ CPU"
-
-#: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:1
+#: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:1
 msgid "A system load indicator"
 msgstr ""
 
-#: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:2
+#: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:2
+#: multiload/main.c:78
 #, fuzzy
 msgid "System Monitor"
 msgstr "Aplet pro øízení esound"
 
 #: multiload/GNOME_MultiloadApplet.xml.h:3
 #, fuzzy
-msgid "Run detailed system monitor"
+msgid "_Run detailed system monitor"
 msgstr "Pou¾ívat metrické"
 
-#: multiload/loadavg.c:94
+#: multiload/cpuload.c:50
+msgid "CPU Load"
+msgstr "Zátì¾ CPU"
+
+#: multiload/loadavg.c:107
 #, fuzzy
 msgid "Load Average"
 msgstr "Graf zátì¾e"
 
-#: multiload/main.c:53
-#, fuzzy
-msgid "System Monitor Applet"
-msgstr "Aplet pro øízení esound"
-
-#: multiload/main.c:55
+#: multiload/main.c:80
 #, fuzzy
 msgid ""
 "Released under the GNU General Public License.\n"
@@ -3377,63 +3389,64 @@ msgstr ""
 "Distribuováno pod Obecnou veøejnou licencí GNU.\n"
 "Monitoruje velikost volného a vyu¾itého místa na disku."
 
-#: multiload/main.c:177
+#: multiload/main.c:236
 #, fuzzy
 msgid "Processor"
 msgstr "Tlak:"
 
-#: multiload/main.c:179
+#: multiload/main.c:238
 #, fuzzy
 msgid "Memory"
 msgstr "Vyu¾ití pamìti"
 
-#: multiload/main.c:181
+#: multiload/main.c:240
 msgid "Network"
 msgstr "Sí»"
 
-#: multiload/main.c:183
+#: multiload/main.c:242
 msgid "Swap File"
 msgstr ""
 
-#: multiload/main.c:185
+#: multiload/main.c:244
 #, fuzzy
 msgid "Resource"
 msgstr "Vymazat"
 
-#: multiload/main.c:197
+#: multiload/main.c:256
+#, c-format
 msgid ""
 "%s:\n"
 "%d%% in use"
 msgstr ""
 
-#: multiload/memload.c:39
+#: multiload/memload.c:50
 msgid "Memory Load"
 msgstr "Vyu¾ití pamìti"
 
-#: multiload/netload.c:38
+#: multiload/netload.c:49
 msgid "Net Load"
 msgstr "Vyu¾ití sítì"
 
-#: multiload/properties.c:256
+#: multiload/properties.c:258
 msgid "Monitored Resources"
 msgstr ""
 
-#: multiload/properties.c:264
+#: multiload/properties.c:266
 #, fuzzy
 msgid "_Processor"
 msgstr "Tlak:"
 
-#: multiload/properties.c:274
+#: multiload/properties.c:276
 #, fuzzy
 msgid "_Memory"
 msgstr "Vyu¾ití pamìti"
 
-#: multiload/properties.c:284
+#: multiload/properties.c:286
 #, fuzzy
 msgid "_Network"
 msgstr "Sí»"
 
-#: multiload/properties.c:294
+#: multiload/properties.c:296
 msgid "_Swap File"
 msgstr ""
 
@@ -3443,129 +3456,129 @@ msgstr ""
 #. panel_applet_gconf_get_bool(multiload_applet->applet, "view_loadavg", NULL));
 #. gtk_box_pack_start(GTK_BOX(hbox), check_box, FALSE, FALSE, 0);
 #.
-#: multiload/properties.c:311
+#: multiload/properties.c:313
 msgid "Options"
 msgstr "Volby"
 
-#: multiload/properties.c:324
+#: multiload/properties.c:326
 #, fuzzy
 msgid "System m_onitor width: "
 msgstr "Aplet pro øízení esound"
 
-#: multiload/properties.c:326
+#: multiload/properties.c:328
 #, fuzzy
 msgid "System m_onitor height: "
 msgstr "Aplet pro øízení esound"
 
-#: multiload/properties.c:340
+#: multiload/properties.c:342
 msgid "pixels"
 msgstr ""
 
-#: multiload/properties.c:346
+#: multiload/properties.c:348
 #, fuzzy
 msgid "Sys_tem monitor update interval: "
 msgstr "Aplet pro øízení esound"
 
-#: multiload/properties.c:358
+#: multiload/properties.c:360
 #, fuzzy
 msgid "milliseconds"
 msgstr "Sekund"
 
-#: multiload/properties.c:371
+#: multiload/properties.c:373
 #, fuzzy
 msgid "P_rocessor"
 msgstr "Tlak:"
 
-#: multiload/properties.c:372
+#: multiload/properties.c:374
 #, fuzzy
 msgid "_User"
 msgstr "U¾ivatel"
 
-#: multiload/properties.c:373
+#: multiload/properties.c:375
 #, fuzzy
 msgid "S_ystem"
 msgstr "Systém"
 
-#: multiload/properties.c:374
+#: multiload/properties.c:376
 #, fuzzy
 msgid "N_ice"
 msgstr "Nice"
 
-#: multiload/properties.c:375
+#: multiload/properties.c:377
 #, fuzzy
 msgid "I_dle"
 msgstr "Neèinnost"
 
-#: multiload/properties.c:377
+#: multiload/properties.c:379
 #, fuzzy
 msgid "M_emory"
 msgstr "Vyu¾ití pamìti"
 
-#: multiload/properties.c:378
+#: multiload/properties.c:380
 #, fuzzy
 msgid "Ot_her"
 msgstr "Jiné"
 
-#: multiload/properties.c:379
+#: multiload/properties.c:381
 #, fuzzy
 msgid "Sh_ared"
 msgstr "Sdíleno"
 
-#: multiload/properties.c:380
+#: multiload/properties.c:382
 #, fuzzy
 msgid "_Buffers"
 msgstr "Bufery"
 
-#: multiload/properties.c:381
+#: multiload/properties.c:383
 #, fuzzy
 msgid "F_ree"
 msgstr "Volno"
 
-#: multiload/properties.c:383
+#: multiload/properties.c:385
 #, fuzzy
 msgid "Net_work"
 msgstr "Sí»"
 
-#: multiload/properties.c:384
+#: multiload/properties.c:386
 #, fuzzy
 msgid "S_LIP"
 msgstr "SLIP"
 
-#: multiload/properties.c:385
+#: multiload/properties.c:387
 #, fuzzy
 msgid "PL_IP"
 msgstr "SLIP"
 
-#: multiload/properties.c:386
+#: multiload/properties.c:388
 #, fuzzy
 msgid "Et_hernet"
 msgstr "Jiné"
 
-#: multiload/properties.c:387
+#: multiload/properties.c:389
 #, fuzzy
 msgid "_Other"
 msgstr "Jiné"
 
-#: multiload/properties.c:389
+#: multiload/properties.c:391
 msgid "Swap _File"
 msgstr ""
 
-#: multiload/properties.c:390
+#: multiload/properties.c:392
 #, fuzzy
 msgid "_Used"
 msgstr "Pou¾ito"
 
-#: multiload/properties.c:391
+#: multiload/properties.c:393
 #, fuzzy
 msgid "_Free"
 msgstr "Volno"
 
-#: multiload/properties.c:411
+#: multiload/properties.c:413
 #, fuzzy
 msgid "System Monitor Preferences"
 msgstr "Vlastnosti programu WebControl"
 
-#: multiload/swapload.c:39
+#: multiload/swapload.c:51
 msgid "Swap Load"
 msgstr "Zatí¾ení odkládacího prostoru"
 
@@ -3590,21 +3603,21 @@ msgstr "Volby"
 msgid "Actions Menu"
 msgstr ""
 
-#: panel-menu/panel-menu-add.c:76
+#: panel-menu/panel-menu-add.c:77
 msgid "Add items to the Menu Bar"
 msgstr ""
 
-#: panel-menu/panel-menu-add.c:235 panel-menu/panel-menu-links.c:139
+#: panel-menu/panel-menu-add.c:244 panel-menu/panel-menu-links.c:139
 #: panel-menu/panel-menu-links.c:405
 #, fuzzy
 msgid "Shortcuts"
 msgstr "Pøeháòky"
 
-#: panel-menu/panel-menu-add.c:241
+#: panel-menu/panel-menu-add.c:250
 msgid "My Documents"
 msgstr ""
 
-#: panel-menu/panel-menu-add.c:247 panel-menu/panel-menu-documents.c:134
+#: panel-menu/panel-menu-add.c:256 panel-menu/panel-menu-documents.c:134
 #: panel-menu/panel-menu-documents.c:399
 msgid "Documents"
 msgstr ""
@@ -3614,63 +3627,58 @@ msgstr ""
 msgid "Applications"
 msgstr "Volby"
 
-#: panel-menu/panel-menu.c:684
-#, fuzzy
-msgid "PanelMenu Applet"
-msgstr "Mixá¾ní aplet"
-
-#: panel-menu/panel-menu.c:685
-msgid "(c) 2001 Chris Phelps"
-msgstr ""
-
-#: panel-menu/panel-menu.c:686
+#: panel-menu/panel-menu-common.c:738
 msgid ""
-"The Panel Menu Applet allows you to display customized menubars on your "
-"panels."
+"Removing this entry is not allowed as this will cause the Menu Bar applet to "
+"be removed from GNOME Panel"
 msgstr ""
 
-#: panel-menu/panel-menu-directory.c:482
+#: panel-menu/panel-menu-directory.c:516
 #, fuzzy
 msgid "Create directory item..."
 msgstr "Vytváøí se u¾ivatelský adresáø: %s\n"
 
-#: panel-menu/panel-menu-directory.c:485
+#: panel-menu/panel-menu-directory.c:524
 #, fuzzy
 msgid "Home"
 msgstr "Hlasitost"
 
-#: panel-menu/panel-menu-directory.c:524
+#: panel-menu/panel-menu-directory.c:595
 msgid "Edit directory item..."
 msgstr ""
 
-#: panel-menu/panel-menu-directory.c:636 panel-menu/panel-menu-path.c:728
+#: panel-menu/panel-menu-directory.c:686 panel-menu/panel-menu-path.c:736
 msgid "_Path:"
 msgstr ""
 
-#: panel-menu/panel-menu-directory.c:644
+#: panel-menu/panel-menu-directory.c:694
 #, fuzzy
 msgid "..."
 msgstr "Nápovìda..."
 
-#: panel-menu/panel-menu-directory.c:654
+#: panel-menu/panel-menu-directory.c:704
 msgid "_Depth level:"
+msgstr ""
+
+#: panel-menu/panel-menu-directory.c:801
+msgid "Path specified is currently not a valid directory."
 msgstr ""
 
 #: panel-menu/panel-menu-documents.c:397
 msgid "Create documents item..."
 msgstr ""
 
-#: panel-menu/panel-menu-documents.c:433
+#: panel-menu/panel-menu-documents.c:434
 msgid "Rename documents item..."
 msgstr ""
 
-#: panel-menu/panel-menu-links.c:323 panel-menu/panel-menu-path.c:554
+#: panel-menu/panel-menu-links.c:323 panel-menu/panel-menu-path.c:556
 #, fuzzy
 msgid "KDE Menus"
 msgstr "Menu"
 
-#: panel-menu/panel-menu-links.c:326 panel-menu/panel-menu-path.c:237
-#: panel-menu/panel-menu-path.c:557
+#: panel-menu/panel-menu-links.c:326 panel-menu/panel-menu-path.c:239
+#: panel-menu/panel-menu-path.c:559
 #, fuzzy
 msgid "Programs"
 msgstr "Program"
@@ -3683,15 +3691,15 @@ msgstr ""
 msgid "Rename links item..."
 msgstr ""
 
-#: panel-menu/panel-menu-path.c:228
+#: panel-menu/panel-menu-path.c:230
 msgid "KDE"
 msgstr ""
 
-#: panel-menu/panel-menu-path.c:655
+#: panel-menu/panel-menu-path.c:658
 msgid "Create menu path item..."
 msgstr ""
 
-#: panel-menu/panel-menu-path.c:697
+#: panel-menu/panel-menu-path.c:701
 msgid "Edit path item..."
 msgstr ""
 
@@ -3699,41 +3707,41 @@ msgstr ""
 msgid "Preferences"
 msgstr ""
 
-#: panel-menu/panel-menu-properties.c:71
+#: panel-menu/panel-menu-properties.c:72
 #, fuzzy
 msgid "Menu Bar Preferences"
 msgstr "Vlastnosti GKB"
 
-#: panel-menu/panel-menu-properties.c:75
+#: panel-menu/panel-menu-properties.c:78
 #, fuzzy
 msgid "Layout"
 msgstr "Výpis"
 
-#: panel-menu/panel-menu-properties.c:90
+#: panel-menu/panel-menu-properties.c:93
 #, fuzzy
 msgid "_Applications Menu"
 msgstr "Volby"
 
-#: panel-menu/panel-menu-properties.c:110
+#: panel-menu/panel-menu-properties.c:117
 #, fuzzy
 msgid "Select an icon for the Applications menu"
 msgstr "Výbìr ikony pro 'pøipojen'"
 
-#: panel-menu/panel-menu-properties.c:126
+#: panel-menu/panel-menu-properties.c:134
 msgid "_Preferences Menu"
 msgstr ""
 
-#: panel-menu/panel-menu-properties.c:137
+#: panel-menu/panel-menu-properties.c:145
 #, fuzzy
 msgid "Ac_tions Menu"
 msgstr "Volby"
 
-#: panel-menu/panel-menu-properties.c:148
+#: panel-menu/panel-menu-properties.c:156
 #, fuzzy
 msgid "_Windows Menu"
 msgstr "Vítr:"
 
-#: panel-menu/panel-menu-properties.c:159
+#: panel-menu/panel-menu-properties.c:167
 msgid "W_orkspaces Menu"
 msgstr ""
 
@@ -3745,6 +3753,289 @@ msgstr "Vítr:"
 #: panel-menu/panel-menu-workspaces.c:80
 msgid "Workspaces"
 msgstr ""
+
+#: panel-menu/panel-menu.c:693
+msgid "Menu Bar"
+msgstr ""
+
+#: panel-menu/panel-menu.c:694
+msgid "(c) 2001 Chris Phelps"
+msgstr ""
+
+#: panel-menu/panel-menu.c:695
+msgid "The Menu Bar allows you to display customized menubars on your panels."
+msgstr ""
+
+#: screen-exec/egg-screen-help.c:174
+msgid "Unable to find the GNOME_FILE_DOMAIN_APP_HELP domain"
+msgstr ""
+
+#: screen-exec/egg-screen-help.c:187
+msgid "Unable to find the GNOME_FILE_DOMAIN_HELP domain."
+msgstr ""
+
+#: screen-exec/egg-screen-help.c:200 screen-exec/egg-screen-help.c:215
+#, c-format
+msgid ""
+"Unable to show help as %s is not a directory.  Please check your "
+"installation."
+msgstr ""
+
+#: screen-exec/egg-screen-help.c:224 screen-exec/egg-screen-help.c:240
+#, c-format
+msgid ""
+"Unable to find the help files in either %s or %s.  Please check your "
+"installation"
+msgstr ""
+
+#: screen-exec/egg-screen-help.c:315
+#, c-format
+msgid "Unable to find doc_id %s in the help path"
+msgstr ""
+
+#: screen-exec/egg-screen-help.c:336
+#, c-format
+msgid "Help document %s/%s not found"
+msgstr ""
+
+#: wireless/wireless-applet.c:344
+msgid ""
+"The images necessary to run the wireless monitor are missing.\n"
+"Please make sure that it is correctly installed."
+msgstr ""
+
+#: wireless/wireless-applet.c:525
+msgid "No Wireless Devices"
+msgstr ""
+
+#: wireless/wireless-applet.c:527
+msgid ""
+"There doesn't seem to be any wireless devices configured on your system.\n"
+"Please verify your configuration if you think this is incorrect."
+msgstr ""
+
+#: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:2
+#: wireless/wireless-applet.c:719
+msgid "Wireless Link Monitor"
+msgstr ""
+
+#: wireless/wireless-applet.c:721
+#, fuzzy
+msgid "(C) 2001, 2002 Free Software Foundation "
+msgstr "(C) 1998-2000 Free Software Foundation"
+
+#: wireless/wireless-applet.c:722
+msgid "This utility shows the status of a wireless link."
+msgstr ""
+
+#: wireless/wireless-applet.glade.h:1
+msgid "Monitored Device:"
+msgstr ""
+
+#: wireless/wireless-applet.glade.h:2
+#, fuzzy
+msgid "Show _dialog boxes"
+msgstr "Ukazovat dr¾adlo"
+
+#: wireless/wireless-applet.glade.h:3
+msgid "Show signal strength in _percentage"
+msgstr ""
+
+#: wireless/wireless-applet.glade.h:4
+#, fuzzy
+msgid "Wireless Link Monitor Preferences"
+msgstr "Nastevení apletu pøipojování diskù"
+
+#: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:1
+msgid "Monitor the quality of a wireless network link"
+msgstr ""
+
+#, fuzzy
+#~ msgid "Battery status utility"
+#~ msgstr "Nastavení monitoru baterií"
+
+#~ msgid "CD Player Applet"
+#~ msgstr "CD Pøehrávaè aplet"
+
+#~ msgid "Character Picker"
+#~ msgstr "Výbìr znaku"
+
+#~ msgid "Drive Mount Applet"
+#~ msgstr "Aplet pøipojování diskù"
+
+#~ msgid "Dave Camp <campd@oit.edu>"
+#~ msgstr "Dave Camp <campd@oit.edu>"
+
+#~ msgid "gEyes"
+#~ msgstr "gEyes"
+
+#, fuzzy
+#~ msgid "label_%d"
+#~ msgstr "Popis"
+
+#, fuzzy
+#~ msgid "country_%d"
+#~ msgstr "Zemì"
+
+#, fuzzy
+#~ msgid "lang_%d"
+#~ msgstr "Polsko"
+
+#, fuzzy
+#~ msgid "command_%d"
+#~ msgstr "Pøíkaz"
+
+#~ msgid "The GNOME KeyBoard Switcher Applet"
+#~ msgstr "Aplet na pøepínání klávesnice pro GNOME"
+
+#~ msgid "Refresh"
+#~ msgstr "Aktualizuj"
+
+#, fuzzy
+#~ msgid "_Use HTTP proxy"
+#~ msgstr "Pou¾ít proxy"
+
+#, fuzzy
+#~ msgid "_Location :"
+#~ msgstr "Místo:"
+
+#, fuzzy
+#~ msgid "Us_ername:"
+#~ msgstr "U¾ivatel:"
+
+#, fuzzy
+#~ msgid "Pass_word:"
+#~ msgstr "Heslo:"
+
+#, fuzzy
+#~ msgid "Display a_rrows instead of -/+"
+#~ msgstr "Zobrazit ¹ipky namísto -/+"
+
+#, fuzzy
+#~ msgid "Stock Sy_mbol:"
+#~ msgstr "Akciový symbol:"
+
+#, fuzzy
+#~ msgid "Stock C_hange:"
+#~ msgstr "Zmìna akcie:"
+
+#, fuzzy
+#~ msgid "_Proxy"
+#~ msgstr "Pou¾ít proxy"
+
+#, fuzzy
+#~ msgid "URL Entry"
+#~ msgstr " Historie URL "
+
+#, fuzzy
+#~ msgid "Enter the Location"
+#~ msgstr "Místo"
+
+#, fuzzy
+#~ msgid "User Entry"
+#~ msgstr "Pou¾ít proxy"
+
+#, fuzzy
+#~ msgid "Password Entry"
+#~ msgstr "Heslo:"
+
+#, fuzzy
+#~ msgid "Locat_ion :"
+#~ msgstr "Místo:"
+
+#~ msgid "Mini-Commander Applet"
+#~ msgstr "Aplet Mini-Commander"
+
+#~ msgid "not unique"
+#~ msgstr "není unikátní"
+
+#~ msgid "completing..."
+#~ msgstr "doplòování..."
+
+#~ msgid "completed"
+#~ msgstr "doplnìno"
+
+#~ msgid "not found"
+#~ msgstr "nenalezeno"
+
+#~ msgid "no /bin/sh"
+#~ msgstr "neexistuje /bin/sh"
+
+#~ msgid "end of history list"
+#~ msgstr "konec historie"
+
+#~ msgid "starting..."
+#~ msgstr "spou¹tìno..."
+
+#~ msgid "autocompleted"
+#~ msgstr "doplnìno"
+
+#~ msgid "history list empty"
+#~ msgstr "seznam historie prázdný"
+
+#~ msgid "Command history"
+#~ msgstr "Historie pøíkazù"
+
+#~ msgid "fork error"
+#~ msgstr "chyba volání fork()"
+
+#~ msgid "child exited"
+#~ msgstr "potomek skonèil"
+
+#~ msgid "%H:%M - %d. %b"
+#~ msgstr "%H:%M - %e. %b"
+
+#~ msgid "%H:%M"
+#~ msgstr "%H:%M"
+
+#~ msgid "%d. %b"
+#~ msgstr "%e. %b"
+
+#~ msgid "orient. changed"
+#~ msgstr "orientace zmìnìna"
+
+#~ msgid "size changed"
+#~ msgstr "velikost zmìnìna"
+
+#~ msgid "ready..."
+#~ msgstr "ok..."
+
+#~ msgid "Clock"
+#~ msgstr "Hodiny"
+
+#~ msgid "Show time"
+#~ msgstr "Ukazovat èas"
+
+#~ msgid "Show date"
+#~ msgstr "Ukazovat datum"
+
+#~ msgid "Applet height:"
+#~ msgstr "Vý¹ka apletu"
+
+#~ msgid "Command line height:"
+#~ msgstr "Vý¹ka pøíkazové øádky"
+
+#, fuzzy
+#~ msgid "Regex _%.2d:"
+#~ msgstr "Prefix %.2d:"
+
+#, fuzzy
+#~ msgid "   Macro _%.2d:"
+#~ msgstr "   Makro %.2d:"
+
+#~ msgid "Run Audio Mixer..."
+#~ msgstr "Spustit zvukovou mixá¾..."
+
+#~ msgid "Modem Lights Applet"
+#~ msgstr "Aplet 'Kontrolky modemu'"
+
+#, fuzzy
+#~ msgid "System Monitor Applet"
+#~ msgstr "Aplet pro øízení esound"
+
+#, fuzzy
+#~ msgid "PanelMenu Applet"
+#~ msgstr "Mixá¾ní aplet"
 
 #, fuzzy
 #~ msgid "Laptop battery monitor applet"
@@ -3818,9 +4109,6 @@ msgstr ""
 #~ "nezakódovaný text v osobním konfiguraèním\n"
 #~ "souboru."
 
-#~ msgid "General"
-#~ msgstr "Obecné"
-
 #, fuzzy
 #~ msgid "still not ported"
 #~ msgstr " není pøipojen"
@@ -3876,9 +4164,6 @@ msgstr ""
 
 #~ msgid "Clock Settings"
 #~ msgstr "Nastavení hodin"
-
-#~ msgid "Clock color"
-#~ msgstr "Barva hodin"
 
 #~ msgid "Hour needle color"
 #~ msgstr "Barva hodinové ruèièky"
@@ -3988,9 +4273,6 @@ msgstr ""
 #~ msgid "Low Charge Threshold:"
 #~ msgstr "Nejistota nenabití baterie"
 
-#~ msgid "Applet Mode:"
-#~ msgstr "Re¾im apletu:"
-
 #~ msgid "Graph"
 #~ msgstr "Graf"
 
@@ -4020,9 +4302,6 @@ msgstr ""
 
 #~ msgid "Enable Low Battery Warning"
 #~ msgstr "Varování pøi vybitém akumulátoru"
-
-#~ msgid "Warn if the battery charge dips below:"
-#~ msgstr "Varování pøi vybití baterie pod:"
 
 #~ msgid "Enable Full-Charge Notification"
 #~ msgstr "Oznámovat plné nabití"
@@ -4090,7 +4369,8 @@ msgstr ""
 #~ "Distribuováno pod Obecnou veøejnou licencí GNU.\n"
 #~ "Základní aplet digitálních hodin s datem v balónovém tipu. Volitelné "
 #~ "zobrazení\n"
-#~ "12/24 hodin. Blikání mù¾e být pro jakýkoli nepøeètený mail nebo krátce, jen\n"
+#~ "12/24 hodin. Blikání mù¾e být pro jakýkoli nepøeètený mail nebo krátce, "
+#~ "jen\n"
 #~ "kdy¾ pøijde po¹ta."
 
 #~ msgid "%a, %b %d"
@@ -4122,7 +4402,8 @@ msgstr ""
 
 #~ msgid "Always blink when any mail is waiting."
 #~ msgstr ""
-#~ "Blikat, pokud èeká nìjaká nepøeètená e-po¹ta. Tedy nikoli jen pøi doruèení."
+#~ "Blikat, pokud èeká nìjaká nepøeètená e-po¹ta. Tedy nikoli jen pøi "
+#~ "doruèení."
 
 #~ msgid "Number of messages to consider mailbox full:"
 #~ msgstr "Poèet zpráv, pøi kterém je schránka oznaèena jako plná:"
@@ -4175,9 +4456,6 @@ msgstr ""
 #~ msgid "Fonts"
 #~ msgstr "Fonty"
 
-#~ msgid "Font:"
-#~ msgstr "Font:"
-
 #~ msgid "Diskusage Settings"
 #~ msgstr "Nastavení programu Diskusage"
 
@@ -4202,8 +4480,8 @@ msgstr ""
 #~ msgstr "Copyright (C) Free Software Foundation"
 
 #~ msgid ""
-#~ "Sam Lloyd's all-time favorite game, now for your delight in the Gnome Panel. "
-#~ "Guaranteed to be a productivity buster."
+#~ "Sam Lloyd's all-time favorite game, now for your delight in the Gnome "
+#~ "Panel. Guaranteed to be a productivity buster."
 #~ msgstr ""
 #~ "Hra \"Patnáct\" Sama Lloyda, nyní ve va¹em panelu desktopu Gnome. \n"
 #~ "Garantuje sni¾ování produktivity práce."
@@ -4234,9 +4512,6 @@ msgstr ""
 
 #~ msgid "Lower Note"
 #~ msgstr "Sní¾it poznámku"
-
-#~ msgid "Hide Note"
-#~ msgstr "Skrýt poznámku"
 
 #~ msgid "Delete Note"
 #~ msgstr "Zru¹it poznámku"
@@ -4297,18 +4572,6 @@ msgstr ""
 
 #~ msgid "Regions"
 #~ msgstr "Regiony"
-
-#, fuzzy
-#~ msgid "knots"
-#~ msgstr "Gnotices"
-
-#, fuzzy
-#~ msgid "miles"
-#~ msgstr "Èlánky"
-
-#, fuzzy
-#~ msgid "kilometers"
-#~ msgstr "Odometr"
 
 #~ msgid "Location vector needs to be 4 elements long"
 #~ msgstr "Pozièní vektor musí být 4 polo¾ky dlouhý"
@@ -4401,12 +4664,6 @@ msgstr ""
 #~ msgid "Maximum:"
 #~ msgstr "Maximum:"
 
-#~ msgid "Speed:"
-#~ msgstr "Rychlost:"
-
-#~ msgid "Use default properties"
-#~ msgstr "Pou¾ít standardní vlastnosti"
-
 #~ msgid "PPP"
 #~ msgstr "PPP"
 
@@ -4477,9 +4734,6 @@ msgstr ""
 
 #~ msgid "Launcher properties..."
 #~ msgstr "Vlastnosti spou¹tìèe..."
-
-#~ msgid "Delete launcher"
-#~ msgstr "Vymazat spou¹teè"
 
 #~ msgid "File '%s' does not exist"
 #~ msgstr "Soubor '%s' neexistuje"
@@ -4557,9 +4811,6 @@ msgstr ""
 
 #~ msgid "Smooth type"
 #~ msgstr "Postupný tisk písmen"
-
-#~ msgid "Speed"
-#~ msgstr "Rychlost"
 
 #~ msgid "Delay when wrapping text:"
 #~ msgstr "Prodleva pøi lámání textu:"
@@ -4704,9 +4955,6 @@ msgstr ""
 #~ msgid "Choose a log file"
 #~ msgstr "Uzamykací soubor modemu:"
 
-#~ msgid "Width:"
-#~ msgstr "©íøka:"
-
 #~ msgid "Height:"
 #~ msgstr "Vý¹ka:"
 
@@ -4795,10 +5043,6 @@ msgstr ""
 #~ msgid "Browser Name:"
 #~ msgstr "Prohlí¾eè"
 
-#, fuzzy
-#~ msgid "Browser Command:"
-#~ msgstr "Pøipojovací pøíkaz:"
-
 #~ msgid "Display \"launch new window\" option"
 #~ msgstr "Zobrazit volbu \"Vytvoøit nové okno\""
 
@@ -4885,11 +5129,11 @@ msgstr ""
 #~ msgstr "(C) 1998-1999"
 
 #~ msgid ""
-#~ "This applet currently sends getURL commands to netscape throught the -remote "
-#~ "interface.  Hopefully later more webrowsers will be supported."
+#~ "This applet currently sends getURL commands to netscape throught the -"
+#~ "remote interface.  Hopefully later more webrowsers will be supported."
 #~ msgstr ""
-#~ "Tento aplet pou¾ívá pøíkazy 'getURL' prohlí¾eèe netscape pøes pøepínaè "
-#~ "-remote.\n"
+#~ "Tento aplet pou¾ívá pøíkazy 'getURL' prohlí¾eèe netscape pøes pøepínaè -"
+#~ "remote.\n"
 #~ "Podpora dal¹ích prohlí¾eèù bude pøidána pozdìji."
 
 #~ msgid "Url:"
@@ -4956,8 +5200,8 @@ msgstr ""
 #~ "Error querying battery charge.  Make sure that your kernel was built with "
 #~ "APM support."
 #~ msgstr ""
-#~ "Chyba pøi získání informací o stavu baterií. Ujistìte se, ¾e Vá¹ kernel byl "
-#~ "sestaven s podporou APM."
+#~ "Chyba pøi získání informací o stavu baterií. Ujistìte se, ¾e Vá¹ kernel "
+#~ "byl sestaven s podporou APM."
 
 #, fuzzy
 #~ msgid "Refresh Image"
@@ -5004,10 +5248,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Gnome Pager Settings"
 #~ msgstr "Nastavení zobrazení ploch Fvwm"
-
-#, fuzzy
-#~ msgid "Pager"
-#~ msgstr "Mìnic ploch"
 
 #, fuzzy
 #~ msgid "Show pager"
@@ -5160,11 +5400,12 @@ msgstr ""
 
 #~ msgid ""
 #~ "This applet is released under the terms and conditions of the GNU Public "
-#~ "Licence.This applet shows the load on a network device. It requires the "
-#~ "/proc/net/ip_acct interface to be present and set up correctly for the "
+#~ "Licence.This applet shows the load on a network device. It requires the /"
+#~ "proc/net/ip_acct interface to be present and set up correctly for the "
 #~ "device."
 #~ msgstr ""
-#~ "Tento aplet je ¹íøen pod Obecnou veøejnou licencí GNU. Aplet zobrazuje tok\n"
+#~ "Tento aplet je ¹íøen pod Obecnou veøejnou licencí GNU. Aplet zobrazuje "
+#~ "tok\n"
 #~ "dat pøes sí»ové zaøízení a vy¾aduje soubor /proc/net/ip_acct obsahující \n"
 #~ "informace o daném zaøízení."
 

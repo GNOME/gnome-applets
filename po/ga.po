@@ -5,13 +5,79 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets CVS\n"
-"POT-Creation-Date: 2002-04-16 19:25-0400\n"
+"POT-Creation-Date: 2002-10-04 14:23+1200\n"
 "PO-Revision-Date: 2000-03-13 19:00+0100\n"
 "Last-Translator:Alastair McKinstry <mckinstry@computer.org>\n"
 "Language-Team: Irish <ga@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#. The long name of the applet in the About dialog.
+#: battstat/GNOME_BattstatApplet.server.in.in.h:1
+#: battstat/battstat_applet.c:841
+#, fuzzy
+msgid "Battery Charge Monitor"
+msgstr "Cumraigh Staid batairí:"
+
+#: battstat/GNOME_BattstatApplet.server.in.in.h:2
+msgid "Battstat Factory"
+msgstr ""
+
+#: battstat/GNOME_BattstatApplet.server.in.in.h:3
+msgid "Monitor a laptop's remaining power"
+msgstr ""
+
+#: battstat/GNOME_BattstatApplet.server.in.in.h:4
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:4
+#: drivemount/GNOME_DriveMountApplet.server.in.in.h:5
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:5
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:4
+#: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:3
+#: panel-menu/GNOME_PanelMenuApplet.server.in.h:4
+msgid "Utility"
+msgstr ""
+
+#: battstat/GNOME_BattstatApplet.xml.h:1 cdplayer/GNOME_CDPlayerApplet.xml.h:1
+#: charpick/GNOME_CharpickerApplet.xml.h:1
+#: drivemount/GNOME_DriveMountApplet.xml.h:1 geyes/GNOME_GeyesApplet.xml.h:1
+#: gkb-new/GNOME_KeyboardApplet.xml.h:1 gtik/GNOME_GtikApplet.xml.h:1
+#: gweather/GNOME_GWeatherApplet.xml.h:1
+#: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
+#: mixer/GNOME_MixerApplet.xml.h:1 modemlights/GNOME_ModemlightsApplet.xml.h:1
+#: multiload/GNOME_MultiloadApplet.xml.h:1
+#: wireless/GNOME_WirelessApplet.xml.h:1
+#, fuzzy
+msgid "_About..."
+msgstr "Faoi..."
+
+#: battstat/GNOME_BattstatApplet.xml.h:2 cdplayer/GNOME_CDPlayerApplet.xml.h:2
+#: charpick/GNOME_CharpickerApplet.xml.h:2
+#: drivemount/GNOME_DriveMountApplet.xml.h:4 geyes/GNOME_GeyesApplet.xml.h:2
+#: gkb-new/GNOME_KeyboardApplet.xml.h:2 gtik/GNOME_GtikApplet.xml.h:2
+#: gweather/GNOME_GWeatherApplet.xml.h:3
+#: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
+#: mixer/GNOME_MixerApplet.xml.h:2 modemlights/GNOME_ModemlightsApplet.xml.h:2
+#, fuzzy
+msgid "_Help"
+msgstr "Cabhair"
+
+#: battstat/GNOME_BattstatApplet.xml.h:3 cdplayer/GNOME_CDPlayerApplet.xml.h:3
+#: charpick/GNOME_CharpickerApplet.xml.h:3
+#: drivemount/GNOME_DriveMountApplet.xml.h:5 geyes/GNOME_GeyesApplet.xml.h:3
+#: gkb-new/GNOME_KeyboardApplet.xml.h:3 gtik/GNOME_GtikApplet.xml.h:3
+#: gweather/GNOME_GWeatherApplet.xml.h:4
+#: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
+#: modemlights/GNOME_ModemlightsApplet.xml.h:3
+#: multiload/GNOME_MultiloadApplet.xml.h:2
+#: wireless/GNOME_WirelessApplet.xml.h:2
+#, fuzzy
+msgid "_Preferences..."
+msgstr "Abaltachtaí...."
+
+#: battstat/GNOME_BattstatApplet.xml.h:4
+msgid "_Suspend Computer..."
+msgstr ""
 
 #. Message displayed if user tries to run applet
 #. on unsupported platform
@@ -26,38 +92,40 @@ msgstr ""
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:316 battstat/battstat_applet.c:834
+#: battstat/battstat_applet.c:316 battstat/battstat_applet.c:872
 #, fuzzy
 msgid "High"
 msgstr "Ard."
 
 #. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:836
+#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:874
 msgid "Low"
 msgstr ""
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:838
+#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:876
 msgid "Critical"
 msgstr ""
 
 #. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:840
+#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:878
 msgid "Charging"
 msgstr ""
 
 #: battstat/battstat_applet.c:403
+#, c-format
 msgid "Battery low (%d%%) and AC is offline"
 msgstr ""
 
-#: battstat/battstat_applet.c:426
+#: battstat/battstat_applet.c:427
 msgid "Battery is now fully re-charged!"
 msgstr ""
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:445 battstat/battstat_applet.c:997
+#: battstat/battstat_applet.c:446 battstat/battstat_applet.c:1036
+#, c-format
 msgid ""
 "System is running on battery power\n"
 "Battery: %d%% (%s)"
@@ -66,7 +134,8 @@ msgstr ""
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:449 battstat/battstat_applet.c:1005
+#: battstat/battstat_applet.c:450 battstat/battstat_applet.c:1044
+#, c-format
 msgid ""
 "System is running on AC power\n"
 "Battery: %d%% (%s)"
@@ -74,31 +143,33 @@ msgstr ""
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:455 battstat/battstat_applet.c:929
-#: battstat/battstat_applet.c:1018
+#: battstat/battstat_applet.c:456 battstat/battstat_applet.c:968
+#: battstat/battstat_applet.c:1057
 msgid "System is running on battery power"
 msgstr ""
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:458 battstat/battstat_applet.c:935
-#: battstat/battstat_applet.c:1024
+#: battstat/battstat_applet.c:459 battstat/battstat_applet.c:974
+#: battstat/battstat_applet.c:1063
 msgid "System is running on AC power"
 msgstr ""
 
-#: battstat/battstat_applet.c:472
+#: battstat/battstat_applet.c:473
 msgid "N/A"
 msgstr ""
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:596 battstat/battstat_applet.c:909
+#: battstat/battstat_applet.c:597 battstat/battstat_applet.c:948
+#, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
 msgstr ""
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:603 battstat/battstat_applet.c:916
+#: battstat/battstat_applet.c:604 battstat/battstat_applet.c:955
+#, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
 msgstr ""
 
@@ -106,32 +177,33 @@ msgstr ""
 #. battery frame when the computer is using battery
 #. power and the battery isn't present. Not a
 #. possible combination, I guess... :)
-#: battstat/battstat_applet.c:614
+#: battstat/battstat_applet.c:615
 msgid "System is running on battery power. Battery: Not present"
 msgstr ""
 
 #. This string will display as a tooltip over the
 #. battery frame when the computer is using AC
 #. power and the battery isn't present.
-#: battstat/battstat_applet.c:620
+#: battstat/battstat_applet.c:621
 msgid "System is running on AC power. Battery: Not present"
 msgstr ""
 
 #. Displayed as a tooltip over the battery meter when there is
 #. a battery present. %d will hold the current charge and %s will
 #. hold the status of the battery, (High, Low, Critical, Charging.
-#: battstat/battstat_applet.c:629
+#: battstat/battstat_applet.c:630
+#, c-format
 msgid "Battery: %d%% (%s)"
 msgstr ""
 
 #. Displayed as a tooltip over the battery meter when no
 #. battery is present.
-#: battstat/battstat_applet.c:636
+#: battstat/battstat_applet.c:637
 msgid "Battery: Not present"
 msgstr ""
 
 #. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: battstat/battstat_applet.c:711
+#: battstat/battstat_applet.c:717
 msgid ""
 "Can't open the APM device!\n"
 "\n"
@@ -140,14 +212,14 @@ msgid ""
 msgstr ""
 
 #. Displayed if the APM system is disabled (Used under *BSD)
-#: battstat/battstat_applet.c:719
+#: battstat/battstat_applet.c:726
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
 "that helps.\n"
 msgstr ""
 
-#: battstat/battstat_applet.c:767
+#: battstat/battstat_applet.c:776
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -155,7 +227,7 @@ msgid ""
 msgstr ""
 
 #. Probably because the shell_ret is != 0
-#: battstat/battstat_applet.c:770
+#: battstat/battstat_applet.c:779
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command, the command returned "
@@ -163,84 +235,128 @@ msgid ""
 "Please try to correct this error"
 msgstr ""
 
-#: battstat/battstat_applet.c:778
+#: battstat/battstat_applet.c:787
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
 msgstr ""
 
-#. The long name of the applet in the About dialog.
-#: battstat/battstat_applet.c:807
-#, fuzzy
-msgid "Battery status utility"
-msgstr "Staid batairí:"
+#. if your charset supports it, please replace the "o" in
+#. * "Jorgen" into U00F6
+#: battstat/battstat_applet.c:818
+msgid "Jorgen Pehrson <jp@spektr.eu.org>"
+msgstr ""
 
-#: battstat/battstat_applet.c:809
+#: battstat/battstat_applet.c:828 cdplayer/cdplayer.c:481
+#: charpick/charpick.c:374 drivemount/drivemount.c:453 geyes/geyes.c:217
+#: gkb-new/gkb.c:593 gtik/gtik.c:708 gweather/gweather-about.c:43
+#: mini-commander/src/about.c:48 mixer/mixer.c:794
+#: modemlights/modemlights.c:209 multiload/main.c:57
+#: panel-menu/panel-menu.c:674 wireless/wireless-applet.c:704
+msgid "translator_credits"
+msgstr ""
+
+#: battstat/battstat_applet.c:843
 #, fuzzy
 msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 msgstr "(C) 1999 the Free Software Foundation"
 
-#: battstat/battstat_applet.c:810
+#: battstat/battstat_applet.c:844
 msgid "This utility show the status of your laptop battery."
 msgstr ""
 
-#: battstat/GNOME_BattstatApplet.server.in.h:1
+#: battstat/battstat_applet.glade.h:2
+#, no-c-format
+msgid "100%"
+msgstr ""
+
+#: battstat/battstat_applet.glade.h:3
+#: mini-commander/src/mini-commander.glade.h:3
+msgid "Appearance"
+msgstr ""
+
+#: battstat/battstat_applet.glade.h:4
 #, fuzzy
-msgid "Battery Charge Monitor"
+msgid "Applet layout"
+msgstr "Mód Feidhmchlárín:"
+
+#: battstat/battstat_applet.glade.h:5
+#, fuzzy
+msgid "Battery Charge Monitor Preferences"
 msgstr "Cumraigh Staid batairí:"
 
-#: battstat/GNOME_BattstatApplet.server.in.h:2
-msgid "Battstat Factory"
+#: battstat/battstat_applet.glade.h:7
+#, no-c-format
+msgid "Battery color levels (%)"
 msgstr ""
 
-#: battstat/GNOME_BattstatApplet.server.in.h:3
-msgid "Monitor a laptop's remaining power"
+#: battstat/battstat_applet.glade.h:8
+msgid "Beep when either of the above is true"
 msgstr ""
 
-#: battstat/GNOME_BattstatApplet.server.in.h:4
-#: charpick/GNOME_CharpickerApplet.server.in.h:4
-#: drivemount/GNOME_DriveMountApplet.server.in.h:5
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:5
-#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:4
-#: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:3
-#: panel-menu/GNOME_PanelMenuApplet.server.in.h:4
-msgid "Utility"
+#: battstat/battstat_applet.glade.h:9
+msgid "General"
+msgstr "Gnáth"
+
+#: battstat/battstat_applet.glade.h:10
+msgid "Hide"
 msgstr ""
 
-#: battstat/GNOME_BattstatApplet.xml.h:1 cdplayer/GNOME_CDPlayerApplet.xml.h:1
-#: charpick/GNOME_CharpickerApplet.xml.h:1
-#: drivemount/GNOME_DriveMountApplet.xml.h:1 geyes/GNOME_GeyesApplet.xml.h:1
-#: gkb-new/GNOME_KeyboardApplet.xml.h:1 gtik/GNOME_GtikApplet.xml.h:1
-#: gweather/GNOME_GWeatherApplet.xml.h:1
-#: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:1
-#: mixer/GNOME_MixerApplet.xml.h:1 modemlights/GNOME_ModemlightsApplet.xml.h:1
-#: multiload/GNOME_MultiloadApplet.xml.h:1
-msgid "About..."
-msgstr "Faoi..."
+#: battstat/battstat_applet.glade.h:11
+msgid "Move towards bottom"
+msgstr ""
 
-#: battstat/GNOME_BattstatApplet.xml.h:2 cdplayer/GNOME_CDPlayerApplet.xml.h:2
-#: charpick/GNOME_CharpickerApplet.xml.h:2
-#: drivemount/GNOME_DriveMountApplet.xml.h:4 geyes/GNOME_GeyesApplet.xml.h:2
-#: gkb-new/GNOME_KeyboardApplet.xml.h:2
-#: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
-#: mixer/GNOME_MixerApplet.xml.h:2 modemlights/GNOME_ModemlightsApplet.xml.h:2
-msgid "Help"
-msgstr "Cabhair"
+#: battstat/battstat_applet.glade.h:12
+msgid "Move towards top"
+msgstr ""
 
-#: battstat/GNOME_BattstatApplet.xml.h:3 cdplayer/GNOME_CDPlayerApplet.xml.h:3
-#: charpick/GNOME_CharpickerApplet.xml.h:3
-#: drivemount/GNOME_DriveMountApplet.xml.h:5 geyes/GNOME_GeyesApplet.xml.h:3
-#: gkb-new/GNOME_KeyboardApplet.xml.h:3 gtik/GNOME_GtikApplet.xml.h:2
-#: gweather/GNOME_GWeatherApplet.xml.h:3
-#: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:3
-#: modemlights/GNOME_ModemlightsApplet.xml.h:3
-#: multiload/GNOME_MultiloadApplet.xml.h:2
+#: battstat/battstat_applet.glade.h:13
+msgid "Notify me when battery charge is low"
+msgstr ""
+
+#: battstat/battstat_applet.glade.h:14
+msgid "Notify me when battery is fully re-charged"
+msgstr ""
+
+#: battstat/battstat_applet.glade.h:15
+msgid "Orange:"
+msgstr ""
+
+#: battstat/battstat_applet.glade.h:16
 #, fuzzy
-msgid "Preferences..."
-msgstr "Abaltachtaí...."
+msgid "Preview:"
+msgstr "Gaireas:"
 
-#: battstat/GNOME_BattstatApplet.xml.h:4
-msgid "Suspend Computer..."
+#: battstat/battstat_applet.glade.h:17
+msgid "Progress bar direction"
+msgstr ""
+
+#: battstat/battstat_applet.glade.h:18
+#, fuzzy
+msgid "Red:"
+msgstr "Luas:"
+
+#: battstat/battstat_applet.glade.h:19
+#, fuzzy
+msgid "Show"
+msgstr "Taispeán:"
+
+#: battstat/battstat_applet.glade.h:20
+#, fuzzy
+msgid "Suspend"
+msgstr "Luas"
+
+#: battstat/battstat_applet.glade.h:21
+#, fuzzy
+msgid "Suspend command:"
+msgstr " Dearcadh.."
+
+#: battstat/battstat_applet.glade.h:22
+msgid "Warnings"
+msgstr ""
+
+#: battstat/battstat_applet.glade.h:23
+msgid "Yellow:"
 msgstr ""
 
 #: battstat/sounds/battstat_applet.soundlist.in.h:1
@@ -256,407 +372,398 @@ msgstr ""
 msgid "Battery power low"
 msgstr ""
 
-#: cdplayer/cdplayer.c:146 cdplayer/cdplayer.c:818
-msgid "Stop"
-msgstr ""
-
-#: cdplayer/cdplayer.c:148 cdplayer/cdplayer.c:820
-msgid "Play / Pause"
-msgstr ""
-
-#: cdplayer/cdplayer.c:150 cdplayer/cdplayer.c:822
-#: drivemount/GNOME_DriveMountApplet.xml.h:3
-msgid "Eject"
-msgstr "Dian"
-
-#: cdplayer/cdplayer.c:152 cdplayer/cdplayer.c:824
-msgid "Previous Track"
-msgstr ""
-
-#: cdplayer/cdplayer.c:154 cdplayer/cdplayer.c:826
-msgid "Next Track"
-msgstr ""
-
-#: cdplayer/GNOME_CDPlayerApplet.server.in.h:1 cdplayer/cdplayer.c:159
-#: cdplayer/cdplayer.c:828
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:171
+#: cdplayer/cdplayer.c:499 cdplayer/cdplayer.c:914
 #, fuzzy
 msgid "CD Player"
 msgstr "Feidhmchlárín Lód CPU"
 
-#: cdplayer/cdplayer.c:346
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:2
+#, fuzzy
+msgid "CD Player Applet Factory"
+msgstr "Feidhmchlárín Lód CPU"
+
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:3
+#, fuzzy
+msgid "Factory for CD player applet"
+msgstr "Feidhmchlárín Lód CPU"
+
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:4
+#: mixer/GNOME_MixerApplet.server.in.in.h:2
+msgid "Multimedia"
+msgstr ""
+
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:5
+msgid "Panel applet for playing audio CDs"
+msgstr ""
+
+#: cdplayer/GNOME_CDPlayerApplet.xml.h:4
+msgid "_Run External CD Player"
+msgstr ""
+
+#: cdplayer/cdplayer.c:159 cdplayer/cdplayer.c:904
+msgid "Stop"
+msgstr ""
+
+#: cdplayer/cdplayer.c:161 cdplayer/cdplayer.c:906
+msgid "Play / Pause"
+msgstr ""
+
+#: cdplayer/cdplayer.c:163 cdplayer/cdplayer.c:908
+msgid "Eject"
+msgstr "Dian"
+
+#: cdplayer/cdplayer.c:165 cdplayer/cdplayer.c:910
+msgid "Previous Track"
+msgstr ""
+
+#: cdplayer/cdplayer.c:167 cdplayer/cdplayer.c:912
+msgid "Next Track"
+msgstr ""
+
+#: cdplayer/cdplayer.c:283 drivemount/drivemount.c:399 mixer/mixer.c:760
+#: multiload/main.c:118
+#, c-format
+msgid "There was an error executing '%s' : %s"
+msgstr ""
+
+#: cdplayer/cdplayer.c:388
 #, fuzzy
 msgid "CD Player Preferences"
 msgstr "Feidhmchlárín Lód CPU"
 
-#: cdplayer/cdplayer.c:361
+#: cdplayer/cdplayer.c:406
 #, fuzzy
 msgid "Disc Image"
 msgstr "íomhá"
 
-#: cdplayer/cdplayer.c:361
+#: cdplayer/cdplayer.c:406
 msgid "An image of a cd-rom disc"
 msgstr ""
 
-#: cdplayer/cdplayer.c:363
+#: cdplayer/cdplayer.c:408
 #, fuzzy
 msgid "Device _Path:"
 msgstr "Gaireas:"
 
-#: cdplayer/cdplayer.c:372
+#: cdplayer/cdplayer.c:417
 #, fuzzy
 msgid "Device Path"
 msgstr "Gaireas:"
 
-#: cdplayer/cdplayer.c:372
+#: cdplayer/cdplayer.c:417
 msgid "Set the device path here"
 msgstr ""
 
-#: cdplayer/cdplayer.c:375
+#: cdplayer/cdplayer.c:420
 #, fuzzy
 msgid "Use _Default"
 msgstr "Tada (gnáth)"
 
-#: cdplayer/cdplayer.c:420
-#, fuzzy
-msgid "CD Player Applet"
-msgstr "Feidhmchlárín Lód CPU"
-
-#: cdplayer/cdplayer.c:421
+#: cdplayer/cdplayer.c:500
 #, fuzzy
 msgid ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
 msgstr "(C) 1999 the Free Software Foundation"
 
-#: cdplayer/cdplayer.c:423 cdplayer/cdplayer.c:829
+#: cdplayer/cdplayer.c:502 cdplayer/cdplayer.c:915
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr ""
 
-#: cdplayer/cdplayer.c:697 cdplayer/cdplayer.c:706
+#: cdplayer/cdplayer.c:785 cdplayer/cdplayer.c:796
 msgid "Elapsed time"
 msgstr ""
 
-#: cdplayer/cdplayer.c:700 cdplayer/cdplayer.c:708
+#: cdplayer/cdplayer.c:788 cdplayer/cdplayer.c:798
 msgid "Track number"
 msgstr ""
 
-#: cdplayer/cdplayer.c:819
+#: cdplayer/cdplayer.c:905
 msgid "Click this button to Stop playing the CD"
 msgstr ""
 
-#: cdplayer/cdplayer.c:821
+#: cdplayer/cdplayer.c:907
 msgid "Click this button to Play or Pause the CD"
 msgstr ""
 
-#: cdplayer/cdplayer.c:823
+#: cdplayer/cdplayer.c:909
 msgid "Click this button to eject the CD"
 msgstr ""
 
-#: cdplayer/cdplayer.c:825
+#: cdplayer/cdplayer.c:911
 msgid "Click this button to Play the previous track in the CD"
 msgstr ""
 
-#: cdplayer/cdplayer.c:827
+#: cdplayer/cdplayer.c:913
 msgid "Click this button to Play the next track in the CD"
 msgstr ""
 
-#: cdplayer/GNOME_CDPlayerApplet.server.in.h:2
-#, fuzzy
-msgid "CD Player Applet Factory"
-msgstr "Feidhmchlárín Lód CPU"
-
-#: cdplayer/GNOME_CDPlayerApplet.server.in.h:3
-#, fuzzy
-msgid "Factory for CD player applet"
-msgstr "Feidhmchlárín Lód CPU"
-
-#: cdplayer/GNOME_CDPlayerApplet.server.in.h:4
-#: mixer/GNOME_MixerApplet.server.in.h:2
-msgid "Multimedia"
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:392
+#: charpick/charpick.c:490
+msgid "Character Palette"
 msgstr ""
 
-#: cdplayer/GNOME_CDPlayerApplet.server.in.h:5
-msgid "Panel applet for playing audio CDs"
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:2
+msgid "Charpicker Applet Factory"
 msgstr ""
 
-#: cdplayer/GNOME_CDPlayerApplet.xml.h:4
-msgid "Run External CD Player"
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:3
+msgid "Insert characters"
 msgstr ""
 
-#: charpick/charpick.c:363
-msgid "Character Picker"
+#. If your charset supports it, please use U00F1 to replace the "n"
+#. * in "Muniz".
+#: charpick/charpick.c:366
+msgid "Alexandre Muniz <munizao@xprt.net>"
 msgstr ""
 
-#: charpick/charpick.c:365
+#: charpick/charpick.c:394
 msgid "Copyright (C) 1998"
 msgstr "Coipcheart (C) 1998"
 
-#: charpick/charpick.c:366
+#: charpick/charpick.c:395
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
 msgstr ""
 
-#: charpick/charpick.c:444
+#: charpick/charpick.c:489
 msgid "Insert special characters"
 msgstr ""
 
-#: charpick/GNOME_CharpickerApplet.server.in.h:1 charpick/charpick.c:445
-msgid "Character Palette"
-msgstr ""
-
-#: charpick/GNOME_CharpickerApplet.server.in.h:2
-msgid "Charpicker Applet Factory"
-msgstr ""
-
-#: charpick/GNOME_CharpickerApplet.server.in.h:3
-msgid "Insert characters"
-msgstr ""
-
-#: charpick/properties.c:79
+#: charpick/properties.c:80
 #, fuzzy
 msgid "_Default character list:"
 msgstr "Líosta gnáth"
 
-#: charpick/properties.c:88
+#: charpick/properties.c:89
 msgid "Default list of characters"
 msgstr ""
 
-#: charpick/properties.c:89
+#: charpick/properties.c:90
 msgid "Set the default character list here"
 msgstr ""
 
-#: charpick/properties.c:91
+#: charpick/properties.c:92
 msgid ""
 "These characters will appear when the panel is started. To return to this "
 "list, hit <d> while the applet has focus."
 msgstr ""
 
-#: charpick/properties.c:144
+#: charpick/properties.c:156
 #, fuzzy
 msgid "Character Palette Preferences"
 msgstr "Albachtaí gnáth..."
 
-#: drivemount/drivemount.c:419
-msgid "Drive Mount Applet"
+#: drivemount/GNOME_DriveMountApplet.server.in.in.h:1
+#: drivemount/drivemount.c:471
+msgid "Disk Mounter"
 msgstr ""
 
-#: drivemount/drivemount.c:420
+#: drivemount/GNOME_DriveMountApplet.server.in.in.h:2
+#, fuzzy
+msgid "Drive Mount Applet Factory"
+msgstr "Albachtaí gnáth..."
+
+#: drivemount/GNOME_DriveMountApplet.server.in.in.h:3
+msgid "Factory for drive mount applet"
+msgstr ""
+
+#: drivemount/GNOME_DriveMountApplet.server.in.in.h:4
+msgid "Mount local disks and devices"
+msgstr ""
+
+#: drivemount/GNOME_DriveMountApplet.xml.h:2
+#, fuzzy
+msgid "_Browse..."
+msgstr " Dearcadh.."
+
+#: drivemount/GNOME_DriveMountApplet.xml.h:3
+#, fuzzy
+msgid "_Eject"
+msgstr "Dian"
+
+#: drivemount/drivemount.c:472
 msgid "(C) 1999-2001 The GNOME Hackers\n"
 msgstr ""
 
-#: drivemount/drivemount.c:422
+#: drivemount/drivemount.c:474
 msgid "Applet for mounting and unmounting block volumes."
 msgstr ""
 
-#: drivemount/drivemount.c:612
+#: drivemount/drivemount.c:672
 msgid " mounted"
 msgstr ""
 
-#: drivemount/drivemount.c:614
+#: drivemount/drivemount.c:674
 msgid " not mounted"
 msgstr ""
 
-#: drivemount/drivemount.c:725
+#: drivemount/drivemount.c:786
 #, fuzzy
 msgid "Drive Mount Applet Warning"
 msgstr "Albachtaí gnáth..."
 
-#: drivemount/drivemount.c:733
+#: drivemount/drivemount.c:796
 msgid "\" reported:\n"
 msgstr ""
 
-#: drivemount/drivemount.c:735
+#: drivemount/drivemount.c:798
 msgid ""
 "Drivemount command failed.\n"
 "\""
 msgstr ""
 
-#: drivemount/GNOME_DriveMountApplet.server.in.h:1
-msgid "Disk Mounter"
-msgstr ""
-
-#: drivemount/GNOME_DriveMountApplet.server.in.h:2
-#, fuzzy
-msgid "Drive Mount Applet Factory"
-msgstr "Albachtaí gnáth..."
-
-#: drivemount/GNOME_DriveMountApplet.server.in.h:3
-msgid "Factory for drive mount applet"
-msgstr ""
-
-#: drivemount/GNOME_DriveMountApplet.server.in.h:4
-msgid "Mount local disks and devices"
-msgstr ""
-
-#: drivemount/GNOME_DriveMountApplet.xml.h:2
-msgid "Browse..."
-msgstr " Dearcadh.."
-
-#: drivemount/properties.c:239
+#: drivemount/properties.c:252
 #, fuzzy
 msgid "Disk Mounter Preferences"
 msgstr "Albachtaí gnáth..."
 
-#: drivemount/properties.c:258
+#: drivemount/properties.c:273
 msgid "_Mount point:"
 msgstr ""
 
-#: drivemount/properties.c:276
+#: drivemount/properties.c:291
 msgid "_Update interval (seconds):"
 msgstr ""
 
-#: drivemount/properties.c:292
+#: drivemount/properties.c:307 panel-menu/panel-menu-properties.c:111
 #, fuzzy
 msgid "_Icon :"
 msgstr "Iomha"
 
-#: drivemount/properties.c:310
+#: drivemount/properties.c:325
 msgid "Floppy"
 msgstr ""
 
-#: drivemount/properties.c:313
+#: drivemount/properties.c:328
 msgid "Cdrom"
 msgstr ""
 
-#: drivemount/properties.c:316
+#: drivemount/properties.c:331
 msgid "Cd Recorder"
 msgstr ""
 
-#: drivemount/properties.c:319
+#: drivemount/properties.c:334
 msgid "Zip Drive"
 msgstr ""
 
-#: drivemount/properties.c:322
+#: drivemount/properties.c:337
 msgid "Hard Disk"
 msgstr ""
 
-#: drivemount/properties.c:325
+#: drivemount/properties.c:340
 msgid "Jaz Drive"
 msgstr ""
 
-#: drivemount/properties.c:328
+#: drivemount/properties.c:343
 msgid "Custom"
 msgstr "Féindheanamh"
 
-#: drivemount/properties.c:341
+#: drivemount/properties.c:356
 msgid "Select icon for mounted"
 msgstr ""
 
-#: drivemount/properties.c:348
+#: drivemount/properties.c:363
 msgid "Custom icon for moun_ted:"
 msgstr ""
 
-#: drivemount/properties.c:357
+#: drivemount/properties.c:372
 msgid "Select icon for unmounted"
 msgstr ""
 
-#: drivemount/properties.c:364
+#: drivemount/properties.c:379
 msgid "Custom icon for not mou_nted:"
 msgstr ""
 
-#: drivemount/properties.c:374
+#: drivemount/properties.c:389
 msgid "_Scale size to panel"
 msgstr ""
 
-#: drivemount/properties.c:381
+#: drivemount/properties.c:396
 msgid "_Eject on unmount"
 msgstr ""
 
-#: drivemount/properties.c:388
+#: drivemount/properties.c:403
 msgid "Use _automount friendly status test"
 msgstr ""
 
-#: geyes/geyes.c:200
-msgid "Dave Camp <campd@oit.edu>"
-msgstr "Dave Camp <campd@oit.edu>"
-
-#: geyes/geyes.c:209
-msgid "gEyes"
-msgstr "gEyes"
-
-#: geyes/geyes.c:210
-msgid "Copyright (C) 1999 Dave Camp"
-msgstr "Cóipcheart (C) 1999 Dave Camp"
-
-#: geyes/geyes.c:211
-msgid "A goofy little xeyes clone for the GNOME panel."
-msgstr ""
-
-#: geyes/GNOME_GeyesApplet.server.in.h:1
+#: geyes/GNOME_GeyesApplet.server.in.in.h:1
 msgid "A set of eyeballs for your panel"
 msgstr ""
 
-#: geyes/GNOME_GeyesApplet.server.in.h:2
+#: geyes/GNOME_GeyesApplet.server.in.in.h:2
 msgid "Amusements"
 msgstr ""
 
-#: geyes/GNOME_GeyesApplet.server.in.h:3
+#: geyes/GNOME_GeyesApplet.server.in.in.h:3 geyes/geyes.c:237
+#: geyes/geyes.c:429 geyes/geyes.c:431
 #, fuzzy
 msgid "Geyes"
 msgstr "gEyes"
 
-#: geyes/GNOME_GeyesApplet.server.in.h:4
+#: geyes/GNOME_GeyesApplet.server.in.in.h:4
 msgid "Geyes Applet Factory"
 msgstr ""
 
-#: geyes/themes.c:210
+#: geyes/geyes.c:238
+msgid "Copyright (C) 1999 Dave Camp"
+msgstr "Cóipcheart (C) 1999 Dave Camp"
+
+#: geyes/geyes.c:239
+msgid "A goofy little xeyes clone for the GNOME panel."
+msgstr ""
+
+#: geyes/geyes.c:432
+msgid "The eyes look in the direction of the mouse pointer"
+msgstr ""
+
+#: geyes/themes.c:223
 msgid "Geyes Preferences"
 msgstr ""
 
-#: geyes/themes.c:222
+#: geyes/themes.c:239
 #, fuzzy
 msgid "T_heme Name"
 msgstr "Comhadainm Íomha"
 
-#: gkb-new/gkb.c:114
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:1
+msgid "Change the keyboard layout"
+msgstr ""
+
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:2
+msgid "GKB Factory"
+msgstr ""
+
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:3 gkb-new/gkb.c:604
+#, fuzzy
+msgid "Keyboard Layout Switcher"
+msgstr "An Monatóir batarí  GNOME"
+
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:4
+#, fuzzy
+msgid "Produces keyboard layout switcher applets."
+msgstr "An Monatóir batarí  GNOME"
+
+#: gkb-new/gkb.c:112
 msgid ""
 "Press the hotkey to switch between layouts. The hotkey can be set through "
 "Properties dialog"
 msgstr ""
 
-#: gkb-new/gkb.c:404
-#, c-format
-msgid "name_%d"
-msgstr ""
-
-#: gkb-new/gkb.c:408
-#, c-format
-msgid "label_%d"
-msgstr ""
-
-#: gkb-new/gkb.c:412
-#, c-format
-msgid "country_%d"
-msgstr ""
-
-#: gkb-new/gkb.c:416
-#, c-format
-msgid "lang_%d"
-msgstr ""
-
-#: gkb-new/gkb.c:424
-#, c-format
-msgid "command_%d"
-msgstr ""
-
-#: gkb-new/gkb.c:527 gkb-new/gkb.c:534
+#: gkb-new/gkb.c:551 gkb-new/gkb.c:558
 msgid "GKB"
 msgstr ""
 
-#: gkb-new/gkb.c:576
-#, fuzzy
-msgid "The GNOME KeyBoard Switcher Applet"
-msgstr "An Monatóir batarí  GNOME"
-
-#: gkb-new/gkb.c:578
+#: gkb-new/gkb.c:606
 #, fuzzy
 msgid "(C) 1998-2000 Free Software Foundation"
 msgstr "(C) 1998 the Free Software Foundation"
 
-#: gkb-new/gkb.c:579
+#: gkb-new/gkb.c:607
 msgid ""
-"This applet switches between keyboard maps using setxkbmap, or xmodmap.\n"
+"This applet switches between keyboard maps using setxkbmap or xmodmap.\n"
 "Mail me your flag and keyboard layout if you want support for your locale "
 "(my email address is shooby@gnome.hu).\n"
 "So long, and thanks for all the fish.\n"
@@ -665,462 +772,401 @@ msgid ""
 "Shooby Ban <shooby@gnome.hu>"
 msgstr ""
 
-#: gkb-new/gkb.c:596
+#: gkb-new/gkb.c:624
 msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
 msgstr ""
-
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:1
-msgid "Change the keyboard layout"
-msgstr ""
-
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:2
-msgid "GKB Factory"
-msgstr ""
-
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:3
-#, fuzzy
-msgid "Keyboard Layout Switcher"
-msgstr "An Monatóir batarí  GNOME"
-
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:4
-#, fuzzy
-msgid "Produces keyboard layout switcher applets."
-msgstr "An Monatóir batarí  GNOME"
 
 #: gkb-new/keygrab.c:69 gkb-new/keygrab.c:144
 #, fuzzy
 msgid "Disabled"
 msgstr "cumasach"
 
-#: gkb-new/keygrab.c:292
+#: gkb-new/keygrab.c:303
 msgid "Press a key or press Esc to cancel"
 msgstr ""
 
-#: gkb-new/prop-add.c:86
+#: gkb-new/prop-add.c:88
 msgid "Keyboards (select and press add)"
 msgstr ""
 
-#: gkb-new/prop-add.c:367
+#: gkb-new/prop-add.c:375
 msgid "Select Keyboard"
 msgstr ""
 
-#: gkb-new/prop.c:121 gkb-new/prop.c:189
-msgid "Normal"
-msgstr ""
-
-#: gkb-new/prop.c:122 gkb-new/prop.c:193
-msgid "Big"
-msgstr ""
-
-#: gkb-new/prop.c:140 gkb-new/util.c:41 gkb-new/util.c:48 gkb-new/util.c:74
-msgid "Flag"
-msgstr ""
-
-#: gkb-new/prop.c:141 gkb-new/util.c:38 gkb-new/util.c:71
-msgid "Label"
-msgstr ""
-
-#: gkb-new/prop.c:142 gkb-new/util.c:44 gkb-new/util.c:77
-msgid "Flag and Label"
-msgstr ""
-
-#: gkb-new/prop.c:278 modemlights/properties.c:374
-msgid "Display"
-msgstr ""
-
-#. Labels and option Menus
-#: gkb-new/prop.c:298
-msgid "_Appearance: "
-msgstr ""
-
-#: gkb-new/prop.c:305
-#, fuzzy
-msgid "Applet _size: "
-msgstr "Méid Feidhmchlárín:"
-
-#: gkb-new/prop.c:331
-msgid "Hotkey for switching between layouts"
-msgstr ""
-
-#: gkb-new/prop.c:343
-msgid "Grab hotkey"
-msgstr ""
-
-#. Create property box
-#: gkb-new/prop.c:405
-#, fuzzy
-msgid "Keyboard Layout Switcher Preferences"
-msgstr "An Monatóir batarí  GNOME"
-
-#: gkb-new/prop.c:419
-msgid "_Keymaps"
-msgstr ""
-
-#: gkb-new/prop.c:431
-msgid "_Options"
-msgstr ""
-
-#: gkb-new/prop-list.c:389 gtik/gtik.c:1163
+#: gkb-new/prop-list.c:398 gtik/gtik.c:1167
 msgid "_Add"
 msgstr ""
 
-#: gkb-new/prop-list.c:390
+#: gkb-new/prop-list.c:399
 msgid "_Edit"
 msgstr ""
 
-#: gkb-new/prop-list.c:391
+#: gkb-new/prop-list.c:400
 msgid "_Up"
 msgstr ""
 
-#: gkb-new/prop-list.c:392
+#: gkb-new/prop-list.c:401
 msgid "Dow_n"
 msgstr ""
 
-#: gkb-new/prop-list.c:393
+#: gkb-new/prop-list.c:402
 msgid "_Delete"
 msgstr ""
 
-#: gkb-new/prop-map.c:193
+#: gkb-new/prop-map.c:206
 msgid "Armenia"
 msgstr ""
 
-#: gkb-new/prop-map.c:194
+#: gkb-new/prop-map.c:207
 msgid "Australia"
 msgstr ""
 
-#: gkb-new/prop-map.c:195
+#: gkb-new/prop-map.c:208
 msgid "Austria"
 msgstr ""
 
-#: gkb-new/prop-map.c:196
+#: gkb-new/prop-map.c:209
 msgid "Belgium"
 msgstr ""
 
-#: gkb-new/prop-map.c:197
+#: gkb-new/prop-map.c:210
 #, fuzzy
 msgid "Brazil"
 msgstr "Ríomphost"
 
-#: gkb-new/prop-map.c:198
+#: gkb-new/prop-map.c:211
 msgid "Bulgaria"
 msgstr ""
 
-#: gkb-new/prop-map.c:199
+#: gkb-new/prop-map.c:212
 msgid "Canada"
 msgstr ""
 
-#: gkb-new/prop-map.c:200
+#: gkb-new/prop-map.c:213
 msgid "Caribic"
 msgstr ""
 
-#: gkb-new/prop-map.c:201
+#: gkb-new/prop-map.c:214
 msgid "France"
 msgstr ""
 
-#: gkb-new/prop-map.c:202
+#: gkb-new/prop-map.c:215
 msgid "Georgia"
 msgstr ""
 
-#: gkb-new/prop-map.c:203
+#: gkb-new/prop-map.c:216
 msgid "Germany"
 msgstr ""
 
-#: gkb-new/prop-map.c:204
+#: gkb-new/prop-map.c:217
 msgid "Great Britain"
 msgstr ""
 
-#: gkb-new/prop-map.c:205
-msgid "Hungary"
-msgstr ""
-
-#: gkb-new/prop-map.c:206
-msgid "Jamaica"
-msgstr ""
-
-#: gkb-new/prop-map.c:207
-msgid "New Zealand"
-msgstr ""
-
-#: gkb-new/prop-map.c:208
-msgid "Norway"
-msgstr ""
-
-#: gkb-new/prop-map.c:209
-msgid "Poland"
-msgstr ""
-
-#: gkb-new/prop-map.c:210
-msgid "Portugal"
-msgstr ""
-
-#: gkb-new/prop-map.c:211
-msgid "Russia"
-msgstr ""
-
-#: gkb-new/prop-map.c:212
-msgid "Slovak Republic"
-msgstr ""
-
-#: gkb-new/prop-map.c:213
-msgid "Slovenia"
-msgstr ""
-
-#: gkb-new/prop-map.c:214
-msgid "South Africa"
-msgstr ""
-
-#: gkb-new/prop-map.c:215
-msgid "Spain"
-msgstr ""
-
-#: gkb-new/prop-map.c:216
-msgid "Sweden"
-msgstr ""
-
-#: gkb-new/prop-map.c:217
-msgid "Switzerland"
-msgstr ""
-
 #: gkb-new/prop-map.c:218
-msgid "Thailand"
+msgid "Greece"
 msgstr ""
 
 #: gkb-new/prop-map.c:219
-msgid "Turkey"
+msgid "Hungary"
 msgstr ""
 
 #: gkb-new/prop-map.c:220
-msgid "United Kingdom"
+msgid "Jamaica"
 msgstr ""
 
 #: gkb-new/prop-map.c:221
-msgid "United States"
+msgid "New Zealand"
 msgstr ""
 
 #: gkb-new/prop-map.c:222
+msgid "Norway"
+msgstr ""
+
+#: gkb-new/prop-map.c:223
+msgid "Poland"
+msgstr ""
+
+#: gkb-new/prop-map.c:224
+msgid "Portugal"
+msgstr ""
+
+#: gkb-new/prop-map.c:225
+msgid "Russia"
+msgstr ""
+
+#: gkb-new/prop-map.c:226
+msgid "Slovak Republic"
+msgstr ""
+
+#: gkb-new/prop-map.c:227
+msgid "Slovenia"
+msgstr ""
+
+#: gkb-new/prop-map.c:228
+msgid "South Africa"
+msgstr ""
+
+#: gkb-new/prop-map.c:229
+msgid "Spain"
+msgstr ""
+
+#: gkb-new/prop-map.c:230
+msgid "Sweden"
+msgstr ""
+
+#: gkb-new/prop-map.c:231
+msgid "Switzerland"
+msgstr ""
+
+#: gkb-new/prop-map.c:232
+msgid "Thailand"
+msgstr ""
+
+#: gkb-new/prop-map.c:233
+msgid "Turkey"
+msgstr ""
+
+#: gkb-new/prop-map.c:234
+msgid "United Kingdom"
+msgstr ""
+
+#: gkb-new/prop-map.c:235
+msgid "United States"
+msgstr ""
+
+#: gkb-new/prop-map.c:236
 msgid "Yugoslavia"
 msgstr ""
 
-#: gkb-new/prop-map.c:242
+#: gkb-new/prop-map.c:256
 msgid "Armenian"
 msgstr ""
 
-#: gkb-new/prop-map.c:243
+#: gkb-new/prop-map.c:257
 msgid "Basque"
 msgstr ""
 
-#: gkb-new/prop-map.c:244
+#: gkb-new/prop-map.c:258
 msgid "Bulgarian"
 msgstr ""
 
-#: gkb-new/prop-map.c:245
+#: gkb-new/prop-map.c:259
 #, fuzzy
 msgid "Dutch"
 msgstr "Deisceart"
 
-#: gkb-new/prop-map.c:246
+#: gkb-new/prop-map.c:260
 msgid "English"
 msgstr ""
 
-#: gkb-new/prop-map.c:247
+#: gkb-new/prop-map.c:261
 msgid "French"
 msgstr ""
 
-#: gkb-new/prop-map.c:248
+#: gkb-new/prop-map.c:262
 msgid "Georgian"
 msgstr ""
 
-#: gkb-new/prop-map.c:249
+#: gkb-new/prop-map.c:263
 #, fuzzy
 msgid "German"
 msgstr "Gnáth"
 
-#: gkb-new/prop-map.c:250
+#: gkb-new/prop-map.c:264
+#, fuzzy
+msgid "Greek"
+msgstr "gEyes"
+
+#: gkb-new/prop-map.c:265
 msgid "Hungarian"
 msgstr ""
 
-#: gkb-new/prop-map.c:251
+#: gkb-new/prop-map.c:266
 msgid "Norwegian"
 msgstr ""
 
-#: gkb-new/prop-map.c:252
+#: gkb-new/prop-map.c:267
 msgid "Polish"
 msgstr ""
 
-#: gkb-new/prop-map.c:253
+#: gkb-new/prop-map.c:268
 msgid "Portuguese"
 msgstr ""
 
-#: gkb-new/prop-map.c:254
+#: gkb-new/prop-map.c:269
 msgid "Russian"
 msgstr ""
 
-#: gkb-new/prop-map.c:255
+#: gkb-new/prop-map.c:270
 #, fuzzy
 msgid "Slovak"
 msgstr "ASChlog"
 
-#: gkb-new/prop-map.c:256
+#: gkb-new/prop-map.c:271
 msgid "Slovenian"
 msgstr ""
 
-#: gkb-new/prop-map.c:257
+#: gkb-new/prop-map.c:272
 msgid "Swedish"
 msgstr ""
 
-#: gkb-new/prop-map.c:258
+#: gkb-new/prop-map.c:273
 msgid "Thai"
 msgstr ""
 
-#: gkb-new/prop-map.c:259
+#: gkb-new/prop-map.c:274
 msgid "Turkish"
 msgstr ""
 
-#: gkb-new/prop-map.c:260
+#: gkb-new/prop-map.c:275
 msgid "Wallon"
 msgstr ""
 
-#: gkb-new/prop-map.c:261
+#: gkb-new/prop-map.c:276
 msgid "Yugoslavian"
 msgstr ""
 
-#: gkb-new/prop-map.c:279
+#: gkb-new/prop-map.c:294
 msgid "105"
 msgstr ""
 
-#: gkb-new/prop-map.c:280
+#: gkb-new/prop-map.c:295
 msgid "101"
 msgstr ""
 
-#: gkb-new/prop-map.c:281
+#: gkb-new/prop-map.c:296
 msgid "102"
 msgstr ""
 
-#: gkb-new/prop-map.c:282
+#: gkb-new/prop-map.c:297
 msgid "450"
 msgstr ""
 
-#: gkb-new/prop-map.c:283
+#: gkb-new/prop-map.c:298
 msgid "84"
 msgstr ""
 
-#: gkb-new/prop-map.c:284
+#: gkb-new/prop-map.c:299
 msgid "mklinux"
 msgstr ""
 
-#: gkb-new/prop-map.c:285
+#: gkb-new/prop-map.c:300
 msgid "type5"
 msgstr ""
 
-#: gkb-new/prop-map.c:305
+#: gkb-new/prop-map.c:320
 msgid "iso-8859-1"
 msgstr ""
 
-#: gkb-new/prop-map.c:306
+#: gkb-new/prop-map.c:321
 msgid "iso-8859-2"
 msgstr ""
 
-#: gkb-new/prop-map.c:307
+#: gkb-new/prop-map.c:322
+msgid "iso-8859-7"
+msgstr ""
+
+#: gkb-new/prop-map.c:323
 msgid "iso-8859-9"
 msgstr ""
 
-#: gkb-new/prop-map.c:308
+#: gkb-new/prop-map.c:324
 msgid "am-armscii8"
 msgstr ""
 
-#: gkb-new/prop-map.c:309
+#: gkb-new/prop-map.c:325
 msgid "be-latin1"
 msgstr ""
 
-#: gkb-new/prop-map.c:310
+#: gkb-new/prop-map.c:326
 msgid "cp1251"
 msgstr ""
 
-#: gkb-new/prop-map.c:311
+#: gkb-new/prop-map.c:327
 msgid "georgian-academy"
 msgstr ""
 
-#: gkb-new/prop-map.c:312
+#: gkb-new/prop-map.c:328
 msgid "koi8-r"
 msgstr ""
 
-#: gkb-new/prop-map.c:313
+#: gkb-new/prop-map.c:329
 msgid "tis620"
 msgstr ""
 
-#: gkb-new/prop-map.c:331
+#: gkb-new/prop-map.c:347
 msgid "ix86"
 msgstr ""
 
-#: gkb-new/prop-map.c:332
-msgid "sun"
+#: gkb-new/prop-map.c:348
+msgid "Sun"
 msgstr ""
 
-#: gkb-new/prop-map.c:333
+#: gkb-new/prop-map.c:349
 msgid "mac"
 msgstr ""
 
-#: gkb-new/prop-map.c:334
+#: gkb-new/prop-map.c:350
 msgid "sgi"
 msgstr ""
 
-#: gkb-new/prop-map.c:335
+#: gkb-new/prop-map.c:351
 msgid "dec"
 msgstr ""
 
-#: gkb-new/prop-map.c:336
+#: gkb-new/prop-map.c:352
 msgid "ibm"
 msgstr ""
 
-#: gkb-new/prop-map.c:573
+#: gkb-new/prop-map.c:591
 msgid "Edit Keyboard"
 msgstr ""
 
 #. Add the labels  and entries/combos/icon_entry
-#: gkb-new/prop-map.c:601 panel-menu/panel-menu-directory.c:624
-#: panel-menu/panel-menu-documents.c:398 panel-menu/panel-menu-documents.c:434
+#: gkb-new/prop-map.c:619 panel-menu/panel-menu-directory.c:674
+#: panel-menu/panel-menu-documents.c:398 panel-menu/panel-menu-documents.c:435
 #: panel-menu/panel-menu-links.c:404 panel-menu/panel-menu-links.c:440
 #, fuzzy
 msgid "_Name:"
 msgstr "Ainm"
 
-#: gkb-new/prop-map.c:605
+#: gkb-new/prop-map.c:623
 msgid "_Label:"
 msgstr ""
 
-#: gkb-new/prop-map.c:609
+#: gkb-new/prop-map.c:627
 msgid "Lan_guage:"
 msgstr ""
 
-#: gkb-new/prop-map.c:615
+#: gkb-new/prop-map.c:633
 msgid "Count_ry:"
 msgstr ""
 
-#: gkb-new/prop-map.c:622
+#: gkb-new/prop-map.c:640
 msgid ""
 "Flag\n"
 "Pixmap"
 msgstr ""
 
-#: gkb-new/prop-map.c:626
+#: gkb-new/prop-map.c:644
 msgid "Arc_hitecture:"
 msgstr ""
 
-#: gkb-new/prop-map.c:632
+#: gkb-new/prop-map.c:650
 msgid "_Type:"
 msgstr ""
 
-#: gkb-new/prop-map.c:638
+#: gkb-new/prop-map.c:656
 #, fuzzy
 msgid "Code_page:"
 msgstr "Meán Lód"
 
-#: gkb-new/prop-map.c:645
+#: gkb-new/prop-map.c:663
 #, fuzzy
 msgid "Co_mmand:"
 msgstr " Dearcadh.."
 
-#: gkb-new/prop-map.c:652
+#: gkb-new/prop-map.c:670
 msgid ""
 "Where command can be:\n"
 "* xmodmap /full/path/xmodmap.hu\n"
@@ -1128,40 +1174,93 @@ msgid ""
 "* setxkbmap hu"
 msgstr ""
 
+#: gkb-new/prop.c:131 gkb-new/prop.c:199
+msgid "Normal"
+msgstr ""
+
+#: gkb-new/prop.c:132 gkb-new/prop.c:203
+msgid "Big"
+msgstr ""
+
+#: gkb-new/prop.c:150 gkb-new/util.c:41 gkb-new/util.c:48 gkb-new/util.c:74
+msgid "Flag"
+msgstr ""
+
+#: gkb-new/prop.c:151 gkb-new/util.c:38 gkb-new/util.c:71
+msgid "Label"
+msgstr ""
+
+#: gkb-new/prop.c:152 gkb-new/util.c:44 gkb-new/util.c:77
+msgid "Flag and Label"
+msgstr ""
+
+#: gkb-new/prop.c:288 modemlights/properties.c:393
+msgid "Display"
+msgstr ""
+
+#. Labels and option Menus
+#: gkb-new/prop.c:308
+msgid "_Appearance: "
+msgstr ""
+
+#: gkb-new/prop.c:315
+#, fuzzy
+msgid "Applet _size: "
+msgstr "Méid Feidhmchlárín:"
+
+#: gkb-new/prop.c:341
+msgid "Hotkey for switching between layouts"
+msgstr ""
+
+#: gkb-new/prop.c:353
+msgid "Grab hotkey"
+msgstr ""
+
+#. Create property box
+#: gkb-new/prop.c:418
+#, fuzzy
+msgid "Keyboard Layout Switcher Preferences"
+msgstr "An Monatóir batarí  GNOME"
+
+#: gkb-new/prop.c:435
+msgid "_Keymaps"
+msgstr ""
+
+#: gkb-new/prop.c:447
+msgid "_Options"
+msgstr ""
+
 #: gkb-new/system.c:45
 msgid "The keymap switching command returned with error!"
 msgstr ""
 
-#: gtik/GNOME_GtikApplet.server.in.h:1
-#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:1
+#: gtik/GNOME_GtikApplet.server.in.in.h:1
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:1
 msgid "Accessories"
 msgstr ""
 
-#: gtik/GNOME_GtikApplet.server.in.h:2
+#: gtik/GNOME_GtikApplet.server.in.in.h:2
 msgid "Get continuously updated stock quotes"
 msgstr ""
 
-#: gtik/GNOME_GtikApplet.server.in.h:3
+#: gtik/GNOME_GtikApplet.server.in.in.h:3
 msgid "Gtik Applet Factory"
 msgstr ""
 
-#: gtik/GNOME_GtikApplet.server.in.h:4
+#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:724
 msgid "Stock Ticker"
 msgstr ""
 
-#: gtik/GNOME_GtikApplet.xml.h:3
-msgid "Refresh"
-msgstr ""
+#: gtik/GNOME_GtikApplet.xml.h:4 gweather/GNOME_GWeatherApplet.xml.h:5
+#, fuzzy
+msgid "_Update"
+msgstr "dáta"
 
-#: gtik/gtik.c:217 gtik/gtik.c:799
+#: gtik/gtik.c:202
 msgid "No data available or properties not set"
 msgstr ""
 
-#: gtik/gtik.c:668
-msgid "The GNOME Stock Ticker"
-msgstr ""
-
-#: gtik/gtik.c:670
+#: gtik/gtik.c:726
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.  "
 "The GNOME Stock Ticker is a free Internet-based application.  It comes with "
@@ -1169,247 +1268,225 @@ msgid ""
 "investment decisions; it is for informational purposes only."
 msgstr ""
 
-#: gtik/gtik.c:1152
+#: gtik/gtik.c:1156
 msgid "_New Symbol:"
 msgstr ""
 
-#: gtik/gtik.c:1174
+#: gtik/gtik.c:1178
 msgid "_Remove Selected"
 msgstr ""
 
-#: gtik/gtik.c:1222 gweather/gweather-pref.c:764
-msgid "_Use HTTP proxy"
-msgstr ""
-
-#: gtik/gtik.c:1232
-#, fuzzy
-msgid "_Location :"
-msgstr "Áit"
-
-#: gtik/gtik.c:1248 gweather/gweather-pref.c:791
-msgid "P_ort :"
-msgstr ""
-
 #: gtik/gtik.c:1260
-msgid "Pro_xy requires a uername and password"
-msgstr ""
-
-#: gtik/gtik.c:1271 gweather/gweather-pref.c:814
-#, fuzzy
-msgid "Us_ername:"
-msgstr "Ainm Úsáideoir:"
-
-#: gtik/gtik.c:1286 gweather/gweather-pref.c:830
-#, fuzzy
-msgid "Pass_word:"
-msgstr "Pasfhocal:"
-
-#: gtik/gtik.c:1357
 #, fuzzy
 msgid "Stock Ticker Preferences"
 msgstr "Albachtaí gnáth..."
 
-#: gtik/gtik.c:1378
-msgid "Update Fre_quency in minutes:"
+#: gtik/gtik.c:1284
+msgid "Stock update Fre_quency in minutes:"
 msgstr ""
 
-#: gtik/gtik.c:1396
-msgid "Enter symbols delimited with \"+\" in the box below."
-msgstr ""
+#: gtik/gtik.c:1303
+#, fuzzy
+msgid "Scroll Speed :"
+msgstr "Luas:"
 
-#: gtik/gtik.c:1406
+#: gtik/gtik.c:1323
+#, fuzzy
+msgid "_Width :"
+msgstr "Leitheid:"
+
+#: gtik/gtik.c:1335
 msgid "Displa_y only symbols and price"
 msgstr ""
 
-#: gtik/gtik.c:1409
+#: gtik/gtik.c:1338
 #, fuzzy
 msgid "Scroll _left to right"
 msgstr "Clé go Deis"
 
-#: gtik/gtik.c:1412
-msgid "Display a_rrows instead of -/+"
-msgstr ""
-
-#: gtik/gtik.c:1415
+#: gtik/gtik.c:1341
 msgid "_Enable scroll buttons"
 msgstr ""
 
-#. COLOR
-#: gtik/gtik.c:1441
+#: gtik/gtik.c:1365
 #, fuzzy
 msgid "+ C_olor"
 msgstr "Dathanna"
 
-#: gtik/gtik.c:1460
+#: gtik/gtik.c:1385
 #, fuzzy
 msgid "- Colo_r"
 msgstr "Dathanna"
 
-#: gtik/gtik.c:1482
-msgid "Stock Sy_mbol:"
+#: gtik/gtik.c:1402
+msgid "_Unchanged Color"
 msgstr ""
 
-#: gtik/gtik.c:1496
-msgid "Stock C_hange:"
+#: gtik/gtik.c:1419
+msgid "Back_ground Color"
 msgstr ""
 
-#: gtik/gtik.c:1520
+#: gtik/gtik.c:1441
+#, fuzzy
+msgid "_Font:"
+msgstr "Iomha"
+
+#: gtik/gtik.c:1461
 msgid "_Symbols"
 msgstr ""
 
-#: gtik/gtik.c:1522
+#: gtik/gtik.c:1463
 msgid "_Behavior"
 msgstr ""
 
-#: gtik/gtik.c:1524
+#: gtik/gtik.c:1465
 msgid "_Appearance"
 msgstr ""
 
-#: gtik/gtik.c:1526 gweather/gweather-pref.c:843
-msgid "_Proxy"
-msgstr ""
-
-#: gtik/gtik.c:1575
+#: gtik/gtik.c:1550
 msgid "Skip forward"
 msgstr ""
 
-#: gtik/gtik.c:1576
-msgid "Skip backword"
+#: gtik/gtik.c:1551
+msgid "Skip backward"
 msgstr ""
 
-#: gtik/gtik.c:1755
+#: gtik/gtik.c:1552
+msgid ""
+"Stock Ticker\n"
+"Get continuously updated stock quotes"
+msgstr ""
+
+#: gtik/gtik.c:1739
 msgid "(No"
 msgstr ""
 
-#: gtik/gtik.c:1756
+#: gtik/gtik.c:1740
 msgid "Change "
 msgstr ""
 
-#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:2
+#: gweather/GNOME_GWeatherApplet.xml.h:2 gweather/gweather-dialog.c:304
+msgid "_Forecast"
+msgstr ""
+
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:2
 msgid "Factory for creating the weather applet."
 msgstr ""
 
-#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:3
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:3
 msgid "Gweather Applet Factory"
 msgstr ""
 
-#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:4
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:4
 msgid "Monitor the current weather conditions, and forecasts"
 msgstr ""
 
-#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:5
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:5
+#: gweather/gweather-about.c:63
 msgid "Weather Report"
 msgstr ""
 
-#: gweather/GNOME_GWeatherApplet.xml.h:2 gweather/gweather-dialog.c:75
-msgid "Forecast"
-msgstr ""
-
-#: gweather/GNOME_GWeatherApplet.xml.h:4
-msgid "Update"
-msgstr ""
-
-#: gweather/gweather-about.c:42 gweather/gweather-applet.c:196
-msgid "GNOME Weather"
-msgstr ""
-
-#: gweather/gweather-about.c:43
+#: gweather/gweather-about.c:64
 msgid "Copyright (c)1999 by S. Papadimitriou"
 msgstr "Coipcheart (C) 1998 M. Lausch"
 
-#: gweather/gweather-about.c:44
+#: gweather/gweather-about.c:65
 msgid ""
 "Released under the GNU General Public License.\n"
 "\n"
 "An applet for monitoring local weather conditions."
 msgstr ""
 
-#: gweather/gweather-applet.c:324
+#: gweather/gweather-applet.c:198
+msgid "GNOME Weather"
+msgstr ""
+
+#: gweather/gweather-applet.c:323
 #, fuzzy
 msgid "Updating..."
 msgstr "Ag Luchtú."
 
-#: gweather/gweather-dialog.c:106
+#: gweather/gweather-dialog.c:75
+msgid "Forecast"
+msgstr ""
+
+#: gweather/gweather-dialog.c:110
 msgid "Location:"
 msgstr ""
 
-#: gweather/gweather-dialog.c:114
+#: gweather/gweather-dialog.c:118
 msgid "Update:"
 msgstr ""
 
-#: gweather/gweather-dialog.c:122
+#: gweather/gweather-dialog.c:126
 msgid "Conditions:"
 msgstr ""
 
-#: gweather/gweather-dialog.c:130
+#: gweather/gweather-dialog.c:134
 msgid "Sky:"
 msgstr ""
 
-#: gweather/gweather-dialog.c:138
+#: gweather/gweather-dialog.c:142
 msgid "Temperature:"
 msgstr ""
 
-#: gweather/gweather-dialog.c:146
+#: gweather/gweather-dialog.c:150
 msgid "Dew point:"
 msgstr ""
 
-#: gweather/gweather-dialog.c:154
+#: gweather/gweather-dialog.c:158
 msgid "Humidity:"
 msgstr ""
 
-#: gweather/gweather-dialog.c:162
+#: gweather/gweather-dialog.c:166
 msgid "Wind:"
 msgstr "Gaoth:"
 
-#: gweather/gweather-dialog.c:170
+#: gweather/gweather-dialog.c:174
 msgid "Pressure:"
 msgstr ""
 
-#: gweather/gweather-dialog.c:178
+#: gweather/gweather-dialog.c:182
 msgid "Visibility:"
 msgstr ""
 
-#: gweather/gweather-dialog.c:277
+#: gweather/gweather-dialog.c:281
 msgid "C_urrent conditions"
 msgstr ""
 
-#: gweather/gweather-dialog.c:290
+#: gweather/gweather-dialog.c:294
 msgid "ForeCast Report"
 msgstr ""
 
-#: gweather/gweather-dialog.c:290
+#: gweather/gweather-dialog.c:294
 msgid "See the ForeCast Details"
 msgstr ""
 
-#: gweather/gweather-dialog.c:300
-msgid "_Forecast"
-msgstr ""
-
-#: gweather/gweather-dialog.c:332
+#: gweather/gweather-dialog.c:329
 msgid "_Visit Weather.com"
 msgstr ""
 
-#: gweather/gweather-dialog.c:333
+#: gweather/gweather-dialog.c:330
 msgid "URL link Button"
 msgstr ""
 
-#: gweather/gweather-dialog.c:333
+#: gweather/gweather-dialog.c:330
 msgid "Click to Enter Weather.com"
 msgstr ""
 
-#: gweather/gweather-dialog.c:341
+#: gweather/gweather-dialog.c:338
 #, fuzzy
 msgid "_Radar map"
 msgstr "Cumasach"
 
-#: gweather/gweather-dialog.c:413
+#: gweather/gweather-dialog.c:410
 msgid ""
 "Detailed forecast not available for this location.\n"
 "Please try the state forecast; note that IWIN forecasts are available only "
 "for US cities."
 msgstr ""
 
-#: gweather/gweather-dialog.c:415
+#: gweather/gweather-dialog.c:412
 msgid ""
 "State forecast not available for this location.\n"
 "Please try the detailed forecast; note that IWIN forecasts are available "
@@ -1417,133 +1494,114 @@ msgid ""
 msgstr ""
 
 #. Accessible Name and Description for the components in Preference Dialog
-#: gweather/gweather-pref.c:125
+#: gweather/gweather-pref.c:108
 #, fuzzy
 msgid "Location view"
 msgstr "Áit"
 
-#: gweather/gweather-pref.c:125
+#: gweather/gweather-pref.c:108
 msgid "Select Location from the list"
 msgstr ""
 
-#: gweather/gweather-pref.c:126
-#, fuzzy
-msgid "URL Entry"
-msgstr "Stair"
-
-#: gweather/gweather-pref.c:126
-#, fuzzy
-msgid "Enter the Location"
-msgstr "Áit"
-
-#: gweather/gweather-pref.c:127
-msgid "Port Entry"
-msgstr ""
-
-#: gweather/gweather-pref.c:127
-msgid "Enter the Port number"
-msgstr ""
-
-#: gweather/gweather-pref.c:128
-msgid "User Entry"
-msgstr ""
-
-#: gweather/gweather-pref.c:128
-msgid "Enter the user name"
-msgstr ""
-
-#: gweather/gweather-pref.c:129
-#, fuzzy
-msgid "Password Entry"
-msgstr "Pasfhocal:"
-
-#: gweather/gweather-pref.c:129
-msgid "Enter the Password"
-msgstr ""
-
-#: gweather/gweather-pref.c:131
+#: gweather/gweather-pref.c:110
 msgid "Update spin button"
 msgstr ""
 
-#: gweather/gweather-pref.c:131
+#: gweather/gweather-pref.c:110
 msgid "Spinbutton for updating"
 msgstr ""
 
-#: gweather/gweather-pref.c:132
+#: gweather/gweather-pref.c:111
 msgid "Address Entry"
 msgstr ""
 
-#: gweather/gweather-pref.c:132
+#: gweather/gweather-pref.c:111
 msgid "Enter the URL"
 msgstr ""
 
-#: gweather/gweather-pref.c:707
+#: gweather/gweather-pref.c:561
 #, fuzzy
 msgid "Weather Preferences"
 msgstr "Albachtaí gnáth..."
 
-#: gweather/gweather-pref.c:752
+#: gweather/gweather-pref.c:610
 #, fuzzy
 msgid "_Location"
 msgstr "Áit"
 
-#: gweather/gweather-pref.c:775
-#, fuzzy
-msgid "Locat_ion :"
-msgstr "Áit"
-
-#: gweather/gweather-pref.c:803
-msgid "Pro_xy requires a username and password"
-msgstr ""
-
-#: gweather/gweather-pref.c:872
+#: gweather/gweather-pref.c:641
 msgid "_Automatically update every"
 msgstr ""
 
-#: gweather/gweather-pref.c:878
+#: gweather/gweather-pref.c:647
 msgid "Use _metric system units"
 msgstr ""
 
-#: gweather/gweather-pref.c:884
+#: gweather/gweather-pref.c:653
 msgid "Enable _detailed forecast"
 msgstr ""
 
-#: gweather/gweather-pref.c:891
+#: gweather/gweather-pref.c:660
 #, fuzzy
 msgid "Enable _radar map"
 msgstr "Cumasach"
 
-#: gweather/gweather-pref.c:897
+#: gweather/gweather-pref.c:666
 msgid "Use cus_tom address for radar map"
 msgstr ""
 
-#: gweather/gweather-pref.c:908
+#: gweather/gweather-pref.c:677
 msgid "A_ddress :"
 msgstr ""
 
-#: gweather/gweather-pref.c:920
+#: gweather/gweather-pref.c:689
 #, fuzzy
 msgid "Updates"
 msgstr "dáta"
 
-#: gweather/gweather-pref.c:926
+#: gweather/gweather-pref.c:695
 msgid "_Automatically update every "
 msgstr ""
 
-#: gweather/gweather-pref.c:946
+#: gweather/gweather-pref.c:715
 msgid "minute(s)"
 msgstr ""
 
 #. The Miscellaneous frame
-#: gweather/gweather-pref.c:957
+#: gweather/gweather-pref.c:726
 msgid "Miscellaneous"
 msgstr ""
 
-#: gweather/gweather-pref.c:975 mini-commander/src/preferences.c:953
-#: modemlights/properties.c:409
+#: gweather/gweather-pref.c:744 mini-commander/src/mini-commander.glade.h:19
+#: modemlights/properties.c:428
 #, fuzzy
 msgid "_General"
 msgstr "Gnáth"
+
+#: gweather/weather.c:57
+msgid "knots"
+msgstr ""
+
+#: gweather/weather.c:57
+msgid "kph"
+msgstr ""
+
+#: gweather/weather.c:62
+msgid "inHg"
+msgstr ""
+
+#: gweather/weather.c:62
+msgid "hPa"
+msgstr ""
+
+#: gweather/weather.c:66
+msgid "miles"
+msgstr ""
+
+#: gweather/weather.c:66
+#, fuzzy
+msgid "kilometers"
+msgstr "Odometer"
 
 #: gweather/weather.c:132
 msgid "Variable"
@@ -2695,60 +2753,70 @@ msgstr ""
 msgid "Drifting dust whirls"
 msgstr ""
 
-#: gweather/weather.c:824 gweather/weather.c:862 gweather/weather.c:1431
+#: gweather/weather.c:824 gweather/weather.c:864 gweather/weather.c:1436
 msgid "Failed to get METAR data.\n"
 msgstr ""
 
-#: gweather/weather.c:854 gweather/weather.c:882 gweather/weather.c:1077
+#: gweather/weather.c:856 gweather/weather.c:884 gweather/weather.c:1081
 msgid "WeatherInfo missing location"
 msgstr ""
 
-#: gweather/weather.c:1045
+#: gweather/weather.c:1047
 msgid "Failed to get IWIN data.\n"
 msgstr ""
 
 #. forecast data is not really interesting anyway ;)
-#: gweather/weather.c:1087
+#: gweather/weather.c:1091
 msgid "Failed to get IWIN forecast data.\n"
 msgstr ""
 
-#: gweather/weather.c:1286
+#: gweather/weather.c:1290
 msgid "Failed to get Met Office data.\n"
 msgstr ""
 
-#: gweather/weather.c:1318
+#: gweather/weather.c:1324
 msgid "Failed to get Met Office forecast data.\n"
 msgstr ""
 
-#: gweather/weather.c:1461
+#: gweather/weather.c:1466
 msgid "Failed to get radar map image.\n"
 msgstr ""
 
-#: gweather/weather.c:1754
+#: gweather/weather.c:1769
 msgid "%a, %b %d / %H:%M"
 msgstr "%a, %b %d / %H:%M"
 
-#: gweather/weather.c:1758
+#: gweather/weather.c:1773
 msgid "Unknown observation time"
 msgstr ""
 
-#: gweather/weather.c:1818
+#: gweather/weather.c:1833
 msgid "Calm"
 msgstr ""
 
-#: gweather/weather.c:1844
+#: gweather/weather.c:1859
 msgid "Unknown"
 msgstr "Gan aithne"
 
-#: gweather/weather.c:1878
+#: gweather/weather.c:1893
 msgid "Retrieval failed"
 msgstr ""
 
-#: mini-commander/src/about.c:39
-msgid "Mini-Commander Applet"
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:1
+#: mini-commander/src/about.c:66
+#: mini-commander/src/mini-commander_applet.c:313
+msgid "Command Line"
 msgstr ""
 
-#: mini-commander/src/about.c:42
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:2
+msgid "Mini-Commander"
+msgstr ""
+
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:3
+msgid "MiniCommander Applet Factory"
+msgstr ""
+
+#: mini-commander/src/about.c:69
 msgid ""
 "This GNOME applet adds a command line to the panel. It features command "
 "completion, command history, changeable macros and an optional built-in "
@@ -2760,253 +2828,193 @@ msgid ""
 "any later version."
 msgstr ""
 
-#: mini-commander/src/cmd_completion.c:69
-#: mini-commander/src/cmd_completion.c:115
-#: mini-commander/src/cmd_completion.c:151
-#: mini-commander/src/cmd_completion.c:202
-msgid "not unique"
-msgstr ""
-
-#: mini-commander/src/cmd_completion.c:73
-#: mini-commander/src/cmd_completion.c:155
-msgid "completing..."
-msgstr ""
-
-#: mini-commander/src/cmd_completion.c:113
-#: mini-commander/src/cmd_completion.c:200
-msgid "completed"
-msgstr ""
-
-#: mini-commander/src/cmd_completion.c:118
-#: mini-commander/src/cmd_completion.c:205
-msgid "not found"
-msgstr ""
-
-#: mini-commander/src/cmd_completion.c:167 mini-commander/src/exec.c:117
-msgid "no /bin/sh"
-msgstr ""
-
-#: mini-commander/src/command_line.c:94 mini-commander/src/command_line.c:114
-msgid "end of history list"
-msgstr ""
-
-#. enter pressed -> exec command
-#: mini-commander/src/command_line.c:124 mini-commander/src/exec.c:59
-msgid "starting..."
-msgstr "Ag Luchtú."
-
-#: mini-commander/src/command_line.c:153
-msgid "autocompleted"
-msgstr ""
-
-#: mini-commander/src/command_line.c:313
-msgid "history list empty"
-msgstr ""
-
-#. title
-#: mini-commander/src/command_line.c:331
-msgid "Command history"
-msgstr ""
-
 #. build file select dialog
-#: mini-commander/src/command_line.c:462
+#: mini-commander/src/command_line.c:427
 msgid "Start program"
 msgstr ""
 
-#: mini-commander/src/command_line.c:501
+#: mini-commander/src/command_line.c:470
 #, fuzzy
 msgid "Command line"
 msgstr "Albachtaí gnáth..."
 
-#: mini-commander/src/command_line.c:502
+#: mini-commander/src/command_line.c:471
 msgid "Type a command here and Gnome will execute it for you"
 msgstr ""
 
-#: mini-commander/src/exec.c:61
-msgid "fork error"
-msgstr "éarraid 'fork'"
-
-#: mini-commander/src/exec.c:105
-msgid "child exited"
+#: mini-commander/src/mc-install-default-macros.c:71
+#, c-format
+msgid "Cannot get schema for %s : %s"
 msgstr ""
 
-#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:1
-#: mini-commander/src/mini-commander_applet.c:355
-msgid "Command Line"
+#: mini-commander/src/mc-install-default-macros.c:99
+#, c-format
+msgid "Cannot set schema for %s : %s"
 msgstr ""
 
-#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:2
-msgid "Mini-Commander"
+#: mini-commander/src/mc-install-default-macros.c:105
+#, c-format
+msgid "Set default list value for %s\n"
 msgstr ""
 
-#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:3
-msgid "MiniCommander Applet Factory"
+#: mini-commander/src/mc-install-default-macros.c:117
+msgid "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL is set, not installing schemas\n"
 msgstr ""
 
-#: mini-commander/src/message.c:155
-msgid "%H:%M - %d. %b"
-msgstr "%H:%M - %d. %b"
-
-#: mini-commander/src/message.c:157
-msgid "%H:%M"
-msgstr "%H:%M"
-
-#: mini-commander/src/message.c:159
-msgid "%d. %b"
-msgstr "%d. %b"
-
-#: mini-commander/src/mini-commander_applet.c:123
-msgid "orient. changed"
+#: mini-commander/src/mc-install-default-macros.c:125
+msgid "Must set the GCONF_CONFIG_SOURCE environment variable\n"
 msgstr ""
 
-#: mini-commander/src/mini-commander_applet.c:140
-msgid "size changed"
+#: mini-commander/src/mc-install-default-macros.c:142
+#, c-format
+msgid "Failed to access configuration source(s): %s\n"
 msgstr ""
 
-#: mini-commander/src/mini-commander_applet.c:287
-#: mini-commander/src/mini-commander_applet.c:290
-msgid "Browser"
-msgstr " Dearcadh.."
-
-#: mini-commander/src/mini-commander_applet.c:291
-msgid "Click this button to start the browser"
+#: mini-commander/src/mc-install-default-macros.c:154
+#, c-format
+msgid "Error syncing config data: %s"
 msgstr ""
 
-#: mini-commander/src/mini-commander_applet.c:305
-#: mini-commander/src/mini-commander_applet.c:308
-msgid "History"
-msgstr "Stair"
-
-#: mini-commander/src/mini-commander_applet.c:309
-msgid "Click this button for the list of previous commands"
+#: mini-commander/src/mini-commander.glade.h:1
+msgid "*"
 msgstr ""
 
-#: mini-commander/src/mini-commander_applet.c:310
-msgid "Mini-Commander applet"
+#: mini-commander/src/mini-commander.glade.h:2
+msgid "Add New Macro"
 msgstr ""
 
-#: mini-commander/src/mini-commander_applet.c:311
-msgid "This applet adds a command line to the panel"
-msgstr ""
-
-#: mini-commander/src/mini-commander_applet.c:443
-msgid "ready..."
-msgstr ""
-
-#: mini-commander/src/preferences.c:685
-#, fuzzy
-msgid "Command Line Preferences"
-msgstr "Albachtaí gnáth..."
-
-#: mini-commander/src/preferences.c:701
-msgid "Clock"
-msgstr "Cniog"
-
-#. show time check box
-#: mini-commander/src/preferences.c:709
-msgid "Show time"
-msgstr ""
-
-#. show date check box
-#: mini-commander/src/preferences.c:716
-msgid "Show date"
-msgstr ""
-
-#. appearance frame
-#: mini-commander/src/preferences.c:724
-msgid "Appearance"
-msgstr ""
-
-#. show handle check box
-#: mini-commander/src/preferences.c:732
-#, fuzzy
-msgid "Show han_dle"
-msgstr "Cuir isteach Taisceadan"
-
-#. show frame check box
-#: mini-commander/src/preferences.c:739
-msgid "Show fram_e"
-msgstr ""
-
-#. auto complete frame
-#: mini-commander/src/preferences.c:748
-msgid "Autocompletion"
-msgstr ""
-
-#. show history autocomplete
-#: mini-commander/src/preferences.c:756
-msgid "Enable _history based autocompletion"
-msgstr ""
-
-#. Size
-#: mini-commander/src/preferences.c:763
-msgid "Size"
-msgstr "Méid"
-
-#. applet width
-#: mini-commander/src/preferences.c:775
+#: mini-commander/src/mini-commander.glade.h:4
 #, fuzzy
 msgid "Applet _width:"
 msgstr "Leitheid Feidhmchlárín:"
 
-#. applet height
-#: mini-commander/src/preferences.c:809
-msgid "Applet height:"
-msgstr "Airde Feidhmchlárín:"
-
-#. cmd line height
-#: mini-commander/src/preferences.c:831
-msgid "Command line height:"
+#: mini-commander/src/mini-commander.glade.h:5
+msgid "Autocompletion"
 msgstr ""
 
-#. Color
-#: mini-commander/src/preferences.c:866 multiload/properties.c:363
+#: mini-commander/src/mini-commander.glade.h:6 multiload/properties.c:365
 msgid "Colors"
 msgstr "Dathanna"
 
-#. fg
-#: mini-commander/src/preferences.c:888
+#: mini-commander/src/mini-commander.glade.h:7
+#, fuzzy
+msgid "Command Line Preferences"
+msgstr "Albachtaí gnáth..."
+
+#: mini-commander/src/mini-commander.glade.h:8
+msgid "Command line _background:"
+msgstr ""
+
+#: mini-commander/src/mini-commander.glade.h:9
 #, fuzzy
 msgid "Command line _foreground:"
 msgstr "Albachtaí gnáth..."
 
-#. bg
-#: mini-commander/src/preferences.c:922
-msgid "Command line _background:"
+#: mini-commander/src/mini-commander.glade.h:10
+#, fuzzy
+msgid "Command:"
+msgstr " Dearcadh.."
+
+#: mini-commander/src/mini-commander.glade.h:11
+msgid "Enable _history based autocompletion"
 msgstr ""
 
-#. prefix
-#: mini-commander/src/preferences.c:982
-#, c-format
-msgid "Regex _%.2d:"
+#: mini-commander/src/mini-commander.glade.h:12
+msgid "Pattern:"
 msgstr ""
 
-#. command
-#: mini-commander/src/preferences.c:1002
-#, c-format
-msgid "   Macro _%.2d:"
+#: mini-commander/src/mini-commander.glade.h:13
+#, fuzzy
+msgid "Pick a color"
+msgstr "Dath Chlog"
+
+#: mini-commander/src/mini-commander.glade.h:14
+msgid "Show fram_e"
 msgstr ""
 
-#: mini-commander/src/preferences.c:1022
+#: mini-commander/src/mini-commander.glade.h:15
+#, fuzzy
+msgid "Show han_dle"
+msgstr "Cuir isteach Taisceadan"
+
+#: mini-commander/src/mini-commander.glade.h:16
+msgid "Size"
+msgstr "Méid"
+
+#: mini-commander/src/mini-commander.glade.h:17
+msgid "_Add new macro..."
+msgstr ""
+
+#: mini-commander/src/mini-commander.glade.h:18
+msgid "_Delete Macro"
+msgstr ""
+
+#: mini-commander/src/mini-commander.glade.h:20
 msgid "_Macros"
 msgstr ""
 
-#: mixer/GNOME_MixerApplet.server.in.h:1
+#: mini-commander/src/mini-commander.glade.h:21
+msgid "_Use default theme colors"
+msgstr ""
+
+#: mini-commander/src/mini-commander_applet.c:143
+#: mini-commander/src/mini-commander_applet.c:147
+msgid "Browser"
+msgstr " Dearcadh.."
+
+#: mini-commander/src/mini-commander_applet.c:148
+msgid "Click this button to start the browser"
+msgstr ""
+
+#: mini-commander/src/mini-commander_applet.c:164
+#: mini-commander/src/mini-commander_applet.c:168
+msgid "History"
+msgstr "Stair"
+
+#: mini-commander/src/mini-commander_applet.c:169
+msgid "Click this button for the list of previous commands"
+msgstr ""
+
+#: mini-commander/src/mini-commander_applet.c:311
+msgid "Mini-Commander applet"
+msgstr ""
+
+#: mini-commander/src/mini-commander_applet.c:312
+msgid "This applet adds a command line to the panel"
+msgstr ""
+
+#: mini-commander/src/preferences.c:343
+msgid "You must specify a pattern"
+msgstr ""
+
+#: mini-commander/src/preferences.c:347
+msgid "You must specify a pattern and a command"
+msgstr ""
+
+#: mini-commander/src/preferences.c:348
+msgid "You must specify a command"
+msgstr ""
+
+#: mini-commander/src/preferences.c:351
+msgid "You may not specify duplicate patterns"
+msgstr ""
+
+#: mixer/GNOME_MixerApplet.server.in.in.h:1
 msgid "Adjust the sound volume"
 msgstr ""
 
-#: mixer/GNOME_MixerApplet.server.in.h:3 mixer/mixer.c:130 mixer/mixer.c:750
+#: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:130
+#: mixer/mixer.c:807
 msgid "Volume Control"
 msgstr ""
 
 #: mixer/GNOME_MixerApplet.xml.h:3
-msgid "Mute"
+msgid "_Mute"
 msgstr ""
 
 #: mixer/GNOME_MixerApplet.xml.h:4
-#, fuzzy
-msgid "Run Audio Mixer..."
-msgstr "Rith gmix..."
+msgid "_Run Volume Control..."
+msgstr ""
 
 #: mixer/mixer.c:131
 msgid "Volume Control (muted)"
@@ -3032,219 +3040,212 @@ msgstr ""
 msgid "Mixer device %s has neither volume nor PCM channels.\n"
 msgstr ""
 
-#: mixer/mixer.c:516
+#: mixer/mixer.c:552
 msgid "Volume Controller"
 msgstr ""
 
-#: mixer/mixer.c:517
+#: mixer/mixer.c:553
 msgid "Use Up/Down arrow keys to change volume"
 msgstr ""
 
-#: mixer/mixer.c:751
+#: mixer/mixer.c:808
 msgid "(C) 2001 Richard Hult"
 msgstr ""
 
-#: mixer/mixer.c:752
+#: mixer/mixer.c:809
 msgid "The volume control lets you set the volume level for your desktop."
 msgstr ""
 
-#: mixer/mixer.c:924
+#: mixer/mixer.c:1019
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr ""
 
-#: modemlights/GNOME_ModemLightsApplet.server.in.h:1
+#: modemlights/GNOME_ModemLightsApplet.server.in.in.h:1
 msgid "Internet"
 msgstr ""
 
-#: modemlights/GNOME_ModemLightsApplet.server.in.h:2
+#: modemlights/GNOME_ModemLightsApplet.server.in.in.h:2
+#: modemlights/modemlights.c:227
 msgid "Modem Lights"
 msgstr ""
 
-#: modemlights/modemlights.c:205
-msgid "Modem Lights Applet"
-msgstr ""
-
-#: modemlights/modemlights.c:207
+#: modemlights/modemlights.c:229
 msgid ""
 "Released under the GNU general public license.\n"
 "A modem status indicator and dialer.\n"
 "Lights in order from the top or left are Send data and Receive data."
 msgstr ""
 
-#: modemlights/modemlights.c:531
+#: modemlights/modemlights.c:558
 msgid ""
 "You are currently connected.\n"
 "Do you want to disconnect?"
 msgstr ""
 
-#: modemlights/modemlights.c:546
+#: modemlights/modemlights.c:573
 msgid "Do you want to connect?"
 msgstr ""
 
-#: modemlights/modemlights.c:574
+#: modemlights/modemlights.c:601
 #, c-format
 msgid "%#.1fMb received / %#.1fMb sent / time: %.1d:%.2d"
 msgstr ""
 
-#: modemlights/modemlights.c:579
+#: modemlights/modemlights.c:606
 msgid "not connected"
 msgstr ""
 
-#: modemlights/properties.c:311
+#: modemlights/properties.c:328
 msgid "Modem Lights Preferences"
 msgstr ""
 
-#: modemlights/properties.c:323
+#: modemlights/properties.c:342
 msgid "Connecting"
 msgstr ""
 
-#: modemlights/properties.c:337
+#: modemlights/properties.c:356
 #, fuzzy
 msgid "Co_nnect command:"
 msgstr " Dearcadh.."
 
-#: modemlights/properties.c:354
+#: modemlights/properties.c:373
 msgid "_Disconnect command:"
 msgstr ""
 
 #. confirmation checkbox
-#: modemlights/properties.c:367
+#: modemlights/properties.c:386
 msgid "Con_firm connection"
 msgstr ""
 
-#: modemlights/properties.c:388
+#: modemlights/properties.c:407
 msgid "U_pdates per second"
 msgstr ""
 
 #. extra info checkbox
-#: modemlights/properties.c:402
+#: modemlights/properties.c:421
 msgid "Sho_w connect time and throughput"
 msgstr ""
 
-#: modemlights/properties.c:419
+#: modemlights/properties.c:438
 msgid "Receive data"
 msgstr ""
 
-#: modemlights/properties.c:421
+#: modemlights/properties.c:440
 msgid "_Foreground"
 msgstr ""
 
-#: modemlights/properties.c:422
+#: modemlights/properties.c:441
 msgid "_Background"
 msgstr ""
 
-#: modemlights/properties.c:424
+#: modemlights/properties.c:443
 msgid "Send data"
 msgstr ""
 
-#: modemlights/properties.c:426
+#: modemlights/properties.c:445
 msgid "Foregroun_d"
 msgstr ""
 
-#: modemlights/properties.c:427
+#: modemlights/properties.c:446
 msgid "Backg_round"
 msgstr ""
 
-#: modemlights/properties.c:429
+#: modemlights/properties.c:448
 msgid "Connection status"
 msgstr ""
 
-#: modemlights/properties.c:431
+#: modemlights/properties.c:450
 msgid "Co_nnected"
 msgstr ""
 
-#: modemlights/properties.c:432
+#: modemlights/properties.c:451
 msgid "No_t connected"
 msgstr ""
 
-#: modemlights/properties.c:433
+#: modemlights/properties.c:452
 msgid "A_waiting connection"
 msgstr ""
 
-#: modemlights/properties.c:436
+#: modemlights/properties.c:455
 msgid "B_link"
 msgstr ""
 
-#: modemlights/properties.c:443
+#: modemlights/properties.c:462
 msgid "Text"
 msgstr ""
 
-#: modemlights/properties.c:445
+#: modemlights/properties.c:464
 msgid "For_eground"
 msgstr ""
 
-#: modemlights/properties.c:446
+#: modemlights/properties.c:465
 msgid "Bac_kground"
 msgstr ""
 
-#: modemlights/properties.c:447
+#: modemlights/properties.c:466
 msgid "O_utline"
 msgstr ""
 
-#: modemlights/properties.c:449
+#: modemlights/properties.c:468
 #, fuzzy
 msgid "C_olors"
 msgstr "Dathanna"
 
-#: modemlights/properties.c:458
+#: modemlights/properties.c:477
 msgid "Modem options"
 msgstr ""
 
-#: modemlights/properties.c:472
+#: modemlights/properties.c:491
 msgid "_Modem lock file:"
 msgstr ""
 
-#: modemlights/properties.c:484
+#: modemlights/properties.c:503
 msgid "_Verify owner of lock file"
 msgstr ""
 
-#: modemlights/properties.c:496
+#: modemlights/properties.c:515
 #, fuzzy
 msgid "_Device:"
 msgstr "Gaireas:"
 
 #. ISDN checkbox
-#: modemlights/properties.c:509
+#: modemlights/properties.c:528
 #, fuzzy
 msgid "U_se ISDN"
 msgstr "Úsáid ISDN"
 
-#: modemlights/properties.c:529
+#: modemlights/properties.c:548
 msgid "Set options as default"
 msgstr ""
 
-#: modemlights/properties.c:535
+#: modemlights/properties.c:554
 msgid "_Advanced"
 msgstr ""
 
-#: multiload/cpuload.c:39
-msgid "CPU Load"
-msgstr "Lód CPU"
-
-#: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:1
+#: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:1
 msgid "A system load indicator"
 msgstr ""
 
 # FIXME Check
-#: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:2
+#: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:2
+#: multiload/main.c:78
 #, fuzzy
 msgid "System Monitor"
 msgstr "Corás"
 
 #: multiload/GNOME_MultiloadApplet.xml.h:3
-msgid "Run detailed system monitor"
+msgid "_Run detailed system monitor"
 msgstr ""
 
-#: multiload/loadavg.c:94
+#: multiload/cpuload.c:50
+msgid "CPU Load"
+msgstr "Lód CPU"
+
+#: multiload/loadavg.c:107
 msgid "Load Average"
 msgstr "Meán Lód"
 
-#: multiload/main.c:53
-#, fuzzy
-msgid "System Monitor Applet"
-msgstr "An Monatóir batarí  GNOME"
-
-#: multiload/main.c:55
+#: multiload/main.c:80
 msgid ""
 "Released under the GNU General Public License.\n"
 "\n"
@@ -3252,61 +3253,62 @@ msgid ""
 "file use, plus network traffic."
 msgstr ""
 
-#: multiload/main.c:177
+#: multiload/main.c:236
 msgid "Processor"
 msgstr ""
 
 # FIXME Check
-#: multiload/main.c:179
+#: multiload/main.c:238
 #, fuzzy
 msgid "Memory"
 msgstr "Lód Ghreasán"
 
-#: multiload/main.c:181
+#: multiload/main.c:240
 msgid "Network"
 msgstr "Greasán"
 
-#: multiload/main.c:183
+#: multiload/main.c:242
 msgid "Swap File"
 msgstr ""
 
-#: multiload/main.c:185
+#: multiload/main.c:244
 msgid "Resource"
 msgstr ""
 
-#: multiload/main.c:197
+#: multiload/main.c:256
+#, c-format
 msgid ""
 "%s:\n"
 "%d%% in use"
 msgstr ""
 
-#: multiload/memload.c:39
+#: multiload/memload.c:50
 msgid "Memory Load"
 msgstr ""
 
 # FIXME Check
-#: multiload/netload.c:38
+#: multiload/netload.c:49
 msgid "Net Load"
 msgstr "Lód Ghreasán"
 
-#: multiload/properties.c:256
+#: multiload/properties.c:258
 msgid "Monitored Resources"
 msgstr ""
 
-#: multiload/properties.c:264
+#: multiload/properties.c:266
 msgid "_Processor"
 msgstr ""
 
-#: multiload/properties.c:274
+#: multiload/properties.c:276
 msgid "_Memory"
 msgstr ""
 
-#: multiload/properties.c:284
+#: multiload/properties.c:286
 #, fuzzy
 msgid "_Network"
 msgstr "Greasán"
 
-#: multiload/properties.c:294
+#: multiload/properties.c:296
 msgid "_Swap File"
 msgstr ""
 
@@ -3316,117 +3318,117 @@ msgstr ""
 #. panel_applet_gconf_get_bool(multiload_applet->applet, "view_loadavg", NULL));
 #. gtk_box_pack_start(GTK_BOX(hbox), check_box, FALSE, FALSE, 0);
 #.
-#: multiload/properties.c:311
+#: multiload/properties.c:313
 msgid "Options"
 msgstr ""
 
 # FIXME Check
-#: multiload/properties.c:324
+#: multiload/properties.c:326
 #, fuzzy
 msgid "System m_onitor width: "
 msgstr "Corás"
 
-#: multiload/properties.c:326
+#: multiload/properties.c:328
 #, fuzzy
 msgid "System m_onitor height: "
 msgstr "An Monatóir batarí  GNOME"
 
-#: multiload/properties.c:340
+#: multiload/properties.c:342
 msgid "pixels"
 msgstr ""
 
-#: multiload/properties.c:346
+#: multiload/properties.c:348
 #, fuzzy
 msgid "Sys_tem monitor update interval: "
 msgstr "An Monatóir batarí  GNOME"
 
-#: multiload/properties.c:358
+#: multiload/properties.c:360
 msgid "milliseconds"
 msgstr ""
 
-#: multiload/properties.c:371
+#: multiload/properties.c:373
 msgid "P_rocessor"
 msgstr ""
 
-#: multiload/properties.c:372
+#: multiload/properties.c:374
 msgid "_User"
 msgstr ""
 
 # FIXME Check
-#: multiload/properties.c:373
+#: multiload/properties.c:375
 #, fuzzy
 msgid "S_ystem"
 msgstr "Corás"
 
-#: multiload/properties.c:374
+#: multiload/properties.c:376
 msgid "N_ice"
 msgstr ""
 
-#: multiload/properties.c:375
+#: multiload/properties.c:377
 msgid "I_dle"
 msgstr ""
 
 # FIXME Check
-#: multiload/properties.c:377
+#: multiload/properties.c:379
 #, fuzzy
 msgid "M_emory"
 msgstr "Lód Ghreasán"
 
-#: multiload/properties.c:378
+#: multiload/properties.c:380
 msgid "Ot_her"
 msgstr ""
 
-#: multiload/properties.c:379
+#: multiload/properties.c:381
 msgid "Sh_ared"
 msgstr ""
 
-#: multiload/properties.c:380
+#: multiload/properties.c:382
 msgid "_Buffers"
 msgstr ""
 
-#: multiload/properties.c:381
+#: multiload/properties.c:383
 msgid "F_ree"
 msgstr ""
 
-#: multiload/properties.c:383
+#: multiload/properties.c:385
 #, fuzzy
 msgid "Net_work"
 msgstr "Greasán"
 
-#: multiload/properties.c:384
+#: multiload/properties.c:386
 msgid "S_LIP"
 msgstr ""
 
-#: multiload/properties.c:385
+#: multiload/properties.c:387
 msgid "PL_IP"
 msgstr ""
 
-#: multiload/properties.c:386
+#: multiload/properties.c:388
 msgid "Et_hernet"
 msgstr ""
 
-#: multiload/properties.c:387
+#: multiload/properties.c:389
 msgid "_Other"
 msgstr ""
 
-#: multiload/properties.c:389
+#: multiload/properties.c:391
 msgid "Swap _File"
 msgstr ""
 
-#: multiload/properties.c:390
+#: multiload/properties.c:392
 msgid "_Used"
 msgstr ""
 
-#: multiload/properties.c:391
+#: multiload/properties.c:393
 msgid "_Free"
 msgstr ""
 
-#: multiload/properties.c:411
+#: multiload/properties.c:413
 #, fuzzy
 msgid "System Monitor Preferences"
 msgstr "Albachtaí gnáth..."
 
-#: multiload/swapload.c:39
+#: multiload/swapload.c:51
 msgid "Swap Load"
 msgstr ""
 
@@ -3451,20 +3453,20 @@ msgstr "Áit"
 msgid "Actions Menu"
 msgstr ""
 
-#: panel-menu/panel-menu-add.c:76
+#: panel-menu/panel-menu-add.c:77
 msgid "Add items to the Menu Bar"
 msgstr ""
 
-#: panel-menu/panel-menu-add.c:235 panel-menu/panel-menu-links.c:139
+#: panel-menu/panel-menu-add.c:244 panel-menu/panel-menu-links.c:139
 #: panel-menu/panel-menu-links.c:405
 msgid "Shortcuts"
 msgstr ""
 
-#: panel-menu/panel-menu-add.c:241
+#: panel-menu/panel-menu-add.c:250
 msgid "My Documents"
 msgstr ""
 
-#: panel-menu/panel-menu-add.c:247 panel-menu/panel-menu-documents.c:134
+#: panel-menu/panel-menu-add.c:256 panel-menu/panel-menu-documents.c:134
 #: panel-menu/panel-menu-documents.c:399
 msgid "Documents"
 msgstr ""
@@ -3474,61 +3476,56 @@ msgstr ""
 msgid "Applications"
 msgstr "Áit"
 
-#: panel-menu/panel-menu.c:684
-#, fuzzy
-msgid "PanelMenu Applet"
-msgstr "Feidhmchlárín Lód CPU"
-
-#: panel-menu/panel-menu.c:685
-msgid "(c) 2001 Chris Phelps"
-msgstr ""
-
-#: panel-menu/panel-menu.c:686
+#: panel-menu/panel-menu-common.c:738
 msgid ""
-"The Panel Menu Applet allows you to display customized menubars on your "
-"panels."
+"Removing this entry is not allowed as this will cause the Menu Bar applet to "
+"be removed from GNOME Panel"
 msgstr ""
 
-#: panel-menu/panel-menu-directory.c:482
+#: panel-menu/panel-menu-directory.c:516
 msgid "Create directory item..."
 msgstr ""
 
-#: panel-menu/panel-menu-directory.c:485
+#: panel-menu/panel-menu-directory.c:524
 msgid "Home"
 msgstr ""
 
-#: panel-menu/panel-menu-directory.c:524
+#: panel-menu/panel-menu-directory.c:595
 msgid "Edit directory item..."
 msgstr ""
 
-#: panel-menu/panel-menu-directory.c:636 panel-menu/panel-menu-path.c:728
+#: panel-menu/panel-menu-directory.c:686 panel-menu/panel-menu-path.c:736
 msgid "_Path:"
 msgstr ""
 
-#: panel-menu/panel-menu-directory.c:644
+#: panel-menu/panel-menu-directory.c:694
 #, fuzzy
 msgid "..."
 msgstr "Cabhair..."
 
-#: panel-menu/panel-menu-directory.c:654
+#: panel-menu/panel-menu-directory.c:704
 msgid "_Depth level:"
+msgstr ""
+
+#: panel-menu/panel-menu-directory.c:801
+msgid "Path specified is currently not a valid directory."
 msgstr ""
 
 #: panel-menu/panel-menu-documents.c:397
 msgid "Create documents item..."
 msgstr ""
 
-#: panel-menu/panel-menu-documents.c:433
+#: panel-menu/panel-menu-documents.c:434
 msgid "Rename documents item..."
 msgstr ""
 
-#: panel-menu/panel-menu-links.c:323 panel-menu/panel-menu-path.c:554
+#: panel-menu/panel-menu-links.c:323 panel-menu/panel-menu-path.c:556
 #, fuzzy
 msgid "KDE Menus"
 msgstr "Clár"
 
-#: panel-menu/panel-menu-links.c:326 panel-menu/panel-menu-path.c:237
-#: panel-menu/panel-menu-path.c:557
+#: panel-menu/panel-menu-links.c:326 panel-menu/panel-menu-path.c:239
+#: panel-menu/panel-menu-path.c:559
 msgid "Programs"
 msgstr ""
 
@@ -3540,15 +3537,15 @@ msgstr ""
 msgid "Rename links item..."
 msgstr ""
 
-#: panel-menu/panel-menu-path.c:228
+#: panel-menu/panel-menu-path.c:230
 msgid "KDE"
 msgstr ""
 
-#: panel-menu/panel-menu-path.c:655
+#: panel-menu/panel-menu-path.c:658
 msgid "Create menu path item..."
 msgstr ""
 
-#: panel-menu/panel-menu-path.c:697
+#: panel-menu/panel-menu-path.c:701
 msgid "Edit path item..."
 msgstr ""
 
@@ -3556,39 +3553,39 @@ msgstr ""
 msgid "Preferences"
 msgstr ""
 
-#: panel-menu/panel-menu-properties.c:71
+#: panel-menu/panel-menu-properties.c:72
 #, fuzzy
 msgid "Menu Bar Preferences"
 msgstr "Ablachtaí"
 
-#: panel-menu/panel-menu-properties.c:75
+#: panel-menu/panel-menu-properties.c:78
 msgid "Layout"
 msgstr ""
 
-#: panel-menu/panel-menu-properties.c:90
+#: panel-menu/panel-menu-properties.c:93
 #, fuzzy
 msgid "_Applications Menu"
 msgstr "Áit"
 
-#: panel-menu/panel-menu-properties.c:110
+#: panel-menu/panel-menu-properties.c:117
 msgid "Select an icon for the Applications menu"
 msgstr ""
 
-#: panel-menu/panel-menu-properties.c:126
+#: panel-menu/panel-menu-properties.c:134
 msgid "_Preferences Menu"
 msgstr ""
 
-#: panel-menu/panel-menu-properties.c:137
+#: panel-menu/panel-menu-properties.c:145
 #, fuzzy
 msgid "Ac_tions Menu"
 msgstr "Áit"
 
-#: panel-menu/panel-menu-properties.c:148
+#: panel-menu/panel-menu-properties.c:156
 #, fuzzy
 msgid "_Windows Menu"
 msgstr "Gaoth:"
 
-#: panel-menu/panel-menu-properties.c:159
+#: panel-menu/panel-menu-properties.c:167
 msgid "W_orkspaces Menu"
 msgstr ""
 
@@ -3600,6 +3597,181 @@ msgstr "Gaoth:"
 #: panel-menu/panel-menu-workspaces.c:80
 msgid "Workspaces"
 msgstr ""
+
+#: panel-menu/panel-menu.c:693
+msgid "Menu Bar"
+msgstr ""
+
+#: panel-menu/panel-menu.c:694
+msgid "(c) 2001 Chris Phelps"
+msgstr ""
+
+#: panel-menu/panel-menu.c:695
+msgid "The Menu Bar allows you to display customized menubars on your panels."
+msgstr ""
+
+#: screen-exec/egg-screen-help.c:174
+msgid "Unable to find the GNOME_FILE_DOMAIN_APP_HELP domain"
+msgstr ""
+
+#: screen-exec/egg-screen-help.c:187
+msgid "Unable to find the GNOME_FILE_DOMAIN_HELP domain."
+msgstr ""
+
+#: screen-exec/egg-screen-help.c:200 screen-exec/egg-screen-help.c:215
+#, c-format
+msgid ""
+"Unable to show help as %s is not a directory.  Please check your "
+"installation."
+msgstr ""
+
+#: screen-exec/egg-screen-help.c:224 screen-exec/egg-screen-help.c:240
+#, c-format
+msgid ""
+"Unable to find the help files in either %s or %s.  Please check your "
+"installation"
+msgstr ""
+
+#: screen-exec/egg-screen-help.c:315
+#, c-format
+msgid "Unable to find doc_id %s in the help path"
+msgstr ""
+
+#: screen-exec/egg-screen-help.c:336
+#, c-format
+msgid "Help document %s/%s not found"
+msgstr ""
+
+#: wireless/wireless-applet.c:344
+msgid ""
+"The images necessary to run the wireless monitor are missing.\n"
+"Please make sure that it is correctly installed."
+msgstr ""
+
+#: wireless/wireless-applet.c:525
+msgid "No Wireless Devices"
+msgstr ""
+
+#: wireless/wireless-applet.c:527
+msgid ""
+"There doesn't seem to be any wireless devices configured on your system.\n"
+"Please verify your configuration if you think this is incorrect."
+msgstr ""
+
+#: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:2
+#: wireless/wireless-applet.c:719
+msgid "Wireless Link Monitor"
+msgstr ""
+
+#: wireless/wireless-applet.c:721
+#, fuzzy
+msgid "(C) 2001, 2002 Free Software Foundation "
+msgstr "(C) 1998 the Free Software Foundation"
+
+#: wireless/wireless-applet.c:722
+msgid "This utility shows the status of a wireless link."
+msgstr ""
+
+#: wireless/wireless-applet.glade.h:1
+msgid "Monitored Device:"
+msgstr ""
+
+#: wireless/wireless-applet.glade.h:2
+#, fuzzy
+msgid "Show _dialog boxes"
+msgstr "Cuir isteach Taisceadan"
+
+#: wireless/wireless-applet.glade.h:3
+msgid "Show signal strength in _percentage"
+msgstr ""
+
+#: wireless/wireless-applet.glade.h:4
+#, fuzzy
+msgid "Wireless Link Monitor Preferences"
+msgstr "Albachtaí gnáth..."
+
+#: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:1
+msgid "Monitor the quality of a wireless network link"
+msgstr ""
+
+#, fuzzy
+#~ msgid "Battery status utility"
+#~ msgstr "Staid batairí:"
+
+#, fuzzy
+#~ msgid "CD Player Applet"
+#~ msgstr "Feidhmchlárín Lód CPU"
+
+#~ msgid "Dave Camp <campd@oit.edu>"
+#~ msgstr "Dave Camp <campd@oit.edu>"
+
+#~ msgid "gEyes"
+#~ msgstr "gEyes"
+
+#, fuzzy
+#~ msgid "The GNOME KeyBoard Switcher Applet"
+#~ msgstr "An Monatóir batarí  GNOME"
+
+#, fuzzy
+#~ msgid "_Location :"
+#~ msgstr "Áit"
+
+#, fuzzy
+#~ msgid "Us_ername:"
+#~ msgstr "Ainm Úsáideoir:"
+
+#, fuzzy
+#~ msgid "Pass_word:"
+#~ msgstr "Pasfhocal:"
+
+#, fuzzy
+#~ msgid "URL Entry"
+#~ msgstr "Stair"
+
+#, fuzzy
+#~ msgid "Enter the Location"
+#~ msgstr "Áit"
+
+#, fuzzy
+#~ msgid "Password Entry"
+#~ msgstr "Pasfhocal:"
+
+#, fuzzy
+#~ msgid "Locat_ion :"
+#~ msgstr "Áit"
+
+#~ msgid "starting..."
+#~ msgstr "Ag Luchtú."
+
+#~ msgid "fork error"
+#~ msgstr "éarraid 'fork'"
+
+#~ msgid "%H:%M - %d. %b"
+#~ msgstr "%H:%M - %d. %b"
+
+#~ msgid "%H:%M"
+#~ msgstr "%H:%M"
+
+#~ msgid "%d. %b"
+#~ msgstr "%d. %b"
+
+#~ msgid "Clock"
+#~ msgstr "Cniog"
+
+#~ msgid "Applet height:"
+#~ msgstr "Airde Feidhmchlárín:"
+
+#, fuzzy
+#~ msgid "Run Audio Mixer..."
+#~ msgstr "Rith gmix..."
+
+#, fuzzy
+#~ msgid "System Monitor Applet"
+#~ msgstr "An Monatóir batarí  GNOME"
+
+#, fuzzy
+#~ msgid "PanelMenu Applet"
+#~ msgstr "Feidhmchlárín Lód CPU"
 
 #, fuzzy
 #~ msgid "Laptop battery monitor applet"
@@ -3644,9 +3816,6 @@ msgstr ""
 #~ msgid "GNOME weather monitor applet"
 #~ msgstr "An Monatóir batarí  GNOME"
 
-#~ msgid "General"
-#~ msgstr "Gnáth"
-
 #, fuzzy
 #~ msgid "CPU Load Meter"
 #~ msgstr "Feidhmchlárín Lód CPU"
@@ -3675,9 +3844,6 @@ msgstr ""
 
 #~ msgid "Clock Settings"
 #~ msgstr "Cumraigh Chlog"
-
-#~ msgid "Clock color"
-#~ msgstr "Dath Chlog"
 
 #~ msgid "Inigo Serna <inigo@gaztelan.bi.ehu.es>"
 #~ msgstr "Iñigo Serna <inigo@gaztelan.bi.ehu.es>"
@@ -3711,9 +3877,6 @@ msgstr ""
 
 #~ msgid "Applet Width:"
 #~ msgstr "Leitheid Feidhmchlárín:"
-
-#~ msgid "Applet Mode:"
-#~ msgstr "Mód Feidhmchlárín:"
 
 #~ msgid "Graph"
 #~ msgstr "Graf"
@@ -3758,10 +3921,6 @@ msgstr ""
 #~ msgstr "Comhadchoráseanna"
 
 #, fuzzy
-#~ msgid "Font:"
-#~ msgstr "Iomha"
-
-#, fuzzy
 #~ msgid ""
 #~ "You win!\n"
 #~ "Moves"
@@ -3784,10 +3943,6 @@ msgstr ""
 #~ msgid "Default Width"
 #~ msgstr "Líosta gnáth"
 
-#, fuzzy
-#~ msgid "kilometers"
-#~ msgstr "Odometer"
-
 #~ msgid "(C) 1999"
 #~ msgstr "(C) 1999"
 
@@ -3807,9 +3962,6 @@ msgstr ""
 
 #~ msgid "Size:"
 #~ msgstr "Méid"
-
-#~ msgid "Speed:"
-#~ msgstr "Luas:"
 
 #, fuzzy
 #~ msgid "Network Load Applet"
@@ -3845,9 +3997,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Slashdot"
 #~ msgstr "SlashApp"
-
-#~ msgid "Speed"
-#~ msgstr "Luas"
 
 #~ msgid "Loading headlines..."
 #~ msgstr "Ag lódail cinnlinnte..."
@@ -3913,9 +4062,6 @@ msgstr ""
 #~ msgid "date"
 #~ msgstr "dáta"
 
-#~ msgid "Show:"
-#~ msgstr "Taispeán:"
-
 # FIXME Check
 #, fuzzy
 #~ msgid "File tailer"
@@ -3923,9 +4069,6 @@ msgstr ""
 
 #~ msgid "Log path:"
 #~ msgstr "Slí Log:"
-
-#~ msgid "Width:"
-#~ msgstr "Leitheid:"
 
 #~ msgid "Height:"
 #~ msgstr "Airde:."

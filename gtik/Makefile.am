@@ -1,11 +1,13 @@
 SUBDIRS = access help
 
-INCLUDES =  -I$(srcdir) \
+INCLUDES = \
+	-I$(srcdir) \
+	-I$(top_srcdir)/gtik/access \
 	-I$(top_srcdir)/screen-exec \
-		 -DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\"  \
-		 $(GNOME_APPLETS_CFLAGS) $(GNOME_VFS_APPLETS_CFLAGS) \
-		 -DGTIK_APPLET_NAME=\"gtik2_applet\" \
-		 -I access/
+	-DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\"  \
+	$(GNOME_APPLETS_CFLAGS)
+	$(GNOME_VFS_APPLETS_CFLAGS) \
+	-DGTIK_APPLET_NAME=\"gtik2_applet\"
 
 libexec_PROGRAMS = gtik2_applet2
 
