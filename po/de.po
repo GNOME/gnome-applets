@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 2.3.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-07-24 21:17+0200\n"
-"PO-Revision-Date: 2003-07-24 21:18+0200\n"
+"POT-Creation-Date: 2003-07-25 18:40+0200\n"
+"PO-Revision-Date: 2003-07-25 18:40+0200\n"
 "Last-Translator: Christian Neumair <chris@gnome-de.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -1624,7 +1624,8 @@ msgstr "Zeit in Millisekunden bis zum Aktualisieren der Anzeige"
 msgid "Unchanged color"
 msgstr "Unverändert-Farbe"
 
-#: gtik/gtik.schemas.in.h:23
+#: gtik/gtik.schemas.in.h:23 gweather/gweather.schemas.in.h:8
+#: modemlights/modemlights.schemas.in.h:31
 msgid "Update interval"
 msgstr "Aktualisierungsintervall"
 
@@ -1635,10 +1636,10 @@ msgstr "Voreingestellte Themenfarben und -schriften verwenden"
 #: gtik/gtik.schemas.in.h:25
 msgid "Use default theme fonts and colors instead of custom ones"
 msgstr ""
-"Voreingestellte Themenfarben und -schriften anstatt von benutzerdefinierten "
+"Voreingestellte Themenfarben und -schriften anstatt der benutzerdefinierten "
 "verwenden"
 
-#: gtik/gtik.schemas.in.h:26 mini-commander/src/mini-commander.schemas.in.h:7
+#: gtik/gtik.schemas.in.h:26 mini-commander/src/mini-commander.schemas.in.h:29
 msgid "Width of the applet"
 msgstr "Breite des Applets"
 
@@ -1836,36 +1837,62 @@ msgstr "Standort"
 
 #: gweather/gweather.schemas.in.h:1
 msgid ""
-"determines whether the applet automatically updates its weather statistics "
+"Determines whether the applet automatically updates its weather statistics "
 "or not."
 msgstr ""
 "Legt fest, ob das Applet automatisch seine Wetterstatistiken aktualisiert."
 
 #: gweather/gweather.schemas.in.h:2
-msgid "fetch a detailed forecast on each update."
-msgstr "Bei jedem Aktualisierungsvorgang detailierte Vorhersagen abrufen."
+msgid "Display radar map"
+msgstr "Radarkarte anzeigen"
 
 #: gweather/gweather.schemas.in.h:3
-msgid "fetch a radar map on each update."
+msgid "Fetch a radar map on each update."
 msgstr "Bei jedem Aktualisierungsvorgang eine Radarkarte abrufen."
 
 #: gweather/gweather.schemas.in.h:4
-msgid "the interval, in seconds, between automatic updates."
-msgstr "Das Intervall zwischen automatischen Aktualisierungen in Sekunden."
+msgid ""
+"If true, then retreive a radar map from a location specified by the \"radar"
+"\" key."
+msgstr ""
+"Falls dieser Schlüssel wahr ist, wird eine Radarkarte von einem Ort "
+"abgerufen, der vom Schlüssel »radar« angegeben wird."
 
 #: gweather/gweather.schemas.in.h:5
-msgid "url for the radar map"
-msgstr "URL zur Radarkarte"
+#: mini-commander/src/mini-commander.schemas.in.h:14
+msgid "Not used anymore"
+msgstr "Nicht mehr verwendet"
 
 #: gweather/gweather.schemas.in.h:6
-msgid "use custom url for the radar map"
-msgstr "Benutzerdefinierte URL für die Radarkarte verwenden"
+msgid "The custom url from where to retrieve a radar map."
+msgstr ""
+"Die Benutzerdefinierte URL, von der die Radarkarte abgerufen werden soll."
 
 #: gweather/gweather.schemas.in.h:7
-msgid "use metric units instead of english units."
-msgstr "Metrisches System anstatt englischer Einheiten verwenden"
+msgid "The interval, in seconds, between automatic updates."
+msgstr "Das Intervall zwischen automatischen Aktualisierungen in Sekunden."
 
-#: gweather/gweather.schemas.in.h:8
+#: gweather/gweather.schemas.in.h:9
+msgid "Update the data automatically"
+msgstr "Die Daten automatisch aktualisieren"
+
+#: gweather/gweather.schemas.in.h:10
+msgid "Url for the radar map"
+msgstr "URL zur Radarkarte"
+
+#: gweather/gweather.schemas.in.h:11
+msgid "Use custom url for the radar map"
+msgstr "Benutzerdefinierte URL für die Radarkarte verwenden"
+
+#: gweather/gweather.schemas.in.h:12
+msgid "Use metric units"
+msgstr "Metrische Einheiten verwenden"
+
+#: gweather/gweather.schemas.in.h:13
+msgid "Use metric units instead of english units."
+msgstr "Metrische statt englische Einheiten verwenden"
+
+#: gweather/gweather.schemas.in.h:14
 msgid "weather location information."
 msgstr "Informationen zum Wetterstandort."
 
@@ -2837,71 +2864,122 @@ msgid "_Use default theme colors"
 msgstr "Voreingestellte _Themenfarben verwenden"
 
 #: mini-commander/src/mini-commander.schemas.in.h:1
-msgid "Autocomplete history"
-msgstr "Auto-Vervollständigen-Chronik"
+msgid "Attempt to autocomplete a command from the history of commands entered."
+msgstr ""
+"Versuchen, einen Befehl aus der Chronik der eingegebenen Befehle automatisch "
+"zu vervollständigen."
 
 #: mini-commander/src/mini-commander.schemas.in.h:2
-msgid "Height of the applet"
-msgstr "Höhe des Applets"
+msgid "Color background blue component"
+msgstr "Blauanteil der Hintergrundfarbe"
 
 #: mini-commander/src/mini-commander.schemas.in.h:3
-msgid "Height of the entry"
-msgstr "Höhe des Eintrags"
+msgid "Color background green component"
+msgstr "Grünanteil der Hintergrundfarbe"
 
 #: mini-commander/src/mini-commander.schemas.in.h:4
-msgid "Show an ugly frame around the whole applet wasting useful space"
-msgstr ""
-"Soll ein hässlicher Rahmen um das Applet angezeigt werden, das wertvollen "
-"Platz vergeudet?"
+msgid "Color background red component"
+msgstr "Rotanteil der Hintergrundfarbe"
 
 #: mini-commander/src/mini-commander.schemas.in.h:5
-msgid "Show the handle thingy so you can detach the command thingy"
-msgstr ""
-"Das Handeldings anzeigen, sodass Sie das Befehlsdings abmontieren können"
+msgid "Color foreground blue component"
+msgstr "Blauanteil der Vordergrundfarbe"
 
 #: mini-commander/src/mini-commander.schemas.in.h:6
-msgid "Use the default theme colors for entry fg and bg"
-msgstr ""
-"Die voreingestellten Themenfarben für den Vorder- und Hintergrund des "
-"Eintrags verwenden"
+msgid "Color foreground green component"
+msgstr "Grünanteil der Vordergrundfarbe"
+
+#: mini-commander/src/mini-commander.schemas.in.h:7
+msgid "Color foreground red component"
+msgstr "Rotanteil der Vordergrundfarbe"
 
 #: mini-commander/src/mini-commander.schemas.in.h:8
-msgid "bg blue"
-msgstr "Hintergrund - Blau"
+msgid "History list"
+msgstr "Chronikliste"
 
 #: mini-commander/src/mini-commander.schemas.in.h:9
-msgid "bg red"
-msgstr "Hintergrund - Rot"
-
-#: mini-commander/src/mini-commander.schemas.in.h:10
-msgid "fg blue"
-msgstr "Vordergrund - Blau"
-
-#: mini-commander/src/mini-commander.schemas.in.h:11
-msgid "fg green"
-msgstr "Vordergrund - Grün"
-
-#: mini-commander/src/mini-commander.schemas.in.h:12
-msgid "fg red"
-msgstr "Vordergrund - Rot"
-
-#: mini-commander/src/mini-commander.schemas.in.h:13
-msgid "list of GConfValue entries containing strings for history entries"
+msgid "List of GConfValue entries containing strings for history entries."
 msgstr ""
 "Liste der GConfValue-Einträge, die die Zeichenketten für die Chronikeinträge "
 "enthalten."
 
-#: mini-commander/src/mini-commander.schemas.in.h:14
-msgid "list of GConfValue entries containing strings for the macro commands"
+#: mini-commander/src/mini-commander.schemas.in.h:10
+msgid "List of GConfValue entries containing strings for the macro commands."
 msgstr ""
 "Liste der GConfValue-Einträge, die die Zeichenketten für die Befehlsmakros "
 "enthalten."
 
-#: mini-commander/src/mini-commander.schemas.in.h:15
-msgid "list of GConfValue entries containing strings for the macro patterns"
+#: mini-commander/src/mini-commander.schemas.in.h:11
+msgid "List of GConfValue entries containing strings for the macro patterns."
 msgstr ""
 "Liste der GConfValue-Einträge, die die Zeichenketten für die Markromuster "
 "enthalten."
+
+#: mini-commander/src/mini-commander.schemas.in.h:12
+msgid "Macro command list"
+msgstr "Liste der Makrobefehle"
+
+#: mini-commander/src/mini-commander.schemas.in.h:13
+msgid "Macro pattern list"
+msgstr "Liste der Makromuster"
+
+#: mini-commander/src/mini-commander.schemas.in.h:15
+msgid "Perform history autocompletion"
+msgstr "Chronikbasierete Auto-Vervollständigung verwenden"
+
+#: mini-commander/src/mini-commander.schemas.in.h:16
+msgid "Show a frame surrounding the applet."
+msgstr "Einen Rahmen anzeigen, der das Applet umgibt."
+
+#: mini-commander/src/mini-commander.schemas.in.h:17
+msgid "Show a handle so the applet can be detached from the panel."
+msgstr "Einen Griff anzeigen, sodass das Applet vom Panel gelöst werden kann."
+
+#: mini-commander/src/mini-commander.schemas.in.h:18
+msgid "Show frame"
+msgstr "Rahmen anzeigen"
+
+#: mini-commander/src/mini-commander.schemas.in.h:19
+msgid "Show handle"
+msgstr "Griff anzeigen"
+
+#: mini-commander/src/mini-commander.schemas.in.h:20
+msgid "The blue component of the background color."
+msgstr "Der Blauanteil der Hintergrundfarbe."
+
+#: mini-commander/src/mini-commander.schemas.in.h:21
+msgid "The blue component of the foreground color."
+msgstr "Der Blauanteil der Vordergrundfarbe."
+
+#: mini-commander/src/mini-commander.schemas.in.h:22
+msgid "The green component of the background color."
+msgstr "Der Grünanteil der Hintergrundfarbe."
+
+#: mini-commander/src/mini-commander.schemas.in.h:23
+msgid "The green component of the foreground color."
+msgstr "Der Grünanteil der Vordergrundfarbe."
+
+#: mini-commander/src/mini-commander.schemas.in.h:24
+msgid "The red component of the background color."
+msgstr "Der Rotanteil der Hintergrundfarbe."
+
+#: mini-commander/src/mini-commander.schemas.in.h:25
+msgid "The red component of the foreground color."
+msgstr "Der Rotanteil der Vordergrundfarbe."
+
+#: mini-commander/src/mini-commander.schemas.in.h:26
+msgid "Use the default theme colors"
+msgstr "Die voreingestellten Themenfarben verwenden"
+
+#: mini-commander/src/mini-commander.schemas.in.h:27
+msgid "Use theme colors instead of custom ones."
+msgstr ""
+"Voreingestellte Themenfarben und -schriften anstatt der benutzerdefinierten "
+"verwenden."
+
+#: mini-commander/src/mini-commander.schemas.in.h:28
+msgid "Width"
+msgstr "Breite"
 
 #: mini-commander/src/mini-commander_applet.c:222
 #: mini-commander/src/mini-commander_applet.c:226
@@ -3152,7 +3230,7 @@ msgid ""
 "Lights in order from the top or left are Send data and Receive data."
 msgstr ""
 "Freigegeben unter der GNU General Public License.\n"
-"Ein Modem-Statusanzeiger und Wähler.\n"
+"Ein Modemstatusanzeiger und -wähler.\n"
 "Die Lämpchen bedeuten (von oben nach unten): Senden und Datenempfang."
 
 #: modemlights/modemlights.c:485
@@ -3185,84 +3263,165 @@ msgid "not connected"
 msgstr "nicht verbunden"
 
 #: modemlights/modemlights.schemas.in.h:1
-msgid "Ask for confirmation when connecting"
-msgstr "Beim Verbinden rückfragen"
+msgid "Ask for confirmation when connecting/disconnecting"
+msgstr "Beim Verbinden/Trebbeb rückfragen"
 
 #: modemlights/modemlights.schemas.in.h:2
+msgid "Blink when connecting"
+msgstr "Beim Verbinden blinken"
+
+#: modemlights/modemlights.schemas.in.h:3
 msgid "Command executed when connecting"
 msgstr "Beim Verbinden auszuführender Befehl"
 
-#: modemlights/modemlights.schemas.in.h:3
+#: modemlights/modemlights.schemas.in.h:4
 msgid "Command executed when disconnecting"
 msgstr "Beim Trennen der Verbindung auszuführender Befehl"
 
-#: modemlights/modemlights.schemas.in.h:4
-msgid "Delay"
-msgstr "Verzögerung"
-
 #: modemlights/modemlights.schemas.in.h:5
-msgid "Device name of modem"
-msgstr "Gerätename des Modems"
+msgid "Display a confirmation dialog when connecting or disconnecting."
+msgstr "Beim Verbinden/Trennen einen Bestätigungsdialog anzeigen."
 
 #: modemlights/modemlights.schemas.in.h:6
-msgid "Make it blink baby"
-msgstr "Lass es blinken, Baby"
+msgid "Make the applet blink when the modem is connecting."
+msgstr ""
+"Das Applet bei der Verbindungsaufnahme seitens des Modems zum Blinken "
+"bringen."
 
 #: modemlights/modemlights.schemas.in.h:7
-msgid "Modem lock file"
-msgstr "Modem-Sperrdatei"
+msgid "Modem device name"
+msgstr "Name des Modemgeräts"
 
 #: modemlights/modemlights.schemas.in.h:8
+msgid "Modem lock file"
+msgstr "Modemsperrdatei"
+
+#: modemlights/modemlights.schemas.in.h:9
 msgid "Receive background color"
 msgstr "Hintergrundfarbe »Empfangen«"
 
-#: modemlights/modemlights.schemas.in.h:9
+#: modemlights/modemlights.schemas.in.h:10
 msgid "Receive foreground color"
 msgstr "Vordergrundfarbe »Empfangen«"
 
-#: modemlights/modemlights.schemas.in.h:10
+#: modemlights/modemlights.schemas.in.h:11
 msgid "Send background color"
 msgstr "Hintergrundfarbe »Senden«"
 
-#: modemlights/modemlights.schemas.in.h:11
+#: modemlights/modemlights.schemas.in.h:12
 msgid "Send foreground color"
 msgstr "Vordergrundfarbe »Senden«"
 
-#: modemlights/modemlights.schemas.in.h:12
+#: modemlights/modemlights.schemas.in.h:13
 msgid "Show connect time and throughput"
 msgstr "Verbindungsdauer und Datendurchsatz anzeigen"
 
-#: modemlights/modemlights.schemas.in.h:13
-msgid "Status connect color"
+#: modemlights/modemlights.schemas.in.h:14
+msgid ""
+"Show extra information about the connect time and amount of data transmitted "
+"and received."
+msgstr ""
+"Zusätzliche Informationen zur Verbindungsdauer und dem übertragenen "
+"Datenvolumen anzeigen."
+
+#: modemlights/modemlights.schemas.in.h:15
+msgid "Status connected color"
 msgstr "Statusfarbe für »verbunden«"
 
-#: modemlights/modemlights.schemas.in.h:14
+#: modemlights/modemlights.schemas.in.h:16
 msgid "Status not connected color"
 msgstr "Statusfarbe für »nicht verbunden«"
 
 # CHECK
-#: modemlights/modemlights.schemas.in.h:15
+#: modemlights/modemlights.schemas.in.h:17
 msgid "Status waiting connection color"
 msgstr "Statusfarbe für »Verbindung wird abgewartet«"
 
-#: modemlights/modemlights.schemas.in.h:16
+#: modemlights/modemlights.schemas.in.h:18
 msgid "Text background color"
 msgstr "Hintergrundfarbe für Text"
 
-#: modemlights/modemlights.schemas.in.h:17
+#: modemlights/modemlights.schemas.in.h:19
 msgid "Text foreground color"
 msgstr "Vordergrundfarbe für Text"
 
 # CHECK
-#: modemlights/modemlights.schemas.in.h:18
+#: modemlights/modemlights.schemas.in.h:20
 msgid "Text outline color"
 msgstr "Farbe des Textrahmens"
 
-#: modemlights/modemlights.schemas.in.h:19
+#: modemlights/modemlights.schemas.in.h:21
+msgid "The background color of the button used to inidcate data received."
+msgstr ""
+"Die Hintergrundfarbe des Knopfes, der verwendet wird, um empfangene Daten "
+"anzuzeigen."
+
+#: modemlights/modemlights.schemas.in.h:22
+msgid "The background color of the button used to inidcate data sent."
+msgstr ""
+"Die Hintergrundfarbe des Knopfes, der verwendet wird, um verschickte Daten "
+"anzuzeigen."
+
+#: modemlights/modemlights.schemas.in.h:23
+msgid ""
+"The color used to display the status button when the modem is connected."
+msgstr ""
+"Die Farbe, in der der Statusknopf angezeigt wird, wenn das Modem verbunden "
+"ist."
+
+#: modemlights/modemlights.schemas.in.h:24
+msgid ""
+"The color used to display the status button when the modem is connecting."
+msgstr ""
+"Die Farbe, in der der Statusknopf angezeigt wird, wenn das Modem verbindet."
+
+#: modemlights/modemlights.schemas.in.h:25
+msgid ""
+"The color used to display the status button when the modem is not connected."
+msgstr ""
+"Die Farbe, in der der Statusknopf angezeigt wird, wenn das Modem nicht "
+"verbunden ist."
+
+#: modemlights/modemlights.schemas.in.h:26
+msgid "The color used to indicate that data has been received."
+msgstr ""
+"Die Farbe, die verwendet wird, um anzuzeigen, dass Daten empfangen wurden."
+
+#: modemlights/modemlights.schemas.in.h:27
+msgid "The color used to indicate that data has been sent."
+msgstr ""
+"Die Farbe, die verwendet wird, um anzuzeigen, dass Daten verschickt wurden."
+
+#: modemlights/modemlights.schemas.in.h:28
+msgid "The fraction of a second until the applet updates."
+msgstr ""
+"Das Intervall in Bruchteilen einer Sekunde, bis das Applet aktualisiert wird."
+
+#: modemlights/modemlights.schemas.in.h:29
+msgid "The name of the modem device."
+msgstr "Der Name des Modemgeräts"
+
+#: modemlights/modemlights.schemas.in.h:30
+msgid "The name of the modem lock file."
+msgstr "Der Name der Modemsperrdatei."
+
+#: modemlights/modemlights.schemas.in.h:32
 msgid "Use isdn"
 msgstr "ISDN verwenden"
 
-#: modemlights/modemlights.schemas.in.h:20
+#: modemlights/modemlights.schemas.in.h:33
+msgid "Use isdn instead of ppp to connect the modem."
+msgstr "ISDN statt PPP verwenden, um das Modem zu verbinden."
+
+#: modemlights/modemlights.schemas.in.h:34
+msgid "Use this command to connect the modem."
+msgstr "Dieser Befehl wird zum Verbinden des Modems verwendet."
+
+#: modemlights/modemlights.schemas.in.h:35
+msgid "Use this command to disconnect the modem."
+msgstr "Dieser Befehl wird zum Trennen des Modems verwendet."
+
+#: modemlights/modemlights.schemas.in.h:36
 msgid "Verify owner of lock file"
 msgstr "Besitzer der Sperrdatei überprüfen"
 
@@ -3383,7 +3542,7 @@ msgstr "Komplex"
 
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:1
 msgid "A system load indicator"
-msgstr "Eine Systemlast-Anzeige"
+msgstr "Eine Systemlastanzeige"
 
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:2
 #: multiload/main.c:78
@@ -3396,7 +3555,7 @@ msgstr "Systemmonitor ö_ffnen"
 
 #: multiload/cpuload.c:50
 msgid "CPU Load"
-msgstr "CPU-Last"
+msgstr "Prozessorlast"
 
 #: multiload/loadavg.c:107 multiload/main.c:280
 msgid "Load Average"
@@ -3411,8 +3570,8 @@ msgid ""
 msgstr ""
 "Veröffentlicht unter der GNU General Public License.\n"
 "\n"
-"Eine Systemlast-Anzeige, die Graphen für CPU-, RAM- und Auslastungsbelegung "
-"sowie Netzwerkverkehr anzeigen kann."
+"Eine Systemlastanzeige, die Graphen für Prozessor-, Arbeitsspeicher- und "
+"Auslastungsbelegung sowie Netzwerkverkehr anzeigen kann."
 
 #: multiload/main.c:272 multiload/properties.c:553
 msgid "Processor"
@@ -3448,86 +3607,114 @@ msgid "Memory Load"
 msgstr "Speicherlast"
 
 #: multiload/multiload.schemas.in.h:1
-msgid "Network background"
-msgstr "Netzwerkhintergrund"
+msgid ""
+"For horizontal panels, the width of the graphs in pixels. For vertical "
+"panels, this is the height of the graphs."
+msgstr ""
+"Die Breite des Graphs in Pixel, falls das Panel horizontal ist. Falls es "
+"vertikal ist, ist dies die Höhe des Graphs."
 
 #: multiload/multiload.schemas.in.h:2
+msgid "Graph size"
+msgstr "Graphgröße"
+
+#: multiload/multiload.schemas.in.h:3
+msgid "Network graph background color"
+msgstr "Hintergrundfarbe des Netzwerkgraps"
+
+#: multiload/multiload.schemas.in.h:4
 msgid "Network other usage"
 msgstr "Sonstige Netzwerklast"
 
-#: multiload/multiload.schemas.in.h:3
-msgid "enable the cpuload graph in multiload."
-msgstr "Den CPU-Lastgraphenen in Multiload anzeigen."
+#: multiload/multiload.schemas.in.h:5
+msgid "The cpu graph background color."
+msgstr "Die Hintergrundfarbe des Prozessorgraphs."
 
-#: multiload/multiload.schemas.in.h:4
+#: multiload/multiload.schemas.in.h:6
+msgid "The load graph background color."
+msgstr "Die Hintergrundfarbe des Auslastungsgraphs."
+
+#: multiload/multiload.schemas.in.h:7
+msgid "The memory graph background color."
+msgstr "Die Hintergrundfarbe des Speichergraphs."
+
+#: multiload/multiload.schemas.in.h:8
+msgid "The swap graph background color."
+msgstr "Die Hintergrundfarbe des Auslagerungsgraphs."
+
+#: multiload/multiload.schemas.in.h:9
+msgid "enable the cpuload graph in multiload."
+msgstr "Den Prozessorlastgraphen in Multiload anzeigen."
+
+#: multiload/multiload.schemas.in.h:10
 msgid "enable the loadavg graph in multiload."
 msgstr "Den Lastmittelgraphen in Multiload anzeigen."
 
-#: multiload/multiload.schemas.in.h:5
+#: multiload/multiload.schemas.in.h:11
 msgid "enable the memload graph in multiload."
 msgstr "Den Speicherlastgraphen in Multiload anzeigen."
 
-#: multiload/multiload.schemas.in.h:6
+#: multiload/multiload.schemas.in.h:12
 msgid "enable the netload graph in multiload."
 msgstr "Den Netzwerklastgraphen in Multiload anzeigen."
 
-#: multiload/multiload.schemas.in.h:7
+#: multiload/multiload.schemas.in.h:13
 msgid "enable the swapload graph in multiload."
 msgstr "Den Zwischenspeicherlastgraphen in Multiload anzeigen."
 
-#: multiload/multiload.schemas.in.h:8
-msgid ""
-"for horizontal panels, the width of the applets in pixels. for verticle "
-"panels, this is the height of the applets."
-msgstr ""
-"Die Breite des Applets, falls das Panel horizontal ist. Falls es vertikal "
-"ist, ist dies die Höhe des Applets."
+#: multiload/multiload.schemas.in.h:14
+msgid "the graph color for Ethernet network activity."
+msgstr "Die Graphfarbe für Ethernet-Netzwerkaktivität."
 
-#: multiload/multiload.schemas.in.h:9
-msgid "the applet's background color."
-msgstr "Die Hintergrundfarbe des Applets."
+#: multiload/multiload.schemas.in.h:15
+msgid "the graph color for PLIP network activity."
+msgstr "Die Graphfarbe für PLIP-Netzwerkaktivität."
 
-#: multiload/multiload.schemas.in.h:10
-msgid "the graph color for buffer memor."
-msgstr "Die Graphfarbe für den Pufferspeicher."
+#: multiload/multiload.schemas.in.h:16
+msgid "the graph color for SLIP network activity."
+msgstr "Die Graphfarbe für SLIP-Netzwerkaktivität."
 
-#: multiload/multiload.schemas.in.h:11
+#: multiload/multiload.schemas.in.h:17
 msgid "the graph color for buffer memory."
 msgstr "Die Graphfarbe für den Pufferspeicher."
 
-#: multiload/multiload.schemas.in.h:12
-msgid "the graph color for cached memor."
-msgstr "Die Graphfarbe für den Cache-Speicher."
-
-#: multiload/multiload.schemas.in.h:13
+#: multiload/multiload.schemas.in.h:18
 msgid "the graph color for cached memory."
 msgstr "Die Graphfarbe für den Cache-Speicher."
 
-#: multiload/multiload.schemas.in.h:14
-msgid "the graph color for nice-related cpu activity."
-msgstr "Die Graphfarbe für »nice«-seitige CPU-Aktivität."
+#: multiload/multiload.schemas.in.h:19
+msgid "the graph color for load average."
+msgstr "Die Graphfarbe für das Lastmittel."
 
-#: multiload/multiload.schemas.in.h:15
+#: multiload/multiload.schemas.in.h:20
+msgid "the graph color for nice-related cpu activity."
+msgstr "Die Graphfarbe für »nice«-seitige Prozessoraktivität."
+
+#: multiload/multiload.schemas.in.h:21
 msgid "the graph color for shared memory."
 msgstr "Die Graphfarbe für gemeinsamen Speicher."
 
-#: multiload/multiload.schemas.in.h:16
+#: multiload/multiload.schemas.in.h:22
 msgid "the graph color for system-related cpu activity."
-msgstr "Die Graphfarbe für systemseitige CPU-Aktivität."
+msgstr "Die Graphfarbe für systemseitige Prozessoraktivität."
 
-#: multiload/multiload.schemas.in.h:17
+#: multiload/multiload.schemas.in.h:23
 msgid "the graph color for user-related cpu activity."
-msgstr "Die Graphfarbe für benutzereitige CPU-Aktivität."
+msgstr "Die Graphfarbe für benutzereitige Prozessoraktivität."
 
-#: multiload/multiload.schemas.in.h:18
-msgid "the graph color for user-related mem usage."
+#: multiload/multiload.schemas.in.h:24
+msgid "the graph color for user-related memory usage."
 msgstr "Die Graphfarbe für benutzerseitige Speicherlast."
 
-#: multiload/multiload.schemas.in.h:19
+#: multiload/multiload.schemas.in.h:25
+msgid "the graph color for user-related swap usage."
+msgstr "Die Graphfarbe für benutzerseitige Auslagerungslast."
+
+#: multiload/multiload.schemas.in.h:26
 msgid "the refresh rate of the applets in milliseconds"
 msgstr "Die Aktualisierungsrate des Applets in Millisekunden"
 
-#: multiload/multiload.schemas.in.h:20
+#: multiload/multiload.schemas.in.h:27
 msgid "the refresh rate of the applets in milliseconds."
 msgstr "Die Aktualisierungsrate des Applets in Millisekunden."
 
