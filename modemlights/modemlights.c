@@ -51,52 +51,7 @@
 #define ISDN_MAX_CHANNELS 64
 #endif
 
-static unsigned long *isdn_stats = NULL;
 #endif
-
-#define BUTTON_BLINK_INTERVAL 700
-
-typedef enum {
-	LAYOUT_HORIZONTAL = 0,
-	LAYOUT_HORIZONTAL_EXTENDED = 1,
-	LAYOUT_VERTICAL = 2,
-	LAYOUT_VERTICAL_EXTENDED = 3,
-	LAYOUT_SQUARE = 4
-} DisplayLayout;
-
-typedef enum {
-	STATUS_OFF,
-	STATUS_ON,
-	STATUS_WAIT
-} StatusType;
-
-typedef struct _DisplayData DisplayData;
-struct _DisplayData {
-	DisplayLayout layout;
-	gint width;
-	gint height;
-	gint button_x;	/* connect button */
-	gint button_y;
-	gint button_w;
-	gint button_h;
-	gint display_x;	/* display pixmap */
-	gint display_y;
-	gint display_w;
-	gint display_h;
-	gint load_x;	/* load meter */
-	gint load_y;
-	gint load_w;	/* this must always be 18 (hard coded) */
-	gint load_h;
-	gint tx_x;	/* TX light */
-	gint tx_y;
-	gint rx_x;	/* RX light */
-	gint rx_y;
-	gint bytes_x;	/* bytes throughput , -1 to disable */
-	gint bytes_y;
-	gint time_x;	/* time connected, -1 to disable */
-	gint time_y;
-	gint merge_extended_box;	/* save space ? */
-};
 
 /* this holds all the possible layout configurations */
 static DisplayData layout_data[] = {
@@ -137,60 +92,11 @@ static DisplayData layout_data[] = {
 	}
 };
 
-GdkColor display_color[COLOR_COUNT];
-gchar *display_color_text[COLOR_COUNT];
-
-gint UPDATE_DELAY = 5;		/* status lights update interval in Hz (1 - 20) */
-gchar *lock_file;		/* the modem lock file */
-gint verify_lock_file = TRUE;	/* do we verify the pid inside the lockfile? */
-gchar *device_name;		/* the device name eg:ppp0 */
-gchar *command_connect;		/* connection commands */
-gchar *command_disconnect;
-gint ask_for_confirmation = TRUE;	/* do we ask for confirmation? */
-gint use_ISDN = FALSE;		/* do we use ISDN? */
-gint show_extra_info = FALSE;	/* display larger version with time/byte count */
-gint status_wait_blink = FALSE;	/* blink connection light during wait status */
-
-static gint button_blinking = FALSE;
-static gint button_blink_on = 0;
-static gint button_blink_id = -1;
-
-GtkWidget *global_applet;
-static GtkWidget *frame;
-static GtkWidget *display_area = NULL;
-static GtkWidget *button;
-static GtkWidget *button_pixmap;
-static GdkPixmap *display = NULL;
-static GdkPixmap *digits = NULL;
-static GdkPixmap *lights = NULL;
-static GdkPixmap *button_on = NULL;
-static GdkPixmap *button_off = NULL;
-static GdkPixmap *button_wait = NULL;
-static GdkBitmap *button_mask = NULL;
-static GdkGC *gc = NULL;
-
-static int update_timeout_id = FALSE;
-static int ip_socket;
-static int load_hist[120];
-static int load_hist_pos = 0;
-static int load_hist_rx[20];
-static int load_hist_tx[20];
-
-static int confirm_dialog = FALSE;
-
-static PanelAppletOrient orient;
-
-static gint sizehint;
-
-static DisplayLayout layout = LAYOUT_HORIZONTAL;
-static DisplayData *layout_current = NULL;
-
-static gint setup_done = FALSE;
-
 static void about_cb (BonoboUIComponent *uic,
-		      PanelApplet       *applet,
+		      MLData       *mldata,
 		      const gchar       *verbname)
 {
+	PanelApplet *applet = PANEL_APPLET (mldata->applet);
 	static GtkWidget *about = NULL;
 	GdkPixbuf 	 *pixbuf;
 	GError		 *error = NULL;
@@ -245,17 +151,17 @@ static void about_cb (BonoboUIComponent *uic,
 	gtk_widget_show (about);
 }
 
-static int is_Modem_on(void)
+static int is_Modem_on(MLData *mldata)
 {
 	FILE *f = 0;
 	gchar buf[64];
 	pid_t pid = -1;
 
-	f = fopen(lock_file, "r");
+	f = fopen(mldata->lock_file, "r");
 
 	if(!f) return FALSE;
 
-	if (verify_lock_file)
+	if (mldata->verify_lock_file)
 		{
 		if (fgets(buf, sizeof(buf), f) == NULL)
 			{
@@ -266,7 +172,7 @@ static int is_Modem_on(void)
 
 	fclose(f);
 
-	if (verify_lock_file)
+	if (mldata->verify_lock_file)
 		{
 		pid = (pid_t)strtol(buf, NULL, 10);
 		if (pid < 1 || (kill (pid, 0) == -1 && errno != EPERM)) return FALSE;
@@ -275,7 +181,7 @@ static int is_Modem_on(void)
 	return TRUE;
 }
 
-static int is_ISDN_on(void)
+static int is_ISDN_on(MLData *mldata)
 {
 #ifdef __linux__
 
@@ -400,26 +306,26 @@ static int is_ISDN_on(void)
 #endif
 }
 
-static int is_connected(void)
+static int is_connected(MLData *mldata)
 {
-	if (use_ISDN)
-		return is_ISDN_on();
+	if (mldata->use_ISDN)
+		return is_ISDN_on(mldata);
 	else
-		return is_Modem_on();
+		return is_Modem_on(mldata);
 }
 
-static int get_modem_stats(int *in, int *out)
+static int get_modem_stats(MLData *mldata, int *in, int *out)
 {
 	struct 	ifreq ifreq;
 	struct 	ppp_stats stats;
 
 	memset(&ifreq, 0, sizeof(ifreq));
-	strncpy(ifreq.ifr_name, device_name, IFNAMSIZ);
+	strncpy(ifreq.ifr_name, mldata->device_name, IFNAMSIZ);
 	ifreq.ifr_name[IFNAMSIZ-1] = '\0';
 	ifreq.ifr_ifru.ifru_data = (caddr_t)&stats;
 
 #ifdef SIOCGPPPSTATS
-	if (ioctl(ip_socket, SIOCGPPPSTATS, (caddr_t)&ifreq) < 0)
+	if (ioctl(mldata->ip_socket, SIOCGPPPSTATS, (caddr_t)&ifreq) < 0)
 #else
 	if (TRUE)
 #endif
@@ -436,7 +342,7 @@ static int get_modem_stats(int *in, int *out)
 		}
 }
 
-static int get_ISDN_stats(int *in, int *out)
+static int get_ISDN_stats(MLData *mldata, int *in, int *out)
 {
 #ifdef __linux__
 	int fd, i;
@@ -444,21 +350,21 @@ static int get_ISDN_stats(int *in, int *out)
 
 	*in = *out = 0;
 
-	if (!isdn_stats)
-		isdn_stats = g_new0 (unsigned long, ISDN_MAX_CHANNELS  *  2);
+	if (!mldata->isdn_stats)
+		mldata->isdn_stats = g_new0 (unsigned long, ISDN_MAX_CHANNELS  *  2);
 
 	fd = open("/dev/isdninfo", O_RDONLY);
 
 	if (fd < 0)
 		return FALSE;
 
-	if ((ioctl (fd, IIOCGETCPS, isdn_stats) < 0) && (errno != 0)) {
+	if ((ioctl (fd, IIOCGETCPS, mldata->isdn_stats) < 0) && (errno != 0)) {
 		close (fd);
 		
 		return FALSE;
 	}
 
-	for (i = 0, ptr = isdn_stats; i < ISDN_MAX_CHANNELS; i++) {
+	for (i = 0, ptr = mldata->isdn_stats; i < ISDN_MAX_CHANNELS; i++) {
 		*in  += *ptr++; *out += *ptr++;
 	}
 
@@ -473,127 +379,126 @@ static int get_ISDN_stats(int *in, int *out)
 #endif
 }
 
-static int get_stats(int *in, int *out)
+static int get_stats(MLData *mldata, int *in, int *out)
 {
-	if (use_ISDN)
-		return get_ISDN_stats(in, out);
+	if (mldata->use_ISDN)
+		return get_ISDN_stats(mldata, in, out);
 	else
-		return get_modem_stats(in, out);
+		return get_modem_stats(mldata, in, out);
 }
 
-static gint get_ISDN_connect_time(gint recalc_start)
+static gint get_ISDN_connect_time(MLData *mldata, gint recalc_start)
 {
 	/* this is a bad hack just to get some (not very accurate) timing */
-	static time_t start_time = (time_t)0;
 
 	if (recalc_start)
 		{
-		start_time = time(0);
+		mldata->start_time = time(0);
 		}
 
-	if (start_time != (time_t)0)
-		return (gint)(time(0) - start_time);
+	if (mldata->start_time != (time_t)0)
+		return (gint)(time(0) - mldata->start_time);
 	else
 		return -1;
 }
 
-static gint get_modem_connect_time(gint recalc_start)
+static gint get_modem_connect_time(MLData *mldata, gint recalc_start)
 {
-	static time_t start_time = (time_t)0;
 	struct stat st;
 
 	if (recalc_start)
 		{
-		if (stat (lock_file, &st) == 0)
-			start_time = st.st_mtime;
+		if (stat (mldata->lock_file, &st) == 0)
+			mldata->start_time = st.st_mtime;
 		else
-			start_time = (time_t)0;
+			mldata->start_time = (time_t)0;
 		}
 
-	if (start_time != (time_t)0)
-		return (gint)(time(0) - start_time);
+	if (mldata->start_time != (time_t)0)
+		return (gint)(time(0) - mldata->start_time);
 	else
 		return -1;
 }
 
-static gint get_connect_time(gint recalc_start)
+static gint get_connect_time(MLData *mldata, gint recalc_start)
 {
-	if (use_ISDN)
-		return get_ISDN_connect_time(recalc_start);
+	if (mldata->use_ISDN)
+		return get_ISDN_connect_time(mldata, recalc_start);
 	else
-		return get_modem_connect_time(recalc_start);
+		return get_modem_connect_time(mldata, recalc_start);
 }
 
 static void command_connect_cb(gint button, gpointer data)
 {
-	confirm_dialog = FALSE;
-	if (!button) gnome_execute_shell(NULL, command_connect);
+	MLData *mldata = data;
+	mldata->confirm_dialog = FALSE;
+	if (!button) gnome_execute_shell(NULL, mldata->command_connect);
         return;
-        data = NULL;
 }
 
 static void command_disconnect_cb(gint button, gpointer data)
 {
-	confirm_dialog = FALSE;
-	if (!button) gnome_execute_shell(NULL, command_disconnect);
+	MLData *mldata = data;
+	mldata->confirm_dialog = FALSE;
+	if (!button) gnome_execute_shell(NULL, mldata->command_disconnect);
         return;
-        data = NULL;
 }
 
 static void confirm_dialog_destroy(GtkObject *o, gpointer data)
 {
- 	confirm_dialog = FALSE;
+	MLData *mldata = data;
+ 	mldata->confirm_dialog = FALSE;
         return;
         o = NULL;
 }
 
 static void dial_cb(GtkWidget *widget, gpointer data)
 {
+	MLData *mldata = data;
 	GtkWidget *dialog;
 
-	if (is_connected()) {
-	  if (ask_for_confirmation) {
-	    if (confirm_dialog) return;
-	    confirm_dialog = TRUE;
+	if (is_connected(mldata)) {
+	  if (mldata->ask_for_confirmation) {
+	    if (mldata->confirm_dialog) return;
+	    mldata->confirm_dialog = TRUE;
 	    dialog = gnome_question_dialog (_("You are currently connected.\n"
 					      "Do you want to disconnect?"),
 					    (GnomeReplyCallback)command_disconnect_cb,
-					    NULL);
+					    mldata);
 	    gtk_signal_connect (GTK_OBJECT (dialog), "destroy",
 				GTK_SIGNAL_FUNC (confirm_dialog_destroy),
-				NULL);
+				mldata);
 	  } else {
-	    gnome_execute_shell(NULL, command_disconnect);
-	    confirm_dialog = FALSE;
+	    gnome_execute_shell(NULL, mldata->command_disconnect);
+	    mldata->confirm_dialog = FALSE;
 	  }
 	} else {
-	  if (ask_for_confirmation) {
-	    if (confirm_dialog) return;
-	    confirm_dialog = TRUE;
+	  if (mldata->ask_for_confirmation) {
+	    if (mldata->confirm_dialog) return;
+	    mldata->confirm_dialog = TRUE;
 	    dialog = gnome_question_dialog (_("Do you want to connect?"),
 					    (GnomeReplyCallback)command_connect_cb,
-					    NULL);
+					    mldata);
 	    gtk_signal_connect (GTK_OBJECT (dialog), "destroy",
 				GTK_SIGNAL_FUNC (confirm_dialog_destroy),
-				NULL);
+				mldata);
 	  } else {
-	    gnome_execute_shell(NULL, command_connect);
-	    confirm_dialog = FALSE;
+	    gnome_execute_shell(NULL, mldata->command_connect);
+	    mldata->confirm_dialog = FALSE;
 	  }
 	}
 }
 
-static void update_tooltip(int connected, int rx, int tx)
+static void update_tooltip(MLData *mldata, int connected, int rx, int tx)
 {
 	gchar *text;
-#ifdef FIXME
 
 	if (connected)
 		{
 		gint t;
 		gint h, m;
 
-		t = get_connect_time(FALSE);
+		t = get_connect_time(mldata, FALSE);
 
 		h = t / 3600;
 		m = (t - (h * 3600)) / 60;
@@ -606,9 +511,9 @@ static void update_tooltip(int connected, int rx, int tx)
 		text = g_strdup(_("not connected"));
 		}
 
-	applet_widget_set_widget_tooltip(APPLET_WIDGET(global_applet), button, text);
+	gtk_tooltips_set_tip(mldata->tooltips, mldata->applet, text, NULL);
 	g_free(text);
-#endif
+
 }
 
 
@@ -618,28 +523,28 @@ static void update_tooltip(int connected, int rx, int tx)
  *-------------------------------------
  */
 
-static void redraw_display(void)
+static void redraw_display(MLData *mldata)
 {
-	gdk_window_set_back_pixmap(display_area->window,display,FALSE);
+	gdk_window_set_back_pixmap(mldata->display_area->window,mldata->display,FALSE);
 
-	gdk_window_clear(display_area->window);
+	gdk_window_clear(mldata->display_area->window);
 
 }
 
-static void draw_digit(gint n, gint x, gint y)
+static void draw_digit(MLData *mldata, gint n, gint x, gint y)
 {
-	gdk_draw_pixmap (display, display_area->style->fg_gc[GTK_WIDGET_STATE(display_area)],
-			 digits, n * 5, 0, x, y, 5, 7);
+	gdk_draw_pixmap (mldata->display, mldata->display_area->style->fg_gc[GTK_WIDGET_STATE(mldata->display_area)],
+			 mldata->digits, n * 5, 0, x, y, 5, 7);
 }
 
-static void draw_timer(gint seconds, gint force)
+static void draw_timer(MLData *mldata, gint seconds, gint force)
 {
 	gint x, y;
 
-	if (!layout_current || layout_current->time_x < 0) return;
+	if (!mldata->layout_current || mldata->layout_current->time_x < 0) return;
 
-	x = layout_current->time_x;
-	y = layout_current->time_y;
+	x = mldata->layout_current->time_x;
+	y = mldata->layout_current->time_y;
 
 	if (seconds > -1)
 		{
@@ -650,37 +555,37 @@ static void draw_timer(gint seconds, gint force)
 		a = seconds / 60;
 		b = seconds % 60;
 
-		draw_digit(a / 10, x, y);
-		draw_digit(a % 10, x+5, y);
+		draw_digit(mldata, a / 10, x, y);
+		draw_digit(mldata, a % 10, x+5, y);
 
-		draw_digit(b / 10, x+15, y);
-		draw_digit(b % 10, x+20, y);
+		draw_digit(mldata, b / 10, x+15, y);
+		draw_digit(mldata, b % 10, x+20, y);
 
-		draw_digit(15, x+10, y);
+		draw_digit(mldata, 15, x+10, y);
 		}
 	else
 		{
 		if (force)
 			{
-			draw_digit(10, x, y);
-			draw_digit(10, x+5, y);
+			draw_digit(mldata, 10, x, y);
+			draw_digit(mldata, 10, x+5, y);
 
-			draw_digit(10, x+15, y);
-			draw_digit(10, x+20, y);
+			draw_digit(mldata, 10, x+15, y);
+			draw_digit(mldata, 10, x+20, y);
 			}
 
-		draw_digit(14, x+10, y);
+		draw_digit(mldata, 14, x+10, y);
 		}
 }
 
-static void draw_bytes(gint bytes)
+static void draw_bytes(MLData *mldata, gint bytes)
 {
 	gint x, y;
 
-	if (!layout_current || layout_current->bytes_x < 0) return;
+	if (!mldata->layout_current || mldata->layout_current->bytes_x < 0) return;
 
-	x = layout_current->bytes_x;
-	y = layout_current->bytes_y;
+	x = mldata->layout_current->bytes_x;
+	y = mldata->layout_current->bytes_y;
 
 	if (bytes > -1)
 		{
@@ -688,156 +593,152 @@ static void draw_bytes(gint bytes)
 		if (bytes > 9999)
 			{
 			bytes /= 1024;
-			draw_digit(12, x + 20, y);
+			draw_digit(mldata, 12, x + 20, y);
 			}
 		else
 			{
-			draw_digit(13, x + 20, y);
+			draw_digit(mldata, 13, x + 20, y);
 			}
 
 		dig = bytes / 1000;
-		draw_digit(dig, x, y);
+		draw_digit(mldata, dig, x, y);
 		bytes %= 1000;
 		dig = bytes / 100;
-		draw_digit(dig, x+5, y);
+		draw_digit(mldata, dig, x+5, y);
 		bytes %= 100;
 		dig = bytes / 10;
-		draw_digit(dig, x+10, y);
+		draw_digit(mldata, dig, x+10, y);
 		bytes %= 10;
-		draw_digit(bytes, x+15, y);
+		draw_digit(mldata, bytes, x+15, y);
 		}
 	else
 		{
-		draw_digit(10, x, y);
-		draw_digit(10, x+5, y);
-		draw_digit(10, x+10, y);
-		draw_digit(10, x+15, y);
+		draw_digit(mldata, 10, x, y);
+		draw_digit(mldata, 10, x+5, y);
+		draw_digit(mldata, 10, x+10, y);
+		draw_digit(mldata, 10, x+15, y);
 
-		draw_digit(11, x+20, y);
+		draw_digit(mldata, 11, x+20, y);
 		}
 }
 
-static gint update_extra_info(int rx_bytes, gint force)
-{
-	static gint old_timer = -1;
-	static gint old_bytes = -1;
-	static gint old_rx_bytes = -1;
-	static gint update_counter = 0;
+static gint update_extra_info(MLData *mldata, int rx_bytes, gint force)
+{	
 	gint redraw = FALSE;
 	gint new_timer;
 	gint new_bytes;
 
-	if (!layout_current || (layout_current->bytes_x < 0 && layout_current->time_x < 0)) return FALSE;
+	if (!mldata->layout_current || (mldata->layout_current->bytes_x < 0 && mldata->layout_current->time_x < 0)) return FALSE;
 
-	update_counter++;
-	if (update_counter < UPDATE_DELAY && !force) return FALSE;
-	update_counter = 0;
+	mldata->update_counter++;
+	if (mldata->update_counter < mldata->UPDATE_DELAY && !force) return FALSE;
+	mldata->update_counter = 0;
 
 	if (rx_bytes != -1)
-		new_timer = get_connect_time(FALSE);
+		new_timer = get_connect_time(mldata, FALSE);
 	else
 		new_timer = -1;
 
-	if (new_timer != old_timer)
+	if (new_timer != mldata->old_timer)
 		{
-		old_timer = new_timer;
+		mldata->old_timer = new_timer;
 		redraw = TRUE;
-		draw_timer(new_timer, FALSE);
+		draw_timer(mldata, new_timer, FALSE);
 		}
 	else if (force)
 		{
 		redraw = TRUE;
-		draw_timer(old_timer, TRUE);
+		draw_timer(mldata, mldata->old_timer, TRUE);
 		}
 
-	if (rx_bytes == -1 || old_rx_bytes == -1)
+	if (rx_bytes == -1 || mldata->old_rx_bytes == -1)
 		{
 		new_bytes = -1;
 		}
 	else
 		{
-		new_bytes = rx_bytes - old_rx_bytes;
+		new_bytes = rx_bytes - mldata->old_rx_bytes;
 		}
 
-	if (new_bytes != old_bytes)
+	if (new_bytes != mldata->old_bytes)
 		{
-		old_bytes = new_bytes;
+		mldata->old_bytes = new_bytes;
 		redraw = TRUE;
-		draw_bytes(new_bytes);
+		draw_bytes(mldata, new_bytes);
 		}
 	else if (force)
 		{
 		redraw = TRUE;
-		draw_bytes(old_bytes);
+		draw_bytes(mldata, mldata->old_bytes);
 		}
 
-	old_rx_bytes = rx_bytes;
+	mldata->old_rx_bytes = rx_bytes;
 
 	return redraw;
 }
 
-static void draw_load(int rxbytes, int txbytes)
+static void draw_load(MLData *mldata, int rxbytes, int txbytes)
 {
 	int load_max = 0;
 	int i;
 	int x, y, dot_height;
 	float bytes_per_dot;
 
-	if (!layout_current) return;
+	if (!mldata->layout_current) return;
 
-	x = layout_current->load_x + 1;
-	y = layout_current->load_y + layout_current->load_h - 2;
-	dot_height = layout_current->load_h - 2;
+	x = mldata->layout_current->load_x + 1;
+	y = mldata->layout_current->load_y + mldata->layout_current->load_h - 2;
+	dot_height = mldata->layout_current->load_h - 2;
 
 	/* sanity check: */
 	if (rxbytes <0) rxbytes = 0;
 	if (txbytes <0) txbytes = 0;
 
-	load_hist_pos++;
-	if (load_hist_pos > 119) load_hist_pos = 0;
+	mldata->load_hist_pos++;
+	if (mldata->load_hist_pos > 119) mldata->load_hist_pos = 0;
 	if (txbytes > rxbytes)
-		load_hist[load_hist_pos] = txbytes;
+		mldata->load_hist[mldata->load_hist_pos] = txbytes;
 	else
-		load_hist[load_hist_pos] = rxbytes;
+		mldata->load_hist[mldata->load_hist_pos] = rxbytes;
 	for (i=0;i<120;i++)
-		if (load_max < load_hist[i]) load_max = load_hist[i];
+		if (load_max < mldata->load_hist[i]) load_max = mldata->load_hist[i];
 
 	for (i=0;i<15;i++)
 		{
-		load_hist_rx[i] = load_hist_rx[i+1];
-		load_hist_tx[i] = load_hist_tx[i+1];
+		mldata->load_hist_rx[i] = mldata->load_hist_rx[i+1];
+		mldata->load_hist_tx[i] = mldata->load_hist_tx[i+1];
 		}
-	load_hist_rx[15] = rxbytes;
-	load_hist_tx[15] = txbytes;
+	mldata->load_hist_rx[15] = rxbytes;
+	mldata->load_hist_tx[15] = txbytes;
 
 	if (load_max < dot_height)
 		bytes_per_dot = 1.0;
 	else
 		bytes_per_dot = (float)load_max / (dot_height - 1);
 
-	gdk_gc_set_foreground( gc, &display_color[COLOR_TEXT_BG] );
-	gdk_draw_rectangle(display, gc, TRUE, x, y - dot_height + 1, 16, dot_height);
+	gdk_gc_set_foreground( mldata->gc, &mldata->display_color[COLOR_TEXT_BG] );
+	gdk_draw_rectangle(mldata->display, mldata->gc, TRUE, x, y - dot_height + 1, 16, dot_height);
 
-	gdk_gc_set_foreground( gc, &display_color[COLOR_RX] );
+	gdk_gc_set_foreground( mldata->gc, &mldata->display_color[COLOR_RX] );
 	for (i=0;i<16;i++)
 		{
-		if( load_hist_rx[i] )
-			gdk_draw_line(display, gc, x+i, y ,
-				x+i, y - ((float)load_hist_rx[i] / bytes_per_dot) + 1);
+		if( mldata->load_hist_rx[i] )
+			gdk_draw_line(mldata->display, mldata->gc, x+i, y ,
+				x+i, y - ((float)mldata->load_hist_rx[i] / bytes_per_dot) + 1);
 		}
 
-	gdk_gc_set_foreground( gc, &display_color[COLOR_TX] );
+	gdk_gc_set_foreground( mldata->gc, &mldata->display_color[COLOR_TX] );
 	for (i=0;i<16;i++)
 		{
-		if( load_hist_tx[i] )
-			gdk_draw_line(display, gc, x+i, y,
-				x+i, y - ((float)load_hist_tx[i] / bytes_per_dot) + 1);
+		if( mldata->load_hist_tx[i] )
+			gdk_draw_line(mldata->display, mldata->gc, x+i, y,
+				x+i, y - ((float)mldata->load_hist_tx[i] / bytes_per_dot) + 1);
 		}
 
-	redraw_display();
+	redraw_display(mldata);
 }
 
-static void draw_light(int lit, int x, int y, ColorType color)
+static void draw_light(MLData *mldata, int lit, int x, int y, ColorType color)
 {
 	gint p;
 
@@ -849,108 +750,106 @@ static void draw_light(int lit, int x, int y, ColorType color)
 	if (color == COLOR_RX) p += 18;
 	
 
-	gdk_draw_pixmap (display, display_area->style->fg_gc[GTK_WIDGET_STATE(display_area)],
-				 lights, 0, p, x, y, 9, 9);
+	gdk_draw_pixmap (mldata->display, mldata->display_area->style->fg_gc[GTK_WIDGET_STATE(mldata->display_area)],
+				 mldata->lights, 0, p, x, y, 9, 9);
 }
 
-static void update_button(StatusType type)
+static void update_button(MLData *mldata, StatusType type)
 {
 	switch(type)
 		{
 		case STATUS_ON:
-			gtk_pixmap_set(GTK_PIXMAP(button_pixmap), button_on, button_mask);
+			gtk_pixmap_set(GTK_PIXMAP(mldata->button_pixmap), mldata->button_on, mldata->button_mask);
 			break;
 		case STATUS_WAIT:
-			gtk_pixmap_set(GTK_PIXMAP(button_pixmap), button_wait, button_mask);
+			gtk_pixmap_set(GTK_PIXMAP(mldata->button_pixmap), mldata->button_wait, mldata->button_mask);
 			break;
 		default:
-			gtk_pixmap_set(GTK_PIXMAP(button_pixmap), button_off, button_mask);
+			gtk_pixmap_set(GTK_PIXMAP(mldata->button_pixmap), mldata->button_off, mldata->button_mask);
 			break;
 		}
 }
 
 /* to minimize drawing (pixmap manipulations) we only draw a light if it has changed */
-static void update_lights(int rx, int tx, int cd, int rx_bytes, gint force)
-{
-	static int o_rx = FALSE;
-	static int o_tx = FALSE;
-	static int o_cd = FALSE;
+static void update_lights(MLData *mldata, int rx, int tx, int cd, int rx_bytes, gint force)
+{	
 	int redraw_required = FALSE;
 
-	if (!layout_current) return;
+	if (!mldata->layout_current) return;
 
-	if (rx != o_rx || force)
+	if (rx != mldata->o_rx || force)
 		{
-		o_rx = rx;
-		draw_light(rx , layout_current->rx_x, layout_current->rx_y, COLOR_RX);
+		mldata->o_rx = rx;
+		draw_light(mldata, rx , mldata->layout_current->rx_x, mldata->layout_current->rx_y, COLOR_RX);
 		redraw_required = TRUE;
 		}
-	if (tx != o_tx || force)
+	if (tx != mldata->o_tx || force)
 		{
-		o_tx = tx;
-		draw_light(tx, layout_current->tx_x, layout_current->tx_y, COLOR_TX);
+		mldata->o_tx = tx;
+		draw_light(mldata, tx, mldata->layout_current->tx_x, mldata->layout_current->tx_y, COLOR_TX);
 		redraw_required = TRUE;
 		}
-	if ((cd != o_cd && !button_blinking) || force)
+	if ((cd != mldata->o_cd && !mldata->button_blinking) || force)
 		{
-		o_cd = cd;
-		update_button(cd ? STATUS_ON : STATUS_OFF);
+		mldata->o_cd = cd;
+		update_button(mldata, cd ? STATUS_ON : STATUS_OFF);
 		}
 
 	/* we do the extra info redraws here too */
-	if (show_extra_info && update_extra_info(rx_bytes, force))
+	if (mldata->show_extra_info && update_extra_info(mldata, rx_bytes, force))
 		{
 		redraw_required = TRUE;
 		}
 
-	if (redraw_required) redraw_display();
+	if (redraw_required) redraw_display(mldata);
 }
 
 static gint button_blink_cb(gpointer data)
 {
-	if (button_blink_on && status_wait_blink)
+	MLData *mldata = data;
+	if (mldata->button_blink_on && mldata->status_wait_blink)
 		{
-		button_blink_on = FALSE;
+		mldata->button_blink_on = FALSE;
 		}
 	else
 		{
-		button_blink_on = TRUE;
+		mldata->button_blink_on = TRUE;
 		}
-	update_button(button_blink_on ? STATUS_WAIT : STATUS_OFF);
+	update_button(mldata, mldata->button_blink_on ? STATUS_WAIT : STATUS_OFF);
 
 	return TRUE;
 	data = NULL;
 }
 
-static void button_blink(gint blink, gint status)
+static void button_blink(MLData *mldata, gint blink, gint status)
 {
-	if (button_blinking == blink) return;
+	if (mldata->button_blinking == blink) return;
 
 	if (blink)
 		{
-		if (button_blink_id == -1)
+		if (mldata->button_blink_id == -1)
 			{
-			button_blink_id = gtk_timeout_add(BUTTON_BLINK_INTERVAL, button_blink_cb, NULL);
+			mldata->button_blink_id = gtk_timeout_add(BUTTON_BLINK_INTERVAL, button_blink_cb, mldata);
 			}
 		}
 	else
 		{
-		if (button_blink_id != -1)
+		if (mldata->button_blink_id != -1)
 			{
-			gtk_timeout_remove(button_blink_id);
-			button_blink_id = -1;
+			gtk_timeout_remove(mldata->button_blink_id);
+			mldata->button_blink_id = -1;
 			}
 		}
 
-	button_blinking = blink;
-	button_blink_on = status;
+	mldata->button_blinking = blink;
+	mldata->button_blink_on = status;
 	if (blink)
 		{
-		update_button(button_blink_on ? STATUS_WAIT : STATUS_OFF);
+		update_button(mldata, mldata->button_blink_on ? STATUS_WAIT : STATUS_OFF);
 		}	
 	else
 		{
-		update_button(button_blink_on ? STATUS_ON : STATUS_OFF);
+		update_button(mldata, mldata->button_blink_on ? STATUS_ON : STATUS_OFF);
 		}
 }
 
@@ -961,40 +860,36 @@ static void button_blink(gint blink, gint status)
  *-------------------------------------
  */
 
-static gint update_display(void)
-{
-	static int old_rx,old_tx;
-	static int load_count;
-	static int modem_was_on = FALSE;
-	static gint last_time_was_connected = FALSE;
+static gint update_display(MLData *mldata)
+{	
 	int rx, tx;
 	int light_rx = FALSE;
 	int light_tx = FALSE;
 
-	load_count++;
+	mldata->load_count++;
 
-	if (is_connected())
+	if (is_connected(mldata))
 		{
-		if (!last_time_was_connected)
+		if (!mldata->last_time_was_connected)
 			{
-			get_connect_time(TRUE); /* reset start time */
-			last_time_was_connected = TRUE;
+			get_connect_time(mldata, TRUE); /* reset start time */
+			mldata->last_time_was_connected = TRUE;
 			}
 
-		if (!get_stats (&rx, &tx) || (rx == 0 && tx == 0))
+		if (!get_stats (mldata, &rx, &tx) || (rx == 0 && tx == 0))
 			{
-			old_rx = old_tx = 0;
-			button_blink(TRUE, TRUE);
+			mldata->old_rx = mldata->old_tx = 0;
+			button_blink(mldata, TRUE, TRUE);
 			}
 		else
 			{
-			button_blink(FALSE, TRUE);
-			if (rx > old_rx) light_rx = TRUE;
-			if (tx > old_tx) light_tx = TRUE;
+			button_blink(mldata, FALSE, TRUE);
+			if (rx > mldata->old_rx) light_rx = TRUE;
+			if (tx > mldata->old_tx) light_tx = TRUE;
 			}
 		
-		update_lights(light_rx, light_tx, TRUE, rx, FALSE);
-		if (load_count > UPDATE_DELAY * 2)
+		update_lights(mldata, light_rx, light_tx, TRUE, rx, FALSE);
+		if (mldata->load_count > mldata->UPDATE_DELAY * 2)
 			{
 			static int load_rx, load_tx;
 			static int tooltip_counter;
@@ -1002,7 +897,7 @@ static gint update_display(void)
 			tooltip_counter++;
 			if (tooltip_counter > 10)
 				{
-				update_tooltip(TRUE, rx, tx);
+				update_tooltip(mldata,TRUE, rx, tx);
 				tooltip_counter = 0;
 				}
 
@@ -1010,39 +905,39 @@ static gint update_display(void)
 	started. if it was, we set the past bytes to the current bytes. Otherwise
 	the first load calculation could have a very high number of bytes.
 	(the bytes that accumulated before program start will make max_load too high) */
-			if (!modem_was_on)
+			if (!mldata->modem_was_on)
 				{
 				load_rx = rx;
 				load_tx = tx;
-				update_tooltip(TRUE,rx,tx);
-				modem_was_on = TRUE;
+				update_tooltip(mldata, TRUE,rx,tx);
+				mldata->modem_was_on = TRUE;
 				}
 		
-			load_count = 0;
-			draw_load(rx - load_rx, tx - load_tx);
+			mldata->load_count = 0;
+			draw_load(mldata, rx - load_rx, tx - load_tx);
 			load_rx = rx;
 			load_tx = tx;
 			}
-		old_rx = rx;
-		old_tx = tx;
+		mldata->old_rx = rx;
+		mldata->old_tx = tx;
 		}
 	else
 		{
-		if (load_count > UPDATE_DELAY * 2)
+		if (mldata->load_count > mldata->UPDATE_DELAY * 2)
 			{
-			load_count = 0;
-			draw_load(0,0);
+			mldata->load_count = 0;
+			draw_load(mldata, 0,0);
 			}
-		button_blink(FALSE, FALSE);
-		update_lights(FALSE, FALSE, FALSE, -1, FALSE);
-		if (modem_was_on)
+		button_blink(mldata, FALSE, FALSE);
+		update_lights(mldata, FALSE, FALSE, FALSE, -1, FALSE);
+		if (mldata->modem_was_on)
 			{
-			update_tooltip(FALSE,0,0);
-			modem_was_on = FALSE;
+			update_tooltip(mldata, FALSE,0,0);
+			mldata->modem_was_on = FALSE;
 			}
-		if (last_time_was_connected)
+		if (mldata->last_time_was_connected)
 			{
-			last_time_was_connected = FALSE;
+			mldata->last_time_was_connected = FALSE;
 			}
 		}
 
@@ -1056,16 +951,16 @@ static gint update_display(void)
  */
 
 /* start or change the update callback timeout interval */
-void start_callback_update(void)
+void start_callback_update(MLData *mldata)
 {
 	gint delay;
-	delay = 1000 / UPDATE_DELAY;
-	if (update_timeout_id) gtk_timeout_remove(update_timeout_id);
-	update_timeout_id = gtk_timeout_add(delay, (GtkFunction)update_display, NULL);
+	delay = 1000 / mldata->UPDATE_DELAY;
+	if (mldata->update_timeout_id) gtk_timeout_remove(mldata->update_timeout_id);
+	mldata->update_timeout_id = gtk_timeout_add(delay, (GtkFunction)update_display, mldata);
 
 }
 
-static void draw_shadow_box(GdkPixmap *window, gint x, gint y, gint w, gint h,
+static void draw_shadow_box(MLData *mldata, GdkPixmap *window, gint x, gint y, gint w, gint h,
 			    gint etched_in, GdkGC *bgc)
 {
 	GdkGC *gc1;
@@ -1073,13 +968,13 @@ static void draw_shadow_box(GdkPixmap *window, gint x, gint y, gint w, gint h,
 
 	if (!etched_in)
 		{
-		gc1 = global_applet->style->light_gc[GTK_STATE_NORMAL];
-		gc2 = global_applet->style->dark_gc[GTK_STATE_NORMAL];
+		gc1 = mldata->applet->style->light_gc[GTK_STATE_NORMAL];
+		gc2 = mldata->applet->style->dark_gc[GTK_STATE_NORMAL];
 		}
 	else
 		{
-		gc1 = global_applet->style->dark_gc[GTK_STATE_NORMAL];
-		gc2 = global_applet->style->light_gc[GTK_STATE_NORMAL];
+		gc1 = mldata->applet->style->dark_gc[GTK_STATE_NORMAL];
+		gc2 = mldata->applet->style->light_gc[GTK_STATE_NORMAL];
 		}
 
 	gdk_draw_line(window, gc1, x, y + h - 1, x, y);
@@ -1094,56 +989,56 @@ static void draw_shadow_box(GdkPixmap *window, gint x, gint y, gint w, gint h,
 
 }
 
-static void create_background_pixmap(void)
+static void create_background_pixmap(MLData *mldata)
 {
-	if (!layout_current) return;
+	if (!mldata->layout_current) return;
 
-	if (display) gdk_pixmap_unref(display);
+	if (mldata->display) gdk_pixmap_unref(mldata->display);
 
-	display = gdk_pixmap_new(display_area->window,
-				 layout_current->display_w, layout_current->display_h, -1);
+	mldata->display = gdk_pixmap_new(mldata->display_area->window,
+				 mldata->layout_current->display_w, mldata->layout_current->display_h, -1);
 
 	/* main border */
-	draw_shadow_box(display, 0, 0, layout_current->display_w, layout_current->display_h,
-			FALSE, global_applet->style->bg_gc[GTK_STATE_NORMAL]);
+	draw_shadow_box(mldata, mldata->display, 0, 0, mldata->layout_current->display_w, mldata->layout_current->display_h,
+			FALSE, mldata->applet->style->bg_gc[GTK_STATE_NORMAL]);
 
 	/* load border */
-	gdk_gc_set_foreground( gc, &display_color[COLOR_TEXT_BG] );
-	draw_shadow_box(display, layout_current->load_x, layout_current->load_y,
-			layout_current->load_w, layout_current->load_h, TRUE, gc);
+	gdk_gc_set_foreground( mldata->gc, &mldata->display_color[COLOR_TEXT_BG] );
+	draw_shadow_box(mldata, mldata->display, mldata->layout_current->load_x, mldata->layout_current->load_y,
+			mldata->layout_current->load_w, mldata->layout_current->load_h, TRUE, mldata->gc);
 
 	/* text border(s) */
-	if (layout_current->bytes_x >= 0)
+	if (mldata->layout_current->bytes_x >= 0)
 		{
-		draw_shadow_box(display, layout_current->bytes_x - 1, layout_current->bytes_y - 2,
-				28, layout_current->merge_extended_box ? 20 : 11,
-				TRUE, gc);
+		draw_shadow_box(mldata, mldata->display, mldata->layout_current->bytes_x - 1, mldata->layout_current->bytes_y - 2,
+				28, mldata->layout_current->merge_extended_box ? 20 : 11,
+				TRUE, mldata->gc);
 		}
-	if (layout_current->time_x >= 0 && !layout_current->merge_extended_box)
+	if (mldata->layout_current->time_x >= 0 && !mldata->layout_current->merge_extended_box)
 		{
-		draw_shadow_box(display, layout_current->time_x - 1, layout_current->time_y - 2,
-				28, 11, TRUE, gc);
+		draw_shadow_box(mldata, mldata->display, mldata->layout_current->time_x - 1, mldata->layout_current->time_y - 2,
+				28, 11, TRUE, mldata->gc);
 		}
 }
 
-static void draw_button_light(GdkPixmap *pixmap, gint x, gint y, gint s, gint etched_in, ColorType color)
+static void draw_button_light(MLData *mldata, GdkPixmap *pixmap, gint x, gint y, gint s, gint etched_in, ColorType color)
 {
 	GdkGC *gc1;
 	GdkGC *gc2;
 
 	s -= 8;
 
-	gdk_gc_set_foreground( gc, &display_color[color] );
+	gdk_gc_set_foreground( mldata->gc, &mldata->display_color[color] );
 
 	if (etched_in)
 		{
-		gc1 = global_applet->style->dark_gc[GTK_STATE_NORMAL];
-		gc2 = global_applet->style->light_gc[GTK_STATE_NORMAL];
+		gc1 = mldata->applet->style->dark_gc[GTK_STATE_NORMAL];
+		gc2 = mldata->applet->style->light_gc[GTK_STATE_NORMAL];
 		}
 	else
 		{
-		gc1 = global_applet->style->light_gc[GTK_STATE_NORMAL];
-		gc2 = global_applet->style->dark_gc[GTK_STATE_NORMAL];
+		gc1 = mldata->applet->style->light_gc[GTK_STATE_NORMAL];
+		gc2 = mldata->applet->style->dark_gc[GTK_STATE_NORMAL];
 		}
 
 	/* gdk_draw_arc was always off by one in my attempts (?) */
@@ -1158,12 +1053,12 @@ static void draw_button_light(GdkPixmap *pixmap, gint x, gint y, gint s, gint et
 	gdk_draw_line(pixmap, gc2, x + 6 + s, y + 2, x + 6 + s, y + 5 + s);
 	gdk_draw_line(pixmap, gc2, x + 2, y + 6 + s, x + 5 + s, y + 6 + s);
 
-	gdk_draw_rectangle(pixmap, gc, TRUE, x + 3, y + 1, 2 + s, 6 + s);
-	gdk_draw_rectangle(pixmap, gc, TRUE, x + 1, y + 3, 6 + s, 2 + s);
-	gdk_draw_rectangle(pixmap, gc, TRUE, x + 2, y + 2, 4 + s, 4 + s);
+	gdk_draw_rectangle(pixmap, mldata->gc, TRUE, x + 3, y + 1, 2 + s, 6 + s);
+	gdk_draw_rectangle(pixmap, mldata->gc, TRUE, x + 1, y + 3, 6 + s, 2 + s);
+	gdk_draw_rectangle(pixmap, mldata->gc, TRUE, x + 2, y + 2, 4 + s, 4 + s);
 }
 
-static void pixmap_set_colors(GdkPixmap *pixmap, GdkColor *bg, GdkColor *fg, GdkColor *mid)
+static void pixmap_set_colors(MLData *mldata, GdkPixmap *pixmap, GdkColor *bg, GdkColor *fg, GdkColor *mid)
 {
 	gint w;
 	gint h;
@@ -1189,7 +1084,7 @@ static void pixmap_set_colors(GdkPixmap *pixmap, GdkColor *bg, GdkColor *fg, Gdk
 			pixel = gdk_image_get_pixel(image, x, y);
 			if (pixel == bg_pixel)
 				{
-				gdk_gc_set_foreground( gc, bg );
+				gdk_gc_set_foreground( mldata->gc, bg );
 				}
 			else if (!have_fg || pixel == fg_pixel)
 				{
@@ -1198,206 +1093,200 @@ static void pixmap_set_colors(GdkPixmap *pixmap, GdkColor *bg, GdkColor *fg, Gdk
 					have_fg = TRUE;
 					fg_pixel = pixel;
 					}
-				gdk_gc_set_foreground( gc, fg );
+				gdk_gc_set_foreground( mldata->gc, fg );
 				}
 			else
 				{
-				gdk_gc_set_foreground( gc, mid );
+				gdk_gc_set_foreground( mldata->gc, mid );
 				}
-			gdk_draw_point(pixmap, gc, x, y);
+			gdk_draw_point(pixmap, mldata->gc, x, y);
 			}
 		}
 
 	gdk_image_destroy(image);
 }
 
-static void update_pixmaps(void)
+static void update_pixmaps(MLData *mldata)
 {
 	GtkStyle *style;
-	style = gtk_widget_get_style(global_applet);
+	style = gtk_widget_get_style(mldata->applet);
 
-	if (!digits)
+	if (!mldata->digits)
 		{
-		digits = gdk_pixmap_create_from_xpm_d(display_area->window, NULL,
+		mldata->digits = gdk_pixmap_create_from_xpm_d(mldata->display_area->window, NULL,
 			&style->bg[GTK_STATE_NORMAL], (gchar **)digits_xpm);
 		}
 	/* change digit colors */
-	pixmap_set_colors(digits,
-			  &display_color[COLOR_TEXT_BG],
-			  &display_color[COLOR_TEXT_FG],
-			  &display_color[COLOR_TEXT_MID]);
+	pixmap_set_colors(mldata, mldata->digits,
+			  &mldata->display_color[COLOR_TEXT_BG],
+			  &mldata->display_color[COLOR_TEXT_FG],
+			  &mldata->display_color[COLOR_TEXT_MID]);
 
-	if (!button_on) button_on = gdk_pixmap_new(display_area->window, 10, 10, -1);
-	if (!button_off) button_off = gdk_pixmap_new(display_area->window, 10, 10, -1);
-	if (!button_wait) button_wait = gdk_pixmap_new(display_area->window, 10, 10, -1);
-	if (!button_mask)
+	if (!mldata->button_on) mldata->button_on = gdk_pixmap_new(mldata->display_area->window, 10, 10, -1);
+	if (!mldata->button_off) mldata->button_off = gdk_pixmap_new(mldata->display_area->window, 10, 10, -1);
+	if (!mldata->button_wait) mldata->button_wait = gdk_pixmap_new(mldata->display_area->window, 10, 10, -1);
+	if (!mldata->button_mask)
 		{
 		GdkGC *mask_gc = NULL;
 
-		button_mask = gdk_pixmap_new(display_area->window, 10, 10, 1);
+		mldata->button_mask = gdk_pixmap_new(mldata->display_area->window, 10, 10, 1);
 
-		mask_gc = gdk_gc_new(button_mask);
+		mask_gc = gdk_gc_new(mldata->button_mask);
 
 		gdk_gc_set_foreground(mask_gc, &style->black);
-		gdk_draw_rectangle(button_mask, mask_gc, TRUE, 0, 0, 10, 10);
+		gdk_draw_rectangle(mldata->button_mask, mask_gc, TRUE, 0, 0, 10, 10);
 		gdk_gc_set_foreground(mask_gc, &style->white);
 		/* gdk_draw_arc was always off by one in my attempts (?) */
-		gdk_draw_rectangle(button_mask, mask_gc, TRUE, 3, 0, 4, 10);
-		gdk_draw_rectangle(button_mask, mask_gc, TRUE, 0, 3, 10, 4);
-		gdk_draw_rectangle(button_mask, mask_gc, TRUE, 2, 1, 6, 8);
-		gdk_draw_rectangle(button_mask, mask_gc, TRUE, 1, 2, 8, 6);
+		gdk_draw_rectangle(mldata->button_mask, mask_gc, TRUE, 3, 0, 4, 10);
+		gdk_draw_rectangle(mldata->button_mask, mask_gc, TRUE, 0, 3, 10, 4);
+		gdk_draw_rectangle(mldata->button_mask, mask_gc, TRUE, 2, 1, 6, 8);
+		gdk_draw_rectangle(mldata->button_mask, mask_gc, TRUE, 1, 2, 8, 6);
 
 		gdk_gc_unref(mask_gc);
 		}
 
-	draw_button_light(button_on, 0, 0, 10, TRUE, COLOR_STATUS_OK);
-	draw_button_light(button_off, 0, 0, 10, TRUE, COLOR_STATUS_BG);
-	draw_button_light(button_wait, 0, 0, 10, TRUE, COLOR_STATUS_WAIT);
+	draw_button_light(mldata, mldata->button_on, 0, 0, 10, TRUE, COLOR_STATUS_OK);
+	draw_button_light(mldata, mldata->button_off, 0, 0, 10, TRUE, COLOR_STATUS_BG);
+	draw_button_light(mldata, mldata->button_wait, 0, 0, 10, TRUE, COLOR_STATUS_WAIT);
 
-	if (!lights) lights = gdk_pixmap_new(display_area->window, 9, 36, -1);
+	if (!mldata->lights) mldata->lights = gdk_pixmap_new(mldata->display_area->window, 9, 36, -1);
 
-	gdk_draw_rectangle(lights, global_applet->style->bg_gc[GTK_STATE_NORMAL], TRUE, 0, 0, 9, 36);
-	draw_button_light(lights, 0, 0, 9, FALSE, COLOR_TX_BG);
-	draw_button_light(lights, 0, 9, 9, FALSE, COLOR_TX);
-	draw_button_light(lights, 0, 18, 9, FALSE, COLOR_RX_BG);
-	draw_button_light(lights, 0, 27, 9, FALSE, COLOR_RX);
+	gdk_draw_rectangle(mldata->lights, mldata->applet->style->bg_gc[GTK_STATE_NORMAL], TRUE, 0, 0, 9, 36);
+	draw_button_light(mldata, mldata->lights, 0, 0, 9, FALSE, COLOR_TX_BG);
+	draw_button_light(mldata, mldata->lights, 0, 9, 9, FALSE, COLOR_TX);
+	draw_button_light(mldata, mldata->lights, 0, 18, 9, FALSE, COLOR_RX_BG);
+	draw_button_light(mldata, mldata->lights, 0, 27, 9, FALSE, COLOR_RX);
 }
 
-static void setup_colors(void)
+static void setup_colors(MLData *mldata)
 {
-	static gint allocated = FALSE;
 	GdkColormap *colormap;
 	gint i;
 	gboolean success[COLOR_COUNT];
 
-        colormap = gtk_widget_get_colormap(display_area);
+        colormap = gtk_widget_get_colormap(mldata->display_area);
 
-	if (allocated)
+	if (mldata->allocated)
 		{
-		gdk_colormap_free_colors(colormap, display_color, COLOR_COUNT);
+		gdk_colormap_free_colors(colormap, mldata->display_color, COLOR_COUNT);
 		}
 
 	for (i = 0; i < COLOR_COUNT; i++)
 		{
-		if (!display_color_text[i]) display_color_text[i] = g_strdup("#000000");
-		gdk_color_parse(display_color_text[i], &display_color[i]);
+		if (!mldata->display_color_text[i]) mldata->display_color_text[i] = g_strdup("#000000");
+		gdk_color_parse(mldata->display_color_text[i], &mldata->display_color[i]);
 		}
-	gdk_colormap_alloc_colors(colormap, display_color, COLOR_COUNT, FALSE, TRUE, success);
+	gdk_colormap_alloc_colors(colormap, mldata->display_color, 
+					        COLOR_COUNT, FALSE, TRUE, success);
 	for (i = 0; i < COLOR_COUNT; i++)
 		{
-		if (!success[i]) printf("unable to allocate color %s\n", display_color_text[i]);
+		if (!success[i]) printf("unable to allocate color %s\n", mldata->display_color_text[i]);
 		}
 
-	allocated = TRUE;
+	mldata->allocated = TRUE;
 
-	if (!gc)
+	if (!mldata->gc)
 		{
-		gc = gdk_gc_new( display_area->window );
-        	gdk_gc_copy( gc, display_area->style->white_gc );
+		mldata->gc = gdk_gc_new( mldata->display_area->window );
+        	gdk_gc_copy( mldata->gc, mldata->display_area->style->white_gc );
 		}
 
 }
 
-void reset_orientation(void)
+void reset_orientation(MLData *mldata)
 {
-	if (sizehint >= GNOME_Vertigo_PANEL_MEDIUM)
+	if (mldata->sizehint >= GNOME_Vertigo_PANEL_MEDIUM)
 		{
-		if (show_extra_info)
+		if (mldata->show_extra_info)
 			{
-			layout = LAYOUT_SQUARE;
+			mldata->layout = LAYOUT_SQUARE;
 			}
-		else if (orient == PANEL_APPLET_ORIENT_LEFT || orient == PANEL_APPLET_ORIENT_RIGHT)
+		else if (mldata->orient == PANEL_APPLET_ORIENT_LEFT || mldata->orient == PANEL_APPLET_ORIENT_RIGHT)
 			{
-			layout = LAYOUT_HORIZONTAL;
+			mldata->layout = LAYOUT_HORIZONTAL;
 			}
 		else
 			{
-			layout = LAYOUT_VERTICAL;
+			mldata->layout = LAYOUT_VERTICAL;
 			}
 		}
 	else
 		{
-		if (orient == PANEL_APPLET_ORIENT_LEFT || orient == PANEL_APPLET_ORIENT_RIGHT)
+		if (mldata->orient == PANEL_APPLET_ORIENT_LEFT || mldata->orient == PANEL_APPLET_ORIENT_RIGHT)
 			{
-			if (show_extra_info)
+			if (mldata->show_extra_info)
 				{
-				layout = LAYOUT_VERTICAL_EXTENDED;
+				mldata->layout = LAYOUT_VERTICAL_EXTENDED;
 				}
 			else
 				{
-				layout = LAYOUT_VERTICAL;
+				mldata->layout = LAYOUT_VERTICAL;
 				}
 			}
 		else
 			{
-			if (show_extra_info)
+			if (mldata->show_extra_info)
 				{
-				layout = LAYOUT_HORIZONTAL_EXTENDED;
+				mldata->layout = LAYOUT_HORIZONTAL_EXTENDED;
 				}
 			else
 				{
-				layout = LAYOUT_HORIZONTAL;
+				mldata->layout = LAYOUT_HORIZONTAL;
 				}
 			}
 		}
 
-	if (layout < LAYOUT_HORIZONTAL || layout > LAYOUT_SQUARE) layout = LAYOUT_HORIZONTAL;
-	layout_current = &layout_data[layout];
-
-#if 0
-	printf("Test layout = %d\n", layout_current->layout);
-#endif
+	if (mldata->layout < LAYOUT_HORIZONTAL || mldata->layout > LAYOUT_SQUARE) mldata->layout = LAYOUT_HORIZONTAL;
+	mldata->layout_current = &layout_data[mldata->layout];
 	
-	create_background_pixmap();
-	update_pixmaps();
+	create_background_pixmap(mldata);
+	update_pixmaps(mldata);
 
-	gtk_widget_set_usize(frame, layout_current->width, layout_current->height);
-	gtk_drawing_area_size(GTK_DRAWING_AREA(display_area),
-			      layout_current->display_w, layout_current->display_h);
+	gtk_widget_set_usize(mldata->frame, mldata->layout_current->width, mldata->layout_current->height);
+	gtk_drawing_area_size(GTK_DRAWING_AREA(mldata->display_area),
+			      mldata->layout_current->display_w, mldata->layout_current->display_h);
 
-	gtk_widget_set_usize(button, layout_current->button_w, layout_current->button_h);
-	gtk_fixed_move(GTK_FIXED(frame), display_area, layout_current->display_x, layout_current->display_y);
-	gtk_fixed_move(GTK_FIXED(frame), button, layout_current->button_x, layout_current->button_y);
+	gtk_widget_set_usize(mldata->button, mldata->layout_current->button_w, mldata->layout_current->button_h);
+	gtk_fixed_move(GTK_FIXED(mldata->frame), mldata->display_area, mldata->layout_current->display_x, mldata->layout_current->display_y);
+	gtk_fixed_move(GTK_FIXED(mldata->frame), mldata->button, mldata->layout_current->button_x, mldata->layout_current->button_y);
 
 	/* we set the lights to off so they will be correct on the next update */
-	update_lights(FALSE, FALSE, FALSE, -1, TRUE);
-	redraw_display();
+	update_lights(mldata, FALSE, FALSE, FALSE, -1, TRUE);
+	redraw_display(mldata);
 }
 
-void reset_colors(void)
+void reset_colors(MLData *mldata)
 {
-	setup_colors();
-	create_background_pixmap();
-	update_pixmaps();
-	update_lights(FALSE, FALSE, FALSE, -1, TRUE);
-	redraw_display();
+	setup_colors(mldata);
+	create_background_pixmap(mldata);
+	update_pixmaps(mldata);
+	update_lights(mldata, FALSE, FALSE, FALSE, -1, TRUE);
+	redraw_display(mldata);
 }
 
 /* this is called when the applet's style changes (meaning probably a theme/color change) */
 static void applet_style_change_cb(GtkWidget *widget, GtkStyle *previous_style, gpointer data)
 {
-	reset_orientation();
+	MLData *mldata = data;
+	reset_orientation(mldata);
 	return;
-	widget = NULL;
-	previous_style = NULL;
-	data = NULL;
 }
 
 static void applet_change_orient(PanelApplet *applet, PanelAppletOrient o, gpointer data)
 {
-	orient = o;
-	if (setup_done) reset_orientation();
+	MLData *mldata = data;
+	mldata->orient = o;
+	if (mldata->setup_done) reset_orientation(mldata);
 	return;
-	data = NULL;
 }
 
 
 static void applet_change_pixel_size(PanelApplet *applet, gint size, gpointer data)
 {
-	sizehint = size;
-	if (setup_done) reset_orientation();
+	MLData *mldata = data;
+	mldata->sizehint = size;
+	if (mldata->setup_done) reset_orientation(mldata);
         return;
-        data = NULL;
 }
 
 /* This is a hack around the fact that gtk+ doesn't
@@ -1419,9 +1308,10 @@ button_press_hack (GtkWidget      *widget,
 
 
 static void show_help_cb (BonoboUIComponent *uic,
-			  PanelApplet       *applet,
+			  MLData       *mldata,
 			  const char        *verbname)
 {
+	PanelApplet *applet = PANEL_APPLET (mldata->applet);
 	egg_help_display_on_screen (
 		"modemlights_applet", NULL,
 		gtk_widget_get_screen (GTK_WIDGET (applet)),
@@ -1439,120 +1329,147 @@ static const BonoboUIVerb modem_applet_menu_verbs [] = {
 static void
 destroy_cb (GtkWidget *widget, gpointer data)
 {
-	gtk_timeout_remove (update_timeout_id);
+	MLData *mldata = data;
+	gtk_timeout_remove (mldata->update_timeout_id);
+	if (mldata->propwindow)
+		gtk_widget_destroy (mldata->propwindow);
 	
 }
 
 static gboolean
 modemlights_applet_fill (PanelApplet *applet)
 {
+	MLData *mldata;
 	gint i;
 
-	global_applet = GTK_WIDGET (applet);
+	mldata = g_new0 (MLData, 1);
+	
+	mldata->applet = GTK_WIDGET (applet);
+	mldata->layout = LAYOUT_HORIZONTAL;
+	mldata->tooltips = gtk_tooltips_new ();
+	mldata->button_blinking = FALSE;
+	mldata->button_blink_on = 0;
+	mldata->button_blink_id = -1;
+	mldata->update_timeout_id = FALSE;
+	mldata->confirm_dialog = FALSE;
+	mldata->setup_done = FALSE;
+	mldata->start_time = (time_t)0;
+	mldata->old_timer = -1;
+	mldata->old_bytes = -1;
+	mldata->old_rx_bytes = -1;
+	mldata->update_counter = 0;
+	mldata->o_rx = FALSE;
+	mldata->o_tx = FALSE;
+	mldata->o_cd = FALSE;
+	mldata->modem_was_on = FALSE;
+	mldata->last_time_was_connected = FALSE;
+	mldata->allocated = FALSE;
+	mldata->isdn_stats = NULL;
 	
 	gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gnome-modem.png");
 	
 	panel_applet_add_preferences (applet, "/schemas/apps/modemlights/prefs", NULL);
-
+		
+	mldata->load_hist_pos = 0;
 	for (i=0;i<119;i++)
-		load_hist[i] = 0;
+		mldata->load_hist[i] = 0;
 
 	for (i=0;i<19;i++)
 		{
-		load_hist_rx[i] = 0;
-		load_hist_tx[i] = 0;
+		mldata->load_hist_rx[i] = 0;
+		mldata->load_hist_tx[i] = 0;
 		}
 	for (i = 0; i < COLOR_COUNT; i++)
 		{
-		display_color_text[i] = NULL;
-		display_color[i] = (GdkColor){ 0, 0, 0, 0 };
+		mldata->display_color_text[i] = NULL;
+		mldata->display_color[i] = (GdkColor){ 0, 0, 0, 0 };
 		}
 
-	layout_current = &layout_data[LAYOUT_HORIZONTAL];
+	mldata->layout_current = &layout_data[LAYOUT_HORIZONTAL];
 	
 	if (g_file_exists("/dev/modem"))
 		{
-		lock_file = g_strdup("/var/lock/LCK..modem");
+		mldata->lock_file = g_strdup("/var/lock/LCK..modem");
 		}
 	else
 		{
-		lock_file = g_strdup("/var/lock/LCK..ttyS0");
+		mldata->lock_file = g_strdup("/var/lock/LCK..ttyS0");
 		}
 
-	device_name = g_strdup("ppp0");
-	command_connect = g_strdup("pppon");
-	command_disconnect = g_strdup("pppoff");
-	orient = panel_applet_get_orient (applet);
+	mldata->device_name = g_strdup("ppp0");
+	mldata->command_connect = g_strdup("pppon");
+	mldata->command_disconnect = g_strdup("pppoff");
+	mldata->orient = panel_applet_get_orient (applet);
 
 	/* open ip socket */
-	if ((ip_socket = socket(AF_INET, SOCK_DGRAM, 0)) < 0)
+	if ((mldata->ip_socket = socket(AF_INET, SOCK_DGRAM, 0)) < 0)
 		{
 		g_print("could not open an ip socket\n");
 		return FALSE;
 		}
 
 
-	property_load(applet);
+	property_load(mldata);
 
 	/* frame for all widgets */
-	frame = gtk_fixed_new();
-	gtk_widget_show(frame);
+	mldata->frame = gtk_fixed_new();
+	gtk_widget_show(mldata->frame);
 	
-	gtk_container_add (GTK_CONTAINER (applet), frame);
+	gtk_container_add (GTK_CONTAINER (applet), mldata->frame);
 
-	display_area = gtk_drawing_area_new();
-	gtk_drawing_area_size(GTK_DRAWING_AREA(display_area),5,5);
-	gtk_fixed_put(GTK_FIXED(frame),display_area,0,0);
-	gtk_widget_show(display_area);
+	mldata->display_area = gtk_drawing_area_new();
+	gtk_drawing_area_size(GTK_DRAWING_AREA(mldata->display_area),5,5);
+	gtk_fixed_put(GTK_FIXED(mldata->frame),mldata->display_area,0,0);
+	gtk_widget_show(mldata->display_area);
 
-	button = gtk_button_new();
-	gtk_widget_set_usize(button,5,5);
-	gtk_fixed_put(GTK_FIXED(frame),button,5,0);
-	gtk_signal_connect(GTK_OBJECT(button),"clicked",GTK_SIGNAL_FUNC(dial_cb),NULL);
-	g_signal_connect (G_OBJECT (button), "button_press_event",
+	mldata->button = gtk_button_new();
+	gtk_widget_set_usize(mldata->button,5,5);
+	gtk_fixed_put(GTK_FIXED(mldata->frame),mldata->button,5,0);
+	gtk_signal_connect(GTK_OBJECT(mldata->button),"clicked",GTK_SIGNAL_FUNC(dial_cb),mldata);
+	g_signal_connect (G_OBJECT (mldata->button), "button_press_event",
 			  G_CALLBACK (button_press_hack), GTK_WIDGET (applet));
-	gtk_widget_show(button);
+	gtk_widget_show(mldata->button);
 
 	gtk_widget_realize(GTK_WIDGET (applet));
-	gtk_widget_realize(display_area);
+	gtk_widget_realize(mldata->display_area);
 	
-	setup_colors();
-	update_pixmaps();	
+	setup_colors(mldata);
+	update_pixmaps(mldata);	
 
-	button_pixmap = gtk_pixmap_new(button_off, button_mask);
-	gtk_container_add(GTK_CONTAINER(button), button_pixmap);
-	gtk_widget_show(button_pixmap);
+	mldata->button_pixmap = gtk_pixmap_new(mldata->button_off, mldata->button_mask);
+	gtk_container_add(GTK_CONTAINER(mldata->button), mldata->button_pixmap);
+	gtk_widget_show(mldata->button_pixmap);
 	
 
 	gtk_signal_connect(GTK_OBJECT(applet),"change_orient",
 				GTK_SIGNAL_FUNC(applet_change_orient),
-				NULL);
+				mldata);
 
 	gtk_signal_connect(GTK_OBJECT(applet),"change_size",
 				GTK_SIGNAL_FUNC(applet_change_pixel_size),
-				NULL);
+				mldata);
 
 	gtk_signal_connect(GTK_OBJECT(applet),"style_set",
-		GTK_SIGNAL_FUNC(applet_style_change_cb), NULL);
+		GTK_SIGNAL_FUNC(applet_style_change_cb), mldata);
 		
 	g_signal_connect (G_OBJECT (applet), "destroy",
-			  G_CALLBACK (destroy_cb), NULL);
+			  G_CALLBACK (destroy_cb), mldata);
 				
-	sizehint = panel_applet_get_size (PANEL_APPLET (applet));
+	mldata->sizehint = panel_applet_get_size (PANEL_APPLET (applet));
 	
 	panel_applet_setup_menu_from_file (PANEL_APPLET (applet),
 					   NULL,
 					   "GNOME_ModemlightsApplet.xml",
 					   NULL,
 					   modem_applet_menu_verbs,
-					   applet);
+					   mldata);
 				 
 	/* by now we know the geometry */
-	setup_done = TRUE;
+	mldata->setup_done = TRUE;
 
-	reset_orientation();
+	reset_orientation(mldata);
 	
-	start_callback_update();
+	start_callback_update(mldata);
 
 	gtk_widget_show_all (GTK_WIDGET (applet));
 	  
