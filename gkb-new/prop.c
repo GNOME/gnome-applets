@@ -35,7 +35,8 @@ struct _PropWg
   char *name;
   char *command;
   char *iconpath;
-
+  
+  GtkWidget *propbox; 
   GtkWidget *notebook;
   GtkWidget *label1;
   GtkWidget *iconentry;
@@ -177,11 +178,16 @@ delmap_cb (GnomePropertyBox * pb, GKB * gkb)
 {
   gint page;
 
+  if (gkb->tempmaps->next == NULL) return;
+
   page = gtk_notebook_get_current_page(gkb->notebook);
   gtk_notebook_remove_page (gkb->notebook, page);
   gkb->tempmaps = g_list_remove(gkb->tempmaps, 
   			g_list_nth_data(gkb->tempmaps, page));
-  gtk_widget_draw(GTK_WIDGET(gkb->notebook), NULL);      
+  gtk_widget_draw(GTK_WIDGET(gkb->notebook), NULL);
+  
+  gnome_property_box_changed (GNOME_PROPERTY_BOX (gkb->propbox));
+  
 }
 
 static void
@@ -193,6 +199,8 @@ icontopath_cb (GnomePropertyBox * pb, PropWg * actdata)
 	 gnome_icon_entry_get_filename (
 	     GNOME_ICON_ENTRY (actdata->iconentry)));
 
+ gnome_property_box_changed (GNOME_PROPERTY_BOX (actdata->propbox));
+
 }
 
 static void
@@ -202,6 +210,9 @@ pathtoicon_cb (GnomePropertyBox * pb, PropWg * actdata)
  g_return_if_fail (GTK_WIDGET_REALIZED (actdata->iconentry));
  gnome_icon_entry_set_icon (GNOME_ICON_ENTRY(actdata->iconentry),
        gtk_entry_get_text (GTK_ENTRY (actdata->iconpathinput)));
+
+ gnome_property_box_changed (GNOME_PROPERTY_BOX (actdata->propbox));
+
 }
 
 static void
@@ -213,6 +224,8 @@ newmap_cb (GnomePropertyBox * pb, GKB * gkb)
   makenotebook (gkb, actdata, gkb->tn);
 
   gkb->tempmaps = g_list_insert (gkb->tempmaps, actdata, gkb->tn++);
+
+  gnome_property_box_changed (GNOME_PROPERTY_BOX (gkb->propbox));
 
 }
 
@@ -279,6 +292,7 @@ static void
 makenotebook (GKB * gkb, PropWg * actdata, int i)
 {
   actdata->notebook = gkb->notebook;
+  actdata->propbox = gkb->propbox;
   actdata->vbox1 = gtk_vbox_new (FALSE, 0);
 
   gtk_widget_ref (actdata->vbox1);
@@ -417,7 +431,7 @@ makenotebook (GKB * gkb, PropWg * actdata, int i)
 			    (GtkDestroyNotify) gtk_widget_unref);
   gnome_icon_entry_set_icon (GNOME_ICON_ENTRY(actdata->iconentry),
                              actdata->iconpath);
-  gtk_signal_connect (GTK_OBJECT (actdata->iconentry), "add",
+  gtk_signal_connect (GTK_OBJECT (actdata->iconentry), "changed",
 		      GTK_SIGNAL_FUNC (icontopath_cb), actdata);
 
   gtk_widget_show (actdata->iconentry);
@@ -501,6 +515,14 @@ properties_dialog (AppletWidget * applet, gpointer gkbx)
   int i = 0;
 
   GList * list;
+
+  if (gkb->propbox)
+    {
+      gtk_widget_show (gkb->propbox);
+      gdk_window_raise (gkb->propbox->window);
+      return;
+     }
+
 
   gkb->tempmaps = copy_props (gkb);
   list = gkb->tempmaps;
