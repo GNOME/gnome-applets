@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-core 0.99.8\n"
-"POT-Creation-Date: 2000-02-12 09:28-0500\n"
+"POT-Creation-Date: 2000-02-18 10:28+0200\n"
 "PO-Revision-Date: 1999-02-28 22.12+0200\n"
 "Last-Translator: Lauris Kaplinski <lauris@ariman.ee>\n"
 "Language-Team: Estonian <linux-l@eenet.ee>\n"
@@ -102,7 +102,7 @@ msgstr "Kella häälestus"
 #: battery/properties.c:77 clockmail/properties.c:411
 #: diskusage/properties.c:325 drivemount/properties.c:339
 #: mini-commander/src/preferences.c:772 modemlights/properties.c:292
-#: odometer/properties.c:283 screenshooter/screenshooter_applet.c:412
+#: odometer/properties.c:283 screenshooter/screenshooter_applet.c:423
 #: slashapp/properties.c:351 sound-monitor/properties.c:426
 #: tickastat/properties.c:416
 msgid "General"
@@ -157,10 +157,10 @@ msgstr "Analoogkell, umbes nagu CDE paneelil."
 #: battery/battery.c:921 charpick/charpick.c:565 clipboard/clipboard.c:332
 #: clockmail/clockmail.c:553 drivemount/drivemount.c:659 fifteen/fifteen.c:346
 #: geyes/geyes.c:374 gkb/gkb.c:731 gnotes/gnotes_applet.c:164
-#: gumma/gumma.c:588 gweather/gweather-applet.c:185 jbc/jbc-applet.c:180
-#: life/life.c:270 mini-commander/src/mini-commander_applet.c:411
+#: gweather/gweather-applet.c:185 jbc/jbc-applet.c:180 life/life.c:270
+#: mini-commander/src/mini-commander_applet.c:411
 #: modemlights/modemlights.c:1214 odometer/odo.c:644
-#: quicklaunch/quicklaunch.c:452 screenshooter/screenshooter_applet.c:978
+#: quicklaunch/quicklaunch.c:452 screenshooter/screenshooter_applet.c:991
 #: slashapp/slashapp.c:58 sound-monitor/main.c:347 tickastat/main.c:321
 #: webcontrol/webcontrol.c:324 whereami/whereami.c:219
 msgid "About..."
@@ -173,7 +173,7 @@ msgstr "Info..."
 #: mini-commander/src/mini-commander_applet.c:398
 #: modemlights/modemlights.c:1208 multiload/cpuload.c:68
 #: multiload/memload.c:64 multiload/swapload.c:64 odometer/odo.c:641
-#: screenshooter/screenshooter_applet.c:984 slashapp/slashapp.c:55
+#: screenshooter/screenshooter_applet.c:1002 slashapp/slashapp.c:55
 #: sound-monitor/main.c:340 tickastat/main.c:315 webcontrol/webcontrol.c:332
 msgid "Properties..."
 msgstr "Häälestus..."
@@ -239,7 +239,7 @@ msgid "Internal error: invalid mode in battery_set_mode"
 msgstr "Programmisisene viga: invalid mode in battery_set_mode"
 
 #: battery/battery.c:762 jbc/jbc-applet.c:161
-#: screenshooter/screenshooter_applet.c:880
+#: screenshooter/screenshooter_applet.c:893
 msgid "Can't create applet!\n"
 msgstr "Ei suuda luua appletit!\n"
 
@@ -280,7 +280,7 @@ msgstr "Patarei näidiku häälestus"
 #. the follow_panel_size check button
 #: battery/properties.c:79 charpick/properties.c:182
 msgid "Follow panel size"
-msgstr ""
+msgstr "Järgi paneeli suurust"
 
 #. Applet height
 #: battery/properties.c:87
@@ -395,21 +395,17 @@ msgstr "Käivita gtcd..."
 
 #: clipboard/clipboard.c:175
 msgid "Clipboard Applet"
-msgstr ""
+msgstr "Clipboard applet"
 
 #: clipboard/clipboard.c:177
-#, fuzzy
 msgid "Copyright (C) 1999"
-msgstr "Copyright (C) 1998"
+msgstr "Copyright (C) 1999"
 
 #: clipboard/clipboard.c:179
-#, fuzzy
 msgid ""
 "Gnome panel applet for copying and retrieving selections with a history "
 "list. Released under GNU General Public Licence."
-msgstr ""
-"Selle GNOME appleti abiga saab kätte tähti ja sümboleid, mida klaviatuuril "
-"ei ole. Litsenseeritud vastavalt GNU GPL-ile."
+msgstr "GNOME applet, millega saab salvestada ning lugeda selektsioone koos ajalooga. Litsenseeritud vastavalt GNU GPL tingimustele."
 
 #: charpick/charpick.c:434
 msgid "Character Picker"
@@ -433,7 +429,7 @@ msgstr "Märgivalija häälestus"
 
 #: charpick/properties.c:176
 msgid "Minimum number of cells: (for autosize)"
-msgstr ""
+msgstr "Minimaalne ruutude arv:"
 
 #: charpick/properties.c:177
 msgid "Size of button: (pixels)"
@@ -455,13 +451,12 @@ msgstr "Suurus"
 
 #: charpick/properties.c:285
 msgid "Default character list:"
-msgstr ""
+msgstr "Vaikimisi märgid:"
 
 #. add tab to propwindow
 #: charpick/properties.c:300
-#, fuzzy
 msgid "Default List"
-msgstr "Laius vaikimisi"
+msgstr "Vaikimisi nimekiri"
 
 #: clockmail/clockmail.c:56 slashapp/slashapp.c:130 sound-monitor/main.c:35
 #: tickastat/main.c:175
@@ -673,32 +668,28 @@ msgid "Hard Disk"
 msgstr "Kõvaketas"
 
 #: drivemount/properties.c:284
-#, fuzzy
 msgid "Custom"
-msgstr "Tolmutorm"
+msgstr "Omavalitud"
 
 #: drivemount/properties.c:297
-#, fuzzy
 msgid "Select icon for mounted"
-msgstr " ei ole mounditud"
+msgstr "Valige ikoon mounditud seadmele"
 
 #: drivemount/properties.c:305
-#, fuzzy
 msgid "Custom icon for mounted:"
-msgstr "Käsurea tekst:"
+msgstr "Ikoon mounditus seadmele:"
 
 #: drivemount/properties.c:313
 msgid "Select icon for unmounted"
-msgstr ""
+msgstr "Valige mountimata seadme ikoon"
 
 #: drivemount/properties.c:321
-#, fuzzy
 msgid "Custom icon for not mounted:"
-msgstr " ei ole mounditud"
+msgstr "Ikoon mountimata seadmele:"
 
 #: drivemount/properties.c:327 odometer/properties.c:275
 msgid "Scale size to panel"
-msgstr ""
+msgstr "Suurenda paneeli mõõtu"
 
 #: drivemount/properties.c:333
 msgid "Use automount friendly status test"
@@ -761,9 +752,8 @@ msgid "Themes"
 msgstr "Teemad"
 
 #: gkb/gkb.c:94
-#, fuzzy
 msgid "Browse"
-msgstr "Valija"
+msgstr "Vali"
 
 #: gkb/gkb.c:385
 msgid "GKB settings"
@@ -817,17 +807,14 @@ msgid "gkb.xpm"
 msgstr "gkb.xpm"
 
 #: gnotes/gnote.c:225
-#, fuzzy
 msgid "Raise Note"
 msgstr "Kõige ette"
 
 #: gnotes/gnote.c:230
-#, fuzzy
 msgid "Lower Note"
 msgstr "Kõige alla"
 
 #: gnotes/gnote.c:235
-#, fuzzy
 msgid "Hide Note"
 msgstr "Peida"
 
@@ -840,13 +827,12 @@ msgid "GNotes!"
 msgstr "GMärkmed!"
 
 #: gnotes/gnotes_applet.c:95
-#, fuzzy
 msgid ""
 "Copyright (C) 1998-1999 spoon <spoon@ix.netcom.com> \n"
 "Copyright (C) 1999 dres <dres@debian.org>"
 msgstr ""
-"Copyright (c) 1998-1999 spoon <spoon@ix.netcom.com>, Copyright (c) 1999 dres "
-"<dres@debian.org>"
+"Copyright (c) 1998-1999 spoon <spoon@ix.netcom.com>\n"
+"Copyright (c) 1999 dres <dres@debian.org>"
 
 #: gnotes/gnotes_applet.c:97
 msgid "Create sticky notes on your screen."
@@ -857,46 +843,20 @@ msgid "Can't create GNotes applet!"
 msgstr "Ei suuda luua GMärkmete appletit!"
 
 #: gnotes/gnotes_applet.c:171
-#, fuzzy
 msgid "Raise Notes"
 msgstr "Kõige ette"
 
 #: gnotes/gnotes_applet.c:173
-#, fuzzy
 msgid "Lower Notes"
 msgstr "Kõige alla"
 
 #: gnotes/gnotes_applet.c:175
-#, fuzzy
 msgid "Hide Notes"
 msgstr "Peida"
 
 #: gnotes/gnotes_applet.c:177
-#, fuzzy
 msgid "Show Notes"
-msgstr "Näita kellaaega"
-
-#: gumma/gumma.c:314
-#, fuzzy, c-format
-msgid "Loading plugin %s..."
-msgstr "Loeme pealkirju........"
-
-#: gumma/gumma.c:493
-msgid "Select a plugin"
-msgstr ""
-
-#: gumma/gumma.c:507
-msgid "Plugins"
-msgstr ""
-
-#: gumma/gumma.c:593
-#, fuzzy
-msgid "About Plugin..."
-msgstr "Info..."
-
-#: gumma/gumma.c:597
-msgid "Plugins..."
-msgstr ""
+msgstr "Näita"
 
 #: gweather/gweather-applet.c:180
 msgid "Cannot create applet!\n"
@@ -904,6 +864,7 @@ msgstr "Ei suuda luua appletit!\n"
 
 #: gweather/gweather-applet.c:188
 #: mini-commander/src/mini-commander_applet.c:404
+#: screenshooter/screenshooter_applet.c:996
 msgid "Help"
 msgstr "Abimees"
 
@@ -1154,9 +1115,8 @@ msgid "North - Northwest"
 msgstr "Põhjast - loodest"
 
 #: gweather/weather.c:150
-#, fuzzy
 msgid "Clear Sky"
-msgstr "Selge"
+msgstr "Selge taevas"
 
 #: gweather/weather.c:151
 msgid "Broken clouds"
@@ -1309,7 +1269,6 @@ msgid "Patches of snow"
 msgstr "Paiguti sajab lund"
 
 #: gweather/weather.c:181
-#, fuzzy
 msgid "Partial snowfall"
 msgstr "Hooti sajab lund"
 
@@ -2349,9 +2308,8 @@ msgstr "ajaloo lõpp"
 
 #. enter pressed -> exec command
 #: mini-commander/src/command_line.c:117 mini-commander/src/exec.c:63
-#, fuzzy
 msgid "starting..."
-msgstr "salvestame..."
+msgstr "alustame..."
 
 #: mini-commander/src/command_line.c:146
 msgid "autocompleted"
@@ -2396,9 +2354,8 @@ msgid "orient. changed"
 msgstr "suund muudetud"
 
 #: mini-commander/src/mini-commander_applet.c:112
-#, fuzzy
 msgid "size changed"
-msgstr "suund muudetud"
+msgstr "suurus muudetud"
 
 #: mini-commander/src/mini-commander_applet.c:228 slashapp/properties.c:253
 msgid "Browser"
@@ -2449,13 +2406,12 @@ msgstr "Näita kuupäeva"
 #. appearance frame
 #: mini-commander/src/preferences.c:528
 msgid "Appearance"
-msgstr ""
+msgstr "Väljanägemine"
 
 #. show handle check box
 #: mini-commander/src/preferences.c:536
-#, fuzzy
 msgid "Show handle"
-msgstr "Näita kuupäeva"
+msgstr "Näita käepidet"
 
 #. show frame check box
 #: mini-commander/src/preferences.c:548
@@ -2499,9 +2455,9 @@ msgstr "Käsurea tagaplaan:"
 
 #. prefix
 #: mini-commander/src/preferences.c:799
-#, fuzzy, c-format
+#, c-format
 msgid "Regex %.2d:"
-msgstr "Eesliide %.2d:"
+msgstr "Regex %.2d:"
 
 #. command
 #: mini-commander/src/preferences.c:817
@@ -2514,12 +2470,12 @@ msgid "Macros"
 msgstr "Makrokäsud"
 
 #. probably should die more gracefully
-#: mixer/mixer.c:94
+#: mixer/mixer.c:125
 #, c-format
 msgid "Couldn't open mixer device %s\n"
 msgstr "Ei suutnud avada mikseri seadet %s\n"
 
-#: mixer/mixer.c:108
+#: mixer/mixer.c:139
 msgid ""
 "warning: this version of gmix was compiled with a different version of\n"
 "soundcard.h.\n"
@@ -2527,11 +2483,11 @@ msgstr ""
 "Hoiatus: see gmix versioon on kompileeritud teistsuguse\n"
 "soundcard.h versiooniga\n"
 
-#: mixer/mixer.c:433
+#: mixer/mixer.c:476
 msgid "Main Volume and Mute"
 msgstr "Peakanali helivaljus"
 
-#: mixer/mixer.c:664
+#: mixer/mixer.c:707
 msgid "Run gmix..."
 msgstr "Käivita programm gmix..."
 
@@ -2540,15 +2496,14 @@ msgid "Modem Lights Applet"
 msgstr "Modemitulukesed"
 
 #: modemlights/modemlights.c:111
-#, fuzzy
 msgid ""
 "Released under the GNU general public license.\n"
 "A modem status indicator and dialer.\n"
 "Lights in order from the top or left are Send data and Receive data."
 msgstr ""
-"Litsenseeritud vastavalt GNU GPL-le.\n"
-"Modemi seisundi näidik ja helistaja. Tuled alates ülevalt või vasakult on RX "
-"ja TX (saabuvad ja lahkuvad andmed)"
+"Litsenseeritud vastavalt GNU GPL tingimustele..\n"
+"Modemi seisundi näidik ja helistaja.\n"
+"Tuled alates ülevalt või vasakult on RX ja TX (saabuvad ja lahkuvad andmed)"
 
 #: modemlights/modemlights.c:412
 msgid ""
@@ -2696,7 +2651,7 @@ msgstr "PPP"
 
 #: multiload/main.c:39
 msgid "ETH"
-msgstr ""
+msgstr "ETH"
 
 #: multiload/main.c:186 multiload/memload.c:51
 msgid "Memory Load"
@@ -2711,90 +2666,81 @@ msgid "Net Load"
 msgstr "Võrgu koormatus"
 
 #: odometer/odo.c:132
-#, fuzzy
 msgid "Odometer"
-msgstr "Geomeetria"
+msgstr "Spidomeeter"
 
 #: odometer/odo.c:134
-#, fuzzy
 msgid "(C) 1999 The Free Software Foundation"
-msgstr "(C) 1998 Free Software Foundation"
+msgstr "(C) 1999 Free Software Foundation"
 
 #: odometer/odo.c:136
 msgid ""
 "a GNOME applet that tracks and measures the movements of your mouse pointer "
 "across the desktop."
-msgstr ""
+msgstr "GNOME applet, mis mõõdab Teie hiire läbitud teekonda töölaual."
 
 #: odometer/odo.c:622
-#, fuzzy
 msgid "Can't create odometer applet!"
-msgstr "Ei suuda luua GMärkmete appletit!"
+msgstr "Ei suuda luua spidomeetri appletit!"
 
 #: odometer/odo.c:638
-#, fuzzy
 msgid "Reset"
-msgstr "Läänest"
+msgstr "Nulli"
 
 #: odometer/properties.c:234
-#, fuzzy
 msgid "Odometer setting"
-msgstr "GNOME pageri häälestus"
+msgstr "Spidomeetri häälestus"
 
 #: odometer/properties.c:245
-#, fuzzy
 msgid "Use Metric"
 msgstr "Meetermõõdustik"
 
 #: odometer/properties.c:251
 msgid "auto_reset"
-msgstr ""
+msgstr "Nulli käivitamisel"
 
 #: odometer/properties.c:257 tickastat/mod_news.c:1251
-#, fuzzy
 msgid "enabled"
-msgstr "Uuenda infot"
+msgstr "Sisse lülitatud"
 
 #: odometer/properties.c:263
 msgid "Digits number"
-msgstr ""
+msgstr "Numbrikohtade arv"
 
 #: odometer/properties.c:298
-#, fuzzy
 msgid "Theme file :"
-msgstr "Teemafail (kataloog):"
+msgstr "Teemafail:"
 
 #: quicklaunch/quicklaunch.c:63
 msgid "The QuickLaunch Applet"
-msgstr ""
+msgstr "Kiirkäivitusapplet"
 
 #: quicklaunch/quicklaunch.c:65
 msgid ""
 "This applet adds some pretty small icons for your launchers to your panel, "
 "like the windowish QuickLaunch toolbar, avoiding that annoying huge GNOME "
 "launchers."
-msgstr ""
+msgstr "See applet lisab paneelile pisikesed käivitusikoonid, umbes nagu Windowsi Quicklaunch nupurida, päästes Teid sellega suurte käivitajate paneelil hoidmisest."
 
 #: quicklaunch/quicklaunch.c:131
-#, fuzzy
 msgid "Launcher Properties"
-msgstr "Häälestus"
+msgstr "Käivitaja häälestus"
 
 #: quicklaunch/quicklaunch.c:229
 msgid ""
 "drop launchers from\n"
 "the menu here"
 msgstr ""
+"Lohista käivitajad\n"
+"menüüst siia"
 
 #: quicklaunch/quicklaunch.c:267
-#, fuzzy
 msgid "Launcher properties..."
-msgstr "Häälestus..."
+msgstr "Käivitaja häälestus..."
 
 #: quicklaunch/quicklaunch.c:279
-#, fuzzy
 msgid "Delete launcher"
-msgstr "Kustuta märkmepaber"
+msgstr "Kustuta käivitaja"
 
 #: quicklaunch/quicklaunch.c:419
 msgid ""
@@ -2802,18 +2748,19 @@ msgid ""
 "~/.gnome/quicklaunch.\n"
 "Aborting"
 msgstr ""
-
-#: screenshooter/screenshooter_applet.c:38
-#, fuzzy
-msgid "Screen-Shooter Applet"
-msgstr "Ei suuda luua GMärkmete appletit!"
+"Ei suuda luua kataloogi:\n"
+"~/.gnome/quicklaunch.\n"
+"Lõpetan"
 
 #: screenshooter/screenshooter_applet.c:40
-#, fuzzy
-msgid "Copyright (C) 1999 Tom Gilbert"
-msgstr "Copyright (C) 1998"
+msgid "Screen-Shooter Applet"
+msgstr "Ekraanipüüdja"
 
-#: screenshooter/screenshooter_applet.c:41
+#: screenshooter/screenshooter_applet.c:42
+msgid "Copyright (C) 1999 Tom Gilbert"
+msgstr "Copyright (C) 1999 Tom Gilbert"
+
+#: screenshooter/screenshooter_applet.c:43
 msgid ""
 "A useful little screengrabber.\n"
 "The left/top button allows you to grab either:\n"
@@ -2822,54 +2769,58 @@ msgid ""
 "The right/bottom button will grab the entire desktop.\n"
 "Share and Enjoy ;)"
 msgstr ""
-
-#: screenshooter/screenshooter_applet.c:372
-#, fuzzy
-msgid "Screen-Shooter Settings"
-msgstr "GMärkmete häälestus"
+"Mugav pisike ekraanipildi salvestaja.\n"
+"Vasak/ülemine nupp lubab teil salvestada kas:\n"
+"akna (valite hiirega, millise)\n"
+"piirkonna (määrate hiirega ristküliku).\n"
+"Parem/alumine nupp salvestab pildi kogu töölauast.\n"
+"Jõudu ja edu ;)"
 
 #: screenshooter/screenshooter_applet.c:378
+msgid "Screen-Shooter Settings"
+msgstr "Ekraanipüüdja häälestus"
+
+#: screenshooter/screenshooter_applet.c:384
 msgid "Capture WM decorations when grabbing a window"
-msgstr ""
+msgstr "Salvesta aknahalduri kaunistused koos aknaga"
 
-#: screenshooter/screenshooter_applet.c:382
+#: screenshooter/screenshooter_applet.c:388
 msgid "Give audio feedback using the keyboard bell"
-msgstr ""
+msgstr "Anna helisignaal, kasutades klaviatuuri piiksu"
 
-#: screenshooter/screenshooter_applet.c:386
+#: screenshooter/screenshooter_applet.c:393
 msgid "Display Spurious Options (I got carried away)"
-msgstr ""
+msgstr "Näita mõttetuid valikuvõimalusi"
 
-#: screenshooter/screenshooter_applet.c:390
+#: screenshooter/screenshooter_applet.c:401
 msgid "Delay (seconds) before taking shot (only for entire desktop shots)"
-msgstr ""
-
-#: screenshooter/screenshooter_applet.c:395
-msgid "Compressed Quality (JPEG/MIFF/PNG mode) High: good quality/large file"
-msgstr ""
+msgstr "Viivitus (sekundites), ainult kogu töölaua pildi jaoks"
 
 #: screenshooter/screenshooter_applet.c:406
+msgid "Compressed Quality (JPEG/MIFF/PNG mode) High: good quality/large file"
+msgstr "Pakkimisekvvaliteet (JPEG/MIFF/PNG) - suurem number teeb suurema faili"
+
+#: screenshooter/screenshooter_applet.c:417
 msgid "Create monochrome image"
-msgstr ""
+msgstr "Tee mustvalge pilt"
 
-#: screenshooter/screenshooter_applet.c:409
+#: screenshooter/screenshooter_applet.c:420
 msgid "Invert colours in image"
-msgstr ""
+msgstr "Muuda värvid negatiiviks"
 
-#: screenshooter/screenshooter_applet.c:425
+#: screenshooter/screenshooter_applet.c:436
 msgid "Directory to save images in:"
-msgstr ""
+msgstr "Kataloog, kuhu pildid salvestada:"
 
-#: screenshooter/screenshooter_applet.c:449
+#: screenshooter/screenshooter_applet.c:460
 msgid "Image filename:"
-msgstr ""
+msgstr "Pildifaili nimi:"
 
-#: screenshooter/screenshooter_applet.c:464
-#, fuzzy
+#: screenshooter/screenshooter_applet.c:475
 msgid "Show expanded filename"
-msgstr "Näita käepided"
+msgstr "Näita laiendatud failinime"
 
-#: screenshooter/screenshooter_applet.c:484
+#: screenshooter/screenshooter_applet.c:495
 #, c-format
 msgid ""
 "Filetype is determined from filename suffix.\n"
@@ -2886,41 +2837,53 @@ msgid ""
 "Slightly larger file but lossless: png, as much compression as you like.\n"
 "- compressing pngs takes longer at higher ratios, but is still lossless"
 msgstr ""
+"Faili tüüp määratakse failinime laiendi järgi.\n"
+"Vaikimisi failitüüp (kui laiendit ei ole, või on tundmatu) on miff.\n"
+"Tuntud laiendid on:\n"
+"jpg, jpeg, bmp, cgm, cmyk, dib, eps, fig, fpx, gif, ico, map, miff, pcx,\n"
+"pict, pix, png, pnm, ppm, psd, rgb, rgba, rla, rle, tiff, tga, xbm, xpm,\n"
+"Ja mitmed müstilised formaadid, millega võite õnne proovida!\n"
+"Näiteks: .html loob kliendipoolsed imagemap failid .gif, .html ja .shtml\n"
+"\n"
+"Soovitused:\n"
+"Väike fail, suhteliselt korralik kvaliteet: jpg, 75% kvaliteediga\n"
+"Veidi suurem fail, kuid veatu pakkimisega : png, pakitud kui palju iganes\n"
+"- png pakkimine suurema tihedusega võtab rohkem aega, kuid ei muuda kvaliteeti"
 
-#: screenshooter/screenshooter_applet.c:500
+#: screenshooter/screenshooter_applet.c:511
 msgid "View screenshot after saving it"
-msgstr ""
+msgstr "Näita pilti peale selle salvestamist"
 
-#: screenshooter/screenshooter_applet.c:507
+#: screenshooter/screenshooter_applet.c:518
 msgid "App to use for displaying screenshots:"
-msgstr ""
+msgstr "Programm piltide näitamiseks:"
 
-#: screenshooter/screenshooter_applet.c:522
+#: screenshooter/screenshooter_applet.c:533
 msgid "Files, Apps"
-msgstr ""
+msgstr "Failid, programmid"
 
-#: screenshooter/screenshooter_applet.c:530
+#: screenshooter/screenshooter_applet.c:541
 msgid "Create thumbnail of image too"
-msgstr ""
+msgstr "Tee pildist pisike näidis"
 
-#: screenshooter/screenshooter_applet.c:534
+#: screenshooter/screenshooter_applet.c:545
 msgid "Thumbnail Size (percentage of original)"
-msgstr ""
+msgstr "Näidise suurus (protsenti originaalist)"
 
-#: screenshooter/screenshooter_applet.c:539
+#: screenshooter/screenshooter_applet.c:550
 msgid ""
 "Thumbnail compression (JPEG/MIFF/PNG mode) High: good quality/large file"
-msgstr ""
+msgstr "Näidise pakkimiskvaliteet (JPEG/MIFF/PNG). Suur arv teeb suure faili"
 
-#: screenshooter/screenshooter_applet.c:549
+#: screenshooter/screenshooter_applet.c:560
 msgid "Prefix to attach to thumbnail filename:"
-msgstr ""
+msgstr "Eesliide näidise failinimele:"
 
-#: screenshooter/screenshooter_applet.c:577
+#: screenshooter/screenshooter_applet.c:588
 msgid "Use high-quality intermediate for generating thumbnail"
-msgstr ""
+msgstr "Kasuta näidise tegemiseks kõrgekvaliteedilist vaheastet"
 
-#: screenshooter/screenshooter_applet.c:586
+#: screenshooter/screenshooter_applet.c:597
 msgid ""
 "(This'll chug loads of CPU, but will prevent compressing the image twice if "
 "a\n"
@@ -2929,85 +2892,91 @@ msgid ""
 "cherish\n"
 "speed and don't mind imperfection in your thumbnails."
 msgstr ""
+"(See neelab tublisti protsessoriaega, kuid väldib pildi kaks korda pakkimist,\n"
+"kui kasutatakse kadudega formaati)\n"
+"Ärge valige seda, kui kasutate kadudeta pakkimisformaati, või kui tahate\n"
+"kiiret tulemust ja Teid ei häiri näidise pisut madalam kvaliteet."
 
-#: screenshooter/screenshooter_applet.c:593
+#: screenshooter/screenshooter_applet.c:604
 msgid "Thumbnails"
-msgstr ""
+msgstr "Näidised"
 
-#: screenshooter/screenshooter_applet.c:616
+#: screenshooter/screenshooter_applet.c:627
 msgid ""
 "All post-processing, frill and spurious options will chug more CPU than a\n"
 "simple screenshot, due to the creation and then conversion of an "
 "intermediate\n"
 "image. Intensive operations may take some time on less spiffy CPUs."
-msgstr ""
+msgstr "Igasugune järeltöötlus ja lisavõimalused neelavad rohkem protsessoriaega,\n"
+"kui lihtne ekraanipildi salvestamine, kuna selleks tuleb luua eraldi ajutine pilt.\n"
+"Mõned variandid võivad aeglasemal protsessoril võtta küllaltki kaua aega."
 
-#: screenshooter/screenshooter_applet.c:627
+#: screenshooter/screenshooter_applet.c:638
 msgid "Normalize image (Span full range of color values to enhance contrast)"
-msgstr ""
-
-#: screenshooter/screenshooter_applet.c:631
-msgid "Equalize image (Perform histogram equalization)"
-msgstr ""
-
-#: screenshooter/screenshooter_applet.c:639
-msgid "Enhance image (reduce noise)"
-msgstr ""
+msgstr "Normaliseeri pilt (võta kasutusele kogu värviskaala, suurendamaks kontrasti)"
 
 #: screenshooter/screenshooter_applet.c:642
+msgid "Equalize image (Perform histogram equalization)"
+msgstr "Tasanda pilti (histogrammi tasandamine)"
+
+#: screenshooter/screenshooter_applet.c:650
+msgid "Enhance image (reduce noise)"
+msgstr "Paranda pilti (vähenda müra)"
+
+#: screenshooter/screenshooter_applet.c:653
 msgid "Despeckle Image (reduce spots)"
-msgstr ""
+msgstr "Retusheeri pilti (kõrvalda üksikud punktid)"
 
-#: screenshooter/screenshooter_applet.c:646
+#: screenshooter/screenshooter_applet.c:657
 msgid "Sharpen Image by what factor?"
-msgstr ""
+msgstr "Pildi teravdusmäär"
 
-#: screenshooter/screenshooter_applet.c:651
+#: screenshooter/screenshooter_applet.c:662
 msgid "Rotate image clockwise by how many degrees?"
-msgstr ""
+msgstr "Pööra pilti päripäeva (kraadides)"
 
-#: screenshooter/screenshooter_applet.c:656
+#: screenshooter/screenshooter_applet.c:667
 msgid "Adjust gamma"
-msgstr ""
+msgstr "Muuda gammat"
 
-#: screenshooter/screenshooter_applet.c:659
+#: screenshooter/screenshooter_applet.c:670
 msgid "Gamma value"
-msgstr ""
+msgstr "Gamma väärtus"
 
-#: screenshooter/screenshooter_applet.c:666
+#: screenshooter/screenshooter_applet.c:677
 msgid "Post Processing"
-msgstr ""
+msgstr "Järeltöötlus"
 
-#: screenshooter/screenshooter_applet.c:674
+#: screenshooter/screenshooter_applet.c:685
 msgid "Create frame around image"
-msgstr ""
+msgstr "Pane pildile raam ümber"
 
-#: screenshooter/screenshooter_applet.c:678
+#: screenshooter/screenshooter_applet.c:689
 msgid "Frame Width (pixels)"
-msgstr ""
+msgstr "Raami laius (punktides)"
 
-#: screenshooter/screenshooter_applet.c:686
+#: screenshooter/screenshooter_applet.c:697
 msgid "Mirror image vertically"
-msgstr ""
+msgstr "Peegelda pilti vertikaalis"
 
-#: screenshooter/screenshooter_applet.c:688
+#: screenshooter/screenshooter_applet.c:699
 msgid "Mirror image horizontally"
-msgstr ""
+msgstr "Peegelda pilti horisontaalis"
 
-#: screenshooter/screenshooter_applet.c:691
+#: screenshooter/screenshooter_applet.c:702
 msgid "Emboss image"
-msgstr ""
+msgstr "Reljeefne pilt"
 
-#: screenshooter/screenshooter_applet.c:703
+#: screenshooter/screenshooter_applet.c:714
 msgid ""
 "When finished, send image and thumbnail filenames to script/program below"
-msgstr ""
+msgstr "Anna salvestatud pildi ja näidise failinimed töötluseks programmile"
 
-#: screenshooter/screenshooter_applet.c:711
+#: screenshooter/screenshooter_applet.c:722
 msgid "Script or program to launch:"
-msgstr ""
+msgstr "Programmi või skripti nimi:"
 
-#: screenshooter/screenshooter_applet.c:732
+#: screenshooter/screenshooter_applet.c:743
 msgid ""
 "Script/program will be launched after image creation with the image "
 "filenames\n"
@@ -3016,115 +2985,127 @@ msgid ""
 "Hint: I use a script to update my website screenshot page.\n"
 "An example script should've been included in the tarball, or at my website."
 msgstr ""
+"Skript või programm käivitatakse peale pildi salvestamist, andes talle\n"
+"käsurea parameetriteks failinimed järgmiselt:\n"
+"{Skripti nimi} {Pildi nimi} {Näidise nimi, kui on}\n"
+"Vihje: Mina ise kasutan skripti, et uuendada screenshot-i oma veebilehel.\n"
+"Näidisskript on kaasas lähtekoodiga või leiate selle minu veebilehelt."
 
-#: screenshooter/screenshooter_applet.c:741
+#: screenshooter/screenshooter_applet.c:752
 msgid "Frills"
-msgstr ""
-
-#: screenshooter/screenshooter_applet.c:750
-#, fuzzy
-msgid "Blur image"
-msgstr "Pager"
-
-#: screenshooter/screenshooter_applet.c:753
-msgid "Blur image by what factor?"
-msgstr ""
-
-#: screenshooter/screenshooter_applet.c:757
-msgid "Create Charcoal Effect"
-msgstr ""
+msgstr "Lisad"
 
 #: screenshooter/screenshooter_applet.c:761
+msgid "Blur image"
+msgstr "Udusta pilti"
+
+#: screenshooter/screenshooter_applet.c:764
+msgid "Blur image by what factor?"
+msgstr "Pildi udustamismäär"
+
+#: screenshooter/screenshooter_applet.c:768
+msgid "Create Charcoal Effect"
+msgstr "Tee söejoonistus"
+
+#: screenshooter/screenshooter_applet.c:772
 msgid "Charcoal by what factor?"
-msgstr ""
+msgstr "Söejoonistuse faktor"
 
-#: screenshooter/screenshooter_applet.c:765
+#: screenshooter/screenshooter_applet.c:776
 msgid "Find Edges in Image"
-msgstr ""
+msgstr "Leia pildil servad"
 
-#: screenshooter/screenshooter_applet.c:769
+#: screenshooter/screenshooter_applet.c:780
 msgid "Find edges by what factor?"
-msgstr ""
+msgstr "Servade määramise faktor"
 
-#: screenshooter/screenshooter_applet.c:773
+#: screenshooter/screenshooter_applet.c:784
 msgid "Implode Image"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:777
+#: screenshooter/screenshooter_applet.c:788
 msgid "Implode by what factor?"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:782
+#: screenshooter/screenshooter_applet.c:793
 msgid "Spurious"
-msgstr ""
+msgstr "Mõttetud"
 
-#: screenshooter/screenshooter_applet.c:790
+#: screenshooter/screenshooter_applet.c:801
 msgid "Create Painted Effect"
-msgstr ""
+msgstr "Tee õlimaaliks"
 
-#: screenshooter/screenshooter_applet.c:794
+#: screenshooter/screenshooter_applet.c:805
 msgid "Paint what radius around each pixel?"
-msgstr ""
+msgstr "Raadius mille ulatuses punkti ümbert värvida"
 
-#: screenshooter/screenshooter_applet.c:798
+#: screenshooter/screenshooter_applet.c:809
 msgid "Solarise Image"
-msgstr ""
+msgstr "Solarisatsioon"
 
-#: screenshooter/screenshooter_applet.c:802
+#: screenshooter/screenshooter_applet.c:813
 msgid "Solarize factor?"
-msgstr ""
+msgstr "Solarisatsiooni määr"
 
-#: screenshooter/screenshooter_applet.c:806
+#: screenshooter/screenshooter_applet.c:817
 msgid "Spread image pixels"
-msgstr ""
+msgstr "Hajuta pildipunkte"
 
-#: screenshooter/screenshooter_applet.c:810
+#: screenshooter/screenshooter_applet.c:821
 msgid "Radius to around each pixel to spread?"
-msgstr ""
+msgstr "Raadius mille ulatuses punkti hajutada"
 
-#: screenshooter/screenshooter_applet.c:814
+#: screenshooter/screenshooter_applet.c:825
 msgid "Swirl pixels. My favorite :-)"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:818
+#: screenshooter/screenshooter_applet.c:829
 msgid "Radius to swirl pixels around?)"
 msgstr ""
 
-#: screenshooter/screenshooter_applet.c:822
+#: screenshooter/screenshooter_applet.c:833
 msgid "Spurious 2"
-msgstr ""
+msgstr "Mõttetud 2"
 
-#: screenshooter/screenshooter_applet.c:937
-#: screenshooter/screenshooter_applet.c:940
+#: screenshooter/screenshooter_applet.c:950
+#: screenshooter/screenshooter_applet.c:953
 msgid "Grab a shot of a specific window or area"
-msgstr ""
+msgstr "Salvestab ühe akna või etteantud piirkonna"
 
-#: screenshooter/screenshooter_applet.c:938
-#: screenshooter/screenshooter_applet.c:941
+#: screenshooter/screenshooter_applet.c:951
+#: screenshooter/screenshooter_applet.c:954
 msgid "Grab a shot of your entire desktop"
-msgstr ""
+msgstr "Salvestab kogu töölaua"
 
-#: screenshooter/screenshooter_applet.c:1097
+#: screenshooter/screenshooter_applet.c:1115
 msgid ""
 "There was a word expansion error\n"
 "I think you have stuck something funny in the directory box\n"
 "Screenshot aborted"
 msgstr ""
+"Viga failinime laiendamisel\n"
+"Ilmselt kirjutasite te kataloogireale midagi imelikku\n"
+"Pilti ei salvestatud"
 
-#: screenshooter/screenshooter_applet.c:1113
+#: screenshooter/screenshooter_applet.c:1131
 msgid ""
 "There was a word expansion error\n"
 "I think you have stuck something funny in the filename box\n"
 "Screenshot aborted"
 msgstr ""
+"Viga failinime laiendamisel\n"
+"Ilmselt kirjutasite Te failinime reale midagi imelikku\n"
+"Pilti ei salvestatud"
 
-#: screenshooter/screenshooter_applet.c:1463
+#: screenshooter/screenshooter_applet.c:1481
 msgid ""
 "There was a word expansion error\n"
 "I think you have stuck something funny in the filename box"
 msgstr ""
+"Viga failinime laiendamisel\n"
+"Ilmselt kirjutasite Te failinime reale midagi imelikku"
 
-#: screenshooter/screenshooter_applet.c:1475
+#: screenshooter/screenshooter_applet.c:1493
 #, c-format
 msgid ""
 "The specified filename:\n"
@@ -3133,6 +3114,11 @@ msgid ""
 "%s\n"
 "when passed to a shell"
 msgstr ""
+"Etteantud failinimi:\n"
+"%s\n"
+"laieneb nimeks:\n"
+"%s\n"
+"kui ta shellile anda"
 
 #: slashapp/properties.c:203 slashapp/slashapp.c:61
 msgid "Articles"
@@ -3258,13 +3244,12 @@ msgid "Unable to process request.\n"
 msgstr "Ei suutnud päringut teostada.\n"
 
 #: sound-monitor/main.c:38
-#, fuzzy
 msgid "Sound Monitor Applet"
-msgstr "Esoundi häälestaja"
+msgstr "Heli monitooringapplet"
 
 #: sound-monitor/main.c:39 tickastat/main.c:179
 msgid "(C) 1999 John Ellis"
-msgstr ""
+msgstr "(C) 1999 John Ellis"
 
 #: sound-monitor/main.c:41
 msgid ""
@@ -3272,30 +3257,33 @@ msgid ""
 "\n"
 "Released under the GNU general public license."
 msgstr ""
+"Esoundi monitor\n"
+"\n"
+"Litsenseeritud vastavalt GNU GPL tingimustele."
 
 #: sound-monitor/main.c:84
 msgid "Place Esound in standby"
-msgstr ""
+msgstr "Pane Esound ooterezhiimi"
 
 #: sound-monitor/main.c:89
 msgid "Resume Esound"
-msgstr ""
+msgstr "Jätka Esound-i tööd"
 
 #: sound-monitor/main.c:94 sound-monitor/main.c:361
 msgid "Start Esound"
-msgstr ""
+msgstr "Käivita Esound"
 
 #: sound-monitor/main.c:354
 msgid "Manager..."
-msgstr ""
+msgstr "Mänedzher..."
 
 #: sound-monitor/manager.c:1274 sound-monitor/manager.c:1362
 msgid "Volume"
-msgstr ""
+msgstr "Valjus"
 
 #: sound-monitor/manager.c:1290 sound-monitor/manager.c:1378
 msgid "Balance"
-msgstr ""
+msgstr "Balanss"
 
 #: sound-monitor/properties.c:133
 msgid ""
@@ -3307,331 +3295,333 @@ msgid ""
 "\n"
 "You have been warned!"
 msgstr ""
+"Te olete sisendi monitooringu sisse lülitanud.\n"
+"\n"
+"Kui Teie helikaart ei ole 100% Full Duplex (ei oska salvestada ja taasesitada üheaegselt),\n"
+"siis võivad ilmnevad vead helidraiveris/esoundis arvuti kinni jooksutada.\n"
+"\n"
+"Teid on hoiatatud!"
 
 #: sound-monitor/properties.c:339
 msgid "Peak indicator"
-msgstr ""
+msgstr "Maksimumi näidik"
 
 #: sound-monitor/properties.c:348
 msgid "off"
-msgstr ""
+msgstr "väljas"
 
 #: sound-monitor/properties.c:355
 msgid "active"
-msgstr ""
+msgstr "aktiivne"
 
 #: sound-monitor/properties.c:362
 msgid "smooth"
-msgstr ""
+msgstr "silutud"
 
 #: sound-monitor/properties.c:369
 msgid "Peak indicator falloff speed"
-msgstr ""
+msgstr "Maksimumi languse kiirus"
 
 #: sound-monitor/properties.c:386
 msgid "Scope (scale 1:X, where X = ? )"
-msgstr ""
+msgstr "Ostsilloskoop (skaala 1:X, kuus X=? )"
 
 #: sound-monitor/properties.c:403
 msgid "Connect points in scope"
-msgstr ""
+msgstr "Ühenda ostsilloskoobi punktid"
 
 #: sound-monitor/properties.c:409
 msgid "Screen refresh (frames per second)"
-msgstr ""
+msgstr "Pildi uuenduskiirus (kaadrit sekundis)"
 
 #: sound-monitor/properties.c:490
 msgid "ESD host to monitor:"
-msgstr ""
+msgstr "ESD host, mida jälgida:"
 
 #: sound-monitor/properties.c:504
 msgid "Monitor sound input (only use if sound card is FULL DUPLEX)"
-msgstr ""
+msgstr "Jälgi sisendit (kasuta seda vaid juhul, kui helikaart on FULL DUPLEX)"
 
 #: tickastat/main.c:39
 msgid "Tick-a-Stat event log"
-msgstr ""
+msgstr "Tick-a-Stat logifail"
 
 #: tickastat/main.c:120
 msgid "%Y%m%d-%H-%M-%S"
-msgstr ""
+msgstr "%Y%m%d-%H-%M-%S"
 
 #: tickastat/main.c:122
 msgid "%m-%d-%Y %H:%M:%S"
-msgstr ""
+msgstr "%d-%m-%Y %H:%M:%S"
 
 #: tickastat/main.c:178
 msgid "Tick-a-Stat"
-msgstr ""
+msgstr "Tick-a-Stat"
 
 #: tickastat/main.c:181
 msgid "A ticker to display various information and statistics.\n"
-msgstr ""
+msgstr "Ticker, mis näitab mitmesuguseid sündmusi ja statistikat nende kohta.\n"
 
 #: tickastat/main.c:264
-#, fuzzy, c-format
+#, c-format
 msgid "unable to create user directory: %s\n"
-msgstr "Ei suuda kataloogi %s luua\n"
+msgstr "Ei suuda luua kataloogi: %s\n"
 
 #: tickastat/main.c:304
 msgid "The unique information and status ticker."
-msgstr ""
+msgstr "Unikaalne teadete ja seisundi ticker."
 
 #: tickastat/main.c:326
 msgid "Event log..."
-msgstr ""
+msgstr "Logifail..."
 
 #: tickastat/mod_coredump.c:91
 msgid "Core dump information (Tick-a-Stat)"
-msgstr ""
+msgstr "Core dump imformatsioon (Tick-a-Stat)"
 
 #: tickastat/mod_coredump.c:240
 msgid "Core dump module (Tick-A-Stat)"
-msgstr ""
+msgstr "Core dump moodul (Tick-a-Stat)"
 
 #: tickastat/mod_coredump.c:241
 msgid ""
 "The core dump module is\n"
 "processing a core file..."
 msgstr ""
+"Core dump moodul\n"
+"töötleb core faili..."
 
 #: tickastat/mod_coredump.c:469
 msgid "Core Dump Module"
-msgstr ""
+msgstr "Core Dump moodul"
 
 #: tickastat/mod_coredump.c:476 tickastat/mod_loadavg.c:518
 #: tickastat/mod_news.c:1215 tickastat/mod_tail.c:419 tickastat/mod_test.c:133
-#, fuzzy
 msgid "Enable this module"
-msgstr "Näita programminimekirjal vihjeid"
+msgstr "Kasuta seda moodulit"
 
 #: tickastat/mod_coredump.c:482
 msgid "Show backtrace dialog on new core files"
-msgstr ""
+msgstr "Näita uute core failide backtrace-i"
 
 #: tickastat/mod_coredump.c:492
-#, fuzzy
 msgid "Path to monitor:"
-msgstr "Paiguti hajusat udu"
+msgstr "Fail, mida jälgida:"
 
 #: tickastat/mod_coredump.c:622
 msgid ""
 "This module monitors a path for core dumps, if one is\n"
 " found it is time stamped and a backtrace logged (using gdb)."
 msgstr ""
+"See moodul otsib kataloogist core dump faile. Kui mõni\n"
+"tekib, logitakse selle aeg ja backtrace (kasutades gdb-d)."
 
 #: tickastat/mod_loadavg.c:108
 msgid "Load Average information (Tick-a-Stat)"
-msgstr ""
+msgstr "Keskmine koormus (Tick-a-Stat)"
 
 #: tickastat/mod_loadavg.c:325
 msgid "The Load average is very high."
-msgstr ""
+msgstr "Keskmine koormus on väga kõrge."
 
 #: tickastat/mod_loadavg.c:326
 msgid "Load average is at a critical point, help me!"
-msgstr ""
+msgstr "Keskmine koormus on kriitiline, tule appi!"
 
 #: tickastat/mod_loadavg.c:511
 msgid "Load Average Module"
-msgstr ""
+msgstr "Keskmise koormuse moodul"
 
 #: tickastat/mod_loadavg.c:528
 msgid "Check every:"
-msgstr ""
+msgstr "Jälgimisintervall:"
 
 #: tickastat/mod_loadavg.c:540
 msgid "Seconds"
-msgstr ""
+msgstr "Sekundit"
 
 #. Warning dialog
 #: tickastat/mod_loadavg.c:546
 msgid "Warning options"
-msgstr ""
+msgstr "Hoiatused"
 
 #: tickastat/mod_loadavg.c:555 tickastat/mod_loadavg.c:600
 msgid "Show pop-up dialog for this event"
-msgstr ""
+msgstr "Näita sel puhul dialoogi"
 
 #: tickastat/mod_loadavg.c:565 tickastat/mod_loadavg.c:610
-#, fuzzy
 msgid "Load average threshhold:"
-msgstr "Peaaegu tühja patarei nivoo:"
+msgstr "Keskmise koormuse läviväärtus:"
 
 #: tickastat/mod_loadavg.c:577 tickastat/mod_loadavg.c:622
 msgid "Text to display:"
-msgstr ""
+msgstr "Tekst, mida näidata:"
 
 #. Danger dialog
 #: tickastat/mod_loadavg.c:591
-#, fuzzy
 msgid "Alert options"
-msgstr "Modemi häälestus"
+msgstr "Kriitiline hoiatus"
 
 #: tickastat/mod_loadavg.c:781
 msgid ""
 "This module monitors the system load average,\n"
 " and displays warning when it rises above certain points."
 msgstr ""
+"See moodul jälgib süsteemi keskmist koormust,\n"
+"ja näitab hoiatusi, kui see tõuseb üle teatud nivoo."
 
 #: tickastat/mod_news.c:548
 msgid "script \""
-msgstr ""
+msgstr "skript \""
 
 #: tickastat/mod_news.c:549
 msgid "Tick-a-Stat script encountered an error:\n"
-msgstr ""
+msgstr "Tick-a-Stat skriptis juhtus viga:\n"
 
 #: tickastat/mod_news.c:1203
 msgid "Enabled"
-msgstr ""
+msgstr "Sees"
 
 #: tickastat/mod_news.c:1203
 msgid "Name"
-msgstr ""
+msgstr "Nimi"
 
 #: tickastat/mod_news.c:1203
 msgid "Line delay"
-msgstr ""
+msgstr "Rea viivitus"
 
 #: tickastat/mod_news.c:1203
-#, fuzzy
 msgid "Update interval"
-msgstr "Uuenda infot"
+msgstr "Uuendamise intervall"
 
 #: tickastat/mod_news.c:1204
 msgid "D"
-msgstr ""
+msgstr "KP"
 
 #: tickastat/mod_news.c:1204
 msgid "T"
-msgstr ""
+msgstr "T"
 
 #: tickastat/mod_news.c:1204
 msgid "I"
-msgstr ""
+msgstr "P"
 
 #: tickastat/mod_news.c:1204
 msgid "B"
-msgstr ""
+msgstr "S"
 
 #: tickastat/mod_news.c:1208
 msgid "News and Information Module"
-msgstr ""
+msgstr "Uudiste ja teadete moodul"
 
 #: tickastat/mod_news.c:1262
 msgid "Line (s):"
-msgstr ""
+msgstr "Ridu:"
 
 #: tickastat/mod_news.c:1276
-#, fuzzy
 msgid "Update (m):"
-msgstr "Prognoosi aeg:"
+msgstr "Intervall (m):"
 
 #: tickastat/mod_news.c:1294
 msgid "body"
-msgstr ""
+msgstr "sisu"
 
 #: tickastat/mod_news.c:1299
-#, fuzzy
 msgid "image"
-msgstr "Pager"
+msgstr "pilt"
 
 #: tickastat/mod_news.c:1304
 msgid "topic"
-msgstr ""
+msgstr "teema"
 
 #: tickastat/mod_news.c:1309
-#, fuzzy
 msgid "date"
-msgstr "Uuenda infot"
+msgstr "kuupäev"
 
 #: tickastat/mod_news.c:1314
-#, fuzzy
 msgid "Show:"
-msgstr "Vihmavalingud"
+msgstr "Näita:"
 
 #: tickastat/mod_news.c:1498
 msgid "This module can display news and other information."
-msgstr ""
+msgstr "See moodul näitab uudiseid ja muud infot."
 
 #: tickastat/mod_tail.c:77
 msgid "File tail view file (Tick-a-Stat)"
-msgstr ""
+msgstr "Faili saba näitaja (Tick-a-Stat)"
 
 #: tickastat/mod_tail.c:87
 msgid "no file specified"
-msgstr ""
+msgstr "faili ei ole määratud"
 
 #: tickastat/mod_tail.c:134
 msgid "File tail information (Tick-a-Stat)"
-msgstr ""
+msgstr "Faili saba info (Tick-a-Stat)"
 
 #: tickastat/mod_tail.c:143
 msgid "File tail for "
-msgstr ""
+msgstr "Jälgi selle faili saba "
 
 #: tickastat/mod_tail.c:412
 msgid "File Tail Module"
-msgstr ""
+msgstr "Failisaba moodul"
 
 #: tickastat/mod_tail.c:429
-#, fuzzy
 msgid "Path to tail:"
-msgstr "Paiguti on rahesadu"
+msgstr "Jälgitav fail:"
 
 #: tickastat/mod_tail.c:434
 msgid "Choose a file to tail"
-msgstr ""
+msgstr "Valige fail, mille saba jälgida"
 
 #: tickastat/mod_tail.c:443
 msgid "Show pop up dialog for new lines."
-msgstr ""
+msgstr "Näita dialoogi, kui lisandub ridu."
 
 #: tickastat/mod_tail.c:562
 msgid ""
 "This module monitors a file for appended text,\n"
 " and prints it. Useful for log files."
 msgstr ""
+"See moodul jälgib faili sappa lisanduvaid ridu,\n"
+"ja trükib need. Kasulik logifailide puhul."
 
 #: tickastat/mod_test.c:126
-#, fuzzy
 msgid "Test Module"
-msgstr "Appleti tüüp"
+msgstr "Proovimoodul"
 
 #: tickastat/mod_test.c:219
 msgid "This is the test module's description line."
-msgstr ""
+msgstr "See on proovimooduli kirjeldus."
 
 #. left pane will be filled in select cb
 #: tickastat/properties.c:373
 msgid "Modules"
-msgstr ""
+msgstr "Moodulid"
 
 #: tickastat/properties.c:382
 msgid "Event Log"
-msgstr ""
+msgstr "Sündmuste logimine"
 
 #: tickastat/properties.c:391
 msgid "Enable logging of events"
-msgstr ""
+msgstr "Logi sündmused faili"
 
 #: tickastat/properties.c:401
 msgid "Log path:"
-msgstr ""
+msgstr "Logifail:"
 
 #: tickastat/properties.c:406
-#, fuzzy
 msgid "Choose a log file"
-msgstr "Modemi lukustusfail:"
+msgstr "Valige logifail"
 
 #: tickastat/properties.c:520
 msgid "Use all room on panel"
-msgstr ""
+msgstr "Kasuta kogu vaba pinda paneelil"
 
 #: tickastat/properties.c:548
 msgid "Use panel size hint"
-msgstr ""
+msgstr "Jälgi paneeli suurust"
 
 #: webcontrol/webcontrol.c:56
 msgid "The Web Browser Controller"
@@ -3676,12 +3666,11 @@ msgstr "Vaata"
 
 #: whereami/whereami.c:41
 msgid "Where Am I?"
-msgstr ""
+msgstr "Kus ma olen?"
 
 #: whereami/whereami.c:42
-#, fuzzy
 msgid "Copyright 1999 John Kodis"
-msgstr "Copyright (C) 1998"
+msgstr "Copyright 1999 John Kodis"
 
 #: whereami/whereami.c:43
 msgid ""
@@ -3689,10 +3678,21 @@ msgid ""
 "= Clicking mouse button 1 grabs the cursor.\n"
 "= Dragging with mouse button 1 held down shows the size of the region."
 msgstr ""
+"Kursori asukohta jälgiv applet.\n"
+"= Hiire nupp 1 haarab kursori.\n"
+"= Hiire liigutamine, kui 1 nupp on all näitab ala suurust."
 
 #: whereami/whereami.c:195
 msgid "whereami_applet"
-msgstr ""
+msgstr "Kus-ma-olen applet"
+
+#, fuzzy
+#~ msgid "Loading plugin %s..."
+#~ msgstr "Loeme pealkirju........"
+
+#, fuzzy
+#~ msgid "About Plugin..."
+#~ msgstr "Info..."
 
 #, fuzzy
 #~ msgid "Can't open /proc/apm; can't get data."
