@@ -2,8 +2,8 @@
  * GNOME panel printer applet module.
  * (C) 1998 The Free Software Foundation
  *
- * Author: Miguel de Icaza
- *
+ * Authors: Miguel de Icaza <miguel@kernel.org>
+ *          Federico Mena   <quartic@gimp.org> 
  */
 
 #include <config.h>
@@ -24,6 +24,9 @@
 
 GtkWidget *printer;
 GtkWidget *applet = 0;
+GtkWidget *prop_name, *prop_command;
+GtkWidget *label;
+GnomePropertyConfigurator *pconf = NULL;
 
 char *print_command = NULL;
 char *print_title   = NULL;
@@ -96,7 +99,7 @@ GtkWidget *
 printer_widget (void)
 {
 	GtkWidget *fixed;
-	GtkWidget *label, *printer;
+	GtkWidget *printer;
 	int height;
 	
 	fixed   = gtk_fixed_new ();
@@ -138,9 +141,121 @@ applet_session_save(GtkWidget *w, const char *cfgpath, const char *globcfgpath)
 	return FALSE;
 }
 
+static void
+changed (void)
+{
+	gnome_property_box_changed (GNOME_PROPERTY_BOX (pconf->property_box));
+}
+
+static void
+apply_one (GtkWidget *widget, char **dest)
+{
+	if (*dest)
+		g_free (*dest);
+
+	*dest = gtk_entry_get_text (GTK_ENTRY (widget));
+
+	if (strlen (*dest) == 0)
+		*dest = NULL;
+	else
+		*dest = g_strdup (*dest);
+}
+
+static void
+apply_properties (void)
+{
+	apply_one (prop_name, &print_title);
+	apply_one (prop_command, &print_command);
+	gtk_label_set (GTK_LABEL (label), print_title);
+	position_label (label, label);
+}
+
+static void
+build_label_and_entry (GtkTable *table, int row, char *label, char *gentry_id, GtkWidget **widget,
+		       char *text, char *default_text)
+{
+	GtkWidget *w;
+
+	w = gtk_label_new (label);
+	gtk_misc_set_alignment (GTK_MISC (w), 0.0, 0.5);
+	gtk_table_attach (GTK_TABLE (table), w,
+			  0, 1, row, row + 1,
+			  GTK_FILL | GTK_SHRINK,
+			  GTK_FILL | GTK_SHRINK,
+			  0, 0);
+	gtk_widget_show (w);
+
+	*widget = gtk_entry_new ();
+	gtk_entry_set_text (GTK_ENTRY (*widget), text ? text : default_text);
+	gtk_signal_connect (GTK_OBJECT (*widget), "changed",
+			    GTK_SIGNAL_FUNC (changed), NULL);
+	gtk_table_attach (GTK_TABLE (table), *widget,
+			  1, 2, row, row + 1,
+			  GTK_EXPAND | GTK_FILL | GTK_SHRINK,
+			  GTK_FILL | GTK_SHRINK,
+			  0, 0);
+	gtk_widget_show (*widget);
+}
+
+static void
+setup_properties (void)
+{
+	GtkWidget *table;
+
+	table = gtk_table_new (2, 2, FALSE);
+	gtk_widget_show (table);
+	gtk_container_border_width (GTK_CONTAINER (table), GNOME_PAD);
+	gtk_table_set_row_spacings (GTK_TABLE (table), GNOME_PAD_SMALL);
+	gtk_table_set_col_spacings (GTK_TABLE (table), GNOME_PAD_SMALL);
+
+	build_label_and_entry (GTK_TABLE (table), 0, _("Printer name:"), "printer_name", &prop_name,
+			       print_title, "");
+
+	build_label_and_entry (GTK_TABLE (table), 1, _("Print command:"), "printer_command", &prop_command,
+			       print_command, "lpr");
+
+	gnome_property_box_append_page (((GnomePropertyConfigurator *) (pconf))->property_box,
+					table,
+					gtk_label_new (_("Printer")));
+}
+
+static int
+request (GnomePropertyRequest req)
+{
+	switch (req) {
+	case GNOME_PROPERTY_READ:
+		break;
+
+	case GNOME_PROPERTY_WRITE:
+/*		write_properties (); */
+		break;
+
+	case GNOME_PROPERTY_APPLY:
+		apply_properties ();
+		break;
+
+	case GNOME_PROPERTY_SETUP:
+		setup_properties ();
+		break;
+
+	default:
+		g_assert_not_reached ();
+	}
+
+	return 0;
+}
+
 void
 printer_properties (AppletWidget *applet, gpointer data)
 {
+	if (!pconf) {
+		pconf = gnome_property_configurator_new ();
+		gnome_property_configurator_setup (pconf);
+		gnome_property_configurator_register (pconf, request);
+		gnome_property_configurator_request_foreach (pconf, GNOME_PROPERTY_SETUP);
+	}
+
+	gtk_widget_show (pconf->property_box);
 }
 
 int
@@ -169,7 +284,6 @@ main(int argc, char **argv)
 		print_title   = g_strdup ("Print");
 		print_command = g_strdup ("lpr");
 	}
-	print_command = "lpr -P4";
 	
 	printer = printer_widget ();
 	gtk_widget_show (printer);
@@ -182,12 +296,13 @@ main(int argc, char **argv)
 			   GTK_SIGNAL_FUNC(applet_session_save),
 			   NULL);
 
+#if 0
 	applet_widget_register_callback(APPLET_WIDGET(applet),
 					"properties",
 					_("Properties"),
 					printer_properties,
 					NULL);
-
+#endif
 	applet_widget_gtk_main ();
 
 	return 0;
