@@ -18,7 +18,7 @@ EXTRA_DIST = \
 	slash_applet.desktop slashsplash.xpm \
 	slash_applet.gnorba noimage.xpm back.xpm
 
-sysdir = $(datadir)/applets/Amusements
+sysdir = $(datadir)/applets/Network
 sys_DATA = slash_applet.desktop
 
 gnorbadir  = $(sysconfdir)/CORBA/servers
