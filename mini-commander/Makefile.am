@@ -9,14 +9,21 @@ INCLUDES = 						\
 
 bin_PROGRAMS = mini_commander_applet
 
-mini_commander_applet_SOURCES =	\
-	mini-commander_applet.c	\
-	preferences.c		\
-	exec.c			\
-	message.c		\
-	command_line.c		\
-	cmd_completion.c	\
-	about.c
+mini_commander_applet_SOURCES =			\
+	about.c					\
+	about.h					\
+	cmd_completion.c			\
+	cmd_completion.h			\
+	command_line.c				\
+	command_line.h				\
+	exec.c					\
+	exec.h					\
+	message.c				\
+	message.h				\
+	mini-commander_applet.c			\
+	mini-commander_applet.h			\
+	preferences.c				\
+	preferences.h
 
 mini_commander_applet_LDADD =		\
 	../../panel/libpanel_applet.la	\
@@ -24,7 +31,7 @@ mini_commander_applet_LDADD =		\
 	$(GNOMEGNORBA_LIBS)		\
 	$(INTLLIBS) 
 
-EXTRA_DIST = mini-commander_applet.desktop
+EXTRA_DIST = mini-commander_applet.desktop mini-commander_applet.gnorba
 
 sysdir = $(datadir)/applets/Utility
 sys_DATA = mini-commander_applet.desktop

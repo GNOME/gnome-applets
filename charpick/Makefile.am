@@ -14,7 +14,8 @@ charpick_applet_LDADD = ../../panel/libpanel_applet.la	\
 		       $(GNOMEGNORBA_LIBS) $(INTLLIBS) 
 
 EXTRA_DIST = \
-	charpick_applet.desktop
+	charpick_applet.desktop	\
+	charpick_applet.gnorba
 
 sysdir = $(datadir)/applets/Utility
 sys_DATA = charpick_applet.desktop charpick_applet.gnorba

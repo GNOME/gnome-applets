@@ -27,9 +27,6 @@ multiload_applet_LDADD = ../../panel/libpanel_applet.la \
 		     $(GNOMEGNORBA_LIBS) $(INTLLIBS)	\
 		     $(LIBGTOP_LIBS) $(LIBGTOP_EXTRA_LIBS)
 
-EXTRA_DIST	= cpuload_applet.desktop memload_applet.desktop \
-		  swapload_applet.desktop multiload_applet.gnorba
-
 appletdir	= $(datadir)/applets
 
 Monitorsdir	= $(appletdir)/Monitors
@@ -37,7 +34,7 @@ Monitorsdir	= $(appletdir)/Monitors
 Monitors_DATA	= cpuload_applet.desktop memload_applet.desktop \
 		  swapload_applet.desktop
 
-EXTRA_DIST	= $(Monitors_DATA)
+EXTRA_DIST	= $(Monitors_DATA) multiload_applet.gnorba
 
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = multiload_applet.gnorba 

@@ -13,7 +13,7 @@ gnomepager_applet_SOURCES = \
 	gnomepager.h \
 	icon1.xpm \
 	icon2.xpm \
-	icon3.xpm
+	icon3.xpm	\
 	stripe.xbm
 
 gnomepager_applet_LDADD = ../../panel/libpanel_applet.la \
@@ -21,7 +21,7 @@ gnomepager_applet_LDADD = ../../panel/libpanel_applet.la \
 		     $(GNOMEUI_LIBS) $(GNORBA_LIBS)      \
 		     $(INTLLIBS)
 
-EXTRA_DIST = gnomepager_applet.desktop
+EXTRA_DIST = gnomepager_applet.desktop gnomepager_applet.gnorba
 
 sysdir = $(datadir)/applets/Utility
 sys_DATA = gnomepager_applet.desktop
