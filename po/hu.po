@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-appets 1.2.0\n"
-"POT-Creation-Date: 2000-12-29 13:35+0100\n"
-"PO-Revision-Date: 2000-12-29 13:48+0100\n"
+"POT-Creation-Date: 2000-12-29 15:04+0100\n"
+"PO-Revision-Date: 2000-12-29 15:14+0100\n"
 "Last-Translator: Szabolcs Ban <shooby@gnome.hu>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -926,6 +926,15 @@ msgstr ""
 msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
 msgstr "GKB fejlesztõi oldal (http://projects.gnome.hu/gkb)"
 
+#: gkb-new/keygrab.c:62
+#: gkb-new/keygrab.c:119
+msgid "Disabled"
+msgstr "Tiltva"
+
+#: gkb-new/keygrab.c:240
+msgid "Press a key..."
+msgstr "Nyomj meg egy billentyût...."
+
 #: gkb-new/prop.c:163
 #: gkb-new/prop.c:232
 msgid "Normal"
@@ -937,14 +946,22 @@ msgid "Big"
 msgstr "Nagy"
 
 #: gkb-new/prop.c:186
+#: gkb-new/util.c:37
+#: gkb-new/util.c:44
+#: gkb-new/util.c:72
 msgid "Flag"
 msgstr "Zászló"
 
+#: gkb-new/prop-map.c:581
 #: gkb-new/prop.c:187
+#: gkb-new/util.c:34
+#: gkb-new/util.c:69
 msgid "Label"
 msgstr "Cimke"
 
 #: gkb-new/prop.c:188
+#: gkb-new/util.c:40
+#: gkb-new/util.c:75
 msgid "Flag and Label"
 msgstr "Zászló és cimke"
 
@@ -983,6 +1000,377 @@ msgstr "Kiosztások"
 #: gkb-new/prop.c:441
 msgid "Options"
 msgstr "Beállítások"
+
+#: gkb-new/prop-add.c:257
+msgid "Select layout"
+msgstr "Válassz kiosztást"
+
+#: gkb-new/prop-add.c:285
+#: gkb-new/prop-list.c:392
+#: gtik/gtik.c:1082
+msgid "Add"
+msgstr "Hozzáadás"
+
+#: gkb-new/prop-list.c:393
+msgid "Edit"
+msgstr "Szerkesztés"
+
+#: gkb-new/prop-list.c:394
+msgid "Up"
+msgstr "Fel"
+
+#: gkb-new/prop-list.c:395
+msgid "Down"
+msgstr "Le"
+
+#: gkb-new/prop-list.c:396
+msgid "Delete"
+msgstr "Törlés"
+
+#: gkb-new/prop-map.c:184
+msgid "Armenia"
+msgstr "Örményország"
+
+#: gkb-new/prop-map.c:185
+msgid "Australia"
+msgstr "Ausztrália"
+
+#: gkb-new/prop-map.c:186
+msgid "Austria"
+msgstr "Ausztria"
+
+#: gkb-new/prop-map.c:187
+msgid "Belgium"
+msgstr "Belgium"
+
+#: gkb-new/prop-map.c:188
+msgid "Brazil"
+msgstr "Brazil"
+
+#: gkb-new/prop-map.c:189
+msgid "Bulgaria"
+msgstr "Bulgária"
+
+#: gkb-new/prop-map.c:190
+msgid "Canada"
+msgstr "Kanada"
+
+#: gkb-new/prop-map.c:191
+msgid "Caribic"
+msgstr "Karib szigetek"
+
+#: gkb-new/prop-map.c:192
+msgid "France"
+msgstr "Franciaország"
+
+#: gkb-new/prop-map.c:193
+msgid "Georgia"
+msgstr "Grúzia"
+
+#: gkb-new/prop-map.c:194
+msgid "Germany"
+msgstr "Németország"
+
+#: gkb-new/prop-map.c:195
+msgid "Great Britain"
+msgstr "Nagy Britannia"
+
+#: gkb-new/prop-map.c:196
+msgid "Hungary"
+msgstr "Magyarország"
+
+#: gkb-new/prop-map.c:197
+msgid "Jamaica"
+msgstr "Jamaika"
+
+#: gkb-new/prop-map.c:198
+msgid "New Zealand"
+msgstr "Új Zéland"
+
+#: gkb-new/prop-map.c:199
+msgid "Norway"
+msgstr "Norvégia"
+
+#: gkb-new/prop-map.c:200
+msgid "Poland"
+msgstr "Lengyelország"
+
+#: gkb-new/prop-map.c:201
+msgid "Portugal"
+msgstr "Portugália"
+
+#: gkb-new/prop-map.c:202
+msgid "Russia"
+msgstr "Oroszország"
+
+#: gkb-new/prop-map.c:203
+msgid "Slovak Republic"
+msgstr "Szlovákia"
+
+#: gkb-new/prop-map.c:204
+msgid "Slovenia"
+msgstr "Szlovénia"
+
+#: gkb-new/prop-map.c:205
+msgid "South Africa"
+msgstr "Dél Afrika"
+
+#: gkb-new/prop-map.c:206
+msgid "Spain"
+msgstr "Spanyolország"
+
+#: gkb-new/prop-map.c:207
+msgid "Sweden"
+msgstr "Svédország"
+
+#: gkb-new/prop-map.c:208
+msgid "Switzerland"
+msgstr "Svájc"
+
+#: gkb-new/prop-map.c:209
+msgid "Thailand"
+msgstr "Tájföld"
+
+#: gkb-new/prop-map.c:210
+msgid "Turkey"
+msgstr "Törökország"
+
+#: gkb-new/prop-map.c:211
+msgid "United States"
+msgstr "Egyesült Államok"
+
+#: gkb-new/prop-map.c:212
+msgid "Yugoslavia"
+msgstr "Jugoszlávia"
+
+#: gkb-new/prop-map.c:232
+msgid "Armenian"
+msgstr "Örmény"
+
+#: gkb-new/prop-map.c:233
+msgid "Basque"
+msgstr "Baszk"
+
+#: gkb-new/prop-map.c:234
+msgid "Bulgarian"
+msgstr "Bolgár"
+
+#: gkb-new/prop-map.c:235
+msgid "Dutch"
+msgstr "Holland"
+
+#: gkb-new/prop-map.c:236
+msgid "English"
+msgstr "Angol"
+
+#: gkb-new/prop-map.c:237
+msgid "French"
+msgstr "Francia"
+
+#: gkb-new/prop-map.c:238
+msgid "Georgian"
+msgstr "Grúz"
+
+#: gkb-new/prop-map.c:239
+msgid "German"
+msgstr "Német"
+
+#: gkb-new/prop-map.c:240
+msgid "Hungarian"
+msgstr "Magyar"
+
+#: gkb-new/prop-map.c:241
+msgid "Norwegian"
+msgstr "Norvég"
+
+#: gkb-new/prop-map.c:242
+msgid "Polish"
+msgstr "Lengyel"
+
+#: gkb-new/prop-map.c:243
+msgid "Portuglese"
+msgstr "Portugál"
+
+#: gkb-new/prop-map.c:244
+msgid "Portuguese"
+msgstr "Portugál"
+
+#: gkb-new/prop-map.c:245
+msgid "Russian"
+msgstr "Orosz"
+
+#: gkb-new/prop-map.c:246
+msgid "Slovak"
+msgstr "Szlovák"
+
+#: gkb-new/prop-map.c:247
+msgid "Slovenian"
+msgstr "Szlovén"
+
+#: gkb-new/prop-map.c:248
+msgid "Swedish"
+msgstr "Svéd"
+
+#: gkb-new/prop-map.c:249
+msgid "Thai"
+msgstr "Thai"
+
+#: gkb-new/prop-map.c:250
+msgid "Turkish"
+msgstr "Török"
+
+#: gkb-new/prop-map.c:251
+msgid "Wallon"
+msgstr "Vallon"
+
+#: gkb-new/prop-map.c:252
+msgid "Yugoslavian"
+msgstr "Jugoszláv"
+
+#: gkb-new/prop-map.c:270
+msgid "105"
+msgstr "105"
+
+#: gkb-new/prop-map.c:271
+msgid "101"
+msgstr "101"
+
+#: gkb-new/prop-map.c:272
+msgid "102"
+msgstr "102"
+
+#: gkb-new/prop-map.c:273
+msgid "450"
+msgstr "450"
+
+#: gkb-new/prop-map.c:274
+msgid "84"
+msgstr "84"
+
+#: gkb-new/prop-map.c:275
+msgid "mklinux"
+msgstr "mklinux"
+
+#: gkb-new/prop-map.c:276
+msgid "type5"
+msgstr "type5"
+
+#: gkb-new/prop-map.c:296
+msgid "iso-8859-1"
+msgstr "iso-8859-1"
+
+#: gkb-new/prop-map.c:297
+msgid "iso-8859-2"
+msgstr "iso-8859-2"
+
+#: gkb-new/prop-map.c:298
+msgid "iso-8859-9"
+msgstr "iso-8859-9"
+
+#: gkb-new/prop-map.c:299
+msgid "am-armscii8"
+msgstr "am-armscii8"
+
+#: gkb-new/prop-map.c:300
+msgid "be-latin1"
+msgstr "be-latin1"
+
+#: gkb-new/prop-map.c:301
+msgid "cp1251"
+msgstr "cp1251"
+
+#: gkb-new/prop-map.c:302
+msgid "georgian-academy"
+msgstr "grúz-akadémiai"
+
+#: gkb-new/prop-map.c:303
+msgid "koi8-r"
+msgstr "koi8-r"
+
+#: gkb-new/prop-map.c:304
+msgid "tis620"
+msgstr "tis620"
+
+#: gkb-new/prop-map.c:322
+msgid "ix86"
+msgstr "ix86"
+
+#: gkb-new/prop-map.c:323
+msgid "sun"
+msgstr "sun"
+
+#: gkb-new/prop-map.c:324
+msgid "mac"
+msgstr "mac"
+
+#: gkb-new/prop-map.c:325
+msgid "sgi"
+msgstr "sgi"
+
+#: gkb-new/prop-map.c:326
+msgid "dec"
+msgstr "dec"
+
+#: gkb-new/prop-map.c:327
+msgid "ibm"
+msgstr "ibm"
+
+#: gkb-new/prop-map.c:552
+msgid "Edit keymap"
+msgstr "Kiosztás szerkesztése"
+
+#. Add the labels
+#: gkb-new/prop-map.c:580 tickastat/mod_news.c:1203
+msgid "Name"
+msgstr "Név"
+
+#: gkb-new/prop-map.c:582
+msgid "Language"
+msgstr "Nyelv"
+
+#: gkb-new/prop-map.c:583
+msgid "Country"
+msgstr "Ország"
+
+#: gkb-new/prop-map.c:584
+msgid ""
+"Flag\n"
+"Pixmap"
+msgstr ""
+"Zászló\n"
+"Pixmap"
+
+#: gkb-new/prop-map.c:586
+msgid "Architecture"
+msgstr "Architektúra"
+
+#: gkb-new/prop-map.c:587
+msgid "Type"
+msgstr "Típus"
+
+#: gkb-new/prop-map.c:588
+msgid "Codepage"
+msgstr "Kódlap"
+
+#: gkb-new/prop-map.c:589
+msgid "Command"
+msgstr "Parancs"
+
+#: gkb-new/prop-map.c:623
+msgid ""
+"Where command can be:\n"
+"* xmodmap /full/path/xmodmap.hu\n"
+"* gkb__xmmap hu\n"
+"* setxkbmap hu"
+msgstr ""
+"Ahol a parancs a következõ lehet:\n"
+"* xmodmap /teljes/eleres/xmodmap.hu\n"
+"* gkb__xmmap hu\n"
+"* setxkbmap hu"
+
+#: gkb-new/system.c:45
+msgid "The keymap switching command returned with error!"
+msgstr "A billentyûzet átkapcsoló parancs hibával tért vissza!"
 
 #: gnotes/gnote.c:224
 msgid "Raise Note"
@@ -1059,10 +1447,6 @@ msgstr "Ez a program ismert webkiszolgálókhoz csatlakozik és letölti onnan a rés
 #: gtik/gtik.c:1071
 msgid "New Symbol:"
 msgstr "Új szimbólum:"
-
-#: gtik/gtik.c:1082
-msgid "Add"
-msgstr "Hozzáadás"
 
 #: gtik/gtik.c:1093
 msgid "Remove Selected"
@@ -4101,10 +4485,6 @@ msgstr ""
 #: tickastat/mod_news.c:1203
 msgid "Enabled"
 msgstr "Engedélyezve"
-
-#: tickastat/mod_news.c:1203
-msgid "Name"
-msgstr "Név"
 
 #: tickastat/mod_news.c:1203
 msgid "Line delay"
