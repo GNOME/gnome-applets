@@ -49,6 +49,8 @@ multiload_properties_changed (void)
 void
 multiload_show_properties (void)
 {
+    static GnomeHelpMenuEntry help_entry = { "multiload_applet",
+					     "properties" };
     GList *c;
 
     if (win) {
@@ -74,6 +76,10 @@ multiload_show_properties (void)
 
     gtk_signal_connect (GTK_OBJECT (win), "destroy",
 			GTK_SIGNAL_FUNC(multiload_properties_close), NULL);
+
+    gtk_signal_connect (GTK_OBJECT (win), "help",
+			GTK_SIGNAL_FUNC(gnome_help_pbox_display),
+			&help_entry);
 
     gtk_widget_show_all (win);
 }

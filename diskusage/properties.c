@@ -305,6 +305,8 @@ gint destroy_cb( GtkWidget *widget, void *data )
 
 void properties(AppletWidget *applet, gpointer data)
 {
+        static GnomeHelpMenuEntry help_entry = { "diskusage_applet",
+						 "properties" };
 	GtkWidget *frame, *label;
 
 #ifdef DU_DEBUG
@@ -359,6 +361,10 @@ void properties(AppletWidget *applet, gpointer data)
 
         gtk_signal_connect( GTK_OBJECT(propbox),
 		"destroy", GTK_SIGNAL_FUNC(destroy_cb), NULL );
+
+        gtk_signal_connect( GTK_OBJECT(propbox),
+		"help", GTK_SIGNAL_FUNC(gnome_help_pbox_display),
+			    &help_entry);
 
 	gtk_widget_show_all(propbox);
 }

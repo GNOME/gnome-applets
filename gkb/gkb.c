@@ -122,7 +122,8 @@ void
 properties_dialog(AppletWidget *applet,
 	GKB * gkb)
 {
-        GtkWidget *vbox3;          
+        static GnomeHelpMenuEntry help_entry = { "gkb_applet", "properties" };
+        GtkWidget *vbox3;
         GtkWidget *hbox5;          
         GtkWidget *hbox6;          
         GtkWidget *hbox8;          
@@ -256,6 +257,8 @@ properties_dialog(AppletWidget *applet,
              "apply", GTK_SIGNAL_FUNC(apply_callback), gkb );
         gtk_signal_connect( GTK_OBJECT(gkb->propbox),
              "destroy", GTK_SIGNAL_FUNC(destroy_cb), gkb );
+        gtk_signal_connect( GTK_OBJECT(gkb->propbox),
+             "help", GTK_SIGNAL_FUNC(gnome_help_pbox_display), help_entry );
                          
         gtk_widget_show_all(gkb->propbox);
 }

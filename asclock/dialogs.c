@@ -86,6 +86,7 @@ GtkWidget *pwin = NULL;
 
 void properties_dialog(AppletWidget *applet, gpointer data)
 {
+  static GnomePropertyBox help_entry = { "asclock_applet", "properties" };
   gchar *titles[2] = { "Continent/City" , NULL};
 
   GtkWidget *label;
@@ -148,6 +149,10 @@ void properties_dialog(AppletWidget *applet, gpointer data)
   gtk_signal_connect( GTK_OBJECT(pwin),"apply", GTK_SIGNAL_FUNC(property_apply_cb), NULL );
   gtk_signal_connect( GTK_OBJECT(pwin),"destroy", GTK_SIGNAL_FUNC(property_destroy_cb), NULL );
 */
+  gtk_signal_connect( GTK_OBJECT(pwin), "help",
+		      GTK_SIGNAL_FUNC(gnome_help_pbox_display),
+		      &help_entry );
+  
   gtk_widget_show_all(pwin);
 
   enum_timezones(list);

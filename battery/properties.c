@@ -19,6 +19,7 @@ static void prop_apply (GtkWidget *w, int page, gpointer data);
 void
 battery_properties_window(AppletWidget * applet, gpointer data)
 {
+  static GnomeHelpMenuEntry help_entry = { "battery_applet", "properties" };
   BatteryData * bat = data; 
   GtkWidget * t, * l, * r2;
   GtkWidget * height_spin, * width_spin, * graph_speed_spin;
@@ -194,6 +195,10 @@ battery_properties_window(AppletWidget * applet, gpointer data)
 	
   gtk_signal_connect (GTK_OBJECT (bat->prop_win), "apply",
 		      GTK_SIGNAL_FUNC (prop_apply), bat);
+
+  gtk_signal_connect (GTK_OBJECT (bat->prop_win), "help",
+		      GTK_SIGNAL_FUNC (gnome_help_pbox_display),
+		      &help_entry);
 	
   gtk_widget_show_all (bat->prop_win);
 
