@@ -22,12 +22,23 @@ extern gkb_properties pr;
 
 void load_properties( char *path, gkb_properties *prop )
 {
+        char *apath, *apixmap;
 
 	gnome_config_push_prefix (path);
+
 	prop->dmap[0]	= gnome_config_get_string ("gkb/dmap0=us");
 	prop->dmap[1]	= gnome_config_get_string ("gkb/dmap1=hu");
-	prop->dfile[0]	= gnome_config_get_string ("gkb/dfile0=/usr/share/pixmaps/gkb/us.xpm");
-	prop->dfile[1]	= gnome_config_get_string ("gkb/dfile1=/usr/share/pixmaps/gkb/hu.xpm");
+
+	apixmap = gnome_pixmap_file("gkb/us.xpm");
+	apath = g_copy_strings("gkb/dfile0=", apixmap, NULL);
+	prop->dfile[0]	= gnome_config_get_string (apath);
+	g_free(apixmap); g_free(apath);
+
+	apixmap = gnome_pixmap_file("gkb/hu.xpm");
+	apath = g_copy_strings("gkb/dfile1=", apixmap, NULL);
+	prop->dfile[1]	= gnome_config_get_string (apath);
+	g_free(apixmap); g_free(apath);
+
 	gnome_config_pop_prefix ();
 }
 
