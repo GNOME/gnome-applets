@@ -56,7 +56,12 @@ void property_save(gchar *path, AppData *ad)
 static void article_delay_cb(GtkObject *adj, gpointer data)
 {
         AppData *ad = data;
-        ad->p_article_delay = (gint)GTK_ADJUSTMENT(adj)->value;
+
+	if (GTK_IS_ADJUSTMENT(adj))
+	        ad->p_article_delay = (gint)GTK_ADJUSTMENT(adj)->value;
+	else
+		ad->p_article_delay = (gint)GTK_ADJUSTMENT(GTK_SPIN_BUTTON(adj)->adjustment)->value;
+
         gnome_property_box_changed(GNOME_PROPERTY_BOX(ad->propwindow));
 }
 
@@ -104,14 +109,24 @@ static void smooth_type_cb(GtkWidget *w, gpointer data)
 static void scroll_delay_cb(GtkObject *adj, gpointer data)
 {
         AppData *ad = data;
-        ad->p_scroll_delay = (gint)GTK_ADJUSTMENT(adj)->value;
+
+	if (GTK_IS_ADJUSTMENT(adj))
+	        ad->p_scroll_delay = (gint)GTK_ADJUSTMENT(adj)->value;
+	else
+		ad->p_scroll_delay = (gint)GTK_ADJUSTMENT(GTK_SPIN_BUTTON(adj)->adjustment)->value;
+
         gnome_property_box_changed(GNOME_PROPERTY_BOX(ad->propwindow));
 }
 
 static void scroll_speed_cb(GtkObject *adj, gpointer data)
 {
         AppData *ad = data;
-        ad->p_scroll_speed = (gint)GTK_ADJUSTMENT(adj)->value;
+
+	if (GTK_IS_ADJUSTMENT(adj))
+	        ad->p_scroll_speed = (gint)GTK_ADJUSTMENT(adj)->value;
+	else
+		ad->p_scroll_speed = (gint)GTK_ADJUSTMENT(GTK_SPIN_BUTTON(adj)->adjustment)->value;
+
         gnome_property_box_changed(GNOME_PROPERTY_BOX(ad->propwindow));
 }
 
@@ -221,6 +236,8 @@ void property_show(AppletWidget *applet, gpointer data)
         gtk_box_pack_start( GTK_BOX(hbox), spin, FALSE, FALSE, 0);
         gtk_signal_connect( GTK_OBJECT(adj),"value_changed",
 			GTK_SIGNAL_FUNC(article_delay_cb), ad);
+        gtk_signal_connect( GTK_OBJECT(spin),"changed",
+			GTK_SIGNAL_FUNC(article_delay_cb), ad);
         gtk_spin_button_set_update_policy(GTK_SPIN_BUTTON(spin), GTK_UPDATE_ALWAYS);
         gtk_widget_show(spin);
 
@@ -245,7 +262,7 @@ void property_show(AppletWidget *applet, gpointer data)
 	gtk_widget_show(button);
 #endif
 
-/* -- not implemented yet -- */
+/* -- not implemented yet --
 
 	frame = gtk_frame_new(_("Ticker Information (unimplemented)"));
 	gtk_container_set_border_width (GTK_CONTAINER (frame), 5);
@@ -325,7 +342,7 @@ void property_show(AppletWidget *applet, gpointer data)
         gtk_widget_show(entry);
 
 
-/* --- */
+ --- */
 
         label = gtk_label_new(_("General"));
         gtk_widget_show(frame);
@@ -379,6 +396,8 @@ void property_show(AppletWidget *applet, gpointer data)
         gtk_box_pack_start( GTK_BOX(hbox), spin, FALSE, FALSE, 0);
         gtk_signal_connect( GTK_OBJECT(adj),"value_changed",
 			GTK_SIGNAL_FUNC(scroll_delay_cb), ad);
+        gtk_signal_connect( GTK_OBJECT(spin),"changed",
+			GTK_SIGNAL_FUNC(scroll_delay_cb), ad);
         gtk_spin_button_set_update_policy(GTK_SPIN_BUTTON(spin), GTK_UPDATE_ALWAYS);
         gtk_widget_show(spin);
 
@@ -394,6 +413,8 @@ void property_show(AppletWidget *applet, gpointer data)
         spin = gtk_spin_button_new( GTK_ADJUSTMENT(adj), 1, 0 );
         gtk_box_pack_start( GTK_BOX(hbox), spin, FALSE, FALSE, 0);
         gtk_signal_connect( GTK_OBJECT(adj),"value_changed",
+			GTK_SIGNAL_FUNC(scroll_speed_cb), ad);
+        gtk_signal_connect( GTK_OBJECT(spin),"changed",
 			GTK_SIGNAL_FUNC(scroll_speed_cb), ad);
         gtk_spin_button_set_update_policy(GTK_SPIN_BUTTON(spin), GTK_UPDATE_ALWAYS);
         gtk_widget_show(spin);
