@@ -4,7 +4,7 @@
 
 #include <config.h>
 #include <panel-applet.h>
-#include <egg-screen-help.h>
+#include <libgnome/gnome-help.h>
 #include "charpick.h"
 
 
@@ -403,6 +403,7 @@ build_table(charpick_data *p_curr_data)
   gint width, height;
   gint max_width=1, max_height=1;
   gint size_ratio;
+
   
   if (p_curr_data->box)
     gtk_widget_destroy(p_curr_data->box);
@@ -465,10 +466,10 @@ build_table(charpick_data *p_curr_data)
   
     g_object_set_data (G_OBJECT (toggle_button[i]), "unichar", 
 				GINT_TO_POINTER(g_utf8_get_char (label)));
-    gtk_signal_connect (GTK_OBJECT (toggle_button[i]), "toggled",
+    g_signal_connect (GTK_OBJECT (toggle_button[i]), "toggled",
                         (GtkSignalFunc) toggle_button_toggled_cb,
                         p_curr_data);
-    gtk_signal_connect (GTK_OBJECT (toggle_button[i]), "button_press_event", 
+    g_signal_connect (GTK_OBJECT (toggle_button[i]), "button_press_event", 
                         (GtkSignalFunc) button_press_hack, p_curr_data->applet);
   }
   
@@ -601,7 +602,7 @@ about (BonoboUIComponent *uic,
   gnome_window_icon_set_from_file (GTK_WINDOW (curr_data->about_dialog),
 				   GNOME_ICONDIR"/charpick.png");
 
-  gtk_signal_connect(GTK_OBJECT(curr_data->about_dialog), "destroy",
+  g_signal_connect(GTK_OBJECT(curr_data->about_dialog), "destroy",
 		     GTK_SIGNAL_FUNC(gtk_widget_destroyed),
 		     &curr_data->about_dialog);
   gtk_widget_show(curr_data->about_dialog);
@@ -616,7 +617,7 @@ help_cb (BonoboUIComponent *uic,
 {
   GError *error = NULL;
 
-  egg_help_display_on_screen (
+  gnome_help_display_on_screen (
 		"char-palette", NULL,
 		gtk_widget_get_screen (curr_data->applet),
 		&error);
@@ -797,10 +798,10 @@ charpicker_applet_fill (PanelApplet *applet)
 			    GDK_SELECTION_CLIPBOARD,
                             utf8_atom,
 			    0);
-  gtk_signal_connect (GTK_OBJECT (curr_data->applet), "selection_get",
+  g_signal_connect (GTK_OBJECT (curr_data->applet), "selection_get",
 		      GTK_SIGNAL_FUNC (charpick_selection_handler),
 		      curr_data);
-  gtk_signal_connect (GTK_OBJECT (curr_data->applet), "selection_clear_event",
+  g_signal_connect (GTK_OBJECT (curr_data->applet), "selection_clear_event",
 		      GTK_SIGNAL_FUNC (selection_clear_cb),
 		      curr_data);
  
