@@ -8,6 +8,7 @@
  * Fixed for new panel API and i18n added by Federico Mena.
  */
 
+#include <config.h>
 #include <stdio.h>
 #include <string.h>
 #include "gnome.h"
