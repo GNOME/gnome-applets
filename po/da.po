@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 1.30\n"
 "POT-Creation-Date: 2000-04-20 03:20-0400\n"
-"PO-Revision-Date: 2000-04-25 16:50+02:00\n"
+"PO-Revision-Date: 2000-04-29 16:50+02:00\n"
 "Last-Translator: Keld Simonsen <keld@dkuug.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
 "MIME-Version: 1.0\n"
@@ -161,7 +161,7 @@ msgstr "Et analogt ur magen til det fra CDE panelet"
 #: another_clock/another_clock.c:725 asclock/asclock.c:608
 #: battery/battery.c:944 charpick/charpick.c:587 clockmail/clockmail.c:561
 #: diskusage/diskusage.c:1071 drivemount/drivemount.c:694 geyes/geyes.c:392
-#: gkb/gkb.c:666 gnotes/gnotes_applet.c:180 gweather/gweather-applet.c:192
+#: gkb-new/gkb.c:439 gnotes/gnotes_applet.c:189 gweather/gweather-applet.c:192
 #: mini-commander/src/mini-commander_applet.c:398
 #: modemlights/modemlights.c:1226 multiload/cpuload.c:95
 #: multiload/memload.c:95 multiload/swapload.c:95 odometer/odo.c:658
@@ -174,7 +174,7 @@ msgstr "Egenskaber..."
 #: battery/battery.c:950 cdplayer/cdplayer.c:401 charpick/charpick.c:594
 #: clockmail/clockmail.c:568 diskusage/diskusage.c:1094
 #: drivemount/drivemount.c:700 fifteen/fifteen.c:361 geyes/geyes.c:398
-#: gkb/gkb.c:673 gnotes/gnotes_applet.c:184 gweather/gweather-applet.c:197
+#: gkb-new/gkb.c:450 gnotes/gnotes_applet.c:193 gweather/gweather-applet.c:197
 #: jbc/jbc-applet.c:196 life/life.c:284
 #: mini-commander/src/mini-commander_applet.c:405 mixer/mixer.c:757
 #: multiload/cpuload.c:108 multiload/memload.c:108 multiload/swapload.c:108
@@ -188,8 +188,8 @@ msgstr "Hjælp"
 #: battery/battery.c:955 cdplayer/cdplayer.c:408 charpick/charpick.c:600
 #: clipboard/clipboard.c:339 clockmail/clockmail.c:573
 #: diskusage/diskusage.c:1101 drivemount/drivemount.c:705
-#: fifteen/fifteen.c:366 geyes/geyes.c:403 gkb/gkb.c:680
-#: gnotes/gnotes_applet.c:187 gweather/gweather-applet.c:202
+#: fifteen/fifteen.c:366 geyes/geyes.c:403 gkb-new/gkb.c:445
+#: gnotes/gnotes_applet.c:196 gweather/gweather-applet.c:202
 #: jbc/jbc-applet.c:201 life/life.c:288
 #: mini-commander/src/mini-commander_applet.c:412 mixer/mixer.c:762
 #: modemlights/modemlights.c:1239 multiload/cpuload.c:115
@@ -814,59 +814,63 @@ msgstr "gØjne indstillinger"
 msgid "Themes"
 msgstr "Temaer"
 
-#: gkb/gkb.c:91
-msgid "Browse"
-msgstr "Gennemse"
+#: gkb-new/gkb.c:319
+msgid "The GNOME KeyBoard Switcher Applet"
+msgstr "Gnome tastaturskifter-applet"
 
-#: gkb/gkb.c:348
+#: gkb-new/gkb.c:321
+msgid "(C) 1998-2000 LSC - Linux Support Center"
+msgstr "(C) 1998-2000 LSC - Linux Support Center"
+
+#: gkb-new/gkb.c:323
+msgid ""
+"This applet switches between keyboard maps. It uses setxkbmap, or xmodmap.\n"
+"Mail me your flag, please (60x40 size), I will put it to CVS.\n"
+"So long, and thanks for all the fish.\n"
+"Thanks for Balazs Nagy (Kevin) <julian7@kva.hu> for his help and Emese "
+"Kovacs <emese@eik.bme.hu> for her solidarity."
+msgstr ""
+"Denne applet skifter mellem tastaturudlægninger. Den bruger setxkbmap eller "
+"xmodmap. Send mig venligst dit flag (størrelse 60x40), så vil jeg placere "
+"det i CVS'et. Ha det godt, og tak for alle fiskene.\n"
+"Tak til Balazs Nagy (Kevin) <julian7@kva.hu> for hans hjælp, og Emese Kovacs "
+"<emese@eik.bme.hu> for hendes solidaritet."
+
+#: gkb-new/gkb.c:334
+msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
+msgstr "GKB hjemmeside (http://projects.gnome.hu/gkb)"
+
+#: gkb-new/prop.c:303
+msgid "Keymap name"
+msgstr "Tastaturudlægningens navn"
+
+#: gkb-new/prop.c:329
+msgid "Keymap control"
+msgstr "Tastaturudlægnings kontrol"
+
+#: gkb-new/prop.c:342
+msgid "New keymap"
+msgstr "Ny tastaturudlægning"
+
+#: gkb-new/prop.c:355
+msgid "Delete this keymap"
+msgstr "Slet denne tastaturudlægning"
+
+#: gkb-new/prop.c:380
+msgid "Keymap icon"
+msgstr "Tastaturudlægnings ikon"
+
+#: gkb-new/prop.c:407
+msgid "Iconpath"
+msgstr "Ikonsti"
+
+#: gkb-new/prop.c:429
+msgid "Full command"
+msgstr "Fuld kommando"
+
+#: gkb-new/prop.c:486
 msgid "GKB Properties"
 msgstr "GKB-egenskaber"
-
-#: gkb/gkb.c:360
-msgid "Flag One"
-msgstr "Flag 1"
-
-#: gkb/gkb.c:392
-msgid "Flag Two"
-msgstr "Flag #2"
-
-#: gkb/gkb.c:420
-msgid "Program"
-msgstr "Program"
-
-#: gkb/gkb.c:430
-msgid "Xkb"
-msgstr "Xkb"
-
-#: gkb/gkb.c:434
-msgid "Xmodmap"
-msgstr "Xmodmap"
-
-#: gkb/gkb.c:445
-msgid "Menu"
-msgstr "Menu"
-
-#: gkb/gkb.c:566
-msgid "The GNOME KeyBoard Applet"
-msgstr "Gnome tastaturapplet"
-
-#: gkb/gkb.c:568
-msgid "(C) 1998-99 LSC - Linux Supporting Center"
-msgstr "(C) 1998-99 LSC - Linux Supporting Center"
-
-#: gkb/gkb.c:570
-msgid ""
-"This applet switches between keyboard maps. Not more. It uses setxkbmap, or "
-"xmodmap. The main site of this app moved temporarily to URL "
-"http://lsc.kva.hu/gkb.Mail me your flag, please (60x40 size),I will put it "
-"to CVS.So long, and thanks for all the fish.\n"
-"Thanks for Balazs Nagy (Kevin)<julian7@kva.hu> for minor help."
-msgstr ""
-"Denne applet skifter mellem tastaturudlægninger. Ikke andet. Den bruger "
-"setxkbmap eller xmodmap. Denne applikations hjemmeside er for tiden flyttet "
-"til URL http://lsc.kva.hu/gkb. Send mig venligst dit flag (størrelse 60x40), "
-"så vil jeg placere det i CVS'et. So long, and thanks for all the fish.\n"
-"Tak til Balazs Nagy (Kevin)<julian7@kva.hu> for lidt hjælp."
 
 #: gnotes/gnote.c:225
 msgid "Raise Note"
@@ -904,19 +908,19 @@ msgstr "Klistr din skærm til med gule huskesedler."
 msgid "Can't create GNotes applet!"
 msgstr "Kan ikke oprette GNoter appletten!"
 
-#: gnotes/gnotes_applet.c:190
+#: gnotes/gnotes_applet.c:180
 msgid "Raise Notes"
 msgstr "Hæv noter"
 
-#: gnotes/gnotes_applet.c:192
+#: gnotes/gnotes_applet.c:182
 msgid "Lower Notes"
 msgstr "Sænk noter"
 
-#: gnotes/gnotes_applet.c:194
+#: gnotes/gnotes_applet.c:184
 msgid "Hide Notes"
 msgstr "Skjul noter"
 
-#: gnotes/gnotes_applet.c:196
+#: gnotes/gnotes_applet.c:186
 msgid "Show Notes"
 msgstr "Vis noter"
 
