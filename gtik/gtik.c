@@ -717,6 +717,9 @@ static gint updateOutput(gpointer data)
 		const gchar *translator_credits = _("translator_credits");
 
 		if (stockdata->about_dialog) {
+			gtk_window_set_screen (GTK_WINDOW (stockdata->about_dialog),
+					       gtk_widget_get_screen (stockdata->applet));
+
 			gtk_window_present (GTK_WINDOW (stockdata->about_dialog));
 			return;
 		}
