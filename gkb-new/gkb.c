@@ -24,7 +24,10 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
  * USA
  */
-
+ 
+#include <X11/keysym.h>
+#include <gdk/gdkx.h>
+#include <X11/Xlib.h>
 #include "gkb.h"
 
 GtkWidget *bah_window = NULL;
@@ -32,6 +35,10 @@ GtkWidget *bah_window = NULL;
 static void gkb_button_press_event_cb (GtkWidget * widget, GdkEventButton * e);
 static void about_cb (AppletWidget * widget);
 static void help_cb (AppletWidget * widget);
+void sized_render ();
+void gkb_draw ();
+static GdkFilterReturn
+event_filter (GdkXEvent *gdk_xevent, GdkEvent *event, gpointer data);
 
 static void
 makepix (Prop * actdata, char *fname, int w, int h)
@@ -118,7 +125,13 @@ sized_render ()
 
   while ((actdata = g_list_nth_data (gkb->maps, i++)) != NULL)
     {
-      makepix (actdata, actdata->iconpath, gkb->w - 4, gkb->h - 4);
+      gchar buf[256];
+      gchar * pixmapname;
+      
+      sprintf(buf,"gkb/%s",actdata->flag);
+      pixmapname =  gnome_unconditional_pixmap_file (buf);
+      makepix (actdata, pixmapname, gkb->w - 4, gkb->h - 4);
+      g_free (pixmapname);
     }
 }
 
@@ -143,28 +156,49 @@ Prop *
 loadprop (int i)
 {
   char buf[256];
+  char * pixmapname;
 
   Prop *actdata = g_new0 (Prop, 1);
-
-  g_snprintf (buf, 256, "map_%d/name=US", i);
+  if (i == 0) {
+  g_snprintf (buf, 256, _("keymap_%d/name=Hungarian 105 keys latin2"), i);
   actdata->name = gnome_config_get_string (buf);
 
-  g_snprintf (buf, 256, "map_%d/keymap=US", i);
-  actdata->keymap = gnome_config_get_string (buf);
+  g_snprintf (buf, 256, _("keymap_%d/label=hu"), i);
+  actdata->label = gnome_config_get_string (buf);
 
-  g_snprintf (buf, 256, "map_%d/country=United States", i);
+  g_snprintf (buf, 256, _("keymap_%d/country=Hungary"), i);
   actdata->country = gnome_config_get_string (buf);
 
-  g_snprintf (buf, 256, "map_%d/lang=English", i);
+  g_snprintf (buf, 256, _("keymap_%d/lang=Hungarian"), i);
   actdata->lang = gnome_config_get_string (buf);
 
-  g_snprintf (buf, 256, "map_%d/image=%s", i,
-	      gnome_unconditional_pixmap_file ("gkb/hu.png"));
-  actdata->iconpath = gnome_config_get_string (buf);
+  g_snprintf (buf, 256, _("keymap_%d/image=hu.png"), i);
+  actdata->flag = gnome_config_get_string (buf);
 
-  g_snprintf (buf, 256, "map_%d/command=setxkbmap hu", i);
+  g_snprintf (buf, 256, _("keymap_%d/command=gkb_xmmap hu"), i);
   actdata->command = gnome_config_get_string (buf);
+  }
+  else
+  {
+  g_snprintf (buf, 256, _("keymap_%d/name=US 105 key keyboard (with windows keys)"), i);
+  actdata->name = gnome_config_get_string (buf);
 
+  g_snprintf (buf, 256, _("keymap_%d/label=us"), i);
+  actdata->label = gnome_config_get_string (buf);
+
+  g_snprintf (buf, 256, _("keymap_%d/country=United States"), i);
+  actdata->country = gnome_config_get_string (buf);
+
+  g_snprintf (buf, 256, _("keymap_%d/lang=English"), i);
+  actdata->lang = gnome_config_get_string (buf);
+
+  g_snprintf (buf, 256, _("keymap_%d/flag=us.png"), i);
+  actdata->flag = gnome_config_get_string (buf);
+
+  g_snprintf (buf, 256, _("keymap_%d/command=gkb_xmmap us"), i);
+  actdata->command = gnome_config_get_string (buf);
+  }
+  
   actdata->pix = NULL;
   gkb->orient = applet_widget_get_panel_orient (APPLET_WIDGET (gkb->applet));
 
@@ -185,8 +219,10 @@ loadprop (int i)
       gkb->h = (int) gkb->w / 1.5;
     }
 
-  makepix (actdata, actdata->iconpath, gkb->w, gkb->h);
-
+  sprintf(buf,"gkb/%s",actdata->flag);
+  pixmapname =  gnome_unconditional_pixmap_file (buf); 
+  makepix (actdata, pixmapname, gkb->w, gkb->h);
+  g_free (pixmapname);
 
   return actdata;
 
@@ -196,6 +232,7 @@ static void
 load_properties ()
 {
   int i;
+  char buf[256];
 
   Prop *actdata;
 
@@ -205,7 +242,10 @@ load_properties ()
 
   gkb->n = gnome_config_get_int ("gkb/num=0");
 
-  gkb->advconf = gnome_config_get_int ("gkb/advanced=0");
+  gkb->key = gnome_config_get_string ("gkb/key=Mod1-Shift_L");
+  convert_string_to_keysym_state(gkb->key,
+                                 &gkb->keysym,
+                                 &gkb->state);
 
   gkb->small = gnome_config_get_int ("gkb/small=0");
 
@@ -242,6 +282,8 @@ gkb_draw ()
   gdk_draw_pixmap (gkb->darea->window,
 		   gkb->darea->style->fg_gc[GTK_WIDGET_STATE (gkb->darea)],
 		   gkb->dact->pix, 0, 0, 0, 0, gkb->w, gkb->h);
+
+  applet_widget_set_tooltip (gkb->applet, gkb->dact->name);
 }
 
 static void
@@ -311,6 +353,9 @@ create_gkb_widget ()
   gtk_container_add (GTK_CONTAINER (gkb->frame), gkb->darea);
   gtk_widget_pop_colormap ();
   gtk_widget_pop_visual ();
+
+  gdk_window_add_filter (GDK_ROOT_PARENT(), event_filter, NULL);
+
 }
 
 static void
@@ -375,24 +420,24 @@ applet_save_session (GtkWidget * w,
 
   gnome_config_push_prefix (privcfgpath);
   gnome_config_set_int ("gkb/num", gkb->n);
-  gnome_config_set_int ("gkb/advanced", gkb->advconf);
   gnome_config_set_int ("gkb/small", gkb->small);
+  gnome_config_set_string ("gkb/key", gkb->key);
 
   while (list)
     {
       actdata = list->data;
       if(actdata) {
-	      g_snprintf (str, sizeof(str), "map_%d/name", i);
+	      g_snprintf (str, sizeof(str), "keymap_%d/name", i);
 	      gnome_config_set_string (str, actdata->name);
-	      g_snprintf (str, sizeof(str), "map_%d/country", i);
+	      g_snprintf (str, sizeof(str), "keymap_%d/country", i);
 	      gnome_config_set_string (str, actdata->country);
-	      g_snprintf (str, sizeof(str), "map_%d/lang", i);
+	      g_snprintf (str, sizeof(str), "keymap_%d/lang", i);
 	      gnome_config_set_string (str, actdata->lang);
-	      g_snprintf (str, sizeof(str), "map_%d/keymap", i);
-	      gnome_config_set_string (str, actdata->keymap);
-	      g_snprintf (str, sizeof(str), "map_%d/image", i);
-	      gnome_config_set_string (str, actdata->iconpath);
-	      g_snprintf (str, sizeof(str), "map_%d/command", i);
+	      g_snprintf (str, sizeof(str), "keymap_%d/label", i);
+	      gnome_config_set_string (str, actdata->label);
+	      g_snprintf (str, sizeof(str), "keymap_%d/flag", i);
+	      gnome_config_set_string (str, actdata->flag);
+	      g_snprintf (str, sizeof(str), "keymap_%d/command", i);
 	      gnome_config_set_string (str, actdata->command);
       }
 
@@ -408,13 +453,45 @@ applet_save_session (GtkWidget * w,
   return FALSE;
 }
 
+GdkFilterReturn
+global_key_filter(GdkXEvent *gdk_xevent, GdkEvent *event)
+{
+   if(event->key.keyval == gkb->keysym &&
+        event->key.state == gkb->state) {
+        if (gkb->cur + 1 < gkb->n)
+          gkb->dact = g_list_nth_data (gkb->maps, ++gkb->cur);
+        else
+         {
+           gkb->cur = 0;
+           gkb->dact = g_list_nth_data (gkb->maps, gkb->cur);
+         }
+
+       gkb_draw ();
+       if (system (gkb->dact->command))
+         gnome_error_dialog(_("The keymap switching command returned with error!"));
+       return GDK_FILTER_CONTINUE;
+      }
+  return GDK_FILTER_CONTINUE;
+}
+
+static GdkFilterReturn
+event_filter (GdkXEvent *gdk_xevent, GdkEvent *event, gpointer data)
+{
+	XEvent *xevent;
+	xevent = (XEvent *)gdk_xevent;
+
+	if (xevent->type == KeyRelease)
+	 {
+	  return global_key_filter(gdk_xevent, event);
+	 }
+}
+
 static CORBA_Object
 gkb_activator (PortableServer_POA poa,
 	       const char *goad_id,
 	       const char **params,
 	       gpointer * impl_ptr, CORBA_Environment * ev)
 {
-
   gkb = g_new0 (GKB, 1);
 
   gkb->applet = applet_widget_new (goad_id);
@@ -442,6 +519,7 @@ gkb_activator (PortableServer_POA poa,
 
   load_properties ();
 
+
   gtk_signal_connect (GTK_OBJECT (gkb->applet), "save_session",
 		      GTK_SIGNAL_FUNC (applet_save_session), NULL);
 
@@ -459,17 +537,17 @@ gkb_activator (PortableServer_POA poa,
 					 "properties",
 					 GNOME_STOCK_MENU_PROP,
 					 _("Properties..."),
-					 properties_dialog, NULL);
+					 GTK_SIGNAL_FUNC(properties_dialog), NULL);
 
   applet_widget_register_stock_callback (APPLET_WIDGET (gkb->applet),
 					 "help",
 					 GNOME_STOCK_MENU_BOOK_OPEN,
-					 _("Help"), help_cb, NULL);
+					 _("Help"), GTK_SIGNAL_FUNC(help_cb), NULL);
 
   applet_widget_register_stock_callback (APPLET_WIDGET (gkb->applet),
 					 "about",
 					 GNOME_STOCK_MENU_ABOUT,
-					 _("About..."), about_cb, NULL);
+					 _("About..."), GTK_SIGNAL_FUNC(about_cb), NULL);
 
   return applet_widget_corba_activate (gkb->applet, poa, goad_id, params,
 				       impl_ptr, ev);
@@ -480,6 +558,8 @@ gkb_deactivator (PortableServer_POA poa,
 		 const char *goad_id,
 		 gpointer impl_ptr, CORBA_Environment * ev)
 {
+  gdk_window_remove_filter(GDK_ROOT_PARENT(), event_filter, NULL);
+
   applet_widget_corba_deactivate (poa, goad_id, impl_ptr, ev);
 }
 
@@ -509,6 +589,7 @@ main (int argc, char *argv[])
   applet_widget_init ("gkb_applet", VERSION, argc, argv, NULL, 0, NULL);
 
   APPLET_ACTIVATE (gkb_activator, "gkb_applet", &gkb_impl);
+
 
   applet_widget_gtk_main ();
 

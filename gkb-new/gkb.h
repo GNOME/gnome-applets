@@ -44,12 +44,15 @@
 typedef struct _Prop Prop;
 struct _Prop
 {
-  int i;
+  gint i;
   GdkPixmap *pix;
 
-  char *name;
-  char *command;
-  char *iconpath;
+  gchar *name;
+  gchar *command;
+  gchar *flag;
+  gchar *country;
+  gchar *lang;
+  gchar *label;
 
 };
 
@@ -60,12 +63,18 @@ struct _GKB
   GtkWidget *frame;
   GtkWidget *darea;
   GtkWidget *propbox;
-  GtkWidget *notebook;
-  GtkWidget *advanced;
+  GtkWidget *mapedit;
+  GtkWidget *addwindow;
+  GtkWidget *list1;
 
-  int n, tn, cur, size, tempsize, w, h, advconf;
+  gint n, tn, cur, size, tempsize, w, h;
 
-  int small, tempsmall;
+  gint small, tempsmall;
+
+  gint mode;
+
+  gchar *key;
+  guint keysym, state;
 
   GList *maps;
   GList *tempmaps;
@@ -74,7 +83,8 @@ struct _GKB
 
 };
 
-void properties_dialog (AppletWidget * applet, gpointer gkbx);
-void sized_render (GKB * gkb);
-void gkb_draw (GKB * gkb);
-Prop * loadprop (GKB * gkb, int i);
+void properties_dialog (AppletWidget * applet);
+void sized_render ();
+void gkb_draw ();
+Prop * loadprop (int i);
+GKB * gkb;
