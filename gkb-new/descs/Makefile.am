@@ -55,4 +55,4 @@ preset_data_DATA = $(preset_data_predata:.keyprop.in=.keyprop)
 EXTRA_DIST = $(preset_data_DATA)
 
 %.keyprop: %.keyprop.in $(top_srcdir)/xml-i18n-merge $(top_srcdir)/po/*.po
-		$(top_srcdir)/xml-i18n-merge -d $(top_srcdir)/po $< $*.keyprop
+		$(top_srcdir)/xml-i18n-merge -d $(top_srcdir)/po $< $(srcdir)/$*.keyprop
