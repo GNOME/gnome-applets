@@ -40,8 +40,8 @@ static void destroy_applet(GtkWidget *widget, gpointer data);
 static AppData *create_new_app(GtkWidget *applet);
 static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data);
 
-#ifdef HAVE_PANEL_SIZE
-static void applet_change_size(GtkWidget *w, PanelSizeType s, gpointer data);
+#ifdef HAVE_PANEL_PIXEL_SIZE
+static void applet_change_pixel_size(GtkWidget *w, int size, gpointer data);
 #endif
 
 static gint applet_save_session(GtkWidget *widget, char *privcfgpath,
@@ -518,9 +518,9 @@ static AppData *create_new_app(GtkWidget *applet)
 	gtk_signal_connect(GTK_OBJECT(ad->applet),"change_orient",
 		GTK_SIGNAL_FUNC(applet_change_orient), ad);
 
-#ifdef HAVE_PANEL_SIZE
-	gtk_signal_connect(GTK_OBJECT(ad->applet),"change_size",
-		GTK_SIGNAL_FUNC(applet_change_size), ad);
+#ifdef HAVE_PANEL_PIXEL_SIZE
+	gtk_signal_connect(GTK_OBJECT(ad->applet),"change_pixel_size",
+		GTK_SIGNAL_FUNC(applet_change_pixel_size), ad);
 #endif
 
 	gtk_widget_set_usize(ad->applet, 5, 5); /* so that a large default is not shown */
@@ -562,26 +562,19 @@ static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
 	reload_skin(ad);
 }
 
-#ifdef HAVE_PANEL_SIZE
-static void applet_change_size(GtkWidget *w, PanelSizeType s, gpointer data)
+#ifdef HAVE_PANEL_PIXEL_SIZE
+static void applet_change_pixel_size(GtkWidget *w, int size, gpointer data)
 {
 	AppData *ad = data;
-
-	switch (s)
-		{
-		case SIZE_TINY:
-			ad->sizehint = SIZEHINT_TINY;
-			break;
-		case SIZE_STANDARD:
-			ad->sizehint = SIZEHINT_STANDARD;
-			break;
-		case SIZE_LARGE:
-			ad->sizehint = SIZEHINT_LARGE;
-			break;
-		case SIZE_HUGE:
-			ad->sizehint = SIZEHINT_HUGE;
-			break;
-		}
+	
+	if(size<PIXEL_SIZE_STANDARD)
+		ad->sizehint = SIZEHINT_TINY;
+	else if(size<PIXEL_SIZE_LARGE)
+		ad->sizehint = SIZEHINT_STANDARD;
+	else if(size<PIXEL_SIZE_HUGE)
+		ad->sizehint = SIZEHINT_LARGE;
+	else
+		ad->sizehint = SIZEHINT_HUGE;
 
 	reload_skin(ad);
 }
