@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-appets 1.2.0\n"
-"POT-Creation-Date: 2002-02-17 23:07-0500\n"
+"POT-Creation-Date: 2002-03-14 11:12+0100\n"
 "PO-Revision-Date: 2001-08-08 17:40+0200\n"
 "Last-Translator: Szabolcs Ban <shooby@gnome.hu>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
@@ -26,152 +26,206 @@ msgstr "Az applet nem fog rendesen működni (akkor sem)\n"
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:798
+#: battstat/battstat_applet.c:316 battstat/battstat_applet.c:834
 msgid "High"
 msgstr "Magas"
 
 #. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:324 battstat/battstat_applet.c:800
+#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:836
 msgid "Low"
 msgstr "Alacsony"
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:326 battstat/battstat_applet.c:802
+#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:838
 msgid "Critical"
 msgstr "Kritikus"
 
 #. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:328 battstat/battstat_applet.c:804
+#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:840
 msgid "Charging"
 msgstr "Töltés alatt"
 
-#: battstat/battstat_applet.c:409
+#: battstat/battstat_applet.c:403
+#, c-format
 msgid "Battery low (%d%%) and AC is offline"
 msgstr "Az akkumulátorok töltése alacsony (%d%%) és nincs töltés alatt"
 
-#: battstat/battstat_applet.c:432
+#: battstat/battstat_applet.c:426
 msgid "Battery is now fully re-charged!"
 msgstr "Az elem teljesen feltöltődött!"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:451 battstat/battstat_applet.c:961
+#: battstat/battstat_applet.c:445 battstat/battstat_applet.c:997
+#, c-format
 msgid ""
 "System is running on battery power\n"
 "Battery: %d%% (%s)"
 msgstr ""
+"A rendszer akkumulátorról üzemel\n"
+"Töltöttség: %d%% (%s)"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:455 battstat/battstat_applet.c:969
+#: battstat/battstat_applet.c:449 battstat/battstat_applet.c:1005
+#, c-format
 msgid ""
 "System is running on AC power\n"
 "Battery: %d%% (%s)"
 msgstr ""
+"A rendszer hálózati feszültségről üzemel\n"
+"Töltöttség: %d%% (%s)"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:461 battstat/battstat_applet.c:893
-#: battstat/battstat_applet.c:982
+#: battstat/battstat_applet.c:455 battstat/battstat_applet.c:929
+#: battstat/battstat_applet.c:1018
 msgid "System is running on battery power"
-msgstr ""
+msgstr "A rendszer akkumulátorról üzemel"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:464 battstat/battstat_applet.c:899
-#: battstat/battstat_applet.c:988
+#: battstat/battstat_applet.c:458 battstat/battstat_applet.c:935
+#: battstat/battstat_applet.c:1024
 msgid "System is running on AC power"
-msgstr ""
+msgstr "A rendszer hálózati feszültségről üzemel"
 
-#: battstat/battstat_applet.c:478
+#: battstat/battstat_applet.c:472
 msgid "N/A"
 msgstr "Nincs"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:602 battstat/battstat_applet.c:873
+#: battstat/battstat_applet.c:596 battstat/battstat_applet.c:909
+#, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
-msgstr ""
+msgstr "A rendszer akkumulátorról üzemel. Töltöttség: %d%% (%s)"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:609 battstat/battstat_applet.c:880
+#: battstat/battstat_applet.c:603 battstat/battstat_applet.c:916
+#, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
-msgstr ""
+msgstr "A rendszer hálózati feszültségről üzemel. Töltöttség: %d%% (%s)"
 
 #. This string will display as a tooltip over the
 #. battery frame when the computer is using battery
 #. power and the battery isn't present. Not a
 #. possible combination, I guess... :)
-#: battstat/battstat_applet.c:620
+#: battstat/battstat_applet.c:614
 msgid "System is running on battery power. Battery: Not present"
-msgstr ""
+msgstr "A rendszer akkumulátorról üzemel. Nincs akkumulátor..."
 
 #. This string will display as a tooltip over the
 #. battery frame when the computer is using AC
 #. power and the battery isn't present.
-#: battstat/battstat_applet.c:626
+#: battstat/battstat_applet.c:620
 msgid "System is running on AC power. Battery: Not present"
-msgstr ""
+msgstr "A rendszer hálózati feszültségről üzemel. Nincs akkumulátor."
 
 #. Displayed as a tooltip over the battery meter when there is
 #. a battery present. %d will hold the current charge and %s will
 #. hold the status of the battery, (High, Low, Critical, Charging.
-#: battstat/battstat_applet.c:635
+#: battstat/battstat_applet.c:629
+#, c-format
 msgid "Battery: %d%% (%s)"
-msgstr ""
+msgstr "Töltöttség: %d%% (%s)"
 
 #. Displayed as a tooltip over the battery meter when no
 #. battery is present.
-#: battstat/battstat_applet.c:642
+#: battstat/battstat_applet.c:636
 msgid "Battery: Not present"
-msgstr ""
+msgstr "Nincs akkumulátor."
 
 #. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: battstat/battstat_applet.c:698
+#: battstat/battstat_applet.c:711
 msgid ""
 "Can't open the APM device!\n"
 "\n"
 "Make sure you have read permission to the\n"
 "APM device."
 msgstr ""
+"Nem tudom megnyitni az APM eszközt!\n"
+"\n"
+"Ellenőrizd, hogy van-e jogod az\n"
+"APM eszköz olvasására."
 
 #. Displayed if the APM system is disabled (Used under *BSD)
-#: battstat/battstat_applet.c:706
+#: battstat/battstat_applet.c:719
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
 "that helps.\n"
 msgstr ""
+"Az APM Menedzselő alrendszer nincs engedélyezve.\n"
+"Próbáld az \"apm -e 1\" (FreeBSD) paranccsal \n"
+"hátha segít.\n"
+
+#: battstat/battstat_applet.c:767
+#, c-format
+msgid ""
+"An error occured while launching the Suspend command: %s\n"
+"Please try to correct this error"
+msgstr ""
+"Hiba lépett fel az altatás parancs futtatásakor: %s\n"
+"Kérlek javítsd ki a hibát"
+
+#. Probably because the shell_ret is != 0
+#: battstat/battstat_applet.c:770
+#, c-format
+msgid ""
+"An error occured while launching the Suspend command, the command returned "
+"\"%d\"\n"
+"Please try to correct this error"
+msgstr ""
+"Hiba lépett fel az altatás parancs futtatásakor, a parancs visszatérési "
+"értéke %d volt.\n"
+"Kérlek próbáld kijavítani ezt a hibát"
+
+#: battstat/battstat_applet.c:778
+msgid ""
+"Suspend command wasn't setup correctly in the preferences.\n"
+"Please change the preferences and try again."
+msgstr ""
+"Az altatás parancs nincs megfelelően beállítva a tulajdonságokban.\n"
+"Kérlek változtasd meg a beállításokat és próbáld újra."
 
 #. The long name of the applet in the About dialog.
-#: battstat/battstat_applet.c:771
+#: battstat/battstat_applet.c:807
 msgid "Battery status utility"
-msgstr ""
+msgstr "Teleptöltöttség jelző"
 
-#: battstat/battstat_applet.c:773
-#, fuzzy
+#: battstat/battstat_applet.c:809
 msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
-msgstr "(C) 2000 the Free Software Foundation"
+msgstr "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 
-#: battstat/battstat_applet.c:774
+#: battstat/battstat_applet.c:810
 msgid "This utility show the status of your laptop battery."
-msgstr ""
+msgstr "Az applet laptop akkumulátor töltöttségi állapotát jelzi."
 
 #: battstat/GNOME_BattstatApplet.server.in.h:1
 msgid "Battery Charge Monitor"
-msgstr "Teleptöltés monitor"
+msgstr "Teleptölöttség monitor"
 
 #: battstat/GNOME_BattstatApplet.server.in.h:2
 msgid "Battstat Factory"
-msgstr ""
+msgstr "Teleptöltöttség factory"
 
 #: battstat/GNOME_BattstatApplet.server.in.h:3
-#, fuzzy
-msgid "Laptop battery monitor applet"
-msgstr "GNOME időjárás applet"
+msgid "Monitor a laptop's remaining power"
+msgstr "A laptop maradék töltését figyeli"
+
+#: battstat/GNOME_BattstatApplet.server.in.h:4
+#: charpick/GNOME_CharpickerApplet.server.in.h:4
+#: drivemount/GNOME_DriveMountApplet.server.in.h:5
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:5
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:4
+#: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:3
+#: panel-menu/GNOME_PanelMenuApplet.server.in.h:4
+msgid "Utility"
+msgstr "Segédeszköz"
 
 #: battstat/GNOME_BattstatApplet.xml.h:1 cdplayer/GNOME_CDPlayerApplet.xml.h:1
 #: charpick/GNOME_CharpickerApplet.xml.h:1
@@ -206,21 +260,41 @@ msgstr "Tulajdonságok..."
 
 #: battstat/GNOME_BattstatApplet.xml.h:4
 msgid "Suspend Computer..."
-msgstr ""
+msgstr "A számítógép elaltatása..."
 
-#: cdplayer/cdplayer.c:300
+#: cdplayer/cdplayer.c:149
+msgid "Stop"
+msgstr "Állj"
+
+#: cdplayer/cdplayer.c:151
+msgid "Play / Pause"
+msgstr "Lejátszás / Pause"
+
+#: cdplayer/cdplayer.c:153 drivemount/GNOME_DriveMountApplet.xml.h:3
+msgid "Eject"
+msgstr "Lemezkiadás"
+
+#: cdplayer/cdplayer.c:155
+msgid "Previous Track"
+msgstr "Előző sáv"
+
+#: cdplayer/cdplayer.c:157
+msgid "Next Track"
+msgstr "Következő sáv"
+
+#: cdplayer/cdplayer.c:306
 msgid "CD Player Properties"
 msgstr "CD-lejátszó beállításai"
 
-#: cdplayer/cdplayer.c:314
+#: cdplayer/cdplayer.c:320
 msgid "Device Path:"
 msgstr "Eszköz elérése:"
 
-#: cdplayer/cdplayer.c:361
+#: cdplayer/cdplayer.c:367
 msgid "CD Player Applet"
 msgstr "CD-lejátszó applet"
 
-#: cdplayer/cdplayer.c:362
+#: cdplayer/cdplayer.c:368
 msgid ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
@@ -228,7 +302,7 @@ msgstr ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
 
-#: cdplayer/cdplayer.c:364
+#: cdplayer/cdplayer.c:370
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr "A CD-lejátszó applet egy egyszerű CD-lejátszó a panelon"
 
@@ -237,38 +311,35 @@ msgid "CD Player"
 msgstr "CD-lejátszó"
 
 #: cdplayer/GNOME_CDPlayerApplet.server.in.h:2
-#, fuzzy
 msgid "CD Player Applet Factory"
-msgstr "CD-lejátszó applet"
+msgstr "CD-lejátszó applet factory"
 
 #: cdplayer/GNOME_CDPlayerApplet.server.in.h:3
-#, fuzzy
 msgid "Factory for CD player applet"
-msgstr "CD-lejátszó applet"
+msgstr "Factory CD-lejátszó applet készítéséhez"
 
 #: cdplayer/GNOME_CDPlayerApplet.server.in.h:4
+#: mixer/GNOME_MixerApplet.server.in.h:2
+msgid "Multimedia"
+msgstr "Multimédia"
+
+#: cdplayer/GNOME_CDPlayerApplet.server.in.h:5
 msgid "Panel applet for playing audio CDs"
-msgstr ""
+msgstr "Applet audio CD-k lejátszásához"
 
 #: cdplayer/GNOME_CDPlayerApplet.xml.h:4
-#, fuzzy
 msgid "Run External CD Player"
-msgstr "CD-lejátszó futtatása..."
+msgstr "Külső CD-lejátszó program futtatása"
 
-#: charpick/charpick.c:358 charpick/charpick_applet.desktop.in.h:1
+#: charpick/charpick.c:361
 msgid "Character Picker"
 msgstr "Karaktertábla"
 
-#: charpick/charpick_applet.desktop.in.h:2
-#, fuzzy
-msgid "Character picker"
-msgstr "Karaktertábla"
-
-#: charpick/charpick.c:360
+#: charpick/charpick.c:363
 msgid "Copyright (C) 1998"
 msgstr "Copyright (C) 1998"
 
-#: charpick/charpick.c:361
+#: charpick/charpick.c:364
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -277,32 +348,30 @@ msgstr ""
 "billentyűzeteden. GNU GPL-es."
 
 #: charpick/GNOME_CharpickerApplet.server.in.h:1
-#, fuzzy
 msgid "Character Palette"
 msgstr "Karaktertábla beállítások"
 
 #: charpick/GNOME_CharpickerApplet.server.in.h:2
 msgid "Charpicker Applet Factory"
-msgstr ""
+msgstr "Karaktertábla applet factory"
 
 #: charpick/GNOME_CharpickerApplet.server.in.h:3
-#, fuzzy
 msgid "Insert characters"
-msgstr "Alapértelmezett karakterlista:"
+msgstr "Karakterek beszúrása"
 
-#: charpick/properties.c:55
+#: charpick/properties.c:52
 msgid "Default character list:"
 msgstr "Alapértelmezett karakterlista:"
 
-#: charpick/properties.c:63
+#: charpick/properties.c:60
 msgid ""
 "These characters will appear when the panel is started. To return to this "
 "list, hit <space> while the applet has focus."
 msgstr ""
-"Ezek a karakterek a panel újraindítása után jelennek meg. A listához "
-"való visszatéréshez üss <szóköz>-t, amikor az applet van a fókuszban."
+"Ezek a karakterek a panel újraindítása után jelennek meg. A listához való "
+"visszatéréshez üss <szóköz>-t, amikor az applet van a fókuszban."
 
-#: charpick/properties.c:116
+#: charpick/properties.c:113
 msgid "Character Palette Properties"
 msgstr "Karaktertábla beállítások"
 
@@ -318,23 +387,23 @@ msgstr "(C) 1999-2001 The GNOME Hackers\n"
 msgid "Applet for mounting and unmounting block volumes."
 msgstr "Kötetek beillesztésére/lecsatolására használható applet."
 
-#: drivemount/drivemount.c:609
+#: drivemount/drivemount.c:611
 msgid " mounted"
 msgstr " beillesztve"
 
-#: drivemount/drivemount.c:611
+#: drivemount/drivemount.c:613
 msgid " not mounted"
 msgstr " nincs beillesztve"
 
-#: drivemount/drivemount.c:722
+#: drivemount/drivemount.c:724
 msgid "Drive Mount Applet Warning"
 msgstr "Lemezbeillesztő applet figyelmeztetés"
 
-#: drivemount/drivemount.c:730
+#: drivemount/drivemount.c:732
 msgid "\" reported:\n"
 msgstr "\" jelenti:\n"
 
-#: drivemount/drivemount.c:732
+#: drivemount/drivemount.c:734
 msgid ""
 "Drivemount command failed.\n"
 "\""
@@ -343,116 +412,104 @@ msgstr ""
 "\""
 
 #: drivemount/GNOME_DriveMountApplet.server.in.h:1
-#, fuzzy
 msgid "Disk Mounter"
 msgstr "Lemezbeillesztő"
 
 #: drivemount/GNOME_DriveMountApplet.server.in.h:2
-#, fuzzy
 msgid "Drive Mount Applet Factory"
-msgstr "Lemezbeillesztő applet"
+msgstr "Lemezbeillesztő applet factory"
 
 #: drivemount/GNOME_DriveMountApplet.server.in.h:3
-#, fuzzy
 msgid "Factory for drive mount applet"
-msgstr "Lemezbeillesztő applet"
+msgstr "Factory Lemezbeillesztő applet készítéséhez"
 
 #: drivemount/GNOME_DriveMountApplet.server.in.h:4
-#, fuzzy
-msgid "Panel applet for mounting block volumes"
-msgstr "Kötetek beillesztésére/lecsatolására használható applet."
+msgid "Mount local disks and devices"
+msgstr "Helyi lemezeket vagy eszközöket illeszt be"
 
 #: drivemount/GNOME_DriveMountApplet.xml.h:2 panel-menu/panel-menu-path.c:730
 msgid "Browse..."
 msgstr "Keresés..."
 
-#: drivemount/GNOME_DriveMountApplet.xml.h:3
-msgid "Eject"
-msgstr "Lemezkiadás"
-
-#: drivemount/properties.c:236
+#: drivemount/properties.c:240
 msgid "Disk Mounter Properties"
 msgstr "Lemezbeillesztő applet beállítások"
 
-#: drivemount/properties.c:255
+#: drivemount/properties.c:259
 msgid "Mount point:"
 msgstr "Beillesztési pont"
 
-#: drivemount/properties.c:272
+#: drivemount/properties.c:276
 msgid "Update interval (seconds):"
 msgstr "Kép frissítésének gyakorisága (mp):"
 
-#: drivemount/properties.c:287
+#: drivemount/properties.c:291
 msgid "Icon :"
 msgstr "Ikon :"
 
-#: drivemount/properties.c:304
+#: drivemount/properties.c:308
 msgid "Floppy"
 msgstr "Floppy"
 
-#: drivemount/properties.c:307
+#: drivemount/properties.c:311
 msgid "Cdrom"
 msgstr "CDROM"
 
-#: drivemount/properties.c:310
+#: drivemount/properties.c:314
 msgid "Cd Recorder"
-msgstr ""
+msgstr "CD felvevő"
 
-#: drivemount/properties.c:313
+#: drivemount/properties.c:317
 msgid "Zip Drive"
 msgstr "Zip Drive"
 
-#: drivemount/properties.c:316
+#: drivemount/properties.c:320
 msgid "Hard Disk"
 msgstr "Merevlemez"
 
-#: drivemount/properties.c:319
+#: drivemount/properties.c:323
 msgid "Jaz Drive"
 msgstr "Jaz Drive"
 
-#: drivemount/properties.c:322
+#: drivemount/properties.c:326
 msgid "Custom"
 msgstr "Beállított"
 
-#: drivemount/properties.c:335
+#: drivemount/properties.c:339
 msgid "Select icon for mounted"
 msgstr "Beillesztett állapot ikonja"
 
-#: drivemount/properties.c:342
+#: drivemount/properties.c:346
 msgid "Custom icon for mounted:"
 msgstr "Beállítható ikon beillesztett állapothoz"
 
-#: drivemount/properties.c:350
+#: drivemount/properties.c:354
 msgid "Select icon for unmounted"
 msgstr "Nem beillesztett állapot ikonja"
 
-#: drivemount/properties.c:357
+#: drivemount/properties.c:361
 msgid "Custom icon for not mounted:"
 msgstr "Beállítható ikon nem beillesztett állapothoz"
 
-#: drivemount/properties.c:366
+#: drivemount/properties.c:370
 msgid "Scale size to panel"
 msgstr "A panel méretéhez igazítsd"
 
-#: drivemount/properties.c:373
+#: drivemount/properties.c:377
 msgid "Eject on unmount"
 msgstr "Kiadás lecsatolás után"
 
-#: drivemount/properties.c:380
+#: drivemount/properties.c:384
 msgid "Use automount friendly status test"
 msgstr "Automount-barát állapotellenőrzés"
-
-#: geyes/geyes_applet.desktop.in.h:1
-msgid "An applet that watches your mouse."
-msgstr "Az egérkurzort figyelő szemek"
-
-#: geyes/geyes.c:209 geyes/geyes_applet.desktop.in.h:2
-msgid "gEyes"
-msgstr "gEyes"
 
 #: geyes/geyes.c:200
 msgid "Dave Camp <campd@oit.edu>"
 msgstr "Dave Camp <campd@oit.edu>"
+
+#: geyes/geyes.c:209
+msgid "gEyes"
+msgstr "gEyes"
 
 #: geyes/geyes.c:210
 msgid "Copyright (C) 1999 Dave Camp"
@@ -463,46 +520,40 @@ msgid "A goofy little xeyes clone for the GNOME panel."
 msgstr "Kis bolondos, GNOME panelra tehető xeyes."
 
 #: geyes/GNOME_GeyesApplet.server.in.h:1
-#, fuzzy
 msgid "A set of eyeballs for your panel"
-msgstr "Az összes hely felhasználása"
+msgstr "Szemgolyók a panelre"
 
 #: geyes/GNOME_GeyesApplet.server.in.h:2
-#, fuzzy
-msgid "Geyes Applet"
-msgstr "CD-lejátszó applet"
+msgid "Amusements"
+msgstr "Szórakoztatás"
 
 #: geyes/GNOME_GeyesApplet.server.in.h:3
-msgid "Geyes Applet Factory"
-msgstr ""
+msgid "Geyes Applet"
+msgstr "Geyes applet"
 
-#: geyes/themes.c:185
+#: geyes/GNOME_GeyesApplet.server.in.h:4
+msgid "Geyes Applet Factory"
+msgstr "Geyes Applet factory"
+
+#: geyes/themes.c:197
 msgid "Theme Name"
 msgstr "Téma neve"
 
-#: geyes/themes.c:198
+#: geyes/themes.c:210
 msgid "Properties"
 msgstr "Tulajdonságok"
 
-#: gkb-new/gkb_applet.desktop.in.h:1
-msgid "GKB Keyboard Switcher"
-msgstr "GKB billentyűzetkiosztás átkapcsoló"
-
-#: gkb-new/gkb_applet.desktop.in.h:2
-msgid "GKB, the Gnome Keyboard Layout Switcher Applet"
-msgstr "GKB, a Gnome billentyűzet-átkapcsoló applet"
-
-#: gkb-new/gkb.c:405
+#: gkb-new/gkb.c:402
 #, c-format
 msgid "name_%d"
 msgstr "name_%d"
 
-#: gkb-new/gkb.c:408
+#: gkb-new/gkb.c:406
 #, c-format
 msgid "label_%d"
 msgstr "label_%d"
 
-#: gkb-new/gkb.c:411
+#: gkb-new/gkb.c:410
 #, c-format
 msgid "country_%d"
 msgstr "country_%d"
@@ -512,53 +563,57 @@ msgstr "country_%d"
 msgid "lang_%d"
 msgstr "lang_%d"
 
-#: gkb-new/gkb.c:420
+#: gkb-new/gkb.c:422
 #, c-format
 msgid "command_%d"
 msgstr "command_%d"
 
-#: gkb-new/gkb.c:524 gkb-new/gkb.c:531
+#: gkb-new/gkb.c:525 gkb-new/gkb.c:532
 msgid "GKB"
 msgstr "GKB"
 
-#: gkb-new/gkb.c:571
+#: gkb-new/gkb.c:574
 msgid "The GNOME KeyBoard Switcher Applet"
 msgstr "GNOME billentyűzet-átkapcsoló applet"
 
-#: gkb-new/gkb.c:573
+#: gkb-new/gkb.c:576
 msgid "(C) 1998-2000 Free Software Foundation"
 msgstr "(C) 1998-2000 Free Software Foundation"
 
-#: gkb-new/gkb.c:574
+#: gkb-new/gkb.c:577
 msgid ""
-"This applet switches between keyboard maps. It uses setxkbmap, or xmodmap.\n"
-"Mail me your flag, please (60x40 size), I will put it into CVS.\n"
+"This applet switches between keyboard maps using setxkbmap, or xmodmap.\n"
+"Mail me your flag and keyboard layout if you want support for your locale "
+"(my email address is shooby@gnome.hu).\n"
 "So long, and thanks for all the fish.\n"
 "Thanks for Balazs Nagy (Kevin) <julian7@iksz.hu> for his help and Emese "
-"Kovacs <emese@gnome.hu> for her solidarity."
+"Kovacs <emese@gnome.hu> for her solidarity, help from guys like KevinV.\n"
+"Shooby Ban <shooby@gnome.hu>"
 msgstr ""
-"Ez az applet a billentyűzetkiosztások közötti átkapcsolásra szolgál. "
-"A program setxkbmap-ot és xmodmap-ot használ. Küldhetsz még ikonokat... "
-"\n"
+"Ez az applet a billentyűzet-kiosztások között kapcsol, setxkbmap-ot és "
+"xmodmap-ot használ.\n"
+"Küldhetsz még zászlókat a shooby@gnome.hu címre.\n"
 "Viszlát és kösz a halakat...\n"
-"Köszönöm Nagy Balázsnak <julian7@kva.hu> segítségét, és Kovács "
-"Emesének <emese@gnome.hu> a szolidaritást."
+"Köszönöm Nagy Balázsnak (julian7@kva.hu) segítségét, Kovács Emesének "
+"(emese@gnome.hu) a szolidaritást, és a segítséget az olyan "
+"srácoknak, mint KevinV.\n"
+"Bán Szabolcs <shooby@gnome.hu>"
 
-#: gkb-new/gkb.c:589
+#: gkb-new/gkb.c:594
 msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
-msgstr "GKB fejlesztői oldal (http://projects.gnome.hu/gkb)"
+msgstr "GKB Honlap (http://projects.gnome.hu/gkb)"
 
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:1
+msgid "Change the keyboard layout"
+msgstr "A billentyűzet-kiosztást kapcsolja"
+
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:2
 msgid "GKB Factory"
 msgstr "GKB Factory"
 
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:2
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:3
 msgid "Keyboard Layout Switcher"
 msgstr "GKB billentyűzet-kiosztás kapcsoló"
-
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:3
-msgid "Keyboard Layout Switcher Applet"
-msgstr "GKB, a Gnome billentyűzet-kiosztás kapcsoló applet"
 
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:4
 msgid "Produces keyboard layout switcher applets."
@@ -570,13 +625,14 @@ msgstr "Tiltva"
 
 #: gkb-new/keygrab.c:292
 msgid "Press a key or press Esc to cancel"
-msgstr "Nyomj meg egy billentyűzet-kombinációt vagy Esc-et ha mégsem változtatod meg"
+msgstr ""
+"Nyomj meg egy billentyűzet-kombinációt vagy Esc-et ha mégsem változtatod meg"
 
 #: gkb-new/prop-add.c:86
 msgid "Keymaps (select and press add)"
 msgstr "Billentyűzet kiosztások (válaszd ki majd nyomd meg a hozzáadást)"
 
-#: gkb-new/prop-add.c:357
+#: gkb-new/prop-add.c:362
 msgid "Select layout"
 msgstr "Válassz kiosztást"
 
@@ -1001,35 +1057,35 @@ msgid "The keymap switching command returned with error!"
 msgstr "A billentyűzet-átkapcsoló parancs hibával tért vissza!"
 
 #: gtik/GNOME_GtikApplet.server.in.h:1
-msgid "Gtik Applet Factory"
-msgstr ""
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:1
+msgid "Accessories"
+msgstr "Eszközök"
 
 #: gtik/GNOME_GtikApplet.server.in.h:2
-#, fuzzy
+msgid "Get continuously updated stock quotes"
+msgstr "Folyamatosan frissülő részvényárfolyamok"
+
+#: gtik/GNOME_GtikApplet.server.in.h:3
+msgid "Gtik Applet Factory"
+msgstr "Gtik Applet factory"
+
+#: gtik/GNOME_GtikApplet.server.in.h:4
 msgid "Stock Ticker"
-msgstr "A GNOME részvényfigyelője"
+msgstr "Részvényfigyelő"
 
 #: gtik/GNOME_GtikApplet.xml.h:3
 msgid "Refresh"
 msgstr "Frissítés"
 
-#: gtik/gtik2_applet.desktop.in.h:1
-msgid "GNOME Stock Ticker"
-msgstr "A GNOME részvényfigyelője"
-
-#: gtik/gtik2_applet.desktop.in.h:2
-msgid "GNOME Stock Ticker Panel Applet"
-msgstr "A Gnome részvényfigyelő applet"
-
-#: gtik/gtik.c:199
+#: gtik/gtik.c:202 gtik/gtik.c:779
 msgid "No data available or properties not set"
 msgstr "Nincs elérhető adat, vagy a tulajdonságok nincsenek beállítva"
 
-#: gtik/gtik.c:652
+#: gtik/gtik.c:648
 msgid "The GNOME Stock Ticker"
 msgstr "A GNOME Stock Ticker"
 
-#: gtik/gtik.c:654
+#: gtik/gtik.c:650
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.  "
 "The GNOME Stock Ticker is a free Internet-based application.  It comes with "
@@ -1037,114 +1093,106 @@ msgid ""
 "investment decisions; it is for informational purposes only."
 msgstr ""
 "Ez a program ismert webkiszolgálókhoz csatlakozik és letölti onnan a "
-"részvényárfolyamokat. A GNOME Tőzsdekövető egy szabadon terjeszthető "
-"és ingyenes Internet-alapú alkalmazás. SEMMILYEN GARANCIÁT SEM "
-"VÁLLALUNK. Ne használd a GNOME Tőzsdekövetőt a pénzügyi döntések "
-"meghozatalához. A program csak információs célt szolgál."
+"részvényárfolyamokat. A GNOME Tőzsdekövető egy szabadon terjeszthető és "
+"ingyenes Internet-alapú alkalmazás. SEMMILYEN GARANCIÁT SEM VÁLLALUNK. Ne "
+"használd a GNOME Tőzsdekövetőt a pénzügyi döntések meghozatalához. A program "
+"csak információs célt szolgál."
 
-#: gtik/gtik.c:1060
+#: gtik/gtik.c:1026
 msgid "New Symbol:"
 msgstr "Új szimbólum:"
 
-#: gtik/gtik.c:1070
+#: gtik/gtik.c:1036
 msgid "_Add"
 msgstr "_Hozzáadás"
 
-#: gtik/gtik.c:1081
-#, fuzzy
+#: gtik/gtik.c:1047
 msgid "_Remove Selected"
-msgstr "A kijelölt törlése"
+msgstr "A kijelölt _törlése"
 
-#: gtik/gtik.c:1126
+#: gtik/gtik.c:1100
 msgid "Stock Ticker Properties"
 msgstr "Részvény Ticker Beállítások"
 
-#: gtik/gtik.c:1147
+#: gtik/gtik.c:1121
 msgid "Update Frequency in minutes:"
 msgstr "Frissítések gyakorisága percben:"
 
-#: gtik/gtik.c:1163
+#: gtik/gtik.c:1137
 msgid "Enter symbols delimited with \"+\" in the box below."
 msgstr "+-al elválasztott szimbólumokat írjál a mezőbe."
 
-#: gtik/gtik.c:1173
+#: gtik/gtik.c:1147
 msgid "Display only symbols and price"
 msgstr "Csak a szimbólumoket és az árakat"
 
-#: gtik/gtik.c:1176
+#: gtik/gtik.c:1150
 msgid "Scroll left to right"
 msgstr "Balról jobbra görgetés"
 
-#: gtik/gtik.c:1179
+#: gtik/gtik.c:1153
 msgid "Display arrows instead of -/+"
 msgstr "Nyilakkal jelenítsd meg -/+ helyett"
 
-#: gtik/gtik.c:1182
+#: gtik/gtik.c:1156
 msgid "Enable scroll buttons"
 msgstr "A görgetőgombok engedélyezése"
 
 #. COLOR
-#: gtik/gtik.c:1208
+#: gtik/gtik.c:1182
 msgid "+ Color"
 msgstr "+ Szín"
 
-#: gtik/gtik.c:1225
+#: gtik/gtik.c:1199
 msgid "- Color"
 msgstr "- Szín"
 
-#: gtik/gtik.c:1245
+#: gtik/gtik.c:1219
 msgid "Stock Symbol:"
 msgstr "Részvényszimbólum:"
 
-#: gtik/gtik.c:1246 gtik/gtik.c:1257
-msgid "Select Font"
-msgstr "Betűkészlet kiválasztása"
-
-#: gtik/gtik.c:1256
+#: gtik/gtik.c:1231
 msgid "Stock Change:"
 msgstr "Részvénycsere:"
 
-#: gtik/gtik.c:1278
+#: gtik/gtik.c:1253
 msgid "_Symbols"
 msgstr "_Szimbólumok"
 
-#: gtik/gtik.c:1280
+#: gtik/gtik.c:1255
 msgid "_Behavior"
 msgstr "_Viselkedés"
 
-#: gtik/gtik.c:1282
+#: gtik/gtik.c:1257
 msgid "_Appearance"
 msgstr "_Megjelenés"
 
-#: gtik/gtik.c:1496
+#: gtik/gtik.c:1475
 msgid "(No"
 msgstr "(Nincs"
 
-#: gtik/gtik.c:1497
+#: gtik/gtik.c:1476
 msgid "Change "
 msgstr "változás "
 
-#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:1
-#, fuzzy
-msgid "Factory for creating the weather applet."
-msgstr "Nem tudom elkészíteni az odométer appletet!"
-
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.h:2
-msgid "Gweather Applet Factory"
-msgstr ""
+msgid "Factory for creating the weather applet."
+msgstr "Factory időjárás applet készítéséhez."
 
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.h:3
-#, fuzzy
-msgid "The GNOME weather monitor"
-msgstr "GNOME időjárás applet"
+msgid "Gweather Applet Factory"
+msgstr "Időjárás applet factory"
 
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.h:4
-#, fuzzy
+msgid "Monitor the current weather conditions, and forecasts"
+msgstr "Az időjárást figyeli és előrejelzést ad"
+
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:5
 msgid "Weather Report"
-msgstr "Időjárás beállításai"
+msgstr "Időjárás kijelző"
 
 #: gweather/GNOME_GWeatherApplet.xml.h:2 gweather/gweather-dialog.c:75
-#: gweather/gweather-dialog.c:297
+#: gweather/gweather-dialog.c:299
 msgid "Forecast"
 msgstr "Előrejelzés"
 
@@ -1152,8 +1200,7 @@ msgstr "Előrejelzés"
 msgid "Update"
 msgstr "Frissítés"
 
-#: gweather/gweather-about.c:42 gweather/gweather-applet.c:229
-#: gweather/gweather.desktop.in.h:1
+#: gweather/gweather-about.c:42 gweather/gweather-applet.c:198
 msgid "GNOME Weather"
 msgstr "GNOME időjárás"
 
@@ -1162,28 +1209,18 @@ msgid "Copyright (c)1999 by S. Papadimitriou"
 msgstr "Copyright (c)1999 by S. Papadimitriou"
 
 #: gweather/gweather-about.c:44
-#, fuzzy
 msgid ""
 "Released under the GNU General Public License.\n"
 "\n"
 "An applet for monitoring local weather conditions."
 msgstr ""
-"GNU GPL-es program.\n"
+"GNU GPL-es licenc alatt megjelent program.\n"
 "\n"
-"Hálózati forgalmat mérő applet"
+"A helyi időjárási viszonyok jelzésére szolgáló program."
 
-#: gweather/gweather-applet.c:361
+#: gweather/gweather-applet.c:330
 msgid "Updating..."
 msgstr "Frissítés..."
-
-#: gweather/gweather-applet.c:387
-msgid "Update failed! Maybe another update was already in progress?"
-msgstr ""
-"Sikertelen frissítés! Talán egy másik frissítés van éppen folyamatban?"
-
-#: gweather/gweather.desktop.in.h:2
-msgid "GNOME weather monitor applet"
-msgstr "GNOME időjárás applet"
 
 #: gweather/gweather-dialog.c:106
 msgid "Location:"
@@ -1229,67 +1266,59 @@ msgstr "Láthatóság:"
 msgid "Current conditions"
 msgstr "Jelenlegi állapot"
 
-#: gweather/gweather-dialog.c:329
+#: gweather/gweather-dialog.c:331
 msgid "Visit Weather.com"
 msgstr "A Weather.com meglátogatása"
 
-#: gweather/gweather-dialog.c:337
+#: gweather/gweather-dialog.c:339
 msgid "Radar map"
 msgstr "Műholdas térkép"
 
-#: gweather/gweather-dialog.c:407
+#: gweather/gweather-dialog.c:409
 msgid ""
 "Detailed forecast not available for this location.\n"
 "Please try the state forecast; note that IWIN forecasts are available only "
 "for US cities."
 msgstr ""
 "Részletes időjárási információ nem érhető el erről a helyről.\n"
-"Kérlek próbáld meg a helyi előrejelzést használni, az IWIN "
-"előrejelzés csak az Egyesült Államok városaira működik."
+"Kérlek próbáld meg a helyi előrejelzést használni, az IWIN előrejelzés csak "
+"az Egyesült Államok városaira működik."
 
-#: gweather/gweather-dialog.c:409
+#: gweather/gweather-dialog.c:411
 msgid ""
 "State forecast not available for this location.\n"
 "Please try the detailed forecast; note that IWIN forecasts are available "
 "only for US cities."
 msgstr ""
 "Helyi időjárási információ nem érhető el erről a helyről.\n"
-"Kérlek próbáld meg a helyi előrejelzést használni, az IWIN "
-"előrejelzés csak az Egyesült Államok városaira működik."
+"Kérlek próbáld meg a helyi előrejelzést használni, az IWIN előrejelzés csak "
+"az Egyesült Államok városaira működik."
 
-#: gweather/gweather-pref.c:136
-msgid ""
-"Proxy URL is not of the form http://host:port/\n"
-"Properties remain unchanged."
-msgstr ""
-"A proxy URL nem http://host:port/ formában van\n"
-"A beállítások nem változnak."
-
-#: gweather/gweather-pref.c:476
+#: gweather/gweather-pref.c:560
 msgid "Weather Properties"
 msgstr "Időjárás beállításai"
 
-#: gweather/gweather-pref.c:521
+#: gweather/gweather-pref.c:605
 msgid "Location"
 msgstr "Hely"
 
-#: gweather/gweather-pref.c:541
+#: gweather/gweather-pref.c:625
 msgid "Use proxy"
 msgstr "Proxy használata"
 
-#: gweather/gweather-pref.c:547
+#: gweather/gweather-pref.c:631
 msgid "Proxy URL:"
 msgstr "Proxy URL:"
 
-#: gweather/gweather-pref.c:563
+#: gweather/gweather-pref.c:647
 msgid "Username:"
 msgstr "Felhasználó:"
 
-#: gweather/gweather-pref.c:579
+#: gweather/gweather-pref.c:663
 msgid "Password:"
 msgstr "Jelszó:"
 
-#: gweather/gweather-pref.c:596
+#: gweather/gweather-pref.c:680
 msgid ""
 "Warning: Your password will be saved as\n"
 "unencrypted text in a private configuration\n"
@@ -1299,137 +1328,170 @@ msgstr ""
 "formában lesz mentve a saját konfigurációs \n"
 "fájlba."
 
-#: gweather/gweather-pref.c:604 multiload/main.c:178
-#: multiload/properties.c:416
+#: gweather/gweather-pref.c:688
+#: modemlights/GNOME_ModemLightsApplet.server.in.h:2 multiload/main.c:181
+#: multiload/properties.c:381
 msgid "Network"
 msgstr "Hálózat"
 
-#: gweather/gweather-pref.c:629
+#: gweather/gweather-pref.c:717
 msgid "Automatically update every"
 msgstr "Automatikus frissítés"
 
-#: gweather/gweather-pref.c:635
+#: gweather/gweather-pref.c:723
 msgid "Use metric system units"
 msgstr "Metrikus mértékegységrendszer használata"
 
-#: gweather/gweather-pref.c:641
+#: gweather/gweather-pref.c:729
 msgid "Enable detailed forecast"
 msgstr "Részletes előrejelzés engedélyezése"
 
-#: gweather/gweather-pref.c:648
+#: gweather/gweather-pref.c:736
 msgid "Enable radar map"
 msgstr "Műholdas térképek engedélyezése"
 
-#: gweather/gweather-pref.c:655
+#: gweather/gweather-pref.c:742
+msgid "Use custom address for radar map"
+msgstr "A radar térkép helyének beállítása"
+
+#: gweather/gweather-pref.c:753
+msgid "Address :"
+msgstr "Cím :"
+
+#: gweather/gweather-pref.c:765
 msgid "Updates"
 msgstr "Frissítések"
 
-#: gweather/gweather-pref.c:661
+#: gweather/gweather-pref.c:771
 msgid "Automatically update every "
 msgstr "Automatikus frissítés "
 
-#: gweather/gweather-pref.c:681
+#: gweather/gweather-pref.c:791
 msgid "minute(s)"
 msgstr "másodpercenként"
 
 #. The Miscellaneous frame
-#: gweather/gweather-pref.c:692
+#: gweather/gweather-pref.c:802
 msgid "Miscellaneous"
 msgstr "Egyéb"
 
-#: gweather/gweather-pref.c:707
+#: gweather/gweather-pref.c:820
 msgid "General"
 msgstr "Alap"
 
-#: gweather/weather.c:123
+#: gweather/weather.c:57
+msgid "knots"
+msgstr "csomó"
+
+#: gweather/weather.c:57
+msgid "kph"
+msgstr "km/h"
+
+#: gweather/weather.c:62
+msgid "inHg"
+msgstr "inHg"
+
+#: gweather/weather.c:62
+msgid "hPa"
+msgstr "hPa"
+
+#: gweather/weather.c:66
+msgid "miles"
+msgstr "mérföld"
+
+#: gweather/weather.c:66
+msgid "kilometers"
+msgstr "kilométer"
+
+#: gweather/weather.c:117
 msgid "Variable"
 msgstr "Változó"
 
-#: gweather/weather.c:124
+#: gweather/weather.c:118
 msgid "North"
 msgstr "Észak"
 
-#: gweather/weather.c:124
+#: gweather/weather.c:118
 msgid "North - NorthEast"
 msgstr "Észak - északkelet"
 
-#: gweather/weather.c:124
+#: gweather/weather.c:118
 msgid "Northeast"
 msgstr "Északkelet"
 
-#: gweather/weather.c:124
+#: gweather/weather.c:118
 msgid "East - NorthEast"
 msgstr "Kelet - északkelet"
 
-#: gweather/weather.c:125
+#: gweather/weather.c:119
 msgid "East"
 msgstr "Kelet"
 
-#: gweather/weather.c:125
+#: gweather/weather.c:119
 msgid "East - Southeast"
 msgstr "Kelet - délkelet"
 
-#: gweather/weather.c:125
+#: gweather/weather.c:119
 msgid "Southeast"
 msgstr "Délkelet"
 
-#: gweather/weather.c:125
+#: gweather/weather.c:119
 msgid "South - Southeast"
 msgstr "Dél - délkelet"
 
-#: gweather/weather.c:126
+#: gweather/weather.c:120
 msgid "South"
 msgstr "Dél"
 
-#: gweather/weather.c:126
+#: gweather/weather.c:120
 msgid "South - Southwest"
 msgstr "Dél - délnyugat"
 
-#: gweather/weather.c:126
+#: gweather/weather.c:120
 msgid "Southwest"
 msgstr "Délnyugat"
 
-#: gweather/weather.c:126
+#: gweather/weather.c:120
 msgid "West - Southwest"
 msgstr "Nyugat - délnyugat"
 
-#: gweather/weather.c:127
+#: gweather/weather.c:121
 msgid "West"
 msgstr "Nyugat"
 
-#: gweather/weather.c:127
+#: gweather/weather.c:121
 msgid "West - Northwest"
 msgstr "Nyugat - északnyugat"
 
-#: gweather/weather.c:127
+#: gweather/weather.c:121
 msgid "Northwest"
 msgstr "Északnyugat"
 
-#: gweather/weather.c:127
+#: gweather/weather.c:121
 msgid "North - Northwest"
 msgstr "Észak - északnyugat"
 
-#: gweather/weather.c:134 gweather/weather.c:151 gweather/weather.c:215
+#: gweather/weather.c:128 gweather/weather.c:145 gweather/weather.c:209
 msgid "Invalid"
 msgstr "Helytelen"
 
-#: gweather/weather.c:140
+#: gweather/weather.c:134
 msgid "Clear Sky"
 msgstr "Tiszta ég"
 
-#: gweather/weather.c:141
+#: gweather/weather.c:135
 msgid "Broken clouds"
 msgstr "Sűrű felhőzet"
 
-#: gweather/weather.c:142
+#: gweather/weather.c:136
 msgid "Scattered clouds"
 msgstr "Szakadozott felhőzet"
 
-#: gweather/weather.c:143
+#: gweather/weather.c:137
 msgid "Few clouds"
 msgstr "Kevés felhő"
 
-#: gweather/weather.c:144
+#: gweather/weather.c:138
 msgid "Overcast"
 msgstr "Borús"
 
@@ -1437,1109 +1499,1106 @@ msgstr "Borús"
 #. ******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
 #. NONE
 #. DRIZZLE
-#: gweather/weather.c:177
+#: gweather/weather.c:171
 msgid "Drizzle"
 msgstr "Szitáló eső"
 
-#: gweather/weather.c:177
+#: gweather/weather.c:171
 msgid "Drizzle in the vicinity"
 msgstr "Szitáló eső a könyéken"
 
-#: gweather/weather.c:177
+#: gweather/weather.c:171
 msgid "Light drizzle"
 msgstr "Enyhe szitálás"
 
-#: gweather/weather.c:177
+#: gweather/weather.c:171
 msgid "Moderate drizzle"
 msgstr "Közepes szitálás"
 
-#: gweather/weather.c:177
+#: gweather/weather.c:171
 msgid "Heavy drizzle"
 msgstr "Erős szitálás"
 
-#: gweather/weather.c:177
+#: gweather/weather.c:171
 msgid "Shallow drizzle"
 msgstr "Felszínes szitálás"
 
-#: gweather/weather.c:177
+#: gweather/weather.c:171
 msgid "Patches of drizzle"
 msgstr "Helyenként szitálás"
 
-#: gweather/weather.c:177
+#: gweather/weather.c:171
 msgid "Partial drizzle"
 msgstr "Szórványos szitálás"
 
-#: gweather/weather.c:177 gweather/weather.c:178
+#: gweather/weather.c:171 gweather/weather.c:172
 msgid "Thunderstorm"
 msgstr "Vihar"
 
-#: gweather/weather.c:177
+#: gweather/weather.c:171
 msgid "Windy drizzle"
 msgstr "Szeles esőszitálás"
 
-#: gweather/weather.c:177
+#: gweather/weather.c:171
 msgid "Showers"
 msgstr "Zuhogó eső"
 
-#: gweather/weather.c:177
+#: gweather/weather.c:171
 msgid "Drifting drizzle"
 msgstr "Viharos szitálás"
 
-#: gweather/weather.c:177
+#: gweather/weather.c:171
 msgid "Freezing drizzle"
 msgstr "Jeges szitálás"
 
 #. RAIN
-#: gweather/weather.c:178
+#: gweather/weather.c:172
 msgid "Rain"
 msgstr "Eső"
 
-#: gweather/weather.c:178
+#: gweather/weather.c:172
 msgid "Rain in the vicinity"
 msgstr "Eső a környéken"
 
-#: gweather/weather.c:178
+#: gweather/weather.c:172
 msgid "Light rain"
 msgstr "Csendes eső"
 
-#: gweather/weather.c:178
+#: gweather/weather.c:172
 msgid "Moderate rain"
 msgstr "Közepes erősségű eső"
 
-#: gweather/weather.c:178
+#: gweather/weather.c:172
 msgid "Heavy rain"
 msgstr "Erős esőzés"
 
-#: gweather/weather.c:178
+#: gweather/weather.c:172
 msgid "Shallow rain"
 msgstr "Felszínes esőzés"
 
-#: gweather/weather.c:178
+#: gweather/weather.c:172
 msgid "Patches of rain"
 msgstr "Helyi esőzések"
 
-#: gweather/weather.c:178
+#: gweather/weather.c:172
 msgid "Partial rainfall"
 msgstr "Szórványos esőzés"
 
-#: gweather/weather.c:178
+#: gweather/weather.c:172
 msgid "Blowing rainfall"
 msgstr "Szeles eső"
 
-#: gweather/weather.c:178
+#: gweather/weather.c:172
 msgid "Rain showers"
 msgstr "Felhőszakadás"
 
-#: gweather/weather.c:178
+#: gweather/weather.c:172
 msgid "Drifting rain"
 msgstr "Viharos eső"
 
-#: gweather/weather.c:178
+#: gweather/weather.c:172
 msgid "Freezing rain"
 msgstr "Fagyos eső"
 
 #. SNOW
-#: gweather/weather.c:179
+#: gweather/weather.c:173
 msgid "Snow"
 msgstr "Havazás"
 
-#: gweather/weather.c:179
+#: gweather/weather.c:173
 msgid "Snow in the vicinity"
 msgstr "Havazás a környéken"
 
-#: gweather/weather.c:179
+#: gweather/weather.c:173
 msgid "Light snow"
 msgstr "Hószállingózás"
 
-#: gweather/weather.c:179
+#: gweather/weather.c:173
 msgid "Moderate snow"
 msgstr "Hóesés"
 
-#: gweather/weather.c:179
+#: gweather/weather.c:173
 msgid "Heavy snow"
 msgstr "Hószakadás"
 
-#: gweather/weather.c:179
+#: gweather/weather.c:173
 msgid "Shallow snow"
 msgstr "Felszínes hóesés"
 
-#: gweather/weather.c:179
+#: gweather/weather.c:173
 msgid "Patches of snow"
 msgstr "Helyenként hóesés"
 
-#: gweather/weather.c:179
+#: gweather/weather.c:173
 msgid "Partial snowfall"
 msgstr "Szórványos hóesés"
 
-#: gweather/weather.c:179 gweather/weather.c:180
+#: gweather/weather.c:173 gweather/weather.c:174
 msgid "Snowstorm"
 msgstr "Hóvihar"
 
-#: gweather/weather.c:179
+#: gweather/weather.c:173
 msgid "Blowing snowfall"
 msgstr "Szeles hóesés"
 
-#: gweather/weather.c:179
+#: gweather/weather.c:173
 msgid "Snow showers"
 msgstr "Zuhogó hó"
 
-#: gweather/weather.c:179
+#: gweather/weather.c:173
 msgid "Drifting snow"
 msgstr "Hófúvás"
 
-#: gweather/weather.c:179
+#: gweather/weather.c:173
 msgid "Freezing snow"
 msgstr "Megfagyott hó"
 
 #. SNOW_GRAINS
-#: gweather/weather.c:180
+#: gweather/weather.c:174
 msgid "Snow grains"
 msgstr "Havazás"
 
-#: gweather/weather.c:180
+#: gweather/weather.c:174
 msgid "Snow grains in the vicinity"
 msgstr "Hóesés a környéken"
 
-#: gweather/weather.c:180
+#: gweather/weather.c:174
 msgid "Light snow grains"
 msgstr "Enyhe havazás"
 
-#: gweather/weather.c:180
+#: gweather/weather.c:174
 msgid "Moderate snow grains"
 msgstr "Közepes erősségű havazás"
 
-#: gweather/weather.c:180
+#: gweather/weather.c:174
 msgid "Heavy snow grains"
 msgstr "Sűrű hóesés"
 
-#: gweather/weather.c:180
+#: gweather/weather.c:174
 msgid "Shallow snow grains"
 msgstr "Felszínes hódara"
 
-#: gweather/weather.c:180
+#: gweather/weather.c:174
 msgid "Patches of snow grains"
 msgstr "Helyenként hóesés"
 
-#: gweather/weather.c:180
+#: gweather/weather.c:174
 msgid "Partial snow grains"
 msgstr "Szórványos havazás"
 
-#: gweather/weather.c:180
+#: gweather/weather.c:174
 msgid "Blowing snow grains"
 msgstr "Hófúvás"
 
-#: gweather/weather.c:180
+#: gweather/weather.c:174
 msgid "Snow grain showers"
 msgstr "Hószakadás"
 
-#: gweather/weather.c:180
+#: gweather/weather.c:174
 msgid "Drifting snow grains"
 msgstr "Hóvihar"
 
-#: gweather/weather.c:180
+#: gweather/weather.c:174
 msgid "Freezing snow grains"
 msgstr "Fagyos jégeső"
 
 #. ICE_CRYSTALS
-#: gweather/weather.c:181
+#: gweather/weather.c:175
 msgid "Ice crystals"
 msgstr "Jég"
 
-#: gweather/weather.c:181
+#: gweather/weather.c:175
 msgid "Ice crystals in the vicinity"
 msgstr "Jég a közelben"
 
-#: gweather/weather.c:181
+#: gweather/weather.c:175
 msgid "Few ice crystals"
 msgstr "Kevés jég"
 
-#: gweather/weather.c:181
+#: gweather/weather.c:175
 msgid "Moderate ice crystals"
 msgstr "Kis mennyiségű jég"
 
-#: gweather/weather.c:181
+#: gweather/weather.c:175
 msgid "Heavy ice crystals"
 msgstr "Nagy jégdarabok"
 
-#: gweather/weather.c:181
+#: gweather/weather.c:175
 msgid "Patches of ice crystals"
 msgstr "Jég foltok"
 
-#: gweather/weather.c:181
+#: gweather/weather.c:175
 msgid "Partial ice crystals"
 msgstr "Részleges jég"
 
-#: gweather/weather.c:181
+#: gweather/weather.c:175
 msgid "Ice crystal storm"
 msgstr "Jégvihar"
 
-#: gweather/weather.c:181
+#: gweather/weather.c:175
 msgid "Blowing ice crystals"
 msgstr "Zuhogó jég"
 
-#: gweather/weather.c:181
+#: gweather/weather.c:175
 msgid "Showers of ice crystals"
 msgstr "Jégzápor"
 
-#: gweather/weather.c:181
+#: gweather/weather.c:175
 msgid "Drifting ice crystals"
 msgstr "Jégfergeteg"
 
-#: gweather/weather.c:181
+#: gweather/weather.c:175
 msgid "Freezing ice crystals"
 msgstr "Lefagyott jég"
 
 #. ICE_PELLETS
-#: gweather/weather.c:182
+#: gweather/weather.c:176
 msgid "Ice pellets"
 msgstr "Jéglabdák"
 
-#: gweather/weather.c:182
+#: gweather/weather.c:176
 msgid "Ice pellets in the vicinity"
 msgstr "Jéglabdák a közelben"
 
-#: gweather/weather.c:182
+#: gweather/weather.c:176
 msgid "Few ice pellets"
 msgstr "Kevés jéglabda"
 
-#: gweather/weather.c:182
+#: gweather/weather.c:176
 msgid "Moderate ice pellets"
 msgstr "Közepes méretű jéglabdák"
 
-#: gweather/weather.c:182
+#: gweather/weather.c:176
 msgid "Heavy ice pellets"
 msgstr "Nagy jéglabdák"
 
-#: gweather/weather.c:182
+#: gweather/weather.c:176
 msgid "Shallow ice pellets"
 msgstr "Szórványos jéglabdák"
 
-#: gweather/weather.c:182
+#: gweather/weather.c:176
 msgid "Patches of ice pellets"
 msgstr "Jéglabda-foltok"
 
-#: gweather/weather.c:182
+#: gweather/weather.c:176
 msgid "Partial ice pellets"
 msgstr "Részleges jéglabdák"
 
-#: gweather/weather.c:182
+#: gweather/weather.c:176
 msgid "Ice pellet storm"
 msgstr "Jéggolyó vihar"
 
-#: gweather/weather.c:182
+#: gweather/weather.c:176
 msgid "Blowing ice pellets"
 msgstr "Csapkodó jéggolyók"
 
-#: gweather/weather.c:182
+#: gweather/weather.c:176
 msgid "Showers of ice pellets"
 msgstr "Jéggolyó zuhany"
 
-#: gweather/weather.c:182
+#: gweather/weather.c:176
 msgid "Drifting ice pellets"
 msgstr "Sodródó jéggolyók"
 
-#: gweather/weather.c:182
+#: gweather/weather.c:176
 msgid "Freezing ice pellets"
 msgstr "Lefagyó jéggolyók"
 
 #. HAIL
-#: gweather/weather.c:183
+#: gweather/weather.c:177
 msgid "Hail"
 msgstr "Jégeső"
 
-#: gweather/weather.c:183
+#: gweather/weather.c:177
 msgid "Hail in the vicinity"
 msgstr "Jégeső a környéken"
 
-#: gweather/weather.c:183 gweather/weather.c:184
+#: gweather/weather.c:177 gweather/weather.c:178
 msgid "Light hail"
 msgstr "Enyhe jégeső"
 
-#: gweather/weather.c:183
+#: gweather/weather.c:177
 msgid "Moderate hail"
 msgstr "Közepes erősségű jégeső"
 
-#: gweather/weather.c:183
+#: gweather/weather.c:177
 msgid "Heavy hail"
 msgstr "Erős jégeső"
 
-#: gweather/weather.c:183
+#: gweather/weather.c:177
 msgid "Shallow hail"
 msgstr "Felszínes jégeső"
 
-#: gweather/weather.c:183
+#: gweather/weather.c:177
 msgid "Patches of hail"
 msgstr "Helyenként jégeső"
 
-#: gweather/weather.c:183
+#: gweather/weather.c:177
 msgid "Partial hail"
 msgstr "Szórványos jégeső"
 
-#: gweather/weather.c:183
+#: gweather/weather.c:177
 msgid "Hailstorm"
 msgstr "Viharos jégeső"
 
-#: gweather/weather.c:183
+#: gweather/weather.c:177
 msgid "Blowing hail"
 msgstr "Szeles jégeső"
 
-#: gweather/weather.c:183
+#: gweather/weather.c:177
 msgid "Hail showers"
 msgstr "Zuhogó jégeső"
 
-#: gweather/weather.c:183
+#: gweather/weather.c:177
 msgid "Drifting hail"
 msgstr "Jégeső szélfúvással"
 
-#: gweather/weather.c:183
+#: gweather/weather.c:177
 msgid "Freezing hail"
 msgstr "Lefagyott jégeső"
 
 #. SMALL_HAIL
-#: gweather/weather.c:184
+#: gweather/weather.c:178
 msgid "Small hail"
 msgstr "Kisszemű jégeső"
 
-#: gweather/weather.c:184
+#: gweather/weather.c:178
 msgid "Small hail in the vicinity"
 msgstr "Kisszemű jégeső a környéken"
 
-#: gweather/weather.c:184
+#: gweather/weather.c:178
 msgid "Moderate small hail"
 msgstr "Közepes erősségű kisszemű jégeső"
 
-#: gweather/weather.c:184
+#: gweather/weather.c:178
 msgid "Heavy small hail"
 msgstr "Erős kisszemű jégeső"
 
-#: gweather/weather.c:184
+#: gweather/weather.c:178
 msgid "Shallow small hail"
 msgstr "Felszínes kicsi jégeső"
 
-#: gweather/weather.c:184
+#: gweather/weather.c:178
 msgid "Patches of small hail"
 msgstr "Helyenként kisszemű jégeső"
 
-#: gweather/weather.c:184
+#: gweather/weather.c:178
 msgid "Partial small hail"
 msgstr "Szórványos kisszemű jégeső"
 
-#: gweather/weather.c:184
+#: gweather/weather.c:178
 msgid "Small hailstorm"
 msgstr "Viharos kisszemű jégeső"
 
-#: gweather/weather.c:184
+#: gweather/weather.c:178
 msgid "Blowing small hail"
 msgstr "Szeles kisszemű jégeső"
 
-#: gweather/weather.c:184
+#: gweather/weather.c:178
 msgid "Showers of small hail"
 msgstr "Zuhogó kisszemű jégeső"
 
-#: gweather/weather.c:184
+#: gweather/weather.c:178
 msgid "Drifting small hail"
 msgstr "Szeles kisszemű jégeső"
 
-#: gweather/weather.c:184
+#: gweather/weather.c:178
 msgid "Freezing small hail"
 msgstr "Kisszemű jégeső"
 
 #. PRECIPITATION
-#: gweather/weather.c:185
+#: gweather/weather.c:179
 msgid "Unknown precipitation"
 msgstr "Ismeretlen csapadék"
 
-#: gweather/weather.c:185
+#: gweather/weather.c:179
 msgid "Precipitation in the vicinity"
 msgstr "Csapadék a környéken"
 
-#: gweather/weather.c:185
+#: gweather/weather.c:179
 msgid "Light precipitation"
 msgstr "Enyhe csapadék"
 
-#: gweather/weather.c:185
+#: gweather/weather.c:179
 msgid "Moderate precipitation"
 msgstr "Közepes erősségű csapadék"
 
-#: gweather/weather.c:185
+#: gweather/weather.c:179
 msgid "Heavy precipitation"
 msgstr "Erős csapadék"
 
-#: gweather/weather.c:185
+#: gweather/weather.c:179
 msgid "Shallow precipitation"
 msgstr "Felszínes csapadék"
 
-#: gweather/weather.c:185
+#: gweather/weather.c:179
 msgid "Patches of precipitation"
 msgstr "Helyenként csapadék"
 
-#: gweather/weather.c:185
+#: gweather/weather.c:179
 msgid "Partial precipitation"
 msgstr "Szórványos csapadék"
 
-#: gweather/weather.c:185
+#: gweather/weather.c:179
 msgid "Unknown thunderstorm"
 msgstr "Ismeretlen zivatar"
 
-#: gweather/weather.c:185
+#: gweather/weather.c:179
 msgid "Blowing precipitation"
 msgstr "Szeles zivatar"
 
-#: gweather/weather.c:185
+#: gweather/weather.c:179
 msgid "Showers, type unknown"
 msgstr "Zuhogó csapadék, állaga ismeretlen"
 
-#: gweather/weather.c:185
+#: gweather/weather.c:179
 msgid "Drifting precipitation"
 msgstr "Viharos csapadék"
 
-#: gweather/weather.c:185
+#: gweather/weather.c:179
 msgid "Freezing precipitation"
 msgstr "Fagyos csapadék"
 
 #. MIST
-#: gweather/weather.c:186
+#: gweather/weather.c:180
 msgid "Mist"
 msgstr "Köd"
 
-#: gweather/weather.c:186
+#: gweather/weather.c:180
 msgid "Mist in the vicinity"
 msgstr "Köd a környéken"
 
-#: gweather/weather.c:186
+#: gweather/weather.c:180
 msgid "Light mist"
 msgstr "Ritka köd"
 
-#: gweather/weather.c:186
+#: gweather/weather.c:180
 msgid "Moderate mist"
 msgstr "Közepes sűrűségű köd"
 
-#: gweather/weather.c:186
+#: gweather/weather.c:180
 msgid "Thick mist"
 msgstr "Sűrű köd"
 
-#: gweather/weather.c:186
+#: gweather/weather.c:180
 msgid "Shallow mist"
 msgstr "Felszínes köd"
 
-#: gweather/weather.c:186
+#: gweather/weather.c:180
 msgid "Patches of mist"
 msgstr "Helyenként köd"
 
-#: gweather/weather.c:186
+#: gweather/weather.c:180
 msgid "Partial mist"
 msgstr "Szórványos köd"
 
-#: gweather/weather.c:186
+#: gweather/weather.c:180
 msgid "Mist with wind"
 msgstr "Szeles köd"
 
-#: gweather/weather.c:186
+#: gweather/weather.c:180
 msgid "Drifting mist"
 msgstr "Ködfoltok"
 
-#: gweather/weather.c:186
+#: gweather/weather.c:180
 msgid "Freezing mist"
 msgstr "Jeges köd"
 
 #. FOG
-#: gweather/weather.c:187
+#: gweather/weather.c:181
 msgid "Fog"
 msgstr "Köd"
 
-#: gweather/weather.c:187
+#: gweather/weather.c:181
 msgid "Fog in the vicinity"
 msgstr "Köd a környéken"
 
-#: gweather/weather.c:187
+#: gweather/weather.c:181
 msgid "Light fog"
 msgstr "Ritka köd"
 
-#: gweather/weather.c:187
+#: gweather/weather.c:181
 msgid "Moderate fog"
 msgstr "Közepes sűrűségű köd"
 
-#: gweather/weather.c:187
+#: gweather/weather.c:181
 msgid "Thick fog"
 msgstr "Sűrű köd"
 
-#: gweather/weather.c:187
+#: gweather/weather.c:181
 msgid "Shallow fog"
 msgstr "Ködfoltok"
 
-#: gweather/weather.c:187
+#: gweather/weather.c:181
 msgid "Patches of fog"
 msgstr "Helyenként köd"
 
-#: gweather/weather.c:187
+#: gweather/weather.c:181
 msgid "Partial fog"
 msgstr "Szórványos ködfoltok"
 
-#: gweather/weather.c:187
+#: gweather/weather.c:181
 msgid "Fog with wind"
 msgstr "Szeles köd"
 
-#: gweather/weather.c:187
+#: gweather/weather.c:181
 msgid "Drifting fog"
 msgstr "Ködfoltok"
 
-#: gweather/weather.c:187
+#: gweather/weather.c:181
 msgid "Freezing fog"
 msgstr "Jeges köd"
 
 #. SMOKE
-#: gweather/weather.c:188
+#: gweather/weather.c:182
 msgid "Smoke"
 msgstr "Füst"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:182
 msgid "Smoke in the vicinity"
 msgstr "Füst a környéken"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:182
 msgid "Thin smoke"
 msgstr "Ritka füst"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:182
 msgid "Moderate smoke"
 msgstr "Közepes sűrűségű füst"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:182
 msgid "Thick smoke"
 msgstr "Sűrű füst"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:182
 msgid "Shallow smoke"
 msgstr "Felszíni füst"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:182
 msgid "Patches of smoke"
 msgstr "Helyenként füst"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:182
 msgid "Partial smoke"
 msgstr "Szórványosan füst"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:182
 msgid "Smoke w/ thunders"
 msgstr "Füst villámlással"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:182
 msgid "Smoke with wind"
 msgstr "Szél és füst"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:182
 msgid "Drifting smoke"
 msgstr "Füst erős széllel"
 
 #. VOLCANIC_ASH
-#: gweather/weather.c:189
+#: gweather/weather.c:183
 msgid "Volcanic ash"
 msgstr "Vulkanikus hamu"
 
-#: gweather/weather.c:189
+#: gweather/weather.c:183
 msgid "Volcanic ash in the vicinity"
 msgstr "Vulkanikus hamu a környéken"
 
-#: gweather/weather.c:189
+#: gweather/weather.c:183
 msgid "Moderate volcanic ash"
 msgstr "Közepes sűrűségű vulkanikus hamu"
 
-#: gweather/weather.c:189
+#: gweather/weather.c:183
 msgid "Thick volcanic ash"
 msgstr "Sűrű vulkanikus hamu"
 
-#: gweather/weather.c:189
+#: gweather/weather.c:183
 msgid "Shallow volcanic ash"
 msgstr "Felszíni vulkanikus hamu"
 
-#: gweather/weather.c:189
+#: gweather/weather.c:183
 msgid "Patches of volcanic ash"
 msgstr "Helyenként vulkanikus hamu"
 
-#: gweather/weather.c:189
+#: gweather/weather.c:183
 msgid "Partial volcanic ash"
 msgstr "Elszórtan vulkanikus hamu"
 
-#: gweather/weather.c:189
+#: gweather/weather.c:183
 msgid "Volcanic ash w/ thunders"
 msgstr "Vulkanikus hamu, villámlással"
 
-#: gweather/weather.c:189
+#: gweather/weather.c:183
 msgid "Blowing volcanic ash"
 msgstr "Vulkanikus hamu, viharos szélben"
 
-#: gweather/weather.c:189
+#: gweather/weather.c:183
 msgid "Showers of volcanic ash "
 msgstr "Szakadó vulkanikus hamu"
 
-#: gweather/weather.c:189
+#: gweather/weather.c:183
 msgid "Drifting volcanic ash"
 msgstr "Szeles vulkanikus hamu"
 
-#: gweather/weather.c:189
+#: gweather/weather.c:183
 msgid "Freezing volcanic ash"
 msgstr "Jeges vulkanukis hamu"
 
 #. SAND
-#: gweather/weather.c:190
+#: gweather/weather.c:184
 msgid "Sand"
 msgstr "Homok"
 
-#: gweather/weather.c:190
+#: gweather/weather.c:184
 msgid "Sand in the vicinity"
 msgstr "Homok a közelben"
 
-#: gweather/weather.c:190
+#: gweather/weather.c:184
 msgid "Light sand"
 msgstr "Enyhe homokfúvás"
 
-#: gweather/weather.c:190
+#: gweather/weather.c:184
 msgid "Moderate sand"
 msgstr "Közepes erősségű homokfúvás"
 
-#: gweather/weather.c:190
+#: gweather/weather.c:184
 msgid "Heavy sand"
 msgstr "Erős homokfúvás"
 
-#: gweather/weather.c:190
+#: gweather/weather.c:184
 msgid "Patches of sand"
 msgstr "Helyenként homokfúvás"
 
-#: gweather/weather.c:190
+#: gweather/weather.c:184
 msgid "Partial sand"
 msgstr "Elszórtan homokfúvás"
 
-#: gweather/weather.c:190
+#: gweather/weather.c:184
 msgid "Blowing sand"
 msgstr "Homokfúvás"
 
-#: gweather/weather.c:190
+#: gweather/weather.c:184
 msgid "Drifting sand"
 msgstr "Erős homokfúvás"
 
 #. HAZE
-#: gweather/weather.c:191
+#: gweather/weather.c:185
 msgid "Haze"
 msgstr "Pára"
 
-#: gweather/weather.c:191
+#: gweather/weather.c:185
 msgid "Haze in the vicinity"
 msgstr "Pára a környéken"
 
-#: gweather/weather.c:191
+#: gweather/weather.c:185
 msgid "Light haze"
 msgstr "Enyhén párás"
 
-#: gweather/weather.c:191
+#: gweather/weather.c:185
 msgid "Moderate haze"
 msgstr "Párás"
 
-#: gweather/weather.c:191
+#: gweather/weather.c:185
 msgid "Thick haze"
 msgstr "Sűrű pára"
 
-#: gweather/weather.c:191
+#: gweather/weather.c:185
 msgid "Shallow haze"
 msgstr "Felszíni pára"
 
-#: gweather/weather.c:191
+#: gweather/weather.c:185
 msgid "Patches of haze"
 msgstr "Helyenként párás"
 
-#: gweather/weather.c:191
+#: gweather/weather.c:185
 msgid "Partial haze"
 msgstr "Elszórtan párás"
 
-#: gweather/weather.c:191
+#: gweather/weather.c:185
 msgid "Haze with wind"
 msgstr "Pára széllel"
 
-#: gweather/weather.c:191
+#: gweather/weather.c:185
 msgid "Drifting haze"
 msgstr "Páraátvonulás"
 
-#: gweather/weather.c:191
+#: gweather/weather.c:185
 msgid "Freezing haze"
 msgstr "Jeges pára"
 
 #. SPRAY
-#: gweather/weather.c:192
+#: gweather/weather.c:186
 msgid "Sprays"
 msgstr "Permetek"
 
-#: gweather/weather.c:192
+#: gweather/weather.c:186
 msgid "Sprays in the vicinity"
 msgstr "Permet a környéken"
 
-#: gweather/weather.c:192
+#: gweather/weather.c:186
 msgid "Light sprays"
 msgstr "Ritka permet"
 
-#: gweather/weather.c:192
+#: gweather/weather.c:186
 msgid "Moderate sprays"
 msgstr "Közepes erősségű permet"
 
-#: gweather/weather.c:192
+#: gweather/weather.c:186
 msgid "Heavy sprays"
 msgstr "Sűrű permet"
 
-#: gweather/weather.c:192
+#: gweather/weather.c:186
 msgid "Shallow sprays"
 msgstr "Felszíni permet"
 
-#: gweather/weather.c:192
+#: gweather/weather.c:186
 msgid "Patches of sprays"
 msgstr "Helyenként permet"
 
-#: gweather/weather.c:192
+#: gweather/weather.c:186
 msgid "Partial sprays"
 msgstr "Elszórtan permet"
 
-#: gweather/weather.c:192
+#: gweather/weather.c:186
 msgid "Blowing sprays"
 msgstr "Szeles permet"
 
-#: gweather/weather.c:192
+#: gweather/weather.c:186
 msgid "Drifting sprays"
 msgstr "Átvonuló permet"
 
-#: gweather/weather.c:192
+#: gweather/weather.c:186
 msgid "Freezing sprays"
 msgstr "Jeges permet"
 
 #. DUST
-#: gweather/weather.c:193
+#: gweather/weather.c:187
 msgid "Dust"
 msgstr "Por"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:187
 msgid "Dust in the vicinity"
 msgstr "Por a környéken"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:187
 msgid "Light dust"
 msgstr "Ritka por"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:187
 msgid "Moderate dust"
 msgstr "Közepesen poros"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:187
 msgid "Heavy dust"
 msgstr "Sűrű por"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:187
 msgid "Patches of dust"
 msgstr "Helyenként por"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:187
 msgid "Partial dust"
 msgstr "Elszórtan por"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:187
 msgid "Blowing dust"
 msgstr "Poros szél"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:187
 msgid "Drifting dust"
 msgstr "A szél hordja a port"
 
 #. SQUALL
-#: gweather/weather.c:194
+#: gweather/weather.c:188
 msgid "Squall"
 msgstr "Széllökés"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:188
 msgid "Squall in the vicinity"
 msgstr "Széllökés a környéken"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:188
 msgid "Light squall"
 msgstr "Enyhe széllökések"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:188
 msgid "Moderate squall"
 msgstr "Közepes erejű széllökések"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:188
 msgid "Heavy squall"
 msgstr "Erős széllökések"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:188
 msgid "Partial squall"
 msgstr "Helyenként széllökések"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:188
 msgid "Thunderous squall"
 msgstr "Viharos széllökés"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:188
 msgid "Blowing squall"
 msgstr "Viharos széllökés"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:188
 msgid "Drifting squall"
 msgstr "Viharos széllökés"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:188
 msgid "Freezing squall"
 msgstr "Jeges széllökések"
 
 #. SANDSTORM
-#: gweather/weather.c:195
+#: gweather/weather.c:189
 msgid "Sandstorm"
 msgstr "Homokvihar"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:189
 msgid "Sandstorm in the vicinity"
 msgstr "Homokvihar a környéken"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:189
 msgid "Light standstorm"
 msgstr "Enyhe homokvihar"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:189
 msgid "Moderate sandstorm"
 msgstr "Közepes erősségű homokvihar"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:189
 msgid "Heavy sandstorm"
 msgstr "Erőteljes homokvihar"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:189
 msgid "Shallow sandstorm"
 msgstr "Felszíni homokvihar"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:189
 msgid "Partial sandstorm"
 msgstr "Helyenként hóvihar"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:189
 msgid "Thunderous sandstorm"
 msgstr "Villámokkal kísért homokvihar"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:189
 msgid "Blowing sandstorm"
 msgstr "Homokvihar"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:189
 msgid "Drifting sandstorm"
 msgstr "Átvonuló homokvihar"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:189
 msgid "Freezing sandstorm"
 msgstr "Jeges homokvihar"
 
 #. DUSTSTORM
-#: gweather/weather.c:196
+#: gweather/weather.c:190
 msgid "Duststorm"
 msgstr "Porvihar"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:190
 msgid "Duststorm in the vicinity"
 msgstr "Porvihar a környéken"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:190
 msgid "Light duststorm"
 msgstr "Enyhe porvihar"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:190
 msgid "Moderate duststorm"
 msgstr "Közepes erősségű porvihar"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:190
 msgid "Heavy duststorm"
 msgstr "Erős porvihar"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:190
 msgid "Shallow duststorm"
 msgstr "Felületes porvihar"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:190
 msgid "Partial duststorm"
 msgstr "Helyenként porvihar"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:190
 msgid "Thunderous duststorm"
 msgstr "Porvihar villámokkal"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:190
 msgid "Blowing duststorm"
 msgstr "Porvihar"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:190
 msgid "Drifting duststorm"
 msgstr "Átvonuló porvihar"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:190
 msgid "Freezing duststorm"
 msgstr "Jeges porvihar"
 
 #. FUNNEL_CLOUD
-#: gweather/weather.c:197
+#: gweather/weather.c:191
 msgid "Funnel cloud"
 msgstr "Tölcsérfelhő"
 
-#: gweather/weather.c:197
+#: gweather/weather.c:191
 msgid "Funnel cloud in the vicinity"
 msgstr "Tölcsérfelhő a környéken"
 
-#: gweather/weather.c:197
+#: gweather/weather.c:191
 msgid "Light funnel cloud"
 msgstr "Világos tölcsérfelhő"
 
-#: gweather/weather.c:197
+#: gweather/weather.c:191
 msgid "Moderate funnel cloud"
 msgstr "Mérsékelt tölcsérfelhő"
 
-#: gweather/weather.c:197
+#: gweather/weather.c:191
 msgid "Thick funnel cloud"
 msgstr "Gyenge tölcsérfelhő"
 
-#: gweather/weather.c:197
+#: gweather/weather.c:191
 msgid "Shallow funnel cloud"
 msgstr "Felszínes tölcsérfelhő"
 
-#: gweather/weather.c:197
+#: gweather/weather.c:191
 msgid "Patches of funnel clouds"
 msgstr "Tölcsérfelhő foltok"
 
-#: gweather/weather.c:197
+#: gweather/weather.c:191
 msgid "Partial funnel clouds"
 msgstr "Helyenként tölcsérfelhő"
 
-#: gweather/weather.c:197
+#: gweather/weather.c:191
 msgid "Funnel cloud w/ wind"
 msgstr "Tölcsérfelhő széllel"
 
-#: gweather/weather.c:197
+#: gweather/weather.c:191
 msgid "Drifting funnel cloud"
 msgstr "Mozgó tölcsérfelhők"
 
 #. TORNADO
-#: gweather/weather.c:198
+#: gweather/weather.c:192
 msgid "Tornado"
 msgstr "Tornádó"
 
-#: gweather/weather.c:198
+#: gweather/weather.c:192
 msgid "Tornado in the vicinity"
 msgstr "Tornádó a közelben"
 
-#: gweather/weather.c:198
+#: gweather/weather.c:192
 msgid "Moderate tornado"
 msgstr "Közepes erősségű tornádó"
 
-#: gweather/weather.c:198
+#: gweather/weather.c:192
 msgid "Raging tornado"
 msgstr "Tomboló tronádó"
 
-#: gweather/weather.c:198
+#: gweather/weather.c:192
 msgid "Partial tornado"
 msgstr "Helyenként tornádó"
 
-#: gweather/weather.c:198
+#: gweather/weather.c:192
 msgid "Thunderous tornado"
 msgstr "Villámokkal kísért tornádó"
 
-#: gweather/weather.c:198
+#: gweather/weather.c:192
 msgid "Drifting tornado"
 msgstr "Átvonuló tornádó"
 
-#: gweather/weather.c:198
+#: gweather/weather.c:192
 msgid "Freezing tornado"
 msgstr "Jeges tornádó"
 
 #. DUST_WHIRLS
-#: gweather/weather.c:199
+#: gweather/weather.c:193
 msgid "Dust whirls"
 msgstr "Poros forgószél"
 
-#: gweather/weather.c:199
+#: gweather/weather.c:193
 msgid "Dust whirls in the vicinity"
 msgstr "Poros forgószél a közelben"
 
-#: gweather/weather.c:199
+#: gweather/weather.c:193
 msgid "Light dust whirls"
 msgstr "Világos poros forgószél"
 
-#: gweather/weather.c:199
+#: gweather/weather.c:193
 msgid "Moderate dust whirls"
 msgstr "Mérsékelt poros forgószél"
 
-#: gweather/weather.c:199
+#: gweather/weather.c:193
 msgid "Heavy dust whirls"
 msgstr "Erős poros forgószél"
 
-#: gweather/weather.c:199
+#: gweather/weather.c:193
 msgid "Shallow dust whirls"
 msgstr "Felszíni poros forgószél"
 
-#: gweather/weather.c:199
+#: gweather/weather.c:193
 msgid "Patches of dust whirls"
 msgstr "Poros forgószél foltok"
 
-#: gweather/weather.c:199
+#: gweather/weather.c:193
 msgid "Partial dust whirls"
 msgstr "Poros forgószél helyenként"
 
-#: gweather/weather.c:199
+#: gweather/weather.c:193
 msgid "Blowing dust whirls"
 msgstr "Söprő poros forgószél"
 
-#: gweather/weather.c:199
+#: gweather/weather.c:193
 msgid "Drifting dust whirls"
 msgstr "Átvonuló poros forgószél"
 
-#: gweather/weather.c:825 gweather/weather.c:864 gweather/weather.c:1437
+#: gweather/weather.c:809 gweather/weather.c:847 gweather/weather.c:1416
 msgid "Failed to get METAR data.\n"
 msgstr "A METAR adatokat nem tudtam lekérni.\n"
 
-#: gweather/weather.c:857 gweather/weather.c:884 gweather/weather.c:1081
+#: gweather/weather.c:839 gweather/weather.c:867 gweather/weather.c:1062
 msgid "WeatherInfo missing location"
 msgstr "Nincs adat erről a helyről a WeatherInfoban"
 
-#: gweather/weather.c:1049
+#: gweather/weather.c:1030
 msgid "Failed to get IWIN data.\n"
 msgstr "Nem tudok IWIN adatot lekérni.\n"
 
-#: gweather/weather.c:1089
+#. forecast data is not really interesting anyway ;)
+#: gweather/weather.c:1072
 msgid "Failed to get IWIN forecast data.\n"
 msgstr "Nem tudok IWIN előrejelzést lekérni.\n"
 
-#: gweather/weather.c:1289
+#: gweather/weather.c:1271
 msgid "Failed to get Met Office data.\n"
 msgstr "Nem tudok Met Office adatot lekérni.\n"
 
-#: gweather/weather.c:1321
+#: gweather/weather.c:1303
 msgid "Failed to get Met Office forecast data.\n"
 msgstr "Nem tudok Met Office előrejelzést lekérni.\n"
 
-#: gweather/weather.c:1471
+#: gweather/weather.c:1446
 msgid "Failed to get radar map image.\n"
 msgstr "Nem kaptam műholdas képet.\n"
 
-#: gweather/weather.c:1530
-msgid "Another update already in progress!\n"
-msgstr "Másik frissítés megy éppen!\n"
-
-#: gweather/weather.c:1776
+#: gweather/weather.c:1739
 msgid "%a, %b %d / %H:%M"
 msgstr "%a, %b %d / %H:%M"
 
-#: gweather/weather.c:1780
+#: gweather/weather.c:1743
 msgid "Unknown observation time"
 msgstr "Ismeretlen megfigyelési idő"
 
-#: gweather/weather.c:1840
+#: gweather/weather.c:1803
 msgid "Calm"
 msgstr "Szélcsend"
 
-#: gweather/weather.c:1866
+#: gweather/weather.c:1829
 msgid "Unknown"
 msgstr "Ismeretlen"
 
-#: gweather/weather.c:1898
+#: gweather/weather.c:1863
 msgid "Retrieval failed"
 msgstr "A lekérés nem sikerült"
 
@@ -2558,8 +2617,8 @@ msgid ""
 "Software Foundation; either version 2 of the License, or (at your option) "
 "any later version."
 msgstr ""
-"Ez a GNOME applet egy parancssort ad a panelhoz. Parancskiegészítés, "
-"napló, makrók, más tulajdonságok, és óra is bele van építve.\n"
+"Ez a GNOME applet egy parancssort ad a panelhoz. Parancskiegészítés, napló, "
+"makrók, más tulajdonságok, és óra is bele van építve.\n"
 "\n"
 "Ez a program szabad termék, a GPL vonatkozik rá, és a Free Software "
 "Foundation által lett megjelentetve, a kettes, vagy bármely általad "
@@ -2591,32 +2650,30 @@ msgstr "nincs ilyen"
 msgid "no /bin/sh"
 msgstr "nincs /bin/sh"
 
-#: mini-commander/src/command_line.c:89 mini-commander/src/command_line.c:109
-#: mini-commander/src/terminal.c:91 mini-commander/src/terminal.c:111
+#: mini-commander/src/command_line.c:92 mini-commander/src/command_line.c:112
 msgid "end of history list"
 msgstr "történeti lista vége"
 
 #. enter pressed -> exec command
-#: mini-commander/src/command_line.c:119 mini-commander/src/exec.c:59
-#: mini-commander/src/terminal.c:121
+#: mini-commander/src/command_line.c:122 mini-commander/src/exec.c:59
 msgid "starting..."
 msgstr "töltődik..."
 
-#: mini-commander/src/command_line.c:148 mini-commander/src/terminal.c:153
+#: mini-commander/src/command_line.c:151
 msgid "autocompleted"
 msgstr "automatikusan kiegészítve"
 
-#: mini-commander/src/command_line.c:293
+#: mini-commander/src/command_line.c:297
 msgid "history list empty"
 msgstr "a történeti lista üres"
 
 #. title
-#: mini-commander/src/command_line.c:311
+#: mini-commander/src/command_line.c:315
 msgid "Command history"
 msgstr "Régebbi parancsok"
 
 #. build file select dialog
-#: mini-commander/src/command_line.c:429
+#: mini-commander/src/command_line.c:434
 msgid "Start program"
 msgstr "Program indítása"
 
@@ -2629,197 +2686,175 @@ msgid "child exited"
 msgstr "gyermekfolyamat kilépett"
 
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:1
-#, fuzzy
 msgid "Command Line"
-msgstr "Parancs"
+msgstr "Parancssor"
 
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:2
-#: mini-commander/src/mini-commander_applet.desktop.in.h:1
 msgid "Mini-Commander"
 msgstr "Mini-Commander"
 
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:3
-#, fuzzy
 msgid "MiniCommander Applet Factory"
-msgstr "Mini-Commander Applet"
+msgstr "Minicommander Applet factory"
 
 #: mini-commander/src/help.c:36
 msgid "still not ported"
 msgstr "nincs beillesztve"
 
-#: mini-commander/src/message.c:148
+#: mini-commander/src/message.c:155
 msgid "%H:%M - %d. %b"
 msgstr "%H:%M - %d. %b"
 
-#: mini-commander/src/message.c:150
+#: mini-commander/src/message.c:157
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: mini-commander/src/message.c:152
+#: mini-commander/src/message.c:159
 msgid "%d. %b"
 msgstr "%d. %b"
 
-#: mini-commander/src/mini-commander_applet.c:111
+#: mini-commander/src/mini-commander_applet.c:118
 msgid "orient. changed"
 msgstr "elhelyezkedés változott"
 
-#: mini-commander/src/mini-commander_applet.c:130
+#: mini-commander/src/mini-commander_applet.c:135
 msgid "size changed"
 msgstr "méret változott"
 
-#: mini-commander/src/mini-commander_applet.c:250
+#: mini-commander/src/mini-commander_applet.c:263
 msgid "Browser"
 msgstr "Böngésző"
 
-#: mini-commander/src/mini-commander_applet.c:265
+#: mini-commander/src/mini-commander_applet.c:277
 msgid "History"
 msgstr "Napló"
 
-#: mini-commander/src/mini-commander_applet.c:407
+#: mini-commander/src/mini-commander_applet.c:411
 msgid "ready..."
 msgstr "kész..."
 
-#: mini-commander/src/preferences.c:113
-msgid "time & date on"
-msgstr "idő és dátum bekapcsolva"
-
-#: mini-commander/src/preferences.c:115
-msgid "time on"
-msgstr "idő bekapcsolva"
-
-#: mini-commander/src/preferences.c:117
-msgid "date on"
-msgstr "dátum bekapcsolva"
-
-#: mini-commander/src/preferences.c:119
-msgid "clock off"
-msgstr "óra kikapcsolva"
-
-#: mini-commander/src/preferences.c:573
-#, fuzzy
+#: mini-commander/src/preferences.c:492
 msgid "Command Line Properties"
-msgstr "Mini-Commander beállítások"
+msgstr "A Parancssor beállításai"
 
-#: mini-commander/src/preferences.c:586
+#: mini-commander/src/preferences.c:507
 msgid "Clock"
 msgstr "Óra"
 
 #. show time check box
-#: mini-commander/src/preferences.c:594
+#: mini-commander/src/preferences.c:515
 msgid "Show time"
 msgstr "Mutassa az időt"
 
 #. show date check box
-#: mini-commander/src/preferences.c:601
+#: mini-commander/src/preferences.c:522
 msgid "Show date"
 msgstr "Mutassa a dátumot"
 
 #. appearance frame
-#: mini-commander/src/preferences.c:609
+#: mini-commander/src/preferences.c:530
 msgid "Appearance"
 msgstr "Megjelenés"
 
 #. show handle check box
-#: mini-commander/src/preferences.c:617
+#: mini-commander/src/preferences.c:538
 msgid "Show handle"
 msgstr "Mutassa a fület"
 
 #. show frame check box
-#: mini-commander/src/preferences.c:624
+#: mini-commander/src/preferences.c:545
 msgid "Show frame"
 msgstr "Mutassa a keretet"
 
 #. auto complete frame
-#: mini-commander/src/preferences.c:633
+#: mini-commander/src/preferences.c:554
 msgid "Autocompletion"
 msgstr "Automatikus kiegészítés"
 
 #. show history autocomplete
-#: mini-commander/src/preferences.c:641
+#: mini-commander/src/preferences.c:562
 msgid "Enable history based autocompletion"
 msgstr "Előzménylista alapján kiegészítés"
 
 #. Size
-#: mini-commander/src/preferences.c:648
+#: mini-commander/src/preferences.c:569
 msgid "Size"
 msgstr "Méret"
 
 #. applet width
-#: mini-commander/src/preferences.c:660
+#: mini-commander/src/preferences.c:581
 msgid "Applet width:"
 msgstr "Applet szélessége:"
 
 #. applet height
-#: mini-commander/src/preferences.c:689
+#: mini-commander/src/preferences.c:614
 msgid "Applet height:"
 msgstr "Applet magassága:"
 
 #. cmd line height
-#: mini-commander/src/preferences.c:718
+#: mini-commander/src/preferences.c:635
 msgid "Command line height:"
 msgstr "Parancssor magassága:"
 
 #. Color
-#: mini-commander/src/preferences.c:760 modemlights/properties.c:445
-#: multiload/properties.c:395
+#: mini-commander/src/preferences.c:669 modemlights/properties.c:445
+#: multiload/properties.c:361
 msgid "Colors"
 msgstr "Színek"
 
 #. fg
-#: mini-commander/src/preferences.c:770
+#: mini-commander/src/preferences.c:679
 msgid "Command line foreground:"
 msgstr "Parancssor színe:"
 
 #. bg
-#: mini-commander/src/preferences.c:801
+#: mini-commander/src/preferences.c:710
 msgid "Command line background:"
 msgstr "Parancssor háttere:"
 
-#: mini-commander/src/preferences.c:829 modemlights/properties.c:405
+#: mini-commander/src/preferences.c:738 modemlights/properties.c:405
 msgid "_General"
 msgstr "_Alap"
 
 #. prefix
-#: mini-commander/src/preferences.c:854
+#: mini-commander/src/preferences.c:763
 #, c-format
 msgid "Regex %.2d:"
 msgstr "Regkif %.2d:"
 
 #. command
-#: mini-commander/src/preferences.c:870
+#: mini-commander/src/preferences.c:779
 #, c-format
 msgid "   Macro %.2d:"
 msgstr "   Makró %.2d:"
 
-#: mini-commander/src/preferences.c:886
-#, fuzzy
+#: mini-commander/src/preferences.c:795
 msgid "_Macros"
-msgstr "Makrók"
+msgstr "_Makrók"
 
 #: mixer/GNOME_MixerApplet.server.in.h:1
-#, fuzzy
-msgid "Applet for adjusting the sound volume"
-msgstr "Kötetek beillesztésére/lecsatolására használható applet."
+msgid "Adjust the sound volume"
+msgstr "Hangerő állítása"
 
-#: mixer/GNOME_MixerApplet.server.in.h:2 mixer/mixer.c:694
+#: mixer/GNOME_MixerApplet.server.in.h:3 mixer/mixer.c:723
 msgid "Volume Control"
 msgstr "Hangerőszabályzó"
 
 #: mixer/GNOME_MixerApplet.xml.h:3
 msgid "Mute"
-msgstr ""
+msgstr "Némítás"
 
 #: mixer/GNOME_MixerApplet.xml.h:4
 msgid "Run Audio Mixer..."
 msgstr "Mixer futtatása..."
 
 #. probably should die more gracefully
-#: mixer/mixer.c:167
+#: mixer/mixer.c:168
 #, c-format
 msgid "Couldn't open mixer device %s\n"
 msgstr "Nem tudom a %s mixert megnyitni\n"
 
-#: mixer/mixer.c:181
+#: mixer/mixer.c:182
 msgid ""
 "warning: this version of gmix was compiled with a different version of\n"
 "soundcard.h.\n"
@@ -2827,38 +2862,31 @@ msgstr ""
 "figyelmeztetés: ez a gmix verzió más soundcard.h-val volt\n"
 "fordítva.\n"
 
-#: mixer/mixer.c:192
+#: mixer/mixer.c:193
 #, c-format
 msgid "Querying available channels of mixer device %s failed\n"
 msgstr "Keverőcsatornák lekérdezése a %s mixer eszközön sikertelen\n"
 
-#: mixer/mixer.c:199
+#: mixer/mixer.c:200
 msgid "warning: mixer has no volume channel - using PCM instead.\n"
-msgstr ""
-"figyelem: a mixernek nincs hangerő csatornája - a PCM-et használom.\n"
+msgstr "figyelem: a mixernek nincs hangerő csatornája - a PCM-et használom.\n"
 
-#: mixer/mixer.c:202
+#: mixer/mixer.c:203
 #, c-format
 msgid "Mixer device %s has neither volume nor PCM channels.\n"
 msgstr "Nincs a %s eszköznek sem hangerő sem PCM csatornája.\n"
 
-#: mixer/mixer.c:695
+#: mixer/mixer.c:724
 msgid "(C) 2001 Richard Hult"
 msgstr "(C) 2001 Richard Hult"
 
-#: mixer/mixer.c:696
+#: mixer/mixer.c:725
 msgid "The volume control lets you set the volume level for your desktop."
-msgstr ""
-"A hangerőszabályzó a felület hangerejének szabályozására szolgál."
+msgstr "A hangerőszabályzó a felület hangerejének szabályozására szolgál."
 
 #: modemlights/GNOME_ModemLightsApplet.server.in.h:1
-#: modemlights/modemlights_applet.desktop.in.h:1
 msgid "Modem Lights"
 msgstr "Modem LED-ek"
-
-#: modemlights/modemlights_applet.desktop.in.h:2
-msgid "Show modem status"
-msgstr "A Modem LED-jeit mutatja a panelon"
 
 #: modemlights/modemlights.c:205
 msgid "Modem Lights Applet"
@@ -3000,47 +3028,31 @@ msgstr "A beállítások alapértelmezetté tétele"
 msgid "Advanced"
 msgstr "Haladó"
 
-#: multiload/cpuload_applet.desktop.in.h:1
-msgid "CPU Load Meter"
-msgstr "Processzor-terhelés mérő"
-
-#: multiload/cpuload_applet.desktop.in.h:2
-msgid "CPULoad"
-msgstr "Processzorhasználat"
-
 #: multiload/cpuload.c:39
 msgid "CPU Load"
 msgstr "Processzor használat"
 
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:1
-#, fuzzy
 msgid "A system load indicator"
-msgstr "Csúcsjelző"
+msgstr "Rendszer load figyelő"
 
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:2
-#, fuzzy
 msgid "System Monitor"
-msgstr "Rendszer Monitor Applet"
+msgstr "Rendszerfigyelő"
 
 #: multiload/GNOME_MultiloadApplet.xml.h:3
-#, fuzzy
 msgid "Run detailed system monitor"
-msgstr "Metrikus mértékegységrendszer használata"
+msgstr "Részletes rendszerfigyelő futtatása"
 
-#: multiload/loadavg.c:94 multiload/loadavg_applet.desktop.in.h:1
+#: multiload/loadavg.c:94
 msgid "Load Average"
-msgstr "Terhelési átlag"
-
-#: multiload/loadavg_applet.desktop.in.h:2
-msgid "Load Average Applet"
-msgstr "Terhelési átlag applet"
+msgstr "Terheltségi átlag"
 
 #: multiload/main.c:53
 msgid "System Monitor Applet"
-msgstr "Rendszer Monitor Applet"
+msgstr "Rendszerfigyelő Applet"
 
 #: multiload/main.c:55
-#, fuzzy
 msgid ""
 "Released under the GNU General Public License.\n"
 "\n"
@@ -3049,26 +3061,27 @@ msgid ""
 msgstr ""
 "A GNU GPL alatt jelent meg a program.\n"
 "\n"
-"A rendszer load monitor a cpu, ram és swap fájl használat figyelésére "
+"A rendszer terheltség figyelő a cpu, ram és swap fájl használat figyelésére "
 "használható"
 
-#: multiload/main.c:174 multiload/properties.c:404
+#: multiload/main.c:177 multiload/properties.c:369
 msgid "Processor"
 msgstr "Processzor"
 
-#: multiload/main.c:176 multiload/properties.c:410
+#: multiload/main.c:179 multiload/properties.c:375
 msgid "Memory"
 msgstr "Memória"
 
-#: multiload/main.c:180 multiload/properties.c:422
+#: multiload/main.c:183 multiload/properties.c:387
 msgid "Swap File"
 msgstr "Swap fájl"
 
-#: multiload/main.c:182
+#: multiload/main.c:185
 msgid "Resource"
 msgstr "Erőforrás"
 
-#: multiload/main.c:194
+#: multiload/main.c:197
+#, c-format
 msgid ""
 "%s:\n"
 "%d%% in use"
@@ -3076,47 +3089,31 @@ msgstr ""
 "%s:\n"
 "%d%% használt"
 
-#: multiload/memload_applet.desktop.in.h:1
-msgid "MemLoad"
-msgstr "Memóriafoglaltság"
-
-#: multiload/memload_applet.desktop.in.h:2
-msgid "Memory Load Meter"
-msgstr "Memóriahasználat-jelző"
-
 #: multiload/memload.c:39
 msgid "Memory Load"
 msgstr "Memóriahasználat"
-
-#: multiload/netload_applet.desktop.in.h:1
-msgid "NetLoad"
-msgstr "Hálózati forgalom"
-
-#: multiload/netload_applet.desktop.in.h:2
-msgid "Network Activity Meter"
-msgstr "Kijelzi a hálózati forgalmat"
 
 #: multiload/netload.c:38
 msgid "Net Load"
 msgstr "Hálózathasználat"
 
-#: multiload/properties.c:290
+#: multiload/properties.c:256
 msgid "Monitored Resources"
 msgstr "Monitorozott erőforrások"
 
-#: multiload/properties.c:298
+#: multiload/properties.c:264
 msgid "_Processor"
 msgstr "_Processzor"
 
-#: multiload/properties.c:308
+#: multiload/properties.c:274
 msgid "_Memory"
 msgstr "_Memória"
 
-#: multiload/properties.c:318
+#: multiload/properties.c:284
 msgid "_Network"
 msgstr "_Hálózat"
 
-#: multiload/properties.c:328
+#: multiload/properties.c:294
 msgid "_Swap File"
 msgstr "_Swap fájl"
 
@@ -3126,112 +3123,97 @@ msgstr "_Swap fájl"
 #. panel_applet_gconf_get_bool(multiload_applet->applet, "view_loadavg", NULL));
 #. gtk_box_pack_start(GTK_BOX(hbox), check_box, FALSE, FALSE, 0);
 #.
-#: multiload/properties.c:345
+#: multiload/properties.c:311
 msgid "Options"
 msgstr "Beállítások"
 
-#: multiload/properties.c:358
+#: multiload/properties.c:324
 msgid "System monitor width: "
 msgstr "Rendszer monitor szélessége: "
 
-#: multiload/properties.c:360
+#: multiload/properties.c:326
 msgid "System monitor height: "
 msgstr "Rendszer monitor magassága: "
 
-#: multiload/properties.c:373
+#: multiload/properties.c:339
 msgid "pixels"
 msgstr "képpont"
 
-#: multiload/properties.c:379
+#: multiload/properties.c:345
 msgid "System monitor speed: "
 msgstr "Rendszer monitor sebessége: "
 
-#: multiload/properties.c:390
+#: multiload/properties.c:356
 msgid "milliseconds"
 msgstr "milliszekundum"
 
-#: multiload/properties.c:405
+#: multiload/properties.c:370
 msgid "User"
 msgstr "Felhasználó"
 
-#: multiload/properties.c:406
+#: multiload/properties.c:371
 msgid "System"
 msgstr "Rendszer"
 
-#: multiload/properties.c:407
+#: multiload/properties.c:372
 msgid "Nice"
 msgstr "Nice"
 
-#: multiload/properties.c:408
+#: multiload/properties.c:373
 msgid "Idle"
 msgstr "Üresjárat"
 
-#: multiload/properties.c:411 multiload/properties.c:420
+#: multiload/properties.c:376 multiload/properties.c:385
 msgid "Other"
 msgstr "Más"
 
-#: multiload/properties.c:412
+#: multiload/properties.c:377
 msgid "Shared"
 msgstr "Megosztott"
 
-#: multiload/properties.c:413
+#: multiload/properties.c:378
 msgid "Buffers"
 msgstr "Pufferek"
 
-#: multiload/properties.c:414 multiload/properties.c:424
+#: multiload/properties.c:379 multiload/properties.c:389
 msgid "Free"
 msgstr "Szabad"
 
-#: multiload/properties.c:417
+#: multiload/properties.c:382
 msgid "SLIP"
 msgstr "SLIP"
 
-#: multiload/properties.c:418
+#: multiload/properties.c:383
 msgid "PLIP"
 msgstr "PLIP"
 
-#: multiload/properties.c:419
+#: multiload/properties.c:384
 msgid "Ethernet"
 msgstr "Ethernet"
 
-#: multiload/properties.c:423
+#: multiload/properties.c:388
 msgid "Used"
 msgstr "Felhasznált"
 
-#: multiload/properties.c:445
+#: multiload/properties.c:409
 msgid "System Monitor Properties"
 msgstr "Rendszer monitor beállításai"
-
-#: multiload/swapload_applet.desktop.in.h:1
-msgid "Swap Load Meter"
-msgstr "Lapozóterület-használat mérő"
-
-#: multiload/swapload_applet.desktop.in.h:2
-msgid "SwapLoad"
-msgstr "Lapozóterület-használat"
 
 #: multiload/swapload.c:39
 msgid "Swap Load"
 msgstr "Swap-használat"
 
 #: panel-menu/GNOME_PanelMenuApplet.server.in.h:1
-#, fuzzy
 msgid "Factory for Panel Menu Applet"
-msgstr "PanelMenü Applet"
+msgstr "Panel Menü Applet factory"
 
 #: panel-menu/GNOME_PanelMenuApplet.server.in.h:2
-#, fuzzy
 msgid "Panel Menu Applet Factory"
-msgstr "PanelMenü Applet"
+msgstr "Panel Menü Applet factory"
 
 #: panel-menu/GNOME_PanelMenuApplet.server.in.h:3
-#, fuzzy
 msgid "Panel applet for displaying menus"
-msgstr "A megjelenítő program képernyőképekhez:"
-
-#: panel-menu/GNOME_PanelMenuApplet.server.in.h:4
-msgid "Utility"
-msgstr ""
+msgstr "Menük megjelenítésére használható applet"
 
 #: panel-menu/panel-menu-actions.c:96
 msgid "Actions"
@@ -3338,7 +3320,7 @@ msgstr "Útvonal elem szerkesztése..."
 
 #: panel-menu/panel-menu-preferences.c:78
 msgid "Preferences"
-msgstr ""
+msgstr "Beállítások"
 
 #: panel-menu/panel-menu-properties.c:71
 msgid "Menu Bar Properties"
@@ -3350,7 +3332,7 @@ msgstr "Kiosztás"
 
 #: panel-menu/panel-menu-properties.c:90
 msgid "Preferences Menu"
-msgstr ""
+msgstr "Beállítások menü"
 
 #: panel-menu/panel-menu-properties.c:110
 msgid "Applications Menu"
@@ -3380,1668 +3362,94 @@ msgstr "Ablakok"
 msgid "Workspaces"
 msgstr "Munkaterületek"
 
-#~ msgid "Minimum number of cells: (for autosize)"
-#~ msgstr "Minimális cellaszám: (automatikus mérethez)"
+#~ msgid "Laptop battery monitor applet"
+#~ msgstr "Laptop akkumulátor-töltöttség applet"
 
-#~ msgid "Size of button: (pixels)"
-#~ msgstr "A gomb mérete"
+#~ msgid "Character picker"
+#~ msgstr "Karaktertábla"
 
-#~ msgid "Number of rows of buttons:"
-#~ msgstr "A gombok sorainak száma:"
+#~ msgid "Panel applet for mounting block volumes"
+#~ msgstr "Kötetek beillesztésére/lecsatolására használható applet"
 
-#~ msgid "Number of columns of buttons:"
-#~ msgstr "A gombok oszlopainak száma"
+#~ msgid "An applet that watches your mouse."
+#~ msgstr "Az egérkurzort figyelő szemek"
 
-#~ msgid "Follow panel size"
-#~ msgstr "Panelméret követése"
+#~ msgid "GKB Keyboard Switcher"
+#~ msgstr "GKB Billentyűzetkiosztás átkapcsoló"
 
-#~ msgid "Default List"
-#~ msgstr "Alapértelmezett lista"
+#~ msgid "GKB, the Gnome Keyboard Layout Switcher Applet"
+#~ msgstr "GKB, a Gnome billentyűzet-átkapcsoló applet"
 
-#~ msgid "Press a key..."
-#~ msgstr "Nyomj meg egy billentyűt...."
+#~ msgid "Keyboard Layout Switcher Applet"
+#~ msgstr "GKB, a Gnome billentyűzet-kiosztás kapcsoló applet"
 
-#~ msgid "saving prefs..."
-#~ msgstr "beállítások mentése.."
+#~ msgid "GNOME Stock Ticker"
+#~ msgstr "A GNOME részvényfigyelője"
 
-#~ msgid "Load average over 1 minute"
-#~ msgstr "Átlagos terhelés 1 percre"
+#~ msgid "GNOME Stock Ticker Panel Applet"
+#~ msgstr "A Gnome részvényfigyelő applet"
 
-#~ msgid "Load average over 5 minutes"
-#~ msgstr "Átlagos terhelés 5 percre"
+#~ msgid "Select Font"
+#~ msgstr "Betűkészlet kiválasztása"
 
-#~ msgid "Load average over 15 minutes"
-#~ msgstr "Átlagos terhelés 15 percre"
+#~ msgid "The GNOME weather monitor"
+#~ msgstr "GNOME időjárás applet"
 
-#~ msgid "PPP"
-#~ msgstr "PPP"
+#~ msgid "Update failed! Maybe another update was already in progress?"
+#~ msgstr ""
+#~ "Sikertelen frissítés! Talán egy másik frissítés van éppen folyamatban?"
 
-#~ msgid "ETH"
-#~ msgstr "ETH"
-
-#~ msgid "Screen-Shooter Settings"
-#~ msgstr "Képlopó beállításai"
-
-#~ msgid "Capture WM decorations when grabbing a window"
-#~ msgstr "Az ablakkezelő dekorációkat is mentsd ablaknál"
-
-#~ msgid "Give audio feedback using the keyboard bell"
-#~ msgstr "Adj hang visszajelzést a billentyűzet csengővel"
-
-#~ msgid "Display Spurious Options (I got carried away)"
-#~ msgstr "Álopciók kijelzése"
-
-#~ msgid "Delay (seconds) before taking shot (only for entire desktop shots)"
-#~ msgstr "Várakozás (másodpercben) fotózás előtt (munkaasztalnál csak)"
+#~ msgid "GNOME weather monitor applet"
+#~ msgstr "GNOME időjárás applet"
 
 #~ msgid ""
-#~ "Compressed Quality (JPEG/MIFF/PNG mode) High: good quality/large file"
-#~ msgstr ""
-#~ "Tömörítési minőség (JPEG/MIFF/PNG mód) Magas: jó minőség/nagy fájl"
-
-#~ msgid "Create monochrome image"
-#~ msgstr "Szürke kép létrehozása"
-
-#~ msgid "Invert colours in image"
-#~ msgstr "A színek megfordítása"
-
-#~ msgid "Directory to save images in:"
-#~ msgstr "Könyvtár amibe a képek menjenek:"
-
-#~ msgid "Image filename:"
-#~ msgstr "Kép neve:"
-
-#~ msgid "Show expanded filename"
-#~ msgstr "Mutasd a teljes fájlnevet"
-
-#~ msgid ""
-#~ "Filetype is determined from filename suffix.\n"
-#~ "Default filetype (if no extension or unrecognised extension) is miff.\n"
-#~ "Recognised suffixes are:\n"
-#~ "jpg, jpeg, bmp, cgm, cmyk, dib, eps, fig, fpx, gif, ico, map, miff, pcx,\n"
-#~ "pict, pix, png, pnm, ppm, psd, rgb, rgba, rla, rle, tiff, tga, xbm, xpm,\n"
-#~ "and several obscure ones. Try your luck with something interesting!\n"
-#~ "Eg .html for a client-side image map. You'll get a .gif, .html, and a "
-#~ ".shtml\n"
-#~ "\n"
-#~ "Recommendations:\n"
-#~ "Small file, pretty good quality:   jpg, 75% quality\n"
-#~ "Slightly larger file but lossless: png, as much compression as you like.\n"
-#~ "- compressing pngs takes longer at higher ratios, but is still lossless"
-#~ msgstr ""
-#~ "A fájltípust a fájlnév határozza meg.\n"
-#~ "Az alapértelmezett fájltípus miff (ha nincs megadva kiterjesztés).\n"
-#~ "Felismert kiterjesztések:\n"
-#~ "jpg, jpeg, bmp, cgm, cmyk, dib, eps, fig, fpx, gif, ico, map, miff, pcx,\n"
-#~ "pict, pix, png, pnm, ppm, psd, rgb, rgba, rla, rle, tiff, tga, xbm, xpm,\n"
-#~ "és egy csomó homályos formátum. Próbálkozz szerencsével.\n"
-#~ "Például a html egy kliens oldali image-map-ot készít. Kapsz egy .gif, "
-#~ ".html, és egy .shtml fájlt.\n"
-#~ "\n"
-#~ "Ajánlatok:\n"
-#~ "Kis fájl, jó minőség:   jpg, 75% minőség\n"
-#~ "Kicsit nagyobb fájl, de veszteségmentes: png, amilyen módban szeretnéd.\n"
-#~ "- a png tömörítés tovább tart magas felbontásban, de veszteségmentes."
-
-#~ msgid "View screenshot after saving it"
-#~ msgstr "A képernyőkép megnézése mentés után"
-
-#~ msgid "Files, Apps"
-#~ msgstr "Fájlok, alkalmazások"
-
-#~ msgid "Create thumbnail of image too"
-#~ msgstr "Bemutatókép készítése is"
-
-#~ msgid "Thumbnail Size (percentage of original)"
-#~ msgstr "Bemutatókép mérete (az eredeti százalékában)"
-
-#~ msgid ""
-#~ "Thumbnail compression (JPEG/MIFF/PNG mode) High: good quality/large file"
-#~ msgstr ""
-#~ "Bemutatókép tömörítése (JPG/MIFF/PNG mód) magas: jó minőség/nagy "
-#~ "fájl"
-
-#~ msgid "Prefix to attach to thumbnail filename:"
-#~ msgstr "A bemutatókép fájlnevének előtagja:"
-
-#~ msgid "Use high-quality intermediate for generating thumbnail"
-#~ msgstr "Jó minőségű közbenső bemutatókép generálása"
-
-#~ msgid ""
-#~ "(This'll chug loads of CPU, but will prevent compressing the image twice if "
-#~ "a\n"
-#~ "lossy file format is used)\n"
-#~ "Don't use this if you're using a lossless compression format, or if you "
-#~ "cherish\n"
-#~ "speed and don't mind imperfection in your thumbnails."
-#~ msgstr ""
-#~ "(Ez sok időbe telik, de nem kell kétszer tömöríteni a képet, ha \n"
-#~ "veszteséges fájlformátumot használsz.)\n"
-#~ "Ne használd, ha veszteségmentes tömörítést használsz, vagy fontosnak\n"
-#~ "érzed a sebességet és nem érdekel a bemutatóképek tökéletlensége."
-
-#~ msgid "Thumbnails"
-#~ msgstr "Bemutatóképek"
-
-#~ msgid ""
-#~ "All post-processing, frill and spurious options will chug more CPU than a\n"
-#~ "simple screenshot, due to the creation and then conversion of an "
-#~ "intermediate\n"
-#~ "image. Intensive operations may take some time on less spiffy CPUs."
-#~ msgstr ""
-#~ "Az összes utófeldolgozás, sallang és hamis opció több processzoridőt "
-#~ "zabál,\n"
-#~ "mint egy egyszerű képernyőfotó, a közbenső képek létrehozása és "
-#~ "átalakításai\n"
-#~ "miatt. Az intenzív műveletek sok időbe kerülhetnek gyengébb CPU-kon."
-
-#~ msgid ""
-#~ "Normalize image (Span full range of color values to enhance contrast)"
-#~ msgstr ""
-#~ "Kép normalizálása (a teljes színskála feszítése a kontraszt "
-#~ "javítására)"
-
-#~ msgid "Equalize image (Perform histogram equalization)"
-#~ msgstr "Kép kiegyenlítése (hisztogramm kiegyenlítés)"
-
-#~ msgid "Enhance image (reduce noise)"
-#~ msgstr "Kép erősítése (zaj csökkentése)"
-
-#~ msgid "Despeckle Image (reduce spots)"
-#~ msgstr "Kép folttalanítása (piszkok törlése)"
-
-#~ msgid "Sharpen Image by what factor?"
-#~ msgstr "Kép élesítése milyen mértékben?"
-
-#~ msgid "Rotate image clockwise by how many degrees?"
-#~ msgstr "Óra járásával megegyező irányban forgatás hány fokkal?"
-
-#~ msgid "Adjust gamma"
-#~ msgstr "Gamma hozzáadás"
-
-#~ msgid "Gamma value"
-#~ msgstr "Gamma érték"
-
-#~ msgid "Post Processing"
-#~ msgstr "Utófeldolgozás"
-
-#~ msgid "Create frame around image"
-#~ msgstr "Keret készítése a kép körül"
-
-#~ msgid "Frame Width (pixels)"
-#~ msgstr "Keret szélessége (képpontban)"
-
-#~ msgid "Mirror image vertically"
-#~ msgstr "Kép tükrözése függőlegesen"
-
-#~ msgid "Mirror image horizontally"
-#~ msgstr "Kép tükrözése vízszintesen"
-
-#~ msgid "Emboss image"
-#~ msgstr "Kép domborítása"
-
-#~ msgid ""
-#~ "When finished, send image and thumbnail filenames to script/program below"
-#~ msgstr ""
-#~ "Ha kész vagy, küldd el a fájlt és az indexképet a következő programnak"
-
-#~ msgid "Script or program to launch:"
-#~ msgstr "Az indítandó program:"
-
-#~ msgid ""
-#~ "Script/program will be launched after image creation with the image "
-#~ "filenames\n"
-#~ "specified on the commandline as follows:\n"
-#~ "{Script_Name} {Image_Filename} {Thumbnail_filename_if_specified}\n"
-#~ "Hint: I use a script to update my website screenshot page.\n"
-#~ "An example script should've been included in the tarball, or at my website."
-#~ msgstr ""
-#~ "A program (vagy szkript) a kép elkészítése után lesz elindítva, a "
-#~ "fájlnév\n"
-#~ "átadásával, mint a következő példa mutatja:\n"
-#~ "{Szkript_neve} {Fájlnév} {Indexkép_neve}\n"
-#~ "Javaslat: Én egy szkriptet használok a képernyőfotó weblapom "
-#~ "frissítésére.\n"
-#~ "Egy példa szkriptet találsz a csomagban, vagy a weblapomon."
-
-#~ msgid "Frills"
-#~ msgstr "Sallangok"
-
-#~ msgid "Blur image"
-#~ msgstr "Kép elmosása"
-
-#~ msgid "Blur image by what factor?"
-#~ msgstr "Milyen faktorral mossam el?"
-
-#~ msgid "Create Charcoal Effect"
-#~ msgstr "Faszén effekt"
-
-#~ msgid "Charcoal by what factor?"
-#~ msgstr "Faszén milyen faktorral?"
-
-#~ msgid "Find Edges in Image"
-#~ msgstr "Élkeresés a képen"
-
-#~ msgid "Find edges by what factor?"
-#~ msgstr "Élkeresés faktora?"
-
-#~ msgid "Implode Image"
-#~ msgstr "Kép felrobbantása"
-
-#~ msgid "Implode by what factor?"
-#~ msgstr "Robbantás milyen faktorral?"
-
-#~ msgid "Spurious"
-#~ msgstr "Hamis"
-
-#~ msgid "Create Painted Effect"
-#~ msgstr "Olajfestmény effekt"
-
-#~ msgid "Paint what radius around each pixel?"
-#~ msgstr "Milyen sugárral rajzoljam körbe?"
-
-#~ msgid "Solarise Image"
-#~ msgstr "Kép naposítása"
-
-#~ msgid "Solarize factor?"
-#~ msgstr "Naposítás milyen faktorral?"
-
-#~ msgid "Spread image pixels"
-#~ msgstr "Képpontok szétkenése"
-
-#~ msgid "Radius to around each pixel to spread?"
-#~ msgstr "Milyen sugárral szórjak minden pontot?"
-
-#~ msgid "Swirl pixels. My favorite :-)"
-#~ msgstr "Képpontok csavarása. A kedvencem :-)"
-
-#~ msgid "Radius to swirl pixels around?)"
-#~ msgstr "Milyen sugárral csavarjam a képpontokat?"
-
-#~ msgid "Spurious 2"
-#~ msgstr "Hamis 2"
-
-#~ msgid ""
-#~ "There was a word expansion error\n"
-#~ "I think you have stuck something funny in the directory box\n"
-#~ "Screenshot aborted"
-#~ msgstr ""
-#~ "Szótágulási hiba volt :>>\n"
-#~ "Asszem valami jópofa dolgot írtál a könyvtár beviteli mezőjébe\n"
-#~ "Fotózás abbamaradt"
-
-#~ msgid ""
-#~ "There was a word expansion error\n"
-#~ "I think you have stuck something funny in the filename box\n"
-#~ "Screenshot aborted"
-#~ msgstr ""
-#~ "Szótágulási hiba volt :>>\n"
-#~ "Asszem valami jópofa dolgot írtál a fájlnév mezőjébe\n"
-#~ "Fotózás abbamaradt"
-
-#~ msgid ""
-#~ "There was a word expansion error\n"
-#~ "I think you have stuck something funny in the filename box"
-#~ msgstr ""
-#~ "Szótágulási hiba volt :>>\n"
-#~ "Asszem valami jópofa dolgot írtál a fájlnév mezőjébe"
-
-#~ msgid ""
-#~ "The specified filename:\n"
-#~ "%s\n"
-#~ "expands to:\n"
-#~ "%s\n"
-#~ "when passed to a shell"
-#~ msgstr ""
-#~ "A megadott fájlnév:\n"
-#~ "%s\n"
-#~ "ez lett belőle:\n"
-#~ "%s\n"
-#~ "mikor átadtam a shell-nek"
-
-#~ msgid "Screen-Shooter Applet"
-#~ msgstr "Képernyőlopó applet"
-
-#~ msgid "Copyright (C) 1999 Tom Gilbert"
-#~ msgstr "Copyright (C) 1999 Tom Gilbert"
-
-#~ msgid ""
-#~ "A useful little screengrabber.\n"
-#~ "The left/top button allows you to grab either:\n"
-#~ "a window (click to select which one)\n"
-#~ "or an area (click and drag to select a rectangle.)\n"
-#~ "The right/bottom button will grab the entire desktop.\n"
-#~ "Share and Enjoy ;)"
-#~ msgstr ""
-#~ "Hasznos kis képlopó.\n"
-#~ "A bal/felső gomb segítségével lophatsz:\n"
-#~ "- ablakot (kattints rá valamelyikre)\n"
-#~ "- vagy területet (keretezd be a részt)\n"
-#~ "A jobb/alsó gomb a teljes képernyőt lelopja.\n"
-#~ "Oszd meg és élvezd ;)"
-
-#~ msgid "Visit the author's Website"
-#~ msgstr "Látogasd meg a szerző honlapját"
-
-#~ msgid "Grab a shot of a specific window or area"
-#~ msgstr "Ablak vagy képernyőterület fotózása"
-
-#~ msgid "Grab a shot of your entire desktop"
-#~ msgstr "Az egész képernyő fotózása"
-
-#~ msgid ""
-#~ "GNOME weather monitor applet.\n"
-#~ "Web: http://gweather.dhs.org/"
-#~ msgstr ""
-#~ "GNOME időjárásfigyelő applet.\n"
-#~ "Web: http://gweather.dhs.org/"
-
-#~ msgid "Regions"
-#~ msgstr "Régiók"
-
-#~ msgid "knots"
-#~ msgstr "csomó"
-
-#~ msgid "kph"
-#~ msgstr "kph"
-
-#~ msgid "inHg"
-#~ msgstr "inHg"
-
-#~ msgid "mmHg"
-#~ msgstr "mmHg"
-
-#~ msgid "miles"
-#~ msgstr "mérföld"
-
-#~ msgid "kilometers"
-#~ msgstr "kilométer"
-
-#~ msgid "Clock Settings"
-#~ msgstr "Óra beállításai"
-
-#~ msgid "Clock color"
-#~ msgstr "Óra színe"
-
-#~ msgid "Hour needle color"
-#~ msgstr "Óramutató színe"
-
-#~ msgid "Minute needle color"
-#~ msgstr "Percmutató színe"
-
-#~ msgid "Second needle color"
-#~ msgstr "Másodpercmutató színe"
-
-#~ msgid "Show seconds needle"
-#~ msgstr "Mutassa a másodpercmutatót"
-
-#~ msgid "Inigo Serna <inigo@gaztelan.bi.ehu.es>"
-#~ msgstr "Ińigo Serna <inigo@gaztelan.bi.ehu.es>"
-
-#~ msgid "Another Clock Applet"
-#~ msgstr "Analóg óra applet"
-
-#~ msgid "(C) 1999 the Free Software Foundation"
-#~ msgstr "(C) 1999 the Free Software Foundation"
-
-#~ msgid "An analog clock similar to that in CDE panel."
-#~ msgstr "Egy másik óraapplet, a CDE panelon találhatóhoz hasonló."
-
-#~ msgid "ASClock"
-#~ msgstr "AS Óra"
-
-#~ msgid "(C) 1998 the Free Software Foundation"
-#~ msgstr "(C) 1998 the Free Software Foundation"
-
-#~ msgid "Who said NeXT is dead?"
-#~ msgstr "Ki mondta, hogy a NeXT halott?"
-
-#~ msgid ""
-#~ "Since you are root, would you like to set the system's default timezone?"
-#~ msgstr ""
-#~ "Root vagy. Meg akarod változtatni a rendszer alapértelmezett "
-#~ "időzónáját is?"
-
-#~ msgid "My Title"
-#~ msgstr "Fejlécem"
-
-#~ msgid "Continent/City"
-#~ msgstr "Kontinens/Város"
-
-#~ msgid "Clock Theme"
-#~ msgstr "Óratéma"
-
-#~ msgid "ASClock Settings"
-#~ msgstr "AS Óra beállításai"
-
-#~ msgid "Display time in 12 hour format (AM/PM)"
-#~ msgstr "12 órás formátumban jelenjen meg az idő (AM/PM)"
-
-#~ msgid "Blinking elements in clock"
-#~ msgstr "Villogó részek az órában"
-
-#~ msgid "Timezone"
-#~ msgstr "Időzóna"
-
-#~ msgid "The battery is low."
-#~ msgstr "Az elem kimerült."
-
-#~ msgid "Internal error: invalid mode in battery_set_mode"
-#~ msgstr "Belső hiba: hibás mód a battery_set_mode-ban"
-
-#~ msgid "Can't create applet!\n"
-#~ msgstr "Nem tudom elkészíteni az appletet!\n"
-
-#~ msgid ""
-#~ "Error querying battery charge.\n"
-#~ "\n"
-#~ "Make sure that your kernel was built with APM support."
-#~ msgstr ""
-#~ "Nem sikerült az elemeket lekérdezni.\n"
-#~ "\n"
-#~ "Biztos, hogy a kerneledben van APM támogatás?"
-
-#~ msgid "The GNOME Battery Monitor Applet"
-#~ msgstr "GNOME telepmérő"
-
-#~ msgid " (C) 1997-1998 The Free Software Foundation"
-#~ msgstr " (C) 1997-1998 The Free Software Foundation"
-
-#~ msgid ""
-#~ "This applet monitors the charge of your laptop's battery.  Click on it to "
-#~ "change display modes."
-#~ msgstr ""
-#~ "A laptopod elemeinek állapotát mutatja ez az applet. Kattints rá a "
-#~ "kijelzés módjának változtatásához."
-
-#~ msgid "Could not allocate space for graph values"
-#~ msgstr "Nem tudok a grafikonértékeknek helyet foglalni"
-
-#~ msgid "Battery Monitor Settings"
-#~ msgstr "Elemek állapota:"
-
-#~ msgid "Applet Height:"
-#~ msgstr "Applet magassága:"
-
-#~ msgid "Applet Width:"
-#~ msgstr "Applet szélessége:"
-
-#~ msgid "Low Charge Threshold:"
-#~ msgstr "Alacsony töltöttségi küszöb:"
-
-#~ msgid "Applet Mode:"
-#~ msgstr "Applet üzemmódja:"
-
-#~ msgid "Graph"
-#~ msgstr "Grafika"
-
-#~ msgid "AC-On Battery Color:"
-#~ msgstr "AC-Bekapcsolt szín:"
-
-#~ msgid "AC-Off Battery Color:"
-#~ msgstr "AC-Kikapcsolt szín:"
-
-#~ msgid "Low Battery Color:"
-#~ msgstr "Kifogyott szín:"
-
-#~ msgid "Graph Battery Low Color:"
-#~ msgstr "Grafikonon kifogyott szín:"
-
-#~ msgid "Graph Tick Color:"
-#~ msgstr "Grafikonon pillanatnyi szín:"
-
-#~ msgid "Graph Direction:"
-#~ msgstr "Grafikon irány:"
-
-#~ msgid "Left to Right"
-#~ msgstr "Balról jobbra"
-
-#~ msgid "Right to Left"
-#~ msgstr "Jobbról balra"
-
-#~ msgid "Battery Charge Messages"
-#~ msgstr "Elemtöltöttségi üzenetek"
-
-#~ msgid "Enable Low Battery Warning"
-#~ msgstr "Alacsony töltöttségi figyelmeztetés be"
-
-#~ msgid "Warn if the battery charge dips below:"
-#~ msgstr "Figyelmeztessen, ha a töltöttség ez alatt van:"
-
-#~ msgid "Enable Full-Charge Notification"
-#~ msgstr "A teljes töltöttségi üzenet bekapcsolva"
-
-#~ msgid ""
-#~ "Cannot open /proc/apm!  Make sure that you built APM support into your "
-#~ "kernel.\n"
-#~ msgstr ""
-#~ "Nem tudom megnyitni a /proc/apm-t ! Tényleg van APM támogatás a "
-#~ "kernelben?\n"
-
-#~ msgid "Could not dup() APM file descriptor: %s\n"
-#~ msgstr "Nem tudom lemásolni az APM fájlleírót: %s\n"
-
-#~ msgid "Cannot open /dev/apm; can't get data."
-#~ msgstr ""
-#~ "Nem lehet megnyitni a '/proc/apm' fájlt. Nem tudok adatokhoz jutni."
-
-#~ msgid "ioctl failed on /dev/apm."
-#~ msgstr "ioctl hiba a /dev/apm fájlnál"
-
-#~ msgid "APM is disabled!  Cannot read battery charge information."
-#~ msgstr ""
-#~ "Az APM ki van kapcsolva! Nem tudom kiolvasni a telepek töltöttségi "
-#~ "értékeit."
-
-#~ msgid "Clipboard Applet"
-#~ msgstr "Vágólap applet"
-
-#~ msgid "Copyright (C) 1999"
-#~ msgstr "Copyright (C) 1999"
-
-#~ msgid ""
-#~ "Gnome panel applet for copying and retrieving selections with a history "
-#~ "list. Released under GNU General Public Licence."
-#~ msgstr ""
-#~ "Gnome Panel applet kijelölések másolására és beillesztésére "
-#~ "előzménylistával. A program GNU GPL-es."
-
-#~ msgid "John Ellis <johne@bellatlantic.net>"
-#~ msgstr "John Ellis <johne@bellatlantic.net>"
-
-#~ msgid "Clock and Mail Notify Applet"
-#~ msgstr "Óra és levélfigyelő applet"
-
-#~ msgid "(C) 2000"
-#~ msgstr "(C) 2000"
-
-#~ msgid ""
-#~ "Released under the GNU general public license.\n"
-#~ "Basic digital clock with date in a tooltip. Optional 12/24 time display. "
-#~ "Mail blinking can be for any unread mail, or only briefly when new mail "
-#~ "arrives."
-#~ msgstr ""
-#~ "GNU GPL alatt jött ki.\n"
-#~ "Sima digitális óra dátummal a segédszövegben. Választható a 12/24 "
-#~ "órás mód. Villog a levél, ha várakozik olvasatlan levél, vagy csak ha "
-#~ "új levél érkezett."
-
-#~ msgid "%a, %b %d"
-#~ msgstr "%a, %b %d"
-
-#~ msgid " (GMT)"
-#~ msgstr " (GMT)"
-
-#~ msgid " (GMT %+d)"
-#~ msgstr " (GMT %+d)"
-
-#~ msgid "None (default)"
-#~ msgstr "Nincs (alapértelmezett)"
-
-#~ msgid "Themes:"
-#~ msgstr "Témák:"
-
-#~ msgid "ClockMail Settings"
-#~ msgstr "Levélfigyelő beállítások"
-
-#~ msgid "Display time relative to GMT (Greenwich Mean Time):"
-#~ msgstr "Az időt GMT-hez viszonyítva mutassa (Greenwich-i idő):"
-
-#~ msgid "Mail"
-#~ msgstr "Levél"
-
-#~ msgid "Mail file:"
-#~ msgstr "Levelesláda:"
-
-#~ msgid "When new mail is received run:"
-#~ msgstr "Levél érkezéskor induljon:"
-
-#~ msgid "Always blink when any mail is waiting."
-#~ msgstr "Mindig villogjon, ha levél várakozik."
-
-#~ msgid "Number of messages to consider mailbox full:"
-#~ msgstr "A levelesládában tárolható levelek száma:"
-
-#~ msgid "When clicked, run:"
-#~ msgstr "Amikor rákattintasz, futtassa:"
-
-#~ msgid "Theme file (directory):"
-#~ msgstr "Témafájl"
-
-#~ msgid "Theme"
-#~ msgstr "Téma"
-
-#~ msgid "CPU/Mem Usage Applet"
-#~ msgstr "CPU/Memória kihasználtság"
-
-#~ msgid "(c) 1997 the Free Software Foundation"
-#~ msgstr "(C) 1997 the Free Software Foundation"
-
-#~ msgid ""
-#~ "The CPU/Mem usage applet displays your system resources with 3 colorful "
-#~ "stacked bar graphs (processor, memory, swap)"
-#~ msgstr ""
-#~ "A CPU/Mem kihasználtságát mérő applet a rendszererőforrások "
-#~ "használatát jelzi ki három színes grafikonnal (processzor, memória, "
-#~ "swap)"
-
-#~ msgid "MP: %s"
-#~ msgstr "MP: %s"
-
-#~ msgid "File Systems"
-#~ msgstr "Fájlrendszer"
-
-#~ msgid "File System Changed!\n"
-#~ msgstr "A fájlrendszer változott!\n"
-
-#~ msgid "Disk Usage Applet"
-#~ msgstr "Lemezhasználtság-mérő"
-
-#~ msgid "Update..."
-#~ msgstr "Frissítés..."
-
-#~ msgid "Used Diskspace:"
-#~ msgstr "Használt lemezterület:"
-
-#~ msgid "Text:"
-#~ msgstr "Szöveg:"
-
-#~ msgid "Free Diskspace:"
-#~ msgstr "Szabad lemezterület:"
-
-#~ msgid "Background:"
-#~ msgstr "Háttérszín:"
-
-#~ msgid "Automatically pick best applet size"
-#~ msgstr "Automatikusan válaszd a legjobb méretet"
-
-#~ msgid "Update Frequency (seconds):"
-#~ msgstr "Kép frissítésének gyakorisága (mp):"
-
-#~ msgid "Fonts"
-#~ msgstr "Betűkészletek"
-
-#~ msgid "Font:"
-#~ msgstr "Betűkészlet:"
-
-#~ msgid "Diskusage Settings"
-#~ msgstr "Lemezhasználtság-mérő beállításai"
-
-#~ msgid ""
-#~ "Released under the GNU general public license.\n"
-#~ "Mounts and Unmounts drives."
-#~ msgstr ""
-#~ "GNU GPL-es program.\n"
-#~ "Lemezes egységek fájlrendszerből ki- és beillesztését végzi."
-
-#~ msgid "Update in seconds:"
-#~ msgstr "Kép frissítésének gyakorisága:"
-
-#~ msgid ""
-#~ "You win!\n"
-#~ "Moves"
-#~ msgstr ""
-#~ "Győztél!\n"
-#~ "Lépések"
-
-#~ msgid "Fifteen sliding pieces"
-#~ msgstr "15 csúszkáló részlet"
-
-#~ msgid "Copyright (C) The Free Software Foundation"
-#~ msgstr "Copyright (C) The Free Software Foundation"
-
-#~ msgid ""
-#~ "Sam Lloyd's all-time favorite game, now for your delight in the Gnome Panel. "
-#~ "Guaranteed to be a productivity buster."
-#~ msgstr ""
-#~ "Sam Lloyd örökzöld játéka, a GNOME panelra ültetve. Garantáltan "
-#~ "akadályoz a munkában."
-
-#~ msgid "Can't create fifteen applet!"
-#~ msgstr "Nem tudom elkészíteni az appletet!"
-
-#~ msgid "Scramble pieces"
-#~ msgstr "Keverés"
-
-#~ msgid "gEyes Settings"
-#~ msgstr "gEyes beállítások"
-
-#~ msgid "Themes"
-#~ msgstr "Témák"
-
-#~ msgid "keymap_%d/name=US 105 key keyboard (with windows keys)"
-#~ msgstr "keymap_%d/name=US 105 gombos (windows billentyűkkel)"
-
-#~ msgid "keymap_%d/label=us"
-#~ msgstr "keymap_%d/label=us"
-
-#~ msgid "keymap_%d/country=United States"
-#~ msgstr "keymap_%d/country=Egyesült Államok"
-
-#~ msgid "keymap_%d/lang=English"
-#~ msgstr "keymap_%d/lang=Angol"
-
-#~ msgid "keymap_%d/command=gkb_xmmap us"
-#~ msgstr "keymap_%d/command=gkb_xmmap us"
-
-#~ msgid "keymap_%d/name=Hungarian 105 keys latin2"
-#~ msgstr "keymap_%d/name=Magyar 105 gombos latin2"
-
-#~ msgid "keymap_%d/label=hu"
-#~ msgstr "keymap_%d/label=hu"
-
-#~ msgid "keymap_%d/country=Hungary"
-#~ msgstr "keymap_%d/country=Magyarország"
-
-#~ msgid "keymap_%d/lang=Hungarian"
-#~ msgstr "keymap_%d/lang=Magyar"
-
-#~ msgid "keymap_%d/flag=hu.png"
-#~ msgstr "keymap_%d/flag=hu.png"
-
-#~ msgid "keymap_%d/command=gkb_xmmap hu"
-#~ msgstr "keymap_%d/command=gkb_xmmap hu"
-
-#~ msgid "Szabolcs BAN <shooby@gnome.hu>"
-#~ msgstr "Bán Szabolcs <shooby@gnome.hu>"
-
-#~ msgid "Chema Celorio <chema@celorio.com>"
-#~ msgstr "Chema Celorio <chema@celorio.com>"
-
-#~ msgid "Raise Note"
-#~ msgstr "Noteszlap előhúzása"
-
-#~ msgid "Lower Note"
-#~ msgstr "Noteszlap lenyomása"
-
-#~ msgid "Hide Note"
-#~ msgstr "Noteszlap elrejtése"
-
-#~ msgid "Delete Note"
-#~ msgstr "Noteszlap törlése"
-
-#~ msgid "GNotes!"
-#~ msgstr "GNotesz"
-
-#~ msgid "Copyright (C) 1998-1999"
-#~ msgstr "Copyright (C) 1998-1999"
-
-#~ msgid "Create sticky notes on your screen."
-#~ msgstr "Postit-ek készítése a képernyőre."
-
-#~ msgid "Can't create GNotes applet!"
-#~ msgstr "Nem tudom elkészíteni a GNotes appletet!"
-
-#~ msgid "Raise Notes"
-#~ msgstr "Hozd elő a feljegyzéseket"
-
-#~ msgid "Lower Notes"
-#~ msgstr "Nyomd le a feljegyzéseket"
-
-#~ msgid "Hide Notes"
-#~ msgstr "Rejtsd el a feljegyzéseket"
-
-#~ msgid "Show Notes"
-#~ msgstr "Mutasd a feljegyzéseket"
-
-#~ msgid "GNotes Settings"
-#~ msgstr "GNotesz beállítások"
-
-#~ msgid "Default Height"
-#~ msgstr "Alap magasság"
-
-#~ msgid "Default Width"
-#~ msgstr "Alap szélesség"
-
-#~ msgid "Cannot create applet!\n"
-#~ msgstr "Nem tudom elkészíteni az appletet!\n"
-
-#~ msgid "Detailed Forecast"
-#~ msgstr "Részletes előrejelzés (IWIN, USA)"
-
-#~ msgid ""
-#~ "Invalid location chosen!\n"
+#~ "Proxy URL is not of the form http://host:port/\n"
 #~ "Properties remain unchanged."
 #~ msgstr ""
-#~ "Rossz helyet választottál!\n"
+#~ "A proxy URL nem http://host:port/ formában van\n"
 #~ "A beállítások nem változnak."
 
-#~ msgid "Location vector needs to be 4 elements long"
-#~ msgstr "A helyvektor négyelemű kell legyen"
+#~ msgid "Another update already in progress!\n"
+#~ msgstr "Másik frissítés megy éppen!\n"
 
-#~ msgid "Jon's Binary Clock"
-#~ msgstr "Jon bináris órája"
+#~ msgid "time & date on"
+#~ msgstr "idő és dátum bekapcsolva"
 
-#~ msgid "(C) 1999"
-#~ msgstr "(C) 1999"
+#~ msgid "time on"
+#~ msgstr "idő bekapcsolva"
 
-#~ msgid ""
-#~ "Released under the GNU general public license.\n"
-#~ "Displays time in Binary Coded Decimal\n"
-#~ "http://snoopy.net/~jon/jbc/."
-#~ msgstr ""
-#~ "GNU GPL-es program.\n"
-#~ "BCD óra, lásd\n"
-#~ "http://snoopy.net/~jon/jbc/"
+#~ msgid "date on"
+#~ msgstr "dátum bekapcsolva"
 
-#~ msgid "The Game of Life"
-#~ msgstr "The Game of Life"
+#~ msgid "clock off"
+#~ msgstr "óra kikapcsolva"
 
-#~ msgid "A complete waste of perfectly good CPU cycles."
-#~ msgstr "Tökéletes pocsékolása a CPU órajeleknek."
+#~ msgid "Show modem status"
+#~ msgstr "A Modem LED-jeit mutatja a panelon"
 
-#~ msgid "Can't create life applet!"
-#~ msgstr "Nem tudom elkészíteni a life appletet!"
+#~ msgid "CPU Load Meter"
+#~ msgstr "Processzor-terhelés mérő"
 
-#~ msgid "Randomize"
-#~ msgstr "Véletlenít"
+#~ msgid "CPULoad"
+#~ msgstr "Processzorhasználat"
 
-#~ msgid "Main Volume and Mute"
-#~ msgstr "Master hangerő és némítás"
+#~ msgid "Load Average Applet"
+#~ msgstr "Terheltségi átlag applet"
 
-#~ msgid "(c) 1998 The Free Software Foundation"
-#~ msgstr "(c) 1998 the Free Software Foundation"
+#~ msgid "MemLoad"
+#~ msgstr "Memóriafoglaltság"
 
-#~ msgid ""
-#~ "The mixer applet gives you instant access to setting the master volume level "
-#~ "on your soundcard device"
-#~ msgstr ""
-#~ "A mixer applet közvetlen elérést nyújt a hangkártyád master "
-#~ "hangerőszabályzójához a panelon"
+#~ msgid "Memory Load Meter"
+#~ msgstr "Memóriahasználat-jelző"
 
-#~ msgid "Help..."
-#~ msgstr "Súgó..."
+#~ msgid "NetLoad"
+#~ msgstr "Hálózati forgalom"
 
-#~ msgid "CPU Load Applet"
-#~ msgstr "Processzor-terhelés applet"
+#~ msgid "Network Activity Meter"
+#~ msgstr "Kijelzi a hálózati forgalmat"
 
-#~ msgid ""
-#~ "Released under the GNU general public license.\n"
-#~ "\n"
-#~ "CPU Load Meter Applet."
-#~ msgstr ""
-#~ "GNU GPL-es program.\n"
-#~ "\n"
-#~ "A processzor terhelését mérő applet."
+#~ msgid "Swap Load Meter"
+#~ msgstr "Lapozóterület-használat mérő"
 
-#~ msgid "Default Properties..."
-#~ msgstr "Alapértelmezett tulajdonságok..."
-
-#~ msgid "Run gtop..."
-#~ msgstr "Gtop futtatása..."
-
-#~ msgid ""
-#~ "Released under the GNU general public license.\n"
-#~ "\n"
-#~ "Load Average Meter Applet."
-#~ msgstr ""
-#~ "GNU GPL-es program.\n"
-#~ "\n"
-#~ "A processzor terhelését mérő applet."
-
-#~ msgid "Load Graph"
-#~ msgstr "Terhelési grafikon"
-
-#~ msgid "Interval:"
-#~ msgstr "Intervallum:"
-
-#~ msgid "Size:"
-#~ msgstr "Méret:"
-
-#~ msgid "Maximum:"
-#~ msgstr "Maximum:"
-
-#~ msgid "Speed:"
-#~ msgstr "Sebesség:"
-
-#~ msgid "Use default properties"
-#~ msgstr "Alapértelmezés használata"
-
-#~ msgid "Memory Load Applet"
-#~ msgstr "Memóriahasználat applet"
-
-#~ msgid ""
-#~ "Released under the GNU general public license.\n"
-#~ "\n"
-#~ "Memory Load Applet."
-#~ msgstr ""
-#~ "GNU GPL-es program.\n"
-#~ "\n"
-#~ "Memóriahasználatot mérő applet."
-
-#~ msgid "Network Load Applet"
-#~ msgstr "Hálózati forgalmat mérő applet"
-
-#~ msgid "Network Load"
-#~ msgstr "Hálózathasználat"
-
-#~ msgid "Swap Load Applet"
-#~ msgstr "Lapozóterület-használat applet"
-
-#~ msgid ""
-#~ "Released under the GNU general public license.\n"
-#~ "\n"
-#~ "Swap Load Meter Applet."
-#~ msgstr ""
-#~ "GNU GPL-es program.\n"
-#~ "\n"
-#~ "A lapozóterület használtságát mérő applet"
-
-#~ msgid "Odometer"
-#~ msgstr "Odométer"
-
-#~ msgid "(C) 1999 The Free Software Foundation"
-#~ msgstr "(C) 1999 The Free Software Foundation"
-
-#~ msgid ""
-#~ "a GNOME applet that tracks and measures the movements of your mouse pointer "
-#~ "across the desktop."
-#~ msgstr ""
-#~ "egy GNOME applet amely jegyzi és visszajelzi az egered által megtett utat "
-#~ "a munkaasztalodon."
-
-#~ msgid "Odometer setting"
-#~ msgstr "Gnome Pager beállítások"
-
-#~ msgid "Use Metric"
-#~ msgstr "Méterben számol"
-
-#~ msgid "auto_reset"
-#~ msgstr "auto_reset"
-
-#~ msgid "enabled"
-#~ msgstr "engedve"
-
-#~ msgid "Digits number"
-#~ msgstr "Számjegyek száma"
-
-#~ msgid "Theme file:"
-#~ msgstr "Témafájl:"
-
-#~ msgid "The QuickLaunch Applet"
-#~ msgstr "QuickLaunch Applet"
-
-#~ msgid ""
-#~ "This applet adds some pretty small icons for your launchers to your panel, "
-#~ "like the windowish QuickLaunch toolbar, avoiding that annoying huge GNOME "
-#~ "launchers."
-#~ msgstr ""
-#~ "Ez az applet aranyos kis ikonokat nyújt, mint a windowsos "
-#~ "QuickLauncheszköz, a nagy indítóikonok helyettesítésére."
-
-#~ msgid "Launcher Properties"
-#~ msgstr "Indító Tulajdonságok..."
-
-#~ msgid ""
-#~ "drop launchers from\n"
-#~ "the menu here"
-#~ msgstr ""
-#~ "dobd le a menüből az\n"
-#~ "indítókat ide"
-
-#~ msgid "Launcher properties..."
-#~ msgstr "Indító tulajdonságai..."
-
-#~ msgid "Delete launcher"
-#~ msgstr "Indító törlése"
-
-#~ msgid "File '%s' does not exist"
-#~ msgstr "A '%s' fájl nem létezik"
-
-#~ msgid "Don't know how to make a launcher out of: '%s'"
-#~ msgstr "Nem tudok indítót készíteni: '%s'"
-
-#~ msgid ""
-#~ "Cannot create directory:\n"
-#~ "~/.gnome/quicklaunch.\n"
-#~ "Aborting"
-#~ msgstr ""
-#~ "Nem sikerült a könyvtár létrehozása:\n"
-#~ "~/.gnome/quicklaunch.\n"
-#~ "Megállok"
-
-#~ msgid "Site"
-#~ msgstr "Hely"
-
-#~ msgid "Slashdot"
-#~ msgstr "Slashdot"
-
-#~ msgid "Gnotices"
-#~ msgstr "Gnotices"
-
-#~ msgid "Articles"
-#~ msgstr "Cikkek"
-
-#~ msgid "Delay between articles (10 = 1 sec):"
-#~ msgstr "Hírek közötti szünet (10 = 1 mp):"
-
-#~ msgid "Use Proxy"
-#~ msgstr "Proxy használata"
-
-#~ msgid "Proxy Host: "
-#~ msgstr "Proxy kiszolgáló:"
-
-#~ msgid "Proxy Port: "
-#~ msgstr "Proxy port: "
-
-#~ msgid "(These settings do not take effect until a refresh)"
-#~ msgstr "(Ezek nem állítódnak át frissítésig)"
-
-#~ msgid "Scrolling"
-#~ msgstr "Görgetés"
-
-#~ msgid "Smooth scroll"
-#~ msgstr "Sima görgetés"
-
-#~ msgid "Smooth type"
-#~ msgstr "Simítás típusa"
-
-#~ msgid "Speed"
-#~ msgstr "Sebesség"
-
-#~ msgid "Delay when wrapping text:"
-#~ msgstr "Várakozás a szövegtörésig:"
-
-#~ msgid "Scroll speed between lines (Smooth scroll):"
-#~ msgstr "Görgetési sebesség (sima görgetésnél):"
-
-#~ msgid "Loading headlines..."
-#~ msgstr "Szalagcímek letöltése...."
-
-#~ msgid "Unable to create user directory: %s\n"
-#~ msgstr "Nem lehet a felhasználói könyvtárat létrehozni: %s\n"
-
-#~ msgid "%d.%d.%d"
-#~ msgstr "%d.%d.%d"
-
-#~ msgid "Justin Maurer <justin@helixcode.com>"
-#~ msgstr "Justin Maurer <justin@helixcode.com>"
-
-#~ msgid "Craig Small <csmall@eye-net.com.au>"
-#~ msgstr "Craig Small <csmall@eye-net.com.au>"
-
-#~ msgid "Frederic Devernay <devernay@istar.fr>"
-#~ msgstr "Frédéric Devernay <devernay@istar.fr>"
-
-#~ msgid "SlashApp"
-#~ msgstr "SlashApp"
-
-#~ msgid "(C) 1998-2000"
-#~ msgstr "(C) 1998-2000"
-
-#~ msgid "A stock ticker-like applet\n"
-#~ msgstr "Egy szokványos távíró-szerű applet\n"
-
-#~ msgid "SlashApp Article List"
-#~ msgstr "Slahapp cikklista"
-
-#~ msgid "No articles"
-#~ msgstr "Nincsenek cikkek"
-
-#~ msgid "Unable to parse document\n"
-#~ msgstr "Nem tudom a dokumentumot értelmezni\n"
-
-#~ msgid "Can't parse XML. Net connection down?"
-#~ msgstr "Nem tudom az XML-t értelmezni. A hálózat nincs fellőve?"
-
-#~ msgid "Unable to initialize request. Shouldn't happen\n"
-#~ msgstr "Nem tudom elkezdeni a kérést. Nem lehet\n"
-
-#~ msgid "Unable to prepare request.\n"
-#~ msgstr "Nem tudom előkészíteni a kérést.\n"
-
-#~ msgid "Unable to process request.\n"
-#~ msgstr "Nem tudom elvégezni a kérést.\n"
-
-#~ msgid "No title"
-#~ msgstr "Nincs cím"
-
-#~ msgid "No url"
-#~ msgstr "Nincs url"
-
-#~ msgid "(C) 2000 John Ellis"
-#~ msgstr "(C) 2000 John Ellis"
-
-#~ msgid ""
-#~ "Sound monitor interface to Esound\n"
-#~ "\n"
-#~ "Released under the GNU general public license."
-#~ msgstr ""
-#~ "Hangfigyelő felület az Esoundhoz\n"
-#~ "\n"
-#~ "GNU general public license alatt jelent meg."
-
-#~ msgid "Place Esound in standby"
-#~ msgstr "Esound takarékra tétele"
-
-#~ msgid "Resume Esound"
-#~ msgstr "Esound újraélesztése"
-
-#~ msgid "Start Esound"
-#~ msgstr "Esound indítása"
-
-#~ msgid "Manager..."
-#~ msgstr "Kezelő..."
-
-#~ msgid "Length"
-#~ msgstr "Hosszúság"
-
-#~ msgid "Time"
-#~ msgstr "Idő"
-
-#~ msgid "Id"
-#~ msgstr "Id"
-
-#~ msgid "Rate"
-#~ msgstr "Ráta"
-
-#~ msgid "Bits"
-#~ msgstr "Bit"
-
-#~ msgid "Format"
-#~ msgstr "Formátum"
-
-#~ msgid "P"
-#~ msgstr "P"
-
-#~ msgid "L"
-#~ msgstr "L"
-
-#~ msgid "Sound Monitor - Manager"
-#~ msgstr "Sound Monitor - Kezelő"
-
-#~ msgid "Server information:"
-#~ msgstr "Kiszolgáló adatai:"
-
-#~ msgid "Server"
-#~ msgstr "Kiszolgáló"
-
-#~ msgid "Connected streams:"
-#~ msgstr "Kapcsolódó folyamok:"
-
-#~ msgid "Streams"
-#~ msgstr "Folyamok"
-
-#~ msgid "Balance"
-#~ msgstr "Balance"
-
-#~ msgid "Cached samples: (select to play)"
-#~ msgstr "Gyorstárazott minták: (válaszd ki a lejátszandót)"
-
-#~ msgid ""
-#~ "You have enabled the \"Monitor sound input\" option.\n"
-#~ "\n"
-#~ "If your sound card is not fully 100% FULL DUPLEX (can do input and output "
-#~ "simultaneously),\n"
-#~ "then this may touch bugs in sound drivers/esound that may hang the system.\n"
-#~ "\n"
-#~ "You have been warned!"
-#~ msgstr ""
-#~ "Engedélyezted a \"Hangbemenet figyelése\" opciót.\n"
-#~ "\n"
-#~ "Ha a hangkártyád nem 100% FULL DUPLEX (nem tud be- és kimenetet is "
-#~ "kezelni egyszerre),\n"
-#~ "hibákat találhatsz a hangkártya-meghajtódban, ami leállíthatja a "
-#~ "rendszered.\n"
-#~ "\n"
-#~ "Figyelmeztettelek!"
-
-#~ msgid "Sound Monitor Applet Settings"
-#~ msgstr "Sound Monitor Applet beállításai"
-
-#~ msgid "off"
-#~ msgstr "ki"
-
-#~ msgid "active"
-#~ msgstr "aktív"
-
-#~ msgid "smooth"
-#~ msgstr "sima"
-
-#~ msgid "Peak indicator falloff speed"
-#~ msgstr "Csúcsjelző (peak) visszaesési sebessége"
-
-#~ msgid "Scope (scale 1:X, where X = ? )"
-#~ msgstr "Szkóp (skála 1:X, ahol X = ? )"
-
-#~ msgid "Connect points in scope"
-#~ msgstr "Pontok összekötése a szkópban"
-
-#~ msgid "Screen refresh (frames per second)"
-#~ msgstr "Képernyő frissítése (kép / másodperc)"
-
-#~ msgid "ESD host to monitor:"
-#~ msgstr "Figyelendő ESD szerver:"
-
-#~ msgid "Monitor sound input (only use if sound card is FULL DUPLEX)"
-#~ msgstr "Hangbemenet figyelése (csak ha FULL DUPLEX hangkártyád van)"
-
-#~ msgid "Tick-a-Stat event log"
-#~ msgstr "Tick-a-Stat eseménynapló"
-
-#~ msgid "%Y%m%d-%H-%M-%S"
-#~ msgstr "%Y%m%d-%H-%M-%S"
-
-#~ msgid "%m-%d-%Y %H:%M:%S"
-#~ msgstr "%m-%d-%Y %H:%M:%S"
-
-#~ msgid "Tick-a-Stat"
-#~ msgstr "Tick-a-Stat"
-
-#~ msgid "(C) 1999 John Ellis"
-#~ msgstr "(C) 1999 John Ellis"
-
-#~ msgid "A ticker to display various information and statistics.\n"
-#~ msgstr ""
-#~ "Egy távíró applet változatos infók és statisztikák "
-#~ "megjelenítéséhez.\n"
-
-#~ msgid "unable to create user directory: %s\n"
-#~ msgstr "Nem tudom a felhasználói könyvtárat létrehozni: %s\n"
-
-#~ msgid "The unique information and status ticker."
-#~ msgstr "A páratlan infó és státusz kijelző."
-
-#~ msgid "Event log..."
-#~ msgstr "Események..."
-
-#~ msgid "Core dump information (Tick-a-Stat)"
-#~ msgstr "Core dump információ (Tick-a-Stat)"
-
-#~ msgid "Core dump module (Tick-A-Stat)"
-#~ msgstr "Core dump modul (Tick-A-Stat)"
-
-#~ msgid ""
-#~ "The core dump module is\n"
-#~ "processing a core file..."
-#~ msgstr ""
-#~ "A core dump modul\n"
-#~ "core fájlt kérdez le..."
-
-#~ msgid "Core Dump Module"
-#~ msgstr "Core Dump Modul"
-
-#~ msgid "Enable this module"
-#~ msgstr "A modul engedélyezése"
-
-#~ msgid "Show backtrace dialog on new core files"
-#~ msgstr "Mutasd meg a core fájl visszakövetés ablakát"
-
-#~ msgid "Path to monitor:"
-#~ msgstr "Figyelendő útvonal:"
-
-#~ msgid "Core dump catcher"
-#~ msgstr "Core Dump elfogó"
-
-#~ msgid ""
-#~ "This module monitors a path for core dumps, if one is\n"
-#~ " found it is time stamped and a backtrace logged (using gdb)."
-#~ msgstr ""
-#~ "Ez a modul egy core dump-ot monitoroz, amit az applet talál,\n"
-#~ " az idő és a visszakövetés (backtrack) lejegyzésre kerül (gdb-vel)."
-
-#~ msgid "Load Average information (Tick-a-Stat)"
-#~ msgstr "Átlagos terhelési információk (Tick-a-Stat)"
-
-#~ msgid "The Load average is very high."
-#~ msgstr "A terhelési átlag nagyon magas."
-
-#~ msgid "Load average is at a critical point, help me!"
-#~ msgstr "A terhelési átlag kritikus pontnál van, segíts!"
-
-#~ msgid "Load Average Module"
-#~ msgstr "Terhelési átlag modul"
-
-#~ msgid "Check every:"
-#~ msgstr "Ellenőrizz minden:"
-
-#~ msgid "Warning options"
-#~ msgstr "Figyelmeztetés opció"
-
-#~ msgid "Show pop-up dialog for this event"
-#~ msgstr "Pop-up ablak ennél az eseménynél"
-
-#~ msgid "Load average threshhold:"
-#~ msgstr "Load átlag küszöb:"
-
-#~ msgid "Text to display:"
-#~ msgstr "Következő a megjelenítéshez:"
-
-#~ msgid "Alert options"
-#~ msgstr "Figyelmeztetési beállítások"
-
-#~ msgid "Load average monitor"
-#~ msgstr "Átlagos terhelés figyelője"
-
-#~ msgid ""
-#~ "This module monitors the system load average,\n"
-#~ " and displays warning when it rises above certain points."
-#~ msgstr ""
-#~ "Ez a modul az átlagos terhelés értéket figyeli,\n"
-#~ " és jelez ha egy adott értéken felülre kerül."
-
-#~ msgid "script \""
-#~ msgstr "script \""
-
-#~ msgid "Tick-a-Stat script encountered an error:\n"
-#~ msgstr "Tick-a-Stat szkript hibát talált:\n"
-
-#~ msgid "Enabled"
-#~ msgstr "Engedélyezve"
-
-#~ msgid "Line delay"
-#~ msgstr "Vonal késleltetés"
-
-#~ msgid "Update interval"
-#~ msgstr "Frissítések közötti időtartam"
-
-#~ msgid "D"
-#~ msgstr "D"
-
-#~ msgid "T"
-#~ msgstr "T"
-
-#~ msgid "I"
-#~ msgstr "I"
-
-#~ msgid "B"
-#~ msgstr "B"
-
-#~ msgid "News and Information Module"
-#~ msgstr "Hírek és információk modul"
-
-#~ msgid "Line (s):"
-#~ msgstr "Vonal (mp):"
-
-#~ msgid "Update (m):"
-#~ msgstr "Frissítés (p):"
-
-#~ msgid "body"
-#~ msgstr "törzs"
-
-#~ msgid "image"
-#~ msgstr "kép"
-
-#~ msgid "topic"
-#~ msgstr "cikk"
-
-#~ msgid "date"
-#~ msgstr "dátum"
-
-#~ msgid "Show:"
-#~ msgstr "Mutatva:"
-
-#~ msgid "News and information ticker"
-#~ msgstr "Hírek és információk ticker"
-
-#~ msgid "This module can display news and other information."
-#~ msgstr "Ez a modul híreket és egyéb információkat mutathat."
-
-#~ msgid "File tail view file (Tick-a-Stat)"
-#~ msgstr "Fájl tail nézet (Tick-a-Stat)"
-
-#~ msgid "no file specified"
-#~ msgstr "nincs fájl megadva"
-
-#~ msgid "File tail information (Tick-a-Stat)"
-#~ msgstr "Fájl tail információ (Tick-a-Stat)"
-
-#~ msgid "File tail for "
-#~ msgstr "Fájl tail:"
-
-#~ msgid "File Tail Module"
-#~ msgstr "Fájl tail modul"
-
-#~ msgid "Path to tail:"
-#~ msgstr "Tail-olandó fájl:"
-
-#~ msgid "Choose a file to tail"
-#~ msgstr "Válassz ki egy fájlt megjelenítéshez"
-
-#~ msgid "Show pop up dialog for new lines."
-#~ msgstr "Felbukkanó ablak mutatása az új sorokhoz."
-
-#~ msgid "File tailer"
-#~ msgstr "Fájl tail-elő"
-
-#~ msgid ""
-#~ "This module monitors a file for appended text,\n"
-#~ " and prints it. Useful for log files."
-#~ msgstr ""
-#~ "A modul figyeli a fájlt, és ha lett szöveg\n"
-#~ " hozzáírva, kiírja azt. Naplóállományokhoz hasznos."
-
-#~ msgid "Testing line from test module :)"
-#~ msgstr "Tesztsor a tesztmodulból :)"
-
-#~ msgid "You clicked on me"
-#~ msgstr "Rám kattintottál"
-
-#~ msgid "Test Module"
-#~ msgstr "Tesztmodul"
-
-#~ msgid "This is the test module's description line."
-#~ msgstr "Ez egy tesztmodul leíró sora."
-
-#~ msgid "Modules"
-#~ msgstr "Modulok"
-
-#~ msgid "Event Log"
-#~ msgstr "Esemény napló"
-
-#~ msgid "Enable logging of events"
-#~ msgstr "Eseménynaplózás engedélyezése"
-
-#~ msgid "Log path:"
-#~ msgstr "Naplófájl:"
-
-#~ msgid "Choose a log file"
-#~ msgstr "Válassz egy log fájlt:"
-
-#~ msgid "Width:"
-#~ msgstr "Szélesség:"
-
-#~ msgid "Use panel size hint"
-#~ msgstr "A panel méret jelzés használata"
-
-#~ msgid "The Web Browser Controller"
-#~ msgstr "Webböngésző távirányítója"
-
-#~ msgid ""
-#~ "An applet to launch URLs in a web browser, search using various web sites "
-#~ "and have a ton of fun!"
-#~ msgstr ""
-#~ "Egy applet, mely URL-eket lő fel webböngészőkben, keres több webhelyen, "
-#~ "és van egy tonna poénja!"
-
-#~ msgid "URL:"
-#~ msgstr "URL:"
-
-#~ msgid " GO "
-#~ msgstr " GO "
-
-#~ msgid " Clear "
-#~ msgstr " Törlés"
-
-#~ msgid "Launch new window"
-#~ msgstr "Új ablakban indít"
-
-#~ msgid "Where Am I?"
-#~ msgstr "Hol vagyok?"
-
-#~ msgid "Copyright 1999 John Kodis"
-#~ msgstr "Copyright 1999 John Kodis"
-
-#~ msgid ""
-#~ "A cursor position reporting applet.\n"
-#~ "= Clicking mouse button 1 grabs the cursor.\n"
-#~ "= Dragging with mouse button 1 held down shows the size of the region."
-#~ msgstr ""
-#~ "Egy kurzorpozíció-jelző applet.\n"
-#~ "= A bal egérgombbal való kattintás egy képpont pozícióját jelzi.\n"
-#~ "= Az egérgombot nyomva tartva egy téglalap két sarkát kapjuk meg."
-
-#~ msgid "whereami_applet"
-#~ msgstr "whereami_applet"
-
-#~ msgid "Info and status ticker"
-#~ msgstr "Infó- és állapotkijelző"
-
-#~ msgid "Clipboard"
-#~ msgstr "Vágólap"
-
-#~ msgid "Copy multiple selections into a persistant clipboard"
-#~ msgstr "Több kijelölés egy állandó vágólapra másolása"
-
-#~ msgid "AfterStep Clock"
-#~ msgstr "AfterStep Óra"
-
-#~ msgid "Just another clock"
-#~ msgstr "AfterStep stílusú óra"
-
-#~ msgid "Mounts and unmount drives"
-#~ msgstr "Lemezbeillesztő (mount) applet"
-
-#~ msgid "CPU/MEM usage"
-#~ msgstr "Processzor-memóriahasználat"
-
-#~ msgid "CPU/MEM usage meter"
-#~ msgstr "Processzor-memóriahasználat mutató applet"
-
-#~ msgid "An analog clock similar to that in CDE panel"
-#~ msgstr "CDE-stílusú másik óra applet"
-
-#~ msgid "Another Clock"
-#~ msgstr "Másik óra"
-
-#~ msgid "Clock and Mailcheck"
-#~ msgstr "Levélfigyelő és óra"
-
-#~ msgid "Displays new mail and time"
-#~ msgstr "Egy óra-applet, amelyik figyeli a levelesládát"
-
-#~ msgid "Show last news from slashdot.org"
-#~ msgstr "A legfrissebb híreket mutatja a slashdot.org-ról"
-
-#~ msgid "Shows Cursor Position"
-#~ msgstr "A kurzorpozíció mutatása"
-
-#~ msgid "Fifteen"
-#~ msgstr "Tizenötös játék"
-
-#~ msgid "Fifteen cells game"
-#~ msgstr "A népszerű tizenötös puzzle-játék"
-
-#~ msgid "character picker"
-#~ msgstr "Pár karaktert beszúrni képes applet"
-
-#~ msgid "Sound Monitor"
-#~ msgstr "Sound Monitor"
-
-#~ msgid "Sound Monitor for Esound"
-#~ msgstr "Sound Monitor az Esound-hoz"
-
-#~ msgid "Audio Mixer"
-#~ msgstr "Keverőpult egy potméterrel"
-
-#~ msgid "Mixer"
-#~ msgstr "Hangerőszabályzó"
-
-#~ msgid "QuickLaunch"
-#~ msgstr "QuickLaunch"
-
-#~ msgid "Small Launchers "
-#~ msgstr "Kis indítók "
-
-#~ msgid "Mouse movements counter"
-#~ msgstr "Egérmozgás mérő"
-
-#~ msgid "Screen Shooter is a screenshot grabber"
-#~ msgstr "A képlövő egy képernyőtartalom képesítő"
-
-#~ msgid "ScreenShooter"
-#~ msgstr "Képlövő"
-
-#~ msgid "Disk Usage"
-#~ msgstr "Lemezhasználat"
-
-#~ msgid "Disk usage meter"
-#~ msgstr "Lemezhasználat mutató applet"
-
-#~ msgid "Game of Life"
-#~ msgstr "Életjáték"
-
-#~ msgid "The Game of Life (to waste your time)"
-#~ msgstr "Életjáték (az időd pocsékolására)"
-
-#~ msgid "Displays the time whith in binary representation"
-#~ msgstr "Az időt jeleníti meg bináris alakban"
-
-#~ msgid "JBC Binary Clock"
-#~ msgstr "JBC Bináris Óra"
-
-#~ msgid "ESounD Persistent Volume Daemon version %s\n"
-#~ msgstr "ESounD Persistent Volume Daemon %s verzió\n"
-
-#~ msgid "options:\n"
-#~ msgstr "beállítások:\n"
-
-#~ msgid "  -n, --noX     Allow to run without X server\n"
-#~ msgstr "  -n, --noX     Az X-szerverrel együtt futhat\n"
-
-#~ msgid "Are you sure you want to remove this browser?"
-#~ msgstr "Tényleg eltávolítod ezt a böngészőt?"
-
-#~ msgid "Configure Browser"
-#~ msgstr "A böngésző beállítása"
-
-#~ msgid "Browser Name:"
-#~ msgstr "Böngésző neve:"
-
-#~ msgid "Browser Command:"
-#~ msgstr "Böngésző parancs:"
-
-#~ msgid "New Window Option:"
-#~ msgstr "Új ablak kapcsolója:"
-
-#~ msgid "No New Window Option:"
-#~ msgstr "Nem új ablak kapcsoló:"
-
-#~ msgid "URL bar width:"
-#~ msgstr "Az URL-sáv szélessége:"
-
-#~ msgid "Display GO Button"
-#~ msgstr "GO gomb mutatása"
-
-#~ msgid "Display \"launch new window\" option"
-#~ msgstr "Mutasd az \"Új ablakban indít\" kapcsolót"
-
-#~ msgid "Display \"Clear\" button"
-#~ msgstr "A \"Törlés\" gomb megjelenítése"
-
-#~ msgid "\"Clear\" button on top?"
-#~ msgstr "A \"Törlés\" gomb legfelül?"
-
-#~ msgid " URL Activation "
-#~ msgstr " URL Aktiváció "
-
-#~ msgid "Use default MIME handler"
-#~ msgstr "Alapértelmezett MIME kezelő használata"
-
-#~ msgid "Use custom browser:"
-#~ msgstr "Egyéni böngésző használata"
-
-#~ msgid "Remove"
-#~ msgstr "Eltávolítás"
-
-#~ msgid " URL History "
-#~ msgstr " URL emlékezet "
-
-#~ msgid "Size of URL history: "
-#~ msgstr "Az URL emlékezet mérete: "
-
-#~ msgid "Clear"
-#~ msgstr "Törlés"
-
-#~ msgid "all entries in URL history"
-#~ msgstr "minden bejegyzés az URL emlékezetben"
+#~ msgid "SwapLoad"
+#~ msgstr "Lapozóterület-használat"
