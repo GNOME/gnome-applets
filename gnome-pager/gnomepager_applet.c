@@ -2563,4 +2563,6 @@ populate_tasks(int just_popbox)
       p = p->next;
     }
   gtk_table_resize(GTK_TABLE(task_table), n_rows, n_cols);
+  if(config.fixed_tasklist && task_table->parent)
+	  gtk_widget_queue_resize(task_table->parent);
 }
