@@ -22,7 +22,7 @@
 #include <gtk/gtk.h>
 #include <gtk/gtkwidget.h>
 #include <sys/types.h>
-#include <util/gailmisc.h>
+#include <libgail-util/gailmisc.h>
 #include <atk/atkobject.h>
 
 #include "accessibledrawingarea.h"

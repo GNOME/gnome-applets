@@ -21,7 +21,7 @@
 #define __ACCESSIBLE_DRAWING_AREA_H__
 
 #include <gtk/gtkaccessible.h>
-#include <util/gailtextutil.h>
+#include <libgail-util/gailtextutil.h>
 
 #ifdef __cplusplus
 extern "C" {
