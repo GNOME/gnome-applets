@@ -32,12 +32,6 @@ stickynotes_applet_SOURCES = \
 stickynotes_applet_LDADD = \
 	$(GNOME_APPLETS_LIBS)
 
-docdir = ${prefix}/doc/stickynotes
-doc_DATA = \
-	README \
-	TODO \
-	ChangeLog
-
 gladedir = $(datadir)/stickynotes
 glade_DATA = stickynotes_applet.glade
 
@@ -65,7 +59,6 @@ $(server_in_files): $(server_in_files:.server.in=.server.in.in)
 @INTLTOOL_SERVER_RULE@
 
 EXTRA_DIST = \
-	     $(doc_DATA) \
 	     $(glade_DATA) \
 	     $(xml_in_files) \
 	     $(schemas_in_files) \
