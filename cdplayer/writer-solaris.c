@@ -13,8 +13,8 @@ static void audio_get_info(cdda_t *, audio_info_t *);
 static void audio_set_info(cdda_t *, audio_info_t *);
 static void audio_flush(cdda_t *);
 static void audio_drain(cdda_t *);
-static void audio_open(cdda_t *);
-static void audio_close(cdda_t *);
+static void cdda_audio_open(cdda_t *);
+static void cdda_audio_close(cdda_t *);
 static void audio_config(cdda_t *);
 static int audio_supports_analog(cdda_t *);
 static void audio_write_chunk(cdda_t *, char *);
@@ -137,7 +137,7 @@ audio_drain(cdda_t *cdda)
 
 
 /*
- * audio_open()
+ * cdda_audio_open()
  *
  * Description:
  *	Opens the audio device.
@@ -149,7 +149,7 @@ audio_drain(cdda_t *cdda)
  *	void
  */
 static void
-audio_open(cdda_t *cdda)
+cdda_audio_open(cdda_t *cdda)
 {
 	/* Return if already open */
 	if (cdda->audio >= 0) {
@@ -161,11 +161,11 @@ audio_open(cdda_t *cdda)
 		perror("open()");
 	}
 
-} /* audio_open() */
+} /* cdda_audio_open() */
 
 
 /*
- * audio_close()
+ * cdda_audio_close()
  *
  * Description:
  *	Closes the audio device.
@@ -177,7 +177,7 @@ audio_open(cdda_t *cdda)
  *	void
  */
 static void
-audio_close(cdda_t *cdda)
+cdda_audio_close(cdda_t *cdda)
 {
 	/* Return if already closed */
 	if (cdda->audio < 0) {
@@ -191,7 +191,7 @@ audio_close(cdda_t *cdda)
 		cdda->audio = -1;
 	}
 
-} /* audio_close() */
+} /* cdda_audio_close() */
 
 
 /*
@@ -447,7 +447,7 @@ audio_stop(cdda_t *cdda)
 	audio_flush(cdda);
 
 	/* Close the device */
-	audio_close(cdda);
+	cdda_audio_close(cdda);
 
 } /* audio_stop() */
 
@@ -493,7 +493,7 @@ audio_write(void *in_cdda)
 				(cdda->state == CDDA_COMPLETED)) {
 			audio_drain(cdda);
 			cdda->state = CDDA_STOPPED;
-			audio_close(cdda);
+			cdda_audio_close(cdda);
 			(void) pthread_mutex_unlock(&cdda->cdb.mutex);
 			break;
 		}
@@ -623,7 +623,7 @@ audio_start(cdda_t *cdda, int start_lba, int end_lba)
 	cdda->cdb.nextout = 0;
 
 	/* Open the audio device */
-	audio_open(cdda);
+	cdda_audio_open(cdda);
 
 	/* Configure for CD audio */
 	audio_config(cdda);
@@ -723,12 +723,12 @@ cdda_check(void **in_cdda, int cdrom)
 	cdda->cdrom = cdrom;
 
 	/* Open the device */
-	audio_open(cdda);
+	cdda_audio_open(cdda);
 
 	/* Check for analog support */
 	if (audio_supports_analog(cdda)) {
 		/* Clean up */
-		audio_close(cdda);
+		cdda_audio_close(cdda);
 		free(cdda->audio_device);
 		free(cdda);
 		*in_cdda = NULL;
@@ -739,7 +739,7 @@ cdda_check(void **in_cdda, int cdrom)
 	 * Analog playback is not supported so we can go ahead
 	 * and initialise the cdda structure.
 	 */
-	audio_close(cdda);
+	cdda_audio_close(cdda);
 	cdda_init(cdda);
 	*in_cdda = cdda;
 
