@@ -294,7 +294,11 @@ static AppData *create_new_app(GtkWidget *applet)
 	g_free(buf);
 
 	ad->orient = ORIENT_UP;
+#ifdef HAVE_PANEL_PIXEL_SIZE
+	ad->sizehint = applet_widget_get_panel_pixel_size(APPLET_WIDGET(ad->applet));
+#else
 	ad->sizehint = 48;
+#endif
 	ad->width_hint = 200;
 
 	ad->win_width = 200;
