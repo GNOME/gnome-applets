@@ -558,7 +558,10 @@ wireless_applet_about_cb (BonoboUIComponent *uic, WirelessApplet *applet)
 		NULL
 	};
 
-	const gchar *documenters[] = { NULL };
+	const gchar *documenters[] = { 
+                 "Sun GNOME Documentation Team <gdocteam@sun.com>",
+ 	        NULL 
+         };	
 
 	const gchar *translator_credits = _("translator_credits");
 

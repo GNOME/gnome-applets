@@ -593,7 +593,9 @@ about_cb (BonoboUIComponent *component,
 
     const gchar *documenters[] =
     {
-	    NULL
+        "Chris Lyttle <chris@wilddev.net>",
+	"Sun GNOME Documentation Team <gdocteam@sun.com>",
+	NULL
     };
 
     const gchar *translator_credits = _("translator_credits");

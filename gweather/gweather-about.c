@@ -38,6 +38,9 @@ void gweather_about_run (GWeatherApplet *gw_applet)
     };
 
     const gchar *documenters[] = {
+        "Dan Mueth <d-mueth@uchicago.edu>",
+        "Spiros Papadimitriou <spapadim+@cs.cmu.edu>",
+	"Sun GNOME Documentation Team <gdocteam@sun.com>",
 	NULL
     };
 

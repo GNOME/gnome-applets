@@ -195,6 +195,7 @@ void menu_about_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gcha
 
 	static const gchar *documenters[] = {
 		"Loban A Rahman <loban@earthling.net>",
+		"Sun GNOME Documentation Team <gdocteam@sun.com>",
 		NULL
 	};
 

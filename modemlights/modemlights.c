@@ -108,6 +108,7 @@ static void about_cb (BonoboUIComponent *uic,
 	};
 
 	const gchar *documenters[] = {
+	        "Chee Bin HOH <cbhoh@gnome.org>",
 		NULL
 	};
 

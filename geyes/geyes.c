@@ -221,6 +221,9 @@ about_cb (BonoboUIComponent *uic,
 	};
 
 	const gchar *documenters[] = {
+                "Arjan Scherpenisse <acscherp@wins.uva.nl>",
+                "Telsa Gwynne <hobbit@aloss.ukuu.org.uk>",
+                "Sun GNOME Documentation Team <gdocteam@sun.com>",
 		NULL
 	};
 

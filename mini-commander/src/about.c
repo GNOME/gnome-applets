@@ -41,6 +41,9 @@ void about_box (BonoboUIComponent *uic,
 	};
 
 	const gchar *documenters[] = {
+	        "Dan Mueth <d-mueth@uchicago.edu>",
+                "Oliver Maruhn <oliver@maruhn.com>",
+                "Sun GNOME Documentation Team <gdocteam@sun.com>",
 		NULL
 	};
 

@@ -545,6 +545,8 @@ about (BonoboUIComponent *uic,
   };
 
   const gchar *documenters[] = {
+          "Dan Mueth <d-mueth@uchicago.edu>",
+          "Sun GNOME Documentation Team <gdocteam@sun.com>",
 	  NULL
   };
 

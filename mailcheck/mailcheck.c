@@ -1069,6 +1069,7 @@ after_mail_check (MailCheck *mc)
 {
 	static const char *supinfo[] = {"mailcheck", "new-mail", NULL};
 	char *text;
+	char *plural1, *plural2;
 
 	if (mc->anymail){
 		if(mc->mailbox_type == MAILBOX_LOCAL) {
@@ -1078,10 +1079,21 @@ after_mail_check (MailCheck *mc)
 				text = g_strdup(_("You have mail."));
 		}
 		else {
-			if(mc->unreadmail)
-				text = g_strdup_printf(_("%d unread/ %d messages"), mc->unreadmail, mc->totalmail);
+			if (mc->unreadmail) {
+				plural1 = g_strdup(ngettext ("%d unread", "%d unread",  mc->unreadmail));
+				plural2 = g_strdup(ngettext ("%d message", "%d messages", mc->totalmail));
+
+				/* translators: this is of the form "%d unread/%d messages" */
+				text = g_strdup_printf(_("%s/%s"), plural1, plural2);
+
+				g_free (plural1);
+				g_free (plural2);
+			}
 			else
-				text = g_strdup_printf(_("%d messages"), mc->totalmail);
+				text = g_strdup_printf(ngettext ("%d message",
+								 "%d messages",
+								 mc->totalmail),
+						       mc->totalmail);
 		} 
 	}
 	else
@@ -2430,7 +2442,10 @@ mailcheck_about(BonoboUIComponent *uic, MailCheck *mc, const gchar *verbname)
 		NULL
 	};
 	const char *documenters [] = {
-	  NULL
+		"Eric Baudais <baudais@okstate.edu>",
+		"Telsa Gwynne <telsa@linuxchix.org>",
+                "Sun GNOME Documentation Team <gdocteam@sun.com>",
+	        NULL
 	};
 	const char *translator_credits = _("translator_credits");
 

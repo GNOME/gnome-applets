@@ -770,6 +770,7 @@ static gint updateOutput(gpointer data)
 		};
 		
 		const gchar *documenters[] = {
+		        "Sun GNOME Documentation Team <gdocteam@sun.com>",
 			NULL
 		};
 

@@ -881,6 +881,8 @@ about_cb (BonoboUIComponent *uic,
    };
 
    const gchar *documenters[] = {
+        "Jorgen Pehrson <jp@spektr.eu.org>",
+        "Trevor Curtis <tcurtis@somaradio.ca>",
 	NULL
    };
 

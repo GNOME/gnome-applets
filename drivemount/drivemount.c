@@ -538,6 +538,8 @@ about_cb (BonoboUIComponent *uic,
 	};
 
 	const gchar *documenters[] = {
+	        "Dan Mueth <muet@alumni.uchicago.edu>",
+                "John Fleck <jfleck@inkstain.net>",
 		NULL
 	};
 
