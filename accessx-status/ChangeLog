@@ -1,3 +1,15 @@
+2004-02-24  Bill Haneman <billh@gnome.org>
+
+	* applet.c:  Fixes for bug #135292.
+	(accessx_status_applet_init_modifiers):
+	Detect ISO group/level modifiers as well as
+	"old fashioned" XK_Mode_Switch modifier.
+	(accessx_status_applet_get_glyph_pixbuf):
+	Fixed to work properly with white-on-black.
+	(accessx_status_applet_get_icon_set): Fixed to 
+	work correctly for SELECTED state (corresponding to 
+	LOCKED AltGr modifier).
+
 2004-02-23  Dennis Smit  <ds@nerds-incorporated.org>
 
 	* applet.c (about_cb):
