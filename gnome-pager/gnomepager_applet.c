@@ -1412,7 +1412,7 @@ main(int argc, char *argv[])
   /*this really loads the correct data*/
   gnome_config_push_prefix(APPLET_WIDGET(applet)->privcfgpath);
   config.pager_rows = gnome_config_get_int("stuff/pager_rows=2");
-  config.pager_size = gnome_config_get_int("stuff/pager_size=0");
+  config.pager_size = gnome_config_get_int("stuff/pager_size=1");
   config.tasks_all = gnome_config_get_int("stuff/tasks_all=0");
   config.task_rows_h = gnome_config_get_int("stuff/task_rows_h=2");
   config.task_rows_v = gnome_config_get_int("stuff/task_rows_v=1");
