@@ -142,7 +142,7 @@ static const BonoboUIVerb menu_verbs[] = {
   BONOBO_UI_VERB_END
 };
 
-GType
+static GType
 modem_applet_get_type (void)
 {
   static GType type = 0;
