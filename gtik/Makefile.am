@@ -12,7 +12,7 @@ gtik_applet_LDADD = 	$(GNOME_LIBDIR) \
 			$(GHTTP_LIB)
 
 EXTRA_DIST = \
-	gtik_applet.desktop gtik_applet.gnorba README AUTHORS
+	gtik_applet.desktop gtik_applet.gnorba README AUTHORS ChangeLog
 
 sysdir = $(datadir)/applets/Network
 sys_DATA = gtik_applet.desktop
