@@ -31,7 +31,7 @@ static char *bat_pixmap_filename;
 
 static GtkWidget *window;
 static GtkWidget *batcharge;
-Static GtkWidget *statlabel;
+static GtkWidget *statlabel;
 static GtkWidget *minlabel;
 
 /* On Linux we also show the APM driver version number and the
