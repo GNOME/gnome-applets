@@ -315,11 +315,31 @@ focus_out_cb (GtkWidget *widget, GdkEventFocus *event, gpointer data)
 }
 
 static void
+set_default_device (GtkButton *button, gpointer data)
+{
+    CDPlayerData *cd = data;
+    GtkWidget *entry = g_object_get_data (G_OBJECT (button), "entry");
+    
+    if (!strcmp(cd->devpath, DEV_PATH))
+    	return;
+    	
+    cd_close(cd);
+    if (cd->devpath)
+        g_free(cd->devpath);
+    cd->devpath = g_strdup(DEV_PATH);
+    cd_try_open(cd);
+    gtk_entry_set_text (GTK_ENTRY (entry), cd->devpath);
+    cdplayer_save_config(cd);  
+}
+    
+
+static void
 properties_cb (GtkWidget *w, gpointer data)
 {
     CDPlayerData *cd;
     GtkWidget *dialog;
     GtkWidget *box;
+    GtkWidget *button;
     GtkWidget *hbox;
     GtkWidget *label;
     GtkWidget *image;
@@ -333,12 +353,13 @@ properties_cb (GtkWidget *w, gpointer data)
                                          GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
                                          NULL);
     box = GTK_DIALOG(dialog)->vbox;
-
+    
     hbox = gtk_hbox_new(FALSE, 0);
+    gtk_container_set_border_width (GTK_CONTAINER (hbox), GNOME_PAD);
     gtk_box_pack_start(GTK_BOX(box), hbox, TRUE, TRUE, 0);
     gtk_widget_show(hbox);
 
-    image = gtk_image_new_from_stock(GTK_STOCK_CDROM, GTK_ICON_SIZE_DIALOG);
+    image = gtk_image_new_from_stock(GTK_STOCK_CDROM, GTK_ICON_SIZE_BUTTON);
     gtk_box_pack_start(GTK_BOX(hbox), image, FALSE, FALSE, 10);
     gtk_widget_show(image);
     set_atk_name_description(image, _("Disc Image"), _("An image of a cd-rom disc"));
@@ -349,15 +370,23 @@ properties_cb (GtkWidget *w, gpointer data)
     gtk_widget_show(label);
 
     entry = gtk_entry_new();
-    gtk_box_pack_start(GTK_BOX(hbox), entry, TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(hbox), entry, TRUE, TRUE, 4);
     gtk_widget_show(entry);
     gtk_entry_set_text(GTK_ENTRY(entry), cd->devpath);
     set_atk_name_description(entry, _("Device Path"), _("Set the device path here"));
     set_atk_relation(label, entry);
+    
+    button = gtk_button_new_with_mnemonic (_("Use _Default"));
+    gtk_box_pack_start (GTK_BOX(hbox), button, FALSE, FALSE, 0);
+    g_object_set_data (G_OBJECT (button), "entry", entry);
+    gtk_widget_show (button);
+    
     g_signal_connect (G_OBJECT (entry), "activate",
     		      G_CALLBACK (activate_cb), cd);
     g_signal_connect (G_OBJECT (entry), "focus_out_event",
     		      G_CALLBACK (focus_out_cb), cd);
+    g_signal_connect (G_OBJECT (button), "clicked",
+    		      G_CALLBACK (set_default_device), cd);
     
     g_signal_connect (G_OBJECT (dialog), "response",
     		      G_CALLBACK (response_cb), NULL);
