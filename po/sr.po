@@ -8,8 +8,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 2.4\n"
-"POT-Creation-Date: 2003-07-26 17:32+0200\n"
-"PO-Revision-Date: 2003-07-26 16:54+0200\n"
+"POT-Creation-Date: 2003-08-08 17:04+0200\n"
+"PO-Revision-Date: 2003-08-08 17:03+0200\n"
 "Last-Translator: Данило Шеган <danilo@prevod.org>\n"
 "Language-Team: Serbian (sr) <serbiangnome-lista@nongnu.org>\n"
 "MIME-Version: 1.0\n"
@@ -84,7 +84,7 @@ msgstr "Помоћни алати"
 #: mini-commander/src/about.c:48 mixer/mixer.c:1060
 #: modemlights/modemlights.c:115 multiload/main.c:57
 #: stickynotes/stickynotes_applet_callbacks.c:178
-#: wireless/wireless-applet.c:709
+#: wireless/wireless-applet.c:532
 msgid "translator_credits"
 msgstr ""
 "Данило Шеган <danilo@prevod.org>\n"
@@ -3526,6 +3526,34 @@ msgid "Memory Load"
 msgstr "Оптерећење меморије"
 
 #: multiload/multiload.schemas.in.h:1
+msgid "Applet refresh rate in milliseconds"
+msgstr "Брзина освежавања програмчета у милисекундама"
+
+#: multiload/multiload.schemas.in.h:2
+msgid "CPU graph background color"
+msgstr "Боја позадине за график процесора"
+
+#: multiload/multiload.schemas.in.h:3
+msgid "Enable CPU load graph"
+msgstr "Прикажи график оптерећења процесора"
+
+#: multiload/multiload.schemas.in.h:4
+msgid "Enable load average graph"
+msgstr "Прикажи график просечног оптерећења"
+
+#: multiload/multiload.schemas.in.h:5
+msgid "Enable memory load graph"
+msgstr "Прикажи график заузећа меморије"
+
+#: multiload/multiload.schemas.in.h:6
+msgid "Enable network load graph"
+msgstr "Прикажи график оптерећења мреже"
+
+#: multiload/multiload.schemas.in.h:7
+msgid "Enable swap load graph"
+msgstr "Прикажи график заузећа замене за меморију"
+
+#: multiload/multiload.schemas.in.h:8
 msgid ""
 "For horizontal panels, the width of the graphs in pixels. For vertical "
 "panels, this is the height of the graphs."
@@ -3533,109 +3561,77 @@ msgstr ""
 "За водоравне панеле, ширина графика у тачкама. За усправне панеле, ово је "
 "висина графика."
 
-#: multiload/multiload.schemas.in.h:2
+#: multiload/multiload.schemas.in.h:9
+msgid "Graph color for Ethernet network activity"
+msgstr "Боја графика за праћење Етернет активности у мрежи."
+
+#: multiload/multiload.schemas.in.h:10
+msgid "Graph color for PLIP network activity"
+msgstr "Боја графика за праћење PLIP активности у мрежи."
+
+#: multiload/multiload.schemas.in.h:11
+msgid "Graph color for SLIP network activity"
+msgstr "Боја графика за праћење SLIP активности у мрежи."
+
+#: multiload/multiload.schemas.in.h:12
+msgid "Graph color for buffer memory"
+msgstr "Боја графика за баферисану меморију."
+
+#: multiload/multiload.schemas.in.h:13
+msgid "Graph color for cached memory"
+msgstr "Боја графика за кеш меморију."
+
+#: multiload/multiload.schemas.in.h:14
+msgid "Graph color for load average"
+msgstr "Боја графика за просечно оптерећење."
+
+#: multiload/multiload.schemas.in.h:15
+msgid "Graph color for nice-related CPU activity"
+msgstr "Боја графика за активности процесора са мањим приоритетом."
+
+#: multiload/multiload.schemas.in.h:16
+msgid "Graph color for other network usage"
+msgstr "Боја графика за праћење Етернет активности у мрежи."
+
+#: multiload/multiload.schemas.in.h:17
+msgid "Graph color for shared memory"
+msgstr "Боја графика за дељену меморију."
+
+#: multiload/multiload.schemas.in.h:18
+msgid "Graph color for system-related CPU activity"
+msgstr "Боја графика за системске активности процесора."
+
+#: multiload/multiload.schemas.in.h:19
+msgid "Graph color for user-related CPU activity"
+msgstr "Боја графика за корисничке активности процесора."
+
+#: multiload/multiload.schemas.in.h:20
+msgid "Graph color for user-related memory usage"
+msgstr "Боја графика за корисничку употребу меморије."
+
+#: multiload/multiload.schemas.in.h:21
+msgid "Graph color for user-related swap usage"
+msgstr "Боја графика за корисничку употребу замене за меморије."
+
+#: multiload/multiload.schemas.in.h:22
 msgid "Graph size"
 msgstr "Величина графика"
 
-#: multiload/multiload.schemas.in.h:3
+#: multiload/multiload.schemas.in.h:23
+msgid "Load graph background color"
+msgstr "Боја позадине за праћење оптерећења"
+
+#: multiload/multiload.schemas.in.h:24
+msgid "Memory graph background color"
+msgstr "Боја позадине за праћење меморије"
+
+#: multiload/multiload.schemas.in.h:25
 msgid "Network graph background color"
 msgstr "Боја позадине за праћење мреже"
 
-#: multiload/multiload.schemas.in.h:4
-msgid "Network other usage"
-msgstr "Остала употреба мреже"
-
-#: multiload/multiload.schemas.in.h:5
-msgid "The cpu graph background color."
-msgstr "Боја позадине за праћење процесора."
-
-#: multiload/multiload.schemas.in.h:6
-msgid "The load graph background color."
-msgstr "Боја позадине за праћење оптерећења."
-
-#: multiload/multiload.schemas.in.h:7
-msgid "The memory graph background color."
-msgstr "Боја позадине за праћење меморије."
-
-#: multiload/multiload.schemas.in.h:8
-msgid "The swap graph background color."
-msgstr "Боја позадине за праћење замене за меморију."
-
-#: multiload/multiload.schemas.in.h:9
-msgid "enable the cpuload graph in multiload."
-msgstr "укључи праћење процесора при вишеструком праћењу."
-
-#: multiload/multiload.schemas.in.h:10
-msgid "enable the loadavg graph in multiload."
-msgstr "укључи средње оптерећење при вишеструком праћењу."
-
-#: multiload/multiload.schemas.in.h:11
-msgid "enable the memload graph in multiload."
-msgstr "укључи праћење меморије при вишеструком праћењу."
-
-#: multiload/multiload.schemas.in.h:12
-msgid "enable the netload graph in multiload."
-msgstr "укључи праћење мреже при вишеструком праћењу."
-
-#: multiload/multiload.schemas.in.h:13
-msgid "enable the swapload graph in multiload."
-msgstr "укључи праћење замене за меморију при вишеструком праћењу."
-
-#: multiload/multiload.schemas.in.h:14
-msgid "the graph color for Ethernet network activity."
-msgstr "боја графика за праћење Етернет активности у мрежи."
-
-#: multiload/multiload.schemas.in.h:15
-msgid "the graph color for PLIP network activity."
-msgstr "боја графика за праћење PLIP активности у мрежи."
-
-#: multiload/multiload.schemas.in.h:16
-msgid "the graph color for SLIP network activity."
-msgstr "боја графика за праћење SLIP активности у мрежи."
-
-#: multiload/multiload.schemas.in.h:17
-msgid "the graph color for buffer memory."
-msgstr "боја графика за баферисану меморију."
-
-#: multiload/multiload.schemas.in.h:18
-msgid "the graph color for cached memory."
-msgstr "боја графика за кеш меморију."
-
-#: multiload/multiload.schemas.in.h:19
-msgid "the graph color for load average."
-msgstr "боја графика за просечно оптерећење."
-
-#: multiload/multiload.schemas.in.h:20
-msgid "the graph color for nice-related cpu activity."
-msgstr "боја графика за активности процесора са мањим приоритетом."
-
-#: multiload/multiload.schemas.in.h:21
-msgid "the graph color for shared memory."
-msgstr "боја графика за дељену меморију."
-
-#: multiload/multiload.schemas.in.h:22
-msgid "the graph color for system-related cpu activity."
-msgstr "боја графика за системске активности процесора."
-
-#: multiload/multiload.schemas.in.h:23
-msgid "the graph color for user-related cpu activity."
-msgstr "боја графика за корисничке активности процесора."
-
-#: multiload/multiload.schemas.in.h:24
-msgid "the graph color for user-related memory usage."
-msgstr "боја графика за корисничку употребу меморије."
-
-#: multiload/multiload.schemas.in.h:25
-msgid "the graph color for user-related swap usage."
-msgstr "боја графика за корисничку употребу замене за меморије."
-
 #: multiload/multiload.schemas.in.h:26
-msgid "the refresh rate of the applets in milliseconds"
-msgstr "брзина освежавања програмчета у милисекундама"
-
-#: multiload/multiload.schemas.in.h:27
-msgid "the refresh rate of the applets in milliseconds."
-msgstr "брзина освежавања програмчета у милисекундама."
+msgid "Swap graph background color"
+msgstr "Боја позадине за праћење замене за меморију"
 
 # bug: Ili je ovo "net" kao "ukupno"?
 #: multiload/netload.c:49
@@ -4159,23 +4155,15 @@ msgid "Monitor the quality of a wireless network link"
 msgstr "Праћење квалитета бежичне мрежне везе"
 
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:3
-#: wireless/wireless-applet.c:724
+#: wireless/wireless-applet.c:547
 msgid "Wireless Link Monitor"
 msgstr "Праћење бежичне везе"
 
-#: wireless/wireless-applet.c:351
-msgid ""
-"The images necessary to run the wireless monitor are missing.\n"
-"Please make sure that it is correctly installed."
-msgstr ""
-"Слике неопходне за покретање праћења бежичне везе недостају.\n"
-"Проверите да су исправно постављене на систем."
-
-#: wireless/wireless-applet.c:532 wireless/wireless-applet.c:669
+#: wireless/wireless-applet.c:355 wireless/wireless-applet.c:492
 msgid "No Wireless Devices"
 msgstr "Нема бежичних уређаја"
 
-#: wireless/wireless-applet.c:534
+#: wireless/wireless-applet.c:357
 msgid ""
 "There doesn't seem to be any wireless devices configured on your system.\n"
 "Please verify your configuration if you think this is incorrect."
@@ -4183,11 +4171,11 @@ msgstr ""
 "Чини се да нема ниједног подешеног бежичног уређаја на вашем систему.\n"
 "Проверите ваша подешавања уколико ово сматрате нетачним."
 
-#: wireless/wireless-applet.c:726
+#: wireless/wireless-applet.c:549
 msgid "(C) 2001, 2002 Free Software Foundation "
 msgstr "©2001, 2002 — Задужбина за Слободни Софтвер"
 
-#: wireless/wireless-applet.c:727
+#: wireless/wireless-applet.c:550
 msgid "This utility shows the status of a wireless link."
 msgstr "Ова алатка приказује стање бежичне везе"
 
@@ -4203,6 +4191,34 @@ msgstr "Поставке праћења бежичне везе"
 #: wireless/wireless-applet.glade.h:3
 msgid "_Monitored device:"
 msgstr "_Праћени уређај:"
+
+#~ msgid "Network other usage"
+#~ msgstr "Остала употреба мреже"
+
+#~ msgid "The cpu graph background color."
+#~ msgstr "Боја позадине за праћење процесора."
+
+#~ msgid "enable the cpuload graph in multiload."
+#~ msgstr "укључи праћење процесора при вишеструком праћењу."
+
+#~ msgid "enable the loadavg graph in multiload."
+#~ msgstr "укључи средње оптерећење при вишеструком праћењу."
+
+#~ msgid "enable the memload graph in multiload."
+#~ msgstr "укључи праћење меморије при вишеструком праћењу."
+
+#~ msgid "enable the netload graph in multiload."
+#~ msgstr "укључи праћење мреже при вишеструком праћењу."
+
+#~ msgid "the refresh rate of the applets in milliseconds."
+#~ msgstr "брзина освежавања програмчета у милисекундама."
+
+#~ msgid ""
+#~ "The images necessary to run the wireless monitor are missing.\n"
+#~ "Please make sure that it is correctly installed."
+#~ msgstr ""
+#~ "Слике неопходне за покретање праћења бежичне везе недостају.\n"
+#~ "Проверите да су исправно постављене на систем."
 
 #~ msgid "Beep?"
 #~ msgstr "Свирај?"

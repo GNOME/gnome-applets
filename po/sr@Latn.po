@@ -8,8 +8,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 2.4\n"
-"POT-Creation-Date: 2003-07-26 17:33+0200\n"
-"PO-Revision-Date: 2003-07-26 16:54+0200\n"
+"POT-Creation-Date: 2003-08-08 17:04+0200\n"
+"PO-Revision-Date: 2003-08-08 17:03+0200\n"
 "Last-Translator: Danilo Šegan <danilo@prevod.org>\n"
 "Language-Team: Serbian (sr) <serbiangnome-lista@nongnu.org>\n"
 "MIME-Version: 1.0\n"
@@ -84,7 +84,7 @@ msgstr "Pomoćni alati"
 #: mini-commander/src/about.c:48 mixer/mixer.c:1060
 #: modemlights/modemlights.c:115 multiload/main.c:57
 #: stickynotes/stickynotes_applet_callbacks.c:178
-#: wireless/wireless-applet.c:709
+#: wireless/wireless-applet.c:532
 msgid "translator_credits"
 msgstr ""
 "Danilo Šegan <danilo@prevod.org>\n"
@@ -398,8 +398,8 @@ msgid ""
 "\"%d\"\n"
 "Please try to correct this error"
 msgstr ""
-"Došlo je do greške pri pokretanju naredbe za suspenziju. Naredba je vratila "
-"„%d“\n"
+"Došlo je do greške pri pokretanju naredbe za suspenziju. Naredba je vratila „%"
+"d“\n"
 "Pokušajte da ispravite ovu grešku"
 
 #: battstat/battstat_applet.c:798
@@ -756,8 +756,8 @@ msgid ""
 "The string that the user had selected when the applet was last used. This "
 "string will be displayed when the user starts the applet."
 msgstr ""
-"Niska koju je izabrao korisnik pri poslednjoj upotrebi programčeta. Ova "
-"niska će biti prikazana kada korisnik pokrene programče."
+"Niska koju je izabrao korisnik pri poslednjoj upotrebi programčeta. Ova niska "
+"će biti prikazana kada korisnik pokrene programče."
 
 #: charpick/properties.c:88
 msgid "_Palette:"
@@ -1049,8 +1049,8 @@ msgid ""
 "Shooby Ban <shooby@gnome.hu>"
 msgstr ""
 "Ovo programče menja mape tastatura pomoću setxkbmap-a ili xmodmap-a.\n"
-"Pošaljite vašu zastavu i mapu tasture ako želite podršku za vaš jezik (moja "
-"e-adresa je shooby@gnome.hu).\n"
+"Pošaljite vašu zastavu i mapu tasture ako želite podršku za vaš jezik (moja e-"
+"adresa je shooby@gnome.hu).\n"
 "Zbogom, i hvala na svoj ribi.\n"
 "Hvala Balašu Nagiju (Kevin) <julian7@iksz.hu> za njegovu pomoć i Emeze Kovač "
 "<emese@gnome.hu> za njenu solidarnost, i pomoć od onih kao što je KevinV.\n"
@@ -1328,8 +1328,8 @@ msgid ""
 msgstr ""
 "Ovaj program se povezuje na popularnu stranicu i preuzima trenutno stanje "
 "akcija na berzi.  GNOME Praćenje berze je slobodan program zasnovan na "
-"Internetu.  Nema nikakvu garanciju. Ne koristite Praćenje berze za "
-"pravljenje odluka o ulaganju; namena mu je samo obaveštajne prirode."
+"Internetu.  Nema nikakvu garanciju. Ne koristite Praćenje berze za pravljenje "
+"odluka o ulaganju; namena mu je samo obaveštajne prirode."
 
 #: gtik/gtik.c:1278
 msgid "Current _stocks:"
@@ -1737,8 +1737,8 @@ msgid ""
 "only for US cities."
 msgstr ""
 "Državna prognoza nije dostupna za ovo mesto.\n"
-"Molim probajte detaljnu prognozu; obratite pažnju na to da IWIN prognoze "
-"nisu dostupne van Amerike."
+"Molim probajte detaljnu prognozu; obratite pažnju na to da IWIN prognoze nisu "
+"dostupne van Amerike."
 
 #. Accessible Name and Description for the components in Preference Dialog
 #: gweather/gweather-pref.c:149
@@ -1816,8 +1816,8 @@ msgid ""
 "If true, then retreive a radar map from a location specified by the \"radar"
 "\" key."
 msgstr ""
-"Ukoliko je postavljeno, dovlači radarsku mapu sa adrese navedene pomoću "
-"ključa „radar“."
+"Ukoliko je postavljeno, dovlači radarsku mapu sa adrese navedene pomoću ključa "
+"„radar“."
 
 #: gweather/gweather.schemas.in.h:5
 #: mini-commander/src/mini-commander.schemas.in.h:14
@@ -2512,8 +2512,7 @@ msgstr "Postavke praćenja sandučeta"
 
 #: mailcheck/mailcheck.c:2450
 msgid "Inbox Monitor notifies you when new mail arrives in your mailbox"
-msgstr ""
-"Praćenje sandučeta vas obaveštava kada stigne nova pošta u vaše sanduče"
+msgstr "Praćenje sandučeta vas obaveštava kada stigne nova pošta u vaše sanduče"
 
 #: mailcheck/mailcheck.c:2776
 msgid "Text only"
@@ -3490,8 +3489,8 @@ msgid ""
 msgstr ""
 "Objavljeno pod Gnuovom Opštom javnom licencom.\n"
 "\n"
-"Praćenje opterećenja sistema omogućava prikaz grafika za procesor, memoriju, "
-"i memoriju na disku, a uz to i mrežni saobraćaj."
+"Praćenje opterećenja sistema omogućava prikaz grafika za procesor, memoriju, i "
+"memoriju na disku, a uz to i mrežni saobraćaj."
 
 #: multiload/main.c:272 multiload/properties.c:553
 msgid "Processor"
@@ -3527,6 +3526,34 @@ msgid "Memory Load"
 msgstr "Opterećenje memorije"
 
 #: multiload/multiload.schemas.in.h:1
+msgid "Applet refresh rate in milliseconds"
+msgstr "Brzina osvežavanja programčeta u milisekundama"
+
+#: multiload/multiload.schemas.in.h:2
+msgid "CPU graph background color"
+msgstr "Boja pozadine za grafik procesora"
+
+#: multiload/multiload.schemas.in.h:3
+msgid "Enable CPU load graph"
+msgstr "Prikaži grafik opterećenja procesora"
+
+#: multiload/multiload.schemas.in.h:4
+msgid "Enable load average graph"
+msgstr "Prikaži grafik prosečnog opterećenja"
+
+#: multiload/multiload.schemas.in.h:5
+msgid "Enable memory load graph"
+msgstr "Prikaži grafik zauzeća memorije"
+
+#: multiload/multiload.schemas.in.h:6
+msgid "Enable network load graph"
+msgstr "Prikaži grafik opterećenja mreže"
+
+#: multiload/multiload.schemas.in.h:7
+msgid "Enable swap load graph"
+msgstr "Prikaži grafik zauzeća zamene za memoriju"
+
+#: multiload/multiload.schemas.in.h:8
 msgid ""
 "For horizontal panels, the width of the graphs in pixels. For vertical "
 "panels, this is the height of the graphs."
@@ -3534,109 +3561,77 @@ msgstr ""
 "Za vodoravne panele, širina grafika u tačkama. Za uspravne panele, ovo je "
 "visina grafika."
 
-#: multiload/multiload.schemas.in.h:2
+#: multiload/multiload.schemas.in.h:9
+msgid "Graph color for Ethernet network activity"
+msgstr "Boja grafika za praćenje Eternet aktivnosti u mreži."
+
+#: multiload/multiload.schemas.in.h:10
+msgid "Graph color for PLIP network activity"
+msgstr "Boja grafika za praćenje PLIP aktivnosti u mreži."
+
+#: multiload/multiload.schemas.in.h:11
+msgid "Graph color for SLIP network activity"
+msgstr "Boja grafika za praćenje SLIP aktivnosti u mreži."
+
+#: multiload/multiload.schemas.in.h:12
+msgid "Graph color for buffer memory"
+msgstr "Boja grafika za baferisanu memoriju."
+
+#: multiload/multiload.schemas.in.h:13
+msgid "Graph color for cached memory"
+msgstr "Boja grafika za keš memoriju."
+
+#: multiload/multiload.schemas.in.h:14
+msgid "Graph color for load average"
+msgstr "Boja grafika za prosečno opterećenje."
+
+#: multiload/multiload.schemas.in.h:15
+msgid "Graph color for nice-related CPU activity"
+msgstr "Boja grafika za aktivnosti procesora sa manjim prioritetom."
+
+#: multiload/multiload.schemas.in.h:16
+msgid "Graph color for other network usage"
+msgstr "Boja grafika za praćenje Eternet aktivnosti u mreži."
+
+#: multiload/multiload.schemas.in.h:17
+msgid "Graph color for shared memory"
+msgstr "Boja grafika za deljenu memoriju."
+
+#: multiload/multiload.schemas.in.h:18
+msgid "Graph color for system-related CPU activity"
+msgstr "Boja grafika za sistemske aktivnosti procesora."
+
+#: multiload/multiload.schemas.in.h:19
+msgid "Graph color for user-related CPU activity"
+msgstr "Boja grafika za korisničke aktivnosti procesora."
+
+#: multiload/multiload.schemas.in.h:20
+msgid "Graph color for user-related memory usage"
+msgstr "Boja grafika za korisničku upotrebu memorije."
+
+#: multiload/multiload.schemas.in.h:21
+msgid "Graph color for user-related swap usage"
+msgstr "Boja grafika za korisničku upotrebu zamene za memorije."
+
+#: multiload/multiload.schemas.in.h:22
 msgid "Graph size"
 msgstr "Veličina grafika"
 
-#: multiload/multiload.schemas.in.h:3
+#: multiload/multiload.schemas.in.h:23
+msgid "Load graph background color"
+msgstr "Boja pozadine za praćenje opterećenja"
+
+#: multiload/multiload.schemas.in.h:24
+msgid "Memory graph background color"
+msgstr "Boja pozadine za praćenje memorije"
+
+#: multiload/multiload.schemas.in.h:25
 msgid "Network graph background color"
 msgstr "Boja pozadine za praćenje mreže"
 
-#: multiload/multiload.schemas.in.h:4
-msgid "Network other usage"
-msgstr "Ostala upotreba mreže"
-
-#: multiload/multiload.schemas.in.h:5
-msgid "The cpu graph background color."
-msgstr "Boja pozadine za praćenje procesora."
-
-#: multiload/multiload.schemas.in.h:6
-msgid "The load graph background color."
-msgstr "Boja pozadine za praćenje opterećenja."
-
-#: multiload/multiload.schemas.in.h:7
-msgid "The memory graph background color."
-msgstr "Boja pozadine za praćenje memorije."
-
-#: multiload/multiload.schemas.in.h:8
-msgid "The swap graph background color."
-msgstr "Boja pozadine za praćenje zamene za memoriju."
-
-#: multiload/multiload.schemas.in.h:9
-msgid "enable the cpuload graph in multiload."
-msgstr "uključi praćenje procesora pri višestrukom praćenju."
-
-#: multiload/multiload.schemas.in.h:10
-msgid "enable the loadavg graph in multiload."
-msgstr "uključi srednje opterećenje pri višestrukom praćenju."
-
-#: multiload/multiload.schemas.in.h:11
-msgid "enable the memload graph in multiload."
-msgstr "uključi praćenje memorije pri višestrukom praćenju."
-
-#: multiload/multiload.schemas.in.h:12
-msgid "enable the netload graph in multiload."
-msgstr "uključi praćenje mreže pri višestrukom praćenju."
-
-#: multiload/multiload.schemas.in.h:13
-msgid "enable the swapload graph in multiload."
-msgstr "uključi praćenje zamene za memoriju pri višestrukom praćenju."
-
-#: multiload/multiload.schemas.in.h:14
-msgid "the graph color for Ethernet network activity."
-msgstr "boja grafika za praćenje Eternet aktivnosti u mreži."
-
-#: multiload/multiload.schemas.in.h:15
-msgid "the graph color for PLIP network activity."
-msgstr "boja grafika za praćenje PLIP aktivnosti u mreži."
-
-#: multiload/multiload.schemas.in.h:16
-msgid "the graph color for SLIP network activity."
-msgstr "boja grafika za praćenje SLIP aktivnosti u mreži."
-
-#: multiload/multiload.schemas.in.h:17
-msgid "the graph color for buffer memory."
-msgstr "boja grafika za baferisanu memoriju."
-
-#: multiload/multiload.schemas.in.h:18
-msgid "the graph color for cached memory."
-msgstr "boja grafika za keš memoriju."
-
-#: multiload/multiload.schemas.in.h:19
-msgid "the graph color for load average."
-msgstr "boja grafika za prosečno opterećenje."
-
-#: multiload/multiload.schemas.in.h:20
-msgid "the graph color for nice-related cpu activity."
-msgstr "boja grafika za aktivnosti procesora sa manjim prioritetom."
-
-#: multiload/multiload.schemas.in.h:21
-msgid "the graph color for shared memory."
-msgstr "boja grafika za deljenu memoriju."
-
-#: multiload/multiload.schemas.in.h:22
-msgid "the graph color for system-related cpu activity."
-msgstr "boja grafika za sistemske aktivnosti procesora."
-
-#: multiload/multiload.schemas.in.h:23
-msgid "the graph color for user-related cpu activity."
-msgstr "boja grafika za korisničke aktivnosti procesora."
-
-#: multiload/multiload.schemas.in.h:24
-msgid "the graph color for user-related memory usage."
-msgstr "boja grafika za korisničku upotrebu memorije."
-
-#: multiload/multiload.schemas.in.h:25
-msgid "the graph color for user-related swap usage."
-msgstr "boja grafika za korisničku upotrebu zamene za memorije."
-
 #: multiload/multiload.schemas.in.h:26
-msgid "the refresh rate of the applets in milliseconds"
-msgstr "brzina osvežavanja programčeta u milisekundama"
-
-#: multiload/multiload.schemas.in.h:27
-msgid "the refresh rate of the applets in milliseconds."
-msgstr "brzina osvežavanja programčeta u milisekundama."
+msgid "Swap graph background color"
+msgstr "Boja pozadine za praćenje zamene za memoriju"
 
 # bug: Ili je ovo "net" kao "ukupno"?
 #: multiload/netload.c:49
@@ -4072,8 +4067,8 @@ msgid ""
 "If this option is enabled, the custom colors and fonts that have been "
 "assigned to individual notes will be ignored."
 msgstr ""
-"Ukoliko je ova opcija uključena, neće se koristiti podešavanja boja i "
-"fontova za pojedinačne beleške."
+"Ukoliko je ova opcija uključena, neće se koristiti podešavanja boja i fontova "
+"za pojedinačne beleške."
 
 #: stickynotes/stickynotes.schemas.in.h:18
 msgid ""
@@ -4160,23 +4155,15 @@ msgid "Monitor the quality of a wireless network link"
 msgstr "Praćenje kvaliteta bežične mrežne veze"
 
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:3
-#: wireless/wireless-applet.c:724
+#: wireless/wireless-applet.c:547
 msgid "Wireless Link Monitor"
 msgstr "Praćenje bežične veze"
 
-#: wireless/wireless-applet.c:351
-msgid ""
-"The images necessary to run the wireless monitor are missing.\n"
-"Please make sure that it is correctly installed."
-msgstr ""
-"Slike neophodne za pokretanje praćenja bežične veze nedostaju.\n"
-"Proverite da su ispravno postavljene na sistem."
-
-#: wireless/wireless-applet.c:532 wireless/wireless-applet.c:669
+#: wireless/wireless-applet.c:355 wireless/wireless-applet.c:492
 msgid "No Wireless Devices"
 msgstr "Nema bežičnih uređaja"
 
-#: wireless/wireless-applet.c:534
+#: wireless/wireless-applet.c:357
 msgid ""
 "There doesn't seem to be any wireless devices configured on your system.\n"
 "Please verify your configuration if you think this is incorrect."
@@ -4184,11 +4171,11 @@ msgstr ""
 "Čini se da nema nijednog podešenog bežičnog uređaja na vašem sistemu.\n"
 "Proverite vaša podešavanja ukoliko ovo smatrate netačnim."
 
-#: wireless/wireless-applet.c:726
+#: wireless/wireless-applet.c:549
 msgid "(C) 2001, 2002 Free Software Foundation "
 msgstr "©2001, 2002 — Zadužbina za Slobodni Softver"
 
-#: wireless/wireless-applet.c:727
+#: wireless/wireless-applet.c:550
 msgid "This utility shows the status of a wireless link."
 msgstr "Ova alatka prikazuje stanje bežične veze"
 
@@ -4204,6 +4191,34 @@ msgstr "Postavke praćenja bežične veze"
 #: wireless/wireless-applet.glade.h:3
 msgid "_Monitored device:"
 msgstr "_Praćeni uređaj:"
+
+#~ msgid "Network other usage"
+#~ msgstr "Ostala upotreba mreže"
+
+#~ msgid "The cpu graph background color."
+#~ msgstr "Boja pozadine za praćenje procesora."
+
+#~ msgid "enable the cpuload graph in multiload."
+#~ msgstr "uključi praćenje procesora pri višestrukom praćenju."
+
+#~ msgid "enable the loadavg graph in multiload."
+#~ msgstr "uključi srednje opterećenje pri višestrukom praćenju."
+
+#~ msgid "enable the memload graph in multiload."
+#~ msgstr "uključi praćenje memorije pri višestrukom praćenju."
+
+#~ msgid "enable the netload graph in multiload."
+#~ msgstr "uključi praćenje mreže pri višestrukom praćenju."
+
+#~ msgid "the refresh rate of the applets in milliseconds."
+#~ msgstr "brzina osvežavanja programčeta u milisekundama."
+
+#~ msgid ""
+#~ "The images necessary to run the wireless monitor are missing.\n"
+#~ "Please make sure that it is correctly installed."
+#~ msgstr ""
+#~ "Slike neophodne za pokretanje praćenja bežične veze nedostaju.\n"
+#~ "Proverite da su ispravno postavljene na sistem."
 
 #~ msgid "Beep?"
 #~ msgstr "Sviraj?"
