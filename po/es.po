@@ -16,8 +16,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-07-31 11:05+0200\n"
-"PO-Revision-Date: 2004-07-31 11:10+0200\n"
+"POT-Creation-Date: 2004-08-08 20:16+0200\n"
+"PO-Revision-Date: 2004-08-08 20:26+0200\n"
 "Last-Translator: Francisco Javier F. Serrador <serrador@cvs.gnome.org>\n"
 "Language-Team: Spanish <traductores@es.gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -89,7 +89,7 @@ msgstr "Muestra el estado de las características de accesibilidad del teclado"
 msgid "Utility"
 msgstr "Utilidades"
 
-#: accessx-status/applet.c:136 battstat/battstat_applet.c:996
+#: accessx-status/applet.c:136 battstat/battstat_applet.c:1058
 #: cdplayer/cdplayer.c:598 charpick/charpick.c:563 drivemount/drivemount.c:553
 #: geyes/geyes.c:202 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:608
 #: gtik/gtik.c:723 gweather/gweather-about.c:47 mailcheck/mailcheck.c:2470
@@ -161,7 +161,7 @@ msgstr "Muestra el estado actual de las características de accesibilidad del te
 
 #. The long name of the applet in the About dialog.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:1017 battstat/battstat_applet.c:1758
+#: battstat/battstat_applet.c:1079 battstat/battstat_applet.c:1840
 msgid "Battery Charge Monitor"
 msgstr "Monitor de carga batería"
 
@@ -170,7 +170,7 @@ msgid "Battstat Factory"
 msgstr "Fábrica para monitor de carga"
 
 #: battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: battstat/battstat_applet.c:1759
+#: battstat/battstat_applet.c:1841
 msgid "Monitor a laptop's remaining power"
 msgstr "Monitoriza la carga restante de un equipo portátil"
 
@@ -281,156 +281,177 @@ msgstr "¡Su plataforma no está soportada!\n"
 msgid "The applet will not work properly (if at all).\n"
 msgstr "La miniaplicación no funcionará adecuadamente (por completo).\n"
 
-#: battstat/battstat_applet.c:358
-msgid "charged"
-msgstr "cargado"
-
 #: battstat/battstat_applet.c:360
-msgid "..."
-msgstr "..."
-
-#: battstat/battstat_applet.c:362
 #, c-format
-msgid "%d hours %d minutes remaining"
-msgstr "quedan %d horas y %d minutos"
+msgid "%i minute"
+msgid_plural "%i minutes"
+msgstr[0] "%i minuto"
+msgstr[1] "%i minutos"
+
+#: battstat/battstat_applet.c:361
+#, c-format
+msgid "%i hour"
+msgid_plural "%i hours"
+msgstr[0] "%i hora"
+msgstr[1] "%i horas"
+
+#. Translation Note: as in "No time remaining" or "No time till charged"
+#: battstat/battstat_applet.c:365
+msgid "No time"
+msgstr "Sin tiempo"
+
+#. Translation Note: as in "Unknown time remaining" or "Unknown time till charged"
+#. Translation Note: as in "Unknown time remaining"
+#: battstat/battstat_applet.c:368 battstat/battstat_applet.c:1145
+msgid "Unknown time"
+msgstr "Tiempo desconocido"
+
+#. Translation note:
+#. * The %s:s are the "%i hour" and "%i minute" messages translated elsewhere respectively.
+#. * Swap the order with "%2$s %1$s" if needed.
+#: battstat/battstat_applet.c:386
+#, c-format
+msgid "%s %s"
+msgstr "%s:%s"
 
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:389 battstat/battstat_applet.c:1054
+#: battstat/battstat_applet.c:418 battstat/battstat_applet.c:1117
 msgid "High"
 msgstr "Alta"
 
 #. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:391 battstat/battstat_applet.c:1056
+#: battstat/battstat_applet.c:420 battstat/battstat_applet.c:1119
 msgid "Low"
 msgstr "Baja"
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:393 battstat/battstat_applet.c:1058
+#: battstat/battstat_applet.c:422 battstat/battstat_applet.c:1121
 msgid "Critical"
 msgstr "Crítica"
 
 #. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:395 battstat/battstat_applet.c:1060
+#: battstat/battstat_applet.c:424 battstat/battstat_applet.c:1123
 msgid "Charging"
 msgstr "Cargando"
 
-#: battstat/battstat_applet.c:482
+#: battstat/battstat_applet.c:515
 #, c-format
 msgid ""
-"Your battery is running low (%d%%, %s). You should recharge your battery to "
-"avoid losing your work."
-msgstr ""
-"Su batería se está agotando (%d%%, %s). Debería recargar su batería para "
-"evitar perder su trabajo."
+"%s (%d%%) remaining. To avoid losing work please power off, suspend or plug "
+"your laptop in."
+msgstr "%s (%d%%) restante. Para evitar perder su trabajo, apague, suspenda o enchufe su portátil."
 
-#: battstat/battstat_applet.c:485 battstat/battstat_applet.c:532
+#: battstat/battstat_applet.c:519
+msgid "Your battery is running low"
+msgstr "Su batería se está agotando"
+
+#: battstat/battstat_applet.c:524 battstat/battstat_applet.c:577
 msgid "Battery Notice"
 msgstr "Notificación de batería"
 
-#: battstat/battstat_applet.c:551
-msgid "Your battery is now fully recharged."
-msgstr "La batería está recargada al máximo."
+#: battstat/battstat_applet.c:597
+msgid "Your battery is now fully recharged"
+msgstr "Su batería está recargada completamente"
 
-#. 0 = Battery power
-#. This string will display as a tooltip over the status frame
-#. when the computer is using battery power and the battery meter
-#. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:595 battstat/battstat_applet.c:1211
+#. Translation note: %s is time in words (translated elsewhere)
+#: battstat/battstat_applet.c:651
 #, c-format
 msgid ""
 "System is running on battery power\n"
-"Battery: %d%% (%s)"
+"%s (%d%%) remaining"
 msgstr ""
-"El sistema está funcionando con baterías\n"
-"Batería: %d%% (%s)"
+"El sistema está funcionando con la batería\n"
+"Le quedan %s (%d%%)"
 
-#. 1 = AC power. I should really test it explicitly here.
-#. This string will display as a tooltip over the status frame
-#. when the computer is using AC power and the battery meter
-#. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:598 battstat/battstat_applet.c:1218
+#. Translation note: %s is time in words (translated elsewhere)
+#: battstat/battstat_applet.c:655
 #, c-format
 msgid ""
 "System is running on AC power\n"
-"Battery: %d%% (%s)"
+"%s (%d%%) till charged"
 msgstr ""
-"El sistema está funcionando con CA\n"
-"Batería: %d%% (%s)"
+"El sistema está funcionando con corriente alterna\n"
+"Faltan %s (%d%% ) hasta su recarga"
 
 #. 0 = Battery power
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:603 battstat/battstat_applet.c:1144
-#: battstat/battstat_applet.c:1231
+#: battstat/battstat_applet.c:661 battstat/battstat_applet.c:1211
+#: battstat/battstat_applet.c:1300
 msgid "System is running on battery power"
 msgstr "El sistema está funcionando con baterías"
 
 #. 1 = AC power. I should really test it explicitly here.
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:605 battstat/battstat_applet.c:1149
-#: battstat/battstat_applet.c:1236
+#: battstat/battstat_applet.c:663 battstat/battstat_applet.c:1216
+#: battstat/battstat_applet.c:1305
 msgid "System is running on AC power"
 msgstr "El sistema está funcionando con CA"
 
-#: battstat/battstat_applet.c:620 wireless/wireless-applet.c:148
+#: battstat/battstat_applet.c:678 wireless/wireless-applet.c:148
 #: wireless/wireless-applet.c:149
 msgid "N/A"
 msgstr "N/D"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
+#. Translation note: %s is time in words (translated elsewhere)
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:753 battstat/battstat_applet.c:1125
+#. Translation note: %s is time in words (translated elsewhere)
+#: battstat/battstat_applet.c:812 battstat/battstat_applet.c:1190
 #, c-format
-msgid "System is running on battery power. Battery: %d%% (%s)"
-msgstr "El sistema está funcionando con baterías. Batería: %d%% (%s)"
+msgid "System is running on battery power. %s (%d%%) remaining."
+msgstr "El sistema está funcionando con baterías. Queda %s (%d%%)."
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
+#. Translation note: %s is time in words (translated elsewhere)
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:758 battstat/battstat_applet.c:1131
+#. Translation note: %s is time in words (translated elsewhere)
+#: battstat/battstat_applet.c:818 battstat/battstat_applet.c:1197
 #, c-format
-msgid "System is running on AC power. Battery: %d%% (%s)"
-msgstr "El sistema está funcionando con CA. Batería: %d%% (%s)"
+msgid "System is running on AC power. %s (%d%%) till charged."
+msgstr "El sistema está funcionando con CA. Faltan %s (%d%%) para que se cargue."
 
 #. This string will display as a tooltip over the
 #. battery frame when the computer is using battery
 #. power and the battery isn't present. Not a
 #. possible combination, I guess... :)
-#: battstat/battstat_applet.c:767
-msgid "System is running on battery power. Battery: Not present"
-msgstr "El sistema está funcionando con baterías. Batería: ausente"
+#: battstat/battstat_applet.c:827
+msgid "System is running on battery power. Battery status unknown."
+msgstr "El sistema está funcionando con baterías. El estado de la batería es desconocido."
 
 #. This string will display as a tooltip over the
 #. battery frame when the computer is using AC
 #. power and the battery isn't present.
-#: battstat/battstat_applet.c:772
-msgid "System is running on AC power. Battery: Not present"
-msgstr "El sistema está funcionando con CA. Batería: ausente"
+#: battstat/battstat_applet.c:832
+msgid "System is running on AC power. No battery present."
+msgstr "El sistema está funcionando con CA. No hay ninguna batería presente."
 
 #. Displayed as a tooltip over the battery meter when there is
 #. a battery present. %d will hold the current charge and %s will
 #. contains a string of the time remaining
-#: battstat/battstat_applet.c:780
+#. Translation note: %s is time in words (translated elsewhere)
+#: battstat/battstat_applet.c:841
 #, c-format
-msgid "Battery: %d%% (%s)"
-msgstr "Batería: %d%% (%s)"
+msgid "%s (%d%%) remaining"
+msgstr "Quedan %s (%d%%)"
 
 #. Displayed as a tooltip over the battery meter when no
 #. battery is present.
-#: battstat/battstat_applet.c:785
-msgid "Battery: Not present"
-msgstr "Batería: ausente"
+#: battstat/battstat_applet.c:846
+msgid "No battery present"
+msgstr "No hay ninguna batería presente"
 
 #. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: battstat/battstat_applet.c:887
+#: battstat/battstat_applet.c:948
 msgid ""
 "Can't open the APM device!\n"
 "\n"
@@ -443,7 +464,7 @@ msgstr ""
 "dispositivo APM."
 
 #. Displayed if the APM system is disabled (Used under *BSD)
-#: battstat/battstat_applet.c:896
+#: battstat/battstat_applet.c:957
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
@@ -452,7 +473,7 @@ msgstr ""
 "El subsistema de administración APM parece estar desactivado.\n"
 "Intente ejecutar «apm -e 1» (FreeBSD) y vea si esto ayuda.\n"
 
-#: battstat/battstat_applet.c:952
+#: battstat/battstat_applet.c:1013
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -461,16 +482,16 @@ msgstr ""
 "Ha ocurrido un error al lanzar el comando Suspender: %s\n"
 "Intente corregir este error"
 
-#: battstat/battstat_applet.c:956
+#: battstat/battstat_applet.c:1017
 #, c-format
 msgid "The Suspend command '%s' was unsuccessful."
 msgstr "El comando de suspensión «%s» no tuvo éxito."
 
-#: battstat/battstat_applet.c:958
+#: battstat/battstat_applet.c:1019
 msgid "The Suspend command was unsuccessful."
 msgstr "El comando de suspensión no tuvo éxito."
 
-#: battstat/battstat_applet.c:966
+#: battstat/battstat_applet.c:1027
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -481,19 +502,47 @@ msgstr ""
 
 #. if your charset supports it, please replace the "o" in
 #. * "Jorgen" into U00F6
-#: battstat/battstat_applet.c:984
+#: battstat/battstat_applet.c:1045
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jörgen Pehrson <jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:1019
-msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
-msgstr "© 2000 The Gnulix Society, © 2002 Free Software Foundation"
+#: battstat/battstat_applet.c:1081
+msgid "(C) 2000 The Gnulix Society, (C) 2002-2004 Free Software Foundation"
+msgstr "© 2000 The Gnulix Society, © 2002-2004 Free Software Foundation"
 
-#: battstat/battstat_applet.c:1020
+#: battstat/battstat_applet.c:1082
 msgid "This utility shows the status of your laptop battery."
 msgstr "Esta utilidad muestra el estado de la batería de su portátil."
 
-#: battstat/battstat_applet.c:1684
+#. 0 = Battery power
+#. This string will display as a tooltip over the status frame
+#. when the computer is using battery power and the battery meter
+#. and percent meter is hidden by the user.
+#. Translation note: %s is time in words (translated elsewhere)
+#: battstat/battstat_applet.c:1279
+#, c-format
+msgid ""
+"System is running on battery power\n"
+"%s (%d%%) remaining."
+msgstr ""
+"El sistema está funcionando con baterías\n"
+"Todavía quedan %s (%d%%)"
+
+#. 1 = AC power. I should really test it explicitly here.
+#. This string will display as a tooltip over the status frame
+#. when the computer is using AC power and the battery meter
+#. and percent meter is hidden by the user.
+#. Translation note: %s is time in words (translated elsewhere)
+#: battstat/battstat_applet.c:1287
+#, c-format
+msgid ""
+"System is running on AC power\n"
+"%s (%d%%) till charged."
+msgstr ""
+"El sistema está funcionando con CA\n"
+"Faltan %s (%d%%) para que se cargue."
+
+#: battstat/battstat_applet.c:1766
 msgid ""
 "Can't access ACPI events in /var/run/acpid.socket! Make sure the ACPI "
 "subsystem is working and the acpid daemon is running."
@@ -606,9 +655,9 @@ msgstr "A_visarme cuando la carga de la batería esté baja"
 msgid "_Yellow:"
 msgstr "A_marillo:"
 
-#: battstat/properties.c:297 drivemount/drivemount.c:510
+#: battstat/properties.c:291 drivemount/drivemount.c:510
 #: drivemount/properties.c:604 mailcheck/mailcheck.c:2323
-#: mailcheck/mailcheck.c:2614 mini-commander/src/preferences.c:365
+#: mailcheck/mailcheck.c:2617 mini-commander/src/preferences.c:365
 #: mixer/mixer.c:1463 stickynotes/stickynotes_applet_callbacks.c:220
 #: stickynotes/stickynotes_applet_callbacks.c:384
 #: wireless/wireless-applet.c:544 wireless/wireless-applet.c:628
@@ -616,11 +665,11 @@ msgstr "A_marillo:"
 msgid "There was an error displaying help: %s"
 msgstr "Hubo un error al mostrar la ayuda: %s"
 
-#: battstat/properties.c:500
+#: battstat/properties.c:494
 msgid "Progress Bar Direction Moves towards top"
 msgstr "La dirección de la barra de progreso se mueve hacia arriba"
 
-#: battstat/properties.c:510
+#: battstat/properties.c:504
 msgid "Progress Bar Direction Moves towards bottom"
 msgstr "Dirección de la barra de progreso se mueve hacia abajo"
 
@@ -949,7 +998,7 @@ msgid "Cannot browse device"
 msgstr "No se puede examinar el dispositivo"
 
 #: drivemount/drivemount.c:516 drivemount/properties.c:610
-#: mailcheck/mailcheck.c:2329 mailcheck/mailcheck.c:2620
+#: mailcheck/mailcheck.c:2329 mailcheck/mailcheck.c:2623
 msgid "Error displaying help"
 msgstr "Ha ocurrido un error al mostrar la ayuda"
 
@@ -1295,7 +1344,7 @@ msgstr "Mapa de teclado árabe"
 
 #: gkb-new/descs/AZ_Azerbaidjani_Turkic.keyprop.desktop.in.h:1
 msgid "Azerbaidjan"
-msgstr "Azerbayán"
+msgstr "Azerbaiyán"
 
 #: gkb-new/descs/AZ_Azerbaidjani_Turkic.keyprop.desktop.in.h:2
 msgid "Azerbaidjani Turkic"
@@ -1496,7 +1545,7 @@ msgstr "Mapa de teclado checo qwertz"
 
 #: gkb-new/descs/CZ_Czech.keyprop.desktop.in.h:3
 msgid "Former Czechoslovakia Czech Republic"
-msgstr "Antigua Reública Checa de Checoslovaquia"
+msgstr "Antigua República Checa de Checoslovaquia"
 
 #: gkb-new/descs/CZ_Czech_Slovak.keyprop.desktop.in.h:2
 #: gkb-new/descs/CZ_Czech_x.keyprop.desktop.in.h:2
@@ -2428,7 +2477,7 @@ msgstr "EEUU Sun tipo 5"
 
 #: gkb-new/descs/US.keyprop.desktop.in.h:2 gkb-new/descs/presets.xml.in.h:205
 msgid "US 105-key keyboard (with windows keys)"
-msgstr "Teclado estadounidense de 105 teclas (con teclas windows)"
+msgstr "Teclado estadounidense de 105 teclas (con teclas Windows)"
 
 #: gkb-new/descs/US_English.keyprop.desktop.in.h:2
 #: gkb-new/descs/presets.xml.in.h:215
@@ -2463,7 +2512,7 @@ msgstr "Mapa de teclado servio"
 
 #: gkb-new/descs/presets.xml.in.h:9
 msgid "Azerbaijan"
-msgstr "Azerbayán"
+msgstr "Azerbaiyán"
 
 #: gkb-new/descs/presets.xml.in.h:10
 msgid "Azerbaijani Turkish"
@@ -2511,7 +2560,7 @@ msgstr "Mapa de teclado eslovaco"
 
 #: gkb-new/descs/presets.xml.in.h:176
 msgid "Spanish PC/AT 101 keyboard"
-msgstr "Teclado español PC/At 101 teclas"
+msgstr "Teclado español PC/AT 101 teclas"
 
 #: gkb-new/descs/presets.xml.in.h:189
 msgid "Syriac Phonetic"
@@ -4388,7 +4437,7 @@ msgid "No mail."
 msgstr "No hay correo."
 
 #: mailcheck/mailcheck.c:1573 mailcheck/mailcheck.c:1574
-#: mailcheck/mailcheck.c:2900 mailcheck/mailcheck.c:2901
+#: mailcheck/mailcheck.c:2903 mailcheck/mailcheck.c:2904
 msgid "Status not updated"
 msgstr "Estado no actualizado"
 
@@ -4515,15 +4564,15 @@ msgstr ""
 "El monitor de bandeja de entrada le avisa cuando llega correo nuevo en su "
 "casilla"
 
-#: mailcheck/mailcheck.c:2853
+#: mailcheck/mailcheck.c:2856
 msgid "Text only"
 msgstr "Sólo texto"
 
-#: mailcheck/mailcheck.c:2902
+#: mailcheck/mailcheck.c:2905
 msgid "Mail check"
 msgstr "Comprobación de correo"
 
-#: mailcheck/mailcheck.c:2903
+#: mailcheck/mailcheck.c:2906
 msgid "Mail check notifies you when new mail arrives in your mailbox"
 msgstr "La comprobación de correo le avisa cuando llega correo nuevo a su casilla"
 
@@ -6241,6 +6290,29 @@ msgstr "Preferencias del monitor de enlace inalámbrico"
 #: wireless/wireless-applet.glade.h:3
 msgid "_Monitored device:"
 msgstr "Dispositivo _monitorizado:"
+
+#~ msgid "charged"
+#~ msgstr "cargado"
+
+#~ msgid "..."
+#~ msgstr "..."
+
+#~ msgid ""
+#~ "Your battery is running low (%d%%, %s). You should recharge your battery "
+#~ "to avoid losing your work."
+#~ msgstr ""
+#~ "Su batería se está agotando (%d%%, %s). Debería recargar su batería para "
+#~ "evitar perder su trabajo."
+
+#~ msgid ""
+#~ "System is running on battery power\n"
+#~ "Battery: %d%% (%s)"
+#~ msgstr ""
+#~ "El sistema está funcionando con baterías\n"
+#~ "Batería: %d%% (%s)"
+
+#~ msgid "Battery: %d%% (%s)"
+#~ msgstr "Batería: %d%% (%s)"
 
 #~ msgid "Change the keyboard layout"
 #~ msgstr "Cambia la distribución del teclado"
