@@ -24,10 +24,24 @@
   <releaseinfo>documentation in progress</releaseinfo>
 
   <legalnotice>   
-   <para>
-     This document can be freely redistributed according to the
-     terms on the GNU General Public License.
-   </para>
+        <para>This documentation is free software; you can redistribute
+        it and/or modify it under the terms of the GNU General Public
+        License as published by the Free Software Foundation; either
+        version 2 of the License, or (at your option) any later
+        version.</para>
+
+      <para>This program is distributed in the hope that it will be
+        useful, but WITHOUT ANY WARRANTY; without even the implied
+        warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+        See the GNU General Public License for more details.</para>
+
+      <para>You should have received a copy of the GNU General Public
+        License along with this program; if not, write to the Free
+        Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,
+        MA 02111-1307 USA</para>
+
+      <para>For more details see the file COPYING in the source
+        distribution of GNOME.</para>
   </legalnotice>
 
  </bookinfo>
@@ -60,8 +74,6 @@
        <guibutton>button</guibutton> with <mousebutton>mouse button one
        </mousebutton> allows you to select a <interface>window</interface> 
        or an area for <application>Screen-Shooter</application> to grab. 
-     </para>
-     <para>    
        If you want to select a single <interface>window</interface>, 
        click the mouse in it. If you want a different area, click and drag 
        the mouse to select a rectangle, then release it.
@@ -76,8 +88,8 @@
    <para>
      <application>Screen-Shooter</application> can be configured to do a 
      number of different things. The preferences dialogue has seven sections 
-     covering these. Five of these occur initially: two more are available
-     from the first section.
+     covering these. Five of these are visible initially: two more sections
+     are available from a toggle in the first section.
    </para>
  
    <sect2 id="general-prefs">
@@ -105,8 +117,8 @@
       <listitem>
        <para>
          This <guilabel>checkbox</guilabel> controls whether or not
-         you will hear a noise when (FIXME -- um?) The default is
-         for (FIXME - um?)
+	 Screen-Shooter will beep when it actually takes the shot. The
+	 default is to beep.
        </para>
       </listitem>
      </varlistentry>
@@ -133,7 +145,7 @@
          When taking shots of the <interface>desktop</interface>, you can 
          set a delay between pressing the <interface>panel</interface>
          <guibutton>button</guibutton> and the shot being taken. The delay
-         can be up to one second. This can be very useful when you want to 
+         can be up to one minute. This can be very useful when you want to 
          focus on a particular <interface>window</interface> or if you want to
          bring up a <interface>menu</interface>. 
        </para>
@@ -170,7 +182,7 @@
        <para>
          Another self-explanatory option: if this is selected, the colours 
          of the image are reversed so that white becomes black, pale purple 
-         becomes greenish, and so on. Lovely. Off by default.
+         becomes greenish, and so on. Lovely but rarely useful. Off by default.
        </para>
       </listitem>
      </varlistentry>
@@ -198,11 +210,19 @@
       <term>Filename for images</term>
       <listitem>
        <para>
-         <application>Screen-Shooter</application> will try to give each
-         created shot a name which is based on the time it was taken. 
+         <application>Screen-Shooter</application> is designed to allow the
+	 user maximum flexibility in naming each shot. The filename field
+	 (as well as the directory field) is passed to a shell for normal
+	 shell expansion before being used. This allows you to use the
+	 output of programs, scripts or environment variables to name your
+	 shots. The reason for this is to allow unique filenames, if the
+	 user desires. By default, Screen-Shooter will create a name which
+	 is based on the time and date it was taken. This should always be
+	 unique.
          The default filename is 
-         <filename>`date +%H%M%S_%d-%m-%y`_screenshot.jpg</filename>.
-         Everything inside the backticks is interpreted as a command.
+         <filename>`date +%Y_%m_%d_%H%M%S`_shot.jpg</filename>.
+         As you can see, the filename includes the output of the date
+	 command, in order to generate a datestamp.
          So it makes up a name based on the date, using the format the
          percentage symbols and letters tell it. Then it adds the rest
          of the name from outside the backticks to the date it has used.
@@ -247,14 +267,28 @@
         <listitem>
          <para><filename>pic-`date +%H%M%S`.png</filename></para>
         </listitem>
+	<listitem>
+         <para><filename>myshot.jpg</filename></para>
+        </listitem>
+	<listitem>
+         <para><filename>`my_own_script_to_create_a_filename`.jpg</filename></para>
+        </listitem>
        </itemizedlist>
  
        <para>
-         If your filename suffix is not something <application>Screen-Shooter
-         </application> recognises, it will save the shot as a MIFF
-         file. This may not be what you want. By changing the suffix, you
-         change the format it saves in.
+         The filename suffix determines the filetype. Screen-Shooter
+	 supports what can only be described as a ridiculous number of
+	 different image formats. Try your luck. For a full list, type
+	 <command>man convert</command>. You can even try .html to create a
+	 client-side image map, and wild things like that.
        </para>
+ 
+       <para>
+         If your filename suffix is not something <application>Screen-Shooter
+         </application> recognises, or you omit one, it will save the shot as a MIFF
+         file. Use the <command>convert</command> utility to change the
+	 format later.
+	 </para>
       </listitem>
      </varlistentry>
  
@@ -293,7 +327,7 @@
       <listitem>
        <para>
          This is the percentage of the original's size that the thumbnail
-         will be. The default is 25%, which is very small.
+         will be. The default is 25%.
        </para>
       </listitem>
      </varlistentry>
@@ -340,12 +374,23 @@
  
    <sect2 id="post-prefs">
     <title>Post-Processing</title>
+    <note>
+     <para>
+       These options <emphasis>munch</emphasis> processing power compared
+       with the options in previous sections. They work by producing an
+       intermediate image of the screenshot, and then performing actions
+       upon it. Once any of these options are enabled, the shot will take
+       longer to complete, due to the extra processing involved.
+     </para>  
+    </note>
+    
     <variablelist>
      <varlistentry>
       <term>Normalize image</term>
       <listitem>
       <para>
-        This <guilabel>checkbox</guilabel> refers to FIXME.
+        This <guilabel>checkbox</guilabel> transforms the image to span the
+	full range of colour values.
         Default is off.
       </para>
       </listitem>
@@ -355,7 +400,8 @@
       <term>Equalize image</term>
       <listitem>
        <para>
-         This <guilabel>checkbox</guilabel> refers to FIXME.
+         This <guilabel>checkbox</guilabel> enables histogram-based image
+	 equalization.
          Default is off.
        </para>
       </listitem>
@@ -365,8 +411,9 @@
       <term>Enhance image</term>
       <listitem>
        <para>
-         This <guilabel>checkbox</guilabel> sharpens up the image
-         (FIXME -- check). Default is off.
+         This <guilabel>checkbox</guilabel> tell Screen-Shooter to clean up
+	 the image as best it can, and try to remove any noise.
+	 Default is off.
        </para>
       </listitem>
      </varlistentry>
@@ -386,9 +433,8 @@
       <term>Sharpen image by factor</term>
       <listitem>
        <para>
-         Sharpening the image sharpens the (FIXME -- contrast? Edges?). The
-         default is a factor of zero, but it can be raised to 100. (FIXME 
-         -- 100% or a factor of 100?)
+         Sharpening the image sharpens the image. The default is a factor
+	 of zero, but it can be raised to 100%.
        </para>
       </listitem>
      </varlistentry>
@@ -428,8 +474,9 @@
       <listitem>
        <para>
          This <guilabel>checkbox</guilabel> is off by default. Checking
-         it produces a frame around the shot taken. This frame is
-         (FIXME -- always grey, or determined by Gnome or wm theme?)
+         it produces a frame around the shot taken. This frame is always
+	 grey, but if anybody requests it, I'll add options for setting its
+	 colour.
        </para>
       </listitem>
      </varlistentry>
@@ -475,11 +522,11 @@
      </varlistentry>
  
      <varlistentry>
-      <term>Send image and thumbnail to..</term>
+      <term>Send image and thumbnail to...</term>
       <listitem>
        <para>
          By placing a script or program name in the box and checking this 
-         <guilabel> checkbox</guilabel>, you can invoke that script or 
+         <guilabel>checkbox</guilabel>, you can invoke that script or 
          program to be automatically run on the image and thumbnail.
          This could be used to print the image out automatically,
          to invoke a script to catalogue the files, or to add the
@@ -494,10 +541,11 @@
    <sect2 id="spurious-1">
     <title>Spurious options: part 1</title>
     <note>
-     <para>
-       These options <emphasis>munch</emphasis> processing power compared
-       with the options in previous sections.
-     </para>  
+      <para>
+        These options are all just plain silly. But they're fun. So I
+	included them. They also munch processing power in the same manner
+	as the post-processing options above.
+      </para>
     </note>
  
     <variablelist>
@@ -557,13 +605,6 @@
  
    <sect2 id="spurious-2">
     <title>Spurious options: part 2</title>
- 
-    <note>
-     <para>
-       These options munch even more processing power compared with the
-       options from previous sections.
-     </para>
-    </note>
  
     <variablelist>
      <varlistentry>
