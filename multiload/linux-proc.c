@@ -4,11 +4,6 @@
 #include <math.h>
 #include <fcntl.h>
 #include <unistd.h>
-#include <assert.h>
-#if defined(__FreeBSD__) || defined(__NetBSD__)
-#include <sys/socket.h>
-#include <net/if.h>
-#endif
 
 #include <glibtop.h>
 #include <glibtop/cpu.h>
@@ -21,6 +16,7 @@
 #include <glibtop/fsusage.h>
 
 #include "linux-proc.h"
+#include "autoscaler.h"
 
 static const unsigned needed_cpu_flags =
 (1 << GLIBTOP_CPU_USER) +
@@ -102,14 +98,21 @@ GetDiskLoad (int Maximum, int data [3], LoadGraph *g)
 {
 	static gboolean first_call = TRUE;
 	static guint64 lastread = 0, lastwrite = 0;
-	static guint64 max = 1;
+	static AutoScaler scaler;
 
 	glibtop_mountlist mountlist;
 	glibtop_mountentry *mountentries;
 	guint i;
+	int max;
 
 	guint64 read, write;
-	guint64 total, readdiff, writediff;
+	guint64 readdiff, writediff;
+
+
+	if(first_call)
+	{
+	    autoscaler_init(&scaler, 60, 500);
+	}
 
 	read = write = 0;
 
@@ -137,7 +140,7 @@ GetDiskLoad (int Maximum, int data [3], LoadGraph *g)
 		return;
 	}
 
-	max = MAX(max, readdiff + writediff);
+	max = autoscaler_get_max(&scaler, readdiff + writediff);
 
 	data[0] = (float)Maximum *  readdiff / (float)max;
 	data[1] = (float)Maximum * writediff / (float)max;
@@ -262,67 +265,32 @@ GetLoadAvg (int Maximum, int data [2], LoadGraph *g)
 
 
 
-static int
-get_netmax(int current)
-{
-	static int max = 0;
-	static int count = 0;
-	static time_t last = 0;
-	static float sum = 0.0f;
-	static float last_average = 0.0f;
-
-	time_t now;
-
-	sum += current;
-	count++;
-	time(&now);
-
-	if(difftime(now, last) > 60.0f)
-	{
-	    float new_average = sum / count;
-	    float average;
-
-	    if(new_average < last_average)
-		average = ((last_average * 0.5f) + new_average) / 1.5f;
-	    else
-		average = new_average;
-
-	    max = average * 1.2f;
-
-	    sum = 0.0f;
-	    count = 0;
-	    last = now;
-	    last_average = average;
-	};
-
-	max = MAX(max, current);
-	max = MAX(max, 500);
-#if 0
-	printf("max = %d, current = %d, last_average = %f\n", max, current, last_average);
-#endif
-	return max;
-}
-
-
-
-
 void
 GetNet (int Maximum, int data [5], LoadGraph *g)
 {
-#define SLIP_COUNT	0
-#define PPP_COUNT	1
-#define ETH_COUNT       2
-#define OTHER_COUNT	3
-#define COUNT_TYPES	4
+    enum Types {
+	SLIP_COUNT  = 0,
+	PPP_COUNT   = 1,
+	ETH_COUNT   = 2,
+	OTHER_COUNT = 3,
+	COUNT_TYPES = 4
+	};
 
     static int ticks = 0;
     static gulong past[COUNT_TYPES] = {0};
+    static AutoScaler scaler;
 
     gulong present[COUNT_TYPES] = {0};
 
-    int delta[COUNT_TYPES], i;
+    int i;
     gchar **devices;
     glibtop_netlist netlist;
+
+
+    if(ticks == 0)
+    {
+	autoscaler_init(&scaler, 60, 501);
+    }
 
 
     devices = glibtop_get_netlist(&netlist);
@@ -360,14 +328,14 @@ GetNet (int Maximum, int data [5], LoadGraph *g)
     g_strfreev(devices);
 
 
-    memset(data, 0, 5 * sizeof data[0]);
-
     if(ticks < 2) /* avoid initial spike */
     {
 	ticks++;
+	memset(data, 0, COUNT_TYPES * sizeof data[0]);
     }
     else
     {
+	int delta[COUNT_TYPES];
 	int max;
 	int total = 0;
 
@@ -381,7 +349,7 @@ GetNet (int Maximum, int data [5], LoadGraph *g)
 	    total += delta[i];
 	}
 
-	max = get_netmax(total);
+	max = autoscaler_get_max(&scaler, total);
 
 	for (i = 0; i < COUNT_TYPES; i++)
 	    data[i]   = rint (Maximum * (float)delta[i]  / max);

@@ -20,6 +20,8 @@ multiload_applet_2_SOURCES = \
 			netload.c	\
 			properties.c	\
 			swapload.c	\
+			autoscaler.c	\
+			autoscaler.h	\
 			diskload.c
 
 multiload_applet_2_LDADD = \

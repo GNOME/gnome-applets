@@ -71,7 +71,7 @@ key_writable (PanelApplet *applet, const char *key)
 }
 
 
-void
+static void
 properties_set_insensitive(MultiloadApplet *ma)
 {
 	gint i, total_graphs, last_graph;

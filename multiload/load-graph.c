@@ -93,7 +93,7 @@ load_graph_draw (LoadGraph *g)
 static gboolean
 load_graph_update (LoadGraph *g)
 {
-    guint i, j;
+    guint i;
 
     if (g->data == NULL)
 	return TRUE;
@@ -169,7 +169,7 @@ load_graph_alloc (LoadGraph *g)
     g->allocated = TRUE;
 }
 
-gint
+static gint
 load_graph_configure (GtkWidget *widget, GdkEventConfigure *event,
 		      gpointer data_ptr)
 {
@@ -238,7 +238,7 @@ load_graph_destroy (GtkWidget *widget, gpointer data_ptr)
     return;
 }
 
-void
+static void
 load_graph_load_config (LoadGraph *g)
 {
 	

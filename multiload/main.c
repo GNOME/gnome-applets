@@ -37,8 +37,6 @@ about_cb (BonoboUIComponent *uic,
 	  MultiloadApplet   *ma,
 	  const char        *name)
 {
-    GdkPixbuf        *pixbuf;
-   
     static const gchar *authors[] =
     {
 		"Martin Baulig <martin@home-of-linux.org>",
