@@ -1,5 +1,12 @@
 2002-04-29  Fernando Herrera <fherrera@onirica.com>
 
+	* mixer.c: mixer_update_slider: for all panels mixer vol is -vol 
+	in slide bar. With old code (vol = vol - VOLUME_MAX for vertical
+	panels) when starting the applet in vertical panels with a saved 
+	mixer vol of 90, it changed to 10.
+
+2002-04-29  Fernando Herrera <fherrera@onirica.com>
+
 	* mixer.c: change the volume with mouse wheel over the button
 	applet without bringing up the popup
 

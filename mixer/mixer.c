@@ -335,11 +335,7 @@ mixer_update_slider (MixerData *data)
 {
 	gint vol = data->vol;
 
-	if (IS_PANEL_HORIZONTAL (data->orientation)) {
-		vol = -vol;
-	} else {
-		vol = vol - VOLUME_MAX;
-	}
+	vol = -vol;
 	
 	gtk_adjustment_set_value (data->adj, vol);
 }
