@@ -1,0 +1,204 @@
+<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "2.3.6">
+  <!ENTITY manrevision "2.1.1">
+  <!ENTITY date "Agosto 2003">
+  <!ENTITY applet "Wireless Link Monitor">
+]>
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Feb 06, 2003
+-->
+<!-- =============Document Header ============================= -->
+<article id="index" lang="es">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo>
+	<title>Manual del aplique &applet; V&manrevision;</title>
+        <copyright>
+            <year>2003</year>
+            <holder>Sun Microsystems</holder>
+        </copyright>
+
+<!-- translators: uncomment this:
+  <copyright>
+   <year>2003</year>
+   <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+  </copyright>
+   -->
+
+	 <publisher> 
+		<publishername>Proyecto de documentaci&oacute;n GNOME</publishername> 
+	 </publisher> 
+
+&legal;
+<!-- This file  contains link to license for the documentation (GNU FDL), and 
+     other legal stuff such as "NO WARRANTY" statement. Please do not change 
+     any of this. -->
+
+	 <authorgroup> 
+            <author>
+               <firstname>Sun</firstname>
+               <surname>Equipo de documentaci&oacute;n GNOME</surname>
+               <affiliation>
+                  <orgname>Sun Microsystems</orgname>
+              </affiliation>
+            </author>
+      <!-- This is appropriate place for other contributors: translators,
+           maintainers,  etc. Commented out by default.
+        <othercredit role="translator">
+	      <firstname>Latin</firstname> 
+	      <surname>Translator 1</surname> 
+	      <affiliation> 
+	      	<orgname>Latin Translation Team</orgname> 
+	       	<address> <email>translator@gnome.org</email> </address> 
+	      </affiliation>
+	      <contrib>Latin translation</contrib>
+        </othercredit>
+-->
+	 </authorgroup>
+
+	 <revhistory>
+		<revision> 
+		  <revnumber>Manual del aplique &applet;  V&manrevision;</revnumber> 
+		  <date>&date;</date> 
+		  <revdescription> 
+                    <para role="author">Equipo de documentaci&oacute;n de Sun GNOME</para>
+                    <para role="publisher">Proyecto de documentaci&oacute;n de GNOME</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>Manual del aplique Supervisor de conexi&oacute;n inal&aacute;mbrica V2.1</revnumber> 
+		  <date>Agosto 2003</date> 
+		  <revdescription> 
+                    <para role="author">Equipo de documentaci&oacute;n de Sun GNOME</para>
+                    <para role="publisher">Proyecto de documentaci&oacute;n de GNOME</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>Manual del aplique Supervisor de conexi&oacute;n inal&aacute;mbrica V2.0</revnumber> 
+		  <date>Agosto 2003</date> 
+		  <revdescription> 
+                    <para role="author">Equipo de documentaci&oacute;n de Sun GNOME</para>
+                    <para role="publisher">Proyecto de documentaci&oacute;n de GNOME</para>
+		  </revdescription>
+		</revision>
+	 </revhistory>
+
+	 <releaseinfo>Este manual describe la versi&oacute;n &appletversion; de la &applet;.
+		</releaseinfo>
+
+	 <legalnotice> 
+		<title>Comentarios</title>
+		<para>Para informar de un defecto o hacer alguna sugerencia sobre el aplique <application>&applet;</application> o el presente manual, siga las instrucciones que aparecen en<ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>. </para>
+	 </legalnotice>
+
+  </articleinfo>
+
+  <indexterm zone="index"> 
+	 <primary>Supervisor de conexi&oacute;n inal&aacute;mbrica</primary> 
+  </indexterm> 
+  <indexterm zone="index"> 
+	 <primary>supervisor de conexi&oacute;n inal&aacute;mbrica</primary> 
+  </indexterm>
+<!-- ============= Document Body ============================= -->
+<!-- ============= Introduction ============================== -->
+  <sect1 id="wireless-introduction"> 
+	 <title>Introducci&oacute;n</title>
+	 <figure id="wireless-fig-conn"> 
+		<title>Aplique &applet; con conexi&oacute;n</title>
+		<screenshot>
+		  <mediaobject>
+			 <imageobject><imagedata fileref="figures/wireless_applet_conn.png" 				format="PNG"/> 
+			 </imageobject>
+			 <textobject>
+				<phrase>Muestra el aplique &applet; con conexi&oacute;n.</phrase>
+			 </textobject>
+		  </mediaobject>
+		</screenshot>
+	 </figure>
+	 <figure id="wireless-fig-no-conn"> 
+		<title>Aplique &applet; sin conexi&oacute;n</title>
+		<screenshot>
+		  <mediaobject>
+			 <imageobject><imagedata fileref="figures/wireless_applet_no_conn.png" 				format="PNG"/> 
+			 </imageobject>
+			 <textobject>
+				<phrase>Muestra el aplique &applet; sin conexi&oacute;n.</phrase>
+			 </textobject>
+		  </mediaobject>
+		</screenshot>
+	 </figure>
+    <!-- ==== End of Figure ======================================= -->
+	 <para>El aplique <application>&applet;</application> permite supervisar c&oacute;modamente las conexiones a dispositivos inal&aacute;mbricos.
+		</para>
+        <para>Para agregar <application>&applet;</application> a un panel, haga clic con el bot&oacute;n derecho en el panel y seleccione
+            <menuchoice>
+                <guimenu>Agregar a panel</guimenu>
+                <guisubmenu>Internet</guisubmenu>
+                <guimenuitem>Supervisor de conexi&oacute;n inal&aacute;mbrica</guimenuitem>
+            </menuchoice>.
+        </para>
+	 <para>La presentaci&oacute;n del aplique <application>&applet;</application> depende del tama&ntilde;o del panel en el que reside.</para>
+	 <para>El aplique contiene algo de texto y varios cuadros peque&ntilde;os que muestran la intensidad de la conexi&oacute;n. Tambi&eacute;n se puede ver la se&ntilde;al de intensidad en forma de porcentaje. Para obtener m&aacute;s informaci&oacute;n sobre c&oacute;mo configurar <application>&applet;</application> para que muestre la se&ntilde;al de intensidad en forma de porcentaje, consulte <xref linkend="wireless-prefs"/>.</para>
+	 <para>Cuando no haya ning&uacute;n dispositivo inal&aacute;mbrico conectado, el aplique &applet; muestra el texto <literal>N A</literal> y los cuadros del aplique aparecen transparentes. La se&ntilde;al de intensidad en porcentaje aparece como <literal>N/A</literal>.</para>
+  </sect1>
+
+<!-- ================ Usage ================================ -->
+  <sect1 id="wireless-usage"> 
+<title>Utilizaci&oacute;n</title>
+	 <para>Cuando un dispositivo inal&aacute;mbrico tiene conexi&oacute;n, &applet; muestra el texto <literal>Wi Fi</literal>. El color de los cuadros del aplique del panel muestra si hay una conexi&oacute;n establecida del modo siguiente:</para>
+         <variablelist>
+           <varlistentry>
+             <term>Verde</term>
+             <listitem>
+               <para>El dispositivo inal&aacute;mbrico ha establecido una conexi&oacute;n.</para>
+               <para>La intensidad de la conexi&oacute;n se indica mediante el n&uacute;mero de cuadros verdes:cuanto m&aacute;s cuadros verdes haya, m&aacute;s intensa ser&aacute; la conexi&oacute;n.</para>
+             </listitem>
+           </varlistentry>
+           <varlistentry>
+             <term>Rojo</term>
+             <listitem>
+               <para>El dispositivo inal&aacute;mbrico no ha establecido una conexi&oacute;n.</para>
+             </listitem>
+           </varlistentry>
+         </variablelist>
+	 <para>Cada una de las instancias de &applet; puede supervisar un dispositivo inal&aacute;mbrico. Debe iniciar una instancia de &applet; por cada dispositivo que desee supervisar.
+</para>
+  </sect1>
+
+<!-- ============= Customization ============================= -->
+<!-- Use this section to describe how to customize the applet. -->
+  <sect1 id="wireless-prefs"> 
+	 <title>Configuraci&oacute;n</title>
+	 <para>Para configurar <application>&applet;</application>, haga clic con el bot&oacute;n derecho en el aplique y seleccione <guimenuitem>Preferencias</guimenuitem> en el men&uacute; emergente.</para>
+	 <para>El cuadro de di&aacute;logo <guimenuitem>Preferencias</guimenuitem> contiene los siguientes componentes: </para>
+	 <variablelist>
+	   <varlistentry> 
+	     <term><guilabel>Dispositivo supervisado</guilabel></term> 
+	     <listitem>
+	       <para>Utilice esta lista desplegable para seleccionar el dispositivo inal&aacute;mbrico que desee supervisar.</para>
+	     </listitem>
+	   </varlistentry>
+	   <varlistentry> 
+	     <term><guilabel>Mostrar intensidad de se&ntilde;al como porcentaje</guilabel></term> 
+	     <listitem>
+	       <para>Seleccione esta opci&oacute;n para ver la intensidad de la se&ntilde;al en forma de porcentaje. 
+               </para>
+	     </listitem>
+	   </varlistentry>
+	   <varlistentry> 
+	     <term><guilabel>Mostrar cuadros de di&aacute;logo</guilabel></term> 
+	     <listitem>
+	       <para>Seleccione esta opci&oacute;n para ver un cuadro de di&aacute;logo cuando se interrumpe o restablece la conexi&oacute;n.
+               </para>
+	     </listitem>
+	   </varlistentry>
+	 </variablelist>
+  </sect1>
+
+</article>

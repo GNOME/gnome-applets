@@ -1,0 +1,204 @@
+<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "2.3.6">
+  <!ENTITY manrevision "2.1.1">
+  <!ENTITY date "August 2003">
+  <!ENTITY applet "Wireless Link Monitor">
+]>
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Feb 06, 2003
+-->
+<!-- =============Document Header ============================= -->
+<article id="index" lang="de">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo>
+	 <title>&applet; Applet-Handbuch V&manrevision;</title>
+        <copyright>
+            <year>2003</year>
+            <holder>Sun Microsystems</holder>
+        </copyright>
+
+<!-- translators: uncomment this:
+  <copyright>
+   <year>2003</year>
+   <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+  </copyright>
+   -->
+
+	 <publisher> 
+		<publishername>GNOME-Dokumentationsprojekt</publishername> 
+	 </publisher> 
+
+&legal;
+<!-- This file  contains link to license for the documentation (GNU FDL), and 
+     other legal stuff such as "NO WARRANTY" statement. Please do not change 
+     any of this. -->
+
+	 <authorgroup> 
+            <author>
+               <firstname>Sun</firstname>
+               <surname>GNOME-Dokumentationsteam</surname>
+               <affiliation>
+                  <orgname>Sun Microsystems</orgname>
+              </affiliation>
+            </author>
+      <!-- This is appropriate place for other contributors: translators,
+           maintainers,  etc. Commented out by default.
+        <othercredit role="translator">
+	      <firstname>Latin</firstname> 
+	      <surname>Translator 1</surname> 
+	      <affiliation> 
+	      	<orgname>Latin Translation Team</orgname> 
+	       	<address> <email>translator@gnome.org</email> </address> 
+	      </affiliation>
+	      <contrib>Latin translation</contrib>
+        </othercredit>
+-->
+	 </authorgroup>
+
+	 <revhistory>
+		<revision> 
+		  <revnumber>&applet;-Applet Handbuch V&manrevision;</revnumber> 
+		  <date>&date;</date> 
+		  <revdescription> 
+                    <para role="author">Sun GNOME Dokumentationsteam</para>
+                    <para role="publisher">GNOME-Dokumentationsprojekt</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>Wireless Link Monitor-Applet Handbuch V2.1</revnumber> 
+		  <date>August 2003</date> 
+		  <revdescription> 
+                    <para role="author">Sun GNOME Dokumentationsteam</para>
+                    <para role="publisher">GNOME-Dokumentationsprojekt</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>Wireless Link Monitor-Applet Handbuch V2.0</revnumber> 
+		  <date>August 2003</date> 
+		  <revdescription> 
+                    <para role="author">Sun GNOME Dokumentationsteam</para>
+                    <para role="publisher">GNOME-Dokumentationsprojekt</para>
+		  </revdescription>
+		</revision>
+	 </revhistory>
+
+	 <releaseinfo>In diesem Handbuch wird Version &appletversion; von &applet; beschrieben.
+		</releaseinfo>
+
+	 <legalnotice> 
+		<title>Feedback</title>
+		<para>Wenn Sie Fehler finden oder Vorschl&auml;ge zum Applet &applet; oder diesem Handbuch haben, befolgen Sie bitte die Anweisungen auf der <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>. </para>
+	 </legalnotice>
+
+  </articleinfo>
+
+  <indexterm zone="index"> 
+	 <primary>Wireless Link Monitor</primary> 
+  </indexterm> 
+  <indexterm zone="index"> 
+	 <primary>wireless link monitor</primary> 
+  </indexterm>
+<!-- ============= Document Body ============================= -->
+<!-- ============= Introduction ============================== -->
+  <sect1 id="wireless-introduction"> 
+	 <title>Einf&uuml;hrung</title>
+	 <figure id="wireless-fig-conn"> 
+		<title>&applet;-Applet mit Verbindung</title>
+		<screenshot>
+		  <mediaobject>
+			 <imageobject><imagedata fileref="figures/wireless_applet_conn.png" 				format="PNG"/> 
+			 </imageobject>
+			 <textobject>
+				<phrase>Zeigt das Applet &applet; mit laufender Verbindung.</phrase>
+			 </textobject>
+		  </mediaobject>
+		</screenshot>
+	 </figure>
+	 <figure id="wireless-fig-no-conn"> 
+		<title>&applet;-Applet ohne Verbindung</title>
+		<screenshot>
+		  <mediaobject>
+			 <imageobject><imagedata fileref="figures/wireless_applet_no_conn.png" 				format="PNG"/> 
+			 </imageobject>
+			 <textobject>
+				<phrase>Zeigt das Applet &applet; ohne Verbindung.</phrase>
+			 </textobject>
+		  </mediaobject>
+		</screenshot>
+	 </figure>
+    <!-- ==== End of Figure ======================================= -->
+	 <para>Das Applet <application>&applet;</application> stellt ein praktisches Hilfsmittel f&uuml;r die &Uuml;berwachung von Verbindungen zu Wireless-Ger&auml;ten dar.
+		</para>
+        <para>Um <application>&applet;</application> zu einem Panel hinzuzuf&uuml;gen, klicken Sie mit der rechten Maustaste auf das Panel und w&auml;hlen dann
+            <menuchoice>
+                <guimenu>Zum Panel hinzuf&uuml;gen</guimenu>
+                <guisubmenu>Internet</guisubmenu>
+                <guimenuitem>&Uuml;berwachung drahtloser Ger&auml;te</guimenuitem>
+            </menuchoice>.
+        </para>
+	 <para>Das Layout des <application>&applet;</application>-Applets h&auml;ngt von der Gr&ouml;&szlig;e des Panels ab, in dem sich das Applet befindet.</para>
+	 <para>Das Applet enth&auml;lt Text und mehrere kleine K&auml;stchen, die Aufschluss &uuml;ber die Verbindungsst&auml;rke geben. Die Signalst&auml;rke kann auch als Prozentwert angezeigt werden. Wie Sie festlegen, dass die Signalst&auml;rke in <application>&applet;</application> als Prozentwert angezeigt wird, erfahren Sie unter <xref linkend="wireless-prefs"/>.</para>
+	 <para>Wenn keine Verbindung zu einem Wireless-Ger&auml;t besteht, zeigt das &applet; den Text <literal>N A</literal> an, und die K&auml;stchen sind durchsichtig. Die Signalst&auml;rke wird als <literal>N/A</literal> angegeben.</para>
+  </sect1>
+
+<!-- ================ Usage ================================ -->
+  <sect1 id="wireless-usage"> 
+	 <title>Verwendung</title>
+	 <para>Bei einer vorhandenen Verbindung zu einem Wireless-Ger&auml;t zeigt das Applet &applet; den Text <literal>Wi Fi</literal> an. Die Farben der K&auml;stchen im Panel-Applet haben die folgende Bedeutung:</para>
+         <variablelist>
+           <varlistentry>
+             <term>Gr&uuml;n</term>
+             <listitem>
+               <para>Das Wireless-Ger&auml;t hat eine Verbindung hergestellt.</para>
+               <para>Die Verbindungsst&auml;rke geht aus der Anzahl der gr&uuml;nen K&auml;stchen hervor: Je mehr gr&uuml;ne K&auml;stchen zu sehen sind, desto st&auml;rker ist die Verbindung.</para>
+             </listitem>
+           </varlistentry>
+           <varlistentry>
+             <term>Rot</term>
+             <listitem>
+               <para>Das Wireless-Ger&auml;t hat keine Verbindung hergestellt.</para>
+             </listitem>
+           </varlistentry>
+         </variablelist>
+	 <para>Mit einer Instanz von &applet; kann nur ein Wireless-Ger&auml;t &uuml;berwacht werden. F&uuml;r jedes zu &uuml;berwachende Wireless-Ger&auml;t ist eine eigene Instanz von &applet; zu starten.
+</para>
+  </sect1>
+
+<!-- ============= Customization ============================= -->
+<!-- Use this section to describe how to customize the applet. -->
+  <sect1 id="wireless-prefs"> 
+	 <title>Einstellungen</title>
+	 <para>Klicken Sie zur Konfiguration von <application>&applet;</application> mit der rechten Maustaste auf das Applet, und w&auml;hlen Sie anschlie&szlig;end im Kontextmen&uuml; den Eintrag <guimenuitem>Einstellungen</guimenuitem>.</para>
+	 <para>Das Dialogfeld <guimenuitem>Einstellungen</guimenuitem> enth&auml;lt die folgenden Komponenten: </para>
+	 <variablelist>
+	   <varlistentry> 
+	     <term><guilabel>&Uuml;berwachtes Ger&auml;t</guilabel></term> 
+	     <listitem>
+	       <para>In dieser Dropdown-Liste w&auml;hlen Sie das Wireless-Ger&auml;t aus, das &uuml;berwacht werden soll.</para>
+	     </listitem>
+	   </varlistentry>
+	   <varlistentry> 
+	     <term><guilabel>Signalst&auml;rke als Prozentwert anzeigen</guilabel></term> 
+	     <listitem>
+	       <para>W&auml;hlen Sie diese Option aus, damit die Signalst&auml;rke als Prozentwert angezeigt wird. 
+               </para>
+	     </listitem>
+	   </varlistentry>
+	   <varlistentry> 
+	     <term><guilabel>Dialogboxen anzeigen</guilabel></term> 
+	     <listitem>
+	       <para>Ist diese Option aktiviert, wird bei Unterbrechung oder Wiederherstellung der Verbindung ein Dialogfeld angezeigt.
+               </para>
+	     </listitem>
+	   </varlistentry>
+	 </variablelist>
+  </sect1>
+
+</article>

@@ -1,0 +1,201 @@
+<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "2.3.6">
+  <!ENTITY manrevision "2.1.1">
+  <!ENTITY date "2003 年 8 月">
+  <!ENTITY applet "ワイヤレスリンクモニタ">
+]>
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Feb 06, 2003
+-->
+<!-- =============Document Header ============================= -->
+<article id="index" lang="ja">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo>
+	 <title>&applet;アプレットのマニュアル V&manrevision;</title>
+        <copyright>
+            <year>2003</year>
+            <holder>Sun Microsystems</holder>
+        </copyright>
+
+<!-- translators: uncomment this:
+  <copyright>
+   <year>2003</year>
+   <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+  </copyright>
+   -->
+
+	 <publisher> 
+		<publishername>GNOME ドキュメンテーションプロジェクト</publishername> 
+	 </publisher> 
+
+&legal;
+<!-- This file  contains link to license for the documentation (GNU FDL), and 
+     other legal stuff such as "NO WARRANTY" statement. Please do not change 
+     any of this. -->
+
+	 <authorgroup> 
+            <author>
+               <firstname>Sun</firstname>
+               <surname>GNOME ドキュメンテーションチーム</surname>
+               <affiliation>
+                  <orgname>Sun Microsystems</orgname>
+              </affiliation>
+            </author>
+      <!-- This is appropriate place for other contributors: translators,
+           maintainers,  etc. Commented out by default.
+        <othercredit role="translator">
+	      <firstname>Latin</firstname> 
+	      <surname>Translator 1</surname> 
+	      <affiliation> 
+	      	<orgname>Latin Translation Team</orgname> 
+	       	<address> <email>translator@gnome.org</email> </address> 
+	      </affiliation>
+	      <contrib>Latin translation</contrib>
+        </othercredit>
+-->
+	 </authorgroup>
+
+	 <revhistory>
+		<revision> 
+		  <revnumber>&applet; アプレットのマニュアル V&manrevision;</revnumber> 
+		  <date>&date;</date> 
+		  <revdescription> 
+                    <para role="author">Sun GNOME ドキュメンテーションチーム</para>
+                    <para role="publisher">GNOME ドキュメンテーションプロジェクト</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>ワイヤレスリンクモニタ・アプレットのマニュアル V2.1</revnumber> 
+		  <date>2003 年 8 月</date> 
+		  <revdescription> 
+                    <para role="author">Sun GNOME ドキュメンテーションチーム</para>
+                    <para role="publisher">GNOME ドキュメンテーションプロジェクト</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>ワイヤレスリンクモニタ・アプレットのマニュアル V2.0</revnumber> 
+		  <date>2003 年 8 月</date> 
+		  <revdescription> 
+                    <para role="author">Sun GNOME ドキュメンテーションチーム</para>
+                    <para role="publisher">GNOME ドキュメンテーションプロジェクト</para>
+		  </revdescription>
+		</revision>
+	 </revhistory>
+
+	 <releaseinfo>このマニュアルは&applet;のバージョン &appletversion; について説明します。
+		</releaseinfo>
+
+	 <legalnotice> 
+		<title>フィードバック</title>
+		<para>&applet;アプレットまたはこのマニュアルに関してバグやご意見をご報告いただく場合は、<ulink url="ghelp:gnome-feedback" type="help">『GNOME フィードバックページ』</ulink>を参照してください。</para>
+	 </legalnotice>
+
+  </articleinfo>
+
+  <indexterm zone="index"> 
+	 <primary>Wireless Link Monitor</primary> 
+  </indexterm> 
+  <indexterm zone="index"> 
+	 <primary>wireless link monitor</primary> 
+  </indexterm>
+<!-- ============= Document Body ============================= -->
+<!-- ============= Introduction ============================== -->
+  <sect1 id="wireless-introduction"> 
+	 <title>概要</title>
+	 <figure id="wireless-fig-conn"> 
+		<title>接続状態の&applet; アプレット</title>
+		<screenshot>
+		  <mediaobject>
+			 <imageobject><imagedata fileref="figures/wireless_applet_conn.png" 				format="PNG"/> 
+			 </imageobject>
+			 <textobject>
+				<phrase>接続状態の &applet; アプレットを表示します。</phrase>
+			 </textobject>
+		  </mediaobject>
+		</screenshot>
+	 </figure>
+	 <figure id="wireless-fig-no-conn"> 
+		<title>接続解除状態の&applet; アプレット</title>
+		<screenshot>
+		  <mediaobject>
+			 <imageobject><imagedata fileref="figures/wireless_applet_no_conn.png" 				format="PNG"/> 
+			 </imageobject>
+			 <textobject>
+				<phrase>接続を解除した状態の &applet; アプレットを表示します。</phrase>
+			 </textobject>
+		  </mediaobject>
+		</screenshot>
+	 </figure>
+    <!-- ==== End of Figure ======================================= -->
+	 <para><application>&applet;</application> アプレットを使用すると、ワイヤレスデバイスの接続を簡単に監視できます。
+		</para>
+        <para><application>&applet;</application> をパネルに追加するには、パネル上で右クリックし、
+            <menuchoice>
+                <guimenu>「パネルに追加」</guimenu><guisubmenu>「インターネット」</guisubmenu><guimenuitem>「ワイヤレスリンクモニタ (Wireless Link Monitor)」</guimenuitem></menuchoice>の順に選択します。
+        </para>
+	 <para><application>&applet;</application> アプレットの配置は、アプレットを表示するパネルのサイズと種類により異なります。</para>
+	 <para>アプレットには、テキストとリンクの強さを表す小さなボックスが含まれています。信号の強さをパーセントで表示することもできます。<application>&applet;</application> に信号の強さをパーセントで表示させるには、<xref linkend="wireless-prefs"/>を参照してください。</para>
+	 <para>接続されているワイヤレスデバイスがない場合は、&applet; は <literal>N A</literal> というテキストを表示します。このとき、アプレットボックスは透明です。信号の強さのパーセント表示は、<literal>N/A</literal> となります。</para>
+  </sect1>
+
+<!-- ================ Usage ================================ -->
+  <sect1 id="wireless-usage"> 
+	 <title>使用方法</title>
+	 <para>接続されているワイヤレスデバイスがある場合は、&applet; は <literal>Wi Fi</literal> というテキストを表示します。パネルアプレットのボックスの色は、リンクが確立されているかどうかを以下のように表します。</para>
+         <variablelist>
+           <varlistentry>
+             <term>緑</term>
+             <listitem>
+               <para>ワイヤレスデバイスのリンクは確立されています。</para>
+               <para>緑のボックスの数によって、リンクの強さが表されます。緑のボックスの数が多いほど、リンクの強さは強くなります。</para>
+             </listitem>
+           </varlistentry>
+           <varlistentry>
+             <term>赤</term>
+             <listitem>
+               <para>ワイヤレスデバイスのリンクは確立されていません。</para>
+             </listitem>
+           </varlistentry>
+         </variablelist>
+	 <para>&applet; の各インスタンスが監視できるのは、1 台のワイヤレスデバイスだけです。監視するワイヤレスデバイスそれぞれに対して、&applet; のインスタンスを開始してください。
+</para>
+  </sect1>
+
+<!-- ============= Customization ============================= -->
+<!-- Use this section to describe how to customize the applet. -->
+  <sect1 id="wireless-prefs"> 
+	 <title>設定</title>
+	 <para><application>&applet;</application> を設定するには、アプレットを右クリックしてポップアップメニューを表示させ<guimenuitem>「設定」</guimenuitem>を選択します。</para>
+	 <para><guimenuitem>「設定」</guimenuitem>ダイアログには、以下の構成要素があります。 </para>
+	 <variablelist>
+	   <varlistentry> 
+	     <term><guilabel>監視されているデバイス (Monitored Device)</guilabel></term> 
+	     <listitem>
+	       <para>このドロップダウンリストで、監視するワイヤレスデバイスを選択します。</para>
+	     </listitem>
+	   </varlistentry>
+	   <varlistentry> 
+	     <term><guilabel>信号の強さをパーセントで表示 (Show signal strength in percentage)</guilabel></term> 
+	     <listitem>
+	       <para>信号の強さをパーセントで表示するには、このオプションを選択します。
+               </para>
+	     </listitem>
+	   </varlistentry>
+	   <varlistentry> 
+	     <term><guilabel>ダイアログボックスを表示 (Show dialog boxes)</guilabel></term> 
+	     <listitem>
+	       <para>リンクが切断または再確立されたときにダイアログを表示するには、このオプションを選択します。
+               </para>
+	     </listitem>
+	   </varlistentry>
+	 </variablelist>
+  </sect1>
+
+</article>

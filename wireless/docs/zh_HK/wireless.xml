@@ -1,0 +1,206 @@
+﻿<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "2.3.6">
+  <!ENTITY manrevision "2.1.1">
+  <!ENTITY date "August 2003">
+  <!ENTITY applet "Wireless Link Monitor">
+]>
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Feb 06, 2003
+-->
+<!-- =============Document Header ============================= -->
+<article id="index" lang="zh_hk">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo>
+	 <title>&applet; Applet 手冊 V&manrevision;</title>
+        <copyright>
+            <year>2003 年</year>
+            <holder>Sun Microsystems</holder>
+        </copyright>
+
+<!-- translators: uncomment this:
+  <copyright>
+   <year>2003</year>
+   <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+  </copyright>
+   -->
+
+	 <publisher> 
+		<publishername>GNOME 文件專案</publishername> 
+	 </publisher> 
+
+&legal;
+<!-- This file  contains link to license for the documentation (GNU FDL), and 
+     other legal stuff such as "NO WARRANTY" statement. Please do not change 
+     any of this. -->
+
+	 <authorgroup> 
+            <author>
+               <firstname>Sun</firstname>
+               <surname>GNOME 文件小組</surname>
+               <affiliation>
+                  <orgname>Sun Microsystems</orgname>
+              </affiliation>
+            </author>
+      <!-- This is appropriate place for other contributors: translators,
+           maintainers,  etc. Commented out by default.
+        <othercredit role="translator">
+	      <firstname>Latin</firstname> 
+	      <surname>Translator 1</surname> 
+	      <affiliation> 
+	      	<orgname>Latin Translation Team</orgname> 
+	       	<address> <email>translator@gnome.org</email> </address> 
+	      </affiliation>
+	      <contrib>Latin translation</contrib>
+        </othercredit>
+-->
+	 </authorgroup>
+
+	 <revhistory>
+		<revision> 
+		  <revnumber>&applet; Applet 手冊 V&manrevision;</revnumber> 
+		  <date>&date;</date> 
+		  <revdescription> 
+                    <para role="author">Sun GNOME 文件小組</para>
+                    <para role="publisher">GNOME 文件專案</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>無線連結監控程式 Applet 手冊 V2.1</revnumber> 
+		  <date>2003 年 8 月</date> 
+		  <revdescription> 
+                    <para role="author">Sun GNOME 文件小組</para>
+                    <para role="publisher">GNOME 文件專案</para>
+		  </revdescription>
+		</revision>
+		<revision> 
+		  <revnumber>無線連結監控程式 Applet 手冊 V2.0</revnumber> 
+		  <date>2003 年 8 月</date> 
+		  <revdescription> 
+                    <para role="author">Sun GNOME 文件小組</para>
+                    <para role="publisher">GNOME 文件專案</para>
+		  </revdescription>
+		</revision>
+	 </revhistory>
+
+	 <releaseinfo>本手冊的內容是說明 &appletversion; 版的 &applet;。
+		</releaseinfo>
+
+	 <legalnotice> 
+		<title>意見回饋</title>
+		<para>關於本 &applet; Applet 或本手冊，如果要報告錯誤或提出建議，請遵照的 <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink> 指示。</para>
+	 </legalnotice>
+
+  </articleinfo>
+
+  <indexterm zone="index"> 
+	 <primary>無線連結監控程式</primary> 
+  </indexterm> 
+  <indexterm zone="index"> 
+	 <primary>無線連結監控程式 Applet 手冊</primary> 
+  </indexterm>
+<!-- ============= Document Body ============================= -->
+<!-- ============= Introduction ============================== -->
+  <sect1 id="wireless-introduction"> 
+	 <title>介紹</title>
+	 <figure id="wireless-fig-conn"> 
+		<title>&applet; 使用連接的 Applet</title>
+		<screenshot>
+		  <mediaobject>
+			 <imageobject><imagedata fileref="figures/wireless_applet_conn.png" 				format="PNG"/> 
+			 </imageobject>
+			 <textobject>
+				<phrase>顯示使用連接的 &applet; Applet。</phrase>
+			 </textobject>
+		  </mediaobject>
+		</screenshot>
+	 </figure>
+	 <figure id="wireless-fig-no-conn"> 
+		<title>&applet; 不使用連接的 Applet</title>
+		<screenshot>
+		  <mediaobject>
+			 <imageobject><imagedata fileref="figures/wireless_applet_no_conn.png" 				format="PNG"/> 
+			 </imageobject>
+			 <textobject>
+				<phrase>顯示不使用連接的 &applet;。</phrase>
+			 </textobject>
+		  </mediaobject>
+		</screenshot>
+	 </figure>
+    <!-- ==== End of Figure ======================================= -->
+	 <para><application>&applet;</application> Applet 提供一種簡便的方式，監視與無線裝置的連接。
+		</para>
+        <para>如果要將 <application>&applet;</application>加入面板，請在面板上按滑鼠右鍵，然後選擇
+            <menuchoice>
+                <guimenu>加入面板</guimenu>
+                <guisubmenu>網際網路</guisubmenu>
+                <guimenuitem>無線連結監視程式</guimenuitem>
+            </menuchoice>。
+</para>
+	 <para><application>&applet;</application> Applet 的版面配置，會根據 Applet 所在面板的大小不同而有所不同。</para>
+	 <para>Applet 包含一些文字，以及一些用來表示連結品質的小方塊。您也可以將訊號強度顯示為百分比。若需如何配置 <application>&applet;</application> 將訊號顯示為百分比的詳細資訊，請參閱 <xref linkend="wireless-prefs"/>。</para>
+	 <para>當沒有連接無線裝置時，&applet; 會顯示文字 <literal>N A</literal>，Applet 方塊也會呈透明狀。百分比訊號強度為 <literal>N/A</literal>。</para>
+  </sect1>
+
+<!-- ================ Usage ================================ -->
+  <sect1 id="wireless-usage"> 
+	 <title>使用</title>
+	 <para>當已連接無線裝置時，&applet; 會顯示文字 <literal>Wi Fi</literal>。面板 Applet 中方塊的顏色表示是否已建立連結，如下所示：</para>
+         <variablelist>
+           <varlistentry>
+             <term>綠色</term>
+             <listitem>
+               <para>無線裝置已建立連結。</para>
+               <para>連結的強度是由綠色方塊數字表示： 綠色方塊的數字愈大，訊號的強度愈強。</para>
+             </listitem>
+           </varlistentry>
+           <varlistentry>
+             <term>紅色</term>
+             <listitem>
+               <para>無線裝置尚未建立連結。</para>
+             </listitem>
+           </varlistentry>
+         </variablelist>
+	 <para>每一個 &applet; 實例只可以監視一個無線裝置。您必須為您想監視的每一個無線裝置啟動一個 &applet; 實例。
+</para>
+  </sect1>
+
+<!-- ============= Customization ============================= -->
+<!-- Use this section to describe how to customize the applet. -->
+  <sect1 id="wireless-prefs"> 
+	 <title>設定</title>
+
+		
+	 <para>如果要配置 <application>&applet;</application>，請在 Applet 上按滑鼠右鍵，然後從即現式功能表中選擇<guimenuitem>偏好設定</guimenuitem>。</para>
+	 <para><guimenuitem>偏好設定</guimenuitem>對話方塊含有下列元件：</para>
+	 <variablelist>
+	   <varlistentry> 
+	     <term><guilabel>監視的裝置</guilabel></term> 
+	     <listitem>
+	       <para>使用這個下拉式清單可以選取您要監視的無線裝置。</para>
+	     </listitem>
+	   </varlistentry>
+	   <varlistentry> 
+	     <term><guilabel>以百分比顯示訊號強度</guilabel></term> 
+	     <listitem>
+	       <para>選取這個選項可以使用百分比顯示訊號強度。
+               </para>
+	     </listitem>
+	   </varlistentry>
+	   <varlistentry> 
+	     <term><guilabel>顯示對話方塊</guilabel></term> 
+	     <listitem>
+	       <para>選取這個選項可以在連結失效或重新建立時顯示對話方塊。
+               </para>
+	     </listitem>
+	   </varlistentry>
+	 </variablelist>
+  </sect1>
+
+</article>
