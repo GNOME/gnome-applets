@@ -1,9 +1,7 @@
-#figdir = figures
 figdir = figures
-docname = mailcheck
+docname = char-palette
 lang = ja
-omffile = mailcheck-ja.omf
+omffile = char-palette-ja.omf
 entities = legal.xml
 include $(top_srcdir)/xmldocs.make
 dist-hook: app-dist-hook
-
