@@ -211,7 +211,9 @@ parse_input (gpointer data, gint source,
 		return;
 	}
 
+#ifdef WE_WANT_VERY_VERBOSE_OUTPUT
 	g_message ("got string: %s", buf);
+#endif
 
 	if (!strncmp (buf, "time: ", 6)) {
 		p = buf+6;
