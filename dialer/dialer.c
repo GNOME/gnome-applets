@@ -22,7 +22,7 @@ int dialer_stop(GtkWidget * w, gpointer data)
 	/* Execute ppp-off (or 'killall pppd', take your pick, when i get Properties
 					 working ;-)*/
 	system("/etc/ppp/ppp-off");
-	gtk_label_set(GTK_LABEL(label), "Off");
+	gtk_label_set_text(GTK_LABEL(label), "Off");
 	return 0;
 }
 
@@ -30,7 +30,7 @@ int dialer_start(GtkWidget * w, gpointer data)
 {
 	/* Execute ppp-up */
 	system("/etc/ppp/ppp-on");
-	gtk_label_set(GTK_LABEL(label), "On");
+	gtk_label_set_text(GTK_LABEL(label), "On");
 	return 0;
 }
 
