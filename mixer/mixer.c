@@ -43,6 +43,7 @@
 
 #include <gtk/gtk.h>
 #include <gdk/gdkkeysyms.h>
+#include <libgnome/libgnome.h>
 #include <libgnomeui/gnome-about.h>
 #include <libgnomeui/gnome-window-icon.h>
 #include <panel-applet.h>
@@ -1003,9 +1004,52 @@ cb_row_selected (GtkTreeSelection *selection, MixerData *data)
 }
 
 static void
+show_help_cb (GtkWindow *dialog)
+{
+	GError *error = NULL;
+	static GnomeProgram *applet_program = NULL;
+	
+	if (!applet_program) {
+		int argc = 1;
+		char *argv[2] = { "mixer_applet2" };
+		applet_program = gnome_program_init ("mixer_applet2", VERSION,
+						      LIBGNOME_MODULE, argc, argv,
+     						      GNOME_PROGRAM_STANDARD_PROPERTIES, NULL);
+	}
+
+	egg_help_display_desktop_on_screen (
+			applet_program, "mixer_applet2", "mixer_applet2", NULL,
+			gtk_widget_get_screen (GTK_WIDGET (dialog)),
+			&error);
+
+	if (error) {
+		GtkWidget *error_dialog;
+
+		error_dialog = gtk_message_dialog_new (
+				NULL,
+				GTK_DIALOG_DESTROY_WITH_PARENT,
+				GTK_MESSAGE_ERROR,
+				GTK_BUTTONS_CLOSE,
+				_("There was an error displaying help: %s"),
+				error->message);
+
+		g_signal_connect (error_dialog, "response",
+				  G_CALLBACK (gtk_widget_destroy),
+				  NULL);
+
+		gtk_window_set_resizable (GTK_WINDOW (error_dialog), FALSE);
+		gtk_window_set_screen (GTK_WINDOW (error_dialog),
+				       gtk_widget_get_screen (GTK_WIDGET (dialog)));
+		gtk_widget_show (error_dialog);
+		g_error_free (error);
+	}
+}
+
+static void
 dialog_response (GtkDialog *dialog, gint id, MixerData *data)
 {
 	if (id == GTK_RESPONSE_HELP) {
+		show_help_cb (GTK_WINDOW (dialog));
 		return;
 	}
 	
@@ -1042,6 +1086,7 @@ mixer_pref_cb (BonoboUIComponent *uic,
                                                    GTK_STOCK_HELP, GTK_RESPONSE_HELP,
                                                    NULL);
 	gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_CLOSE);
+	gtk_dialog_set_has_separator (GTK_DIALOG (dialog), FALSE);
 	gtk_window_set_screen (GTK_WINDOW (dialog),
                            gtk_widget_get_screen (GTK_WIDGET (data->applet)));
         gtk_window_set_default_size (GTK_WINDOW (dialog), 300, 300);
@@ -1056,7 +1101,7 @@ mixer_pref_cb (BonoboUIComponent *uic,
 	vbox2 = gtk_vbox_new (FALSE, 6);
         gtk_box_pack_start (GTK_BOX (vbox1), vbox2, TRUE, TRUE, 0);
         
-        tmp = g_strdup_printf ("<b>%s</b>", _("Channels"));
+        tmp = g_strdup_printf ("<b>%s</b>", _("Audio Channels"));
         label = gtk_label_new (NULL);
         gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
         gtk_label_set_markup (GTK_LABEL (label), tmp);
@@ -1072,6 +1117,10 @@ mixer_pref_cb (BonoboUIComponent *uic,
 	vbox3 = gtk_vbox_new (FALSE, 6);
 	gtk_box_pack_start (GTK_BOX (hbox), vbox3, TRUE, TRUE, 0);
 	
+	label = gtk_label_new_with_mnemonic (_("_Select channel to control:"));
+	gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+	gtk_box_pack_start (GTK_BOX (vbox3), label, FALSE, FALSE, 0);
+	
 	scrolled = gtk_scrolled_window_new(NULL,NULL);
 	gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(scrolled),
 						GTK_POLICY_AUTOMATIC,
@@ -1080,6 +1129,7 @@ mixer_pref_cb (BonoboUIComponent *uic,
 	
 	model = gtk_list_store_new (2, G_TYPE_STRING, G_TYPE_POINTER);
 	tree = gtk_tree_view_new_with_model (GTK_TREE_MODEL (model));
+	gtk_label_set_mnemonic_widget (GTK_LABEL (label), tree);
 	gtk_container_add (GTK_CONTAINER (scrolled), tree);
 	g_object_unref (G_OBJECT (model));
 	cell = gtk_cell_renderer_text_new ();
