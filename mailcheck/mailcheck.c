@@ -2545,6 +2545,39 @@ applet_change_orient(PanelApplet * w, PanelAppletOrient orient, gpointer data)
 }
 
 static void
+applet_change_background(PanelApplet *a,
+			 PanelAppletBackgroundType type,
+			 GdkColor *color, GdkPixmap *pixmap,
+			 MailCheck *mc)
+{
+	GtkRcStyle *rc_style = gtk_rc_style_new ();
+
+	switch (type) {
+		case PANEL_PIXMAP_BACKGROUND:
+			gtk_widget_modify_style (GTK_WIDGET (mc->ebox), rc_style);
+			gtk_widget_modify_style (GTK_WIDGET (mc->applet), rc_style);
+			break;
+
+		case PANEL_COLOR_BACKGROUND:
+			gtk_widget_modify_bg (GTK_WIDGET (mc->ebox), GTK_STATE_NORMAL, color);
+			gtk_widget_modify_bg (GTK_WIDGET (mc->applet), GTK_STATE_NORMAL, color);
+			break;
+
+		case PANEL_NO_BACKGROUND:
+			gtk_widget_modify_style (GTK_WIDGET (mc->ebox), rc_style);
+			gtk_widget_modify_style (GTK_WIDGET (mc->applet), rc_style);
+			break;
+
+		default:
+			gtk_widget_modify_style (GTK_WIDGET (mc->ebox), rc_style);
+			gtk_widget_modify_style (GTK_WIDGET (mc->applet), rc_style);
+			break;
+	}
+
+	gtk_rc_style_unref (rc_style);
+}
+
+static void
 help_callback (BonoboUIComponent *uic, MailCheck *mc, const gchar *verbname)
 {
 	GError *error = NULL;
@@ -2814,15 +2847,22 @@ mailcheck_applet_fill (PanelApplet *applet)
 			 G_CALLBACK(applet_change_orient),
 			 mc);
 
+	g_signal_connect(G_OBJECT(applet), "change_background",
+			 G_CALLBACK(applet_change_background),
+			 mc);
+
 	mailcheck = create_mail_widgets (mc);
 	gtk_widget_show(mailcheck);
 
 	gtk_container_add (GTK_CONTAINER (applet), mailcheck);
 
 	g_signal_connect(G_OBJECT(mc->ebox), "button_press_event",
-			 G_CALLBACK(exec_clicked_cmd), mc);
+			 G_CALLBACK(exec_clicked_cmd),
+			 mc);
+
 	g_signal_connect(G_OBJECT(applet), "key_press_event",
-			 G_CALLBACK(key_press_cb), mc);
+			 G_CALLBACK(key_press_cb),
+			 mc);
 
 	panel_applet_setup_menu_from_file (applet,
 					   NULL,
@@ -2882,4 +2922,4 @@ PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_MailcheckApplet_Factory",
                              "InboxMonitor",
                              "0",
                              mailcheck_factory,
-                             NULL)
+                            NULL)
