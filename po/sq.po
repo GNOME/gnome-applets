@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-19 11:20+0200\n"
-"PO-Revision-Date: 2004-10-20 01:50+0200\n"
+"POT-Creation-Date: 2004-10-21 11:20+0200\n"
+"PO-Revision-Date: 2004-10-21 17:18+0200\n"
 "Last-Translator: Elian Myftiu <elian@lycos.com>\n"
 "Language-Team: Albanian <gnome-albanian-perkthyesit@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -30,6 +30,7 @@ msgstr ""
 #: multiload/GNOME_MultiloadApplet.xml.h:1
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:1
 #: wireless/GNOME_WirelessApplet.xml.h:1
+#: trashapplet/GNOME_Panel_TrashApplet.xml.h:1
 msgid "_About"
 msgstr "_Informacione"
 
@@ -73,7 +74,7 @@ msgstr "Tregon gjendjen e tastierës së thjeshtuar"
 
 #: accessx-status/applet.c:136 battstat/battstat_applet.c:1064
 #: cdplayer/cdplayer.c:596 charpick/charpick.c:592 drivemount/drivemount.c:552
-#: geyes/geyes.c:201 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:608
+#: geyes/geyes.c:201 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:599
 #: gtik/gtik.c:723 gweather/gweather-about.c:47 mailcheck/mailcheck.c:2468
 #: mini-commander/src/about.c:50 modemlights/modemlights.c:118
 #: multiload/main.c:58 stickynotes/stickynotes_applet_callbacks.c:261
@@ -2983,7 +2984,7 @@ msgid "GNOME keyboard layout indicator"
 msgstr "Treguesi i llojit të tastierës GNOME"
 
 #: gswitchit/GNOME_KeyboardApplet.server.in.in.h:3
-#: gswitchit/gswitchit-applet.c:613
+#: gswitchit/gswitchit-applet.c:604
 msgid "Keyboard Indicator"
 msgstr "Treguesi i Tastierës"
 
@@ -2996,19 +2997,19 @@ msgstr "Fabrika e applet-it të tastierës"
 msgid "Keyboard Indicator (%s)"
 msgstr "Tregues Tastiere (%s)"
 
-#: gswitchit/gswitchit-applet.c:616
+#: gswitchit/gswitchit-applet.c:607
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "Copyright (c) Sergey V. Udaltsov 1999-2004"
 
-#: gswitchit/gswitchit-applet.c:618
+#: gswitchit/gswitchit-applet.c:609
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "Applet-i treguesit të layout të tastierës për GNOME"
 
-#: gswitchit/gswitchit-applet.c:772
+#: gswitchit/gswitchit-applet.c:763
 msgid "XKB initialization error"
 msgstr "Gabim gjatë nisjes së XKB"
 
-#: gswitchit/gswitchit-applet.c:780
+#: gswitchit/gswitchit-applet.c:771
 msgid "Error loading XKB configuration registry"
 msgstr "Gabim gjatë leximit të regjistrit të konfigurimit të XKB"
 
@@ -3021,11 +3022,11 @@ msgstr ""
 "programit.\n"
 "Kapërcimi tek kjo dritare me anë të tastierës është i pamundur."
 
-#: gswitchit/gswitchit-capplet.c:265
+#: gswitchit/gswitchit-capplet.c:262
 msgid "_Exclude from keyboard switching"
 msgstr "_Përjashto nga ndryshimi me tastierë"
 
-#: gswitchit/gswitchit-capplet.c:296
+#: gswitchit/gswitchit-capplet.c:293
 msgid "Not used"
 msgstr "I pa përdorur"
 
@@ -6213,9 +6214,9 @@ msgid ""
 "%d notes"
 msgstr ""
 "%s\n"
-"%d·shënim"
+"%d shënim"
 "%s\n"
-"%d·shënime"
+"%d shënime"
 
 #: stickynotes/stickynotes_applet_callbacks.c:273
 msgid "(c) 2002-2003 Loban A Rahman"
@@ -6276,25 +6277,21 @@ msgstr "Preferencat e Vëzhguesit të Lidhjes Wireless"
 msgid "_Monitored device:"
 msgstr "Dispozitivi i _vëzhguar:"
 
-#: trashapplet/GNOME_Panel_TrashApplet.xml.h:1
-msgid "_About..."
-msgstr "_Informacione..."
-
 #: trashapplet/GNOME_Panel_TrashApplet.xml.h:2
 msgid "_Empty Trash"
 msgstr "_Zbraz Koshin"
 
 #: trashapplet/GNOME_Panel_TrashApplet.xml.h:4
-msgid "_Open Trash folder"
-msgstr "_Hap dosjen e Koshit"
+msgid "_Open"
+msgstr "_Hap"
 
 #: trashapplet/GNOME_Panel_TrashApplet.server.in.in.h:1
-msgid "Put Trash on the panel"
-msgstr "Vendos Koshin në panel"
+msgid "Go to Trash"
+msgstr "Shko në Kosh"
 
 #: trashapplet/GNOME_Panel_TrashApplet.server.in.in.h:2
-msgid "Trash Applet"
-msgstr "Applet i Koshit"
+msgid "Trash"
+msgstr "Koshi"
 
 #: trashapplet/src/trashapplet.c:123
 #, c-format
@@ -6349,13 +6346,15 @@ msgstr "Ta Fshij Menjëherë?"
 
 #: trashapplet/src/trashapplet.c:538
 msgid "Cannot move items to trash, do you want to delete them immediately?"
-msgstr "E pamundur zhvendosja e elementëve në kosh, dëshiron ti fshish menjëherë?"
+msgstr ""
+"E pamundur zhvendosja e elementëve në kosh, dëshiron ti fshish menjëherë?"
 
 #: trashapplet/src/trashapplet.c:541
 msgid ""
 "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr ""
-"E pamundur zhvendosja e disa elementëve në kosh, dëshiron ti fshish menjëherë?"
+"E pamundur zhvendosja e disa elementëve në kosh, dëshiron ti fshish "
+"menjëherë?"
 
 #: trashapplet/src/trashapplet.c:639 trashapplet/src/trashapplet.c:656
 #, c-format
@@ -6365,6 +6364,18 @@ msgid ""
 msgstr ""
 "Nuk mund të zhvendos në kosh:\n"
 "%s"
+
+#~ msgid "_About..."
+#~ msgstr "_Informacione..."
+
+#~ msgid "_Open Trash folder"
+#~ msgstr "_Hap dosjen e Koshit"
+
+#~ msgid "Put Trash on the panel"
+#~ msgstr "Vendos Koshin në panel"
+
+#~ msgid "Trash Applet"
+#~ msgstr "Applet i Koshit"
 
 #~ msgid "Locked note"
 #~ msgstr "Shënim i bllokuar"
