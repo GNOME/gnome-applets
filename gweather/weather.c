@@ -463,7 +463,8 @@ close_cb (GnomeVFSAsyncHandle *handle, GnomeVFSResult result, gpointer data)
 
 #define TIME_RE_STR  "^([0-9]{6})Z$"
 #define WIND_RE_STR  "^(([0-9]{3})|VRB)([0-9]?[0-9]{2})(G[0-9]?[0-9]{2})?KT$"
-#define VIS_RE_STR   "^(([0-9]?[0-9])|(M?1/[0-9]?[0-9]))SM$"
+#define VIS_RE_STR   "^((([0-9]?[0-9])|(M?([12] )?([1357]/1?[0-9])))SM)|" \
+                     "([0-9]{4}(N|NE|E|SE|S|SW|W|NW( [0-9]{4})(N|NE|E|SE|S|SW|W|NW))?)$"
 #define CLOUD_RE_STR "^(CLR|BKN|SCT|FEW|OVC|SKC|NSC)([0-9]{3})?(CB|TCU)?$"
 #define TEMP_RE_STR  "^(M?[0-9][0-9])/(M?(//|[0-9][0-9]))$"
 #define PRES_RE_STR  "^(A|Q)([0-9]{4})$"
@@ -600,25 +601,47 @@ static gboolean metar_tok_wind (gchar *tokp, WeatherInfo *info)
 
 static gboolean metar_tok_vis (gchar *tokp, WeatherInfo *info)
 {
-    gchar *pfrac, *pend;
-    gchar sval[4];
-    gint val;
+    gchar *pfrac, *pend, *psp;
+    gchar sval[6];
+    gint num, den, val;
 
     if (regexec(&metar_re[VIS_RE], tokp, 0, NULL, 0) == REG_NOMATCH)
         return FALSE;
 
-    pfrac = strchr(tokp, '/');
     pend = strstr(tokp, "SM");
     memset(sval, 0, sizeof(sval));
 
-    if (pfrac) {
-        strncpy(sval, pfrac + 1, pend - pfrac - 1);
-        val = atoi(sval);
-        info->visibility = (*tokp == 'M') ? 0.001 : (1.0 / ((WeatherVisibility)val));
+    if (pend) {
+        // US observation: field ends with "SM"
+        pfrac = strchr(tokp, '/');
+        if (pfrac) {
+	    if (*tokp == 'M') {
+	        info->visibility = 0.001;
+	    } else {
+	        num = (*(pfrac-1) - '0');
+		strncpy(sval, pfrac + 1, pend - pfrac - 1);
+		den = atoi(sval);
+		info->visibility =
+		    ((WeatherVisibility)num / ((WeatherVisibility)den));
+
+		psp = strchr(tokp, ' ');
+		if (psp) {
+		    *psp = '\0';
+		    val = atoi(tokp);
+		    info->visibility += (WeatherVisibility)val;
+		}
+	    }
+	} else {
+	    strncpy(sval, tokp, pend - tokp);
+            val = atoi(sval);
+            info->visibility = (WeatherVisibility)val;
+	}
     } else {
-        strncpy(sval, tokp, pend - tokp);
-        val = atoi(sval);
-        info->visibility = (WeatherVisibility)val;
+        // International observation: NNNN(DD NNNNDD)?
+        // For now: use only the minimum visibility and ignore its direction
+        strncpy (sval, tokp, strspn(tokp, CONST_DIGITS));
+	val = atoi(sval);
+	info->visibility = (WeatherVisibility)val / VISIBILITY_SM_TO_M(1.);
     }
 
     return TRUE;
