@@ -129,6 +129,7 @@ response_cb (GtkDialog *dialog, gint id, gpointer data)
   
 }
 
+/* FIXME: the fn name should later be changed to preferences_show */
 void
 property_show(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 {
@@ -140,7 +141,7 @@ property_show(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
     gtk_window_present(GTK_WINDOW (curr_data->propwindow->window));
     return;
   }
-  curr_data->propwindow = gtk_dialog_new_with_buttons (_("Character Palette Properties"), 
+  curr_data->propwindow = gtk_dialog_new_with_buttons (_("Character Palette Preferences"), 
   					    NULL,
 					    GTK_DIALOG_DESTROY_WITH_PARENT,
 					    GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,

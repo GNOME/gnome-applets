@@ -412,7 +412,7 @@ applet_destroy (GtkWidget *widget, gpointer data)
 }
 
 static const BonoboUIVerb charpick_applet_menu_verbs [] = {
-        BONOBO_UI_VERB ("Props", property_show),
+        BONOBO_UI_VERB ("Preferences", property_show),
         BONOBO_UI_VERB ("Help", help_cb),
         BONOBO_UI_VERB ("About", about),
 
