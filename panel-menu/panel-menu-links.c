@@ -469,6 +469,9 @@ panel_menu_links_save_config (PanelMenuEntry *entry)
 	links = (PanelMenuLinks *) entry->data;
 
 	id = g_strdup_printf ("links%d", links->id);
+	key = g_strdup_printf ("%s/name", id);
+	panel_applet_gconf_set_string (applet, key, links->name, NULL);
+	g_free (key);
 	key = g_strdup_printf ("%s/links-list", id);
 	panel_applet_gconf_set_string_list (applet, key, links->links_list);
 	g_free (key);
