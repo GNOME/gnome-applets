@@ -71,6 +71,23 @@ SUBDIRS = \
 ## 	$(esd_SUBDIRS)		\
 ## 	omf-install
 
+DIST_SUBDIRS = \
+	po		\
+	mixer		\
+	modemlights	\
+	screenshooter	\
+	cdplayer	\
+	drivemount	\
+	panel-menu	\
+	charpick	\
+	geyes		\
+	mini-commander	\
+	gkb-new		\
+	battstat	\
+	multiload	\
+	gtik		\
+ 	gweather 	\
+	mini-commander
 
 EXTRA_DIST = \
 	COPYING-DOCS		\
