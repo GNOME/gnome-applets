@@ -327,8 +327,10 @@ static void
 destroy_cb (GtkObject *object, EyesApplet *eyes_applet)
 {
 	g_return_if_fail (eyes_applet);
-	
+
 	gtk_timeout_remove (eyes_applet->timeout_id);
+	if (eyes_applet->tooltips)
+		g_object_unref (eyes_applet->tooltips);
 	eyes_applet->timeout_id = 0;
 	if (eyes_applet->eye_image)
 		g_object_unref (eyes_applet->eye_image);
@@ -370,6 +372,21 @@ static const BonoboUIVerb geyes_applet_menu_verbs [] = {
         BONOBO_UI_VERB_END
 };
 
+static void
+set_atk_name_description (GtkWidget *widget, const gchar *name,
+    const gchar *description)
+{
+	AtkObject *aobj;
+   
+	aobj = gtk_widget_get_accessible (widget);
+	/* Check if gail is loaded */
+	if (GTK_IS_ACCESSIBLE (aobj) == FALSE)
+		return;
+
+	atk_object_set_name (aobj, name);
+	atk_object_set_description (aobj, description);
+}
+
 static gboolean
 geyes_applet_fill (PanelApplet *applet)
 {
@@ -388,7 +405,15 @@ geyes_applet_fill (PanelApplet *applet)
                                            NULL,
 				           geyes_applet_menu_verbs,
 				           eyes_applet);
-	
+
+	eyes_applet->tooltips = gtk_tooltips_new ();
+	g_object_ref (eyes_applet->tooltips);
+	gtk_object_sink (GTK_OBJECT (eyes_applet->tooltips));
+	gtk_tooltips_set_tip (eyes_applet->tooltips, GTK_WIDGET (eyes_applet->applet), _("Geyes"), NULL);
+
+	set_atk_name_description (GTK_WIDGET (eyes_applet->applet), _("Geyes"), 
+			_("The eyes look in the direction of the mouse pointer"));
+
 	gtk_widget_show_all (GTK_WIDGET (eyes_applet->applet));
 
 	g_signal_connect (eyes_applet->applet,

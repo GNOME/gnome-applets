@@ -211,6 +211,7 @@ properties_cb (BonoboUIComponent *uic, gpointer user_data, const gchar *verbname
         				     GTK_DIALOG_DESTROY_WITH_PARENT,
 					     GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
 					     NULL);
+        gtk_dialog_set_default_response(GTK_DIALOG (pbox), GTK_RESPONSE_CLOSE);
 
         g_signal_connect (pbox, "response",
 			  G_CALLBACK (presponse_cb),

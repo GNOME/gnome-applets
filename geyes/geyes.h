@@ -55,6 +55,9 @@ typedef struct
 
 	/* Properties */
 	EyesPropertyBox prop_box;
+
+	/* Tooltip */
+	GtkTooltips *tooltips;
 } EyesApplet;
 
 /* eyes.c */
