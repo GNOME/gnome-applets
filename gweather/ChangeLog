@@ -1,5 +1,10 @@
 2000-06-01  Jason Leach  <leach@wam.umd.edu>
 
+	* weather.c: replaced 5 bzero() calls with equivalent memset()
+	calls, see man 3 bzero, "this function is deprecated, use memset
+	in new programs", the reason appers to be mainly a portability
+	thing.
+	
 	* weather.c (_weather_info_get_pixmap): There was no case for
 	QUALIFIER_VICINITY, which is a valid possability for this switch,
 	which meant that it sent users who have this in their weather

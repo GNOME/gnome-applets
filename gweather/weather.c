@@ -410,13 +410,13 @@ static gboolean metar_tok_wind (gchar *tokp, WeatherInfo *info)
     sdir[3] = 0;
     dir = (!strcmp(sdir, "VRB")) ? -1 : atoi(sdir);
 
-    bzero(sspd, sizeof(sspd));
+    memset(sspd, 0, sizeof(sspd));
     strncpy(sspd, tokp+3, strspn(tokp+3, CONST_DIGITS));
     spd = atoi(sspd);
 
     gustp = strchr(tokp, 'G');
     if (gustp) {
-        bzero(sgust, sizeof(sgust));
+        memset(sgust, 0, sizeof(sgust));
         strncpy(sgust, gustp+1, strspn(gustp+1, CONST_DIGITS));
         gust = atoi(sgust);
     }
@@ -470,7 +470,7 @@ static gboolean metar_tok_vis (gchar *tokp, WeatherInfo *info)
 
     pfrac = strchr(tokp, '/');
     pend = strstr(tokp, "SM");
-    bzero(sval, sizeof(sval));
+    memset(sval, 0, sizeof(sval));
 
     if (pfrac) {
         strncpy(sval, pfrac + 1, pend - pfrac - 1);
@@ -602,11 +602,11 @@ static gboolean metar_tok_cond (gchar *tokp, WeatherInfo *info)
     else
         pphen = tokp + 2;
 
-    bzero(squal, sizeof(squal));
+    memset(squal, 0, sizeof(squal));
     strncpy(squal, tokp, pphen - tokp);
     squal[pphen - tokp] = 0;
 
-    bzero(sphen, sizeof(sphen));
+    memset(sphen, 0, sizeof(sphen));
     strcpy(sphen, pphen);
 
     /* Defaults */
