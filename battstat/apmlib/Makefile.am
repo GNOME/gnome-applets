@@ -5,11 +5,9 @@
 #
 
 INCLUDES = \
-	-I$(top_srcdir)/intl \
 	-I$(top_srcdir) \
 	-I$(top_srcdir)/apmlib \
-	-I$(includedir) \
-	$(GNOME_INCLUDEDIR) \
+	$(GNOME_APPLETS_CFLAGS)	 \
 	-DG_LOG_DOMAIN=\"battstat_applet\" \
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"
 

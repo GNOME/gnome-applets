@@ -20,6 +20,8 @@
 $Id$
  */
 
+#define DEBUG 0
+
 #ifdef __FreeBSD__
 #define APMDEVICE	"/dev/apm"
 #endif /* __FreeBSD__ */
