@@ -820,6 +820,8 @@ gnome_volume_applet_refresh (GnomeVolumeApplet *applet)
   g_free (volumes);
   mute = GST_MIXER_TRACK_HAS_FLAG (applet->track,
 				   GST_MIXER_TRACK_MUTE);
+  if (volume == 0)
+    mute = TRUE;
 
   n = 4 * volume / (applet->track->max_volume -
       applet->track->min_volume) + 1;
@@ -830,7 +832,7 @@ gnome_volume_applet_refresh (GnomeVolumeApplet *applet)
 
   if (STATE (n, mute) != applet->state) {
     if (mute) {
-      orig = gdk_pixbuf_copy (pix[n].pixbuf);
+      orig = gdk_pixbuf_copy (pix[applet->state >> 1].pixbuf);
       gdk_pixbuf_composite (pix[0].pixbuf, orig, 0, 0,
 			    gdk_pixbuf_get_width (orig),
 			    gdk_pixbuf_get_height (orig),
@@ -852,7 +854,8 @@ gnome_volume_applet_refresh (GnomeVolumeApplet *applet)
   }
 
   applet->lock = TRUE;
-  gtk_range_set_value (applet->dock->scale, volume);
+  if (volume > 0)
+    gtk_range_set_value (applet->dock->scale, volume);
   applet->lock = FALSE;
 
   /* update mute status (bonobo) */
