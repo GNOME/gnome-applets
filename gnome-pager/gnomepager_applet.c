@@ -1800,8 +1800,13 @@ GList  *get_task_stacking(gint desk)
 	    t = (Task *)p2->data;
 	    
 	    if (t->frame == wl[count]) {
-	      retval = g_list_prepend(retval, (gpointer) t);
 	      tasks_on_desk=g_list_remove_link(tasks_on_desk, p2);
+	      
+	      if (retval)
+		      retval->prev = p2;
+	      p2->next = retval;
+	      p2->prev = NULL;
+	      retval = p2;
 	      break;
 	    }
 	  }
