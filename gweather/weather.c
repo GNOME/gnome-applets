@@ -1024,7 +1024,7 @@ const gchar *weather_info_get_sky (WeatherInfo *info)
     if (!info->valid)
         return "-";
     if (info->sky < 0)
-	return "Unknown";
+	return _("Unknown");
     return weather_sky_string(info->sky);
 }
 
