@@ -1,9 +1,9 @@
 pixmapdir = $(datadir)/panel/
 
 INCLUDES = 			\
-	-I../../.. 		\
-	-I$(srcdir)/../../.. 	\
-	-I$(includedir)
+	-I. -I$(srcdir)		\
+	-I$(srcdir)/../../panel	\
+	-I$(includedir) $(GNOME_INCLUDEDIR)
 
 lib_LTLIBRARIES = libpanel_netwatch.la
 
