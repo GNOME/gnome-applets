@@ -218,18 +218,18 @@ dialog_cb (BonoboUIComponent *component,
 	if (error != NULL) {
 		GtkWidget *dialog = 
 			gtk_message_dialog_new (NULL,
-					GTK_DIALOG_DESTROY_WITH_PARENT,
-					GTK_MESSAGE_ERROR,
-					GTK_BUTTONS_CLOSE,
-					_("There was an error launching the keyboard capplet : %s"), 
-					error->message);
+						GTK_DIALOG_DESTROY_WITH_PARENT,
+						GTK_MESSAGE_ERROR,
+						GTK_BUTTONS_CLOSE,
+						_("There was an error launching the keyboard capplet : %s"), 
+						error->message);
 
 		g_signal_connect (G_OBJECT (dialog),
-				"response",
-				G_CALLBACK (gtk_widget_destroy), NULL);
+				  "response",
+				  G_CALLBACK (gtk_widget_destroy), NULL);
 
 		gtk_window_set_screen (GTK_WINDOW (dialog),
-				gtk_widget_get_screen (GTK_WIDGET (sapplet->applet)));
+				       gtk_widget_get_screen (GTK_WIDGET (sapplet->applet)));
 		gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
 
 		gtk_widget_show (dialog);
@@ -245,7 +245,7 @@ static const BonoboUIVerb accessx_status_applet_menu_verbs [] = {
 	BONOBO_UI_VERB_END
 };
 
-	XkbDescPtr 
+XkbDescPtr 
 accessx_status_applet_get_xkb_desc (AccessxStatusApplet *sapplet)
 {
 	Display *display;
@@ -254,16 +254,16 @@ accessx_status_applet_get_xkb_desc (AccessxStatusApplet *sapplet)
 		int ir, reason_return;
 		char *display_name = getenv ("DISPLAY");
 		display = XkbOpenDisplay (display_name,
-				&xkb_base_event_type,
-				&ir, NULL, NULL, 
-				&reason_return);
+					  &xkb_base_event_type,
+					  &ir, NULL, NULL, 
+					  &reason_return);
 		g_assert (display); /* TODO: change error message below to something user-viewable */
 		if (display == NULL)
 			g_warning ("Xkb extension could not be initialized! (error code %x)", reason_return);
 		else 
 			sapplet->xkb = XkbGetMap (display, 
-					XkbAllComponentsMask,
-					XkbUseCoreKbd);
+						  XkbAllComponentsMask,
+						  XkbUseCoreKbd);
 		g_assert (sapplet->xkb);
 		if (sapplet->xkb == NULL)
 			g_warning ("Xkb keyboard description not available!");
@@ -272,7 +272,7 @@ accessx_status_applet_get_xkb_desc (AccessxStatusApplet *sapplet)
 	return sapplet->xkb;
 }
 
-	gboolean
+gboolean
 accessx_status_applet_xkb_select (AccessxStatusApplet *sapplet)
 {
 	int opcode_rtn, error_rtn;
@@ -282,17 +282,17 @@ accessx_status_applet_xkb_select (AccessxStatusApplet *sapplet)
 	display = GDK_WINDOW_XDISPLAY (GTK_WIDGET (sapplet->applet)->window);
 	g_assert (display);
 	retval = XkbQueryExtension (display, &opcode_rtn, &xkb_base_event_type, 
-			&error_rtn, NULL, NULL);
+				    &error_rtn, NULL, NULL);
 	if (retval) {
 		retval = XkbSelectEvents (display, XkbUseCoreKbd, 
-				XkbAllEventsMask, 
-				XkbAllEventsMask);
+					  XkbAllEventsMask, 
+					  XkbAllEventsMask);
 		sapplet->xkb = accessx_status_applet_get_xkb_desc (sapplet);
 	}
 	return retval;
 }
 
-	static void
+static void
 accessx_status_applet_init_modifiers (AccessxStatusApplet *sapplet) 
 {
 	int i;

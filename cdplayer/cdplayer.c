@@ -371,19 +371,20 @@ start_gtcd_cb (BonoboUIComponent *component,
 {
     GError *error = NULL;
 
-    gdk_spawn_command_line_on_screen (gtk_widget_get_screen (GTK_WIDGET (cd->panel.applet)),
+    gdk_spawn_command_line_on_screen (
+		    		gtk_widget_get_screen (GTK_WIDGET (cd->panel.applet)),
 				"gnome-cd", &error);
 
     if (error) {
 	GtkWidget *dialog;
 
 	dialog = gtk_message_dialog_new (NULL,
-			    GTK_DIALOG_DESTROY_WITH_PARENT,
-			    GTK_MESSAGE_ERROR,
-			    GTK_BUTTONS_OK,
-			    _("There was an error executing '%s': %s"),
-			    "gnome-cd",
-			     error->message);
+					 GTK_DIALOG_DESTROY_WITH_PARENT,
+					 GTK_MESSAGE_ERROR,
+					 GTK_BUTTONS_OK,
+					 _("There was an error executing '%s': %s"),
+					 "gnome-cd",
+					 error->message);
 
 	g_signal_connect (dialog, "response",
 			  G_CALLBACK (gtk_widget_destroy),
