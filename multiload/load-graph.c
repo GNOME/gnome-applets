@@ -129,6 +129,7 @@ load_graph_unalloc (LoadGraph *g)
     
     g_snprintf(name, sizeof(name), "%s_size", g->name);
     g->size = panel_applet_gconf_get_int(g->applet, "size", NULL);
+    g->size = MAX (g->size, 10);
 
     if (g->pixmap) {
 		gdk_pixmap_unref (g->pixmap);
@@ -269,8 +270,8 @@ load_graph_new (PanelApplet *applet, guint n, gchar *label,
     g->visible = visible;
     g->name = name;
     g->n = n;
-    g->speed  = speed;
-    g->size   = size;
+    g->speed  = MAX (speed, 50);
+    g->size   = MAX (size, 10);
     g->pixel_size = panel_applet_get_size (applet);
     g->tooltip_update = FALSE;
     

@@ -294,6 +294,7 @@ multiload_applet_new(PanelApplet *applet, const gchar *iid, gpointer data)
 	GtkWidget *box;
 	PanelAppletOrient orientation;
 	MultiloadApplet *ma;
+	gboolean visible = FALSE;
 	
 	ma = g_new0(MultiloadApplet, 1);
 	
@@ -327,7 +328,17 @@ multiload_applet_new(PanelApplet *applet, const gchar *iid, gpointer data)
 	    if (ma->graphs[i]->visible) {
 	    	gtk_widget_show_all (ma->graphs[i]->main_widget);
 		load_graph_start(ma->graphs[i]);
+		visible = TRUE;
 	    }
+	}
+	
+	if (!visible) {
+		/* No graphs shown - need to show at least one so show cpu*/
+		ma->graphs[0]->visible = TRUE;
+		gtk_widget_show_all (ma->graphs[0]->main_widget);
+		load_graph_start(ma->graphs[0]);
+		panel_applet_gconf_set_bool(ma->applet, "view_cpuload", 
+			                    TRUE, NULL);
 	}
 
 	{

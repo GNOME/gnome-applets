@@ -215,6 +215,8 @@ add_color_selector(GtkWidget *page, gchar *name, gchar *gconf_path, MultiloadApp
 	gint red, green, blue;
 	
 	color_string = panel_applet_gconf_get_string(ma->applet, gconf_path, NULL);
+	if (!color_string)
+		color_string = g_strdup ("#000000");
 	red = g_ascii_xdigit_value(color_string[1]) * 16 + g_ascii_xdigit_value(color_string[2]);
 	green = g_ascii_xdigit_value(color_string[3]) * 16 + g_ascii_xdigit_value(color_string[4]);
 	blue = g_ascii_xdigit_value(color_string[5]) * 16 + g_ascii_xdigit_value(color_string[6]);

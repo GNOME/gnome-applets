@@ -90,13 +90,23 @@ LoadGraph *
 loadavg_applet_new(PanelApplet *applet, gpointer data)
 {
 	LoadGraph *g;
+	gint speed, size;
+	GError *error = NULL;
 	
-	g = load_graph_new(applet, 2, N_("Load Average"),
-					panel_applet_gconf_get_int(applet, "speed", NULL), 
-					panel_applet_gconf_get_int(applet, "size", NULL), 
-					panel_applet_gconf_get_bool(applet, "view_loadavg", NULL), 
-					"loadavg", 
-					GetLoadAvg);
+	speed = panel_applet_gconf_get_int(applet, "speed", &error);
+	if (error) {
+		g_print ("%s \n", error->message);
+		g_error_free (error);
+		error = NULL;
+	}
+	speed = MAX (speed, 50);
+	size = panel_applet_gconf_get_int(applet, "size", NULL);
+	size = 500;
+	size = CLAMP (size, 10, 400);
+	
+	g = load_graph_new(applet, 2, N_("Load Average"), speed, size, 
+			   panel_applet_gconf_get_bool(applet, "view_loadavg", NULL), 
+			   "loadavg", GetLoadAvg);
 	
 	return g;
 }
