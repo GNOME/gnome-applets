@@ -49,8 +49,10 @@
 	typedef struct {
 		char *price;
 		int pricelen;
+		int priceheight;
 		char *change;
 		int changelen;
+		int changeheight;
 		int color;
 	} StockQuote;
 	
@@ -190,10 +192,12 @@
 					       STOCK_QUOTE(quotes->data)[i].price, -1);
 			pango_layout_get_pixel_extents (stockdata->layout, NULL, &rect);
 			STOCK_QUOTE(quotes->data)[i].pricelen = rect.width;
+			STOCK_QUOTE(quotes->data)[i].priceheight = rect.height;
 			pango_layout_set_text (stockdata->layout, 
 					       STOCK_QUOTE(quotes->data)[i].change, -1);
 			pango_layout_get_pixel_extents (stockdata->layout, NULL, &rect);
 			STOCK_QUOTE(quotes->data)[i].changelen = rect.width;
+			STOCK_QUOTE(quotes->data)[i].changeheight = rect.height;
 		}
 	}
 
@@ -575,7 +579,7 @@ static gint updateOutput(gpointer data)
 		PangoRectangle logical_rect;
 		int	comp;
 		gint n = 0, totalLen2 = 0;
-		int start, end, width;
+		int start, end, width, max_height=0, y;
 
 		/* FOR COLOR */
 		int totalLoc;
@@ -595,17 +599,19 @@ static gint updateOutput(gpointer data)
 		
 		for (i=0; i< stockdata->setCounter; i++) {
 			totalLen += STOCK_QUOTE(quotes->data)[i].pricelen + 10;
-			
+			max_height = MAX (max_height, STOCK_QUOTE(quotes->data)[i].priceheight);
 			if (stockdata->props.output == FALSE) {
 				if (*(STOCK_QUOTE(quotes->data)[i].change)) {
 					totalLen += STOCK_QUOTE(quotes->data)[i].changelen 
 						+ 10;
+					max_height = MAX (max_height, STOCK_QUOTE(quotes->data)[i].changeheight);
 					
 				}
 			}
 			
 		}
 		
+		y = MAX((drawing_area->allocation.height - max_height)/2, 0);
 		comp = 0 - totalLen;
 
 		if (stockdata->MOVE == 1) { stockdata->MOVE = 0; } 
@@ -659,7 +665,7 @@ static gint updateOutput(gpointer data)
 					       STOCK_QUOTE(quotes->data)[i].price,
 					       -1);	
 				gdk_draw_layout (stockdata->pixmap, gc,
-					 start , 0,
+					 start , y,
 					 layout);
 			}
 			totalLoc += STOCK_QUOTE(quotes->data)[i].pricelen + 10;
@@ -673,7 +679,7 @@ static gint updateOutput(gpointer data)
 						STOCK_QUOTE(quotes->data)[i].change, -1);
 					gdk_draw_layout (stockdata->pixmap,
 					     		gc, stockdata->location + totalLoc,
-					     		0, layout);
+					     		y, layout);
 				}
 				totalLoc += STOCK_QUOTE(quotes->data)[i].changelen + 10;
 			}
@@ -1895,15 +1901,18 @@ static gint updateOutput(gpointer data)
 		pango_layout_set_text (stockdata->layout, price, -1);
 		pango_layout_get_pixel_extents (stockdata->layout, NULL, &rect);
 		quote.pricelen = rect.width;
+		quote.priceheight = rect.height;
 		if (change) {
 			quote.change = g_strdup(change);
 			pango_layout_set_text (stockdata->layout, change, -1);
 			pango_layout_get_pixel_extents (stockdata->layout, NULL, &rect);
 			quote.changelen = rect.width;
+			quote.changeheight = rect.height;
 		}
 		else {
 			quote.change = g_strdup("");
 			quote.changelen = 0;
+			quote.changeheight = 0;
 		}
 		
 
