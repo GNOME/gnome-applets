@@ -352,7 +352,11 @@ void stickynotes_add()
 
 	/* Show all sticky notes */
 	stickynote_set_visible(note, TRUE);
-	gconf_client_set_bool(stickynotes->gconf, GCONF_PATH "/settings/visible", TRUE, NULL);
+
+	/* Only set the visible flag if we can actually write it */
+	if (gconf_client_key_is_writable (stickynotes->gconf,
+					  GCONF_PATH "/settings/visible", NULL))
+		gconf_client_set_bool(stickynotes->gconf, GCONF_PATH "/settings/visible", TRUE, NULL);
 }
 
 /* Remove a sticky note with confirmation, if needed */

@@ -138,13 +138,15 @@ void menu_destroy_all_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, cons
 /* Menu Callback : Show/Hide sticky notes */
 void menu_toggle_show_cb(BonoboUIComponent *uic, const gchar *path, Bonobo_UIComponent_EventType type, const gchar *state, StickyNotesApplet *applet)
 {
-	gconf_client_set_bool(stickynotes->gconf, GCONF_PATH "/settings/visible", strcmp(state, "0") != 0, NULL);
+	if (gconf_client_key_is_writable (stickynotes->gconf, GCONF_PATH "/settings/visible", NULL))
+		gconf_client_set_bool(stickynotes->gconf, GCONF_PATH "/settings/visible", strcmp(state, "0") != 0, NULL);
 }
 
 /* Menu Callback: Lock/Unlock sticky notes */
 void menu_toggle_lock_cb(BonoboUIComponent *uic, const gchar *path, Bonobo_UIComponent_EventType type, const gchar *state, StickyNotesApplet *applet)
 {
-	gconf_client_set_bool(stickynotes->gconf, GCONF_PATH "/settings/locked", strcmp(state, "0") != 0, NULL);
+	if (gconf_client_key_is_writable (stickynotes->gconf, GCONF_PATH "/settings/locked", NULL))
+		gconf_client_set_bool(stickynotes->gconf, GCONF_PATH "/settings/locked", strcmp(state, "0") != 0, NULL);
 }
 
 /* Menu Callback : Configure preferences */
@@ -177,13 +179,31 @@ void preferences_save_cb(gpointer data)
 	gboolean sticky = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(stickynotes->w_prefs_sticky));
 	gboolean force_default = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(stickynotes->w_prefs_force));
 
-	gconf_client_set_int(stickynotes->gconf, GCONF_PATH "/defaults/width", width, NULL);
-	gconf_client_set_int(stickynotes->gconf, GCONF_PATH "/defaults/height", height, NULL);
-	gconf_client_set_bool(stickynotes->gconf, GCONF_PATH "/settings/use_system_color", sys_color, NULL);
-	gconf_client_set_bool(stickynotes->gconf, GCONF_PATH "/settings/use_system_font", sys_font, NULL);
-	gconf_client_set_int(stickynotes->gconf, GCONF_PATH "/settings/click_behavior", click_behavior, NULL);
-	gconf_client_set_bool(stickynotes->gconf, GCONF_PATH "/settings/sticky", sticky, NULL);
-	gconf_client_set_bool(stickynotes->gconf, GCONF_PATH "/settings/force_default", force_default, NULL);
+	/* FIXME: This is so ugly, we are setting everything whenever we change anything,
+	   this is why key-writability is even a bigger mess here */
+
+
+	if (gconf_client_key_is_writable (stickynotes->gconf,
+					  GCONF_PATH "/defaults/width", NULL))
+		gconf_client_set_int(stickynotes->gconf, GCONF_PATH "/defaults/width", width, NULL);
+	if (gconf_client_key_is_writable (stickynotes->gconf,
+					  GCONF_PATH "/defaults/height", NULL))
+		gconf_client_set_int(stickynotes->gconf, GCONF_PATH "/defaults/height", height, NULL);
+	if (gconf_client_key_is_writable (stickynotes->gconf,
+					  GCONF_PATH "/settings/use_system_color", NULL))
+		gconf_client_set_bool(stickynotes->gconf, GCONF_PATH "/settings/use_system_color", sys_color, NULL);
+	if (gconf_client_key_is_writable (stickynotes->gconf,
+					  GCONF_PATH "/settings/use_system_font", NULL))
+		gconf_client_set_bool(stickynotes->gconf, GCONF_PATH "/settings/use_system_font", sys_font, NULL);
+	if (gconf_client_key_is_writable (stickynotes->gconf,
+					  GCONF_PATH "/settings/click_behavior", NULL))
+		gconf_client_set_int(stickynotes->gconf, GCONF_PATH "/settings/click_behavior", click_behavior, NULL);
+	if (gconf_client_key_is_writable (stickynotes->gconf,
+					  GCONF_PATH "/settings/sticky", NULL))
+		gconf_client_set_bool(stickynotes->gconf, GCONF_PATH "/settings/sticky", sticky, NULL);
+	if (gconf_client_key_is_writable (stickynotes->gconf,
+					  GCONF_PATH "/settings/force_default", NULL))
+		gconf_client_set_bool(stickynotes->gconf, GCONF_PATH "/settings/force_default", force_default, NULL);
 }
 
 /* Preferences Callback : Change color. */
