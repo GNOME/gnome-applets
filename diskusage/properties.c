@@ -74,7 +74,7 @@ void save_properties( char *path, diskusage_properties *prop )
 
 void ucolor_set_cb(GnomeColorPicker *cp)
 {
- 	int r,g,b;
+ 	guint8 r,g,b;
 	gnome_color_picker_get_i8(cp, 
 			&r,
 			&g, 
@@ -85,7 +85,7 @@ void ucolor_set_cb(GnomeColorPicker *cp)
 }
 void fcolor_set_cb(GnomeColorPicker *cp)
 {
- 	int r,g,b;
+ 	guint8 r,g,b;
 	gnome_color_picker_get_i8(cp, 
 			&r,
 			&g, 
@@ -96,7 +96,7 @@ void fcolor_set_cb(GnomeColorPicker *cp)
 }
 void tcolor_set_cb(GnomeColorPicker *cp)
 {
- 	int r,g,b;
+ 	guint8 r,g,b;
 	gnome_color_picker_get_i8(cp, 
 			&r,
 			&g, 
@@ -107,7 +107,7 @@ void tcolor_set_cb(GnomeColorPicker *cp)
 }
 void bcolor_set_cb(GnomeColorPicker *cp)
 {
- 	int r,g,b;
+ 	guint8 r,g,b;
 	gnome_color_picker_get_i8(cp, 
 			&r,
 			&g, 
