@@ -334,7 +334,7 @@ prop_cb (BonoboUIComponent *uic,
   guint      percentage;
   gboolean   writable;
 
-  apm_readinfo (PANEL_APPLET (battstat->applet));
+  apm_readinfo (PANEL_APPLET (battstat->applet), battstat);
 
 #ifdef __FreeBSD__
   percentage = apminfo.ai_batt_life;

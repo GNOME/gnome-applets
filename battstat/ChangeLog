@@ -1,3 +1,16 @@
+2003-10-26  Kjartan Maraas  <kmaraas@gnome.org>
+
+	* acpi-linux.c: (update_ac_info), (update_battery_info),
+	(acpi_linux_init), (acpi_linux_cleanup), (parse_acpi_event),
+	(acpi_process_event), (acpi_linux_read):
+	* acpi-linux.h:
+	* battstat.h:
+	* battstat_applet.c: (apm_readinfo), (acpi_callback),
+	(pixmap_timeout), (destroy_applet), (change_orient),
+	(battstat_applet_fill):
+	* properties.c: (prop_cb): Merge patch for better ACPI
+	handling and less CPU usage from HEAD.
+
 2003-10-10  Kjartan Maraas  <kmaraas@gnome.org>
 
 	* battstat_applet.c: (destroy_applet), (about_cb), (create_layout):

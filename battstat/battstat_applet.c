@@ -221,9 +221,15 @@ struct apm_power_info apminfo;
 struct apm_info apminfo;
 #endif
 
+#ifdef __linux__
+struct acpi_info acpiinfo;
+gboolean using_acpi;
+int acpi_count;
+#endif
+
 #ifdef __FreeBSD__
 void
-apm_readinfo (PanelApplet *applet)
+apm_readinfo (PanelApplet *applet, ProgressData * battstat)
 {
   /* This is how I read the information from the APM subsystem under
      FreeBSD.  Each time this functions is called (once every second)
@@ -242,7 +248,7 @@ apm_readinfo (PanelApplet *applet)
 }
 #elif __OpenBSD__
 void
-apm_readinfo (PanelApplet *applet)
+apm_readinfo (PanelApplet *applet, ProgressData * battstat)
 {
   /* Code for OpenBSD by Joe Ammond <jra@twinight.org>. Using the same
      procedure as for FreeBSD.
@@ -259,10 +265,27 @@ apm_readinfo (PanelApplet *applet)
 #elif __linux__
 
 // Declared in acpi-linux.c
-gboolean acpi_linux_read(struct apm_info *apminfo);
+gboolean acpi_linux_read(struct apm_info *apminfo, struct acpi_info *acpiinfo);
+
+gboolean acpi_callback (GIOChannel * chan, GIOCondition cond, gpointer data)
+{
+  ProgressData * battstat = (ProgressData *) data;
+
+  if (cond & (G_IO_ERR | G_IO_HUP)) {
+    acpi_linux_cleanup(&acpiinfo);
+    apminfo.battery_percentage = -1;
+    return FALSE;
+  }
+  
+  if (acpi_process_event(&acpiinfo)) {
+    acpi_linux_read(&apminfo, &acpiinfo);
+    pixmap_timeout(data);
+  }
+  return TRUE;
+}
 
 void
-apm_readinfo (PanelApplet *applet)
+apm_readinfo (PanelApplet *applet, ProgressData * battstat)
 {
   /* Code for Linux by Thomas Hood <jdthood@mail.com>. apm_read() will
      read from /proc/... instead and we do not need to open the device
@@ -270,14 +293,34 @@ apm_readinfo (PanelApplet *applet)
   */
   if (DEBUG) g_print("apm_readinfo() (Linux)\n");
 
-  // ACPI support added by Lennart Poettering <lennart@poettering.de> 10/27/2001
-  // First try ACPI kernel interface, than fall back on APM
-  if (!acpi_linux_read(&apminfo))
+  /* ACPI support added by Lennart Poettering <lennart@poettering.de> 10/27/2001
+   * Updated by David Moore <dcm@acm.org> 5/29/2003 to poll less and
+   *   use ACPI events. */
+  if (using_acpi && acpiinfo.event_fd >= 0) {
+    if (acpi_count <= 0) {
+      /* Only call this one out of 30 calls to apm_readinfo() (every 30 seconds)
+       * since reading the ACPI system takes CPU cycles. */
+      acpi_count=30;
+      acpi_linux_read(&apminfo, &acpiinfo);
+    }
+    acpi_count--;
+  }
+  /* If we lost the file descriptor with ACPI events, try to get it back. */
+  else if (using_acpi) {
+      if (acpi_linux_init(&acpiinfo)) {
+          battstat->acpiwatch = g_io_add_watch (acpiinfo.channel,
+              G_IO_IN | G_IO_ERR | G_IO_HUP,
+              acpi_callback, battstat);
+          acpi_linux_read(&apminfo, &acpiinfo);
+      }
+  }
+  else
     apm_read(&apminfo);
 }
+
 #else
 void
-apm_readinfo (PanelApplet *applet)
+apm_readinfo (PanelApplet *applet, ProgressData * battstat)
 {
   g_print("apm_readinfo() (Generic)\n");
   g_print(
@@ -342,7 +385,7 @@ pixmap_timeout( gpointer data )
       3 = Charging
   */
 
-   apm_readinfo (PANEL_APPLET (battery->applet));
+   apm_readinfo (PANEL_APPLET (battery->applet), battery);
    batterypresent = TRUE;
 #ifdef __FreeBSD__
    acline_status = apminfo.ai_acline ? 1 : 0;
@@ -687,6 +730,14 @@ destroy_applet (GtkWidget *widget, gpointer data)
    gdk_bitmap_unref(pdata->masky);
    gdk_bitmap_unref(pdata->pixmask);
 
+#ifdef __linux__
+   if (using_acpi) {
+     g_source_remove(pdata->acpiwatch);
+     pdata->acpiwatch = 0;
+     acpi_linux_cleanup(&acpiinfo);
+   }
+#endif
+
    if (pdata->suspend_cmd)
    	g_free (pdata->suspend_cmd);
    
@@ -897,7 +948,7 @@ change_orient (PanelApplet       *applet,
    
    if (DEBUG) g_print("change_orient()\n");
 
-   apm_readinfo(PANEL_APPLET (applet));
+   apm_readinfo(PANEL_APPLET (applet), battstat);
 #ifdef __FreeBSD__
    acline_status = apminfo.ai_acline ? 1 : 0;
    batt_state = apminfo.ai_batt_stat;
@@ -1468,6 +1519,7 @@ static gboolean
 battstat_applet_fill (PanelApplet *applet)
 {
   ProgressData *battstat;
+  struct stat statbuf;
 
   if (DEBUG) g_print("main()\n");
   
@@ -1476,8 +1528,29 @@ battstat_applet_fill (PanelApplet *applet)
   panel_applet_add_preferences (applet, "/schemas/apps/battstat-applet/prefs", NULL);
   panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);
 
-  apm_readinfo (applet);
-  
+#ifdef __linux__
+  if (acpi_linux_init(&acpiinfo)) {
+    using_acpi = TRUE;
+    acpi_count = 0;
+  }
+  else
+    using_acpi = FALSE;
+
+  /* If neither ACPI nor APM could be read, but ACPI does seem to be
+   * installed, warn the user how to get ACPI working. */
+  if (!using_acpi && (apm_exists() == 1) &&
+          (stat("/proc/acpi", &statbuf) == 0)) {
+      battstat_error_dialog (
+	       applet,
+	       "Can't access ACPI events in /var/run/acpid.socket!\n\n"
+		 "Make sure the ACPI subsystem is working and\n"
+		 "the acpid daemon is running.");
+      using_acpi = TRUE;
+      acpi_count = 0;
+  }
+#endif
+  apm_readinfo (applet, NULL);
+
 #ifdef __FreeBSD__
   if(apminfo.ai_status == 0) cleanup (applet, 2);
 #endif
@@ -1511,6 +1584,14 @@ battstat_applet_fill (PanelApplet *applet)
   change_orient (applet, battstat->orienttype, battstat );
 
   battstat->pixtimer = gtk_timeout_add (1000, pixmap_timeout, battstat);
+#ifdef __linux__
+  /* Watch for ACPI events and handle them immediately with acpi_callback(). */
+  if (using_acpi && acpiinfo.event_fd >= 0) {
+    battstat->acpiwatch = g_io_add_watch (acpiinfo.channel,
+        G_IO_IN | G_IO_ERR | G_IO_HUP,
+        acpi_callback, battstat);
+  }
+#endif
 
   gtk_container_add (GTK_CONTAINER (battstat->applet), battstat->hbox1);
 
