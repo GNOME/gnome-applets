@@ -369,7 +369,7 @@ phelp_cb (GtkDialog *dialog)
 	GError *error = NULL;
 
 	egg_help_display_on_screen (
-		"modemlights_applet", "modemlights-prefs",
+		"modemlights", "modemlights-prefs",
 		gtk_window_get_screen (GTK_WINDOW (dialog)),
 		&error);
 

@@ -1345,7 +1345,7 @@ static void show_help_cb (BonoboUIComponent *uic,
 {
 	PanelApplet *applet = PANEL_APPLET (mldata->applet);
 	egg_help_display_on_screen (
-		"modemlights_applet", NULL,
+		"modemlights", NULL,
 		gtk_widget_get_screen (GTK_WIDGET (applet)),
 		NULL);
 }
@@ -1538,7 +1538,7 @@ modemlights_applet_factory (PanelApplet *applet,
 
 PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_ModemLightsApplet_Factory",
 			     PANEL_TYPE_APPLET,
-			     "modemlights_applet",
+			     "modemlights",
 			     "0",
 			     modemlights_applet_factory,
 			     NULL)
