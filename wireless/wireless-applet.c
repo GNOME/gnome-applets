@@ -611,7 +611,7 @@ setup_widgets (WirelessApplet *applet)
 	gtk_image_set_from_pixbuf (GTK_IMAGE (applet->pixmap), applet->pixmaps[PIX_BROKEN]);
 	gtk_widget_size_request (applet->pixmap, &req);
 	gtk_widget_show (applet->pixmap);
-	
+
 	if (horizontal)
 		total_size += req.height;
 	else
@@ -632,7 +632,7 @@ setup_widgets (WirelessApplet *applet)
 	/* pack */
 	if (applet->box)
 		gtk_widget_destroy (applet->box);
-		
+
 	if (horizontal && (total_size <= panel_size))
 		applet->box = gtk_vbox_new (FALSE, 0);
 	else if (horizontal && (total_size > panel_size))
@@ -648,18 +648,18 @@ setup_widgets (WirelessApplet *applet)
 	 * only realised if it's enabled */
 	gtk_widget_show (applet->box);
 	gtk_container_add (GTK_CONTAINER (applet), applet->box);
+
+	applet->current_pixbuf = NULL;
 }
 
 static void change_size_cb(PanelApplet *pa, gint s, WirelessApplet *applet)
 {
-
 	setup_widgets (applet);
 	wireless_applet_timeout_handler (applet);
 }
 
 static void change_orient_cb(PanelApplet *pa, gint s, WirelessApplet *applet)
 {
-
 	setup_widgets (applet);
 	wireless_applet_timeout_handler (applet);
 }
@@ -667,9 +667,8 @@ static void change_orient_cb(PanelApplet *pa, gint s, WirelessApplet *applet)
 static GtkWidget *
 wireless_applet_new (WirelessApplet *applet)
 {
-	
 	panel_applet_set_flags (PANEL_APPLET (applet), PANEL_APPLET_EXPAND_MINOR);
-	
+
 	/* this ensures that properties are loaded */
 	wireless_applet_load_properties (applet);
 	wireless_applet_load_theme (applet);
