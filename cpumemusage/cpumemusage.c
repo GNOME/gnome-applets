@@ -19,7 +19,6 @@
 #include <applet-widget.h>
 
 #include "proc.h"
-#include "procbar.h"
 
 
 /* Milliseconds between updates */
@@ -49,8 +48,8 @@ static GdkColor bar_swap_colors [PROC_SWAP_SIZE-1] = {
 	{0, 0, 0x8fff, 0},
 };
 
-static ProcInfo   summary_info;
-static ProcBar   *cpu, *mem, *swap = NULL;
+static ProcInfo  summary_info;
+static GtkWidget *cpu, *mem, *swap = NULL;
 static GtkWidget *cpumemusage;
 static GtkWidget *applet;
 
@@ -60,7 +59,7 @@ update_cpu_values (void)
 	/* printf ("update\n"); */
 
 	proc_read_cpu (&summary_info);
-	procbar_set_values (cpu, summary_info.cpu);
+	gnome_proc_bar_set_values (GNOME_PROC_BAR (cpu), summary_info.cpu);
 
 	return TRUE;
 }
@@ -69,10 +68,11 @@ static gint
 update_mem_values (void)
 {
 	proc_read_mem (&summary_info);
-	procbar_set_values (mem, summary_info.mem);
+	gnome_proc_bar_set_values (GNOME_PROC_BAR (mem), summary_info.mem);
 
 	if (swap)
-		procbar_set_values (swap, summary_info.swap);
+		gnome_proc_bar_set_values
+			(GNOME_PROC_BAR (swap), summary_info.swap);
 
 	return TRUE;
 }
@@ -90,17 +90,17 @@ pack_procbars(gboolean vertical)
 		gtk_widget_set_usize (box, 80, 40);
 	}
 
-	procbar_set_orient (cpu, vertical);
-	gtk_box_pack_start_defaults (GTK_BOX (box), cpu->hbox);
-	procbar_set_orient (mem, vertical);
-	gtk_box_pack_start_defaults (GTK_BOX (box), mem->hbox);
+	gnome_proc_bar_set_orient (GNOME_PROC_BAR (cpu), vertical);
+	gtk_box_pack_start_defaults (GTK_BOX (box), cpu);
+	gnome_proc_bar_set_orient (GNOME_PROC_BAR (mem), vertical);
+	gtk_box_pack_start_defaults (GTK_BOX (box), mem);
 	
 	if (swap) {
-		procbar_set_orient (swap, vertical);
-		gtk_box_pack_start_defaults (GTK_BOX (box), swap->hbox);
+		gnome_proc_bar_set_orient (GNOME_PROC_BAR (swap), vertical);
+		gtk_box_pack_start_defaults (GTK_BOX (box), swap);
 	}
 
-	gtk_widget_show (box);
+	gtk_widget_show_all (box);
 
 	return box;
 }
@@ -109,21 +109,36 @@ static GtkWidget *
 cpumemusage_widget ()
 {
 	GtkWidget *box;
+	GNOME_Panel_OrientType orient;
 	
 	proc_read_mem (&summary_info);
 
-	cpu  = procbar_new (NULL, PROC_CPU_SIZE-1, bar_cpu_colors,
-			    update_cpu_values);
-	mem  = procbar_new (NULL, PROC_MEM_SIZE-2, bar_mem_colors,
-			    update_mem_values);
+	cpu  = gnome_proc_bar_new (NULL, PROC_CPU_SIZE-1, bar_cpu_colors,
+				   update_cpu_values);
+	mem  = gnome_proc_bar_new (NULL, PROC_MEM_SIZE-2, bar_mem_colors,
+				   update_mem_values);
 
 	if (summary_info.swap [PROC_SWAP_TOTAL])
-		swap = procbar_new (NULL, PROC_SWAP_SIZE-1, bar_swap_colors,
-				    NULL);
+		swap = gnome_proc_bar_new
+			(NULL, PROC_SWAP_SIZE-1, bar_swap_colors, NULL);
 
-	box = pack_procbars (FALSE);
-	procbar_start (cpu, CPU_UPDATE_MSEC);
-	procbar_start (mem, MEM_UPDATE_MSEC);
+	update_cpu_values ();
+	update_mem_values ();
+
+	gnome_proc_bar_start (GNOME_PROC_BAR (cpu), CPU_UPDATE_MSEC, NULL);
+	gnome_proc_bar_start (GNOME_PROC_BAR (mem), MEM_UPDATE_MSEC, NULL);
+
+	orient = applet_widget_get_panel_orient (APPLET_WIDGET (applet));
+
+	switch (orient) {
+	case GNOME_Panel_ORIENT_LEFT:
+	case GNOME_Panel_ORIENT_RIGHT:
+	    box = pack_procbars (TRUE);
+	    break;
+	default:
+	    box = pack_procbars (FALSE);
+	    break;
+	}
 
 	return box;
 }
@@ -136,31 +151,30 @@ static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
 	gboolean vertical;
 	
 	switch (o) {
-	case ORIENT_UP:
-	case ORIENT_DOWN:
-		vertical = FALSE;
-		break;
 	case ORIENT_LEFT:
 	case ORIENT_RIGHT:
 		vertical = TRUE;
 		break;
+	default:
+		vertical = FALSE;
+		break;
 	}
 		
 	if (swap) {
-		gtk_widget_ref (swap->hbox);
-		gtk_container_remove (GTK_CONTAINER(cpumemusage), swap->hbox);
+		gtk_widget_ref (swap);
+		gtk_container_remove (GTK_CONTAINER(cpumemusage), swap);
 	}
-	gtk_widget_ref (cpu->hbox);
-	gtk_container_remove (GTK_CONTAINER(cpumemusage), cpu->hbox);
-	gtk_widget_ref (mem->hbox);
-	gtk_container_remove (GTK_CONTAINER(cpumemusage), mem->hbox);
+	gtk_widget_ref (cpu);
+	gtk_container_remove (GTK_CONTAINER(cpumemusage), cpu);
+	gtk_widget_ref (mem);
+	gtk_container_remove (GTK_CONTAINER(cpumemusage), mem);
 	
 	box = pack_procbars (vertical);
 
 	if (swap)
-		gtk_widget_unref (swap->hbox);
-	gtk_widget_unref (cpu->hbox);
-	gtk_widget_unref (mem->hbox);
+		gtk_widget_unref (swap);
+	gtk_widget_unref (cpu);
+	gtk_widget_unref (mem);
 
 	gtk_container_remove (GTK_CONTAINER (applet), cpumemusage);
 	gtk_container_add (GTK_CONTAINER (applet), box);
@@ -170,7 +184,7 @@ static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
 int main(int argc, char **argv)
 {
         applet_widget_init("cpumemusage_applet", VERSION, argc, argv,
-				    NULL, 0, NULL);
+			   NULL, 0, NULL);
 
 	applet = applet_widget_new("cpumemusage_applet");
 	if (!applet)
