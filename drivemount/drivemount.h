@@ -39,7 +39,6 @@ struct _DriveData
 	PanelOrientType orient;
 	gint sizehint;
 	gint scale_applet;
-	GtkTooltips *tooltip;
 
 	gchar *custom_icon_in;
 	gchar *custom_icon_out;

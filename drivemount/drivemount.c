@@ -196,15 +196,15 @@ static gint device_is_in_mountlist(DriveData *dd)
 	return found;
 }
 
-static dev_t get_device(gchar *file)
+static gint get_device(gchar *file)
 {
 	struct stat file_info;
-	dev_t t;
+	gint t;
 
 	if (stat (file, &file_info) == -1)
-		t = 0;
+		t = -1;
 	else
-		t = file_info.st_dev;
+		t = (gint)file_info.st_dev;
 
 	return t;
 }
@@ -213,7 +213,10 @@ static gint device_is_mounted(DriveData *dd)
 {
 	if (!dd->autofs_friendly)
 		{
-		if (get_device(dd->mount_base) == get_device(dd->mount_point))
+		gint b, p;
+		b = get_device(dd->mount_base);
+		p = get_device(dd->mount_point);
+		if (b == p || p == -1 || b == -1)
 			return FALSE;
 		else
 			return TRUE;
@@ -359,7 +362,7 @@ static void update_pixmap(DriveData *dd, gint t)
 		}
 
 	tiptext = g_strconcat(dd->mount_point, text, NULL);
-	gtk_tooltips_set_tip (dd->tooltip, dd->applet, tiptext, NULL);
+	applet_widget_set_tooltip(APPLET_WIDGET(dd->applet), tiptext);
 	g_free(tiptext);
 }
 
@@ -642,8 +645,6 @@ static DriveData * create_drive_widget(GtkWidget *applet)
 				GTK_SIGNAL_FUNC(mount_cb),
 				dd);
 	dnd_init(dd);
-
-	dd->tooltip = gtk_tooltips_new();
 
 	/* attach applet signals here */
 

@@ -1,3 +1,14 @@
+Thu Mar  2 19:54:01 2000  John Ellis  <johne@bellatlantic.net>
+
+	* drivemount.c (get_device): returns gint instead of dev_t. return -1
+	on error.
+	* (device_is_mounted): return false if any get_device calls return
+	error (-1). Now incorrect mount points do not show a mounted status.
+	(fixes BUG #6770).
+	* drivemount.[ch]: Used the applet_widget_set_tooltip function, instead
+	of setting one manually, in attempt to fix BUG #6769, although I can't
+	duplicate it, and am not even sure if the applet or panel is to blame.
+
 Tue Feb 29 05:26:04 2000  John Ellis  <johne@bellatlantic.net>
 
 	* drivemount.c (create_drive_widget): Remove debug printf.
