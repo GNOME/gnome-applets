@@ -165,10 +165,10 @@ static void draw_load(int rxbytes,int txbytes)
 		load_hist[load_hist_pos] = txbytes;
 	else
 		load_hist[load_hist_pos] = rxbytes;
-	for (i=0;i<119;i++)
+	for (i=0;i<120;i++)
 		if (load_max < load_hist[i]) load_max = load_hist[i];
 
-	for (i=0;i<16;i++)
+	for (i=0;i<15;i++)
 		{
 		load_hist_rx[i] = load_hist_rx[i+1];
 		load_hist_tx[i] = load_hist_tx[i+1];
@@ -176,7 +176,7 @@ static void draw_load(int rxbytes,int txbytes)
 	load_hist_rx[15] = rxbytes;
 	load_hist_tx[15] = txbytes;
 
-	if (load_max < 15)
+	if (load_max < 16)
 		bytes_per_dot = 1.0;
 	else
 		bytes_per_dot = (float)load_max / 15;
@@ -390,7 +390,7 @@ static void setup_colors()
 static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
 {
 	/* resize the applet and set the proper background pixmap */
-	static first_call_flag = FALSE;
+	static int first_call_flag = FALSE;
 	orient = o;
 
 	/* catch 22 with the display_area realize and the signal connect for the orient
