@@ -79,9 +79,6 @@
 	
 		GArray *quotes;
 
-		int max_rgb_str_len;
-		int max_rgb_str_size;
-
 		int setCounter;
 
 		GdkGC *gc;
@@ -98,11 +95,7 @@
 		GtkWidget *fontDialog;
 
 		GtkWidget * pb;
-		gchar *buttons;
-		gchar *arrows;
-		gchar *scroll;
-		gchar *poutput;
-	
+		
 		gtik_properties props; 
 	
 		gint timeout;
@@ -118,8 +111,6 @@
 	
 	void removeSpace(char *buffer); 
 	int configured(StockData *stockdata);
-	void timeout_cb( GtkWidget *widget, GtkWidget *spin );
-	void properties_save(char *path) ;
 	static void destroy_applet(GtkWidget *widget, gpointer data) ;
 	char *getSymsFromClist(GtkWidget *clist) ;
 
@@ -133,8 +124,10 @@
 	static void setOutputArray(StockData *stockdata, char *param1) ;
 	void setup_colors(StockData *stockdata);
 	int create_gc(StockData *stockdata) ;
-	void ucolor_set_cb(GnomeColorPicker *cp, gpointer data) ;
-	void dcolor_set_cb(GnomeColorPicker *cp, gpointer data) ;
+	void ucolor_set_cb(GnomeColorPicker *cp, guint r, guint g, guint b,
+			   guint a, gpointer data) ;
+	void dcolor_set_cb(GnomeColorPicker *cp, guint r, guint g, guint b,
+			   guint a, gpointer data) ;
 
 	/* end of color funcs */
 
@@ -266,13 +259,6 @@ g_print ("hello \n");
 	/*-----------------------------------------------------------------*/
 	static void properties_load(StockData *stockdata) {
 		PanelApplet *applet = PANEL_APPLET (stockdata->applet);
-		/*stockdata->props.tik_syms = g_strdup ("cald+rhat+corl");
-		stockdata->props.output = FALSE;
-		stockdata->props.scroll = TRUE;
-		stockdata->props.arrows = TRUE;
-		stockdata->props.timeout = 5;
-		
-		stockdata->props.buttons = TRUE;*/
 		
 		stockdata->props.tik_syms = panel_applet_gconf_get_string (applet,
 									   "tik_syms",
@@ -318,69 +304,7 @@ g_print ("hello \n");
 									  "buttons",
 									  NULL);
 									
-#ifdef FIXME	
-		
-		gnome_config_push_prefix ("/");
-		if( gnome_config_get_string ("gtik/tik_syms") != NULL ) 
-		   props.tik_syms = gnome_config_get_string("gtik/tik_syms");
-		
-
-		if (gnome_config_get_int("gtik/timeout") > 0)
-			props.timeout = gnome_config_get_int("gtik/timeout");
-		timeout = props.timeout;
-
-		if ( gnome_config_get_string ("gtik/output") != NULL ) 
-			props.output = gnome_config_get_string("gtik/output");
-		
-		if ( gnome_config_get_string ("gtik/font") != NULL ) 
-			props.font = gnome_config_get_string("gtik/font");
-
-		if ( gnome_config_get_string ("gtik/font2") != NULL ) 
-			props.font2 = gnome_config_get_string("gtik/font2");
-
-		if ( gnome_config_get_string ("gtik/scroll") != NULL ) 
-			props.scroll = gnome_config_get_string("gtik/scroll");
-
-		if ( gnome_config_get_string ("gtik/arrows") != NULL ) 
-			props.arrows = gnome_config_get_string("gtik/arrows");
-		
-		if ( gnome_config_get_string ("gtik/ucolor") != NULL ) 
-		   strcpy(props.ucolor, gnome_config_get_string("gtik/ucolor"));
-		
-		if ( gnome_config_get_string ("gtik/dcolor") != NULL ) 
-		   strcpy(props.dcolor, gnome_config_get_string("gtik/dcolor"));
-		
-		if ( gnome_config_get_string ("gtik/buttons") != NULL ) 
-			props.buttons = gnome_config_get_string("gtik/buttons");
-		
-		gnome_config_pop_prefix ();
-#endif
 	}
-
-
-
-	/*-----------------------------------------------------------------*/
-	void properties_save(char *path) {
-#ifdef FIXME
-		gnome_config_push_prefix (path);
-		gnome_config_set_string( "gtik/tik_syms", props.tik_syms );
-		gnome_config_set_string( "gtik/output", props.output );
-		gnome_config_set_string( "gtik/scroll", props.scroll );
-		gnome_config_set_string( "gtik/arrows", props.arrows );
-		gnome_config_set_string( "gtik/ucolor", props.ucolor );
-		gnome_config_set_string( "gtik/dcolor", props.dcolor );
-		gnome_config_set_string( "gtik/font", props.font );
-		gnome_config_set_string( "gtik/font2", props.font2 );
-		gnome_config_set_string( "gtik/buttons", props.buttons );
-
-		gnome_config_set_int("gtik/timeout",props.timeout);
-
-		gnome_config_pop_prefix ();
-		gnome_config_sync();
-		gnome_config_drop_all();
-#endif
-	}	
-
 
 	/*-----------------------------------------------------------------*/
 	static void properties_set (StockData *stockdata, gboolean update) {
@@ -512,6 +436,7 @@ g_print ("parse \n");
 			}
 			linenum++;
 		}
+		g_print ("%s \n", change);
 		sprintf(result,"%s:%s:%s:%s",
 				symbol,price,change,percent);			
 		return(result);
@@ -590,11 +515,6 @@ g_print ("configured \n");
 		return TRUE;
 	}
 
-
-
-
-
-
 	/*-----------------------------------------------------------------*/
 	static gint Repaint (gpointer data) {
 		StockData *stockdata = data;
@@ -647,7 +567,7 @@ g_print ("configured \n");
 		if (stockdata->MOVE == 1) {
 
 
-		  if (stockdata->props.scroll = TRUE) {
+		  if (stockdata->props.scroll == TRUE) {
 			if (stockdata->location > comp) {
 				stockdata->location--;
 			}
@@ -675,7 +595,7 @@ g_print ("configured \n");
 			if (STOCK_QUOTE(quotes->data)[i].color == GREEN) {
 				gdk_gc_set_foreground( gc, &stockdata->gdkUcolor );
 			}
-			else if (STOCK_QUOTE(quotes->data)->color == RED) {
+			else if (STOCK_QUOTE(quotes->data)[i].color == RED) {
 				gdk_gc_set_foreground( gc, &stockdata->gdkDcolor );
 			}
 			else {
@@ -800,59 +720,176 @@ g_print ("configured \n");
 	}
 
 	/*-----------------------------------------------------------------*/
-	static void toggle_output_cb(GtkWidget *widget, gpointer data) {
-#ifdef FIXME
-		if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget)))
-			strcpy(poutput,"nochange");
-		else
-			strcpy(poutput,"default");
-#endif
-			
-	}
-
-	/*-----------------------------------------------------------------*/
-	static void toggle_scroll_cb(GtkWidget *widget, gpointer data) {
-#ifdef FIXME
-		if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget)))
-			strcpy(scroll,"left2right");
-		else
-			strcpy(scroll,"right2left");
-#endif
-			
-	}
-
-
-	/*-----------------------------------------------------------------*/
-	static void toggle_arrows_cb(GtkWidget *widget, gpointer data) {
-#ifdef FIXME
-		if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget)))
-			strcpy(arrows,"arrows");
-		else
-			strcpy(arrows,"noArrows");
-#endif			
-	}
-
-	/*-----------------------------------------------------------------*/
-	static void toggle_buttons_cb(GtkWidget *widget, gpointer data) {
-#ifdef FIXME
-		if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget)))
-			strcpy(buttons,"yes");
-		else
-			strcpy(buttons,"no");
-#endif
-	}
-
-
-	/*-----------------------------------------------------------------*/
-	void timeout_cb( GtkWidget *widget, GtkWidget *spin ) {
-#ifdef FIXME
+	static void timeout_cb(GtkSpinButton *spin, gpointer data ) {
+		StockData *stockdata = data;
+		PanelApplet *applet = PANEL_APPLET (stockdata->applet);
+		gint timeout;
+		
 		timeout=gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spin));
-
-		gnome_property_box_changed(GNOME_PROPERTY_BOX(pb));
-#endif
+		if (timeout < 1)
+			return;
+		stockdata->props.timeout = timeout;
+		panel_applet_gconf_set_int (applet, "timeout", 
+					    stockdata->props.timeout, NULL);
+		gtk_timeout_remove(stockdata->updateTimeID);
+		stockdata->updateTimeID = gtk_timeout_add(stockdata->props.timeout * 60000,
+				                         (gpointer)updateOutput,"NULL");
+		
+	}
+	
+	static void
+	output_toggled (GtkToggleButton *button, gpointer data)
+	{
+		StockData *stockdata = data;
+		PanelApplet *applet = PANEL_APPLET (stockdata->applet);
+		
+		stockdata->props.output = gtk_toggle_button_get_active (button);
+		panel_applet_gconf_set_bool (applet,"output",
+					     stockdata->props.output, NULL);
+					     
+	}
+	
+	static void
+	rtl_toggled (GtkToggleButton *button, gpointer data)
+	{
+		StockData *stockdata = data;
+		PanelApplet *applet = PANEL_APPLET (stockdata->applet);
+		
+		stockdata->props.scroll = !gtk_toggle_button_get_active (button);
+		panel_applet_gconf_set_bool (applet,"scroll",
+					     stockdata->props.scroll, NULL);
+					     
+	}
+	
+	static void
+	arrows_toggled (GtkToggleButton *button, gpointer data)
+	{
+		StockData *stockdata = data;
+		PanelApplet *applet = PANEL_APPLET (stockdata->applet);
+		
+		stockdata->props.arrows = gtk_toggle_button_get_active (button);
+		panel_applet_gconf_set_bool (applet,"arrows",
+					     stockdata->props.arrows, NULL);
+					     
+	}
+	
+	static void
+	scroll_toggled (GtkToggleButton *button, gpointer data)
+	{
+		StockData *stockdata = data;
+		PanelApplet *applet = PANEL_APPLET (stockdata->applet);
+		
+		stockdata->props.buttons = gtk_toggle_button_get_active (button);
+		panel_applet_gconf_set_bool (applet,"buttons",
+					     stockdata->props.buttons, NULL);
+		if (stockdata->props.buttons == TRUE) {
+			gtk_widget_show(stockdata->leftButton);
+			gtk_widget_show(stockdata->rightButton);
+		}
+		else {
+			gtk_widget_hide(stockdata->leftButton);
+			gtk_widget_hide(stockdata->rightButton);
+		}
+					     
 	}
 
-
+	static void
+	add_symbol (GtkEntry *entry, gpointer data)
+	{
+		StockData *stockdata = data;
+		PanelApplet *applet = PANEL_APPLET (stockdata->applet);
+		GtkWidget *list;
+		GtkTreeModel *model;
+		GtkTreeIter row;
+		gchar *symbol;
+		gchar *tmp;
+		
+		symbol = gtk_editable_get_chars (GTK_EDITABLE (entry), 0, -1);
+		if (!symbol || (strlen (symbol) < 1))
+			return;
+		
+		tmp = stockdata->props.tik_syms;
+		stockdata->props.tik_syms = g_strconcat (tmp, "+", symbol, NULL);
+		panel_applet_gconf_set_string (applet, "tik_syms", 
+					       stockdata->props.tik_syms, NULL);
+					       
+		g_free (tmp);
+		
+		list = g_object_get_data (G_OBJECT (entry), "list");
+		model = gtk_tree_view_get_model (GTK_TREE_VIEW (list));
+		gtk_list_store_append (GTK_LIST_STORE (model), &row);
+		gtk_list_store_set (GTK_LIST_STORE (model), &row, 
+					    0, symbol, -1);
+					    
+		gtk_entry_set_text (entry, "");
+		
+	}
+	
+	static void
+	add_button_clicked (GtkButton *button, gpointer data)
+	{
+		StockData *stockdata = data;
+		GtkEntry *entry = g_object_get_data (G_OBJECT (button), "entry");
+		
+		add_symbol (entry, stockdata);
+		
+	}
+	
+	static gboolean
+	get_symbols (GtkTreeModel *model, GtkTreePath *path, GtkTreeIter *iter,
+	 	     gpointer data)
+	{
+		StockData *stockdata = data;
+		gchar *symbol;
+		gchar *tmp;
+		
+		gtk_tree_model_get (model, iter, 0, &symbol, -1);
+		if (!symbol)
+			return;
+		
+		g_print ("%s \n", symbol);
+		tmp = stockdata->props.tik_syms;
+		/* don't add the "+" if the symbol is the first one */
+		if (stockdata->props.tik_syms)
+			stockdata->props.tik_syms = g_strconcat (tmp, "+", symbol, NULL);
+		else
+			stockdata->props.tik_syms = g_strdup(symbol);
+		g_free (symbol);
+		if (tmp)
+			g_free (tmp);
+		
+	}
+	
+	static void
+	remove_symbol (GtkButton *button, gpointer data)
+	{
+		StockData *stockdata = data;
+		GtkWidget *list;
+		GtkTreeModel *model;
+		GtkTreeSelection *selection;
+		GtkTreeIter iter;
+		PanelApplet *applet = PANEL_APPLET (stockdata->applet);
+		
+		/* FIXME: allow for multiple selection */
+		
+		list = g_object_get_data (G_OBJECT (button), "list");
+		model = gtk_tree_view_get_model (GTK_TREE_VIEW (list));
+		selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (list));
+		
+		if (!gtk_tree_selection_get_selected (selection, NULL, &iter))
+			return;
+			
+		gtk_list_store_remove (GTK_LIST_STORE (model), &iter);
+		
+		/* rebuild symbol table */
+		if (stockdata->props.tik_syms)
+			g_free (stockdata->props.tik_syms);
+		stockdata->props.tik_syms = NULL;
+		gtk_tree_model_foreach (model, get_symbols, stockdata);
+		panel_applet_gconf_set_string (applet, "tik_syms",
+					       stockdata->props.tik_syms, NULL);
+		
+	}
 
 #ifdef FIXME
 	/*-----------------------------------------------------------------*/
@@ -860,40 +897,13 @@ g_print ("configured \n");
 
 		char *tmpText;
 #ifdef FIXME
-		tmpText = gtk_entry_get_text(GTK_ENTRY(tik_syms_entry));
-		props.tik_syms = g_strdup(tmpText);
-
-		props.tik_syms = getSymsFromClist(tik_syms_entry);
-		if  (props.timeout) {	
-			props.timeout = timeout > 0 ? timeout : props.timeout;
-		}
-
 		if (new_font != NULL) {
 			if (whichlabel == 1) 
 				props.font = g_strdup(new_font);
 			else
 				props.font2 = g_strdup(new_font);
 		}
-		if (strcmp(buttons,"blank") !=0) {
-			props.buttons = g_strdup(buttons);
-		}
-		if (strcmp(arrows,"blank") !=0) {
-			props.arrows = g_strdup(arrows);
-		}
-		if (strcmp(scroll,"blank") !=0) {
-			props.scroll = g_strdup(scroll);
-		}
-		if (strcmp(poutput,"blank") !=0) {
-			props.output = g_strdup(poutput);
-		}
-
-
-		if (updateTimeID > 0)
-			gtk_timeout_remove(updateTimeID);
-		updateTimeID = gtk_timeout_add(props.timeout * 60000,
-				   (gpointer)updateOutput,"NULL");
-
-		properties_save(APPLET_WIDGET(applet)->privcfgpath);
+		
 
 		properties_set(TRUE);
 #endif
@@ -966,143 +976,83 @@ g_print ("configured \n");
 		return FALSE;
         }
 
-	/*-----------------------------------------------------------------*/
-
-	char *getSymsFromClist(GtkWidget *clist) {
-		GList *selection;
-		char *symbol;
-		char *ret;
-		GString *symlist;
-		gint row;
-
-		gtk_clist_freeze(GTK_CLIST(clist));
-		gtk_clist_select_all(GTK_CLIST(clist));
-
-		symlist = g_string_new (NULL);
-
-		selection = GTK_CLIST(clist)->selection;
-
-		while (selection) {
-			row=GPOINTER_TO_INT(selection->data);
-			selection=selection->next;
-			gtk_clist_get_text(GTK_CLIST(clist),row,0,&symbol);
-
-			symbol = g_strdup (symbol);
-
-			/* XXX: couldn't this be just g_strstrip ????
-			 * -George */
-			removeSpace(symbol);
-
-			if (strcmp(symlist->str,"") != 0) {
-				g_string_append (symlist, "+");
-			}
-
-			g_string_append (symlist, symbol);
-
-			g_free (symbol);
-		}
-		gtk_clist_thaw(GTK_CLIST(clist));
-
-		ret = symlist->str;
-		g_string_free (symlist, FALSE);
-		return ret;
-	}
-
-	static void populateClist(StockData *stockdata, GtkWidget *clist) {
+	static void populatelist(StockData *stockdata, GtkWidget *list) {
 	
-		gchar *symbol[1];
+		gchar *symbol;
 		gchar *syms;
 		gchar *temp;
-
+		GtkTreeModel *model;
+		GtkTreeIter row;
+		
 		syms = g_strdup(stockdata->props.tik_syms);
 
 		if ((temp=strtok(syms,"+")))
-			symbol[0] = g_strdup(temp);
+			symbol = g_strdup(temp);
 
-		while (symbol[0]) {
-			gtk_clist_append(GTK_CLIST(clist),symbol);
+		model = gtk_tree_view_get_model (GTK_TREE_VIEW (list));
+		while (symbol) {
+			gtk_list_store_append (GTK_LIST_STORE (model), &row);
+			gtk_list_store_set (GTK_LIST_STORE (model), &row, 
+					    0, symbol, -1);
 			if ((temp=strtok(NULL,"+")))
-				symbol[0] = g_strdup(temp);
+				symbol = g_strdup(temp);
 			else
-				symbol[0]=NULL;
+				symbol=NULL;
 		}
 
 		if ((temp=strtok(NULL,""))) {
-			symbol[0] = g_strdup(temp);
-			gtk_clist_append(GTK_CLIST(clist),symbol);
+			symbol = g_strdup(temp);
+			gtk_list_store_append (GTK_LIST_STORE (model), &row);
+			gtk_list_store_set (GTK_LIST_STORE (model), &row, 
+					    0, symbol, -1);
 		}
 	}
 
-	/*-----------------------------------------------------------------*/
-
-	/* Thanks to Mike Oliphant for inspiration. */
-
-	static void addToClist(GtkWidget *widget_unused, gpointer entry) {
-		char *symbols, *symbol_start, *symbol_end;
-		gint row = -1;
-		GtkWidget *clist;
-
-		clist = GTK_WIDGET(gtk_object_get_data(GTK_OBJECT(entry),
-							"clist"));
-
-		symbols = g_strdup(gtk_entry_get_text(GTK_ENTRY(entry)));
-		symbol_start = symbol_end = symbols;
-
-		while (*symbol_end) {
-			if (*symbol_end == ' ') {
-				*symbol_end = '\0';
-				if (symbol_start != symbol_end)
-					row = gtk_clist_append(GTK_CLIST(clist),&symbol_start);
-				symbol_start = symbol_end + 1;
-			}
-			symbol_end++;
-		}
-		if (symbol_start != symbol_end)
-			row = gtk_clist_append(GTK_CLIST(clist),&symbol_start);
-
-		gtk_entry_set_text(GTK_ENTRY(entry),"");
-		if (row != -1)
-			gtk_clist_moveto(GTK_CLIST(clist),row,0,0,0);
-		g_free(symbols);
-	}
-
-	static void remFromClist(GtkWidget *widget, gpointer data) {
-		GtkCList *clist;
-
-		clist = GTK_CLIST(gtk_object_get_data(GTK_OBJECT(widget),
-						      "clist"));
-		while (GPOINTER_TO_INT(clist->selection))
-			gtk_clist_remove(GTK_CLIST(clist), GPOINTER_TO_INT(clist->selection->data));
-	}
 
 	static GtkWidget *symbolManager(StockData *stockdata) { 
 		GtkWidget *vbox;
 		GtkWidget *mainhbox;
 		GtkWidget *hbox;
-		GtkWidget *clist;
+		GtkWidget *list;
+		GtkListStore *model;
+		GtkTreeViewColumn *column;
+		GtkTreeSelection *selection;
+  		GtkCellRenderer *cell_renderer;
 		GtkWidget *swindow;
 		GtkWidget *label;
 		GtkWidget *entry;
 		static GtkWidget *button;
 
-		clist = gtk_clist_new(1);
-		stockdata->tik_syms_entry = clist;
-		gtk_clist_set_selection_mode(GTK_CLIST(clist),
-						GTK_SELECTION_EXTENDED);
-		gtk_clist_column_titles_passive(GTK_CLIST(clist));
-		gtk_widget_set_usize(clist,100,-1);
-		gtk_clist_set_column_width(GTK_CLIST(clist),0,60);
-		gtk_clist_set_reorderable(GTK_CLIST(clist),TRUE);
-		gtk_signal_connect_object(GTK_OBJECT(clist),"drag_drop",
-				GTK_SIGNAL_FUNC(changed_cb),GTK_OBJECT(stockdata->pb));
+		model = gtk_list_store_new (1, G_TYPE_STRING);
+		list = gtk_tree_view_new_with_model (GTK_TREE_MODEL (model));
+		g_object_unref (G_OBJECT (model));
+		
+		/*selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (tree));
+  		gtk_tree_selection_set_mode (selection, GTK_SELECTION_MULTIPLE);*/
+  		
+  		cell_renderer = gtk_cell_renderer_text_new ();
+  		column = gtk_tree_view_column_new_with_attributes ("hello",
+						    	   cell_renderer,
+						     	   "text", 0,
+						     	   NULL);
+		gtk_tree_view_column_set_sort_column_id (column, 0);
+					     	   
+		gtk_tree_view_append_column (GTK_TREE_VIEW (list), column);
+		
+		gtk_tree_view_set_headers_visible (GTK_TREE_VIEW (list), FALSE);
+  		
+		stockdata->tik_syms_entry = list;
+		
+		/*gtk_signal_connect_object(GTK_OBJECT(clist),"drag_drop",
+				GTK_SIGNAL_FUNC(changed_cb),GTK_OBJECT(stockdata->pb));*/
 
 		swindow = gtk_scrolled_window_new(NULL,NULL);
 		gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(swindow),
 						GTK_POLICY_AUTOMATIC,
 						GTK_POLICY_AUTOMATIC);
-		gtk_container_add(GTK_CONTAINER(swindow),clist);
+		gtk_container_add(GTK_CONTAINER(swindow),list);
 
-		populateClist(stockdata, clist);
+		populatelist(stockdata, list);
 
 		hbox = gtk_hbox_new(FALSE,5);
 		vbox = gtk_vbox_new(FALSE,5);
@@ -1111,33 +1061,27 @@ g_print ("configured \n");
 		gtk_box_pack_start(GTK_BOX(hbox),label,TRUE,TRUE,0);
 
 		entry = gtk_entry_new();
-		gtk_object_set_data(GTK_OBJECT(entry),"clist",(gpointer)clist);
+		g_object_set_data(G_OBJECT(entry),"list",(gpointer)list);
 		gtk_box_pack_start(GTK_BOX(hbox),entry,TRUE,TRUE,0);
-		gtk_signal_connect(GTK_OBJECT(entry),"activate",
-					GTK_SIGNAL_FUNC(addToClist), entry);
-		gtk_signal_connect_object(GTK_OBJECT(entry),"activate",
-				GTK_SIGNAL_FUNC(changed_cb),GTK_OBJECT(stockdata->pb));
+		g_signal_connect (G_OBJECT (entry), "activate",
+				  G_CALLBACK (add_symbol), stockdata);
 		
-		button = gtk_button_new_with_label(_("Add"));
+		
+		button = gtk_button_new_with_mnemonic(_("_Add"));
+		g_object_set_data (G_OBJECT (button), "entry", entry);
 		gtk_box_pack_start(GTK_BOX(hbox),button,TRUE,TRUE,0);
-		gtk_signal_connect(GTK_OBJECT(button),"clicked",
-					GTK_SIGNAL_FUNC(addToClist), entry);
-		gtk_signal_connect_object(GTK_OBJECT(button),"clicked",
-				GTK_SIGNAL_FUNC(changed_cb),GTK_OBJECT(stockdata->pb));
-
+		g_signal_connect (G_OBJECT (button), "clicked",
+				  G_CALLBACK (add_button_clicked), stockdata);
+		
+		
 		gtk_box_pack_start(GTK_BOX(vbox),hbox,FALSE,FALSE,0);
 
 		hbox = gtk_hbox_new(FALSE,5);
 
 		button = gtk_button_new_with_label(_("Remove Selected"));
-		gtk_signal_connect(GTK_OBJECT(clist),"select-row",
-				GTK_SIGNAL_FUNC(selected_cb),(gpointer)button);
-		gtk_object_set_data(GTK_OBJECT(button),"clist",(gpointer)clist);
-		gtk_signal_connect(GTK_OBJECT(button),"clicked",
-					GTK_SIGNAL_FUNC(remFromClist),NULL);
-		gtk_signal_connect_object(GTK_OBJECT(button),"clicked",
-				GTK_SIGNAL_FUNC(changed_cb),GTK_OBJECT(stockdata->pb));
-		gtk_widget_set_sensitive(button,FALSE);
+		g_object_set_data (G_OBJECT (button), "list", list);
+		g_signal_connect (G_OBJECT (button), "clicked",
+				  G_CALLBACK (remove_symbol), stockdata);
 		gtk_box_pack_start(GTK_BOX(hbox),button,FALSE,FALSE,0);
 
 		gtk_box_pack_end(GTK_BOX(vbox),hbox,FALSE,FALSE,0);
@@ -1170,17 +1114,10 @@ g_print ("configured \n");
 		GtkWidget * hbox3;
 		GtkWidget *hbox;
 		GtkWidget * label;
-#if 0
-		GtkWidget *urlcheck, *launchcheck;
-#endif
-
 		GtkWidget *panela, *panel1 ,*panel2;
 		GtkWidget *label1, *label5;
-
-
 		GtkWidget *timeout_label,*timeout_c;
 		GtkObject *timeout_a;
-
 		GtkWidget *upColor, *downColor, *upLabel, *downLabel;
 		GtkWidget *check, *check2, *check3, *check4, *fontButton;
 
@@ -1208,7 +1145,8 @@ g_print ("configured \n");
 		gtk_container_set_border_width(GTK_CONTAINER(vbox2), GNOME_PAD);
 
 		timeout_label = gtk_label_new(_("Update Frequency in minutes:"));
-		timeout_a = gtk_adjustment_new( stockdata->timeout, 0.5, 128, 1, 8, 8 );
+		timeout_a = gtk_adjustment_new( stockdata->props.timeout, 0.5, 128, 
+					       1, 8, 8 );
 		timeout_c  = gtk_spin_button_new( GTK_ADJUSTMENT(timeout_a), 1, 0 );
 		gtk_widget_set_usize(timeout_c,60,-1);
 
@@ -1216,16 +1154,12 @@ g_print ("configured \n");
 		gtk_box_pack_start_defaults( GTK_BOX(panel2), timeout_c );
 		gtk_box_pack_start(GTK_BOX(vbox), panel2, FALSE,
 				    FALSE, GNOME_PAD);
-#ifdef FIXME	
-		gtk_signal_connect_object(GTK_OBJECT(timeout_c), "changed",GTK_SIGNAL_FUNC(changed_cb),GTK_OBJECT(pb));
-
-		gtk_signal_connect( GTK_OBJECT(timeout_a),"value_changed",
-		GTK_SIGNAL_FUNC(timeout_cb), timeout_c );
-		gtk_signal_connect( GTK_OBJECT(timeout_c),"changed",
-		GTK_SIGNAL_FUNC(timeout_cb), timeout_c );
+				    
+		g_signal_connect (G_OBJECT (timeout_c), "value_changed",
+				  G_CALLBACK (timeout_cb), stockdata);
 		gtk_spin_button_set_update_policy( GTK_SPIN_BUTTON(timeout_c),
-		GTK_UPDATE_ALWAYS );
-#endif
+						   GTK_UPDATE_ALWAYS );
+						   
 		label1 = gtk_label_new(_("Enter symbols delimited with \"+\" in the box below."));
 
 		stockdata->tik_syms_entry = gtk_entry_new_with_max_length(60);
@@ -1237,9 +1171,17 @@ g_print ("configured \n");
 					  GTK_OBJECT(stockdata->pb));
 
 		check = gtk_check_button_new_with_label(_("Display only symbols and price"));
+		g_signal_connect (G_OBJECT (check), "toggled",
+				  G_CALLBACK (output_toggled), stockdata);
 		check2 = gtk_check_button_new_with_label(_("Scroll left to right"));
+		g_signal_connect (G_OBJECT (check2), "toggled",
+				  G_CALLBACK (rtl_toggled), stockdata);
 		check3 = gtk_check_button_new_with_label(_("Display arrows instead of -/+"));
+		g_signal_connect (G_OBJECT (check3), "toggled",
+				  G_CALLBACK (arrows_toggled), stockdata);
 		check4 = gtk_check_button_new_with_label(_("Enable scroll buttons"));
+		g_signal_connect (G_OBJECT (check4), "toggled",
+				  G_CALLBACK (scroll_toggled), stockdata);
 
 
 		gtk_box_pack_start(GTK_BOX(vbox2), check, FALSE, FALSE, GNOME_PAD);
@@ -1262,26 +1204,6 @@ g_print ("configured \n");
 			gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check3),
 							TRUE);
 
-		gtk_signal_connect_object(GTK_OBJECT(check),"toggled",
-				GTK_SIGNAL_FUNC(changed_cb),GTK_OBJECT(stockdata->pb));
-		gtk_signal_connect_object(GTK_OBJECT(check2),"toggled",
-				GTK_SIGNAL_FUNC(changed_cb),GTK_OBJECT(stockdata->pb));
-		gtk_signal_connect_object(GTK_OBJECT(check3),"toggled",
-				GTK_SIGNAL_FUNC(changed_cb),GTK_OBJECT(stockdata->pb));
-		gtk_signal_connect_object(GTK_OBJECT(check4),"toggled",
-				GTK_SIGNAL_FUNC(changed_cb),GTK_OBJECT(stockdata->pb));
-
-#if 1
-		gtk_signal_connect(GTK_OBJECT(check4),"toggled",
-				GTK_SIGNAL_FUNC(toggle_buttons_cb),NULL);
-		gtk_signal_connect(GTK_OBJECT(check3),"toggled",
-				GTK_SIGNAL_FUNC(toggle_arrows_cb),NULL);
-		gtk_signal_connect(GTK_OBJECT(check),"toggled",
-				GTK_SIGNAL_FUNC(toggle_output_cb),NULL);
-		gtk_signal_connect(GTK_OBJECT(check2),"toggled",
-				GTK_SIGNAL_FUNC(toggle_scroll_cb),NULL);
-#endif
-
 		/* COLOR */
 		upLabel = gtk_label_new(_("+ Color"));
 		upColor = gnome_color_picker_new();
@@ -1292,7 +1214,7 @@ g_print ("configured \n");
 					  ur, ug, ub, 255);
 		
 		gtk_signal_connect(GTK_OBJECT(upColor), "color_set",
-				GTK_SIGNAL_FUNC(ucolor_set_cb), NULL);
+				GTK_SIGNAL_FUNC(ucolor_set_cb), stockdata);
 
 		vbox3 = gtk_vbox_new(FALSE, 5); 
 		hbox3 = gtk_hbox_new(FALSE, 5);
@@ -1309,7 +1231,7 @@ g_print ("configured \n");
 					  dr, dg, db, 255);
 
 		gtk_signal_connect(GTK_OBJECT(downColor), "color_set",
-				GTK_SIGNAL_FUNC(dcolor_set_cb), NULL);
+				GTK_SIGNAL_FUNC(dcolor_set_cb), stockdata);
 
 		hbox3 = gtk_hbox_new(FALSE, 5);
 		gtk_box_pack_start_defaults( GTK_BOX(hbox3), downLabel );
@@ -1405,12 +1327,6 @@ g_print ("configured \n");
 		
 		stockdata = g_new0 (StockData, 1);
 		stockdata->applet = GTK_WIDGET (applet);
-		stockdata->max_rgb_str_len = 7;
-		stockdata->max_rgb_str_size = 8;
-		stockdata->buttons = g_strdup ("blank");
-		stockdata->arrows = g_strdup ("blank");
-		stockdata->scroll = g_strdup ("blank");
-		stockdata->poutput = g_strdup ("blank");
 		stockdata->timeout = 0;
 		stockdata->configFileName = g_strconcat (g_getenv ("HOME"), 
 						         "/.gtik.conf", NULL);
@@ -1575,13 +1491,13 @@ g_print ("configured \n");
 			return data;
 
 		if (var3[0] == '+') { 
-			if (stockdata->symbolfont)
-				var3[0] = 221;
+			/*if (stockdata->symbolfont)
+				var3[0] = 221;*/
 			var4[0] = '(';
 		}
 		else if (var3[0] == '-') {
-			if (stockdata->symbolfont)
-				var3[0] = 223;	
+			/*if (stockdata->symbolfont)
+				var3[0] = 223;	*/
 			var4[0] = '(';
 		}
 		else {
@@ -1590,6 +1506,7 @@ g_print ("configured \n");
 		}
 
 		sprintf(buff2,"%s %s)",var3,var4);
+		g_print ("%s %s change \n", var4, var3);
 		return(buff2);
 	}
 
@@ -1645,39 +1562,34 @@ g_print ("configured \n");
 		return 0;
 	}
 
-
-
-
-
-
-
-	void ucolor_set_cb(GnomeColorPicker *cp, gpointer data) {
+	void ucolor_set_cb(GnomeColorPicker *cp, guint r, guint g, guint b,
+			   guint a, gpointer data) {
 		StockData *stockdata = data;
-		guint8 r,g,b;
-		gnome_color_picker_get_i8(cp,
-					&r,
-					&g,
-					&b,
-					NULL);
-
-		g_snprintf( stockdata->props.ucolor, stockdata->max_rgb_str_size,
-		"#%02x%02x%02x", r, g, b );
-		gnome_property_box_changed(GNOME_PROPERTY_BOX(stockdata->pb));
+		PanelApplet *applet = PANEL_APPLET (stockdata->applet);
+		
+		if (stockdata->props.ucolor)
+			g_free (stockdata->props.ucolor);
+		stockdata->props.ucolor = g_strdup_printf ("#%02x%02x%02x", r, g, b );
+		panel_applet_gconf_set_string (applet, "ucolor", 
+					       stockdata->props.ucolor, NULL);
+		
+		setup_colors(stockdata);
 	}
 
 
 
-	void dcolor_set_cb(GnomeColorPicker *cp, gpointer data) {
+	void dcolor_set_cb(GnomeColorPicker *cp, guint r, guint g, guint b,
+			   guint a, gpointer data) {
 		StockData *stockdata = data;
-		guint8 r,g,b;
-		gnome_color_picker_get_i8(cp,
-					&r,
-					&g,
-					&b,
-					NULL);
-		g_snprintf( stockdata->props.dcolor, stockdata->max_rgb_str_size,
-		"#%02x%02x%02x", r, g, b );
-		gnome_property_box_changed(GNOME_PROPERTY_BOX(stockdata->pb));
+		PanelApplet *applet = PANEL_APPLET (stockdata->applet);
+		
+		if (stockdata->props.dcolor)
+			g_free (stockdata->props.dcolor);
+		stockdata->props.dcolor = g_strdup_printf ("#%02x%02x%02x", r, g, b );
+		panel_applet_gconf_set_string (applet, "dcolor", 
+					       stockdata->props.dcolor, NULL);
+		
+		setup_colors(stockdata);
 	}
 
 
