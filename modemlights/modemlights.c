@@ -127,9 +127,17 @@ static gint update_display()
 	if (Modem_on())
 		{
 		memset(&ifreq, 0, sizeof(ifreq));
+#ifndef __FreeBSD__
 		strcpy(ifreq.ifr_ifrn.ifrn_name, "ppp0");
+#else
+              strcpy(ifreq.ifr_name, "ppp0");
+#endif /* __FreeBSD__ */
 		ifreq.ifr_ifru.ifru_data = (caddr_t)&stats;
+#ifndef __FreeBSD__
 		if ((ioctl(ip_socket,SIOCDEVPRIVATE,(caddr_t)&ifreq) < 0))
+#else
+              if ((ioctl(ip_socket,SIOCGPPPSTATS,(caddr_t)&ifreq) < 0))
+#endif /* __FreeBSD__ */
 			{
 			g_print("ioctl failed\n");
 			old_tx = old_rx = 0;

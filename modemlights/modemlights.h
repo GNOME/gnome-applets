@@ -8,6 +8,9 @@
 #include <sys/ioctl.h>
 #include <sys/socket.h>
 #include <net/if.h>
+#ifdef __FreeBSD__
+#include <net/if_ppp.h>
+#endif /* __FreeBSD__ */
 #include <net/ppp_defs.h>
 
 #include <gnome.h>
