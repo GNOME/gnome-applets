@@ -2,6 +2,7 @@ plugindir = $(libdir)/gumma
 plugin_LTLIBRARIES = libgumma-cd.la
 
 INCLUDES = -I. -I$(srcdir) 				\
+	-I$(top_srcdir) -I$(top_builddir)		\
 	-I$(top_srcdir)/intl -I$(top_builddir)/intl	\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
 	-I$(includedir) $(GNOME_INCLUDEDIR)
