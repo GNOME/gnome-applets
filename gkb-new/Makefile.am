@@ -2,7 +2,7 @@ INCLUDES =                                           \
 	-DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\"      \
 	$(GNOME_APPLETS_CFLAGS)                                                            
 
-bin_PROGRAMS = gkb-applet-2
+libexec_PROGRAMS = gkb-applet-2
 
 bin_SCRIPTS = gkb_xmmap
 
@@ -42,17 +42,21 @@ gkbicon_DATA = $(GKB_ICON)
 schemadir   = @GCONF_SCHEMA_FILE_DIR@
 schema_DATA = gkb.schemas
 
-appletdir = $(libdir)
-
 serverdir       = $(libdir)/bonobo/servers
 server_in_files = GNOME_KeyboardApplet_Factory.server.in
 server_DATA     = $(server_in_files:.server.in=.server)
 
+$(server_in_files): $(server_in_files:.server.in=.server.in.in)
+	sed -e "s|\@LIBEXECDIR\@|$(libexecdir)|" $< > $@
+
 uidir = $(datadir)/gnome-2.0/ui
 ui_DATA = GNOME_KeyboardApplet.xml
 
-EXTRA_DIST = $(GKB_ICON) \
-	$(server_DATA) $(server_in_files) $(schema_DATA) $(ui_DATA)
+EXTRA_DIST =						\
+	GNOME_KeyboardApplet_Factory.server.in.in	\
+	$(GKB_ICON)					\
+	$(schema_DATA)					\
+	$(ui_DATA)
 
 gkb_xmmap: gkb_xmmap.in
 	sed "s,\$${prefix},$(prefix),g" \

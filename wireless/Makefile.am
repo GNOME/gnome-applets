@@ -12,7 +12,7 @@ INCLUDES = 							\
 	-DGTK_DISABLE_DEPRECATED -DGNOME_DISABLE_DEPRECATED	\
 	$(NULL)
 
-bin_PROGRAMS = wireless-applet
+libexec_PROGRAMS = wireless-applet
 
 wireless_applet_SOURCES = 	\
 	wireless-applet.c	\
@@ -26,9 +26,13 @@ wireless_applet_LDADD = 	\
 gladedir = $(datadir)/wireless-applet/
 glade_DATA = wireless-applet.glade
 
-serverdir       = $(libdir)/bonobo/servers
-server_in_files = GNOME_Panel_WirelessApplet.server.in
-server_DATA     = $(server_in_files:.server.in=.server)
+serverdir          = $(libdir)/bonobo/servers
+server_in_files    = GNOME_Panel_WirelessApplet.server.in
+server_in_in_files = $(server_in_files:.server.in=.server.in.in)
+server_DATA        = $(server_in_files:.server.in=.server)
+
+$(server_in_files): $(server_in_in_files)
+	sed -e "s|\@LIBEXECDIR\@|$(libexecdir)|" $< > $@
 
 uidir = $(datadir)/gnome-2.0/ui
 ui_DATA = GNOME_WirelessApplet.xml
@@ -46,7 +50,7 @@ pixmap_DATA = no-link-0.png	\
 CLEANFILES = GNOME_Panel_WirelessApplet.server *.bak *.gladep
 
 EXTRA_DIST = 				\
-	$(server_in_files)		\
+	$(server_in_in_files)		\
 	$(glade_DATA)			\
 	$(pixmap_DATA)			\
 	$(ui_DATA)			\

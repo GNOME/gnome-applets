@@ -9,7 +9,7 @@ INCLUDES = -I. -I$(srcdir) 				\
 	-DGNOME_DISABLE_DEPRECATED -DGDK_DISABLE_DEPRECATED \
 	$(GNOME_APPLETS_CFLAGS)				
 
-bin_PROGRAMS = mixer_applet2
+libexec_PROGRAMS = mixer_applet2
 
 EGGFILES = egg-screen-exec.h egg-screen-exec.c
 
@@ -25,6 +25,9 @@ serverdir       = $(libdir)/bonobo/servers
 server_in_files = GNOME_MixerApplet.server.in
 server_DATA     = $(server_in_files:.server.in=.server)
 
+$(server_in_files): $(server_in_files:.server.in=.server.in.in)
+	sed -e "s|\@LIBEXECDIR\@|$(libexecdir)|" $< > $@
+
 @INTLTOOL_SERVER_RULE@
 
 EGGDIR = $(srcdir)/../../libegg/libegg/screen-exec
@@ -37,8 +40,7 @@ ui_DATA = GNOME_MixerApplet.xml
 
 EXTRA_DIST = 						\
 	update-from-egg.sh				\
-	$(server_DATA) 					\
-	$(server_in_files)				\
+	GNOME_MixerApplet.server.in.in			\
 	$(ui_DATA) 					\
 	volume-max.xpm					\
 	volume-medium.xpm				\

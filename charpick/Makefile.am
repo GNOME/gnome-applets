@@ -5,7 +5,7 @@ INCLUDES = -I. -I$(srcdir) 				\
 	-DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\"
 
 
-bin_PROGRAMS = charpick_applet2
+libexec_PROGRAMS = charpick_applet2
 
 charpick_applet2_SOURCES = charpick.c \
                           charpick.h \
@@ -21,6 +21,9 @@ serverdir       = $(libdir)/bonobo/servers
 server_in_files = GNOME_CharpickerApplet.server.in
 server_DATA     = $(server_in_files:.server.in=.server)
 
+$(server_in_files): $(server_in_files:.server.in=.server.in.in)
+	sed -e "s|\@LIBEXECDIR\@|$(libexecdir)|" $< > $@
+
 @INTLTOOL_SERVER_RULE@
 
 schemadir 	= @GCONF_SCHEMA_FILE_DIR@
@@ -29,9 +32,10 @@ schema_DATA	= charpick.schemas
 uidir = $(datadir)/gnome-2.0/ui
 ui_DATA = GNOME_CharpickerApplet.xml
 
-EXTRA_DIST = \
-	charpick.png $(server_in_files)	\
-	$(ui_DATA)	\
+EXTRA_DIST =					\
+	charpick.png				\
+	GNOME_CharpickerApplet.server.in.in	\
+	$(ui_DATA)				\
 	$(schema_DATA)
 
 install-data-local:

@@ -31,7 +31,7 @@ INCLUDES = \
 
 
 
-bin_PROGRAMS = battstat-applet-2
+libexec_PROGRAMS = battstat-applet-2
 
 
 battstat_applet_2_SOURCES = \
@@ -58,14 +58,17 @@ serverdir       = $(libdir)/bonobo/servers
 server_in_files = GNOME_BattstatApplet.server.in
 server_DATA     = $(server_in_files:.server.in=.server)
 
+$(server_in_files): $(server_in_files:.server.in=.server.in.in)
+	sed -e "s|\@LIBEXECDIR\@|$(libexecdir)|" $< > $@
+
 uidir = $(datadir)/gnome-2.0/ui
 ui_DATA = GNOME_BattstatApplet.xml
 
-EXTRA_DIST = 				\
-	$(glade_DATA)			\
-	GNOME_BattstatApplet.server.in  \
-	$(ui_DATA)			\
-	battstat.schemas		\
+EXTRA_DIST = 					\
+	$(glade_DATA)				\
+	GNOME_BattstatApplet.server.in.in	\
+	$(ui_DATA)				\
+	battstat.schemas			\
 	battstat.png
 
 @INTLTOOL_SERVER_RULE@

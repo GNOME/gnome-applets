@@ -7,7 +7,7 @@ INCLUDES =						\
 	$(GTOP_APPLETS_CFLAGS)				\
 	-Wall
 
-bin_PROGRAMS = multiload-applet-2
+libexec_PROGRAMS = multiload-applet-2
 
 EGGFILES = egg-screen-exec.h egg-screen-exec.c
 
@@ -43,7 +43,7 @@ install-data-local:
 		
 EXTRA_DIST =	\
 		update-from-egg.sh \
-		GNOME_MultiLoadApplet_Factory.server.in \
+		GNOME_MultiLoadApplet_Factory.server.in.in \
 		multiload.schemas \
 		$(pixmaps) \
 		$(ui_DATA)
@@ -54,6 +54,9 @@ ui_DATA		= GNOME_MultiloadApplet.xml
 serverdir       = $(libdir)/bonobo/servers
 server_in_files = GNOME_MultiLoadApplet_Factory.server.in
 server_DATA     = $(server_in_files:.server.in=.server)
+
+$(server_in_files): $(server_in_files:.server.in=.server.in.in)
+	sed -e "s|\@LIBEXECDIR\@|$(libexecdir)|" $< > $@
 
 @INTLTOOL_SERVER_RULE@
 

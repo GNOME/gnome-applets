@@ -4,7 +4,7 @@ INCLUDES = \
 -DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\" \
 $(GNOME_APPLETS_CFLAGS) 
 
-bin_PROGRAMS = drivemount_applet2
+libexec_PROGRAMS = drivemount_applet2
 
 desktop_iconsdir = $(datadir)/pixmaps
 desktop_icons_DATA = drivemount-applet.png
@@ -23,6 +23,9 @@ drivemount_applet2_LDADD = $(GNOME_APPLETS_LIBS)
 serverdir       = $(libdir)/bonobo/servers
 server_in_files = GNOME_DriveMountApplet.server.in
 server_DATA     = $(server_in_files:.server.in=.server)
+
+$(server_in_files): $(server_in_files:.server.in=.server.in.in)
+	sed -e "s|\@LIBEXECDIR\@|$(libexecdir)|" $< > $@
 
 uidir = $(datadir)/gnome-2.0/ui
 ui_DATA = GNOME_DriveMountApplet.xml
@@ -57,7 +60,7 @@ jazdrive_h_in.xpm \
 jazdrive_h_out.xpm \
 jazdrive_v_in.xpm \
 jazdrive_v_out.xpm \
-$(server_in_files) \
+GNOME_DriveMountApplet.server.in.in \
 $(schema_DATA)	\
 $(ui_DATA)	\
 update-from-egg.sh \

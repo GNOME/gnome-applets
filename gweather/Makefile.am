@@ -9,7 +9,7 @@ INCLUDES = \
 	$(GNOME_APPLETS_CFLAGS)	\
 	$(GNOME_VFS_APPLETS_CFLAGS)
 
-bin_PROGRAMS = gweather-applet-2
+libexec_PROGRAMS = gweather-applet-2
 
 gweather_applet_2_SOURCES = \
 	gweather.h \
@@ -37,11 +37,14 @@ serverdir       = $(libdir)/bonobo/servers
 server_in_files = GNOME_GWeatherApplet_Factory.server.in
 server_DATA     = $(server_in_files:.server.in=.server)
 
+$(server_in_files): $(server_in_files:.server.in=.server.in.in)
+	sed -e "s|\@LIBEXECDIR\@|$(libexecdir)|" $< > $@
+
 gweatherlocationsdir = $(datadir)/gweather
 gweatherlocations_DATA = Locations
 
 EXTRA_DIST = \
-	GNOME_GWeatherApplet_Factory.server.in \
+	GNOME_GWeatherApplet_Factory.server.in.in \
 	gweather.schemas \
 	$(ui_DATA)	\
 	Locations
