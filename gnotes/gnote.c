@@ -420,7 +420,7 @@ void gnote_new(gint width, gint height, gint x, gint y, gboolean hidden,
 
         gdk_color_alloc(gtk_widget_get_colormap(the_note->text), yellow);
 
-        style = gtk_style_new();
+        style = gtk_style_copy(gtk_widget_get_style(the_note->text));
         memcpy(&style->base[GTK_STATE_NORMAL], yellow, sizeof(GdkColor));
         gtk_widget_set_style(the_note->text, style);
         g_free(yellow);
@@ -890,8 +890,8 @@ static gboolean gnote_load_xml_v10(xmlDocPtr doc, const gchar *filename)
     gchar *title = "";
     gchar *type = "";
     gchar *tmp_string;
-    xmlNodePtr tmp_node;
-    
+    xmlNodePtr tmp_node = NULL;
+     
     tmp_string = xmlGetProp(doc->root, gnotes_id_property_name);
     if(tmp_string == 0)
     {

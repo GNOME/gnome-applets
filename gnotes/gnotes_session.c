@@ -19,6 +19,7 @@ Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 */
 #include <config.h>
 #include <gnome.h>
+#include "gnote.h"
 #include "gnotes_applet.h"
 
 GnomeClient *newGnomeClient(void);

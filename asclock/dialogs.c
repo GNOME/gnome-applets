@@ -122,6 +122,7 @@ static void location_selected(GtkWidget *list, gint row, gint column, GdkEventBu
   my_asclock->selected_timezone[MAX_PATH_LEN-1] = '\0';
 
   properties_timezone_render(my_asclock, list, my->lat, my->lon);
+  gnome_property_box_changed(GNOME_PROPERTY_BOX(my_asclock->pwin));
   return;
 }
 
@@ -381,6 +382,7 @@ void properties_dialog(AppletWidget *applet, gpointer data)
 
   properties_timezone_render(my_asclock, frame, 0, 0);
 
+
   hbox = gtk_hbox_new(FALSE, 5);
   gtk_box_pack_start(GTK_BOX(hbox), my_asclock->pic, FALSE, FALSE, 5);
 
@@ -392,11 +394,12 @@ void properties_dialog(AppletWidget *applet, gpointer data)
 #endif
   list = gtk_clist_new_with_titles(1, timezone_titles);
 
+ 
   gtk_clist_set_column_width(GTK_CLIST(list), 0, 200);
   gtk_widget_set_usize(list, 260, 320);
-/*
-  gtk_clist_set_policy(GTK_CLIST(list), GTK_POLICY_ALWAYS, GTK_POLICY_AUTOMATIC); 
-*/
+
+/*  gtk_clist_set_policy(GTK_CLIST(list), GTK_POLICY_ALWAYS, GTK_POLICY_AUTOMATIC); */
+
   scroll_win = gtk_scrolled_window_new(NULL, NULL);
   gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scroll_win),
                                            GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
@@ -421,11 +424,11 @@ void properties_dialog(AppletWidget *applet, gpointer data)
   gtk_signal_connect( GTK_OBJECT(my_asclock->pwin),"apply", GTK_SIGNAL_FUNC(property_apply_cb), my_asclock );
   gtk_signal_connect( GTK_OBJECT(my_asclock->pwin),"help", GTK_SIGNAL_FUNC(property_help_cb), NULL);
 
-/*
+#if 0
   gtk_signal_connect( GTK_OBJECT(my_asclock->pwin),"destroy", GTK_SIGNAL_FUNC(property_destroy_cb), my_asclock );
-*/
+#endif
   enum_timezones(my_asclock, list);
-
+  
   gtk_widget_show_all(my_asclock->pwin);
   return;
 } 

@@ -31,7 +31,6 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "ghttp.h" // FIXME:
 #include <libgnomevfs/gnome-vfs.h>
 #include <sys/stat.h>
 #include <unistd.h>
@@ -83,6 +82,8 @@
  	 
 	GtkWidget *tik_syms_entry;
 	gchar tik_syms[256];
+
+	GtkWidget *fontDialog = NULL;
 
 	GtkWidget * pb;
 	char buttons[16]="blank";
@@ -141,7 +142,7 @@
 
 	/* For fonts */
 	GdkFont * my_font;
-	gchar * new_font=NULL;
+	gchar * new_font = NULL;
 	GdkFont * extra_font;
 	GdkFont * small_font;
 	static gint symbolfont = 1;
@@ -183,18 +184,22 @@
 			g_error("Could not load fonts!");
 
 		if ( !extra_font || (strcmp(props.arrows,"noArrows")) == 0 ) {
-			gdk_font_unref(extra_font);
+			
+			if (extra_font)
+				gdk_font_unref(extra_font);
 			extra_font = gdk_font_load("fixed");
 			symbolfont = 0;
 		}
 		else {
-			gdk_font_unref(extra_font);
+			if (extra_font)
+				gdk_font_unref(extra_font);
 			extra_font = gdk_font_load ("-*-symbol-medium-r-normal-*-*-140-*-*-p-*-adobe-fontspecific");
 			symbolfont = 1;
 
 		}
 		if (!small_font) {
-			gdk_font_unref(small_font);
+			if (small_font)
+				gdk_font_unref(small_font);
 			small_font = gdk_font_load("fixed");
 		}
 	}
@@ -261,8 +266,9 @@ static void updateOutput(void)
 		   props.tik_syms = gnome_config_get_string("gtik/tik_syms");
 		
 
-		timeout = gnome_config_get_int("gtik/timeout") > 0 ? gnome_config_get_int ("gtik/timeout") : props.timeout;
-	
+		if (gnome_config_get_int("gtik/timeout") > 0)
+			props.timeout = gnome_config_get_int("gtik/timeout");
+		timeout = props.timeout;
 
 		if ( gnome_config_get_string ("gtik/output") != NULL ) 
 			props.output = gnome_config_get_string("gtik/output");
@@ -806,6 +812,13 @@ static void updateOutput(void)
 		if (strcmp(poutput,"blank") !=0) {
 			props.output = g_strdup(poutput);
 		}
+
+
+		if (updateTimeID > 0)
+			gtk_timeout_remove(updateTimeID);
+		updateTimeID = gtk_timeout_add(props.timeout * 60000,
+				   (gpointer)updateOutput,"NULL");
+
 		properties_save(APPLET_WIDGET(applet)->privcfgpath);
 		properties_set(TRUE);
 	}
@@ -822,24 +835,23 @@ static void updateOutput(void)
 
 	/*-----------------------------------------------------------------*/
         static gint font_selector( GtkWidget *widget, void *data ) {
-                GtkWidget *tmpWidget;
-                GtkFontSelectionDialog *fontDialog;
-
-                tmpWidget = gtk_font_selection_dialog_new("Font Selector");
-                fontDialog = GTK_FONT_SELECTION_DIALOG(tmpWidget);
-		gtk_signal_connect (GTK_OBJECT (fontDialog ->ok_button),
-					"clicked",
-					GTK_SIGNAL_FUNC(OkClicked),fontDialog);
-                gtk_signal_connect_object(GTK_OBJECT(fontDialog->cancel_button),
-					"clicked",
-                                        GTK_SIGNAL_FUNC(gtk_widget_destroy),
-                                        GTK_OBJECT(fontDialog));
-                gtk_signal_connect (GTK_OBJECT (fontDialog), "destroy",
-                                        GTK_SIGNAL_FUNC(QuitFontDialog),
-					fontDialog);
-
-                gtk_widget_show(tmpWidget);
-
+		if (!fontDialog) {
+			fontDialog = gtk_font_selection_dialog_new("Font Selector");
+			gtk_signal_connect (GTK_OBJECT (GTK_FONT_SELECTION_DIALOG(fontDialog)->ok_button),
+					    "clicked",
+					    GTK_SIGNAL_FUNC(OkClicked),fontDialog);
+            		gtk_signal_connect_object(GTK_OBJECT(GTK_FONT_SELECTION_DIALOG(fontDialog)->cancel_button),
+						  "clicked",
+						  GTK_SIGNAL_FUNC(gtk_widget_destroy),
+						  GTK_OBJECT(fontDialog));
+            		gtk_signal_connect (GTK_OBJECT (fontDialog), "destroy",
+					    GTK_SIGNAL_FUNC(QuitFontDialog),
+					    fontDialog);
+			
+            		gtk_widget_show(fontDialog);
+		} else
+			gdk_window_raise(fontDialog->window);
+			
 		return FALSE;
 	}
 
@@ -874,6 +886,7 @@ static void updateOutput(void)
 
         /*-----------------------------------------------------------------*/
         gint QuitFontDialog( GtkWidget *widget, void *data ) {
+		fontDialog = NULL;
 		return FALSE;
         }
 
@@ -930,8 +943,6 @@ static void updateOutput(void)
 		if ((temp=strtok(syms,"+")))
 			symbol[0] = g_strdup(temp);
 
-		g_free(syms);
-		
 		while (symbol[0]) {
 			gtk_clist_append(GTK_CLIST(clist),symbol);
 			if ((temp=strtok(NULL,"+")))
@@ -944,7 +955,6 @@ static void updateOutput(void)
 			symbol[0] = g_strdup(temp);
 			gtk_clist_append(GTK_CLIST(clist),symbol);
 		}
-		g_free(temp);		
 	}
 
 	/*-----------------------------------------------------------------*/

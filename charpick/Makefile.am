@@ -5,6 +5,8 @@ INCLUDES = -I. -I$(srcdir) 				\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
 	-I$(includedir) $(GNOME_INCLUDEDIR)
 
+CFLAGS = -ansi -Werror -Wmissing-prototypes -Wmissing-declarations
+
 bin_PROGRAMS = charpick_applet
 
 charpick_applet_SOURCES = charpick.c \

@@ -21,11 +21,10 @@
  *
  */
 
+#include <config.h>
 
 #include <math.h>
 #include <time.h>
-#include <config.h>
-#include <gnome.h>
 #include <applet-widget.h>
 
 
