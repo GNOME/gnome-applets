@@ -61,6 +61,8 @@ typedef struct cdrom_device {
 
 	void *cdda;
 	int my_errno;
+	int use_count;
+	char *device_name;
 } *cdrom_device_t;
 
 cdrom_device_t cdrom_open(char *path, /* out */ int *errcode);
