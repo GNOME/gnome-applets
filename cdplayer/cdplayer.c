@@ -71,6 +71,7 @@ static void about_cb(GtkWidget *w, gpointer data);
 
 static void applet_change_size(GtkWidget *w, int size, gpointer data);
 static void applet_change_orient(GtkWidget *w, PanelAppletOrient o, gpointer data);
+static gint applet_save_session(PanelApplet *applet, gpointer data);
 static void ui_component_event (BonoboUIComponent *comp, const gchar *path,	Bonobo_UIComponent_EventType type, const gchar *state_string, CDPlayerData *data);
 
 static void setup_box(CDPlayerData* cd);
@@ -172,11 +173,6 @@ applet_new ()
 
 	applet = cd->panel.applet = panel_applet_new (cdplayer);
 
-    global_key = panel_applet_get_global_key (PANEL_APPLET (applet));
-    private_key = panel_applet_get_private_key (PANEL_APPLET (applet));
-	g_print("global key is %s, and private key is %s\n", global_key, private_key);
-	current_key = g_strdup_printf("%s/devpath", private_key);
-    cd->devpath = gconf_extensions_get_string(current_key);
     g_free(current_key);
     if(strlen(cd->devpath) < 1)
     {
@@ -265,7 +261,6 @@ properties_cb (GtkWidget *w, gpointer data)
     dialog = gtk_dialog_new_with_buttons(_("CD Player Applet Properties"),
 										 NULL, GTK_DIALOG_MODAL,
 										 GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
-										 GTK_STOCK_APPLY, GTK_RESPONSE_APPLY,
 										 GTK_STOCK_OK, GTK_RESPONSE_OK, NULL);
     box = GTK_DIALOG(dialog)->vbox;
 
@@ -307,7 +302,7 @@ properties_cb (GtkWidget *w, gpointer data)
 	do
 	{
 		response = gtk_dialog_run(GTK_DIALOG(dialog));
-		if(response == GTK_RESPONSE_OK || response == GTK_RESPONSE_APPLY)
+		if(response == GTK_RESPONSE_OK)
 		{
 			gchar *newpath;
 
@@ -318,6 +313,7 @@ properties_cb (GtkWidget *w, gpointer data)
 				g_free(cd->devpath);
 				cd->devpath = g_strdup(newpath);
 				cd_try_open(cd);
+				applet_save_session(PANEL_APPLET(cd->panel.applet), NULL);
 			}
 		}
 		/* FIXME: get the current key and save the setting */
@@ -382,6 +378,22 @@ applet_change_orient(GtkWidget *w, PanelAppletOrient o, gpointer data)
 	cd->orient = o;
 	setup_box(cd);
 	cd_panel_update(cd->panel.frame, cd);
+}
+
+static gint
+applet_save_session(PanelApplet *applet, gpointer data)
+{
+	gchar *global_key;
+	gchar *private_key;
+
+	/* FIXME: Save our prefs ? */
+    global_key = panel_applet_get_global_key (PANEL_APPLET (applet));
+    private_key = panel_applet_get_private_key (PANEL_APPLET (applet));
+	g_print("(cdplayer_save_yourself) global key is %s, and private key is %s\n", global_key, private_key);
+	g_free(global_key);
+	g_free(private_key);
+    /* cd->devpath = gconf_extensions_get_string(current_key); */
+	return(FALSE);
 }
 
 static void

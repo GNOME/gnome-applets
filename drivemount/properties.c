@@ -17,20 +17,9 @@
 #include "drivemount.h"
 #include "properties.h"
 
-static gint property_destroy_cb( GtkWidget *w, DriveData *dd);
-static void phelp_cb (GtkWidget *w, gint tab, gpointer data);
-static void set_icon_entry_sensitivity(DriveData *dd, gint val);
-static void autofs_friendly_cb(GtkWidget *w, gpointer data);
-static void scale_applet_cb(GtkWidget *w, gpointer data);
-static void auto_eject_applet_cb(GtkWidget *w, gpointer data);
-static void pixmap_floppy_cb(GtkWidget *widget, gpointer data);
-static void pixmap_cdrom_cb(GtkWidget *widget, gpointer data);
-static void pixmap_zipdrive_cb(GtkWidget *widget, gpointer data);
-static void pixmap_jazdrive_cb(GtkWidget *widget, gpointer data);
-static void pixmap_harddisk_cb(GtkWidget *widget, gpointer data);
-static void pixmap_custom_cb(GtkWidget *widget, gpointer data);
-static void update_delay_cb(GtkWidget *widget, gpointer data);
-static void property_apply_cb(GtkWidget *propertybox, gint page_num, DriveData *dd);
+static void set_widget_sensitivity_false_cb(GtkWidget *widget, GtkWidget *target);
+static void set_widget_sensitivity_true_cb(GtkWidget *widget, GtkWidget *target);
+
 static gchar *remove_level_from_path(const gchar *path);
 static void sync_mount_base(DriveData *dd);
 
@@ -99,34 +88,34 @@ void
 property_show(PanelApplet *applet, gpointer data)
 {
 	DriveData *dd = data;
+	GtkWidget *dialog;
+	GtkWidget *box;
 	GtkWidget *frame;
 	GtkWidget *hbox;
 	GtkWidget *vbox;
+	GtkWidget *fbox;
 	GtkWidget *label;
 	GtkWidget *omenu;
 	GtkWidget *menu;
 	GtkWidget *item;
-	GtkObject *delay_adj;
-	GtkWidget *button;
+	GtkWidget *mount_entry;
+	GtkWidget *update_spin;
+	GtkWidget *icon_entry_in;
+	GtkWidget *icon_entry_out;
+	GtkWidget *scale_toggle;
+	GtkWidget *eject_toggle;
+	GtkWidget *automount_toggle;
+	gint response;
 
-	if(dd->propwindow)
-	{
-		gdk_window_raise(dd->propwindow->window);
-		return;
-	}
+    dialog = gtk_dialog_new_with_buttons(_("Drive Mount Applet Properties"),
+										 NULL, GTK_DIALOG_MODAL,
+										 GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
+										 GTK_STOCK_OK, GTK_RESPONSE_OK, NULL);
 
-	dd->prop_interval = dd->interval;
-	dd->prop_device_pixmap = dd->device_pixmap;
-	dd->prop_autofs_friendly = dd->autofs_friendly;
-	dd->prop_scale_applet = dd->scale_applet;
-	dd->prop_auto_eject = dd->auto_eject;
-
-	dd->propwindow = gnome_property_box_new();
-	gtk_window_set_title(GTK_WINDOW(GNOME_PROPERTY_BOX(dd->propwindow)),
-		_("Drive Mount Applet Properties"));
-
-	frame = gtk_frame_new(NULL);
+    box = GTK_DIALOG(dialog)->vbox;
+	frame = gtk_frame_new("Settings");
 	gtk_container_set_border_width(GTK_CONTAINER(frame), GNOME_PAD_SMALL);
+    gtk_box_pack_start(GTK_BOX(box), frame, TRUE, TRUE, 0);
 
 	vbox = gtk_vbox_new(FALSE, GNOME_PAD_SMALL);
 	gtk_container_set_border_width(GTK_CONTAINER(vbox), GNOME_PAD_SMALL);
@@ -141,13 +130,10 @@ property_show(PanelApplet *applet, gpointer data)
 	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
 	gtk_widget_show(label);
 
-	dd->mount_point_entry = gtk_entry_new_with_max_length(255);
-	gtk_entry_set_text(GTK_ENTRY(dd->mount_point_entry), dd->mount_point);
-	gtk_signal_connect_object(GTK_OBJECT(dd->mount_point_entry), "changed",
-			    GTK_SIGNAL_FUNC(gnome_property_box_changed),
-			    GTK_OBJECT(dd->propwindow));
-	gtk_box_pack_start(GTK_BOX(hbox),dd->mount_point_entry , TRUE, TRUE, 0);
-	gtk_widget_show(dd->mount_point_entry);
+	mount_entry = gtk_entry_new_with_max_length(255);
+	gtk_entry_set_text(GTK_ENTRY(mount_entry), dd->mount_point);
+	gtk_box_pack_start(GTK_BOX(hbox), mount_entry , TRUE, TRUE, 0);
+	gtk_widget_show(mount_entry);
 
 	hbox = gtk_hbox_new(FALSE, GNOME_PAD_SMALL);
 	gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
@@ -157,259 +143,143 @@ property_show(PanelApplet *applet, gpointer data)
 	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
 	gtk_widget_show(label);
 
-	delay_adj = gtk_adjustment_new( dd->prop_interval, 1.0, 30.0, 1, 1, 1 );
-	dd->prop_spin = gtk_spin_button_new( GTK_ADJUSTMENT(delay_adj), 1, 0 );
-	gtk_box_pack_start(GTK_BOX(hbox), dd->prop_spin, FALSE, FALSE, 0);
-	gtk_signal_connect(GTK_OBJECT(delay_adj),"value_changed",GTK_SIGNAL_FUNC(update_delay_cb), dd);
-	gtk_signal_connect(GTK_OBJECT(dd->prop_spin),"changed",GTK_SIGNAL_FUNC(update_delay_cb), dd);
-	gtk_spin_button_set_update_policy( GTK_SPIN_BUTTON(dd->prop_spin),GTK_UPDATE_ALWAYS );
-	gtk_widget_show(dd->prop_spin);
+	update_spin = gtk_spin_button_new(GTK_ADJUSTMENT(gtk_adjustment_new(dd->interval, 1.0, 30.0, 1, 1, 1)), 1, 0);
+	gtk_box_pack_start(GTK_BOX(hbox), update_spin, FALSE, FALSE, 0);
+	gtk_spin_button_set_update_policy(GTK_SPIN_BUTTON(update_spin),GTK_UPDATE_ALWAYS);
+	gtk_widget_show(update_spin);
 
 	label = gtk_label_new(_("Icon:"));
 	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
 	gtk_widget_show(label);
 
 	omenu = gtk_option_menu_new ();
-	menu = gtk_menu_new ();
-
-	item = gtk_menu_item_new_with_label(_("Floppy"));
-	gtk_signal_connect (GTK_OBJECT (item), "activate", (GtkSignalFunc) pixmap_floppy_cb, dd);
-	gtk_menu_append (GTK_MENU (menu), item);
-
-	item = gtk_menu_item_new_with_label(_("Cdrom"));
-	gtk_signal_connect (GTK_OBJECT (item), "activate", (GtkSignalFunc) pixmap_cdrom_cb, dd);
-	gtk_menu_append (GTK_MENU (menu), item);
-
-	item = gtk_menu_item_new_with_label(_("Zip Drive"));
-	gtk_signal_connect (GTK_OBJECT (item), "activate", (GtkSignalFunc) pixmap_zipdrive_cb, dd);
-	gtk_menu_append (GTK_MENU (menu), item);
-
-	item = gtk_menu_item_new_with_label(_("Hard Disk"));
-	gtk_signal_connect (GTK_OBJECT (item), "activate", (GtkSignalFunc) pixmap_harddisk_cb, dd);
-	gtk_menu_append (GTK_MENU (menu), item);
-
-	item = gtk_menu_item_new_with_label(_("Jaz Drive"));
-	gtk_signal_connect (GTK_OBJECT (item), "activate", (GtkSignalFunc) pixmap_jazdrive_cb, dd);
-	gtk_menu_append (GTK_MENU (menu), item);
-
-	item = gtk_menu_item_new_with_label(_("Custom"));
-	gtk_signal_connect (GTK_OBJECT (item), "activate", (GtkSignalFunc) pixmap_custom_cb, dd);
-	gtk_menu_append (GTK_MENU (menu), item);
-
-	gtk_option_menu_set_menu (GTK_OPTION_MENU (omenu), menu);
-
-	if (dd->prop_device_pixmap == -1)
-		gtk_option_menu_set_history (GTK_OPTION_MENU (omenu), 5);
-	else
-		gtk_option_menu_set_history (GTK_OPTION_MENU (omenu), dd->prop_device_pixmap);
-
 	gtk_box_pack_start(GTK_BOX(hbox), omenu, TRUE, TRUE, 0);
 	gtk_widget_show (omenu);
+	menu = gtk_menu_new ();
+	gtk_option_menu_set_menu(GTK_OPTION_MENU (omenu), menu);
+
+	/* This must be created before the menu items, so we can pass it to a callback */
+	fbox = gtk_vbox_new(FALSE, GNOME_PAD_SMALL);
+	gtk_box_pack_start(GTK_BOX(vbox), fbox, FALSE, FALSE, 0);
+	gtk_widget_show(fbox);
+
+	item = gtk_menu_item_new_with_label(_("Floppy"));
+	gtk_menu_append (GTK_MENU (menu), item);
+	g_signal_connect(G_OBJECT(item), "activate", G_CALLBACK(set_widget_sensitivity_false_cb), fbox);
+	item = gtk_menu_item_new_with_label(_("Cdrom"));
+	gtk_menu_append (GTK_MENU (menu), item);
+	g_signal_connect(G_OBJECT(item), "activate", G_CALLBACK(set_widget_sensitivity_false_cb), fbox);
+	item = gtk_menu_item_new_with_label(_("Zip Drive"));
+	gtk_menu_append (GTK_MENU (menu), item);
+	g_signal_connect(G_OBJECT(item), "activate", G_CALLBACK(set_widget_sensitivity_false_cb), fbox);
+	item = gtk_menu_item_new_with_label(_("Hard Disk"));
+	gtk_menu_append (GTK_MENU (menu), item);
+	g_signal_connect(G_OBJECT(item), "activate", G_CALLBACK(set_widget_sensitivity_false_cb), fbox);
+	item = gtk_menu_item_new_with_label(_("Jaz Drive"));
+	gtk_menu_append (GTK_MENU (menu), item);
+	g_signal_connect(G_OBJECT(item), "activate", G_CALLBACK(set_widget_sensitivity_false_cb), fbox);
+	item = gtk_menu_item_new_with_label(_("Custom"));
+	gtk_menu_append (GTK_MENU (menu), item);
+	g_signal_connect(G_OBJECT(item), "activate", G_CALLBACK(set_widget_sensitivity_true_cb), fbox);
+
+	if (dd->device_pixmap == -1)
+		gtk_option_menu_set_history (GTK_OPTION_MENU (omenu), 5);
+	else
+		gtk_option_menu_set_history (GTK_OPTION_MENU (omenu), dd->device_pixmap);
 
 	hbox = gtk_hbox_new(FALSE, GNOME_PAD_SMALL);
-	gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
+	gtk_box_pack_start(GTK_BOX(fbox), hbox, FALSE, FALSE, 0);
 	gtk_widget_show(hbox);
 
-	dd->icon_entry_in = gnome_icon_entry_new("icon_in", _("Select icon for mounted"));
-	gnome_icon_entry_set_icon(GNOME_ICON_ENTRY(dd->icon_entry_in), dd->custom_icon_in);
-	gtk_signal_connect_object(GTK_OBJECT(gnome_icon_entry_gtk_entry(GNOME_ICON_ENTRY(dd->icon_entry_in))),
-				  "changed", GTK_SIGNAL_FUNC(gnome_property_box_changed),
-				  GTK_OBJECT(dd->propwindow));
-	gtk_box_pack_end(GTK_BOX(hbox), dd->icon_entry_in, FALSE, FALSE, 0);
-	gtk_widget_show(dd->icon_entry_in);
+	icon_entry_in = gnome_icon_entry_new("none", _("Select icon for mounted"));
+	gnome_icon_entry_set_filename(GNOME_ICON_ENTRY(icon_entry_in), dd->custom_icon_in);
+	gtk_box_pack_end(GTK_BOX(hbox), icon_entry_in, FALSE, FALSE, 0);
+	gtk_widget_show(icon_entry_in);
 
 	label = gtk_label_new(_("Custom icon for mounted:"));
 	gtk_box_pack_end(GTK_BOX(hbox), label, FALSE, FALSE, 0);
 	gtk_widget_show(label);
 
 	hbox = gtk_hbox_new(FALSE, GNOME_PAD_SMALL);
-	gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
+	gtk_box_pack_start(GTK_BOX(fbox), hbox, FALSE, FALSE, 0);
 	gtk_widget_show(hbox);
 
-	dd->icon_entry_out = gnome_icon_entry_new("icon_in", _("Select icon for unmounted"));
-	gnome_icon_entry_set_icon(GNOME_ICON_ENTRY(dd->icon_entry_out), dd->custom_icon_out);
-	gtk_signal_connect_object(GTK_OBJECT(gnome_icon_entry_gtk_entry(GNOME_ICON_ENTRY(dd->icon_entry_out))),
-				  "changed", GTK_SIGNAL_FUNC(gnome_property_box_changed),
-				  GTK_OBJECT(dd->propwindow));
-	gtk_box_pack_end(GTK_BOX(hbox), dd->icon_entry_out, FALSE, FALSE, 0);
-	gtk_widget_show(dd->icon_entry_out);
+	icon_entry_out = gnome_icon_entry_new("none", _("Select icon for unmounted"));
+	gnome_icon_entry_set_filename(GNOME_ICON_ENTRY(icon_entry_out), dd->custom_icon_out);
+	gtk_box_pack_end(GTK_BOX(hbox), icon_entry_out, FALSE, FALSE, 0);
+	gtk_widget_show(icon_entry_out);
 
 	label = gtk_label_new(_("Custom icon for not mounted:"));
 	gtk_box_pack_end(GTK_BOX(hbox), label, FALSE, FALSE, 0);
 	gtk_widget_show(label);
 
-	set_icon_entry_sensitivity(dd, ( dd->prop_device_pixmap < 0 ) );
+    if(dd->device_pixmap < 0)
+       gtk_widget_set_sensitive(fbox, TRUE);
+    else
+       gtk_widget_set_sensitive(fbox, FALSE);
 
-	button = gtk_check_button_new_with_label (_("Scale size to panel"));
-	gtk_box_pack_start(GTK_BOX(vbox), button, FALSE, FALSE, 0);
-	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(button), dd->scale_applet);
-	gtk_signal_connect (GTK_OBJECT(button),"clicked",(GtkSignalFunc) scale_applet_cb, dd);
-	gtk_widget_show(button);
+	scale_toggle = gtk_check_button_new_with_label (_("Scale size to panel"));
+	gtk_box_pack_start(GTK_BOX(vbox), scale_toggle, FALSE, FALSE, 0);
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(scale_toggle), dd->scale_applet);
+	gtk_widget_show(scale_toggle);
 
-	button = gtk_check_button_new_with_label (_("Eject on unmount"));
-	gtk_box_pack_start(GTK_BOX(vbox), button, FALSE, FALSE, 0);
-	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(button), dd->auto_eject);
-	gtk_signal_connect (GTK_OBJECT(button),"clicked",(GtkSignalFunc) auto_eject_applet_cb, dd);
-	gtk_widget_show(button);
+	eject_toggle = gtk_check_button_new_with_label (_("Eject on unmount"));
+	gtk_box_pack_start(GTK_BOX(vbox), eject_toggle, FALSE, FALSE, 0);
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(eject_toggle), dd->auto_eject);
+	gtk_widget_show(eject_toggle);
 
-	button = gtk_check_button_new_with_label (_("Use automount friendly status test"));
-	gtk_box_pack_start(GTK_BOX(vbox), button, FALSE, FALSE, 0);
-	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(button), dd->prop_autofs_friendly);
-	gtk_signal_connect (GTK_OBJECT(button),"clicked",(GtkSignalFunc) autofs_friendly_cb, dd);
-	gtk_widget_show(button);
+	automount_toggle = gtk_check_button_new_with_label (_("Use automount friendly status test"));
+	gtk_box_pack_start(GTK_BOX(vbox), automount_toggle, FALSE, FALSE, 0);
+	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(automount_toggle), dd->autofs_friendly);
+	gtk_widget_show(automount_toggle);
+	gtk_widget_show_all(frame);
+    gtk_widget_queue_resize(omenu);
+	response = gtk_dialog_run(GTK_DIALOG(dialog));
 
-	label = gtk_label_new(_("General"));
-	gtk_widget_show(frame);
-	gnome_property_box_append_page(GNOME_PROPERTY_BOX(dd->propwindow), frame, label);
-
-	gtk_signal_connect( GTK_OBJECT(dd->propwindow), "apply",
-			    GTK_SIGNAL_FUNC(property_apply_cb), dd );
-
-	gtk_signal_connect( GTK_OBJECT(dd->propwindow), "destroy",
-			    GTK_SIGNAL_FUNC(property_destroy_cb), dd );
-
-	gtk_signal_connect( GTK_OBJECT(dd->propwindow), "help",
-			    GTK_SIGNAL_FUNC(phelp_cb), NULL);
-
-	gtk_widget_show_all(dd->propwindow);
-}
-
-static gint
-property_destroy_cb( GtkWidget *w, DriveData *dd)
-{
-	dd->propwindow = NULL;
-	return FALSE;
-}
-
-static void
-phelp_cb (GtkWidget *w, gint tab, gpointer data)
-{
-
-}
-
-static void
-set_icon_entry_sensitivity(DriveData *dd, gint val)
-{
-	gtk_widget_set_sensitive(dd->icon_entry_in, val);
-	gtk_widget_set_sensitive(dd->icon_entry_out, val);
-}
-
-static void
-autofs_friendly_cb(GtkWidget *w, gpointer data)
-{
-	DriveData *dd = data;
-	dd->prop_autofs_friendly = GTK_TOGGLE_BUTTON (w)->active;
-	gnome_property_box_changed(GNOME_PROPERTY_BOX(dd->propwindow));
-}
-
-static void
-scale_applet_cb(GtkWidget *w, gpointer data)
-{
-	DriveData *dd = data;
-	dd->prop_scale_applet = GTK_TOGGLE_BUTTON (w)->active;
-	gnome_property_box_changed(GNOME_PROPERTY_BOX(dd->propwindow));
-}
-
-static void
-auto_eject_applet_cb(GtkWidget *w, gpointer data)
-{
-	DriveData *dd = data;
-	dd->prop_auto_eject = GTK_TOGGLE_BUTTON (w)->active;
-	gnome_property_box_changed(GNOME_PROPERTY_BOX(dd->propwindow));
-}
-
-static void
-pixmap_floppy_cb(GtkWidget *widget, gpointer data)
-{
-	DriveData *dd = data;
-	dd->prop_device_pixmap = 0;
-	set_icon_entry_sensitivity(dd, FALSE);
-	gnome_property_box_changed(GNOME_PROPERTY_BOX(dd->propwindow));
-}
-
-static void
-pixmap_cdrom_cb(GtkWidget *widget, gpointer data)
-{
-	DriveData *dd = data;
-	dd->prop_device_pixmap = 1;
-	set_icon_entry_sensitivity(dd, FALSE);
-	gnome_property_box_changed(GNOME_PROPERTY_BOX(dd->propwindow));
-}
-
-static void
-pixmap_zipdrive_cb(GtkWidget *widget, gpointer data)
-{
-	DriveData *dd = data;
-	dd->prop_device_pixmap = 2;
-	set_icon_entry_sensitivity(dd, FALSE);
-	gnome_property_box_changed(GNOME_PROPERTY_BOX(dd->propwindow));
-}
-
-static void
-pixmap_jazdrive_cb(GtkWidget *widget, gpointer data)
-{
-	DriveData *dd = data;
-	dd->prop_device_pixmap = 4;
-	set_icon_entry_sensitivity(dd, FALSE);
-	gnome_property_box_changed(GNOME_PROPERTY_BOX(dd->propwindow));
-}
-
-static void
-pixmap_harddisk_cb(GtkWidget *widget, gpointer data)
-{
-	DriveData *dd = data;
-	dd->prop_device_pixmap = 3;
-	set_icon_entry_sensitivity(dd, FALSE);
-	gnome_property_box_changed(GNOME_PROPERTY_BOX(dd->propwindow));
-}
-
-static void
-pixmap_custom_cb(GtkWidget *widget, gpointer data)
-{
-	DriveData *dd = data;
-	dd->prop_device_pixmap = -1;
-	set_icon_entry_sensitivity(dd, TRUE);
-	gnome_property_box_changed(GNOME_PROPERTY_BOX(dd->propwindow));
-}
-
-static void
-update_delay_cb(GtkWidget *widget, gpointer data)
-{
-	DriveData *dd = data;
-	dd->prop_interval = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(dd->prop_spin));
-	gnome_property_box_changed(GNOME_PROPERTY_BOX(dd->propwindow));
-}
-
-static void
-property_apply_cb(GtkWidget *propertybox, gint page_num, DriveData *dd)
-{
-	gchar *new_file;
-
-	if(page_num != -1) return;	/* only do this once, on global signal */
-
-	dd->auto_eject = dd->prop_auto_eject;
-
-	dd->scale_applet = dd->prop_scale_applet;
-	dd->autofs_friendly = dd->prop_autofs_friendly;
-	new_file = (gchar *)gtk_entry_get_text(GTK_ENTRY(dd->mount_point_entry));
-	if (dd->mount_point) g_free(dd->mount_point);
-	dd->mount_point = g_strdup(new_file);
-	sync_mount_base(dd);
-	dd->interval = dd->prop_interval;
-	if (dd->device_pixmap != dd->prop_device_pixmap)
+	if(response == GTK_RESPONSE_OK)
 	{
-		dd->device_pixmap = dd->prop_device_pixmap;
+		gchar *temp;
+		gint history;
+
+		temp = (gchar *)gtk_entry_get_text(GTK_ENTRY(mount_entry));
+		if(dd->mount_point) g_free(dd->mount_point);
+		if(temp) dd->mount_point = g_strdup(temp);
+		else dd->mount_point = NULL;
+
+    	dd->interval = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(update_spin));
+
+		history = gtk_option_menu_get_history(GTK_OPTION_MENU(omenu));
+		dd->device_pixmap = history < 5 ? history : -1;
+
+		temp = gnome_icon_entry_get_filename(GNOME_ICON_ENTRY(icon_entry_in));
+		if(dd->custom_icon_in) g_free(dd->custom_icon_in);
+		if(temp) dd->custom_icon_in = temp;
+		else dd->custom_icon_in = NULL;
+
+		temp = gnome_icon_entry_get_filename(GNOME_ICON_ENTRY(icon_entry_out));
+		if(dd->custom_icon_out) g_free(dd->custom_icon_out);
+		if(temp) dd->custom_icon_out = temp;
+		else dd->custom_icon_out = NULL;
+
+        dd->scale_applet = GTK_TOGGLE_BUTTON(scale_toggle)->active;
+        dd->auto_eject = GTK_TOGGLE_BUTTON(eject_toggle)->active;
+        dd->autofs_friendly = GTK_TOGGLE_BUTTON(automount_toggle)->active;
+		redraw_pixmap(dd);
+		start_callback_update(dd);
 	}
+	gtk_widget_destroy(dialog);
+}
 
-	g_free(dd->custom_icon_in);
-	g_free(dd->custom_icon_out);
-	dd->custom_icon_in = gnome_icon_entry_get_filename(GNOME_ICON_ENTRY(dd->icon_entry_in));
-	dd->custom_icon_out = gnome_icon_entry_get_filename(GNOME_ICON_ENTRY(dd->icon_entry_out));
+static void
+set_widget_sensitivity_false_cb(GtkWidget *widget, GtkWidget *target)
+{
+	gtk_widget_set_sensitive(target, FALSE);
+}
 
-	redraw_pixmap(dd);
-	start_callback_update(dd);
-
-	/* FIXME: make the panel save our config*/
+static void
+set_widget_sensitivity_true_cb(GtkWidget *widget, GtkWidget *target)
+{
+	gtk_widget_set_sensitive(target, TRUE);
 }
 
 static gchar *

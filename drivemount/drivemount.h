@@ -45,30 +45,18 @@ struct _DriveData
 	gint timeout_id;
 	gint interval;
 	gint mounted;
-	gint autofs_friendly;
 	gchar *mount_base;
 	gchar *mount_point;
-	PanelAppletOrient orient;
-	gint sizehint;
 	gint scale_applet;
 	gint auto_eject;
+	gint autofs_friendly;
+	PanelAppletOrient orient;
+	gint sizehint;
 
 	gchar *custom_icon_in;
 	gchar *custom_icon_out;
 
 	GtkWidget *error_dialog;
-
-	/* the rest is for the properties window */
-	GtkWidget *propwindow;
-	GtkWidget *prop_spin;
-	GtkWidget *mount_point_entry;
-	GtkWidget *icon_entry_in;
-	GtkWidget *icon_entry_out;
-	gint prop_interval;
-	gint prop_device_pixmap;
-	gint prop_autofs_friendly;
-	gint prop_scale_applet;
-	gint prop_auto_eject;
 };
 
 void redraw_pixmap(DriveData *dd);

@@ -142,7 +142,7 @@ static const char applet_menu_xml [] =
 "   <menuitem name=\"Browse\" verb=\"Browse\" _label=\"Browse...\"\n"
 "             pixtype=\"stock\" pixname=\"gtk-open\"/>\n"
 "   <menuitem name=\"Eject\" verb=\"Eject\" _label=\"Eject\"\n"
-"             pixtype=\"stock\" pixname=\"gtk-up-arrow\"/>\n"
+"             pixtype=\"stock\" pixname=\"gtk-go-up\"/>\n"
 "   <menuitem name=\"Properties\" verb=\"Properties\" _label=\"Properties...\"\n"
 "             pixtype=\"stock\" pixname=\"gtk-properties\"/>\n"
 "   <menuitem name=\"Help\" verb=\"Help\" _label=\"Help\"\n"
