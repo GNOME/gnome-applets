@@ -13,6 +13,18 @@
 
 #include "properties.h"
 
+void gcolor_changed_cb( GnomeColorPicker *widget );
+void bcolor_changed_cb( GnomeColorPicker *widget );
+void height_cb( GtkWidget *widget, GtkWidget *spin );
+void width_cb( GtkWidget *widget, GtkWidget *spin );
+void freq_cb( GtkWidget *widget, GtkWidget *spin );
+GtkWidget *create_general_frame(void);
+void device_cb( GtkWidget *widget, GtkWidget *value );
+void line_cb( GtkWidget *widget, GtkWidget *spin );
+GtkWidget *create_device_frame(void);
+void apply_cb( GtkWidget *widget, void *data );
+void close_cb( GtkWidget *widget, void *data );
+
 GtkWidget *propbox;
 extern netload_properties props;
 static netload_properties new_props;
@@ -23,14 +35,14 @@ void start_timer( void );
 void load_properties(char *path, netload_properties *prop )
 {
 	gnome_config_push_prefix(path);
-	prop->gcolor	= gnome_config_get_string ("net/gcolor=#20b2aa");
-	prop->bcolor	= gnome_config_get_string ("net/bcolor=#188982");
+	prop->gcolor	= gnome_config_get_string ("net/gcolor=#f7f426");
+	prop->bcolor	= gnome_config_get_string ("net/bcolor=#e88a40");
 	prop->speed	= gnome_config_get_int    ("net/speed=2000");
 	prop->height 	= gnome_config_get_int	  ("net/height=40");
 	prop->width 	= gnome_config_get_int	  ("net/width=40");
 	prop->look	= gnome_config_get_bool   ("net/look=1");
 	prop->device	= gnome_config_get_string ("net/device=ppp0");
-	prop->line_spacing	= gnome_config_get_int	  ("net/line_spacing=1024");	
+	prop->line_spacing = gnome_config_get_int ("net/line_spacing=2");
 	gnome_config_pop_prefix();
 }
 
@@ -49,23 +61,27 @@ void save_properties(char *path, netload_properties *prop )
 	gnome_config_pop_prefix();
 }
 
-void color_changed_cb( GnomeColorSelector *widget, gchar **color )
+void gcolor_changed_cb( GnomeColorPicker *widget )
 {
-        char *tmp;
- 	int r,g,b;
+        gchar tmp[24];
+ 	guint8 r,g,b;
 
-	/* FIXME ugh, mem leak..anyone have a better way of doing this? */        
-	tmp = g_malloc(24);
-        if( !tmp )
-        {
-        	g_warning(_("Can't allocate memory for color\n"));
-                return;
-        }
-        gnome_color_selector_get_color_int(
-        	widget, &r, &g, &b, 255 );
-	
+	gnome_color_picker_get_i8(widget, &r, &g, &b, NULL);
+
 	sprintf( tmp, "#%02x%02x%02x", r, g, b );
-        *color = tmp;
+	strcpy(new_props.gcolor, tmp);
+        gnome_property_box_changed(GNOME_PROPERTY_BOX(propbox));
+}          
+
+void bcolor_changed_cb( GnomeColorPicker *widget )
+{
+        gchar tmp[24];
+ 	guint8 r,g,b;
+
+	gnome_color_picker_get_i8(widget, &r, &g, &b, NULL);
+
+	sprintf( tmp, "#%02x%02x%02x", r, g, b );
+	strcpy(new_props.bcolor, tmp);
         gnome_property_box_changed(GNOME_PROPERTY_BOX(propbox));
 }          
 
@@ -93,8 +109,8 @@ GtkWidget *create_general_frame(void)
 	GtkWidget *box, *color, *size, *speed;
 	GtkWidget *height, *width, *freq;
 	GtkObject *height_a, *width_a, *freq_a;
-	        
-	GnomeColorSelector *ucolor_gcs, *scolor_gcs;
+
+	GtkWidget *gcolor_gcs, *bcolor_gcs;
         int ur,ug,ub, sr,sg,sb;
 
 	sscanf( props.gcolor, "#%02x%02x%02x", &ur,&ug,&ub );
@@ -106,25 +122,21 @@ GtkWidget *create_general_frame(void)
 	speed=gtk_hbox_new( 5, TRUE );
 	gtk_container_border_width( GTK_CONTAINER(box), 5 );
 	        
-	
-	ucolor_gcs  = gnome_color_selector_new( (SetColorFunc)color_changed_cb,
-		&props.gcolor );
-	scolor_gcs = gnome_color_selector_new( (SetColorFunc)color_changed_cb,
-		&props.bcolor );
+	gcolor_gcs = gnome_color_picker_new();
+	bcolor_gcs = gnome_color_picker_new();
 
-        gnome_color_selector_set_color_int( ucolor_gcs, ur, ug, ub, 255 );
-	gnome_color_selector_set_color_int( scolor_gcs, sr, sg, sb, 255 );
-                  
+	gnome_color_picker_set_i8 (GNOME_COLOR_PICKER (gcolor_gcs),
+				   ur, ug, ub, 255);
+	gnome_color_picker_set_i8 (GNOME_COLOR_PICKER (bcolor_gcs),
+				   sr, sg, sb, 255);
 
 	label = gtk_label_new(_("Network Traffic"));
 	gtk_box_pack_start_defaults( GTK_BOX(color), label );
-	gtk_box_pack_start_defaults( GTK_BOX(color), 
-		gnome_color_selector_get_button(ucolor_gcs) );
+	gtk_box_pack_start_defaults( GTK_BOX(color), gcolor_gcs );
 
 	label = gtk_label_new(_("Traffic bars"));
 	gtk_box_pack_start_defaults( GTK_BOX(color), label );
-	gtk_box_pack_start_defaults( GTK_BOX(color), 
-		gnome_color_selector_get_button(scolor_gcs) );
+	gtk_box_pack_start_defaults( GTK_BOX(color), bcolor_gcs );
 
 	label = gtk_label_new(_("Applet Height"));
 	height_a = gtk_adjustment_new( props.height, 0.5, 128, 1, 8, 8 );
@@ -150,6 +162,10 @@ GtkWidget *create_general_frame(void)
        		GTK_SIGNAL_FUNC(width_cb), width );
         gtk_spin_button_set_update_policy( GTK_SPIN_BUTTON(width),
         	GTK_UPDATE_ALWAYS );
+	gtk_signal_connect (GTK_OBJECT (gcolor_gcs), "color_set",
+			    GTK_SIGNAL_FUNC (gcolor_changed_cb), NULL);
+	gtk_signal_connect (GTK_OBJECT (bcolor_gcs), "color_set",
+			    GTK_SIGNAL_FUNC (bcolor_changed_cb), NULL);
 
 	label = gtk_label_new(_("Update Frequency"));
 
@@ -184,7 +200,7 @@ void device_cb( GtkWidget *widget, GtkWidget *value )
 
 void line_cb( GtkWidget *widget, GtkWidget *spin )
 {
-	new_props.line_spacing = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spin)) << 10;
+	new_props.line_spacing = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spin));
         gnome_property_box_changed(GNOME_PROPERTY_BOX(propbox));
 }
 
@@ -206,7 +222,7 @@ GtkWidget *create_device_frame(void)
 	line_box = gtk_hbox_new(5, TRUE);
 	label = gtk_label_new(_("Vertical spacing of bars (in kilobytes)"));
 	gtk_box_pack_start_defaults( GTK_BOX(line_box), label);
-	line_a = gtk_adjustment_new( props.line_spacing >> 10, 1, 1024, 1, 10, 10 );
+	line_a = gtk_adjustment_new( props.line_spacing, 1, 1024, 1, 10, 10 );
 	line = gtk_spin_button_new( GTK_ADJUSTMENT(line_a), 1, 0 );
 	gtk_box_pack_start_defaults( GTK_BOX(line_box), line);
 

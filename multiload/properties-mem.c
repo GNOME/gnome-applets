@@ -61,7 +61,7 @@ ucolor_changed_cb (GnomeColorPicker *widget)
 
         gnome_color_picker_get_i8
 		(widget, &r, &g, &b, NULL);
-	
+
 	sprintf (temp_props.ucolor, "#%02x%02x%02x", r, g, b);
         gnome_property_box_changed (GNOME_PROPERTY_BOX(propbox));
 }          
