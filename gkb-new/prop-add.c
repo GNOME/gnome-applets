@@ -32,41 +32,57 @@
 
 #include "gkb.h"
 
-static void addhelp_cb (AppletWidget * widget, gpointer data);
+static void addhelp_cb (PanelApplet * widget, gpointer data);
 
 typedef struct _LangData LangData;
 struct _LangData
 {
-  GtkWidget *widget;
+  GtkTreeIter iter;
   GHashTable *countries;
 };
 
 typedef struct _CountryData CountryData;
 struct _CountryData
 {
-  GtkWidget *widget;
+  GtkTreeIter iter;
   GList *keymaps;
 };
 
+enum {
+ NAME_COL,
+ COMMAND_COL,
+ FLAG_COL,
+ LABEL_COL,
+ NUM_COLS
+};
 
-
-
-static void
-treeitems_create (GtkWidget * tree)
+GtkWidget* 
+tree_create (GtkTreeStore *model)
 {
   GList *sets = NULL;
   GList *retval = NULL;
-  GtkWidget *sitem, *titem, *subitem, *subtree, *subtree2;
+  GtkWidget *tree1;
+  GtkCellRenderer *cell;
+  GtkTreeViewColumn *column;
+  GtkTreeSelection *selection;
 
   GHashTable *langs = g_hash_table_new (g_str_hash, g_str_equal);
   LangData *ldata;
   CountryData *cdata;
 
-
   /* TODO: Error checking... */
   sets = gkb_preset_load (find_presets ());
   retval = sets;
 
+  tree1 = gtk_tree_view_new_with_model (GTK_TREE_MODEL (model));
+  
+  cell = gtk_cell_renderer_text_new ();
+ 
+  column = gtk_tree_view_column_new_with_attributes (_("Keymaps (select and press add)"), cell,
+                                                           "text", 0, NULL);
+
+  gtk_tree_view_append_column (GTK_TREE_VIEW (tree1), column);
+ 
   while ((sets = g_list_next (sets)) != NULL)
     {
       GkbKeymap *item;
@@ -80,39 +96,53 @@ treeitems_create (GtkWidget * tree)
 	      != NULL)
 	    {
 	      /* There is country */
-	      sitem = gtk_tree_item_new_with_label (item->name);
-	      gtk_tree_append (GTK_TREE (cdata->widget), sitem);
-	      gtk_widget_show (sitem);
+              GtkTreeIter iter;
+              
+              gtk_tree_store_append (GTK_TREE_STORE(model), &iter, 
+              				&cdata->iter);
 
-	      cdata->keymaps = g_list_append (cdata->keymaps, item);
-
-	      gtk_object_set_data (GTK_OBJECT (sitem), "item", item);
-
+	      gtk_tree_store_set (GTK_TREE_STORE(model), &iter,
+				NAME_COL, item->name,
+				COMMAND_COL, item->command,
+				FLAG_COL, item->flag,
+				LABEL_COL, item->label,
+		                -1);
+              cdata->keymaps = g_list_append (cdata->keymaps, item);	    
 	    }
 	  else
 	    {
 	      /* There is no country */
 
-	      subitem = gtk_tree_item_new_with_label (item->country);
-	      gtk_tree_append (GTK_TREE (ldata->widget), subitem);
-	      gtk_widget_show (subitem);
+              GtkTreeIter citer;
+              GtkTreeIter iter; 
+                           
+              gtk_tree_store_append (GTK_TREE_STORE(model), &citer, 
+              				&ldata->iter);
 
-	      subtree = gtk_tree_new ();
-	      gtk_tree_set_selection_mode (GTK_TREE (subtree),
-					   GTK_SELECTION_SINGLE);
-	      gtk_tree_set_view_mode (GTK_TREE (subtree), GTK_TREE_VIEW_ITEM);
-	      gtk_tree_item_set_subtree (GTK_TREE_ITEM (subitem), subtree);
-	      subitem = gtk_tree_item_new_with_label (item->name);
-	      gtk_tree_append (GTK_TREE (subtree), subitem);
-	      gtk_widget_show (subitem);
-
+	      gtk_tree_store_set (GTK_TREE_STORE(model), &citer,
+				NAME_COL, item->country,
+				COMMAND_COL, NULL,
+				FLAG_COL, NULL,
+				LABEL_COL, item->label,
+		                -1);
+	      
 	      cdata = g_new0 (CountryData, 1);
 
-	      cdata->widget = subtree;
+              gtk_tree_store_append (GTK_TREE_STORE(model), &iter, 
+              				&cdata->iter);
+
+	      gtk_tree_store_set (GTK_TREE_STORE(model), &iter,
+				NAME_COL, item->name,
+				COMMAND_COL, item->command,
+				FLAG_COL, item->flag,
+				LABEL_COL, item->label,
+		                -1);
+
+		/* TODO: fix */
+	      memcpy(&cdata->iter,&citer,sizeof(GtkTreeIter));
 	      cdata->keymaps = NULL;
 
 	      cdata->keymaps = g_list_append (cdata->keymaps, item);
-	      gtk_object_set_data (GTK_OBJECT (subitem), "item", item);
 
 	      g_hash_table_insert (ldata->countries, item->country, cdata);
 	    }
@@ -121,40 +151,58 @@ treeitems_create (GtkWidget * tree)
 	{
 	  /* There is no lang */
 
-	  titem = gtk_tree_item_new_with_label (item->lang);
-	  gtk_tree_append (GTK_TREE (tree), titem);
-	  gtk_widget_show (titem);
-
-	  subtree = gtk_tree_new ();
-	  gtk_tree_set_selection_mode (GTK_TREE (subtree),
-				       GTK_SELECTION_SINGLE);
-	  gtk_tree_set_view_mode (GTK_TREE (subtree), GTK_TREE_VIEW_ITEM);
-	  gtk_tree_item_set_subtree (GTK_TREE_ITEM (titem), subtree);
-	  subitem = gtk_tree_item_new_with_label (item->country);
-	  gtk_tree_append (GTK_TREE (subtree), subitem);
-	  gtk_widget_show (subitem);
-
-	  subtree2 = gtk_tree_new ();
-	  gtk_tree_set_selection_mode (GTK_TREE (subtree2),
-				       GTK_SELECTION_SINGLE);
-	  gtk_tree_set_view_mode (GTK_TREE (subtree2), GTK_TREE_VIEW_ITEM);
-	  gtk_tree_item_set_subtree (GTK_TREE_ITEM (subitem), subtree2);
-	  sitem = gtk_tree_item_new_with_label (item->name);
-	  gtk_tree_append (GTK_TREE (subtree2), sitem);
-	  gtk_widget_show (sitem);
+          GtkTreeIter liter;
+          GtkTreeIter citer;
+          GtkTreeIter iter; 
 
 	  ldata = g_new0 (LangData, 1);
-	  cdata = g_new0 (CountryData, 1);
 
-	  cdata->widget = subtree2;
-	  cdata->keymaps = NULL;
+          gtk_tree_store_append (GTK_TREE_STORE(model), &liter,
+              				NULL);
 
-	  ldata->widget = subtree;
+          gtk_tree_store_set (GTK_TREE_STORE(model), &liter,
+				NAME_COL, item->lang,
+				COMMAND_COL, NULL,
+				FLAG_COL, NULL,
+				LABEL_COL, item->label,
+		                -1);
+
+
+	  memcpy(&ldata->iter,&liter,sizeof(GtkTreeIter));
 
 	  ldata->countries = g_hash_table_new (g_str_hash, g_str_equal);
+          gtk_tree_store_append (GTK_TREE_STORE(model), &citer, 
+              				&ldata->iter);
+     
+          gtk_tree_store_set (GTK_TREE_STORE(model), &citer,
+				NAME_COL, item->country,
+				COMMAND_COL, NULL,
+				FLAG_COL, NULL,
+				LABEL_COL, item->label,
+		                -1);
+	                
+          cdata = g_new0 (CountryData, 1);
 
 	  cdata->keymaps = g_list_append (cdata->keymaps, item);
-	  gtk_object_set_data (GTK_OBJECT (sitem), "item", item);
+
+	  memcpy(&cdata->iter,&citer,sizeof(GtkTreeIter));
+	  cdata->keymaps = NULL;
+
+          gtk_tree_store_append (GTK_TREE_STORE(model), &iter, 
+              				&cdata->iter);
+
+          gtk_tree_store_set (GTK_TREE_STORE(model), &iter,
+				NAME_COL, item->name,
+				COMMAND_COL, item->command,
+				FLAG_COL, item->flag,
+				LABEL_COL, item->label,
+		                -1);
+
+		/* TODO: fix */
+          memcpy(&cdata->iter,&citer,sizeof(GtkTreeIter));
+	  cdata->keymaps = NULL;
+
+	  cdata->keymaps = g_list_append (cdata->keymaps, item);
 
 	  g_hash_table_insert (ldata->countries, item->country, cdata);
 
@@ -162,27 +210,69 @@ treeitems_create (GtkWidget * tree)
 	}
 
     }
+    return tree1;
 }
 
 static void
-preadd_cb (GtkWidget * tree, GkbPropertyBoxInfo * pbi)
+preadd_cb (GtkTreeSelection *selection,
+              GkbPropertyBoxInfo  *pbi)
 {
-  GList *i;
-  GtkLabel *label;
-  GtkWidget *item;
+  GkbKeymap *tdata;
+  GValue value = {0, };
+  GtkTreeIter iter;
+   
+  tdata = g_new0 (GkbKeymap,1);
+  
+  if (! gtk_tree_selection_get_selected (selection, NULL, &iter))
+     return;
 
-  g_return_if_fail (tree != NULL);
+  if (!pbi->keymap_for_add) g_free(pbi->keymap_for_add); 
+  /* TODO: free them all */
 
-  if ((i = GTK_TREE_SELECTION (tree)) != NULL)
-    {
-      item = GTK_WIDGET (i->data);
-      label = GTK_LABEL (GTK_BIN (item)->child);
-      if (GTK_IS_LABEL (label))
-	{
-	  pbi->keymap_for_add =
-	    gtk_object_get_data (GTK_OBJECT (item), "item");
-	}
-    }
+  gtk_tree_model_get_value (GTK_TREE_STORE(pbi->model), &iter,
+                              NAME_COL,
+                              &value);
+  if (g_value_get_string (&value))
+  tdata->name = 
+      g_strdup (g_value_get_string (&value));
+  alert(g_value_get_string(&value));
+  g_value_unset (&value);
+  gtk_tree_model_get_value (GTK_TREE_STORE(pbi->model), &iter,
+                              FLAG_COL,
+                              &value);
+  tdata->flag = 
+      g_strdup (g_value_get_string (&value));
+  g_value_unset (&value);
+  gtk_tree_model_get_value (GTK_TREE_STORE(pbi->model), &iter,
+                              COMMAND_COL,
+                              &value);
+  tdata->command = 
+      g_strdup (g_value_get_string (&value));
+  g_value_unset (&value);
+
+  /* TODO: get the parent info for...  */
+
+  gtk_tree_model_get_value (GTK_TREE_STORE(pbi->model), &iter,
+                              NAME_COL,
+                              &value);
+  tdata->country = 
+      g_strdup (g_value_get_string (&value));
+  g_value_unset (&value);
+  gtk_tree_model_get_value (GTK_TREE_STORE(pbi->model), &iter,
+                              NAME_COL,
+                              &value);
+  tdata->label = 
+      g_strdup (g_value_get_string (&value));
+  g_value_unset (&value);
+  gtk_tree_model_get_value (GTK_TREE_STORE(pbi->model), &iter,
+                              NAME_COL,
+                              &value); 
+  tdata->lang = 
+      g_strdup (g_value_get_string (&value));
+  g_value_unset (&value);
+
+  pbi->keymap_for_add = tdata;
+
   return;
 }
 
@@ -231,6 +321,7 @@ gkb_prop_map_add (GkbPropertyBoxInfo * pbi)
   GtkWidget *tree1;
   GtkWidget *scrolled1;
   GtkWidget *hbuttonbox1;
+  GtkTreeSelection *selection;
   GtkWidget *button4;
   GtkWidget *button5;
   GtkWidget *button6;
@@ -259,11 +350,12 @@ gkb_prop_map_add (GkbPropertyBoxInfo * pbi)
   gtk_box_pack_start (GTK_BOX (vbox1), scrolled1, TRUE, TRUE, 0);
   gtk_widget_show (scrolled1);
 
-  tree1 = gtk_tree_new ();
+  pbi->model = gtk_tree_store_new (NUM_COLS, G_TYPE_STRING,
+               G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING); 
+
+  tree1 = tree_create (pbi->model);
 
   gtk_widget_show (tree1);
-
-  treeitems_create (tree1);
 
   gtk_scrolled_window_add_with_viewport (GTK_SCROLLED_WINDOW (scrolled1),
 					 tree1);
@@ -277,28 +369,36 @@ gkb_prop_map_add (GkbPropertyBoxInfo * pbi)
   button4 = gtk_button_new_with_label (_("Add"));
 
   gtk_widget_show (button4);
-  gtk_container_add (GTK_CONTAINER (hbuttonbox1), button4);
   GTK_WIDGET_SET_FLAGS (button4, GTK_CAN_DEFAULT);
 
-  button5 = gnome_stock_button (GNOME_STOCK_BUTTON_CLOSE);
+  button5 = gtk_button_new_from_stock (GNOME_STOCK_BUTTON_CLOSE);
   gtk_widget_show (button5);
-  gtk_container_add (GTK_CONTAINER (hbuttonbox1), button5);
   GTK_WIDGET_SET_FLAGS (button5, GTK_CAN_DEFAULT);
 
-  button6 = gnome_stock_button (GNOME_STOCK_BUTTON_HELP);
+  button6 = gtk_button_new_from_stock (GNOME_STOCK_BUTTON_HELP);
   gtk_widget_show (button6);
-  gtk_container_add (GTK_CONTAINER (hbuttonbox1), button6);
   GTK_WIDGET_SET_FLAGS (button6, GTK_CAN_DEFAULT);
 
-  gtk_signal_connect (GTK_OBJECT (tree1), "selection_changed",
-		      GTK_SIGNAL_FUNC (preadd_cb), pbi);
-  gtk_signal_connect (GTK_OBJECT (button4), "clicked",
-		      GTK_SIGNAL_FUNC (addwadd_cb), pbi);
-  gtk_signal_connect (GTK_OBJECT (button5), "clicked",
-		      GTK_SIGNAL_FUNC (wdestroy_cb),
+  /* ability suxx :) */
+  gtk_container_add (GTK_CONTAINER (hbuttonbox1), button6);
+  gtk_container_add (GTK_CONTAINER (hbuttonbox1), button5);
+  gtk_container_add (GTK_CONTAINER (hbuttonbox1), button4);
+
+  selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (tree1));
+
+  gtk_tree_selection_set_mode (GTK_TREE_SELECTION (selection),
+                          	GTK_SELECTION_BROWSE);
+
+  g_signal_connect (selection, "changed",
+		      G_CALLBACK (preadd_cb), pbi);
+  g_signal_connect (button4, "clicked",
+		      G_CALLBACK (addwadd_cb), pbi);
+  g_signal_connect (button5, "clicked",
+		      G_CALLBACK (wdestroy_cb),
 		      GTK_OBJECT (gkb->addwindow));
-  gtk_signal_connect (GTK_OBJECT (button6), "clicked",
-		      GTK_SIGNAL_FUNC (addhelp_cb), GTK_OBJECT (tree1));
+  g_signal_connect (button6, "clicked",
+		      G_CALLBACK (addhelp_cb), 
+	              GTK_OBJECT (tree1));
 
   gtk_widget_show (gkb->addwindow);
 
@@ -306,7 +406,7 @@ gkb_prop_map_add (GkbPropertyBoxInfo * pbi)
 }
 
 static void
-addhelp_cb (AppletWidget * applet, gpointer data)
+addhelp_cb (PanelApplet * applet, gpointer data)
 {
 /*
   GnomeHelpMenuEntry help_entry =

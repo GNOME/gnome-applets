@@ -80,6 +80,8 @@ struct _GkbPropertyBoxInfo
   /* Selected keymap to add */
   GkbKeymap *keymap_for_add;
 
+  GtkTreeStore *model;
+
   /* Other properties */
   gint is_small; 
   GkbMode mode;
@@ -165,7 +167,7 @@ struct _GkbKeymapWg
 
 /* gkb.c */
 void gkb_update (GKB *gkb, gboolean set_command);
-
+void alert(const gchar * str);
 
 /* prop.c */
 void properties_dialog (BonoboUIComponent *uic,

@@ -57,6 +57,16 @@ static void help_cb (BonoboUIComponent *uic,
 static GdkFilterReturn
 event_filter (GdkXEvent * gdk_xevent, GdkEvent * event, gpointer data);
 
+static void gkb_destroy (GtkWidget * widget, gpointer data);
+
+void alert(const gchar * str){
+ GtkWidget * window;
+ window = gnome_message_box_new (str,
+               GNOME_MESSAGE_BOX_INFO,
+               GNOME_STOCK_BUTTON_OK, NULL);
+ gtk_widget_show_all(window);
+}
+
 static void
 makepix (GkbKeymap * keymap, char *fname, int w, int h)
 {
@@ -178,9 +188,15 @@ gkb_count_sizes (GKB * gkb)
   gint label_height = 0;
   gint label_width = 0;
 
+  gchar asd[23];
+
   gint size;
 
   size = panel_applet_get_size (PANEL_APPLET (gkb->applet));
+
+  /* sprintf(asd,"%d",size);
+
+  alert (asd); */
 
   /* Determine if this pannel requires different handling because it is very small */
   switch (gkb->orient)
@@ -647,6 +663,7 @@ create_gkb_widget ()
   gtk_widget_pop_visual ();
 
   gkb_sized_render (gkb);
+
   gkb_update (gkb, TRUE);
 }
 
@@ -854,6 +871,10 @@ static const BonoboUIVerb gkb_menu_verbs [] = {
 	BONOBO_UI_VERB_END
 };
 
+static void gkb_destroy (GtkWidget * widget, gpointer data) {
+	g_free(gkb);
+}
+
 gboolean fill_gkb_applet(PanelApplet *applet)
 {
   int keycode, modifiers;
@@ -867,6 +888,7 @@ gboolean fill_gkb_applet(PanelApplet *applet)
   gtk_widget_push_visual (gdk_rgb_get_visual ());
   gtk_widget_push_colormap (gdk_rgb_get_cmap ());
 
+
   bah_window = gtk_window_new (GTK_WINDOW_POPUP);
 
   gtk_widget_pop_visual ();
@@ -874,7 +896,7 @@ gboolean fill_gkb_applet(PanelApplet *applet)
 
   gtk_widget_set_uposition (bah_window, gdk_screen_width () + 1,
 			    gdk_screen_height () + 1);
-  gtk_widget_show_now (bah_window);
+  gtk_widget_show (bah_window);
 
   load_properties (gkb);
 
@@ -884,9 +906,6 @@ gboolean fill_gkb_applet(PanelApplet *applet)
 
   gtk_widget_show (gkb->darea_frame);
   gtk_container_add (GTK_CONTAINER (gkb->applet), gkb->eventbox);
-
-
-  gtk_widget_show (gkb->applet);
 
   gtk_signal_connect (GTK_OBJECT (gkb->applet), "save_session",
 		      GTK_SIGNAL_FUNC (applet_save_session), NULL);
@@ -912,6 +931,11 @@ gboolean fill_gkb_applet(PanelApplet *applet)
 
   gdk_window_add_filter (GDK_ROOT_PARENT (), event_filter, NULL);
 
+  g_signal_connect (G_OBJECT(gkb->applet),
+  			  "destroy", 
+  			  G_CALLBACK (gkb_destroy), 
+  			  NULL);
+
   g_signal_connect (G_OBJECT (gkb->applet),
                           "change_orient",
                           G_CALLBACK (gkb_change_orient),
@@ -927,6 +951,9 @@ gboolean fill_gkb_applet(PanelApplet *applet)
   				gkb_menu_verbs, 
   				gkb);
 
+  gtk_widget_show (GTK_WIDGET(gkb->applet));
+
+  alert(_("Welcome at GKB! Please visit my preferences!")); 
 
   return TRUE;
 }
