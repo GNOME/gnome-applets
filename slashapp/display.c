@@ -12,7 +12,7 @@ static void redraw_display(AppData *ad);
 static void draw_pixmap(AppData *ad, GdkPixmap *smap, GdkBitmap *mask, GdkPixmap *tmap, gint x, gint y, gint w, gint h, gint xo, gint yo);
 
 static InfoData *create_info_line(gchar *text,  gchar *icon_path, GtkWidget *icon,
-				gint offset, gint center, gint show_count, gint delay, gint priority);
+				gint offset, gint center, gint show_count, gint delay);
 static void free_info_line(AppData *ad, InfoData *id);
 
 
@@ -65,7 +65,7 @@ static void draw_pixmap(AppData *ad, GdkPixmap *smap, GdkBitmap *mask, GdkPixmap
  */
 
 static	InfoData *create_info_line(gchar *text,  gchar *icon_path, GtkWidget *icon,
-				gint offset, gint center, gint show_count, gint delay, gint priority)
+				gint offset, gint center, gint show_count, gint delay)
 {
 	InfoData *id;
 	if (!text) return NULL;
@@ -117,7 +117,6 @@ static	InfoData *create_info_line(gchar *text,  gchar *icon_path, GtkWidget *ico
 	id->show_count = show_count;
 
 	id->end_delay = delay;
-	id->priority = priority;
 
 	return id;
 }
@@ -140,16 +139,16 @@ static void free_info_line(AppData *ad, InfoData *id)
 
 void free_all_info_lines(AppData *ad)
 {
-	GList *work = ad->info_list;
+	GList *list = ad->text;
 
-	while(work)
+	if (!list) return;
+	while(list)
 		{
-		InfoData *id = work->data;
-		work = work->next;
-		ad->info_list = g_list_remove(ad->info_list, id);
-		if (!line_is_in_click_list(ad, id)) free_info_line(ad, id);
+			InfoData *id = list->data;
+			free_info_line(ad, id);
+			list = list->next;
 		}
-
+	g_list_free(ad->text);
 	free_click_list(ad);
 }
 
@@ -160,7 +159,7 @@ void free_all_info_lines(AppData *ad)
  */
 
 InfoData *add_info_line(AppData *ad, gchar *text, gchar *icon_path, gint offset, gint center,
-		   gint show_count, gint delay, gint priority)
+		   gint show_count, gint delay)
 {
 	InfoData *id;
 	GtkWidget *icon = NULL;
@@ -173,20 +172,22 @@ InfoData *add_info_line(AppData *ad, gchar *text, gchar *icon_path, gint offset,
 			icon = gnome_pixmap_new_from_xpm_d(noimage_xpm);
 		}
 
-	id = create_info_line(text, icon_path, icon, offset, center, show_count, delay, priority);
+	id = create_info_line(text, icon_path, icon, offset, center, show_count, delay);
 	if (id)
 		{
 		ad->info_list = g_list_append(ad->info_list, id);
+		ad->text = g_list_append(ad->text, id);
+		ad->text_lines++;
 		}
 
 	return id;
 }
 
 InfoData *add_info_line_with_pixmap(AppData *ad, gchar *text, GtkWidget *icon, gint offset, gint center,
-		   gint show_count, gint delay, gint priority)
+		   gint show_count, gint delay)
 {
 	InfoData *id;
-	id = create_info_line(text, NULL, icon, offset, center, show_count, delay, priority);
+	id = create_info_line(text, NULL, icon, offset, center, show_count, delay);
 	if (id)
 		{
 		ad->info_list = g_list_append(ad->info_list, id);
@@ -289,7 +290,7 @@ static InfoData *first_unshown_info_line(GList *list)
 		InfoData *id = list->data;
 		if (!id->shown)
 			{
-			if (!ret_id || (ret_id && id->priority > ret_id->priority))
+			if (!ret_id || (ret_id))
 				{
 				ret_id = id;
 				}

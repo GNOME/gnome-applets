@@ -89,9 +89,9 @@ AppData *create_new_app(GtkWidget *applet)
 	gtk_timeout_add(refresh_time, get_current_headlines, ad);
 
 	icon = gnome_pixmap_new_from_xpm_d(slashsplash_xpm);
-	add_info_line_with_pixmap(ad, "", icon, 0, FALSE, 1, 0, 10);
-	add_info_line(ad, "SlashApp\n", NULL, 0, TRUE, 1, 0, 10);
-	add_info_line(ad, _("Loading headlines..."), NULL, 0, FALSE, 1, 20, 10);
+	add_info_line_with_pixmap(ad, "", icon, 0, FALSE, 1, 0);
+	add_info_line(ad, "SlashApp\n", NULL, 0, TRUE, 1, 0);
+	add_info_line(ad, _("Loading headlines..."), NULL, 0, FALSE, 1, 20);
 	
 	gtk_widget_show(ad->applet);
 	ad->startup_timeout_id = gtk_timeout_add(5000, startup_delay_cb, ad);
@@ -111,7 +111,7 @@ static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
 }
 
 #ifdef HAVE_PANEL_PIXEL_SIZE
-static void applet_change_pixel_size(GtkWidget *w, int size, gpointer data)
+void applet_change_pixel_size(GtkWidget *w, int size, gpointer data)
 {
         AppData *ad = data;
 
@@ -240,6 +240,7 @@ void populate_article_window(AppData *ad)
 	GList *list;
 	gint added = FALSE;
 
+
 	if(!ad->article_window) return;
 
         vbox = gtk_object_get_user_data(GTK_OBJECT(ad->article_list));
@@ -313,7 +314,7 @@ void refresh_cb(AppletWidget *widget, gpointer data)
 	
 	remove_all_lines(ad);
 	icon = gnome_pixmap_new_from_xpm_d(slashsplash_xpm);
-        add_info_line_with_pixmap(ad, "", icon, 0, FALSE, 1, 0, 5);
+        add_info_line_with_pixmap(ad, "", icon, 0, FALSE, 1, 0);
 			
 	if(ad->startup_timeout_id > 0)
 		return;
@@ -358,7 +359,7 @@ void parse_headlines(gpointer data)
 	if (s.st_size == 0) {
 		g_warning(_("Unable to parse document\n"));
 		add_info_line(ad, "Can't parse XML. Net connection down?",
-			      NULL, 0, FALSE, FALSE, delay, 5);
+			      NULL, 0, FALSE, FALSE, delay);
 		return;
 	}
 						
@@ -367,7 +368,7 @@ void parse_headlines(gpointer data)
 	if (doc==NULL) {
 		g_warning(_("Unable to parse document\n"));
 		add_info_line(ad, "Can't parse XML. Net connection down?", 
-				NULL, 0, FALSE, FALSE, delay, 5);
+				NULL, 0, FALSE, FALSE, delay);
 		return;
 	}
 
@@ -461,14 +462,14 @@ void tree_walk(xmlNodePtr root, gpointer data)
 		char *image = layer_find(item[i]->childs, "iamge", "No image");
 */
 		char *temp = g_strconcat(title, NULL);
-                id = add_info_line(ad, temp, NULL, 0, FALSE, FALSE, delay, 10); 
+                id = add_info_line(ad, temp, NULL, 0, FALSE, FALSE, delay); 
 /*		set_info_signals(id, click_headline_cb, g_free, NULL, NULL, url);
  */
 
 		set_info_click_signal(id, click_headline_cb, g_strdup(url), 
 				g_free);
 
-		add_info_line(ad, "", NULL, 0, FALSE, FALSE, delay, 10);
+		add_info_line(ad, "", NULL, 0, FALSE, FALSE, delay);
 	}
 }
 

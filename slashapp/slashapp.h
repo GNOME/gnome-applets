@@ -40,7 +40,6 @@ struct _InfoData
         void (*free_func)(gpointer data);
 
 	/* from tick-a-stat */
-	gint priority;
 	void(*pre_func)(gpointer data, InfoData *id, AppData *ad);
 	void(*end_func)(gpointer data, InfoData *id, AppData *ad);
 };
@@ -171,9 +170,9 @@ struct _ClickData
 	/* display.c */
 void free_all_info_lines(AppData *ad);
 InfoData *add_info_line(AppData *ad, gchar *text, gchar *icon_path, gint offset, gint center,
-                   gint show_count, gint delay, gint priority);
+                   gint show_count, gint delay);
 InfoData *add_info_line_with_pixmap(AppData *ad, gchar *text, GtkWidget *icon, gint offset, gint center,
-		   gint show_count, gint delay, gint priority);
+		   gint show_count, gint delay);
 void remove_info_line(AppData *ad, InfoData *id);
 void remove_all_lines(AppData *ad);
 void set_info_click_signal(InfoData *id, void (*click_func)(gpointer data, InfoData *id, AppData *ad),
@@ -187,8 +186,9 @@ void property_save(gchar *path, AppData *ad);
 void property_show(AppletWidget *applet, gpointer data);
 
 /* slashapp.c */
-static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data);
-static void applet_change_pixel_size(GtkWidget *w, int size, gpointer data);
+void resized_app_display(AppData *ad, gint force);
+void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data);
+void applet_change_pixel_size(GtkWidget *w, int size, gpointer data);
 AppData *create_new_app(GtkWidget *applet);
 gchar *check_for_dir(char *d);
 void destroy_applet(GtkWidget *widget, gpointer data);
