@@ -467,9 +467,9 @@ update_icon_cb (GtkWidget *applet, gpointer data)
 }
 
 static gboolean 
-button_press_cb (GtkWidget *applet, GdkEventButton *event, TrashApplet *ta)
+button_release_cb (GtkWidget *applet, GdkEventButton *event, TrashApplet *ta)
 {
-  if (event->button == 1)
+  if (event->type == GDK_BUTTON_RELEASE)
     trash_applet_open_folder(NULL, ta, NULL);
 
   return FALSE;
@@ -641,7 +641,7 @@ drag_data_received_cb (GtkWidget *applet, GdkDragContext *context,
 		}
 	}
 	if (unmovable_uri_list) {
-		if (confirm_delete_immediately (trash_applet->applet,
+		if (confirm_delete_immediately (GTK_WIDGET (trash_applet->applet),
 						g_list_length (unmovable_uri_list),
 						source_uri_list == NULL)) {
 			result = gnome_vfs_xfer_delete_list (unmovable_uri_list,
@@ -772,7 +772,24 @@ item_count_changed_cb (TrashMonitor *monitor,
        trash_applet_update_icon (trash_applet);
        trash_applet_update_tip (trash_applet);
 }
-    
+
+static gboolean
+key_press_cb (GtkWidget *widget, GdkEventKey *event, TrashApplet *ta)
+{
+        switch (event->keyval) {
+                case GDK_KP_Enter:
+                case GDK_ISO_Enter:
+                case GDK_3270_Enter:
+                case GDK_Return:
+                case GDK_space:
+                case GDK_KP_Space:
+                        trash_applet_open_folder(NULL, ta, NULL);
+                        break;
+                default:
+                        break;
+        }
+        return FALSE;
+}
 
 static gboolean
 trash_applet_fill (PanelApplet *applet)
@@ -892,13 +909,17 @@ trash_applet_fill (PanelApplet *applet)
                           G_CALLBACK (changed_background_cb),
                           ta);
         g_signal_connect (G_OBJECT (ta->applet),
-                          "button-press-event",
+                          "button-release-event",
                           G_CALLBACK (button_press_cb),
                           ta);
 	g_signal_connect (G_OBJECT (ta->icon_theme),
 			"changed",
 			G_CALLBACK(update_icon_cb),
 			ta);
+	g_signal_connect (G_OBJECT (ta->applet),
+			  "key_release_event",
+			  G_CALLBACK(key_press_cb),
+			  ta);
  
         gtk_container_add (GTK_CONTAINER(ta->applet), box);
 	
