@@ -448,6 +448,17 @@ geyes_applet_fill (PanelApplet *applet)
 				           geyes_applet_menu_verbs,
 				           eyes_applet);
 
+	if (panel_applet_get_locked_down (eyes_applet->applet)) {
+		BonoboUIComponent *popup_component;
+
+		popup_component = panel_applet_get_popup_component (eyes_applet->applet);
+
+		bonobo_ui_component_set_prop (popup_component,
+					      "/commands/Props",
+					      "hidden", "1",
+					      NULL);
+	}
+
 	eyes_applet->tooltips = gtk_tooltips_new ();
 	g_object_ref (eyes_applet->tooltips);
 	gtk_object_sink (GTK_OBJECT (eyes_applet->tooltips));
