@@ -30,6 +30,8 @@ typedef struct _FilesystemInfo FilesystemInfo;
 
 struct _FilesystemInfo {
 	unsigned sizeinfo [FS_SIZE];
+	gchar *dev_name;
+	gchar *mount_dir;
 };
 
 typedef struct _DiskusageInfo DiskusageInfo;
@@ -39,6 +41,8 @@ struct _DiskusageInfo {
 	unsigned n_filesystems;
 	unsigned previous_n_filesystems;
 	PanelOrientType orient;
+	gint bar_o;	/* current procbar orientation */
+	int	n_ProcBars; /* the number of procbars allready created */
 };
 
 

@@ -3,6 +3,9 @@
 
 #define A (w->allocation)
 
+
+#define DU_DEBUG
+
 static void
 procbar_expose (GtkWidget *w, GdkEventExpose *e, ProcBar *pb)
 {
@@ -93,6 +96,9 @@ procbar_new (GtkWidget *label, gint orient, gint n, GdkColor *colors, gint (*cb)
 	pb->last [0] = 0;
 
 	pb->label = label;
+
+	pb->hbox = NULL;
+	pb->vbox = NULL;
 	
 	if (pb->orientation == PROCBAR_HORIZONTAL) {
 		pb->hbox = gtk_hbox_new (FALSE, GNOME_PAD_SMALL);
@@ -144,6 +150,9 @@ procbar_new (GtkWidget *label, gint orient, gint n, GdkColor *colors, gint (*cb)
 
 	return pb;
 }
+
+
+
 
 #define W (pb->bar)
 #define A ((pb->bar)->allocation)

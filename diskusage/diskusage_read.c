@@ -42,6 +42,21 @@ diskusage_read (DiskusageInfo *ps)
 		if (fsu.fsu_blocks == 0)
 			continue;
 
+
+
+		(ps->filesystems + i)->dev_name = 
+			g_new(gchar, strlen (me->me_devname));
+		
+		strcpy ((ps->filesystems + i)->dev_name, 
+				me->me_devname);
+
+		(ps->filesystems + i)->mount_dir = 
+			g_new(gchar, strlen (me->me_mountdir));
+
+		strcpy ((ps->filesystems + i)->mount_dir, 
+				me->me_mountdir);
+
+
 		ps->filesystems[i].sizeinfo [DU_FS_TOTAL] =
 			fsu.fsu_blocks;
 #ifdef ADD_RESERVED_SPACE
@@ -62,6 +77,13 @@ diskusage_read (DiskusageInfo *ps)
 #endif
 		
 		i++;
+
+		/* FIXME
+		 * need to make a linked listfor ps->filesystems, to
+		 * get rid of hardcoded arraysize
+		 */
+		if (i >= DU_MAX_FS)
+			continue;
 	}
 
 	ps->n_filesystems = i;
