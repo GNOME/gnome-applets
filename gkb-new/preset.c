@@ -148,7 +148,8 @@ gkb_preset_load (GList * list)
 	  val->command = g_strdup (tcommand);
 
 	  val->flag = gnome_config_get_string ("Flag");
-	  val->label = gnome_config_get_string ("Label");
+	  val->label = gnome_config_get_translated_string ("Label");
+	  if (val->label == NULL) val->label = g_strdup(_("Undefined"));
 
 	  val->lang = gnome_config_get_translated_string ("Language");
 	  if (val->lang == NULL) val->lang = g_strdup(_("Undefined"));

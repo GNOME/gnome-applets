@@ -349,19 +349,19 @@ loadprop (GKB *gkb, int i)
 
 
   buf = g_strdup_printf ("name_%d",i);
-  actdata->name = gkb_load_pref (gkb, buf, (i?"US 105 key keyboard":"Gnome Keyboard Default"));
+  actdata->name = gkb_load_pref (gkb, buf, (i?_("US 105 key keyboard"):_("Gnome Keyboard Default")));
   g_free (buf);
 
   buf = g_strdup_printf ("label_%d", i);
-  actdata->label = gkb_load_pref (gkb, buf, (i?"us":"default"));
+  actdata->label = gkb_load_pref (gkb, buf, (i?"us":_("default")));
   g_free (buf);
   
   buf = g_strdup_printf ("country_%d", i);
-  actdata->country = gkb_load_pref (gkb, buf, (i?"United States":"Gnome Keyboard"));
+  actdata->country = gkb_load_pref (gkb, buf, (i?_("United States"):_("Gnome Keyboard")));
   g_free (buf);
   
   buf = g_strdup_printf ("lang_%d", i);
-  actdata->lang = gkb_load_pref (gkb, buf, (i?"English":"International"));
+  actdata->lang = gkb_load_pref (gkb, buf, (i?_("English"):_("International")));
   g_free (buf);
   
   buf = g_strdup_printf ("flag_%d", i);
