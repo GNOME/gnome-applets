@@ -352,29 +352,36 @@ destroy_module(void)
 	gtk_widget_destroy(window);
 }
 
-static void
-create_instance (PanelWidget *panel, char *params, int pos)
+
+/*these are commands sent over corba: */
+void
+change_orient(int id, int orient)
 {
-	PanelCommand cmd;
-	GtkWidget *batmon;
-
-	if (batmon_timeout != -1)
-		return; /* Only one instance allowed --- XXX: maybe should put up a dialog box */
-
-	batmon = create_batmon_widget (GTK_WIDGET(panel));
-
-	batmon_timeout = gtk_timeout_add(TIMEOUT,
-					 (GtkFunction) batmon_timeout_callback,
-					 batmon);
-
-	cmd.cmd = PANEL_CMD_REGISTER_TOY;
-	cmd.params.register_toy.applet = batmon;
-	cmd.params.register_toy.id     = APPLET_ID;
-	cmd.params.register_toy.pos    = pos;
-	cmd.params.register_toy.flags  = 0;
-
-	(*panel_cmd_func) (&cmd);
+	PanelOrientType o = (PanelOrientType) orient;
 }
+
+void
+session_save(int id, const char *cfgpath, const char *globcfgpath)
+{
+	/*save the session here */
+}
+
+static gint
+quit_applet(gpointer data)
+{
+	exit(0);
+}
+
+void
+shutdown_applet(int id)
+{
+	/*kill our plug using destroy to avoid warnings we need to
+	   kill the plug but we also need to return from this call */
+	if (plug)
+		gtk_widget_destroy(plug);
+	gtk_idle_add(quit_applet, NULL);
+}
+
 
 
 int
@@ -411,9 +418,10 @@ main(int argc, char **argv)
 	g_free(cfgpath);
 
 	plug = gtk_plug_new(winid);
+	gtk_widget_realize(plug);
 
 
-	batmon = create_batmon_widget (GTK_WIDGET(panel));
+	batmon = create_batmon_widget (plug);
 
 	batmon_timeout = gtk_timeout_add(TIMEOUT,
 					 (GtkFunction) batmon_timeout_callback,
