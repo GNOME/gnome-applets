@@ -238,7 +238,7 @@ gstreamer_normalize_volume (GstMixerTrack *track,
 	t = (vol - track->min_volume) /
 		(double) (track->max_volume - track->min_volume);
 
-	return (gint) (VOLUME_MAX * t);
+	return (gint) (VOLUME_MAX * t + 0.5);
 }
 
 /*
@@ -255,7 +255,7 @@ gstreamer_trackify_volume (GstMixerTrack *track,
 
 	t = vol / (double) VOLUME_MAX;
 	
-	return (gint) (t * (track->max_volume - track->min_volume)
+	return (gint) (t * (track->max_volume - track->min_volume) + 0.5
 		       + track->min_volume);
 }
 
