@@ -112,10 +112,12 @@ DIST_SUBDIRS = \
 @MAINT@	cd macros && $(MAKE) macros.dep
 
 EXTRA_DIST = \
+	COPYING-DOCS		\
 	gnome-applets.spec.in	\
 	gnome-applets.spec	\
 	applet-docs.make	\
-	xml-i18n-update	\
+	sgmldocs.make		\
+	xml-i18n-update		\
 	xml-i18n-extract	\
 	xml-i18n-merge
 
