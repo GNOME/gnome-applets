@@ -50,6 +50,10 @@ static gboolean	gnome_volume_applet_button	(GtkWidget *widget,
 static gboolean	gnome_volume_applet_key		(GtkWidget *widget,
 						 GdkEventKey *event);
 
+static void	gnome_volume_applet_background	(PanelApplet *panel_applet,
+						 PanelAppletBackgroundType type,
+						 GdkColor  *colour,
+						 GdkPixmap *pixmap);
 static void	gnome_volume_applet_orientation	(PanelApplet *applet,
 						 PanelAppletOrient orient);
 static void	gnome_volume_applet_size	(PanelApplet *applet,
@@ -174,9 +178,10 @@ gnome_volume_applet_class_init (GnomeVolumeAppletClass *klass)
   gtkwidget_class->scroll_event = gnome_volume_applet_scroll;
   panelapplet_class->change_orient = gnome_volume_applet_orientation;
   panelapplet_class->change_size = gnome_volume_applet_size;
+  panelapplet_class->change_background = gnome_volume_applet_background;
 
   /* FIXME:
-   * - style-set, change-background.
+   * - style-set.
    */
 
   /* init pixbufs */
@@ -729,6 +734,39 @@ gnome_volume_applet_size (PanelApplet *applet,
 
   if (PANEL_APPLET_CLASS (parent_class)->change_size)
     PANEL_APPLET_CLASS (parent_class)->change_size (applet, size);
+}
+
+static void
+gnome_volume_applet_background (PanelApplet *_applet,
+				PanelAppletBackgroundType type,
+				GdkColor  *colour,
+				GdkPixmap *pixmap)
+{
+  GnomeVolumeApplet *applet = GNOME_VOLUME_APPLET (_applet);
+  GtkRcStyle *rc_style;
+  GtkStyle *style;
+
+  /* reset style */
+  gtk_widget_set_style (GTK_WIDGET (applet), NULL);
+  rc_style = gtk_rc_style_new ();
+  gtk_widget_modify_style (GTK_WIDGET (applet), rc_style);
+  g_object_unref (rc_style);
+
+  switch (type) {
+    case PANEL_NO_BACKGROUND:
+      break;
+    case PANEL_COLOR_BACKGROUND:
+      gtk_widget_modify_bg (GTK_WIDGET (applet),
+			    GTK_STATE_NORMAL, colour);
+      break;
+    case PANEL_PIXMAP_BACKGROUND:
+      style = gtk_style_copy (GTK_WIDGET (applet)->style);
+      if (style->bg_pixmap[GTK_STATE_NORMAL])
+        g_object_unref (style->bg_pixmap[GTK_STATE_NORMAL]);
+      style->bg_pixmap[GTK_STATE_NORMAL] = g_object_ref (pixmap);
+      gtk_widget_set_style (GTK_WIDGET (applet), style);
+      break;
+  }
 }
 
 /*
