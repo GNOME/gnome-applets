@@ -93,6 +93,9 @@ struct _AppData
 
 	gint article_delay;
 	gint p_article_delay;
+
+	GtkWidget *article_window;
+	GtkWidget *article_list;
 };
 
 typedef struct _InfoData InfoData;

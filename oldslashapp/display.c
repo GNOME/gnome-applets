@@ -30,6 +30,7 @@ static	InfoData *create_info_line(gchar *text,  gchar *icon_path, GtkWidget *ico
 
 	id->click_func = NULL;
 	id->data = NULL;
+	id->free_func = NULL;
 
 	id->text = g_strdup(text);
 

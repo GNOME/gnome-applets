@@ -23,6 +23,126 @@ static gint applet_save_session(GtkWidget *widget, gchar *privcfgpath,
 static AppData *create_new_app(GtkWidget *applet);
 static void applet_start_new_applet(const gchar *param, gpointer data);
 
+static void article_button_cb(GtkWidget *button, gpointer data)
+{
+	AppData *ad = data;
+	gchar *url;
+	url = gtk_object_get_user_data(GTK_OBJECT(button));
+	launch_url(ad, url);
+}
+
+static void destroy_article_window(GtkWidget *w, gpointer data)
+{
+	AppData *ad = data;
+	ad->article_window = NULL;
+}
+
+static void populate_article_window(AppData *ad)
+{
+	GtkWidget *vbox;
+	GtkWidget *hbox;
+	GtkWidget *label;
+	GtkWidget *button;
+	GtkWidget *pixmap;
+	GList *list;
+	gint added = FALSE;
+	if (!ad->article_window) return;
+
+	vbox = gtk_object_get_user_data(GTK_OBJECT(ad->article_list));
+
+	if (vbox) gtk_widget_destroy(vbox);
+
+	vbox = gtk_vbox_new(FALSE, 5);
+	gtk_container_add(GTK_CONTAINER(ad->article_list), vbox);
+	gtk_widget_show(vbox);
+	gtk_object_set_user_data(GTK_OBJECT(ad->article_list), vbox);
+
+	list = ad->text;
+
+	while(list)
+		{
+		InfoData *id = list->data;
+
+		if (id && id->data && id->show_count == 0)
+			{
+			if (added)
+				{
+				GtkWidget *sep = gtk_hseparator_new();
+				gtk_box_pack_start(GTK_BOX(vbox), sep, FALSE, FALSE, 0);
+				gtk_widget_show(sep);
+				}
+
+			hbox = gtk_hbox_new(FALSE, 5);
+			gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
+			gtk_widget_show(hbox);
+
+			label = gtk_label_new(id->text);
+			gtk_label_set_justify (GTK_LABEL(label), GTK_JUSTIFY_LEFT);
+			gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 5);
+			gtk_widget_show(label);
+
+			button = gtk_button_new();
+			gtk_object_set_user_data(GTK_OBJECT(button), id->data);
+			gtk_signal_connect(GTK_OBJECT(button), "clicked",
+					   (GtkSignalFunc) article_button_cb, ad);
+			gtk_box_pack_end(GTK_BOX(hbox), button, FALSE, FALSE, 5);
+			gtk_widget_show(button);
+
+			pixmap = gnome_stock_pixmap_widget_new(ad->article_window,
+							       GNOME_STOCK_PIXMAP_JUMP_TO);
+			gtk_container_add(GTK_CONTAINER(button), pixmap);
+			gtk_widget_show(pixmap);
+			
+			added = TRUE;
+			}
+
+		list = list->next;
+		}
+
+	if (!added)
+		{
+		hbox = gtk_hbox_new(FALSE, 5);
+		gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
+		gtk_widget_show(hbox);
+
+		label = gtk_label_new(_("No articles"));
+		gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
+		gtk_widget_show(label);
+		}
+
+}
+
+static void show_article_window(AppletWidget *widget, gpointer data)
+{
+	AppData *ad = data;
+
+	if (ad->article_window)
+		{
+		gdk_window_raise(ad->article_window->window);
+		return;
+		}
+
+	ad->article_window = gnome_dialog_new(_("Slashapp article list"),
+					      GNOME_STOCK_BUTTON_CLOSE, NULL);
+	gtk_widget_set_usize(ad->article_window, 400, 350);
+
+	ad->article_list = gtk_scrolled_window_new(NULL, NULL);
+	gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (ad->article_list),
+					GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC); 
+	gtk_box_pack_start(GTK_BOX(GNOME_DIALOG(ad->article_window)->vbox),
+			   ad->article_list,TRUE,TRUE,0);
+	gtk_widget_show(ad->article_list);
+
+	gtk_object_set_user_data(GTK_OBJECT(ad->article_list), NULL);
+
+	gnome_dialog_set_close (GNOME_DIALOG(ad->article_window), TRUE);
+	gtk_signal_connect(GTK_OBJECT(ad->article_window), "destroy",
+			   (GtkSignalFunc) destroy_article_window, ad);
+
+	populate_article_window(ad);
+	gtk_widget_show(ad->article_window);
+}
+
 static void launch_url(AppData *ad, gchar *url)
 {
 	gchar *command;
@@ -33,8 +153,6 @@ static void launch_url(AppData *ad, gchar *url)
 		command = g_strconcat("openURL(", url, ",new-window)", NULL);
 	else
 		command = g_strconcat("openURL(", url, ")", NULL);
-
-	printf("running command: %s\n", command);
 
 	argv[0] = "netscape";
 	argv[1] = "-remote";
@@ -71,8 +189,6 @@ static void click_headline_cb(AppData *ad, gpointer data)
 	gchar *url = data;
 	if (url)
 		{
-		printf ("clicked on %s\n", url);
-		/* now launch the url */
 		launch_url(ad, url);
 		}
 }
@@ -136,8 +252,6 @@ static GtkWidget *get_topic_image(gchar *topic, AppData *ad)
 	gchar *gif_filename;
 	gchar *jpg_filename;
 
-	printf("trying to load icon: %s\n", topic);
-
 	/* darn, must try both file types */
 	gif_file = g_strconcat(topic, ".gif", NULL);
 	jpg_file = g_strconcat(topic, ".jpg", NULL);
@@ -183,7 +297,10 @@ static GtkWidget *get_topic_image(gchar *topic, AppData *ad)
 	else if (g_file_exists(jpg_filename))
 		icon_file = jpg_filename;
 	else
+		{
+		printf("could not load topic image: topic%s.[gif/jpg]\n", topic);
 		icon_file = NULL;
+		}
 
 	if (icon_file)
 		{
@@ -288,7 +405,6 @@ static int get_current_headlines(gpointer data)
 				h = TRUE;
 				strncpy(headline, buf, 80);
 				flush_newline_chars(headline, 80);
-				g_print("%d long: %s\n", strlen(headline), headline);
 				fgets(buf, sizeof(buf), slash_file);
 				strncpy(url, buf, 120);
 				flush_newline_chars(url, 120);
@@ -351,6 +467,8 @@ static int get_current_headlines(gpointer data)
 		add_info_line(ad, "  \n  ", NULL, 0, FALSE, 1, 0);
 		add_info_line(ad, _("No articles found"), NULL, 0, TRUE, 1, 30);
 		}
+
+	populate_article_window(ad);
 
 	g_free(filename);
 	return TRUE;
@@ -425,6 +543,7 @@ static AppData *create_new_app(GtkWidget *applet)
 	ad = g_new0(AppData, 1);
 
 	ad->applet = applet;
+	ad->article_window = NULL;
 	ad->slashapp_dir = check_for_dir(gnome_util_home_file("slashapp"));
 	if (!ad->slashapp_dir) exit;
 
@@ -452,6 +571,11 @@ static AppData *create_new_app(GtkWidget *applet)
                                               GNOME_STOCK_MENU_ABOUT,
                                               _("About..."),
                                               about_cb, NULL);
+	applet_widget_register_stock_callback(APPLET_WIDGET(applet),
+                                              "articles",
+                                              GNOME_STOCK_MENU_BOOK_OPEN,
+                                              _("Show article listing"),
+                                              show_article_window, ad);
 	applet_widget_register_stock_callback(APPLET_WIDGET(applet),
                                               "refresh",
                                               GNOME_STOCK_MENU_REFRESH,
