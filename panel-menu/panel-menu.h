@@ -29,6 +29,8 @@
 
 G_BEGIN_DECLS
 
+#define MENU_APPLET_IS_SHLIB 0
+
 typedef enum
 {
 	PANEL_MENU_TYPE_APPLICATIONS,
@@ -38,7 +40,8 @@ typedef enum
 	PANEL_MENU_TYPE_DOCUMENTS,
 	PANEL_MENU_TYPE_ACTIONS,
 	PANEL_MENU_TYPE_WINDOWS,
-	PANEL_MENU_TYPE_WORKSPACES
+	PANEL_MENU_TYPE_WORKSPACES,
+	PANEL_MENU_TYPE_PREFERENCES
 }PanelMenuEntryType;
 
 typedef struct _PanelMenu
@@ -57,6 +60,7 @@ typedef struct _PanelMenu
 	gchar *applet_id;
 	/* Layout */
 	gboolean has_applications;
+        gboolean has_preferences;
 	gboolean has_actions;
 	gboolean has_windows;
 	gboolean has_workspaces;

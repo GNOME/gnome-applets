@@ -379,6 +379,7 @@ directory_load_cb (GnomeVFSAsyncHandle *handle, GnomeVFSResult result,
 	gchar *path;
 	gchar *subpath = NULL;
 	gint count = 0;
+	GnomeVFSResult monitor_result;
 
 	path = (gchar *) g_object_get_data (G_OBJECT (parent), "uri-path");
 	for (iter = list, count = 0; iter && count < entries_read;
@@ -400,6 +401,9 @@ directory_load_cb (GnomeVFSAsyncHandle *handle, GnomeVFSResult result,
 			subpath =
 				(gchar *) g_object_get_data (G_OBJECT (parent),
 							     "uri-path");
+			if (subpath)
+			  printf ("Subpath is %s\n", subpath);
+			else printf ("Subpath WAS NULL\n");
 			g_object_set_data (G_OBJECT (parent), "uri-path", NULL);
 			w = GTK_MENU (parent)->parent_menu_item;
 			if (w && g_list_length (parent->children) < 2 &&
@@ -411,20 +415,21 @@ directory_load_cb (GnomeVFSAsyncHandle *handle, GnomeVFSResult result,
 				panel_menu_pixbuf_set_icon (GTK_MENU_ITEM (w),
 							   "directory");
 			}
-			if (w) {
-				gnome_vfs_monitor_add (&monitor,
-							subpath,
-							GNOME_VFS_MONITOR_DIRECTORY,
-							monitor_path_cb, w);
-				if (monitor) {
-					g_print ("monitor successfully installed for %s\n",
-						  subpath);
+			if (w && subpath) {
+			        monitor_result = gnome_vfs_monitor_add (&monitor,
+								subpath,
+								GNOME_VFS_MONITOR_DIRECTORY,
+								monitor_path_cb, w);
+
+				if (monitor_result == GNOME_VFS_OK) {
+				  /* g_print ("monitor successfully installed for %s\n",
+				     subpath); */
 					g_object_set_data (G_OBJECT (w), "vfs-monitor", monitor);
 					g_signal_connect (G_OBJECT (w), "destroy",
 							  G_CALLBACK (kill_monitor_cb),
 							  monitor);
 				} else {
-					g_print ("monitor installation failed for %s\n",
+					g_print ("monitor installation failed for path %s\n",
 						  subpath);
 				}
 			}

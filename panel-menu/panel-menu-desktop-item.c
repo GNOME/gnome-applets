@@ -69,7 +69,8 @@ static ReadBuf *readbuf_open (const char *uri);
 static gboolean readbuf_rewind (ReadBuf *rb);
 static void readbuf_close (ReadBuf *rb);
 
-extern char *kde_icondir;
+static char *kde_icondir = "NONE";
+/* FIXME extern char *kde_icondir; */
 extern char *kde_mini_icondir;
 
 GType

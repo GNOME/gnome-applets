@@ -35,6 +35,7 @@
 
 #include "panel-menu-desktop-item.h"
 #include "panel-menu-applications.h"
+#include "panel-menu-preferences.h"
 #include "panel-menu-path.h"
 #include "panel-menu-links.h"
 #include "panel-menu-directory.h"
@@ -410,6 +411,9 @@ panel_menu_common_build_entry (PanelMenu *panel_menu, const gchar *item)
 	if (!strcmp (item, "applications")) {
 		entry = panel_menu_applications_new (panel_menu);
 		panel_menu->has_applications = TRUE;
+	} else if (!strcmp (item, "preferences")) {
+	        entry = panel_menu_preferences_new (panel_menu);
+		panel_menu->has_preferences = TRUE;
 	} else if (!strncmp (item, "path", 4)) {
 		if (sscanf (item, "path%d", &id))
 			entry = panel_menu_path_new_with_id (panel_menu, id);
@@ -445,6 +449,24 @@ panel_menu_common_find_applications (PanelMenu *panel_menu)
 	for (cur = panel_menu->entries; cur; cur = cur->next) {
 		entry = (PanelMenuEntry *) cur->data;
 		if (entry->type == PANEL_MENU_TYPE_APPLICATIONS) {
+			found = TRUE;
+			break;
+		}
+	}
+	if (!found) entry = NULL;
+	return entry;
+}
+
+PanelMenuEntry *
+panel_menu_common_find_preferences (PanelMenu *panel_menu)
+{
+	PanelMenuEntry *entry = NULL;
+	GList *cur = NULL;
+	gboolean found = FALSE;
+
+	for (cur = panel_menu->entries; cur; cur = cur->next) {
+		entry = (PanelMenuEntry *) cur->data;
+		if (entry->type == PANEL_MENU_TYPE_PREFERENCES) {
 			found = TRUE;
 			break;
 		}
@@ -516,6 +538,9 @@ panel_menu_common_get_entry_menuitem (PanelMenuEntry *entry)
 	case PANEL_MENU_TYPE_APPLICATIONS:
 		menuitem = panel_menu_applications_get_widget (entry);
 		break;
+	case PANEL_MENU_TYPE_PREFERENCES:
+		menuitem = panel_menu_preferences_get_widget (entry);
+		break;
 	case PANEL_MENU_TYPE_PATH:
 		menuitem = panel_menu_path_get_widget (entry);
 		break;
@@ -550,6 +575,9 @@ panel_menu_common_call_entry_destroy (PanelMenuEntry *entry)
 	case PANEL_MENU_TYPE_APPLICATIONS:
 		panel_menu_applications_destroy (entry);
 		break;
+	case PANEL_MENU_TYPE_PREFERENCES:
+		panel_menu_preferences_destroy (entry);
+		break;
 	case PANEL_MENU_TYPE_PATH:
 		panel_menu_path_destroy (entry);
 		break;
@@ -583,6 +611,9 @@ panel_menu_common_call_entry_save_config (PanelMenuEntry *entry)
 	switch (entry->type) {
 	case PANEL_MENU_TYPE_APPLICATIONS:
 		retval = panel_menu_applications_save_config (entry);
+		break;
+	case PANEL_MENU_TYPE_PREFERENCES:
+		retval = panel_menu_preferences_save_config (entry);
 		break;
 	case PANEL_MENU_TYPE_PATH:
 		retval = panel_menu_path_save_config (entry);
@@ -639,6 +670,9 @@ panel_menu_common_merge_entry_ui (PanelMenuEntry *entry)
 	case PANEL_MENU_TYPE_APPLICATIONS:
 		panel_menu_applications_merge_ui (entry);
 		break;
+	case PANEL_MENU_TYPE_PREFERENCES:
+		panel_menu_preferences_merge_ui (entry);
+		break;
 	case PANEL_MENU_TYPE_PATH:
 		panel_menu_path_merge_ui (entry);
 		break;
@@ -677,6 +711,9 @@ panel_menu_common_remove_entry (GtkWidget *widget, PanelMenuEntry *entry, const 
 	switch (entry->type) {
 	case PANEL_MENU_TYPE_APPLICATIONS:
 		panel_menu->has_applications = FALSE;
+		break;
+	case PANEL_MENU_TYPE_PREFERENCES:
+		panel_menu->has_preferences = FALSE;
 		break;
 	case PANEL_MENU_TYPE_ACTIONS:
 		panel_menu->has_actions = FALSE;

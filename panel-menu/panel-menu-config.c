@@ -149,7 +149,7 @@ panel_menu_config_save (PanelMenu *panel_menu)
 	GList *cur;
 
 	for (cur = panel_menu->entries; cur; cur = cur->next) {
-		panel_menu_common_entry_save_config ((PanelMenuEntry *)cur->data);
+		panel_menu_common_call_entry_save_config ((PanelMenuEntry *)cur->data);
 	}
 }
 

@@ -11,9 +11,12 @@ INCLUDES = \
 -I$(top_srcdir) \
 $(PANEL_MENU_CFLAGS)
 
-lib_LTLIBRARIES = libpanel-menu.la
+#lib_LTLIBRARIES = libpanel-menu.la
+bin_PROGRAMS = panel-menu-applet
 
-libpanel_menu_la_SOURCES = \
+#libpanel_menu_la_SOURCES = \
+
+panel_menu_applet_SOURCES = \
 panel-menu-desktop-item.c \
 panel-menu-desktop-item.h \
 panel-menu-pixbuf.c \
@@ -22,6 +25,8 @@ panel-menu-common.c \
 panel-menu-common.h \
 panel-menu-applications.c \
 panel-menu-applications.h \
+panel-menu-preferences.c \
+panel-menu-preferences.h \
 panel-menu-path.c \
 panel-menu-path.h \
 panel-menu-links.c \
@@ -46,7 +51,8 @@ panel-menu.c \
 panel-menu.h
 
 
-libpanel_menu_la_LIBADD = $(PANEL_MENU_LIBS)
+panel_menu_applet_LDADD = $(PANEL_MENU_LIBS)
+#libpanel_menu_la_LIBADD = $(PANEL_MENU_LIBS)
 
 schemadir   = $(sysconfdir)/gconf/schemas
 schema_DATA = panel-menu.schemas

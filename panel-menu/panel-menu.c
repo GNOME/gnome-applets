@@ -131,9 +131,17 @@ static const char applet_menu_xml[] =
 	"</popup>\n";
 
 
+#if MENU_APPLET_IS_SHLIB
 PANEL_APPLET_BONOBO_SHLIB_FACTORY ("OAFIID:GNOME_PanelMenuApplet_Factory",
 				   "PanelMenu-Applet-Factory",
 				   applet_factory, NULL);
+#else
+PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_PanelMenuApplet_Factory",
+                             "PanelMenu-Applet-Factory",
+                             "0",
+                             applet_factory,
+                             NULL)
+#endif
 
 static gboolean
 applet_factory (PanelApplet *applet, const gchar *iid, gpointer data)
@@ -619,6 +627,7 @@ applet_change_orientation_cb (PanelApplet *applet,
 static void
 applet_change_size_cb (PanelApplet *applet, gint size, PanelMenu *panel_menu)
 {
+  printf ("RECEIVED SIZE SIGNAL!!!\n\nsize specified was %d\n\n\n", size);
 	if (panel_menu->size != size) {
 		panel_menu->size = size;
 		if (panel_menu->has_applications) {

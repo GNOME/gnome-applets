@@ -1,3 +1,31 @@
+2002-02-05  Seth Nickell  <snickell@stanford.edu>
+
+	* GNOME_PanelMenuApplet.server.in:
+	* Makefile.am:
+	* panel-menu-common.c: (panel_menu_common_build_entry),
+	(panel_menu_common_find_preferences),
+	(panel_menu_common_get_entry_menuitem),
+	(panel_menu_common_call_entry_destroy),
+	(panel_menu_common_call_entry_save_config),
+	(panel_menu_common_merge_entry_ui),
+	(panel_menu_common_remove_entry):
+	* panel-menu-common.h:
+	* panel-menu-config.c: (panel_menu_config_save):
+	* panel-menu-desktop-item.c:
+	* panel-menu-directory.c: (panel_menu_directory_set_path):
+	* panel-menu-path.c: (directory_load_cb):
+	* panel-menu-properties.c: (applet_properties_cb),
+	(handle_has_actions), (handle_has_preferences):
+	* panel-menu.c: (applet_change_size_cb):
+	* panel-menu.h:
+	* panel-menu.schemas:
+
+	Add a "Preferences" menu.
+
+	Change to be an external process so crashes caused by
+	the monitoring code don't take out the entire panel.
+	Most applets should be external processes anyway.
+	
 Fri Jan 25 05:41:44 PM PST 2002 Chris Phelps <chicane@reninet.com>
 	* panel-menu-path.c:
 	  (merge-ui) de-hose xml ordering

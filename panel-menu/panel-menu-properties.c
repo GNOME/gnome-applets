@@ -25,6 +25,7 @@
 #include "panel-menu.h"
 #include "panel-menu-common.h"
 #include "panel-menu-applications.h"
+#include "panel-menu-preferences.h"
 #include "panel-menu-actions.h"
 #include "panel-menu-windows.h"
 #include "panel-menu-workspaces.h"
@@ -32,6 +33,7 @@
 
 static void set_widget_sensitivity (GtkWidget *checkitem, GtkWidget *target);
 static void handle_has_applications (GtkWidget *widget, PanelMenu *panel_menu);
+static void handle_has_preferences (GtkWidget *widget, PanelMenu *panel_menu);
 static void handle_applications_icon (GtkWidget *widget, PanelMenu *panel_menu);
 static void handle_has_actions (GtkWidget *widget, PanelMenu *panel_menu);
 static void handle_has_windows (GtkWidget *widget, PanelMenu *panel_menu);
@@ -54,6 +56,7 @@ applet_properties_cb (BonoboUIComponent *uic, PanelMenu *panel_menu,
 	GtkWidget *item;
 
 	GtkWidget *has_applications;
+	GtkWidget *has_preferences;
 	GtkWidget *applications_icon;
 	GtkWidget *has_actions;
 	GtkWidget *has_windows;
@@ -78,6 +81,26 @@ applet_properties_cb (BonoboUIComponent *uic, PanelMenu *panel_menu,
 	hbox = gtk_hbox_new (FALSE, GNOME_PAD_SMALL);
 	gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, FALSE, 0);
 	gtk_widget_show (hbox);
+
+	has_preferences =
+		gtk_check_button_new_with_label (_("Preferences Menu"));
+	gtk_box_pack_start (GTK_BOX (hbox), has_preferences, FALSE,
+			    FALSE, 0);
+	gtk_widget_show (has_preferences);
+
+	fbox = gtk_vbox_new (FALSE, GNOME_PAD_SMALL);
+	gtk_box_pack_start (GTK_BOX (hbox), fbox, TRUE, TRUE, 0);
+	gtk_widget_set_sensitive (fbox, panel_menu->has_preferences);
+	gtk_widget_show (fbox);
+
+	g_signal_connect (G_OBJECT (has_preferences), "toggled",
+			  G_CALLBACK (set_widget_sensitivity), fbox);
+	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON
+				     (has_preferences),
+				      panel_menu->has_preferences);
+	g_signal_connect (G_OBJECT (has_preferences), "toggled",
+			  G_CALLBACK (handle_has_preferences), panel_menu);
+
 
 	has_applications =
 		gtk_check_button_new_with_label (_("Applications Menu"));
@@ -230,6 +253,8 @@ handle_has_actions (GtkWidget *widget, PanelMenu *panel_menu)
 			insert--;
 		if (panel_menu->has_windows)
 			insert--;
+		if (panel_menu->has_preferences)
+			insert--;
 		gtk_menu_shell_insert (GTK_MENU_SHELL (panel_menu->menubar),
 				       widget, insert);
 		panel_menu->entries = g_list_insert (panel_menu->entries,
@@ -242,6 +267,37 @@ handle_has_actions (GtkWidget *widget, PanelMenu *panel_menu)
 	}
 	panel_menu_config_save_layout (panel_menu);
 }
+
+static void
+handle_has_preferences (GtkWidget *widget, PanelMenu *panel_menu)
+{
+	PanelMenuEntry *entry;
+	gint insert = 0;
+
+	entry = panel_menu_common_find_preferences (panel_menu);
+	panel_menu->has_preferences = GTK_TOGGLE_BUTTON (widget)->active;
+	if (panel_menu->has_preferences && entry == NULL) {
+		entry = panel_menu_preferences_new (panel_menu);
+		widget = panel_menu_common_get_entry_menuitem (entry);
+		insert = g_list_length (panel_menu->entries);
+		if (panel_menu->has_workspaces)
+			insert--;
+		if (panel_menu->has_windows)
+			insert--;
+		gtk_menu_shell_insert (GTK_MENU_SHELL (panel_menu->menubar),
+				       widget, insert);
+		panel_menu->entries = g_list_insert (panel_menu->entries,
+						     entry, insert);
+		gtk_widget_show (widget);
+	} else if (entry) {
+		panel_menu->entries = g_list_remove (panel_menu->entries,
+						     entry);
+		panel_menu_common_call_entry_destroy (entry);
+	}
+	panel_menu_config_save_layout (panel_menu);
+}
+
+
 
 static void
 handle_has_windows (GtkWidget *widget, PanelMenu *panel_menu)

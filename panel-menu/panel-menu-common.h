@@ -38,6 +38,7 @@ PanelMenuEntry *panel_menu_common_build_entry (PanelMenu *panel_menu,
 					       const gchar *item);
 
 PanelMenuEntry *panel_menu_common_find_applications (PanelMenu *panel_menu);
+PanelMenuEntry *panel_menu_common_find_preferences (PanelMenu *panel_menu);
 PanelMenuEntry *panel_menu_common_find_actions (PanelMenu *panel_menu);
 PanelMenuEntry *panel_menu_common_find_windows (PanelMenu *panel_menu);
 PanelMenuEntry *panel_menu_common_find_workspaces (PanelMenu *panel_menu);

@@ -217,7 +217,7 @@ panel_menu_directory_set_path (PanelMenuEntry *entry, gchar *path)
 		g_print ("monitor successfully installed for %s\n",
 			  directory->path);
 	else
-		g_print ("monitor installation failed for %s\n",
+		g_print ("monitor installation failed for directory %s\n",
 			  directory->path);
 }
 
