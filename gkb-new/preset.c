@@ -32,6 +32,8 @@
 #include <dirent.h>
 #include "gkb.h"
 
+static char *prefixdir = NULL;
+
 GList *
 find_presets ()
 {

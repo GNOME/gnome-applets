@@ -75,8 +75,6 @@ gkb_apply (GkbPropertyBoxInfo * pbi)
   gkb->cur = 0;
   gkb->keymap = g_list_nth_data (gkb->maps, 0);
  
-  /* Render & update */
-  gkb_sized_render (gkb);
   gkb_update (gkb, TRUE);
 
   selected = g_list_index(pbi->keymaps,pbi->selected_keymap);
@@ -86,7 +84,6 @@ gkb_apply (GkbPropertyBoxInfo * pbi)
   pbi->keymaps = gkb_keymap_copy_list (gkb->maps);
   pbi->selected_keymap = g_list_nth_data (pbi->keymaps,selected);
   gkb_prop_list_reload (pbi);
-
 }
 
 
@@ -112,25 +109,6 @@ gkb_prop_label_at (GtkWidget * table, gint row, gint col,
   gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
 }
 
-
-/**
- * gkb_prop_get_sizes:
- * @void: 
- * 
- * Get the sizes for the Size option menu
- * 
- * Return Value: 
- **/
-static GList *
-gkb_prop_get_sizes (void)
-{
-  GList *list = NULL;
-
-  list = g_list_prepend (list, _("Normal"));
-  list = g_list_prepend (list, _("Big"));
-
-  return g_list_reverse (list);
-}
 
 /**
  * gkb_prop_get_mode:
@@ -171,50 +149,9 @@ gkb_prop_mode_changed (GtkWidget * menu_item, GkbPropertyBoxInfo * pbi)
   g_return_if_fail (text != NULL);
 
   gkb->mode = gkb_util_get_mode_from_text (text);
-
-  gkb_sized_render (gkb);
   gkb_update (gkb, TRUE);
-
-  gconf_applet_set_string (PANEL_APPLET (gkb->applet), "mode", text, NULL);
-
+  gconf_applet_set_string ("mode", text);
 }
-
-/**
- * gkb_prop_size_changed:
- * @menu_item: 
- * @pbi: 
- * 
- * 
- **/
-static void
-gkb_prop_size_changed (GtkWidget * menu_item, GkbPropertyBoxInfo * pbi)
-{
-  gchar *text;
-  GKB *gkb = pbi->gkb;
-
-  text = gtk_object_get_data (GTK_OBJECT (menu_item), GKB_MENU_ITEM_TEXT);
-
-  g_return_if_fail (text != NULL);
-
-  if (strcmp (text, _("Normal")) == 0)
-    {
-      gkb->is_small = TRUE;
-    }
-  else if (strcmp (text, _("Big")) == 0)
-    {
-      gkb->is_small = FALSE;
-    }
-  else
-    {
-      g_warning ("Could not interpret size change [%s]\n", text);
-    }
-    
-  gkb_sized_render (gkb);
-  gkb_update (gkb, TRUE);
-  gconf_applet_set_bool (PANEL_APPLET (gkb->applet), "small", gkb->is_small, NULL);
-
-}
-
 
 /**
  * gkb_prop_option_menu_at:
@@ -306,13 +243,10 @@ static GtkWidget *
 gkb_prop_create_display_category (GkbPropertyBoxInfo * pbi)
 {
   GList *mode;
-  GList *sizes;
 
   GtkWidget *vbox;
   GtkWidget *vbox2;
-  gchar *pixmap_filename;
   GtkWidget *hbox;
-  GtkWidget *pixmap;
   GtkWidget *table;
   gint size;
 
@@ -401,9 +335,9 @@ gkb_prop_create_hotkey_category (GkbPropertyBoxInfo * pbi, GtkWidget * widget)
 /*  g_signal_connect (pbi->hotkey_entry, "changed",
 		      G_CALLBACK (changed_cb), pb);
 */
-  g_signal_connect (button, "clicked",
-		      G_CALLBACK (grab_button_pressed),
-		      pbi);
+  g_signal_connect (button,
+	"clicked",
+	G_CALLBACK (grab_button_pressed), pbi);
 
   return vbox;
 }
@@ -428,21 +362,24 @@ window_response (GtkWidget *w, int response, gpointer data)
   GKB *gkb = pbi->gkb;
 
   if (response == GTK_RESPONSE_HELP)
-    prophelp_cb (gkb->applet, data);
+    prophelp_cb (w, data);
   else {
     gtk_list_store_clear (GTK_LIST_STORE (gtk_tree_view_get_model 
                           (GTK_TREE_VIEW (pbi->list))));
     g_free (pbi);
     gtk_widget_destroy (w);
-    gkb->propwindow = NULL;
     gkb->addwindow = NULL;/*The add window gets destroyed with parent if open */
+    gkb->propwindow = NULL;
+         
+    if (gkb->applet == NULL)
+	gtk_main_quit ();
   }
-       
 }
 
 
-static GtkWidget *
-gkb_prop_create_property_box (GkbPropertyBoxInfo * pbi, GKB *gkb)
+static void
+gkb_prop_create_property_box (GkbPropertyBoxInfo *pbi,
+			      gboolean include_applet_options)
 {
   GtkWidget *propnotebook;
   GtkWidget *display_category;
@@ -457,20 +394,27 @@ gkb_prop_create_property_box (GkbPropertyBoxInfo * pbi, GKB *gkb)
   GtkWidget *hbox;
 
   /* Create property box */
-  gkb->propwindow = gtk_dialog_new_with_buttons (_("Keyboard Layout Switcher Preferences"), NULL,
+  pbi->box = pbi->gkb->propwindow =
+      gtk_dialog_new_with_buttons ( include_applet_options
+				    ? _("Keyboard Layout Switcher Preferences")
+				    : _("Keyboard Layout Selector"),
+				    NULL,
                                             GTK_DIALOG_DESTROY_WITH_PARENT,
                                             GTK_STOCK_HELP, GTK_RESPONSE_HELP,
                                             GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
                                             NULL);
-  gtk_window_set_screen (GTK_WINDOW (gkb->propwindow),
-			 gtk_widget_get_screen (pbi->gkb->applet));
-  gtk_dialog_set_default_response (GTK_DIALOG (gkb->propwindow), GTK_RESPONSE_CLOSE);
-  gtk_dialog_set_has_separator (GTK_DIALOG (gkb->propwindow), FALSE);
-  gtk_container_set_border_width (GTK_CONTAINER (gkb->propwindow), 5);
+  gtk_window_set_default_size (GTK_WINDOW (pbi->gkb->propwindow), 350, -1);
+  if (pbi->gkb->applet)
+      gtk_window_set_screen (GTK_WINDOW (pbi->gkb->propwindow),
+			     gtk_widget_get_screen (pbi->gkb->applet));
+
+  gtk_dialog_set_default_response (GTK_DIALOG (pbi->gkb->propwindow), GTK_RESPONSE_CLOSE);
+  gtk_dialog_set_has_separator (GTK_DIALOG (pbi->gkb->propwindow), FALSE);
+  gtk_container_set_border_width (GTK_CONTAINER (pbi->gkb->propwindow), 5);
 
   propnotebook =  gtk_notebook_new ();
   gtk_container_set_border_width (GTK_CONTAINER (propnotebook), 5);
-  gtk_box_pack_start (GTK_BOX (GTK_DIALOG (gkb->propwindow)->vbox), propnotebook,
+  gtk_box_pack_start (GTK_BOX (GTK_DIALOG (pbi->gkb->propwindow)->vbox), propnotebook,
                       TRUE, TRUE, 0);
                               
   gtk_widget_show (propnotebook);
@@ -495,25 +439,27 @@ gkb_prop_create_property_box (GkbPropertyBoxInfo * pbi, GKB *gkb)
   gtk_box_pack_start (GTK_BOX (hbox), buttons_vbox, FALSE, TRUE, 0);
 
   /* Add page 2 */
-  page_2_vbox = gtk_vbox_new (FALSE, 18);
-  gtk_container_set_border_width (GTK_CONTAINER (page_2_vbox), 12);
-  gtk_widget_show (page_2_vbox);
-  page_2_label = gtk_label_new (_("Options"));
-  gtk_notebook_append_page (GTK_NOTEBOOK (propnotebook), page_2_vbox, page_2_label);
- 
+  if (include_applet_options) {
+    page_2_vbox = gtk_vbox_new (FALSE, 18);
+    gtk_container_set_border_width (GTK_CONTAINER (page_2_vbox), 12);
+    gtk_widget_show (page_2_vbox);
+    page_2_label = gtk_label_new_with_mnemonic (_("_Options"));
+    gtk_notebook_append_page (GTK_NOTEBOOK (propnotebook), page_2_vbox, page_2_label);
 
-  /* Page 2 Frames */
-  display_category = gkb_prop_create_display_category (pbi);
-  hotkey_category =
-    gkb_prop_create_hotkey_category (pbi, propnotebook);
-  gtk_box_pack_start (GTK_BOX (page_2_vbox), display_category, FALSE, FALSE, 0);
-  gtk_box_pack_start (GTK_BOX (page_2_vbox), hotkey_category, FALSE, FALSE, 0);
-
-  g_signal_connect (G_OBJECT (gkb->propwindow), "response",
-                    G_CALLBACK (window_response),
-                    pbi);
-
-  return gkb->propwindow;
+    /* Page 2 Frames */
+    display_category = gkb_prop_create_display_category (pbi);
+    hotkey_category =
+      gkb_prop_create_hotkey_category (pbi, propnotebook);
+    gtk_box_pack_start (GTK_BOX (page_2_vbox), display_category, FALSE, FALSE, 0);
+    gtk_box_pack_start (GTK_BOX (page_2_vbox), hotkey_category, FALSE, FALSE, 0);
+  } else {
+    gtk_notebook_set_show_border (GTK_NOTEBOOK (propnotebook), FALSE);
+    gtk_notebook_set_show_tabs (GTK_NOTEBOOK (propnotebook), FALSE);
+  }
+  
+  g_signal_connect (G_OBJECT (pbi->gkb->propwindow),
+	"response",
+	G_CALLBACK (window_response), pbi);
 }
 
 void	
@@ -542,9 +488,6 @@ properties_dialog (BonoboUIComponent *uic,
   pbi->hotkey_entry = NULL;
   pbi->selected_keymap = NULL;
 
-  pbi->box = gkb_prop_create_property_box (pbi, gkb);
-
+  gkb_prop_create_property_box (pbi, uic != NULL);
   gtk_widget_show_all (pbi->box);
-  
-  return;
 }

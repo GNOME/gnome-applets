@@ -176,14 +176,9 @@ gkb_prop_list_delete_clicked (GkbPropertyBoxInfo * pbi)
   pbi->selected_keymap = NULL;
 
   gkb_prop_list_reload (pbi);
-
   gkb_apply(pbi);
-
-  applet_save_session(pbi->gkb);  
-
-  return;
+  gkb_save_session (pbi->gkb);  
 }
-
 
 /**
  * gkb_util_g_list_swap:
@@ -237,12 +232,8 @@ gkb_prop_list_up_down_clicked (GkbPropertyBoxInfo * pbi, gboolean up)
   */
 
   gkb_prop_list_reload (pbi);
-
   gkb_apply(pbi);
-
-  applet_save_session(pbi->gkb);
-
-  return;
+  gkb_save_session(pbi->gkb);
 }
 
 /**

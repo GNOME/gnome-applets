@@ -17,7 +17,7 @@
 /* This is the default list used when starting charpick the first time */
 /* aacute, agrave, eacute, iacute, oacute, frac12, copy*/
 /* static const gchar *def_list = "áàéíñóœ©"; */
-static gunichar def_code[] = {225, 224, 233, 237, 241, 243, 189, 169, 1579, -1};
+static gunichar def_code[] = {225, 224, 233, 237, 241, 243, 189, 169, 1579, 8364, -1};
 
 /* aacute, agrave, acirc, atilde, auml. aring, aelig, ordf */
 /* static const gchar *a_list = "áàâãäåæª"; */

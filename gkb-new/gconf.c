@@ -19,10 +19,8 @@
 
 #include "gkb.h"
 
-gboolean gconf_applet_set_string (PanelApplet *parent, 
-                                  const char *gconf_key,
-                                  gchar *value,
-                                  gchar *blah) 
+gboolean
+gconf_applet_set_string (char const *gconf_key, gchar const *value)
 {
 	static GConfClient *client = NULL;
 	gchar *full_key;
@@ -31,125 +29,96 @@ gboolean gconf_applet_set_string (PanelApplet *parent,
 	if (!value)
 		return FALSE;
 		
-	if (client == NULL) {
+	if (client == NULL)
 		client = gconf_client_get_default ();
-	}
 
-	full_key = g_strdup_printf ("/desktop/gnome/peripherals/keyboard/layout/%s",
-				   gconf_key);
-
+	full_key =  g_strconcat (GKB_GCONF_ROOT "/", gconf_key, NULL);
 	success = gconf_client_set_string (client, full_key, value, NULL);
 	g_free (full_key);
         return success;                                  
 }
 
-gchar * gconf_applet_get_string  (PanelApplet *parent, 
-                                  const char *gconf_key,
-                                  gchar *blah)
+gchar *
+gconf_applet_get_string (char const *gconf_key)
 {
 	static GConfClient *client = NULL;
 	gchar *full_key;
 	gchar * value;
 
-	full_key = g_strdup_printf ("/desktop/gnome/peripherals/keyboard/layout/%s",
-				    gconf_key);
-	
 	if (client == NULL) {
 		client = gconf_client_get_default ();
 	}
 
+	full_key = g_strconcat (GKB_GCONF_ROOT "/", gconf_key, NULL);
 	value = gconf_client_get_string (client, full_key, NULL);
-
 	g_free (full_key);
 
 	return value;                                  
 }
 
-gboolean gconf_applet_set_int (PanelApplet *parent, 
-                                  const char *gconf_key,
-                                  gint value,
-                                  gchar *blah)
+gboolean
+gconf_applet_set_int (char const *gconf_key, gint value)
 {
 	static GConfClient *client = NULL;
 	gchar *full_key;
 	gboolean success;
 
-	if (client == NULL) {
+	if (client == NULL)
 		client = gconf_client_get_default ();
-	}
 
-	full_key = g_strdup_printf ("/desktop/gnome/peripherals/keyboard/layout/%s",
-				   gconf_key);
-
+	full_key = g_strconcat (GKB_GCONF_ROOT "/", gconf_key, NULL);
 	success = gconf_client_set_int (client, full_key, value, NULL);
 	g_free (full_key);
         return success;                   
-                                  
 }
 
-gint gconf_applet_get_int  (PanelApplet *parent, 
-                                  const char *gconf_key,
-                                  gchar *blah)
+gint
+gconf_applet_get_int (char const *gconf_key)
 {
 	static GConfClient *client = NULL;
 	gchar *full_key;
 	gint value;
 
-	full_key = g_strdup_printf ("/desktop/gnome/peripherals/keyboard/layout/%s",
-				    gconf_key);
-	
-	if (client == NULL) {
+	if (client == NULL)
 		client = gconf_client_get_default ();
-	}
 
+	full_key = g_strconcat (GKB_GCONF_ROOT "/", gconf_key, NULL);
 	value = gconf_client_get_int (client, full_key, NULL);
-
 	g_free (full_key);
 
 	return value;
                                   
 }
 
-gboolean gconf_applet_set_bool (PanelApplet *parent, 
-                                  const char *gconf_key,
-                                  gboolean value,
-                                  gchar *blah)
+gboolean
+gconf_applet_set_bool (char const *gconf_key, gboolean value)
 {
 	static GConfClient *client = NULL;
 	gchar *full_key;
 	gboolean success;
 
-	if (client == NULL) {
+	if (client == NULL)
 		client = gconf_client_get_default ();
-	}
 
-	full_key = g_strdup_printf ("/desktop/gnome/peripherals/keyboard/layout/%s",
-				   gconf_key);
-
+	full_key = g_strconcat (GKB_GCONF_ROOT "/", gconf_key, NULL);
 	success = gconf_client_set_bool (client, full_key, value, NULL);
 	g_free (full_key);
         return success;                   
 }
 
-gboolean gconf_applet_get_bool  (PanelApplet *parent, 
-                                  const char *gconf_key,
-                                  gchar *blah)
+gboolean
+gconf_applet_get_bool (char const *gconf_key)
 {
 	static GConfClient *client = NULL;
 	gchar *full_key;
 	gboolean value;
 
-	full_key = g_strdup_printf ("/desktop/gnome/peripherals/keyboard/layout/%s",
-				    gconf_key);
-	
-	if (client == NULL) {
+	if (client == NULL)
 		client = gconf_client_get_default ();
-	}
 
+	full_key = g_strconcat (GKB_GCONF_ROOT "/", gconf_key, NULL);
 	value = gconf_client_get_bool (client, full_key, NULL);
-
 	g_free (full_key);
 
 	return value;
 }
-

@@ -4,10 +4,10 @@ INCLUDES =                                           \
 	$(GNOME_APPLETS_CFLAGS)                                                            
 
 libexec_PROGRAMS = gkb-applet-2
-
+bin_PROGRAMS = gnome-keyboard-layout
 bin_SCRIPTS = gkb_xmmap
 
-gkb_applet_2_SOURCES = \
+gkb_COMMON = \
 		gkb.c 		\
 		gkb.h		\
 		keygrab.c	\
@@ -21,7 +21,12 @@ gkb_applet_2_SOURCES = \
 		util.c		\
 		gconf.c
 
+gnome_keyboard_layout_SOURCES	= $(gkb_COMMON) gnome-keyboard-layout.c
+gnome_keyboard_layout_LDADD	= \
+	$(top_builddir)/screen-exec/libscreen-exec.la \
+	$(GNOME_APPLETS_LIBS) $(X_LIBS) $(INTLLIBS)
 
+gkb_applet_2_SOURCES		= $(gkb_COMMON) gkb-applet.c
 gkb_applet_2_LDADD = \
 	$(top_builddir)/screen-exec/libscreen-exec.la \
 	$(GNOME_APPLETS_LIBS) $(X_LIBS) $(INTLLIBS)

@@ -44,6 +44,8 @@
 #include <dirent.h>		/* for opendir() et al. */
 #include <string.h>		/* for strncmp() */
 
+G_BEGIN_DECLS
+
 typedef struct _GKB GKB;
 typedef struct _GkbKeymap          GkbKeymap;
 typedef struct _GkbWindow          GkbWindow;
@@ -144,6 +146,7 @@ struct _GKB
   guint old_keysym, old_state;
 
   guint button_press_id;
+  void (*update) (GKB *gkb, gboolean disconnect);
 };
 
 struct _GkbKeymapWg
@@ -175,24 +178,21 @@ struct _GkbKeymapWg
 #define GKB_SMALL_PANEL_SIZE 25 /* less than */
 
 /* gkb.c */
+GKB *gkb_new	(void);
 void gkb_update (GKB *gkb, gboolean set_command);
-void alert (const gchar * str);
-void applet_save_session (GKB *gkb);
+void gkb_save_session (GKB *gkb);
 
 void add_atk_relation(GtkWidget *obj1, GtkWidget *obj2, AtkRelationType type);  
-void add_atk_namedesc(GtkWidget *widget, const gchar *name, const gchar *desc); 
 
 /* prop.c */
 void gkb_apply (GkbPropertyBoxInfo * pbi);
 void properties_dialog (BonoboUIComponent *uic,
                         GKB	 *gkb,
                         const gchar	 *verbname);
-void gkb_sized_render (GKB * gkb);
 
 /* presets.c */
 GList * find_presets (void);
 GList * gkb_preset_load (GList * list);
-GkbKeymap * loadprop (GKB *gkb, int i);
 
 /* prop-list.c */
 GtkWidget * gkb_prop_create_buttons_vbox (GkbPropertyBoxInfo *pbi);
@@ -235,41 +235,15 @@ void gkb_xungrab (int        keycode,
 void grab_button_pressed (GtkButton *button, gpointer data);
 
 /* gconf.c */
+gboolean gconf_applet_set_string (char const *gconf_key, gchar const *value);
+char    *gconf_applet_get_string (char const *gconf_key);
+gboolean gconf_applet_set_int	 (char const *gconf_key, gint value);
+gint	 gconf_applet_get_int	 (char const *gconf_key);
+gboolean gconf_applet_set_bool	 (char const *gconf_key, gboolean value);
+gboolean gconf_applet_get_bool	 (char const *gconf_key);
 
-gboolean gconf_applet_set_string (PanelApplet *parent, 
-                                  const char *gconf_key,
-                                  gchar *value,
-                                  gchar *blah);
+gchar  *gkb_default_map_file (void);
 
-gchar * gconf_applet_get_string  (PanelApplet *parent, 
-                                  const char *gconf_key,
-                                  gchar *blah);
-
-gboolean gconf_applet_set_int (PanelApplet *parent, 
-                                  const char *gconf_key,
-                                  gint value,
-                                  gchar *blah);
-
-gint gconf_applet_get_int  (PanelApplet *parent, 
-                                  const char *gconf_key,
-                                  gchar *blah);
-
-gboolean gconf_applet_set_bool (PanelApplet *parent, 
-                                  const char *gconf_key,
-                                  gboolean value,
-                                  gchar *blah);
-
-gboolean gconf_applet_get_bool  (PanelApplet *parent, 
-                                  const char *gconf_key,
-                                  gchar *blah);
-
-/* Globals */
-gchar * prefixdir;
-
-void gkb_update_handlers (GKB *gkb, gboolean disconnect);
-
-G_BEGIN_DECLS
-
-gboolean fill_gkb_applet(PanelApplet *applet);
+#define GKB_GCONF_ROOT "/desktop/gnome/peripherals/keyboard/layout"
 
 G_END_DECLS

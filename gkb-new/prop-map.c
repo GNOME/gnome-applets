@@ -102,15 +102,10 @@ gkb_prop_map_close_clicked (GkbMapDialogInfo * mdi)
   }
                                                                               
   mdi->pbi->selected_keymap = keymap;
-                                                                                
   gkb_prop_list_reload (mdi->pbi);
-                                                                                
   gkb_apply(mdi->pbi);
-                                                                                
   gtk_widget_destroy (mdi->dialog);
-
-  applet_save_session(mdi->pbi->gkb);
-   
+  gkb_save_session (mdi->pbi->gkb);
   mdi->dialog = NULL;
 }
 

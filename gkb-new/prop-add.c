@@ -346,9 +346,8 @@ addwadd_cb (GtkWidget * addbutton, GkbPropertyBoxInfo * pbi)
    }
 
   gkb_prop_list_reload (pbi);
-
   gkb_apply(pbi);
-  applet_save_session(pbi->gkb);
+  gkb_save_session (pbi->gkb);
 
   return FALSE;
 }
@@ -374,12 +373,7 @@ addbutton_sensitive_cb (GtkTreeView * treeview, gpointer data)
   GKB * gkb = pbi->gkb;
   GtkWidget * addbutton = gtk_object_get_data (GTK_OBJECT (gkb->addwindow), "addbutton");
 
-  if (pbi->keymap_for_add->command != NULL) {
-    gtk_widget_set_sensitive (addbutton, TRUE);
-  } else {
-    gtk_widget_set_sensitive (addbutton, FALSE);
-  }
-
+  gtk_widget_set_sensitive (addbutton, pbi->keymap_for_add->command != NULL);
 }
 
 static void
@@ -418,7 +412,7 @@ gkb_prop_map_add (GkbPropertyBoxInfo * pbi)
   if (gkb->addwindow)
     {
       gtk_window_set_screen (GTK_WINDOW (gkb->addwindow),
-			     gtk_widget_get_screen (gkb->applet));
+			     gtk_widget_get_screen (pbi->add_button));
       gtk_window_present (GTK_WINDOW (gkb->addwindow));
       return;
     }
@@ -436,7 +430,7 @@ gkb_prop_map_add (GkbPropertyBoxInfo * pbi)
   gtk_dialog_set_has_separator (GTK_DIALOG (gkb->addwindow), FALSE);
   gtk_container_set_border_width (GTK_CONTAINER (gkb->addwindow), 5);
   gtk_window_set_screen (GTK_WINDOW (gkb->addwindow),
-			 gtk_widget_get_screen (gkb->applet));
+			 gtk_widget_get_screen (pbi->add_button));
   gtk_object_set_data (GTK_OBJECT (gkb->addwindow), "addwindow",
 		       gkb->addwindow);
   gtk_object_set_data (GTK_OBJECT (gkb->addwindow), "addbutton",

@@ -290,42 +290,42 @@ grab_key_filter (GdkXEvent * gdk_xevent, GdkEvent * event, gpointer data)
   gkb_xungrab (gkb->keycode, gkb->state, root_window);
   gdk_flush ();
   gdk_error_trap_pop ();
- 
+
   convert_string_to_keysym_state (gkb->key, &gkb->keysym, &gkb->state);
 
   newkey = XKeysymToKeycode (GDK_DISPLAY (), gkb->keysym);
 
   gdk_error_trap_push ();
   gkb_xgrab ( newkey, gkb->state, root_window);
- 
+
   /* In case we are unable to grab revert to the the previous hot key*/
   gdk_flush ();
   if (gdk_error_trap_pop () != 0) {
 
-    g_free (gkb->key);
-    gkb->key = g_strdup (gkb->old_key);
-    gtk_entry_set_text (GTK_ENTRY (entry), gkb->key ? gkb->key : "");
-    gkb->keysym = gkb->old_keysym;
-    gkb->state = gkb->old_state;
+      g_free (gkb->key);
+      gkb->key = g_strdup (gkb->old_key);
+      gtk_entry_set_text (GTK_ENTRY (entry), gkb->key ? gkb->key : "");
+      gkb->keysym = gkb->old_keysym;
+      gkb->state = gkb->old_state;
 
-    /* Grab the key which was used just before popping the window */
-    /* Hopefully we are still able to grab the old key back */
-    gdk_error_trap_push ();
-    gkb_xgrab ( gkb->keycode, gkb->state, root_window);
-    gdk_flush ();
-    gdk_error_trap_pop ();
+      /* Grab the key which was used just before popping the window */
+      /* Hopefully we are still able to grab the old key back */
+      gdk_error_trap_push ();
+      gkb_xgrab ( gkb->keycode, gkb->state, root_window);
+      gdk_flush ();
+      gdk_error_trap_pop ();
 
-    /* No point in continuing further. Close the popup window */
-    gdk_display_pointer_ungrab (gdk_drawable_get_display (root_window),
-                                GDK_CURRENT_TIME);
-    gdk_keyboard_ungrab (GDK_CURRENT_TIME);
-    gtk_widget_destroy (grab_dialog);
-    gdk_window_remove_filter (root_window, grab_key_filter, data);
-    return GDK_FILTER_REMOVE;
+      /* No point in continuing further. Close the popup window */
+      gdk_display_pointer_ungrab (gdk_drawable_get_display (root_window),
+				  GDK_CURRENT_TIME);
+      gdk_keyboard_ungrab (GDK_CURRENT_TIME);
+      gtk_widget_destroy (grab_dialog);
+      gdk_window_remove_filter (root_window, grab_key_filter, data);
+      return GDK_FILTER_REMOVE;
   }
 
   gkb->keycode = newkey; 
-  gconf_applet_set_string (PANEL_APPLET (gkb->applet), "key", gkb->key, NULL);
+  gconf_applet_set_string ("key", gkb->key);
   
   return GDK_FILTER_REMOVE;
 }

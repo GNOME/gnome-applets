@@ -27,8 +27,6 @@
 
 #include "gkb.h"
 
-
-
 /**
  * gkb_system_set_keymap_idle:
  * @keymap: 
@@ -57,7 +55,8 @@ gkb_system_set_keymap_idle (GKB *gkb)
     g_free (str);
    }
 
-  gkb_update_handlers (gkb, FALSE);
+  if (gkb->update != NULL)
+    (gkb->update) (gkb, FALSE);
 
   return FALSE;
 }
