@@ -132,15 +132,23 @@ makepix (Prop * actdata, char *fname, int w, int h)
 
       affine[1] = affine[2] = affine[4] = affine[5] = 0;
 
-      affine[0] = w / (double) (pix->art_pixbuf->width);
-      affine[3] = h / (double) (pix->art_pixbuf->height);
+      /* art_pixbuf.. */
+
+      affine[0] = w / (double) w;
+      affine[3] = h / (double) h;
 
       rgb = g_new0 (guchar, w * h * 3);
 
-      art_rgb_pixbuf_affine (rgb,
-			     0, 0, w, h, w * 3,
-			     pix->art_pixbuf, affine,
-			     ART_FILTER_NEAREST, NULL);
+      if (gdk_pixbuf_get_has_alpha (pix)) 
+       {
+        art_rgb_rgba_affine (rgb, 0, 0, w, h, w * 3,
+        gdk_pixbuf_get_pixels (pix), w, h,
+        gdk_pixbuf_get_rowstride (pix), affine, ART_FILTER_NEAREST, NULL); 
+       } else {
+        art_rgb_affine (rgb, 0, 0, w, h, w * 3,
+        gdk_pixbuf_get_pixels (pix), w, h,
+        gdk_pixbuf_get_rowstride (pix), affine, ART_FILTER_NEAREST, NULL); 
+       }
 
       gdk_pixbuf_unref (pix);
 
