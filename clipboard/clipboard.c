@@ -22,11 +22,8 @@ struct _clipboard_item {
   guint id; 
 };
 
-void selection_received (GtkWidget *widget, GtkSelectionData *selection_data, 
-                    gpointer data);
-GtkWidget *button_new_with_xpm(GtkWidget *parent, gchar **xpm);
-
 GtkWidget *vbox;
+GtkWidget *main_box;
 GtkWidget *applet;
 GtkWidget *copy_button;
 GtkWidget *set_selection_button;
@@ -100,7 +97,7 @@ copy_clicked_cb(GtkWidget *widget, gpointer data)
 }
 
 /* Signal handler called when the selections owner returns the data */
-void
+static void
 selection_received (GtkWidget *widget, GtkSelectionData *selection_data, 
                     gpointer data)
 {
@@ -148,7 +145,7 @@ clipboard_selection_handler(GtkWidget *widget,
   data = NULL;
 }
 
-GtkWidget *
+static GtkWidget *
 button_new_with_xpm(GtkWidget *parent, gchar **xpm)
 {
   GtkWidget *button;
@@ -190,6 +187,76 @@ about (AppletWidget *applet, gpointer data)
   data = NULL;
 }
 
+static void
+relayout (gboolean vertical)
+{
+	gtk_widget_ref (copy_button);
+	gtk_widget_ref (set_selection_button);
+
+	gtk_container_remove (GTK_CONTAINER (main_box), copy_button);
+	gtk_container_remove (GTK_CONTAINER (main_box), set_selection_button);
+	gtk_widget_destroy (main_box);
+
+	if (vertical)
+		main_box = gtk_vbox_new(TRUE, 0);
+	else
+		main_box = gtk_hbox_new(TRUE, 0);
+	gtk_widget_show (main_box);
+	gtk_box_pack_start(GTK_BOX (vbox), main_box, TRUE, TRUE, 0);
+
+	gtk_box_pack_start(GTK_BOX (main_box), copy_button, TRUE, TRUE, 0);
+
+	gtk_box_pack_start(GTK_BOX (main_box), set_selection_button, TRUE, TRUE, 0);
+
+	gtk_widget_unref (copy_button);
+	gtk_widget_unref (set_selection_button);
+}
+
+/*this is when the panel orientation changes*/
+static void
+applet_change_orient (GtkWidget *w, PanelOrientType o, gpointer data)
+{
+	int size = applet_widget_get_panel_pixel_size (APPLET_WIDGET (applet));
+	switch(o) {
+	case ORIENT_UP: 
+	case ORIENT_DOWN:
+		if(size<48)
+			relayout (FALSE);
+		else
+			relayout (TRUE);
+		break;
+	case ORIENT_LEFT:
+	case ORIENT_RIGHT:
+		if(size<48)
+			relayout (TRUE);
+		else
+			relayout (FALSE);
+		break;
+	}
+}
+
+static void
+applet_change_pixel_size (GtkWidget *w, int size, gpointer data)
+{
+	PanelOrientType o = applet_widget_get_panel_orient (APPLET_WIDGET (applet));
+	switch(o) {
+	case ORIENT_UP: 
+	case ORIENT_DOWN:
+		if(size<48)
+			relayout (FALSE);
+		else
+			relayout (TRUE);
+		break;
+	case ORIENT_LEFT:
+	case ORIENT_RIGHT:
+		if(size<48)
+			relayout (TRUE);
+		else
+			relayout (FALSE);
+		break;
+	}
+}
+
 int
 main(int argc, char **argv)
 {
@@ -217,16 +284,21 @@ main(int argc, char **argv)
   
   /* create the vbox */
   vbox = gtk_vbox_new(TRUE, 0);
+  main_box = gtk_vbox_new(TRUE, 0);
+  gtk_box_pack_start(GTK_BOX (vbox), main_box, TRUE, TRUE, 0);
   /* create, attach signal to, and pack the buttons */
 
-  copy_button = button_new_with_xpm(vbox, copy_xpm);
+  /* realize the applet so that we may get the xpms */
+  gtk_widget_realize (applet);
+
+  copy_button = button_new_with_xpm(applet, copy_xpm);
   gtk_signal_connect (GTK_OBJECT (copy_button), "clicked",
                       GTK_SIGNAL_FUNC (copy_clicked_cb), NULL);
   gtk_signal_connect (GTK_OBJECT(copy_button), "selection_received",
                       GTK_SIGNAL_FUNC (selection_received), NULL);
-  gtk_box_pack_start(GTK_BOX (vbox), copy_button, TRUE, TRUE, 0);
+  gtk_box_pack_start(GTK_BOX (main_box), copy_button, TRUE, TRUE, 0);
 
-  set_selection_button = button_new_with_xpm(vbox, set_selection_xpm);
+  set_selection_button = button_new_with_xpm(applet, set_selection_xpm);
   gtk_signal_connect (GTK_OBJECT (set_selection_button), "clicked",
                       GTK_SIGNAL_FUNC (set_selection_clicked_cb), NULL);
   gtk_selection_add_target (set_selection_button, 
@@ -237,8 +309,15 @@ main(int argc, char **argv)
 		      GTK_SIGNAL_FUNC (clipboard_selection_handler),
 		      NULL);
 
-  gtk_box_pack_start(GTK_BOX (vbox), set_selection_button, TRUE, TRUE, 0);
+  gtk_box_pack_start(GTK_BOX (main_box), set_selection_button, TRUE, TRUE, 0);
   gtk_widget_show_all(vbox);
+
+  gtk_signal_connect(GTK_OBJECT(applet),"change_pixel_size",
+		     GTK_SIGNAL_FUNC(applet_change_pixel_size),
+		     NULL);
+  gtk_signal_connect(GTK_OBJECT(applet),"change_orient",
+		     GTK_SIGNAL_FUNC(applet_change_orient),
+		     NULL);
 
   /* connect up the about box */
   applet_widget_register_stock_callback (APPLET_WIDGET (applet),
