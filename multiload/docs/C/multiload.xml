@@ -2,9 +2,9 @@
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "2.0">
+  <!ENTITY appletversion "2.3.6">
   <!ENTITY manrevision "2.0">
-  <!ENTITY date "March 2002">
+  <!ENTITY date "July 2003">
   <!ENTITY applet "System Monitor">
   <!-- Information about the entities.
        The legal.xml file contains legal information, there is no need to edit the file. 
@@ -31,267 +31,344 @@
   Maintained by the GNOME Documentation Project
   http://developer.gnome.org/projects/gdp
   Template version: 2.0 beta
-  Template last modified Feb 12, 2002
+  Template last modified Apr 11, 2002
 -->
+
 <!-- =============Document Header ============================= -->
 <article id="index" lang="en">
 <!-- please do not change the id; for translations, change lang to -->
 <!-- appropriate code -->
   <articleinfo> 
-	 <title>&applet; Applet Manual V&manrevision;</title> 
-	 <copyright> 
-		<year>2002</year> 
-		<holder>Trevor Curtis</holder> 
-	 </copyright> 
+    <title>&applet; Applet Manual V&manrevision;</title> 
+    <copyright> 
+      <year>2003</year> 
+      <holder>Chee Bin HOH</holder> 
+    </copyright> 
+
+<!--	
+    <copyright> 
+    <year>1999</year> 
+    <year>2000</year> 
+      <holder>DOCUMENTATION WRITER 1</holder> 
+    </copyright>
+-->
 <!-- translators: uncomment this:
+    <copyright>
+    <year>2002</year>
+    <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+    </copyright>
+-->
 
-  <copyright>
-   <year>2002</year>
-   <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
-  </copyright>
-
-   -->
 <!-- An address can be added to the publisher information.  If a role is 
      not specified, the publisher/author is the same for all versions of the 
      document.  -->
-	 <publisher> 
-		<publishername> GNOME Documentation Project </publishername> 
-	 </publisher> 
+    <publisher> 
+      <publishername> GNOME Documentation Project </publishername> 
+    </publisher> 
 
 &legal;
 <!-- This file  contains link to license for the documentation (GNU FDL), and 
      other legal stuff such as "NO WARRANTY" statement. Please do not change 
      any of this. -->
 
-	 <authorgroup> 
-		<author> 
-		  <firstname>Trevor </firstname> 
-		  <surname> Curtis</surname> 
-		  <affiliation> 
-			 <orgname>GNOME Documentation Project</orgname> 
-			 <address> <email>tcurtis@somaradio.ca</email> </address> 
-		  </affiliation> 
-		</author> 
+    <authorgroup> 
+      <author> 
+	<firstname>Chee Bin</firstname> 
+	<surname>HOH</surname> 
+	<affiliation> 
+	  <orgname>GNOME Documentation Project</orgname> 
+	  <address> <email>cbhoh@mimos.my</email> </address> 
+	</affiliation> 
+      </author> 
+<!--
+      <author> 
+        <firstname>Documentation</firstname> 
+        <surname>Writer 1</surname> 
+        <affiliation> 
+          <orgname>GNOME Documentation Project</orgname> 
+          <address> <email>cbhoh@mimos.my</email> </address> 
+        </affiliation> 
+      </author> 
+-->
       <!-- This is appropriate place for other contributors: translators,
            maintainers,  etc. Commented out by default.
-           <othercredit role="translator">
-	     <firstname>Latin</firstname> 
-	     <surname>Translator 1</surname> 
-	     <affiliation> 
-	       <orgname>Latin Translation Team</orgname> 
-	       <address> <email>translator@gnome.org</email> </address> 
-	     </affiliation>
-	     <contrib>Latin translation</contrib>
-           </othercredit>
+      <othercredit role="translator">
+        <firstname>Latin</firstname> 
+        <surname>Translator 1</surname> 
+        <affiliation> 
+          <orgname>Latin Translation Team</orgname> 
+          <address> <email>translator@gnome.org</email> </address> 
+        </affiliation>
+        <contrib>Latin translation</contrib>
+      </othercredit>
 -->
-	 </authorgroup>
+    </authorgroup>
 
-	 <releaseinfo> This manual describes version &appletversion; of &applet;.
-		</releaseinfo> 
+<!-- According to GNU FDL, revision history is mandatory if you are -->
+<!-- modifying/reusing someone else's document.  If not, you can omit it. -->
+<!-- Remember to remove the &manrevision; entity from the revision entries other -->
+<!-- than the current revision. -->
+<!-- The revision numbering system for GNOME manuals is as follows: -->
+<!-- * the revision number consists of two components -->
+<!-- * the first component of the revision number reflects the release version of the GNOME desktop. -->
+<!-- * the second component of the revision number is a decimal unit that is incremented with each revision of the manual. -->
+<!-- For example, if the GNOME desktop release is V2.x, the first version of the manual that -->
+<!-- is written in that desktop timeframe is V2.0, the second version of the manual is V2.1, etc. -->
+<!-- When the desktop release version changes to V3.x, the revision number of the manual changes -->
+<!-- to V3.0, and so on. -->  
+    <revhistory>
+      <revision> 
+	<revnumber>&applet; Applet Manual V&manrevision;</revnumber> 
+	<date>&date;</date> 
+	<revdescription> 
+	  <para role="author">Chee Bin HOH
+	    <email>cbhoh@mimos.my</email>
+          </para> 
+	  <para role="publisher">GNOME Documentation Project</para> 
+	</revdescription> 
+      </revision> 
+      <!--	
+      <revision> 
+        <revnumber>Full title of previous manual.</revnumber> 
+        <date>Release date of previous manual.</date> 
+        <revdescription> 
+          <para role="author">Documentation Writer 1
+            <email>docwriter2@gnome.org</email></para> 
+          <para role="publisher">GNOME Documentation Project</para> 
+        </revdescription> 
+      </revision> 
+-->
+    </revhistory> 
 
-    <!-- The following feedback information only applies to applets
-    listed in bugzilla.gnome.org and bugzilla.ximian.com. For other
-    applets, please provide your own feedback info or remove thsi
-    section altogether -->
- 
-
+    <releaseinfo> This manual describes version &appletversion; of &applet;.
+    </releaseinfo> 
     <legalnotice> 
       <title>Feedback</title> 
-      <para> To report a bug or make a suggestion regarding
-	the &applet; applet or this manual, follow the directions in the 
-	<ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>. 
-      </para> 
+      <para> To report a bug or make a suggestion regarding the &applet; applet or this
+	     manual, follow the directions in the 
+	     <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>. 
+      </para>
     </legalnotice> 
   </articleinfo> 
 
   <indexterm zone="index"> 
-	 <primary>System Monitor Applet</primary> 
+    <primary>&applet; Applet</primary> 
   </indexterm> 
+  <indexterm zone="index"> 
+    <primary>&applet;</primary> 
+  </indexterm>
+
 <!-- ============= Document Body ============================= -->
 <!-- ============= Introduction ============================== -->
 <!-- Use the Introduction section to give a brief overview of what
      the applet is and what it does. -->
-  <sect1 id="myapplet-introduction"> 
-	 <title>Introduction</title> 
-	 <!-- You should start the Introduction with a screenshot of the applet in a panel -->
-<!-- ==== Figure ============================================= -->
-	 <figure id="applet-fig"> 
-		<title>&applet; Applet</title> 
-		<screenshot> 
-		  <mediaobject> 
-			 <imageobject><imagedata fileref="figures/system_monitor.png"
-				format="PNG"/> 
-			 </imageobject>
-			 <textobject> 
-				<phrase>Screenshot of the System Monitor applet.</phrase> 
-			 </textobject> 
-		  </mediaobject> 
-		</screenshot> 
-	 </figure> 
-    <!-- ==== End of Figure ======================================= -->
-
-	 <para>The <application>&applet;</application> applet measures and displays the state 
-		of the system. Displaying up to four meters, the <application>&applet;</application>
-		applet can display the processor, memory, network, and swap file states.
-		</para>
-
-	 <para>To add <application>&applet;</application> to a panel right-click on the panel to open the 
-		<guimenu>Panel</guimenu> menu, then choose 
-		<menuchoice> 
-		  <guimenu>Add to panel</guimenu> 
-		  <guisubmenu>Utility</guisubmenu> 
-		  <guimenuitem>System Monitor</guimenuitem> 
-		</menuchoice>.</para> 
+  <sect1 id="multiload-introduction"> 
+    <title>Introduction</title> 
+      <!-- ==== Figure ============================================= -->
+      <figure id="applet-fig"> 
+        <title>&applet; Applet</title> 
+        <screenshot> 
+        <mediaobject> 
+          <imageobject><imagedata fileref="figures/MultiLoad_applet.png"
+			format="PNG"/> 
+          </imageobject>
+ 	  <textobject> 
+ 	    <phrase>Shows &applet; applet. Contains a display graph for system CPU load.
+            </phrase> 
+          </textobject> 
+        </mediaobject> 
+	</screenshot> 
+      </figure> 
+      <!-- ==== End of Figure ======================================= -->
+      <para><application>&applet;</application> applet is a system load monitor capable of 
+            displaying graphs for processor, memory and swap space uses, plus network traffic
+            and load average. It displays how much processor (CPU) capacity, memory and swap 
+            space the system is using, how much network traffic the system is generating and 
+            the load average of the system. The <application>&applet;</application> applet 
+            displays this information in graphical displays on a panel so that users can see 
+            what the system is doing.
+      </para>
+      <para>To add <application>&applet;</application> to a panel, right-click on the panel,
+            then choose 
+            <menuchoice>
+              <guimenu>Add to Panel</guimenu>
+              <guisubmenu>Utility</guisubmenu>
+              <guimenuitem>&applet;</guimenuitem>
+            </menuchoice>. The layout of the <application>&applet;</application> applet varies 
+            depending on the size and type of panel in which the applet resides.
+      </para>     
+      <para>The <application>&applet;</application> applet is included in the gnome-applets package, which is
+            part of the GNOME desktop environment. This document describes version &appletversion; of
+            <application>&applet;</application> applet.
+      </para>
   </sect1>
+
 <!-- ================ Usage ================================ -->
 <!-- Use this section to describe how to use the applet to perform the tasks for 
      which the applet is designed. -->
-  <sect1 id="myapplet-usage"> 
-	 <title>Usage</title> 
-	 <para>When you add <application>&applet;</application> to a panel for the
-		first time, the applet displays the on-going state of the processor. Nothing more
-		is to be done, as this applet is simply used for viewing the system's state. Placing 
-		the cursor over a monitored resource displays the percentage of the resource in use.
-		</para>
-  </sect1>
-<!-- ============= Customization ============================= -->
-<!-- Use this section to describe how to customize the applet. -->
-  <sect1 id="myapplet-prefs"> 
-	 <title>Preferences</title> 
-	 <para>To configure <application>&applet;</application>, right-click on the
-		applet, then choose 
-		<guimenuitem>Preferences</guimenuitem> from the popup menu.</para> 
-
-	<figure id="applet_prefs-fig"> 
-		<title>&applet; Applet Preferences</title> 
-		<screenshot> 
-		  <mediaobject> 
-			 <imageobject><imagedata fileref="figures/system_monitor_prefs.png"
-				format="PNG"/> 
-			 </imageobject>
-			 <textobject> 
-				<phrase>Screenshot of the &applet; applet preferences popup menu.</phrase> 
-			 </textobject> 
-		  </mediaobject> 
-		</screenshot> 
-	 </figure> 	
-
-	 <para>The 
-		<guimenuitem>Preferences</guimenuitem> dialog contains the following
-		options: </para> 
-		
-		<variablelist>
-		  <varlistentry>
-			<term>
-				<guilabel>Monitored Resources</guilabel></term>
-			<listitem>
-				<para>Select the desired monitor resource to be displayed. 
-				<guilabel>Processor</guilabel> displays the processor usage, 
-				<guilabel>Memory</guilabel> displays the amount of memory
-				being used, <guilabel>Network</guilabel> displays the network
-				activity on the system's network interface, and 
-				<guilabel>Swap File</guilabel> displays how much of the swap
-				file is being used.</para>
-			</listitem>
-		  </varlistentry>
-		  <varlistentry>
-			<term>
-				<guilabel>System monitor width</guilabel></term>
-			<listitem>
-				<para>Use this option to vary the width of the applet as
-				displayed on the panel. This value is measured in pixels.</para>
-			</listitem>
-		  </varlistentry>
-		  <varlistentry>
-			<term>
-				<guilabel>System monitor update interval</guilabel></term>
-			<listitem>
-				<para>Use this option to change how often the applet updates the
-				monitored resources. This value is measured in milliseconds.</para>
-			</listitem>
-		  </varlistentry>
-		  <varlistentry>
-			<term>
-				<guilabel>Processor</guilabel> Colors</term>
-			<listitem>
-				<para>This allows for the customization of the colors displayed in the 
-				processor monitor. Select colors for <guilabel>User</guilabel>, 
-				<guilabel>System</guilabel>, and <guilabel>Nice</guilabel> processes, 
-				as well as the Idle color by clicking on the appropriate button.</para>
-			</listitem>
-		  </varlistentry>
-		  <varlistentry>
-			<term>
-				<guilabel>Memory</guilabel> Colors</term>
-			<listitem>
-				<para>This allows for the customization of the colors displayed in the 
-				memory monitor. Select colors for <guilabel>Other</guilabel>, 
-				<guilabel>Shared</guilabel>, and <guilabel>Buffer</guilabel> memory spaces, 
-				as well as the memory color by clicking on the appropriate button.
-				</para>
-			</listitem>
-		  </varlistentry>
-		  <varlistentry>
-			<term>
-				<guilabel>Network</guilabel> Colors</term>
-			<listitem>
-				<para>This allows for the customization of the colors displayed in the 
-				network monitor. Select colors for <guilabel>SLIP</guilabel>, 
-				<guilabel>PLIP</guilabel>, and <guilabel>Ethernet</guilabel> interfaces, 
-				as well as the <guilabel>Other</guilabel> color by clicking on the appropriate 
-				button.
-				</para>
-			</listitem>
-		  </varlistentry>
-		  <varlistentry>
-			<term>
-				<guilabel>Swap File</guilabel> Colors</term>
-			<listitem>
-				<para>This allows for the customization of the colors displayed in the 
-				swap file monitor. Select colors for <guilabel>Used</guilabel>, and
-				<guilabel>Free</guilabel> swap space by clicking on the appropriate 
-				button.</para>
-			</listitem>
-		  </varlistentry>
-		</variablelist>
+  <sect1 id="multiload-usage"> 
+    <title>Usage</title> 
+    <para>When you add <application>&applet;</application> applet to a panel for the first time, 
+          the applet will display a graph about system CPU usage, as shown in <xref linkend="figs-usage-applet"/>.
+          To add other monitored resources, see also <xref linkend="multiload-prefs"/>.
+    </para>
+    <figure id="figs-usage-applet">
+      <title>&applet; Applet Usage</title>
+        <screenshot> 
+          <mediaobject> 
+            <imageobject><imagedata fileref="figures/MultiLoad_applet_cpu_usage.png"
+	  		            format="PNG"/> 
+            </imageobject>
+ 	    <textobject> 
+ 	      <phrase>Shows &applet; applet. A tooltip with percentage of CPU in use. 
+              </phrase> 
+            </textobject> 
+          </mediaobject> 
+	</screenshot>      
+    </figure>
+    <para>
+      <itemizedlist>
+        <listitem>
+          <para>When you point to the display graph, a tooltip will display the percentage of 
+                the system resource in use at the time, as shown in <xref linkend="figs-usage-applet"/>.
+          </para>
+        </listitem> 
+        <listitem>
+          <para>To get detailed system monitoring, right-click on the applet, choose 
+                <guimenuitem>Open System Monitor</guimenuitem> to start 
+                <application>System Monitor</application> application. 
+                The <application>System Monitor</application> application provides detailed information
+                about individual processes and allows the user to control which processes are running.
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
   </sect1>
 
 
-	
-  <!-- ============= Authors ================================ -->
+<!-- ============= Preferences =========================== -->
+  <sect1 id="multiload-prefs">
+    <title>Preferences</title> 
+    <para>To modify the properties of <application>&applet;</application>, 
+          right-click on the applet, then choose <guimenuitem>Preferences</guimenuitem> 
+          from the popup menu. This will display the preferences dialog, as shown
+          in <xref linkend="figs-prefs"/>.
+    </para>
+    <figure id="figs-prefs">
+      <title>Preferences</title>
+      <screenshot> 
+        <mediaobject> 
+          <imageobject><imagedata fileref="figures/MultiLoad_applet_prefs.png"
+                                  format="PNG"/> 
+          </imageobject>
+          <textobject> 
+            <phrase>Shows &applet; applet. preferences dialog.
+            </phrase> 
+          </textobject> 
+        </mediaobject> 
+      </screenshot> 
+    </figure>
+    <variablelist>
+      <varlistentry>
+        <term>Monitored Resources</term>
+        <listitem>
+          <para>To add additional monitoring resources, such as memory, network, swap space, or load average,
+                click on the 
+            <inlinemediaobject>
+	      <imageobject>
+                <imagedata fileref="figures/MultiLoad_applet_prefs_checkbox.png" format="PNG"/>
+              </imageobject>
+                <textobject>
+                  <phrase>Shows check box to select monitored resources.</phrase>
+               </textobject>
+            </inlinemediaobject> check box to select the resource.
+          </para>
+          <para>
+            <note>
+	      <title>Note</title>
+  	      <para>At least one resource need to be selected.
+              </para>
+            </note>
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Options</term>
+        <listitem>
+          <para>Use the Spin box to specify the display width or update interval of the graphs for 
+                the monitored resources.
+          </para> 
+        </listitem> 
+      </varlistentry>
+      <varlistentry>
+        <term>Colors</term>
+        <listitem>
+          <para>Users can change the colors of the lines used in the graphs by clicking on any of the tabs 
+               <guilabel>Processor</guilabel>, <guilabel>Memory</guilabel>, <guilabel>Network</guilabel>, 
+               <guilabel>Swap Space</guilabel> or <guilabel>Load</guilabel> to select a tabbed section.
+          </para>
+          <para>To change color, click on the color selector buttons to change colors of the lines 
+                used in the graphs.
+          </para>
+        </listitem> 
+      </varlistentry>
+    </variablelist>
+  </sect1>
 
-  <sect1 id="authors">
-   <title>Authors</title>
-   <para>
-    <application>Drive Mount Applet</application> was written by Martin Baulig
-    (<email>martin@home-of-linux.org</email>) and Todd Kulesza 
-    (<email>fflewddur@dropline.net</email>).
-   </para>
-
-      <para>To report a bug or make a suggestion regarding the &applet; application or
-	this manual, follow the directions in the 
-	<ulink url="ghelp:gnome-feedback"
-	  type="help">GNOME Feedback Page</ulink>. 
-      </para>
-
-
-
-   <!-- For translations: uncomment this:
-
-   <para>
-    Latin translation was done by ME
-    (<email>MYNAME@MYADDRESS</email>). Please send all  comments  and
-    suggestions regarding this translation to SOMEWHERE.
-   </para>
-
-   -->
-
-      <para> This program is distributed under the terms of the GNU
-      General Public license as published by the Free Software
-      Foundation; either version 2 of the License, or (at your option)
-      any later version. A copy of this license can be found at this
-      <ulink url="ghelp:gpl" type="help">link</ulink>, or in the file
-      COPYING included with the source code of this program. </para>
-
+<!-- ============= Bugs ================================== -->
+<!-- This section is optional and is commented out by default. 
+     You can use it to describe known bugs and limitations of the 
+	  program if there are any - please be frank and list all
+     problems you know of. 
+  
+  <sect1 id="myapplet-bugs">
+  <title>Known Bugs and Limitations</title>
+  <para> </para>
  </sect1>
-</article>
+-->
+
+<!-- ============= About ================================== -->
+<!-- This section contains info about the program (not docs), such as
+     author's name(s), web page, license, feedback address. This
+     section is optional: primary place for this info is "About.." box of
+     the program. However, if you do wish to include this info in the
+     manual, this is the place to put it. Alternatively, you can put this 
+     information in the title page.-->
+
+  <sect1 id="multiload-about">
+    <title>About <application>&applet;</application></title>
+    <para>
+      <application>&applet;</application> was written by Martin Baulig
+      (<email>martin@home-of-linux.org</email>) and Todd Kulesza
+      (<email>fflewddur@dropline.net</email>). To find more information about
+      <application>&applet;</application>, please visit the <ulink
+      url="http://www.gnome.org/softwaremap/projects/gnome-applets" type="http">
+      The GNOME Applets website</ulink>.
+    </para>
+    <para>
+       If you have some comments or suggestions regarding this application or
+       documentation, need help, or want to report a bug, please contact us!
+       Instructions for doing so are given in <ulink url="ghelp:gnome-feedback" type="help">
+       <citetitle>Reporting GNOME bugs and other feedback</citetitle></ulink> document, 
+       which you can find in the <guilabel>Help</guilabel> tab of <application>Nautilus</application> 
+       file manager.
+    </para>
+
+<!-- For translations: uncomment this:
+    <para>
+      Latin translation was done by ME
+     (<email>MYNAME@MYADDRESS</email>). Please send all  comments  and
+     suggestions regarding this translation to SOMEWHERE.
+    </para>
+-->
+    <para>
+      This program is distributed under the terms of the GNU General
+      Public license as published by the Free Software Foundation;
+      either version 2 of the License, or (at your option) any later
+      version. A copy of this license can be found at this <ulink
+      type="help" url="ghelp:gpl">link</ulink>, or in the file COPYING
+      included with the source code of this program. 
+    </para>
+  </sect1> 
+
+</article> 

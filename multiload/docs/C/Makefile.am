@@ -1,1 +1,7 @@
-SUBDIRS = cpuload loadavg memload netload swapload
+figdir = figures
+docname = multiload
+lang = C
+omffile = multiload-C.omf
+entities = legal.xml
+include $(top_srcdir)/xmldocs.make
+dist-hook: app-dist-hook
