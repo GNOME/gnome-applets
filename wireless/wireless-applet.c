@@ -549,9 +549,6 @@ wireless_applet_load_properties (WirelessApplet *applet)
 		(PANEL_APPLET (applet), "percent", NULL);
 	applet->show_dialogs = panel_applet_gconf_get_bool
 		(PANEL_APPLET (applet), "dialog", NULL);
-
-	g_message ("applet->show_percent: %d applet->show_dialogs: %d",
-			applet->show_percent, applet->show_dialogs);
 }
 
 static void
@@ -606,8 +603,12 @@ wireless_applet_properties_dialog (BonoboUIComponent *uic,
 
 	g_return_if_fail (PANEL_IS_APPLET (PANEL_APPLET (applet)));
 
-	g_message ("applet->show_percent: %d applet->show_dialogs: %d",
-			applet->show_percent, applet->show_dialogs);
+	if (applet->prefs != NULL)
+	{
+		gtk_widget_show (applet->prefs);
+		gtk_window_present (GTK_WINDOW (applet->prefs));
+		return;
+	}
 
 	if (global_property_box == NULL) {
 		xml = glade_xml_new (glade_file, NULL, NULL);
@@ -684,14 +685,16 @@ wireless_applet_properties_dialog (BonoboUIComponent *uic,
 			GTK_SIGNAL_FUNC (gtk_widget_destroy),
 			NULL);
 
+	g_object_add_weak_pointer (G_OBJECT (applet->prefs),
+			(void**)&(applet->prefs));
+
 	gtk_widget_show_all (applet->prefs);
 }
 
-//FIXME add a logo
 static void
 wireless_applet_about_cb (BonoboUIComponent *uic, WirelessApplet *applet)
 {
-	GtkWidget *about;
+	static GtkWidget *about = NULL;
 	GdkPixbuf *pixbuf;
 	char *file;
 	const gchar *authors[] = {
@@ -702,22 +705,32 @@ wireless_applet_about_cb (BonoboUIComponent *uic, WirelessApplet *applet)
 	const gchar *documenters[] = { NULL };
 	const gchar *translator_credits = _("translator_credits");
 
+	if (about != NULL)
+	{
+		gtk_widget_show (about);
+		gtk_window_present (GTK_WINDOW (about));
+		return;
+	}
+
 	file = gnome_program_locate_file (NULL, GNOME_FILE_DOMAIN_PIXMAP,
 			"wireless-applet/wireless-applet.png", FALSE, NULL);
 	pixbuf = gdk_pixbuf_new_from_file (file, NULL);
 	g_free (file);
 
 	about = gnome_about_new (
-			_("Wireless Link Monitor"), 
+			_("Wireless Link Monitor"),
 			VERSION,
 			_("(C) 2001, 2002 Free Software Foundation "),
-			_("Yet another applet that shows the waterlevel in Sortedamssøen.\nHmm, it shows the status of a wireless link actually."),
+			_("This utility shows the status of a wireless link."),
 			authors,
 			documenters,
 			strcmp (translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
 			pixbuf);
 
 	gtk_widget_show (about);
+
+	g_object_add_weak_pointer (G_OBJECT (about),
+			(void**)&about);
 
 	return;
 }
