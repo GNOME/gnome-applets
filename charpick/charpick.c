@@ -351,8 +351,20 @@ static void applet_change_orient(PanelApplet *applet, PanelAppletOrient o, gpoin
 static void
 about (BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 {
-  static const char *authors[] = { "Alexandre Muñiz <munizao@xprt.net", NULL };
   static GtkWidget *about_box = NULL;
+
+  const char *authors[] = {
+	  /* If your charset supports it, please use U00F1 to replace the "n"
+	   * in "Muniz". */
+	  _("Alexandre Muniz <munizao@xprt.net"),
+	  NULL
+  };
+
+  const gchar *documenters[] = {
+	  NULL
+  };
+
+  const gchar *translator_credits = _("translator_credits");
 
   if (about_box != NULL)
   {
@@ -367,8 +379,8 @@ about (BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 			         "characters that are not on my keyboard. "
 				 "Released under GNU General Public Licence."),
 			       authors,
-			       NULL,
-			       NULL,
+			       documenters,
+			       strcmp (translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
 			       NULL);
 
   gtk_signal_connect(GTK_OBJECT(about_box), "destroy",

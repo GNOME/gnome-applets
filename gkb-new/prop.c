@@ -30,6 +30,10 @@
  * USA
  */
 
+#ifdef HAVE_CONFIG_H
+#  include <config.h>
+#endif
+
 #include <gdk/gdkx.h>
 #include <sys/stat.h>
 #include <X11/Xlib.h>

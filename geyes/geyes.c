@@ -197,7 +197,16 @@ static void
 about_cb (BonoboUIComponent *uic, gpointer user_data, const gchar *verbname)
 {
         static GtkWidget *about = NULL;
-        const gchar *authors [] = {N_("Dave Camp <campd@oit.edu>"), NULL};
+        static const gchar *authors [] = {
+		"Dave Camp <campd@oit.edu>",
+		NULL
+	};
+
+	const gchar *documenters[] = {
+		NULL
+	};
+
+	const gchar *translator_credits = _("translator_credits");
 
 	if (about != NULL) {
 		gdk_window_show  (about->window);
@@ -210,8 +219,8 @@ about_cb (BonoboUIComponent *uic, gpointer user_data, const gchar *verbname)
 		_("Copyright (C) 1999 Dave Camp"),
 		_("A goofy little xeyes clone for the GNOME panel."),
 		authors,
-		NULL,
-		NULL,
+		documenters,
+		strcmp (translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
 		NULL);
 	g_signal_connect (about, "destroy",
 			  G_CALLBACK (gtk_widget_destroyed),

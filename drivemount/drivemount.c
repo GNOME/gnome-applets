@@ -410,6 +410,12 @@ about_cb (PanelApplet *widget, gpointer data)
 		NULL
 	};
 
+	const gchar *documenters[] = {
+		NULL
+	};
+
+	const gchar *translator_credits = _("translator_credits");
+
 	if (about != NULL) {
 		gdk_window_show (about->window);
 		gdk_window_raise (about->window);
@@ -420,7 +426,10 @@ about_cb (PanelApplet *widget, gpointer data)
 				 _("(C) 1999-2001 The GNOME Hackers\n"),
 				 _
 				 ("Applet for mounting and unmounting block volumes."),
-				 authors, NULL, NULL, NULL);
+				 authors,
+				 documenters,
+				 strcmp (translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
+				 NULL);
 
 	g_signal_connect (G_OBJECT (about), "destroy",
 			  G_CALLBACK (gtk_widget_destroyed), &about);

@@ -564,7 +564,8 @@ about_cb (BonoboUIComponent *uic,
 	        "Szabolcs Ban <shooby@gnome.hu>",
 		NULL
 	};
-	
+
+  const gchar *translator_credits = _("translator_credits");
 
   pixbuf = NULL;
   file = gnome_program_locate_file (NULL, GNOME_FILE_DOMAIN_PIXMAP, "gkb-icon.png", TRUE, NULL);
@@ -589,7 +590,7 @@ about_cb (BonoboUIComponent *uic,
                               "\nShooby Ban <shooby@gnome.hu>"),
                             authors,
 			    docauthors,
-			    NULL,
+			    strcmp (translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
 			    pixbuf);
 
   link = gnome_href_new ("http://projects.gnome.hu/gkb",

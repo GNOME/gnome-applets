@@ -797,10 +797,20 @@ void
 about_cb (PanelApplet *widget, gpointer data)
 {
    GtkWidget   *about_box;
-   char        *authors[] = { "Jörgen Pehrson <jp@spektr.eu.org>", 
-			      "Lennart Poettering <lennart@poettering.de> (Linux ACPI support)",
-			      "Seth Nickell <snickell@stanford.edu> (GNOME2 port)",
-			      NULL };
+   const gchar *authors[] = {
+	/* if your charset supports it, please replace the "o" in
+	 * "Jorgen" into U00F6 */
+	_("Jorgen Pehrson <jp@spektr.eu.org>"), 
+	"Lennart Poettering <lennart@poettering.de> (Linux ACPI support)",
+	"Seth Nickell <snickell@stanford.edu> (GNOME2 port)",
+	NULL
+   };
+
+   const gchar *documenters[] = {
+	NULL
+   };
+
+   const gchar *translator_credits = _("translator_credits");
    
    about_box = gnome_about_new (
 				/* The long name of the applet in the About dialog.*/
@@ -808,10 +818,9 @@ about_cb (PanelApplet *widget, gpointer data)
 				VERSION,
 				_("(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"),
 				_("This utility show the status of your laptop battery."),
-				(const char **) authors,
-				/* Longer description of the applet in the About dialog.*/
-				NULL,
-				NULL,
+				authors,
+				documenters,
+				strcmp (translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
 				NULL);
    /* FIXME
 				"battstat-tesla.xpm");

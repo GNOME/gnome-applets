@@ -410,6 +410,13 @@ about_cb(GtkWidget *w, gpointer data)
         NULL
     };
 
+    const gchar *documenters[] =
+    {
+	    NULL
+    };
+
+    const gchar *translator_credits = _("translator_credits");
+
     if (about != NULL)
     {
         gdk_window_show(about->window);
@@ -421,7 +428,10 @@ about_cb(GtkWidget *w, gpointer data)
                              _("(C) 1997 The Free Software Foundation\n" \
                                "(C) 2001 Chris Phelps (GNOME 2 Port)"),
                              _("The CD Player applet is a simple audio CD player for your panel"),
-                             authors,  NULL, NULL, NULL);
+                             authors,
+			     documenters,
+			     strcmp (translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
+			     NULL);
 
     g_signal_connect (G_OBJECT(about), "destroy",
                       G_CALLBACK(gtk_widget_destroyed), &about);

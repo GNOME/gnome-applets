@@ -26,11 +26,18 @@
 
 void gweather_about_run (void)
 {
-    const gchar *authors[] = {
+    static const gchar *authors[] = {
         "Spiros Papadimitriou <spapadim+@cs.cmu.edu>",
         "Todd Kulesza <fflewddur@dropline.net>",
         NULL
     };
+
+    const gchar *documenters[] = {
+	NULL
+    };
+
+    const gchar *translator_credits = _("translator_credits");
+
     static GtkWidget *about_dialog = NULL;
     
     if (about_dialog != NULL)
@@ -44,8 +51,8 @@ void gweather_about_run (void)
                                     _("Released under the GNU General Public License.\n\n"
                                     	"An applet for monitoring local weather conditions."),
                                     authors,
-                                    NULL,
-                                    NULL,
+                                    documenters,
+                                    strcmp (translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
                                     NULL);
     gtk_signal_connect( GTK_OBJECT(about_dialog), "destroy",
 		        GTK_SIGNAL_FUNC(gtk_widget_destroyed), &about_dialog );

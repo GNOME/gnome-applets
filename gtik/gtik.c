@@ -665,6 +665,12 @@ static gint updateOutput(gpointer data)
 			NULL
 		};
 
+		const gchar *documenters[] = {
+			NULL
+		};
+
+		const gchar *translator_credits = _("translator_credits");
+
 		about = gnome_about_new (_("The GNOME Stock Ticker"), VERSION,
 		"(C) 2000 Jayson Lorenzen, Jim Garrison, Rached Blili",
 		_("This program connects to "
@@ -674,8 +680,8 @@ static gint updateOutput(gpointer data)
 		"Do not use the GNOME Stock Ticker for making investment decisions; it is for "
 		"informational purposes only."),
 		authors,
-		NULL,
-		NULL,
+		documenters,
+		strcmp (translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
 		NULL);
 		gtk_widget_show (about);
 
