@@ -294,7 +294,7 @@ panel_menu_path_merge_ui (PanelMenuEntry *entry)
 	bonobo_ui_component_add_verb (component, "Remove",
 				     (BonoboUIVerbFn)panel_menu_common_remove_entry, entry);
 	name = gtk_label_get_text (GTK_LABEL (GTK_BIN (path->path)->child));
-	xml = g_strdup_printf (path_menu_xml, name, monitor ? "" : additional_xml);
+	xml = g_strdup_printf (path_menu_xml, monitor ? "" : additional_xml, name);
 	bonobo_ui_component_set (component, "/popups/button3/ChildMerge/",
 				 xml, NULL);
 	g_free (xml);
