@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 2.x\n"
-"POT-Creation-Date: 2003-09-04 19:33+0530\n"
-"PO-Revision-Date: 2003-05-04 22:11+0530\n"
+"POT-Creation-Date: 2003-10-28 15:48+0530\n"
+"PO-Revision-Date: 2003-10-28 16:00+0530\n"
 "Last-Translator: Ravishankar Shrivastava <raviratlami@yahoo.com>\n"
 "Language-Team: Hindi <indlinux-hindi-gnome@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -40,6 +40,7 @@ msgstr "के बारे में (_A)..."
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
 #: mixer/GNOME_MixerApplet.xml.h:2 modemlights/GNOME_ModemlightsApplet.xml.h:2
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:3
+#: wireless/GNOME_WirelessApplet.xml.h:2
 msgid "_Help"
 msgstr "सहायता (_H)"
 
@@ -74,16 +75,16 @@ msgstr ""
 msgid "Utility"
 msgstr "उपयोगी"
 
-#: accessx-status/applet.c:135 battstat/battstat_applet.c:839
-#: cdplayer/cdplayer.c:575 charpick/charpick.c:584 drivemount/drivemount.c:510
-#: geyes/geyes.c:228 gkb-new/gkb-applet.c:84 gtik/gtik.c:774
+#: accessx-status/applet.c:135 battstat/battstat_applet.c:895
+#: cdplayer/cdplayer.c:580 charpick/charpick.c:581 drivemount/drivemount.c:510
+#: geyes/geyes.c:228 gkb-new/gkb-applet.c:84 gtik/gtik.c:775
 #: gweather/gweather-about.c:44 mailcheck/mailcheck.c:2435
-#: mini-commander/src/about.c:48 mixer/mixer.c:1060
+#: mini-commander/src/about.c:48 mixer/mixer.c:1062
 #: modemlights/modemlights.c:115 multiload/main.c:57
-#: stickynotes/stickynotes_applet_callbacks.c:178
-#: wireless/wireless-applet.c:528
+#: stickynotes/stickynotes_applet_callbacks.c:191
+#: wireless/wireless-applet.c:560
 msgid "translator_credits"
-msgstr "अनुवादकों के नाम:  (_c)"
+msgstr "रविशंकर श्रीवास्तव <raviratlami@yahoo.com>"
 
 #: accessx-status/applet.c:157 accessx-status/applet.c:1181
 msgid "AccessX Status"
@@ -117,7 +118,7 @@ msgstr ""
 
 #. The long name of the applet in the About dialog.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:852
+#: battstat/battstat_applet.c:908
 msgid "Battery Charge Monitor"
 msgstr "बैटरी चार्ज पर नजर"
 
@@ -139,7 +140,7 @@ msgstr "लैपटाप की बची ऊर्जा पर नजर"
 #: mixer/GNOME_MixerApplet.xml.h:5 modemlights/GNOME_ModemlightsApplet.xml.h:3
 #: multiload/GNOME_MultiloadApplet.xml.h:3
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:6
-#: wireless/GNOME_WirelessApplet.xml.h:2
+#: wireless/GNOME_WirelessApplet.xml.h:3
 msgid "_Preferences..."
 msgstr "वरीयताऐं (_P)..."
 
@@ -225,49 +226,49 @@ msgstr ""
 
 #. Message displayed if user tries to run applet
 #. on unsupported platform
-#: battstat/battstat_applet.c:286
+#: battstat/battstat_applet.c:329
 msgid "Your platform is not supported!\n"
 msgstr "आपका प्लेटफार्म सपोर्टेड नहीं है!\n"
 
-#: battstat/battstat_applet.c:287
+#: battstat/battstat_applet.c:330
 msgid "The applet will not work properly (if at all).\n"
 msgstr "यह एप्लेट उचित प्रकार कार्य नहीं करेगा अगर करेगा भी तो.\n"
 
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:883
+#: battstat/battstat_applet.c:361 battstat/battstat_applet.c:939
 msgid "High"
 msgstr "ज्यादा"
 
 #. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:885
+#: battstat/battstat_applet.c:363 battstat/battstat_applet.c:941
 msgid "Low"
 msgstr "कम"
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:887
+#: battstat/battstat_applet.c:365 battstat/battstat_applet.c:943
 msgid "Critical"
 msgstr "शोचनीय"
 
 #. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:324 battstat/battstat_applet.c:889
+#: battstat/battstat_applet.c:367 battstat/battstat_applet.c:945
 msgid "Charging"
 msgstr "चार्जिंग"
 
-#: battstat/battstat_applet.c:405
+#: battstat/battstat_applet.c:448
 #, c-format
 msgid "Battery low (%d%%) and AC is offline"
 msgstr "बैटरी कम है (%d%% ) और एसी पावर बन्द है"
 
-#: battstat/battstat_applet.c:429
+#: battstat/battstat_applet.c:472
 msgid "Battery is now fully re-charged!"
 msgstr "बैटरी अब पूर्णतः पुनः चार्ज हो चुकी है!"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:448 battstat/battstat_applet.c:1047
+#: battstat/battstat_applet.c:491 battstat/battstat_applet.c:1103
 #, c-format
 msgid ""
 "System is running on battery power\n"
@@ -279,7 +280,7 @@ msgstr ""
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:452 battstat/battstat_applet.c:1055
+#: battstat/battstat_applet.c:495 battstat/battstat_applet.c:1111
 #, c-format
 msgid ""
 "System is running on AC power\n"
@@ -290,32 +291,32 @@ msgstr ""
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:458 battstat/battstat_applet.c:979
-#: battstat/battstat_applet.c:1068
+#: battstat/battstat_applet.c:501 battstat/battstat_applet.c:1035
+#: battstat/battstat_applet.c:1124
 msgid "System is running on battery power"
 msgstr "सिस्टम  बैटरी पावर पर चल रहा है"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:461 battstat/battstat_applet.c:985
-#: battstat/battstat_applet.c:1074
+#: battstat/battstat_applet.c:504 battstat/battstat_applet.c:1041
+#: battstat/battstat_applet.c:1130
 msgid "System is running on AC power"
 msgstr "सिस्टम  एसी पावर पर चल रहा है"
 
-#: battstat/battstat_applet.c:475
+#: battstat/battstat_applet.c:518
 msgid "N/A"
 msgstr "N/A"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:599 battstat/battstat_applet.c:959
+#: battstat/battstat_applet.c:642 battstat/battstat_applet.c:1015
 #, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
 msgstr "सिस्टम  बैटरी पावर पर चल रहा है बैटरीः %d%%(%s)"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:606 battstat/battstat_applet.c:966
+#: battstat/battstat_applet.c:649 battstat/battstat_applet.c:1022
 #, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
 msgstr "सिस्टम  एसी पावर पर चल रहा है बैटरीः %d%%(%s)"
@@ -324,33 +325,33 @@ msgstr "सिस्टम  एसी पावर पर चल रहा ह�
 #. battery frame when the computer is using battery
 #. power and the battery isn't present. Not a
 #. possible combination, I guess... :)
-#: battstat/battstat_applet.c:617
+#: battstat/battstat_applet.c:660
 msgid "System is running on battery power. Battery: Not present"
 msgstr "सिस्टम  बैटरी पावर पर चल रहा है. बैटरी नहीं है"
 
 #. This string will display as a tooltip over the
 #. battery frame when the computer is using AC
 #. power and the battery isn't present.
-#: battstat/battstat_applet.c:623
+#: battstat/battstat_applet.c:666
 msgid "System is running on AC power. Battery: Not present"
 msgstr "सिस्टम  एसी पावर पर चल रहा है. बैटरी नहीं है"
 
 #. Displayed as a tooltip over the battery meter when there is
 #. a battery present. %d will hold the current charge and %s will
 #. hold the status of the battery, (High, Low, Critical, Charging.
-#: battstat/battstat_applet.c:632
+#: battstat/battstat_applet.c:675
 #, c-format
 msgid "Battery: %d%% (%s)"
 msgstr " बैटरी %d%%(%s)"
 
 #. Displayed as a tooltip over the battery meter when no
 #. battery is present.
-#: battstat/battstat_applet.c:639
+#: battstat/battstat_applet.c:682
 msgid "Battery: Not present"
 msgstr " बैटरी नहीं है"
 
 #. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: battstat/battstat_applet.c:722
+#: battstat/battstat_applet.c:778
 msgid ""
 "Can't open the APM device!\n"
 "\n"
@@ -363,7 +364,7 @@ msgstr ""
 "एपीएम साधन पढ़ने की आज्ञा आपको है."
 
 #. Displayed if the APM system is disabled (Used under *BSD)
-#: battstat/battstat_applet.c:731
+#: battstat/battstat_applet.c:787
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
@@ -373,7 +374,7 @@ msgstr ""
 "\"apm-e1\" (FreeBSD)  चलाने की कोशिश करें और देखें कि\n"
 "उससे मदद मिलती है\n"
 
-#: battstat/battstat_applet.c:787
+#: battstat/battstat_applet.c:843
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -383,7 +384,7 @@ msgstr ""
 "कृपया इस त्रुटि को दूर करने की कोशिश करें"
 
 #. Probably because the shell_ret is != 0
-#: battstat/battstat_applet.c:790
+#: battstat/battstat_applet.c:846
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command, the command returned "
@@ -393,7 +394,7 @@ msgstr ""
 "सस्पेंड कमांड चालू करने पर त्रुटि आईः कमांड वापस आया \"%d\"\n"
 "कृपया इस त्रुटि को दूर करने की कोशिश करें"
 
-#: battstat/battstat_applet.c:798
+#: battstat/battstat_applet.c:854
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -403,15 +404,15 @@ msgstr ""
 
 #. if your charset supports it, please replace the "o" in
 #. * "Jorgen" into U00F6
-#: battstat/battstat_applet.c:829
+#: battstat/battstat_applet.c:885
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "जोरगेन पेहरसन <jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:854
+#: battstat/battstat_applet.c:910
 msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 msgstr "(c) 2000 द ग्नूलिक्स सोसाइटी, (c) 2002 मुफ्त साफ्टवेयर फाउन्डेशन"
 
-#: battstat/battstat_applet.c:855
+#: battstat/battstat_applet.c:911
 msgid "This utility shows the status of your laptop battery."
 msgstr "यह यूटिलिटि आपके लैपटाप बैटरी की स्थिति दर्शाती है "
 
@@ -453,7 +454,7 @@ msgstr "<b>निलंबित</b>"
 msgid "<b>Warnings</b>"
 msgstr "<b>चेतावनियां</b>"
 
-#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1522
+#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1523
 msgid "Appearance"
 msgstr "रूप"
 
@@ -463,7 +464,7 @@ msgstr "बैटरी चार्ज मानीटर वरीयताए
 
 #: battstat/battstat_applet.glade.h:13 drivemount/properties.c:349
 #: gweather/gweather-pref.c:761 mailcheck/mailcheck.c:2026
-#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:553
+#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:552
 msgid "General"
 msgstr "सामान्य"
 
@@ -517,12 +518,14 @@ msgstr "बैटरी चार्ज कम होने पर चेता�
 
 #: battstat/battstat_applet.glade.h:26
 msgid "_Yellow:"
-msgstr "पीला (_Y)ः"
+msgstr "पीला (_Y):"
 
 #: battstat/properties.c:296 drivemount/drivemount.c:468
 #: drivemount/properties.c:589 mailcheck/mailcheck.c:2291
 #: mailcheck/mailcheck.c:2540 mini-commander/src/preferences.c:393
-#: mixer/mixer.c:1167
+#: mixer/mixer.c:1170 stickynotes/stickynotes_applet_callbacks.c:169
+#: stickynotes/stickynotes_applet_callbacks.c:317
+#: wireless/wireless-applet.c:535 wireless/wireless-applet.c:609
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "सहायता दिखाने मे त्रुटी थी : %s"
@@ -539,8 +542,8 @@ msgstr "बैटरी पूर्णतः पुनः चार्ज"
 msgid "Battery power low"
 msgstr " बैटरी पावर कम"
 
-#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:593
-#: cdplayer/cdplayer.c:1041
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:598
+#: cdplayer/cdplayer.c:1046
 msgid "CD Player"
 msgstr "सीडी पलेयर"
 
@@ -565,23 +568,23 @@ msgstr "आडियो सीडी चलाने हेतु पेनल �
 msgid "_Open CD Player"
 msgstr "सीडी पलेयर खोलें (_O)"
 
-#: cdplayer/cdplayer.c:171 cdplayer/cdplayer.c:1031
+#: cdplayer/cdplayer.c:171 cdplayer/cdplayer.c:1036
 msgid "Stop"
 msgstr "रोकें"
 
-#: cdplayer/cdplayer.c:175 cdplayer/cdplayer.c:1033
+#: cdplayer/cdplayer.c:175 cdplayer/cdplayer.c:1038
 msgid "Play / Pause"
 msgstr "चलाएं / रोकें"
 
-#: cdplayer/cdplayer.c:179 cdplayer/cdplayer.c:1035
+#: cdplayer/cdplayer.c:179 cdplayer/cdplayer.c:1040
 msgid "Eject"
 msgstr "बाहर करें"
 
-#: cdplayer/cdplayer.c:183 cdplayer/cdplayer.c:1037
+#: cdplayer/cdplayer.c:183 cdplayer/cdplayer.c:1042
 msgid "Previous Track"
 msgstr "पिछला ट्रेक"
 
-#: cdplayer/cdplayer.c:187 cdplayer/cdplayer.c:1039
+#: cdplayer/cdplayer.c:187 cdplayer/cdplayer.c:1044
 msgid "Next Track"
 msgstr "अगला ट्रेत"
 
@@ -589,77 +592,77 @@ msgstr "अगला ट्रेत"
 msgid "You do not have permission to use the CD player."
 msgstr ""
 
-#: cdplayer/cdplayer.c:357 mixer/mixer.c:1026 multiload/main.c:118
+#: cdplayer/cdplayer.c:362 mixer/mixer.c:1028 multiload/main.c:118
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "कार्य निष्पादन में त्रुटि आई '%s' : %s"
 
-#: cdplayer/cdplayer.c:408
+#: cdplayer/cdplayer.c:413
 #, c-format
 msgid "%s does not seem to be a CD player"
 msgstr "%s सीडी प्लेयर जैसा नही लगता"
 
-#: cdplayer/cdplayer.c:474
+#: cdplayer/cdplayer.c:479
 msgid "CD Player Preferences"
 msgstr "सीडी प्लेयर वरीयताएं"
 
-#: cdplayer/cdplayer.c:495
+#: cdplayer/cdplayer.c:500
 msgid "Device _path:"
 msgstr "डिवाइस पाथ (_P):"
 
-#: cdplayer/cdplayer.c:504
+#: cdplayer/cdplayer.c:509
 msgid "Device Path"
 msgstr "डिवाइस पाथ"
 
-#: cdplayer/cdplayer.c:504
+#: cdplayer/cdplayer.c:509
 msgid "Set the device path here"
 msgstr "डिवाइस पाथ यहाँ सेट करें"
 
-#: cdplayer/cdplayer.c:507
+#: cdplayer/cdplayer.c:512
 msgid "Use _Default"
 msgstr "डिफाल्ट उपयोग करें (_D)"
 
-#: cdplayer/cdplayer.c:594
+#: cdplayer/cdplayer.c:599
 msgid ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
 msgstr ""
 "(C) 1997 फ्री साफटवेर संसथान\n"
-"(C) 2001 क्रिस फेल्पस (जीनोम 2 पोर्ट) "
+"(C) 2001 क्रिस फेल्पस (गनोम 2 पोर्ट) "
 
-#: cdplayer/cdplayer.c:596 cdplayer/cdplayer.c:1042
+#: cdplayer/cdplayer.c:601 cdplayer/cdplayer.c:1047
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr "सीडी प्लेयर एप्लेट आपके पेनल के लिए एक सादा आडियो सीडी प्लेयर है "
 
-#: cdplayer/cdplayer.c:871 cdplayer/cdplayer.c:882
+#: cdplayer/cdplayer.c:876 cdplayer/cdplayer.c:887
 msgid "Elapsed time"
 msgstr "वतित समय"
 
-#: cdplayer/cdplayer.c:874 cdplayer/cdplayer.c:884
+#: cdplayer/cdplayer.c:879 cdplayer/cdplayer.c:889
 msgid "Track number"
 msgstr "ट्रेक नंबर"
 
-#: cdplayer/cdplayer.c:940
+#: cdplayer/cdplayer.c:945
 msgid "Audio device is busy, or being used by another application"
 msgstr "आडियो डिवाइस या तो बिजी है या दूसरे एप्लीकेशन द्वारा उपयोग में लिया जा रहा है"
 
-#: cdplayer/cdplayer.c:1032
+#: cdplayer/cdplayer.c:1037
 msgid "Click this button to Stop playing the CD"
 msgstr "सीडी चलाना बंद करने हेतु इस बटन को क्लिक करें"
 
-#: cdplayer/cdplayer.c:1034
+#: cdplayer/cdplayer.c:1039
 msgid "Click this button to Play or Pause the CD"
 msgstr "सीडी चलाने या ठहरने हेतु इस बटन को क्लिक करें"
 
-#: cdplayer/cdplayer.c:1036
+#: cdplayer/cdplayer.c:1041
 msgid "Click this button to eject the CD"
 msgstr "सीडी बाहर करने हेतु इस बटन को क्लिक करें"
 
-#: cdplayer/cdplayer.c:1038
+#: cdplayer/cdplayer.c:1043
 msgid "Click this button to Play the previous track in the CD"
 msgstr "सीडी के पूर्ववर्ती ट्रेक को चलाने हेतु इस बटन को क्लिक करें"
 
-#: cdplayer/cdplayer.c:1040
+#: cdplayer/cdplayer.c:1045
 msgid "Click this button to Play the next track in the CD"
 msgstr "सीडी के अगली ट्रेक को चलाने हेतु इस बटन को क्लिक करें"
 
@@ -673,8 +676,8 @@ msgid ""
 "applet"
 msgstr ""
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:602
-#: charpick/charpick.c:746 charpick/properties.c:333
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:599
+#: charpick/charpick.c:743 charpick/properties.c:333
 msgid "Character Palette"
 msgstr "अक्षर पैलेट"
 
@@ -686,42 +689,42 @@ msgstr "कैरपिकर एप्लेट फैक्टरी"
 msgid "Insert characters"
 msgstr "अक्षर घुसाएं"
 
-#: charpick/charpick.c:324 charpick/properties.c:125
+#: charpick/charpick.c:321 charpick/properties.c:125
 msgid "Add Palette"
 msgstr "पैलेट जोडें"
 
-#: charpick/charpick.c:365
+#: charpick/charpick.c:362
 msgid "Add a palette..."
 msgstr "पेलेट में जोडें ..."
 
-#: charpick/charpick.c:448
+#: charpick/charpick.c:445
 msgid "Available palettes"
 msgstr "उपलब्द पैलेट"
 
-#: charpick/charpick.c:485
+#: charpick/charpick.c:482
 msgid "Insert special characters"
 msgstr "विशिष्ट अक्षर प्रविष्ट करें"
 
 #. If your charset supports it, please use U00F1 to replace the "n"
 #. * in "Muniz".
-#: charpick/charpick.c:575
+#: charpick/charpick.c:572
 msgid "Alexandre Muniz <munizao@xprt.net>"
 msgstr "अलेक्जांद्रे मूनीज <munizao@xprt.net>"
 
-#: charpick/charpick.c:576
+#: charpick/charpick.c:573
 msgid "Kevin Vandersloot"
 msgstr "केविन वेंडरस्लूट"
 
-#: charpick/charpick.c:604
+#: charpick/charpick.c:601
 msgid "Copyright (C) 1998"
 msgstr "कापीराइट (c) 1998"
 
-#: charpick/charpick.c:605
+#: charpick/charpick.c:602
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
 msgstr ""
-"अनूठे अक्षर जो मेरे की बोर्ड में नहीं है, चुनने के लिए जीनोम पेनल एप्लेट. जीएनयू जनरल पब्लिक "
+"अनूठे अक्षर जो मेरे की बोर्ड में नहीं है, चुनने के लिए गनोम पेनल एप्लेट. जीएनयू जनरल पब्लिक "
 "लाइसेंस के तहत जारी."
 
 #: charpick/charpick.schemas.in.h:1
@@ -842,7 +845,7 @@ msgstr "सहायता दिखाने में त्रुटी"
 
 #: drivemount/drivemount.c:529
 msgid "(C) 1999-2001 The GNOME Hackers\n"
-msgstr "(C) 1999-2001 जीनोम हेकर्स\n"
+msgstr "(C) 1999-2001 गनोम हेकर्स\n"
 
 #: drivemount/drivemount.c:531
 msgid "Applet for mounting and unmounting block volumes."
@@ -890,14 +893,14 @@ msgstr "माउन्ट डॉयरेक्ट्री (_M)"
 
 #: drivemount/properties.c:361
 msgid "Select Mount Directory"
-msgstr ""
+msgstr "माउन्ट डॉयरेक्ट्री चुनें"
 
 #: drivemount/properties.c:383
 msgid "_Update interval:"
 msgstr "अपडेट मध्यांतर (_U)"
 
 #: drivemount/properties.c:406 mailcheck/mailcheck.c:2097
-#: mailcheck/mailcheck.c:2103 modemlights/properties.c:462
+#: mailcheck/mailcheck.c:2103 modemlights/properties.c:461
 msgid "seconds"
 msgstr "क्षण"
 
@@ -948,7 +951,7 @@ msgstr "अनमाउन्टेड हेतु अइकॉन चुनो
 
 #: drivemount/properties.c:517
 msgid "Unmou_nted icon:"
-msgstr ""
+msgstr "अनमाउन्टेड अइकॉन (_n)"
 
 #: drivemount/properties.c:533
 msgid "_Scale size to panel"
@@ -985,7 +988,7 @@ msgstr "कापीराइट (c) 1999 डेव कैम्प"
 
 #: geyes/geyes.c:250
 msgid "A goofy little xeyes clone for the GNOME panel."
-msgstr "जीनोम पेनल के लिए गूफी लिटिल आइस क्लोन"
+msgstr "गनोम पेनल के लिए गूफी लिटिल आइस क्लोन"
 
 #: geyes/geyes.c:457
 msgid "The eyes look in the direction of the mouse pointer"
@@ -1170,11 +1173,11 @@ msgstr "फिनलेण्ड"
 
 #: gkb-new/descs.sun/presets.xml.in.h:37 gkb-new/descs/presets.xml.in.h:56
 msgid "Finnish"
-msgstr "फ्िन्निश"
+msgstr "फिन्निश"
 
 #: gkb-new/descs.sun/presets.xml.in.h:38
 msgid "Finnish Sun keymap"
-msgstr "फ्िन्निश सन कीमैप"
+msgstr "फिन्निश सन कीमैप"
 
 #: gkb-new/descs.sun/presets.xml.in.h:39 gkb-new/descs/presets.xml.in.h:60
 msgid "France"
@@ -1311,15 +1314,15 @@ msgstr "लातवी सन कीमैप"
 
 #: gkb-new/descs.sun/presets.xml.in.h:72 gkb-new/descs/presets.xml.in.h:119
 msgid "Lithuania"
-msgstr "लितुअन्िया"
+msgstr "लितुअनिया"
 
 #: gkb-new/descs.sun/presets.xml.in.h:73 gkb-new/descs/presets.xml.in.h:120
 msgid "Lithuanian"
-msgstr "लितुअन्ियाइ"
+msgstr "लितुअनियाइ"
 
 #: gkb-new/descs.sun/presets.xml.in.h:74
 msgid "Lithuanian Sun keymap"
-msgstr "लितुअन्ियाइ सन कीमैप"
+msgstr "लितुअनियाइ सन कीमैप"
 
 #: gkb-new/descs.sun/presets.xml.in.h:75 gkb-new/descs/presets.xml.in.h:125
 msgid "Macedonia"
@@ -2352,8 +2355,8 @@ msgstr "लेबल "
 msgid "Flag and Label"
 msgstr "चिन्हित कर सूचक लगाएं"
 
-#: gkb-new/prop.c:257 gtik/gtik.c:1529 gweather/gweather-pref.c:746
-#: modemlights/properties.c:438
+#: gkb-new/prop.c:257 gtik/gtik.c:1530 gweather/gweather-pref.c:746
+#: modemlights/properties.c:437
 msgid "Display"
 msgstr "दिखाए"
 
@@ -2441,7 +2444,7 @@ msgstr "लगातार अद्यतन किए स्टाक को�
 msgid "Gtik Applet Factory"
 msgstr "Gtik अप्लेट फैक्टरी"
 
-#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:790
+#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:791
 msgid "Stock Ticker"
 msgstr "स्टाक टिकर"
 
@@ -2458,138 +2461,138 @@ msgstr ""
 msgid "Updating..."
 msgstr "अपडेट किया जा रहा है"
 
-#: gtik/gtik.c:792
+#: gtik/gtik.c:793
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.  "
 "The GNOME Stock Ticker is a free Internet-based application.  It comes with "
 "ABSOLUTELY NO WARRANTY.  Do not use the GNOME Stock Ticker for making "
 "investment decisions; it is for informational purposes only."
 msgstr ""
-"यह प्रोग्राम एक लोकप्रिय साइट पर जुड़ कर वर्तमान स्टाक कोट्स डाउनलोड करता है. जीनोम "
-"स्टाक टिकर इंटरनेट का मुफ्त अनुप्रयोग है. यह सर्वथा बिना वारंटी के आता है. जीनोम स्टाक "
+"यह प्रोग्राम एक लोकप्रिय साइट पर जुड़ कर वर्तमान स्टाक कोट्स डाउनलोड करता है. गनोम "
+"स्टाक टिकर इंटरनेट का मुफ्त अनुप्रयोग है. यह सर्वथा बिना वारंटी के आता है. गनोम स्टाक "
 "टिकर का उपयोग संपत्ति क्रय-विक्रय निर्णयों में न करें, यह सिर्फ सूचना देने के लिए है."
 
-#: gtik/gtik.c:1278
+#: gtik/gtik.c:1279
 msgid "Current _stocks:"
 msgstr "वर्तमान स्टॉक (_s):"
 
-#: gtik/gtik.c:1286
+#: gtik/gtik.c:1287
 msgid "_New symbol:"
 msgstr "नया संकेत (_N):"
 
 # gtk/gtkstock.c:275
-#: gtik/gtik.c:1295
+#: gtik/gtik.c:1296
 msgid "_Add"
 msgstr "जोड़ें (_A)"
 
-#: gtik/gtik.c:1304
+#: gtik/gtik.c:1305
 msgid "_Remove"
 msgstr "मिटाओ (_R)"
 
-#: gtik/gtik.c:1410
+#: gtik/gtik.c:1411
 msgid "Stock Ticker Preferences"
 msgstr "स्टाक टिकर वरीयताएं"
 
-#: gtik/gtik.c:1432
+#: gtik/gtik.c:1433
 msgid "Symbols"
 msgstr "संकेत"
 
-#: gtik/gtik.c:1439 mailcheck/mailcheck.c:2366
+#: gtik/gtik.c:1440 mailcheck/mailcheck.c:2366
 msgid "Behavior"
 msgstr "व्यवहार"
 
-#: gtik/gtik.c:1442 gweather/gweather-pref.c:705
+#: gtik/gtik.c:1443 gweather/gweather-pref.c:705
 msgid "Update"
 msgstr "अपडेट (अद्यतन)"
 
-#: gtik/gtik.c:1446
+#: gtik/gtik.c:1447
 msgid "Stock update fre_quency:"
 msgstr "मिनट में स्टाक अपडेट की तीव्रता (_q):"
 
-#: gtik/gtik.c:1458 gweather/gweather-pref.c:729 mailcheck/mailcheck.c:2074
+#: gtik/gtik.c:1459 gweather/gweather-pref.c:729 mailcheck/mailcheck.c:2074
 #: mailcheck/mailcheck.c:2080
 msgid "minutes"
 msgstr "मिनिट"
 
-#: gtik/gtik.c:1464
+#: gtik/gtik.c:1465
 msgid "Scrolling"
 msgstr "स्क्रोल हो रहा है"
 
-#: gtik/gtik.c:1468
+#: gtik/gtik.c:1469
 msgid "_Scroll speed:"
 msgstr "स्क्रोल गति (_S):"
 
-#: gtik/gtik.c:1472
+#: gtik/gtik.c:1473
 msgid "Slow"
 msgstr "दिखांए"
 
-#: gtik/gtik.c:1474
+#: gtik/gtik.c:1475
 msgid "Medium"
 msgstr "मध्यम"
 
-#: gtik/gtik.c:1476
+#: gtik/gtik.c:1477
 msgid "Fast"
 msgstr "तेज"
 
-#: gtik/gtik.c:1496
+#: gtik/gtik.c:1497
 msgid "_Enable scroll buttons"
 msgstr "स्क्रॉल बटन समर्थन (_E)"
 
-#: gtik/gtik.c:1508
+#: gtik/gtik.c:1509
 msgid "Scroll _left to right"
 msgstr "बाएं से दाएं स्क्रॉल (_l)"
 
-#: gtik/gtik.c:1534
+#: gtik/gtik.c:1535
 msgid "Displa_y only symbols and price"
 msgstr "सिर्फ संकेत और कीमत दिखाएं (_y)"
 
-#: gtik/gtik.c:1547 mini-commander/src/mini-commander.glade.h:23
+#: gtik/gtik.c:1548 mini-commander/src/mini-commander.glade.h:23
 #: stickynotes/stickynotes.glade.h:48
 msgid "_Width:"
 msgstr "चौड़ाई (_W):"
 
-#: gtik/gtik.c:1561 mini-commander/src/mini-commander.glade.h:24
+#: gtik/gtik.c:1562 mini-commander/src/mini-commander.glade.h:24
 #: multiload/properties.c:483
 msgid "pixels"
 msgstr "पिक्सेल"
 
-#: gtik/gtik.c:1570
+#: gtik/gtik.c:1571
 msgid "Font and Colors"
 msgstr "फोंट एवं रंग"
 
-#: gtik/gtik.c:1576
+#: gtik/gtik.c:1577
 msgid "Use _default theme font and colors"
 msgstr "डिफाल्ट थीम फोंट एवं रंग उपयोग करें (_्d)"
 
-#: gtik/gtik.c:1591 stickynotes/stickynotes.glade.h:42
+#: gtik/gtik.c:1592 stickynotes/stickynotes.glade.h:42
 msgid "_Font:"
 msgstr "फोंट (_F):"
 
-#: gtik/gtik.c:1615
+#: gtik/gtik.c:1616
 msgid "Stock _raised:"
 msgstr "स्टाक उठा हुआ (_r)"
 
-#: gtik/gtik.c:1634
+#: gtik/gtik.c:1635
 msgid "Stock _lowered:"
 msgstr ""
 
-#: gtik/gtik.c:1653
+#: gtik/gtik.c:1654
 msgid "Stock _unchanged:"
 msgstr ""
 
-#: gtik/gtik.c:1672 modemlights/properties.c:570
+#: gtik/gtik.c:1673 modemlights/properties.c:569
 msgid "_Background:"
 msgstr "पाश्व  (_B):"
 
-#: gtik/gtik.c:1805
+#: gtik/gtik.c:1806
 msgid "Skip forward"
 msgstr "आगे छोडें"
 
-#: gtik/gtik.c:1806
+#: gtik/gtik.c:1807
 msgid "Skip backward"
 msgstr "पीछे छोडें"
 
-#: gtik/gtik.c:1814
+#: gtik/gtik.c:1815
 msgid ""
 "Stock Ticker\n"
 "Get continuously updated stock quotes"
@@ -2597,11 +2600,11 @@ msgstr ""
 "स्टाक टिकर\n"
 "लगातार अपडेट किए स्टाक कोट्स लें"
 
-#: gtik/gtik.c:2005
+#: gtik/gtik.c:2009
 msgid "(No"
 msgstr "(नहीं"
 
-#: gtik/gtik.c:2006
+#: gtik/gtik.c:2010
 msgid "Change "
 msgstr "बदलें"
 
@@ -2767,7 +2770,7 @@ msgstr ""
 
 #: gweather/gweather-applet.c:237
 msgid "GNOME Weather"
-msgstr "जीनोम मोसम"
+msgstr "गनोम मोसम"
 
 #: gweather/gweather-dialog.c:73 gweather/gweather-dialog.c:300
 msgid "Forecast"
@@ -3790,7 +3793,7 @@ msgid ""
 "Software Foundation; either version 2 of the License, or (at your option) "
 "any later version."
 msgstr ""
-"यह जीनोम एप्लेट, पेनल में कमांड लाइन जोड़ता है. इसकी विशेषताएं हैं-  कमांड पूर्ण करना,  "
+"यह गनोम एप्लेट, पेनल में कमांड लाइन जोड़ता है. इसकी विशेषताएं हैं-  कमांड पूर्ण करना,  "
 "कमांड इतिहास, बदले जा सकने वाले मेक्रोस तथा एक वैकल्पिक अंतःनिर्मित घड़ी.\n"
 "\n"
 "यह प्रोग्राम मुफ्त साफ्टवेयर है. आप इसे पुनः वितरित कर सकते हैं और या बदल सकते है. जीएनयू "
@@ -3808,7 +3811,7 @@ msgstr "कमांड लाइन"
 
 #: mini-commander/src/command_line.c:484
 msgid "Type a command here and Gnome will execute it for you"
-msgstr "यहॉ पर कमांड टाइप करें और जीनोम आपके लिए इसे चला देगा"
+msgstr "यहॉ पर कमांड टाइप करें और गनोम आपके लिए इसे चला देगा"
 
 #: mini-commander/src/mc-install-default-macros.c:71
 #, c-format
@@ -3827,7 +3830,8 @@ msgstr "%s डिफाल्ट लिस्ट वेल्यू सेट �
 
 #: mini-commander/src/mc-install-default-macros.c:117
 msgid "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL is set, not installing schemas\n"
-msgstr "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL सेट है. स्कीम इंस्टाल नहीं किया जा रहा\n"
+msgstr ""
+"GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL सेट है. स्कीम इंस्टाल नहीं किया जा रहा\n"
 
 #: mini-commander/src/mc-install-default-macros.c:125
 msgid "Must set the GCONF_CONFIG_SOURCE environment variable\n"
@@ -4072,7 +4076,7 @@ msgid "Adjust the sound volume"
 msgstr "ध्वनि व्यवस्थित करें"
 
 #: mixer/GNOME_MixerApplet.server.in.in.h:3 mixer/mixer.c:175
-#: mixer/mixer.c:1073
+#: mixer/mixer.c:1075
 msgid "Volume Control"
 msgstr "वाल्यूम कन्ट्रोल"
 
@@ -4200,6 +4204,11 @@ msgstr ""
 "चेतावनीः जीमिक्स का यह वर्जन दूसरे वर्जन के साउंड कार्ड हेतु कम्पाइल है.\n"
 "साउंड कार्ड.h.\n"
 
+#: mixer/mixer.c:632
+#, c-format
+msgid "Couldn't open mixer device %s\n"
+msgstr ""
+
 #: mixer/mixer.c:801
 msgid "Volume Controller"
 msgstr "वाल्यूम कंट्रोलर"
@@ -4218,27 +4227,27 @@ msgstr "+"
 msgid "-"
 msgstr "-"
 
-#: mixer/mixer.c:1074
+#: mixer/mixer.c:1076
 msgid "(C) 2001 Richard Hult"
 msgstr "(C) 2001 रिचर्ड हुल्ट"
 
-#: mixer/mixer.c:1075
+#: mixer/mixer.c:1077
 msgid "The volume control lets you set the volume level for your desktop."
 msgstr "वाल्यूम कंट्रोल से आप अपने डेस्क टाप के आवाज को नियंत्रित कर सकते है."
 
-#: mixer/mixer.c:1217
+#: mixer/mixer.c:1220
 msgid "Volume Control Preferences"
 msgstr "वाल्यूम कंट्रोल वरीयताएं"
 
-#: mixer/mixer.c:1241
+#: mixer/mixer.c:1244
 msgid "Audio Channels"
 msgstr ""
 
-#: mixer/mixer.c:1257
+#: mixer/mixer.c:1260
 msgid "_Select channel to control:"
 msgstr ""
 
-#: mixer/mixer.c:1587
+#: mixer/mixer.c:1592
 msgid "The volume control lets you set the volume level for your desktop"
 msgstr "वाल्यूम कंट्रोल से आप अपने डेस्क टाप के आवाज को नियंत्रित कर सकते है."
 
@@ -4389,15 +4398,18 @@ msgid "The background color of the button used to indicate data sent."
 msgstr ""
 
 #: modemlights/modemlights.schemas.in.h:23
-msgid "The color used to display the status button when the modem is connected."
+msgid ""
+"The color used to display the status button when the modem is connected."
 msgstr ""
 
 #: modemlights/modemlights.schemas.in.h:24
-msgid "The color used to display the status button when the modem is connecting."
+msgid ""
+"The color used to display the status button when the modem is connecting."
 msgstr ""
 
 #: modemlights/modemlights.schemas.in.h:25
-msgid "The color used to display the status button when the modem is not connected."
+msgid ""
+"The color used to display the status button when the modem is not connected."
 msgstr ""
 
 #: modemlights/modemlights.schemas.in.h:26
@@ -4444,69 +4456,69 @@ msgstr "लाक फाइल के मालिक को जांचें"
 msgid "Modem Lights Preferences"
 msgstr "माडम लाइट वरीयताएं"
 
-#: modemlights/properties.c:445
+#: modemlights/properties.c:444
 msgid "U_pdate every:"
 msgstr "अपडेट हर (_p)ः"
 
 #. extra info checkbox
-#: modemlights/properties.c:470
+#: modemlights/properties.c:469
 msgid "Sho_w connect time and throughput"
 msgstr "कनेक्ट समय और डेटा ट्रांसफर की दर दिखायें  (_w)"
 
-#: modemlights/properties.c:480
+#: modemlights/properties.c:479
 msgid "B_link connection status when connecting"
 msgstr ""
 
-#: modemlights/properties.c:490
+#: modemlights/properties.c:489
 msgid "Connections"
 msgstr "कनेक्शन"
 
-#: modemlights/properties.c:499
+#: modemlights/properties.c:498
 msgid "Co_nnection command:"
 msgstr "कनेक्ट कमांड (_n):"
 
-#: modemlights/properties.c:523
+#: modemlights/properties.c:522
 msgid "_Disconnection command:"
 msgstr "डिस्कनेक्ट कमांड  (_D):"
 
 #. confirmation checkbox
-#: modemlights/properties.c:543
+#: modemlights/properties.c:542
 msgid "Con_firm connection"
 msgstr "स्थापित कनेक्शन  (_f)"
 
-#: modemlights/properties.c:562
+#: modemlights/properties.c:561
 msgid "Receive Data"
 msgstr "डाटा ग्रहण करें"
 
-#: modemlights/properties.c:568
+#: modemlights/properties.c:567
 msgid "_Foreground:"
 msgstr "अग्रभाग  (_F):"
 
-#: modemlights/properties.c:573
+#: modemlights/properties.c:572
 msgid "Send Data"
 msgstr "डाटा भेजें"
 
-#: modemlights/properties.c:578
+#: modemlights/properties.c:577
 msgid "Foregroun_d:"
 msgstr "अग्रभाग (_d):"
 
-#: modemlights/properties.c:580
+#: modemlights/properties.c:579
 msgid "Backg_round:"
 msgstr "पृष्ठ भूमि (_r)"
 
-#: modemlights/properties.c:583
+#: modemlights/properties.c:582
 msgid "Connection Status"
 msgstr "कनेक्शन की स्थिति"
 
-#: modemlights/properties.c:591
+#: modemlights/properties.c:590
 msgid "Co_nnected:"
 msgstr "कनेक्टेड (_n):"
 
-#: modemlights/properties.c:593
+#: modemlights/properties.c:592
 msgid "Disconnec_ted:"
 msgstr "डिस्कनेक्टेड (_t):"
 
-#: modemlights/properties.c:596
+#: modemlights/properties.c:595
 msgid "C_onnecting:"
 msgstr "कनेक्शन हो रहा है (_o):"
 
@@ -4518,49 +4530,49 @@ msgstr "कनेक्शन हो रहा है (_o):"
 # libgnomecanvas/gnome-canvas-text.c:203
 # #-#-#-#-#  libgnomeui.HEAD.hi.po (PACKAGE VERSION)  #-#-#-#-#
 # libgnomeui/gnome-href.c:126
-#: modemlights/properties.c:599
+#: modemlights/properties.c:598
 msgid "Text"
 msgstr "पाठ्य"
 
-#: modemlights/properties.c:607
+#: modemlights/properties.c:606
 msgid "For_eground:"
 msgstr "अग्रभाग (_e):"
 
-#: modemlights/properties.c:609
+#: modemlights/properties.c:608
 msgid "Bac_kground:"
 msgstr "पृष्ठ भूमि  (_k):"
 
-#: modemlights/properties.c:611
+#: modemlights/properties.c:610
 msgid "O_utline"
 msgstr "आउटलाइन  (_u)"
 
-#: modemlights/properties.c:614 multiload/properties.c:528
+#: modemlights/properties.c:613 multiload/properties.c:528
 msgid "Colors"
 msgstr "रंग"
 
-#: modemlights/properties.c:623
+#: modemlights/properties.c:622
 msgid "Modem Options"
 msgstr "माडम विकल्प"
 
 # gtk/gtkinputdialog.c:221
-#: modemlights/properties.c:632
+#: modemlights/properties.c:631
 msgid "_Device:"
 msgstr "डिवाइस:  (_D)"
 
-#: modemlights/properties.c:656
+#: modemlights/properties.c:655
 msgid "_Lock file:"
 msgstr "लॉक फाइल (_L):"
 
-#: modemlights/properties.c:675
+#: modemlights/properties.c:674
 msgid "_Verify owner of lock file"
 msgstr "मालिक के लाक फाइल को जांचें  (_V)"
 
 #. ISDN checkbox
-#: modemlights/properties.c:686
+#: modemlights/properties.c:685
 msgid "U_se ISDN"
 msgstr "आईएसडीएन उपयोग करें  (_s)"
 
-#: modemlights/properties.c:703
+#: modemlights/properties.c:702
 msgid "Advanced"
 msgstr "एडवांस्ड"
 
@@ -4861,8 +4873,8 @@ msgid "Create, view, and manage sticky notes on the desktop"
 msgstr ""
 
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:3
-#: stickynotes/stickynotes_applet.c:339
-#: stickynotes/stickynotes_applet_callbacks.c:180
+#: stickynotes/stickynotes_applet.c:338
+#: stickynotes/stickynotes_applet_callbacks.c:193
 msgid "Sticky Notes"
 msgstr "स्टिकी नोट्स"
 
@@ -5207,7 +5219,7 @@ msgstr "क्या डिफाल्ट सिसटम रंग उपय�
 msgid "Whether to use the default system font"
 msgstr "क्या सिसटम डिफॉल्ट फोंट उपयोग करना है"
 
-#: stickynotes/stickynotes_applet.c:339
+#: stickynotes/stickynotes_applet.c:338
 #, c-format
 msgid ""
 "%s\n"
@@ -5222,11 +5234,11 @@ msgstr[1] ""
 "%s:\n"
 "%d%% प्रयोग में"
 
-#: stickynotes/stickynotes_applet_callbacks.c:182
+#: stickynotes/stickynotes_applet_callbacks.c:195
 msgid "(c) 2002-2003 Loban A Rahman"
 msgstr "© 2002 2003 लोबान ए रेहमान"
 
-#: stickynotes/stickynotes_applet_callbacks.c:183
+#: stickynotes/stickynotes_applet_callbacks.c:196
 msgid "Sticky Notes for the Gnome Desktop Environment"
 msgstr "गनोम डेस्कटॉप वातावरण के लिए स्टिकी नोट्स"
 
@@ -5235,15 +5247,15 @@ msgid "Monitor the quality of a wireless network link"
 msgstr "वायरलेस नेटवर्क लिंक की क्वालिटी पर नजर"
 
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:3
-#: wireless/wireless-applet.c:543
+#: wireless/wireless-applet.c:575
 msgid "Wireless Link Monitor"
 msgstr "वायरलेस लिंक मानीटर"
 
-#: wireless/wireless-applet.c:351 wireless/wireless-applet.c:488
+#: wireless/wireless-applet.c:358 wireless/wireless-applet.c:495
 msgid "No Wireless Devices"
 msgstr "कोई वायरलेस उपकण नहीं"
 
-#: wireless/wireless-applet.c:353
+#: wireless/wireless-applet.c:360
 msgid ""
 "There doesn't seem to be any wireless devices configured on your system.\n"
 "Please verify your configuration if you think this is incorrect."
@@ -5251,11 +5263,11 @@ msgstr ""
 "प्रतीत होता है कि आपके सिस्टम में वायरलेस उपकरण कानफिगुर नहीं है.\n"
 "कृपया अपने सिस्टम का कानफिगुर चेक करें यदि आपको लगता है कि यह गलत है."
 
-#: wireless/wireless-applet.c:545
+#: wireless/wireless-applet.c:577
 msgid "(C) 2001, 2002 Free Software Foundation "
 msgstr "(C) 2001,2002  फ्री साफटवेयर संस्थान"
 
-#: wireless/wireless-applet.c:546
+#: wireless/wireless-applet.c:578
 msgid "This utility shows the status of a wireless link."
 msgstr "यह यूटिलिटी वायरलेस लिंक की स्थिति दर्शाती है"
 
@@ -5998,7 +6010,7 @@ msgstr "उपकरण जिन पर नजरें है (_M):"
 #~ "Removing this entry is not allowed as this will cause the Menu Bar applet "
 #~ "to be removed from GNOME Panel"
 #~ msgstr ""
-#~ "इस प्रविष्टि को मिटाना अधिकृत नहीं है चूंकि यह मीनू बार एप्लेट को जीनोम पेनल से हटा "
+#~ "इस प्रविष्टि को मिटाना अधिकृत नहीं है चूंकि यह मीनू बार एप्लेट को गनोम पेनल से हटा "
 #~ "देगा"
 
 #~ msgid "Create directory item..."
@@ -6118,4 +6130,3 @@ msgstr "उपकरण जिन पर नजरें है (_M):"
 #~ msgstr ""
 #~ "वायरलेस मानीटर को चलाने वाले चित्र नहीं हैं.\n"
 #~ "कृपया यह सुनिश्चित करें कि वे उचित प्रकार से स्थापित हैं."
-
