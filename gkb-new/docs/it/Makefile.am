@@ -3,6 +3,7 @@ figs = gkb_applet.png \
 
 applet = gkb
 lang = it
-sgml_ents = 
+omffile = gkb_applet-it.omf
+sgml_ents = gkb.sgml
 include $(top_srcdir)/applet-docs.make
 dist-hook: applet-dist-hook

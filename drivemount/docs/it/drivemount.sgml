@@ -13,7 +13,7 @@
 	<guimenu>Pannello</guimenu>
 	<guisubmenu>Aggiungi al pannello</guisubmenu>
 	<guisubmenu>Applet</guisubmenu>
-	<guisubmenu>Utilità</guisubmenu>
+	<guisubmenu>Utilità</guisubmenu>
 	<guimenuitem>Montadischi</guimenuitem>
       </menuchoice>.
   </para>
@@ -35,11 +35,11 @@
     </title>
     <para>
       Molti file system su sistemi Linux e Unix devono essere montati e smontati
-      manualmente. Dopo che un file system è stato montato è possibile leggerci
-      e scriverci. È importante smontare dischi removibili, come ad esempio i
-      floppy e i dischi Zip prima di toglierli perché i sistemi Linux e Unix
+      manualmente. Dopo che un file system è stato montato è possibile leggerci
+      e scriverci. È importante smontare dischi removibili, come ad esempio i
+      floppy e i dischi Zip prima di toglierli perché i sistemi Linux e Unix
       spesso non scrivono immediatamente i cambiamenti. Questi spesso lasciano
-      in buffer i cambiamenti richiesti per aumentare la velocità di tutto il
+      in buffer i cambiamenti richiesti per aumentare la velocità di tutto il
       sistema. Le partizioni su dischi fissi, come i dischi rigidi, normalmente
       vengono montate automaticamente quando il computer viene acceso e smontate
       quando viene spento. Dischi removibili devono essere montati e smontati
@@ -47,14 +47,14 @@
       <application>Montadischi</application>.
     </para>
     <para>
-      Il "file system root" è il file system principale del computer indicato da
+      Il "file system root" è il file system principale del computer indicato da
       "/" (root). Altri file system sono associati a directory all'interno del
       file system root.. Queste sono chiamate "mount point" e sono semplici
-      directory vuote. Quando un file system è montato i suoi contenuti sono
+      directory vuote. Quando un file system è montato i suoi contenuti sono
       visibili all'interno della directory. Ad esempio, molti sistemi creano un
-      mount point "/mnt/floppy" che è semplicemente una directory vuota se il
-      floppy non è montato e che invece mostra il contenuto del floppy se questo
-      è montato.
+      mount point "/mnt/floppy" che è semplicemente una directory vuota se il
+      floppy non è montato e che invece mostra il contenuto del floppy se questo
+      è montato.
     </para>
   </note>
 
@@ -64,10 +64,10 @@
       Uso
     </title>
     <para>
-      Per montare o smontare un disco, è sufficiente cliccare sull'incona
+      Per montare o smontare un disco, è sufficiente cliccare sull'incona
       dell'applet <apllication>Montadischi</apllication> con il tasto sinistro
       del mouse. Per i drive che possono espellere i dischi, come molti lettori
-      di cdrom e i drive JAZ, è possibile espellere il disco cliccando
+      di cdrom e i drive JAZ, è possibile espellere il disco cliccando
       sull'icona con il tasto destro del mouse e selezionare
       <guimenuitem>Espelli</guimenuitem>. Per visualizzare il contenuto del
       disco con il file manager di GNOME selezionare
@@ -75,7 +75,7 @@
     </para>
 
     <para>
-      Cliccando con il tasto destro sull'applet fa apparire un menù che contiene
+      Cliccando con il tasto destro sull'applet fa apparire un menù che contiene
       le seguenti voci:
       <itemizedlist>
 
@@ -83,7 +83,7 @@
 	  <para>
 	    <guimenuitem>Sfoglia &hellip; </guimenuitem> &mdash; mostra il
 	    contenuto del disco del drive usando il file manager di GNOME. Il
-	    disco deve essere montato perché possa essere fatto.
+	    disco deve essere montato perché possa essere fatto.
 	  </para>
 	</listitem>
 
@@ -97,8 +97,8 @@
 
 	<listitem>
 	  <para>
-	    <guimenuitem>Proprietà...</guimenuitem> &mdash; apre la finestra di
-	    dialogo <guilabel>Proprietà</guilabel>.
+	    <guimenuitem>Proprietà...</guimenuitem> &mdash; apre la finestra di
+	    dialogo <guilabel>Proprietà</guilabel>.
 	  </para>
 	</listitem>
 
@@ -123,7 +123,7 @@
 
     <para>
       Il mount point e lo stato attuale di un disco vengono mostrati da un
-      suggerimento se il cursore del mouse è lasciato sopra l'applet per un po'
+      suggerimento se il cursore del mouse è lasciato sopra l'applet per un po'
       di tempo, come mostrato in <xref linkend="drivemountapplettooltips-fig">.
 	<figure id="drivemountapplettooltips-fig">
 	  <title>Applet Montadischi che mostra un suggerimento</title>
@@ -147,16 +147,16 @@
     <para>
       È possibile personalizzare l'applet <application>Montadischi</application>
       cliccando con il tasto destro del mouse e selezionando
-      <guimenuitem>Proprietà...</guimenuitem>. Apparirà così la finestra di
-      dialogo <guimenuitem>Proprietà</guimenuitem> (mostrata in <xref
+      <guimenuitem>Proprietà...</guimenuitem>. Apparirà così la finestra di
+      dialogo <guimenuitem>Proprietà</guimenuitem> (mostrata in <xref
       linkend="drivemount-settings-fig">), che permette di cambiare molti
       parametri.
     </para>
 
     <figure id="drivemount-settings-fig">
-      <title>Finestra di dialogo Proprietà</title>
+      <title>Finestra di dialogo Proprietà</title>
       <screenshot>
-	<screeninfo>Finestra di dialogo Proprietà</screeninfo>
+	<screeninfo>Finestra di dialogo Proprietà</screeninfo>
 	<graphic format="png" fileref="figures/drivemount_applet_settings"
 	srccredit="muet">
 	</graphic>
@@ -164,15 +164,15 @@
     </figure>
 
     <para>
-      Le proprietà sono:
+      Le proprietà sono:
       <itemizedlist>
 
 	<listitem>
 	  <para>
-	    Mount point &mdask; Questo è il mount point usato per montare il
+	    Mount point &mdask; Questo è il mount point usato per montare il
 	    disco. I mount point sono directory vuote che contengono il
-	    contenuto del disco quando questo verrà montato. I mount point
-	    possono essere in qualunque punto del file system ma è convenzione
+	    contenuto del disco quando questo verrà montato. I mount point
+	    possono essere in qualunque punto del file system ma è convenzione
 	    mettere tutti i mount point nella directory <filename
 	    class="directory">/mnt</filename>.
 	  </para>
@@ -180,9 +180,9 @@
 
 	<listitem>
 	  <para>
-	    Aggiornamento in secondi &mdash; Questo è l'intervallo nel quale
+	    Aggiornamento in secondi &mdash; Questo è l'intervallo nel quale
 	    <application>Montadischi</application> aggiorna l'icona verificando
-	    lo stato del drive. Questo è utile solo nel caso in cui si smontino
+	    lo stato del drive. Questo è utile solo nel caso in cui si smontino
 	    i drive usando applicazioni o comandi oltre a
 	    <application>Montadischi</application>.
 	  </para>
@@ -192,8 +192,8 @@
 	  <para>
 	    Icona &mdash; Questa indica l'icona (diversa nel caso che sia
 	    montato o smontato) usata per il drive. Ci sono set di icone per i
-	    drive più diffusi (floppy, cdrom, Zip, hard disk a JAZ). Nella
-	    figura <xref linkend="drivemountappletall-fig"> si possono vedere. È
+	    drive più diffusi (floppy, cdrom, Zip, hard disk a JAZ). Nella
+	    figura <xref linkend="drivemountappletall-fig"> si possono vedere. È
 	    possibile selezionare anche
 	    <guimenuitem>Personalizzato</guimenuitem> che permette di indicare
 	    la propria icona preferita.
@@ -218,18 +218,18 @@
 	<listitem>
 	  <para>
 	    Icona personalizzata per i drive montati &mdash; Un'icona
-	    personalizzata che viene usata quando il drive è
+	    personalizzata che viene usata quando il drive è
 	    montato. Quest'opzione risulta disponibile solo se
-	    <guimenu>Icona:</guimenu> è selezionata su "Personalizzata".
+	    <guimenu>Icona:</guimenu> è selezionata su "Personalizzata".
 	  </para>
 	</listitem>
 
 	<listitem>
 	  <para>
 	    Icona personalizzata per i drive smontati &mdash; Un'icona
-	    personalizzata che viene usata quando il drive è
+	    personalizzata che viene usata quando il drive è
 	    smontato. Quest'opzione risulta disponibile solo se
-	    <guimenu>Icona:</guimenu> è selezionata su "Personalizzata".
+	    <guimenu>Icona:</guimenu> è selezionata su "Personalizzata".
 	  </para>
 	</listitem>
 
@@ -238,13 +238,13 @@
 	    Ridimensiona in base al pannello &mdash; Selezionando quest'opzione
 	    la dimensione dell'icona montata e smontata viene adattata a quella
 	    del <interface>Pannello</interface>. Se questa opzione non viene
-	    selezionata la dimensione dell'icona è fissa, indipendentemente dalla
+	    selezionata la dimensione dell'icona è fissa, indipendentemente dalla
 	    dimensione del <interface>Pannello</interface>. Selezionando
 	    quest'opzione si ottiene normalmente un miglior aspetto. Per
 	    <interface>Pannelli</interface> di dimensioni veramente ridotte, non
-	    selezionando questa opzione può risultare utile, perché così si può
-	    forzare l'applet ad apparire ruotata e più larga, il che la può
-	    rendere più facile da vedere.
+	    selezionando questa opzione può risultare utile, perché così si può
+	    forzare l'applet ad apparire ruotata e più larga, il che la può
+	    rendere più facile da vedere.
 	  </para>
 	</listitem>
 
@@ -259,14 +259,14 @@
 	    <para>
 	      Il comando di default usato da
 	      <application>Montadischi</application> per verificare se il drive
-	      è montato è <command>stat</command> e può montare il drive
-	      comunque montato se è in uso
+	      è montato è <command>stat</command> e può montare il drive
+	      comunque montato se è in uso
 	      <application>automount</application>. Se viene selezionato questo
-	      bottone, il comando usato è invece <command>mount</command> che
+	      bottone, il comando usato è invece <command>mount</command> che
 	      impedisce a <application>automount</application> di montare il
 	      drive. La ragione per cui questo bottone non viene selezionato di
-	      default è che il comando <command>mount</command> crea un carico
-	      per il processore più pesante di <command>stat</command>.
+	      default è che il comando <command>mount</command> crea un carico
+	      per il processore più pesante di <command>stat</command>.
 	    </para>
 	  </note>
 	</listitem>
@@ -277,7 +277,7 @@
     <para>
       Fatti i cambiamenti voluti cliccate sul pulsante <guibotton>OK</guibotton>
       per salvarli e chiudete la finestra di dialogo
-      <interface>Proprietà</interface>. Per annullare le modifiche e tornare
+      <interface>Proprietà</interface>. Per annullare le modifiche e tornare
       alle impostazioni precedenti, cliccate sul pulsante
       <guibotton>Chiudi</guibotton>.
     </para>
@@ -292,23 +292,23 @@
     <warning>
       <title>Per Utenti Esperti</title>
       <para>
-	Questa sezione è pensata per amministratori di sistema e utenti esperti.
+	Questa sezione è pensata per amministratori di sistema e utenti esperti.
       </para>
     </warning>
 
     <para>
-      Per far sì che l'applet <application>Montadischi</application> funzioni
-      correttamente, è probabile che il sistema debba essere configurato dal suo
+      Per far sì che l'applet <application>Montadischi</application> funzioni
+      correttamente, è probabile che il sistema debba essere configurato dal suo
       amministratore usando i privilegi di root. In questa sezione troverete
       un'introduzione assolutamente di base.
     </para>
 
     <para>
       La informazioni che indicano i mount point e i tipi di file system di ogni
-      drive si trova nel file <filename>/etc/fstab</filename>. Questo file può
+      drive si trova nel file <filename>/etc/fstab</filename>. Questo file può
       essere configurato direttamente oppure usando il programma
       <application>linuxconf</application>. Per i drive che non usano sempre un
-      solo tipo di file system (come ad esempio il drive dei floppy disk che può
+      solo tipo di file system (come ad esempio il drive dei floppy disk che può
       usare sia ext2 e il file system msdos), si dovrebbe usare "auto" per
       indicare il tipo di file system. Ogni drive viene indicato su una linea in
       /etc/fstab in questo modo
@@ -317,7 +317,7 @@
       </programlisting>
       Questa voce descrive il primo drive dei floppy disk (/dev/fd0) con un
       mount point in <filename>/mnt/floppy</filename>, un tipo di file system
-      che può cambiare e che viene stabilito automaticamente, e con le seguenti
+      che può cambiare e che viene stabilito automaticamente, e con le seguenti
       configurazioni: "noauto"&mdash; Il drive non viene montato automaticamente
       quando il computer parte, "rw"&mdash; Il drive viene usato in lettura e
       scrittura, e "user"&mdash; Gli utenti hanno i permessi per montare il
@@ -339,7 +339,7 @@
 	<guimenuitem>Access local drive</guimenuitem>
       </menuchoice>
       Per modificare una voce basta
-      selezionarla. <application>linuxconf</application> è pensata per essere
+      selezionarla. <application>linuxconf</application> è pensata per essere
       facile da usare, e contiene un suo sistema di aiuto interno per guidare
       lungo il lavoro. Possono essere aggiunte anche altre voci selezionando il
       bottone <guibotton>Add</guibotton>.
@@ -352,15 +352,15 @@
       Risoluzione degli errori e Spiegazione dei Messaggi d'Errore
     </title>
     <para>
-      Se il vostro sistema non è configurato correttamente è probabile che
+      Se il vostro sistema non è configurato correttamente è probabile che
       possiate verificare degli errori quando provate a montare o usare alcuni
-      drive. Questo è l'elenco di alcuni errori comuni e le loro cause:
+      drive. Questo è l'elenco di alcuni errori comuni e le loro cause:
       <itemizedlist>
 	<listitem>
 	  <para>
 	    <quote>mount: /dev/fd0 is not a valid block device
-	    </quote>&mdash; La causa più comune di quest'errore è che il drive
-	    (in questo esempio, /dev/fd0, corrispondente al drive del floppy) è
+	    </quote>&mdash; La causa più comune di quest'errore è che il drive
+	    (in questo esempio, /dev/fd0, corrispondente al drive del floppy) è
 	    vuoto.
 	  </para>
 	</listitem> 
@@ -368,7 +368,7 @@
 	  <para>
 	    <quote>mount: only root can mount /dev/fda on /mnt/floppy
 	    </quote>&mdash; Non avete i permessi per montare il disco. Nel caso
-	    contattare l'amministratore del sistema, il quale può assegnarvi i
+	    contattare l'amministratore del sistema, il quale può assegnarvi i
 	    permessi corretti.
 	  </para>
 	  <note>
@@ -376,9 +376,9 @@
 	      Nota per gli amministratori di Sistema
 	    </title>
 	    <para>
-	      È possibile configurare un drive perché sia montabile e smontabile
+	      È possibile configurare un drive perché sia montabile e smontabile
 	      dagli utenti aggiungendo "user" alle opzioni di mount (nella
-	      quarta colonna) in <filename>/etc/fstab</filename>. Può essere
+	      quarta colonna) in <filename>/etc/fstab</filename>. Può essere
 	      fatto a mano oppure usando <application>linuxconf</application>
 	      con l'opzione <guilabel>Local Volume</guilabel> in
 	      <menuchoice>
@@ -386,7 +386,7 @@
 		<guisubmenu>File Systems</guisubmenu>
 		<guimenuitem>Access local drive</guimenuitem>
 	      </menuchoice>
-	      Dopo aver selezionato il drive corretto dalla lista verrà mostrata
+	      Dopo aver selezionato il drive corretto dalla lista verrà mostrata
 	      <guilabel>Volume specification</guilabel>. Cliccando sulla voce 
 	      <guilabel>Options</guilabel> e selezionando il bottone
 	      <guibutton>User mountable</guibutton>.
@@ -398,8 +398,8 @@
 	    <quote>mount: wrong fs type, bad option, bad superblock on
 	      /dev/cdrom, or too many mounted file systems
 	    </quote>&mdash;
-	    Questo errore può essere causato da molti problemi. Più comunemente
-	    viene causato dal fatto che il tipo di file system indicato è
+	    Questo errore può essere causato da molti problemi. Più comunemente
+	    viene causato dal fatto che il tipo di file system indicato è
 	    sbagliato, come ad esempio se si prova a montare un cdrom musicale
 	    come se contenesse dati oppure un floppy formattato dos come se
 	    fosse formattato ext2.
@@ -410,11 +410,11 @@
 	  <para>
 	    <quote>umount: can't find /mnt/floppy in /etc/fstab or /etc/mtab
 	    </quote>&mdash;
-	    Questo indica che il sistema non è stato configurato per usare il
+	    Questo indica che il sistema non è stato configurato per usare il
 	    mount point che state tentando di usare. Nella maggior parte dei
-	    casi è probabile che abbiate indicato male la voce mount point in
+	    casi è probabile che abbiate indicato male la voce mount point in
 	    <guilabel>Mount point</guilabel> ne <interface>Finestra di dialogo
-	    Proprietà</interface> (vedi anche <xref
+	    Proprietà</interface> (vedi anche <xref
 	    linkend="drivemountapplet-prefs">). Per determinare quale mount
 	    point deve essere usato contattate l'amministratore del sistema.
 	  </para>
@@ -423,11 +423,11 @@
 	      Nota per utenti avanzati
 	    </title>
 	    <para>
-	      Ogni device (che sia un file system o un disco) che può essere
+	      Ogni device (che sia un file system o un disco) che può essere
 	      montato deve essere indicato nel file di configurazione
-	      <filename>/etc/fstab</filename>. Leggendo questo file è possibile
+	      <filename>/etc/fstab</filename>. Leggendo questo file è possibile
 	      vedere quali siano i device configurati nel vostro sistema. Per
-	      aggiungere o modificare le voci è possibile modificare
+	      aggiungere o modificare le voci è possibile modificare
 	      direttamente il file oppure usare il programma
 	      <application>linuxconf</application>.
 	    </para>
@@ -440,8 +440,8 @@
 	    </quote>&mdash;
 	    Questo errore si verifica nel caso in cui ci sia un device (nel caso
 	    d'esempio /dev/fd0) configurato per essere usato su diversi mount
-	    point e si è provato ad usare un mount point mentre il device è
-	    stato montato su un altro. Normalmente non è necessario avere più
+	    point e si è provato ad usare un mount point mentre il device è
+	    stato montato su un altro. Normalmente non è necessario avere più
 	    mount point per un solo device.
 	  </para>
 	</listitem>
@@ -451,7 +451,7 @@
 	      block device(maybe 'insmod driver'?)
 	    </quote>&mdash;
 	    Contattate l'amministratore del vostro sistema. (L'errore indica che
-	    il kernel non è configurato correttamente per caricare i moduli che
+	    il kernel non è configurato correttamente per caricare i moduli che
 	    servono per leggere il device).
 	  </para>
 	</listitem>
@@ -469,9 +469,9 @@
       Bug conosciuti e Limitazioni
     </title>
    <para>
-    <guimenuitem>Espelli</guimenuitem> non funziona sempre perché se si prova ad
-      Espellere un disco montato non viene dato alcun avviso che spieghi perché
-      il disco non può uscire.
+    <guimenuitem>Espelli</guimenuitem> non funziona sempre perché se si prova ad
+      Espellere un disco montato non viene dato alcun avviso che spieghi perché
+      il disco non può uscire.
     </para>
   </sect2>
 
@@ -483,32 +483,32 @@
       Autori
     </title>
     <para>
-      <application>L'applet Montadischi</application> è stato scritto da John
+      <application>L'applet Montadischi</application> è stato scritto da John
       Ellis (<email>johne@bellatlantic.net</email>).  Inviate tutti i commenti,
       suggerimenti e notifiche di errori al <ulink url="http://bugs.gnome.org"
       type="http">GNOME bug tracking database</ulink>. (Le istruzioni per
       riportare errori possono essere trovate <ulink
       url="http://bugs.gnome.org/Reporting.html" type="http">on-line</ulink>. Se
-      state usando la versione di GNOME 1.1 o una più recente è possibile usare
+      state usando la versione di GNOME 1.1 o una più recente è possibile usare
       anche il programma <application>bug-buddy</application>
-      (<command>bug-buddy</command>), che si trova nel sotto-menù
-      <guisubmenu>Utilità</guisubmenu> nel <guimenu>Menù Principale</guimenu>,
+      (<command>bug-buddy</command>), che si trova nel sotto-menù
+      <guisubmenu>Utilità</guisubmenu> nel <guimenu>Menù Principale</guimenu>,
       per riportare errori.
     </para>
 
     <para>
-      Questo manuale è stato scritto da Dan Mueth
+      Questo manuale è stato scritto da Dan Mueth
       (<email>d-mueth@uchicago.edu</email>).  Inviate tutti i commenti e i
       suggerimenti riguardo questo manuale allo <ulink type="http"
       url="http://www.gnome.org/gdp">GNOME Documentation Project</ulink>
-      mandando un email a <email>docs@gnome.org</email>. È possibile anche
+      mandando un email a <email>docs@gnome.org</email>. È possibile anche
       spedire commenti on-line usando lo <ulink type="http"
       url="http://www.gnome.org/gdp/doctable/">GNOME Documentation Status
       Table</ulink>.
     </para>
 
     <para>
-      La traduzione italiana è stata curata da Leandro Noferini
+      La traduzione italiana è stata curata da Leandro Noferini
       (<email>lnoferin@cybervalley.org</email>). Inviate tutti i commenti e
       suggerimenti riguardo questa traduzione a
       <email>gnome-i18n@lists.it.gnome.org</email>
