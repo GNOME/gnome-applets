@@ -129,19 +129,20 @@ gkb_draw (GKB * gkb)
     gdk_draw_pixmap (gkb->darea->window,
 		   gkb->darea->style->fg_gc [GTK_WIDGET_STATE (gkb->darea)],
 		   gkb->keymap->pix, 0, 0, 0, 0, gkb->w, gkb->h);
+    gtk_label_set_text(GTK_LABEL(gkb->label1),gkb->keymap->label);
+    gtk_label_set_text(GTK_LABEL(gkb->label2),gkb->keymap->label);
    }
   applet_widget_set_tooltip (APPLET_WIDGET (gkb->applet), gkb->keymap->name);
 }
 
 /**
- * gkb_sized_render:
- * @void: 
+ * count_sizes:
+ * @gkb:
  * 
- * When a size request is made, we need to redraw the pixbufs with the
- * new size. This function updates all the pixmaps with the new param.
- **/
-void
-gkb_sized_render (GKB * gkb)
+ * Calculates applet, flag, label sizes, appearance mode
+ */
+static gint
+gkb_count_sizes (GKB * gkb)
 {
   gint pw, ph, aw, ah, fw, fh, lw, lh; /* panel, applet, flag, 
                                           label width, height */
@@ -149,15 +150,7 @@ gkb_sized_render (GKB * gkb)
 
   gint size;
 
-  GkbKeymap *keymap;
-  GList *list;
-
-  debug (FALSE, "");
-
-  if (gkb->is_small)
-    size = applet_widget_get_panel_pixel_size (APPLET_WIDGET (gkb->applet)) / 2;
-  else
-    size = applet_widget_get_panel_pixel_size (APPLET_WIDGET (gkb->applet));
+  size = applet_widget_get_panel_pixel_size (APPLET_WIDGET (gkb->applet));
 
   if (gkb->is_small)
     size /= 2;
@@ -170,11 +163,11 @@ gkb_sized_render (GKB * gkb)
      {
       if (size < 25)
        { /* 1 */
-         COUNT1(3,1,1.5,1,2);
+         COUNT1(3,1,1.5,1,3);
        }
       else
        { /* 4 */
-	COUNT1(0.75,1,0.75,0.5,3);
+	COUNT1(0.75,1,0.75,0.5,2);
        }
      }
     else
@@ -194,32 +187,54 @@ gkb_sized_render (GKB * gkb)
      {
       if (size < 25)
        { /* 5 */
-        COUNT2(1,3,1,1.5,3);
+        COUNT2(1,1.5,1,0.75,2);
        }
       else
        { /* 8 */
-        COUNT2(1,1.5,0.5,0.75,2);
+        COUNT2(1,0.375,1,0.375,3);
        }
      }
     else
      if (gkb->appearance == GKB_FLAG)
       { /* 6 */
-      COUNT2(1.5,1,1.5,1,0);
+      COUNT2(1,0.75,1,0.75,0);
       }
      else
       {
       /* 7 */
-      COUNT2(1.5,1,1.5,1,1);
+      COUNT2(1,0.75,1,0.75,1);
       }
    }
 
   gtk_widget_set_usize (GTK_WIDGET (gkb->applet), aw, ah);
   gtk_drawing_area_size (GTK_DRAWING_AREA (gkb->darea), fw, fh);
   gtk_widget_set_usize (GTK_WIDGET (gkb->darea), fw, fh);
-  gtk_widget_set_usize (GTK_WIDGET (gkb->label), fw, fh);
+  gtk_widget_set_usize (GTK_WIDGET (gkb->label1), fw, fh);
+  gtk_widget_set_usize (GTK_WIDGET (gkb->label2), fw, fh);
 
   gkb->w = fw;
   gkb->h = fh;
+
+  return am;
+}
+
+/**
+ * gkb_sized_render:
+ * @void: 
+ * 
+ * When a size request is made, we need to redraw the pixbufs with the
+ * new size. This function updates all the pixmaps with the new param.
+ **/
+void
+gkb_sized_render (GKB * gkb)
+{
+  GkbKeymap *keymap;
+  GList *list;
+  gint am;
+
+  debug (FALSE, "");
+
+  am = gkb_count_sizes (gkb);
             
   gtk_widget_queue_resize (gkb->darea);
   gtk_widget_queue_resize (gkb->darea->parent);
@@ -228,18 +243,21 @@ gkb_sized_render (GKB * gkb)
   switch(am) {
   case 0: 
       gtk_widget_show_all (gkb->darea_frame);
-      gtk_widget_hide (gkb->label_frame);  
+      gtk_widget_hide (gkb->label_frame1);  
   break;
-  case 1: 
-      gtk_widget_show_all (gkb->label_frame);
+  case 1:
+      gtk_widget_show_all (gkb->label_frame1);
       gtk_widget_hide (gkb->darea_frame);
+      gtk_widget_hide (gkb->label_frame2);
   break;
   case 2: 
-     gtk_widget_show_all (gkb->label_frame);
+     gtk_widget_hide (gkb->label_frame2);
+     gtk_widget_show_all (gkb->label_frame1);
      gtk_widget_show_all (gkb->darea_frame);  
   break;
   case 3: 
-     gtk_widget_show_all (gkb->label_frame);
+     gtk_widget_hide (gkb->label_frame1);
+     gtk_widget_show_all (gkb->label_frame2);
      gtk_widget_show_all (gkb->darea_frame);
   break;
   }
@@ -332,8 +350,6 @@ gkb_switch_normal (AppletWidget * applet, gpointer gkbx)
   if (gkb->is_small)
     {
       gkb->is_small = FALSE;
-      gkb->size =
-	applet_widget_get_panel_pixel_size (APPLET_WIDGET (gkb->applet));
       gkb_update (gkb, FALSE);
     }
 }
@@ -409,7 +425,7 @@ loadprop (int i)
 {
   struct stat tempbuf;
   GkbKeymap *actdata;
-  gint size;
+  gint am;
   char buf[256];
   char *pixmapname;
 
@@ -464,21 +480,7 @@ loadprop (int i)
   actdata->pix = NULL;
   gkb->orient = applet_widget_get_panel_orient (APPLET_WIDGET (gkb->applet));
 
-  if (gkb->is_small)
-    size = applet_widget_get_panel_pixel_size (APPLET_WIDGET (gkb->applet)) / 2;
-  else
-    size = applet_widget_get_panel_pixel_size (APPLET_WIDGET (gkb->applet));
-
-  if (gkb->orient == ORIENT_UP || gkb->orient == ORIENT_DOWN)
-    {
-      gkb->h = size;
-      gkb->w = gkb->h * 1.5;
-    }
-  else
-    {
-      gkb->w = size;
-      gkb->h = (int) gkb->w / 1.5;
-    }
+  am = gkb_count_sizes (gkb);
 
   sprintf (buf, "gkb/%s", actdata->flag);
   pixmapname = gnome_unconditional_pixmap_file (buf);
@@ -593,10 +595,13 @@ create_gkb_widget ()
   gkb->eventbox = gtk_event_box_new ();
   gtk_widget_show (gkb->eventbox);
 
-  gkb->box = gtk_vbox_new (FALSE, 0);
-  gtk_widget_show(gkb->box);
+  gkb->vbox = gtk_vbox_new (FALSE, 0);
+  gtk_widget_show(gkb->vbox);
+  gkb->hbox = gtk_hbox_new (FALSE, 0);
+  gtk_widget_show(gkb->hbox);
 
-  gtk_container_add (GTK_CONTAINER (gkb->eventbox), gkb->box);
+  gtk_container_add (GTK_CONTAINER (gkb->eventbox), gkb->hbox);
+  gtk_container_add (GTK_CONTAINER (gkb->hbox), gkb->vbox);
 
   gkb->darea = gtk_drawing_area_new ();
 
@@ -617,14 +622,22 @@ create_gkb_widget ()
   gtk_frame_set_shadow_type (GTK_FRAME (gkb->darea_frame), GTK_SHADOW_IN);
   gtk_container_add (GTK_CONTAINER (gkb->darea_frame), gkb->darea);
 
-  gtk_box_pack_start (GTK_BOX (gkb->box), gkb->darea_frame, TRUE, TRUE, 0);
+  gtk_box_pack_start (GTK_BOX (gkb->vbox), gkb->darea_frame, TRUE, TRUE, 0);
+  gtk_box_pack_start (GTK_BOX (gkb->hbox), gkb->vbox, TRUE, TRUE, 0);
 
-  gkb->label = gtk_label_new (_("GKB"));
+  gkb->label1 = gtk_label_new (_("GKB"));
 
-  gkb->label_frame = gtk_frame_new (NULL);
-  gtk_frame_set_shadow_type (GTK_FRAME (gkb->label_frame), GTK_SHADOW_IN);
-  gtk_container_add (GTK_CONTAINER (gkb->label_frame), gkb->label);
-  gtk_container_add (GTK_CONTAINER (gkb->box), gkb->label_frame);
+  gkb->label_frame1 = gtk_frame_new (NULL);
+  gtk_frame_set_shadow_type (GTK_FRAME (gkb->label_frame1), GTK_SHADOW_IN);
+  gtk_container_add (GTK_CONTAINER (gkb->label_frame1), gkb->label1);
+  gtk_container_add (GTK_CONTAINER (gkb->vbox), gkb->label_frame1);
+
+  gkb->label2 = gtk_label_new (_("GKB"));
+
+  gkb->label_frame2 = gtk_frame_new (NULL);
+  gtk_frame_set_shadow_type (GTK_FRAME (gkb->label_frame2), GTK_SHADOW_IN);
+  gtk_container_add (GTK_CONTAINER (gkb->label_frame2), gkb->label2);
+  gtk_container_add (GTK_CONTAINER (gkb->hbox), gkb->label_frame2);
 
   gtk_widget_pop_colormap ();
   gtk_widget_pop_visual ();

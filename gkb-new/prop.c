@@ -145,7 +145,7 @@ gkb_prop_get_sizes (void)
     return list;
   
   list = g_list_prepend (list, _("Normal"));
-  list = g_list_prepend (list, _("Small"));
+  list = g_list_prepend (list, _("Big"));
 
   list = g_list_reverse (list);
   return list;
@@ -213,9 +213,9 @@ gkb_prop_size_changed (GtkWidget *menu_item, GkbPropertyBoxInfo * pbi)
 
   g_return_if_fail (text != NULL);
 
-  if (strcmp (text, _("Small")) == 0) {
+  if (strcmp (text, _("Normal")) == 0) {
     pbi->is_small = TRUE;
-  } else if (strcmp (text, _("Normal")) == 0) {
+  } else if (strcmp (text, _("Big")) == 0) {
     pbi->is_small = FALSE;
   } else {
     g_warning ("Could not interpret size change [%s]\n", text);

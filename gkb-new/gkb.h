@@ -120,9 +120,12 @@ struct _GKB
   /* Widgets */
   GtkWidget *applet;
   GtkWidget *eventbox;
-  GtkWidget *box;
-  GtkWidget *label;
-  GtkWidget *label_frame;
+  GtkWidget *vbox;
+  GtkWidget *hbox;
+  GtkWidget *label1;
+  GtkWidget *label_frame1;
+  GtkWidget *label2;
+  GtkWidget *label_frame2;
   GtkWidget *darea;
   GtkWidget *darea_frame;
   GtkWidget *addwindow;
