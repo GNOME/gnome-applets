@@ -623,7 +623,7 @@ trash_applet_open_folder (BonoboUIComponent *component,
 			     &err);
 	
 	if (! res) {
-		error_dialog (applet, _("Error while spawing nautilus:\n%s"),
+		error_dialog (applet, _("Error while spawning nautilus:\n%s"),
 			      err->message);
 		g_error_free (err);
 	}
