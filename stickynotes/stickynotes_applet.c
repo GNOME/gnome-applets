@@ -257,6 +257,9 @@ void stickynotes_applet_update_prefs()
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(stickynotes->w_prefs_force), force_default);
 
 	gnome_color_picker_set_i16(GNOME_COLOR_PICKER(stickynotes->w_prefs_color), color.red, color.green, color.blue, 65535);
+	
+	gtk_widget_set_sensitive(glade_xml_get_widget(stickynotes->prefs, "color_label"), !use_system);
+	gtk_widget_set_sensitive(stickynotes->w_prefs_color, !use_system);
 }
 
 void stickynotes_applet_update_tooltips()

@@ -221,12 +221,22 @@ void preferences_apply_cb(GConfClient *client, guint cnxn_id, GConfEntry *entry,
 			StickyNote *note = g_list_nth_data(stickynotes->notes, i);
 			stickynote_set_visible(note, gconf_value_get_bool(entry->value));
 		}
+		for (i = 0; i < g_list_length(stickynotes->applets); i++) {
+			StickyNotesApplet *applet = g_list_nth_data(stickynotes->applets, i);
+			bonobo_ui_component_set_prop(panel_applet_get_popup_component(PANEL_APPLET(applet->w_applet)), "/commands/show", "state",
+						     gconf_value_get_bool(entry->value) ? "1" : "0", NULL);
+		}
 	}
 
 	else if (strcmp(entry->key, GCONF_PATH "/settings/locked") == 0) {
 		for (i = 0; i < g_list_length(stickynotes->notes); i++) {
 			StickyNote *note = g_list_nth_data(stickynotes->notes, i);
 			stickynote_set_locked(note, gconf_value_get_bool(entry->value));
+		}
+		for (i = 0; i < g_list_length(stickynotes->applets); i++) {
+			StickyNotesApplet *applet = g_list_nth_data(stickynotes->applets, i);
+			bonobo_ui_component_set_prop(panel_applet_get_popup_component(PANEL_APPLET(applet->w_applet)), "/commands/lock", "state",
+						     gconf_value_get_bool(entry->value) ? "1" : "0", NULL);
 		}
 	}
 
@@ -238,6 +248,8 @@ void preferences_apply_cb(GConfClient *client, guint cnxn_id, GConfEntry *entry,
 			stickynote_set_color(note, note->color);
 		}
 	}
+
+	stickynotes_applet_update_prefs();
 }
 
 /* Preferences Callback : Response. */

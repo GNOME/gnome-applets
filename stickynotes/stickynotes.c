@@ -256,7 +256,8 @@ void stickynotes_add()
 	/* Save notes */
 	stickynotes_save();
 
-	/* Unhide all sticky notes */
+	/* Show all sticky notes */
+	stickynote_set_visible(note, TRUE);
 	gconf_client_set_bool(stickynotes->gconf, GCONF_PATH "/settings/visible", TRUE, NULL);
 }
 
@@ -268,7 +269,9 @@ void stickynotes_remove(StickyNote *note)
 
 	gtk_window_set_transient_for(GTK_WINDOW(dialog), GTK_WINDOW(note->w_window));
 
-	if (stickynote_get_empty(note) || gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_OK) {
+	if (stickynote_get_empty(note) ||
+	    !gconf_client_get_bool(stickynotes->gconf, GCONF_PATH "/settings/confirm_deletion", NULL) ||
+	    gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_OK) {
 		stickynote_free(note);
 
 		/* Remove the note from the linked-list of all notes */
