@@ -1660,6 +1660,18 @@ mixer_applet_create (PanelApplet *applet)
 					   mixer_applet_menu_verbs,
 					   data);
 
+	if (panel_applet_get_locked_down (applet)) {
+		BonoboUIComponent *popup_component;
+
+		popup_component = panel_applet_get_popup_component (applet);
+
+		bonobo_ui_component_set_prop (popup_component,
+					      "/commands/Pref",
+					      "hidden", "1",
+					      NULL);
+	}
+
+
 	component = panel_applet_get_popup_component (applet);
 	g_signal_connect (component,
 			  "ui-event",
