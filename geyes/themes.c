@@ -244,13 +244,14 @@ properties_cb (BonoboUIComponent *uic,
         gtk_window_set_resizable (GTK_WINDOW (pbox), FALSE);
         gtk_dialog_set_default_response(GTK_DIALOG (pbox), GTK_RESPONSE_CLOSE);
         gtk_dialog_set_has_separator (GTK_DIALOG (pbox), FALSE);
+        gtk_container_set_border_width (GTK_CONTAINER (pbox), 5);
 
         g_signal_connect (pbox, "response",
 			  G_CALLBACK (presponse_cb),
 			  eyes_applet);
 	
 	vbox = gtk_vbox_new (FALSE, 0);
-	gtk_container_set_border_width (GTK_CONTAINER (vbox), 12);
+	gtk_container_set_border_width (GTK_CONTAINER (vbox), 5);
 	gtk_widget_show (vbox);
 	
 	gtk_box_pack_start (GTK_BOX (GTK_DIALOG (pbox)->vbox), vbox,
