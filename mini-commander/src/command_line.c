@@ -179,11 +179,7 @@ static gint
 command_line_focus_in_cb(GtkWidget *widget, GdkEvent *event, gpointer data)
 {
     fprintf(stderr, "focus_in\n");
-    /*
-      gtk_widget_grab_focus(GTK_WIDGET(widget)); 
-    */
-    //    gtk_widget_grab_focus(GTK_WIDGET(widget));
-
+/*    gtk_widget_grab_focus(GTK_WIDGET(widget)); */
     return (FALSE);
     widget = NULL;
     event = NULL;
