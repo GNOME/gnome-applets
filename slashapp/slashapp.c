@@ -337,7 +337,7 @@ int http_get_to_file(gchar *host, gint port, gchar *proxy,
 		return length;
 	} */
 	
-	ghttp_set_uri(request, "http://www.gnome.org/news/gnome-news.txt");
+	ghttp_set_uri(request, "http://gnotices.gnome.org/gnome-news/rdf");
 	ghttp_set_header(request, http_hdr_Connection, "close");
 	
 	if(ghttp_prepare(request) != 0) {
