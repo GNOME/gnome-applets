@@ -86,13 +86,10 @@
 
 2.0.9:
 	2001-02-07
-
 	Rewrote the applet to open the APM device, get the power status
 	and then close the device immediately. Previously I kept the
 	device opened for as long as the applet was running.
-	
 	2001-02-13
-
 	Thomas Hood pointed out that under Linux there's no need to open
 	the APM device at all. apm_read() will take care of that by
 	reading from /proc and not directly from the device.
@@ -117,3 +114,18 @@
 	2001-03-30
 	Removed some unneccessary code in pixmap_timeout().
 	Removed a unneccessary load_preferences() in init_applet().
+
+2.0.11:
+	2001-04-02
+	- Added a tooltip for the status dock icon.
+	- Changed the algorithm somewhat for when to decide when the battery 
+	is fully re-charged. Previously the applet could decide that the
+	battery was fully re-charged even when running on battery power 
+	at say 10%. Now the laptop needs to be running on AC and it must have
+	been "Charging" the previous iteration through the algorithm.
+	- Moved the source code to src/ and made the appropriate changes in the
+	Makefiles.
+	2001-04-03
+	- Added a spec file for building RPMs.
+	2001-04-04
+	- Split the code into smaller files.

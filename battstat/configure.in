@@ -8,7 +8,14 @@
 # $Id$
 #
 
-AC_INIT(battstat_applet.c)
+AC_INIT(configure.in)
+BS_MAJOR=2
+BS_MINOR=0
+BS_SUB=11
+SPEC_VERSION=$BS_MAJOR.$BS_MINOR.$BS_SUB
+TAR_NAME="battstat_applet-"$BS_MAJOR.$BS_MINOR.$BS_SUB
+AC_SUBST(SPEC_VERSION)
+AC_SUBST(TAR_NAME)
 
 AM_CONFIG_HEADER(config.h)
 AC_CANONICAL_HOST
@@ -30,7 +37,7 @@ AC_ISC_POSIX
 AC_PROG_CPP
 AC_ARG_PROGRAM
 
-AM_INIT_AUTOMAKE(battstat_applet,2.0.10)
+AM_INIT_AUTOMAKE(battstat_applet, $BS_MAJOR.$BS_MINOR.$BS_SUB)
 
 AC_HEADER_STDC
 AM_PATH_GTK(1.2.0)
@@ -124,16 +131,20 @@ AC_DEFINE_UNQUOTED(GNOME_ICONDIR, "${GNOME_PREFIX}/share/gnome/pixmaps")
 AC_OUTPUT([
 Makefile
 macros/Makefile
+src/Makefile
 intl/Makefile
 po/Makefile.in
 docs/Makefile
 docs/C/Makefile
 docs/pl/Makefile
 sounds/Makefile
+bs.spec
 ])
 
 if test "$prefix" != "$gnomeprefix"; then
   AC_MSG_WARN(\$prefix is different from where GNOME is installed)
+  AC_MSG_WARN(This can potentionally be a problem, due to the way GNOME works.)
+  AC_MSG_WARN(To make sure that everything will work correctly, run configure again with --prefix=$gnomeprefix)
   AC_MSG_WARN(\$prefix = $prefix)
   AC_MSG_WARN(GNOME prefix = $gnomeprefix)
 fi
