@@ -73,7 +73,7 @@ preset_in_files = $(preset_data_predata)
 preset_DATA = $(preset_in_files:.keyprop.desktop.in=.keyprop)
 EXTRA_DIST = $(xml_DATA) $(xml_in_files) \
 	$(preset_DATA) $(preset_in_files) \
-	$(xmm_xml_DATA) $(xmm_xml_in_data) presets2base.xsl
+	$(xmm_xml_DATA) $(xmm_xml_in_files) presets2base.xsl
 
 xml_in_files = presets.xml.in
 XMLS = $(xml_in_files:.xml.in=.xml)
