@@ -7,7 +7,7 @@ APMLIB =
 APMDIR =
 else
 APMLIB = apmlib/libapm.a
-APMDIR = apmlib
+APMDIR = -Iapmlib/
 endif
 
 SUBDIRS = sounds $(APMDIR)
@@ -17,7 +17,7 @@ DIST_SUBDIRS = sounds apmlib
 INCLUDES = \
 	$(GNOME_APPLETS_CFLAGS) \
 	$(LIBGLADE_CFLAGS) \
-	-I$(APMDIR) \
+	$(APMDIR) \
 	-DDATA_DIR=\"$(datadir)\" \
 	-DGLADE_DIR=\"$(gladedir)\" \
 	-DG_LOG_DOMAIN=\"battstat_applet\" \
