@@ -1,5 +1,6 @@
 /*
- * Copyright (C) 2001, 2002 Free Software Foundation
+ * GNOME CPUFreq Applet
+ * Copyright (C) 2004 Carlos Garcia Campos <carlosgc@gnome.org>
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU General Public

@@ -1,5 +1,6 @@
 /*
- * Copyright (C) 2001, 2002 Free Software Foundation
+ * GNOME CPUFreq Applet 
+ * Copyright (C) 2004 Carlos Garcia Campos <carlosgc@gnome.org>
  *
  *  This library is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU General Public
@@ -213,7 +214,7 @@ cpufreq_applet_about_cb (BonoboUIComponent *uic, CPUFreqApplet *applet, const gc
 	   gtk_show_about_dialog (NULL,
 		"name",		_("CPU Frequency Scaling Monitor"),
 		"version",	VERSION,
-		"copyright",	"\xC2\xA9 2004 Free Software Foundation. Inc.",
+		"copyright",	"\xC2\xA9 2004 Carlos Garcia Campos",
 		"comments",	_("This utility shows the current CPU "
 				  "Frequency Scaling."),
 		"authors",	authors,
