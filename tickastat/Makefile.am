@@ -1,4 +1,4 @@
-SUBDIRS = docs
+SUBDIRS = news_scripts docs
 
 INCLUDES = -I$(srcdir) -I$(top_srcdir) -I$(top_builddir)	\
 	-I$(top_srcdir)/intl -I$(top_builddir)/intl		\
@@ -37,6 +37,4 @@ pixmapdir = $(datadir)/pixmaps
 pixmap_DATA = gnome-ticker.png
 
 EXTRA_DIST = $(sys_DATA) $(gnorba_DATA) noimage.xpm gnome-ticker.png
-
-SUBDIRS = news_scripts
 
