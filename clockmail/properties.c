@@ -243,6 +243,7 @@ void property_show(AppletWidget *applet, gpointer data)
 	GtkWidget *button;
 	GtkObject *adj;
 	GtkWidget *spin;
+	GtkWidget *scrolled;
 	GtkWidget *theme_clist;
 	gchar *theme_title[] = { "Themes:", };
 
@@ -396,12 +397,18 @@ void property_show(AppletWidget *applet, gpointer data)
 	gtk_box_pack_start( GTK_BOX(hbox),ad->theme_entry , TRUE, TRUE, 5);
 	gtk_widget_show(ad->theme_entry);
 
+	scrolled = gtk_scrolled_window_new(NULL, NULL);
+	gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled),
+				GTK_POLICY_AUTOMATIC, GTK_POLICY_ALWAYS);
+	gtk_box_pack_start(GTK_BOX(vbox), scrolled, TRUE, TRUE, 0);
+	gtk_widget_show(scrolled);
+
 	/* theme list */
 	theme_clist=gtk_clist_new_with_titles (1, theme_title);
 	gtk_clist_set_policy (GTK_CLIST (theme_clist), GTK_POLICY_ALWAYS, GTK_POLICY_AUTOMATIC); 
 	gtk_clist_column_titles_passive (GTK_CLIST (theme_clist)); 
 	gtk_signal_connect (GTK_OBJECT (theme_clist), "select_row",(GtkSignalFunc) theme_selected_cb, ad);
-	gtk_box_pack_start (GTK_BOX (vbox), theme_clist, TRUE, TRUE, 0);
+	gtk_container_add (GTK_CONTAINER (scrolled), theme_clist);
 	gtk_widget_show (theme_clist);
 
 	populate_theme_list(theme_clist);
