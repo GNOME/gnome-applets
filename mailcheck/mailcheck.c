@@ -764,12 +764,9 @@ password_response_cb (GtkWidget  *dialog,
 	case GTK_RESPONSE_OK:
 		entry = g_object_get_data (G_OBJECT (dialog), "password_entry");
 		mc->real_password = g_strdup (gtk_entry_get_text (GTK_ENTRY (entry)));
-		save_toggle_button = g_object_get_data (G_OBJECT (dialog), "save
-_password");
-		if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (save_toggle
-_button)))
-			 remote_password_save_toggled (GTK_TOGGLE_BUTTON (save_to
-ggle_button), mc);
+		save_toggle_button = g_object_get_data (G_OBJECT (dialog), "save_password");
+		if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (save_toggle_button)))
+			 remote_password_save_toggled (GTK_TOGGLE_BUTTON (save_toggle_button), mc);
 		check_remote_mailbox (mc);
 		break;
 	}
@@ -852,8 +849,7 @@ get_remote_password (MailCheck *mc)
 	g_signal_connect (dialog, "response",
                           G_CALLBACK (password_response_cb), mc);
 
-	g_object_set_data (G_OBJECT (dialog), "save_password", save_password_che
-ckbox);
+	g_object_set_data (G_OBJECT (dialog), "save_password", save_password_checkbox);
 	g_object_set_data (G_OBJECT (dialog), "password_entry", entry);
 	gtk_widget_show (GTK_WIDGET (dialog));
 }
@@ -1045,13 +1041,9 @@ mailcheck_load_animation (MailCheck *mc, const char *fname)
 					   gtk_widget_get_screen (GTK_WIDGET (mc->applet))),
 					   width, height, -1);
 
-	gdk_pixbuf_render_to_drawable (pb,
-				       mc->email_pixmap,
-				       mc->da->style->black_gc,
-				       0, 0, 0, 0,
-				       width, height,
-				       GDK_RGB_DITHER_NORMAL,
-				       0, 0);
+	gdk_draw_pixbuf (mc->email_pixmap, mc->da->style->black_gc, pb,
+			 0, 0, 0, 0, width, height,
+			 GDK_RGB_DITHER_NORMAL, 0, 0);
 	
 	g_object_unref (pb);
 	
