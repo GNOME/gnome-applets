@@ -31,7 +31,6 @@
  */
 
 
-#include <gnome.h>
 #include "gkb.h"
 
 typedef struct _GkbMapDialogInfo GkbMapDialogInfo;

@@ -30,10 +30,7 @@
  * USA
  */
 
-
-#include <gnome.h>
 #include <sys/stat.h>
-
 #include "gkb.h"
 
 #define GKB_KEYMAP_TAG  "GkbKeymapTag"

@@ -25,7 +25,7 @@
  *
  */
 
-#include <gkb.h>
+#include "gkb.h"
 
 const gchar *
 gkb_util_get_text_from_mode (GkbMode mode)

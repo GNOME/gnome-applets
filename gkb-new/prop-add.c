@@ -30,8 +30,6 @@
  * USA
  */
 
-
-#include <gnome.h>
 #include "gkb.h"
 
 static void addhelp_cb (AppletWidget * widget, gpointer data);
