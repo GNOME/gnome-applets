@@ -858,7 +858,7 @@ cdplayer_play_pause(GtkWidget * w, gpointer data)
 						 GTK_DIALOG_DESTROY_WITH_PARENT,
 						 GTK_MESSAGE_ERROR,
 						 GTK_BUTTONS_CLOSE,
-						 "Audio Device is busy, or being used by another application",
+						 _("Audio Device is busy, or being used by another application"),
 						 NULL);
 		gtk_window_set_screen (GTK_WINDOW (dialog),
 				       gtk_widget_get_screen (cd->panel.applet));
