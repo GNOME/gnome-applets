@@ -1,3 +1,11 @@
+Sat Nov 25 13:50:46 2000  George Lebl <jirka@5z.com>
+
+	* gtik/gtik.c:  Fix several most obvious possible overflow errors,
+	  a couple of crashes, corruption of clist data, and do the first
+	  update in an idle handler so that we first draw, that's ugly
+	  but better then the current behaviour of hanging with an invisible
+	  applet.  Also get rid of a gccism.
+
 2000-11-20  Dan Mueth <d-mueth@uchicago.edu>
 
     * applet-docs.make: Have it install GIF's in stylesheet-images/

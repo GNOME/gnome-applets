@@ -495,8 +495,8 @@ prop_apply (GtkWidget *w, int page, gpointer data)
 
   g_free (bat->mode_string);
   bat->mode_string =
-    strdup (GTK_TOGGLE_BUTTON (bat->mode_radio_graph)->active ?
-	    BATTERY_MODE_GRAPH : BATTERY_MODE_READOUT);
+    g_strdup (GTK_TOGGLE_BUTTON (bat->mode_radio_graph)->active ?
+	      BATTERY_MODE_GRAPH : BATTERY_MODE_READOUT);
 
   if (bat->follow_panel_size)
     battery_set_follow_size (bat);

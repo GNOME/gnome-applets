@@ -75,7 +75,7 @@
 	/* end of COLOR vars */
 
 
-	char configFileName[256];
+	char *configFileName;
 
 
 	/*  properties vars */
@@ -130,7 +130,7 @@
 
 	/* FOR COLOR */
 
-	static void updateOutput() ;
+	static void updateOutput(void) ;
 	static void reSetOutputArray(void) ;
 	static void setOutputArray(char *param1) ;
 	static void setColorArray(int theColor) ;
@@ -202,7 +202,7 @@
 	}
 
 	/*-----------------------------------------------------------------*/
-	static void updateOutput() {
+	static void updateOutput(void) {
 		if ( http_got() == -1 || !(configured()) ) {  
 			reSetOutputArray();
 			fprintf(stderr, "No data!\n");
@@ -277,7 +277,7 @@
 
 
 	/*-----------------------------------------------------------------*/
-	static void properties_set() {
+	static void properties_set (gboolean update) {
 		if (!strcmp(props.buttons,"yes")) {
 			gtk_widget_show(leftButton);
 			gtk_widget_show(rightButton);
@@ -289,7 +289,8 @@
 
 		setup_colors();		
 		load_fonts();
-		updateOutput();
+		if (update)
+			updateOutput();
 	}
 
 
@@ -299,6 +300,11 @@
 		int  i=0;
 		int  j=0;
 		static char Text[256]="";
+
+		if (line == NULL) {
+			Text[0] = '\0';
+			return Text;
+		}
 
 		while (i < (strlen(line) -1)) {
 			if (line[i] != '>')
@@ -514,12 +520,9 @@
 		int retVar;
 		FILE *local_file;
 
-		char tmpBuff[256];
-		memset(tmpBuff,0,sizeof(tmpBuff));
+		char *tmpBuff;
 
-		strcat(tmpBuff,"/q?s=");
-		strcat(tmpBuff, props.tik_syms);
-		strcat(tmpBuff,"&d=v2");
+		tmpBuff = g_strconcat ("/q?s=", props.tik_syms, "&d=v2", NULL);
 
 		retVar = 0;
 
@@ -528,6 +531,8 @@
 						tmpBuff, local_file);
 
 		fclose(local_file);
+
+		g_free (tmpBuff);
 
 		return retVar;
 	}
@@ -724,7 +729,7 @@
 		gchar *current;
 		gint i;
 
-		current = strdup(props.scroll);
+		current = g_strdup(props.scroll);
 		props.scroll = g_strdup("right2left");
 		for (i=0;i<151;i++) {
 			Repaint((gpointer)drawing_area);
@@ -738,7 +743,7 @@
 		gchar *current;
 		gint i;
 
-		current = strdup(props.scroll);
+		current = g_strdup(props.scroll);
 		props.scroll = g_strdup("left2right");
 		for (i=0;i<151;i++) {
 			Repaint((gpointer)drawing_area);
@@ -840,7 +845,7 @@
 			props.output = g_strdup(poutput);
 		}
 		properties_save(APPLET_WIDGET(applet)->privcfgpath);
-		properties_set();
+		properties_set(TRUE);
 	}
 
 
@@ -915,11 +920,14 @@
 	char *getSymsFromClist(GtkWidget *clist) {
 		GList *selection;
 		char *symbol;
-		char symlist[256]="";
+		char *ret;
+		GString *symlist;
 		gint row;
 
 		gtk_clist_freeze(GTK_CLIST(clist));
 		gtk_clist_select_all(GTK_CLIST(clist));
+
+		symlist = g_string_new (NULL);
 
 		selection = GTK_CLIST(clist)->selection;
 
@@ -928,17 +936,25 @@
 			selection=selection->next;
 			gtk_clist_get_text(GTK_CLIST(clist),row,0,&symbol);
 
+			symbol = g_strdup (symbol);
+
+			/* XXX: couldn't this be just g_strstrip ????
+			 * -George */
 			removeSpace(symbol);
 
-			if (!strcmp(symlist,""))
-				strcpy(symlist,symbol);
-			else {
-				strcat(symlist,"+");
-				strcat(symlist,symbol);
+			if (strcmp(symlist->str,"") != 0) {
+				g_string_append (symlist, "+");
 			}
+
+			g_string_append (symlist, symbol);
+
+			g_free (symbol);
 		}
 		gtk_clist_thaw(GTK_CLIST(clist));
-		return(strdup(symlist));
+
+		ret = symlist->str;
+		g_string_free (symlist, FALSE);
+		return ret;
 	}
 
 	static void populateClist(GtkWidget *clist) {
@@ -947,21 +963,21 @@
 		gchar *syms;
 		gchar *temp;
 
-		syms = strdup(props.tik_syms);
+		syms = g_strdup(props.tik_syms);
 
 		if ((temp=strtok(syms,"+")))
-			symbol[0] = strdup(temp);
+			symbol[0] = g_strdup(temp);
 
 		while (symbol[0]) {
 			gtk_clist_append(GTK_CLIST(clist),symbol);
 			if ((temp=strtok(NULL,"+")))
-				symbol[0] = strdup(temp);
+				symbol[0] = g_strdup(temp);
 			else
 				symbol[0]=NULL;
 		}
 
 		if ((temp=strtok(NULL,""))) {
-			symbol[0] = strdup(temp);
+			symbol[0] = g_strdup(temp);
 			gtk_clist_append(GTK_CLIST(clist),symbol);
 		}
 				
@@ -1001,19 +1017,23 @@
 	}
 
 	static void remFromClist(GtkWidget *widget, gpointer data) {
-		GList *selection;
+		GList *selection, *seliter;
 		gint row;
 		GtkWidget *clist;
 
 		clist = GTK_WIDGET(gtk_object_get_data(GTK_OBJECT(widget),
 							"clist"));
-		selection=GTK_CLIST(clist)->selection;
+		selection = g_list_copy (GTK_CLIST(clist)->selection);
 
-		while(selection) {
-			row=GPOINTER_TO_INT(selection->data);
-			selection = selection->next;
+		seliter = selection;
+
+		while(seliter != NULL) {
+			row=GPOINTER_TO_INT(seliter->data);
+			seliter = seliter->next;
 			gtk_clist_remove(GTK_CLIST(clist),row);
 		}
+
+		g_list_free (selection);
 	}
 
 	static GtkWidget *symbolManager() { 
@@ -1296,6 +1316,16 @@
 
 
 
+	/*-----------------------------------------------------------------*/
+	/* Do the first update in an idle since we block (UGLY UGLY UGLY)
+	 * and thus this is at least marginally better behaviour since the
+	 * user will at least see something on the screen */
+	static gboolean
+	first_update (gpointer data)
+	{
+		updateOutput ();
+		return FALSE;
+	}
 
 
 	/*-----------------------------------------------------------------*/
@@ -1303,13 +1333,12 @@
 		GtkWidget * vbox;
 		GtkWidget * frame;
 
-		memset(configFileName,0,sizeof(configFileName));
-		strcat(configFileName, getenv("HOME"));
-		strcat(configFileName, "/.gtik.conf");
+		configFileName = g_strconcat (g_getenv ("HOME"), "/.gtik.conf", NULL);
 
 		/* Initialize the i18n stuff */
 		bindtextdomain (PACKAGE, GNOMELOCALEDIR);
 		textdomain (PACKAGE);
+
 
 		/* intialize, this will basically set up the applet, corba and
 		call gnome_init */
@@ -1403,7 +1432,7 @@
 
 
 		properties_load(APPLET_WIDGET(applet)->privcfgpath);
-		properties_set();
+		properties_set(FALSE);
 
 		gtk_signal_connect(GTK_OBJECT(applet),"save_session",
 		GTK_SIGNAL_FUNC(applet_save_session), NULL);
@@ -1419,6 +1448,8 @@
 			gtk_widget_show(leftButton);
 			gtk_widget_show(rightButton);
 		}
+
+		g_idle_add (first_update, NULL);
 
 		/* special corba main loop */
 		applet_widget_gtk_main ();
@@ -1511,8 +1542,8 @@
 			var4[0] = '(';
 		}
 		else {
-			var3 = strdup(_("(No"));
-			var4 = strdup(_("Change "));
+			var3 = g_strdup(_("(No"));
+			var4 = g_strdup(_("Change "));
 		}
 
 		sprintf(buff2,"%s %s)",var3,var4);
@@ -1605,7 +1636,9 @@
 		int i;
 		int j;
 		int len;
-		char buff[strlen(buffer)+1];
+		char *buff;
+
+		buff = g_new (char, strlen(buffer)+1);
 		
 		j = 0;
 		if(strlen(buffer) > 1) {
@@ -1635,6 +1668,8 @@
 			}
 			memset(buff,0,sizeof(buff));
 		}
+
+		g_free (buff);
 	}
 
 
