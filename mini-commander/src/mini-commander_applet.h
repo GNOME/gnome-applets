@@ -61,6 +61,7 @@ struct _MCData {
     MCPrefsDialog  prefs_dialog;
 
     guint          listeners [MC_NUM_LISTENERS];
+    gboolean       error;
 };
 
 void mc_applet_draw (MCData *mc);

@@ -1,3 +1,20 @@
+2004-06-17  Dennis Smit  <ds@nerds-incorporated.org>
+
+	* src/exec (mc_exec_command, beep): Check gdk_spawn_on_screen,
+	so that we get errors when command fails and give an error indicator,
+	clear the text only if command succeeds. System bell will sound when
+	(?) is displayed.
+
+	* src/command_line.c (button_press_cb): Clear the indicator
+	when clicked.
+
+	* src/command_line.c (command_key_event): The cursor position
+	is saved when adding the (?).
+
+	Patch by: Vinay M R  <vinay.mandyakoppal@wipro.com>
+
+	Fixes bug #130965.
+
 2004-06-07  Dennis Smit  <ds@nerds-incorporated.org>
 
 	* src/about.c (about_box): Cleared a stray / in

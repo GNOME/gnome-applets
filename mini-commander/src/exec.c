@@ -27,10 +27,17 @@
 
 #include <glib.h>
 #include <gdk/gdk.h>
+#include <gtk/gtk.h>
+#include <gconf/gconf-client.h>
 
 #include "exec.h"
 #include "macro.h"
 #include "preferences.h"
+#include "history.h"
+
+#define KEY_AUDIBLE_BELL "/apps/metacity/general/audible_bell"
+
+void beep (void);
 
 void
 mc_exec_command (MCData     *mc,
@@ -39,6 +46,7 @@ mc_exec_command (MCData     *mc,
 	GError *error = NULL;
 	char command [1000];
 	char **argv = NULL;
+	gchar *str;
 
 	strncpy (command, cmd, sizeof (command));
 	command [sizeof (command) - 1] = '\0';
@@ -54,14 +62,35 @@ mc_exec_command (MCData     *mc,
 		return;
 	}
 
-	gdk_spawn_on_screen (gtk_widget_get_screen (GTK_WIDGET (mc->applet)),
-			     g_get_home_dir (), argv, NULL,
-			     G_SPAWN_SEARCH_PATH,
-			     NULL, NULL, NULL,
-			     &error);
-	
+	if(!gdk_spawn_on_screen (gtk_widget_get_screen (GTK_WIDGET (mc->applet)),
+				 g_get_home_dir (), argv, NULL,
+				 G_SPAWN_SEARCH_PATH,
+				 NULL, NULL, NULL,
+				 &error)) {
+		str = g_strconcat ("(?)", command, NULL);
+		gtk_entry_set_text (GTK_ENTRY (mc->entry), str);
+		//gtk_editable_set_position (GTK_EDITABLE (mc->entry), 0);
+		mc->error = TRUE;
+		beep ();
+		g_free (str);
+	} else {
+		gtk_entry_set_text (GTK_ENTRY (mc->entry), (gchar *) "");
+		append_history_entry (mc, (char *) command, FALSE);	
+		}
 	g_strfreev (argv);
 
 	if (error != NULL)
 		g_error_free (error);
+}
+
+void beep ()
+{
+	GConfClient *default_client;
+	gboolean audible_bell_set;
+	
+	default_client = gconf_client_get_default ();
+	audible_bell_set = gconf_client_get_bool (default_client, KEY_AUDIBLE_BELL, NULL);
+	if (audible_bell_set) {
+		gdk_beep ();
+	}
 }

@@ -42,6 +42,20 @@ static int history_position = MC_HISTORY_LIST_LENGTH;
 static gchar *browsed_folder = NULL;
 
 static gboolean
+button_press_cb (GtkEntry   *entry,
+		 GdkEventKey *event,
+		 MCData      *mc)
+{
+    const gchar *str;
+    if (mc->error) { 
+	   mc->error = FALSE; 
+	   str = gtk_editable_get_chars (GTK_EDITABLE (entry), 0, -1);
+	   gtk_entry_set_text (entry, (gchar *) str + 3);
+	}
+    return FALSE;
+}
+
+static gboolean
 command_key_event (GtkEntry   *entry,
 		   GdkEventKey *event,
 		   MCData      *mc)
@@ -51,7 +65,14 @@ command_key_event (GtkEntry   *entry,
     static char current_command[MC_MAX_COMMAND_LENGTH];
     char buffer[MC_MAX_COMMAND_LENGTH];
     gboolean propagate_event = TRUE;
+    const gchar *str;
 
+    if (mc->error) { 
+	   mc->error = FALSE; 
+	   str = gtk_editable_get_chars (GTK_EDITABLE (entry), 0, -1);
+	   gtk_entry_set_text (entry, (gchar *) str + 3);
+	   gtk_editable_set_position (GTK_EDITABLE (entry), strlen (str));
+	}
     if(key == GDK_Tab
        || key == GDK_KP_Tab
        || key == GDK_ISO_Left_Tab)
@@ -120,12 +141,10 @@ command_key_event (GtkEntry   *entry,
 	    strcpy(command, (char *) gtk_entry_get_text(entry));
 	    mc_exec_command(mc, command);
 
-	    append_history_entry(mc, (char *) command, FALSE);
 	    history_position = MC_HISTORY_LIST_LENGTH;		   
 	    free(command);
 
 	    strcpy(current_command, "");
-	    gtk_entry_set_text(entry, (gchar *) "");
 	    propagate_event = FALSE;
 	}
     else if (mc->preferences.auto_complete_history && key >= GDK_space && key <= GDK_asciitilde )
@@ -473,6 +492,9 @@ mc_create_command_entry (MCData *mc)
     g_signal_connect (mc->entry, "key_press_event",
 		      G_CALLBACK (command_key_event), mc);
    
+    g_signal_connect (mc->entry, "button_press_event",
+		      G_CALLBACK (button_press_cb), mc);
+
     if (!mc->preferences.show_default_theme)
         mc_command_update_entry_color (mc); 
 
