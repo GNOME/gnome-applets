@@ -1,5 +1,13 @@
 2003-06-12  Jody Goldberg <jody@gnome.org>
 
+	* gkb.c (find_input_client) : delete.  Nothing calls it.
+	  it uses raw X data structures.
+	(check_client) : ditto.
+	* switcher.c (find_input_client) : delete this copy too.
+	(check_client) : ditto.
+
+2003-06-12  Jody Goldberg <jody@gnome.org>
+
 	* Initial reorg to make the pref dialog available as a standalone app
 	  in preparation for making it part of a capplet.
 	  While in here, clean up the gconf usage.

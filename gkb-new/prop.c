@@ -491,3 +491,21 @@ properties_dialog (BonoboUIComponent *uic,
   gkb_prop_create_property_box (pbi, uic != NULL);
   gtk_widget_show_all (pbi->box);
 }
+
+/* Add AtkRelation */                                                           
+void                                                                            
+add_atk_relation(GtkWidget *obj1, GtkWidget *obj2, AtkRelationType rel_type)
+{
+    AtkObject *atk_obj1, *atk_obj2;
+    AtkRelationSet *relation_set;
+    AtkRelation *relation;
+
+    atk_obj1 = gtk_widget_get_accessible(obj1);
+
+    atk_obj2 = gtk_widget_get_accessible(obj2);
+
+    relation_set = atk_object_ref_relation_set (atk_obj1);
+    relation = atk_relation_new(&atk_obj2, 1, rel_type);
+    atk_relation_set_add(relation_set, relation);
+    g_object_unref(G_OBJECT (relation));
+}
