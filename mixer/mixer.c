@@ -866,6 +866,7 @@ mixer_applet_create (PanelApplet *applet)
 						 ("Couldn't open mixer device %s\n"),
 						 device, NULL);
 		gtk_dialog_run (GTK_DIALOG (dialog));
+		gtk_widget_destroy (dialog);
 	}
 
  	if (GTK_IS_ACCESSIBLE (gtk_widget_get_accessible(GTK_WIDGET(applet)))) {
