@@ -34,7 +34,7 @@ properties_set_insensitive(MultiloadApplet *ma)
 	total_graphs = 0;
 	last_graph = 0;
 		
-	for (i = 0; i < 5; i++)
+	for (i = 0; i < NGRAPHS; i++)
 		if (ma->graphs[i]->visible)
 		{
 			last_graph = i;
@@ -113,7 +113,7 @@ spin_button_changed_cb(GtkWidget *widget, gpointer name)
 	{
 		case PROP_SPEED:
 		{
-			for (i = 0; i < 5; i++)
+			for (i = 0; i < NGRAPHS; i++)
 			{
 				load_graph_stop(ma->graphs[i]);
 				ma->graphs[i]->speed = value;
@@ -125,7 +125,7 @@ spin_button_changed_cb(GtkWidget *widget, gpointer name)
 		}
 		case PROP_SIZE:
 		{
-			for (i = 0; i < 5; i++)
+			for (i = 0; i < NGRAPHS; i++)
 			{
 				ma->graphs[i]->size = value ;
 				

@@ -139,7 +139,7 @@ multiload_change_size_cb(PanelApplet *applet, gint size, gpointer data)
 	gint i;
 	MultiloadApplet *ma = (MultiloadApplet *)data;
 
-	for (i = 0; i < 5; i++) {
+	for (i = 0; i < NGRAPHS; i++) {
 		ma->graphs[i]->pixel_size = size;
   	  	if (ma->graphs[i]->orient) 
   	  		gtk_widget_set_size_request (ma->graphs[i]->main_widget, 
@@ -169,7 +169,7 @@ multiload_destroy_cb(GtkWidget *widget, gpointer data)
 	gint i;
 	MultiloadApplet *ma = data;
 	
-	for (i = 0; i < 5; i++)
+	for (i = 0; i < NGRAPHS; i++)
 	{
 		if (ma->graphs[i]->visible)
 		{
@@ -194,7 +194,7 @@ multiload_enter_cb(GtkWidget *widget, GdkEventCrossing *event, gpointer data)
 
 	ma = (MultiloadApplet *)data;
 	
-	for (i = 0; i < 5; i++)
+	for (i = 0; i < NGRAPHS; i++)
 		if (ma->graphs[i]->visible)
 		{
 			ma->graphs[i]->tooltip_update = TRUE;
@@ -212,7 +212,7 @@ multiload_leave_cb(GtkWidget *widget, GdkEventCrossing *event, gpointer data)
 
 	ma = (MultiloadApplet *)data;
 
-	for (i = 0; i < 5; i++)
+	for (i = 0; i < NGRAPHS; i++)
 		if (ma->graphs[i]->visible)
 			ma->graphs[i]->tooltip_update = FALSE;
 		
@@ -270,7 +270,7 @@ multiload_applet_refresh(MultiloadApplet *ma)
 	PanelAppletOrient orientation;
 	
 	/* stop and free the old graphs */
-	for (i = 0; i < 5; i++)
+	for (i = 0; i < NGRAPHS; i++)
 	{
 		if (ma->graphs[i]->visible)
 		{
@@ -295,7 +295,7 @@ multiload_applet_refresh(MultiloadApplet *ma)
 	
 	gtk_container_add(GTK_CONTAINER(ma->applet), ma->box);
 			
-	/* create the 5 graphs, passing in their user-configurable properties with gconf. */
+	/* create the NGRAPHS graphs, passing in their user-configurable properties with gconf. */
 	
 	ma->graphs[0] = cpuload_applet_new(ma->applet, NULL);
 	ma->graphs[1] = memload_applet_new(ma->applet, NULL);
@@ -305,7 +305,7 @@ multiload_applet_refresh(MultiloadApplet *ma)
 	
 	/* only start and display the graphs the user has turned on */
 
-	for (i = 0; i < 5; i++) {
+	for (i = 0; i < NGRAPHS; i++) {
 	    gtk_box_pack_start(GTK_BOX(ma->box), 
 			       ma->graphs[i]->main_widget, 
 			       FALSE, FALSE, 1);
@@ -354,7 +354,7 @@ multiload_applet_new(PanelApplet *applet, const gchar *iid, gpointer data)
 	
 	gtk_container_add(GTK_CONTAINER(applet), box);
 	
-	/* create the 5 graphs, passing in their user-configurable properties with gconf. */
+	/* create the NGRAPHS graphs, passing in their user-configurable properties with gconf. */
 	ma->graphs[0] = cpuload_applet_new(applet, NULL);
 	ma->graphs[1] = memload_applet_new(applet, NULL);
 	ma->graphs[2] = netload_applet_new(applet, NULL);
@@ -362,7 +362,7 @@ multiload_applet_new(PanelApplet *applet, const gchar *iid, gpointer data)
 	ma->graphs[4] = loadavg_applet_new(applet, NULL);
 
 	/* only start and display the graphs the user has turned on */
-	for (i = 0; i < 5; i++) {
+	for (i = 0; i < NGRAPHS; i++) {
 	    gtk_box_pack_start(GTK_BOX(box), 
 			       ma->graphs[i]->main_widget, 
 			       FALSE, FALSE, 1);
