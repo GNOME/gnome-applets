@@ -457,8 +457,9 @@ static gint updateOutput(gpointer data)
                 change[strlen(change) -1] = 0;
                 change[strlen(change) -1] = 0;
                 change_val = strtod(change, NULL); 
-                
-                percent = (change_val/price_val)*1E+02; 
+               
+		/* GNOME Bug 143737 - prothonotar@tarnation.dyndns.org */ 
+                percent = (change_val/(price_val-change_val))*1E+02; 
 
                 /* Restore numeric format for displaying */
                 setlocale(LC_NUMERIC, getenv("LANG"));
