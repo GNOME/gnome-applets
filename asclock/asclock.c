@@ -433,7 +433,6 @@ int main( int argc, char *argv[] )
     /* GtkWidget is the storage type for widgets */
     GdkWindowPrivate *clk;
     GdkColor colour;
-    GdkColormap *cmap;
 
     bindtextdomain(PACKAGE, GNOMELOCALEDIR);
     textdomain(PACKAGE);
