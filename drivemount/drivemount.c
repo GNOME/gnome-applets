@@ -44,7 +44,7 @@ static void about_cb (AppletWidget *widget, gpointer data)
 	sprintf(version,"%d.%d.%d",DRIVEMOUNT_APPLET_VERSION_MAJ,
 		DRIVEMOUNT_APPLET_VERSION_MIN, DRIVEMOUNT_APPLET_VERSION_REV);
 
-	authors[0] = "John Ellis (gqview@geocities.com)";
+	authors[0] = "John Ellis <johne@bellatlantic.net>";
 	authors[1] = NULL;
 
         about = gnome_about_new ( _("Drive Mount Applet"), version,

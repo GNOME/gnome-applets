@@ -29,7 +29,7 @@ static void about_cb (AppletWidget *widget, gpointer data)
 	sprintf(version,_("%d.%d.%d"),CLOCKMAIL_APPLET_VERSION_MAJ,
 		CLOCKMAIL_APPLET_VERSION_MIN, CLOCKMAIL_APPLET_VERSION_REV);
 
-	authors[0] = _("John Ellis (gqview@geocities.com)");
+	authors[0] = _("John Ellis <johne@bellatlantic.net>");
 	authors[1] = NULL;
 
         about = gnome_about_new ( _("Clock and Mail Notify Applet"), version,

@@ -78,14 +78,15 @@ static int get_stats(int *in, int *out);
 static void about_cb (AppletWidget *widget, gpointer data)
 {
 	GtkWidget *about;
-	const gchar *authors[2];
+	const gchar *authors[8];
 	gchar version[32];
 
 	sprintf(version,"%d.%d.%d",MODEMLIGHTS_APPLET_VERSION_MAJ,
 		MODEMLIGHTS_APPLET_VERSION_MIN, MODEMLIGHTS_APPLET_VERSION_REV);
 
-	authors[0] = "John Ellis (gqview@geocities.com)";
-	authors[1] = NULL;
+	authors[0] = "John Ellis <johne@bellatlantic.net>";
+	authors[1] = "Martin Baulig <martin@home-of-linux.org> - ISDN";
+	authors[2] = NULL;
 
         about = gnome_about_new ( _("Modem Lights Applet"), version,
 			"(C) 1998",
