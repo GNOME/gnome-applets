@@ -37,8 +37,13 @@
 
 #define GROUPS_SUBMENU_PATH "/popups/popup/groups"
 
-static gboolean terminatedOnce = FALSE;
-static GSwitchItApplet *theAppletInstance = NULL;
+static GSList *appletInstances = NULL;
+
+#define GSwitchItAppletFirstInstance() \
+	(!g_slist_length (appletInstances))
+
+#define GSwitchItAppletLastInstance() \
+	(!g_slist_length (appletInstances))
 
 static void GSwitchItAppletCmdCapplet (BonoboUIComponent * uic,
 				       GSwitchItApplet * sia,
@@ -153,54 +158,54 @@ GSwitchItAppletConfigChanged (GConfClient * client,
 	GSwitchItAppletReinitUi (sia);
 }
 
-static int
-GSwitchItAppletWindowCallback (Window win, Window parent,
-			       GSwitchItApplet * sia)
-{
-	return GSwitchItPluginManagerWindowCreated (&sia->pluginManager,
-						    win, parent);
-}
-
+/* Should be called once for all applets */
 static void
-GSwitchItAppletKbdConfigCallback (GSwitchItApplet * sia)
+GSwitchItAppletKbdConfigCallback (void)
 {
+	GSList* cur = appletInstances;
 	XklDebug (100,
 		  "XKB configuration changed on X Server - reiniting...\n");
-	GSwitchItKbdConfigLoadFromXCurrent (&sia->kbdConfig);
-	GSwitchItAppletConfigUpdateImages (&sia->appletConfig,
-					   &sia->kbdConfig);
-	while (sia->groupNames != NULL)
-	{
-		GSList * nn = sia->groupNames;
-		sia->groupNames = g_slist_remove_link (sia->groupNames, nn);
-		g_free (nn->data);
-		g_slist_free_1 (nn);
-		
-	}
-	sia->groupNames = GSwitchItConfigLoadGroupDescriptionsUtf8 (&sia->config);
+	while (cur != NULL) {
+		GSwitchItApplet * sia = (GSwitchItApplet*)cur->data;
+		GSwitchItKbdConfigLoadFromXCurrent (&sia->kbdConfig);
+		GSwitchItAppletConfigUpdateImages (&sia->appletConfig,
+						   &sia->kbdConfig);
+		while (sia->groupNames != NULL) {
+			GSList * nn = sia->groupNames;
+			sia->groupNames = g_slist_remove_link (sia->groupNames, nn);
+			g_free (nn->data);
+			g_slist_free_1 (nn);
+		}
+		sia->groupNames = GSwitchItConfigLoadGroupDescriptionsUtf8 (&sia->config);
 
-	GSwitchItAppletReinitUi (sia);
+		GSwitchItAppletReinitUi (sia);
+		cur = cur->next;
+	}
 }
 
+/* Should be called once for all applets */
 static void
-GSwitchItAppletStateCallback (XklStateChange
-			      changeType,
-			      int group, Bool restore,
-			      GSwitchItApplet * sia)
+GSwitchItAppletStateCallback (XklStateChange changeType,
+			      int group, Bool restore)
 {
+	GSList* cur = appletInstances;
 	XklDebug (150, "group is now %d, restore: %d\n", group, restore);
 
 	if (changeType == GROUP_CHANGED) {
-		GSwitchItPluginManagerGroupChanged (&sia->pluginManager,
-						    group);
-		XklDebug (200, "do repaint\n");
-		GSwitchItAppletRevalidateGroup (sia, group);
+		while (cur != NULL) {
+			GSwitchItApplet * sia = (GSwitchItApplet*)cur->data;
+			GSwitchItPluginManagerGroupChanged (&sia->pluginManager,
+							    group);
+			XklDebug (200, "do repaint\n");
+			GSwitchItAppletRevalidateGroup (sia, group);
+			cur = cur->next;
+		}
 	}
 }
 
+/* Should be called once for all applets */
 GdkFilterReturn
-GSwitchItAppletFilterXEvt (GdkXEvent * xev,
-			   GdkEvent * event, GSwitchItApplet * sia)
+GSwitchItAppletFilterXEvt (GdkXEvent * xev, GdkEvent * event)
 {
 	XEvent *xevent = (XEvent *) xev;
 	XklFilterEvents (xevent);
@@ -208,16 +213,19 @@ GSwitchItAppletFilterXEvt (GdkXEvent * xev,
 	case ReparentNotify:
 		{
 			XReparentEvent *rne = (XReparentEvent *) xev;
-			GtkWidget *w1;
-			GdkWindow *w;
-			w1 = gtk_widget_get_ancestor (sia->applet,
-						      GTK_TYPE_WINDOW);
-			if (w1 == NULL)
-				break;
-			w = w1->window;
-			if (w == NULL || GDK_WINDOW_XID (w) != rne->window)
-				break;
-			XklSetTransparent (GDK_WINDOW_XID (w), TRUE);
+
+			GSList* cur = appletInstances;
+			while (cur != NULL) {
+				GSwitchItApplet * sia = (GSwitchItApplet*)cur->data;
+				GdkWindow * w = sia->appletAncestor->window;
+				/* compare the applet's parent window with the even window */
+				if (w != NULL && GDK_WINDOW_XID (w) == rne->window) {
+					/* if so - make it transparent...*/
+					XklSetTransparent (rne->window, TRUE);
+					break; /* once is enough */
+				}
+				cur = cur->next;
+			}
 		}
 		break;
 	}
@@ -355,8 +363,7 @@ GSwitchItAppletFillNotebook (GSwitchItApplet * sia)
 		page = GSwitchItAppletPrepareDrawing (sia, grp);
 
 		decoratedPage =
-		    GSwitchItPluginManagerDecorateWidget (&sia->
-							  pluginManager,
+		    GSwitchItPluginManagerDecorateWidget (&sia->pluginManager,
 							  page, grp,
 							  g_slist_nth_data (
 								sia->groupNames,
@@ -646,8 +653,7 @@ GSwitchItAppletSetupGroupsSubmenu (GSwitchItApplet * sia)
 								&sia->
 								kbdConfig,
 								i);
-			if (imageFile != NULL)
-			{
+			if (imageFile != NULL) {
 				bonobo_ui_node_set_attr (node, "pixname",
 							 imageFile);
 				g_free (imageFile);
@@ -676,27 +682,31 @@ GSwitchItAppletSetupMenu (GSwitchItApplet * sia)
 	GSwitchItAppletSetupGroupsSubmenu (sia);
 }
 
+/* Should be called once for all applets */
 static void
 GSwitchItAppletStartListen (GSwitchItApplet * sia)
 {
 	gdk_window_add_filter (NULL,
 			       (GdkFilterFunc) GSwitchItAppletFilterXEvt,
-			       sia);
+			       NULL);
 	gdk_window_add_filter (gdk_get_default_root_window (),
 			       (GdkFilterFunc) GSwitchItAppletFilterXEvt,
-			       sia);
+			       NULL);
+
 	XklStartListen (XKLL_TRACK_KEYBOARD_STATE);
 }
 
+/* Should be called once for all applets */
 static void
 GSwitchItAppletStopListen (GSwitchItApplet * sia)
 {
 	XklStopListen ();
+
 	gdk_window_remove_filter (NULL, (GdkFilterFunc)
-				  GSwitchItAppletFilterXEvt, sia);
+				  GSwitchItAppletFilterXEvt, NULL);
 	gdk_window_remove_filter
 	    (gdk_get_default_root_window (),
-	     (GdkFilterFunc) GSwitchItAppletFilterXEvt, sia);
+	     (GdkFilterFunc) GSwitchItAppletFilterXEvt, NULL);
 }
 
 static void GSwitchItAppletTerm (PanelApplet *
@@ -709,6 +719,7 @@ GSwitchItAppletInit (GSwitchItApplet * sia, PanelApplet * applet)
 	GtkNotebook *notebook;
 	GConfClient *confClient;
 
+	XklDebug (100, "Starting the applet startup process for %p\n", sia);
 	glade_gnome_init ();
 
 	sia->applet = GTK_WIDGET (applet);
@@ -732,30 +743,35 @@ GSwitchItAppletInit (GSwitchItApplet * sia, PanelApplet * applet)
 	GSwitchItAppletSetTooltip (sia, _(PACKAGE));
 	gtk_widget_show_all (sia->applet);
 	gtk_widget_realize (sia->applet);
-	/* GSwitchItInstallGlibLogAppender(  ); */
-	if (XklInit (GDK_DISPLAY ()) != 0) {
-		GSwitchItAppletSetTooltip (sia,
-					   _("XKB initialization error"));
-		return TRUE;
+
+	sia->appletAncestor = gtk_widget_get_ancestor (sia->applet,
+						       GTK_TYPE_WINDOW);
+
+	if (GSwitchItAppletFirstInstance ()) {
+		/* GSwitchItInstallGlibLogAppender(  ); */
+		if (XklInit (GDK_DISPLAY ()) != 0) {
+			GSwitchItAppletSetTooltip (sia,
+						   _("XKB initialization error"));
+			return TRUE;
+		}
+		XklDebug (100, "First instance initializes xklavier\n");
+
+		XklConfigInit ();
+		if (!XklConfigLoadRegistry ()) {
+			GSwitchItAppletSetTooltip (sia,
+						   _
+						   ("Error loading XKB configuration registry"));
+			return TRUE;
+		}
 	}
 
-	XklConfigInit ();
-	if (!XklConfigLoadRegistry ()) {
-		GSwitchItAppletSetTooltip (sia,
-					   _
-					   ("Error loading XKB configuration registry"));
-		return TRUE;
+	if (GSwitchItAppletFirstInstance ()) {
+		XklDebug (100, "First instance initializes callbacks\n");
+		XklRegisterStateCallback ((XklStateCallback)
+					  GSwitchItAppletStateCallback, NULL);
+		XklRegisterConfigCallback ((XklConfigCallback)
+					   GSwitchItAppletKbdConfigCallback, NULL);
 	}
-
-	XklRegisterWindowCallback ((XklWinCallback)
-				   GSwitchItAppletWindowCallback,
-				   (void *) sia);
-	XklRegisterStateCallback ((XklStateCallback)
-				  GSwitchItAppletStateCallback,
-				  (void *) sia);
-	XklRegisterConfigCallback ((XklConfigCallback)
-				   GSwitchItAppletKbdConfigCallback,
-				   (void *) sia);
 
 	confClient = gconf_client_get_default ();
 	GSwitchItPluginContainerInit (&sia->pluginContainer, confClient);
@@ -787,6 +803,7 @@ GSwitchItAppletInit (GSwitchItApplet * sia, PanelApplet * applet)
 					  sia);
 	GSwitchItAppletFillNotebook (sia);
 	GSwitchItAppletRevalidate (sia);
+
 	g_signal_connect (G_OBJECT (sia->applet), "change_size",
 			  G_CALLBACK (GSwitchItAppletChangePixelSize), sia);
 	g_signal_connect (G_OBJECT (sia->applet), "change_background",
@@ -794,7 +811,11 @@ GSwitchItAppletInit (GSwitchItApplet * sia, PanelApplet * applet)
 	g_signal_connect (G_OBJECT (sia->applet), "button_press_event",
 			  G_CALLBACK (GSwitchItAppletButtonPressed), sia);
 
-	GSwitchItAppletStartListen (sia);
+	if (GSwitchItAppletFirstInstance ()) {
+		XklDebug (100, "First instance starts filtering\n");
+		GSwitchItAppletStartListen (sia);
+	}
+
 	gtk_widget_add_events (sia->applet, GDK_BUTTON_PRESS_MASK);
 
 	g_signal_connect (GTK_OBJECT (sia->applet), "destroy",
@@ -807,34 +828,41 @@ GSwitchItAppletInit (GSwitchItApplet * sia, PanelApplet * applet)
 void
 GSwitchItAppletTerm (PanelApplet * applet, GSwitchItApplet * sia)
 {
-	if (terminatedOnce) {
-		XklDebug (0,
-			  "Please do not call the termination method twice!!!\n");
-		return;
+	XklDebug (100, "Starting the applet shutdown process for %p\n", sia);
+	/* remove BEFORE all termination work is finished */
+	appletInstances = g_slist_remove (appletInstances, sia);
+
+	if (GSwitchItAppletLastInstance ()) {
+		XklDebug (100, "Last instance stops filtering\n");
+		GSwitchItAppletStopListen (sia);
 	}
-	terminatedOnce = TRUE;
-	XklDebug (100, "Starting the applet shutdown process\n");
-	GSwitchItAppletStopListen (sia);
+
 	GSwitchItConfigStopListen (&sia->config);
 	GSwitchItAppletConfigStopListen (&sia->appletConfig);
-	XklRegisterStateCallback (NULL, NULL);
-	XklRegisterConfigCallback (NULL, NULL);
-	XklRegisterWindowCallback (NULL, NULL);
+
+	if (GSwitchItAppletLastInstance ()) {
+		XklDebug (100, "Last instance stops callbacks\n");
+		XklRegisterStateCallback (NULL, NULL);
+		XklRegisterConfigCallback (NULL, NULL);
+	}
+
 	GSwitchItPluginManagerTermInitializedPlugins (&sia->pluginManager);
 	GSwitchItPluginManagerTerm (&sia->pluginManager);
+
 	GSwitchItAppletConfigTerm (&sia->appletConfig);
 	GSwitchItKbdConfigTerm (&sia->kbdConfig);
 	GSwitchItConfigTerm (&sia->config);
 	GSwitchItPluginContainerTerm (&sia->pluginContainer);
 	GSwitchItAppletCleanupNotebook (sia);
 
-	XklConfigFreeRegistry ();
-	XklConfigTerm ();
-	XklTerm ();
+	if (GSwitchItAppletLastInstance ()) {
+		XklDebug (100, "Last instance stops xklavier\n");
+		XklConfigFreeRegistry ();
+		XklConfigTerm ();
+		XklTerm ();
+	}
 
-	terminatedOnce = TRUE;
-	g_free (theAppletInstance);
-	theAppletInstance = NULL;
+	g_free (sia);
 	XklDebug (100, "The applet successfully terminated\n");
 }
 
@@ -842,20 +870,17 @@ gboolean
 GSwitchItAppletNew (PanelApplet * applet)
 {
 	gboolean rv = TRUE;
+	GSwitchItApplet * sia;
 #if 0
 	GLogLevelFlags fatal_mask;
 	fatal_mask = G_LOG_LEVEL_WARNING | G_LOG_LEVEL_CRITICAL;
 	g_log_set_always_fatal (fatal_mask);
 #endif
-	if (theAppletInstance == NULL) {
-		terminatedOnce = FALSE;
-		theAppletInstance = g_new0 (GSwitchItApplet, 1);
-		rv = GSwitchItAppletInit (theAppletInstance, applet);
-		XklDebug (100, "The applet successfully started: %d\n",
-			  rv);
-	} else
-		XklDebug (0,
-			  "Please do not call the initialization method twice!!!\n");
+	sia = g_new0 (GSwitchItApplet, 1);
+	rv = GSwitchItAppletInit (sia, applet);
+	/* append AFTER all initialization work is finished */
+	appletInstances = g_slist_append (appletInstances, sia);
+	XklDebug (100, "The applet successfully started: %d\n", rv);
 	return rv;
 }
 

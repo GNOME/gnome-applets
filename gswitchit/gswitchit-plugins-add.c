@@ -126,7 +126,8 @@ CappletAvailablePluginsSelectionChanged (GtkTreeSelection *
 void
 CappletEnablePlugin (GtkWidget * btnAdd, GSwitchItPluginsCapplet * gswic)
 {
-	GladeXML *data = glade_xml_new (GNOME_GLADEDIR "/gswitchit-plugins.glade", "gswitchit_plugins_add", NULL);	// default domain!
+	/* default domain! */
+	GladeXML *data = glade_xml_new (GNOME_GLADEDIR "/gswitchit-plugins.glade", "gswitchit_plugins_add", NULL);	
 	GtkWidget *popup =
 	    glade_xml_get_widget (data, "gswitchit_plugins_add");
 	GtkWidget *availablePluginsList;

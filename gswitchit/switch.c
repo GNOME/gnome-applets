@@ -30,4 +30,4 @@ KeyboardAppletFactory (PanelApplet * applet,
 	return TRUE;
 }
 
-PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_KeyboardApplet_Factory", PANEL_TYPE_APPLET, "gswitchit", "0", KeyboardAppletFactory, NULL)	//data
+PANEL_APPLET_BONOBO_FACTORY ("OAFIID:GNOME_KeyboardApplet_Factory", PANEL_TYPE_APPLET, "gswitchit", "0", KeyboardAppletFactory, NULL)	/* data */

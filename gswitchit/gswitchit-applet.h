@@ -31,6 +31,7 @@ typedef struct _GSwitchItApplet {
 	GSwitchItPluginManager pluginManager;
 
 	GtkWidget *applet;
+	GtkWidget *appletAncestor;
 	GtkWidget *notebook;
 	GtkWidget *ebox;
 	GtkWidget *aboutDialog;
@@ -45,8 +46,7 @@ extern void GSwitchItAppletRevalidateGroup (GSwitchItApplet * sia,
 extern void GSwitchItAppletReinitUi (GSwitchItApplet * sia);
 
 extern GdkFilterReturn GSwitchItAppletFilterXEvt (GdkXEvent * xevent,
-						  GdkEvent * event,
-						  GSwitchItApplet * sia);
+						  GdkEvent * event);
 
 extern gboolean GSwitchItAppletNew (PanelApplet * applet);
 

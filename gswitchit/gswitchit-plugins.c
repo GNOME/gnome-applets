@@ -251,7 +251,8 @@ CappletSetup (GSwitchItPluginsCapplet * gswic)
 	GtkTreeSelection *selection;
 	const char *iconFile;
 	glade_gnome_init ();
-	data = glade_xml_new (GNOME_GLADEDIR "/gswitchit-plugins.glade", "gswitchit_plugins", NULL);	// default domain!
+	/* default domain! */
+	data = glade_xml_new (GNOME_GLADEDIR "/gswitchit-plugins.glade", "gswitchit_plugins", NULL);	
 	gswic->capplet = capplet =
 	    glade_xml_get_widget (data, "gswitchit_plugins");
 	iconFile = gnome_program_locate_file (NULL,
@@ -331,7 +332,7 @@ main (int argc, char **argv)
 		return 1;
 	}
 	gconf_error = NULL;
-	//GSwitchItInstallGlibLogAppender(  );
+	/*GSwitchItInstallGlibLogAppender(  );*/
 	XklInit (GDK_DISPLAY ());
 	XklConfigInit ();
 	XklConfigLoadRegistry ();
@@ -357,7 +358,7 @@ main (int argc, char **argv)
 	return 0;
 }
 
-// functions just for plugins - otherwise ldd is not happy
+/* functions just for plugins - otherwise ldd is not happy */
 void
 GSwitchItPluginContainerReinitUi (GSwitchItPluginContainer * pc)
 {
