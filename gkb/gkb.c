@@ -1,4 +1,4 @@
-/* gkb.c - The gkb keyboard map changer (setxkbmap frontend) for GNOME panel
+/* gkb.c - The gkb keyboard map changer (kbmap frontend) for GNOME panel
  * Written by Szabolcs Ban <bansz@szif.hu>
  * Thanx for help to Neko <neko@kornel.szif.hu>
  */
@@ -38,9 +38,12 @@ gkb_clicked_cb(GtkWidget * widget, GdkEventButton * e,
 
     gnome_pixmap_load_file (GNOME_PIXMAP (pixmap), pr.dfile[curpix]);
 
-    comm = g_malloc(len=(strlen(pr.dmap[curpix])+11));
-    g_snprintf(comm, len, "setxkbmap %s",  pr.dmap[curpix]);
-
+    comm = g_malloc(len=(strlen(pr.dmap[curpix])+(strcmp(pr.dcmd,"xmodmap")?11:
+     strlen(gnome_datadir_file(g_copy_strings ("xmodmap/", "xmodmap.", pr.dmap[curpix], NULL)) )+8) ) );
+    g_snprintf(comm, len, "%s %s", pr.dcmd ,
+     (strcmp(pr.dcmd,"xmodmap")?pr.dmap[curpix]:
+      gnome_datadir_file(g_copy_strings ("xmodmap/", "xmodmap.", pr.dmap[curpix], NULL)) ) );
+                                                                           
     system(comm);
     free(comm);
 
@@ -88,14 +91,14 @@ about_cb (AppletWidget *widget, gpointer data)
 {
 	GtkWidget *about;
 
-        static const char *authors[] = { "Shooby Ban <bansz@szif.hu>", NULL };
+        static const char *authors[] = { "Szabolcs Ban (Shooby) <bansz@szif.hu>", NULL };
 	
-	about = gnome_about_new (_("The GNOME KB Applet"), _("0.28"),
+	about = gnome_about_new (_("The GNOME KB Applet"), _("0.31"),
 			_("(C) 1998 LSC - Linux Supporting Center"),
 			authors,
 			_("This applet used to switch between "
 			  "keyboard maps. No more. It uses "
-			  "setxkbmap. "
+			  "setxkbmap, or xmodmap. "
 			  "The main site of this app moved "
 			  "tempolary to URL http://lsc.kva.hu/gkb."
 			  "Mail me your flag, please (60x40 size),"
@@ -143,8 +146,12 @@ main(int argc, char *argv[])
         /* first: set the keymap */
 
         curpix = 0;
-        comm = g_malloc(len=(strlen(pr.dmap[curpix])+11));
-        g_snprintf(comm, len, "setxkbmap %s", pr.dmap[curpix]);
+        comm = g_malloc(len=(strlen(pr.dmap[curpix])+(strcmp(pr.dcmd,"xmodmap")?11:
+         strlen(gnome_datadir_file(g_copy_strings ("xmodmap/", "xmodmap.", pr.dmap[curpix], NULL)) )+8) ) );
+        g_snprintf(comm, len, "%s %s", pr.dcmd ,
+         (strcmp(pr.dcmd,"xmodmap")?pr.dmap[curpix]:
+          gnome_datadir_file(g_copy_strings ("xmodmap/", "xmodmap.", pr.dmap[curpix], NULL)) ) );
+
         system(comm); 
         free(comm);
         
