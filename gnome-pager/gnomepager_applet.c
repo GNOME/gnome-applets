@@ -1835,7 +1835,7 @@ init_applet_gui(int horizontal)
 					  j, j + 1, k, k + 1);
 		j++;
 		if (horizontal ?
-		    (j >= num_desk / config.pager_rows) :
+		    (j >= (num_desk + config.pager_rows - 1) / config.pager_rows) :
 		    (j >= config.pager_rows)) {
 			j = 0;
 			k++;

@@ -1,3 +1,12 @@
+1999-07-22  Karsten Weiss  <karsten@addx.au.s.shuttle.de>
+
+	* gnomepager_applet.c (init_applet_gui): Improved the layout
+	calculation. E.g. the case num_desk==7 && config.pager_rows==2
+	was broken as it resulted in three rows. Unfortunately, the
+	calculation is still not perfect as it is e.g. impossible to
+	layout num_desk==7 && config.pager_rows==6 from left to right
+	and top. This is a no win situation.
+
 1999-07-11  Jacob Berkman  <jberkman@andrew.cmu.edu>
 
 	* gnomepager_applet.c (main): move the warning dialog to after
