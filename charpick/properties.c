@@ -304,8 +304,18 @@ static void default_chars_frame_create()
   return;
 }
 
+static void
+phelp_cb (GtkWidget *w, gint tab, gpointer data)
+{
+        GnomeHelpMenuEntry help_entry = { "charpick_applet",
+                                          "index.html#CHARPICKAPPLET-PREFS" };        gnome_help_display(NULL, &help_entry);
+}
+
+
 void property_show(AppletWidget *applet, gpointer data)
 {
+  static GnomeHelpMenuEntry help_entry = { NULL, "properties" };
+
   temp_properties.default_charlist = 
     g_strdup(curr_data.properties->default_charlist);
   temp_properties.follow_panel_size = curr_data.properties->follow_panel_size;
@@ -320,6 +330,8 @@ void property_show(AppletWidget *applet, gpointer data)
 		      GTK_SIGNAL_FUNC(property_apply_cb), &curr_data);
   gtk_signal_connect (GTK_OBJECT(propwindow), "destroy",
 		      GTK_SIGNAL_FUNC(property_destroy_cb), NULL);
+  gtk_signal_connect( GTK_OBJECT(propwindow), "help",
+		      GTK_SIGNAL_FUNC(phelp_cb), NULL);
   gtk_widget_show_all(propwindow);
   return;
   applet = NULL;

@@ -454,6 +454,16 @@ about (AppletWidget *applet, gpointer data)
   data = NULL;
 }
 
+
+static void
+help_cb (GtkWidget *w, gpointer data)
+{
+        GnomeHelpMenuEntry help_entry = { "charpick_applet",
+                                          "index.html" };
+        gnome_help_display(NULL, &help_entry);
+}
+
+
 int
 main (int argc, char *argv[])
 {
@@ -567,18 +577,24 @@ main (int argc, char *argv[])
 		     GTK_SIGNAL_FUNC(applet_change_orient), NULL);
 
   applet_widget_register_stock_callback (APPLET_WIDGET (applet),
-				         "about",
-					 GNOME_STOCK_MENU_ABOUT,
-					 _("About..."),
-					 about,
-					 NULL);
-
-  applet_widget_register_stock_callback (APPLET_WIDGET (applet),
 				         "properties",
 					 GNOME_STOCK_MENU_PROP,
 					 _("Properties..."),
 					 property_show,
 					 &curr_data);
+
+  applet_widget_register_stock_callback (APPLET_WIDGET (applet),
+				         "help",
+					 GNOME_STOCK_PIXMAP_HELP,
+					 _("Help"),
+					 help_cb, NULL);
+
+  applet_widget_register_stock_callback (APPLET_WIDGET (applet),
+				         "about",
+					 GNOME_STOCK_MENU_ABOUT,
+					 _("About..."),
+					 about,
+					 NULL);
 
 
   
