@@ -80,7 +80,7 @@ const gchar multiload_menu_xml [] =
 void
 start_procman_cb (BonoboUIComponent *uic, gpointer data, const gchar *name)
 {
-	gnome_execute_shell(NULL, "procman");
+	gnome_execute_shell(NULL, "gnome-system-monitor");
 	return;
 }
               
