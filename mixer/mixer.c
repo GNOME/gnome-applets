@@ -180,7 +180,7 @@ setMixer(gint vol)
 /*g_message("Saving mixer value of %d",tvol);*/
 	ioctl(mixerfd, MIXER_WRITE(SOUND_MIXER_VOLUME), &tvol);
 #endif
-#if SUN_API
+#ifdef SUN_API
  	audio_info_t ainfo;
 	AUDIO_INITINFO (&ainfo);
  	ainfo.play.gain = vol;
