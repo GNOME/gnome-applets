@@ -439,6 +439,7 @@ GSwitchItAppletSetBackground(PanelAppletBackgroundType type,
 			g_object_unref (style->bg_pixmap[GTK_STATE_NORMAL]);
 		style->bg_pixmap[GTK_STATE_NORMAL] = g_object_ref (pixmap);
 		gtk_widget_set_style (w, style);
+		g_object_unref (style);
 		break;
 	}
 	/* go down */
@@ -462,7 +463,7 @@ GSwitchItAppletChangeBackground (PanelApplet * widget,
 {
 	GtkRcStyle *rc_style = gtk_rc_style_new ();
 	GSwitchItAppletSetBackground(type, rc_style, sia->applet, color, pixmap);
-	g_object_unref (rc_style);
+	gtk_rc_style_unref (rc_style);
 }
 
 static gboolean

@@ -278,7 +278,7 @@ applet_change_bg_cb (PanelApplet *panel_applet,
 	gtk_widget_set_style (GTK_WIDGET (applet->w_applet), NULL);
 	rc_style = gtk_rc_style_new ();
 	gtk_widget_modify_style (GTK_WIDGET (applet->w_applet), rc_style);
-	g_object_unref (rc_style);
+	gtk_rc_style_unref (rc_style);
 
 	switch (type)
 	{
@@ -298,6 +298,7 @@ applet_change_bg_cb (PanelApplet *panel_applet,
 					pixmap);
 			gtk_widget_set_style (
 					GTK_WIDGET (applet->w_applet), style);
+			g_object_unref (style);
 			break;
 	}
 }

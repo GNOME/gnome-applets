@@ -171,7 +171,7 @@ multiload_change_background_cb (PanelApplet *a,
 	gtk_widget_set_style (GTK_WIDGET (ma->applet), NULL);
 	rc_style = gtk_rc_style_new ();
 	gtk_widget_modify_style (GTK_WIDGET (ma->applet), rc_style);
-	g_object_unref (rc_style);
+	gtk_rc_style_unref (rc_style);
 
 	switch (type) {
 		case PANEL_COLOR_BACKGROUND:
@@ -187,6 +187,7 @@ multiload_change_background_cb (PanelApplet *a,
 			style->bg_pixmap[GTK_STATE_NORMAL] = g_object_ref
 				(pixmap);
 			gtk_widget_set_style (GTK_WIDGET (ma->applet), style);
+			g_object_unref (style);
 			break;
 
 		case PANEL_NO_BACKGROUND:

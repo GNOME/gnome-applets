@@ -41,7 +41,7 @@ applet_back_change (PanelApplet			*a,
         gtk_widget_set_style (GTK_WIDGET (eyes_applet->applet), NULL);
         rc_style = gtk_rc_style_new ();
         gtk_widget_modify_style (GTK_WIDGET (eyes_applet->applet), rc_style);
-        g_object_unref (rc_style);
+        gtk_rc_style_unref (rc_style);
 
         switch (type) {
                 case PANEL_COLOR_BACKGROUND:
@@ -59,6 +59,7 @@ applet_back_change (PanelApplet			*a,
                                 (pixmap);
                         gtk_widget_set_style (GTK_WIDGET (eyes_applet->applet),
                                         style);
+                        g_object_unref (style);
                         break;
 
                 case PANEL_NO_BACKGROUND:
