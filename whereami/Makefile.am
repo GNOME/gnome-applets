@@ -1,3 +1,5 @@
+SUBDIRS = docs
+
 INCLUDES = $(GNOME_INCLUDEDIR) -DGNOMELOCALEDIR=\""$(datadir)/locale"\"
 
 bin_PROGRAMS = whereami_applet

@@ -1,4 +1,4 @@
-SUBDIRS = themes default_theme
+SUBDIRS = themes default_theme docs
 
 INCLUDES = -I. -I$(srcdir) 				\
 	-I$(top_srcdir)/intl -I$(top_builddir)/intl	\

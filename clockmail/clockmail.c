@@ -462,6 +462,13 @@ static void destroy_applet(GtkWidget *widget, gpointer data)
 	widget = NULL;
 }
 
+static void
+help_cb (AppletWidget *applet, gpointer data)
+{
+	GnomeHelpMenuEntry help_entry = { "clockmail_applet", "index.html" };
+	gnome_help_display (NULL, &help_entry);
+}
+
 static AppData *create_new_app(GtkWidget *applet)
 {
         AppData *ad;
@@ -554,6 +561,11 @@ static AppData *create_new_app(GtkWidget *applet)
 						_("Properties..."),
 						property_show,
 						ad);
+
+	applet_widget_register_stock_callback(APPLET_WIDGET(ad->applet),
+					      "help",
+					      GNOME_STOCK_PIXMAP_HELP,
+					      _("Help"), help_cb, NULL);
 
 	applet_widget_register_stock_callback(APPLET_WIDGET(ad->applet),
 						"about",

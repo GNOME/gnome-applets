@@ -1084,18 +1084,17 @@ int main(int argc, char **argv)
                                               NULL);
 
 	applet_widget_register_stock_callback(APPLET_WIDGET(applet),
+					      "help",
+					      GNOME_STOCK_PIXMAP_HELP,
+					      _("Help"),
+					      show_help_cb,
+					      NULL);
+
+	applet_widget_register_stock_callback(APPLET_WIDGET(applet),
 					      "about",
 					      GNOME_STOCK_MENU_ABOUT,
 					      _("About..."),
 					      about_cb, NULL);
-
-
-	applet_widget_register_callback(APPLET_WIDGET(applet),
-					"help",
-					_("Help"),
-					show_help_cb,
-					NULL);
-
 	applet_widget_gtk_main();
 
 

@@ -432,6 +432,13 @@ static gint save_session_cb(GtkWidget *widget, gchar *privcfgpath,
 	widget = NULL;
 	globcfgpath = NULL;
 }
+
+static void
+help_cb (AppletWidget *applet, gpointer data)
+{
+	GnomeHelpMenuEntry help_entry = { "asclock_applet", "index.html" };
+	gnome_help_display (NULL, &help_entry);
+}
 #endif
 
 int main( int argc, char *argv[] )
@@ -596,17 +603,22 @@ int main( int argc, char *argv[] )
     cmap = gdk_window_get_colormap(my->window->window);
 #ifdef ASCLOCK_GNOME
     applet_widget_register_stock_callback (APPLET_WIDGET (my->window),
-                                           "about",
-                                           GNOME_STOCK_MENU_ABOUT,
-                                           _("About..."),
-                                           (AppletCallbackFunc)about_dialog,
-                                           NULL);
-    applet_widget_register_stock_callback (APPLET_WIDGET (my->window),
                                            "properties",
                                            GNOME_STOCK_MENU_PROP,
                                            _("Properties..."),
                                            (AppletCallbackFunc)properties_dialog,
                                            my);
+    applet_widget_register_stock_callback (APPLET_WIDGET (my->window),
+					   "help",
+					   GNOME_STOCK_PIXMAP_HELP,
+					   _("Help"), help_cb, NULL);
+
+    applet_widget_register_stock_callback (APPLET_WIDGET (my->window),
+                                           "about",
+                                           GNOME_STOCK_MENU_ABOUT,
+                                           _("About..."),
+                                           (AppletCallbackFunc)about_dialog,
+                                           NULL);
 
     gtk_signal_connect(GTK_OBJECT(my->window),"save_session",
                        GTK_SIGNAL_FUNC(save_session_cb),

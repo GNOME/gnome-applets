@@ -344,20 +344,6 @@ main(int argc, char **argv)
 	gtk_signal_connect(GTK_OBJECT(WC.applet),"save_session",
 			   GTK_SIGNAL_FUNC(applet_save_session),
 			   NULL);
-	
-	/* add an item to the applet menu */
-	applet_widget_register_stock_callback(APPLET_WIDGET(WC.applet),
-					      "about",
-					      GNOME_STOCK_MENU_ABOUT,
-					      _("About..."),
-					      about_cb,
-					      NULL);
-	
-	applet_widget_register_callback(APPLET_WIDGET(WC.applet),
-					"help",
-					_("Help"),
-					show_help_cb,
-					NULL);
 
 	/* add an item to the applet menu */
 	applet_widget_register_stock_callback(APPLET_WIDGET(WC.applet),
@@ -365,6 +351,20 @@ main(int argc, char **argv)
 					      GNOME_STOCK_MENU_PROP,
 					      _("Properties..."),
 					      properties_cb,
+					      NULL);
+
+	applet_widget_register_stock_callback(APPLET_WIDGET(WC.applet),
+					      "help",
+					      GNOME_STOCK_PIXMAP_HELP,
+					      _("Help"),
+					      show_help_cb,
+					      NULL);
+	
+	applet_widget_register_stock_callback(APPLET_WIDGET(WC.applet),
+					      "about",
+					      GNOME_STOCK_MENU_ABOUT,
+					      _("About..."),
+					      about_cb,
 					      NULL);
 	
 	/* add the widget to the applet-widget, and thereby actually

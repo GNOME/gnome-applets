@@ -648,6 +648,15 @@ static gint update_clock (gpointer data)
     data = NULL;
 }
 
+static void
+help_cb (AppletWidget *applet, gpointer data)
+{
+	static GnomeHelpMenuEntry help_entry = { 
+		"anotherclock_applet", "index.html"
+	};
+	gnome_help_display (NULL, &help_entry);
+}
+
 /*****************
  * Main function *
  *****************/
@@ -709,18 +718,21 @@ int main (int argc, char *argv[])
     gtk_signal_connect(GTK_OBJECT(applet),"change_pixel_size",
 		       GTK_SIGNAL_FUNC(change_pixel_size), NULL);
     applet_widget_register_stock_callback (APPLET_WIDGET(applet),
-					   "about",
-					   GNOME_STOCK_MENU_ABOUT,
-					   _("About..."),
-					   cb_about,
-					   NULL);
-    applet_widget_register_stock_callback (APPLET_WIDGET(applet),
 					   "properties",
 					   GNOME_STOCK_MENU_PROP,
 					   _("Properties..."),
 					   cb_properties,
 					   NULL);
-
+    applet_widget_register_stock_callback (APPLET_WIDGET(applet),
+					   "help",
+					   GNOME_STOCK_PIXMAP_HELP,
+					   _("Help"), help_cb, NULL);
+    applet_widget_register_stock_callback (APPLET_WIDGET(applet),
+					   "about",
+					   GNOME_STOCK_MENU_ABOUT,
+					   _("About..."),
+					   cb_about,
+					   NULL);
     /* applet main loop */
     applet_widget_gtk_main ();
           

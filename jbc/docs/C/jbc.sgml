@@ -1,0 +1,141 @@
+ <sect1 id="jcb">
+  <title>Binary Clock</title>
+  <para>
+    <application>Jon's Binary Clock</application> (or 
+    <application>jbc_applet</application> for short) is an applet
+    which shows the time in an unusual form: binary coded decimal. 
+    It has twenty-four LEDs which represent the hours, minutes and
+    seconds by illuminating the appropriate LED.
+  </para>
+  <para>
+    You can start the binary clock by clicking <mousebutton>button
+    3</mousebutton> on an empty part of the <interface>panel</interface>
+    and following the sequence
+    <menuchoice>
+     <guimenu>Applets</guimenu>
+     <guisubmenu>Clocks</guisubmenu>
+     <guimenuitem>JCB Binary Clock</guimenuitem>
+    </menuchoice>
+    or you can type the following command at a command line:
+    <command>jbc_applet --activate-goad-server=jbc_applet</command>
+  </para>
+  <para>
+    The binary clock applet was written by Jon Anhold
+    (<email>jon@snoopy.net</email>. Please report bugs in it to the
+    <ulink type="http" url="http://bugs.gnome.org">GNOME bug
+    tracking system</ulink>. You can do this by following the
+    guidelines on that site or by using <application>bug-buddy</application>
+    from the command-line. For the package, put gnome-applets.
+  </para>
+
+  <sect2 id="jcb-usage">
+   <title>Usage</title>
+   <para>
+     You don't need to do anything special to this clock. It just
+     sits there and flashes lights at you. Some of the standard applet
+     mouse options are available:
+   </para>
+
+   <orderedlist>
+    <listitem>
+     <para>
+       Pressing <mousebutton>mouse button 1</mousebutton> has
+       no effect.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+       Holding down <mousebutton>mouse button 2</mousebutton> allows you to 
+       move the clock about in the same way you move anything on the panel
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+       Pressing <mousebutton>mouse button 3</mousebutton> brings
+       up the standard choices available for applets, including an
+       About box, but no preferences menu.
+     </para>
+    </listitem>
+   </orderedlist>
+   </sect2>
+
+   <sect2 id="jcb-lights">
+    <title>Deciphering the lights</title>
+    <para>
+      BCD stands for binary-coded decimal, a way of representing 
+      normal denary (0,1,2,3,4,5,6,7,8,9) numbers as what programmers
+      call &quot;a set of binary numbers in four bits, thus removing the
+      numbers A to F&quot;. If this doesn't make sense, just be aware
+      that this clock is an amusement for programmers, and serves
+      no really useful purpose!
+    </para>
+    <para>
+      It helps to read this clock upside-down! Start at the bottom and 
+      read up to the top.
+    </para>
+    <para>
+      The right-hand pair of columns shows the two digits of the seconds:
+      the units on the right, the tens on the left. The centre pair of
+      columns shows the two digits of the minutes. The left hand pair of
+      columns shows the two digits of the hours.
+    </para>
+    <para>
+      You add up the values of the illuminated LEDs in each column.
+      You should get a number between zero to nine for each. That's
+      the time.
+    </para>
+    <orderedlist>
+     <listitem>
+      <para>
+         The bottom LED represents 1 when it is illuminated.
+      </para>
+     </listitem>
+
+     <listitem>
+      <para>
+         The next LED represents 2 when it is illuminated.
+      </para>
+     </listitem>
+
+     <listitem>
+      <para>
+         The next LED represents 4 when it is illuminated.
+      </para>
+     </listitem>
+
+     <listitem>
+      <para>
+         The top LED represents 8 when it is illuminated.
+      </para>
+     </listitem>
+    </orderedlist>
+
+    <para>
+      It is probably simplest to decipher the hours and minutes
+      first before trying to follow the seconds, which are always 
+      changing.
+    </para>
+
+   </sect2>
+
+   <sect2 id="jbc-bugs">
+    <title>Bugs and limitations</title>
+    <orderedlist>
+     <listitem>
+      <para>
+        It's extremely silly.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+        If you add it to a vertical panel, it is a nice size. If you
+        then move it to a horizonal panel, it changes size in the 
+        horizontal panel. If you move it back to a vertical panel, it
+        doesn't change size back, and forces the panel to widen itself.
+      </para>
+     </listitem>
+    </orderedlist> 
+   </sect2>
+
+  </sect1>
+

@@ -1,3 +1,5 @@
+SUBDIRS = docs themes
+
 INCLUDES = -I. -I$(srcdir) 				\
 	-I$(top_srcdir)/intl -I$(top_builddir)/intl	\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
@@ -46,4 +48,4 @@ gnorba_DATA = clockmail_applet.gnorba
 pixmapdir = $(datadir)/pixmaps
 pixmap_DATA = gnome-clockmail.png
 
-SUBDIRS = themes
+

@@ -361,6 +361,14 @@ delete_cb (GtkWidget *widget, GdkEvent *event, gpointer data)
 }
 
 static void
+help_cb (AppletWidget *applet, gpointer data)
+{
+    static GnomeHelpMenuEntry help_entry = { "geyes_applet", "index.html"};
+    gnome_help_display(NULL, &help_entry);
+}
+
+
+static void
 create_eyes_applet (void)
 {
 	    eyes_applet.applet = applet_widget_new ("geyes_applet");
@@ -378,16 +386,21 @@ create_eyes_applet (void)
 							NULL);
         
         applet_widget_register_stock_callback (APPLET_WIDGET (eyes_applet.applet),
-                                               "about",
-                                               GNOME_STOCK_MENU_ABOUT,
-                                               _("About..."),
-                                               (AppletCallbackFunc)about_cb,
-                                               NULL);
-        applet_widget_register_stock_callback (APPLET_WIDGET (eyes_applet.applet),
                                                "properties",
                                                GNOME_STOCK_MENU_PROP,
                                                _("Properties..."),
                                                (AppletCallbackFunc)properties_cb,
+                                               NULL);
+	applet_widget_register_stock_callback (APPLET_WIDGET (eyes_applet.applet),
+					       "help",
+					       GNOME_STOCK_PIXMAP_HELP,
+					       _("Help"),
+					       help_cb, NULL);
+        applet_widget_register_stock_callback (APPLET_WIDGET (eyes_applet.applet),
+                                               "about",
+                                               GNOME_STOCK_MENU_ABOUT,
+                                               _("About..."),
+                                               (AppletCallbackFunc)about_cb,
                                                NULL);
         
         gtk_widget_realize (eyes_applet.applet);

@@ -148,6 +148,14 @@ change_orient (GtkWidget *applet, PanelOrientType o, GtkWidget *canvas)
 	redo_size (canvas);
 }
 
+static void
+help_cb (AppletWidget *applet, gpointer data)
+{
+    GnomeHelpMenuEntry help_entry = { "jbc_applet", "index.html"};
+    gnome_help_display(NULL, &help_entry);
+}
+
+
 int
 main (int argc, char **argv)
 {
@@ -181,6 +189,11 @@ main (int argc, char **argv)
   gtk_widget_show (canvas);
 
   gtk_widget_show (applet);
+
+  applet_widget_register_stock_callback (APPLET_WIDGET (applet),
+					 "help",
+					 GNOME_STOCK_PIXMAP_HELP,
+					 _("Help"), help_cb, NULL);
 
   applet_widget_register_stock_callback (APPLET_WIDGET (applet),
 					 "about",

@@ -1,0 +1,142 @@
+<!DOCTYPE sect1 PUBLIC "-//OASIS//DTD DocBook V3.1//EN"[]>
+
+  <sect1 id="lifeapplet">
+   <title>The life applet</title>
+   <para>
+     The GNOME panel <application>life</application> is an applet
+     which runs 'the game of life' according to Conway's rules in a
+     small grid in your panel, with the organism and background colour
+     constantly changing. It is part of the gnome-applets package. This 
+     section of the guide refers to life-1.1.2, which is distributed in
+     gnome-applets-1.1.2.
+   </para>
+   <para>
+     To add the <application>life applet</application> to your 
+     <interface>panel</interface>, either click on
+     <mousebutton>mouse button 2</mousebutton> on an empty part of the 
+     <interface>panel</interface> and follow the sequence
+    <menuchoice>
+     <guimenu>Applets</guimenu>
+     <guisubmenu>Amusements</guisubmenu>
+     <guimenuitem>Game of Life</guimenuitem>
+    </menuchoice>
+     or you can issue this command at a command prompt: 
+     <command>life_applet --activate-goad-server=life_applet &amp </command>
+    </para>
+    <para>
+      The <application>life applet</application> was written by
+      "The Man in the Box", whoever that is...
+    </para>
+    <para>
+      Please report bugs in the life applet to the
+      <ulink type="http" url="http://bugs.gnome.org">GNOME bug
+      tracking system</ulink>. You can do this by following the
+      guidelines on that site or by using
+      <application>bug-buddy</application>
+      from the command-line. For the package, put gnome-applets.
+    </para>
+
+    <sect2 id="lifeapplet-usage">
+     <title>Usage</title>
+     <para>
+       Once it is present, you don't need to do anything to the life
+       applet. It will run happily on its own. The following options 
+       are available:
+     </para>
+     <orderedlist>
+      <listitem>
+       <para>
+         Pressing <mousebutton>mouse button 1</mousebutton> has
+         no effect.
+       </para>
+      </listitem>
+      <listitem>
+       <para>
+         Pressing <mousebutton>mouse button 2</mousebutton> brings
+         up some of the standard choices available for applets. There is
+         no <guilabel>properties menu</guilabel>, but there is an About
+         box and an option to randomise the game if it is getting boring.
+       </para>
+      </listitem>
+      <listitem>
+       <para>
+         Holding down <mousebutton>mouse button 3</mousebutton> allows you
+         to move the life applet about in the same way you move anything on the
+         panel.
+       </para>
+      </listitem>
+     </orderedlist>
+    </sect2>
+
+    <sect2 id="lifeapplet-rules">
+     <title>Rules</title>
+     <para>
+       The Game of Life as described by Conway in 1970 has the following 
+       rules:
+     </para>
+     <itemizedlist>
+      <listitem>
+       <para>
+         Start with a grid (usually a plain square) of squares. Fill 
+         a proportion of them with cells, randomly placed. This is generation
+         zero.
+       </para>
+      </listitem>
+      <listitem>
+       <para>
+         Any cell with two or three neighbours survives to the next
+         generation.
+       </para>
+      </listitem>
+      <listitem>
+       <para>
+         On any square with no cell and three neighbours, a new cell is
+         born. On any other square, no new cells are born.
+       </para>
+      </listitem>
+      <listitem>
+       <para>
+         Repeat generations.
+       </para>
+      </listitem>
+     </itemizedlist>
+
+     <para>
+       The game will eventually end in one of a number of ways:
+     </para>
+
+     <itemizedlist>
+      <listitem>
+       <para>
+         The death of all cells (theoretical, but uncommon in the life
+         applet).
+       </para>
+      </listitem>
+      <listitem>
+       <para>
+         A fixed equilibrium with all remaining cells surviving but
+         creating no new cells.
+       </para>
+      </listitem>
+      <listitem>
+       <para>
+         A dynamic equilibrium where the game cycles continually through
+         a particular sequence of patterns.
+       </para>
+      </listitem>
+     </itemizedlist>
+
+     <para>
+       For interest value, the current grid in the life applet is 78 by 78 
+       and the proportion of squares filled with cells is 50%.
+     </para>
+    </sect2>
+
+    <sect2 id="lifeapplet-bugs">
+     <title>Bugs and Limitations</title>
+     <para>
+       None known.
+     </para>
+    </sect2>
+
+   </sect1>

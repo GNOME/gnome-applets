@@ -1,0 +1,163 @@
+  <sect1 id="anotherclock">
+   <title>Another Clock</title>
+   <para>
+     The <application>Another Clock</application> applet is an analogue
+     clock similar to that in the CDE (Common Desktop Environment, an
+     earlier UNIX desktop environment) panel. In its default state it is a 
+     small analogue clockface with no background around it. It was part of
+     the gnome-core package up to October GNOME (gnome-core-1.0.53). It
+     is now distributed in gnome-applets. This guide describes the version 
+     distributed in gnome-applets-1.1.2.
+   </para>
+    <para>
+      The <application>AnotherClock applet</application> was written
+      by I&ntilde;igo Serna (<email>inigo@gazletan.bi.ehu.es</email>).
+      Please report bugs in it to the 
+      <ulink type="http" url="http://bugs.gnome.org">GNOME bug
+      tracking system</ulink>. You can do this by following the
+      guidelines on that site or by using <application>bug-buddy</application>
+      from the command-line. For the package, put gnome-applets.
+    </para>
+
+   <para>
+     To add <application>Another Clock</application> to your panel,
+     you can click <mousebutton>mouse button 3</mousebutton> on an
+     empty part of the <interface>panel</interface> and follow the
+     sequence:
+    <menuchoice>
+     <guimenu>Applets</guimenu>
+     <guisubmenu>Clocks</guisubmenu>
+     <guimenuitem>Another Clock</guimenuitem>
+    </menuchoice>
+     or you can type the following command at a command line:
+     <command>another_clock_applet --activate-goad-server=another_clock_applet</command>
+   </para>
+
+   <sect2 id="anotherclock-usage">
+    <title>Usage</title>
+    <para>
+      You don't need to do anything special to this clock. It will just
+      sit on your panel and tell the time for you. Various options are
+      available with the mouse:
+    </para>
+
+    <orderedlist>
+     <listitem>
+      <para>
+        Pressing <mousebutton>mouse button 1</mousebutton> has
+        no effect.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+        Holding down <mousebutton>mouse button 2</mousebutton> allows you
+        to move the clock about in the same way you move anything on the
+        panel.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+         Pressing <mousebutton>mouse button 3</mousebutton> brings
+         up the standard choices available for appets, including a
+         <guilabel>preferences menu</guilabel> explained <link
+         linkend="anotherclock-prefs">below</link>, and an 
+         About box.
+      </para>
+     </listitem>
+    </orderedlist>
+   </sect2>
+
+   <sect2 id="anotherclock-prefs">
+    <title>Preferences</title>
+    <para>
+      The <interface>preferences dialogue box</interface> (which calls
+      itself "Clock Settings" rather than preferences) is very simple.
+      There are four colours that may be changed, and there is a 
+      <guibutton>checkbox</guibutton>.
+    </para>
+
+    <variablelist>
+     <varlistentry>
+      <term>Clock colour</term>
+      <listitem>
+       <para>
+         This is currently greyed-out, but in the future it will
+         be possible to adjust the colour of the clockface.
+       </para>
+      </listitem>
+     </varlistentry>
+
+     <varlistentry>
+      <term>Hour needle colour</term>
+      <listitem>
+       <para>
+         Clicking on the <guibutton>box</guibutton> containing the
+         colour here will invoke the <application>GNOME colourwheel</application>
+         which will let you change the colour of the hour needle. The
+         default is a very pale grey.
+       </para>
+      </listitem>
+     </varlistentry>
+
+     <varlistentry>
+      <term>Minute needle colour</term>
+      <listitem>
+      <para>
+         Clicking on the <guibutton>box</guibutton> containing the
+         colour here will invoke the <application>GNOME colourwheel</application>
+         which will let you change the colour of the minute needle.
+         The default is a very pale grey.
+       </para>
+      </listitem>
+     </varlistentry>
+
+     <varlistentry>
+      <term>Second needle colour</term>
+      <listitem>
+       <para>
+         Clicking on the <guibutton>box</guibutton> containing the
+         colour here will invoke the <application>GNOME colourwheel</application>
+         which will let you change the colour of the second needle. The
+         default is red.
+       </para>
+      </listitem>
+     </varlistentry>
+
+     <varlistentry>
+      <term>Show seconds needle</term>
+      <listitem>
+       <para>
+         Clicking on this <guibutton>checkbox</guibutton> lets you
+         toggle whether the second needle is shown or not. It is 
+         shown by default.
+       </para>
+      </listitem>
+     </varlistentry>
+    </variablelist>
+   </sect2>
+
+   <sect2 id="anotherclock-bugs">
+    <title>Bugs and Limitations</title>
+    <orderedlist>
+     <listitem>
+      <para>
+        You can't change the time through the clock properties. This
+        is not really a bug; it's because you must be root to alter 
+        the time for the whole of the system, using the <command>
+        date</command> command.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+        If you adjust the system clock backwards using the <command>
+        date</command> command, the clock will stop working until the
+        system time reaches the time the clock displays. It will start
+        working normally then.
+      </para>
+     </listitem>
+    </orderedlist>
+   </sect2>
+
+  </sect1>
+
+

@@ -1,4 +1,4 @@
-SUBDIRS = themes
+SUBDIRS = themes docs
 
 INCLUDES = -I. -I$(srcdir) 				\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\

@@ -613,6 +613,13 @@ init_applet (OdoApplet *oa)
    oa->theme_entry=NULL;
 }
 
+static void
+help_cb (AppletWidget *applet, gpointer data)
+{
+    GnomeHelpMenuEntry help_entry = { "odometer_applet", "index.html"};
+    gnome_help_display(NULL, &help_entry);
+}
+
 int
 main (int argc, char *argv[])
 {
@@ -649,6 +656,9 @@ main (int argc, char *argv[])
    applet_widget_register_stock_callback (APPLET_WIDGET (oa->applet),
    	"properties",GNOME_STOCK_MENU_PROP,
    	_("Properties..."),GTK_SIGNAL_FUNC(properties_cb),oa);
+   applet_widget_register_stock_callback (APPLET_WIDGET (oa->applet),
+	"help", GNOME_STOCK_PIXMAP_HELP,
+	_("Help"), help_cb, NULL);					  
    applet_widget_register_stock_callback (APPLET_WIDGET (oa->applet),
    	"about",GNOME_STOCK_MENU_ABOUT,
    	_("About..."),GTK_SIGNAL_FUNC(about_cb),oa);

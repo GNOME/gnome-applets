@@ -1,0 +1,163 @@
+ <sect1 id="asclock">
+   <title>AfterStep Clock</title>
+   <para>
+     The <application>AfterStep Clock</application> is an applet which 
+     displays the time in both analogue (clockface) and digital format 
+     along with the day of the week and the date. It is based on the look
+     of the NeXTStep clock. It is part of the gnome-core package in
+     October GNOME (gnome-core-1.0.53) and part of the gnome-applets
+     package in later releases. This guide is written referring to 
+     to the clock distributed in gnome-applets-1.1.2.
+   </para>
+   <para>
+     The <application>AfterStep Clock applet</application> was written
+     by Beat Christen (<email>spiff@longstreet.ch</email>) and
+     Patrick Rogan (<email>rogan@lycos.com</email>)
+     Please report bugs in it to the 
+     <ulink type="http" url="http://bugs.gnome.org">GNOME bug
+     tracking system</ulink>. You can do this by following the
+     guidelines on that site or by using <application>bug-buddy</application>
+     from the command-line. For the package, put gnome-applets.
+   </para>
+   <para>
+     It can be added to the <interface>panel</interface> by clicking
+     <mousebutton>button 3</mousebutton> on an empty area of the
+     <interface>panel</interface> and then following the sequence
+    <menuchoice>
+     <guimenu>Applets</guimenu>
+     <guisubmenu>Clocks</guisubmenu>
+     <guimenuitem>ASClock</guimenuitem>
+    </menuchoice>
+      or by using the command 
+    <command>asclock_applet --activate-goad-server=asclock_applet</command>
+   </para>
+    
+   <sect2 id="asclock-usage">
+    <title>Usage</title>
+    <para>
+      You don't need to do anything special to this clock. It will just
+      sit on your panel and tell the time for you. Various options are
+      available with the mouse:
+    </para>
+
+    <orderedlist>
+     <listitem>
+      <para>
+        Pressing <mousebutton>mouse button 1</mousebutton> has
+        no effect.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+        Holding down <mousebutton>mouse button 2</mousebutton> allows you to 
+        move the clock about in the same way you move anything on the panel.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+         Pressing <mousebutton>mouse button 3</mousebutton> brings
+         up the standard choices available for applets, including a
+         <guilabel>preferences menu</guilabel> explained <link
+         linkend="asclock-prefs">below</link>, and an About box.
+      </para>
+     </listitem>
+    </orderedlist>
+   </sect2>
+
+   <sect2 id="asclock-prefs">
+    <title>Preferences</title>
+    <para>
+      The <interface>preferences dialogue box</interface> (which calls
+      itself "ASClock Settings" rather than preferences) is divided into
+      two sections, one for general options, and one for your timezone.
+    </para>
+
+    <variablelist>
+     <varlistentry>
+      <term>General preferences</term>
+      <listitem>
+       <para>
+         The <guilabel>general preferences tab</guilabel> has three
+         options:
+       </para>
+       <variablelist>
+        <varlistentry>
+         <term>Display time in 12 hour format (AM/PM)</term>
+         <listitem>
+          <para>
+            Clicking this <guibutton>checkbox</guibutton> will,
+            predictably enough, display the time in a 12 hour format.
+            The default is off, and that a 24-hour clock is used.
+          </para>
+         </listitem>
+        </varlistentry>
+        <varlistentry>
+         <term>Blinking elements in clock</term>
+         <listitem>
+          <para>
+            When the <application>AfterStep clock applet</application> starts
+            up, by default it displays a blinking colon between the hour and
+            minute display. Clicking this <guibutton>checkbox</guibutton> 
+            turns this blinking off.
+          </para>
+         </listitem>
+        </varlistentry>
+        <varlistentry>
+        <term>Clock theme</term>
+         <listitem>
+          <para>
+            The <application>AfterStep clock applet</application> can
+            take on a number of different appearances. You can select
+            these from this <interface>window</interface>. 
+          </para>
+         </listitem>
+        </varlistentry>
+       </variablelist>
+      </listitem>
+     </varlistentry>
+     <varlistentry>
+      <term>Timezone preferences</term>
+      <listitem>
+       <para>
+         The <guilabel>timezone preferences tab</guilabel> shows a
+         pretty picture of the earth, centred on the timezone region
+         currently selected, and a list of timezones you can choose
+         from. This is likely to be a <emphasis>very</emphasis> long list. 
+         If no timezone is selected, the local time on the system clock
+         is used as a default.
+       </para>
+      </listitem>
+     </varlistentry>
+    </variablelist>
+   </sect2>
+
+   <sect2 id="asclock-bugs">
+    <title>Bugs and Limitations</title>
+     <orderedlist>
+      <listitem>
+       <para>
+         You can't change the time through the clock properties. This
+         is not really a bug; it's because you must be root to alter 
+         the time for the whole of the system, using the <command>
+         date</command> command.
+       </para>
+     </listitem>
+    <listitem>
+      <para>
+        If you adjust the system clock backwards using the <command>
+        date</command> command, the clock will stop working until the
+        system time reaches the time the clock displays. It will start
+        working normally then.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+        Switching between a lot of themes or a lot of timezones seems
+        to use inordinate amounts of memory up.
+      </para>
+     </listitem>
+    </orderedlist>
+   </sect2>
+  </sect1>
+
+

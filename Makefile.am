@@ -78,7 +78,7 @@ always_built_SUBDIRS = \
 
 
 SUBDIRS = \
-	intl po macros docs	\
+	intl po macros 		\
 	$(always_built_SUBDIRS)	\
 	$(gtop_SUBDIRS)		\
 	$(ghttp_SUBDIRS)	\
@@ -91,7 +91,7 @@ SUBDIRS = \
 	$(xml_SUBDIRS)
 
 DIST_SUBDIRS = \
-	intl po macros docs	\
+	intl po macros 		\
 	$(always_built_SUBDIRS)	\
 	$(gtop_applets)		\
 	$(ghttp_applets)	\

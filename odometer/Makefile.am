@@ -1,3 +1,5 @@
+SUBDIRS = themes docs
+
 INCLUDES = -I. -I$(srcdir) 					\
 	-I$(top_srcdir)/intl -I$(top_builddir)/intl		\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"		\
@@ -26,5 +28,3 @@ EXTRA_DIST = \
 	$(sys_DATA)	\
 	$(gnorba_DATA)	\
 	$(pixmap_DATA)
-
-SUBDIRS = themes

@@ -1,0 +1,159 @@
+  <sect1 id="odometer">
+   <title>The odometer applet</title>
+   <para>
+     The GNOME panel <application>odometer</application> is an applet
+     which tracks and measures the movements of your mouse pointer across
+     the desktop. It is part of the gnome-applets package. This section
+     of the guide refers to odometer-0.5, which is distributed in
+     gnome-applets-1.1.2.
+   </para>
+   <para>
+     To add the odometer to your <interface>panel</interface>, you can
+     start it by clicking <mousebutton>mouse button 3</mousebutton> on
+     an empty part of the <interface>panel</interface> and following the 
+     sequence
+    <menuchoice>
+     <guimenu>Applets</guimenu>
+     <guisubmenu>Amusements</guisubmenu>
+     <guimenuitem>Odometer</guimenuitem>
+    </menuchoice>
+     or you can issue this command at a command prompt: 
+     <command>odometer_applet --activate-goad-server=odometer_applet &amp </command>
+    </para>
+    <para>
+      The <application>odometer applet</application> was written by
+      Fabrice Bellet (<email>Fabrice.Bellet@creatis.insa-lyon.fr</email>),
+      and based on the <application>Mousepedometa</application> for KDE by
+      Armen Nakashian, which in turn was based on the
+      Motif-based <application>Xodometer</application> by Mark H. Granoff.
+    </para>
+    <para>
+      Please report bugs in the odometer applet to the
+      <ulink type="http" url="http://bugs.gnome.org">GNOME bug
+      tracking system</ulink>. You can do this by following the
+      guidelines on that site or by using
+      <application>bug-buddy</application>
+      from the command-line. For the package, put gnome-applets.
+    </para>
+
+    <sect2 id="odometerapplet-usage">
+     <title>Usage</title>
+     <para>
+       Once it is present, you don't need to do anything to the odometer.
+       If you want to, though, the following options are available:
+     </para>
+     <orderedlist>
+      <listitem>
+       <para>
+         Pressing <mousebutton>mouse button 1</mousebutton> has
+         no effect.
+       </para>
+      </listitem>
+      <listitem>
+       <para>
+         Holding down <mousebutton>mouse button 3</mousebutton> allows you
+         to move the odometer about in the same way you move anything on the
+         panel.
+       </para>
+      </listitem>
+      <listitem>
+       <para>
+         Pressing <mousebutton>mouse button 2</mousebutton> brings
+         up the standard choices available for applets, including a
+         <guilabel>properties menu</guilabel> explained <link
+         linkend="odometerapplet-prefs">below</link>, and an 
+         About box.
+       </para>
+      </listitem>
+     </orderedlist>
+     <para>
+       In addition, moving the mouse pointer over the odometer produces
+       a <guilabel>tooltip</guilabel> telling you the distance you have
+       travelled.
+     </para>
+    </sect2>
+
+    <sect2 id="odometerapplet-prefs">
+     <title>Preferences</title>
+     <para>
+       The <interface>properties dialogue box</interface> (which calls
+       itself &quot;Odometer setting&quot; rather than properties) is divided into
+       two sections, one for general options, and one for themes.
+     </para>
+
+     <variablelist>
+      <varlistentry>
+       <term>General</term>
+       <listitem>
+        <para>
+          The <guilabel>general preferences tab</guilabel> has four options:
+        </para>
+        <variablelist>
+         <varlistentry>
+          <term>Use metric</term>
+          <listitem>
+           <para>
+             If the <guibutton>use metric checkbox</guibutton> is checked,
+             mouse pointer distance travelled is shown in metres. If it
+             is not checked, the distance travelled is shown in feet. By
+             moving the pointer over the odometer you can produce a 
+             <guilabel>tooltip</guilabel> which shows you whether it is
+             currently displaying metres or feet.
+           </para>
+          </listitem>
+         </varlistentry>
+         <varlistentry>
+          <term>auto_reset</term>
+          <listitem>
+           <para>
+             If the <guibutton>auto_reset checkbox</guibutton> is checked,
+             the odometer numbers return to zero.
+           </para>
+          </listitem>
+         </varlistentry>
+         <varlistentry>
+          <term>enabled</term>
+          <listitem>
+           <para>
+             If the <guibutton>enabled checkbox</guibutton> is checked, then
+             the odometer will keep counting how far you have moved your
+             pointer. If not, it will return the numbers to zero until you
+             re-enable it.
+           </para>
+          </listitem>
+         </varlistentry>
+         <varlistentry>
+          <term>digits number</term>
+          <listitem>
+           <para>
+             The <guibutton>digits number field</guibutton> determines how
+             many digits the odometer will display. The default is four, and
+             the range is from 1 to 10.
+           </para>
+          </listitem>
+         </varlistentry>
+        </variablelist>
+       </listitem>
+      </varlistentry>
+
+      <varlistentry>
+       <term>Theme</term>
+       <listitem>
+        <para>
+          The <guilabel>theme preferences tab</guilabel> has a variety of
+          themes you can choose from. They are found by default in 
+          <filename>$PREFIX/odometer/</filename>.
+        </para>
+       </listitem>
+      </varlistentry>
+     </variablelist>
+    </sect2>
+
+    <sect2 id="odometerapplet-bugs">
+     <title>Bugs and Limitations</title>
+     <para>
+       None known currently.
+     </para>
+    </sect2>
+
+   </sect1>
