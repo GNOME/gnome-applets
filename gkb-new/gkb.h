@@ -61,8 +61,9 @@ struct _GKB
   GtkWidget *darea;
   GtkWidget *propbox;
   GtkWidget *notebook;
+  GtkWidget *advanced;
 
-  int n, tn, cur, size, tempsize, w, h;
+  int n, tn, cur, size, tempsize, w, h, advconf;
 
   int small, tempsmall;
 

@@ -154,10 +154,10 @@ loadprop (GKB * gkb, int i)
   actdata->name = gnome_config_get_string (buf);
 
   g_snprintf (buf, 256, "map_%d/image=%s", i,
-	      gnome_unconditional_pixmap_file ("gkb/us.png"));
+	      gnome_unconditional_pixmap_file ("gkb/hu.png"));
   actdata->iconpath = gnome_config_get_string (buf);
 
-  g_snprintf (buf, 256, "map_%d/command=setxkbmap us", i);
+  g_snprintf (buf, 256, "map_%d/command=setxkbmap hu", i);
   actdata->command = gnome_config_get_string (buf);
 
   actdata->pix = NULL;
@@ -199,6 +199,8 @@ load_properties (GKB * gkb)
   gnome_config_push_prefix (APPLET_WIDGET (gkb->applet)->privcfgpath);
 
   gkb->n = gnome_config_get_int ("gkb/num=0");
+
+  gkb->advconf = gnome_config_get_int ("gkb/advanced=0");
 
   gkb->small = gnome_config_get_int ("gkb/small=0");
 
@@ -368,6 +370,7 @@ applet_save_session (GtkWidget * w,
 
   gnome_config_push_prefix (privcfgpath);
   gnome_config_set_int ("gkb/num", gkb->n);
+  gnome_config_set_int ("gkb/advanced", gkb->advconf);
   gnome_config_set_int ("gkb/small", gkb->small);
 
   while (list)

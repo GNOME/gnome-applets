@@ -9,7 +9,7 @@ bin_PROGRAMS = gkb_applet
 
 bin_SCRIPTS = gkb_xmmap
 
-gkb_applet_SOURCES = gkb.c gkb.h prop.c
+gkb_applet_SOURCES = gkb.c gkb.h prop.c prop_cb.h prop_copy.h prop_show.h
 
 #lib_LTLIBRARIES=libgkb_applet.la
 
