@@ -1,3 +1,25 @@
+radar_bluedir = $(datadir)/sound-monitor/radar-blue
+radar_blue_DATA =
+radar_blue_stuff = \
+	radar-blue/back.png		\
+	radar-blue/scope.png		\
+	radar-blue/back_tiny_h.png	\
+	radar-blue/back_tiny_v.png	\
+	radar-blue/scope_tiny_h.png	\
+	radar-blue/scope_tiny_v.png	\
+	radar-blue/themedata
+
+radar_greendir = $(datadir)/sound-monitor/radar-green
+radar_green_DATA =
+radar_green_stuff = \
+	radar-green/back.png		\
+	radar-green/scope.png		\
+	radar-green/back_tiny_h.png	\
+	radar-green/back_tiny_v.png	\
+	radar-green/scope_tiny_h.png	\
+	radar-green/scope_tiny_v.png	\
+	radar-green/themedata
+
 bluedir = $(datadir)/sound-monitor/blue
 blue_DATA =
 blue_stuff = \
@@ -78,6 +100,8 @@ scope_r_stuff = \
 
 zsound_monitordir = $(datadir)/sound-monitor
 zsound_monitor_DATA = \
+	$(radar_blue_stuff)		\
+	$(radar_green_stuff)		\
 	$(blue_stuff)		\
 	$(meters_stuff)		\
 	$(original_stuff)	\
