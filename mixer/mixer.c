@@ -748,7 +748,7 @@ mixer_start_gmix_cb (BonoboUIComponent *uic,
 						 GTK_DIALOG_DESTROY_WITH_PARENT,
 						 GTK_MESSAGE_ERROR,
 						 GTK_BUTTONS_CLOSE,
-						 _("There was an error executing %s : %s"),
+						 _("There was an error executing '%s' : %s"),
 						 run_mixer_cmd,
 						 error->message);
 
