@@ -963,7 +963,7 @@ accessx_status_applet_layout_box (AccessxStatusApplet *sapplet, GtkWidget *box, 
 
 	atko = gtk_widget_get_accessible (sapplet->box);
 	atk_object_set_name (atko, "AccessX Status");
-	atk_object_set_description (atko, "Shows kkeyboard status when accessibility features are used.");
+	atk_object_set_description (atko, "Shows keyboard status when accessibility features are used.");
 
 	gtk_widget_show (sapplet->box);
 	gtk_widget_show (GTK_WIDGET (sapplet->applet));
@@ -1061,7 +1061,7 @@ create_applet (PanelApplet *applet)
 	accessx_status_applet_layout_box (sapplet, box, stickyfoo);
 	atko = gtk_widget_get_accessible (GTK_WIDGET (sapplet->applet));
 	atk_object_set_name (atko, "AccessX Status");
-	atk_object_set_description (atko, "Shows kkeyboard status when accessibility features are used.");
+	atk_object_set_description (atko, "Shows keyboard status when accessibility features are used.");
 	return sapplet;
 }
 
