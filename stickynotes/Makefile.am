@@ -3,15 +3,15 @@
 SUBDIRS = pixmaps #doc
 
 INCLUDES = -I. \
-	$(GNOME_APPLETS_CFLAGS) \
 	-I$(srcdir) \
+	$(GNOME_APPLETS_CFLAGS) \
 	$(LIBGLADE_CFLAGS) \
+	-DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\" \ 
 	-DGNOMEGLADEDIR=\"$(gladedir)\" \
 	-DPREFIX=\""$(prefix)"\" \
 	-DDATADIR=\""$(datadir)"\" \
 	-DLIBDIR=\""$(libdir)"\" \
-	-DSYSCONFDIR=\""$(sysconfdir)"\" \
-	-DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\"  
+	-DSYSCONFDIR=\""$(sysconfdir)"\"
 
 libexec_PROGRAMS = stickynotes_applet
 
@@ -65,8 +65,7 @@ EXTRA_DIST = \
 	     $(glade_DATA) \
 	     $(xml_in_files) \
 	     $(schemas_in_files) \
-	     stickynotes_applet.server.in.in \
-	     intltool-extract.in intltool-merge.in intltool-update.in
+	     stickynotes_applet.server.in.in
 
 install-data-local:
 	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) \
