@@ -510,7 +510,8 @@ properties_box(AppletWidget *applet, gpointer data)
     reset_temporary_prefs();
 
     properties_box = gnome_property_box_new();
-    
+
+    gtk_window_set_policy(GTK_WINDOW (properties_box), FALSE, TRUE, FALSE);    
     gtk_window_set_title(GTK_WINDOW(properties_box), _("Mini-Commander Properties"));
     gtk_signal_connect(GTK_OBJECT(properties_box),
 		       "destroy",
