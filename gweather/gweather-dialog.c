@@ -265,10 +265,10 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
   gtk_box_pack_end (GTK_BOX (cond_hbox), cond_frame_alignment, FALSE, FALSE, 0);
   gtk_container_set_border_width (GTK_CONTAINER (cond_frame_alignment), 2);
 
-  weather_info_get_pixmap (NULL, &(gw_applet->dialog_pixmap), &(gw_applet->dialog_mask));
-  gw_applet->cond_pixmap = gtk_pixmap_new (gw_applet->dialog_pixmap, gw_applet->dialog_mask);
-  gtk_widget_show (gw_applet->cond_pixmap);
-  gtk_container_add (GTK_CONTAINER (cond_frame_alignment), gw_applet->cond_pixmap);
+  weather_info_get_pixbuf (NULL, &(gw_applet->dialog_pixbuf));
+  gw_applet->cond_image = gtk_image_new_from_pixbuf (gw_applet->dialog_pixbuf);
+  gtk_widget_show (gw_applet->cond_image);
+  gtk_container_add (GTK_CONTAINER (cond_frame_alignment), gw_applet->cond_image);
 
   cond_vsep = gtk_vseparator_new ();
   gtk_widget_show (cond_vsep);
@@ -316,9 +316,9 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
       gtk_box_pack_start (GTK_BOX (radar_vbox), ebox, FALSE, FALSE, 0);
 
 
-      gw_applet->radar_pixmap = gtk_pixmap_new (gw_applet->dialog_pixmap, gw_applet->dialog_mask);  /* Tmp hack */
-      gtk_widget_show (gw_applet->radar_pixmap);
-      gtk_container_add (GTK_CONTAINER (ebox), gw_applet->radar_pixmap);
+      gw_applet->radar_image = gtk_image_new_from_pixbuf (gw_applet->dialog_pixbuf);  /* Tmp hack */
+      gtk_widget_show (gw_applet->radar_image);
+      gtk_container_add (GTK_CONTAINER (ebox), gw_applet->radar_image);
 
       /* POP */
       gtk_widget_pop_colormap ();
@@ -383,9 +383,11 @@ void gweather_dialog_update (GWeatherApplet *gw_applet)
     if (!gw_applet->gweather_dialog)
         return;
 
-    /* Update pixmap */
-    weather_info_get_pixmap(gw_applet->gweather_info, &(gw_applet->dialog_pixmap), &(gw_applet->dialog_mask));
-    gtk_pixmap_set(GTK_PIXMAP(gw_applet->cond_pixmap), gw_applet->dialog_pixmap, gw_applet->dialog_mask);
+    /* Update pixbuf */
+    weather_info_get_pixbuf(gw_applet->gweather_info, 
+                            &(gw_applet->dialog_pixbuf));
+    gtk_image_set_from_pixbuf (GTK_IMAGE (gw_applet->cond_image), 
+                               gw_applet->dialog_pixbuf);
 
     /* Update current condition fields and forecast */
     gtk_label_set_text(GTK_LABEL(gw_applet->cond_location), weather_info_get_location(gw_applet->gweather_info));
@@ -415,7 +417,8 @@ void gweather_dialog_update (GWeatherApplet *gw_applet)
     if (gw_applet->gweather_pref.radar_enabled) {
         GdkPixmap *radar = weather_info_get_radar(gw_applet->gweather_info);
         if (radar) {
-            gtk_pixmap_set (GTK_PIXMAP(gw_applet->radar_pixmap), radar, NULL);
+            gtk_image_set_from_pixmap (GTK_IMAGE (gw_applet->radar_image), 
+                                       radar, NULL);
         }
     }
 }

@@ -49,18 +49,16 @@ static void place_widgets (GWeatherApplet *gw_applet)
     
     gtk_container_add (GTK_CONTAINER (gw_applet->applet), gw_applet->box);
     
-    weather_info_get_pixmap_mini(gw_applet->gweather_info, 
-    				 &(gw_applet->applet_pixmap), 
-    				 &(gw_applet->applet_mask));     
-    gw_applet->pixmap = gtk_pixmap_new(gw_applet->applet_pixmap, gw_applet->applet_mask);
-    gtk_box_pack_start (GTK_BOX (gw_applet->box), gw_applet->pixmap, FALSE, FALSE, 0);
+    weather_info_get_pixbuf_mini(gw_applet->gweather_info, 
+    				 &(gw_applet->applet_pixbuf));     
+    gw_applet->image = gtk_image_new_from_pixbuf (gw_applet->applet_pixbuf);
+    gtk_box_pack_start (GTK_BOX (gw_applet->box), gw_applet->image, FALSE, FALSE, 0);
          
     gw_applet->label = gtk_label_new("0\302\260");
     gtk_box_pack_start (GTK_BOX (gw_applet->box), gw_applet->label, FALSE, FALSE, 0);
     
-    gtk_pixmap_set(GTK_PIXMAP(gw_applet->pixmap), 
-    		   gw_applet->applet_pixmap, 
-    		   gw_applet->applet_mask);
+    gtk_image_set_from_pixbuf (GTK_IMAGE (gw_applet->image), 
+    			       gw_applet->applet_pixbuf);
 
     /* Update temperature text */
 
@@ -282,12 +280,10 @@ void update_finish (WeatherInfo *info)
     
     gw_applet->gweather_info = info;
    
-    weather_info_get_pixmap_mini(gw_applet->gweather_info, 
-    				 &(gw_applet->applet_pixmap),
-    				 &(gw_applet->applet_mask));
-    gtk_pixmap_set(GTK_PIXMAP(gw_applet->pixmap), 
-    		   gw_applet->applet_pixmap, 
-    		   gw_applet->applet_mask);
+    weather_info_get_pixbuf_mini(gw_applet->gweather_info, 
+    				 &(gw_applet->applet_pixbuf));
+    gtk_image_set_from_pixbuf (GTK_IMAGE (gw_applet->image), 
+    			       gw_applet->applet_pixbuf);
 
     if (gw_applet->gweather_pref.use_metric)
         weather_info_to_metric (gw_applet->gweather_info);
@@ -319,13 +315,11 @@ void gweather_update (GWeatherApplet *gw_applet)
 
     /* Let user know we are updating */
 
-    weather_info_get_pixmap_mini(gw_applet->gweather_info, 
-    				 &(gw_applet->applet_pixmap), 
-    				 &(gw_applet->applet_mask));
+    weather_info_get_pixbuf_mini(gw_applet->gweather_info, 
+    				 &(gw_applet->applet_pixbuf));
 
-    gtk_pixmap_set(GTK_PIXMAP(gw_applet->pixmap), 
-    		   gw_applet->applet_pixmap, 
-    		   gw_applet->applet_mask);
+    gtk_image_set_from_pixbuf (GTK_IMAGE (gw_applet->image), 
+    			       gw_applet->applet_pixbuf);
     gtk_tooltips_set_tip(gw_applet->tooltips, GTK_WIDGET(gw_applet->applet), 
     			 _("Updating..."), NULL);
 

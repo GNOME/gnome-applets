@@ -234,9 +234,9 @@ extern void update_finish (WeatherInfo *info);
 
 extern time_t make_time (gint date, gint hour, gint min);
 
-extern void _weather_info_get_pixmap (WeatherInfo *info, gboolean mini, GdkPixmap **pixmap, GdkBitmap **mask);
-#define weather_info_get_pixmap_mini(info,pixmap,mask) _weather_info_get_pixmap((info), TRUE, (pixmap), (mask))
-#define weather_info_get_pixmap(info,pixmap,mask) _weather_info_get_pixmap((info), FALSE, (pixmap), (mask))
+extern void _weather_info_get_pixbuf (WeatherInfo *info, gboolean mini, GdkPixbuf **pixbuf);
+#define weather_info_get_pixbuf_mini(info,pixbuf) _weather_info_get_pixbuf((info), TRUE, (pixbuf))
+#define weather_info_get_pixbuf(info,pixbuf) _weather_info_get_pixbuf((info), FALSE, (pixbuf))
 
 G_END_DECLS
 

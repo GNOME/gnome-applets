@@ -44,7 +44,7 @@ struct _GWeatherApplet
 	
 	GtkWidget *box;	
 	GtkWidget *label;
-	GtkWidget *pixmap;
+	GtkWidget *image;
 	GtkTooltips *tooltips;
 	
 	PanelAppletOrient orient;
@@ -87,13 +87,13 @@ struct _GWeatherApplet
 	GtkWidget *cond_wind;
 	GtkWidget *cond_pressure;
 	GtkWidget *cond_vis;
-	GtkWidget *cond_pixmap;
+	GtkWidget *cond_image;
 	GtkWidget *forecast_text;
-	GtkWidget *radar_pixmap;
+	GtkWidget *radar_image;
 
-	GdkPixmap *dialog_pixmap;
+	GdkPixbuf *dialog_pixbuf;
 	GdkBitmap *dialog_mask;
-	GdkPixmap *applet_pixmap;
+	GdkPixbuf *applet_pixbuf;
 	GdkBitmap *applet_mask;
 };
 

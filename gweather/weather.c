@@ -1868,10 +1868,8 @@ gchar *weather_info_get_weather_summary (WeatherInfo *info)
 }
 
 
-static GdkPixmap **weather_pixmaps_mini = NULL;
-static GdkBitmap **weather_pixmaps_mini_mask = NULL;
-static GdkPixmap **weather_pixmaps = NULL;
-static GdkBitmap **weather_pixmaps_mask = NULL;
+static GdkPixbuf **weather_pixbufs_mini = NULL;
+static GdkPixbuf **weather_pixbufs = NULL;
 
 #include "pixmaps/unknown-mini.xpm"
 #include "pixmaps/sun-mini.xpm"
@@ -1902,6 +1900,7 @@ static GdkBitmap **weather_pixmaps_mask = NULL;
 
 #define NUM_PIX       8
 
+#if 0
 static void
 xpm_to_pixmap (char **xpm_data, GdkPixmap **pixmap, GdkBitmap **mask)
 {
@@ -1916,8 +1915,9 @@ xpm_to_pixmap (char **xpm_data, GdkPixmap **pixmap, GdkBitmap **mask)
 		gdk_pixbuf_unref (pixbuf);
 	}
 }
+#endif
 
-static void init_pixmaps (void)
+static void init_pixbufs (void)
 {
     static gboolean initialized = FALSE;
 
@@ -1925,40 +1925,36 @@ static void init_pixmaps (void)
        return;
     initialized = TRUE;
 
-    weather_pixmaps_mini = g_new(GdkPixmap *, NUM_PIX);
-    weather_pixmaps_mini_mask = g_new(GdkBitmap *, NUM_PIX);
-    xpm_to_pixmap (unknown_mini_xpm, &weather_pixmaps_mini[PIX_UNKNOWN], &weather_pixmaps_mini_mask[PIX_UNKNOWN]);
-    xpm_to_pixmap (sun_mini_xpm, &weather_pixmaps_mini[PIX_SUN], &weather_pixmaps_mini_mask[PIX_SUN]);
-    xpm_to_pixmap (suncloud_mini_xpm, &weather_pixmaps_mini[PIX_SUNCLOUD], &weather_pixmaps_mini_mask[PIX_SUNCLOUD]);
-    xpm_to_pixmap (cloud_mini_xpm, &weather_pixmaps_mini[PIX_CLOUD], &weather_pixmaps_mini_mask[PIX_CLOUD]);
-    xpm_to_pixmap (rain_mini_xpm, &weather_pixmaps_mini[PIX_RAIN], &weather_pixmaps_mini_mask[PIX_RAIN]);
-    xpm_to_pixmap (tstorm_mini_xpm, &weather_pixmaps_mini[PIX_TSTORM], &weather_pixmaps_mini_mask[PIX_TSTORM]);
-    xpm_to_pixmap (snow_mini_xpm, &weather_pixmaps_mini[PIX_SNOW], &weather_pixmaps_mini_mask[PIX_SNOW]);
-    xpm_to_pixmap (fog_mini_xpm, &weather_pixmaps_mini[PIX_FOG], &weather_pixmaps_mini_mask[PIX_FOG]);
+    weather_pixbufs_mini = g_new(GdkPixbuf *, NUM_PIX);
+    weather_pixbufs_mini[PIX_UNKNOWN] = gdk_pixbuf_new_from_xpm_data ((const char **)unknown_mini_xpm);	
+    weather_pixbufs_mini[PIX_SUN] = gdk_pixbuf_new_from_xpm_data ((const char **)sun_mini_xpm);	
+    weather_pixbufs_mini[PIX_SUNCLOUD] = gdk_pixbuf_new_from_xpm_data ((const char **)suncloud_mini_xpm);	
+    weather_pixbufs_mini[PIX_CLOUD] = gdk_pixbuf_new_from_xpm_data ((const char **)cloud_mini_xpm);	
+    weather_pixbufs_mini[PIX_RAIN] = gdk_pixbuf_new_from_xpm_data ((const char **)rain_mini_xpm);	
+    weather_pixbufs_mini[PIX_TSTORM] = gdk_pixbuf_new_from_xpm_data ((const char **)tstorm_mini_xpm);	
+    weather_pixbufs_mini[PIX_SNOW] = gdk_pixbuf_new_from_xpm_data ((const char **)snow_mini_xpm);	
+    weather_pixbufs_mini[PIX_FOG] = gdk_pixbuf_new_from_xpm_data ((const char **)fog_mini_xpm);	
 
-    weather_pixmaps = g_new(GdkPixmap *, NUM_PIX);
-    weather_pixmaps_mask = g_new(GdkBitmap *, NUM_PIX);
-    xpm_to_pixmap (unknown_xpm, &weather_pixmaps[PIX_UNKNOWN], &weather_pixmaps_mask[PIX_UNKNOWN]);
-    xpm_to_pixmap (sun_xpm, &weather_pixmaps[PIX_SUN], &weather_pixmaps_mask[PIX_SUN]);
-    xpm_to_pixmap (suncloud_xpm, &weather_pixmaps[PIX_SUNCLOUD], &weather_pixmaps_mask[PIX_SUNCLOUD]);
-    xpm_to_pixmap (cloud_xpm, &weather_pixmaps[PIX_CLOUD], &weather_pixmaps_mask[PIX_CLOUD]);
-    xpm_to_pixmap (rain_xpm, &weather_pixmaps[PIX_RAIN], &weather_pixmaps_mask[PIX_RAIN]);
-    xpm_to_pixmap (tstorm_xpm, &weather_pixmaps[PIX_TSTORM], &weather_pixmaps_mask[PIX_TSTORM]);
-    xpm_to_pixmap (snow_xpm, &weather_pixmaps[PIX_SNOW], &weather_pixmaps_mask[PIX_SNOW]);
-    xpm_to_pixmap (fog_xpm, &weather_pixmaps[PIX_FOG], &weather_pixmaps_mask[PIX_FOG]);
+    weather_pixbufs = g_new(GdkPixbuf *, NUM_PIX);
+    weather_pixbufs[PIX_UNKNOWN] = gdk_pixbuf_new_from_xpm_data ((const char **)unknown_xpm);
+    weather_pixbufs[PIX_SUN] = gdk_pixbuf_new_from_xpm_data ((const char **)sun_xpm);
+    weather_pixbufs[PIX_SUNCLOUD] = gdk_pixbuf_new_from_xpm_data ((const char **)suncloud_xpm);
+    weather_pixbufs[PIX_CLOUD] = gdk_pixbuf_new_from_xpm_data ((const char **)cloud_xpm);
+    weather_pixbufs[PIX_RAIN] = gdk_pixbuf_new_from_xpm_data ((const char **)rain_xpm);
+    weather_pixbufs[PIX_TSTORM] = gdk_pixbuf_new_from_xpm_data ((const char **)tstorm_xpm);
+    weather_pixbufs[PIX_SNOW] = gdk_pixbuf_new_from_xpm_data ((const char **)snow_xpm);
+    weather_pixbufs[PIX_FOG] = gdk_pixbuf_new_from_xpm_data ((const char **)fog_xpm);
 }
 
-void _weather_info_get_pixmap (WeatherInfo *info, gboolean mini, GdkPixmap **pixmap, GdkBitmap **mask)
+void _weather_info_get_pixbuf (WeatherInfo *info, gboolean mini, GdkPixbuf **pixbuf)
 {
-    GdkPixmap **pixmaps;
-    GdkBitmap **masks;
+    GdkPixbuf **pixbufs;
     gint idx = -1;
 
-    g_return_if_fail(pixmap != NULL);
+    g_return_if_fail(pixbuf != NULL);
 
-    init_pixmaps();
-    pixmaps = mini ? weather_pixmaps_mini : weather_pixmaps;
-    masks = mini ? weather_pixmaps_mini_mask : weather_pixmaps_mask;
+    init_pixbufs();
+    pixbufs = mini ? weather_pixbufs_mini : weather_pixbufs;
 
     if (!info || !info->valid) {
         idx = PIX_UNKNOWN;
@@ -2053,9 +2049,7 @@ void _weather_info_get_pixmap (WeatherInfo *info, gboolean mini, GdkPixmap **pix
         }
     }
 
-    *pixmap = pixmaps[idx];
-    if (mask)
-        *mask = masks[idx];
+    *pixbuf = pixbufs[idx];
 }
 
 
