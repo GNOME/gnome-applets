@@ -50,6 +50,8 @@ struct _GWeatherApplet
 	PanelAppletOrient orient;
 	gint size;
 	gint timeout_tag;
+
+	GtkWidget *about_dialog;
 	
 	/* preferences  */
 	GWeatherPrefs gweather_pref;

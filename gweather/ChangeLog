@@ -1,3 +1,15 @@
+2004-01-12 Archana Shah <archana.shah@wipro.com>
+
+	* gweather.h: Added a field in the structure GWeatherApplet for
+	about dialog.
+	* gweather-applet.c: (gweather-applet-create): Initialized
+	about_dialog field with NULL.
+	(applet_destroy): Destroys the about dialog when the applet is
+	removed from the panel.
+	* gweather-about.c: (gweather-about-run): Removed the static
+	variable "about" and used structure member about_dialog in that place.
+	Fixes bug #131073
+
 2004-01-09  Kevin Vandersloot
 
 	* weather.c: Format the forecast text to be more readable. Patch
