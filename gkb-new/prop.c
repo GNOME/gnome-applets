@@ -443,7 +443,7 @@ gkb_prop_create_property_box (GkbPropertyBoxInfo *pbi,
     page_2_vbox = gtk_vbox_new (FALSE, 18);
     gtk_container_set_border_width (GTK_CONTAINER (page_2_vbox), 12);
     gtk_widget_show (page_2_vbox);
-    page_2_label = gtk_label_new_with_mnemonic (_("_Options"));
+    page_2_label = gtk_label_new (_("Options"));
     gtk_notebook_append_page (GTK_NOTEBOOK (propnotebook), page_2_vbox, page_2_label);
 
     /* Page 2 Frames */
