@@ -242,6 +242,8 @@ cdplayer_destroy(GtkWidget * widget, gpointer data)
     if (cd->timeout != 0)
         gtk_timeout_remove(cd->timeout);
     cd->timeout = 0;
+    /* Since the applet is being destroyed, stop playing cd */
+    cdrom_stop(cd->cdrom_device);
     cd_close (cd);
 
     tooltips = g_object_get_data (G_OBJECT (cd->panel.applet), "tooltips");
