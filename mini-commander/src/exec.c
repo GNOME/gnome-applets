@@ -83,7 +83,7 @@ mc_exec_command (MCData     *mc,
 		g_error_free (error);
 }
 
-void beep ()
+void beep (void)
 {
 	GConfClient *default_client;
 	gboolean audible_bell_set;

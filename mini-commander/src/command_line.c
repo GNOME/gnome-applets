@@ -295,7 +295,7 @@ mc_show_history (GtkWidget *widget,
 			    gtk_widget_get_screen (GTK_WIDGET (mc->applet)));
      gtk_window_set_policy(GTK_WINDOW(window), 0, 0, 1);
      /* cb */
-     gtk_signal_connect_after(GTK_OBJECT(window),
+     g_signal_connect_after(GTK_OBJECT(window),
 			      "button_press_event",
 			      GTK_SIGNAL_FUNC(history_popup_clicked_cb),
 			      NULL);
@@ -318,7 +318,7 @@ mc_show_history (GtkWidget *widget,
      gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(scrolled_window),
 				    GTK_POLICY_AUTOMATIC,
 				    GTK_POLICY_AUTOMATIC);
-     gtk_signal_connect(GTK_OBJECT(scrolled_window),
+     g_signal_connect(GTK_OBJECT(scrolled_window),
 			"button_press_event",
 			GTK_SIGNAL_FUNC(history_popup_clicked_inside_cb),
 			NULL);

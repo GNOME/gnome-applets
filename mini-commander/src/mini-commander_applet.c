@@ -86,7 +86,7 @@ register_command_line_stock_icons (GtkIconFactory *factory)
 }
 
 static void
-command_line_init_stock_icons ()
+command_line_init_stock_icons (void)
 {
 
     GtkIconFactory *factory;
