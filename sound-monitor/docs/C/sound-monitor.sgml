@@ -1,8 +1,8 @@
  <sect1 id="soundmonitorapplet">
-  <title>Sound Monitor Applet</title> 
+  <title>Sound Monitor Applet</title>
 
-  <para> 
-   <application>Sound Monitor Applet</application>, shown in its
+  <para>
+   <application>Sound Monitor</application> applet, shown in its
    default theme(appearance) in <xref
    linkend="soundmonitorapplet-fig">, is a sound volume display and an
    interface for controlling ESD (the Enlightened Sound Daemon). If
@@ -18,7 +18,7 @@
     <guimenuitem>Sound Monitor</guimenuitem>
    </menuchoice>.
   </para>
-  
+
   <figure id="soundmonitorapplet-fig">
    <title>Sound Monitor Applet</title>
    <screenshot>
@@ -29,6 +29,7 @@
    </screenshot>
   </figure>
 
+  <!-- ============= Usage  ================================ -->
   <sect2 id="soundmonitorapplet-usage">
    <title>Usage</title>
    <para>
@@ -39,57 +40,65 @@
     standby</guimenuitem> or <guimenuitem>Resume Esound</guimenuitem>
     respectively, as described below.  
    </para>
-   <para> 
-    If you right-click on the applet, it brings up a
-    menu, containing the following commands: 
-      <itemizedlist> 
 
-	<listitem>
-	  <para>
-	    <guimenuitem>About&hellip;</guimenuitem> &mdash; shows info about
-            the <application>Sound Monitor</application>, inluding the
-            version and the author's name and email address. 
-	    </para>
-	</listitem>
+   <para>
+    Right-clicking on the applet brings up a menu containing the
+    following items:
+    <itemizedlist>
 
-	<listitem>
-	  <para>
-	    <guimenuitem>Help&hellip;</guimenuitem> &mdash; brings up this
-            document. 
-	    </para>
-	</listitem>
+     <listitem>
+      <para>
+       <guimenuitem>Manager&hellip;</guimenuitem> &mdash; brings
+       up the <link linkend="soundmonitorapplet-manager">
+       <interface>Sound Monitor Manager</interface></link> dialog,
+       which allows you to view and control current ESD settings.
+      </para>
+     </listitem>
 
-	<listitem>
-	 <para>
-          <guimenuitem>Properties&hellip;</guimenuitem>&mdash; brings up
-          the <link linkend="soundmonitorapplet-prefs">
-          <interface>Properties</interface></link> dialog.
-	 </para>
-	</listitem>
+     <listitem>
+      <para>
+       <guimenuitem>Place Esound in
+       standby</guimenuitem>/<guimenuitem>Resume
+       Esound</guimenuitem>/<guimenuitem>Start
+       Esound</guimenuitem> &mdash; At any time, you will only
+       have one of these three items, depending on whether ESD is
+       running and what its status is. The first two menu items
+       allow you to
+       temporarily place ESD in standby and then resume ESD.
+       This is useful if you have a sound application which is
+       unable to work with ESD, but needs direct access to the
+       sound device. The third allows you to start
+       <application>Esound</application> if it is not started. 
+      </para>
+     </listitem>
 
-	<listitem>
-	 <para>
-	  <guimenuitem>Manager&hellip;</guimenuitem> &mdash; brings
-	  up the <link linkend="soundmonitorapplet-manager">
-          <interface>Sound Monitor Manager</interface></link> dialog,
-          which allows you to view and control current ESD settings.
-	 </para>
-	</listitem>
 
-	<listitem>
-	  <para>
-	    <guimenuitem>Place Esound in
-            standby</guimenuitem>/<guimenuitem>Resume
-            Esound</guimenuitem> &mdash; These menu items allow you to
-            temporarily place ESD in standby and then resume ESD.
-            This is useful if you have a sound application which is
-            unable to work with ESD, but needs direct access to the
-            sound device.  
-	    </para>
-	</listitem>
+     <listitem>
+      <para>
+       <guimenuitem>Properties&hellip;</guimenuitem> &mdash;
+       opens the <link linkend="soundmonitorapplet-prefs">
+       <guilabel>Properties</guilabel></link> dialog.
+      </para>
+     </listitem>
 
-      </itemizedlist>
-    </para>
+     <listitem>
+      <para>
+       <guimenuitem>Help</guimenuitem> &mdash;
+       displays this document.
+      </para>
+     </listitem>
+
+     <listitem>
+      <para>
+       <guimenuitem>About&hellip;</guimenuitem> &mdash;
+       shows basic information about <application>Sound
+       Monitor</application>, inluding the applet's version and the
+       author's name.
+      </para>
+     </listitem>
+
+    </itemizedlist>
+   </para>
 
    <note>
     <title>Note About Sound in GNOME</title>
@@ -111,19 +120,23 @@
      Center</application> for the first time.
     </para>
    </note>
+
   </sect2>
 
+
+  <!-- ============= Customization ============================= -->
   <sect2 id="soundmonitorapplet-prefs">
     <title>Customization</title>
     <para>
-      You can customize <application>Sound Monitor</application> by
-      right-clicking on it and choosing
+      You can customize <application>Sound Monitor</application>
+      applet by right-clicking on it and choosing
       <guimenuitem>Properties&hellip;</guimenuitem>. This will open the
       <interface>Properties</interface> dialog(shown in <xref
-      linkend="soundmonitorappletsettings-fig">), which allows you to 
+      linkend="soundmonitor-settings-fig">), which allows you to
       change various settings.
     </para>
-    <figure id="soundmonitorappletsettings-fig">
+
+    <figure id="soundmonitor-settings-fig">
      <title>Properties dialog</title>
      <screenshot>
       <screeninfo>Properties dialog</screeninfo>
@@ -226,15 +239,17 @@
      </itemizedlist>
     </para>
 
-    <para> After you made all the choices you want, click on
-      <guibutton>OK</guibutton> to make the changes and close the
+    <para> 
+      After you have made all the changes you want, click on
+      <guibutton>OK</guibutton> to apply the changes and close the
       <interface>Properties</interface> dialog. To cancel the changes
       and return to previous values, click the
       <guibutton>Cancel</guibutton> button.
     </para>
-
   </sect2>
 
+
+  <!-- ============= Manager ================================== -->
   <sect2 id="soundmonitorapplet-manager">
     <title>The Sound Monitor Manager</title>
     <para>
@@ -304,24 +319,98 @@
   </sect2>
 
 
-  <sect2 id="soundmonitorapplet-bugs">
-   <title>Known bugs and limitations</title>
+  <!-- ============= Bugs ================================== -->
+  <!-- This section should describe known bugs and limitations of
+       the program if there are any - please be frank and list all
+       problems you know of -->
+  <sect2 id="bugs">
+   <title>Known Bugs and Limitations</title>
    <para>
-    There are no known bugs.
+    This applet has no known bugs.
    </para>
   </sect2>
 
-  <sect2 id="soundmonitorapplet-authors">
+
+  <!-- ============= Authors ================================ -->
+
+  <sect2 id="authors">
    <title>Authors</title>
    <para>
-    This applet was writen by John Ellis
-    <email>johne@bellatlantic.net</email>.  To submit suggestions and
-    bug reports, use <ulink type="http"
-    url="http://bugs.gnome.org">The GNOME Bug Tracking System</ulink>
-    or the <application>bug-buddy</application> utility in the
-    <interface>Main Menu</interface>.
+    <application>Sound Monitor</application> was written by John Ellis
+    (<email>johne@bellatlantic.net</email>).  Please send all comments,
+    suggestions, and bug 
+    reports to the <ulink url="http://bugs.gnome.org" type="http">GNOME
+    bug tracking database</ulink>. (Instructions for submitting bug
+    reports can be found <ulink
+    url="http://bugs.gnome.org/Reporting.html" type="http">
+    on-line</ulink>. If you are using
+    GNOME 1.1 or later, you can also use <application>Bug Report
+    Tool</application> (<command>bug-buddy</command>), available in the
+    <guisubmenu>Utilities</guisubmenu> submenu of <guimenu>Main
+    Menu</guimenu>, for submitting bug reports.
+   </para>
+
+   <para>
+    This manual was written by Dan Mueth
+    (<email>d-mueth@uchicago.edu</email>). Please send all comments and
+    suggestions regarding this manual to the <ulink type="http"
+    url="http://www.gnome.org/gdp">GNOME Documentation Project</ulink> 
+    by sending an email to <email>docs@gnome.org</email>. You can also
+    submit comments online by using the <ulink type="http"
+    url="http://www.gnome.org/gdp/doctable/">GNOME Documentation Status
+    Table</ulink>.
+   </para>
+
+   <!-- For translations: uncomment this:
+
+   <para>
+    Latin translation was done by ME
+    (<email>MYNAME@MYADDRESS</email>). Please send all  comments  and
+    suggestions regarding this translation to SOMEWHERE.
+   </para>
+
+   -->
+
+  </sect2>
+
+
+  <!-- ============= Application License ============================= -->
+
+  <sect2 id="license">
+   <title>License</title>
+   <para>
+    This program is free software; you can redistribute it and/or
+    modify it under the terms of the <citetitle>GNU General Public
+    License</citetitle> as published by the Free Software Foundation;
+    either version 2 of the License, or (at your option) any later
+    version.
+   </para>
+   <para>
+    This program is distributed in the hope that it will be useful, but
+    WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    <citetitle>GNU General Public License</citetitle> for more details.
+   </para>
+   <para>
+    A copy of the <citetitle>GNU General Public License</citetitle> is
+    included as an appendix to the <citetitle>GNOME Users
+    Guide</citetitle>.  You may also obtain a copy of the
+    <citetitle>GNU General Public License</citetitle> from the Free
+    Software Foundation by visiting <ulink type="http"
+    url="http://www.fsf.org">their Web site</ulink> or by writing to
+    <address>
+     Free Software Foundation, Inc.
+     <street>59 Temple Place</street> - Suite 330
+     <city>Boston</city>, <state>MA</state> <postcode>02111-1307</postcode>
+     <country>USA</country>
+    </address>
    </para>
   </sect2>
 
  </sect1>
+
+
+
+
+
 
