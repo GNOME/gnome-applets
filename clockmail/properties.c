@@ -278,14 +278,14 @@ void property_show(AppletWidget *applet, gpointer data)
 	gtk_window_set_title(GTK_WINDOW(&GNOME_PROPERTY_BOX(ad->propwindow)->dialog.window),
 		_("ClockMail Settings"));
 	
-	vbox = gtk_vbox_new(FALSE, 0);
+	vbox = gtk_vbox_new(FALSE, GNOME_PAD_SMALL);
 	gtk_container_set_border_width (GTK_CONTAINER (vbox), GNOME_PAD_SMALL);
 
 	frame = gtk_frame_new(_("Clock"));
 	gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
 	gtk_widget_show(frame);
 
-	vbox1 = gtk_vbox_new(FALSE, 0);
+	vbox1 = gtk_vbox_new(FALSE, GNOME_PAD_SMALL);
 	gtk_container_set_border_width (GTK_CONTAINER (vbox1), GNOME_PAD_SMALL);
 	gtk_container_add(GTK_CONTAINER(frame), vbox1);
 	gtk_widget_show(vbox1);
@@ -297,7 +297,7 @@ void property_show(AppletWidget *applet, gpointer data)
 	gtk_widget_show(button);
 
 	hbox = gtk_hbox_new(FALSE, 5);
-	gtk_box_pack_start( GTK_BOX(vbox1), hbox, FALSE, FALSE, 5);
+	gtk_box_pack_start( GTK_BOX(vbox1), hbox, FALSE, FALSE, 0);
 	gtk_widget_show(hbox);
 
 	button = gtk_check_button_new_with_label (_("Display time relative to GMT (Greenwich Mean Time):"));
@@ -318,7 +318,7 @@ void property_show(AppletWidget *applet, gpointer data)
 	gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
 	gtk_widget_show(frame);
 
-	vbox1 = gtk_vbox_new(FALSE, 0);
+	vbox1 = gtk_vbox_new(FALSE, GNOME_PAD_SMALL);
 	gtk_container_set_border_width (GTK_CONTAINER (vbox1), GNOME_PAD_SMALL);
 	gtk_container_add(GTK_CONTAINER(frame), vbox1);
 	gtk_widget_show(vbox1);

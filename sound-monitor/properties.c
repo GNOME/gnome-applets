@@ -326,14 +326,15 @@ void property_show(AppletWidget *applet, gpointer data)
 	gtk_window_set_title(GTK_WINDOW(&GNOME_PROPERTY_BOX(ad->propwindow)->dialog.window),
 		"Sound Monitor Applet Settings");
 	
-	vbox = gtk_vbox_new(FALSE, 0);
+	vbox = gtk_vbox_new(FALSE, GNOME_PAD_SMALL);
+	gtk_container_set_border_width(GTK_CONTAINER(vbox), GNOME_PAD_SMALL);
 
 	frame = gtk_frame_new(_("Peak indicator"));
-	gtk_container_set_border_width (GTK_CONTAINER (frame), 5);
 	gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
 	gtk_widget_show(frame);
 
-	vbox1 = gtk_vbox_new(FALSE, 0);
+	vbox1 = gtk_hbox_new(TRUE, GNOME_PAD_SMALL);
+	gtk_container_set_border_width(GTK_CONTAINER(vbox1), GNOME_PAD_SMALL);
 	gtk_container_add(GTK_CONTAINER(frame), vbox1);
 	gtk_widget_show(vbox1);
 
@@ -359,11 +360,11 @@ void property_show(AppletWidget *applet, gpointer data)
 	gtk_widget_show(button);
 
 	frame = gtk_frame_new(_("Peak indicator falloff speed"));
-	gtk_container_set_border_width (GTK_CONTAINER (frame), 5);
 	gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
 	gtk_widget_show(frame);
 
 	vbox1 = gtk_hbox_new(FALSE, 0);
+	gtk_container_set_border_width(GTK_CONTAINER(vbox1), GNOME_PAD_SMALL);
 	gtk_container_add(GTK_CONTAINER(frame), vbox1);
 	gtk_widget_show(vbox1);
 
@@ -376,11 +377,11 @@ void property_show(AppletWidget *applet, gpointer data)
 	gtk_widget_show(hscale);
 
 	frame = gtk_frame_new(_("Scope (scale 1:X, where X = ? )"));
-	gtk_container_set_border_width (GTK_CONTAINER (frame), 5);
 	gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
 	gtk_widget_show(frame);
 
 	vbox1 = gtk_vbox_new(FALSE, 0);
+	gtk_container_set_border_width(GTK_CONTAINER(vbox1), GNOME_PAD_SMALL);
 	gtk_container_add(GTK_CONTAINER(frame), vbox1);
 	gtk_widget_show(vbox1);
 
@@ -399,11 +400,11 @@ void property_show(AppletWidget *applet, gpointer data)
 	gtk_widget_show(button);
 
 	frame = gtk_frame_new(_("Screen refresh (frames per second)"));
-	gtk_container_set_border_width (GTK_CONTAINER (frame), 5);
 	gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
 	gtk_widget_show(frame);
 
 	vbox1 = gtk_vbox_new(FALSE, 0);
+	gtk_container_set_border_width(GTK_CONTAINER(vbox1), GNOME_PAD_SMALL);
 	gtk_container_add(GTK_CONTAINER(frame), vbox1);
 	gtk_widget_show(vbox1);
 
@@ -422,19 +423,19 @@ void property_show(AppletWidget *applet, gpointer data)
 	/* theme tab */
 
 	frame = gtk_frame_new(NULL);
-	gtk_container_set_border_width (GTK_CONTAINER (frame), 5);
+	gtk_container_set_border_width (GTK_CONTAINER (frame), GNOME_PAD_SMALL);
 
-	vbox = gtk_vbox_new(0, TRUE);
-	gtk_container_set_border_width (GTK_CONTAINER (vbox), 5);
+	vbox = gtk_vbox_new(FALSE, GNOME_PAD_SMALL);
+	gtk_container_set_border_width (GTK_CONTAINER (vbox), GNOME_PAD_SMALL);
 	gtk_container_add(GTK_CONTAINER(frame), vbox);
 	gtk_widget_show(vbox);
 
-	hbox = gtk_hbox_new(FALSE, 5);
-	gtk_box_pack_start( GTK_BOX(vbox), hbox, FALSE, FALSE, 5);
+	hbox = gtk_hbox_new(FALSE, GNOME_PAD_SMALL);
+	gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
 	gtk_widget_show(hbox);
 
 	label = gtk_label_new(_("Theme file (directory):"));
-	gtk_box_pack_start( GTK_BOX(hbox), label, FALSE, FALSE, 5);
+	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
 	gtk_widget_show(label);
 
 	ad->theme_entry = gtk_entry_new();
@@ -443,7 +444,7 @@ void property_show(AppletWidget *applet, gpointer data)
 	gtk_signal_connect_object(GTK_OBJECT(ad->theme_entry), "changed",
 				GTK_SIGNAL_FUNC(gnome_property_box_changed),
 				GTK_OBJECT(ad->propwindow));
-	gtk_box_pack_start( GTK_BOX(hbox),ad->theme_entry , TRUE, TRUE, 5);
+	gtk_box_pack_start(GTK_BOX(hbox),ad->theme_entry , TRUE, TRUE, 0);
 	gtk_widget_show(ad->theme_entry);
 
 	scrolled = gtk_scrolled_window_new(NULL, NULL);
@@ -468,19 +469,19 @@ void property_show(AppletWidget *applet, gpointer data)
 	/* advanced */
 
 	frame = gtk_frame_new(NULL);
-	gtk_container_set_border_width (GTK_CONTAINER (frame), 5);
+	gtk_container_set_border_width(GTK_CONTAINER(frame), GNOME_PAD_SMALL);
 
-	vbox = gtk_vbox_new(0, TRUE);
-	gtk_container_set_border_width (GTK_CONTAINER (vbox), 5);
+	vbox = gtk_vbox_new(FALSE, GNOME_PAD_SMALL);
+	gtk_container_set_border_width(GTK_CONTAINER (vbox), GNOME_PAD_SMALL);
 	gtk_container_add(GTK_CONTAINER(frame), vbox);
 	gtk_widget_show(vbox);
 
-	hbox = gtk_hbox_new(FALSE, 5);
-	gtk_box_pack_start( GTK_BOX(vbox), hbox, FALSE, FALSE, 5);
+	hbox = gtk_hbox_new(FALSE, GNOME_PAD_SMALL);
+	gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
 	gtk_widget_show(hbox);
 
 	label = gtk_label_new(_("ESD host to monitor:"));
-	gtk_box_pack_start( GTK_BOX(hbox), label, FALSE, FALSE, 5);
+	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
 	gtk_widget_show(label);
 
 	ad->host_entry = gtk_entry_new();
@@ -489,7 +490,7 @@ void property_show(AppletWidget *applet, gpointer data)
 	gtk_signal_connect_object(GTK_OBJECT(ad->host_entry), "changed",
 				GTK_SIGNAL_FUNC(gnome_property_box_changed),
 				GTK_OBJECT(ad->propwindow));
-	gtk_box_pack_start( GTK_BOX(hbox),ad->host_entry , TRUE, TRUE, 5);
+	gtk_box_pack_start(GTK_BOX(hbox), ad->host_entry, TRUE, TRUE, 0);
 	gtk_widget_show(ad->host_entry);
 
 #ifdef HAVE_ADVANCED

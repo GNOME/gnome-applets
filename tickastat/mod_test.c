@@ -111,9 +111,9 @@ static GtkWidget *mod_test_config_show(gpointer data, AppData *ad)
 	GtkWidget *button;
 
 	frame = gtk_frame_new(_("Test Module"));
-	gtk_container_set_border_width (GTK_CONTAINER (frame), 5);
 
-	vbox = gtk_vbox_new(FALSE, 1);
+	vbox = gtk_vbox_new(FALSE, GNOME_PAD_SMALL);
+	gtk_container_set_border_width (GTK_CONTAINER(vbox), GNOME_PAD_SMALL);
 	gtk_container_add(GTK_CONTAINER(frame), vbox);
 	gtk_widget_show(vbox);
 

@@ -185,14 +185,14 @@ void property_show(AppletWidget *applet, gpointer data)
 		_("Modem Lights Settings"));
 	
 	vbox = gtk_vbox_new(FALSE, GNOME_PAD_SMALL);
-	gtk_container_border_width(GTK_CONTAINER(vbox), GNOME_PAD_SMALL);
+	gtk_container_set_border_width(GTK_CONTAINER(vbox), GNOME_PAD_SMALL);
 
 	frame = gtk_frame_new(_("Connecting"));
 	gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
 	gtk_widget_show(frame);
 
-	vbox1 = gtk_vbox_new(FALSE, 0);
-	gtk_container_border_width(GTK_CONTAINER(vbox1), GNOME_PAD_SMALL);
+	vbox1 = gtk_vbox_new(FALSE, GNOME_PAD_SMALL);
+	gtk_container_set_border_width(GTK_CONTAINER(vbox1), GNOME_PAD_SMALL);
 	gtk_container_add(GTK_CONTAINER(frame), vbox1);
 	gtk_widget_show(vbox1);
 
@@ -242,8 +242,8 @@ void property_show(AppletWidget *applet, gpointer data)
 	gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
 	gtk_widget_show(frame);
 
-	vbox1 = gtk_vbox_new(FALSE, 0);
-	gtk_container_border_width(GTK_CONTAINER(vbox1), GNOME_PAD_SMALL);
+	vbox1 = gtk_vbox_new(FALSE, GNOME_PAD_SMALL);
+	gtk_container_set_border_width(GTK_CONTAINER(vbox1), GNOME_PAD_SMALL);
 	gtk_container_add(GTK_CONTAINER(frame), vbox1);
 	gtk_widget_show(vbox1);
 
@@ -279,14 +279,14 @@ void property_show(AppletWidget *applet, gpointer data)
 	/* advanced settings */
 
 	vbox = gtk_vbox_new(FALSE, GNOME_PAD_SMALL);
-	gtk_container_border_width(GTK_CONTAINER(vbox), GNOME_PAD_SMALL);
+	gtk_container_set_border_width(GTK_CONTAINER(vbox), GNOME_PAD_SMALL);
 
 	frame = gtk_frame_new(_("Modem options"));
 	gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
 	gtk_widget_show(frame);
 
-	vbox1 = gtk_vbox_new(FALSE, 0);
-	gtk_container_border_width(GTK_CONTAINER(vbox1), GNOME_PAD_SMALL);
+	vbox1 = gtk_vbox_new(FALSE, GNOME_PAD_SMALL);
+	gtk_container_set_border_width(GTK_CONTAINER(vbox1), GNOME_PAD_SMALL);
 	gtk_container_add(GTK_CONTAINER(frame), vbox1);
 	gtk_widget_show(vbox1);
 

@@ -455,9 +455,9 @@ static GtkWidget *mod_coredump_config_show(gpointer data, AppData *ad)
 	GtkWidget *button;
 
 	frame = gtk_frame_new(_("Core Dump Module"));
-	gtk_container_set_border_width (GTK_CONTAINER (frame), 5);
 
-	vbox = gtk_vbox_new(FALSE, 1);
+	vbox = gtk_vbox_new(FALSE, GNOME_PAD_SMALL);
+	gtk_container_set_border_width(GTK_CONTAINER(vbox), GNOME_PAD_SMALL);
 	gtk_container_add(GTK_CONTAINER(frame), vbox);
 	gtk_widget_show(vbox);
 
@@ -473,12 +473,12 @@ static GtkWidget *mod_coredump_config_show(gpointer data, AppData *ad)
 	gtk_signal_connect (GTK_OBJECT(button),"clicked",(GtkSignalFunc) show_popup_checkbox_cb, cd);
 	gtk_widget_show(button);
 
-	hbox = gtk_hbox_new(FALSE, 0);
+	hbox = gtk_hbox_new(FALSE, GNOME_PAD_SMALL);
 	gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
 	gtk_widget_show(hbox);
 
 	label = gtk_label_new(_("Path to monitor:"));
-	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, GNOME_PAD_SMALL);
+	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
 	gtk_widget_show(label);
 
 	cd->core_path_entry = gtk_entry_new();
@@ -486,7 +486,7 @@ static GtkWidget *mod_coredump_config_show(gpointer data, AppData *ad)
 		gtk_entry_set_text(GTK_ENTRY(cd->core_path_entry), cd->C_core_path);
 	gtk_signal_connect(GTK_OBJECT(cd->core_path_entry), "changed",
 			   GTK_SIGNAL_FUNC(path_entry_cb), cd);
-	gtk_box_pack_start(GTK_BOX(hbox), cd->core_path_entry, TRUE, TRUE, GNOME_PAD_SMALL);
+	gtk_box_pack_start(GTK_BOX(hbox), cd->core_path_entry, TRUE, TRUE, 0);
 	gtk_widget_show(cd->core_path_entry);
 
 	label = gtk_label_new(cd->md->description);

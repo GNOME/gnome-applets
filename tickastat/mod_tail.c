@@ -400,9 +400,9 @@ static GtkWidget *mod_tail_config_show(gpointer data, AppData *ad)
 	GtkWidget *button;
 
 	frame = gtk_frame_new(_("File Tail Module"));
-	gtk_container_set_border_width (GTK_CONTAINER (frame), 5);
 
-	vbox = gtk_vbox_new(FALSE, 1);
+	vbox = gtk_vbox_new(FALSE, GNOME_PAD_SMALL);
+	gtk_container_set_border_width (GTK_CONTAINER(vbox), GNOME_PAD_SMALL);
 	gtk_container_add(GTK_CONTAINER(frame), vbox);
 	gtk_widget_show(vbox);
 
@@ -412,12 +412,12 @@ static GtkWidget *mod_tail_config_show(gpointer data, AppData *ad)
 	gtk_signal_connect (GTK_OBJECT(button),"clicked",(GtkSignalFunc) enabled_checkbox_cb, td);
 	gtk_widget_show(button);
 
-	hbox = gtk_hbox_new(FALSE, 0);
+	hbox = gtk_hbox_new(FALSE, GNOME_PAD_SMALL);
 	gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
 	gtk_widget_show(hbox);
 
 	label = gtk_label_new(_("Path to tail:"));
-	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, GNOME_PAD_SMALL);
+	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
 	gtk_widget_show(label);
 
 	label = gnome_file_entry_new ("tickastat tail file",

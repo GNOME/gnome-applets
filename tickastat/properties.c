@@ -343,6 +343,7 @@ void property_show(AppletWidget *applet, gpointer data)
 	/* module tab */
 
 	ad->prop_module_pane = gtk_hpaned_new();
+	gtk_container_set_border_width(GTK_CONTAINER(ad->prop_module_pane), GNOME_PAD_SMALL);
         gtk_widget_show (ad->prop_module_pane);
 
 	/* clist on left pane */
@@ -366,15 +367,16 @@ void property_show(AppletWidget *applet, gpointer data)
 
 	/* general tab */
 
-	vbox = gtk_vbox_new(FALSE,0);
+	vbox = gtk_vbox_new(FALSE, GNOME_PAD_SMALL);
+	gtk_container_set_border_width(GTK_CONTAINER(vbox), GNOME_PAD_SMALL);
 	gtk_widget_show(vbox);
 
 	frame = gtk_frame_new(_("Event Log"));
-	gtk_container_set_border_width (GTK_CONTAINER (frame), 5);
 	gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
 	gtk_widget_show(frame);
 
-	vbox1 = gtk_vbox_new(FALSE, 1);
+	vbox1 = gtk_vbox_new(FALSE, GNOME_PAD_SMALL);
+	gtk_container_set_border_width(GTK_CONTAINER(vbox1), GNOME_PAD_SMALL);
 	gtk_container_add(GTK_CONTAINER(frame), vbox1);
 	gtk_widget_show(vbox1);
 
@@ -384,12 +386,12 @@ void property_show(AppletWidget *applet, gpointer data)
 	gtk_signal_connect (GTK_OBJECT(button),"clicked",(GtkSignalFunc) enable_log_cb, ad);
 	gtk_widget_show(button);
 
-	hbox = gtk_hbox_new(FALSE, 0);
+	hbox = gtk_hbox_new(FALSE, GNOME_PAD_SMALL);
 	gtk_box_pack_start(GTK_BOX(vbox1), hbox, FALSE, FALSE, 0);
 	gtk_widget_show(hbox);
 
         label = gtk_label_new(_("Log path:"));
-        gtk_box_pack_start( GTK_BOX(hbox), label, FALSE, FALSE, GNOME_PAD_SMALL);
+        gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
         gtk_widget_show(label);
 
 	label = gnome_file_entry_new ("tickastat log path",
@@ -400,7 +402,7 @@ void property_show(AppletWidget *applet, gpointer data)
 	gtk_signal_connect_object(GTK_OBJECT(ad->log_path_entry), "changed",
 				GTK_SIGNAL_FUNC(gnome_property_box_changed),
 				GTK_OBJECT(ad->propwindow));
-        gtk_box_pack_start(GTK_BOX(hbox), label, TRUE, TRUE, GNOME_PAD_SMALL);
+        gtk_box_pack_start(GTK_BOX(hbox), label, TRUE, TRUE, 0);
         gtk_widget_show(label);
 
         label = gtk_label_new(_("General"));
@@ -409,15 +411,16 @@ void property_show(AppletWidget *applet, gpointer data)
 
 	/* display tab */
 
-	vbox = gtk_vbox_new(FALSE,0);
+	vbox = gtk_vbox_new(FALSE, GNOME_PAD_SMALL);
+	gtk_container_set_border_width(GTK_CONTAINER(vbox), GNOME_PAD_SMALL);
 	gtk_widget_show(vbox);
 
 	frame = gtk_frame_new(_("Scrolling"));
-	gtk_container_set_border_width (GTK_CONTAINER (frame), 5);
 	gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
 	gtk_widget_show(frame);
 
-	vbox1 = gtk_vbox_new(FALSE, 1);
+	vbox1 = gtk_vbox_new(FALSE, GNOME_PAD_SMALL);
+	gtk_container_set_border_width(GTK_CONTAINER(vbox1), GNOME_PAD_SMALL);
 	gtk_container_add(GTK_CONTAINER(frame), vbox1);
 	gtk_widget_show(vbox1);
 
@@ -434,15 +437,15 @@ void property_show(AppletWidget *applet, gpointer data)
 	gtk_widget_show(button);
 
 	frame = gtk_frame_new(_("Speed"));
-	gtk_container_set_border_width (GTK_CONTAINER (frame), 5);
 	gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
 	gtk_widget_show(frame);
 
-	vbox1 = gtk_vbox_new(FALSE, 1);
+	vbox1 = gtk_vbox_new(FALSE, GNOME_PAD_SMALL);
+	gtk_container_set_border_width(GTK_CONTAINER(vbox1), GNOME_PAD_SMALL);
 	gtk_container_add(GTK_CONTAINER(frame), vbox1);
 	gtk_widget_show(vbox1);
 
-	hbox = gtk_hbox_new(FALSE, 0);
+	hbox = gtk_hbox_new(FALSE, GNOME_PAD_SMALL);
 	gtk_box_pack_start(GTK_BOX(vbox1), hbox, FALSE, FALSE, 0);
 	gtk_widget_show(hbox);
 
@@ -460,7 +463,7 @@ void property_show(AppletWidget *applet, gpointer data)
         gtk_spin_button_set_update_policy(GTK_SPIN_BUTTON(spin), GTK_UPDATE_ALWAYS);
         gtk_widget_show(spin);
 
-	hbox = gtk_hbox_new(FALSE, 0);
+	hbox = gtk_hbox_new(FALSE, GNOME_PAD_SMALL);
 	gtk_box_pack_start(GTK_BOX(vbox1), hbox, FALSE, FALSE, 0);
 	gtk_widget_show(hbox);
 
@@ -479,15 +482,15 @@ void property_show(AppletWidget *applet, gpointer data)
         gtk_widget_show(spin);
 
 	frame = gtk_frame_new(_("Size"));
-	gtk_container_set_border_width (GTK_CONTAINER (frame), 5);
 	gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
 	gtk_widget_show(frame);
 
-	vbox1 = gtk_vbox_new(FALSE, 1);
+	vbox1 = gtk_vbox_new(FALSE, GNOME_PAD_SMALL);
+	gtk_container_set_border_width(GTK_CONTAINER(vbox1), GNOME_PAD_SMALL);
 	gtk_container_add(GTK_CONTAINER(frame), vbox1);
 	gtk_widget_show(vbox1);
 
-	hbox = gtk_hbox_new(FALSE, 0);
+	hbox = gtk_hbox_new(FALSE, GNOME_PAD_SMALL);
 	gtk_box_pack_start(GTK_BOX(vbox1), hbox, FALSE, FALSE, 0);
 	gtk_widget_show(hbox);
 
@@ -515,7 +518,7 @@ void property_show(AppletWidget *applet, gpointer data)
 	if (ad->p_follow_hint_width) gtk_widget_set_sensitive(spin, FALSE);
 #endif
 
-	hbox = gtk_hbox_new(FALSE, 0);
+	hbox = gtk_hbox_new(FALSE, GNOME_PAD_SMALL);
 	gtk_box_pack_start(GTK_BOX(vbox1), hbox, FALSE, FALSE, 0);
 	gtk_widget_show(hbox);
 

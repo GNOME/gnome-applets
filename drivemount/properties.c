@@ -124,6 +124,7 @@ void property_show(AppletWidget *applet, gpointer data)
 	DriveData *dd = data;
 	GtkWidget *frame;
 	GtkWidget *hbox;
+	GtkWidget *vbox;
 	GtkWidget *label;
 	GtkWidget *omenu;
 	GtkWidget *menu;
@@ -146,27 +147,49 @@ void property_show(AppletWidget *applet, gpointer data)
 	dd->propwindow = gnome_property_box_new();
 	gtk_window_set_title(GTK_WINDOW(&GNOME_PROPERTY_BOX(dd->propwindow)->dialog.window),
 		_("Drive Mount Settings"));
-	
-	frame = gtk_vbox_new(FALSE, 5);
 
-	hbox = gtk_hbox_new(FALSE, 5);
-        gtk_box_pack_start( GTK_BOX(frame), hbox, FALSE, FALSE, 5);
+	frame = gtk_frame_new(NULL);
+	gtk_container_set_border_width(GTK_CONTAINER(frame), GNOME_PAD_SMALL);
+
+	vbox = gtk_vbox_new(FALSE, GNOME_PAD_SMALL);
+	gtk_container_set_border_width(GTK_CONTAINER(vbox), GNOME_PAD_SMALL);
+	gtk_container_add(GTK_CONTAINER(frame), vbox);
+	gtk_widget_show(vbox);
+
+	hbox = gtk_hbox_new(FALSE, GNOME_PAD_SMALL);
+        gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
+	gtk_widget_show(hbox);
+
+        label = gtk_label_new(_("Mount point:"));
+        gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
+	gtk_widget_show(label);
+
+	dd->mount_point_entry = gtk_entry_new_with_max_length(255);
+	gtk_entry_set_text(GTK_ENTRY(dd->mount_point_entry), dd->mount_point);
+	gtk_signal_connect_object(GTK_OBJECT(dd->mount_point_entry), "changed",
+                            GTK_SIGNAL_FUNC(gnome_property_box_changed),
+                            GTK_OBJECT(dd->propwindow));
+        gtk_box_pack_start(GTK_BOX(hbox),dd->mount_point_entry , TRUE, TRUE, 0);
+	gtk_widget_show(dd->mount_point_entry);
+
+	hbox = gtk_hbox_new(FALSE, GNOME_PAD_SMALL);
+        gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
 	gtk_widget_show(hbox);
 
         label = gtk_label_new(_("Update in seconds:"));
-        gtk_box_pack_start( GTK_BOX(hbox), label, FALSE, FALSE, 5);
+        gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
 	gtk_widget_show(label);
 
 	delay_adj = gtk_adjustment_new( dd->prop_interval, 1.0, 30.0, 1, 1, 1 );
         dd->prop_spin = gtk_spin_button_new( GTK_ADJUSTMENT(delay_adj), 1, 0 );
-        gtk_box_pack_start( GTK_BOX(hbox), dd->prop_spin, FALSE, FALSE, 5);
-	gtk_signal_connect( GTK_OBJECT(delay_adj),"value_changed",GTK_SIGNAL_FUNC(update_delay_cb), dd);
-	gtk_signal_connect( GTK_OBJECT(dd->prop_spin),"changed",GTK_SIGNAL_FUNC(update_delay_cb), dd);
+        gtk_box_pack_start(GTK_BOX(hbox), dd->prop_spin, FALSE, FALSE, 0);
+	gtk_signal_connect(GTK_OBJECT(delay_adj),"value_changed",GTK_SIGNAL_FUNC(update_delay_cb), dd);
+	gtk_signal_connect(GTK_OBJECT(dd->prop_spin),"changed",GTK_SIGNAL_FUNC(update_delay_cb), dd);
         gtk_spin_button_set_update_policy( GTK_SPIN_BUTTON(dd->prop_spin),GTK_UPDATE_ALWAYS );
 	gtk_widget_show(dd->prop_spin);
 
         label = gtk_label_new(_("Icon:"));
-        gtk_box_pack_start( GTK_BOX(hbox), label, FALSE, FALSE, 5);
+        gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
 	gtk_widget_show(label);
 
 	omenu = gtk_option_menu_new ();
@@ -194,34 +217,18 @@ void property_show(AppletWidget *applet, gpointer data)
 
 	gtk_option_menu_set_menu (GTK_OPTION_MENU (omenu), menu);
 	gtk_option_menu_set_history (GTK_OPTION_MENU (omenu), dd->prop_device_pixmap);
-        gtk_box_pack_start( GTK_BOX(hbox), omenu, TRUE, TRUE, 5);
+        gtk_box_pack_start(GTK_BOX(hbox), omenu, TRUE, TRUE, 0);
 	gtk_widget_show (omenu);
 
-	hbox = gtk_hbox_new(FALSE, 5);
-        gtk_box_pack_start( GTK_BOX(frame), hbox, FALSE, FALSE, 5);
-	gtk_widget_show(hbox);
-
-        label = gtk_label_new(_("Mount point:"));
-        gtk_box_pack_start( GTK_BOX(hbox), label, FALSE, FALSE, 5);
-	gtk_widget_show(label);
-
-	dd->mount_point_entry = gtk_entry_new_with_max_length(255);
-	gtk_entry_set_text(GTK_ENTRY(dd->mount_point_entry), dd->mount_point);
-	gtk_signal_connect_object(GTK_OBJECT(dd->mount_point_entry), "changed",
-                            GTK_SIGNAL_FUNC(gnome_property_box_changed),
-                            GTK_OBJECT(dd->propwindow));
-        gtk_box_pack_start( GTK_BOX(hbox),dd->mount_point_entry , TRUE, TRUE, 5);
-	gtk_widget_show(dd->mount_point_entry);
-
 	button = gtk_check_button_new_with_label (_("Use automount friendly status test"));
-        gtk_box_pack_start(GTK_BOX(frame), button, FALSE, FALSE, 5);
+        gtk_box_pack_start(GTK_BOX(vbox), button, FALSE, FALSE, 0);
         gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(button), dd->prop_autofs_friendly);
         gtk_signal_connect (GTK_OBJECT(button),"clicked",(GtkSignalFunc) autofs_friendly_cb, dd);
         gtk_widget_show(button);
 
         label = gtk_label_new(_("General"));
         gtk_widget_show(frame);
-        gnome_property_box_append_page( GNOME_PROPERTY_BOX(dd->propwindow),frame ,label);
+        gnome_property_box_append_page(GNOME_PROPERTY_BOX(dd->propwindow), frame, label);
 
 	gtk_signal_connect( GTK_OBJECT(dd->propwindow), "apply",
 			    GTK_SIGNAL_FUNC(property_apply_cb), dd );

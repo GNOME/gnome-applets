@@ -1151,12 +1151,12 @@ void manager_window_show(AppData *ad)
         gtk_signal_connect (GTK_OBJECT (md->window), "delete_event", manager_window_delete_cb, md);
         gtk_window_set_policy (GTK_WINDOW(md->window), FALSE, TRUE, FALSE);
         gtk_window_set_title (GTK_WINDOW (md->window), "Sound Monitor - Manager");
-        gtk_container_border_width (GTK_CONTAINER (md->window), 5);
 	gtk_widget_set_usize(md->window, 500, 300);
 
 	gtk_window_set_wmclass(GTK_WINDOW(md->window), "manager", "Sound Monitor applet");
 
-	main_vbox = gtk_vbox_new(FALSE, 5);
+	main_vbox = gtk_vbox_new(FALSE, GNOME_PAD_SMALL);
+        gtk_container_set_border_width(GTK_CONTAINER(main_vbox), GNOME_PAD_SMALL);
 	gtk_container_add(GTK_CONTAINER(md->window), main_vbox);
 	gtk_widget_show(main_vbox);
 
@@ -1166,7 +1166,7 @@ void manager_window_show(AppData *ad)
 
 	button = gnome_stock_button(GNOME_STOCK_BUTTON_CLOSE);
 	gtk_signal_connect (GTK_OBJECT(button), "clicked", manager_window_close_cb, md);
-	gtk_box_pack_end(GTK_BOX(hbox), button, FALSE, FALSE, 20);
+	gtk_box_pack_end(GTK_BOX(hbox), button, FALSE, FALSE, GNOME_PAD);
 	gtk_widget_show(button);
 
 	md->notebook = gtk_notebook_new();
@@ -1176,14 +1176,14 @@ void manager_window_show(AppData *ad)
         /* server info */
 
 	frame = gtk_frame_new("Server information:");
-	gtk_container_border_width (GTK_CONTAINER (frame), 5);
+	gtk_container_set_border_width (GTK_CONTAINER (frame), GNOME_PAD_SMALL);
 	gtk_widget_show(frame);
 	label = gtk_label_new("Server");
 	gtk_notebook_append_page (GTK_NOTEBOOK(md->notebook), frame, label);
 
-	vbox = gtk_vbox_new (FALSE, 0);
-	gtk_container_border_width (GTK_CONTAINER (vbox), 5);
-	gtk_container_add (GTK_CONTAINER(frame),vbox);
+	vbox = gtk_vbox_new (FALSE, GNOME_PAD_SMALL);
+	gtk_container_set_border_width(GTK_CONTAINER(vbox), GNOME_PAD_SMALL);
+	gtk_container_add (GTK_CONTAINER(frame), vbox);
 	gtk_widget_show(vbox);
 
 	scrolled = gtk_scrolled_window_new(NULL, NULL);
@@ -1199,13 +1199,13 @@ void manager_window_show(AppData *ad)
         /* stream info */
 
 	frame = gtk_frame_new("Connected streams:");
-	gtk_container_border_width (GTK_CONTAINER (frame), 5);
+	gtk_container_set_border_width(GTK_CONTAINER(frame), GNOME_PAD_SMALL);
 	gtk_widget_show(frame);
 	label = gtk_label_new("Streams");
 	gtk_notebook_append_page (GTK_NOTEBOOK(md->notebook), frame, label);
 
-	vbox = gtk_vbox_new (FALSE, 0);
-	gtk_container_border_width (GTK_CONTAINER (vbox), 5);
+	vbox = gtk_vbox_new (FALSE, GNOME_PAD_SMALL);
+	gtk_container_set_border_width (GTK_CONTAINER (vbox), GNOME_PAD_SMALL);
 	gtk_container_add (GTK_CONTAINER(frame),vbox);
 	gtk_widget_show(vbox);
 
@@ -1247,7 +1247,7 @@ void manager_window_show(AppData *ad)
 	gtk_widget_show(md->stream_name_entry);
 
 	vbox1 = gtk_vbox_new (FALSE, 0);
-	gtk_box_pack_start(GTK_BOX(hbox), vbox1, TRUE, TRUE, 0);
+	gtk_box_pack_start(GTK_BOX(hbox), vbox1, TRUE, TRUE, GNOME_PAD_SMALL);
 	gtk_widget_show(vbox1);
 
 /* */	adj = gtk_adjustment_new(0.0, 0.0, 256.0, 1.0, 1.0, 0.0);
@@ -1281,13 +1281,13 @@ void manager_window_show(AppData *ad)
         /* sample info */
 
 	frame = gtk_frame_new("Cached samples: (select to play)");
-	gtk_container_border_width (GTK_CONTAINER (frame), 5);
+	gtk_container_set_border_width(GTK_CONTAINER(frame), GNOME_PAD_SMALL);
 	gtk_widget_show(frame);
 	label = gtk_label_new("Samples");
 	gtk_notebook_append_page (GTK_NOTEBOOK(md->notebook), frame, label);
 
-	vbox = gtk_vbox_new (FALSE, 0);
-	gtk_container_border_width (GTK_CONTAINER (vbox), 5);
+	vbox = gtk_vbox_new (FALSE, GNOME_PAD_SMALL);
+	gtk_container_set_border_width (GTK_CONTAINER (vbox), GNOME_PAD_SMALL);
 	gtk_container_add (GTK_CONTAINER(frame),vbox);
 	gtk_widget_show(vbox);
 
@@ -1335,7 +1335,7 @@ void manager_window_show(AppData *ad)
 	gtk_widget_show(md->sample_name_entry);
 
 	vbox1 = gtk_vbox_new (FALSE, 0);
-	gtk_box_pack_start(GTK_BOX(hbox), vbox1, TRUE, TRUE, 0);
+	gtk_box_pack_start(GTK_BOX(hbox), vbox1, TRUE, TRUE, GNOME_PAD_SMALL);
 	gtk_widget_show(vbox1);
 
 /* */	adj = gtk_adjustment_new(0.0, 0.0, 256.0, 1.0, 1.0, 0.0);

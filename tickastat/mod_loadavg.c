@@ -498,9 +498,9 @@ static GtkWidget *mod_loadavg_config_show(gpointer data, AppData *ad)
 	GtkObject *adj;
 
 	frame = gtk_frame_new(_("Load Average Module"));
-	gtk_container_set_border_width (GTK_CONTAINER (frame), 5);
 
-	vbox = gtk_vbox_new(FALSE, 1);
+	vbox = gtk_vbox_new(FALSE, GNOME_PAD_SMALL);
+	gtk_container_set_border_width(GTK_CONTAINER(vbox), GNOME_PAD_SMALL);
 	gtk_container_add(GTK_CONTAINER(frame), vbox);
 	gtk_widget_show(vbox);
 
@@ -510,34 +510,34 @@ static GtkWidget *mod_loadavg_config_show(gpointer data, AppData *ad)
 	gtk_signal_connect (GTK_OBJECT(button),"clicked",(GtkSignalFunc) enabled_checkbox_cb, lad);
 	gtk_widget_show(button);
 
-	hbox = gtk_hbox_new(FALSE, 0);
+	hbox = gtk_hbox_new(FALSE, GNOME_PAD_SMALL);
 	gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
 	gtk_widget_show(hbox);
 
 	label = gtk_label_new(_("Check every:"));
-	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, GNOME_PAD_SMALL);
+	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
 	gtk_widget_show(label);
 
 	adj = gtk_adjustment_new(lad->C_update_interval, 10.0, 300.0, 1, 1, 1 );
 	spin = gtk_spin_button_new(GTK_ADJUSTMENT(adj), 1, 0 );
-	gtk_box_pack_start(GTK_BOX(hbox), spin, FALSE, FALSE, GNOME_PAD_SMALL);
+	gtk_box_pack_start(GTK_BOX(hbox), spin, FALSE, FALSE, 0);
 	gtk_signal_connect(GTK_OBJECT(adj),"value_changed",GTK_SIGNAL_FUNC(interval_cb), lad);
 	gtk_signal_connect(GTK_OBJECT(spin),"changed",GTK_SIGNAL_FUNC(interval_cb), lad);
 	gtk_spin_button_set_update_policy(GTK_SPIN_BUTTON(spin), GTK_UPDATE_ALWAYS);
         gtk_widget_show(spin);
 
 	label = gtk_label_new(_("Seconds"));
-	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, GNOME_PAD_SMALL);
+	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
 	gtk_widget_show(label);
 
 	/* Warning dialog */
 
 	frame1 = gtk_frame_new(_("Warning options"));
 	gtk_box_pack_start(GTK_BOX(vbox), frame1, FALSE, FALSE, 0);
-	gtk_container_set_border_width (GTK_CONTAINER (frame1), 5);
 	gtk_widget_show(frame1);
 
-	vbox1 = gtk_vbox_new(FALSE, 1);
+	vbox1 = gtk_vbox_new(FALSE, GNOME_PAD_SMALL);
+	gtk_container_set_border_width(GTK_CONTAINER(vbox1), GNOME_PAD_SMALL);
 	gtk_container_add(GTK_CONTAINER(frame1), vbox1);
 	gtk_widget_show(vbox1);
 
@@ -547,17 +547,17 @@ static GtkWidget *mod_loadavg_config_show(gpointer data, AppData *ad)
 	gtk_signal_connect (GTK_OBJECT(button),"clicked",(GtkSignalFunc) show_warning_popup_checkbox_cb, lad);
 	gtk_widget_show(button);
 
-	hbox = gtk_hbox_new(FALSE, 0);
+	hbox = gtk_hbox_new(FALSE, GNOME_PAD_SMALL);
 	gtk_box_pack_start(GTK_BOX(vbox1), hbox, FALSE, FALSE, 0);
 	gtk_widget_show(hbox);
 
 	label = gtk_label_new(_("Load average threshhold:"));
-	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, GNOME_PAD_SMALL);
+	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
 	gtk_widget_show(label);
 
 	adj = gtk_adjustment_new(lad->C_warning_point, 1.0, 300.0, 1, 1, 1 );
 	spin = gtk_spin_button_new(GTK_ADJUSTMENT(adj), 1, 0 );
-	gtk_box_pack_start(GTK_BOX(hbox), spin, FALSE, FALSE, GNOME_PAD_SMALL);
+	gtk_box_pack_start(GTK_BOX(hbox), spin, FALSE, FALSE, 0);
 	gtk_signal_connect(GTK_OBJECT(adj),"value_changed",GTK_SIGNAL_FUNC(warning_point_cb), lad);
 	gtk_signal_connect(GTK_OBJECT(spin),"changed",GTK_SIGNAL_FUNC(warning_point_cb), lad);
 	gtk_spin_button_set_update_policy(GTK_SPIN_BUTTON(spin), GTK_UPDATE_ALWAYS);
@@ -579,10 +579,10 @@ static GtkWidget *mod_loadavg_config_show(gpointer data, AppData *ad)
 
 	frame1 = gtk_frame_new(_("Alert options"));
 	gtk_box_pack_start(GTK_BOX(vbox), frame1, FALSE, FALSE, 0);
-	gtk_container_set_border_width (GTK_CONTAINER (frame1), 5);
 	gtk_widget_show(frame1);
 
-	vbox1 = gtk_vbox_new(FALSE, 1);
+	vbox1 = gtk_vbox_new(FALSE, GNOME_PAD_SMALL);
+	gtk_container_set_border_width(GTK_CONTAINER(vbox1), GNOME_PAD_SMALL);
 	gtk_container_add(GTK_CONTAINER(frame1), vbox1);
 	gtk_widget_show(vbox1);
 
@@ -592,17 +592,17 @@ static GtkWidget *mod_loadavg_config_show(gpointer data, AppData *ad)
 	gtk_signal_connect (GTK_OBJECT(button),"clicked",(GtkSignalFunc) show_danger_popup_checkbox_cb, lad);
 	gtk_widget_show(button);
 
-	hbox = gtk_hbox_new(FALSE, 0);
+	hbox = gtk_hbox_new(FALSE, GNOME_PAD_SMALL);
 	gtk_box_pack_start(GTK_BOX(vbox1), hbox, FALSE, FALSE, 0);
 	gtk_widget_show(hbox);
 
 	label = gtk_label_new(_("Load average threshhold:"));
-	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, GNOME_PAD_SMALL);
+	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
 	gtk_widget_show(label);
 
 	adj = gtk_adjustment_new(lad->C_danger_point, 1.0, 300.0, 1, 1, 1 );
 	spin = gtk_spin_button_new(GTK_ADJUSTMENT(adj), 1, 0 );
-	gtk_box_pack_start(GTK_BOX(hbox), spin, FALSE, FALSE, GNOME_PAD_SMALL);
+	gtk_box_pack_start(GTK_BOX(hbox), spin, FALSE, FALSE, 0);
 	gtk_signal_connect(GTK_OBJECT(adj),"value_changed",GTK_SIGNAL_FUNC(danger_point_cb), lad);
 	gtk_signal_connect(GTK_OBJECT(spin),"changed",GTK_SIGNAL_FUNC(danger_point_cb), lad);
 	gtk_spin_button_set_update_policy(GTK_SPIN_BUTTON(spin), GTK_UPDATE_ALWAYS);
