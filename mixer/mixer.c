@@ -1229,6 +1229,7 @@ mixer_pref_cb (BonoboUIComponent *uic,
         data->prefdialog = dialog;
                            
 	vbox = GTK_DIALOG (dialog)->vbox;
+	gtk_box_set_spacing (GTK_BOX (vbox), 2);
 	
 	vbox1 = gtk_vbox_new (FALSE, 18);
 	gtk_container_set_border_width (GTK_CONTAINER (vbox1), 5);
