@@ -46,7 +46,8 @@
 #include <libgnome/libgnome.h>
 #include <libgnomeui/gnome-about.h>
 #include <libgnomeui/gnome-window-icon.h>
-#include <panel-applet.h>
+#include <gconf/gconf-client.h>
+#include <panel-applet-gconf.h>
 #include <egg-screen-exec.h>
 #include <egg-screen-help.h>
 
@@ -188,6 +189,23 @@ long pv_buf[MAX_PV_BUF] = {
 };
 #endif
 
+static gboolean
+key_writable (PanelApplet *applet, const char *key)
+{
+	gboolean writable;
+	char *fullkey;
+	GConfClient *client = gconf_client_get_default ();
+
+	fullkey = panel_applet_gconf_get_full_key (applet, key);
+
+	writable = gconf_client_key_is_writable (client, fullkey, NULL);
+
+	g_free (fullkey);
+	g_object_unref (G_OBJECT (client));
+
+	return writable;
+}
+
 #ifdef OSS_API
 static void
 get_channels (MixerData *data)
@@ -215,8 +233,9 @@ get_channels (MixerData *data)
 	if (!valid) {
 		ChannelData *cdata = data->channels->data;
 		data->mixerchannel = cdata->channel;
-		panel_applet_gconf_set_int (PANEL_APPLET (data->applet), "channel", 
-							  data->mixerchannel, NULL);
+		if (key_writable (PANEL_APPLET (data->applet), "channel"))
+			panel_applet_gconf_set_int (PANEL_APPLET (data->applet), "channel", 
+						    data->mixerchannel, NULL);
 	}
 }
 #endif
@@ -557,8 +576,12 @@ mixer_update_image (MixerData *data)
 	g_object_unref (scaled);	
 	g_object_unref (pixbuf);
 	
-	panel_applet_gconf_set_int (PANEL_APPLET (data->applet), "vol", data->vol);
-	panel_applet_gconf_set_bool (PANEL_APPLET (data->applet), "mute", data->mute);
+	if (key_writable (PANEL_APPLET (data->applet), "vol"))
+		panel_applet_gconf_set_int (PANEL_APPLET (data->applet), "vol", data->vol,
+					    NULL);
+	if (key_writable (PANEL_APPLET (data->applet), "mute"))
+		panel_applet_gconf_set_bool (PANEL_APPLET (data->applet), "mute", data->mute,
+					     NULL);
 			
 }
 
@@ -1265,7 +1288,12 @@ mixer_pref_cb (BonoboUIComponent *uic,
 		}
         	list = g_list_next (list);
         }
-        
+
+	if ( ! key_writable (PANEL_APPLET (data->applet), "channel")) {
+		gtk_widget_set_sensitive (tree, FALSE);
+		gtk_widget_set_sensitive (label, FALSE);
+	}
+
         g_signal_connect (G_OBJECT (gtk_tree_view_get_selection (GTK_TREE_VIEW (tree))), 
 			  	  "changed",
 			  	   G_CALLBACK (cb_row_selected), data);
