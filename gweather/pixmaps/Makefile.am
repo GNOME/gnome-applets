@@ -17,3 +17,6 @@ EXTRA_DIST = \
 	tstorm.xpm	\
 	unknown-mini.xpm	\
 	unknown.xpm
+
+gweather_iconsdir = $(datadir)/pixmaps/gweather
+gweather_icons_DATA = tstorm.xpm
