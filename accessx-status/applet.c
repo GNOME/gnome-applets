@@ -133,6 +133,9 @@ about_cb (BonoboUIComponent          *uic,
 	const gchar *translator_credits = _("translator_credits");
 
 	if (sapplet->about_dialog) {
+		gtk_window_set_screen (GTK_WINDOW (sapplet->about_dialog),
+				       gtk_widget_get_screen (GTK_WIDGET (sapplet->applet)));
+
 		gtk_window_present (GTK_WINDOW (sapplet->about_dialog));
 		return;
 	}
