@@ -7,6 +7,8 @@
  *                                                      *
  * Displays a binary clock using gtk+ 0.99.9            *
  *                                                      *
+ * This is the GNOME panel applet version               *
+ *                                                      *
  * Now with much niftier pixmaps & blinking cursors     *
  *                                                      *
  * Please let me know what you think! This is my first  *
