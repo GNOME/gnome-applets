@@ -103,7 +103,7 @@ cb_applet_about(AppletWidget * widget, gpointer data)
     {"The Rasterman", NULL};
   
   about = gnome_about_new
-    (_("Desktop Pager Applet"), "0.1", _("Copyright (C)1998 Red Hat Software"),
+    (_("Desktop Pager Applet"), "0.1", _("Copyright (C)1998,1999 Red Hat Software, Free Software Foundation"),
      authors,
      _("Pager for a GNOME compliant Window Manager"),
      NULL);
@@ -781,7 +781,7 @@ cb_task_change(GtkWidget *widget, GdkEventProperty * ev, Task *t)
 {
   gint i, tdesk;
   gchar tsticky;
-  
+
   tsticky = t->sticky;
   tdesk = t->desktop;
   task_get_info(t);
@@ -969,7 +969,8 @@ cb_filter_intercept(GdkXEvent *gdk_xevent, GdkEvent *event, gpointer data)
       while (ptr)
 	{
 	  t = (Task *)(ptr->data);
-	  if (t->win == xevent->xconfigure.window)
+	  if (t->win == xevent->xconfigure.window ||
+	      t->frame == xevent->xconfigure.window)
 	    {
 	      cb_task_change(NULL, (GdkEventProperty *)event, t);
 	      return GDK_FILTER_CONTINUE;
@@ -1002,7 +1003,7 @@ void
 task_get_info(Task *t)
 {
   GnomeWinState       *win_state;
-  Window               w2, ret, root, *wl;
+  Window               ret;
   gchar               *name;
   gint                 size;
   guint                w, h, d;
@@ -1070,28 +1071,14 @@ task_get_info(Task *t)
     }
   
   /* geometry!!!!!!!!!!! */
-  XGetGeometry(GDK_DISPLAY(), t->win, &ret, &size, &size, &w, &h, &d, &d);
+  get_window_root_and_frame_id(t->win, &t->frame, &t->root);
+
+  XGetGeometry(GDK_DISPLAY(), t->frame, &ret, &size, &size, &w, &h, &d, &d);
   t->w = (gint)w;
   t->h = (gint)h;
-  wl = NULL;
-  w2 = t->win;
-  while (XQueryTree(GDK_DISPLAY(), w2, &root, &ret, &wl, &size))
-    {
-      if ((wl) && (size > 0))
-	XFree(wl);
-      w2 = ret;
-      if (ret == root)
-	break;
-      val = util_get_atom(ret, "ENLIGHTENMENT_DESKTOP", XA_CARDINAL, &size);
-      if (val)
-	{
-	  break;
-	  g_free(val);
-	}
-    }
-  /* Wheee w2 is our actualy "root" window even on virtual root windows */
-  XTranslateCoordinates(GDK_DISPLAY(), t->win, w2, 0, 0, 
+  XTranslateCoordinates(GDK_DISPLAY(), t->frame, t->root, 0, 0, 
 			&(t->x), &(t->y), &ret);
+
   if (psticky != t->sticky)
     {
       populate_tasks();
@@ -1145,7 +1132,10 @@ task_add(Window win)
   t->desktop = 0;
   t->dummy = NULL;
   t->gdkwin = NULL;
+  t->frame_gdkwin = NULL;
   
+  get_window_root_and_frame_id(t->win, &t->frame, &t->root);
+
   /* create dummy GTK widget to get events from */
   t->gdkwin = gdk_window_lookup(win);
   if (t->gdkwin)
@@ -1158,6 +1148,18 @@ task_add(Window win)
   gdk_window_add_filter(t->gdkwin, cb_filter_intercept, t->dummy);  
   /* fake events form win producing signals on dummy widget */
 /*  gdk_window_set_user_data(t->gdkwin, t->dummy);*/
+
+  /* DO it all again for the frame window */
+  t->frame_gdkwin = gdk_window_lookup(t->frame);
+  if (t->frame_gdkwin)
+    gdk_window_ref(t->frame_gdkwin);
+  else
+    t->frame_gdkwin = gdk_window_foreign_new(t->frame);
+  gdk_window_add_filter(t->frame_gdkwin, cb_filter_intercept, t->dummy);  
+  /* fake events form win producing signals on dummy widget */
+/*  gdk_window_set_user_data(t->gdkwin, t->dummy);*/
+
+
   /* conntect to "faked" signals */
 /*  gtk_signal_connect(GTK_OBJECT(t->dummy), "property_notify_event",
 		     GTK_SIGNAL_FUNC(cb_task_change), t);
@@ -1171,6 +1173,10 @@ task_add(Window win)
   /* make sure we get the events */
   XSelectInput(GDK_DISPLAY(), win, PropertyChangeMask | FocusChangeMask |
 	       StructureNotifyMask);
+
+  /* make sure we get the events */
+  XSelectInput(GDK_DISPLAY(), t->frame, StructureNotifyMask);
+
   /* add this client to the list of clients */
   tasks = g_list_append(tasks, t);
 
@@ -1550,6 +1556,110 @@ desktop_set_area(int ax, int ay)
 	               SubstructureNotifyMask, (XEvent*) &xev);
 }
 
+
+void
+get_window_root_and_frame_id(Window w, Window *ret_frame, Window *ret_root)
+{
+  Window               w3, w2, ret, root, *wl;
+  gint                 size;
+  CARD32              *val;
+
+  w3 = w2 = w;
+
+  while (XQueryTree(GDK_DISPLAY(), w2, &root, &ret, &wl, &size))
+    {
+      if ((wl) && (size > 0))
+	XFree(wl);
+      w3 = w2;
+      w2 = ret;
+      if (ret == root)
+	break;
+      val = util_get_atom(ret, "ENLIGHTENMENT_DESKTOP", XA_CARDINAL, &size);
+      if (val)
+	{
+	  break;
+	  g_free(val);
+	}
+    }
+
+  *ret_root = w2;
+  *ret_frame = w3;
+
+  return;
+}
+
+
+
+GList  *get_task_stacking(GList *tasks, gint desk)
+{
+  GList *tasks_on_desk=NULL;
+  GList *root_ids=NULL;
+  GList *retval=NULL;
+  GList *p, *p2, *p3;
+  Task *t;
+  Window dummy1, dummy2, root, *wl;
+  gint size, count;
+
+  /* Find the tasks that are sticky or on the specified desk 
+     which are not iconified. */
+
+  for (p = tasks; p != NULL; p = p->next) {
+    t = (Task *)p->data;
+    
+    if (((t->desktop == desk) || (t->sticky)) && (!(t->iconified))) {
+      tasks_on_desk = g_list_prepend(tasks_on_desk, (gpointer) t);
+    }
+  }
+  tasks_on_desk = g_list_reverse(tasks_on_desk);
+
+  /* Find the IDs of all root or virtual root windows they 
+     may be on. */
+
+  for (p = tasks_on_desk; p != NULL; p = p->next) {
+    t = (Task *)p->data;
+
+    if (NULL == g_list_find(root_ids, (gpointer) t->root)) {
+      root_ids = g_list_prepend(root_ids, (gpointer) t->root);
+    }
+  }
+
+  /* XQueryTree each virtual root window, and for each window ID we
+     get back that matches a frame window, add the corresponding task
+     structure to retval. If we have tasks claiming to be on the same
+     desk which are on different "root" windows, the stacking order
+     between windows on the different roots will be aribtrary, but
+     that is a WM bug (or temporary state) anyway. */
+  
+  for (p = root_ids; p != NULL; p = p->next) {
+    root = (Window) p->data;
+    
+    XQueryTree(GDK_DISPLAY(), root, &dummy1, &dummy2, &wl, &size);
+
+    for (count = 0; count < size; count++) {
+      Window w = wl[count];
+
+      for (p2 = tasks_on_desk; p2 != NULL; p2 = p2->next) {
+	t = (Task *)p2->data;
+
+	if (t->frame == wl[count]) {
+	  retval = g_list_prepend(retval, (gpointer) t);
+	  tasks_on_desk=g_list_remove_link(tasks_on_desk, p2);
+	  break;
+	}
+      }
+    }
+      
+    XFree(wl);
+  }
+  retval = g_list_reverse(retval);
+
+  g_list_free(tasks_on_desk);
+  g_list_free(root_ids);
+
+  return retval;
+}
+
+
 #include "stripe.xbm"
 
 void
@@ -1559,7 +1669,7 @@ desktop_cb_redraw(GtkWidget *widget, gpointer data)
   GdkWindow *win;
   gint sel, sw, sh, w, h, desk, x, y, ww, hh;
   Task *t;
-  GList *p;
+  GList *p, *stacking;
   GdkBitmap *bm;
   GdkGC *gc;
 
@@ -1614,7 +1724,8 @@ desktop_cb_redraw(GtkWidget *widget, gpointer data)
     gtk_draw_vline(s, win, GTK_STATE_NORMAL, 2, 1 + h, 1 + ((x * w) / area_w));
   for (y = 1; y < area_h; y++)
     gtk_draw_hline(s, win, GTK_STATE_NORMAL, 2, 1 + w, 1 + ((y * h) / area_h));
-  p = tasks;
+  stacking = get_task_stacking(tasks, desk);
+  p = stacking;
   while (p)
     {
       t = (Task *)p->data;
@@ -1634,6 +1745,7 @@ desktop_cb_redraw(GtkWidget *widget, gpointer data)
 	}
       p = p->next;
     }
+  g_list_free(stacking);
 }
 
 GtkWidget *

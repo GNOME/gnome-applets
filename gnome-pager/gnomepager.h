@@ -23,6 +23,8 @@ typedef struct _task
   gchar              *name;
   gint                x, y, w, h;
   Window              win;
+  Window              frame; /* Window manager's frame window */
+  Window              root;  /* Root or pseudo-root */
   gchar               iconified;
   gchar               shaded;
   gchar               focused;
@@ -30,6 +32,7 @@ typedef struct _task
   gint                desktop;
   GdkWindow          *gdkwin;
   GtkWidget          *dummy;
+  GdkWindow          *frame_gdkwin;
 }
 Task;
 
@@ -107,6 +110,12 @@ void populate_tasks(void);
 void desktop_set_area(int ax, int ay);
 void create_popbox(void);
 void showpop_cb(GtkWidget *widget, gpointer data);
+
+void get_window_root_and_frame_id(Window w, Window *ret_frame, 
+				      Window *ret_root);
+GList *get_task_stacking(GList *p, gint desk);
+
+
 
 #include "icon1.xpm"
 #include "icon2.xpm"
