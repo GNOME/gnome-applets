@@ -27,7 +27,6 @@
 #include "gweather-dialog.h"
 #include "gweather-applet.h"
 
-
 WeatherInfo *gweather_info = NULL;
 
 GtkWidget *gweather_applet = NULL;
@@ -161,10 +160,10 @@ void gweather_applet_create (int argc, char *argv[])
 {
     g_return_if_fail(gweather_applet == NULL);
 
-    applet_widget_init(PACKAGE, VERSION, argc, argv,
+    applet_widget_init("gweather", VERSION, argc, argv,
                        NULL, 0, NULL);
 
-    if ((gweather_applet = applet_widget_new(PACKAGE)) == NULL)
+    if ((gweather_applet = applet_widget_new("gweather")) == NULL)
         g_error(_("Cannot create applet!\n"));
 
     gtk_widget_set_events(gweather_applet, gtk_widget_get_events(gweather_applet) | \
