@@ -132,7 +132,8 @@ applet_fill (PanelApplet *applet)
     int err;
 
     cd = g_new0(CDPlayerData, 1);
-
+    cd->panel.applet = GTK_WIDGET (applet);
+    
     /* the rest of the widgets go in here */
     cdplayer = cd->panel.frame = gtk_frame_new(NULL);
     gtk_frame_set_shadow_type(GTK_FRAME(cdplayer), GTK_SHADOW_IN);
@@ -150,7 +151,6 @@ applet_fill (PanelApplet *applet)
     led_init();
     led_create_widgets(&cd->panel.time, &cd->panel.track_control.display, (gpointer)cd);
 
-    cd->panel.applet = GTK_WIDGET (applet);
     gtk_container_add (GTK_CONTAINER (applet), cdplayer);
 
     /* panel_applet_add_preferences (applet, "/schemas/apps/cdplayer-applet/prefs", NULL); */
@@ -477,6 +477,21 @@ setup_box(CDPlayerData* cd)
     gtk_widget_show_all(cd->panel.frame);
 }
 
+static gboolean 
+button_press_hack (GtkWidget *w, GdkEventButton *event, gpointer data)
+{
+    PanelApplet *applet = PANEL_APPLET (data);
+    /* Pass the right click to the PanelApplet */
+    if (event->button == 3) {
+    	GTK_WIDGET_CLASS (PANEL_APPLET_GET_CLASS (applet))->
+			  button_press_event (data, event);
+	return TRUE;
+    }
+    
+    return FALSE;
+    
+}
+
 static GtkWidget *
 control_button_factory(gchar * pixmap_data[], GCallback func, CDPlayerData * cd)
 {
@@ -491,6 +506,10 @@ control_button_factory(gchar * pixmap_data[], GCallback func, CDPlayerData * cd)
     image = gtk_image_new_from_pixbuf(pixbuf);
     gtk_widget_show(image);
     gtk_container_add(GTK_CONTAINER(w), image);
+    /* This is a hack to get the right click menu working with buttons
+    ** Should be removed when libpanelapplet is fixed */
+    g_signal_connect (G_OBJECT (w), "button_press_event",
+    		      G_CALLBACK (button_press_hack), cd->panel.applet);
     g_signal_connect(G_OBJECT(w), "clicked",
                      G_CALLBACK(func), cd);
     gtk_widget_show(w);
