@@ -6,9 +6,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-applets 1.4.0.3\n"
-"POT-Creation-Date: 2001-09-03 19:31+0200\n"
-"PO-Revision-Date: 2001-09-03 06:16+0800\n"
+"Project-Id-Version: gnome-applets 1.4.0.4\n"
+"POT-Creation-Date: 2001-09-21 03:48+0800\n"
+"PO-Revision-Date: 2001-09-21 03:50+0800\n"
 "Last-Translator: Abel Cheung <maddog@linux.org.hk>\n"
 "Language-Team: traditional chinese <zh-l10n@linux.org.tw>\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 msgid "Clock Settings"
 msgstr "時鐘設定"
 
-#: another_clock/another_clock.c:261 asclock/dialogs.c:379
+#: another_clock/another_clock.c:261 asclock/dialogs.c:376
 #: battery/properties.c:83 clockmail/properties.c:417
 #: diskusage/properties.c:463 drivemount/properties.c:391
 #: gnotes/properties.c:190 gweather/gweather-pref.c:524
@@ -79,7 +79,7 @@ msgstr "一個跟 CDE 面板上的時鐘相似的時鐘"
 #: another_clock/another_clock.c:710 asclock/asclock.c:609
 #: battery/battery.c:951 charpick/charpick.c:573 clockmail/clockmail.c:324
 #: diskusage/diskusage.c:1050 drivemount/drivemount.c:742 geyes/geyes.c:393
-#: gkb-new/gkb.c:757 gnotes/gnotes_applet.c:198 gtik/gtik.c:1416
+#: gkb-new/gkb.c:757 gnotes/gnotes_applet.c:198 gtik/gtik.c:1380
 #: gweather/gweather-applet.c:198
 #: mini-commander/src/mini-commander_applet.c:401
 #: modemlights/modemlights.c:1499 multiload/cpuload.c:95
@@ -111,7 +111,7 @@ msgstr "輔助說明"
 #: clipboard/clipboard.c:324 clockmail/clockmail.c:336
 #: cpumemusage/cpumemusage.c:303 diskusage/diskusage.c:1080
 #: drivemount/drivemount.c:753 fifteen/fifteen.c:389 geyes/geyes.c:404
-#: gkb-new/gkb.c:768 gnotes/gnotes_applet.c:205 gtik/gtik.c:1425
+#: gkb-new/gkb.c:768 gnotes/gnotes_applet.c:205 gtik/gtik.c:1389
 #: gweather/gweather-applet.c:208 jbc/jbc-applet.c:209 life/life.c:283
 #: mini-commander/src/mini-commander_applet.c:415 mixer/mixer.c:841
 #: modemlights/modemlights.c:1512 multiload/cpuload.c:115
@@ -135,33 +135,40 @@ msgstr "(C) 1998 the Free Software Foundation"
 msgid "Who said NeXT is dead?"
 msgstr "誰說 NeXT 消失了？"
 
-#: asclock/dialogs.c:164
+#: asclock/dialogs.c:161
 msgid ""
 "Since you are root, would you like to set the system's default timezone?"
 msgstr "身為 root 的你，是不是要設定系統預設的時區？"
 
-#: asclock/dialogs.c:166
+#: asclock/dialogs.c:163
 msgid "My Title"
 msgstr "我的標題"
 
-#. gchar *timezone_titles[2] = { N_("Continent/City") , NULL};
-#: asclock/dialogs.c:268
+#: asclock/dialogs.c:264
+msgid "Continent/City"
+msgstr "大陸/城市"
+
+#: asclock/dialogs.c:265
 msgid "Clock Theme"
 msgstr "時鐘佈景主題"
 
-#: asclock/dialogs.c:300
+#: asclock/dialogs.c:297
 msgid "ASClock Settings"
 msgstr "ASClock 設定"
 
 #. show ampm toggle button
-#: asclock/dialogs.c:332 clockmail/properties.c:306
+#: asclock/dialogs.c:329 clockmail/properties.c:306
 msgid "Display time in 12 hour format (AM/PM)"
 msgstr "用上下午格式顯示時間"
 
 #. show ampm toggle button
-#: asclock/dialogs.c:340
+#: asclock/dialogs.c:337
 msgid "Blinking elements in clock"
 msgstr "時鐘上有閃爍的部份"
+
+#: asclock/dialogs.c:381
+msgid "Timezone"
+msgstr "時區"
 
 #: battery/battery.c:150
 msgid "The battery is low."
@@ -924,7 +931,7 @@ msgstr "選項"
 msgid "Select layout"
 msgstr "選擇配置"
 
-#: gkb-new/prop-add.c:277 gkb-new/prop-list.c:378 gtik/gtik.c:1081
+#: gkb-new/prop-add.c:277 gkb-new/prop-list.c:378 gtik/gtik.c:1056
 #: webcontrol/properties.c:574
 msgid "Add"
 msgstr "加入"
@@ -1351,15 +1358,15 @@ msgstr "預設高度"
 msgid "Default Width"
 msgstr "預設寬度"
 
-#: gtik/gtik.c:209
+#: gtik/gtik.c:214
 msgid "No data available or properties not set"
 msgstr "沒有資料或是未設定偏好"
 
-#: gtik/gtik.c:704
+#: gtik/gtik.c:672
 msgid "The GNOME Stock Ticker"
 msgstr "GNOME 股市行情顯示器"
 
-#: gtik/gtik.c:707
+#: gtik/gtik.c:675
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.  "
 "The GNOME Stock Ticker is a free Internet-based application.  It comes with "
@@ -1369,86 +1376,86 @@ msgstr ""
 "此程式會接駁某個著名網站並下載現時的股價。GNOME 股市行情顯示器是一個可自由使"
 "用的軟件。它沒有使用擔保。不要使用它作投資的決定；僅作為參考資料而已。"
 
-#: gtik/gtik.c:1070
+#: gtik/gtik.c:1045
 msgid "New Symbol:"
 msgstr "加入代碼："
 
-#: gtik/gtik.c:1092
+#: gtik/gtik.c:1067
 msgid "Remove Selected"
 msgstr "移除選擇項目"
 
-#: gtik/gtik.c:1141
+#: gtik/gtik.c:1116
 msgid "Gnome Stock Ticker Properties"
 msgstr "Gnome 股市行情顯示器內容"
 
-#: gtik/gtik.c:1153
+#: gtik/gtik.c:1128
 msgid "Update Frequency in minutes:"
 msgstr "更新的周期(分鐘)："
 
-#: gtik/gtik.c:1172
+#: gtik/gtik.c:1147
 msgid "Enter symbols delimited with \"+\" in the box below."
 msgstr "在下方的空格填入以 「+」 分隔的代碼。"
 
-#: gtik/gtik.c:1180
+#: gtik/gtik.c:1155
 msgid "Display only symbols and price"
 msgstr "只顯示股票代碼及股價"
 
-#: gtik/gtik.c:1181
+#: gtik/gtik.c:1156
 msgid "Scroll left to right"
 msgstr "由左至右捲動"
 
-#: gtik/gtik.c:1182
+#: gtik/gtik.c:1157
 msgid "Display arrows instead of -/+"
 msgstr "顯示箭頭以代替加減號"
 
-#: gtik/gtik.c:1183
+#: gtik/gtik.c:1158
 msgid "Enable scroll buttons"
 msgstr "顯示捲動按紐"
 
 #. COLOR
-#: gtik/gtik.c:1227
+#: gtik/gtik.c:1202
 msgid "+ Color"
 msgstr "+ 的色彩"
 
-#: gtik/gtik.c:1244
+#: gtik/gtik.c:1219
 msgid "- Color"
 msgstr "- 的色彩"
 
-#: gtik/gtik.c:1264
+#: gtik/gtik.c:1239
 msgid "Stock Symbol:"
 msgstr "股票代碼："
 
-#: gtik/gtik.c:1265 gtik/gtik.c:1276
+#: gtik/gtik.c:1240 gtik/gtik.c:1251
 msgid "Select Font"
 msgstr "選擇字型"
 
-#: gtik/gtik.c:1275
+#: gtik/gtik.c:1250
 msgid "Stock Change:"
 msgstr "股值改變︰"
 
-#: gtik/gtik.c:1298
+#: gtik/gtik.c:1273
 msgid "Symbols"
 msgstr "股票代碼"
 
-#: gtik/gtik.c:1300 webcontrol/properties.c:668
+#: gtik/gtik.c:1275 webcontrol/properties.c:668
 msgid "Behavior"
 msgstr "表現"
 
 #. appearance frame
-#: gtik/gtik.c:1302 mini-commander/src/preferences.c:557
+#: gtik/gtik.c:1277 mini-commander/src/preferences.c:557
 #: webcontrol/properties.c:487
 msgid "Appearance"
 msgstr "外觀"
 
-#: gtik/gtik.c:1406 slashapp/slashapp.c:103
+#: gtik/gtik.c:1370 slashapp/slashapp.c:103
 msgid "Refresh"
 msgstr "重新整理"
 
-#: gtik/gtik.c:1544
+#: gtik/gtik.c:1508
 msgid "(No"
 msgstr "(沒有"
 
-#: gtik/gtik.c:1545
+#: gtik/gtik.c:1509
 msgid "Change "
 msgstr "改變"
 
@@ -4677,15 +4684,15 @@ msgstr "AfterStep 時鐘"
 
 #: asclock/asclock_applet.desktop.in.h:2
 msgid "Just another clock"
-msgstr "又一種時鐘"
+msgstr "另類時鐘"
 
 #: drivemount/drivemount_applet.desktop.in.h:1
 msgid "Drive Mount"
 msgstr "檔案系統掛載"
 
 #: drivemount/drivemount_applet.desktop.in.h:2
-msgid "Mounts and unmount drives"
-msgstr "掛上/卸下檔案系統"
+msgid "Mount and unmount drives"
+msgstr "掛上及卸下檔案系統"
 
 #: cpumemusage/cpumemusage_applet.desktop.in.h:1
 msgid "CPU/MEM usage"
@@ -4784,8 +4791,8 @@ msgid "Fifteen cells game"
 msgstr "'十五' 智慧拼圖"
 
 #: charpick/charpick_applet.desktop.in.h:2
-msgid "character picker"
-msgstr "特殊字元選取"
+msgid "Character picker"
+msgstr "特殊字元選取程式"
 
 #: sound-monitor/sound-monitor_applet.desktop.in.h:1
 msgid "Sound Monitor"
@@ -4856,7 +4863,7 @@ msgid "GNOME Stock Ticker Panel Applet"
 msgstr "GNOME 股市行情面板程式"
 
 #: jbc/jbc_applet.desktop.in.h:1
-msgid "Displays the time whith in binary representation"
+msgid "Displays the time in binary representation"
 msgstr "使用二進位來顯示時間"
 
 #: jbc/jbc_applet.desktop.in.h:2
@@ -4963,11 +4970,8 @@ msgstr "清除"
 msgid "all entries in URL history"
 msgstr "所有 URL 紀錄"
 
-#~ msgid "Continent/City"
-#~ msgstr "大陸/城市"
-
-#~ msgid "Timezone"
-#~ msgstr "時區"
+#~ msgid "character picker"
+#~ msgstr "特殊字元選取"
 
 #~ msgid "keymap_%d/flag=us.png"
 #~ msgstr "keymap_%d/flag=us.png"
