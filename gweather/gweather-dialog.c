@@ -39,16 +39,20 @@ static GtkWidget *cond_pressure;
 static GtkWidget *cond_vis;
 static GtkWidget *cond_pixmap;
 static GtkWidget *forecast_text;
-static GtkWidget *radar_pixmap = NULL;
-static GtkWidget *radar_scroller;
+static GtkWidget *radar_pixmap;
 
 static GdkPixmap *pixmap;
 static GdkBitmap *mask = NULL;
 
 
-static void close_cb (GtkButton *button, gpointer user_data)
+static void close_cb (GtkButton *button, gpointer data)
 {
     gweather_dialog_close();
+}
+
+static void link_cb (GtkButton *button, gpointer data)
+{
+    gnome_url_show("http://www.weather.com/");
 }
 
 void gweather_dialog_create (void)
@@ -72,6 +76,9 @@ void gweather_dialog_create (void)
   GtkWidget *current_note_lbl;
   GtkWidget *forecast_note_lbl;
   GtkWidget *radar_note_lbl;
+  GtkWidget *radar_vbox;
+  GtkWidget *radar_link_btn;
+  GtkWidget *radar_link_alignment;
   GtkWidget *forecast_scroll;
   GtkObject *forecast_adj;
   GtkWidget *forecast_hbox;
@@ -82,7 +89,7 @@ void gweather_dialog_create (void)
 
   gweather_dialog = gnome_dialog_new (_("GNOME Weather"), NULL);
   if (gweather_pref.radar_enabled)
-      gtk_widget_set_usize (gweather_dialog, 640, 420);
+      gtk_widget_set_usize (gweather_dialog, 570, 440);
   else
       gtk_widget_set_usize (gweather_dialog, 590, 340);
   gtk_window_set_policy (GTK_WINDOW (gweather_dialog), FALSE, FALSE, FALSE);
@@ -302,11 +309,26 @@ void gweather_dialog_create (void)
   gtk_notebook_set_tab_label (GTK_NOTEBOOK (weather_notebook), gtk_notebook_get_nth_page (GTK_NOTEBOOK (weather_notebook), 1), forecast_note_lbl);
 
   if (gweather_pref.radar_enabled) {
-      radar_scroller = gtk_scrolled_window_new (GTK_ADJUSTMENT(gtk_adjustment_new(0, 0, 0, 0, 0, 0)),
-                                                GTK_ADJUSTMENT(gtk_adjustment_new(0, 0, 0, 0, 0, 0)));
-      gtk_widget_show (radar_scroller);
+      radar_vbox = gtk_vbox_new (FALSE, 6);
+      gtk_widget_show (radar_vbox);
+      gtk_container_add (GTK_CONTAINER (weather_notebook), radar_vbox);
+      gtk_container_set_border_width (GTK_CONTAINER (radar_vbox), 6);
 
-      gtk_container_add (GTK_CONTAINER (weather_notebook), radar_scroller);
+      radar_pixmap = gtk_pixmap_new (pixmap, mask);  /* Tmp hack */
+      gtk_widget_show (radar_pixmap);
+      gtk_box_pack_start (GTK_BOX (radar_vbox), radar_pixmap, FALSE, FALSE, 0);
+
+      radar_link_alignment = gtk_alignment_new (0.5, 0.5, 0, 0);
+      gtk_widget_show (radar_link_alignment);
+      gtk_box_pack_start (GTK_BOX (radar_vbox), radar_link_alignment, FALSE, FALSE, 0);
+
+      radar_link_btn = gtk_button_new_with_label (_("Visit Weather.com"));
+      gtk_widget_set_usize(radar_link_btn, 450, -2);
+      gtk_widget_show (radar_link_btn);
+      gtk_container_add (GTK_CONTAINER (radar_link_alignment), radar_link_btn);
+
+      gtk_signal_connect (GTK_OBJECT (radar_link_btn), "clicked",
+                          GTK_SIGNAL_FUNC (link_cb), NULL);
 
       radar_note_lbl = gtk_label_new (_("Radar map"));
       gtk_widget_show (radar_note_lbl);
@@ -324,8 +346,7 @@ void gweather_dialog_create (void)
   GTK_WIDGET_SET_FLAGS (close_button, GTK_CAN_DEFAULT);
 
   gtk_signal_connect (GTK_OBJECT (close_button), "clicked",
-                      GTK_SIGNAL_FUNC (close_cb),
-                      NULL);
+                      GTK_SIGNAL_FUNC (close_cb), NULL);
 }
 
 void gweather_dialog_open (void)
@@ -342,7 +363,6 @@ void gweather_dialog_close (void)
     gtk_widget_hide(gweather_dialog);
     gtk_widget_destroy(gweather_dialog);
     gweather_dialog = NULL;
-    radar_pixmap = NULL;
     mask = NULL;
 }
 
@@ -358,8 +378,10 @@ void gweather_dialog_update (void)
 {
     gchar *forecast;
 
-    g_return_if_fail(gweather_dialog != NULL);
     g_return_if_fail(gweather_info != NULL);
+
+    if (!gweather_dialog)
+        return;
 
     /* Update pixmap */
     weather_info_get_pixmap(gweather_info, &pixmap, &mask);
@@ -392,17 +414,9 @@ void gweather_dialog_update (void)
 
     /* Update radar map */
     if (gweather_pref.radar_enabled) {
-        GdkPixmap *radar;
-        if (radar_pixmap) {
-            /* gtk_container_remove(GTK_CONTAINER(radar_scroller), radar_pixmap); */
-            gtk_widget_destroy(radar_pixmap);
-            radar_pixmap = NULL;
-        }
-        radar = weather_info_get_radar(gweather_info);
+        GdkPixmap *radar = weather_info_get_radar(gweather_info);
         if (radar) {
-            radar_pixmap = gtk_pixmap_new(radar, NULL);
-            gtk_widget_show (radar_pixmap);
-            gtk_scrolled_window_add_with_viewport (GTK_SCROLLED_WINDOW(radar_scroller), radar_pixmap);
+            gtk_pixmap_set (GTK_PIXMAP(radar_pixmap), radar, NULL);
         }
     }
 }

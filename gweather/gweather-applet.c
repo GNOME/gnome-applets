@@ -281,6 +281,9 @@ static void update_finish (WeatherInfo *info)
     if (gweather_pref.update_enabled)
         timeout_tag =  gtk_timeout_add (gweather_pref.update_interval * 1000,
                                         timeout_cb, NULL);
+
+    /* Update dialog -- if one is present */
+    gweather_dialog_update();
 }
 
 void gweather_update (void)

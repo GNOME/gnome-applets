@@ -1038,7 +1038,6 @@ static void wx_get_finish (ghttp_request *req, ghttp_status status, gpointer dat
     if (status == ghttp_error) {
         g_warning(_("Failed to get radar map image.\n"));
     } else {
-
         body = ghttp_get_body(wx_request);
         body_len = ghttp_get_body_len(wx_request);
         g_return_if_fail(body != NULL);
@@ -1066,7 +1065,7 @@ static void wx_get_start (WeatherInfo *info)
     if (loc->radar[0] == '-')
         return;
 
-    url = g_strdup_printf("http://www.wx.com/nbr/ss2.cfm?radar=%s", loc->radar);
+    url = g_strdup_printf("http://image.weather.com/images/radar/single_site/%sloc_450x284.gif", loc->radar);
     wx_request = ghttp_request_new();
     ghttp_set_uri(wx_request, url);
     g_free(url);
