@@ -1,0 +1,1095 @@
+2003-01-20  Shivram U  <shivaram.upadhyayula@wipro.com>
+
+	* prop.c, prop-add.c: Close the "Select Keyboard" dialog if the 
+	preferences window is closed.
+
+2003-01-22  Irene Ryan <irene.ryan@sun.com>
+
+	* /help/C/gkb.xml, gkb-C.omf: updated help files for GNOME 2.2
+	* /help/C/figures/gkb_applet.png: updated screenshot for help file
+	
+2002-12-14  Fernando Herrera <fherrera@onirica.com>
+
+	* GNOME_KeyboardApplet_Factory.server.in.in: added bugzilla * attributtes
+
+2002-12-08  Szabolcs Ban  <shooby@gnome.hu>
+
+	* gkb.c, keygrab.c: Keyboard grabbing and filter now checks keys by
+	  Xevent (working right on my broken system, too), fix for #100700
+	* prop-add.c: removed an ugly g_message
+
+2002-12-07  Shivram U  <shivaram.upadhyayula@wipro.com>
+
+        * system.c (gkb_system_set_keymap_idle): Using g_strdup_print() to
+        allocate for the error string instead of using a static array. (#93473)
+
+2002-12-05  Szabolcs Ban  <shooby@gnome.hu>
+
+	* gkb/kr.png, xmodmap/xmodmap.kr, descs/KR_korean.keyprop: Added (at
+          last) the KS (Korean Industrial Standard) keyboard layout and nice
+	  flag from Donggyoo Lee <donggyoo@kmaritime.ac.kr>
+	* Corrected Yugoslavia to Serbia and Montenegro everywhere,
+          hopefully. Thanks for Aleksandar Milovac <amilovac@ptt.yu>
+
+2002-12-04  Shivram U  <shivaram.upadhyayula@wipro.com>
+
+	* system.c: A minor modification to the error string displayed when the
+	 xmodmap command is not in the user's PATH. (#93473)
+
+2002-12-02  Christian Neumair  <chris@gnome-de.org>
+
+	* prop.c: Made tabs hig compliant (removed mnemonics).
+
+2002-11-30  Szavolcs Ban <shooby@gnome.hu>
+
+	* gkb.c: "correct" pixmap size, cosmetic change (out shadow for
+          frame)
+	* prop-list.c: Stock buttons.
+	* prop-map.c: Fix of modality bug #94154, Simplifying editor dialog 
+         (acc. bug #96713) 
+	* prop-add.c: "Add" button sensitivity
+	* system.c: Fix for bug #93473 suggested by Kevin Vandersloot
+	* gkb/sr.png: Serbian flag from Aleksandar Milovac <amilovac@ptt.yu>
+
+2002-09-30  Shivram U  <shivaram.upadhyayula@wipro.com>
+
+	* descs/Makefile.am: Added keyprop.in files for Sun Type-4 keyboards.
+	Added the keyprop.in files to descs/
+	* xmodmap/Makefile.am: Added keymaps for Sun Type-4 keyboards.
+	Added the modfiles to xmodmap/ (#93473)
+
+2002-10-24  Szabolcs Ban  <shooby@gnome.hu>
+
+	* PC fixup for Serbia and Montenegro
+	* New pixmap for Serbia and Montenegro 
+	  from Vladimir Vrzic <random@bsd.org.yu>
+
+2002-10-23  Szabolcs Ban  <shooby@gnome.hu>
+
+	* PC fixup for Croatian and Serb keymaps.
+	* Arabic simple keyboard layout
+	* Bulgarian fixes.
+
+2002-10-15  Deepa Natarajan  <deepa.natarajan@wipro.com>
+
+	* prop-map.c: Changed mnemonic for Architecture.
+
+2002-10-14  Shivram U  <shivaram.upadhyayula@wipro.com>
+
+	* gkb.[ch], keygrab.c, prop-add.c, prop-list, prop-map.c, prop.c,
+	system.c: Removed the global variable "gkb" and made it per instance.
+	Changed functions which depended on the global variable appropriately.
+	Fixes #93466
+
+2002-10-04  Deepa Natarajan  <deepa.natarajan@wipro.com>
+
+	* prop-map.c, prop.c : Set up mnemonics for "Flag Pixmap" and
+	"Grab hotkey". Fixes bug# 94156.
+
+2002-09-19  Mark McLoughlin  <mark@skynet.ie>
+
+	* gkb.c: (about_cb), (help_cb):
+	* keygrab.c: (grab_key_filter), (grab_button_pressed):
+	* prop-add.c: (gkb_prop_map_add), (addhelp_cb):
+	* prop-map.c: (gkb_prop_map_help_clicked), (gkb_prop_map_edit):
+	* prop.c: (prophelp_cb), (gkb_prop_create_property_box),
+	(properties_dialog): kill the HAVE_GTK_MULTIHEAD conditionals.
+	We require gtk+ HEAD now.
+
+2002-08-14  Mark McLoughlin  <mark@skynet.ie>
+
+	* Makefile.am: link against libscreen-exec.la.
+
+	* gkb.c: (help_cb):
+	* prop-add.c: (addhelp_cb):
+	* prop-map.c: (gkb_prop_map_help_clicked):
+	* prop.c: (prophelp_cb): use the multiscreen
+	gnome_help variants.
+
+2002-08-08  Shivram U  <shivaram.upadhyayula@wipro.com>
+
+	* descs/Makefile.am: Added keyprop.in files for Sun PC/AT 101 keyboards.
+	Added the keyprop.in files to descs/
+	* xmodmap/Makefile.am: Added Sun PC/AT 101 keyboards. Added the modfiles
+	to xmodmap/ Fixes #87124
+
+2002-07-18  Kevin Vandersloot <kfv101@psu.edu>
+
+	* gconf.c: remove redfinfition of _() and unneeded include
+	of libintl.h. Should fix bug #88553
+
+2002-07-18  Mark McLoughlin  <mark@skynet.ie>
+
+	* Makefile.am: install applet in libexec.
+
+	* GNOME_KeyboardApplet_Factory.server.in: move .server.in to
+	.server.in.in to allow for libexec dir substitution.
+
+2002-07-11  Mark McLoughlin  <mark@skynet.ie>
+
+	* keygrab.c: (grab_key_filter), (grab_button_pressed): use
+	the root window from the screen on which the applet is
+	realised.
+
+	* gkb.c: (about_cb):
+	* prop-add.c: (gkb_prop_map_add):
+	* prop-map.c: (gkb_prop_map_edit):
+	* prop.c: (gkb_prop_create_property_box), (properties_dialog):
+	realise dialogs on the same screen as the applet.
+
+2002-07-10  Mark McLoughlin  <mark@skynet.ie>
+
+	* gkb.c:
+	(do_at_first_run): fix dubious first run check.
+	(about_cb): about box is a gtk dialog, not gnome dialog.
+	(fill_gkb_applet): kill weirdo off screen bah_window and
+	use the root window.
+	* keygrab.c: (grab_key_filter), (grab_button_pressed): use
+	root window here too.
+	(gkb_xgrab), (gkb_xungrab): impl convenience macors for
+	grabbing and ungrabbing for clarity.
+
+	* prop-add.c: (gkb_prop_map_add): kill gtk_widget_show.
+
+	* prop.c: (properties_dialog): ditto.
+
+2002-06-26  Shivram U  <shivaram.upadhyayula@wipro.com>
+
+       * descs/Hungarian-sun.keyprop.in,US-sun.keyprop.in: Changed the Arch 
+	to reflect Sun Keyboards as "Sun" and not "sun".
+
+2002-06-07  Bastien Nocera  <hadess@hadess.net>
+
+	* descs/Makefile.am: build fix, somebody missed a backslash
+
+2002-06-06  Shivram U  <shivaram.upadhyayula@wipro.com>
+
+	* descs.sun/Makefile.am: Added Default.keyprop.in to the list of 
+	keyprop.in files. Also added Default.keyprop.in file to descs.sun
+
+2002-06-03  Szabolcs Ban  <shooby@gnome.hu>
+
+	* gkb.c: Patch from Andrei Lahun <a.lahun@editec-lotteries.com>
+        to fix translation-based problems in loading/saving configuration.
+
+2002-06-02  Kevin Vandersloot <kfv101@psu.edu>
+
+	* prop.c, prop-add.c: go back to destroying the dialogs. Fixes
+	crashses when using esc to close the dialog - bugs
+	#83811 and #83808
+	
+	* prop-list.c: remove debug spew
+
+2002-05-31 Kevin Vandersloot <kfv101@psu.edu>
+
+	* Makefile.am: Fix GNOMELOCALEDIR to point to correct
+	location. Fixes #83621. 
+
+2002-05-30  Shivram U  <shivaram.upadhyayula@wipro.com>
+
+	* gkb.c: (gkb_destroy) Restoring the default keymap before exiting.
+
+2002-05-28  Shivram U  <shivaram.upadhyayula@wipro.com>
+
+       * descs.sun/*.in: Changed the Arch and _Name to reflect Sun Keyboards
+       a "Sun" and not "sun".
+
+2002-05-28  Shivram U  <shivaram.upadhyayula@wipro.com>
+
+	* gkb.c: (load_prop), (do_at_first_run) Calling g_get_home_dir() to
+	get the user home directory.
+
+2002-05-28  Kevin Vandersloot <kfv101@psu.edu>
+
+	* prop-add.c, prop-map.c: get the help buttons working with
+	new docs
+
+2002-05-20  Kevin Vandersloot <kfv101@psu.edu>
+
+	* gkb.c: set window icon
+
+2002-05-19  Szabolcs Ban  <shooby@gnome.hu>
+
+	* prop.c, prop-list.c: fixed loosing selection in list of keymaps.
+
+2002-05-14  Simos Xenitellis  <simos@hellug.gr>
+
+	* prop-map.c: Added Greek specific settings (name of
+	country, language and encoding).
+	* descs/GR_Greek.keyprop.in descs/GR_Greek_x.keyprop.in:
+	Fixed codepage setting, updated XKB code for Greek, it is
+	"el" instead of the /proper/ "gr", in ~4.0.3+ versions of X.
+	
+2002-05-14  Szabolcs Ban  <shooby@gnome.hu>
+
+	* preset.c: (comparepresets) sorting keymaps in "add keymap"
+	window's tree
+
+2002-05-14  Szabolcs Ban  <shooby@gnome.hu>
+
+	* Long waited Dvorak keyboard layout. You will find
+         it under International	"language".
+
+2002-05-14  Szabolcs Ban  <shooby@gnome.hu>
+
+	* descs/RU_Russian_x_rev.keyprop.in, xmodmap/xmodmap.ru-rev:
+	New Russian Cyrillic keymap for users who don't want to hold
+	AltGr down :)
+
+2002-05-13  Szabolcs Ban  <shooby@gnome.hu>
+
+	* prop.c, prop-map.c: fix bad help section reference
+
+2002-05-12  Kevin Vandersloot <kfv101@psu.edu>
+
+	* prop.c: hide the prefs dialogs instead of
+	destroying. Fixes a crash when reopening the add dialog
+
+2002-05-12  Szabolcs Ban  <shooby@gnome.hu>
+
+	* xmodmap/xmodmap.es: Fixed bogus Shift-Fn keys. Thanks to
+        Federico.
+
+2002-05-11  Szabolcs Ban  <shooby@gnome.hu>
+
+	* gkb.c, prop.c, prop-*.c: Changes to fix
+	 #79601, #78288, #81303, #58295, #77763 bugs. With permission
+	of Kevinv.
+
+2002-05-10  Deepa Natarajan <deepa.natarajan@wipro.com>
+
+	* *.xml: added mnemonics for the popup menu
+
+2002-04-28  Satyajit Kanungo  <satyajit.kanungo@wipro.com>
+
+	* Makefile.am docs/Makefile.am docs/C/Makefile.am
+	* gkb.c prop.c prop-map.c prop-add.c Changes made to enable 
+	"help" on gkb 	
+
+2002-04-27  Dennis Cranston  <dennis_cranston@yahoo.com>
+
+	* gkb.c:  "About..." dialog fixes -- change the name to
+	"Keyboard Layout Switcher" to match the name in the
+	"Add to panel" menu.  Also, fix the code to actually use
+	gkb-icon.png for the logo and window icon.
+
+2002-04-21  Szabolcs Ban  <shooby@gnome.hu>
+
+	* prop-add.c: Fix from Kevin Vandersloot <kfv101@psu.edu> (A simple
+	patch is to set the command and flag for the one call to
+	gtk_tree_store_set that sets them NULL as in)
+
+2002-04-22 Nitin Yewale <nitin.yewale@wipro.com>, Aruna <aruna.pou@wipro.com>
+	
+	* gkb.h, prop-list.c, prop.c:GtkList deprecated calls removed.
+
+2002-04-21  Szabolcs Ban  <shooby@gnome.hu>
+
+	* gkb/Makefile.am, descs/Makefile.am: Added Arabic language and
+	keyboard support.
+	* gkb/??.png, descs/AR_Arabic.keyprop.in: Added files.
+	Thanks for help of Isam Bayazidi <bayazidi@arabeyes.org>
+
+2002-04-20  Abel Cheung  <maddog@linux.org.hk>
+
+	* gkb.c: Added translator_credit placeholders.
+	* prop.c: Include missing config.h.
+
+2002-04-09  jacob berkman  <jacob@ximian.com>
+
+	* Makefile.am (INCLUDES): kill $(WARN_CFLAGS) as it likes to use
+	gcc-specific flags by default
+
+2002-04-05  jacob berkman  <jacob@ximian.com>
+
+	* Makefile.am (gkb_applet_2_LDADD): add X_LIBS
+
+2002-04-01  Kevin Vandersloot <kfv101@psu.edu>
+
+        * .xml: add ellipses to preferences option
+
+2002-04-01  Kevin Vandersloot <kfv101@psu.edu>
+
+	* .xml: change properties to preferences
+	
+	* prop.c: change title
+
+	* prop-add.c: change keymap to keyboard for consistency. set defulat
+	button to add
+
+	* prop-map.c: keymap->keyboad
+
+2002-03-31  Szabolcs Ban <shooby@gnome.hu>
+
+	* gkb/vn.png: almost forget about Vietnam. Bad.
+
+2002-03-31  Szabolcs Ban <shooby@gnome.hu>
+
+	* gkb/(am|az|by|cs|ge|la|sv|ua).png at least. I committed 
+          the missing flags.
+
+2002-03-26  Shivram U  <shivaram.upadhyayula@wipro.com>
+
+	* descs.sun/Makefile.am: Added support for Sun USB keyboards.
+	* xmodmap.sun/Makefile.am: Added support for Sun USB keyboards.
+	* descs.sun/*USB*, xmodmap/*-usb: Added new files.
+
+2002-03-21  Kevin Vandersloot <kfv101@psu.edu>
+
+	* prop-add.c: don't bind to activate signal. Instead add it
+	on double click. Also show the dialog if it isn't NULL
+
+2002-03-21 Parag Kabra <parag.kabra@wipro.com>
+
+	* prop-add.c: keyboard navigation fix.
+
+2002-03-15 Parag Kabra <parag.kabra@wipro.com>
+
+       * fix warning: passing arg 1 of 'gtk_widget_get_accessible' from
+       incompatible pointer type
+
+2002-03-16  Kevin Vandersloot <kfv101@psu.edu>
+
+	* prop.c: don't destroy the dialog twice. Hopefully fixes
+	part of bug #73387
+
+2002-03-14  Szabolcs Ban  <shooby@gnome.hu>
+
+	* fix line break in string constant from previous patch, thank you,
+        Laca
+
+2002-03-13  Parag Kabra   <parag.kabra@wipro.com>                               
+        *  gkb.h, gkb.c, prop.c, prop-list.c and prop-map.c: added accessbility 
+        related code.                                                           
+
+2002-03-12  Szabolcs Ban  <shooby@gnome.hu>
+
+	* Global parameters (gconf stuff) for capplet coming soon.
+
+2002-03-05  Seth Nickell  <snickell@stanford.edu>
+
+	* GNOME_KeyboardApplet_Factory.server.in:
+
+	Update description.
+
+2002-03-03  Bastien Nocera  <hadess@hadess.net>
+
+	* Makefile.am: don't do gconf fu if DESTDIR is set
+
+2002-03-03  Kjartan Maraas  <kmaraas@gnome.org>
+
+	* gkb.c (about_cb): Fix a typo.
+	
+2002-02-27  Kevin Vandersloot <kfv101@psu.edu>
+
+	Fix about thirteen seperate memory leaks. Still need to clean up
+	prop-add.c and prop-map.c
+	* prop.c: loads of mem leak fixes
+	* prop-add.c: ditto. Just hide the window so it doesn't
+	have to get recreated every time
+	* preset.c: ditto. Call closedir when done on the
+	dir
+
+	* gkb.c: don't create new tooltips every update. More
+	memleak fixes
+
+2002-02-22  Mark McLoughlin  <mark@skynet.ie>
+
+	* gkb_applet.desktop.in:
+	* gkb_applet.gnorba: remove these files
+
+2002-02-19  Mark McLoughlin  <mark@skynet.ie>
+
+	* Makefile.am: define GNOMELOCALEDIR.
+
+2002-02-16  Cody Russell  <bratsche@gnome.org>
+
+	* prop.c: Fixed warnings.
+
+2002-02-16  Cody Russell  <bratsche@gnome.org>
+
+	* keygrab.c: Fixed a bunch of warnings.
+
+2002-02-16  Cody Russell  <bratsche@gnome.org>
+
+	* gkb.c: Moved BonoboUI XML data out of inline and into separate file.
+
+	* GNOME_KeyboardApplet.xml: This is where it went.
+
+2002-02-11  Kjartan Maraas  <kmaraas@gnome.org>
+
+	* GNOME_MultiLoadApplet_Factory.server.in: Mark strings for l10n.
+	* *.[ch]: Fix #include <config.h>
+	
+2002-02-11  Mark McLoughlin  <mark@skynet.ie>
+
+	* GNOME_KeyboardApplet_Factory.server.in: move to Vertigo namespace.
+
+	* gkb.c: update for fatcory macro change.
+
+2002-02-11  Bastien Nocera  <hadess@hadess.net>
+
+	* descs.sun/.cvsignore: added
+	* xmodmap.sun/.cvsignore: added
+
+2002-02-07  Kevin Vandersloot <kfv101@psu.edu>
+
+	* gkb.c: Port to GtkImage with GdkPixbuf. A side effect
+	is much better scaling - the US flag no longer looks like it is
+	crying. Also fix the schemas loading. Much code is simplified
+
+	* keymap.c: free the pixbuf.
+
+2002-02-02  Kevin Vandersloot <kfv101@psu.edu>
+
+	* Makefile.am: fix issue with autoconf complaining
+
+2002-02-01  Kevin Vandersloot <kfv101@psu.edu>
+
+	* prop-add.c: port to GtkDialog with proper button placements.
+	Don't make the dialog model since it's instant apply. 
+	Also double clicking on a keymap will add. Also fix
+	compiler warining about non static functions.
+
+2002-02-02  Szabolcs Ban  <shooby@gnome.hu>
+
+	* prop.c, gkb.h: (gkb_apply) General Apply routin to instant apply.
+
+	* prop-add.c, prop-list.c: instant apply at adding, moving keymap
+
+2002-02-01  Kevin Vandersloot <kfv101@psu.edu>
+
+	* prop.c: begin to make prefs dialog instant apply. Adding
+	and removing maps still needs to be implemented.
+
+	* keygrab.c: make the keygrab instant apply. Also make Esc
+	cancel the grab and inform the user about that fact
+
+2002-01-31  Szabolcs Ban  <shooby@gnome.hu>
+
+	* gkb.c: tooltip fixes
+	* prop-add.c: (tree_create) keymap add dialog memcpy fix
+          to avoid from keymaps in root node
+
+2002-01-30  Szabolcs Ban  <shooby@gnome.hu>
+
+	* xmodmap/xmodmap.(pt-dead|hu.*|se) fixes
+
+2002-01-30  Szabolcs Ban  <shooby@gnome.hu>
+
+	* *.c: removed gnome_prop_box_change or whatever :)
+        * gkb.c: gtk2 tooltip v1 (doesn't work yet)
+
+2002-01-28  Kevin Vandersloot <kfv101@psu.edu>
+
+	* Makefile.am: dist the schemas file
+
+2002-01-19  Kjartan Maraas  <kmaraas@gnome.org>
+
+	* gkb/uk.png: Merge Ukrainian flag from stable branch.
+	
+2002-01-19  Seth Nickell  <snickell@stanford.edu>
+
+	* GNOME_KeyboardApplet_Factory.server.in:
+
+	Change the name, drop "Applet".
+
+2002-01-13  Szabolcs Ban <shooby@gnome.hu>
+
+	* prop-add.c: gtk_tree_model_get 
+
+2002-01-13  Szabolcs Ban <shooby@gnome.hu>
+
+	* prop-add.c: lang and country in tree
+
+2002-01-12  Szabolcs Ban <shooby@gnome.hu>
+
+	* *.c: s/gtk_signal_connect/s_signal_connect/
+	* TODO: update
+	* xmodmap/Makefile.am: removed th2 (bad)
+	* xmodmap/xmodmap.(is|hu-101-lat1|hu-101-lat2): fixes
+
+2002-01-11  Szabolcs Ban <shooby@gnome.hu>
+
+	* gkb.c, prop.c, gkb.h: Added applet_save_session();
+	* prop-add.c: Stock widget for Add button
+
+2002-01-10  Kevin Vandersloot <kfv101@psu.edu>
+
+	* gkb.c: remove the save_session signal and #if 0 the
+	save session code since panel applets don't have that
+	signal anymore
+
+2002-01-09  Kevin Vandersloot <kfv101@psu.edu>
+
+	* Makefile.am: dist the .server.in file
+
+2002-01-08  Szabolcs Ban <shooby@gnome.hu>
+
+	* Makefile.am, descs/Makefile.am: intltool and gkb_xmmap fixes.
+
+2002-01-06  Szabolcs Ban <shooby@gnome.hu>
+
+	* *.c, *.h (exept prop-add.c): porting to gnome2
+	* TODO: update
+	* Makefile.am: killed gnorba, .server added, includes changed,
+	  fast fixes to compile in gnome-applets
+	* descs/Makefile.am: fast fixes to compile in gnome-applets
+	* GNOME_KeyboardApplet_Factory.server.in: new file, as required
+
+2002-01-05  Szabolcs Ban <shooby@gnome.hu>
+
+	* gkb.c: fixed keyboard grabbing error with sawfish. Thx, George!
+
+2001-12-12  Stanislav Visnovsky  <visnovsky@nenya.ms.mff.cuni.cz>
+
+	* xmodmap/xmodmap.sk: Fix for Slovak map from Marcel Telka <marcel@telka.sk>.
+
+2001-12-03  Shooby Ban  <shooby@gnome.hu>
+	* gkb.c: prefix fix to remember config, thanx to Israel@celorio.com
+
+2001-12-03  Shooby Ban  <shooby@gnome.hu>
+	* xmodmap/xmodmap.dk: removed buggy keymaps line, thanx Ole
+	Dalgaard <josua@giraffen.dk>
+
+2001-08-03  Kjartan Maraas  <kmaraas@gnome.org>
+
+	* gkb.c: Unmark a string for translation. It was causing
+	bugs in loading of flag pixmaps. Also change a hardcoded buffer +
+	g_snprintf to dynamic + g_strdup_printf. Thanks to dobey.
+	
+2001-03-05  Szabolcs Ban <shooby@gnome.hu>
+
+	* gkb/ar.png: Pablo Alcaraz sent me Argentin flag
+
+2001-06-19  Pavel Machek  <pavel@bug.ucw.cz>
+
+	* gkb/cz.png: flag was subtly wrong, fixed.
+
+2001-06-20  Kjartan Maraas  <kmaraas@gnome.org>
+
+	* gkb.h: Remove trailing comma from enum. Remove extraneous
+	semicolon in a struct.
+	
+2001-04-18  Jason Leach  <jasonleach@usa.net>
+
+	* descs/Makefile.am (%.keyprop): srcdir != builddir fix.
+
+2001-03-06  Martin Norbäck  <d95mback@dtek.chalmers.se>
+
+	* gkb/se.png: Replaced the ugly flag with a nice one.
+
+2001-03-05  Szabolcs Ban <shooby@gnome.hu>
+
+	* gkb_applet.desktop.in: fixup the too long desktop entry
+
+2001-03-04  Szabolcs Ban <shooby@gnome.hu>
+
+	* gkb/hr.png: Added Croatian flag from Drazen Dimoti
+	<jimbosimo@yahoo.com>
+
+Fri Feb 09 21:46:06 2001  George Lebl <jirka@5z.com>
+
+	* keymap.c, prop-map.c, prop.c: some cleanups, null after free,
+	  and fix leaks in prop.  Also don't cache lists it's actually worse
+	  for performance.
+
+2001-01-26  Szabolcs Ban <shooby@gnome.hu>
+
+	* reverted to a stable state (window based switching is unstable)
+
+2001-01-11  Shooby Ban <shooby@gnome.hu>
+
+	* xmodmap/xmodmap.hu, xmodmap/xmodmap.hu-lat1: fix
+          s/dead_circumflex/asciicircum/
+	* descs/PortugalDeadkeys.keyprop: s/Portuglese/Portuguese/
+	* prop-map.c: Removed bad Portuglese entry.
+
+2000-12-30  Shooby Ban <shooby@gnome.hu>
+
+	* prop-map.c, prop-add.c, prop-list.c, util.c: i18n fix
+
+2000-12-30  Shooby Ban <shooby@gnome.hu>
+
+	* prop.c, gkb.c, gkb.h: Added window based switching
+	feature (works wrong)
+
+2000-12-20  Shooby Ban <shooby@gnome.hu>
+
+	* Makefile.am: added subdirs
+
+2000-12-20  Shooby Ban <shooby@gnome.hu>
+
+	* gkb/Makefile.am, xmodmap/Makefile.am: fix
+
+2000-12-19  Shooby Ban <shooby@gnome.hu>
+
+	* merged unstable branch to HEAD
+	
+2000-12-15  Shooby Ban <shooby@gnome.hu>
+
+	* gkb.c: Events for focus change
+
+2000-12-14  Shooby Ban <shooby@gnome.hu>
+
+	* xmodmap/Makefile.am: Actualise
+
+2000-12-14  Shooby Ban <shooby@gnome.hu>
+
+	* gkb.c: commented unused features, corrected errors
+	* gkb.h: new property for adding keymap
+        * prop-add.c: fixed addwindow's bug.
+
+2000-12-13  Shooby Ban <shooby@gnome.hu>
+
+	* gkb.c: per window layouts, 2nd step: get window ids at window
+	open/close. Thanks, George.
+
+2000-12-13  Shooby Ban <shooby@gnome.hu>
+
+	* gkb.c: per window layouts, first step: get windows.
+
+2000-12-12  Shooby Ban <shooby@gnome.hu>  
+
+	* prop.c: XUngrabKey... heh Keyboard grabbing now changes
+
+2000-12-12  Shooby Ban <shooby@gnome.hu>  
+
+	* gkb.c: Default apearance mode will be "Flag and Label"
+	Default keyboard layout: "US"
+
+2000-12-12  Shooby Ban <shooby@gnome.hu>  
+
+	* prop.c: padding of Appearance and Size (nicer screenshots:))
+
+2000-12-12  Shooby Ban <shooby@gnome.hu>  
+
+	* gkb.c (about_cb): Emese found error of authors[] array's
+	initialisation. :] Cool!
+
+2000-12-12  Shooby Ban <shooby@gnome.hu>  
+
+	* gkb.c (gkb_count_sizes, sized_render): ORIENT_RIGHT and
+	ORIENT_LEFT rendering. Works well.
+
+2000-12-12  Chema Celorio  <chema@celorio.com>
+
+	* gkb.c (loadprop): dont' make pixmaps while loading properties.
+	we will call sized render.
+	(gkb_activator): reorder the activation functions
+
+2000-12-11  Chema Celorio  <chema@celorio.com>
+
+	* keymap.c (gkb_keymap_copy_list): remove g_prints
+
+	* gkb.c (applet_save_session): use set_bool for gkb->is_small
+	(load_properties): ditto
+	(gkb_switch_normal): remove, not used
+	(gkb_switch_small): ditto
+	(gkb_draw): The label was not beeing updated when clicked
+	and mode was GKB_LABEL. Fix.
+
+	* prop.c (gkb_prop_create_display_frame): set the initial
+	is_small size to the state in gkb->is_small
+
+	* gkb.c (gkb_count_sizes): for small panel sizes, don't force
+	a size to take all the room available.
+	
+2000-12-11  Chema Celorio  <chema@celorio.com>
+	
+	* gkb.c (makepix): unref the pixbuf.
+	return all the -4 flag rendering which was correct. I remove it yesterday
+	for testing purposes.
+	(gkb_expose): fix the drawing bug.
+	(gkb_count_sizes): applet height is only incremented the flag height when
+	we have a flag.
+
+	* prop.c (gkb_prop_apply_clicked): fix a crash that was beeing trigered
+	when a keymap was clicked in the list after the apply button was clicked
+
+2000-12-11  Chema Celorio  <chema@celorio.com>
+	
+	* gkb.c (gkb_count_sizes): count sizes
+	(gkb_count_sizes): set the usizes
+
+2000-12-10  Shooby Ban <shooby@gnome.hu>
+
+	* gkb.c (gkb_count_sizes): fixed a rendering error at no8
+
+2000-12-10  Shooby Ban <shooby@gnome.hu>
+
+	* prop.c: Small -> Normal, Normal->Big as in wishlist
+	* gkb.c: fixed matrix (calculations),
+	  (gkb_update-> gkb_count_sizes): Size and showing calculations
+          moved here
+
+2000-12-10  Shooby Ban <shooby@gnome.hu>
+
+	* prop.c: revert is_small change
+	* gkb.c: added XGrabKey to make keygrab work (thanx Owen)
+	  (gkb_update, sized_render): Size and showing calculations
+
+2000-12-10  Chema Celorio  <chema@celorio.com>
+
+	* prop.c (gkb_prop_create_property_box): Change the order of the pages
+
+2000-12-09  Shooby Ban <shooby@gnome.hu>
+
+	* prop-map.c (gkb_prop_map_apply_clicked): property_box_changed
+
+2000-12-09  Shooby Ban <shooby@gnome.hu>
+
+	* *.c: s/appeareance/appearance/g
+	* gkb.c (gkb_update,makepix): Label mode
+	* util.c, gkb.h: new function to set initial value
+          for
+        * prop.c (gkb_prop_create_display_frame): appearance
+          initial value
+
+2000-12-09  Chema Celorio  <chema@celorio.com>
+
+	* gkb.h (struct _GKB): remove size from the structure
+	and remove all references in the code.
+	(struct _GkbPropertyBoxInfo): ditto
+
+	* prop.c (gkb_prop_create_property_box): cast propbox
+	to GNOME_PROPERTY_BOX to avoid compile time warning
+	(gkb_prop_apply_clicked): fix a stupid crash.
+
+2000-12-09  Shooby Ban <shooby@gnome.hu>
+
+	* prop.c: (gkb_propbox_apply_clikced): fix size problem
+	(properties_dialog): is_map value settings
+	(gkb_prop_option_menu_at): new arg: Initial value
+	(gkb_prop_create_display_frame): set initial values from pbi
+	* gkb.h: pbi->mode for appearance mode (feature, TODO)
+
+2000-12-09  Shooby Ban <shooby@gnome.hu>
+
+	* prop.c: (...hotkey_create): (changed_cb) fix
+
+2000-12-08  Chema Celorio  <chema@celorio.com>
+
+	* prop-list.c (gkb_prop_list_selection_changed): when the selection
+	is changed, set the keymap to the seleced one.
+
+	* gkb.h: remove header for gkb_prop_list_free
+
+	* prop-list.c (gkb_prop_list_load_keymaps): use gkb_keymaps_
+	copy_list.
+
+	* system.c (gkb_system_set_keymap): check for NULL
+
+	* keymap.c (gkb_keymap_copy_list): when copying kemaps
+	add a reference to it's parent.
+
+2000-12-08  Chema Celorio  <chema@celorio.com>
+	
+	* Makefile.am (gkb_applet_SOURCES): add util.c
+
+	* prop.c (gkb_get_text_from_appeareance): implement
+	(gkb_get_appeareance_from_text): implement
+
+	* gkb.h (struct _GkbPropertyBoxInfo): add GkbAppeareance
+	(struct _GKB): ditto
+	add GkbAppeareance enums	
+
+	* prop.c (gkb_prop_label_at): implement.
+	(gkb_prop_create_display_frame): use here
+
+	* keymap.c (gkb_keymap_copy_list): implement.
+
+	* Makefile.am (gkb_applet_SOURCES): add keymap.c
+
+	* keymap.c: new file move the following functions here
+	(gkb_keymap_free_internals): 
+	(gkb_keymap_free): 
+	(gkb_keymap_free_list): 
+	(gkb_keymap_copy): 
+
+	* system.c: new file, this will take care off doing the system
+	call to set the keyboard.
+	(gkb_system_set_keymap_idle): implement
+	(gkb_system_set_keymap): set the keyboard in an idle loop,
+	this makes the applet "look" a lot faster, they keyboard layout
+	call is done in an gtk_idle_loop.
+
+	* Makefile.am (INCLUDES): ad system.c
+
+	* gkb.h: disable debug.
+	(struct _GKB): remove mapdialog and update accordingly
+	(struct _GKB): rename dact to keymap, update code accord.
+
+	* prop-map.c (struct _GkbMapDialogInfo): dialog
+
+	* prop.c (properties_dialog): kill a leak by :
+	(gkb_prop_box_destroy): using me
+
+2000-12-08  Chema Celorio  <chema@celorio.com>
+	
+	* prop-map.c: move all the add stuff to :
+	* prop-add.c: here
+
+	* Makefile.am (gkb_applet_SOURCES): add prop-add.c
+
+	* prop-map.c (gkb_prop_map_edit): set the apply button unsensitive
+	(gkb_prop_map_data_changed): when data changes, set the apply button's
+	sensitivity
+	(gkb_prop_map_apply_clicked): when apply is clicked, set the button
+	unsentivite.
+	(struct _GkbMapDialogInfo): added the gboolean changed flag 
+	(gkb_prop_map_ok_clicked): only apply the settings if something has
+	been changed.
+	(gkb_prop_map_pixmap_at): call data_changed when the icon_entry
+	is clicked.
+
+	* prop-list.c (gkb_prop_create_buttons_vbox): update the buttons
+	sensitivity after createing them
+
+	* prop-map.c (gkb_prop_map_combo_at): implement
+	(gkb_prop_map_entry_at): implement
+	(gkb_prop_map_load_stock_button): implement
+	(gkb_prop_map_button_clicked): implement
+	(gkb_prop_map_label_at): implement
+	(gkb_prop_map_get_arquitectures): implement
+	(gkb_prop_map_get_codepages): implement
+	(gkb_prop_map_get_types): implement
+	(gkb_prop_map_get_languages): implement
+	(gkb_prop_map_get_countries): implement
+	(gkb_prop_map_pixmap_at): implement
+
+2000-12-08  Chema Celorio  <chema@celorio.com>
+	
+	* prop.c (apply_cb): make static to avoid compile warning
+
+	* prop-list.c (gkb_prop_list_reload): make public as
+	prop-map needs it.
+
+	* Makefile.am (gkb_applet_SOURCES): add prop-map.c
+
+	* prop-map.c : new file, move all the map editing
+	and adding from prop-list into here.
+	(gkb_prop_map_add): reanme from addwin
+	(mapedit_cb): rename to :
+	(gkb_prop_map_edit): 
+
+	* prop-list.c (gkb_prop_list_reload): when reloading
+	the list of items, honor the previously selected item.
+	This keeps the selected item thru an up/down action.
+	
+2000-12-08  Shooby Ban <shooby@gnome.hu>
+
+	* gkb.h: added gkb_sized_render()
+	* prop.c: apply_cb fix no2
+	* prop-list.c: "Apply" button sensitivity fix
+
+2000-12-08  Chema Celorio  <chema@celorio.com>
+
+	* prop-list.c (gkb_prop_list_up_down_clicked): clean
+	(del_select_cb): rename to :
+	(gkb_prop_list_button_clicked_cb): call the new function here
+	(gkb_prop_list_create_item): implement.
+	
+2000-12-08  Shooby Ban <shooby@gnome.hu>
+
+	* gkb.h: restructuring
+	* prop.c: apply_cb fix no1
+
+2000-12-08  Chema Celorio  <chema@celorio.com>
+
+	* prop-list.c (gkb_prop_list_up_down_clicked): clean
+	(gkb_util_g_list_swap): implement
+
+2000-12-07  Chema Celorio  <chema@celorio.com>
+
+	* prop-list.c (gkb_prop_list_update_sensitivity): if the selected
+	item is the top one, disable UP. If it is the bottom one, disable
+	DOWN.
+	
+2000-12-08 MET  Shooby Ban <shooby@gnome.hu>
+
+	* gkb.h: (GkbPropertyBoxInfo) hotkey_entry
+	* prop.c: (apply_cb) use hotkey_entry and cleanup
+
+2000-12-08 MET  Shooby Ban <shooby@gnome.hu>
+
+	* gkb.h: move temp* to pbi
+	* gkb.c, prop.c, prop-list.c: use new names
+	* prop.c: apply_cb is back
+
+2000-12-08 MET  Shooby Ban <shooby@gnome.hu>
+
+	* keygrab.c 
+	  all keyboard grabbing functions moved here
+	* *.c, *.h: Copyright fixes
+	AUTHORS: Added Chema
+
+2000-12-07  Chema Celorio  <chema@celorio.com>
+
+	* prop-list.c (move_select_cb): rename to :
+	(gkb_prop_list_move_clicked): and rewrite.
+	(gkb_utils_free_keymap): implement
+	(gkb_utils_copy_keymap): implement
+	(gkb_prop_list_load_keymaps): use here
+	(gkb_prop_list_free_keymaps): use here
+	(gkb_prop_list_selection_changed): implement
+
+	* prop.c (gkb_prop_create_hotkey_frame): conect the signals
+	after setting the entry's text (as they got trigered)
+
+2000-12-07  Chema Celorio  <chema@celorio.com>
+	
+	* prop-list.c
+	(gkb_prop_create_buttons_vbox): clean
+	(gkb_prop_list_create_button): implement
+	(gkb_prop_list_button_clicked_cb): implement
+
+2000-12-07  Chema Celorio  <chema@celorio.com>
+
+	* prop-list.c: new file, moved all the list functions from
+	prop.c to here. Remove from prop.c all the lists functions.
+
+	* Makefile.am (gkb_applet_SOURCES): add prop-list.c
+
+	* prop.c (gkb_prop_create_property_box): clean.
+
+	* preset.c (find_presets): make static to avoid compile warning
+
+	* prop.c (gkb_prop_create_scrolled_window): implement.
+
+2000-12-07  Szabolcs Ban  <shooby@gnome.hu>
+
+	* prop.c: stat for flag file (like in gkb.c)
+		  using GkbKeymap instead of GKBpreset
+	* preset.c: Splitted preset fuctions.
+	* gkb.h: moved preset functions prototypes 
+		 and relating global here from prop.c.
+
+2000-12-07  Chema Celorio  <chema@celorio.com>
+
+	* prop.c (properties_dialog): split this function into :
+	(gkb_prop_create_property_box): 
+	(gkb_prop_create_buttons_vbox): 
+	(gkb_prop_create_hotkey_frame): 
+	(gkb_prop_create_display_frame):
+	clean prop.c a bit
+	(properties_dialog): kill crash
+
+	* Makefile.am (gkb_applet_SOURCES): remove
+		prop_cb.h prop_copy.h \
+		prop_show.h prop_preset.h
+	as they do not exits
+	
+2000-12-07  Szabolcs BAN <shooby@gnome.hu>
+
+	* gkb.c: stat for flag file, load gkb-foot.png if
+	does not exits (or on any error).
+
+2000-12-06  Chema Celorio  <chema@celorio.com>
+
+	* prop.c: remove all the gtk_widget_ref & gtk_object_set
+	data_full gladeness 
+
+	* gkb.c (makepix): kill mem leak
+	(gkb_update): replace Prop with GkbKeymap
+
+2000-12-06  Chema Celorio  <chema@celorio.com>
+	
+	* prop.c (apply_cb): remove entry_1 as it was not beeing
+	used.
+
+	* gkb.h: add convert_string_to_keysum_state prototype
+	this kills a couple of compile warnings.
+
+	* prop.c (apply_cb): use gkb_update here
+	(string_empty): make static to avoid compile warning
+
+	* gkb.h: add the gkb_update prototype
+
+	* gkb.c: use the debug macro
+	(gkb_activator_connect_signals): implement.
+	(gkb_activator): use g_a_connect_signals here
+	[This fixes a bug in which the applet will apear as a
+	small sqare without really working, this also makes another
+	bug evident that crashes the applet. We need to coonect the
+	signals before calling applet_widget_add ]
+	(sized_render): make static to kill compile warning.
+	(load_properties): remove unused variable to kill compile warning
+	(gkb_draw): make static to kill compile warning, remove from .h file
+	(gkb_draw): move upwards so that it is above it's first reference
+	(gkb_activator): change header and add a cast to remove compile
+	warning about type mismatch for parameter #1 of ACTIVATE_APPLET
+	(gkb_deactivator): same here
+	(gkb_activator): add applet_widget after registering the callbacks,
+	this avoids the crash at startup.
+	(event_filter): make static to avoid a compile warning
+	(gkb_update): implement.
+	(gkb_change_orient): move, clean & use gkb_update
+	(gkb_change_pixel_size): ditto
+	(gkb_switch_normal): ditto
+	(gkb_switch_small): ditto
+	(gkb_change_orient): ditto
+	(gkb_switch_normal): add the gkb_ prefix
+	(gkb_switch_small): ditto
+	(gkb_button_press_event_cb): use gkb update v.s. using gkb_draw and
+	system
+	(global_key_filter): use gkb_update here too. Don't use gkb_draw
+	and system in the code, we need to abstract this fucntionality into
+	gkb_update & gkb_set_system_keymap
+	(gbk_sized_render): move here and add the gkb_ prefix
+
+	* gkb.h (debug): add a debug macro.
+
+2000-12-02  Szabolcs BAN <shooby@gnome.hu>
+
+	* Administration wax: gkb.c, prop.c, gkb.h:
+	Changes in showing keymaps, keyboard grabbing, and
+	added error possibilities.
+
+2000-11-21  Gediminas Paulauskas <menesis@delfi.lt>
+
+	* gkb/lt.png, Makefile.am: Added Lithuanian flag.
+
+2000-10-20  Szabolcs BAN <shooby@gnome.hu>
+
+	* Able to demo. :] Keymap selector is semi-functional.
+	Now you can choose a Language, and a Country -> the keymaps
+	for the country will be choosable.
+
+2000-10-16  Szabolcs BAN <shooby@gnome.hu>
+
+	* Added new setting style... (Just for demo, not a working one)
+
+2000-10-11  Szabolcs BAN <shooby@gnome.hu>
+
+	* Added unstable branch
+
+2000-08-16  Szabolcs BAN  <shooby@gnome.hu>
+
+	* gkb.c: Added error handling :)
+
+2000-08-16  Alexander Kirillov  <kirillov@math.sunysb.edu>
+
+	* docs/C/gkb.sgml: updated; added section "technical info"
+
+2000-08-15  Szabolcs BAN <shooby@gnome.hu>
+
+	* gkb.c: Added size menu, logo pixmap
+	* gkb.png: New icon
+	* gkb-logo.png: Added logo pixmap
+	* Makefile.am: Logo image install
+
+2000-07-20  Szabolcs BAN <shooby@gnome.hu>
+
+	* gkb/bg.png: Changed to official, thanks 
+	Alexander Shopov <al_shopov@web.bg>
+
+Thu Jun 01 03:40:38 2000  George Lebl <jirka@5z.com>
+
+	* prop.c: kill a whole bunch of memory leaks.  Also fixed #12891
+
+Sat May 27 19:13:26 2000  George Lebl <jirka@5z.com>
+
+	* prop.c,gkb.[ch]: fix a bunch of warnings and hopefully a segfault.
+	  also cleaned up a bunch of code.
+
