@@ -22,21 +22,25 @@
 #include <libbonobo.h>
 #include <libbonoboui.h>
 #include <panel-applet.h>
+#include <gconf/gconf.h>
+#include <gconf/gconf-client.h>
 
 #include "panel-menu.h"
 
 G_BEGIN_DECLS
 
-void applet_load_config_cb (BonoboUIComponent *uic, PanelMenu *panel_menu,
-			   const gchar *verbname);
-void applet_save_config_cb (BonoboUIComponent *uic, PanelMenu *panel_menu,
-			   const gchar *verbname);
-void panel_menu_config_load_prefs (PanelMenu *panel_menu);
+gboolean panel_menu_config_load_prefs (PanelMenu *panel_menu);
+gboolean panel_menu_config_load_layout (PanelMenu *panel_menu);
+void panel_menu_config_load (PanelMenu *panel_menu, const gchar *layout);
 void panel_menu_config_save_prefs (PanelMenu *panel_menu);
-gboolean panel_menu_config_load_xml (PanelMenu *panel_menu);
-gboolean panel_menu_config_load_xml_string (PanelMenu *panel_menu,
-					    gchar *string, gint length);
-void panel_menu_config_save_xml (PanelMenu *panel_menu);
+void panel_menu_config_save_layout (PanelMenu *panel_menu);
+void panel_menu_config_save (PanelMenu *panel_menu);
+void panel_applet_gconf_set_string_list (PanelApplet *applet,
+					 const char *key,
+					 GList *strings);
+GList *panel_applet_gconf_get_string_list (PanelApplet *applet,
+					   const char *key);
+void _gconf_client_clean_dir (GConfClient *client, const gchar *dir);
 
 G_END_DECLS
 

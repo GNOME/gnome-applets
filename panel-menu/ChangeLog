@@ -1,9 +1,13 @@
-2002-01-16  Seth Nickell  <snickell@stanford.edu>
 
-	* panel-menu-path.c: (panel_menu_path_set_uri),
-	(panel_menu_path_append_item):
-
-	Use "Applications" rather than "Programs" for GNOME2.
+2001-01-17	Chris Phelps <chicane@reninet.com>
+	* panel-menu-options.[c/h]: removed.
+	* panel-menu-applications.[c/h]: added.
+	* applications, actions, windows, and workspaces are 'static'
+	  items (ie. you can only have one)
+	* move 'icon-handle' to applications item
+	* convert to gconf-based config.
+	* panel-menu-add.c: remove static items.
+	* panel-menu-properties: add static items.
 
 2001-01-15	Chris Phelps <chicane@reninet.com>
 	* panel-menu.c:

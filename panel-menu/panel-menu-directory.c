@@ -1,4 +1,4 @@
-/*  panel-menu-directory.c
+/* panel-menu-directory.c
  *
  * This library is free software; you can redistribute it and/or modify
  * it under the terms of the GNU Library General Public License as published by
@@ -19,6 +19,9 @@
 #include <libgnome/libgnome.h>
 #include <libgnomeui/libgnomeui.h>
 #include <panel-applet.h>
+#include <panel-applet-gconf.h>
+#include <gconf/gconf.h>
+#include <gconf/gconf-client.h>
 
 #include <libgnomevfs/gnome-vfs-types.h>
 #include <libgnomevfs/gnome-vfs-init.h>
@@ -44,7 +47,7 @@ static const gchar *directory_menu_xml =
 	"    </placeholder>";
 
 typedef struct _PanelMenuDocuments {
-	GtkWidget *checkitem;
+	gint id;
 	GtkWidget *directory;
 	GtkWidget *regenitem;
 	GtkWidget *menu;
@@ -63,7 +66,6 @@ static void panel_menu_directory_load (const gchar *uri, GtkMenuShell *parent,
 static void directory_load_cb (GnomeVFSAsyncHandle *handle,
 			       GnomeVFSResult result, GList *list,
 			       guint entries_read, GtkMenuShell *parent);
-static void set_visibility (GtkCheckMenuItem *checkitem, GtkWidget *target);
 static void change_directory_cb (GtkWidget *widget, PanelMenuEntry *entry,
 				 const gchar *verb);
 static GtkWidget *panel_menu_directory_edit_dialog_new (gchar *title,
@@ -71,31 +73,55 @@ static GtkWidget *panel_menu_directory_edit_dialog_new (gchar *title,
 							GtkWidget **pentry,
 							GtkWidget **spin);
 
+static gint object_counter = 0;
+
 PanelMenuEntry *
 panel_menu_directory_new (PanelMenu *parent, gchar *name, gchar *path,
 			  gint level)
+{
+	PanelMenuEntry *entry;
+	gchar *item_key;
+
+	item_key = g_strdup_printf ("directory%d/name", object_counter);
+	panel_applet_gconf_set_string (parent->applet, item_key, name, NULL);
+	g_free (item_key);
+	item_key = g_strdup_printf ("directory%d/path", object_counter);
+	panel_applet_gconf_set_string (parent->applet, item_key, path, NULL);
+	g_free (item_key);
+	item_key = g_strdup_printf ("directory%d/level", object_counter);
+	panel_applet_gconf_set_int (parent->applet, item_key, level, NULL);
+	g_free (item_key);
+	entry = panel_menu_directory_new_with_id (parent, object_counter);
+	return entry;
+}
+
+PanelMenuEntry *
+panel_menu_directory_new_with_id (PanelMenu *parent, gint id)
 {
 	PanelMenuEntry *entry;
 	PanelMenuDirectory *directory;
 	GtkWidget *tearoff;
 	GtkWidget *image;
 	GtkWidget *sep;
+	gchar *base_key;
+	gchar *dir_key;
+	GConfClient *client;
+	gchar *name;
+	gchar *path;
+	gint level;
+
+	if (id > object_counter)
+		object_counter = id;
 
 	entry = g_new0 (PanelMenuEntry, 1);
 	entry->type = PANEL_MENU_TYPE_DIRECTORY;
 	entry->parent = parent;
 	directory = g_new0 (PanelMenuDirectory, 1);
 	entry->data = (gpointer) directory;
-	directory->level = level;
+	directory->id = id;
 	directory->directory = gtk_menu_item_new_with_label ("");
 	panel_menu_common_widget_dnd_init (entry);
 	gtk_widget_show (directory->directory);
-	directory->checkitem = gtk_check_menu_item_new_with_label ("");
-	gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM
-					(directory->checkitem), TRUE);
-	g_signal_connect (G_OBJECT (directory->checkitem), "toggled",
-			  G_CALLBACK (panel_menu_common_set_visibility),
-			  directory->directory);
 	directory->menu = gtk_menu_new ();
 	tearoff = gtk_tearoff_menu_item_new ();
 	gtk_menu_shell_append (GTK_MENU_SHELL (directory->menu), tearoff);
@@ -116,8 +142,35 @@ panel_menu_directory_new (PanelMenu *parent, gchar *name, gchar *path,
 	gtk_widget_show (sep);
 	gtk_menu_item_set_submenu (GTK_MENU_ITEM (directory->directory),
 				   directory->menu);
+
+	base_key = g_strdup_printf ("directory%d", id);
+	dir_key = panel_applet_gconf_get_full_key (parent->applet, base_key);
+	client = gconf_client_get_default ();
+	if (gconf_client_dir_exists (client, dir_key, NULL)) {
+		gchar *key;
+		key = g_strdup_printf ("%s/name", base_key);
+		name = panel_applet_gconf_get_string (parent->applet, key, NULL);
+		g_free (key);
+		key = g_strdup_printf ("%s/path", base_key);
+		path = panel_applet_gconf_get_string (parent->applet, key, NULL);
+		g_free (key);
+		key = g_strdup_printf ("%s/level", base_key);
+		level = panel_applet_gconf_get_int (parent->applet, key, NULL);
+		g_free (key);
+	} else {
+		name = g_strdup ("My Documents");
+		path = g_strdup_printf ("%s/Documents", g_get_home_dir ());
+		level = 1;
+	}
+	g_object_unref (G_OBJECT (client));
+	g_free (base_key);
+	g_free (dir_key);
+	directory->level = level;
 	panel_menu_directory_set_name (entry, name);
 	panel_menu_directory_set_path (entry, path);
+	g_free (name);
+	g_free (path);
+	object_counter++;
 	return entry;
 }
 
@@ -125,7 +178,6 @@ void
 panel_menu_directory_set_name (PanelMenuEntry *entry, gchar *name)
 {
 	PanelMenuDirectory *directory;
-	gchar *show_label;
 
 	g_return_if_fail (entry != NULL);
 	g_return_if_fail (name != NULL);
@@ -137,10 +189,6 @@ panel_menu_directory_set_name (PanelMenuEntry *entry, gchar *name)
 	directory->name = name ? g_strdup (name) : g_strdup ("");
 	gtk_label_set_text (GTK_LABEL (GTK_BIN (directory->directory)->child),
 			    name);
-	show_label = g_strconcat ("Show ", directory->name, NULL);
-	gtk_label_set_text (GTK_LABEL (GTK_BIN (directory->checkitem)->child),
-			    show_label);
-	g_free (show_label);
 }
 
 void
@@ -295,7 +343,6 @@ panel_menu_directory_destroy (PanelMenuEntry *entry)
 		g_free (directory->name);
 	if (directory->path)
 		g_free (directory->path);
-	gtk_widget_destroy (directory->checkitem);
 	gtk_widget_destroy (directory->directory);
 	g_free (directory);
 }
@@ -310,53 +357,6 @@ panel_menu_directory_get_widget (PanelMenuEntry *entry)
 
 	directory = (PanelMenuDirectory *) entry->data;
 	return directory->directory;
-}
-
-GtkWidget *
-panel_menu_directory_get_checkitem (PanelMenuEntry *entry)
-{
-	PanelMenuDirectory *directory;
-
-	g_return_val_if_fail (entry != NULL, NULL);
-	g_return_val_if_fail (entry->type == PANEL_MENU_TYPE_DIRECTORY, NULL);
-
-	directory = (PanelMenuDirectory *) entry->data;
-	return directory->checkitem;
-}
-
-gchar *
-panel_menu_directory_dump_xml (PanelMenuEntry *entry)
-{
-	PanelMenuDirectory *directory;
-	GString *string;
-	gchar *str;
-	gboolean visible;
-	gchar *level;
-
-	g_return_val_if_fail (entry != NULL, NULL);
-	g_return_val_if_fail (entry->type == PANEL_MENU_TYPE_DIRECTORY, NULL);
-
-	directory = (PanelMenuDirectory *) entry->data;
-	visible = GTK_CHECK_MENU_ITEM (directory->checkitem)->active;
-	level = g_strdup_printf ("%d", directory->level);
-
-	string = g_string_new ("    <directory-item>\n" "        <name>");
-	g_string_append (string, directory->name);
-	g_string_append (string, "</name>\n");
-	g_string_append (string, "        <level>");
-	g_string_append (string, level);
-	g_string_append (string, "</level>\n");
-	g_string_append (string, "        <path>");
-	g_string_append (string, directory->path);
-	g_string_append (string, "</path>\n");
-	g_string_append (string, "        <visible>");
-	g_string_append (string, visible ? "true" : "false");
-	g_string_append (string, "</visible>\n");
-	g_string_append (string, "    </directory-item>\n");
-	g_free (level);
-	str = string->str;
-	g_string_free (string, FALSE);
-	return str;
 }
 
 gboolean
@@ -529,13 +529,10 @@ panel_menu_directory_new_with_dialog (PanelMenu *panel_menu)
 						  level);
 		panel_menu->entries =
 			g_list_append (panel_menu->entries, (gpointer) entry);
-		panel_menu_options_append_option (panel_menu_common_find_options
-						  (panel_menu),
-						  panel_menu_directory_get_checkitem
-						  (entry));
 		gtk_menu_shell_append (GTK_MENU_SHELL (panel_menu->menubar),
 				       panel_menu_directory_get_widget (entry));
-		panel_menu_common_set_changed (panel_menu);
+		panel_menu_config_save_layout (panel_menu);
+		panel_menu_directory_save_config (entry);
 	}
 	gtk_widget_destroy (dialog);
 }
@@ -593,7 +590,7 @@ change_directory_cb (GtkWidget *widget, PanelMenuEntry *entry, const gchar *verb
 			changed = TRUE;
 		}
 		if (changed)
-			panel_menu_common_set_changed (entry->parent);
+			panel_menu_directory_save_config (entry);
 	}
 	gtk_widget_destroy (dialog);
 }
@@ -649,4 +646,60 @@ panel_menu_directory_edit_dialog_new (gchar *title, GtkWidget **nentry,
 					   GTK_UPDATE_ALWAYS);
 	gtk_widget_show (*spin);
 	return dialog;
+}
+
+gchar *
+panel_menu_directory_save_config (PanelMenuEntry *entry)
+{
+	PanelMenuDirectory *directory;
+	PanelMenu *panel_menu;
+	PanelApplet *applet;
+	gchar *id;
+	gchar *key;
+
+	g_return_if_fail (entry != NULL);
+	g_return_if_fail (entry->type == PANEL_MENU_TYPE_DIRECTORY);
+
+	panel_menu = entry->parent;
+	applet = panel_menu->applet;
+	directory = (PanelMenuDirectory *) entry->data;
+
+	id = g_strdup_printf ("directory%d", directory->id);
+	key = g_strdup_printf ("%s/name", id);
+	panel_applet_gconf_set_string (applet, key, directory->name, NULL);
+	g_free (key);
+	key = g_strdup_printf ("%s/path", id);
+	panel_applet_gconf_set_string (applet, key, directory->path, NULL);
+	g_free (key);
+	key = g_strdup_printf ("%s/level", id);
+	panel_applet_gconf_set_int (applet, key, directory->level, NULL);
+	g_free (key);
+	return id;
+}
+
+void
+panel_menu_directory_remove_config (PanelMenuEntry *entry)
+{
+	PanelMenuDirectory *directory;
+	PanelMenu *panel_menu;
+	PanelApplet *applet;
+	GConfClient *client;
+	gchar *base_key;
+	gchar *key;
+
+	g_return_if_fail (entry != NULL);
+	g_return_if_fail (entry->type == PANEL_MENU_TYPE_DIRECTORY);
+
+	panel_menu = entry->parent;
+	applet = panel_menu->applet;
+	directory = (PanelMenuDirectory *) entry->data;
+
+	client = gconf_client_get_default ();
+	g_return_if_fail (client != NULL);
+	base_key = panel_applet_get_preferences_key (applet);
+	key = g_strdup_printf ("%s/directory%d", base_key, directory->id);
+	_gconf_client_clean_dir (client, key);
+	g_free (base_key);
+	g_free (key);
+	g_object_unref (G_OBJECT (client));
 }

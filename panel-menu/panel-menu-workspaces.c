@@ -33,7 +33,6 @@ static const gchar *workspaces_menu_xml =
 	"    </placeholder>";
 
 typedef struct _PanelMenuWorkspaces {
-	GtkWidget *checkitem;
 	GtkWidget *workspaces;
 	GtkWidget *menu;
 	/* The screen we're attached to */
@@ -62,8 +61,6 @@ static void wnck_workspace_removed (WnckScreen *screen,
 				    WnckWorkspace *workspace,
 				    GtkMenuShell *menu);
 
-static void set_visibility (GtkCheckMenuItem *checkitem, GtkWidget *target);
-
 PanelMenuEntry *
 panel_menu_workspaces_new (PanelMenu *parent)
 {
@@ -79,13 +76,6 @@ panel_menu_workspaces_new (PanelMenu *parent)
 	workspaces->workspaces = gtk_menu_item_new_with_label (_("Workspaces"));
 	panel_menu_common_widget_dnd_init (entry);
 	gtk_widget_show (workspaces->workspaces);
-	workspaces->checkitem =
-		gtk_check_menu_item_new_with_label (_("Show Workspaces"));
-	gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM
-					(workspaces->checkitem), TRUE);
-	g_signal_connect (G_OBJECT (workspaces->checkitem), "toggled",
-			  G_CALLBACK (panel_menu_common_set_visibility),
-			  workspaces->workspaces);
 	workspaces->menu = gtk_menu_new ();
 	tearoff = gtk_tearoff_menu_item_new ();
 	gtk_menu_shell_append (GTK_MENU_SHELL (workspaces->menu), tearoff);
@@ -129,7 +119,6 @@ panel_menu_workspaces_destroy (PanelMenuEntry *entry)
 				     workspaces->workspace_created);
 	g_signal_handler_disconnect (workspaces->screen,
 				     workspaces->workspace_destroyed);
-	gtk_widget_destroy (workspaces->checkitem);
 	gtk_widget_destroy (workspaces->workspaces);
 	g_free (workspaces);
 }
@@ -144,40 +133,6 @@ panel_menu_workspaces_get_widget (PanelMenuEntry *entry)
 
 	workspaces = (PanelMenuWorkspaces *) entry->data;
 	return (workspaces->workspaces);
-}
-
-GtkWidget *
-panel_menu_workspaces_get_checkitem (PanelMenuEntry *entry)
-{
-	PanelMenuWorkspaces *workspaces;
-
-	g_return_val_if_fail (entry != NULL, NULL);
-	g_return_val_if_fail (entry->type == PANEL_MENU_TYPE_WORKSPACES, NULL);
-
-	workspaces = (PanelMenuWorkspaces *) entry->data;
-	return (workspaces->checkitem);
-}
-
-gchar *
-panel_menu_workspaces_dump_xml (PanelMenuEntry *entry)
-{
-	PanelMenuWorkspaces *workspaces;
-	GString *string;
-	gchar *str;
-	gboolean visible;
-
-	g_return_val_if_fail (entry != NULL, NULL);
-	g_return_val_if_fail (entry->type == PANEL_MENU_TYPE_WORKSPACES, NULL);
-
-	workspaces = (PanelMenuWorkspaces *) entry->data;
-	visible = GTK_CHECK_MENU_ITEM (workspaces->checkitem)->active;
-	string = g_string_new ("    <workspaces-item>\n" "        <visible>");
-	g_string_append (string, visible ? "true" : "false");
-	g_string_append (string, "</visible>\n");
-	g_string_append (string, "    </workspaces-item>\n");
-	str = string->str;
-	g_string_free (string, FALSE);
-	return (str);
 }
 
 static void
@@ -323,4 +278,13 @@ wnck_workspace_removed (WnckScreen *screen, WnckWorkspace *workspace,
 {
 	kill_workspace_menu (menu);
 	fill_workspace_menu (menu);
+}
+
+gchar *
+panel_menu_workspaces_save_config (PanelMenuEntry *entry)
+{
+	g_return_if_fail (entry != NULL);
+	g_return_if_fail (entry->type == PANEL_MENU_TYPE_WORKSPACES);
+
+	return g_strdup ("workspaces");
 }

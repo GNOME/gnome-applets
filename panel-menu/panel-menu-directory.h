@@ -27,6 +27,8 @@ G_BEGIN_DECLS
 
 PanelMenuEntry *panel_menu_directory_new (PanelMenu *parent, gchar *name,
 					  gchar *path, gint level);
+PanelMenuEntry *panel_menu_directory_new_with_id (PanelMenu *parent,
+						  gint id);
 void panel_menu_directory_set_name (PanelMenuEntry *entry, gchar *name);
 void panel_menu_directory_set_path (PanelMenuEntry *entry, gchar *path);
 void panel_menu_directory_start_timeout (PanelMenuEntry *entry);
@@ -34,10 +36,10 @@ void panel_menu_directory_stop_timeout (PanelMenuEntry *entry);
 void panel_menu_directory_merge_ui (PanelMenuEntry *entry);
 void panel_menu_directory_destroy (PanelMenuEntry *entry);
 GtkWidget *panel_menu_directory_get_widget (PanelMenuEntry *entry);
-GtkWidget *panel_menu_directory_get_checkitem (PanelMenuEntry *entry);
-gchar *panel_menu_directory_dump_xml (PanelMenuEntry *entry);
 gboolean panel_menu_directory_accept_drop (PanelMenuEntry *entry, GnomeVFSURI *uri);
 void panel_menu_directory_new_with_dialog (PanelMenu *panel_menu);
+gchar *panel_menu_directory_save_config (PanelMenuEntry *entry);
+void panel_menu_directory_remove_config (PanelMenuEntry *entry);
 
 G_END_DECLS
 

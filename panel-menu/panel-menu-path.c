@@ -19,6 +19,9 @@
 #include <libgnome/libgnome.h>
 #include <libgnomeui/libgnomeui.h>
 #include <panel-applet.h>
+#include <panel-applet-gconf.h>
+#include <gconf/gconf.h>
+#include <gconf/gconf-client.h>
 
 #include <libgnomevfs/gnome-vfs-types.h>
 #include <libgnomevfs/gnome-vfs-init.h>
@@ -34,7 +37,7 @@
 
 #include "panel-menu.h"
 #include "panel-menu-common.h"
-#include "panel-menu-options.h"
+#include "panel-menu-config.h"
 #include "panel-menu-path.h"
 
 static const gchar *path_menu_xml =
@@ -47,7 +50,7 @@ static const gchar *path_menu_xml =
 	"    </placeholder>";
 
 typedef struct _PanelMenuPath {
-	GtkWidget *checkitem;
+	gint id;
 	GtkWidget *path;
 	GtkWidget *menu;
 	GtkWidget *regenitem;
@@ -56,8 +59,8 @@ typedef struct _PanelMenuPath {
 	GList *paths_list;
 } PanelMenuPath;
 
+static void panel_menu_path_set_list (PanelMenuEntry *entry, GList *list);
 static void regenerate_menus_cb (GtkWidget *menuitem, PanelMenuEntry *entry);
-static void set_visibility (GtkCheckMenuItem *checkitem, GtkWidget *target);
 static void panel_menu_path_load (const gchar *uri, GtkMenuShell *parent);
 static void directory_load_cb (GnomeVFSAsyncHandle *handle,
 			       GnomeVFSResult result, GList *list,
@@ -68,31 +71,46 @@ static void change_path_cb (GtkWidget *widget, PanelMenuEntry *entry, const char
 static GtkWidget *panel_menu_path_edit_dialog_new (gchar *title, gchar *value,
 						   GtkWidget ** entry);
 
+static gint object_counter = 0;
+
 PanelMenuEntry *
 panel_menu_path_new (PanelMenu *parent, gchar *menu_path)
 {
-	static gint number;
+	PanelMenuEntry *entry;
+	gchar *item_key;
+
+	item_key = g_strdup_printf ("path%d/base-uri", object_counter);
+	panel_applet_gconf_set_string (parent->applet, item_key, menu_path, NULL);
+	g_free (item_key);
+	entry = panel_menu_path_new_with_id (parent, object_counter);
+	return entry;
+}
+
+PanelMenuEntry *
+panel_menu_path_new_with_id (PanelMenu *parent, gint id)
+{
 	PanelMenuEntry *entry;
 	PanelMenuPath *path;
 	GtkWidget *tearoff;
 	GtkWidget *image;
 	GtkWidget *sep;
+	gchar *base_key;
+	gchar *dir_key;
+	GConfClient *client;
+	gchar *uri;
+
+	if (id > object_counter)
+		object_counter = id;
 
 	entry = g_new0 (PanelMenuEntry, 1);
-	entry->type = PANEL_MENU_TYPE_MENU_PATH;
+	entry->type = PANEL_MENU_TYPE_PATH;
 	entry->parent = parent;
 	path = g_new0 (PanelMenuPath, 1);
 	entry->data = (gpointer) path;
+	path->id = id;
 	path->path = gtk_menu_item_new_with_label ("");
 	panel_menu_common_widget_dnd_init (entry);
 	gtk_widget_show (path->path);
-	path->checkitem = gtk_check_menu_item_new_with_label ("");
-	gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (path->checkitem),
-					TRUE);
-	g_signal_connect (G_OBJECT (path->checkitem), "toggled",
-			  G_CALLBACK (panel_menu_common_set_visibility),
-			  path->path);
-	gtk_widget_show (path->checkitem);
 	path->menu = gtk_menu_new ();
 	tearoff = gtk_tearoff_menu_item_new ();
 	gtk_menu_shell_append (GTK_MENU_SHELL (path->menu), tearoff);
@@ -119,8 +137,48 @@ panel_menu_path_new (PanelMenu *parent, gchar *menu_path)
 	GTK_MENU (path->menu)->parent_menu_item = path->path;
 	g_signal_connect (G_OBJECT (path->menu), "key_press_event",
 			  G_CALLBACK (panel_menu_path_remove_cb), path);
-	panel_menu_path_set_uri (entry, menu_path);
+
+	base_key = g_strdup_printf ("path%d", id);
+	dir_key = panel_applet_gconf_get_full_key (parent->applet, base_key);
+	client = gconf_client_get_default ();
+	if (gconf_client_dir_exists (client, dir_key, NULL)) {
+		gchar *key;
+		key = g_strdup_printf ("%s/base-uri", base_key);
+		uri = panel_applet_gconf_get_string (parent->applet,
+						     key, NULL);
+		g_free (key);
+		key = g_strdup_printf ("%s/paths-list", base_key);
+		panel_menu_path_set_list (entry,
+			panel_applet_gconf_get_string_list (parent->applet, key));
+		g_free (key);
+	} else {
+		uri = g_strdup ("applications:");
+	}
+	g_object_unref (G_OBJECT (client));
+	g_free (base_key);
+	g_free (dir_key);
+	panel_menu_path_set_uri (entry, uri);
+	g_free (uri);
+	object_counter++;
 	return entry;
+}
+
+static void
+panel_menu_path_set_list (PanelMenuEntry *entry, GList *list)
+{
+	PanelMenuPath *path;
+	GList *iter;
+
+	g_return_if_fail (entry != NULL);
+	g_return_if_fail (entry->type == PANEL_MENU_TYPE_PATH);
+	if (!list) return;
+
+	path = (PanelMenuPath *)entry->data;
+	for (iter = list; iter; iter = iter->next) {
+		panel_menu_path_append_item (entry, iter->data);
+		g_free (iter->data);
+	}
+	g_list_free (list);
 }
 
 void
@@ -130,10 +188,9 @@ panel_menu_path_set_uri (PanelMenuEntry *entry, gchar *uri)
 	PanelMenuDesktopItem *item;
 	gchar *full_path = NULL;
 	gchar *label = NULL;
-	gchar *show_label = NULL;
 
 	g_return_if_fail (entry != NULL);
-	g_return_if_fail (entry->type == PANEL_MENU_TYPE_MENU_PATH);
+	g_return_if_fail (entry->type == PANEL_MENU_TYPE_PATH);
 
 	path = (PanelMenuPath *) entry->data;
 	if (path->base_path)
@@ -148,13 +205,9 @@ panel_menu_path_set_uri (PanelMenuEntry *entry, gchar *uri)
 		panel_menu_desktop_item_destroy (item);
 	} else {
 		path->base_path = g_strdup ("applications:");
-		label = g_strdup ("Applications");
+		label = g_strdup ("Programs");
 	}
 	gtk_label_set_text (GTK_LABEL (GTK_BIN (path->path)->child), label);
-	show_label = g_strdup_printf ("Show %s", label);
-	gtk_label_set_text (GTK_LABEL (GTK_BIN (path->checkitem)->child),
-			    show_label);
-	g_free (show_label);
 	g_free (label);
 	regenerate_menus_cb (NULL, entry);
 }
@@ -167,7 +220,7 @@ regenerate_menus_cb (GtkWidget *menuitem, PanelMenuEntry *entry)
 	GList *cur;
 
 	g_return_if_fail (entry != NULL);
-	g_return_if_fail (entry->type == PANEL_MENU_TYPE_MENU_PATH);
+	g_return_if_fail (entry->type == PANEL_MENU_TYPE_PATH);
 
 	path = (PanelMenuPath *) entry->data;
 	if (path->items_list) {
@@ -205,7 +258,7 @@ panel_menu_path_merge_ui (PanelMenuEntry *entry)
 	gchar *xml;
 
 	g_return_if_fail (entry != NULL);
-	g_return_if_fail (entry->type == PANEL_MENU_TYPE_MENU_PATH);
+	g_return_if_fail (entry->type == PANEL_MENU_TYPE_PATH);
 
 	path = (PanelMenuPath *) entry->data;
 	component = panel_applet_get_popup_component (entry->parent->applet);
@@ -228,10 +281,9 @@ panel_menu_path_destroy (PanelMenuEntry *entry)
 	GList *cur;
 
 	g_return_if_fail (entry != NULL);
-	g_return_if_fail (entry->type == PANEL_MENU_TYPE_MENU_PATH);
+	g_return_if_fail (entry->type == PANEL_MENU_TYPE_PATH);
 
 	path = (PanelMenuPath *) entry->data;
-	gtk_widget_destroy (path->checkitem);
 	gtk_widget_destroy (path->path);
 	if (path->base_path)
 		g_free (path->base_path);
@@ -250,54 +302,10 @@ panel_menu_path_get_widget (PanelMenuEntry *entry)
 	PanelMenuPath *path;
 
 	g_return_val_if_fail (entry != NULL, NULL);
-	g_return_val_if_fail (entry->type == PANEL_MENU_TYPE_MENU_PATH, NULL);
+	g_return_val_if_fail (entry->type == PANEL_MENU_TYPE_PATH, NULL);
 
 	path = (PanelMenuPath *) entry->data;
 	return path->path;
-}
-
-GtkWidget *
-panel_menu_path_get_checkitem (PanelMenuEntry *entry)
-{
-	PanelMenuPath *path;
-
-	g_return_val_if_fail (entry != NULL, NULL);
-	g_return_val_if_fail (entry->type == PANEL_MENU_TYPE_MENU_PATH, NULL);
-
-	path = (PanelMenuPath *) entry->data;
-	return path->checkitem;
-}
-
-gchar *
-panel_menu_path_dump_xml (PanelMenuEntry *entry)
-{
-	PanelMenuPath *path;
-	GString *string;
-	GList *cur;
-	gchar *str;
-	gboolean visible;
-
-	g_return_val_if_fail (entry != NULL, NULL);
-	g_return_val_if_fail (entry->type == PANEL_MENU_TYPE_MENU_PATH, NULL);
-
-	path = (PanelMenuPath *) entry->data;
-	visible = GTK_CHECK_MENU_ITEM (path->checkitem)->active;
-
-	string = g_string_new ("    <path-item>\n" "        <base-path>");
-	g_string_append (string, path->base_path);
-	g_string_append (string, "</base-path>\n");
-	for (cur = path->paths_list; cur; cur = cur->next) {
-		g_string_append (string, "        <path>");
-		g_string_append (string, (gchar *) cur->data);
-		g_string_append (string, "</path>\n");
-	}
-	g_string_append (string, "        <visible>");
-	g_string_append (string, visible ? "true" : "false");
-	g_string_append (string, "</visible>\n");
-	g_string_append (string, "    </path-item>\n");
-	str = string->str;
-	g_string_free (string, FALSE);
-	return str;
 }
 
 gboolean
@@ -307,13 +315,13 @@ panel_menu_path_accept_drop (PanelMenuEntry *entry, GnomeVFSURI *uri)
 	gboolean retval = FALSE;
 
 	g_return_val_if_fail (entry != NULL, FALSE);
-	g_return_val_if_fail (entry->type == PANEL_MENU_TYPE_MENU_PATH, FALSE);
+	g_return_val_if_fail (entry->type == PANEL_MENU_TYPE_PATH, FALSE);
 
 	fileuri = gnome_vfs_uri_to_string (uri, GNOME_VFS_URI_HIDE_NONE);
 	g_print ("(panel-menu-path) uri is %s\n", fileuri);
 	retval = panel_menu_path_append_item (entry, fileuri);
 	if (retval)
-		panel_menu_common_set_changed (entry->parent);
+		panel_menu_path_save_config (entry);
 	g_free (fileuri);
 	return retval;
 }
@@ -445,7 +453,7 @@ panel_menu_path_append_item (PanelMenuEntry *entry, gchar *uri)
 	gboolean retval = FALSE;
 
 	g_return_val_if_fail (entry != NULL, FALSE);
-	g_return_val_if_fail (entry->type == PANEL_MENU_TYPE_MENU_PATH, FALSE);
+	g_return_val_if_fail (entry->type == PANEL_MENU_TYPE_PATH, FALSE);
 
 	path = (PanelMenuPath *) entry->data;
 
@@ -461,7 +469,7 @@ panel_menu_path_append_item (PanelMenuEntry *entry, gchar *uri)
 				retval = TRUE;
 		} else {
 			submenu =
-				panel_menu_common_menu_from_path (_("Applications"),
+				panel_menu_common_menu_from_path (_("Programs"),
 								  uri,
 								  GTK_MENU_SHELL
 								  (path->menu),
@@ -540,13 +548,10 @@ panel_menu_path_new_with_dialog (PanelMenu *panel_menu)
 		entry = panel_menu_path_new (panel_menu, path);
 		panel_menu->entries =
 			g_list_append (panel_menu->entries, (gpointer) entry);
-		panel_menu_options_append_option (panel_menu_common_find_options
-						  (panel_menu),
-						  panel_menu_path_get_checkitem
-						  (entry));
 		gtk_menu_shell_append (GTK_MENU_SHELL (panel_menu->menubar),
 				       panel_menu_path_get_widget (entry));
-		panel_menu_common_set_changed (panel_menu);
+		panel_menu_config_save_layout (panel_menu);
+		panel_menu_path_save_config (entry);
 	}
 	gtk_widget_destroy (dialog);
 }
@@ -561,7 +566,7 @@ change_path_cb (GtkWidget *widget, PanelMenuEntry *entry, const char *verb)
 	gchar *new_path;
 
 	g_return_if_fail (entry != NULL);
-	g_return_if_fail (entry->type == PANEL_MENU_TYPE_MENU_PATH);
+	g_return_if_fail (entry->type == PANEL_MENU_TYPE_PATH);
 
 	path = (PanelMenuPath *) entry->data;
 	dialog = panel_menu_path_edit_dialog_new (_("Edit path item..."),
@@ -575,7 +580,7 @@ change_path_cb (GtkWidget *widget, PanelMenuEntry *entry, const char *verb)
 			(gchar *) gtk_entry_get_text (GTK_ENTRY (path_entry));
 		if (strcmp (path->base_path, new_path)) {
 			panel_menu_path_set_uri (entry, new_path);
-			panel_menu_common_set_changed (entry->parent);
+			panel_menu_path_save_config (entry);
 		}
 	}
 	gtk_widget_destroy (dialog);
@@ -616,4 +621,59 @@ panel_menu_path_edit_dialog_new (gchar *title, gchar *value,
 	gtk_box_pack_start (GTK_BOX (hbox), browse, FALSE, FALSE, 5);
 	gtk_widget_show (browse);
 	return dialog;
+}
+
+gchar *
+panel_menu_path_save_config (PanelMenuEntry *entry)
+{
+	PanelMenuPath *path;
+	PanelMenu *panel_menu;
+	PanelApplet *applet;
+	gchar *id;
+	gchar *key;
+
+	g_return_val_if_fail (entry != NULL, NULL);
+	g_return_val_if_fail (entry->type == PANEL_MENU_TYPE_PATH, NULL);
+
+	panel_menu = entry->parent;
+	applet = panel_menu->applet;
+	path = (PanelMenuPath *) entry->data;
+
+	id = g_strdup_printf ("path%d", path->id);
+	key = g_strdup_printf ("%s/base-uri", id);
+	panel_applet_gconf_set_string (applet, key, path->base_path, NULL);
+	g_free (key);
+	key = g_strdup_printf ("%s/paths-list", id);
+	panel_applet_gconf_set_string_list (applet, key, path->paths_list);
+	g_free (key);
+	return id;
+}
+
+void
+panel_menu_path_remove_config (PanelMenuEntry *entry)
+{
+	PanelMenuPath *path;
+	PanelMenu *panel_menu;
+	PanelApplet *applet;
+	GConfClient *client;
+	gchar *base_key;
+	gchar *key;
+	GSList *list;
+	GSList *iter;
+
+	g_return_if_fail (entry != NULL);
+	g_return_if_fail (entry->type == PANEL_MENU_TYPE_PATH);
+
+	panel_menu = entry->parent;
+	applet = panel_menu->applet;
+	path = (PanelMenuPath *) entry->data;
+
+	client = gconf_client_get_default ();
+	g_return_if_fail (client != NULL);
+	base_key = panel_applet_get_preferences_key (applet);
+	key = g_strdup_printf ("%s/path%d/paths-list", base_key, path->id);
+	_gconf_client_clean_dir (client, key);
+	g_free (base_key);
+	g_free (key);
+	g_object_unref (G_OBJECT (client));
 }

@@ -18,8 +18,8 @@ panel-menu-desktop-item.c \
 panel-menu-desktop-item.h \
 panel-menu-common.c \
 panel-menu-common.h \
-panel-menu-options.c \
-panel-menu-options.h \
+panel-menu-applications.c \
+panel-menu-applications.h \
 panel-menu-path.c \
 panel-menu-path.h \
 panel-menu-links.c \

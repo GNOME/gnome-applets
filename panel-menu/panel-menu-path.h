@@ -26,15 +26,16 @@
 G_BEGIN_DECLS
 
 PanelMenuEntry *panel_menu_path_new (PanelMenu *parent, gchar *menu_path);
+PanelMenuEntry *panel_menu_path_new_with_id (PanelMenu *parent, gint id);
 void panel_menu_path_set_uri (PanelMenuEntry *entry, gchar *uri);
 void panel_menu_path_merge_ui (PanelMenuEntry *entry);
 void panel_menu_path_destroy (PanelMenuEntry *entry);
 GtkWidget *panel_menu_path_get_widget (PanelMenuEntry *entry);
-GtkWidget *panel_menu_path_get_checkitem (PanelMenuEntry *entry);
 gboolean panel_menu_path_accept_drop (PanelMenuEntry *entry, GnomeVFSURI *uri);
-gchar *panel_menu_path_dump_xml (PanelMenuEntry *entry);
 gboolean panel_menu_path_append_item (PanelMenuEntry *entry, gchar *uri);
 void panel_menu_path_new_with_dialog (PanelMenu *panel_menu);
+gchar *panel_menu_path_save_config (PanelMenuEntry *entry);
+void panel_menu_path_remove_config (PanelMenuEntry *entry);
 
 G_END_DECLS
 

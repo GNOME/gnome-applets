@@ -21,13 +21,11 @@
 #include <libgnomeui/libgnomeui.h>
 #include <panel-applet.h>
 #include <panel-applet-gconf.h>
-
-#include <libxml/parser.h>
-#include <libxml/tree.h>
+#include <gconf/gconf.h>
+#include <gconf/gconf-client.h>
 
 #include "panel-menu.h"
 #include "panel-menu-common.h"
-#include "panel-menu-options.h"
 #include "panel-menu-path.h"
 #include "panel-menu-links.h"
 #include "panel-menu-directory.h"
@@ -38,84 +36,93 @@
 
 #include "panel-menu-config.h"
 
-void
-applet_load_config_cb (BonoboUIComponent *uic, PanelMenu *panel_menu,
-		       const gchar *verbname)
-{
-	PanelMenuEntry *options = NULL;
-	PanelMenuEntry *entry = NULL;
-	GList *cur = NULL;
+static gchar *panel_menu_config_get_layout_string (PanelMenu *panel_menu);
 
-	for (cur = panel_menu->entries; cur; cur = cur->next) {
-		entry = (PanelMenuEntry *) cur->data;
-		if (entry->type != PANEL_MENU_TYPE_OPTIONS)
-			panel_menu_common_call_entry_destroy (entry);
-		else
-			options = entry;
-	}
-	if (options)
-		panel_menu_options_destroy (options);
-	if (!panel_menu_config_load_xml (panel_menu)) {
-		gchar *xml;
-		xml = g_strdup_printf (default_config, PREFIX);
-		panel_menu_config_load_xml_string (panel_menu, xml,
-						   strlen (xml));
-		g_free (xml);
-	}
-}
-
-void
-applet_save_config_cb (BonoboUIComponent *uic, PanelMenu *panel_menu,
-		       const gchar *verbname)
-{
-	panel_menu_config_save_xml (panel_menu);
-}
-
-void
+gboolean
 panel_menu_config_load_prefs (PanelMenu *panel_menu)
 {
-	panel_menu->show_icon_handle =
-		panel_applet_gconf_get_bool (panel_menu->applet,
-					     "show-icon-handle", NULL);
-	panel_menu->icon_handle_image =
-		panel_applet_gconf_get_string (panel_menu->applet,
-					       "icon-handle-image", NULL);
-	if (!panel_menu->icon_handle_image
-	    || !strcmp (panel_menu->icon_handle_image, "none")) {
-		g_free (panel_menu->icon_handle_image);
-		panel_menu->icon_handle_image =
-			g_strdup (DATADIR "/pixmaps/panel-menu-icon.png");
+	gchar *key;
+	GConfClient *client;
+	gboolean retval = FALSE;
+
+	client = gconf_client_get_default ();
+	key = panel_applet_get_preferences_key (panel_menu->applet);
+
+	if (gconf_client_dir_exists (client, key, NULL)) {
+		panel_menu->auto_directory_update =
+			panel_applet_gconf_get_bool (panel_menu->applet,
+						     "auto-directory-update", NULL);
+		panel_menu->auto_directory_update_timeout =
+			panel_applet_gconf_get_int (panel_menu->applet,
+						    "auto-directory-update-timeout",
+						    NULL);
+		retval = TRUE;
+	} else {
+		panel_menu->auto_directory_update = FALSE;
+		panel_menu->auto_directory_update_timeout = 30;
 	}
-	panel_menu->auto_popup_menus =
-		panel_applet_gconf_get_bool (panel_menu->applet,
-					     "auto-popup-menus", NULL);
-	panel_menu->auto_popup_menus_timeout =
-		panel_applet_gconf_get_int (panel_menu->applet,
-					    "auto-popup-menus-timeout", NULL);
-	panel_menu->auto_directory_update =
-		panel_applet_gconf_get_bool (panel_menu->applet,
-					     "auto-directory-update", NULL);
-	panel_menu->auto_directory_update_timeout =
-		panel_applet_gconf_get_int (panel_menu->applet,
-					    "auto-directory-update-timeout",
-					    NULL);
-	panel_menu->auto_save_config =
-		panel_applet_gconf_get_bool (panel_menu->applet,
-					     "auto-save-config", NULL);
+	g_free (key);
+	g_object_unref (G_OBJECT (client));
+	return retval;
+}
+
+gboolean
+panel_menu_config_load_layout (PanelMenu *panel_menu)
+{
+	gchar *key;
+	GConfClient *client;
+	gboolean retval = FALSE;
+	gchar *layout = NULL;
+
+	client = gconf_client_get_default ();
+	key = panel_applet_get_preferences_key (panel_menu->applet);
+
+	if (gconf_client_dir_exists (client, key, NULL)) {
+
+		layout = panel_applet_gconf_get_string (panel_menu->applet,
+							"layout", NULL);
+		retval = TRUE;
+	}
+	if (!layout) {
+		layout = g_strdup ("applications|actions|windows|workspaces");
+		panel_applet_gconf_set_string (panel_menu->applet,
+					      "layout", layout, NULL);
+	}
+	g_free (key);
+	panel_menu_config_load (panel_menu, layout);
+	g_free (layout);
+	g_object_unref (G_OBJECT (client));
+	return retval;
+}
+
+void
+panel_menu_config_load (PanelMenu *panel_menu, const gchar *layout)
+{
+	gchar **items;
+	gint index;
+
+	items = g_strsplit (layout, "|", 50);
+	if (!items)
+		return;
+	for (index = 0; items[index]; index++) {
+		PanelMenuEntry *entry;
+		entry = panel_menu_common_build_entry (panel_menu, items[index]);
+		if (entry) {
+			GtkWidget *item;
+			item = panel_menu_common_get_entry_menuitem (entry);
+			gtk_menu_shell_append (GTK_MENU_SHELL (panel_menu->menubar),
+					       item);
+			gtk_widget_show (item);
+			panel_menu->entries = g_list_append (
+				panel_menu->entries, entry);
+
+		}
+	}
 }
 
 void
 panel_menu_config_save_prefs (PanelMenu *panel_menu)
 {
-	panel_applet_gconf_set_bool (panel_menu->applet, "show-icon-handle",
-				     panel_menu->show_icon_handle, NULL);
-	panel_applet_gconf_set_string (panel_menu->applet, "icon-handle-image",
-				       panel_menu->icon_handle_image, NULL);
-	panel_applet_gconf_set_bool (panel_menu->applet, "auto-popup-menus",
-				     panel_menu->auto_popup_menus, NULL);
-	panel_applet_gconf_set_int (panel_menu->applet,
-				    "auto-popup-menus-timeout",
-				    panel_menu->auto_popup_menus_timeout, NULL);
 	panel_applet_gconf_set_bool (panel_menu->applet,
 				     "auto-directory-update",
 				     panel_menu->auto_directory_update, NULL);
@@ -123,502 +130,133 @@ panel_menu_config_save_prefs (PanelMenu *panel_menu)
 				    "auto-directory-update-timeout",
 				    panel_menu->auto_directory_update_timeout,
 				    NULL);
-	panel_applet_gconf_set_bool (panel_menu->applet, "auto-save-config",
-				     panel_menu->auto_save_config, NULL);
-}
-
-gboolean
-panel_menu_config_load_xml (PanelMenu *panel_menu)
-{
-	gchar *filename;
-	gchar *string;
-	guint len;
-	gboolean retval = FALSE;
-
-	filename =
-		g_strdup_printf ("%s/.gnome2/panel-menu/%s-%s.xml",
-				 g_get_home_dir (), panel_menu->profile_id,
-				 panel_menu->applet_id);
-	g_file_get_contents (filename, &string, &len, NULL);
-	g_free (filename);
-	if (len) {
-		retval = panel_menu_config_load_xml_string (panel_menu, string,
-							    len);
-		g_free (string);
-	}
-	return (retval);
-}
-
-gboolean
-panel_menu_config_load_xml_string (PanelMenu *panel_menu, gchar *string,
-				   gint length)
-{
-	xmlDocPtr doc = NULL;
-	xmlNodePtr root = NULL;
-	xmlNodePtr section = NULL;
-	xmlNodePtr node = NULL;
-	PanelMenuEntry *options;
-	PanelMenuEntry *entry;
-	gchar *text;
-	GtkWidget *menuitem;
-	GtkWidget *checkitem;
-	gboolean constructed;
-	gboolean retval = FALSE;
-
-	if (!panel_menu->profile_id || !panel_menu->applet_id)
-		return (FALSE);
-	xmlKeepBlanksDefault (0);
-	doc = xmlParseMemory (string, length);
-	if (!doc)
-		return (FALSE);
-	root = xmlDocGetRootElement (doc);
-	if (!root)
-		return (FALSE);
-
-	/* Must be constructed here, since each sub-item needs to add a checkitem */
-	options =
-		panel_menu_options_new (panel_menu,
-					panel_menu->icon_handle_image);
-
-	for (section = root->xmlChildrenNode; section; section = section->next) {
-		constructed = FALSE;
-		if (!strcmp (section->name, "options-item")) {
-			panel_menu->entries =
-				g_list_append (panel_menu->entries,
-					       (gpointer) options);
-			gtk_menu_shell_append (GTK_MENU_SHELL
-					       (panel_menu->menubar),
-					       panel_menu_options_get_widget
-					       (options));
-			if (!panel_menu->show_icon_handle)
-				gtk_widget_hide (panel_menu_options_get_widget
-						 (options));
-			retval = TRUE;
-		} else if (!strcmp (section->name, "path-item")) {
-			for (node = section->xmlChildrenNode; node != NULL;
-			     node = node->next) {
-				if (!strcmp (node->name, "base-path")) {
-					text = xmlNodeListGetString (doc,
-								     node->
-								     xmlChildrenNode,
-								     1);
-					if (text && strlen (text) > 1) {
-						entry = panel_menu_path_new
-							(panel_menu, text);
-						panel_menu->entries =
-							g_list_append
-							(panel_menu->entries,
-							 (gpointer) entry);
-						panel_menu_options_append_option
-							(options,
-							 panel_menu_path_get_checkitem
-							 (entry));
-						gtk_menu_shell_append
-							(GTK_MENU_SHELL
-							 (panel_menu->menubar),
-							 panel_menu_path_get_widget
-							 (entry));
-						constructed = TRUE;
-					}
-					if (text)
-						g_free (text);
-				} else if (constructed
-					   && !strcmp (node->name, "path")) {
-					text = xmlNodeListGetString (doc,
-								     node->
-								     xmlChildrenNode,
-								     1);
-					if (text && strlen (text) > 1) {
-						panel_menu_path_append_item
-							(entry, text);
-					}
-					if (text)
-						g_free (text);
-				} else if (constructed
-					   && !strcmp (node->name, "visible")) {
-					text = xmlNodeListGetString (doc,
-								     node->
-								     xmlChildrenNode,
-								     1);
-					if (text && !strcmp (text, "false")) {
-						checkitem =
-							panel_menu_path_get_checkitem
-							(entry);
-						gtk_check_menu_item_set_active
-							(GTK_CHECK_MENU_ITEM
-							 (checkitem), FALSE);
-					}
-					if (text)
-						g_free (text);
-				}
-			}
-		} else if (!strcmp (section->name, "links-item")) {
-			for (node = section->xmlChildrenNode; node != NULL;
-			     node = node->next) {
-				if (!strcmp (node->name, "name")) {
-					text = xmlNodeListGetString (doc,
-								     node->
-								     xmlChildrenNode,
-								     1);
-					if (text && strlen (text) > 1) {
-						entry = panel_menu_links_new
-							(panel_menu, text);
-						panel_menu->entries =
-							g_list_append
-							(panel_menu->entries,
-							 (gpointer) entry);
-						panel_menu_options_append_option
-							(options,
-							 panel_menu_links_get_checkitem
-							 (entry));
-						gtk_menu_shell_append
-							(GTK_MENU_SHELL
-							 (panel_menu->menubar),
-							 panel_menu_links_get_widget
-							 (entry));
-						constructed = TRUE;
-					}
-				} else if (constructed
-					   && !strcmp (node->name, "link")) {
-					text = xmlNodeListGetString (doc,
-								     node->
-								     xmlChildrenNode,
-								     1);
-					if (text && strlen (text) > 1) {
-						panel_menu_links_append_item
-							(entry, text);
-					}
-					if (text)
-						g_free (text);
-				} else if (constructed
-					   && !strcmp (node->name, "visible")) {
-					text = xmlNodeListGetString (doc,
-								     node->
-								     xmlChildrenNode,
-								     1);
-					if (text && !strcmp (text, "false")) {
-						checkitem =
-							panel_menu_links_get_checkitem
-							(entry);
-						gtk_check_menu_item_set_active
-							(GTK_CHECK_MENU_ITEM
-							 (checkitem), FALSE);
-					}
-					if (text)
-						g_free (text);
-				}
-			}
-		} else if (!strcmp (section->name, "directory-item")) {
-			gchar *name = NULL;
-			gint level = 0;
-
-			for (node = section->xmlChildrenNode; node != NULL;
-			     node = node->next) {
-				if (!strcmp (node->name, "name")) {
-					text = xmlNodeListGetString (doc,
-								     node->
-								     xmlChildrenNode,
-								     1);
-					if (text && strlen (text) > 1) {
-						name = g_strdup (text);
-					}
-				} else if (!strcmp (node->name, "level")) {
-					text = xmlNodeListGetString (doc,
-								     node->
-								     xmlChildrenNode,
-								     1);
-					if (text && strlen (text)) {
-						level = atoi (text);
-					}
-				} else if (name && level
-					   && !strcmp (node->name, "path")) {
-					text = xmlNodeListGetString (doc,
-								     node->
-								     xmlChildrenNode,
-								     1);
-					if (text && strlen (text) > 1) {
-						entry = panel_menu_directory_new
-							(panel_menu, name, text,
-							 level);
-						panel_menu->entries =
-							g_list_append
-							(panel_menu->entries,
-							 (gpointer) entry);
-						panel_menu_options_append_option
-							(options,
-							 panel_menu_directory_get_checkitem
-							 (entry));
-						gtk_menu_shell_append
-							(GTK_MENU_SHELL
-							 (panel_menu->menubar),
-							 panel_menu_directory_get_widget
-							 (entry));
-						constructed = TRUE;
-					}
-					if (text)
-						g_free (text);
-					if (name)
-						g_free (name);
-				} else if (constructed
-					   && !strcmp (node->name, "visible")) {
-					text = xmlNodeListGetString (doc,
-								     node->
-								     xmlChildrenNode,
-								     1);
-					if (text && !strcmp (text, "false")) {
-						checkitem =
-							panel_menu_directory_get_checkitem
-							(entry);
-						gtk_check_menu_item_set_active
-							(GTK_CHECK_MENU_ITEM
-							 (checkitem), FALSE);
-					}
-					if (text)
-						g_free (text);
-				}
-			}
-		} else if (!strcmp (section->name, "documents-item")) {
-			for (node = section->xmlChildrenNode; node != NULL;
-			     node = node->next) {
-				if (!strcmp (node->name, "name")) {
-					text = xmlNodeListGetString (doc,
-								     node->
-								     xmlChildrenNode,
-								     1);
-					if (text && strlen (text) > 1) {
-						entry = panel_menu_documents_new
-							(panel_menu, text);
-						panel_menu->entries =
-							g_list_append
-							(panel_menu->entries,
-							 (gpointer) entry);
-						panel_menu_options_append_option
-							(options,
-							 panel_menu_documents_get_checkitem
-							 (entry));
-						gtk_menu_shell_append
-							(GTK_MENU_SHELL
-							 (panel_menu->menubar),
-							 panel_menu_documents_get_widget
-							 (entry));
-						constructed = TRUE;
-					}
-				} else if (constructed
-					   && !strcmp (node->name,
-						       "document")) {
-					text = xmlNodeListGetString (doc,
-								     node->
-								     xmlChildrenNode,
-								     1);
-					if (text && strlen (text) > 1) {
-						panel_menu_documents_append_item
-							(entry, text);
-					}
-					if (text)
-						g_free (text);
-				} else if (constructed
-					   && !strcmp (node->name, "visible")) {
-					text = xmlNodeListGetString (doc,
-								     node->
-								     xmlChildrenNode,
-								     1);
-					if (text && !strcmp (text, "false")) {
-						checkitem =
-							panel_menu_documents_get_checkitem
-							(entry);
-						gtk_check_menu_item_set_active
-							(GTK_CHECK_MENU_ITEM
-							 (checkitem), FALSE);
-					}
-					if (text)
-						g_free (text);
-				}
-			}
-		} else if (!strcmp (section->name, "actions-item")) {
-			for (node = section->xmlChildrenNode; node != NULL;
-			     node = node->next) {
-				if (!strcmp (node->name, "name")) {
-					text = xmlNodeListGetString (doc,
-								     node->
-								     xmlChildrenNode,
-								     1);
-					if (text && strlen (text) > 1) {
-						entry = panel_menu_actions_new
-							(panel_menu, text);
-						panel_menu->entries =
-							g_list_append
-							(panel_menu->entries,
-							 (gpointer) entry);
-						panel_menu_options_append_option
-							(options,
-							 panel_menu_actions_get_checkitem
-							 (entry));
-						gtk_menu_shell_append
-							(GTK_MENU_SHELL
-							 (panel_menu->menubar),
-							 panel_menu_actions_get_widget
-							 (entry));
-						constructed = TRUE;
-					}
-				} else if (constructed
-					   && !strcmp (node->name, "action")) {
-					text = xmlNodeListGetString (doc,
-								     node->
-								     xmlChildrenNode,
-								     1);
-					if (text && strlen (text) > 1) {
-						panel_menu_actions_append_item
-							(entry, text);
-					}
-					if (text)
-						g_free (text);
-				} else if (constructed
-					   && !strcmp (node->name, "visible")) {
-					text = xmlNodeListGetString (doc,
-								     node->
-								     xmlChildrenNode,
-								     1);
-					if (text && !strcmp (text, "false")) {
-						checkitem =
-							panel_menu_actions_get_checkitem
-							(entry);
-						gtk_check_menu_item_set_active
-							(GTK_CHECK_MENU_ITEM
-							 (checkitem), FALSE);
-					}
-					if (text)
-						g_free (text);
-				}
-			}
-		} else if (!strcmp (section->name, "windows-item")) {
-			entry = panel_menu_windows_new (panel_menu);
-			panel_menu->entries =
-				g_list_append (panel_menu->entries,
-					       (gpointer) entry);
-			panel_menu_options_append_option (options,
-							  panel_menu_windows_get_checkitem
-							  (entry));
-			gtk_menu_shell_append (GTK_MENU_SHELL
-					       (panel_menu->menubar),
-					       panel_menu_windows_get_widget
-					       (entry));
-			for (node = section->xmlChildrenNode; node != NULL;
-			     node = node->next) {
-				if (!strcmp (node->name, "visible")) {
-					text = xmlNodeListGetString (doc,
-								     node->
-								     xmlChildrenNode,
-								     1);
-					if (text && !strcmp (text, "false")) {
-						checkitem =
-							panel_menu_windows_get_checkitem
-							(entry);
-						gtk_check_menu_item_set_active
-							(GTK_CHECK_MENU_ITEM
-							 (checkitem), FALSE);
-					}
-					if (text)
-						g_free (text);
-				}
-			}
-		} else if (!strcmp (section->name, "workspaces-item")) {
-			entry = panel_menu_workspaces_new (panel_menu);
-			panel_menu->entries =
-				g_list_append (panel_menu->entries,
-					       (gpointer) entry);
-			panel_menu_options_append_option (options,
-							  panel_menu_workspaces_get_checkitem
-							  (entry));
-			gtk_menu_shell_append (GTK_MENU_SHELL
-					       (panel_menu->menubar),
-					       panel_menu_workspaces_get_widget
-					       (entry));
-			for (node = section->xmlChildrenNode; node != NULL;
-			     node = node->next) {
-				if (!strcmp (node->name, "visible")) {
-					text = xmlNodeListGetString (doc,
-								     node->
-								     xmlChildrenNode,
-								     1);
-					if (text && !strcmp (text, "false")) {
-						checkitem =
-							panel_menu_workspaces_get_checkitem
-							(entry);
-						gtk_check_menu_item_set_active
-							(GTK_CHECK_MENU_ITEM
-							 (checkitem), FALSE);
-					}
-					if (text)
-						g_free (text);
-				}
-			}
-		}
-	}
-	xmlFreeDoc (doc);
-	return (retval);
 }
 
 void
-panel_menu_config_save_xml (PanelMenu *panel_menu)
+panel_menu_config_save_layout (PanelMenu *panel_menu)
 {
-	FILE *out;
-	gchar *filename;
+	gchar *layout;
+
+	layout = panel_menu_config_get_layout_string (panel_menu);
+	panel_applet_gconf_set_string (panel_menu->applet,
+				      "layout", layout, NULL);
+	g_free (layout);
+}
+
+void
+panel_menu_config_save (PanelMenu *panel_menu)
+{
 	GList *cur;
-	PanelMenuEntry *entry;
-	gchar *string;
 
-	if (!panel_menu->profile_id || !panel_menu->applet_id)
-		return;
-
-	filename =
-		g_strdup_printf ("%s/.gnome2/panel-menu/%s-%s.xml",
-				 g_get_home_dir (), panel_menu->profile_id,
-				 panel_menu->applet_id);
-	out = fopen (filename, "w");
-	g_free (filename);
-	if (!out)
-		return;
-
-	g_print ("Saving xml specification...\n");
-
-	fprintf (out, "<panel-menu>\n");
 	for (cur = panel_menu->entries; cur; cur = cur->next) {
-		entry = (PanelMenuEntry *) cur->data;
-		string = NULL;
-		switch (entry->type) {
-		case PANEL_MENU_TYPE_OPTIONS:
-			string = panel_menu_options_dump_xml (entry);
-			break;
-		case PANEL_MENU_TYPE_MENU_PATH:
-			string = panel_menu_path_dump_xml (entry);
-			break;
-		case PANEL_MENU_TYPE_LINKS:
-			string = panel_menu_links_dump_xml (entry);
-			break;
-		case PANEL_MENU_TYPE_DIRECTORY:
-			string = panel_menu_directory_dump_xml (entry);
-			break;
-		case PANEL_MENU_TYPE_DOCUMENTS:
-			string = panel_menu_documents_dump_xml (entry);
-			break;
-		case PANEL_MENU_TYPE_ACTIONS:
-			string = panel_menu_actions_dump_xml (entry);
-			break;
-		case PANEL_MENU_TYPE_WINDOWS:
-			string = panel_menu_windows_dump_xml (entry);
-			break;
-		case PANEL_MENU_TYPE_WORKSPACES:
-			string = panel_menu_workspaces_dump_xml (entry);
-			break;
-		default:
-			break;
-		}
-		if (string) {
-			fprintf (out, string);
-			g_free (string);
+		panel_menu_common_entry_save_config ((PanelMenuEntry *)cur->data);
+	}
+}
+
+static gchar *
+panel_menu_config_get_layout_string (PanelMenu *panel_menu)
+{
+	GString *layout;
+	GList *cur;
+	gchar *str;
+
+	layout = g_string_new (NULL);
+	for (cur = panel_menu->entries; cur; cur = cur->next) {
+		gchar *temp;
+		temp = panel_menu_common_call_entry_save_config ((PanelMenuEntry *)cur->data);
+		if (temp) {
+			if (cur != panel_menu->entries)
+				g_string_append (layout, "|");
+			g_string_append (layout, temp);
+			g_free (temp);
 		}
 	}
-	fprintf (out, "</panel-menu>\n");
-	fclose (out);
-	panel_menu->changed = FALSE;
+	str = layout->str;
+	g_string_free (layout, FALSE);
+	return str;
+}
+
+void
+panel_applet_gconf_set_string_list (PanelApplet *applet,
+				    const char *key,
+				    GList *strings)
+{
+	GConfClient *client;
+	char *full = NULL;
+	GSList *list = NULL;
+	GList *iter = NULL;
+
+	g_return_if_fail (key != NULL);
+
+	client = gconf_client_get_default ();
+	g_return_if_fail (client != NULL);
+	g_print ("(set-string-list) key: %s\n", key);
+	for (iter = strings; iter; iter = iter->next) {
+		list = g_slist_append (list, iter->data);
+		g_print ("item: %s\n", iter->data);
+	}
+
+	full = panel_applet_gconf_get_full_key (applet, key);
+	gconf_client_set_list (client, full, GCONF_VALUE_STRING, list, NULL);
+	g_free (full);
+	g_slist_free (list);
+	g_object_unref (G_OBJECT (client));
+}
+
+GList *
+panel_applet_gconf_get_string_list (PanelApplet *applet,
+				    const char *key)
+{
+	GConfClient *client;
+	char *full = NULL;
+	GList *result = NULL;
+	GSList *list = NULL;
+	GSList *iter = NULL;
+
+	g_return_val_if_fail (key != NULL, NULL);
+
+	client = gconf_client_get_default ();
+	g_return_val_if_fail (client != NULL, NULL);
+
+	full = panel_applet_gconf_get_full_key (applet, key);
+	list = gconf_client_get_list (client, full, GCONF_VALUE_STRING, NULL);
+	g_free (full);
+
+	g_print ("(get-string-list) key: %s\n", key);
+	for (iter = list; iter; iter = iter->next) {
+		if (iter->data && strlen ((char *)iter->data) > 1) {
+			result = g_list_append (result, iter->data);
+			g_print ("item: %s\n", iter->data);
+		}
+	}
+	g_slist_free (list);
+	g_object_unref (G_OBJECT (client));
+	return result;
+}
+
+void
+_gconf_client_clean_dir (GConfClient *client, const gchar *dir)
+{
+	GSList *subdirs;
+	GSList *entries;
+	GSList *tmp;
+
+	subdirs = gconf_client_all_dirs (client, dir, NULL);
+
+	for (tmp = subdirs; tmp; tmp = tmp->next) {
+		gchar *s = tmp->data;
+		_gconf_client_clean_dir (client, s);
+		g_free (s);
+  	}
+	g_slist_free (subdirs);
+ 
+  	entries = gconf_client_all_entries (client, dir, NULL);
+
+	for (tmp = entries; tmp; tmp = tmp->next) {
+		GConfEntry *entry = tmp->data;
+		gconf_client_unset (client, gconf_entry_get_key (entry), NULL);
+		gconf_entry_free (entry);
+  	}
+	g_slist_free (entries);
+	gconf_client_unset (client, dir, NULL);
 }

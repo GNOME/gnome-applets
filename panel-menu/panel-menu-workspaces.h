@@ -29,8 +29,7 @@ PanelMenuEntry *panel_menu_workspaces_new (PanelMenu *parent);
 void panel_menu_workspaces_merge_ui (PanelMenuEntry *entry);
 void panel_menu_workspaces_destroy (PanelMenuEntry *entry);
 GtkWidget *panel_menu_workspaces_get_widget (PanelMenuEntry *entry);
-GtkWidget *panel_menu_workspaces_get_checkitem (PanelMenuEntry *entry);
-gchar *panel_menu_workspaces_dump_xml (PanelMenuEntry *entry);
+gchar *panel_menu_workspaces_save_config (PanelMenuEntry *entry);
 
 G_END_DECLS
 

@@ -1,18 +1,18 @@
 /*  panel-menu-common.c
  *
- *  This library is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU Library General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
+ * This library is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Library General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
  *
- *  This library is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU Library General Public License for more details.
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Library General Public License for more details.
  *
- *  You should have received a copy of the GNU Library General Public License
- *  along with this program; if not, write to the Free Software
- *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ * You should have received a copy of the GNU Library General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  */
 
 #include <libbonobo.h>
@@ -31,7 +31,7 @@
 #include <libgnomevfs/gnome-vfs-utils.h>
 
 #include "panel-menu-desktop-item.h"
-#include "panel-menu-options.h"
+#include "panel-menu-applications.h"
 #include "panel-menu-path.h"
 #include "panel-menu-links.h"
 #include "panel-menu-directory.h"
@@ -58,62 +58,34 @@ static GtkTargetEntry widget_drag_types[] = {
 static gint n_widget_drag_types =
 	sizeof (widget_drag_types) / sizeof (GtkTargetEntry);
 
-static void widget_dnd_drag_begin_cb (GtkWidget * widget,
-				      GdkDragContext * context);
-static void widget_dnd_set_data_cb (GtkWidget * widget,
-				    GdkDragContext * context,
-				    GtkSelectionData * selection_data,
+static void widget_dnd_drag_begin_cb (GtkWidget *widget,
+				      GdkDragContext *context);
+static void widget_dnd_set_data_cb (GtkWidget *widget,
+				    GdkDragContext *context,
+				    GtkSelectionData *selection_data,
 				    guint info, guint time,
-				    PanelMenuEntry * entry);
+				    PanelMenuEntry *entry);
 
-static void apps_menuitem_dnd_drag_begin_cb (GtkWidget * widget,
-					     GdkDragContext * context,
+static void apps_menuitem_dnd_drag_begin_cb (GtkWidget *widget,
+					     GdkDragContext *context,
 					     gpointer data);
-static void apps_menuitem_dnd_set_data_cb (GtkWidget * widget,
-					   GdkDragContext * context,
-					   GtkSelectionData * selection_data,
+static void apps_menuitem_dnd_set_data_cb (GtkWidget *widget,
+					   GdkDragContext *context,
+					   GtkSelectionData *selection_data,
 					   guint info, guint time,
 					   gpointer data);
 
-static gboolean check_dir_exists (gchar * path);
+static gboolean check_dir_exists (gchar *path);
 
 void
-panel_menu_common_initialize ()
-{
-	gchar *path = NULL;
-
-	if (!gnome_vfs_initialized ())
-		gnome_vfs_init ();
-	path = g_strdup_printf ("%s/.gnome2/panel-menu", g_get_home_dir ());
-	if (!check_dir_exists (path)) {
-		gnome_vfs_make_directory (path,
-					  GNOME_VFS_PERM_USER_ALL |
-					  GNOME_VFS_PERM_GROUP_ALL |
-					  GNOME_VFS_PERM_OTHER_READ |
-					  GNOME_VFS_PERM_OTHER_EXEC);
-	}
-	g_free (path);
-}
-
-void
-panel_menu_common_set_changed (PanelMenu * panel_menu)
-{
-	panel_menu->changed = TRUE;
-	if (panel_menu->auto_save_config) {
-		panel_menu_config_save_xml (panel_menu);
-	}
-}
-
-void
-panel_menu_common_widget_dnd_init (PanelMenuEntry * entry)
+panel_menu_common_widget_dnd_init (PanelMenuEntry *entry)
 {
 	GtkWidget *menuitem;
 
 	menuitem = panel_menu_common_get_entry_menuitem (entry);
 	gtk_drag_source_set (menuitem, GDK_BUTTON2_MASK, widget_drag_types,
 			     n_widget_drag_types,
-			     GDK_ACTION_COPY | GDK_ACTION_LINK |
-			     GDK_ACTION_ASK);
+			     GDK_ACTION_MOVE);
 	g_signal_connect (G_OBJECT (menuitem), "drag_begin",
 			  G_CALLBACK (widget_dnd_drag_begin_cb), NULL);
 	g_signal_connect (G_OBJECT (menuitem), "drag_data_get",
@@ -121,7 +93,7 @@ panel_menu_common_widget_dnd_init (PanelMenuEntry * entry)
 }
 
 static void
-widget_dnd_drag_begin_cb (GtkWidget * widget, GdkDragContext * context)
+widget_dnd_drag_begin_cb (GtkWidget *widget, GdkDragContext *context)
 {
 	GtkWidget *window;
 	GtkWidget *button;
@@ -131,14 +103,14 @@ widget_dnd_drag_begin_cb (GtkWidget * widget, GdkDragContext * context)
 	if (GTK_IS_IMAGE_MENU_ITEM (widget)) {
 		if ((image =
 		     gtk_image_menu_item_get_image (GTK_IMAGE_MENU_ITEM
-						    (widget)))
+						   (widget)))
 		    && (pixbuf = gtk_image_get_pixbuf (GTK_IMAGE (image))))
 			gtk_drag_set_icon_pixbuf (context, pixbuf, -5, -5);
 	} else {
 		window = gtk_window_new (GTK_WINDOW_POPUP);
 		button = gtk_button_new_with_label (gtk_label_get_text
 						    (GTK_LABEL
-						     (GTK_BIN (widget)->
+						    (GTK_BIN (widget)->
 						      child)));
 		gtk_container_add (GTK_CONTAINER (window), button);
 		gtk_widget_show_all (button);
@@ -147,13 +119,12 @@ widget_dnd_drag_begin_cb (GtkWidget * widget, GdkDragContext * context)
 }
 
 static void
-widget_dnd_set_data_cb (GtkWidget * widget, GdkDragContext * context,
-			GtkSelectionData * selection_data, guint info,
-			guint time, PanelMenuEntry * entry)
+widget_dnd_set_data_cb (GtkWidget *widget, GdkDragContext *context,
+			GtkSelectionData *selection_data, guint info,
+			guint time, PanelMenuEntry *entry)
 {
 	PanelMenu *panel_menu;
 	GtkWidget *menuitem;
-	GtkWidget *checkitem;
 	gint position;
 
 	if (info == TARGET_PANEL_MENU_ENTRY) {
@@ -163,16 +134,8 @@ widget_dnd_set_data_cb (GtkWidget * widget, GdkDragContext * context,
 		g_object_ref (G_OBJECT (menuitem));
 		gtk_container_remove (GTK_CONTAINER (menuitem->parent),
 				      menuitem);
-		if (entry->type != PANEL_MENU_TYPE_OPTIONS) {
-			checkitem =
-				panel_menu_common_get_entry_checkitem (entry);
-			g_object_ref (G_OBJECT (checkitem));
-			gtk_container_remove (GTK_CONTAINER (checkitem->parent),
-					      checkitem);
-		} else {
-			g_object_set_data (G_OBJECT (menuitem), "old-position",
-					   GINT_TO_POINTER (position));
-		}
+		g_object_set_data (G_OBJECT (menuitem), "old-position",
+				   GINT_TO_POINTER (position));
 		panel_menu->entries =
 			g_list_remove (panel_menu->entries, entry);
 		gtk_selection_data_set (selection_data, selection_data->target,
@@ -185,12 +148,10 @@ widget_dnd_set_data_cb (GtkWidget * widget, GdkDragContext * context,
 }
 
 void
-panel_menu_common_apps_menuitem_dnd_init (GtkWidget * menuitem)
+panel_menu_common_apps_menuitem_dnd_init (GtkWidget *menuitem)
 {
 	gtk_drag_source_set (menuitem, GDK_BUTTON1_MASK, drag_types,
-			     n_drag_types,
-			     GDK_ACTION_COPY | GDK_ACTION_LINK |
-			     GDK_ACTION_ASK);
+			     n_drag_types, GDK_ACTION_COPY | GDK_ACTION_LINK);
 	g_signal_connect (G_OBJECT (menuitem), "drag_begin",
 			  G_CALLBACK (apps_menuitem_dnd_drag_begin_cb), NULL);
 	g_signal_connect (G_OBJECT (menuitem), "drag_data_get",
@@ -198,7 +159,7 @@ panel_menu_common_apps_menuitem_dnd_init (GtkWidget * menuitem)
 }
 
 static void
-apps_menuitem_dnd_drag_begin_cb (GtkWidget * widget, GdkDragContext * context,
+apps_menuitem_dnd_drag_begin_cb (GtkWidget *widget, GdkDragContext *context,
 				 gpointer data)
 {
 	GtkWidget *image;
@@ -214,8 +175,8 @@ apps_menuitem_dnd_drag_begin_cb (GtkWidget * widget, GdkDragContext * context,
 }
 
 static void
-apps_menuitem_dnd_set_data_cb (GtkWidget * widget, GdkDragContext * context,
-			       GtkSelectionData * selection_data, guint info,
+apps_menuitem_dnd_set_data_cb (GtkWidget *widget, GdkDragContext *context,
+			       GtkSelectionData *selection_data, guint info,
 			       guint time, gpointer data)
 {
 	gchar *text = NULL;
@@ -232,7 +193,7 @@ apps_menuitem_dnd_set_data_cb (GtkWidget * widget, GdkDragContext * context,
 }
 
 void
-panel_menu_common_activate_apps_menuitem (GtkWidget * menuitem, gpointer data)
+panel_menu_common_activate_apps_menuitem (GtkWidget *menuitem, gpointer data)
 {
 	gchar *exec_string;
 	gchar **argv;
@@ -247,7 +208,7 @@ panel_menu_common_activate_apps_menuitem (GtkWidget * menuitem, gpointer data)
 }
 
 void
-panel_menu_common_destroy_apps_menuitem (GtkWidget * menuitem, gpointer data)
+panel_menu_common_destroy_apps_menuitem (GtkWidget *menuitem, gpointer data)
 {
 	data = g_object_get_data (G_OBJECT (menuitem), "uri-path");
 	if (data)
@@ -258,8 +219,8 @@ panel_menu_common_destroy_apps_menuitem (GtkWidget * menuitem, gpointer data)
 }
 
 void
-panel_menu_common_set_icon_scaled_from_file (GtkMenuItem * menuitem,
-					     gchar * file)
+panel_menu_common_set_icon_scaled_from_file (GtkMenuItem *menuitem,
+					     gchar *file)
 {
 	GdkPixbuf *pixbuf;
 	GtkWidget *image;
@@ -277,9 +238,9 @@ panel_menu_common_set_icon_scaled_from_file (GtkMenuItem * menuitem,
 			greatest = pix_x > pix_y ? pix_x : pix_y;
 			pixbuf = gdk_pixbuf_scale_simple (pixbuf,
 							  (ICON_SIZE /
-							   greatest) * pix_x,
+							   greatest) *pix_x,
 							  (ICON_SIZE /
-							   greatest) * pix_y,
+							   greatest) *pix_y,
 							  GDK_INTERP_BILINEAR);
 		}
 		image = gtk_image_new_from_pixbuf (pixbuf);
@@ -289,18 +250,8 @@ panel_menu_common_set_icon_scaled_from_file (GtkMenuItem * menuitem,
 	}
 }
 
-void
-panel_menu_common_set_visibility (GtkCheckMenuItem * checkitem,
-				  GtkWidget * target)
-{
-	if (gtk_check_menu_item_get_active (checkitem))
-		gtk_widget_show (target);
-	else
-		gtk_widget_hide (target);
-}
-
 gchar *
-panel_menu_common_build_full_path (const gchar * path, const gchar * selection)
+panel_menu_common_build_full_path (const gchar *path, const gchar *selection)
 {
 	GnomeVFSURI *uri = NULL;
 	GnomeVFSURI *full_uri = NULL;
@@ -324,7 +275,7 @@ panel_menu_common_build_full_path (const gchar * path, const gchar * selection)
 }
 
 GtkWidget *
-panel_menu_common_menuitem_from_path (gchar * uri, GtkMenuShell * parent,
+panel_menu_common_menuitem_from_path (gchar *uri, GtkMenuShell *parent,
 				      gboolean append)
 {
 	PanelMenuDesktopItem *item;
@@ -385,8 +336,8 @@ panel_menu_common_menuitem_from_path (gchar * uri, GtkMenuShell * parent,
 }
 
 GtkWidget *
-panel_menu_common_menu_from_path (gchar * name, gchar * subpath,
-				  GtkMenuShell * parent, gboolean append)
+panel_menu_common_menu_from_path (gchar *name, gchar *subpath,
+				  GtkMenuShell *parent, gboolean append)
 {
 	GtkWidget *menuitem;
 	GtkWidget *submenu;
@@ -426,29 +377,121 @@ panel_menu_common_menu_from_path (gchar * name, gchar * subpath,
 }
 
 PanelMenuEntry *
-panel_menu_common_find_options (PanelMenu * panel_menu)
+panel_menu_common_build_entry (PanelMenu *panel_menu, const gchar *item)
+{
+	PanelMenuEntry *entry = NULL;
+	gint id;
+
+	if (!strcmp (item, "applications")) {
+		entry = panel_menu_applications_new (panel_menu);
+		panel_menu->has_applications = TRUE;
+	} else if (!strncmp (item, "path", 4)) {
+		if (sscanf (item, "path%d", &id))
+			entry = panel_menu_path_new_with_id (panel_menu, id);
+	} else if (!strncmp (item, "links", 5)) {
+		if (sscanf (item, "links%d", &id))
+			entry = panel_menu_links_new_with_id (panel_menu, id);
+	} else if (!strncmp (item, "directory", 9)) {
+		if (sscanf (item, "directory%d", &id))
+			entry = panel_menu_directory_new_with_id (panel_menu, id);
+	} else if (!strncmp (item, "documents", 9)) {
+		if (sscanf (item, "documents%d", &id))
+			entry = panel_menu_documents_new_with_id (panel_menu, id);
+	} else if (!strcmp (item, "actions")) {
+		entry = panel_menu_actions_new (panel_menu);
+		panel_menu->has_actions = TRUE;
+	} else if (!strcmp (item, "windows")) {
+		entry = panel_menu_windows_new (panel_menu);
+		panel_menu->has_windows = TRUE;
+	} else if (!strcmp (item, "workspaces")) {
+		entry = panel_menu_workspaces_new (panel_menu);
+		panel_menu->has_workspaces = TRUE;
+	}
+	return entry;
+}
+
+PanelMenuEntry *
+panel_menu_common_find_applications (PanelMenu *panel_menu)
 {
 	PanelMenuEntry *entry = NULL;
 	GList *cur = NULL;
+	gboolean found = FALSE;
 
 	for (cur = panel_menu->entries; cur; cur = cur->next) {
 		entry = (PanelMenuEntry *) cur->data;
-		if (entry->type == PANEL_MENU_TYPE_OPTIONS)
+		if (entry->type == PANEL_MENU_TYPE_APPLICATIONS) {
+			found = TRUE;
 			break;
+		}
 	}
-	return (entry);
+	if (!found) entry = NULL;
+	return entry;
+}
+
+PanelMenuEntry *
+panel_menu_common_find_actions (PanelMenu *panel_menu)
+{
+	PanelMenuEntry *entry = NULL;
+	GList *cur = NULL;
+	gboolean found = FALSE;
+
+	for (cur = panel_menu->entries; cur; cur = cur->next) {
+		entry = (PanelMenuEntry *) cur->data;
+		if (entry->type == PANEL_MENU_TYPE_ACTIONS) {
+			found = TRUE;
+			break;
+		}
+	}
+	if (!found) entry = NULL;
+	return entry;
+}
+
+PanelMenuEntry *
+panel_menu_common_find_windows (PanelMenu *panel_menu)
+{
+	PanelMenuEntry *entry = NULL;
+	GList *cur = NULL;
+	gboolean found = FALSE;
+
+	for (cur = panel_menu->entries; cur; cur = cur->next) {
+		entry = (PanelMenuEntry *) cur->data;
+		if (entry->type == PANEL_MENU_TYPE_WINDOWS) {
+			found = TRUE;
+			break;
+		}
+	}
+	if (!found) entry = NULL;
+	return entry;
+}
+
+PanelMenuEntry *
+panel_menu_common_find_workspaces (PanelMenu *panel_menu)
+{
+	PanelMenuEntry *entry = NULL;
+	GList *cur = NULL;
+	gboolean found = FALSE;
+
+	for (cur = panel_menu->entries; cur; cur = cur->next) {
+		entry = (PanelMenuEntry *) cur->data;
+		if (entry->type == PANEL_MENU_TYPE_WORKSPACES) {
+			found = TRUE;
+			break;
+		}
+	}
+	if (!found) entry = NULL;
+	return entry;
 }
 
 GtkWidget *
-panel_menu_common_get_entry_menuitem (PanelMenuEntry * entry)
+panel_menu_common_get_entry_menuitem (PanelMenuEntry *entry)
 {
 	GtkWidget *menuitem = NULL;
 
 	switch (entry->type) {
-	case PANEL_MENU_TYPE_OPTIONS:
-		menuitem = panel_menu_options_get_widget (entry);
+	case PANEL_MENU_TYPE_APPLICATIONS:
+		menuitem = panel_menu_applications_get_widget (entry);
 		break;
-	case PANEL_MENU_TYPE_MENU_PATH:
+	case PANEL_MENU_TYPE_PATH:
 		menuitem = panel_menu_path_get_widget (entry);
 		break;
 	case PANEL_MENU_TYPE_LINKS:
@@ -475,47 +518,14 @@ panel_menu_common_get_entry_menuitem (PanelMenuEntry * entry)
 	return (menuitem);
 }
 
-GtkWidget *
-panel_menu_common_get_entry_checkitem (PanelMenuEntry * entry)
-{
-	GtkWidget *checkitem = NULL;
-
-	switch (entry->type) {
-	case PANEL_MENU_TYPE_MENU_PATH:
-		checkitem = panel_menu_path_get_checkitem (entry);
-		break;
-	case PANEL_MENU_TYPE_LINKS:
-		checkitem = panel_menu_links_get_checkitem (entry);
-		break;
-	case PANEL_MENU_TYPE_DIRECTORY:
-		checkitem = panel_menu_directory_get_checkitem (entry);
-		break;
-	case PANEL_MENU_TYPE_DOCUMENTS:
-		checkitem = panel_menu_documents_get_checkitem (entry);
-		break;
-	case PANEL_MENU_TYPE_ACTIONS:
-		checkitem = panel_menu_actions_get_checkitem (entry);
-		break;
-	case PANEL_MENU_TYPE_WINDOWS:
-		checkitem = panel_menu_windows_get_checkitem (entry);
-		break;
-	case PANEL_MENU_TYPE_WORKSPACES:
-		checkitem = panel_menu_workspaces_get_checkitem (entry);
-		break;
-	default:
-		break;
-	}
-	return (checkitem);
-}
-
 void
-panel_menu_common_call_entry_destroy (PanelMenuEntry * entry)
+panel_menu_common_call_entry_destroy (PanelMenuEntry *entry)
 {
 	switch (entry->type) {
-	case PANEL_MENU_TYPE_OPTIONS:
-		panel_menu_options_destroy (entry);
+	case PANEL_MENU_TYPE_APPLICATIONS:
+		panel_menu_applications_destroy (entry);
 		break;
-	case PANEL_MENU_TYPE_MENU_PATH:
+	case PANEL_MENU_TYPE_PATH:
 		panel_menu_path_destroy (entry);
 		break;
 	case PANEL_MENU_TYPE_LINKS:
@@ -541,33 +551,70 @@ panel_menu_common_call_entry_destroy (PanelMenuEntry * entry)
 	}
 }
 
-static gboolean
-check_dir_exists (gchar * path)
+gchar *
+panel_menu_common_call_entry_save_config (PanelMenuEntry *entry)
 {
-	GnomeVFSResult result;
-	GnomeVFSFileInfo *finfo;
-	gboolean exists = FALSE;
-
-	if (!path)
-		return (FALSE);
-	finfo = gnome_vfs_file_info_new ();
-	result = gnome_vfs_get_file_info (path, finfo,
-					  GNOME_VFS_FILE_INFO_DEFAULT);
-	if (result == GNOME_VFS_OK) {
-		gnome_vfs_file_info_ref (finfo);
-		if (finfo->type == GNOME_VFS_FILE_TYPE_DIRECTORY) {
-			exists = TRUE;
-		}
-		gnome_vfs_file_info_unref (finfo);
+	gchar *retval = NULL;
+	switch (entry->type) {
+	case PANEL_MENU_TYPE_APPLICATIONS:
+		retval = panel_menu_applications_save_config (entry);
+		break;
+	case PANEL_MENU_TYPE_PATH:
+		retval = panel_menu_path_save_config (entry);
+		break;
+	case PANEL_MENU_TYPE_LINKS:
+		retval = panel_menu_links_save_config (entry);
+		break;
+	case PANEL_MENU_TYPE_DIRECTORY:
+		retval = panel_menu_directory_save_config (entry);
+		break;
+	case PANEL_MENU_TYPE_DOCUMENTS:
+		retval = panel_menu_documents_save_config (entry);
+		break;
+	case PANEL_MENU_TYPE_ACTIONS:
+		retval = panel_menu_actions_save_config (entry);
+		break;
+	case PANEL_MENU_TYPE_WINDOWS:
+		retval = panel_menu_windows_save_config (entry);
+		break;
+	case PANEL_MENU_TYPE_WORKSPACES:
+		retval = panel_menu_workspaces_save_config (entry);
+		break;
+	default:
+		break;
 	}
-	return (exists);
+	return retval;
 }
 
 void
-panel_menu_common_merge_entry_ui (PanelMenuEntry * entry)
+panel_menu_common_call_entry_remove_config (PanelMenuEntry *entry)
 {
 	switch (entry->type) {
-	case PANEL_MENU_TYPE_MENU_PATH:
+	case PANEL_MENU_TYPE_PATH:
+		panel_menu_path_remove_config (entry);
+		break;
+	case PANEL_MENU_TYPE_LINKS:
+		panel_menu_links_remove_config (entry);
+		break;
+	case PANEL_MENU_TYPE_DIRECTORY:
+		panel_menu_directory_remove_config (entry);
+		break;
+	case PANEL_MENU_TYPE_DOCUMENTS:
+		panel_menu_documents_remove_config (entry);
+		break;
+	default:
+		break;
+	}
+}
+
+void
+panel_menu_common_merge_entry_ui (PanelMenuEntry *entry)
+{
+	switch (entry->type) {
+	case PANEL_MENU_TYPE_APPLICATIONS:
+		panel_menu_applications_merge_ui (entry);
+		break;
+	case PANEL_MENU_TYPE_PATH:
 		panel_menu_path_merge_ui (entry);
 		break;
 	case PANEL_MENU_TYPE_LINKS:
@@ -593,6 +640,7 @@ panel_menu_common_merge_entry_ui (PanelMenuEntry * entry)
 	}
 }
 
+/* Called from right-click context menu */
 void
 panel_menu_common_remove_entry (GtkWidget *widget, PanelMenuEntry *entry, const char *verb)
 {
@@ -601,8 +649,26 @@ panel_menu_common_remove_entry (GtkWidget *widget, PanelMenuEntry *entry, const 
 	panel_menu = entry->parent;
 	g_return_if_fail (panel_menu != NULL);
 
+	switch (entry->type) {
+	case PANEL_MENU_TYPE_APPLICATIONS:
+		panel_menu->has_applications = FALSE;
+		break;
+	case PANEL_MENU_TYPE_ACTIONS:
+		panel_menu->has_actions = FALSE;
+		break;
+	case PANEL_MENU_TYPE_WINDOWS:
+		panel_menu->has_windows = FALSE;
+		break;
+	case PANEL_MENU_TYPE_WORKSPACES:
+		panel_menu->has_workspaces = FALSE;
+		break;
+	default:
+		break;
+	}
+	panel_menu_common_call_entry_remove_config (entry);
 	panel_menu->entries = g_list_remove (panel_menu->entries, entry);
 	panel_menu_common_call_entry_destroy (entry);
+	panel_menu_config_save_prefs (panel_menu);
 }
 
 void
@@ -616,14 +682,12 @@ panel_menu_common_demerge_ui (PanelApplet *applet)
 		bonobo_ui_component_remove_verb (component, "Remove");
 		bonobo_ui_component_remove_verb (component, "Action");
 		bonobo_ui_component_rm (component, "/popups/button3/ChildMerge/ChildItem", NULL);
-	} else {
-		g_print ("Unable to remove verbs and xml, they do not exist.\n");
 	}
 }
 
 GtkWidget *
-panel_menu_common_single_entry_dialog_new (gchar * title, gchar * label,
-					   gchar * value, GtkWidget ** entry)
+panel_menu_common_single_entry_dialog_new (gchar *title, gchar *label,
+					   gchar *value, GtkWidget ** entry)
 {
 	GtkWidget *dialog;
 	GtkWidget *box;

@@ -38,7 +38,7 @@
 #include <libgnomevfs/gnome-vfs-utils.h>
 
 #include "panel-menu-common.h"
-#include "panel-menu-options.h"
+#include "panel-menu-applications.h"
 #include "panel-menu-path.h"
 #include "panel-menu-links.h"
 #include "panel-menu-directory.h"
@@ -59,10 +59,6 @@ static void applet_change_background (PanelApplet *applet,
 				      PanelAppletBackgroundType type,
 				      GdkColor *color, GdkPixmap *pixmap,
 				      PanelMenu *panel_menu);
-static void applet_size_allocate (GtkWidget *widget,
-				  GtkAllocation *allocation,
-				  PanelMenu *panel_menu);
-static void panel_menu_setup_background (PanelMenu *panel_menu);
 static void panel_menu_background_restore (PanelMenu *panel_menu);
 
 static gboolean panel_menu_id_from_key (gchar *key, gchar **profile,
@@ -83,10 +79,8 @@ static void panel_menu_drag_data_received (GtkWidget *widget,
 					   guint time, PanelMenu *panel_menu);
 static gboolean panel_menu_pass_drop (PanelMenu *panel_menu,
 				      GnomeVFSURI *uri);
-static gboolean panel_menu_check_entry_drop (PanelMenu *panel_menu,
-					     PanelMenuEntry *entry);
-static void panel_menu_accept_entry_drop (PanelMenu *panel_menu,
-					  PanelMenuEntry *entry);
+static gboolean panel_menu_accept_entry_drop (PanelMenu *panel_menu,
+					      PanelMenuEntry *entry);
 
 static gint applet_button_press_cb (GtkWidget *widget, GdkEventButton *event,
 				    PanelMenu *panel_menu);
@@ -116,8 +110,6 @@ static gint n_drop_types = sizeof (drop_types) / sizeof (GtkTargetEntry);
 static const BonoboUIVerb applet_menu_verbs[] = {
 	BONOBO_UI_UNSAFE_VERB ("Add", applet_add_cb),
 	BONOBO_UI_UNSAFE_VERB ("Properties", applet_properties_cb),
-	BONOBO_UI_UNSAFE_VERB ("Load", applet_load_config_cb),
-	BONOBO_UI_UNSAFE_VERB ("Save", applet_save_config_cb),
 	BONOBO_UI_UNSAFE_VERB ("Help", applet_help_cb),
 	BONOBO_UI_UNSAFE_VERB ("About", applet_about_cb),
 	BONOBO_UI_VERB_END
@@ -130,37 +122,12 @@ static const char applet_menu_xml[] =
 	"             pixtype=\"stock\" pixname=\"gtk-add\"/>\n"
 	"   <menuitem name=\"Properties Item\" verb=\"Properties\" _label=\"Properties ...\"\n"
 	"             pixtype=\"stock\" pixname=\"gtk-properties\"/>\n"
-	"   <menuitem name=\"Load Configuration\" verb=\"Load\" _label=\"Reload Layout\"\n"
-	"             pixtype=\"stock\" pixname=\"gtk-save\"/>\n"
-	"   <menuitem name=\"Save Configuration\" verb=\"Save\" _label=\"Save Layout\"\n"
-	"             pixtype=\"stock\" pixname=\"gtk-save\"/>\n"
 	"   <menuitem name=\"Help Item\" verb=\"Help\" _label=\"Help\"\n"
 	"             pixtype=\"stock\" pixname=\"gtk-help\"/>\n"
 	"   <menuitem name=\"About Item\" verb=\"About\" _label=\"About ...\"\n"
 	"             pixtype=\"stock\" pixname=\"gnome-stock-about\"/>\n"
 	"</popup>\n";
 
-gchar *default_config =
-	"<panel-menu>\n"
-	"    <options-item>\n"
-	"    </options-item>\n"
-	"    <path-item>\n"
-	"        <base-path>applications:</base-path>\n"
-	"        <visible>true</visible>\n"
-	"    </path-item>\n"
-	"    <actions-item>\n"
-	"        <name>Actions</name>\n"
-	"        <action>action:show-desktop</action>\n"
-	"        <action>action:run</action>\n"
-	"        <visible>true</visible>\n"
-	"    </actions-item>\n"
-	"    <windows-item>\n"
-	"        <visible>true</visible>\n"
-	"    </windows-item>\n"
-	"    <workspaces-item>\n"
-	"        <visible>true</visible>\n"
-	"    </workspaces-item>\n"
-	"</panel-menu>\n";
 
 PANEL_APPLET_BONOBO_SHLIB_FACTORY ("OAFIID:GNOME_PanelMenuApplet_Factory",
 				   "PanelMenu-Applet-Factory",
@@ -171,19 +138,16 @@ applet_factory (PanelApplet *applet, const gchar *iid, gpointer data)
 {
 	gboolean retval = FALSE;
 
-	panel_menu_common_initialize ();
-
 	if (!strcmp (iid, "OAFIID:GNOME_PanelMenuApplet"))
 		retval = panel_menu_construct_applet (applet);
 
-	return (retval);
+	return retval;
 }
 
 gboolean
 panel_menu_construct_applet (PanelApplet *applet)
 {
 	PanelMenu *panel_menu;
-	PanelMenuEntry *options;
 	PanelMenuEntry *entry;
 	gchar *key;
 
@@ -204,9 +168,11 @@ panel_menu_construct_applet (PanelApplet *applet)
 	panel_menu_config_load_prefs (panel_menu);
 
 	panel_menu->menubar = gtk_menu_bar_new ();
+	panel_menu_config_load_layout (panel_menu);
+
 	gtk_drag_dest_set (panel_menu->menubar, GTK_DEST_DEFAULT_ALL,
 			   drop_types, n_drop_types,
-			   GDK_ACTION_COPY | GDK_ACTION_LINK | GDK_ACTION_ASK);
+			   GDK_ACTION_COPY | GDK_ACTION_LINK | GDK_ACTION_MOVE);
 	g_signal_connect (G_OBJECT (panel_menu->menubar), "drag_motion",
 			  G_CALLBACK (panel_menu_drag_motion), panel_menu);
 	g_signal_connect (G_OBJECT (panel_menu->menubar), "drag_leave",
@@ -214,26 +180,8 @@ panel_menu_construct_applet (PanelApplet *applet)
 	g_signal_connect (G_OBJECT (panel_menu->menubar), "drag_data_received",
 			  G_CALLBACK (panel_menu_drag_data_received),
 			  panel_menu);
-
-	gtk_container_add (GTK_CONTAINER (panel_menu->applet),
-			   panel_menu->menubar);
-
-	if (!panel_menu_config_load_xml (panel_menu)) {
-		gchar *xml;
-		xml = g_strdup_printf (default_config, PREFIX);
-
-		panel_menu_config_load_xml_string (panel_menu, default_config,
-						   strlen (default_config));
-		g_free (xml);
-	}
-
-	gtk_widget_show (panel_menu->menubar);
-	gtk_widget_show (GTK_WIDGET (panel_menu->applet));
-
 	g_signal_connect (G_OBJECT (panel_menu->menubar), "button_press_event",
 			  G_CALLBACK (applet_button_press_cb), panel_menu);
-	g_signal_connect (G_OBJECT (panel_menu->menubar), "size_allocate",
-			  G_CALLBACK (applet_size_allocate), panel_menu);
 	g_signal_connect (G_OBJECT (panel_menu->applet), "destroy",
 			  G_CALLBACK (applet_destroy_cb), panel_menu);
 	g_signal_connect (G_OBJECT (panel_menu->applet), "change_background",
@@ -247,7 +195,11 @@ panel_menu_construct_applet (PanelApplet *applet)
 	panel_applet_setup_menu (panel_menu->applet, applet_menu_xml,
 				 applet_menu_verbs, panel_menu);
 
-	return (TRUE);
+	gtk_container_add (GTK_CONTAINER (panel_menu->applet),
+			   panel_menu->menubar);
+	gtk_widget_show (panel_menu->menubar);
+	gtk_widget_show (GTK_WIDGET (panel_menu->applet));
+	return TRUE;
 }
 
 static void
@@ -257,16 +209,14 @@ applet_change_background (PanelApplet *applet,
 {
 	g_print ("(change-background) called.\n");
 	panel_menu->bg_type = type;
+	panel_menu_background_restore (panel_menu);
 	switch (type) {
 	case PANEL_NO_BACKGROUND:
-		if (panel_menu->bg_pixmap) {
-			g_object_unref (G_OBJECT (panel_menu->bg_pixmap));
-			panel_menu->bg_pixmap = NULL;
-		}
 		break;
 	case PANEL_COLOR_BACKGROUND:
 		if (color)
-			panel_menu->bg_color = *color;
+			gtk_widget_modify_bg (panel_menu->menubar, GTK_STATE_NORMAL,
+					      color);
 		break;
 	case PANEL_PIXMAP_BACKGROUND:
 		if (panel_menu->bg_pixmap) {
@@ -274,56 +224,11 @@ applet_change_background (PanelApplet *applet,
 			panel_menu->bg_pixmap = NULL;
 		}
 		if (pixmap) {
+			GtkStyle *new_style;
+
 			panel_menu->bg_pixmap = pixmap;
 			g_object_ref (G_OBJECT (panel_menu->bg_pixmap));
-		}
-		break;
-	default:
-		break;
-	}
-	if (GTK_WIDGET_MAPPED (panel_menu->menubar)
-	    && panel_menu->menubar->allocation.width > 1)
-		panel_menu_setup_background (panel_menu);
-}
-
-static void
-applet_size_allocate (GtkWidget *widget, GtkAllocation *allocation,
-		      PanelMenu *panel_menu)
-{
-/*
-	g_print ("(menubar-size-allocate) called\n");
-	if (GTK_WIDGET_MAPPED (widget) && allocation->width > 1)
-		panel_menu_setup_background (panel_menu);
-*/
-}
-
-static void
-panel_menu_setup_background (PanelMenu *panel_menu)
-{
-	GdkPixmap *bgpixmap;
-	GdkColor *color;
-
-	g_return_if_fail (GTK_WIDGET_MAPPED (panel_menu->menubar));
-
-	g_print ("(panel-menu-setup-background) called\n");
-	switch (panel_menu->bg_type) {
-	case PANEL_NO_BACKGROUND:
-		panel_menu_background_restore (panel_menu);
-		break;
-	case PANEL_COLOR_BACKGROUND:
-		panel_menu_background_restore (panel_menu);
-		gtk_widget_modify_bg (panel_menu->menubar, GTK_STATE_NORMAL,
-				      &panel_menu->bg_color);
-		break;
-        case PANEL_PIXMAP_BACKGROUND:
-		if(panel_menu->bg_pixmap) {
-			GtkStyle *new_style;
 			
-			gtk_widget_ensure_style(panel_menu->menubar);
-			if(!panel_menu->orig_style && panel_menu->menubar->style) {
-				panel_menu->orig_style = panel_menu->menubar->style;
-				gtk_style_ref(panel_menu->orig_style);
-			}
 			new_style = gtk_style_copy(panel_menu->menubar->style);
 			if(new_style->bg_pixmap[GTK_STATE_NORMAL])
 				g_object_unref(G_OBJECT(new_style->bg_pixmap[GTK_STATE_NORMAL]));                
@@ -340,23 +245,16 @@ panel_menu_setup_background (PanelMenu *panel_menu)
 static void
 panel_menu_background_restore (PanelMenu *panel_menu)
 {
+	GtkRcStyle *rc_style;
 	g_return_if_fail (panel_menu != NULL);
 
-	if (panel_menu->orig_style) {
-		gtk_widget_set_style (panel_menu->menubar,
-				      panel_menu->orig_style);
-		gtk_style_unref (panel_menu->orig_style);
-		panel_menu->orig_style = NULL;
-	}
 	if (panel_menu->bg_pixmap) {
 		g_object_unref (G_OBJECT (panel_menu->bg_pixmap));
 		panel_menu->bg_pixmap = NULL;
 	}
-	if (panel_menu->orig_bg_set) {
-		gtk_widget_modify_bg (panel_menu->menubar, GTK_STATE_NORMAL,
-				      &panel_menu->orig_bg_color);
-		panel_menu->orig_bg_set = FALSE;
-	}
+
+	rc_style = gtk_rc_style_new ();
+	gtk_widget_modify_style (panel_menu->menubar, rc_style);
 }
 
 static gboolean
@@ -397,7 +295,7 @@ panel_menu_id_from_key (gchar *key, gchar **profile, gchar **applet)
 		retval = TRUE;
 	}
 	g_free (key);
-	return (retval);
+	return retval;
 }
 
 static gboolean
@@ -441,7 +339,7 @@ panel_menu_drag_motion (GtkWidget *widget, GdkDragContext *context,
 						    target->allocation.width,
 						    target->allocation.height);
 	}
-	return (FALSE);
+	return FALSE;
 }
 
 static void
@@ -473,18 +371,10 @@ panel_menu_drag_data_received (GtkWidget *widget, GdkDragContext *context,
 				panel_menu_accept_drop (panel_menu, uri);
 			}
 		}
-		if (!uris && selection_data->data) {
-			entry = g_list_nth_data (panel_menu->entries,
-						 panel_menu->position);
-			if (entry && entry->type == PANEL_MENU_TYPE_ACTIONS)
-				panel_menu_actions_accept_drop (entry, (gchar *)
-								selection_data->
-								data);
-		}
 		gnome_vfs_uri_list_free (uris);
 	} else if (info == TARGET_PANEL_MENU_ENTRY) {
 		entry = *((PanelMenuEntry **) selection_data->data);
-		if (entry && panel_menu_check_entry_drop (panel_menu, entry)) {
+		if (entry) {
 			panel_menu_accept_entry_drop (panel_menu, entry);
 		}
 	}
@@ -500,10 +390,10 @@ panel_menu_pass_drop (PanelMenu *panel_menu, GnomeVFSURI *uri)
 
 	entry = g_list_nth_data (panel_menu->entries, panel_menu->position);
 	if (!entry)
-		return (FALSE);
+		return FALSE;
 
 	switch (entry->type) {
-	case PANEL_MENU_TYPE_MENU_PATH:
+	case PANEL_MENU_TYPE_PATH:
 		retval = panel_menu_path_accept_drop (entry, uri);
 		break;
 	case PANEL_MENU_TYPE_LINKS:
@@ -518,14 +408,13 @@ panel_menu_pass_drop (PanelMenu *panel_menu, GnomeVFSURI *uri)
 	default:
 		break;
 	}
-	return (retval);
+	return retval;
 }
 
 gboolean
 panel_menu_accept_drop (PanelMenu *panel_menu, GnomeVFSURI *uri)
 {
 	PanelMenuEntry *entry;
-	PanelMenuEntry *options;
 	gchar *fileuri;
 	GnomeVFSURI *pathuri;
 	gint insert;
@@ -545,34 +434,57 @@ panel_menu_accept_drop (PanelMenu *panel_menu, GnomeVFSURI *uri)
 			gnome_vfs_uri_unref (pathuri);
 		}
 		insert = panel_menu->position;
-		options = panel_menu_common_find_options (panel_menu);
 		entry = panel_menu_path_new (panel_menu, fileuri);
 		panel_menu->entries =
 			g_list_insert (panel_menu->entries, (gpointer) entry,
 				       insert);
-		panel_menu_options_insert_option (options,
-						  panel_menu_path_get_checkitem
-						  (entry), insert);
 		gtk_menu_shell_insert (GTK_MENU_SHELL (panel_menu->menubar),
 				       panel_menu_path_get_widget (entry),
 				       insert);
+		panel_menu_config_save_prefs (panel_menu);
 		retval = TRUE;
-		panel_menu_common_set_changed (panel_menu);
 	}
 	g_free (fileuri);
-	return (retval);
+	return retval;
 }
 
-/* Check if we can accept this drop */
 static gboolean
-panel_menu_check_entry_drop (PanelMenu *panel_menu, PanelMenuEntry *entry)
+panel_menu_accept_entry_drop (PanelMenu *panel_menu, PanelMenuEntry *entry)
 {
-	gboolean retval = TRUE;
+	gboolean accept = FALSE;
 	GtkWidget *menuitem;
 	gint oldposition;
 
-	if (entry->type == PANEL_MENU_TYPE_OPTIONS
-	    && entry->parent != panel_menu) {
+	if (entry->parent != panel_menu) {
+		switch (entry->type) {
+		case PANEL_MENU_TYPE_ACTIONS:
+			if (!panel_menu->has_actions) {
+				panel_menu->has_actions = TRUE;
+				entry->parent->has_actions = FALSE;
+				accept = TRUE;
+			}
+			break;
+		case PANEL_MENU_TYPE_WINDOWS:
+			if (!panel_menu->has_windows) {
+				panel_menu->has_windows = TRUE;
+				entry->parent->has_windows = FALSE;
+				accept = TRUE;
+			}
+			break;
+		case PANEL_MENU_TYPE_WORKSPACES:
+			if (!panel_menu->has_workspaces) {
+				panel_menu->has_workspaces = TRUE;
+				entry->parent->has_workspaces = FALSE;
+				accept = TRUE;
+			}
+			break;
+		default:
+			break;
+		}
+	} else {
+		accept = TRUE;
+	}
+	if (!accept) {
 		panel_menu = entry->parent;
 		menuitem = panel_menu_common_get_entry_menuitem (entry);
 		oldposition =
@@ -584,37 +496,24 @@ panel_menu_check_entry_drop (PanelMenu *panel_menu, PanelMenuEntry *entry)
 		panel_menu->entries =
 			g_list_insert (panel_menu->entries, (gpointer) entry,
 				       oldposition);
-		retval = FALSE;
+	} else {
+		if (panel_menu != entry->parent && entry->parent) {
+			panel_menu_common_call_entry_remove_config (entry);
+			panel_menu_config_save_layout (entry->parent);
+			entry->parent = panel_menu;
+		}
+		menuitem = panel_menu_common_get_entry_menuitem (entry);
+		gtk_menu_shell_insert (GTK_MENU_SHELL (panel_menu->menubar), menuitem,
+				       panel_menu->position);
+		g_object_unref (G_OBJECT (menuitem));
+		panel_menu->entries =
+			g_list_insert (panel_menu->entries, (gpointer) entry,
+				       panel_menu->position);
+		/* And now, sync the prefs */
+		panel_menu_config_save_layout (panel_menu);
+		panel_menu_common_call_entry_save_config (entry);
 	}
-	return (retval);
-}
-
-static void
-panel_menu_accept_entry_drop (PanelMenu *panel_menu, PanelMenuEntry *entry)
-{
-	PanelMenuEntry *options = NULL;
-	GtkWidget *menuitem = NULL;
-	GtkWidget *checkitem = NULL;
-	gint insert = 0;
-
-	g_return_if_fail (panel_menu != NULL);
-	g_return_if_fail (entry != NULL);
-
-	entry->parent = panel_menu;
-	options = panel_menu_common_find_options (panel_menu);
-	menuitem = panel_menu_common_get_entry_menuitem (entry);
-	gtk_menu_shell_insert (GTK_MENU_SHELL (panel_menu->menubar), menuitem,
-			       panel_menu->position);
-	g_object_unref (G_OBJECT (menuitem));
-	if (entry->type != PANEL_MENU_TYPE_OPTIONS) {
-		checkitem = panel_menu_common_get_entry_checkitem (entry);
-		panel_menu_options_insert_option (options, checkitem,
-						  panel_menu->position);
-		g_object_unref (G_OBJECT (checkitem));
-	}
-	panel_menu->entries =
-		g_list_insert (panel_menu->entries, (gpointer) entry,
-			       panel_menu->position);
+	return accept;
 }
 
 static gint
@@ -626,7 +525,7 @@ applet_button_press_cb (GtkWidget *widget, GdkEventButton *event,
 	applet = panel_menu->applet;
 
 	if (event->button == 1) {
-		return (FALSE);
+		return FALSE;
 	} else if (event->button == 3) {
 		GList *list;
 		GtkWidget *target;
@@ -658,7 +557,7 @@ applet_button_press_cb (GtkWidget *widget, GdkEventButton *event,
 		GTK_WIDGET_CLASS (PANEL_APPLET_GET_CLASS (applet))->
 			button_press_event (GTK_WIDGET(applet), event);
 	}
-	return (TRUE);
+	return TRUE;
 }
 
 static gint
@@ -667,13 +566,8 @@ applet_destroy_cb (GtkWidget *widget, PanelMenu *panel_menu)
 	PanelMenuEntry *entry;
 	GList *cur;
 
-	if (panel_menu->profile_id)
-		g_free (panel_menu->profile_id);
-	if (panel_menu->applet_id)
-		g_free (panel_menu->applet_id);
-
-	if (panel_menu->icon_handle_image)
-		g_free (panel_menu->icon_handle_image);
+	g_free (panel_menu->profile_id);
+	g_free (panel_menu->applet_id);
 	for (cur = panel_menu->entries; cur; cur = cur->next) {
 		entry = (PanelMenuEntry *) cur->data;
 		panel_menu_common_call_entry_destroy (entry);
@@ -713,9 +607,10 @@ applet_change_size_cb (PanelApplet *applet, gint size, PanelMenu *panel_menu)
 {
 	if (panel_menu->size != size) {
 		panel_menu->size = size;
-		if (panel_menu->entries)
-			panel_menu_options_rescale
-				(panel_menu_common_find_options (panel_menu));
+		if (panel_menu->has_applications) {
+			panel_menu_applications_rescale_icon (
+				panel_menu_common_find_applications (panel_menu));
+		}
 	}
 }
 

@@ -29,8 +29,8 @@ G_BEGIN_DECLS
 
 typedef enum
 {
-	PANEL_MENU_TYPE_OPTIONS,
-	PANEL_MENU_TYPE_MENU_PATH,
+	PANEL_MENU_TYPE_APPLICATIONS,
+	PANEL_MENU_TYPE_PATH,
 	PANEL_MENU_TYPE_LINKS,
 	PANEL_MENU_TYPE_DIRECTORY,
 	PANEL_MENU_TYPE_DOCUMENTS,
@@ -48,33 +48,24 @@ typedef struct _PanelMenu
 	gint size;
 	/* Background info */
 	PanelAppletBackgroundType bg_type;
-	GdkColor bg_color;
 	GdkPixmap *bg_pixmap;
-	gint pos_x;
-	gint pos_y;
-	/* Can't seem to re-set the style to a default, so we keep this around */
-	gboolean orig_bg_set;
-	GdkColor orig_bg_color;
-	GtkStyle *orig_style;
 	/* For session loading/saving */
 	gchar *profile_id;
 	gchar *applet_id;
-	/* Settings */
-	gboolean show_icon_handle;
-	gchar *icon_handle_image;
-	/* Settings (GConf) */
-	gboolean auto_popup_menus;
-	gint auto_popup_menus_timeout;
+	/* Layout */
+	gboolean has_applications;
+	gboolean has_actions;
+	gboolean has_windows;
+	gboolean has_workspaces;
+	/* Behavior */
 	gboolean auto_directory_update;
 	gint auto_directory_update_timeout;
-	gboolean auto_save_config;
 	/* DnD data */
 	gint position;
 	gboolean on_item;
 	/* List of our children */
 	GList *entries;
 	/* If the config has changed since last save */
-	gboolean changed;
 }PanelMenu;
 
 typedef struct _PanelMenuEntry
@@ -87,8 +78,6 @@ typedef struct _PanelMenuEntry
 gboolean panel_menu_construct_applet(PanelApplet *applet);
 
 gboolean panel_menu_accept_drop(PanelMenu *panel_menu, GnomeVFSURI *uri);
-
-extern gchar *default_config;
 
 G_END_DECLS
 
