@@ -377,15 +377,26 @@ static void command_disconnect_cb( gint button, gpointer data)
 	if (!button) gnome_execute_shell(NULL, command_disconnect);
 }
 
+static void confirm_dialog_destroy (GtkObject *o)
+{
+ 	confirm_dialog = FALSE;
+}
+
 static void dial_cb()
 {
+	GtkWidget *dialog;
+
 	if (is_connected()) {
 	  if (ask_for_confirmation) {
 	    if (confirm_dialog) return;
 	    confirm_dialog = TRUE;
-	    gnome_question_dialog (_("You are currently connected.\nDo you want to disconnect?"),
-				   (GnomeReplyCallback)command_disconnect_cb,
-				   NULL);
+	    dialog = gnome_question_dialog (_("You are currently connected.\n"
+					      "Do you want to disconnect?"),
+					    (GnomeReplyCallback)command_disconnect_cb,
+					    NULL);
+	    gtk_signal_connect (GTK_OBJECT (dialog), "destroy",
+				GTK_SIGNAL_FUNC (confirm_dialog_destroy),
+				NULL);
 	  } else {
 	    system(command_disconnect);
 	    confirm_dialog = FALSE;
@@ -394,9 +405,12 @@ static void dial_cb()
 	  if (ask_for_confirmation) {
 	    if (confirm_dialog) return;
 	    confirm_dialog = TRUE;
-	    gnome_question_dialog (_("Do you want to connect?"),
-				   (GnomeReplyCallback)command_connect_cb,
-				   NULL);
+	    dialog = gnome_question_dialog (_("Do you want to connect?"),
+					    (GnomeReplyCallback)command_connect_cb,
+					    NULL);
+	    gtk_signal_connect (GTK_OBJECT (dialog), "destroy",
+				GTK_SIGNAL_FUNC (confirm_dialog_destroy),
+				NULL);
 	  } else {
 	    system(command_connect);
 	    confirm_dialog = FALSE;
