@@ -467,8 +467,6 @@ mc_create_command_entry (MCData *mc)
 {
     mc->entry = gtk_entry_new_with_max_length (MC_MAX_COMMAND_LENGTH); 
     
-    g_signal_connect (mc->entry,"destroy",
-		      G_CALLBACK (gtk_widget_destroyed), &mc->entry);
     g_signal_connect (mc->entry, "key_press_event",
 		      G_CALLBACK (command_key_event), mc);
    
