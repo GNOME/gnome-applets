@@ -20,7 +20,7 @@ cpufreq_applet_SOURCES =  \
 	cpufreq-applet.c        	cpufreq-applet.h        	\
 	cpufreq-prefs.c         	cpufreq-prefs.h         	\
 	cpufreq-popup.c                 cpufreq-popup.h			\
-	cpufreq-monitor.c       	cpufreq-momintor.h      	\
+	cpufreq-monitor.c       	cpufreq-monitor.h	      	\
 					cpufreq-monitor-protected.h	\
 	cpufreq-monitor-factory.c	cpufreq-monitor-factory.h	\
 	cpufreq-monitor-procfs.c	cpufreq-monitor-procfs.h	\
