@@ -163,10 +163,17 @@ void destroy_applet(GtkWidget *widget, gpointer data)
 {
 	AppData *ad = data;
 
-	gtk_timeout_remove(ad->display_timeout_id);
-	gtk_timeout_remove(ad->headline_timeout_id);
+	if (ad->display_timeout_id > 0)
+		gtk_timeout_remove(ad->display_timeout_id);
+	ad->display_timeout_id = 0;
+
+	if (ad->headline_timeout_id > 0)
+		gtk_timeout_remove(ad->headline_timeout_id);
+	ad->headline_timeout_id = 0;
+
 	if (ad->startup_timeout_id > 0)
 		gtk_timeout_remove(ad->startup_timeout_id);
+	ad->startup_timeout_id = 0;
 
 /* FIXME: workaround is to comment out. if applets ever become in-process 
  * CORBA servers, this will leak memory. for the time being, everything 
@@ -174,9 +181,18 @@ void destroy_applet(GtkWidget *widget, gpointer data)
 
 /*	free_all_info_lines(ad);*/
 
-	gtk_widget_destroy(ad->display_w);
-	gtk_widget_destroy(ad->disp_buf_w);
-	gtk_widget_destroy(ad->background_w);
+	if (ad->display_w != NULL)
+		gtk_widget_destroy(ad->display_w);
+	ad->display_w = NULL;
+
+	if (ad->disp_buf_w != NULL)
+		gtk_widget_destroy(ad->disp_buf_w);
+	ad->disp_buf_w = NULL;
+
+	if (ad->background_w != NULL)
+		gtk_widget_destroy(ad->background_w);
+	ad->background_w = NULL;
+
 	g_free(ad);
 	return;
 	widget = NULL;

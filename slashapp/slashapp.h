@@ -9,6 +9,9 @@
 #include <fcntl.h>
 #include <unistd.h>
 
+#ifndef SLASHAPP_H
+#define SLASHAPP_H
+
 #define APPLET_VERSION_MAJ 0
 #define APPLET_VERSION_MIN 3
 #define APPLET_VERSION_REV 2
@@ -221,3 +224,5 @@ void destroy_article_window(GtkWidget *widget, gpointer data);
 void article_button_cb(GtkWidget *widget, gpointer data);
 char *layer_find(xmlNodePtr node, char *match, char *fail);
 void click_headline_cb (gpointer data, InfoData *id, AppData *ad);
+
+#endif /* SLASHAPP_H */
