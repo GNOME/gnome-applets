@@ -54,7 +54,7 @@ about_jbc ()
 			   "(C) 1999",
 			   authors,
 		       _ ("Released under the GNU general public license.\n"
-			  "Displays time in Binary Coded Decimal"
+			  "Displays time in Binary Coded Decimal\nhttp://snoopy.net/~jon/jbc/"
 			  "."),
 			   NULL);
   gtk_widget_show (about);
