@@ -144,20 +144,9 @@ start_procman_cb (BonoboUIComponent *uic,
 void
 multiload_change_size_cb(PanelApplet *applet, gint size, gpointer data)
 {
-	gint i;
 	MultiloadApplet *ma = (MultiloadApplet *)data;
-
-	for (i = 0; i < NGRAPHS; i++) {
-		ma->graphs[i]->pixel_size = size;
-  	  	if (ma->graphs[i]->orient) 
-  	  		gtk_widget_set_size_request (ma->graphs[i]->main_widget, 
-					             ma->graphs[i]->pixel_size, 
-						     ma->graphs[i]->size);
-		else
-			gtk_widget_set_size_request (ma->graphs[i]->main_widget, 
-							     ma->graphs[i]->size, 
-							     ma->graphs[i]->pixel_size);
-	}
+	
+	multiload_applet_refresh(ma);
 	
 	return;
 }
@@ -319,6 +308,9 @@ multiload_applet_refresh(MultiloadApplet *ma)
 	/* stop and free the old graphs */
 	for (i = 0; i < NGRAPHS; i++)
 	{
+		if (!ma->graphs[i])
+			continue;
+			
 		if (ma->graphs[i]->visible)
 		{
 			load_graph_stop(ma->graphs[i]);
@@ -329,7 +321,8 @@ multiload_applet_refresh(MultiloadApplet *ma)
 		g_free(ma->graphs[i]);
 	}
 
-	gtk_widget_destroy(ma->box);
+	if (ma->box)
+		gtk_widget_destroy(ma->box);
 	
 	orientation = panel_applet_get_orient(ma->applet);
 	
@@ -355,7 +348,7 @@ multiload_applet_refresh(MultiloadApplet *ma)
 	for (i = 0; i < NGRAPHS; i++) {
 	    gtk_box_pack_start(GTK_BOX(ma->box), 
 			       ma->graphs[i]->main_widget, 
-			       FALSE, FALSE, 1);
+			       TRUE, TRUE, 1);
 	    if (ma->graphs[i]->visible) {
 	    	gtk_widget_show_all (ma->graphs[i]->main_widget);
 		load_graph_start(ma->graphs[i]);
@@ -378,11 +371,7 @@ static const BonoboUIVerb multiload_menu_verbs [] = {
 gboolean
 multiload_applet_new(PanelApplet *applet, const gchar *iid, gpointer data)
 {
-	gint i;
-	GtkWidget *box;
-	PanelAppletOrient orientation;
 	MultiloadApplet *ma;
-	gboolean visible = FALSE;
 	
 	ma = g_new0(MultiloadApplet, 1);
 	
@@ -391,43 +380,7 @@ multiload_applet_new(PanelApplet *applet, const gchar *iid, gpointer data)
 	gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gnome-monitor.png");
 	
 	panel_applet_add_preferences (applet, "/schemas/apps/multiload/prefs", NULL);
-	
-	orientation = panel_applet_get_orient(applet);
-	
-	if ( (orientation == PANEL_APPLET_ORIENT_UP) || (orientation == PANEL_APPLET_ORIENT_DOWN) )
-		box = gtk_hbox_new(FALSE, 0);
-	else
-		box = gtk_vbox_new(FALSE, 0);
-	
-	gtk_container_add(GTK_CONTAINER(applet), box);
-	
-	/* create the NGRAPHS graphs, passing in their user-configurable properties with gconf. */
-	ma->graphs[0] = cpuload_applet_new(applet, NULL);
-	ma->graphs[1] = memload_applet_new(applet, NULL);
-	ma->graphs[2] = netload_applet_new(applet, NULL);
-	ma->graphs[3] = swapload_applet_new(applet, NULL);
-	ma->graphs[4] = loadavg_applet_new(applet, NULL);
-
-	/* only start and display the graphs the user has turned on */
-	for (i = 0; i < NGRAPHS; i++) {
-	    gtk_box_pack_start(GTK_BOX(box), 
-			       ma->graphs[i]->main_widget, 
-			       FALSE, FALSE, 1);
-	    if (ma->graphs[i]->visible) {
-	    	gtk_widget_show_all (ma->graphs[i]->main_widget);
-		load_graph_start(ma->graphs[i]);
-		visible = TRUE;
-	    }
-	}
-	
-	if (!visible) {
-		/* No graphs shown - need to show at least one so show cpu*/
-		ma->graphs[0]->visible = TRUE;
-		gtk_widget_show_all (ma->graphs[0]->main_widget);
-		load_graph_start(ma->graphs[0]);
-		panel_applet_gconf_set_bool(ma->applet, "view_cpuload", 
-			                    TRUE, NULL);
-	}
+	panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);
 
 	panel_applet_setup_menu_from_file (applet,
 					   NULL,
@@ -435,8 +388,6 @@ multiload_applet_new(PanelApplet *applet, const gchar *iid, gpointer data)
 					   NULL,
 					   multiload_menu_verbs,
 					  ma);	
-
-	ma->box = box;
 	
 	g_signal_connect(G_OBJECT(applet), "change_size",
 				G_CALLBACK(multiload_change_size_cb), ma);
@@ -450,10 +401,9 @@ multiload_applet_new(PanelApplet *applet, const gchar *iid, gpointer data)
 				G_CALLBACK(multiload_button_press_event_cb), ma);
 	g_signal_connect(G_OBJECT(applet), "key_press_event",
 				G_CALLBACK(multiload_key_press_event_cb), ma);
-	multiload_change_size_cb (ma->applet,
-				  panel_applet_get_size (ma->applet),
-				  ma);	
-	gtk_widget_show (box);			
+	
+	multiload_applet_refresh (ma);
+		
 	gtk_widget_show(GTK_WIDGET(applet));
 			
 	return TRUE;

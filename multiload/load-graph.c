@@ -142,7 +142,7 @@ load_graph_unalloc (LoadGraph *g)
 static void
 load_graph_alloc (LoadGraph *g)
 {
-    int pixel_size, i;
+    int i;
 
     if (g->allocated)
 		return;
@@ -172,16 +172,16 @@ load_graph_configure (GtkWidget *widget, GdkEventConfigure *event,
     load_graph_unalloc (c);
 
     if (c->orient) {
-    	c->draw_width = c->pixel_size - 6;
+    	c->draw_width = c->pixel_size - 2;
     	c->draw_height = c->size - 4;
     }
     else {
     	c->draw_width = c->size - 4;
-    	c->draw_height = c->pixel_size - 6;
+    	c->draw_height = c->pixel_size - 2;
     }
 
     load_graph_alloc (c);
-
+    
     if (!c->pixmap)
 	c->pixmap = gdk_pixmap_new (c->disp->window,
 				    c->draw_width,
@@ -316,7 +316,7 @@ load_graph_new (PanelApplet *applet, guint n, gchar *label,
 	g->frame = gtk_frame_new (NULL);
 	gtk_frame_set_shadow_type (GTK_FRAME (g->frame), GTK_SHADOW_ETCHED_IN);
 	gtk_container_add (GTK_CONTAINER (g->frame), g->box);
-	gtk_container_add (GTK_CONTAINER (g->main_widget), g->frame);
+	gtk_box_pack_start (GTK_BOX (g->main_widget), g->frame, TRUE, TRUE, 0);
     }
     else
     {
@@ -330,9 +330,10 @@ load_graph_new (PanelApplet *applet, guint n, gchar *label,
 
     g->timer_index = -1;
 
-
-    gtk_widget_set_size_request (g->main_widget, g->pixel_size, g->size);
-    gtk_widget_set_size_request (g->main_widget, g->size, g->pixel_size);
+    if (g->orient)
+    	gtk_widget_set_size_request (g->main_widget, -1, g->size);
+    else
+        gtk_widget_set_size_request (g->main_widget, g->size, -1);
 
     g->tooltips = gtk_tooltips_new();
    	
@@ -347,7 +348,7 @@ load_graph_new (PanelApplet *applet, guint n, gchar *label,
     g_signal_connect (G_OBJECT(g->disp), "destroy",
 			G_CALLBACK (load_graph_destroy), g);
 	
-    gtk_box_pack_start_defaults (GTK_BOX (g->box), g->disp);    
+    gtk_box_pack_start (GTK_BOX (g->box), g->disp, TRUE, TRUE, 0);    
     gtk_widget_show_all(g->box);
     object_list = g_list_append (object_list, g);
     
