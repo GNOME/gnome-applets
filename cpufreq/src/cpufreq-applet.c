@@ -197,6 +197,7 @@ cpufreq_applet_about_cb (BonoboUIComponent *uic, CPUFreqApplet *applet, const gc
 	   };
 	   static const gchar *documenters[] = {
 			 "Carlos Garcia Campos <carlosgc@gnome.org>",
+			 "Davyd Madeley <davyd@madeley.id.au>",
 			 NULL
 	   };
 	   static const gchar *artists[] = {
