@@ -100,6 +100,7 @@ GetLoad (int Maximum, int data [5], LoadGraph *g)
 void
 GetDiskLoad (int Maximum, int data [3], LoadGraph *g)
 {
+	static gboolean first_call = TRUE;
 	static guint64 lastread = 0, lastwrite = 0;
 	static guint64 max = 1;
 
@@ -128,11 +129,19 @@ GetDiskLoad (int Maximum, int data [3], LoadGraph *g)
 
 	lastread  = read;
 	lastwrite = write;
-	max = MAX(max, read + write);
 
-	data[0] = read / max;
-	data[1] = (read + write) / max;
-	data[2] = Maximum - (read + write);
+	if(first_call)
+	{
+		first_call = FALSE;
+		memset(data, 0, 3 * sizeof data[0]);
+		return;
+	}
+
+	max = MAX(max, readdiff + writediff);
+
+	data[0] = (float)Maximum *  readdiff / (float)max;
+	data[1] = (float)Maximum * writediff / (float)max;
+	data[2] = (float)Maximum - (data [0] + data[1]);
 }
 
 #if 0
