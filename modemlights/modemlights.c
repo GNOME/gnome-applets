@@ -1400,9 +1400,12 @@ static const BonoboUIVerb modem_applet_menu_verbs [] = {
 
 static const char modem_applet_menu_xml [] =
 	"<popup name=\"button3\">\n"
-	"   <menuitem name=\"Item 1\" verb=\"Props\" _label=\"Properties\"/>\n"
-	"   <menuitem name=\"Item 2\" verb=\"Help\" _label=\"Help\"/>\n"
-	"   <menuitem name=\"Item 3\" verb=\"About\" _label=\"About\"/>\n"
+	"   <menuitem name=\"Item 1\" verb=\"Props\" _label=\"Properties\"\n"
+	"             pixtype=\"stock\" pixname=\"gtk-properties\"/>\n"
+	"   <menuitem name=\"Item 2\" verb=\"Help\" _label=\"Help\"\n"
+	"             pixtype=\"stock\" pixname=\"gtk-help\"/>\n"
+	"   <menuitem name=\"Item 3\" verb=\"About\" _label=\"About\"\n"
+	"             pixtype=\"stock\" pixname=\"gnome-stock-about\"/>\n"
 	"</popup>\n";
 
 static BonoboObject *
