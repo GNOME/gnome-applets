@@ -288,7 +288,6 @@ create_cdplayer_widget(GtkWidget *window, char *globcfgpath)
 	gchar *devpath;
 	CDPlayerData *cd;
 	GtkWidget *cdpanel;
-	time_t current_time;
 	int err;
 	int i;
 
@@ -298,6 +297,7 @@ create_cdplayer_widget(GtkWidget *window, char *globcfgpath)
 	devpath = gnome_config_get_string("cdplayer/devpath=/dev/cdrom");
 	gnome_config_pop_prefix();
 	cd->cdrom_device = cdrom_open(devpath, &err);
+	g_free (devpath);
 	cdpanel = create_cdpanel_widget(window,cd);
 
 	/* Install timeout handler */
