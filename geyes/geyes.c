@@ -80,45 +80,42 @@ applet_back_change (PanelApplet			*a,
 static void 
 calculate_pupil_xy (EyesApplet *eyes_applet,
 		    gint x, gint y,
-		    gint *pupil_x, gint *pupil_y)
+		    gint *pupil_x, gint *pupil_y, GtkWidget* widget)
 {
         double angle;
         double sina;
         double cosa;
-        double nx;
-        double ny;
         double h;
         double temp;
-     
-        nx = x - ((double) eyes_applet->eye_width / 2);
-        ny = y - ((double) eyes_applet->eye_height / 2);
-       
-        h = hypot (nx, ny);
-        if (abs (h) 
+ 	 double nx, ny;
+
+	 gfloat xalign, yalign;
+	 gint width, height;
+
+	 width = GTK_WIDGET(widget)->allocation.width;
+	 height = GTK_WIDGET(widget)->allocation.height;
+	 gtk_misc_get_alignment(GTK_MISC(widget),  &xalign, &yalign);
+
+	 nx = x - MAX(width - eyes_applet->eye_width, 0) * xalign - eyes_applet->eye_width / 2;
+	 ny = y - MAX(height- eyes_applet->eye_height, 0) * yalign - eyes_applet->eye_height / 2;
+  
+	 h = hypot (nx, ny);
+        if (h < 0.5 || abs (h) 
             < (abs (hypot (eyes_applet->eye_height / 2, eyes_applet->eye_width / 2)) - eyes_applet->wall_thickness - eyes_applet->pupil_height)) {
-                *pupil_x = x;
-                *pupil_y = y;
+                *pupil_x = nx + eyes_applet->eye_width / 2;
+                *pupil_y = ny + eyes_applet->eye_height / 2;
                 return;
         }
         
-        angle = atan2 (nx, ny);
-        sina = sin (angle);
-        cosa = cos (angle);
-        
-        temp = hypot ((eyes_applet->eye_height / 2) * cosa, (eyes_applet->eye_width / 2)* sina);
-        *pupil_x = temp * sina;
-        *pupil_y = temp * cosa;
-       
-        temp = hypot ((eyes_applet->pupil_width / 2) * sina, (eyes_applet->pupil_height / 2)* cosa);
-        *pupil_x -= temp * sina;
-        *pupil_y -= temp * cosa;
-        
-        temp = hypot ((eyes_applet->wall_thickness / 2) * sina, (eyes_applet->wall_thickness / 2) * cosa);
-        *pupil_x -= temp * sina;
-        *pupil_y -= temp * cosa;
-        
-        *pupil_x += (eyes_applet->eye_width / 2);
-        *pupil_y += (eyes_applet->eye_height / 2);
+	 sina = nx / h; 
+	 cosa = ny / h;
+	
+        temp = hypot ((eyes_applet->eye_width / 2) * sina, (eyes_applet->eye_height / 2) * cosa);
+        temp -= hypot ((eyes_applet->pupil_width / 2) * sina, (eyes_applet->pupil_height / 2) * cosa);
+        temp -= hypot ((eyes_applet->wall_thickness / 2) * sina, (eyes_applet->wall_thickness / 2) * cosa);
+
+        *pupil_x = temp * sina + (eyes_applet->eye_width / 2);
+        *pupil_y = temp * cosa + (eyes_applet->eye_height / 2);
 }
 
 static void 
@@ -161,19 +158,21 @@ timer_cb (EyesApplet *eyes_applet)
         gint x, y;
         gint pupil_x, pupil_y;
         gint i;
-        
+
         for (i = 0; i < eyes_applet->num_eyes; i++) {
 		if (GTK_WIDGET_REALIZED (eyes_applet->eyes[i])) {
 			gtk_widget_get_pointer (eyes_applet->eyes[i], 
 						&x, &y);
-			if ((x != eyes_applet->pointer_last_x) || (y != eyes_applet->pointer_last_y)) { 
-				calculate_pupil_xy (eyes_applet, x, y, &pupil_x, &pupil_y);
+			if ((x != eyes_applet->pointer_last_x[i]) || (y != eyes_applet->pointer_last_y[i])) { 
+
+				calculate_pupil_xy (eyes_applet, x, y, &pupil_x, &pupil_y, eyes_applet->eyes[i]);
 				draw_eye (eyes_applet, i, pupil_x, pupil_y);
+	    	        
+			        eyes_applet->pointer_last_x[i] = x;
+			        eyes_applet->pointer_last_y[i] = y;
 			}
 		}
         }
-        eyes_applet->pointer_last_x = x;
-        eyes_applet->pointer_last_y = y;
         return TRUE;
 }
 
@@ -269,6 +268,8 @@ setup_eyes (EyesApplet *eyes_applet)
         gtk_box_pack_start (GTK_BOX (eyes_applet->vbox), eyes_applet->hbox, TRUE, TRUE, 0);
 
 	eyes_applet->eyes = g_new0 (GtkWidget *, eyes_applet->num_eyes);
+	eyes_applet->pointer_last_x = g_new0 (gint, eyes_applet->num_eyes);
+	eyes_applet->pointer_last_y = g_new0 (gint, eyes_applet->num_eyes);
 
         for (i = 0; i < eyes_applet->num_eyes; i++) {
                 eyes_applet->eyes[i] = gtk_image_new ();
@@ -298,6 +299,10 @@ setup_eyes (EyesApplet *eyes_applet)
 		}
 		
                 gtk_widget_realize (eyes_applet->eyes[i]);
+		
+		eyes_applet->pointer_last_x[i] = G_MAXINT;
+		eyes_applet->pointer_last_y[i] = G_MAXINT;
+		
 		draw_eye (eyes_applet, i,
 			  eyes_applet->eye_width / 2,
                           eyes_applet->eye_height / 2);
@@ -313,6 +318,8 @@ destroy_eyes (EyesApplet *eyes_applet)
 	eyes_applet->hbox = NULL;
 
 	g_free (eyes_applet->eyes);
+	g_free (eyes_applet->pointer_last_x);
+	g_free (eyes_applet->pointer_last_y);
 }
 
 static EyesApplet *

@@ -39,8 +39,8 @@ typedef struct
 	GtkWidget   *hbox;
 	GtkWidget   **eyes;
 	guint        timeout_id;
-	gint pointer_last_x;
-	gint pointer_last_y;
+	gint 	    *pointer_last_x;
+	gint 	    *pointer_last_y;
 
 	/* Theme */
 	GdkPixbuf *eye_image;
