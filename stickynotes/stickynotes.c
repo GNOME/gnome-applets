@@ -64,9 +64,9 @@ StickyNote * stickynote_new()
 						      gconf_client_get_int(stickynotes->gconf, GCONF_PATH "/defaults/height", NULL));
 
 	/* Set the button images */
-	gtk_image_set_from_stock(GTK_IMAGE(glade_xml_get_widget(note->window, "close_img")), STICKYNOTES_STOCK_CLOSE, STICKYNOTES_ICON_SIZE);
-	gtk_image_set_from_stock(GTK_IMAGE(glade_xml_get_widget(note->window, "resize_se_img")), STICKYNOTES_STOCK_RESIZE_SE, STICKYNOTES_ICON_SIZE);
-	gtk_image_set_from_stock(GTK_IMAGE(glade_xml_get_widget(note->window, "resize_sw_img")), STICKYNOTES_STOCK_RESIZE_SW, STICKYNOTES_ICON_SIZE);
+	gtk_image_set_from_stock(GTK_IMAGE(glade_xml_get_widget(note->window, "close_img")), STICKYNOTES_STOCK_CLOSE, GTK_ICON_SIZE_MENU);
+	gtk_image_set_from_stock(GTK_IMAGE(glade_xml_get_widget(note->window, "resize_se_img")), STICKYNOTES_STOCK_RESIZE_SE, GTK_ICON_SIZE_MENU);
+	gtk_image_set_from_stock(GTK_IMAGE(glade_xml_get_widget(note->window, "resize_sw_img")), STICKYNOTES_STOCK_RESIZE_SW, GTK_ICON_SIZE_MENU);
 	
 	/* Customize the title and colors, hide and unlock */
 	stickynote_set_title(note, NULL);
@@ -84,6 +84,7 @@ StickyNote * stickynote_new()
 
 	/* Connect a properties dialog to the note */
 	gtk_window_set_transient_for(GTK_WINDOW(note->w_properties), GTK_WINDOW(note->w_window));
+	gtk_dialog_set_default_response(GTK_DIALOG(note->w_properties), GTK_RESPONSE_CLOSE);
 	
 	/* Connect signals to the sticky note */
 
@@ -112,7 +113,6 @@ StickyNote * stickynote_new()
 	g_signal_connect(G_OBJECT(note->w_font), "font_set", G_CALLBACK(properties_font_cb), note);
 	g_signal_connect_swapped(G_OBJECT(note->w_def_font), "toggled", G_CALLBACK(properties_apply_font_cb), note);
 	g_signal_connect(G_OBJECT(note->w_entry), "activate", G_CALLBACK(properties_activate_cb), note);
-	g_signal_connect(G_OBJECT(note->w_properties), "response", G_CALLBACK(properties_response_cb), note);
 	
 	return note;
 }
@@ -151,6 +151,7 @@ void stickynote_change_properties(StickyNote *note)
 		gnome_font_picker_set_font_name(GNOME_FONT_PICKER(note->w_font), note->font);
 
 	gtk_dialog_run(GTK_DIALOG(note->w_properties));
+	gtk_widget_hide(note->w_properties);
 
 	stickynotes_save();
 }
@@ -308,12 +309,12 @@ void stickynote_set_locked(StickyNote *note, gboolean locked)
 	/* Show appropriate icon and tooltip */
 	if (locked) {
 		gtk_image_set_from_stock(GTK_IMAGE(glade_xml_get_widget(note->window, "lock_img")),
-					 STICKYNOTES_STOCK_LOCKED, STICKYNOTES_ICON_SIZE);
+					 STICKYNOTES_STOCK_LOCKED, GTK_ICON_SIZE_MENU);
 		gtk_tooltips_set_tip(stickynotes->tooltips, note->w_lock, _("Locked note"), NULL);
 	}
 	else {
 		gtk_image_set_from_stock(GTK_IMAGE(glade_xml_get_widget(note->window, "lock_img")),
-					 STICKYNOTES_STOCK_UNLOCKED, STICKYNOTES_ICON_SIZE);
+					 STICKYNOTES_STOCK_UNLOCKED, GTK_ICON_SIZE_MENU);
 		gtk_tooltips_set_tip(stickynotes->tooltips, note->w_lock, _("Unlocked note"), NULL);
 	}
 

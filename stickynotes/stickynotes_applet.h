@@ -36,10 +36,6 @@
 #define STICKYNOTES_STOCK_RESIZE_SE 	"stickynotes-stock-resize-se"
 #define STICKYNOTES_STOCK_RESIZE_SW	"stickynotes-stock-resize-sw"
 
-#define STICKYNOTES_ICON_SIZE_NAME	"stickynotes-icon-size"
-#define STICKYNOTES_ICON_SIZE_VALUE	8
-#define STICKYNOTES_ICON_SIZE		gtk_icon_size_from_name(STICKYNOTES_ICON_SIZE_NAME)
-
 /* Global Sticky Notes instance */
 typedef struct
 {

@@ -286,6 +286,7 @@ void preferences_apply_cb(GConfClient *client, guint cnxn_id, GConfEntry *entry,
 /* Preferences Callback : Response. */
 void preferences_response_cb(GtkDialog *dialog, gint response, gpointer data)
 {
+fprintf(stderr, "Prefs %d, ok = %d, delete = %d, none = %d\n", response, GTK_RESPONSE_OK, GTK_RESPONSE_DELETE_EVENT, GTK_RESPONSE_NONE);
 	if (response == GTK_RESPONSE_HELP)
 		gnome_help_display("stickynotes_applet", "stickynotes-introduction", NULL);
 	
@@ -296,6 +297,7 @@ void preferences_response_cb(GtkDialog *dialog, gint response, gpointer data)
 /* About Callback : Response. */
 void about_response_cb(GtkDialog *dialog, gint response, gpointer data)
 {
+fprintf(stderr, "About %d, ok = %d, delete = %d, none = %d\n", response, GTK_RESPONSE_OK, GTK_RESPONSE_DELETE_EVENT, GTK_RESPONSE_NONE);
 	if (response == GTK_RESPONSE_OK || response == GTK_RESPONSE_DELETE_EVENT || response == GTK_RESPONSE_NONE)
 		gtk_widget_hide(GTK_WIDGET(dialog));
 }

@@ -196,6 +196,7 @@ void properties_apply_color_cb(StickyNote *note)
 	g_free(color_str);
 }
 
+/* Properties Dialog Callback : Apply font */
 void properties_apply_font_cb(StickyNote *note)
 {
 	const gchar *font_str = NULL;
@@ -225,11 +226,5 @@ void properties_font_cb(GnomeFontPicker *fp, gchar *font_str, StickyNote *note)
 /* Properties Dialog Callback : Activate */
 void properties_activate_cb(GtkWidget *widget, StickyNote *note)
 {
-        gtk_dialog_response(GTK_DIALOG(note->w_properties), GTK_RESPONSE_CLOSE);
-}
-
-/* Properties Dialog Callback : Response. */
-void properties_response_cb(GtkDialog *dialog, gint response, StickyNote *note)
-{
-	gtk_widget_hide(GTK_WIDGET(dialog));
+	gtk_dialog_response(GTK_DIALOG(note->w_properties), GTK_RESPONSE_CLOSE);
 }
