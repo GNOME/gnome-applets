@@ -1,151 +1,249 @@
-/*
- * GNOME Desktop Pager Applet
- * (C) 1998 The Free Software Foundation
- *
- * Author: M.Watson
- *         The Rasterman
- *
- * A panel applet that switches between multiple desktops using
- * Marko Macek's XA_WIN_* hints proposal. Compatible with icewm => 0.91
- *
- */
+#include <gnomepager.h>
 
-#define GWIN_STATE_STICKY          (1<<0)
-#define GWIN_STATE_RESERVED_BIT1   (1<<1)
-#define GWIN_STATE_MAXIMIZED_VERT  (1<<2)
-#define GWIN_STATE_MAXIMIZED_HORIZ (1<<3)
-#define GWIN_STATE_HIDDEN          (1<<4)
-#define GWIN_STATE_SHADED          (1<<5)
-#define GWIN_STATE_HID_WORKSPACE   (1<<6)
-#define GWIN_STATE_HID_TRANSIENT   (1<<7)
-#define GWIN_STATE_FIXED_POSITION  (1<<8)
-#define GWIN_STATE_ARRANGE_IGNORE  (1<<9)
-
-#define GWIN_HINTS_SKIP_FOCUS             (1<<0)
-#define GWIN_HINTS_SKIP_WINLIST           (1<<1)
-#define GWIN_HINTS_SKIP_TASKBAR           (1<<2)
-#define GWIN_HINTS_GROUP_TRANSIENT        (1<<3)
-
-#include <X11/Xlib.h>
-#include <X11/Xmd.h>
-#include <X11/Xatom.h>
-#include <gnome.h>
-#include <gdk/gdkx.h>
-#include <gdk/gdkprivate.h>
-#include "WinMgr.h"
-#include "applet-lib.h"
-#include "applet-widget.h"
-
-typedef struct _task
-  {
-    GtkWidget          *widget;
-    GtkWidget          *label;
-    GtkWidget          *icon;
-    GtkWidget          *state[2];
-    GtkWidget          *menu;
-    GtkWidget          *tooltip;
-    GtkWidget          *_widget;
-    GtkWidget          *_label;
-    GtkWidget          *_icon;
-    GtkWidget          *_state[2];
-    GtkWidget          *_menu;
-    GtkWidget          *_tooltip;
-    
-    GtkWidget          *dummy;
-    gchar              *name;
-    gint                x, y, w, h;
-    GdkWindow          *gdkwin;
-    Window              win;
-    gchar               iconified;
-    gchar               shaded;
-    gchar               focused;
-    gchar               sticky;
-    gint                desktop;
-  }
-Task;
-
-void                setup(void);
-void                prop_change_cb(GtkWidget * widget, GdkEventProperty * ev);
-void                switch_cb(GtkWidget * widget, gpointer data);
-void                about_cb(AppletWidget * widget, gpointer data);
-void                properties_dialog(AppletWidget * widget, gpointer data);
-void                change_workspace(gint ws);
-void                make_sticky(Window win);
-void                make_shaded(Window win);
-void                make_unshaded(Window win);
-gint                check_workspace(gpointer data);
-GList              *get_workspaces(void);
-gint                get_current_workspace(void);
-gint                get_current_workspace(void);
-void                kill_cb(GtkWidget * widget, Task * t);
-void                iconify_cb(GtkWidget * widget, Task * t);
-void                show_cb(GtkWidget * widget, Task * t);
-void               *AtomGet(Window win, char *atom, Atom type, int *size);
-void                task_cb(GtkWidget * widget, Task * t);
-gchar              *munge(gchar * s, int num);
-void                client_prop_change_cb(GtkWidget * widget, GdkEvent * ev, Task * t);
-void                enter_cb(GtkWidget * widget, Task * t);
-void                leave_cb(GtkWidget * widget, Task * t);
-void                add_task(Window win);
-void                del_task(Window win);
-Task               *find_task(Window win);
-void                match_tasks(Window * win, guint num);
-void                update_tasks(void);
-GList              *get_workspaces(void);
-gint                get_current_workspace(void);
-void shade_cb(GtkWidget * widget, Task * t);
-void showhide_cb(GtkWidget * widget, Task * t);
-void nuke_cb(GtkWidget * widget, Task * t);
-void showpop_cb(GtkWidget * widget, gpointer data);
-void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data);
-
-GtkWidget          *dummy_win;
-GtkWidget          *dummy_box;
-GtkWidget          *applet;
-GtkWidget          *tasks1;
-GtkWidget          *popbox;
-GtkWidget          *qme, *qme2;
-GtkWidget         **boxlists;
-GtkWidget         **flists;
-GList              *workspace_list, *button_list, *tasks = NULL;
-gint                workspace_count, current_workspace = 1;
-gint                i_changed_it = 0;
-gint                tasks_in_row = 16;
-Atom                _XA_GWIN_WORKSPACE;
-Atom                _XA_GWIN_WORKSPACE_NAMES;
-Atom                _XA_GWIN_STATE;
-PanelOrientType     orient;
 extern gint         gdk_error_warnings;
+GtkWidget          *applet = NULL;
+GtkWidget          *popbox = NULL;
+GList              *tasks = NULL;
+PanelOrientType     applet_orient = ORIENT_DOWN;
+gint                current_desk = 0;
+gint                num_desk = 0;
+gchar              *desk_name[32];
+GtkWidget          *desk_widget[32];
+GList              *task_widgets = NULL;
+GtkWidget          *hold_box = NULL;
+GtkWidget          *main_box = NULL;
+GtkWidget          *task_table = NULL;
 
+gint                pager_rows = 2;
+gchar               pager_size = 1;
+gchar               tasks_all = 0;
+gint                task_rows_h = 2;
+gint                task_rows_v = 1;
+gint                mask_task_width = 400;
+gchar               show_tasks = 1;
+gchar               show_pager = 1;
+
+#define PAGER_W_0 31
+#define PAGER_H_0 22
+#define PAGER_W_1 62
+#define PAGER_H_1 44
+
+/* APPLET callbacks */
 void 
-applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
+cb_applet_orient_change(GtkWidget *w, PanelOrientType o, gpointer data)
 {
-  orient = o;
-  switch (o) {
-   case ORIENT_UP:
-   case ORIENT_DOWN:
-   case ORIENT_LEFT:
-   case ORIENT_RIGHT:
-  }
+  if (o == applet_orient) 
+    return;
+  applet_orient = o;
+  switch (o) 
+    {
+     case ORIENT_UP:
+     case ORIENT_DOWN:
+      if (main_box)
+	gtk_widget_destroy(main_box);
+      main_box = NULL;
+      init_applet_gui_horiz();
+      break;
+     case ORIENT_LEFT:
+     case ORIENT_RIGHT:
+      if (main_box)
+	gtk_widget_destroy(main_box);
+      main_box = NULL;
+      init_applet_gui_vert();
+      break;
+    }
   w = NULL;
   data = NULL;
 }
 
+
 void 
-nuke_cb(GtkWidget * widget, Task * t)
+cb_applet_about(AppletWidget * widget, gpointer data)
 {
-  XKillClient(GDK_DISPLAY(), (XID) t->win);
+  GtkWidget          *about;
+  const gchar        *authors[] =
+    {"The Rasterman", NULL};
+  
+  about = gnome_about_new
+    (_("Desktop Pager Applet"), "0.1", _("Copyright (C)1998 Red Hat Software"),
+     authors,
+     _("Pager for a GNOME compliant Window Manager"),
+     NULL);
+  gtk_widget_show(about);
+  data = NULL;
   widget = NULL;
 }
 
+void
+cb_prop_cancel(GtkWidget *widget, gpointer data)
+{
+   gtk_widget_destroy(widget);
+}
+
+void
+cb_prop_apply(GtkWidget *widget, gpointer data)
+{
+}
+
 void 
-kill_cb(GtkWidget * widget, Task * t)
+cb_applet_properties(AppletWidget * widget, gpointer data)
+{
+   GtkWidget *prop = NULL;
+   GtkWidget *table, *label, *spin, *check;
+   GtkAdjustment *adj;
+   
+   if (!prop) 
+     {
+	prop = gnome_property_box_new();
+	gtk_signal_connect (GTK_OBJECT (prop), "delete_event",
+			    GTK_SIGNAL_FUNC(cb_prop_cancel), NULL);
+	gtk_signal_connect (GTK_OBJECT(prop), "apply",
+			    GTK_SIGNAL_FUNC(cb_prop_apply), NULL);
+	gtk_window_set_title(GTK_WINDOW(&GNOME_PROPERTY_BOX(prop)->dialog.window),
+			     _("Gnome Pager Settings"));
+	table = gtk_table_new(1, 1, FALSE);
+	gtk_widget_show(table);
+	gnome_property_box_append_page(GNOME_PROPERTY_BOX(prop), table,
+				       gtk_label_new (_("Display")));
+	check = gtk_check_button_new_with_label(_("Show all tasks on all desktops"));
+	gtk_widget_show(check);
+	gtk_table_attach(GTK_TABLE(table), check, 
+			 2, 4, 0, 1, GTK_FILL|GTK_EXPAND,0,0,0);
+	check = gtk_check_button_new_with_label(_("Show tasks"));
+	gtk_widget_show(check);
+	gtk_table_attach(GTK_TABLE(table), check, 
+			 2, 4, 1, 2, GTK_FILL|GTK_EXPAND,0,0,0);
+	check = gtk_check_button_new_with_label(_("Show pager"));
+	gtk_widget_show(check);
+	gtk_table_attach(GTK_TABLE(table), check, 
+			 2, 4, 2, 3, GTK_FILL|GTK_EXPAND,0,0,0);
+	check = gtk_check_button_new_with_label(_("Use small pagers"));
+	gtk_widget_show(check);
+	gtk_table_attach(GTK_TABLE(table), check, 
+			 2, 4, 3, 4, GTK_FILL|GTK_EXPAND,0,0,0);
+	adj = (GtkAdjustment *)gtk_adjustment_new((gfloat)mask_task_width, 20, 
+						  (gfloat)gdk_screen_width(), 
+						  16, 16, 16 );
+	label = gtk_label_new(_("Maximum width of horizontal task list"));
+	gtk_widget_show(label);
+	spin = gtk_spin_button_new(adj, 1, 0);
+	gtk_widget_show(spin);
+	gtk_table_attach(GTK_TABLE(table), label, 
+			 0, 1, 0, 1, GTK_FILL|GTK_EXPAND,0,0,0);
+	gtk_table_attach(GTK_TABLE(table), spin, 
+			 1, 2, 0, 1, GTK_FILL|GTK_EXPAND,0,0,0);
+	adj = (GtkAdjustment *)gtk_adjustment_new((gfloat)task_rows_h, 1, 
+						  8, 1, 1, 1 );
+	label = gtk_label_new(_("Number of rows of horizontal tasks"));
+	gtk_widget_show(label);
+	spin = gtk_spin_button_new(adj, 1, 0);
+	gtk_widget_show(spin);
+	gtk_table_attach(GTK_TABLE(table), label, 
+			 0, 1, 1, 2, GTK_FILL|GTK_EXPAND,0,0,0);
+	gtk_table_attach(GTK_TABLE(table), spin, 
+			 1, 2, 1, 2, GTK_FILL|GTK_EXPAND,0,0,0);
+	adj = (GtkAdjustment *)gtk_adjustment_new((gfloat)task_rows_v, 20, 
+						  4, 1, 1, 1 );
+	label = gtk_label_new(_("Number of vertical colums of tasks"));
+	gtk_widget_show(label);
+	spin = gtk_spin_button_new(adj, 1, 0);
+	gtk_widget_show(spin);
+	gtk_table_attach(GTK_TABLE(table), label, 
+			 0, 1, 2, 3, GTK_FILL|GTK_EXPAND,0,0,0);
+	gtk_table_attach(GTK_TABLE(table), spin, 
+			 1, 2, 2, 3, GTK_FILL|GTK_EXPAND,0,0,0);
+	adj = (GtkAdjustment *)gtk_adjustment_new((gfloat)pager_rows, 1, 
+						  8, 1, 1, 1 );
+	label = gtk_label_new(_("Number rows of pagers"));
+	gtk_widget_show(label);
+	spin = gtk_spin_button_new(adj, 1, 0);
+	gtk_widget_show(spin);
+	gtk_table_attach(GTK_TABLE(table), label, 
+			 0, 1, 3, 4, GTK_FILL|GTK_EXPAND,0,0,0);
+	gtk_table_attach(GTK_TABLE(table), spin, 
+			 1, 2, 3, 4, GTK_FILL|GTK_EXPAND,0,0,0);
+	
+     }
+   if (prop)
+     gtk_widget_show(prop);
+   data = NULL;
+   widget = NULL;
+}
+
+
+
+/* UTILITY functions */
+
+void *
+util_get_atom(Window win, gchar *atom, Atom type, gint *size)
+{
+  unsigned char      *retval;
+  Atom                to_get, type_ret;
+  unsigned long       bytes_after, num_ret;
+  int                 format_ret;
+  long                length;
+  void               *data;
+  
+  to_get = XInternAtom(GDK_DISPLAY(), atom, False);
+  retval = NULL;
+  length = 0x7fffffff;
+  XGetWindowProperty(GDK_DISPLAY(), win, to_get, 0,
+		     length,
+		     False, type,
+		     &type_ret,
+		     &format_ret,
+		     &num_ret,
+		     &bytes_after,
+		     &retval);
+  if ((retval) && (num_ret > 0) && (format_ret > 0))
+    {
+      data = g_malloc(num_ret * (format_ret >> 3));
+      if (data)
+	memcpy(data, retval, num_ret * (format_ret >> 3));
+      XFree(retval);
+      *size = num_ret * (format_ret >> 3);
+      return data;
+    }
+  return NULL;
+}
+
+gchar              *
+util_reduce_chars(gchar * s, int num)
+{
+  int                 l;
+  gchar              *ss;
+  
+  l = strlen(s);
+  if (l > num)
+    {
+      ss = g_malloc(num + 4);
+      ss[0] = 0;
+      strncat(ss, s, num);
+      strcat(ss, "...");
+      return ss;
+    }
+  else
+    return strdup(s);
+}
+
+
+
+/* CLIENT WINDOW manipulation functions */
+
+void
+client_win_kill(Task *t)
+{
+  XKillClient(GDK_DISPLAY(), (XID)t->win);
+}
+
+void
+client_win_close(Task *t)
 {
   XClientMessageEvent ev;
   Atom                a1, a2, a3, *prop;
   unsigned long       lnum, ldummy;
   int                 num, i, del, dummy;
-
+  
   a1 = XInternAtom(GDK_DISPLAY(), "WM_DELETE_WINDOW", False);
   a2 = XInternAtom(GDK_DISPLAY(), "WM_PROTOCOLS", False);
   num = 0;
@@ -177,89 +275,24 @@ kill_cb(GtkWidget * widget, Task * t)
   else
     XKillClient(GDK_DISPLAY(), (XID) t->win);
   XSync(GDK_DISPLAY(), False);
-  widget = NULL;
 }
 
-void 
-showpop_cb(GtkWidget * widget, gpointer data)
-{
-  gint x, y;
-  gint screen_width;
-  gint screen_height;
-  GdkCursor *cursor;
-  
-  if (GTK_WIDGET_VISIBLE(popbox))
-    {
-      gdk_pointer_ungrab (GDK_CURRENT_TIME);
-      gtk_widget_hide(popbox);
-      gtk_grab_remove (popbox);
-    }
-  else
-    {
-      gdk_window_get_pointer (NULL, &x, &y, NULL);
-      gtk_widget_size_request (qme, &qme->requisition);
-      screen_width = gdk_screen_width ();
-      screen_height = gdk_screen_height ();
-      
-      if ((orient == ORIENT_UP) || (orient == ORIENT_DOWN))
-	{
-	  x -= (qme->requisition.width / 2);
-	  if (y > screen_height / 2)
-	    y -= (qme->requisition.height + 2);
-	  else
-	    y += 2;
-	}
-      else
-	{
-	  y -= (qme->requisition.height / 2);
-	  if (x > screen_width / 2)
-	    x -= (qme->requisition.width + 2);
-	  else
-	    x += 2;
-	}
-      
-      if ((x + qme->requisition.width) > screen_width)
-	x -= ((x + qme->requisition.width) - screen_width);
-      if (x < 0)
-	x = 0;
-      if ((y + qme->requisition.height) > screen_height)
-	y -= ((y + qme->requisition.height) - screen_height);
-      if (y < 0)
-	y = 0;
-      
-      gtk_widget_set_uposition(popbox, x, y);
-      gtk_widget_show(popbox);
-      while(gtk_events_pending())
-	gtk_main_iteration();
-      cursor = gdk_cursor_new (GDK_ARROW);
-      gdk_pointer_grab (popbox->window, TRUE,
-			GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK |
-			GDK_ENTER_NOTIFY_MASK | GDK_LEAVE_NOTIFY_MASK |
-			GDK_POINTER_MOTION_MASK,
-			NULL, cursor, GDK_CURRENT_TIME);
-      gtk_grab_add (popbox);
-      gdk_cursor_destroy (cursor);
-    }
-  widget = NULL;
-  data = NULL;
-}
 
 void 
-iconify_cb(GtkWidget * widget, Task * t)
+client_win_iconify(Task *t)
 {
   XIconifyWindow(GDK_DISPLAY(), t->win, DefaultScreen(GDK_DISPLAY()));
   XSync(GDK_DISPLAY(), False);
-  widget = NULL;
 }
 
 void 
-show_cb(GtkWidget * widget, Task * t)
+client_win_show(Task *t)
 {
   Atom                a1, a2, a3, *prop;
   XClientMessageEvent ev;
   unsigned long       lnum, ldummy;
   int                 num, i, foc, dummy;
-
+  
   a1 = XInternAtom(GDK_DISPLAY(), "WM_TAKE_FOCUS", False);
   a2 = XInternAtom(GDK_DISPLAY(), "WM_PROTOCOLS", False);
   num = 0;
@@ -288,272 +321,384 @@ show_cb(GtkWidget * widget, Task * t)
       ev.data.l[1] = CurrentTime;
       XSendEvent(GDK_DISPLAY(), t->win, False, 0, (XEvent *) & ev);
     }
-
-  XSetInputFocus(GDK_DISPLAY(), t->win, RevertToPointerRoot, CurrentTime);
-
+  XSetInputFocus(GDK_DISPLAY(), t->win, RevertToPointerRoot, CurrentTime);  
   XRaiseWindow(GDK_DISPLAY(), t->win);
   XMapWindow(GDK_DISPLAY(), t->win);
-  if ((!t->sticky) && (t->desktop != current_workspace - 1))
-    {
-      ev.type = ClientMessage;
-      ev.window = GDK_ROOT_WINDOW();
-      ev.message_type = _XA_GWIN_WORKSPACE;
-      ev.format = 32;
-      ev.data.l[0] = t->desktop;
-      ev.data.l[1] = CurrentTime;
-      
-      XSendEvent(GDK_DISPLAY(), GDK_ROOT_WINDOW(), False,
-		 SubstructureNotifyMask, (XEvent *) &ev);
-    }
+  if ((!t->sticky) && (t->desktop != current_desk - 1))
+    gnome_win_hints_set_current_workspace(t->desktop);
   XSync(GDK_DISPLAY(), False);
-  widget = NULL;
-}
-
-void               *
-AtomGet(Window win, char *atom, Atom type, int *size)
-{
-  unsigned char      *retval;
-  Atom                to_get, type_ret;
-  unsigned long       bytes_after, num_ret;
-  int                 format_ret;
-  long                length;
-  void               *data;
-
-  to_get = XInternAtom(GDK_DISPLAY(), atom, False);
-  retval = NULL;
-  length = 0x7fffffff;
-  XGetWindowProperty(GDK_DISPLAY(), win, to_get, 0,
-		     length,
-		     False, type,
-		     &type_ret,
-		     &format_ret,
-		     &num_ret,
-		     &bytes_after,
-		     &retval);
-  if ((retval) && (num_ret > 0) && (format_ret > 0))
-    {
-      data = g_malloc(num_ret * (format_ret >> 3));
-      if (data)
-	memcpy(data, retval, num_ret * (format_ret >> 3));
-      XFree(retval);
-      *size = num_ret * (format_ret >> 3);
-      return data;
-    }
-  return NULL;
 }
 
 void 
-task_cb(GtkWidget * widget, Task * t)
+client_win_stick(Task *t)
 {
-  static guint32      last = 0;
-  guint32             current;
-  static gchar        was_double = 0;
-  guint32             dub_click_time = 300;
-
-  if (GTK_WIDGET_VISIBLE(popbox))
-    showpop_cb(NULL, NULL);    
-  
-  current = gdk_time_get();
-  if ((current - last > 0) && (current - last < dub_click_time) &&
-      (!was_double))
-    {
-      was_double = 1;
-      iconify_cb(widget, t);
-    }
-  else
-    {
-      show_cb(widget, t);
-      was_double = 0;
-    }
-  last = current;
-  widget = NULL;
-}
-
-gchar              *
-munge(gchar * s, int num)
-{
-  int                 l;
-  gchar              *ss;
-
-  l = strlen(s);
-  if (l > num)
-    {
-      ss = g_malloc(num + 4);
-      ss[0] = 0;
-      strncat(ss, s, num);
-      strcat(ss, "...");
-      return ss;
-    }
-  else
-    return strdup(s);
-}
-
-void 
-client_prop_change_cb(GtkWidget * widget, GdkEvent * ev, Task * t)
-{
-  gchar              *str;
-  int                 size, rev, pstick, pdesk;
-  Window              win, ret;
-  CARD32             *val;
+  XEvent              xev;
   Atom                a;
 
-  win = t->win;
-  XGetInputFocus(GDK_DISPLAY(), &ret, &rev);
+  a = XInternAtom(GDK_DISPLAY(), XA_WIN_STATE, False);
+  xev.type = ClientMessage;
+  xev.xclient.type = ClientMessage;
+  xev.xclient.window = t->win;
+  xev.xclient.message_type = a;
+  xev.xclient.format = 32;
+  xev.xclient.data.l[0] = WIN_STATE_STICKY;
+  xev.xclient.data.l[1] = WIN_STATE_STICKY;
+  xev.xclient.data.l[2] = CurrentTime;
+  
+  XSendEvent(GDK_DISPLAY(), GDK_ROOT_WINDOW(), False, 
+	     SubstructureNotifyMask, (XEvent *) & xev);
+  XSync(GDK_DISPLAY(), False);
+}
+
+void 
+client_win_unstick(Task *t)
+{
+  XEvent              xev;
+  Atom                a;
+
+  a = XInternAtom(GDK_DISPLAY(), XA_WIN_STATE, False);
+  xev.type = ClientMessage;
+  xev.xclient.type = ClientMessage;
+  xev.xclient.window = t->win;
+  xev.xclient.message_type = a;
+  xev.xclient.format = 32;
+  xev.xclient.data.l[0] = WIN_STATE_STICKY;
+  xev.xclient.data.l[1] = 0;
+  xev.xclient.data.l[2] = CurrentTime;
+  
+  XSendEvent(GDK_DISPLAY(), GDK_ROOT_WINDOW(), False, 
+	     SubstructureNotifyMask, (XEvent *) & xev);
+  XSync(GDK_DISPLAY(), False);
+}
+
+void 
+client_win_shade(Task *t)
+{
+  XEvent              xev;
+  Atom                a;
+
+  a = XInternAtom(GDK_DISPLAY(), XA_WIN_STATE, False);
+  xev.type = ClientMessage;
+  xev.xclient.type = ClientMessage;
+  xev.xclient.window = t->win;
+  xev.xclient.message_type = a;
+  xev.xclient.format = 32;
+  xev.xclient.data.l[0] = WIN_STATE_SHADED;
+  xev.xclient.data.l[1] = WIN_STATE_SHADED;
+  xev.xclient.data.l[2] = CurrentTime;
+  
+  XSendEvent(GDK_DISPLAY(), GDK_ROOT_WINDOW(), False, 
+	     SubstructureNotifyMask, (XEvent *) & xev);
+  XSync(GDK_DISPLAY(), False);
+}
+
+void 
+client_win_unshade(Task *t)
+{
+  XEvent              xev;
+  Atom                a;
+
+  a = XInternAtom(GDK_DISPLAY(), XA_WIN_STATE, False);
+  xev.type = ClientMessage;
+  xev.xclient.type = ClientMessage;
+  xev.xclient.window = t->win;
+  xev.xclient.message_type = a;
+  xev.xclient.format = 32;
+  xev.xclient.data.l[0] = WIN_STATE_SHADED;
+  xev.xclient.data.l[1] = 0;
+  xev.xclient.data.l[2] = CurrentTime;
+  
+  XSendEvent(GDK_DISPLAY(), GDK_ROOT_WINDOW(), False, 
+	     SubstructureNotifyMask, (XEvent *) & xev);
+  XSync(GDK_DISPLAY(), False);
+}
+
+
+/* CUSTOM WIDGET STUFF */
+
+void 
+custom_popbox_show(GtkWidget * widget)
+{
+  gint x, y;
+  gint screen_width;
+  gint screen_height;
+  GdkCursor *cursor;
+  
+  if (GTK_WIDGET_VISIBLE(widget))
+    {
+      gdk_pointer_ungrab(GDK_CURRENT_TIME);
+      gtk_widget_hide(widget);
+      gtk_grab_remove(widget);
+    }
+  else
+    {
+      gdk_window_get_pointer(NULL, &x, &y, NULL);
+      gtk_widget_size_request(widget, &widget->requisition);
+      screen_width = gdk_screen_width();
+      screen_height = gdk_screen_height();
+      
+      if ((applet_orient == ORIENT_UP) || (applet_orient == ORIENT_DOWN))
+	{
+	  x -= (widget->requisition.width / 2);
+	  if (y > screen_height / 2)
+	    y -= (widget->requisition.height + 2);
+	  else
+	    y += 2;
+	}
+      else
+	{
+	  y -= (widget->requisition.height / 2);
+	  if (x > screen_width / 2)
+	    x -= (widget->requisition.width + 2);
+	  else
+	    x += 2;
+	}
+      
+      if ((x + widget->requisition.width) > screen_width)
+	x -= ((x + widget->requisition.width) - screen_width);
+      if (x < 0)
+	x = 0;
+      if ((y + widget->requisition.height) > screen_height)
+	y -= ((y + widget->requisition.height) - screen_height);
+      if (y < 0)
+	y = 0;
+      
+      gtk_widget_set_uposition(widget, x, y);
+      gtk_widget_show(widget);
+      while(gtk_events_pending())
+	gtk_main_iteration();
+      cursor = gdk_cursor_new(GDK_ARROW);
+      gdk_pointer_grab (widget->window, TRUE,
+			GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK |
+			GDK_ENTER_NOTIFY_MASK | GDK_LEAVE_NOTIFY_MASK |
+			GDK_POINTER_MOTION_MASK,
+			NULL, cursor, GDK_CURRENT_TIME);
+      gtk_grab_add(widget);
+      gdk_cursor_destroy(cursor);
+    }
+  widget = NULL;
+}
+
+/* PROPERTY CHANGE info gathering callbacks */
+void
+cb_task_change(GtkWidget *widget, GdkEventProperty * ev, Task *t)
+{
+  gint i, tdesk;
+  gchar tsticky;
+  
+  tsticky = t->sticky;
+  tdesk = t->desktop;
+  task_get_info(t);
+
+  if (tsticky)
+    {
+      for (i = 0; i < num_desk; i++)
+	desktop_draw(i);
+    }
+  else
+    {
+      if (t->sticky)
+	{
+	  for (i = 0; i < num_desk; i++)
+	    desktop_draw(i);
+	}
+      else if (tdesk != t->desktop)
+	{
+	  desktop_draw(t->desktop);
+	  desktop_draw(tdesk);
+	}
+      else
+	desktop_draw(t->desktop);
+    }
+  set_task_info_to_button(t);
+  widget = NULL;
+}
+
+void 
+cb_root_prop_change(GtkWidget * widget, GdkEventProperty * ev)
+{
+  gint                desk, pdesk;
+  GdkAtom             at;
+
+  at = gdk_atom_intern(XA_WIN_WORKSPACE, FALSE);
+  if ((ev->atom == at) && (ev->state == GDK_PROPERTY_NEW_VALUE))
+    {
+      desk = gnome_win_hints_get_current_workspace();
+
+      if (desk == current_desk)
+	return;
+      pdesk = current_desk;
+      current_desk = desk;
+      desktop_draw(pdesk);
+      desktop_draw(current_desk);
+      populate_tasks();
+      printf("current desk %i\n", current_desk);
+      return;
+    }
+  
+  at = gdk_atom_intern(XA_WIN_CLIENT_LIST, FALSE);
+  if ((ev->atom == at) && (ev->state == GDK_PROPERTY_NEW_VALUE))
+    {
+      tasks_update();
+      populate_tasks();
+      printf("tasks change\n");
+      return;
+    }
+
+  at = gdk_atom_intern(XA_WIN_WORKSPACE_COUNT, FALSE);
+  if ((ev->atom == at) && (ev->state == GDK_PROPERTY_NEW_VALUE))
+    {
+      num_desk = gnome_win_hints_get_workspace_count();
+      populate_tasks();
+      switch (applet_orient) 
+	{
+	 case ORIENT_UP:
+	 case ORIENT_DOWN:
+	  if (main_box)
+	    gtk_widget_destroy(main_box);
+	  main_box = NULL;
+	  init_applet_gui_horiz();
+	  break;
+	 case ORIENT_LEFT:
+	 case ORIENT_RIGHT:
+	  if (main_box)
+	    gtk_widget_destroy(main_box);
+	  main_box = NULL;
+	  init_applet_gui_vert();
+	  break;
+	}
+      printf("number of desks %i\n", num_desk);
+      return;
+    }
+
+  at = gdk_atom_intern(XA_WIN_WORKSPACE_NAMES, FALSE);
+  if ((ev->atom == at) && (ev->state == GDK_PROPERTY_NEW_VALUE))
+    {
+      get_desktop_names();
+      printf("new desk names\n");
+      return;
+    }
+  widget = NULL;
+}
+
+/* FILTER hack to stop gtk pulling out the rug from under me */
+GdkFilterReturn
+cb_filter_intercept(GdkXEvent *gdk_xevent, GdkEvent *event, gpointer data)
+{
+  XEvent *xevent;
+
+  xevent = (XEvent *)gdk_xevent; 
+  if ((xevent->type == DestroyNotify))
+     {
+      if (xevent->type == DestroyNotify)
+	gdk_window_destroy_notify(((GdkEventAny *)event)->window);
+      return GDK_FILTER_REMOVE;
+    }
+  return GDK_FILTER_CONTINUE;
+}
+
+/* TASK manipulation functions */
+
+void
+task_get_info(Task *t)
+{
+  GnomeWinState       *win_state;
+  Window               w2, ret, root, *wl;
+  gchar               *name;
+  gint                 size;
+  guint                w, h, d;
+  CARD32              *val;
+  Atom                 a;
+  int                  rev;
+
+  /* is this window focused */
   t->focused = 0;
-  if (win == ret)
+  XGetInputFocus(GDK_DISPLAY(), &ret, &rev);
+  if (t->win == ret)
     t->focused = 1;
+
+  /* get this windows title */
+  name = NULL;
   if (t->name)
     g_free(t->name);
   t->name = NULL;
-
-  str = NULL;
-  str = AtomGet(win, "WM_NAME", XA_STRING, &size);
-  if (str)
+  name = util_get_atom(t->win, "WM_NAME", XA_STRING, &size);
+  if (name)
     {
       t->name = g_malloc(size + 1);
-      memcpy(t->name, str, size);
+      memcpy(t->name, name, size);
       t->name[size] = 0;
-      g_free(str);
+      g_free(name);
     }
-  str = NULL;
-  if (t->name)
-    {
-      str = munge(t->name, tasks_in_row);
-      gtk_label_set(GTK_LABEL(t->label), str);
-      g_free(str);
-      str = munge(t->name, 16);
-      gtk_label_set(GTK_LABEL(t->_label), str);
-      g_free(str);
-    }
-  else
-    {
-      gtk_label_set(GTK_LABEL(t->label), _("??"));
-      gtk_label_set(GTK_LABEL(t->_label), _("??"));
-    }
-/*  
-  if (t->name)
-    {
-      gtk_tooltips_set_tip(GTK_TOOLTIPS(t->tooltip),
-			   t->widget, t->name, t->name);
-      gtk_tooltips_set_tip(GTK_TOOLTIPS(t->_tooltip),
-			   t->_widget, t->name, t->name);
-    }
-  else
-    {
-      gtk_tooltips_set_tip(GTK_TOOLTIPS(t->tooltip),
-			   t->widget, "??", "??");
-      gtk_tooltips_set_tip(GTK_TOOLTIPS(t->_tooltip),
-			   t->_widget, "??", "??");
-    }
-*/
-  
-  pstick = t->sticky;
-  pdesk = t->desktop;
+
+  /* get the state of this window */
   t->iconified = 0;
   t->shaded = 0;
   t->sticky = 0;
   t->desktop = 0;
 
-  val = AtomGet(win, "WIN_STATE", XA_CARDINAL, &size);
-  if (val)
-    {
-      if (*val & GWIN_STATE_STICKY)
-	t->sticky = 1;
-      if (*val & GWIN_STATE_SHADED)
-	t->shaded = 1;
-      g_free(val);
-    }
+  /* iconified ? */
   a = XInternAtom(GDK_DISPLAY(), "WM_STATE", False);
-  val = AtomGet(win, "WM_STATE", a, &size);
+  val = util_get_atom(t->win, "WM_STATE", a, &size);
   if (val)
     {
       if (val[0] == IconicState)
 	t->iconified = 1;
       g_free(val);
     }
-  val = AtomGet(win, "WIN_WORKSPACE", XA_CARDINAL, &size);
+  
+  /* sticky or shaded ? */
+  win_state = util_get_atom(t->win, "WIN_STATE", XA_CARDINAL, &size);
+  if (win_state)
+    {
+      if (*win_state & WIN_STATE_STICKY)
+	t->sticky = 1;
+      if (*win_state & WIN_STATE_SHADED)
+	t->shaded = 1;
+      g_free(win_state);
+    }
+  
+  /* what desktop is it on ? */
+  val = util_get_atom(t->win, "WIN_WORKSPACE", XA_CARDINAL, &size);
   if (val)
     {
       t->desktop = *val;
       g_free(val);
     }
-  gtk_widget_hide(t->state[0]);
-  gtk_widget_hide(t->_state[0]);
-  gtk_widget_hide(t->state[1]);
-  gtk_widget_hide(t->_state[1]);
-  if (t->iconified)
+  
+  /* geometry!!!!!!!!!!! */
+  XGetGeometry(GDK_DISPLAY(), t->win, &ret, &size, &size, &w, &h, &d, &d);
+  t->w = (gint)w;
+  t->h = (gint)h;
+  wl = NULL;
+  w2 = t->win;
+  while (XQueryTree(GDK_DISPLAY(), w2, &root, &ret, &wl, &size))
     {
-      gtk_widget_show(t->state[0]);
-      gtk_widget_show(t->_state[0]);
-    }
-  else
-    {
-      gtk_widget_show(t->state[1]);
-      gtk_widget_show(t->_state[1]);
-    }
-  if (t->focused)
-    {
-      gtk_widget_set_state(t->widget, GTK_STATE_ACTIVE);
-    }
-  else
-    {
-      if (ev == (void *)1)
+      if ((wl) && (size > 0))
+	XFree(wl);
+      w2 = ret;
+      if (ret == root)
+	break;
+      val = util_get_atom(ret, "ENLIGHTENMENT_DESKTOP", XA_CARDINAL, &size);
+      if (val)
 	{
-	  gtk_widget_set_state(t->widget, GTK_STATE_PRELIGHT);
-	  gtk_widget_set_state(t->_widget, GTK_STATE_PRELIGHT);
-	}
-      else
-	{
-	  gtk_widget_set_state(t->widget, GTK_STATE_NORMAL);
-	  gtk_widget_set_state(t->_widget, GTK_STATE_NORMAL);
+	  break;
+	  g_free(val);
 	}
     }
-  if ((t->sticky != pstick) || (t->desktop != pdesk))
-    update_tasks();
-  ev = NULL;
-  widget = NULL;
+  /* Wheee w2 is our actualy "root" window even on virtual root windows */
+  XTranslateCoordinates(GDK_DISPLAY(), t->win, w2, 0, 0, 
+			&(t->x), &(t->y), &ret);
 }
 
 void 
-enter_cb(GtkWidget * widget, Task * t)
-{
-  client_prop_change_cb(widget, (void *)1, t);
-}
-
-void 
-leave_cb(GtkWidget * widget, Task * t)
-{
-  client_prop_change_cb(widget, NULL, t);
-}
-
-void
-shade_cb(GtkWidget * widget, Task * t)
-{
-  if (t->shaded)
-    make_unshaded(t->win);
-  else
-    make_shaded(t->win);
-  widget = NULL;
-}
-
-void
-showhide_cb(GtkWidget * widget, Task * t)
-{
-  if (t->iconified)
-    show_cb(NULL, t);
-  else
-    iconify_cb(NULL, t);
-  widget = NULL;
-}
-
-void 
-add_task(Window win)
+task_add(Window win)
 {
   Task               *t;
   int                 size;
   gchar              *str;
-  GtkWidget          *hb;
   CARD32             *val;
+  GnomeWinHints      *win_hints;
   GnomeUIInfo         uinfo[5] = 
     {
       GNOMEUIINFO_END,
@@ -563,18 +708,22 @@ add_task(Window win)
       GNOMEUIINFO_END
     };
 
-  val = AtomGet(win, "WIN_HINTS", XA_CARDINAL, &size);
-  if (val)
+  /* has this task asked to be skipped by the task list ? */
+  win_hints = util_get_atom(win, "WIN_HINTS", XA_CARDINAL, &size);
+  if (win_hints)
     {
-      if ((*val) & GWIN_HINTS_SKIP_TASKBAR)
+      if ((*win_hints) & WIN_HINTS_SKIP_TASKBAR)
 	{
-	  g_free(val);
+	  g_free(win_hints);
 	  return;
 	}
+      g_free(win_hints);
     }
 
+  /* create task struct */
   t = g_malloc(sizeof(Task));
 
+  /* initialize members */
   t->win = win;
   t->x = 0;
   t->y = 0;
@@ -586,6 +735,934 @@ add_task(Window win)
   t->focused = 0;
   t->sticky = 0;
   t->desktop = 0;
+  t->dummy = NULL;
+  t->gdkwin = NULL;
+  
+  /* create dummy GTK widget to get events from */
+  t->gdkwin = gdk_window_foreign_new(win);
+  t->dummy = gtk_window_new(GTK_WINDOW_POPUP);
+  /* realize that damn widget */
+  gtk_widget_realize(t->dummy);
+  gdk_window_add_filter(t->gdkwin, cb_filter_intercept, t->dummy);  
+  /* fake events form win producing signals on dummy widget */
+  gdk_window_set_user_data(t->gdkwin, t->dummy);
+  /* conntect to "faked" signals */
+  gtk_signal_connect(GTK_OBJECT(t->dummy), "property_notify_event",
+		     GTK_SIGNAL_FUNC(cb_task_change), t);
+  gtk_signal_connect(GTK_OBJECT(t->dummy), "focus_in_event",
+		     GTK_SIGNAL_FUNC(cb_task_change), t);
+  gtk_signal_connect(GTK_OBJECT(t->dummy), "focus_out_event",
+		     GTK_SIGNAL_FUNC(cb_task_change), t);
+  gtk_signal_connect(GTK_OBJECT(t->dummy), "configure_event",
+		     GTK_SIGNAL_FUNC(cb_task_change), t);
+
+  /* make sure we get the events */
+  XSelectInput(GDK_DISPLAY(), win, PropertyChangeMask | FocusChangeMask |
+	       StructureNotifyMask);
+  /* add this client to the list of clients */
+  tasks = g_list_append(tasks, t);
+
+  /* get info about task */
+  task_get_info(t);
+}
+
+
+void 
+task_delete(Window win)
+{
+  guint               i, n, tdesk;
+  Task               *t;
+  gchar               tstick;
+
+  n = g_list_length(tasks);
+  for (i = 0; i < n; i++)
+    {
+      t = (g_list_nth(tasks, i))->data;
+      if (win == t->win)
+	{
+	  tstick = t->sticky;
+	  tdesk = t->desktop;
+	  if (t->name)
+	    g_free(t->name);
+	  if (t->gdkwin)
+	    gdk_window_unref(t->gdkwin);
+	  if (t->dummy)
+	    gtk_widget_destroy(t->dummy);
+	  tasks = g_list_remove(tasks, t);
+	  g_free(t);
+	  if (!tstick)
+	    desktop_draw(tdesk);
+	  else
+	    {
+	      for (i = 0; i < (guint)num_desk; i++)
+		desktop_draw(i);
+	    }
+	  return;
+	}
+    }
+}
+
+Task *
+task_find(Window win)
+{
+  guint               n, i;
+  Task               *t;
+
+  n = g_list_length(tasks);
+  for (i = 0; i < n; i++)
+    {
+      t = (g_list_nth(tasks, i))->data;
+      if (win == t->win)
+	return t;
+    }
+  return NULL;
+}
+
+void 
+tasks_match(Window * win, guint num)
+{
+  guint               i, j, there;
+  GList              *p1;
+  Task               *t;
+
+  p1 = tasks;
+  while (p1)
+    {
+      t = p1->data;
+      p1 = p1->next;
+      if (t)
+	{
+	  there = 0;
+	  for (j = 0; j < num; j++)
+	    {
+	      if (win[j] == t->win)
+		{
+		  there = 1;
+		  j = num;
+		}
+	    }
+	  if (!there)
+	    task_delete(t->win);
+	}
+    }
+  for (i = 0; i < num; i++)
+    {
+      there = 0;
+      p1 = tasks;
+      while (p1)
+	{
+	  t = p1->data;
+	  p1 = p1->next;
+	  if (t->win == win[i])
+	    {
+	      there = 1;
+	      p1 = NULL;	      
+	    }
+	}
+      if (!there)
+	task_add(win[i]);
+    }
+}
+
+void 
+tasks_update(void)
+{
+  Window             *list;
+  gint                 num, size;
+
+  list = util_get_atom(GDK_ROOT_WINDOW(), "WIN_CLIENT_LIST", 
+		       XA_CARDINAL, &size);
+  if ((size > 0) && (list))
+    {
+      num = size / sizeof(CARD32);
+      tasks_match(list, num);
+      g_free(list);
+    }
+}
+
+void 
+get_desktop_names(void)
+{
+  GList *gl, *p;
+  gint i;
+  
+  for (i = 0; i < 32; i++)
+    {
+      if (desk_name[i])
+	g_free(desk_name[i]);
+      desk_name[i] = NULL;
+    }
+  gl = gnome_win_hints_get_workspace_names();  
+  p = gl;
+  i = 0;
+  while ((p)  && (i < 32))
+    {
+      desk_name[i++] = p->data;
+      p = p->next;
+    }
+  if (gl)
+    g_list_free(gl);
+}
+
+/* select on events for the root window properies */
+void
+select_root_properties(void)
+{
+  GtkWidget *dummy_win;
+  
+  dummy_win = gtk_window_new(GTK_WINDOW_POPUP);
+  gtk_widget_realize(dummy_win);
+  gdk_window_set_user_data(GDK_ROOT_PARENT(), dummy_win);
+  gdk_window_ref(GDK_ROOT_PARENT());
+  gdk_xid_table_insert(&(GDK_WINDOW_XWINDOW(GDK_ROOT_PARENT())), 
+		       GDK_ROOT_PARENT());
+  gtk_signal_connect(GTK_OBJECT(dummy_win), "property_notify_event",
+		     GTK_SIGNAL_FUNC(cb_root_prop_change), NULL);
+  XSelectInput(GDK_DISPLAY(), GDK_WINDOW_XWINDOW(GDK_ROOT_PARENT()), 
+	       PropertyChangeMask);
+}
+
+/* MAIN MAIN MAIN MAIN */
+int 
+main(int argc, char *argv[])
+{
+  gint i;
+  
+  for (i = 0; i < 32; i++)
+    {
+      desk_name[i] = NULL;
+      desk_widget[i] = NULL;
+    }
+  
+  /*  panel_corba_register_arguments();*/
+  applet_widget_init("gnomepager_applet","0.1", argc, argv, NULL, 
+		     0, NULL, TRUE, FALSE, NULL, NULL);
+
+  gnome_win_hints_init();  
+  if (!gnome_win_hints_wm_exists())
+    {
+      g_error(_("This applet requires you to run a GNOME compliant WM\n"));
+      exit(1);
+    }
+  gdk_error_warnings = 0;  
+  get_desktop_names();
+  current_desk = gnome_win_hints_get_current_workspace();
+  num_desk = gnome_win_hints_get_workspace_count();
+  tasks_update();
+  select_root_properties();
+  
+  applet = applet_widget_new();
+  if (!applet)
+    {
+      g_error("Can't create applet!\n");
+      exit(1);
+    }
+  gtk_signal_connect(GTK_OBJECT(applet), "change_orient",
+		     GTK_SIGNAL_FUNC(cb_applet_orient_change),
+		     NULL);
+  applet_widget_register_stock_callback(APPLET_WIDGET(applet),
+					"about",
+					GNOME_STOCK_MENU_ABOUT,
+					_("About..."),
+					cb_applet_about,
+					NULL);
+  applet_widget_register_stock_callback(APPLET_WIDGET(applet),
+					"properties",
+					GNOME_STOCK_MENU_PROP,
+					_("Properties..."),
+					cb_applet_properties,
+					NULL);
+  
+  gtk_widget_realize(applet);
+  init_applet_gui();
+  gtk_widget_show(applet);
+  
+  applet_widget_gtk_main();
+  return 0;
+}
+
+void
+init_applet_gui(void)
+{
+  gtk_window_set_policy(GTK_WINDOW(applet), 1, 1, 1);
+
+  if (!hold_box)
+    {
+      hold_box = gtk_alignment_new(0.0, 0.0, 0.0, 0.0);
+      gtk_widget_show(hold_box);
+      applet_widget_add(APPLET_WIDGET(applet), hold_box);
+    }
+}
+
+void 
+desktop_draw(gint i)
+{
+  if ((i >= 0) && (i < 32) && (desk_widget[i]))
+    desktop_cb_redraw(desk_widget[i], NULL);
+}
+
+void
+desktop_cb_button_down(GtkWidget * widget, GdkEventButton *event)
+{
+  gint desk, selm, button;
+  
+  button = event->button;  
+  desk = (gint)gtk_object_get_data(GTK_OBJECT(widget), "desktop");
+  
+  if (button == 1)
+    gnome_win_hints_set_current_workspace(desk);
+}
+
+void
+desktop_cb_button_up(GtkWidget * widget, GdkEventButton *event)
+{
+  gint desk, selm, button;
+  
+  button = event->button;  
+  desk = (gint)gtk_object_get_data(GTK_OBJECT(widget), "desktop");
+}
+
+void
+desktop_cb_redraw(GtkWidget *widget, gpointer data)
+{
+  GtkStyle *s;
+  GdkWindow *win;
+  gint sel, sw, sh, w, h, desk, x, y, ww, hh;
+  Task *t;
+  GList *p;
+  
+  desk = (gint)gtk_object_get_data(GTK_OBJECT(widget), "desktop");
+  sel = (gint)gtk_object_get_data(GTK_OBJECT(widget), "select");
+  w = widget->allocation.width - 4;
+  h = widget->allocation.height - 4;
+  s = widget->style;
+  win = widget->window;
+  sw = gdk_screen_width();
+  sh = gdk_screen_height();
+  
+  if (desk == current_desk)
+    gtk_draw_box(s, win, GTK_STATE_ACTIVE, GTK_SHADOW_IN, 0, 0, -1, -1);
+  else
+    gtk_draw_box(s, win, GTK_STATE_ACTIVE, GTK_SHADOW_OUT, 0, 0, -1, -1);
+  
+  p = tasks;
+  while (p)
+    {
+      t = (Task *)p->data;
+      if (((t->desktop == desk) || (t->sticky)) && (!(t->iconified)))
+	{
+	  x = 2 + (t->x * w) / sw;
+	  ww = (t->w * w) / sw;
+	  y = 2 +(t->y * h) / sh;
+	  hh = (t->h * h) / sh;
+	  if (t->focused)
+	    gtk_draw_box(s, win, GTK_STATE_PRELIGHT, GTK_SHADOW_OUT, 
+			 x, y, ww, hh);
+	  else
+	    gtk_draw_box(s, win, GTK_STATE_NORMAL, GTK_SHADOW_ETCHED_IN, 
+			 x, y, ww, hh);
+	    
+	}
+      p = p->next;
+    }
+}
+
+GtkWidget *
+make_desktop_pane(gint desktop, gint width, gint height)
+{
+  GtkWidget *area;
+  
+  area = gtk_drawing_area_new();
+  gtk_drawing_area_size(GTK_DRAWING_AREA(area), width, height);
+  gtk_object_set_data(GTK_OBJECT(area), "desktop", (gpointer)desktop);
+  gtk_object_set_data(GTK_OBJECT(area), "select", (gpointer)0);
+  gtk_widget_set_events(area, GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK |
+			GDK_EXPOSURE_MASK);
+  gtk_signal_connect(GTK_OBJECT(area), "button_press_event",
+		     GTK_SIGNAL_FUNC(desktop_cb_button_down), NULL);
+  gtk_signal_connect(GTK_OBJECT(area), "button_release_event",
+		     GTK_SIGNAL_FUNC(desktop_cb_button_up), NULL);
+  gtk_signal_connect(GTK_OBJECT(area), "expose_event",
+		     GTK_SIGNAL_FUNC(desktop_cb_redraw), NULL);
+  return area;
+}
+
+void
+init_applet_gui_horiz(void)
+{
+  GtkWidget *hbox, *frame, *button, *arrow, *table;
+  GtkWidget *desk, *align;
+  gint i, j, k;
+  
+  if (main_box)
+    return;
+  hbox = gtk_hbox_new(FALSE, 0);
+  gtk_widget_show(hbox);
+  main_box = hbox;
+  gtk_container_add(GTK_CONTAINER(hold_box), hbox);
+
+  align = gtk_alignment_new(0.5, 0.5, 0.0, 0.0);
+  gtk_widget_show(align);
+  gtk_box_pack_start(GTK_BOX(hbox), align, FALSE, FALSE, 0);
+  
+  frame = gtk_frame_new(NULL);
+  gtk_frame_set_shadow_type(GTK_FRAME(frame), GTK_SHADOW_IN);
+  gtk_widget_show(frame);
+  gtk_container_add(GTK_CONTAINER(align), frame);
+
+  table = gtk_table_new(1, 1, TRUE);
+  gtk_widget_show(table);
+  gtk_container_add(GTK_CONTAINER(frame), table);
+  
+  j = 0;
+  k = 0;
+  for (i = 0; i < num_desk; i++)
+    {
+      if (pager_size)
+	desk = make_desktop_pane(i, 31, 22);
+      else
+	desk = make_desktop_pane(i, 62, 44);
+      desk_widget[i] = desk;
+      gtk_widget_show(desk);
+      gtk_table_attach_defaults(GTK_TABLE(table), desk,
+				j, j + 1, k, k + 1);
+      j++;
+      if (j >= num_desk / pager_rows)
+	{
+	  j = 0;
+	  k ++;
+	}
+    }
+  
+  if (applet_orient == ORIENT_UP)
+    arrow = gtk_arrow_new(GTK_ARROW_UP, GTK_SHADOW_OUT);
+  else
+    arrow = gtk_arrow_new(GTK_ARROW_DOWN, GTK_SHADOW_OUT);
+  gtk_widget_show(arrow);
+  
+  button = gtk_button_new();
+  gtk_widget_show(button);
+  gtk_container_add(GTK_CONTAINER(button), arrow);
+  gtk_box_pack_start(GTK_BOX(hbox), button, FALSE, FALSE, 0);
+/*  gtk_signal_connect(GTK_OBJECT(button), "clicked",
+		     GTK_SIGNAL_FUNC(showpop_cb), NULL);*/  
+
+  frame = gtk_frame_new(NULL);
+  gtk_box_pack_start(GTK_BOX(hbox), frame, FALSE, FALSE, 0);
+  gtk_frame_set_shadow_type(GTK_FRAME(frame), GTK_SHADOW_IN);
+  gtk_widget_show(frame);
+
+  table = gtk_table_new(1, 1, TRUE);
+  gtk_widget_show(table);
+  gtk_container_add(GTK_CONTAINER(frame), table);
+  task_table = table;
+  emtpy_task_widgets();
+  populate_tasks();
+}
+
+void
+init_applet_gui_vert(void)
+{
+  GtkWidget *vbox, *frame, *button, *arrow, *table;
+  GtkWidget *desk, *align;
+  gint i, j, k;
+  
+  if (main_box)
+    return;
+  vbox = gtk_vbox_new(FALSE, 0);
+  gtk_widget_show(vbox);
+  main_box = vbox;
+  gtk_container_add(GTK_CONTAINER(hold_box), vbox);
+
+  align = gtk_alignment_new(0.5, 0.5, 0.0, 0.0);
+  gtk_widget_show(align);
+  gtk_box_pack_start(GTK_BOX(vbox), align, FALSE, FALSE, 0);
+  
+  frame = gtk_frame_new(NULL);
+  gtk_frame_set_shadow_type(GTK_FRAME(frame), GTK_SHADOW_IN);
+  gtk_widget_show(frame);
+  gtk_container_add(GTK_CONTAINER(align), frame);
+
+  table = gtk_table_new(1, 1, TRUE);
+  gtk_widget_show(table);
+  gtk_container_add(GTK_CONTAINER(frame), table);
+  
+  j = 0;
+  k = 0;
+  for (i = 0; i < num_desk; i++)
+    {
+      if (pager_size)
+	desk = make_desktop_pane(i, PAGER_W_0, PAGER_H_0);
+      else
+	desk = make_desktop_pane(i, PAGER_W_1, PAGER_W_1);
+      desk_widget[i] = desk;
+      gtk_widget_show(desk);
+      gtk_table_attach_defaults(GTK_TABLE(table), desk,
+				j, j + 1, k, k + 1);
+      j++;
+      if (j >= pager_rows)
+	{
+	  j = 0;
+	  k ++;
+	}
+    }
+  
+  if (applet_orient == ORIENT_LEFT)
+    arrow = gtk_arrow_new(GTK_ARROW_LEFT, GTK_SHADOW_OUT);
+  else
+    arrow = gtk_arrow_new(GTK_ARROW_RIGHT, GTK_SHADOW_OUT);
+  gtk_widget_show(arrow);
+  
+  button = gtk_button_new();
+  gtk_widget_show(button);
+  gtk_container_add(GTK_CONTAINER(button), arrow);
+  gtk_box_pack_start(GTK_BOX(vbox), button, FALSE, FALSE, 0);
+/*  gtk_signal_connect(GTK_OBJECT(button), "clicked",
+		     GTK_SIGNAL_FUNC(showpop_cb), NULL);*/  
+
+  frame = gtk_frame_new(NULL);
+  gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
+  gtk_frame_set_shadow_type(GTK_FRAME(frame), GTK_SHADOW_IN);
+  gtk_widget_show(frame);
+
+  table = gtk_table_new(1, 1, TRUE);
+  gtk_widget_show(table);
+  gtk_container_add(GTK_CONTAINER(frame), table);
+  task_table = table;
+  emtpy_task_widgets();
+  populate_tasks();
+}
+
+void
+task_cb_button_enter(GtkWidget * widget, GdkEventCrossing *event)
+{
+  Task *t;
+  
+  t = (Task *)gtk_object_get_data(GTK_OBJECT(widget), "task");
+  set_task_info_to_button(t);
+}
+
+void
+task_cb_button_leave(GtkWidget * widget, GdkEventCrossing *event)
+{
+  Task *t;
+  
+  t = (Task *)gtk_object_get_data(GTK_OBJECT(widget), "task");
+  set_task_info_to_button(t);
+}
+
+void
+task_cb_button_down(GtkWidget * widget, GdkEventButton *event)
+{
+  gint button;
+  Task *t;
+  
+  button = event->button;  
+  t = (Task *)gtk_object_get_data(GTK_OBJECT(widget), "task");
+  set_task_info_to_button(t);
+}
+
+void
+task_cb_button_up(GtkWidget * widget, GdkEventButton *event)
+{
+  gint button;
+  Task *t;
+  
+  button = event->button;  
+  t = (Task *)gtk_object_get_data(GTK_OBJECT(widget), "task");
+  set_task_info_to_button(t);
+  if (button == 1)
+    client_win_show(t);
+  else if (button == 2)
+    {
+      if (t->iconified)
+	client_win_show(t);
+      else
+	client_win_iconify(t);
+    }
+}
+
+void
+cb_showhide(GtkWidget * widget, Task *t)
+{
+   if (t->iconified)
+     client_win_show(t);
+   else
+     client_win_iconify(t);
+}
+
+void
+cb_shade(GtkWidget * widget, Task *t)
+{
+   if (t->shaded)
+     client_win_unshade(t);
+   else
+     client_win_shade(t);
+}
+
+void
+cb_kill(GtkWidget * widget, Task *t)
+{
+   client_win_close(t);
+}
+
+void
+cb_nuke(GtkWidget * widget, Task *t)
+{
+   client_win_kill(t);
+}
+
+void
+emtpy_task_widgets(void)
+{
+  if (task_widgets)
+    g_list_free(task_widgets);
+  task_widgets = NULL;
+}
+
+void
+desktroy_task_widgets(void)
+{
+  GList        *p;
+  
+  p = task_widgets;
+  while (p)
+    {
+#ifdef ANIMATION      
+      GtkWidget    *icon2;
+      
+      icon2 = (GtkWidget *)gtk_object_get_data(GTK_OBJECT(p->data), "icon2");
+      gnome_animator_stop(GNOME_ANIMATOR(icon2));
+#endif     
+      gtk_widget_destroy(GTK_WIDGET(p->data));
+      p = p->next;
+    }
+  emtpy_task_widgets();
+}
+
+GtkWidget *
+find_task_widget(Task *t)
+{
+  GList           *p;
+  GtkWidget       *button;
+  Task            *tt;
+  
+  p = task_widgets;
+  while(p)
+    {
+      button = (GtkWidget *)(p->data);
+      tt = (Task *)gtk_object_get_data(GTK_OBJECT(button), "task");
+      if (tt == t)
+	return button;
+      p = p->next;
+    }
+  return NULL;
+}
+
+void
+set_task_info_to_button(Task *t)
+{
+  GtkWidget *button, *icon1, *icon2, *icon3, *label;
+  GtkRequisition  req;
+  gint num, len, mw;
+  gchar *str;
+  GList *p;
+
+  if (!t)
+    return;
+  button = find_task_widget(t);
+  if (!button)
+    return;
+  
+  icon1 = (GtkWidget *)gtk_object_get_data(GTK_OBJECT(button), "icon1");
+  icon2 = (GtkWidget *)gtk_object_get_data(GTK_OBJECT(button), "icon2");
+  icon3 = (GtkWidget *)gtk_object_get_data(GTK_OBJECT(button), "icon3");
+  label = (GtkWidget *)gtk_object_get_data(GTK_OBJECT(button), "label");
+  if (t->iconified)
+    {
+      gtk_widget_hide(icon1);
+      gtk_widget_hide(icon2);
+      gtk_widget_show(icon3);
+    }
+  else
+    {
+      if (t->focused)
+	{
+#ifdef ANIMATION      
+	  gnome_animator_start(GNOME_ANIMATOR(icon2));
+#endif
+	  gtk_widget_hide(icon3);
+	  gtk_widget_hide(icon1);
+	  gtk_widget_show(icon2);
+	  gtk_widget_set_state(button, GTK_STATE_ACTIVE);
+	}
+      else
+	{
+#ifdef ANIMATION      
+	  gnome_animator_stop(GNOME_ANIMATOR(icon2));
+#endif	  
+	  gtk_widget_hide(icon3);
+	  gtk_widget_hide(icon2);
+	  gtk_widget_show(icon1);
+	  gtk_widget_set_state(button, GTK_STATE_NORMAL);
+	}
+    }
+  num = 0;
+  p = tasks;
+  while (p)
+    {
+      if ((tasks_all) || 
+	  (((Task *)(p->data))->sticky) || 
+	  (((Task *)(p->data))->desktop == current_desk))
+	num++;
+      p = p->next;
+    }
+  if (t->name)
+    gtk_label_set(GTK_LABEL(label), t->name);
+  else
+    gtk_label_set(GTK_LABEL(label), "???");
+  gtk_widget_size_request(button, &req);
+  if ((applet_orient == ORIENT_UP) || (applet_orient == ORIENT_DOWN))
+    {
+       if (num < task_rows_h) 
+	 num = task_rows_h;
+      mw = mask_task_width / ((num + task_rows_h - 1) / task_rows_h);
+      if (t->name)
+	len = strlen(t->name);
+      else
+	len = strlen("???");
+      while ((req.width > mw) && (len > 0))
+	{
+	  len--;
+	  if (t->name)
+	    str = util_reduce_chars(t->name, len);
+	  else
+	    str = util_reduce_chars("???", len);
+	  gtk_label_set(GTK_LABEL(label), str);
+	  g_free(str);
+	  gtk_widget_size_request(button, &req);
+	}
+      if (len <=0)
+	gtk_label_set(GTK_LABEL(label), "");
+    }
+  else
+    {
+      if (pager_size)
+	mw = pager_rows * PAGER_W_0;
+      else
+	mw = pager_rows * PAGER_W_1;		
+      if (t->name)
+	len = strlen(t->name);
+      else
+	len = strlen("???");
+      while ((req.width > mw) && (len > 0))
+	{
+	  len--;
+	  if (t->name)
+	    str = util_reduce_chars(t->name, len);
+	  else
+	    str = util_reduce_chars("???", len);
+	  gtk_label_set(GTK_LABEL(label), str);
+	  g_free(str);
+	  gtk_widget_size_request(button, &req);
+	}
+      if (len <=0)
+	gtk_label_set(GTK_LABEL(label), "");
+    }
+}
+
+void
+populate_tasks(void)
+{
+   Task            *t;
+   GList           *p;
+   GtkWidget       *hbox, *button, *icon1, *icon2, *icon3, *label, *menu;
+#ifdef ANIMATION
+   GtkWidget       *f1, *f2, *f3, *f4;
+#endif  
+   gint             n_rows, n_cols, num, i, j, k, mw, len;
+   gchar           *str;
+   GnomeUIInfo     uinfo[5] = {GNOMEUIINFO_END, GNOMEUIINFO_END, 
+      GNOMEUIINFO_END, GNOMEUIINFO_END};
+   
+  if (!task_table)
+    return;
+  desktroy_task_widgets();
+  if (!tasks)
+    return;
+  j = 0;
+  k = 0;
+  n_rows = 0;
+  n_cols = 0;
+  num = 0;
+  p = tasks;
+  while (p)
+    {
+      if ((tasks_all) || 
+	  (((Task *)(p->data))->sticky) || 
+	  (((Task *)(p->data))->desktop == current_desk))
+	num++;
+      p = p->next;
+    }
+  p = tasks;
+  while (p)
+    {
+      t = (Task *)p->data;
+      if (((!(tasks_all)) && (t->desktop == current_desk)) || (tasks_all) ||
+	  (t->sticky))
+	{
+	  hbox = gtk_hbox_new(0, FALSE);
+	  gtk_widget_show(hbox);
+	  
+	  label = gtk_label_new(t->name);
+	  gtk_widget_show(label);
+	  
+	  icon1 = gnome_pixmap_new_from_xpm_d(icon1_xpm);
+	  icon3 = gnome_pixmap_new_from_xpm_d(icon3_xpm);
+#ifdef ANIMATION
+	  f1 = gnome_pixmap_new_from_xpm_d(f1_xpm);
+	  f2 = gnome_pixmap_new_from_xpm_d(f2_xpm);
+	  f3 = gnome_pixmap_new_from_xpm_d(f3_xpm);
+	  f4 = gnome_pixmap_new_from_xpm_d(f4_xpm);
+	  icon2 = gnome_animator_new_with_size(16, 16);
+	  gnome_animator_append_frame_from_gnome_pixmap(GNOME_ANIMATOR(icon2),
+							GNOME_PIXMAP(f1), 
+							0, 0, 100);
+	  gnome_animator_append_frame_from_gnome_pixmap(GNOME_ANIMATOR(icon2),
+							GNOME_PIXMAP(f2), 
+							0, 0, 100);
+	  gnome_animator_append_frame_from_gnome_pixmap(GNOME_ANIMATOR(icon2),
+							GNOME_PIXMAP(f3), 
+							0, 0, 100);
+	  gnome_animator_append_frame_from_gnome_pixmap(GNOME_ANIMATOR(icon2),
+							GNOME_PIXMAP(f4), 
+							0, 0, 100);
+	  gnome_animator_set_loop_type(GNOME_ANIMATOR(icon2),
+				       GNOME_ANIMATOR_LOOP_RESTART);
+	  gnome_animator_start(GNOME_ANIMATOR(icon2));
+#else	  
+	  icon2 = gnome_pixmap_new_from_xpm_d(icon2_xpm);
+#endif	  
+
+	  gtk_widget_show(icon1);
+	  
+	  gtk_box_pack_start(GTK_BOX(hbox), icon1, FALSE, FALSE, 0);
+	  gtk_box_pack_start(GTK_BOX(hbox), icon2, FALSE, FALSE, 0);
+	  gtk_box_pack_start(GTK_BOX(hbox), icon3, FALSE, FALSE, 0);
+	  gtk_box_pack_start(GTK_BOX(hbox), label, TRUE, TRUE, 1);
+
+	  button = gtk_button_new();
+	  gtk_widget_show(button);
+	  gtk_signal_connect(GTK_OBJECT(button), "button_press_event",
+			     GTK_SIGNAL_FUNC(task_cb_button_down), t);
+	  gtk_signal_connect(GTK_OBJECT(button), "button_release_event",
+			     GTK_SIGNAL_FUNC(task_cb_button_up), t);
+	  gtk_signal_connect(GTK_OBJECT(button), "enter",
+			     GTK_SIGNAL_FUNC(task_cb_button_enter), t);
+	  gtk_signal_connect(GTK_OBJECT(button), "leave",
+			     GTK_SIGNAL_FUNC(task_cb_button_leave), t);
+	  
+	   uinfo[0].type            = GNOME_APP_UI_ITEM;
+	   uinfo[0].label           = N_("Show / Hide");
+	   uinfo[0].hint            = NULL;
+	   uinfo[0].moreinfo        = cb_showhide;
+	   uinfo[0].user_data       = t;
+	   uinfo[0].unused_data     = NULL;
+	   uinfo[0].pixmap_type     = GNOME_APP_PIXMAP_STOCK;
+	   uinfo[0].pixmap_info     = GNOME_STOCK_MENU_OPEN;
+	   uinfo[0].accelerator_key = 0;
+	   uinfo[0].ac_mods         = (GdkModifierType) 0;
+	   uinfo[0].widget          = NULL;
+	   
+	   uinfo[1].type            = GNOME_APP_UI_ITEM;
+	   uinfo[1].label           = N_("Shade / Unshade");
+	   uinfo[1].hint            = NULL;
+	   uinfo[1].moreinfo        = cb_shade;
+	   uinfo[1].user_data       = t;
+	   uinfo[1].unused_data     = NULL;
+	   uinfo[1].pixmap_type     = GNOME_APP_PIXMAP_STOCK;
+	   uinfo[1].pixmap_info     = GNOME_STOCK_MENU_OPEN;
+	   uinfo[1].accelerator_key = 0;
+	   uinfo[1].ac_mods         = (GdkModifierType) 0;
+	   uinfo[1].widget          = NULL;
+	   
+	   uinfo[2].type            = GNOME_APP_UI_ITEM;
+	   uinfo[2].label           = N_("Close");
+	   uinfo[2].hint            = NULL;
+	   uinfo[2].moreinfo        = cb_kill;
+	   uinfo[2].user_data       = t;
+	   uinfo[2].unused_data     = NULL;
+	   uinfo[2].pixmap_type     = GNOME_APP_PIXMAP_STOCK;
+	   uinfo[2].pixmap_info     = GNOME_STOCK_MENU_OPEN;
+	   uinfo[2].accelerator_key = 0;
+	   uinfo[2].ac_mods         = (GdkModifierType) 0;
+	   uinfo[2].widget          = NULL;
+	   
+	   uinfo[3].type            = GNOME_APP_UI_ITEM;
+	   uinfo[3].label           = N_("Nuke");
+	   uinfo[3].hint            = NULL;
+	   uinfo[3].moreinfo        = cb_nuke;
+	   uinfo[3].user_data       = t;
+	   uinfo[3].unused_data     = NULL;
+	   uinfo[3].pixmap_type     = GNOME_APP_PIXMAP_STOCK;
+	   uinfo[3].pixmap_info     = GNOME_STOCK_MENU_OPEN;
+	   uinfo[3].accelerator_key = 0;
+	   uinfo[3].ac_mods         = (GdkModifierType) 0;
+	   uinfo[3].widget          = NULL;
+	   
+	   menu = gnome_popup_menu_new(uinfo);
+	   gnome_popup_menu_attach(menu, button, t);
+	   
+	  gtk_object_set_data(GTK_OBJECT(button), "icon1", icon1);
+	  gtk_object_set_data(GTK_OBJECT(button), "icon2", icon2);
+	  gtk_object_set_data(GTK_OBJECT(button), "icon3", icon3);
+	  gtk_object_set_data(GTK_OBJECT(button), "label", label);
+	  gtk_object_set_data(GTK_OBJECT(button), "task", t);
+	  
+	  gtk_container_add(GTK_CONTAINER(button), hbox);
+	  
+	  gtk_table_attach_defaults(GTK_TABLE(task_table), button,
+				    j, j + 1, k, k + 1);
+	  gtk_widget_realize(label);
+	  task_widgets = g_list_append(task_widgets, button);
+	  set_task_info_to_button(t);
+	  if ((applet_orient == ORIENT_UP) || (applet_orient == ORIENT_DOWN))
+	     {	    
+		if (num < task_rows_h) 
+		  num = task_rows_h;
+	      j++;
+	      if (n_cols < j)
+		n_cols = j;
+	      if (n_rows < k + 1)
+		n_rows = k + 1;
+	      if (j >= ((num + task_rows_h - 1)/ task_rows_h))
+		{
+		  j = 0;
+		  k++;
+		}
+	    }
+	  else
+	    {
+	       if (num < task_rows_v) 
+		 num = task_rows_v;
+	      k++;
+	      if (n_cols < j + 1)
+		n_cols = j + 1;
+	      if (n_rows < k)
+		n_rows = k;
+	      if (k >= ((num + task_rows_v - 1) / task_rows_v))
+		{
+		  k = 0;
+		  j++;
+		}
+	    }
+	}
+      p = p->next;
+    }
+  gtk_table_resize(GTK_TABLE(task_table), n_rows, n_cols);
+}
+
+/*  
 
   uinfo[0].type            = GNOME_APP_UI_ITEM;
   uinfo[0].label           = N_("Show / Hide");
@@ -635,39 +1712,6 @@ add_task(Window win)
   uinfo[3].ac_mods         = (GdkModifierType) 0;
   uinfo[3].widget          = NULL;
 
-  val = AtomGet(win, "WIN_STATE", XA_CARDINAL, &size);
-  if (val)
-    {
-      if ((*val) & GWIN_STATE_STICKY)
-	t->sticky = 1;
-      if ((*val) & GWIN_STATE_SHADED)
-	t->shaded = 1;
-      g_free(val);
-    }
-  val = AtomGet(win, "WM_STATE", XA_CARDINAL, &size);
-  if (val)
-    {
-      if (val[0] == IconicState)
-	t->iconified = 1;
-      g_free(val);
-    }
-  val = AtomGet(win, "WIN_WORKSPACE", XA_CARDINAL, &size);
-  if (val)
-    {
-      t->desktop = *val;
-      g_free(val);
-    }
-
-  str = NULL;
-  str = AtomGet(win, "WM_NAME", XA_STRING, &size);
-  if (str)
-    {
-      t->name = g_malloc(size + 1);
-      memcpy(t->name, str, size);
-      t->name[size] = 0;
-      g_free(str);
-    }
-  str = NULL;
   t->widget = gtk_button_new();
   t->_widget = gtk_button_new();
   if (t->name)
@@ -694,9 +1738,6 @@ add_task(Window win)
 					      GNOME_STOCK_MENU_BOOK_OPEN);
   t->state[0] = gnome_stock_pixmap_widget_new(applet,
 					      GNOME_STOCK_MENU_BOOK_RED);
-/*  t->tooltip = (GtkWidget *) gtk_tooltips_new();*/
-/*  gtk_tooltips_set_tip(GTK_TOOLTIPS(t->tooltip),
-		       t->widget, t->name, t->name);*/
   t->menu = gnome_popup_menu_new(uinfo);
   gnome_popup_menu_attach(t->menu, t->widget, t);
 
@@ -715,9 +1756,6 @@ add_task(Window win)
 					      GNOME_STOCK_MENU_BOOK_OPEN);
   t->_state[0] = gnome_stock_pixmap_widget_new(applet,
 					      GNOME_STOCK_MENU_BOOK_RED);
-/*  t->_tooltip = (GtkWidget *) gtk_tooltips_new();*/
-/*  gtk_tooltips_set_tip(GTK_TOOLTIPS(t->_tooltip),
-		       t->_widget, t->name, t->name);*/
   t->_menu = gnome_popup_menu_new(uinfo);
   gnome_popup_menu_attach(t->_menu, t->_widget, t);
 
@@ -769,313 +1807,9 @@ add_task(Window win)
 
   tasks = g_list_append(tasks, t);
   client_prop_change_cb(NULL, NULL, t);
-}
+*/
 
-void 
-del_task(Window win)
-{
-  guint               n, i;
-  Task               *t;
-
-  n = g_list_length(tasks);
-  for (i = 0; i < n; i++)
-    {
-      t = (g_list_nth(tasks, i))->data;
-      if (win == t->win)
-	{
-	  if (t->name)
-	    g_free(t->name);
-	  if (t->widget)
-	    {
-	      gtk_widget_unref(t->widget);
-	      gtk_widget_destroy(t->widget);
-	      gtk_widget_unref(t->_widget);
-	      gtk_widget_destroy(t->_widget);
-	    }
-	  g_free(t);
-	  tasks = g_list_remove(tasks, t);
-	  return;
-	}
-    }
-}
-
-Task               *
-find_task(Window win)
-{
-  guint               n, i;
-  Task               *t;
-
-  n = g_list_length(tasks);
-  for (i = 0; i < n; i++)
-    {
-      t = (g_list_nth(tasks, i))->data;
-      if (win == t->win)
-	{
-	  return t;
-	}
-    }
-  return NULL;
-}
-
-void 
-match_tasks(Window * win, guint num)
-{
-  guint               n, i, j, there;
-  Task               *t;
-
-  n = g_list_length(tasks);
-  for (i = 0; i < n; i++)
-    {
-      t = (g_list_nth(tasks, i))->data;
-      if (t)
-	{
-	  there = 0;
-	  for (j = 0; j < num; j++)
-	    {
-	      if (win[j] == t->win)
-		{
-		  there = 1;
-		  j = num;
-		}
-	    }
-	  if (!there)
-	    {
-	      del_task(t->win);
-	      n--;
-	    }
-	}
-    }
-  for (i = 0; i < num; i++)
-    {
-      there = 0;
-      for (j = 0; j < n; j++)
-	{
-	  t = (g_list_nth(tasks, j))->data;
-	  if (t->win == win[i])
-	    {
-	      there = 1;
-	      j = n;
-	    }
-	}
-      if (!there)
-	{
-	  add_task(win[i]);
-	}
-    }
-}
-
-void 
-update_tasks(void)
-{
-  Window             *list;
-  gint                left, top, i, num, size, tpl, maxh, num2, nn, chr;
-  gint                rows = 2;
-  Task               *t;
-  gchar              *str;
-
-  list = AtomGet(GDK_ROOT_WINDOW(), "WIN_CLIENT_LIST", XA_CARDINAL, &size);
-  if ((size > 0) && (list))
-    {
-      num = size / sizeof(CARD32);
-      match_tasks(list, num);
-      g_free(list);
-    }
-  num = 0;
-  num2 = g_list_length(tasks);
-  for (i = 0; i < num2; i++)
-    {
-      t = (g_list_nth(tasks, i))->data;
-      if ((t->desktop == (current_workspace - 1)) || (t->sticky))
-	{
-	  num++;
-	}
-    }
-  top = 0;
-  left = 0;
-  maxh = 0;
-  tpl = num / rows;
-  if (tpl * rows < num)
-    tpl++;
-
-  if (tpl > 0)
-    chr = 64 / ( tpl * 2);
-  else
-    chr = 16;
-  if (chr < 2)
-    chr = 2;
-  tasks_in_row = chr;
-  
-  for (i = 0; i < num2; i++)
-    {
-      t = (g_list_nth(tasks, i))->data;
-      if (t->name)
-	{
-	  str = munge(t->name, chr);
-	  gtk_label_set(GTK_LABEL(t->label), str);
-	  g_free(str);
-	}
-      else
-	{
-	  gtk_label_set(GTK_LABEL(t->label), _("??"));
-	}
-    }
-  
-  for (nn = 0; nn < workspace_count + 1; nn++)
-    {
-      size = 0;
-      if (nn == 0)
-	{
-	  for (i = 0; i < num2; i++)
-	    {
-	      t = (g_list_nth(tasks, i))->data;
-	      if (t->sticky)
-		size++;
-	    }
-	}
-      else
-	{
-	  for (i = 0; i < num2; i++)
-	    {
-	      t = (g_list_nth(tasks, i))->data;
-	      if (t->desktop == nn - 1)
-		size++;
-	    }
-	}
-      if (size > 0)
-	gtk_widget_show(flists[nn]);
-      else
-	gtk_widget_hide(flists[nn]);
-    }
-  for (i = 0; i < num2; i++)
-    {
-      t = (g_list_nth(tasks, i))->data;
-      if (t->sticky)
-	nn = 0;
-      else
-	nn = t->desktop + 1;
-      if (t->_widget->parent != boxlists[nn])
-	{
-	  if (t->_widget->parent)
-	    {
-	      gtk_container_remove(GTK_CONTAINER(t->_widget->parent), 
-				   t->_widget);
-	    }
-	  gtk_box_pack_start(GTK_BOX(boxlists[nn]), t->_widget,
-			     FALSE, FALSE, 0);
-	}
-      
-      if ((t->desktop == (current_workspace - 1)) || (t->sticky))
-	{
-	  if (t->widget->parent)
-	    {
-	      gtk_container_remove(GTK_CONTAINER(t->widget->parent), t->widget);
-	    }
-	  gtk_table_attach_defaults(GTK_TABLE(tasks1), t->widget,
-					left, left + 1, top, top + 1);
-	  left++;
-	  if (left > maxh)
-	    maxh = left;
-	  if (left >= tpl)
-	    {
-	      left = 0;
-	      top++;
-	    }
-	}
-      else
-	{
-	  if (t->widget->parent)
-	    {
-	      gtk_container_remove(GTK_CONTAINER(t->widget->parent), t->widget);
-	    }
-	}
-    }
-  gtk_table_resize(GTK_TABLE(tasks1), top, maxh);
-}
-
-int 
-main(int argc, char *argv[])
-{
-
-  panel_corba_register_arguments();
-
-  applet_widget_init_defaults("wmpager_applet", VERSION, argc, argv, NULL, 0, NULL);
-
-  /* Get the Atom for making a window sticky, so that the detached pager appears on all screens */
-  _XA_GWIN_STATE = XInternAtom(GDK_DISPLAY(), XA_GWIN_STATE, False);
-
-  if (((_XA_GWIN_WORKSPACE = XInternAtom(GDK_DISPLAY(), XA_GWIN_WORKSPACE, True)) == None) ||
-      (_XA_GWIN_WORKSPACE_NAMES = XInternAtom(GDK_DISPLAY(), XA_GWIN_WORKSPACE_NAMES, True)) == None)
-    {
-      /* FIXME: This should check to make sure icewm (or equiv) is running.
-       * Not sure if it is working though... */
-      g_error(_("This applet requires you to run a window manager with the XA_ extensions.\n"));
-      exit(1);
-    }
-
-  applet = applet_widget_new();
-  if (!applet)
-    g_error("Can't create applet!\n");
-
-  gtk_widget_realize(applet);
-
-  workspace_list = get_workspaces();
-  gdk_error_warnings = 0;
-  setup();
-
-  current_workspace = get_current_workspace();
-  gtk_toggle_button_set_state
-    (GTK_TOGGLE_BUTTON(g_list_nth(button_list, current_workspace)->data), 1);
-
-  gtk_widget_show(applet);
-  /*
-   * gtk_signal_connect(GTK_OBJECT(applet),"destroy",
-   * GTK_SIGNAL_FUNC(destroy_applet),
-   * NULL);
-   * gtk_signal_connect(GTK_OBJECT(applet),"session_save",
-   * GTK_SIGNAL_FUNC(applet_session_save),
-   * NULL);
-   */
-  applet_widget_register_stock_callback(APPLET_WIDGET(applet),
-					"about",
-					GNOME_STOCK_MENU_ABOUT,
-					_("About..."),
-					about_cb,
-					NULL);
-
-  applet_widget_register_stock_callback(APPLET_WIDGET(applet),
-					"properties",
-					GNOME_STOCK_MENU_PROP,
-					_("Properties..."),
-					properties_dialog,
-					NULL);
-
-  gtk_signal_connect(GTK_OBJECT(applet), "change_orient",
-		     GTK_SIGNAL_FUNC(applet_change_orient),
-		     NULL);
-  
-  applet_widget_gtk_main();
-
-  return 0;
-}
-
-GList              *
-get_workspaces(void)
-{
-  GList              *tmp_list;
-  XTextProperty       tp;
-  char              **list;
-  int                 count, i;
-
-  XGetTextProperty(GDK_DISPLAY(), GDK_ROOT_WINDOW(), &tp,
-		   _XA_GWIN_WORKSPACE_NAMES);
-  XTextPropertyToStringList(&tp, &list, &count);
-  tmp_list = g_list_alloc();
-  for (i = 0; i < count; i++)
-    tmp_list = g_list_append(tmp_list, g_strdup(list[i]));
-
-  return tmp_list;
-}
-
+/*
 void 
 setup(void)
 {
@@ -1090,9 +1824,9 @@ setup(void)
   GSList             *rblist = NULL;
   gchar               s[1024];
 
-  gint                num_ws;	/* the number of workspaces */
-  gint                even;	/* even number of workspaces? */
-  gint                i;	/* counter for loops */
+  gint                num_ws;
+  gint                even;
+  gint                i;
 
   workspace_list = g_list_first(workspace_list);
   button_list = g_list_alloc();
@@ -1243,202 +1977,7 @@ setup(void)
       gtk_container_add(GTK_CONTAINER(more), boxlists[i]);
     }
   
-  
-  /* This is where the applet_widget_add belongs, but it seems to screw up the buttons and the handlebox. */
-  /*
-   * applet_widget_add(APPLET_WIDGET(applet), handle);
-   */
   update_tasks();
   return;
 }
-
-void 
-about_cb(AppletWidget * widget, gpointer data)
-{
-  GtkWidget          *about;
-  const gchar        *authors[] =
-  {"M.Watson", "The Rasterman", NULL};
-
-  about = gnome_about_new
-    (_("Desktop Pager Applet"), "0.1", _("Copyright (C)1998 M.Watson"),
-     authors,
-     _("Pager for icewm & Enlightenment (or other GNOME hints compliant) window manager"),
-     NULL);
-  gtk_widget_show(about);
-  data = NULL;
-  widget = NULL;
-}
-
-void 
-properties_dialog(AppletWidget * widget, gpointer data)
-{
-  data = NULL;
-  widget = NULL;
-}
-
-void 
-prop_change_cb(GtkWidget * widget, GdkEventProperty * ev)
-{
-  gint                tmp_ws;
-  GdkAtom             at;
-
-  at = gdk_atom_intern(XA_GWIN_WORKSPACE, FALSE);
-  if ((ev->atom == at) && (ev->state == GDK_PROPERTY_NEW_VALUE))
-    {
-      tmp_ws = get_current_workspace();
-
-      if (tmp_ws != current_workspace)
-	{
-	  i_changed_it += 2;
-	  gtk_toggle_button_set_state(GTK_TOGGLE_BUTTON(g_list_nth(button_list, tmp_ws)->data), 1);
-	  current_workspace = tmp_ws;
-	  update_tasks();
-	}
-      return;
-    }
-  at = gdk_atom_intern("WIN_CLIENT_LIST", FALSE);
-  if ((ev->atom == at) && (ev->state == GDK_PROPERTY_NEW_VALUE))
-    {
-      update_tasks();
-      return;
-    }
-  widget = NULL;
-}
-
-void 
-switch_cb(GtkWidget * widget, gpointer data)
-{
-  gint                button_num;
-  gint                tmp_ws;
-
-  tmp_ws = get_current_workspace();
-  button_num = (int)data;
-  if ((GTK_TOGGLE_BUTTON(widget)->active) && (i_changed_it == 0))
-    {
-      change_workspace(button_num);
-    }
-  if (i_changed_it)
-    i_changed_it--;
-  data = NULL;
-  widget = NULL;
-}
-
-gint 
-get_current_workspace(void)
-{
-  Atom                type;
-  int                 format;
-  unsigned long       nitems;
-  unsigned long       bytes_after;
-  unsigned char      *prop;
-  CARD32              wws = 0;
-
-  if ((XGetWindowProperty(GDK_DISPLAY(), GDK_ROOT_WINDOW(),
-			  _XA_GWIN_WORKSPACE,
-			  0, 1, False, XA_CARDINAL,
-			  &type, &format, &nitems,
-			  &bytes_after, &prop)) == 1)
-    {
-      g_error(_("Failed to retrieve workspace property."));
-      exit(1);
-    }
-
-  wws = *(CARD32 *) prop;
-
-  return wws + 1;
-}
-
-void 
-change_workspace(gint ws)
-{
-  XEvent              xev;
-
-  xev.type = ClientMessage;
-  xev.xclient.type = ClientMessage;
-  xev.xclient.window = GDK_ROOT_WINDOW();
-  xev.xclient.message_type = _XA_GWIN_WORKSPACE;
-  xev.xclient.format = 32;
-  xev.xclient.data.l[0] = ws - 1;
-  xev.xclient.data.l[1] = CurrentTime;
-
-  XSendEvent(GDK_DISPLAY(), GDK_ROOT_WINDOW(), False,
-	     SubstructureNotifyMask, (XEvent *) & xev);
-  current_workspace = ws;
-  update_tasks();
-  XSync(GDK_DISPLAY(), False);
-}
-
-gint 
-check_workspace(gpointer data)
-{
-  gint                tmp_ws;
-
-  tmp_ws = get_current_workspace();
-  if (tmp_ws != current_workspace)
-    {
-      i_changed_it++;
-      gtk_toggle_button_set_state
-	(GTK_TOGGLE_BUTTON(g_list_nth(button_list, tmp_ws)->data), 1);
-      current_workspace = tmp_ws;
-      update_tasks();
-    }
-  return 1;
-  data = NULL;
-}
-
-void 
-make_sticky(Window win)
-{
-  XEvent              xev;
-
-  xev.type = ClientMessage;
-  xev.xclient.type = ClientMessage;
-  xev.xclient.window = win;
-  xev.xclient.message_type = _XA_GWIN_STATE;
-  xev.xclient.format = 32;
-  xev.xclient.data.l[0] = WinStateAllWorkspaces;
-  xev.xclient.data.l[1] = WinStateAllWorkspaces;
-  xev.xclient.data.l[2] = CurrentTime;
-  
-  XSendEvent(GDK_DISPLAY(), GDK_ROOT_WINDOW(), False, 
-	     SubstructureNotifyMask, (XEvent *) & xev);
-  XSync(GDK_DISPLAY(), False);
-}
-
-void 
-make_shaded(Window win)
-{
-  XEvent              xev;
-
-  xev.type = ClientMessage;
-  xev.xclient.type = ClientMessage;
-  xev.xclient.window = win;
-  xev.xclient.message_type = _XA_GWIN_STATE;
-  xev.xclient.format = 32;
-  xev.xclient.data.l[0] = WinStateRollup;
-  xev.xclient.data.l[1] = WinStateRollup;
-  xev.xclient.data.l[2] = CurrentTime;
-  
-  XSendEvent(GDK_DISPLAY(), GDK_ROOT_WINDOW(), False, 
-	     SubstructureNotifyMask, (XEvent *) & xev);
-  XSync(GDK_DISPLAY(), False);
-}
-
-void 
-make_unshaded(Window win)
-{
-  XEvent              xev;
-
-  xev.type = ClientMessage;
-  xev.xclient.type = ClientMessage;
-  xev.xclient.window = win;
-  xev.xclient.message_type = _XA_GWIN_STATE;
-  xev.xclient.format = 32;
-  xev.xclient.data.l[0] = WinStateRollup;
-  xev.xclient.data.l[1] = 0;
-  xev.xclient.data.l[2] = CurrentTime;
-  
-  XSendEvent(GDK_DISPLAY(), GDK_ROOT_WINDOW(), False, 
-	     SubstructureNotifyMask, (XEvent *) & xev);
-  XSync(GDK_DISPLAY(), False);
-}
+*/

@@ -8,8 +8,8 @@ INCLUDES = -I. -I$(srcdir) 				\
 bin_PROGRAMS = gnomepager_applet
 
 gnomepager_applet_SOURCES = \
-	gnomepager_applet.c	\
-	WinMgr.h
+	gnomepager_applet.c \
+	gnomepager.h
 
 gnomepager_applet_LDADD = ../../panel/libpanel_applet.la \
 		     $(GNOME_LIBDIR) $(ORB_LIBS)      \
