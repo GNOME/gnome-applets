@@ -42,4 +42,13 @@ GKB_MAPS = \
 		xmodmap.tr \
 		xmodmap.ua \
 		xmodmap.us \
-		xmodmap.vn
+		xmodmap.vn \
+		xmodmap.br-usb \
+		xmodmap.de-usb \
+		xmodmap.dk-usb \
+		xmodmap.es-usb \
+		xmodmap.fr-usb \
+		xmodmap.gb-usb \
+		xmodmap.it-usb \
+		xmodmap.se-usb \
+		xmodmap.us-usb

@@ -21,7 +21,14 @@ preset_data_predata = \
 		Sun_SI_Slovenian_x.keyprop.in Sun_SK_Slovak.keyprop.in \
 		Sun_SR_Dutch.keyprop.in Sun_TH_Thai_x.keyprop.in \
 		Sun_TR_Turkish_x.keyprop.in Sun_UA_Ukrainian.keyprop.in \
-		Sun_US.keyprop.in Sun_VN_Vietnamese.keyprop.in
+		Sun_US.keyprop.in Sun_VN_Vietnamese.keyprop.in \
+		Sun_BR_Portuguese_USB_x.keyprop.in Sun_DE_German_USB_x.keyprop.in \
+		Sun_DK_Danish_USB_x.keyprop.in Sun_ES_Spanish_USB_x.keyprop.in \
+		Sun_FR_French_USB_x.keyprop.in Sun_GB_English_USB_x.keyprop.in \
+		Sun_IT_Italian_USB_x.keyprop.in Sun_SE_Swedish_USB_x.keyprop.in \
+		Sun_US_USB.keyprop.in
+
+
 
 presetdir = $(datadir)/gnome/gkb
 preset_in_files = $(preset_data_predata)
