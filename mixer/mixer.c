@@ -303,7 +303,7 @@ create_computer_mixer_widget(GtkWidget ** mixer,
 		MixerUpdateFunc * update_func)
 {
 	MixerWidget* mx;
-	GtkWidget *vbox, *hbox, *vbutton, *hbutton, *vscale, *hscale; 
+	GtkWidget *vbox, *align, *hbox, *vbutton, *hbutton, *vscale, *hscale; 
 	GtkWidget *vlightwid, *hlightwid, *base;
 	GtkAdjustment *hadj, *vadj;
 	/* widget hierarchy:  
@@ -325,6 +325,7 @@ create_computer_mixer_widget(GtkWidget ** mixer,
 	vbutton = gtk_toggle_button_new();
 	
 	vbox=gtk_vbox_new(FALSE,0);	
+	align=gtk_alignment_new(0.5,0.0, 1.0, 1.0);
 	hbox=gtk_hbox_new(FALSE,0);
 
 	vscale = vslider_new();
@@ -364,19 +365,20 @@ create_computer_mixer_widget(GtkWidget ** mixer,
         gtk_scale_set_draw_value(GTK_SCALE(vscale), FALSE);
         gtk_scale_set_draw_value(GTK_SCALE(hscale), FALSE);
 
-	gtk_widget_set_usize(GTK_WIDGET(vscale), 20, 36);
+	gtk_widget_set_usize(GTK_WIDGET(vscale), 25, 32);
 	gtk_widget_set_usize(GTK_WIDGET(hscale), 36, 20);
 
-	gtk_widget_set_usize(GTK_WIDGET(vbutton),20 , 12);
+	gtk_widget_set_usize(GTK_WIDGET(vbutton),12 , 15);
 	gtk_widget_set_usize(GTK_WIDGET(hbutton),12 , 20);
 
 	
 	/* pack the widgets */
-	gtk_box_pack_start(GTK_BOX(vbox),vscale, TRUE, TRUE, 0);
-	gtk_box_pack_start(GTK_BOX(vbox),vbutton, TRUE, TRUE, 0); 
+	gtk_container_add(GTK_CONTAINER(align), vscale);
+	gtk_box_pack_start(GTK_BOX(vbox),align, FALSE, FALSE, 0);
+	gtk_box_pack_start(GTK_BOX(vbox),vbutton, FALSE, FALSE, 0); 
 
-	gtk_box_pack_start(GTK_BOX(hbox),hbutton, TRUE, TRUE, 0); 
-	gtk_box_pack_start(GTK_BOX(hbox),hscale, TRUE, TRUE, 0);
+	gtk_box_pack_start(GTK_BOX(hbox),hbutton, FALSE, FALSE, 0); 
+	gtk_box_pack_start(GTK_BOX(hbox),hscale, FALSE, FALSE, 0);
 
 	gtk_box_pack_start(GTK_BOX(base), vbox, TRUE, TRUE,0);
 	gtk_box_pack_start(GTK_BOX(base), hbox, TRUE, TRUE,0);
@@ -421,6 +423,7 @@ create_computer_mixer_widget(GtkWidget ** mixer,
 
 	gtk_widget_show (vscale);
 	gtk_widget_show (hscale);
+	gtk_widget_show (align);
 
 	if (md->orient == ORIENT_UP || md->orient == ORIENT_DOWN)
 		gtk_widget_show(vbox);
