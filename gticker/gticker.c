@@ -395,7 +395,7 @@ static void launch_url(AppData *ad, gchar *url)
 			argv[0] = "netscape";
 		        argv[1] = url;
 		        argv[2] = NULL;
-		        if (gnome_execute_async (NULL, 2, argv) != 0)
+		        if (gnome_execute_async (NULL, 2, argv) < 0)
 		   	     {
 				     printf("failed to start browser\n");
 			     }
