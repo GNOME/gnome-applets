@@ -2,8 +2,8 @@
  * GNOME odometer panel applet
  * (C) 1999 The Free software Foundation
  * 
- * Author : Fabrice Bellet <Fabrice.Bellet@creatis.insa-lyon.fr>
- *          adapted from kodo/Xodometer/Mouspedometa
+ * Author: Fabrice Bellet <Fabrice.Bellet@creatis.insa-lyon.fr>
+ *         adapted from kodo/Xodometer/Mouspedometa
  *
  * The property dialog box is heavily inpired from the
  * sound-monitor applet. Thanks to John Ellis.
@@ -208,7 +208,7 @@ phelp_cb (GtkWidget *w, gint tab, gpointer data)
 }
 
 /*
- * Callback to access properties of the applet : you can toggle :
+ * Callback to access properties of the applet: you can toggle:
  *   - the Metric mode
  *   - the trip auto-reset mode each time the applet is restarted
  *   - the enable/disable mode
@@ -305,7 +305,7 @@ properties_cb (AppletWidget *applet, gpointer data)
    hbox = gtk_hbox_new(FALSE, GNOME_PAD_SMALL);
    gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
 
-   label = gtk_label_new(_("Theme file :"));
+   label = gtk_label_new(_("Theme file:"));
    gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, FALSE, 0);
 
    oa->theme_entry = gtk_entry_new();
