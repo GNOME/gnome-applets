@@ -1,5 +1,5 @@
 /*#####################################################*/
-/*##           drivemount applet 0.1.0 alpha         ##*/
+/*##           drivemount applet 0.1.1 beta          ##*/
 /*#####################################################*/
 
 #include "drivemount.h"
@@ -78,6 +78,9 @@ void property_apply_cb( GtkWidget *widget, void *data, DriveData *dd)
 		}
 	redraw_pixmap(dd);
 	start_callback_update(dd);
+
+	/*make the panel save our config*/
+	applet_widget_sync_config(APPLET_WIDGET(dd->applet));
 }
 
 gint property_destroy_cb( GtkWidget *w, DriveData *dd)

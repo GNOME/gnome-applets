@@ -1,5 +1,5 @@
 /*###################################################################*/
-/*##                         clock & mail applet 0.1.3             ##*/
+/*##                         clock & mail applet 0.1.4             ##*/
 /*###################################################################*/
 
 #include "clockmail.h"
@@ -22,7 +22,7 @@ char *mail_file = NULL;
 char *newmail_exec_cmd = NULL;
 int EXEC_CMD_ON_NEWMAIL = FALSE;
 
-static GtkWidget *applet;
+GtkWidget *applet;
 static GtkWidget *frame;
 static GtkWidget *display_area;
 static GtkTooltips *tooltips;
@@ -43,7 +43,7 @@ static int blink_count = 0;
 static void about_cb (AppletWidget *widget, gpointer data)
 {
 	GtkWidget *about;
-	gchar *authors[2];
+	const gchar *authors[2];
 	gchar version[32];
 
 	sprintf(version,_("%d.%d.%d"),CLOCKMAIL_APPLET_VERSION_MAJ,

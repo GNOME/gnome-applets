@@ -1,5 +1,5 @@
 /*#####################################################*/
-/*##           drivemount applet 0.1.0 alpha         ##*/
+/*##           drivemount applet 0.1.1 beta          ##*/
 /*#####################################################*/
 
 #include "drivemount.h"
@@ -24,7 +24,7 @@
 static void about_cb (AppletWidget *widget, gpointer data)
 {
 	GtkWidget *about;
-	gchar *authors[2];
+	const gchar *authors[2];
 	gchar version[32];
 
 	sprintf(version,"%d.%d.%d",DRIVEMOUNT_APPLET_VERSION_MAJ,
@@ -334,19 +334,19 @@ static DriveData * create_drive_widget(GtkWidget *applet)
 				GTK_SIGNAL_FUNC(applet_save_session),
 				dd);
 	applet_widget_register_stock_callback(APPLET_WIDGET(applet),
-					      "about",
-					      GNOME_STOCK_MENU_ABOUT,
-					      _("About..."),
-					      about_cb, NULL);
-	applet_widget_register_stock_callback(APPLET_WIDGET(applet),
 					      "properties",
 					      GNOME_STOCK_MENU_PROP,
 					      _("Properties..."),
 					      property_show,
 					      dd);
+	applet_widget_register_stock_callback(APPLET_WIDGET(applet),
+					      "about",
+					      GNOME_STOCK_MENU_ABOUT,
+					      _("About..."),
+					      about_cb, NULL);
 
 	/* add "eject" entry if eject program is found in PATH */
-	if (system("which eject > /dev/null") == 0)
+	if (gnome_is_program_in_path("eject"))
 		applet_widget_register_callback(APPLET_WIDGET(applet),
 					      "eject",
 					      _("Eject"),

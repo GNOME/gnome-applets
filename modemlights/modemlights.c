@@ -1,5 +1,5 @@
 /*#####################################################*/
-/*##           modemlights applet 0.3.0 alpha        ##*/
+/*##           modemlights applet 0.3.1 beta         ##*/
 /*#####################################################*/
 
 #include "modemlights.h"
@@ -23,7 +23,7 @@ gchar *command_disconnect;
 /* do we ask for confirmation? */
 gint ask_for_confirmation = TRUE;
 
-static GtkWidget *applet;
+GtkWidget *applet;
 static GtkWidget *frame;
 static GtkWidget *display_area;
 static GtkWidget *button;
@@ -52,7 +52,7 @@ static PanelOrientType orient;
 static void about_cb (AppletWidget *widget, gpointer data)
 {
 	GtkWidget *about;
-	gchar *authors[2];
+	const gchar *authors[2];
 	gchar version[32];
 
 	sprintf(version,"%d.%d.%d",MODEMLIGHTS_APPLET_VERSION_MAJ,
@@ -522,16 +522,16 @@ int main (int argc, char *argv[])
 		GTK_SIGNAL_FUNC(applet_save_session), NULL);
 
 	applet_widget_register_stock_callback(APPLET_WIDGET(applet),
-					      "about",
-					      GNOME_STOCK_MENU_ABOUT,
-					      _("About..."),
-					      about_cb, NULL);
-	applet_widget_register_stock_callback(APPLET_WIDGET(applet),
 					      "properties",
 					      GNOME_STOCK_MENU_PROP,
 					      _("Properties..."),
 					      property_show,
 					      NULL);
+	applet_widget_register_stock_callback(APPLET_WIDGET(applet),
+					      "about",
+					      GNOME_STOCK_MENU_ABOUT,
+					      _("About..."),
+					      about_cb, NULL);
 
 	start_callback_update();
 

@@ -1,5 +1,5 @@
 /*#####################################################*/
-/*##           modemlights applet 0.3.0 alpha        ##*/
+/*##           modemlights applet 0.3.1 beta         ##*/
 /*#####################################################*/
 
 #include "modemlights.h"
@@ -75,6 +75,8 @@ void property_apply_cb( GtkWidget *widget, void *data )
         UPDATE_DELAY = P_UPDATE_DELAY;
 	ask_for_confirmation = P_ask_for_confirmation;
 	start_callback_update();
+
+	applet_widget_sync_config(APPLET_WIDGET(applet));
 }
 
 gint property_destroy_cb( GtkWidget *widget, void *data )

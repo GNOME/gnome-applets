@@ -1,5 +1,5 @@
 /*###################################################################*/
-/*##                         clock & mail applet 0.1.3             ##*/
+/*##                         clock & mail applet 0.1.4             ##*/
 /*###################################################################*/
 
 #include <sys/types.h>
@@ -19,7 +19,7 @@
 
 #define CLOCKMAIL_APPLET_VERSION_MAJ 0
 #define CLOCKMAIL_APPLET_VERSION_MIN 1
-#define CLOCKMAIL_APPLET_VERSION_REV 3
+#define CLOCKMAIL_APPLET_VERSION_REV 4
 
 extern int BLINK_DELAY;
 extern int BLINK_TIMES;
@@ -31,6 +31,8 @@ extern char *mail_file;
 
 extern char *newmail_exec_cmd;
 extern int EXEC_CMD_ON_NEWMAIL;
+
+extern GtkWidget *applet;
 
 void check_mail_file_status (int reset);
 

@@ -1,5 +1,5 @@
 /*###################################################################*/
-/*##                         clock & mail applet 0.1.3             ##*/
+/*##                         clock & mail applet 0.1.4             ##*/
 /*###################################################################*/
 
 #include "clockmail.h"
@@ -75,6 +75,8 @@ void property_apply_cb( GtkWidget *widget, void *data )
         AM_PM_ENABLE = P_AM_PM_ENABLE;
 	ALWAYS_BLINK = P_ALWAYS_BLINK;
 	EXEC_CMD_ON_NEWMAIL = P_EXEC_CMD_ON_NEWMAIL;
+
+	applet_widget_sync_config(APPLET_WIDGET(applet));
 }
 
 gint property_destroy_cb( GtkWidget *widget, void *data )
