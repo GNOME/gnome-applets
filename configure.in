@@ -27,6 +27,21 @@ GNOME_X_CHECKS
 dnl utility conditional
 AM_CONDITIONAL(FALSE, test "x" = "y")
 
+dnl possibly have something like this
+dnl AM_ARG_ENABLE(old-applets,
+dnl[  --enable-old-applets            Build old applets],
+dnl        if test x$withval = xyes; then
+dnl                enable_old_applets=yes
+dnl        else
+dnl                if test "x$withval" = xno; then
+dnl                        enable_old_applets=no
+dnl                else
+dnl                        enable_old_applets=yes
+dnl                fi
+dnl        fi,
+dnl        enable_old_applets=yes)
+
+
 dnl for slashapp etc
 GNOME_GHTTP_CHECK
 
@@ -172,6 +187,7 @@ batmon/Makefile
 bussign/Makefile
 esd-manager/Makefile
 fvwm-pager/Makefile
+gticker/Makefile
 icewm-pager/Makefile
 netload/Makefile
 netwatch/Makefile
