@@ -23,6 +23,6 @@ wmpager_applet_LINK = $(CXXLINK)
 
 EXTRA_DIST = wmpager_applet.desktop
 
-sysdir = $(datadir)/applets/Utilities
+sysdir = $(datadir)/applets/Utility
 sys_DATA = wmpager_applet.desktop
 
