@@ -2289,15 +2289,6 @@ cb_stick(GtkWidget * widget, Task *t)
 }
 
 void
-cb_stick(GtkWidget * widget, Task *t)
-{
-  if (t->sticky)
-    client_win_unstick(t);
-  else
-    client_win_stick(t);
-}
-
-void
 emtpy_task_widgets(void)
 {
   if (task_widgets)
