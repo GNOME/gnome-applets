@@ -28,7 +28,7 @@ battery_applet_LDADD = ../../panel/libpanel_applet.la \
 
 battery_applet_LINK = $(CXXLINK)
 
-EXTRA_DIST = battery_applet.dekstop
+EXTRA_DIST = battery_applet.desktop
 
 sysdir = $(datadir)/applets/Monitors
 sys_DATA = battery_applet.desktop
