@@ -1,4 +1,4 @@
-#SUBDIRS = docs
+SUBDIRS = docs
 
 pixmapsdir = $(datadir)/pixmaps
 pixmaps_DATA = gnome-mixer-applet.png
