@@ -253,9 +253,10 @@ gkb_update_handlers (GKB *gkb, gboolean disconnect)
 	root_window = gdk_get_default_root_window ();
 
 	if (disconnect) {
-		if (gkb->button_press_id != -1)
+		if (gkb->button_press_id != -1) {
 			g_signal_handler_disconnect (gkb->applet, gkb->button_press_id);
-		gkb->button_press_id = -1;
+			gkb->button_press_id = -1;
+		}
 
 		gdk_window_remove_filter (root_window, event_filter, gkb);
 	} else {
@@ -273,6 +274,7 @@ gkb_applet_shutdown (GKB *gkb)
 {
 	if (gkb->propwindow)
 		gtk_widget_destroy (gkb->propwindow);
+	gkb->button_press_id = -1;
 	gkb_update_handlers (gkb, TRUE);
 	g_free (gkb);
 }
