@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets-1.1.0\n"
-"POT-Creation-Date: 2000-02-12 09:28-0500\n"
+"POT-Creation-Date: 2000-02-14 20:08+0100\n"
 "PO-Revision-Date: 1999-12-28 12:00+0100\n"
 "Last-Translator: Andreas Hyden <ahyden@staffanstorp.net>\n"
 "Language-Team: Swedish <sv@li.org>\n"
@@ -157,8 +157,8 @@ msgstr "Analog klocka, liknande den i CDE-panelen."
 #: battery/battery.c:921 charpick/charpick.c:565 clipboard/clipboard.c:332
 #: clockmail/clockmail.c:553 drivemount/drivemount.c:659 fifteen/fifteen.c:346
 #: geyes/geyes.c:374 gkb/gkb.c:731 gnotes/gnotes_applet.c:164
-#: gumma/gumma.c:588 gweather/gweather-applet.c:185 jbc/jbc-applet.c:180
-#: life/life.c:270 mini-commander/src/mini-commander_applet.c:411
+#: gweather/gweather-applet.c:185 jbc/jbc-applet.c:180 life/life.c:270
+#: mini-commander/src/mini-commander_applet.c:411
 #: modemlights/modemlights.c:1214 odometer/odo.c:644
 #: quicklaunch/quicklaunch.c:452 screenshooter/screenshooter_applet.c:978
 #: slashapp/slashapp.c:58 sound-monitor/main.c:347 tickastat/main.c:321
@@ -427,7 +427,7 @@ msgstr "Inställningsar för teckenväljare"
 
 #: charpick/properties.c:176
 msgid "Minimum number of cells: (for autosize)"
-msgstr ""
+msgstr "Minimalt antal tecken: (för autostorlek)"
 
 #: charpick/properties.c:177
 msgid "Size of button: (pixels)"
@@ -449,12 +449,12 @@ msgstr "Storlek"
 
 #: charpick/properties.c:285
 msgid "Default character list:"
-msgstr ""
+msgstr "Standard teckenlista:"
 
 #. add tab to propwindow
 #: charpick/properties.c:300
 msgid "Default List"
-msgstr ""
+msgstr "Standardlista"
 
 #: clockmail/clockmail.c:56 slashapp/slashapp.c:130 sound-monitor/main.c:35
 #: tickastat/main.c:175
@@ -858,27 +858,6 @@ msgstr "Göm noter"
 #: gnotes/gnotes_applet.c:177
 msgid "Show Notes"
 msgstr "Visa noter"
-
-#: gumma/gumma.c:314
-#, c-format
-msgid "Loading plugin %s..."
-msgstr "Laddar insticksprogram %s..."
-
-#: gumma/gumma.c:493
-msgid "Select a plugin"
-msgstr "Välj ett insticksprogram"
-
-#: gumma/gumma.c:507
-msgid "Plugins"
-msgstr "Insticksprogram"
-
-#: gumma/gumma.c:593
-msgid "About Plugin..."
-msgstr "Om Insticksprogram..."
-
-#: gumma/gumma.c:597
-msgid "Plugins..."
-msgstr "Insticksprogram..."
 
 #: gweather/gweather-applet.c:180
 msgid "Cannot create applet!\n"
@@ -2489,12 +2468,12 @@ msgid "Macros"
 msgstr "Makron"
 
 #. probably should die more gracefully
-#: mixer/mixer.c:94
+#: mixer/mixer.c:125
 #, c-format
 msgid "Couldn't open mixer device %s\n"
 msgstr "Kunde inte öppna mixerenhet %s\n"
 
-#: mixer/mixer.c:108
+#: mixer/mixer.c:139
 msgid ""
 "warning: this version of gmix was compiled with a different version of\n"
 "soundcard.h.\n"
@@ -2502,11 +2481,11 @@ msgstr ""
 "varning: denna version av gmix kompilerades med en annan version av\n"
 "soundcard.h.\n"
 
-#: mixer/mixer.c:433
+#: mixer/mixer.c:476
 msgid "Main Volume and Mute"
 msgstr "Huvudvolym och dämpa"
 
-#: mixer/mixer.c:664
+#: mixer/mixer.c:707
 msgid "Run gmix..."
 msgstr "Kör gmix..."
 
@@ -2814,7 +2793,7 @@ msgstr "Använd ljudsignal för att påkalla uppmärksamhet"
 
 #: screenshooter/screenshooter_applet.c:386
 msgid "Display Spurious Options (I got carried away)"
-msgstr ""
+msgstr "Visa falska alternativ (Jag blev bortburen)"
 
 #: screenshooter/screenshooter_applet.c:390
 msgid "Delay (seconds) before taking shot (only for entire desktop shots)"
@@ -2864,6 +2843,18 @@ msgid ""
 "Slightly larger file but lossless: png, as much compression as you like.\n"
 "- compressing pngs takes longer at higher ratios, but is still lossless"
 msgstr ""
+"Filtyperna igenkänns från filnamnsuffixet.\n"
+"Standard filtyp (om inget suffix eller oigenkänligt suffix) är miff.\n"
+"jpg, jpeg, bmp, cgm, cmyk, dib, eps, fig, fpx, gif, ico, map, miff, pcx,\n"
+"pict, pix, png, pnm, ppm, psd, rgb, rgba, rla, rle, tiff, tga, xbm, xpm,\n"
+"och flera andra skumma suffix. Försök att använda din tur med något intressant!\n"
+"Tex .html för en klient-sid bildkarta. Du kommer att få en .gif, .html och en "
+".shtml\n"
+"\n"
+"Rekommenderingar:\n"
+"Liten fil, rätt så bra kvalitet:   jpg, 75 % kvalitet\n"
+"Lite större fil men icke destruktiv: png, den komprimering du vill ha.\n"
+"- komprimering av png:are tar längre tid vid högre tal, men är fortfarande icke-desktruktiv" 
 
 #: screenshooter/screenshooter_applet.c:500
 msgid "View screenshot after saving it"
@@ -2923,7 +2914,7 @@ msgstr ""
 
 #: screenshooter/screenshooter_applet.c:627
 msgid "Normalize image (Span full range of color values to enhance contrast)"
-msgstr ""
+msgstr "Normalisera bild (Sträck ut hela omfånget av färgvärden för att förbättra konstrasten)"
 
 #: screenshooter/screenshooter_applet.c:631
 msgid "Equalize image (Perform histogram equalization)"
@@ -2996,6 +2987,12 @@ msgid ""
 "Hint: I use a script to update my website screenshot page.\n"
 "An example script should've been included in the tarball, or at my website."
 msgstr ""
+"Skript/program som kommer att köras efter skapning av bild med bild-"
+"filnamnen\n"
+"angivna på kommandoraden enligt följande:\n"
+"{Skript_namn} {Bild_filnamn} {Minibild_filnamn_om_angiven}\n"
+"Tips: Jag använder ett skript för att uppdatera skärmdumparna på min websida.\n"
+"Ett exempelskript bör ha inkluderats i tarbollen, eller på min websida."
 
 #: screenshooter/screenshooter_applet.c:741
 msgid "Frills"
@@ -3027,11 +3024,11 @@ msgstr "Hitta kanter med vilken faktor?"
 
 #: screenshooter/screenshooter_applet.c:773
 msgid "Implode Image"
-msgstr ""
+msgstr "Implodera bild"
 
 #: screenshooter/screenshooter_applet.c:777
 msgid "Implode by what factor?"
-msgstr ""
+msgstr "Impodera med vilken faktor?"
 
 #: screenshooter/screenshooter_applet.c:782
 msgid "Spurious"
@@ -3679,6 +3676,21 @@ msgstr ""
 #: whereami/whereami.c:195
 msgid "whereami_applet"
 msgstr "whereami_applet"
+
+#~ msgid "Loading plugin %s..."
+#~ msgstr "Laddar insticksprogram %s..."
+
+#~ msgid "Select a plugin"
+#~ msgstr "Välj ett insticksprogram"
+
+#~ msgid "Plugins"
+#~ msgstr "Insticksprogram"
+
+#~ msgid "About Plugin..."
+#~ msgstr "Om Insticksprogram..."
+
+#~ msgid "Plugins..."
+#~ msgstr "Insticksprogram..."
 
 #~ msgid ""
 #~ "Error querying battery charge.  Make sure that your kernel was built with "
