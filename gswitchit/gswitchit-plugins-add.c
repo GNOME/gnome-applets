@@ -186,7 +186,7 @@ CappletEnablePlugin (GtkWidget * btnAdd, GSwitchItPluginsCapplet * gswic)
 							    fullPath);
 			CappletFillActivePluginList (gswic);
 			g_free (fullPath);
-			GSwitchItAppletConfigSave (&gswic->appletConfig);
+			GSwitchItAppletConfigSaveToGConf (&gswic->appletConfig);
 		}
 	}
 	gtk_widget_destroy (popup);

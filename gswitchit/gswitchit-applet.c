@@ -129,7 +129,7 @@ GSwitchItConfigChanged (GConfClient * client,
 			guint cnxn_id,
 			GConfEntry * entry, GSwitchItApplet * sia)
 {
-	GSwitchItConfigLoad (&sia->config);
+	GSwitchItConfigLoadFromGConf (&sia->config);
 	GSwitchItConfigActivate (&sia->config);
 	GSwitchItAppletReinitUi (sia);
 }
@@ -142,7 +142,7 @@ GSwitchItAppletConfigChanged (GConfClient * client,
 	XklDebug (100,
 		  "Applet configuration changed in GConf - reiniting...\n");
 
-	GSwitchItAppletConfigLoad (&sia->appletConfig);
+	GSwitchItAppletConfigLoadFromGConf (&sia->appletConfig);
 	GSwitchItAppletConfigUpdateImages (&sia->appletConfig,
 					   &sia->kbdConfig);
 	GSwitchItAppletConfigActivate (&sia->appletConfig);
@@ -166,7 +166,7 @@ GSwitchItAppletKbdConfigCallback (GSwitchItApplet * sia)
 {
 	XklDebug (100,
 		  "XKB configuration changed on X Server - reiniting...\n");
-	GSwitchItKbdConfigLoadCurrent (&sia->kbdConfig);
+	GSwitchItKbdConfigLoadFromXCurrent (&sia->kbdConfig);
 	GSwitchItAppletConfigUpdateImages (&sia->appletConfig,
 					   &sia->kbdConfig);
 	while (sia->groupNames != NULL)
@@ -765,10 +765,10 @@ GSwitchItAppletInit (GSwitchItApplet * sia, PanelApplet * applet)
 	GSwitchItKbdConfigInit (&sia->kbdConfig, confClient);
 	GSwitchItAppletConfigInit (&sia->appletConfig, confClient);
 	GSwitchItPluginManagerInit (&sia->pluginManager);
-	GSwitchItConfigLoad (&sia->config);
+	GSwitchItConfigLoadFromGConf (&sia->config);
 	GSwitchItConfigActivate (&sia->config);
-	GSwitchItKbdConfigLoadCurrent (&sia->kbdConfig);
-	GSwitchItAppletConfigLoad (&sia->appletConfig);
+	GSwitchItKbdConfigLoadFromXCurrent (&sia->kbdConfig);
+	GSwitchItAppletConfigLoadFromGConf (&sia->appletConfig);
 	GSwitchItAppletConfigUpdateImages (&sia->appletConfig,
 					   &sia->kbdConfig);
 	GSwitchItAppletConfigActivate (&sia->appletConfig);

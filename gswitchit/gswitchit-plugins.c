@@ -171,7 +171,7 @@ CappletPromotePlugin (GtkWidget * btnUp, GSwitchItPluginsCapplet * gswic)
 						     fullPath);
 		g_free (fullPath);
 		CappletFillActivePluginList (gswic);
-		GSwitchItAppletConfigSave (&gswic->appletConfig);
+		GSwitchItAppletConfigSaveToGConf (&gswic->appletConfig);
 	}
 }
 
@@ -186,7 +186,7 @@ CappletDemotePlugin (GtkWidget * btnUp, GSwitchItPluginsCapplet * gswic)
 						    fullPath);
 		g_free (fullPath);
 		CappletFillActivePluginList (gswic);
-		GSwitchItAppletConfigSave (&gswic->appletConfig);
+		GSwitchItAppletConfigSaveToGConf (&gswic->appletConfig);
 	}
 }
 
@@ -202,7 +202,7 @@ CappletDisablePlugin (GtkWidget * btnRemove,
 						     fullPath);
 		g_free (fullPath);
 		CappletFillActivePluginList (gswic);
-		GSwitchItAppletConfigSave (&gswic->appletConfig);
+		GSwitchItAppletConfigSaveToGConf (&gswic->appletConfig);
 	}
 }
 
@@ -343,8 +343,8 @@ main (int argc, char **argv)
 	GSwitchItKbdConfigInit (&gswic.kbdConfig, confClient);
 	GSwitchItAppletConfigInit (&gswic.appletConfig, confClient);
 	GSwitchItPluginManagerInit (&gswic.pluginManager);
-	GSwitchItKbdConfigLoad (&gswic.kbdConfig);
-	GSwitchItAppletConfigLoad (&gswic.appletConfig);
+	GSwitchItKbdConfigLoadFromGConf (&gswic.kbdConfig);
+	GSwitchItAppletConfigLoadFromGConf (&gswic.appletConfig);
 	CappletSetup (&gswic);
 	bonobo_main ();
 	GSwitchItPluginManagerTerm (&gswic.pluginManager);
