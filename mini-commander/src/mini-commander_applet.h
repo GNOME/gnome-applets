@@ -47,6 +47,8 @@ struct _MCData {
 
     GtkTooltips   *tooltips;
 
+    GtkWidget     *about_dialog;
+
     GtkWidget     *applet_box;
 
     GtkWidget     *entry;

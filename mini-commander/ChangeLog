@@ -1,3 +1,14 @@
+2004-01-16 Archana Shah <archana.shah@wipro.com>
+
+	* src/mini-commander_applet.h: Added a field into the structure
+	MCData, for about dialog.
+	* src/about.c: (about_box): Changed to use member field of the
+	structure instead of the static variable.
+	* src/mini-commander_applet.c: (mini_commander_applet_fill): Set
+	about_dialog member to NULL.
+	(mc_destroyed): Destroy about dialog when applet is removed.
+	Fixes bug #131695
+
 2004-01-16  Maxim Dziumanenko   <mvd@mylinux.com.ua>
 
 	* src/preferences.c: (mc_preferences_setup_dialog): Mark two strings for translation.

@@ -321,6 +321,9 @@ mc_destroyed (GtkWidget *widget,
 
     mc_macros_free (mc->preferences.macros);
 
+    if (mc->about_dialog)
+        gtk_widget_destroy (mc->about_dialog);
+
     if (mc->prefs_dialog.dialog)
         gtk_widget_destroy (mc->prefs_dialog.dialog);
 
@@ -383,6 +386,8 @@ mini_commander_applet_fill (PanelApplet *applet)
     mc_load_preferences (mc);
     command_line_init_stock_icons ();
 
+    mc->about_dialog = NULL;
+
     mc->tooltips = gtk_tooltips_new ();
     g_object_ref (mc->tooltips);
     gtk_object_sink (GTK_OBJECT (mc->tooltips));
@@ -395,9 +400,9 @@ mini_commander_applet_fill (PanelApplet *applet)
     
     g_signal_connect (mc->applet, "destroy", G_CALLBACK (mc_destroyed), mc); 
     g_signal_connect (mc->applet, "button_press_event",
-    			       G_CALLBACK (send_button_to_entry_event), mc);
+		      G_CALLBACK (send_button_to_entry_event), mc);
     g_signal_connect (mc->applet, "key_press_event",
-    			       G_CALLBACK (key_press_cb), mc);
+		      G_CALLBACK (key_press_cb), mc);
 
     panel_applet_setup_menu_from_file (mc->applet,
 				       NULL,
