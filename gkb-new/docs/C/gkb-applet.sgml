@@ -52,7 +52,7 @@
     flag in your <interface>panel</interface> and does nothing useful 
     whatsoever beyond that. After all, if you click on this flag, you can
     change your keyboard map. It is part of the gnome-core package. This 
-    description of it refers to the gkb as displayed in gnome-core-1.1.2.
+    description of it refers to the gkb as displayed in gnome-applets-1.2.
   </para>
   <para>
     It is occasionally found in the <interface>panel</interface> anyway, 
@@ -93,14 +93,6 @@
      <para>
       Pressing <mousebutton>mouse button 2</mousebutton> and holding it
       down allows you to drag your gkb about.
- <figure id="GKB-ABOUT-fig1">
-  <title>GKB about</title>
-  <screenshot>
-   <screeninfo>GKB about</screeninfo>
-   <graphic format="png" fileref="about" srccredit="Szabolcs BAN">
-   </graphic>
-  </screenshot>
- </figure>
 
      </para>
     </listitem>
@@ -119,6 +111,15 @@
         </screenshot>
        </figure>
 
+       <figure id="GKB-ABOUT-fig1">
+        <title>GKB about</title>
+        <screenshot>
+         <screeninfo>GKB about</screeninfo>
+         <graphic format="png" fileref="about" srccredit="Szabolcs BAN">
+         </graphic>
+        </screenshot>
+       </figure>
+
      </para>
     </listitem>
    </orderedlist>
@@ -126,13 +127,21 @@
   </sect2>
 
   <sect2 id="gkb-prefs">
-   <title>Preferences</title>
+   <title>Properties</title>
    <para>
-     The <guilabel>preferences dialogue box</guilabel> (called
-     GNOME gkb Properties) is simple, with five options you can
-     configure.
+     The <guilabel>properties dialog box</guilabel> (called
+     GKB Properties) is simple.
+     Every tab is a keymap. At every keymap set you can set the name of the
+     set, the full command, (there is a gkb_xmmap script for xmodmap) the
+     iconpath.
    </para>
-
+   <para>
+   You can do new keymap and delete the actual.
+   </para>
+   <para>
+   The commad sould be like this: "gkb_xmmap us" or "setxkbmap fr" or
+   "/usr/local/bin/Xmodmap ru".
+   </para> 
  <figure id="GKB-Prefs-fig1">
   <title>GKB Properties dialog box</title>
   <screenshot>
@@ -169,9 +178,6 @@
   </screenshot>
  </figure>
 
-
-        You may also put a different
-        pathname in pointing to your own pictures.
       </para>
      </listitem>
     </varlistentry>
@@ -192,7 +198,10 @@
   <sect2 id="gkb-bugs">
    <title>Bugs and Limitations</title>
    <para>
-     No bugs known. The applet goesn't work at all.
+
+    The sequence of keymaps are broken at loading or saving.. 
+    Iconselector's callback doesn't work.. There isn't presets..
+
    </para>
   </sect2>
  
