@@ -32,6 +32,11 @@
 #include "macro.h"
 #include "message.h"
 
+/*in case SA_NOMASK doesn't exist, use SA_NODEFER*/
+#ifndef SA_NOMASK
+#define SA_NOMASK SA_NODEFER
+#endif
+
 /* 
    These routines will only work on UNIX-alike system because fork()
    is needed. Perhaps I will add an alternative for non UNIX system in
@@ -127,12 +132,13 @@ void sighandle_sigalrm(int sig)
 void
 initExecSignalHandler(void)
 {
-    struct sigaction act;
+    struct sigaction act = {0}; /*this sets all fields to 0, no
+				  matter how many fields there are*/
 
     act.sa_handler= &sighandle_sigchld;
     /* act.sa_mask =  */
     act.sa_flags = SA_NOMASK;
-    act.sa_restorer = NULL;
+    /* act.sa_restorer = NULL; */
 
     /* install signal handler */
     sigaction(SIGCHLD, &act, NULL); 
@@ -140,7 +146,7 @@ initExecSignalHandler(void)
     act.sa_handler= &sighandle_sigalrm;
     /* act.sa_mask =  */
     act.sa_flags = SA_NOMASK;
-    act.sa_restorer = NULL;
+    /* act.sa_restorer = NULL; */
 
     /* install signal handler */
     sigaction(SIGALRM, &act, NULL); 
