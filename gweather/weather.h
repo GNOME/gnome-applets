@@ -69,6 +69,7 @@ typedef enum _WeatherWindDirection WeatherWindDirection;
 extern const gchar *weather_wind_direction_string (WeatherWindDirection wind);
 
 enum _WeatherSky {
+    SKY_INVALID = -1,
     SKY_CLEAR,
     SKY_BROKEN,
     SKY_SCATTERED,

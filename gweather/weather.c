@@ -1515,6 +1515,7 @@ void _weather_info_get_pixbuf (WeatherInfo *info, gboolean mini, GdkPixbuf **pix
 	                      || (current_time >= info->sunrise &&
 				  current_time < info->sunset);
             switch (sky) {
+	    case SKY_INVALID:
             case SKY_CLEAR:
 	        idx = useSun ? PIX_SUN : PIX_MOON;
                 break;
