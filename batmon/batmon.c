@@ -63,6 +63,8 @@ enum {
 static gint
 batmon_timeout_callback (gpointer *data)
 {
+	static gboolean first_time = TRUE;
+	static gboolean	old_linestat = FALSE;
 	gboolean	linestat = TRUE;
 	gint		batflag;
 	gint		batpct;
@@ -252,12 +254,20 @@ batmon_timeout_callback (gpointer *data)
 
 	gtk_tooltips_set_tip (tooltips, GTK_WIDGET (data), tipstr, NULL);
 
-	if (linestat)
-		fname = ac_pixmap_filename;
-	else
-		fname = bat_pixmap_filename;
+	if (linestat != old_linestat || first_time)
+	  {
+		if (linestat)
+			fname = ac_pixmap_filename;
+		else
+			fname = bat_pixmap_filename;
 
-	gnome_pixmap_load_file (GNOME_PIXMAP (GTK_BUTTON (data)->child), fname); 
+		gnome_pixmap_load_file (GNOME_PIXMAP (GTK_BUTTON (data)->child),
+				 	fname); 
+
+		old_linestat = linestat;
+		first_time = FALSE;
+	  }
+
 
 	return TRUE;
 }
