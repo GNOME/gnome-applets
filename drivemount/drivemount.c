@@ -125,7 +125,7 @@ static void about_cb (AppletWidget *widget, gpointer data)
 	}
 
         about = gnome_about_new ( _("Drive Mount Applet"), VERSION,
-			"(C) 1999",
+			"(C) 2000",
 			authors,
 			_("Released under the GNU general public license.\n"
 			  "Mounts and Unmounts drives."),
@@ -176,7 +176,7 @@ static gint device_is_in_mountlist(DriveData *dd)
 	gchar buf[201];
 	gint found = FALSE;
 
-	buf[200] = '\0';
+	if (!dd->mount_point) return FALSE;
 
 	fp = popen(command_line, "r");
 
@@ -186,9 +186,9 @@ static gint device_is_in_mountlist(DriveData *dd)
 		return FALSE;
 	}
 
-	while (fgets(buf, 200, fp) != NULL)
+	while (fgets(buf, sizeof(buf), fp) != NULL)
 	{
-		if (strstr(buf, dd->mount_point) != 0) found = TRUE;
+		if (strstr(buf, dd->mount_point) != NULL) found = TRUE;
 	}
 
 	pclose (fp);
@@ -211,6 +211,8 @@ static gint get_device(gchar *file)
 
 static gint device_is_mounted(DriveData *dd)
 {
+	if (!dd->mount_point || !dd->mount_base) return FALSE;
+
 	if (!dd->autofs_friendly)
 		{
 		gint b, p;
@@ -454,7 +456,7 @@ static gint mount_cb(GtkWidget *widget, gpointer data)
 
 	str = g_string_new(NULL);
 
-	while (fgets(buf, 200, fp) != NULL)
+	while (fgets(buf, sizeof(buf), fp) != NULL)
 		{
 		gchar *b = buf;
 		g_string_append(str, b);
@@ -489,6 +491,7 @@ static void eject_cb(AppletWidget *applet, gpointer data)
 	gchar mp[200];	/* Mountpoint */
 	FILE *ml;	/* Mountlist */
 
+	if (!dd->mount_point) return;
 
 	/*
 	 * Search the output of mount for dd->mount_point
@@ -500,7 +503,7 @@ static void eject_cb(AppletWidget *applet, gpointer data)
 	
 	if (dd->mounted) {
 		ml = popen("mount", "r");
-		while (fgets(buffer, 200, ml)) {
+		while (fgets(buffer, sizeof(buffer), ml)) {
 			sscanf(buffer, "%s %*s %s", dn, mp);
 			if (!strcmp(mp, dd->mount_point))
 				break;
@@ -508,7 +511,7 @@ static void eject_cb(AppletWidget *applet, gpointer data)
 		pclose (ml);
 	} else {
 		ml = fopen("/etc/fstab", "r");
-		while (fgets(buffer, 200, ml)) {
+		while (fgets(buffer, sizeof(buffer), ml)) {
 			sscanf(buffer, "%s %s", dn, mp);
 			if (!strcmp(mp, dd->mount_point))
 				break;

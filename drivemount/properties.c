@@ -154,7 +154,7 @@ static void property_apply_cb( GtkWidget *widget, void *data, DriveData *dd)
 	dd->autofs_friendly = dd->prop_autofs_friendly;
 	new_file = gtk_entry_get_text(GTK_ENTRY(dd->mount_point_entry));
 	if (dd->mount_point) g_free(dd->mount_point);
-	dd->mount_point = strdup(new_file);
+	dd->mount_point = g_strdup(new_file);
         dd->interval = dd->prop_interval;
 	if (dd->device_pixmap != dd->prop_device_pixmap)
 		{
