@@ -12,17 +12,7 @@ EXTRA_DIST = screenshooter.sgml topic.dat
 all: screenshooter.html
 
 screenshooter.html: screenshooter/screenshooter.html
-	-cp screenshooter/screenshooter.html \
-	screenshooter/preferences.html \
-	screenshooter/preferences-0.html \
-	screenshooter/preferences-1.html \
-	screenshooter/preferences-2.html \
-	screenshooter/preferences-3.html \
-	screenshooter/preferences-4.html \
-	screenshooter/preferences-5.html \
-	screenshooter/preferences-6.html \
-	screenshooter/screenshooteruse.html \
-	screenshooter/ln15.html .
+	-cp screenshooter/*.html .
 
 screenshooter/screenshooter.html: $(srcdir)/screenshooter.sgml
 	-srcdir=`cd $(srcdir) && pwd`; \
