@@ -18,10 +18,10 @@
  */
 
 #include <config.h>
+#include <math.h>
 #include <gnome.h>
 #include <applet-widget.h>
 #include <libgnomeui/gnome-window-icon.h>
-#include <math.h>
 
 #include "geyes.h"
 
@@ -421,8 +421,8 @@ main (int argc, char *argv[])
         properties_load (APPLET_WIDGET (eyes_applet.applet)->privcfgpath);
         create_eyes ();
         
-        timeout_handle = gtk_timeout_add (UPDATE_TIMEOUT, 
-										  (void *) timer_cb, NULL);
+        timeout_handle = gtk_timeout_add (UPDATE_TIMEOUT,
+			(GtkFunction)timer_cb, NULL);										  
         
         gtk_widget_show (eyes_applet.applet);
         
