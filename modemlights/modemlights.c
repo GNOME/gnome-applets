@@ -577,15 +577,19 @@ static void update_tooltip(MLData *mldata, int connected, int rx, int tx)
 	if (connected)
 		{
 		gint t;
-		gint h, m;
+		gint t1, t2;
 
 		t = get_connect_time(mldata, FALSE);
 
-		h = t / 3600;
-		m = (t - (h * 3600)) / 60;
-
+		if (t < 360000) {
+		  t1 = t / 3600; /* hours */
+		  t2 = (t1 - (t1 * 3600)) / 60; /* minutes */
+		} else {
+		  t1 = (t/3600)/24; /* days */
+		  t2 = (t1 - (t1*3600*24)) / 3600; /* hours */
+		}
 		text = g_strdup_printf(_("%#.1fMb received / %#.1fMb sent / time: %.1d:%.2d"),
-				       (float)rx / 1000000, (float)tx / 1000000, h, m);
+				       (float)rx / 1000000, (float)tx / 1000000, t1, t2);
 		}
 	else
 		{
