@@ -51,6 +51,8 @@ static gboolean stickynotes_applet_factory(PanelApplet *panel_applet, const gcha
 	if (!strcmp(iid, "OAFIID:GNOME_StickyNotesApplet")) {
 		if (!stickynotes)
 			stickynotes_applet_init();
+			
+		panel_applet_set_flags (panel_applet, PANEL_APPLET_EXPAND_MINOR);
 
 		/* Add applet to linked list of all applets */
 		stickynotes->applets = g_list_append(stickynotes->applets, stickynotes_applet_new(panel_applet));
