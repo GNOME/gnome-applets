@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-03-31 23:28+0200\n"
-"PO-Revision-Date: 2005-03-31 23:30+0200\n"
+"POT-Creation-Date: 2005-04-05 20:58+0200\n"
+"PO-Revision-Date: 2005-04-05 21:09+0200\n"
 "Last-Translator: Frank Arnold <frank@scirocco-5v-turbo.de>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -403,7 +403,7 @@ msgstr "Dieses Hilfsprogramm zeigt den Ladezustand Ihrer Laptop-Batterie an."
 #: battstat/battstat_applet.c:985 charpick/charpick.c:617
 #: cpufreq/src/cpufreq-applet.c:224 gtik/gtik.c:738
 #: gweather/gweather-about.c:54 mini-commander/src/about.c:55
-#: mixer/applet.c:1122 multiload/main.c:62
+#: mixer/applet.c:1142 multiload/main.c:62
 #: stickynotes/stickynotes_applet_callbacks.c:444
 #: trashapplet/src/trashapplet.c:720
 msgid "translator-credits"
@@ -417,8 +417,7 @@ msgstr ""
 "Matthias Warkus <mawa@iname.com>\n"
 "Hendrik Brandt <heb@gnome-de.org>"
 
-#: battstat/battstat_applet.glade.h:1 cpufreq/cpufreq-preferences.glade.h:1
-#: gswitchit/gswitchit-properties.glade.h:1
+#: battstat/battstat_applet.glade.h:1 gswitchit/gswitchit-properties.glade.h:1
 #: mini-commander/src/mini-commander.glade.h:1
 #: stickynotes/stickynotes.glade.h:1
 msgid "    "
@@ -623,7 +622,7 @@ msgid "Character Palette Preferences"
 msgstr "Einstellungen der Zeichenpalette"
 
 #: cpufreq/GNOME_CPUFreqApplet.server.in.in.h:1
-#: cpufreq/src/cpufreq-applet.c:216 cpufreq/src/cpufreq-applet.c:769
+#: cpufreq/src/cpufreq-applet.c:216 cpufreq/src/cpufreq-applet.c:811
 msgid "CPU Frequency Scaling Monitor"
 msgstr "Überwachen der Prozessortaktstufen"
 
@@ -663,11 +662,15 @@ msgid "Mode to show cpu usage"
 msgstr "Modus um die Prozessorlast anzuzeigen"
 
 #: cpufreq/cpufreq-applet.schemas.in.h:5
+msgid "Mode to show the frequency selector drop down menu"
+msgstr "Modus in dem das Frequenz-Aufklappmenü angezeigt wird"
+
+#: cpufreq/cpufreq-applet.schemas.in.h:6
 msgid "Mode to show when show_mode is text or both"
 msgstr ""
 "Anzuzeigender Modus, wenn »show_mode« auf »text« oder »both« gesetzt ist"
 
-#: cpufreq/cpufreq-applet.schemas.in.h:6
+#: cpufreq/cpufreq-applet.schemas.in.h:7
 msgid ""
 "Set the CPU to monitor. In a single processor system you don't have to "
 "change it."
@@ -675,9 +678,13 @@ msgstr ""
 "Den zu überwachenden Prozessor festlegen. In einem Ein-Prozessorsystem kann "
 "dieser Wert nicht geändert werden."
 
-#: cpufreq/cpufreq-preferences.glade.h:2
+#: cpufreq/cpufreq-preferences.glade.h:1
 msgid "<b>Display Settings</b>"
 msgstr "<b>Darstellungsoptionen</b>"
+
+#: cpufreq/cpufreq-preferences.glade.h:2
+msgid "<b>Frequency Selector</b>"
+msgstr "<b>Frequenzauswahl</b>"
 
 #: cpufreq/cpufreq-preferences.glade.h:3
 msgid "<b>Monitor Settings</b>"
@@ -700,14 +707,18 @@ msgid "Show frequency _units"
 msgstr "Takt_einheiten anzeigen"
 
 #: cpufreq/cpufreq-preferences.glade.h:8
-msgid "_Monitored CPU:"
-msgstr "Ü_berwachter Prozessor:"
+msgid "Show m_enu "
+msgstr "_Menü anzeigen"
 
 #: cpufreq/cpufreq-preferences.glade.h:9
-msgid "_Show in mode:"
-msgstr "_Anzeigemodus:"
+msgid "_Monitored CPU "
+msgstr "Ü_berwachter Prozessor"
 
-#: cpufreq/src/cpufreq-applet.c:185 cpufreq/src/cpufreq-prefs.c:247
+#: cpufreq/cpufreq-preferences.glade.h:10
+msgid "_Show in mode "
+msgstr "_Anzeigemodus"
+
+#: cpufreq/src/cpufreq-applet.c:185 cpufreq/src/cpufreq-prefs.c:267
 msgid "Could not open help document"
 msgstr "Hilfedokument konnte nicht geöffnet werden"
 
@@ -715,23 +726,35 @@ msgstr "Hilfedokument konnte nicht geöffnet werden"
 msgid "This utility shows the current CPU Frequency Scaling."
 msgstr "Dieses Werkzeug zeigt die aktuelle Abstufung des Prozessortakt."
 
-#: cpufreq/src/cpufreq-applet.c:770
+#: cpufreq/src/cpufreq-applet.c:812
 msgid "This utility shows the current CPU Frequency"
 msgstr "Dieses Werkzeug zeigt den aktuellen Prozessortakt"
 
-#: cpufreq/src/cpufreq-prefs.c:311
+#: cpufreq/src/cpufreq-prefs.c:331
 msgid "Graphic"
 msgstr "Graph"
 
-#: cpufreq/src/cpufreq-prefs.c:316
+#: cpufreq/src/cpufreq-prefs.c:336
 msgid "Text"
 msgstr "Text"
 
-#: cpufreq/src/cpufreq-prefs.c:321
+#: cpufreq/src/cpufreq-prefs.c:341
 msgid "Graphic and Text"
 msgstr "Grafik und Text"
 
-#: cpufreq/src/cpufreq-monitor-cpuinfo.c:183
+#: cpufreq/src/cpufreq-prefs.c:371 cpufreq/src/cpufreq-popup.c:304
+msgid "Frequencies"
+msgstr "Frequenzen"
+
+#: cpufreq/src/cpufreq-prefs.c:376 cpufreq/src/cpufreq-popup.c:297
+msgid "Governors"
+msgstr "Regulatoren"
+
+#: cpufreq/src/cpufreq-prefs.c:381
+msgid "Frequencies and Governors"
+msgstr "Frequenzen und Regulatoren"
+
+#: cpufreq/src/cpufreq-monitor-cpuinfo.c:184
 msgid "Frequency Scaling Unsupported"
 msgstr "Taktabstufung wird nicht unterstützt"
 
@@ -752,7 +775,7 @@ msgstr ""
 "ist Ihr Rechner falsch eingestellt oder Ihre Hardware unterstützt "
 "verschiedene Prozessortaktstufen nicht."
 
-#: cpufreq/src/cpufreq-monitor-procfs.c:252 cpufreq/src/cpufreq-popup.c:216
+#: cpufreq/src/cpufreq-monitor-procfs.c:252 cpufreq/src/cpufreq-popup.c:232
 #: gweather/weather.c:248 gweather/weather.c:1004 gweather/weather.c:1073
 #: gweather/weather.c:1087 gweather/weather.c:1099 gweather/weather.c:1114
 #: gweather/weather.c:1130 gweather/weather.c:1161 gweather/weather.c:1173
@@ -1770,7 +1793,7 @@ msgstr "Symbole"
 msgid "Behavior"
 msgstr "Verhalten"
 
-#: gtik/gtik.c:1401 gweather/gweather-pref.c:1028
+#: gtik/gtik.c:1401 gweather/gweather-pref.c:1031
 msgid "Update"
 msgstr "Aktualisieren"
 
@@ -1778,7 +1801,7 @@ msgstr "Aktualisieren"
 msgid "Stock update fre_quency:"
 msgstr "Aktualisierungs_abstand der Aktienkurse:"
 
-#: gtik/gtik.c:1417 gweather/gweather-pref.c:1052
+#: gtik/gtik.c:1417 gweather/gweather-pref.c:1055
 msgid "minutes"
 msgstr "Minuten"
 
@@ -1814,7 +1837,7 @@ msgstr "Von _links nach rechts rollen"
 msgid "Appearance"
 msgstr "Erscheinungsbild"
 
-#: gtik/gtik.c:1488 gweather/gweather-pref.c:1068
+#: gtik/gtik.c:1488 gweather/gweather-pref.c:1071
 msgid "Display"
 msgstr "Anzeige"
 
@@ -2185,22 +2208,23 @@ msgstr "Adresseingabefeld"
 msgid "Enter the URL"
 msgstr "Geben Sie die URL ein"
 
-#: gweather/gweather-pref.c:361
+#: gweather/gweather-pref.c:362
 msgid ""
 "Failed to load the Locations XML database.  Please report this as a bug."
-msgstr "Die XML-Datenbank mit den Ortsangaben konnte nicht geladen werden. "
-"Bitte melden Sie dies als Programmfehler."
+msgstr ""
+"Die XML-Datenbank mit den Ortsangaben konnte nicht geladen werden. Bitte "
+"melden Sie dies als Programmfehler."
 
 #. TRANSLATOR: This is the default unit to use for temperature measurements.
 #. Valid values are: "K" (Kelvin), "C" (Celsius) and "F" (Fahrenheit)
-#: gweather/gweather-pref.c:410 gweather/gweather-pref.c:419
+#: gweather/gweather-pref.c:413 gweather/gweather-pref.c:422
 msgid "DEFAULT_TEMP_UNIT"
 msgstr "C"
 
 #. TRANSLATOR: This is the default unit to use for wind speed.
 #. Valid values are: "m/s" (meters per second), "km/h" (kilometers per hour),
 #. "mph" (miles per hour) and "knots"
-#: gweather/gweather-pref.c:445 gweather/gweather-pref.c:455
+#: gweather/gweather-pref.c:448 gweather/gweather-pref.c:458
 msgid "DEFAULT_SPEED_UNIT"
 msgstr "m/s"
 
@@ -2208,143 +2232,143 @@ msgstr "m/s"
 #. Valid values are: "kPa" (kiloPascals), "hPa" (hectoPascals),
 #. "mb" (millibars), "mmHg" (millimeters of mercury) and
 #. "inHg" (inches of mercury)
-#: gweather/gweather-pref.c:483 gweather/gweather-pref.c:494
+#: gweather/gweather-pref.c:486 gweather/gweather-pref.c:497
 msgid "DEFAULT_PRESSURE_UNIT"
 msgstr "hPa"
 
 #. TRANSLATOR: This is the default unit to use for visibility distance.
 #. Valid values are: "m" (meters), "km" (kilometers) and "mi" (miles)
-#: gweather/gweather-pref.c:520 gweather/gweather-pref.c:529
+#: gweather/gweather-pref.c:523 gweather/gweather-pref.c:532
 msgid "DEFAULT_DISTANCE_UNIT"
 msgstr "m"
 
-#: gweather/gweather-pref.c:822
+#: gweather/gweather-pref.c:825
 msgid "Weather Preferences"
 msgstr "Wettereinstellungen"
 
-#: gweather/gweather-pref.c:855 gweather/gweather-pref.c:1032
+#: gweather/gweather-pref.c:858 gweather/gweather-pref.c:1035
 msgid "_Automatically update every:"
 msgstr "_Automatisch aktualisieren alle:"
 
 #. Temperature Unit
-#: gweather/gweather-pref.c:864
+#: gweather/gweather-pref.c:867
 msgid "_Temperature unit:"
 msgstr "_Temperatureinheit:"
 
-#: gweather/gweather-pref.c:873 gweather/gweather-pref.c:893
-#: gweather/gweather-pref.c:917 gweather/gweather-pref.c:943
+#: gweather/gweather-pref.c:876 gweather/gweather-pref.c:896
+#: gweather/gweather-pref.c:920 gweather/gweather-pref.c:946
 msgid "Default"
 msgstr "Vorgabe"
 
-#: gweather/gweather-pref.c:874
+#: gweather/gweather-pref.c:877
 msgid "Kelvin"
 msgstr "Kelvin"
 
 #. TRANSLATORS: Celsius is sometimes referred Centigrade
-#: gweather/gweather-pref.c:876
+#: gweather/gweather-pref.c:879
 msgid "Celsius"
 msgstr "Celsius"
 
-#: gweather/gweather-pref.c:877
+#: gweather/gweather-pref.c:880
 msgid "Fahrenheit"
 msgstr "Fahrenheit"
 
 #. Speed Unit
-#: gweather/gweather-pref.c:884
+#: gweather/gweather-pref.c:887
 msgid "_Wind speed unit:"
 msgstr "_Windgeschwindigkeitseinheit:"
 
 #. TRANSLATOR: The wind speed unit "meters per second"
-#: gweather/gweather-pref.c:895
+#: gweather/gweather-pref.c:898
 msgid "m/s"
 msgstr "m/s"
 
 #. TRANSLATOR: The wind speed unit "kilometers per hour"
-#: gweather/gweather-pref.c:897
+#: gweather/gweather-pref.c:900
 msgid "km/h"
 msgstr "km/h"
 
 #. TRANSLATOR: The wind speed unit "miles per hour"
-#: gweather/gweather-pref.c:899
+#: gweather/gweather-pref.c:902
 msgid "mph"
 msgstr "mph"
 
 #. TRANSLATOR: The wind speed unit "knots"
-#: gweather/gweather-pref.c:901
+#: gweather/gweather-pref.c:904
 msgid "knots"
 msgstr "Knoten"
 
 #. Pressure Unit
-#: gweather/gweather-pref.c:908
+#: gweather/gweather-pref.c:911
 msgid "_Pressure unit:"
 msgstr "_Luftdruckeinheit:"
 
 #. TRANSLATOR: The pressure unit "kiloPascals"
-#: gweather/gweather-pref.c:919
+#: gweather/gweather-pref.c:922
 msgid "kPa"
 msgstr "kPa"
 
 #. TRANSLATOR: The pressure unit "hectoPascals"
-#: gweather/gweather-pref.c:921
+#: gweather/gweather-pref.c:924
 msgid "hPa"
 msgstr "hPa"
 
 #. TRANSLATOR: The pressure unit "millibars"
-#: gweather/gweather-pref.c:923
+#: gweather/gweather-pref.c:926
 msgid "mb"
 msgstr "mb"
 
 #. TRANSLATOR: The pressure unit "millibars of mercury"
-#: gweather/gweather-pref.c:925
+#: gweather/gweather-pref.c:928
 msgid "mmHg"
 msgstr "mmHg"
 
 #. TRANSLATOR: The pressure unit "inches of mercury"
-#: gweather/gweather-pref.c:927
+#: gweather/gweather-pref.c:930
 msgid "inHg"
 msgstr "inHg"
 
 #. Distance Unit
-#: gweather/gweather-pref.c:934
+#: gweather/gweather-pref.c:937
 msgid "_Visibility unit:"
 msgstr "_Sichtweiteneinheit:"
 
 #. TRANSLATOR: The distance unit "meters"
-#: gweather/gweather-pref.c:945
+#: gweather/gweather-pref.c:948
 msgid "meters"
 msgstr "Meter"
 
 #. TRANSLATOR: The distance unit "kilometers"
-#: gweather/gweather-pref.c:947
+#: gweather/gweather-pref.c:950
 msgid "km"
 msgstr "km"
 
 #. TRANSLATOR: The distance unit "miles"
-#: gweather/gweather-pref.c:949
+#: gweather/gweather-pref.c:952
 msgid "miles"
 msgstr "Meilen"
 
-#: gweather/gweather-pref.c:983
+#: gweather/gweather-pref.c:986
 msgid "Enable _radar map"
 msgstr "_Radarkarte aktivieren"
 
-#: gweather/gweather-pref.c:997
+#: gweather/gweather-pref.c:1000
 msgid "Use _custom address for radar map"
 msgstr "_Benutzerdefinierte Adresse für Radarkarte verwenden"
 
-#: gweather/gweather-pref.c:1014
+#: gweather/gweather-pref.c:1017
 msgid "A_ddress:"
 msgstr "A_dresse:"
 
-#: gweather/gweather-pref.c:1083 mini-commander/src/mini-commander.glade.h:12
+#: gweather/gweather-pref.c:1086 mini-commander/src/mini-commander.glade.h:12
 msgid "General"
 msgstr "Allgemein"
 
-#: gweather/gweather-pref.c:1096
+#: gweather/gweather-pref.c:1099
 msgid "_Select a location:"
 msgstr "_Standortwahl:"
 
-#: gweather/gweather-pref.c:1126
+#: gweather/gweather-pref.c:1129
 msgid "Location"
 msgstr "Standort"
 
@@ -3033,6 +3057,11 @@ msgstr "%H:%M"
 msgid "Retrieval failed"
 msgstr "Abrufen fehlgeschlagen"
 
+#: libgswitchit/gswitchit_config.c:1016
+#, c-format
+msgid "There was an error loading an image: %s"
+msgstr "Beim Laden eines Bildes ist ein Fehler aufgetreten: %s"
+
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.in.h:1
 #: mini-commander/src/about.c:47
 msgid "Command Line"
@@ -3365,7 +3394,7 @@ msgstr "Befehl"
 msgid "Adjust the sound volume"
 msgstr "Die Lautstärke einstellen"
 
-#: mixer/GNOME_MixerApplet.server.in.in.h:2 mixer/applet.c:254
+#: mixer/GNOME_MixerApplet.server.in.in.h:2 mixer/applet.c:255
 msgid "Volume Control"
 msgstr "Lautstärkeregler"
 
@@ -3382,21 +3411,31 @@ msgstr "_Lautstärkeregler öffnen"
 msgid "No volume control elements and/or devices found."
 msgstr "Es wurden keine Lautstärkeelemente und/oder keine Geräte gefunden."
 
-#: mixer/applet.c:646
+#: mixer/applet.c:650
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "Der Lautstärkeregler konnte nicht gestartet werden: %s"
 
-#: mixer/applet.c:1103
+#: mixer/applet.c:956
+#, c-format
+msgid "%s: muted"
+msgstr "%s: stumm"
+
+#: mixer/applet.c:961
+#, c-format
+msgid "%s: %d%%"
+msgstr "%s: %d%%"
+
+#: mixer/applet.c:1123
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "Die Hilfe konnte nicht angezeigt werden: %s"
 
-#: mixer/applet.c:1116
+#: mixer/applet.c:1136
 msgid "Volume Applet"
 msgstr "Lautstärkeregler"
 
-#: mixer/applet.c:1119
+#: mixer/applet.c:1139
 msgid "A GNOME/GStreamer-based volume control applet"
 msgstr "Ein auf GNOME und GStreamer basierender Lautstärkeregler"
 
@@ -3432,11 +3471,11 @@ msgid "Saved volume to restore on startup"
 msgstr "Gespeicherte, beim Neustart wiederherzustellende Laustärke"
 
 #. make window look cute
-#: mixer/preferences.c:125
+#: mixer/preferences.c:124
 msgid "Volume Control Preferences"
 msgstr "Einstellungen des Lautstärkereglers"
 
-#: mixer/preferences.c:138
+#: mixer/preferences.c:137
 msgid "Select the device and track to control."
 msgstr "Bitte wählen Sie das zu regelnde Gerät und den zu regelnden Kanal."
 
@@ -4452,4 +4491,16 @@ msgid ""
 msgstr ""
 "Konnte nicht in den Müll verschoben werden:\n"
 "%s"
+
+#: trashapplet/trashapplet.glade.h:1
+msgid "<b>From:</b>"
+msgstr "<b>Von:</b>"
+
+#: trashapplet/trashapplet.glade.h:2
+msgid "<big><b>Emptying the Trash</b></big>"
+msgstr "<big><b>Mülleimer wird geleert</b></big>"
+
+#: trashapplet/trashapplet.glade.h:3
+msgid "Emptying the Trash"
+msgstr "Mülleimer entleeren"
 
