@@ -225,7 +225,7 @@ properties_cb (BonoboUIComponent *uic,
 					     GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
 					     GTK_STOCK_HELP, GTK_RESPONSE_HELP,
 					     NULL);
-	gtk_window_set_screen (GTK_WINDOW (eyes_applet->prop_box.pbox),
+	gtk_window_set_screen (GTK_WINDOW (pbox),
 			       gtk_widget_get_screen (GTK_WIDGET (eyes_applet->applet)));
         gtk_dialog_set_default_response(GTK_DIALOG (pbox), GTK_RESPONSE_CLOSE);
 
