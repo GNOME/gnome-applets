@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-07-28 00:17+0200\n"
+"POT-Creation-Date: 2003-08-10 23:18+0200\n"
 "PO-Revision-Date: 2003-07-15 11:47+0100\n"
 "Last-Translator: Gnome PL Team <translators@gnome.pl>\n"
 "Language-Team: Polish <pl@li.org>\n"
@@ -89,7 +89,7 @@ msgstr "Narzędzia"
 #: mini-commander/src/about.c:48 mixer/mixer.c:1060
 #: modemlights/modemlights.c:115 multiload/main.c:57
 #: stickynotes/stickynotes_applet_callbacks.c:178
-#: wireless/wireless-applet.c:709
+#: wireless/wireless-applet.c:528
 msgid "translator_credits"
 msgstr "GNOME PL Team <translators@gnome.pl>"
 
@@ -3527,6 +3527,34 @@ msgid "Memory Load"
 msgstr "Wykorzystanie pamięci operacyjnej"
 
 #: multiload/multiload.schemas.in.h:1
+msgid "Applet refresh rate in milliseconds"
+msgstr "Czas odświeżania apletów w milisekundach"
+
+#: multiload/multiload.schemas.in.h:2
+msgid "CPU graph background color"
+msgstr "Kolor tła wykresu procesora"
+
+#: multiload/multiload.schemas.in.h:3
+msgid "Enable CPU load graph"
+msgstr "Włączenie wykresu obciążenia procesora"
+
+#: multiload/multiload.schemas.in.h:4
+msgid "Enable load average graph"
+msgstr "Włączenie wykresu średniego obciążenia"
+
+#: multiload/multiload.schemas.in.h:5
+msgid "Enable memory load graph"
+msgstr "Włączenie wykresu zajętości pamięci"
+
+#: multiload/multiload.schemas.in.h:6
+msgid "Enable network load graph"
+msgstr "Włączenie wykresu obciążenia sieci"
+
+#: multiload/multiload.schemas.in.h:7
+msgid "Enable swap load graph"
+msgstr "Włączenie wykresu zajętości przestrzeni wymiany"
+
+#: multiload/multiload.schemas.in.h:8
 msgid ""
 "For horizontal panels, the width of the graphs in pixels. For vertical "
 "panels, this is the height of the graphs."
@@ -3534,109 +3562,77 @@ msgstr ""
 "Dla paneli poziomych, szerokość wykresów w pikselach. Dla paneli pionowych, "
 "wysokość wykresów w pikselach."
 
-#: multiload/multiload.schemas.in.h:2
+#: multiload/multiload.schemas.in.h:9
+msgid "Graph color for Ethernet network activity"
+msgstr "Kolor wykresu aktywności sieci Ethernet"
+
+#: multiload/multiload.schemas.in.h:10
+msgid "Graph color for PLIP network activity"
+msgstr "Kolor wykresu aktywności połączenia PLIP"
+
+#: multiload/multiload.schemas.in.h:11
+msgid "Graph color for SLIP network activity"
+msgstr "Kolor wykresu aktywności połączenia SLIP"
+
+#: multiload/multiload.schemas.in.h:12
+msgid "Graph color for buffer memory"
+msgstr "Kolor wykresu pamięci buforującej"
+
+#: multiload/multiload.schemas.in.h:13
+msgid "Graph color for cached memory"
+msgstr "Kolor wykresu pamięci cache'owanej"
+
+#: multiload/multiload.schemas.in.h:14
+msgid "Graph color for load average"
+msgstr "Kolor wykresu przeciętnego obciążenia"
+
+#: multiload/multiload.schemas.in.h:15
+msgid "Graph color for nice-related CPU activity"
+msgstr "Kolor wykresu wykorzystania procesora przez procesy \"nice\""
+
+#: multiload/multiload.schemas.in.h:16
+msgid "Graph color for other network usage"
+msgstr "Kolor wykresu użycia sieci"
+
+#: multiload/multiload.schemas.in.h:17
+msgid "Graph color for shared memory"
+msgstr "Kolor wykresu pamięci dzielonej"
+
+#: multiload/multiload.schemas.in.h:18
+msgid "Graph color for system-related CPU activity"
+msgstr "Kolor wykresu wykorzystania procesora przez system"
+
+#: multiload/multiload.schemas.in.h:19
+msgid "Graph color for user-related CPU activity"
+msgstr "Kolor wykresu wykorzystania procesora przez użytkownika"
+
+#: multiload/multiload.schemas.in.h:20
+msgid "Graph color for user-related memory usage"
+msgstr "Kolor wykresu wykorzystania pamięci przez użytkownika"
+
+#: multiload/multiload.schemas.in.h:21
+msgid "Graph color for user-related swap usage"
+msgstr "Kolor wykresu wykorzystania przestrzeni wymiany przez użytkownika"
+
+#: multiload/multiload.schemas.in.h:22
 msgid "Graph size"
 msgstr "Rozmiar wykresu"
 
-#: multiload/multiload.schemas.in.h:3
+#: multiload/multiload.schemas.in.h:23
+msgid "Load graph background color"
+msgstr "Kolor tła wykresu obciążenia"
+
+#: multiload/multiload.schemas.in.h:24
+msgid "Memory graph background color"
+msgstr "Kolor tła wykresu pamięci"
+
+#: multiload/multiload.schemas.in.h:25
 msgid "Network graph background color"
 msgstr "Kolor tła wykresu sieci"
 
-#: multiload/multiload.schemas.in.h:4
-msgid "Network other usage"
-msgstr "Inne wykorzystanie sieci"
-
-#: multiload/multiload.schemas.in.h:5
-msgid "The cpu graph background color."
-msgstr "Kolor tła wykresu procesora."
-
-#: multiload/multiload.schemas.in.h:6
-msgid "The load graph background color."
-msgstr "Kolor tła wykresu obciążenia."
-
-#: multiload/multiload.schemas.in.h:7
-msgid "The memory graph background color."
-msgstr "Kolor tła wykresu pamięci."
-
-#: multiload/multiload.schemas.in.h:8
-msgid "The swap graph background color."
-msgstr "Kolor tła wykresu przestrzeni wymiany."
-
-#: multiload/multiload.schemas.in.h:9
-msgid "enable the cpuload graph in multiload."
-msgstr "Wyświetlanie wykresu obciążenia procesora."
-
-#: multiload/multiload.schemas.in.h:10
-msgid "enable the loadavg graph in multiload."
-msgstr "Wyświetlanie wykresu obciążenia systemu."
-
-#: multiload/multiload.schemas.in.h:11
-msgid "enable the memload graph in multiload."
-msgstr "Wyświetlanie wykresu zajętości pamięci."
-
-#: multiload/multiload.schemas.in.h:12
-msgid "enable the netload graph in multiload."
-msgstr "Wyświetlanie wykresu obciążenia sieci."
-
-#: multiload/multiload.schemas.in.h:13
-msgid "enable the swapload graph in multiload."
-msgstr "Wyświetlanie wykresu zajętości przestrzeni wymiany."
-
-#: multiload/multiload.schemas.in.h:14
-msgid "the graph color for Ethernet network activity."
-msgstr "Kolor wykresu aktywności sieci Ethernet."
-
-#: multiload/multiload.schemas.in.h:15
-msgid "the graph color for PLIP network activity."
-msgstr "Kolor wykresu aktywności połączenia PLIP."
-
-#: multiload/multiload.schemas.in.h:16
-msgid "the graph color for SLIP network activity."
-msgstr "Kolor wykresu aktywności połączenia SLIP."
-
-#: multiload/multiload.schemas.in.h:17
-msgid "the graph color for buffer memory."
-msgstr "Kolor wykresu pamięci buforowanej."
-
-#: multiload/multiload.schemas.in.h:18
-msgid "the graph color for cached memory."
-msgstr "Kolor wykresu pamięci cache'owanej."
-
-#: multiload/multiload.schemas.in.h:19
-msgid "the graph color for load average."
-msgstr "Kolor wykresu przeciętnego obciążenia."
-
-#: multiload/multiload.schemas.in.h:20
-msgid "the graph color for nice-related cpu activity."
-msgstr "Kolor wykresu wykorzystania procesora przez procesy 'nice'."
-
-#: multiload/multiload.schemas.in.h:21
-msgid "the graph color for shared memory."
-msgstr "Kolor wykresu pamięci dzielonej."
-
-#: multiload/multiload.schemas.in.h:22
-msgid "the graph color for system-related cpu activity."
-msgstr "Kolor wykresu wykorzystania procesora przez system."
-
-#: multiload/multiload.schemas.in.h:23
-msgid "the graph color for user-related cpu activity."
-msgstr "Kolor wykresu wykorzystania procesora przez użytkownika."
-
-#: multiload/multiload.schemas.in.h:24
-msgid "the graph color for user-related memory usage."
-msgstr "Kolor wykresu wykorzystania pamięci przez użytkownika."
-
-#: multiload/multiload.schemas.in.h:25
-msgid "the graph color for user-related swap usage."
-msgstr "Kolor wykresu wykorzystania przestrzeni wymiany przez użytkownika."
-
 #: multiload/multiload.schemas.in.h:26
-msgid "the refresh rate of the applets in milliseconds"
-msgstr "Czas odświeżania apletów w milisekundach"
-
-#: multiload/multiload.schemas.in.h:27
-msgid "the refresh rate of the applets in milliseconds."
-msgstr "Czas odświeżania apletów w milisekundach."
+msgid "Swap graph background color"
+msgstr "Kolor tła wykresu przestrzeni wymiany"
 
 #: multiload/netload.c:49
 msgid "Net Load"
@@ -4140,13 +4136,13 @@ msgid_plural ""
 "%d notes"
 msgstr[0] ""
 "%s:\n"
-"użyte %d%%"
+"%d notatka"
 msgstr[1] ""
 "%s:\n"
-"użyte %d%%"
+"%d notatki"
 msgstr[2] ""
 "%s:\n"
-"użyte %d%%"
+"%d notatek"
 
 #: stickynotes/stickynotes_applet_callbacks.c:182
 msgid "(c) 2002-2003 Loban A Rahman"
@@ -4161,24 +4157,15 @@ msgid "Monitor the quality of a wireless network link"
 msgstr "Monitor jakości bezprzewodowego połączenia sieciowego"
 
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:3
-#: wireless/wireless-applet.c:724
+#: wireless/wireless-applet.c:543
 msgid "Wireless Link Monitor"
 msgstr "Monitor połączenia bezprzewodowego"
 
-#: wireless/wireless-applet.c:351
-msgid ""
-"The images necessary to run the wireless monitor are missing.\n"
-"Please make sure that it is correctly installed."
-msgstr ""
-"Nie można odnaleźć obrazów potrzebnych do uruchomienia monitora połączenia "
-"bezprzewodowego.\n"
-"Upewnij się, że program jest poprawnie zainstalowany."
-
-#: wireless/wireless-applet.c:532 wireless/wireless-applet.c:669
+#: wireless/wireless-applet.c:351 wireless/wireless-applet.c:488
 msgid "No Wireless Devices"
 msgstr "Brak urządzeń bezprzewodowych"
 
-#: wireless/wireless-applet.c:534
+#: wireless/wireless-applet.c:353
 msgid ""
 "There doesn't seem to be any wireless devices configured on your system.\n"
 "Please verify your configuration if you think this is incorrect."
@@ -4187,11 +4174,11 @@ msgstr ""
 "bezprzewodowych.\n"
 "Jeśli uważasz, że diagnoza jest nieprawidłowa, zweryfikuj konfigurację."
 
-#: wireless/wireless-applet.c:726
+#: wireless/wireless-applet.c:545
 msgid "(C) 2001, 2002 Free Software Foundation "
 msgstr "(C) 2001, 2002 Free Software Foundation "
 
-#: wireless/wireless-applet.c:727
+#: wireless/wireless-applet.c:546
 msgid "This utility shows the status of a wireless link."
 msgstr "Narzędzie wyświetlające stan połączenia bezprzewodowego."
 
@@ -4206,6 +4193,35 @@ msgstr "Ustawienia monitora połączenia bezprzewodowego"
 #: wireless/wireless-applet.glade.h:3
 msgid "_Monitored device:"
 msgstr "M_onitorowane urządzenie:"
+
+#~ msgid "Network other usage"
+#~ msgstr "Inne wykorzystanie sieci"
+
+#~ msgid "The cpu graph background color."
+#~ msgstr "Kolor tła wykresu procesora."
+
+#~ msgid "enable the cpuload graph in multiload."
+#~ msgstr "Wyświetlanie wykresu obciążenia procesora."
+
+#~ msgid "enable the loadavg graph in multiload."
+#~ msgstr "Wyświetlanie wykresu obciążenia systemu."
+
+#~ msgid "enable the memload graph in multiload."
+#~ msgstr "Wyświetlanie wykresu zajętości pamięci."
+
+#~ msgid "enable the netload graph in multiload."
+#~ msgstr "Wyświetlanie wykresu obciążenia sieci."
+
+#~ msgid "the refresh rate of the applets in milliseconds."
+#~ msgstr "Czas odświeżania apletów w milisekundach."
+
+#~ msgid ""
+#~ "The images necessary to run the wireless monitor are missing.\n"
+#~ "Please make sure that it is correctly installed."
+#~ msgstr ""
+#~ "Nie można odnaleźć obrazów potrzebnych do uruchomienia monitora "
+#~ "połączenia bezprzewodowego.\n"
+#~ "Upewnij się, że program jest poprawnie zainstalowany."
 
 #~ msgid "fetch a detailed forecast on each update."
 #~ msgstr "Pobieranie szczegółowej prognozy przy każdej aktualizacji."
