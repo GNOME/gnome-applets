@@ -7,10 +7,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-applets 2.3.3\n"
+"Project-Id-Version: gnome-applets 2.3.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-06-23 18:54+0200\n"
-"PO-Revision-Date: 2003-06-23 18:55+0200\n"
+"POT-Creation-Date: 2003-06-26 14:57+0200\n"
+"PO-Revision-Date: 2003-06-26 16:26+0200\n"
 "Last-Translator: Jordi Mallach <jordi@sindominio.net>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
 "MIME-Version: 1.0\n"
@@ -161,6 +161,74 @@ msgstr "_Preferències..."
 #: battstat/GNOME_BattstatApplet.xml.h:4
 msgid "_Suspend Computer..."
 msgstr "_Suspén l'ordinador..."
+
+#: battstat/battstat.schemas.in.h:1
+msgid "Beep?"
+msgstr "Avís sonor?"
+
+#: battstat/battstat.schemas.in.h:2
+msgid "Command to send to suspend the computer"
+msgstr "Ordre a executar per a suspendre l'ordinador"
+
+#: battstat/battstat.schemas.in.h:3
+msgid "Drain from top"
+msgstr "Buida des de la part superior"
+
+#: battstat/battstat.schemas.in.h:4
+msgid "Full Battery Notification"
+msgstr "Notificació de càrrega completa"
+
+#: battstat/battstat.schemas.in.h:5
+msgid "Horizontal"
+msgstr "Horitzontal"
+
+#: battstat/battstat.schemas.in.h:6
+msgid "Low Battery Notification"
+msgstr "Notificació de bateria baixa"
+
+#: battstat/battstat.schemas.in.h:7
+msgid "Notify user when the battery is full"
+msgstr "Notifica a l'usuari quan la bateria està plena"
+
+#: battstat/battstat.schemas.in.h:8
+msgid "Notify user when the battery is low"
+msgstr "Notifica a l'usuari quan la bateria està baixa"
+
+#: battstat/battstat.schemas.in.h:9
+msgid "Orange Value"
+msgstr "Valor taronja"
+
+#: battstat/battstat.schemas.in.h:10
+msgid "Red Value"
+msgstr "Valor roig"
+
+#: battstat/battstat.schemas.in.h:11
+msgid "Show battery status"
+msgstr "Mostra l'estat de la bateria"
+
+#: battstat/battstat.schemas.in.h:12
+msgid "Show percent full label"
+msgstr "Mostra la etiqueta de percentatge de càrrega"
+
+#: battstat/battstat.schemas.in.h:13
+msgid "Show the battery"
+msgstr "Mostra la bateria"
+
+#: battstat/battstat.schemas.in.h:14
+msgid "Show the battery meter draining from the top of the battery"
+msgstr "Mostra el mesurador de bateria buidant-se des de la part superior de la bateria"
+
+#: battstat/battstat.schemas.in.h:15
+msgid "Suspend Command"
+msgstr "Ordre de suspensió"
+
+#: battstat/battstat.schemas.in.h:16
+msgid "Use dock"
+msgstr "Utilitza el dock"
+
+#: battstat/battstat.schemas.in.h:17
+msgid "Yellow Value"
+msgstr "Valor groc"
 
 #. Message displayed if user tries to run applet
 #. on unsupported platform
@@ -609,6 +677,16 @@ msgstr "Premeu aquest botó per a reproduir la pista anterior del CD"
 msgid "Click this button to Play the next track in the CD"
 msgstr "Premeu aquest botó per a reproduir la següent pista en el CD"
 
+#: cdplayer/cdplayer.schemas.in.h:1
+msgid "Path to the device"
+msgstr "Camí al dispositiu"
+
+#: cdplayer/cdplayer.schemas.in.h:2
+msgid ""
+"This is the full path of the device that will be used to play cd's from this "
+"applet"
+msgstr "Aquest és el camí sencer del dispositiu que s'utilitzarà per a reproduir cd des d'aquesta applet"
+
 #: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:579
 #: charpick/charpick.c:722 charpick/properties.c:328
 msgid "Character Palette"
@@ -659,6 +737,19 @@ msgid ""
 msgstr ""
 "Applet del quadre del GNOME per a seleccionar caràcters estranys que no són "
 "al teclat. Lliurat sota la Llicència Pública General GNU."
+
+#: charpick/charpick.schemas.in.h:1
+msgid "Characters shown on applet startup"
+msgstr "Caràcters mostrats a l'inici de l'applet"
+
+#: charpick/charpick.schemas.in.h:2
+msgid "DEPRECATED - Characters shown on applet startup"
+msgstr "DESACONSELLAT - Caràcters mostrats a l'inici de l'applet"
+
+# FIXME TYPO
+#: charpick/charpick.schemas.in.h:3
+msgid "List ov available palettes"
+msgstr "Llista de paletes disponibles"
 
 #: charpick/properties.c:87
 msgid "_Palette:"
@@ -774,6 +865,14 @@ msgstr ""
 "L'ordre de muntatge ha fallat.\n"
 "\""
 
+#: drivemount/drivemount.schemas.in.h:1
+msgid "Interval timeout to check mount point status"
+msgstr "Interval de temps d'espera per comprovar l'estat del punt de muntatge"
+
+#: drivemount/drivemount.schemas.in.h:2
+msgid "Time in seconds between status updates"
+msgstr "Temps en segons entre actualitzacions d'estat"
+
 #: drivemount/properties.c:284
 msgid "Disk Mounter Preferences"
 msgstr "Preferències del muntador de discs"
@@ -884,6 +983,10 @@ msgstr "Un petit clònic de l'xeyes al quadre de GNOME."
 msgid "The eyes look in the direction of the mouse pointer"
 msgstr "Els ulls miren en la direcció del punter del ratolí"
 
+#: geyes/geyes.schemas.in.h:1
+msgid "Directory in which the theme is located"
+msgstr "Directori on es troba el tema"
+
 #: geyes/themes.c:237
 msgid "Geyes Preferences"
 msgstr "Preferències de Geyes"
@@ -912,14 +1015,6 @@ msgstr "Canviador de disposicions de teclat"
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.in.h:4
 msgid "Produces keyboard layout switcher applets."
 msgstr "Produeix applets de canviador de disposicions de teclat."
-
-#: gkb-new/gkb.c:275
-msgid ""
-"Press the hotkey to switch between layouts. The hotkey can be set through "
-"Properties dialog"
-msgstr ""
-"Premeu la drecera per a canviar entre disposicions. La drecera es pot "
-"establir en el diàleg de Propietats"
 
 #: gkb-new/gkb-applet.c:97
 msgid "(C) 1998-2000 Free Software Foundation"
@@ -951,6 +1046,89 @@ msgstr "Pàgina inicial de GKB (http://projects.gnome.hu/gkb)"
 #: gkb-new/gkb-applet.c:203 gkb-new/gkb-applet.c:210
 msgid "GKB"
 msgstr "GKB"
+
+#: gkb-new/gkb.c:275
+msgid ""
+"Press the hotkey to switch between layouts. The hotkey can be set through "
+"Properties dialog"
+msgstr ""
+"Premeu la drecera per a canviar entre disposicions. La drecera es pot "
+"establir en el diàleg de Propietats"
+
+#: gkb-new/gkb.schemas.in.h:1
+msgid "Appearance mode of the applet"
+msgstr "Mode d'apariència de l'applet"
+
+#: gkb-new/gkb.schemas.in.h:2
+msgid "Flag image for the keyboard layout"
+msgstr "Imatge de bandera per a la disposició del teclat"
+
+#: gkb-new/gkb.schemas.in.h:3
+msgid "Is the applet size small?"
+msgstr "És la mida de l'applet petit?"
+
+#: gkb-new/gkb.schemas.in.h:4
+msgid "It can be \"Flag and Label\", \"Label\" and \"Flag\""
+msgstr "Pot ser «Flag and Label», «Label» i «Flag»"
+
+#: gkb-new/gkb.schemas.in.h:5
+msgid "Keybinding for switch by keypress"
+msgstr "Assignació de tecla per a canviar mitjançant el teclat"
+
+#: gkb-new/gkb.schemas.in.h:6
+msgid "Number of configured keymaps"
+msgstr "Nombre de mapes de teclat configurats"
+
+# FIXME TYPO
+#: gkb-new/gkb.schemas.in.h:7
+msgid "The command what switch your keymap tho this layout"
+msgstr "L'ordre que canvia el vostre mapa de teclat a aquesta disposició"
+
+#: gkb-new/gkb.schemas.in.h:8
+msgid "The country of the keyboard layout"
+msgstr "L'estat de la disposició del teclat"
+
+#: gkb-new/gkb.schemas.in.h:9
+msgid "The label of the keyboard layout"
+msgstr "La etiqueta de la disposició del teclat"
+
+#: gkb-new/gkb.schemas.in.h:10
+msgid "The language of the keyboard layout"
+msgstr "La llengua de la disposició del teclat"
+
+#: gkb-new/gkb.schemas.in.h:11
+msgid "The name of the keyboard layout"
+msgstr "El nom de la disposició del teclat"
+
+#: gkb-new/gkb.schemas.in.h:12
+msgid "This flag will appear in flag field of the applet"
+msgstr "Aquesta bandera apareixerà al camp de bandera de l'applet"
+
+#: gkb-new/gkb.schemas.in.h:13
+msgid "This information helps you to identify your keyboard layout"
+msgstr "Aquesta informació vos ajuda a identificar la vostra disposició de teclat"
+
+#: gkb-new/gkb.schemas.in.h:14
+msgid "This is the binding for keypress-based layout change"
+msgstr "Aquesta és l'assignació per a canvis de disposicions fets amb el teclat"
+
+#: gkb-new/gkb.schemas.in.h:15
+msgid ""
+"This should be like \"gkb_xmmap us\", \"setxkbmap us\" or \"xmodmap "
+"something.xmm\""
+msgstr "Aquest ha de ser com «gkb_xmmap us», «setxkbmap us» o «xmodmap something.xmm»"
+
+#: gkb-new/gkb.schemas.in.h:16
+msgid "This will appear in the label box of the applet"
+msgstr "Açò apareixerà a la caixa d'etiqueta de l'applet"
+
+#: gkb-new/gkb.schemas.in.h:17
+msgid "This will identify the layout in the list"
+msgstr "Açò identificarà la disposició a la llista"
+
+#: gkb-new/gkb.schemas.in.h:18
+msgid "When this is true, the applet will be half size"
+msgstr "Quan açò és vertader, l'applet tindrà mitja mida"
 
 #: gkb-new/keygrab.c:69 gkb-new/keygrab.c:148
 msgid "Disabled"
@@ -1269,6 +1447,58 @@ msgstr "(Sense"
 msgid "Change "
 msgstr "Canvi "
 
+#: gtik/gtik.schemas.in.h:1
+msgid "Display only symbols and price"
+msgstr "Mostra només els símbols i el preu"
+
+#: gtik/gtik.schemas.in.h:2
+msgid "Stocks to monitor - must be seperated by a +"
+msgstr "Valors a monitoritzar - han d'estar separats per un +"
+
+#: gtik/gtik.schemas.in.h:3
+msgid "Use default theme fonts and colors instead of custom ones"
+msgstr "Utilitza el tipus de lletra i colors predeterminats en comptes dels personalitzats"
+
+#: gtik/gtik.schemas.in.h:4 mini-commander/src/mini-commander.schemas.in.h:7
+msgid "Width of the applet"
+msgstr "Amplada de l'applet"
+
+#: gtik/gtik.schemas.in.h:5
+msgid "bg color"
+msgstr "color de fons"
+
+#: gtik/gtik.schemas.in.h:6
+msgid "color"
+msgstr "color"
+
+#: gtik/gtik.schemas.in.h:7
+msgid "color for no change text"
+msgstr "color per al text de sense canvi"
+
+#: gtik/gtik.schemas.in.h:8
+msgid "font"
+msgstr "tipus de lletra"
+
+#: gtik/gtik.schemas.in.h:9
+msgid "font 2 - No Longer used"
+msgstr "tipus de lletra 2 - Ja no s'utilitza"
+
+#: gtik/gtik.schemas.in.h:10
+msgid "set to true for right to left scrolling"
+msgstr "establiu a vertader per a desplaçament de dreta a esquerra"
+
+#: gtik/gtik.schemas.in.h:11
+msgid "show buttons"
+msgstr "mostra els botons"
+
+#: gtik/gtik.schemas.in.h:12
+msgid "time in miliseconds for display update"
+msgstr "temps en milisegons per a les actualitzacions de les mostres"
+
+#: gtik/gtik.schemas.in.h:13
+msgid "timeout"
+msgstr "temps d'espera"
+
 #: gweather/GNOME_GWeatherApplet.xml.h:2
 msgid "_Forecast"
 msgstr "_Pronòstic"
@@ -1455,6 +1685,78 @@ msgstr "Estats disp_onibles:"
 #: gweather/gweather-pref.c:406
 msgid "Available c_ities:"
 msgstr "C_iutats disponibles:"
+
+#: gweather/gweather.schemas.in.h:1
+msgid ""
+"If running the applet for the first time, prompt the user for the location"
+msgstr "Si s'està executant l'applet per primera vegada, pregunta a l'usuari per la ubicació"
+
+#: gweather/gweather.schemas.in.h:2
+msgid "Integer from 0 to 5. Determines how many days in advance are displayed"
+msgstr "Enter de 0 a 5. Determina quants dies en avanç es mostren"
+
+#: gweather/gweather.schemas.in.h:3
+msgid "Name of city"
+msgstr "Nom de la ciutat"
+
+#: gweather/gweather.schemas.in.h:4
+msgid "Name of city to forecast weather"
+msgstr "Nom de la ciutat a la qual fer el pronòstic"
+
+#: gweather/gweather.schemas.in.h:5
+msgid "Number of days to forecast"
+msgstr "Nombre de dies a pronosticar"
+
+#: gweather/gweather.schemas.in.h:6
+msgid "Show temperature label next to forecast icon"
+msgstr "Mostra la temperatura al costat de la icona del pronòstic"
+
+#: gweather/gweather.schemas.in.h:7
+msgid "Show temperature labels on panel"
+msgstr "Mostra etiquetes de temperatura al quadre"
+
+#: gweather/gweather.schemas.in.h:8
+msgid "True if running applet for the first time"
+msgstr "Vertader si s'està executant l'applet per primera vegada"
+
+#: gweather/gweather.schemas.in.h:9
+msgid "Url to download weather xml"
+msgstr "Adreça d'on descarregar xml de l'oratge"
+
+#: gweather/gweather.schemas.in.h:10
+msgid ""
+"determines whether the applet automatically updates its weather statistics "
+"or not."
+msgstr "determina si l'applet actualitza automàticament les estadístiques de l'oratge o no."
+
+#: gweather/gweather.schemas.in.h:11
+msgid "fetch a detailed forecast on each update."
+msgstr "obté un pronòstic detallat en cada actualització."
+
+#: gweather/gweather.schemas.in.h:12
+msgid "fetch a radar map on each update."
+msgstr "obté un mapa de radar en cada actualització."
+
+#: gweather/gweather.schemas.in.h:13
+msgid "the interval, in seconds, between automatic updates."
+msgstr "l'interval, en segons, entre actualitzacions automàtiques."
+
+#: gweather/gweather.schemas.in.h:14
+msgid "url for the radar map"
+msgstr "adreça per al mapa de radar"
+
+#: gweather/gweather.schemas.in.h:15
+msgid "use custom url for the radar map"
+msgstr "utilitza una adreça personalitzada per al mapa de radar"
+
+#: gweather/gweather.schemas.in.h:16
+msgid "use metric units instead of english units."
+msgstr "utilitza unitats del sistema mètric"
+
+# huh, informació sobre la ubicació, o sobre el temps? jm
+#: gweather/gweather.schemas.in.h:17
+msgid "weather location information."
+msgstr "informació del temps a la ubicació."
 
 #: gweather/location.c:184
 msgid "Could not download countries"
@@ -1984,7 +2286,7 @@ msgstr "Interval entre comprovacions de correu"
 
 #: mailcheck/mailcheck.schemas.in.h:16
 msgid "Path to the animation file"
-msgstr "Ruta al fitxer de l'animació"
+msgstr "Camí al fitxer de l'animació"
 
 #: mailcheck/mailcheck.schemas.in.h:17
 msgid "Play a sound when mail is recieved"
@@ -2214,6 +2516,62 @@ msgstr "_Patró:"
 msgid "_Use default theme colors"
 msgstr "_Utilitza els colors del tema per defecte"
 
+#: mini-commander/src/mini-commander.schemas.in.h:1
+msgid "Autcomplete history"
+msgstr "Completa automàticament la història"
+
+#: mini-commander/src/mini-commander.schemas.in.h:2
+msgid "Height of the applet"
+msgstr "Alçada de l'applet"
+
+#: mini-commander/src/mini-commander.schemas.in.h:3
+msgid "Height of the entry"
+msgstr "Alçada de la entrada"
+
+#: mini-commander/src/mini-commander.schemas.in.h:4
+msgid "Show an ugly frame around the whole applet wasting useful space"
+msgstr "Mostra un marc lleig al voltant de tota l'applet que desperdicia espai útil"
+
+#: mini-commander/src/mini-commander.schemas.in.h:5
+msgid "Show the handle thingy so you can detach the command thingy"
+msgstr "Mostra la «nansa» per a que es puga desprendre la cosa de les ordres"
+
+#: mini-commander/src/mini-commander.schemas.in.h:6
+msgid "Use the default theme colors for entry fg and bg"
+msgstr "Utilitza els colors del tema predeterminat per al fons i primer pla de la entrada"
+
+#: mini-commander/src/mini-commander.schemas.in.h:8
+msgid "bg blue"
+msgstr "fons blau"
+
+#: mini-commander/src/mini-commander.schemas.in.h:9
+msgid "bg red"
+msgstr "fons roig"
+
+#: mini-commander/src/mini-commander.schemas.in.h:10
+msgid "fg blue"
+msgstr "primer pla blau"
+
+#: mini-commander/src/mini-commander.schemas.in.h:11
+msgid "fg green"
+msgstr "primer pla verd"
+
+#: mini-commander/src/mini-commander.schemas.in.h:12
+msgid "fg red"
+msgstr "primer pla roig"
+
+#: mini-commander/src/mini-commander.schemas.in.h:13
+msgid "list of GConfValue entries containing strings for history entries"
+msgstr "llista d'entrades GConfValue que contenen cadenes per a entrades de l'historial"
+
+#: mini-commander/src/mini-commander.schemas.in.h:14
+msgid "list of GConfValue entries containing strings for the macro commands"
+msgstr "llista d'entrades GConfValue que contenen cadenes per a les ordres de macro"
+
+#: mini-commander/src/mini-commander.schemas.in.h:15
+msgid "list of GConfValue entries containing strings for the macro patterns"
+msgstr "llista d'entrades GConfValue que contenen cadenes per als patrons de macros"
+
 #: mini-commander/src/mini-commander_applet.c:222
 #: mini-commander/src/mini-commander_applet.c:226
 msgid "Browser"
@@ -2434,6 +2792,18 @@ msgid "The volume control lets you set the volume level for your desktop"
 msgstr ""
 "El control de volum vos permet fixar el nivell de volum per a l'escriptori"
 
+#: mixer/mixer.schemas.in.h:1
+msgid "Channel controlled by applet. Only for OSS setups"
+msgstr "Canal controlat per l'applet. Només per a configuracions OSS"
+
+#: mixer/mixer.schemas.in.h:2
+msgid "Saved mute state"
+msgstr "Desa l'estat de silenciat"
+
+#: mixer/mixer.schemas.in.h:3
+msgid "Saved volume to restore on startup"
+msgstr "Volum desat a restaurar en iniciar"
+
 #: modemlights/GNOME_ModemLightsApplet.server.in.in.h:2
 #: modemlights/modemlights.c:133
 msgid "Modem Lights"
@@ -2477,6 +2847,86 @@ msgstr "%#-1fMb rebuts / %#.1fMb enviats / temps: %.1d:%.2d"
 #: modemlights/modemlights.c:541
 msgid "not connected"
 msgstr "desconnectat"
+
+#: modemlights/modemlights.schemas.in.h:1
+msgid "Ask for confirmation when connecting"
+msgstr "Si s'ha de demanar confirmació quan es connecta"
+
+#: modemlights/modemlights.schemas.in.h:2
+msgid "Command executed when connecting"
+msgstr "Ordre a executar quan es connecta"
+
+#: modemlights/modemlights.schemas.in.h:3
+msgid "Command executed when disconnecting"
+msgstr "Ordre a executar quan es desconnecta"
+
+#: modemlights/modemlights.schemas.in.h:4
+msgid "Delay"
+msgstr "Retard"
+
+#: modemlights/modemlights.schemas.in.h:5
+msgid "Device name of modem"
+msgstr "Nom del dispositiu del mòdem"
+
+#: modemlights/modemlights.schemas.in.h:6
+msgid "Make it blink baby"
+msgstr "Fes que parpelleje!"
+
+#: modemlights/modemlights.schemas.in.h:7
+msgid "Modem lock file"
+msgstr "Fitxer de blocatge del mòdem"
+
+#: modemlights/modemlights.schemas.in.h:8
+msgid "Receive background color"
+msgstr "Color de fons de recepció"
+
+#: modemlights/modemlights.schemas.in.h:9
+msgid "Receive foreground color"
+msgstr "Color del primer pla de recepció"
+
+#: modemlights/modemlights.schemas.in.h:10
+msgid "Send background color"
+msgstr "Color de fons d'enviament"
+
+#: modemlights/modemlights.schemas.in.h:11
+msgid "Send foreground color"
+msgstr "Color del primer pla d'enviament"
+
+#: modemlights/modemlights.schemas.in.h:12
+msgid "Show connect time and throughput"
+msgstr "Mostra el temps de connexió i el cabal"
+
+#: modemlights/modemlights.schemas.in.h:13
+msgid "Status connect color"
+msgstr "Color de l'estat connectat"
+
+#: modemlights/modemlights.schemas.in.h:14
+msgid "Status not connected color"
+msgstr "Color de l'estat desconnectat"
+
+#: modemlights/modemlights.schemas.in.h:15
+msgid "Status wating connection color"
+msgstr "Color de l'estat d'espera de connexió"
+
+#: modemlights/modemlights.schemas.in.h:16
+msgid "Text background color"
+msgstr "Color de fons del text"
+
+#: modemlights/modemlights.schemas.in.h:17
+msgid "Text foreground color"
+msgstr "Color del text"
+
+#: modemlights/modemlights.schemas.in.h:18
+msgid "Text outline color"
+msgstr "Color de contorn del text"
+
+#: modemlights/modemlights.schemas.in.h:19
+msgid "Use isdn"
+msgstr "Utilitza xdsi"
+
+#: modemlights/modemlights.schemas.in.h:20
+msgid "Verify owner of lock file"
+msgstr "Comprova el propietari del fixer de blocatge"
 
 #: modemlights/properties.c:374
 msgid "Modem Lights Preferences"
@@ -2661,6 +3111,88 @@ msgstr ""
 msgid "Memory Load"
 msgstr "Càrrega de la memòria"
 
+#: multiload/multiload.schemas.in.h:1
+msgid "Network background"
+msgstr "Fons de la xarxa"
+
+#: multiload/multiload.schemas.in.h:2
+msgid "Network other usage"
+msgstr "Ús d'altra xarxa"
+
+#: multiload/multiload.schemas.in.h:3
+msgid "enable the cpuload graph in multiload."
+msgstr "habilita la gràfica d'us de cpu al multiload."
+
+#: multiload/multiload.schemas.in.h:4
+msgid "enable the loadavg graph in multiload."
+msgstr "habilita la gràfica de mitjana de càrrega al multiload."
+
+#: multiload/multiload.schemas.in.h:5
+msgid "enable the memload graph in multiload."
+msgstr "habilita la gràfica de càrrega de memòria al multiload."
+
+#: multiload/multiload.schemas.in.h:6
+msgid "enable the netload graph in multiload."
+msgstr "habilita la gràfica de càrrega de xarxa al multiload."
+
+#: multiload/multiload.schemas.in.h:7
+msgid "enable the swapload graph in multiload."
+msgstr "habilita la gràfica de càrrega d'espai d'intercanvi al multiload."
+
+#: multiload/multiload.schemas.in.h:8
+msgid ""
+"for horizontal panels, the width of the applets in pixels. for verticle "
+"panels, this is the height of the applets."
+msgstr "per a quadres horitzontals, l'amplada de l'applet en píxels. per a quadres verticals, açò és l'alçada dels applets."
+
+#: multiload/multiload.schemas.in.h:9
+msgid "the applet's background color."
+msgstr "el color de fons de l'applet."
+
+#: multiload/multiload.schemas.in.h:10
+msgid "the graph color for buffer memor."
+msgstr "el color de la gràfica per a memòria buffer."
+
+#: multiload/multiload.schemas.in.h:11
+msgid "the graph color for buffer memory."
+msgstr "el color de la gràfica per a memòria buffer."
+
+#: multiload/multiload.schemas.in.h:12
+msgid "the graph color for cached memor."
+msgstr "el color de la gràfica per a memòria cau."
+
+#: multiload/multiload.schemas.in.h:13
+msgid "the graph color for cached memory."
+msgstr "el color de la gràfica per a memòria cau."
+
+#: multiload/multiload.schemas.in.h:14
+msgid "the graph color for nice-related cpu activity."
+msgstr "el color de la gràfica per a la gràfica d'activitat de la cpu relacionada amb la prioritat."
+
+#: multiload/multiload.schemas.in.h:15
+msgid "the graph color for shared memory."
+msgstr "el color de la gràfica per a la memòria compartida."
+
+#: multiload/multiload.schemas.in.h:16
+msgid "the graph color for system-related cpu activity."
+msgstr "el color de la gràfica per a l'activitat de la cpu relacionada amb el sistema."
+
+#: multiload/multiload.schemas.in.h:17
+msgid "the graph color for user-related cpu activity."
+msgstr "el color de la gràfica per a l'activitat de la cpu relacionada amb l'usuari."
+
+#: multiload/multiload.schemas.in.h:18
+msgid "the graph color for user-related mem usage."
+msgstr "el color de la gràfica per a l'ús de memòria relacionat amb l'usuari."
+
+#: multiload/multiload.schemas.in.h:19
+msgid "the refresh rate of the applets in milliseconds"
+msgstr "l'interval de refresc de les applets en milisegons"
+
+#: multiload/multiload.schemas.in.h:20
+msgid "the refresh rate of the applets in milliseconds."
+msgstr "l'interval de refresc de les applets en milisegons."
+
 #: multiload/netload.c:49
 msgid "Net Load"
 msgstr "Càrrega de la xarxa"
@@ -2787,7 +3319,7 @@ msgstr "Crea, visualitza i gestiona notes enganxoses a l'escriptori"
 
 #. FIXME : Hack because libglade does not properly set these
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:3
-#: stickynotes/stickynotes_applet.c:136 stickynotes/stickynotes_applet.c:320
+#: stickynotes/stickynotes_applet.c:136 stickynotes/stickynotes_applet.c:322
 msgid "Sticky Notes"
 msgstr "Notes enganxoses"
 
@@ -2812,11 +3344,11 @@ msgstr "_Nova nota"
 msgid "_Show Notes"
 msgstr "_Mostra les notes"
 
-#: stickynotes/stickynotes.c:311
+#: stickynotes/stickynotes.c:312
 msgid "Locked note"
 msgstr "Nota blocada"
 
-#: stickynotes/stickynotes.c:315
+#: stickynotes/stickynotes.c:316
 msgid "Unlocked note"
 msgstr "Nota desblocada"
 
@@ -3164,7 +3696,7 @@ msgstr "Si s'ha d'utilitzar el color predeterminat del sistema"
 msgid "Whether to use the default system font"
 msgstr "Si s'ha d'utilitzar el tipus de lletra predeterminat del sistema"
 
-#: stickynotes/stickynotes_applet.c:320
+#: stickynotes/stickynotes_applet.c:322
 #, c-format
 msgid ""
 "%s\n"
@@ -3311,9 +3843,6 @@ msgstr "Dispositiu _monitoritzat:"
 #~ msgid "- Colo_r:"
 #~ msgstr "- Colo_r:"
 
-#~ msgid "Back_ground Color:"
-#~ msgstr "Color del _fons:"
-
 #~ msgid "GNOME Weather"
 #~ msgstr "El temps a GNOME"
 
@@ -3373,12 +3902,6 @@ msgstr "Dispositiu _monitoritzat:"
 
 #~ msgid "Enable _detailed forecast"
 #~ msgstr "Habilita els pronòstics _detallat"
-
-#~ msgid "Enable _radar map"
-#~ msgstr "Habilita els mapes del _radar"
-
-#~ msgid "Use cus_tom address for radar map"
-#~ msgstr "Utilitza una adreça personali_tzada per al mapa del radar"
 
 #~ msgid "A_ddress :"
 #~ msgstr "A_dreça:"
@@ -4193,9 +4716,6 @@ msgstr "Dispositiu _monitoritzat:"
 #~ msgid "No_t connected"
 #~ msgstr "Desconnec_tat"
 
-#~ msgid "A_waiting connection"
-#~ msgstr "E_sperant la connexió"
-
 #~ msgid "B_link"
 #~ msgstr "Parpade_ig"
 
@@ -4644,9 +5164,6 @@ msgstr "Dispositiu _monitoritzat:"
 #~ msgid "starting..."
 #~ msgstr "s'està iniciant..."
 
-#~ msgid "autocompleted"
-#~ msgstr "complert automàtic"
-
 # Què és això?
 #~ msgid "%H:%M - %d. %b"
 #~ msgstr "%H:%M - %d de %b"
@@ -4757,9 +5274,6 @@ msgstr "Dispositiu _monitoritzat:"
 #~ msgid "time & date on"
 #~ msgstr "hora i data activades"
 
-#~ msgid "time on"
-#~ msgstr "hora activada"
-
 #~ msgid "date on"
 #~ msgstr "data activada"
 
@@ -4783,9 +5297,6 @@ msgstr "Dispositiu _monitoritzat:"
 
 #~ msgid "Minute needle color"
 #~ msgstr "Color de la busca dels minuts"
-
-#~ msgid "Second needle color"
-#~ msgstr "Color de la busca dels segons"
 
 #~ msgid "Show seconds needle"
 #~ msgstr "Mostra la busca dels segons"
@@ -4824,9 +5335,6 @@ msgstr "Dispositiu _monitoritzat:"
 
 #~ msgid "Timezone"
 #~ msgstr "Fus horari"
-
-#~ msgid "The battery is low."
-#~ msgstr "La bateria està baixa."
 
 #~ msgid "Internal error: invalid mode in battery_set_mode"
 #~ msgstr "Error intern: el mode en battery_set_mode no és vàlid"
@@ -4874,9 +5382,6 @@ msgstr "Dispositiu _monitoritzat:"
 #~ msgid "AC-Off Battery Color:"
 #~ msgstr "Color de bateria amb CA inactiu:"
 
-#~ msgid "Low Battery Color:"
-#~ msgstr "Color de bateria baixa:"
-
 #~ msgid "Graph Tick Color:"
 #~ msgstr "Color de la marca del gràfic:"
 
@@ -4891,9 +5396,6 @@ msgstr "Dispositiu _monitoritzat:"
 
 #~ msgid "Enable Low Battery Warning"
 #~ msgstr "Habilita un avís de bateria baixa"
-
-#~ msgid "Enable Full-Charge Notification"
-#~ msgstr "Habilita una notificació de càrrega completa"
 
 #~ msgid ""
 #~ "Cannot open /proc/apm!  Make sure that you built APM support into your "
@@ -5003,25 +5505,12 @@ msgstr "Dispositiu _monitoritzat:"
 #~ msgstr "Notes amb relleu"
 
 #~ msgid ""
-#~ "GNOME weather monitor applet.\n"
-#~ "Web: http://gweather.dhs.org/"
-#~ msgstr ""
-#~ "Applet del monitor del temps de GNOME.\n"
-#~ "Web: http://gweather.dhs.org/"
-
-#~ msgid ""
 #~ "Invalid location chosen!\n"
 #~ "Properties remain unchanged."
 #~ msgstr "Canvi d'ubicació invàlida!Les propietats restants no s'han canviat."
 
 #~ msgid "Regions"
 #~ msgstr "Regions"
-
-#~ msgid "Jon's Binary Clock"
-#~ msgstr "Rellotge binari de Jon"
-
-#~ msgid "(C) 1999"
-#~ msgstr "(C) 1999"
 
 #~ msgid "The Game of Life"
 #~ msgstr "El joc de la vida"
@@ -5593,9 +6082,6 @@ msgstr "Dispositiu _monitoritzat:"
 #~ msgid "Disk usage meter"
 #~ msgstr "Mostra quant de disc hi ha usat"
 
-#~ msgid "Game of Life"
-#~ msgstr "El Joc de la Vida"
-
 #~ msgid "The Game of Life (to waste your time)"
 #~ msgstr "El joc de la vida en applet (per perdre el temps)"
 
@@ -5715,9 +6201,6 @@ msgstr "Dispositiu _monitoritzat:"
 
 #~ msgid "Show task list"
 #~ msgstr "Mostra la llista de tasques"
-
-#~ msgid "Show button icons"
-#~ msgstr "Mostra les icones dels botons"
 
 #~ msgid "Which tasks to show"
 #~ msgstr "Quines tasques voleu mostrar?"
