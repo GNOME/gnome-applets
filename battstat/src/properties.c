@@ -101,7 +101,6 @@ prop_apply (GtkWidget *w, int page, gpointer data)
   battstat->colors_changed=TRUE;
   pixmap_timeout(battstat);
   battstat->colors_changed=FALSE;
-  battstat->horizont = (GTK_TOGGLE_BUTTON (battstat->radio_orient_horizont))->active;
   battstat->showstatus = (GTK_TOGGLE_BUTTON (battstat->radio_lay_status_on))->active;
   battstat->showpercent = (GTK_TOGGLE_BUTTON (battstat->radio_lay_percent_on))->active;
   battstat->showbattery = (GTK_TOGGLE_BUTTON (battstat->radio_lay_batt_on))->active;
@@ -415,23 +414,11 @@ prop_cb (AppletWidget *applet, gpointer data)
   gtk_box_pack_start(GTK_BOX (vbox2), battstat->progdir_radio, FALSE, FALSE, 0); 
   gtk_box_pack_start(GTK_BOX (vbox2), radio, FALSE, FALSE, 0);
 
-  frame = gtk_frame_new (_("Orientation"));
-  gtk_box_pack_start ( GTK_BOX (vbox), frame, TRUE, TRUE, 0);
-  gtk_container_set_border_width (GTK_CONTAINER (frame), 5);
-  vbox2 = gtk_vbox_new (FALSE, 0);
-  gtk_container_add ( GTK_CONTAINER (frame), vbox2);
-  gtk_container_set_border_width (GTK_CONTAINER (vbox2), 5);
-  battstat->radio_orient_horizont = gtk_radio_button_new_with_label (NULL,
-								     _("Horizontal"));
-  radio = gtk_radio_button_new_with_label_from_widget
-    (GTK_RADIO_BUTTON (battstat->radio_orient_horizont), _("Square"));
-  if(battstat->horizont) {
-    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (battstat->radio_orient_horizont), 1);
-  } else {
-    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (radio), 1);   
-  }
-  gtk_box_pack_start(GTK_BOX (vbox2), battstat->radio_orient_horizont, FALSE, FALSE, 0); 
-  gtk_box_pack_start(GTK_BOX (vbox2), radio, FALSE, FALSE, 0);
+  frame = gtk_frame_new (_("Status dock"));
+  gtk_box_pack_start (GTK_BOX (vbox), frame, TRUE, TRUE, 0);
+  gtk_container_set_border_width ( GTK_CONTAINER (frame), 5);
+  battstat->dock_toggle = gtk_check_button_new_with_label (_("Use the status dock"));
+  gtk_container_add (GTK_CONTAINER (frame), battstat->dock_toggle);
 
   vbox = gtk_vbox_new(FALSE, 0);
   gtk_box_pack_start(GTK_BOX(hbox), vbox, TRUE, TRUE, 0);
@@ -510,11 +497,6 @@ prop_cb (AppletWidget *applet, gpointer data)
                     (GtkAttachOptions) (GTK_EXPAND),
                     (GtkAttachOptions) (GTK_EXPAND), 0, 0);
 
-  frame = gtk_frame_new (_("Status dock"));
-  gtk_box_pack_start (GTK_BOX (vbox), frame, TRUE, TRUE, 0);
-  gtk_container_set_border_width ( GTK_CONTAINER (frame), 5);
-  battstat->dock_toggle = gtk_check_button_new_with_label (_("Use the status dock"));
-  gtk_container_add (GTK_CONTAINER (frame), battstat->dock_toggle);
   if(battstat->usedock) {
     gtk_toggle_button_set_state (GTK_TOGGLE_BUTTON (battstat->dock_toggle), TRUE);
   }
@@ -533,8 +515,6 @@ prop_cb (AppletWidget *applet, gpointer data)
   gtk_signal_connect (GTK_OBJECT (battstat->radio_lay_status_on), "toggled",
 		      GTK_SIGNAL_FUNC (toggle_value_changed_cb), battstat);
   gtk_signal_connect (GTK_OBJECT (battstat->radio_lay_percent_on), "toggled",
-		      GTK_SIGNAL_FUNC (toggle_value_changed_cb), battstat);
-  gtk_signal_connect (GTK_OBJECT (battstat->radio_orient_horizont), "toggled",
 		      GTK_SIGNAL_FUNC (toggle_value_changed_cb), battstat);
   gtk_signal_connect (GTK_OBJECT (battstat->prop_win), "apply",
                       GTK_SIGNAL_FUNC (prop_apply), battstat);

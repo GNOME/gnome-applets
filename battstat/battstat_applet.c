@@ -835,6 +835,7 @@ change_orient (GtkWidget *w, PanelOrientType o, gpointer data)
   batterypresent = TRUE;
 #endif
 
+
   switch(battstat->orienttype) {
   case ORIENT_UP:
     if(battstat->panelsize<40)
@@ -868,7 +869,7 @@ change_orient (GtkWidget *w, PanelOrientType o, gpointer data)
     gtk_widget_show (battstat->percent);
     gtk_widget_hide (battstat->statuspercent);
     gtk_widget_hide (battstat->frameybattery);
-    gtk_toggle_button_set_state (GTK_TOGGLE_BUTTON (battstat->radio_orient_horizont), TRUE);
+    /*    gtk_toggle_button_set_state (GTK_TOGGLE_BUTTON (battstat->radio_orient_horizont), TRUE);*/
     gtk_toggle_button_set_state (GTK_TOGGLE_BUTTON (battstat->radio_lay_batt_on), TRUE);
     gtk_toggle_button_set_state (GTK_TOGGLE_BUTTON (battstat->radio_lay_status_on), TRUE);
     gtk_toggle_button_set_state (GTK_TOGGLE_BUTTON (battstat->radio_lay_percent_on), TRUE);
@@ -1105,7 +1106,6 @@ toggle_value_changed_cb ( GtkToggleButton *ignored, gpointer data )
   battstat->lowbattnotification = (GTK_TOGGLE_BUTTON (battstat->lowbatt_toggle))->active;
   battstat->fullbattnot = (GTK_TOGGLE_BUTTON (battstat->full_toggle))->active;
   battstat->beep = (GTK_TOGGLE_BUTTON (battstat->beep_toggle))->active;
-  battstat->horizont = (GTK_TOGGLE_BUTTON (battstat->radio_orient_horizont))->active;
   battstat->showstatus = (GTK_TOGGLE_BUTTON (battstat->radio_lay_status_on))->active;
   battstat->showpercent = (GTK_TOGGLE_BUTTON (battstat->radio_lay_percent_on))->active;
   battstat->showbattery = (GTK_TOGGLE_BUTTON (battstat->radio_lay_batt_on))->active;
@@ -1168,9 +1168,11 @@ applet_change_pixel_size(GtkWidget *w, int size, gpointer data)
   if (DEBUG) g_print("applet_change_pixel_size()\n");
 
   battstat->panelsize=size;
-  printf("Panelsize=%d\n", battstat->panelsize);
+
+  battstat->colors_changed=TRUE;
   change_orient(w, battstat->orienttype, battstat);
   pixmap_timeout( battstat );
+  battstat->colors_changed=FALSE;
 }
 #endif
 
@@ -1438,7 +1440,7 @@ main(int argc, char *argv[])
   bindtextdomain (PACKAGE, GNOMELOCALEDIR);
   textdomain(PACKAGE);
 
-  battstat->colors_changed = FALSE;
+  battstat->colors_changed = TRUE;
   battstat->suspend_cmd = FALSE;
 
   init_applet(argc, argv, battstat);
@@ -1446,8 +1448,8 @@ main(int argc, char *argv[])
   create_layout ( argc, argv, battstat );
   load_font( battstat );
   pixmap_timeout ( battstat );
-
   change_orient(NULL, ORIENT_UP, battstat);
+
   battstat->pixtimer = gtk_timeout_add (1000, pixmap_timeout, battstat);
 
   applet_widget_gtk_main();
