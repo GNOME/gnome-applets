@@ -87,6 +87,7 @@ void properties_dialog(AppletWidget *applet, gpointer data)
   GtkWidget *frame;
   GtkWidget *hbox;
   GtkWidget *list;
+  GtkWidget *sw;
   
   if(pwin) 
   {
@@ -122,12 +123,21 @@ void properties_dialog(AppletWidget *applet, gpointer data)
   gtk_clist_set_column_width(GTK_CLIST(list), 0, 200);
   gtk_widget_set_usize(list, 260, 320);
 
-  /*gtk_clist_set_policy(GTK_CLIST(list), GTK_POLICY_ALWAYS, GTK_POLICY_AUTOMATIC); */
-
-  gtk_box_pack_start(GTK_BOX(hbox), list, TRUE, TRUE, 5);
+#ifdef GTK_HAVE_FEATURES_1_1_4
+  sw = gtk_scrolled_window_new (NULL, NULL);
+  gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw),
+				  GTK_POLICY_ALWAYS, GTK_POLICY_AUTOMATIC);
+  gtk_container_add (GTK_CONTAINER (sw), list);
+  gtk_box_pack_start (GTK_BOX(hbox), sw, TRUE, TRUE, 5);
+  gtk_widget_show (sw);
+#else
+  gtk_clist_set_policy (GTK_CLIST (list), GTK_POLICY_ALWAYS,
+			GTK_POLICY_AUTOMATIC);
+  gtk_box_pack_start (GTK_BOX(hbox), list, TRUE, TRUE, 5);
+#endif
   gtk_widget_show(list);
  
-  gtk_box_pack_start( GTK_BOX(frame), hbox, FALSE, FALSE, 5);
+  gtk_box_pack_start(GTK_BOX(frame), hbox, FALSE, FALSE, 5);
 
   gtk_widget_show(hbox);
   
