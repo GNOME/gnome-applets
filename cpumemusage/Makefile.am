@@ -23,7 +23,7 @@ cpumemusage_applet_SOURCES = \
 	procbar.h
 
 
-cpumemusage_applet_LDADD = -lpanel_applet \
+cpumemusage_applet_LDADD = ../../panel/libpanel_applet.la \
 		     $(GNOME_LIBDIR) $(ORB_LIBS)      \
 		     $(GNOMEUI_LIBS) $(INTLLIBS)	\
 		     $(LIBGTOP_LIBS) $(LIBGTOP_EXTRA_LIBS)

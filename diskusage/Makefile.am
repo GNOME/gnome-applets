@@ -7,6 +7,8 @@ dummy.cc:
 endif
 
 INCLUDES = -I. -I$(srcdir) 				\
+	-I$(top_srcdir)/intl -I$(top_builddir)/intl	\
+	-I$(srcdir)/../../panel				\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
 	-I$(includedir) $(GNOME_INCLUDEDIR) $(LIBGTOP_INCS)
 
@@ -20,7 +22,7 @@ diskusage_applet_SOURCES = \
 	properties.h
 
 
-diskusage_applet_LDADD = -lpanel_applet \
+diskusage_applet_LDADD = ../../panel/libpanel_applet.la \
 		     $(GNOME_LIBDIR) $(ORB_LIBS)      \
 		     $(GNOMEUI_LIBS) $(INTLLIBS)	\
 		     $(LIBGTOP_LIBS) $(LIBGTOP_EXTRA_LIBS)

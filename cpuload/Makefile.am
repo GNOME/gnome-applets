@@ -21,7 +21,7 @@ cpuload_applet_SOURCES = cpuload.c 	\
 			 properties.c	\
 			 properties.h
 
-cpuload_applet_LDADD = -lpanel_applet \
+cpuload_applet_LDADD = ../../panel/libpanel_applet.la \
 		     $(GNOME_LIBDIR) $(ORB_LIBS)      \
 		     $(GNOMEUI_LIBS) $(INTLLIBS)	\
 		     $(LIBGTOP_LIBS) $(LIBGTOP_EXTRA_LIBS)
