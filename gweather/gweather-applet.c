@@ -330,6 +330,8 @@ static void update_finish (WeatherInfo *info)
 */
     /* Store current conditions */
     /* gweather_info_save(APPLET_WIDGET(gweather_applet)->privcfgpath); */
+    
+    gw_applet->gweather_info = info;
 
     /* Update applet pixmap */
     weather_info_get_pixmap_mini(gw_applet->gweather_info, &(gw_applet->applet_pixmap), &(gw_applet->applet_mask));
