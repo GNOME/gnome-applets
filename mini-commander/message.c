@@ -96,12 +96,14 @@ static gint showInterestingInformation(gpointer data)
 	    if(prop.showTime || prop.showDate)
 		{
 		    if(prop.showTime && prop.showDate)
-			timeFormat=_("%H:%M - %d. %b");
+			timeFormat = _("%H:%M - %d. %b");
 		    else if(prop.showTime && !prop.showDate)
-			timeFormat=_("%H:%M");
+			timeFormat = _("%H:%M");
 		    else if(!prop.showTime && prop.showDate)
-			timeFormat=_("%d. %b");
-
+			timeFormat = _("%d. %b");
+		    else
+			timeFormat = "-";
+		    
 		    /* sprintf(message, "%s", ctime(&seconds)); */
 		    tm = localtime(&seconds);
 		    strftime(message, 20, timeFormat, tm);

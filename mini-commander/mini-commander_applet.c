@@ -33,8 +33,10 @@
 
 GtkWidget *applet;
 
+static int appletDestroy_signal(GtkWidget *widget, gpointer data);
 
-appletDestroy_signal(GtkWidget *widget, gpointer data)
+
+int appletDestroy_signal(GtkWidget *widget, gpointer data)
 {
     /* applet will be destroyed; save settings now */
     saveSession();

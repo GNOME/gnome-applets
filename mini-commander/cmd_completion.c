@@ -32,6 +32,7 @@
 #include <gnome.h>
 #include <applet-widget.h>
 
+#include "cmd_completion.h"
 #include "preferences.h"
 #include "message.h"
 
@@ -49,7 +50,7 @@ do
 done
 ";
 
-int cmdCompletion(char *cmd)
+void cmdCompletion(char *cmd)
 {
     FILE *pipe_fp;
     char buffer[MAX_COMMAND_LENGTH] = "";
