@@ -430,52 +430,51 @@ GkbKeymap *
 loadprop (int i)
 {
   GkbKeymap *actdata;
-  char buf[256];
+  gchar *buf;
 
   actdata = g_new0 (GkbKeymap, 1);
 
   if (i == 0)
     {
-      g_snprintf (buf, 256,
-		  _
-		  ("keymap_%d/name=US 105 key keyboard (with windows keys)"),
-		  i);
+      buf = g_strdup_printf (_("keymap_%d/name=US 105 key keyboard (with windows keys)"),i);
       actdata->name = gnome_config_get_string (buf);
 
-      g_snprintf (buf, 256, _("keymap_%d/label=us"), i);
+      buf = g_strdup_printf (_("keymap_%d/label=us"), i);
       actdata->label = gnome_config_get_string (buf);
 
-      g_snprintf (buf, 256, _("keymap_%d/country=United States"), i);
+      buf = g_strdup_printf (_("keymap_%d/country=United States"), i);
       actdata->country = gnome_config_get_string (buf);
 
-      g_snprintf (buf, 256, _("keymap_%d/lang=English"), i);
+      buf = g_strdup_printf (_("keymap_%d/lang=English"), i);
       actdata->lang = gnome_config_get_string (buf);
 
-      g_snprintf (buf, 256, _("keymap_%d/flag=us.png"), i);
+      buf = g_strdup_printf (("keymap_%d/flag=us.png"), i);
       actdata->flag = gnome_config_get_string (buf);
 
-      g_snprintf (buf, 256, _("keymap_%d/command=gkb_xmmap us"), i);
+      buf = g_strdup_printf (_("keymap_%d/command=gkb_xmmap us"), i);
       actdata->command = gnome_config_get_string (buf);
+      g_free(buf);
     }
   else
     {
-      g_snprintf (buf, 256, _("keymap_%d/name=Hungarian 105 keys latin2"), i);
+      buf = g_strdup_printf (_("keymap_%d/name=Hungarian 105 keys latin2"), i);
       actdata->name = gnome_config_get_string (buf);
 
-      g_snprintf (buf, 256, _("keymap_%d/label=hu"), i);
+      buf = g_strdup_printf (_("keymap_%d/label=hu"), i);
       actdata->label = gnome_config_get_string (buf);
 
-      g_snprintf (buf, 256, _("keymap_%d/country=Hungary"), i);
+      buf = g_strdup_printf (_("keymap_%d/country=Hungary"), i);
       actdata->country = gnome_config_get_string (buf);
 
-      g_snprintf (buf, 256, _("keymap_%d/lang=Hungarian"), i);
+      buf = g_strdup_printf (_("keymap_%d/lang=Hungarian"), i);
       actdata->lang = gnome_config_get_string (buf);
 
-      g_snprintf (buf, 256, _("keymap_%d/flag=hu.png"), i);
+      buf = g_strdup_printf (_("keymap_%d/flag=hu.png"), i);
       actdata->flag = gnome_config_get_string (buf);
 
-      g_snprintf (buf, 256, _("keymap_%d/command=gkb_xmmap hu"), i);
+      buf = g_strdup_printf (_("keymap_%d/command=gkb_xmmap hu"), i);
       actdata->command = gnome_config_get_string (buf);
+      g_free(buf);
     }
 
   actdata->pix = NULL;
