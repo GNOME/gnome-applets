@@ -116,7 +116,7 @@ cpufreq_applet_help_cb (BonoboUIComponent *uic, CPUFreqApplet *applet)
 
 	   if (error) {
 			 if (error->code == GNOME_HELP_ERROR_INTERNAL) {
-				    cpufreq_applet_display_error (_("Sorry, a internal error has been ocurred "
+				    cpufreq_applet_display_error (_("Sorry, an internal error has occurred "
 											 "with the CPU Frequency Scaling Monitor help"));
 			 } else {
 				    g_print ("help error: %s\n", error->message);
