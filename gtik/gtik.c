@@ -116,20 +116,22 @@
 	gint drawTimeID, updateTimeID;
 
 	void removeSpace(char *buffer); 
-	int configured();
+	int configured(void);
 	void timeout_cb( GtkWidget *widget, GtkWidget *spin );
 	static int http_get_to_file(gchar *a_host, gint a_port, 
 				gchar *a_resource, FILE *a_file);
-	int http_got();
-	void properties_save( char *path) ;
+	int http_got(void);
+	void properties_save(char *path) ;
 	static void destroy_applet(GtkWidget *widget, gpointer data) ;
 	char *getSymsFromClist(GtkWidget *clist) ;
 
+	char *splitPrice(char *data);
+	char *splitChange(char *data);
 
 	/* FOR COLOR */
 
-	void updateOutput() ;
-	static void reSetOutputArray() ;
+	static void updateOutput() ;
+	static void reSetOutputArray(void) ;
 	static void setOutputArray(char *param1) ;
 	static void setColorArray(int theColor) ;
 	void setup_colors(void);
@@ -153,7 +155,7 @@
 	/* end font funcs and vars */
 
 	/*-----------------------------------------------------------------*/
-	gint applet_save_session(GtkWidget *widget, char *privcfgpath, 
+	static gint applet_save_session(GtkWidget *widget, char *privcfgpath, 
 				char *globcfgpath) {
 		properties_save(privcfgpath);
 		return FALSE;
@@ -161,7 +163,7 @@
 
 
 	/*-----------------------------------------------------------------*/
-	void load_fonts()
+	static void load_fonts()
 	{
 		if (new_font != NULL) {
 			if (whichlabel == 1)
@@ -200,7 +202,19 @@
 	}
 
 	/*-----------------------------------------------------------------*/
-	void properties_load( char *path) {
+	static void updateOutput() {
+		if ( http_got() == -1 || !(configured()) ) {  
+			reSetOutputArray();
+			fprintf(stderr, "No data!\n");
+			setOutputArray("No data available or properties not set");
+		}
+	}
+
+
+
+
+	/*-----------------------------------------------------------------*/
+	static void properties_load( char *path) {
 
 
 		gnome_config_push_prefix (path);
@@ -241,7 +255,7 @@
 
 
 	/*-----------------------------------------------------------------*/
-	void properties_save( char *path) {
+	void properties_save(char *path) {
 
 		gnome_config_push_prefix (path);
 		gnome_config_set_string( "gtik/tik_syms", props.tik_syms );
@@ -263,7 +277,7 @@
 
 
 	/*-----------------------------------------------------------------*/
-	void properties_set() {
+	static void properties_set() {
 		if (!strcmp(props.buttons,"yes")) {
 			gtk_widget_show(leftButton);
 			gtk_widget_show(rightButton);
@@ -280,7 +294,7 @@
 
 
 	/*-----------------------------------------------------------------*/
-	char * extractText(const char *line) {
+	static char *extractText(const char *line) {
 
 		int  i=0;
 		int  j=0;
@@ -309,7 +323,7 @@
 	}
 
 	/*-----------------------------------------------------------------*/
-	char * parseQuote(FILE *CONFIG, char line[512]) {
+	static char *parseQuote(FILE *CONFIG, char line[512]) {
 		
 		char symbol[512];
 		char buff[512];
@@ -523,7 +537,7 @@
 
 
 	/*-----------------------------------------------------------------*/
-	gint expose_event (GtkWidget *widget,GdkEventExpose *event) {
+	static gint expose_event (GtkWidget *widget,GdkEventExpose *event) {
 
 		gdk_draw_pixmap(widget->window,
 		widget->style->fg_gc[GTK_WIDGET_STATE(widget)],
@@ -558,7 +572,7 @@
 
 
 	/*-----------------------------------------------------------------*/
-	gint Repaint (gpointer data) {
+	static gint Repaint (gpointer data) {
 		GtkWidget* drawing_area = (GtkWidget *) data;
 		GdkRectangle update_rect;
 		int	comp;
@@ -700,13 +714,13 @@
 
 
 	/*-----------------------------------------------------------------*/
-	void refresh_cb(AppletWidget *widget, gpointer data) {
+	static void refresh_cb(AppletWidget *widget, gpointer data) {
 		updateOutput();
 	}
 
 
 	/*-----------------------------------------------------------------*/
-	void zipLeft(GtkWidget *widget, gpointer data) {
+	static void zipLeft(GtkWidget *widget, gpointer data) {
 		gchar *current;
 		gint i;
 
@@ -720,7 +734,7 @@
 	}
 
 	/*-----------------------------------------------------------------*/
-	void zipRight(GtkWidget *widget, gpointer data) {
+	static void zipRight(GtkWidget *widget, gpointer data) {
 		gchar *current;
 		gint i;
 
@@ -734,13 +748,13 @@
 	}
 
 	/*-----------------------------------------------------------------*/
-	void changed_cb(GnomePropertyBox * pb, gpointer data) {
+	static void changed_cb(GnomePropertyBox * pb, gpointer data) {
 		gnome_property_box_changed(GNOME_PROPERTY_BOX(pb));
 	}
 
 	/*-----------------------------------------------------------------*/
 
-	void selected_cb(GtkCList *clist,gint row, gint column, 
+	static void selected_cb(GtkCList *clist,gint row, gint column, 
 				GdkEventButton *event, gpointer data) {
 		GtkWidget *button;
 
@@ -749,7 +763,7 @@
 	}
 
 	/*-----------------------------------------------------------------*/
-	void toggle_output_cb(GtkWidget *widget, gpointer data) {
+	static void toggle_output_cb(GtkWidget *widget, gpointer data) {
 		if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget)))
 			strcpy(poutput,"nochange");
 		else
@@ -758,7 +772,7 @@
 	}
 
 	/*-----------------------------------------------------------------*/
-	void toggle_scroll_cb(GtkWidget *widget, gpointer data) {
+	static void toggle_scroll_cb(GtkWidget *widget, gpointer data) {
 		if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget)))
 			strcpy(scroll,"left2right");
 		else
@@ -768,7 +782,7 @@
 
 
 	/*-----------------------------------------------------------------*/
-	void toggle_arrows_cb(GtkWidget *widget, gpointer data) {
+	static void toggle_arrows_cb(GtkWidget *widget, gpointer data) {
 		if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget)))
 			strcpy(arrows,"arrows");
 		else
@@ -777,7 +791,7 @@
 	}
 
 	/*-----------------------------------------------------------------*/
-	void toggle_buttons_cb(GtkWidget *widget, gpointer data) {
+	static void toggle_buttons_cb(GtkWidget *widget, gpointer data) {
 		if (gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget)))
 			strcpy(buttons,"yes");
 		else
@@ -831,16 +845,16 @@
 
 
 
-
+#if 0
 	/*-----------------------------------------------------------------*/
-	gint destroy_cb( GtkWidget *widget, void *data ) {
+	static gint destroy_cb( GtkWidget *widget, void *data ) {
 		pb = NULL;
 		return FALSE;
 	}
-
+#endif
 
 	/*-----------------------------------------------------------------*/
-        gint font_selector( GtkWidget *widget, void *data ) {
+        static gint font_selector( GtkWidget *widget, void *data ) {
                 GtkWidget *tmpWidget;
                 GtkFontSelectionDialog *fontDialog;
 
@@ -871,7 +885,7 @@
 	}
 
         /*-----------------------------------------------------------------*/
-	gint font2_cb(GtkWidget *widget, gpointer data) {
+	static gint font2_cb(GtkWidget *widget, gpointer data) {
 		whichlabel = 2;
 		font_selector(widget,data);
 		return FALSE;
@@ -927,7 +941,7 @@
 		return(strdup(symlist));
 	}
 
-	void populateClist(GtkWidget *clist) {
+	static void populateClist(GtkWidget *clist) {
 	
 		gchar *symbol[1];
 		gchar *syms;
@@ -988,7 +1002,7 @@
 		}
 	}
 
-	GtkWidget *symbolManager() { 
+	static GtkWidget *symbolManager() { 
 		GtkWidget *vbox;
 		GtkWidget *mainhbox;
 		GtkWidget *hbox;
@@ -1390,18 +1404,6 @@
 
 		return 0;
 	}
-
-
-
-	/*-----------------------------------------------------------------*/
-	void updateOutput() {
-		if ( http_got() == -1 || !(configured()) ) {  
-			reSetOutputArray();
-			fprintf(stderr, "No data!\n");
-			setOutputArray("No data available or properties not set");
-		}
-	}
-
 
 
 
