@@ -53,6 +53,13 @@ applet_destroy_signal(GtkWidget *widget, gpointer data)
 {
     MCData *mcdata = data;
     PanelApplet *applet = mcdata->applet;
+    GtkTooltips *tooltips;
+	
+    tooltips = g_object_get_data (G_OBJECT (applet), "tooltips");
+    if (tooltips) {
+        g_object_unref (tooltips);
+        g_object_set_data (G_OBJECT (applet), "tooltips", NULL);
+    }
     
     /* applet will be destroyed; save history */
     save_session();
@@ -154,6 +161,20 @@ applet_pixel_size_changed_cb(GtkWidget *widget, int size, gpointer data)
     data = NULL;
 }
 
+void
+set_atk_name_description(GtkWidget *widget, const gchar *name,
+const gchar *description)
+{	
+    AtkObject *aobj;
+	
+    aobj = gtk_widget_get_accessible(widget);
+    if (GTK_IS_ACCESSIBLE (aobj) == FALSE)
+        return;
+
+    atk_object_set_name(aobj, name);
+    atk_object_set_description(aobj, description);
+}
+
 static gboolean
 button_press_hack (GtkWidget *widget, GdkEventButton *event, gpointer data)
 {
@@ -186,6 +207,9 @@ redraw_applet(MCData *mcdata)
     gboolean first_time = FALSE;
 
     tooltips = gtk_tooltips_new ();
+    g_object_ref (tooltips);
+    gtk_object_sink (GTK_OBJECT (tooltips));
+    g_object_set_data (G_OBJECT (applet), "tooltips", tooltips); 
     
     /* recalculate sizes */
     if(prop->show_handle)
@@ -262,6 +286,9 @@ redraw_applet(MCData *mcdata)
 
     gtk_tooltips_set_tip (tooltips, button, _("Browser"), NULL);
     gtk_box_pack_start(GTK_BOX(hbox_buttons), button, TRUE, TRUE, 0);
+	
+    set_atk_name_description(button, _("Browser"),
+        _("Click this button to start the browser"));
 
     /* add history button */
     button = gtk_button_new();
@@ -277,6 +304,11 @@ redraw_applet(MCData *mcdata)
     gtk_tooltips_set_tip (tooltips, button, _("History"), NULL);
     gtk_box_pack_end(GTK_BOX(hbox_buttons), button, TRUE, TRUE, 0);
 
+    set_atk_name_description(button, _("History"),
+        _("Click this button for the list of previous commands"));
+    set_atk_name_description(GTK_WIDGET(applet), _("Mini-Commander applet"),
+        _("This applet adds a command line to the panel"));
+	
     /* add buttons into frame */
     frame = gtk_frame_new(NULL);
     gtk_container_set_border_width(GTK_CONTAINER(frame), 1);
@@ -319,8 +351,7 @@ redraw_applet(MCData *mcdata)
 		    gtk_container_add(GTK_CONTAINER(frame2), handle);
 		}
 	    
-	    /* there was trouble with the tooltip */
-	    /* applet_widget_set_tooltip(APPLET_WIDGET(applet),  _("Mini-Commander")); */
+	    gtk_tooltips_set_tip (tooltips, GTK_WIDGET (applet),  _("Command Line"), NULL);
 	    
 	    if (prop->show_frame)
 		gtk_box_pack_start(GTK_BOX(mcdata->applet_inner_vbox), frame2, TRUE, TRUE, 0);

@@ -19,6 +19,8 @@ struct _MCData
 };
 
 void redraw_applet(MCData *mcdata);
+void set_atk_name_description(GtkWidget *widget, const gchar *name,
+        const gchar *description);
 
 #endif
 

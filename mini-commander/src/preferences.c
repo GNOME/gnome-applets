@@ -101,6 +101,33 @@ color_cmd_bg_changed_signal(GtkWidget *color_picker_widget,
 }
 
 static void
+set_atk_relation (GtkWidget *label, GtkWidget *widget)
+{
+    AtkObject *atk_widget;
+    AtkObject *atk_label;
+    AtkRelationSet *relation_set;
+    AtkRelation *relation;
+    AtkObject *targets[1];
+
+    atk_widget = gtk_widget_get_accessible (widget);
+    atk_label = gtk_widget_get_accessible (label);
+
+    /* Check if gail is loaded */
+    if (GTK_IS_ACCESSIBLE (atk_widget) == FALSE)
+        return;
+    
+    /* Set label-for relation */
+    gtk_label_set_mnemonic_widget (GTK_LABEL (label), widget);	
+
+    /* Set labelled-by relation */
+    relation_set = atk_object_ref_relation_set (atk_widget);
+    targets[0] = atk_label;
+    relation = atk_relation_new (targets, 1, ATK_RELATION_LABELLED_BY);
+    atk_relation_set_add (relation_set, relation);
+    g_object_unref (G_OBJECT (relation)); 
+}
+
+static void
 properties_box_apply_signal(GnomePropertyBox *property_box_widget, gint page, gpointer data)
 {
     int i;
@@ -594,6 +621,7 @@ properties_box(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 		     0, 1,
 		     GTK_FILL, 0,
 		     0, 0);
+    set_atk_relation (label, spin),
     gtk_spin_button_set_value (GTK_SPIN_BUTTON (spin), prop->normal_size_x);
     g_signal_connect (G_OBJECT (spin), "value_changed",
     		      G_CALLBACK (size_changed_cb), mcdata); 
@@ -621,6 +649,7 @@ properties_box(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 		     0, 0);
 
     entry = gtk_entry_new_with_max_length(4);
+    set_atk_relation (label, entry);
     g_snprintf(buffer, sizeof(buffer), "%d", prop->normal_size_y);
     gtk_entry_set_text(GTK_ENTRY(entry), (gchar *) buffer);
     gtk_widget_set_usize(entry, 50, -1);
@@ -642,6 +671,7 @@ properties_box(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 		     0, 0);
 
     entry = gtk_entry_new_with_max_length(4);
+    set_atk_relation (label, entry);
     g_snprintf(buffer, sizeof(buffer), "%d", prop->cmd_line_size_y);
     gtk_entry_set_text(GTK_ENTRY(entry), (gchar *) buffer);
     gtk_widget_set_usize(entry, 50, -1);
@@ -761,12 +791,14 @@ properties_box(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 	    
 	    /* prefix */    
 	    g_snprintf(text_label, sizeof(text_label), _("Regex %.2d:"), i+1);
-	    gtk_box_pack_start(GTK_BOX(hbox), gtk_label_new(text_label), FALSE, TRUE, 0);
+	    label = gtk_label_new(text_label);
+	    gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, TRUE, 0);
 	    
 	    entry = gtk_entry_new_with_max_length(MAX_MACRO_PATTERN_LENGTH);
 	    gtk_widget_set_usize(entry, 75, -1);
 	    if (prop->macro_pattern[i] != (gchar *) NULL)
 		gtk_entry_set_text(GTK_ENTRY(entry), (gchar *) prop->macro_pattern[i]);
+	    set_atk_relation(label, entry);
 	    #ifdef FIXME
 	    gtk_signal_connect(GTK_OBJECT(entry),
 			       "changed",
@@ -777,11 +809,13 @@ properties_box(BonoboUIComponent *uic, gpointer data, const gchar *verbname)
 	    
 	    /* command */
 	    g_snprintf(text_label, sizeof(text_label), _("   Macro %.2d:"), i+1);
-	    gtk_box_pack_start(GTK_BOX(hbox), gtk_label_new(text_label), FALSE, TRUE, 0);
+	    label = gtk_label_new(text_label);
+	    gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, TRUE, 0);
 	    
 	    entry = gtk_entry_new_with_max_length(MAX_COMMAND_LENGTH);
 	    if (prop->macro_command[i] != (gchar *) NULL)
 		gtk_entry_set_text(GTK_ENTRY(entry), prop->macro_command[i]);
+	    set_atk_relation(label, entry);
 	    #ifdef FIXME
 	    gtk_signal_connect(GTK_OBJECT(entry),
 			       "changed",

@@ -470,6 +470,8 @@ init_command_entry(MCData *mcdata)
     
     /* create the widget we are going to put on the applet */
     entry_command = gtk_entry_new_with_max_length((guint16) MAX_COMMAND_LENGTH); 
+    set_atk_name_description (entry_command, _("Command line"), 
+        _("Type a command here and Gnome will execute it for you"));
         
     /* in case we get destroyed elsewhere */
     gtk_signal_connect(GTK_OBJECT(entry_command),"destroy",
