@@ -32,6 +32,9 @@ GKB_ICON = gkb.png gkb-icon.png
 gkbicondir = $(datadir)/pixmaps
 gkbicon_DATA = $(GKB_ICON)
 
+schemadir   = @GCONF_SCHEMA_FILE_DIR@
+schema_DATA = gkb.schemas
+
 appletdir = $(libdir)
 
 serverdir       = $(libdir)/bonobo/servers
