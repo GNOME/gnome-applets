@@ -1,6 +1,13 @@
+gnome_applets_helpdir = $(datadir)/gnome/help/gnome-applets/C
+
+gnome_applets_help_DATA = 	\
+	index.html		\
+	topic.dat
+
 EXTRA_DIST =	\
 	config.sgml.in		\
 	gnome-applets.sgml	\
+	topic.dat		\
 	gpl.sgml		\
 	gpl2.sgml
 
@@ -15,14 +22,6 @@ files.sgml: files.sgml.in Makefile
 	    -e 's#\@top-srcdir\@#$(top_srcdir)#g' \
 	      < $(srcdir)/files.sgml.in > tmp-t \
 	  && mv tmp-t files.sgml
-
-gnome_applets_helpdir = $(datadir)/gnome/help/gnome-applets/C
-
-gnome_applets_help_DATA = 	\
-	index.html		\
-	topic.dat
-
-EXTRA_DIST = gnome-applets.sgml topic.dat
 
 all: index.html
 
