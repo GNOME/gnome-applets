@@ -19,7 +19,7 @@ geyes_applet_LDADD = \
 EXTRA_DIST = geyes_applet.desktop \
 	     geyes_applet.gnorba \
 	     geyes.h \
-             eyes.png
+		 gnome-eyes.png
 
 sysdir = $(datadir)/applets/Amusements
 sys_DATA = geyes_applet.desktop
@@ -30,5 +30,8 @@ gnorba_DATA = geyes_applet.gnorba
 themesdir = $(datadir)/geyes/
 pixmapsdir = $(datadir)/pixmaps/
 pixmaps_DATA=eyes.png
+
+pixmapdir = $(datadir)/pixmaps
+pixmap_DATA = gnome-eyes.png
 
 EXTRA_DIST = README.themes $(sys_DATA) $(gnorba_DATA)
