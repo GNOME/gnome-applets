@@ -95,6 +95,12 @@ diskusage_read (DiskusageInfo *ps)
 	while (me) {
 		mount_list = me;
 		me = me->me_next;
+		if(mount_list->me_devname)
+			free(mount_list->me_devname);
+		if(mount_list->me_mountdir)
+			free(mount_list->me_mountdir);
+		if(mount_list->me_type)
+			free(mount_list->me_type);
 		free(mount_list);
 	}
 	
