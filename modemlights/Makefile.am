@@ -2,9 +2,7 @@
 
 INCLUDES = -I. -I$(srcdir) 				\
 	$(GNOME_APPLETS_CFLAGS)				\
-	$(LIBGLADE_CFLAGS)           			\
-	-DVERSION=\""$(VERSION)"\"			\
-	-DICONDIR=\""$(pixmapsdir)"\"
+	$(LIBGLADE_CFLAGS)
 
 libexec_PROGRAMS = modem_applet
 
