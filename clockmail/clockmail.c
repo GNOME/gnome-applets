@@ -1,5 +1,5 @@
 /*###################################################################*/
-/*##                         clock & mail applet 0.1.1 alpha       ##*/
+/*##                         clock & mail applet 0.1.2 alpha       ##*/
 /*###################################################################*/
 
 #include "clockmail.h"
@@ -15,6 +15,9 @@ int BLINK_TIMES = 20;
 int AM_PM_ENABLE = FALSE;
 int ALWAYS_BLINK = FALSE;
 
+/* mail file location */
+char *mail_file = NULL;
+
 static GtkWidget *applet;
 static GtkWidget *frame;
 static GtkWidget *display_area;
@@ -24,7 +27,6 @@ static GdkPixmap *display_back;
 static GdkPixmap *digmed;
 static GdkPixmap *mailpics;
 
-static char *mail_file;
 static int update_timeout_id;
 static int blink_timeout_id;
 static int anymail, newmail, unreadmail, mailcleared;
@@ -62,8 +64,9 @@ static void about_cb (AppletWidget *widget, gpointer data)
  * of Byron C. Darrah for coolmail and reused on fvwm95
  * I updated this by adding the old/new time check so the newmail notifier works
  * the way I wanted to work (eg. newmail is true only when mail has arrived since last check)
+ * added a reset command in the event the mail_file has changed from the properties dialog
  */
-static void check_mail_file_status ()
+void check_mail_file_status (int reset)
 {
 	static off_t oldsize = 0;
 	static time_t oldtime = 0;
@@ -72,6 +75,16 @@ static void check_mail_file_status ()
 	time_t newtime;
 	int status;
 	int checktime;
+
+	if (reset)
+		{
+		oldsize = 0;
+		oldtime = 0;
+		return;
+		}
+
+	/* check if mail file contains something */
+	if (!mail_file) return;
 
 	status = stat (mail_file, &s);
 	if (status < 0){
@@ -117,7 +130,7 @@ static void redraw_display()
 
 static void update_mail_display(int n)
 {
-	static old_n;
+	static int old_n;
 
 	if (n != old_n)
 		{
@@ -220,7 +233,6 @@ static gint update_display()
 {
 	time_t current_time;
 	struct tm *time_data;
-	char *strtime;
 	char date[128];
 
 	time(&current_time);
@@ -231,7 +243,7 @@ static gint update_display()
 	update_time_count(time_data->tm_hour,time_data->tm_min);
 
 	/* now check mail */
-	check_mail_file_status ();
+	check_mail_file_status (FALSE);
 
 	if (!blinking)
 		{
@@ -294,18 +306,18 @@ int main (int argc, char *argv[])
 	applet_widget_init_defaults("clockmail_applet", NULL, argc, argv, 0,
 			NULL,argv[0]);
         
-        
-
-	/* get mail filename */
-	mail_file = getenv ("MAIL");
-	if (!mail_file)
-		return 1;
-
 	applet = applet_widget_new();
 	if (!applet)
 		g_error("Can't create applet!\n");
 
 	property_load(APPLET_WIDGET(applet)->cfgpath);
+
+	/* get mail filename from environment if not specified in the session file */
+	if (!strcmp(mail_file,"default"))
+		{
+		if (mail_file) free(mail_file);
+		mail_file = getenv ("MAIL");
+		}
 
 	gtk_signal_connect(GTK_OBJECT(applet),"change_orient",
 			   GTK_SIGNAL_FUNC(applet_change_orient),

@@ -1,18 +1,22 @@
 /*###################################################################*/
-/*##                         clock & mail applet 0.1.1 alpha       ##*/
+/*##                         clock & mail applet 0.1.2 alpha       ##*/
 /*###################################################################*/
 
 #include "clockmail.h"
 
 GtkWidget *propwindow = NULL;
+GtkWidget *mail_file_entry = NULL;
 gint P_AM_PM_ENABLE;
 gint P_ALWAYS_BLINK;
 
 void property_load(char *path)
 {
-        gnome_config_push_prefix (path);
+        if (mail_file) free(mail_file);
+
+	gnome_config_push_prefix (path);
         AM_PM_ENABLE = gnome_config_get_int("12hour=0");
 	ALWAYS_BLINK = gnome_config_get_int("blink=0");
+	mail_file    = gnome_config_get_string("mailfile=default");
         gnome_config_pop_prefix ();
 }
 
@@ -21,6 +25,7 @@ void property_save(char *path)
         gnome_config_push_prefix(path);
         gnome_config_set_int("12hour", AM_PM_ENABLE);
         gnome_config_set_int("blink", ALWAYS_BLINK);
+	gnome_config_set_string("lockfile", mail_file);
 	gnome_config_sync();
         gnome_config_pop_prefix();
 }
@@ -39,6 +44,16 @@ void always_blink_cb(GtkWidget *w)
 
 void property_apply_cb( GtkWidget *widget, void *data )
 {
+	gchar *new_text;
+
+	new_text = gtk_entry_get_text(GTK_ENTRY(mail_file_entry));
+	if (strcmp(new_text,mail_file) != 0)
+		{
+		if (mail_file) free(mail_file);
+		mail_file = strdup(new_text);
+		check_mail_file_status (TRUE);
+		}
+
         AM_PM_ENABLE = P_AM_PM_ENABLE;
 	ALWAYS_BLINK = P_ALWAYS_BLINK;
 }
@@ -82,6 +97,23 @@ void property_show(AppletWidget *applet, gpointer data)
 	gtk_toggle_button_set_state(GTK_TOGGLE_BUTTON(button), P_ALWAYS_BLINK);
 	gtk_signal_connect (GTK_OBJECT(button),"clicked",(GtkSignalFunc) always_blink_cb, NULL);
 	gtk_widget_show(button);
+
+	/* mail file entry */
+	hbox = gtk_hbox_new(FALSE, 5);
+	gtk_box_pack_start( GTK_BOX(frame), hbox, FALSE, FALSE, 5);
+	gtk_widget_show(hbox);
+
+	label = gtk_label_new(_("Mail file:"));
+	gtk_box_pack_start( GTK_BOX(hbox), label, FALSE, FALSE, 5);
+	gtk_widget_show(label);
+
+	mail_file_entry = gtk_entry_new_with_max_length(255);
+	gtk_entry_set_text(GTK_ENTRY(mail_file_entry), mail_file);
+	gtk_signal_connect_object(GTK_OBJECT(mail_file_entry), "changed",
+				GTK_SIGNAL_FUNC(gnome_property_box_changed),
+				GTK_OBJECT(propwindow));
+	gtk_box_pack_start( GTK_BOX(hbox),mail_file_entry , TRUE, TRUE, 5);
+	gtk_widget_show(mail_file_entry);
 
         label = gtk_label_new(_("General"));
         gtk_widget_show(frame);

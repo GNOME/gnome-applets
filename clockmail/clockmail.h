@@ -1,5 +1,5 @@
 /*###################################################################*/
-/*##                         clock & mail applet 0.1.1 alpha       ##*/
+/*##                         clock & mail applet 0.1.2 alpha       ##*/
 /*###################################################################*/
 
 #include <sys/types.h>
@@ -19,13 +19,17 @@
 
 #define CLOCKMAIL_APPLET_VERSION_MAJ 0
 #define CLOCKMAIL_APPLET_VERSION_MIN 1
-#define CLOCKMAIL_APPLET_VERSION_REV 1
+#define CLOCKMAIL_APPLET_VERSION_REV 2
 
 extern int BLINK_DELAY;
 extern int BLINK_TIMES;
 
 extern int AM_PM_ENABLE;
 extern int ALWAYS_BLINK;
+
+extern char *mail_file;
+
+void check_mail_file_status (int reset);
 
 void property_load();
 void property_save();
