@@ -26,8 +26,7 @@ glade_DATA = wireless-applet.glade
 
 serverdir       = $(libdir)/bonobo/servers
 server_in_files = GNOME_Panel_WirelessApplet.server.in
-noinst_DATA     = $(server_in_files:.server.in=.server)
-@INTLTOOL_SERVER_RULE@
+server_DATA     = $(server_in_files:.server.in=.server)
 
 uidir = $(datadir)/gnome-2.0/ui
 ui_DATA = GNOME_WirelessApplet.xml
@@ -50,3 +49,5 @@ EXTRA_DIST = 				\
 	$(pixmap_DATA)			\
 	$(ui_DATA)			\
 	$(NULL)
+
+@INTLTOOL_SERVER_RULE@
