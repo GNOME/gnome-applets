@@ -424,7 +424,7 @@ refresh(OdoApplet *oa)
    	printf ("%s\n",ttip->str);
 #endif
    	applet_widget_set_tooltip (APPLET_WIDGET(oa->applet),ttip->str);
-   	g_string_free(ttip,0);
+   	g_string_free(ttip,TRUE);
    }
 
    draw_value(oa->darea1,distance_s,oa);

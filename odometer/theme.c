@@ -51,6 +51,7 @@ load_theme (gchar *path, OdoApplet *oa)
   	return FALSE;
   }
   prefix = g_strconcat ("=", datafile, "=/Default/", NULL);
+  g_free (datafile);
   gnome_config_push_prefix (prefix);
   g_free (prefix);
 
