@@ -7,13 +7,14 @@
 #include "cdda-solaris.h"
 #include "reader-solaris.h"
 #include "writer-solaris.h"
+#include <errno.h>
 
 /* Private function prototypes */
 static void audio_get_info(cdda_t *, audio_info_t *);
 static void audio_set_info(cdda_t *, audio_info_t *);
 static void audio_flush(cdda_t *);
 static void audio_drain(cdda_t *);
-static void cdda_audio_open(cdda_t *);
+static int cdda_audio_open(cdda_t *);
 static void cdda_audio_close(cdda_t *);
 static void audio_config(cdda_t *);
 static int audio_supports_analog(cdda_t *);
@@ -146,21 +147,26 @@ audio_drain(cdda_t *cdda)
  *	cdda_t		*cdda		Ptr to cdda state structure
  *
  * Returns:
- *	void
+ *	int: The error number if open fails
  */
-static void
+static int
 cdda_audio_open(cdda_t *cdda)
 {
+	extern int errno;
+	errno = 0;
 	/* Return if already open */
 	if (cdda->audio >= 0) {
-		return;
+		return errno;
 	}
 
 	/* Open audio device */
-	if ((cdda->audio = open(cdda->audio_device, O_WRONLY)) < 0) {
+	if ((cdda->audio = open(cdda->audio_device, O_WRONLY | O_NDELAY)) < 0) {
 		perror("open()");
+		return errno;
 	}
 
+	fcntl (cdda->audio, F_SETFL, O_WRONLY);
+	return errno;
 } /* cdda_audio_open() */
 
 
@@ -603,14 +609,15 @@ audio_get_state(cdda_t *cdda, struct cdrom_subchnl *subchnl)
  *	int		end_lba		End play address
  *
  * Returns:
- *	void
+ *	int: -1 for failure and 1 for sucess 
  */
-void
+int
 audio_start(cdda_t *cdda, int start_lba, int end_lba)
 {
+	int errno;
 	/* If playing do nothing */
 	if (cdda->state != CDDA_STOPPED) {
-		return;
+		return 1;
 	}
 
 	/* Initialise */
@@ -623,7 +630,9 @@ audio_start(cdda_t *cdda, int start_lba, int end_lba)
 	cdda->cdb.nextout = 0;
 
 	/* Open the audio device */
-	cdda_audio_open(cdda);
+	errno = cdda_audio_open(cdda);
+	if (cdda->audio < 0 && errno == EBUSY)
+		return -1;
 
 	/* Configure for CD audio */
 	audio_config(cdda);
@@ -648,6 +657,7 @@ audio_start(cdda_t *cdda, int start_lba, int end_lba)
 		exit(EXIT_FAILURE);
 	}
 
+	return 1;
 } /* audio_start() */
 
 

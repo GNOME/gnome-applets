@@ -5,7 +5,7 @@
 #define	__WRITER_SOLARIS_H__
 
 /* Exported function prototypes */
-void audio_start(cdda_t *, int, int);
+int audio_start(cdda_t *, int, int);
 void audio_pause(cdda_t *);
 void audio_resume(cdda_t *);
 void audio_stop(cdda_t *);
