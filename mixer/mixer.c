@@ -102,7 +102,6 @@ typedef struct {
 	GtkAdjustment     *adj;
 
 	GtkWidget         *applet;
-	GtkWidget         *event_box;
 	GtkWidget         *frame;
 	GtkWidget         *image;
 	
@@ -417,7 +416,7 @@ scale_button_release_event_cb (GtkWidget *widget, GdkEventButton *event, MixerDa
 }
 
 static gboolean
-event_box_button_press_event_cb (GtkWidget *widget, GdkEventButton *event, MixerData *data)
+button_press_event_cb (GtkWidget *widget, GdkEventButton *event, MixerData *data)
 {
 	if (data->popup != NULL) {
 		mixer_popup_hide (data, FALSE);
@@ -501,7 +500,7 @@ mixer_popup_show (MixerData *data)
 	gtk_widget_size_request (data->popup, &req);
 	
 	gdk_window_get_origin (data->image->window, &x, &y);
-	gdk_window_get_size (data->image->window, &width, &height);
+	gdk_drawable_get_size (data->image->window, &width, &height);
 	
 	switch (data->orientation) {
 	case PANEL_APPLET_ORIENT_DOWN:
@@ -652,10 +651,10 @@ applet_change_background_cb (PanelApplet               *applet,
 	if (type == PANEL_NO_BACKGROUND) {
 		GtkRcStyle *rc_style = gtk_rc_style_new ();
 
-		gtk_widget_modify_style (data->event_box, rc_style);
+		gtk_widget_modify_style (data->applet, rc_style);
 	}
 	else if (type == PANEL_COLOR_BACKGROUND) {
-		gtk_widget_modify_bg (data->event_box,
+		gtk_widget_modify_bg (data->applet,
 				      GTK_STATE_NORMAL,
 				      color);
 	} else { /* pixmap */
@@ -666,8 +665,6 @@ applet_change_background_cb (PanelApplet               *applet,
 static void
 applet_change_orient_cb (GtkWidget *w, PanelAppletOrient o, MixerData *data)
 {
-	gint vol;
-
 	mixer_popup_hide (data, FALSE);
 
 	data->orientation = o;
@@ -684,11 +681,11 @@ applet_change_size_cb (GtkWidget *w, gint size, MixerData *data)
 	 * but we could scale up for the bigger ones...
 	 */
 	if (IS_PANEL_HORIZONTAL (data->orientation)) {
-		gtk_widget_set_size_request (GTK_WIDGET (data->event_box),
+		gtk_widget_set_size_request (GTK_WIDGET (data->frame),
 					     23,
 					     MIN (23, size));
 	} else {
-		gtk_widget_set_size_request (GTK_WIDGET (data->event_box),
+		gtk_widget_set_size_request (GTK_WIDGET (data->frame),
 					     MIN (23, size),
 					     23);
 	}
@@ -714,8 +711,7 @@ mixer_about_cb (BonoboUIComponent *uic,
         };
 
         if (about != NULL) {
-                gdk_window_show (about->window);
-                gdk_window_raise (about->window);
+                gtk_window_present (GTK_WINDOW (about));
                 return;
         }
 
@@ -727,9 +723,9 @@ mixer_about_cb (BonoboUIComponent *uic,
 				 NULL,
                                  NULL);
 
-        gtk_signal_connect (GTK_OBJECT (about), "destroy",
-                            GTK_SIGNAL_FUNC (gtk_widget_destroyed),
-			    &about);
+        g_signal_connect (G_OBJECT (about), "destroy",
+                          G_CALLBACK (gtk_widget_destroyed),
+	                  &about);
 	
         gtk_widget_show (about);
 }
@@ -813,7 +809,6 @@ static void
 mixer_applet_fill (PanelApplet *applet)
 {
 	MixerData         *data;
-	gint               vol;
 	BonoboUIComponent *component;
 
 #ifdef OSS_API
@@ -831,19 +826,18 @@ mixer_applet_fill (PanelApplet *applet)
 	data->max_pixbuf = gdk_pixbuf_new_from_xpm_data (volume_max_xpm);
 	data->mute_pixbuf = gdk_pixbuf_new_from_xpm_data (volume_mute_xpm);
 	
-	data->event_box = gtk_event_box_new ();
-	gtk_container_add (GTK_CONTAINER (applet), data->event_box);
-	
 	data->frame = gtk_frame_new (NULL);
 	gtk_frame_set_shadow_type (GTK_FRAME (data->frame), GTK_SHADOW_NONE);
-	gtk_container_add (GTK_CONTAINER (data->event_box), data->frame);
+	gtk_container_add (GTK_CONTAINER (applet), data->frame);
 	
 	data->image = gtk_image_new ();
 	gtk_container_add (GTK_CONTAINER (data->frame), data->image);
 
-	g_signal_connect (data->event_box,
+	data->applet = GTK_WIDGET (applet);
+	
+	g_signal_connect (data->applet,
 			  "button-press-event",
-			  (GCallback) event_box_button_press_event_cb,
+			  (GCallback) button_press_event_cb,
 			  data);
 	
         data->adj = GTK_ADJUSTMENT (
@@ -860,11 +854,8 @@ mixer_applet_fill (PanelApplet *applet)
 			  data);
 
 	/* Get the initial volume. */
-	vol = readMixer ();
-	data->vol = vol;
+	data->vol = readMixer ();
 
-	data->applet = GTK_WIDGET (applet);
-	
 	/* Install timeout handler, that keeps the applet up-to-date if the
 	 * volume is changed somewhere else.
 	 */
