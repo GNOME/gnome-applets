@@ -292,7 +292,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     gtk_box_pack_end (GTK_BOX (hbox), hbox2, FALSE, FALSE, 0);
     gtk_size_group_add_widget (size, hbox2);
     
-    pref_basic_update_spin_adj = gtk_adjustment_new (30, 1, 60, 5, 25, 1);
+    pref_basic_update_spin_adj = gtk_adjustment_new (30, 30, 3600, 5, 25, 1);
     gw_applet->pref_basic_update_spin = gtk_spin_button_new (GTK_ADJUSTMENT (pref_basic_update_spin_adj), 1, 0);
     gtk_widget_show (gw_applet->pref_basic_update_spin);
     gtk_box_pack_start (GTK_BOX (hbox2), gw_applet->pref_basic_update_spin,
@@ -439,7 +439,7 @@ void gweather_pref_load (GWeatherApplet *gw_applet)
 	g_error_free (error);
 	error = NULL;
     }
-    gw_applet->gweather_pref.update_interval = MAX (gw_applet->gweather_pref.update_interval, 1000);
+    gw_applet->gweather_pref.update_interval = MAX (gw_applet->gweather_pref.update_interval, 1800);
     gw_applet->gweather_pref.update_enabled =
     	panel_applet_gconf_get_bool(gw_applet->applet, "auto_update", NULL);
     gw_applet->gweather_pref.use_metric = 
@@ -452,7 +452,7 @@ void gweather_pref_load (GWeatherApplet *gw_applet)
     gw_applet->gweather_pref.url = NULL;
     gw_applet->gweather_pref.url = panel_applet_gconf_get_string(gw_applet->applet, "url", NULL);
     gw_applet->gweather_pref.city = panel_applet_gconf_get_string(gw_applet->applet, "city", NULL);
-    g_print ("city %s name \n", gw_applet->gweather_pref.url);
+    
     if (!gw_applet->gweather_pref.url || (strlen (gw_applet->gweather_pref.url)==0)) {
 	gw_applet->gweather_pref.url=g_strdup ("http://weather.interceptvector.com/weather.xml?id=VVNQQTEyOTA%3D");
 	gw_applet->gweather_pref.city = g_strdup ("Pittsburgh");
