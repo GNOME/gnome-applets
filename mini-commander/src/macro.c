@@ -103,7 +103,7 @@ expand_command(char *command)
     int parameter_number;
     char *macro;
     char *char_p;
-    int i, j;
+    int i;
     regmatch_t regex_matches[MAX_NUM_MACRO_PARAMETERS];
 
     for(i = 0; i < MAX_NUM_MACROS - 1; ++i)

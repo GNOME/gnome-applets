@@ -81,7 +81,6 @@ void gnote_show(gpointer);
 void gnotes_hide(AppletWidget*, gpointer);
 void gnote_hide(gpointer);
 gint gnote_hide_cb(GtkWidget *, gpointer);
-void gnotes_save(AppletWidget*, gpointer);
 void gnote_save(gpointer);
 void gnotes_load(AppletWidget*, gpointer);
 static gboolean gnote_load_xml(const gchar *);
@@ -540,9 +539,6 @@ void gnote_new_cb(AppletWidget *applet, gpointer data)
 }
 
 /*----------------------------------------------------------------------*/
-void gnote_destroy(gpointer prenote)
-{
-}
 
 void gnote_delete_cb(GtkWidget *widget, gpointer handle_boxptr)
 {

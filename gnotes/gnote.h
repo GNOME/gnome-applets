@@ -22,6 +22,10 @@
 #ifndef _GNOTE_H_
 #define _GNOTE_H_
 
+#include "config.h"
+#include <gnome.h>
+#include <applet-widget.h>
+
 typedef struct _Gnote
 {
     GtkWidget *window;

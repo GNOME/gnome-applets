@@ -214,7 +214,7 @@ static void about_line_cb(ModuleData *md, gpointer data, InfoData *id, AppData *
     ad = NULL;
 }
 
-static void help_cb (GtkWidget *w, gpointer data)
+static void help_cb (AppletWidget *w, gpointer data)
 {
         GnomeHelpMenuEntry help_entry = { "tickastat_applet",
                                           "index.html" };
