@@ -418,6 +418,7 @@ gkb_prop_create_property_box (GkbPropertyBoxInfo *pbi,
   gtk_dialog_set_default_response (GTK_DIALOG (pbi->gkb->propwindow), GTK_RESPONSE_CLOSE);
   gtk_dialog_set_has_separator (GTK_DIALOG (pbi->gkb->propwindow), FALSE);
   gtk_container_set_border_width (GTK_CONTAINER (pbi->gkb->propwindow), 5);
+  gtk_box_set_spacing (GTK_BOX (GTK_DIALOG (pbi->gkb->propwindow)->vbox), 2);
 
   propnotebook =  gtk_notebook_new ();
   gtk_container_set_border_width (GTK_CONTAINER (propnotebook), 5);

@@ -337,6 +337,7 @@ gkb_prop_map_add (GkbPropertyBoxInfo * pbi)
 	gtk_dialog_set_default_response (GTK_DIALOG (gkb->addwindow), 100);
 	gtk_dialog_set_has_separator (GTK_DIALOG (gkb->addwindow), FALSE);
 	gtk_container_set_border_width (GTK_CONTAINER (gkb->addwindow), 5);
+	gtk_box_set_spacing (GTK_BOX (GTK_DIALOG (gkb->addwindow)->vbox), 2);
 	gtk_window_set_screen (GTK_WINDOW (gkb->addwindow),
 			       gtk_widget_get_screen (pbi->add_button));
 	g_object_set_data (G_OBJECT (gkb->addwindow), "addwindow",
