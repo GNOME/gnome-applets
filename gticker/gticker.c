@@ -29,8 +29,7 @@ int main(int argc, char *argv[])
      textdomain(PACKAGE);
 
      list = g_list_append(NULL,"gticker_applet");
-     applet_widget_init("gticker_applet", NULL, argc, argv, 0, NULL, argv[0], 
-		     TRUE, list, start_new_applet, NULL);
+  applet_widget_init("gticker_applet", NULL, argc, argv, NULL, 0, NULL);
      g_list_free(list);
      applet = applet_widget_new("gticker_applet");
      if (!applet)
