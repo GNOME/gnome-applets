@@ -16,7 +16,7 @@ charpick_applet2_LDADD = \
 		       $(GNOME_APPLETS_LIBS)	\
 		       $(GUCHARMAP_LIBS)
 
-charpickbitmapsdir = $(datadir)/icons/hicolor/48x48/apps
+charpickbitmapsdir = $(iconsdir)/hicolor/48x48/apps
 charpickbitmaps_DATA = charpick.png
 
 serverdir       = $(libdir)/bonobo/servers
