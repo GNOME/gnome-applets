@@ -1421,6 +1421,7 @@ static gint updateOutput(gpointer data)
 		                                 GTK_RESPONSE_CLOSE);
 		gtk_dialog_set_has_separator (GTK_DIALOG (stockdata->pb), FALSE);
 		gtk_container_set_border_width (GTK_CONTAINER (stockdata->pb), 5);
+		gtk_box_set_spacing (GTK_BOX (GTK_DIALOG (stockdata->pb)->vbox),2);
 		gtk_widget_show (GTK_DIALOG (stockdata->pb)->vbox);
 		notebook = gtk_notebook_new ();
 		gtk_box_pack_start (GTK_BOX (GTK_DIALOG (stockdata->pb)->vbox), notebook,
