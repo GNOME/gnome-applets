@@ -481,7 +481,7 @@ static const char charpick_applet_menu_xml [] =
 
 
 static gboolean
-charpicker_applet_new (PanelApplet *applet)
+charpicker_applet_fill (PanelApplet *applet)
 {
   GtkWidget *frame = NULL;
   GtkWidget *event_box = NULL;
@@ -576,7 +576,7 @@ charpicker_applet_new (PanelApplet *applet)
                      &default_properties);
 
 #endif
-  curr_data.applet = applet;
+  curr_data.applet = GTK_WIDGET (applet);
 
   gtk_container_add (GTK_CONTAINER (applet), frame);
   
@@ -587,7 +587,7 @@ charpicker_applet_new (PanelApplet *applet)
   g_signal_connect (G_OBJECT (applet), "change_size",
 		    G_CALLBACK (applet_change_pixel_size), NULL);
   
-  gtk_widget_show_all (applet);
+  gtk_widget_show_all (GTK_WIDGET (applet));
   
   panel_applet_setup_menu (PANEL_APPLET (applet),
 			   charpick_applet_menu_xml,

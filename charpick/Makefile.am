@@ -1,9 +1,8 @@
-SUBDIRS = docs
+#SUBDIRS = docs
 
 INCLUDES = -I. -I$(srcdir) 				\
 	$(GNOME_APPLETS_CFLAGS)				\
-	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
-	-I$(includedir) 
+	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"
 
 CFLAGS = -ansi -Werror -Wmissing-prototypes -Wmissing-declarations
 
@@ -23,7 +22,7 @@ serverdir       = $(libdir)/bonobo/servers
 server_in_files = GNOME_CharpickerApplet.server.in
 server_DATA     = $(server_in_files:.server.in=.server)
 
-@XML_I18N_MERGE_SERVER_RULE@
+@INTLTOOL_SERVER_RULE@
 
 EXTRA_DIST = \
 	charpick.png $(server_in_files)	
