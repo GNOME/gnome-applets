@@ -59,6 +59,7 @@
 		gint timeout;
 		gchar *dcolor;
 		gchar *ucolor;
+		gchar *bgcolor;
 		gchar *font;
 		gchar *font2;
 		gboolean buttons;
@@ -85,7 +86,7 @@
 		int setCounter;
 
 		GdkGC *gc;
-		GdkColor gdkUcolor,gdkDcolor;
+		GdkColor gdkUcolor,gdkDcolor, gdkBGcolor;
 
 		/* end of COLOR vars */
 
@@ -136,6 +137,8 @@
 	void ucolor_set_cb(GnomeColorPicker *cp, guint r, guint g, guint b,
 			   guint a, gpointer data) ;
 	void dcolor_set_cb(GnomeColorPicker *cp, guint r, guint g, guint b,
+			   guint a, gpointer data) ;
+	void bgcolor_set_cb(GnomeColorPicker *cp, guint r, guint g, guint b,
 			   guint a, gpointer data) ;
 
 	/* end of color funcs */
@@ -294,6 +297,11 @@ static gint updateOutput(gpointer data)
 								       "timeout",
 								       NULL);
 		stockdata->props.timeout = MAX (stockdata->props.timeout, 1);
+		stockdata->props.bgcolor = panel_applet_gconf_get_string (applet,
+									 "bgcolor",
+									 NULL);
+		if (!stockdata->props.bgcolor)
+			stockdata->props.bgcolor = g_strdup ("#ffffff");
 		stockdata->props.dcolor = panel_applet_gconf_get_string (applet,
 									 "dcolor",
 									 NULL);
@@ -539,6 +547,7 @@ static gint updateOutput(gpointer data)
 		GdkFont *small_font = stockdata->small_font;
 		GdkFont *extra_font = stockdata->extra_font;
 		GdkGC *gc = stockdata->gc;
+		GdkGC *bg;
 		GdkRectangle update_rect;
 		int	comp;
 
@@ -551,14 +560,14 @@ static gint updateOutput(gpointer data)
 
 		totalLoc = 0;
 		totalLen = 0;
-
-		/* clear the pixmap */
+	
+		bg = gdk_gc_new (stockdata->pixmap);
+		gdk_gc_set_foreground( bg, &stockdata->gdkBGcolor );
 		gdk_draw_rectangle (stockdata->pixmap,
-		drawing_area->style->black_gc,
-		TRUE,
-		0,0,
-		drawing_area->allocation.width,
-		drawing_area->allocation.height);
+				    bg, TRUE, 0,0,
+				    drawing_area->allocation.width,
+				    drawing_area->allocation.height);
+		
 
 
 		for(i=0;i<stockdata->setCounter;i++) {
@@ -614,7 +623,7 @@ static gint updateOutput(gpointer data)
 				gdk_gc_set_foreground( gc, &stockdata->gdkDcolor );
 			}
 			else {
-				gdk_gc_copy( gc, drawing_area->style->white_gc );
+				gdk_gc_copy( gc, drawing_area->style->black_gc );
 			}
 
 			tmpSym = STOCK_QUOTE(quotes->data)[i].price;
@@ -664,13 +673,13 @@ static gint updateOutput(gpointer data)
 			"Rached Blili <striker@dread.net>",
 			NULL
 		};
-
+		
 		const gchar *documenters[] = {
 			NULL
 		};
 
 		const gchar *translator_credits = _("translator_credits");
-
+		
 		about = gnome_about_new (_("The GNOME Stock Ticker"), VERSION,
 		"(C) 2000 Jayson Lorenzen, Jim Garrison, Rached Blili",
 		_("This program connects to "
@@ -1263,7 +1272,7 @@ static gint updateOutput(gpointer data)
     		          G_CALLBACK (proxy_port_changed), stockdata);
     		set_relation (stockdata->proxy_port_entry, GTK_LABEL (label));
     		
-    		stockdata->proxy_auth_button = gtk_check_button_new_with_mnemonic (_("Pro_xy requires a uername and password"));
+    		stockdata->proxy_auth_button = gtk_check_button_new_with_mnemonic (_("Pro_xy requires a username and password"));
     		gtk_box_pack_start (GTK_BOX (vbox), stockdata->proxy_auth_button, 
     				    FALSE, FALSE, 0);
     		gtk_toggle_button_set_active 
@@ -1350,6 +1359,7 @@ static gint updateOutput(gpointer data)
 		GtkWidget *timeout_label,*timeout_c;
 		GtkObject *timeout_a;
 		GtkWidget *upColor, *downColor, *upLabel, *downLabel;
+		GtkWidget *bgColor, *bgLabel;
 		GtkWidget *check, *check2, *check3, *check4, *fontButton;
 		GtkWidget *font_picker;
 
@@ -1479,6 +1489,24 @@ static gint updateOutput(gpointer data)
 		hbox3 = gtk_hbox_new(FALSE, 5);
 		gtk_box_pack_start_defaults( GTK_BOX(hbox3), downLabel );
 		gtk_box_pack_start_defaults( GTK_BOX(hbox3), downColor );
+		gtk_box_pack_start_defaults(GTK_BOX(vbox3),hbox3);
+		
+		bgLabel = gtk_label_new_with_mnemonic(_("Back_ground Color"));
+		bgColor = gnome_color_picker_new();
+		
+		set_relation(bgColor, GTK_LABEL(bgLabel));
+
+		sscanf( stockdata->props.bgcolor, "#%02x%02x%02x", &dr,&dg,&db );
+
+		gnome_color_picker_set_i8(GNOME_COLOR_PICKER (bgColor), 
+					  dr, dg, db, 255);
+
+		gtk_signal_connect(GTK_OBJECT(bgColor), "color_set",
+				GTK_SIGNAL_FUNC(bgcolor_set_cb), stockdata);
+
+		hbox3 = gtk_hbox_new(FALSE, 5);
+		gtk_box_pack_start_defaults( GTK_BOX(hbox3), bgLabel );
+		gtk_box_pack_start_defaults( GTK_BOX(hbox3), bgColor );
 		gtk_box_pack_start_defaults(GTK_BOX(vbox3),hbox3);
 		gtk_box_pack_start_defaults(GTK_BOX(panela),vbox3);
 
@@ -1802,6 +1830,9 @@ static gint updateOutput(gpointer data)
 
 		gdk_color_parse(stockdata->props.dcolor, &stockdata->gdkDcolor);
 		gdk_color_alloc(colormap, &stockdata->gdkDcolor);
+		
+		gdk_color_parse(stockdata->props.bgcolor, &stockdata->gdkBGcolor);
+		gdk_color_alloc(colormap, &stockdata->gdkBGcolor);
 
 	}
 
@@ -1843,6 +1874,22 @@ static gint updateOutput(gpointer data)
 		stockdata->props.dcolor = g_strdup_printf("#%06X", (red << 16) + (gr << 8) + bl);
 		panel_applet_gconf_set_string (applet, "dcolor", 
 					       stockdata->props.dcolor, NULL);
+		
+		setup_colors(stockdata);
+	}
+	
+	void bgcolor_set_cb(GnomeColorPicker *cp, guint r, guint g, guint b,
+			   guint a, gpointer data) {
+		StockData *stockdata = data;
+		PanelApplet *applet = PANEL_APPLET (stockdata->applet);
+		guint8 red, gr, bl;
+		
+		if (stockdata->props.bgcolor)
+			g_free (stockdata->props.bgcolor);
+		gnome_color_picker_get_i8 (GNOME_COLOR_PICKER(cp), &red, &gr, &bl, NULL);
+		stockdata->props.bgcolor = g_strdup_printf("#%06X", (red << 16) + (gr << 8) + bl);
+		panel_applet_gconf_set_string (applet, "bgcolor", 
+					       stockdata->props.bgcolor, NULL);
 		
 		setup_colors(stockdata);
 	}
