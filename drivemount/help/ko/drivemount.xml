@@ -1,0 +1,381 @@
+<?xml version="1.0"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appversion "2.3.6">
+  <!ENTITY manrevision "2.0.1">
+  <!ENTITY date "December 2003">
+  <!ENTITY app "<application>Disk Mounter</application>">
+  <!ENTITY appname "Disk Mounter">
+]>
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Feb 12, 2002
+-->
+<!-- =============Document Header ============================= -->
+<article id="index" lang="ko">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo>
+    <title>&appname; 설명서 V&manrevision;</title>
+    <copyright>
+      <year>2003</year>
+      <holder>Sun Microsystems</holder>
+    </copyright>
+    <copyright> 
+      <year>2002</year> 
+      <holder>John Fleck</holder> 
+    </copyright> 
+    <copyright> 
+      <year>2000</year> 
+      <holder>Dan Mueth</holder> 
+    </copyright>
+<!-- translators: uncomment this:
+
+  <copyright>
+   <year>2002</year>
+   <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+  </copyright>
+
+   -->
+    <publisher> 
+      <publishername> 그놈 문서 프로젝트 </publishername> 
+    </publisher> 
+
+   &legal;
+   <!-- This file  contains link to license for the documentation (GNU FDL), and 
+        other legal stuff such as "NO WARRANTY" statement. Please do not change 
+	any of this. -->
+
+    <authorgroup> 
+      <author>
+        <firstname>Sun</firstname>
+        <surname>그놈 문서 팀</surname>
+        <affiliation><orgname>Sun Microsystems</orgname></affiliation>
+      </author>
+      <author> 
+	<firstname>John </firstname> 
+	<surname> Fleck</surname> 
+	<affiliation> 
+	  <orgname>그놈 문서 프로젝트</orgname> 
+	  <address> <email>jfleck@inkstain.net</email> </address>
+	</affiliation>
+      </author>
+      <author> 
+	<firstname>Dan </firstname> 
+	<surname> Mueth</surname> 
+	<affiliation> 
+	  <orgname>그놈 문서 프로젝트</orgname> 
+	  <address> <email>muet@alumni.uchicago.edu</email> </address>
+	</affiliation>
+      </author>
+<!-- This is appropriate place for other contributors: translators,
+      maintainers,  etc. Commented out by default.
+       <othercredit role="translator">
+	<firstname>Latin</firstname> 
+	<surname>Translator 1</surname> 
+	<affiliation> 
+	  <orgname>Latin Translation Team</orgname> 
+	  <address> <email>translator@gnome.org</email> </address> 
+	</affiliation>
+	<contrib>Latin translation</contrib>
+      </othercredit>
+-->
+    </authorgroup>
+
+
+    <revhistory>
+      <revision> 
+	<revnumber>&appname; 애플릿 설명서 V&manrevision;</revnumber> 
+	<date>&date;</date> 
+	<revdescription> 
+          <para role="author">Sun 그놈 문서 팀</para>
+          <para role="publisher">그놈 문서 프로젝트</para>
+	</revdescription>
+      </revision>
+      <revision> 
+	<revnumber>디스크 마운트 애플릿 설명서 V2.0</revnumber> 
+	<date>2002년 3월</date> 
+	<revdescription> 
+	  <para role="author">John Fleck
+	    <email>jfleck@inkstain.net</email>
+	  </para>
+	  <para role="publisher">그놈 문서 프로젝트</para>
+	</revdescription>
+      </revision>
+      <revision> 
+	<revnumber>드라이브 마운트 애플릿 설명서</revnumber> 
+	<date>2000년 4월</date> 
+	<revdescription> 
+	  <para role="author">Dan Mueth 
+	    <email>muet@alumni.uchicago.edu</email>
+	  </para>
+	  <para role="publisher">그놈 문서 프로젝트</para>
+	</revdescription>
+      </revision>
+    </revhistory>
+
+    <releaseinfo>이 설명서에서는 &appname;의 버전 &appversion;에 대해 설명합니다.
+    </releaseinfo>
+    <legalnotice> 
+      <title>피드백</title>
+      <para>&app; 애플릿이나 이 설명서에 대한 버그를 보고하거나
+	의견을 제시하려면
+	<ulink url="ghelp:gnome-feedback" type="help">그놈 피드백 페이지</ulink>에 있는 지시 사항을 따르십시오. 
+      </para>
+<!-- Translators may also add here feedback address for translations -->
+    </legalnotice>
+  </articleinfo>
+
+  <indexterm zone="index"> 
+    <primary>디스크 마운트 애플릿</primary> 
+  </indexterm> 
+  
+
+  <!-- ============= Introduction  ================================ -->
+  <sect1 id="drivemountapplet-intro"> 
+    <title>소개</title>
+
+    <figure id="drivemountapplet-fig"> 
+      <title>&appname; 애플릿</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject><imagedata              fileref="figures/drivemount-applet_window.png" format="PNG"/> 
+          </imageobject>
+          <textobject>
+            <phrase>&appname; 애플릿입니다.</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+    </figure>
+
+    <para>
+      &app; 애플릿을 사용하면 다양한 종류의 드라이브와 파일 시스템을
+      빠르게 마운트하고 마운트 해제할 수 있습니다. 
+    </para>
+    <para>
+      &app; 애플릿이 제대로 작동하려면 시스템 관리자가 시스템을 적절하게
+      구성해야 합니다. 필요한 시스템 관리 작업에 대한 자세한 내용은
+      <ulink url="man:fstab" type="man">
+      <citerefentry><refentrytitle>fstab</refentrytitle>
+      <manvolnum>5</manvolnum></citerefentry></ulink>을(를) 참조하십시오.
+    </para>
+
+    <sect2 id="drivemount-intro-add">
+      <title>&appname;을(를) 패널에 추가하려면</title>
+      <para>
+        &app;을(를) 패널에 추가하려면 다음 단계를 수행합니다.
+      </para>
+      <orderedlist>
+        <listitem>
+          <para>
+            패널을 마우스 오른쪽 버튼으로 클릭합니다.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <menuchoice>
+              <guimenu>패널에 추가</guimenu>
+              <guisubmenu>유틸리티</guisubmenu>
+              <guimenuitem>&appname;</guimenuitem>
+            </menuchoice>을(를) 선택합니다. 
+          </para>
+        </listitem>
+      </orderedlist>
+    </sect2>
+
+    <sect2 id="drivemount-intro-mount">
+      <title>파일 시스템 수동 마운트 및 마운트 해제</title>
+      <para>
+        Linux 및 UNIX 시스템의 파일 시스템은 대부분 수동으로
+        마운트하고 마운트 해제해야 합니다. 
+      </para>
+      <para>
+        파일 시스템을 마운트하면 파일 시스템에서 읽고 쓸 수 있습니다. 파일 시스템 작업을 완료하면
+        파일 시스템을 마운트 해제해야 합니다. 
+      </para>
+      <para>
+        Linux 및 UNIX 시스템에서는 항상 변경 사항을 즉시 쓰지 않으므로
+        플로피 디스크와 ZIP 디스크 같은 이동식 드라이브를 제거하려면
+        먼저 이러한 미디어를 마운트 해제해야 합니다. 이러한 시스템은 시스템 속도를 향상시키기 위해 일반적으로 변경 사항을 디스크에 버퍼링합니다. 
+      </para>
+      <para>
+        하드 드라이브 같은 고정 드라이브의 파티션은 일반적으로
+        컴퓨터가 부팅될 때 자동으로 마운트되고 컴퓨터가 종료될 때
+        자동으로 마운트 해제됩니다. 이동식 미디어는 &app; 애플릿 등을 사용하여 수동으로 마운트하고
+        마운트 해제해야 합니다. 
+      </para>
+    </sect2>
+
+    <sect2 id="drivemount-intro-mountpoint">
+      <title>마운트 지점</title>
+      <para>
+        루트 파일 시스템은 컴퓨터의 기본 파일 시스템입니다. 루트 파일 시스템은
+        다음 문자로 시작됩니다. <literal>/</literal> 
+      </para>
+      <para>
+        다른 파일 시스템은 루트 파일 시스템에 있는 빈 디렉터리와 연결되어 있습니다. 이러한 디렉터리를 마운트 지점이라고 합니다.
+        파일 시스템이 마운트되면 연결된 마운트 지점에서 파일 시스템의 내용을 
+        액세스할 수 있습니다. 
+      </para>
+      <para>
+        예를 들어, 대부분의 시스템은 <literal>/media/floppy</literal>라는
+        마운트 지점을 만듭니다.
+      </para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            플로피 드라이브가 마운트되지 않으면 <literal>/media/floppy</literal>는
+            빈 디렉터리입니다.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            플로피 드라이브가 마운트되면 <literal>/media/floppy</literal>를 통해
+            플로피 디스크의 내용에 액세스할 수 있습니다.
+          </para>
+        </listitem>
+      </itemizedlist>
+    </sect2>
+
+  </sect1>
+
+  <!-- ============= Usage  ================================ -->
+  <sect1 id="drivemount-usage"> 
+    <title>사용</title>
+
+    <sect2 id="drivemount-usage-tooltip">
+    <title>드라이브의 마운트 지점과 마운트 상태를 표시하려면</title>
+      <para>
+        드라이브의 마운트 지점과 마운트 상태를 표시하려면
+        마우스 포인터를 패널에 있는 드라이브 아이콘으로 이동합니다.
+        툴팁에 드라이브의 마운트 지점과 마운트 상태가 표시됩니다.
+      </para>
+    </sect2>
+
+    <sect2 id="drivemount-usage-mount">
+    <title>드라이브를 마운트하거나 마운트 해제하려면</title>
+      <para>
+        드라이브를 마운트하거나 마운트 해제하려면
+        패널에 있는 드라이브 아이콘을 클릭합니다. 
+      </para>
+    </sect2>
+
+    <sect2 id="drivemount-usage-browse">
+    <title>드라이브의 내용을 찾으려면</title>
+      <para>
+        파일 관리자를 사용하여 드라이브의 내용을 찾으려면
+        패널에 있는 드라이브 아이콘을 마우스 오른쪽 버튼으로 클릭한 다음
+        <guimenuitem>찾아보기</guimenuitem>를 선택합니다.
+      </para>
+      <para>
+        마운트된 드라이브의 내용만 찾아볼 수 있습니다.
+      </para>
+    </sect2>
+
+    <sect2 id="drivemount-usage-eject">
+    <title>드라이브에서 디스크를 꺼내려면</title>
+      <para>
+        드라이브에서 디스크를 꺼내려면
+        패널에 있는 드라이브 아이콘을 마우스 오른쪽 버튼으로 클릭한 다음
+        <guimenuitem>꺼내기</guimenuitem>를 선택합니다.
+      </para>
+    </sect2>
+
+  </sect1>
+
+  <!-- ============= Customization ============================= -->
+  <sect1 id="drivemountapplet-prefs"> 
+    <title>환경 설정</title>
+    <para>
+      &app; 애플릿을 구성하려면 애플릿을 마우스 오른쪽 버튼으로
+      클릭한 다음 <guimenuitem>환경 설정</guimenuitem>을 선택합니다.
+    </para>
+    <variablelist>
+      <varlistentry>
+        <term>마운트 디렉터리</term>
+        <listitem>
+          <para>
+            해당 드라이브의 마운트 지점 이름을 입력합니다.
+            또는, <guibutton>찾아보기</guibutton> 버튼을 사용하여
+            마운트 지점을 선택합니다.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>업데이트 간격</term>
+        <listitem>
+          <para>
+            이 스핀 상자를 사용하면 &app;에서 드라이브의 상태를 검사하고
+            필요한 경우 아이콘을 업데이트하는 간격을 지정할 수 있습니다.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>아이콘</term>
+        <listitem>
+          <para>
+            드롭다운 목록에서 드라이브 종류를 선택합니다. &app;은(는) 정의된 각 드라이브 종류에 대해
+            아이콘을 자동으로 표시하여 해당 드라이브의 마운트 여부를 나타냅니다.
+          </para>
+          <para>
+            또는, 드롭다운 목록에서 <guilabel>다른 저장 장치</guilabel>를 선택합니다.
+            <guilabel>마운트 아이콘</guilabel> 및
+            <guilabel>마운트 해제 아이콘</guilabel> 버튼을 클릭하여
+            드라이브의 마운트 여부를 나타낼 아이콘을 선택합니다.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>마운트 해제할 때 디스크 꺼내기</term>
+        <listitem>
+          <para>
+            이 옵션을 선택하면 드 라이브를 마운트 해제할 때 디스크를 꺼냅니다.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>automount 호환 상태 테스트 사용</term>
+        <listitem>
+          <para>
+            이 옵션은 automount 기능을 사용하는 경우에만 선택합니다.
+          </para>
+          <para>
+            automount 기능을 사용하지 않으면
+            <guilabel>automount 호환 상태 테스트 사용</guilabel> 옵션을
+            선택할 필요가 없습니다.
+            패널에 있는 드라이브 아이콘에 마우스 포인터를 놓으면
+            &app;은(는) 마운트 상태를 테스트하는 <command>stat</command>
+            명령을 실행합니다.
+          </para>
+          <para>
+            그러나 automount 기능을 사용하는 경우
+            &app;은(는) 다음과 같이 다르게 동작합니다.
+          </para>
+          <itemizedlist>
+            <listitem>
+              <para>
+                automount 기능을 사용하지만
+                <guilabel>automount 호환 상태 테스트 사용</guilabel> 옵션을
+                선택하지 않은 경우 &app;은(는) 마운트 상태를 테스트하는 대신
+                드라이브를 마운트하는 <command>stat</command> 명령을 실행합니다. 
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                automount 기능을 사용하고
+                <guilabel>automount 호환 상태 테스트 사용</guilabel> 옵션을
+                선택한 경우 &app;은(는) 마운트 상태를 테스트하는
+                <command>mount</command> 명령을 실행합니다.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+ </sect1>
+</article>

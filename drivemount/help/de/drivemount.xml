@@ -1,0 +1,341 @@
+<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appversion "2.3.6">
+  <!ENTITY manrevision "2.0.1">
+  <!ENTITY date "Dezember 2003">
+  <!ENTITY app "<application>Platten einbinden</application>">
+  <!ENTITY appname "Platten einbinden">
+]>
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Feb 12, 2002
+-->
+<!-- =============Document Header ============================= -->
+<article id="index" lang="de">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo>
+    <title>&appname;-Handbuch V&manrevision;</title>
+    <copyright>
+      <year>2003</year>
+      <holder>Sun Microsystems</holder>
+    </copyright>
+    <copyright> 
+      <year>2002</year> 
+      <holder>John Fleck</holder> 
+    </copyright> 
+    <copyright> 
+      <year>2000</year> 
+      <holder>Dan Mueth</holder> 
+    </copyright>
+<!-- translators: uncomment this:
+
+  <copyright>
+   <year>2002</year>
+   <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+  </copyright>
+
+   -->
+    <publisher> 
+      <publishername> GNOME Dokumentationsprojekt </publishername> 
+    </publisher> 
+
+   &legal;
+   <!-- This file  contains link to license for the documentation (GNU FDL), and 
+        other legal stuff such as "NO WARRANTY" statement. Please do not change 
+	any of this. -->
+
+    <authorgroup> 
+      <author>
+        <firstname>Sun</firstname>
+        <surname>GNOME Dokumentationsteam</surname>
+        <affiliation><orgname>Sun Microsystems</orgname></affiliation>
+      </author>
+      <author> 
+	<firstname>John </firstname> 
+	<surname> Fleck</surname> 
+	<affiliation> 
+	  <orgname>GNOME Dokumentationsprojekt</orgname> 
+	  <address> <email>jfleck@inkstain.net</email> </address>
+	</affiliation>
+      </author>
+      <author> 
+	<firstname>Dan </firstname> 
+	<surname> Mueth</surname> 
+	<affiliation> 
+	  <orgname>GNOME Dokumentationsprojekt</orgname> 
+	  <address> <email>muet@alumni.uchicago.edu</email> </address>
+	</affiliation>
+      </author>
+<!-- This is appropriate place for other contributors: translators,
+      maintainers,  etc. Commented out by default.
+       <othercredit role="translator">
+	<firstname>Latin</firstname> 
+	<surname>Translator 1</surname> 
+	<affiliation> 
+	  <orgname>Latin Translation Team</orgname> 
+	  <address> <email>translator@gnome.org</email> </address> 
+	</affiliation>
+	<contrib>Latin translation</contrib>
+      </othercredit>
+-->
+    </authorgroup>
+
+
+    <revhistory>
+      <revision> 
+	<revnumber>&appname;-Applet-Handbuch V&manrevision;</revnumber> 
+	<date>&date;</date> 
+	<revdescription> 
+          <para role="author">Sun GNOME Dokumentationsteam</para>
+          <para role="publisher">GNOME-Dokumentationsprojekt</para>
+	</revdescription>
+      </revision>
+      <revision> 
+	<revnumber>Platten einbinden-Applet-Handbuch V2.0</revnumber> 
+	<date>M&auml;rz 2002</date> 
+	<revdescription> 
+	  <para role="author">John Fleck
+	    <email>jfleck@inkstain.net</email>
+	  </para>
+	  <para role="publisher">GNOME-Dokumentationsprojekt</para>
+	</revdescription>
+      </revision>
+      <revision> 
+	<revnumber>Platten einbinden-Applet-Handbuch</revnumber> 
+	<date>April 2000</date> 
+	<revdescription> 
+	  <para role="author">Dan Mueth 
+	    <email>muet@alumni.uchicago.edu</email>
+	  </para>
+	  <para role="publisher">GNOME-Dokumentationsprojekt</para>
+	</revdescription>
+      </revision>
+    </revhistory>
+
+    <releaseinfo>In diesem Handbuch wird Version &appversion; von &appname; beschrieben.
+    </releaseinfo>
+    <legalnotice> 
+      <title>Feedback</title>
+      <para>Wenn Sie Fehler finden oder Vorschl&auml;ge zum &app;-Applet oder zu diesem Handbuch haben, folgen Sie den Anweisungen auf der <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>. 
+      </para>
+<!-- Translators may also add here feedback address for translations -->
+    </legalnotice>
+  </articleinfo>
+
+  <indexterm zone="index"> 
+    <primary>Platten einbinden-Applet</primary> 
+  </indexterm> 
+  
+
+  <!-- ============= Introduction  ================================ -->
+  <sect1 id="drivemountapplet-intro"> 
+     <title>Einf&uuml;hrung</title>
+
+    <figure id="drivemountapplet-fig"> 
+      <title>&appname;-Applet</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject><imagedata              fileref="figures/drivemount-applet_window.png" format="PNG"/> 
+          </imageobject>
+          <textobject>
+            <phrase>Das Applet &appname;.</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+    </figure>
+
+    <para>
+Mit dem Applet &app; k&ouml;nnen Sie sehr schnell und bequem verschiedene Laufwerkstypen und Dateisysteme ein- und aush&auml;ngen. 
+    </para>
+    <para>
+      Damit das Applet &app; ordnungsgem&auml;&szlig; funktioniert, muss Ihr System vom Systemadministrator entsprechend konfiguriert worden sein. N&auml;here Informationen zu den diesbez&uuml;glich erforderlichen Schritten finden Sie im Abschnitt <ulink url="man:fstab" type="man">
+      <citerefentry><refentrytitle>fstab</refentrytitle>
+      <manvolnum>5</manvolnum></citerefentry></ulink>.
+    </para>
+
+    <sect2 id="drivemount-intro-add">
+      <title>So f&uuml;gen Sie das Applet &appname; einem Panel hinzu</title>
+      <para>
+        Wenn Sie das Applet &app; in ein Panel einf&uuml;gen m&ouml;chten, gehen Sie folgenderma&szlig;en vor:
+      </para>
+      <orderedlist>
+        <listitem>
+          <para>
+            Rechtsklicken Sie auf das Panel.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            W&auml;hlen Sie <menuchoice>
+              <guimenu>Zum Panel hinzuf&uuml;gen</guimenu>
+              <guisubmenu>Dienstprogramm</guisubmenu>
+              <guimenuitem>&appname;</guimenuitem>
+            </menuchoice>. 
+          </para>
+        </listitem>
+      </orderedlist>
+    </sect2>
+
+    <sect2 id="drivemount-intro-mount">
+      <title>Manuelles Ein- und Aush&auml;ngen von Dateisystemen</title>
+      <para>
+        Viele Dateisysteme in Linux- und UNIX-Umgebungen m&uuml;ssen manuell ein- und ausgeh&auml;ngt werden. 
+      </para>
+      <para>
+        Um auf ein Dateisystem schreiben bzw. davon lesen zu k&ouml;nnen, m&uuml;ssen Sie es zun&auml;chst einh&auml;ngen. Sobald Sie nach getaner Arbeit keinen Zugriff auf das Dateisystem mehr ben&ouml;tigen, sollten Sie es wieder aush&auml;ngen. 
+      </para>
+      <para>
+        Insbesondere gilt dies f&uuml;r Wechseldatentr&auml;ger wie Disketten oder Zip-Medien. Bevor Sie einen solchen Datentr&auml;ger aus dem Laufwerk nehmen, m&uuml;ssen Sie das entsprechende Laufwerk unbedingt aush&auml;ngen. Der Grund hierf&uuml;r ist, dass Schreibvorg&auml;nge auf Linux- und UNIX-Systemen teilweise zeitverz&ouml;gert geschehen; wenn Sie also das Medium einfach aus dem Laufwerk nehmen, besteht die Gefahr, dass Daten aus noch nicht abgeschlossenen Schreibvorg&auml;ngen verloren gehen. Der Vorteil einer solchen Zwischenpufferung der Schreibvorg&auml;nge ist, dass das System insgesamt schneller l&auml;uft, da es nicht bei jedem Schreibvorgang auf das relativ langsame Laufwerk warten muss. 
+      </para>
+      <para>
+        Partitionen auf festen Laufwerken wie beispielsweise Ihrer Festplatte werden in der Regel beim Hochfahren des Computers automatisch eingeh&auml;ngt und beim Herunterfahren wieder ausgeh&auml;ngt. Wechseldatentr&auml;ger m&uuml;ssen jedoch aus den besagten Gr&uuml;nden von Hand ein- und ausgeh&auml;ngt werden. Hierf&uuml;r bietet sich beispielsweise das Applet &app; an.  
+      </para>
+    </sect2>
+
+    <sect2 id="drivemount-intro-mountpoint">
+      <title>Einh&auml;ngepunkte</title>
+      <para>
+        Das Root-Dateisystem ist das Hauptdateisystem Ihres Computers. Es beginnt mit folgendem Zeichen: <literal>/</literal> 
+      </para>
+      <para>
+        Anderen Dateisystemen werden im Root-Dateisystem stellvertretend leere Verzeichnisse zugeordnet. Diese Verzeichnisse werden als Einh&auml;ngepunkte bezeichnet.
+Nach dem Einh&auml;ngen eines Dateisystems k&ouml;nnen Sie &uuml;ber den dazugeh&ouml;rigen Einh&auml;ngepunkt auf seinen Inhalt zugreifen. 
+      </para>
+      <para>
+        Beispielsweise gibt es auf den meisten Systemen einen Einh&auml;ngepunkt namens <literal>/media/floppy</literal>:
+      </para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            Ist keine Diskette eingeh&auml;ngt, so ist das Verzeichnis <literal>/media/floppy</literal> leer.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Ist hingegen eine Diskette eingeh&auml;ngt, so k&ouml;nnen Sie &uuml;ber <literal>/media/floppy</literal> auf deren Inhalt zugreifen.
+          </para>
+        </listitem>
+      </itemizedlist>
+    </sect2>
+
+  </sect1>
+
+  <!-- ============= Usage  ================================ -->
+  <sect1 id="drivemount-usage"> 
+    <title>Verwendung</title>
+
+    <sect2 id="drivemount-usage-tooltip">
+    <title>So zeigen Sie Einh&auml;ngepunkt und -status eines Laufwerks an</title>
+      <para>
+        Um den Einh&auml;ngepunkt und -status eines Laufwerks anzuzeigen, bewegen Sie den Mauszeiger &uuml;ber das gew&uuml;nschte Laufwerkssymbol im Panel.
+        Nach kurzer Zeit erscheint eine Minihilfe, aus der Sie Einh&auml;ngepunkt und -status des Laufwerks ersehen k&ouml;nnen.
+      </para>
+    </sect2>
+
+    <sect2 id="drivemount-usage-mount">
+    <title>So h&auml;ngen Sie ein Laufwerk ein/aus</title>
+      <para>
+        Zum Ein- bzw. Aush&auml;ngen eines Laufwerks klicken Sie auf das betreffende Laufwerkssymbol im Panel.
+      </para>
+    </sect2>
+
+    <sect2 id="drivemount-usage-browse">
+    <title>So zeigen Sie den Inhalt eines Laufwerks an</title>
+      <para>
+        Um den Inhalt eines Laufwerks in einem Dateimanager-Fenster anzuzeigen, rechtsklicken Sie auf das betreffende Laufwerkssymbol im Panel und w&auml;hlen den Men&uuml;punkt  <guimenuitem>Durchsuchen</guimenuitem>.
+      </para>
+      <para>
+        Um den Inhalt eines Laufwerks anzuzeigen, muss dieses eingeh&auml;ngt sein.
+      </para>
+    </sect2>
+
+    <sect2 id="drivemount-usage-eject">
+    <title>So werfen Sie einen Datentr&auml;ger aus dem Laufwerk aus</title>
+      <para>
+        Wenn Sie einen Datentr&auml;ger aus dem Laufwerk entnehmen m&ouml;chten, rechtsklicken Sie auf das betreffende Laufwerkssymbol im Panel und w&auml;hlen den Men&uuml;punkt <guimenuitem>Auswerfen</guimenuitem>.
+      </para>
+    </sect2>
+
+  </sect1>
+
+  <!-- ============= Customization ============================= -->
+  <sect1 id="drivemountapplet-prefs"> 
+    <title>Einstellungen</title>
+    <para>
+      Zum Konfigurieren des Applets &app; rechtsklicken Sie auf das Applet und w&auml;hlen anschlie&szlig;end <guimenuitem>Einstellungen</guimenuitem>.
+    </para>
+    <variablelist>
+      <varlistentry>
+        <term>Einbindeverzeichnis</term>
+        <listitem>
+          <para>
+            Geben Sie hier den Namen des Einh&auml;ngepunkts f&uuml;r das betreffende Laufwerk ein.
+            Alternativ dazu k&ouml;nnen Sie den Einh&auml;ngepunkt auch &uuml;ber die Schaltfl&auml;che <guibutton>Durchsuchen</guibutton> ausw&auml;hlen.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Aktualisieren alle</term>
+        <listitem>
+          <para>
+            &Uuml;ber dieses Drehfeld legen Sie fest, in welchen Abst&auml;nden das Applet &app; den Laufwerksstatus &uuml;berpr&uuml;ft und ggf. das Laufwerkssymbol entsprechend aktualisiert.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Symbol</term>
+        <listitem>
+          <para>
+            W&auml;hlen Sie einen Laufwerkstyp aus der Dropdown-Liste aus. Das Applet &app; schl&auml;gt automatisch Symbole f&uuml;r alle definierten Laufwerkstypen vor, die zur Anzeige des Einh&auml;ngestatus (eingeh&auml;ngt/ausgeh&auml;ngt) des Laufwerks dienen.
+          </para>
+          <para>
+            Alternativ dazu k&ouml;nnen Sie auch die Option <guilabel>Benutzerdefiniert</guilabel> aus der Dropdown-Liste w&auml;hlen.
+            Definieren Sie anschlie&szlig;end &uuml;ber die Schaltfl&auml;chen <guilabel>Eingebunden-Symbol</guilabel> und 
+            <guilabel>Nicht eingebunden-Symbol</guilabel> die Symbole, mit denen Sie darstellen m&ouml;chten, dass das betreffende Laufwerk ein- bzw. ausgeh&auml;ngt ist. 
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Nach dem Aush&auml;ngen auswerfen</term>
+        <listitem>
+          <para>
+            Wenn diese Option aktiviert ist, wird der Datentr&auml;ger beim  Aush&auml;ngen des Laufwerks automatisch ausgeworfen.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Automount-vertr&auml;glichen Statustest verwenden</term>
+        <listitem>
+          <para>
+            Aktivieren Sie diese Option nur, wenn Sie die Automount-Funktion verwenden.
+          </para>
+          <para>
+            Wenn Sie die Automount-Funktion nicht einsetzen, m&uuml;ssen Sie die Option <guilabel>Automount-vertr&auml;glichen Statustest verwenden</guilabel> auch nicht aktivieren.
+            Immer wenn Sie den Mauszeiger &uuml;ber ein Laufwerkssymbol im Panel bewegen, f&uuml;hrt das Applet &app; den Befehl  <command>stat</command> aus, um den Einh&auml;ngestatus abzufragen.
+          </para>
+          <para>
+            Wenn Sie jedoch die Automount-Funktion verwenden, verh&auml;lt sich das Applet &app; anders:
+          </para>
+          <itemizedlist>
+            <listitem>
+              <para>
+                Ist die Automount-Funktion aktiviert, die Option <guilabel>Automount-vertr&auml;glichen Statustest verwenden</guilabel> jedoch deaktiviert, so f&uuml;hrt das Applet &app; den Befehl <command>stat</command> aus. Dies hat zur Folge, dass nicht die gew&uuml;nschte Statusabfrage stattfindet, sondern das Laufwerk eingeh&auml;ngt wird. 
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Sind sowohl die Automount-Funktion als auch die Option <guilabel>Automount-vertr&auml;glichen Statustest verwenden</guilabel> aktiviert, so f&uuml;hrt das Applet &app; den Befehl <command>mount</command> aus. In diesem Fall findet die Statusabfrage wie gew&uuml;nscht statt. 
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+ </sect1>
+</article>

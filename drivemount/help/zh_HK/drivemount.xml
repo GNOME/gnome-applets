@@ -1,0 +1,283 @@
+<?xml version="1.0"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appversion "2.3.6">
+  <!ENTITY manrevision "2.0.1">
+  <!ENTITY date "December 2003">
+  <!ENTITY app "<application>Disk Mounter</application>">
+  <!ENTITY appname "Disk Mounter">
+]>
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Feb 12, 2002
+-->
+<!-- =============Document Header ============================= -->
+<article id="index" lang="zh_hk">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo>
+<title>&appname; 手冊 V&manrevision;</title>
+    <copyright>
+        <year>2003</year>
+<holder>Sun Microsystems</holder> 
+         </copyright>
+       <copyright>
+<year>2002</year>
+<holder>John Fleck</holder>
+</copyright><copyright>
+<year>2000</year>
+<holder>Dan Mueth</holder>
+</copyright>
+<!-- translators: uncomment this:
+
+  <copyright>
+   <year>2002</year>
+   <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+  </copyright>
+
+   -->
+<publisher> 
+<publishername> GNOME 文件專案 </publishername> 
+</publisher> &legal;<!-- This file  contains link to license for the documentation (GNU FDL), and 
+        other legal stuff such as "NO WARRANTY" statement. Please do not change 
+	any of this. -->
+
+    <authorgroup>
+<author>
+<firstname>Sun</firstname>
+<surname>GNOME 文件小組 </surname>
+<affiliation><orgname>Sun Microsystems</orgname></affiliation>
+</author>
+<author>
+<firstname>John </firstname>
+<surname> Fleck</surname>
+<affiliation>
+<orgname>GNOME 文件專案</orgname> 
+	  <address><email>jfleck@inkstain.net</email> </address>
+	</affiliation>
+      </author>
+      <author>
+<firstname>Dan </firstname>
+<surname> Mueth</surname> <affiliation>
+<orgname>GNOME 文件專案 </orgname> 
+	  <address><email>muet@alumni.uchicago.edu</email> </address>
+	</affiliation>
+      </author>
+<!-- This is appropriate place for other contributors: translators,
+      maintainers,  etc. Commented out by default.
+       <othercredit role="translator">
+	<firstname>Latin</firstname> 
+	<surname>Translator 1</surname> 
+	<affiliation> 
+	  <orgname>Latin Translation Team</orgname> 
+	  <address> <email>translator@gnome.org</email> </address> 
+	</affiliation>
+	<contrib>Latin translation</contrib>
+      </othercredit>
+-->
+    </authorgroup>
+
+
+    <revhistory>
+      <revision>
+<revnumber>&appname; Applet 手冊 V&manrevision;</revnumber> <date>&date;</date>
+<revdescription> 
+          <para role="author">Sun GNOME 文件小組 </para>
+          <para role="publisher">GNOME 文件專案 </para>
+	</revdescription>
+      </revision>
+      <revision>
+<revnumber>檔案系統掛載程式 Applet 手冊 V2.0</revnumber>
+<date>2002 年 3 月 </date> 
+<revdescription> 
+	  <para role="author">John Fleck<email>jfleck@inkstain.net</email>
+	  </para>
+	  <para role="publisher">GNOME 文件專案 </para>
+	</revdescription>
+      </revision>
+      <revision>
+<revnumber>檔案系統掛載程式 Applet 手冊</revnumber>
+<date>2000 年 4 月 </date>
+<revdescription> 
+	  <para role="author">Dan Mueth <email>muet@alumni.uchicago.edu</email>
+	  </para>
+	  <para role="publisher">GNOME 文件專案 </para>
+	</revdescription>
+      </revision>
+    </revhistory>
+
+    <releaseinfo>本手冊說明第 &appversion; 版的 &appname;。
+    </releaseinfo>
+    <legalnotice><title>意見反應 </title>
+      <para> 如果要對 &app; Applet 
+             或本手冊提出相關錯誤報告或建議，請遵照 
+         <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page </ulink> 的指示。
+      </para>
+<!-- Translators may also add here feedback address for translations -->
+    </legalnotice>
+  </articleinfo>
+
+  <indexterm zone="index" ><primary>檔案系統掛載程式 Applet</primary></indexterm>
+  <!-- ============= Introduction  ================================ -->
+  <sect1 id="drivemountapplet-intro"> <title>介紹 </title>
+
+    <figure id="drivemountapplet-fig"> <title>&appname; Applet</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject><imagedata              fileref="figures/drivemount-applet_window.png" format="PNG"/> 
+          </imageobject>
+          <textobject>
+            <phrase>&appname; Applet。</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+    </figure>
+
+    <para>&app; Applet 讓您能夠迅速掛載與卸載多
+                 種類型的磁碟機與檔案系統。
+    </para>
+    <para>若要讓 &app; Applet 運作正常，系
+          統管理員必須適當地配置系統。若需系統管理
+          必要工作的相關資訊，請參閱 <ulink url="man:fstab" type="man">
+      <citerefentry><refentrytitle>fstab</refentrytitle>
+      <manvolnum>5</manvolnum></citerefentry></ulink>。
+</para>
+
+    <sect2 id="drivemount-intro-add"><title>將 &app; 加入面板</title>
+      <para>若要將 &app; 加入面板，請執行下列步驟：
+      </para>
+      <orderedlist>
+        <listitem>
+          <para>對面板按滑鼠右鍵。
+          </para>
+        </listitem>
+        <listitem>
+          <para>選擇<menuchoice><guimenu>「加入面板」</guimenu><guisubmenu>「公用程式」</guisubmenu><guimenuitem>&appname;</guimenuitem></menuchoice>。
+          </para>
+        </listitem>
+      </orderedlist>
+    </sect2>
+
+    <sect2 id="drivemount-intro-mount"><title>手動掛載與卸載檔案系統 </title>
+      <para>Linux 與 UNIX 系統上的許多檔案系統，都必須以手動方式掛載與卸載。
+      </para>
+      <para>掛載檔案系統以後，您可以讀取及寫入該檔案系統。完成檔案系統內的工作以後，應該要卸載該檔案系統。
+      </para>
+      <para>在移除媒體之前，您必須先卸載可移除的磁碟 (像是磁片與 Zip 磁碟)，因為 Linux 與 Unix 系統並不是一定會立刻將變更寫入媒體。這類系統通常會將變更置於磁碟的緩衝區，以便增進系統的速度。
+      </para>
+      <para>在固定磁碟 (例如您的硬碟機) 上的分割區，通常會在電腦啟動時自動掛載，並會在電腦關機時自動卸載。可移除的媒體則必須手動掛載及卸載，例如，使用 &app; Applet。
+      </para>
+    </sect2>
+
+    <sect2 id="drivemount-intro-mountpoint"><title>掛載點</title>
+      <para>根檔案系統也就是電腦上的主檔案系統。根檔案系統都以下列字元開始：<literal>/</literal> 
+      </para>
+      <para>其他的檔案系統都與根檔案系統中的空白目錄有所關聯。這些目錄也稱為掛載點。
+掛載檔案系統時，即可經由關聯的掛載點存取檔案系統的內容。
+      </para>
+      <para>例如，多數系統都會建立一個稱為 <literal>/media/floppy</literal> 的掛載點：
+      </para>
+      <itemizedlist>
+        <listitem>
+          <para>如果沒有掛載軟碟機，<literal>/media/floppy</literal> 就會是一個空白的目錄。
+          </para>
+        </listitem>
+        <listitem>
+          <para>如果有掛載軟碟機，<literal>/media/floppy</literal> 便會提供對磁片內容的存取。
+          </para>
+        </listitem>
+      </itemizedlist>
+    </sect2>
+
+  </sect1>
+
+  <!-- ============= Usage  ================================ -->
+  <sect1 id="drivemount-usage"><title>使用 </title>
+
+    <sect2 id="drivemount-usage-tooltip"><title>顯示磁碟機的掛載點與掛載狀態</title>
+      <para>若要顯示磁碟機的掛載點與掛載狀態，請將滑鼠指標移至面板中的磁碟機圖示。
+工具提示便會顯示磁碟機的掛載點及掛載狀態。
+      </para>
+    </sect2>
+
+    <sect2 id="drivemount-usage-mount"><title>掛載或卸載磁碟機 </title>
+      <para>若要掛載或卸載磁碟機，請按一下面板中的磁碟機圖示。
+      </para>
+    </sect2>
+
+    <sect2 id="drivemount-usage-browse"><title>瀏覽磁碟機的內容</title>
+      <para>若要使用檔案管理員瀏覽磁碟機的內容，請對面板中的磁碟機圖示按滑鼠右鍵，然後選擇<guimenuitem>「瀏覽」</guimenuitem>。
+      </para>
+      <para>您只能瀏覽已掛載磁碟機的內容。
+      </para>
+    </sect2>
+
+    <sect2 id="drivemount-usage-eject"><title>從磁碟機彈出磁碟 </title>
+      <para>若要從磁碟機彈出磁碟，請對面板中的磁碟機圖示按滑鼠右鍵，然後選擇<guimenuitem>「彈出」</guimenuitem>。
+      </para>
+    </sect2>
+
+  </sect1>
+
+  <!-- ============= Customization ============================= -->
+  <sect1 id="drivemountapplet-prefs"><title>個人喜好</title>
+    <para>若要配置 &app; Applet，請對 Applet 按滑鼠右鍵，然後選擇<guimenuitem>「個人喜好」</guimenuitem>。
+    </para>
+    <variablelist>
+      <varlistentry><term>掛載目錄 </term>
+        <listitem>
+          <para>輸入此磁碟機掛載點的名稱。
+另外，也可以使用<guibutton>「瀏覽」</guibutton>按鈕來選取掛載點。
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry><term>更新間隔</term>
+        <listitem>
+          <para>使用此旋轉方塊來指定您要 &app; 檢查磁碟機狀態，並在必要時更新圖示的間隔。
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry><term>圖示 </term>
+        <listitem>
+          <para>從下拉式清單選取磁碟機類型。&app; 會自動提供圖示給每種定義的磁碟機類型，以便指示磁碟機是否掛載。
+          </para>
+          <para>另外，也可以從下拉式清單選取<guilabel>「自訂」</guilabel>。
+按一下<guilabel>「掛載圖示」</guilabel>及<guilabel>「卸載圖示」</guilabel>按鈕，即可選擇指示磁碟機已掛載或已卸載的圖示。
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry><term>在卸載時彈出磁碟 </term>
+        <listitem>
+          <para>選取此選項以便在卸載磁碟機時彈出磁碟片。
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry><term>使用相容於 automount 的狀態測試方式 </term>
+        <listitem>
+          <para>請只在使用 automount 功能時選取此選項。
+          </para>
+          <para>如果沒有使用 automount 功能，就不需要選取<guilabel>「使用相容於 automount 的狀態測試方式」</guilabel>選項。
+當您將滑鼠指標移至面板中磁碟機圖示的上方時， &app; 便會執行 <command>stat</command> 指令以測試掛載狀態。
+          </para>
+          <para>不過，如果您使用 automount 功能，&app; 便會表現不同的運作方式，如下所述：
+          </para>
+          <itemizedlist>
+            <listitem>
+              <para>如果使用 automount 功能，並且沒有選取 <guilabel> 「使用相容於 automount 的狀態測試方式」</guilabel>選項，&app; 便會執行<command>stat</command> 指令以掛載磁碟機，而非測試掛載狀態。
+              </para>
+            </listitem>
+            <listitem>
+              <para>如果使用 automount 功能，並且選取 <guilabel> 「使用相容於 automount 的狀態測試方式」</guilabel>選項，&app; 便會執行 <command>mount</command> 指令以測試掛載狀態。
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+ </sect1>
+</article>

@@ -1,0 +1,339 @@
+<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appversion "2.3.6">
+  <!ENTITY manrevision "2.0.1">
+  <!ENTITY date "December 2003">
+  <!ENTITY app "<application>ディスクマウンタ</application>">
+  <!ENTITY appname "ディスクマウンタ">
+]>
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Feb 12, 2002
+-->
+<!-- =============Document Header ============================= -->
+<article id="index" lang="ja">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo>
+    <title>&appname; のマニュアル V&manrevision;</title>
+    <copyright>
+      <year>2003</year>
+      <holder>Sun Microsystems</holder>
+    </copyright>
+    <copyright> 
+      <year>2002</year> 
+      <holder>John Fleck</holder> 
+    </copyright> 
+    <copyright> 
+      <year>2000</year> 
+      <holder>Dan Mueth</holder> 
+    </copyright>
+<!-- translators: uncomment this:
+
+  <copyright>
+   <year>2002</year>
+   <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+  </copyright>
+
+   -->
+    <publisher> 
+      <publishername> GNOME ドキュメンテーションプロジェクト </publishername> 
+    </publisher> 
+
+   &legal;
+   <!-- This file  contains link to license for the documentation (GNU FDL), and 
+        other legal stuff such as "NO WARRANTY" statement. Please do not change 
+	any of this. -->
+
+    <authorgroup> 
+      <author>
+        <firstname>Sun</firstname>
+        <surname>GNOME ドキュメンテーションチーム</surname>
+        <affiliation><orgname>Sun Microsystems</orgname></affiliation>
+      </author>
+      <author> 
+	<firstname>John </firstname> 
+	<surname> Fleck</surname> 
+	<affiliation> 
+	  <orgname>GNOME ドキュメンテーションプロジェクト</orgname> 
+	  <address> <email>jfleck@inkstain.net</email> </address>
+	</affiliation>
+      </author>
+      <author> 
+	<firstname>Dan </firstname> 
+	<surname> Mueth</surname> 
+	<affiliation> 
+	  <orgname>GNOME ドキュメンテーションプロジェクト</orgname> 
+	  <address> <email>muet@alumni.uchicago.edu</email> </address>
+	</affiliation>
+      </author>
+<!-- This is appropriate place for other contributors: translators,
+      maintainers,  etc. Commented out by default.
+       <othercredit role="translator">
+	<firstname>Latin</firstname> 
+	<surname>Translator 1</surname> 
+	<affiliation> 
+	  <orgname>Latin Translation Team</orgname> 
+	  <address> <email>translator@gnome.org</email> </address> 
+	</affiliation>
+	<contrib>Latin translation</contrib>
+      </othercredit>
+-->
+    </authorgroup>
+
+
+    <revhistory>
+      <revision> 
+	<revnumber>&appname; アプレットのマニュアル V&manrevision;</revnumber> 
+	<date>&date;</date> 
+	<revdescription> 
+          <para role="author">Sun GNOME ドキュメンテーションチーム</para>
+          <para role="publisher">GNOME ドキュメンテーションプロジェクト</para>
+	</revdescription>
+      </revision>
+      <revision> 
+	<revnumber>ディスクマウンタアプレットのマニュアル V2.0</revnumber> 
+	<date>2002 年 3 月</date> 
+	<revdescription> 
+	  <para role="author">John Fleck
+	    <email>jfleck@inkstain.net</email>
+	  </para>
+	  <para role="publisher">GNOME ドキュメンテーションプロジェクト</para>
+	</revdescription>
+      </revision>
+      <revision> 
+	<revnumber>Drive Mount アプレットのマニュアル</revnumber> 
+	<date>2000 年 4 月</date> 
+	<revdescription> 
+	  <para role="author">Dan Mueth 
+	    <email>muet@alumni.uchicago.edu</email>
+	  </para>
+	  <para role="publisher">GNOME ドキュメンテーションプロジェクト</para>
+	</revdescription>
+      </revision>
+    </revhistory>
+
+    <releaseinfo>このマニュアルは &appname; のバージョン &appversion; について説明します。
+    </releaseinfo>
+    <legalnotice> 
+      <title>フィードバック</title>
+      <para>&app; アプレットまたはこのマニュアルに関してバグやご意見をご報告いただく場合は、『<ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink>』を参照してください。
+      </para>
+<!-- Translators may also add here feedback address for translations -->
+    </legalnotice>
+  </articleinfo>
+
+  <indexterm zone="index"> 
+    <primary>ディスクマウンタアプレット</primary> 
+  </indexterm> 
+  
+
+  <!-- ============= Introduction  ================================ -->
+  <sect1 id="drivemountapplet-intro"><title>概要</title>
+
+    <figure id="drivemountapplet-fig"> 
+      <title>&appname; アプレット</title>
+      <screenshot>
+        <mediaobject>
+          <imageobject><imagedata              fileref="figures/drivemount-applet_window.png" format="PNG"/> 
+          </imageobject>
+          <textobject>
+            <phrase>&appname; アプレット。</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+    </figure>
+
+    <para>
+      &app; アプレットを使用すると、各種ドライブおよびファイルシステムをすばやくマウントおよびマウント解除することができます。
+    </para>
+    <para>
+      &app; アプレットが正常に機能するためには、システム管理者がシステムを適切に構成する必要があります。必要なシステム管理タスクの詳細については、<command>fstab(5)</command> を参照してください。
+    </para>
+
+    <sect2 id="drivemount-intro-add">
+      <title>パネルへの &appname; の追加</title>
+      <para>
+        パネルに &app; を追加する手順は次の通りです。
+      </para>
+      <orderedlist>
+        <listitem>
+          <para>
+            パネル上で右クリックします。
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            
+            <menuchoice>
+              <guimenu>「パネルに追加」</guimenu>
+              <guisubmenu>「ユーティリティ」</guisubmenu>
+              <guimenuitem>「&appname;」</guimenuitem>
+            </menuchoice>の順に選択します。
+          </para>
+        </listitem>
+      </orderedlist>
+    </sect2>
+
+    <sect2 id="drivemount-intro-mount">
+      <title>ファイルシステムを手動でマウントおよびマウント解除する</title>
+      <para>
+        Linux および UNIX システムのファイルシステムの多くは、マウントおよびマウント解除を手動で行う必要があります。
+      </para>
+      <para>
+        ファイルシステムがマウントされていると、そのファイルシステムの読み出しと書き込みが実行できます。ファイルシステムでの作業が終了すると、そのファイルシステムのマウントを解除しなければなりません。
+      </para>
+      <para>
+        Linux と UNIX システムは変更を常に即座に書き込むわけではないので、メディアを取り外す前に、フロッピーディスクや Zip ディスクなどのリムーバブルドライブのマウントを解除する必要があります。これらのシステムは通常、システムの速度を上げるためにディスクの変更をバッファリングします。
+      </para>
+      <para>
+        ハードドライブなどの固定ドライブのパーティションは、通常コンピュータの起動時に自動的にマウントされ、コンピュータの停止時にマウント解除されます。リムーバブルメディアは、たとえば &app; アプレットを使用するなどして手動でマウントおよびマウント解除しなければなりません。
+      </para>
+    </sect2>
+
+    <sect2 id="drivemount-intro-mountpoint">
+      <title>マウントポイント</title>
+      <para>
+        ルートファイルシステムは、コンピュータのメインのファイルシステムです。ルートファイルシステムは、次の文字で始まります。 <literal>/</literal> 
+      </para>
+      <para>
+        他のファイルシステムは、ルートファイルシステム内の空のディレクトリに関連付けられます。これらのディレクトリはマウントポイントと呼ばれます。
+        ファイルシステムがマウントされている場合、関連するマウントポイントからファイルシステムの内容にアクセスできます。
+      </para>
+      <para>
+        たとえば、ほとんどのシステムでは <literal>/media/floppy</literal>: というマウントポイントが作成されます。
+      </para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            フロッピードライブがマウントされていない場合、<literal>/media/floppy</literal> は空のディレクトリとなります。
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            フロッピードライブがマウントされている場合、<literal>/media/floppy</literal> はフロッピーディスクの内容へのアクセスを提供します。
+          </para>
+        </listitem>
+      </itemizedlist>
+    </sect2>
+
+  </sect1>
+
+  <!-- ============= Usage  ================================ -->
+  <sect1 id="drivemount-usage"><title>使用方法</title>
+
+    <sect2 id="drivemount-usage-tooltip">
+    <title>ドライブのマウントポイントとマウント状態を表示する</title>
+      <para>
+        ドライブのマウントポイントとマウント状態を表示するには、マウスポインタをパネル内のドライブアイコンに移動します。
+        ツールチップが、ドライブのマウントポイントとマウント状態を表示します。
+      </para>
+    </sect2>
+
+    <sect2 id="drivemount-usage-mount">
+    <title>ドライブをマウントまたはマウント解除する</title>
+      <para>
+        ドライブをマウントまたはマウント解除する場合は、パネル内のドライブアイコンをクリックします。
+      </para>
+    </sect2>
+
+    <sect2 id="drivemount-usage-browse">
+    <title>ドライブの内容をブラウズする</title>
+      <para>
+        ファイルマネージャを使用してドライブの内容をブラウズするには、パネル内のドライブアイコンを右クリックし、<guimenuitem>「参照」</guimenuitem>を選択します。
+      </para>
+      <para>
+        ブラウズできるのは、マウントされているドライブの内容だけです。
+      </para>
+    </sect2>
+
+    <sect2 id="drivemount-usage-eject">
+    <title>ドライブからディスクを取り出す</title>
+      <para>
+        ドライブからディスクを取り出すには、パネル内のドライブアイコンを右クリックし、<guimenuitem>「取り出し」</guimenuitem>を選択します。
+      </para>
+    </sect2>
+
+  </sect1>
+
+  <!-- ============= Customization ============================= -->
+  <sect1 id="drivemountapplet-prefs">
+    <title>設定</title>
+    <para>
+         &app; アプレットを構成するには、アプレットを右クリックし、<guimenuitem>「設定」</guimenuitem>を選択します。 
+    </para>
+    <variablelist>
+      <varlistentry>
+        <term>マウントディレクトリ</term>
+        <listitem>
+          <para>
+            このドライブのマウントポイント名を入力します。
+            または、<guibutton>「参照」</guibutton>ボタンでマウントポイントを選択します。
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>更新間隔</term>
+        <listitem>
+          <para>
+            &app; がドライブの状態をチェックし、必要であればアイコンを更新する間隔を指定する場合は、このスピンボックスを使用します。
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>アイコン</term>
+        <listitem>
+          <para>
+            ドロップダウンリストからドライブのタイプを選択します。&app; は、そのドライブがマウントされているのかマウント解除されているのかを示すために、定義された各ドライブのタイプにアイコンを自動的に割り当てます。
+          </para>
+          <para>
+            または、ドロップダウンリストから<guilabel>「カスタム」</guilabel>を選択します。
+           <guilabel>「Mounted icon」</guilabel>と<guilabel>「Unmounted icon」</guilabel>ボタンをクリックし、ドライブのマウントまたはマウント解除を示すアイコンを選択します。
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>アンマウント時にディスクを取り出す</term>
+        <listitem>
+          <para>
+            ドライブのマウントを解除する時にディスクを取り出す場合は、このオプションを選択します。
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>オートマウント向きの状態テストを使用</term>
+        <listitem>
+          <para>
+            オートマウントファシリティを使用する場合のみ、このオプションを選択します。
+          </para>
+          <para>
+            オートマウントファシリティを使用していない場合は、
+            <guilabel>「オートマウント向きの状態テストを使用」</guilabel>オプションを選択する必要はありません。
+            マウスポインタをパネル内のドライブアイコンに当てると、&app; は <command>stat</command> コマンドを実行します。<command>stat</command> コマンドは、マウント状態をテストします。
+          </para>
+          <para>
+            これに対してオートマウントファシリティを使用している場合は、
+            &app; は次のような異なる動作を行います。
+          </para>
+          <itemizedlist>
+            <listitem>
+              <para>
+               オートマウントファシリティを使用しているが、<guilabel>「オートマウント向きの状態テストを使用」</guilabel>オプションを選択していない場合、&app; は、<command>stat</command> コマンドを実行します。<command>stat</command> コマンドは、マウント状態をテストするのではなく、ドライブをマウントします。
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                オートマウントファシリティを使用しており、<guilabel>「オートマウント向きの状態テストを使用」</guilabel>オプションを選択している場合、&app; は <command>mount</command> コマンドを実行します。<command>mount</command> コマンドは、マウント状態をテストします。
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+ </sect1>
+</article>
