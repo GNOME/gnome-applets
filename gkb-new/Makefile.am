@@ -16,6 +16,7 @@ gkb_applet_2_SOURCES = \
 		prop-list.c	\
 		prop-map.c	\
 		preset.c	\
+		prop-add.c	\
 		system.c	\
 		util.c
 
