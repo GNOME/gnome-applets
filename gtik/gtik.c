@@ -40,6 +40,8 @@
 
 #define STOCK_QUOTE(sq) ((StockQuote *)(sq))
 
+#define NEVER_SENSITIVE		"never_sensitive"
+
 	enum {
 		WHITE,
 		RED,
@@ -163,6 +165,45 @@
 	static gint gtik_vbox_accessible_get_n_children(AtkObject *obj);
 	static AtkObject* gtik_vbox_accessible_ref_child(AtkObject *obj, gint i);
 	/* end accessibility funcs and vars */
+
+	/*-----------------------------------------------------------------*/
+	/* set sensitive and setup NEVER_SENSITIVE appropriately */
+	static void hard_set_sensitive (GtkWidget *w, gboolean sensitivity)
+	{
+		gtk_widget_set_sensitive (w, sensitivity);
+		g_object_set_data (G_OBJECT (w), NEVER_SENSITIVE,
+				   GINT_TO_POINTER ( ! sensitivity));
+	}
+
+
+	/*-----------------------------------------------------------------*/
+	/* set sensitive, but always insensitive if NEVER_SENSITIVE is set */
+	static void soft_set_sensitive (GtkWidget *w, gboolean sensitivity)
+	{
+		if (g_object_get_data (G_OBJECT (w), NEVER_SENSITIVE))
+			gtk_widget_set_sensitive (w, FALSE);
+		else
+			gtk_widget_set_sensitive (w, sensitivity);
+	}
+
+
+	/*-----------------------------------------------------------------*/
+	static gboolean key_writable (PanelApplet *applet, const char *key)
+	{
+		gboolean writable;
+		char *fullkey;
+		static GConfClient *client = NULL;
+		if (client == NULL)
+			client = gconf_client_get_default ();
+
+		fullkey = panel_applet_gconf_get_full_key (applet, key);
+
+		writable = gconf_client_key_is_writable (client, fullkey, NULL);
+
+		g_free (fullkey);
+
+		return writable;
+	}
 
 	/*-----------------------------------------------------------------*/
 	static void load_fonts(StockData *stockdata)
@@ -828,7 +869,7 @@ static gint updateOutput(gpointer data)
 		GtkWidget *button;
 
 		button = GTK_WIDGET(data);
-		gtk_widget_set_sensitive(button,TRUE);
+		soft_set_sensitive(button,TRUE);
 	}
 
 	/*-----------------------------------------------------------------*/
@@ -958,9 +999,9 @@ static gint updateOutput(gpointer data)
 					     
 		fonts_widget = g_object_get_data (G_OBJECT (button), "fonts_hbox");
 		colors_widget = g_object_get_data (G_OBJECT (button), "colors_hbox");
-		gtk_widget_set_sensitive (GTK_WIDGET (fonts_widget), 
+		soft_set_sensitive (GTK_WIDGET (fonts_widget), 
 					             !stockdata->props.use_default_theme);
-		gtk_widget_set_sensitive (GTK_WIDGET (colors_widget), 
+		soft_set_sensitive (GTK_WIDGET (colors_widget), 
 					             !stockdata->props.use_default_theme);
 		load_fonts(stockdata);
 	}
@@ -1098,7 +1139,7 @@ static gint updateOutput(gpointer data)
 	static void
 	selection_changed (GtkTreeSelection *selection, gpointer data) 
 	{
-		gtk_widget_set_sensitive (GTK_WIDGET (data), 
+		soft_set_sensitive (GTK_WIDGET (data), 
 						    gtk_tree_selection_get_selected (selection, NULL, NULL));
 						    
 	}
@@ -1112,7 +1153,7 @@ static gint updateOutput(gpointer data)
 		string = gtk_editable_get_chars (editable, 0, -1);
 		if (!string || !g_utf8_strlen (string, -1))
 			str = FALSE;
-		gtk_widget_set_sensitive (GTK_WIDGET (data), str);
+		soft_set_sensitive (GTK_WIDGET (data), str);
 		if (string) g_free (string);
 	}
 		
@@ -1255,7 +1296,7 @@ static gint updateOutput(gpointer data)
 		gtk_size_group_add_widget (size_group, button);
 		g_object_set_data (G_OBJECT (button), "entry", entry);
 		gtk_box_pack_start(GTK_BOX(hbox),button,TRUE,TRUE,0);
-		gtk_widget_set_sensitive (button, FALSE);
+		soft_set_sensitive (button, FALSE);
 		g_signal_connect (G_OBJECT (button), "clicked",
 				  G_CALLBACK (add_button_clicked), stockdata);
 		g_signal_connect (G_OBJECT (entry), "changed",
@@ -1266,11 +1307,15 @@ static gint updateOutput(gpointer data)
 		g_signal_connect (G_OBJECT (button), "clicked",
 				  G_CALLBACK (remove_symbol), stockdata);
 		gtk_box_pack_start(GTK_BOX(hbox),button,FALSE,FALSE,0);
-		gtk_widget_set_sensitive (button, FALSE);
+		soft_set_sensitive (button, FALSE);
 		g_signal_connect (G_OBJECT (selection), "changed",
 					   G_CALLBACK (selection_changed), button);
 
 		gtk_widget_show_all(mainhbox);
+
+		if ( ! key_writable (PANEL_APPLET (stockdata->applet), "tik_syms"))
+			hard_set_sensitive (mainhbox, FALSE);
+
 		return(mainhbox);
 
 	}
@@ -1411,6 +1456,9 @@ static gint updateOutput(gpointer data)
 		gtk_box_pack_start (GTK_BOX (hbox3), spin, FALSE, FALSE, 0);
 		label = gtk_label_new (_("minutes"));
 		gtk_box_pack_start (GTK_BOX (hbox3), label, FALSE, FALSE, 0);
+
+		if ( ! key_writable (PANEL_APPLET (stockdata->applet), "timeout"))
+			hard_set_sensitive (hbox2, FALSE);
 		
 		vbox = create_hig_catagory (behav_vbox, _("Scrolling"));
 		
@@ -1438,6 +1486,9 @@ static gint updateOutput(gpointer data)
 			gtk_option_menu_set_history (GTK_OPTION_MENU (option), 1);
 		else
 			gtk_option_menu_set_history (GTK_OPTION_MENU (option), 0);
+
+		if ( ! key_writable (PANEL_APPLET (stockdata->applet), "scroll_speed"))
+			hard_set_sensitive (hbox2, FALSE);
 		
 		hbox2 = gtk_hbox_new (FALSE, 6);
 		gtk_box_pack_start (GTK_BOX (vbox), hbox2, FALSE, FALSE, 0);
@@ -1447,6 +1498,9 @@ static gint updateOutput(gpointer data)
 				  	  G_CALLBACK (scroll_toggled), stockdata);
 		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check),
 							   stockdata->props.buttons);
+
+		if ( ! key_writable (PANEL_APPLET (stockdata->applet), "buttons"))
+			hard_set_sensitive (hbox2, FALSE);
 							   
 		hbox2 = gtk_hbox_new (FALSE, 6);
 		gtk_box_pack_start (GTK_BOX (vbox), hbox2, FALSE, FALSE, 0);
@@ -1456,6 +1510,9 @@ static gint updateOutput(gpointer data)
 				           G_CALLBACK (rtl_toggled), stockdata);
 		gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check),
 							   !stockdata->props.scroll);
+
+		if ( ! key_writable (PANEL_APPLET (stockdata->applet), "scroll"))
+			hard_set_sensitive (hbox2, FALSE);
 							   
 		gtk_widget_show_all (behav_vbox);
 							   
@@ -1481,6 +1538,9 @@ static gint updateOutput(gpointer data)
 							   stockdata->props.output);
 		gtk_widget_show_all (hbox2);
 
+		if ( ! key_writable (PANEL_APPLET (stockdata->applet), "output"))
+			hard_set_sensitive (hbox2, FALSE);
+
 		hbox2 = gtk_hbox_new (FALSE, 12);
 		gtk_box_pack_start (GTK_BOX (vbox), hbox2, FALSE, FALSE, 0);
 		label = gtk_label_new_with_mnemonic (_("_Width:"));
@@ -1501,7 +1561,10 @@ static gint updateOutput(gpointer data)
 		gtk_box_pack_start (GTK_BOX (hbox3), label, FALSE, FALSE, 0);
 		gtk_widget_show_all (hbox2);	
 		
-		 g_object_unref (size);
+		g_object_unref (size);
+
+		if ( ! key_writable (PANEL_APPLET (stockdata->applet), "width"))
+			hard_set_sensitive (hbox2, FALSE);
 		
 		vbox = create_hig_catagory (appear_vbox, _("Font and Colors"));
 		size = gtk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
@@ -1516,6 +1579,9 @@ static gint updateOutput(gpointer data)
 		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (check),
 							   stockdata->props.use_default_theme);
 		gtk_widget_show_all (hbox2);
+
+		if ( ! key_writable (PANEL_APPLET (stockdata->applet), "use_default_theme"))
+			hard_set_sensitive (hbox2, FALSE);
 					   
 		hbox2 = gtk_hbox_new (FALSE, 12);
 		font_hbox = hbox2;
@@ -1534,7 +1600,10 @@ static gint updateOutput(gpointer data)
 		g_signal_connect (G_OBJECT (font), "font_set",
                 		  G_CALLBACK (font_cb), stockdata);
                 gtk_size_group_add_widget (size2, font);
-		gtk_widget_show_all (hbox2);				  
+		gtk_widget_show_all (hbox2);
+
+		if ( ! key_writable (PANEL_APPLET (stockdata->applet), "font"))
+			hard_set_sensitive (hbox2, FALSE);
                	
 		color_vbox = gtk_vbox_new (FALSE, 6);
 		g_object_set_data (G_OBJECT (check), "colors_hbox", color_vbox);
@@ -1555,6 +1624,9 @@ static gint updateOutput(gpointer data)
 		gtk_size_group_add_widget (size2, color);
 		g_signal_connect(G_OBJECT(color), "color_set",
 				G_CALLBACK(ucolor_set_cb), stockdata);
+
+		if ( ! key_writable (PANEL_APPLET (stockdata->applet), "ucolor"))
+			hard_set_sensitive (hbox2, FALSE);
 				
 		hbox2 = gtk_hbox_new (FALSE, 12);
 		gtk_box_pack_start (GTK_BOX (color_vbox), hbox2, FALSE, FALSE, 0);
@@ -1571,6 +1643,9 @@ static gint updateOutput(gpointer data)
 		gtk_size_group_add_widget (size2, color);
 		g_signal_connect(G_OBJECT(color), "color_set",
 				G_CALLBACK(dcolor_set_cb), stockdata);
+
+		if ( ! key_writable (PANEL_APPLET (stockdata->applet), "dcolor"))
+			hard_set_sensitive (hbox2, FALSE);
 				
 		hbox2 = gtk_hbox_new (FALSE, 12);
 		gtk_box_pack_start (GTK_BOX (color_vbox), hbox2, FALSE, FALSE, 0);
@@ -1587,6 +1662,9 @@ static gint updateOutput(gpointer data)
 		gtk_size_group_add_widget (size2, color);
 		g_signal_connect(G_OBJECT(color), "color_set",
 				G_CALLBACK(fgcolor_set_cb), stockdata);
+
+		if ( ! key_writable (PANEL_APPLET (stockdata->applet), "fgcolor"))
+			hard_set_sensitive (hbox2, FALSE);
 				
 		hbox2 = gtk_hbox_new (FALSE, 12);
 		gtk_box_pack_start (GTK_BOX (color_vbox), hbox2, FALSE, FALSE, 0);
@@ -1603,6 +1681,9 @@ static gint updateOutput(gpointer data)
 		gtk_size_group_add_widget (size2, color);
 		g_signal_connect(G_OBJECT(color), "color_set",
 				G_CALLBACK(bgcolor_set_cb), stockdata);
+
+		if ( ! key_writable (PANEL_APPLET (stockdata->applet), "bgcolor"))
+			hard_set_sensitive (hbox2, FALSE);
 				
 		gtk_widget_show_all (vbox);
 				
@@ -1611,8 +1692,8 @@ static gint updateOutput(gpointer data)
 	
 		gtk_widget_show_all(stockdata->pb);
 		
-		gtk_widget_set_sensitive (font_hbox, !stockdata->props.use_default_theme);
-		gtk_widget_set_sensitive (color_vbox, !stockdata->props.use_default_theme);
+		soft_set_sensitive (font_hbox, !stockdata->props.use_default_theme);
+		soft_set_sensitive (color_vbox, !stockdata->props.use_default_theme);
 		
 		g_signal_connect (G_OBJECT (stockdata->pb), "response",
 				  G_CALLBACK (response_cb), stockdata);
