@@ -1,5 +1,5 @@
 /*###################################################################*/
-/*##                         clock & mail applet 0.2.0             ##*/
+/*##                         clock & mail applet 0.2.1             ##*/
 /*###################################################################*/
 
 #include <sys/types.h>
@@ -19,7 +19,7 @@
 
 #define CLOCKMAIL_APPLET_VERSION_MAJ 0
 #define CLOCKMAIL_APPLET_VERSION_MIN 2
-#define CLOCKMAIL_APPLET_VERSION_REV 0
+#define CLOCKMAIL_APPLET_VERSION_REV 1
 
 typedef struct _ItemData ItemData;
 struct _ItemData
@@ -56,9 +56,11 @@ struct _SkinData
 	gint width;
 	gint height;
 	GdkPixmap *background;
+	GdkBitmap *mask;
 	ItemData *mail;
 	ItemData *month_txt;
 	ItemData *week_txt;
+	ItemData *mail_amount;
 	DigitData *dig_small;
 	DigitData *dig_large;
 	NumberData *hour;
@@ -67,6 +69,7 @@ struct _SkinData
 	NumberData *month;
 	NumberData *day;
 	NumberData *year;
+	NumberData *mail_count;
 };
 
 typedef struct _AppData AppData;
@@ -96,6 +99,9 @@ struct _AppData
 	gint use_gmt;
 	gint gmt_offset;
 
+	off_t mailsize;
+	gint mail_max;
+
 	/* the properties window widgets */
 	GtkWidget *propwindow;
 	GtkWidget *mail_file_entry;
@@ -105,16 +111,17 @@ struct _AppData
 	gint p_exec_cmd_on_newmail;
 	gint p_use_gmt;
 	gint p_gmt_offset;
+	gint p_mail_max;
 	GtkWidget *theme_entry;
 
 	/* variables for mail status and remebering past states */
-	off_t oldsize;
 	time_t oldtime;
 	gint old_yday;
 	gint old_n;
 	gint blink_lit;
 	gint blink_count;
 	gint old_week;
+	gint old_amount;
 
 	SkinData *skin;
 	SkinData *skin_v;

@@ -1,5 +1,5 @@
 /*###################################################################*/
-/*##                         clock & mail applet 0.2.0             ##*/
+/*##                         clock & mail applet 0.2.1             ##*/
 /*###################################################################*/
 
 #include "clockmail.h"
@@ -9,6 +9,7 @@ static void am_pm_time_cb(GtkWidget *w, gpointer data);
 static void use_gmt_cb(GtkWidget *w, gpointer data);
 static void gmt_offset_cb(GtkObject *adj, gpointer data);
 static void always_blink_cb(GtkWidget *w, gpointer data);
+static void mail_max_cb(GtkObject *adj, gpointer data);
 static void property_apply_cb(GtkWidget *widget, void *nodata, gpointer data);
 static gint property_destroy_cb(GtkWidget *widget, gpointer data);
 
@@ -25,6 +26,7 @@ void property_load(gchar *path, AppData *ad)
 	ad->theme_file = gnome_config_get_string("clockmail/theme=");
 	ad->use_gmt = gnome_config_get_int("clockmail/gmt=0");
 	ad->gmt_offset = gnome_config_get_int("clockmail/gmt_offset=0");
+	ad->mail_max = gnome_config_get_int("clockmail/mailmax=150");
         gnome_config_pop_prefix ();
 }
 
@@ -40,6 +42,7 @@ void property_save(gchar *path, AppData *ad)
 	gnome_config_set_string("clockmail/theme", ad->theme_file);
         gnome_config_set_int("clockmail/gmt", ad->use_gmt);
         gnome_config_set_int("clockmail/gmt_offset", ad->gmt_offset);
+        gnome_config_set_int("clockmail/mailmax", ad->mail_max);
 	gnome_config_sync();
         gnome_config_pop_prefix();
 }
@@ -77,6 +80,95 @@ static void always_blink_cb(GtkWidget *w, gpointer data)
 	AppData *ad = data;
 	ad->p_always_blink = GTK_TOGGLE_BUTTON (w)->active;
 	gnome_property_box_changed(GNOME_PROPERTY_BOX(ad->propwindow));
+}
+
+static void mail_max_cb(GtkObject *adj, gpointer data)
+{
+	AppData *ad = data;
+	ad->p_mail_max = (gint)GTK_ADJUSTMENT(adj)->value;
+	gnome_property_box_changed(GNOME_PROPERTY_BOX(ad->propwindow));
+}
+
+static void theme_selected_cb(GtkWidget *clist, gint row, gint column,
+		GdkEventButton *bevent, gpointer data)
+{
+	AppData *ad = data;
+	gchar *text = gtk_clist_get_row_data(GTK_CLIST(clist), row);
+	if (text) gtk_entry_set_text(GTK_ENTRY(ad->theme_entry),text);
+}
+
+static gint sort_theme_list_cb(void *a, void *b)
+{
+	return strcmp((gchar *)a, (gchar *)b);
+}
+
+static void populate_theme_list(GtkWidget *clist)
+{
+	DIR *dp;
+	struct dirent *dir;
+	struct stat ent_sbuf;
+	gint row;
+	gchar *buf[] = { "x", };
+	gchar *themepath;
+	GList *theme_list = NULL;
+	GList *list;
+
+	/* add default theme */
+	buf[0] = _("None (default)");
+	row = gtk_clist_append(GTK_CLIST(clist),buf);
+	gtk_clist_set_row_data(GTK_CLIST(clist), row, "");
+
+	themepath = gnome_unconditional_datadir_file("clockmail");
+
+	if((dp = opendir(themepath))==NULL)
+		{
+		/* dir not found */
+		g_free(themepath);
+		return;
+		}
+
+	while ((dir = readdir(dp)) != NULL)
+		{
+		/* skips removed files */
+		if (dir->d_ino > 0)
+			{
+			gchar *name;
+			gchar *path;
+
+			name = dir->d_name; 
+			path = g_strconcat(themepath, "/", name, NULL);
+
+			if (stat(path,&ent_sbuf) >= 0 && S_ISDIR(ent_sbuf.st_mode))
+				{
+				theme_list = g_list_insert_sorted(theme_list,
+						g_strdup(name),
+						(GCompareFunc) sort_theme_list_cb);
+				}
+			g_free(path);
+			}
+		}
+        closedir(dp);
+
+	list = theme_list;
+	while (list)
+		{
+		gchar *themedata_file = g_strconcat(themepath, "/", list->data, "/clockmaildata", NULL);
+		if (g_file_exists(themedata_file))
+			{
+			gchar *theme_file = g_strconcat(themepath, "/", list->data, NULL);
+			buf[0] = list->data;
+			row = gtk_clist_append(GTK_CLIST(clist),buf);
+			gtk_clist_set_row_data_full(GTK_CLIST(clist), row,
+					theme_file, (GtkDestroyNotify) g_free);
+			}
+		g_free(themedata_file);
+		g_free(list->data);
+		list = list->next;
+		}
+
+	g_list_free(theme_list);
+
+	g_free(themepath);
 }
 
 static void property_apply_cb(GtkWidget *widget, void *nodata, gpointer data)
@@ -126,6 +218,7 @@ static void property_apply_cb(GtkWidget *widget, void *nodata, gpointer data)
 
 	ad->use_gmt = ad->p_use_gmt;
 	ad->gmt_offset = ad->p_gmt_offset;
+	ad->mail_max = ad->p_mail_max;
 
 	ad->exec_cmd_on_newmail = ad->p_exec_cmd_on_newmail;
 
@@ -143,11 +236,15 @@ void property_show(AppletWidget *applet, gpointer data)
 {
 	AppData *ad = data;
 	GtkWidget *frame;
+	GtkWidget *vbox;
+	GtkWidget *vbox1;
 	GtkWidget *hbox;
 	GtkWidget *label;
 	GtkWidget *button;
 	GtkObject *adj;
 	GtkWidget *spin;
+	GtkWidget *theme_clist;
+	gchar *theme_title[] = { "Themes:", };
 
 	if(ad->propwindow)
 		{
@@ -160,21 +257,31 @@ void property_show(AppletWidget *applet, gpointer data)
 	ad->p_use_gmt = ad->use_gmt;
 	ad->p_gmt_offset = ad->gmt_offset;
 	ad->p_exec_cmd_on_newmail = ad->exec_cmd_on_newmail;
+	ad->p_mail_max = ad->mail_max;
 
 	ad->propwindow = gnome_property_box_new();
 	gtk_window_set_title(GTK_WINDOW(&GNOME_PROPERTY_BOX(ad->propwindow)->dialog.window),
 		"ClockMail Settings");
 	
-	frame = gtk_vbox_new(5, TRUE);
+	vbox = gtk_vbox_new(0, TRUE);
+
+	frame = gtk_frame_new(_("Clock"));
+	gtk_container_border_width (GTK_CONTAINER (frame), 5);
+	gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
+	gtk_widget_show(frame);
+
+	vbox1 = gtk_vbox_new(0,TRUE);
+	gtk_container_add(GTK_CONTAINER(frame), vbox1);
+	gtk_widget_show(vbox1);
 
 	button = gtk_check_button_new_with_label (_("Display time in 12 hour format (AM/PM)"));
-	gtk_box_pack_start(GTK_BOX(frame), button, FALSE, FALSE, 0);
+	gtk_box_pack_start(GTK_BOX(vbox1), button, FALSE, FALSE, 0);
 	gtk_toggle_button_set_state(GTK_TOGGLE_BUTTON(button), ad->p_am_pm_enable);
 	gtk_signal_connect (GTK_OBJECT(button),"clicked",(GtkSignalFunc) am_pm_time_cb, ad);
 	gtk_widget_show(button);
 
 	hbox = gtk_hbox_new(FALSE, 5);
-	gtk_box_pack_start( GTK_BOX(frame), hbox, FALSE, FALSE, 5);
+	gtk_box_pack_start( GTK_BOX(vbox1), hbox, FALSE, FALSE, 5);
 	gtk_widget_show(hbox);
 
 	button = gtk_check_button_new_with_label (_("Display time relative to GMT (Greenwich Mean Time):"));
@@ -190,15 +297,24 @@ void property_show(AppletWidget *applet, gpointer data)
 	gtk_spin_button_set_update_policy( GTK_SPIN_BUTTON(spin),GTK_UPDATE_ALWAYS );
 	gtk_widget_show(spin);
 
+	frame = gtk_frame_new(_("Mail"));
+	gtk_container_border_width (GTK_CONTAINER (frame), 5);
+	gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
+	gtk_widget_show(frame);
+
+	vbox1 = gtk_vbox_new(0,TRUE);
+	gtk_container_add(GTK_CONTAINER(frame), vbox1);
+	gtk_widget_show(vbox1);
+
 	button = gtk_check_button_new_with_label (_("Blink when any mail is waiting. (Not just when mail arrives)"));
-	gtk_box_pack_start(GTK_BOX(frame), button, FALSE, FALSE, 0);
+	gtk_box_pack_start(GTK_BOX(vbox1), button, FALSE, FALSE, 0);
 	gtk_toggle_button_set_state(GTK_TOGGLE_BUTTON(button), ad->p_always_blink);
 	gtk_signal_connect (GTK_OBJECT(button),"clicked",(GtkSignalFunc) always_blink_cb, ad);
 	gtk_widget_show(button);
 
 	/* mail file entry */
 	hbox = gtk_hbox_new(FALSE, 5);
-	gtk_box_pack_start( GTK_BOX(frame), hbox, FALSE, FALSE, 5);
+	gtk_box_pack_start( GTK_BOX(vbox1), hbox, FALSE, FALSE, 5);
 	gtk_widget_show(hbox);
 
 	label = gtk_label_new(_("Mail file:"));
@@ -215,11 +331,11 @@ void property_show(AppletWidget *applet, gpointer data)
 
 	/* newmail exec command */
 	hbox = gtk_hbox_new(FALSE, 5);
-	gtk_box_pack_start( GTK_BOX(frame), hbox, FALSE, FALSE, 5);
+	gtk_box_pack_start( GTK_BOX(vbox1), hbox, FALSE, FALSE, 5);
 	gtk_widget_show(hbox);
 
 	button = gtk_check_button_new_with_label (_("When new mail is received run:"));
-	gtk_box_pack_start(GTK_BOX(hbox), button, FALSE, FALSE, 5);
+	gtk_box_pack_start(GTK_BOX(hbox), button, FALSE, FALSE, 0);
 	gtk_toggle_button_set_state(GTK_TOGGLE_BUTTON(button), ad->p_exec_cmd_on_newmail);
 	gtk_signal_connect (GTK_OBJECT(button),"clicked",(GtkSignalFunc) newmail_exec_cb, ad);
 	gtk_widget_show(button);
@@ -233,16 +349,38 @@ void property_show(AppletWidget *applet, gpointer data)
 	gtk_box_pack_start( GTK_BOX(hbox),ad->newmail_exec_cmd_entry , TRUE, TRUE, 5);
 	gtk_widget_show(ad->newmail_exec_cmd_entry);
 
+	hbox = gtk_hbox_new(FALSE, 5);
+	gtk_box_pack_start( GTK_BOX(vbox1), hbox, FALSE, FALSE, 5);
+	gtk_widget_show(hbox);
+
+	label = gtk_label_new(_("Amount of mail to consider mailbox full (Kbytes):"));
+	gtk_box_pack_start( GTK_BOX(hbox), label, FALSE, FALSE, 5);
+	gtk_widget_show(label);
+
+	adj = gtk_adjustment_new((float)ad->mail_max, 10.0, 9000.0, 1, 5, 50);
+	spin = gtk_spin_button_new( GTK_ADJUSTMENT(adj), 1, 0 );
+	gtk_widget_set_usize(spin, 100, -1);
+	gtk_box_pack_start( GTK_BOX(hbox), spin, FALSE, FALSE, 5);
+	gtk_signal_connect( GTK_OBJECT(adj),"value_changed",GTK_SIGNAL_FUNC(mail_max_cb), ad);
+	gtk_spin_button_set_update_policy( GTK_SPIN_BUTTON(spin),GTK_UPDATE_ALWAYS );
+	gtk_widget_show(spin);
+
         label = gtk_label_new(_("General"));
-        gtk_widget_show(frame);
-        gnome_property_box_append_page( GNOME_PROPERTY_BOX(ad->propwindow),frame ,label);
+        gtk_widget_show(vbox);
+        gnome_property_box_append_page( GNOME_PROPERTY_BOX(ad->propwindow),vbox ,label);
 
 	/* theme tab */
 
-	frame = gtk_vbox_new(5, TRUE);
+	frame = gtk_frame_new(NULL);
+	gtk_container_border_width (GTK_CONTAINER (frame), 5);
+
+	vbox = gtk_vbox_new(0, TRUE);
+	gtk_container_border_width (GTK_CONTAINER (vbox), 5);
+	gtk_container_add(GTK_CONTAINER(frame), vbox);
+	gtk_widget_show(vbox);
 
 	hbox = gtk_hbox_new(FALSE, 5);
-	gtk_box_pack_start( GTK_BOX(frame), hbox, FALSE, FALSE, 5);
+	gtk_box_pack_start( GTK_BOX(vbox), hbox, FALSE, FALSE, 5);
 	gtk_widget_show(hbox);
 
 	label = gtk_label_new(_("Theme file (directory):"));
@@ -257,6 +395,16 @@ void property_show(AppletWidget *applet, gpointer data)
 				GTK_OBJECT(ad->propwindow));
 	gtk_box_pack_start( GTK_BOX(hbox),ad->theme_entry , TRUE, TRUE, 5);
 	gtk_widget_show(ad->theme_entry);
+
+	/* theme list */
+	theme_clist=gtk_clist_new_with_titles (1, theme_title);
+	gtk_clist_set_policy (GTK_CLIST (theme_clist), GTK_POLICY_ALWAYS, GTK_POLICY_AUTOMATIC); 
+	gtk_clist_column_titles_passive (GTK_CLIST (theme_clist)); 
+	gtk_signal_connect (GTK_OBJECT (theme_clist), "select_row",(GtkSignalFunc) theme_selected_cb, ad);
+	gtk_box_pack_start (GTK_BOX (vbox), theme_clist, TRUE, TRUE, 0);
+	gtk_widget_show (theme_clist);
+
+	populate_theme_list(theme_clist);
 
         label = gtk_label_new(_("Theme"));
         gtk_widget_show(frame);

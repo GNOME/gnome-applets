@@ -1,5 +1,5 @@
 /*###################################################################*/
-/*##                         clock & mail applet 0.2.0             ##*/
+/*##                         clock & mail applet 0.2.1             ##*/
 /*###################################################################*/
 
 #include "clockmail.h"
@@ -10,6 +10,7 @@
 
 static GdkPixmap *get_pixmap_from_data(gchar **data);
 static GdkPixmap *get_pixmap_from_file(gchar *path);
+static void get_pixmap_from_file_with_mask(gchar *path, GdkPixmap **pixmap, GdkBitmap **mask);
 static DigitData *new_digit(GdkPixmap *pixmap);
 static DigitData *new_digit_from_data(gchar **data);
 static DigitData *new_digit_from_file(gchar *file);
@@ -25,8 +26,8 @@ static void draw_digit(DigitData *digit, gint n, gint x, gint y, AppData *ad);
 static SkinData *load_default_skin();
 static ItemData *get_item(gchar *path, gchar *datafile, gchar *name, gint sections, gint vertical);
 static DigitData *get_digit(gchar *path, gchar *datafile, gchar *name, gint vertical);
-static NumberData *get_number(gchar *path, gchar *datafile, gchar *name, gint zeros, gint vertical, SkinData *skin);
-static GdkPixmap *get_background(gchar *path, gchar *datafile, gint vertical);
+static NumberData *get_number(gchar *path, gchar *datafile, gchar *name, gint count, gint zeros, gint vertical, SkinData *skin);
+static GdkPixmap *get_background(gchar *path, gchar *datafile, gint vertical, GdkBitmap **mask);
 static SkinData *load_skin(gchar *skin_path, gint vertical);
 
 static GdkPixmap *get_pixmap_from_data(gchar **data)
@@ -49,6 +50,18 @@ static GdkPixmap *get_pixmap_from_file(gchar *path)
 	gdk_imlib_load_file_to_pixmap(path, &pixmap, &mask);
 	if (mask) gdk_imlib_free_bitmap(mask);
 	return pixmap;
+}
+
+static void get_pixmap_from_file_with_mask(gchar *path, GdkPixmap **pixmap, GdkBitmap **mask)
+{
+	GdkPixmap *n_pixmap = NULL;
+	GdkBitmap *n_mask = NULL;
+
+	if (!g_file_exists(path)) return;
+
+	gdk_imlib_load_file_to_pixmap(path, &n_pixmap, &n_mask);
+	*pixmap = n_pixmap;
+	*mask = n_mask;
 }
 
 void redraw_skin(AppData *ad)
@@ -183,6 +196,9 @@ void sync_window_to_skin(AppData *ad)
 	gtk_widget_set_usize(ad->display_area, ad->skin->width, ad->skin->height);
 	gtk_widget_set_usize(ad->applet, ad->skin->width, ad->skin->height);
 	redraw_skin(ad);
+	/* attempt to set the applets shape, to no avail */
+/*	gdk_window_shape_combine_mask (ad->applet->window, ad->skin->mask, 0, 0);*/
+	gdk_window_shape_combine_mask (ad->display_area->window, ad->skin->mask, 0, 0);
 
 	if (ad->skin->mail)
 		ad->mail_sections = ad->skin->mail->sections;
@@ -192,23 +208,27 @@ void sync_window_to_skin(AppData *ad)
 	/* we are forcing some redraws here */
 	ad->old_week = -1;
 	ad->old_n = -1;
+	ad->old_amount = -1;
 }
 
 void free_skin(SkinData *s)
 {
 	if (!s) return;
 	if (s->background) gdk_imlib_free_pixmap(s->background);
+	if (s->mask) gdk_imlib_free_bitmap(s->mask);
 	free_number(s->hour);
 	free_number(s->min);
 	free_number(s->sec);
 	free_number(s->month);
 	free_number(s->day);
 	free_number(s->year);
+	free_number(s->mail_count);
 	free_digit(s->dig_small);
 	free_digit(s->dig_large);
 	free_item(s->mail);
 	free_item(s->month_txt);
 	free_item(s->week_txt);
+	free_item(s->mail_amount);
 	g_free(s);
 }
 
@@ -411,7 +431,7 @@ static DigitData *get_digit(gchar *path, gchar *datafile, gchar *name, gint vert
 	return digit;
 }
 
-static NumberData *get_number(gchar *path, gchar *datafile, gchar *name, gint zeros, gint vertical, SkinData *skin)
+static NumberData *get_number(gchar *path, gchar *datafile, gchar *name, gint count, gint zeros, gint vertical, SkinData *skin)
 {
 	NumberData *number;
 	DigitData *digit;
@@ -455,14 +475,15 @@ static NumberData *get_number(gchar *path, gchar *datafile, gchar *name, gint ze
 		return NULL;
 		}
 
-	number = new_number(digit, 2, zeros, x, y);
+	number = new_number(digit, count, zeros, x, y);
 	g_free(filename);
 	return number;
 }
 
-static GdkPixmap *get_background(gchar *path, gchar *datafile, gint vertical)
+static GdkPixmap *get_background(gchar *path, gchar *datafile, gint vertical, GdkBitmap **mask)
 {
 	GdkPixmap *pixmap;
+	GdkPixmap *n_mask;
 	gchar *buf = NULL;
 	gchar *filename;
 	gchar *prefix;
@@ -493,7 +514,9 @@ static GdkPixmap *get_background(gchar *path, gchar *datafile, gint vertical)
 		return NULL;
 		}
 
-	pixmap = get_pixmap_from_file(filename);
+	get_pixmap_from_file_with_mask(filename, &pixmap, &n_mask);
+	*mask = n_mask;
+
 	g_free(filename);
 	return pixmap;
 }
@@ -502,6 +525,7 @@ static SkinData *load_skin(gchar *skin_path, gint vertical)
 {
 	SkinData *s;
 	gchar *datafile = g_strconcat(skin_path, "/clockmaildata", NULL);
+	GdkBitmap *mask;
 
 	if (!g_file_exists(datafile))
 		{
@@ -514,7 +538,8 @@ static SkinData *load_skin(gchar *skin_path, gint vertical)
 
 	/* background */
 
-	s->background = get_background(skin_path, datafile, vertical);
+	s->background = get_background(skin_path, datafile, vertical, &mask);
+	s->mask = mask;
 	if (s->background)
 		{
 		gint width, height;
@@ -531,15 +556,17 @@ static SkinData *load_skin(gchar *skin_path, gint vertical)
 
 	s->dig_small = get_digit(skin_path, datafile, "Digit_Small=", vertical);
 	s->dig_large = get_digit(skin_path, datafile, "Digit_Large=", vertical);
-	s->hour = get_number(skin_path, datafile, "Number_Hour=", FALSE, vertical, s);
-	s->min = get_number(skin_path, datafile, "Number_Minutes=", TRUE, vertical, s);
-	s->sec = get_number(skin_path, datafile, "Number_Seconds=", TRUE, vertical, s);
-	s->month = get_number(skin_path, datafile, "Number_Month=", FALSE, vertical, s);
-	s->day = get_number(skin_path, datafile, "Number_Day=", FALSE, vertical, s);
-	s->year = get_number(skin_path, datafile, "Number_Year=", TRUE, vertical, s);
+	s->hour = get_number(skin_path, datafile, "Number_Hour=", 2, FALSE, vertical, s);
+	s->min = get_number(skin_path, datafile, "Number_Minutes=", 2, TRUE, vertical, s);
+	s->sec = get_number(skin_path, datafile, "Number_Seconds=", 2, TRUE, vertical, s);
+	s->month = get_number(skin_path, datafile, "Number_Month=", 2, FALSE, vertical, s);
+	s->day = get_number(skin_path, datafile, "Number_Day=", 2, FALSE, vertical, s);
+	s->year = get_number(skin_path, datafile, "Number_Year=", 2, TRUE, vertical, s);
 	s->mail = get_item(skin_path, datafile, "Mail_Image=", 0, vertical);
+	s->mail_amount = get_item(skin_path, datafile, "Item_Mail_Percent=", 0, vertical);
 	s->month_txt = get_item(skin_path, datafile, "Item_Month_Text=", 12, vertical);
 	s->week_txt = get_item(skin_path, datafile, "Item_Week_text=", 7, vertical);
+	s->mail_count = get_number(skin_path, datafile, "Number_Mail=", 4, FALSE, vertical, s);
 
 	g_free(datafile);
 	return s;

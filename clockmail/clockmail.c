@@ -1,5 +1,5 @@
 /*###################################################################*/
-/*##                         clock & mail applet 0.2.0             ##*/
+/*##                         clock & mail applet 0.2.1             ##*/
 /*###################################################################*/
 
 #include "clockmail.h"
@@ -11,6 +11,8 @@ static void update_mail_display(int n, AppData *ad);
 static void update_time_count(gint h, gint m, gint s, AppData *ad);
 static gint blink_callback(gpointer data);
 static gint update_display(gpointer data);
+static void applet_change_back(GtkWidget *applet, PanelBackType type, char *pixmap,
+				GdkColor *color, gpointer data);
 static void destroy_applet(GtkWidget *widget, gpointer data);
 static AppData *create_new_app(GtkWidget *applet);
 static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data);
@@ -58,7 +60,7 @@ void check_mail_file_status (int reset, AppData *ad)
 
 	if (reset)
 		{
-		ad->oldsize = 0;
+		ad->mailsize = 0;
 		ad->oldtime = 0;
 		return;
 		}
@@ -71,7 +73,7 @@ void check_mail_file_status (int reset, AppData *ad)
 
 	status = stat (ad->mail_file, &s);
 	if (status < 0){
-		ad->oldsize = 0;
+		ad->mailsize = 0;
 		ad->anymail = ad->newmail = ad->unreadmail = 0;
 		return;
 	}
@@ -82,13 +84,13 @@ void check_mail_file_status (int reset, AppData *ad)
 	ad->unreadmail = (s.st_mtime >= s.st_atime && newsize > 0);
 
 	checktime = (newtime > ad->oldtime);
-	if (newsize >= ad->oldsize && ad->unreadmail && checktime){
+	if (newsize >= ad->mailsize && ad->unreadmail && checktime){
 		ad->newmail = 1;
 		ad->mailcleared = 0;
 	} else
 		ad->newmail = 0;
 	ad->oldtime = newtime;
-	ad->oldsize = newsize;
+	ad->mailsize = newsize;
 }
 
 static void set_tooltip(struct tm *time_data, AppData *ad)
@@ -131,6 +133,24 @@ static void update_mail_display(int n, AppData *ad)
 		{
 		draw_item(ad->skin->mail, n, ad);
 		ad->old_n = n;
+		}
+}
+
+static void update_mail_amount_display(AppData *ad)
+{
+	if (ad->mailsize != ad->old_amount)
+		{
+		if (ad->skin->mail_amount)
+			{
+			gint p;
+			if (ad->mailsize >= ad->mail_max)
+				p = ad->skin->mail_amount->sections - 1;
+			else
+				p = (float)ad->mailsize / ( ad->mail_max * 1024 ) / ad->skin->mail_amount->sections;
+			draw_item(ad->skin->mail_amount, p, ad);
+			}
+		draw_number(ad->skin->mail_count, ad->mailsize / 1024, ad);
+		ad->old_amount = ad->mailsize;
 		}
 }
 
@@ -251,9 +271,52 @@ static gint update_display(gpointer data)
 			}
 		}
 
+	update_mail_amount_display(ad);
+
 	redraw_display(ad);
 
 	return TRUE;
+}
+
+static void applet_change_back(GtkWidget *applet, PanelBackType type, char *pixmap,
+				GdkColor *color, gpointer data)
+{
+	AppData *ad = data;
+	GtkStyle *ns;
+
+	printf("back changes\n");
+	switch (type)
+		{
+		case PANEL_BACK_NONE :
+			ns = gtk_style_new();
+			gtk_style_ref(ns);
+			gtk_widget_set_style(GTK_WIDGET(ad->applet), ns);
+			gtk_style_unref(ns);
+			break;
+		case PANEL_BACK_COLOR :
+			ns = gtk_style_copy(GTK_WIDGET(ad->applet)->style);
+			gtk_style_ref(ns);
+			ns->bg[GTK_STATE_NORMAL] = *color;
+			gtk_widget_set_style(GTK_WIDGET(ad->applet), ns);
+			gtk_style_unref(ns);
+			break;
+		case PANEL_BACK_PIXMAP :
+			if (g_file_exists (pixmap))
+				{
+				GdkImlibImage *im = gdk_imlib_load_image (pixmap);
+				if (im)
+					{
+					/* FIX me! pixmap leak */
+					GdkPixmap *pmap;
+					gdk_imlib_render (im, im->rgb_width, im->rgb_height);
+					pmap = gdk_imlib_move_image (im);
+					gdk_imlib_destroy_image (im);
+					gdk_window_set_back_pixmap(ad->applet->window, pmap, FALSE);
+					gdk_window_clear(ad->applet->window);
+					}
+				}
+			break;
+		}
 }
 
 /* clean up function to free all the applet's memory and stop timers */
@@ -284,7 +347,7 @@ static AppData *create_new_app(GtkWidget *applet)
 	ad->propwindow = NULL;
 	ad->orient = ORIENT_UP;
 
-	ad->oldsize = 0;
+	ad->mailsize = 0;
 	ad->oldtime = 0;
 	ad->old_week = -1;
 	ad->old_n = 0;
@@ -293,6 +356,7 @@ static AppData *create_new_app(GtkWidget *applet)
 
 	ad->use_gmt = FALSE;
 	ad->gmt_offset = 0;
+	ad->mail_max = 150;
 
 	/* (duration = BLINK_DELAY / 1000 * BLINK_TIMES) */
 	ad->blink_delay = 166;
@@ -350,6 +414,8 @@ static AppData *create_new_app(GtkWidget *applet)
 
 	gtk_signal_connect(GTK_OBJECT(ad->applet),"save_session",
 		GTK_SIGNAL_FUNC(applet_save_session), ad);
+	gtk_signal_connect(GTK_OBJECT(ad->applet),"back_change",
+		GTK_SIGNAL_FUNC(applet_change_back), ad);
 
 	applet_widget_register_stock_callback(APPLET_WIDGET(ad->applet),
 						"properties",

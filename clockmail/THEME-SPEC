@@ -41,10 +41,23 @@ Number_Hour/Minutes/Seconds/Year/Month/Day=Large/Small x y
                have been specified with the Digit_* line (above)
   x, y: coordinates to place the numbers within the window
 
+Number_Mail=Large/Small x y
+  Same as above, except this is a number for the amount of mail in
+  the mailbox (in Kbytes). It requires space for 4 digits long.
+
 Item_Week_Text=filename x y
   filename: image file, contains vertically the days of the week
             from Sunday through Saturday (7)
 
 Item_Month_Text=filename x y
   filename: image file, contains vertically the months of the year (12)
+
+Item_Mail_Percent=filename sections x y
+  filename: Name of the image file for percent of mail, this file contains
+            images vertically that represent the percent that the mailbox is
+            full. The images should represent 0 to 100%, there can be as any
+            number of images.
+            (for instance 6 images for 20% increments: 0,20,40,60,80,100)
+  sections: total number of images within the image file
+  x, y: coordinates to place the image within the window
 
