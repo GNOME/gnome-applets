@@ -2,11 +2,12 @@
 # Copyright (C) 1999-2000 Free Software Foundation, Inc.
 # Christopher R. Gabriel, <cgabriel@pluto.linux.it> 2000
 #
+#: cdplayer/cdplayer.c:707 cdplayer/cdplayer.c:709
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets VERSION\n"
-"POT-Creation-Date: 2002-02-17 23:07-0500\n"
-"PO-Revision-Date: 2002-03-02 01:53+0100\n"
+"POT-Creation-Date: 2002-03-30 19:27+0100\n"
+"PO-Revision-Date: 2002-03-31 13:41+0200\n"
 "Last-Translator: Leandro Noferini <lnoferin@cybervalley.org>\n"
 "Language-Team: Italiano <it@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -21,42 +22,45 @@ msgstr "La tua piattaforma non è supportata.\n"
 
 #: battstat/battstat_applet.c:285
 msgid "The applet will not work properly (if at all).\n"
-msgstr "L'applet non funzionerà correttamente (oppure proprio non funzionerà).\n"
+msgstr ""
+"L'applet non funzionerà correttamente (oppure proprio non funzionerà).\n"
 
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:798
+#: battstat/battstat_applet.c:316 battstat/battstat_applet.c:834
 msgid "High"
 msgstr "Carica"
 
 #. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:324 battstat/battstat_applet.c:800
+#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:836
 msgid "Low"
 msgstr "Scarica"
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:326 battstat/battstat_applet.c:802
+#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:838
 msgid "Critical"
 msgstr "Critico"
 
 #. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:328 battstat/battstat_applet.c:804
+#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:840
 msgid "Charging"
 msgstr "Ricarica"
 
-#: battstat/battstat_applet.c:409
+#: battstat/battstat_applet.c:403
+#, c-format
 msgid "Battery low (%d%%) and AC is offline"
 msgstr "Batteria scarica (%d%%) e alimentazione staccata"
 
-#: battstat/battstat_applet.c:432
+#: battstat/battstat_applet.c:426
 msgid "Battery is now fully re-charged!"
 msgstr "La batteria è completamente carica!"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:451 battstat/battstat_applet.c:961
+#: battstat/battstat_applet.c:445 battstat/battstat_applet.c:997
+#, c-format
 msgid ""
 "System is running on battery power\n"
 "Battery: %d%% (%s)"
@@ -67,7 +71,8 @@ msgstr ""
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:455 battstat/battstat_applet.c:969
+#: battstat/battstat_applet.c:449 battstat/battstat_applet.c:1005
+#, c-format
 msgid ""
 "System is running on AC power\n"
 "Battery: %d%% (%s)"
@@ -77,31 +82,33 @@ msgstr ""
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:461 battstat/battstat_applet.c:893
-#: battstat/battstat_applet.c:982
+#: battstat/battstat_applet.c:455 battstat/battstat_applet.c:929
+#: battstat/battstat_applet.c:1018
 msgid "System is running on battery power"
 msgstr "Il computer sta funzionando con la batteria"
 
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:464 battstat/battstat_applet.c:899
-#: battstat/battstat_applet.c:988
+#: battstat/battstat_applet.c:458 battstat/battstat_applet.c:935
+#: battstat/battstat_applet.c:1024
 msgid "System is running on AC power"
 msgstr "Il computer sta funzionando con l'alimentazione"
 
-#: battstat/battstat_applet.c:478
+#: battstat/battstat_applet.c:472
 msgid "N/A"
 msgstr "N/A"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:602 battstat/battstat_applet.c:873
+#: battstat/battstat_applet.c:596 battstat/battstat_applet.c:909
+#, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
 msgstr "Il computer sta funzionando con la batteria. Batteria: %d%% (%s)"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:609 battstat/battstat_applet.c:880
+#: battstat/battstat_applet.c:603 battstat/battstat_applet.c:916
+#, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
 msgstr "Il computer sta funzionando con l'alimentazione. Batteria: %d%% (%s)"
 
@@ -109,32 +116,34 @@ msgstr "Il computer sta funzionando con l'alimentazione. Batteria: %d%% (%s)"
 #. battery frame when the computer is using battery
 #. power and the battery isn't present. Not a
 #. possible combination, I guess... :)
-#: battstat/battstat_applet.c:620
+#: battstat/battstat_applet.c:614
 msgid "System is running on battery power. Battery: Not present"
 msgstr "Il computer sta funzionando con la batteria. Batteria: Non presente"
 
 #. This string will display as a tooltip over the
 #. battery frame when the computer is using AC
 #. power and the battery isn't present.
-#: battstat/battstat_applet.c:626
+#: battstat/battstat_applet.c:620
 msgid "System is running on AC power. Battery: Not present"
-msgstr "Il computer sta funzionando con l'alimentazione: Batteria: non presente"
+msgstr ""
+"Il computer sta funzionando con l'alimentazione: Batteria: non presente"
 
 #. Displayed as a tooltip over the battery meter when there is
 #. a battery present. %d will hold the current charge and %s will
 #. hold the status of the battery, (High, Low, Critical, Charging.
-#: battstat/battstat_applet.c:635
+#: battstat/battstat_applet.c:629
+#, c-format
 msgid "Battery: %d%% (%s)"
 msgstr "Batteria: %d%% (%s)"
 
 #. Displayed as a tooltip over the battery meter when no
 #. battery is present.
-#: battstat/battstat_applet.c:642
+#: battstat/battstat_applet.c:636
 msgid "Battery: Not present"
 msgstr "Batteria: non presente"
 
 #. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: battstat/battstat_applet.c:698
+#: battstat/battstat_applet.c:711
 msgid ""
 "Can't open the APM device!\n"
 "\n"
@@ -144,10 +153,10 @@ msgstr ""
 "Non posso leggere la periferica APM!\n"
 "\n"
 "Accertatevi di avere i permessi di lettura\n"
-"sullla periferica APM."
+"sulla periferica APM."
 
 #. Displayed if the APM system is disabled (Used under *BSD)
-#: battstat/battstat_applet.c:706
+#: battstat/battstat_applet.c:719
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
@@ -155,20 +164,134 @@ msgid ""
 msgstr ""
 "Il sottosistema APM sembra disabilitato.\n"
 "Provate ad eseguire \"apm -e 1\" (FreeBSD) e accertatevi\n"
-"che questo serva.\n"
+"che questo funzioni.\n"
+
+#: battstat/battstat_applet.c:767
+#, c-format
+msgid ""
+"An error occured while launching the Suspend command: %s\n"
+"Please try to correct this error"
+msgstr ""
+"Si è verificato un errore avviando il comando Sospendi: %s\n"
+"Provate a correggere questo errore"
+
+#. Probably because the shell_ret is != 0
+#: battstat/battstat_applet.c:770
+#, c-format
+msgid ""
+"An error occured while launching the Suspend command, the command returned "
+"\"%d\"\n"
+"Please try to correct this error"
+msgstr ""
+"Si è verificato un errore avviando il comando Sospendi che ha riportato \"%d\"\n"
+"Provate a correggere questo errore"
+
+#: battstat/battstat_applet.c:778
+msgid ""
+"Suspend command wasn't setup correctly in the preferences.\n"
+"Please change the preferences and try again."
+msgstr ""
+"Il comando Sospendi non è stato impostato correttamente nelle preferenze.\n"
+"Provate a cambiare le preferenze e riprovate."
 
 #. The long name of the applet in the About dialog.
-#: battstat/battstat_applet.c:771
+#: battstat/battstat_applet.c:807
 msgid "Battery status utility"
 msgstr "Utilità di controllo della batteria"
 
-#: battstat/battstat_applet.c:773
+#: battstat/battstat_applet.c:809
 msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 msgstr "(C) 2000 The Gnulix Society, (C) 2002 the Free Software Foundation"
 
-#: battstat/battstat_applet.c:774
+#: battstat/battstat_applet.c:810
 msgid "This utility show the status of your laptop battery."
 msgstr "Questa utilità mostra lo stato della batteria del vostro portatile."
+
+#: battstat/battstat_applet.glade.h:2
+#, no-c-format
+msgid "100%"
+msgstr "100%"
+
+#: battstat/battstat_applet.glade.h:3
+msgid "Apperance"
+msgstr "Aspetto"
+
+#: battstat/battstat_applet.glade.h:4
+msgid "Applet layout"
+msgstr "Aspetto applet"
+
+#: battstat/battstat_applet.glade.h:6
+#, no-c-format
+msgid "Battery color levels (%)"
+msgstr "Colori dei livelli della batteria (%)"
+
+#: battstat/battstat_applet.glade.h:7
+msgid "Battstat Settings"
+msgstr "Impostazioni Controllo Batteria"
+
+#: battstat/battstat_applet.glade.h:8
+msgid "Beep when either of the above is true"
+msgstr "Suona quando si verifica una delle due"
+
+#: battstat/battstat_applet.glade.h:9
+msgid "General"
+msgstr "Generali"
+
+#: battstat/battstat_applet.glade.h:10
+msgid "Hide"
+msgstr "Nascondi"
+
+#: battstat/battstat_applet.glade.h:11
+msgid "Move towards bottom"
+msgstr "Muovi in avanti in basso"
+
+#: battstat/battstat_applet.glade.h:12
+msgid "Move towards top"
+msgstr "Muovi in avanti in alto"
+
+#: battstat/battstat_applet.glade.h:13
+msgid "Notify me when battery charge is low"
+msgstr "Avvisami quando la batteria è scarica"
+
+#: battstat/battstat_applet.glade.h:14
+msgid "Notify me when battery is fully re-charged"
+msgstr "La batteria è completamente ricaricata"
+
+#: battstat/battstat_applet.glade.h:15
+msgid "Orange:"
+msgstr "Arancione:"
+
+#: battstat/battstat_applet.glade.h:16
+msgid "Preview:"
+msgstr "Antepirma:"
+
+#: battstat/battstat_applet.glade.h:17
+msgid "Progress bar direction"
+msgstr "Direzione barra di scorrimento"
+
+#: battstat/battstat_applet.glade.h:18
+msgid "Red:"
+msgstr "Rosso:"
+
+#: battstat/battstat_applet.glade.h:19
+msgid "Show"
+msgstr "Mostra"
+
+#: battstat/battstat_applet.glade.h:20
+msgid "Suspend"
+msgstr "Sospendi"
+
+#: battstat/battstat_applet.glade.h:21
+msgid "Suspend command:"
+msgstr "Comando Sospendi:"
+
+#: battstat/battstat_applet.glade.h:22
+msgid "Warnings"
+msgstr "Avvisi"
+
+#: battstat/battstat_applet.glade.h:23
+msgid "Yellow:"
+msgstr "Giallo:"
 
 #: battstat/GNOME_BattstatApplet.server.in.h:1
 msgid "Battery Charge Monitor"
@@ -176,11 +299,21 @@ msgstr "Controllo di carica della batteria"
 
 #: battstat/GNOME_BattstatApplet.server.in.h:2
 msgid "Battstat Factory"
-msgstr ""
+msgstr "Fabbrica controllo carica della batteria"
 
 #: battstat/GNOME_BattstatApplet.server.in.h:3
-msgid "Laptop battery monitor applet"
-msgstr "Applet per il controllo della batteria"
+msgid "Monitor a laptop's remaining power"
+msgstr "Controllo la carica rimasta al portatile"
+
+#: battstat/GNOME_BattstatApplet.server.in.h:4
+#: charpick/GNOME_CharpickerApplet.server.in.h:4
+#: drivemount/GNOME_DriveMountApplet.server.in.h:5
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:5
+#: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:4
+#: multiload/GNOME_MultiLoadApplet_Factory.server.in.h:3
+#: panel-menu/GNOME_PanelMenuApplet.server.in.h:4
+msgid "Utility"
+msgstr "Utilità"
 
 #: battstat/GNOME_BattstatApplet.xml.h:1 cdplayer/GNOME_CDPlayerApplet.xml.h:1
 #: charpick/GNOME_CharpickerApplet.xml.h:1
@@ -217,19 +350,65 @@ msgstr "Proprietà..."
 msgid "Suspend Computer..."
 msgstr "Sospendi il computer..."
 
-#: cdplayer/cdplayer.c:300
+#: cdplayer/cdplayer.c:146 cdplayer/cdplayer.c:819
+msgid "Stop"
+msgstr "Ferma"
+
+#: cdplayer/cdplayer.c:148 cdplayer/cdplayer.c:821
+msgid "Play / Pause"
+msgstr "Suona / Pausa"
+
+#: cdplayer/cdplayer.c:150 cdplayer/cdplayer.c:823
+#: drivemount/GNOME_DriveMountApplet.xml.h:3
+msgid "Eject"
+msgstr "Espelli"
+
+#: cdplayer/cdplayer.c:152 cdplayer/cdplayer.c:825
+msgid "Previous Track"
+msgstr "Brano precedente"
+
+#: cdplayer/cdplayer.c:154 cdplayer/cdplayer.c:827
+msgid "Next Track"
+msgstr "Prossimo brano"
+
+#: cdplayer/GNOME_CDPlayerApplet.server.in.h:1 cdplayer/cdplayer.c:159
+#: cdplayer/cdplayer.c:829
+msgid "CD Player"
+msgstr "Lettore CD"
+
+#: cdplayer/cdplayer.c:346
 msgid "CD Player Properties"
 msgstr "Proprietà Lettore CD"
 
-#: cdplayer/cdplayer.c:314
-msgid "Device Path:"
-msgstr "Dispositivo:"
+#: cdplayer/cdplayer.c:361
+msgid "Disc Image"
+msgstr "Immagine disco"
 
 #: cdplayer/cdplayer.c:361
+msgid "An image of a cd-rom disc"
+msgstr "Un'immagine di un cd"
+
+#: cdplayer/cdplayer.c:363
+msgid "Device _Path:"
+msgstr "_Path dispositivo:"
+
+#: cdplayer/cdplayer.c:372
+msgid "Device Path"
+msgstr "Path dispositivo"
+
+#: cdplayer/cdplayer.c:372
+msgid "Set the device path here"
+msgstr "Imposta il path del dispositivo qui"
+
+#: cdplayer/cdplayer.c:375
+msgid "Use _Default"
+msgstr "Usa il pre_definito"
+
+#: cdplayer/cdplayer.c:420
 msgid "CD Player Applet"
 msgstr "Applet Lettore CD"
 
-#: cdplayer/cdplayer.c:362
+#: cdplayer/cdplayer.c:421
 msgid ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
@@ -237,26 +416,53 @@ msgstr ""
 "(C) 1997 Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
 
-#: cdplayer/cdplayer.c:364
+#: cdplayer/cdplayer.c:423 cdplayer/cdplayer.c:830
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr ""
 "L'applet Lettore CD è un semplice lettore CD audio per il vostro pannello"
 
-#: cdplayer/GNOME_CDPlayerApplet.server.in.h:1
-msgid "CD Player"
-msgstr "Lettore CD"
+#: cdplayer/cdplayer.c:698 cdplayer/cdplayer.c:707
+msgid "Elapsed time"
+msgstr "Tempo trascorso"
+
+#: cdplayer/cdplayer.c:701 cdplayer/cdplayer.c:709
+msgid "Track number"
+msgstr "Numero brano"
+
+#: cdplayer/cdplayer.c:820
+msgid "Click this button to Stop playing the CD"
+msgstr "Clicca su questo pulsante per fermare il cd"
+
+#: cdplayer/cdplayer.c:822
+msgid "Click this button to Play or Pause the CD"
+msgstr "Clicca su questo pulsante per suonare o mettere in pausa il cd"
+
+#: cdplayer/cdplayer.c:824
+msgid "Click this button to eject the CD"
+msgstr "Clicca su questo pulsante per espellere il cd"
+
+#: cdplayer/cdplayer.c:826
+msgid "Click this button to Play the previous track in the CD"
+msgstr "Clicca su questo pulsante per ascoltare il brano precedente"
+
+#: cdplayer/cdplayer.c:828
+msgid "Click this button to Play the next track in the CD"
+msgstr "\"Clicca su questo pulsante per ascoltare il brano successivo"
 
 #: cdplayer/GNOME_CDPlayerApplet.server.in.h:2
-#, fuzzy
 msgid "CD Player Applet Factory"
-msgstr "Applet Lettore CD"
+msgstr "Fabbrica Applet Lettore CD"
 
 #: cdplayer/GNOME_CDPlayerApplet.server.in.h:3
-#, fuzzy
 msgid "Factory for CD player applet"
-msgstr "Applet Lettore CD"
+msgstr "Fabbrica per l'Applet Lettore CD"
 
 #: cdplayer/GNOME_CDPlayerApplet.server.in.h:4
+#: mixer/GNOME_MixerApplet.server.in.h:2
+msgid "Multimedia"
+msgstr "Multimedia"
+
+#: cdplayer/GNOME_CDPlayerApplet.server.in.h:5
 msgid "Panel applet for playing audio CDs"
 msgstr "Applet del pannello per suonare cd audio"
 
@@ -264,19 +470,15 @@ msgstr "Applet del pannello per suonare cd audio"
 msgid "Run External CD Player"
 msgstr "Avvia un Lettore esterno"
 
-#: charpick/charpick.c:358 charpick/charpick_applet.desktop.in.h:1
+#: charpick/charpick.c:363
 msgid "Character Picker"
 msgstr "Selettore Caratteri"
 
-#: charpick/charpick_applet.desktop.in.h:2
-msgid "Character picker"
-msgstr "Selettore Caratteri"
-
-#: charpick/charpick.c:360
+#: charpick/charpick.c:365
 msgid "Copyright (C) 1998"
 msgstr "Copyright (C) 1998"
 
-#: charpick/charpick.c:361
+#: charpick/charpick.c:366
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -284,23 +486,35 @@ msgstr ""
 "Applet del Pannello Gnome per selezionare caratteri strani che non si "
 "trovano sulla tastiera.  Rilasciato sotto la GNU General Public Licence."
 
-#: charpick/GNOME_CharpickerApplet.server.in.h:1
+#: charpick/charpick.c:444
+msgid "Insert special characters"
+msgstr "Inserisci caratteri speciali"
+
+#: charpick/GNOME_CharpickerApplet.server.in.h:1 charpick/charpick.c:445
 msgid "Character Palette"
 msgstr "Insieme Caratteri"
 
 #: charpick/GNOME_CharpickerApplet.server.in.h:2
 msgid "Charpicker Applet Factory"
-msgstr ""
+msgstr "Fabbrica Applet Selettore Caratteri"
 
 #: charpick/GNOME_CharpickerApplet.server.in.h:3
 msgid "Insert characters"
 msgstr "Inserisci caratteri"
 
-#: charpick/properties.c:55
-msgid "Default character list:"
+#: charpick/properties.c:79
+msgid "_Default character list:"
+msgstr "Lista pre_definita di caratteri:"
+
+#: charpick/properties.c:88
+msgid "Default list of characters"
 msgstr "Lista predefinita di caratteri:"
 
-#: charpick/properties.c:63
+#: charpick/properties.c:89
+msgid "Set the default character list here"
+msgstr "Imposta qui la lista predefinita di caratteri:"
+
+#: charpick/properties.c:91
 msgid ""
 "These characters will appear when the panel is started. To return to this "
 "list, hit <space> while the applet has focus."
@@ -308,39 +522,39 @@ msgstr ""
 "Questi caratteri appariranno all'avvio del pannello. Per tornare a questa "
 "lista premete lo <spazio> quando l'applet ha il focus."
 
-#: charpick/properties.c:116
+#: charpick/properties.c:143
 msgid "Character Palette Properties"
 msgstr "Impostazioni Insieme Caratteri"
 
-#: drivemount/drivemount.c:418
+#: drivemount/drivemount.c:419
 msgid "Drive Mount Applet"
 msgstr "Applet per montare dischi"
 
-#: drivemount/drivemount.c:419
+#: drivemount/drivemount.c:420
 msgid "(C) 1999-2001 The GNOME Hackers\n"
 msgstr "(C) 1999_2001 gli Hackers di GNOME\n"
 
-#: drivemount/drivemount.c:421
+#: drivemount/drivemount.c:422
 msgid "Applet for mounting and unmounting block volumes."
 msgstr "Applet per montare e smontare volumi a blocchi."
 
-#: drivemount/drivemount.c:609
+#: drivemount/drivemount.c:612
 msgid " mounted"
 msgstr " montato"
 
-#: drivemount/drivemount.c:611
+#: drivemount/drivemount.c:614
 msgid " not mounted"
 msgstr " non montato"
 
-#: drivemount/drivemount.c:722
+#: drivemount/drivemount.c:725
 msgid "Drive Mount Applet Warning"
 msgstr "Avviso dell'Applet per montare dischi"
 
-#: drivemount/drivemount.c:730
+#: drivemount/drivemount.c:733
 msgid "\" reported:\n"
 msgstr "\" ha riportato:\n"
 
-#: drivemount/drivemount.c:732
+#: drivemount/drivemount.c:735
 msgid ""
 "Drivemount command failed.\n"
 "\""
@@ -353,110 +567,100 @@ msgid "Disk Mounter"
 msgstr "Montadischi"
 
 #: drivemount/GNOME_DriveMountApplet.server.in.h:2
-#, fuzzy
 msgid "Drive Mount Applet Factory"
 msgstr "Applet per montaggio dischi"
 
 #: drivemount/GNOME_DriveMountApplet.server.in.h:3
-#, fuzzy
 msgid "Factory for drive mount applet"
 msgstr "Applet per montaggio dischi"
 
 #: drivemount/GNOME_DriveMountApplet.server.in.h:4
-msgid "Panel applet for mounting block volumes"
-msgstr "Applet del pannello per montare volumi a blocchi"
+msgid "Mount local disks and devices"
+msgstr "Monta dischi e dispositivi locali"
 
-#: drivemount/GNOME_DriveMountApplet.xml.h:2 panel-menu/panel-menu-path.c:730
+#: drivemount/GNOME_DriveMountApplet.xml.h:2 panel-menu/panel-menu-path.c:796
 msgid "Browse..."
 msgstr "Sfoglia..."
 
-#: drivemount/GNOME_DriveMountApplet.xml.h:3
-msgid "Eject"
-msgstr "Espelli"
-
-#: drivemount/properties.c:236
+#: drivemount/properties.c:241
 msgid "Disk Mounter Properties"
 msgstr "Proprietà Applet per montare dischi"
 
-#: drivemount/properties.c:255
+#: drivemount/properties.c:260
 msgid "Mount point:"
 msgstr "Punto di montaggio:"
 
-#: drivemount/properties.c:272
+#: drivemount/properties.c:277
 msgid "Update interval (seconds):"
 msgstr "Intervallo di aggiornamento (secondi):"
 
-#: drivemount/properties.c:287
+#: drivemount/properties.c:292
 msgid "Icon :"
 msgstr "Icona :"
 
-#: drivemount/properties.c:304
+#: drivemount/properties.c:309
 msgid "Floppy"
 msgstr "Floppy"
 
-#: drivemount/properties.c:307
+#: drivemount/properties.c:312
 msgid "Cdrom"
 msgstr "CD ROM"
 
-#: drivemount/properties.c:310
+#: drivemount/properties.c:315
 msgid "Cd Recorder"
 msgstr "Masterizzatore"
 
-#: drivemount/properties.c:313
+#: drivemount/properties.c:318
 msgid "Zip Drive"
 msgstr "Drive Zip"
 
-#: drivemount/properties.c:316
+#: drivemount/properties.c:321
 msgid "Hard Disk"
 msgstr "Hard Disk"
 
-#: drivemount/properties.c:319
+#: drivemount/properties.c:324
 msgid "Jaz Drive"
 msgstr "Drive Jaz"
 
-#: drivemount/properties.c:322
+#: drivemount/properties.c:327
 msgid "Custom"
 msgstr "Personalizzato"
 
-#: drivemount/properties.c:335
+#: drivemount/properties.c:340
 msgid "Select icon for mounted"
 msgstr "Seleziona icona per il dispositivo montato"
 
-#: drivemount/properties.c:342
+#: drivemount/properties.c:347
 msgid "Custom icon for mounted:"
 msgstr "Icona personalizzata per il dispositivo montato:"
 
-#: drivemount/properties.c:350
+#: drivemount/properties.c:355
 msgid "Select icon for unmounted"
 msgstr "Seleziona icona per il dispositivo non montato"
 
-#: drivemount/properties.c:357
+#: drivemount/properties.c:362
 msgid "Custom icon for not mounted:"
 msgstr "Icona personalizzata per il dispositivo non montato:"
 
-#: drivemount/properties.c:366
+#: drivemount/properties.c:371
 msgid "Scale size to panel"
 msgstr "Ridimensiona in base al pannello"
 
-#: drivemount/properties.c:373
+#: drivemount/properties.c:378
 msgid "Eject on unmount"
 msgstr "Espelli dopo aver smontato"
 
-#: drivemount/properties.c:380
+#: drivemount/properties.c:385
 msgid "Use automount friendly status test"
 msgstr "Controlla compatibilità con automount"
-
-#: geyes/geyes_applet.desktop.in.h:1
-msgid "An applet that watches your mouse."
-msgstr "Una applet che guarda il vostro mouse."
-
-#: geyes/geyes.c:209 geyes/geyes_applet.desktop.in.h:2
-msgid "gEyes"
-msgstr "gEyes"
 
 #: geyes/geyes.c:200
 msgid "Dave Camp <campd@oit.edu>"
 msgstr "Dave Camp <campd@oit.edu>"
+
+#: geyes/geyes.c:209
+msgid "gEyes"
+msgstr "gEyes"
 
 #: geyes/geyes.c:210
 msgid "Copyright (C) 1999 Dave Camp"
@@ -471,30 +675,32 @@ msgid "A set of eyeballs for your panel"
 msgstr "Un insieme di occhi per il tuo pannello"
 
 #: geyes/GNOME_GeyesApplet.server.in.h:2
+msgid "Amusements"
+msgstr "Divertimento"
+
+#: geyes/GNOME_GeyesApplet.server.in.h:3
 msgid "Geyes Applet"
 msgstr "Applet Occhi"
 
-#: geyes/GNOME_GeyesApplet.server.in.h:3
+#: geyes/GNOME_GeyesApplet.server.in.h:4
 msgid "Geyes Applet Factory"
-msgstr ""
+msgstr "Fabbrica Applet Occhi"
 
-#: geyes/themes.c:185
+#: geyes/themes.c:197
 msgid "Theme Name"
 msgstr "Nome del tema"
 
-#: geyes/themes.c:198
+#: geyes/themes.c:210
 msgid "Properties"
 msgstr "Proprietà"
 
-#: gkb-new/gkb_applet.desktop.in.h:1
-msgid "GKB Keyboard Switcher"
-msgstr "Programma che permette di internazionalizzare la tastiera"
+#: gkb-new/gkb.c:114
+msgid ""
+"Press the hotkey to switch between layouts. The hotkey can be set through "
+"Properties dialog"
+msgstr "Premi il testo scelto per scambiare le impostazioni. Puoi indicare il tasto nella finestra di dialogo Preferenze"
 
-#: gkb-new/gkb_applet.desktop.in.h:2
-msgid "GKB, the Gnome Keyboard Layout Switcher Applet"
-msgstr "GKB, Applet per cambiare il layout della tastiera"
-
-#: gkb-new/gkb.c:405
+#: gkb-new/gkb.c:404
 #, c-format
 msgid "name_%d"
 msgstr "name_%d"
@@ -504,67 +710,68 @@ msgstr "name_%d"
 msgid "label_%d"
 msgstr "etichetta_%d"
 
-#: gkb-new/gkb.c:411
+#: gkb-new/gkb.c:412
 #, c-format
 msgid "country_%d"
 msgstr "paese_%d"
 
-#: gkb-new/gkb.c:414
+#: gkb-new/gkb.c:416
 #, c-format
 msgid "lang_%d"
 msgstr "lingua_%d"
 
-#: gkb-new/gkb.c:420
+#: gkb-new/gkb.c:424
 #, c-format
 msgid "command_%d"
 msgstr "comando_%d"
 
-#: gkb-new/gkb.c:524 gkb-new/gkb.c:531
+#: gkb-new/gkb.c:527 gkb-new/gkb.c:534
 msgid "GKB"
 msgstr "GKB"
 
-#: gkb-new/gkb.c:571
+#: gkb-new/gkb.c:576
 msgid "The GNOME KeyBoard Switcher Applet"
 msgstr "Applet Gnome per cambiare la tastiera"
 
-#: gkb-new/gkb.c:573
+#: gkb-new/gkb.c:578
 msgid "(C) 1998-2000 Free Software Foundation"
 msgstr "(C) 1998-2000 Free Software Foundation"
 
-#: gkb-new/gkb.c:574
+#: gkb-new/gkb.c:579
 msgid ""
-"This applet switches between keyboard maps. It uses setxkbmap, or xmodmap.\n"
-"Mail me your flag, please (60x40 size), I will put it into CVS.\n"
+"This applet switches between keyboard maps using setxkbmap, or xmodmap.\n"
+"Mail me your flag and keyboard layout if you want support for your locale "
+"(my email address is shooby@gnome.hu).\n"
 "So long, and thanks for all the fish.\n"
 "Thanks for Balazs Nagy (Kevin) <julian7@iksz.hu> for his help and Emese "
-"Kovacs <emese@gnome.hu> for her solidarity."
+"Kovacs <emese@gnome.hu> for her solidarity, help from guys like KevinV.\n"
+"Shooby Ban <shooby@gnome.hu>"
 msgstr ""
-"Questa applet seleziona la mappa della tastiera. Usa setxkbmap, o xmodmap.\n"
-"Mandatemi la vostra bandiera, per favore (dimensione 60x40), la metterò sul "
-"CVS. Addio, e grazie per tutto il pesce.\n"
-"Ringraziamenti a Balazs Nagy (Kevin) <julian7@kva.hu> per il suo aiuto e ad "
-"Emese Kovacs <emese@eik.bme.hu> per la sua solidarietà."
+"Questa applet seleziona la mappa della tastiera usando setxkbmap, o xmodmap.\n"
+"Mandatemi la vostra bandiera, per favore se volete il supporto per la vostra localizzazione (il mio indirizzo è shooby@gnome.hu).\n"
+"Addio, e grazie per tutto il pesce.\n"
+"Ringraziamenti a Balazs Nagy (Kevin) <julian7@kva.hu> per il suo aiuto e ad Emese Kovacs <emese@eik.bme.hu> per la sua solidarietà, aiuto da ragazzi come KevinV.\n"
+"Shooby Ban <shooby@gnome.hu>"
 
-#: gkb-new/gkb.c:589
+#: gkb-new/gkb.c:596
 msgid "GKB Home Page (http://projects.gnome.hu/gkb)"
 msgstr "Home page di GKB (http://projects.gnome.hu/gkb)"
 
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:1
-msgid "GKB Factory"
-msgstr ""
+msgid "Change the keyboard layout"
+msgstr "Cambia l'impostazione della tastiera"
 
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:2
+msgid "GKB Factory"
+msgstr "Fabbrica GKB"
+
+#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:3
 msgid "Keyboard Layout Switcher"
 msgstr "Cambia tastiera"
 
-#: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:3
-msgid "Keyboard Layout Switcher Applet"
-msgstr "Applet per cambiare il layout della tastiera"
-
 #: gkb-new/GNOME_KeyboardApplet_Factory.server.in.h:4
-#, fuzzy
 msgid "Produces keyboard layout switcher applets."
-msgstr "GKB, Applet per cambiare il layout della tastiera"
+msgstr "Produce applet per cambiare le impostazioni della tastiera."
 
 #: gkb-new/keygrab.c:69 gkb-new/keygrab.c:144
 msgid "Disabled"
@@ -578,391 +785,394 @@ msgstr "Premete un tasto o premete ESC per uscire"
 msgid "Keymaps (select and press add)"
 msgstr "Mappatura (seleziona e premete aggiungi)"
 
-#: gkb-new/prop-add.c:357
+#: gkb-new/prop-add.c:367
 msgid "Select layout"
 msgstr "Seleziona la mappatura"
 
-#: gkb-new/prop.c:120 gkb-new/prop.c:188
+#: gkb-new/prop.c:121 gkb-new/prop.c:189
 msgid "Normal"
 msgstr "Normale"
 
-#: gkb-new/prop.c:121 gkb-new/prop.c:192
+#: gkb-new/prop.c:122 gkb-new/prop.c:193
 msgid "Big"
 msgstr "Grande"
 
-#: gkb-new/prop.c:139 gkb-new/util.c:41 gkb-new/util.c:48 gkb-new/util.c:74
+#: gkb-new/prop.c:140 gkb-new/util.c:41 gkb-new/util.c:48 gkb-new/util.c:74
 msgid "Flag"
 msgstr "Bandiera"
 
-#: gkb-new/prop-map.c:585 gkb-new/prop.c:140 gkb-new/util.c:38
-#: gkb-new/util.c:71
+#: gkb-new/prop.c:141 gkb-new/util.c:38 gkb-new/util.c:71
 msgid "Label"
 msgstr "Etichetta"
 
-#: gkb-new/prop.c:141 gkb-new/util.c:44 gkb-new/util.c:77
+#: gkb-new/prop.c:142 gkb-new/util.c:44 gkb-new/util.c:77
 msgid "Flag and Label"
 msgstr "Bandiera ed Etichetta"
 
-#: gkb-new/prop.c:273 modemlights/properties.c:371
+#: gkb-new/prop.c:278 modemlights/properties.c:371
 msgid "Display"
 msgstr "Visualizzazione"
 
-#. Labels
-#: gkb-new/prop.c:293
-msgid "Appearance "
-msgstr "Aspetto"
+#. Labels and option Menus
+#: gkb-new/prop.c:298
+msgid "_Appearance "
+msgstr "_Aspetto"
 
-#: gkb-new/prop.c:294
-msgid "Applet size "
-msgstr "Dimensione dell'applet "
+#: gkb-new/prop.c:305
+msgid "Applet _size "
+msgstr "Dimen_sione dell'applet "
 
-#: gkb-new/prop.c:328
+#: gkb-new/prop.c:331
 msgid "Hotkey for switching between layouts"
 msgstr "Scorciatoie da tastiera"
 
-#: gkb-new/prop.c:340
+#: gkb-new/prop.c:343
 msgid "Grab hotkey"
 msgstr "Definisce le scorciatoie"
 
 #. Create property box
-#: gkb-new/prop.c:392
+#: gkb-new/prop.c:405
 msgid "GKB Properties"
 msgstr "Proprietà GKB"
 
-#: gkb-new/prop.c:406
+#: gkb-new/prop.c:419
 msgid "_Keymaps"
 msgstr "_Mappature"
 
-#: gkb-new/prop.c:418
+#: gkb-new/prop.c:431
 msgid "_Options"
 msgstr "_Opzioni"
 
-#: gkb-new/prop-list.c:383
-msgid "Add"
-msgstr "Aggiungi"
+#: gkb-new/prop-list.c:389 gtik/gtik.c:1149
+msgid "_Add"
+msgstr "_Aggiungi"
 
-#: gkb-new/prop-list.c:384
-msgid "Edit"
-msgstr "Modifica"
+#: gkb-new/prop-list.c:390
+msgid "_Edit"
+msgstr "_Modifica"
 
-#: gkb-new/prop-list.c:385
-msgid "Up"
-msgstr "Su"
+#: gkb-new/prop-list.c:391
+msgid "_Up"
+msgstr "_Su"
 
-#: gkb-new/prop-list.c:386
-msgid "Down"
-msgstr "Giù"
+#: gkb-new/prop-list.c:392
+msgid "Dow_n"
+msgstr "_Giù"
 
-#: gkb-new/prop-list.c:387
-msgid "Delete"
-msgstr "Cancella"
+#: gkb-new/prop-list.c:393
+msgid "_Delete"
+msgstr "_Cancella"
 
-#: gkb-new/prop-map.c:190
+#: gkb-new/prop-map.c:193
 msgid "Armenia"
 msgstr "Armenia"
 
-#: gkb-new/prop-map.c:191
+#: gkb-new/prop-map.c:194
 msgid "Australia"
 msgstr "Australia"
 
-#: gkb-new/prop-map.c:192
+#: gkb-new/prop-map.c:195
 msgid "Austria"
 msgstr "Austria"
 
-#: gkb-new/prop-map.c:193
+#: gkb-new/prop-map.c:196
 msgid "Belgium"
 msgstr "Belgio"
 
-#: gkb-new/prop-map.c:194
+#: gkb-new/prop-map.c:197
 msgid "Brazil"
 msgstr "Brasile"
 
-#: gkb-new/prop-map.c:195
+#: gkb-new/prop-map.c:198
 msgid "Bulgaria"
 msgstr "Bulgaria"
 
-#: gkb-new/prop-map.c:196
+#: gkb-new/prop-map.c:199
 msgid "Canada"
 msgstr "Canada"
 
-#: gkb-new/prop-map.c:197
+#: gkb-new/prop-map.c:200
 msgid "Caribic"
 msgstr "Caraibi"
 
-#: gkb-new/prop-map.c:198
+#: gkb-new/prop-map.c:201
 msgid "France"
 msgstr "Francia"
 
-#: gkb-new/prop-map.c:199
+#: gkb-new/prop-map.c:202
 msgid "Georgia"
 msgstr "Georgia"
 
-#: gkb-new/prop-map.c:200
+#: gkb-new/prop-map.c:203
 msgid "Germany"
 msgstr "Germania"
 
-#: gkb-new/prop-map.c:201
+#: gkb-new/prop-map.c:204
 msgid "Great Britain"
 msgstr "Gran Bretagna"
 
-#: gkb-new/prop-map.c:202
+#: gkb-new/prop-map.c:205
 msgid "Hungary"
 msgstr "Ungheria"
 
-#: gkb-new/prop-map.c:203
+#: gkb-new/prop-map.c:206
 msgid "Jamaica"
 msgstr "Giamaica"
 
-#: gkb-new/prop-map.c:204
+#: gkb-new/prop-map.c:207
 msgid "New Zealand"
 msgstr "Nuova Zelanda"
 
-#: gkb-new/prop-map.c:205
+#: gkb-new/prop-map.c:208
 msgid "Norway"
 msgstr "Norvegia"
 
-#: gkb-new/prop-map.c:206
+#: gkb-new/prop-map.c:209
 msgid "Poland"
 msgstr "Polonia"
 
-#: gkb-new/prop-map.c:207
+#: gkb-new/prop-map.c:210
 msgid "Portugal"
 msgstr "Portogallo"
 
-#: gkb-new/prop-map.c:208
+#: gkb-new/prop-map.c:211
 msgid "Russia"
 msgstr "Russia"
 
-#: gkb-new/prop-map.c:209
+#: gkb-new/prop-map.c:212
 msgid "Slovak Republic"
 msgstr "Repubblica Slovacca"
 
-#: gkb-new/prop-map.c:210
+#: gkb-new/prop-map.c:213
 msgid "Slovenia"
 msgstr "Slovenia"
 
-#: gkb-new/prop-map.c:211
+#: gkb-new/prop-map.c:214
 msgid "South Africa"
 msgstr "Sud Africa"
 
-#: gkb-new/prop-map.c:212
+#: gkb-new/prop-map.c:215
 msgid "Spain"
 msgstr "Spagna"
 
-#: gkb-new/prop-map.c:213
+#: gkb-new/prop-map.c:216
 msgid "Sweden"
 msgstr "Svezia"
 
-#: gkb-new/prop-map.c:214
+#: gkb-new/prop-map.c:217
 msgid "Switzerland"
 msgstr "Svizzera"
 
-#: gkb-new/prop-map.c:215
+#: gkb-new/prop-map.c:218
 msgid "Thailand"
 msgstr "Thailandia"
 
-#: gkb-new/prop-map.c:216
+#: gkb-new/prop-map.c:219
 msgid "Turkey"
 msgstr "Turchia"
 
-#: gkb-new/prop-map.c:217
+#: gkb-new/prop-map.c:220
 msgid "United Kingdom"
 msgstr "Regno Unito"
 
-#: gkb-new/prop-map.c:218
+#: gkb-new/prop-map.c:221
 msgid "United States"
 msgstr "Stati Uniti"
 
-#: gkb-new/prop-map.c:219
+#: gkb-new/prop-map.c:222
 msgid "Yugoslavia"
 msgstr "Yugoslavia"
 
-#: gkb-new/prop-map.c:239
+#: gkb-new/prop-map.c:242
 msgid "Armenian"
 msgstr "Armena"
 
-#: gkb-new/prop-map.c:240
+#: gkb-new/prop-map.c:243
 msgid "Basque"
 msgstr "Basca"
 
-#: gkb-new/prop-map.c:241
+#: gkb-new/prop-map.c:244
 msgid "Bulgarian"
 msgstr "Bulgara"
 
-#: gkb-new/prop-map.c:242
+#: gkb-new/prop-map.c:245
 msgid "Dutch"
 msgstr "Olandese"
 
-#: gkb-new/prop-map.c:243
+#: gkb-new/prop-map.c:246
 msgid "English"
 msgstr "Inglese"
 
-#: gkb-new/prop-map.c:244
+#: gkb-new/prop-map.c:247
 msgid "French"
 msgstr "Francese"
 
-#: gkb-new/prop-map.c:245
+#: gkb-new/prop-map.c:248
 msgid "Georgian"
 msgstr "Georgiana"
 
-#: gkb-new/prop-map.c:246
+#: gkb-new/prop-map.c:249
 msgid "German"
 msgstr "Tedesca"
 
-#: gkb-new/prop-map.c:247
+#: gkb-new/prop-map.c:250
 msgid "Hungarian"
 msgstr "Ungherese"
 
-#: gkb-new/prop-map.c:248
+#: gkb-new/prop-map.c:251
 msgid "Norwegian"
 msgstr "Norvegese"
 
-#: gkb-new/prop-map.c:249
+#: gkb-new/prop-map.c:252
 msgid "Polish"
 msgstr "Polacca"
 
-#: gkb-new/prop-map.c:250
+#: gkb-new/prop-map.c:253
 msgid "Portuguese"
 msgstr "Portoghese"
 
-#: gkb-new/prop-map.c:251
+#: gkb-new/prop-map.c:254
 msgid "Russian"
 msgstr "Russa"
 
-#: gkb-new/prop-map.c:252
+#: gkb-new/prop-map.c:255
 msgid "Slovak"
 msgstr "Slovacca"
 
-#: gkb-new/prop-map.c:253
+#: gkb-new/prop-map.c:256
 msgid "Slovenian"
 msgstr "Slovena"
 
-#: gkb-new/prop-map.c:254
+#: gkb-new/prop-map.c:257
 msgid "Swedish"
 msgstr "Svedese"
 
-#: gkb-new/prop-map.c:255
+#: gkb-new/prop-map.c:258
 msgid "Thai"
 msgstr "Tailandese"
 
-#: gkb-new/prop-map.c:256
+#: gkb-new/prop-map.c:259
 msgid "Turkish"
 msgstr "Turca"
 
-#: gkb-new/prop-map.c:257
+#: gkb-new/prop-map.c:260
 msgid "Wallon"
 msgstr "Vallona"
 
-#: gkb-new/prop-map.c:258
+#: gkb-new/prop-map.c:261
 msgid "Yugoslavian"
 msgstr "Yugoslava"
 
-#: gkb-new/prop-map.c:276
+#: gkb-new/prop-map.c:279
 msgid "105"
 msgstr "105"
 
-#: gkb-new/prop-map.c:277
+#: gkb-new/prop-map.c:280
 msgid "101"
 msgstr "101"
 
-#: gkb-new/prop-map.c:278
+#: gkb-new/prop-map.c:281
 msgid "102"
 msgstr "102"
 
-#: gkb-new/prop-map.c:279
+#: gkb-new/prop-map.c:282
 msgid "450"
 msgstr "450"
 
-#: gkb-new/prop-map.c:280
+#: gkb-new/prop-map.c:283
 msgid "84"
 msgstr "84"
 
-#: gkb-new/prop-map.c:281
+#: gkb-new/prop-map.c:284
 msgid "mklinux"
 msgstr "mklinux"
 
-#: gkb-new/prop-map.c:282
+#: gkb-new/prop-map.c:285
 msgid "type5"
 msgstr "type5"
 
-#: gkb-new/prop-map.c:302
+#: gkb-new/prop-map.c:305
 msgid "iso-8859-1"
 msgstr "iso-8859-1"
 
-#: gkb-new/prop-map.c:303
+#: gkb-new/prop-map.c:306
 msgid "iso-8859-2"
 msgstr "iso-8859-2"
 
-#: gkb-new/prop-map.c:304
+#: gkb-new/prop-map.c:307
 msgid "iso-8859-9"
 msgstr "iso-8859-9"
 
-#: gkb-new/prop-map.c:305
+#: gkb-new/prop-map.c:308
 msgid "am-armscii8"
 msgstr "am-armscii8"
 
-#: gkb-new/prop-map.c:306
+#: gkb-new/prop-map.c:309
 msgid "be-latin1"
 msgstr "be-latin1"
 
-#: gkb-new/prop-map.c:307
+#: gkb-new/prop-map.c:310
 msgid "cp1251"
 msgstr "cp1251"
 
-#: gkb-new/prop-map.c:308
+#: gkb-new/prop-map.c:311
 msgid "georgian-academy"
 msgstr "georgian-academy"
 
-#: gkb-new/prop-map.c:309
+#: gkb-new/prop-map.c:312
 msgid "koi8-r"
 msgstr "koi8-r"
 
-#: gkb-new/prop-map.c:310
+#: gkb-new/prop-map.c:313
 msgid "tis620"
 msgstr "tis620"
 
-#: gkb-new/prop-map.c:328
+#: gkb-new/prop-map.c:331
 msgid "ix86"
 msgstr "ix86"
 
-#: gkb-new/prop-map.c:329
+#: gkb-new/prop-map.c:332
 msgid "sun"
 msgstr "sun"
 
-#: gkb-new/prop-map.c:330
+#: gkb-new/prop-map.c:333
 msgid "mac"
 msgstr "mac"
 
-#: gkb-new/prop-map.c:331
+#: gkb-new/prop-map.c:334
 msgid "sgi"
 msgstr "sgi"
 
-#: gkb-new/prop-map.c:332
+#: gkb-new/prop-map.c:335
 msgid "dec"
 msgstr "dec"
 
-#: gkb-new/prop-map.c:333
+#: gkb-new/prop-map.c:336
 msgid "ibm"
 msgstr "ibm"
 
-#: gkb-new/prop-map.c:556
+#: gkb-new/prop-map.c:573
 msgid "Edit keymap"
 msgstr "Modifica la mappatura"
 
-#. Add the labels
-#: gkb-new/prop-map.c:584
-msgid "Name"
-msgstr "Nome"
+#. Add the labels  and entries/combos/icon_entry
+#: gkb-new/prop-map.c:601
+msgid "_Name"
+msgstr "_Nome"
 
-#: gkb-new/prop-map.c:586
-msgid "Language"
-msgstr "Lingua"
+#: gkb-new/prop-map.c:605
+msgid "_Label"
+msgstr "_Etichetta"
 
-#: gkb-new/prop-map.c:587
-msgid "Country"
-msgstr "Paese"
+#: gkb-new/prop-map.c:609
+msgid "Lan_guage"
+msgstr "Lin_gua"
 
-#: gkb-new/prop-map.c:588
+#: gkb-new/prop-map.c:615
+msgid "Count_ry"
+msgstr "_Paese"
+
+#: gkb-new/prop-map.c:622
 msgid ""
 "Flag\n"
 "Pixmap"
@@ -970,23 +1180,23 @@ msgstr ""
 "Bandiera\n"
 "Immagine"
 
-#: gkb-new/prop-map.c:590
-msgid "Architecture"
-msgstr "Architettura"
+#: gkb-new/prop-map.c:626
+msgid "Arc_hitecture"
+msgstr "Arc_hitettura"
 
-#: gkb-new/prop-map.c:591
-msgid "Type"
-msgstr "Tipo"
-
-#: gkb-new/prop-map.c:592
-msgid "Codepage"
-msgstr "Codepage"
-
-#: gkb-new/prop-map.c:593
-msgid "Command"
-msgstr "Comando"
+#: gkb-new/prop-map.c:632
+msgid "_Type"
+msgstr "_Tipo"
 
 #: gkb-new/prop-map.c:638
+msgid "Code_page"
+msgstr "Code_page"
+
+#: gkb-new/prop-map.c:645
+msgid "Co_mmand"
+msgstr "Co_mando"
+
+#: gkb-new/prop-map.c:652
 msgid ""
 "Where command can be:\n"
 "* xmodmap /full/path/xmodmap.hu\n"
@@ -1003,10 +1213,19 @@ msgid "The keymap switching command returned with error!"
 msgstr "Il cambiamento di tastiera ha restituito un errore!"
 
 #: gtik/GNOME_GtikApplet.server.in.h:1
-msgid "Gtik Applet Factory"
-msgstr ""
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:1
+msgid "Accessories"
+msgstr "Accessori"
 
 #: gtik/GNOME_GtikApplet.server.in.h:2
+msgid "Get continuously updated stock quotes"
+msgstr "Aggiorna continuamente le quotazioni azionarie"
+
+#: gtik/GNOME_GtikApplet.server.in.h:3
+msgid "Gtik Applet Factory"
+msgstr "Fabbrica Applet Gtik"
+
+#: gtik/GNOME_GtikApplet.server.in.h:4
 msgid "Stock Ticker"
 msgstr "Stock Ticker"
 
@@ -1014,23 +1233,15 @@ msgstr "Stock Ticker"
 msgid "Refresh"
 msgstr "Aggiorna"
 
-#: gtik/gtik2_applet.desktop.in.h:1
-msgid "GNOME Stock Ticker"
-msgstr "Lo Stock Ticker di GNOME"
-
-#: gtik/gtik2_applet.desktop.in.h:2
-msgid "GNOME Stock Ticker Panel Applet"
-msgstr "Applet Stock Ticker di GNOME"
-
-#: gtik/gtik.c:199
+#: gtik/gtik.c:208 gtik/gtik.c:786
 msgid "No data available or properties not set"
 msgstr "Nessun dato disponibile o proprietà non impostate"
 
-#: gtik/gtik.c:652
+#: gtik/gtik.c:655
 msgid "The GNOME Stock Ticker"
 msgstr "Lo Stock Ticker di GNOME"
 
-#: gtik/gtik.c:654
+#: gtik/gtik.c:657
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.  "
 "The GNOME Stock Ticker is a free Internet-based application.  It comes with "
@@ -1043,106 +1254,125 @@ msgstr ""
 "per prendere decisioni su investimenti; è da considerarsi solo come una "
 "fonte di informazioni."
 
-#: gtik/gtik.c:1060
+#: gtik/gtik.c:1139
 msgid "New Symbol:"
 msgstr "Nuovo Simbolo:"
 
-#: gtik/gtik.c:1070
-msgid "_Add"
-msgstr "_Aggiungi"
-
-#: gtik/gtik.c:1081
+#: gtik/gtik.c:1160
 msgid "_Remove Selected"
 msgstr "_Elimina la selezione"
 
-#: gtik/gtik.c:1126
+#: gtik/gtik.c:1208 gweather/gweather-pref.c:764
+msgid "Use HTTP proxy"
+msgstr "Usa proxy HTTP"
+
+#: gtik/gtik.c:1218 gweather/gweather-pref.c:775
+msgid "Location :"
+msgstr "Posizione :"
+
+#: gtik/gtik.c:1232 gweather/gweather-pref.c:791
+msgid "Port :"
+msgstr "Porta :"
+
+#: gtik/gtik.c:1243 gweather/gweather-pref.c:803
+msgid "Proxy requires a uername and password"
+msgstr "Il proxy richiede un utente e una password"
+
+#: gtik/gtik.c:1254 gweather/gweather-pref.c:814
+msgid "Username:"
+msgstr "Utente:"
+
+#: gtik/gtik.c:1267 gweather/gweather-pref.c:830
+msgid "Password:"
+msgstr "Password:"
+
+#: gtik/gtik.c:1336
 msgid "Stock Ticker Properties"
 msgstr "Proprietà di Stock Ticker"
 
-#: gtik/gtik.c:1147
+#: gtik/gtik.c:1357
 msgid "Update Frequency in minutes:"
 msgstr "Frequenza di aggiornamento in minuti:"
 
-#: gtik/gtik.c:1163
+#: gtik/gtik.c:1373
 msgid "Enter symbols delimited with \"+\" in the box below."
 msgstr "Scrivi i simboli delimitandoli con \"+\" nel box sottostante."
 
-#: gtik/gtik.c:1173
+#: gtik/gtik.c:1383
 msgid "Display only symbols and price"
 msgstr "Mostra solo i simboli e il valore"
 
-#: gtik/gtik.c:1176
+#: gtik/gtik.c:1386
 msgid "Scroll left to right"
 msgstr "Scorri da sinistra a destra"
 
-#: gtik/gtik.c:1179
+#: gtik/gtik.c:1389
 msgid "Display arrows instead of -/+"
 msgstr "Mostra frecce invece di -/+"
 
-#: gtik/gtik.c:1182
+#: gtik/gtik.c:1392
 msgid "Enable scroll buttons"
 msgstr "Mostra i pulsanti di scorrimento"
 
 #. COLOR
-#: gtik/gtik.c:1208
+#: gtik/gtik.c:1418
 msgid "+ Color"
 msgstr "+ Colore"
 
-#: gtik/gtik.c:1225
+#: gtik/gtik.c:1435
 msgid "- Color"
 msgstr "- Colore"
 
-#: gtik/gtik.c:1245
+#: gtik/gtik.c:1455
 msgid "Stock Symbol:"
 msgstr "Simbolo delle azioni:"
 
-#: gtik/gtik.c:1246 gtik/gtik.c:1257
-msgid "Select Font"
-msgstr "Scegli il font"
-
-#: gtik/gtik.c:1256
+#: gtik/gtik.c:1467
 msgid "Stock Change:"
 msgstr "Cambio delle azioni:"
 
-#: gtik/gtik.c:1278
+#: gtik/gtik.c:1489
 msgid "_Symbols"
 msgstr "_Simboli"
 
-#: gtik/gtik.c:1280
+#: gtik/gtik.c:1491
 msgid "_Behavior"
 msgstr "_Comportamento"
 
-#: gtik/gtik.c:1282
+#: gtik/gtik.c:1493
 msgid "_Appearance"
 msgstr "_Aspetto"
 
-#: gtik/gtik.c:1496
+#: gtik/gtik.c:1495 gweather/gweather-pref.c:843
+msgid "_Proxy"
+msgstr "_Proxy:"
+
+#: gtik/gtik.c:1714
 msgid "(No"
 msgstr "(No"
 
-#: gtik/gtik.c:1497
+#: gtik/gtik.c:1715
 msgid "Change "
 msgstr "Cambia "
 
-#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:1
-#, fuzzy
-msgid "Factory for creating the weather applet."
-msgstr "Impossibile creare l'applet Contachilometri!"
-
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.h:2
-msgid "Gweather Applet Factory"
-msgstr ""
+msgid "Factory for creating the weather applet."
+msgstr "Fabbrica per creare le applet meteo."
 
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.h:3
-msgid "The GNOME weather monitor"
-msgstr "Applet GNOME per il Meteo"
+msgid "Gweather Applet Factory"
+msgstr "Fabbrica Applet Meteo"
 
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.h:4
+msgid "Monitor the current weather conditions, and forecasts"
+msgstr "Controlla le condizioni e le previsioni atmosferiche"
+
+#: gweather/GNOME_GWeatherApplet_Factory.server.in.h:5
 msgid "Weather Report"
 msgstr "Previsioni del tempo"
 
 #: gweather/GNOME_GWeatherApplet.xml.h:2 gweather/gweather-dialog.c:75
-#: gweather/gweather-dialog.c:297
+#: gweather/gweather-dialog.c:300
 msgid "Forecast"
 msgstr "Previsione"
 
@@ -1150,8 +1380,7 @@ msgstr "Previsione"
 msgid "Update"
 msgstr "Aggiorna"
 
-#: gweather/gweather-about.c:42 gweather/gweather-applet.c:229
-#: gweather/gweather.desktop.in.h:1
+#: gweather/gweather-about.c:42 gweather/gweather-applet.c:196
 msgid "GNOME Weather"
 msgstr "GNOME Meteo"
 
@@ -1169,17 +1398,9 @@ msgstr ""
 "\n"
 "Un'Applet per controllare le condizioni metereologiche locali."
 
-#: gweather/gweather-applet.c:361
+#: gweather/gweather-applet.c:324
 msgid "Updating..."
 msgstr "Sto Aggiornando..."
-
-#: gweather/gweather-applet.c:387
-msgid "Update failed! Maybe another update was already in progress?"
-msgstr "Aggiornamento fallito! Forse un altro è in atto!"
-
-#: gweather/gweather.desktop.in.h:2
-msgid "GNOME weather monitor applet"
-msgstr "Applet GNOME per il Meteo"
 
 #: gweather/gweather-dialog.c:106
 msgid "Location:"
@@ -1225,15 +1446,31 @@ msgstr "Visibilità"
 msgid "Current conditions"
 msgstr "Condizioni attuali"
 
-#: gweather/gweather-dialog.c:329
+#: gweather/gweather-dialog.c:290
+msgid "ForeCast Report"
+msgstr "Previsioni del tempo"
+
+#: gweather/gweather-dialog.c:290
+msgid "See the ForeCast Details"
+msgstr "Controlla i dettagli delle previsioni"
+
+#: gweather/gweather-dialog.c:332
 msgid "Visit Weather.com"
 msgstr "Visita weather.com"
 
-#: gweather/gweather-dialog.c:337
+#: gweather/gweather-dialog.c:333
+msgid "URL link Button"
+msgstr "Pulsante collegamento URL"
+
+#: gweather/gweather-dialog.c:333
+msgid "Click to Enter Weather.com"
+msgstr "Clicca per visitare Weather.com"
+
+#: gweather/gweather-dialog.c:341
 msgid "Radar map"
 msgstr "Mappa radar"
 
-#: gweather/gweather-dialog.c:407
+#: gweather/gweather-dialog.c:413
 msgid ""
 "Detailed forecast not available for this location.\n"
 "Please try the state forecast; note that IWIN forecasts are available only "
@@ -1243,7 +1480,7 @@ msgstr ""
 "Provate le previsioni per stato. Notare che le previsioni IWIN sono "
 "disponibili unicamente per città degli Stati Uniti."
 
-#: gweather/gweather-dialog.c:409
+#: gweather/gweather-dialog.c:415
 msgid ""
 "State forecast not available for this location.\n"
 "Please try the detailed forecast; note that IWIN forecasts are available "
@@ -1253,179 +1490,230 @@ msgstr ""
 "Provate le previsioni per stato. Notare che le previsioni IWIN sono "
 "disponibili unicamente per città degli Stati Uniti."
 
-#: gweather/gweather-pref.c:136
-msgid ""
-"Proxy URL is not of the form http://host:port/\n"
-"Properties remain unchanged."
-msgstr ""
-"La URL del Proxy non è espressa nella forma http://host:porta/\n"
-"Le opzioni rimangono invariate."
+#. Accessible Name and Description for the components in Preference Dialog
+#: gweather/gweather-pref.c:125
+msgid "Location view"
+msgstr "Posizione"
 
-#: gweather/gweather-pref.c:476
+#: gweather/gweather-pref.c:125
+msgid "Select Location from the list"
+msgstr "Seleziona la posizione dall'elenco"
+
+#: gweather/gweather-pref.c:126
+msgid "URL Entry"
+msgstr "URL"
+
+#: gweather/gweather-pref.c:126
+msgid "Enter the Location"
+msgstr "Immetti la posizione"
+
+#: gweather/gweather-pref.c:127
+msgid "Port Entry"
+msgstr "Porta"
+
+#: gweather/gweather-pref.c:127
+msgid "Enter the Port number"
+msgstr "Immetti il numero della porta"
+
+#: gweather/gweather-pref.c:128
+msgid "User Entry"
+msgstr "Utente"
+
+#: gweather/gweather-pref.c:128
+msgid "Enter the user name"
+msgstr "Immetti il nome utente"
+
+#: gweather/gweather-pref.c:129
+msgid "Password Entry"
+msgstr "Password"
+
+#: gweather/gweather-pref.c:129
+msgid "Enter the Password"
+msgstr "Immetti la password"
+
+#: gweather/gweather-pref.c:131
+msgid "Update spin button"
+msgstr "Pulsante per gli aggiornamenti"
+
+#: gweather/gweather-pref.c:131
+msgid "Spinbutton for updating"
+msgstr "Pulsante per gli aggiornamenti"
+
+#: gweather/gweather-pref.c:132
+msgid "Address Entry"
+msgstr "Indirizzo"
+
+#: gweather/gweather-pref.c:132
+msgid "Enter the URL"
+msgstr "Immetti l'indirizzo"
+
+#: gweather/gweather-pref.c:707
 msgid "Weather Properties"
 msgstr "Proprietà GNOME Meteo"
 
-#: gweather/gweather-pref.c:521
-msgid "Location"
-msgstr "Posizione"
+#: gweather/gweather-pref.c:752
+msgid "_Location"
+msgstr "_Posizione"
 
-#: gweather/gweather-pref.c:541
-msgid "Use proxy"
-msgstr "Usa server proxy"
-
-#: gweather/gweather-pref.c:547
-msgid "Proxy URL:"
-msgstr "URL Proxy:"
-
-#: gweather/gweather-pref.c:563
-msgid "Username:"
-msgstr "Utente:"
-
-#: gweather/gweather-pref.c:579
-msgid "Password:"
-msgstr "Password:"
-
-#: gweather/gweather-pref.c:596
-msgid ""
-"Warning: Your password will be saved as\n"
-"unencrypted text in a private configuration\n"
-"file."
-msgstr ""
-"ATTENZIONE: anche se la vostra password verrà\n"
-"salvata in file di configurazione privato, questa\n"
-"non sarà cifrata."
-
-#: gweather/gweather-pref.c:604 multiload/main.c:178
-#: multiload/properties.c:416
-msgid "Network"
-msgstr "Rete"
-
-#: gweather/gweather-pref.c:629
+#: gweather/gweather-pref.c:872
 msgid "Automatically update every"
 msgstr "Aggiorna automaticamente ogni"
 
-#: gweather/gweather-pref.c:635
+#: gweather/gweather-pref.c:878
 msgid "Use metric system units"
 msgstr "Usa il sistema metrico decimale"
 
-#: gweather/gweather-pref.c:641
+#: gweather/gweather-pref.c:884
 msgid "Enable detailed forecast"
 msgstr "Abilita previsioni dettagliate"
 
-#: gweather/gweather-pref.c:648
+#: gweather/gweather-pref.c:891
 msgid "Enable radar map"
 msgstr "Abilita le mappe radar"
 
-#: gweather/gweather-pref.c:655
+#: gweather/gweather-pref.c:897
+msgid "Use custom address for radar map"
+msgstr "Usa un indirizzo scelto per le mappe radar"
+
+#: gweather/gweather-pref.c:908
+msgid "Address :"
+msgstr "Indirizzo :"
+
+#: gweather/gweather-pref.c:920
 msgid "Updates"
 msgstr "Aggiornamenti"
 
-#: gweather/gweather-pref.c:661
+#: gweather/gweather-pref.c:926
 msgid "Automatically update every "
 msgstr "Aggiorna automaticamente ogni "
 
-#: gweather/gweather-pref.c:681
+#: gweather/gweather-pref.c:946
 msgid "minute(s)"
 msgstr "minuto/i"
 
 #. The Miscellaneous frame
-#: gweather/gweather-pref.c:692
+#: gweather/gweather-pref.c:957
 msgid "Miscellaneous"
 msgstr "Miscellanea"
 
-#: gweather/gweather-pref.c:707
-msgid "General"
-msgstr "Generali"
+#: gweather/gweather-pref.c:975 mini-commander/src/preferences.c:772
+#: modemlights/properties.c:405
+msgid "_General"
+msgstr "_Generali"
 
-#: gweather/weather.c:123
+#: gweather/weather.c:57
+msgid "knots"
+msgstr "nodi"
+
+#: gweather/weather.c:57
+msgid "kph"
+msgstr ""
+
+#: gweather/weather.c:62
+msgid "inHg"
+msgstr "inHg"
+
+#: gweather/weather.c:62
+msgid "hPa"
+msgstr "hPa"
+
+#: gweather/weather.c:66
+msgid "miles"
+msgstr "miglia"
+
+#: gweather/weather.c:66
+msgid "kilometers"
+msgstr "chilometri"
+
+#: gweather/weather.c:117
 msgid "Variable"
 msgstr "Variabile"
 
-#: gweather/weather.c:124
+#: gweather/weather.c:118
 msgid "North"
 msgstr "Nord"
 
-#: gweather/weather.c:124
+#: gweather/weather.c:118
 msgid "North - NorthEast"
 msgstr "Nord / Nord-Est"
 
-#: gweather/weather.c:124
+#: gweather/weather.c:118
 msgid "Northeast"
 msgstr "Nord-Est"
 
-#: gweather/weather.c:124
+#: gweather/weather.c:118
 msgid "East - NorthEast"
 msgstr "Est / Nord-Est"
 
-#: gweather/weather.c:125
+#: gweather/weather.c:119
 msgid "East"
 msgstr "Est"
 
-#: gweather/weather.c:125
+#: gweather/weather.c:119
 msgid "East - Southeast"
 msgstr "Est / Sud-Est"
 
-#: gweather/weather.c:125
+#: gweather/weather.c:119
 msgid "Southeast"
 msgstr "Sud-Est"
 
-#: gweather/weather.c:125
+#: gweather/weather.c:119
 msgid "South - Southeast"
 msgstr "Sud / SudEst"
 
-#: gweather/weather.c:126
+#: gweather/weather.c:120
 msgid "South"
 msgstr "Sud"
 
-#: gweather/weather.c:126
+#: gweather/weather.c:120
 msgid "South - Southwest"
 msgstr "Sud / Sud-Ovest"
 
-#: gweather/weather.c:126
+#: gweather/weather.c:120
 msgid "Southwest"
 msgstr "Sud-Ovest"
 
-#: gweather/weather.c:126
+#: gweather/weather.c:120
 msgid "West - Southwest"
 msgstr "Ovest / Sud-Ovest"
 
-#: gweather/weather.c:127
+#: gweather/weather.c:121
 msgid "West"
 msgstr "Ovest"
 
-#: gweather/weather.c:127
+#: gweather/weather.c:121
 msgid "West - Northwest"
 msgstr "Ovest / Nord-Ovest"
 
-#: gweather/weather.c:127
+#: gweather/weather.c:121
 msgid "Northwest"
 msgstr "Nord-Ovest"
 
-#: gweather/weather.c:127
+#: gweather/weather.c:121
 msgid "North - Northwest"
 msgstr "Nord / Nord-Ovest"
 
-#: gweather/weather.c:134 gweather/weather.c:151 gweather/weather.c:215
+#: gweather/weather.c:128 gweather/weather.c:145 gweather/weather.c:209
 msgid "Invalid"
 msgstr "Non valido"
 
-#: gweather/weather.c:140
+#: gweather/weather.c:134
 msgid "Clear Sky"
 msgstr "Cielo Sereno"
 
-#: gweather/weather.c:141
+#: gweather/weather.c:135
 msgid "Broken clouds"
 msgstr "Nuvolosità sparsa"
 
-#: gweather/weather.c:142
+#: gweather/weather.c:136
 msgid "Scattered clouds"
 msgstr "Nuvoloso"
 
-#: gweather/weather.c:143
+#: gweather/weather.c:137
 msgid "Few clouds"
 msgstr "Poco nuvoloso"
 
-#: gweather/weather.c:144
+#: gweather/weather.c:138
 msgid "Overcast"
 msgstr "Previsione a lungo termine"
 
@@ -1433,1109 +1721,1106 @@ msgstr "Previsione a lungo termine"
 #. ******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
 #. NONE
 #. DRIZZLE
-#: gweather/weather.c:177
+#: gweather/weather.c:171
 msgid "Drizzle"
 msgstr "Pioggia fine"
 
-#: gweather/weather.c:177
+#: gweather/weather.c:171
 msgid "Drizzle in the vicinity"
 msgstr "Pioggia fine nelle vicinanze"
 
-#: gweather/weather.c:177
+#: gweather/weather.c:171
 msgid "Light drizzle"
 msgstr "Pioggia fine leggera"
 
-#: gweather/weather.c:177
+#: gweather/weather.c:171
 msgid "Moderate drizzle"
 msgstr "Pioggia fine moderata"
 
-#: gweather/weather.c:177
+#: gweather/weather.c:171
 msgid "Heavy drizzle"
 msgstr "Pioggia fine insistente"
 
-#: gweather/weather.c:177
+#: gweather/weather.c:171
 msgid "Shallow drizzle"
 msgstr "Pioggia fine molto leggera"
 
-#: gweather/weather.c:177
+#: gweather/weather.c:171
 msgid "Patches of drizzle"
 msgstr "Pioggia fine a chiazze"
 
-#: gweather/weather.c:177
+#: gweather/weather.c:171
 msgid "Partial drizzle"
 msgstr "Pioggia fine intermittente"
 
-#: gweather/weather.c:177 gweather/weather.c:178
+#: gweather/weather.c:171 gweather/weather.c:172
 msgid "Thunderstorm"
 msgstr "Uragano"
 
-#: gweather/weather.c:177
+#: gweather/weather.c:171
 msgid "Windy drizzle"
 msgstr "Pioggia fine con vento"
 
-#: gweather/weather.c:177
+#: gweather/weather.c:171
 msgid "Showers"
 msgstr "Temporali"
 
-#: gweather/weather.c:177
+#: gweather/weather.c:171
 msgid "Drifting drizzle"
 msgstr "Pioggia fine a vento"
 
-#: gweather/weather.c:177
+#: gweather/weather.c:171
 msgid "Freezing drizzle"
 msgstr "Pioggia fine ghiacciata"
 
 #. RAIN
-#: gweather/weather.c:178
+#: gweather/weather.c:172
 msgid "Rain"
 msgstr "Pioggia"
 
-#: gweather/weather.c:178
+#: gweather/weather.c:172
 msgid "Rain in the vicinity"
 msgstr "Pioggia nelle vicinanze"
 
-#: gweather/weather.c:178
+#: gweather/weather.c:172
 msgid "Light rain"
 msgstr "Pioggia leggera"
 
-#: gweather/weather.c:178
+#: gweather/weather.c:172
 msgid "Moderate rain"
 msgstr "Pioggia moderata"
 
-#: gweather/weather.c:178
+#: gweather/weather.c:172
 msgid "Heavy rain"
 msgstr "Pioggia intensa"
 
-#: gweather/weather.c:178
+#: gweather/weather.c:172
 msgid "Shallow rain"
 msgstr "Pioggia molto leggera"
 
-#: gweather/weather.c:178
+#: gweather/weather.c:172
 msgid "Patches of rain"
 msgstr "Pioggia a tratti"
 
-#: gweather/weather.c:178
+#: gweather/weather.c:172
 msgid "Partial rainfall"
 msgstr "Pioggia parziale"
 
-#: gweather/weather.c:178
+#: gweather/weather.c:172
 msgid "Blowing rainfall"
 msgstr "Pioggia a vento"
 
-#: gweather/weather.c:178
+#: gweather/weather.c:172
 msgid "Rain showers"
 msgstr "Scrosci di pioggia"
 
-#: gweather/weather.c:178
+#: gweather/weather.c:172
 msgid "Drifting rain"
 msgstr "Pioggia a vento"
 
-#: gweather/weather.c:178
+#: gweather/weather.c:172
 msgid "Freezing rain"
 msgstr "Pioggia ghiacciata"
 
 #. SNOW
-#: gweather/weather.c:179
+#: gweather/weather.c:173
 msgid "Snow"
 msgstr "Neve"
 
-#: gweather/weather.c:179
+#: gweather/weather.c:173
 msgid "Snow in the vicinity"
 msgstr "Neve nelle vicinanze"
 
-#: gweather/weather.c:179
+#: gweather/weather.c:173
 msgid "Light snow"
 msgstr "Nevischio"
 
-#: gweather/weather.c:179
+#: gweather/weather.c:173
 msgid "Moderate snow"
 msgstr "Neve moderata"
 
-#: gweather/weather.c:179
+#: gweather/weather.c:173
 msgid "Heavy snow"
 msgstr "Neve intensa"
 
-#: gweather/weather.c:179
+#: gweather/weather.c:173
 msgid "Shallow snow"
 msgstr "Neve molto leggera"
 
-#: gweather/weather.c:179
+#: gweather/weather.c:173
 msgid "Patches of snow"
 msgstr "Neve a tratti"
 
-#: gweather/weather.c:179
+#: gweather/weather.c:173
 msgid "Partial snowfall"
 msgstr "Nevicata parziale"
 
-#: gweather/weather.c:179 gweather/weather.c:180
+#: gweather/weather.c:173 gweather/weather.c:174
 msgid "Snowstorm"
 msgstr "Tempesta di neve"
 
-#: gweather/weather.c:179
+#: gweather/weather.c:173
 msgid "Blowing snowfall"
 msgstr "Nevicata a vento"
 
-#: gweather/weather.c:179
+#: gweather/weather.c:173
 msgid "Snow showers"
 msgstr "Nevicata a scrosci"
 
-#: gweather/weather.c:179
+#: gweather/weather.c:173
 msgid "Drifting snow"
 msgstr "Nevicata a vento"
 
-#: gweather/weather.c:179
+#: gweather/weather.c:173
 msgid "Freezing snow"
 msgstr "Neve ghiacciata"
 
 #. SNOW_GRAINS
-#: gweather/weather.c:180
+#: gweather/weather.c:174
 msgid "Snow grains"
 msgstr "Neve ghiacciata"
 
-#: gweather/weather.c:180
+#: gweather/weather.c:174
 msgid "Snow grains in the vicinity"
 msgstr "Neve ghiacciata nelle vicinanze"
 
-#: gweather/weather.c:180
+#: gweather/weather.c:174
 msgid "Light snow grains"
 msgstr "Neve ghiacciata leggera"
 
-#: gweather/weather.c:180
+#: gweather/weather.c:174
 msgid "Moderate snow grains"
 msgstr "Neve ghiacciata moderata"
 
-#: gweather/weather.c:180
+#: gweather/weather.c:174
 msgid "Heavy snow grains"
 msgstr "Neve ghiacciata intensa"
 
-#: gweather/weather.c:180
+#: gweather/weather.c:174
 msgid "Shallow snow grains"
 msgstr "Neve ghiacciata molto leggera"
 
-#: gweather/weather.c:180
+#: gweather/weather.c:174
 msgid "Patches of snow grains"
 msgstr "Neve ghiacciata a tratti"
 
-#: gweather/weather.c:180
+#: gweather/weather.c:174
 msgid "Partial snow grains"
 msgstr "Neve ghiacciata parziale"
 
-#: gweather/weather.c:180
+#: gweather/weather.c:174
 msgid "Blowing snow grains"
 msgstr "Neve ghiacciata a vento"
 
-#: gweather/weather.c:180
+#: gweather/weather.c:174
 msgid "Snow grain showers"
 msgstr "Neve ghiacciata a scrosci"
 
-#: gweather/weather.c:180
+#: gweather/weather.c:174
 msgid "Drifting snow grains"
 msgstr "Cristalli di ghiaccio"
 
-#: gweather/weather.c:180
+#: gweather/weather.c:174
 msgid "Freezing snow grains"
 msgstr "Grandine ghiacciata"
 
 #. ICE_CRYSTALS
-#: gweather/weather.c:181
+#: gweather/weather.c:175
 msgid "Ice crystals"
 msgstr "Cristalli di ghiaccio"
 
-#: gweather/weather.c:181
+#: gweather/weather.c:175
 msgid "Ice crystals in the vicinity"
 msgstr "Cristalli di ghiaccio nelle vicinanze"
 
-#: gweather/weather.c:181
+#: gweather/weather.c:175
 msgid "Few ice crystals"
 msgstr "Radi cristalli di ghiaccio"
 
-#: gweather/weather.c:181
+#: gweather/weather.c:175
 msgid "Moderate ice crystals"
 msgstr "Moderati cristalli di ghiaccio"
 
-#: gweather/weather.c:181
+#: gweather/weather.c:175
 msgid "Heavy ice crystals"
 msgstr "Cristalli di ghiaccio intensi"
 
-#: gweather/weather.c:181
+#: gweather/weather.c:175
 msgid "Patches of ice crystals"
 msgstr "Cristalli di ghiaccio a chiazze"
 
-#: gweather/weather.c:181
+#: gweather/weather.c:175
 msgid "Partial ice crystals"
 msgstr "Parziali cristalli di ghiaccio"
 
-#: gweather/weather.c:181
+#: gweather/weather.c:175
 msgid "Ice crystal storm"
 msgstr "Tempesta di cristalli di ghiaccio"
 
-#: gweather/weather.c:181
+#: gweather/weather.c:175
 msgid "Blowing ice crystals"
 msgstr "Cristalli di ghiaccio a vento"
 
-#: gweather/weather.c:181
+#: gweather/weather.c:175
 msgid "Showers of ice crystals"
 msgstr "Cristalli di ghiaccio a scrosci"
 
-#: gweather/weather.c:181
+#: gweather/weather.c:175
 msgid "Drifting ice crystals"
 msgstr "Cristalli di ghiaccio a vento"
 
-#: gweather/weather.c:181
+#: gweather/weather.c:175
 msgid "Freezing ice crystals"
 msgstr "Cristalli di ghiaccio molto freddi"
 
 #. ICE_PELLETS
-#: gweather/weather.c:182
+#: gweather/weather.c:176
 msgid "Ice pellets"
 msgstr "Palle di neve"
 
-#: gweather/weather.c:182
+#: gweather/weather.c:176
 msgid "Ice pellets in the vicinity"
 msgstr "Palle di neve nelle vicinanze"
 
-#: gweather/weather.c:182
+#: gweather/weather.c:176
 msgid "Few ice pellets"
 msgstr "Rade palle di neve"
 
-#: gweather/weather.c:182
+#: gweather/weather.c:176
 msgid "Moderate ice pellets"
 msgstr "Moderate palle di neve"
 
-#: gweather/weather.c:182
+#: gweather/weather.c:176
 msgid "Heavy ice pellets"
 msgstr "Intense palle di neve"
 
-#: gweather/weather.c:182
+#: gweather/weather.c:176
 msgid "Shallow ice pellets"
 msgstr "Palle di neve molto leggere"
 
-#: gweather/weather.c:182
+#: gweather/weather.c:176
 msgid "Patches of ice pellets"
 msgstr "Palle di neve a chiazze"
 
-#: gweather/weather.c:182
+#: gweather/weather.c:176
 msgid "Partial ice pellets"
 msgstr "Parziali palle di neve"
 
-#: gweather/weather.c:182
+#: gweather/weather.c:176
 msgid "Ice pellet storm"
 msgstr "Tempesta di palle di neve"
 
-#: gweather/weather.c:182
+#: gweather/weather.c:176
 msgid "Blowing ice pellets"
 msgstr "Palle di neve a vento"
 
-#: gweather/weather.c:182
+#: gweather/weather.c:176
 msgid "Showers of ice pellets"
 msgstr "Palle di neve a scrosci"
 
-#: gweather/weather.c:182
+#: gweather/weather.c:176
 msgid "Drifting ice pellets"
 msgstr "Palle di neve a vento"
 
-#: gweather/weather.c:182
+#: gweather/weather.c:176
 msgid "Freezing ice pellets"
 msgstr "Palle di neve ghiacciate"
 
 #. HAIL
-#: gweather/weather.c:183
+#: gweather/weather.c:177
 msgid "Hail"
 msgstr "Grandine"
 
-#: gweather/weather.c:183
+#: gweather/weather.c:177
 msgid "Hail in the vicinity"
 msgstr "Grandine nelle vicinanze"
 
-#: gweather/weather.c:183 gweather/weather.c:184
+#: gweather/weather.c:177 gweather/weather.c:178
 msgid "Light hail"
 msgstr "Grandine leggera"
 
-#: gweather/weather.c:183
+#: gweather/weather.c:177
 msgid "Moderate hail"
 msgstr "Grandine moderata"
 
-#: gweather/weather.c:183
+#: gweather/weather.c:177
 msgid "Heavy hail"
 msgstr "Grandine intensa"
 
-#: gweather/weather.c:183
+#: gweather/weather.c:177
 msgid "Shallow hail"
 msgstr "Grandine molto leggera"
 
-#: gweather/weather.c:183
+#: gweather/weather.c:177
 msgid "Patches of hail"
 msgstr "Grandine a chiazze"
 
-#: gweather/weather.c:183
+#: gweather/weather.c:177
 msgid "Partial hail"
 msgstr "Grandine parziale"
 
-#: gweather/weather.c:183
+#: gweather/weather.c:177
 msgid "Hailstorm"
 msgstr "Tempesta di grandine"
 
-#: gweather/weather.c:183
+#: gweather/weather.c:177
 msgid "Blowing hail"
 msgstr "Grandine a vento"
 
-#: gweather/weather.c:183
+#: gweather/weather.c:177
 msgid "Hail showers"
 msgstr "Grandine a scrosci"
 
-#: gweather/weather.c:183
+#: gweather/weather.c:177
 msgid "Drifting hail"
 msgstr "Grandine a vento"
 
-#: gweather/weather.c:183
+#: gweather/weather.c:177
 msgid "Freezing hail"
 msgstr "Grandine ghiacciata"
 
 #. SMALL_HAIL
-#: gweather/weather.c:184
+#: gweather/weather.c:178
 msgid "Small hail"
 msgstr "Piccola grandine"
 
-#: gweather/weather.c:184
+#: gweather/weather.c:178
 msgid "Small hail in the vicinity"
 msgstr "Piccola grandine nelle vicinanze"
 
-#: gweather/weather.c:184
+#: gweather/weather.c:178
 msgid "Moderate small hail"
 msgstr "Piccola grandine moderata"
 
-#: gweather/weather.c:184
+#: gweather/weather.c:178
 msgid "Heavy small hail"
 msgstr "Piccola grandine intensa"
 
-#: gweather/weather.c:184
+#: gweather/weather.c:178
 msgid "Shallow small hail"
 msgstr "Piccola grandine molto leggera"
 
-#: gweather/weather.c:184
+#: gweather/weather.c:178
 msgid "Patches of small hail"
 msgstr "Piccola grandine a chiazze"
 
-#: gweather/weather.c:184
+#: gweather/weather.c:178
 msgid "Partial small hail"
 msgstr "Piccola grandine parziale"
 
-#: gweather/weather.c:184
+#: gweather/weather.c:178
 msgid "Small hailstorm"
 msgstr "Leggera tempesta di piccola grandine"
 
-#: gweather/weather.c:184
+#: gweather/weather.c:178
 msgid "Blowing small hail"
 msgstr "Piccola grandine a vento"
 
-#: gweather/weather.c:184
+#: gweather/weather.c:178
 msgid "Showers of small hail"
 msgstr "Piccola grandine a scrosci"
 
-#: gweather/weather.c:184
+#: gweather/weather.c:178
 msgid "Drifting small hail"
 msgstr "Piccola grandine a vento"
 
-#: gweather/weather.c:184
+#: gweather/weather.c:178
 msgid "Freezing small hail"
 msgstr "Piccola grandine ghiacciata"
 
 #. PRECIPITATION
-#: gweather/weather.c:185
+#: gweather/weather.c:179
 msgid "Unknown precipitation"
 msgstr "Precipitazione sconosciuta"
 
-#: gweather/weather.c:185
+#: gweather/weather.c:179
 msgid "Precipitation in the vicinity"
 msgstr "Precipitazione nelle vicinanze"
 
-#: gweather/weather.c:185
+#: gweather/weather.c:179
 msgid "Light precipitation"
 msgstr "Leggera precipitazione"
 
-#: gweather/weather.c:185
+#: gweather/weather.c:179
 msgid "Moderate precipitation"
 msgstr "Precipitazione moderata"
 
-#: gweather/weather.c:185
+#: gweather/weather.c:179
 msgid "Heavy precipitation"
 msgstr "Precipitazione intensa"
 
-#: gweather/weather.c:185
+#: gweather/weather.c:179
 msgid "Shallow precipitation"
 msgstr "Precipitazione molto leggera"
 
-#: gweather/weather.c:185
+#: gweather/weather.c:179
 msgid "Patches of precipitation"
 msgstr "Precipitazione a chiazze"
 
-#: gweather/weather.c:185
+#: gweather/weather.c:179
 msgid "Partial precipitation"
 msgstr "Precipitazione parziale"
 
-#: gweather/weather.c:185
+#: gweather/weather.c:179
 msgid "Unknown thunderstorm"
 msgstr "Precipitazione temporalesca"
 
-#: gweather/weather.c:185
+#: gweather/weather.c:179
 msgid "Blowing precipitation"
 msgstr "Precipitazione a vento"
 
-#: gweather/weather.c:185
+#: gweather/weather.c:179
 msgid "Showers, type unknown"
 msgstr "Scrosci di tipo sconosciuto"
 
-#: gweather/weather.c:185
+#: gweather/weather.c:179
 msgid "Drifting precipitation"
 msgstr "Precipitazione a vento"
 
-#: gweather/weather.c:185
+#: gweather/weather.c:179
 msgid "Freezing precipitation"
 msgstr "Precipitazione ghiacciata"
 
 #. MIST
-#: gweather/weather.c:186
+#: gweather/weather.c:180
 msgid "Mist"
 msgstr "Nebbia"
 
-#: gweather/weather.c:186
+#: gweather/weather.c:180
 msgid "Mist in the vicinity"
 msgstr "Nebbia nelle vicinanze"
 
-#: gweather/weather.c:186
+#: gweather/weather.c:180
 msgid "Light mist"
 msgstr "Nebbia leggera"
 
-#: gweather/weather.c:186
+#: gweather/weather.c:180
 msgid "Moderate mist"
 msgstr "Nebbia moderata"
 
-#: gweather/weather.c:186
+#: gweather/weather.c:180
 msgid "Thick mist"
 msgstr "Nebbia fitta"
 
-#: gweather/weather.c:186
+#: gweather/weather.c:180
 msgid "Shallow mist"
 msgstr "Nebbia molto leggera"
 
-#: gweather/weather.c:186
+#: gweather/weather.c:180
 msgid "Patches of mist"
 msgstr "Nebbia a banchi"
 
-#: gweather/weather.c:186
+#: gweather/weather.c:180
 msgid "Partial mist"
 msgstr "Nebbia parziale"
 
-#: gweather/weather.c:186
+#: gweather/weather.c:180
 msgid "Mist with wind"
 msgstr "Nebbia e vento"
 
-#: gweather/weather.c:186
+#: gweather/weather.c:180
 msgid "Drifting mist"
 msgstr "Nebbia a vento"
 
-#: gweather/weather.c:186
+#: gweather/weather.c:180
 msgid "Freezing mist"
 msgstr "Nebbia ghiacciata"
 
 #. FOG
-#: gweather/weather.c:187
+#: gweather/weather.c:181
 msgid "Fog"
 msgstr "Nebbia scura"
 
-#: gweather/weather.c:187
+#: gweather/weather.c:181
 msgid "Fog in the vicinity"
 msgstr "Nebbia scura nelle vicinanze"
 
-#: gweather/weather.c:187
+#: gweather/weather.c:181
 msgid "Light fog"
 msgstr "Nebbia scura leggera"
 
-#: gweather/weather.c:187
+#: gweather/weather.c:181
 msgid "Moderate fog"
 msgstr "Nebbia scura moderata"
 
-#: gweather/weather.c:187
+#: gweather/weather.c:181
 msgid "Thick fog"
 msgstr "Nebbia scura intensa"
 
-#: gweather/weather.c:187
+#: gweather/weather.c:181
 msgid "Shallow fog"
 msgstr "Nebbia scura molto leggera"
 
-#: gweather/weather.c:187
+#: gweather/weather.c:181
 msgid "Patches of fog"
 msgstr "Nebbia scura a banchi"
 
-#: gweather/weather.c:187
+#: gweather/weather.c:181
 msgid "Partial fog"
 msgstr "Nebbia scura parziale"
 
-#: gweather/weather.c:187
+#: gweather/weather.c:181
 msgid "Fog with wind"
 msgstr "Nebbia scura e vento"
 
-#: gweather/weather.c:187
+#: gweather/weather.c:181
 msgid "Drifting fog"
 msgstr "Nebbia scura a vento"
 
-#: gweather/weather.c:187
+#: gweather/weather.c:181
 msgid "Freezing fog"
 msgstr "Nebbia scura ghiacciata"
 
 #. SMOKE
-#: gweather/weather.c:188
+#: gweather/weather.c:182
 msgid "Smoke"
 msgstr "Fumo"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:182
 msgid "Smoke in the vicinity"
 msgstr "Fumo nelle vicinanze"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:182
 msgid "Thin smoke"
 msgstr "Fumo leggero"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:182
 msgid "Moderate smoke"
 msgstr "Fumo moderato"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:182
 msgid "Thick smoke"
 msgstr "Fumo intenso"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:182
 msgid "Shallow smoke"
 msgstr "Fumo molto leggero"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:182
 msgid "Patches of smoke"
 msgstr "Fumo a banchi"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:182
 msgid "Partial smoke"
 msgstr "Fumo parziale"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:182
 msgid "Smoke w/ thunders"
 msgstr "Fumo con tuoni"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:182
 msgid "Smoke with wind"
 msgstr "Fumo con vento"
 
-#: gweather/weather.c:188
+#: gweather/weather.c:182
 msgid "Drifting smoke"
 msgstr "Fumo a vento"
 
 #. VOLCANIC_ASH
-#: gweather/weather.c:189
+#: gweather/weather.c:183
 msgid "Volcanic ash"
 msgstr "Cenere vulcanica"
 
-#: gweather/weather.c:189
+#: gweather/weather.c:183
 msgid "Volcanic ash in the vicinity"
 msgstr "Cenere vulcanica nelle vicinanze"
 
-#: gweather/weather.c:189
+#: gweather/weather.c:183
 msgid "Moderate volcanic ash"
 msgstr "Cenere vulcanica moderata"
 
-#: gweather/weather.c:189
+#: gweather/weather.c:183
 msgid "Thick volcanic ash"
 msgstr "Cenere vulcanica fitta"
 
-#: gweather/weather.c:189
+#: gweather/weather.c:183
 msgid "Shallow volcanic ash"
 msgstr "Cenere vulcanica molto leggera"
 
-#: gweather/weather.c:189
+#: gweather/weather.c:183
 msgid "Patches of volcanic ash"
 msgstr "Cenere vulcanica a banchi"
 
-#: gweather/weather.c:189
+#: gweather/weather.c:183
 msgid "Partial volcanic ash"
 msgstr "Cenere vulcanica parziale"
 
-#: gweather/weather.c:189
+#: gweather/weather.c:183
 msgid "Volcanic ash w/ thunders"
 msgstr "Cenere vulcanica con tuoni"
 
-#: gweather/weather.c:189
+#: gweather/weather.c:183
 msgid "Blowing volcanic ash"
 msgstr "Cenere vulcanica a vento"
 
-#: gweather/weather.c:189
+#: gweather/weather.c:183
 msgid "Showers of volcanic ash "
 msgstr "Cenere vulcanica a scrosci"
 
-#: gweather/weather.c:189
+#: gweather/weather.c:183
 msgid "Drifting volcanic ash"
 msgstr "Cenere vulcanica a vento"
 
-#: gweather/weather.c:189
+#: gweather/weather.c:183
 msgid "Freezing volcanic ash"
 msgstr "Cenere vulcanica ghiacciata"
 
 #. SAND
-#: gweather/weather.c:190
+#: gweather/weather.c:184
 msgid "Sand"
 msgstr "Sabbia"
 
-#: gweather/weather.c:190
+#: gweather/weather.c:184
 msgid "Sand in the vicinity"
 msgstr "Sabbia nelle vicinanze"
 
-#: gweather/weather.c:190
+#: gweather/weather.c:184
 msgid "Light sand"
 msgstr "Sabbia leggera"
 
-#: gweather/weather.c:190
+#: gweather/weather.c:184
 msgid "Moderate sand"
 msgstr "Sabbia moderata"
 
-#: gweather/weather.c:190
+#: gweather/weather.c:184
 msgid "Heavy sand"
 msgstr "Sabbia intensa"
 
-#: gweather/weather.c:190
+#: gweather/weather.c:184
 msgid "Patches of sand"
 msgstr "Sabbia a sprazzi"
 
-#: gweather/weather.c:190
+#: gweather/weather.c:184
 msgid "Partial sand"
 msgstr "Sabbia parziale"
 
-#: gweather/weather.c:190
+#: gweather/weather.c:184
 msgid "Blowing sand"
 msgstr "Sabbia a vento"
 
-#: gweather/weather.c:190
+#: gweather/weather.c:184
 msgid "Drifting sand"
 msgstr "Sabbia a vento"
 
 #. HAZE
-#: gweather/weather.c:191
+#: gweather/weather.c:185
 msgid "Haze"
 msgstr "Bruma"
 
-#: gweather/weather.c:191
+#: gweather/weather.c:185
 msgid "Haze in the vicinity"
 msgstr "Bruma nelle vicinanze"
 
-#: gweather/weather.c:191
+#: gweather/weather.c:185
 msgid "Light haze"
 msgstr "Bruma leggera"
 
-#: gweather/weather.c:191
+#: gweather/weather.c:185
 msgid "Moderate haze"
 msgstr "Bruma moderata"
 
-#: gweather/weather.c:191
+#: gweather/weather.c:185
 msgid "Thick haze"
 msgstr "Bruma fitta"
 
-#: gweather/weather.c:191
+#: gweather/weather.c:185
 msgid "Shallow haze"
 msgstr "Bruma molto leggera"
 
-#: gweather/weather.c:191
+#: gweather/weather.c:185
 msgid "Patches of haze"
 msgstr "Bruma a banchi"
 
-#: gweather/weather.c:191
+#: gweather/weather.c:185
 msgid "Partial haze"
 msgstr "Bruma parziale"
 
-#: gweather/weather.c:191
+#: gweather/weather.c:185
 msgid "Haze with wind"
 msgstr "Bruma con vento"
 
-#: gweather/weather.c:191
+#: gweather/weather.c:185
 msgid "Drifting haze"
 msgstr "Bruma a vento"
 
-#: gweather/weather.c:191
+#: gweather/weather.c:185
 msgid "Freezing haze"
 msgstr "Bruma ghiacciata"
 
 #. SPRAY
-#: gweather/weather.c:192
+#: gweather/weather.c:186
 msgid "Sprays"
 msgstr "Raffiche"
 
-#: gweather/weather.c:192
+#: gweather/weather.c:186
 msgid "Sprays in the vicinity"
 msgstr "Raffiche nelle vicinanze"
 
-#: gweather/weather.c:192
+#: gweather/weather.c:186
 msgid "Light sprays"
 msgstr "Raffiche leggere"
 
-#: gweather/weather.c:192
+#: gweather/weather.c:186
 msgid "Moderate sprays"
 msgstr "Raffiche moderate"
 
-#: gweather/weather.c:192
+#: gweather/weather.c:186
 msgid "Heavy sprays"
 msgstr "Raffiche intense"
 
-#: gweather/weather.c:192
+#: gweather/weather.c:186
 msgid "Shallow sprays"
 msgstr "Raffiche molto leggere"
 
-#: gweather/weather.c:192
+#: gweather/weather.c:186
 msgid "Patches of sprays"
 msgstr "Raffiche a sprazzi"
 
-#: gweather/weather.c:192
+#: gweather/weather.c:186
 msgid "Partial sprays"
 msgstr "Raffiche parziali"
 
-#: gweather/weather.c:192
+#: gweather/weather.c:186
 msgid "Blowing sprays"
 msgstr "Raffiche a vento"
 
-#: gweather/weather.c:192
+#: gweather/weather.c:186
 msgid "Drifting sprays"
 msgstr "Raffiche a vento"
 
-#: gweather/weather.c:192
+#: gweather/weather.c:186
 msgid "Freezing sprays"
 msgstr "Raffiche ghiacciate"
 
 #. DUST
-#: gweather/weather.c:193
+#: gweather/weather.c:187
 msgid "Dust"
 msgstr "Polvere"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:187
 msgid "Dust in the vicinity"
 msgstr "Polvere nelle vicinanze"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:187
 msgid "Light dust"
 msgstr "Polvere leggera"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:187
 msgid "Moderate dust"
 msgstr "Polvere moderata"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:187
 msgid "Heavy dust"
 msgstr "Polvere intensa"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:187
 msgid "Patches of dust"
 msgstr "Polvere a banchi"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:187
 msgid "Partial dust"
 msgstr "Polvere parziale"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:187
 msgid "Blowing dust"
 msgstr "Polvere a vento"
 
-#: gweather/weather.c:193
+#: gweather/weather.c:187
 msgid "Drifting dust"
 msgstr "Polvere a vento"
 
 #. SQUALL
-#: gweather/weather.c:194
+#: gweather/weather.c:188
 msgid "Squall"
 msgstr "Scrosci"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:188
 msgid "Squall in the vicinity"
 msgstr "Scrosci nelle vicinanze"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:188
 msgid "Light squall"
 msgstr "Scrosci leggeri"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:188
 msgid "Moderate squall"
 msgstr "Scrosci moderati"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:188
 msgid "Heavy squall"
 msgstr "Scrosci intensi"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:188
 msgid "Partial squall"
 msgstr "Scrosci parziali"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:188
 msgid "Thunderous squall"
 msgstr "Scrosci temporaleschi"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:188
 msgid "Blowing squall"
 msgstr "Scrosci a vento"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:188
 msgid "Drifting squall"
 msgstr "Scrosci a vento"
 
-#: gweather/weather.c:194
+#: gweather/weather.c:188
 msgid "Freezing squall"
 msgstr "Scrosci ghiacciati"
 
 #. SANDSTORM
-#: gweather/weather.c:195
+#: gweather/weather.c:189
 msgid "Sandstorm"
 msgstr "Tempesta di sabbia"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:189
 msgid "Sandstorm in the vicinity"
 msgstr "Tempesta di sabbia nelle vicinanze"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:189
 msgid "Light standstorm"
 msgstr "Tempesta di sabbia leggera"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:189
 msgid "Moderate sandstorm"
 msgstr "Tempesta di sabbia moderata"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:189
 msgid "Heavy sandstorm"
 msgstr "Tempesta di sabbia intensa"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:189
 msgid "Shallow sandstorm"
 msgstr "Tempesta di sabbia molto leggera"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:189
 msgid "Partial sandstorm"
 msgstr "Tempesta di sabbia parziale"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:189
 msgid "Thunderous sandstorm"
 msgstr "Tempesta di sabbia a carattere di uragano"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:189
 msgid "Blowing sandstorm"
 msgstr "Tempesta di sabbia ventosa"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:189
 msgid "Drifting sandstorm"
 msgstr "Tempesta di sabbia a vento"
 
-#: gweather/weather.c:195
+#: gweather/weather.c:189
 msgid "Freezing sandstorm"
 msgstr "Tempesta di sabbia ghiacciata"
 
 #. DUSTSTORM
-#: gweather/weather.c:196
+#: gweather/weather.c:190
 msgid "Duststorm"
 msgstr "Tempesta di polvere"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:190
 msgid "Duststorm in the vicinity"
 msgstr "Tempesta di polvere nelle vicinanze"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:190
 msgid "Light duststorm"
 msgstr "Tempesta di polvere leggera"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:190
 msgid "Moderate duststorm"
 msgstr "Tempesta di polvere moderata"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:190
 msgid "Heavy duststorm"
 msgstr "Tempesta di polvere intensa"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:190
 msgid "Shallow duststorm"
 msgstr "Tempesta di polvere molto leggera"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:190
 msgid "Partial duststorm"
 msgstr "Tempesta di polvere parziale"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:190
 msgid "Thunderous duststorm"
 msgstr "Tempesta di polvere a carattere di uragano"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:190
 msgid "Blowing duststorm"
 msgstr "Tempesta di polvere con vento"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:190
 msgid "Drifting duststorm"
 msgstr "Tempesta di polvere a vento"
 
-#: gweather/weather.c:196
+#: gweather/weather.c:190
 msgid "Freezing duststorm"
 msgstr "Tempesta di polvere ghiacciata"
 
 #. FUNNEL_CLOUD
-#: gweather/weather.c:197
+#: gweather/weather.c:191
 msgid "Funnel cloud"
 msgstr "Nube da inquinamento"
 
-#: gweather/weather.c:197
+#: gweather/weather.c:191
 msgid "Funnel cloud in the vicinity"
 msgstr "Nube da inquinamento nelle vicinanze"
 
-#: gweather/weather.c:197
+#: gweather/weather.c:191
 msgid "Light funnel cloud"
 msgstr "Nube da inquinamento leggera"
 
-#: gweather/weather.c:197
+#: gweather/weather.c:191
 msgid "Moderate funnel cloud"
 msgstr "Nube da inquinamento moderata"
 
-#: gweather/weather.c:197
+#: gweather/weather.c:191
 msgid "Thick funnel cloud"
 msgstr "Nube da inquinamento leggera"
 
-#: gweather/weather.c:197
+#: gweather/weather.c:191
 msgid "Shallow funnel cloud"
 msgstr "Nube da inquinamento molto leggera"
 
-#: gweather/weather.c:197
+#: gweather/weather.c:191
 msgid "Patches of funnel clouds"
 msgstr "Nube da inquinamento a chiazze"
 
-#: gweather/weather.c:197
+#: gweather/weather.c:191
 msgid "Partial funnel clouds"
 msgstr "Nube da inquinamento parziale"
 
-#: gweather/weather.c:197
+#: gweather/weather.c:191
 msgid "Funnel cloud w/ wind"
 msgstr "Nube da inquinamento con vento"
 
-#: gweather/weather.c:197
+#: gweather/weather.c:191
 msgid "Drifting funnel cloud"
 msgstr "Nube da inquinamento ventosa"
 
 #. TORNADO
-#: gweather/weather.c:198
+#: gweather/weather.c:192
 msgid "Tornado"
 msgstr "Tornado"
 
-#: gweather/weather.c:198
+#: gweather/weather.c:192
 msgid "Tornado in the vicinity"
 msgstr "Tornado nelle vicinanze"
 
-#: gweather/weather.c:198
+#: gweather/weather.c:192
 msgid "Moderate tornado"
 msgstr "Tornado moderato"
 
-#: gweather/weather.c:198
+#: gweather/weather.c:192
 msgid "Raging tornado"
 msgstr "Tornado furioso"
 
-#: gweather/weather.c:198
+#: gweather/weather.c:192
 msgid "Partial tornado"
 msgstr "Tornado parziale"
 
-#: gweather/weather.c:198
+#: gweather/weather.c:192
 msgid "Thunderous tornado"
 msgstr "Tornado a carattere temporalesco"
 
-#: gweather/weather.c:198
+#: gweather/weather.c:192
 msgid "Drifting tornado"
 msgstr "Tornado ventoso"
 
-#: gweather/weather.c:198
+#: gweather/weather.c:192
 msgid "Freezing tornado"
 msgstr "Tornado ghiacciato"
 
 #. DUST_WHIRLS
-#: gweather/weather.c:199
+#: gweather/weather.c:193
 msgid "Dust whirls"
 msgstr "Trombe d'aria"
 
-#: gweather/weather.c:199
+#: gweather/weather.c:193
 msgid "Dust whirls in the vicinity"
 msgstr "Trombe d'aria nelle vicinanze"
 
-#: gweather/weather.c:199
+#: gweather/weather.c:193
 msgid "Light dust whirls"
 msgstr "Trombe d'aria leggere"
 
-#: gweather/weather.c:199
+#: gweather/weather.c:193
 msgid "Moderate dust whirls"
 msgstr "Trombe d'aria moderate"
 
-#: gweather/weather.c:199
+#: gweather/weather.c:193
 msgid "Heavy dust whirls"
 msgstr "Trombe d'aria intense"
 
-#: gweather/weather.c:199
+#: gweather/weather.c:193
 msgid "Shallow dust whirls"
 msgstr "Trombe d'aria molto leggere"
 
-#: gweather/weather.c:199
+#: gweather/weather.c:193
 msgid "Patches of dust whirls"
 msgstr "Trombe d'aria a chiazze"
 
-#: gweather/weather.c:199
+#: gweather/weather.c:193
 msgid "Partial dust whirls"
 msgstr "Trombe d'aria parziali"
 
-#: gweather/weather.c:199
+#: gweather/weather.c:193
 msgid "Blowing dust whirls"
 msgstr "Trombe d'aria a vento"
 
-#: gweather/weather.c:199
+#: gweather/weather.c:193
 msgid "Drifting dust whirls"
 msgstr "Trombe d'aria con vento"
 
-#: gweather/weather.c:825 gweather/weather.c:864 gweather/weather.c:1437
+#: gweather/weather.c:809 gweather/weather.c:847 gweather/weather.c:1416
 msgid "Failed to get METAR data.\n"
 msgstr "Impossibile ottenere dati METAR.\n"
 
-#: gweather/weather.c:857 gweather/weather.c:884 gweather/weather.c:1081
+#: gweather/weather.c:839 gweather/weather.c:867 gweather/weather.c:1062
 msgid "WeatherInfo missing location"
 msgstr "Weather Info non trova la posizione"
 
-#: gweather/weather.c:1049
+#: gweather/weather.c:1030
 msgid "Failed to get IWIN data.\n"
 msgstr "Impossibile ottenere dati IWIN.\n"
 
-#: gweather/weather.c:1089
+#. forecast data is not really interesting anyway ;)
+#: gweather/weather.c:1072
 msgid "Failed to get IWIN forecast data.\n"
 msgstr "Impossibile ottenere dati IWIN.\n"
 
-#: gweather/weather.c:1289
+#: gweather/weather.c:1271
 msgid "Failed to get Met Office data.\n"
 msgstr "Impossibile ottenere i dati dal Met Office.\n"
 
-#: gweather/weather.c:1321
+#: gweather/weather.c:1303
 msgid "Failed to get Met Office forecast data.\n"
 msgstr "Impossibile ottenere i dati dal Met Office.\n"
 
-#: gweather/weather.c:1471
+#: gweather/weather.c:1446
 msgid "Failed to get radar map image.\n"
 msgstr "Impossibile ottenere le immagini delle mappe radar.\n"
 
-#: gweather/weather.c:1530
-msgid "Another update already in progress!\n"
-msgstr "È in atto un altro aggiornamento!\n"
-
-#: gweather/weather.c:1776
+#: gweather/weather.c:1739
 msgid "%a, %b %d / %H:%M"
 msgstr "%H:%M %a, %b %d"
 
-#: gweather/weather.c:1780
+#: gweather/weather.c:1743
 msgid "Unknown observation time"
 msgstr "Ora di osservazione sconosciuta"
 
-#: gweather/weather.c:1840
+#: gweather/weather.c:1803
 msgid "Calm"
 msgstr "Calma"
 
-#: gweather/weather.c:1866
+#: gweather/weather.c:1829
 msgid "Unknown"
 msgstr "Sconosciuto"
 
-#: gweather/weather.c:1898
+#: gweather/weather.c:1863
 msgid "Retrieval failed"
 msgstr "Dati non disponibili"
 
@@ -2589,34 +2874,40 @@ msgstr "non trovato"
 msgid "no /bin/sh"
 msgstr "/bin/sh inesistente"
 
-#: mini-commander/src/command_line.c:89 mini-commander/src/command_line.c:109
-#: mini-commander/src/terminal.c:91 mini-commander/src/terminal.c:111
+#: mini-commander/src/command_line.c:93 mini-commander/src/command_line.c:113
 msgid "end of history list"
 msgstr "fine cronologia"
 
 #. enter pressed -> exec command
-#: mini-commander/src/command_line.c:119 mini-commander/src/exec.c:59
-#: mini-commander/src/terminal.c:121
+#: mini-commander/src/command_line.c:123 mini-commander/src/exec.c:59
 msgid "starting..."
 msgstr "avvio..."
 
-#: mini-commander/src/command_line.c:148 mini-commander/src/terminal.c:153
+#: mini-commander/src/command_line.c:152
 msgid "autocompleted"
 msgstr "completato automaticamente."
 
-#: mini-commander/src/command_line.c:293
+#: mini-commander/src/command_line.c:312
 msgid "history list empty"
 msgstr "cronologia comandi vuota"
 
 #. title
-#: mini-commander/src/command_line.c:311
+#: mini-commander/src/command_line.c:330
 msgid "Command history"
 msgstr "Lista comandi"
 
 #. build file select dialog
-#: mini-commander/src/command_line.c:429
+#: mini-commander/src/command_line.c:461
 msgid "Start program"
 msgstr "Esegui programma"
+
+#: mini-commander/src/command_line.c:500
+msgid "Command line"
+msgstr "Linea di comando"
+
+#: mini-commander/src/command_line.c:501
+msgid "Type a command here and Gnome will execute it for you"
+msgstr "Digitate un comando e Gnome lo eseguirà"
 
 #: mini-commander/src/exec.c:61
 msgid "fork error"
@@ -2627,176 +2918,168 @@ msgid "child exited"
 msgstr "Processo terminato."
 
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:1
+#: mini-commander/src/mini-commander_applet.c:357
 msgid "Command Line"
 msgstr "Linea di comando"
 
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:2
-#: mini-commander/src/mini-commander_applet.desktop.in.h:1
 msgid "Mini-Commander"
 msgstr "Mini-Commander"
 
 #: mini-commander/src/GNOME_MiniCommanderApplet.server.in.h:3
-#, fuzzy
 msgid "MiniCommander Applet Factory"
-msgstr "Applet Mini-Commander"
+msgstr "Fabbrica Applet MiniCommander"
 
-#: mini-commander/src/help.c:36
-#, fuzzy
-msgid "still not ported"
-msgstr " non montato"
-
-#: mini-commander/src/message.c:148
+#: mini-commander/src/message.c:155
 msgid "%H:%M - %d. %b"
 msgstr "%H:%M - %d. %b"
 
-#: mini-commander/src/message.c:150
+#: mini-commander/src/message.c:157
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: mini-commander/src/message.c:152
+#: mini-commander/src/message.c:159
 msgid "%d. %b"
 msgstr "%d. %b"
 
-#: mini-commander/src/mini-commander_applet.c:111
+#: mini-commander/src/mini-commander_applet.c:125
 msgid "orient. changed"
 msgstr "Orientamento cambiato"
 
-#: mini-commander/src/mini-commander_applet.c:130
+#: mini-commander/src/mini-commander_applet.c:142
 msgid "size changed"
 msgstr "Dimensione cambiata"
 
-#: mini-commander/src/mini-commander_applet.c:250
+#: mini-commander/src/mini-commander_applet.c:289
+#: mini-commander/src/mini-commander_applet.c:292
 msgid "Browser"
 msgstr "Browser"
 
-#: mini-commander/src/mini-commander_applet.c:265
+#: mini-commander/src/mini-commander_applet.c:293
+msgid "Click this button to start the browser"
+msgstr "Cliccate il pulsante per avviare il browser"
+
+#: mini-commander/src/mini-commander_applet.c:307
+#: mini-commander/src/mini-commander_applet.c:310
 msgid "History"
 msgstr "Cronologia"
 
-#: mini-commander/src/mini-commander_applet.c:407
+#: mini-commander/src/mini-commander_applet.c:311
+msgid "Click this button for the list of previous commands"
+msgstr "Cliccate il pulsante per la lista dei comandi precedenti"
+
+#: mini-commander/src/mini-commander_applet.c:312
+msgid "Mini-Commander applet"
+msgstr "Applet Mini-Commander"
+
+#: mini-commander/src/mini-commander_applet.c:313
+msgid "This applet adds a command line to the panel"
+msgstr "Questa applet aggiunge una linea di comando al pannello"
+
+#: mini-commander/src/mini-commander_applet.c:445
 msgid "ready..."
 msgstr "pronto..."
 
-#: mini-commander/src/preferences.c:113
-msgid "time & date on"
-msgstr "ora e data attivate"
-
-#: mini-commander/src/preferences.c:115
-msgid "time on"
-msgstr "ora attivata"
-
-#: mini-commander/src/preferences.c:117
-msgid "date on"
-msgstr "data attivata"
-
-#: mini-commander/src/preferences.c:119
-msgid "clock off"
-msgstr "orologio disattivato"
-
-#: mini-commander/src/preferences.c:573
+#: mini-commander/src/preferences.c:520
 msgid "Command Line Properties"
 msgstr "Proprietà della linea di comando"
 
-#: mini-commander/src/preferences.c:586
+#: mini-commander/src/preferences.c:536
 msgid "Clock"
 msgstr "Orologio"
 
 #. show time check box
-#: mini-commander/src/preferences.c:594
+#: mini-commander/src/preferences.c:544
 msgid "Show time"
 msgstr "Mostra l'ora"
 
 #. show date check box
-#: mini-commander/src/preferences.c:601
+#: mini-commander/src/preferences.c:551
 msgid "Show date"
 msgstr "Visualizza data"
 
 #. appearance frame
-#: mini-commander/src/preferences.c:609
+#: mini-commander/src/preferences.c:559
 msgid "Appearance"
 msgstr "Aspetto"
 
 #. show handle check box
-#: mini-commander/src/preferences.c:617
-msgid "Show handle"
-msgstr "Mostra gestore"
+#: mini-commander/src/preferences.c:567
+msgid "Show han_dle"
+msgstr "_Mostra gestore"
 
 #. show frame check box
-#: mini-commander/src/preferences.c:624
-msgid "Show frame"
-msgstr "Mostra cornice"
+#: mini-commander/src/preferences.c:574
+msgid "Show fram_e"
+msgstr "Mostra cornic_e"
 
 #. auto complete frame
-#: mini-commander/src/preferences.c:633
+#: mini-commander/src/preferences.c:583
 msgid "Autocompletion"
 msgstr "Autocompletamento"
 
 #. show history autocomplete
-#: mini-commander/src/preferences.c:641
-msgid "Enable history based autocompletion"
-msgstr "Abilita autocompletamento in base alla lista"
+#: mini-commander/src/preferences.c:591
+msgid "Enable _history based autocompletion"
+msgstr "Abilita autocompletamento in base alla _history"
 
 #. Size
-#: mini-commander/src/preferences.c:648
+#: mini-commander/src/preferences.c:598
 msgid "Size"
 msgstr "Dimensione"
 
 #. applet width
-#: mini-commander/src/preferences.c:660
-msgid "Applet width:"
-msgstr "Larghezza applet:"
+#: mini-commander/src/preferences.c:610
+msgid "Applet _width:"
+msgstr "L_arghezza applet:"
 
 #. applet height
-#: mini-commander/src/preferences.c:689
+#: mini-commander/src/preferences.c:644
 msgid "Applet height:"
 msgstr "Altezza applet:"
 
 #. cmd line height
-#: mini-commander/src/preferences.c:718
+#: mini-commander/src/preferences.c:666
 msgid "Command line height:"
 msgstr "Altezza riga di comando:"
 
 #. Color
-#: mini-commander/src/preferences.c:760 modemlights/properties.c:445
-#: multiload/properties.c:395
+#: mini-commander/src/preferences.c:701 modemlights/properties.c:445
+#: multiload/properties.c:361
 msgid "Colors"
 msgstr "Colori"
 
 #. fg
-#: mini-commander/src/preferences.c:770
-msgid "Command line foreground:"
+#: mini-commander/src/preferences.c:711
+msgid "Command line _foreground:"
 msgstr "Colore della riga di comando:"
 
 #. bg
-#: mini-commander/src/preferences.c:801
-msgid "Command line background:"
+#: mini-commander/src/preferences.c:743
+msgid "Command line _background:"
 msgstr "Sfondo della riga di comando:"
 
-#: mini-commander/src/preferences.c:829 modemlights/properties.c:405
-msgid "_General"
-msgstr "_Generali"
-
 #. prefix
-#: mini-commander/src/preferences.c:854
+#: mini-commander/src/preferences.c:797
 #, c-format
 msgid "Regex %.2d:"
 msgstr "Espressione regolare %.2d:"
 
 #. command
-#: mini-commander/src/preferences.c:870
+#: mini-commander/src/preferences.c:815
 #, c-format
 msgid "   Macro %.2d:"
 msgstr "   Macro %.2d:"
 
-#: mini-commander/src/preferences.c:886
+#: mini-commander/src/preferences.c:833
 msgid "_Macros"
 msgstr "_Macro"
 
 #: mixer/GNOME_MixerApplet.server.in.h:1
-msgid "Applet for adjusting the sound volume"
-msgstr "Applet per controllare il volume"
+msgid "Adjust the sound volume"
+msgstr "Aggiusta il volume"
 
-#: mixer/GNOME_MixerApplet.server.in.h:2 mixer/mixer.c:694
+#: mixer/GNOME_MixerApplet.server.in.h:3 mixer/mixer.c:130 mixer/mixer.c:742
 msgid "Volume Control"
 msgstr "Controllo Volume"
 
@@ -2808,13 +3091,17 @@ msgstr "Muto"
 msgid "Run Audio Mixer..."
 msgstr "Esegui Mixer..."
 
+#: mixer/mixer.c:131
+msgid "Volume Control (muted)"
+msgstr "Controllo Volume (Silenziato)"
+
 #. probably should die more gracefully
-#: mixer/mixer.c:167
+#: mixer/mixer.c:174
 #, c-format
 msgid "Couldn't open mixer device %s\n"
 msgstr "Impossibile aprire il dispositivo mixer %s\n"
 
-#: mixer/mixer.c:181
+#: mixer/mixer.c:188
 msgid ""
 "warning: this version of gmix was compiled with a different version of\n"
 "soundcard.h.\n"
@@ -2822,36 +3109,49 @@ msgstr ""
 "Attenzione: questa versione di gmix è stata compilata \n"
 "con una diversa versione di soundcard.h.\n"
 
-#: mixer/mixer.c:192
+#: mixer/mixer.c:199
 #, c-format
 msgid "Querying available channels of mixer device %s failed\n"
-msgstr "La richiesta dei canali disponibili sul dispositivo del mixer %s è fallita\n"
+msgstr ""
+"La richiesta dei canali disponibili sul dispositivo del mixer %s è fallita\n"
 
-#: mixer/mixer.c:199
+#: mixer/mixer.c:206
 msgid "warning: mixer has no volume channel - using PCM instead.\n"
 msgstr "attenzione: il mixer non canale per il volume - userò il PCM.\n"
 
-#: mixer/mixer.c:202
+#: mixer/mixer.c:209
 #, c-format
 msgid "Mixer device %s has neither volume nor PCM channels.\n"
-msgstr "Il dispositivo %s del mixer non ha canali né per il volume né per il PCM.\n"
+msgstr ""
+"Il dispositivo %s del mixer non ha canali né per il volume né per il PCM.\n"
 
-#: mixer/mixer.c:695
+#: mixer/mixer.c:508
+msgid "Volume Controller"
+msgstr "Controllo Volume"
+
+#: mixer/mixer.c:509
+msgid "Use Up/Down arrow keys to change volume"
+msgstr "Usate i tasti Su/Giù per cambiare il volume"
+
+#: mixer/mixer.c:743
 msgid "(C) 2001 Richard Hult"
 msgstr "(C) 2001 Richard Hult"
 
-#: mixer/mixer.c:696
+#: mixer/mixer.c:744
 msgid "The volume control lets you set the volume level for your desktop."
 msgstr "Il controllo del volume permette di controllare il volume del vostro computer."
 
+#: mixer/mixer.c:897
+msgid "The volume control lets you set the volume level for your desktop"
+msgstr "Il controllo del volume permette di controllare il volume del vostro computer"
+
 #: modemlights/GNOME_ModemLightsApplet.server.in.h:1
-#: modemlights/modemlights_applet.desktop.in.h:1
+msgid "Internet"
+msgstr "Internet"
+
+#: modemlights/GNOME_ModemLightsApplet.server.in.h:2
 msgid "Modem Lights"
 msgstr "Spie Modem"
-
-#: modemlights/modemlights_applet.desktop.in.h:2
-msgid "Show modem status"
-msgstr "Mostra lo stato del modem"
 
 #: modemlights/modemlights.c:205
 msgid "Modem Lights Applet"
@@ -2994,14 +3294,6 @@ msgstr "Imposta le opzioni come default"
 msgid "Advanced"
 msgstr "Avanzate"
 
-#: multiload/cpuload_applet.desktop.in.h:1
-msgid "CPU Load Meter"
-msgstr "Controllo carico CPU"
-
-#: multiload/cpuload_applet.desktop.in.h:2
-msgid "CPULoad"
-msgstr "Carico CPU"
-
 #: multiload/cpuload.c:39
 msgid "CPU Load"
 msgstr "Carico CPU"
@@ -3018,13 +3310,9 @@ msgstr "Controllo del sistema"
 msgid "Run detailed system monitor"
 msgstr "Avvia il controllo del sistema dettagliato"
 
-#: multiload/loadavg.c:94 multiload/loadavg_applet.desktop.in.h:1
+#: multiload/loadavg.c:94
 msgid "Load Average"
 msgstr "Carico medio"
-
-#: multiload/loadavg_applet.desktop.in.h:2
-msgid "Load Average Applet"
-msgstr "Applet Carico medio"
 
 #: multiload/main.c:53
 msgid "System Monitor Applet"
@@ -3042,23 +3330,28 @@ msgstr ""
 "Controllo del carico che può visualizzare grafici per la CPU, la ram, e \n"
 "l'uso del file di swap, oltre che al traffico di rete."
 
-#: multiload/main.c:174 multiload/properties.c:404
+#: multiload/main.c:177 multiload/properties.c:369
 msgid "Processor"
 msgstr "Processore"
 
-#: multiload/main.c:176 multiload/properties.c:410
+#: multiload/main.c:179 multiload/properties.c:375
 msgid "Memory"
 msgstr "Memoria"
 
-#: multiload/main.c:180 multiload/properties.c:422
+#: multiload/main.c:181 multiload/properties.c:381
+msgid "Network"
+msgstr "Rete"
+
+#: multiload/main.c:183 multiload/properties.c:387
 msgid "Swap File"
 msgstr "File di swap"
 
-#: multiload/main.c:182
+#: multiload/main.c:185
 msgid "Resource"
 msgstr "Risorse"
 
-#: multiload/main.c:194
+#: multiload/main.c:197
+#, c-format
 msgid ""
 "%s:\n"
 "%d%% in use"
@@ -3066,47 +3359,31 @@ msgstr ""
 "%s:\n"
 "%d%% in uso"
 
-#: multiload/memload_applet.desktop.in.h:1
-msgid "MemLoad"
-msgstr "Carico memoria"
-
-#: multiload/memload_applet.desktop.in.h:2
-msgid "Memory Load Meter"
-msgstr "Misura del carico della memoria"
-
 #: multiload/memload.c:39
 msgid "Memory Load"
 msgstr "Carico della memoria"
-
-#: multiload/netload_applet.desktop.in.h:1
-msgid "NetLoad"
-msgstr "Carico di rete"
-
-#: multiload/netload_applet.desktop.in.h:2
-msgid "Network Activity Meter"
-msgstr "Misuratore dell'attività di rete"
 
 #: multiload/netload.c:38
 msgid "Net Load"
 msgstr "Carico di rete"
 
-#: multiload/properties.c:290
+#: multiload/properties.c:256
 msgid "Monitored Resources"
 msgstr "Risorse controllate"
 
-#: multiload/properties.c:298
+#: multiload/properties.c:264
 msgid "_Processor"
 msgstr "_Processore"
 
-#: multiload/properties.c:308
+#: multiload/properties.c:274
 msgid "_Memory"
 msgstr "_Memoria"
 
-#: multiload/properties.c:318
+#: multiload/properties.c:284
 msgid "_Network"
 msgstr "_Rete"
 
-#: multiload/properties.c:328
+#: multiload/properties.c:294
 msgid "_Swap File"
 msgstr "File di _swap"
 
@@ -3116,89 +3393,81 @@ msgstr "File di _swap"
 #. panel_applet_gconf_get_bool(multiload_applet->applet, "view_loadavg", NULL));
 #. gtk_box_pack_start(GTK_BOX(hbox), check_box, FALSE, FALSE, 0);
 #.
-#: multiload/properties.c:345
+#: multiload/properties.c:311
 msgid "Options"
 msgstr "Opzioni"
 
-#: multiload/properties.c:358
+#: multiload/properties.c:324
 msgid "System monitor width: "
 msgstr "Larghezza controllo sistema: "
 
-#: multiload/properties.c:360
+#: multiload/properties.c:326
 msgid "System monitor height: "
 msgstr "Altezza controllo sistema: "
 
-#: multiload/properties.c:373
+#: multiload/properties.c:339
 msgid "pixels"
 msgstr "pixels"
 
-#: multiload/properties.c:379
+#: multiload/properties.c:345
 msgid "System monitor speed: "
 msgstr "Velocità del controllo sistema: "
 
-#: multiload/properties.c:390
+#: multiload/properties.c:356
 msgid "milliseconds"
 msgstr "millisecondi"
 
-#: multiload/properties.c:405
+#: multiload/properties.c:370
 msgid "User"
 msgstr "Utente"
 
-#: multiload/properties.c:406
+#: multiload/properties.c:371
 msgid "System"
 msgstr "Sistema"
 
-#: multiload/properties.c:407
+#: multiload/properties.c:372
 msgid "Nice"
 msgstr "Nice"
 
-#: multiload/properties.c:408
+#: multiload/properties.c:373
 msgid "Idle"
 msgstr "Inattività"
 
-#: multiload/properties.c:411 multiload/properties.c:420
+#: multiload/properties.c:376 multiload/properties.c:385
 msgid "Other"
 msgstr "Altro"
 
-#: multiload/properties.c:412
+#: multiload/properties.c:377
 msgid "Shared"
 msgstr "Condivisa"
 
-#: multiload/properties.c:413
+#: multiload/properties.c:378
 msgid "Buffers"
 msgstr "Buffer"
 
-#: multiload/properties.c:414 multiload/properties.c:424
+#: multiload/properties.c:379 multiload/properties.c:389
 msgid "Free"
 msgstr "Libera"
 
-#: multiload/properties.c:417
+#: multiload/properties.c:382
 msgid "SLIP"
 msgstr "SLIP"
 
-#: multiload/properties.c:418
+#: multiload/properties.c:383
 msgid "PLIP"
 msgstr "PLIP"
 
-#: multiload/properties.c:419
+#: multiload/properties.c:384
 msgid "Ethernet"
 msgstr "Ethernet"
 
-#: multiload/properties.c:423
+#: multiload/properties.c:388
 msgid "Used"
 msgstr "Usata"
 
-#: multiload/properties.c:445
+#: multiload/properties.c:409
 msgid "System Monitor Properties"
 msgstr "Proprietà del Controllo Sistema"
-
-#: multiload/swapload_applet.desktop.in.h:1
-msgid "Swap Load Meter"
-msgstr "Misura il carico del File di Swap"
-
-#: multiload/swapload_applet.desktop.in.h:2
-msgid "SwapLoad"
-msgstr "Carico dello swap"
 
 #: multiload/swapload.c:39
 msgid "Swap Load"
@@ -3206,38 +3475,38 @@ msgstr "Carico dello swap"
 
 #: panel-menu/GNOME_PanelMenuApplet.server.in.h:1
 msgid "Factory for Panel Menu Applet"
-msgstr ""
+msgstr "Fabbrica Applet Menù Pannello"
 
 #: panel-menu/GNOME_PanelMenuApplet.server.in.h:2
 msgid "Panel Menu Applet Factory"
-msgstr ""
+msgstr "Fabbrica Applet Menù Pannello"
 
 #: panel-menu/GNOME_PanelMenuApplet.server.in.h:3
 msgid "Panel applet for displaying menus"
 msgstr "Applet del Pannello per visualizzare menù"
 
-#: panel-menu/GNOME_PanelMenuApplet.server.in.h:4
-msgid "Utility"
-msgstr "Utilità"
-
-#: panel-menu/panel-menu-actions.c:96
+#: panel-menu/panel-menu-actions.c:99
 msgid "Actions"
 msgstr "Azioni"
+
+#: panel-menu/panel-menu-actions.c:100 panel-menu/panel-menu-properties.c:137
+msgid "Actions Menu"
+msgstr "Menù Azioni"
 
 #: panel-menu/panel-menu-add.c:76
 msgid "Add items to the Menu Bar"
 msgstr "Aggiungi voci alla Barra dei Menù"
 
-#: panel-menu/panel-menu-add.c:234 panel-menu/panel-menu-links.c:139
-#: panel-menu/panel-menu-links.c:401
+#: panel-menu/panel-menu-add.c:235 panel-menu/panel-menu-links.c:139
+#: panel-menu/panel-menu-links.c:403
 msgid "Shortcuts"
 msgstr "Scorciatoie"
 
-#: panel-menu/panel-menu-add.c:240
+#: panel-menu/panel-menu-add.c:241
 msgid "My Documents"
 msgstr "I miei Documenti"
 
-#: panel-menu/panel-menu-add.c:246 panel-menu/panel-menu-documents.c:134
+#: panel-menu/panel-menu-add.c:247 panel-menu/panel-menu-documents.c:134
 #: panel-menu/panel-menu-documents.c:399
 msgid "Documents"
 msgstr "Documenti"
@@ -3246,15 +3515,15 @@ msgstr "Documenti"
 msgid "Applications"
 msgstr "Programmi"
 
-#: panel-menu/panel-menu.c:681
+#: panel-menu/panel-menu.c:682
 msgid "PanelMenu Applet"
 msgstr "Applet Menù"
 
-#: panel-menu/panel-menu.c:681
+#: panel-menu/panel-menu.c:682
 msgid "(c) 2001 Chris Phelps"
 msgstr "(c) 2001 Chris Phelps"
 
-#: panel-menu/panel-menu.c:681
+#: panel-menu/panel-menu.c:682
 msgid ""
 "The Panel Menu Applet allows you to display customized menubars on your "
 "panels."
@@ -3275,12 +3544,12 @@ msgid "Edit directory item..."
 msgstr "Modifica la voce directory..."
 
 #: panel-menu/panel-menu-directory.c:601 panel-menu/panel-menu-documents.c:398
-#: panel-menu/panel-menu-documents.c:434 panel-menu/panel-menu-links.c:400
-#: panel-menu/panel-menu-links.c:436
+#: panel-menu/panel-menu-documents.c:434 panel-menu/panel-menu-links.c:402
+#: panel-menu/panel-menu-links.c:438
 msgid "Name:"
 msgstr "Nome:"
 
-#: panel-menu/panel-menu-directory.c:611 panel-menu/panel-menu-path.c:721
+#: panel-menu/panel-menu-directory.c:611 panel-menu/panel-menu-path.c:785
 msgid "Path:"
 msgstr "Indirizzo:"
 
@@ -3296,32 +3565,32 @@ msgstr "Crea voce Documenti..."
 msgid "Rename documents item..."
 msgstr "Rinomina voce Documenti..."
 
-#: panel-menu/panel-menu-links.c:323 panel-menu/panel-menu-path.c:573
+#: panel-menu/panel-menu-links.c:323 panel-menu/panel-menu-path.c:575
 msgid "KDE Menus"
 msgstr "Menù KDE"
 
-#: panel-menu/panel-menu-links.c:326 panel-menu/panel-menu-path.c:233
-#: panel-menu/panel-menu-path.c:576
+#: panel-menu/panel-menu-links.c:326 panel-menu/panel-menu-path.c:236
+#: panel-menu/panel-menu-path.c:578
 msgid "Programs"
 msgstr "Programmi"
 
-#: panel-menu/panel-menu-links.c:399
+#: panel-menu/panel-menu-links.c:401
 msgid "Create links item..."
 msgstr "Crea voci links..."
 
-#: panel-menu/panel-menu-links.c:435
+#: panel-menu/panel-menu-links.c:437
 msgid "Rename links item..."
 msgstr "Rinomina voci links..."
 
-#: panel-menu/panel-menu-path.c:224
+#: panel-menu/panel-menu-path.c:227
 msgid "KDE"
 msgstr "KDE"
 
-#: panel-menu/panel-menu-path.c:650
+#: panel-menu/panel-menu-path.c:676
 msgid "Create menu path item..."
 msgstr "Crea voce indirizzo menù..."
 
-#: panel-menu/panel-menu-path.c:682
+#: panel-menu/panel-menu-path.c:718
 msgid "Edit path item..."
 msgstr "Modifica voce indirizzo..."
 
@@ -3338,26 +3607,22 @@ msgid "Layout"
 msgstr "Stato"
 
 #: panel-menu/panel-menu-properties.c:90
-msgid "Preferences Menu"
-msgstr "Preferenze Menù"
-
-#: panel-menu/panel-menu-properties.c:110
 msgid "Applications Menu"
 msgstr "Menù Programmi"
 
-#: panel-menu/panel-menu-properties.c:130
+#: panel-menu/panel-menu-properties.c:110
 msgid "Select an icon for the Applications menu"
 msgstr "Seleziona icona per il Menù Programmi"
 
-#: panel-menu/panel-menu-properties.c:146
-msgid "Actions Menu"
-msgstr "Menù Azioni"
+#: panel-menu/panel-menu-properties.c:126
+msgid "Preferences Menu"
+msgstr "Preferenze Menù"
 
-#: panel-menu/panel-menu-properties.c:157
+#: panel-menu/panel-menu-properties.c:148
 msgid "Windows Menu"
 msgstr "Menù Finestre"
 
-#: panel-menu/panel-menu-properties.c:168
+#: panel-menu/panel-menu-properties.c:159
 msgid "Workspaces Menu"
 msgstr "Menù Workspace"
 
