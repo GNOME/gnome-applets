@@ -230,6 +230,9 @@ about_cb (BonoboUIComponent *uic,
 	const gchar *translator_credits = _("translator_credits");
 
 	if (eyes_applet->about_dialog) {
+		gtk_window_set_screen (GTK_WINDOW (eyes_applet->about_dialog),
+				       gtk_widget_get_screen (GTK_WIDGET (eyes_applet->applet)));
+		
 		gtk_window_present (GTK_WINDOW (eyes_applet->about_dialog));
 		return;
 	}
