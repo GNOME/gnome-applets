@@ -11,7 +11,7 @@ INCLUDES = 							\
 	-DICONDIR=\""$(datadir)/pixmaps"\"			\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"		\
 	-DG_DISABLE_DEPRECATED -DGDK_DISABLE_DEPRECATED		\
-	-DGTK_DISABLE_DEPRECATED -DGNOME_DISABLE_DEPRECATED	\
+	-DGNOME_DISABLE_DEPRECATED	\
 	$(NULL)
 
 libexec_PROGRAMS = wireless-applet
