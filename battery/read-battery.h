@@ -14,7 +14,11 @@ typedef struct apm_info {
   int        battery_time;
   int        using_minutes;
 } apm_info;
-#endif /* __linux__ */
+#elif __FreeBSD__
+#include <fcntl.h>
+#include <machine/apm_bios.h>
+#define APMDEV "/dev/apm"
+#endif
 
 /* Prototypes */ 
 int battery_read_charge(char * percentage,

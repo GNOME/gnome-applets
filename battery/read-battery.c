@@ -104,28 +104,8 @@ battery_read_charge(char * percentage,
       g_error(_("APM is disabled!  Cannot read battery charge information."));
     }
 
-  linestat = aip.ai_acline;
-  switch (aip.ai_batt_stat)
-    {
-    case 0:
-      batflag = HIGH_MASK;
-      break;
-    case 1:
-      batflag = LOW_MASK;
-      break;
-    case 2:
-      batflag = CRIT_MASK;
-      break;
-    case 3:
-      batflag = CHARGE_MASK;
-      break;
-    }
-
+  *ac_online = aip.ai_acline;
   *percentage = aip.ai_batt_life;
-
-  sprintf(str, "%d.%d", aip.ai_major, aip.ai_minor);
-
-  gtk_label_set (GTK_LABEL (bioslabel), str);
 
   close(fd);
 } /* battery_read_charge */
