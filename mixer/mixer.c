@@ -50,7 +50,7 @@ typedef struct {
 	gint timeout;
 	MixerUpdateFunc update_func;
 	PanelOrientType orient;
-	PanelSizeType size;
+	int size;
 } MixerData;
 
 typedef struct {
@@ -234,12 +234,12 @@ mixer_set_color(MixerWidget* mx)
 
 	/* operate on the slider that's currently showing */
 	if (md->orient == ORIENT_UP || md->orient == ORIENT_DOWN) {
-		if(md->size == SIZE_TINY)
+		if(md->size < PIXEL_SIZE_STANDARD)
 			cur_slider=mx->hslider;
 		else
 			cur_slider=mx->vslider;
 	} else  {
-		if(md->size == SIZE_TINY)
+		if(md->size < PIXEL_SIZE_STANDARD)
 			cur_slider=mx->vslider;
 		else
 			cur_slider=mx->hslider;
@@ -433,12 +433,12 @@ create_computer_mixer_widget(GtkWidget ** mixer,
 	gtk_widget_show (align);
 
 	if (md->orient == ORIENT_UP || md->orient == ORIENT_DOWN) {
-		if(md->size == SIZE_TINY)
+		if(md->size < PIXEL_SIZE_STANDARD)
 			gtk_widget_show(hbox);
 		else
 			gtk_widget_show(vbox);
 	} else  {
-		if(md->size == SIZE_TINY)
+		if(md->size < PIXEL_SIZE_STANDARD)
 			gtk_widget_show(vbox);
 		else
 			gtk_widget_show(hbox);
@@ -506,7 +506,7 @@ create_mixer_widget(void)
 	
 	/* ask the panel for its current orientation and size. */
 	md->orient = applet_widget_get_panel_orient(APPLET_WIDGET(applet));
-	md->size = applet_widget_get_panel_size(APPLET_WIDGET(applet));
+	md->size = applet_widget_get_panel_pixel_size(APPLET_WIDGET(applet));
 
 	/* do the nitty-gritty GTK-related stuff */
 	create_computer_mixer_widget(&mixer, &md->update_func);
@@ -541,7 +541,7 @@ applet_change_orient(GtkWidget *w, PanelOrientType o)
 
 	mx = gtk_object_get_user_data(GTK_OBJECT(w));	
 
-	if(md->size == SIZE_TINY) {
+	if(md->size < PIXEL_SIZE_STANDARD) {
 		/* hide one box */
 		if((ORIENT_UP == md->orient) || (ORIENT_DOWN == md->orient))
 			gtk_widget_hide(mx->hbox);
@@ -575,7 +575,7 @@ applet_change_orient(GtkWidget *w, PanelOrientType o)
 		gtk_main_iteration();
 }
 static void
-applet_change_size(GtkWidget *w, PanelSizeType o)
+applet_change_pixel_size(GtkWidget *w, int size)
 {
 	gint mvol;
 	MixerWidget* mx;
@@ -586,10 +586,10 @@ applet_change_size(GtkWidget *w, PanelSizeType o)
 
 	mx = gtk_object_get_user_data(GTK_OBJECT(w));	
 	
-	md->size = o;
+	md->size = size;
 
 	if (md->orient == ORIENT_UP || md->orient == ORIENT_DOWN) {
-		if(md->size == SIZE_TINY) {
+		if(md->size < PIXEL_SIZE_STANDARD) {
 			gtk_widget_hide(mx->vbox);
 			gtk_widget_show(mx->hbox);
 		} else {
@@ -597,7 +597,7 @@ applet_change_size(GtkWidget *w, PanelSizeType o)
 			gtk_widget_show(mx->vbox);
 		}
 	} else  {
-		if(md->size == SIZE_TINY) {
+		if(md->size < PIXEL_SIZE_STANDARD) {
 			gtk_widget_hide(mx->hbox);
 			gtk_widget_show(mx->vbox);
 		} else {
@@ -637,8 +637,8 @@ main(int argc, char **argv)
 	gtk_signal_connect(GTK_OBJECT(applet),"change_orient",
 			   GTK_SIGNAL_FUNC(applet_change_orient),
 			   NULL);
-	gtk_signal_connect(GTK_OBJECT(applet),"change_size",
-			   GTK_SIGNAL_FUNC(applet_change_size),
+	gtk_signal_connect(GTK_OBJECT(applet),"change_pixel_size",
+			   GTK_SIGNAL_FUNC(applet_change_pixel_size),
 			   NULL);
 
         applet_widget_register_stock_callback(APPLET_WIDGET(applet),
