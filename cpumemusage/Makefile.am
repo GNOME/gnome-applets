@@ -13,7 +13,12 @@ INCLUDES = -I. -I$(srcdir) 				\
 
 bin_PROGRAMS = cpumemusage_applet
 
-cpumemusage_applet_SOURCES = cpumemusage.c proc.c procbar.c
+cpumemusage_applet_SOURCES = \
+	cpumemusage.c	\
+	proc.c		\
+	proc.h		\
+	procbar.c	\
+	procbar.h
 
 MICO_VERS = 2.0.5
 MICO_LIBS = -lmicocoss$(MICO_VERS) -lmicoaux$(MICO_VERS) -lmico$(MICO_VERS)

@@ -13,11 +13,14 @@ INCLUDES = -I. -I$(srcdir) 				\
 
 bin_PROGRAMS = netload_applet
 
-netload_applet_SOURCES = netload.c 	\
-			 linux-proc.h 	\
-			 linux-proc.c 	\
-			 properties.c	\
-			 properties.h
+netload_applet_SOURCES = \
+	netload.c 	\
+	netload.h	\
+	linux-proc.h 	\
+	linux-proc.c 	\
+	properties.c	\
+	properties.h
+
 MICO_VERS = 2.0.5
 MICO_LIBS = -lmicocoss$(MICO_VERS) -lmicoaux$(MICO_VERS) -lmico$(MICO_VERS)
 

@@ -13,7 +13,10 @@ INCLUDES = -I. -I$(srcdir) 				\
 
 bin_PROGRAMS = modemlights_applet
 
-modemlights_applet_SOURCES = modemlights.c properties.c
+modemlights_applet_SOURCES = \
+	modemlights.c	\
+	modemlights.h	\
+	properties.c
 
 MICO_VERS = 2.0.5
 MICO_LIBS = -lmicocoss$(MICO_VERS) -lmicoaux$(MICO_VERS) -lmico$(MICO_VERS)

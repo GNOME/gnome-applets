@@ -14,7 +14,8 @@ INCLUDES = -I. -I$(srcdir) 				\
 bin_PROGRAMS = dialer_applet
 
 dialer_applet_SOURCES =	\
-        dialer.c		
+        dialer.c	\
+	dialer.h
 
 MICO_VERS = 2.0.5
 MICO_LIBS = -lmicocoss$(MICO_VERS) -lmicoaux$(MICO_VERS) -lmico$(MICO_VERS)

@@ -13,7 +13,9 @@ INCLUDES = -I. -I$(srcdir) 				\
 
 bin_PROGRAMS = wmpager_applet
 
-wmpager_applet_SOURCES = wmpager_applet.c
+wmpager_applet_SOURCES = \
+	wmpager_applet.c	\
+	WinMgr.h
 
 MICO_VERS = 2.0.5
 MICO_LIBS = -lmicocoss$(MICO_VERS) -lmicoaux$(MICO_VERS) -lmico$(MICO_VERS)

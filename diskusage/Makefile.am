@@ -13,8 +13,16 @@ INCLUDES = -I. -I$(srcdir) 				\
 
 bin_PROGRAMS = diskusage_applet
 
-diskusage_applet_SOURCES = diskusage.c diskusage_read.c \
-	fsusage.c fsusage.h mountlist.c mountlist.h properties.c
+diskusage_applet_SOURCES = \
+	diskusage.c		\
+	diskusage.h		\
+	diskusage_read.c	\
+	fsusage.c		\
+	fsusage.h		\
+	mountlist.c		\
+	mountlist.h		\
+	properties.c		\
+	properties.h
 
 MICO_VERS = 2.0.5
 MICO_LIBS = -lmicocoss$(MICO_VERS) -lmicoaux$(MICO_VERS) -lmico$(MICO_VERS)

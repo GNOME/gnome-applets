@@ -13,7 +13,10 @@ INCLUDES = -I. -I$(srcdir) 				\
 
 bin_PROGRAMS = mixer_applet
 
-mixer_applet_SOURCES = mixer.c slider.c
+mixer_applet_SOURCES = \
+	mixer.c		\
+	slider.c	\
+	slider.h
 
 MICO_VERS = 2.0.5
 MICO_LIBS = -lmicocoss$(MICO_VERS) -lmicoaux$(MICO_VERS) -lmico$(MICO_VERS)

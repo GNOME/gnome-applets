@@ -13,7 +13,12 @@ INCLUDES = -I. -I$(srcdir) 				\
 
 bin_PROGRAMS = winlist_applet
 
-winlist_applet_SOURCES = winlist.c fvwm-winlist.c
+winlist_applet_SOURCES = \
+	winlist.c	\
+	winlist.h	\
+	fvwm-winlist.c	\
+	fvwmlib.h	\
+	module.h
 
 MICO_VERS = 2.0.5
 MICO_LIBS = -lmicocoss$(MICO_VERS) -lmicoaux$(MICO_VERS) -lmico$(MICO_VERS)

@@ -15,7 +15,10 @@ bin_PROGRAMS = cdplayer_applet
 
 cdplayer_applet_SOURCES =	\
         cdplayer.c		\
+	cdplayer.h		\
+	cdrom-interface.h	\
 	led.c			\
+	led.h			\
 	cdrom-$(CDROM_HOST).c 
 
 MICO_VERS = 2.0.5

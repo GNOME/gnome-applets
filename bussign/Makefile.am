@@ -13,7 +13,11 @@ INCLUDES = -I. -I$(srcdir) 				\
 
 bin_PROGRAMS = bussign_applet
 
-bussign_applet_SOURCES = bussign.c http_get.c
+bussign_applet_SOURCES = \
+	bussign.c	\
+	bussign.h	\
+	http_get.c	\
+	http_get.h
 
 MICO_VERS = 2.0.5
 MICO_LIBS = -lmicocoss$(MICO_VERS) -lmicoaux$(MICO_VERS) -lmico$(MICO_VERS)

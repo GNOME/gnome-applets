@@ -13,7 +13,10 @@ INCLUDES = -I. -I$(srcdir) 				\
 
 bin_PROGRAMS = drivemount_applet
 
-drivemount_applet_SOURCES = drivemount.c properties.c
+drivemount_applet_SOURCES = \
+	drivemount.c	\
+	drivemount.h	\
+	properties.c
 
 MICO_VERS = 2.0.5
 MICO_LIBS = -lmicocoss$(MICO_VERS) -lmicoaux$(MICO_VERS) -lmico$(MICO_VERS)
