@@ -68,14 +68,16 @@ static void construct_show_desktop_item (GtkWidget *widget);
 static void show_desktop_cb (GtkWidget *widget, gpointer data);
 
 static ActionItem action_items[] = {
+	{ACTION_ITEM_TYPE_SHOW_DESKTOP, "Show Desktop", "action:show-desktop",
+	 DATADIR "/pixmaps/gnome-ccdesktop.png", "Show desktop", construct_show_desktop_item}
+/*
 	{ACTION_ITEM_TYPE_RUN, "Run...", "action:run",
 	 DATADIR "/pixmaps/gnome-run.png", "Run applications, if you know the correct command to type in", construct_run_item},
 	{ACTION_ITEM_TYPE_LOGOUT, "Logout", "action:logout",
 	 DATADIR "/pixmaps/gnome-term-night.png", "Quit from the GNOME desktop", construct_logout_item},
 	{ACTION_ITEM_TYPE_LOCK, "Lock Screen", "action:lock",
 	 DATADIR "/pixmaps/gnome-lockscreen.png", "Protect your computer from unauthorized use", construct_lock_item},
-	{ACTION_ITEM_TYPE_SHOW_DESKTOP, "Show Desktop", "action:show-desktop",
-	 DATADIR "/pixmaps/gnome-ccdesktop.png", "Show desktop", construct_show_desktop_item}
+*/
 };
 
 static gint n_actions = sizeof (action_items) / sizeof (ActionItem);
@@ -188,10 +190,6 @@ construct_from_uri (gchar *uri)
 static void
 show_run_dialog_cb (GtkWidget *widget, gpointer data)
 {
-/*
-	Bonobo_Unknown *panel;
-	bonobo_get_object
-*/
 }
 
 static void

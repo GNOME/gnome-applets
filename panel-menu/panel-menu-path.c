@@ -20,6 +20,7 @@
 #endif
 
 #include <libbonobo.h>
+#include <bonobo/bonobo-file-selector-util.h>
 #include <libgnome/libgnome.h>
 #include <libgnomeui/libgnomeui.h>
 #include <panel-applet.h>
@@ -640,6 +641,28 @@ panel_menu_path_remove_cb (GtkWidget *widget, GdkEventKey *event,
 	return retval;
 }
 
+static void
+handle_new_path_response (GtkDialog *dialog, gint response, PanelMenu *panel_menu)
+{
+	if (response == GTK_RESPONSE_OK) {
+		GtkEntry *path_entry;
+		const gchar *path;
+		PanelMenuEntry *entry;
+
+		path_entry = GTK_ENTRY (g_object_get_data (G_OBJECT (dialog),
+							   "source"));
+		path = gtk_entry_get_text (GTK_ENTRY (path_entry));
+		entry = panel_menu_path_new (panel_menu, (gchar *) path);
+		panel_menu->entries =
+			g_list_append (panel_menu->entries, (gpointer) entry);
+		gtk_menu_shell_append (GTK_MENU_SHELL (panel_menu->menubar),
+				       panel_menu_path_get_widget (entry));
+		panel_menu_config_save_layout (panel_menu);
+		panel_menu_path_save_config (entry);
+	}
+	gtk_widget_destroy (GTK_WIDGET (dialog));
+}
+
 void
 panel_menu_path_new_with_dialog (PanelMenu *panel_menu)
 {
@@ -651,21 +674,32 @@ panel_menu_path_new_with_dialog (PanelMenu *panel_menu)
 
 	dialog = panel_menu_path_edit_dialog_new (_("Create menu path item..."),
 						  "applications:", &path_entry);
+	g_object_set_data (G_OBJECT (dialog), "source", path_entry);
+	g_signal_connect (G_OBJECT (dialog), "response",
+			  G_CALLBACK (handle_new_path_response),
+			  panel_menu);
 	gtk_widget_show (dialog);
 	gtk_widget_grab_focus (path_entry);
+}
 
-	response = gtk_dialog_run (GTK_DIALOG (dialog));
+static void
+handle_change_path_response (GtkDialog *dialog, gint response, PanelMenuEntry *entry)
+{
 	if (response == GTK_RESPONSE_OK) {
-		path = (gchar *) gtk_entry_get_text (GTK_ENTRY (path_entry));
-		entry = panel_menu_path_new (panel_menu, path);
-		panel_menu->entries =
-			g_list_append (panel_menu->entries, (gpointer) entry);
-		gtk_menu_shell_append (GTK_MENU_SHELL (panel_menu->menubar),
-				       panel_menu_path_get_widget (entry));
-		panel_menu_config_save_layout (panel_menu);
-		panel_menu_path_save_config (entry);
+		GtkEntry *path_entry;
+		const gchar *new_path;
+		PanelMenuPath *path;
+
+		path = (PanelMenuPath *) entry->data;
+		path_entry = GTK_ENTRY (g_object_get_data (G_OBJECT (dialog),
+							   "source"));
+		new_path = gtk_entry_get_text (path_entry);
+		if (strcmp (path->base_path, new_path)) {
+			panel_menu_path_set_uri (entry, (gchar *)new_path);
+			panel_menu_path_save_config (entry);
+		}
 	}
-	gtk_widget_destroy (dialog);
+	gtk_widget_destroy (GTK_WIDGET (dialog));
 }
 
 static void
@@ -675,7 +709,6 @@ change_path_cb (GtkWidget *widget, PanelMenuEntry *entry, const char *verb)
 	GtkWidget *dialog;
 	GtkWidget *path_entry;
 	gint response;
-	gchar *new_path;
 
 	g_return_if_fail (entry != NULL);
 	g_return_if_fail (entry->type == PANEL_MENU_TYPE_PATH);
@@ -683,24 +716,52 @@ change_path_cb (GtkWidget *widget, PanelMenuEntry *entry, const char *verb)
 	path = (PanelMenuPath *) entry->data;
 	dialog = panel_menu_path_edit_dialog_new (_("Edit path item..."),
 						  path->base_path, &path_entry);
+	g_object_set_data (G_OBJECT (dialog), "source", path_entry);
+	g_signal_connect (G_OBJECT (dialog), "response",
+			  G_CALLBACK (handle_change_path_response),
+			  entry);
 	gtk_widget_show (dialog);
 	gtk_widget_grab_focus (path_entry);
+}
 
-	response = gtk_dialog_run (GTK_DIALOG (dialog));
+static void
+handle_browse_response (GtkDialog *dialog, gint response, GtkFileSelection *fsel)
+{
+	GtkEntry *entry;
+	const gchar *new_path;
+
 	if (response == GTK_RESPONSE_OK) {
-		new_path =
-			(gchar *) gtk_entry_get_text (GTK_ENTRY (path_entry));
-		if (strcmp (path->base_path, new_path)) {
-			panel_menu_path_set_uri (entry, new_path);
-			panel_menu_path_save_config (entry);
+		new_path = gtk_file_selection_get_filename (fsel);
+		if (new_path) {
+			entry = GTK_ENTRY(g_object_get_data (G_OBJECT (dialog), "target"));
+			gtk_entry_set_text (entry, new_path);
 		}
 	}
-	gtk_widget_destroy (dialog);
+	gtk_widget_destroy (GTK_WIDGET(dialog));
+}
+
+static void
+browse_callback (GtkButton *button, GtkEntry *entry)
+{
+	GtkWidget *fsel;
+	const gchar *old_path;
+
+	fsel = gtk_file_selection_new ("Choose a directory...");
+	gtk_window_set_transient_for (GTK_WINDOW (fsel), GTK_WINDOW (
+				      gtk_widget_get_toplevel (GTK_WIDGET (entry))));
+	gtk_window_set_modal (GTK_WINDOW (fsel), TRUE);
+	old_path = gtk_entry_get_text (entry);
+	gtk_file_selection_set_filename (GTK_FILE_SELECTION (fsel), old_path);
+	gtk_file_selection_set_select_multiple (GTK_FILE_SELECTION (fsel), FALSE);
+	g_object_set_data (G_OBJECT (fsel), "target", entry);
+	g_signal_connect (G_OBJECT (fsel), "response",
+			  G_CALLBACK (handle_browse_response), fsel);
+	gtk_widget_show (fsel);
 }
 
 static GtkWidget *
 panel_menu_path_edit_dialog_new (gchar *title, gchar *value,
-				 GtkWidget ** entry)
+				 GtkWidget **entry)
 {
 	GtkWidget *dialog;
 	GtkWidget *box;
@@ -733,6 +794,8 @@ panel_menu_path_edit_dialog_new (gchar *title, gchar *value,
 
 	browse = gtk_button_new_with_label (_("Browse..."));
 	gtk_box_pack_start (GTK_BOX (hbox), browse, FALSE, FALSE, 5);
+	g_signal_connect (G_OBJECT (browse), "clicked",
+			  G_CALLBACK(browse_callback), *entry);
 	gtk_widget_show (browse);
 	return dialog;
 }
