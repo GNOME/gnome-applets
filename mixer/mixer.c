@@ -964,6 +964,8 @@ destroy_mixer_cb (GtkWidget *widget, MixerData *data)
 	}
 	if (data->error_dialog)
 		gtk_widget_destroy (data->error_dialog);
+	if (data->tooltips)
+		g_object_unref (data->tooltips);
 	g_free (data);
 }
 
@@ -1078,6 +1080,7 @@ mixer_about_cb (BonoboUIComponent *uic,
 				 strcmp (translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
                                  pixbuf);
 
+	g_object_unref (pixbuf);
 	gtk_window_set_screen (GTK_WINDOW (about),
 			       gtk_widget_get_screen (data->applet));
 	gtk_window_set_wmclass (GTK_WINDOW(about), "volume control", "Volume Control");
@@ -1577,6 +1580,8 @@ mixer_applet_create (PanelApplet *applet)
 	mixer_load_volume_images (data);
 
         data->tooltips = gtk_tooltips_new ();                                   
+	g_object_ref (data->tooltips);
+	gtk_object_sink (GTK_OBJECT (data->tooltips));
         gtk_tooltips_set_tip (data->tooltips,
 			      data->applet,
 			      _(access_name),
