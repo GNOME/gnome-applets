@@ -841,7 +841,6 @@ about_cb (PanelApplet *widget, gpointer data)
    	gdk_pixbuf_unref (pixbuf);
    
    gtk_window_set_wmclass (GTK_WINDOW (about_box), "battery charge monitor", "Batter Charge Monitor");
-   gnome_window_icon_set_from_file (GTK_WINDOW (about_box), GNOME_ICONDIR"/battstat.png");
    gtk_widget_show (about_box);
 }
 
@@ -1437,6 +1436,8 @@ battstat_applet_fill (PanelApplet *applet)
   ProgressData *battstat;
 
   if (DEBUG) g_print("main()\n");
+  
+  gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/battstat.png");
   
   panel_applet_add_preferences (applet, "/schemas/apps/battstat-applet/prefs", NULL);
 
