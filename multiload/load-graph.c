@@ -157,7 +157,7 @@ load_graph_properties_init (GnomePropertyObject *object)
     guint i;
 
     static const gchar *adj_data_texts [3] = {
-	N_("Refersh interval (ms):"), N_("Width:"), N_("Height:")
+	N_("Speed:"), N_("Width:"), N_("Height:")
     };
 
     static glong adj_data_descr [3*8] = {
@@ -176,7 +176,7 @@ load_graph_properties_init (GnomePropertyObject *object)
     gtk_container_add (GTK_CONTAINER (vb), frame);
 
     frame = gnome_property_entry_adjustments
-	(object, NULL, 1, 1, 2, NULL, adj_data_texts,
+	(object, NULL, 3, 3, 2, NULL, adj_data_texts,
 	 adj_data_descr, prop_data->adj_data);
 
     gtk_container_add (GTK_CONTAINER (vb), frame);
