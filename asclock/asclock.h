@@ -50,7 +50,9 @@ struct _asclock
   GtkWidget *window;
   Window iconwin;
   int showampm;
+  int selected_showampm;
   int itblinks;
+  int selected_itblinks;
 #ifdef ASCLOCK_GNOME
   char theme_filename[MAX_PATH_LEN];
   char selected_theme_filename[MAX_PATH_LEN];

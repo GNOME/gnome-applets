@@ -12,7 +12,7 @@ void set_gnome_config(asclock *my, char *config_path)
 
   gnome_config_set_int(   "ASClock/itblinks", my->itblinks);
 
-  gnome_config_set_int(   "ASClock/isampm", my->showampm);
+  gnome_config_set_int(   "ASClock/showampm", my->showampm);
 
   gnome_config_pop_prefix();
 

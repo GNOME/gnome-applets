@@ -168,6 +168,35 @@ static int property_apply_cb(AppletWidget *applet, gpointer data)
     strncpy(static_my_asclock->theme_filename, static_my_asclock->selected_theme_filename, MAX_PATH_LEN);
   }
 
+  if(static_my_asclock->showampm != static_my_asclock->selected_showampm)
+  {
+    static_my_asclock->showampm = static_my_asclock->selected_showampm;
+    set_clock_pixmap();
+  }
+  static_my_asclock->itblinks = static_my_asclock->selected_itblinks;
+
+  return FALSE;
+}
+
+static int showampm_selected_cb(GtkWidget *b, gpointer data)
+{
+  asclock *my_asclock = (asclock *) data;
+  
+  my_asclock->selected_showampm = GTK_TOGGLE_BUTTON (b)->active;
+
+  gnome_property_box_changed( GNOME_PROPERTY_BOX(my_asclock->pwin));
+
+  return FALSE;
+}
+
+static int itblinks_selected_cb(GtkWidget *b, gpointer data)
+{
+  asclock *my_asclock = (asclock *) data;
+  
+  my_asclock->selected_itblinks = GTK_TOGGLE_BUTTON (b)->active;
+
+  gnome_property_box_changed( GNOME_PROPERTY_BOX(my_asclock->pwin));
+
   return FALSE;
 }
 
@@ -240,9 +269,22 @@ void properties_dialog(AppletWidget *applet, gpointer data)
       closedir(dfd);
     }
 
-  label = gtk_label_new(_("Blinking Colon:") );
+  /* show ampm toggle button */
+  label = gtk_check_button_new_with_label (_("Display time in 12 hour format (AM/PM)"));
+  gtk_box_pack_start(GTK_BOX(opts), label, FALSE, FALSE, 0);
+ 
+  gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(label), my_asclock->showampm);
+  gtk_signal_connect (GTK_OBJECT(label), "clicked", (GtkSignalFunc) showampm_selected_cb, my_asclock);
+  gtk_widget_show(label);
 
-  //gtk_container_add(GTK_CONTAINER( opts ), label);
+  /* show ampm toggle button */
+  label = gtk_check_button_new_with_label (_("Blinking elements in clock"));
+  gtk_box_pack_start(GTK_BOX(opts), label, FALSE, FALSE, 0);
+ 
+  gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(label), my_asclock->itblinks);
+  gtk_signal_connect (GTK_OBJECT(label), "clicked", (GtkSignalFunc) itblinks_selected_cb, my_asclock);
+  gtk_widget_show(label);
+
 
 /*
   calendar = gtk_calendar_new();
