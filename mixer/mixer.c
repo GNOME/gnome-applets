@@ -62,7 +62,7 @@
 #ifdef OSS_API
 #define VOLUME_MAX 100
 #endif
-#ifde SUN_API
+#ifdef SUN_API
 #define VOLUME_MAX 255
 #endif
 
