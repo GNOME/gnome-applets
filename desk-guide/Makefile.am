@@ -15,8 +15,6 @@ deskguide_applet_LDADD = ../../panel/libpanel_applet.la \
 		     $(GNOMEUI_LIBS) $(GNORBA_LIBS)      \
 		     $(INTLLIBS)
 
-CFLAGS += -Wunused
-
 EXTRA_DIST = \
 	gstc.h \
 	gwmh.h \

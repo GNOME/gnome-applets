@@ -64,6 +64,7 @@ CATALOGS = @CATALOGS@
 CATOBJEXT = @CATOBJEXT@
 CC = @CC@
 CDROM_HOST = @CDROM_HOST@
+CFLAGS = @CFLAGS@
 CPPFLAGS = @CPPFLAGS@
 CXX = @CXX@
 DATADIRNAME = @DATADIRNAME@
@@ -163,8 +164,6 @@ deskguide_applet_SOURCES = gstc.c gwmh.c gwmdesktop.c deskguide_applet.c
 
 deskguide_applet_LDADD = ../../panel/libpanel_applet.la 		     $(GNOME_LIBDIR) $(ORB_LIBS)         		     $(GNOMEUI_LIBS) $(GNORBA_LIBS)      		     $(INTLLIBS)
 
-
-CFLAGS = @CFLAGS@ -Wunused
 
 EXTRA_DIST =  	gstc.h 	gwmh.h 	gwmdesktop.h 	deskguide_applet.h 	deskguide_applet.gnorba 	deskguide_applet.desktop 	stripe.xbm
 
