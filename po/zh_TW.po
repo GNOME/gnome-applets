@@ -12,14 +12,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 2.3.6\n"
-"POT-Creation-Date: 2003-09-01 11:54-0400\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-10-10 00:53+0800\n"
 "PO-Revision-Date: 2003-09-01 21:15+0800\n"
 "Last-Translator: Abel Cheung <maddog@linux.org.hk>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Report-Msgid-Bugs-To: \n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: accessx-status/GNOME_AccessxApplet.xml.h:1
@@ -47,6 +47,7 @@ msgstr "關於(_A)..."
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
 #: mixer/GNOME_MixerApplet.xml.h:2 modemlights/GNOME_ModemlightsApplet.xml.h:2
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:3
+#: wireless/GNOME_WirelessApplet.xml.h:2
 msgid "_Help"
 msgstr "求助(_H)"
 
@@ -82,13 +83,13 @@ msgid "Utility"
 msgstr "公用程式"
 
 #: accessx-status/applet.c:135 battstat/battstat_applet.c:839
-#: cdplayer/cdplayer.c:575 charpick/charpick.c:582 drivemount/drivemount.c:510
-#: geyes/geyes.c:228 gkb-new/gkb-applet.c:84 gtik/gtik.c:774
+#: cdplayer/cdplayer.c:575 charpick/charpick.c:584 drivemount/drivemount.c:510
+#: geyes/geyes.c:228 gkb-new/gkb-applet.c:84 gtik/gtik.c:775
 #: gweather/gweather-about.c:44 mailcheck/mailcheck.c:2435
 #: mini-commander/src/about.c:48 mixer/mixer.c:1060
 #: modemlights/modemlights.c:115 multiload/main.c:57
-#: stickynotes/stickynotes_applet_callbacks.c:178
-#: wireless/wireless-applet.c:528
+#: stickynotes/stickynotes_applet_callbacks.c:191
+#: wireless/wireless-applet.c:560
 msgid "translator_credits"
 msgstr ""
 "i18n 程式中文化計劃\n"
@@ -152,7 +153,7 @@ msgstr "監控攜帶型電腦的剩餘電量"
 #: mixer/GNOME_MixerApplet.xml.h:5 modemlights/GNOME_ModemlightsApplet.xml.h:3
 #: multiload/GNOME_MultiloadApplet.xml.h:3
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:6
-#: wireless/GNOME_WirelessApplet.xml.h:2
+#: wireless/GNOME_WirelessApplet.xml.h:3
 msgid "_Preferences..."
 msgstr "偏好設定(_P)..."
 
@@ -465,7 +466,7 @@ msgstr "<b>暫停模式</b>"
 msgid "<b>Warnings</b>"
 msgstr "<b>警告</b>"
 
-#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1522
+#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1523
 msgid "Appearance"
 msgstr "外觀"
 
@@ -534,7 +535,9 @@ msgstr "黃(_Y)︰"
 #: battstat/properties.c:296 drivemount/drivemount.c:468
 #: drivemount/properties.c:589 mailcheck/mailcheck.c:2291
 #: mailcheck/mailcheck.c:2540 mini-commander/src/preferences.c:393
-#: mixer/mixer.c:1167
+#: mixer/mixer.c:1167 stickynotes/stickynotes_applet_callbacks.c:169
+#: stickynotes/stickynotes_applet_callbacks.c:317
+#: wireless/wireless-applet.c:535 wireless/wireless-applet.c:609
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "顯示說明文件時出現錯誤：%s"
@@ -685,8 +688,8 @@ msgid ""
 "applet"
 msgstr "這個是 CD 裝置檔案的完整路徑，面板程式會開啟這個檔案來播放 CD"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:600
-#: charpick/charpick.c:744 charpick/properties.c:333
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:602
+#: charpick/charpick.c:746 charpick/properties.c:333
 msgid "Character Palette"
 msgstr "字元選擇盤"
 
@@ -698,37 +701,37 @@ msgstr "字元選擇面板程式工廠"
 msgid "Insert characters"
 msgstr "加入字元"
 
-#: charpick/charpick.c:322 charpick/properties.c:125
+#: charpick/charpick.c:324 charpick/properties.c:125
 msgid "Add Palette"
 msgstr "加入選字盤"
 
-#: charpick/charpick.c:363
+#: charpick/charpick.c:365
 msgid "Add a palette..."
 msgstr "加入選字盤..."
 
-#: charpick/charpick.c:446
+#: charpick/charpick.c:448
 msgid "Available palettes"
 msgstr "可供選用的字盤"
 
-#: charpick/charpick.c:483
+#: charpick/charpick.c:485
 msgid "Insert special characters"
 msgstr "加入特殊字元"
 
 #. If your charset supports it, please use U00F1 to replace the "n"
 #. * in "Muniz".
-#: charpick/charpick.c:573
+#: charpick/charpick.c:575
 msgid "Alexandre Muniz <munizao@xprt.net>"
 msgstr "Alexandre Muñiz <munizao@xprt.net>"
 
-#: charpick/charpick.c:574
+#: charpick/charpick.c:576
 msgid "Kevin Vandersloot"
 msgstr "Kevin Vandersloot"
 
-#: charpick/charpick.c:602
+#: charpick/charpick.c:604
 msgid "Copyright (C) 1998"
 msgstr "版權所有 © 1998"
 
-#: charpick/charpick.c:603
+#: charpick/charpick.c:605
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -999,7 +1002,7 @@ msgstr "GNOME 面板上與 xeyes 同類的程式。"
 
 #: geyes/geyes.c:457
 msgid "The eyes look in the direction of the mouse pointer"
-msgstr "眼睛會望向滑鼠鼠標"
+msgstr "眼睛會望向滑鼠指標"
 
 #: geyes/geyes.schemas.in.h:1
 msgid "Directory in which the theme is located"
@@ -2024,19 +2027,19 @@ msgstr ""
 
 #: gkb-new/descs/presets.xml.in.h:172
 msgid "Somalia"
-msgstr ""
+msgstr "索馬利亞"
 
 #: gkb-new/descs/presets.xml.in.h:175
 msgid "Spanish PC/AT 101 keyboard"
-msgstr ""
+msgstr "西班牙 PC/AT 101 鍵鍵盤"
 
 #: gkb-new/descs/presets.xml.in.h:176
 msgid "Spanish keymap"
-msgstr ""
+msgstr "西班牙文鍵盤對應表"
 
 #: gkb-new/descs/presets.xml.in.h:177
 msgid "Spanish xkb keymap"
-msgstr ""
+msgstr "西班牙文 xkb 鍵盤對應表"
 
 #: gkb-new/descs/presets.xml.in.h:178
 msgid "Sudan"
@@ -2060,7 +2063,7 @@ msgstr ""
 
 #: gkb-new/descs/presets.xml.in.h:186
 msgid "Syria"
-msgstr ""
+msgstr "敘利亞"
 
 #: gkb-new/descs/presets.xml.in.h:187
 msgid "Syriac"
@@ -2104,15 +2107,15 @@ msgstr ""
 
 #: gkb-new/descs/presets.xml.in.h:201
 msgid "UK 105-key"
-msgstr ""
+msgstr "英式 105 鍵鍵盤"
 
 #: gkb-new/descs/presets.xml.in.h:202
 msgid "UK PC/AT keyboard"
-msgstr ""
+msgstr "英式 PC/AT 鍵盤"
 
 #: gkb-new/descs/presets.xml.in.h:203
 msgid "US 101-key keyboard"
-msgstr ""
+msgstr "美式 101 鍵鍵盤"
 
 #: gkb-new/descs/presets.xml.in.h:204
 msgid "US 105-key keyboard (with windows keys)"
@@ -2120,7 +2123,7 @@ msgstr ""
 
 #: gkb-new/descs/presets.xml.in.h:205
 msgid "US 84-key"
-msgstr ""
+msgstr "美式 84 鍵鍵盤"
 
 #: gkb-new/descs/presets.xml.in.h:206
 msgid "US DEC 450"
@@ -2128,11 +2131,11 @@ msgstr ""
 
 #: gkb-new/descs/presets.xml.in.h:207
 msgid "US IBM RS/6000"
-msgstr ""
+msgstr "美式 IBM PS/6000 鍵盤"
 
 #: gkb-new/descs/presets.xml.in.h:208
 msgid "US International"
-msgstr ""
+msgstr "美式國際鍵盤"
 
 #: gkb-new/descs/presets.xml.in.h:209
 msgid "US International xkb keymap"
@@ -2144,11 +2147,11 @@ msgstr ""
 
 #: gkb-new/descs/presets.xml.in.h:211
 msgid "US PC/AT 101 keyboard"
-msgstr ""
+msgstr "美式 PC/AT 101 鍵鍵盤"
 
 #: gkb-new/descs/presets.xml.in.h:212
 msgid "US Silicon Graphics 101-key"
-msgstr ""
+msgstr "美式 Silicon Graphics 101 鍵鍵盤"
 
 #: gkb-new/descs/presets.xml.in.h:213
 msgid "US Sun type5"
@@ -2172,11 +2175,11 @@ msgstr ""
 
 #: gkb-new/descs/presets.xml.in.h:222
 msgid "Viet_namese"
-msgstr ""
+msgstr "越南文"
 
 #: gkb-new/descs/presets.xml.in.h:223
 msgid "Viet_namese xkb keymap"
-msgstr ""
+msgstr "越南文 xkb 鍵盤對應表"
 
 #: gkb-new/descs/presets.xml.in.h:225
 msgid "Yemen"
@@ -2229,7 +2232,7 @@ msgstr "代表這個鍵盤配置的國旗"
 
 #: gkb-new/gkb.schemas.in.h:3
 msgid "It can be \"Flag and Label\", \"Label\" or \"Flag\""
-msgstr ""
+msgstr "本設定的值可以是“Flag and Label”、“Label”或“Flag”"
 
 #: gkb-new/gkb.schemas.in.h:4
 msgid "Keybinding for switching layout"
@@ -2280,6 +2283,8 @@ msgid ""
 "This should be like \"gkb_xmmap us\", \"setxkbmap us\" or \"xmodmap "
 "something.xmm\""
 msgstr ""
+"本設定的值必須是類似“gkb_xmmap us”、“setxkbmap us”或“xmodmap something.xmm”等"
+"等"
 
 #: gkb-new/gkb.schemas.in.h:16
 msgid "This will appear in the label box of the applet"
@@ -2358,7 +2363,7 @@ msgstr "標籤"
 msgid "Flag and Label"
 msgstr "國旗及標籤"
 
-#: gkb-new/prop.c:257 gtik/gtik.c:1529 gweather/gweather-pref.c:746
+#: gkb-new/prop.c:257 gtik/gtik.c:1530 gweather/gweather-pref.c:746
 #: modemlights/properties.c:438
 msgid "Display"
 msgstr "顯示"
@@ -2446,7 +2451,7 @@ msgstr "獲取不斷更新的股市行情"
 msgid "Gtik Applet Factory"
 msgstr "Gtik 面板程式工廠"
 
-#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:790
+#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:791
 msgid "Stock Ticker"
 msgstr "股市行情"
 
@@ -2463,7 +2468,7 @@ msgstr "無法擷取股市數據。"
 msgid "Updating..."
 msgstr "更新中..."
 
-#: gtik/gtik.c:792
+#: gtik/gtik.c:793
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.  "
 "The GNOME Stock Ticker is a free Internet-based application.  It comes with "
@@ -2473,126 +2478,126 @@ msgstr ""
 "本程式會接駁某個著名網站並下載現時的股價。「GNOME 股市行情」是一個可自由使用"
 "的軟體。它沒有使用擔保。不要使用它作投資的決定；所有資訊只可作為參考資料。"
 
-#: gtik/gtik.c:1278
+#: gtik/gtik.c:1279
 msgid "Current _stocks:"
 msgstr "目前的股市情況(_S)："
 
-#: gtik/gtik.c:1286
+#: gtik/gtik.c:1287
 msgid "_New symbol:"
 msgstr "新增股票代碼(_N)："
 
-#: gtik/gtik.c:1295
+#: gtik/gtik.c:1296
 msgid "_Add"
 msgstr "新增(_A)"
 
-#: gtik/gtik.c:1304
+#: gtik/gtik.c:1305
 msgid "_Remove"
 msgstr "移除(_R)"
 
-#: gtik/gtik.c:1410
+#: gtik/gtik.c:1411
 msgid "Stock Ticker Preferences"
 msgstr "「股市行情」偏好設定"
 
-#: gtik/gtik.c:1432
+#: gtik/gtik.c:1433
 msgid "Symbols"
 msgstr "股票代碼"
 
-#: gtik/gtik.c:1439 mailcheck/mailcheck.c:2366
+#: gtik/gtik.c:1440 mailcheck/mailcheck.c:2366
 msgid "Behavior"
 msgstr "運作方式"
 
-#: gtik/gtik.c:1442 gweather/gweather-pref.c:705
+#: gtik/gtik.c:1443 gweather/gweather-pref.c:705
 msgid "Update"
 msgstr "更新"
 
-#: gtik/gtik.c:1446
+#: gtik/gtik.c:1447
 msgid "Stock update fre_quency:"
 msgstr "股市行情更新周期(_Q)："
 
-#: gtik/gtik.c:1458 gweather/gweather-pref.c:729 mailcheck/mailcheck.c:2074
+#: gtik/gtik.c:1459 gweather/gweather-pref.c:729 mailcheck/mailcheck.c:2074
 #: mailcheck/mailcheck.c:2080
 msgid "minutes"
 msgstr "分"
 
-#: gtik/gtik.c:1464
+#: gtik/gtik.c:1465
 msgid "Scrolling"
 msgstr "捲動顯示"
 
-#: gtik/gtik.c:1468
+#: gtik/gtik.c:1469
 msgid "_Scroll speed:"
 msgstr "捲動速度(_S)："
 
-#: gtik/gtik.c:1472
+#: gtik/gtik.c:1473
 msgid "Slow"
 msgstr "慢"
 
-#: gtik/gtik.c:1474
+#: gtik/gtik.c:1475
 msgid "Medium"
 msgstr "中"
 
-#: gtik/gtik.c:1476
+#: gtik/gtik.c:1477
 msgid "Fast"
 msgstr "快"
 
-#: gtik/gtik.c:1496
+#: gtik/gtik.c:1497
 msgid "_Enable scroll buttons"
 msgstr "顯示捲動按紐(_E)"
 
-#: gtik/gtik.c:1508
+#: gtik/gtik.c:1509
 msgid "Scroll _left to right"
 msgstr "由左至右捲動(_L)"
 
-#: gtik/gtik.c:1534
+#: gtik/gtik.c:1535
 msgid "Displa_y only symbols and price"
 msgstr "只顯示股票代碼及股價(_Y)"
 
-#: gtik/gtik.c:1547 mini-commander/src/mini-commander.glade.h:23
+#: gtik/gtik.c:1548 mini-commander/src/mini-commander.glade.h:23
 #: stickynotes/stickynotes.glade.h:48
 msgid "_Width:"
 msgstr "寬度(_W)："
 
-#: gtik/gtik.c:1561 mini-commander/src/mini-commander.glade.h:24
+#: gtik/gtik.c:1562 mini-commander/src/mini-commander.glade.h:24
 #: multiload/properties.c:483
 msgid "pixels"
 msgstr "像素"
 
-#: gtik/gtik.c:1570
+#: gtik/gtik.c:1571
 msgid "Font and Colors"
 msgstr "字型及色彩"
 
-#: gtik/gtik.c:1576
+#: gtik/gtik.c:1577
 msgid "Use _default theme font and colors"
 msgstr "使用預設的佈景主題字型及色彩(_D)"
 
-#: gtik/gtik.c:1591 stickynotes/stickynotes.glade.h:42
+#: gtik/gtik.c:1592 stickynotes/stickynotes.glade.h:42
 msgid "_Font:"
 msgstr "字型(_F)："
 
-#: gtik/gtik.c:1615
+#: gtik/gtik.c:1616
 msgid "Stock _raised:"
 msgstr "股值上升(_R)："
 
-#: gtik/gtik.c:1634
+#: gtik/gtik.c:1635
 msgid "Stock _lowered:"
 msgstr "股值下降(_L)："
 
-#: gtik/gtik.c:1653
+#: gtik/gtik.c:1654
 msgid "Stock _unchanged:"
 msgstr "股值保持不變(_U)："
 
-#: gtik/gtik.c:1672 modemlights/properties.c:570
+#: gtik/gtik.c:1673 modemlights/properties.c:570
 msgid "_Background:"
 msgstr "背景顏色(_B)："
 
-#: gtik/gtik.c:1805
+#: gtik/gtik.c:1806
 msgid "Skip forward"
 msgstr "向前捲動"
 
-#: gtik/gtik.c:1806
+#: gtik/gtik.c:1807
 msgid "Skip backward"
 msgstr "向後捲動"
 
-#: gtik/gtik.c:1814
+#: gtik/gtik.c:1815
 msgid ""
 "Stock Ticker\n"
 "Get continuously updated stock quotes"
@@ -2600,11 +2605,11 @@ msgstr ""
 "股市行情\n"
 "獲取不斷更新的股市行情"
 
-#: gtik/gtik.c:2005
+#: gtik/gtik.c:2009
 msgid "(No"
 msgstr "(沒有"
 
-#: gtik/gtik.c:2006
+#: gtik/gtik.c:2010
 msgid "Change "
 msgstr "改變"
 
@@ -3281,7 +3286,7 @@ msgstr "局部地區性有霧"
 
 #: gweather/weather.c:203
 msgid "Partial fog"
-msgstr "部分方向有霧"
+msgstr "部份方向有霧"
 
 #: gweather/weather.c:203
 msgid "Freezing fog"
@@ -3719,9 +3724,8 @@ msgid "The mail server"
 msgstr "郵件伺服器"
 
 #: mailcheck/mailcheck.schemas.in.h:22
-#, fuzzy
 msgid "The user's encrypted password for the remote server"
-msgstr "遠端伺服器中的用戶密碼"
+msgstr "用戶在遠端伺服器中密碼 (加密後)"
 
 #: mailcheck/mailcheck.schemas.in.h:23
 msgid "The user's password"
@@ -3922,31 +3926,31 @@ msgstr "使用預設佈景主題色彩(_U)"
 
 #: mini-commander/src/mini-commander.schemas.in.h:1
 msgid "Attempt to autocomplete a command from the history of commands entered."
-msgstr ""
+msgstr "根據指令紀錄來自動補齊未完成的指令。"
 
 #: mini-commander/src/mini-commander.schemas.in.h:2
 msgid "Color background blue component"
-msgstr ""
+msgstr "背景顏色藍色部份數值"
 
 #: mini-commander/src/mini-commander.schemas.in.h:3
 msgid "Color background green component"
-msgstr ""
+msgstr "背景顏色綠色部份數值"
 
 #: mini-commander/src/mini-commander.schemas.in.h:4
 msgid "Color background red component"
-msgstr ""
+msgstr "背景顏色紅色部份數值"
 
 #: mini-commander/src/mini-commander.schemas.in.h:5
 msgid "Color foreground blue component"
-msgstr ""
+msgstr "文字顏色藍色部份數值"
 
 #: mini-commander/src/mini-commander.schemas.in.h:6
 msgid "Color foreground green component"
-msgstr ""
+msgstr "文字顏色綠色部份數值"
 
 #: mini-commander/src/mini-commander.schemas.in.h:7
 msgid "Color foreground red component"
-msgstr ""
+msgstr "文字顏色紅色部份數值"
 
 #: mini-commander/src/mini-commander.schemas.in.h:8
 msgid "History list"
@@ -3978,11 +3982,11 @@ msgstr "根據指令紀錄自動補齊指令"
 
 #: mini-commander/src/mini-commander.schemas.in.h:16
 msgid "Show a frame surrounding the applet."
-msgstr ""
+msgstr "在面板程式周圍顯示邊框。"
 
 #: mini-commander/src/mini-commander.schemas.in.h:17
 msgid "Show a handle so the applet can be detached from the panel."
-msgstr ""
+msgstr "顯示控制棒，令面板程式可以脫離面板。"
 
 #: mini-commander/src/mini-commander.schemas.in.h:18
 msgid "Show frame"
@@ -3994,27 +3998,27 @@ msgstr "顯示控制棒元件"
 
 #: mini-commander/src/mini-commander.schemas.in.h:20
 msgid "The blue component of the background color."
-msgstr "背景顏色的藍色部分數值"
+msgstr "背景顏色的藍色部份數值"
 
 #: mini-commander/src/mini-commander.schemas.in.h:21
 msgid "The blue component of the foreground color."
-msgstr "文字顏色的藍色部分數值"
+msgstr "文字顏色的藍色部份數值"
 
 #: mini-commander/src/mini-commander.schemas.in.h:22
 msgid "The green component of the background color."
-msgstr "背景顏色的綠色部分數值"
+msgstr "背景顏色的綠色部份數值"
 
 #: mini-commander/src/mini-commander.schemas.in.h:23
 msgid "The green component of the foreground color."
-msgstr "文字顏色的綠色部分數值"
+msgstr "文字顏色的綠色部份數值"
 
 #: mini-commander/src/mini-commander.schemas.in.h:24
 msgid "The red component of the background color."
-msgstr "背景顏色的紅色部分數值"
+msgstr "背景顏色的紅色部份數值"
 
 #: mini-commander/src/mini-commander.schemas.in.h:25
 msgid "The red component of the foreground color."
-msgstr "文字顏色的紅色部分數值"
+msgstr "文字顏色的紅色部份數值"
 
 #: mini-commander/src/mini-commander.schemas.in.h:26
 msgid "Use the default theme colors"
@@ -4203,6 +4207,11 @@ msgstr ""
 "警告：這個版本的 gmix 是用不同\n"
 "版本的 soundcard.h 編譯出來的。\n"
 
+#: mixer/mixer.c:632
+#, c-format
+msgid "Couldn't open mixer device %s\n"
+msgstr "無法開啟音量調整裝置 %s\n"
+
 #: mixer/mixer.c:801
 msgid "Volume Controller"
 msgstr "音量控制程式"
@@ -4319,17 +4328,16 @@ msgid "Command executed when disconnecting"
 msgstr "準備斷線時執行的指令"
 
 #: modemlights/modemlights.schemas.in.h:5
-#, fuzzy
 msgid "Display a confirmation dialog when connecting or disconnecting."
-msgstr "當連線時令表示狀態的燈號閃爍(_L)"
+msgstr "在連線時或斷線前顯示訊息要求用戶確認"
 
 #: modemlights/modemlights.schemas.in.h:6
 msgid "Make the applet blink when the modem is connecting."
-msgstr ""
+msgstr "當數據機正在進行連線時令面板程式燈號閃爍。"
 
 #: modemlights/modemlights.schemas.in.h:7
 msgid "Modem device name"
-msgstr ""
+msgstr "數據機裝置名稱"
 
 #: modemlights/modemlights.schemas.in.h:8
 msgid "Modem lock file"
@@ -4359,10 +4367,9 @@ msgstr "顯示連線時間及流量"
 msgid ""
 "Show extra information about the connect time and amount of data transmitted "
 "and received."
-msgstr ""
+msgstr "顯示額外資訊，包括連線時間和網路流量。"
 
 #: modemlights/modemlights.schemas.in.h:15
-#, fuzzy
 msgid "Status connected color"
 msgstr "代表成功連線的顏色"
 
@@ -4388,47 +4395,46 @@ msgstr "文字輪廓顏色"
 
 #: modemlights/modemlights.schemas.in.h:21
 msgid "The background color of the button used to indicate data received."
-msgstr ""
+msgstr "當收到數據時，使用這個顏色表示按鈕的背景顏色。"
 
 #: modemlights/modemlights.schemas.in.h:22
 msgid "The background color of the button used to indicate data sent."
-msgstr ""
+msgstr "當送出數據時，使用這個顏色表示按鈕的背景顏色。"
 
 #: modemlights/modemlights.schemas.in.h:23
 msgid ""
 "The color used to display the status button when the modem is connected."
-msgstr ""
+msgstr "當數據機完成連線時，狀態按鈕會以這個顏色顯示。"
 
 #: modemlights/modemlights.schemas.in.h:24
 msgid ""
 "The color used to display the status button when the modem is connecting."
-msgstr ""
+msgstr "當數據機進行連線時，狀態按鈕會以這個顏色顯示。"
 
 #: modemlights/modemlights.schemas.in.h:25
 msgid ""
 "The color used to display the status button when the modem is not connected."
-msgstr ""
+msgstr "當數據機沒有連線時，狀態按鈕會以這個顏色顯示。"
 
 #: modemlights/modemlights.schemas.in.h:26
 msgid "The color used to indicate that data has been received."
-msgstr ""
+msgstr "用來表示收到數據的顏色。"
 
 #: modemlights/modemlights.schemas.in.h:27
 msgid "The color used to indicate that data has been sent."
-msgstr ""
+msgstr "用來表示送出數據的顏色。"
 
 #: modemlights/modemlights.schemas.in.h:28
 msgid "The fraction of a second until the applet updates."
-msgstr ""
+msgstr "每隔指定的時間面板程式都會更新。"
 
 #: modemlights/modemlights.schemas.in.h:29
 msgid "The name of the modem device."
 msgstr "數據機裝置名稱"
 
 #: modemlights/modemlights.schemas.in.h:30
-#, fuzzy
 msgid "The name of the modem lock file."
-msgstr "該鍵盤配置的名稱"
+msgstr "數據機鎖定檔案的名稱"
 
 #: modemlights/modemlights.schemas.in.h:32
 msgid "Use isdn"
@@ -4436,16 +4442,15 @@ msgstr "使用 ISDN"
 
 #: modemlights/modemlights.schemas.in.h:33
 msgid "Use isdn instead of ppp to connect the modem."
-msgstr ""
+msgstr "使用 isdn 而不是 ppp 來連接數據機。"
 
 #: modemlights/modemlights.schemas.in.h:34
-#, fuzzy
 msgid "Use this command to connect the modem."
-msgstr "檢查郵件前執行的指令"
+msgstr "令數據機連線的指令。"
 
 #: modemlights/modemlights.schemas.in.h:35
 msgid "Use this command to disconnect the modem."
-msgstr "令數據機斷線的指令"
+msgstr "令數據機斷線的指令。"
 
 #: modemlights/modemlights.schemas.in.h:36
 msgid "Verify owner of lock file"
@@ -4489,14 +4494,16 @@ msgstr "確認連線狀態(_F)"
 msgid "Receive Data"
 msgstr "接收資料"
 
+# foreground color of modem light when data is coming in -- Abel
 #: modemlights/properties.c:568
 msgid "_Foreground:"
-msgstr "前景顏色(_F)："
+msgstr "燈號顏色(_F)："
 
 #: modemlights/properties.c:573
 msgid "Send Data"
 msgstr "送出資料"
 
+# foreground color of modem light when data is going out -- Abel
 #: modemlights/properties.c:578
 msgid "Foregroun_d:"
 msgstr "燈號顏色(_D)："
@@ -4525,9 +4532,10 @@ msgstr "連線中(_O)："
 msgid "Text"
 msgstr "文字"
 
+# text foreground color -- Abel
 #: modemlights/properties.c:607
 msgid "For_eground:"
-msgstr "燈號顏色(_E)："
+msgstr "文字顏色(_E)："
 
 #: modemlights/properties.c:609
 msgid "Bac_kground:"
@@ -4633,7 +4641,7 @@ msgstr "記憶體負載"
 
 #: multiload/multiload.schemas.in.h:1
 msgid "Applet refresh rate in milliseconds"
-msgstr ""
+msgstr "面板程式自動更新頻率 (毫秒)"
 
 #: multiload/multiload.schemas.in.h:2
 msgid "CPU graph background color"
@@ -4641,86 +4649,87 @@ msgstr "CPU 負載量背景顏色"
 
 #: multiload/multiload.schemas.in.h:3
 msgid "Enable CPU load graph"
-msgstr ""
+msgstr "顯示 CPU 負載圖"
 
 #: multiload/multiload.schemas.in.h:4
 msgid "Enable load average graph"
-msgstr ""
+msgstr "顯示系統平均負載圖"
 
 #: multiload/multiload.schemas.in.h:5
 msgid "Enable memory load graph"
-msgstr ""
+msgstr "顯示記憶體負載圖"
 
 #: multiload/multiload.schemas.in.h:6
 msgid "Enable network load graph"
-msgstr ""
+msgstr "顯示網路負載圖"
 
 #: multiload/multiload.schemas.in.h:7
 msgid "Enable swap load graph"
-msgstr ""
+msgstr "顯示交換記憶負載圖"
 
 #: multiload/multiload.schemas.in.h:8
 msgid ""
 "For horizontal panels, the width of the graphs in pixels. For vertical "
 "panels, this is the height of the graphs."
 msgstr ""
+"在水平方向的面板中，這個數字是每一格的寬度 (像素)。而在垂直面板中這個數字就代"
+"表每格的高度。"
 
 #: multiload/multiload.schemas.in.h:9
 msgid "Graph color for Ethernet network activity"
-msgstr ""
+msgstr "代表數據經過 Ethernet 網路的顏色"
 
 #: multiload/multiload.schemas.in.h:10
 msgid "Graph color for PLIP network activity"
-msgstr ""
+msgstr "代表數據經過 PLIP 網路的顏色"
 
 #: multiload/multiload.schemas.in.h:11
 msgid "Graph color for SLIP network activity"
-msgstr ""
+msgstr "代表數據經過 SLIP 網路的顏色"
 
 #: multiload/multiload.schemas.in.h:12
 msgid "Graph color for buffer memory"
-msgstr ""
+msgstr "代表緩衝記憶用量的顏色"
 
 #: multiload/multiload.schemas.in.h:13
 msgid "Graph color for cached memory"
-msgstr ""
+msgstr "代表快取記憶用量的顏色"
 
 #: multiload/multiload.schemas.in.h:14
 msgid "Graph color for load average"
-msgstr ""
+msgstr "代表系統平均負載的顏色"
 
 #: multiload/multiload.schemas.in.h:15
 msgid "Graph color for nice-related CPU activity"
-msgstr ""
+msgstr "代表優先值較低的進程的 CPU 用量的顏色"
 
 #: multiload/multiload.schemas.in.h:16
-#, fuzzy
 msgid "Graph color for other network usage"
-msgstr "使用系統指定的色彩(_L)"
+msgstr "代表數據經過其它種類的網路的顏色"
 
 #: multiload/multiload.schemas.in.h:17
 msgid "Graph color for shared memory"
-msgstr ""
+msgstr "代表分享記憶用量的顏色"
 
 #: multiload/multiload.schemas.in.h:18
 msgid "Graph color for system-related CPU activity"
-msgstr ""
+msgstr "代表和系統有關的 CPU 用量的顏色"
 
 #: multiload/multiload.schemas.in.h:19
 msgid "Graph color for user-related CPU activity"
-msgstr ""
+msgstr "代表和用戶有關的 CPU 用量的顏色"
 
 #: multiload/multiload.schemas.in.h:20
 msgid "Graph color for user-related memory usage"
-msgstr ""
+msgstr "代表和用戶有關的記憶體用量的顏色"
 
 #: multiload/multiload.schemas.in.h:21
 msgid "Graph color for user-related swap usage"
-msgstr ""
+msgstr "代表和用戶有關的交換記憶用量的顏色"
 
 #: multiload/multiload.schemas.in.h:22
 msgid "Graph size"
-msgstr ""
+msgstr "方格"
 
 #: multiload/multiload.schemas.in.h:23
 msgid "Load graph background color"
@@ -4792,11 +4801,11 @@ msgstr "系統(_Y)"
 
 #: multiload/properties.c:557
 msgid "N_ice"
-msgstr "優先值(_I)"
+msgstr "N_ice"
 
 #: multiload/properties.c:558
 msgid "I_dle"
-msgstr "閑置(_D)"
+msgstr "閒置(_D)"
 
 #: multiload/properties.c:563
 msgid "Sh_ared"
@@ -4804,15 +4813,15 @@ msgstr "分享(_A)"
 
 #: multiload/properties.c:564
 msgid "_Buffers"
-msgstr "緩衝(_B)"
+msgstr "緩衝區(_B)"
 
 #: multiload/properties.c:565
 msgid "Cach_ed"
-msgstr ""
+msgstr "快取記憶(_E)"
 
 #: multiload/properties.c:566
 msgid "F_ree"
-msgstr "可用(_R)"
+msgstr "未用(_R)"
 
 #: multiload/properties.c:570
 msgid "_SLIP"
@@ -4863,8 +4872,8 @@ msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "在桌面中製作、顯示和管理便條"
 
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:3
-#: stickynotes/stickynotes_applet.c:339
-#: stickynotes/stickynotes_applet_callbacks.c:180
+#: stickynotes/stickynotes_applet.c:338
+#: stickynotes/stickynotes_applet_callbacks.c:193
 msgid "Sticky Notes"
 msgstr "便條"
 
@@ -5105,7 +5114,8 @@ msgid ""
 "Default color for new sticky notes. This should be in html hex "
 "specification, for example \"#30FF50\"."
 msgstr ""
-"新便條預設使用的顏色。它應該使用像 HTML 中的 16 進制數字來表示，例如“#30FF50”"
+"新便條預設使用的顏色。它應該使用像 HTML 中的 16 進制數字來表示，例"
+"如“#30FF50”。"
 
 #: stickynotes/stickynotes.schemas.in.h:7
 msgid "Default font for new notes"
@@ -5116,7 +5126,7 @@ msgid ""
 "Default font for new sticky notes. This should be a Pango Font Name, for "
 "example \"Sans Italic 10\""
 msgstr ""
-"新便條預設使用的字型。它應該使用 Pango 格式的字型名稱，例如‘Sans Italic 10”"
+"新便條預設使用的字型。它應該使用 Pango 格式的字型名稱，例如“Sans Italic 10”"
 
 #: stickynotes/stickynotes.schemas.in.h:9
 msgid "Default height for new notes"
@@ -5148,19 +5158,19 @@ msgstr "每隔指定時間 (分鐘) 自動儲存便條內容"
 msgid ""
 "If this option is disabled, a custom color can be used as the default color "
 "for all sticky notes."
-msgstr ""
+msgstr "如選用本選項，您可以自行指定一種顏色作為所有便條的預設顏色。"
 
 #: stickynotes/stickynotes.schemas.in.h:16
 msgid ""
 "If this option is disabled, a custom font can be used as the default font "
 "for all sticky notes."
-msgstr ""
+msgstr "如選用本選項，您可以自行指定一種字型作為所有便條的預設字型。"
 
 #: stickynotes/stickynotes.schemas.in.h:17
 msgid ""
 "If this option is enabled, the custom colors and fonts that have been "
 "assigned to individual notes will be ignored."
-msgstr ""
+msgstr "如選用本選項，任何個別便條使用的字型和顏色設定都會被忽略。"
 
 #: stickynotes/stickynotes.schemas.in.h:18
 msgid ""
@@ -5168,28 +5178,32 @@ msgid ""
 "options are \"0\" for \"New Note\", \"1\" for \"Show/Hide All Notes\", and "
 "\"2\" for \"Lock/Unlock All Notes\"."
 msgstr ""
+"當點選面板程式或者按下“enter”時，會進行甚麼操作程序。可接受的值為：\n"
+"0 (新增便條)\n"
+"1 (顯示/隱藏所有便條)\n"
+"2 (鎖定/不鎖定所有便條內容)"
 
 #: stickynotes/stickynotes.schemas.in.h:19
 msgid "Specifies whether the sticky notes are locked (non-editable) or not."
-msgstr ""
+msgstr "指定便條內容是否鎖定 (不允許編輯)。"
 
 #: stickynotes/stickynotes.schemas.in.h:20
 msgid ""
 "Specifies whether the sticky notes are visible on ALL workspaces on the "
 "desktop, or not."
-msgstr ""
+msgstr "指定是否在所有桌面中顯示便條。"
 
 #: stickynotes/stickynotes.schemas.in.h:21
 msgid "Specifies whether the sticky notes are visible or not."
-msgstr ""
+msgstr "指定是否顯示便條。"
 
 #: stickynotes/stickynotes.schemas.in.h:22
 msgid "Sticky notes' locked state"
-msgstr ""
+msgstr "是否鎖定便條內容"
 
 #: stickynotes/stickynotes.schemas.in.h:23
 msgid "Sticky notes' visibility"
-msgstr ""
+msgstr "是否顯示便條"
 
 #: stickynotes/stickynotes.schemas.in.h:24
 msgid "Sticky notes' workspace stickyness"
@@ -5211,7 +5225,7 @@ msgstr "是否使用系統預設的色彩"
 msgid "Whether to use the default system font"
 msgstr "是否使用系統預設的字型"
 
-#: stickynotes/stickynotes_applet.c:339
+#: stickynotes/stickynotes_applet.c:338
 #, c-format
 msgid ""
 "%s\n"
@@ -5223,28 +5237,28 @@ msgstr[0] ""
 "%s\n"
 "%d 張便條錄"
 
-#: stickynotes/stickynotes_applet_callbacks.c:182
+#: stickynotes/stickynotes_applet_callbacks.c:195
 msgid "(c) 2002-2003 Loban A Rahman"
 msgstr "© 2002-2003 Loban A Rahman"
 
-#: stickynotes/stickynotes_applet_callbacks.c:183
+#: stickynotes/stickynotes_applet_callbacks.c:196
 msgid "Sticky Notes for the Gnome Desktop Environment"
-msgstr ""
+msgstr "適用於 GNOME 桌面環境的便條程式"
 
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:2
 msgid "Monitor the quality of a wireless network link"
 msgstr "監控無線網路連線的訊號品質"
 
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:3
-#: wireless/wireless-applet.c:543
+#: wireless/wireless-applet.c:575
 msgid "Wireless Link Monitor"
 msgstr "無線網路連線監控"
 
-#: wireless/wireless-applet.c:351 wireless/wireless-applet.c:488
+#: wireless/wireless-applet.c:358 wireless/wireless-applet.c:495
 msgid "No Wireless Devices"
 msgstr "沒有任何無線網路裝置"
 
-#: wireless/wireless-applet.c:353
+#: wireless/wireless-applet.c:360
 msgid ""
 "There doesn't seem to be any wireless devices configured on your system.\n"
 "Please verify your configuration if you think this is incorrect."
@@ -5252,11 +5266,11 @@ msgstr ""
 "似乎系統中並沒有設定任何無線網路裝置。\n"
 "如果以上的推斷和事實不符，請確認組態是否出錯。"
 
-#: wireless/wireless-applet.c:545
+#: wireless/wireless-applet.c:577
 msgid "(C) 2001, 2002 Free Software Foundation "
 msgstr "版權所有 © 2001, 2002 Free Software Foundation"
 
-#: wireless/wireless-applet.c:546
+#: wireless/wireless-applet.c:578
 msgid "This utility shows the status of a wireless link."
 msgstr "此公用程式能顯示無線網路的連線狀態。"
 
@@ -5602,9 +5616,6 @@ msgstr "受監控的裝置(_M)："
 
 #~ msgid "Run Audio Mixer..."
 #~ msgstr "執行混音程式..."
-
-#~ msgid "Couldn't open mixer device %s\n"
-#~ msgstr "無法開啟音量調整裝置 %s\n"
 
 #~ msgid "Laptop battery monitor applet"
 #~ msgstr "攜帶型電腦電池電量監控面板程式"
