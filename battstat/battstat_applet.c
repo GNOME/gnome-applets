@@ -1450,7 +1450,9 @@ main(int argc, char *argv[])
   create_layout(argc, argv, battstat);
   load_font(battstat);
   pixmap_timeout(battstat);
+#ifdef HAVE_PANEL_PIXEL_SIZE
   gtk_signal_emit_by_name(GTK_OBJECT(battstat->applet), "change_pixel_size", battstat, NULL);
+#endif
   battstat->pixtimer = gtk_timeout_add (1000, pixmap_timeout, battstat);
 
   applet_widget_gtk_main();
