@@ -1,7 +1,7 @@
 SUBDIRS = help
 
 INCLUDES = -I. -I$(srcdir) 				\
-	$(GNOME_APPLETS_CFLAGS)				\
+	$(GNOME_APPLETS_CFLAGS)	$(GUCHARMAP_CFLAGS)	\
 	-DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\"
 
 
@@ -12,7 +12,8 @@ charpick_applet2_SOURCES = charpick.c \
                           properties.c
 
 charpick_applet2_LDADD = \
-		       $(GNOME_APPLETS_LIBS)
+		       $(GNOME_APPLETS_LIBS)	\
+		       $(GUCHARMAP_LIBS)
 
 charpickbitmapsdir = $(datadir)/icons/hicolor/48x48/apps
 charpickbitmaps_DATA = charpick.png

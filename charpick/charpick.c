@@ -5,6 +5,7 @@
 #include <config.h>
 #include <panel-applet.h>
 #include <libgnomeui/gnome-help.h>
+#include <gucharmap/gucharmap.h>
 #include "charpick.h"
 
 
@@ -473,9 +474,17 @@ build_table(charpick_data *p_curr_data)
     gint num;
     GtkRequisition req;
     gchar atk_desc[50];
+    gchar *name;
     
     g_utf8_strncpy (label, charlist, 1);
     charlist = g_utf8_next_char (charlist);
+
+    /* TRANSLATOR: This sentance reads something like 'Insert "PILCROW SIGN"'
+     *             hopefully, the name of the unicode character has already
+     *             been translated.
+     */
+    name = g_strdup_printf (_("Insert \"%s\""),
+		    gucharmap_get_unicode_name (g_utf8_get_char (label)));
    
     toggle_button[i] = gtk_toggle_button_new_with_label (label);
     sprintf(atk_desc, _("insert special character %s"), label);
@@ -484,8 +493,8 @@ build_table(charpick_data *p_curr_data)
     gtk_button_set_relief(GTK_BUTTON(toggle_button[i]), GTK_RELIEF_NONE);
     /* FIXME : evil hack (see force_no_focus_padding) */
     force_no_focus_padding (toggle_button[i]);
-    gtk_tooltips_set_tip (tooltips, toggle_button[i], 
-                      _("Insert special characters"), NULL);
+    gtk_tooltips_set_tip (tooltips, toggle_button[i], name, NULL);
+    g_free (name);
                       
     gtk_widget_size_request (toggle_button[i], &req);
     

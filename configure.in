@@ -253,7 +253,24 @@ AC_SUBST(MIXER_LIBS)
 
 AM_CONDITIONAL(APPLET_MIXER, test "$P_MIXER" = "mixer")
 if test x"$P_MIXER" != x"mixer"; then
-  AC_MSG_WARN([*** \`mixer' applet will not be built ***])
+  AC_MSG_WARN([*** 'mixer' applet will not be built ***])
+fi
+
+P_GUCHARMAP=
+GUCHARMAP_CFLAGS=
+GUCHARMAP_LIBS=
+PKG_CHECK_MODULES(GUCHARMAP, gucharmap >= 1.4.0,
+		  HAVE_GUCHARMAP="yes", HAVE_GUCHARMAP="no")
+
+if test "x$HAVE_GUCHARMAP" = "xyes"; then
+	P_GUCHARMAP=gucharmap
+fi
+AC_SUBST(GUCHARMAP_CFLAGS)
+AC_SUBST(GUCHARMAP_LIBS)
+
+AM_CONDITIONAL(APPLET_CHARPICK, test "$P_GUCHARMAP" = "gucharmap")
+if test x"$P_GUCHARMAP" != x"gucharmap"; then
+  AC_MSG_WARN([*** 'charpick' applet will not be built ***])
 fi
 
 dnl ******************************************

@@ -25,6 +25,12 @@ if APPLET_MIXER
 mixer_SUBDIRS = $(mixer_applets)
 endif
 
+charpick_applets = \
+	charpick
+if APPLET_CHARPICK
+charpick_SUBDIRS = $(charpick_applets)
+endif
+
 modemlights_applets = \
 	modemlights
 if APPLET_MODEMLIGHTS
@@ -45,7 +51,6 @@ endif
 
 always_built_SUBDIRS = \
 	drivemount	\
-	charpick	\
 	geyes		\
 	mini-commander	\
 	gkb-new		\
@@ -63,7 +68,8 @@ SUBDIRS = \
 	$(vfs_SUBDIRS)		\
 	$(battstat_SUBDIR)	\
 	$(accessx_status_SUBDIR)\
-	$(gswitchit_SUBDIRS)
+	$(gswitchit_SUBDIRS)	\
+	$(charpick_SUBDIRS)
 
 DIST_SUBDIRS = \
 	po		\
