@@ -198,7 +198,7 @@ static void property_apply_cb(GtkWidget *widget, void *nodata, gpointer data)
 	gchar *buf;
 
 	buf = gtk_entry_get_text(GTK_ENTRY(ad->mail_file_entry));
-	if (strcmp(buf,ad->mail_file) != 0)
+	if (ad->mail_file == NULL || strcmp(buf, ad->mail_file) != 0)
 		{
 		if (ad->mail_file) g_free(ad->mail_file);
 		ad->mail_file = g_strdup(buf);
