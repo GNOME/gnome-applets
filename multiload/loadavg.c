@@ -101,7 +101,7 @@ loadavg_applet_new(PanelApplet *applet, gpointer data)
 	}
 	speed = MAX (speed, 50);
 	size = panel_applet_gconf_get_int(applet, "size", NULL);
-	size = 500;
+	
 	size = CLAMP (size, 10, 400);
 	
 	g = load_graph_new(applet, 2, N_("Load Average"), speed, size, 

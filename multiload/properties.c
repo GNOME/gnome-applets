@@ -303,12 +303,18 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 				G_CALLBACK(property_toggled_cb), "view_swapload");
 	gtk_box_pack_start(GTK_BOX(hbox), check_box, FALSE, FALSE, 2);
 
-	/*	
-	check_box = gtk_check_button_new_with_mnemonic(_("_Average"));
+		
+	check_box = gtk_check_button_new_with_mnemonic(_("_Load"));
+	ma->check_boxes[4] = check_box;	
 	gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_box),
-				panel_applet_gconf_get_bool(multiload_applet->applet, "view_loadavg", NULL));
+				panel_applet_gconf_get_bool(ma->applet, "view_loadavg", NULL));
+	g_object_set_data(G_OBJECT(check_box), "user_data", ma);
+	g_object_set_data(G_OBJECT(check_box), "prop_type", GINT_TO_POINTER(PROP_AVG));
+	g_signal_connect(G_OBJECT(check_box), "toggled",
+				G_CALLBACK(property_toggled_cb), "view_loadavg");
+	
 	gtk_box_pack_start(GTK_BOX(hbox), check_box, FALSE, FALSE, 0);
-	*/
+	
 
 	frame = gtk_frame_new(_("Options"));
 	gtk_container_set_border_width(GTK_CONTAINER(frame), 5);
@@ -391,6 +397,10 @@ fill_properties(GtkWidget *dialog, MultiloadApplet *ma)
 	page = add_page(notebook,  _("Swap Space"));
 	add_color_selector(page, _("_Used"), "swapload_color0", ma);
 	add_color_selector(page, _("_Free"), "swapload_color1", ma);
+	
+	page = add_page(notebook,  _("Load"));
+	add_color_selector(page, _("_Average"), "loadavg_color0", ma);
+	add_color_selector(page, _("_Background"), "loadavg_color1", ma);
 	
 	return;
 }

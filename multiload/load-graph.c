@@ -172,12 +172,12 @@ load_graph_configure (GtkWidget *widget, GdkEventConfigure *event,
     load_graph_unalloc (c);
 
     if (c->orient) {
-    	c->draw_width = c->pixel_size - 4;
+    	c->draw_width = c->pixel_size - 6;
     	c->draw_height = c->size - 4;
     }
     else {
     	c->draw_width = c->size - 4;
-    	c->draw_height = c->pixel_size - 4;
+    	c->draw_height = c->pixel_size - 6;
     }
 
     load_graph_alloc (c);

@@ -240,6 +240,8 @@ multiload_applet_tooltip_update(LoadGraph *g)
 		name = g_strdup(_("Network"));
 	else if (!strncmp(g->name, "swapload", strlen("swapload")))
 		name = g_strdup(_("Swap Space"));
+	else if (!strncmp(g->name, "loadavg", strlen("loadavg")))
+		name = g_strdup(_("Load Average"));
 	else
 		name = g_strdup(_("Resource"));
 	
