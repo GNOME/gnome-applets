@@ -32,20 +32,27 @@
 static int prefixNumber(char *command);
 
 
+/* search for the longest matching prefix */
 static int
 prefixNumber(char *command)
 {
     int i;
+    int found_prefix_no = -1;
+    int found_prefix_len = 0;
 
     for(i=0; i<=MAX_PREFIXES-1; i++)
 	if (prop.prefix[i] != (char *) NULL &&
-	    strlen(prop.prefix[i]) > 0 &&
-	    strncmp(command, prop.prefix[i], strlen(prop.prefix[i])) == 0)
-	    /* prefix recognized */
-	    return i;
+ 	    strlen(prop.prefix[i]) > found_prefix_len &&
+	    strncmp(command, prop.prefix[i], strlen(prop.prefix[i])) == 0 &&
+	    (strstr(prop.command[i], "$1") != NULL || strlen(prop.prefix[i]) == strlen(command)))
+	    {
+		/* found a matching prefix;
+		   if macro does not contain "$1" then the prefix has
+		   to to have the same lenght as the command */
+		found_prefix_no = i; found_prefix_len =
+		strlen(prop.prefix[i]); }
 
-    /* no prefix found */
-    return(-1);
+    return(found_prefix_no);
 }
 
 int

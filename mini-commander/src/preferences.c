@@ -217,7 +217,7 @@ void
 loadSession(void)
 {
     int i;
-    char section[100];
+    char section[MAX_COMMAND_LENGTH + 100];
     char defaultPrefix[MAX_PREFIX_LENGTH];
     char defaultCommand[MAX_COMMAND_LENGTH];
     
@@ -291,11 +291,27 @@ loadSession(void)
 		    strcpy(defaultCommand, "$1 | gless");
 		    break;
 		case 11:
-		    strcpy(defaultPrefix, " t");
-		    strcpy(defaultCommand, "gnome-terminal");
+		    strcpy(defaultPrefix, "av:");
+		    strcpy(defaultCommand, "set altavista search by Chad Powell; netscape -remote openURL\\(http://www.altavista.net/cgi-bin/query?pg=q\\&kl=XX\\&q=$(echo '$1'|sed -e ': p;s/+/%2B/;t p;: s;s/\\ /+/;t s;: q;s/\\\"/%22/;t q'),new-window\\) || netscape http://www.altavista.net/cgi-bin/query?pg=q\\&kl=XX\\&q=$(echo '$1'|sed -e ': p;s/+/%2B/;t p;: s;s/\\ /+/;t s;: q;s/\\\"/%22/;t q')");
 		    break;
 		case 12:
-		    strcpy(defaultPrefix, " n");
+		    strcpy(defaultPrefix, "yahoo:");
+		    strcpy(defaultCommand, "set yahoo search by Chad Powell; netscape -remote openURL\\(http://ink.yahoo.com/bin/query?p=$(echo '$1'|sed -e ': p;s/+/%2B/;t p;: s;s/\\ /+/;t s;: q;s/\\\"/%22/;t q'),new-window\\) || netscape http://ink.yahoo.com/bin/query?p=$(echo '$1'|sed -e ': p;s/+/%2B/;t p;: s;s/\\ /+/;t s;: q;s/\\\"/%22/;t q')");
+		    break;
+		case 13:
+		    strcpy(defaultPrefix, "fm:");
+		    strcpy(defaultCommand, "set freshmeat search by Chad Powell; netscape -remote openURL\\(http://core.freshmeat.net/search.php3?query=$(echo '$1'|tr \" \" +),new-window\\) || netscape http://core.freshmeat.net/search.php3?query=$(echo '$1'|tr \" \" +)");
+		    break;
+		case 14:
+		    strcpy(defaultPrefix, "t");
+		    strcpy(defaultCommand, "gnome-terminal");
+		    break;
+		case 15:
+		    strcpy(defaultPrefix, "nx");
+		    strcpy(defaultCommand, "nxterm");
+		    break;
+		case 16:
+		    strcpy(defaultPrefix, "n");
 		    strcpy(defaultCommand, "netscape");
 		    break;
 		default:

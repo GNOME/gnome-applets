@@ -1,9 +1,9 @@
 #include <applet-widget.h>
 
 #define HISTORY_DEPTH 50
-#define MAX_COMMAND_LENGTH 250
+#define MAX_COMMAND_LENGTH 500
 #define MAX_PREFIXES 99
-#define MAX_PREFIX_LENGTH 50
+#define MAX_PREFIX_LENGTH 25
 
 typedef struct structProperties properties;
 struct structProperties
