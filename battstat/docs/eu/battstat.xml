@@ -1,0 +1,238 @@
+<?xml version="1.0"?> 
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [  <!ENTITY legal SYSTEM "legal.xml"> 
+<!ENTITY appletversion "2.0"> 
+<!ENTITY manrevision "2.0"> 
+<!ENTITY date "May 2002"> 
+<!ENTITY applet "Bateria-karga">]> 
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp
+  Template version: 2.0 beta
+  Template last modified Feb 12, 2002
+--> 
+<!-- =============Document Header ============================= --> 
+  <article id="index" lang="eu"> 
+  
+<!-- please do not change the id; for translations, change lang to --> 
+  
+<!-- appropriate code --> 
+    <articleinfo> 
+      <title>&applet;ren applet-aren eskuliburua, &manrevision; bertsioa</title> 
+      <copyright> 
+        <year>1999</year> 
+        <year>2000</year> 
+        <holder>Jorgen Pehrson</holder> 
+      </copyright> 
+      <copyright> 
+        <year>2002</year> 
+        <holder>Trevor Curtis</holder> 
+      </copyright> 
+    
+<!-- translators: uncomment this:   --> 
+
+  <copyright>
+   <year>2002</year>
+   <holder>Hizkuntza Politikarako Sailburuordetza <email>hizkpol@ej-gv.es</email> (euskarazko itzulpena)</holder>
+  </copyright>
+
+
+      <publisher> 
+        <publishername>GNOMEren dokumentazio-proiektua</publishername> 
+      </publisher>&legal; 
+    
+<!-- This file  contains link to license for the documentation (GNU FDL), and 
+     other legal stuff such as "NO WARRANTY" statement. Please do not change 
+     any of this. --> 
+      <authorgroup> 
+        <author> 
+          <firstname>Jorgen</firstname> 
+          <surname>Pehrson</surname> 
+          <affiliation> 
+            <orgname>GNOMEren dokumentazio-proiektua</orgname> 
+            <address> 
+              <email>jp@spektr.eu.org</email> 
+            </address> 
+          </affiliation> 
+        </author> 
+        <author> 
+          <firstname>Trevor</firstname> 
+          <surname>Curtis</surname> 
+          <affiliation> 
+            <orgname>GNOMEren dokumentazio-proiektua</orgname> 
+            <address> 
+              <email>tcurtis@somaradio.ca</email> 
+            </address> 
+          </affiliation> 
+        </author> 
+      
+<!-- This is appropriate place for other contributors: translators,
+           maintainers,  etc. Commented out by default.
+           <othercredit role="translator">
+	     <firstname>Latin</firstname> 
+	     <surname>Translator 1</surname> 
+	     <affiliation> 
+	       <orgname>Latin Translation Team</orgname> 
+	       <address> <email>translator@gnome.org</email> </address> 
+	     </affiliation>
+	     <contrib>Latin translation</contrib>
+           </othercredit>
+--> 
+      </authorgroup> 
+    
+<!-- The following feedback information only applies to applets
+    listed in bugzilla.gnome.org and bugzilla.ximian.com. For other
+    applets, please provide your own feedback info or remove thsi
+    section altogether --> 
+      <legalnotice> 
+        <title>Ohar-bidaltzea</title> 
+        <para>&applet;ren applet-ari buruzko akatsen berri emateko edo oharrak bidaltzeko, <ulink url="ghelp:gnome-feedback" type="help">GNOMEra oharrak bidaltzeko orria</ulink>n aurkituko dituzu argibideak.</para> 
+      </legalnotice> 
+    </articleinfo> 
+    <indexterm zone="index"> 
+      <primary>Battstat applet-a</primary> 
+    </indexterm> 
+  
+<!-- ============= Document Body ============================= --> 
+  
+<!-- ============= Introduction ============================== --> 
+    <sect1 id="battsatt-introduction"> 
+      <title>Sarrera</title> 
+      <para>1. irudian ikusten den <application>&applet;</application>ren applet-ak ordenagailu eramangarriaren bateriaren karga erakusten du. Applet hau panelean gehitzeko, egin klik eskuineko botoiaz Panelean eta hautatu <guimenuitem>Panela->Gehitu panelari->Applet-a->Monitoreak->Bateriaren karga</guimenuitem> utilitatea.</para> 
+      <figure id="mainwindow-fig"> 
+        <title>&applet;ren applet-a</title> 
+        <screenshot> 
+          <mediaobject> 
+            <imageobject><imagedata fileref="figures/battstat-applet.png" format="PNG"/></imageobject> 
+          
+<!-- EPS versions of the figures are not required at the moment. --> 
+          
+<!-- 
+		    <imageobject>
+      		<imagedata fileref="figures/image.eps" format="EPS"/>
+    		    </imageobject>
+	    --> 
+            <textobject> 
+              <phrase>&applet;ren applet-a. 
+              </phrase> 
+            </textobject> 
+          </mediaobject> 
+        </screenshot> 
+      </figure> 
+    </sect1> 
+  
+<!-- ================ Usage ================================ --> 
+    <sect1 id="battstat-usage"> 
+      <title>Erabilera</title> 
+      <para>&applet;ren applet-ak ez du erabiltzailearen laguntzarik behar. Nahi baduzu, gauza batzuk konfigura ditzakezu, behean azaltzen den bezala.</para> 
+      <para>Goian ikusten den irudiak erabat kargatuta dagoen bateria erakusten du.</para> 
+      <para>Ordenagailu eramangarriaren bateria kargatzen ari denean kablea keinuka azaltzen da. Keinuka jarraituko du harik eta bateria erabat kargatu arte.</para> 
+      <para>Eramangarria bateriarekin erabiltzen duzunean irudi hau bistaratuko da.</para> 
+      <para>Applet-ean eskuineko botoiaz klik egiten denean menu bat azaltzen da elementu hauekin: <variablelist> <varlistentry> <term> <guimenuitem>Hobespenak</guimenuitem></term><listitem> 
+        <para>Propietateen elkarrizketa-koadroa irekitzen du.</para> 
+      </listitem> 
+    </varlistentry> 
+    <varlistentry> 
+      <term> 
+        <guimenuitem>Laguntza</guimenuitem> 
+      </term> 
+      <listitem> 
+        <para>Dokumentu hau erakusten du.</para> 
+      </listitem> 
+    </varlistentry> 
+    <varlistentry> 
+      <term> 
+        <guimenuitem>Honi buruz</guimenuitem> 
+      </term> 
+      <listitem> 
+        <para>Applet-ari buruzko oinarrizko informazioa erakusten du.</para> 
+      </listitem> 
+    </varlistentry> 
+    <varlistentry> 
+      <term> 
+        <guimenuitem>Eseki ordenagailua</guimenuitem> 
+      </term> 
+      <listitem> 
+        <para>Hobespenen elkarrizketa-koadroan zehaztutako komandoa exekutatzen du.</para> 
+      </listitem> 
+    </varlistentry> 
+  </variablelist> </para> </sect1> 
+<!-- ============= Customization ============================= --> 
+<sect1 id="battstatt-prefs"> 
+<title>Pertsonalizatzea</title> 
+<para>Battstat applet-a pertsonaliza dezakezu neurri batean applet-ean eskuin-klika egin eta 'Hobespenak' hautatuta. Hobespenen elkarrizketa-koadroa irekiko da horrela. </para> <figure id="general-fig"> 
+  <title>&applet;ren - Hobespen orokorrak</title> 
+  <screenshot> 
+    <mediaobject> 
+      <imageobject> 
+      <imagedata fileref="figures/battstat-general.png" format="PNG"/></imageobject> 
+    
+<!-- EPS versions of the figures are not required at the moment. --> 
+    
+<!-- 
+		    <imageobject>
+      		<imagedata fileref="figures/image.eps" format="EPS"/></imageobject>
+	    --> 
+      <textobject> 
+        <phrase>&applet;ren applet-aren hobespen orokorrak. 
+        </phrase> 
+      </textobject> 
+    </mediaobject> 
+  </screenshot> </figure> 
+<para>Hauek dira propietateak: <itemizedlist> <listitem> 
+  <para>Horia: progresio-barra berdetik horira aldatzeko bateria-maila ezartzen du. Lehenetsia: 40. 
+  </para> </listitem> <listitem> 
+  <para>Laranja: progresio-barra horitik laranjara aldatzeko bateria-maila ezartzen du. Lehenetsia: 25. 
+  </para> </listitem> <listitem> 
+  <para>Gorria: progresio-barra laranjatik gorrira aldatzeko bateria-maila ezartzen du. Lehenetsia: 15. 
+  </para> </listitem> <listitem> 
+  <para>Aurrebistaren markoak bateriaren progresio-barra eta arrasta daitekeen graduatzaile bat ditu. Graduatzailea arrastatuz, bateria-maila aldatzen denean nola azalduko den ikus dezakezu. Ez du inolako eraginik baterian. 
+  </para> </listitem> <listitem> 
+  <para>Jakinarazi bateriak karga gutxi duenean: Aukera hau hautatzen bada, abisua emateko elkarrizketa-koadro bat azalduko da bateriaren karga 'Gorria' sarrera-koadroan ezarritako baliotik behera jaisten denean. 
+  </para> </listitem> <listitem> 
+  <para>Jakinarazi bateria erabat kargatuta dagoenean: Aukera hau hautatzen bada, elkarrizketa-koadro bat azalduko da bateria erabat kargatzen denean. 
+  </para> </listitem> <listitem> 
+  <para>Jo soinua goikoetako bat egiazkoa denean: Aukera hau hautatzen baduzu, eramangarriak soinu-seinalea joko du goiko bi horietako bat gertatzen denean. 
+  </para> </listitem> <listitem> 
+  <para>Esekitzeko komandoa: Applet-eko menuan 'Eseki ordenagailua'n klik egiten duzunean, hemen zehazten duzuna exekutatuko da. Adibidez, FreeBSD erabiltzen baduzu, apm -z edo zzz sar dezakezu hemen. Hala ere, hemen ezer sartu aurretik proba ezazu komandoa shell batean eramangarria segurtasunez esekiko dela ziurtatzeko. 
+  </para> </listitem> </itemizedlist> </para> <figure id="apperance-fig"> <title>&applet; - Itxuraren hobespenak</title> <screenshot> <mediaobject> 
+  <imageobject> 
+  <imagedata		fileref="figures/battstat-apperance.png" format="PNG"/> 
+  </imageobject> 
+<!-- EPS versions of the figures are not required at the moment. --> 
+<!-- 
+		    <imageobject>
+      		<imagedata fileref="figures/image.eps" format="EPS"/>
+    		    </imageobject>
+	    --> 
+  <textobject> 
+    <phrase>&applet;ren applet-aren itxuraren hobespenak. 
+    </phrase> 
+  </textobject> </mediaobject> </screenshot> </figure> 
+<para>Hauek dira orri honetako propietateak: <variablelist> <varlistentry> <term>Gorantz: </term> <listitem> 
+<para>Aukera-botoi hau hautatzen baduzu, bateria-kargaren neurgailua eskuinetik ezkerrera hustuko da. </para> </listitem> </varlistentry> <varlistentry> <term>Beherantz: </term> <listitem> 
+<para>Aukera-botoi hau hautatzen baduzu, bateria-kargaren neurgailua ezkerretik eskuinera hustuko da. </para> </listitem> </varlistentry> <varlistentry> <term>Applet-aren diseinua: </term> <listitem> 
+<para>Applet-aren zein zati ikusi nahi dituzun hauta dezakezu hemen. </para> </listitem> </varlistentry> </variablelist> </para> </sect1> 
+<!-- This section contains info about the program (not docs), such as
+     author's name(s), web page, license, feedback address. This
+     section is optional: primary place for this info is "About.." box of
+     the program. However, if you do wish to include this info in the
+     manual, this is the place to put it. Alternatively, you can put this 
+     information in the title page.--> <sect1 id="battstat-about"> <title>&applet;ren applet-ari buruz</title> 
+<!-- The following feedback information only applies to applets
+    listed in bugzilla.gnome.org and bugzilla.ximian.com. For other
+    applets, please provide your own feedback info or remove thsi
+    section altogether --> 
+<para>&applet;ren applet-ari buruzko akatsen berri emateko edo oharrak bidaltzeko, <ulink url="ghelp:gnome-feedback" type="help">GNOMEra oharrak bidaltzeko orria</ulink>n aurkituko dituzu argibideak. </para> 
+<!-- For translations: uncomment this:
+
+  <para>
+   Latin translation was done by ME
+   (<email>MYNAME@MYADDRESS</email>). Please send all  comments  and
+   suggestions regarding this translation to SOMEWHERE.
+  </para>
+
+  --> 
+<para>Programa hau Free Software Foundation-ek argitaratutako GNU Lizentzia Publiko Orokorraren 2. bertsioan, edo (nahiago baduzu) bertsio berriago batean, jasotako baldintzen arabera banatzen da. Lizentzia horren kopia <ulink type="help" url="ghelp:gpl">esteka</ulink> honetan, edo programa honen iturburu-kodean sartutako COPYING fitxategian aurkituko duzu. </para> 
+</sect1>
+</article> 
