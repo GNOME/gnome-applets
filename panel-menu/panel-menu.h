@@ -46,6 +46,7 @@ typedef struct _PanelMenu
 	/* Information that we keep around */
 	GtkOrientation orientation;
 	gint size;
+        gboolean menu_tearoffs;
 	/* Background info */
 	PanelAppletBackgroundType bg_type;
 	GdkPixmap *bg_pixmap;

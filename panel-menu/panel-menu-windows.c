@@ -87,9 +87,13 @@ panel_menu_windows_new (PanelMenu *parent)
 	panel_menu_common_widget_dnd_init (entry);
 	gtk_widget_show (windows->windows);
 	windows->menu = gtk_menu_new ();
-	tearoff = gtk_tearoff_menu_item_new ();
-	gtk_menu_shell_append (GTK_MENU_SHELL (windows->menu), tearoff);
-	gtk_widget_show (tearoff);
+
+	if (parent->menu_tearoffs == TRUE) {
+	  tearoff = gtk_tearoff_menu_item_new ();
+	  gtk_menu_shell_append (GTK_MENU_SHELL (windows->menu), tearoff);
+	  gtk_widget_show (tearoff);
+	}
+
 	gtk_menu_item_set_submenu (GTK_MENU_ITEM (windows->windows),
 				   windows->menu);
 	/* Put *all* of the items in the menu */

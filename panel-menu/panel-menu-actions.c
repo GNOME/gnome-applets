@@ -93,9 +93,13 @@ panel_menu_actions_new (PanelMenu *parent)
 	panel_menu_common_widget_dnd_init (entry);
 	gtk_widget_show (actions->actions);
 	actions->menu = gtk_menu_new ();
-	tearoff = gtk_tearoff_menu_item_new ();
-	gtk_menu_shell_append (GTK_MENU_SHELL (actions->menu), tearoff);
-	gtk_widget_show (tearoff);
+
+	if (parent->menu_tearoffs == TRUE) {
+	  tearoff = gtk_tearoff_menu_item_new ();
+	  gtk_menu_shell_append (GTK_MENU_SHELL (actions->menu), tearoff);
+	  gtk_widget_show (tearoff);
+	}
+
 	gtk_menu_item_set_submenu (GTK_MENU_ITEM (actions->actions),
 				   actions->menu);
 	for (counter = 0; counter < n_actions; counter++) {

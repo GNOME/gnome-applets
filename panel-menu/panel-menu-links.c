@@ -105,9 +105,13 @@ panel_menu_links_new_with_id (PanelMenu *parent, gint id)
 	gtk_widget_show (links->links);
 	panel_menu_links_set_name (entry, name);
 	links->menu = gtk_menu_new ();
-	tearoff = gtk_tearoff_menu_item_new ();
-	gtk_menu_shell_append (GTK_MENU_SHELL (links->menu), tearoff);
-	gtk_widget_show (tearoff);
+
+	if (parent->menu_tearoffs == TRUE) {
+	  tearoff = gtk_tearoff_menu_item_new ();
+	  gtk_menu_shell_append (GTK_MENU_SHELL (links->menu), tearoff);
+	  gtk_widget_show (tearoff);
+	}
+
 	gtk_menu_item_set_submenu (GTK_MENU_ITEM (links->links), links->menu);
 	g_signal_connect (G_OBJECT (links->menu), "key_press_event",
 			  G_CALLBACK (panel_menu_links_remove_cb), links);

@@ -118,7 +118,9 @@ panel_menu_path_new_with_id (PanelMenu *parent, gint id)
 	panel_menu_common_widget_dnd_init (entry);
 	gtk_widget_show (path->path);
 	path->menu = gtk_menu_new ();
-	tearoff = gtk_tearoff_menu_item_new ();
+	//	if (parent->menu_tearoffs == TRUE) {
+	  tearoff = gtk_tearoff_menu_item_new ();
+	  //}
 	gtk_menu_shell_append (GTK_MENU_SHELL (path->menu), tearoff);
 	gtk_widget_show (tearoff);
 	path->regenitem =

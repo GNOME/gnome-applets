@@ -46,7 +46,11 @@ panel_menu_config_load_prefs (PanelMenu *panel_menu)
 	gboolean retval = FALSE;
 
 	client = gconf_client_get_default ();
+
 	key = panel_applet_get_preferences_key (panel_menu->applet);
+
+	panel_menu->menu_tearoffs = gconf_client_get_bool (client, 
+							   "/desktop/gnome/interface/menus_have_tearoff", NULL);
 
 	if (gconf_client_dir_exists (client, key, NULL)) {
 		panel_menu->auto_directory_update =

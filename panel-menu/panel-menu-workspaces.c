@@ -77,9 +77,13 @@ panel_menu_workspaces_new (PanelMenu *parent)
 	panel_menu_common_widget_dnd_init (entry);
 	gtk_widget_show (workspaces->workspaces);
 	workspaces->menu = gtk_menu_new ();
-	tearoff = gtk_tearoff_menu_item_new ();
-	gtk_menu_shell_append (GTK_MENU_SHELL (workspaces->menu), tearoff);
-	gtk_widget_show (tearoff);
+
+	if (parent->menu_tearoffs == TRUE) {
+	  tearoff = gtk_tearoff_menu_item_new ();
+	  gtk_menu_shell_append (GTK_MENU_SHELL (workspaces->menu), tearoff);
+	  gtk_widget_show (tearoff);
+	}
+
 	gtk_menu_item_set_submenu (GTK_MENU_ITEM (workspaces->workspaces),
 				   workspaces->menu);
 	fill_workspace_menu (GTK_MENU_SHELL (workspaces->menu));

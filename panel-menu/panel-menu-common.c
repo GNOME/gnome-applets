@@ -20,6 +20,8 @@
 #include <libgnomeui/libgnomeui.h>
 #include <panel-applet.h>
 
+#include <gconf/gconf-client.h>
+
 #include <libgnomevfs/gnome-vfs-types.h>
 #include <libgnomevfs/gnome-vfs-init.h>
 #include <libgnomevfs/gnome-vfs-directory.h>
@@ -343,6 +345,7 @@ panel_menu_common_menu_from_path (gchar *name, gchar *subpath,
 	GtkWidget *submenu;
 	GtkWidget *tearoff;
 	GList *cur = NULL;
+	GConfClient *client;
 	gint position = 0;
 
 	if (!append) {
@@ -363,9 +366,17 @@ panel_menu_common_menu_from_path (gchar *name, gchar *subpath,
 			  G_CALLBACK (panel_menu_common_destroy_apps_menuitem),
 			  NULL);
 	submenu = gtk_menu_new ();
-	tearoff = gtk_tearoff_menu_item_new ();
-	gtk_menu_shell_append (GTK_MENU_SHELL (submenu), tearoff);
-	gtk_widget_show (tearoff);
+	
+	client = gconf_client_get_default();
+	if (gconf_client_get_bool (client, 
+				   "/desktop/gnome/interface/menus_have_tearoff", NULL)) {
+	        tearoff = gtk_tearoff_menu_item_new ();
+		gtk_menu_shell_append (GTK_MENU_SHELL (submenu), tearoff);
+		gtk_widget_show (tearoff);
+	}
+	g_object_unref (G_OBJECT (client));
+
+
 	GTK_MENU (submenu)->parent_menu_item = menuitem;
 	gtk_menu_item_set_submenu (GTK_MENU_ITEM (menuitem), submenu);
 	if (append)

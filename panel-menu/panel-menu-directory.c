@@ -123,9 +123,13 @@ panel_menu_directory_new_with_id (PanelMenu *parent, gint id)
 	panel_menu_common_widget_dnd_init (entry);
 	gtk_widget_show (directory->directory);
 	directory->menu = gtk_menu_new ();
-	tearoff = gtk_tearoff_menu_item_new ();
-	gtk_menu_shell_append (GTK_MENU_SHELL (directory->menu), tearoff);
-	gtk_widget_show (tearoff);
+
+	if (parent->menu_tearoffs == TRUE) {
+	  tearoff = gtk_tearoff_menu_item_new ();
+	  gtk_menu_shell_append (GTK_MENU_SHELL (directory->menu), tearoff);
+	  gtk_widget_show (tearoff);
+	}
+
 	directory->regenitem =
 		gtk_image_menu_item_new_with_label (_("Regenerate Menus"));
 	image = gtk_image_new_from_stock ("gtk-refresh", GTK_ICON_SIZE_MENU);
