@@ -18,9 +18,13 @@
  * Authors : Carlos García Campos <carlosgc@gnome.org>
  */
 
-#include <gnome.h>
-
-#include "cpufreq-applet.h"
-
-gboolean cpufreq_popup_show (CPUFreqApplet *applet, guint32 time);
-
+struct _CPUFreqMonitorProtected
+{
+	   guint  cpu;
+	   gchar *freq;
+	   gchar *perc;
+	   gchar *unit;
+	   gchar *governor;
+	   GList *available_freqs;
+	   guint  timeout_handler;
+};

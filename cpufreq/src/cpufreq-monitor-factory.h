@@ -18,12 +18,6 @@
  * Authors : Carlos García Campos <carlosgc@gnome.org>
  */
 
-gchar   *cpufreq_get_human_readble_freq      (gint freq);
-gchar   *cpufreq_get_human_readble_unit      (gint freq);
-gchar   *cpufreq_get_human_readble_perc      (gint fmax, gint fmin);
+#include "cpufreq-monitor.h"
 
-gboolean cpufreq_get_from_procfs             (gpointer gdata);
-gboolean cpufreq_get_from_sysfs              (gpointer gdata);
-GList   *cpufreq_get_frequencies_from_procfs (CPUFreqApplet *applet);
-GList   *cpufreq_get_frequencies_from_sysfs  (CPUFreqApplet *applet);
-gboolean cpufreq_get_from_procfs_cpuinfo     (CPUFreqApplet *applet);
+CPUFreqMonitor *cpufreq_monitor_factory_create_monitor (guint cpu);

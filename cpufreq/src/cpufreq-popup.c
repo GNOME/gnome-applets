@@ -21,9 +21,9 @@
 #include <config.h>
 
 #include <gnome.h>
-#include "cpufreq-applet.h"
+
 #include "cpufreq-popup.h"
-#include "cpufreq.h"
+#include "cpufreq-monitor.h"
 
 static gboolean   cpufreq_popup_selector_is_available (void);
 static void       cpufreq_popup_position_menu         (GtkMenu *menu, int *x, int *y,
@@ -31,13 +31,13 @@ static void       cpufreq_popup_position_menu         (GtkMenu *menu, int *x, in
 static void       cpufreq_popup_set_frequency         (GtkWidget *widget, gpointer gdata);
 static void       cpufreq_popup_menu_item_set_image   (CPUFreqApplet *applet, GtkWidget *menu_item,
 											gint freq, gint max_freq);
-static GtkWidget *cpufreq_popup_new                   (CPUFreqApplet *applet);
+static GtkWidget *cpufreq_popup_new                   (CPUFreqApplet *applet, GList *available_freqs);
 
 static gboolean
 cpufreq_popup_selector_is_available ()
 {
 	   struct stat *info;
-	   gchar *path = NULL;
+	   gchar       *path = NULL;
 
 	   path = g_find_program_in_path ("cpufreq-selector");
 	   if (!path)
@@ -67,10 +67,10 @@ static void
 cpufreq_popup_position_menu (GtkMenu *menu, int *x, int *y,
 					    gboolean *push_in, gpointer  gdata)
 {
-	   GtkWidget *widget;
-	   GtkRequisition requisition;
-	   gint menu_xpos;
-	   gint menu_ypos;
+	   GtkWidget      *widget;
+	   GtkRequisition  requisition;
+	   gint            menu_xpos;
+	   gint            menu_ypos;
 
 	   widget = GTK_WIDGET (gdata);
 
@@ -105,63 +105,31 @@ cpufreq_popup_position_menu (GtkMenu *menu, int *x, int *y,
 	   *push_in = TRUE;
 }
 
-static void
-free_string (gpointer str, gpointer gdata)
-{
-	   if (str) g_free (str);
-}
-
 gboolean 
-cpufreq_popup_show (GtkWidget *widget, GdkEventButton *event, gpointer gdata)
+cpufreq_popup_show (CPUFreqApplet *applet, guint32 time)
 {
-	   CPUFreqApplet *applet;
-
-	   applet = (CPUFreqApplet *) widget;
-
-	   if (applet->iface == IFACE_CPUINFO)
-			 return FALSE;
+	   GList *available_freqs = NULL;
 
 	   if (!cpufreq_popup_selector_is_available ())
 			 return FALSE;
 	   
-	   if (event->button == 1) {
-			 if (applet->popup) {
-				    gtk_widget_destroy (applet->popup);
-				    applet->popup = NULL;
-			 }
-			 
-			 switch (applet->iface) {
-			 case IFACE_SYSFS:
-				    if (!applet->available_freqs)
-						  applet->available_freqs = cpufreq_get_frequencies_from_sysfs (applet);
-				    
-				    break;
-			 case IFACE_PROCFS:
-				    if (!applet->available_freqs) {
-						  g_list_foreach (applet->available_freqs,
-									   free_string, NULL);
-						  g_list_free (applet->available_freqs);
-						  applet->available_freqs = NULL;
-				    }
-				    
-				    applet->available_freqs = cpufreq_get_frequencies_from_procfs (applet);
-				    
-				    break;
-			 default:
-				    return FALSE;
-			 }
-
-			 applet->popup = cpufreq_popup_new (applet);
-			 
-			 gtk_widget_grab_focus (widget);
-			 
-			 gtk_menu_popup (GTK_MENU (applet->popup), NULL, NULL,
-						  cpufreq_popup_position_menu, (gpointer) applet,
-						  event->button, event->time);
-			 return TRUE;
+	   if (applet->popup) {
+			 gtk_widget_destroy (applet->popup);
+			 applet->popup = NULL;
 	   }
-	   
-	   return FALSE;
+
+	   available_freqs = cpufreq_monitor_get_available_frequencies (applet->monitor);
+	   if (!available_freqs)
+			 return FALSE;
+
+	   applet->popup = cpufreq_popup_new (applet, available_freqs);
+			 
+	   gtk_widget_grab_focus (GTK_WIDGET (applet));
+			 
+	   gtk_menu_popup (GTK_MENU (applet->popup), NULL, NULL,
+				    cpufreq_popup_position_menu, (gpointer) applet,
+				    1, time);
+	   return TRUE;
 }
 
 static void
@@ -219,34 +187,47 @@ cpufreq_popup_menu_item_set_image (CPUFreqApplet *applet, GtkWidget *menu_item,
 }
 
 static GtkWidget *
-cpufreq_popup_new (CPUFreqApplet *applet)
+cpufreq_popup_new (CPUFreqApplet *applet, GList *available_freqs)
 {
 	   GtkWidget *popup, *menu_item;
-	   GList     *list = NULL;
 	   gchar     *label;
 	   gchar     *text_freq, *text_unit, *text_perc;
 	   gint       freq, max_freq;
+	   gint       divisor;
 
-	   list = applet->available_freqs;
-
-	   if (list == NULL)
+	   if (available_freqs == NULL)
 			 return NULL;
 
 	   popup = gtk_menu_new ();
 
-	   max_freq = atoi ((gchar *) list->data); /* First item is the max freq */
+	   max_freq = atoi ((gchar *) available_freqs->data); /* First item is the max freq */
 
-	   while (list) {
-			 freq = atoi ((gchar *) list->data);
+	   while (available_freqs) {
+			 freq = atoi ((gchar *) available_freqs->data);
 			 
 			 if (applet->show_mode != MODE_GRAPHIC &&
 				applet->show_text_mode == MODE_TEXT_PERCENTAGE) {
-				    text_perc = cpufreq_get_human_readble_perc (max_freq, freq);
-				    label = g_strdup_printf ("%s", text_perc);
-				    g_free (text_perc);
+				    if (freq > 0) {
+						  text_perc = g_strdup_printf ("%d%%", (freq * 100) / max_freq);
+						  label = g_strdup_printf ("%s", text_perc);
+						  g_free (text_perc);
+				    } else {
+						  label = g_strdup (_("Unknown"));
+				    }
 			 } else {
-				    text_freq = cpufreq_get_human_readble_freq (freq);
-				    text_unit = cpufreq_get_human_readble_unit (freq);
+				    if (freq > 999999) {
+						  divisor = (1000 * 1000);
+						  text_unit = g_strdup ("GHz");
+				    } else {
+						  divisor = 1000;
+						  text_unit = g_strdup ("MHz");
+				    }
+				    
+				    if (((freq % divisor) == 0) || divisor == 1000)
+						  text_freq = g_strdup_printf ("%d", freq / divisor);
+				    else
+						  text_freq = g_strdup_printf ("%3.2f", ((gfloat)freq / divisor));
+
 				    label = g_strdup_printf ("%s %s", text_freq, text_unit);
 				    g_free (text_freq);
 				    g_free (text_unit);
@@ -265,7 +246,7 @@ cpufreq_popup_new (CPUFreqApplet *applet)
 
 			 g_free (label);
 			 
-			 list = g_list_next (list);
+			 available_freqs = g_list_next (available_freqs);
 	   }
 
 	   return popup;

@@ -18,9 +18,23 @@
  * Authors : Carlos García Campos <carlosgc@gnome.org>
  */
 
+#ifndef __CPUFREQ_APPLET_H__
+#define __CPUFREQ_APPLET_H__
 
 #include <gnome.h>
 #include <panel-applet.h>
+
+#include "cpufreq-monitor.h"
+
+#define TYPE_CPUFREQ_APPLET            (cpufreq_applet_get_type ())
+#define CPUFREQ_APPLET(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), TYPE_CPUFREQ_APPLET, CPUFreqApplet))
+#define CPUFREQ_APPLET_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), TYPE_CPUFREQ_APPLET, CPUFreqAppletClass))
+#define IS_CPUFREQ_APPLET(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), TYPE_CPUFREQ_APPLET))
+#define IS_CPUFREQ_APPLET_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), TYPE_CPUFREQ_APPLET))
+#define CPUFREQ_APPLET_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), TYPE_CPUFREQ_APPLET, CPUFreqAppletClass))
+
+typedef struct _CPUFreqApplet      CPUFreqApplet;
+typedef struct _CPUFreqAppletClass CPUFreqAppletClass;
 
 typedef enum {
 	   MODE_GRAPHIC,
@@ -34,31 +48,19 @@ typedef enum {
 	   MODE_TEXT_PERCENTAGE
 } CPUFreqShowTextMode;
 
-typedef enum {
-	   IFACE_SYSFS,
-	   IFACE_PROCFS,
-	   IFACE_CPUINFO
-} CPUFreqIface;
-
-typedef struct {
+struct _CPUFreqApplet {
 	   PanelApplet base;
+	   
 	   guint cpu;
 	   guint mcpu; /* Max cpu number (0 in a single cpu system) */
 
 	   CPUFreqShowMode     show_mode;
 	   CPUFreqShowTextMode show_text_mode;
-	   CPUFreqIface        iface;
+
+	   CPUFreqMonitor *monitor;
 
 	   PanelAppletOrient orient;
 	   gint              size;
-
-	   gchar *freq;
-	   gchar *perc;
-	   gchar *unit;
-	   gchar *governor;
-	   GList *available_freqs;
-
-	   guint timeout_handler;
 
 	   GtkWidget   *label;
 	   GtkWidget   *unit_label;
@@ -69,11 +71,16 @@ typedef struct {
 	   GtkTooltips *tips;
 
 	   GtkWidget *prefs;
-	   GtkWidget *about_dialog;
 	   GtkWidget *popup;
-} CPUFreqApplet;
+};
 
-void cpufreq_applet_update        (CPUFreqApplet *applet);
+struct _CPUFreqAppletClass {
+	   PanelAppletClass parent_class;
+};
+
+GType cpufreq_applet_get_type ();
+
 void cpufreq_applet_display_error (const gchar *message, 
                                    const gchar *secondary);
-void cpufreq_applet_run           (CPUFreqApplet *applet);
+
+#endif /* __CPUFREQ_APPLET_H__ */

@@ -40,8 +40,8 @@ static void     cpufreq_prefs_cpu_number_changed (GtkWidget *show_mode, gpointer
 static gboolean
 cpufreq_key_is_writable (CPUFreqApplet *applet, const gchar *key)
 {
-	   gboolean     writable;
-	   gchar       *fullkey;
+	   gboolean            writable;
+	   gchar              *fullkey;
 	   static GConfClient *gconf_client = NULL;
 
 	   if (gconf_client == NULL)
@@ -59,8 +59,9 @@ cpufreq_key_is_writable (CPUFreqApplet *applet, const gchar *key)
 static void
 cpufreq_prefs_show_freq_toggled (GtkWidget *show_freq, gpointer *gdata)
 {
-	   GtkWidget *show_unit;
-	   gboolean   key_writable;
+	   GtkWidget     *show_unit;
+	   gboolean       key_writable;
+	   gchar         *freq, *unit;
 	   CPUFreqApplet *applet;
 
 	   applet = (CPUFreqApplet *) gdata;
@@ -76,16 +77,24 @@ cpufreq_prefs_show_freq_toggled (GtkWidget *show_freq, gpointer *gdata)
 				    applet->show_text_mode = MODE_TEXT_FREQUENCY_UNIT;
 			 else
 				    applet->show_text_mode = MODE_TEXT_FREQUENCY;
+
+			 freq = cpufreq_monitor_get_frequency (applet->monitor);
 				
-			 if (applet->freq) {
-				    gtk_label_set_label (GTK_LABEL (applet->label), applet->freq);
+			 if (freq) {
+				    gtk_label_set_label (GTK_LABEL (applet->label), freq);
 				    
 				    if (applet->show_text_mode == MODE_TEXT_FREQUENCY_UNIT) {
-						  gtk_label_set_label (GTK_LABEL (applet->unit_label), applet->unit);
-						  gtk_widget_show (applet->unit_label);
+						  unit = cpufreq_monitor_get_unit (applet->monitor);
+						  if (unit) {
+								gtk_label_set_label (GTK_LABEL (applet->unit_label), unit);
+								gtk_widget_show (applet->unit_label);
+								g_free (unit);
+						  }
 				    } else {
 						  gtk_widget_hide (applet->unit_label);
 				    }
+
+				    g_free (freq);
 			 }
 				    
 			 gtk_widget_show (applet->label);
@@ -100,12 +109,20 @@ static void
 cpufreq_prefs_show_unit_toggled (GtkWidget *show_unit, gpointer *gdata)
 {
 	   CPUFreqApplet *applet;
+	   gchar         *unit;
 
 	   applet = (CPUFreqApplet *) gdata;
 	   
 	   if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (show_unit))) {
 			 applet->show_text_mode = MODE_TEXT_FREQUENCY_UNIT;
-			 gtk_label_set_label (GTK_LABEL (applet->unit_label), applet->unit);
+			 
+			 unit = cpufreq_monitor_get_unit (applet->monitor);
+			 if (unit) {
+				    gtk_label_set_label (GTK_LABEL (applet->unit_label), unit);
+
+				    g_free (unit);
+			 }
+			 
 			 gtk_widget_show (applet->unit_label);
 	   } else {
 			 applet->show_text_mode = MODE_TEXT_FREQUENCY;
@@ -120,15 +137,20 @@ static void
 cpufreq_prefs_show_perc_toggled (GtkWidget *show_perc, gpointer *gdata)
 {
 	   CPUFreqApplet *applet;
+	   gchar         *perc;
 
 	   applet = (CPUFreqApplet *) gdata;
 
 	   if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (show_perc))) {
 			 /* Show cpu usage in percentage */
 			 applet->show_text_mode = MODE_TEXT_PERCENTAGE;
-			 
-			 if (applet->perc)
-				    gtk_label_set_label (GTK_LABEL (applet->label), applet->perc);
+
+			 perc = cpufreq_monitor_get_percentage (applet->monitor);
+			 if (perc) {
+				    gtk_label_set_label (GTK_LABEL (applet->label), perc);
+
+				    g_free (perc);
+			 }
 			 
 			 gtk_widget_show (applet->label);
 			 gtk_widget_hide (applet->unit_label);
@@ -142,18 +164,23 @@ static void
 cpufreq_prefs_cpu_number_changed (GtkWidget *cpu_number, gpointer *gdata)
 {
 	   CPUFreqApplet *applet;
+	   gint           cpu;
 	   
 	   applet = (CPUFreqApplet *) gdata;
 	   
-	   applet->cpu = gtk_combo_box_get_active (GTK_COMBO_BOX (cpu_number));
-	   panel_applet_gconf_set_int (PANEL_APPLET (applet), "cpu", applet->cpu, NULL);
+	   cpu = gtk_combo_box_get_active (GTK_COMBO_BOX (cpu_number));
+	   if (cpu >= 0) {
+			 cpufreq_monitor_set_cpu (applet->monitor, cpu);
+			 
+			 panel_applet_gconf_set_int (PANEL_APPLET (applet), "cpu", cpu, NULL);
+	   }
 }
 
 static void
 cpufreq_prefs_show_mode_changed (GtkWidget *show_mode, gpointer *gdata)
 {
-	   gboolean   key_writable;
-	   GtkWidget *show_freq, *show_unit, *show_perc;
+	   gboolean       key_writable;
+	   GtkWidget     *show_freq, *show_unit, *show_perc;
 	   CPUFreqApplet *applet;
 
 	   applet = (CPUFreqApplet *) gdata;
@@ -205,7 +232,7 @@ cpufreq_prefs_show_mode_changed (GtkWidget *show_mode, gpointer *gdata)
 static void
 cpufreq_prefs_response_cb (GtkDialog *dialog, gint response, gpointer gdata)
 {
-	   GError *error;
+	   GError        *error;
 	   CPUFreqApplet *applet;
 
 	   applet = (CPUFreqApplet *) gdata;
@@ -229,11 +256,12 @@ cpufreq_prefs_response_cb (GtkDialog *dialog, gint response, gpointer gdata)
 void
 cpufreq_prefs_cpu_combo_setup (GtkWidget *cpu_number, CPUFreqApplet *applet)
 {
-	   GtkListStore *model;
-	   GtkTreeIter iter;
+	   GtkListStore    *model;
+	   GtkTreeIter      iter;
 	   GtkCellRenderer *renderer;
-	   gint i;
-	   gchar *text_label;
+	   gint             i;
+	   gchar           *text_label;
+	   guint            cpu;
 	   
 	   model = gtk_list_store_new (1, G_TYPE_STRING);
 	   gtk_combo_box_set_model (GTK_COMBO_BOX (cpu_number),
@@ -258,7 +286,9 @@ cpufreq_prefs_cpu_combo_setup (GtkWidget *cpu_number, CPUFreqApplet *applet)
 	   gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (cpu_number), renderer,
 								"text", 0, NULL);
 
-	   gtk_combo_box_set_active (GTK_COMBO_BOX (cpu_number), applet->cpu);
+	   cpu = cpufreq_monitor_get_cpu (applet->monitor);
+	   
+	   gtk_combo_box_set_active (GTK_COMBO_BOX (cpu_number), cpu);
 
 	   gtk_widget_set_sensitive (GTK_WIDGET (cpu_number),
 						    cpufreq_key_is_writable (applet, "cpu"));
@@ -267,8 +297,8 @@ cpufreq_prefs_cpu_combo_setup (GtkWidget *cpu_number, CPUFreqApplet *applet)
 void
 cpufreq_prefs_show_mode_combo_setup (GtkWidget *show_mode, CPUFreqApplet *applet)
 {
-	   GtkListStore *model;
-	   GtkTreeIter iter;
+	   GtkListStore    *model;
+	   GtkTreeIter      iter;
 	   GtkCellRenderer *renderer;
 
 	   model = gtk_list_store_new (1, G_TYPE_STRING);

@@ -17,10 +17,15 @@ INCLUDES = \
 libexec_PROGRAMS = cpufreq-applet
 
 cpufreq_applet_SOURCES =  \
-	cpufreq-applet.c        cpufreq-applet.h        \
-	cpufreq-prefs.c         cpufreq-prefs.h         \
-	cpufreq.c               cpufreq.h               \
-	cpufreq-popup.c         cpufreq-popup.h
+	cpufreq-applet.c        	cpufreq-applet.h        	\
+	cpufreq-prefs.c         	cpufreq-prefs.h         	\
+	cpufreq-popup.c                 cpufreq-popup.h			\
+	cpufreq-monitor.c       	cpufreq-momintor.h      	\
+					cpufreq-monitor-protected.h	\
+	cpufreq-monitor-factory.c	cpufreq-monitor-factory.h	\
+	cpufreq-monitor-procfs.c	cpufreq-monitor-procfs.h	\
+	cpufreq-monitor-sysfs.c	        cpufreq-monitor-sysfs.h	        \
+	cpufreq-monitor-cpuinfo.c       cpufreq-monitor-cpuinfo.h
 
 cpufreq_applet_LDADD =  \
 	$(GNOME_APPLETS_LIBS)   	\
