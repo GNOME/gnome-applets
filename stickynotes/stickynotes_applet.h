@@ -25,7 +25,7 @@
 #define __STICKYNOTES_APPLET_H__
 
 #define GCONF_PATH "/apps/stickynotes_applet"
-#define GLADE_PATH GNOMEGLADEDIR "/stickynotes_applet.glade"
+#define GLADE_PATH STICKYNOTES_GLADEDIR "/stickynotes_applet.glade"
 
 typedef struct
 {

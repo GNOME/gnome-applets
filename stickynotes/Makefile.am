@@ -8,11 +8,12 @@ INCLUDES = \
 	$(GNOME_APPLETS_CFLAGS) \
 	$(LIBGLADE_CFLAGS) \
 	-DGNOMELOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\" \
-	-DGNOMEGLADEDIR=\"$(gladedir)\" \
 	-DPREFIX=\""$(prefix)"\" \
 	-DDATADIR=\""$(datadir)"\" \
 	-DLIBDIR=\""$(libdir)"\" \
-	-DSYSCONFDIR=\""$(sysconfdir)"\"
+	-DSYSCONFDIR=\""$(sysconfdir)"\" \
+	-DSTICKYNOTES_GLADEDIR=\"$(gladedir)\" \
+	-DSTICKYNOTES_ICONDIR=\"$(icondir)\"
 
 libexec_PROGRAMS = stickynotes_applet
 
@@ -39,6 +40,8 @@ doc_DATA = \
 
 gladedir = $(datadir)/stickynotes
 glade_DATA = stickynotes_applet.glade
+
+icondir = $(datadir)/pixmaps/stickynotes
 
 xmldir = $(datadir)/gnome-2.0/ui
 xml_in_files = stickynotes_applet.xml.in

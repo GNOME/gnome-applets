@@ -50,12 +50,8 @@ StickyNote * stickynote_new()
 	
 	/* Customize the window */
 	gtk_window_set_decorated(GTK_WINDOW(note->window), FALSE);
-#if 0
-	gtk_window_set_skip_taskbar_hint(GTK_WINDOW(note->window), TRUE); /* FIXME Use for Gtk+-2.2 */
-	gtk_window_set_skip_pager_hint(GTK_WINDOW(note->window), TRUE);   /* FIXME Use for Gtk+-2.2 */
-#else
-	gtk_window_set_type_hint(GTK_WINDOW(note->window), GDK_WINDOW_TYPE_HINT_TOOLBAR); /* FIXME Use for Gtk+-2.0 */
-#endif
+	gtk_window_set_skip_taskbar_hint(GTK_WINDOW(note->window), TRUE);
+	gtk_window_set_skip_pager_hint(GTK_WINDOW(note->window), TRUE);
 	if (gconf_client_get_bool(stickynotes->gconf_client, GCONF_PATH "/settings/sticky", NULL))
 		gtk_window_stick(GTK_WINDOW(note->window));
 	gtk_window_resize(GTK_WINDOW(note->window), gconf_client_get_int(stickynotes->gconf_client, GCONF_PATH "/defaults/width", NULL),

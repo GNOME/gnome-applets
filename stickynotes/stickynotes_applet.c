@@ -48,8 +48,8 @@ static gboolean stickynotes_applet_fill(PanelApplet *applet)
 	stickynotes->pressed = FALSE;
 	stickynotes->notes = NULL;
 	stickynotes->hidden = FALSE;
-	stickynotes->pixbuf_normal = gdk_pixbuf_new_from_file(GNOME_ICONDIR "/stickynotes.png", NULL);
-	stickynotes->pixbuf_prelight = gdk_pixbuf_new_from_file(GNOME_ICONDIR "/stickynotes_prelight.png", NULL);
+	stickynotes->pixbuf_normal = gdk_pixbuf_new_from_file(STICKYNOTES_ICONDIR "/stickynotes.png", NULL);
+	stickynotes->pixbuf_prelight = gdk_pixbuf_new_from_file(STICKYNOTES_ICONDIR "/stickynotes_prelight.png", NULL);
 	stickynotes->image = NULL;
 	stickynotes->gconf_client = gconf_client_get_default();
 	stickynotes->tooltips = gtk_tooltips_new();
@@ -82,7 +82,7 @@ static gboolean stickynotes_applet_fill(PanelApplet *applet)
 		stickynotes, NULL, NULL);
 	
 	/* Set default icon for all sticky note windows */
-	gnome_window_icon_set_default_from_file(GNOME_ICONDIR "/stickynotes.png");
+	gnome_window_icon_set_default_from_file(STICKYNOTES_ICONDIR "/stickynotes.png");
 	
 	/* Load sticky notes */
 	stickynotes_load_all();
