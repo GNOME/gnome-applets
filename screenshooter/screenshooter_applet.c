@@ -21,6 +21,7 @@
 
 /* If you think this code is a mess, you should see my flat ;) */
 
+#include "config.h"
 #include "screenshooter_applet.h"
 
 /* TODO For the application launches...
@@ -1239,10 +1240,10 @@ main (int argc, char *argv[])
   int init_size;
 #endif
 
-  /* Initialize the i18n stuff 
-     bindtextdomain ("screenshooter_applet", GNOMELOCALEDIR);
-     textdomain ("screenshooter_applet");
-   */
+  /* Initialize the i18n stuff */
+  bindtextdomain (PACKAGE, GNOMELOCALEDIR);
+  textdomain (PACKAGE);
+
   applet_widget_init ("screenshooter_applet", VERSION, argc, argv, NULL, 0,
 		      NULL);
   applet = applet_widget_new ("screenshooter_applet");
