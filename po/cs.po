@@ -10,14 +10,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets VERSION\n"
-"POT-Creation-Date: 2003-05-04 12:21+0200\n"
-"PO-Revision-Date: 2003-05-04 21:12+0200\n"
+"POT-Creation-Date: 2003-05-09 04:21+0200\n"
+"PO-Revision-Date: 2003-05-09 21:40+0200\n"
 "Last-Translator: Miloslav Trmac <mitr@volny.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
 #. The long name of the applet in the About dialog.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
@@ -273,7 +274,7 @@ msgstr ""
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jörgen Pehrson <jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:839 cdplayer/cdplayer.c:514
+#: battstat/battstat_applet.c:839 cdplayer/cdplayer.c:544
 #: charpick/charpick.c:500 drivemount/drivemount.c:490 geyes/geyes.c:228
 #: gkb-new/gkb.c:622 gtik/gtik.c:706 gweather/gweather-about.c:44
 #: mailcheck/mailcheck.c:1875 mini-commander/src/about.c:48 mixer/mixer.c:992
@@ -415,8 +416,8 @@ msgstr "Baterie jsou plně dobity"
 msgid "Battery power low"
 msgstr "Téměř vybité baterie"
 
-#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:189
-#: cdplayer/cdplayer.c:532 cdplayer/cdplayer.c:941
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:190
+#: cdplayer/cdplayer.c:562 cdplayer/cdplayer.c:992
 msgid "CD Player"
 msgstr "CD Přehrávač"
 
@@ -441,53 +442,62 @@ msgstr "Aplet pro přehrávání zvukových CD"
 msgid "_Run External CD Player"
 msgstr "Spustit exte_rní CD přehrávač"
 
-#: cdplayer/cdplayer.c:169 cdplayer/cdplayer.c:931
+#: cdplayer/cdplayer.c:170 cdplayer/cdplayer.c:982
 msgid "Stop"
 msgstr "Stop"
 
-#: cdplayer/cdplayer.c:173 cdplayer/cdplayer.c:933
+#: cdplayer/cdplayer.c:174 cdplayer/cdplayer.c:984
 msgid "Play / Pause"
 msgstr "Hrát / Pauza"
 
-#: cdplayer/cdplayer.c:177 cdplayer/cdplayer.c:935
+#: cdplayer/cdplayer.c:178 cdplayer/cdplayer.c:986
 msgid "Eject"
 msgstr "Vysunout"
 
-#: cdplayer/cdplayer.c:181 cdplayer/cdplayer.c:937
+#: cdplayer/cdplayer.c:182 cdplayer/cdplayer.c:988
 msgid "Previous Track"
 msgstr "Předchozí skladba"
 
-#: cdplayer/cdplayer.c:185 cdplayer/cdplayer.c:939
+#: cdplayer/cdplayer.c:186 cdplayer/cdplayer.c:990
 msgid "Next Track"
 msgstr "Následující skladba"
 
-#: cdplayer/cdplayer.c:307 drivemount/drivemount.c:399 mixer/mixer.c:958
+#: cdplayer/cdplayer.c:231
+msgid "You do not have permission to use the CD player."
+msgstr "Nemáte oprávnění používat přehrávač CD."
+
+#: cdplayer/cdplayer.c:334 drivemount/drivemount.c:399 mixer/mixer.c:958
 #: multiload/main.c:118
 #, c-format
 msgid "There was an error executing '%s' : %s"
 msgstr "Při spouštění '%s' došlo k chybě: %s"
 
-#: cdplayer/cdplayer.c:421
+#: cdplayer/cdplayer.c:385
+#, c-format
+msgid "%s does not seem to be a CD player"
+msgstr "%s zřejmě není přehrávač CD"
+
+#: cdplayer/cdplayer.c:451
 msgid "CD Player Preferences"
 msgstr "Nastavení CD Přehrávače"
 
-#: cdplayer/cdplayer.c:440
+#: cdplayer/cdplayer.c:470
 msgid "Device _Path:"
 msgstr "_Cesta k zařízení:"
 
-#: cdplayer/cdplayer.c:449
+#: cdplayer/cdplayer.c:479
 msgid "Device Path"
 msgstr "Cesta k zařízení:"
 
-#: cdplayer/cdplayer.c:449
+#: cdplayer/cdplayer.c:479
 msgid "Set the device path here"
 msgstr "Nastavte zde cestu k zařízení"
 
-#: cdplayer/cdplayer.c:452
+#: cdplayer/cdplayer.c:482
 msgid "Use _Default"
 msgstr "Použít _implicitní"
 
-#: cdplayer/cdplayer.c:533
+#: cdplayer/cdplayer.c:563
 msgid ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
@@ -495,41 +505,41 @@ msgstr ""
 "©1997 Free Software Foundation\n"
 "©2001 Chris Phelps (Port pro GNOME 2)"
 
-#: cdplayer/cdplayer.c:535 cdplayer/cdplayer.c:942
+#: cdplayer/cdplayer.c:565 cdplayer/cdplayer.c:993
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr ""
 "Tento aplet pro přehrávání CD slouží k jednoduchému přehrávání CD na vašem "
 "panelu"
 
-#: cdplayer/cdplayer.c:792 cdplayer/cdplayer.c:803
+#: cdplayer/cdplayer.c:822 cdplayer/cdplayer.c:833
 msgid "Elapsed time"
 msgstr "Uplynulý čas"
 
-#: cdplayer/cdplayer.c:795 cdplayer/cdplayer.c:805
+#: cdplayer/cdplayer.c:825 cdplayer/cdplayer.c:835
 msgid "Track number"
 msgstr "Číslo skladby"
 
-#: cdplayer/cdplayer.c:857
+#: cdplayer/cdplayer.c:891
 msgid "Audio device is busy, or being used by another application"
 msgstr "Zvukové zařízení je zaneprázdněno nebo používáno jinou aplikací"
 
-#: cdplayer/cdplayer.c:932
+#: cdplayer/cdplayer.c:983
 msgid "Click this button to Stop playing the CD"
 msgstr "Stisknutím tohoto tlačítka zastavíte přehrávání CD"
 
-#: cdplayer/cdplayer.c:934
+#: cdplayer/cdplayer.c:985
 msgid "Click this button to Play or Pause the CD"
 msgstr "Stisknutím tohoto tlačítka spustíte nebo zastavíte přehrávání CD"
 
-#: cdplayer/cdplayer.c:936
+#: cdplayer/cdplayer.c:987
 msgid "Click this button to eject the CD"
 msgstr "Stisknutím tohoto tlačítka vysunete CD"
 
-#: cdplayer/cdplayer.c:938
+#: cdplayer/cdplayer.c:989
 msgid "Click this button to Play the previous track in the CD"
 msgstr "Stisknutím tohoto tlačítka přejdete na předcházející skladbu CD"
 
-#: cdplayer/cdplayer.c:940
+#: cdplayer/cdplayer.c:991
 msgid "Click this button to Play the next track in the CD"
 msgstr "Stisknutím tohoto tlačítka přejdete na následující skladbu CD"
 
@@ -1565,6 +1575,7 @@ msgstr "Generátor Sledování poštovní schránky"
 
 #: mailcheck/GNOME_MailcheckApplet_Factory.server.in.in.h:5
 #: modemlights/GNOME_ModemLightsApplet.server.in.in.h:1
+#: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:1
 msgid "Internet"
 msgstr "Internet"
 
@@ -1612,7 +1623,8 @@ msgid ""
 "updating has been deactivated for now.\n"
 "%s"
 msgstr ""
-"Sledování poštovní schránky nemohlo zkontrolovat vaše zprávy z %s a proto byla automatická aktualizace prozatím deaktivována.\n"
+"Sledování poštovní schránky nemohlo zkontrolovat vaše zprávy z %s a proto "
+"byla automatická aktualizace prozatím deaktivována.\n"
 "%s"
 
 #: mailcheck/mailcheck.c:605
@@ -1760,7 +1772,9 @@ msgstr "Nastavení Sledování poštovní schránky"
 
 #: mailcheck/mailcheck.c:1890
 msgid "Inbox Monitor notifies you when new mail arrives in your mailbox"
-msgstr "Sledování poštovní schránky vás upozorňuje, když do vaší schránky přijde nová pošta"
+msgstr ""
+"Sledování poštovní schránky vás upozorňuje, když do vaší schránky přijde "
+"nová pošta"
 
 #: mailcheck/mailcheck.c:2056
 msgid "Text only"
@@ -1804,7 +1818,8 @@ msgstr "Jestli má být pošta automaticky kontrolována"
 
 #: mailcheck/mailcheck.schemas.in.h:9
 msgid "If this is set mail will be checked every update-freq milliseconds"
-msgstr "Je-li toto nastaveno, bude pošta kontrolována každých update-freq milisekund"
+msgstr ""
+"Je-li toto nastaveno, bude pošta kontrolována každých update-freq milisekund"
 
 #: mailcheck/mailcheck.schemas.in.h:10
 msgid "If this is set, we should run the exec-command"
@@ -1862,7 +1877,9 @@ msgstr "Takto zpracováváme poštu, zpracováváme poštu, zpracováváme pošt
 msgid ""
 "This is the animation that will be displayed during normal Inbox Monitor "
 "usage"
-msgstr "Toto je animace, která bude zobrazována v průběhu normálního použití Sledování poštovní schránky"
+msgstr ""
+"Toto je animace, která bude zobrazována v průběhu normálního použití "
+"Sledování poštovní schránky"
 
 #: mailcheck/mailcheck.schemas.in.h:24
 msgid "Username on the remote server"
@@ -1870,11 +1887,13 @@ msgstr "Jméno uživatele na vzdáleném serveru"
 
 #: mailcheck/mailcheck.schemas.in.h:25
 msgid "We run this command when the user clicks on Inbox Monitor"
-msgstr "Spouštíme tento příkaz, když uživatel klikne na Sledování poštovní schránky"
+msgstr ""
+"Spouštíme tento příkaz, když uživatel klikne na Sledování poštovní schránky"
 
 #: mailcheck/mailcheck.schemas.in.h:26
 msgid "Whether to reset mail status when you click on Inbox Monitor"
-msgstr "Jestli vynulovat stav pošty, když kliknete na Sledování poštovní schránky"
+msgstr ""
+"Jestli vynulovat stav pošty, když kliknete na Sledování poštovní schránky"
 
 #: mailcheck/mailcheck.schemas.in.h:27
 msgid "You've got mail!"
@@ -1912,9 +1931,13 @@ msgid ""
 "Software Foundation; either version 2 of the License, or (at your option) "
 "any later version."
 msgstr ""
-"Tento aplet GNOME přidává do panelu příkazovou řádku. Nabízí doplňování příkazů, historii příkazů a měnitelná makra.\n"
+"Tento aplet GNOME přidává do panelu příkazovou řádku. Nabízí doplňování "
+"příkazů, historii příkazů a měnitelná makra.\n"
 "\n"
-"Tento program je volně šiřitelný software; můžete jej šířit a/nebo upravovat pod ustanoveními GNU General Public License publikované Free Software Foundation; a to buď verze 2 této licence nebo (podle vašeho uvážení) jakékoli verze pozdější."
+"Tento program je volně šiřitelný software; můžete jej šířit a/nebo upravovat "
+"pod ustanoveními GNU General Public License publikované Free Software "
+"Foundation; a to buď verze 2 této licence nebo (podle vašeho uvážení) "
+"jakékoli verze pozdější."
 
 #. build file select dialog
 #: mini-commander/src/command_line.c:440
@@ -2426,7 +2449,8 @@ msgid ""
 msgstr ""
 "Uvolněno pod GNU General Public License.\n"
 "\n"
-"Program, který sleduje zátěž systému a je schopný zobrazovat grafy pro CPU, paměť, využití odkládacího prostoru a zatížení sítě."
+"Program, který sleduje zátěž systému a je schopný zobrazovat grafy pro CPU, "
+"paměť, využití odkládacího prostoru a zatížení sítě."
 
 #: multiload/main.c:236 multiload/properties.c:463
 msgid "Processor"
@@ -2760,7 +2784,10 @@ msgid ""
 "By default, sticky notes are given the current date as the title when they "
 "are created. This format is used. Anything that can be parsed by strftime() "
 "is valid."
-msgstr "Implicitně dostanou lepicí poznámky při vytvoření jako nadpis aktuální datum. Používá se tento formát. Platné je cokoli, co může být zpracováno pomocí strftime ()."
+msgstr ""
+"Implicitně dostanou lepicí poznámky při vytvoření jako nadpis aktuální "
+"datum. Používá se tento formát. Platné je cokoli, co může být zpracováno "
+"pomocí strftime ()."
 
 #: stickynotes/stickynotes.schemas.in.h:3
 msgid "Date format"
@@ -2775,13 +2802,20 @@ msgid ""
 "Default base color for new sticky notes. This can be any string found in rgb."
 "txt (that comes with XFree86), for example \"snow\" or \"yellow2\". Or it "
 "can be an html hex specification, for example \"#30FF50\"."
-msgstr "Implicitní základní barva pro nové lepicí poznámky. Může to být libovolný řetězec obsažený v rgb.txt (který je dodáván s XFree86), například \"show\" nebo \"yellow2\". Nebo to může být šestnáctková specifikace html, například \"#30FF50\"."
+msgstr ""
+"Implicitní základní barva pro nové lepicí poznámky. Může to být libovolný "
+"řetězec obsažený v rgb.txt (který je dodáván s XFree86), například \"show\" "
+"nebo \"yellow2\". Nebo to může být šestnáctková specifikace html, například "
+"\"#30FF50\"."
 
 #: stickynotes/stickynotes.schemas.in.h:6
 msgid ""
 "Default click behavior of the applet where \"0\" is \"New Note\", \"1\" is "
 "\"Show/Hide All Notes\", and \"2\" is \"Lock/Unlock All Notes\"."
-msgstr "Implicitní chování apletu při kliknutí, kde \"0\" je \"Nová poznámka\", \"1\" je \"Skrýt/zobrazit všechny poznámky\" a \"2\" je \"Zamknout/odemknout všechny poznámky\"."
+msgstr ""
+"Implicitní chování apletu při kliknutí, kde \"0\" je \"Nová poznámka\", \"1"
+"\" je \"Skrýt/zobrazit všechny poznámky\" a \"2\" je \"Zamknout/odemknout "
+"všechny poznámky\"."
 
 #: stickynotes/stickynotes.schemas.in.h:7
 msgid "Default height for new notes"
@@ -2807,7 +2841,9 @@ msgstr "Implicitní šířka nových poznámek v pixelech."
 msgid ""
 "Every time the specified number of minutes pass. The sticky notes are "
 "automatically saved."
-msgstr "Pokaždé, kdy uplyne zadaný počet minut, jsou lepicí poznámky automaticky uloženy."
+msgstr ""
+"Pokaždé, kdy uplyne zadaný počet minut, jsou lepicí poznámky automaticky "
+"uloženy."
 
 #: stickynotes/stickynotes.schemas.in.h:13
 msgid "Specifies whether the sticky notes are locked (uneditable) or not."
@@ -2817,7 +2853,9 @@ msgstr "Určuje, jestli jsou lepicí poznámky zamčené (needitovatelné) nebo 
 msgid ""
 "Specifies whether the sticky notes are visible on ALL workspaces on the "
 "desktop, or not."
-msgstr "Určuje, jestli jsou lepicí poznámky viditelné na VŠECH pracovních plochách nebo ne."
+msgstr ""
+"Určuje, jestli jsou lepicí poznámky viditelné na VŠECH pracovních plochách "
+"nebo ne."
 
 #: stickynotes/stickynotes.schemas.in.h:15
 msgid "Specifies whether the sticky notes are visible or not."
@@ -2853,11 +2891,11 @@ msgstr[2] ""
 "%s\n"
 "%d poznámek"
 
-#: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:1
+#: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:2
 msgid "Monitor the quality of a wireless network link"
 msgstr "Sledování kvality bezdrátového síťového spojení"
 
-#: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:2
+#: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:3
 #: wireless/wireless-applet.c:748
 msgid "Wireless Link Monitor"
 msgstr "Sledování bezdrátového spojení"
