@@ -62,6 +62,10 @@ static void setup_colors();
 static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data);
 static gint applet_save_session(GtkWidget *widget, char *privcfgpath, char *globcfgpath);
 
+static int get_modem_stats(int *in, int *out);
+static int get_ISDN_stats(int *in, int *out);
+static int get_stats(int *in, int *out);
+
 static void about_cb (AppletWidget *widget, gpointer data)
 {
 	GtkWidget *about;
@@ -203,6 +207,49 @@ static int is_connected()
 		return is_Modem_on();
 }
 
+static int get_modem_stats(int *in, int *out)
+{
+	struct 	ifreq ifreq;
+	struct 	ppp_stats stats;
+
+	memset(&ifreq, 0, sizeof(ifreq));
+#ifndef __FreeBSD__
+	strncpy(ifreq.ifr_ifrn.ifrn_name, device_name, IFNAMSIZ);
+#else
+	strncpy(ifreq.ifr_name, device_name, IFNAMSIZ);
+#endif /* __FreeBSD__ */
+	ifreq.ifr_ifru.ifru_data = (caddr_t)&stats;
+#ifndef __FreeBSD__
+	if ((ioctl(ip_socket,SIOCDEVPRIVATE,(caddr_t)&ifreq) < 0))
+#else
+		if ((ioctl(ip_socket,SIOCGPPPSTATS,(caddr_t)&ifreq) < 0))
+#endif /* __FreeBSD__ */
+			{
+				/* failure means ppp is not up */
+				*in = *out = 0;
+				return FALSE;
+			}
+		else
+			{
+				*in = stats.p.ppp_ibytes;
+				*out = stats.p.ppp_obytes;
+				return TRUE;
+			}
+}
+
+static int get_ISDN_stats(int *in, int *out)
+{
+	*in = *out = 0;
+	return FALSE;
+}
+
+static int get_stats(int *in, int *out)
+{
+	if (use_ISDN)
+		return get_ISDN_stats(in, out);
+	else
+		return get_modem_stats(in, out);
+}
 
 static void command_connect_cb( gint button, gpointer data)
 {
@@ -384,38 +431,17 @@ static gint update_display()
 	int rx, tx;
 	int light_rx = FALSE;
 	int light_tx = FALSE;
-	struct 	ifreq ifreq;
-	struct 	ppp_stats stats;
 
 	load_count++;
 
-	if (is_connected())
-		{
-		memset(&ifreq, 0, sizeof(ifreq));
-#ifndef __FreeBSD__
-		strncpy(ifreq.ifr_ifrn.ifrn_name, device_name, IFNAMSIZ);
-#else
-		strncpy(ifreq.ifr_name, device_name, IFNAMSIZ);
-#endif /* __FreeBSD__ */
-		ifreq.ifr_ifru.ifru_data = (caddr_t)&stats;
-#ifndef __FreeBSD__
-		if ((ioctl(ip_socket,SIOCDEVPRIVATE,(caddr_t)&ifreq) < 0))
-#else
-		if ((ioctl(ip_socket,SIOCGPPPSTATS,(caddr_t)&ifreq) < 0))
-#endif /* __FreeBSD__ */
-			{
-			/* failure means ppp is not up */
-			old_tx = old_rx = 0;
-			rx = tx = 0;
-			}
-		else
-			{
-			rx = stats.p.ppp_ibytes;
-			tx = stats.p.ppp_obytes;
+	if (is_connected()) {
+		if (!get_stats (&rx, &tx)) {
+			old_rx = old_tx = 0;
+		} else {
 			if (rx > old_rx) light_rx = TRUE;
 			if (tx > old_tx) light_tx = TRUE;
-			}
-
+		}
+		
 		update_lights(light_rx,light_tx,TRUE);
 		if (load_count > UPDATE_DELAY * 2)
 			{
