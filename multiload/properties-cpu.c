@@ -19,7 +19,6 @@
 static GtkWidget *propbox=NULL;
 static cpuload_properties temp_props;
 
-// extern GtkWidget *disp;
 extern cpuload_properties cpu_props;
 
 void
@@ -51,19 +50,28 @@ save_cpu_properties (char *path, cpuload_properties *prop)
 }
 
 static void
-color_changed_cb (GnomeColorSelector *widget, gchar **color)
+ucolor_changed_cb (GnomeColorPicker *widget)
 {
-        char *tmp;
- 	int r,g,b;
+ 	guint8 r,g,b;
 
-	tmp = g_malloc (24);
-        gnome_color_selector_get_color_int
-		(widget, &r, &g, &b, 255);
+        gnome_color_picker_get_i8
+		(widget, &r, &g, &b, NULL);
 	
-	sprintf (tmp, "#%02x%02x%02x", r, g, b);
-        *color = tmp;
+	sprintf (temp_props.ucolor, "#%02x%02x%02x", r, g, b);
         gnome_property_box_changed (GNOME_PROPERTY_BOX(propbox));
 }          
+
+static void
+scolor_changed_cb (GnomeColorPicker *widget)
+{
+ 	guint8 r,g,b;
+
+        gnome_color_picker_get_i8
+		(widget, &r, &g, &b, NULL);
+	
+	sprintf (temp_props.scolor, "#%02x%02x%02x", r, g, b);
+        gnome_property_box_changed (GNOME_PROPERTY_BOX(propbox));
+}
 
 static void
 height_cb (GtkWidget *widget, GtkWidget *spin)
@@ -97,7 +105,7 @@ create_frame (void)
 	GtkWidget *height, *width, *freq;
 	GtkObject *height_a, *width_a, *freq_a;
 	        
-	GnomeColorSelector *ucolor_gcs, *scolor_gcs;
+	GtkWidget *ucolor_gcs, *scolor_gcs;
         int ur,ug,ub, sr,sg,sb;
 
 	sscanf (temp_props.ucolor, "#%02x%02x%02x", &ur, &ug, &ub);
@@ -110,28 +118,25 @@ create_frame (void)
 	gtk_container_border_width (GTK_CONTAINER(box), 5);
 	        
 	
-	ucolor_gcs  = gnome_color_selector_new
-		((SetColorFunc)color_changed_cb, &temp_props.ucolor);
-	scolor_gcs = gnome_color_selector_new
-		((SetColorFunc)color_changed_cb, &temp_props.scolor );
+	ucolor_gcs = gnome_color_picker_new ();
+	scolor_gcs = gnome_color_picker_new ();
 
-        gnome_color_selector_set_color_int (ucolor_gcs, ur, ug, ub, 255);
-	gnome_color_selector_set_color_int (scolor_gcs, sr, sg, sb, 255);
-                  
+        gnome_color_picker_set_i8 (GNOME_COLOR_PICKER (ucolor_gcs), 
+				   ur, ug, ub, 255);
+	gnome_color_picker_set_i8 (GNOME_COLOR_PICKER (scolor_gcs), 
+				   sr, sg, sb, 255);
+	gtk_signal_connect (GTK_OBJECT (ucolor_gcs), "color_set",
+			    GTK_SIGNAL_FUNC (ucolor_changed_cb), NULL);
+	gtk_signal_connect (GTK_OBJECT (scolor_gcs), "color_set",
+			    GTK_SIGNAL_FUNC (scolor_changed_cb), NULL);
 
 	label = gtk_label_new (_("User Load"));
-	gtk_box_pack_start_defaults
-		(GTK_BOX (color), label);
-	gtk_box_pack_start_defaults
-		(GTK_BOX (color),
-		 gnome_color_selector_get_button (ucolor_gcs));
+	gtk_box_pack_start_defaults (GTK_BOX (color), label);
+	gtk_box_pack_start_defaults (GTK_BOX (color), ucolor_gcs);
 
 	label = gtk_label_new (_("System Load"));
-	gtk_box_pack_start_defaults
-		(GTK_BOX(color), label);
-	gtk_box_pack_start_defaults
-		(GTK_BOX(color),
-		 gnome_color_selector_get_button (scolor_gcs));
+	gtk_box_pack_start_defaults (GTK_BOX(color), label);
+	gtk_box_pack_start_defaults (GTK_BOX(color), scolor_gcs);
 
 	label = gtk_label_new (_("Applet Height"));
 	height_a = gtk_adjustment_new
