@@ -464,7 +464,7 @@ g_print ("configured \n");
 				fgets(buffer, sizeof(buffer)-1, CONFIG);
 
 				if (strstr(buffer,
-				    "<td nowrap align=left><a href=\"/q\?s=")) {
+				    "<td nowrap align=left><font face=arial size=-1><a href=\"/q\?s=")) {
 
 				      setOutputArray(stockdata, parseQuote(CONFIG,buffer));
 				      retVar = 1;
@@ -604,8 +604,8 @@ g_print ("configured \n");
 
 			tmpSym = STOCK_QUOTE(quotes->data)[i].price;
 			gdk_draw_string (stockdata->pixmap,my_font, gc,
-			stockdata->location + totalLoc ,14,
-			STOCK_QUOTE(quotes->data)[i].price);
+					 stockdata->location + totalLoc ,14,
+					 STOCK_QUOTE(quotes->data)[i].price);
 
 			totalLoc += (gdk_string_width(my_font,tmpSym) + 10); 
 
