@@ -1,5 +1,16 @@
 1999-09-09  Jacob Berkman  <jberkman@andrew.cmu.edu>
 
+	* configure.in: no longer make non-made Makefiles
+	don't make themes/*/Makefile
+
+	* Makefile.am: no longer dist non-made applets
+
+	* */themes/Makefile.am: hack so that we don't have to
+	traverse the directories to install themes (so autoconf
+	doesn't take a week to run)
+
+	* */themes/*/Makefile.am: remove these unnecessarily files
+
 	* configure.in: little improvement from yesterday's
 	xmms attempt
 

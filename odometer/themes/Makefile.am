@@ -1,7 +1,43 @@
-SUBDIRS = 57chevy A bbldotg o smplst
+#SUBDIRS = 57chevy A bbldotg o smplst
 
-ChevyDir = $(datadir)/odometer/57Chevy
-ADir = $(datadir)/odometer/A
-BbldotgDir = $(datadir)/odometer/bbldotg
-ODir = $(datadir)/odometer/o
-SmplstDir = $(datadir)/odometer/smplst
+Chevydir = $(datadir)/odometer/57Chevy
+Chevy_DATA =
+chevy_stuff = \
+	57chevy/themedata		\
+	57chevy/57chevy-small-black.png	\
+	57chevy/57chevy-small-red.png
+
+Adir = $(datadir)/odometer/A
+A_DATA = 
+a_stuff = \
+	A/themedata	\
+	A/A.png
+
+bbldotgdir = $(datadir)/odometer/bbldotg
+bbldotg_DATA =
+bbldotg_stuff = \
+	bbldotg/themedata	\
+	bbldotg/bbldotg.png
+
+odir = $(datadir)/odometer/o
+o_DATA =
+o_stuff = \
+	o/themedata	\
+	o/o-black.png	\
+	o/o-red.png
+
+smplstdir = $(datadir)/odometer/smplst
+smplst_DATA =
+smplst_stuff = \
+	smplst/themedata	\
+	smplst/smplst.png
+
+zodometerdir = $(datadir)/odometer
+zodometer_DATA = \
+	$(chevy_stuff)		\
+	$(a_stuff)		\
+	$(bbldotg_stuff)	\
+	$(o_stuff)		\
+	$(smplst_stuff)
+
+EXTRA_DIST = $(zodometer_DATA)
