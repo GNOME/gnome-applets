@@ -32,4 +32,4 @@ themesdir = $(datadir)/geyes
 pixmapdir = $(datadir)/pixmaps
 pixmap_DATA = gnome-eyes.png
 
-EXTRA_DIST = README.themes $(sys_DATA) $(gnorba_DATA)
+EXTRA_DIST = README.themes $(sys_DATA) $(gnorba_DATA) $(pixmap_DATA)

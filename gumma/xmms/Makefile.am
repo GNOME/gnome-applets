@@ -9,8 +9,7 @@ INCLUDES = -I. -I$(srcdir) 				\
 
 libgumma_xmms_la_LIBADD = \
 	$(GNOME_LIBDIR)		\
-	$(GNOME_APPLETS_LIBS)	\
-	$(INTLLIBS)		\
+	$(GNOME_APPLETS_LIBS)
 	-lxmms
 
 libgumma_xmms_la_SOURCES = \

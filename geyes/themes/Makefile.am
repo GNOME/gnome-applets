@@ -32,3 +32,5 @@ geyes_DATA = \
 	Horrid/config				\
 	Horrid/horrid_eye.png			\
 	Horrid/horrid_pupil.png
+
+EXTRA_DIST = $(geyes_DATA)

@@ -15,8 +15,9 @@ gnotes_applet_SOURCES = \
 
 gnotes_applet_LDFLAGS = \
 	$(GNOME_LIBDIR) \
-	$(GNOME_APPLETS_LIBS) $(INTLLIBS) \
-	$(GNOME_XML_LIB)
+	$(GNOME_APPLETS_LIBS) \
+	$(GNOME_XML_LIB) \
+	$(INTLLIBS)
 
 EXTRA_DIST = \
         gnotes_applet.desktop \

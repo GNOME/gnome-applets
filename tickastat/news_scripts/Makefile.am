@@ -6,5 +6,5 @@ news_SCRIPTS = \
 	test.sh
 
 EXTRA_DIST = \
-	test.sh
-
+	test.sh	\
+	test.tick

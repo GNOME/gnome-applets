@@ -9,8 +9,7 @@ INCLUDES = -I. -I$(srcdir) 				\
 
 libgumma_cd_la_LIBADD = \
 	$(GNOME_LIBDIR)		\
-	$(GNOME_APPLETS_LIBS)	\
-	$(INTLLIBS)
+	$(GNOME_APPLETS_LIBS)
 
 libgumma_cd_la_SOURCES = \
 	cdplayer.c		\

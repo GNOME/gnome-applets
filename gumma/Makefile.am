@@ -27,8 +27,16 @@ gumma_SOURCES = \
 	led.h
 
 EXTRA_DIST = \
-	gumma.desktop	\
-	gumma.gnorba
+	gumma.desktop		\
+	gumma.gnorba		\
+	pixmaps/eject.xpm	\
+	pixmaps/led.xpm		\
+	pixmaps/next.xpm	\
+	pixmaps/play-pause.xpm	\
+	pixmaps/prev.xpm	\
+	pixmaps/stop.xpm
+
+DIST_SUBDIRS = cd gqmpeg xmms
 
 sysdatadir = $(datadir)/applets/Multimedia
 sysdata_DATA = gumma.desktop

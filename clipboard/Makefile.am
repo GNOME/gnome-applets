@@ -11,7 +11,10 @@ clipboard_applet_LDADD = \
 		       $(GNOME_LIBDIR) \
 		       $(GNOME_APPLETS_LIBS) $(INTLLIBS) 
 
-EXTRA_DIST = clipboard_applet.desktop clipboard_applet.gnorba
+EXTRA_DIST = \
+	clipboard_applet.desktop	\
+	clipboard_applet.gnorba		\
+	copy.xpm set_selection.xpm
 
 sysdir = $(datadir)/applets/Utility
 sys_DATA = clipboard_applet.desktop
