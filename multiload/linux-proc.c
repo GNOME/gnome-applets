@@ -130,17 +130,15 @@ void
 GetMemory (int Maximum, int data [5], LoadGraph *g)
 {
     int user, shared, buffer, cached;
-    unsigned long tmp_user;
-
+    
     glibtop_mem mem;
 	
     glibtop_get_mem (&mem);
 	
     assert ((mem.flags & needed_mem_flags) == needed_mem_flags);
 
-    tmp_user = mem.used - mem.buffer - mem.shared - mem.cached;
-   
-    user    = rint (Maximum * (float)tmp_user / mem.total);
+    
+    user    = rint (Maximum * (float)mem.user / mem.total);
     shared  = rint (Maximum * (float)mem.shared / mem.total);
     buffer  = rint (Maximum * (float)mem.buffer / mem.total);
     cached = rint (Maximum * (float)mem.cached / mem.total);
