@@ -83,7 +83,7 @@ typedef struct {
 static GladeXML *xml = NULL;
 static gchar* glade_file=NULL;
 
-static void show_error_dialog (gchar*,...);
+static void show_error_dialog (WirelessApplet *applet, gchar*,...);
 static void show_warning_dialog (gchar*,...);
 static int wireless_applet_timeout_handler (WirelessApplet *applet);
 static void wireless_applet_properties_dialog (BonoboUIComponent *uic,
@@ -324,7 +324,7 @@ wireless_applet_timeout_handler (WirelessApplet *applet)
 
 
 static void 
-show_error_dialog (gchar *mesg,...) 
+show_error_dialog (WirelessApplet *applet, gchar *mesg,...) 
 {
 	GtkWidget *dialog;
 	char *tmp;
@@ -335,6 +335,8 @@ show_error_dialog (gchar *mesg,...)
 	dialog = gtk_message_dialog_new (NULL,
 			0, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
 			mesg, NULL);
+	gtk_window_set_screen (GTK_WINDOW (dialog),
+			       gtk_widget_get_screen (GTK_WIDGET (applet)));
 	gtk_dialog_run (GTK_DIALOG (dialog));
 	gtk_widget_destroy (dialog);
 	g_free (tmp);
@@ -364,7 +366,7 @@ start_file_read (WirelessApplet *applet)
 {
 	applet->file = fopen ("/proc/net/wireless", "rt");
 	if (applet->file == NULL) {
-		show_error_dialog (_("There doesn't seem to be any wireless devices configured on your system.\nPlease verify your configuration if you think this is incorrect."));
+		show_error_dialog (applet, _("There doesn't seem to be any wireless devices configured on your system.\nPlease verify your configuration if you think this is incorrect."));
 	}
 }
 
