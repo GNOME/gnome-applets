@@ -183,7 +183,7 @@ batmon_timeout_callback (gpointer *data)
 		return FALSE;
 	}
 	gtk_label_set (GTK_LABEL (minlabel), str);
-	gtk_tooltips_set_tips (tooltips, GTK_WIDGET (data), str);
+	gtk_tooltips_set_tip (tooltips, GTK_WIDGET (data), str, NULL);
 
 	if (linestat)
 		fname = ac_pixmap_filename;
