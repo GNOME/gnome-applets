@@ -10,8 +10,6 @@
 #include <gnome.h>
 #include <gdk/gdkx.h>
 #include "applet-lib.h"
-#include "panel.h"
-#include "mico-parse.h"
 
 typedef void (*NetwatchUpdateFunc) (GtkWidget *);
 

@@ -23,8 +23,6 @@
 #include <gnome.h>
 #include <gdk/gdkx.h>
 #include <applet-lib.h>
-#include "panel.h"
-#include "mico-parse.h"
 
 #include "led.h"
 #include "cdrom-interface.h"

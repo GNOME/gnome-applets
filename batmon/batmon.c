@@ -13,8 +13,6 @@
 #include <string.h>
 #include "gnome.h"
 #include "applet-lib.h"
-#include "panel.h"
-#include "mico-parse.h"
 
 #define TIMEOUT 5000  /* ms */
 
