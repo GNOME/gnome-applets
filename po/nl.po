@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets cvs\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-07-04 12:33+0200\n"
+"POT-Creation-Date: 2003-07-07 12:35+0200\n"
 "PO-Revision-Date: 2003-06-15 15:14+0100\n"
 "Last-Translator: Vincent van Adrighem <V.vanAdrighem@dirck.mine.nu>\n"
 "Language-Team: Dutch <nl@li.org>\n"
@@ -77,7 +77,7 @@ msgstr "Gereedschap"
 #: gweather/gweather-about.c:44 mailcheck/mailcheck.c:2190
 #: mini-commander/src/about.c:48 mixer/mixer.c:1060
 #: modemlights/modemlights.c:115 multiload/main.c:57
-#: stickynotes/stickynotes.glade.h:54 stickynotes/stickynotes_applet.c:146
+#: stickynotes/stickynotes_applet_callbacks.c:178
 #: wireless/wireless-applet.c:735
 msgid "translator_credits"
 msgstr ""
@@ -244,7 +244,7 @@ msgstr "Vol"
 #: battstat/battstat_applet.c:320 battstat/battstat_applet.c:885
 #: gweather/gweather-dialog.c:82
 msgid "Low"
-msgstr "Leeg"
+msgstr "Laag"
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
 #: battstat/battstat_applet.c:322 battstat/battstat_applet.c:887
@@ -425,7 +425,7 @@ msgstr "    "
 
 #: battstat/battstat_applet.glade.h:2
 #: mini-commander/src/mini-commander.glade.h:2
-#: stickynotes/stickynotes.glade.h:3
+#: stickynotes/stickynotes.glade.h:2
 msgid "*"
 msgstr "*"
 
@@ -464,7 +464,7 @@ msgid "Battery Charge Monitor Preferences"
 msgstr "Voorkeuren Batterij-meter"
 
 #: battstat/battstat_applet.glade.h:13 drivemount/properties.c:305
-#: gweather/gweather-pref.c:275 mailcheck/mailcheck.c:1822
+#: gweather/gweather-pref.c:275 mailcheck/mailcheck.c:1936
 #: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:488
 msgid "General"
 msgstr "Algemeen"
@@ -878,8 +878,8 @@ msgstr "Kies het koppelpunt"
 msgid "_Update interval:"
 msgstr "_Verversingstijd:"
 
-#: drivemount/properties.c:352 mailcheck/mailcheck.c:1882
-#: mailcheck/mailcheck.c:1886 modemlights/properties.c:419
+#: drivemount/properties.c:352 mailcheck/mailcheck.c:1996
+#: mailcheck/mailcheck.c:2000 modemlights/properties.c:419
 msgid "seconds"
 msgstr "seconden"
 
@@ -1160,7 +1160,7 @@ msgstr "Toetsenborden"
 
 #: gkb-new/prop-map.c:91
 msgid "?"
-msgstr ""
+msgstr "?"
 
 #: gkb-new/prop-map.c:272
 msgid "Edit Keyboard"
@@ -1197,7 +1197,7 @@ msgstr "Vlag en Label"
 #: gkb-new/prop.c:257 gtik/gtik.c:1471 gweather/gweather-pref.c:325
 #: modemlights/properties.c:395
 msgid "Display"
-msgstr "Weergeven"
+msgstr "Weergave"
 
 #. Labels and option Menus
 #: gkb-new/prop.c:270
@@ -1350,8 +1350,8 @@ msgstr "Verversen"
 msgid "Stock update fre_quency:"
 msgstr "Verversingsfre_quentie van aandelen:"
 
-#: gtik/gtik.c:1412 gweather/gweather-pref.c:318 mailcheck/mailcheck.c:1864
-#: mailcheck/mailcheck.c:1868
+#: gtik/gtik.c:1412 gweather/gweather-pref.c:318 mailcheck/mailcheck.c:1978
+#: mailcheck/mailcheck.c:1982
 msgid "minutes"
 msgstr "minuten"
 
@@ -2133,7 +2133,7 @@ msgstr "IMAP-server"
 msgid "Mail _spool file:"
 msgstr "E-mail b_ufferbestand:"
 
-#: mailcheck/mailcheck.c:1669
+#: mailcheck/mailcheck.c:1783
 msgid "Browse"
 msgstr "Bladeren"
 
@@ -2153,7 +2153,7 @@ msgstr "Gebr_uiker:"
 msgid "Username Entry box"
 msgstr "Username Entry box"
 
-#: mailcheck/mailcheck.c:1731
+#: mailcheck/mailcheck.c:1845
 msgid "_Password:"
 msgstr "_Wachtwoord:"
 
@@ -2728,7 +2728,7 @@ msgstr "Phone in"
 msgid "Phone Output"
 msgstr "Phone uit"
 
-#: mixer/mixer.c:119
+#: mixer/mixer.c:118
 msgid "Video"
 msgstr "Video"
 
@@ -3338,9 +3338,9 @@ msgstr "Swap-belasting"
 msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "Maak, bekijk en beheer memo's op uw bureaublad"
 
-#. FIXME : Hack because libglade does not properly set these
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:3
-#: stickynotes/stickynotes_applet.c:138 stickynotes/stickynotes_applet.c:386
+#: stickynotes/stickynotes_applet.c:364
+#: stickynotes/stickynotes_applet_callbacks.c:180
 msgid "Sticky Notes"
 msgstr "Memo's"
 
@@ -3357,7 +3357,7 @@ msgid "_Lock Notes"
 msgstr "Memo's vast_zetten"
 
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:5
-#: stickynotes/stickynotes.glade.h:46
+#: stickynotes/stickynotes.glade.h:44
 msgid "_New Note"
 msgstr "_Nieuwe memo"
 
@@ -3365,27 +3365,23 @@ msgstr "_Nieuwe memo"
 msgid "_Show Notes"
 msgstr "Memo's _weergeven"
 
-#: stickynotes/stickynotes.c:312
+#: stickynotes/stickynotes.c:313
 msgid "Locked note"
 msgstr "Memo vastgezet"
 
-#: stickynotes/stickynotes.c:317
+#: stickynotes/stickynotes.c:318
 msgid "Unlocked note"
 msgstr "Memo losgemaakt"
 
-#: stickynotes/stickynotes.glade.h:2
-msgid "(c) 2002-2003 Loban A Rahman"
-msgstr "© 2002-2003 Loban A Rahman"
-
-#: stickynotes/stickynotes.glade.h:4
+#: stickynotes/stickynotes.glade.h:3
 msgid "<b>Behavior</b>"
 msgstr "<b>Gedrag</b>"
 
-#: stickynotes/stickynotes.glade.h:5
+#: stickynotes/stickynotes.glade.h:4
 msgid "<b>Default Note Properties</b>"
 msgstr "<b>Standaardeigenschappen</b>"
 
-#: stickynotes/stickynotes.glade.h:6
+#: stickynotes/stickynotes.glade.h:5
 msgid ""
 "<b>Delete ALL sticky notes?</b>\n"
 "\n"
@@ -3395,7 +3391,7 @@ msgstr ""
 "\n"
 "Veranderingen worden direct opgeslagen."
 
-#: stickynotes/stickynotes.glade.h:9
+#: stickynotes/stickynotes.glade.h:8
 msgid ""
 "<b>Delete this sticky note?</b>\n"
 "\n"
@@ -3405,145 +3401,141 @@ msgstr ""
 "\n"
 "Veranderingen worden direct opgeslagen."
 
-#: stickynotes/stickynotes.glade.h:12
+#: stickynotes/stickynotes.glade.h:11
 msgid "<b>Properties</b>"
 msgstr "<b>Eigenschappen</b>"
 
-#: stickynotes/stickynotes.glade.h:13
+#: stickynotes/stickynotes.glade.h:12
 #, fuzzy
 msgid "C_olor:"
 msgstr "_Kleur:"
 
-#: stickynotes/stickynotes.glade.h:14
+#: stickynotes/stickynotes.glade.h:13
 msgid "Choose a base color to use for all sticky notes"
 msgstr "Kies een basiskleur voor alle memo's"
 
-#: stickynotes/stickynotes.glade.h:15
+#: stickynotes/stickynotes.glade.h:14
 msgid "Choose a color for the note"
 msgstr "Kies een kleur voor de memo"
 
-#: stickynotes/stickynotes.glade.h:16
+#: stickynotes/stickynotes.glade.h:15
 msgid "Choose a font for the note"
 msgstr "Kies een lettertype voor de memo"
 
-#: stickynotes/stickynotes.glade.h:17
+#: stickynotes/stickynotes.glade.h:16
 msgid "Choose a font to use for all sticky notes"
 msgstr "Kies een lettertype voor alle memo's"
 
-#: stickynotes/stickynotes.glade.h:18
+#: stickynotes/stickynotes.glade.h:17
 msgid "Choose if notes are visible on ALL workspaces"
 msgstr "Kies of de memo's op alle werkbladen zichtbaar moeten zijn"
 
-#: stickynotes/stickynotes.glade.h:19
+#: stickynotes/stickynotes.glade.h:18
 msgid "Choose if the default style is forced on all notes"
 msgstr "Kies of de standaardstijl geldt voor alle memo's"
 
-#: stickynotes/stickynotes.glade.h:20
+#: stickynotes/stickynotes.glade.h:19
 msgid "Clic_k:"
 msgstr "_Klik:"
 
-#: stickynotes/stickynotes.glade.h:21
+#: stickynotes/stickynotes.glade.h:20
 msgid "Close note"
 msgstr "Memo sluiten"
 
-#: stickynotes/stickynotes.glade.h:22
+#: stickynotes/stickynotes.glade.h:21
 msgid "Force _default color and font on notes"
 msgstr "_Standaardkleur en lettertype gebruiken voor alle memo's"
 
-#: stickynotes/stickynotes.glade.h:23
+#: stickynotes/stickynotes.glade.h:22
 #, fuzzy
 msgid "H_eight:"
 msgstr "_Hoogte:"
 
-#: stickynotes/stickynotes.glade.h:24
+#: stickynotes/stickynotes.glade.h:23
 msgid "Lock/Unlock note"
 msgstr "Memo vastzetten/losmaken"
 
-#: stickynotes/stickynotes.glade.h:25
+#: stickynotes/stickynotes.glade.h:24
 msgid "Pick a color for the sticky note"
 msgstr "Kies een kleur voor de memo"
 
-#: stickynotes/stickynotes.glade.h:26
+#: stickynotes/stickynotes.glade.h:25
 msgid "Pick a default sticky note color"
 msgstr "Kies een standaardkleur voor de memo's"
 
-#: stickynotes/stickynotes.glade.h:27
+#: stickynotes/stickynotes.glade.h:26
 msgid "Pick a default sticky note font"
 msgstr "Kies een standaardlettertype voor de memo's"
 
-#: stickynotes/stickynotes.glade.h:28
+#: stickynotes/stickynotes.glade.h:27
 msgid "Pick a font for the sticky note"
 msgstr "Kies een lettertype voor de memo's"
 
-#: stickynotes/stickynotes.glade.h:29
+#: stickynotes/stickynotes.glade.h:28
 msgid "Resize note"
 msgstr "Afmetingen wijzigen"
 
-#: stickynotes/stickynotes.glade.h:30
+#: stickynotes/stickynotes.glade.h:29
 msgid "Specify a title for the note"
 msgstr "Geef een titel aan de memo"
 
-#: stickynotes/stickynotes.glade.h:31
+#: stickynotes/stickynotes.glade.h:30
 msgid "Specify the default height (in pixels) of new notes"
 msgstr "Geef de standaardhoogte (in beeldpunten) van nieuwe memo's"
 
-#: stickynotes/stickynotes.glade.h:32
+#: stickynotes/stickynotes.glade.h:31
 msgid "Specify the default width (in pixels) of new notes"
 msgstr "Geef de standaardbreedte (in beeldpunten) van nieuwe memo's"
 
-#: stickynotes/stickynotes.glade.h:33
+#: stickynotes/stickynotes.glade.h:32
 msgid "Sticky Note"
 msgstr "Memo"
 
-#: stickynotes/stickynotes.glade.h:34
+#: stickynotes/stickynotes.glade.h:33
 msgid "Sticky Note Properties"
 msgstr "Voorkeuren memo"
 
-#: stickynotes/stickynotes.glade.h:35
+#: stickynotes/stickynotes.glade.h:34
 msgid "Sticky Notes Preferences"
 msgstr "Voorkeuren memo's"
 
-#: stickynotes/stickynotes.glade.h:36
-msgid "Sticky Notes for the Gnome Desktop Environment"
-msgstr "Memo's voor de GNOME Werkomgeving"
-
-#: stickynotes/stickynotes.glade.h:37
+#: stickynotes/stickynotes.glade.h:35
 msgid "Use co_lor from the system theme"
 msgstr "_Themakleuren gebruiken"
 
-#: stickynotes/stickynotes.glade.h:38
+#: stickynotes/stickynotes.glade.h:36
 msgid "Use default co_lor"
 msgstr "_Gebruik standaardkleur"
 
-#: stickynotes/stickynotes.glade.h:39
+#: stickynotes/stickynotes.glade.h:37
 msgid "Use default fo_nt"
 msgstr "Gebruik stan_daardlettertype"
 
-#: stickynotes/stickynotes.glade.h:40
+#: stickynotes/stickynotes.glade.h:38
 msgid "Use fo_nt from the system theme"
 msgstr "Themalettert_ype gebruiken"
 
-#: stickynotes/stickynotes.glade.h:41
+#: stickynotes/stickynotes.glade.h:39
 msgid "_Color:"
 msgstr "_Kleur:"
 
-#: stickynotes/stickynotes.glade.h:42
+#: stickynotes/stickynotes.glade.h:40
 msgid "_Delete ALL"
 msgstr "ALLES ver_wijderen"
 
-#: stickynotes/stickynotes.glade.h:43
+#: stickynotes/stickynotes.glade.h:41
 msgid "_Delete Note..."
 msgstr "Memo _verwijderen..."
 
-#: stickynotes/stickynotes.glade.h:45
+#: stickynotes/stickynotes.glade.h:43
 msgid "_Lock Note"
 msgstr "Memo vast_zetten"
 
-#: stickynotes/stickynotes.glade.h:47
+#: stickynotes/stickynotes.glade.h:45
 msgid "_Properties..."
 msgstr "_Eigenschappen..."
 
-#: stickynotes/stickynotes.glade.h:48
+#: stickynotes/stickynotes.glade.h:46
 msgid "_Put notes on all workspaces"
 msgstr "_Memo's weergeveb op alle werkbladen"
 
@@ -3551,15 +3543,15 @@ msgstr "_Memo's weergeveb op alle werkbladen"
 msgid "_Title:"
 msgstr "_Titel:"
 
-#: stickynotes/stickynotes.glade.h:51
+#: stickynotes/stickynotes.glade.h:49
 msgid "_lock/unlock all notes"
 msgstr "Alle memo's vast_zetten/losmaken"
 
-#: stickynotes/stickynotes.glade.h:52
+#: stickynotes/stickynotes.glade.h:50
 msgid "_show/hide all notes"
 msgstr "Alle memo's ver_bergen/weergeven"
 
-#: stickynotes/stickynotes.glade.h:53
+#: stickynotes/stickynotes.glade.h:51
 msgid "create a _new note"
 msgstr "nieuwe memo"
 
@@ -3714,7 +3706,7 @@ msgstr "Standaard themakleuren gebruiken"
 msgid "Whether to use the default system font"
 msgstr "Standaardlettertype gebruiken"
 
-#: stickynotes/stickynotes_applet.c:386
+#: stickynotes/stickynotes_applet.c:364
 #, fuzzy, c-format
 msgid ""
 "%s\n"
@@ -3728,6 +3720,14 @@ msgstr[0] ""
 msgstr[1] ""
 "%s:\n"
 "%d%% in gebruik"
+
+#: stickynotes/stickynotes_applet_callbacks.c:182
+msgid "(c) 2002-2003 Loban A Rahman"
+msgstr "© 2002-2003 Loban A Rahman"
+
+#: stickynotes/stickynotes_applet_callbacks.c:183
+msgid "Sticky Notes for the Gnome Desktop Environment"
+msgstr "Memo's voor de GNOME Werkomgeving"
 
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:2
 msgid "Monitor the quality of a wireless network link"
