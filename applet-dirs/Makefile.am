@@ -29,13 +29,13 @@ EXTRA_DIST = $(Utility_DATA) \
 	     $(Directory_files)
 
 install-data-local:
-	$(mkinstalldirs) $(Utilitydir)
-	$(mkinstalldirs) $(Monitorsdir)
-	$(mkinstalldirs) $(Multimediadir)
-	$(mkinstalldirs) $(Networkdir)
-	$(mkinstalldirs) $(Amusementsdir)
-	$(INSTALL_DATA) $(srcdir)/Utility.directory $(Utilitydir)/.directory
-	$(INSTALL_DATA) $(srcdir)/Monitors.directory $(Monitorsdir)/.directory
-	$(INSTALL_DATA) $(srcdir)/Multimedia.directory $(Multimediadir)/.directory
-	$(INSTALL_DATA) $(srcdir)/Network.directory $(Networkdir)/.directory
-	$(INSTALL_DATA) $(srcdir)/Amusements.directory $(Amusementsdir)/.directory
+	$(mkinstalldirs) $(DESTDIR)$(Utilitydir)
+	$(mkinstalldirs) $(DESTDIR)$(Monitorsdir)
+	$(mkinstalldirs) $(DESTDIR)$(Multimediadir)
+	$(mkinstalldirs) $(DESTDIR)$(Networkdir)
+	$(mkinstalldirs) $(DESTDIR)$(Amusementsdir)
+	$(INSTALL_DATA) $(srcdir)/Utility.directory $(DESTDIR)$(Utilitydir)/.directory
+	$(INSTALL_DATA) $(srcdir)/Monitors.directory $(DESTDIR)$(Monitorsdir)/.directory
+	$(INSTALL_DATA) $(srcdir)/Multimedia.directory $(DESTDIR)$(Multimediadir)/.directory
+	$(INSTALL_DATA) $(srcdir)/Network.directory $(DESTDIR)$(Networkdir)/.directory
+	$(INSTALL_DATA) $(srcdir)/Amusements.directory $(DESTDIR)$(Amusementsdir)/.directory
