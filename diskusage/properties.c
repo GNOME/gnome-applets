@@ -406,20 +406,6 @@ create_frame (diskusage_properties *props)
 }
 
 static void
-colors_page (diskusage_properties *props)
-{
-	GtkWidget *box;
-	GtkWidget *frame;
-
-	box = gtk_vbox_new (FALSE, 0);
-
-	
-
-	gtk_widget_show_all (box);
-	return box;
-}
-
-static void
 apply_cb (GtkWidget *widget, gint page_num, AppletWidget *applet)
 {
 	memcpy (&props, &temp_props, sizeof(diskusage_properties));
@@ -475,10 +461,6 @@ properties (AppletWidget *applet, gpointer data)
 	gnome_property_box_append_page (GNOME_PROPERTY_BOX (propbox),
 					create_frame (&temp_props),
 					gtk_label_new (_("General")));
-
-	gnome_property_box_append_page (GNOME_PROPERTY_BOX (propbox),
-					colors_page (&temp_props),
-					gtk_label_new (_("Colors")));
 
 	/* connect property box signals */
         gtk_signal_connect (GTK_OBJECT (propbox), "apply",
