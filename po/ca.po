@@ -8,14 +8,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 2.5.90\n"
-"POT-Creation-Date: 2004-03-17 11:48+1300\n"
-"PO-Revision-Date: 2004-03-09 18:44+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-03-09 18:36+0100\n"
+"PO-Revision-Date: 2004-03-23 15:37+0100\n"
 "Last-Translator: Jordi Mallach <jordi@sindominio.net>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Report-Msgid-Bugs-To: \n"
 "Plural-Forms: nplurals=2; plural=n!=1;\n"
 
 #: accessx-status/GNOME_AccessxApplet.xml.h:1
@@ -128,8 +128,7 @@ msgstr "a"
 
 #: accessx-status/applet.c:984 accessx-status/applet.c:1082
 msgid "Shows keyboard status when accessibility features are used."
-msgstr ""
-"Mostra l'estat del teclat quan s'usen les funcionalitats d'accessibilitat."
+msgstr "Mostra l'estat del teclat quan s'usen les funcionalitats d'accessibilitat."
 
 #: accessx-status/applet.c:1250
 msgid "Displays current state of keyboard accessibility features"
@@ -318,6 +317,7 @@ msgstr ""
 #. when the computer is using battery power.
 #: battstat/battstat_applet.c:510 battstat/battstat_applet.c:1052
 #: battstat/battstat_applet.c:1141
+#, c-format
 msgid "System is running on battery power"
 msgstr "El sistema s'està executant amb les bateries"
 
@@ -325,15 +325,20 @@ msgstr "El sistema s'està executant amb les bateries"
 #. when the computer is using AC power.
 #: battstat/battstat_applet.c:513 battstat/battstat_applet.c:1058
 #: battstat/battstat_applet.c:1147
+#, c-format
 msgid "System is running on AC power"
 msgstr "El sistema s'està executant amb corrent alterna"
 
 #: battstat/battstat_applet.c:527 wireless/wireless-applet.c:146
+#, c-format
 msgid "N/A"
 msgstr "N/D"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
+#. This string will display as a tooltip over the status frame
+#. when the computer is using battery power and the battery meter
+#. and percent meter is hidden by the user.
 #: battstat/battstat_applet.c:651 battstat/battstat_applet.c:1032
 #, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
@@ -341,6 +346,9 @@ msgstr "El sistema s'està executant amb les bateries. Bateria: %d%% (%s)"
 
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
+#. This string will display as a tooltip over the status frame
+#. when the computer is using AC power and the battery meter
+#. and percent meter is hidden by the user.
 #: battstat/battstat_applet.c:658 battstat/battstat_applet.c:1039
 #, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
@@ -351,6 +359,7 @@ msgstr "El sistema s'està executant amb corrent alterna. Bateria: %d%% (%s)"
 #. power and the battery isn't present. Not a
 #. possible combination, I guess... :)
 #: battstat/battstat_applet.c:669
+#, c-format
 msgid "System is running on battery power. Battery: Not present"
 msgstr "El sistema s'està quedant sense bateria. Bateria: No present"
 
@@ -358,6 +367,7 @@ msgstr "El sistema s'està quedant sense bateria. Bateria: No present"
 #. battery frame when the computer is using AC
 #. power and the battery isn't present.
 #: battstat/battstat_applet.c:675
+#, c-format
 msgid "System is running on AC power. Battery: Not present"
 msgstr "El sistema s'està executant amb corrent alterna. Bateria: No present"
 
@@ -372,6 +382,7 @@ msgstr "Bateria: %d%% (%s)"
 #. Displayed as a tooltip over the battery meter when no
 #. battery is present.
 #: battstat/battstat_applet.c:691
+#, c-format
 msgid "Battery: Not present"
 msgstr "Bateria: No present"
 
@@ -411,18 +422,18 @@ msgstr ""
 #: battstat/battstat_applet.c:858
 #, c-format
 msgid "The Suspend command '%s' was unsuccessful."
-msgstr ""
+msgstr "L'ordre de suspensió «%s» no ha tingut èxit."
 
 #: battstat/battstat_applet.c:860
 msgid "The Suspend command was unsuccessful."
-msgstr ""
+msgstr "L'ordre de suspensió no ha tingut èxit."
 
 #: battstat/battstat_applet.c:868
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
 msgstr ""
-"L'ordre de suspensió no està be configurada en les preferències.\n"
+"L'ordre de suspensió no està bé configurada en les preferències.\n"
 "Canvieu les preferències i proveu de nou."
 
 #. if your charset supports it, please replace the "o" in
@@ -443,7 +454,7 @@ msgstr "Aquesta utilitat mostra l'estat de la bateria del portàtil."
 msgid ""
 "Can't access ACPI events in /var/run/acpid.socket! Make sure the ACPI "
 "subsystem is working and the acpid daemon is running."
-msgstr ""
+msgstr "No es pot accedir als events d'ACPI en /var/run/acpid.socket. Assegureu-vos que el subsistema d'ACPI està funcionant i que el dimoni acpid s'està executant."
 
 #: battstat/battstat_applet.glade.h:1 gswitchit/gswitchit-properties.glade.h:1
 #: mini-commander/src/mini-commander.glade.h:1
@@ -2522,17 +2533,19 @@ msgstr "S'ha produït un error en iniciar l'XKB"
 
 #: gswitchit/gswitchit-applet.c:742
 msgid "Error loading XKB configuration registry"
-msgstr ""
+msgstr "S'ha produït un error en carregar el registre de configuració XKB"
 
 #: gswitchit/gswitchit-capplet.c:185
 msgid ""
 "Make the layout accessible from the applet popup menu ONLY.\n"
 "No way to switch to this layout using the keyboard."
 msgstr ""
+"Fes la disposició accessible NOMÉS des del menú emergent de l'applet.\n"
+"Cap manera per a canviar a aquesta disposició usant el teclat."
 
 #: gswitchit/gswitchit-capplet.c:265
 msgid "_Exclude from keyboard switching"
-msgstr ""
+msgstr "_Exclou del canvi des del teclat"
 
 #: gswitchit/gswitchit-capplet.c:296
 msgid "Not used"
@@ -2545,15 +2558,15 @@ msgstr "No hi ha cap descripció."
 #: gswitchit/gswitchit-plugins.c:331
 #, c-format
 msgid "Failed to init GConf: %s\n"
-msgstr ""
+msgstr "No s'ha pogut iniciar GConf: %s\n"
 
 #: gswitchit/gswitchit-plugins.glade.h:1
 msgid "Activate more plugins"
-msgstr ""
+msgstr "Activa més connectors"
 
 #: gswitchit/gswitchit-plugins.glade.h:2
 msgid "Active _plugins:"
-msgstr ""
+msgstr "_Connectors actius:"
 
 #: gswitchit/gswitchit-plugins.glade.h:3
 msgid "Add Plugin"
@@ -2564,29 +2577,28 @@ msgid "Close the dialog"
 msgstr "Tanca el diàleg"
 
 #: gswitchit/gswitchit-plugins.glade.h:5
-#, fuzzy
 msgid "Configure the selected plugin"
-msgstr "Feu clic per a editar la paleta seleccionada"
+msgstr "Configura el connector seleccionat"
 
 #: gswitchit/gswitchit-plugins.glade.h:6
 msgid "Deactivate selected plugin"
-msgstr ""
+msgstr "Desactiva el connector seleccionat"
 
 #: gswitchit/gswitchit-plugins.glade.h:7
 msgid "Decrease the plugin priority"
-msgstr ""
+msgstr "Decrementa la prioritat del connector"
 
 #: gswitchit/gswitchit-plugins.glade.h:8
 msgid "Increase the plugin priority"
-msgstr ""
+msgstr "Incrementa la prioritat del connector"
 
 #: gswitchit/gswitchit-plugins.glade.h:9
 msgid "Keyboard Indicator Plugins"
-msgstr ""
+msgstr "Connectors de l'indicador de teclat"
 
 #: gswitchit/gswitchit-plugins.glade.h:10
 msgid "The list of active plugins"
-msgstr ""
+msgstr "La llista de connectors actius"
 
 #: gswitchit/gswitchit-plugins.glade.h:11
 msgid "_Available plugins:"
@@ -2597,47 +2609,44 @@ msgid "<b>Behavior</b>"
 msgstr "<b>Comportament</b>"
 
 #: gswitchit/gswitchit-properties.glade.h:3
-#, fuzzy
 msgid "Choose the default group (for newly created windows)."
-msgstr "Selecciona si l'estil predeterminat es força a totes les notes"
+msgstr "Selecciona el grup predeterminat (per a les noves finestres creades)."
 
 #: gswitchit/gswitchit-properties.glade.h:4
 msgid "Keep separate group for each application window."
-msgstr ""
+msgstr "Manté un grup separat per a cada finestra d'aplicació."
 
 #: gswitchit/gswitchit-properties.glade.h:5
 msgid "Keep the state of indicators separately for each application window."
-msgstr ""
+msgstr "Manté l'estat dels indicadors separats per a cada finestra d'aplicació."
 
 #: gswitchit/gswitchit-properties.glade.h:6
-#, fuzzy
 msgid "Keyboard Indicator Preferences"
-msgstr "Preferències del canviador de disposicions de teclat"
+msgstr "Preferències de l'indicador del teclat"
 
 #: gswitchit/gswitchit-properties.glade.h:7
 msgid "Save/restore _indicators with group"
-msgstr ""
+msgstr "Desa/restaura els _indicadors amb grup"
 
 #: gswitchit/gswitchit-properties.glade.h:8
 msgid "Separate _group for each window"
-msgstr ""
+msgstr "Separa el _grup per a cada finestra"
 
 #: gswitchit/gswitchit-properties.glade.h:9
 msgid "Show national flags as indicators of corresponding layouts"
-msgstr ""
+msgstr "Mostra les banderes nacionals com indicadors per a les disposicions corresponents"
 
 #: gswitchit/gswitchit-properties.glade.h:10
-#, fuzzy
 msgid "Use _flags as indicators"
-msgstr "Un indicador de la càrrega del sistema"
+msgstr "Utilitza _banderes com indicadors"
 
 #: gswitchit/gswitchit-properties.glade.h:11
 msgid "_Default group:"
-msgstr ""
+msgstr "Grup per _defecte:"
 
 #: gswitchit/gswitchit.schemas.in.h:1
 msgid "Beep on group switch"
-msgstr ""
+msgstr "Fes un senyal acústic quan es canvia el grup"
 
 #: gswitchit/gswitchit.schemas.in.h:2
 msgid "Debug level"
@@ -2645,19 +2654,19 @@ msgstr "Nivell de depuració"
 
 #: gswitchit/gswitchit.schemas.in.h:3
 msgid "Default group, assigned on window creation"
-msgstr ""
+msgstr "Grup predeterminat, assignat en la creació de la finestra"
 
 #: gswitchit/gswitchit.schemas.in.h:4
 msgid "Keep and manage separate group per window"
-msgstr ""
+msgstr "Manté i gestiona grups separats per finestra"
 
 #: gswitchit/gswitchit.schemas.in.h:5
 msgid "Save/restore indicators together with layout groups"
-msgstr ""
+msgstr "Desa/restaura els indicadors junt amb els grups de disposicions"
 
 #: gswitchit/gswitchit.schemas.in.h:6
 msgid "Secondary groups"
-msgstr ""
+msgstr "Grups secundaris"
 
 #: gswitchit/gswitchit.schemas.in.h:7
 msgid "Show flags in the applet"
@@ -2665,17 +2674,17 @@ msgstr "Mostra banderes a l'applet"
 
 #: gswitchit/gswitchit.schemas.in.h:8
 msgid "Show flags in the applet to indicate the current layout"
-msgstr ""
+msgstr "Mostra banderes en l'applet per a indicar la disposició actual"
 
 #: gswitchit/gswitchit.schemas.in.h:9
 msgid "Show layout names instead of group names"
-msgstr ""
+msgstr "Mostra els noms de les disposicions en comptes dels noms dels grups"
 
 #: gswitchit/gswitchit.schemas.in.h:10
 msgid ""
 "Show layout names instead of group names (only for versions of XFree "
 "supporting multiple layouts)"
-msgstr ""
+msgstr "Mostra els noms de les disposicions en comptes dels noms dels grups (només per a versions d'XFree que suporten disposicions múltiples)"
 
 #: gtik/GNOME_GtikApplet.server.in.in.h:1
 #: gweather/GNOME_GWeatherApplet_Factory.server.in.in.h:1
@@ -3774,8 +3783,8 @@ msgstr "Teniu correu."
 #, c-format
 msgid "%d unread"
 msgid_plural "%d unread"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d no llegit"
+msgstr[1] "%d no llegits"
 
 #: mailcheck/mailcheck.c:1094 mailcheck/mailcheck.c:1103
 #, c-format
@@ -3788,7 +3797,7 @@ msgstr[1] "%d missatges"
 #: mailcheck/mailcheck.c:1097
 #, c-format
 msgid "%s/%s"
-msgstr ""
+msgstr "%s/%s"
 
 #: mailcheck/mailcheck.c:1110
 msgid "No mail."
@@ -4083,7 +4092,6 @@ msgid "MiniCommander Applet Factory"
 msgstr "Factoria de MiniCommander Applet"
 
 #: mini-commander/src/about.c:72
-#, fuzzy
 msgid ""
 "This GNOME applet adds a command line to the panel. It features command "
 "completion, command history, and changeable macros.\n"
@@ -4093,13 +4101,9 @@ msgid ""
 "Software Foundation; either version 2 of the License, or (at your option) "
 "any later version."
 msgstr ""
-"Aquest applet del GNOME afegeix una línia d'ordres al quadre. Te complert "
-"automàtic, historial d'ordres i macros canviables.\n"
+"Aquest applet del GNOME afegeix una línia d'ordres al quadre. Té complert automàtic, historial d'ordres i macros canviables.\n"
 "\n"
-"Aquest és programari lliure; podeu distribuir-lo i/o modificar-lo sota els "
-"termes de la Llicència Pública General GNU que ha publicat la Free Software "
-"Foundation; o bé versió 2 de la llicència, o bé (a la vostra opció) "
-"qualsevols versió posterior."
+"Aquest és programari lliure; podeu distribuir-lo i/o modificar-lo sota els termes de la Llicència Pública General GNU que ha publicat la Free Software Foundation; o bé versió 2 de la llicència, o bé (a la vostra opció) qualsevols versió posterior."
 
 #: mini-commander/src/command_line.c:315
 msgid "No items in history"
@@ -4134,12 +4138,14 @@ msgid "Set default list value for %s\n"
 msgstr "Estableix la llista predeterminada per a %s\n"
 
 #: mini-commander/src/mc-install-default-macros.c:117
+#, c-format
 msgid "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL is set, not installing schemas\n"
 msgstr ""
 "GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL està establert, no s'instal·len els "
 "esquemes\n"
 
 #: mini-commander/src/mc-install-default-macros.c:125
+#, c-format
 msgid "Must set the GCONF_CONFIG_SOURCE environment variable\n"
 msgstr "S'ha de establir la variable d'entorn GCONF_CONFIG_SOURCE\n"
 
@@ -4231,34 +4237,28 @@ msgstr ""
 "Intenta autocompletar una ordre utilitzant l'historial d'ordres introduïdes."
 
 #: mini-commander/src/mini-commander.schemas.in.h:2
-#, fuzzy
 msgid "Background color, blue component"
-msgstr "Component blau del color de fons"
+msgstr "Color de fons, component blau"
 
 #: mini-commander/src/mini-commander.schemas.in.h:3
-#, fuzzy
 msgid "Background color, green component"
-msgstr "Component verd del color de fons"
+msgstr "Color de fons, component verd"
 
 #: mini-commander/src/mini-commander.schemas.in.h:4
-#, fuzzy
 msgid "Background color, red component"
-msgstr "Component roig del color de fons"
+msgstr "Color de fons, component roig"
 
 #: mini-commander/src/mini-commander.schemas.in.h:5
-#, fuzzy
 msgid "Foreground color, blue component"
-msgstr "Component blau del color del primer pla"
+msgstr "Color del primer pla, component blau"
 
 #: mini-commander/src/mini-commander.schemas.in.h:6
-#, fuzzy
 msgid "Foreground color, green component"
-msgstr "Component verd del color del primer pla"
+msgstr "Color del primer pla, component verd"
 
 #: mini-commander/src/mini-commander.schemas.in.h:7
-#, fuzzy
 msgid "Foreground color, red component"
-msgstr "Component roig del color del primer pla"
+msgstr "Color del primer pla, component roig"
 
 #: mini-commander/src/mini-commander.schemas.in.h:8
 msgid "History list"
@@ -4391,14 +4391,12 @@ msgid "You may not specify duplicate patterns"
 msgstr "No podeu especificar patrons duplicats"
 
 #: mini-commander/src/preferences.c:850
-#, fuzzy
 msgid "Pattern"
-msgstr "_Patró:"
+msgstr "Patró"
 
 #: mini-commander/src/preferences.c:860
-#, fuzzy
 msgid "Command"
-msgstr "Ordres"
+msgstr "Ordre"
 
 #: mixer/GNOME_MixerApplet.server.in.in.h:1
 msgid "Adjust the sound volume"
@@ -5633,9 +5631,8 @@ msgid "This utility shows the status of a wireless link."
 msgstr "Aquesta utilitat mostra l'estat d'un enllaç inalàmbric."
 
 #: wireless/wireless-applet.c:836
-#, fuzzy
 msgid "This utility shows the status of a wireless link"
-msgstr "Aquesta utilitat mostra l'estat d'un enllaç inalàmbric."
+msgstr "Aquesta utilitat mostra l'estat d'un enllaç inalàmbric"
 
 #: wireless/wireless-applet.glade.h:1
 msgid "Show signal strength in _percentage"
