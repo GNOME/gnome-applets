@@ -38,7 +38,7 @@
 #include <time.h>
 #include <unistd.h>
 
-#include <gnome.h> // needed to make it through battstat.h
+#include <gnome.h> /* needed to make it through battstat.h */
 #include <panel-applet.h>
 #include <panel-applet-gconf.h>
 
@@ -60,6 +60,7 @@
                          "monitor applet will not work on your system.\n")
 
 static const char *apm_readinfo (BatteryStatus *status);
+static int pm_initialised;
 
 /*
  * What follows is a series of platform-specific apm_readinfo functions
@@ -76,6 +77,8 @@ static const char *apm_readinfo (BatteryStatus *status);
 
 #include <machine/apm_bios.h>
 
+#define APMDEVICE "/dev/apm"
+
 static const char *
 apm_readinfo (BatteryStatus *status)
 {
@@ -90,7 +93,10 @@ apm_readinfo (BatteryStatus *status)
 
   fd = open(APMDEVICE, O_RDONLY);
   if (fd == -1)
+  {
+    pm_initialised = 0;
     return ERR_OPEN_APMDEV;
+  }
 
   if (ioctl(fd, APMIO_GETINFO, &apminfo) == -1)
     err(1, "ioctl(APMIO_GETINFO)");
@@ -115,9 +121,7 @@ apm_readinfo (BatteryStatus *status)
 #include <sys/param.h>
 #include <machine/apmvar.h>
 
-#if defined(__NetBSD__)
 #define APMDEVICE "/dev/apm"
-#endif
 
 static const char *
 apm_readinfo (BatteryStatus *status)
@@ -136,7 +140,10 @@ apm_readinfo (BatteryStatus *status)
 
   fd = open(APMDEVICE, O_RDONLY);
   if (fd == -1)
+  {
+    pm_initialised = 0;
     return ERR_OPEN_APMDEV;
+  }
   if (ioctl(fd, APM_IOC_GETPOWER, &apminfo) == -1)
     err(1, "ioctl(APM_IOC_GETPOWER)");
   close(fd);
@@ -162,7 +169,7 @@ int acpi_count;
 int acpiwatch;
 struct apm_info apminfo;
 
-// Declared in acpi-linux.c
+/* Declared in acpi-linux.c */
 gboolean acpi_linux_read(struct apm_info *apminfo, struct acpi_info *acpiinfo);
 
 static gboolean acpi_callback (GIOChannel * chan, GIOCondition cond, gpointer data)
@@ -258,6 +265,18 @@ power_management_getinfo( BatteryStatus *status )
 {
   const char *retval;
 
+  if( !pm_initialised )
+  {
+    status->on_ac_power = TRUE;
+    status->state = BATTERY_CRITICAL;
+    status->minutes = -1;
+    status->percent = 0;
+    status->charging = FALSE;
+    status->present = FALSE;
+
+    return NULL;
+  }
+
   retval = apm_readinfo( status );
 
   if(status->state > 3) {
@@ -321,6 +340,7 @@ power_management_initialise( void )
         acpi_callback, NULL);
   }
 #endif
+  pm_initialised = 1;
 
   return NULL;
 }
@@ -342,4 +362,6 @@ power_management_cleanup( void )
      acpi_linux_cleanup(&acpiinfo);
   }
 #endif
+
+  pm_initialised = 0;
 }

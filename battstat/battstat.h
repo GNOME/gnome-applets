@@ -17,26 +17,28 @@
  *
  * May, 2000. Implemented on FreeBSD 4.0R (Compaq Armada M700)
  *
-$Id$
+ $Id$
  */
 
 #define DEBUG 0
 
-#ifdef __FreeBSD__
-#define APMDEVICE	"/dev/apm"
-#endif /* __FreeBSD__ */
-
-#ifdef __OpenBSD__
-#define APMDEVICE       "/dev/apm"
-#endif /* __OpenBSD__ */
-
 #define PROGLEN 33.0
 
-enum {
-	APPLET_SHOW_NONE,
-	APPLET_SHOW_PERCENT,
-	APPLET_SHOW_TIME
-};
+typedef enum
+{
+  APPLET_SHOW_NONE,
+  APPLET_SHOW_PERCENT,
+  APPLET_SHOW_TIME
+} AppletTextType;
+
+typedef enum
+{
+  STATUS_PIXMAP_BATTERY,
+  STATUS_PIXMAP_AC,
+  STATUS_PIXMAP_FLASH,
+  STATUS_PIXMAP_WARNING,
+  STATUS_PIXMAP_NUM
+} StatusPixmapIndex;
 
 typedef enum
 {
@@ -77,91 +79,83 @@ typedef struct
 
 typedef struct _ProgressData {
   GtkWidget *applet;
-  GtkStyle *style;
-  GtkWidget *progdir_radio;
-  GtkWidget *radio_orient_horizont;
+
+  /* these are used by properties.c */
   GtkWidget *radio_lay_batt_on;
   GtkWidget *radio_lay_status_on;
   GtkWidget *radio_text_1;
   GtkWidget *radio_text_2;
   GtkWidget *check_text;
+  GtkWidget *suspend_entry;
+  GtkWidget *lowbatt_toggle;
+  GtkWidget *full_toggle;
 
-  GtkTooltips *tip;
-
-  GtkWidget *about_dialog;
-  GtkDialog *prop_win;
-
-  GdkGC *pixgc;
-
-  GtkWidget *table;
-
-  GtkWidget *battery;
-  GtkWidget *status;
-  GtkWidget *percent;
-
-  gboolean colors_changed;
+  /* flags set from gconf or the properties dialog */
+  guint red_val;
+  guint orange_val;
+  guint yellow_val;
   gboolean lowbattnotification;
   gboolean fullbattnot;
   gboolean beep;
   gboolean draintop;
   gboolean showstatus;
   gboolean showbattery;
-  int showtext;
+  AppletTextType showtext;
+  char *suspend_cmd;
 
+  /* label changed type (% <-> h:mm) and must be refreshed */
+  gboolean refresh_label;
+
+  /* tooltip attached to 'applet' */
+  GtkTooltips *tip;
+
+  /* so we don't have to alloc/dealloc this every refresh */
+  GdkGC *pixgc;
+
+  /* the main table that contains the visual elements */
+  GtkWidget *table;
+
+  /* the visual elements */
+  GtkWidget *battery;
+  GtkWidget *status;
+  GtkWidget *percent;
+
+  /* dialog boxes that might be displayed */
+  GtkWidget *lowbattnotificationdialog;
+  GtkWidget *about_dialog;
+  GtkDialog *prop_win;
+
+  /* our height/width as given to us by size_allocate */
   gint width, height;
+
+  /* should the battery meter be drawn horizontally? */
   gboolean horizont;
 
-  GtkWidget *suspend_entry;
-  char *suspend_cmd;
-  char *fontname;
-  guint red_val;
-  guint orange_val;
-  guint yellow_val;
-  int panelsize;
+  /* on a vertical or horizontal panel? (up/down/left/right) */
   PanelAppletOrient orienttype;
+
+  /* the current layout of the visual elements inside the table */
   LayoutConfiguration layout;
+
+  /* gtk_timeout identifier */
   int pixtimer;
 
-  GtkWidget *lowbatt_toggle;
-  GtkWidget *full_toggle;
-  GtkWidget *lowbattnotificationdialog;
-
-  /* last_* for the benefit of the timeout functions */
-  guint flash;
+  /* last_* for the benefit of the check_for_updates function */
   guint last_batt_life;
   guint last_acline_status;
   guint last_batt_state;
-  guint last_pixmap_index;
+  StatusPixmapIndex last_pixmap_index;
   guint last_charging;
+  guint last_minutes;
 } ProgressData;
 
-enum statusimagename {BATTERY,AC,FLASH,WARNING};
-
-GdkPixmap *statusimage[4];
-GdkBitmap *statusmask[4];
-
-extern char * battery_gray_xpm[];
-
+/* properties.c */
 void prop_cb (BonoboUIComponent *, ProgressData *, const char *);
-int prop_cancel (GtkWidget *, gpointer);
 
-void adj_value_changed_cb(GtkAdjustment *, gpointer);
-void simul_cb(GtkWidget *, gpointer);
-void helppref_cb(PanelApplet *, gpointer);
-gint check_for_updates(gpointer);
-void change_orient(PanelApplet *, PanelAppletOrient, ProgressData *);
-void destroy_applet( GtkWidget *, gpointer);
-void cleanup(PanelApplet *, int);
-void help_cb (BonoboUIComponent *, ProgressData *, const char *);
-void suspend_cb (BonoboUIComponent *, ProgressData *, const char *);
-void destroy_about (GtkWidget *, gpointer);
-void about_cb (BonoboUIComponent *, ProgressData *, const char *);
-void load_preferences(ProgressData *battstat);
+/* battstat_applet.c */
+void reconfigure_layout( ProgressData *battstat );
 
 /* power-management.c */
 const char *power_management_getinfo( BatteryStatus *status );
 const char *power_management_initialise( void );
 void power_management_cleanup( void );
-
-
-void reconfigure_layout( ProgressData *battstat );

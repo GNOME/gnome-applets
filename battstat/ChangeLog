@@ -1,3 +1,44 @@
+2005-01-13  Ryan Lortie  <desrt@desrt.ca>
+	* acpi_linux.c:	
+		Remove an unused local variable.
+	* battstat.h:
+		Remove data/decl's that ought to be static.
+		Remove unused members from ProgressData.  Add comments.
+		Namespace clean-up of some enum types.
+		Remove function prototypes for long-since removed code.
+	* battstat_applet.c:
+		Add lots of code comments to improve readability.
+		Move in some static data/decl's from battstat.h.
+		Change global_initialisation to keep track of how many
+			applets instances are running.
+		Add global_teardown function to do cleanup when last
+			applet instance is removed from the panel.
+		battstat_error_dialog no longer blocks.
+		STRING CHANGE: Fixed "%d hours (%d%%) until charged (%d%%)".
+		update_battery_image now takes the battery life % as an int.
+		Moved GdkGC initialisation into update_battery_image.
+		Cleaned up update_status_icon for readability.
+		Don't ignore return values of power_management functions.
+		Only beep if also displaying an error dialog.
+		Improved change-detection for fewer superfluous updates.
+		destroy_applet: Removing applets should be leak-free now.
+		Removed unused and empty helppref_cb function.
+		Added "static" keyword to some local-use-only functions.
+	* power-management.c:
+		Change a couple of C++ style comments to C style.
+		Add pm_initialised global variable that gets set to 0 on
+			 error during initialisation or later reads.
+		Stop trying to re-read data if pm_initialised == 0.
+		Moved APMDEVICE from battstat.h here for Free/OpenBSD to be
+			more consistent with how NetBSD works.
+	* properties.c:
+		Notify the applet of the need to update the text label if the
+			user changes from percent to time left (or back).
+		Fix error in new the new properties dialog that resulted
+			in "Show battery status" always being toggled
+			active when the applet starts.
+		Removed strage debug message from prop_cb
+
 2005-01-13  Benoît Dejean  <TazForEver@dlfp.org>
 
 	* battstat.h:

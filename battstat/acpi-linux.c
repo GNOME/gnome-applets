@@ -314,8 +314,6 @@ gboolean acpi_process_event(struct acpi_info * acpiinfo)
 {
     gsize i;
     int evt;
-    char * s;
-    /*    char str[1024];*/
     gboolean result = FALSE;
     GString *buffer;
     GError *gerror=NULL;

@@ -18,7 +18,7 @@
  *
  * May, 2000. Implemented on FreeBSD 4.0-RELEASE (Compaq Armada M700)
  *
-$Id$
+ $Id$
  */
 
 #ifdef HAVE_CONFIG_H
@@ -175,6 +175,8 @@ show_text_toggled (GtkToggleButton *button, gpointer data)
 	  battstat->showtext = APPLET_SHOW_TIME;
   else
 	  battstat->showtext = APPLET_SHOW_NONE;
+
+  battstat->refresh_label = TRUE;
  
   reconfigure_layout( battstat ); 
 
@@ -345,7 +347,6 @@ prop_cb (BonoboUIComponent *uic,
   g_signal_connect (G_OBJECT(battstat->suspend_entry), "changed",
 		    G_CALLBACK(suspend_changed), battstat);
 
-  g_warning ("%s", battstat->suspend_cmd ? battstat->suspend_cmd : "ARSE");
   gtk_entry_set_text (GTK_ENTRY (battstat->suspend_entry), battstat->suspend_cmd); 
   if ( ! key_writable (PANEL_APPLET (battstat->applet), "suspend_command") ||
       inhibit_command_line) {
@@ -359,7 +360,7 @@ prop_cb (BonoboUIComponent *uic,
   if ( ! key_writable (PANEL_APPLET (battstat->applet), "show_battery"))
 	  hard_set_sensitive (battstat->radio_lay_batt_on, FALSE);
   
-  if(battstat->radio_lay_batt_on) {
+  if(battstat->showbattery) {
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (battstat->radio_lay_batt_on), TRUE);
   }
   g_signal_connect (G_OBJECT (battstat->radio_lay_batt_on), "toggled",
