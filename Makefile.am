@@ -43,9 +43,9 @@ if APPLET_MODEMLIGHTS
 modemlights_SUBDIRS = $(modemlights_applets)
 endif
 
-
 always_built_SUBDIRS = \
 	drivemount	\
+	panel-menu
 ##	fifteen		\
 ##	odometer	\
 ##	geyes		\
