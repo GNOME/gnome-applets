@@ -142,6 +142,7 @@ create_fifteen (void)
 
 	canvas = gnome_canvas_new ();
 	gnome_canvas_set_size (GNOME_CANVAS (canvas), PIECE_SIZE * 4, PIECE_SIZE * 4);
+	gnome_canvas_set_scroll_region (GNOME_CANVAS (canvas), 0, 0, PIECE_SIZE * 4, PIECE_SIZE * 4);
 	gtk_container_add (GTK_CONTAINER (frame), canvas);
 	gtk_widget_show (canvas);
 
@@ -256,7 +257,7 @@ retry_scramble:
 static void
 about (AppletWidget *applet, gpointer data)
 {
-	static char *authors[] = { "Federico Mena", NULL };
+	static const char *authors[] = { "Federico Mena", NULL };
 	GtkWidget *about_box;
 
 	about_box = gnome_about_new (_("Fifteen sliding pieces"),
