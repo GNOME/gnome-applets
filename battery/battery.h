@@ -31,6 +31,8 @@
 
 #include <applet-widget.h>
 
+#define BOLT_HEIGHT  18
+#define BOLT_WIDTH   10
 
 typedef struct BatteryData {
   GtkWidget *applet;
@@ -110,15 +112,26 @@ typedef struct BatteryData {
   gint low_warn_val;
   gboolean warned;
 
+  /*
+   * The battery-is-full notification.
+   */
+  gboolean full_notify_enable;
+  gboolean notified;
+
   /* Widgets n stuff */
   GtkWidget *readout_frame;
   GtkWidget *readout_label_percentage;
+  GtkWidget *readout_label_percentage_small;
   GtkWidget *readout_label_time;
   GtkWidget *readout_area;
   GdkPixmap *readout_pixmap;
 
   /* Coordinates for the battery line drawing. */
   GdkPoint readout_batt_points[9];
+
+  /* The bolt image */
+  GdkPixmap *bolt_pixmap;
+  GdkBitmap *bolt_mask;
 
   /*
    *
@@ -148,6 +161,9 @@ typedef struct BatteryData {
   GtkWidget *warn_check;
   GtkObject *low_warn_adj;
 
+  /* Notify-if-battery-is-full widgets */
+  GtkWidget *full_notify_check;
+
 } BatteryData;
 
 /*
@@ -166,17 +182,19 @@ typedef struct BatteryData {
 #define BATTERY_DEFAULT_LOW_WARN_ENABLE "true"
 #define BATTERY_DEFAULT_LOW_WARN_VAL    "5"
 
+#define BATTERY_DEFAULT_FULL_NOTIFY_ENABLE "false"
+
 /* The Graph */
 #define BATTERY_DEFAULT_GRAPH_DIRECTION "2" /*Right to left */
-#define BATTERY_DEFAULT_GRAPH_ACON_COLOR "#00ff00"
-#define BATTERY_DEFAULT_GRAPH_ACOFF_COLOR "#0000ff"
-#define BATTERY_DEFAULT_GRAPH_LOW_COLOR "#ff0000"
+#define BATTERY_DEFAULT_GRAPH_ACON_COLOR "#52ff52"
+#define BATTERY_DEFAULT_GRAPH_ACOFF_COLOR "#5252ff"
+#define BATTERY_DEFAULT_GRAPH_LOW_COLOR "#ff4c4c"
 #define BATTERY_DEFAULT_GRAPH_LINE_COLOR "#4d4d4d"
 
 /* The readout */
-#define BATTERY_DEFAULT_READOUT_ACON_COLOR "#00ff00"
-#define BATTERY_DEFAULT_READOUT_ACOFF_COLOR "#0000ff"
-#define BATTERY_DEFAULT_READOUT_LOW_COLOR "#ff0000"
+#define BATTERY_DEFAULT_READOUT_ACON_COLOR "#52ff52"
+#define BATTERY_DEFAULT_READOUT_ACOFF_COLOR "#52ff52"
+#define BATTERY_DEFAULT_READOUT_LOW_COLOR "#ff4c4c"
 /*
  *
  * Prototypes
@@ -200,7 +218,6 @@ void battery_setup_picture(BatteryData *bat);
 void battery_set_mode(BatteryData *bat);
 GtkWidget *applet_start_new_applet (const gchar *goad_id,
 				     const char **params, int nparams);
-void battery_warn (BatteryData *bat);
 
 #endif /* _BATTERY_H */
 

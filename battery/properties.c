@@ -292,18 +292,18 @@ battery_properties_window (AppletWidget * applet, gpointer data)
 
   /*
    *
-   * Low Battery Warning
+   * Low Battery Warning / Battery Full Notification
    *
    */
   t = gtk_table_new (0, 0, FALSE);
   gnome_property_box_append_page (GNOME_PROPERTY_BOX (bat->prop_win), t,
-			  gtk_label_new (_("Low Battery Warning")));
+			  gtk_label_new (_("Battery Charge Messages")));
 
   bat->warn_check = gtk_check_button_new_with_label
     (_("Enable Low Battery Warning"));
 
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (bat->warn_check),
-				bat->warn_check ? 1 : 0);
+				bat->low_warn_enable ? 1 : 0);
 
   l = gtk_label_new (_("Warn if the battery charge dips below:"));
   bat->low_warn_adj = gtk_adjustment_new (bat->low_warn_val,
@@ -318,9 +318,20 @@ battery_properties_window (AppletWidget * applet, gpointer data)
   gtk_signal_connect (GTK_OBJECT (bat->warn_check), "toggled",
 		      GTK_SIGNAL_FUNC (toggle_value_changed_cb), bat);
 
+  bat->full_notify_check = gtk_check_button_new_with_label
+    (_("Enable Full-Charge Notification"));
+
+  gtk_signal_connect (GTK_OBJECT (bat->full_notify_check), "toggled",
+		      GTK_SIGNAL_FUNC (toggle_value_changed_cb), bat);
+
+  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (bat->full_notify_check),
+				bat->full_notify_enable ? 1 : 0);
+
   gtk_table_attach_defaults (GTK_TABLE (t), l, 0, 2, 0, 1);
   gtk_table_attach_defaults (GTK_TABLE (t), low_warn_spin, 2, 3, 0, 1);
   gtk_table_attach_defaults (GTK_TABLE (t), bat->warn_check, 1, 2, 1, 2);
+  gtk_table_attach_defaults (GTK_TABLE (t), bat->full_notify_check,
+			     1, 2, 2, 3);
 
 
   gtk_signal_connect (GTK_OBJECT (bat->prop_win), "destroy",
@@ -386,6 +397,8 @@ prop_apply (GtkWidget *w, int page, gpointer data)
   bat->low_warn_val = GTK_ADJUSTMENT (bat->low_warn_adj)->value;
   bat->low_warn_enable =
     GTK_TOGGLE_BUTTON (bat->warn_check)->active;
+  bat->full_notify_enable =
+    GTK_TOGGLE_BUTTON (bat->full_notify_check)->active;
 
   /*
    * If the direction changed, reverse the graph.

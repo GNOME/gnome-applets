@@ -72,6 +72,9 @@ battery_session_load(gchar * cfgpath, BatteryData * bat)
   bat->low_warn_enable = gnome_config_get_bool_with_default
     ("battery/low_warn_enable=" BATTERY_DEFAULT_LOW_WARN_ENABLE, NULL);
 
+  bat->full_notify_enable = gnome_config_get_bool_with_default
+    ("battery/full_notify_enable=" BATTERY_DEFAULT_FULL_NOTIFY_ENABLE, NULL);
+
   /* The graph */
   bat->graph_direction = gnome_config_get_int_with_default
     ("graph/direction=" BATTERY_DEFAULT_GRAPH_DIRECTION, NULL);
@@ -133,8 +136,8 @@ battery_session_save(GtkWidget * w,
   gnome_config_set_int ("battery/interval", bat->update_interval);
   gnome_config_set_int ("battery/low_charge_val", bat->low_charge_val);
   gnome_config_set_int ("battery/low_warn_val", bat->low_warn_val);
-  gnome_config_set_bool ("battery/low_warn_enable",
-			 bat->low_warn_enable);
+  gnome_config_set_bool ("battery/full_notify_enable",
+			 bat->full_notify_enable);
 
   /* The graph */
   gnome_config_set_int("graph/direction", bat->graph_direction);
@@ -170,7 +173,7 @@ battery_session_defaults(BatteryData * bat)
   bat->mode_string =  BATTERY_DEFAULT_MODE_STRING;
   bat->width = atoi (BATTERY_DEFAULT_WIDTH);
   bat->height = atoi (BATTERY_DEFAULT_HEIGHT);
-  bat->update_interval = atoi(BATTERY_DEFAULT_UPDATE_INTERVAL);
+  bat->update_interval = atoi (BATTERY_DEFAULT_UPDATE_INTERVAL);
   bat->low_charge_val = atoi (BATTERY_DEFAULT_LOW_VAL);
   bat->low_warn_val = atoi (BATTERY_DEFAULT_LOW_WARN_VAL);
 
@@ -179,9 +182,14 @@ battery_session_defaults(BatteryData * bat)
   else
     bat->low_warn_enable = FALSE;
 
+  if (! strcmp (BATTERY_DEFAULT_FULL_NOTIFY_ENABLE, "true"))
+    bat->full_notify_enable = TRUE;
+  else
+    bat->full_notify_enable = FALSE;
+
   /* The Graph */
 
-  bat->graph_direction = atoi(BATTERY_DEFAULT_GRAPH_DIRECTION);
+  bat->graph_direction = atoi (BATTERY_DEFAULT_GRAPH_DIRECTION);
 
   strncpy(bat->graph_color_ac_on_s, BATTERY_DEFAULT_GRAPH_ACON_COLOR,
 	  sizeof(bat->graph_color_ac_on_s));

@@ -55,13 +55,13 @@ battery_read_charge(char * percentage,
 
       if (apm_file == NULL)
 	{
-	  g_warning(_("Cannot open /proc/apm!  Make sure that you built APM "
+	  g_warning (_("Cannot open /proc/apm!  Make sure that you built APM "
 		      "support into your kernel.\n"));
 	  *ac_online = 1;
 	  *percentage = 100;
 	  *hours_remaining = -1;
 
-	  return TRUE;
+	  return FALSE;
 	}
     }
   else

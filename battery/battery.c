@@ -45,6 +45,8 @@
 #include "properties.h"
 #include "read-battery.h"
 
+#include "bolt.xpm"
+
 int
 main (int argc, char ** argv)
 {
@@ -77,10 +79,10 @@ main (int argc, char ** argv)
  * charge and updates all of the display mode pixmaps and labels.
  * There are two modes, and the display elements are updated for both:
  *
- *  1. Charge Graph       This is a graph of the percentage charge of the
+ *     Charge Graph       This is a graph of the percentage charge of the
  *                        battery.
  * 
- *  2. Digital Readout    This is a simple text display of the percentage
+ *     Digital Readout    This is a simple text display of the percentage
  *                        charge of the battery and the time remaining
  *                        until battery death, plus a pretty battery
  *                        shape filled in according to the battery's
@@ -113,8 +115,22 @@ battery_update (gpointer data)
    * The battery change information that we grab here will be used by
    * both readout mode and graph mode.
    */
-  battery_read_charge (&percentage, &ac_online, &hours_remaining,
-		       &minutes_remaining);
+  if (! battery_read_charge (&percentage, &ac_online, &hours_remaining,
+			     &minutes_remaining))
+    {
+      gnome_error_dialog
+	(_("Error querying battery charge.  "
+	   "Make sure that your kernel was "
+	   "built with APM support."));
+
+      /*
+       * FIXME: What's the proper way to exit an applet?  If it's an
+       * in-process server, then exit() will kill the panel too!  So
+       * there should be some way for an applet to request that it be
+       * removed.
+       */
+      exit (1);
+    }
 
   /*
    * Warn if the battery is low.
@@ -122,11 +138,26 @@ battery_update (gpointer data)
   if (bat->low_warn_enable && (percentage <= bat->low_warn_val)
       && (! bat->warned))
     {
-      battery_warn (bat);
+      gnome_warning_dialog (_("The battery is low."));
       bat->warned = TRUE;
     }
   else if ((percentage > bat->low_warn_val) && bat->warned)
     bat->warned = FALSE;
+
+  /*
+   * If the battery has charged up fully, let the user know.
+   * Personally, I find this feature annoying.  But a user requested
+   * it, and the user is always right. :-)
+   */
+  if (bat->full_notify_enable && (percentage == 100)
+      && (last_percentage < 100) && (last_percentage > 0)
+      && ac_online && (! bat->notified))
+    {
+      gnome_ok_dialog (_("The battery is fully charged."));
+      bat->notified = TRUE;
+    }
+  else if ((percentage < 100) && bat->notified)
+    bat->notified = FALSE;
 
   /*
    *
@@ -192,9 +223,10 @@ battery_update (gpointer data)
   /* Draw the graph */
   if (ac_online)
     gdk_gc_set_foreground (bat->gc, & (bat->graph_color_ac_on));
-  else if (percentage > bat->low_charge_val)
-    gdk_gc_set_foreground (bat->gc, & (bat->graph_color_ac_off));
   else
+    gdk_gc_set_foreground (bat->gc, & (bat->graph_color_ac_off));
+
+  if (percentage <= bat->low_charge_val)
     gdk_gc_set_foreground (bat->gc, & (bat->graph_color_low));
 
   for (i = 0 ; i < graph_width ; i++)
@@ -251,7 +283,6 @@ battery_update (gpointer data)
 		      bat->readout_area->style->black_gc,
 		      bat->readout_batt_points, 9);
 
-
       /*
        * Determine the height of the body (everything but the nipple)
        * of the battery picture.
@@ -287,10 +318,11 @@ battery_update (gpointer data)
       if (ac_online)
 	gdk_gc_set_foreground (bat->readout_gc,
 			       & (bat->readout_color_ac_on));
-      else if (percentage > bat->low_charge_val)
+      else
 	gdk_gc_set_foreground (bat->readout_gc,
 			       & (bat->readout_color_ac_off));
-      else
+
+      if (percentage <= bat->low_charge_val)
 	gdk_gc_set_foreground (bat->readout_gc,
 			       & (bat->readout_color_low));
     
@@ -316,23 +348,71 @@ battery_update (gpointer data)
 			  bat->readout_batt_points[2].x + 1,
 			  bat->readout_batt_points[2].y + 1,
 			  nipple_width, nipple_height);
+
+      /*
+       * Now blit the lightning-bolt image onto the battery if the AC
+       * is plugged in.
+       */
+      if (ac_online)
+	{
+	  GdkGC *gc;
+	  int dest_x, dest_y;
+
+	  dest_y =
+	    ((bat->readout_batt_points[0].y +
+	      bat->readout_batt_points[7].y) / 2) -
+	    (BOLT_HEIGHT / 2);
+
+	  dest_x = 1 + 
+	    ((bat->readout_batt_points[0].x +
+	      bat->readout_batt_points[5].x) / 2) -
+	    (BOLT_WIDTH / 2);
+
+	  gc = gdk_gc_new (bat->readout_area->window);
+
+	  /*
+	   * The "clip mask" is a bitmap which specifies which regions
+	   * of the drawing should be transparent.  Those are denoted
+	   * as "c None" in the .xpm file.  As it turns out, the
+	   * "transparent_color" argument to
+	   * gnome_pixmap_new_from_xpm_d() specifies a color which
+	   * should REPLACE all transparent pixels in the pixmap, not
+	   * a color which should BECOME transparent.
+	   */
+	  gdk_gc_set_clip_mask (gc, bat->bolt_mask);
+	  gdk_gc_set_clip_origin (gc, dest_x, dest_y);
+
+	  gdk_draw_pixmap (bat->readout_pixmap, gc, bat->bolt_pixmap,
+			   0, 0, dest_x, dest_y,
+			   BOLT_WIDTH, BOLT_HEIGHT);
+	}
     }
 
   /* Don't update the percentage label unless the percentage has changed. */
-  if (last_percentage != percentage)
+  if (last_percentage != percentage || bat->force_update)
     {
       char labelstr [256];
 
       /* Now update the labels in readout mode. */
 
       strcpy (labelstr, "    ");
-      snprintf (labelstr, sizeof (labelstr), "%d%%", percentage);
+
+      /*
+       * In order to fit the text into a small applet (e.g. 24x24), we
+       * have to remove the '%' from the end of the percentage label.
+       */
+      if (bat->width < 28 && (percentage == 100))
+	snprintf (labelstr, sizeof (labelstr), "%d", percentage);
+      else
+	snprintf (labelstr, sizeof (labelstr), "%d%%", percentage);
 
       /* Make sure it's 4 spaces long. */
       if (labelstr [3] == '\0')
 	labelstr[3] = ' ';
 
       gtk_label_set_text (GTK_LABEL (bat->readout_label_percentage), labelstr);
+      gtk_label_set_text (GTK_LABEL (bat->readout_label_percentage_small),
+			  labelstr);
     }
 
   if (last_minutes_remaining != minutes_remaining ||
@@ -397,9 +477,9 @@ battery_expose_handler (GtkWidget * widget, GdkEventExpose * expose,
       gdk_draw_pixmap (/* Drawable */        bat->graph_area->window,
 		       /* GC */
        bat->graph_area->style->fg_gc[GTK_WIDGET_STATE (bat->graph_area)],
-		       /* Src Drawable */    curr_pixmap,
-		       /* X src, Y src */    0, 0,
-		       /* X dest, Y dest */  0, 0,
+	       /* Src Drawable */    curr_pixmap,
+	       /* X src, Y src */    0, 0,
+	       /* X dest, Y dest */  0, 0,
 	       /* width */           bat->graph_area->allocation.width,
 	       /* height */          bat->graph_area->allocation.height);
     }
@@ -408,9 +488,9 @@ battery_expose_handler (GtkWidget * widget, GdkEventExpose * expose,
       gdk_draw_pixmap (/* Drawable */        bat->readout_area->window,
 		       /* GC */
        bat->readout_area->style->fg_gc[GTK_WIDGET_STATE (bat->readout_area)],
-		       /* Src Drawable */    bat->readout_pixmap,
-		       /* X src, Y src */    0, 0,
-		       /* X dest, Y dest */  0, 0,
+	       /* Src Drawable */    bat->readout_pixmap,
+	       /* X src, Y src */    0, 0,
+	       /* X dest, Y dest */  0, 0,
 	       /* width */           bat->readout_area->allocation.width,
 	       /* height */          bat->readout_area->allocation.height);
     }
@@ -477,6 +557,28 @@ battery_set_mode (BatteryData * bat)
     {
       g_error (_("Internal error: invalid mode in battery_set_mode"));
     }
+
+  /*
+   * If the applet is small enough, we have to hide a few of the
+   * widgets to make it fit.
+   */
+  if ((bat->height < 28) || (bat->width < 28))
+    {
+      gtk_widget_hide (bat->readout_label_percentage);
+      gtk_widget_show (bat->readout_label_percentage_small);
+      gtk_widget_hide (bat->readout_area);
+    }
+  else
+    {
+      gtk_widget_show (bat->readout_label_percentage);
+      gtk_widget_hide (bat->readout_label_percentage_small);
+      gtk_widget_show (bat->readout_area);
+    }
+
+  if (bat->width < 48)
+    gtk_widget_hide (bat->readout_label_time);
+  else
+    gtk_widget_show (bat->readout_label_time);
 
   /*
    * When we change modes, make sure there's not a fraction of a second
@@ -579,10 +681,11 @@ make_new_battery_applet (const gchar *goad_id)
    */
   readout_box = gtk_hbox_new (FALSE, 0);
 
-  /* The two labels go into this table. */
-  readout_text_table = gtk_table_new (0, 0, TRUE);
-
-  bat->readout_label_percentage = gtk_label_new ("");
+  /* The three labels go into this table. */
+  readout_text_table = gtk_table_new (3, 0, TRUE);
+  
+  bat->readout_label_percentage = gtk_label_new ("");  
+  bat->readout_label_percentage_small = gtk_label_new ("");
   bat->readout_label_time = gtk_label_new ("");
 
   label_style = gtk_style_copy (GTK_WIDGET (bat->readout_label_time)->style);
@@ -590,20 +693,27 @@ make_new_battery_applet (const gchar *goad_id)
   GTK_WIDGET (bat->readout_label_time)->style = label_style;
   GTK_WIDGET (bat->readout_label_percentage)->style = label_style;
 
+  label_style = gtk_style_copy (GTK_WIDGET (bat->readout_label_time)->style);
+  label_style->font = gdk_font_load ("5x8");
+  GTK_WIDGET (bat->readout_label_percentage_small)->style = label_style;
+
+  gtk_table_attach (GTK_TABLE (readout_text_table),
+		    bat->readout_label_percentage_small,
+		    0, 1, 0, 1, 0, 0, 0, 0);
   gtk_table_attach (GTK_TABLE (readout_text_table),
 		    bat->readout_label_percentage,
 		    0, 1, 1, 2, 0, 0, 0, 0);
   gtk_table_attach (GTK_TABLE (readout_text_table), bat->readout_label_time,
 		    0, 1, 2, 3, 0, 0, 0, 0);
 
-  /* This is the frame which contains the picture of the battery */
+  /* This is the frame which contains the picture of the battery. */
   readout_battery_frame = gtk_frame_new (NULL);
   gtk_frame_set_shadow_type (GTK_FRAME (readout_battery_frame),
 			     GTK_SHADOW_NONE);
 
   /*
    * readout_area is the drawing area into which the little picture of
-   * the battery gets drawn
+   * the battery gets drawn.
    */
   bat->readout_area = gtk_drawing_area_new ();
   gtk_container_add (GTK_CONTAINER (readout_battery_frame),
@@ -641,7 +751,7 @@ make_new_battery_applet (const gchar *goad_id)
 		      (GtkSignalFunc)battery_expose_handler, bat);
   gtk_signal_connect (GTK_OBJECT (bat->readout_area), "configure_event",
 		      (GtkSignalFunc)battery_configure_handler, bat);
-  gtk_widget_set_events (bat->readout_area, GDK_EXPOSURE_MASK);
+  gtk_widget_set_events (bat->readout_area, GDK_EXPOSURE_MASK | GDK_CONFIGURE);
 
   /* This will let us know when the panel changes orientation */
   gtk_signal_connect (GTK_OBJECT (bat->applet), "change_orient",
@@ -669,10 +779,19 @@ make_new_battery_applet (const gchar *goad_id)
 					 bat);
 
   gtk_widget_show_all (bat->applet);
-  
+
+
   /* Allocate the colors... */
   battery_create_gc (bat);
   battery_setup_colors (bat);
+
+  /*
+   * Load the pixmap of the lightning bolt.  This is defined in
+   * bolt.xpm.
+   */
+  bat->bolt_pixmap = gdk_pixmap_create_from_xpm_d (bat->readout_area->window,
+		   & bat->bolt_mask, NULL, bolt_xpm);
+						   
 
   /* Nothing is drawn until this is set. */
   bat->setup = TRUE;
@@ -737,16 +856,16 @@ battery_setup_picture (BatteryData * bat)
   readout_height = bat->readout_area->allocation.height;
 
   /*  Set up the line segments for the battery picture.  The points are
-      numbered as follows:
-           2_ 3
-       0 __| |__ 5
-       8 | 1 4 |
-         |     |
-         |     |
-         |     |
-         |_____|
-        7       6
-  */
+   *  numbered as follows:
+   *       2_ 3
+   *   0 __| |__ 5
+   *   8 | 1 4 |
+   *     |     |
+   *     |     |
+   *     |     |
+   *     |_____|
+   *    7       6
+   */
 
   /* 0 */
   bat->readout_batt_points[0].x = readout_width * 0.10;
@@ -783,19 +902,42 @@ battery_setup_picture (BatteryData * bat)
   /* 8 */
   bat->readout_batt_points[8].x = readout_width * 0.10;
   bat->readout_batt_points[8].y = readout_height / 6;
+
 } /* battery_setup_picture */
 
 void
 battery_set_size (BatteryData * bat)
 {
-  gtk_widget_set_usize (bat->readout_area, bat->width * 0.25, bat->height);
+  gtk_widget_set_usize (bat->readout_area, bat->width * 0.35, bat->height);
   gtk_widget_set_usize (bat->graph_frame, bat->width, bat->height);
   gtk_widget_set_usize (bat->readout_frame, bat->width, bat->height);
 
   /*
-   * If pixmaps have already been allocated, then free them here
-   * before creating new ones.
+   * If the applet is small enough, we have to hide a few of the
+   * display widgets so that things fit in a sane manner.  This is
+   * important for PDA's, which won't have a lot of screen geometry.
    */
+  if (bat->height < 28 || bat->width < 28)
+    {
+      gtk_widget_hide (bat->readout_label_percentage);
+      gtk_widget_show (bat->readout_label_percentage_small);
+      gtk_widget_hide (bat->readout_area);
+    }
+  else
+    {
+      gtk_widget_show (bat->readout_label_percentage);
+      gtk_widget_hide (bat->readout_label_percentage_small);
+      gtk_widget_show (bat->readout_area);
+    }
+
+  if (bat->width < 48)
+    gtk_widget_hide (bat->readout_label_time);
+  else
+    gtk_widget_show (bat->readout_label_time);
+
+  /*
+   * If pixmaps have already been allocated, then free them here
+   * before creating new ones.  */
   if (bat->graph_pixmap != NULL)
     gdk_pixmap_unref (bat->graph_pixmap);
   if (bat->readout_pixmap != NULL)
@@ -866,6 +1008,8 @@ battery_create_gc (BatteryData * bat)
 
   bat->readout_gc = gdk_gc_new (bat->readout_area->window);
   gdk_gc_copy (bat->readout_gc, bat->readout_area->style->white_gc);
+
+  gdk_gc_set_function (bat->gc, GDK_COPY);
 } /* battery_create_gc */
 
 void 
@@ -911,12 +1055,3 @@ battery_setup_colors (BatteryData * bat)
 		   & (bat->graph_color_line));
   gdk_color_alloc (colormap, & (bat->graph_color_line));
 } /* battery_setup_colors */
-
-void
-battery_warn (BatteryData *bat)
-{
-  char warning[1024];
-
-  snprintf (warning, sizeof (warning), _("The battery is low."));
-  gnome_warning_dialog (warning);
-} /* battery_warn */
