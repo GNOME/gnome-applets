@@ -515,11 +515,10 @@ mixer_update_image (MixerData *data)
 {
 	gint vol, size;
 	GdkPixbuf *pixbuf, *copy, *scaled = NULL;
-
 	vol = data->vol;
 
 	size = panel_applet_get_size (PANEL_APPLET (data->applet));
-
+	
 	if (vol <= 0)
 		pixbuf = gdk_pixbuf_copy (data->zero);
 	else if (vol <= VOLUME_MAX / 3)
@@ -547,12 +546,10 @@ mixer_update_image (MixerData *data)
 		g_object_unref (mute);
 	}
 
-
+	size = MAX (11, size);
 	scaled = gdk_pixbuf_scale_simple (pixbuf, size, size, GDK_INTERP_BILINEAR);
 	gtk_image_set_from_pixbuf (GTK_IMAGE (data->image), scaled);
-	g_object_unref (scaled);
-	gtk_widget_set_size_request (GTK_WIDGET (data->frame), 
-					     MAX (11, size), MAX (11, size));
+	g_object_unref (scaled);	
 	g_object_unref (pixbuf);
 }
 
@@ -1422,7 +1419,7 @@ mixer_applet_create (PanelApplet *applet)
 
 	data = g_new0 (MixerData, 1);
 	data->applet = GTK_WIDGET (applet);
-	
+	panel_applet_set_flags (applet, PANEL_APPLET_EXPAND_MINOR);
 	get_prefs (data);
 
 #ifdef OSS_API
