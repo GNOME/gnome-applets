@@ -25,6 +25,11 @@
 #include <applet-widget.h>
 
 static enum { IDLE, POSITION, SIZE } state;
+
+static int panel_size = 48;
+static gboolean panel_vertical = FALSE;
+
+static GtkWidget *msg;
  
 static void
 about(AppletWidget *applet, gpointer data)
@@ -57,14 +62,36 @@ motion_handler(GtkWidget *widget, GdkEventMotion *motion, gpointer data)
     {
     case IDLE:
       gdk_window_get_pointer(NULL, &x, &y, NULL);
-      sprintf(where, "x:%d\ny:%d", x, y);
+      if(panel_size < 48) {
+	      if(panel_vertical)
+		      sprintf(where, "%d\n%d", x, y);
+	      else
+		      sprintf(where, "x:%d y:%d", x, y);
+      } else
+	      sprintf(where, "x:%d\ny:%d", x, y);
       break;
     case POSITION:
-      sprintf(where, "x:%d\ny:%d", x = motion->x_root, y = motion->y_root);
+      x = motion->x_root;
+      y = motion->y_root;
+      if(panel_size < 48) {
+	      if(panel_vertical)
+		      sprintf(where, "%d\n%d", x, y);
+	      else
+		      sprintf(where, "x:%d y:%d", x, y);
+      } else
+	      sprintf(where, "x:%d\ny:%d", x, y);
       break;
     case SIZE:
-      sprintf(where, "x:%+d\ny:%+d",
-	(int)motion->x_root-x, (int)motion->y_root-y);
+      if(panel_size < 48) {
+	      if(panel_vertical)
+		      sprintf(where, "%+d\n%+d",
+			      (int)motion->x_root-x, (int)motion->y_root-y);
+	      else
+		      sprintf(where, "x:%+d y:%+d",
+			      (int)motion->x_root-x, (int)motion->y_root-y);
+      } else
+	      sprintf(where, "x:%+d\ny:%+d",
+		      (int)motion->x_root-x, (int)motion->y_root-y);
       break;
     }
   
@@ -115,7 +142,13 @@ timeout_handler(GtkWidget *button)
       if (x != last_x || y != last_y)
 	{
 	  char where[100];
-	  sprintf(where, "x:%d\ny:%d", x, y);
+	  if(panel_size < 48) {
+		  if(panel_vertical)
+			  sprintf(where, "%d\n%d", x, y);
+		  else
+			  sprintf(where, "x:%d y:%d", x, y);
+	  } else
+		  sprintf(where, "x:%d\ny:%d", x, y);
 	  gtk_label_set_text(GTK_LABEL(GTK_BIN(button)->child), where);
 	  last_x = x;
 	  last_y = y;
@@ -124,10 +157,41 @@ timeout_handler(GtkWidget *button)
   return 1;
 }
 
+static void
+change_pixel_size (GtkWidget *applet, int size)
+{
+	int x,y;
+	GdkEventMotion m;
+	gdk_window_get_pointer(NULL, &x, &y, NULL);
+	m.x_root = x;
+	m.y_root = y;
+
+	panel_size = size;
+
+	motion_handler(msg, &m, NULL);
+}
+
+static void
+change_orient (GtkWidget *applet, PanelOrientType o)
+{
+	int x,y;
+	GdkEventMotion m;
+	gdk_window_get_pointer(NULL, &x, &y, NULL);
+	m.x_root = x;
+	m.y_root = y;
+
+	if(o==ORIENT_UP || o==ORIENT_DOWN)
+		panel_vertical = FALSE;
+	else
+		panel_vertical = TRUE;
+
+	motion_handler(msg, &m, NULL);
+}
+
 int
 main(int argc, char **argv)
 {
-  GtkWidget *msg, *applet;
+  GtkWidget *applet;
   char *applet_name = _("whereami_applet");
 
   bindtextdomain(PACKAGE, GNOMELOCALEDIR);
@@ -144,6 +208,12 @@ main(int argc, char **argv)
   gtk_widget_show(msg);
 
   applet = applet_widget_new(applet_name);
+  gtk_signal_connect(GTK_OBJECT(applet), "change_pixel_size",
+		     GTK_SIGNAL_FUNC(change_pixel_size),
+		     NULL);
+  gtk_signal_connect(GTK_OBJECT(applet), "change_orient",
+		     GTK_SIGNAL_FUNC(change_orient),
+		     NULL);
   applet_widget_add(APPLET_WIDGET(applet), msg);
   applet_widget_register_stock_callback(APPLET_WIDGET(applet),
     "about", GNOME_STOCK_MENU_ABOUT, _("About..."), about, NULL);
