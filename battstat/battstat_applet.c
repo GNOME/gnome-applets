@@ -256,11 +256,12 @@ apm_readinfo(void)
 void
 apm_readinfo(void)
 {
-  if (DEBUG) g_print(
-		     /* Message displayed if user tries to run applet
-			on unsupported platform */
-		     _("apm_readinfo() (Generic)\n Your platform is not supported!\n"));
-  if (DEBUG) g_print(_("The applet will not work properly (if at all).\n"));
+  g_print("apm_readinfo() (Generic)\n");
+  g_print(
+	  /* Message displayed if user tries to run applet
+	     on unsupported platform */
+	  _("Your platform is not supported!\n"));
+  g_print(_("The applet will not work properly (if at all).\n"));
 
   return;
 }
@@ -823,7 +824,7 @@ about_cb (AppletWidget *widget, gpointer data)
     gnome_about_new (
 		     /* The long name of the applet in the About dialog.*/
 		     _("Battery status utility"), VERSION,
-                     " (C) 2000 The Gnulix Society",
+                     _("(C) 2000 The Gnulix Society"),
                      (const char **) authors,
 		     /* Longer description of the applet in the About dialog.*/
 		     _("This utility show the status of your laptop battery."),
