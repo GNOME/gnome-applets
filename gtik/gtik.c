@@ -70,6 +70,7 @@
 	{
 		GtkWidget *applet;
 		GtkWidget *label;
+		GnomeVFSAsyncHandle *handle;
 
 		GdkPixmap *pixmap;
 		GtkWidget * drawing_area;
@@ -744,7 +745,7 @@ static gint updateOutput(gpointer data)
 					    stockdata->props.timeout, NULL);
 		gtk_timeout_remove(stockdata->updateTimeID);
 		stockdata->updateTimeID = gtk_timeout_add(stockdata->props.timeout * 60000,
-				                         (gpointer)updateOutput,"NULL");
+				                         (gpointer)updateOutput, stockdata);
 		
 	}
 	
@@ -1371,7 +1372,7 @@ static gint updateOutput(gpointer data)
 		gtk_container_set_border_width(GTK_CONTAINER(vbox2), GNOME_PAD);
 
 		timeout_label = gtk_label_new_with_mnemonic(_("Update Fre_quency in minutes:"));
-		timeout_a = gtk_adjustment_new( stockdata->props.timeout, 0.5, 128, 
+		timeout_a = gtk_adjustment_new( stockdata->props.timeout, 1, 128, 
 					       1, 8, 8 );
 		timeout_c  = gtk_spin_button_new( GTK_ADJUSTMENT(timeout_a), 1, 0 );
 		gtk_widget_set_usize(timeout_c,60,-1);
