@@ -2,9 +2,9 @@
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
 "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
-  <!ENTITY appletversion "2.3.6">
+  <!ENTITY appletversion "2.6.0">
   <!ENTITY manrevision "2.1">
-  <!ENTITY date "July 2003">
+  <!ENTITY date "January 2004">
   <!ENTITY applet "Modem Lights">
   <!-- Information about the entities.
        The legal.xml file contains legal information, there is no need to edit the file. 
@@ -122,14 +122,14 @@
 	<date>&date;</date> 
 	<revdescription> 
 	  <para role="author">Chee Bin HOH
-	    <email>cbhoh@mimos.my</email>
+	    <email>cbhoh@gnome.org</email>
           </para> 
 	  <para role="publisher">GNOME Documentation Project</para> 
 	</revdescription> 
       </revision> 
       <revision> 
         <revnumber>&applet; Applet Manual V2.0</revnumber> 
-        <date>July 2002</date> 
+        <date>July 2003</date> 
         <revdescription> 
           <para role="author">Chee Bin HOH
             <email>cbhoh@mimos.my</email></para> 
@@ -221,32 +221,14 @@
               <textobject>
                 <phrase>Shows &applet; applet connect/disconnect button.</phrase>
               </textobject> 
-            </inlinemediaobject> button of the applet. The applet will display a dialog box to confirm the 
-              connection, as shown in <xref linkend="fig-if-connect"/>.
+            </inlinemediaobject> button of the applet. The <guilabel>Connection Confirmation</guilabel> dialog
+	    is displayed. Click on the <guibutton>Connect</guibutton> button to connect to the internet.
       </para>
-      <figure id="fig-if-connect"> 
-        <title>Connection Confirmation Dialog Box</title> 
-	<screenshot> 
-	  <mediaobject> 
-	    <imageobject>
-              <imagedata fileref="figures/modemlights_applet_if_connect.png" format="PNG"/> 
-            </imageobject>
-            <textobject> 
-              <phrase>Shows &applet; connection confirm dialog box.</phrase> 
-            </textobject> 
-          </mediaobject> 
-        </screenshot> 
-      </figure>
-      <para>Click on the <guibutton>Connect</guibutton> button if you want to connect to the internet.
-            To cancel it, click <guibutton>Cancel</guibutton>.
+      <para>Depending on the applet preferences setting, you are able to dial up or disconnect without 
+            confirmation. See 
+            <xref linkend="modemlights-prefs"/> for information about how to modify the properties of 
+            the &applet; applet.
       </para>
-      <warning>
-        <title>Warning</title>
-        <para>You might need to modify the connection and disconnection commands that the applet uses, see 
-              <xref linkend="modemlights-prefs"/> for information about how to modify the properties
-              of &applet;.
-        </para>
-      </warning>
       <para>
       <itemizedlist>
         <listitem>
@@ -299,30 +281,21 @@
       <para>To disconnect, click on the 
             <inlinemediaobject>
               <imageobject>
-                <imagedata fileref="figures/modemlights_applet_blink_button.png" format="PNG"/>
+                <imagedata fileref="figures/modemlights_applet_button_2.png" format="PNG"/>
               </imageobject>
               <textobject>
                 <phrase>Shows connect/disconnect button.</phrase>
               </textobject>
-            </inlinemediaobject> button of the applet. The applet will display a dialog box to confirm the 
-            disconnection, as shown in <xref linkend="fig-if-disconnect"/>.
+            </inlinemediaobject> button of the applet. The <guilabel>Disconnection confirmation</guilabel>
+	    dialog is displayed. Click on the <guibutton>Disconnect</guibutton> button to stop the connection.
       </para>
-      <figure id="fig-if-disconnect">
-        <title>Disconnection Confirmation Dialog Box</title>
-        <screenshot>
-          <mediaobject>
-            <imageobject>
-              <imagedata fileref="figures/modemlights_applet_if_disconnect.png" format="PNG"/>
-            </imageobject>
-            <textobject>
-              <phrase>Shows &applet; disconnection confirmation dialog box.</phrase>
-            </textobject>
-          </mediaobject>
-        </screenshot>
-      </figure>
-      <para>Click on the <guibutton>Disconnect</guibutton> button if you want to stop the connection. To 
-            keep connected, click <guibutton>Cancel</guibutton>.
-      </para>
+      <warning>
+        <title>Warning</title>
+        <para>You might need to modify the connection and disconnection commands that the applet uses, see 
+              <xref linkend="modemlights-prefs"/> for information about how to modify the properties
+              of the &applet; applet.
+        </para>
+      </warning>
     </sect2>
   </sect1>
 
@@ -356,87 +329,43 @@
           <listitem> 
 	    <itemizedlist>
               <listitem>
-                <para>Click on the Spin Box to specify the interval that the applet updates the display.
+		<para>Use the Spin box to specify the interval that &applet; applet updates the display.
                 </para>
               </listitem>
               <listitem>
-                <para>Click on the <guilabel>Show connect time and throughput</guilabel> check box
-                      option to select or deselect showing connect time and throughput of the modem.
+		<para>Select the <guilabel>Show connect time and throughput</guilabel> option to 
+                      show connection time and throughput of the modem.
                 </para>
               </listitem>
               <listitem>
-                <para>Click on the <guilabel>Blink connection status when connecting</guilabel> check box
-                      option to select or deselect blinking connection status while connecting.
+                <para>Select the <guilabel>Blink connection status when connecting</guilabel> option
+                      to blink connection status when connecting.
                 </para>
               </listitem>
             </itemizedlist>
-            <para>Default:
-              <itemizedlist>
-                <listitem><para><guilabel>Update every</guilabel>: 5 <guilabel>seconds</guilabel></para></listitem>
-                <listitem><para><guilabel>Show connect time and throughput</guilabel>: 
-                  <inlinemediaobject>
-                    <imageobject>
-                      <imagedata fileref="figures/modemlights_applet_selected.png" format="PNG"/>
-                    </imageobject>
-                    <textobject>
-                      <phrase>Shows deselected check box.</phrase>
-                    </textobject> 
-                  </inlinemediaobject> 
-                  </para>
-                  </listitem>   
-                <listitem><para><guilabel>Blink connection status when connecting</guilabel>:
-                  <inlinemediaobject>
-                    <imageobject>
-                      <imagedata fileref="figures/modemlights_applet_deselected.png" format="PNG"/>
-                    </imageobject>
-                    <textobject>
-                      <phrase>Shows deselected check box.</phrase>
-                    </textobject> 
-                    </inlinemediaobject> 
-                  </para>
-                </listitem>   
-              </itemizedlist>
-            </para>
           </listitem>
   	</varlistentry>
         <varlistentry>
-          <term>Connections</term>
+          <term><guilabel>Connections</guilabel></term>
           <listitem> 
             <para> 
               <itemizedlist>
                 <listitem>
-                  <para>To specify the connection command that the applet uses to dial up, type the command 
-                        in the <guilabel>Connection command</guilabel> text box.
+                  <para>To specify the command that &applet; applet uses to dial up, type the 
+                        connection command in the <guilabel>Connection command</guilabel> text box.
                   </para>
                 </listitem>
                 <listitem>
-                  <para>To specify the disconnection command that the applet uses to disconnect, type the 
-                        command in the <guilabel>Disconnection command</guilabel> text box.
+                  <para>To specify the command that &applet; applet uses to stop the connection, type the 
+                        disconnection command in the <guilabel>Disconnection command</guilabel> text box.
                   </para>
                 </listitem>
                 <listitem>
-                  <para>Click on the <guilabel>Confirm connection</guilabel> check box option to select 
-                        that applet will display a confirm connection dialog before dialup.
+                  <para>Select the <guilabel>Confirm connection</guilabel> option to display
+                        a confirmation dialog box before dialup or disconnect.
                   </para>
                 </listitem>
 	      </itemizedlist>
-            </para>
-            <para>Default:
-              <itemizedlist>
-                <listitem><para><guilabel>Connection command</guilabel>: pppon</para></listitem>
-                <listitem><para><guilabel>Disconnection command</guilabel>: pppof</para></listitem>
-                <listitem><para><guilabel>Confirm connection</guilabel>:
-                            <inlinemediaobject>
-                              <imageobject>
-                                <imagedata fileref="figures/modemlights_applet_selected.png" format="PNG"/>
-                              </imageobject>
-                              <textobject>
-                                <phrase>Shows deselected check box.</phrase>
-                              </textobject> 
-                            </inlinemediaobject> 
-                          </para>
-                </listitem>   
-              </itemizedlist>
             </para>
           </listitem>
         </varlistentry>
@@ -445,25 +374,10 @@
 
     <sect2 id="modemlights-prefs-color">
       <title>Colors</title>
-      <para>The <guilabel>Colors</guilabel> tabbed section allows you to select colors for the display of
-            modem status on the applet, as shown in <xref linkend="fig-prefs-colors"/>.
+      <para>The <guilabel>Colors</guilabel> tabbed section allows you to specify colors for the display of 
+            the modem status on the applet.
       </para>
-      <figure id="fig-prefs-colors"> 
-        <title>Colors tabbed section</title>       
-        <screenshot> 
-          <mediaobject> 
-            <imageobject>
-              <imagedata fileref="figures/modemlights_applet_colors.png" format="PNG"/> 
-            </imageobject>
-            <textobject> 
-              <phrase>Shows &applet; applet preferences dialog; connecting section.</phrase> 
-            </textobject> 
-          </mediaobject> 
-        </screenshot> 
-      </figure> 
-      <para>Click on any color selector buttons to select colors 
-            for <guilabel>Receive Data</guilabel>, <guilabel>Send Data</guilabel>, <guilabel>Connection Status</guilabel> 
-            and <guilabel>Text</guilabel> display of the applet.
+      <para>Click on any color selector buttons to specify the colors.
       </para>
     </sect2>
 
@@ -491,52 +405,25 @@
           <listitem>
 	    <itemizedlist>
               <listitem>
-                <para>To specify the modem device that the applet uses, type the device file name in the 
+		<para>To specify the modem device that &applet; applet uses, type the device name in the 
                       <guilabel>Device</guilabel> text box.
                 </para>
               </listitem>
 	      <listitem>
-		<para>To specify a lock file that the applet uses for the modem, type the path to the lock 
+		<para>To specify the lock file that &applet; applet uses, type the path to the lock 
                       file in the <guilabel>Lock file</guilabel> text box.
                 </para>
 	      </listitem>
               <listitem>
-                <para>Click on the <guilabel>Verify owner of lock file</guilabel> check box option to select or
-                      deselect verifying lock file ownership.
+                <para>Select the <guilabel>Verify owner of lock file</guilabel> option to verify
+                      the lock file ownership.
                 </para>
               </listitem>
 	      <listitem>
-                <para>Click on the <guilabel>Use ISDN</guilabel> check box option to select or deselect or
-                      deselect using ISDN.
+                <para>Select the <guilabel>Use ISDN</guilabel> option to use ISDN modem.
                 </para>
 	      </listitem>
 	    </itemizedlist>
-            <para>Default:
-              <itemizedlist>
-                <listitem><para><guilabel>Device</guilabel>: ppp0</para></listitem>
-                <listitem><para><guilabel>Lock file</guilabel>: /var/lock/LCK..ttyS0</para></listitem>
-                <listitem><para><guilabel>Verify owner of lock file</guilabel>: 
-                  <inlinemediaobject>
-                    <imageobject>
-                      <imagedata fileref="figures/modemlights_applet_selected.png" format="PNG"/>
-                    </imageobject>
-                    <textobject>
-                      <phrase>Shows deselected check box.</phrase>
-                    </textobject> 
-                  </inlinemediaobject> 
-                  </para></listitem>
-                <listitem><para><guilabel>Use ISDN</guilabel>: 
-                  <inlinemediaobject>
-                    <imageobject>
-                      <imagedata fileref="figures/modemlights_applet_deselected.png" format="PNG"/>
-                    </imageobject>
-                    <textobject>
-                      <phrase>Shows deselected check box.</phrase>
-                    </textobject> 
-                  </inlinemediaobject> 
-                  </para></listitem>
-              </itemizedlist>
-            </para>
           </listitem>
         </varlistentry>
       </variablelist>
