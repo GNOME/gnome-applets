@@ -159,6 +159,10 @@ static void draw_load(int rxbytes,int txbytes)
 		y = 27;
 		}
 
+	/* sanity check: */
+	if (rxbytes <0) rxbytes = 0;
+	if (txbytes <0) txbytes = 0;
+
 	load_hist_pos++;
 	if (load_hist_pos > 119) load_hist_pos = 0;
 	if (txbytes > rxbytes)
