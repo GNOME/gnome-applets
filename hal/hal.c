@@ -89,8 +89,6 @@ update_fortune_dialog(Hal *fish)
 					 TRUE);
 
 		fish->fortune_less = gnome_less_new();
-		gnome_less_show_string(GNOME_LESS(fish->fortune_less), 
-				hal_quote_new() );
 
 		fish->fortune_label = gtk_label_new("");
 	
@@ -120,6 +118,8 @@ update_fortune_dialog(Hal *fish)
 		gtk_widget_show(fish->fortune_label);
 		load_properties(fish);
 	}
+	gnome_less_show_string(GNOME_LESS(fish->fortune_less), 
+			hal_quote_new() );
 	if (!GTK_WIDGET_VISIBLE(fish->fortune_dialog))
 		gtk_widget_show(fish->fortune_dialog);
 }
