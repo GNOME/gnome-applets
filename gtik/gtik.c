@@ -2023,6 +2023,9 @@ static gint updateOutput(gpointer data)
 			quote->color = RED;
 		}
 		else {
+			/* TRANSLATOR: This forms part of a sentance
+			 * "(No Change)". FIXME: string composition is bad.
+			 */
 			var3 = g_strdup(_("(No Change"));
 			var4 = g_strdup("");
 			quote->color = WHITE;
