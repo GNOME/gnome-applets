@@ -70,7 +70,6 @@ static GdkPixmap *get_pixmap_from_data(gchar **data)
 	GdkBitmap *mask = NULL;
 
 	gdk_imlib_data_to_pixmap(data, &pixmap, &mask);
-	if (mask) gdk_imlib_free_bitmap(mask);
 	return pixmap;
 }
 
@@ -82,7 +81,6 @@ static GdkPixmap *get_pixmap_from_file(gchar *path)
 	if (!g_file_exists(path)) return NULL;
 
 	gdk_imlib_load_file_to_pixmap(path, &pixmap, &mask);
-	if (mask) gdk_imlib_free_bitmap(mask);
 	return pixmap;
 }
 
@@ -561,7 +559,6 @@ static HandData *new_hand(GdkPixmap *p, GdkBitmap *m, gint xo, gint yo)
 	hd->yo = yo;
 
 	if (p) gdk_imlib_free_pixmap(p);
-	if (m) gdk_imlib_free_bitmap(m);
 
 	return hd;
 }

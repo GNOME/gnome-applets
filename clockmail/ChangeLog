@@ -1,3 +1,8 @@
+Fri Aug 20 07:05:01 1999  John Ellis  <johne@bellatlantic.net>
+
+	* clockmail.c, theme.c: Don't use gdk_imlib_free_bitmap !
+	Looking at imlib, it does nothing anyway, at least for a valid mask.
+
 Wed Jul 14 20:27:58 1999  John Ellis  <johne@bellatlantic.net>
 
 	* clockmail.c: Use message count instead of message sizes to compute

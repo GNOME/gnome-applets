@@ -410,13 +410,13 @@ static void applet_change_back(GtkWidget *applet, PanelBackType type, char *pixm
 				GdkImlibImage *im = gdk_imlib_load_image (pixmap);
 				if (im)
 					{
-					/* FIX me! pixmap leak */
 					GdkPixmap *pmap;
 					gdk_imlib_render (im, im->rgb_width, im->rgb_height);
-					pmap = gdk_imlib_move_image (im);
+					pmap = gdk_imlib_copy_image (im);
 					gdk_imlib_destroy_image (im);
 					gdk_window_set_back_pixmap(ad->applet->window, pmap, FALSE);
 					gdk_window_clear(ad->applet->window);
+					gdk_pixmap_unref(pmap);
 					}
 				}
 			break;
