@@ -571,7 +571,6 @@ about (BonoboUIComponent *uic,
        charpick_data     *curr_data,
        const char        *verb)
 {
-  static GtkWidget *about_box = NULL;
   GdkPixbuf   	   *pixbuf;
   GError      	   *error     = NULL;
   gchar            *file;
@@ -590,44 +589,46 @@ about (BonoboUIComponent *uic,
 
   const gchar *translator_credits = _("translator_credits");
 
-  if (about_box) {
-	gtk_window_set_screen (GTK_WINDOW (about_box),
-			       gtk_widget_get_screen (curr_data->applet));
-	gtk_window_present (GTK_WINDOW (about_box));
+  if (curr_data->about_dialog) {
+	gtk_window_present (GTK_WINDOW (curr_data->about_dialog));
 	return;
   }
   
-  file = gnome_program_locate_file (NULL, GNOME_FILE_DOMAIN_PIXMAP, "charpick.png", FALSE, NULL);
+  file = gnome_program_locate_file (NULL, GNOME_FILE_DOMAIN_PIXMAP,
+				    "charpick.png", FALSE, NULL);
   pixbuf = gdk_pixbuf_new_from_file (file, &error);
   g_free (file);
    
   if (error) {
-  	  g_warning (G_STRLOC ": cannot open %s: %s", file, error->message);
-	  g_error_free (error);
+	g_warning (G_STRLOC ": cannot open %s: %s", file, error->message);
+	g_error_free (error);
   }
   
-  about_box = gnome_about_new (_("Character Palette"),
-			       VERSION,
-			       _("Copyright (C) 1998"),
-			       _("Gnome Panel applet for selecting strange "
-			         "characters that are not on my keyboard. "
-				 "Released under GNU General Public Licence."),
-			       authors,
-			       documenters,
-			       strcmp (translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
-			       pixbuf);
+  curr_data->about_dialog = gnome_about_new (_("Character Palette"),
+					     VERSION,
+					     _("Copyright (C) 1998"),
+					     _("Gnome Panel applet for selecting strange "
+					     "characters that are not on my keyboard. "
+					     "Released under GNU General Public Licence."),
+					     authors,
+					     documenters,
+					     strcmp (translator_credits, "translator_credits") != 0 ? translator_credits : NULL,
+					     pixbuf);
   
   if (pixbuf) 
   	gdk_pixbuf_unref (pixbuf);
-   
-  gtk_window_set_screen (GTK_WINDOW (about_box),
-			 gtk_widget_get_screen (curr_data->applet));
-  gtk_window_set_wmclass (GTK_WINDOW (about_box), "character palette", "Character Palette");
-  gnome_window_icon_set_from_file (GTK_WINDOW (about_box), GNOME_ICONDIR"/charpick.png");
 
-  gtk_signal_connect(GTK_OBJECT(about_box), "destroy",
-		     GTK_SIGNAL_FUNC(gtk_widget_destroyed), &about_box);
-  gtk_widget_show(about_box);
+  gtk_window_set_screen (GTK_WINDOW (curr_data->about_dialog),
+			 gtk_widget_get_screen (curr_data->applet));
+  gtk_window_set_wmclass (GTK_WINDOW (curr_data->about_dialog),
+			  "character palette", "Character Palette");
+  gnome_window_icon_set_from_file (GTK_WINDOW (curr_data->about_dialog),
+				   GNOME_ICONDIR"/charpick.png");
+
+  gtk_signal_connect(GTK_OBJECT(curr_data->about_dialog), "destroy",
+		     GTK_SIGNAL_FUNC(gtk_widget_destroyed),
+		     &curr_data->about_dialog);
+  gtk_widget_show(curr_data->about_dialog);
   return;
 }
 
@@ -659,6 +660,8 @@ applet_destroy (GtkWidget *widget, gpointer data)
 
   g_return_if_fail (curr_data);
    
+  if (curr_data->about_dialog)
+    gtk_widget_destroy (curr_data->about_dialog);   
   if (curr_data->propwindow)
     gtk_widget_destroy (curr_data->propwindow);
 
@@ -772,6 +775,7 @@ charpicker_applet_fill (PanelApplet *applet)
   curr_data = g_new0 (charpick_data, 1);
   curr_data->last_index = NO_LAST_INDEX;
   curr_data->applet = GTK_WIDGET (applet);
+  curr_data->about_dialog = NULL;
   
   get_chartable (curr_data);
   

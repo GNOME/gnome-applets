@@ -1,3 +1,14 @@
+2004-01-31  Archana Shah <archana.shah@wipro.com>
+
+	* charpick.h: Added a field for about dialog in structure
+	charpick_data.
+	* charpick.c: (charpick_applet_fill): Initialized about_dialog 
+	with NULL.
+	(about): Changed to use about_dialog member field instead of
+	static variable.
+	(applet_destroy): Destroy about_dialog when the applet is removed.
+	Fixes bug #132291
+
 2004-01-18  Jason Leach  <leach@wam.umd.edu>
 
 	* Makefile.am (install-data-local): builddir != srcdir fix.

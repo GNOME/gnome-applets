@@ -21,6 +21,7 @@ struct _charpick_data {
   gint panel_size;
   gboolean panel_vertical;
   GtkWidget *propwindow;
+  GtkWidget *about_dialog;
   GtkWidget *pref_tree;
   GtkWidget *menu;
 };
