@@ -159,7 +159,7 @@ theme_selected_cb (GtkTreeSelection *selection, gpointer data)
         setup_eyes (eyes_applet);
 	
 	panel_applet_gconf_set_string (
-		eyes_applet->applet, "theme-path", theme, NULL);
+		eyes_applet->applet, "theme_path", theme, NULL);
 	
 	g_free (theme);
 }

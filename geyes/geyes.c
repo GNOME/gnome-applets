@@ -225,7 +225,7 @@ properties_load (EyesApplet *eyes_applet)
         gchar *theme_path = NULL;
 
 	theme_path = panel_applet_gconf_get_string (
-		eyes_applet->applet, "theme-path", NULL);
+		eyes_applet->applet, "theme_path", NULL);
 
 	if (theme_path == NULL)
 		theme_path = g_strdup (GEYES_THEMES_DIR "Default-tiny");
