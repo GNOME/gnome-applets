@@ -657,7 +657,7 @@ applet_about_cb (BonoboUIComponent *uic, PanelMenu *panel_menu,
 	pixbuf = NULL;
 
 	file = gnome_program_locate_file (NULL, GNOME_FILE_DOMAIN_PIXMAP,
-					  "panel-menu-icon.png", TRUE, NULL);
+					  "gnome-logo-icon-transparent.png", TRUE, NULL);
 	if (!file) {
 		g_warning (G_STRLOC ": icon was not found cannot be found");
 	} else {

@@ -113,7 +113,7 @@ applet_properties_cb (BonoboUIComponent *uic, PanelMenu *panel_menu,
 					     "applications-image",
 					      NULL);
 	if (!icon)
-		icon = g_strdup (DATADIR "/pixmaps/panel-menu-icon.png");
+		icon = g_strdup (DATADIR "/pixmaps/gnome-logo-icon-transparent.png");
 	gnome_icon_entry_set_filename (GNOME_ICON_ENTRY(applications_icon),
 				       icon);
 	g_free (icon);

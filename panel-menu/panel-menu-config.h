@@ -42,7 +42,7 @@ GList *panel_applet_gconf_get_string_list (PanelApplet *applet,
 					   const char *key);
 void _gconf_client_clean_dir (GConfClient *client, const gchar *dir);
 
-#define HAVE_TEAROFFS_KEY "/desktop/gnome/interface/menus-have-tearoff"
+#define HAVE_TEAROFFS_KEY "/desktop/gnome/interface/menus_have_tearoff"
 #define HAVE_TEAROFFS_KEY_PARENT "/desktop/gnome/interface"
 
 G_END_DECLS

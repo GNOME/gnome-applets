@@ -89,7 +89,7 @@ panel_menu_applications_new (PanelMenu *parent)
 					     "applications-image",
 					      NULL);
 	if (!icon)
-		icon = g_strdup (DATADIR "/pixmaps/panel-menu-icon.png");
+		icon = g_strdup (DATADIR "/pixmaps/gnome-logo-icon-transparent.png");
 	panel_menu_applications_set_icon (entry, icon);
 	g_free (icon);
 	panel_menu_path_load ("applications:///", GTK_MENU_SHELL(applications->menu));
