@@ -65,11 +65,12 @@ static void dnd_drag_begin_cb (GtkWidget *widget, GdkDragContext *context,
 static void dnd_set_data_cb (GtkWidget *widget, GdkDragContext *context,
 			     GtkSelectionData *selection_data, guint info,
 			     guint time, gpointer data);
-static gboolean applet_button_press_cb (GtkWidget *widget,
-					GdkEventButton *event, gpointer data);
 static void applet_change_orient (GtkWidget *w, PanelAppletOrient o,
 				  gpointer data);
 static void applet_change_pixel_size (GtkWidget *w, int size, gpointer data);
+static gboolean button_press_hack (GtkWidget      *widget,
+				   GdkEventButton *event,
+				   GtkWidget      *applet);
 static void destroy_drive_widget (GtkWidget *widget, gpointer data);
 static void browse_cb (PanelApplet *widget, gpointer data);
 static void eject_cb (PanelApplet *applet, gpointer data);
@@ -195,7 +196,7 @@ applet_fill (PanelApplet *applet)
 	dd->orient = panel_applet_get_orient (PANEL_APPLET (applet));
 	dd->sizehint = panel_applet_get_size (PANEL_APPLET (applet));
 	g_signal_connect (G_OBJECT (dd->button), "button_press_event",
-			  G_CALLBACK (applet_button_press_cb), applet);
+			  G_CALLBACK (button_press_hack), applet);
 
 	g_signal_connect (G_OBJECT (applet), "change_orient",
 			  G_CALLBACK (applet_change_orient), dd);
@@ -244,19 +245,22 @@ create_drive_widget (PanelApplet *applet)
 	return dd;
 }
 
+/* This is a hack around the fact that gtk+ doesn't
+ * propogate button presses on button2/3.
+ */
 static gboolean
-applet_button_press_cb (GtkWidget *widget, GdkEventButton *event,
-			gpointer data)
+button_press_hack (GtkWidget      *widget,
+                   GdkEventButton *event,
+                   GtkWidget      *applet)
 {
-	PanelApplet *applet = PANEL_APPLET (data);
+    if (event->button == 3 || event->button == 2) {
+	event->window = applet->window;
+	gtk_main_do_event ((GdkEvent *) event);
 
-	if (event->button == 1) {
-		return FALSE;
-	} else {
-		GTK_WIDGET_CLASS (PANEL_APPLET_GET_CLASS (applet))->
-			button_press_event (data, event);
-	}
 	return TRUE;
+    }
+
+    return FALSE;
 }
 
 static void

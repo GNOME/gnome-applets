@@ -578,19 +578,22 @@ setup_box(CDPlayerData* cd)
     gtk_widget_show_all(cd->panel.frame);
 }
 
+/* This is a hack around the fact that gtk+ doesn't
+ * propogate button presses on button2/3.
+ */
 static gboolean 
-button_press_hack (GtkWidget *w, GdkEventButton *event, gpointer data)
+button_press_hack (GtkWidget      *widget,
+		   GdkEventButton *event,
+		   GtkWidget      *applet)
 {
-    PanelApplet *applet = PANEL_APPLET (data);
-    /* Pass the right click to the PanelApplet */
-    if (event->button == 3) {
-    	GTK_WIDGET_CLASS (PANEL_APPLET_GET_CLASS (applet))->
-			  button_press_event (data, event);
+    if (event->button == 3 || event->button == 2) {
+	event->window = applet->window;
+	gtk_main_do_event ((GdkEvent *) event);
+
 	return TRUE;
     }
     
     return FALSE;
-    
 }
 
 static GtkWidget *
@@ -608,12 +611,13 @@ control_button_factory(gchar * pixmap_data[], GCallback func, CDPlayerData * cd)
     	g_object_unref (pixbuf);
     gtk_widget_show(image);
     gtk_container_add(GTK_CONTAINER(w), image);
-    /* This is a hack to get the right click menu working with buttons
-    ** Should be removed when libpanelapplet is fixed */
-    g_signal_connect (G_OBJECT (w), "button_press_event",
-    		      G_CALLBACK (button_press_hack), cd->panel.applet);
-    g_signal_connect(G_OBJECT(w), "clicked",
-                     G_CALLBACK(func), cd);
+
+    g_signal_connect (w, "button_press_event",
+    		      G_CALLBACK (button_press_hack),
+		      cd->panel.applet);
+    g_signal_connect (w, "clicked",
+		      G_CALLBACK(func), cd);
+
     gtk_widget_show(w);
     gtk_widget_ref(w);
     return(w);

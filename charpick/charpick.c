@@ -153,20 +153,22 @@ toggle_button_toggled_cb(GtkToggleButton *button, gpointer data)
   return TRUE;
 }
 
-/* clicks on the toggle buttons with mouse buttons other than 1 go to the 
-   applet */
-
-static int
-button_press_cb (GtkWidget *widget, GdkEventButton *event, gpointer data)
+/* This is a hack around the fact that gtk+ doesn't
+ * propogate button presses on button2/3.
+ */
+static gboolean
+button_press_hack (GtkWidget      *widget,
+		   GdkEventButton *event,
+		   GtkWidget      *applet)
 {
-  charpick_data *curr_data = data;
- 
-  if (event->button > 1)
-  {
-    return gtk_widget_event (curr_data->applet, (GdkEvent *)event);
-  }
+    if (event->button == 3 || event->button == 2) {
+	event->window = applet->window;
+	gtk_main_do_event ((GdkEvent *) event);
 
-  return FALSE;
+	return TRUE;
+    }
+
+    return FALSE;
 }
 
 static gint
@@ -303,7 +305,7 @@ build_table(charpick_data *p_curr_data)
                         (GtkSignalFunc) toggle_button_toggled_cb,
                         p_curr_data);
     gtk_signal_connect (GTK_OBJECT (toggle_button), "button_press_event", 
-                        (GtkSignalFunc) button_press_cb, p_curr_data);
+                        (GtkSignalFunc) button_press_hack, p_curr_data->applet);
   }
 
   gtk_container_add (GTK_CONTAINER(p_curr_data->frame), box);
