@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 1.2.0\n"
 "POT-Creation-Date: 2001-02-15 04:09-0500\n"
-"PO-Revision-Date: 2001-01-03 15:50+01:00\n"
+"PO-Revision-Date: 2001-04-21 15:50+01:00\n"
 "Last-Translator: Keld Simonsen <keld@dkuug.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
 "MIME-Version: 1.0\n"
@@ -24,10 +24,11 @@ msgstr "Egenskaber for ur"
 #: another_clock/another_clock.c:267 asclock/dialogs.c:380
 #: battery/properties.c:83 clockmail/properties.c:421
 #: diskusage/properties.c:466 drivemount/properties.c:400
-#: gnotes/properties.c:190 mini-commander/src/preferences.c:801
-#: modemlights/properties.c:486 odometer/properties.c:293
-#: screenshooter/screenshooter_applet.c:434 slashapp/properties.c:412
-#: sound-monitor/properties.c:424 tickastat/properties.c:424
+#: gnotes/properties.c:190 gweather/gweather-pref.c:516
+#: mini-commander/src/preferences.c:801 modemlights/properties.c:486
+#: odometer/properties.c:293 screenshooter/screenshooter_applet.c:434
+#: slashapp/properties.c:412 sound-monitor/properties.c:424
+#: tickastat/properties.c:424
 msgid "General"
 msgstr "Generelt"
 
@@ -59,10 +60,11 @@ msgstr "Sekundviserfarve"
 msgid "Show seconds needle"
 msgstr "Vis sekundviser"
 
-#. languages which use font encodings that can't
-#. * display spanish 'ñ' should use 'n' instead
+#. if your encoding allows it, use ntilde (U00F1)
+#. * instead of the 'n' of 'Inigo'
 #: another_clock/another_clock.c:365
-msgid "Iñigo Serna <inigo@gaztelan.bi.ehu.es>"
+#, fuzzy
+msgid "Inigo Serna <inigo@gaztelan.bi.ehu.es>"
 msgstr "Iñigo Serna <inigo@gaztelan.bi.ehu.es>"
 
 #: another_clock/another_clock.c:383
@@ -81,8 +83,8 @@ msgstr "Et analogt ur magen til det fra CDE panelet"
 #: battery/battery.c:951 charpick/charpick.c:588 clockmail/clockmail.c:327
 #: diskusage/diskusage.c:1058 drivemount/drivemount.c:741 geyes/geyes.c:393
 #: gkb-new/gkb.c:758 gnotes/gnotes_applet.c:198 gtik/gtik.c:1417
-#: gweather/gweather-applet.c:198
-#: mini-commander/src/mini-commander_applet.c:398
+#: gweather/gweather-applet.c:212
+#: mini-commander/src/mini-commander_applet.c:401
 #: modemlights/modemlights.c:1494 multiload/cpuload.c:95
 #: multiload/loadavg.c:170 multiload/memload.c:98 multiload/netload.c:94
 #: multiload/swapload.c:98 odometer/odo.c:683
@@ -96,9 +98,9 @@ msgstr "Egenskaber..."
 #: clockmail/clockmail.c:334 cpumemusage/cpumemusage.c:299
 #: diskusage/diskusage.c:1081 drivemount/drivemount.c:747
 #: fifteen/fifteen.c:390 geyes/geyes.c:399 gkb-new/gkb.c:764
-#: gnotes/gnotes_applet.c:202 gweather/gweather-applet.c:203
+#: gnotes/gnotes_applet.c:202 gweather/gweather-applet.c:217
 #: jbc/jbc-applet.c:202 life/life.c:286
-#: mini-commander/src/mini-commander_applet.c:405 mixer/mixer.c:762
+#: mini-commander/src/mini-commander_applet.c:408 mixer/mixer.c:762
 #: multiload/cpuload.c:108 multiload/loadavg.c:183 multiload/memload.c:111
 #: multiload/netload.c:107 multiload/swapload.c:111 odometer/odo.c:686
 #: quicklaunch/quicklaunch.c:534 screenshooter/screenshooter_applet.c:1023
@@ -113,8 +115,8 @@ msgstr "Hjælp"
 #: cpumemusage/cpumemusage.c:305 diskusage/diskusage.c:1088
 #: drivemount/drivemount.c:752 fifteen/fifteen.c:395 geyes/geyes.c:404
 #: gkb-new/gkb.c:769 gnotes/gnotes_applet.c:205 gtik/gtik.c:1426
-#: gweather/gweather-applet.c:208 jbc/jbc-applet.c:207 life/life.c:290
-#: mini-commander/src/mini-commander_applet.c:412 mixer/mixer.c:767
+#: gweather/gweather-applet.c:222 jbc/jbc-applet.c:207 life/life.c:290
+#: mini-commander/src/mini-commander_applet.c:415 mixer/mixer.c:767
 #: modemlights/modemlights.c:1507 multiload/cpuload.c:115
 #: multiload/loadavg.c:190 multiload/memload.c:118 multiload/netload.c:114
 #: multiload/swapload.c:118 odometer/odo.c:689 quicklaunch/quicklaunch.c:538
@@ -818,7 +820,7 @@ msgstr "keymap_%d/lang=Hungarian"
 #: gkb-new/gkb.c:474
 #, c-format
 msgid "keymap_%d/flag=hu.png"
-msgstr ""
+msgstr "keymap_%d/flag=hu.png"
 
 #: gkb-new/gkb.c:477
 #, c-format
@@ -1069,7 +1071,7 @@ msgstr "Tyrkiet"
 
 #: gkb-new/prop-map.c:213
 msgid "United Kingdom"
-msgstr ""
+msgstr "Storbritanien"
 
 #: gkb-new/prop-map.c:214
 msgid "United States"
@@ -1480,15 +1482,20 @@ msgstr ""
 "Gnome vejrovervågningsapplet.\n"
 "Web: http://gweather.dhs.org/"
 
-#: gweather/gweather-applet.c:185
+#: gweather/gweather-applet.c:194
 msgid "Cannot create applet!\n"
 msgstr "Kan ikke oprette applet!\n"
 
-#: gweather/gweather-applet.c:193
+#: gweather/gweather-applet.c:202
+#, fuzzy
+msgid "Detailed Forecast"
+msgstr "Detaljeret prognose"
+
+#: gweather/gweather-applet.c:207
 msgid "Update"
 msgstr "Opdatér"
 
-#: gweather/gweather-applet.c:365
+#: gweather/gweather-applet.c:379
 msgid "Updating..."
 msgstr "Opdaterer..."
 
@@ -1500,7 +1507,7 @@ msgstr "Gnome vejret"
 msgid "Location:"
 msgstr "Placering:"
 
-#: gweather/gweather-dialog.c:132 gweather/gweather-pref.c:393
+#: gweather/gweather-dialog.c:132 gweather/gweather-pref.c:490
 msgid "Update:"
 msgstr "Updatering:"
 
@@ -1572,7 +1579,7 @@ msgstr ""
 "Prøv venligst den detaljerede vejrudsigt; notér at IWIN vejrudsigter kun er "
 "tilgængelige for byer i USA."
 
-#: gweather/gweather-pref.c:130
+#: gweather/gweather-pref.c:134
 msgid ""
 "Invalid location chosen!\n"
 "Properties remain unchanged."
@@ -1580,7 +1587,7 @@ msgstr ""
 "Ugyldig placering valgt!\n"
 "Egenskaber forbliver uændrede."
 
-#: gweather/gweather-pref.c:135
+#: gweather/gweather-pref.c:140
 msgid ""
 "Proxy URL is not of the form http://host:port/\n"
 "Properties remain unchanged."
@@ -1588,71 +1595,68 @@ msgstr ""
 "Proxyadresse er ikke udformet som http://host:port/\n"
 "Egenskaber forbliver uændrede."
 
-#: gweather/gweather-pref.c:208
+#: gweather/gweather-pref.c:199
 msgid "Regions"
 msgstr "Regioner"
 
-#: gweather/gweather-pref.c:326
+#: gweather/gweather-pref.c:313
 msgid "GNOME Weather Properties"
 msgstr "Egenskaber for Gnome-vejret"
 
-#: gweather/gweather-pref.c:375
-msgid "Update enabled"
-msgstr "Opdatering brugt"
+#: gweather/gweather-pref.c:352
+msgid "Location"
+msgstr "Placering"
 
-#: gweather/gweather-pref.c:379
-msgid "Use metric"
-msgstr "Brug metermål"
-
-#: gweather/gweather-pref.c:383
-msgid "Detailed forecast"
-msgstr "Detaljeret prognose"
-
-#: gweather/gweather-pref.c:388
-msgid "Enable radar maps"
-msgstr "Brug radarkort"
-
-#: gweather/gweather-pref.c:415
-msgid "(sec)"
-msgstr "(sek)"
-
-#: gweather/gweather-pref.c:419
-msgid "Basic"
-msgstr "Basis"
-
-#: gweather/gweather-pref.c:436
+#: gweather/gweather-pref.c:372
 msgid "Use proxy"
 msgstr "Brug proxy"
 
-#: gweather/gweather-pref.c:440
+#: gweather/gweather-pref.c:376
 msgid "Proxy host:"
 msgstr "Proxy vært:"
 
-#: gweather/gweather-pref.c:454
+#: gweather/gweather-pref.c:390
 msgid "Username:"
 msgstr "Brugernavn"
 
-#: gweather/gweather-pref.c:468
+#: gweather/gweather-pref.c:404
 msgid "Password:"
 msgstr "Adgangskode:"
 
-#: gweather/gweather-pref.c:483
+#: gweather/gweather-pref.c:419
+#, fuzzy
 msgid ""
-"Caveat warning: Even though your password will\n"
-"be saved in the private configuration file, it will\n"
-"be unencrypted!"
+"Warning: Your password will be saved as\n"
+"unencrypted text in a private configuration\n"
+"file."
 msgstr ""
 "Advarsel: Selvom din adgangskode bliver gemt i\n"
 "den private konfigurationsfil vil den ikke blive\n"
 "krypteret!"
 
-#: gweather/gweather-pref.c:491
+#: gweather/gweather-pref.c:427
 msgid "Network"
 msgstr "Netværk"
 
-#: gweather/gweather-pref.c:514
-msgid "Location"
-msgstr "Placering"
+#: gweather/gweather-pref.c:472
+msgid "Update enabled"
+msgstr "Opdatering brugt"
+
+#: gweather/gweather-pref.c:476
+msgid "Use metric"
+msgstr "Brug metermål"
+
+#: gweather/gweather-pref.c:480
+msgid "Detailed forecast"
+msgstr "Detaljeret prognose"
+
+#: gweather/gweather-pref.c:485
+msgid "Enable radar maps"
+msgstr "Brug radarkort"
+
+#: gweather/gweather-pref.c:512
+msgid "(sec)"
+msgstr "(sek)"
 
 #: gweather/weather.c:110
 msgid "Location vector needs to be 4 elements long"
@@ -2913,29 +2917,29 @@ msgstr ""
 "Software Foundation; enten version 2 af licensen eller (hvis du vil) enhver "
 "senere version."
 
-#: mini-commander/src/cmd_completion.c:70
-#: mini-commander/src/cmd_completion.c:116
-#: mini-commander/src/cmd_completion.c:152
-#: mini-commander/src/cmd_completion.c:203
+#: mini-commander/src/cmd_completion.c:68
+#: mini-commander/src/cmd_completion.c:114
+#: mini-commander/src/cmd_completion.c:150
+#: mini-commander/src/cmd_completion.c:201
 msgid "not unique"
 msgstr "ikke unik"
 
-#: mini-commander/src/cmd_completion.c:74
-#: mini-commander/src/cmd_completion.c:156
+#: mini-commander/src/cmd_completion.c:72
+#: mini-commander/src/cmd_completion.c:154
 msgid "completing..."
 msgstr "færdiggør..."
 
-#: mini-commander/src/cmd_completion.c:114
-#: mini-commander/src/cmd_completion.c:201
+#: mini-commander/src/cmd_completion.c:112
+#: mini-commander/src/cmd_completion.c:199
 msgid "completed"
 msgstr "færdig"
 
-#: mini-commander/src/cmd_completion.c:119
-#: mini-commander/src/cmd_completion.c:206
+#: mini-commander/src/cmd_completion.c:117
+#: mini-commander/src/cmd_completion.c:204
 msgid "not found"
 msgstr "fandtes ikke"
 
-#: mini-commander/src/cmd_completion.c:168 mini-commander/src/exec.c:121
+#: mini-commander/src/cmd_completion.c:166 mini-commander/src/exec.c:116
 msgid "no /bin/sh"
 msgstr "ingen /bin/sh"
 
@@ -2945,7 +2949,7 @@ msgid "end of history list"
 msgstr "slutning på historieliste"
 
 #. enter pressed -> exec command
-#: mini-commander/src/command_line.c:117 mini-commander/src/exec.c:63
+#: mini-commander/src/command_line.c:117 mini-commander/src/exec.c:58
 #: mini-commander/src/terminal.c:113
 msgid "starting..."
 msgstr "starter..."
@@ -2968,11 +2972,11 @@ msgstr "Kommandohistorie"
 msgid "Start program"
 msgstr "Start program"
 
-#: mini-commander/src/exec.c:65
+#: mini-commander/src/exec.c:60
 msgid "fork error"
 msgstr "forgreningsfejl"
 
-#: mini-commander/src/exec.c:109
+#: mini-commander/src/exec.c:104
 msgid "child exited"
 msgstr "barn afsluttede"
 
@@ -2996,15 +3000,15 @@ msgstr "orientering ændret"
 msgid "size changed"
 msgstr "størrelse ændret"
 
-#: mini-commander/src/mini-commander_applet.c:228
+#: mini-commander/src/mini-commander_applet.c:231
 msgid "Browser"
 msgstr "Browser"
 
-#: mini-commander/src/mini-commander_applet.c:241
+#: mini-commander/src/mini-commander_applet.c:244
 msgid "History"
 msgstr "Historie"
 
-#: mini-commander/src/mini-commander_applet.c:416
+#: mini-commander/src/mini-commander_applet.c:419
 msgid "ready..."
 msgstr "klar..."
 
@@ -4616,12 +4620,13 @@ msgid "Another Clock"
 msgstr "Et andet ur"
 
 #: gkb-new/gkb_applet.desktop.in.h:1
-msgid "GKB Gnome Keyboard Layout Switcher"
-msgstr "Internationalt tastatur"
-
-#: gkb-new/gkb_applet.desktop.in.h:2
 msgid "GKB Keyboard Switcher"
 msgstr "GKB Tastaturomskifter"
+
+#: gkb-new/gkb_applet.desktop.in.h:2
+#, fuzzy
+msgid "GKB, the Gnome Keyboard Layout Switcher Applet"
+msgstr "Internationalt tastatur"
 
 #: clockmail/clockmail_applet.desktop.in.h:1
 msgid "Clock and Mailcheck"
@@ -4769,25 +4774,25 @@ msgstr "Viser klokkeslettet i binært format"
 
 #: jbc/jbc_applet.desktop.in.h:2
 msgid "JBC Binary Clock"
-msgstr "Binært ur"
+msgstr "JCB Binært ur"
 
 #. help
 #: sound-monitor/pvd/esdpvd.c:459
 #, c-format
 msgid "ESounD Persistent Volume Daemon version %s\n"
-msgstr ""
+msgstr "ESounD Persistent Volumen Dæmon version %s\n"
 
 #: sound-monitor/pvd/esdpvd.c:460
 msgid "options:\n"
-msgstr ""
+msgstr "valgmuligheder:\n"
 
 #: sound-monitor/pvd/esdpvd.c:461
 msgid "  -n, --noX     Allow to run with X server\n"
-msgstr ""
+msgstr "  -n, --noX     Tillad kørsel med X server\n"
 
 #: webcontrol/properties.c:244
 msgid "Configure Browser"
-msgstr ""
+msgstr "Konfigurér nætlæser"
 
 #: webcontrol/properties.c:252
 msgid "Browser Name:"
@@ -4817,7 +4822,7 @@ msgstr "Bredde på url-bjælke:"
 #. create Show Go button property
 #: webcontrol/properties.c:428
 msgid "Display GO Button"
-msgstr ""
+msgstr "Vis KØR-knap"
 
 #. create Launch New Window property
 #: webcontrol/properties.c:442
@@ -4827,24 +4832,24 @@ msgstr "Vis \"Åben nyt vindue\" muligheden"
 #. create show clear button property
 #: webcontrol/properties.c:456
 msgid "Display \"Clear\" button"
-msgstr ""
+msgstr "Vis 'Ryd'-knap"
 
 #. create clear button on top property
 #: webcontrol/properties.c:471
 msgid "\"Clear\" button on top?"
-msgstr ""
+msgstr "'Ryd'-knap ovenpå?"
 
 #: webcontrol/properties.c:496
 msgid " URL Activation "
-msgstr ""
+msgstr " URL-aktivering "
 
 #: webcontrol/properties.c:503
 msgid "Use default MIME handler"
-msgstr ""
+msgstr "Brug standard MIME-behandler"
 
 #: webcontrol/properties.c:511
 msgid "Use custom browser:"
-msgstr ""
+msgstr "Brug egendefineret netlæser:"
 
 #: webcontrol/properties.c:591
 msgid "Remove"
@@ -4853,11 +4858,11 @@ msgstr "Fjern"
 #. URL history frame
 #: webcontrol/properties.c:610
 msgid " URL History "
-msgstr ""
+msgstr " URL-historik "
 
 #: webcontrol/properties.c:619
 msgid "Size of URL history: "
-msgstr ""
+msgstr "Størrelse på URL-historik: "
 
 #: webcontrol/properties.c:645
 msgid "Clear"
@@ -4865,7 +4870,10 @@ msgstr "Ryd"
 
 #: webcontrol/properties.c:655
 msgid "all entries in URL history"
-msgstr ""
+msgstr "Alle indgange i URL-historik"
+
+#~ msgid "Basic"
+#~ msgstr "Basis"
 
 #, fuzzy
 #~ msgid "Loading plugin %s..."
