@@ -18,4 +18,5 @@ server_DATA     = $(server_in_files:.server.in=.server)
 @INTLTOOL_SERVER_RULE@
 
 EXTRA_DIST = AUTHORS README TODO	\
-	$(server_in_files)
+	$(server_in_files) \
+	$(ui_DATA)
