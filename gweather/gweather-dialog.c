@@ -274,7 +274,7 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
   gtk_widget_show (cond_vsep);
   gtk_box_pack_end (GTK_BOX (cond_hbox), cond_vsep, FALSE, FALSE, 0);
 
-  current_note_lbl = gtk_label_new (_("Current conditions"));
+  current_note_lbl = gtk_label_new_with_mnemonic (_("C_urrent conditions"));
   gtk_widget_show (current_note_lbl);
   gtk_notebook_set_tab_label (GTK_NOTEBOOK (weather_notebook), gtk_notebook_get_nth_page (GTK_NOTEBOOK (weather_notebook), 0), current_note_lbl);
 
@@ -297,7 +297,7 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
 
   gtk_container_add (GTK_CONTAINER (weather_notebook), forecast_hbox);
 
-  forecast_note_lbl = gtk_label_new (_("Forecast"));
+  forecast_note_lbl = gtk_label_new_with_mnemonic (_("_Forecast"));
   gtk_widget_show (forecast_note_lbl);
   gtk_notebook_set_tab_label (GTK_NOTEBOOK (weather_notebook), gtk_notebook_get_nth_page (GTK_NOTEBOOK (weather_notebook), 1), forecast_note_lbl);
 
@@ -329,7 +329,7 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
       gtk_widget_show (radar_link_alignment);
       gtk_box_pack_start (GTK_BOX (radar_vbox), radar_link_alignment, FALSE, FALSE, 0);
 
-      radar_link_btn = gtk_button_new_with_label (_("Visit Weather.com"));
+      radar_link_btn = gtk_button_new_with_mnemonic (_("_Visit Weather.com"));
       set_access_namedesc (radar_link_btn, _("URL link Button"),                                                            _("Click to Enter Weather.com"));
       gtk_widget_set_usize(radar_link_btn, 450, -2);
       gtk_widget_show (radar_link_btn);
@@ -338,7 +338,7 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
       gtk_signal_connect (GTK_OBJECT (radar_link_btn), "clicked",
                           GTK_SIGNAL_FUNC (link_cb), NULL);
 
-      radar_note_lbl = gtk_label_new (_("Radar map"));
+      radar_note_lbl = gtk_label_new_with_mnemonic (_("_Radar map"));
       gtk_widget_show (radar_note_lbl);
       gtk_notebook_set_tab_label (GTK_NOTEBOOK (weather_notebook), gtk_notebook_get_nth_page (GTK_NOTEBOOK (weather_notebook), 2), radar_note_lbl);
   }

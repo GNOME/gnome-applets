@@ -704,7 +704,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     GtkWidget *vbox;
     GtkWidget *frame;
     
-    gw_applet->pref = gtk_dialog_new_with_buttons (_("Weather Properties"), NULL,
+    gw_applet->pref = gtk_dialog_new_with_buttons (_("Weather Preferences"), NULL,
 				      		   GTK_DIALOG_DESTROY_WITH_PARENT,
 				      		   GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
 				      		   NULL);
@@ -761,7 +761,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     gtk_container_set_border_width (GTK_CONTAINER (proxy_box), 8);
     gtk_container_add (GTK_CONTAINER (pref_notebook), proxy_box);
     
-    gw_applet->pref_net_proxy_btn = gtk_check_button_new_with_label (_("Use HTTP proxy"));
+    gw_applet->pref_net_proxy_btn = gtk_check_button_new_with_mnemonic (_("_Use HTTP proxy"));
     gtk_widget_show (gw_applet->pref_net_proxy_btn);
     gtk_box_pack_start (GTK_BOX (proxy_box), gw_applet->pref_net_proxy_btn, 
     			FALSE, FALSE, 0);
@@ -772,7 +772,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     gtk_widget_show (hbox);
     gtk_box_pack_start (GTK_BOX (proxy_box), hbox, FALSE, FALSE, 0);
     
-    pref_net_proxy_url_lbl = gtk_label_new (_("Location :"));
+    pref_net_proxy_url_lbl = gtk_label_new_with_mnemonic (_("Locat_ion :"));
     gtk_widget_show (pref_net_proxy_url_lbl);
     gtk_box_pack_start (GTK_BOX (hbox), pref_net_proxy_url_lbl, 
     			FALSE, FALSE, 0);
@@ -788,7 +788,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     gtk_widget_show (hbox);
     gtk_box_pack_start (GTK_BOX (proxy_box), hbox, FALSE, FALSE, 0);
     
-    pref_net_proxy_port_lbl = gtk_label_new (_("Port :"));
+    pref_net_proxy_port_lbl = gtk_label_new_with_mnemonic (_("P_ort :"));
     gtk_widget_show (pref_net_proxy_port_lbl);
     gtk_box_pack_start (GTK_BOX (hbox),  pref_net_proxy_port_lbl, 
     			FALSE, FALSE, 0);
@@ -800,7 +800,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     g_signal_connect (G_OBJECT (gw_applet->pref_net_proxy_port_entry), "focus_out_event",
     		      G_CALLBACK (proxy_port_changed), gw_applet);
     
-    gw_applet->pref_net_proxy_auth_btn = gtk_check_button_new_with_label (_("Proxy requires a uername and password"));
+    gw_applet->pref_net_proxy_auth_btn = gtk_check_button_new_with_mnemonic (_("Pro_xy requires a uername and password"));
     gtk_widget_show (gw_applet->pref_net_proxy_auth_btn);
     gtk_box_pack_start (GTK_BOX (proxy_box), gw_applet->pref_net_proxy_auth_btn, 
     			FALSE, FALSE, 0);
@@ -811,7 +811,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     gtk_widget_show (hbox);
     gtk_box_pack_start (GTK_BOX (proxy_box), hbox, FALSE, FALSE, 0);
     
-    pref_net_proxy_user_lbl = gtk_label_new (_("Username:"));
+    pref_net_proxy_user_lbl = gtk_label_new_with_mnemonic (_("Us_ername:"));
     gtk_widget_show (pref_net_proxy_user_lbl);
     gtk_box_pack_start (GTK_BOX (hbox), pref_net_proxy_user_lbl, 
     			FALSE, FALSE, 0);
@@ -827,7 +827,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     gtk_widget_show (hbox);
     gtk_box_pack_start (GTK_BOX (proxy_box), hbox, FALSE, FALSE, 0);
     
-    pref_net_proxy_passwd_lbl = gtk_label_new (_("Password:"));
+    pref_net_proxy_passwd_lbl = gtk_label_new_with_mnemonic (_("Pass_word:"));
     gtk_widget_show (pref_net_proxy_passwd_lbl);
     gtk_box_pack_start (GTK_BOX (hbox), pref_net_proxy_passwd_lbl, 
     			FALSE, FALSE, 0);
@@ -869,32 +869,32 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     gtk_widget_show (pref_basic_radar_url_entry_alignment);
 #endif /* RADARMAP */
 
-    gw_applet->pref_basic_update_btn = gtk_check_button_new_with_label (_("Automatically update every"));
+    gw_applet->pref_basic_update_btn = gtk_check_button_new_with_mnemonic (_("_Automatically update every"));
     gtk_widget_show (gw_applet->pref_basic_update_btn);
     gtk_container_add (GTK_CONTAINER (pref_basic_update_alignment), gw_applet->pref_basic_update_btn);
     g_signal_connect (G_OBJECT (gw_applet->pref_basic_update_btn), "toggled",
     		      G_CALLBACK (auto_update_toggled), gw_applet);
 
-    gw_applet->pref_basic_metric_btn = gtk_check_button_new_with_label (_("Use metric system units"));
+    gw_applet->pref_basic_metric_btn = gtk_check_button_new_with_mnemonic (_("Use _metric system units"));
     gtk_widget_show (gw_applet->pref_basic_metric_btn);
     gtk_container_add (GTK_CONTAINER (pref_basic_metric_alignment), gw_applet->pref_basic_metric_btn);
     g_signal_connect (G_OBJECT (gw_applet->pref_basic_metric_btn), "toggled",
     		      G_CALLBACK (metric_toggled), gw_applet);
 #if 0   		      
-    gw_applet->pref_basic_detailed_btn = gtk_check_button_new_with_label (_("Enable detailed forecast"));
+    gw_applet->pref_basic_detailed_btn = gtk_check_button_new_with_mnemonic (_("Enable _detailed forecast"));
     gtk_widget_show (gw_applet->pref_basic_detailed_btn);
     gtk_container_add (GTK_CONTAINER (pref_basic_detailed_alignment), gw_applet->pref_basic_detailed_btn);
     g_signal_connect (G_OBJECT (gw_applet->pref_basic_detailed_btn), "toggled",
     		      G_CALLBACK (detailed_toggled), gw_applet);
 #endif
 #ifdef RADARMAP
-    gw_applet->pref_basic_radar_btn = gtk_check_button_new_with_label (_("Enable radar map"));
+    gw_applet->pref_basic_radar_btn = gtk_check_button_new_with_mnemonic (_("Enable _radar map"));
     gtk_widget_show (gw_applet->pref_basic_radar_btn);
     gtk_container_add (GTK_CONTAINER (pref_basic_radar_alignment), gw_applet->pref_basic_radar_btn);
     g_signal_connect (G_OBJECT (gw_applet->pref_basic_radar_btn), "toggled",
     		      G_CALLBACK (radar_toggled), gw_applet);
     		      
-    gw_applet->pref_basic_radar_url_btn = gtk_check_button_new_with_label (_("Use custom address for radar map"));
+    gw_applet->pref_basic_radar_url_btn = gtk_check_button_new_with_mnemonic (_("Use cus_tom address for radar map"));
     gtk_widget_show (gw_applet->pref_basic_radar_url_btn);
     gtk_container_add (GTK_CONTAINER (pref_basic_radar_url_alignment), 
     		       gw_applet->pref_basic_radar_url_btn);
@@ -905,7 +905,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     gtk_widget_show (gw_applet->pref_basic_radar_url_hbox);
     gtk_container_add (GTK_CONTAINER (pref_basic_radar_url_entry_alignment), 
     		       gw_applet->pref_basic_radar_url_hbox);
-    label = gtk_label_new (_("Address :"));
+    label = gtk_label_new_with_mnemonic (_("A_ddress :"));
     gtk_widget_show (label);
     gtk_box_pack_start (GTK_BOX (gw_applet->pref_basic_radar_url_hbox),
     			label, FALSE, FALSE, 0); 
@@ -923,7 +923,7 @@ static void gweather_pref_create (GWeatherApplet *gw_applet)
     pref_basic_update_hbox = gtk_hbox_new (FALSE, GNOME_PAD_SMALL);
     gtk_container_border_width (GTK_CONTAINER (pref_basic_update_hbox), GNOME_PAD_SMALL);
 
-    pref_basic_update_lbl = gtk_label_new (_("Automatically update every "));
+    pref_basic_update_lbl = gtk_label_new_with_mnemonic (_("_Automatically update every "));
     gtk_widget_show (pref_basic_update_lbl);
     
 
