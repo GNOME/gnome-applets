@@ -555,7 +555,7 @@ pixmap_timeout( gpointer data )
     if(pix_type_new == 0 && batt_life <= battery->red_val && battery->lowbattnotification) {
       snprintf(new_label, sizeof(new_label),(_("Battery low (%d%%) and AC is %s")),
 	       batt_life, pix_type_new?(_("online")):(_("offline")));
-      gnome_error_dialog(new_label);
+      gnome_warning_dialog(new_label);
 
       if(battery->beep)
 	gdk_beep();
@@ -601,7 +601,7 @@ pixmap_timeout( gpointer data )
       gdk_beep();
     gnome_triggers_do ("", "battstat_applet", "BatteryFull", NULL);
 
-    gnome_error_dialog("Battery is now fully re-charged!");
+    gnome_ok_dialog("Battery is now fully re-charged!");
     lastacstatus=ac_status;
   }
 
