@@ -294,31 +294,12 @@ void acpi_linux_cleanup(struct acpi_info * acpiinfo)
 /* Given a string event from the ACPI system, returns the type
  * of event if we're interested in it.  str is updated to point
  * to the next event. */
-static int parse_acpi_event(char * event, char ** str)
+static int parse_acpi_event(GString *buffer)
 {
-  char * end;
-  char * tok[4];
-  int i;
-
-  end = strchr(event, '\n');
-  if (!end)
-    return ACPI_EVENT_DONE;
-
-  *end = '\0';
-  *str = end + 1;
-
-  tok[0] = event;
-  for (i=0; i < 3; i++) {
-    tok[i+1] = strchr(tok[i], ' ');
-    if (!tok[i+1])
-      return ACPI_EVENT_IGNORE;
-    *(tok[i+1]) = '\0';
-    tok[i+1]++;
-  }
   
-  if (!strcmp(tok[0], "ac_adapter"))
+  if (strstr(buffer->str, "ac_adapter"))
     return ACPI_EVENT_AC;
-  if (!strcmp(tok[0], "battery") && atoi(tok[2]) == 81)
+  if (strstr(buffer->str, "battery") )
     return ACPI_EVENT_BATTERY_INFO;
 
   return ACPI_EVENT_IGNORE;
@@ -330,16 +311,18 @@ static int parse_acpi_event(char * event, char ** str)
  * by select(). */
 gboolean acpi_process_event(struct acpi_info * acpiinfo)
 {
-    int i;
+    gsize i;
     int evt;
     char * s;
-    char str[256];
+    /*    char str[1024];*/
     gboolean result = FALSE;
+    GString *buffer;
+    GError *gerror=NULL;
+    buffer=g_string_new(NULL);
+    g_io_channel_read_line_string   ( acpiinfo->channel,buffer,&i,&gerror);
 
-    i = read(acpiinfo->event_fd, str, sizeof(str)-1);
-    str[i] = '\0';
-    s = str;
-    while ((evt = parse_acpi_event(s, &s)) != ACPI_EVENT_DONE) {
+    
+    evt = parse_acpi_event(buffer);
       switch (evt) {
         case ACPI_EVENT_AC:
           update_ac_info(acpiinfo);
@@ -350,7 +333,7 @@ gboolean acpi_process_event(struct acpi_info * acpiinfo)
           result = TRUE;
           break;
       }
-    }
+    
 
     return result;
 }
