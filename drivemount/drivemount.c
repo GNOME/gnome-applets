@@ -512,7 +512,7 @@ int main (int argc, char *argv[])
 
 	goad_id = (char *)goad_server_activation_id();
 
-	if(goad_id && strcmp(goad_id, "drivemount_applet")) {
+	if(goad_id && !strcmp(goad_id, "drivemount_applet")) {
 		applet = applet_widget_new("drivemount_applet");
 		if (!applet)
 			g_error("Can't create applet!\n");
