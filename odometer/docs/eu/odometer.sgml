@@ -1,0 +1,293 @@
+
+
+<sect1 id="odometer"> 
+
+<title>Odometroaren applet-a</title>  
+
+   <para> 
+      GNOMEren paneleko <application>Odometroa</application>ren applet-ak,
+      (<xref      linkend="odometer-applet-fig">), saguaren erakusleak
+      mahaigainean zehar egindako mugimenduak kontrolatu eta neurtzen ditu.
+      Gnome-applets paketeko osagaia da. Applet hau <interface>Panel</interface>
+      bati gehitzeko, egin klik eskuineko botoiaz
+      <interface>Panel</interface>ean eta aukeratu
+ <menuchoice>  
+<guimenu>Panela</guimenu>  
+<guisubmenu>Gehitu panelari</guisubmenu>  
+<guisubmenu>Applet-a</guisubmenu>  
+<guisubmenu>Denbora-pasa</guisubmenu>  
+<guimenuitem>Odometroa</guimenuitem>
+ </menuchoice>. 
+   </para> 
+  <figure id="odometer-applet-fig"> 
+
+<title>Odometroaren applet-a</title> 
+<screenshot> 
+     <screeninfo>Odometroaren applet-a</screeninfo> <graphic format="png"
+      fileref="figures/odometer_applet" 
+      	srccredit="acscherp"></graphic></screenshot></figure>
+
+<!-- ============= Usage  ================================ --> 
+<sect2 id="odometer-usage"> 
+
+<title>Erabilera</title> 
+
+   <para> 
+      Behin hor ageri denean, ez daukazu ezer egin beharrik odometroaren
+      applet-ari. Besterik gabe panelean agertuko da eta saguaren mugimenduak
+      neurtuko ditu. Gainera, saguaren erakuslea odometroaren gainera eramaten
+      baduzu, <guilabel>argibidea</guilabel> bistaratuko du eta distantzia
+      unitate metrikoetan (zentimetro, metro, kilometro) edo oinetan (hazbete,
+      oin, milia) dagoen adieraziko dizu. Goiko balioak guztira egindako
+      distantzia adierazten du eta behekoak distantzia partziala. Beheko balioa
+      nahi duzunean berrezar dezakezu. 
+   </para> 
+  
+
+   <para> 
+      Applet-ean eskuineko botoiaz klik eginez gero, elementu hauek dituen menua
+      agertuko zaizu: 
+
+<itemizedlist>   
+
+<listitem>  
+
+   <para> 
+  
+     <guimenuitem>Berrezarri</guimenuitem> &mdash; Odometroaren applet-a zeroan
+      jartzen du berriro.  
+   </para> 
+  </listitem>   
+
+<listitem>  
+
+   <para> 
+  
+     <guimenuitem>Propietateak&hellip;</guimenuitem> &mdash;  <link
+      linkend="odometer-prefs">  <guilabel>Propietateak</guilabel></link> elkarrizketa-koadroa irekitzen du. 
+      
+   </para> 
+  </listitem>   
+
+<listitem>  
+
+   <para> 
+  
+     <guimenuitem>Laguntza</guimenuitem> &mdash; dokumentu hau bistaratzen du. 
+      
+   </para> 
+  </listitem>   
+
+<listitem>  
+
+   <para> 
+  
+     <guimenuitem>Honi buruz&hellip;</guimenuitem> &mdash;
+      <application>odometroaren applet</application>-ari buruzko oinarrizko
+      informazioa erakusten du, esaterako, applet-aren bertsioa eta egilearen
+      izena.  
+   </para> 
+  </listitem>  </itemizedlist> 
+   </para> 
+ </sect2>   
+
+<!-- ============= Customization ============================= --> 
+<sect2 id="odometer-prefs"> 
+
+<title>Pertsonalizazioa</title> 
+
+   <para> 
+      <application>Odometroa</application>ren applet-a pertsonaliza dezakezu
+      bertan eskuineko botoiaz klik eginez eta 
+     <guimenuitem>Propietateak&hellip;</guimenuitem> aukeratuz.
+      <interface>Propietateen</interface> elkarrizketa-koadroa
+      (<xref	linkend="odometer-settings-fig">) irekiko da, eta hainbat ezarpen
+      aldatu ahal izango duzu. 
+   </para> 
+  
+
+   <para> 
+      <interface>Propietateen elkarrizketa-koadroa</interface> (odometroak berak
+      &quot;Odometroaren ezarpenak&quot; deitzen dio eta ez propietateak) bi
+      sailetan banatzen da, bata aukera orokorrena eta bestea gaiena. 
+      <variablelist>  <varlistentry>  <term>Orokorra</term>  
+
+<listitem>   <figure id="odometer-settings-fig">  
+
+     <title>Propietateen elkarrizketa-koadroa (ezarpen orokorren fitxa)</title> 
+      
+<screenshot>   
+     <screeninfo>Ezarpen orokorren fitxa</screeninfo>   <graphic format="png"
+      fileref="figures/odometer_settings"		  srccredit="accscherp">   </graphic>
+       </screenshot>  </figure>   
+
+   <para> 
+       <guilabel>Ezarpen orokorren fitxan</guilabel>
+      (<xref		linkend="odometer-settings-fig">), lau aukera dituzu:  
+   </para> 
+       <variablelist>  <varlistentry>   <term>Erabili sistema metrikoa</term>  
+      
+
+<listitem>   
+
+   <para> 
+      <guibutton>Erabili sistema metrikoa kontrol-laukia</guibutton> hautatuz
+      gero, saguaren erakusleak egindako distantzia metrotan azalduko da
+      (zentimetro, metro eta kilometrotan). Ez bada hautatzen, egindako
+      distantzia oinetan erakutsiko da (hazbete, oin eta miliatan). Erakuslea
+      odometroaren gainera eramaten baduzu, <guilabel>argibidea</guilabel>
+      agertuko zaizu eta une horretan metroak edo oinak bistaratzen ari den
+      adieraziko dizu. 
+   </para> 
+        </listitem>  </varlistentry>  <varlistentry>   <term>Zeroan jarri
+      automatikoki</term>   
+
+<listitem>   
+
+   <para> 
+        <guibutton>Zeroan jarri automatikoki kontrol-laukia</guibutton>
+      hautatuta badago, odometroa zeroan jarriko da abiarazten den bakoitzean
+      edo saioa hasten den bakoitzean. Horrela saguak egunero egindako
+      distantzia ikus dezakezu, goizero gnome saioa hasten baduzu. 
+   </para> 
+   </listitem>  </varlistentry>  <varlistentry>   <term>gaituta</term>   
+
+<listitem>   
+
+   <para> 
+        <guibutton>gaituta kontrol-laukia</guibutton> hautatuta badago,
+      erakusleak egindako distantzia neurtzen jarraituko du odometroak. Gaituta
+      ez badago, berriz gaitzen duzun arte zenbakiak zeroan jarriko ditu.   
+   </para> 
+        </listitem>  </varlistentry>  <varlistentry>  
+      <term>Digitu-kopurua</term>   
+
+<listitem>   
+
+   <para> 
+        <guibutton>Digitu-kopuruaren eremuak</guibutton> zehazten du zenbat
+      digitu bistaratuko dituen odometroak. Balio lehenetsia lau da, eta 1 eta
+      10 artean aukera daiteke.   
+   </para> 
+        </listitem>  </varlistentry>  </variablelist>  </listitem> 
+      </varlistentry>   <varlistentry>  <term>Gaia</term>  
+
+<listitem>   <figure id="odometer-themes-fig">  
+
+     <title>Propietateen elkarrizketa-koadroa (gaiaren ezarpenen fitxa)</title> 
+      
+<screenshot>   
+     <screeninfo>Gaiaren ezarpenen fitxa</screeninfo>   <graphic format="png"
+      fileref="figures/odometer_themes"		  srccredit="accscherp">   </graphic> 
+      </screenshot>  </figure>   
+
+   <para> 
+       <guilabel>Gaiaren ezarpenen fitxa</guilabel>n,
+      (<xref		linkend="odometer-themes-fig">), hainbat gai dituzu aukeran.
+      Lehenespenez <filename>$PREFIX/odometer/</filename> fitxategian egoten
+      dira.  
+   </para> 
+  </listitem>  </varlistentry> </variablelist> 
+   </para> 
+  
+
+   <para> 
+       Nahi dituzun aldaketa guztiak egin ondoren, egin klik
+      <guibutton>Ados</guibutton> botoian aldaketak aplikatu eta
+      <interface>Propietateen</interface> elkarrizketa-koadroa ixteko. Aldaketak
+      bertan behera utzi eta aurreko balioetara itzultzeko, egin klik
+      <guibutton>Utzi</guibutton> botoian. 
+   </para> 
+ </sect2>   
+
+<!-- ============= Bugs ================================== --> 
+
+     <!-- This section should describe known bugs and limitations of  the
+      program if there are any - please be frank and list all  problems you know
+      of --> 
+<sect2 id="bugs"> 
+
+<title>Ezagutzen diren akatsak eta mugak</title> 
+
+   <para> 
+Ez da ezagutzen applet honen akatsik. 
+   </para> 
+ </sect2>   
+
+<!-- ============= Authors ================================ -->  
+<sect2 id="authors"> 
+
+<title>Egileak</title> 
+
+   <para> 
+     <application>Odometroaren applet</application>-a Fabrice Bellet-ek idatzi
+      du (<email>Fabrice.Bellet@creatis.insa-lyon.fr</email>), Armen
+      Nakashian-ek idatzitako KDEren <application>Mouspedometa</application>n
+      oinarrituta dago eta hura, aldiz, Mark H. Granoff-ek idatzitako Motif-en
+      oinarritutako <application>Xodometer</application>-en. Bidali zure
+      iruzkin, iradokizun eta akatsen berri-emateak <ulink
+      url="http://bugs.gnome.org" type="http">GNOMEren akatsen segimendurako
+      datu-basera</ulink>. (Akatsei buruzko berriak bidaltzeko argibideak <ulink
+            url="http://bugs.gnome.org/Reporting.html"
+      type="http">linean</ulink> aurkituko dituzu.) GNOMEren 1.1 bertsioa edo
+      berriagoa baduzu, <application>Akatsen berri emateko
+      tresna</application> (<command>bug-buddy</command>) ere erabil dezakezu
+      akatsen berri emateko. Tresna hori 
+<guimenu>Menu nagusi</guimenu>ko 
+<guisubmenu>Utilitateak</guisubmenu> azpimenuan duzu eskuragarri. 
+   </para> 
+  
+
+   <para> 
+      Eskuliburu hau Arjan Scherpenisse-ek idatzi du
+      (<email>acscherp@wins.uva.nl</email>). Eskuliburuari dagozkion iruzkinak
+      eta iradokizunak <ulink
+      type="http"	url="http://www.gnome.org/gdp">GNOMEren
+      dokumentazio-proiektura</ulink> bidal ditzakezu:
+      <email>docs@gnome.org</email>. Iruzkinak linean ere egin ditzakezu <ulink
+      type="http"	url="http://www.gnome.org/gdp/doctable/">GNOMEren
+      dokumentazio-egoeraren taula</ulink> erabiliz. 
+   </para> 
+  
+
+   <para> 
+      Euskarazko itzulpena Hizkuntza Politikarako Sailburuordetzak egin du
+      (<email>hizkpol@ej-gv.es</email>). Itzulpenari buruzko oharrak eta
+      iradokizunak helbide honetara bidal ditzakezu:
+      <email>hizkpol@ej-gv.es</email> 
+   </para> 
+   </sect2>   
+
+<!-- ============= Application License ============================= -->  
+<sect2 id="license"> 
+
+<title>Lizentzia</title> 
+
+   <para> 
+      Programa hau software librea da; birbana eta/edo alda dezakezu, 
+      Free Software Foundation-ek argitaratutako <ulink
+      type="help"    url="gnome-help:gpl"><citetitle>GNU Lizentzia Publiko
+      Orokorra</citetitle></ulink>ren 2. bertsioan, edo (nahiago baduzu) bertsio
+      berriago batean, jasotako baldintzak betez gero. 
+   </para> 
+   <para>
+      Programa hau erabilgarria izango delakoan banatzen da, baina INOLAKO 
+      BERMERIK GABE; era berean, ez da bermatzen beraren EGOKITASUNA 
+      MERKATURATZEKO edo HELBURU PARTIKULARRETARAKO ERABILTZEKO. 
+      Argibide gehiago nahi izanez gero, ikus <ulink
+      type="help" url="gnome-help:gpl"><citetitle>GNU Lizentzia Publiko
+      Orokorra</citetitle></ulink>. 
+   </para> 
+<para>
+      <ulink type="help"    url="gnome-help:gpl"><citetitle>GNU Lizentzia
+      Publiko Orokorra</citetitle></ulink>ren kopia bat <citetitle>GNOME 
+      erabiltzailearen gida</citetitle>ren eranskinean daukazu. <ulink 
+      type="help" url="gnome-help:gpl"><citetitle>GNU Lizentzia Publiko 
+      Orokorra</citetitle></ulink>ren kopia Free Software Foundation-en 
+      bidez ere lor dezakezu <ulink type="http" url="http://www.fsf.org"> 
+      haren web gunea</ulink> bisitatuz edo hona idatziz: 
+     <address> Free Software Foundation, Inc. <street>59 Temple Place</street> -
+      Suite 330 <city>Boston</city>, <state>MA</state>
+      <postcode>02111-1307</postcode> <country>USA</country> </address> 
+</para>
+ </sect2>  </sect1>

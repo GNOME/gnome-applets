@@ -1,0 +1,517 @@
+ 
+
+<sect1 id="tickastat"> 
+
+<title>Tick-a-Stat applet-a</title>  
+
+   <para> 
+      <application>Tick-a-Stat</application> applet-ak, <xref   
+      linkend="tickastat-applet-fig">n ikusten denak, sistemaren zenbait alderdi
+      zaintzen ditu eta hainbat gertaeraren berri ematen du. Adibidez, PUZaren
+      karga zain dezake, eta aldi bereko prozesuekin PUZa gainkartzen ari bada,
+      abisatu egingo dizu. 
+   <para> 
+     Applet hau <interface>Panel</interface> bati gehitzeko, egin klik eskuineko
+      botoiaz <interface>Panel</interface>ean eta aukeratu <menuchoice>
+<guimenu>Panela</guimenu> 
+<guisubmenu>Gehitu panelari</guisubmenu> 
+<guisubmenu>Applet-a</guisubmenu> 
+<guisubmenu>Utilitatea</guisubmenu> 
+<guimenuitem>Tick-a-Stat</guimenuitem></menuchoice>. 
+   </para> 
+  <figure id="tickastat-applet-fig"> 
+
+<title>Tick-a-Stat applet-a</title> 
+<screenshot> 
+     <screeninfo>Tick-a-Stat applet-a</screeninfo> <graphic format="png"
+      fileref="figures/tickastat_applet"     srccredit="muet"> </graphic>
+      </screenshot> </figure>  
+
+<!-- ============= Usage  ================================ --> 
+<sect2 id="tickastat-usage"> 
+
+<title>Erabilera</title> 
+
+   <para> 
+      <application>Tick-a-Stat</application> konfiguratu ondoren, etengabe
+      exekutatuko da eta ez du behar sarrerako daturik.
+      <application>Tick-a-Stat</application>en konfigurazio orokorra <xref
+      linkend="tickastat-prefs"> puntuan azaltzen da. Modulu desberdinak erabil
+      daitezke. Modulu horien funtzioak eta konfigurazioak <xref
+      linkend="tickastat-modules"> puntuan deskribatzen dira. 
+   </para> 
+  
+
+   <para> 
+      Applet-ean eskuineko botoiaz klik eginez gero, elementu hauek dituen menua
+      agertuko zaizu: 
+
+<itemizedlist>  
+
+<listitem> 
+
+   <para> 
+ 
+     <guimenuitem>Propietateak&hellip;</guimenuitem> &mdash; <link
+      linkend="tickastat-prefs"> <guilabel>Propietateak</guilabel></link>
+      elkarrizketa-koadroa irekitzen du. 
+   </para> 
+ </listitem>  
+
+<listitem> 
+
+   <para> 
+ 
+     <guimenuitem>Gertaeren egunkaria&hellip;</guimenuitem> &mdash; <link
+      linkend="tickastat-eventlog">
+      <guilabel>Gertaeren egunkaria</guilabel></link>ren elkarrizketa-koadroa
+      irekitzen du. 
+   </para> 
+ </listitem>  
+
+<listitem> 
+
+   <para> 
+ 
+<guimenuitem>Laguntza</guimenuitem> &mdash; dokumentu hau bistaratzen du. 
+   </para> 
+ </listitem>  
+
+<listitem> 
+
+   <para> 
+ 
+     <guimenuitem>Honi buruz&hellip;</guimenuitem> &mdash; <application>
+      Tick-a-Stat applet</application>-ari buruzko oinarrizko informazioa
+      erakusten du, esaterako, applet-aren bertsioa eta egilearen izena. 
+   </para> 
+ </listitem>  </itemizedlist> 
+   </para> 
+ </sect2>   
+
+<!-- ============= Customization ============================= --> 
+<sect2 id="tickastat-prefs"> 
+
+<title>Pertsonalizazioa</title> 
+
+   <para> 
+      <application>Tick-a-Stat</application> applet-a pertsonaliza dezakezu
+      bertan eskuineko botoiaz klik eginez eta 
+     <guimenuitem>Propietateak&hellip; aukeratuz</guimenuitem>.
+      <interface>Propietateen</interface> elkarrizketa-koadroa (<xref     
+      linkend="tickastat-settings-fig">) irekiko da, eta hainbat ezarpen aldatu
+      ahal izango duzu. 
+   </para> 
+  <figure id="tickastat-settings-fig"> 
+
+<title>Propietateen elkarrizketa-koadroa</title> 
+<screenshot> 
+     <screeninfo>Propietateen elkarrizketa-koadroa</screeninfo> <graphic
+      format="png" fileref="figures/tickastat_settings"      srccredit="muet">
+      </graphic> </screenshot> </figure>  
+
+   <para> 
+      <guilabel>Moduluak</guilabel> fitxak gaitu ditzakezun hainbat moduluren
+      zerrenda ematen du. Hautatu modulu bat ezkerraldeko
+      <guilabel>Modulu</guilabel>en zerrendan, eskuinaldeko panelean
+      konfiguratzeko. Modulu bakoitzaren propietate konfiguragarriak <xref     
+      linkend="tickastat-modules"> puntuan deskribatzen dira.  
+   </para> 
+  
+
+   <para> 
+ <guilabel>Orokorra</guilabel> fitxako propietateak hauek dira: 
+
+<itemizedlist> 
+
+<listitem> 
+
+   <para> 
+      Gaitu gertaeren egunkaria &mdash; Botoi hau hautatzen baduzu, gaitutako
+      modulu batek detektatutako gertaera bakoitzaren berriematea idatziko da
+      <guilabel>Egunkari-fitxategi</guilabel>ko sarreran. 
+   </para> 
+ </listitem>  
+
+<listitem> 
+
+   <para> 
+      Egunkari-fitxategiaren bide-izena &mdash; Gertaeren informazioa
+      biltegiratzeko erabiliko den fitxategiaren izena da. 
+   </para> 
+ </listitem> </itemizedlist> 
+   </para> 
+  
+
+   <para> 
+ <guilabel>Bistaratzea</guilabel> fitxako propietateak hauek dira: 
+
+<itemizedlist>  
+
+<listitem> 
+
+   <para> 
+      Emeki korritu &mdash; Botoi hau hautatzen baduzu, gertaera zaharrak astiro
+      igoko dira gorantz gertaera berriak daudenean, lekua egiteko azkar igo
+      beharrean. 
+   </para> 
+ </listitem>  
+
+<listitem> 
+
+   <para> 
+      Emeki idatzi &mdash; Botoi hau hautatzen baduzu, testua poliki-poliki
+      idatziko da applet-ean, norbait idazten ariko balitz bezala, bat-batean
+      agertu beharrean. 
+   </para> 
+ </listitem>  
+
+<listitem> 
+
+   <para> 
+      Atzerapena testua itzulbiratzean &mdash; Applet-aren eskuineko ertzera heltzean
+      zenbat denborako geldialdia egin behar duen (segundo-hamarrenetan) mezua
+      itzulbiratu aurretik (orga-itzulera balitz bezala). 
+   </para> 
+ </listitem>  
+
+<listitem> 
+
+   <para> 
+      Lerro arteko korritze-abiadura (emeki korritzean) &mdash; Lerroak gorantz
+      zein abiaduratan korritzen diren adierazten du. 
+   </para> 
+ </listitem>  
+
+<listitem> 
+
+   <para> 
+ Zabalera &mdash; Applet-aren zabalera adierazten du (pixeletan). 
+   </para> 
+ </listitem>  
+
+<listitem> 
+
+   <para> 
+      Erabili paneleko leku guztia &mdash; Hau hautatzen baduzu, applet-a
+      <interface>Panel</interface>ean zehar zabalduko da, dagoen leku guztia
+      hartuz (ondoan beste panel-objekturik badago, horraino zabalduko da) 
+   </para> 
+ </listitem>  
+
+<listitem> 
+
+   <para> 
+ Altuera &mdash; Applet-aren altuera adierazten du (pixeletan). 
+   </para> 
+ </listitem>  
+
+<listitem> 
+
+   <para> 
+      Erabili panel-tamainaren aholkua &mdash; Botoi hau hautatzen baduzu,
+      <interface>Panela</interface>ren altueraren arabera egokituko du applet-ak
+      bere tamaina. 
+   </para> 
+ </listitem>  </itemizedlist> 
+   </para> 
+   
+
+   <para> 
+       Nahi dituzun aldaketa guztiak egin ondoren, egin klik
+      <guibutton>Ados</guibutton> botoian aldaketak aplikatu eta
+      <interface>Propietateen</interface> elkarrizketa-koadroa ixteko. Aldaketak
+      bertan behera uzteko eta aurreko balioetara itzultzeko, egin klik
+      <guibutton>Utzi</guibutton> botoian. 
+   </para> 
+ </sect2>  
+
+<!-- ============= Modules ============================= --> 
+<sect2 id="tickastat-modules"> 
+
+<title>Moduluak</title> 
+
+   <para> 
+      <application>Tick-a-Stat</application>-ek modulu desberdinak ditu. Modulu
+      bakoitzak sistemaren zati bat zaintzen du eta gertaera desberdinei
+      erantzuten die. Hainbat modulu exekuta daitezke berehala gaituta.
+      <application>Tick-a-Stat</application> modulu estandarrak behean
+      deskribatzen dira. 
+   </para> 
+  
+<sect3 id="tickastat-testmodule"> 
+
+<title>Probako modulua</title> 
+
+   <para> 
+      Probako modulua oso sinplea da eta <quote>Probako moduluaren probako
+      lerroa :)</quote> inprimatzen du  applet-ean, hainbat segundoz behin. 
+   </para> 
+ </sect3>   
+<sect3 id="tickastat-coredumpmodule"> 
+
+<title>Core dump harrapatzailearen modulua</title> 
+
+   <para> 
+      Dump moduluak direktorio jakin bateko core dump-ak kontrolatzen ditu.
+      Baten bat aurkitzen badu, data ezarri eta aztarna erregistratzen du. Core
+      dump logo bat eta mezu bat ere erakusten ditu applet nagusian (<xref
+      linkend="tickastat-coredump-fig">n ikusten den bezala), eta hala nahi
+      izanez gero, aztarnaren elkarrizketa irekiko du. 
+   </para> 
+ <figure id="tickastat-coredump-fig"> 
+
+<title>Tick-a-Stat core dump bat erakusten</title> 
+<screenshot> 
+     <screeninfo>Tick-a-Stat core dump bat erakusten</screeninfo> <graphic
+      format="png" fileref="figures/tickastat_coredump"       srccredit="muet">
+      </graphic> </screenshot> </figure>   
+
+   <para> 
+ Core Dump moduluaren ezarpenak hauek dira: 
+
+<itemizedlist>  
+
+<listitem> 
+
+   <para> 
+ Gaitu modulu hau &mdash; Botoi hau hautatzean modulua aktibatzen da. 
+   </para> 
+ </listitem>  
+
+<listitem> 
+
+   <para> 
+      Erakutsi aztarnaren elkarrizketa core fitxategi berrietan &mdash; Botoi
+      hau hautatzen baduzu Tick-a-Stat-ek aztarna-elkarrizketa bat irekiko du
+      core dump berri bat aurkitzen den bakoitzean. 
+   </para> 
+ </listitem>  
+
+<listitem> 
+
+   <para> 
+      Monitorizatzeko direktorioa &mdash; Idatzi Core dump moduluak kontrolatu
+      behar duen direktorioaren bide-izena.  
+   </para> 
+ </listitem> </itemizedlist> 
+   </para> 
+ </sect3>  
+<sect3 id="tickastat-loadmonitormodule"> 
+
+<title>Batez besteko kargaren monitorearen modulua</title> 
+
+   <para> 
+      Batez besteko kargaren monitorearen moduluak kontrolatzen du sistemaren
+      PUZ erabilera, eta abisatu egiten dizu PUZa konpartitzen duten prozesuen
+      (programen) kopurua gehiegizkoa denean. (Horren ondorioz prozesu
+      bakoitzaren errendimendua oso baxua izango da eta gaizki dabilen programa
+      edo daemon baten adierazle izan daiteke.)  PUZaren karga handia denean
+      abisua emango du <xref linkend="tickastat-loadmonitor-fig">n ikusten den
+      bezala. Karga oraindik ere handiagoa denean, alerta erakutsiko dizu. 
+   </para> 
+ <figure id="tickastat-loadmonitor-fig"> 
+
+<title>Tick-a-Stat karga-abisua erakusten</title> 
+<screenshot> 
+     <screeninfo>Tick-a-Stat karga-abisua erakusten</screeninfo> <graphic
+      format="png" fileref="figures/tickastat_loadaverage"      
+      srccredit="muet"> </graphic> </screenshot> </figure>   
+
+   <para> 
+ Batez besteko kargaren monitorearen ezarpenak hauek dira: 
+
+<itemizedlist>  
+
+<listitem> 
+
+   <para> 
+ Gaitu modulu hau &mdash; Botoi hau hautatzean modulua aktibatzen da. 
+   </para> 
+ </listitem>  
+
+<listitem> 
+
+   <para> 
+      Begiratu ... segundoz behin &mdash; Ezarri hemen karga zenbatean behin
+      kontrolatu behar den (segundotan). 
+   </para> 
+ </listitem>  
+
+<listitem> 
+
+   <para> 
+      Erakutsi pop-up elkarrizketa gertaera honentzat &mdash; Hautatu botoi hau
+      abisu edo alerta bidaltzen duen bakoitzean pop-up elkarrizketa-koadroa
+      ikusi nahi baduzu. (Aukera hau abisuentzat eta alertentzat erabiltzen da.)
+       
+   </para> 
+ </listitem>  
+
+<listitem> 
+
+   <para> 
+      Batez besteko kargaren muga &mdash; Ezarri hemen abisua emateko muga
+      (edozein unetan PUZa erabiltzea eskatzen duten programen batez besteko
+      kopurua). (Aukera hau abisuentzat eta alertentzat erabiltzen da.)  
+   </para> 
+ </listitem>  
+
+<listitem> 
+
+   <para> 
+      Bistaratzeko testua &mdash; Karga mugara iristen denean erakustea nahi
+      duzun mezua idatzi behar duzu hemen. 
+   </para> 
+ </listitem>  </itemizedlist> 
+   </para> 
+ </sect3>  
+<sect3 id="tickastat-filetailermodule"> 
+
+<title>Fitxategi-isatsaren modulua</title> 
+
+   <para> 
+      Fitxategi baten bukaeran gehitzen diren lerroak erakusten dira fitxategi
+      isatsean. Programa askok sortzen dituzten irteerako egunkari-fitxategiak
+      kontrolatzeko erabiltzen da hau normalean. 
+   </para> 
+   
+
+   <para> 
+ Fitxategi-isatsaren moduluaren ezarpenak hauek dira: 
+
+<itemizedlist>  
+
+<listitem> 
+
+   <para> 
+ Gaitu modulu hau &mdash; Botoi hau hautatzean modulua aktibatzen da. 
+   </para> 
+ </listitem>  
+
+<listitem> 
+
+   <para> 
+      Isatsaren bide-izena &mdash; Idatzi ikusi nahi duzun fitxategi-isatsaren
+      izena. ("Isats" terminoarekin fitxategiaren bukaera edo azken zatia
+      adierazi nahi da) Shell batean hori egiteko, <command>tail</command>
+      komandoa erabil daiteke, normalean "-f" banderarekin.)  
+   </para> 
+ </listitem>  
+
+<listitem> 
+
+   <para> 
+      Erakutsi pop-up elkarrizketa lerro berrientzat &mdash; Fitxategiari lerro
+      berri bat eransten zaion bakoitzean lerro berri hori erakusten duen pop-up
+      elkarrizketa irekitzea nahi baduzu, hautatu elementu hau. 
+   </para> 
+ </listitem>  </itemizedlist> 
+   </para> 
+ </sect3>  </sect2>   
+
+<!-- ============= Event Log ============================== --> 
+<sect2 id="tickastat-eventlog"> 
+
+<title>Gertaeren egunkaria</title> 
+
+   <para> 
+      <application>Tick-a-Stat</application>-en erregistratzen diren gertaeren
+      segimendua egiteko erabiltzen da gertaeren egunkaria. Gertaeren egunkari
+      gisa zein fitxategi erabili behar den eta gertaerak egunkarian
+      erregistratzea gaituta dagoen ala ez <link    linkend="tickastat-prefs">
+      <guilabel>Propietateen</guilabel></link> elkarrizketa-koadroko
+      <guilabel>Orokorra</guilabel> fitxan zehazten da. Gertaeren egunkaria
+      ikusteko, egin klik applet-ean eskuineko botoiaz eta hautatu 
+<guimenuitem>Gertaeren egunkaria</guimenuitem>. 
+   </para> 
+  </sect2>   
+
+<!-- ============= Bugs ================================== --> 
+
+     <!-- This section should describe known bugs and limitations of       the
+      program if there are any - please be frank and list all       problems you
+      know of --> 
+<sect2 id="tickastatapplet-bugs"> 
+
+<title>Ezagutzen diren akatsak eta mugak</title> 
+
+   <para> 
+ Ez da ezagutzen applet honen akatsik. 
+   </para> 
+ </sect2>   
+
+<!-- ============= Authors ================================ -->  
+<sect2 id="tickastat-authors"> 
+
+<title>Egileak</title> 
+
+   <para> 
+      <application>Tick-a-Stat applet-a</application> John Ellis-ek idatzi du
+      (<email>johne@bellatlantic.net</email>). Bidali zure iruzkin, iradokizun
+      eta akatsen berri-emateak <ulink url="http://bugs.gnome.org"
+      type="http">GNOMEren akatsen segimendurako datu-basera</ulink>. (Akatsei
+      buruzko berriak bidaltzeko argibideak <ulink    
+      url="http://bugs.gnome.org/Reporting.html" type="http">linean</ulink>
+      aurkituko dituzu.) GNOMEren 1.1 bertsioa edo berriagoa 
+      baduzu, <application>Akatsen berri emateko tresna</application>
+      (<command>bug-buddy</command>) ere erabil dezakezu akatsen berri emateko.
+      Tresna hori 
+<guimenu>Menu nagusi</guimenu>ko 
+<guisubmenu>Utilitateak</guisubmenu> azpimenuan duzu eskuragarri. 
+   </para> 
+  
+
+   <para> 
+      Eskuliburu hau Dan Mueth-ek idatzi du
+      (<email>d-mueth@uchicago.edu</email>). Eskuliburuari dagozkion iruzkinak
+      eta iradokizunak <ulink type="http"    
+      url="http://www.gnome.org/gdp">GNOMEren dokumentazio-proiektura</ulink>
+      bidal ditzakezu: <email>docs@gnome.org</email>. Iruzkinak linean ere egin
+      ditzakezu <ulink type="http"   
+      url="http://www.gnome.org/gdp/doctable/">GNOMEren dokumentazio-egoeraren
+      taula</ulink> erabiliz. 
+   </para> 
+  
+
+   <para> 
+      Euskarazko itzulpena Hizkuntza Politikarako Sailburuordetzak egin du
+      (<email>hizkpol@ej-gv.es</email>). Itzulpenari buruzko oharrak eta
+      iradokizunak helbide honetara bidal ditzakezu:
+      <email>hizkpol@ej-gv.es</email> 
+   </para> 
+   </sect2>   
+
+<!-- ============= Application License ============================= -->  
+<sect2 id="license"> 
+
+<title>Lizentzia</title> 
+
+   <para> 
+      Programa hau software librea da; birbana eta/edo alda dezakezu, 
+      Free Software Foundation-ek argitaratutako <ulink
+      type="help"    url="gnome-help:gpl"><citetitle>GNU Lizentzia Publiko
+      Orokorra</citetitle></ulink>ren 2. bertsioan, edo (nahiago baduzu) bertsio
+      berriago batean, jasotako baldintzak betez gero. 
+   </para> 
+   <para>
+      Programa hau erabilgarria izango delakoan banatzen da, baina INOLAKO 
+      BERMERIK GABE; era berean, ez da bermatzen beraren EGOKITASUNA 
+      MERKATURATZEKO edo HELBURU PARTIKULARRETARAKO ERABILTZEKO. 
+      Argibide gehiago nahi izanez gero, ikus <ulink
+      type="help" url="gnome-help:gpl"><citetitle>GNU Lizentzia Publiko
+      Orokorra</citetitle></ulink>. 
+   </para> 
+<para>
+      <ulink type="help"    url="gnome-help:gpl"><citetitle>GNU Lizentzia
+      Publiko Orokorra</citetitle></ulink>ren kopia bat <citetitle>GNOME 
+      erabiltzailearen gida</citetitle>ren eranskinean daukazu. <ulink 
+      type="help" url="gnome-help:gpl"><citetitle>GNU Lizentzia Publiko 
+      Orokorra</citetitle></ulink>ren kopia Free Software Foundation-en 
+      bidez ere lor dezakezu <ulink type="http" url="http://www.fsf.org"> 
+      haren web gunea</ulink> bisitatuz edo hona idatziz: 
+     <address> Free Software Foundation, Inc. <street>59 Temple Place</street> -
+      Suite 330 <city>Boston</city>, <state>MA</state>
+      <postcode>02111-1307</postcode> <country>USA</country> </address> 
+</para>
+ </sect2>  </sect1>

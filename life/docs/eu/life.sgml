@@ -1,0 +1,162 @@
+<sect1 id="lifeapplet">
+  <title>Bizitzaren jokoaren applet-a</title>
+  
+<para>
+GNOMEren <application>bizitzaren</application> panelak <quote>bizitzaren jokoa</quote> exekutatzen du Conway-ren arauen arabera zure paneleko sareta txiki batean, organismoa eta atzeko planoko kolorea etengabe aldatuz. Gnome-applets paketearen osagaia da.
+</para>
+ 
+<para>
+Applet hau <interface>Panel</interface> bati gehitzeko, egin klik eskuineko botoiaz <interface>Panel</interface>ean eta aukeratu <menuchoice><guimenu>Panela</guimenu> <guisubmenu>Gehitu panelari</guisubmenu> <guisubmenu>Applet-a</guisubmenu> <guisubmenu>Denbora-pasa</guisubmenu> <guimenuitem>Bizitzaren jokoa</guimenuitem></menuchoice>, edo bestela, komando hau idatz dezakezu komando-gonbitean: <command>life_applet --activate-goad-server=life_applet &amp; </command>
+</para>
+
+
+  <figure id="life-applet-fig">
+    <title>Bizitzaren applet-a</title>
+    <screenshot><screeninfo>Bizitzaren applet-a</screeninfo> <graphic format="png" fileref="life-applet"  	     srccredit="Eric Baudais"></graphic></screenshot></figure>
+
+    <sect2 id="lifeapplet-usage">
+     <title>Erabilera</title>
+     
+<para>
+Behin hor ageri denean, ez daukazu ezer egin beharrik bizitzaren applet-ari. Alai asko ibiliko da bere kasa.
+</para>
+
+
+    
+<para>
+Applet-ean eskuineko botoiaz klik eginez gero, elementu hauek dituen menua agertuko zaizu: <itemizedlist>
+	
+	<listitem>
+<para>
+<guimenuitem>Nahastu</guimenuitem> &mdash; jokoa ausaz nahasten du.  Horrela ez ditu behin eta berriz eredu berdin eta aspergarriak erabiliko.
+</para>
+</listitem>
+	
+	<listitem>
+<para>
+<guimenuitem>Laguntza</guimenuitem> &mdash; dokumentu hau bistaratzen du.
+</para>
+</listitem>
+	
+	<listitem>
+<para>
+<guimenuitem>Honi buruz&hellip;</guimenuitem> &mdash; <application>Bizitzaren jokoaren applet</application>-ari buruzko informazioa erakusten du, esaterako applet-aren bertsioa eta egilearen izena.
+</para>
+</listitem>
+	
+      </itemizedlist>
+</para>
+</sect2>
+
+    <sect2 id="lifeapplet-rules">
+     <title>Arauak</title>
+     
+<para>
+Conway-ek 1970ean arau hauen arabera deskribatu zuen Bizitzaren jokoa:
+</para>
+ <itemizedlist><listitem>
+<para>
+Hasi lauki-sareta batekin (normalean karratu soila). Bete lauki batzuk gelaxkekin, ausaz. Hau zero belaunaldia da.
+</para>
+</listitem> <listitem>
+<para>
+Bi edo hiru auzoko dituzten gelaxkak hurrengo belaunaldira igaroko dira.
+</para>
+</listitem> <listitem>
+<para>
+Gelaxkarik gabeko lauki batek hiru auzoko baditu, gelaxka bat sortuko da bertan. Beste laukietan ez da gelaxkarik sortuko.
+</para>
+</listitem> <listitem>
+<para>
+Errepikatu belaunaldiak.
+</para>
+</listitem></itemizedlist>
+
+     
+<para>
+Jokoa azkenean modu hauetako batean amaituko da:
+</para>
+
+
+     <itemizedlist><listitem>
+<para>
+Gelaxka guztien heriotza (teorian bai, baina oso arraroa da hori bizitzaren applet-ean).
+</para>
+</listitem> <listitem>
+<para>
+Oreka finkoa. Geratzen diren gelaxka guztiek bizirik jarraitzen dute baina ez da berririk sortzen.
+</para>
+</listitem> <listitem>
+<para>
+Oreka dinamikoa. Jokoak eredu-sekuentzia partikular bat errepikatzen du behin eta berriz.
+</para>
+</listitem></itemizedlist>
+
+     
+<para>
+Informazio gisa, applet-aren uneko sareta 78 x 78koa da, eta gelaxkaz betetako laukien proportzioa &percnt; 50ekoa.
+</para>
+</sect2>
+
+    <sect2 id="lifeapplet-bugs">
+     <title>Ezagutzen diren akatsak eta mugak</title>
+     
+<para>
+Ez da akatsik ezagutzen.
+</para>
+</sect2>
+
+  <sect2 id="authors">
+   <title>Egileak</title>
+   
+<para>
+<application>Bizitzaren applet-a George Lebl-ek idatzi du (<email>jirka@5z.com</email>).  Bidali zure iruzkin, iradokizun eta akatsen berri-emateak <ulink url="http://bugs.gnome.org" type="http">GNOMEren akatsen segimendurako datu-basera</ulink>. (Akatsei buruzko berriak bidaltzeko argibideak <ulink     url="http://bugs.gnome.org/Reporting.html" type="http">linean</ulink> aurkituko dituzu.) GNOMEren 1.1 bertsioa edo berriagoa baldin baduzu, <application>Akatsen berri emateko tresna</application> (<command>bug-buddy</command>) ere erabil dezakezu akatsen berri emateko. Tresna hori <guimenu>Menu nagusi</guimenu>ko <guisubmenu>Utilitateak</guisubmenu> azpimenuan duzu eskuragarri.
+</para>
+
+
+   
+<para>
+Eskuliburu hau Telsa Gwynne-k (<email>telsa@linuxchix.org</email>) eta Eric Baudais-ek (<email>baudais@okstate.edu</email>) idatzi dute. Eskuliburuari dagozkion iruzkinak eta iradokizunak <ulink type="http"     url="http://www.gnome.org/gdp">GNOMEren dokumentazio-proiektura</ulink> bidal ditzakezu: <email>docs@gnome.org</email>. Iruzkinak linean ere egin ditzakezu <ulink type="http"     url="http://www.gnome.org/gdp/doctable/">GNOMEren dokumentazio-egoeraren taula</ulink> erabiliz.
+</para>
+
+
+<para>
+     Euskarazko itzulpena Hizkuntza Politikarako Sailburuordetzak 
+     egin du (<email>hizkpol@ej-gv.es</email>). Itzulpenari buruzko
+     oharrak eta iradokizunak helbide honetara bidal ditzakezu:
+      <email>hizkpol@ej-gv.es</email> 
+</para>
+
+  </sect2>
+
+  <sect2 id="license">
+   <title>Lizentzia</title>
+   
+   <para> 
+      Programa hau software librea da; birbana eta/edo alda dezakezu, 
+      Free Software Foundation-ek argitaratutako <ulink
+      type="help"    url="gnome-help:gpl"><citetitle>GNU Lizentzia Publiko
+      Orokorra</citetitle></ulink>ren 2. bertsioan, edo (nahiago baduzu) bertsio
+      berriago batean, jasotako baldintzak betez gero. 
+   </para> 
+   <para>
+      Programa hau erabilgarria izango delakoan banatzen da, baina INOLAKO 
+      BERMERIK GABE; era berean, ez da bermatzen beraren EGOKITASUNA 
+      MERKATURATZEKO edo HELBURU PARTIKULARRETARAKO ERABILTZEKO. 
+      Argibide gehiago nahi izanez gero, ikus <ulink
+      type="help" url="gnome-help:gpl"><citetitle>GNU Lizentzia Publiko
+      Orokorra</citetitle></ulink>. 
+   </para> 
+<para>
+      <ulink type="help"    url="gnome-help:gpl"><citetitle>GNU Lizentzia
+      Publiko Orokorra</citetitle></ulink>ren kopia bat <citetitle>GNOME 
+      erabiltzailearen gida</citetitle>ren eranskinean daukazu. <ulink 
+      type="help" url="gnome-help:gpl"><citetitle>GNU Lizentzia Publiko 
+      Orokorra</citetitle></ulink>ren kopia Free Software Foundation-en 
+      bidez ere lor dezakezu <ulink type="http" url="http://www.fsf.org"> 
+      haren web gunea</ulink> bisitatuz edo hona idatziz: 
+     <address> Free Software Foundation, Inc. <street>59 Temple Place</street> -
+      Suite 330 <city>Boston</city>, <state>MA</state>
+      <postcode>02111-1307</postcode> <country>USA</country> </address> 
+</para>
+</sect2></sect1>

@@ -1,0 +1,514 @@
+ 
+
+<sect1 id="soundmonitorapplet"> 
+
+<title>Soinu-monitorearen applet-a</title>  
+
+   <para> 
+      <application>Soinu-monitorea</application>ren applet-a, <xref  
+      linkend="soundmonitorapplet-fig">n ikusten dena gai (itxura)
+      lehenetsiarekin, soinu-bolumenaren bistaratzailea da eta baita ESD
+      (Enlightened Sound Daemon, soinu-irteerarentzako GNOMEren osagaia)
+      kontrolatzeko interfazea ere. Applet hau <interface>Panel</interface> bati
+      gehitzeko, egin klik eskuineko botoiaz <interface>Panel</interface>ean eta
+      aukeratu
+ <menuchoice> 
+<guimenu>Panela</guimenu> 
+<guisubmenu>Gehitu panelari</guisubmenu> 
+<guisubmenu>Applet-a</guisubmenu> 
+<guisubmenu>Multimedia</guisubmenu> 
+<guimenuitem>Soinu-monitorea</guimenuitem>
+ </menuchoice>. 
+   </para> 
+  <figure id="soundmonitorapplet-fig"> 
+
+<title>Soinu-monitorearen applet-a</title> 
+<screenshot> 
+     <screeninfo>Soinu-monitorearen applet-a</screeninfo> <graphic format="png"
+      fileref="figures/soundmonitor_applet"     srccredit="muet"> </graphic>
+      </screenshot> </figure>  
+
+<!-- ============= Waht is ESD?  ================================ --> 
+<sect2 id="soundmonitorapplet-esd"> 
+
+<title>GNOMEko soinua</title> 
+
+   <para> 
+      GNOMEk programa berezi bat erabiltzen du, ESD (Enlightened Sound Daemon)
+      izenekoa, aplikazioen eta soinu-txartelaren arteko bitartekari gisa. ESDk
+      hainbat aplikaziotako soinua nahasteko aukera ematen dizunez, joko batekin
+      jolastu eta soinu-efektuak entzun ditzakezu CD audioa entzuten duzun
+      bitartean. GNOME aplikazioetako edozein soinu entzuteko ESD abiatuta izan
+      behar duzu. Saioa hasten duzun bakoitzean ESD abiarazteko konfiguratuta
+      egoten da normalean GNOME. Dena dela, ez badago horrela konfiguratuta,
+      egin klik <guibutton>Menu nagusia</guibutton>ren botoian (oinaren ikonoan)
+      eta hautatu 
+<menuchoice> 
+<guimenu>Programak</guimenu> 
+<guisubmenu>Ezarpena</guisubmenu> 
+<guisubmenu>Multimedia</guisubmenu> 
+     <guimenuitem>Soinua</guimenuitem>
+ </menuchoice> eta egiaztatu
+      <guilabel>Gaitu soinu-zerbitzaria abiaraztea</guilabel> aukera gaituta
+      dagoela, horrela, hurrengoan saioa hasten duzunean ESD abiaraz dadin. 
+      ESD abiarazi edo gelditzeko <application>Soinu-monitorearen
+      </application> applet-a ere erabil dezakezu behean azaltzen den bezala. 
+   </para> 
+ 
+
+   <para> 
+     GNOMErenak ez diren aplikazioek normalean ez dute ESD erabiltzen eta
+      audio-txartelaren erabateko kontrola behar izaten dute. --- Ezin dute
+      audio-txartela beste aplikazio batzuekin konpartitu. Horrek esan nahi du
+      GNOMEren soinua eta GNOMErena ez den aplikazio baten soinua ezin dituzula
+      batera erabili. Ondorioz, kasu askotan ESD geldiarazi beharko duzu
+      GNOMErenak ez diren aplikazioetako soinua entzuteko (bestela honelako
+      errore-mezuak jasoko dituzu: <command>Device /dev/dsp busy</command>).  
+   </para> 
+ </sect2>   
+
+<!-- ============= Usage  ================================ --> 
+<sect2 id="soundmonitorapplet-usage"> 
+
+<title>Erabilera</title> 
+
+   <para> 
+      <application>Soinu-monitorea</application>k beti grafikoki erakusten du
+      zure sisteman sortzen den soinua. Soinua kontrolatzeko ESD aktibatu eta
+      desaktibatu dezakezu, applet-ean eskuineko botoiaz klik eginez eta 
+<guimenuitem>Jarri Esound egonean</guimenuitem> edo 
+     <guimenuitem>Berrekin Esound-i</guimenuitem> hautatuz, hurrenez hurren,
+      behean azaltzen den bezala.  
+   </para> 
+  
+
+   <para> 
+      Applet-ean eskuineko botoiaz klik eginez gero, elementu hauek dituen menua
+      agertuko zaizu: 
+
+<itemizedlist>  
+
+<listitem> 
+
+   <para> 
+ 
+     <guimenuitem>Kudeatzailea&hellip;</guimenuitem> &mdash; <link
+      linkend="soundmonitorapplet-manager"> <interface>Soinu-monitorearen
+      kudeatzailea</interface></link>ren elkarrizketa-koadroa irekitzen du, ESD
+      ezarpenak ikusi eta kontrolatzeko. 
+   </para> 
+ </listitem>  
+
+<listitem> 
+
+   <para> 
+ 
+<guimenuitem>Jarri Esound egonean</guimenuitem>/
+<guimenuitem>Berrekin Esound-i</guimenuitem>/
+     <guimenuitem>Hasi Esound</guimenuitem> &mdash; Hiru menu-elementu hauetako
+      bat bakarrik izango duzu aldiko, ESDren uneko egoeraren arabera. Lehen bi
+      menu-elementuek aukera ematen dute ESD aldi batez egonean uzteko eta
+      ondoren berrekiteko. Erabilgarria da ESDrekin batera lan egin ezin duen
+      soinu-aplikazio bat badaukazu eta soinu-gailua zuzenean atzitu behar badu.
+      Hirugarrenak<application>Esound</application> abiarazteko aukera ematen
+      dizu abiatuta ez badaukazu.  
+   </para> 
+ </listitem>   
+
+<listitem> 
+
+   <para> 
+ 
+     <guimenuitem>Propietateak&hellip;</guimenuitem> &mdash; <link
+      linkend="soundmonitorapplet-prefs">
+      <guilabel>Propietateak</guilabel></link> elkarrizketa-koadroa irekitzen
+      du. 
+   </para> 
+ </listitem>  
+
+<listitem> 
+
+   <para> 
+ 
+<guimenuitem>Laguntza</guimenuitem> &mdash; dokumentu hau bistaratzen du. 
+   </para> 
+ </listitem>  
+
+<listitem> 
+
+   <para> 
+ 
+     <guimenuitem>Honi buruz&hellip;</guimenuitem> &mdash;
+      <application>Soinu-monitorearen applet</application>-ari buruzko
+      oinarrizko informazioa erakusten du, esaterako, applet-aren bertsioa eta
+      egilearen izena. 
+   </para> 
+ </listitem>  </itemizedlist> 
+   </para> 
+ </sect2>   
+
+<!-- ============= Customization ============================= --> 
+<sect2 id="soundmonitorapplet-prefs"> 
+
+<title>Pertsonalizazioa</title> 
+
+   <para> 
+      <application>Soinu-monitoea</application>ren applet-a pertsonaliza
+      dezakezu bertan eskuineko botoiaz klik eginez eta 
+     <guimenuitem>Propietateak&hellip;</guimenuitem> aukeratuz.
+      <interface>Propietateen</interface> elkarrizketa-koadroa (<xref      
+      linkend="soundmonitor-settings-fig">) irekiko da, eta bertan hainbat
+      ezarpen aldatu ahal izango duzu. 
+   </para> 
+  <figure id="soundmonitor-settings-fig"> 
+
+<title>Propietateen elkarrizketa-koadroa</title> 
+<screenshot> 
+     <screeninfo>Propietateen elkarrizketa-koadroa</screeninfo> <graphic
+      format="png" fileref="figures/soundmonitor_applet_settings"     
+      srccredit="muet"> </graphic> </screenshot> </figure>  
+
+   <para> 
+ <guilabel>Orokorra</guilabel> fitxako propietateak hauek dira: 
+
+<itemizedlist>  
+
+<listitem> 
+
+   <para> 
+      Maximoaren adierazlea &mdash; Maximoaren adierazlearen jokabidea
+      kontrolatzen du (bolumen maximoa markatzen duen lerro argiarena), bai
+      itzaliz (<guilabel>desaktibatuta</guilabel>), bai maximoari jarraituz
+      flotatzen balego bezala (<guilabel>aktibatuta</guilabel>), eta bai
+      maximoari jarraituz gorabehera txikiak leunduz
+      (<guilabel>leunduta</guilabel>).  
+   </para> 
+ </listitem>  
+
+<listitem> 
+
+   <para> 
+      Maximoaren adierazlearen jaiste-abiadura &mdash; Maximoaren adierazleak
+      zerora jaisteko (aktibatuta dagoenean) edo uneko bolumenera joateko
+      (leunduta dagoenean) duen abiadura kontrolatzen du honek. 
+   </para> 
+ </listitem> 
+
+<listitem> 
+
+   <para> 
+      Esparrua (1:X eskala, non X=?) &mdash;
+      <application>Soinu-monitorea</application>ren "esparru gisako" gaien
+      ardatz horizontalaren eskala (denbora) kontrolatzen du, hau da, ardatz
+      horizontalean denbora dutela soinu-mailaren grafikoa erakusten duten
+      gaiena. (Gai lehenetsia esparrua ez denez, kontrol honek ez du ezer egiten
+      harik eta gaia aldatzen duzun arte behean azaltzen den moduan). 1 balioa
+      44 100 pixel/segundo denbora-eskalari dagokio; X balioak 44 100/X
+      pixel/segundo ematen du. (CD kalitate estandarrak zehazten du 44 100
+      soinu-laginketa egin behar liratekeela segundoko, eta horregatik agertzen
+      dira balio horiek.) 
+   </para> 
+ </listitem>  
+
+<listitem> 
+
+   <para> 
+     Konektatu esparruko puntuak &mdash; Honek zehazten du lagindutako
+      bolumen-puntuak konektatu edo ez. (Esparru-gaietan soilik.) 
+   </para> 
+ </listitem>  
+
+<listitem> 
+
+   <para> 
+      Pantaila freskatu (markoak segundoko) &mdash;
+      <application>Soinu-monitorearen</application> bistaratzea segundoko zenbat
+      aldiz freskatzen den kontrolatzen du honek. 
+   </para> 
+ </listitem> </itemizedlist> 
+   </para> 
+  
+
+   <para> 
+ <guilabel>Gaia</guilabel> fitxako propietateak hauek dira: 
+
+<itemizedlist>  
+
+<listitem> 
+
+   <para> 
+      Gaiaren fitxategia (direktorioa): &mdash; Hau da
+      <application>Soinu-monitorea</application>ren gaia, applet-aren itxura
+      orokorra zehazten duena. <guilabel>Gaiak:</guilabel> zerrendako gai bat
+      hauta dezakezu edo bestela erabilgarri dagoen beste gai baten direktorioa
+      eta izena idatzi. Gai estandarretako batzuk <xref       
+      linkend="soundmonitorappletthemes-fig">n ikus ditzakezu.   <figure
+      id="soundmonitorappletthemes-fig"> 
+
+<title>Soinu-monitorearen gaien adibideak</title> 
+<screenshot> 
+     <screeninfo>Soinu-monitorearen gaien adibideak</screeninfo> <graphic
+      format="png" fileref="figures/soundmonitor_applet_themes"        
+      srccredit="muet"> </graphic> </screenshot> </figure> 
+   </para> 
+  </listitem>  </itemizedlist> 
+   </para> 
+  
+
+   <para> 
+ <guilabel>Aurreratua</guilabel> fitxako propietateak hauek dira: 
+
+<itemizedlist>  
+
+<listitem> 
+
+   <para> 
+      Monitorizatzeko ESD ostalaria: &mdash; Aukera honekin ESDk
+      erreproduzitutako soinua beste ordenagailu batean entzun dezakezu.
+      Horretarako, sartu monitorizatzeko ordenagailu baten sare-helbidea (edo IP
+      helbidea) <replaceable>host:port</replaceable> formatuan. Zehaztutako
+      ostalariak ESD izan beharko du eta esound daemon-a "desblokeatua", beste
+      makina batzuekin konektatu ahal izateko. Kontuan izan ESDren ataka
+      lehenetsia 5001 dela. Soinua makina lokalean monitorizatzeko utzi sarrera
+      hau hutsik. 
+   </para> 
+ </listitem>  </itemizedlist> 
+   </para> 
+  
+
+   <para> 
+       Nahi dituzun aldaketa guztiak egin ondoren, egin klik
+      <guibutton>Ados</guibutton> botoian aldaketak aplikatu eta
+      <interface>Propietateen</interface> elkarrizketa-koadroa ixteko. Aldaketak
+      bertan behera uzteko eta aurreko balioetara itzultzeko, egin klik
+      <guibutton>Utzi</guibutton> botoian. 
+   </para> 
+ </sect2>   
+
+<!-- ============= Manager ================================== --> 
+<sect2 id="soundmonitorapplet-manager"> 
+
+<title>Soinu-monitorearen kudeatzailea</title> 
+
+   <para> 
+      <interface>Soinu-monitorearen kudeatzailea</interface> abiarazteko, egin
+      klik eskuineko botoiaz applet-ean eta aukeratu 
+     <guimenuitem>Kudeatzailea&hellip;</guimenuitem>.
+      <interface>Soinu-monitorearen kudeatzailea</interface>
+      elkarrizketa-koadroa irekiko da (<xref      
+      linkend="soundmonitorappletmanager-fig">) eta bertan hainbat ezarpen
+      aldatu ahal izango duzu. 
+   </para> 
+ <figure id="soundmonitorappletmanager-fig"> 
+
+<title>Propietateen elkarrizketa-koadroa</title> 
+<screenshot> 
+     <screeninfo>Soinu-monitorearen kudeatzailearen
+      elkarrizketa-koadroa</screeninfo> <graphic format="png"
+      fileref="figures/soundmonitor_manager_server"      srccredit="muet">
+      </graphic> </screenshot> </figure>  
+
+   <para> 
+      <guilabel>Zerbitzaria</guilabel> fitxak ondorengo informazioa erakusten
+      du: 
+
+<itemizedlist>  
+
+<listitem> 
+
+   <para> 
+      Zerbitzariaren informazioa &mdash; Esound zerbitzariaren daemon-aren uneko
+      egoera nolakoa den azaltzen du laburki. Soinu-txartelerako soinu-irteeraz
+      gain, unean erreproduzitzen ari diren soinuak (konektatutako korronteak)
+      eta zerbitzariaren cache-an dauden soinuak ere adierazten ditu. 
+   </para> 
+ </listitem>  </itemizedlist> 
+   </para> 
+  
+
+   <para> 
+ <guilabel>Korronteak</guilabel> fitxako propietateak hauek dira: 
+
+<itemizedlist>  
+
+<listitem> 
+
+   <para> 
+      Konektatutako korronteak &mdash; Une honetan soinu-zerbitzariaren bidez
+      erreproduzitzen ari diren soinu-korronteei buruzko oinarrizko informazioa
+      erakusten du. Erabiltzaileak korrontearen bolumena eta balantzea doi
+      ditzake; lehendabizi korrontearen lerroa hautatu behar da, eta ondoren
+      bolumen eta balantzearen graduatzailea doitu.  
+   </para> 
+ </listitem>  </itemizedlist> 
+   </para> 
+  
+
+   <para> 
+ <guilabel>Adibideak</guilabel> fitxako propietateak hauek dira: 
+
+<itemizedlist>  
+
+<listitem> 
+
+   <para> 
+     Cache-an gordetako adibideak &mdash; Une honetan soinu-zerbitzariaren
+      cachean gordetako soinu-korronteei buruzko oinarrizko informazioa
+      erakusten du. Erabiltzaileak cache-an gordetako soinu baten bolumena eta
+      balantzea doi ditzake; lehendabizi korrontearen lerroa hautatu behar da,
+      eta ondoren bolumen eta balantzearen graduatzailea doitu. Soinuaren
+      iraupena byte-tan edo denbora bidez (MM:SS.S formatuan) emateko, egin klik
+      luzera edo denbora izeneko txandakako zutabearen izenburuan. 
+   </para> 
+ </listitem>  </itemizedlist> 
+   </para> 
+  
+
+   <para> 
+      Nahi dituzun aukera guztiak egin ondoren, egin klik
+      <guibutton>Ados</guibutton> botoian aldaketak egin eta
+      <interface>Propietateen</interface> elkarrizketa-koadroa ixteko. Aldaketak
+      bertan behera uzteko eta aurreko balioetara itzultzeko, egin klik
+      <guibutton>Utzi</guibutton> botoian. 
+   </para> 
+  </sect2>  
+
+<!-- ============= ESDPVD ================================== --> 
+<sect2 id="esdpvd"> 
+
+<title>Esound Persistent Volume Daemon (ESDPVD)</title> 
+
+   <para> 
+      <application>Soinu-monitorea</application>ren applet-ak beste programa bat
+      ekartzen du berarekin batera: <application>Esound Persistent Volume
+      Daemon</application> (ESDPVD). Programa hori atzeko planoan exekuta
+      daiteke, eta soinu-zerbitzarira konektatutako korronte bakoitzaren
+      bolumena eta balantzea gogoratzen ditu.
+      <application>ESDPVD</application>ren xede nagusia
+      <application>Soinu-monitorea</application>ren applet-aren
+      <interface>kudeatzailea</interface>ren elkarrizketa-koadroekin batera lan
+      egitea da, ESD soinu-zerbitzarira konektatzen diren korronte indibidualen
+      bolumen-mailak gordetzeko. 
+   </para> 
+ 
+
+   <para> 
+      Adibidez, demagun <application>GTCD</application> CD erreproduzigailua
+      exekutatzen ari zarela eta haren bolumena jaisten duzula
+      <interface>Kudeatzailea</interface>ren leihoaren bidez. Normalean,
+      bolumen-ezarpena galdu egingo duzu programatik (kasu honetan
+      <application>GTCD</application>tik) irteten zarenean eta berrabiarazten
+      duzunean. Hala ere, <application>esdpvd</application> lanean ari bada,
+      <application>GTCD</application> berriro abiarazten duzunean, bolumena
+      lehengo balioan jarriko da (baxuago kasu honetan).  
+   </para> 
+ 
+
+   <para> 
+      GNOME abiarazten den bakoitzean <application>ESDPVD</application>
+      abiarazteko konfiguratzen baduzu GNOME
+      <interface>(kontrol-zentro</interface>ko <interface>Abioko
+      programen</interface> bidez), <application>ESDPVD</application>k GNOMEren
+      saio batetik bestera bolumen eta balantzearen pertsonalizazioak gogoratuko
+      ditu.  
+   </para> 
+ 
+
+   <para> 
+      <application>ESDPVD</application>k cachean gordetako adibideen bolumen-
+      eta balantze-doitzeak ere gogoratzen ditu. (askotan erabiltzen dira
+      interfazeetako botoi-klik, menu eta abarrentzako).  
+   </para> 
+ </sect2>   
+
+<!-- ============= Bugs ================================== --> 
+
+     <!-- This section should describe known bugs and limitations of       the
+      program if there are any - please be frank and list all       problems you
+      know of --> 
+<sect2 id="bugs"> 
+
+<title>Ezagutzen diren akatsak eta mugak</title> 
+
+   <para> 
+      Applet honek GNOMEren aplikazioek sortutako soinuen bolumena soilik
+      erakusten du (zehazkiago esanda, ESDtik igarotzen diren soinuak);
+      audio-txartelera zuzenean konektatzen diren aplikazioen soinu-bolumena ez
+      du erakutsiko.
+   </para> 
+ </sect2>   
+
+<!-- ============= Authors ================================ -->  
+<sect2 id="authors"> 
+
+<title>Egileak</title> 
+
+   <para> 
+      <application>Soinu-monitorea</application> John Ellis-ek idatzi du
+      (<email>johne@bellatlantic.net</email>). Bidali zure iruzkin, iradokizun
+      eta akatsen berri-emateak <ulink url="http://bugs.gnome.org"
+      type="http">GNOMEren akatsen segimendurako datu-basera</ulink>. (Akatsei
+      buruzko berriak bidaltzeko argibideak <ulink    
+      url="http://bugs.gnome.org/Reporting.html" type="http">linean</ulink>
+      aurkituko dituzu.) Akatsen berri emateko, <application>Akatsen berri
+      emateko tresna</application> (<command>bug-buddy</command>) ere erabil
+      dezakezu. Tresna hori 
+<guimenu>Menu nagusiko</guimenu> 
+<guisubmenu>Utilitateak</guisubmenu> azpimenuan duzu eskuragarri. 
+   </para> 
+  
+
+   <para> 
+      Eskuliburu hau Dan Mueth-ek (<email>d-mueth@uchicago.edu</email>) eta John
+      Ellis-ek (<email>johne@bellatlantic.net</email>) idatzi dute.
+      Eskuliburuari dagozkion iruzkinak eta iradokizunak <ulink type="http"    
+      url="http://developer.gnome.org/projects/gdp/">GNOMEren
+      dokumentazio-proiektura</ulink> bidal ditzakezu:
+      <email>docs@gnome.org</email>. Iruzkinak linean ere egin ditzakezu <ulink
+      type="http"   
+      url="http://developer.gnome.org/projects/doctable/">GNOMEren
+      dokumentazio-egoeraren taula</ulink> erabiliz. 
+   </para> 
+  
+
+   <para> 
+      Euskarazko itzulpena Hizkuntza Politikarako Sailburuordetzak egin du
+      (<email>hizkpol@ej-gv.es</email>). Itzulpenari buruzko oharrak eta
+      iradokizunak helbide honetara bidal ditzakezu:
+      <email>hizkpol@ej-gv.es</email> 
+   </para> 
+   </sect2>   
+
+<!-- ============= Application License ============================= -->  
+<sect2 id="license"> 
+
+<title>Lizentzia</title> 
+
+   <para> 
+      Programa hau software librea da; birbana eta/edo alda dezakezu, 
+      Free Software Foundation-ek argitaratutako <ulink
+      type="help"    url="gnome-help:gpl"><citetitle>GNU Lizentzia Publiko
+      Orokorra</citetitle></ulink>ren 2. bertsioan, edo (nahiago baduzu) bertsio
+      berriago batean, jasotako baldintzak betez gero. 
+   </para> 
+   <para>
+      Programa hau erabilgarria izango delakoan banatzen da, baina INOLAKO 
+      BERMERIK GABE; era berean, ez da bermatzen beraren EGOKITASUNA 
+      MERKATURATZEKO edo HELBURU PARTIKULARRETARAKO ERABILTZEKO. 
+      Argibide gehiago nahi izanez gero, ikus <ulink
+      type="help" url="gnome-help:gpl"><citetitle>GNU Lizentzia Publiko
+      Orokorra</citetitle></ulink>. 
+   </para> 
+<para>
+      <ulink type="help"    url="gnome-help:gpl"><citetitle>GNU Lizentzia
+      Publiko Orokorra</citetitle></ulink>ren kopia bat <citetitle>GNOME 
+      erabiltzailearen gida</citetitle>ren eranskinean daukazu. <ulink 
+      type="help" url="gnome-help:gpl"><citetitle>GNU Lizentzia Publiko 
+      Orokorra</citetitle></ulink>ren kopia Free Software Foundation-en 
+      bidez ere lor dezakezu <ulink type="http" url="http://www.fsf.org"> 
+      haren web gunea</ulink> bisitatuz edo hona idatziz: 
+     <address> Free Software Foundation, Inc. <street>59 Temple Place</street> -
+      Suite 330 <city>Boston</city>, <state>MA</state>
+      <postcode>02111-1307</postcode> <country>USA</country> </address> 
+</para>
+ </sect2>  </sect1>
