@@ -122,7 +122,7 @@ void
 properties_dialog(AppletWidget *applet,
 	GKB * gkb)
 {
-        static GnomeHelpMenuEntry help_entry = { "gkb_applet", "properties" };
+        static GnomeHelpMenuEntry help_entry = { NULL, "properties" };
         GtkWidget *vbox3;
         GtkWidget *hbox5;          
         GtkWidget *hbox6;          
@@ -142,7 +142,9 @@ properties_dialog(AppletWidget *applet,
         GtkWidget *table2;
         GtkWidget *frame2;
 	int i;
-        
+
+	help_entry.name = gnome_app_id;
+
         if( gkb->propbox ) {
          gdk_window_raise(gkb->propbox->window);
          return;

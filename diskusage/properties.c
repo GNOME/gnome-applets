@@ -305,9 +305,10 @@ gint destroy_cb( GtkWidget *widget, void *data )
 
 void properties(AppletWidget *applet, gpointer data)
 {
-        static GnomeHelpMenuEntry help_entry = { "diskusage_applet",
-						 "properties" };
+        static GnomeHelpMenuEntry help_entry = { NULL, "properties" };
 	GtkWidget *frame, *label;
+
+	help_entry.name = gnome_app_id;
 
 #ifdef DU_DEBUG
 	printf ("entering diskusage properties( \n");

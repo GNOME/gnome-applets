@@ -257,9 +257,10 @@ void close_cb( GtkWidget *widget, void *data )
 
 void properties(AppletWidget *applet, gpointer data)
 {
-        static GnomeHelpMenuEntry help_entry = { "netload_applet",
-						 "properties" };
+        static GnomeHelpMenuEntry help_entry = { NULL, "properties" };
 	GtkWidget *frame, *label;
+
+	help_entry.name = gnome_app_id;
 
 	if( propbox )
 		return;

@@ -49,9 +49,10 @@ multiload_properties_changed (void)
 void
 multiload_show_properties (void)
 {
-    static GnomeHelpMenuEntry help_entry = { "multiload_applet",
-					     "properties" };
+    static GnomeHelpMenuEntry help_entry = { NULL, "properties" };
     GList *c;
+
+    help_entry.name = gnome_app_id;
 
     if (win) {
 	gdk_window_raise (win->window);

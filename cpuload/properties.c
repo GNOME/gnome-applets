@@ -209,9 +209,11 @@ destroy_cb( GtkWidget *widget, void *data )
 void
 properties(AppletWidget *applet, gpointer data)
 {
-        static GnomeHelpMenuEntry help_entry = { "cpuload_applet",
+        static GnomeHelpMenuEntry help_entry = { NULL,
 						 "properties" };
 	GtkWidget *frame, *label;
+
+	help_entry.name = gnome_app_id;
 
 	if( propbox ) {
 		gdk_window_raise(propbox->window);

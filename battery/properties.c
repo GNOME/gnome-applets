@@ -19,11 +19,13 @@ static void prop_apply (GtkWidget *w, int page, gpointer data);
 void
 battery_properties_window(AppletWidget * applet, gpointer data)
 {
-  static GnomeHelpMenuEntry help_entry = { "battery_applet", "properties" };
+  static GnomeHelpMenuEntry help_entry = { NULL, "properties" };
   BatteryData * bat = data; 
   GtkWidget * t, * l, * r2;
   GtkWidget * height_spin, * width_spin, * graph_speed_spin;
   int r, g, b;
+
+  help_entry.name = gnome_app_id;
 
   if (bat->prop_win)
     return; 

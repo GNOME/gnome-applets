@@ -86,15 +86,16 @@ GtkWidget *pwin = NULL;
 
 void properties_dialog(AppletWidget *applet, gpointer data)
 {
-  static GnomePropertyBox help_entry = { "asclock_applet", "properties" };
+  static GnomeHelpMenuEntry help_entry = { NULL, "properties" };
   gchar *titles[2] = { "Continent/City" , NULL};
-
   GtkWidget *label;
   GtkWidget *frame;
   GtkWidget *hbox;
   GtkWidget *list;
   GtkWidget *sw;
   
+  help_entry.name = gnome_app_id;
+
   if(pwin) 
   {
     gdk_window_raise(pwin->window);
