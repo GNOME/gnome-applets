@@ -419,7 +419,7 @@ pixmap_timeout( gpointer data )
       && !charging 
       && acline_status
       && batterypresent
-      && batt_life < 1
+      && batt_life > 99
    ) {
       /* Inform that battery now fully charged */
       gnome_triggers_do ("", NULL, "battstat_applet", "BatteryFull", NULL);
