@@ -1,215 +1,62 @@
-<!DOCTYPE article PUBLIC "-//GNOME//DTD DocBook PNG Variant V1.0//EN"[
+<!DOCTYPE Article PUBLIC "-//GNOME//DTD DocBook PNG Variant V1.1//EN"[
+ <!entity gkb.sgml SYSTEM "gkb.sgml">
+
 ]>
 
-<article id="index">
- <artheader>
-  <title>The GNOME keyboard switcher</title>
+
+<article id="index"> <!-- please do not change the id -->
+
+ <!-- ============= Document Header ============================= -->
+ <artheader> 
+  <title>GNOME KeyBoard Applet</title>
+  <copyright>
+   <year>2000</year>
+   <holder>Szabolcs (Shooby) BAN and Dan Mueth</holder>
+  </copyright>
+
+  <!-- translators: uncomment this:
 
   <copyright>
    <year>2000</year>
-   <holder>Szabolcs (Shooby) BAN</holder>
+   <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
   </copyright>
+
+   -->
+
+  <!-- do not put authorname in the header except in copyright - use
+  section "authors" below -->
 
   <legalnotice>
    <para>
-     Permission is granted to make and distribute verbatim copies of this
-     manual provided the copyright notice and this permission notice are
-     preserved on all copies.
+    Permission is granted to copy, distribute and/or modify this
+    document under the terms of the <citetitle>GNU Free Documentation
+    License</citetitle>, Version 1.1 or any later version published
+    by the Free Software Foundation with no Invariant Sections, no
+    Front-Cover Texts, and no Back-Cover Texts. You may obtain a copy
+    of the <citetitle>GNU Free Documentation License</citetitle> from
+    the Free Software Foundation by visiting <ulink type="http"
+    url="http://www.fsf.org">their Web site</ulink> or by writing to:
+    Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+    Boston, MA 02111-1307, USA.
    </para>
    <para>
-     Permission is granted to copy and distribute modified versions of
-     this manual under the conditions for verbatim copying, provided that
-     the entire resulting derived work is distributed under the terms of a
-     permission notice identical to this one.
-   </para>
-   <para>
-     Permission is granted to copy and distribute translations of this
-     manual into another language, under the above conditions for modified
-     versions, except that this permission notice may be stated in a
-     translation approved by the Foundation.
+    Many of the names used by companies to distinguish their products and
+    services are claimed as trademarks. Where those names appear in any
+    GNOME documentation, and those trademarks are made aware to the members
+    of the GNOME Documentation Project, the names have been printed in caps
+    or initial caps.
    </para>
   </legalnotice>
 
   <releaseinfo>
-     This is version 1.0 of this document: first release.
+   This is version 1.0 of the GNOME KeyBoard applet manual.
   </releaseinfo>
  </artheader>
 
- <figure id="GKB-ON-PANEL-fig1">
-  <title>GKB applet on panel</title>
-  <screenshot>
-   <screeninfo>GKB applet on panel</screeninfo>
-   <graphic format="png" fileref="onpanel" srccredit="Szabolcs BAN">
-   </graphic>
-  </screenshot>
- </figure>
-     
- <sect1 id="gkb-intro">
-  <title>The GNOME keyboard switcher applet</title>
+ <!-- ============= Document Body ============================= -->
 
-  <para>
-    The <application>GNOME gkb applet</application> displays a small
-    flag in your <interface>panel</interface> and does nothing useful 
-    whatsoever beyond that. After all, if you click on this flag, you can
-    change your keyboard map. It is part of the gnome-applets package. This 
-    description of it refers to the gkb as displayed in gnome-applets-1.2.
-  </para>
-  <para>
-    It is occasionally found in the <interface>panel</interface> anyway, 
-    but if you don't see it, you can start it by clicking <mousebutton>button
-    3</mousebutton> on an empty part of the <interface>panel</interface>
-    and following the sequence
-   <menuchoice>
-   <guimenu>Applets</guimenu>
-    <guisubmenu>Tools</guisubmenu>
-    <guimenuitem>gkb</guimenuitem>
-   </menuchoice>
-  </para>
-  <para>
-    The gkb applet was written by Szabolcs Ban (<email>shooby@gnome.hu</email>). 
-    Please report bugs in it to the
-    <ulink type="http" url="http://bugs.gnome.org">GNOME bug tracking 
-    system</ulink>. You can do this by following the guidelines on that site 
-    or by using <command>bug-buddy</command> from the command-line. 
-    For the package, put gnome-core.
-  </para>
+ &gkb.sgml;
 
-  <sect2 id="gkb-usage">
-   <title>Usage</title>
-
-   <para>
-    First, you need to start the properties window...
-   </para>
-
-   <orderedlist>
-    <listitem>
-     <para>
-       If you have the <application>fortune</application> package installed,
-       pressing <mousebutton>mouse button 1</mousebutton> switches the
-       keymap to the next.
-     </para>
-    </listitem>
-    <listitem>
-     <para>
-      Pressing <mousebutton>mouse button 2</mousebutton> and holding it
-      down allows you to drag your gkb about.
-
-     </para>
-    </listitem>
-    <listitem>
-     <para>
-       Pressing <mousebutton>mouse button 3</mousebutton> brings up a
-       menu which includes a <guisubmenu>preferences menu</guisubmenu> and
-       an <guimenuitem>About</guimenuitem> box. 
-
-       <figure id="GKB-MENU-fig1">
-        <title>Menu</title>
-        <screenshot>
-         <screeninfo>Menu</screeninfo>
-         <graphic format="png" fileref="gkb-menu" srccredit="Szabolcs BAN">
-         </graphic>
-        </screenshot>
-       </figure>
-
-       <figure id="GKB-ABOUT-fig1">
-        <title>GKB about</title>
-        <screenshot>
-         <screeninfo>GKB about</screeninfo>
-         <graphic format="png" fileref="about" srccredit="Szabolcs BAN">
-         </graphic>
-        </screenshot>
-       </figure>
-
-     </para>
-    </listitem>
-   </orderedlist>
-
-  </sect2>
-
-  <sect2 id="gkb-prefs">
-   <title>Properties</title>
-   <para>
-     The <guilabel>properties dialog box</guilabel> (called
-     GKB Properties) is simple.
-     Every tab is a keymap. At every keymap set you can set the name of the
-     set, the full command, (there is a gkb_xmmap script for xmodmap) the
-     iconpath.
-   </para>
-   <para>
-   You can do new keymap and delete the actual.
-   </para>
- <figure id="GKB-Prefs-fig1">
-  <title>GKB Properties dialog box</title>
-  <screenshot>
-   <screeninfo>GKB Properties dialog box</screeninfo>
-   <graphic format="png" fileref="preferences" srccredit="Szabolcs BAN">
-   </graphic>
-  </screenshot>
- </figure>
-
-   <variablelist>
-    <varlistentry>
-     <term>Keymap name</term>
-     <listitem>
-      <para>
-        You can change your gkb's keymap name here. The default name is us.
-      </para>
-     </listitem>
-    </varlistentry>
-
-    <varlistentry>
-     <term>Full command</term>
-     <listitem>
-      <para>
-       The commad sould be like this: "gkb_xmmap us" or "setxkbmap fr" or
-       "/usr/local/bin/Xmodmap ru". The default command is "setxkbmap us".
-      </para>
-     </listitem>
-    </varlistentry>
-
-    <varlistentry>
-     <term>The icon filename</term>
-     <listitem>
-      <para>
-        You can select a different flags here. By default, 
-        the list of flags are in <filename>$PREFIX/pixmaps/gkb/</filename>,
-        which you can browse and choose from.
-
-       <figure id="GKB-icons-fig1">
-        <title>GKB iconselector</title>
-        <screenshot>
-         <screeninfo>GKB iconselector</screeninfo>
-         <graphic format="png" fileref="iconselector" srccredit="Szabolcs BAN">
-         </graphic>
-        </screenshot>
-       </figure>
-
-      </para>
-     </listitem>
-    </varlistentry>
-
-   </variablelist>
-
-  <figure id="GKB-Prefs-fig2">
-   <title>More keymaps</title>
-   <screenshot>
-    <screeninfo>GKB Properties with more than two keymaps</screeninfo>
-    <graphic format="png" fileref="moreprops" srccredit="Szabolcs BAN">
-    </graphic>
-   </screenshot>
-  </figure>
-
-  </sect2>
-
-  <sect2 id="gkb-bugs">
-   <title>Bugs and Limitations</title>
-   <para>
-
-    The sequence of keymaps are broken at loading or saving.. 
-    There isn't presets.. (There will be at all)..
-
-   </para>
-  </sect2>
- 
- </sect1>
 </article>
+
+

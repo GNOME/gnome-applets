@@ -440,14 +440,14 @@ gkb_activator (PortableServer_POA poa,
 					 properties_dialog, gkb);
 
   applet_widget_register_stock_callback (APPLET_WIDGET (gkb->applet),
-					 "about",
-					 GNOME_STOCK_MENU_ABOUT,
-					 _("About..."), about_cb, NULL);
-
-  applet_widget_register_stock_callback (APPLET_WIDGET (gkb->applet),
 					 "help",
 					 GNOME_STOCK_MENU_BOOK_OPEN,
 					 _("Help"), help_cb, NULL);
+
+  applet_widget_register_stock_callback (APPLET_WIDGET (gkb->applet),
+					 "about",
+					 GNOME_STOCK_MENU_ABOUT,
+					 _("About..."), about_cb, NULL);
 
   return applet_widget_corba_activate (gkb->applet, poa, goad_id, params,
 				       impl_ptr, ev);

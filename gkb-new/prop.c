@@ -515,7 +515,7 @@ properties_dialog (AppletWidget * applet, gpointer gkbx)
 static void
 prophelp_cb (AppletWidget * applet, gpointer data)
 {
-  GnomeHelpMenuEntry help_entry = { "gkb_applet", "index.html#gkb-prefs" };
+  GnomeHelpMenuEntry help_entry = { "gkb_applet", "index.html#GKBAPPLET-PREFS" };
 
   gnome_help_display (NULL, &help_entry);
 }

@@ -1,7 +1,5 @@
-figs = gkb-menu.png \
-       moreprops.png \
-       onpanel.png \
-       preferences.png
+figs = gkb_applet.png \
+       gkb_applet_settings.png
 
 applet = gkb
 lang = C
