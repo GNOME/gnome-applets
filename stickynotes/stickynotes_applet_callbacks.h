@@ -35,7 +35,8 @@ gboolean applet_change_bg_cb(PanelApplet *panel_applet, PanelAppletBackgroundTyp
 /* Callbacks for sticky notes applet menu */
 void menu_create_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gchar *verbname);
 void menu_destroy_all_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gchar *verbname);
-void menu_event_cb(BonoboUIComponent *uic, const gchar *path, Bonobo_UIComponent_EventType type, const gchar *state, StickyNotesApplet *applet);
+void menu_toggle_show_cb(BonoboUIComponent *uic, const gchar *path, Bonobo_UIComponent_EventType type, const gchar *state, StickyNotesApplet *applet);
+void menu_toggle_lock_cb(BonoboUIComponent *uic, const gchar *path, Bonobo_UIComponent_EventType type, const gchar *state, StickyNotesApplet *applet);
 void menu_preferences_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gchar *verbname);
 void menu_help_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gchar *verbname);
 void menu_about_cb(BonoboUIComponent *uic, StickyNotesApplet *applet, const gchar *verbname);
