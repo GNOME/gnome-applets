@@ -1,6 +1,4 @@
 INCLUDES = -I. -I$(srcdir) 				\
-	-I$(srcdir)/../../panel				\
-	-I$(top_builddir)/panel \
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
 	-I$(includedir) $(GNOME_INCLUDEDIR)
 
@@ -11,9 +9,9 @@ slash_applet_SOURCES =  slashapp.c	\
 			display.c	\
 			properties.c
 
-slash_applet_LDADD = ../../panel/libpanel_applet.la \
-		     $(GNOME_LIBDIR) $(GNOMEGNORBA_LIBS) -lXt \
-		     $(GNOMEUI_LIBS) $(INTLLIBS)      \
+slash_applet_LDADD = \
+		     $(GNOME_LIBDIR) -lXt \
+		     $(GNOME_APPLETS_LIBS) $(INTLLIBS)      \
                      $(GHTTP_LIB)
 
 EXTRA_DIST = \

@@ -1,8 +1,6 @@
 INCLUDES = -I. -I$(srcdir) 				\
 	-I$(top_srcdir)/intl \
 	-I$(top_builddir)/intl	\
-	-I$(top_builddir)/panel	\
-	-I$(srcdir)/../../panel				\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
 	-I$(includedir) $(GNOME_INCLUDEDIR)
 
@@ -17,9 +15,9 @@ battery_applet_SOURCES = battery.c 	\
 			 session.c	\
 			 session.h
 
-battery_applet_LDADD = ../../panel/libpanel_applet.la \
+battery_applet_LDADD = \
 			$(GNOME_LIBDIR)  \
-			$(GNOMEGNORBA_LIBS) $(INTLLIBS)
+			$(GNOME_APPLETS_LIBS) $(INTLLIBS)
 
 EXTRA_DIST = battery_applet.desktop battery_applet.gnorba bolt.xpm
 

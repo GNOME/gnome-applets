@@ -1,7 +1,5 @@
 INCLUDES = -I. -I$(srcdir) 				\
 	-I$(top_srcdir)/intl -I$(top_builddir)/intl	\
-	-I$(srcdir)/../../panel				\
-	-I$(top_builddir)/panel \
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
 	-I$(includedir) $(GNOME_INCLUDEDIR)
 
@@ -12,9 +10,9 @@ drivemount_applet_SOURCES = \
 	drivemount.h	\
 	properties.c
 
-drivemount_applet_LDADD = ../../panel/libpanel_applet.la \
+drivemount_applet_LDADD = \
 		     $(GNOME_LIBDIR) \
-		     $(GNOMEGNORBA_LIBS) $(INTLLIBS) 
+		     $(GNOME_APPLETS_LIBS) $(INTLLIBS) 
 
 EXTRA_DIST = \
 	drivemount_applet.desktop	\

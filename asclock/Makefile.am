@@ -2,8 +2,6 @@ SUBDIRS = themes default_theme
 
 INCLUDES = -I. -I$(srcdir) 				\
 	-I$(top_srcdir)/intl -I$(top_builddir)/intl	\
-	-I$(srcdir)/../../panel				\
-	-I$(top_builddir)/panel				\
 	-DASCLOCK_THEMES_DIR=\""$(datadir)/asclock/"\"   \
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
 	-I$(includedir) $(GNOME_INCLUDEDIR)		\
@@ -25,9 +23,9 @@ asclock_applet_SOURCES = \
 	version.h
 
 
-asclock_applet_LDADD = ../../panel/libpanel_applet.la \
+asclock_applet_LDADD = \
 		     $(GNOME_LIBDIR) \
-		     $(GNOMEGNORBA_LIBS) $(INTLLIBS) 
+		     $(GNOME_APPLETS_LIBS) $(INTLLIBS) 
 
 EXTRA_DIST = \
 	asclock_applet.desktop	\

@@ -1,7 +1,5 @@
 INCLUDES = -I. -I$(srcdir) 				\
 	-I$(top_srcdir)/intl -I$(top_builddir)/intl	\
-	-I$(srcdir)/../../panel				\
-	-I$(top_builddir)/panel \
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
 	-I$(includedir) $(GNOME_INCLUDEDIR)		\
 	-I$(LIBGTOP_INCS)
@@ -14,9 +12,9 @@ cpumemusage_applet_SOURCES = \
 	proc.h
 
 
-cpumemusage_applet_LDADD = ../../panel/libpanel_applet.la \
+cpumemusage_applet_LDADD = \
 		     $(GNOME_LIBDIR) \
-		     $(GNOMEGNORBA_LIBS) $(INTLLIBS)	\
+		     $(GNOME_APPLETS_LIBS) $(INTLLIBS)	\
 		     $(LIBGTOP_LIBS) $(LIBGTOP_EXTRA_LIBS)
 
 EXTRA_DIST = cpumemusage_applet.desktop cpumemusage_applet.gnorba

@@ -1,7 +1,5 @@
 INCLUDES = -I. -I$(srcdir) 				\
 	-I$(top_srcdir)/intl -I$(top_builddir)/intl	\
-	-I$(srcdir)/../../panel				\
-	-I$(top_builddir)/panel \
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
 	-I$(includedir) $(GNOME_INCLUDEDIR)		\
 	$(LIBGTOP_INCS)
@@ -16,9 +14,9 @@ netload_applet_SOURCES = \
 	properties.c	\
 	properties.h
 
-netload_applet_LDADD = ../../panel/libpanel_applet.la \
+netload_applet_LDADD = \
 		     $(GNOME_LIBDIR) \
-		     $(GNOMEGNORBA_LIBS) $(INTLLIBS)	\
+		     $(GNOME_APPLETS_LIBS) $(INTLLIBS)	\
 		     $(LIBGTOP_LIBS) $(LIBGTOP_EXTRA_LIBS)
 
 EXTRA_DIST = netload_applet.desktop netload_applet.gnorba

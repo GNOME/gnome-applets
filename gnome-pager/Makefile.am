@@ -1,7 +1,5 @@
 INCLUDES = -I. -I$(srcdir) 				\
 	-I$(top_srcdir)/intl -I$(top_builddir)/intl	\
-	-I$(srcdir)/../../panel				\
-	-I$(top_builddir)/panel \
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
 	-I$(includedir) $(GNOME_INCLUDEDIR)		\
 	-DVERSION=\""$(VERSION)"\"
@@ -15,9 +13,9 @@ gnomepager_applet_SOURCES = \
 	icon3.xpm	\
 	stripe.xbm
 
-gnomepager_applet_LDADD = ../../panel/libpanel_applet.la \
-		     $(GNOME_LIBDIR) $(ORB_LIBS)         \
-		     $(GNOMEUI_LIBS) $(GNORBA_LIBS)      \
+gnomepager_applet_LDADD = \
+		     $(GNOME_LIBDIR) \
+		     $(GNOME_APPLETS_LIBS) \
 		     $(INTLLIBS)
 
 EXTRA_DIST = gnomepager_applet.desktop gnomepager_applet.gnorba

@@ -4,7 +4,6 @@ INCLUDES = 						\
 	-I.						\
 	-I$(srcdir)					\
 	-I$(top_srcdir)/intl -I$(top_builddir)/intl	\
-	-I$(top_builddir)/panel -I$(top_srcdir)/panel	\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
 	-I$(includedir) $(GNOME_INCLUDEDIR)
 
@@ -33,9 +32,8 @@ mini_commander_applet_SOURCES =			\
 	preferences.h
 
 mini_commander_applet_LDADD =				\
-	$(top_builddir)/panel/libpanel_applet.la	\
 	$(GNOME_LIBDIR)					\
-	$(GNOMEGNORBA_LIBS)				\
+	$(GNOME_APPLETS_LIBS)				\
 	$(INTLLIBS) 
 
 # currently the installation of these bitmaps wouldn't be necessary

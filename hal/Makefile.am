@@ -1,7 +1,5 @@
 INCLUDES = -I. -I$(srcdir) 				\
 	-I$(top_srcdir)/intl -I$(top_builddir)/intl	\
-	-I$(srcdir)/../../panel				\
-	-I$(top_builddir)/panel \
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
 	-I$(includedir) $(GNOME_INCLUDEDIR)
 
@@ -9,9 +7,9 @@ bin_PROGRAMS = hal_applet
 
 hal_applet_SOURCES = hal.c
 
-hal_applet_LDADD = ../../panel/libpanel_applet.la	\
+hal_applet_LDADD = \
 		       $(GNOME_LIBDIR) \
-		       $(GNOMEGNORBA_LIBS) $(INTLLIBS) 
+		       $(GNOME_APPLETS_LIBS) $(INTLLIBS) 
 
 EXTRA_DIST = \
 	hal_applet.desktop hal_applet.gnorba hal.png

@@ -1,6 +1,5 @@
 INCLUDES = -I. -I$(srcdir) 				\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
-	-I$(top_builddir)/panel -I$(srcdir)/../../panel	\
 	-I$(includedir) $(GNOME_INCLUDEDIR) $(LIBGTOP_INCS)
 
 bin_PROGRAMS = multiload_applet
@@ -20,9 +19,9 @@ multiload_applet_SOURCES = cpuload.c		\
 			   load-graph.c		\
 			   load-graph.h
 
-multiload_applet_LDADD = ../../panel/libpanel_applet.la \
+multiload_applet_LDADD = \
 		     $(GNOME_LIBDIR) \
-		     $(GNOMEGNORBA_LIBS) $(INTLLIBS)	\
+		     $(GNOME_APPLETS_LIBS) $(INTLLIBS)	\
 		     $(LIBGTOP_LIBS) $(LIBGTOP_EXTRA_LIBS)
 
 appletdir	= $(datadir)/applets

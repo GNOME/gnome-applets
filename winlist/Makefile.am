@@ -1,7 +1,5 @@
 INCLUDES = -I. -I$(srcdir) 				\
 	-I$(top_srcdir)/intl -I$(top_builddir)/intl	\
-	-I$(top_builddir)/panel \
-	-I$(srcdir)/../../panel				\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
 	-I$(includedir) $(GNOME_INCLUDEDIR)
 
@@ -14,9 +12,9 @@ winlist_applet_SOURCES = \
 	fvwmlib.h	\
 	module.h
 
-winlist_applet_LDADD = ../../panel/libpanel_applet.la \
-		     $(GNOME_LIBDIR) $(ORB_LIBS)      \
-		     $(GNOMEUI_LIBS) $(INTLLIBS)
+winlist_applet_LDADD = \
+		     $(GNOME_LIBDIR)	\
+		     $(GNOME_APPLETS_LIBS) $(INTLLIBS)
 
 EXTRA_DIST = winlist_applet.desktop
 

@@ -1,7 +1,5 @@
 INCLUDES = -I. -I$(srcdir) 				\
 	-I$(top_srcdir)/intl -I$(top_builddir)/intl	\
-	-I$(top_builddir)/panel \
-	-I$(srcdir)/../../panel				\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
 	-I$(includedir) $(GNOME_INCLUDEDIR)
 
@@ -15,9 +13,9 @@ cdplayer_applet_SOURCES =	\
 	led.h			\
 	cdrom-$(CDROM_HOST).c 
 
-cdplayer_applet_LDADD = ../../panel/libpanel_applet.la		\
+cdplayer_applet_LDADD = \
 		     $(GNOME_LIBDIR) \
-		     $(GNOMEGNORBA_LIBS) $(INTLLIBS)
+		     $(GNOME_APPLETS_LIBS) $(INTLLIBS)
 
 EXTRA_DIST = cdplayer_applet.desktop cdrom-linux.c cdrom-solaris.c \
 	     cdplayer_applet.gnorba

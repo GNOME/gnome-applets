@@ -1,7 +1,5 @@
 INCLUDES = -I. -I$(srcdir) 				\
 	-I$(top_srcdir)/intl -I$(top_builddir)/intl	\
-	-I$(srcdir)/../../panel				\
-	-I$(top_builddir)/panel \
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
 	-I$(includedir) $(GNOME_INCLUDEDIR)
 
@@ -16,9 +14,9 @@ mixer_applet_SOURCES = \
 	lamp-small.xpm  \
 	lamp-small-red.xpm 
 
-mixer_applet_LDADD = ../../panel/libpanel_applet.la \
-		     $(GNOME_LIBDIR) $(ORB_LIBS)      \
-		     $(GNOMEGNORBA_LIBS) $(INTLLIBS) 
+mixer_applet_LDADD = \
+		     $(GNOME_LIBDIR) \
+		     $(GNOME_APPLETS_LIBS) $(INTLLIBS) 
 
 EXTRA_DIST = mixer_applet.desktop mixer_applet.gnorba
 

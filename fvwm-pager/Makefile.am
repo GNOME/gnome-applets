@@ -4,8 +4,6 @@ INCLUDES =                                              \
 	-Dsafemalloc=g_malloc                           \
 	-I. -I$(srcdir)                                 \
 	-I$(top_srcdir)/intl -I$(top_builddir)/intl	\
-	-I$(srcdir)/../../../panel			\
-	-I$(top_builddir)/panel \
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
 	-I$(includedir) $(GNOME_INCLUDEDIR)
 
@@ -23,9 +21,8 @@ fvwm_pager_SOURCES = fvwm-pager.c \
 		     Strings.c
 
 fvwm_pager_LDADD = \
-	../../panel/libpanel_applet.la \
 	$(GNOME_LIBDIR) \
-	$(GNOMEGNORBA_LIBS)                \
+	$(GNOME_APPLETS_LIBS)                \
 	$(INTLLIBS)
 
 CFLAGS += -DVERSION=\"0.3\"

@@ -3,8 +3,6 @@ pixmapdir = $(datadir)/panel/
 INCLUDES = 			\
 	-I$(top_srcdir)/intl -I$(top_builddir)/intl	\
 	-I. -I$(srcdir)		\
-	-I$(top_builddir)/panel \
-	-I$(srcdir)/../../panel	\
 	-I$(includedir) $(GNOME_INCLUDEDIR)
 
 bin_PROGRAMS = netwatch_applet
@@ -12,9 +10,9 @@ bin_PROGRAMS = netwatch_applet
 netwatch_applet_SOURCES = netwatch.c
 
 
-netwatch_applet_LDADD = ../../panel/libpanel_applet.la \
-                     $(GNOME_LIBDIR) $(ORB_LIBS)      \
-                     $(GNOMEUI_LIBS) $(INTLLIBS)
+netwatch_applet_LDADD = \
+                     $(GNOME_LIBDIR)	\
+                     $(GNOME_APPLETS_LIBS) $(INTLLIBS)
 
 EXTRA_DIST = \
 	netwatch_applet.desktop		\

@@ -1,7 +1,5 @@
 INCLUDES = -I. -I$(srcdir)                              \
         -I$(top_srcdir)/intl -I$(top_builddir)/intl     \
-        -I$(srcdir)/../../panel                         \
-        -I$(top_builddir)/panel \
         -DGNOMELOCALEDIR=\""$(datadir)/locale"\"        \
         -I$(includedir) $(GNOME_INCLUDEDIR)
 
@@ -12,9 +10,9 @@ SUBDIRS= gkb xmodmap
 
 gkb_applet_SOURCES = gkb.c
 
-gkb_applet_LDADD = ../../panel/libpanel_applet.la \
-		     $(GNOME_LIBDIR) $(ORB_LIBS) \
-		     $(GNOMEUI_LIBS) $(INTLLIBS) $(GNOMEGNORBA_LIBS)
+gkb_applet_LDADD = \
+	$(GNOME_LIBDIR) \
+	$(GNOME_APPLETS_LIBS) $(INTLLIBS)
 
 GKB_ICON = gkb.xpm
 
