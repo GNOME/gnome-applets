@@ -4,6 +4,9 @@
 
 #include "slashapp.h"
 
+static void show_images_cb(GtkWidget *w, gpointer data);
+static void show_info_cb(GtkWidget *w, gpointer data);
+static void show_department_cb(GtkWidget *w, gpointer data);
 static void smooth_scroll_cb(GtkWidget *w, gpointer data);
 static void smooth_type_cb(GtkWidget *w, gpointer data);
 static void scroll_delay_cb(GtkObject *adj, gpointer data);
@@ -14,22 +17,52 @@ static gint property_destroy_cb(GtkWidget *widget, gpointer data);
 void property_load(gchar *path, AppData *ad)
 {
 	gnome_config_push_prefix (path);
-	ad->smooth_scroll = gnome_config_get_int("display/smooth_scroll=1");
-	ad->smooth_type = gnome_config_get_int("display/smooth_type=1");
-	ad->scroll_delay = gnome_config_get_int("display/scroll_delay=10");
-	ad->scroll_speed = gnome_config_get_int("display/scroll_speed=3");
+	ad->smooth_scroll = gnome_config_get_int("slashapp/smooth_scroll=1");
+	ad->smooth_type = gnome_config_get_int("slashapp/smooth_type=1");
+	ad->scroll_delay = gnome_config_get_int("slashapp/scroll_delay=10");
+	ad->scroll_speed = gnome_config_get_int("slashapp/scroll_speed=3");
+
+	ad->show_images = gnome_config_get_int("display/show_images=1");
+	ad->show_info = gnome_config_get_int("display/show_info=1");
+	ad->show_department = gnome_config_get_int("display/show_department=0");
+
         gnome_config_pop_prefix ();
 }
 
 void property_save(gchar *path, AppData *ad)
 {
         gnome_config_push_prefix(path);
-        gnome_config_set_int("display/smooth_scroll", ad->smooth_scroll);
-        gnome_config_set_int("display/smooth_type", ad->smooth_type);
-        gnome_config_set_int("display/scroll_delay", ad->scroll_delay);
-        gnome_config_set_int("display/scroll_speed", ad->scroll_speed);
+        gnome_config_set_int("slashapp/smooth_scroll", ad->smooth_scroll);
+        gnome_config_set_int("slashapp/smooth_type", ad->smooth_type);
+        gnome_config_set_int("slashapp/scroll_delay", ad->scroll_delay);
+        gnome_config_set_int("slashapp/scroll_speed", ad->scroll_speed);
+
+        gnome_config_set_int("slashapp/show_images", ad->show_images);
+        gnome_config_set_int("slashapp/show_info", ad->show_info);
+        gnome_config_set_int("slashapp/show_department", ad->show_department);
+
 	gnome_config_sync();
         gnome_config_pop_prefix();
+}
+
+static void show_images_cb(GtkWidget *w, gpointer data)
+{
+	AppData *ad = data;
+	ad->p_show_images = GTK_TOGGLE_BUTTON (w)->active;
+	gnome_property_box_changed(GNOME_PROPERTY_BOX(ad->propwindow));
+}
+
+static void show_info_cb(GtkWidget *w, gpointer data)
+{
+	AppData *ad = data;
+	ad->p_show_info = GTK_TOGGLE_BUTTON (w)->active;
+	gnome_property_box_changed(GNOME_PROPERTY_BOX(ad->propwindow));
+}
+static void show_department_cb(GtkWidget *w, gpointer data)
+{
+	AppData *ad = data;
+	ad->p_show_department = GTK_TOGGLE_BUTTON (w)->active;
+	gnome_property_box_changed(GNOME_PROPERTY_BOX(ad->propwindow));
 }
 
 static void smooth_scroll_cb(GtkWidget *w, gpointer data)
@@ -69,6 +102,9 @@ static void property_apply_cb(GtkWidget *widget, void *nodata, gpointer data)
 	ad->scroll_delay = ad->p_scroll_delay;
 	ad->scroll_speed = ad->p_scroll_speed;
 
+	ad->show_images = ad->p_show_images;
+	ad->show_info = ad->p_show_info;
+	ad->show_department = ad->p_show_department;
 
 	applet_widget_sync_config(APPLET_WIDGET(ad->applet));
 }
@@ -103,10 +139,56 @@ void property_show(AppletWidget *applet, gpointer data)
 	ad->p_scroll_delay = ad->scroll_delay;
 	ad->p_scroll_speed = ad->scroll_speed;
 
+	ad->p_show_images = ad->show_images;
+	ad->p_show_info = ad->show_info;
+	ad->p_show_department = ad->show_department;
+
 	ad->propwindow = gnome_property_box_new();
 	gtk_window_set_title(GTK_WINDOW(&GNOME_PROPERTY_BOX(ad->propwindow)->dialog.window),
-		"Display test Settings");
+		"Slashapp Settings");
 	
+	/* general tab */
+
+	vbox = gtk_vbox_new(FALSE,0);
+	gtk_widget_show(vbox);
+
+	frame = gtk_frame_new(_("Articles"));
+	gtk_container_border_width (GTK_CONTAINER (frame), 5);
+	gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
+	gtk_widget_show(frame);
+
+	vbox1 = gtk_vbox_new(FALSE, 1);
+	gtk_container_add(GTK_CONTAINER(frame), vbox1);
+	gtk_widget_show(vbox1);
+
+	button = gtk_check_button_new_with_label (_("Show topic images"));
+	gtk_box_pack_start(GTK_BOX(vbox1), button, FALSE, FALSE, 0);
+	gtk_toggle_button_set_state(GTK_TOGGLE_BUTTON(button), ad->p_show_images);
+	gtk_signal_connect (GTK_OBJECT(button),"clicked",(GtkSignalFunc) show_images_cb, ad);
+	gtk_widget_show(button);
+
+	button = gtk_check_button_new_with_label (_("Show department"));
+	gtk_box_pack_start(GTK_BOX(vbox1), button, FALSE, FALSE, 0);
+	gtk_toggle_button_set_state(GTK_TOGGLE_BUTTON(button), ad->p_show_department);
+	gtk_signal_connect (GTK_OBJECT(button),"clicked",(GtkSignalFunc) show_department_cb, ad);
+	gtk_widget_show(button);
+
+	button = gtk_check_button_new_with_label (_("Show extra information (Time, Author, Comments)"));
+	gtk_box_pack_start(GTK_BOX(vbox1), button, FALSE, FALSE, 0);
+	gtk_toggle_button_set_state(GTK_TOGGLE_BUTTON(button), ad->p_show_info);
+	gtk_signal_connect (GTK_OBJECT(button),"clicked",(GtkSignalFunc) show_info_cb, ad);
+	gtk_widget_show(button);
+
+        label = gtk_label_new(_("(These settings do not take effect until a refresh)"));
+	gtk_box_pack_start(GTK_BOX(vbox1), label, FALSE, FALSE, 0);
+	gtk_widget_show(label);
+
+        label = gtk_label_new(_("General"));
+        gtk_widget_show(frame);
+        gnome_property_box_append_page( GNOME_PROPERTY_BOX(ad->propwindow),vbox ,label);
+
+	/* display tab */
+
 	vbox = gtk_vbox_new(FALSE,0);
 	gtk_widget_show(vbox);
 

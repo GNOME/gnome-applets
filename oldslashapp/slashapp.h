@@ -94,6 +94,13 @@ struct _AppData
 	gint startup_timeout_id;
 
 	gchar *slashapp_dir;
+
+	gint show_images;
+	gint show_info;
+	gint show_department;
+	gint p_show_images;
+	gint p_show_info;
+	gint p_show_department;
 };
 
 	/* display.c */

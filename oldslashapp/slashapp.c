@@ -174,6 +174,7 @@ static int get_current_headlines(gpointer data)
 	gchar author[32];
 	gchar department[128];
 	gchar topic[32];
+	gchar comments[12];
 	FILE *slash_file = NULL;
 	gchar *filename = g_strconcat(ad->slashapp_dir, "/slashnews", NULL);
 	gint h = FALSE;
@@ -236,12 +237,26 @@ static int get_current_headlines(gpointer data)
 				strncpy(topic, buf, 20);
 				flush_newline_chars(topic, 16);
 				make_lowercase(topic);
+				fgets(buf, sizeof(buf), slash_file);
+				strncpy(comments, buf, 8);
+				flush_newline_chars(comments, 7);
 
 				icon = NULL;
-				icon = get_topic_image(topic, ad);
+				if (ad->show_images) icon = get_topic_image(topic, ad);
+
+				if (ad->show_department)
+					text = g_strconcat(headline, "\nDpt: ", department , NULL);
+				else
+					text = g_strdup(headline);
+
+				if (ad->show_info)
+					{
+					gchar *temp = g_strconcat(text, "\n[ ", edate, " by " , author, " ] (", comments,")", NULL);
+					g_free(text);
+					text = temp;
+					}
 
 				/* add the headline */
-				text = g_strconcat(headline, "\n[", edate, " -" , author, "]", NULL);
 				if (icon)
 					add_info_line_with_pixmap(ad, text, icon, 0, FALSE, FALSE, 30);
 				else
