@@ -76,7 +76,7 @@ command_key_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
 	    if(history_position == LENGTH_HISTORY_LIST)
 		{	    
 		    temp_command = gtk_entry_get_text(GTK_ENTRY(widget));
-		    if (temp_command > sizeof(buffer))
+		    if (strlen(temp_command) > sizeof(buffer))
 			    return;
 		    /* store current command line */
 		    strcpy(current_command, temp_command);
@@ -119,7 +119,7 @@ command_key_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
 	    show_message((gchar *) _("starting...")); 
 	    command = (char *) malloc(sizeof(char) * MAX_COMMAND_LENGTH);
 	    temp_command = gtk_entry_get_text(GTK_ENTRY(widget));
-	    if (temp_command > sizeof(command))
+	    if (strlen(temp_command) > sizeof(command))
 		    return;
 	    strcpy(command, temp_command);
 	    /* printf("%s\n", command); */
