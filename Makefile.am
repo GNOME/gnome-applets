@@ -19,7 +19,8 @@ xml_SUBDIRS = $(xml_applets)
 endif
 
 ghttp_applets = \
-	gweather
+	gweather \
+	gtik
 if HAVE_LIBGHTTP
 ghttp_SUBDIRS = $(ghttp_applets)
 endif
