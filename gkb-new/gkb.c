@@ -34,6 +34,8 @@
 #include <sys/stat.h>
 #include "gkb.h"
 
+int NumLockMask, CapsLockMask, ScrollLockMask;
+
 GtkWidget *bah_window = NULL;
 
 static void gkb_button_press_event_cb (GtkWidget * widget,
@@ -848,6 +850,7 @@ gkb_activator (CORBA_Object poa_in,
   static guint key = 0;
   PortableServer_POA poa = (PortableServer_POA) poa_in;
   XWindowAttributes attribs = { 0, };
+  int keycode, modifiers;
 
   gkb = g_new0 (GKB, 1);
 
@@ -882,18 +885,26 @@ gkb_activator (CORBA_Object poa_in,
   gtk_signal_connect (GTK_OBJECT (gkb->applet), "save_session",
 		      GTK_SIGNAL_FUNC (applet_save_session), NULL);
 
-  XGetWindowAttributes (GDK_DISPLAY (), GDK_ROOT_WINDOW (), &attribs);
-  XSelectInput (GDK_DISPLAY (),
-		GDK_ROOT_WINDOW (),
-		attribs.your_event_mask |
-		StructureNotifyMask | FocusChangeMask | PropertyChangeMask);
+  keycode = XKeysymToKeycode(GDK_DISPLAY(), gkb->keysym);
+
+  modifiers = gkb->state;
+  
+  XGrabKey (GDK_DISPLAY(), keycode, modifiers,
+            GDK_ROOT_WINDOW(), True, GrabModeAsync, GrabModeAsync);
+  XGrabKey (GDK_DISPLAY(), keycode, modifiers|NumLockMask,
+            GDK_ROOT_WINDOW(), True, GrabModeAsync, GrabModeAsync);
+  XGrabKey (GDK_DISPLAY(), keycode, modifiers|CapsLockMask,
+            GDK_ROOT_WINDOW(), True, GrabModeAsync, GrabModeAsync);
+  XGrabKey (GDK_DISPLAY(), keycode, modifiers|ScrollLockMask,
+            GDK_ROOT_WINDOW(), True, GrabModeAsync, GrabModeAsync);
+  XGrabKey (GDK_DISPLAY(), keycode, modifiers|NumLockMask|CapsLockMask,
+            GDK_ROOT_WINDOW(), True, GrabModeAsync, GrabModeAsync);
+  XGrabKey (GDK_DISPLAY(), keycode, modifiers|NumLockMask|ScrollLockMask,
+            GDK_ROOT_WINDOW(), True, GrabModeAsync, GrabModeAsync);
+  XGrabKey (GDK_DISPLAY(), keycode, modifiers|NumLockMask|CapsLockMask|ScrollLockMask,
+            GDK_ROOT_WINDOW(), True, GrabModeAsync, GrabModeAsync);
 
   gdk_window_add_filter (GDK_ROOT_PARENT (), event_filter, NULL);
-
-  key = XKeysymToKeycode (GDK_DISPLAY (), gkb->keysym);
-
-  XGrabKey (GDK_DISPLAY (), key, gkb->state,
-	    GDK_ROOT_WINDOW (), True, GrabModeAsync, GrabModeAsync);
 
   gkb_activator_register_callbacks (gkb);
 
@@ -930,7 +941,10 @@ int
 main (int argc, char *argv[])
 {
   gpointer gkb_impl;
-
+  XModifierKeymap *xmk=NULL;
+  KeyCode *map;
+  int m, k;
+      
   /* Initialize the i18n stuff */
 
   bindtextdomain (PACKAGE, GNOMELOCALEDIR);
@@ -939,6 +953,22 @@ main (int argc, char *argv[])
   applet_widget_init ("gkb_applet", VERSION, argc, argv, NULL, 0, NULL);
 
   APPLET_ACTIVATE (gkb_activator, "gkb_applet", &gkb_impl);
+
+  if(xmk)
+    {
+      map=xmk->modifiermap;
+          for(m=0;m<8;m++)
+          	for(k=0;k<xmk->max_keypermod; k++, map++)
+          	{
+                  if(*map==XKeysymToKeycode(GDK_DISPLAY (), XK_Num_Lock))
+                  	  NumLockMask=(1<<m);
+                  if(*map==XKeysymToKeycode(GDK_DISPLAY (), XK_Caps_Lock))
+                  	  CapsLockMask=(1<<m);
+                  if(*map==XKeysymToKeycode(GDK_DISPLAY (), XK_Scroll_Lock))
+                  	  ScrollLockMask=(1<<m);
+                }
+    XFreeModifiermap(xmk);
+   }
 
   applet_widget_gtk_main ();
 
