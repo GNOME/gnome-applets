@@ -31,7 +31,7 @@ extern gint use_ISDN;
 
 extern GtkWidget *applet;
 
-void start_callback_update();
+void start_callback_update(void);
 
 void property_load(char *path);
 void property_save(char *path);

@@ -4,6 +4,7 @@
 
 #include "drivemount.h"
 
+static void pixmap_floppy_cb(GtkWidget *widget, gpointer data);
 static void pixmap_cdrom_cb(GtkWidget *widget, gpointer data);
 static void pixmap_zipdrive_cb(GtkWidget *widget, gpointer data);
 static void pixmap_harddisk_cb(GtkWidget *widget, gpointer data);
@@ -36,7 +37,7 @@ void property_save(char *path, DriveData *dd)
 	gnome_config_drop_all();
 }
 
-void pixmap_floppy_cb(GtkWidget *widget, gpointer data)
+static void pixmap_floppy_cb(GtkWidget *widget, gpointer data)
 {
 	DriveData *dd = data;
 	dd->prop_device_pixmap = 0;

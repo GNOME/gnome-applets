@@ -535,7 +535,7 @@ static gint update_display()
 }
 
 /* start or change the update callback timeout interval */
-void start_callback_update()
+void start_callback_update(void)
 {
 	gint delay;
 	delay = 1000 / UPDATE_DELAY;
