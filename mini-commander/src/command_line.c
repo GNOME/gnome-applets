@@ -509,7 +509,6 @@ void
 mc_command_update_entry_size (MCData *mc)
 {
     int size_x = -1;
-    GtkRequisition req;
     
     size_x = mc->preferences.normal_size_x - 17;
 
