@@ -12,12 +12,11 @@ INCLUDES = \
 	-I$(top_srcdir) \
 	$(PANEL_MENU_CFLAGS)
 
-#lib_LTLIBRARIES = libpanel-menu.la
-bin_PROGRAMS = panel-menu-applet
+lib_LTLIBRARIES = libpanel-menu.la
+#bin_PROGRAMS = panel-menu-applet
 
-#libpanel_menu_la_SOURCES = \
-
-panel_menu_applet_SOURCES = \
+#panel_menu_applet_SOURCES =
+libpanel_menu_la_SOURCES = \
 panel-menu-desktop-item.c \
 panel-menu-desktop-item.h \
 panel-menu-pixbuf.c \
@@ -52,8 +51,8 @@ panel-menu.c \
 panel-menu.h
 
 
-panel_menu_applet_LDADD = $(PANEL_MENU_LIBS)
-#libpanel_menu_la_LIBADD = $(PANEL_MENU_LIBS)
+#panel_menu_applet_LDADD = $(PANEL_MENU_LIBS)
+libpanel_menu_la_LIBADD = $(PANEL_MENU_LIBS)
 
 schemadir   = $(sysconfdir)/gconf/schemas
 schema_DATA = panel-menu.schemas
@@ -66,4 +65,3 @@ server_DATA     = $(server_in_files:.server.in=.server)
 
 install-data-local:
 	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schema_DATA) ;
-

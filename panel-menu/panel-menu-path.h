@@ -38,6 +38,10 @@ gboolean panel_menu_path_append_item (PanelMenuEntry *entry, gchar *uri);
 void panel_menu_path_new_with_dialog (PanelMenu *panel_menu);
 gchar *panel_menu_path_save_config (PanelMenuEntry *entry);
 void panel_menu_path_remove_config (PanelMenuEntry *entry);
+
+/* For the love of GOD, only call this on a single item, and never on
+   child items of an item that already has a listener */
+void panel_menu_path_monitor (const gchar *uri, GtkMenuItem *menu_item);
 void panel_menu_path_load (const gchar *uri, GtkMenuShell *parent);
 
 G_END_DECLS

@@ -116,7 +116,6 @@ panel_menu_config_load (PanelMenu *panel_menu, const gchar *layout)
 			gtk_widget_show (item);
 			panel_menu->entries = g_list_append (
 				panel_menu->entries, entry);
-
 		}
 	}
 }

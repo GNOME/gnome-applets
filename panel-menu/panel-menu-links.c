@@ -338,6 +338,8 @@ panel_menu_links_append_item (PanelMenuEntry *entry, gchar *uri)
 			menuitem = GTK_MENU (submenu)->parent_menu_item;
 			panel_menu_path_load ((const gchar *) uri,
 					      GTK_MENU_SHELL (submenu));
+			panel_menu_path_monitor ((const gchar *) uri,
+						 GTK_MENU_ITEM (menuitem));
 			retval = TRUE;
 		}
 	}

@@ -92,6 +92,7 @@ panel_menu_preferences_new (PanelMenu *parent)
 			   GINT_TO_POINTER(TRUE));
 	GTK_MENU (preferences->menu)->parent_menu_item = preferences->preferences;
 	panel_menu_path_load ("preferences:///", GTK_MENU_SHELL(preferences->menu));
+	panel_menu_path_monitor ("preferences:///", GTK_MENU_ITEM (preferences->preferences));
 	return entry;
 }
 

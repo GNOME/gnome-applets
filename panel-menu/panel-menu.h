@@ -29,7 +29,7 @@
 
 G_BEGIN_DECLS
 
-#define MENU_APPLET_IS_SHLIB 0
+#define MENU_APPLET_IS_SHLIB 1
 
 typedef enum
 {

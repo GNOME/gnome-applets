@@ -1,4 +1,4 @@
-/*  panel-menu.c
+/* panel-menu.c
  * (c) 2001 Chris Phelps
  * Menubar based Panel Applet
  *
@@ -133,7 +133,6 @@ static const char applet_menu_xml[] =
 	"   <menuitem name=\"About Item\" verb=\"About\" _label=\"About ...\"\n"
 	"             pixtype=\"stock\" pixname=\"gnome-stock-about\"/>\n"
 	"</popup>\n";
-
 
 #if MENU_APPLET_IS_SHLIB
 PANEL_APPLET_BONOBO_SHLIB_FACTORY ("OAFIID:GNOME_PanelMenuApplet_Factory",

@@ -101,6 +101,7 @@ panel_menu_applications_new (PanelMenu *parent)
 	panel_menu_applications_set_icon (entry, icon);
 	g_free (icon);
 	panel_menu_path_load ("applications:///", GTK_MENU_SHELL(applications->menu));
+	panel_menu_path_monitor ("applications:///", GTK_MENU_ITEM (applications->applications));
 	return entry;
 }
 
