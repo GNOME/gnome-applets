@@ -13,7 +13,6 @@ endif
 ## ghttp_applets = \
 ## 	gtik
 ## 	gweather 
-## 	slashapp
 ## if HAVE_LIBGHTTP
 ## ghttp_SUBDIRS = $(ghttp_applets)
 ## endif
@@ -46,24 +45,12 @@ endif
 always_built_SUBDIRS = \
 	drivemount	\
 	panel-menu	\
-##	fifteen		\
-##	odometer	\
+	charpick	\
 ##	geyes		\
 	mini-commander	\
-##	life		\
 	gkb-new		
 ##	whereami	
-## 	another_clock	\
-## 	asclock		\
-## 	clockmail	\
-## 	drivemount	\
-## 	gnotes		\
-## 	jbc		\
-## 	quicklaunch	\
-## 	tickastat	\
-## 	webcontrol	\
-## 
-## 
+
 SUBDIRS = \
 	po			\
 	$(mixer_SUBDIRS)	\
@@ -75,19 +62,7 @@ SUBDIRS = \
 ## 	$(ghttp_SUBDIRS)	\
 ## 	$(esd_SUBDIRS)		\
 ## 	omf-install
-## 
-## DIST_SUBDIRS = \
-##	po 			\
-## 	$(always_built_SUBDIRS)	\
-## 	clipboard		\
-## 	$(gtop_applets)		\
-## 	$(ghttp_applets)	\
-## 	$(cdplayer_applets)	\
-## 	$(mixer_applets)	\
-## 	$(modemlights_applets)	\
-## 	$(esd_applets)		\
-## 	$(wordexp_applets)      
-##	omf-install
+
 
 EXTRA_DIST = \
 	COPYING-DOCS		\
