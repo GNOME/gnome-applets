@@ -2,21 +2,22 @@
 
 	* v1.0.0 released. This version has all basic features.
 	
-	* src/exec.c (initExecSignalHandler): Using sigaction instead of
- 	signal.  Now the signal handler has not to be reinstalled
+	* src/exec.c (initExecSignalHandler): Using sigaction() instead of
+ 	signal().  Now the signal handler has not to be reinstalled
  	everytime the signal is catched.  Hopefully this will fix the
  	"zombie" problem [reported by Charles Duffy <cduffy@bigfoot.com>
  	and Brian J. Murrell].
 
-	* src/preferences.c (loadSession): Two other very macros from Chad
- 	Powell <pxpx@usa.net> which allow searching yahoo and freshmeat have been
- 	added as an new default macro.  Also the "altavista" macro has been updated.
+	* src/preferences.c (loadSession): Two other macros from Chad
+ 	Powell <pxpx@usa.net> which allow searching yahoo and freshmeat
+ 	have been added as an new default macro.  The "altavista" macro
+ 	has been updated.
 
 1999-04-03  Oliver Maruhn  <om@linuxhq.com>
 
 	* src/preferences.c (loadSession): A very useful macro from Chad
  	Powell <pxpx@usa.net> which allows searches on altavista has been
- 	added as an new default macro.
+ 	added as a new default macro.
 
 	* src/macro.c (prefixNumber): prefix matching improved
 
