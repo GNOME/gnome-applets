@@ -19,6 +19,11 @@
 
 #include <config.h>
 #include <libxml/parser.h>
+
+#include <gdk/gdkx.h>
+#define WNCK_I_KNOW_THIS_IS_UNSTABLE 1
+#include <libwnck/libwnck.h>
+
 #include <stickynotes.h>
 #include <stickynotes_callbacks.h>
 #include <util.h>
@@ -33,22 +38,29 @@ StickyNote * stickynote_new(GdkScreen *screen)
 	GtkIconSize size;
 	
 	/* Create and initialize a Sticky Note */
-	note->window = glade_xml_new(GLADE_PATH, "stickynote_window", NULL);
-	note->menu = glade_xml_new(GLADE_PATH, "stickynote_menu", NULL);
-	note->properties = glade_xml_new(GLADE_PATH, "stickynote_properties", NULL);
-	note->w_window = glade_xml_get_widget(note->window, "stickynote_window");
+	note->window = glade_xml_new (GLADE_PATH, "stickynote_window", NULL);
+	note->menu = glade_xml_new (GLADE_PATH, "stickynote_menu", NULL);
+	note->properties = glade_xml_new (GLADE_PATH, "stickynote_properties",
+			NULL);
+	note->w_window = glade_xml_get_widget (note->window,
+			"stickynote_window");
 	gtk_window_set_screen(GTK_WINDOW(note->w_window),screen);
 
 	note->w_menu = glade_xml_get_widget(note->menu, "stickynote_menu");
 
-	note->w_properties = glade_xml_get_widget(note->properties, "stickynote_properties");
-	gtk_window_set_screen(GTK_WINDOW(note->w_properties),screen);
+	note->w_properties = glade_xml_get_widget (note->properties,
+			"stickynote_properties");
+	gtk_window_set_screen (GTK_WINDOW (note->w_properties), screen);
 
-	note->w_entry = glade_xml_get_widget(note->properties, "title_entry");
-	note->w_color = glade_xml_get_widget(note->properties, "note_color");
+	note->w_entry = glade_xml_get_widget (note->properties, "title_entry");
+	note->w_color = glade_xml_get_widget (note->properties, "note_color");
 	note->w_font = glade_xml_get_widget(note->properties, "note_font");
-	note->w_def_color = GTK_WIDGET(&GTK_CHECK_BUTTON(glade_xml_get_widget(note->properties, "def_color_check"))->toggle_button);
-	note->w_def_font = GTK_WIDGET(&GTK_CHECK_BUTTON(glade_xml_get_widget(note->properties, "def_font_check"))->toggle_button);
+	note->w_def_color = GTK_WIDGET (&GTK_CHECK_BUTTON (
+				glade_xml_get_widget (note->properties,
+					"def_color_check"))->toggle_button);
+	note->w_def_font = GTK_WIDGET (&GTK_CHECK_BUTTON (
+				glade_xml_get_widget (note->properties,
+					"def_font_check"))->toggle_button);
 	note->w_title = glade_xml_get_widget(note->window, "title_label");
 	note->w_body = glade_xml_get_widget(note->window, "body_text");
 	note->w_lock = glade_xml_get_widget(note->window, "lock_button");
@@ -66,17 +78,26 @@ StickyNote * stickynote_new(GdkScreen *screen)
 	note->h = 0;
 
 	/* Customize the window */
-	gtk_window_set_decorated(GTK_WINDOW(note->w_window), FALSE);
-	if (gconf_client_get_bool(stickynotes->gconf, GCONF_PATH "/settings/sticky", NULL))
+	if (gconf_client_get_bool(stickynotes->gconf,
+				GCONF_PATH "/settings/sticky", NULL))
 		gtk_window_stick(GTK_WINDOW(note->w_window));
-	gtk_window_resize(GTK_WINDOW(note->w_window), gconf_client_get_int(stickynotes->gconf, GCONF_PATH "/defaults/width", NULL),
-						      gconf_client_get_int(stickynotes->gconf, GCONF_PATH "/defaults/height", NULL));
+	gtk_window_resize(GTK_WINDOW(note->w_window),
+			gconf_client_get_int(stickynotes->gconf,
+				GCONF_PATH "/defaults/width", NULL),
+			gconf_client_get_int(stickynotes->gconf,
+				GCONF_PATH "/defaults/height", NULL));
 
 	/* Set the button images */
 	size = gtk_icon_size_from_name ("stickynotes_icon_size");
-	gtk_image_set_from_stock(GTK_IMAGE(glade_xml_get_widget(note->window, "close_img")), STICKYNOTES_STOCK_CLOSE, size);
-	gtk_image_set_from_stock(GTK_IMAGE(glade_xml_get_widget(note->window, "resize_se_img")), STICKYNOTES_STOCK_RESIZE_SE, size);
-	gtk_image_set_from_stock(GTK_IMAGE(glade_xml_get_widget(note->window, "resize_sw_img")), STICKYNOTES_STOCK_RESIZE_SW, size);
+	gtk_image_set_from_stock (GTK_IMAGE (glade_xml_get_widget (note->window,
+					"close_img")),
+			STICKYNOTES_STOCK_CLOSE, size);
+	gtk_image_set_from_stock (GTK_IMAGE (glade_xml_get_widget (note->window,
+					"resize_se_img")),
+			STICKYNOTES_STOCK_RESIZE_SE, size);
+	gtk_image_set_from_stock (GTK_IMAGE (glade_xml_get_widget (note->window,
+					"resize_sw_img")),
+			STICKYNOTES_STOCK_RESIZE_SW, size);
 	gtk_widget_show(note->w_lock);
 	gtk_widget_show(note->w_close);
 	gtk_widget_show(glade_xml_get_widget(note->window, "resize_bar"));
@@ -96,26 +117,44 @@ StickyNote * stickynote_new(GdkScreen *screen)
 	gnome_popup_menu_attach(note->w_menu, note->w_resize_sw, note);
 
 	/* Connect a properties dialog to the note */
-	gtk_window_set_transient_for(GTK_WINDOW(note->w_properties), GTK_WINDOW(note->w_window));
-	gtk_dialog_set_default_response(GTK_DIALOG(note->w_properties), GTK_RESPONSE_CLOSE);
-	g_signal_connect (G_OBJECT (note->w_properties), "response", G_CALLBACK (response_cb), note);
+	gtk_window_set_transient_for (GTK_WINDOW(note->w_properties),
+			GTK_WINDOW(note->w_window));
+	gtk_dialog_set_default_response (GTK_DIALOG(note->w_properties),
+			GTK_RESPONSE_CLOSE);
+	g_signal_connect (G_OBJECT (note->w_properties), "response",
+			G_CALLBACK (response_cb), note);
 
 	/* Connect signals to the sticky note */
+	g_signal_connect (G_OBJECT (note->w_lock), "clicked",
+			G_CALLBACK (stickynote_toggle_lock_cb), note);
+	g_signal_connect (G_OBJECT (note->w_close), "clicked",
+			G_CALLBACK (stickynote_close_cb), note);
+	g_signal_connect (G_OBJECT (note->w_resize_se), "button-press-event",
+			G_CALLBACK (stickynote_resize_cb), note);
+	g_signal_connect (G_OBJECT (note->w_resize_sw), "button-press-event",
+			G_CALLBACK (stickynote_resize_cb), note);
 
-	g_signal_connect(G_OBJECT(note->w_lock), "clicked", G_CALLBACK(stickynote_toggle_lock_cb), note);
-	g_signal_connect(G_OBJECT(note->w_close), "clicked", G_CALLBACK(stickynote_close_cb), note);
-	g_signal_connect(G_OBJECT(note->w_resize_se), "button-press-event", G_CALLBACK(stickynote_resize_cb), note);
-	g_signal_connect(G_OBJECT(note->w_resize_sw), "button-press-event", G_CALLBACK(stickynote_resize_cb), note);
-
-	g_signal_connect(G_OBJECT(note->w_window), "button-press-event", G_CALLBACK(stickynote_move_cb), note);
-	g_signal_connect(G_OBJECT(note->w_window), "expose-event", G_CALLBACK(stickynote_expose_cb), note);
-	g_signal_connect(G_OBJECT(note->w_window), "configure-event", G_CALLBACK(stickynote_configure_cb), note);
-	g_signal_connect(G_OBJECT(note->w_window), "delete-event", G_CALLBACK(stickynote_delete_cb), note);
+	g_signal_connect (G_OBJECT (note->w_window), "button-press-event",
+			G_CALLBACK (stickynote_move_cb), note);
+	g_signal_connect (G_OBJECT (note->w_window), "expose-event",
+			G_CALLBACK (stickynote_expose_cb), note);
+	g_signal_connect (G_OBJECT (note->w_window), "configure-event",
+			G_CALLBACK (stickynote_configure_cb), note);
+	g_signal_connect (G_OBJECT (note->w_window), "delete-event",
+			G_CALLBACK (stickynote_delete_cb), note);
 	
-	g_signal_connect(G_OBJECT(glade_xml_get_widget(note->menu, "popup_create")), "activate", G_CALLBACK(popup_create_cb), note);
-	g_signal_connect(G_OBJECT(glade_xml_get_widget(note->menu, "popup_destroy")), "activate", G_CALLBACK(popup_destroy_cb), note);
-	g_signal_connect(G_OBJECT(glade_xml_get_widget(note->menu, "popup_toggle_lock")), "toggled", G_CALLBACK(popup_toggle_lock_cb), note);
-	g_signal_connect(G_OBJECT(glade_xml_get_widget(note->menu, "popup_properties")), "activate", G_CALLBACK(popup_properties_cb), note);
+	g_signal_connect (G_OBJECT (glade_xml_get_widget (note->menu,
+					"popup_create")), "activate",
+			G_CALLBACK (popup_create_cb), note);
+	g_signal_connect (G_OBJECT (glade_xml_get_widget(note->menu,
+					"popup_destroy")), "activate",
+			G_CALLBACK (popup_destroy_cb), note);
+	g_signal_connect (G_OBJECT (glade_xml_get_widget (note->menu,
+					"popup_toggle_lock")), "toggled",
+			G_CALLBACK (popup_toggle_lock_cb), note);
+	g_signal_connect (G_OBJECT (glade_xml_get_widget (note->menu,
+					"popup_properties")), "activate",
+			G_CALLBACK (popup_properties_cb), note);
 
 	g_signal_connect_swapped (G_OBJECT (note->w_entry), "changed",
 			G_CALLBACK (properties_apply_title_cb), note);
@@ -129,9 +168,11 @@ StickyNote * stickynote_new(GdkScreen *screen)
 			G_CALLBACK (properties_apply_font_cb), note);
 	g_signal_connect (G_OBJECT (note->w_entry), "activate",
 			G_CALLBACK (properties_activate_cb), note);
+
+	gtk_window_set_decorated (GTK_WINDOW (note->w_window), FALSE);
+	gtk_window_set_skip_taskbar_hint (GTK_WINDOW (note->w_window), TRUE);
+	gtk_window_set_skip_pager_hint (GTK_WINDOW (note->w_window), TRUE);
 	
-	gtk_window_set_skip_taskbar_hint (GTK_WINDOW(note->w_window), TRUE);
-	gtk_window_set_skip_pager_hint (GTK_WINDOW(note->w_window), TRUE);
 	gtk_widget_show_all (note->w_window);
 	
 	return note;
@@ -377,19 +418,22 @@ void stickynote_set_locked(StickyNote *note, gboolean locked)
 }
 
 /* Show/Hide a sticky note */
-void stickynote_set_visible(StickyNote *note, gboolean visible)
+void
+stickynote_set_visible (StickyNote *note, gboolean visible)
 {
 	note->visible = visible;
 
 	if (visible) {
-		/* Show & raise sticky note, then move to the corrected location on screen. */
-		gtk_window_present(GTK_WINDOW(note->w_window));
+		/* Show & raise sticky note,
+		 * then move to the corrected location on screen. */
+		gtk_widget_show (GTK_WIDGET (note->w_window));
 		if (note->x != -1 || note->y != -1)
-			gtk_window_move(GTK_WINDOW(note->w_window), note->x, note->y);
+			gtk_window_move (GTK_WINDOW (note->w_window),
+					note->x, note->y);
 		/* Put the note on all workspaces if necessary. */
-		if (gconf_client_get_bool(stickynotes->gconf, GCONF_PATH "/settings/sticky", NULL))
+		if (gconf_client_get_bool(stickynotes->gconf,
+					GCONF_PATH "/settings/sticky", NULL))
 			gtk_window_stick(GTK_WINDOW(note->w_window));
-
 	}
 	else {
 		/* Hide sticky note */
@@ -449,7 +493,11 @@ void stickynotes_remove(StickyNote *note)
 /* Save all sticky notes in an XML configuration file */
 void stickynotes_save(void)
 {
+	WnckScreen *wnck_screen;
 	gint i;
+	
+	wnck_screen = wnck_screen_get_default ();
+	wnck_screen_force_update (wnck_screen);
 
 	/* Create a new XML document */
 	xmlDocPtr doc = xmlNewDoc("1.0");
@@ -460,6 +508,10 @@ void stickynotes_save(void)
 	
 	/* For all sticky notes */
 	for (i = 0; i < g_list_length(stickynotes->notes); i++) {
+		WnckWindow *wnck_win;
+		int workspace = 0;
+		gulong xid = 0;
+
 		/* Access the current note in the list */
 		StickyNote *note = g_list_nth_data(stickynotes->notes, i);
 
@@ -470,6 +522,12 @@ void stickynotes_save(void)
 		/* Retrieve the window position of the note */
 		gchar *x_str = g_strdup_printf("%d", note->x);
 		gchar *y_str = g_strdup_printf("%d", note->y);
+
+		xid = GDK_WINDOW_XID (note->w_window->window);
+		wnck_win = wnck_window_get (xid);
+		if (wnck_win)
+			workspace = 1 + wnck_workspace_get_number (
+					wnck_window_get_workspace (wnck_win));
 		
 		/* Retreive the title of the note */
 		const gchar *title = gtk_label_get_text(GTK_LABEL(note->w_title));
@@ -485,20 +543,30 @@ void stickynotes_save(void)
 
 		/* Save the note as a node in the XML document */
 		{
-			xmlNodePtr node = xmlNewTextChild(root, NULL, "note", body);		
+			xmlNodePtr node = xmlNewTextChild(root, NULL, "note",
+					body);		
 			xmlNewProp(node, "title", title);
 			if (note->color)
-				xmlNewProp(node, "color", note->color);
+				xmlNewProp (node, "color", note->color);
 			if (note->font)
-				xmlNewProp(node, "font", note->font);
+				xmlNewProp (node, "font", note->font);
 			if (note->visible)
-				xmlNewProp(node, "visible", "true");
+				xmlNewProp (node, "visible", "true");
 			if (note->locked)
-				xmlNewProp(node, "locked", "true");
-			xmlNewProp(node, "x", x_str);
-			xmlNewProp(node, "y", y_str);
-			xmlNewProp(node, "w", w_str);
-			xmlNewProp(node, "h", h_str);
+				xmlNewProp (node, "locked", "true");
+			xmlNewProp (node, "x", x_str);
+			xmlNewProp (node, "y", y_str);
+			xmlNewProp (node, "w", w_str);
+			xmlNewProp (node, "h", h_str);
+			if (workspace)
+			{
+				char *workspace_str;
+				
+				workspace_str = g_strdup_printf ("%i",
+						workspace);
+				xmlNewProp (node, "workspace", workspace_str);
+				g_free (workspace_str);
+			}
 		}
 
 		/* Now that it has been saved, reset the modified flag */
@@ -513,7 +581,8 @@ void stickynotes_save(void)
 	
 	/* The XML file is $HOME/.gnome2/stickynotes_applet, most probably */
 	{
-		gchar *file = g_strdup_printf("%s%s", g_get_home_dir(), XML_PATH);
+		gchar *file = g_strdup_printf("%s%s", g_get_home_dir(),
+				XML_PATH);
 		xmlSaveFormatFile(file, doc, 1);
 		g_free(file);
 	}
@@ -527,10 +596,12 @@ void stickynotes_load(GdkScreen *screen)
 	xmlDocPtr doc;
 	xmlNodePtr root;
 	xmlNodePtr node;
+	WnckScreen *wnck_screen;
 
 	/* The XML file is $HOME/.gnome2/stickynotes_applet, most probably */
 	{
-		gchar *file = g_strdup_printf("%s%s", g_get_home_dir(), XML_PATH);
+		gchar *file = g_strdup_printf("%s%s", g_get_home_dir(),
+				XML_PATH);
 		doc = xmlParseFile(file);
 		g_free(file);
 	}
@@ -605,6 +676,39 @@ void stickynotes_load(GdkScreen *screen)
 					gtk_window_get_position(GTK_WINDOW(note->w_window), &note->x, &note->y);
 					g_free(x_str);
 					g_free(y_str);
+				}
+			}
+			/* Retrieve the workspace */
+			{
+				char *workspace_str;
+				int workspace;
+
+				workspace_str = xmlGetProp (node, "workspace");
+				if (workspace_str)
+				{
+					WnckWindow *wnck_win;
+					gulong xid;
+					WnckWorkspace *wnck_ws;
+					
+			workspace = atoi (workspace_str);
+			if (workspace > 0)
+			{
+				wnck_screen = wnck_screen_get_default ();
+				wnck_screen_force_update (wnck_screen);
+				wnck_ws = wnck_screen_get_workspace (
+						wnck_screen,
+						workspace - 1);
+				xid = GDK_WINDOW_XID (note->w_window->window);
+				g_print ("XID = %i\n", xid);
+				wnck_win = wnck_window_get (xid);
+				if (wnck_ws && wnck_win)
+					wnck_window_move_to_workspace (
+							wnck_win, wnck_ws);
+				else
+					g_print ("Err, could not move window\n");
+			}
+
+				g_free (workspace_str);
 				}
 			}
 

@@ -13,12 +13,6 @@ if BUILD_GNOME_VFS_APPLETS
 vfs_SUBDIRS = $(vfs_applets)
 endif
 
-cdplayer_applets = \
-	cdplayer
-if APPLET_CDPLAYER
-cdplayer_SUBDIRS = $(cdplayer_applets)
-endif
-
 mixer_applets = \
 	mixer
 if APPLET_MIXER
@@ -62,7 +56,6 @@ SUBDIRS = \
 	$(always_built_SUBDIRS)	\
 	$(mixer_SUBDIRS)	\
 	$(modemlights_SUBDIRS)	\
-	$(cdplayer_SUBDIRS)	\
 	$(gtop_SUBDIRS)		\
 	$(vfs_SUBDIRS)		\
 	$(battstat_SUBDIR)	\
@@ -74,7 +67,6 @@ DIST_SUBDIRS = \
 	po		\
 	mixer		\
 	modemlights	\
-	cdplayer	\
 	drivemount	\
 	charpick	\
 	geyes		\

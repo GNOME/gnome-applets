@@ -168,37 +168,11 @@ fi
 AM_CONDITIONAL(HAVE_JW, test "x$HAVE_JW" = "xyes")
 AC_SUBST(HAVE_JW)
 
-dnl ******************************************
-dnl ** cdplayer applet check                **
-dnl ******************************************
-dnl FIXME: What's the default device for irix? and is this correct for Netbsd
-dnl AC_CANONICAL_HOST
-cdplayer_type_sun=false
-case "$host" in
-*irix*) CDROM_HOST=irix; CDROM_LIBS="-lcdaudio -lmediad -lds";cd_device_path="/dev/cdrom";;
-*linux*) CDROM_HOST=linux;cd_device_path="/dev/cdrom";;
-*netbsd*) CDROM_HOST=netbsd;cd_device_path="/dev/rcd0";;
-*solaris*) CDROM_HOST=solaris;cd_device_path="/vol/dev/aliases/cdrom0";cdplayer_type_sun=true;;
-esac
 case "$host" in
 sparc-*-solaris*)	gkb_type_sun=true;;
 *)			gkb_type_sun=false;;
 esac
 AM_CONDITIONAL(GKB_SUN, $gkb_type_sun)
-AM_CONDITIONAL(CDDA_SOLARIS, $cdplayer_type_sun)
-
-AM_CONDITIONAL(APPLET_CDPLAYER, test -n "$CDROM_HOST")
-AC_SUBST(CDROM_HOST)
-AC_SUBST(CDROM_LIBS)
-AC_DEFINE_UNQUOTED(DEV_PATH, "$cd_device_path", [CD Device Path])
-if test -z "$CDROM_HOST"; then
-dnl  
-  AC_MSG_WARN([*** \`cdplayer' applet will not be built ***])
-fi
-
-dnl ******************************************
-dnl ******************************************
-
 
 dnl ******************************************
 dnl ** battstat check			    **
@@ -472,20 +446,6 @@ modemlights/Makefile
 modemlights/docs/Makefile
 modemlights/docs/C/Makefile
 modemlights/docs/eu/Makefile
-cdplayer/Makefile
-cdplayer/docs/Makefile
-cdplayer/docs/C/Makefile
-cdplayer/docs/de/Makefile
-cdplayer/docs/es/Makefile
-cdplayer/docs/eu/Makefile
-cdplayer/docs/fr/Makefile
-cdplayer/docs/it/Makefile
-cdplayer/docs/ja/Makefile
-cdplayer/docs/ko/Makefile
-cdplayer/docs/sv/Makefile
-cdplayer/docs/zh_CN/Makefile
-cdplayer/docs/zh_HK/Makefile
-cdplayer/docs/zh_TW/Makefile
 multiload/Makefile
 multiload/docs/Makefile
 multiload/docs/C/Makefile

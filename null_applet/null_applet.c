@@ -39,6 +39,8 @@ insert_oafiids (GHashTable *hash_table)
 	 */
 	g_hash_table_insert (hash_table,
 			"OAFIID:GNOME_MailcheckApplet", "Inbox Monitor");
+	g_hash_table_insert (hash_table,
+			"OAFIID:GNOME_CDPlayerApplet", "CD Player");
 }
 
 static gboolean already_running;
@@ -71,8 +73,10 @@ static char
 
 	client = gconf_client_get_default ();
 
+	gconf_client_suggest_sync (client, NULL);
+	
 	list = gconf_client_all_dirs (client,
-		"/apps/panel/profiles/default/applets",
+		"/apps/panel/applets",
 		&error);
 
 	if (error)
@@ -93,24 +97,28 @@ static char
 			error = NULL;
 		}
 		g_free (key);
-		
-		name = g_hash_table_lookup (hash_table, oafiid);
-		if (name)
+	
+		if (oafiid)
 		{
-			g_warning ("Deleting %s (%s) from config",
+			name = g_hash_table_lookup (hash_table, oafiid);
+			if (name)
+			{
+				g_warning ("Deleting %s (%s) from config",
 					oafiid, name);
-			gconf_client_recursive_unset (client, l->data,
+				gconf_client_recursive_unset (client, l->data,
 					GCONF_UNSET_INCLUDING_SCHEMA_NAMES,
 					&error);
-			if (error)
-			{
-				g_warning ("Error: %s", error->message);
-				g_error_free (error);
-				error = NULL;
+				if (error)
+				{
+					g_warning ("Error: %s", error->message);
+					g_error_free (error);
+					error = NULL;
+				}
+				g_string_append_printf (string,
+						"    • %s\n", name);
 			}
-			g_string_append_printf (string, "    • %s\n", name);
+			g_free (oafiid);
 		}
-		g_free (oafiid);
 		g_free (l->data);
 	}
 

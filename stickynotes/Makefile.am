@@ -7,6 +7,7 @@ INCLUDES =					\
 	-I$(srcdir)				\
 	$(GNOME_APPLETS_CFLAGS)			\
 	$(LIBGLADE_CFLAGS)			\
+	$(LIBWNCK_CFLAGS)			\
 	-DSTICKYNOTES_GLADEDIR=\"$(gladedir)\"	\
 	-DSTICKYNOTES_ICONDIR=\"$(icondir)\"
 
@@ -24,9 +25,10 @@ stickynotes_applet_SOURCES = \
 	stickynotes_applet.c \
 	stickynotes_applet_callbacks.c
 
-stickynotes_applet_LDADD = \
-	$(GNOME_APPLETS_LIBS) \
-	$(LIBGLADE_LIBS)
+stickynotes_applet_LDADD =	\
+	$(GNOME_APPLETS_LIBS)	\
+	$(LIBGLADE_LIBS)	\
+	$(LIBWNCK_LIBS)
 
 icondir = $(datadir)/pixmaps/stickynotes
 
