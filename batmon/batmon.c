@@ -20,6 +20,7 @@
 
 #define TIMEOUT 5000  /* ms */
 
+#define PROC_APM "/proc/apm"
 
 static PanelCmdFunc panel_cmd_func;
 
@@ -30,7 +31,7 @@ static char *bat_pixmap_filename;
 
 static GtkWidget *window;
 static GtkWidget *batcharge;
-static GtkWidget *statlabel;
+Static GtkWidget *statlabel;
 static GtkWidget *minlabel;
 
 /* On Linux we also show the APM driver version number and the
@@ -91,13 +92,13 @@ batmon_timeout_callback (gpointer *data)
 	mempoint = g_malloc((45 * sizeof(gchar)));
 	apmstr = mempoint;
 	
-	if (!(APM = fopen ("/proc/apm", "r"))) {
+	if (!(APM = fopen (PROC_APM, "r"))) {
 		g_warning (_("Can't open /proc/apm; can't get data."));
 		/* returning FALSE will remove our timout */
 		return FALSE;
 	}
 	
-	if (!(fgets (str, 45, APM))) {
+	if (!(fgets (apmstr, 45, APM))) {
 		g_warning (_("Something wrong with /proc/apm; can't get data."));
 		/* returning FALSE will remove our timout */
 		return FALSE;
@@ -127,17 +128,14 @@ batmon_timeout_callback (gpointer *data)
 	string[6][strlen (string[6]) - 1] = '\0';
 	sscanf (string[6], "%i", &batpct);
 	sscanf (string[7], "%i", &batmin);
-	if (strcmp (string[8], "sec") == 0)
-		batmin *= 60;
-	
-	g_free (mempoint);
+	if (strncmp (string[8], "sec", 3) == 0)
+		batmin /= 60;
 	
 	/* As stated above, we show the APM Driver and APM BIOS versions. */
 	gtk_label_set (GTK_LABEL (driverlabel), string[0]);
 	gtk_label_set (GTK_LABEL (bioslabel), string[1]);
 	
-	for (i = 0; i < 9; ++i)
-		g_free (string[i]);
+	g_free (mempoint);
 #endif /* __linux__ */
 
 	/* I've never done this before; is there a better way to
@@ -169,9 +167,10 @@ batmon_timeout_callback (gpointer *data)
 			break;
 	}
 	
-	gtk_progress_bar_update (GTK_PROGRESS_BAR (batcharge), batpct / 100);
+	gtk_progress_bar_update (GTK_PROGRESS_BAR (batcharge),
+		(gfloat) batpct / 100);
 	
-	if (batmin > 100000000)
+	if (batmin < 100000000)
 		sprintf (str, _("%d minutes of battery"), batmin);
 	else {	/* would have to be an error */
 		g_warning (_("More than 100,000,000 minutes of battery life?!?"));
@@ -234,7 +233,7 @@ create_batmon_widget (GtkWidget *window)
 			    (GtkSignalFunc) destroy_instance,
 			    NULL);
 
-	batmon_timeout_callback((gpointer) button);
+	/* batmon_timeout_callback((gpointer) button); */
 
 	return button;
 }
@@ -249,12 +248,13 @@ create_batmon_window (void)
 	
 	/* Begin definition of window */
 	window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+	gtk_window_set_title (GTK_WINDOW (window), _("APM Stats"));
 	gtk_container_border_width (GTK_CONTAINER (window), 10);
 	gtk_signal_connect (GTK_OBJECT (window), "delete_event",
 			    (GtkSignalFunc) hide_batmon_window,
 			    NULL);
 
-	box1 = gtk_vbox_new (TRUE, 10);
+	box1 = gtk_vbox_new (TRUE, 0);
 	gtk_container_add (GTK_CONTAINER (window), box1);
 	gtk_widget_show (box1);
 
@@ -299,7 +299,7 @@ create_batmon_window (void)
 
 	statlabel = gtk_label_new ("");
 	gtk_box_pack_start (GTK_BOX (box2), statlabel, FALSE, FALSE, 0);
-	gtk_widget_show (bioslabel);
+	gtk_widget_show (statlabel);
 
 	batcharge = gtk_progress_bar_new ();
 	gtk_box_pack_start_defaults (GTK_BOX (box1), batcharge);
@@ -311,7 +311,7 @@ create_batmon_window (void)
 
 	minlabel = gtk_label_new ("");
 	gtk_container_add (GTK_CONTAINER (widget1), minlabel);
-	gtk_widget_show (widget1);
+	gtk_widget_show (minlabel);
 
 	widget1 = gtk_alignment_new (1.0, 0.5, 0.0, 0.0);
 	gtk_box_pack_start_defaults (GTK_BOX (box1), widget1);
