@@ -54,6 +54,7 @@ static void destroy_drive_widget(GtkWidget *widget, gpointer data);
 static DriveData * create_drive_widget(GtkWidget *applet);
 static GtkWidget * applet_start_new_applet(const gchar *goad_id, const gchar **params, gint nparams);
 
+static void dnd_drag_begin_cb(GtkWidget *widget, GdkDragContext *context, gpointer data);
 static void dnd_set_data_cb(GtkWidget *widget, GdkDragContext *context,
 			    GtkSelectionData *selection_data, guint info,
 			    guint time, gpointer data);
@@ -572,6 +573,15 @@ static GtkTargetEntry button_drag_types[] = {
 };
 static gint n_button_drag_types = 2;
 
+static void dnd_drag_begin_cb(GtkWidget *widget, GdkDragContext *context, gpointer data)
+{
+	DriveData *dd = data;
+
+	gtk_drag_set_icon_pixmap(context, gtk_widget_get_colormap (dd->button),
+				 GTK_PIXMAP(dd->button_pixmap)->pixmap, NULL,
+				 -5, -5);
+}
+
 static void dnd_set_data_cb(GtkWidget *widget, GdkDragContext *context,
 			    GtkSelectionData *selection_data, guint info,
 			    guint time, gpointer data)
@@ -608,5 +618,7 @@ static void dnd_init(DriveData *dd)
 			GDK_ACTION_COPY | GDK_ACTION_LINK | GDK_ACTION_ASK);
 	gtk_signal_connect(GTK_OBJECT(dd->button), "drag_data_get",
 			dnd_set_data_cb, dd);
+	gtk_signal_connect(GTK_OBJECT(dd->button), "drag_begin",
+			dnd_drag_begin_cb, dd);
 }
 
