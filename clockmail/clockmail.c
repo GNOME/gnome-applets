@@ -186,6 +186,8 @@ static void update_mail_count(AppData *ad, gint force)
 			while (fgets(buf, sizeof(buf), f) != NULL)
 				{
 				if (buf[0] == 'F' && !strncmp(buf, "From ", 5)) c++;
+				/* Hack alert! this was added to ignore PINE's false mail entries */
+				if (buf[0] == 'X' && !strncmp(buf, "X-IMAP:", 7) && c > 0) c--;
 				}
                         fclose(f);
 			ad->message_count = c;
