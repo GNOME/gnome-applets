@@ -7,13 +7,12 @@
 ## if HAVE_LIBGTOP
 ## gtop_SUBDIRS = $(gtop_applets)
 ## endif
-## 
-## wordexp_applets = \
-## 	screenshooter
-## if HAVE_WORDEXP
-## wordexp_SUBDIRS = $(wordexp_applets)
-## endif
-## 
+
+wordexp_applets = screenshooter
+if HAVE_WORDEXP
+wordexp_SUBDIRS = $(wordexp_applets)
+endif
+
 ## ghttp_applets = \
 ## 	gtik
 ## 	gweather 
@@ -51,9 +50,9 @@ endif
 
 always_built_SUBDIRS = \
 ##	battery		\
- 	fifteen		\
- 	whereami	\
- 	screenshooter
+	fifteen		\
+	odometer	\
+ 	whereami	
 ## 	another_clock	\
 ## 	asclock		\
 ## 	charpick	\
@@ -65,7 +64,6 @@ always_built_SUBDIRS = \
 ## 	jbc		\
 ## 	life		\
 ## 	mini-commander	\
-## 	odometer	\
 ## 	quicklaunch	\
 ## 	tickastat	\
 ## 	webcontrol	\
@@ -75,12 +73,12 @@ SUBDIRS = \
 	po			\
 	$(mixer_SUBDIRS)	\
  	$(modemlights_SUBDIRS)	\
+	$(wordexp_SUBDIRS)      \
 	$(always_built_SUBDIRS)	
 ## 	$(gtop_SUBDIRS)		\
 ## 	$(ghttp_SUBDIRS)	\
 ## 	$(cdplayer_SUBDIRS)	\
 ## 	$(esd_SUBDIRS)		\
-## 	$(wordexp_SUBDIRS)      \
 ## 	omf-install
 ## 
 DIST_SUBDIRS = \
