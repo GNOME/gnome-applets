@@ -429,8 +429,14 @@ static void
 about (AppletWidget *applet, gpointer data)
 {
   static const char *authors[] = { "Alexandre Muñiz (munizao@cyberhighway.net)", NULL };
-  GtkWidget *about_box;
+  static GtkWidget *about_box = NULL;
 
+  if (about_box != NULL)
+  {
+	  gdk_window_show(about_box->window);
+	  gdk_window_raise(about_box->window);
+	  return;
+  }
   about_box = gnome_about_new (_("Character Picker"),
 			       CHARPICK_VERSION,
 			       _("Copyright (C) 1998"),
@@ -440,8 +446,9 @@ about (AppletWidget *applet, gpointer data)
 				 "Released under GNU General Public Licence."),
 			       NULL);
 
-  gtk_window_set_modal (GTK_WINDOW(about_box),TRUE);
-  gnome_dialog_run (GNOME_DIALOG (about_box));
+  gtk_signal_connect(GTK_OBJECT(about_box), "destroy",
+		     GTK_SIGNAL_FUNC(gtk_widget_destroyed), &about_box);
+  gtk_widget_show(about_box);
   return;
   applet = NULL;
   data = NULL;

@@ -111,11 +111,18 @@ static void dnd_init(DriveData *dd);
 
 static void about_cb (AppletWidget *widget, gpointer data)
 {
-	GtkWidget *about;
+	static GtkWidget *about = NULL;
 	const gchar *authors[2];
 
 	authors[0] = "John Ellis <johne@bellatlantic.net>";
 	authors[1] = NULL;
+
+	if (about != NULL)
+	{
+		gdk_window_show(about->window);
+		gdk_window_raise(about->window);
+		return;
+	}
 
         about = gnome_about_new ( _("Drive Mount Applet"), VERSION,
 			"(C) 1999",
@@ -124,6 +131,8 @@ static void about_cb (AppletWidget *widget, gpointer data)
 			"Mounts and Unmounts drives."
 			"."),
 			NULL);
+	gtk_signal_connect(GTK_OBJECT(about), "destroy",
+	                   GTK_SIGNAL_FUNC(gtk_widget_destroyed), &about);
 	gtk_widget_show (about);
 	return;
 	widget = NULL;

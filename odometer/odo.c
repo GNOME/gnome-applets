@@ -125,10 +125,18 @@ reset_cb (AppletWidget *widget, gpointer data)
 static void
 about_cb (AppletWidget *widget, gpointer data)
 {
-   GtkWidget *about;
+   static GtkWidget *about = NULL;
 
    const gchar *authors[] = {
    	"Fabrice Bellet <Fabrice.Bellet@creatis.insa-lyon.fr>",NULL};
+
+   if (about != NULL)
+   {
+	gdk_window_show(about->window);
+	gdk_window_raise(about->window);
+	return;
+   }
+
    about=gnome_about_new (_("Odometer"),
    	ODO_VERSION,
    	_("(C) 1999 The Free Software Foundation"),
@@ -136,6 +144,8 @@ about_cb (AppletWidget *widget, gpointer data)
    	_("a GNOME applet that tracks and measures the movements "
    	"of your mouse pointer across the desktop."),
    	NULL);
+   gtk_signal_connect( GTK_OBJECT(about), "destroy",
+		       GTK_SIGNAL_FUNC(gtk_widget_destroyed), &about );
    gtk_widget_show (about);
    return;
    widget = NULL;

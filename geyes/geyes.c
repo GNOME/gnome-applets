@@ -226,13 +226,22 @@ timer_cb (void)
 static void
 about_cb (void)
 {
-        GtkWidget *about;
+        static GtkWidget *about = NULL;
         const gchar *authors [] = {N_("Dave Camp <campd@oit.edu>"), NULL};
+
+	if (about != NULL)
+	{
+		gdk_window_show(about->window);
+		gdk_window_raise(about->window);
+		return;
+	}
         
         about = gnome_about_new (_("gEyes"), VERSION, _("Copyright (C) 1999 Dave Camp"),
                                  authors,
                                  _("A goofy little xeyes clone for the GNOME panel."),
                                  NULL);
+	gtk_signal_connect( GTK_OBJECT(about), "destroy",
+			    GTK_SIGNAL_FUNC(gtk_widget_destroyed), &about );
         gtk_widget_show (about);
 }
 

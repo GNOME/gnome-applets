@@ -38,10 +38,16 @@ static gboolean panel_vertical = FALSE;
 static gint
 about_jbc ()
 {
-  GtkWidget *about;
+  static GtkWidget *about = NULL;
   const gchar *authors[2];
   /* gchar version[32]; */
 
+  if (about != NULL)
+  {
+  	gdk_window_show(about->window);
+	gdk_window_raise(about->window);
+	return TRUE;
+  }
   authors[0] = "Jon Anhold <jon@snoopy.net>";
   authors[1] = NULL;
 
@@ -53,6 +59,8 @@ about_jbc ()
 			  "Displays time in Binary Coded Decimal\n"
 			  "http://snoopy.net/~jon/jbc/."),
 			   NULL);
+  gtk_signal_connect( GTK_OBJECT(about), "destroy",
+		      GTK_SIGNAL_FUNC(gtk_widget_destroyed), &about );
   gtk_widget_show (about);
 
   return TRUE;

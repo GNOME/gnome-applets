@@ -98,8 +98,15 @@ static gint setup_done = FALSE;
 
 static void about_cb (AppletWidget *widget, gpointer data)
 {
-	GtkWidget *about;
+	static GtkWidget *about = NULL;
 	const gchar *authors[8];
+
+	if (about != NULL)
+	{
+		gdk_window_show(about->window);
+		gdk_window_raise(about->window);
+		return;
+	}
 
 	authors[0] = "John Ellis <johne@bellatlantic.net>";
 	authors[1] = "Martin Baulig <martin@home-of-linux.org> - ISDN";
@@ -112,6 +119,8 @@ static void about_cb (AppletWidget *widget, gpointer data)
 			"A modem status indicator and dialer.\n"
 			"Lights in order from the top or left are Send data and Receive data."),
 			NULL);
+	gtk_signal_connect( GTK_OBJECT(about), "destroy",
+			    GTK_SIGNAL_FUNC(gtk_widget_destroyed), &about );
 	gtk_widget_show (about);
 	return;
 	widget = NULL;

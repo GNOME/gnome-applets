@@ -974,7 +974,10 @@ make_new_battery_applet (const gchar *goad_id)
 void
 destroy_about (GtkWidget *w, gpointer data)
 {
-  /* BatteryData *bat = data; */
+   BatteryData *bat = data; 
+
+   bat->about_box = NULL;
+
   return;
   w = NULL;
   data = NULL;
@@ -986,6 +989,12 @@ about_cb (AppletWidget *widget, gpointer data)
   BatteryData *bat = data;
   char *authors[2];
   
+  if (bat->about_box != NULL)
+  {
+    gdk_window_show(bat->about_box->window);
+    gdk_window_raise(bat->about_box->window);
+    return;
+  }
   authors[0] = "Nat Friedman <nat@nat.org>";
   authors[1] = NULL;
 

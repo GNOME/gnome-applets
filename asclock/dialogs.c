@@ -9,19 +9,27 @@
 
 void about_dialog(AppletWidget *applet, gpointer data)
 {
-  GtkWidget *about;
+  static GtkWidget *about = NULL;
   const gchar *authors[] = {
        "Beat Christen (spiff@longstreet.ch)",
        "Patrick Rogan (rogan@lycos.com)",
                 NULL
                 };
 
+  if (about != NULL)
+  {
+	gdk_window_show(about->window);
+	gdk_window_raise(about->window);
+	return;
+  }
   about = gnome_about_new (_("ASClock"), 
 			ASCLOCK_VERSION,
                         _("(C) 1998 the Free Software Foundation"),
                         authors,
                         _("Who said NeXT is dead?"),
                         NULL);
+  gtk_signal_connect( GTK_OBJECT(about), "destroy",
+		      GTK_SIGNAL_FUNC(gtk_widget_destroyed), &about );
 
         gtk_widget_show (about);
 

@@ -120,9 +120,16 @@ gint applet_save_session(GtkWidget *widget, gchar *privcfgpath,
 
 void about_cb(AppletWidget *widget, gpointer data)
 {
-	GtkWidget *about;
+	static GtkWidget *about = NULL;
 	const gchar *authors[5];
 	gchar version[32];
+
+	if (about != NULL)
+	{
+		gdk_window_show(about->window);
+		gdk_window_raise(about->window);
+		return;
+	}
 
 	sprintf(version, _("%d.%d.%d"), APPLET_VERSION_MAJ, 
 			APPLET_VERSION_MIN, APPLET_VERSION_REV);
@@ -137,6 +144,8 @@ void about_cb(AppletWidget *widget, gpointer data)
 			authors,
 			_("A stock ticker-like applet\n"),
 			NULL);
+	gtk_signal_connect( GTK_OBJECT(about), "destroy",
+			    GTK_SIGNAL_FUNC(gtk_widget_destroyed), &about );
 	gtk_widget_show(about);
 	return;
 	widget = NULL;

@@ -49,10 +49,16 @@ static WebControl WC = {
 static void
 about_cb (AppletWidget *widget, gpointer data)
 {
-	GtkWidget *about;
+	static GtkWidget *about = NULL;
 	static const gchar *authors[2] =
 	{"Garrett Smith <gsmith@serv.net>", NULL};
 
+	if (about != NULL)
+	{
+		gdk_window_show(about->window);
+		gdk_window_raise(about->window);
+		return;
+	}
 	about = gnome_about_new (_("The Web Browser Controller"),
 			VERSION,
 			"(C) 1998 the Free Software Foundation",
@@ -62,6 +68,8 @@ about_cb (AppletWidget *widget, gpointer data)
 			  "interface.  Hopefully later more webrowsers "
 			  "will be supported."),
 			NULL);
+	gtk_signal_connect( GTK_OBJECT(about), "destroy",
+			    GTK_SIGNAL_FUNC(gtk_widget_destroyed), &about );
 	gtk_widget_show (about);
 
 	return;

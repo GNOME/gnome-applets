@@ -193,8 +193,14 @@ static void
 about (AppletWidget *applet, gpointer data)
 {
 	static const char *authors[] = { "The man in the box", NULL };
-	GtkWidget *about_box;
+	static GtkWidget *about_box = NULL;
 
+	if (about_box != NULL)
+	{
+		gdk_window_show(about_box->window);
+		gdk_window_raise(about_box->window);
+		return;
+	}
 	about_box = gnome_about_new (_("The Game of Life"),
 				     VERSION,
 				     _("Copyright (C) The Free Software Foundation"),
@@ -202,6 +208,8 @@ about (AppletWidget *applet, gpointer data)
 				     _("A complete waste of perfectly good CPU cycles."),
 				     NULL);
 
+	gtk_signal_connect( GTK_OBJECT(about_box), "destroy",
+			    GTK_SIGNAL_FUNC(gtk_widget_destroyed), &about_box );
 	gtk_widget_show(about_box);
 	return;
 	applet = NULL;

@@ -272,8 +272,14 @@ static void
 about (AppletWidget *applet, gpointer data)
 {
 	static const char *authors[] = { "Federico Mena", NULL };
-	GtkWidget *about_box;
+	static GtkWidget *about_box = NULL;
 
+	if (about_box != NULL)
+	{
+		gdk_window_show(about_box->window);
+		gdk_window_raise(about_box->window);
+		return;
+	}
 	about_box = gnome_about_new (_("Fifteen sliding pieces"),
 				     VERSION,
 				     _("Copyright (C) The Free Software Foundation"),
@@ -282,6 +288,8 @@ about (AppletWidget *applet, gpointer data)
 				       "now for your delight in the Gnome Panel. "
 				       "Guaranteed to be a productivity buster."),
 				     NULL);
+	gtk_signal_connect( GTK_OBJECT(about_box), "destroy",
+			    GTK_SIGNAL_FUNC(gtk_widget_destroyed), &about_box );
 
 	gtk_widget_show(about_box);
 	return;

@@ -347,7 +347,7 @@ gtk_widget_set_sensitive (colorpicker, FALSE);
 
 static void cb_about (AppletWidget *applet, gpointer data)
 {
-    GtkWidget *about;
+    static GtkWidget *about = NULL;
     static const gchar *authors[] = {
 			    /* languages which use font encodings that can't
 			     * display spanish 'ñ' should use 'n' instead */
@@ -355,6 +355,12 @@ static void cb_about (AppletWidget *applet, gpointer data)
 			    NULL
     };
 
+    if (about != NULL)
+    {
+        gdk_window_show(about->window);
+        gdk_window_raise(about->window);
+	return;
+    }
 #ifdef ENABLE_NLS
     {
 	int i=0;
@@ -370,6 +376,8 @@ static void cb_about (AppletWidget *applet, gpointer data)
                     	     _("An analog clock similar to that in CDE panel."),
                     	     NULL);
 
+    gtk_signal_connect( GTK_OBJECT(about), "destroy",
+		        GTK_SIGNAL_FUNC(gtk_widget_destroyed), &about );
     gtk_widget_show (about);
 
     return;

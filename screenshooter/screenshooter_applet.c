@@ -28,13 +28,20 @@ void showHelp (AppletWidget * applet, gpointer data);
 void
 cb_about (AppletWidget * widget, gpointer data)
 {
-  GtkWidget *about;
+  static GtkWidget *about = NULL;
   GtkWidget *my_url;
   static const char *authors[] =
     { "Tom Gilbert <gilbertt@tomgilbert.freeserve.co.uk>",
     "Telsa Gwynne <hobbit@aloss.ukuu.org.uk> (typo fixes, documentation)",
     "The Sirius Cybernetics Corporation <Ursa-minor>", NULL
   };
+
+  if (about != NULL)
+  {
+  	gdk_window_show(about->window);
+	gdk_window_raise(about->window);
+	return;	
+  }
 
   about = gnome_about_new
     (_ ("Screen-Shooter Applet"),
@@ -46,6 +53,8 @@ cb_about (AppletWidget * widget, gpointer data)
 		 "or an area (click and drag to select a rectangle.)\n"
 		 "The right/bottom button will grab the entire desktop.\n"
 		 "Share and Enjoy ;)"), NULL);
+  gtk_signal_connect( GTK_OBJECT(about), "destroy",
+		      GTK_SIGNAL_FUNC(gtk_widget_destroyed), &about );
 
   my_url = gnome_href_new ("http://www.tomgilbert.freeserve.co.uk",
 			   "Visit the author's Website");

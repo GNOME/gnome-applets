@@ -33,11 +33,19 @@ static GtkWidget *applet_start_new_applet(const gchar *goad_id,
 static void event_log_cb(AppletWidget *widget, gpointer data)
 {
 	AppData *ad = data;
-	GtkWidget *dialog;
+	static GtkWidget *dialog = NULL;
 	GtkWidget *gless;
 
+	if (dialog != NULL)
+	{
+		gdk_window_show(dialog->window);
+		gdk_window_raise(dialog->window);
+		return;
+	}
 	dialog = gnome_dialog_new(_("Tick-a-Stat event log"),
 				  GNOME_STOCK_BUTTON_CLOSE, NULL);
+	gtk_signal_connect(GTK_OBJECT(dialog), "destroy",
+			   GTK_SIGNAL_FUNC(gtk_widget_destroyed), &dialog);
 	gnome_dialog_set_close(GNOME_DIALOG(dialog), TRUE);
 	gtk_widget_set_usize(dialog, 500, 400);
 	gtk_window_set_policy(GTK_WINDOW(dialog), TRUE, TRUE, FALSE);
@@ -165,9 +173,16 @@ static void applet_change_pixel_size(GtkWidget *w, int size, gpointer data)
 
 static void about_cb(AppletWidget *widget, gpointer data)
 {
-	GtkWidget *about;
+	static GtkWidget *about = NULL;
 	const gchar *authors[5];
 	gchar version[32];
+
+	if (about != NULL)
+	{
+		gdk_window_show(about->window);
+		gdk_window_raise(about->window);
+		return;
+	}
 
 	sprintf(version,_("%d.%d.%d"),APPLET_VERSION_MAJ,
 		APPLET_VERSION_MIN, APPLET_VERSION_REV);
@@ -180,6 +195,8 @@ static void about_cb(AppletWidget *widget, gpointer data)
 			authors,
 			_("A ticker to display various information and statistics.\n"),
 			NULL);
+	gtk_signal_connect (GTK_OBJECT(about), "destroy",
+			    GTK_SIGNAL_FUNC(gtk_widget_destroyed), &about);
 	gtk_widget_show (about);
         return;
         widget = NULL;

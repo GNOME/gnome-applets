@@ -50,9 +50,15 @@ static GtkWidget * applet_start_new_applet(const gchar *goad_id, const char **pa
 
 static void about_cb (AppletWidget *widget, gpointer data)
 {
-	GtkWidget *about;
+	static GtkWidget *about = NULL;
 	const gchar *authors[2];
 
+	if (about != NULL)
+	{
+		gdk_window_show(about->window);
+		gdk_window_raise(about->window);
+		return;
+	}
 	authors[0] = _("John Ellis <johne@bellatlantic.net>");
 	authors[1] = NULL;
 
@@ -64,6 +70,8 @@ static void about_cb (AppletWidget *widget, gpointer data)
 			"Optional 12/24 time display. Mail blinking can be "
 			"for any unread mail, or only briefly when new mail arrives."),
 			NULL);
+	gtk_signal_connect( GTK_OBJECT(about), "destroy",
+			    GTK_SIGNAL_FUNC(gtk_widget_destroyed), &about );
 	gtk_widget_show (about);
 	return;
 	widget = NULL;
