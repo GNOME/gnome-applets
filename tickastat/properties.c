@@ -229,6 +229,14 @@ void property_changed(ModuleData *md, AppData *ad)
 	md = NULL;
 }
 
+static void
+phelp_cb (GtkWidget *w, gint tab, gpointer data)
+{
+        GnomeHelpMenuEntry help_entry = { "tickastat_applet",
+					  "index.html#TICKASTAT-PREFS" };
+        gnome_help_display(NULL, &help_entry);
+}
+
 static void property_apply_cb(GtkWidget *widget, gint page_num, gpointer data)
 {
 	AppData *ad = data;
@@ -560,6 +568,7 @@ void property_show(AppletWidget *applet, gpointer data)
 
 	gtk_signal_connect( GTK_OBJECT(ad->propwindow),"apply", GTK_SIGNAL_FUNC(property_apply_cb), ad);
 	gtk_signal_connect( GTK_OBJECT(ad->propwindow),"destroy", GTK_SIGNAL_FUNC(property_destroy_cb), ad );
+	gtk_signal_connect( GTK_OBJECT(ad->propwindow),"help", GTK_SIGNAL_FUNC(phelp_cb), ad );
 
 	/* init the module config states */
 	work = ad->modules;
