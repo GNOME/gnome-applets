@@ -41,19 +41,20 @@ static gboolean
 gkb_system_set_keymap_idle (GKB *gkb)
 {
   if (system (gkb->keymap->command)) {
-    gchar str[1000];
+    gchar *str;
     if (g_find_program_in_path("xmodmap"))
-    g_snprintf (str, sizeof (str), _("An error occured.\n\nKeymap `%s' is not"
+    str = g_strdup_printf (_("An error occured.\n\nKeymap `%s' is not"
     			  " supported on this system. Please choose another "
     			  "keymap.\n\nThe command was: %s"),
     			  gkb->keymap->name, gkb->keymap->command);
     else
-    g_snprintf (str, sizeof (str), _("An error occured.\n\nUnable to load keymap"
+    str = g_strdup_printf (_("An error occured.\n\nUnable to load keymap"
     				     " `%s', probably because command `xmodmap'"
     				     " could not be located"
     				     " in your PATH.\n\nThe command was: %s"),
     				     gkb->keymap->name, gkb->keymap->command);
     gnome_error_dialog (str);
+    g_free (str);
    }
   return FALSE;
 }
