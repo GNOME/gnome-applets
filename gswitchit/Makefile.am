@@ -5,33 +5,42 @@ EXTRA_DIST = \
         $(pixmap_DATA) \
         $(glade_DATA)
 
-libexec_PROGRAMS = gswitchit-applet
+libexec_PROGRAMS = gnome-keyboard-applet
+noinst_LIBRARIES = libgswitchit-applet.a
 
-gswitchit_applet_SOURCES = switch.c \
-                           gswitchit-applet.c \
-                           gswitchit-capplet.c \
-                           gswitchit-applet.h
+gnome_keyboard_applet_SOURCES = switch.c
+
+libgswitchit_applet_a_SOURCES = gswitchit-applet.c \
+                         gswitchit-capplet.c \
+                         gswitchit-applet.h
+
+if ENABLE_FLAGS
+  flags_CFLAGS = -DENABLE_FLAGS=1
+endif
 
 COMMON_CFLAGS = -I$(top_srcdir) -I. -I$(top_srcdir)/intl \
            -DGNOMELOCALEDIR=\""$(datadir)/locale"\" \
            -DG_LOG_DOMAIN=\"GSwitchIt\" \
            -DGLADE_DIR=\""$(gladedir)"\" \
            $(LIBXKLAVIER_CFLAGS) \
+           $(flags_CFLAGS) \
            $(LIBGLADE_CFLAGS)
 
-if ENABLE_FLAGS
-  COMMON_CFLAGS += -DENABLE_FLAGS=1
-endif
-
 COMMON_LIBS = $(LIBXKLAVIER_LIBS) \
-              $(LIBGLADE_LIBS) \
-              ../libgswitchit/libgswitchit.a 
+              $(LIBGLADE_LIBS)
 
-gswitchit_applet_CFLAGS = $(COMMON_CFLAGS) \
+libgswitchit_applet_a_CFLAGS = $(COMMON_CFLAGS) \
            $(GNOME_APPLETS_CFLAGS)
 
-gswitchit_applet_LDADD = $(COMMON_LIBS) \
-                         $(GNOME_APPLETS_LIBS)
+gnome_keyboard_applet_CFLAGS = $(COMMON_CFLAGS) \
+           $(GNOME_APPLETS_CFLAGS)
+
+gnome_keyboard_applet_LDADD = $(COMMON_LIBS) \
+                         $(GNOME_APPLETS_LIBS) \
+                         $(top_builddir)/gkb-new/libgkb.a \
+                         $(top_builddir)/screen-exec/libscreen-exec.la \
+                         $(top_builddir)/gswitchit/libgswitchit-applet.a \
+                         $(top_builddir)/libgswitchit/libgswitchit.a 
 
 serverdir       = $(libdir)/bonobo/servers
 server_in_files = GNOME_KeyboardApplet.server.in
@@ -74,5 +83,6 @@ gswitchit_plugins_capplet_CFLAGS = $(COMMON_CFLAGS) \
             $(GNOME_LIBS2_CFLAGS)
                                                                                           
 gswitchit_plugins_capplet_LDADD = $(COMMON_LIBS) \
-            $(GNOME_LIBS2_LIBS)
+            $(GNOME_LIBS2_LIBS) \
+            $(top_builddir)/libgswitchit/libgswitchit.a 
                                                                         
