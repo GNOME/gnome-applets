@@ -258,7 +258,7 @@ static void size_frame_create()
   return;
 }
 
-static void default_chars_frame_create()
+static void default_chars_frame_create(void)
 {
   GtkWidget *tab_label;
   GtkWidget *frame;
@@ -300,16 +300,15 @@ static void default_chars_frame_create()
 static void
 phelp_cb (GtkWidget *w, gint tab, gpointer data)
 {
-        GnomeHelpMenuEntry help_entry = { "charpick_applet",
-                                          "index.html#CHARPICKAPPLET-PREFS" };        gnome_help_display(NULL, &help_entry);
+	GnomeHelpMenuEntry help_entry = { "charpick_applet",
+                                          "index.html#CHARPICKAPPLET-PREFS" };
+	gnome_help_display(NULL, &help_entry);
 }
 
 
-void property_show(AppletWidget *applet, gpointer data)
+void
+property_show(AppletWidget *applet, gpointer data)
 {
-  static GnomeHelpMenuEntry help_entry = { NULL, "properties" };
-
-
   temp_properties.default_charlist = 
     g_strdup(curr_data.properties->default_charlist);
   temp_properties.follow_panel_size = curr_data.properties->follow_panel_size;

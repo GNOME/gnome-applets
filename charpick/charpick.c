@@ -462,7 +462,7 @@ about (AppletWidget *applet, gpointer data)
 
 
 static void
-help_cb (GtkWidget *w, gpointer data)
+help_cb (AppletWidget *applet, gpointer data)
 {
         GnomeHelpMenuEntry help_entry = { "charpick_applet",
                                           "index.html" };
