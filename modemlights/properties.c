@@ -427,7 +427,6 @@ void property_show (BonoboUIComponent *uic,
 	gtk_window_set_resizable (GTK_WINDOW (mldata->propwindow), FALSE);
 
 	notebook = gtk_notebook_new ();
-	vbox = gtk_vbox_new (FALSE, 6);
 	gtk_container_set_border_width (GTK_CONTAINER (notebook), 5);
 	gtk_box_pack_start (GTK_BOX (GTK_DIALOG (mldata->propwindow)->vbox), notebook,
 			    TRUE, TRUE, 0);
