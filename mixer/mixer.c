@@ -39,6 +39,7 @@
 #include <fcntl.h>
 #include <string.h>
 #include <errno.h>
+#include <stdlib.h>
 
 #include <gtk/gtk.h>
 #include <gdk/gdkkeysyms.h>
@@ -864,6 +865,9 @@ mixer_applet_create (PanelApplet *applet)
 	BonoboUIComponent *component;
 	const gchar *device;
 	gboolean retval;
+#ifdef SUN_API
+	gchar *ctl;
+#endif
 
 #ifdef OSS_API
 	/* /dev/sound/mixer for devfs */
@@ -875,8 +879,11 @@ mixer_applet_create (PanelApplet *applet)
 	}
 #endif
 #ifdef SUN_API
-	device = "/dev/audioctl";
-	retval = openMixer(device);
+	if (!(device = g_getenv("AUDIODEV")))
+		device = "/dev/audioctl";
+	ctl = g_strdup_printf("%sctl",device);
+	retval = openMixer(ctl);
+	g_free(ctl);
 #endif
 
 	if (!retval) {
