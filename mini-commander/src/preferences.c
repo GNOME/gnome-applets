@@ -451,7 +451,13 @@ save_session(void)
 gint
 save_session_signal(GtkWidget *widget, const char *privcfgpath, const char *globcfgpath)
 {       
+#ifdef HAVE_PANEL_PIXEL_SIZE
+    if(!prop.flat_layout)
+	show_message((gchar *) _("saving prefs...")); 	    
+#else
     show_message((gchar *) _("saving prefs...")); 	    
+#endif
+
     save_session();
 
     /* make sure you return FALSE, otherwise your applet might not
