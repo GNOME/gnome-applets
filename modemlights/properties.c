@@ -6,6 +6,7 @@
  *
  */
 
+#include <config.h>
 #include "modemlights.h"
 #include <panel-applet.h>
 #include <panel-applet-gconf.h>
