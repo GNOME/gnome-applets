@@ -26,6 +26,77 @@
 #include "gweather-pref.h"
 #include "gweather-dialog.h"
 
+static void gweather_dialog_save_geometry (GWeatherApplet *gw_applet)
+{
+	GtkWidget *window;
+	int w, h, x, y;
+
+	window = gw_applet->gweather_dialog;
+
+	gtk_window_get_position (GTK_WINDOW (window), &x, &y);
+	gtk_window_get_size (GTK_WINDOW (window), &w, &h);
+
+	g_message ("gweather: saving spatial window location: %dx%d+%d+%d",
+			w, h, x, y);
+
+	panel_applet_gconf_set_int (gw_applet->applet,
+			"dialog_width", w, NULL);
+	panel_applet_gconf_set_int (gw_applet->applet,
+			"dialog_height", h, NULL);
+	panel_applet_gconf_set_int (gw_applet->applet,
+			"dialog_x", x, NULL);
+	panel_applet_gconf_set_int (gw_applet->applet,
+			"dialog_y", y, NULL);
+}
+
+static void gweather_dialog_load_geometry (GWeatherApplet *gw_applet)
+{
+	GtkWidget *window;
+	int w, h, x, y;
+	GError *error;
+
+	window = gw_applet->gweather_dialog;
+	error = NULL;
+
+	w = panel_applet_gconf_get_int (gw_applet->applet,
+			"dialog_width", &error);
+	if (error)
+	{
+		g_message ("gweather: no spatial information available");
+		g_error_free (error);
+		return;
+	}
+	h = panel_applet_gconf_get_int (gw_applet->applet,
+			"dialog_height", &error);
+	if (error)
+	{
+		g_message ("gweather: no spatial information available");
+		g_error_free (error);
+		return;
+	}
+	x = panel_applet_gconf_get_int (gw_applet->applet,
+			"dialog_x", &error);
+	if (error)
+	{
+		g_message ("gweather: no spatial information available");
+		g_error_free (error);
+		return;
+	}
+	y = panel_applet_gconf_get_int (gw_applet->applet,
+			"dialog_y", &error);
+	if (error)
+	{
+		g_message ("gweather: no spatial information available");
+		g_error_free (error);
+		return;
+	}
+	
+	g_message ("gweather: got spatial window location: %dx%d+%d+%d",
+			w, h, x, y);
+
+	gtk_window_resize (GTK_WINDOW (window), w, h);
+	gtk_window_move (GTK_WINDOW (window), x, y);
+}
 
 static void response_cb (GtkDialog *dialog, gint id, gpointer data)
 {
@@ -38,7 +109,7 @@ static void response_cb (GtkDialog *dialog, gint id, gpointer data)
 
 	return;
     }
-    
+
     gweather_dialog_close(gw_applet);
     return;
 }
@@ -99,6 +170,7 @@ void gweather_dialog_create (GWeatherApplet *gw_applet)
   gtk_window_set_screen (GTK_WINDOW (gw_applet->gweather_dialog),
 			 gtk_widget_get_screen (GTK_WIDGET (gw_applet->applet)));
   gtk_window_set_policy (GTK_WINDOW (gw_applet->gweather_dialog), FALSE, FALSE, FALSE);
+  gweather_dialog_load_geometry (gw_applet);
   
   weather_vbox = GTK_DIALOG (gw_applet->gweather_dialog)->vbox;
   gtk_widget_show (weather_vbox);
@@ -420,6 +492,8 @@ void gweather_dialog_open (GWeatherApplet *gw_applet)
 
 void gweather_dialog_close (GWeatherApplet *gw_applet)
 {
+    gweather_dialog_save_geometry (gw_applet);
+    
     g_return_if_fail(gw_applet->gweather_dialog != NULL);
     gtk_widget_destroy(gw_applet->gweather_dialog);
     gw_applet->gweather_dialog = NULL;

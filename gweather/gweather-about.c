@@ -34,6 +34,7 @@ void gweather_about_run (GWeatherApplet *gw_applet)
 	"Kevin Vandersloot <kfv101@psu.edu>",
         "Spiros Papadimitriou <spapadim+@cs.cmu.edu>",
         "Todd Kulesza <fflewddur@dropline.net>",
+	"Davyd Madeley <davyd@madeley.id.au>",
         NULL
     };
 
@@ -66,9 +67,9 @@ void gweather_about_run (GWeatherApplet *gw_applet)
     }
     
     gw_applet->about_dialog = gnome_about_new (_("Weather Report"), VERSION,
-                                    _("Copyright (c)1999 by S. Papadimitriou"),
-                                    _("Released under the GNU General Public License.\n\n"
-                                    	"An applet for monitoring local weather conditions."),
+	_("Copyright (c)1999-2004 by S. Papadimitriou and others"),
+	_("Released under the GNU General Public License.\n\n"
+	"A panel application for monitoring local weather conditions."),
                                     authors,
                                     documenters,
                                     strcmp (translator_credits, "translator_credits") != 0 ? translator_credits : NULL,

@@ -166,7 +166,11 @@ static gboolean clicked_cb (GtkWidget *widget, GdkEventButton *ev, gpointer data
         return FALSE;
 
     if (ev->type == GDK_BUTTON_PRESS) {
-	gweather_dialog_open(gw_applet);
+	if (!gw_applet->gweather_dialog)
+		gweather_dialog_open (gw_applet);
+	else
+		gweather_dialog_close (gw_applet);
+	
 	return TRUE;
     }
     
