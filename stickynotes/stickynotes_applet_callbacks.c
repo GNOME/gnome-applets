@@ -125,7 +125,7 @@ void menu_destroy_all_cb(BonoboUIComponent *uic, StickyNotesApplet *sticky, cons
 	GladeXML *glade = glade_xml_new(GLADE_PATH, "delete_all_dialog", NULL);
 	GtkWidget *dialog = glade_xml_get_widget(glade, "delete_all_dialog");
 
-	gtk_window_set_transient_for(GTK_WINDOW(dialog), GTK_WINDOW(sticky->applet));
+	gtk_window_set_transient_for(GTK_WINDOW(dialog), GTK_WINDOW(stickynotes->applet));
 
 	if (gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_OK) {
 		while (g_list_length(stickynotes->notes) > 0)
@@ -164,21 +164,31 @@ void menu_unlock_cb(BonoboUIComponent *uic, StickyNotesApplet *sticky, const gch
 /* Menu Callback : Configure preferences */
 void menu_preferences_cb(BonoboUIComponent *uic, StickyNotesApplet *sticky, const gchar *verbname)
 {
-	GladeXML *glade = glade_xml_new(GLADE_PATH, "preferences_dialog", NULL);
-	GtkWidget *dialog = glade_xml_get_widget(glade, "preferences_dialog");
+	GladeXML *glade;
+	
+	if (stickynotes->preferences != 0) {
+		gtk_widget_raise(stickynotes->preferences);
+		return;
+	}
+	
+	glade = glade_xml_new(GLADE_PATH, "preferences_dialog", NULL);
+	stickynotes->preferences = glade_xml_get_widget(glade, "preferences_dialog");
+	
 	GtkAdjustment *width_adjust = gtk_spin_button_get_adjustment(GTK_SPIN_BUTTON(glade_xml_get_widget(glade, "width_spin")));
 	GtkAdjustment *height_adjust = gtk_spin_button_get_adjustment(GTK_SPIN_BUTTON(glade_xml_get_widget(glade, "height_spin")));
 	GtkWidget *sticky_check = glade_xml_get_widget(glade, "sticky_check");
 	GtkWidget *note_color = glade_xml_get_widget(glade, "note_color");
 	GtkWidget *click_behavior_menu = glade_xml_get_widget(glade, "click_behavior_menu");
 
-	GtkSizeGroup *size= gtk_size_group_new(GTK_SIZE_GROUP_HORIZONTAL);
-	gtk_size_group_add_widget(size, glade_xml_get_widget(glade, "width_label"));
-	gtk_size_group_add_widget(size, glade_xml_get_widget(glade, "height_label"));
-	gtk_size_group_add_widget(size, glade_xml_get_widget(glade, "color_label"));
-	g_object_unref(size);
+	{
+		GtkSizeGroup *size= gtk_size_group_new(GTK_SIZE_GROUP_HORIZONTAL);
+		gtk_size_group_add_widget(size, glade_xml_get_widget(glade, "width_label"));
+		gtk_size_group_add_widget(size, glade_xml_get_widget(glade, "height_label"));
+		gtk_size_group_add_widget(size, glade_xml_get_widget(glade, "color_label"));
+		g_object_unref(size);
+	}
 	    
-	g_signal_connect(G_OBJECT(dialog), "response", G_CALLBACK(preferences_response_cb), glade);
+	g_signal_connect(G_OBJECT(stickynotes->preferences), "response", G_CALLBACK(preferences_response_cb), glade);
 
 	g_signal_connect_swapped(G_OBJECT(width_adjust), "value-changed", G_CALLBACK(preferences_save_cb), glade);
 	g_signal_connect_swapped(G_OBJECT(height_adjust), "value-changed", G_CALLBACK(preferences_save_cb), glade);
@@ -208,7 +218,7 @@ void menu_preferences_cb(BonoboUIComponent *uic, StickyNotesApplet *sticky, cons
 		gnome_color_picker_set_i16(GNOME_COLOR_PICKER(note_color), color.red, color.green, color.blue, 65535);
 	}
 	
-	gtk_window_set_transient_for(GTK_WINDOW(dialog), GTK_WINDOW(sticky->applet));
+	gtk_window_set_transient_for(GTK_WINDOW(dialog), GTK_WINDOW(stickynotes->applet));
 	gtk_widget_show(dialog);
 
 	g_object_unref(glade);
@@ -223,23 +233,30 @@ void menu_help_cb(BonoboUIComponent *uic, StickyNotesApplet *sticky, const gchar
 /* Menu Callback : Display About window */
 void menu_about_cb(BonoboUIComponent *uic, StickyNotesApplet *sticky, const gchar *verbname)
 {
-	GladeXML *glade = glade_xml_new(GLADE_PATH, "about_dialog", NULL);
-	GtkWidget *dialog = glade_xml_get_widget(glade, "about_dialog");
+	GladeXML *glade;
+	
+	if (stickynotes->about != 0) {
+		gtk_widget_raise(stickynotes->about);
+		return;
+	}
+	
+	glade = glade_xml_new(GLADE_PATH, "about_dialog", NULL);
+	stickynotes->about = glade_xml_get_widget(glade, "about_dialog");
 
-	g_signal_connect(G_OBJECT(dialog), "response", G_CALLBACK(about_response_cb), glade);
+	g_signal_connect(G_OBJECT(stickynotes->about), "response", G_CALLBACK(about_response_cb), glade);
 
 	/* FIXME : Hack because libglade does not properly set these */
-	g_object_set(G_OBJECT(dialog), "name", _("Sticky Notes"), "version", VERSION);
+	g_object_set(G_OBJECT(stickynotes->about), "name", _("Sticky Notes"), "version", VERSION);
 	{
 		GdkPixbuf *logo = gdk_pixbuf_new_from_file(STICKYNOTES_ICONDIR "/stickynotes.png", NULL);
-		g_object_set(G_OBJECT(dialog), "logo", logo);
+		g_object_set(G_OBJECT(stickynotes->about), "logo", logo);
 		g_object_unref(logo);
 	}
 	if (strcmp(_("translator_credits"), "translator_credits") == 0)
-		g_object_set(G_OBJECT(dialog), "translator_credits", NULL);
+		g_object_set(G_OBJECT(stickynotes->about), "translator_credits", NULL);
 	
-	gtk_window_set_transient_for(GTK_WINDOW(dialog), GTK_WINDOW(sticky->applet));
-	gtk_widget_show(dialog);
+	gtk_window_set_transient_for(GTK_WINDOW(stickynotes->about), GTK_WINDOW(stickynotes->applet));
+	gtk_widget_show(stickynotes->about);
 	
 	g_object_unref(glade);
 }
@@ -248,6 +265,7 @@ void menu_about_cb(BonoboUIComponent *uic, StickyNotesApplet *sticky, const gcha
 void about_response_cb(GtkDialog *dialog, gint response, GladeXML *glade)
 {
 	gtk_widget_destroy(GTK_WIDGET(dialog));
+	stickynotes->about = 0;
 }
 
 /* Preferences Callback : Save. */
@@ -303,8 +321,10 @@ void preferences_response_cb(GtkDialog *dialog, gint response, GladeXML *glade)
 	if (response == GTK_RESPONSE_HELP)
 		gnome_help_display("stickynotes_applet", "stickynotes-introduction", NULL);
 	
-	else /* if (response == GTK_RESPONSE_CLOSE || response == GTK_RESPONSE_NONE) */
+	else /* if (response == GTK_RESPONSE_CLOSE || response == GTK_RESPONSE_NONE) */ {
 		gtk_widget_destroy(GTK_WIDGET(dialog));
+		stickynotes->preferences = 0;
+	}
 }
 
 /* Preferences Callback : Apply to existing notes. */

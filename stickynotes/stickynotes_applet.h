@@ -30,6 +30,8 @@
 typedef struct
 {
 	GtkWidget *applet;		/* The applet */
+	GtkWidget *about;		/* About dialog */
+	GtkWidget *preferences;		/* Preferences dialog */
 	
 	gint size;			/* Panel size */
 	gboolean pressed;		/* Whether applet is pressed */
@@ -43,6 +45,7 @@ typedef struct
 	
 	GConfClient *gconf_client;	/* GConf Client */
 	GtkTooltips *tooltips;		/* Tooltips */
+
 } StickyNotesApplet;
 
 /* Modify the applet */
