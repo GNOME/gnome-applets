@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets-1.1.0\n"
-"POT-Creation-Date: 2000-01-29 20:32-0500\n"
+"POT-Creation-Date: 2000-02-09 18:25+0100\n"
 "PO-Revision-Date: 1999-12-28 12:00+0100\n"
 "Last-Translator: Andreas Hyden <ahyden@staffanstorp.net>\n"
 "Language-Team: Swedish <sv@li.org>\n"
@@ -99,17 +99,17 @@ msgstr "Inställningar för klocka"
 #.
 #. ---
 #: another_clock/another_clock.c:239 asclock/dialogs.c:359
-#: battery/properties.c:77 charpick/properties.c:257
-#: clockmail/properties.c:411 diskusage/properties.c:325
-#: drivemount/properties.c:339 mini-commander/src/preferences.c:755
-#: modemlights/properties.c:292 odometer/properties.c:261
+#: battery/properties.c:77 clockmail/properties.c:411
+#: diskusage/properties.c:325 drivemount/properties.c:339
+#: mini-commander/src/preferences.c:778 modemlights/properties.c:292
+#: odometer/properties.c:283 screenshooter/screenshooter_applet.c:412
 #: slashapp/properties.c:351 sound-monitor/properties.c:426
 #: tickastat/properties.c:416
 msgid "General"
 msgstr "Allmänt"
 
 #. frame for colors
-#: another_clock/another_clock.c:249 mini-commander/src/preferences.c:677
+#: another_clock/another_clock.c:249 mini-commander/src/preferences.c:700
 #: multiload/load-graph.c:197
 msgid "Colors"
 msgstr "Färger"
@@ -154,26 +154,27 @@ msgid "An analog clock similar to that in CDE panel."
 msgstr "Analog klocka, liknande den i CDE-panelen."
 
 #: another_clock/another_clock.c:689 asclock/asclock.c:601
-#: battery/battery.c:795 charpick/charpick.c:561 clipboard/clipboard.c:332
-#: clockmail/clockmail.c:553 drivemount/drivemount.c:653 fifteen/fifteen.c:346
+#: battery/battery.c:921 charpick/charpick.c:565 clipboard/clipboard.c:332
+#: clockmail/clockmail.c:553 drivemount/drivemount.c:659 fifteen/fifteen.c:346
 #: geyes/geyes.c:374 gkb/gkb.c:731 gnotes/gnotes_applet.c:164
-#: gumma/gumma.c:588 gweather/gweather-applet.c:175 jbc/jbc-applet.c:180
-#: life/life.c:270 mini-commander/src/mini-commander_applet.c:404
-#: modemlights/modemlights.c:1214 odometer/odo.c:573 slashapp/slashapp.c:58
-#: sound-monitor/main.c:347 tickastat/main.c:321 webcontrol/webcontrol.c:324
-#: whereami/whereami.c:219
+#: gumma/gumma.c:588 gweather/gweather-applet.c:185 jbc/jbc-applet.c:180
+#: life/life.c:270 mini-commander/src/mini-commander_applet.c:412
+#: modemlights/modemlights.c:1214 odometer/odo.c:644
+#: quicklaunch/quicklaunch.c:452 screenshooter/screenshooter_applet.c:978
+#: slashapp/slashapp.c:58 sound-monitor/main.c:347 tickastat/main.c:321
+#: webcontrol/webcontrol.c:324 whereami/whereami.c:219
 msgid "About..."
 msgstr "Om..."
 
 #: another_clock/another_clock.c:695 asclock/asclock.c:607
-#: charpick/charpick.c:568 clockmail/clockmail.c:546 diskusage/diskusage.c:812
-#: drivemount/drivemount.c:647 geyes/geyes.c:380 gkb/gkb.c:739
-#: gnotes/gnotes_applet.c:167 gweather/gweather-applet.c:178
-#: mini-commander/src/mini-commander_applet.c:391
+#: charpick/charpick.c:572 clockmail/clockmail.c:546 diskusage/diskusage.c:812
+#: drivemount/drivemount.c:653 geyes/geyes.c:380 gkb/gkb.c:739
+#: gnotes/gnotes_applet.c:167 gweather/gweather-applet.c:191
+#: mini-commander/src/mini-commander_applet.c:399
 #: modemlights/modemlights.c:1208 multiload/cpuload.c:68
-#: multiload/memload.c:64 multiload/swapload.c:64 odometer/odo.c:570
-#: slashapp/slashapp.c:55 sound-monitor/main.c:340 tickastat/main.c:315
-#: webcontrol/webcontrol.c:332
+#: multiload/memload.c:64 multiload/swapload.c:64 odometer/odo.c:641
+#: screenshooter/screenshooter_applet.c:984 slashapp/slashapp.c:55
+#: sound-monitor/main.c:340 tickastat/main.c:315 webcontrol/webcontrol.c:332
 msgid "Properties..."
 msgstr "Egenskaper..."
 
@@ -224,31 +225,24 @@ msgstr "Blinkande element på klockan"
 msgid "Timezone"
 msgstr "Tidszon"
 
-#: battery/battery.c:122
-msgid ""
-"Error querying battery charge.  Make sure that your kernel was built with "
-"APM support."
-msgstr ""
-"Fel uppstod vid förfrågan om batteriladdning.  Kontrollera att din kernel "
-"har stöd för APM."
-
-#: battery/battery.c:141
+#: battery/battery.c:137
 msgid "The battery is low."
 msgstr "Batteriladdningen är låg."
 
-#: battery/battery.c:156
+#: battery/battery.c:152
 msgid "The battery is fully charged."
 msgstr "Batteriet är fullt uppladdat."
 
-#: battery/battery.c:566
+#: battery/battery.c:689
 msgid "Internal error: invalid mode in battery_set_mode"
 msgstr "Internt fel: ogiltigt läge i battery_set_mode"
 
-#: battery/battery.c:655 jbc/jbc-applet.c:161
+#: battery/battery.c:762 jbc/jbc-applet.c:161
+#: screenshooter/screenshooter_applet.c:880
 msgid "Can't create applet!\n"
 msgstr "Kan inte skapa applet!\n"
 
-#: battery/battery.c:660
+#: battery/battery.c:766
 msgid ""
 "Error querying battery charge.\n"
 "\n"
@@ -258,15 +252,15 @@ msgstr ""
 "\n"
 "Kontrollera att din kernel har stöd för APM."
 
-#: battery/battery.c:865
+#: battery/battery.c:993
 msgid "The GNOME Battery Monitor Applet"
 msgstr "GNOME batteriövervaknings-applet"
 
-#: battery/battery.c:866
+#: battery/battery.c:994
 msgid " (C) 1997-1998 The Free Software Foundation"
 msgstr "(C) 1997-1998 the Free Software Foundation"
 
-#: battery/battery.c:868
+#: battery/battery.c:996
 msgid ""
 "This applet monitors the charge of your laptop's battery.  Click on it to "
 "change display modes."
@@ -274,7 +268,7 @@ msgstr ""
 "Denna applet övervakar laddningen på batteriet i din bärbara dator.  Klicka "
 "på den för att ändra vad den ska visa."
 
-#: battery/battery.c:1005
+#: battery/battery.c:1196
 msgid "Could not allocate space for graph values"
 msgstr "Kunde inte allokera utrymme för grafvärden"
 
@@ -282,107 +276,112 @@ msgstr "Kunde inte allokera utrymme för grafvärden"
 msgid "Battery Monitor Settings"
 msgstr "Inställnignar för batteriövervakning"
 
+#. the follow_panel_size check button
+#: battery/properties.c:79 charpick/properties.c:182
+msgid "Follow panel size"
+msgstr "Anpassa till panelens storlek"
+
 #. Applet height
-#: battery/properties.c:80
+#: battery/properties.c:87
 msgid "Applet Height:"
 msgstr "Applethöjd:"
 
 #. Applet width
-#: battery/properties.c:91
+#: battery/properties.c:98
 msgid "Applet Width:"
 msgstr "Appletbredd"
 
 #. Update interval
-#: battery/properties.c:103
+#: battery/properties.c:110
 msgid "Update Interval (seconds):"
 msgstr "Uppdatera var (sekunder):"
 
 #. Low battery value
-#: battery/properties.c:117
+#: battery/properties.c:124
 msgid "Low Charge Threshold:"
 msgstr "Tröskel för låg laddning:"
 
 #. Applet mode label
-#: battery/properties.c:131
+#: battery/properties.c:138
 msgid "Applet Mode:"
 msgstr "Appletläge:"
 
-#: battery/properties.c:132 battery/properties.c:216
+#: battery/properties.c:139 battery/properties.c:223
 msgid "Graph"
 msgstr "Graf"
 
-#: battery/properties.c:134 battery/properties.c:160
+#: battery/properties.c:141 battery/properties.c:167
 msgid "Readout"
 msgstr "Utdata"
 
-#: battery/properties.c:191 battery/properties.c:251
+#: battery/properties.c:198 battery/properties.c:258
 msgid "AC-On Battery Color:"
 msgstr "Färg för AC på:"
 
-#: battery/properties.c:197 battery/properties.c:257
+#: battery/properties.c:204 battery/properties.c:264
 msgid "AC-Off Battery Color:"
 msgstr "Färg för AC av:"
 
-#: battery/properties.c:203
+#: battery/properties.c:210
 msgid "Low Battery Color:"
 msgstr "Färg för låg batteriladdning:"
 
-#: battery/properties.c:263
+#: battery/properties.c:270
 msgid "Graph Battery Low Color:"
 msgstr "Färg för låg batteriladdning i grafen:"
 
-#: battery/properties.c:269
+#: battery/properties.c:276
 msgid "Graph Tick Color:"
 msgstr "Färg för graftick:"
 
-#: battery/properties.c:276
+#: battery/properties.c:283
 msgid "Graph Direction:"
 msgstr "Grafriktning:"
 
-#: battery/properties.c:279
+#: battery/properties.c:286
 msgid "Left to Right"
 msgstr "Vänster till höger"
 
-#: battery/properties.c:281
+#: battery/properties.c:288
 msgid "Right to Left"
 msgstr "Höger till vänster"
 
-#: battery/properties.c:301
+#: battery/properties.c:308
 msgid "Battery Charge Messages"
 msgstr "Batteriladdningsmeddelanden"
 
-#: battery/properties.c:304
+#: battery/properties.c:311
 msgid "Enable Low Battery Warning"
 msgstr "Slå på varning för låg laddning"
 
-#: battery/properties.c:309
+#: battery/properties.c:316
 msgid "Warn if the battery charge dips below:"
 msgstr "Varna om batteriet når laddning under:"
 
-#: battery/properties.c:323
+#: battery/properties.c:330
 msgid "Enable Full-Charge Notification"
 msgstr "Slå på meddelande om full laddning"
 
-#: battery/read-battery.c:59
+#: battery/read-battery.c:62
 msgid ""
 "Cannot open /proc/apm!  Make sure that you built APM support into your "
 "kernel.\n"
 msgstr "Kan inte öppna /proc/apm!  Kontrollera att din kernel stöder APM.\n"
 
-#: battery/read-battery.c:92
+#: battery/read-battery.c:97
 #, c-format
 msgid "Could not dup() APM file descriptor: %s\n"
 msgstr "Kunde inte göra dup() på APM-fildeskriptor: %s\n"
 
-#: battery/read-battery.c:163
+#: battery/read-battery.c:168
 msgid "Cannot open /dev/apm; can't get data."
 msgstr "Kan inte öppna /proc/apm; får inte data."
 
-#: battery/read-battery.c:168
+#: battery/read-battery.c:173
 msgid "ioctl failed on /dev/apm."
 msgstr "ioctl misslyckades på /dev/apm."
 
-#: battery/read-battery.c:179
+#: battery/read-battery.c:184
 msgid "APM is disabled!  Cannot read battery charge information."
 msgstr "APM är avstängt!  Kan inte läsa batteriladdningsinformation."
 
@@ -406,15 +405,15 @@ msgstr ""
 "Applet för att kopiera och välja markeringar med historielista. Släppt under "
 "GNU General Public License."
 
-#: charpick/charpick.c:431
+#: charpick/charpick.c:434
 msgid "Character Picker"
 msgstr "Teckenväljare"
 
-#: charpick/charpick.c:433
+#: charpick/charpick.c:436
 msgid "Copyright (C) 1998"
 msgstr "Copyright(C) 1998"
 
-#: charpick/charpick.c:435
+#: charpick/charpick.c:438
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -422,31 +421,40 @@ msgstr ""
 "Gnome Panel-applet för att välja underliga tecken som inte finns på mitt "
 "tangentbord. Släppt under GNU General Public License."
 
-#: charpick/properties.c:158
+#: charpick/properties.c:168
 msgid "Character Picker Settings"
 msgstr "Inställningsar för teckenväljare"
 
-#: charpick/properties.c:166
+#: charpick/properties.c:176
 msgid "Minimum number of cells: (for autosize)"
 msgstr ""
 
-#: charpick/properties.c:167
+#: charpick/properties.c:177
 msgid "Size of button: (pixels)"
 msgstr "Storlek på knapparna: (pixel)"
 
-#: charpick/properties.c:168
+#: charpick/properties.c:178
 msgid "Number of rows of buttons:"
 msgstr "Antal rader med knappar:"
 
-#: charpick/properties.c:169
+#: charpick/properties.c:179
 msgid "Number of columns of buttons:"
 msgstr "Antal kolumner med knappar:"
 
-#. the follow_panel_size check button
-#: charpick/properties.c:172
-#, fuzzy
-msgid "Follow panel size"
-msgstr "Använd panelens storlekstips"
+#. Size
+#: charpick/properties.c:267 mini-commander/src/preferences.c:588
+#: tickastat/properties.c:492
+msgid "Size"
+msgstr "Storlek"
+
+#: charpick/properties.c:285
+msgid "Default character list:"
+msgstr ""
+
+#. add tab to propwindow
+#: charpick/properties.c:300
+msgid "Default List"
+msgstr ""
 
 #: clockmail/clockmail.c:56 slashapp/slashapp.c:130 sound-monitor/main.c:35
 #: tickastat/main.c:175
@@ -487,7 +495,7 @@ msgid " (GMT %+d)"
 msgstr " (GMT %+d)"
 
 #. add default theme
-#: clockmail/properties.c:141 odometer/properties.c:136
+#: clockmail/properties.c:141 odometer/properties.c:150
 #: sound-monitor/properties.c:166
 msgid "None (default)"
 msgstr "Ingen (standard)"
@@ -500,7 +508,7 @@ msgstr "Teman:"
 msgid "ClockMail Settings"
 msgstr "Inställningar för klock-epost-appleten"
 
-#: clockmail/properties.c:291 mini-commander/src/preferences.c:478
+#: clockmail/properties.c:291 mini-commander/src/preferences.c:501
 msgid "Clock"
 msgstr "Klocka"
 
@@ -536,7 +544,7 @@ msgstr "När appleten klickas, kör:"
 msgid "Theme file (directory):"
 msgstr "Temafil (katalog):"
 
-#: clockmail/properties.c:460 odometer/properties.c:302
+#: clockmail/properties.c:460 odometer/properties.c:324
 #: sound-monitor/properties.c:472
 msgid "Theme"
 msgstr "Tema"
@@ -549,7 +557,7 @@ msgstr "Filsystem"
 msgid "File System Changed!\n"
 msgstr "Filsystem ändrat!\n"
 
-#: diskusage/diskusage.c:819 drivemount/drivemount.c:671
+#: diskusage/diskusage.c:819 drivemount/drivemount.c:677
 msgid "Browse..."
 msgstr "Bläddra..."
 
@@ -617,7 +625,7 @@ msgstr ""
 "Drivemount-kommando misslyckades.\n"
 "\""
 
-#: drivemount/drivemount.c:662
+#: drivemount/drivemount.c:668
 msgid "Eject"
 msgstr "Mata ut"
 
@@ -677,7 +685,7 @@ msgstr "Välj en ikon för avmonterad"
 msgid "Custom icon for not mounted:"
 msgstr "Anpassad ikon för avmonterad:"
 
-#: drivemount/properties.c:327
+#: drivemount/properties.c:327 odometer/properties.c:275
 msgid "Scale size to panel"
 msgstr "Anpassa storlek till panelen"
 
@@ -835,6 +843,22 @@ msgstr "Skapar anteckningar på din skärm."
 msgid "Can't create GNotes applet!"
 msgstr "Kan inte skapa GNotes applet!"
 
+#: gnotes/gnotes_applet.c:171
+msgid "Raise Notes"
+msgstr "Höj noter"
+
+#: gnotes/gnotes_applet.c:173
+msgid "Lower Notes"
+msgstr "Sänk noter"
+
+#: gnotes/gnotes_applet.c:175
+msgid "Hide Notes"
+msgstr "Göm noter"
+
+#: gnotes/gnotes_applet.c:177
+msgid "Show Notes"
+msgstr "Visa noter"
+
 #: gumma/gumma.c:314
 #, c-format
 msgid "Loading plugin %s..."
@@ -856,11 +880,16 @@ msgstr "Om Insticksprogram..."
 msgid "Plugins..."
 msgstr "Insticksprogram..."
 
-#: gweather/gweather-applet.c:170
+#: gweather/gweather-applet.c:180
 msgid "Cannot create applet!\n"
 msgstr "Kan inte skapa applet!\n"
 
-#: gweather/gweather-applet.c:181
+#: gweather/gweather-applet.c:188
+#: mini-commander/src/mini-commander_applet.c:405
+msgid "Help"
+msgstr "Hjälp"
+
+#: gweather/gweather-applet.c:194
 msgid "Update"
 msgstr "Uppdatera"
 
@@ -2331,7 +2360,7 @@ msgstr "barnprocess avslutad"
 msgid "%H:%M - %d. %b"
 msgstr "%H:%M - %d. %b"
 
-#. timeFormat = _("%H:%M %Z");
+#. time_format = _("%H:%M %Z");
 #: mini-commander/src/message.c:105
 msgid "%H:%M"
 msgstr "%H:%M"
@@ -2348,19 +2377,15 @@ msgstr "riktning ändrad"
 msgid "size changed"
 msgstr "riktning ändrad"
 
-#: mini-commander/src/mini-commander_applet.c:220 slashapp/properties.c:253
+#: mini-commander/src/mini-commander_applet.c:228 slashapp/properties.c:253
 msgid "Browser"
 msgstr "Bläddra"
 
-#: mini-commander/src/mini-commander_applet.c:233
+#: mini-commander/src/mini-commander_applet.c:241
 msgid "History"
 msgstr "Historik"
 
-#: mini-commander/src/mini-commander_applet.c:397
-msgid "Help"
-msgstr "Hjälp"
-
-#: mini-commander/src/mini-commander_applet.c:408
+#: mini-commander/src/mini-commander_applet.c:416
 msgid "ready..."
 msgstr "klar..."
 
@@ -2380,92 +2405,86 @@ msgstr "datum på"
 msgid "clock off"
 msgstr "klocka av"
 
-#: mini-commander/src/preferences.c:434
+#: mini-commander/src/preferences.c:454
 msgid "saving prefs..."
 msgstr "sparar inst..."
 
-#: mini-commander/src/preferences.c:472
+#: mini-commander/src/preferences.c:495
 msgid "Mini-Commander Properties"
 msgstr "Egenskaper för mini-kommando"
 
 #. show time check box
-#: mini-commander/src/preferences.c:486
+#: mini-commander/src/preferences.c:509
 msgid "Show time"
 msgstr "Visa tid"
 
 #. show date check box
-#: mini-commander/src/preferences.c:498
+#: mini-commander/src/preferences.c:521
 msgid "Show date"
 msgstr "Visa datum"
 
 #. appearance frame
-#: mini-commander/src/preferences.c:511
+#: mini-commander/src/preferences.c:534
 msgid "Appearance"
 msgstr "Utseende"
 
 #. show handle check box
-#: mini-commander/src/preferences.c:519
+#: mini-commander/src/preferences.c:542
 msgid "Show handle"
 msgstr "Visa handtag"
 
 #. show frame check box
-#: mini-commander/src/preferences.c:531
+#: mini-commander/src/preferences.c:554
 msgid "Show frame"
 msgstr "Visa ram"
 
 #. auto complete frame
-#: mini-commander/src/preferences.c:545
+#: mini-commander/src/preferences.c:568
 msgid "Auto Completion"
 msgstr "Autokomplettering"
 
 #. show history autocomplete
-#: mini-commander/src/preferences.c:553
+#: mini-commander/src/preferences.c:576
 msgid "Enable history based auto completion"
 msgstr "Slå på historikbaserad autokomplettering"
 
-#. Size
-#: mini-commander/src/preferences.c:565 tickastat/properties.c:492
-msgid "Size"
-msgstr "Storlek"
-
 #. applet width
-#: mini-commander/src/preferences.c:577
+#: mini-commander/src/preferences.c:600
 msgid "Applet width:"
 msgstr "Appletbredd:"
 
 #. applet height
-#: mini-commander/src/preferences.c:606
+#: mini-commander/src/preferences.c:629
 msgid "Applet height:"
 msgstr "Applethöjd:"
 
 #. cmd line height
-#: mini-commander/src/preferences.c:635
+#: mini-commander/src/preferences.c:658
 msgid "Command line height:"
 msgstr "Kommandoradshöjd:"
 
 #. fg
-#: mini-commander/src/preferences.c:687
+#: mini-commander/src/preferences.c:710
 msgid "Command line foreground:"
 msgstr "Förgrundfärg för kommandorad:"
 
 #. bg
-#: mini-commander/src/preferences.c:722
+#: mini-commander/src/preferences.c:745
 msgid "Command line background:"
 msgstr "Bakgrundsfärg för kommandorad:"
 
 #. prefix
-#: mini-commander/src/preferences.c:782
-#, c-format
-msgid "Prefix %.2d:"
-msgstr "Prefix %.2d:"
+#: mini-commander/src/preferences.c:805
+msgid "Regex %.2d:"
+msgstr "Regex %.2d:"
 
 #. command
-#: mini-commander/src/preferences.c:800
+#: mini-commander/src/preferences.c:823
 #, c-format
 msgid "   Macro %.2d:"
 msgstr "   Makro %.2d:"
 
-#: mini-commander/src/preferences.c:819
+#: mini-commander/src/preferences.c:842
 msgid "Macros"
 msgstr "Makron"
 
@@ -2681,37 +2700,415 @@ msgstr ""
 "En GNOME applet som håller reda på och mäter flyttningar av din muspekare "
 "över skrivbordet."
 
-#: odometer/odo.c:557
+#: odometer/odo.c:622
 msgid "Can't create odometer applet!"
 msgstr "Kan inte skapa odometerapplet!"
 
-#: odometer/odo.c:567
+#: odometer/odo.c:638
 msgid "Reset"
 msgstr "Nollställ"
 
-#: odometer/properties.c:218
+#: odometer/properties.c:234
 msgid "Odometer setting"
 msgstr "Inställningar för Odometer"
 
-#: odometer/properties.c:229
+#: odometer/properties.c:245
 msgid "Use Metric"
 msgstr "Använd metriska enheter"
 
-#: odometer/properties.c:235
+#: odometer/properties.c:251
 msgid "auto_reset"
 msgstr "auto_nollställ"
 
-#: odometer/properties.c:241 tickastat/mod_news.c:1251
+#: odometer/properties.c:257 tickastat/mod_news.c:1251
 msgid "enabled"
 msgstr "aktiverad"
 
-#: odometer/properties.c:247
+#: odometer/properties.c:263
 msgid "Digits number"
 msgstr "Antal siffror"
 
-#: odometer/properties.c:276
+#: odometer/properties.c:298
 msgid "Theme file :"
 msgstr "Temafil :"
+
+#: quicklaunch/quicklaunch.c:63
+msgid "The QuickLaunch Applet"
+msgstr "Snabbstartsappleten"
+
+#: quicklaunch/quicklaunch.c:65
+msgid ""
+"This applet adds some pretty small icons for your launchers to your panel, "
+"like the windowish QuickLaunch toolbar, avoiding that annoying huge GNOME "
+"launchers."
+msgstr ""
+"Den här appleten lägger till små söta ikoner till dina programstartare på din panel, "
+"som den windoiska snabbstarts verktygsraden, och undviker dom irreterande stora GNOME "
+"programstartarna."
+
+#: quicklaunch/quicklaunch.c:131
+msgid "Launcher Properties"
+msgstr "Egenskaper för programstartare"
+
+#: quicklaunch/quicklaunch.c:229
+msgid ""
+"drop launchers from\n"
+"the menu here"
+msgstr ""
+"släpp programstartare från\n"
+"menyn här"
+
+#: quicklaunch/quicklaunch.c:267
+msgid "Launcher properties..."
+msgstr "Egenskaper för programstartare..."
+
+#: quicklaunch/quicklaunch.c:279
+msgid "Delete launcher"
+msgstr "Ta bort programstartare"
+
+#: quicklaunch/quicklaunch.c:419
+msgid ""
+"Cannot create directory:\n"
+"~/.gnome/quicklaunch.\n"
+"Aborting"
+msgstr ""
+"Kan inte skapa katalog:\n"
+"~/.gnome/quicklaunch.\n"
+"Avbryter"
+
+#: screenshooter/screenshooter_applet.c:38
+msgid "Screen-Shooter Applet"
+msgstr "Skärmdumps applet"
+
+#: screenshooter/screenshooter_applet.c:40
+msgid "Copyright (C) 1999 Tom Gilbert"
+msgstr "Copyright (C) 1999 Tom Gilbert"
+
+#: screenshooter/screenshooter_applet.c:41
+msgid ""
+"A useful little screengrabber.\n"
+"The left/top button allows you to grab either:\n"
+"a window (click to select which one)\n"
+"or an area (click and drag to select a rectangle.)\n"
+"The right/bottom button will grab the entire desktop.\n"
+"Share and Enjoy ;)"
+msgstr ""
+"En användbar liten skärmdumpare.\n"
+"Den vänstra/översta knappen låter dig ta antingen:\n"
+"ett fönster (klicka för att välja ett)\n"
+"eller en yta (klicka och dra för att välja en rektangel.)\n"
+"Den högra/nedersta knappen kommer att ta hela skrivbordet.\n"
+"Dela med dig och njut ;)"
+
+#: screenshooter/screenshooter_applet.c:372
+msgid "Screen-Shooter Settings"
+msgstr "Inställningar för skärmdumpare"
+
+#: screenshooter/screenshooter_applet.c:378
+msgid "Capture WM decorations when grabbing a window"
+msgstr "Ta med fönsterdekorationer vid fönsterdump"
+
+#: screenshooter/screenshooter_applet.c:382
+msgid "Give audio feedback using the keyboard bell"
+msgstr "Använd ljudsignal för att påkalla uppmärksamhet"
+
+#: screenshooter/screenshooter_applet.c:386
+msgid "Display Spurious Options (I got carried away)"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:390
+msgid "Delay (seconds) before taking shot (only for entire desktop shots)"
+msgstr "Fördröjning (sekunder) innan skärmdump (bara för hela skrivbords skärmdumpningar)"
+
+#: screenshooter/screenshooter_applet.c:395
+msgid "Compressed Quality (JPEG/MIFF/PNG mode) High: good quality/large file"
+msgstr "Kvalitet på komprimering (JPEG/MIFF/PNG läge) Hög: bra kvalitet/stora filer"
+
+#: screenshooter/screenshooter_applet.c:406
+msgid "Create monochrome image"
+msgstr "Skapa monokrom bild"
+
+#: screenshooter/screenshooter_applet.c:409
+msgid "Invert colours in image"
+msgstr "Invertera bilden"
+
+#: screenshooter/screenshooter_applet.c:425
+msgid "Directory to save images in:"
+msgstr "Katalog att spara bilder i:"
+
+#: screenshooter/screenshooter_applet.c:449
+msgid "Image filename:"
+msgstr "Bildfilnamn:"
+
+#: screenshooter/screenshooter_applet.c:464
+msgid "Show expanded filename"
+msgstr "Visa expanderat filnamn"
+
+#: screenshooter/screenshooter_applet.c:484
+#, c-format
+msgid ""
+"Filetype is determined from filename suffix.\n"
+"Default filetype (if no extension or unrecognised extension) is miff.\n"
+"Recognised suffixes are:\n"
+"jpg, jpeg, bmp, cgm, cmyk, dib, eps, fig, fpx, gif, ico, map, miff, pcx,\n"
+"pict, pix, png, pnm, ppm, psd, rgb, rgba, rla, rle, tiff, tga, xbm, xpm,\n"
+"and several obscure ones. Try your luck with something interesting!\n"
+"Eg .html for a client-side image map. You'll get a .gif, .html, and a "
+".shtml\n"
+"\n"
+"Recommendations:\n"
+"Small file, pretty good quality:   jpg, 75% quality\n"
+"Slightly larger file but lossless: png, as much compression as you like.\n"
+"- compressing pngs takes longer at higher ratios, but is still lossless"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:500
+msgid "View screenshot after saving it"
+msgstr "Visa skärmdump efter att den sparas"
+
+#: screenshooter/screenshooter_applet.c:507
+msgid "App to use for displaying screenshots:"
+msgstr "Prog att använda för att visa skärmdumpar:"
+
+#: screenshooter/screenshooter_applet.c:522
+msgid "Files, Apps"
+msgstr "Filer, Prog"
+
+#: screenshooter/screenshooter_applet.c:530
+msgid "Create thumbnail of image too"
+msgstr "Skapa minibild av bilderna också"
+
+#: screenshooter/screenshooter_applet.c:534
+msgid "Thumbnail Size (percentage of original)"
+msgstr "Minibild storlek (procent av originalet)"
+
+#: screenshooter/screenshooter_applet.c:539
+msgid ""
+"Thumbnail compression (JPEG/MIFF/PNG mode) High: good quality/large file"
+msgstr ""
+"Minibilds komprimering (JPEG/MIFF/PNG lägre) Hög: bra kvalitet/stora filer"
+
+#: screenshooter/screenshooter_applet.c:549
+msgid "Prefix to attach to thumbnail filename:"
+msgstr "Prefix att koppla till minibildfilnamn:"
+
+#: screenshooter/screenshooter_applet.c:577
+msgid "Use high-quality intermediate for generating thumbnail"
+msgstr "Använd högkvalitet mellanliggande vid skapning av minibild"
+
+#: screenshooter/screenshooter_applet.c:586
+msgid ""
+"(This'll chug loads of CPU, but will prevent compressing the image twice if "
+"a\n"
+"lossy file format is used)\n"
+"Don't use this if you're using a lossless compression format, or if you "
+"cherish\n"
+"speed and don't mind imperfection in your thumbnails."
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:593
+msgid "Thumbnails"
+msgstr "Minibilder"
+
+#: screenshooter/screenshooter_applet.c:616
+msgid ""
+"All post-processing, frill and spurious options will chug more CPU than a\n"
+"simple screenshot, due to the creation and then conversion of an "
+"intermediate\n"
+"image. Intensive operations may take some time on less spiffy CPUs."
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:627
+msgid "Normalize image (Span full range of color values to enhance contrast)"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:631
+msgid "Equalize image (Perform histogram equalization)"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:639
+msgid "Enhance image (reduce noise)"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:642
+msgid "Despeckle Image (reduce spots)"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:646
+msgid "Sharpen Image by what factor?"
+msgstr "Skärp bilden med vilken faktor?"
+
+#: screenshooter/screenshooter_applet.c:651
+msgid "Rotate image clockwise by how many degrees?"
+msgstr "Rotera bilden klockvis med hur många grader?"
+
+#: screenshooter/screenshooter_applet.c:656
+msgid "Adjust gamma"
+msgstr "Anpassa gamma"
+
+#: screenshooter/screenshooter_applet.c:659
+msgid "Gamma value"
+msgstr "Gamma värde"
+
+#: screenshooter/screenshooter_applet.c:666
+msgid "Post Processing"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:674
+msgid "Create frame around image"
+msgstr "Skapa ram runt bilden"
+
+#: screenshooter/screenshooter_applet.c:678
+msgid "Frame Width (pixels)"
+msgstr "Rambredd (pixlar)"
+
+#: screenshooter/screenshooter_applet.c:686
+msgid "Mirror image vertically"
+msgstr "Spegla bilden vertikalt"
+
+#: screenshooter/screenshooter_applet.c:688
+msgid "Mirror image horizontally"
+msgstr "Spegla bilden horisontellt"
+
+#: screenshooter/screenshooter_applet.c:691
+msgid "Emboss image"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:703
+msgid ""
+"When finished, send image and thumbnail filenames to script/program below"
+msgstr ""
+"Skicka bild och minibild filnamnen till skript/program nedan när den är klar"
+
+#: screenshooter/screenshooter_applet.c:711
+msgid "Script or program to launch:"
+msgstr "Skript eller program att köra:"
+
+#: screenshooter/screenshooter_applet.c:732
+msgid ""
+"Script/program will be launched after image creation with the image "
+"filenames\n"
+"specified on the commandline as follows:\n"
+"{Script_Name} {Image_Filename} {Thumbnail_filename_if_specified}\n"
+"Hint: I use a script to update my website screenshot page.\n"
+"An example script should've been included in the tarball, or at my website."
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:741
+msgid "Frills"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:750
+msgid "Blur image"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:753
+msgid "Blur image by what factor?"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:757
+msgid "Create Charcoal Effect"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:761
+msgid "Charcoal by what factor?"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:765
+msgid "Find Edges in Image"
+msgstr "Hitta kanter i bilden"
+
+#: screenshooter/screenshooter_applet.c:769
+msgid "Find edges by what factor?"
+msgstr "Hitta kanter med vilken faktor?"
+
+#: screenshooter/screenshooter_applet.c:773
+msgid "Implode Image"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:777
+msgid "Implode by what factor?"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:782
+msgid "Spurious"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:790
+msgid "Create Painted Effect"
+msgstr "Skapa målad effekt"
+
+#: screenshooter/screenshooter_applet.c:794
+msgid "Paint what radius around each pixel?"
+msgstr "Vilken radie ska målas runt varje pixel?"
+
+#: screenshooter/screenshooter_applet.c:798
+msgid "Solarise Image"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:802
+msgid "Solarize factor?"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:806
+msgid "Spread image pixels"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:810
+msgid "Radius to around each pixel to spread?"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:814
+msgid "Swirl pixels. My favorite :-)"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:818
+msgid "Radius to swirl pixels around?)"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:822
+msgid "Spurious 2"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:937
+#: screenshooter/screenshooter_applet.c:940
+msgid "Grab a shot of a specific window or area"
+msgstr "Ta en dump av ett specifikt fönster eller yta"
+
+#: screenshooter/screenshooter_applet.c:938
+#: screenshooter/screenshooter_applet.c:941
+msgid "Grab a shot of your entire desktop"
+msgstr "Ta en dump av hela ditt skrivbord"
+
+#: screenshooter/screenshooter_applet.c:1097
+msgid ""
+"There was a word expansion error\n"
+"I think you have stuck something funny in the directory box\n"
+"Screenshot aborted"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:1113
+msgid ""
+"There was a word expansion error\n"
+"I think you have stuck something funny in the filename box\n"
+"Screenshot aborted"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:1463
+msgid ""
+"There was a word expansion error\n"
+"I think you have stuck something funny in the filename box"
+msgstr ""
+
+#: screenshooter/screenshooter_applet.c:1475
+#, c-format
+msgid ""
+"The specified filename:\n"
+"%s\n"
+"expands to:\n"
+"%s\n"
+"when passed to a shell"
+msgstr ""
 
 #: slashapp/properties.c:203 slashapp/slashapp.c:61
 msgid "Articles"
@@ -3279,6 +3676,13 @@ msgstr ""
 #: whereami/whereami.c:195
 msgid "whereami_applet"
 msgstr "whereami_applet"
+
+#~ msgid ""
+#~ "Error querying battery charge.  Make sure that your kernel was built with "
+#~ "APM support."
+#~ msgstr ""
+#~ "Fel uppstod vid förfrågan om batteriladdning.  Kontrollera att din kernel "
+#~ "har stöd för APM."
 
 #~ msgid "I'm sorry, Dave, I can't let you do that."
 #~ msgstr "Förlåt, Dave, jag kan inte låta dig göra det."
