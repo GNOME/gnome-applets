@@ -86,7 +86,6 @@ typedef struct BatteryData {
 
   /* Graph state */
   unsigned char *graph_values;
-  time_t last_graph_update;
 
   /*
    *

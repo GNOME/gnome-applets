@@ -49,6 +49,7 @@ int
 main (int argc, char ** argv)
 {
   const gchar *goad_id;
+  GtkWidget *applet;
 
   /* Initialize i18n */
   bindtextdomain (PACKAGE, GNOMELOCALEDIR);
@@ -63,7 +64,7 @@ main (int argc, char ** argv)
     return 1;
 
   /* Create the battery applet widget */
-  make_new_battery_applet (goad_id);
+  applet = make_new_battery_applet (goad_id);
 
   /* Run... */
   applet_widget_gtk_main ();
@@ -100,7 +101,9 @@ battery_update (gpointer data)
    */
   static char last_percentage = -1, last_hours_remaining = -1,
     last_minutes_remaining = -1, last_ac_online = -1;
-  
+
+  int graph_height, graph_width, i;
+
   time_t curr_time;
 
   if (!bat->setup)
@@ -133,96 +136,91 @@ battery_update (gpointer data)
 
   /* First check that it is time to update the graph. */
   time (&curr_time);
-  /* FIXME: This is meaningless */
-  if (curr_time > (bat->last_graph_update + bat->update_interval) ||
-      bat->force_update)
+
+  if (bat->graph_direction == BATTERY_GRAPH_RIGHT_TO_LEFT)
     {
-      int graph_height, graph_width, i;
-
-      bat->last_graph_update = curr_time;
-
-      if (bat->graph_direction == BATTERY_GRAPH_RIGHT_TO_LEFT)
-	{
-	  /* Shift the graph samples down */
-	  for (i = 0 ; i < (bat->width - 1) ; i++)
-	    bat->graph_values[i] = bat->graph_values[i + 1];
+      /* Shift the graph samples down */
+      for (i = 0 ; i < (bat->width - 1) ; i++)
+	bat->graph_values[i] = bat->graph_values[i + 1];
 
 	  /* Add in the new value */
-	  bat->graph_values[bat->width - 1] = percentage;
-	}
-      else
-	{
-	  /* Shift the graph samples up */
-	  for (i = bat->width - 1; i > 0; i--)
-	    bat->graph_values[i] = bat->graph_values[i - 1];
+      bat->graph_values[bat->width - 1] = percentage;
+    }
+  else
+    {
+      /* Shift the graph samples up */
+      for (i = bat->width - 1; i > 0; i--)
+	bat->graph_values[i] = bat->graph_values[i - 1];
 
 	  /* Add in the new value */
-	  bat->graph_values[0] = percentage;
-	}
-
-      /*
-       * Figure out the size of the graph area.  Ideally we could just
-       * use the graph_area->allocation data, but those values aren't
-       * set correcty until AFTER the graph area widget is shown.  We
-       * can't just use the graph->width and graph->height, since the
-       * bevelling of the frame around the pixmap removes a couple of
-       * pixels.
-       *
-       * So it would be nice if there were some way to find out the
-       * allocated size without actually showing the graph area
-       * widget.  I can't figure out how to do that, however.  So I
-       * set the allocation width and height to zero in the battery
-       * initialization, and if they're zero here, I use the
-       * bat->width and bat->height, which are the requisitioned
-       * applet sizes.  These should only be slightly off, so it's
-       * a minor visual quirk, and only lasts until the next update.
-       */
-      graph_height = bat->graph_area->allocation.height;
-      graph_width = bat->graph_area->allocation.width;
-      if (graph_height == 0)
-	graph_height = bat->height;
-      if (graph_width == 0)
-	graph_width = bat->width;
-
-      /* Clear the graph pixmap */
-      gdk_draw_rectangle (bat->graph_pixmap,
-			 bat->graph_area->style->black_gc,
-			 TRUE, 0, 0, bat->width, bat->height);
-
-      /* Draw the graph */
-      if (ac_online)
-	gdk_gc_set_foreground (bat->gc, & (bat->graph_color_ac_on));
-      else if (percentage > bat->low_charge_val)
-	gdk_gc_set_foreground (bat->gc, & (bat->graph_color_ac_off));
-      else
-	gdk_gc_set_foreground (bat->gc, & (bat->graph_color_low));
-
-      for (i = 0 ; i < graph_width ; i++)
-	{
-	  gdk_draw_line (bat->graph_pixmap, bat->gc, i,
-			 (100 - bat->graph_values[i]) * graph_height / 100,
-			 i, graph_height);
-	}
-
-      /*
-       * Draw the graph ticks on top of the graph.
-       */
-      gdk_gc_set_foreground (bat->gc, & (bat->graph_color_line));
-
-      gdk_draw_line (bat->graph_pixmap, bat->gc,
-		     0, (75 * graph_height / 100),
-		     bat->width, (75 * graph_height / 100));
-
-      gdk_draw_line (bat->graph_pixmap, bat->gc,
-		     0, (50 * graph_height / 100),
-		     bat->width, (50 * graph_height / 100));
-
-      gdk_draw_line (bat->graph_pixmap, bat->gc,
-		     0, (25 * graph_height / 100),
-		     bat->width, (25 * graph_height / 100));
-      
+      bat->graph_values[0] = percentage;
     }
 
+  /*
+   * Figure out the size of the graph area.  Ideally we could just
+   * use the graph_area->allocation data, but those values aren't
+   * set correcty until AFTER the graph area widget is shown.  We
+   * can't just use the graph->width and graph->height, since the
+   * bevelling of the frame around the pixmap removes a couple of
+   * pixels.
+   *
+   * So it would be nice if there were some way to find out the
+   * allocated size without actually showing the graph area
+   * widget.  I can't figure out how to do that, however.  So I
+   * set the allocation width and height to zero in the battery
+   * initialization, and if they're zero here, I use the
+   * bat->width and bat->height, which are the requisitioned
+   * applet sizes.  These should only be slightly off, so it's
+   * a minor visual quirk, and only lasts until the next update.
+   *
+   * And if the allocated height/width is greater than bat->width
+   * and bat->height, we should use the lesser of the values, for
+   * when the user resizes the applet.
+   */
+  graph_height = bat->graph_area->allocation.height;
+  graph_width = bat->graph_area->allocation.width;
+  if ((graph_height == 0) || (graph_height > bat->height))
+    graph_height = bat->height;
+  if ((graph_width == 0) || (graph_width > bat->width))
+    graph_width = bat->width;
+
+  /* Clear the graph pixmap */
+  gdk_draw_rectangle (bat->graph_pixmap,
+		      bat->graph_area->style->black_gc,
+		      TRUE, 0, 0, bat->width, bat->height);
+
+  /* Draw the graph */
+  if (ac_online)
+    gdk_gc_set_foreground (bat->gc, & (bat->graph_color_ac_on));
+  else if (percentage > bat->low_charge_val)
+    gdk_gc_set_foreground (bat->gc, & (bat->graph_color_ac_off));
+  else
+    gdk_gc_set_foreground (bat->gc, & (bat->graph_color_low));
+
+  for (i = 0 ; i < graph_width ; i++)
+    {
+      gdk_draw_line (bat->graph_pixmap, bat->gc, i,
+		     (100 - bat->graph_values[i]) * graph_height / 100,
+		     i, graph_height);
+    }
+
+  /*
+   * Draw the graph ticks on top of the graph.
+   */
+  gdk_gc_set_foreground (bat->gc, & (bat->graph_color_line));
+
+  gdk_draw_line (bat->graph_pixmap, bat->gc,
+		 0, (75 * graph_height / 100),
+		 bat->width, (75 * graph_height / 100));
+
+  gdk_draw_line (bat->graph_pixmap, bat->gc,
+		 0, (50 * graph_height / 100),
+		 bat->width, (50 * graph_height / 100));
+
+  gdk_draw_line (bat->graph_pixmap, bat->gc,
+		 0, (25 * graph_height / 100),
+		 bat->width, (25 * graph_height / 100));
+      
   /*
    *
    * Readout Mode
@@ -242,16 +240,16 @@ battery_update (gpointer data)
 
       /* Clear the readout pixmap to grey. */
       gdk_draw_rectangle (bat->readout_pixmap,
-			 bat->readout_area->style->bg_gc[GTK_STATE_NORMAL],
-			 TRUE,
-			 0, 0,
-			 bat->readout_area->allocation.width,
-			 bat->readout_area->allocation.height);
+			  bat->readout_area->style->bg_gc[GTK_STATE_NORMAL],
+			  TRUE,
+			  0, 0,
+			  bat->readout_area->allocation.width,
+			  bat->readout_area->allocation.height);
 
       /* Draw the outline of the battery picture. */
       gdk_draw_lines (bat->readout_pixmap,
-		     bat->readout_area->style->black_gc,
-		     bat->readout_batt_points, 9);
+		      bat->readout_area->style->black_gc,
+		      bat->readout_batt_points, 9);
 
 
       /*
@@ -284,26 +282,26 @@ battery_update (gpointer data)
 
       /* The number of pixels of the main chamber that we fill in. */
       y =  bat->readout_batt_points[0].y +
-	 (height - ( (body_perc * height) / 100));
+	(height - ( (body_perc * height) / 100));
 
       if (ac_online)
 	gdk_gc_set_foreground (bat->readout_gc,
-			      & (bat->readout_color_ac_on));
+			       & (bat->readout_color_ac_on));
       else if (percentage > bat->low_charge_val)
 	gdk_gc_set_foreground (bat->readout_gc,
-			      & (bat->readout_color_ac_off));
+			       & (bat->readout_color_ac_off));
       else
 	gdk_gc_set_foreground (bat->readout_gc,
-			      & (bat->readout_color_low));
+			       & (bat->readout_color_low));
     
       gdk_draw_rectangle (bat->readout_pixmap,
-			 bat->readout_gc,
-			 TRUE,
-			 bat->readout_batt_points[0].x + 1,
-			 y,
-			 bat->readout_batt_points[5].x -
-			 bat->readout_batt_points[0].x - 1,
-			 (height * body_perc) / 100);
+			  bat->readout_gc,
+			  TRUE,
+			  bat->readout_batt_points[0].x + 1,
+			  y,
+			  bat->readout_batt_points[5].x -
+			  bat->readout_batt_points[0].x - 1,
+			  (height * body_perc) / 100);
 
       /* Fill in the nipple if appropriate. */
       nipple_width = bat->readout_batt_points[3].x -
@@ -353,7 +351,7 @@ battery_update (gpointer data)
       else
 	{
 	  snprintf (labelstr, sizeof (labelstr), "%d:%02d", hours_remaining,
-		   minutes_remaining);
+		    minutes_remaining);
 	  gtk_label_set_text (GTK_LABEL (bat->readout_label_time), labelstr);
 	}
     }
@@ -383,7 +381,7 @@ battery_update (gpointer data)
  */
 gint
 battery_expose_handler (GtkWidget * widget, GdkEventExpose * expose,
-		       gpointer data)
+			gpointer data)
 {
   BatteryData * bat = data;
   GdkPixmap * curr_pixmap;
@@ -397,24 +395,24 @@ battery_expose_handler (GtkWidget * widget, GdkEventExpose * expose,
     {
       curr_pixmap = bat->graph_pixmap;
       gdk_draw_pixmap (/* Drawable */        bat->graph_area->window,
-		      /* GC */
-      bat->graph_area->style->fg_gc[GTK_WIDGET_STATE (bat->graph_area)],
-		  /* Src Drawable */    curr_pixmap,
-		  /* X src, Y src */    0, 0,
-		  /* X dest, Y dest */  0, 0,
-		  /* width */           bat->graph_area->allocation.width,
-		  /* height */          bat->graph_area->allocation.height);
+		       /* GC */
+       bat->graph_area->style->fg_gc[GTK_WIDGET_STATE (bat->graph_area)],
+		       /* Src Drawable */    curr_pixmap,
+		       /* X src, Y src */    0, 0,
+		       /* X dest, Y dest */  0, 0,
+	       /* width */           bat->graph_area->allocation.width,
+	       /* height */          bat->graph_area->allocation.height);
     }
   else
     {
       gdk_draw_pixmap (/* Drawable */        bat->readout_area->window,
-		      /* GC */
-      bat->readout_area->style->fg_gc[GTK_WIDGET_STATE (bat->readout_area)],
-		  /* Src Drawable */    bat->readout_pixmap,
-		  /* X src, Y src */    0, 0,
-		  /* X dest, Y dest */  0, 0,
-		  /* width */           bat->readout_area->allocation.width,
-		  /* height */          bat->readout_area->allocation.height);
+		       /* GC */
+       bat->readout_area->style->fg_gc[GTK_WIDGET_STATE (bat->readout_area)],
+		       /* Src Drawable */    bat->readout_pixmap,
+		       /* X src, Y src */    0, 0,
+		       /* X dest, Y dest */  0, 0,
+	       /* width */           bat->readout_area->allocation.width,
+	       /* height */          bat->readout_area->allocation.height);
     }
 
   return FALSE; 
@@ -434,7 +432,7 @@ battery_orient_handler (GtkWidget * w, PanelOrientType o, gpointer data)
 
 gint
 battery_configure_handler (GtkWidget *widget, GdkEventConfigure *event,
-			  gpointer data)
+			   gpointer data)
 {
   BatteryData * bat = data;
   
@@ -469,7 +467,7 @@ battery_set_mode (BatteryData * bat)
     {
       if (bat->prop_win)
 	gtk_toggle_button_set_active
-	 (GTK_TOGGLE_BUTTON (bat->mode_radio_readout), 1);
+	  (GTK_TOGGLE_BUTTON (bat->mode_radio_readout), 1);
 
       battery_expose_handler (bat->readout_area, NULL, bat);
       gtk_widget_hide_all (bat->graph_frame);
@@ -492,16 +490,22 @@ static void
 battery_change_mode (BatteryData * bat)
 {
   if (!strcmp (bat->mode_string, BATTERY_MODE_GRAPH))
-    bat->mode_string = BATTERY_MODE_READOUT;
+    {
+      g_free (bat->mode_string);
+      bat->mode_string = strdup (BATTERY_MODE_READOUT);
+    }
   else
-    bat->mode_string = BATTERY_MODE_GRAPH;
+    {
+      g_free (bat->mode_string);
+      bat->mode_string = strdup (BATTERY_MODE_GRAPH);
+    }
 
   battery_set_mode (bat);
 } /* battery_change_mode */
 
 static gint
 battery_button_press_handler (GtkWidget * w, GdkEventButton * ev,
-			     gpointer data)
+			      gpointer data)
 {
   BatteryData * bat = data;
 
@@ -534,7 +538,6 @@ make_new_battery_applet (const gchar *goad_id)
   if (bat->applet == NULL)
     g_error (_("Can't create applet!\n"));
 
-  bat->last_graph_update = 0;
   bat->graph_values = NULL;
   bat->setup = 0;
   bat->force_update = TRUE;
@@ -544,7 +547,7 @@ make_new_battery_applet (const gchar *goad_id)
    * exist).
    */
   if ( (APPLET_WIDGET (bat->applet)->privcfgpath) &&
-      * (APPLET_WIDGET (bat->applet)->privcfgpath))
+       * (APPLET_WIDGET (bat->applet)->privcfgpath))
     battery_session_load (APPLET_WIDGET (bat->applet)->privcfgpath, bat);
   else
     battery_session_defaults (bat);
@@ -623,33 +626,33 @@ make_new_battery_applet (const gchar *goad_id)
 
   /* Set up the mode-changing callback */
   gtk_signal_connect (GTK_OBJECT (bat->applet), "button_press_event",
-		     (GtkSignalFunc) battery_button_press_handler, bat);
+		      (GtkSignalFunc) battery_button_press_handler, bat);
   gtk_widget_set_events (GTK_WIDGET (bat->applet), GDK_BUTTON_PRESS_MASK);
 
 
   /* Set up the event callbacks for the graph of battery life. */
   gtk_signal_connect (GTK_OBJECT (bat->graph_area), "expose_event",
-		     (GtkSignalFunc)battery_expose_handler, bat);
+		      (GtkSignalFunc)battery_expose_handler, bat);
   gtk_widget_set_events (bat->graph_area, GDK_EXPOSURE_MASK |
 			 GDK_BUTTON_PRESS_MASK);
 
   /* Set up the event callbacks for the readout */
   gtk_signal_connect (GTK_OBJECT (bat->readout_area), "expose_event",
-		     (GtkSignalFunc)battery_expose_handler, bat);
+		      (GtkSignalFunc)battery_expose_handler, bat);
   gtk_signal_connect (GTK_OBJECT (bat->readout_area), "configure_event",
-		     (GtkSignalFunc)battery_configure_handler, bat);
+		      (GtkSignalFunc)battery_configure_handler, bat);
   gtk_widget_set_events (bat->readout_area, GDK_EXPOSURE_MASK);
 
   /* This will let us know when the panel changes orientation */
   gtk_signal_connect (GTK_OBJECT (bat->applet), "change_orient",
-		     GTK_SIGNAL_FUNC (battery_orient_handler),
-		     bat);
+		      GTK_SIGNAL_FUNC (battery_orient_handler),
+		      bat);
 
   applet_widget_add (APPLET_WIDGET (bat->applet), root);
 
   gtk_signal_connect (GTK_OBJECT (bat->applet), "save_session",
-		     GTK_SIGNAL_FUNC (battery_session_save),
-		     bat);
+		      GTK_SIGNAL_FUNC (battery_session_save),
+		      bat);
 
   applet_widget_register_stock_callback (APPLET_WIDGET (bat->applet),
 					 "about",
@@ -714,13 +717,13 @@ about_cb (AppletWidget *widget, gpointer data)
   bat->about_box =
     gnome_about_new (_("The GNOME Battery Monitor Applet"), VERSION,
 		     _(" (C) 1997-1998 The Free Software Foundation"),
-		    (const char **) authors,
+		     (const char **) authors,
 	     _("This applet monitors the charge of your laptop's battery.  "
 		       "Click on it to change display modes."),
 		     NULL);
 
   gtk_signal_connect (GTK_OBJECT (bat->about_box), "destroy",
-		     GTK_SIGNAL_FUNC (destroy_about), bat);
+		      GTK_SIGNAL_FUNC (destroy_about), bat);
 
   gtk_widget_show (bat->about_box);
 } /* about_cb */
@@ -735,14 +738,14 @@ battery_setup_picture (BatteryData * bat)
 
   /*  Set up the line segments for the battery picture.  The points are
       numbered as follows:
-             2_ 3
-         0 __| |__ 5
-         8 | 1 4 |
-           |     |
-           |     |
-           |     |
-           |_____|
-          7       6
+           2_ 3
+       0 __| |__ 5
+       8 | 1 4 |
+         |     |
+         |     |
+         |     |
+         |_____|
+        7       6
   */
 
   /* 0 */
@@ -793,18 +796,15 @@ battery_set_size (BatteryData * bat)
    * If pixmaps have already been allocated, then free them here
    * before creating new ones.
    */
-  if (bat->setup)
-    {
-      if (bat->graph_pixmap != NULL)
-	  gdk_pixmap_unref (bat->graph_pixmap);
-      if (bat->readout_pixmap != NULL)
-	gdk_pixmap_unref (bat->readout_pixmap);
-    }
+  if (bat->graph_pixmap != NULL)
+    gdk_pixmap_unref (bat->graph_pixmap);
+  if (bat->readout_pixmap != NULL)
+    gdk_pixmap_unref (bat->readout_pixmap);
 
   bat->graph_pixmap = gdk_pixmap_new (bat->graph_area->window,
-				     bat->width,
-				     bat->height,
-			     gtk_widget_get_visual (bat->graph_area)->depth);
+				      bat->width,
+				      bat->height,
+		      gtk_widget_get_visual (bat->graph_area)->depth);
 
   gdk_draw_rectangle (bat->graph_pixmap,
 		      bat->graph_area->style->black_gc,
@@ -813,20 +813,20 @@ battery_set_size (BatteryData * bat)
 		      bat->graph_area->allocation.height);
 
   bat->readout_pixmap = gdk_pixmap_new (bat->readout_area->window,
-				       bat->width,
-				       bat->height,
-		       gtk_widget_get_visual (bat->readout_area)->depth);
+					bat->width,
+					bat->height,
+			gtk_widget_get_visual (bat->readout_area)->depth);
 
   gdk_draw_rectangle (bat->readout_pixmap,
-		     bat->readout_area->style->black_gc,
-		     TRUE, 0, 0,
-		     bat->readout_area->allocation.width,
-		     bat->readout_area->allocation.height);
+		      bat->readout_area->style->black_gc,
+		      TRUE, 0, 0,
+		      bat->readout_area->allocation.width,
+		      bat->readout_area->allocation.height);
 
   /* If we've been resized, don't throw away the old graph data */
   if (bat->graph_values != NULL)
     { 
-      unsigned char * new_vals;
+      unsigned char *new_vals;
 
       new_vals = (unsigned char *) g_malloc (bat->width);
       if (new_vals == NULL)
@@ -834,7 +834,11 @@ battery_set_size (BatteryData * bat)
 
       memset (new_vals, 0, bat->width);
 
-      memcpy (new_vals, bat->graph_values, bat->old_width);
+      if (bat->width > bat->old_width)
+	memcpy (new_vals + (bat->width - bat->old_width),
+		bat->graph_values, bat->old_width);
+      else
+	memcpy (new_vals, bat->graph_values, bat->width);
 
       g_free (bat->graph_values);
 
@@ -878,33 +882,33 @@ battery_setup_colors (BatteryData * bat)
 
   /* Readout */
   gdk_color_parse (bat->readout_color_ac_on_s,
-		  & (bat->readout_color_ac_on));
+		   & (bat->readout_color_ac_on));
   gdk_color_alloc (colormap, & (bat->readout_color_ac_on));
 
   gdk_color_parse (bat->readout_color_ac_off_s,
-		  & (bat->readout_color_ac_off));
+		   & (bat->readout_color_ac_off));
   gdk_color_alloc (colormap, & (bat->readout_color_ac_off));
 
   gdk_color_parse (bat->readout_color_low_s,
-		  & (bat->readout_color_low));
+		   & (bat->readout_color_low));
   gdk_color_alloc (colormap, & (bat->readout_color_low));
 
 
   /* Graph */
   gdk_color_parse (bat->graph_color_ac_on_s,
-		  & (bat->graph_color_ac_on));
+		   & (bat->graph_color_ac_on));
   gdk_color_alloc (colormap, & (bat->graph_color_ac_on));
 
   gdk_color_parse (bat->graph_color_ac_off_s,
-		  & (bat->graph_color_ac_off));
+		   & (bat->graph_color_ac_off));
   gdk_color_alloc (colormap, & (bat->graph_color_ac_off));
 
   gdk_color_parse (bat->graph_color_low_s,
-		  & (bat->graph_color_low));
+		   & (bat->graph_color_low));
   gdk_color_alloc (colormap, & (bat->graph_color_low));
 
   gdk_color_parse (bat->graph_color_line_s,
-		  & (bat->graph_color_line));
+		   & (bat->graph_color_line));
   gdk_color_alloc (colormap, & (bat->graph_color_line));
 } /* battery_setup_colors */
 

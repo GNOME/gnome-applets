@@ -77,7 +77,7 @@ battery_properties_window (AppletWidget * applet, gpointer data)
 
   /* Applet height */
   l = gtk_label_new (_("Applet Height:")); 
-  bat->height_adj = gtk_adjustment_new ( bat->height, 0.5, 256, 1, 8, 8 );
+  bat->height_adj = gtk_adjustment_new ( bat->height, 1.0, 666, 1, 8, 8 );
   height_spin = gtk_spin_button_new ( GTK_ADJUSTMENT (bat->height_adj), 1, 0 );
   gtk_table_attach_defaults ( GTK_TABLE (t), l, 0, 1, 0, 1 );
   gtk_table_attach_defaults ( GTK_TABLE (t), height_spin, 1, 2, 0, 1 );
@@ -90,7 +90,7 @@ battery_properties_window (AppletWidget * applet, gpointer data)
   l = gtk_label_new (_("Applet Width:")); 
   gtk_table_attach_defaults ( GTK_TABLE (t), l, 0, 1, 1, 2 ); 
 
-  bat->width_adj = gtk_adjustment_new ( bat->width, 0.5, 666, 1, 8, 8 );
+  bat->width_adj = gtk_adjustment_new ( bat->width, 1, 666, 1, 8, 8 );
   width_spin = gtk_spin_button_new ( GTK_ADJUSTMENT (bat->width_adj), 1, 0 );
   gtk_table_attach_defaults ( GTK_TABLE (t), width_spin, 1, 2, 1, 2 );
   gtk_spin_button_set_update_policy ( GTK_SPIN_BUTTON (width_spin),
@@ -457,20 +457,22 @@ prop_apply (GtkWidget *w, int page, gpointer data)
   snprintf (bat->readout_color_low_s, sizeof (bat->readout_color_low_s),
 	  "#%02x%02x%02x", r, g, b);
 
-  bat->mode_string = GTK_TOGGLE_BUTTON (bat->mode_radio_graph)->active ?
-      BATTERY_MODE_GRAPH : BATTERY_MODE_READOUT;
+  g_free (bat->mode_string);
+  bat->mode_string =
+    strdup (GTK_TOGGLE_BUTTON (bat->mode_radio_graph)->active ?
+	    BATTERY_MODE_GRAPH : BATTERY_MODE_READOUT);
+
+  if (size_changed)
+    battery_set_size (bat);
 
   bat->setup = TRUE;
 
   battery_setup_colors (bat);
 
-  if (size_changed)
-    battery_set_size (bat);
-
   battery_set_mode (bat);
 
   bat->force_update = TRUE;
-  battery_update ( (gpointer) bat);
+  battery_update ((gpointer) bat);
   
   /* Make the panel save our config */
   applet_widget_sync_config (APPLET_WIDGET (bat->applet));

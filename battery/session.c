@@ -102,15 +102,15 @@ battery_session_load(gchar * cfgpath, BatteryData * bat)
 	  ("readout/ac_on_color="  BATTERY_DEFAULT_READOUT_ACON_COLOR, NULL),
 	  sizeof(bat->readout_color_ac_on_s));
 
-  strncpy(bat->readout_color_ac_off_s,
-	  gnome_config_get_string_with_default
-	  ("readout/ac_off_color=" BATTERY_DEFAULT_READOUT_ACOFF_COLOR, NULL),
-	  sizeof(bat->readout_color_ac_off_s));
+  strncpy (bat->readout_color_ac_off_s,
+	   gnome_config_get_string_with_default
+	   ("readout/ac_off_color=" BATTERY_DEFAULT_READOUT_ACOFF_COLOR, NULL),
+	   sizeof(bat->readout_color_ac_off_s));
 
-  strncpy(bat->readout_color_low_s,
-	  gnome_config_get_string_with_default
-	  ("readout/low_color=" BATTERY_DEFAULT_READOUT_LOW_COLOR, NULL),
-	  sizeof(bat->readout_color_low_s));
+  strncpy (bat->readout_color_low_s,
+	   gnome_config_get_string_with_default
+	   ("readout/low_color=" BATTERY_DEFAULT_READOUT_LOW_COLOR, NULL),
+	   sizeof(bat->readout_color_low_s));
 
   gnome_config_pop_prefix ();
 } /* battery_session_load */
