@@ -6,7 +6,7 @@ INCLUDES = -I. -I$(srcdir)                              \
 
 bin_PROGRAMS = gkb_applet
 
-SUBDIRS= gkb xmodmap
+SUBDIRS= gkb xmodmap docs
 
 gkb_applet_SOURCES = gkb.c
 

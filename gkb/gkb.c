@@ -64,6 +64,7 @@ static void gkb_button_press_event_cb (GtkWidget * widget, GdkEventButton * e, G
 static void gkb_draw (GtkWidget *darea, GKB *gkb);                        
 void        properties_dialog (AppletWidget *applet, gpointer gkbx);
 static void about_cb (AppletWidget *widget, gpointer gkbx);
+static void phelp_cb (AppletWidget *widget, gpointer data);
 static void help_cb (AppletWidget *widget, gpointer data);
 
 static GtkWidget *
@@ -448,7 +449,7 @@ properties_dialog (AppletWidget *applet,
         gtk_signal_connect (GTK_OBJECT(gkb->propbox),
 			    "destroy", GTK_SIGNAL_FUNC (destroy_cb), gkb);
         gtk_signal_connect (GTK_OBJECT(gkb->propbox),
-			    "help", GTK_SIGNAL_FUNC (help_cb), NULL);
+			    "help", GTK_SIGNAL_FUNC (phelp_cb), NULL);
 	     
         gtk_widget_show_all (gkb->propbox);
 }
@@ -589,7 +590,16 @@ about_cb (AppletWidget *widget,
 static void
 help_cb (AppletWidget *applet, gpointer data)
 {
-	GnomeHelpMenuEntry help_entry = { "gkb", "properties" };
+	GnomeHelpMenuEntry help_entry = { "gkb_applet", "index.html" };
+
+	gnome_help_display (NULL, &help_entry);
+}
+
+/* Do the applet Help callback from Prefereces dialog*/
+static void
+phelp_cb (AppletWidget *applet, gpointer data)
+{
+	GnomeHelpMenuEntry help_entry = { "gkb_applet", "index.html#GKBAPPLET-PREFS" };
 
 	gnome_help_display (NULL, &help_entry);
 }
@@ -657,6 +667,13 @@ gkb_activator (PortableServer_POA poa,
 					       properties_dialog,
 					       gkb);
 
+	applet_widget_register_stock_callback (APPLET_WIDGET (gkb->applet),
+					       "help",
+					       GNOME_STOCK_PIXMAP_HELP,
+					       _("Help"),
+					       help_cb,
+					       NULL);
+      
 	applet_widget_register_stock_callback (APPLET_WIDGET (gkb->applet),
 					       "about",
 					       GNOME_STOCK_MENU_ABOUT,
