@@ -744,9 +744,13 @@ update_pixmap (DriveData *dd, gint t)
 			height = ICON_HEIGHT;
 		}
 
-		if (dd->orient == PANEL_APPLET_ORIENT_LEFT
-		    || dd->orient == PANEL_APPLET_ORIENT_RIGHT || hint <= 36) {
+		if ((dd->orient == PANEL_APPLET_ORIENT_LEFT
+		     || dd->orient == PANEL_APPLET_ORIENT_RIGHT) && hint > 36) {
 			pmap_d_in = icon_list[pixmap].pmap_h_in;
+			pmap_d_out = icon_list[pixmap].pmap_h_out;
+		} else if ((dd->orient == PANEL_APPLET_ORIENT_UP
+		     || dd->orient == PANEL_APPLET_ORIENT_DOWN) && hint <= 36) {
+		        pmap_d_in = icon_list[pixmap].pmap_h_in;
 			pmap_d_out = icon_list[pixmap].pmap_h_out;
 		} else {
 			gint tmp;
