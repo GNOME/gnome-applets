@@ -528,7 +528,7 @@ propertiesBox(AppletWidget *applet, gpointer data)
 
 
     /* auto complete frame */
-    frame = gtk_frame_new(_("Auto Complete"));
+    frame = gtk_frame_new(_("Auto Completion"));
     gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
 
     vbox1 = gtk_vbox_new(FALSE, GNOME_PAD_SMALL);
@@ -536,7 +536,7 @@ propertiesBox(AppletWidget *applet, gpointer data)
     gtk_container_add(GTK_CONTAINER(frame), vbox1);
 
     /* show history autocomplete */
-    checkAutoCompleteHistory = gtk_check_button_new_with_label (_("Enable history based auto complete"));
+    checkAutoCompleteHistory = gtk_check_button_new_with_label (_("Enable history based auto completion"));
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(checkAutoCompleteHistory), prop.autoCompleteHistory);
     gtk_signal_connect(GTK_OBJECT(checkAutoCompleteHistory),
                        "toggled",
