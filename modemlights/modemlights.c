@@ -1269,7 +1269,7 @@ static void setup_colors(void)
 
 void reset_orientation(void)
 {
-	if (sizehint >= GNOME_PANEL_MEDIUM)
+	if (sizehint >= GNOME_Vertigo_PANEL_MEDIUM)
 		{
 		if (show_extra_info)
 			{

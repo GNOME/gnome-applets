@@ -349,7 +349,7 @@ cb_applet_change_orient (PanelApplet *applet, PanelAppletOrient  o, gpointer dat
  
   int panelsize = panel_applet_get_size (applet);
   /* Switch stuff so it lies flat on a tiny panel */
-  if (panelsize < GNOME_PANEL_MEDIUM)
+  if (panelsize < GNOME_Vertigo_PANEL_MEDIUM)
     size_tiny = TRUE;
   else
     size_tiny = FALSE;
@@ -369,7 +369,7 @@ applet_change_pixel_size (PanelApplet *applet, gint s, gpointer data)
     panel_applet_get_orient (applet);
 
   /* Switch stuff so it lies flat on a tiny panel */
-  if (s < GNOME_PANEL_MEDIUM)
+  if (s < GNOME_Vertigo_PANEL_MEDIUM)
     size_tiny = TRUE;
   else
     size_tiny = FALSE;
