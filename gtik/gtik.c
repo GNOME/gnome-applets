@@ -737,8 +737,6 @@ static gint updateOutput(gpointer data)
 		if (pixbuf)
 			gdk_pixbuf_unref (pixbuf);
 		
-		gnome_window_icon_set_from_file (GTK_WINDOW (about),
-			GNOME_ICONDIR"/gnome-money.png");
 		
 		gtk_widget_show (about);
 
@@ -1439,6 +1437,7 @@ static gint updateOutput(gpointer data)
 
 		gnome_vfs_init();
 		
+		gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gnome-money.png");
 		panel_applet_add_preferences (applet, "/schemas/apps/gtik/prefs", NULL);
 		
 		access_stock = stockdata = g_new0 (StockData, 1);
