@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-10-19 11:20+0200\n"
-"PO-Revision-Date: 2004-10-19 14:59+0200\n"
+"POT-Creation-Date: 2004-10-21 11:20+0200\n"
+"PO-Revision-Date: 2004-10-21 16:50+0200\n"
 "Last-Translator: Miloslav Trmac <mitr@volny.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -35,6 +35,7 @@ msgstr ""
 #: multiload/GNOME_MultiloadApplet.xml.h:1
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:1
 #: wireless/GNOME_WirelessApplet.xml.h:1
+#: trashapplet/GNOME_Panel_TrashApplet.xml.h:1
 msgid "_About"
 msgstr "O _aplikaci"
 
@@ -78,7 +79,7 @@ msgstr "Zobrazí stav vlastností zpřístupnění klávesnice"
 
 #: accessx-status/applet.c:136 battstat/battstat_applet.c:1064
 #: cdplayer/cdplayer.c:596 charpick/charpick.c:592 drivemount/drivemount.c:552
-#: geyes/geyes.c:201 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:608
+#: geyes/geyes.c:201 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:599
 #: gtik/gtik.c:723 gweather/gweather-about.c:47 mailcheck/mailcheck.c:2468
 #: mini-commander/src/about.c:50 modemlights/modemlights.c:118
 #: multiload/main.c:58 stickynotes/stickynotes_applet_callbacks.c:261
@@ -3004,7 +3005,7 @@ msgid "GNOME keyboard layout indicator"
 msgstr "GNOME indikátor rozložení klávesnice"
 
 #: gswitchit/GNOME_KeyboardApplet.server.in.in.h:3
-#: gswitchit/gswitchit-applet.c:613
+#: gswitchit/gswitchit-applet.c:604
 msgid "Keyboard Indicator"
 msgstr "Indikátor klávesnice"
 
@@ -3017,19 +3018,19 @@ msgstr "Generátor apletu klávesnice"
 msgid "Keyboard Indicator (%s)"
 msgstr "Indikátor klávesnice (%s)"
 
-#: gswitchit/gswitchit-applet.c:616
+#: gswitchit/gswitchit-applet.c:607
 msgid "Copyright (c) Sergey V. Udaltsov 1999-2004"
 msgstr "Copyright © Sergey V. Udaltsov 1999-2004"
 
-#: gswitchit/gswitchit-applet.c:618
+#: gswitchit/gswitchit-applet.c:609
 msgid "Keyboard layout indicator applet for GNOME"
 msgstr "Aplet indikátoru rozložení klávesnice pro GNOME"
 
-#: gswitchit/gswitchit-applet.c:772
+#: gswitchit/gswitchit-applet.c:763
 msgid "XKB initialization error"
 msgstr "Chyba inicializace XKB"
 
-#: gswitchit/gswitchit-applet.c:780
+#: gswitchit/gswitchit-applet.c:771
 msgid "Error loading XKB configuration registry"
 msgstr "Chyba při načítání registru nastavení XKB"
 
@@ -3041,11 +3042,11 @@ msgstr ""
 "Zpřístupnit rozložení JEN z vyskakovacího menu apletu.\n"
 "Na toto rozložení se nedá přepnout pomocí klávesnice."
 
-#: gswitchit/gswitchit-capplet.c:265
+#: gswitchit/gswitchit-capplet.c:262
 msgid "_Exclude from keyboard switching"
 msgstr "_Vyjmout z přepínání klávesnicí"
 
-#: gswitchit/gswitchit-capplet.c:296
+#: gswitchit/gswitchit-capplet.c:293
 msgid "Not used"
 msgstr "Nepoužívá se"
 
@@ -6288,25 +6289,21 @@ msgstr "Nastavení Sledování bezdrátového spojení"
 msgid "_Monitored device:"
 msgstr "_Sledované zařízení:"
 
-#: trashapplet/GNOME_Panel_TrashApplet.xml.h:1
-msgid "_About..."
-msgstr "O _aplikaci..."
-
 #: trashapplet/GNOME_Panel_TrashApplet.xml.h:2
 msgid "_Empty Trash"
 msgstr "_Vyprázdnit koš"
 
 #: trashapplet/GNOME_Panel_TrashApplet.xml.h:4
-msgid "_Open Trash folder"
-msgstr "_Otevřít adresář koše"
+msgid "_Open"
+msgstr "_Otevřít"
 
 #: trashapplet/GNOME_Panel_TrashApplet.server.in.in.h:1
-msgid "Put Trash on the panel"
-msgstr "Umístit koč na panel"
+msgid "Go to Trash"
+msgstr "Jít do koše"
 
 #: trashapplet/GNOME_Panel_TrashApplet.server.in.in.h:2
-msgid "Trash Applet"
-msgstr "Aplet koše"
+msgid "Trash"
+msgstr "Koš"
 
 #: trashapplet/src/trashapplet.c:123
 #, c-format
@@ -6366,7 +6363,8 @@ msgstr "Nemohu přesunout položky do koše, chcete je odstranit okamžitě?"
 #: trashapplet/src/trashapplet.c:541
 msgid ""
 "Cannot move some items to trash, do you want to delete these immediately?"
-msgstr "Nemohu přesunout některé položky do koše, chcete je odstranit okamžitě?"
+msgstr ""
+"Nemohu přesunout některé položky do koše, chcete je odstranit okamžitě?"
 
 #: trashapplet/src/trashapplet.c:639 trashapplet/src/trashapplet.c:656
 #, c-format
@@ -6376,6 +6374,18 @@ msgid ""
 msgstr ""
 "Nemohu přesunout do koše:\n"
 "%s"
+
+#~ msgid "_About..."
+#~ msgstr "O _aplikaci..."
+
+#~ msgid "_Open Trash folder"
+#~ msgstr "_Otevřít adresář koše"
+
+#~ msgid "Put Trash on the panel"
+#~ msgstr "Umístit koč na panel"
+
+#~ msgid "Trash Applet"
+#~ msgstr "Aplet koše"
 
 #~ msgid "GNOME VFS Error: %s"
 #~ msgstr "Chyba GNOME VFS: %s"
