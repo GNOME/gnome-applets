@@ -153,6 +153,7 @@ typedef struct {
 	int 		    mixerchannel;
 	GList		    *channels;
 	gchar		    *device;
+	gint                panel_size;
 
 	GtkAdjustment     *adj;
 
@@ -780,13 +781,30 @@ mixer_load_volume_images (MixerData *data) {
 }
 
 static void
+applet_size_allocate (GtkWidget *widget, GtkAllocation *allocation, MixerData *data)
+{
+	if (IS_PANEL_HORIZONTAL (data->orientation)) {
+		if (data->panel_size != allocation->height) {
+			data->panel_size = allocation->height;
+			mixer_update_image (data);
+		}
+	}
+	else {
+		if (data->panel_size != allocation->width) {
+			data->panel_size = allocation->width;
+			mixer_update_image (data);
+		}
+	}
+			
+}
+
+
+static void
 mixer_update_image (MixerData *data)
 {
 	gint vol, size;
 	GdkPixbuf *pixbuf, *copy, *scaled = NULL;
 	vol = data->vol;
-
-	size = panel_applet_get_size (PANEL_APPLET (data->applet));
 	
 	if (vol <= 0)
 		pixbuf = gdk_pixbuf_copy (data->zero);
@@ -815,7 +833,7 @@ mixer_update_image (MixerData *data)
 		g_object_unref (mute);
 	}
 
-	size = MAX (11, size);
+	size = MAX (11, data->panel_size);
 	scaled = gdk_pixbuf_scale_simple (pixbuf, size, size, GDK_INTERP_BILINEAR);
 	gtk_image_set_from_pixbuf (GTK_IMAGE (data->image), scaled);
 	g_object_unref (scaled);	
@@ -1933,6 +1951,11 @@ mixer_applet_create (PanelApplet *applet)
 	g_signal_connect (applet,
 			  "change_background",
 			  G_CALLBACK (applet_change_background_cb),
+			  data);
+
+	g_signal_connect (applet,
+			  "size_allocate",
+			  G_CALLBACK (applet_size_allocate),
 			  data);
 
 	panel_applet_setup_menu_from_file (applet, 

@@ -1,3 +1,17 @@
+2004-06-26  Dennis Smit  <ds@nerds-incorporated.org>
+
+	* mixer.c (applet_size_allocate): Added function.
+
+	(mixer_update_image): Don't get size from the panel
+	but using the allocation.
+
+	(mixer_applet_create): Connect signal to the
+	applet_size_allocate.
+
+	Patch by: Vincent Noel  <vnoel@cox.net>
+
+	Fixes bug #144531.
+
 2004-06-10  Dennis Smit  <ds@nerds-incorporated.org>
 
 	* mixer.c (mixer_applet_create): Set the correct range value
