@@ -24,7 +24,7 @@
 #include "global.h"
 
 static const gchar *cpu_texts [4] = {
-    N_("User"),  N_("Nice"),   N_("System"),  N_("Idle")
+    N_("User"),  N_("System"),   N_("Nice"),  N_("Idle")
 };
 
 static const gchar *mem_texts [4] =  {
