@@ -1363,33 +1363,33 @@ static char *met_reprocess(char *x, int len)
 	{
 		if(buf)
 			g_free(buf);
-		buf=g_malloc(len);
+		buf=g_malloc(len + 1);
 		buflen=len;
 	}
-	memcpy(buf, x, len);
 		
 	o=buf;
+	x += len;       /* End mark */
 
-	while(*p)
+	while(*p && p < x)
 	{
 		if(isspace(*p))
 		{
-			spacing=1;
+			if(!spacing)
+			{
+				spacing = 1;
+				lastspace = o;
+				count++;
+				*o++ = ' ';
+			}
 			p++;
 			continue;
 		}
-		if(spacing)
+		spacing = 0;
+		if(count > 75 && lastspace)
 		{
-			if(count>75)
-			{
-				if(lastspace)
-					*lastspace = '\n';
-				count -= lastcount;
-			}
-			lastspace = o;
-			lastcount = count;
-			*o++=' ';
-			spacing=0;
+			count = o - lastspace - 1;
+			*lastspace = '\n';
+			lastspace = NULL;
 		}
 
 		if(*p=='&')
@@ -1421,12 +1421,20 @@ static char *met_reprocess(char *x, int len)
 			if(strncasecmp(p, "<BR>", 4)==0)
 			{
 				*o++='\n';
-				count=0;
-				lastspace = NULL;
-				p+=4;
-				continue;
+				count = 0;
 			}
-			break;
+			if(strncasecmp(p, "<B>", 3)==0)
+			{
+				*o++='\n';
+				*o++='\n';
+				count = 0;
+			}
+			p++;
+			while(*p && *p != '>')
+				p++;
+			if(*p)
+				p++;
+			continue;
 		}
 		*o++=*p++;
 		count++;
@@ -1438,7 +1446,7 @@ static char *met_reprocess(char *x, int len)
 
 /*
  * Parse the metoffice forecast info.
- * For gnome 2.0 we want to just embed an HTML bonobo component and 
+ * For gnome 3.0 we want to just embed an HTML bonobo component and 
  * be done with this ;) 
  */
 
@@ -1450,59 +1458,18 @@ static gchar *met_parse (gchar *meto, WeatherLocation *loc)
     gchar *t;    
     gint i=0;
 
-    static char *key[]=
-    {
-    	"<!-- <!TODAY_START> -->",
-    	"<!-- <!TONIGHT_START> -->",
-    	"<!-- <!TOMORROW_START> -->",
-    	"<!-- <!OUTLOOK_START> -->",
-    	NULL
-    };
-    static char *keyend[]=
-    {
-    	"<!-- <!TODAY_END> -->",
-    	"<!-- <!TONIGHT_END> -->",
-    	"<!-- <!TOMORROW_END> -->",
-    	"<!-- <!OUTLOOK_END> -->",
-    	NULL
-    };
-    static char *name[4]=
-    {
-    	"Today:",
-    	"Tonight:",
-    	"Tomorrow:",
-    	"Outlook:"
-    };
-    
-    
-    while(key[i]!=NULL)
-    {
-    	p=strstr(meto, key[i]);
-    	if(p==NULL)
-    	{
-    		printf("No %s\n", key[i]);
-    		i++;
-    		continue;
-    	}
-    	p+=strlen(key[i]);
+    p = strstr(meto, "Summary: </b>");
+    if(p == NULL)
+	    return r;
+    p += 13;
+    rp = strstr(p, "Text issued at:");
+    if(rp == NULL)
+	    return r;
 
-    	rp = strstr(p, keyend[i]);
-	if(rp==NULL)
-	{
-    		printf("No %s\n", keyend[i]);
-		i++;
-		continue;
-	}
-	
-	/* p to rp is the text block we want but in HTML malformat */    	
-
-    	t = g_strconcat(r, name[i], "\n", met_reprocess(p, rp-p), "\n", NULL);
-    	
-    	g_free(r);
-    	r = t;
-    	i++;
-    }
-    return r;
+    /* p to rp is the text block we want but in HTML malformat */
+    t = g_strconcat(r, met_reprocess(p, rp-p), NULL);
+    free(r);
+    return t;
 }
 
 static void met_finish_read(GnomeVFSAsyncHandle *handle, GnomeVFSResult result, 
@@ -1596,7 +1563,7 @@ static void metoffice_start_open (WeatherInfo *info)
     WeatherLocation *loc;
     loc = info->location;
   
-    url = g_strdup_printf("http://www.metoffice.gov.uk/datafiles/%s.html", loc->zone+1);
+    url = g_strdup_printf("http://www.metoffice.gov.uk/weather/europe/uk/%s.html", loc->zone+1);
 
     gnome_vfs_async_open(&info->met_handle, url, GNOME_VFS_OPEN_READ, 
     			 0, met_finish_open, info->applet);
