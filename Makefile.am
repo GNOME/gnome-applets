@@ -63,9 +63,9 @@ SUBDIRS = \
 	$(always_built_SUBDIRS)	\
 	$(gtop_SUBDIRS)		\
 	$(vfs_SUBDIRS)		\
-	$(battstat_SUBDIR)		
+	$(battstat_SUBDIR)	\
+	omf-install	
 ## 	$(esd_SUBDIRS)		\
-## 	omf-install
 
 DIST_SUBDIRS = \
 	po		\
@@ -83,7 +83,8 @@ DIST_SUBDIRS = \
 	gtik		\
 	gweather 	\
 	mini-commander	\
-	man
+	man		\
+	omf-install
 
 EXTRA_DIST = \
 	COPYING-DOCS		\
@@ -94,5 +95,6 @@ EXTRA_DIST = \
 	intltool-update.in	\
 	intltool-extract.in	\
 	intltool-merge.in	\
-	message-of-doom
+	message-of-doom		\
+	xmldocs.make
 

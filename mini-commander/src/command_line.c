@@ -24,7 +24,6 @@
 #include <gnome.h>
 #include <panel-applet.h>
 #include <gdk/gdkkeysyms.h>
-/* include <zvt/zvtterm.h> */
 
 #include "mini-commander_applet.h"
 #include "command_line.h"

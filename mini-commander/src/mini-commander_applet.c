@@ -26,7 +26,6 @@
 #include "mini-commander_applet.h"
 #include "preferences.h"
 #include "command_line.h"
-#include "terminal.h"
 #include "message.h"
 #include "exec.h"
 #include "about.h"
@@ -359,14 +358,8 @@ redraw_applet(MCData *mcdata)
     /* allow pasting into the input box by packing it after
        applet_widdget_add has bound the middle mouse button (idea taken
        from the applet Web_control by Garrett Smith) */
-#if 1
+
     gtk_box_pack_start(GTK_BOX(vbox), mcdata->entry, FALSE, FALSE, 0);
-#else
-    frame = gtk_frame_new(NULL);
-    gtk_frame_set_shadow_type(GTK_FRAME(frame), GTK_SHADOW_IN);
-    gtk_container_add(GTK_CONTAINER(frame), terminal_zvt);
-    gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
-#endif
 
     gtk_widget_show_all(GTK_WIDGET (applet));
 
