@@ -1445,7 +1445,7 @@ modemlights_applet_fill (PanelApplet *applet)
 	device_name = g_strdup("ppp0");
 	command_connect = g_strdup("pppon");
 	command_disconnect = g_strdup("pppoff");
-	orient = PANEL_APPLET_ORIENT_UP;
+	orient = panel_applet_get_orient (applet);
 
 	/* open ip socket */
 	if ((ip_socket = socket(AF_INET, SOCK_DGRAM, 0)) < 0)
