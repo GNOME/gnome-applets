@@ -254,13 +254,16 @@
        <note>
         <title>Information for Advanced Users</title>
         <para>
-         The default method used by <application>Drive
-         Mount</application>to test whether a drive is mounted (using
-         <command>stat</command>) would cause the drive to actually be
-         mounted if the user is using automount. The reason this
-         button is not de-selected by default is because the
-         alternative method uses the <command>mount</command> command,
-         which is more cpu intensive. 
+         The default command used by <application>Drive
+         Mount</application>to test whether a drive is mounted is
+         <command>stat</command> and would cause the drive to actually be
+         mounted if the user is using
+         <application>automount</application>. If this button is 
+         selected, it uses <command>mount</command> instead, which
+         does not cause <application>automount</application> to mount
+         the drive.  The reason this button is not selected by default
+         is that <command>mount</command> is more cpu intensive than
+         <command>stat</command>. 
         </para>
        </note>
       </listitem>
