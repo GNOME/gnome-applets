@@ -387,7 +387,8 @@ dnl End of IPv6 checks
 dnl =================================================================
 
 # Honor aclocal flags
-ACLOCAL="$ACLOCAL $ACLOCAL_FLAGS"
+ACLOCAL_AMFLAGS="\${ACLOCAL_FLAGS}"
+AC_SUBST(ACLOCAL_AMFLAGS)
 
 iconsdir="${datadir}/icons"
 AC_SUBST(iconsdir)

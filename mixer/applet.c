@@ -1002,25 +1002,21 @@ cb_verb (BonoboUIComponent *uic,
       g_error_free (error);
     }
   } else if (!strcmp (verbname, "About")) {
-    GtkWidget *about;
-    GdkPixbuf *pixbuf;
+	  
     const gchar *authors[] = { "Ronald Bultje <rbultje@ronald.bitfreak.net>",
 			     NULL };
 
-    pixbuf = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (),
-		    "gnome-mixer-applet", 48, 0, NULL);
-    
-    about = gnome_about_new (_("Volume Applet"),
-			     VERSION,
-			     "(c) 2004 Ronald Bultje",
-			     _("A GNOME/GStreamer-based volume control applet"),
-			     authors, NULL, NULL,
-			     pixbuf);
+    gtk_show_about_dialog (NULL,
+		"name",		_("Volume Applet"),
+		"version",	VERSION,
+		"copyright",	"\xC2\xA9 2004 Ronald Bultje",
+		"comments",	_("A GNOME/GStreamer-based volume control "
+				  "applet"),
+		"authors",	authors,
+		"translator-credits",	_("translator-credits"),
+		"logo-icon-name",	"gnome-mixer-applet",
+		NULL);
 
-    if (pixbuf)
-	    g_object_unref (pixbuf);
-
-    gtk_widget_show (about);
   } else if (!strcmp (verbname, "Pref")) {
     if (applet->prefs)
       return;
