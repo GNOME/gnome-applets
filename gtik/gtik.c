@@ -199,7 +199,6 @@ static void xfer_callback (GnomeVFSAsyncHandle *handle, GnomeVFSXferProgressInfo
 		stockdata->vfshandle = NULL;
 		if (!configured(stockdata)) {
 			reSetOutputArray(stockdata);
-			fprintf(stderr, "No data!\n");
 			setOutputArray(stockdata,
 				       _("No data available or properties not set"));
 		}
@@ -993,11 +992,16 @@ static gint updateOutput(gpointer data)
 		}
 		
 		tmp = stockdata->props.tik_syms;
-		stockdata->props.tik_syms = g_strconcat (tmp, "+", symbol, NULL);
+		if (tmp)
+			stockdata->props.tik_syms = g_strconcat (tmp, "+", symbol, NULL);
+		else
+			stockdata->props.tik_syms = g_strdup (symbol);
+		
 		panel_applet_gconf_set_string (applet, "tik_syms", 
 					       stockdata->props.tik_syms, NULL);
-					       
-		g_free (tmp);
+		
+		if (tmp)			       
+			g_free (tmp);
 		
 		list = g_object_get_data (G_OBJECT (entry), "list");
 		model = gtk_tree_view_get_model (GTK_TREE_VIEW (list));
@@ -1051,7 +1055,8 @@ static gint updateOutput(gpointer data)
 		GtkWidget *list;
 		GtkTreeModel *model;
 		GtkTreeSelection *selection;
-		GtkTreeIter iter;
+		GtkTreeIter iter, next;
+		GtkTreePath *path;
 		PanelApplet *applet = PANEL_APPLET (stockdata->applet);
 		
 		/* FIXME: allow for multiple selection */
@@ -1062,16 +1067,31 @@ static gint updateOutput(gpointer data)
 		
 		if (!gtk_tree_selection_get_selected (selection, NULL, &iter))
 			return;
-			
-		gtk_list_store_remove (GTK_LIST_STORE (model), &iter);
 		
+		/* select the next or previous item */
+		next = iter;
+		if (gtk_tree_model_iter_next (model, &next) )
+			gtk_tree_selection_select_iter (selection, &next);
+		else {
+			path = gtk_tree_model_get_path (model, &iter);
+			gtk_tree_path_prev (path);
+			gtk_tree_selection_select_path (selection, path);
+			gtk_tree_path_free (path);
+		}
+					
+		gtk_list_store_remove (GTK_LIST_STORE (model), &iter);
+				
 		/* rebuild symbol table */
 		if (stockdata->props.tik_syms)
 			g_free (stockdata->props.tik_syms);
 		stockdata->props.tik_syms = NULL;
 		gtk_tree_model_foreach (model, get_symbols, stockdata);
-		panel_applet_gconf_set_string (applet, "tik_syms",
-					       stockdata->props.tik_syms, NULL);
+		if (stockdata->props.tik_syms)
+			panel_applet_gconf_set_string (applet, "tik_syms",
+					               stockdata->props.tik_syms, NULL);
+		else
+			panel_applet_gconf_set_string (applet, "tik_syms",
+					               "", NULL);
 		
 	}
 
@@ -1114,6 +1134,9 @@ static gint updateOutput(gpointer data)
 		GtkTreeModel *model;
 		GtkTreeIter row;
 		
+		if (!stockdata->props.tik_syms)
+			return;
+			
 		syms = g_strdup(stockdata->props.tik_syms);
 
 		if ((temp=strtok(syms,"+")))
