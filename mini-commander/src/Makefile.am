@@ -1,11 +1,11 @@
 ## Process this file with automake to produce Makefile.in
 
 INCLUDES = 						\
+	 $(GNOME_APPLETS_CFLAGS)			\
 	-I.						\
 	-I$(srcdir)					\
-	-I$(top_srcdir)/intl -I$(top_builddir)/intl	\
 	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
-	-I$(includedir) $(GNOME_APPLETS_CFLAGS) $(GNOME_INCLUDEDIR)
+	-I$(includedir) $(GNOME_INCLUDEDIR)
 
 bin_PROGRAMS = mini_commander_applet
 
@@ -34,8 +34,7 @@ mini_commander_applet_SOURCES =			\
 	terminal.h
 
 mini_commander_applet_LDADD =				\
-	$(GNOME_APPLETS_LIBS)				\
-	$(INTLLIBS) 
+	$(GNOME_APPLETS_LIBS)				
 
 #	(ZVT_LIBS)					\
 
