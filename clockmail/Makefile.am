@@ -23,7 +23,7 @@ EXTRA_DIST = \
 	digmed.xpm			\
 	mailpics.xpm			\
 	clockmaildata			\
-	THEME-SPECS
+	THEME-SPEC
 
 sysdir = $(datadir)/applets/Utility
 sys_DATA = clockmail_applet.desktop
