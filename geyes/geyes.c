@@ -261,7 +261,7 @@ about_cb (BonoboUIComponent *uic,
 	gtk_widget_show (eyes_applet->about_dialog);
 }
 
-static void
+static int
 properties_load (EyesApplet *eyes_applet)
 {
         gchar *theme_path = NULL;
@@ -272,9 +272,15 @@ properties_load (EyesApplet *eyes_applet)
 	if (theme_path == NULL)
 		theme_path = g_strdup (GEYES_THEMES_DIR "Default-tiny");
 	
-        load_theme (eyes_applet, theme_path);
+        if (load_theme (eyes_applet, theme_path) == FALSE) {
+		g_free (theme_path);
+
+		return FALSE;
+	}
 
         g_free (theme_path);
+	
+	return TRUE;
 }
 
 void
@@ -337,10 +343,6 @@ create_eyes (PanelApplet *applet)
         eyes_applet->vbox = gtk_vbox_new (FALSE, 0);
 
 	gtk_container_add (GTK_CONTAINER (applet), eyes_applet->vbox);
-
-        properties_load (eyes_applet);
-
-        setup_eyes (eyes_applet);
 
 	return eyes_applet;
 }
@@ -468,8 +470,6 @@ geyes_applet_fill (PanelApplet *applet)
 	set_atk_name_description (GTK_WIDGET (eyes_applet->applet), _("Geyes"), 
 			_("The eyes look in the direction of the mouse pointer"));
 
-	gtk_widget_show_all (GTK_WIDGET (eyes_applet->applet));
-
 	g_signal_connect (eyes_applet->applet,
 			  "change_background",
 			  G_CALLBACK (applet_back_change),
@@ -478,9 +478,19 @@ geyes_applet_fill (PanelApplet *applet)
 			  "destroy",
 			  G_CALLBACK (destroy_cb),
 			  eyes_applet);
-	  
+
+	gtk_widget_show_all (GTK_WIDGET (eyes_applet->applet));
+
+	/* setup here and not in create eyes so the destroy signal is set so 
+	 * that when there is an error within loading the theme
+	 * we can emit this signal */
+        if (properties_load (eyes_applet) == FALSE)
+		return FALSE;
+
+	setup_eyes (eyes_applet);
+
+
 	return TRUE;
-	
 }
 
 static gboolean
@@ -492,7 +502,11 @@ geyes_applet_factory (PanelApplet *applet,
     
 	if (!strcmp (iid, "OAFIID:GNOME_GeyesApplet"))
 		retval = geyes_applet_fill (applet); 
-    
+   
+	if (retval == FALSE) {
+		exit (-1);
+	}
+
 	return retval;
 }
 

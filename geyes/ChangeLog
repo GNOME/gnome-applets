@@ -1,3 +1,24 @@
+2004-02-01  Dennis Smit  <ds@nerds-incorporated.org>
+
+	* geyes.c (properties_load): Check if the theme didn't have a fatal.
+	(create_eyes): Remove properties_load and setup_eyes here and do that
+	after the signals have been connected so we can fire the destroy
+	signal from properties_load, this happens when there is a major
+	error while loading the theme file.
+	(geyes_applet_fill):
+	Do the properties_load and setup_eyes after the signals are bind. Also
+	check on error from properties_load.
+	(geyes_applet_factory):
+	Check on error, and exit if one happened.
+	* geyes.h: Changed prototype for load_theme to reflect changes in
+	themes.c.
+	* themes.c (load_theme):
+	Popup an error when themes aren't installed instead of crashing.
+	Also emit the destroy signal and return FALSE so that the applet
+	exits itself.
+
+	Fixes #132635.
+
 2004-01-28  Arvind Samptur  <arvind.samptur@wipro.com>
 
 	* geyes.c: (about_cb): Set the screen for the

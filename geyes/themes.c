@@ -79,9 +79,11 @@ parse_theme_file (EyesApplet *eyes_applet, FILE *theme_file)
         }       
 }
 
-void
+int
 load_theme (EyesApplet *eyes_applet, const gchar *theme_dir)
 {
+	GtkWidget *dialog;
+
 	FILE* theme_file;
         gchar *file_name;
 
@@ -96,7 +98,27 @@ load_theme (EyesApplet *eyes_applet, const gchar *theme_dir)
                 file_name = g_strdup (GEYES_THEMES_DIR "Default-tiny/config");
                 theme_file = fopen (file_name, "r");
         }
-        
+
+	/* if it's still NULL we've got a major problem */
+	if (theme_file == NULL) {
+		dialog = gtk_message_dialog_new_with_markup (NULL,
+				GTK_DIALOG_DESTROY_WITH_PARENT,
+				GTK_MESSAGE_ERROR,
+				GTK_BUTTONS_OK,
+				"<b>%s</b>\n\n%s",
+				_("Can not launch the eyes applet."),
+				_("There was a fatal error while trying to load the theme."));
+
+		gtk_dialog_set_has_separator (GTK_DIALOG (dialog), FALSE);
+
+		gtk_dialog_run (GTK_DIALOG (dialog));
+		gtk_widget_destroy (dialog);
+
+		gtk_widget_destroy (GTK_WIDGET (eyes_applet->applet));
+
+		return FALSE;
+	}
+
         parse_theme_file (eyes_applet, theme_file);
         fclose (theme_file);
 
@@ -115,7 +137,8 @@ load_theme (EyesApplet *eyes_applet, const gchar *theme_dir)
         eyes_applet->pupil_width = gdk_pixbuf_get_width (eyes_applet->pupil_image);
         
         g_free (file_name);
-        
+   
+	return TRUE;
 }
 
 static void

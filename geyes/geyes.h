@@ -70,8 +70,8 @@ void destroy_eyes (EyesApplet *eyes_applet);
 
 
 /* theme.c */
-void load_theme    (EyesApplet        *eyes_applet,
-		    const gchar       *theme_dir);
+int load_theme    (EyesApplet        *eyes_applet,
+		   const gchar       *theme_dir);
 
 void properties_cb (BonoboUIComponent *uic,
 		    EyesApplet        *eyes_applet,
