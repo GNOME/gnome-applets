@@ -136,7 +136,7 @@ static int get_current_headlines(gpointer data)
 	  set_mouse_cursor(appdata, GDK_LEFT_PTR);
 	  return TRUE;
   }
-  
+  fprintf(stderr, "body len is %d\n", ghttp_get_body_len(req));
   fwrite(ghttp_get_body(req), ghttp_get_body_len(req), 1, gticker_file);
   fclose(gticker_file);
   ghttp_close(req);
@@ -154,6 +154,8 @@ static int get_current_headlines(gpointer data)
   fgets(buf, sizeof(buf), gticker_file);
   fgets(buf, sizeof(buf), gticker_file);
   strncpy(splashurl, buf, 80);
+  /* get rid of that pesky \n */
+  splashurl[strlen(splashurl) -1] = '\0';
   ghttp_set_uri(req, splashurl);
   ghttp_set_header(req, http_hdr_Connection, "close");
   ghttp_prepare(req); 
