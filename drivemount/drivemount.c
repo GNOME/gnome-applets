@@ -53,6 +53,7 @@ static DriveData *create_drive_widget(void);
 static void dnd_init(DriveData *dd);
 static void dnd_drag_begin_cb(GtkWidget *widget, GdkDragContext *context, gpointer data);
 static void dnd_set_data_cb(GtkWidget *widget, GdkDragContext *context, GtkSelectionData *selection_data, guint info, guint time, gpointer data);
+static gboolean applet_button_press_cb(GtkWidget *widget, GdkEventButton *event, gpointer data);
 static void applet_change_orient(GtkWidget *w, PanelAppletOrient o, gpointer data);
 static void applet_change_pixel_size(GtkWidget *w, int size, gpointer data);
 static gint applet_save_session(PanelApplet *applet, gpointer data);
@@ -195,6 +196,7 @@ applet_new ()
 	dd->applet = applet;
 	dd->orient = panel_applet_get_orient(PANEL_APPLET(applet));
 	dd->sizehint = panel_applet_get_size(PANEL_APPLET(applet));
+	g_signal_connect(G_OBJECT(dd->button),"button_press_event", G_CALLBACK(applet_button_press_cb), applet);
 
 	g_signal_connect(G_OBJECT(applet),"change_orient",
 					 G_CALLBACK(applet_change_orient), dd);
@@ -212,11 +214,10 @@ applet_new ()
 
 	component = panel_applet_get_popup_component (PANEL_APPLET (applet));
 
-/*
 	tmp_path = gnome_is_program_in_path("eject");
 	if(!tmp_path) bonobo_ui_component_set_prop(component, "/commands/Eject", "hidden", "1", NULL);
 	else g_free (tmp_path);
-*/
+
 	redraw_pixmap(dd);
 	gtk_widget_show (applet);
 	start_callback_update(dd);
@@ -250,6 +251,22 @@ create_drive_widget()
 	return(dd);
 }
 
+static gboolean
+applet_button_press_cb(GtkWidget *widget, GdkEventButton *event, gpointer data)
+{
+	PanelApplet *applet = PANEL_APPLET(data);
+
+	if (event->button == 1)
+	{
+		return(FALSE);
+	}
+	else
+	{
+		GTK_WIDGET_CLASS(PANEL_APPLET_GET_CLASS(applet))->button_press_event(data, event);
+	}
+	return(TRUE);
+}
+
 static void
 dnd_init(DriveData *dd)
 {
@@ -266,7 +283,7 @@ static void
 dnd_drag_begin_cb(GtkWidget *widget, GdkDragContext *context, gpointer data)
 {
 	DriveData *dd = data;
-    gtk_drag_set_icon_pixbuf(context, gtk_image_get_pixbuf(GTK_IMAGE(dd->button_pixmap)), -2, -2);
+    gtk_drag_set_icon_pixbuf(context, gtk_image_get_pixbuf(GTK_IMAGE(dd->button_pixmap)), -5, -5);
 }
 
 static void
@@ -337,7 +354,7 @@ applet_save_session(PanelApplet *applet, gpointer data)
 {
 	DriveData *dd = data;
 	/* FIXME: Save our prefs ? */
-	return(TRUE);
+	return(FALSE);
 }
 
 static void
