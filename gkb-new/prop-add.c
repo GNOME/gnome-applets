@@ -66,7 +66,6 @@ tree_create (GtkTreeStore *model)
   GtkWidget *tree1;
   GtkCellRenderer *cell;
   GtkTreeViewColumn *column;
-  GtkTreeSelection *selection;
 
   GHashTable *langs = g_hash_table_new (g_str_hash, g_str_equal);
   LangData *ldata;
@@ -230,9 +229,9 @@ preadd_cb (GtkTreeSelection *selection,
               GkbPropertyBoxInfo  *pbi)
 {
   GkbKeymap *tdata;
-  GValue value = {0, };
   GtkTreeIter iter;
-   
+  gchar *value;
+         
   tdata = g_new0 (GkbKeymap,1);
   
   if (! gtk_tree_selection_get_selected (selection, NULL, &iter))
@@ -241,46 +240,29 @@ preadd_cb (GtkTreeSelection *selection,
   if (!pbi->keymap_for_add) g_free(pbi->keymap_for_add); 
   /* TODO: free them all */
 
-  gtk_tree_model_get_value (GTK_TREE_MODEL(pbi->model), &iter,
-                              NAME_COL,
-                              &value);
-  if (g_value_get_string (&value))
-  tdata->name = 
-      g_strdup (g_value_get_string (&value));
-  g_value_unset (&value);
-  gtk_tree_model_get_value (GTK_TREE_MODEL(pbi->model), &iter,
-                              FLAG_COL,
-                              &value);
-  tdata->flag = 
-      g_strdup (g_value_get_string (&value));
-  g_value_unset (&value);
-  gtk_tree_model_get_value (GTK_TREE_MODEL(pbi->model), &iter,
-                              COMMAND_COL,
-                              &value);
-  tdata->command = 
-      g_strdup (g_value_get_string (&value));
-  g_value_unset (&value);
+  gtk_tree_model_get (GTK_TREE_MODEL(pbi->model), &iter,
+                              NAME_COL, &value, -1);
+  tdata->name = g_strdup (value);
 
-  /* TODO: get the parent info for...  */
+  gtk_tree_model_get (GTK_TREE_MODEL(pbi->model), &iter,
+                              FLAG_COL, &value, -1);
+  tdata->flag = g_strdup (value);
 
-  gtk_tree_model_get_value (GTK_TREE_MODEL(pbi->model), &iter,
-                              NAME_COL,
-                              &value);
-  tdata->country = 
-      g_strdup (g_value_get_string (&value));
-  g_value_unset (&value);
-  gtk_tree_model_get_value (GTK_TREE_MODEL(pbi->model), &iter,
-                              COUNTRY_COL,
-                              &value);
-  tdata->label = 
-      g_strdup (g_value_get_string (&value));
-  g_value_unset (&value);
-  gtk_tree_model_get_value (GTK_TREE_MODEL(pbi->model), &iter,
-                              LANG_COL,
-                              &value); 
-  tdata->lang = 
-      g_strdup (g_value_get_string (&value));
-  g_value_unset (&value);
+  gtk_tree_model_get (GTK_TREE_MODEL(pbi->model), &iter,
+                              COMMAND_COL, &value, -1);
+  tdata->command = g_strdup (value);
+
+  gtk_tree_model_get (GTK_TREE_MODEL(pbi->model), &iter,
+                              NAME_COL, &value, -1);
+  tdata->country = g_strdup (value);
+
+  gtk_tree_model_get (GTK_TREE_MODEL(pbi->model), &iter,
+                              COUNTRY_COL, &value, -1);
+  tdata->label = g_strdup (value);
+
+  gtk_tree_model_get (GTK_TREE_MODEL(pbi->model), &iter,
+                              LANG_COL, &value, -1); 
+  tdata->lang = g_strdup (value);
 
   pbi->keymap_for_add = tdata;
 
