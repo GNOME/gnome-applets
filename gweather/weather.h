@@ -185,9 +185,11 @@ struct _WeatherInfo {
 
 typedef struct _WeatherInfo WeatherInfo;
 
-extern WeatherInfo *_weather_info_fill (WeatherInfo *info, WeatherLocation *location);
-#define weather_info_new(location) _weather_info_fill(NULL, (location))
-#define weather_info_update(info) _weather_info_fill((info), NULL);
+typedef void (*WeatherInfoFunc) (WeatherInfo *info);
+
+extern gboolean _weather_info_fill (WeatherInfo *info, WeatherLocation *location, WeatherInfoFunc cb);
+#define weather_info_new(location,cb) _weather_info_fill(NULL, (location), (cb))
+#define weather_info_update(info,cb) _weather_info_fill((info), NULL, (cb));
 extern WeatherInfo *weather_info_clone (const WeatherInfo *info);
 extern void weather_info_free (WeatherInfo *info);
 

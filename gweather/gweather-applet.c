@@ -254,36 +254,10 @@ static gint timeout_cb (gpointer data)
     return 0;  /* Do not repeat timeout (will be re-set by gweather_update) */
 }
 
-void gweather_update (void)
+static void update_finish (WeatherInfo *info)
 {
-    /* Set preferred units */
-    weather_units_set(gweather_pref.use_metric ? UNITS_METRIC : UNITS_IMPERIAL);
-
-    /* Set preferred forecast type */
-    weather_forecast_set(gweather_pref.detailed ? FORECAST_ZONE : FORECAST_STATE);
-
-    /* Set radar map retrieval option */
-    weather_radar_set(gweather_pref.radar_enabled);
-
-    /* Set proxy */
-    if (gweather_pref.use_proxy)
-        weather_proxy_set(gweather_pref.proxy_url, gweather_pref.proxy_user, gweather_pref.proxy_passwd);
-
-    /* Update current conditions */
-    if (gweather_pref.update_enabled) {
-        if (gweather_info && weather_location_equal(gweather_info->location, gweather_pref.location)) {
-            weather_info_update(gweather_info);
-        } else {
-            weather_info_free(gweather_info);
-            gweather_info = weather_info_new(gweather_pref.location);
-        }
-    } else {
-        if (gweather_info)
-            if (gweather_pref.use_metric)
-                weather_info_to_metric(gweather_info);
-            else
-                weather_info_to_imperial(gweather_info);
-    }
+    /* Save weather info */
+    gweather_info = info;
 
     /* Store current conditions */
     gweather_info_save();
@@ -307,5 +281,43 @@ void gweather_update (void)
     if (gweather_pref.update_enabled)
         timeout_tag =  gtk_timeout_add (gweather_pref.update_interval * 1000,
                                         timeout_cb, NULL);
+}
+
+void gweather_update (void)
+{
+    /* Let user know we are updating */
+    weather_info_get_pixmap_mini(gweather_info, &cond_pixmap, &cond_mask);
+    gtk_pixmap_set(GTK_PIXMAP(pixmap), cond_pixmap, cond_mask);
+    gtk_tooltips_set_tip(tooltips, gweather_applet, "Updating...", NULL);
+
+    /* Set preferred units */
+    weather_units_set(gweather_pref.use_metric ? UNITS_METRIC : UNITS_IMPERIAL);
+
+    /* Set preferred forecast type */
+    weather_forecast_set(gweather_pref.detailed ? FORECAST_ZONE : FORECAST_STATE);
+
+    /* Set radar map retrieval option */
+    weather_radar_set(gweather_pref.radar_enabled);
+
+    /* Set proxy */
+    if (gweather_pref.use_proxy)
+        weather_proxy_set(gweather_pref.proxy_url, gweather_pref.proxy_user, gweather_pref.proxy_passwd);
+
+    /* Update current conditions */
+    if (gweather_pref.update_enabled) {
+        if (gweather_info && weather_location_equal(gweather_info->location, gweather_pref.location)) {
+            weather_info_update(gweather_info, update_finish);
+        } else {
+            weather_info_free(gweather_info);
+            weather_info_new(gweather_pref.location, update_finish);
+        }
+    } else {
+        if (gweather_info)
+            if (gweather_pref.use_metric)
+                weather_info_to_metric(gweather_info);
+            else
+                weather_info_to_imperial(gweather_info);
+        update_finish(gweather_info);
+    }
 }
 

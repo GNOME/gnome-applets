@@ -28,6 +28,7 @@
 #include <gnome.h>
 #include <ghttp.h>
 
+#include "http.h"
 #include "weather.h"
 
 static WeatherUnits weather_units = UNITS_IMPERIAL;
@@ -133,91 +134,130 @@ gboolean weather_location_equal (const WeatherLocation *location1, const Weather
 }
 
 static gchar *wind_direction_str[] = {
-    "Variable",
-    "North", "North - NorthEast", "Northeast", "East - NorthEast",
-    "East", "East - Southeast", "Southeast", "South - Southeast",
-    "South", "South - Southwest", "Southwest", "West - Southwest",
-    "West", "West - Northwest", "Northwest", "North - Northwest"
+    N_("Variable"),
+    N_("North"), N_("North - NorthEast"), N_("Northeast"), N_("East - NorthEast"),
+    N_("East"), N_("East - Southeast"), N_("Southeast"), N_("South - Southeast"),
+    N_("South"), N_("South - Southwest"), N_("Southwest"), N_("West - Southwest"),
+    N_("West"), N_("West - Northwest"), N_("Northwest"), N_("North - Northwest")
 };
 
 gchar *weather_wind_direction_string (WeatherWindDirection wind)
 {
-    return wind_direction_str[(int)wind];
+    return _(wind_direction_str[(int)wind]);
 }
 
 static gchar *sky_str[] = {
-    "Clear",
-    "Broken clouds",
-    "Scattered clouds",
-    "Few clouds",
-    "Overcast"
+    N_("Clear"),
+    N_("Broken clouds"),
+    N_("Scattered clouds"),
+    N_("Few clouds"),
+    N_("Overcast")
 };
 
 gchar *weather_sky_string (WeatherSky sky)
 {
-    return sky_str[(int)sky];
+    return _(sky_str[(int)sky]);
 }
 
-static gchar *phenomenon_str[] = {
-    "",
 
-    "drizzle",
-    "rain",
-    "snow",
-    "snow grains",
-    "ice crystals",
-    "ice pellets",
-    "hail",
-    "small hail",
-    "precipitation",
+/*
+ * Even though tedious, I switched to a 2D array for weather condition
+ * strings, in order to facilitate internationalization, esp. for languages
+ * with genders.
+ *
+ * I tried to come up with logical names for most phenomena, but I'm no
+ * meteorologist, so there will undoubtedly be some stupid mistakes.
+ * However, combinations that did not seem plausible (eg. I cannot imagine
+ * what a "light tornado" may be like ;-) were filled in with "??".  If this
+ * ever comes up in the weather conditions field, let me know...
+ */
 
-    "mist",
-    "fog",
-    "smoke",
-    "volcanic ash",
-    "sand",
-    "haze",
-    "spray",
-    "dust",
-
-    "squall",
-    "sandstorm",
-    "duststorm",
-    "funnel cloud",
-    "tornado",
-    "dust whirls"
-};
-
-static gchar *qualifier_str[] = {
-    "",
-    "in vicinity, ",
-    "light ",
-    "moderate ",
-    "heavy ",
-    "shallow ",
-    "patches of ",
-    "partial ",
-    "thunderous ",
-    "blowing ",
-    "showers ",
-    "drifting ",
-    "freezing "
+static gchar *conditions_str[24][13] = {
+/*                   NONE                         VICINITY                             LIGHT                      MODERATE                      HEAVY                      SHALLOW                      PATCHES                         PARTIAL                      THUNDERSTORM                    BLOWING                      SHOWERS                         DRIFTING                      FREEZING                      */
+/*               *******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/* NONE          */ {"",                          "",                                  "",                        "",                           "",                        "",                          "",                             "",                          "",                             "",                          "",                             "",                           "",                          },
+/* DRIZZLE       */ {N_("Drizzle"),               N_("Drizzle in the vicinity"),       N_("Light drizzle"),       N_("Moderate drizzle"),       N_("Heavy drizzle"),       N_("Shallow drizzle"),       N_("Patches of drizzle"),       N_("Partial drizzle"),       N_("Thunderstorm"),             N_("Windy drizzle"),         N_("Showers"),                  N_("Drifting drizzle"),       N_("Freezing drizzle")       },
+/* RAIN          */ {N_("Rain "),                 N_("Rain in the vicinity") ,         N_("Light rain"),          N_("Moderate rain"),          N_("Heavy rain"),          N_("Shallow rain"),          N_("Patches of rain"),          N_("Partial rainfall"),      N_("Thunderstorm"),             N_("Blowing rainfall"),      N_("Rain showers"),             N_("Drifting rain"),          N_("Freezing rain")          },
+/* SNOW          */ {N_("Snow"),                  N_("Snow in the vicinity") ,         N_("Light snow"),          N_("Moderate snow"),          N_("Heavy snow"),          N_("Shallow snow"),          N_("Patches of snow"),          N_("Partial snowfali"),      N_("Snowstorm"),                N_("Blowing snowfall"),      N_("Snow showers"),             N_("Drifting snow"),          N_("Freezing snow")          },
+/* SNOW_GRAINS   */ {N_("Snow grains"),           N_("Snow grains in the vicinity") ,  N_("Light snow grains"),   N_("Moderate snow grains"),   N_("Heavy snow grains"),   N_("Shallow snow grains"),   N_("Patches of snow grains"),   N_("Partial snow grains"),   N_("Snowstorm"),                N_("Blowing snow grains"),   N_("Snow grain showers"),       N_("Drifting snow grains"),   N_("Freezing snow grains")   },
+/* ICE_CRYSTALS  */ {N_("Ice crystals"),          N_("Ice crystals in the vicinity") , N_("Few ice crystals"),    N_("Moderate ice crystals"),  N_("Heavy ice crystals"),  "??",                        N_("Patches of ice crystals"),  N_("Partial ice crystals"),  N_("Ice crystal storm"),        N_("Blowing ice crystals"),  N_("Showers of ice crystals"),  N_("Drifting ice crystals"),  N_("Freezing ice crystals")  },
+/* ICE_PELLETS   */ {N_("Ice pellets"),           N_("Ice pellets in the vicinity") ,  N_("Few ice pellets"),     N_("Moderate ice pellets"),   N_("Heavy ice pellets"),   N_("Shallow ice pellets"),   N_("Patches of ice pellets"),   N_("Partial ice pellets"),   N_("Ice pellet storm"),         N_("Blowing ice pellets"),   N_("Showers of ice pellets"),   N_("Drifting ice pellets"),   N_("Freezing ice pellets")   },
+/* HAIL          */ {N_("Hail"),                  N_("Hail in the vicinity") ,         N_("Light hail"),          N_("Moderate hail"),          N_("Heavy hail"),          N_("Shallow hail"),          N_("Patches of hail"),          N_("Partial hail"),          N_("Hailstorm"),                N_("Blowing hail"),          N_("Hail showers"),             N_("Drifting hail"),          N_("Freezing hail")          },
+/* SMALL_HAIL    */ {N_("Small hail"),            N_("Small hail in the vicinity") ,   N_("Light hail"),          N_("Moderate small hail"),    N_("Heavy small hail"),    N_("Shallow small hail"),    N_("Patches of small hail"),    N_("Partial small hail"),    N_("Small hailstorm"),          N_("Blowing small hail"),    N_("Showers of small hail"),    N_("Drifting small hail"),    N_("Freezing small hail")    },
+/* PRECIPITATION */ {N_("Unknown precipitation"), N_("Precipitation in the vicinity"), N_("Light precipitation"), N_("Moderate precipitation"), N_("Heavy precipitation"), N_("Shallow precipitation"), N_("Patches of precipitation"), N_("Partial precipitation"), N_("Unknown thunderstorm"),     N_("Blowing precipitation"), N_("Showers, type unknown"),    N_("Drifting precipitation"), N_("Freezing precipitation") },
+/* MIST          */ {N_("Mist"),                  N_("Mist in the vicinity") ,         N_("Light mist"),          N_("Moderate mist"),          N_("Thick mist"),          N_("Shallow mist"),          N_("Patches of mist"),          N_("Partial mist"),          "??",                           N_("Mist with wind"),        "??",                           N_("Drifting mist"),          N_("Freezing mist")          },
+/* FOG           */ {N_("Fog"),                   N_("Fog in the vicinity") ,          N_("Light fog"),           N_("Moderate fog"),           N_("Thick fog"),           N_("Shallow fog"),           N_("Patches of fog"),           N_("Partial fog"),           "??",                           N_("Fog with wind"),         "??",                           N_("Drifting fog"),           N_("Freezing fog")           },
+/* SMOKE         */ {N_("Smoke"),                 N_("Smoke in the vicinity") ,        N_("Thin smoke"),          N_("Moderate smoke"),         N_("Thick smoke"),         N_("Shallow smoke"),         N_("Patches of smoke"),         N_("Partial smoke"),         N_("Smoke w/ thunders"),        N_("Smoke with wind"),       "??",                           N_("Drifting smoke"),         "??"                         },
+/* VOLCANIC_ASH  */ {N_("Volcanic ash"),          N_("Volcanic ash in the vicinity") , "??",                      N_("Moderate volcanic ash"),  N_("Thick volcanic ash"),  N_("Shallow volcanic ash"),  N_("Patches of volcanic ash"),  N_("Partial volcanic ash"),  N_("Volcanic ash w/ thunders"), N_("Blowing volcanic ash"),  N_("Showers of volcanic ash "), N_("Drifting volcanic ash"),  N_("Freezing volcanic ash")  },
+/* SAND          */ {N_("Sand"),                  N_("Sand in the vicinity") ,         N_("Light sand"),          N_("Moderate sand"),          N_("Heavy sand"),          "??",                        N_("Patches of sand"),          N_("Partial sand"),          "??",                           N_("Blowing sand"),          "",                             N_("Drifting sand"),          "??"                         },
+/* HAZE          */ {N_("Haze"),                  N_("Haze in the vicinity") ,         N_("Light haze"),          N_("Moderate haze"),          N_("Thick haze"),          N_("Shallow haze"),          N_("Patches of haze"),          N_("Partial haze"),          "??",                           N_("Haze with wind"),        "??",                           N_("Drifting haze"),          N_("Freezing haze")          },
+/* SPRAY         */ {N_("Sprays"),                N_("Sprays in the vicinity") ,       N_("Light sprays"),        N_("Moderate sprays"),        N_("Heavy sprays"),        N_("Shallow sprays"),        N_("Patches of sprays"),        N_("Partial sprays"),        "??",                           N_("Blowing sprays"),        "??",                           N_("Drifting sprays"),        N_("Freezing sprays")        },
+/* DUST          */ {N_("Dust"),                  N_("Dust in the vicinity") ,         N_("Light dust"),          N_("Moderate dust"),          N_("Heavy dust"),          "??",                        N_("Patches of dust"),          N_("Partial dust"),          "??",                           N_("Blowing dust"),          "??",                           N_("Drifting dust"),          "??"                         },
+/* SQUALL        */ {N_("Squall"),                N_("Squall in the vicinity") ,       N_("Light squall"),        N_("Moderate squall"),        N_("Heavy squall"),        "??",                        "??",                           N_("Partial squall"),        N_("Thunderous squall"),        N_("Blowing squall"),        "??",                           N_("Drifting squall"),        N_("Freezing squall")        },
+/* SANDSTORM     */ {N_("Sandstorm"),             N_("Sandstorm in the vicinity") ,    N_("Light standstorm"),    N_("Moderate sandstorm"),     N_("Heavy sandstorm"),     N_("Shallow sandstorm"),     "??",                           N_("Partual sandstorm"),     N_("Thunderous sandstorm"),     N_("Blowing sandstorm"),     "??",                           N_("Drifting sandstorm"),     N_("Freezing sandstorm")     },
+/* DUSTSTORM     */ {N_("Duststorm"),             N_("Duststorm in the vicinity") ,    N_("Light duststorm"),     N_("Moderate duststorm"),     N_("Heavy duststorm"),     N_("Shallow duststorm"),     "??",                           N_("Partial duststorm"),     N_("Thunderous duststorm"),     N_("Blowing duststorm"),     "??",                           N_("Drifting duststorm"),     N_("Freezing duststorm")     },
+/* FUNNEL_CLOUD  */ {N_("Funnel cloud"),          N_("Funnel cloud in the vicinity") , N_("Light funnel cloud"),  N_("Moderate funnel cloud"),  N_("Thick funnel cloud"),  N_("Shallow funnel cloud"),  N_("Patches of funnel clouds"), N_("Partial funnel clouds"), "??",                           N_("Funnel cloud w/ wind"),  "??",                           N_("Drifting funnel cloud"),  "??"                         },
+/* TORNADO       */ {N_("Tornado"),               N_("Tornado in the vicinity") ,      "??",                      N_("Moderate tornado"),       N_("Raging tornado"),      "??",                        "??",                           N_("Partial tornado"),       N_("Thunderous tornado"),       N_("Tornado"),               "??",                           N_("Drifting tornado"),       N_("Freezing tornado")       },
+/* DUST_WHIRLS   */ {N_("Dust whirls"),           N_("Dust whirls in the vicinity") ,  N_("Light dust whirls"),   N_("Moderate dust whirls"),   N_("Heavy dust whirls"),   N_("Shallow dust whirls"),   N_("Patches of dust whirls"),   N_("Partial dust whirls"),   "??",                           N_("Blowing dust whirls"),   "??",                           N_("Drifting dust whirls"),   "??"                         }
 };
 
 gchar *weather_conditions_string (WeatherConditions cond)
 {
-    static gchar buf[200];
+    gchar *str;
+
     if (!cond.significant) {
-        strcpy(buf, "-");
+        return "-";
     } else {
-        sprintf(buf, "%s%s", qualifier_str[(int)cond.qualifier],
-                             phenomenon_str[(int)cond.phenomenon]);
-        if (strlen(buf) > 0)
-            buf[0] = toupper(buf[0]);
-        else
-            strcpy(buf, "-");
+        str = _(conditions_str[(int)cond.phenomenon][(int)cond.qualifier]);
+        return (strlen(str) > 0) ? str : "-";
     }
-    return buf;
+}
+
+/* Locals turned global to facilitate asynchronous HTTP requests */
+
+static WeatherInfoFunc request_cb = NULL;
+static WeatherInfo *request_info = NULL;
+static ghttp_request *metar_request = NULL,
+                     *iwin_request = NULL,
+                     *wx_request = NULL;
+static gboolean requests_pending = FALSE;
+
+static __inline gboolean requests_init (WeatherInfoFunc cb, WeatherInfo *info)
+{
+    if (requests_pending)
+        return FALSE;
+
+    g_assert(!metar_request && !iwin_request && !wx_request);
+    g_assert(!request_info && !request_cb);
+
+    requests_pending = TRUE;
+    request_cb = cb;
+    request_info = info;
+
+    return TRUE;
+}
+
+static __inline void request_done (ghttp_request **req)
+{
+    g_return_if_fail(req != NULL);
+
+    ghttp_request_destroy(*req);
+    *req = NULL;
+}
+
+static __inline void requests_done_check (void)
+{
+    g_return_if_fail(requests_pending);
+
+    if (!metar_request && !iwin_request && !wx_request) {
+        requests_pending = FALSE;
+        /* Next two lines temporarily here */
+        if (weather_units == UNITS_METRIC)
+            weather_info_to_metric(request_info);
+        (*request_cb)(request_info);
+        request_cb = NULL;
+        request_info = NULL;
+    }
 }
 
 #define TIME_RE_STR  "^([0-9]{6})Z$"
@@ -711,58 +751,73 @@ static gboolean metar_parse (gchar *metar, WeatherInfo *info)
     return TRUE;
 }
 
-/* Read current conditions and fill in info structure */
-static gboolean metar_get (WeatherLocation *loc, WeatherInfo *info)
+static void metar_get_finish (ghttp_request *req, ghttp_status status, gpointer data)
 {
-    gchar *url;
-    ghttp_request *request = NULL;
+    WeatherInfo *info = (WeatherInfo *)data;
+    WeatherLocation *loc;
     gchar *body;
     int body_len;
     gchar *metar, *eoln;
     gboolean success = FALSE;
     gchar searchkey[WEATHER_LOCATION_CODE_LEN + 2];
 
-    g_return_val_if_fail(loc != NULL, FALSE);
-    g_return_val_if_fail(info != NULL, FALSE);
+    g_return_if_fail(req == metar_request);
 
-    request = ghttp_request_new();
-    url = g_strdup_printf("http://weather.noaa.gov/cgi-bin/mgetmetar.pl?cccc=%s", loc->code);
-    ghttp_set_uri(request, url);
-    g_free(url);
-    ghttp_set_proxy(request, weather_proxy_url);
-    ghttp_set_authinfo(request, weather_proxy_user, weather_proxy_passwd);
-    ghttp_set_header(request, http_hdr_Connection, "close");
-    ghttp_prepare(request);
+    g_return_if_fail(info != NULL);
+    info->forecast = NULL;
+    loc = info->location;
+    g_return_if_fail(loc != NULL);
 
-    if (ghttp_process(request) == ghttp_error) {
+    if (status == ghttp_error) {
         g_warning(_("Failed to get METAR data.\n"));
-        ghttp_request_destroy(request);
-        return FALSE;
-    }
-
-    body = ghttp_get_body(request);
-    body_len = ghttp_get_body_len(request);
-    g_return_val_if_fail(body != NULL, FALSE);
-    g_return_val_if_fail(body_len > 0, FALSE);
-    body[body_len-1] = 0;  /* quick hack */
-
-    sprintf(searchkey, "\n%s", loc->code);
-    metar = strstr(body, searchkey);
-    if (metar == NULL) {
-        success = FALSE;
     } else {
-        metar += WEATHER_LOCATION_CODE_LEN + 2;
-        eoln = strchr(metar, '\n');
-        g_return_val_if_fail(eoln !=  NULL, FALSE);
+        body = ghttp_get_body(metar_request);
+        body_len = ghttp_get_body_len(metar_request);
+        g_return_if_fail(body != NULL);
+        g_return_if_fail(body_len > 0);
+        body[body_len-1] = 0;  /* quick hack */
 
-        *eoln = 0;
-        success = metar_parse(metar, info);
-        *eoln = '\n';
+        sprintf(searchkey, "\n%s", loc->code);
+        metar = strstr(body, searchkey);
+        if (metar == NULL) {
+            success = FALSE;
+        } else {
+            metar += WEATHER_LOCATION_CODE_LEN + 2;
+            eoln = strchr(metar, '\n');
+            g_return_if_fail(eoln !=  NULL);
+
+            *eoln = 0;
+            success = metar_parse(metar, info);
+            *eoln = '\n';
+        }
+
+        info->valid = success;
     }
 
-    ghttp_request_destroy(request);
+    request_done(&metar_request);
+    requests_done_check();
+}
 
-    return success;
+/* Read current conditions and fill in info structure */
+static void metar_get_start (WeatherInfo *info)
+{
+    gchar *url;
+    WeatherLocation *loc;
+
+    g_return_if_fail(info != NULL);
+    info->valid = FALSE;
+    loc = info->location;
+    g_return_if_fail(loc != NULL);
+
+    metar_request = ghttp_request_new();
+    url = g_strdup_printf("http://weather.noaa.gov/cgi-bin/mgetmetar.pl?cccc=%s", loc->code);
+    ghttp_set_uri(metar_request, url);
+    g_free(url);
+    ghttp_set_proxy(metar_request, weather_proxy_url);
+    ghttp_set_authinfo(metar_request, weather_proxy_user, weather_proxy_passwd);
+    ghttp_set_header(metar_request, http_hdr_Connection, "close");
+
+    http_process_bg(metar_request, metar_get_finish, info);
 }
 
 #define IWIN_RE_STR "([A-Z][A-Z]Z(([0-9]{3}>[0-9]{3}-)|([0-9]{3}-))+)+([0-9]{6}-)?"
@@ -794,7 +849,7 @@ static gboolean iwin_range_match (gchar *range, WeatherLocation *loc)
         while (*endp != '-')
             --endp;
     }
-    assert(range <= endp);
+    g_assert(range <= endp);
 
     strncpy(zone_state, loc->zone, 3);
     zone_state[3] = 0;
@@ -832,7 +887,8 @@ static gboolean iwin_range_match (gchar *range, WeatherLocation *loc)
                 to = atoi(to_str);
                 zonep += 4;
             } else {
-                assert(FALSE);
+                g_assert_not_reached();
+                to = 0;  /* Hush compiler warning */
             }
 
             if ((from <= zone_num) && (zone_num <= to))
@@ -879,51 +935,67 @@ static gchar *iwin_parse (gchar *iwin, WeatherLocation *loc)
 
 }
 
-/* Get forecast and return it into a newly alloc'ed string */
-static gchar *iwin_get (WeatherLocation *loc)
+static void iwin_get_finish (ghttp_request *req, ghttp_status status, gpointer data)
 {
-    gchar state[WEATHER_LOCATION_ZONE_LEN];
-    gchar *url;
-    ghttp_request *request = NULL;
+    WeatherInfo *info = (WeatherInfo *)data;
+    WeatherLocation *loc;
     gchar *body;
     gint body_len;
     gchar *forecast;
 
-    g_return_val_if_fail(loc != NULL, NULL);
+    g_return_if_fail(req == iwin_request);
+
+    g_return_if_fail(info != NULL);
+    info->forecast = NULL;
+    loc = info->location;
+    g_return_if_fail(loc != NULL);
+
+    if (status == ghttp_error) {
+        g_warning(_("Failed to get IWIN forecast data.\n"));
+    } else {
+        body = ghttp_get_body(iwin_request);
+        body_len = ghttp_get_body_len(iwin_request);
+        g_return_if_fail(body != NULL);
+        g_return_if_fail(body_len > 0);
+        body[body_len-1] = 0;  /* quick hack */
+
+        forecast = iwin_parse(body, loc);
+        info->forecast = forecast;
+    }
+
+    request_done(&iwin_request);
+    requests_done_check();
+}
+
+/* Get forecast into newly alloc'ed string */
+static void iwin_get_start (WeatherInfo *info)
+{
+    gchar state[WEATHER_LOCATION_ZONE_LEN];
+    gchar *url;
+    WeatherLocation *loc;
+
+    g_return_if_fail(info != NULL);
+    info->forecast = NULL;
+    loc = info->location;
+    g_return_if_fail(loc != NULL);
 
     if (loc->zone[0] == '-')
-        return NULL;
+        return;
 
     strncpy(state, loc->zone, 2);
     state[2] = 0;
-    request = ghttp_request_new();
+    iwin_request = ghttp_request_new();
     if (weather_forecast == FORECAST_ZONE)
         url = g_strdup_printf("http://iwin.nws.noaa.gov/iwin/%s/zone.html", state);
     else
         url = g_strdup_printf("http://iwin.nws.noaa.gov/iwin/%s/state.html", state);
-    ghttp_set_uri(request, url);
+    ghttp_set_uri(iwin_request, url);
     g_free(url);
-    ghttp_set_proxy(request, weather_proxy_url);
-    ghttp_set_authinfo(request, weather_proxy_user, weather_proxy_passwd);
-    ghttp_set_header(request, http_hdr_Connection, "close");
-    ghttp_prepare(request);
-    if (ghttp_process(request) == ghttp_error) {
-        g_warning(_("Failed to get IWIN forecast data.\n"));
-        ghttp_request_destroy(request);
-        return NULL;
-    }
+    ghttp_set_proxy(iwin_request, weather_proxy_url);
+    ghttp_set_authinfo(iwin_request, weather_proxy_user, weather_proxy_passwd);
+    ghttp_set_header(iwin_request, http_hdr_Connection, "close");
 
-    body = ghttp_get_body(request);
-    body_len = ghttp_get_body_len(request);
-    g_return_val_if_fail(body != NULL, NULL);
-    g_return_val_if_fail(body_len > 0, NULL);
-    body[body_len-1] = 0;  /* quick hack */
-
-    forecast = iwin_parse(body, loc);
-
-    ghttp_request_destroy(request);
-
-    return forecast;
+    http_process_bg(iwin_request, iwin_get_finish, info);
 }
 
 static GdkPixmap *wx_construct (gpointer data, gint data_len)
@@ -948,55 +1020,71 @@ static GdkPixmap *wx_construct (gpointer data, gint data_len)
     return pixmap;
 }
 
-/* Get radar map and return in in a newly allocated pixmap */
-static GdkPixmap *wx_get (WeatherLocation *loc)
+static void wx_get_finish (ghttp_request *req, ghttp_status status, gpointer data)
 {
-    gchar *url;
-    ghttp_request *request = NULL;
+    WeatherInfo *info = (WeatherInfo *)data;
+    WeatherLocation *loc;
     gchar *body;
     gint body_len;
     GdkPixmap *pixmap = NULL;
 
-    g_return_val_if_fail(loc != NULL, NULL);
+    g_return_if_fail(req == wx_request);
 
-    if (loc->radar[0] == '-')
-        return NULL;
+    g_return_if_fail(info != NULL);
+    info->radar = NULL;
+    loc = info->location;
+    g_return_if_fail(loc != NULL);
 
-    url = g_strdup_printf("http://www.wx.com/nbr/ss2.cfm?radar=%s", loc->radar);
-    request = ghttp_request_new();
-    ghttp_set_uri(request, url);
-    g_free(url);
-    ghttp_set_proxy(request, weather_proxy_url);
-    ghttp_set_authinfo(request, weather_proxy_user, weather_proxy_passwd);
-    ghttp_set_header(request, http_hdr_Connection, "close");
-    ghttp_prepare(request);
-
-    if (ghttp_process(request) == ghttp_error) {
+    if (status == ghttp_error) {
         g_warning(_("Failed to get radar map image.\n"));
-        ghttp_request_destroy(request);
-        return NULL;
+    } else {
+
+        body = ghttp_get_body(wx_request);
+        body_len = ghttp_get_body_len(wx_request);
+        g_return_if_fail(body != NULL);
+        g_return_if_fail(body_len > 0);
+
+        pixmap = wx_construct(body, body_len);
+        info->radar = pixmap;
     }
 
-    body = ghttp_get_body(request);
-    body_len = ghttp_get_body_len(request);
-    g_return_val_if_fail(body != NULL, NULL);
-    g_return_val_if_fail(body_len > 0, NULL);
-
-    pixmap = wx_construct(body, body_len);
-
-    ghttp_request_destroy(request);
-
-    return pixmap;
+    request_done(&wx_request);
+    requests_done_check();
 }
 
-WeatherInfo *_weather_info_fill (WeatherInfo *info, WeatherLocation *location)
+/* Get radar map and into newly allocated pixmap */
+static void wx_get_start (WeatherInfo *info)
+{
+    gchar *url;
+    WeatherLocation *loc;
+
+    g_return_if_fail(info != NULL);
+    info->radar = NULL;
+    loc = info->location;
+    g_return_if_fail(loc != NULL);
+
+    if (loc->radar[0] == '-')
+        return;
+
+    url = g_strdup_printf("http://www.wx.com/nbr/ss2.cfm?radar=%s", loc->radar);
+    wx_request = ghttp_request_new();
+    ghttp_set_uri(wx_request, url);
+    g_free(url);
+    ghttp_set_proxy(wx_request, weather_proxy_url);
+    ghttp_set_authinfo(wx_request, weather_proxy_user, weather_proxy_passwd);
+    ghttp_set_header(wx_request, http_hdr_Connection, "close");
+
+    http_process_bg(wx_request, wx_get_finish, info);
+}
+
+gboolean _weather_info_fill (WeatherInfo *info, WeatherLocation *location, WeatherInfoFunc cb)
 {
     if (!info) {
-        g_return_val_if_fail(location != NULL, NULL);
+        g_return_val_if_fail(location != NULL, FALSE);
         info = g_new(WeatherInfo, 1);
         info->location = weather_location_clone(location);
     } else {
-        g_return_val_if_fail(location == NULL, NULL);
+        g_return_val_if_fail(location == NULL, FALSE);
         location = info->location;
         g_free(info->forecast);
         gdk_imlib_free_pixmap(info->radar);
@@ -1019,17 +1107,19 @@ WeatherInfo *_weather_info_fill (WeatherInfo *info, WeatherLocation *location)
     info->forecast = NULL;
     info->radar = NULL;
 
-    info->valid = metar_get(location, info);
+    if (!requests_init(cb, info)) {
+        g_warning(_("Another update already in progress!\n"));
+        return FALSE;
+    }
+
+    metar_get_start(info);
  
-    info->forecast = iwin_get(location);
+    iwin_get_start(info);
 
     if (weather_radar)
-        info->radar = wx_get(location);
+        wx_get_start(info);
 
-    if (weather_units == UNITS_METRIC)
-        weather_info_to_metric(info);
-
-    return info;
+    return TRUE;
 }
 
 void weather_info_config_write (WeatherInfo *info)
@@ -1434,7 +1524,7 @@ void _weather_info_get_pixmap (WeatherInfo *info, gboolean mini, GdkPixmap **pix
             case QUALIFIER_HEAVY:
                 break;
             default:
-                assert(FALSE);
+                g_assert_not_reached();
             }
 
             if (idx < 0)
@@ -1476,7 +1566,7 @@ void _weather_info_get_pixmap (WeatherInfo *info, gboolean mini, GdkPixmap **pix
                     idx = PIX_FOG;
                     break;
                 default:
-                    assert(FALSE);
+                    g_assert_not_reached();
                 }
         } else {
             switch (sky) {
@@ -1492,7 +1582,7 @@ void _weather_info_get_pixmap (WeatherInfo *info, gboolean mini, GdkPixmap **pix
                 idx = PIX_CLOUD;
                 break;
             default:
-                assert(FALSE);
+                g_assert_not_reached();
             }
         }
     }

@@ -17,7 +17,8 @@ gweather_SOURCES = \
 	gweather-pref.c gweather-pref.h \
 	gweather-dialog.c gweather-dialog.h \
 	gweather-applet.c gweather-applet.h \
-	weather.c weather.h
+	weather.c weather.h \
+	http.c http.h
 
 gweather_LDADD = \
 	$(GNOME_LIBDIR) \
