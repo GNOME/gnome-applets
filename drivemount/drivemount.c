@@ -567,6 +567,7 @@ update_pixmap (DriveData *dd, gint t)
 			gtk_image_set_from_pixbuf (GTK_IMAGE
 						   (dd->button_pixmap), scaled);
 			g_object_unref (G_OBJECT (pixbuf));
+			g_object_unref (scaled);
 		}
 	} else {
 		if (dd->scale_applet) {
@@ -603,6 +604,7 @@ update_pixmap (DriveData *dd, gint t)
 		gtk_image_set_from_pixbuf (GTK_IMAGE (dd->button_pixmap),
 					   scaled);
 		g_object_unref (G_OBJECT (pixbuf));
+		g_object_unref (scaled);
 	}
 
 	if (t) {

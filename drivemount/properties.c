@@ -192,7 +192,9 @@ mount_icon_changed (GnomeIconEntry *entry, gpointer data)
 	dd->device_pixmap = -1;		
 	redraw_pixmap(dd);
 	panel_applet_gconf_set_string(PANEL_APPLET(dd->applet), "custom-icon-mounted",
-				      dd->custom_icon_in, NULL);		
+				      dd->custom_icon_in, NULL);	
+				      
+	g_free (temp);	
 }
 
 static void
@@ -213,7 +215,9 @@ unmount_icon_changed (GnomeIconEntry *entry, gpointer data)
 	dd->device_pixmap = -1;		
 	redraw_pixmap(dd);
 	panel_applet_gconf_set_string(PANEL_APPLET(dd->applet), "custom-icon-unmounted",
-				      dd->custom_icon_out, NULL);		
+				      dd->custom_icon_out, NULL);
+	
+	g_free (temp);		
 }
 
 void
