@@ -1,0 +1,498 @@
+<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "1.104.0">
+  <!ENTITY manrevision "2.2">
+  <!ENTITY date "August 2002">
+  <!ENTITY applet "Command Line">
+]>
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp 
+  Template version: 2.0 beta
+  Template last modified Feb 12, 2002
+  
+-->
+<!-- =============Document Header ============================= -->
+<article id="index" lang="de">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo>
+ <title>&applet; Applet-Handbuch V&manrevision;</title>
+     <copyright> 
+        <year>2003</year> 
+        <holder>Sun Microsystems</holder> 
+     </copyright> 
+     <copyright> 
+        <year>1998</year> 
+        <holder>Oliver Maruhn</holder> 
+     </copyright>
+<!-- translators: uncomment this:
+
+  <copyright>
+   <year>2002</year>
+   <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+  </copyright>
+
+   -->
+<!-- An address can be added to the publisher information.  If a role is 
+     not specified, the publisher/author is the same for all versions of the 
+     document.  -->
+     <publisher> 
+        <publishername> GNOME-Dokumentationsprojekt </publishername> 
+     </publisher> &legal;
+<!-- This file  contains link to license for the documentation (GNU FDL), and 
+     other legal stuff such as "NO WARRANTY" statement. Please do not change 
+     any of this. -->
+     <authorgroup>
+        <author>
+          <firstname>Sun </firstname> 
+          <surname>GNOME-Dokumentationsteam</surname> 
+          <affiliation> 
+             <orgname>Sun Microsystems</orgname> 
+             <address> <email>gdocteam@sun.com</email> </address>
+          </affiliation>
+        </author>
+        <author> 
+          <firstname>Oliver </firstname> 
+          <surname> Maruhn</surname> 
+          <affiliation> 
+             <orgname>GNOME-Dokumentationsprojekt</orgname> 
+             <address> <email>oliver@maruhn.com</email> </address>
+          </affiliation>
+        </author>
+      <!-- This is appropriate place for other contributors: translators,
+           maintainers,  etc. Commented out by default.
+           <othercredit role="translator">
+         <firstname>Latin</firstname> 
+         <surname>Translator 1</surname> 
+         <affiliation> 
+           <orgname>Latin Translation Team</orgname> 
+           <address> <email>translator@gnome.org</email> </address> 
+         </affiliation>
+         <contrib>Latin translation</contrib>
+           </othercredit>
+-->
+     </authorgroup>
+     <revhistory>
+        <revision> 
+          <revnumber>&applet; Applet-Handbuch V&manrevision;</revnumber> 
+          <date>&date;</date> 
+          <revdescription> 
+             <para role="author">
+                Sun Microsystems <email>gdocteam@sun.com</email>
+             </para>
+             <para role="publisher">
+                GNOME-Dokumentationsprojekt
+             </para>
+          </revdescription>
+        </revision>
+        <revision> 
+          <revnumber>Befehlszeilen-Applet-Handbuch V2.1</revnumber> 
+          <date>Juli 2002</date> 
+          <revdescription> 
+             <para role="author">
+                Sun Microsystems <email>gdocteam@sun.com</email>
+             </para>
+             <para role="publisher">
+                GNOME-Dokumentationsprojekt
+             </para>
+          </revdescription>
+        </revision>
+        <revision> 
+          <revnumber>Befehlszeilen-Applet-Handbuch V2.0</revnumber> 
+          <date>M&auml;rz 2002</date> 
+          <revdescription> 
+             <para role="author">
+                Sun Microsystems <email>gdocteam@sun.com</email>
+             </para>
+             <para role="publisher">
+                GNOME-Dokumentationsprojekt
+             </para>
+          </revdescription>
+        </revision>
+        <revision> 
+          <revnumber>Mini-Commander-Applet-Handbuch</revnumber> 
+          <date>1998</date> 
+          <revdescription> 
+             <para role="author">
+                Oliver Maruhn <email>oliver@maruhn.com</email>
+             </para>
+             <para role="publisher">
+                GNOME-Dokumentationsprojekt
+             </para>
+             <para role="author">
+                Dan Mueth <email>d-mueth@uchicago.edu</email>
+             </para>
+             <para role="publisher">
+                GNOME-Dokumentationsprojekt
+             </para>
+          </revdescription>
+        </revision>
+     </revhistory>
+     <releaseinfo>In diesem Handbuch wird Version &appletversion; von &applet; beschrieben.
+        </releaseinfo>
+     <legalnotice> 
+        <title>Feedback</title>
+        <para>
+         Wenn Sie einen Programmfehler melden m&ouml;chten oder Vorschl&auml;ge zum Applet &applet; oder
+          zu diesem Handbuch haben, folgen Sie den Anweisungen auf der 
+          <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback
+             Page</ulink>. 
+        </para>
+     </legalnotice>
+  </articleinfo>
+  <indexterm zone="index"> 
+     <primary>Befehlszeile</primary> 
+  </indexterm> 
+  <indexterm zone="index"> 
+     <primary>Befehlszeilen-Applet</primary> 
+  </indexterm>
+
+<!-- ============= Introduction =====-->
+  <sect1 id="command-line-introduction"> 
+     <title>Einf&uuml;hrung</title>
+     
+     <!-- ==== Figure ==================-->
+     <figure id="applet-fig"> 
+        <title>&applet;-Applet</title>
+        <screenshot>
+          <mediaobject>
+             <imageobject><imagedata fileref="figures/command-line.png"                 format="PNG"/> 
+             </imageobject>
+             <textobject>
+                <phrase>&Ouml;ffnet das Applet &applet;.</phrase>
+             </textobject>
+          </mediaobject>
+        </screenshot>
+     </figure>
+     <para>
+        Das Applet <application>&applet;</application> verf&uuml;gt &uuml;ber eine Befehlszeile,
+        die Sie in jedem Panel auf dem Desktop verwenden k&ouml;nnen. </para>
+        <para>Zum Hinzuf&uuml;gen des Applets <application>&applet;</application> in ein Panel, klicken Sie mit der rechten Maustaste auf das Panel, und w&auml;hlen Sie 
+        <menuchoice> 
+          <guimenu>Zum Panel hinzuf&uuml;gen</guimenu> 
+          <guisubmenu>Dienstprogramm</guisubmenu> 
+          <guimenuitem>&applet;</guimenuitem> 
+        </menuchoice>.
+     </para>
+     <para>
+        <application>&applet;</application> enth&auml;lt folgende interaktive Elemente: </para>
+        
+        <variablelist>
+          <varlistentry>
+             <term>
+                <guilabel>Eingabefeld</guilabel></term>
+             <listitem>
+                <para>
+                  In das 
+                  <guilabel>Eingabefeld</guilabel> k&ouml;nnen Sie Befehle, Makros und Programme eingeben.
+                </para>
+             </listitem>
+          </varlistentry>
+          <varlistentry>
+             <term>
+                <guilabel>Schaltfl&auml;che "Durchsuchen"</guilabel></term>
+             <listitem>
+                <para>
+                  Mit der 
+                  <guibutton>Schaltfl&auml;che "Durchsuchen"</guibutton> k&ouml;nnen Sie Ihr Dateisystem nach Programmen durchsuchen. Die <guibutton>Schaltfl&auml;che "Durchsuchen"</guibutton> wird durch ein geschlossenes Kreissymbol gekennzeichnet. 
+                </para>
+             </listitem>
+          </varlistentry>
+          <varlistentry>
+             <term>
+                <guibutton>Schaltfl&auml;che "Protokoll"</guibutton></term>
+             <listitem>
+                <para>
+                  Mit der 
+                  <guibutton>Schaltfl&auml;che "Protokoll"</guibutton> k&ouml;nnen Sie fr&uuml;her eingegebene Befehle erneut
+                   aufrufen. Die  
+                  <guibutton>Schaltfl&auml;che "Protokoll"</guibutton> wird durch ein nach unten gerichtetes Pfeilsymbol gekennzeichnet.
+                </para>
+             </listitem>
+          </varlistentry>
+        </variablelist>
+        
+        <para><application>&applet;</application> bietet folgende Funktionen: </para>
+        
+        <variablelist>
+          <varlistentry>
+             <term>Protokollliste der bereits ausgef&uuml;hrten Befehle</term>
+             <listitem>
+                <para>
+                  Sie k&ouml;nnen Befehle direkt von der Protokollliste ausf&uuml;hren.
+                  Sie k&ouml;nnen den Inhalt auch &uuml;ber das <guilabel>Eingabefeld</guilabel> durchsuchen, um Befehle anzuzeigen und anschlie&szlig;end auszuf&uuml;hren. Wenn Sie <application>&applet;</application> aus einem Panel entfernen und das Applet zu einem sp&auml;teren Zeitpunkt in der Sitzung einem anderen Panel hinzuf&uuml;gen, bleiben alle vorherigen Befehle in der Protokollliste gespeichert. Wenn die Protokollliste mehr als 20 Befehle enth&auml;lt, wird eine vertikale Bildlaufleiste angezeigt.
+                </para>
+             </listitem>
+          </varlistentry>
+          <varlistentry>
+             <term>Funktion "Auto-Vervollst&auml;ndigen" auf der Grundlage der Protokollliste</term>
+             <listitem>
+                <para>
+                  <application> &applet;</application> vervollst&auml;ndigt Befehle im <guilabel>Eingabefeld</guilabel> mithilfe der Funktion "Auto-Vervollst&auml;ndigen". Diese Funktion vergleicht den Inhalt des <guilabel>Eingabefelds</guilabel> mit der Protokollliste. Wenn
+                  <application>&applet;</application> dabei eine &Uuml;bereinstimmung findet, wird der Befehl durch das Applet vervollst&auml;ndigt.
+                </para>
+             </listitem>
+          </varlistentry>
+          <varlistentry>
+             <term> Vom Benutzer abfragbare Befehls-Vervollst&auml;ndigungsfunktion</term>
+             <listitem>
+                <para>
+                  Diese Funktion zur Vervollst&auml;ndigung von Befehlen vergleicht Zeichenketten im <guilabel>Eingabefeld</guilabel> mit Befehlen im Benutzerpfad.
+                  Die Funktion zur Vervollst&auml;ndigung von Befehlen ist hilfreich, wenn Sie die genaue Zeichenkette oder Schreibweise eines Befehls nicht kennen. Dr&uuml;cken Sie nach Eingabe der ersten Buchstaben die <keycap>Tabulatortaste</keycap>. Wenn die Zeichenkette von <application>&applet;</application>
+                  eindeutig erkannt wird, vervollst&auml;ndigt das Applet den Befehlsnamen.
+                </para>
+             </listitem>
+          </varlistentry>
+          <varlistentry>
+             <term>Makroeinrichtung</term>
+             <listitem>
+                <para>
+                  Die Makroeinrichtung bietet bis zu 99 Befehlsverkn&uuml;pfungen. Zus&auml;tzlich zu vordefinierten Befehlen k&ouml;nnen Sie eigene Befehle f&uuml;r <application>&applet;</application> erstellen.
+                </para>
+             </listitem>
+          </varlistentry>
+        </variablelist>
+  </sect1>
+<!-- ================ Usage =======-->
+  <sect1 id="command-line-usage"> 
+     <title>Verwendung</title>
+     
+     <sect2 id="command-line-run">
+        <title>So f&uuml;hren Sie einen Befehl &uuml;ber das Eingabefeld aus</title>
+        <para>
+         Gehen Sie wie folgt vor, um einen Befehl vom <guilabel>Eingabefeld</guilabel> auszuf&uuml;hren:
+        </para>
+        <orderedlist>
+          <listitem>
+             <para>
+                Geben Sie den Befehl in das <guilabel>Eingabefeld</guilabel> ein. 
+             </para>
+          </listitem>
+          <listitem>
+             <para>
+                Nach Wunsch k&ouml;nnen Sie versuchen, die Vervollst&auml;ndigungsfunktion von <application>&applet;
+                </application> auszuf&uuml;hren. Dr&uuml;cken Sie die <keycap>Tabulatortaste</keycap>, wenn Sie diese Funtkion ausf&uuml;hren m&ouml;chten.
+             </para>
+          </listitem>
+          <listitem>
+             <para>
+                Geben Sie etwaige Befehlsoptionen in das
+                <guilabel>Eingabefeld</guilabel> ein. 
+             </para>
+          </listitem>
+          <listitem>
+             <para>
+                Dr&uuml;cken Sie die <keycap>Eingabetaste</keycap>. 
+             </para>
+          </listitem>
+        </orderedlist>
+        <para>
+         Wenn die Option 
+          <xref linkend="autocompletion"/> gew&auml;hlt ist, sucht 
+          <application>&applet;</application> w&auml;hrend der Schritte 1 bis 3 nach einer &Uuml;bereinstimmung in der Protokollliste.
+          Findet <application>&applet;</application> eine &Uuml;bereinstimmung in der Protokollliste, 
+          wird der Befehl automatisch vervollst&auml;ndigt. Best&auml;tigen Sie den vervollst&auml;ndigten Befehl mit der 
+          <keycap>Eingabetaste</keycap>. Geben Sie weitere Zeichen in das <guilabel>Eingabefeld</guilabel> ein, wenn Sie den Befehl nicht &uuml;bernehmen m&ouml;chten.
+        </para>
+     </sect2>
+     <sect2 id="command-line-runmacro">
+        <title>So f&uuml;hren Sie ein Makro &uuml;ber das Eingabefeld aus</title>
+        <para>
+          Um ein Makro auszuf&uuml;hren, das in der Liste
+          <application>&applet;</application> 
+          <xref linkend="command-line-prefs-2"/> definiert ist, geben Sie das Makro 
+          in das 
+          <guilabel>Eingabefeld</guilabel> ein, und dr&uuml;cken Sie die 
+          <keycap>Eingabetaste</keycap>. 
+        </para>
+        <para>
+          Die Funktion 
+          <xref linkend="autocompletion"/> gilt auch f&uuml;r Makros. 
+        </para>
+        <para>
+          In der folgenden Liste werden einige Beispiele f&uuml;r <application>&applet;</application>-Makros aufgef&uuml;hrt:
+        </para>
+        <informaltable frame="none">
+          <tgroup cols="2" colsep="0" rowsep="0"><colspec              colwidth="29.29*"/><colspec colwidth="70.71*"/> 
+             <tbody>
+                <row valign="top">
+                  <entry>
+                     <para>
+                        <userinput>t</userinput>
+                     </para>
+                  </entry>
+                  <entry>
+                     <para>
+                        Startet ein GNOME-Terminal. 
+                     </para>
+                  </entry>
+                </row>
+                <row valign="top">
+                  <entry>
+                     <para>
+                        <userinput>n</userinput>
+                     </para>
+                  </entry>
+                  <entry>
+                     <para>
+                        Startet einen Netscape-Browser.
+                     </para>
+                  </entry>
+                </row>
+                <row valign="top">
+                  <entry>
+                     <para>
+                        <userinput>dictionary</userinput>
+                     </para>
+                  </entry>
+                  <entry>
+                     <para>
+                        Startet einen Netscape-Browser und ruft eine Verzeichnis-Suchseite auf. 
+                     </para>
+                  </entry>
+                </row>
+             </tbody>
+          </tgroup>
+        </informaltable>
+     </sect2>
+     <sect2 id="command-line-filesys"> 
+        <title>So f&uuml;hren Sie ein Programm &uuml;ber Ihr Dateisystem aus</title>
+        <para>
+          Klicken Sie auf die <guibutton>Schaltfl&auml;che "Durchsuchen"</guibutton>, um das Dateisystem aufzurufen, und doppelklicken Sie auf das Programm, das ausgef&uuml;hrt werden soll. 
+        </para>
+        <para>
+          Sie k&ouml;nnen mit <application>&applet;</application> Skripts, ausf&uuml;hrbare Dateien und andere Programme von Ihrem Dateisystem ausf&uuml;hren. 
+        </para>
+     </sect2>
+     <sect2 id="command-line-histlist"> 
+        <title>So f&uuml;hren Sie fr&uuml;here Befehle, Makros oder Programme &uuml;ber die Protokollliste aus</title>
+        <para>
+          Sie k&ouml;nnen einen bereits ausgef&uuml;hrten Befehl oder ein bereits ausgef&uuml;hrtes Makro 
+          oder Programm auf eine der folgenden Weisen aus der Protokollliste ausf&uuml;hren:
+          <itemizedlist>
+             <listitem>
+                <para>
+                  Klicken Sie auf die Schaltfl&auml;che <guibutton>Protokoll</guibutton>, um die Protokollliste aufzurufen. Klicken Sie zum Ausf&uuml;hren des gew&uuml;nschten Befehls, Makros oder Programms auf das entsprechende Protokolllistensymbol.
+                </para>
+             </listitem>
+             <listitem>
+                <para>
+                  Klicken Sie auf das <guilabel>Eingabefeld</guilabel>, und durchsuchen Sie die Protokollliste mithilfe der Nach-oben-/Nach-unten-Pfeiltasten. Dr&uuml;cken Sie zum Ausf&uuml;hren eines bestimmten Befehls, Makros oder Programms die <keycap>Eingabetaste</keycap>, wenn der gew&uuml;nschte Protokolllisteneintrag im <guilabel>Eingabefeld</guilabel> angezeigt wird.
+                </para>
+             </listitem>
+          </itemizedlist>
+        </para>
+     </sect2>
+  </sect1>
+<!-- ============= Preferences ============================= -->
+  <sect1 id="command-line-prefs-0"> 
+     <title>Einstellungen</title>
+     <para>
+        Zur Konfiguration des Applets <application>&applet;</application> klicken Sie mit der rechten Maustaste auf einen freien Bereich
+        des Applets, und w&auml;hlen Sie 
+        <guimenuitem>Einstellungen</guimenuitem>.
+     </para>
+     <para>
+        Das Dialogfeld <guilabel>Einstellungen</guilabel> enth&auml;lt folgende Registerkarten:
+     </para>
+     <itemizedlist>
+        <listitem>
+          <para>
+             <xref linkend="command-line-prefs-1"/>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+             <xref linkend="command-line-prefs-2"/>
+          </para>
+        </listitem>
+     </itemizedlist>
+     
+     <sect2 id="command-line-prefs-1"> 
+     
+        <title>Allgemein</title>
+        
+        <variablelist>
+		<varlistentry>
+		<term><guilabel>Handle anzeigen</guilabel> </term>
+		<listitem>
+		<para>W&auml;hlen Sie diese Option, um am Rand des Applets ein Handle anzuf&uuml;gen. Mit dem Handle k&ouml;nnen Sie das <application>&applet;</application>-Fenster frei auf dem Desktop verschieben. </para>
+		<para>Standard:  Nicht aktiviert</para>
+		</listitem>
+		</varlistentry>
+		<varlistentry>
+		<term><guilabel>Rahmen anzeigen</guilabel> </term>
+		<listitem>
+		<para>W&auml;hlen Sie diese Option, um das Applet <application>&applet;</application> mit einem Rahmen zu umgeben.</para>
+		<para>Standard:  Nicht aktiviert</para>
+		</listitem>
+		</varlistentry>
+		<varlistentry>
+		<term><guilabel>Protokollbasiertes Auto-Vervollst&auml;ndigen aktivieren</guilabel> </term>
+		<listitem>
+		<para id="autocompletion">W&auml;hlen Sie diese Option, um <application>&applet;</application> anzuweisen, das <guilabel>Eingabefeld</guilabel> mit der Protokollliste zu vergleichen, und Befehle im Falle einer &Uuml;bereinstimmung zu vervollst&auml;ndigen. </para>
+		<para>Standard: Aktiviert</para>
+		</listitem>
+		</varlistentry>
+		<varlistentry>
+		<term><guilabel>Applet-Breite</guilabel> </term>
+		<listitem>
+		<para>Legen Sie mithilfe dieses Drehfeldes die Applet-Breite in Pixeln fest.</para>
+		<para>Standard:  150 Pixel</para>
+		</listitem>
+		</varlistentry>
+		<varlistentry>
+		<term><guilabel>Farben des Standardthemas verwenden</guilabel> </term>
+		<listitem>
+		<para>W&auml;hlen Sie diese Option, um die Farben des GNOME-Standardthemas zu verwenden.</para>
+		<para>Standard: Aktiviert</para>
+		</listitem>
+		</varlistentry>
+		<varlistentry>
+		<term><guilabel>Befehlszeilen-Vordergrund</guilabel> </term>
+		<listitem>
+		<para>Klicken Sie auf diese Schaltfl&auml;che, um eine Farbe f&uuml;r den Befehlszeilentext zu w&auml;hlen. Diese Schaltfl&auml;che steht nicht zur Verf&uuml;gung, wenn das Kontrollk&auml;stchen <guilabel>Farben des Standardthemas verwenden</guilabel> aktiviert ist.</para>
+		<para>Standard: Weiss</para>
+		</listitem>
+		</varlistentry>
+		<varlistentry>
+		<term><guilabel>Befehlszeilen-Hintergrund</guilabel> </term>
+		<listitem>
+		<para>Klicken Sie auf diese Schaltfl&auml;che, um eine Farbe f&uuml;r das <guilabel>Eingabefeld</guilabel> zu w&auml;hlen. Diese Schaltfl&auml;che steht nicht zur Verf&uuml;gung, wenn das Kontrollk&auml;stchen <guilabel>Farben des Standardthemas verwenden</guilabel> aktiviert ist.</para>
+		<para>Standard: Schwarz</para>
+		</listitem>
+		</varlistentry>	
+	</variablelist>
+        
+     </sect2>
+     
+     <sect2 id="command-line-prefs-2"> 
+        <title>Makros</title>
+        <para>
+        Diese Registerkarte enth&auml;lt eine Liste von Makros, die mit <application>&applet;</application> verwendet werden k&ouml;nnen. Die Liste enth&auml;lt folgende Informationen:
+          <itemizedlist>
+             <listitem>
+                <para>
+                  Eine Liste mit regul&auml;ren UNIX-Ausdr&uuml;cken in der linken Spalte 
+                </para>
+                <para>
+                  Ein regul&auml;rer Ausdruck ist ein Zeichen- oder Zahlenmuster, das 
+	zum Vergleich von Zeichenketten dient. Auf der <command>regex</command>-Hauptseite finden Sie weitere Informationen zum Erstellen von regul&auml;ren Ausdr&uuml;cken. 
+                </para>
+             </listitem>
+             <listitem>
+                <para>
+                  Eine Liste der Makros in der rechten Spalte 
+                </para>
+                <para>
+                  Ein Makro wird ausgef&uuml;hrt, wenn der entsprechende regul&auml;re Ausdruck mit dem Befehl &uuml;bereinstimmt, der in das <application>&applet;</application>-<guilabel>Eingabefeld</guilabel> eingegeben wurde. Makros sind Befehle, die Parameter aufnehmen k&ouml;nnen, die von dem regul&auml;ren Ausdruck analysiert wurden.
+                </para>
+             </listitem>
+          </itemizedlist>Sie k&ouml;nnen regul&auml;re Ausdr&uuml;cke oder Makros beliebig hinzuf&uuml;gen oder bearbeiten. 
+        </para>
+     </sect2>
+  </sect1>
+</article>

@@ -1,0 +1,455 @@
+<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "1.104.0">
+  <!ENTITY manrevision "2.2">
+  <!ENTITY date "2002 年 8 月">
+  <!ENTITY applet "コマンドライン">
+]>
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp 
+  Template version: 2.0 beta
+  Template last modified Feb 12, 2002
+  
+-->
+<!-- =============Document Header ============================= -->
+<article id="index" lang="ja">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo>
+     <title>コマンドラインアプレットのマニュアル V&manrevision;</title>
+     <copyright> 
+        <year>2002</year> 
+        <holder>Sun Microsystems</holder> 
+     </copyright> 
+     <copyright> 
+        <year>1998</year> 
+        <holder>Oliver Maruhn</holder> 
+     </copyright>
+<!-- translators: uncomment this:
+
+  <copyright>
+   <year>2002</year>
+   <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+  </copyright>
+
+   -->
+<!-- An address can be added to the publisher information.  If a role is 
+     not specified, the publisher/author is the same for all versions of the 
+     document.  -->
+     <publisher> 
+        <publishername> GNOME ドキュメンテーションプロジェクト</publishername> 
+     </publisher> &legal;
+<!-- This file  contains link to license for the documentation (GNU FDL), and 
+     other legal stuff such as "NO WARRANTY" statement. Please do not change 
+     any of this. -->
+     <authorgroup>
+        <author>
+          <firstname>Sun </firstname> 
+          <surname>GNOME ドキュメンテーションチーム</surname> 
+          <affiliation> 
+             <orgname>Sun Microsystems</orgname> 
+             <address> <email>gdocteam@sun.com</email> </address>
+          </affiliation>
+        </author>
+        <author> 
+          <firstname>Oliver </firstname> 
+          <surname> Maruhn</surname> 
+          <affiliation> 
+             <orgname>GNOME ドキュメンテーションプロジェクト</orgname> 
+             <address> <email>oliver@maruhn.com</email> </address>
+          </affiliation>
+        </author>
+      <!-- This is appropriate place for other contributors: translators,
+           maintainers,  etc. Commented out by default.
+           <othercredit role="translator">
+         <firstname>Latin</firstname> 
+         <surname>Translator 1</surname> 
+         <affiliation> 
+           <orgname>Latin Translation Team</orgname> 
+           <address> <email>translator@gnome.org</email> </address> 
+         </affiliation>
+         <contrib>Latin translation</contrib>
+           </othercredit>
+-->
+     </authorgroup>
+     <revhistory>
+        <revision> 
+          <revnumber>コマンドラインアプレットのマニュアル V&manrevision;</revnumber> 
+          <date>2002 年 8 月</date> 
+          <revdescription> 
+             <para role="author">
+                Sun Microsystems <email>gdocteam@sun.com</email>
+             </para>
+             <para role="publisher">
+                GNOME ドキュメンテーションプロジェクト</para>
+          </revdescription>
+        </revision>
+        <revision> 
+          <revnumber>コマンドラインアプレットのマニュアル V2.1</revnumber> 
+          <date>2002 年 7 月</date> 
+          <revdescription> 
+             <para role="author">
+                Sun Microsystems <email>gdocteam@sun.com</email>
+             </para>
+             <para role="publisher">
+                GNOME ドキュメンテーションプロジェクト</para>
+          </revdescription>
+        </revision>
+        <revision> 
+          <revnumber>コマンドラインアプレットのマニュアル V2.0</revnumber> 
+          <date>2002 年 3 月</date> 
+          <revdescription> 
+             <para role="author">
+                Sun Microsystems <email>gdocteam@sun.com</email>
+             </para>
+             <para role="publisher">
+                GNOME ドキュメンテーションプロジェクト</para>
+          </revdescription>
+        </revision>
+        <revision> 
+          <revnumber>Mini-Commander アプレットのマニュアル</revnumber> 
+          <date>1998 年</date> 
+          <revdescription> 
+             <para role="author">
+                Oliver Maruhn <email>oliver@maruhn.com</email>
+             </para>
+             <para role="publisher">
+                GNOME ドキュメンテーションプロジェクト</para>
+             <para role="author">
+                Dan Mueth <email>d-mueth@uchicago.edu</email>
+             </para>
+             <para role="publisher">
+                GNOME ドキュメンテーションプロジェクト</para>
+          </revdescription>
+        </revision>
+     </revhistory>
+     <releaseinfo>このマニュアルはコマンドラインのバージョン &appletversion; について説明します。
+        </releaseinfo>
+     <legalnotice> 
+      <title>フィードバック</title>
+        <para>コマンドラインアプレットまたはこのマニュアルに関してバグやご意見をご報告いただく場合は、<ulink url="ghelp:gnome-feedback" type="help">『GNOME フィードバックページ』</ulink> を参照してください。 
+        </para>
+     </legalnotice>
+  </articleinfo>
+  <indexterm zone="index"> 
+     <primary>コマンドライン</primary> 
+  </indexterm> 
+  <indexterm zone="index"> 
+     <primary>コマンドラインアプレット</primary> 
+  </indexterm>
+
+<!-- ============= Introduction =====-->
+  <sect1 id="command-line-introduction"> 
+	 <title>概要</title>
+     
+     <!-- ==== Figure ==================-->
+     <figure id="applet-fig"> 
+        <title>コマンドラインアプレット</title>
+        <screenshot>
+          <mediaobject>
+             <imageobject><imagedata fileref="figures/command-line.png"                 format="PNG"/> 
+             </imageobject>
+             <textobject>
+                <phrase>コマンドラインアプレットを表示します。</phrase>
+             </textobject>
+          </mediaobject>
+        </screenshot>
+     </figure>
+     <para>
+        <application>コマンドライン</application>アプレットは、デスクトップ上にある任意のパネル内に実行可能なコマンドラインを提供します。</para>
+        <para><application>コマンドライン</application>をパネルに追加するには、パネルを右クリックして、<menuchoice><guimenu>「パネルに追加」</guimenu><guisubmenu>「ユーティリティ」</guisubmenu><guimenuitem>「コマンドライン」</guimenuitem></menuchoice>を選択します。
+     </para>
+     <para>
+        <application>コマンドライン</application>には、次のような対話式要素が存在します。 </para>
+        
+        <variablelist>
+          <varlistentry>
+             <term>
+                <guilabel>「入力フィールド」</guilabel></term>
+             <listitem>
+                <para>
+                  <guilabel>「入力フィールド」</guilabel>には、コマンド、マクロ、およびプログラムを入力できます。
+                </para>
+             </listitem>
+          </varlistentry>
+          <varlistentry>
+             <term>
+                <guilabel>「参照」ボタン</guilabel></term>
+             <listitem>
+                <para>
+                 <guibutton>「参照」ボタン</guibutton>を使用すると、 ファイルシステムからプログラムを検索できます。<guibutton>「参照」ボタン</guibutton>は中黒のアイコンが付いたボタンです。
+                </para>
+             </listitem>
+          </varlistentry>
+          <varlistentry>
+             <term>
+                <guibutton>「履歴」ボタン</guibutton></term>
+             <listitem>
+                <para><guibutton>「履歴」ボタン</guibutton>を使用すると、以前呼び出したコマンドを再び呼び出すことができます。<guibutton>「履歴」ボタン</guibutton>は下矢印のアイコンが付いたボタンです。
+                </para>
+             </listitem>
+          </varlistentry>
+        </variablelist>
+        
+        <para><application>コマンドライン</application>は、次のような機能を提供します。 </para>
+        
+        <variablelist>
+          <varlistentry>
+             <term>実行したコマンドの履歴リスト</term>
+             <listitem>
+                <para>
+                  履歴リストから直接コマンドを実行できます。
+                 あるいは、履歴リストの内容を<guilabel>「入力」フィールド</guilabel>に表示してからコマンドを実行できます。あるパネルから<application>コマンドライン</application>を削除して、次に、任意のパネルに<application>コマンドライン</application>を追加した場合、履歴リストには (そのセッション内で) 以前に実行したコマンドがすべて残っています。履歴リストに 20 を超えるコマンドがある場合、垂直スクロールバーが現れます。
+                </para>
+             </listitem>
+          </varlistentry>
+          <varlistentry>
+             <term>履歴に基づく自動補完機能</term>
+             <listitem>
+                <para>
+                  <application>コマンドライン</application>は履歴に基づく自動補完機能を使用して、<guilabel>「入力」フィールド</guilabel>に入力されているコマンドを補完します。この機能は、<guilabel>「入力」フィールド</guilabel>の内容と履歴リストを比較します。一致が見つかった場合、<application>コマンドライン</application>はそのコマンドを補完します。
+                </para>
+             </listitem>
+          </varlistentry>
+          <varlistentry>
+             <term>ユーザーが要求できるコマンド補完機能</term>
+             <listitem>
+                <para>
+                  このコマンド補完機能は、<guilabel>「入力」フィールド</guilabel>の文字列とユーザーパス内のコマンドを比較します。
+                  このコマンド補完機能は、コマンドの正確な文字シーケンスやスペルを知らないときに便利です。コマンド名の最初の数文字を入力した後、<keycap>Tab</keycap> キーを押します。文字シーケンスが一意であると判断した場合、<application>コマンドライン</application>はコマンド名を補完します。
+                </para>
+             </listitem>
+          </varlistentry>
+          <varlistentry>
+             <term>マクロ機能</term>
+             <listitem>
+                <para>
+                  マクロ機能は、99 個までのショートカットコマンドを提供します。あらかじめ定義されたコマンドに加えて、<application>コマンドライン</application>で使用するための独自のコマンドを作成できます。
+                </para>
+             </listitem>
+          </varlistentry>
+        </variablelist>
+  </sect1>
+<!-- ================ Usage =======-->
+  <sect1 id="command-line-usage"> 
+     <title>使用方法</title>
+     
+     <sect2 id="command-line-run">
+        <title>入力フィールドからコマンドを実行する</title>
+        <para>
+          <guilabel>「入力」フィールド</guilabel> からコマンドを実行するには、次の手順に従います。
+        </para>
+        <orderedlist>
+          <listitem>
+             <para>
+                <guilabel>「入力」フィールド</guilabel>にコマンドを入力します。
+             </para>
+          </listitem>
+          <listitem>
+             <para>
+                必要であれば、<application>コマンドライン</application>のコマンド補完機能を使用します。補完機能を使用するには、<keycap>Tab</keycap> キーを押します。
+             </para>
+          </listitem>
+          <listitem>
+             <para>
+                <guilabel>「入力」フィールド</guilabel>にコマンドに指定したいオプションを入力します。
+             </para>
+          </listitem>
+          <listitem>
+             <para>
+                <keycap>リターン</keycap> キーを押します。
+             </para>
+          </listitem>
+        </orderedlist>
+        <para><xref linkend="autocompletion"/> オプションを選択した場合、手順 1 から 3 までの間、<application>コマンドライン</application>は履歴リストから一致を検索します。
+          履歴リストに一致が見つかった場合、<application>コマンドライン</application>はコマンドを補完します。そのコマンドを使用する場合、<keycap>リターン</keycap> キーを押します。そのコマンドを使用しない場合、
+<guilabel>「入力」フィールド</guilabel>に続きの文字を入力します。
+        </para>
+     </sect2>
+     <sect2 id="command-line-runmacro">
+        <title>入力フィールドからマクロを実行する</title>
+        <para><application>コマンドライン</application>の <xref linkend="command-line-prefs-2"/> リストに定義されているマクロを実行するには、<guilabel>「入力」フィールド</guilabel> にマクロを入力して、<keycap>リターン</keycap> キーを押します。        </para>
+        <para><xref linkend="autocompletion"/>機能はマクロにも働きます。        </para>
+        <para>
+          次に、<application>コマンドライン</application>マクロの例をいくつか示します。
+        </para>
+        <informaltable frame="none">
+          <tgroup cols="2" colsep="0" rowsep="0"><colspec              colwidth="29.29*"/><colspec colwidth="70.71*"/> 
+             <tbody>
+                <row valign="top">
+                  <entry>
+                     <para>
+                        <userinput>t</userinput>
+                     </para>
+                  </entry>
+                  <entry>
+                     <para>
+                        GNOME 端末を起動します。
+                     </para>
+                  </entry>
+                </row>
+                <row valign="top">
+                  <entry>
+                     <para>
+                        <userinput>n</userinput>
+                     </para>
+                  </entry>
+                  <entry>
+                     <para>
+                        Netscape ブラウザを起動します。
+                     </para>
+                  </entry>
+                </row>
+                <row valign="top">
+                  <entry>
+                     <para>
+                        <userinput>dictionary</userinput>
+                     </para>
+                  </entry>
+                  <entry>
+                     <para>
+                        Netscape ブラウザを起動して、辞書検索ページを表示します。
+                     </para>
+                  </entry>
+                </row>
+             </tbody>
+          </tgroup>
+        </informaltable>
+     </sect2>
+     <sect2 id="command-line-filesys"> 
+        <title>ファイルシステムからプログラムを実行する</title>
+        <para>
+          <guibutton>「参照」ボタン</guibutton> をクリックしてファイルシステムを表示して、次に、実行したいプログラムをダブルクリックします。
+        </para>
+        <para>
+          <application>コマンドライン</application>を使用すると、スクリプト、実行可能ファイル、またはその他のプログラムをファイルシステムから実行できます。
+        </para>
+     </sect2>
+     <sect2 id="command-line-histlist"> 
+        <title>履歴リストから以前に実行したコマンド、マクロ、またはプログラムを実行する</title>
+        <para>
+          履歴リストから以前のコマンド、マクロ、またはプログラムを実行するには、次の手順に従います。
+          <itemizedlist>
+             <listitem>
+                <para>
+                  <guibutton>「履歴」ボタン</guibutton>をクリックして、履歴リストを表示します。
+履歴リストから希望の項目をクリックすると、そのコマンド、マクロ、またはプログラムを実行できます。
+                </para>
+             </listitem>
+             <listitem>
+                <para>
+                  <guilabel>「入力」フィールド</guilabel>をクリックして、キーボードの上下矢印キーを使用すると、履歴リストが移動中の項目を表示します。そして、希望の項目が<guilabel>「入力」フィールド</guilabel>に表示されたときに <keycap>リターン</keycap> キーを押すと、
+そのコマンド、マクロ、またはプログラムを実行できます。                  .
+                </para>
+             </listitem>
+          </itemizedlist>
+        </para>
+     </sect2>
+  </sect1>
+<!-- ============= Preferences ============================= -->
+  <sect1 id="command-line-prefs-0"> 
+     <title>設定</title>
+     <para><application>コマンドライン</application>を設定するには、アプレットの対話式要素以外の場所を右クリックして、<guimenuitem>「設定」</guimenuitem>を選択します。
+     </para>
+     <para>
+        <guilabel>「設定」</guilabel>ダイアログには、次のタブ付きセクションがあります。
+     </para>
+     <itemizedlist>
+        <listitem>
+          <para>
+             <xref linkend="command-line-prefs-1"/>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+             <xref linkend="command-line-prefs-2"/>
+          </para>
+        </listitem>
+     </itemizedlist>
+     
+     <sect2 id="command-line-prefs-1"> 
+     
+        <title>一般</title>
+        
+        <variablelist>
+		<varlistentry>
+		<term><guilabel>「ハンドルを表示」</guilabel> </term>
+		<listitem>
+		<para>このオプションを選択すると、アプレットの端にハンドルが取り付けられます。このハンドルを使用すると、<application>コマンドライン</application>をデスクトップの任意の場所に移動できます。</para>
+		<para>初期値:選択解除</para>
+		</listitem>
+		</varlistentry>
+		<varlistentry>
+		<term><guilabel>「フレームを表示」</guilabel> </term>
+		<listitem>
+		<para>このオプションを選択すると、<application>コマンドライン</application>の周りにフレームが表示されます。</para>
+		<para>初期値:選択解除</para>
+		</listitem>
+		</varlistentry>
+		<varlistentry>
+		<term><guilabel>「履歴による自動補完を使用する」</guilabel> </term>
+		<listitem>
+		<para id="autocompletion">このオプションを選択すると、<application>コマンドライン</application>は<guilabel>「入力」フィールド</guilabel>と履歴リストを比較して、一致が見つかった場合、コマンドを補完します。</para>
+		<para>初期値:選択</para>
+		</listitem>
+		</varlistentry>
+		<varlistentry>
+		<term><guilabel>「アプレットの幅」</guilabel> </term>
+		<listitem>
+		<para>このスピンボックスを使用すると、アプレットの幅 (ピクセル) を指定できます。</para>
+		<para>初期値: 150 ピクセル</para>
+		</listitem>
+		</varlistentry>
+		<varlistentry>
+		<term><guilabel>「デフォルトテーマ色を使用」</guilabel> </term>
+		<listitem>
+		<para>このオプションを選択すると、デフォルトの GNOME テーマの色を使用します。</para>
+		<para>初期値:選択</para>
+		</listitem>
+		</varlistentry>
+		<varlistentry>
+		<term><guilabel>「コマンド行前景色」</guilabel> </term>
+		<listitem>
+		<para>このボタンをクリックすると、コマンドラインのテキスト用の色を選択できます。<guilabel>「デフォルトテーマ色を使用」</guilabel>チェックボタンを選択している場合、このボタンは使用できません。</para>
+		<para>初期値:白</para>
+		</listitem>
+		</varlistentry>
+		<varlistentry>
+		<term><guilabel>「コマンド行背景色」</guilabel> </term>
+		<listitem>
+		<para>このボタンをクリックすると、<guilabel>「入力」フィールド</guilabel>の背景用の色を選択できます。<guilabel>「デフォルトテーマ色を使用」</guilabel>チェックボタンを選択している場合、このボタンは使用できません。</para>
+		<para>初期値:黒</para>
+		</listitem>
+		</varlistentry>	
+	</variablelist>
+        
+     </sect2>
+     
+     <sect2 id="command-line-prefs-2"> 
+        <title>マクロ</title>
+        <para>
+          このタブ付きセクションには、<application>コマンドライン</application>で使用できるマクロのリストが入っています。このリストでは、次の内容について説明します。
+          <itemizedlist>
+             <listitem>
+                <para>
+                  UNIX 正規表現のリスト (左側の欄)
+                </para>
+                <para>
+                 正規表現とは、文字列を一致させるときに使用する文字または数字のパターンのことです。正規表現を使用する詳細な方法については、<command>regex</command> のマニュアルページを参照してください。
+                </para>
+             </listitem>
+             <listitem>
+                <para><application>コマンドライン</application>アプレットはマクロのリスト (右側の欄)
+                </para>
+                <para>
+                  <application>コマンドライン</application>の<guilabel>「入力」フィールド</guilabel>に入力したコマンドと正規表現が一致した場合、対応するマクロが実行されます。マクロとは、正規表現で解析されるパラメータをとることができるコマンドのことです。
+                </para>
+             </listitem>
+          </itemizedlist>どのような正規表現およびマクロも追加または変更できます。
+        </para>
+     </sect2>
+  </sect1>
+</article>

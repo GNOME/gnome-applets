@@ -1,0 +1,379 @@
+<?xml version="1.0"?><!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+"http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY legal SYSTEM "legal.xml">
+  <!ENTITY appletversion "1.104.0">
+  <!ENTITY manrevision "2.2">
+  <!ENTITY date "August 2002">
+  <!ENTITY applet "Command Line">
+]>
+<!-- 
+      (Do not remove this comment block.)
+  Maintained by the GNOME Documentation Project
+  http://developer.gnome.org/projects/gdp 
+  Template version: 2.0 beta
+  Template last modified Feb 12, 2002
+  
+-->
+<!-- =============Document Header ============================= -->
+<article id="index" lang="zh_tw">
+<!-- please do not change the id; for translations, change lang to -->
+<!-- appropriate code -->
+  <articleinfo>
+     <title>&applet; Applet 手冊 V&manrevision;</title>
+     <copyright> 
+        <year>2002</year> 
+        <holder>Sun Microsystems</holder> 
+     </copyright> 
+     <copyright> 
+        <year>1998</year> 
+        <holder>Oliver Maruhn</holder> 
+     </copyright>
+<!-- translators: uncomment this:
+
+  <copyright>
+   <year>2002</year>
+   <holder>ME-THE-TRANSLATOR (Latin translation)</holder>
+  </copyright>
+
+   -->
+<!-- An address can be added to the publisher information.  If a role is 
+     not specified, the publisher/author is the same for all versions of the 
+     document.  -->
+     <publisher> 
+        <publishername> GNOME 文件專案 </publishername> 
+     </publisher> &legal;
+<!-- This file  contains link to license for the documentation (GNU FDL), and 
+     other legal stuff such as "NO WARRANTY" statement. Please do not change 
+     any of this. -->
+     <authorgroup>
+        <author>
+          <firstname>Sun </firstname> 
+          <surname>GNOME 文件小組</surname> 
+          <affiliation> 
+             <orgname>Sun Microsystems</orgname> 
+             <address> <email>gdocteam@sun.com</email> </address>
+          </affiliation>
+        </author>
+        <author> 
+          <firstname>Oliver </firstname> 
+          <surname> Maruhn</surname> 
+          <affiliation> 
+             <orgname>GNOME 文件專案</orgname> 
+             <address> <email>oliver@maruhn.com</email> </address>
+          </affiliation>
+        </author>
+      <!-- This is appropriate place for other contributors: translators,
+           maintainers,  etc. Commented out by default.
+           <othercredit role="translator">
+         <firstname>Latin</firstname> 
+         <surname>Translator 1</surname> 
+         <affiliation> 
+           <orgname>Latin Translation Team</orgname> 
+           <address> <email>translator@gnome.org</email> </address> 
+         </affiliation>
+         <contrib>Latin translation</contrib>
+           </othercredit>
+-->
+     </authorgroup>
+     <revhistory>
+        <revision> 
+          <revnumber>&applet; Applet 手冊 V&manrevision;</revnumber> 
+          <date>&date;</date> 
+          <revdescription> 
+             <para role="author">
+                Sun Microsystems <email>gdocteam@sun.com</email>
+             </para>
+             <para role="publisher">
+                GNOME 文件專案
+             </para>
+          </revdescription>
+        </revision>
+        <revision> 
+          <revnumber>指令行 Applet 手冊 V2.1</revnumber> 
+          <date>2002 年 7 月</date> 
+          <revdescription> 
+             <para role="author">
+                Sun Microsystems <email>gdocteam@sun.com</email>
+             </para>
+             <para role="publisher">
+                GNOME 文件專案
+             </para>
+          </revdescription>
+        </revision>
+        <revision> 
+          <revnumber>指令行 Applet 手冊 V2.0</revnumber> 
+          <date>2002 年 3 月</date> 
+          <revdescription> 
+             <para role="author">
+                Sun Microsystems <email>gdocteam@sun.com</email>
+             </para>
+             <para role="publisher">
+                GNOME 文件專案
+             </para>
+          </revdescription>
+        </revision>
+        <revision> 
+          <revnumber>迷你指令行 Applet 手冊</revnumber> 
+          <date>1998</date> 
+          <revdescription> 
+             <para role="author">
+                Oliver Maruhn <email>oliver@maruhn.com</email>
+             </para>
+             <para role="publisher">
+                GNOME 文件專案
+             </para>
+             <para role="author">
+                Dan Mueth <email>d-mueth@uchicago.edu</email>
+             </para>
+             <para role="publisher">
+                GNOME 文件專案
+             </para>
+          </revdescription>
+        </revision>
+     </revhistory>
+     <releaseinfo>本手冊的內容是說明 &appletversion; 版的 &applet;。
+        </releaseinfo>
+     <legalnotice><title>回饋</title>
+        <para>關於本 &applet; applet 或本手冊，如果要報告錯誤或提出建議，請遵照 <ulink url="ghelp:gnome-feedback" type="help">GNOME Feedback Page</ulink> 的指示。 
+        </para>
+     </legalnotice>
+  </articleinfo>
+  <indexterm zone="index"><primary>指令行</primary> 
+  </indexterm><indexterm zone="index"><primary>指令行 applet</primary></indexterm><!-- ============= Introduction =====-->  <sect1 id="command-line-introduction"><title>介紹</title>
+     
+     <!-- ==== Figure ==================-->
+     <figure id="applet-fig"><title>&applet; Applet</title>
+        <screenshot>
+          <mediaobject>
+             <imageobject><imagedata fileref="figures/command-line.png"                 format="PNG"/> 
+             </imageobject>
+             <textobject>
+                <phrase>顯示 &applet; Applet。</phrase>
+             </textobject>
+          </mediaobject>
+        </screenshot>
+     </figure>
+     <para>您可以在桌面上的任何面板內，使用 <application>&applet;</application> Applet 所提供的指令行。 </para>
+        <para>如果要將 <application>&applet;</application> 加入面板，請在面板上按滑鼠右鍵，然後選擇<menuchoice><guimenu>加入面板</guimenu><guisubmenu>公用程式</guisubmenu><guimenuitem>&applet;</guimenuitem>       </menuchoice>。
+     </para>
+     <para><application>&applet;</application> 含有下列互動式元素：   </para>
+        
+        <variablelist>
+          <varlistentry><term><guilabel>輸入欄位</guilabel></term><listitem>
+                <para>您可以在<guilabel>輸入欄位</guilabel>中，輸入指令、巨集以及程式。
+                </para>
+             </listitem>
+          </varlistentry>
+          <varlistentry><term><guilabel>瀏覽按鈕</guilabel></term><listitem>
+                <para>使用<guibutton>瀏覽按鈕</guibutton>，您可以在檔案系統中   找尋程式。實心的圓形圖示便是<guibutton>瀏覽按鈕</guibutton>。
+                </para>
+             </listitem>
+          </varlistentry>
+          <varlistentry><term><guibutton>歷史按鈕</guibutton></term><listitem>
+                <para>使用<guibutton>歷史按鈕</guibutton>，您可以叫出之前的指令
+記錄。 向下的箭頭圖示，代表的便是<guibutton>歷史按鈕</guibutton>。
+                </para>
+             </listitem>
+          </varlistentry>
+        </variablelist>
+        
+        <para><application>&applet;</application> 提供了下列功能：   </para>
+        
+        <variablelist>
+          <varlistentry><term>之前執行過指令的歷史清單</term><listitem>
+                <para>您可以由歷史清單的顯示中，直接選取指令執行。
+您也可以在<guilabel>輸入欄位</guilabel>中，循環地顯示歷史清單的內容，然後執行指令。 即使您先將 <application>&applet;</application> 從面板中移除，在其後的作業階段又再把 applet 加入其他面板， 歷史清單中仍會保留之前的指令。 如果歷史清單中的指令超過 20 個，便會出現垂直的捲動軸。
+                </para>
+             </listitem>
+          </varlistentry>
+          <varlistentry><term>以歷史為基礎的自動補齊指令功能</term><listitem>
+                <para><application> &applet;</application> 可以利用以歷史清單為基礎的自動補齊指令功能，補齊<guilabel>輸入欄位</guilabel>中的指令。這個功能會先將歷史清單中的內容，與<guilabel>輸入欄位</guilabel>中的內容相比較。如果 <application>&applet;</application> 在兩者間找到相符的指令，Applet 就會補齊該指令的名稱。
+                </para>
+             </listitem>
+          </varlistentry>
+          <varlistentry><term>使用者可要求的補齊指令功能</term>
+             <listitem>
+                <para>這個補齊指令功能會將<guilabel>輸入欄位</guilabel>中的字串，與使用者路徑中的指令相比較。
+如果您不知道某個指令確切的字元順序或是拼法，就可以好好利用這個補齊指令功能。在鍵入指令名稱的前幾個字母後，請按一下 <keycap>Tab</keycap> 鍵。 如果 <application>&applet;</application> 認得這個指令為某個特定指令時，Applet 就會自動將指令名稱補齊至完整。
+                </para>
+             </listitem>
+          </varlistentry>
+          <varlistentry><term>巨集工具</term>
+             <listitem>
+                <para>巨集工具最多可以提供高達 99 種的捷徑指令。 除了預先定義的指令，您還可以建立用於 <application>&applet;</application> 的自訂指令。
+                </para>
+             </listitem>
+          </varlistentry>
+        </variablelist>
+  </sect1>
+<!-- ================ Usage =======-->
+  <sect1 id="command-line-usage"><title>使用</title>
+     
+     <sect2 id="command-line-run"><title>由輸入欄位中執行指令</title>
+        <para>如果要從<guilabel>輸入欄位</guilabel>中執行指令，請執行下列步驟：
+        </para>
+        <orderedlist>
+          <listitem>
+             <para>在<guilabel>輸入欄位</guilabel>中鍵入指令。 
+             </para>
+          </listitem>
+          <listitem>
+             <para>如果需要的話，您可以要求 <application>&applet; </application> 幫您補齊指令名稱。 按一下 <keycap>Tab</keycap> 鍵可以指示程式幫您補齊。
+             </para>
+          </listitem>
+          <listitem>
+             <para>在<guilabel>輸入欄位</guilabel>中，鍵入任何您想要與指令一起執行的選項。 
+             </para>
+          </listitem>
+          <listitem>
+             <para>按一下 <keycap>Return</keycap>。
+             </para>
+          </listitem>
+        </orderedlist>
+        <para>如果已經選取了<xref linkend="autocompletion"/>選項，則在步驟 1 到 3 中，<application>&applet;</application> 會在歷史清單中搜尋是否有符合的項目。如果有與歷史清單符合的指令，<application>&applet;</application> 就會補齊該指令之名稱。如果要接受該指令，請按一下 <keycap>Return</keycap> 鍵。 或者，如果該指令並非您想要執行的指令，請繼續在<guilabel>輸入欄位</guilabel>中，鍵入更多字元。
+        </para>
+     </sect2>
+     <sect2 id="command-line-runmacro"><title>由輸入欄位中執行巨集</title>
+        <para>如果要執行 <application>&applet;</application> <xref linkend="command-line-prefs-2"/>清單中所定義的巨集，請在<guilabel>輸入欄位</guilabel>中鍵入巨集，然後按一下<keycap>Return</keycap> 鍵。        </para>
+        <para><xref linkend="autocompletion"/> 功能也可以用於巨集。         </para>
+        <para>下面便是一些 <application>&applet;</application> 的巨集範例：
+        </para>
+        <informaltable frame="none">
+          <tgroup cols="2" colsep="0" rowsep="0"><colspec              colwidth="29.29*"/><colspec colwidth="70.71*"/> 
+             <tbody>
+                <row valign="top">
+                  <entry>
+                     <para><userinput>t</userinput></para>
+                  </entry>
+                  <entry>
+                     <para>啟動 GNOME 終端機。
+                     </para>
+                  </entry>
+                </row>
+                <row valign="top">
+                  <entry>
+                     <para><userinput>n</userinput></para>
+                  </entry>
+                  <entry>
+                     <para>啟動 Netscape 瀏覽器。
+                     </para>
+                  </entry>
+                </row>
+                <row valign="top">
+                  <entry>
+                     <para><userinput>dictionary</userinput></para>
+                  </entry>
+                  <entry>
+                     <para>啟動 Netscape 瀏覽器後，會顯示字典搜尋頁面。
+                     </para>
+                  </entry>
+                </row>
+             </tbody>
+          </tgroup>
+        </informaltable>
+     </sect2>
+     <sect2 id="command-line-filesys"><title>由檔案系統中執行程式</title>
+        <para>在<guibutton>瀏覽按鈕</guibutton>上按一下，顯示檔案系統，然後在想要執行的程式上連按兩下。
+        </para>
+        <para>您可以使用 <application>&applet;</application>，由檔案系統執行程序檔、可執行的檔案，或其他程式。 
+        </para>
+     </sect2>
+     <sect2 id="command-line-histlist"><title>由 History List (歷史清單) 中執行之前的指令、巨集或程式</title>
+        <para>您可以使用下列任一項方法，由歷史清單中，執行之前執行過的指令、巨集或程式：
+          <itemizedlist>
+             <listitem>
+                <para>按一下<guibutton>歷史</guibutton>按鈕，顯示歷史清單。按一下歷史清單中的項目，執行您想要執行的指令、巨集，或是程式。
+                </para>
+             </listitem>
+             <listitem>
+                <para>按一下<guilabel>輸入欄位</guilabel>，然後使用鍵盤的向上或向下箭頭，在歷史清單中循環瀏覽。如果<guilabel>輸入欄位</guilabel>中顯示的歷史清單項目，
+是您所想要執行的指令、巨集，或是程式，請按一下 <keycap>Return</keycap> 鍵。
+                </para>
+             </listitem>
+          </itemizedlist>
+        </para>
+     </sect2>
+  </sect1>
+<!-- ============= Preferences ============================= -->
+  <sect1 id="command-line-prefs-0"><title>個人喜好</title>
+     <para>如果要配置 <application>&applet;</application>，請在
+互動式元素之外的 Applet 上按滑鼠右鍵，然後選擇<guimenuitem>個人喜好</guimenuitem>。
+     </para>
+     <para>在<guilabel>個人喜好</guilabel> 對話方塊中，含有下列標籤區段：
+     </para>
+     <itemizedlist>
+        <listitem>
+          <para><xref linkend="command-line-prefs-1"/>
+          </para>
+        </listitem>
+        <listitem>
+          <para><xref linkend="command-line-prefs-2"/>
+          </para>
+        </listitem>
+     </itemizedlist>
+     
+     <sect2 id="command-line-prefs-1"><title>一般</title>
+        
+        <variablelist>
+		<varlistentry><term><guilabel>顯示控點</guilabel> </term><listitem>
+		<para>選取這個選項，可以在 Applet 的邊緣上附加控點。 您可以使用控點，將 <application>&applet;</application> 顯示拖曳到桌面的任何位置。</para>
+		<para>預設值：未選取。</para>
+		</listitem>
+		</varlistentry>
+		<varlistentry><term><guilabel>顯示框架</guilabel> </term><listitem>
+		<para>選取這個選項，可以將 <application>&applet;</application> 顯示在框架內。</para>
+		<para>預設值：未選取。</para>
+		</listitem>
+		</varlistentry>
+		<varlistentry><term><guilabel>啟用以歷史清單為基礎的自動補齊功能</guilabel></term>
+		<listitem>
+		<para id="autocompletion">選取這個選項，可以要求讓 <application>&applet;</application> 比較<guilabel>輸入欄位</guilabel>與歷史清單，並在有相符的情形出現時，將指令補齊。 </para>
+		<para>預設值：已選取。</para>
+		</listitem>
+		</varlistentry>
+		<varlistentry><term><guilabel>Applet 寬度</guilabel> </term>
+		<listitem>
+		<para>使用這個旋轉方塊，可以指定 Applet 的寬度 (以像素計)。</para>
+		<para>預設值：150 像素。</para>
+		</listitem>
+		</varlistentry>
+		<varlistentry><term><guilabel>使用預設的主題顏色</guilabel> </term>
+<listitem>
+		<para>選取這個選項，會使用 GNOME 預設主題的顏色。</para>
+		<para>預設值：已選取。</para>
+		</listitem>
+		</varlistentry>
+		<varlistentry><term><guilabel>指令行前景色</guilabel> </term><listitem>
+		<para>按一下這個按鈕，指定指令行文字的顏色。 如果已經選取<guilabel>使用預設的主題顏色</guilabel>核取方塊，這個按鈕就為不可用狀態。</para>
+		<para>預設值：白色。</para>
+		</listitem>
+		</varlistentry>
+		<varlistentry><term><guilabel>指令行背景色</guilabel></term>		<listitem>
+		<para>按一下這個按鈕，指定<guilabel>輸入欄位</guilabel>背景的顏色。如果已經選取<guilabel>使用預設的主題顏色</guilabel>核取方塊，這個按鈕就為不可用狀態。</para>
+		<para>預設值：黑色。</para>
+		</listitem>
+		</varlistentry>	
+	</variablelist>
+        
+     </sect2>
+     
+     <sect2 id="command-line-prefs-2"><title>巨集</title>
+        <para>這個標籤區段中，含有您可以在 <application>&applet;</application> 使用的巨集清單。 清單中含有下列資訊：
+          <itemizedlist>
+             <listitem>
+                <para>左邊欄位為 UNIX 正規表示式的清單。 
+                </para>
+                <para>正規表示式是字元或數字的一種樣式，可以用來比對字串。 請參閱 <command>regex</command> 線上援助頁，以取得如何建構正規表示式的進一步資訊。 
+                </para>
+             </listitem>
+             <listitem>
+                <para>右邊欄位為巨集的清單。 
+                </para>
+                <para>如果您在 <application>&applet;</application> <guilabel>輸入欄位</guilabel>中鍵入的指令，能夠與巨集中相對應的表示式符合，該巨集便會執行。巨集是一組指令，可以接受由正規表示式所剖析的參數。
+                </para>
+             </listitem>
+          </itemizedlist> 您可以將任何的正規表示式或巨集加以增添或修改。
+        </para>
+     </sect2>
+  </sect1>
+</article>
