@@ -20,7 +20,7 @@
 
 #include "popcheck.h"
 
-#define TIMEOUT 5
+#define TIMEOUT 120
 static int get_server_port(const char *);
 static char* get_server_hostname(const char *);
 static int connect_socket(const char *, int);
@@ -113,6 +113,7 @@ static char *read_line(int s)
   int m = sizeof(response);
   
   c = response;
+
   while (m--)
    {
     char ch;
@@ -162,12 +163,12 @@ static int write_line(int s, char *p)
 
 static int is_pop3_answer_ok(const char *p)
  {
-  if (p) 
+  if (p)
    if (p[0] == '+') return 1;
-  
+
   return 0;
  }
- 
+
 int pop3_check(const char *h, const char* n, const char* e)
 {
   int s;
