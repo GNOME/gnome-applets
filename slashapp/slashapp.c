@@ -121,9 +121,8 @@ static void about_cb(AppletWidget *widget, gpointer data)
 	const gchar *authors[5];
 	gchar version[32];
 
-	sprintf(version, 32, _("%d %d %d"), APPLET_VERSION_MAJ,
-	APPLET_VERSION_MIN, APPLET_VERSION_REV);
-
+	sprintf(version, _("%d.%d.%d"), APPLET_VERSION_MAJ, 
+			APPLET_VERSION_MIN, APPLET_VERSION_REV);
 	authors[0] = _("Justin Maurer <justin@slashdot.org>");
 	authors[1] = _("John Ellis <johne@bellatlantic.net>");
 	authors[2] = _("Craig Small <csmall@eye-net.com.au>");
