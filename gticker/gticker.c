@@ -140,7 +140,7 @@ static int get_current_headlines(gpointer data)
   fwrite(ghttp_get_body(req), ghttp_get_body_len(req), 1, gticker_file);
   fclose(gticker_file);
   ghttp_close(req);
-  ghttp_request_destroy(req);
+  ghttp_clean(req);
 
   if ((gticker_file = fopen(filename, "r")) == NULL) {
 	fprintf(stderr, "Failed to open file \"%s\": %s\n", filename,
@@ -175,7 +175,7 @@ static int get_current_headlines(gpointer data)
   fwrite(ghttp_get_body(req), ghttp_get_body_len(req), 1, splash_file);
   fclose(splash_file);
   ghttp_close(req);
-  ghttp_request_destroy(req);
+  ghttp_clean(req);
   g_print("This suxxors\n");
 
   if ((splash_file = fopen(splashfilename, "r")) == NULL) {
@@ -198,7 +198,8 @@ static int get_current_headlines(gpointer data)
   g_print("5\n");
   fclose(splash_file); 
   g_print("6\n");
-    
+  if (req)
+    ghttp_request_destroy(req);
   return TRUE;
 }
 
