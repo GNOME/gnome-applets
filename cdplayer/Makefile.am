@@ -27,6 +27,7 @@ led.h \
 reader-solaris.h \
 writer-solaris.h \
 cdda-solaris.h \
+inlinepixbufs.h \
 cdrom-@CDROM_HOST@.c \
 $(CDROM_CDDA_SRCS)
 
