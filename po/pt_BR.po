@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 2.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-08-28 20:07+0200\n"
-"PO-Revision-Date: 2003-09-03 15:28-0300\n"
+"POT-Creation-Date: 2003-10-18 02:42+0200\n"
+"PO-Revision-Date: 2003-10-20 12:37-0200\n"
 "Last-Translator: Gustavo Noronha Silva <kov@debian.org>\n"
 "Language-Team: GNOME-BR <gnome-l10n-br@listas.cipsga.org.br>\n"
 "MIME-Version: 1.0\n"
@@ -40,6 +40,7 @@ msgstr "_Sobre..."
 #: mini-commander/src/GNOME_MiniCommanderApplet.xml.h:2
 #: mixer/GNOME_MixerApplet.xml.h:2 modemlights/GNOME_ModemlightsApplet.xml.h:2
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:3
+#: wireless/GNOME_WirelessApplet.xml.h:2
 msgid "_Help"
 msgstr "_Ajuda"
 
@@ -76,14 +77,14 @@ msgstr "Mostra o estado das funções de acessibilidade do teclado"
 msgid "Utility"
 msgstr "Utilitário"
 
-#: accessx-status/applet.c:135 battstat/battstat_applet.c:839
-#: cdplayer/cdplayer.c:575 charpick/charpick.c:582 drivemount/drivemount.c:510
-#: geyes/geyes.c:228 gkb-new/gkb-applet.c:84 gtik/gtik.c:774
+#: accessx-status/applet.c:135 battstat/battstat_applet.c:844
+#: cdplayer/cdplayer.c:580 charpick/charpick.c:584 drivemount/drivemount.c:510
+#: geyes/geyes.c:228 gkb-new/gkb-applet.c:84 gtik/gtik.c:775
 #: gweather/gweather-about.c:44 mailcheck/mailcheck.c:2435
 #: mini-commander/src/about.c:48 mixer/mixer.c:1060
 #: modemlights/modemlights.c:115 multiload/main.c:57
-#: stickynotes/stickynotes_applet_callbacks.c:178
-#: wireless/wireless-applet.c:528
+#: stickynotes/stickynotes_applet_callbacks.c:191
+#: wireless/wireless-applet.c:560
 msgid "translator_credits"
 msgstr ""
 "Traduzido por: \n"
@@ -124,7 +125,7 @@ msgstr "Mostra o estado atual das funções de acessibilidade do teclado"
 
 #. The long name of the applet in the About dialog.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:852
+#: battstat/battstat_applet.c:857
 msgid "Battery Charge Monitor"
 msgstr "Monitor de Carga de Bateria"
 
@@ -148,7 +149,7 @@ msgstr "Monitorar a energia restante do laptop"
 #: mixer/GNOME_MixerApplet.xml.h:5 modemlights/GNOME_ModemlightsApplet.xml.h:3
 #: multiload/GNOME_MultiloadApplet.xml.h:3
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:6
-#: wireless/GNOME_WirelessApplet.xml.h:2
+#: wireless/GNOME_WirelessApplet.xml.h:3
 msgid "_Preferences..."
 msgstr "_Preferências..."
 
@@ -223,7 +224,8 @@ msgstr "O nível da bateria abaixo do qual a bateria é mostrada na cor laranja.
 
 #: battstat/battstat.schemas.in.h:17
 msgid "The battery level below which the battery is displayed as red."
-msgstr "O nível da bateria abaixo do qual a bateria é mostrada na cor vermelha."
+msgstr ""
+"O nível da bateria abaixo do qual a bateria é mostrada na cor vermelha."
 
 #: battstat/battstat.schemas.in.h:18
 msgid "The battery level below which the battery is displayed as yellow."
@@ -248,23 +250,23 @@ msgstr "O miniaplicativo não funcionará corretamente (se funcionar).\n"
 #. The following four messages will be displayed as tooltips over
 #. the battery meter.
 #. High = The APM BIOS thinks that the battery charge is High.
-#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:883
+#: battstat/battstat_applet.c:318 battstat/battstat_applet.c:888
 msgid "High"
 msgstr "Alta"
 
 # SUN NEW TRANSLATION
 #. Low = The APM BIOS thinks that the battery charge is Low.
-#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:885
+#: battstat/battstat_applet.c:320 battstat/battstat_applet.c:890
 msgid "Low"
 msgstr "Fraca"
 
 #. Critical = The APM BIOS thinks that the battery charge is Critical.
-#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:887
+#: battstat/battstat_applet.c:322 battstat/battstat_applet.c:892
 msgid "Critical"
 msgstr "Crítica"
 
 #. Charging = The APM BIOS thinks that the battery is recharging.
-#: battstat/battstat_applet.c:324 battstat/battstat_applet.c:889
+#: battstat/battstat_applet.c:324 battstat/battstat_applet.c:894
 msgid "Charging"
 msgstr "Carregando"
 
@@ -282,7 +284,7 @@ msgstr "A Bateria totalmente carregada."
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:448 battstat/battstat_applet.c:1047
+#: battstat/battstat_applet.c:448 battstat/battstat_applet.c:1052
 #, c-format
 msgid ""
 "System is running on battery power\n"
@@ -295,7 +297,7 @@ msgstr ""
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power and the battery meter
 #. and percent meter is hidden by the user.
-#: battstat/battstat_applet.c:452 battstat/battstat_applet.c:1055
+#: battstat/battstat_applet.c:452 battstat/battstat_applet.c:1060
 #, c-format
 msgid ""
 "System is running on AC power\n"
@@ -307,16 +309,16 @@ msgstr ""
 # SUN NEW TRANSLATION
 #. This string will display as a tooltip over the status frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:458 battstat/battstat_applet.c:979
-#: battstat/battstat_applet.c:1068
+#: battstat/battstat_applet.c:458 battstat/battstat_applet.c:984
+#: battstat/battstat_applet.c:1073
 msgid "System is running on battery power"
 msgstr "O sistema está funcionando com bateria"
 
 # SUN NEW TRANSLATION
 #. This string will display as a tooltip over the status frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:461 battstat/battstat_applet.c:985
-#: battstat/battstat_applet.c:1074
+#: battstat/battstat_applet.c:461 battstat/battstat_applet.c:990
+#: battstat/battstat_applet.c:1079
 msgid "System is running on AC power"
 msgstr "O sistema está funcionando com energia CA"
 
@@ -328,7 +330,7 @@ msgstr "N/A"
 # SUN NEW TRANSLATION
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using battery power.
-#: battstat/battstat_applet.c:599 battstat/battstat_applet.c:959
+#: battstat/battstat_applet.c:599 battstat/battstat_applet.c:964
 #, c-format
 msgid "System is running on battery power. Battery: %d%% (%s)"
 msgstr "O sistema está funcionando com bateria. Bateria: %d%% (%s)"
@@ -336,7 +338,7 @@ msgstr "O sistema está funcionando com bateria. Bateria: %d%% (%s)"
 # SUN NEW TRANSLATION
 #. This string will display as a tooltip over the battery frame
 #. when the computer is using AC power.
-#: battstat/battstat_applet.c:606 battstat/battstat_applet.c:966
+#: battstat/battstat_applet.c:606 battstat/battstat_applet.c:971
 #, c-format
 msgid "System is running on AC power. Battery: %d%% (%s)"
 msgstr "O sistema está funcionando com energia CA. Bateria: %d%% (%s)"
@@ -376,7 +378,7 @@ msgstr "Bateria: Ausente"
 
 # SUN NEW TRANSLATION
 #. Displayed if the APM device couldn't be opened. (Used under *BSD)
-#: battstat/battstat_applet.c:722
+#: battstat/battstat_applet.c:727
 msgid ""
 "Can't open the APM device!\n"
 "\n"
@@ -390,7 +392,7 @@ msgstr ""
 
 # SUN NEW TRANSLATION
 #. Displayed if the APM system is disabled (Used under *BSD)
-#: battstat/battstat_applet.c:731
+#: battstat/battstat_applet.c:736
 msgid ""
 "The APM Management subsystem seems to be disabled.\n"
 "Try executing \"apm -e 1\" (FreeBSD) and see if \n"
@@ -401,7 +403,7 @@ msgstr ""
 "isso ajuda.\n"
 
 # SUN NEW TRANSLATION
-#: battstat/battstat_applet.c:787
+#: battstat/battstat_applet.c:792
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command: %s\n"
@@ -412,7 +414,7 @@ msgstr ""
 
 # SUN NEW TRANSLATION
 #. Probably because the shell_ret is != 0
-#: battstat/battstat_applet.c:790
+#: battstat/battstat_applet.c:795
 #, c-format
 msgid ""
 "An error occured while launching the Suspend command, the command returned "
@@ -423,7 +425,7 @@ msgstr ""
 "Tente corrigir o erro"
 
 # SUN NEW TRANSLATION
-#: battstat/battstat_applet.c:798
+#: battstat/battstat_applet.c:803
 msgid ""
 "Suspend command wasn't setup correctly in the preferences.\n"
 "Please change the preferences and try again."
@@ -433,16 +435,16 @@ msgstr ""
 
 #. if your charset supports it, please replace the "o" in
 #. * "Jorgen" into U00F6
-#: battstat/battstat_applet.c:829
+#: battstat/battstat_applet.c:834
 msgid "Jorgen Pehrson <jp@spektr.eu.org>"
 msgstr "Jorgen Pehrson <jp@spektr.eu.org>"
 
-#: battstat/battstat_applet.c:854
+#: battstat/battstat_applet.c:859
 msgid "(C) 2000 The Gnulix Society, (C) 2002 Free Software Foundation"
 msgstr "© 2000 The Gnulix Society, © 2002 Free Software Foundation"
 
 # SUN NEW TRANSLATION
-#: battstat/battstat_applet.c:855
+#: battstat/battstat_applet.c:860
 msgid "This utility shows the status of your laptop battery."
 msgstr "Esse utilitário mostra o estado da bateria do seu laptop."
 
@@ -484,7 +486,7 @@ msgstr "<b>Suspender</b>"
 msgid "<b>Warnings</b>"
 msgstr "<b>Avisos</b>"
 
-#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1522
+#: battstat/battstat_applet.glade.h:11 gtik/gtik.c:1523
 msgid "Appearance"
 msgstr "Aparência"
 
@@ -494,7 +496,7 @@ msgstr "Preferências do Monitor de Carga de Bateria"
 
 #: battstat/battstat_applet.glade.h:13 drivemount/properties.c:349
 #: gweather/gweather-pref.c:761 mailcheck/mailcheck.c:2026
-#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:553
+#: mini-commander/src/mini-commander.glade.h:13 modemlights/properties.c:552
 msgid "General"
 msgstr "Geral"
 
@@ -553,7 +555,9 @@ msgstr "_Amarelo:"
 #: battstat/properties.c:296 drivemount/drivemount.c:468
 #: drivemount/properties.c:589 mailcheck/mailcheck.c:2291
 #: mailcheck/mailcheck.c:2540 mini-commander/src/preferences.c:393
-#: mixer/mixer.c:1167
+#: mixer/mixer.c:1167 stickynotes/stickynotes_applet_callbacks.c:169
+#: stickynotes/stickynotes_applet_callbacks.c:317
+#: wireless/wireless-applet.c:535 wireless/wireless-applet.c:609
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Houve um erro exibindo a ajuda: %s"
@@ -571,8 +575,8 @@ msgstr "A Bateria está totalmente carregada."
 msgid "Battery power low"
 msgstr "A Carga da Bateria está Baixa"
 
-#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:593
-#: cdplayer/cdplayer.c:1041
+#: cdplayer/GNOME_CDPlayerApplet.server.in.in.h:1 cdplayer/cdplayer.c:598
+#: cdplayer/cdplayer.c:1046
 msgid "CD Player"
 msgstr "Toca-CD"
 
@@ -599,26 +603,26 @@ msgstr "Miniaplicativo de painel para reprodução de CDs de áudio"
 msgid "_Open CD Player"
 msgstr "_Abrir Toca-CD"
 
-#: cdplayer/cdplayer.c:171 cdplayer/cdplayer.c:1031
+#: cdplayer/cdplayer.c:171 cdplayer/cdplayer.c:1036
 msgid "Stop"
 msgstr "Parar"
 
 # SUN NEW TRANSLATION
-#: cdplayer/cdplayer.c:175 cdplayer/cdplayer.c:1033
+#: cdplayer/cdplayer.c:175 cdplayer/cdplayer.c:1038
 msgid "Play / Pause"
 msgstr "Reproduzir / Pausar"
 
-#: cdplayer/cdplayer.c:179 cdplayer/cdplayer.c:1035
+#: cdplayer/cdplayer.c:179 cdplayer/cdplayer.c:1040
 msgid "Eject"
 msgstr "Ejetar"
 
 # SUN NEW TRANSLATION
-#: cdplayer/cdplayer.c:183 cdplayer/cdplayer.c:1037
+#: cdplayer/cdplayer.c:183 cdplayer/cdplayer.c:1042
 msgid "Previous Track"
 msgstr "Trilha Anterior"
 
 # SUN NEW TRANSLATION
-#: cdplayer/cdplayer.c:187 cdplayer/cdplayer.c:1039
+#: cdplayer/cdplayer.c:187 cdplayer/cdplayer.c:1044
 msgid "Next Track"
 msgstr "Próxima Trilha"
 
@@ -626,38 +630,38 @@ msgstr "Próxima Trilha"
 msgid "You do not have permission to use the CD player."
 msgstr "Você não tem permissão para usar o Toca-CD."
 
-#: cdplayer/cdplayer.c:357 mixer/mixer.c:1026 multiload/main.c:118
+#: cdplayer/cdplayer.c:362 mixer/mixer.c:1026 multiload/main.c:118
 #, c-format
 msgid "There was an error executing '%s': %s"
 msgstr "Houve um erro ao executar '%s': %s"
 
-#: cdplayer/cdplayer.c:408
+#: cdplayer/cdplayer.c:413
 #, c-format
 msgid "%s does not seem to be a CD player"
 msgstr "%s não parece ser um Toca-CD"
 
-#: cdplayer/cdplayer.c:474
+#: cdplayer/cdplayer.c:479
 msgid "CD Player Preferences"
 msgstr "Preferências do Toca-CD"
 
-#: cdplayer/cdplayer.c:495
+#: cdplayer/cdplayer.c:500
 msgid "Device _path:"
 msgstr "_Caminho do dispositivo:"
 
-#: cdplayer/cdplayer.c:504
+#: cdplayer/cdplayer.c:509
 msgid "Device Path"
 msgstr "Caminho do Dispositivo"
 
 # SUN NEW TRANSLATION
-#: cdplayer/cdplayer.c:504
+#: cdplayer/cdplayer.c:509
 msgid "Set the device path here"
 msgstr "Defina o caminho do dispositivo aqui"
 
-#: cdplayer/cdplayer.c:507
+#: cdplayer/cdplayer.c:512
 msgid "Use _Default"
 msgstr "Usar _Padrão"
 
-#: cdplayer/cdplayer.c:594
+#: cdplayer/cdplayer.c:599
 msgid ""
 "(C) 1997 The Free Software Foundation\n"
 "(C) 2001 Chris Phelps (GNOME 2 Port)"
@@ -665,46 +669,46 @@ msgstr ""
 "© 1997 The Free Software Foundation\n"
 "© 2001 Chris Phelps (GNOME 2 Port)"
 
-#: cdplayer/cdplayer.c:596 cdplayer/cdplayer.c:1042
+#: cdplayer/cdplayer.c:601 cdplayer/cdplayer.c:1047
 msgid "The CD Player applet is a simple audio CD player for your panel"
 msgstr "O mini aplicativo CD Player é um simples tocador de CDs para o painel"
 
 # SUN NEW TRANSLATION
-#: cdplayer/cdplayer.c:871 cdplayer/cdplayer.c:882
+#: cdplayer/cdplayer.c:876 cdplayer/cdplayer.c:887
 msgid "Elapsed time"
 msgstr "Tempo decorrido"
 
 # SUN NEW TRANSLATION
-#: cdplayer/cdplayer.c:874 cdplayer/cdplayer.c:884
+#: cdplayer/cdplayer.c:879 cdplayer/cdplayer.c:889
 msgid "Track number"
 msgstr "Número da trilha"
 
-#: cdplayer/cdplayer.c:940
+#: cdplayer/cdplayer.c:945
 msgid "Audio device is busy, or being used by another application"
 msgstr "O dispositivo de áudio está ocupado ou sendo usado por outra aplicação"
 
 # SUN NEW TRANSLATION
-#: cdplayer/cdplayer.c:1032
+#: cdplayer/cdplayer.c:1037
 msgid "Click this button to Stop playing the CD"
 msgstr "Clique neste botão para interromper a reprodução do CD"
 
 # SUN NEW TRANSLATION
-#: cdplayer/cdplayer.c:1034
+#: cdplayer/cdplayer.c:1039
 msgid "Click this button to Play or Pause the CD"
 msgstr "Clique neste botão para reproduzir ou pausar o CD"
 
 # SUN NEW TRANSLATION
-#: cdplayer/cdplayer.c:1036
+#: cdplayer/cdplayer.c:1041
 msgid "Click this button to eject the CD"
 msgstr "Clique neste botão para ejetar o CD"
 
 # SUN NEW TRANSLATION
-#: cdplayer/cdplayer.c:1038
+#: cdplayer/cdplayer.c:1043
 msgid "Click this button to Play the previous track in the CD"
 msgstr "Clique neste botão para reproduzir a trilha anterior do CD"
 
 # SUN NEW TRANSLATION
-#: cdplayer/cdplayer.c:1040
+#: cdplayer/cdplayer.c:1045
 msgid "Click this button to Play the next track in the CD"
 msgstr "Clique neste botão para reproduzir a próxima trilha do CD"
 
@@ -716,10 +720,12 @@ msgstr "Caminho para o dispositivo"
 msgid ""
 "This is the full path of the device that will be used to play cd's from this "
 "applet"
-msgstr "Esse é o caminho completo para o dispositivo que será usado para tocar CD's com esse mini-aplicativo"
+msgstr ""
+"Esse é o caminho completo para o dispositivo que será usado para tocar CD's "
+"com esse mini-aplicativo"
 
-#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:600
-#: charpick/charpick.c:744 charpick/properties.c:333
+#: charpick/GNOME_CharpickerApplet.server.in.in.h:1 charpick/charpick.c:602
+#: charpick/charpick.c:746 charpick/properties.c:333
 msgid "Character Palette"
 msgstr "Seletor de Caracteres"
 
@@ -732,38 +738,38 @@ msgstr "Gerador de Miniaplicativos de Selecionador de Caracteres"
 msgid "Insert characters"
 msgstr "Inserir caracteres"
 
-#: charpick/charpick.c:322 charpick/properties.c:125
+#: charpick/charpick.c:324 charpick/properties.c:125
 msgid "Add Palette"
 msgstr "Adicionar Paleta"
 
 # SUN NEW TRANSLATION
-#: charpick/charpick.c:363
+#: charpick/charpick.c:365
 msgid "Add a palette..."
 msgstr "Adicionar uma paleta..."
 
-#: charpick/charpick.c:446
+#: charpick/charpick.c:448
 msgid "Available palettes"
 msgstr "Paletas disponíveis"
 
-#: charpick/charpick.c:483
+#: charpick/charpick.c:485
 msgid "Insert special characters"
 msgstr "Inserir caracteres especiais"
 
 #. If your charset supports it, please use U00F1 to replace the "n"
 #. * in "Muniz".
-#: charpick/charpick.c:573
+#: charpick/charpick.c:575
 msgid "Alexandre Muniz <munizao@xprt.net>"
 msgstr "Alexandre Muniz <munizao@xprt.net>"
 
-#: charpick/charpick.c:574
+#: charpick/charpick.c:576
 msgid "Kevin Vandersloot"
 msgstr "Kevin Vandersloot"
 
-#: charpick/charpick.c:602
+#: charpick/charpick.c:604
 msgid "Copyright (C) 1998"
 msgstr "Copyright © 1998"
 
-#: charpick/charpick.c:603
+#: charpick/charpick.c:605
 msgid ""
 "Gnome Panel applet for selecting strange characters that are not on my "
 "keyboard. Released under GNU General Public Licence."
@@ -791,7 +797,9 @@ msgstr "Lista de strings contendo as paletas disponíveis"
 msgid ""
 "The string that the user had selected when the applet was last used. This "
 "string will be displayed when the user starts the applet."
-msgstr "A string que o usuário selecionou da última vez que o mini-aplicativo foi usado. Essa string será mostrada quando o usuário iniciar o mini-aplicativo."
+msgstr ""
+"A string que o usuário selecionou da última vez que o mini-aplicativo foi "
+"usado. Essa string será mostrada quando o usuário iniciar o mini-aplicativo."
 
 #: charpick/properties.c:88
 msgid "_Palette:"
@@ -944,7 +952,7 @@ msgid "_Update interval:"
 msgstr "Intervalo de at_ualização:"
 
 #: drivemount/properties.c:406 mailcheck/mailcheck.c:2097
-#: mailcheck/mailcheck.c:2103 modemlights/properties.c:462
+#: mailcheck/mailcheck.c:2103 modemlights/properties.c:461
 msgid "seconds"
 msgstr "segundos"
 
@@ -2329,7 +2337,9 @@ msgstr "Esse é o atalho para troca de layout baseado em pressão de teclas"
 msgid ""
 "This should be like \"gkb_xmmap us\", \"setxkbmap us\" or \"xmodmap "
 "something.xmm\""
-msgstr "Isso deveria ser algo como \"gkb_xmmap_us\", \"setxkbmap us\" ou \"xmodmap algumacoisa.xmm\""
+msgstr ""
+"Isso deveria ser algo como \"gkb_xmmap_us\", \"setxkbmap us\" ou \"xmodmap "
+"algumacoisa.xmm\""
 
 #: gkb-new/gkb.schemas.in.h:16
 msgid "This will appear in the label box of the applet"
@@ -2411,8 +2421,8 @@ msgstr "Rótulo"
 msgid "Flag and Label"
 msgstr "Bandeira e rótulo"
 
-#: gkb-new/prop.c:257 gtik/gtik.c:1529 gweather/gweather-pref.c:746
-#: modemlights/properties.c:438
+#: gkb-new/prop.c:257 gtik/gtik.c:1530 gweather/gweather-pref.c:746
+#: modemlights/properties.c:437
 msgid "Display"
 msgstr "Exibição"
 
@@ -2503,7 +2513,7 @@ msgstr "Obter cotações de ações atualizadas continuamente"
 msgid "Gtik Applet Factory"
 msgstr "Gerador de Miniaplicativos Gtik"
 
-#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:790
+#: gtik/GNOME_GtikApplet.server.in.in.h:4 gtik/gtik.c:791
 msgid "Stock Ticker"
 msgstr "Monitor de Ações"
 
@@ -2520,7 +2530,7 @@ msgstr "Não foi possível obter dados de ação."
 msgid "Updating..."
 msgstr "Atualizando..."
 
-#: gtik/gtik.c:792
+#: gtik/gtik.c:793
 msgid ""
 "This program connects to a popular site and downloads current stock quotes.  "
 "The GNOME Stock Ticker is a free Internet-based application.  It comes with "
@@ -2532,130 +2542,130 @@ msgstr ""
 "ABSOLUTAMENTE SEM GARANTIA. Não use o Monitor de Ações GNOME para tomar "
 "decisões de investimento; ele é apenas para fins informativos."
 
-#: gtik/gtik.c:1278
+#: gtik/gtik.c:1279
 msgid "Current _stocks:"
 msgstr "Condições at_uais:"
 
-#: gtik/gtik.c:1286
+#: gtik/gtik.c:1287
 msgid "_New symbol:"
 msgstr "_Novo símbolo:"
 
-#: gtik/gtik.c:1295
+#: gtik/gtik.c:1296
 msgid "_Add"
 msgstr "_Adicionar"
 
-#: gtik/gtik.c:1304
+#: gtik/gtik.c:1305
 msgid "_Remove"
 msgstr "_Remover"
 
-#: gtik/gtik.c:1410
+#: gtik/gtik.c:1411
 msgid "Stock Ticker Preferences"
 msgstr "Preferências do Monitor de Ações"
 
-#: gtik/gtik.c:1432
+#: gtik/gtik.c:1433
 msgid "Symbols"
 msgstr "Símbolos"
 
-#: gtik/gtik.c:1439 mailcheck/mailcheck.c:2366
+#: gtik/gtik.c:1440 mailcheck/mailcheck.c:2366
 msgid "Behavior"
 msgstr "Comportamento"
 
-#: gtik/gtik.c:1442 gweather/gweather-pref.c:705
+#: gtik/gtik.c:1443 gweather/gweather-pref.c:705
 msgid "Update"
 msgstr "Atualizar"
 
-#: gtik/gtik.c:1446
+#: gtik/gtik.c:1447
 msgid "Stock update fre_quency:"
 msgstr "Fre_qüência de atualização:"
 
-#: gtik/gtik.c:1458 gweather/gweather-pref.c:729 mailcheck/mailcheck.c:2074
+#: gtik/gtik.c:1459 gweather/gweather-pref.c:729 mailcheck/mailcheck.c:2074
 #: mailcheck/mailcheck.c:2080
 msgid "minutes"
 msgstr "minutos"
 
-#: gtik/gtik.c:1464
+#: gtik/gtik.c:1465
 msgid "Scrolling"
 msgstr "Rolagem"
 
-#: gtik/gtik.c:1468
+#: gtik/gtik.c:1469
 msgid "_Scroll speed:"
 msgstr "Velocidade de _rolagem:"
 
-#: gtik/gtik.c:1472
+#: gtik/gtik.c:1473
 msgid "Slow"
 msgstr "Lento"
 
-#: gtik/gtik.c:1474
+#: gtik/gtik.c:1475
 msgid "Medium"
 msgstr "Médio"
 
-#: gtik/gtik.c:1476
+#: gtik/gtik.c:1477
 msgid "Fast"
 msgstr "Rápido"
 
-#: gtik/gtik.c:1496
+#: gtik/gtik.c:1497
 msgid "_Enable scroll buttons"
 msgstr "_Ativar botões de movimentação"
 
-#: gtik/gtik.c:1508
+#: gtik/gtik.c:1509
 msgid "Scroll _left to right"
 msgstr "Mover da _esquerda para direita"
 
-#: gtik/gtik.c:1534
+#: gtik/gtik.c:1535
 msgid "Displa_y only symbols and price"
 msgstr "E_xibir apenas símbolos e preço"
 
-#: gtik/gtik.c:1547 mini-commander/src/mini-commander.glade.h:23
+#: gtik/gtik.c:1548 mini-commander/src/mini-commander.glade.h:23
 #: stickynotes/stickynotes.glade.h:48
 msgid "_Width:"
 msgstr "_Largura:"
 
 # SUN NEW TRANSLATION
-#: gtik/gtik.c:1561 mini-commander/src/mini-commander.glade.h:24
+#: gtik/gtik.c:1562 mini-commander/src/mini-commander.glade.h:24
 #: multiload/properties.c:483
 msgid "pixels"
 msgstr "pixels"
 
-#: gtik/gtik.c:1570
+#: gtik/gtik.c:1571
 msgid "Font and Colors"
 msgstr "Fonte e Cores"
 
-#: gtik/gtik.c:1576
+#: gtik/gtik.c:1577
 msgid "Use _default theme font and colors"
 msgstr "_Usar cores e fonte padrões do tema"
 
-#: gtik/gtik.c:1591 stickynotes/stickynotes.glade.h:42
+#: gtik/gtik.c:1592 stickynotes/stickynotes.glade.h:42
 msgid "_Font:"
 msgstr "_Fonte:"
 
-#: gtik/gtik.c:1615
+#: gtik/gtik.c:1616
 msgid "Stock _raised:"
 msgstr "Ações subi_ram:"
 
-#: gtik/gtik.c:1634
+#: gtik/gtik.c:1635
 msgid "Stock _lowered:"
 msgstr "Ações _baixaram:"
 
-#: gtik/gtik.c:1653
+#: gtik/gtik.c:1654
 msgid "Stock _unchanged:"
 msgstr "Ações não m_udaram:"
 
-#: gtik/gtik.c:1672 modemlights/properties.c:570
+#: gtik/gtik.c:1673 modemlights/properties.c:569
 msgid "_Background:"
 msgstr "F_undo:"
 
 # SUN NEW TRANSLATION
-#: gtik/gtik.c:1805
+#: gtik/gtik.c:1806
 msgid "Skip forward"
 msgstr "Ignorar próximo"
 
 # SUN NEW TRANSLATION
-#: gtik/gtik.c:1806
+#: gtik/gtik.c:1807
 msgid "Skip backward"
 msgstr "Ignorar anterior"
 
 # SUN NEW TRANSLATION
-#: gtik/gtik.c:1814
+#: gtik/gtik.c:1815
 msgid ""
 "Stock Ticker\n"
 "Get continuously updated stock quotes"
@@ -2663,17 +2673,19 @@ msgstr ""
 "Monitor de Ações\n"
 "Obter cotações de ações atualizadas continuamente"
 
-#: gtik/gtik.c:2005
+#: gtik/gtik.c:2009
 msgid "(No"
 msgstr "(Não"
 
-#: gtik/gtik.c:2006
+#: gtik/gtik.c:2010
 msgid "Change "
 msgstr "Troca "
 
 #: gtik/gtik.schemas.in.h:1
 msgid "Applet scrolls right to left when this key is set to true."
-msgstr "Mini-aplicativo rola da direita para a esquerda quando essa chave está definida como verdadeira."
+msgstr ""
+"Mini-aplicativo rola da direita para a esquerda quando essa chave está "
+"definida como verdadeira."
 
 #: gtik/gtik.schemas.in.h:2
 msgid "Background color"
@@ -2683,7 +2695,9 @@ msgstr "Cor de fundo"
 msgid ""
 "Display only stock symbols along with their value. Do not diplay changes in "
 "value."
-msgstr "Exibir apenas símbolos das ações juntamente com seus valores. Não exibe mudanças no valor."
+msgstr ""
+"Exibir apenas símbolos das ações juntamente com seus valores. Não exibe "
+"mudanças no valor."
 
 #: gtik/gtik.schemas.in.h:4
 msgid "Display only symbols and price"
@@ -2697,7 +2711,9 @@ msgstr "Fonte"
 msgid ""
 "List containing the stocks to be displayed. Consists of the stock id "
 "separated by \"+\""
-msgstr "Lista contém as ações a serem exibidas. Consiste do id da ação separado por \"+\""
+msgstr ""
+"Lista contém as ações a serem exibidas. Consiste do id da ação separado por "
+"\"+\""
 
 #: gtik/gtik.schemas.in.h:7
 msgid "Lowered color"
@@ -2723,7 +2739,9 @@ msgstr "Mostrar botões de seta"
 msgid ""
 "Show arrow buttons on the side of the display so that the user can scroll "
 "forward or backward."
-msgstr "Mostrar botões de setas no lado do display para que o usuário possa rolar para trás ou para frente."
+msgstr ""
+"Mostrar botões de setas no lado do display para que o usuário possa rolar "
+"para trás ou para frente."
 
 #: gtik/gtik.schemas.in.h:13
 msgid "Stocks to monitor - must be seperated by a +"
@@ -2733,35 +2751,46 @@ msgstr "Ação a monitorar - devem estar separadas por um +"
 msgid ""
 "The color of the background of the display. Has no effect when the user "
 "chooses to use the default theme fonts and colors."
-msgstr "A cor de fundo do display. Não tem efeito quando o usuário escolhe usar as cores e fonte padrões do sistema."
+msgstr ""
+"A cor de fundo do display. Não tem efeito quando o usuário escolhe usar as "
+"cores e fonte padrões do sistema."
 
 #: gtik/gtik.schemas.in.h:15
 msgid ""
 "The color used when the stock's values has lowered. Has no effect when the "
 "user chooses to use the default theme fonts and colors."
-msgstr "A cor usada quando os valores das ações caem. Não tem efeito quando o usuário escolhe usar as cores e a fonte padrões do tema."
+msgstr ""
+"A cor usada quando os valores das ações caem. Não tem efeito quando o "
+"usuário escolhe usar as cores e a fonte padrões do tema."
 
 #: gtik/gtik.schemas.in.h:16
 msgid ""
 "The color used when the stock's values has not changed. Has no effect when "
 "the user chooses to use the default theme fonts and colors."
-msgstr "A cor usada quando os valores das ações não mudaram. Não tem efeito quando o usuário escolhe usar as cores e a fonte padrão do tema."
+msgstr ""
+"A cor usada quando os valores das ações não mudaram. Não tem efeito quando o "
+"usuário escolhe usar as cores e a fonte padrão do tema."
 
 #: gtik/gtik.schemas.in.h:17
 msgid ""
 "The color used when the stock's values has raised. Has no effect when the "
 "user chooses to use the default theme fonts and colors."
-msgstr "A cor usada quando os valores das ações subiram. Não tem efeito quando o usuário escolhe usar as cores e a fonte padrões do tema."
+msgstr ""
+"A cor usada quando os valores das ações subiram. Não tem efeito quando o "
+"usuário escolhe usar as cores e a fonte padrões do tema."
 
 #: gtik/gtik.schemas.in.h:18
 msgid ""
 "The font used for the display. Has no effect when the user chooses to use "
 "the default theme fonts and colors."
-msgstr "A fonte usada para o display. Não tem efeito quando o usuário escolhe usar as cores e a fonte padrões do tema."
+msgstr ""
+"A fonte usada para o display. Não tem efeito quando o usuário escolhe usar "
+"as cores e a fonte padrões do tema."
 
 #: gtik/gtik.schemas.in.h:19
 msgid "The time interval until when the applet updates the stock data."
-msgstr "O intervalo de tempo até que o mini-aplicativo atualize os dados de ações."
+msgstr ""
+"O intervalo de tempo até que o mini-aplicativo atualize os dados de ações."
 
 #: gtik/gtik.schemas.in.h:20
 msgid "The width in pixels of the applet."
@@ -2998,7 +3027,9 @@ msgstr "Localidade"
 msgid ""
 "Determines whether the applet automatically updates its weather statistics "
 "or not."
-msgstr "Determina se o mini-aplicativo atualiza automaticamente suas estatísticas de clima ou não."
+msgstr ""
+"Determina se o mini-aplicativo atualiza automaticamente suas estatísticas de "
+"clima ou não."
 
 #: gweather/gweather.schemas.in.h:2
 msgid "Display radar map"
@@ -3012,7 +3043,9 @@ msgstr "Obter um mapa de radar a cada atualização."
 msgid ""
 "If true, then retreive a radar map from a location specified by the \"radar"
 "\" key."
-msgstr "Se verdadeiro, obtem-se um mapa de radar de uma localidade especificada pela chave \"radar\"."
+msgstr ""
+"Se verdadeiro, obtem-se um mapa de radar de uma localidade especificada pela "
+"chave \"radar\"."
 
 #: gweather/gweather.schemas.in.h:5
 #: mini-commander/src/mini-commander.schemas.in.h:14
@@ -3518,7 +3551,9 @@ msgstr "Erro verificando correio"
 msgid ""
 "You didn't set a password in the preferences for the Inbox Monitor,\n"
 "so you have to enter it each time it starts up."
-msgstr "Você não definiu uma senha nas preferências do Monitor de Caixa de Correio, então você tem que digitá-la cada vez que ele é iniciado."
+msgstr ""
+"Você não definiu uma senha nas preferências do Monitor de Caixa de Correio, "
+"então você tem que digitá-la cada vez que ele é iniciado."
 
 #: mailcheck/mailcheck.c:805
 msgid "Please enter your mailserver's _password:"
@@ -3698,7 +3733,9 @@ msgstr "Preferências do Monitor de Caixa de Correio"
 
 #: mailcheck/mailcheck.c:2450
 msgid "Inbox Monitor notifies you when new mail arrives in your mailbox"
-msgstr "O Monitor de Caixa de Correio notifica você quando novas mensagens chegam na sua caixa de correio"
+msgstr ""
+"O Monitor de Caixa de Correio notifica você quando novas mensagens chegam na "
+"sua caixa de correio"
 
 #: mailcheck/mailcheck.c:2776
 msgid "Text only"
@@ -3710,11 +3747,14 @@ msgstr "Verifica correio"
 
 #: mailcheck/mailcheck.c:2808
 msgid "Mail check notifies you when new mail arrives in your mailbox"
-msgstr "O verificador de correio notifica você quando novas mensagens chegam na sua caixa de correio"
+msgstr ""
+"O verificador de correio notifica você quando novas mensagens chegam na sua "
+"caixa de correio"
 
 #: mailcheck/mailcheck.schemas.in.h:1
 msgid "Command to execute when checking mail"
-msgstr "Comando a ser executado quando você clica no Monitor de Caixa de Correio"
+msgstr ""
+"Comando a ser executado quando você clica no Monitor de Caixa de Correio"
 
 #: mailcheck/mailcheck.schemas.in.h:3
 msgid "Command to execute when you click on the Inbox Monitor"
@@ -3754,7 +3794,9 @@ msgstr "Se isso estiver ligado, nós salvamos a senha no gconf"
 
 #: mailcheck/mailcheck.schemas.in.h:12
 msgid "If this is set mail will be checked every update-freq milliseconds"
-msgstr "Se isso estiver ligado o correio será verificado a cada update-freq milisegundos"
+msgstr ""
+"Se isso estiver ligado o correio será verificado a cada update-freq "
+"milisegundos"
 
 #: mailcheck/mailcheck.schemas.in.h:13
 msgid "If this is set, we should run the exec-command"
@@ -3806,17 +3848,23 @@ msgstr "A senha do usuário no servidor remoto"
 
 #: mailcheck/mailcheck.schemas.in.h:25
 msgid "This is how we check the mail, check the mail, check the mail..."
-msgstr "É assim que nós verificamos o correio, verificamos o correio, verificamos o correio..."
+msgstr ""
+"É assim que nós verificamos o correio, verificamos o correio, verificamos o "
+"correio..."
 
 #: mailcheck/mailcheck.schemas.in.h:26
 msgid "This is how we process the mail, process the mail, process the mail..."
-msgstr "É assim que nós processamos o correio, processamos o correio, processamos o correio..."
+msgstr ""
+"É assim que nós processamos o correio, processamos o correio, processamos o "
+"correio..."
 
 #: mailcheck/mailcheck.schemas.in.h:27
 msgid ""
 "This is the animation that will be displayed during normal Inbox Monitor "
 "usage"
-msgstr "Essa é a animação que será exibida durante o uso normal do Monitor de Caixa de Correio"
+msgstr ""
+"Essa é a animação que será exibida durante o uso normal do Monitor de Caixa "
+"de Correio"
 
 #: mailcheck/mailcheck.schemas.in.h:28
 msgid "Username on the remote server"
@@ -3824,11 +3872,15 @@ msgstr "Nome do usuário no servidor remoto"
 
 #: mailcheck/mailcheck.schemas.in.h:29
 msgid "We run this command when the user clicks on Inbox Monitor"
-msgstr "Nós rodamos esse comando quando o usuário clica no Monitor de Caixa de Correio"
+msgstr ""
+"Nós rodamos esse comando quando o usuário clica no Monitor de Caixa de "
+"Correio"
 
 #: mailcheck/mailcheck.schemas.in.h:30
 msgid "Whether to reset mail status when you click on Inbox Monitor"
-msgstr "Se o estado do correio deve ser resetado quando você clica no Monitor de Caixa de Correio"
+msgstr ""
+"Se o estado do correio deve ser resetado quando você clica no Monitor de "
+"Caixa de Correio"
 
 #: mailcheck/mailcheck.schemas.in.h:31
 msgid "You've got mail!"
@@ -3865,9 +3917,14 @@ msgid ""
 "Software Foundation; either version 2 of the License, or (at your option) "
 "any later version."
 msgstr ""
-"Este mini aplicativo GNOME adiciona uma linha de comando ao painel. Ele possui auto-preenchimento de comandos, histórico de comandos e macros modificáveis.\n"
+"Este mini aplicativo GNOME adiciona uma linha de comando ao painel. Ele "
+"possui auto-preenchimento de comandos, histórico de comandos e macros "
+"modificáveis.\n"
 "\n"
-"Este programa é software livre; você pode redistribuí-lo e/ou modificá-lo sob os termos da Licença Pública Geral GNU como publicada pela Free Software Foundation; versão 2 da licença ou, (à sua escolha) qualquer versão mais recente."
+"Este programa é software livre; você pode redistribuí-lo e/ou modificá-lo "
+"sob os termos da Licença Pública Geral GNU como publicada pela Free Software "
+"Foundation; versão 2 da licença ou, (à sua escolha) qualquer versão mais "
+"recente."
 
 #. build file select dialog
 #: mini-commander/src/command_line.c:440
@@ -3991,7 +4048,8 @@ msgstr "_Usar cores padrão do tema"
 
 #: mini-commander/src/mini-commander.schemas.in.h:1
 msgid "Attempt to autocomplete a command from the history of commands entered."
-msgstr "Tentar auto-completar um comando a partir do histórico de comandos chamados."
+msgstr ""
+"Tentar auto-completar um comando a partir do histórico de comandos chamados."
 
 #: mini-commander/src/mini-commander.schemas.in.h:2
 msgid "Color background blue component"
@@ -4023,15 +4081,18 @@ msgstr "Lista de Histórico"
 
 #: mini-commander/src/mini-commander.schemas.in.h:9
 msgid "List of GConfValue entries containing strings for history entries."
-msgstr "Lista de entradas GConfValue contendo strings das entradas do histórico."
+msgstr ""
+"Lista de entradas GConfValue contendo strings das entradas do histórico."
 
 #: mini-commander/src/mini-commander.schemas.in.h:10
 msgid "List of GConfValue entries containing strings for the macro commands."
-msgstr "Lista de entradas GConfValue contendo strings para as macros de comandos."
+msgstr ""
+"Lista de entradas GConfValue contendo strings para as macros de comandos."
 
 #: mini-commander/src/mini-commander.schemas.in.h:11
 msgid "List of GConfValue entries containing strings for the macro patterns."
-msgstr "Lista de entradas GConfValue contendo strings para as macros de padrões."
+msgstr ""
+"Lista de entradas GConfValue contendo strings para as macros de padrões."
 
 #: mini-commander/src/mini-commander.schemas.in.h:12
 msgid "Macro command list"
@@ -4051,7 +4112,8 @@ msgstr "Exibir um quadro envolvendo o mini-aplicattivo."
 
 #: mini-commander/src/mini-commander.schemas.in.h:17
 msgid "Show a handle so the applet can be detached from the panel."
-msgstr "Exibir uma alça para que o mini-aplicativo possa ser desanexado do painel."
+msgstr ""
+"Exibir uma alça para que o mini-aplicativo possa ser desanexado do painel."
 
 #: mini-commander/src/mini-commander.schemas.in.h:18
 msgid "Show frame"
@@ -4277,6 +4339,11 @@ msgstr ""
 "alerta: esta versão de gmix foi compilada com uma versão diferente de\n"
 "sounscard.h.\n"
 
+#: mixer/mixer.c:632
+#, c-format
+msgid "Couldn't open mixer device %s\n"
+msgstr "Não foi possível abrir o dispositivo mixer %s\n"
+
 #: mixer/mixer.c:801
 msgid "Volume Controller"
 msgstr "Controlador de Volume"
@@ -4436,7 +4503,9 @@ msgstr "Mostrar o tempo conectado e a taxa de transferência"
 msgid ""
 "Show extra information about the connect time and amount of data transmitted "
 "and received."
-msgstr "Exibir informações extra sobre o tempo de conexão e quantidade de dados transmitidos e recebidos."
+msgstr ""
+"Exibir informações extra sobre o tempo de conexão e quantidade de dados "
+"transmitidos e recebidos."
 
 #: modemlights/modemlights.schemas.in.h:15
 msgid "Status connected color"
@@ -4473,17 +4542,21 @@ msgstr "Cor de fundo do botão usado para indicar os dados enviados."
 #: modemlights/modemlights.schemas.in.h:23
 msgid ""
 "The color used to display the status button when the modem is connected."
-msgstr "A cor usada para exibir o botão de estado quando o modem está conectado."
+msgstr ""
+"A cor usada para exibir o botão de estado quando o modem está conectado."
 
 #: modemlights/modemlights.schemas.in.h:24
 msgid ""
 "The color used to display the status button when the modem is connecting."
-msgstr "A cor usada para exibir o botão de estado quando o modem está conectando."
+msgstr ""
+"A cor usada para exibir o botão de estado quando o modem está conectando."
 
 #: modemlights/modemlights.schemas.in.h:25
 msgid ""
 "The color used to display the status button when the modem is not connected."
-msgstr "A cor usada para exibir o botão de estado enquanto o modem não está conectado."
+msgstr ""
+"A cor usada para exibir o botão de estado enquanto o modem não está "
+"conectado."
 
 #: modemlights/modemlights.schemas.in.h:26
 msgid "The color used to indicate that data has been received."
@@ -4529,114 +4602,114 @@ msgstr "Verificar dono do arquivo de bloqueio"
 msgid "Modem Lights Preferences"
 msgstr "Preferências das Luzes do Modem"
 
-#: modemlights/properties.c:445
+#: modemlights/properties.c:444
 msgid "U_pdate every:"
 msgstr "_Atualizar a cada:"
 
 #. extra info checkbox
-#: modemlights/properties.c:470
+#: modemlights/properties.c:469
 msgid "Sho_w connect time and throughput"
 msgstr "_Mostrar tempo de conexão e velocidade"
 
-#: modemlights/properties.c:480
+#: modemlights/properties.c:479
 msgid "B_link connection status when connecting"
 msgstr "P_iscar o estado da conexão enquanto estiver conectando"
 
-#: modemlights/properties.c:490
+#: modemlights/properties.c:489
 msgid "Connections"
 msgstr "Conexões"
 
-#: modemlights/properties.c:499
+#: modemlights/properties.c:498
 msgid "Co_nnection command:"
 msgstr "Comando de co_nexão:"
 
-#: modemlights/properties.c:523
+#: modemlights/properties.c:522
 msgid "_Disconnection command:"
 msgstr "Comando de _disconexão:"
 
 #. confirmation checkbox
-#: modemlights/properties.c:543
+#: modemlights/properties.c:542
 msgid "Con_firm connection"
 msgstr "Con_firmar conexão"
 
-#: modemlights/properties.c:562
+#: modemlights/properties.c:561
 msgid "Receive Data"
 msgstr "Recepção de Dados"
 
-#: modemlights/properties.c:568
+#: modemlights/properties.c:567
 msgid "_Foreground:"
 msgstr "_Frente:"
 
-#: modemlights/properties.c:573
+#: modemlights/properties.c:572
 msgid "Send Data"
 msgstr "Envio de Dados"
 
-#: modemlights/properties.c:578
+#: modemlights/properties.c:577
 msgid "Foregroun_d:"
 msgstr "F_rente:"
 
-#: modemlights/properties.c:580
+#: modemlights/properties.c:579
 msgid "Backg_round:"
 msgstr "Fu_ndo:"
 
-#: modemlights/properties.c:583
+#: modemlights/properties.c:582
 msgid "Connection Status"
 msgstr "Estado da Conexão"
 
-#: modemlights/properties.c:591
+#: modemlights/properties.c:590
 msgid "Co_nnected:"
 msgstr "Co_nectado:"
 
-#: modemlights/properties.c:593
+#: modemlights/properties.c:592
 msgid "Disconnec_ted:"
 msgstr "Disconec_tado:"
 
-#: modemlights/properties.c:596
+#: modemlights/properties.c:595
 msgid "C_onnecting:"
 msgstr "C_onectando:"
 
-#: modemlights/properties.c:599
+#: modemlights/properties.c:598
 msgid "Text"
 msgstr "Texto"
 
-#: modemlights/properties.c:607
+#: modemlights/properties.c:606
 msgid "For_eground:"
 msgstr "Fr_ente:"
 
-#: modemlights/properties.c:609
+#: modemlights/properties.c:608
 msgid "Bac_kground:"
 msgstr "Fun_do:"
 
-#: modemlights/properties.c:611
+#: modemlights/properties.c:610
 msgid "O_utline"
 msgstr "_Borda"
 
-#: modemlights/properties.c:614 multiload/properties.c:528
+#: modemlights/properties.c:613 multiload/properties.c:528
 msgid "Colors"
 msgstr "Cores"
 
-#: modemlights/properties.c:623
+#: modemlights/properties.c:622
 msgid "Modem Options"
 msgstr "Opções do Modem"
 
-#: modemlights/properties.c:632
+#: modemlights/properties.c:631
 msgid "_Device:"
 msgstr "_Dispositivo:"
 
-#: modemlights/properties.c:656
+#: modemlights/properties.c:655
 msgid "_Lock file:"
 msgstr "Arquivo de B_loqueio:"
 
-#: modemlights/properties.c:675
+#: modemlights/properties.c:674
 msgid "_Verify owner of lock file"
 msgstr "_Verificar dono do arquivo de bloqueio"
 
 #. ISDN checkbox
-#: modemlights/properties.c:686
+#: modemlights/properties.c:685
 msgid "U_se ISDN"
 msgstr "U_sar ISDN"
 
-#: modemlights/properties.c:703
+#: modemlights/properties.c:702
 msgid "Advanced"
 msgstr "Avançado"
 
@@ -4670,7 +4743,8 @@ msgid ""
 msgstr ""
 "Publicado sob a Licença Pública Geral GNU.\n"
 "\n"
-"Um monitor de carga do sistema capaz de mostrar gráficos para CPU, RAM e swap, uso de discos e tráfego de rede."
+"Um monitor de carga do sistema capaz de mostrar gráficos para CPU, RAM e "
+"swap, uso de discos e tráfego de rede."
 
 #: multiload/main.c:272 multiload/properties.c:553
 msgid "Processor"
@@ -4738,7 +4812,9 @@ msgstr "Habilitar o gráfico de carga de swap"
 msgid ""
 "For horizontal panels, the width of the graphs in pixels. For vertical "
 "panels, this is the height of the graphs."
-msgstr "Para painéis horizontais, a largura dos gráficos em pixels. Para painéis verticais, isso é a altura dos gráficos."
+msgstr ""
+"Para painéis horizontais, a largura dos gráficos em pixels. Para painéis "
+"verticais, isso é a altura dos gráficos."
 
 #: multiload/multiload.schemas.in.h:9
 msgid "Graph color for Ethernet network activity"
@@ -4938,8 +5014,8 @@ msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "Criar, visualizar e gerenciar notas no desktop"
 
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:3
-#: stickynotes/stickynotes_applet.c:339
-#: stickynotes/stickynotes_applet_callbacks.c:180
+#: stickynotes/stickynotes_applet.c:338
+#: stickynotes/stickynotes_applet_callbacks.c:193
 msgid "Sticky Notes"
 msgstr "Notas"
 
@@ -5162,7 +5238,10 @@ msgid ""
 "By default, sticky notes are given the current date as the title when they "
 "are created. This format is used; anything that can be parsed by strftime() "
 "is valid."
-msgstr "Por padrão, as notas têm a data atual como seu título quando são criadas. Esse formato é usado; qualquer coisa que seja entendida pela função strftime() é válida."
+msgstr ""
+"Por padrão, as notas têm a data atual como seu título quando são criadas. "
+"Esse formato é usado; qualquer coisa que seja entendida pela função strftime"
+"() é válida."
 
 #: stickynotes/stickynotes.schemas.in.h:3
 msgid "Date format of note's title"
@@ -5180,7 +5259,9 @@ msgstr "Cor padrão para novas notas"
 msgid ""
 "Default color for new sticky notes. This should be in html hex "
 "specification, for example \"#30FF50\"."
-msgstr "Cor padrão para novas notas. Deve ser definido de acordo com a especificação hex do html. Por exemplo: \"#30FF50\"."
+msgstr ""
+"Cor padrão para novas notas. Deve ser definido de acordo com a especificação "
+"hex do html. Por exemplo: \"#30FF50\"."
 
 #: stickynotes/stickynotes.schemas.in.h:7
 msgid "Default font for new notes"
@@ -5190,7 +5271,9 @@ msgstr "Fonte padrão para novas notas"
 msgid ""
 "Default font for new sticky notes. This should be a Pango Font Name, for "
 "example \"Sans Italic 10\""
-msgstr "Fonte padrão para novas notas. Deve ser um Nome de Fonte Pango. Por exemplo: \"Sans Italic 10\""
+msgstr ""
+"Fonte padrão para novas notas. Deve ser um Nome de Fonte Pango. Por exemplo: "
+"\"Sans Italic 10\""
 
 #: stickynotes/stickynotes.schemas.in.h:9
 msgid "Default height for new notes"
@@ -5216,32 +5299,44 @@ msgstr "Notas vazias são sempre excluídas sem confirmação"
 msgid ""
 "Every time the specified number of minutes pass, the sticky notes are "
 "automatically saved."
-msgstr "Toda vez que um número especificado de minutos passa, as notas são automaticamente salvas."
+msgstr ""
+"Toda vez que um número especificado de minutos passa, as notas são "
+"automaticamente salvas."
 
 #: stickynotes/stickynotes.schemas.in.h:15
 msgid ""
 "If this option is disabled, a custom color can be used as the default color "
 "for all sticky notes."
-msgstr "Se essa opção estiver desligada, uma cor personalizada será usada como cor padrão para todas as notas."
+msgstr ""
+"Se essa opção estiver desligada, uma cor personalizada será usada como cor "
+"padrão para todas as notas."
 
 #: stickynotes/stickynotes.schemas.in.h:16
 msgid ""
 "If this option is disabled, a custom font can be used as the default font "
 "for all sticky notes."
-msgstr "Se essa opção estiver desligada, uma fonte personalizada será usada como a fonte padrão de todas as notas."
+msgstr ""
+"Se essa opção estiver desligada, uma fonte personalizada será usada como a "
+"fonte padrão de todas as notas."
 
 #: stickynotes/stickynotes.schemas.in.h:17
 msgid ""
 "If this option is enabled, the custom colors and fonts that have been "
 "assigned to individual notes will be ignored."
-msgstr "Se essa opção estiver ligada, as cores e fontes personalizadas que foram definidas para notas individuais serão ignoradas."
+msgstr ""
+"Se essa opção estiver ligada, as cores e fontes personalizadas que foram "
+"definidas para notas individuais serão ignoradas."
 
 #: stickynotes/stickynotes.schemas.in.h:18
 msgid ""
 "Occurs when the applet is either left-clicked or \"enter\" is pressed. The "
 "options are \"0\" for \"New Note\", \"1\" for \"Show/Hide All Notes\", and "
 "\"2\" for \"Lock/Unlock All Notes\"."
-msgstr "Acontece quando o mini-aplicativo recebe um clique ou quando \"enter\" é pressionado. As opções são \"0\" para \"Nova Nota\", \"1\" para \"Exibir/Esconder Todas as Notas\", e \"2\" para \"Bloquear/Desbloquear Todas as Notas\"."
+msgstr ""
+"Acontece quando o mini-aplicativo recebe um clique ou quando \"enter\" é "
+"pressionado. As opções são \"0\" para \"Nova Nota\", \"1\" para \"Exibir/"
+"Esconder Todas as Notas\", e \"2\" para \"Bloquear/Desbloquear Todas as Notas"
+"\"."
 
 #: stickynotes/stickynotes.schemas.in.h:19
 msgid "Specifies whether the sticky notes are locked (non-editable) or not."
@@ -5251,7 +5346,8 @@ msgstr "Especifica se as notas estão bloqueadas (não-editáveis) ou não."
 msgid ""
 "Specifies whether the sticky notes are visible on ALL workspaces on the "
 "desktop, or not."
-msgstr "Especifica se as notas serão visíveis em TODAS as áreas de trabalho, ou não."
+msgstr ""
+"Especifica se as notas serão visíveis em TODAS as áreas de trabalho, ou não."
 
 #: stickynotes/stickynotes.schemas.in.h:21
 msgid "Specifies whether the sticky notes are visible or not."
@@ -5286,7 +5382,7 @@ msgid "Whether to use the default system font"
 msgstr "Se deve-se usar a fonte padrão do sistema"
 
 # SUN NEW TRANSLATION
-#: stickynotes/stickynotes_applet.c:339
+#: stickynotes/stickynotes_applet.c:338
 #, c-format
 msgid ""
 "%s\n"
@@ -5301,11 +5397,11 @@ msgstr[1] ""
 "%s\n"
 "%d notas"
 
-#: stickynotes/stickynotes_applet_callbacks.c:182
+#: stickynotes/stickynotes_applet_callbacks.c:195
 msgid "(c) 2002-2003 Loban A Rahman"
 msgstr "© 2002-2003 Loban A Rahman"
 
-#: stickynotes/stickynotes_applet_callbacks.c:183
+#: stickynotes/stickynotes_applet_callbacks.c:196
 msgid "Sticky Notes for the Gnome Desktop Environment"
 msgstr "Notas para o Ambiente Desktop GNOME"
 
@@ -5314,15 +5410,15 @@ msgid "Monitor the quality of a wireless network link"
 msgstr "Monitorar a qualidade de uma rede sem fio"
 
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:3
-#: wireless/wireless-applet.c:543
+#: wireless/wireless-applet.c:575
 msgid "Wireless Link Monitor"
 msgstr "Monitor de Redes sem fio"
 
-#: wireless/wireless-applet.c:351 wireless/wireless-applet.c:488
+#: wireless/wireless-applet.c:358 wireless/wireless-applet.c:495
 msgid "No Wireless Devices"
 msgstr "Nenhum Dispositivo Sem Fio"
 
-#: wireless/wireless-applet.c:353
+#: wireless/wireless-applet.c:360
 msgid ""
 "There doesn't seem to be any wireless devices configured on your system.\n"
 "Please verify your configuration if you think this is incorrect."
@@ -5330,12 +5426,12 @@ msgstr ""
 "Não foi encontrado nenhum dispositivo sem fio configurado no sistema.\n"
 "Verifique sua configuração se você acha que isto é incorreto."
 
-#: wireless/wireless-applet.c:545
+#: wireless/wireless-applet.c:577
 msgid "(C) 2001, 2002 Free Software Foundation "
 msgstr "© 2001, 2002 Free Software Foundation"
 
 # SUN NEW TRANSLATION
-#: wireless/wireless-applet.c:546
+#: wireless/wireless-applet.c:578
 msgid "This utility shows the status of a wireless link."
 msgstr "Esse utilitário mostra o status de um link sem fio."
 
