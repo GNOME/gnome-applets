@@ -81,8 +81,13 @@ void gnotes_save(AppletWidget*, gpointer);
 void gnote_save(gpointer);
 void gnotes_load(AppletWidget*, gpointer);
 static gboolean gnote_load_xml(const gchar *);
-static gboolean gnote_load_xml_v10(xmlDocPtr);
+static gboolean gnote_load_xml_v10(xmlDocPtr, const gchar*);
 static gboolean gnote_load_old(const gchar *);
+
+void gnotes_init()
+{
+    note_list = g_ptr_array_new();
+}
 
 static void do_on_all_notes(GPtrOperator oper)
 {
@@ -106,38 +111,46 @@ const gchar *get_gnotes_dir()
 {
     if(save_dir_name == 0)
     {
-        save_dir_name = g_strdup_printf("%s/%s", gnome_util_user_home(), GNOTES_DIR);
+        save_dir_name = g_strdup_printf("%s/%s", gnome_util_user_home(),
+                                        GNOTES_DIR);
         g_debug("Setting save directory to %s\n", save_dir_name);
     }
     
     return save_dir_name;
 }
 
-gchar *make_gnote_filename(GNote* note)
+gchar *make_gnote_filename_string(const gchar *file_part)
 {
-    gchar* ret;
-    gchar* file_part;
-
-    file_part = g_strdup_printf("%ld", note->timestamp);
-    
-    ret = g_strdup_printf("%s/%s", get_gnotes_dir(), file_part);
-
-    g_free(file_part);
-    
-    return ret;
+    return g_strdup_printf("%s/%s", get_gnotes_dir(), file_part);
 }
 
-
-void gnotes_init()
+gchar *make_gnote_filename(const GNote *note)
 {
-    note_list = g_ptr_array_new();
+    return g_strdup_printf("%s/%ld", get_gnotes_dir(), note->timestamp);
 }
+
+void gnote_destroy(gpointer prenote)
+{
+    GNote *the_note = (GNote*)prenote;
+    char *fname = make_gnote_filename(the_note);
+
+    g_debug("  deleted [%s]", fname);
+    unlink(fname);
+    free(fname);
+    
+    gtk_widget_destroy(the_note->window);
+    g_free(the_note->title);
+    g_ptr_array_remove(note_list, the_note);
+    g_free(the_note);
+}
+
 
 void gnote_signal_handler(int signal)
 {
     switch (signal)
     {
     case SIGHUP:   /* zap all the notes and reload 'em */
+        /* FIXME: should we save here? */
         do_on_all_notes(&gnote_destroy);
         gnotes_load(0, 0);
         break;
@@ -147,12 +160,6 @@ void gnote_signal_handler(int signal)
     };
 };
 
-void gnote_destroy(gpointer note)
-{
-    gtk_widget_destroy(((GNote*)note)->window);
-}
-
-
 static gint gnote_changed_cb(GtkWidget *text, GdkEventButton *event,
                              gpointer data)
 {
@@ -161,10 +168,8 @@ static gint gnote_changed_cb(GtkWidget *text, GdkEventButton *event,
     while ((index < note_list->len) &&
            (text != ((GNote*)g_ptr_array_index(note_list, index))->text))
         index++;
-    ((GNote*)g_ptr_array_index(note_list, index))->timestamp = time(NULL);
-    return(TRUE);
-};
-
+    gnote_save(g_ptr_array_index(note_list, index));
+}
 
 gint gnote_delete_cb(GtkWidget *widget, gpointer handle_boxptr)
 {
@@ -177,18 +182,7 @@ gint gnote_delete_cb(GtkWidget *widget, gpointer handle_boxptr)
         GNote* the_note = (GNote*)g_ptr_array_index(note_list, index);
         if (handle_boxptr == the_note->handle_box)
         {
-            char *fname = make_gnote_filename(the_note);
-            g_debug("  deleted [%s]", fname);
-            unlink(fname);
-            free(fname);
-
-            gtk_widget_destroy(the_note->window);
-            g_free(the_note->title);
-
-            g_ptr_array_remove_fast(note_list, the_note);
-
-            g_free(the_note);
-
+            gnote_destroy(the_note);
             /* we don't need to keep looking.  We found it */
             break;
         };
@@ -276,49 +270,6 @@ void gnote_menu(GtkWidget *handle_box, GdkEventButton *event)
 
 static gint ptr_x=0, ptr_y=0;
 
-gint gnote_motion_cb(GtkWidget *widget, GdkEventButton *event,
-                     gpointer data)
-{
-    gint win_x=0, win_y=0, win_w=0, win_h=0, new_ptr_x=0, new_ptr_y=0;
-
-    gdk_window_get_origin(widget->parent->window, &win_x, &win_y);
-    gdk_window_get_pointer(widget->parent->window, &new_ptr_x, &new_ptr_y,
-                           NULL);
-    gdk_window_get_size(widget->parent->window, &win_w, &win_h);
-  
-    /* new position minus the pointer position in the widget */
-    win_x += new_ptr_x - ptr_x;
-    win_y += new_ptr_y - ptr_y;
-
-    /* set new size */
-    win_w = new_ptr_x;
-    win_h = new_ptr_y;
-
-    gdk_window_raise(widget->parent->window);
-
-    if (event->state & ShiftMask)
-    {
-        int index;
-
-        for (index=0; index < note_list->len; index++)
-        {
-            GNote* the_note = (GNote*)g_ptr_array_index(note_list, index);
-            
-            if (widget == the_note->handle_box)
-            {
-            	gtk_widget_set_usize(the_note->window, win_w, win_h);
-            	break;
-            };
-        };
-    }
-    else
-    {
-        gdk_window_move(widget->parent->window, win_x, win_y);
-    };
-
-    return(TRUE);
-};
-
 gint gnote_handle_button_cb(GtkWidget *widget, GdkEventButton *event,
                             gpointer data)
 {
@@ -337,7 +288,8 @@ gint gnote_handle_button_cb(GtkWidget *widget, GdkEventButton *event,
         case 1:
             cursor = gdk_cursor_new(GDK_FLEUR);
             gdk_pointer_grab(widget->window, FALSE, GDK_BUTTON1_MOTION_MASK |
-                             GDK_BUTTON_RELEASE_MASK, NULL, cursor, event->time);
+                             GDK_BUTTON_RELEASE_MASK, NULL, cursor,
+                             event->time);
             gdk_cursor_destroy(cursor);
             break;
         case 2:
@@ -367,13 +319,62 @@ gint gnote_handle_button_cb(GtkWidget *widget, GdkEventButton *event,
         gdk_cursor_destroy(cursor);
         break;
     default:
-        g_debug("Unhandled type in gnote_handle_button_cb(): %d\n", event->type);
+        g_debug("Unhandled type in gnote_handle_button_cb(): %d\n",
+                event->type);
         break;
     };
 
     return(TRUE);
 };
 
+static gpointer motion_last_box = 0;
+static GNote *motion_note = 0;
+
+gint gnote_motion_cb(GtkWidget *widget, GdkEventButton *event,
+                     gpointer data)
+{
+    int index;
+    gint win_x=0, win_y=0, win_w=0, win_h=0, new_ptr_x=0, new_ptr_y=0;
+
+
+    gdk_window_get_pointer(widget->parent->window, &new_ptr_x, &new_ptr_y,
+                           NULL);
+    /* gdk_window_get_size(widget->parent->window, &win_w, &win_h); */
+  
+    /* gdk_window_raise(widget->parent->window); */
+
+    if (event->state & ShiftMask)
+    {
+        if((widget != motion_last_box) || (motion_note == 0))
+        {
+            for (index=0; index < note_list->len; index++)
+            {
+                GNote* the_note = (GNote*)g_ptr_array_index(note_list, index);
+            
+                if (widget == the_note->handle_box)
+                {
+                    motion_note = the_note;
+                    motion_last_box = widget;
+                    break;
+                }
+            }
+        }
+        /* set new size */
+        win_w = new_ptr_x;
+        win_h = new_ptr_y;
+        gtk_widget_set_usize(motion_note->window, win_w, win_h);
+    }
+    else
+    {
+        gdk_window_get_origin(widget->parent->window, &win_x, &win_y);
+        /* new position minus the pointer position in the widget */
+        win_x += new_ptr_x - ptr_x;
+        win_y += new_ptr_y - ptr_y;
+        gdk_window_move(widget->parent->window, win_x, win_y);
+    };
+
+    return(TRUE);
+};
 
 void gnote_new(gint width, gint height, gint x, gint y, gboolean hidden,
                const gchar *text, time_t timestamp,
@@ -415,12 +416,20 @@ void gnote_new(gint width, gint height, gint x, gint y, gboolean hidden,
     gtk_text_set_word_wrap(GTK_TEXT(the_note->text), TRUE);
     gtk_signal_connect(GTK_OBJECT(the_note->text), "changed",
                        GTK_SIGNAL_FUNC(gnote_changed_cb), NULL);
-    if (text != NULL)
+    /* FIXME: Is this OK?  It seems the only way I can avoid random shit being
+       put into the text field when I save */
+    GTK_TEXT(the_note->text)->text.ch = 0;
+    GTK_TEXT(the_note->text)->text_len = 0;
+    
+    if (text != 0)
     {
         gtk_text_insert(GTK_TEXT(the_note->text), NULL,
                         NULL, NULL, text, strlen(text));
     }
 
+    g_debug("In new Text in textfield is now: %s\n",
+            GTK_TEXT(the_note->text)->text.ch);
+    
     /* set text color */
     {
         GtkStyle *style;
@@ -481,6 +490,7 @@ void gnote_new(gint width, gint height, gint x, gint y, gboolean hidden,
     /* heinous hack follows... for some reason, even though I tell it
        not to, the window manager gives the gnote a border... so I found
        out that if I hide it then reshow it, the border goes away  :-O  */
+    /* and even this doesn't seem to work all the time */
     gdk_window_hide(the_note->window->window);
     /* only reshow it if we're supposed to */
     if (the_note->hidden == FALSE)
@@ -488,10 +498,6 @@ void gnote_new(gint width, gint height, gint x, gint y, gboolean hidden,
         gdk_window_show(the_note->window->window);
         /* gtk_widget_set_uposition(the_note->window, the_note->x, */
         /* the_note->y); */
-    }
-    else
-    {
-        gdk_window_hide(the_note->window->window);
     }
 }
 
@@ -502,7 +508,6 @@ void gnote_new_cb(AppletWidget *applet, gpointer data)
     gint height;
 
     sdata = g_strdup((gchar *)data);
-    sprintf(sdata, "%s", (char *)data);
 
     if(strcmp(sdata, GNOTE_NEW_DEFAULT) == 0)
     {
@@ -515,7 +520,7 @@ void gnote_new_cb(AppletWidget *applet, gpointer data)
         height = atoi(strtok(NULL, "x")) * 100;
     }
 
-    gnote_new(width, height, -1, -1, FALSE, "", time(NULL), "GNotes!", FALSE, "");
+    gnote_new(width, height, 0, 0, FALSE, "", time(NULL), "GNotes!", FALSE, "");
 
     g_free(sdata);
 };
@@ -582,10 +587,8 @@ void gnote_save(gpointer prenote)
     xmlDocPtr doc;
     xmlNodePtr tree;
     int x,y;
-    int width, height;
     
-    the_note = prenote;
-    
+    the_note = (GNote*)prenote;
 
     /*
       make sure file doesn't already exist - since this is only
@@ -594,17 +597,18 @@ void gnote_save(gpointer prenote)
     */
     fname = make_gnote_filename(the_note);
 
-    while (!the_note->already_saved && !stat(fname, &stats))
+    if(!the_note->already_saved)
     {
-        the_note->timestamp++;
-        g_free(fname);
-        fname = make_gnote_filename(the_note);
-        the_note->already_saved = TRUE;
+        while (!stat(fname, &stats))
+        {
+            the_note->timestamp++;
+            g_free(fname);
+            fname = make_gnote_filename(the_note);
+        }
     }
 
+
     g_debug("Saving into %s\n", fname);
-    fflush(stdout);
-    fflush(stderr);
     
     if ((fptr=fopen(fname,"w")) != NULL)
     {
@@ -620,7 +624,8 @@ void gnote_save(gpointer prenote)
         g_free(tmp_string);
         
         /* title */
-        tree = xmlNewChild(doc->root, 0, gnotes_title_node_name, the_note->title);
+        tree = xmlNewChild(doc->root, 0, gnotes_title_node_name,
+                           the_note->title);
         
         /* location */
         tree = xmlNewChild(doc->root, 0, gnotes_loc_node_name, 0);
@@ -658,14 +663,22 @@ void gnote_save(gpointer prenote)
 
         xmlNewChild(tree, 0, gnotes_data_type_node_name, "Text");
 
-        xmlNewChild(tree, 0, gnotes_data_node_name,
-                    GTK_TEXT(the_note->text)->text.ch);
+        if(GTK_TEXT(the_note->text)->text_len < 1)
+        {
+            xmlNewChild(tree, 0, gnotes_data_node_name, "");
+        }
+        else
+        {
+            xmlNewChild(tree, 0, gnotes_data_node_name,
+                        GTK_TEXT(the_note->text)->text.ch);
+        }
 
         xmlDocDump(fptr, doc);
 
         xmlFreeDoc(doc);
         fclose(fptr);
         /* g_free(fptr); */
+        the_note->already_saved = TRUE;
     }
     else
     {
@@ -732,6 +745,14 @@ void gnotes_load(AppletWidget *wid, gpointer data)
                         }
                     }
                 }
+                else
+                {
+                    g_debug("not regular file or contains more than nums");
+                }
+            }
+            else
+            {
+                g_debug("Bad stat return");
             }
         }
         closedir(dptr);
@@ -743,7 +764,7 @@ void gnotes_load(AppletWidget *wid, gpointer data)
     }
 }
 
-static gboolean gnote_load_xml(const char *filename)
+static gboolean gnote_load_xml(const gchar *filename)
 {
     gchar *buffer;
     struct stat stats;
@@ -760,7 +781,8 @@ static gboolean gnote_load_xml(const char *filename)
         {
             if(read(fdes, buffer, stats.st_size) != stats.st_size)
             {
-                g_warning("Gnotes: gnote_load_xml(%s): error reading %ld bytes\n",
+                g_warning("Gnotes: gnote_load_xml(%s): "
+                          "error reading %ld bytes\n",
                         filename, stats.st_size);
                 ret_val = FALSE;
             }
@@ -769,16 +791,23 @@ static gboolean gnote_load_xml(const char *filename)
                 buffer[stats.st_size] = '\0';
                 
                 doc = xmlParseMemory(buffer, stats.st_size);
+
+                if((doc == 0) || (doc->root == 0))
+                {
+                    return FALSE;
+                }
                 
-                tmp_string1 = xmlGetProp(doc->root, gnotes_version_property_name);
+                tmp_string1 = xmlGetProp(doc->root,
+                                         gnotes_version_property_name);
                 
                 if(strcmp(gnotes_file_format, tmp_string1) == 0)
                 {
-                    ret_val = gnote_load_xml_v10(doc);
+                    ret_val = gnote_load_xml_v10(doc, filename);
                 }
                 else
                 {
-                    g_warning("GNotes: gnote_load_xml(%s): unknown file format: %s\n",
+                    g_warning("GNotes: gnote_load_xml(%s): "
+                              "unknown file format: %s\n",
                               filename, tmp_string1);
                     ret_val = FALSE;
                 }
@@ -799,7 +828,7 @@ static gboolean gnote_load_xml(const char *filename)
     return ret_val;
 }
 
-static gboolean gnote_load_xml_v10(xmlDocPtr doc)
+static gboolean gnote_load_xml_v10(xmlDocPtr doc, const gchar *filename)
 {
     gboolean ret_val = TRUE;
     gint width;
@@ -823,9 +852,15 @@ static gboolean gnote_load_xml_v10(xmlDocPtr doc)
 
     if(ret_val)
     {
+        if(strcmp(filename, tmp_string) != 0)
+        {
+            g_warning("Gnotes: gnote_load_xml_v10(): filename doesn't match "
+                      "id property.  Resetting id to filename");
+        }
         /* this has a problem of not knowing how large a time_t is (I think) */
         /* y2038 problem? */
-        sscanf(tmp_string, "%ld", &timestamp);
+        sscanf(filename, "%ld", &timestamp);
+
     }
 
     if(ret_val)
@@ -833,7 +868,12 @@ static gboolean gnote_load_xml_v10(xmlDocPtr doc)
         /* title */
         tmp_node = doc->root->childs;
 
-        if(strcmp(tmp_node->name, gnotes_title_node_name) == 0)
+        if(tmp_node == 0)
+        {
+            ret_val = FALSE;
+        }
+        else if((strcmp(tmp_node->name, gnotes_title_node_name) == 0) &&
+                (tmp_node->childs != 0))
         {
             title = tmp_node->childs->content;
         }
@@ -849,46 +889,55 @@ static gboolean gnote_load_xml_v10(xmlDocPtr doc)
         /* location */
         tmp_node = tmp_node->next;
         
-        if((tmp_node != 0) && (strcmp(tmp_node->name, gnotes_loc_node_name) == 0))
+        if((tmp_node != 0) &&
+           (strcmp(tmp_node->name, gnotes_loc_node_name) == 0))
         {
             xmlNodePtr start_node = tmp_node->childs;
             xmlNodePtr intmp_node = tmp_node->childs;
 
             while((intmp_node != 0) && ret_val)
             {
-                if(strcmp(intmp_node->name, gnotes_x_node_name) == 0)
+                if(intmp_node->name == 0)
                 {
-                    if(sscanf(intmp_node->childs->content, "%d", &x) != 1)
+                    // ok.
+                }
+                else if(strcmp(intmp_node->name, gnotes_x_node_name) == 0)
+                {
+                    if((intmp_node->childs == 0) ||
+                       sscanf(intmp_node->childs->content, "%d", &x) != 1)
                     {
-                        g_warning("GNotes: gnote_load_xml_v10(): bad X format (%s)\n",
-                                  intmp_node->childs->content);
+                        g_warning("GNotes: gnote_load_xml_v10(): "
+                                  "bad X format\n");
                         ret_val = FALSE;
                     }
                 }
                 else if(strcmp(intmp_node->name, gnotes_y_node_name) == 0)
                 {
-                    if(sscanf(intmp_node->childs->content, "%d", &y) != 1)
+                    if((intmp_node->childs == 0) ||
+                       sscanf(intmp_node->childs->content, "%d", &y) != 1)
                     {
-                        g_warning("GNotes: gnote_load_xml_v10(): bad Y format (%s)\n",
-                                  intmp_node->childs->content);
+                        g_warning("GNotes: gnote_load_xml_v10(): "
+                                  "bad Y format\n");
                         ret_val = FALSE;
                     }
                 }
                 else if(strcmp(intmp_node->name, gnotes_height_node_name) == 0)
                 {
-                    if(sscanf(intmp_node->childs->content, "%d", &height) != 1)
+                    if((intmp_node->childs == 0) ||
+                       sscanf(intmp_node->childs->content, "%d", &height) != 1)
                     {
-                        g_warning("GNotes: gnote_load_xml_v10(): bad height format (%s)\n",
-                                  intmp_node->childs->content);
+                        g_warning("GNotes: gnote_load_xml_v10(): "
+                                  "bad height format\n");
                         ret_val = FALSE;
                     }
                 }
                 else if(strcmp(intmp_node->name, gnotes_width_node_name) == 0)
                 {
-                    if(sscanf(intmp_node->childs->content, "%d", &width) != 1)
+                    if((intmp_node->childs == 0) ||
+                       sscanf(intmp_node->childs->content, "%d", &width) != 1)
                     {
-                        g_warning("GNotes: gnote_load_xml_v10(): bad width format (%s)\n",
-                                  intmp_node->childs->content);
+                        g_warning("GNotes: gnote_load_xml_v10(): "
+                                  "bad width format\n");
                         ret_val = FALSE;
                     }
                 }
@@ -901,8 +950,7 @@ static gboolean gnote_load_xml_v10(xmlDocPtr doc)
         }
         else
         {
-            g_warning("GNotes: gnote_load_xml_v10(): location data flakey: %s\n",
-                      tmp_node->name);
+            g_warning("GNotes: gnote_load_xml_v10(): location data flakey\n");
             ret_val = FALSE;
         }
     }
@@ -912,19 +960,25 @@ static gboolean gnote_load_xml_v10(xmlDocPtr doc)
         /* state (including hidden) */
         tmp_node = tmp_node->next;
         
-        if((tmp_node != 0) && (strcmp(tmp_node->name, gnotes_state_node_name) == 0))
+        if((tmp_node != 0) &&
+           (strcmp(tmp_node->name, gnotes_state_node_name) == 0))
         {
             xmlNodePtr start_node = tmp_node->childs;
             xmlNodePtr intmp_node = tmp_node->childs;
 
             while((intmp_node != 0) && ret_val)
             {
-                if(strcmp(intmp_node->name, gnotes_hidden_node_name) == 0)
+                if(intmp_node->name == 0)
                 {
-                    if(sscanf(intmp_node->childs->content, "%d", &hidden) != 1)
+                    // ignore this.  It's OK (I think)
+                }
+                else if(strcmp(intmp_node->name, gnotes_hidden_node_name) == 0)
+                {
+                    if((intmp_node->childs == 0) ||
+                       sscanf(intmp_node->childs->content, "%d", &hidden) != 1)
                     {
-                        g_warning("GNotes: gnote_load_xml_v10(): bad hidden format (%s)\n",
-                                  intmp_node->childs->content);
+                        g_warning("GNotes: gnote_load_xml_v10(): "
+                                  "bad hidden format\n");
                         ret_val = FALSE;
                     }
                 }
@@ -948,20 +1002,40 @@ static gboolean gnote_load_xml_v10(xmlDocPtr doc)
         /* contents (including type and data */
         tmp_node = tmp_node->next;
 
-        if((tmp_node != 0) && (strcmp(tmp_node->name, gnotes_contents_node_name) == 0))
+        if((tmp_node != 0) &&
+           (strcmp(tmp_node->name, gnotes_contents_node_name) == 0))
         {
             xmlNodePtr start_node = tmp_node->childs;
             xmlNodePtr intmp_node = tmp_node->childs;
 
             while((intmp_node != 0) && ret_val)
             {
-                if(strcmp(intmp_node->name, gnotes_data_type_node_name) == 0)
+                if(intmp_node->name == 0)
                 {
-                    type = intmp_node->childs->content;
+                    // this is an ok situation.  Empty data is normal
+                }
+                else if(strcmp(intmp_node->name,
+                               gnotes_data_type_node_name) == 0)
+                {
+                    if(intmp_node->childs != 0)
+                    {
+                        type = intmp_node->childs->content;
+                    }
+                    else
+                    {
+                        type = 0;
+                    }
                 }
                 else if(strcmp(intmp_node->name, gnotes_data_node_name) == 0)
                 {
-                    text = intmp_node->childs->content;
+                    if(intmp_node->childs != 0)
+                    {
+                        text = intmp_node->childs->content;
+                    }
+                    else
+                    {
+                        text = "";
+                    }
                 }
                 intmp_node = intmp_node->next;
                 if(intmp_node == start_node)
@@ -979,7 +1053,8 @@ static gboolean gnote_load_xml_v10(xmlDocPtr doc)
 
     if(ret_val)
     {
-        gnote_new(width, height, x, y, hidden, text, timestamp, title, TRUE, type);
+        gnote_new(width, height, x, y, hidden, text,
+                  timestamp, title, TRUE, type);
     }
     
     return ret_val;
