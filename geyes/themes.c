@@ -227,6 +227,7 @@ properties_cb (BonoboUIComponent *uic, gpointer user_data, const gchar *verbname
                                         strcpy (filename, 
                                                 theme_directories[i]);
                                         strcat (filename, dp->d_name);
+                                        /* FIXME: highlight to current theme */
                                         gtk_list_store_insert (model, &iter, 0);
                                         gtk_list_store_set (model, &iter, 0, &filename, -1);
                                 }
