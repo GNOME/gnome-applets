@@ -29,9 +29,6 @@
 #include "gweather-dialog.h"
 #include "gweather-applet.h"
 
-/* this may wreak havoc with the bonobo control+gconf stuff, but it's the only way i can see to do it */
-static GWeatherApplet *evil_global_applet;
-
 /* FIX - This code is WAY too kludgy!... */
 static void place_widgets (GWeatherApplet *gw_applet)
 {
@@ -302,7 +299,7 @@ static gint timeout_cb (gpointer data)
 void update_finish (WeatherInfo *info)
 {
     char *s;
-    GWeatherApplet *gw_applet =evil_global_applet;
+    GWeatherApplet *gw_applet = (GWeatherApplet *) info->applet;
     
 /*
     if (info != gweather_info) {
@@ -375,13 +372,11 @@ void gweather_update (GWeatherApplet *gw_applet)
 
     /* Update current conditions */
     if (gw_applet->gweather_info && weather_location_equal(gw_applet->gweather_info->location, gw_applet->gweather_pref.location)) {
-    	evil_global_applet = gw_applet;
-        update_success = weather_info_update(gw_applet->gweather_info, update_finish);
+        update_success = weather_info_update((gpointer)gw_applet, gw_applet->gweather_info, update_finish);
     } else {
         weather_info_free(gw_applet->gweather_info);
         gw_applet->gweather_info = NULL;
-        evil_global_applet = gw_applet;
-        update_success = weather_info_new(gw_applet->gweather_pref.location, update_finish);
+        update_success = weather_info_new((gpointer)gw_applet, gw_applet->gweather_pref.location, update_finish);
     }
     if (!update_success)
         gnome_error_dialog(_("Update failed! Maybe another update was already in progress?"));  /* FIX */

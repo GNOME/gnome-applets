@@ -72,10 +72,6 @@ WeatherLocation *weather_location_new (const gchar *name, const gchar *code, con
 {
     WeatherLocation *location;
 
-    if ((name == NULL) || (code == NULL) || (zone == NULL)
-		    || (radar == NULL))
-	    return NULL;
-
     location = g_new(WeatherLocation, 1);
     strncpy(location->name, name, WEATHER_LOCATION_NAME_MAX_LEN);
     location->name[WEATHER_LOCATION_NAME_MAX_LEN] = '\0';
@@ -1257,7 +1253,7 @@ static void met_finish_read(GnomeVFSAsyncHandle *handle, GnomeVFSResult result,
 	WeatherInfo *info = (WeatherInfo *)data;
     WeatherLocation *loc;
     gchar *body, *forecast, *temp;
-g_print ("read met \n");
+
 	info->forecast = NULL;
     loc = info->location;
 	body = (gchar *)buffer;
@@ -1275,7 +1271,6 @@ g_print ("read met \n");
 	
 	if (result == GNOME_VFS_ERROR_EOF)
 	{
-		g_print ("%s \n", info->met_buffer);
 		forecast = met_parse(info->met_buffer, loc);
         info->forecast = forecast;
     }
@@ -1306,7 +1301,7 @@ static void met_finish_open (GnomeVFSAsyncHandle *handle, GnomeVFSResult result,
     g_return_if_fail(handle == info->met_handle);
 
     g_return_if_fail(info != NULL);
-g_print ("finish open \n");
+
 	body = g_malloc0(DATA_SIZE);
 
 	info->met_buffer = NULL;	
@@ -1332,7 +1327,7 @@ static void metoffice_start_open (WeatherInfo *info)
     loc = info->location;
   
     url = g_strdup_printf("http://www.metoffice.gov.uk/datafiles/%s.html", loc->zone+1);
-g_print ("%s \n", url);
+
     gnome_vfs_async_open(&info->met_handle, url, GNOME_VFS_OPEN_READ, 
     			 0, met_finish_open, info);
     g_free(url);
@@ -1390,7 +1385,6 @@ static GdkPixmap *wx_construct (gpointer data, gint data_len)
 
     if (pixbuf != NULL) {
 	    gdk_pixbuf_render_pixmap_and_mask (pixbuf, &pixmap, NULL, 127);
-	    g_print ("pixbud != NULL\n");
     }
 
     g_object_unref (G_OBJECT (pixbuf_loader));
@@ -1426,7 +1420,7 @@ static void wx_finish_read(GnomeVFSAsyncHandle *handle, GnomeVFSResult result,
 	if (result == GNOME_VFS_ERROR_EOF)
 	{
 		pixmap = wx_construct (info->radar_buffer, strlen (info->radar_buffer));
-g_print ("got radar \n");
+
         info->radar = pixmap;
 	}
 	else if (result != GNOME_VFS_OK) {
@@ -1489,7 +1483,7 @@ static void wx_start_open (WeatherInfo *info)
         return;
 
     url = g_strdup_printf("http://image.weather.com/images/radar/single_site/%sloc_450x284.jpg", loc->radar);
-g_print ("url %s \n", url);
+
     gnome_vfs_async_open(&info->wx_handle, url, GNOME_VFS_OPEN_READ, 
     			 0, wx_finish_open, info);
     g_free(url);
@@ -1497,7 +1491,7 @@ g_print ("url %s \n", url);
     return;
 }
 
-gboolean _weather_info_fill (WeatherInfo *info, WeatherLocation *location, WeatherInfoFunc cb)
+gboolean _weather_info_fill (gpointer applet, WeatherInfo *info, WeatherLocation *location, WeatherInfoFunc cb)
 {
     g_return_val_if_fail(((info == NULL) && (location != NULL)) || \
                          ((info != NULL) && (location == NULL)), FALSE);
@@ -1549,6 +1543,7 @@ gboolean _weather_info_fill (WeatherInfo *info, WeatherLocation *location, Weath
     info->wx_handle = NULL;
     info->met_handle = NULL;
     info->requests_pending = TRUE;
+    info->applet = applet;
 
     metar_start_open(info);
     iwin_start_open(info);

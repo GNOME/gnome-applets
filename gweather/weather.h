@@ -195,15 +195,16 @@ struct _WeatherInfo {
     GnomeVFSAsyncHandle *wx_handle;
     GnomeVFSAsyncHandle *met_handle;
     gboolean requests_pending;
+    gpointer applet;
 };
 
 typedef struct _WeatherInfo WeatherInfo;
 
 typedef void (*WeatherInfoFunc) (WeatherInfo *info);
 
-extern gboolean _weather_info_fill (WeatherInfo *info, WeatherLocation *location, WeatherInfoFunc cb);
-#define weather_info_new(location,cb) _weather_info_fill(NULL, (location), (cb))
-#define weather_info_update(info,cb) _weather_info_fill((info), NULL, (cb));
+extern gboolean _weather_info_fill (gpointer applet, WeatherInfo *info, WeatherLocation *location, WeatherInfoFunc cb);
+#define weather_info_new(applet, location,cb) _weather_info_fill((applet), NULL, (location), (cb))
+#define weather_info_update(applet, info,cb) _weather_info_fill((applet), (info), NULL, (cb));
 extern WeatherInfo *weather_info_clone (const WeatherInfo *info);
 extern void weather_info_free (WeatherInfo *info);
 
