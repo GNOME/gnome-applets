@@ -78,6 +78,7 @@ typedef struct {
 	MixerUpdateFunc update_func;
 	PanelOrientType orient;
 	int size;
+	gint last_vol;
 } MixerData;
 
 typedef struct {
@@ -271,8 +272,10 @@ mixer_timeout_callback(gpointer data)
 	gint mvol;
 
 	mvol = readMixer();
-	(*md->update_func) (mixerw, mvol);
-
+	if (mvol != md->last_vol) {
+		(*md->update_func) (mixerw, mvol);
+		md->last_vol = mvol;
+	}
 	return 1;
 	data = NULL;
 }
@@ -572,7 +575,7 @@ create_mixer_widget(void)
 
 	/* Install timeout handler */
 
-	md->timeout = gtk_timeout_add(50, mixer_timeout_callback, mixer);
+	md->timeout = gtk_timeout_add(500, mixer_timeout_callback, mixer);
 	md->mute   = 0;
 
 	gtk_signal_connect(GTK_OBJECT(mixer), "destroy",
@@ -583,7 +586,7 @@ create_mixer_widget(void)
 	/* add code to read currect status of mixer */
 	curmvol = readMixer(); /* replace with proper read */
 	(*md->update_func) (mixer, curmvol);
-
+	md->last_vol = curmvol;
 	return mixer;
 }
 
