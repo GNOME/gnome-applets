@@ -239,9 +239,13 @@ cmdc( char *s )
     * there is a completion failure, ...
     *
     */
-   if( !inited )
+   if(!inited)
    {
-      path = getenv( "PATH" );
+      /* Make a local copy of the path variable. Otherwise the path
+         environment variable would be modified. */
+      path = (char *) malloc(sizeof(char) * (strlen(getenv("PATH")) + 1));
+      strcpy(path, getenv("PATH"));
+      
       pathHash = g_hash_table_new( g_str_hash, g_str_equal );
 
       for( pathElem = strtok( path, ":" ); pathElem;
