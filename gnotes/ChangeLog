@@ -50,6 +50,18 @@ Thu Jan 27 15:55:58 2000  George Lebl <jirka@5z.com>
 
 	* gnome-gnotes.png: Added in all the appropriate places.
 
+1999-12-19  James LewisMoss  <dres@ioa.com>
+
+	* gnote.c (gnote_new): comment out delete_event and destroy_event
+	signal handlers.
+	(gnote_destroy): Clean up destroy.
+
+1999-11-30  James LewisMoss  <dres@ioa.com>
+
+	* gnotes_applet.c (main): Add signal handlers to save notes.
+
+	* gnote.c (gnote_new): Connect to delete_event rather than
+	destroy. 
 1999-11-18  James LewisMoss  <dres@ioa.com>
 
 	* gnotes_applet.h: Fix single include define. Remove gnote.h
