@@ -28,6 +28,8 @@ static const gchar *cap_e_list = "ÉÈÊËÆ";
 /* iacute, igrave, icirc, iuml */
 static const gchar *i_list = "íìîï";
 static const gchar *cap_i_list = "ÍÌÎÏ";
+/* */
+static const gchar *l_list = "£";
 /* micro */
 static const gchar *m_list = "µ";
 /* ntilde (this is the most important line in this program.) */
@@ -40,31 +42,46 @@ static const gchar *cap_o_list = "ÓÒÔÕÖØº";
 static const gchar *p_list = "¶";
 /* reg */
 static const gchar *r_list = "®";
-/* szlig, sect */
-static const gchar *s_list = "ß§";
+/* szlig, sect, dollar */
+static const gchar *s_list = "ß§$";
+/* eth, thorn */
+static const gchar *t_list = "ðþ";
+static const gchar *cap_t_list = "ÐÞ";
 /* uacute, ugrave, ucirc, uuml */
 static const gchar *u_list = "úùûü";
 static const gchar *cap_u_list = "ÚÙÛÜ";
-/* yacute, yuml Yes, there is no capital yuml in iso 8859-1.*/
-static const gchar *y_list = "ýÿ";
-static const gchar *cap_y_list = "Ýÿ";
+/* yacute, yuml, yen Yes, there is no capital yuml in iso 8859-1.*/
+static const gchar *y_list = "ýÿ¥";
+static const gchar *cap_y_list = "Ýÿ¥";
 
-/* extra characters unrelated to the latin alphabet. All of them should
-   go in eventually, but some are less obvious where they should go */
+/* extra characters unrelated to the latin alphabet. All characters in 
+   ISO-8859-1 should now be accounted for.*/
 /* divide frac14 frac12 frac34 */
 static const gchar *slash_list = "÷¼½¾";
-/* not shy macr plusmn*/
+/* not shy macr plusmn */
 static const gchar *dash_list = "¬­¯±";
+/* plusmn */
+static const gchar *plus_list = "±";
+/* cedil */
+static const gchar *comma_list = "¸";
 /* iquest */
 static const gchar *quest_list = "¿";
 /* iexcl */
 static const gchar *excl_list = "¡";
 /* brvbar */
 static const gchar *pipe_list = "¦";
-/* laquo raquo uml*/
+/* laquo raquo uml */
 static const gchar *quote_list = "«»¨";
-/* middot times*/
+/* middot times */
 static const gchar *ast_list = "·×";
+/* curren, pound, yen, cent, dollar */
+static const gchar *currency_list = "¤£¥¢$";
+/* sup1 frac12 */
+static const gchar *one_list = "¹½¼";
+/* sup2 frac12 */
+static const gchar *two_list = "²½";
+/* sup3 frac34 */
+static const gchar *three_list = "³¾ ";
 
 /* sets the picked character as the selection when it gets a request */
 static void
@@ -102,7 +119,7 @@ display_charlist (charpick_data *data)
   gint rows = data->properties->rows;
   gint cols = data->properties->cols;
   const gchar *charlist = data->charlist;
-  gchar * teststr;
+
   /* let's show no more characters than we have, or than we have space for. */
   gint numtoshow = MIN(rows * cols, strlen(charlist));
   gint i = 0; /* loop variable */
@@ -187,6 +204,8 @@ key_press_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
                break;
     case 'I' : p_curr_data->charlist = cap_i_list;
                break;
+    case 'l' : p_curr_data->charlist = l_list;
+               break;
     case 'm' : p_curr_data->charlist = m_list;
                break;
     case 'n' : p_curr_data->charlist = n_list;
@@ -203,6 +222,10 @@ key_press_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
                break;
     case 's' : p_curr_data->charlist = s_list;
                break;
+    case 't' : p_curr_data->charlist = t_list;
+               break;
+    case 'T' : p_curr_data->charlist = cap_t_list;
+               break;
     case 'u' : p_curr_data->charlist = u_list;
                break;
     case 'U' : p_curr_data->charlist = cap_u_list;
@@ -215,6 +238,10 @@ key_press_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
                break;
     case '-' : p_curr_data->charlist = dash_list;
                break;
+    case '+' : p_curr_data->charlist = plus_list;
+               break;
+    case ',' : p_curr_data->charlist = comma_list;
+               break;
     case '?' : p_curr_data->charlist = quest_list;
                break;
     case '!' : p_curr_data->charlist = excl_list;
@@ -224,6 +251,18 @@ key_press_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
     case '\"' : p_curr_data->charlist = quote_list;
                break;
     case '*' : p_curr_data->charlist = ast_list;
+               break;
+    case '$' : p_curr_data->charlist = currency_list;
+               break;
+    case '£' : p_curr_data->charlist = currency_list;
+               break;
+    case '¤' : p_curr_data->charlist = currency_list;
+               break;
+    case '1' : p_curr_data->charlist = one_list;
+               break;
+    case '2' : p_curr_data->charlist = two_list;
+               break;
+    case '3' : p_curr_data->charlist = three_list;
                break;
     }
   if (p_curr_data->last_index != NO_LAST_INDEX)
