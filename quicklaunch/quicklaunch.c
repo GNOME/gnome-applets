@@ -75,7 +75,7 @@ cb_about (AppletWidget *widget, gpointer data)
 	gtk_widget_show (about);
 }
 
-static void 
+static void
 launch_app_cb (GtkWidget *widget, gpointer data)
 {
 	GnomeDesktopEntry *dentry = data;
@@ -251,6 +251,7 @@ launcher_table_update (void)
 			dentry->icon = gnome_pixmap_file (UNKNOWN_ICON);
 
 		button = gtk_button_new();
+		gtk_button_set_relief (GTK_BUTTON (button), GTK_RELIEF_NONE);
 		pixmap = gnome_stock_pixmap_widget_at_size (
 			NULL, dentry->icon, 16, 16);
 		gtk_container_set_border_width (GTK_CONTAINER (button), 0);
@@ -267,8 +268,9 @@ launcher_table_update (void)
 		gtk_container_clear_resize_widgets (
 			GTK_CONTAINER (launcher_table));
 		gtk_widget_show (button);
+		gtk_widget_realize (GTK_WIDGET (button));
 		gtk_object_set_data (GTK_OBJECT(button),"dentry", dentry);
-		gtk_signal_connect (GTK_OBJECT(button),"clicked",
+		gtk_signal_connect (GTK_OBJECT(button), "clicked",
 				    GTK_SIGNAL_FUNC (launch_app_cb), dentry);
 		applet_widget_set_widget_tooltip (APPLET_WIDGET(wnd),
 						  button, dentry->name);
@@ -449,9 +451,9 @@ init_quicklaunch (void)
 	launcher_table=gtk_table_new (0, 0, FALSE);
 	gtk_container_set_resize_mode (GTK_CONTAINER (launcher_table),
 				       GTK_RESIZE_QUEUE);
-	frame = gtk_frame_new (NULL);
-	gtk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_IN);
+	frame = gtk_event_box_new ();
 	handlebox = gtk_handle_box_new ();
+	gtk_handle_box_set_shadow_type (GTK_HANDLE_BOX (handlebox), GTK_SHADOW_NONE);
 	gtk_signal_connect(GTK_OBJECT(handlebox),"event",
 			   GTK_SIGNAL_FUNC(ignore_1st_click),NULL);
 	gtk_container_add (GTK_CONTAINER (handlebox), launcher_table);
@@ -479,6 +481,7 @@ init_quicklaunch (void)
 	gtk_widget_show (handlebox);
 	gtk_widget_show (wnd);
 
+	gtk_widget_realize (GTK_WIDGET (wnd));
 	reload_data ();
 }
 
