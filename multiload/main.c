@@ -211,7 +211,6 @@ multiload_change_background_cb (PanelApplet *a,
 
 		case PANEL_NO_BACKGROUND:
 		default:
-			gtk_widget_modify_style (GTK_WIDGET (ma->applet), rc_style);
 			break;
 	}
 }
