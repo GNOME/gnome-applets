@@ -168,7 +168,7 @@ pathtoicon_cb (GnomePropertyBox * pb, PropWg * actdata)
 	if(etext && itext && strcmp(etext, itext) == 0) {
 		g_free(itext);
 		return;
-	}
+	} /* :]]] Thanx */
 	g_free(itext);
 
 	gnome_icon_entry_set_icon (GNOME_ICON_ENTRY(actdata->iconentry), etext);
@@ -252,8 +252,11 @@ apply_cb (GtkWidget * pb, gint page, GKB * gkb)
   gkb->maps = copy_propwgs (gkb);
   gkb->n = gkb->tn;
 
+  gkb->dact = g_list_nth_data (gkb->maps, gkb->cur);
+
   sized_render (gkb);
   gkb_draw (gkb);
+
   /* execute in a shell but don't wait for the thing to end */
   gnome_execute_shell (NULL, gkb->dact->command);
 

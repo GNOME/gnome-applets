@@ -93,12 +93,7 @@ sized_render (GKB * gkb)
   Prop *actdata;
   int i = 0;
 
-  gtk_drawing_area_size (GTK_DRAWING_AREA (gkb->darea), gkb->w, gkb->h);
-  gtk_widget_set_usize (GTK_WIDGET (gkb->darea), gkb->w, gkb->h);
-  gtk_widget_set_usize (GTK_WIDGET (gkb->frame), gkb->w, gkb->h);
-  gtk_widget_set_usize (GTK_WIDGET (gkb->applet), gkb->w, gkb->h);
-
-  if (gkb->orient == ORIENT_UP)
+  if (gkb->orient == ORIENT_UP || gkb->orient ==  ORIENT_DOWN )
     {
       gkb->h = gkb->size;
       gkb->w = gkb->h * 1.5;
@@ -108,6 +103,12 @@ sized_render (GKB * gkb)
       gkb->w = gkb->size;
       gkb->h = (int) gkb->w / 1.5;
     }
+
+  gtk_drawing_area_size (GTK_DRAWING_AREA (gkb->darea), gkb->w, gkb->h);
+  gtk_widget_set_usize (GTK_WIDGET (gkb->darea), gkb->w, gkb->h);
+  gtk_widget_set_usize (GTK_WIDGET (gkb->frame), gkb->w, gkb->h);
+  gtk_widget_set_usize (GTK_WIDGET (gkb->applet), gkb->w, gkb->h);
+
 
   gtk_widget_queue_resize (gkb->darea);
   gtk_widget_queue_resize (gkb->darea->parent);
@@ -161,7 +162,7 @@ loadprop (GKB * gkb, int i)
   gkb->size =
     applet_widget_get_panel_pixel_size (APPLET_WIDGET (gkb->applet));
 
-  if (gkb->orient == ORIENT_UP)
+  if (gkb->orient == ORIENT_UP || gkb->orient == ORIENT_DOWN )
     {
       gkb->h = gkb->size;
       gkb->w = gkb->h * 1.5;
@@ -266,18 +267,20 @@ create_gkb_widget (GKB * gkb)
 {
   GtkStyle *style;
 
-  gtk_widget_push_visual (gdk_imlib_get_visual ());
-  gtk_widget_push_colormap (gdk_imlib_get_colormap ());
+  gtk_widget_push_visual (gdk_rgb_get_visual ());
+  gtk_widget_push_colormap (gdk_rgb_get_cmap ());
+         
   style = gtk_widget_get_style (gkb->applet);
 
   gkb->darea = gtk_drawing_area_new ();
+
   gtk_drawing_area_size (GTK_DRAWING_AREA (gkb->darea), gkb->w, gkb->h);
+
   gtk_widget_set_events (gkb->darea,
 			 gtk_widget_get_events (gkb->darea) |
 			 GDK_BUTTON_PRESS_MASK);
 
   gtk_widget_show (gkb->darea);
-
 
   gtk_signal_connect (GTK_OBJECT (gkb->darea), "button_press_event",
 		      GTK_SIGNAL_FUNC (gkb_button_press_event_cb), gkb);

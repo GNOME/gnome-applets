@@ -1,29 +1,24 @@
  <sect1 id="gkbapplet">
-  <title>GNOME KeyBoard Applet</title>
+  <title>GNOME Billentyûzet-kiosztás kapcsoló applet</title>
 
   <para>
-   <application>GNOME KeyBoard Applet</application>, shown with its
-   default configuration in <xref
-   linkend="gkbapplet-fig">, allows you to easily and quickly change
-   the keyboard map to those used in various different countries. To
-   add this applet to a
-   <interface>Panel</interface>,
-   right-click on the <interface>Panel</interface> and choose
-   <menuchoice>
+   A <xref
+   linkend="gkbapplet-fig"> látható a <application>GNOME Billentyûzet-kiosztás kapcsoló applet</application> alapértelmezett konfigurációja. Az applet lehetõvé teszi, hogy gyorsan és egyszerûen válts a különbözõ billentyûzetkiosztások között. Az appletet a következõképpen helyezheted valamelyik <interface>Panelra</interface>:
+   Az egér jobb gombjával kattints a <interface>Panelra</interface> és válszd ki a <menuchoice>
     <guimenu>Panel</guimenu>
-    <guisubmenu>Add to panel</guisubmenu>
+    <guisubmenu>Panelra helyezés</guisubmenu>
     <guisubmenu>Applet</guisubmenu>
-    <guisubmenu>Utility</guisubmenu>
-    <guimenuitem>GKB International KeyBoard</guimenuitem>
-   </menuchoice>.
+    <guisubmenu>Segédprogramok</guisubmenu>
+    <guimenuitem>GKB Billentyûzet-átkapcsoló</guimenuitem>
+   </menuchoice> menüpontot.
   </para>
 
   <figure id="gkbapplet-fig">
-   <title>GNOME KeyBoard Applet</title>
+   <title>A GNOME Billentyûzet-átkapcsoló Applet</title>
    <screenshot>
-    <screeninfo>GNOME KeyBoard Applet</screeninfo>
+    <screeninfo>A GNOME Billentyûzet-átkapcsoló Applet</screeninfo>
     <graphic format="png" fileref="gkb_applet" 
-    srccredit="muet">
+    srccredit="bansz">
     </graphic>
    </screenshot>
   </figure>
@@ -31,40 +26,38 @@
 
   <!-- ============= Usage  ================================ -->
   <sect2 id="gkb-usage">
-   <title>Usage</title>
+   <title>Használat</title>
    <para>
-    Once configured, the <application>GNOME Keyboard</application>
-    applet allows you to switch the keyboard mapping between any number of 
-    countries. Just left-click on the applet to switch the keyboard
-    mapping.
+    Ha megfelelõen beállítod, a <application>GNOME Billentyûzet-átkapcsoló</application>
+    applet segítségével megoldható a különbözõ billentyûzet-kiosztások
+közötti váltás. Csak kattints egyet a bal egérgombbal és láss csodát...
    </para>
 
    <para>
-    Right-clicking on the applet brings up a menu containing the
-    following items:
+    Ha jobb gombbal kattintassz az appletre, a következõ menü jelenik meg:
     <itemizedlist>
 
      <listitem>
       <para>
-       <guimenuitem>Properties&hellip;</guimenuitem> &mdash;
-       opens the <link linkend="gkbapplet-prefs">
-       <guilabel>Properties</guilabel></link> dialog.
+       <guimenuitem>Tulajdonságok&hellip;</guimenuitem> &mdash;
+       megnyitja a <link linkend="gkbapplet-prefs">
+       <guilabel>Tulajdonságok</guilabel></link> párbeszédablakot.
       </para>
      </listitem>
 
      <listitem>
       <para>
-       <guimenuitem>Help</guimenuitem> &mdash;
-       displays this document.
+       <guimenuitem>Súgó</guimenuitem> &mdash;
+       megjeleníti ezt a súgó oldalt.
       </para>
      </listitem>
 
      <listitem>
       <para>
-       <guimenuitem>About&hellip;</guimenuitem> &mdash;
-       shows basic information about <application>GNOME KeyBoard
-       Applet</application>, inluding the applet's version and the
-       author's name.
+       <guimenuitem>Névjegy&hellip;</guimenuitem> &mdash;
+       alapvetõ információt jelenít meg a <application>GNOME
+Billentyûzet-átkapcsoló Appletrõl</application>, mint pl. az applet verziója
+és a szerzõ neve.
       </para>
      </listitem>
 
@@ -75,74 +68,71 @@
 
   <!-- ============= Customization ============================= -->
   <sect2 id="gkbapplet-prefs">
-    <title>Customization</title>
+    <title>Testreszabás</title>
     <para>
-      You can customize <application>GNOME KeyBoard</application>
-      applet by right-clicking on it and choosing
-      <guimenuitem>Properties&hellip;</guimenuitem>. This will open the
-      <interface>Properties</interface> dialog (shown in <xref
-      linkend="gkbapplet-settings-fig">), which allows you to
-      add, configure, and remove keymaps.
+      Testreszabhatod a <application>GNOME Billentyûzet-átkapcsoló</application>
+      appletet, ha jobb gombbal rákattintassz és a felbukkanó menübõl
+kiválasztod a <guimenuitem>Tulajdonságok&hellip;</guimenuitem> menüpontot. 
+Ez megnyitja a <interface>Tulajdonságok</interface> párbeszédablakot (ez
+látható a <xref
+      linkend="gkbapplet-settings-fig">). Itt adhatsz hozzá új kiosztást, állíthatod be
+vagy törölheted a létezõ billentyûzet-kiosztásokat.
     </para>
 
     <figure id="gkbapplet-settings-fig">
-     <title>Properties dialog</title>
+     <title>Tulajdonságok párbeszédablak</title>
      <screenshot>
-      <screeninfo>Properties dialog</screeninfo>
+      <screeninfo>Tulajdonságok párbeszédablak</screeninfo>
       <graphic format="png" fileref="gkb_applet_settings"
-      srccredit="muet">
+      srccredit="bansz">
       </graphic>
      </screenshot>
     </figure>
 
     <para>
-      <application>GNOME KeyBoard</application> typically comes up
-      with two keyboard maps.  Each keyboard map has its own tab, with
-      a label indicating the language or country the map is for. In
-      <xref linkend="gkbapplet-settings-fig">, these are
-      <guilabel>US</guilabel> (for a US
-      keyboard) and <guilabel>HU</guilabel> (for Hungarian). You
-      can delete any keyboard map by selecting the tab and pressing
-      the <guibutton>Delete this keymap</guibutton> button.  To add
-      another keyboard map, press the <guibutton>New
-      keymap</guibutton> button and a new tab will appear for you to
-      customize.
+      <application>A GKB</application> tipikusan két beálljtott
+billentyûzet-kiosztással jelenik meg. Mindegyik kiosztáshoz tartozik egy
+fül, amirõl leolvashatjuk, hogy melyik országnak vagy nyelvnek a
+kiosztásához tartozik. A fenti példában <xref linkend="gkbapplet-settings-fig">,
+ez <guilabel>US</guilabel> (az US billentyûzethez) és <guilabel>HU</guilabel>
+(a magyarhoz). Törölheted bármelyik fület, ha rákattintassz, majd megnyomod
+a <guibutton>Kiosztás törlése</guibutton> gombot. Új billentyûzet-kiosztás
+telepítéséhez nyomd meg az <guibutton>Új kiosztás</guibutton> gombot és
+megjelenik egy új fül, aminek megváltoztathatod a beállításait.
     </para> 
 
     <para>
-     Each keymap tab has the following properties:
+     Mindegyik fülön megtalálhatod a következõ tulajdonságokat:
      <itemizedlist>
 
       <listitem>
        <para>
-        Keymap name &mdash; This is the name of the keymap, which will
-        be displayed in the tab at the top. 
+        Kiosztás neve &mdash; Itt adhatod meg a kiosztás nevét, ez jelenik
+meg fent, a fülön. 
        </para>
       </listitem>
 
       <listitem>
        <para>
-        Icon path &mdash; This is the path to the icon which will be
-        displayed for the keyboard map.  For most countries, just
-        click on the image of a flag to the right to bring up a set of
-        images you can use.  If you select one of these standard map
-        images, you will not need to type the path by hand.
-       </para>
+        Ikon elérés &mdash; Ez annak az ikonnak (általában zászlónak) az elérési útvonala, ami a
+kiválaszott kiosztást jelképezi. A legtöbb ország esetében egyszerûen
+kattints az elérési út melletti zászlóra és válassz egyet a GKB zászlói
+közül (ebben az esetben nem kell semmit beírnod). 
+      </para>
       </listitem>
 
       <listitem>
        <para>
-        Full command &mdash; This is the command which
-        <application>GNOME KeyBoard</application> will use to change
-        the keymap.  The default is to use the
-        <command>setxkbmap</command> command. To set the keymap to a
+        Teljes parancs &mdash; Az itt megadott parancsot használja a
+<application>GKB</application> a
+billentyûzet-kiosztás átkapcsolásához. Alapértelmezésben a <command>setxkbmap</command>
+parancs van beállítva. To set the keymap to a
         US keyboard, for example, you would use <command>setxkbmap
-        us</command>. You may also use the
-        <command>gkb_xmmap</command> command, such as
-        <command>gkb_xmmap fr</command> (to use a French keyboard), or
-        the <command>Xmodmap</command> command, such as
-        <command>/usr/local/bin/Xmodmap ru</command> (to use a Russian
-        keyboard). 
+        us</command>. Használhatod a <command>gkb_xmmap</command> parancsot
+is, pl. <command>gkb_xmmap fr</command> (francia billentyûzet beállításához)
+vagy az <command>Xmodmap</command> parancsot, pl.
+        <command>/usr/local/bin/Xmodmap ru</command> (orosz
+billentyûzet-kiosztáshoz.). 
        </para>
       </listitem>
 
@@ -150,11 +140,10 @@
     </para>
 
     <para> 
-      After you have made all the changes you want, click on
-      <guibutton>OK</guibutton> to apply the changes and close the
-      <interface>Properties</interface> dialog. To cancel the changes
-      and return to previous values, click the
-      <guibutton>Close</guibutton> button.
+      Ha mindent beállítottál, nyomd meg az <guibutton>OK</guibutton> gombot
+a beállítás elmentéséhez és a párbeszédablak bezárásához.
+      A változtatások elvetéséhez nyomd meg a <guibutton>Bezár</guibutton>
+gombot.
     </para>
   </sect2>
 
@@ -164,9 +153,9 @@
        the program if there are any - please be frank and list all
        problems you know of -->
   <sect2 id="bugs">
-   <title>Known Bugs and Limitations</title>
+   <title>Ismert hibák és korlátozások</title>
    <para>
-   None yet.
+    Még nincsenek.
    </para>
   </sect2>
 
@@ -174,43 +163,38 @@
   <!-- ============= Authors ================================ -->
 
   <sect2 id="authors">
-   <title>Authors</title>
+   <title>Szerzõk</title>
    <para>
-    <application>GNOME KeyBoard</application> was written by Szabolcs Ban
-    (<email>shooby@gnome.hu</email>).  Please send all comments,
-    suggestions, and bug 
-    reports to the <ulink url="http://bugs.gnome.org" type="http">GNOME
-    bug tracking database</ulink>. (Instructions for submitting bug
-    reports can be found <ulink
+    A <application>GNOME Billentyûzet-átkapcsolót</application> Bán Szabolcs
+írta (<email>shooby@gnome.hu</email>).  Ha megjegyzésed vagy észrevételed
+van a programmal kapcsolatban, esetleg hibaléírást szeretnél küldeni,
+látogass el a <ulink url="http://bugs.gnome.org" type="http">GNOME
+    hibakövetõ adatbázis</ulink> lapjára. (A hibeleírások készítéséhez
+segítséget találsz a <ulink
     url="http://bugs.gnome.org/Reporting.html" type="http">
-    on-line</ulink>). If you are using
-    GNOME 1.1 or later, you can also use <application>Bug Report
-    Tool</application> (<command>bug-buddy</command>), available in the
-    <guisubmenu>Utilities</guisubmenu> submenu of <guimenu>Main
-    Menu</guimenu>, for submitting bug reports.
+    a hálózaton</ulink>). Ha 1.1-es vagy késõbbi GNOME-ot használsz,
+használhatod a <application>Hibajelentõ alkalmazást</application> (<command>bug-buddy</command>),
+amely elérhetõ a <guisubmenu>Tappancs</guisubmenu> menü
+<guimenu>Segédeszközök</guimenu> almenüjébõl.
    </para>
 
    <para>
-    This manual was written by Szabolcs (Shooby) Ban
-    (<email>shooby@gnome.hu</email>) and Dan Mueth
-    (<email>d-mueth@uchicago.edu</email>). Please send all comments and
-    suggestions regarding this manual to the <ulink type="http"
-    url="http://www.gnome.org/gdp">GNOME Documentation Project</ulink> 
-    by sending an email to <email>docs@gnome.org</email>. You can also
-    submit comments online by using the <ulink type="http"
-    url="http://www.gnome.org/gdp/doctable/">GNOME Documentation Status
-    Table</ulink>.
+    Ezt a súgóoldalt Bán Szabolcs (Shooby) (<email>shooby@gnome.hu</email>)
+és Dan Mueth (<email>d-mueth@uchicago.edu</email>) írták. Kérlek minden
+észrevételt és javaslatot küldj el a <ulink type="http"
+    url="http://www.gnome.org/gdp">GNOME Dokumentációs Projektnek</ulink> 
+    levélben a <email>docs@gnome.org</email> címre. Eszrevételeidet
+web-böngészõbõl is eljuttathatod hozzánk a <ulink type="http"
+    url="http://www.gnome.org/gdp/doctable/">GNOME Dokumentáció Státusz
+    Táblát</ulink>.
    </para>
-
-   <!-- For translations: uncomment this:
 
    <para>
-    Latin translation was done by ME
-    (<email>MYNAME@MYADDRESS</email>). Please send all  comments  and
-    suggestions regarding this translation to SOMEWHERE.
+    A magyar fordítást Kovács Emese (<email>emese@gnome.hu</email>) követte el. 
+    A magyar fordítással kapcsolatos észrevételeidet vagy javaslataidat
+elküldheted a fordítónak vagy a Magyar GNOME Fordítás Projekt listájára a 
+<email>gnome@gnome.hu</email> címre. 
    </para>
-
-   -->
 
   </sect2>
 
@@ -220,25 +204,24 @@
   <sect2 id="license">
    <title>License</title>
    <para>
-    This program is free software; you can redistribute it and/or
-    modify it under the terms of the <citetitle>GNU General Public
-    License</citetitle> as published by the Free Software Foundation;
-    either version 2 of the License, or (at your option) any later
-    version.
+    Ez a program szabad szoftver. Ez azt jelenti, hogy 
+    terjesztheted és/vagy átírhatod, ha betartod a Free Software Foundation
+által közzétett <citetitle>GNU General Public
+    License</citetitle> licensz 2. (vagy bármely késõbbi) verzióját.
    </para>
    <para>
-    This program is distributed in the hope that it will be useful, but
-    WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    <citetitle>GNU General Public License</citetitle> for more details.
+    Reméljük, hogy ez a program hasznos lesz számodra, de SEMMILYEN
+GARANCIÁT nem vállalunk, még azt sem állítjuk, hogy a program HASZNÁLHATÓ
+vagy hogy ALKALMAS EGY MEGHATÁROZOTT CÉLRA. Bõvebb információért lásd a 
+    <citetitle>GNU General Public License</citetitle> licenszt.
    </para>
    <para>
-    A copy of the <citetitle>GNU General Public License</citetitle> is
-    included as an appendix to the <citetitle>GNOME Users
-    Guide</citetitle>.  You may also obtain a copy of the
-    <citetitle>GNU General Public License</citetitle> from the Free
-    Software Foundation by visiting <ulink type="http"
-    url="http://www.fsf.org">their Web site</ulink> or by writing to
+    A <citetitle>GNU General Public License</citetitle> egy példánya
+megtalálható a <citetitle>GNOME Users Guide</citetitle> függelékében. 
+Kaphatsz egy példányt a licenszbõl, ha ellátogatsz a Free
+    Software Foundation <ulink type="http"
+    url="http://www.fsf.org">weblapjára</ulink> vagy ha írásban kérsz egyet
+a következõ címen:
     <address>
      Free Software Foundation, Inc.
      <street>59 Temple Place</street> - Suite 330
