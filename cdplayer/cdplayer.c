@@ -127,6 +127,8 @@ applet_fill (PanelApplet *applet)
     GtkTooltips *tooltips;
     int err;
 
+    gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/gnome-cdplayer-icon.png");
+    
     cd = g_new0(CDPlayerData, 1);
     cd->panel.applet = GTK_WIDGET (applet);
     
@@ -219,12 +221,14 @@ cdplayer_destroy(GtkWidget * widget, gpointer data)
         g_object_unref (tooltips);
         g_object_set_data (G_OBJECT (cd->panel.applet), "tooltips", NULL);
     }
-    
+   
     if (cd->time_description)
-        g_free(cd->time_description); 
+        g_free(cd->time_description);
     if (cd->track_description)
         g_free(cd->track_description);
+
     g_free (cd->devpath);
+ 
     cd->devpath = NULL;
     g_free(cd);
 }
@@ -265,7 +269,7 @@ static void
 response_cb (GtkDialog *dialog, gint id, gpointer data)
 {
     if(id == GTK_RESPONSE_HELP){
-         phelp_cb (dialog,data);
+         phelp_cb (NULL,data);
 	 return;
     }
     gtk_widget_destroy (GTK_WIDGET (dialog));
@@ -461,7 +465,6 @@ about_cb(GtkWidget *w, gpointer data)
     	gdk_pixbuf_unref (pixbuf);
 
     gtk_window_set_wmclass (GTK_WINDOW (about), "cd player", "CD Player");
-    gnome_window_icon_set_from_file (GTK_WINDOW (about), GNOME_ICONDIR"/gnome-cdplayer-icon.png");	
     g_signal_connect (G_OBJECT(about), "destroy",
                       G_CALLBACK(gtk_widget_destroyed), &about);
     gtk_widget_show (about);
@@ -739,6 +742,8 @@ cd_panel_update(GtkWidget * cdplayer, CDPlayerData * cd)
             _("Track number"), cd->track_description);
         g_free (cd->time_description);
         g_free (cd->track_description);
+        cd->time_description = NULL;
+        cd->track_description = NULL;
     }
     else
     {
