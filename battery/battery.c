@@ -96,13 +96,13 @@ battery_update (gpointer data)
   BatteryData * bat = data;
 
   /* Data we read about the battery charge */
-  char ac_online, percentage, hours_remaining,  minutes_remaining;
+  signed char ac_online, percentage, hours_remaining,  minutes_remaining;
 
   /*
    * Static copies of the last values of the battery data, so that we
    * only update the display if the data have changed.
    */
-  static char last_percentage = -1, last_hours_remaining = -1,
+  static signed char last_percentage = -1, last_hours_remaining = -1,
     last_minutes_remaining = -1, last_ac_online = -1;
 
   int graph_height, graph_width, i;

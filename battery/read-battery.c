@@ -36,10 +36,10 @@
 #include "read-battery.h"
 
 int
-battery_read_charge(char * percentage,
-		    char * ac_online,
-		    char * hours_remaining,
-		    char * minutes_remaining)
+battery_read_charge(signed char * percentage,
+		    signed char * ac_online,
+		    signed char * hours_remaining,
+		    signed char * minutes_remaining)
 {
 #ifdef __linux__
   static FILE * apm_file = NULL;

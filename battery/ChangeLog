@@ -1,3 +1,11 @@
+2000-02-11  Jason Leach  <leach@wam.umd.edu>
+
+	* battery.c (battery_update): declare char variables as 'signed'
+	because they will hold negative values and some compilers will
+	puke on that, bug #2275
+	* read-battery.h: same 
+	* read-bettery.c (batter_read_charge): same
+
 Sun Feb 06 12:54:51 2000  George Lebl <jirka@5z.com>
 
 	* Makefile.am: fogot the horiz xpm in the EXTRA_DIST

@@ -21,9 +21,9 @@ typedef struct apm_info {
 #endif
 
 /* Prototypes */ 
-int battery_read_charge(char * percentage,
-			char * ac_online,
-			char * hours_remaining,
-			char * minutes_remaining);
+int battery_read_charge(signed char * percentage,
+			signed char * ac_online,
+			signed char * hours_remaining,
+			signed char * minutes_remaining);
 
 #endif /* _READ_BATTERY_H */
