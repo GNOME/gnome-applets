@@ -11,6 +11,7 @@ struct structProperties
     int showTime;
     int showDate;
     int showHandle;
+    int showFrame;
     int normalSizeX;
     int normalSizeY;
     int reducedSizeX;

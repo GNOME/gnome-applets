@@ -396,33 +396,8 @@ showFileBrowser_signal(GtkWidget *widget, gpointer data)
 void
 initCommandEntry(void)
 {
-        GtkStyle *style;
-        GdkColor color;
-
-	/* change style of command line to grey text on black ground */
-	style = malloc(sizeof(GtkStyle));
-	style = gtk_style_copy(gtk_widget_get_style(GTK_WIDGET(applet)));
-	/* color = style->fg[GTK_STATE_NORMAL]; */
-	/* style->text[GTK_STATE_NORMAL] = style->bg[GTK_STATE_NORMAL]; */ /* doesn't work; gtk? */
-	/* style->fg[GTK_STATE_NORMAL] = style->bg[GTK_STATE_NORMAL];
-	   style->base[GTK_STATE_NORMAL] = color; */
-
-	style->fg[GTK_STATE_NORMAL].red = (gushort) prop.cmdLineColorFgR;
-	style->fg[GTK_STATE_NORMAL].green = (gushort) prop.cmdLineColorFgG;
-	style->fg[GTK_STATE_NORMAL].blue = (gushort) prop.cmdLineColorFgB;
-
-	style->base[GTK_STATE_NORMAL].red = (gushort) prop.cmdLineColorBgR;
-	style->base[GTK_STATE_NORMAL].green = (gushort) prop.cmdLineColorBgG;
-	style->base[GTK_STATE_NORMAL].blue = (gushort) prop.cmdLineColorBgB;
-
         /* create the widget we are going to put on the applet */
-	gtk_widget_push_style (style);
         entryCommand = gtk_entry_new_with_max_length((guint16) MAX_COMMAND_LENGTH); 
-	gtk_widget_pop_style ();
-	gtk_widget_set_usize(GTK_WIDGET(entryCommand), -1, prop.cmdLineY);
-
-
-	/*	gtk_widget_set_style(GTK_WIDGET(entryCommand), style); */
 
 	/*	gtk_signal_connect(GTK_OBJECT(entryCommand), "activate",
 			   GTK_SIGNAL_FUNC(commandEntered_cb),
@@ -434,4 +409,36 @@ initCommandEntry(void)
 			   GTK_SIGNAL_FUNC(commandFocusOut_event),
 			   NULL);
 
+	command_entry_update_color();
+	command_entry_update_size();
+}
+
+
+void
+command_entry_update_color(void)
+{
+        GtkStyle *style;
+        GdkColor color;
+
+	/* change widget style */
+	/* style = malloc(sizeof(GtkStyle)); */
+	style = gtk_style_copy(gtk_widget_get_style(entryCommand));
+	
+	style->fg[GTK_STATE_NORMAL].red = (gushort) prop.cmdLineColorFgR;
+	style->fg[GTK_STATE_NORMAL].green = (gushort) prop.cmdLineColorFgG;
+	style->fg[GTK_STATE_NORMAL].blue = (gushort) prop.cmdLineColorFgB;
+	
+	style->base[GTK_STATE_NORMAL].red = (gushort) prop.cmdLineColorBgR;
+	style->base[GTK_STATE_NORMAL].green = (gushort) prop.cmdLineColorBgG;
+	style->base[GTK_STATE_NORMAL].blue = (gushort) prop.cmdLineColorBgB;
+	
+	gtk_widget_set_style(entryCommand, style);
+}
+
+
+void
+command_entry_update_size(void)
+{
+    if(propTmp.cmdLineY != -1)
+	gtk_widget_set_usize(GTK_WIDGET(entryCommand), -1, prop.cmdLineY);
 }

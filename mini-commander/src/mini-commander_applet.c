@@ -106,9 +106,6 @@ main(int argc, char **argv)
     GtkWidget *handle;
     GtkWidget *icon;
 
-    GtkStyle *style;
-    GdkColor color;
-    
     /* install signal handler */
     initExecSignalHandler();
     
@@ -124,6 +121,7 @@ main(int argc, char **argv)
     /* create a new applet_widget */
     
     /*
+      GtkStyle *style;
       style = malloc(sizeof(GtkStyle));
       style->bg_pixmap[GTK_STATE_NORMAL] = bgPixmap;
       gtk_widget_push_style (style);

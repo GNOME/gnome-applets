@@ -89,6 +89,7 @@ resetTemporaryPrefs(void)
     propTmp.showTime = -1;
     propTmp.showDate = -1;
     propTmp.showHandle = -1;
+    propTmp.showFrame = -1;
     propTmp.normalSizeX = -1;
     propTmp.normalSizeY = -1;
     propTmp.reducedSizeX = -1;
@@ -106,7 +107,6 @@ resetTemporaryPrefs(void)
 static void
 propertiesBox_apply_signal(GnomePropertyBox *propertyBoxWidget, gint page, gpointer data)
 {
-    GtkStyle *style;
     int i;
 
     if(propTmp.showTime != -1)
@@ -120,6 +120,10 @@ propertiesBox_apply_signal(GnomePropertyBox *propertyBoxWidget, gint page, gpoin
     if(propTmp.showHandle != -1)
 	/* checkbox has been changed */
         prop.showHandle = propTmp.showHandle;
+
+    if(propTmp.showFrame != -1)
+	/* checkbox has been changed */
+        prop.showFrame = propTmp.showFrame;
 
     if(propTmp.showTime != -1 || propTmp.showDate != -1) {
 	/* checkbox has been changed */
@@ -159,7 +163,7 @@ propertiesBox_apply_signal(GnomePropertyBox *propertyBoxWidget, gint page, gpoin
 	}
 
     if(propTmp.cmdLineY != -1)
-	gtk_widget_set_usize(GTK_WIDGET(entryCommand), -1, prop.cmdLineY);
+	command_entry_update_size();
 
     /* colors */
     if(propTmp.cmdLineColorFgR != -1)
@@ -176,21 +180,7 @@ propertiesBox_apply_signal(GnomePropertyBox *propertyBoxWidget, gint page, gpoin
 	}
 
     if(propTmp.cmdLineColorFgR != -1 || propTmp.cmdLineColorBgR != -1)
-	{
-	    /* change widget style */
-	    /* style = malloc(sizeof(GtkStyle)); */
-	    style = gtk_style_copy(gtk_widget_get_style(entryCommand));
-	    
-	    style->fg[GTK_STATE_NORMAL].red = (gushort) prop.cmdLineColorFgR;
-	    style->fg[GTK_STATE_NORMAL].green = (gushort) prop.cmdLineColorFgG;
-	    style->fg[GTK_STATE_NORMAL].blue = (gushort) prop.cmdLineColorFgB;
-	    
-	    style->base[GTK_STATE_NORMAL].red = (gushort) prop.cmdLineColorBgR;
-	    style->base[GTK_STATE_NORMAL].green = (gushort) prop.cmdLineColorBgG;
-	    style->base[GTK_STATE_NORMAL].blue = (gushort) prop.cmdLineColorBgB;
-	    
-	    gtk_widget_set_style(entryCommand, style);
-	}
+	command_entry_update_color();
 
     /* macros */
     for(i=0; i<=MAX_PREFIXES-1; i++)
@@ -233,6 +223,7 @@ loadSession(void)
     prop.showTime = gnome_config_get_bool("mini_commander/show_time=true");
     prop.showDate = gnome_config_get_bool("mini_commander/show_date=false");
     prop.showHandle = gnome_config_get_bool("mini_commander/show_handle=true");
+    prop.showFrame = gnome_config_get_bool("mini_commander/show_frame=true");
 
     /* size */
     prop.normalSizeX = gnome_config_get_int("mini_commander/normal_size_x=148");
@@ -370,6 +361,7 @@ saveSession(void)
     gnome_config_set_bool("mini_commander/show_time", prop.showTime);
     gnome_config_set_bool("mini_commander/show_date", prop.showDate);
     gnome_config_set_bool("mini_commander/show_handle", prop.showHandle);
+    gnome_config_set_bool("mini_commander/show_frame", prop.showFrame);
 
     /* size */
     gnome_config_set_int("mini_commander/normal_size_x", prop.normalSizeX);
@@ -442,7 +434,7 @@ propertiesBox(AppletWidget *applet, gpointer data)
     GtkWidget *vbox, *vbox1, *frame;
     GtkWidget *hbox, *hbox1;
     GtkWidget *table;
-    GtkWidget *checkTime, *checkDate, *checkHandle;
+    GtkWidget *checkTime, *checkDate, *checkHandle, *checkFrame;
     GtkWidget *label;
     GtkWidget *entry;
     GtkWidget *colorPicker;
@@ -482,7 +474,6 @@ propertiesBox(AppletWidget *applet, gpointer data)
     gtk_box_pack_start(GTK_BOX(vbox1), checkTime, FALSE, TRUE, 0);
 
     /* show date check box */
-
     checkDate = gtk_check_button_new_with_label (_("Show date"));
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(checkDate), prop.showDate);
     gtk_signal_connect(GTK_OBJECT(checkDate),
@@ -494,9 +485,16 @@ propertiesBox(AppletWidget *applet, gpointer data)
 			      GTK_OBJECT(propertiesBox));
     gtk_box_pack_start(GTK_BOX(vbox1), checkDate, FALSE, TRUE, 0);
 
-    /* show handle check box */
+    /* appearance */
+    frame = gtk_frame_new(_("Appearance (experimental, you have to restart the applet)"));
+    gtk_box_pack_start(GTK_BOX(vbox), frame, FALSE, FALSE, 0);
 
-    checkHandle = gtk_check_button_new_with_label (_("Show handle (experimental, you have to restart the applet)"));
+    vbox1 = gtk_vbox_new(FALSE, GNOME_PAD_SMALL);
+    gtk_container_set_border_width(GTK_CONTAINER(vbox1), GNOME_PAD_SMALL);
+    gtk_container_add(GTK_CONTAINER(frame), vbox1);
+
+    /* show handle check box */
+    checkHandle = gtk_check_button_new_with_label (_("Show handle"));
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(checkHandle), prop.showHandle);
     gtk_signal_connect(GTK_OBJECT(checkHandle),
                        "toggled",
@@ -506,6 +504,18 @@ propertiesBox(AppletWidget *applet, gpointer data)
                               GTK_SIGNAL_FUNC(gnome_property_box_changed),
                               GTK_OBJECT(propertiesBox));
     gtk_box_pack_start(GTK_BOX(vbox1), checkHandle, FALSE, TRUE, 0);
+
+    /* show frame check box */
+    checkFrame = gtk_check_button_new_with_label (_("Show frame"));
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(checkFrame), prop.showFrame);
+    gtk_signal_connect(GTK_OBJECT(checkFrame),
+                       "toggled",
+                       GTK_SIGNAL_FUNC(checkBoxToggled_signal),
+                       &propTmp.showFrame);
+    gtk_signal_connect_object(GTK_OBJECT(checkFrame), "toggled",
+                              GTK_SIGNAL_FUNC(gnome_property_box_changed),
+                              GTK_OBJECT(propertiesBox));
+    gtk_box_pack_start(GTK_BOX(vbox1), checkFrame, FALSE, TRUE, 0);
 
     /* Size */
     frame = gtk_frame_new(_("Size"));
