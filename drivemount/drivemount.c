@@ -498,7 +498,7 @@ help_cb (BonoboUIComponent *uic,
      						      GNOME_PROGRAM_STANDARD_PROPERTIES, NULL);
 	}
 
-	egg_help_display_desktop_on_screen (
+	gnome_help_display_desktop_on_screen (
 			applet_program, "drivemount", "drivemount", NULL,
 			gtk_widget_get_screen (GTK_WIDGET (drivemount->applet)),
 			&error);
