@@ -246,7 +246,9 @@ static void load_locations (void)
                                                       NULL, NULL, NULL, NULL,
                                                       FALSE, TRUE);
                     weather_location = weather_location_new(locdata[0], locdata[1], locdata[2], locdata[3]);
-                    gtk_ctree_node_set_row_data (ctree, location, weather_location);
+                    gtk_ctree_node_set_row_data_full (ctree, location,
+                                                      weather_location,
+                                                      (GtkDestroyNotify)weather_location_free);
 
                     if (gweather_pref.location && weather_location_equal(weather_location, gweather_pref.location)) {
                         gtk_ctree_expand (ctree, state);
