@@ -117,11 +117,11 @@ calculate_pupil_xy (EyesApplet *eyes_applet,
         double nx;
         double ny;
         double h;
-        
+        double temp;
+     
         nx = x - ((double) eyes_applet->eye_width / 2);
         ny = y - ((double) eyes_applet->eye_height / 2);
-        
-        angle = atan2 (nx, ny);
+       
         h = hypot (nx, ny);
         if (abs (h) 
             < (abs (hypot (eyes_applet->eye_height / 2, eyes_applet->eye_width / 2)) - eyes_applet->wall_thickness - eyes_applet->pupil_height)) {
@@ -130,15 +130,21 @@ calculate_pupil_xy (EyesApplet *eyes_applet,
                 return;
         }
         
+        angle = atan2 (nx, ny);
         sina = sin (angle);
         cosa = cos (angle);
         
-        *pupil_x = hypot ((eyes_applet->eye_height / 2) * cosa, (eyes_applet->eye_width / 2)* sina) * sina;
-        *pupil_y = hypot ((eyes_applet->eye_height / 2) * cosa, (eyes_applet->eye_width / 2)* sina) * cosa;
-        *pupil_x -= hypot ((eyes_applet->pupil_width / 2) * sina, (eyes_applet->pupil_height / 2)* cosa) * sina;
-        *pupil_y -= hypot ((eyes_applet->pupil_width / 2) * sina, (eyes_applet->pupil_height / 2) * cosa) * cosa;
-        *pupil_x -= hypot ((eyes_applet->wall_thickness / 2) * sina, (eyes_applet->wall_thickness / 2) * cosa) * sina;
-        *pupil_y -= hypot ((eyes_applet->wall_thickness / 2) * sina, (eyes_applet->wall_thickness / 2)* cosa) * cosa;
+        temp = hypot ((eyes_applet->eye_height / 2) * cosa, (eyes_applet->eye_width / 2)* sina);
+        *pupil_x = temp * sina;
+        *pupil_y = temp * cosa;
+       
+        temp = hypot ((eyes_applet->pupil_width / 2) * sina, (eyes_applet->pupil_height / 2)* cosa);
+        *pupil_x -= temp * sina;
+        *pupil_y -= temp * cosa;
+        
+        temp = hypot ((eyes_applet->wall_thickness / 2) * sina, (eyes_applet->wall_thickness / 2) * cosa);
+        *pupil_x -= temp * sina;
+        *pupil_y -= temp * cosa;
         
         *pupil_x += (eyes_applet->eye_width / 2);
         *pupil_y += (eyes_applet->eye_height / 2);
@@ -150,30 +156,32 @@ draw_eye (EyesApplet *eyes_applet,
           gint pupil_x, 
           gint pupil_y)
 {
-	gdk_pixbuf_render_to_drawable_alpha (eyes_applet->eye_image, 
-					     eyes_applet->eyes[eye_num]->window,
-					     0, 0, 
-                         		     0, 0,
-                         		     eyes_applet->eye_width, 
-                         		     eyes_applet->eye_height,
-                         		     GDK_PIXBUF_ALPHA_BILEVEL,
-                         		     128,
-                         		     GDK_RGB_DITHER_NONE,
-                         		     0,
-                         		     0);
-        
-	gdk_pixbuf_render_to_drawable_alpha (eyes_applet->pupil_image, 
-					     eyes_applet->eyes[eye_num]->window,
-					     0, 0, 
-                         		     pupil_x - eyes_applet->pupil_width / 2, 
-                         		     pupil_y - eyes_applet->pupil_height / 2,
-                         		     -1, -1,
-                         		     GDK_PIXBUF_ALPHA_BILEVEL,
-                         		     128,
-                         		     GDK_RGB_DITHER_NONE,
-                         		     0,
-                         		     0);
- 
+	GdkPixbuf *pixbuf;
+	GdkRectangle rect, r1, r2;
+
+	pixbuf = gdk_pixbuf_copy (eyes_applet->eye_image);
+	r1.x = pupil_x - eyes_applet->pupil_width / 2;
+	r1.y = pupil_y - eyes_applet->pupil_height / 2;
+	r1.width = eyes_applet->pupil_width;
+	r1.height = eyes_applet->pupil_height;
+	r2.x = 0;
+	r2.y = 0;
+	r2.width = eyes_applet->eye_width;
+	r2.height = eyes_applet->eye_height;
+	gdk_rectangle_intersect (&r1, &r2, &rect);
+	gdk_pixbuf_composite (eyes_applet->pupil_image, pixbuf, 
+					   rect.x,
+					   rect.y,
+					   rect.width,
+				      	   rect.height,
+				      	   pupil_x - eyes_applet->pupil_width / 2,
+					   pupil_y - eyes_applet->pupil_height / 2, 1.0, 1.0,
+				      	   GDK_INTERP_BILINEAR,
+				           255);
+	gtk_image_set_from_pixbuf (GTK_IMAGE (eyes_applet->eyes[eye_num]),
+						  pixbuf);
+	g_object_unref (pixbuf);
+
 }
 
 static gint 
@@ -185,8 +193,8 @@ timer_cb (EyesApplet *eyes_applet)
         
         for (i = 0; i < eyes_applet->num_eyes; i++) {
 		if (GTK_WIDGET_REALIZED (eyes_applet->eyes[i])) {
-			gdk_window_get_pointer (eyes_applet->eyes[i]->window, 
-						&x, &y, NULL);
+			gtk_widget_get_pointer (eyes_applet->eyes[i], 
+						&x, &y);
 			calculate_pupil_xy (eyes_applet, x, y, &pupil_x, &pupil_y);
 			draw_eye (eyes_applet, i, pupil_x, pupil_y);
 		}
@@ -279,8 +287,7 @@ setup_eyes (EyesApplet *eyes_applet)
         gtk_fixed_put (GTK_FIXED (eyes_applet->fixed), eyes_applet->hbox, 0, 0);
 
         for (i = 0; i < eyes_applet->num_eyes; i++) {
-                eyes_applet->eyes[i] = gtk_drawing_area_new ();
-                
+                eyes_applet->eyes[i] = gtk_image_new ();
                 if (eyes_applet->eyes[i] == NULL)
                         g_error ("Error creating geyes\n");
                
