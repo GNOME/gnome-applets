@@ -10,8 +10,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets\n"
-"POT-Creation-Date: 2002-12-01 12:09+0100\n"
-"PO-Revision-Date: 2002-12-01 12:12+0100\n"
+"POT-Creation-Date: 2002-12-03 17:00+0100\n"
+"PO-Revision-Date: 2002-12-03 17:02+0100\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -291,7 +291,7 @@ msgstr "Detta verktyg visar laddningsnivån på batteriet i din bärbara dator."
 msgid "100%"
 msgstr "100%"
 
-#: battstat/battstat_applet.glade.h:3
+#: battstat/battstat_applet.glade.h:3 gtik/gtik.c:1456
 #: mini-commander/src/mini-commander.glade.h:3
 msgid "Appearance"
 msgstr "Utseende"
@@ -313,8 +313,8 @@ msgstr "Nivåfärger för batteri (%)"
 msgid "Beep when either of the above is true"
 msgstr "Pip till när något av ovanstående händer"
 
-#: battstat/battstat_applet.glade.h:9
-#: mini-commander/src/mini-commander.glade.h:12
+#: battstat/battstat_applet.glade.h:9 gweather/gweather-pref.c:707
+#: mini-commander/src/mini-commander.glade.h:12 modemlights/properties.c:428
 msgid "General"
 msgstr "Allmänt"
 
@@ -884,12 +884,18 @@ msgid "Keyboard Layout Switcher Preferences"
 msgstr "Inställningar för tangentbordsbytare"
 
 #: gkb-new/prop.c:440
-msgid "_Keymaps"
-msgstr "_Tangentbordstabeller"
+msgid "Keymaps"
+msgstr "Tangentbordstabeller"
 
-#: gkb-new/prop.c:452
-msgid "_Options"
-msgstr "Alternati_v"
+#.
+#. check_box = gtk_check_button_new_with_mnemonic(_("_Average"));
+#. gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_box),
+#. panel_applet_gconf_get_bool(multiload_applet->applet, "view_loadavg", NULL));
+#. gtk_box_pack_start(GTK_BOX(hbox), check_box, FALSE, FALSE, 0);
+#.
+#: gkb-new/prop.c:452 multiload/properties.c:313
+msgid "Options"
+msgstr "Alternativ"
 
 #: gkb-new/system.c:46
 #, c-format
@@ -1023,16 +1029,12 @@ msgid "_Font:"
 msgstr "_Typsnitt:"
 
 #: gtik/gtik.c:1452
-msgid "_Symbols"
-msgstr "_Symboler"
+msgid "Symbols"
+msgstr "Symboler"
 
 #: gtik/gtik.c:1454
-msgid "_Behavior"
-msgstr "_Beteende"
-
-#: gtik/gtik.c:1456
-msgid "_Appearance"
-msgstr "_Utseende"
+msgid "Behavior"
+msgstr "Beteende"
 
 # SUN NEW TRANSLATION
 #: gtik/gtik.c:1541
@@ -1223,54 +1225,50 @@ msgstr "Ange URL:en"
 msgid "Weather Preferences"
 msgstr "Väderinställningar"
 
-#: gweather/gweather-pref.c:610
-msgid "_Location"
-msgstr "_Plats"
-
-#: gweather/gweather-pref.c:641
+#: gweather/gweather-pref.c:604
 msgid "_Automatically update every"
 msgstr "_Uppdatera automatiskt var"
 
-#: gweather/gweather-pref.c:647
+#: gweather/gweather-pref.c:610
 msgid "Use _metric system units"
 msgstr "Använd _metriska enheter"
 
-#: gweather/gweather-pref.c:653
+#: gweather/gweather-pref.c:616
 msgid "Enable _detailed forecast"
 msgstr "Använd _detaljerad prognos"
 
-#: gweather/gweather-pref.c:660
+#: gweather/gweather-pref.c:623
 msgid "Enable _radar map"
 msgstr "Använd _radarkarta"
 
-#: gweather/gweather-pref.c:666
+#: gweather/gweather-pref.c:629
 msgid "Use cus_tom address for radar map"
 msgstr "Använd an_passad adress för radarkarta"
 
-#: gweather/gweather-pref.c:677
+#: gweather/gweather-pref.c:640
 msgid "A_ddress :"
 msgstr "A_dress:"
 
-#: gweather/gweather-pref.c:689
+#: gweather/gweather-pref.c:652
 msgid "Updates"
 msgstr "Uppdateringar"
 
-#: gweather/gweather-pref.c:695
+#: gweather/gweather-pref.c:658
 msgid "_Automatically update every "
 msgstr "_Uppdatera automatiskt var "
 
-#: gweather/gweather-pref.c:715
+#: gweather/gweather-pref.c:678
 msgid "minute(s)"
 msgstr "minut"
 
 #. The Miscellaneous frame
-#: gweather/gweather-pref.c:726
+#: gweather/gweather-pref.c:689
 msgid "Miscellaneous"
 msgstr "Diverse"
 
-#: gweather/gweather-pref.c:744 modemlights/properties.c:428
-msgid "_General"
-msgstr "_Allmänt"
+#: gweather/gweather-pref.c:744
+msgid "Location"
+msgstr "Plats"
 
 #: gweather/weather.c:57
 msgid "knots"
@@ -2592,7 +2590,8 @@ msgstr "Panelprograms_bredd:"
 msgid "Autocompletion"
 msgstr "Automatisk ifyllnad"
 
-#: mini-commander/src/mini-commander.glade.h:6 multiload/properties.c:365
+#: mini-commander/src/mini-commander.glade.h:6 modemlights/properties.c:468
+#: multiload/properties.c:365
 msgid "Colors"
 msgstr "Färger"
 
@@ -2887,10 +2886,6 @@ msgstr "Ba_kgrund"
 msgid "O_utline"
 msgstr "_Ram"
 
-#: modemlights/properties.c:468
-msgid "C_olors"
-msgstr "F_ärger"
-
 #: modemlights/properties.c:477
 msgid "Modem options"
 msgstr "Modemalternativ"
@@ -2917,8 +2912,8 @@ msgid "Set options as default"
 msgstr "Ställ in alternativ som standard"
 
 #: modemlights/properties.c:554
-msgid "_Advanced"
-msgstr "_Avancerat"
+msgid "Advanced"
+msgstr "Avancerat"
 
 #: multiload/GNOME_MultiLoadApplet_Factory.server.in.in.h:1
 msgid "A system load indicator"
@@ -2953,19 +2948,19 @@ msgstr ""
 "En systemövervakare som kan visa grafer för processor-, minnes- och "
 "växlingsfilsanvändning, plus nätverkstrafik."
 
-#: multiload/main.c:236
+#: multiload/main.c:236 multiload/properties.c:373
 msgid "Processor"
 msgstr "Processor"
 
-#: multiload/main.c:238
+#: multiload/main.c:238 multiload/properties.c:379
 msgid "Memory"
 msgstr "Minne"
 
-#: multiload/main.c:240
+#: multiload/main.c:240 multiload/properties.c:385
 msgid "Network"
 msgstr "Nätverk"
 
-#: multiload/main.c:242
+#: multiload/main.c:242 multiload/properties.c:391
 msgid "Swap File"
 msgstr "Växlingsfil"
 
@@ -3010,16 +3005,6 @@ msgstr "_Nätverk"
 msgid "_Swap File"
 msgstr "_Växlingsfil"
 
-#.
-#. check_box = gtk_check_button_new_with_mnemonic(_("_Average"));
-#. gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(check_box),
-#. panel_applet_gconf_get_bool(multiload_applet->applet, "view_loadavg", NULL));
-#. gtk_box_pack_start(GTK_BOX(hbox), check_box, FALSE, FALSE, 0);
-#.
-#: multiload/properties.c:313
-msgid "Options"
-msgstr "Alternativ"
-
 #: multiload/properties.c:326
 msgid "System m_onitor width: "
 msgstr "System_övervakarbredd: "
@@ -3040,10 +3025,6 @@ msgstr "Uppdateringsintervall för sys_temövervakare: "
 msgid "milliseconds"
 msgstr "millisekunder"
 
-#: multiload/properties.c:373
-msgid "P_rocessor"
-msgstr "P_rocessor"
-
 #: multiload/properties.c:374
 msgid "_User"
 msgstr "_Användare"
@@ -3059,10 +3040,6 @@ msgstr "\"N_ice\""
 #: multiload/properties.c:377
 msgid "I_dle"
 msgstr "_Tomgång (idle)"
-
-#: multiload/properties.c:379
-msgid "M_emory"
-msgstr "_Minne"
 
 #: multiload/properties.c:380
 msgid "Ot_her"
@@ -3080,10 +3057,6 @@ msgstr "_Buffertar"
 msgid "F_ree"
 msgstr "Ledi_gt"
 
-#: multiload/properties.c:385
-msgid "Net_work"
-msgstr "Nät_verk"
-
 #: multiload/properties.c:386
 msgid "S_LIP"
 msgstr "S_LIP"
@@ -3099,10 +3072,6 @@ msgstr "Et_hernet"
 #: multiload/properties.c:389
 msgid "_Other"
 msgstr "_Annat"
-
-#: multiload/properties.c:391
-msgid "Swap _File"
-msgstr "Växlings_fil"
 
 #: multiload/properties.c:392
 msgid "_Used"
@@ -3379,6 +3348,45 @@ msgstr "Inställningar för övervakare av trådlös länk"
 #: wireless/GNOME_Panel_WirelessApplet.server.in.in.h:1
 msgid "Monitor the quality of a wireless network link"
 msgstr "Övervaka kvaliteten på en trådlös nätverkslänk"
+
+#~ msgid "_Keymaps"
+#~ msgstr "_Tangentbordstabeller"
+
+#~ msgid "_Symbols"
+#~ msgstr "_Symboler"
+
+#~ msgid "_Behavior"
+#~ msgstr "_Beteende"
+
+#~ msgid "_Location"
+#~ msgstr "_Plats"
+
+#~ msgid "_Advanced"
+#~ msgstr "_Avancerat"
+
+#~ msgid "_Options"
+#~ msgstr "Alternati_v"
+
+#~ msgid "_Appearance"
+#~ msgstr "_Utseende"
+
+#~ msgid "_General"
+#~ msgstr "_Allmänt"
+
+#~ msgid "C_olors"
+#~ msgstr "F_ärger"
+
+#~ msgid "P_rocessor"
+#~ msgstr "P_rocessor"
+
+#~ msgid "M_emory"
+#~ msgstr "_Minne"
+
+#~ msgid "Net_work"
+#~ msgstr "Nät_verk"
+
+#~ msgid "Swap _File"
+#~ msgstr "Växlings_fil"
 
 #~ msgid "_Edit"
 #~ msgstr "_Redigera"
