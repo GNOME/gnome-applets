@@ -1,8 +1,6 @@
-INCLUDES = -I. -I$(srcdir) 				\
-	-I$(top_srcdir)/intl -I$(top_builddir)/intl	\
-	-I$(srcdir)/../../panel				\
-	-I$(top_builddir)/panel \
-	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"	\
+INCLUDES = -I. -I$(srcdir)                              \
+	-I$(top_srcdir)/intl -I$(top_builddir)/intl     \
+	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"        \
 	-I$(includedir) $(GNOME_INCLUDEDIR)		\
 	@PIXBUF_CFLAGS@
 
@@ -10,12 +8,12 @@ bin_PROGRAMS = gkb_applet
 
 gkb_applet_SOURCES= gkb.c
 
-gkb_applet_LDADD = ../../panel/libpanel_applet.la \
+gkb_applet_LDADD =     $(GNOME_APPLETS_LIBS) \
                        $(GNOME_LIBDIR) \
                        $(GNOMEGNORBA_LIBS) $(INTLLIBS) \
                        @PIXBUF_LIBS@
 
-SUBDIRS= gkb xmodmap help
+SUBDIRS= gkb xmodmap docs
 
 GKB_ICON = gkb.png
 
@@ -30,3 +28,13 @@ gkbicon_DATA = $(GKB_ICON)
 
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = gkb_applet.gnorba
+
+gkb.presets: gkb.presets.in ../config.status
+	sed -e 's,\$\{prefix\},$(prefix),g' \
+	< $(srcdir)/gkb.presets.in > gkb.presets.tmp \ 
+	&& mv gkb.presets.tmp gkb.presets
+
+gkb_xmmap: gkb_xmmap.in ../config.status
+	sed -e 's,\$\{prefix\},$(prefix),g' \
+	< $(srcdir)/gkb_xmmap.in > gkb_xmmap.tmp \ 
+	&& mv gkb_xmmap.tmp gkb_xmmap

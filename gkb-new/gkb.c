@@ -94,6 +94,26 @@ static void prophelp_cb (AppletWidget * widget, gpointer data);
 static void makenotebook(GKB * gkb,Prop * actdata, int i);
 Prop * loadprop(GKB * gkb,int i);
 
+static GList *
+load_presets(GKB * gkb)
+{
+  int i, num_sets;
+  char prefix[1024];
+  GSList* list = 0;
+
+  g_snprintf (prefix, sizeof(prefix), "gkb.presets/gkb");
+
+  gnome_config_push_prefix (prefix);
+  num_sets = gnome_config_get_int ("number_of_sets=0");
+  gnome_config_pop_prefix ();
+
+  for (i = 0; i < num_sets; ++i)
+    {
+     /* 
+     g_snprintf (prefix, sizeof(prefix), "%s%s/%d,", file, session, i);
+     */
+    }
+}
 
 static void
 makepix (Prop * actdata, char *fname, int w, int h)
@@ -280,18 +300,22 @@ load_properties (GKB * gkb)
            actdata = loadprop(gkb,i);
            gkb->maps = g_list_append (gkb->maps, actdata);
           }
+      applet_save_session (gkb->propbox,
+                           APPLET_WIDGET(gkb->applet)->privcfgpath,
+                           APPLET_WIDGET(gkb->applet)->globcfgpath,
+                           gkb);
 }
 
 static void
 delmap_cb (GnomePropertyBox * pb, Prop * data)
 {
-   /* TODO: write this 
-    g_list_remove((GKB *)(data->gkb)->maps,data);
-   
+   /* TODO: write this
+
+   g_list_remove((GKB *)(data->gkb)->maps,data);
     
    gtk_notebook_remove (GTK_NOTEBOOK (data->notebook),
         gtk_notebook_get_nth_page (GTK_NOTEBOOK(data->notebook),
-	   data->i)
+	   data->i);
     */	   
 }
 
@@ -324,12 +348,16 @@ apply_cb (GtkWidget * pb, gint page, GKB * gkb)
   if (page != -1)
     return;			/* Thanks Havoc -- Julian7 */
 
-  while (actdata = g_list_nth_data (gkb->maps, i++))
-    { 	
-      /* TODO: free !! leak !! */
-      memcpy (actdata->name,&actdata->tname,strlen((char *)&actdata->tname)+1);
-      memcpy (actdata->iconpath,&actdata->ticonpath,strlen((char *)&actdata->ticonpath)+1);
-      memcpy (actdata->command,&actdata->tcommand,strlen((char *)&actdata->tcommand)+1);
+  while ((actdata = g_list_nth_data (gkb->maps, i++)) != NULL)
+    {
+      /* TODO: tname, ticonpath, tcommand */
+      /* contains the updated values after this... */
+
+      actdata->name = gtk_entry_get_text(GTK_ENTRY (actdata->keymapname));
+      
+      actdata->iconpath = gnome_icon_entry_get_filename (GNOME_ICON_ENTRY(actdata->iconentry));
+	  
+      actdata->command = gtk_entry_get_text(GTK_ENTRY(actdata->commandinput));
 
       gtk_notebook_set_tab_label_text (GTK_NOTEBOOK (actdata->notebook),
         gtk_notebook_get_nth_page (GTK_NOTEBOOK(actdata->notebook),
@@ -705,15 +733,14 @@ about_cb (AppletWidget * widget, gpointer gkbx)
 			   VERSION,
 			   _("(C) 1998-2000 LSC - Linux Support Center"),
 			   authors,
-			   _("This applet switches between "
-			     "keyboard maps. It uses "
-			     "setxkbmap, or xmodmap.\n"
-			     "Mail me your flag, please (60x40 size),"
+			   _("This applet switches between keyboard maps. "
+			     "It uses setxkbmap, or xmodmap.\n"
+			     "Mail me your flag, please (60x40 size), "
 			     "I will put it to CVS.\n"
 			     "So long, and thanks for all the fish.\n"
-			     "Thanks for Balazs Nagy (Kevin)"
+			     "Thanks for Balazs Nagy (Kevin) "
 			     "<julian7@kva.hu> for his help "
-			     "and Emese Kovacs <emese@gnome.hu> for"
+			     "and Emese Kovacs <emese@eik.bme.hu> for "
 			     "her solidarity."), 
 			     "gkb.png");
 
@@ -784,7 +811,8 @@ gkb_activator (PortableServer_POA poa,
 	       const char **params,
 	       gpointer * impl_ptr, CORBA_Environment * ev)
 {
-  GKB *gkb;
+  GKB * gkb;
+  GList * list;
 
   gkb = g_new0 (GKB, 1);
 
@@ -810,6 +838,8 @@ gkb_activator (PortableServer_POA poa,
   gtk_widget_set_uposition (bah_window, gdk_screen_width () + 1,
 			    gdk_screen_height () + 1);
   gtk_widget_show_now (bah_window);
+
+  list = load_presets (gkb);
 
   load_properties (gkb);
 
