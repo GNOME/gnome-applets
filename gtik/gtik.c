@@ -523,6 +523,16 @@ static gint updateOutput(gpointer data)
 
 		return TRUE;
 	}
+	
+	static gboolean is_visible (int start, int end, int width)
+	{
+		if (start >= 0 && start<= width)
+			return TRUE;
+		else if (end >= 0 && end <= width)
+			return TRUE;
+		else	
+			return FALSE;
+	}
 
 	/*-----------------------------------------------------------------*/
 	static gint Repaint (gpointer data) {
@@ -537,6 +547,7 @@ static gint updateOutput(gpointer data)
 		PangoRectangle logical_rect;
 		int	comp;
 		gint n = 0, totalLen2 = 0;
+		int start, end, width;
 
 		/* FOR COLOR */
 		int totalLoc;
@@ -615,21 +626,31 @@ static gint updateOutput(gpointer data)
 				gdk_gc_set_foreground( gc, &stockdata->gdkFGcolor );
 			}
 
-			pango_layout_set_text (layout,
+			start = stockdata->location + totalLoc;
+			end = stockdata->location + totalLoc +
+			      STOCK_QUOTE(quotes->data)[i].pricelen + 10;
+			width = drawing_area->allocation.width;
+			if (is_visible (start, end, width)) {
+				pango_layout_set_text (layout,
 					       STOCK_QUOTE(quotes->data)[i].price,
 					       -1);	
-			gdk_draw_layout (stockdata->pixmap, gc,
-					 stockdata->location + totalLoc , 3,
+				gdk_draw_layout (stockdata->pixmap, gc,
+					 start , 3,
 					 layout);
+			}
 			totalLoc += STOCK_QUOTE(quotes->data)[i].pricelen + 10;
-
-
+			
 			if (stockdata->props.output == FALSE) {
-				pango_layout_set_text (layout, 
-					STOCK_QUOTE(quotes->data)[i].change, -1);
-				gdk_draw_layout (stockdata->pixmap,
+				start = stockdata->location + totalLoc;
+				end = stockdata->location + totalLoc +
+				      STOCK_QUOTE(quotes->data)[i].changelen + 10;
+				if (is_visible (start, end, width)) {
+					pango_layout_set_text (layout, 
+						STOCK_QUOTE(quotes->data)[i].change, -1);
+					gdk_draw_layout (stockdata->pixmap,
 					     		gc, stockdata->location + totalLoc,
 					     		3, layout);
+				}
 				totalLoc += STOCK_QUOTE(quotes->data)[i].changelen + 10;
 			}
 			
