@@ -50,7 +50,7 @@ preset_data_predata = AM_Armenian.keyprop.in AR_Arabic.keyprop.in \
 		US-int.keyprop.in US-mac.keyprop.in US-sgi-101.keyprop.in \
 		US-sun.keyprop.in US.keyprop.in US_English.keyprop.in \
 		US_international.keyprop.in VN_Vietnamese.keyprop.in \
-		YU_Serbo-Croatian_x.keyprop.in Yugoslav.keyprop.in \
+		YU_Serb_x.keyprop.in Yugoslav.keyprop.in \
 		Macedonian.keyprop.in Basque.keyprop.in \
 		RU_Russian_x_rev.keyprop.in Dvorak.keyprop.in \
 		Default.keyprop.in ES_Spanish-x86.keyprop.in \
@@ -59,10 +59,21 @@ preset_data_predata = AM_Armenian.keyprop.in AR_Arabic.keyprop.in \
 		HR_Croatian.keyprop.in AR_Arabic_x.keyprop.in \
 		KR_Korean.keyprop.in
 
+
 presetdir = $(datadir)/gnome/gkb
 preset_in_files = $(preset_data_predata)
 preset_DATA = $(preset_in_files:.keyprop.in=.keyprop)
-EXTRA_DIST = $(preset_DATA)
+EXTRA_DIST = $(preset_DATA) $(xml_DATA)
+
+xml_in_files = presets.xml.in
+XMLS = $(xml_in_files:.xml.in=.xml)
+
+xmldir = $(datadir)/gnome/gkb
+xml_DATA = $(XMLS)
+
+%.xml: %.xml.in $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*.po)
+		$(INTLTOOL_MERGE) $(top_srcdir)/po $< $@ -x -u \
+                -c $(top_srcdir)/po/.intltool-merge-cache
 
 clean-local:
 	rm -f *~ *.keyprop
