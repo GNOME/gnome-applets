@@ -910,7 +910,7 @@ trash_applet_fill (PanelApplet *applet)
                           ta);
         g_signal_connect (G_OBJECT (ta->applet),
                           "button-release-event",
-                          G_CALLBACK (button_press_cb),
+                          G_CALLBACK (button_release_cb),
                           ta);
 	g_signal_connect (G_OBJECT (ta->icon_theme),
 			"changed",
