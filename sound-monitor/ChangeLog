@@ -1,3 +1,8 @@
+Fri Aug 20 08:20:24 1999  John Ellis  <johne@bellatlantic.net>
+
+	* main.c, theme.c: Don't use gdk_imlib_free_bitmap !
+	Freeing pixmaps created with imlib automagickly frees the mask.
+
 1999-08-15  Jacob Berkman  <jberkman@andrew.cmu.edu>
 
 	* sound-monitor_applet.desktop (Icon): use the vu meter icon

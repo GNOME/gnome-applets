@@ -42,7 +42,6 @@ static GdkPixmap *get_pixmap_from_data(gchar **data)
 	GdkBitmap *mask = NULL;
 
 	gdk_imlib_data_to_pixmap(data, &pixmap, &mask);
-	if (mask) gdk_imlib_free_bitmap(mask);
 	return pixmap;
 }
 
@@ -54,7 +53,6 @@ static GdkPixmap *get_pixmap_from_file(gchar *path)
 	if (!g_file_exists(path)) return NULL;
 
 	gdk_imlib_load_file_to_pixmap(path, &pixmap, &mask);
-	if (mask) gdk_imlib_free_bitmap(mask);
 	return pixmap;
 }
 
@@ -387,7 +385,7 @@ static void free_scope_item(ScopeData *item)
 {
 	if (!item) return;
 	if (item->pixmap) gdk_imlib_free_pixmap(item->pixmap);
-	if (item->mask) gdk_imlib_free_bitmap(item->mask);
+	if (item->mask) gdk_pixmap_unref(item->mask);
 	if (item->mask_gc) gdk_gc_unref(item->mask_gc);
 	g_free(item->pts);
 	g_free(item);
