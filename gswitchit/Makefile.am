@@ -21,7 +21,7 @@ if ENABLE_FLAGS
   flags_CFLAGS = -DENABLE_FLAGS=1
 endif
 
-COMMON_CFLAGS = -I$(top_srcdir) -I. -I$(top_srcdir)/intl \
+COMMON_CFLAGS = -Wall -Werror -I$(top_srcdir) -I. -I$(top_srcdir)/intl \
            -DGNOMELOCALEDIR=\""$(datadir)/locale"\" \
            -DG_LOG_DOMAIN=\"GSwitchIt\" \
            -DGLADE_DIR=\""$(gladedir)"\" \

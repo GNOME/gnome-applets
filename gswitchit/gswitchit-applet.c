@@ -68,10 +68,6 @@ static void GSwitchItAppletCleanupGroupsSubmenu (GSwitchItApplet * sia);
 
 static void GSwitchItAppletSetupGroupsSubmenu (GSwitchItApplet * sia);
 
-static GdkFilterReturn GSwitchItAppletWmProtocolsFilter (GdkXEvent * xev,
-							 GdkEvent * event,
-							 gpointer data);
-
 static void GSwitchItAppletFillNotebook (GSwitchItApplet * sia);
 
 static void GSwitchItAppletCleanupNotebook (GSwitchItApplet * sia);
@@ -195,7 +191,6 @@ GSwitchItAppletFilterXEvt (GdkXEvent * xev,
 			   GdkEvent * event, GSwitchItApplet * sia)
 {
 	XEvent *xevent = (XEvent *) xev;
-	Display *display = xevent->xany.display;
 	XklFilterEvents (xevent);
 	switch (xevent->type) {
 	case ReparentNotify:
@@ -213,26 +208,6 @@ GSwitchItAppletFilterXEvt (GdkXEvent * xev,
 			XklSetTransparent (GDK_WINDOW_XID (w), TRUE);
 		}
 		break;
-	}
-
-	return GDK_FILTER_CONTINUE;
-}
-
-GdkFilterReturn
-GSwitchItAppletWmProtocolsFilter (GdkXEvent *
-				  xev, GdkEvent * event, gpointer data)
-{
-	XEvent *xevent = (XEvent *) xev;
-	Display *display = xevent->xany.display;
-	if ((Atom) xevent->xclient.data.l[0] ==
-	    XInternAtom (display, "_NET_WM_PING", FALSE)) {
-		static long lastTimestamp = -1;
-		long thisTimestamp = xevent->xclient.data.l[1];
-		/* allow only events we have not processed yet */
-		if (lastTimestamp == thisTimestamp) {
-			return GDK_FILTER_REMOVE;
-		}
-		lastTimestamp = thisTimestamp;
 	}
 
 	return GDK_FILTER_CONTINUE;
@@ -304,7 +279,7 @@ GSwitchItAppletPrepareDrawing (GSwitchItApplet * sia, int group)
 		XklConfigItem configItem;
 		GtkWidget *align, *label;
 
-		if (XklMultipleLayoutsSupported ()) {
+		if (XklGetBackendFeatures() & XKLF_MULTIPLE_LAYOUTS_SUPPORTED) {
 			char *fullLayoutName =
 			    (char *) g_slist_nth_data (sia->xkbConfig.
 						       layouts, group);
@@ -709,7 +684,7 @@ GSwitchItAppletStartListen (GSwitchItApplet * sia)
 	gdk_window_add_filter (gdk_get_default_root_window (),
 			       (GdkFilterFunc) GSwitchItAppletFilterXEvt,
 			       sia);
-	XklStartListen ();
+	XklStartListen (XKLL_MANAGE_WINDOW_STATES);
 }
 
 static void
