@@ -766,10 +766,15 @@ mount_cb (GtkWidget *widget,
 
 	while (fgets (buf, sizeof (buf), fp) != NULL) {
 		gchar *b = buf;
-
+		const gchar *charset;
+		if (!g_get_charset (&charset)) {
+			b = g_convert (buf, -1, "UTF-8", charset, NULL, NULL, NULL);
+		} else {
+			b =g_strdup (buf);
+		}
 		g_string_append (str, b);
+		g_free (b);
 	}
-
 	pclose (fp);
 
 	dd->mounted = device_is_mounted (dd);
