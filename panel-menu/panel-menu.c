@@ -24,6 +24,8 @@
 #include <panel-applet.h>
 #include <panel-applet-gconf.h>
 #include <libwnck/libwnck.h>
+#include <gconf/gconf.h>
+#include <gconf/gconf-client.h>
 
 #include <gdk-pixbuf/gdk-pixbuf.h>
 
@@ -573,6 +575,13 @@ applet_destroy_cb (GtkWidget *widget, PanelMenu *panel_menu)
 
 	g_free (panel_menu->profile_id);
 	g_free (panel_menu->applet_id);
+
+	if (panel_menu->tearoffs_id) {
+		gconf_client_notify_remove (panel_menu->client,
+					    panel_menu->tearoffs_id);
+	}
+	g_object_unref (G_OBJECT (panel_menu->client));
+
 	for (cur = panel_menu->entries; cur; cur = cur->next) {
 		entry = (PanelMenuEntry *) cur->data;
 		panel_menu_common_call_entry_destroy (entry);

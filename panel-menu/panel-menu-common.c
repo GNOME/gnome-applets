@@ -20,6 +20,7 @@
 #include <libgnomeui/libgnomeui.h>
 #include <panel-applet.h>
 
+#include <gconf/gconf.h>
 #include <gconf/gconf-client.h>
 
 #include <libgnomevfs/gnome-vfs-types.h>
@@ -42,6 +43,7 @@
 #include "panel-menu-windows.h"
 #include "panel-menu-workspaces.h"
 #include "panel-menu-pixbuf.h"
+#include "panel-menu-config.h"
 #include "panel-menu-common.h"
 
 enum {
@@ -352,7 +354,7 @@ panel_menu_common_menu_from_path (gchar *name, gchar *subpath,
         tearoff = gtk_tearoff_menu_item_new ();
 	gtk_menu_shell_append (GTK_MENU_SHELL (submenu), tearoff);
 	if (gconf_client_get_bool (client, 
-				   "/desktop/gnome/interface/menus_have_tearoff", NULL)) {
+				  HAVE_TEAROFFS_KEY, NULL)) {
 		gtk_widget_show (tearoff);
 	}
 	g_object_unref (G_OBJECT (client));

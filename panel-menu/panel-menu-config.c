@@ -38,6 +38,9 @@
 
 static gchar *panel_menu_config_get_layout_string (PanelMenu *panel_menu);
 
+static void tearoff_visibility_changed (GConfClient *client, guint cnxn_id,
+					GConfEntry *entry, PanelMenu *panel_menu);
+
 gboolean
 panel_menu_config_load_prefs (PanelMenu *panel_menu)
 {
@@ -48,10 +51,6 @@ panel_menu_config_load_prefs (PanelMenu *panel_menu)
 	client = gconf_client_get_default ();
 
 	key = panel_applet_get_preferences_key (panel_menu->applet);
-
-	panel_menu->menu_tearoffs = gconf_client_get_bool (client, 
-							   "/desktop/gnome/interface/menus_have_tearoff", NULL);
-
 	if (gconf_client_dir_exists (client, key, NULL)) {
 		panel_menu->auto_directory_update =
 			panel_applet_gconf_get_bool (panel_menu->applet,
@@ -66,7 +65,15 @@ panel_menu_config_load_prefs (PanelMenu *panel_menu)
 		panel_menu->auto_directory_update_timeout = 30;
 	}
 	g_free (key);
-	g_object_unref (G_OBJECT (client));
+
+	panel_menu->menu_tearoffs = gconf_client_get_bool (client, 
+							   HAVE_TEAROFFS_KEY, NULL);
+	panel_menu->client = client;
+	gconf_client_add_dir (client, HAVE_TEAROFFS_KEY_PARENT,
+			      GCONF_CLIENT_PRELOAD_NONE, NULL);
+	panel_menu->tearoffs_id = gconf_client_notify_add (client, HAVE_TEAROFFS_KEY,
+		(GConfClientNotifyFunc)	tearoff_visibility_changed, panel_menu,
+		(GFreeFunc) NULL, NULL);
 	return retval;
 }
 
@@ -260,15 +267,55 @@ _gconf_client_clean_dir (GConfClient *client, const gchar *dir)
 	g_slist_free (entries);
 	gconf_client_unset (client, dir, NULL);
 }
-/*
+
 static void
-propogate_tearoff_visibility (PanelMenu *panel_menu)
+menuitem_propogate_tearoff_visibility (GtkMenuItem *menuitem, gboolean setting)
 {
-	GList *cur;
-	for (cur = panel_menu->entries; cur; cur = cur->next) {
-		PanelMenuEntry *entry;
-		entry = (PanelMenuEntry *)cur->data;
-		
+	GList *children;
+
+	g_return_if_fail (menuitem != NULL);
+
+	if (GTK_IS_TEAROFF_MENU_ITEM (menuitem)) {
+		if (setting)
+			gtk_widget_show (GTK_WIDGET (menuitem));
+		else
+			gtk_widget_hide (GTK_WIDGET (menuitem));
+	} else if (menuitem->submenu) {
+		GtkMenuShell *menu;
+		menu = GTK_MENU_SHELL (menuitem->submenu);
+		for (children = menu->children; children; children = children->next) {
+			g_print ("child found, propogating to next level\n");
+			menuitem_propogate_tearoff_visibility (GTK_MENU_ITEM (children->data),
+							       setting);
+		}
 	}
 }
-*/
+
+static void
+tearoff_visibility_changed (GConfClient *client,
+			    guint cnxn_id,
+			    GConfEntry *entry,
+			    PanelMenu *panel_menu)
+{
+	const gchar *key;
+	GConfValue  *value;
+	gint setting;
+	GList *cur;
+
+	g_return_if_fail (client != NULL);
+	g_return_if_fail (entry != NULL);
+
+	key = gconf_entry_get_key (entry);
+	value = gconf_entry_get_value (entry);
+	setting = gconf_value_get_bool (value);
+	g_print ("(tearoff-visiblity-changed) value %d\n", setting);
+	panel_menu->menu_tearoffs = setting;
+	for (cur = panel_menu->entries; cur; cur = cur->next) {
+		PanelMenuEntry *entry;
+		GtkMenuItem *menuitem;
+		entry = (PanelMenuEntry *)cur->data;
+		menuitem = GTK_MENU_ITEM(panel_menu_common_get_entry_menuitem (entry));
+		menuitem_propogate_tearoff_visibility (menuitem,
+						       panel_menu->menu_tearoffs);
+	}
+}

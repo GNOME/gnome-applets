@@ -24,6 +24,8 @@
 #include <gtk/gtk.h>
 #include <panel-applet.h>
 #include <libgnomevfs/gnome-vfs-uri.h>
+#include <gconf/gconf.h>
+#include <gconf/gconf-client.h>
 
 G_BEGIN_DECLS
 
@@ -61,12 +63,14 @@ typedef struct _PanelMenu
 	/* Behavior */
 	gboolean auto_directory_update;
 	gint auto_directory_update_timeout;
+	/* GConf client that listens to some keys for us */
+	GConfClient *client;
+	guint tearoffs_id;
 	/* DnD data */
 	gint position;
 	gboolean on_item;
 	/* List of our children */
 	GList *entries;
-	/* If the config has changed since last save */
 }PanelMenu;
 
 typedef struct _PanelMenuEntry
