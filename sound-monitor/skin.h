@@ -18,7 +18,7 @@ void applet_skin_redraw_all(AppData *ad);
 void applet_skin_backing_sync(AppData *ad);
 void applet_skin_window_sync(AppData *ad);
 
-gint skin_set(gchar *path, AppData *ad);
+gint skin_set(const gchar *path, AppData *ad);
 
 
 #endif

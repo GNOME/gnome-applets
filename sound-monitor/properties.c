@@ -9,10 +9,10 @@
 #include "update.h"
 #include "esdcalls.h"
 
-static void property_apply_cb(GtkWidget *widget, void *nodata, gpointer data);
+static void property_apply_cb(GtkWidget *widget, gint page_num, gpointer data);
 static gint property_destroy_cb(GtkWidget *widget, gpointer data);
 
-void property_load(gchar *path, AppData *ad)
+void property_load(const gchar *path, AppData *ad)
 {
 	g_free(ad->theme_file);
 	g_free(ad->esd_host);
@@ -45,7 +45,7 @@ void property_load(gchar *path, AppData *ad)
         gnome_config_pop_prefix ();
 }
 
-void property_save(gchar *path, AppData *ad)
+void property_save(const gchar *path, AppData *ad)
 {
 	gnome_config_push_prefix(path);
 
@@ -222,11 +222,13 @@ static void populate_theme_list(GtkWidget *clist)
 	g_free(themepath);
 }
 
-static void property_apply_cb(GtkWidget *widget, void *nodata, gpointer data)
+static void property_apply_cb(GtkWidget *widget, gint page_num, gpointer data)
 {
 	AppData *ad = data;
 	gchar *buf;
 	gint info_changed = FALSE;
+
+	if (page_num != -1) return;
 
 	buf = gtk_entry_get_text(GTK_ENTRY(ad->theme_entry));
 	if ((!ad->theme_file && buf && strlen(buf) > 0) ||
@@ -279,7 +281,6 @@ static void property_apply_cb(GtkWidget *widget, void *nodata, gpointer data)
 	applet_widget_sync_config(APPLET_WIDGET(ad->applet));
 	return;
 	widget = NULL;
-	nodata = NULL;
 }
 
 static void

@@ -9,7 +9,7 @@
 #define THEME_H
 
 
-SkinData *skin_load(gchar *skin_path, gint vertical, gint size, AppData *ad);
+SkinData *skin_load(const gchar *skin_path, gint vertical, gint size, AppData *ad);
 
 
 #endif

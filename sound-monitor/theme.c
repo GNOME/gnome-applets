@@ -13,7 +13,7 @@
 #include "scope.h"
 #include "skin.h"
 
-static ItemData *get_item(gchar *path, gchar *name, gint sections)
+static ItemData *get_item(const gchar *path, const gchar *name, gint sections)
 {
 	ItemData *item;
 	gchar **vector = NULL;
@@ -84,7 +84,7 @@ static ItemData *get_item(gchar *path, gchar *name, gint sections)
 	return item;
 }
 
-static MeterData *get_meter(gchar *path, gchar *name)
+static MeterData *get_meter(const gchar *path, const gchar *name)
 {
 	MeterData *meter;
 	gchar **vector = NULL;
@@ -130,7 +130,7 @@ static MeterData *get_meter(gchar *path, gchar *name)
 	return meter;
 }
 
-static ScopeData *get_scope(gchar *path, gchar *name)
+static ScopeData *get_scope(const gchar *path, const gchar *name)
 {
 	ScopeData *scope;
 	gchar **vector = NULL;
@@ -174,7 +174,7 @@ static ScopeData *get_scope(gchar *path, gchar *name)
 	return scope;
 }
 
-static AnalyzerData *get_analyzer(gchar *path, gchar *name)
+static AnalyzerData *get_analyzer(const gchar *path, const gchar *name)
 {
 	AnalyzerData *analyzer;
 	gchar **vector = NULL;
@@ -222,7 +222,7 @@ static AnalyzerData *get_analyzer(gchar *path, gchar *name)
 	return analyzer;
 }
 
-static GdkPixbuf *get_background(gchar *path)
+static GdkPixbuf *get_background(const gchar *path)
 {
 	GdkPixbuf *pb;
 	gchar *buf = NULL;
@@ -247,7 +247,7 @@ static GdkPixbuf *get_background(gchar *path)
 	return pb;
 }
 
-SkinData *skin_load(gchar *skin_path, gint vertical, gint size, AppData *ad)
+SkinData *skin_load(const gchar *skin_path, gint vertical, gint size, AppData *ad)
 {
 	SkinData *s;
 	gchar *datafile = g_strconcat(skin_path, "/themedata", NULL);

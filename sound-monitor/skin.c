@@ -167,7 +167,7 @@ void applet_skin_window_sync(AppData *ad)
 	applet_skin_backing_sync(ad);
 }
 
-static SkinData *skin_load_best_match(gchar *path, gint vertical, gint size, AppData *ad)
+static SkinData *skin_load_best_match(const gchar *path, gint vertical, gint size, AppData *ad)
 {
 	SkinData *s = NULL;
 
@@ -201,7 +201,7 @@ static SkinData *skin_load_best_match(gchar *path, gint vertical, gint size, App
 	return skin_load(path, vertical, SIZEHINT_STANDARD, ad);
 }
 
-gint skin_set(gchar *path, AppData *ad)
+gint skin_set(const gchar *path, AppData *ad)
 {
 	SkinData *new_s = NULL;
 	SkinData *old_s = ad->skin;

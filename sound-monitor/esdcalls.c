@@ -13,7 +13,7 @@
 #include "sound-monitor.h"
 #include "esdcalls.h"
 
-static gint open_sound (gchar *esd_host, gint use_input)
+static gint open_sound (const gchar *esd_host, gint use_input)
 {
 	gint sound = -1;
 
@@ -97,7 +97,7 @@ void sound_get_buffer(SoundData *sd, short **buffer, gint *length)
 }
 
 /* returns TRUE if successful, FALSE if failed */
-SoundData *sound_init(gchar *host, gint monitor_input)
+SoundData *sound_init(const gchar *host, gint monitor_input)
 {
 	SoundData *sd;
 	gint fd;
@@ -135,7 +135,7 @@ void sound_free(SoundData *sd)
 
 /* esd controls */
 
-gint esd_control(ControlType function, gchar *host)
+gint esd_control(ControlType function, const gchar *host)
 {
 	gint esd_fd;
 	gint ret;
@@ -173,7 +173,7 @@ gint esd_control(ControlType function, gchar *host)
 	return FALSE;
 }
 
-StatusType esd_status(gchar *host)
+StatusType esd_status(const gchar *host)
 {
 	esd_standby_mode_t mode;
 	gint esd_fd = 0;
