@@ -44,7 +44,7 @@ static GtkWidget *pref_net_proxy_passwd_entry;
 static GtkWidget *pref_loc_ctree;
 static GtkCTreeNode *pref_loc_root;
 static GtkCTreeNode *pref_loc_sel_node = NULL;
-static GnomeHelpMenuEntry help_entry = { "gweather_applet", "index.html"};
+static GnomeHelpMenuEntry help_entry = { "gweather_applet", "index.html#GWEATHER-PREFS"};
 
 
 static gint cmp_loc (const WeatherLocation *l1, const WeatherLocation *l2)
