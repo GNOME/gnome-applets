@@ -50,11 +50,14 @@ button_press (HSlider *hslider, GdkEventButton *event)
 {
 	if (event->button > 1)
 		gtk_signal_emit_stop_by_name (GTK_OBJECT (hslider), "button_press_event");
+
+	return FALSE;
 }
 static void
 hslider_init(HSlider *hslider)
 {
-	gtk_signal_connect (GTK_OBJECT (hslider), "button_press_event", button_press, NULL);
+	gtk_signal_connect (GTK_OBJECT (hslider), "button_press_event",
+			    GTK_SIGNAL_FUNC (button_press), NULL);
 }
 
 
@@ -83,7 +86,9 @@ hslider_get_type(void)
 GtkWidget *
 hslider_new(void)
 {
-        return GTK_WIDGET(gtk_type_new(hslider_get_type()));
+	return gtk_widget_new (hslider_get_type(),
+			       "adjustment", NULL,
+			       NULL);
 }
 
 

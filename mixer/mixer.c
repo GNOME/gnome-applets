@@ -99,7 +99,7 @@ openMixer( gchar *device_name )
          */
 #ifdef OSS_GETVERSION
         res=ioctl(mixerfd, OSS_GETVERSION, &ver);
-        if ((res!=EINVAL) && (ver!=SOUND_VERSION)) {
+        if ((res==0) && (ver!=SOUND_VERSION)) {
                 g_message("warning: this version of gmix was compiled "
 			"with a different version of\nsoundcard.h.\n");
         }
