@@ -704,9 +704,9 @@ cd_panel_update(GtkWidget * cdplayer, CDPlayerData * cd)
     }
     else
     {
-        set_atk_name_description(cd->panel.time, _("Elapsed time"), _(""));
+        set_atk_name_description(cd->panel.time, _("Elapsed time"), "");
         set_atk_name_description(cd->panel.track_control.display,
-            _("Track number"), _(""));
+            _("Track number"), "");
     }
     return;
     cdplayer = NULL; 
