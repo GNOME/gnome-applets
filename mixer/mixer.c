@@ -466,6 +466,18 @@ applet_key_press_event_cb (GtkWidget *widget, GdkEventKey *event, MixerData *dat
 	return FALSE;
 }
 
+
+static gboolean
+applet_scroll_event_cb (GtkWidget *widget, GdkEventKey *event, MixerData *data)
+{
+       if (event->type = GDK_SCROLL) {
+               if (data->popup == NULL)
+                       mixer_popup_show (data);
+               return TRUE;
+       }
+       return FALSE;
+}
+
 static void
 mixer_popup_show (MixerData *data)
 {
@@ -922,7 +934,12 @@ mixer_applet_create (PanelApplet *applet)
 			  (GCallback) applet_key_press_event_cb,
 			  data);
 	
-        data->adj = GTK_ADJUSTMENT (
+	g_signal_connect (data->applet,
+			  "scroll-event",
+			  (GCallback) applet_scroll_event_cb,
+			  data);
+ 
+	data->adj = GTK_ADJUSTMENT (
 		gtk_adjustment_new (-50,
 				    -VOLUME_MAX,
 				    0.0, 
