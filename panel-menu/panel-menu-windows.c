@@ -112,7 +112,7 @@ panel_menu_windows_new (PanelMenu *parent)
 	/* Put *all* of the items in the menu */
 	fill_windows_menu (GTK_MENU_SHELL (windows->menu));
 	/* hide/show the proper windows */
-	wnck_active_workspace_changed (wnck_screen_get (0), windows);
+	wnck_active_workspace_changed (wnck_screen_get_default (), windows);
 	setup_windows_signals (windows);
 
 	windows->client = gconf_client_get_default ();
@@ -222,7 +222,7 @@ fill_windows_menu (GtkMenuShell *menu)
 	WnckWindow *window = NULL;
 	GList *cur = NULL;
 
-	screen = wnck_screen_get (0);
+	screen = wnck_screen_get_default ();
 	for (cur = wnck_screen_get_windows (screen); cur; cur = cur->next) {
 		window = (WnckWindow *) cur->data;
 		if (!wnck_window_is_skip_tasklist (window)) {
@@ -238,7 +238,7 @@ handle_window_change (GtkWidget *menuitem, WnckWindow *window)
 	WnckScreen *screen;
 	WnckWindow *active;
 
-	screen = wnck_screen_get (0);
+	screen = wnck_screen_get_default ();
 	active = wnck_screen_get_active_window (screen);
 	if (window != active)
 		wnck_window_activate (window);
@@ -265,7 +265,7 @@ setup_windows_signals (PanelMenuWindows *windows)
 {
 	WnckScreen *screen;
 
-	screen = wnck_screen_get (0);
+	screen = wnck_screen_get_default ();
 	windows->screen = screen;
 	windows->active_window =
 		g_signal_connect (G_OBJECT (screen), "active_window_changed",

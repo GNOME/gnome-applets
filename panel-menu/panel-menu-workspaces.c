@@ -156,11 +156,11 @@ fill_workspace_menu (GtkMenuShell *menu)
 	GtkWidget *menuitem;
 	GSList *group = NULL;
 
-	screen = wnck_screen_get (0);
+	screen = wnck_screen_get_default ();
 	spaces = wnck_screen_get_workspace_count (screen);
 	active = wnck_screen_get_active_workspace (screen);
 	for (count = 0; count < spaces; count++) {
-		workspace = wnck_workspace_get (count);
+		workspace = wnck_screen_get_workspace (screen, count);
 		/* string = g_strdup_printf("Workspace %d", count+1); */
 		name = wnck_workspace_get_name (workspace);
 		menuitem = gtk_radio_menu_item_new_with_label (group, name);
@@ -200,9 +200,9 @@ handle_workspace_change (GtkWidget *menuitem, int number)
 	WnckWorkspace *active;
 	WnckWorkspace *workspace;
 
-	screen = wnck_screen_get (0);
+	screen = wnck_screen_get_default ();
 	active = wnck_screen_get_active_workspace (screen);
-	workspace = wnck_workspace_get (number);
+	workspace = wnck_screen_get_workspace (screen, number);
 	if (workspace && workspace != active
 	    && GTK_CHECK_MENU_ITEM (menuitem)->active) {
 		wnck_workspace_activate (workspace);
@@ -214,7 +214,7 @@ setup_workspace_signals (PanelMenuWorkspaces *workspaces)
 {
 	WnckScreen *screen;
 
-	screen = wnck_screen_get (0);
+	screen = wnck_screen_get_default ();
 	workspaces->screen = screen;
 	workspaces->active_changed =
 		g_signal_connect (G_OBJECT (screen), "active_workspace_changed",
