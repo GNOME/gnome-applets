@@ -1,4 +1,3 @@
-/* -*- Mode: C; tab-width: 8; indent-tabs-mode: f; c-basic-offset: 2 -*- */
 /* File: prop.c
  * Purpose: GNOME Keyboard switcher property box
  *
@@ -31,12 +30,12 @@
 
 #include <X11/keysym.h>
 #include <gdk/gdkx.h>
+#include <sys/stat.h>
 #include <X11/Xlib.h>
 #include <dirent.h>
 #include "gkb.h"
 
 typedef struct _GkbKeymapWg GkbKeymapWg;
-typedef struct _GKBpreset GKBpreset;
 
 struct _GkbKeymapWg
 {
@@ -64,17 +63,6 @@ struct _GkbKeymapWg
   GtkWidget *newkeymap, *delkeymap;
 };
 
-struct _GKBpreset
-{
-  gchar *name, *lang, *country; /* Names for items */
-  gchar *command; /* Full switching command */
-  gchar *codepage; /* Codepage, information only */
-  gchar *flag; /* Flag filename */
-  gchar *label; /* Label for label mode */
-  gchar *arch; /* Sun, IBM, i386, or DEC */
-  gchar *type; /* 101, 102, 105, microsoft, or any type */
-};
-
 typedef struct _CountryData CountryData;
 struct _CountryData
 {
@@ -93,7 +81,7 @@ typedef struct _KeymapData KeymapData;
 struct _KeymapData
 {
  GtkWidget * widget;
- GKBpreset * preset;
+ GkbKeymap * preset;
 };
 
 static void prophelp_cb (AppletWidget * widget, gpointer data);
@@ -106,114 +94,7 @@ static void apply_edited_cb (GtkWidget * button, gint pos);
 void list_show (gint pos);
 
 /* Phew.. Globals... */
-static gchar *prefixdir;
-GKBpreset * a_keymap;
-
-static GList *
-find_presets ()
-{
-  DIR *dir;
-  struct dirent *actfile;
-  GList *diritems = NULL;
-
-  /* TODO: user's local presets */
-
-  dir = opendir (gnome_unconditional_datadir_file ("gnome/gkb/"));
-
-  prefixdir = g_strdup (gnome_unconditional_datadir_file ("gnome/gkb/"));
-
-  if (dir == NULL)
-    return NULL;
-
-  while ((actfile = readdir (dir)) != NULL)
-    {
-      if (!strstr (actfile->d_name, ".keyprop"))
-	continue;
-
-      if (actfile->d_name[0] != '.')
-	{
-	  diritems = g_list_insert_sorted (diritems,
-					   g_strdup (actfile->d_name),
-					   (GCompareFunc) strcmp);
-	}
-    }
-  return diritems;
-}
-
-static GList *
-gkb_preset_load (GList * list)
-{
-  GKBpreset * val;
-  GList * retlist, * templist;
-  gchar * prefix;
-  gchar * tname, * tcodepage;
-  gchar * ttype, * tarch, * tcommand;
-  gchar * set, * filename;
-  gint i, knum = 1;
-
-  templist = list;
-  retlist = NULL;
-
-  for(templist =list; templist != NULL ;templist = g_list_next (templist))
-    {
-
-      filename = templist->data;
-
-      g_assert (filename != NULL);
-
-      prefix =
-	g_strconcat ("=", prefixdir, "/", filename, "=/Keymap Entry/", NULL);
-
-      gnome_config_push_prefix (prefix);
-      g_free (prefix);
-
-      knum = gnome_config_get_int ("Countries");
-
-      tname = gnome_config_get_translated_string ("Name");
-      tcodepage = gnome_config_get_string ("Codepage");
-      ttype = gnome_config_get_string ("Type");
-      tarch = gnome_config_get_string ("Arch");
-      tcommand = gnome_config_get_string ("Command");
-
-      gnome_config_pop_prefix ();
-
-      for (i = 0; i < knum; i++)
-	{
-	  val = g_new0 (GKBpreset, 1);
-
-
-	  set = g_strdup_printf ("=/Country %d/", i);
-	  prefix = g_strconcat ("=", prefixdir, "/", filename, set, NULL);
-	  gnome_config_push_prefix (prefix);
-	  g_free (prefix);
-	  g_free (set);
-
-	  val->name = g_strdup (tname);
-	  val->codepage = g_strdup (tcodepage);
-	  val->type = g_strdup (ttype);
-	  val->arch = g_strdup (tarch);
-	  val->command = g_strdup (tcommand);
-
-          val->flag = gnome_config_get_string ("Flag");
-          val->label = gnome_config_get_string ("Label");
-
-	  val->lang = gnome_config_get_translated_string ("Language");
-	  val->country = gnome_config_get_translated_string ("Country");
-
-	  retlist = g_list_append(retlist,val);
-
-	  gnome_config_pop_prefix ();
-	}
-
-      g_free (tname);
-      g_free (tcodepage);
-      g_free (ttype);
-      g_free (tarch);
-      g_free (tcommand);
-
-    }
-  return retlist;
-}
+GkbKeymap * a_keymap;
 
 static void
 switch_normal_cb (GnomePropertyBox * pb)
@@ -241,7 +122,6 @@ string_empty (const char *string)
 	else
             	return FALSE;
 }
-
 
 gboolean
 convert_string_to_keysym_state(const char *string,
@@ -450,7 +330,7 @@ list_init()
 {
  GList * maps;
  GkbKeymap * data;
- GKBpreset * tdata;
+ GkbKeymap * tdata;
  
  maps = gkb->maps;
 
@@ -462,7 +342,7 @@ list_init()
 
   data = maps->data;
 
-  tdata = g_new0 (GKBpreset,1);
+  tdata = g_new0 (GkbKeymap,1);
 
   tdata->name = g_strdup (data->name);
   tdata->command = g_strdup (data->name);
@@ -490,7 +370,7 @@ static void
 apply_cb (GtkWidget * pb, gint page)
 {
   GList * list;
-  GKBpreset * tdata;
+  GkbKeymap * tdata;
   GkbKeymap * data;
 
   if (page != -1)
@@ -565,7 +445,7 @@ apply_cb (GtkWidget * pb, gint page)
   applet_widget_sync_config(APPLET_WIDGET(gkb->applet));
 }
 
-static void
+void
 treeitems_create(GtkWidget *tree)
 {
 	GList * sets = NULL;
@@ -582,7 +462,7 @@ treeitems_create(GtkWidget *tree)
         
         while ((sets = g_list_next(sets)) != NULL)
          {
-	  GKBpreset * item; 
+	  GkbKeymap * item; 
 
 	  item = sets->data;
 
@@ -692,7 +572,7 @@ apply_edited_cb (GtkWidget * button, gint pos)
  GtkWidget * codepageentry, * archentry;
  GtkWidget * typeentry;
 
- GKBpreset * data = g_list_nth_data (gkb->tempmaps, pos);
+ GkbKeymap * data = g_list_nth_data (gkb->tempmaps, pos);
  
  g_free(data->name);
  g_free(data->label);
@@ -763,7 +643,7 @@ mapedit_cb ()
   GtkWidget *vseparator1;
   GList * mlist;
   gint pos;
-  GKBpreset * data;
+  GkbKeymap * data;
 
   mlist = GTK_LIST(gkb->list1)->selection;
 
@@ -1120,8 +1000,8 @@ list_show(gint pos)
 {
  GtkWidget * hbox1;
  GtkWidget * label3, * pixmap1, * list_item;
- GKBpreset * tdata;
- gchar *pixmap1_filename;
+ GkbKeymap * tdata;
+ gchar *pixmapname;
  gint counter;
  GList * list;
  
@@ -1132,7 +1012,8 @@ list_show(gint pos)
  for (list=gkb->tempmaps;list!=NULL;list = g_list_next (list))
   {
   char buf[30];
-
+  struct stat tempbuf;
+  
   tdata = list->data;
 
   hbox1 = gtk_hbox_new (FALSE, 0);
@@ -1141,16 +1022,11 @@ list_show(gint pos)
 
   pixmap1 = gtk_type_new (gnome_pixmap_get_type ());
   sprintf(buf,"gkb/%s",tdata->flag);
-  pixmap1_filename =  gnome_unconditional_pixmap_file (buf);
-  if (pixmap1_filename)
-    gnome_pixmap_load_file_at_size (GNOME_PIXMAP (pixmap1), pixmap1_filename, 28, 20);
-   else
-    {
-     gtk_widget_destroy(pixmap1);
-     pixmap1 = gtk_label_new (tdata->flag);
-     gtk_widget_set_usize (pixmap1, 28, 20);
-    }
-  g_free (pixmap1_filename);
+  pixmapname = gnome_unconditional_pixmap_file (buf);
+  if (stat (pixmapname, &tempbuf))
+    pixmapname = gnome_unconditional_pixmap_file ("gkb/gkb-foot.png");
+  gnome_pixmap_load_file_at_size (GNOME_PIXMAP (pixmap1), pixmapname, 28, 20); 
+  g_free (pixmapname);
   gtk_widget_ref (pixmap1); 
   gtk_widget_show (pixmap1);
   gtk_box_pack_start (GTK_BOX (hbox1), pixmap1, FALSE, TRUE, 0);
@@ -1183,11 +1059,11 @@ list_show(gint pos)
 gint 
 addwadd_cb (GtkWidget * addbutton, GtkWidget * ctree)
 {
- GKBpreset * tdata;
+ GkbKeymap * tdata;
 
  if (a_keymap)
  {
-  tdata = g_new0 (GKBpreset,1);
+  tdata = g_new0 (GkbKeymap,1);
 
   tdata->name = g_strdup (a_keymap->name);
   tdata->flag = g_strdup (a_keymap->flag);
@@ -1398,7 +1274,7 @@ move_select_cb (GtkWidget * button)
  GtkWidget * downbutton;
  GtkWidget * list_item;
  GList *mlist;
- GKBpreset * data;
+ GkbKeymap * data;
  gint pos;
  GList * row, * nextr, * prevr;
  

@@ -8,11 +8,11 @@ bin_PROGRAMS = gkb_applet
 
 bin_SCRIPTS = gkb_xmmap
 
-gkb_applet_SOURCES = gkb.c gkb.h prop.c
+gkb_applet_SOURCES = gkb.c gkb.h prop.c preset.c
 
 #lib_LTLIBRARIES=libgkb_applet.la
 
-#libgkb_applet_la_SOURCES= gkb.c gkb.h prop.c	
+#libgkb_applet_la_SOURCES= gkb.c gkb.h prop.c preset.c
 
 gkb_applet_LDADD =     $(GNOME_APPLETS_LIBS) \
                        $(GNOME_LIBDIR) \

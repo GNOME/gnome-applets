@@ -101,8 +101,12 @@ void gkb_update (GKB *gkb, gboolean set_command);
 void properties_dialog (AppletWidget * applet);
 GkbKeymap * loadprop (int i);
 gboolean convert_string_to_keysym_state(const char *string,
-								guint *keysym,
-								guint *state);
+					guint *keysym,
+					guint *state);
 char * convert_keysym_state_to_string(guint keysym,
-							   guint state);
+					guint state);
 
+GList * find_presets ();
+GList * gkb_preset_load (GList * list);
+
+static gchar *prefixdir;

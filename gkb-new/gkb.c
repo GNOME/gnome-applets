@@ -189,10 +189,10 @@ gkb_sized_render (GKB * gkb)
       gkb->h = (int) gkb->w / 1.5;
     }
 
+  gtk_widget_set_usize (GTK_WIDGET (gkb->applet), gkb->w, gkb->h);
+  gtk_widget_set_usize (GTK_WIDGET (gkb->frame), gkb->w, gkb->h);
   gtk_drawing_area_size (GTK_DRAWING_AREA (gkb->darea), gkb->w, gkb->h);
   gtk_widget_set_usize (GTK_WIDGET (gkb->darea), gkb->w, gkb->h);
-  gtk_widget_set_usize (GTK_WIDGET (gkb->frame), gkb->w, gkb->h);
-  gtk_widget_set_usize (GTK_WIDGET (gkb->applet), gkb->w, gkb->h);
 
   gtk_widget_queue_resize (gkb->darea);
   gtk_widget_queue_resize (gkb->darea->parent);
@@ -352,7 +352,7 @@ loadprop (int i)
       g_snprintf (buf, 256, _("keymap_%d/lang=English"), i);
       actdata->lang = gnome_config_get_string (buf);
 
-      g_snprintf (buf, 256, _("keymap_%d/flag=nyet.png"), i);
+      g_snprintf (buf, 256, _("keymap_%d/flag=us.png"), i);
       actdata->flag = gnome_config_get_string (buf);
 
       g_snprintf (buf, 256, _("keymap_%d/command=gkb_xmmap us"), i);
