@@ -469,14 +469,32 @@ applet_key_press_event_cb (GtkWidget *widget, GdkEventKey *event, MixerData *dat
 
 
 static gboolean
-applet_scroll_event_cb (GtkWidget *widget, GdkEventKey *event, MixerData *data)
+applet_scroll_event_cb (GtkWidget *widget, GdkEventScroll *event, MixerData *data)
 {
-       if (event->type = GDK_SCROLL) {
-               if (data->popup == NULL)
-                       mixer_popup_show (data);
-               return TRUE;
-       }
-       return FALSE;
+	gint direction; 
+	if (event->type != GDK_SCROLL ) {
+		return FALSE;
+	}
+
+	direction = event->direction;
+
+	switch(direction) {
+	case GDK_SCROLL_UP:
+		data->vol += 5;
+		break;
+	case GDK_SCROLL_DOWN:
+		data->vol -= 5;
+		break;
+	default:
+		break;
+	}
+
+	if (data->vol > VOLUME_MAX) data->vol = VOLUME_MAX;
+	if (data->vol < 0) data->vol = 0;
+
+	mixer_update_slider(data);
+
+	return TRUE;
 }
 
 static void
