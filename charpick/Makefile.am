@@ -1,4 +1,4 @@
-#SUBDIRS = docs
+SUBDIRS = help
 
 INCLUDES = -I. -I$(srcdir) 				\
 	$(GNOME_APPLETS_CFLAGS)				\
@@ -33,8 +33,7 @@ EXTRA_DIST = \
 	charpick.png $(server_in_files)	\
 	$(ui_DATA)	\
 	$(schema_DATA)
-	
+
 install-data-local:
 	GCONF_CONFIG_SOURCE=$(GCONF_SCHEMA_CONFIG_SOURCE) $(GCONFTOOL) --makefile-install-rule $(srcdir)/$(schema_DATA)
-	
 
