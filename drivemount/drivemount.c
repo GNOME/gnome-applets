@@ -125,6 +125,9 @@ static void about_cb (AppletWidget *widget, gpointer data)
 			"."),
 			NULL);
 	gtk_widget_show (about);
+	return;
+	widget = NULL;
+	data = NULL;
 }
 
 static void browse_cb (AppletWidget *widget, gpointer data)
@@ -153,6 +156,8 @@ static void browse_cb (AppletWidget *widget, gpointer data)
 
 	goad_server_activate_with_id(NULL, "gmc_filemanager_window",
 			0, buf);
+	return;
+	widget = NULL;
 }
 
 /*
@@ -455,6 +460,7 @@ static gint mount_cb(GtkWidget *widget, gpointer data)
 	g_string_free(str, TRUE);
 	drive_update_cb(dd);
 	return FALSE;
+	widget = NULL;
 }
 
 static void eject_cb(AppletWidget *applet, gpointer data)
@@ -508,7 +514,7 @@ static void eject_cb(AppletWidget *applet, gpointer data)
 
 	
 	return;
-
+        applet = NULL;
 }
 
 /*
@@ -537,6 +543,8 @@ static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
 	dd->orient = o;
 
 	redraw_pixmap(dd);
+	return;
+	w = NULL;
 }
 
 #ifdef HAVE_PANEL_PIXEL_SIZE
@@ -550,6 +558,8 @@ static void applet_change_pixel_size(GtkWidget *w, int size, gpointer data)
 	dd->sizehint = size;
 
 	redraw_pixmap(dd);
+	return;
+	w = NULL;
 }
 #endif
 
@@ -557,7 +567,9 @@ static gint applet_save_session(GtkWidget *widget, gchar *privcfgpath, gchar *gl
 {
 	DriveData *dd = data;
 	property_save(privcfgpath, dd);
-        return FALSE;
+	return FALSE;
+	widget = NULL;
+	globcfgpath = NULL;
 }
 
 static void destroy_drive_widget(GtkWidget *widget, gpointer data)
@@ -566,6 +578,8 @@ static void destroy_drive_widget(GtkWidget *widget, gpointer data)
 	g_free(dd->mount_point);
 	g_free(dd->mount_base);
 	g_free(dd);
+	return;
+	widget = NULL;
 }
 
 static DriveData * create_drive_widget(GtkWidget *applet)
@@ -679,6 +693,8 @@ static GtkWidget * applet_start_new_applet(const gchar *goad_id, const gchar **p
 	dd = create_drive_widget(applet);
 
 	return applet;
+	params = NULL;
+	nparams = 0;
 }
 
 int main (int argc, char *argv[])
@@ -733,6 +749,8 @@ static void dnd_drag_begin_cb(GtkWidget *widget, GdkDragContext *context, gpoint
 	gtk_drag_set_icon_pixmap(context, gtk_widget_get_colormap (dd->button),
 				 GNOME_PIXMAP(dd->button_pixmap)->pixmap, NULL,
 				 -5, -5);
+	return;
+	widget = NULL;
 }
 
 static void dnd_set_data_cb(GtkWidget *widget, GdkDragContext *context,
@@ -762,6 +780,10 @@ static void dnd_set_data_cb(GtkWidget *widget, GdkDragContext *context,
 		gtk_selection_data_set (selection_data, selection_data->target,
 					8, NULL, 0);
 		}
+	return;
+	widget = NULL;
+	context = NULL;
+	time = 0;
 }
 
 static void dnd_init(DriveData *dd)

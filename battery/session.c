@@ -164,6 +164,8 @@ battery_session_save(GtkWidget * w,
   gnome_config_drop_all ();
 
   return FALSE;
+  w = NULL;
+  globcfgpath = NULL;
 } /* battery_session_save */
 
 void

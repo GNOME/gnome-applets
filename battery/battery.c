@@ -496,6 +496,8 @@ battery_expose_handler (GtkWidget * widget, GdkEventExpose * expose,
     }
 
   return FALSE; 
+  widget = NULL;
+  expose = NULL;
 } /* battery_expose_handler */
 
 /* This handler gets called whenever the panel changes orientations.
@@ -508,6 +510,8 @@ battery_orient_handler (GtkWidget * w, PanelOrientType o, gpointer data)
   /* FIXME: What do we do here? */
 
   return FALSE;
+  w = NULL;
+  o = (PanelOrientType) 0;
 } /* battery_orient_handler */
 
 gint
@@ -524,6 +528,8 @@ battery_configure_handler (GtkWidget *widget, GdkEventConfigure *event,
   battery_update ( (gpointer) bat);
 
   return TRUE;
+  widget = NULL;
+  event = NULL;
 }  /* battery_configure_handler */
 
 /* Whenever the mode changes, and when the applet first starts up,
@@ -614,13 +620,17 @@ battery_button_press_handler (GtkWidget * w, GdkEventButton * ev,
   battery_change_mode (bat);
 
   return TRUE;
+  w = NULL;
+  ev = NULL;
 } /* battery_button_press_handler */
 
 GtkWidget *
 applet_start_new_applet (const gchar *goad_id, const char **params,
 			 int nparams)
 {
-  return make_new_battery_applet (goad_id);
+    return make_new_battery_applet (goad_id);
+    params = NULL;
+    nparams = 0;
 } /* applet_start_new_applet */
 
 /* This is the function that actually creates the display widgets */
@@ -649,7 +659,7 @@ make_new_battery_applet (const gchar *goad_id)
 				"Make sure that your kernel was "
 				"built with APM support."));
       gnome_dialog_run (GNOME_DIALOG (d));
-      applet_widget_remove (bat->applet);
+      applet_widget_remove (APPLET_WIDGET(bat->applet));
       gtk_exit (1);
     }
 
@@ -835,6 +845,8 @@ void
 destroy_about (GtkWidget *w, gpointer data)
 {
   BatteryData *bat = data;
+  return;
+  w = NULL;
 } /* destroy_about */
 
 void
@@ -858,6 +870,8 @@ about_cb (AppletWidget *widget, gpointer data)
 		      GTK_SIGNAL_FUNC (destroy_about), bat);
 
   gtk_widget_show (bat->about_box);
+  return;
+  widget = NULL;
 } /* about_cb */
 
 void

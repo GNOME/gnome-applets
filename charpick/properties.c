@@ -37,6 +37,8 @@ void property_load (char *path, gpointer data)
   curr_data.properties->size = DEFAULT_SIZE; 
   }
   gnome_config_pop_prefix();
+  return;
+  data = NULL;
 }
 
 void property_save (char *path, charpick_persistant_properties *properties)
@@ -48,24 +50,32 @@ void property_save (char *path, charpick_persistant_properties *properties)
   gnome_config_sync();
   gnome_config_drop_all();
   gnome_config_pop_prefix();
+  return;
+  properties = NULL;
 }
 
 static void update_size_cb( GtkWidget *spin, gpointer data)
 {
   temp_properties.size = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spin));
   gnome_property_box_changed(GNOME_PROPERTY_BOX(propwindow));
+  return;
+  data = NULL;
 }
 
 static void update_rows_cb( GtkWidget *spin, gpointer data)
 {
   temp_properties.rows = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spin));
   gnome_property_box_changed(GNOME_PROPERTY_BOX(propwindow));
+  return;
+  data = NULL;
 }
 
 static void update_cols_cb( GtkWidget *spin, gpointer data)
 {
   temp_properties.cols = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spin));
   gnome_property_box_changed(GNOME_PROPERTY_BOX(propwindow));
+  return;
+  data = NULL;
 }
 
 static void property_apply_cb (GtkWidget *widget, void *data)
@@ -76,12 +86,17 @@ static void property_apply_cb (GtkWidget *widget, void *data)
   curr_data.properties->size = temp_properties.size;
   applet_widget_sync_config(APPLET_WIDGET(curr_data.applet));
   build_table(&curr_data);
+  return;
+  data = NULL;
+  widget = NULL;
 }
 
 static gint property_destroy_cb (GtkWidget *widget, void *data)
 {
-        propwindow = NULL;
-	return FALSE;
+  propwindow = NULL;
+  return FALSE;
+  data = NULL;
+  widget = NULL;
 }
 
 void property_show(AppletWidget *applet, gpointer data)
@@ -191,5 +206,8 @@ void property_show(AppletWidget *applet, gpointer data)
   gtk_signal_connect (GTK_OBJECT(propwindow), "destroy",
 		      GTK_SIGNAL_FUNC(property_destroy_cb), NULL);
   gtk_widget_show_all(propwindow);
+  return;
+  applet = NULL;
+  data = NULL;
 }
 

@@ -452,6 +452,8 @@ static void display_motion(GtkWidget *w, GdkEventMotion *event, gpointer data)
 		{
 		draw_button(button, FALSE, FALSE, FALSE, ad);
 		}
+	return;
+	w = NULL;
 }
 
 static void display_pressed(GtkWidget *w, GdkEventButton *event, gpointer data)
@@ -470,6 +472,8 @@ static void display_pressed(GtkWidget *w, GdkEventButton *event, gpointer data)
 		ad->active = button;
 		draw_button(button, FALSE, TRUE, FALSE, ad);
 		}
+	return;
+	w = NULL;
 }
 
 static void display_released(GtkWidget *w, GdkEventButton *event, gpointer data)
@@ -491,6 +495,8 @@ static void display_released(GtkWidget *w, GdkEventButton *event, gpointer data)
 		if (button->click_func)
 			button->click_func(ad);
 		}
+	return;
+	w = NULL;
 }
 
 static void display_leave(GtkWidget *w, GdkEventCrossing *event, gpointer data)
@@ -502,6 +508,9 @@ static void display_leave(GtkWidget *w, GdkEventCrossing *event, gpointer data)
 	if (!button) return;
 
 	draw_button(button, FALSE, FALSE, FALSE, ad);
+	return;
+	w = NULL;
+	event = NULL;
 }
 
 void skin_event_init(AppData *ad)
@@ -1008,6 +1017,7 @@ static NumberData *get_number(gchar *path, gchar *name, gint count, gint zeros, 
 	number = new_number(digit, count, zeros, centered, x, y);
 	g_free(filename);
 	return number;
+	path = NULL;
 }
 
 static GtkWidget *get_background(gchar *path)

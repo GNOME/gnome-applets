@@ -97,6 +97,9 @@ charpick_selection_handler(GtkWidget *widget,
 			 8,
 			 &p_curr_data->selected_char,
 			 1);
+  return;
+  info = time = 0;
+  widget = NULL;
 }
 
 /* untoggles the active toggle_button when we lose the selection */
@@ -109,19 +112,22 @@ selection_clear_cb (GtkWidget *widget, GdkEventSelection *event,
   gtk_toggle_button_set_state (GTK_TOGGLE_BUTTON(toggle_button), FALSE);
   *last_index = NO_LAST_INDEX;
   return TRUE;
+  widget = NULL;
+  event = NULL;
+  have_selection = NULL;
 }
 
 /* displays a list of characters in labels on buttons*/
 static void
 display_charlist (charpick_data *data)
 {
-  gint rows = data->properties->rows;
-  gint cols = data->properties->cols;
+  guint rows = data->properties->rows;
+  guint cols = data->properties->cols;
   const gchar *charlist = data->charlist;
 
   /* let's show no more characters than we have, or than we have space for. */
-  gint numtoshow = MIN(rows * cols, strlen(charlist));
-  gint i = 0; /* loop variable */
+  guint numtoshow = MIN(rows * cols, strlen(charlist));
+  guint i = 0; /* loop variable */
   gchar currstr[2];
 
   /* reset the characters on the labels and reshow the buttons */
@@ -162,6 +168,7 @@ toggle_button_toggled_cb(GtkWidget *widget, gpointer data)
   cb_data->p_curr_data->last_index = button_index;
   }		     
   return TRUE;
+  widget = NULL;
 }
 
 /* clicks on the toggle buttons with mouse buttons other than 1 go to the 
@@ -175,6 +182,7 @@ button_press_cb (GtkWidget *widget, GdkEventButton *event)
     return gtk_widget_event (curr_data.applet, (GdkEvent *)event);
   }
   return TRUE;
+  widget = NULL;
 }
 
 static gint
@@ -268,6 +276,7 @@ key_press_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
   p_curr_data->last_index = NO_LAST_INDEX;
   display_charlist(p_curr_data);
   return TRUE;
+  widget = NULL;
 }
 
 
@@ -341,6 +350,9 @@ static gint applet_save_session(GtkWidget *widget, char *privcfgpath,
   /*charpick_persistant_properties *properties = data;*/
   property_save(privcfgpath, curr_data.properties);
   return FALSE;
+  widget = NULL;
+  globcfgpath  = NULL;
+  data = NULL;
 }
 
 static void
@@ -360,6 +372,9 @@ about (AppletWidget *applet, gpointer data)
 
   gtk_window_set_modal (GTK_WINDOW(about_box),TRUE);
   gnome_dialog_run (GNOME_DIALOG (about_box));
+  return;
+  applet = NULL;
+  data = NULL;
 }
 
 int

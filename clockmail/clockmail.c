@@ -65,6 +65,9 @@ static void about_cb (AppletWidget *widget, gpointer data)
 			"for any unread mail, or only briefly when new mail arrives."),
 			NULL);
 	gtk_widget_show (about);
+	return;
+	widget = NULL;
+	data = NULL;
 }
 
 void launch_mail_reader(gpointer data)
@@ -427,6 +430,8 @@ static void applet_change_back(GtkWidget *applet, PanelBackType type, char *pixm
 				}
 			break;
 		}
+	return;
+	applet = NULL;
 }
 
 /* clean up function to free all the applet's memory and stop timers */
@@ -445,6 +450,8 @@ static void destroy_applet(GtkWidget *widget, gpointer data)
 	g_free(ad->newmail_exec_cmd);
 	g_free(ad->theme_file);
 	g_free(ad);
+	return;
+	widget = NULL;
 }
 
 static AppData *create_new_app(GtkWidget *applet)
@@ -560,6 +567,8 @@ static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
 	ad->orient = o;
 
 	reload_skin(ad);
+	return;
+	w = NULL;
 }
 
 #ifdef HAVE_PANEL_PIXEL_SIZE
@@ -577,6 +586,8 @@ static void applet_change_pixel_size(GtkWidget *w, int size, gpointer data)
 		ad->sizehint = SIZEHINT_HUGE;
 
 	reload_skin(ad);
+	return;
+	w = NULL;
 }
 #endif
 
@@ -585,7 +596,9 @@ static gint applet_save_session(GtkWidget *widget, gchar *privcfgpath,
 {
 	AppData *ad = data;
         property_save(privcfgpath, ad);
-        return FALSE;
+	return FALSE;
+	widget = NULL;
+	globcfgpath = NULL;
 }
 
 static GtkWidget * applet_start_new_applet(const gchar *goad_id,
@@ -603,6 +616,8 @@ static GtkWidget * applet_start_new_applet(const gchar *goad_id,
 	create_new_app(applet);
 
 	return applet;
+	params = NULL;
+	nparams = 0;
 }
 
 int main (int argc, char *argv[])

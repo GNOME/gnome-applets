@@ -22,6 +22,9 @@ struct _clipboard_item {
   guint id; 
 };
 
+void selection_received (GtkWidget *widget, GtkSelectionData *selection_data, 
+                    gpointer data);
+GtkWidget *button_new_with_xpm(GtkWidget *parent, gchar **xpm);
 
 GtkWidget *vbox;
 GtkWidget *applet;
@@ -58,6 +61,8 @@ history_menu_cb (AppletWidget *applet, gpointer data)
                              GDK_CURRENT_TIME);
   gtk_tooltips_set_tip (set_selection_tooltip, set_selection_button, 
 			clipboard.description->str, NULL);
+  return;
+  applet = NULL;
 }
 
 static void
@@ -91,6 +96,7 @@ copy_clicked_cb(GtkWidget *widget, gpointer data)
   gtk_selection_convert (widget, GDK_SELECTION_PRIMARY, targets_atom,
                          GDK_CURRENT_TIME);
   return TRUE;
+  data = NULL;
 }
 
 /* Signal handler called when the selections owner returns the data */
@@ -107,6 +113,9 @@ selection_received (GtkWidget *widget, GtkSelectionData *selection_data,
 			  clipboard.description->str, NULL);
     update_history (&clipboard);
   }
+  return;
+  widget = NULL;
+  data = NULL;
 }
 
 static gint
@@ -116,6 +125,7 @@ set_selection_clicked_cb(GtkWidget *widget, gpointer data)
 	  		     GDK_SELECTION_PRIMARY,
                              GDK_CURRENT_TIME);
   return TRUE;
+  data = NULL;
 }
 
 /* sets the clipboard contents as the selection when it gets a request */
@@ -131,6 +141,11 @@ clipboard_selection_handler(GtkWidget *widget,
 			 8,
 			 clipboard.clipboard_data->str,
 			 clipboard.clipboard_data->len);
+  return;
+  widget = NULL;
+  info = 0;
+  time = 0;
+  data = NULL;
 }
 
 GtkWidget *
@@ -170,6 +185,9 @@ about (AppletWidget *applet, gpointer data)
 			       NULL);
   gtk_window_set_modal (GTK_WINDOW(about_box),TRUE);
   gnome_dialog_run (GNOME_DIALOG (about_box));
+  return;
+  applet = NULL;
+  data = NULL;
 }
 
 int

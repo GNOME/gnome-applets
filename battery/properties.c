@@ -350,6 +350,8 @@ battery_properties_window (AppletWidget * applet, gpointer data)
 	
   gtk_widget_show_all (GTK_WIDGET (bat->prop_win));
 
+  return;
+  applet = NULL;
 } /* battery_properties_window */
 
 
@@ -364,6 +366,7 @@ prop_cancel (GtkWidget * w, gpointer data)
   BatteryData * bat = data;
 
   return FALSE;
+  w = NULL;
 } /* prop_cancel */
 
 static void
@@ -490,6 +493,9 @@ prop_apply (GtkWidget *w, int page, gpointer data)
   
   /* Make the panel save our config */
   applet_widget_sync_config (APPLET_WIDGET (bat->applet));
+  return;
+  w = NULL;
+  page = 0;
 } /* prop_apply */
 
 /*
@@ -505,6 +511,8 @@ adj_value_changed_cb ( GtkAdjustment * ignored, gpointer data )
   BatteryData * bat = data;
 
   gnome_property_box_changed (GNOME_PROPERTY_BOX (bat->prop_win)); 
+  return;
+  ignored = NULL;
 } /* value_changed_cb */
 
 void
@@ -513,6 +521,8 @@ toggle_value_changed_cb ( GtkToggleButton * ignored, gpointer data )
   BatteryData * bat = data;
 
   gnome_property_box_changed (GNOME_PROPERTY_BOX (bat->prop_win)); 
+  return;
+  ignored = NULL;
 } /* value_changed_cb */
 
 void
@@ -522,5 +532,8 @@ col_value_changed_cb ( GtkObject * ignored, guint arg1, guint arg2,
   BatteryData * bat = data;
 
   gnome_property_box_changed (GNOME_PROPERTY_BOX (bat->prop_win)); 
+  return;
+  arg1 = arg2 = arg3 = arg4 = 0;
+  ignored = NULL;
 } /* value_changed_cb */
 

@@ -21,6 +21,8 @@ free_stuff (GtkObject *object, gpointer data)
 {
 	if (data)
 		g_free (data);
+	return;
+	object = NULL;
 }
 
 static void
@@ -128,6 +130,7 @@ piece_event (GnomeCanvasItem *item, GdkEvent *event, gpointer data)
 	}
 
 	return FALSE;
+	data = NULL;
 }
 
 static GtkWidget *
@@ -236,7 +239,8 @@ scramble (AppletWidget *applet, gpointer data)
 	/* "Move the blank spot" around in order to scramble the pieces */
 
 	for (i = 0; i < SCRAMBLE_MOVES; i++) {
-retry_scramble:
+/* retry_scramble: */
+/* Yuck ;) --Tom. */
 		dir = rand () % 4;
 
 		x = y = 0;
@@ -250,7 +254,7 @@ retry_scramble:
 		else if ((dir == 3) && ((pos % 4) != 3)) /* right */
 			x = 1;
 		else
-			goto retry_scramble;
+			continue; /* was: goto retry_scramble; --Tom */
 
 		oldpos = pos + y * 4 + x;
 		board[pos] = board[oldpos];
@@ -260,6 +264,8 @@ retry_scramble:
 		gnome_canvas_update_now (canvas);
 		pos = oldpos;
 	}
+	return;
+	applet = NULL;
 }
 
 static void
@@ -278,6 +284,9 @@ about (AppletWidget *applet, gpointer data)
 				     NULL);
 
 	gtk_widget_show(about_box);
+	return;
+	applet = NULL;
+	data = NULL;
 }
 
 static void
@@ -292,6 +301,8 @@ change_pixel_size(GtkWidget *w, int size, gpointer data)
 			      scale_factor * PIECE_SIZE * 4,
 			      scale_factor * PIECE_SIZE * 4);
 	gnome_canvas_scroll_to (canvas, 0, 0);
+	return;
+	w = NULL;
 }
 
 int
