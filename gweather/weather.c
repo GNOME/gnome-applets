@@ -1144,6 +1144,8 @@ void weather_info_config_write (WeatherInfo *info)
     gnome_config_set_float("visibility", info->visibility);
     if (info->forecast)
         gnome_config_set_string("forecast", info->forecast);
+    else
+        gnome_config_set_string("forecast", "");
     /* info->radar = NULL; */
 }
 
@@ -1180,8 +1182,8 @@ WeatherInfo *weather_info_clone (const WeatherInfo *info)
     clone = g_new(WeatherInfo, 1);
     g_memmove(clone, info, sizeof(WeatherInfo));
     clone->location = weather_location_clone(info->location);
-    if (info->forecast)
-        clone->forecast = g_strdup(info->forecast);
+    /* This handles null correctly */
+    clone->forecast = g_strdup(info->forecast);
     return clone;
 }
 
@@ -1189,8 +1191,11 @@ void weather_info_free (WeatherInfo *info)
 {
     if (info) {
         g_free(info->location);
+        info->location = NULL;
         g_free(info->forecast);
+        info->forecast = NULL;
         gdk_imlib_free_pixmap(info->radar);
+        info->radar = NULL;
     }
     g_free(info);
 }
@@ -1234,11 +1239,11 @@ void weather_proxy_set (const gchar *url, const gchar *user, const gchar *passwd
     g_free(weather_proxy_passwd); weather_proxy_passwd = NULL;
 
     if (url && (strlen(url) > 0))
-        weather_proxy_url = strdup(url);
+        weather_proxy_url = g_strdup(url);
     if (user && (strlen(user) > 0))
-        weather_proxy_user = strdup(user);
+        weather_proxy_user = g_strdup(user);
     if (passwd && (strlen(passwd) > 0))
-        weather_proxy_passwd = strdup(passwd);
+        weather_proxy_passwd = g_strdup(passwd);
 }
 
 void weather_info_to_metric (WeatherInfo *info)

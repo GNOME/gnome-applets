@@ -289,6 +289,7 @@ void gweather_info_load (const gchar *path)
     /* fprintf(stderr, "gweather_info_save: %s\n", prefix); */
     g_free(prefix);
 
+    weather_info_free (gweather_info);
     gweather_info = weather_info_config_read();
 
     gnome_config_pop_prefix();
@@ -306,8 +307,16 @@ static gint timeout_cb (gpointer data)
 static void update_finish (WeatherInfo *info)
 {
     char *s;
-    /* Save weather info */
-    gweather_info = info;
+
+    if (info != gweather_info) {
+	    if (gweather_info != NULL) {
+		    weather_info_free (gweather_info);
+		    gweather_info = NULL;
+	    }
+
+	    /* Save weather info */
+	    gweather_info = weather_info_clone (info);
+    }
 
     /* Store current conditions */
     /* gweather_info_save(APPLET_WIDGET(gweather_applet)->privcfgpath); */
@@ -366,6 +375,7 @@ void gweather_update (void)
             update_success = weather_info_update(gweather_info, update_finish);
         } else {
             weather_info_free(gweather_info);
+            gweather_info = NULL;
             update_success = weather_info_new(gweather_pref.location, update_finish);
         }
         if (!update_success)
