@@ -39,6 +39,8 @@ led_stop(GtkWidget * time, GtkWidget * track)
 	GdkPixmap *p;
 	GtkStyle *style;
 	int retval;
+	
+	if(!GTK_WIDGET_REALIZED(time)) return;
 
 	style = gtk_widget_get_style(time);
 	gtk_pixmap_get(GTK_PIXMAP(time), &p, NULL);
@@ -65,6 +67,9 @@ static void
 led_draw_track(GtkStyle * style, GtkWidget * track, int trackno)
 {
 	GdkPixmap *p;
+
+	if(!GTK_WIDGET_REALIZED(track)) return;
+
 	gtk_pixmap_get(GTK_PIXMAP(track), &p, NULL);
 	gdk_draw_rectangle(p, style->black_gc, 1, 0, 0, -1, -1);
 	gdk_draw_pixmap(p, style->white_gc, led_pixmap, (trackno / 10) * DIGIT_WIDTH,
@@ -79,6 +84,8 @@ led_time(GtkWidget * time, int min, int sec, GtkWidget * track, int trackno)
 	GdkPixmap *p;
 	GtkStyle *style;
 	int retval;
+
+	if(!GTK_WIDGET_REALIZED(time)) return;
 
 	style = gtk_widget_get_style(time);
 	gtk_pixmap_get(GTK_PIXMAP(time), &p, NULL);
@@ -106,6 +113,9 @@ void
 led_paused(GtkWidget * time, int min, int sec, GtkWidget * track, int trackno)
 {
 	static int visible = 1;
+
+	if(!GTK_WIDGET_REALIZED(time)) return;
+
 	if (visible == 1) {
 		led_time(time, min, sec, track, trackno);
 		visible = 0;
@@ -130,6 +140,8 @@ led_nodisc(GtkWidget * time, GtkWidget * track)
 	GdkPixmap *p;
 	GtkStyle *style;
 	int retval;
+
+	if(!GTK_WIDGET_REALIZED(time)) return;
 
 	style = gtk_widget_get_style(time);
 	gtk_pixmap_get(GTK_PIXMAP(time), &p, NULL);
