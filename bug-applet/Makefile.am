@@ -25,7 +25,11 @@ sys_DATA = bug-applet.desktop
 gnorbadir  = $(sysconfdir)/CORBA/servers
 gnorba_DATA = bug-applet.gnorba
 
+pixmapsdir = $(datadir)/pixmaps
+pixmaps_DATA = gnome-bug-tracker.png
+
 EXTRA_DIST = \
 	$(types_DATA)	\
 	$(sys_DATA)	\
-	$(gnorba_DATA)
+	$(gnorba_DATA) \
+	$(pixmaps_DATA)
