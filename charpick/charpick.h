@@ -4,20 +4,13 @@
 #include <panel-applet.h>
 #include <panel-applet-gconf.h>
 
-#define CHARPICK_VERSION "0.05"
 #define NO_LAST_INDEX -1
-#define DEFAULT_ROWS 2
-#define DEFAULT_COLS 4
-#define DEFAULT_SIZE 22
-#define DEFAULT_MIN_CELLS (2*4)
-#define MAX_BUTTONS 25
-#define MAX_BUTTONS_WITH_BUFFER ((2*MAX_BUTTONS)-1)
 
 typedef struct _charpick_data charpick_data;
 /* this type has basically all data for this program */
 struct _charpick_data {
+  GList *chartable;
   gchar * charlist;  
-  gchar * default_charlist;
   gunichar selected_unichar;
   gint last_index;
   GtkWidget *box;
@@ -27,6 +20,8 @@ struct _charpick_data {
   gint panel_size;
   gboolean panel_vertical;
   GtkWidget *propwindow;
+  GtkWidget *pref_tree;
+  GtkWidget *menu;
 };
 
 
@@ -42,6 +37,8 @@ struct _charpick_button_cb_data {
 void start_callback_update();
 
 void build_table              (charpick_data     *curr_data);
+void add_to_popup_menu (charpick_data *curr_data);
+void save_chartable (charpick_data *curr_data);
 void show_preferences_dialog  (BonoboUIComponent *uic,
 			       charpick_data     *curr_data,
 			       const char        *verbname);

@@ -9,38 +9,6 @@
 #include "charpick.h"
 #include <egg-screen-help.h>
 
-static gboolean
-update_default_list_cb (GtkWidget *editable, GdkEventFocus *event, gpointer data)
-{
-  charpick_data *curr_data = data;
-  PanelApplet *applet = PANEL_APPLET (curr_data->applet);
-  gchar *text;
-  
-  text = gtk_editable_get_chars (GTK_EDITABLE (editable), 0, -1);
-  if (!text)
-  	return FALSE;
-  g_strstrip (text);	
-  if (g_utf8_strlen (text, -1) == 0){
-  	g_free (text);
-  	return FALSE;
-  }
-  
-  if (g_ascii_strcasecmp (curr_data->charlist, curr_data->default_charlist) == 0) {
-  	g_free (curr_data->charlist);
-  	curr_data->charlist = g_strdup (text);
-  	build_table (curr_data);
-  }	
-  if (curr_data->default_charlist)
-    g_free (curr_data->default_charlist);
-  curr_data->default_charlist = g_strdup (text);
-  
-  panel_applet_gconf_set_string (applet, "default_list", text, NULL);
-
-  g_free (text);
-  
-  return FALSE;
-}
-
 static void
 set_atk_relation (GtkWidget *label, GtkWidget *widget)
 {
@@ -68,46 +36,268 @@ set_atk_relation (GtkWidget *label, GtkWidget *widget)
   g_object_unref (G_OBJECT (relation)); 
 }
 
+static gchar *
+run_edit_dialog (gchar *string)
+{
+	GtkWidget *dialog;
+	GtkWidget *dbox;
+	GtkWidget *vbox, *hbox;
+	GtkWidget *entry;
+	GtkWidget *label;
+	gint retval;
+	gchar *new;
+	
+	dialog = gtk_dialog_new_with_buttons (_("Edit Palette"), NULL,
+							    GTK_DIALOG_DESTROY_WITH_PARENT |
+							    GTK_DIALOG_MODAL, 
+							    GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+							    NULL);
+	gtk_dialog_add_button (GTK_DIALOG (dialog), _("_Accept"), 100);
+	dbox = GTK_DIALOG (dialog)->vbox;
+	
+	vbox = gtk_vbox_new (FALSE, 12);
+	gtk_box_pack_start (GTK_BOX (dbox), vbox, TRUE, TRUE, 0);
+	gtk_container_set_border_width (GTK_CONTAINER (vbox), 12);
+	
+	hbox = gtk_hbox_new (FALSE, 6);
+	gtk_box_pack_start (GTK_BOX (vbox), hbox, TRUE, TRUE, 0);
+	
+	label = gtk_label_new_with_mnemonic (_("_Palette:"));
+	gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
+		
+	entry = gtk_entry_new ();
+	gtk_label_set_mnemonic_widget (GTK_LABEL (label), entry);
+	gtk_box_pack_start (GTK_BOX (hbox), entry, TRUE, TRUE, 0);
+	if (string)
+		gtk_entry_set_text (GTK_ENTRY (entry), string);
+	gtk_widget_show_all (dialog);
+	retval = gtk_dialog_run (GTK_DIALOG (dialog));
+	
+	if (retval != 100) {
+		gtk_widget_destroy (dialog);
+		return;
+	}
+	
+	new = gtk_editable_get_chars (GTK_EDITABLE (entry), 0, -1);
+	gtk_widget_destroy (dialog);
+	
+	if (!new || (strlen(new)==0))
+		return NULL;
+	return new;
+}
+
+static void
+add_palette (GtkButton *buttonk, charpick_data *curr_data)
+{
+	GList *list = curr_data->chartable;
+	gchar *new;
+	GtkTreeModel *model;
+	GtkTreeIter iter;
+	GtkTreeSelection *selection;
+	GtkTreePath *path;
+		
+	new = run_edit_dialog (NULL);
+	if (!new)
+		return;
+		
+	list = g_list_append (list, new);
+	save_chartable (curr_data);
+  	populate_menu (curr_data);
+  	
+  	model = gtk_tree_view_get_model (GTK_TREE_VIEW (curr_data->pref_tree));
+  	gtk_list_store_append (GTK_LIST_STORE (model), &iter);
+	gtk_list_store_set (GTK_LIST_STORE (model), &iter, 0, new, 1, new, -1);
+	selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (curr_data->pref_tree));
+	gtk_tree_selection_select_iter (selection, &iter);
+	path = gtk_tree_model_get_path (model, &iter);
+	gtk_tree_view_scroll_to_cell (GTK_TREE_VIEW (curr_data->pref_tree), path,
+						  NULL, FALSE, 0.0, 0.0);
+	gtk_tree_path_free (path);
+}
+
+static void
+edit_palette (GtkButton *button, charpick_data *curr_data)
+{
+	GtkTreeSelection *selection;
+	GtkTreeIter iter;
+	GtkTreeModel *model;
+	gchar *charlist, *new;
+	GList *list;
+
+	selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (curr_data->pref_tree));
+	
+	if (!gtk_tree_selection_get_selected (selection, &model, &iter))
+		return;
+		
+	gtk_tree_model_get (model, &iter, 1, &charlist, -1);
+	
+	new = run_edit_dialog (charlist);
+	if (!new || (g_ascii_strcasecmp (new, charlist) == 0))
+		return;
+		
+	list = g_list_find (curr_data->chartable, charlist);
+	list->data = new;
+	save_chartable (curr_data);
+  	populate_menu (curr_data);
+	gtk_list_store_set (GTK_LIST_STORE (model), &iter, 0, new, 1, new, -1);
+	
+	if (g_ascii_strcasecmp (curr_data->charlist, charlist) == 0) {
+		curr_data->charlist = new;
+		build_table (curr_data);
+	}
+	g_free (charlist);
+	
+}
+
+static void
+delete_palette (GtkButton *button, charpick_data *curr_data)
+{
+	GtkTreeSelection *selection;
+	GtkTreeIter iter, next;
+	GtkTreeModel *model;
+	gchar *charlist;
+	
+	selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (curr_data->pref_tree));
+	
+	if (!gtk_tree_selection_get_selected (selection, &model, &iter))
+		return;
+		
+	gtk_tree_model_get (model, &iter, 1, &charlist, -1);
+	
+	curr_data->chartable = g_list_remove (curr_data->chartable, charlist);
+	
+	if (g_ascii_strcasecmp (curr_data->charlist, charlist) == 0) {
+		curr_data->charlist = curr_data->chartable->data;
+		build_table (curr_data);
+	}
+	g_free (charlist);
+	
+	save_chartable (curr_data);
+  	populate_menu (curr_data);
+  	
+  	gtk_widget_grab_focus (curr_data->pref_tree);
+  	next = iter;
+	if (gtk_tree_model_iter_next (model, &next) )
+		gtk_tree_selection_select_iter (selection, &next);
+	else {
+		GtkTreePath *path;
+		path = gtk_tree_model_get_path (model, &iter);
+		gtk_tree_path_prev (path);
+		gtk_tree_selection_select_path (selection, path);
+		gtk_tree_path_free (path);
+	}
+	gtk_list_store_remove (GTK_LIST_STORE (model), &iter);
+
+}
+
+static GtkWidget *
+create_palettes_tree (charpick_data *curr_data)
+{
+	GtkWidget *scrolled;
+	GtkWidget *tree;
+	GtkListStore *model;
+	GtkCellRenderer *cell;
+	GtkTreeViewColumn *column;
+	GList *list = curr_data->chartable;
+	
+	scrolled = gtk_scrolled_window_new(NULL,NULL);
+	gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(scrolled),
+						GTK_POLICY_AUTOMATIC,
+						GTK_POLICY_AUTOMATIC);
+	
+	model = gtk_list_store_new (2, G_TYPE_STRING, G_TYPE_POINTER);
+	tree = gtk_tree_view_new_with_model (GTK_TREE_MODEL (model));
+	curr_data->pref_tree = tree;
+	gtk_container_add (GTK_CONTAINER (scrolled), tree);
+	g_object_unref (G_OBJECT (model));
+	cell = gtk_cell_renderer_text_new ();
+  	column = gtk_tree_view_column_new_with_attributes ("hello",
+						    	   cell,
+						     	   "text", 0,
+						     	   NULL);
+	gtk_tree_view_append_column (GTK_TREE_VIEW (tree), column);
+        gtk_tree_view_set_headers_visible (GTK_TREE_VIEW (tree), FALSE);
+        
+        while (list) {
+        	GtkTreeIter iter;
+        	gchar *charlist = list->data;
+        	
+        	gtk_list_store_append (GTK_LIST_STORE (model), &iter);
+		gtk_list_store_set (GTK_LIST_STORE (model), &iter, 0, charlist, 1, charlist, -1);
+        
+        	list = g_list_next (list);
+        }
+
+	return scrolled;
+
+}
+
+static GtkWidget *
+create_hig_catagory (GtkWidget *main_box, gchar *title)
+{
+	GtkWidget *vbox, *vbox2, *hbox;
+	GtkWidget *label;
+	gchar *tmp;
+		
+	vbox = gtk_vbox_new (FALSE, 6);
+	gtk_box_pack_start (GTK_BOX (main_box), vbox, TRUE, TRUE, 0);
+
+	tmp = g_strdup_printf ("<b>%s</b>", title);
+	label = gtk_label_new (NULL);
+	gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+	gtk_label_set_markup (GTK_LABEL (label), tmp);
+	g_free (tmp);
+	gtk_box_pack_start (GTK_BOX (vbox), label, FALSE, FALSE, 0);
+
+	hbox = gtk_hbox_new (FALSE, 0);
+	gtk_box_pack_start (GTK_BOX (vbox), hbox, TRUE, TRUE, 0);
+	
+	label = gtk_label_new ("    ");
+	gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
+	
+	vbox2 = gtk_vbox_new (FALSE, 6);
+	gtk_box_pack_start (GTK_BOX (hbox), vbox2, TRUE, TRUE, 0);
+
+	return vbox2;
+		
+}
+
 static void default_chars_frame_create(charpick_data *curr_data)
 {
-  GtkWidget *propwindow = curr_data->propwindow;
-  GtkWidget *tab_label;
-  GtkWidget *frame;
-  GtkWidget *default_list_hbox;
-  GtkWidget *default_list_label;
-  GtkWidget *default_list_entry;
-  GtkWidget *explain_label;
- 
-  /* init widgets */
-  frame = gtk_vbox_new(FALSE, 5);
-  default_list_hbox = gtk_hbox_new(FALSE, 5);
-  default_list_label = gtk_label_new_with_mnemonic(_("_Default character list:"));
-  default_list_entry = gtk_entry_new ();
-  gtk_entry_set_max_length (GTK_ENTRY(default_list_entry), MAX_BUTTONS);
-  gtk_entry_set_text(GTK_ENTRY(default_list_entry), 
-		     curr_data->default_charlist);
-  set_atk_relation (default_list_label, default_list_entry);
-  set_atk_name_description (default_list_entry, _("Default list of characters"), 
-              _("Set the default character list here"));
+  GtkWidget *dialog = curr_data->propwindow;
+  GtkWidget *dbox, *vbox, *vbox1, *vbox2;
+  GtkWidget *hbox;
+  GtkWidget *scrolled;
+  GtkWidget *button;
 
-  explain_label = gtk_label_new(_("These characters will appear when the panel"
-                                  " is started. To return to this list, hit"
-                                  " <d> while the applet has focus."));
-  gtk_label_set_line_wrap(GTK_LABEL(explain_label), TRUE);
-  /* pack the main vbox */
-  gtk_box_pack_start (GTK_BOX(frame), default_list_hbox, FALSE, FALSE, 5);
-  gtk_box_pack_start (GTK_BOX(frame), explain_label, FALSE, FALSE, 5);
-  /* default_list hbox */
-  gtk_box_pack_start(GTK_BOX(default_list_hbox), default_list_label, FALSE, FALSE, 5);
-  gtk_box_pack_start( GTK_BOX(default_list_hbox), default_list_entry, 
-		      FALSE, FALSE, 5);
+  dbox = GTK_DIALOG (dialog)->vbox;
 
-  g_signal_connect (G_OBJECT (default_list_entry), "focus_out_event",
-  		            G_CALLBACK (update_default_list_cb), curr_data);
+  vbox = gtk_vbox_new (FALSE, 18);
+  gtk_container_set_border_width (GTK_CONTAINER (vbox), 12);
+  gtk_box_pack_start (GTK_BOX (dbox), vbox, TRUE, TRUE, 0);
 
-  gtk_widget_show_all(frame);
-  gtk_box_pack_start (GTK_BOX (GTK_DIALOG (propwindow)->vbox), frame, TRUE, TRUE, 0);
+  vbox1 = create_hig_catagory (vbox, _("Palettes")); 
+    
+  hbox = gtk_hbox_new (FALSE, 6);
+  gtk_box_pack_start (GTK_BOX (vbox1), hbox, TRUE, TRUE, 0); 
+  scrolled = create_palettes_tree (curr_data);
+  gtk_box_pack_start (GTK_BOX (hbox), scrolled, TRUE, TRUE, 0);
   
+  vbox2 = gtk_vbox_new (FALSE, 6);
+  gtk_box_pack_start (GTK_BOX (hbox), vbox2, FALSE, FALSE, 0);
+  button = gtk_button_new_with_mnemonic (_("_Add Palette"));
+  gtk_box_pack_start (GTK_BOX (vbox2), button, FALSE, FALSE, 0);
+  g_signal_connect (G_OBJECT (button), "clicked",
+  			     G_CALLBACK (add_palette), curr_data);
+  button = gtk_button_new_with_mnemonic (_("_Edit Palette"));
+  gtk_box_pack_start (GTK_BOX (vbox2), button, FALSE, FALSE, 0);
+  g_signal_connect (G_OBJECT (button), "clicked",
+  			     G_CALLBACK (edit_palette), curr_data);
+  button = gtk_button_new_with_mnemonic (_("_Delete Palette"));
+  gtk_box_pack_start (GTK_BOX (vbox2), button, FALSE, FALSE, 0);
+  g_signal_connect (G_OBJECT (button), "clicked",
+  			     G_CALLBACK (delete_palette), curr_data);
+   
   return;
 }
 
@@ -163,8 +353,9 @@ show_preferences_dialog (BonoboUIComponent *uic,
 					    NULL);
   gtk_window_set_screen (GTK_WINDOW (curr_data->propwindow),
 			 gtk_widget_get_screen (curr_data->applet));
+  gtk_window_set_default_size (GTK_WINDOW (curr_data->propwindow), 350, 350);
   gtk_dialog_set_default_response (GTK_DIALOG (curr_data->propwindow), GTK_RESPONSE_CLOSE);
-  /*size_frame_create();*/
+
   default_chars_frame_create(curr_data);
   g_signal_connect (G_OBJECT (curr_data->propwindow), "response",
   		    G_CALLBACK (response_cb), curr_data);

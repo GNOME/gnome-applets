@@ -8,11 +8,10 @@
 #include "charpick.h"
 
 
-/* This stuff assumes that this program is being run in an environment
- * that uses ISO-8859-1 (latin-1) as its native character code.
- */
 
 /* The comment for each char list has the html entity names of the chars */
+/* All gunicar codes should end in -1 */
+
 
 /* This is the default list used when starting charpick the first time */
 /* aacute, agrave, eacute, iacute, oacute, frac12, copy*/
@@ -25,10 +24,8 @@ static gunichar a_code[] = {225, 224, 226, 227, 228, 229, 230, 170, -1};
 static const gchar *cap_a_list = "ÁÀÂÃÄÅÆª";
 static gunichar cap_a_code[] = {192, 193, 194, 195, 196, 197, 198, 170, -1}; 
 /* ccedil, cent, copy */
-static const gchar *c_list = "ç¢©";
-static gunichar c_code[] = {231, 162, 169, -1};
-static const gchar *cap_c_list = "Ç¢©";
-static gunichar cap_c_code[] = {199, 162, 169, -1};
+static const gchar *c_list = "çÇ¢©";
+static gunichar c_code[] = {231, 199, 162, 169, -1};
 /* eacute, egrave, ecirc, euml, aelig */
 static const gchar *e_list = "éèêëæ";
 static gunichar e_code[] = {232, 233, 234, 235, 230, -1};
@@ -39,88 +36,70 @@ static const gchar *i_list = "íìîï";
 static gunichar i_code[] = {236, 237, 238, 239, -1};
 static const gchar *cap_i_list = "ÍÌÎÏ";
 static gunichar cap_i_code[] = {204, 205, 206, 207, -1};
-/* */
-static const gchar *l_list = "£";
-static gunichar l_code[] = {163, -1};
-/* micro */
-static const gchar *m_list = "µ";
-static gunichar m_code[] = {181, -1};
 /* ntilde (this is the most important line in this program.) */
-static const gchar *n_list = "ñ";
-static gunichar n_code[] = {241, -1};
-static const gchar *cap_n_list = "Ñ";
-static gunichar cap_n_code[] = {209, -1};
+static const gchar *n_list = "ñ, Ñ";
+static gunichar n_code[] = {241, 209, -1};
 /* oacute, ograve, ocirc, otilde, ouml, oslash, ordm */
 static const gchar *o_list = "óòôõöøº";
 static gunichar o_code[] = {242, 243, 244, 245, 246, 248, 176, -1};
 static const gchar *cap_o_list = "ÓÒÔÕÖØº";
 static gunichar cap_o_code[] = {210, 211, 212, 213, 214, 216, 176, -1};
-/* para */
-static const gchar *p_list = "¶";
-static gunichar p_code[] = {182, -1};
-/* reg */
-static const gchar *r_list = "®";
-static gunichar r_code[] = {174, -1};
 /* szlig, sect, dollar */
 static const gchar *s_list = "ß§$";
 static gunichar s_code[] = {223, 167, 36, -1};
 /* eth, thorn */
-static const gchar *t_list = "ðþ";
-static gunichar t_code[] = {240, 254, -1};
-static const gchar *cap_t_list = "ÐÞ";
-static gunichar cap_t_code[] = {208, 222, -1};
+static const gchar *t_list = "ðÐþÞ";
+static gunichar t_code[] = {240, 208, 254, 222, -1};
 /* uacute, ugrave, ucirc, uuml */
 static const gchar *u_list = "úùûü";
 static gunichar u_code[] = {249, 250, 251, 252, -1};
 static const gchar *cap_u_list = "ÚÙÛÜ";
 static gunichar cap_u_code[] = {217, 218, 219, 220, -1};
 /* yacute, yuml, yen Yes, there is no capital yuml in iso 8859-1.*/
-static const gchar *y_list = "ýÿ¥";
-static gunichar y_code[] = {253, 255, 165, -1};
-static const gchar *cap_y_list = "Ýÿ¥";
-static gunichar cap_y_code[] = {221, 255, 165, -1};
+static const gchar *y_list = "ýÝÿ¥";
+static gunichar y_code[] = {253, 221, 255, 165, -1};
 
 /* extra characters unrelated to the latin alphabet. All characters in 
    ISO-8859-1 should now be accounted for.*/
-/* divide frac14 frac12 frac34 */
-static const gchar *slash_list = "÷ŒœŸ";
-static gunichar slash_code[] = {247, 188, 189, 190, -1};
 /* not shy macr plusmn */
 static const gchar *dash_list = "¬­¯±";
 static gunichar dash_code[] = {172, 173, 175, 177, -1};
-/* plusmn */
-static const gchar *plus_list = "±";
-static gunichar plus_code[] = {177, -1};
-/* cedil */
-static const gchar *comma_list = "ž";
-static gunichar comma_code[] = {184, -1};
-/* iquest */
-static const gchar *quest_list = "¿";
-static gunichar quest_code[] = {191, -1};
-/* iexcl */
-static const gchar *excl_list = "¡";
-static gunichar excl_code[] = {161, -1};
-/* brvbar */
-static const gchar *pipe_list = "Š";
-static gunichar pipe_code[] = {124, -1};
 /* laquo raquo uml */
-static const gchar *quote_list = "«»š";
-static gunichar quote_code[] = {171, 187, 168, -1};
-/* middot times */
-static const gchar *ast_list = "·×";
-static gunichar ast_code[] = {183, 215, -1};
+static const gchar *quote_list = "«»š·×";
+static gunichar quote_code[] = {171, 187, 168, 183, 215, -1};
 /* curren, pound, yen, cent, dollar */
 static const gchar *currency_list = "€£¥¢$";
 static gunichar currency_code[] = {164, 163, 165, 162, 36, 8364, -1}; 
 /* sup1 frac12 */
 static const gchar *one_list = "¹œŒ";
-static gunichar one_code[] = {185, 189, 188, -1};
-/* sup2 frac12 */
-static const gchar *two_list = "²œ";
-static gunichar two_code[] = {178, 189, -1};
-/* sup3 frac34 */
-static const gchar *three_list = "³Ÿ ";
-static gunichar three_code[] = {179, 190, -1};
+static gunichar one_code[] = {185, 178, 179, 188, 189, 190, -1};
+/* µ ¶ ® ¿ |  */
+static gunichar misc_code[] = {181, 182, 174, 191, 124, -1};
+
+static const gunichar *chartable[] = {
+	def_code,
+	a_code,
+	cap_a_code,
+	c_code,
+	e_code,
+	cap_e_code,
+	i_code,
+	cap_i_code,
+	n_code,
+	o_code,
+	cap_o_code,
+	s_code,
+	t_code,
+	u_code,
+	cap_u_code,
+	y_code,
+	dash_code,
+	quote_code,
+	currency_code,
+	one_code,
+	misc_code
+};
+
 
 /* sets the picked character as the selection when it gets a request */
 static void
@@ -241,9 +220,8 @@ key_press_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
                break;
     case 'A' : code = cap_a_code;
                break;
-    case 'c' : code = c_code;
-               break;
-    case 'C' : code = cap_c_code;
+    case 'c' : 
+    case 'C' : code = c_code;
                break;
     case 'e' : code = e_code;
                break;
@@ -253,81 +231,139 @@ key_press_event(GtkWidget *widget, GdkEventKey *event, gpointer data)
                break;
     case 'I' : code =  cap_i_code;
                break;
-    case 'l' : code = l_code;
-               break;
-    case 'm' : code = m_code;
-               break;
-    case 'n' : code = n_code;
-               break;
-    case 'N' : code = cap_n_code;
+    case 'n' : 
+    case 'N' : code = n_code;
                break;
     case 'o' : code = o_code;
                break;
     case 'O' : code = cap_o_code;
                break;
-    case 'p' : code = p_code;
-               break;
-    case 'r' : code = r_code;
-               break;
     case 's' : code = s_code;
                break;
-    case 't' : code =  t_code;
-               break;
-    case 'T' : code = cap_t_code;
+    case 't' : 
+    case 'T' : code = t_code;
                break;
     case 'u' : code = u_code;
                break;
     case 'U' : code = cap_u_code;
                break;
-    case 'y' : code = y_code;
-               break;
-    case 'Y' : code = cap_y_code;
-               break;
-    case '/' : code = slash_code;
+    case 'y' : 
+    case 'Y' : code = y_code;
                break;
     case '-' : code = dash_code;
                break;
-    case '+' : code = plus_code;
-               break;
-    case ',' : code = comma_code;
-               break;
-    case '?' : code = quest_code;
-               break;
-    case '!' : code = excl_code;
-               break;
-    case '|' : code = pipe_code;
-               break;
     case '\"' : code = quote_code;
-               break;
-    case '*' : code = ast_code;
                break;
     case '$' : code = currency_code;
                break;
-    case '£' : code = currency_code;
-               break;
-    case '€' : code = currency_code;
-               break;
-    case '1' : code = one_code;
-               break;
-    case '2' : code = two_code;
-               break;
-    case '3' : code = three_code;
+    case '1' : 
+    case '2' :
+    case '3' : code = one_code;
                break;
     case 'd' : code = NULL;
                break;
     default :
     		return FALSE;
     }
-  if (p_curr_data->charlist)
-    g_free (p_curr_data->charlist);
+#if 0
   if (code)
     p_curr_data->charlist = get_utf_string (code);
   else
-    p_curr_data->charlist = g_strdup (p_curr_data->default_charlist);
+    p_curr_data->charlist = "hello";
   p_curr_data->last_index = NO_LAST_INDEX;
   p_curr_data->last_toggle_button = NULL;
   build_table(p_curr_data);
+#endif
   return TRUE;
+}
+
+static void
+menuitem_activated (GtkMenuItem *menuitem, charpick_data *curr_data)
+{
+	gchar *string;
+	PanelApplet *applet = PANEL_APPLET (curr_data->applet);
+	
+	string = g_object_get_data (G_OBJECT (menuitem), "string");
+	if (g_ascii_strcasecmp (curr_data->charlist, string) == 0)
+		return;
+	
+	curr_data->charlist = string;
+	build_table (curr_data);
+	panel_applet_gconf_set_string (applet, "current_list", curr_data->charlist, NULL);
+}
+
+void
+populate_menu (charpick_data *curr_data)
+{
+	GList *list = curr_data->chartable;
+	GSList *group = NULL;
+	GtkMenu *menu;
+	GtkWidget *menuitem;
+
+	if (curr_data->menu)
+		gtk_widget_destroy (curr_data->menu);
+		
+	curr_data->menu = gtk_menu_new ();
+	menu  = GTK_MENU (curr_data->menu);
+	
+	while (list) {
+		gchar *string = list->data;
+		menuitem = gtk_radio_menu_item_new_with_label (group, string);
+		group = gtk_radio_menu_item_group (GTK_RADIO_MENU_ITEM (menuitem));
+		gtk_widget_show (menuitem);
+		g_object_set_data (G_OBJECT (menuitem), "string", string);
+		g_signal_connect (G_OBJECT (menuitem), "activate",
+				   G_CALLBACK (menuitem_activated), curr_data);
+		gtk_menu_append (menu, menuitem);
+		if (g_ascii_strcasecmp (curr_data->charlist, string) == 0)
+			gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (menuitem), TRUE);
+		list = g_list_next (list);
+	}
+
+}
+
+static void
+get_menu_pos (GtkMenu *menu, gint *x, gint *y, gboolean *push_in, gpointer data)
+{
+	charpick_data *curr_data = data;
+	GtkRequisition  reqmenu, reqapplet;
+	gint tempx, tempy, width, height;
+	gint screen_width, screen_height;
+	
+	gtk_widget_size_request (GTK_WIDGET (menu), &reqmenu);
+	gdk_window_get_origin (GTK_WIDGET (curr_data->applet)->window, &tempx, &tempy);
+     	gdk_window_get_geometry (GTK_WIDGET (curr_data->applet)->window, NULL, NULL,
+     			      &width, &height, NULL);
+     			      
+     	switch (panel_applet_get_orient (PANEL_APPLET (curr_data->applet))) {
+     	case PANEL_APPLET_ORIENT_DOWN:
+        	tempy += height;
+     		break;
+     	case PANEL_APPLET_ORIENT_UP:
+        	tempy -= reqmenu.height;
+     		break;
+     	case PANEL_APPLET_ORIENT_LEFT:
+     		tempx -= reqmenu.width;
+		break;
+     	case PANEL_APPLET_ORIENT_RIGHT:
+     		tempx += width;
+		break;
+     	}
+	screen_width = gdk_screen_width ();
+     	screen_height = gdk_screen_height ();
+     	*x = CLAMP (tempx, 0, MAX (0, screen_width - reqmenu.width));
+     	*y = CLAMP (tempy, 0, MAX (0, screen_height - reqmenu.height));
+}
+
+static void
+chooser_button_clicked (GtkButton *button, charpick_data *curr_data)
+{
+	if (GTK_WIDGET_VISIBLE (curr_data->menu))
+		gtk_menu_popdown (GTK_MENU (curr_data->menu));
+	else
+		gtk_menu_popup (GTK_MENU (curr_data->menu), NULL, NULL, get_menu_pos, curr_data,
+					    0, gtk_get_current_event_time());
+					    
 }
 
 /* creates table of buttons, sets up their callbacks, and packs the table in
@@ -338,19 +374,46 @@ build_table(charpick_data *p_curr_data)
 {
   GtkWidget *box;
   GtkWidget *toggle_button;
+  GtkWidget *button, *arrow;
+  GtkTooltips *tooltips;
   gint size;
   gint i = 0, len;
   gchar *charlist;
+  gint width, height;
   
   if (p_curr_data->box)
     gtk_widget_destroy(p_curr_data->box);
   if (p_curr_data->panel_vertical == TRUE)
     box = gtk_vbox_new (TRUE, 0);
-  else
+  else 
     box = gtk_hbox_new (TRUE, 0);
   gtk_widget_show (box);
   p_curr_data->box = box;
   
+  button = gtk_button_new ();  
+  tooltips = gtk_tooltips_new ();
+  gtk_tooltips_set_tip (tooltips, button, _("Available palettes"), NULL);
+  switch (panel_applet_get_orient (PANEL_APPLET (p_curr_data->applet))) {
+     	case PANEL_APPLET_ORIENT_DOWN:
+        	arrow = gtk_arrow_new (GTK_ARROW_DOWN, GTK_SHADOW_OUT);  ;
+     		break;
+     	case PANEL_APPLET_ORIENT_UP:
+        	arrow = gtk_arrow_new (GTK_ARROW_UP, GTK_SHADOW_OUT);  
+     		break;
+     	case PANEL_APPLET_ORIENT_LEFT:
+     		arrow = gtk_arrow_new (GTK_ARROW_LEFT, GTK_SHADOW_OUT);  
+		break;
+     	case PANEL_APPLET_ORIENT_RIGHT:
+     		arrow = gtk_arrow_new (GTK_ARROW_RIGHT, GTK_SHADOW_OUT);  
+		break;
+     	}
+  gtk_container_add (GTK_CONTAINER (button), arrow);
+  gtk_box_pack_start (GTK_BOX (box), button, TRUE, TRUE, 0);
+  g_signal_connect (G_OBJECT (button), "pressed",
+  			     G_CALLBACK (chooser_button_clicked), p_curr_data);
+  g_signal_connect (G_OBJECT (button), "button_press_event", 
+                             G_CALLBACK (button_press_hack), p_curr_data->applet);
+
   len = g_utf8_strlen (p_curr_data->charlist, -1);
   charlist = g_strdup (p_curr_data->charlist);
   for (i = 0; i < len; i++) {
@@ -371,6 +434,8 @@ build_table(charpick_data *p_curr_data)
                         (GtkSignalFunc) button_press_hack, p_curr_data->applet);
   }
   
+ 
+  
   gtk_container_add (GTK_CONTAINER(p_curr_data->applet), box);
   gtk_widget_show_all (p_curr_data->box);
 
@@ -381,6 +446,8 @@ build_table(charpick_data *p_curr_data)
 
   p_curr_data->last_index = NO_LAST_INDEX;
   p_curr_data->last_toggle_button = NULL;
+  
+  
 }
 
 static void applet_change_pixel_size(PanelApplet *applet, gint size, gpointer data)
@@ -419,6 +486,7 @@ about (BonoboUIComponent *uic,
 	  /* If your charset supports it, please use U00F1 to replace the "n"
 	   * in "Muniz". */
 	  _("Alexandre Muniz <munizao@xprt.net>"),
+	  _("Kevin Vandersloot"),
 	  NULL
   };
 
@@ -445,7 +513,7 @@ about (BonoboUIComponent *uic,
   }
   
   about_box = gnome_about_new (_("Character Palette"),
-			       CHARPICK_VERSION,
+			       VERSION,
 			       _("Copyright (C) 1998"),
 			       _("Gnome Panel applet for selecting strange "
 			         "characters that are not on my keyboard. "
@@ -497,11 +565,7 @@ applet_destroy (GtkWidget *widget, gpointer data)
   GtkWidget *applet = curr_data->applet;
 
   g_return_if_fail (curr_data);
-  
-  if (curr_data->default_charlist)
-      g_free (curr_data->default_charlist);
-  curr_data->default_charlist = NULL;
-  
+   
   tooltips = g_object_get_data (G_OBJECT (applet), "tooltips");
   if (tooltips) {
       g_object_unref (tooltips);
@@ -513,6 +577,65 @@ applet_destroy (GtkWidget *widget, gpointer data)
 
   g_free (curr_data);
   
+}
+
+void 
+save_chartable (charpick_data *curr_data)
+{
+	PanelApplet *applet = PANEL_APPLET (curr_data->applet);
+	GConfValue *value;
+	GList *list = curr_data->chartable;
+	GSList *slist = NULL;
+	
+	while (list) {
+		gchar *charlist = list->data;
+		GConfValue *v1;
+		v1 = gconf_value_new_from_string (GCONF_VALUE_STRING, charlist, NULL);
+		slist = g_slist_append (slist, v1);
+		list = g_list_next (list);
+	}
+	
+	value = gconf_value_new (GCONF_VALUE_LIST);
+	gconf_value_set_list_type (value, GCONF_VALUE_STRING);
+	gconf_value_set_list_nocopy (value, slist);
+	panel_applet_gconf_set_value (applet, "chartable", value, NULL);
+	gconf_value_free (value);
+}
+
+static void
+get_chartable (charpick_data *curr_data)
+{
+	PanelApplet *applet = PANEL_APPLET (curr_data->applet);
+	GConfValue *value;
+	gint i, n;
+	
+	value = panel_applet_gconf_get_value (applet, "chartable", NULL);
+	if (value) {
+		GSList *slist = gconf_value_get_list (value);
+		while (slist) {
+			GConfValue *v1 = slist->data;
+			gchar *charlist;
+			
+			charlist = g_strdup (gconf_value_get_string (v1));
+			curr_data->chartable = g_list_append (curr_data->chartable, charlist);
+			
+			slist = g_slist_next (slist);
+		}
+		gconf_value_free (value);
+	}
+	else {
+		n = G_N_ELEMENTS (chartable);
+		for (i=0; i<n; i++) {
+			gchar *string;
+		
+			string = get_utf_string ((gunichar *)chartable[i]);
+			curr_data->chartable = g_list_append (curr_data->chartable, string);
+		
+		}
+		save_chartable (curr_data);
+	}
+	
+
 }
 
 static const BonoboUIVerb charpick_applet_menu_verbs [] = {
@@ -554,6 +677,8 @@ charpicker_applet_fill (PanelApplet *applet)
 {
   charpick_data *curr_data;
   GdkAtom utf8_atom;
+  GList *list;
+  gchar *string;
   
   gnome_window_icon_set_default_from_file (GNOME_ICONDIR"/charpick.png");
   
@@ -562,12 +687,22 @@ charpicker_applet_fill (PanelApplet *applet)
   curr_data = g_new0 (charpick_data, 1);
   curr_data->last_index = NO_LAST_INDEX;
   curr_data->applet = GTK_WIDGET (applet);
+  
+  get_chartable (curr_data);
 
-  curr_data->default_charlist =  panel_applet_gconf_get_string (applet, 
-  							 "default_list", NULL);
-  if (!curr_data->default_charlist)
-      curr_data->default_charlist = get_utf_string (def_code);    
-  curr_data->charlist = g_strdup (curr_data->default_charlist);
+  string  = panel_applet_gconf_get_string (applet, 
+  							     "current_list", NULL);
+  if (string) {
+  	list = curr_data->chartable;
+  	while (list) {
+  		if (g_ascii_strcasecmp (list->data, string) == 0)
+  			curr_data->charlist = list->data;
+  		list = g_list_next (list);
+  	}
+  	g_free (string);
+  } 
+  else
+  	curr_data->charlist = curr_data->chartable->data;  
  
   curr_data->panel_size = panel_applet_get_size (applet);
   
@@ -612,7 +747,9 @@ charpicker_applet_fill (PanelApplet *applet)
                                      NULL,
 			             charpick_applet_menu_verbs,
 			             curr_data);
-
+			             
+  populate_menu (curr_data);
+  
   return TRUE;
 }
 
