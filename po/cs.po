@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-11-03 03:46+0100\n"
-"PO-Revision-Date: 2004-11-03 13:21+0100\n"
+"POT-Creation-Date: 2004-11-09 11:46+0100\n"
+"PO-Revision-Date: 2004-11-09 15:07+0100\n"
 "Last-Translator: Miloslav Trmac <mitr@volny.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -40,7 +40,7 @@ msgstr "O _aplikaci"
 
 #: accessx-status/GNOME_AccessxApplet.xml.h:2
 #: battstat/GNOME_BattstatApplet.xml.h:2 cdplayer/GNOME_CDPlayerApplet.xml.h:2
-#: charpick/GNOME_CharpickerApplet.xml.h:2
+#: charpick/GNOME_CharpickerApplet.xml.h:2 cpufreq/GNOME_CPUFreqApplet.xml.h:2
 #: drivemount/GNOME_DriveMountApplet.xml.h:2 geyes/GNOME_GeyesApplet.xml.h:2
 #: gkb-new/GNOME_KeyboardApplet.xml.h:2
 #: gswitchit/GNOME_GSwitchItApplet.xml.h:4 gtik/GNOME_GtikApplet.xml.h:2
@@ -76,12 +76,13 @@ msgid "Shows the status of keyboard accessibility features"
 msgstr "Zobrazí stav vlastností zpřístupnění klávesnice"
 
 #: accessx-status/applet.c:136 battstat/battstat_applet.c:1070
-#: cdplayer/cdplayer.c:596 charpick/charpick.c:601 drivemount/drivemount.c:100
+#: cdplayer/cdplayer.c:596 charpick/charpick.c:601
+#: cpufreq/src/cpufreq-applet.c:145 drivemount/drivemount.c:132
 #: geyes/geyes.c:201 gkb-new/gkb-applet.c:84 gswitchit/gswitchit-applet.c:599
 #: gtik/gtik.c:722 gweather/gweather-about.c:48 mini-commander/src/about.c:48
 #: modemlights/modemlights.c:116 multiload/main.c:56
-#: stickynotes/stickynotes_applet_callbacks.c:261
-#: wireless/wireless-applet.c:574 trashapplet/src/trashapplet.c:647
+#: stickynotes/stickynotes_applet_callbacks.c:282
+#: wireless/wireless-applet.c:574 trashapplet/src/trashapplet.c:681
 msgid "translator_credits"
 msgstr ""
 "David Šauer <davids@penguin.cz>\n"
@@ -142,7 +143,7 @@ msgstr "Zobrazí aktuální stav vlastností zpřístupnění klávesnice"
 
 #. The long name of the applet in the About dialog.
 #: battstat/GNOME_BattstatApplet.server.in.in.h:1
-#: battstat/battstat_applet.c:1085 battstat/battstat_applet.c:1724
+#: battstat/battstat_applet.c:1085 battstat/battstat_applet.c:1750
 msgid "Battery Charge Monitor"
 msgstr "Sledování stavu baterie"
 
@@ -151,7 +152,7 @@ msgid "Battstat Factory"
 msgstr "Generátor pro Stav baterie"
 
 #: battstat/GNOME_BattstatApplet.server.in.in.h:3
-#: battstat/battstat_applet.c:1725
+#: battstat/battstat_applet.c:1751
 msgid "Monitor a laptop's remaining power"
 msgstr "Sledovat zbývající napájení notebooku"
 
@@ -438,7 +439,7 @@ msgstr "© 2000 The Gnulix Society, © 2002-2004 Free Software Foundation"
 msgid "This utility shows the status of your laptop battery."
 msgstr "Tento nástroj zobrazuje stav baterie vašeho notebooku."
 
-#: battstat/battstat_applet.c:1650
+#: battstat/battstat_applet.c:1676
 msgid ""
 "Can't access ACPI events in /var/run/acpid.socket! Make sure the ACPI "
 "subsystem is working and the acpid daemon is running."
@@ -500,12 +501,12 @@ msgstr "Příkaz pro _uspání:"
 msgid "_Warn when battery charge is low"
 msgstr "_Varovat, když je nabití baterie nízké"
 
-#: battstat/properties.c:262 drivemount/drivemount.c:124
+#: battstat/properties.c:262 drivemount/drivemount.c:156
 #: mini-commander/src/preferences.c:368
-#: stickynotes/stickynotes_applet_callbacks.c:238
-#: stickynotes/stickynotes_applet_callbacks.c:402
+#: stickynotes/stickynotes_applet_callbacks.c:259
+#: stickynotes/stickynotes_applet_callbacks.c:423
 #: wireless/wireless-applet.c:544 wireless/wireless-applet.c:628
-#: trashapplet/src/trashapplet.c:614
+#: trashapplet/src/trashapplet.c:648
 #, c-format
 msgid "There was an error displaying help: %s"
 msgstr "Při zobrazování nápovědy došlo k chybě: %s"
@@ -784,8 +785,167 @@ msgstr "Kliknutím odstraníte vybranou paletu"
 msgid "Character Palette Preferences"
 msgstr "Nastavení Palety znaků"
 
+#: cpufreq/GNOME_CPUFreqApplet.server.in.in.h:1
+#: cpufreq/src/cpufreq-applet.c:161 cpufreq/src/cpufreq-applet.c:742
+msgid "CPU Frequency Scaling Monitor"
+msgstr "Sledování změny frekvence CPU"
+
+#: cpufreq/GNOME_CPUFreqApplet.server.in.in.h:2
+msgid "Monitor the CPU Frequency Scaling"
+msgstr "Sledovat změny frekvence CPU"
+
+#: cpufreq/GNOME_CPUFreqApplet.server.in.in.h:3
+msgid "Utility"
+msgstr "Nástroj"
+
+#: cpufreq/GNOME_CPUFreqApplet.xml.h:1
+msgid "_About..."
+msgstr "O _aplikaci..."
+
+#: cpufreq/GNOME_CPUFreqApplet.xml.h:3
+msgid "_Preferences..."
+msgstr "_Nastavení..."
+
+#: cpufreq/cpufreq-applet.schemas.in.h:1
+msgid ""
+"A 0 value mean to show cpu frequency, 1 to show frequency and units and 2 to "
+"show percentage instead of frequency."
+msgstr "Hodnota 0 znamená zobrazovat frekvenci CPU, 1 zobrazovat frekvenci a jednotky a 2 zobrazovat procenta místo frekvence."
+
+#: cpufreq/cpufreq-applet.schemas.in.h:2
+msgid ""
+"A 0 value mean to show the applet in graphic mode (pixmap only), 1 to show "
+"the applet in text mode (not to show the pixmap) and 2 to show the applet in "
+"graphic and text mode."
+msgstr "Hodnota 0 znamená zobrazovat aplet v grafickém režimu (jen pixmapu), 1 zobrazovat aplet v textovém režimu (nezobrazovat pixmapu) a 2 zobrazovat aplet v grafickém a textovém režimu."
+
+#: cpufreq/cpufreq-applet.schemas.in.h:3
+msgid "CPU to Monitor"
+msgstr "CPU, které sledovat"
+
+#: cpufreq/cpufreq-applet.schemas.in.h:4
+msgid "Mode to show cpu usage"
+msgstr "Režim zobrazování využití cpu"
+
+#: cpufreq/cpufreq-applet.schemas.in.h:5
+msgid "Mode to show when show_mode is text or both"
+msgstr "Režim zobrazování, jestli show_mode je text nebo obojí"
+
+#: cpufreq/cpufreq-applet.schemas.in.h:6
+msgid ""
+"Set the CPU to monitor. In a single processor system you don't have to "
+"change it."
+msgstr "Nastavit CPU, kterou sledovat. V jednoprocesorovém systému to nemusíte měnit."
+
+#: cpufreq/cpufreq-preferences.glade.h:1
+msgid "<b>Display Settings</b>"
+msgstr "<b>Nastavení zobrazení</b>"
+
+#: cpufreq/cpufreq-preferences.glade.h:2
+msgid "<b>Monitor Settings</b>"
+msgstr "<b>Nastavení sledování</b>"
+
+#: cpufreq/cpufreq-preferences.glade.h:3
+msgid "CPUFreq Monitor Preferences"
+msgstr "Nastavení Sledování CPUFreq"
+
+#: cpufreq/cpufreq-preferences.glade.h:4
+msgid "Monitored CPU"
+msgstr "Sledovaná CPU"
+
+#: cpufreq/cpufreq-preferences.glade.h:5
+msgid "Show CPU frequency as _frequency"
+msgstr "Zobrazovat frekvenci CPU jako _frekvenci"
+
+#: cpufreq/cpufreq-preferences.glade.h:6
+msgid "Show CPU frequency as _percentage"
+msgstr "Zobrazovat frekvenci CPU jako _procenta"
+
+#: cpufreq/cpufreq-preferences.glade.h:7
+msgid "Show frequency _units"
+msgstr "Zobrazovat _jednotky frekvence"
+
+#: cpufreq/cpufreq-preferences.glade.h:8
+msgid "Show in Mode "
+msgstr "Zobrazovat v režimu "
+
+#: cpufreq/src/cpufreq-applet.c:119 cpufreq/src/cpufreq-prefs.c:220
+msgid ""
+"Sorry, a internal error has been ocurred with the CPU Frequency Scaling "
+"Monitor help"
+msgstr "Lituji, v nápovědě sledování změn frekvence CPU došlo k vnitřní chybě"
+
+#: cpufreq/src/cpufreq-applet.c:123 cpufreq/src/cpufreq-prefs.c:223
+msgid "Sorry, the document can not be found"
+msgstr "Lituji, dokument nelze najít"
+
+#: cpufreq/src/cpufreq-applet.c:137
+msgid "Graphic Arts:"
+msgstr "Grafika:"
+
+#: cpufreq/src/cpufreq-applet.c:163
+msgid "Copyright (C) 2004 Free Software Foundation. Inc."
+msgstr "Copyright © 2004 Free Software Foundation. Inc."
+
+#: cpufreq/src/cpufreq-applet.c:164
+msgid "This utility shows the current CPU Frequency Scaling."
+msgstr "Tento nástroj zobrazuje aktuální frekvenci CPU."
+
+#. If there is no cpufreq support it shows only the cpu frequency,
+#. * I thi	nk is better than do nothing. I have to notify it to the user, because
+#. * he could think	 that cpufreq is supported but it doesn't work succesfully
+#.
+#: cpufreq/src/cpufreq-applet.c:597
+msgid ""
+"There is no cpufreq support in your system, needed to use CPU Frequency "
+"Scaling Monitor.\n"
+"If your system already supports cpufreq, check whether /sys or /proc file "
+"systems are mounted.\n"
+"Now the applet will only show the current cpu frequency."
+msgstr ""
+"Ve vašem systému není podpora cpufreq potřebná pro používání Sledování změn frekvence CPU.\n"
+"Pokud váš systém již podporuje cpufreq, zkontrolujte, jestli jsou připojeny systémy souborů /sys nebo /proc.\n"
+"Aplet bude nyní zobrazovat jen aktuální frekvenci cpu."
+
+#: cpufreq/src/cpufreq-applet.c:606
+#, c-format
+msgid ""
+"CPU %d - cpufreq Not Supported\n"
+"%s (%s)"
+msgstr ""
+"CPU %d - cpufreq nepodporován\n"
+"%s (%s)"
+
+#: cpufreq/src/cpufreq-applet.c:612
+msgid "cpufreq Not Supported"
+msgstr "cpufreq nepodporován"
+
+#: cpufreq/src/cpufreq-applet.c:743
+msgid "This utility shows the current CPU Frequency"
+msgstr "Tento nástroj zobrazuje aktuální frekvenci CPU"
+
+#: cpufreq/src/cpufreq-prefs.c:285
+msgid "Graphic"
+msgstr "Grafika"
+
+#: cpufreq/src/cpufreq-prefs.c:290 modemlights/properties.c:609
+msgid "Text"
+msgstr "Text"
+
+#: cpufreq/src/cpufreq-prefs.c:295
+msgid "Graphic and Text"
+msgstr "Grafika a text"
+
+#: cpufreq/src/cpufreq.c:231 gweather/weather.c:232 gweather/weather.c:2200
+#: gweather/weather.c:2214 gweather/weather.c:2226 gweather/weather.c:2241
+#: gweather/weather.c:2257 gweather/weather.c:2288 gweather/weather.c:2300
+#: gweather/weather.c:2319 gweather/weather.c:2347 gweather/weather.c:2360
+#: gweather/weather.c:2380
+msgid "Unknown"
+msgstr "Neznámý"
+
 #: drivemount/GNOME_DriveMountApplet.server.in.in.h:1
-#: drivemount/drivemount.c:94
+#: drivemount/drivemount.c:126
 msgid "Disk Mounter"
 msgstr "Připojování disků"
 
@@ -801,7 +961,7 @@ msgstr "Generátor pro Aplet připojování disků"
 msgid "Mount local disks and devices"
 msgstr "Připojování lokálních disků a zařízení"
 
-#: drivemount/drivemount.c:97
+#: drivemount/drivemount.c:129
 msgid "Applet for mounting and unmounting block volumes."
 msgstr "Aplet pro připojování a odpojování blokových zařízení."
 
@@ -3049,7 +3209,7 @@ msgstr "Nemohu získat předdefinovaná data."
 msgid "No stock list"
 msgstr "Žádný seznam akcií"
 
-#: gtik/gtik.c:313 gweather/gweather-applet.c:480
+#: gtik/gtik.c:313 gweather/gweather-applet.c:491
 msgid "Updating..."
 msgstr "Aktualizuji..."
 
@@ -3385,7 +3545,7 @@ msgstr ""
 "\n"
 "Aplikace na panelu pro sledování místního počasí."
 
-#: gweather/gweather-applet.c:360 gweather/gweather-applet.c:364
+#: gweather/gweather-applet.c:371 gweather/gweather-applet.c:375
 msgid "GNOME Weather"
 msgstr "GNOME Počasí"
 
@@ -3848,13 +4008,6 @@ msgstr "Severozápad"
 #: gweather/weather.c:226
 msgid "North - Northwest"
 msgstr "Sever - Severozápad"
-
-#: gweather/weather.c:232 gweather/weather.c:2200 gweather/weather.c:2214
-#: gweather/weather.c:2226 gweather/weather.c:2241 gweather/weather.c:2257
-#: gweather/weather.c:2288 gweather/weather.c:2300 gweather/weather.c:2319
-#: gweather/weather.c:2347 gweather/weather.c:2360 gweather/weather.c:2380
-msgid "Unknown"
-msgstr "Neznámý"
 
 #: gweather/weather.c:234 gweather/weather.c:251 gweather/weather.c:322
 msgid "Invalid"
@@ -4618,7 +4771,7 @@ msgstr "Příkaz"
 msgid "Adjust the sound volume"
 msgstr "Upravit hlasitost zvuku"
 
-#: mixer/GNOME_MixerApplet.server.in.in.h:2 mixer/applet.c:218
+#: mixer/GNOME_MixerApplet.server.in.in.h:2 mixer/applet.c:223
 msgid "Volume Control"
 msgstr "Ovládání hlasitosti"
 
@@ -4630,21 +4783,21 @@ msgstr "_Umlčet"
 msgid "_Open Volume Control"
 msgstr "_Otevřít ovládání hlasitosti"
 
-#: mixer/applet.c:540
+#: mixer/applet.c:545
 #, c-format
 msgid "Failed to start Volume Control: %s"
 msgstr "Nemohu spustit ovládání hlasitosti: %s"
 
-#: mixer/applet.c:959
+#: mixer/applet.c:997
 #, c-format
 msgid "Failed to display help: %s"
 msgstr "Nemohu zobrazit nápovědu: %s"
 
-#: mixer/applet.c:975
+#: mixer/applet.c:1013
 msgid "Volume Applet"
 msgstr "Aplet hlasitosti"
 
-#: mixer/applet.c:978
+#: mixer/applet.c:1016
 msgid "A GNOME/GStreamer-based volume control applet"
 msgstr "Aplet pro ovládání hlasitosti založený na GNOME/GStreamer"
 
@@ -4964,10 +5117,6 @@ msgstr "_Odpojeno:"
 msgid "C_onnecting:"
 msgstr "Připo_juji se:"
 
-#: modemlights/properties.c:609
-msgid "Text"
-msgstr "Text"
-
 #: modemlights/properties.c:617
 msgid "For_eground:"
 msgstr "Popř_edí:"
@@ -5026,7 +5175,7 @@ msgstr "_Otevřít sledování systému"
 msgid "CPU Load"
 msgstr "Zátěž CPU"
 
-#: multiload/loadavg.c:107 multiload/main.c:334
+#: multiload/loadavg.c:107 multiload/main.c:346
 msgid "Load Average"
 msgstr "Průměrná zátěž"
 
@@ -5042,27 +5191,27 @@ msgstr ""
 "Program, který sleduje zátěž systému a je schopný zobrazovat grafy pro CPU, "
 "paměť, využití odkládacího prostoru a zatížení sítě."
 
-#: multiload/main.c:326 multiload/properties.c:560
+#: multiload/main.c:338 multiload/properties.c:560
 msgid "Processor"
 msgstr "Procesor"
 
-#: multiload/main.c:328 multiload/properties.c:567
+#: multiload/main.c:340 multiload/properties.c:567
 msgid "Memory"
 msgstr "Paměť"
 
-#: multiload/main.c:330 multiload/properties.c:575
+#: multiload/main.c:342 multiload/properties.c:575
 msgid "Network"
 msgstr "Síť"
 
-#: multiload/main.c:332 multiload/properties.c:583
+#: multiload/main.c:344 multiload/properties.c:583
 msgid "Swap Space"
 msgstr "Odkládací prostor"
 
-#: multiload/main.c:336
+#: multiload/main.c:348
 msgid "Resource"
 msgstr "Zdroj"
 
-#: multiload/main.c:352
+#: multiload/main.c:364
 #, c-format
 msgid ""
 "%s:\n"
@@ -5073,7 +5222,7 @@ msgstr ""
 "Používá se %d%%, z čehož\n"
 "%d%% je cache"
 
-#: multiload/main.c:355
+#: multiload/main.c:367
 #, c-format
 msgid ""
 "%s:\n"
@@ -5319,8 +5468,8 @@ msgid "Create, view, and manage sticky notes on the desktop"
 msgstr "Vytvořit, zobrazit a spravovat lepící poznámky na pracovní ploše"
 
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
-#: stickynotes/stickynotes_applet.c:321 stickynotes/stickynotes_applet.c:439
-#: stickynotes/stickynotes_applet_callbacks.c:271
+#: stickynotes/stickynotes_applet.c:332 stickynotes/stickynotes_applet.c:450
+#: stickynotes/stickynotes_applet_callbacks.c:292
 msgid "Sticky Notes"
 msgstr "Lepící poznámky"
 
@@ -5681,7 +5830,7 @@ msgstr "Jestli se má použít implicitní barva tématu"
 msgid "Whether to use the default system font"
 msgstr "Jestli se má použít implicitní písmo tématu"
 
-#: stickynotes/stickynotes_applet.c:439
+#: stickynotes/stickynotes_applet.c:450
 #, c-format
 msgid ""
 "%s\n"
@@ -5699,11 +5848,11 @@ msgstr[2] ""
 "%s\n"
 "%d poznámek"
 
-#: stickynotes/stickynotes_applet_callbacks.c:273
+#: stickynotes/stickynotes_applet_callbacks.c:294
 msgid "(c) 2002-2003 Loban A Rahman"
 msgstr "© 2002-2003 Loban A Rahman"
 
-#: stickynotes/stickynotes_applet_callbacks.c:274
+#: stickynotes/stickynotes_applet_callbacks.c:295
 msgid "Sticky Notes for the Gnome Desktop Environment"
 msgstr "Lepící poznámky pro prostředí pracovní plochy Gnome"
 
@@ -5773,37 +5922,37 @@ msgstr "Jít do koše"
 msgid "Trash"
 msgstr "Koš"
 
-#: trashapplet/src/trashapplet.c:155
+#: trashapplet/src/trashapplet.c:160
 #, c-format
 msgid "Unable to find the Trash directory: %s"
 msgstr "Nemohu najít adresář koše: %s"
 
-#: trashapplet/src/trashapplet.c:356
+#: trashapplet/src/trashapplet.c:391
 msgid "No Items in Trash"
 msgstr "Žádná položka v koši"
 
-#: trashapplet/src/trashapplet.c:359
+#: trashapplet/src/trashapplet.c:394
 msgid "1 Item in Trash"
 msgstr "1 položka v koši"
 
-#: trashapplet/src/trashapplet.c:362
+#: trashapplet/src/trashapplet.c:397
 #, c-format
 msgid "%d Items in Trash"
 msgstr "%d položek v koši"
 
-#: trashapplet/src/trashapplet.c:509
+#: trashapplet/src/trashapplet.c:543
 msgid "Are you sure you want to empty all of the items from the trash?"
 msgstr "Opravdu chcete odstranit všechny položky z koše?"
 
-#: trashapplet/src/trashapplet.c:523
+#: trashapplet/src/trashapplet.c:557
 msgid "If you empty the trash, items will be permanently deleted."
 msgstr "Pokud vyprázdníte koš, položky budou natrvalo odstraněny."
 
-#: trashapplet/src/trashapplet.c:535
+#: trashapplet/src/trashapplet.c:569
 msgid "_Empty"
 msgstr "_Vyprázdnit"
 
-#: trashapplet/src/trashapplet.c:592
+#: trashapplet/src/trashapplet.c:626
 #, c-format
 msgid ""
 "Error while spawing nautilus:\n"
@@ -5812,11 +5961,11 @@ msgstr ""
 "Chyba při spouštění nautilus:\n"
 "%s"
 
-#: trashapplet/src/trashapplet.c:639
+#: trashapplet/src/trashapplet.c:673
 msgid "Trash Applet"
 msgstr "Aplet koše"
 
-#: trashapplet/src/trashapplet.c:642
+#: trashapplet/src/trashapplet.c:676
 msgid ""
 "A GNOME trash bin that lives in your panel. You can use it to view the trash "
 "or drag and drop items into the trash."
@@ -5824,21 +5973,21 @@ msgstr ""
 "Koš GNOME, který žije na vašem panelu. Můžete jej používat pro zobrazení "
 "koše nebo do něj přetahovat položky."
 
-#: trashapplet/src/trashapplet.c:667
+#: trashapplet/src/trashapplet.c:701
 msgid "Delete Immediately?"
 msgstr "Hned odstranit?"
 
-#: trashapplet/src/trashapplet.c:696
+#: trashapplet/src/trashapplet.c:730
 msgid "Cannot move items to trash, do you want to delete them immediately?"
 msgstr "Nemohu přesunout položky do koše, chcete je odstranit okamžitě?"
 
-#: trashapplet/src/trashapplet.c:699
+#: trashapplet/src/trashapplet.c:733
 msgid ""
 "Cannot move some items to trash, do you want to delete these immediately?"
 msgstr ""
 "Nemohu přesunout některé položky do koše, chcete je odstranit okamžitě?"
 
-#: trashapplet/src/trashapplet.c:800 trashapplet/src/trashapplet.c:817
+#: trashapplet/src/trashapplet.c:834 trashapplet/src/trashapplet.c:851
 #, c-format
 msgid ""
 "Unable to move to trash:\n"
