@@ -10,8 +10,11 @@ dummy.cc:
 
 bin_PROGRAMS = cpuload_applet
 
-cpuload_applet_SOURCES = cpuload.c linux-proc.h linux-proc.c
-
+cpuload_applet_SOURCES = cpuload.c 	\
+			 linux-proc.h 	\
+			 linux-proc.c 	\
+			 properties.c	\
+			 properties.h
 MICO_VERS = 2.0.5
 MICO_LIBS = -lmicocoss$(MICO_VERS) -lmicoaux$(MICO_VERS) -lmico$(MICO_VERS)
 
