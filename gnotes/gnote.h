@@ -28,6 +28,7 @@ typedef struct _Gnote
     GtkWidget *hbox;
     GtkWidget *handle_box;
     GtkWidget *text;
+    GtkWidget *menu;
     gboolean  hidden;
     time_t    timestamp;
     gchar    *title;
@@ -35,10 +36,8 @@ typedef struct _Gnote
     gchar    *type;
 } GNote;
 
-void gnotes_init();
-
-const gchar *get_gnotes_dir();
 void gnote_action(GtkWidget *, gpointer);
+GtkWidget *gnote_create_menu(GNote*);
 void gnote_menu(GtkWidget *, GdkEventButton *);
 gint gnote_handle_button_cb(GtkWidget *, GdkEventButton *, gpointer);
 void gnote_new(gint, gint, gint, gint, gboolean, const gchar *,
