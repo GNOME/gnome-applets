@@ -107,6 +107,7 @@ struct _Config {
 	int show_icons;			/*bool*/
 	int show_arrow;			/*bool*/
 	int fixed_tasklist;		/*bool*/
+	int use_only_free_space;	/*bool*/
 	int pager_w_0, pager_h_0;
 	int pager_w_1, pager_h_1;
 };
@@ -457,6 +458,10 @@ cb_applet_properties(AppletWidget * widget, gpointer data)
 
 	add_check_button(vbox1, prop,_("Tasklist always maximum size"),
 			 config.fixed_tasklist, &o_config.fixed_tasklist);
+
+	add_check_button(vbox1, prop,_("Don't push other applets out of the way"),
+			 config.use_only_free_space,
+			 &o_config.use_only_free_space);
 
 	add_spin_button(vbox1,prop,_("Maximum width of horizontal task list"),
 			config.max_task_width,
@@ -1390,6 +1395,7 @@ cb_applet_save_session(GtkWidget * w,
 	gnome_config_set_int("stuff/show_arrow", config.show_arrow);
 	gnome_config_set_bool("stuff/reverse_order", config.reverse_order);
 	gnome_config_set_int("stuff/fixed_tasklist", config.fixed_tasklist);
+	gnome_config_set_bool("stuff/use_only_free_space", config.use_only_free_space);
 	gnome_config_set_int("stuff/pager_w_0", config.pager_w_0);
 	gnome_config_set_int("stuff/pager_h_0", config.pager_h_0);
 	gnome_config_set_int("stuff/pager_w_1", config.pager_w_1);
@@ -2130,10 +2136,23 @@ set_task_info_to_button(Task * t)
 	else if (label)
 		gtk_label_set_text(GTK_LABEL(label), "???");
 	gtk_widget_size_request(button, &req);
+	/*FIXME weird, the geometry only really works on horizontal panels*/
 	if ((applet_orient == ORIENT_UP) || (applet_orient == ORIENT_DOWN)) {
+		int fs = 0;
+		int max_task_width;
+		/*ugly hacks galore, yes I'm guilty now*/
+		if(config.use_only_free_space) {
+			GtkWidget *the_box = button->parent;
+			fs = applet_widget_get_free_space(APPLET_WIDGET(applet));
+			fs -= applet->allocation.width - the_box->allocation.width;
+		}
+		if(fs<=0)
+			max_task_width = config.max_task_width;
+		else
+			max_task_width = MIN(fs,config.max_task_width);
 		if (num < config.task_rows_h)
 			num = config.task_rows_h;
-		mw = config.max_task_width / ((num + config.task_rows_h - 1) / config.task_rows_h);
+		mw = max_task_width / ((num + config.task_rows_h - 1) / config.task_rows_h);
 	} else {
 		mw = config.max_task_vwidth;
 	}
@@ -2562,6 +2581,8 @@ main(int argc, char *argv[])
 	config.show_icons = gnome_config_get_int("stuff/show_icons=1");
 	config.show_arrow = gnome_config_get_int("stuff/show_arrow=1");
 	config.fixed_tasklist = gnome_config_get_int("stuff/fixed_tasklist=0");
+	config.use_only_free_space =
+		gnome_config_get_bool("stuff/use_only_free_space=true");
 	config.reverse_order =
 		gnome_config_get_bool("stuff/reverse_order=false");
 	config.pager_w_0 = gnome_config_get_int("stuff/pager_w_0=31");
