@@ -349,7 +349,7 @@ gkb_prop_create_hotkey_frame (GkbPropertyBoxInfo * pbi, GtkWidget * widget)
   pbi->hotkey_entry = gtk_entry_new ();
   gtk_entry_set_text (GTK_ENTRY (pbi->hotkey_entry), gkb->key);
 
-  button = gtk_button_new_with_label (_("Grab hotkey"));
+  button = gtk_button_new_with_mnemonic (_("_Grab hotkey"));
   if (gail_loaded)                                                              
     {                                                                           
       add_atk_relation(GTK_WIDGET(pbi->hotkey_entry),
