@@ -58,10 +58,9 @@ static GList * copy_propwgs (GKB * gkb);
 static GList *
 copy_props (GKB * gkb)
 {
-  int i = 0;
   Prop * prop;
   PropWg * p2;
-  GList * tempmaps = g_list_alloc();
+  GList * tempmaps = NULL;
   GList * list = gkb->maps;
 
   gkb->tn  = gkb->n;
@@ -71,23 +70,19 @@ copy_props (GKB * gkb)
       if((prop = list->data) != NULL) 
        {
         p2 = cp_prop (prop);
-        if (tempmaps->data == NULL) 
-          tempmaps->data=p2;
-         else
-          tempmaps = g_list_insert (tempmaps, p2,i++);
+	tempmaps = g_list_prepend (tempmaps, p2);
        }
       list = list->next;
     }
-  return tempmaps;
+  return g_list_reverse(tempmaps);
 }
 
 static GList *
 copy_propwgs (GKB * gkb)
 {
-  int i = 0;
   PropWg * prop;
   Prop * p2;
-  GList * tempmaps = g_list_alloc();
+  GList * tempmaps = NULL;
   GList * list = gkb->tempmaps;
 
   gkb->n= gkb->tn;
@@ -97,14 +92,11 @@ copy_propwgs (GKB * gkb)
       if((prop = list->data) != NULL) 
        {
         p2 = cp_propwg (prop);
-        if (tempmaps->data == NULL)
-          tempmaps->data=p2;
-         else
-          tempmaps = g_list_insert (tempmaps, p2,i++);
+	tempmaps = g_list_prepend (tempmaps, p2);
        }
       list = list->next;
     }
-  return tempmaps;
+  return g_list_reverse(tempmaps);
 }
 
 static PropWg *
@@ -113,9 +105,9 @@ cp_prop (Prop * data)
 
   PropWg * tempdata = g_new (PropWg, 1);
 
-  tempdata->name = (char *) strdup (data->name);
-  tempdata->command = (char *) strdup (data->command);
-  tempdata->iconpath = (char *) strdup (data->iconpath);
+  tempdata->name = g_strdup (data->name);
+  tempdata->command = g_strdup (data->command);
+  tempdata->iconpath = g_strdup (data->iconpath);
 
   return tempdata;
 }
@@ -126,28 +118,11 @@ cp_propwg (PropWg * data)
 
   Prop *tempdata = g_new (Prop, 1);
 
-  tempdata->name = (char *) strdup (data->name);
-  tempdata->command = (char *) strdup (data->command);
-  tempdata->iconpath = (char *) strdup (data->iconpath);
+  tempdata->name = g_strdup (data->name);
+  tempdata->command = g_strdup (data->command);
+  tempdata->iconpath = g_strdup (data->iconpath);
 
   return tempdata;
-}
-
-static void
-tell_panel (void)
-{
-  CORBA_Environment ev;
-  GNOME_Panel panel_client = CORBA_OBJECT_NIL;
-
-  panel_client = goad_server_activate_with_repo_id (NULL,
-						    "IDL:GNOME/Panel:1.0",
-						    GOAD_ACTIVATE_EXISTING_ONLY,
-						    NULL);
-  if (!panel_client)
-    return;
-  CORBA_exception_init (&ev);
-  GNOME_Panel_notice_config_changes (panel_client, &ev);
-  CORBA_exception_free (&ev);
 }
 
 static void
@@ -239,23 +214,23 @@ apply_cb (GtkWidget * pb, gint page, GKB * gkb)
     {
       if((actdata = list->data) != NULL) {
 
-      if (actdata->name) g_free (actdata->name);
-      if (actdata->iconpath) g_free (actdata->iconpath);
-      if (actdata->command) g_free (actdata->command);
+        g_free (actdata->name);
+        g_free (actdata->iconpath);
+        g_free (actdata->command);
 
-      actdata->name = (char *) strdup (gtk_entry_get_text (GTK_ENTRY (actdata->keymapname)));
+        actdata->name = g_strdup (gtk_entry_get_text (GTK_ENTRY (actdata->keymapname)));
 
-      actdata->iconpath = (char *) strdup (
-	gnome_icon_entry_get_filename (GNOME_ICON_ENTRY (actdata->iconentry)));
+        actdata->iconpath = g_strdup (
+	  gnome_icon_entry_get_filename (GNOME_ICON_ENTRY (actdata->iconentry)));
 
-      actdata->command = (char *) strdup (
-	gtk_entry_get_text (GTK_ENTRY (actdata->commandinput)));
+        actdata->command = g_strdup (
+	  gtk_entry_get_text (GTK_ENTRY (actdata->commandinput)));
 
-      gtk_notebook_set_tab_label_text (GTK_NOTEBOOK (actdata->notebook),
-           gtk_notebook_get_nth_page (GTK_NOTEBOOK (actdata->notebook), i++),
-	     gtk_entry_get_text (GTK_ENTRY(actdata->keymapname)));
+        gtk_notebook_set_tab_label_text (GTK_NOTEBOOK (actdata->notebook),
+             gtk_notebook_get_nth_page (GTK_NOTEBOOK (actdata->notebook), i++),
+	       gtk_entry_get_text (GTK_ENTRY(actdata->keymapname)));
 
-      gtk_widget_show (actdata->notebook);
+        gtk_widget_show (actdata->notebook);
       }
       list = list->next;
     }
@@ -264,13 +239,11 @@ apply_cb (GtkWidget * pb, gint page, GKB * gkb)
 
   sized_render (gkb);
   gkb_draw (gkb);
-  system (gkb->dact->command);
+  /* execute in a shell but don't wait for the thing to end */
+  gnome_execute_shell (NULL, gkb->dact->command);
 
-  applet_save_session (gkb->propbox,
-                       APPLET_WIDGET (gkb->applet)->privcfgpath,
-                       APPLET_WIDGET (gkb->applet)->globcfgpath, gkb);
-
-  tell_panel ();
+  /* tell the panel to save our configuration data */
+  applet_widget_sync_config(APPLET_WIDGET(gkb->applet));
 }
 
 static void

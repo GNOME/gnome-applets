@@ -144,7 +144,7 @@ loadprop (GKB * gkb, int i)
 {
   char buf[256];
 
-  Prop *actdata = g_new (Prop, 1);
+  Prop *actdata = g_new0 (Prop, 1);
 
   g_snprintf (buf, 256, "map_%d/name=Us", i);
   actdata->name = gnome_config_get_string (buf);
@@ -182,22 +182,20 @@ loadprop (GKB * gkb, int i)
 static void
 load_properties (GKB * gkb)
 {
-  char buf[256];
   int i;
 
   Prop *actdata;
 
-  gkb->maps = g_list_alloc();
+  gkb->maps = NULL;
 
   gnome_config_push_prefix (APPLET_WIDGET (gkb->applet)->privcfgpath);
 
-  g_snprintf (buf, 256, "gkb/num=0");
-  gkb->n = gnome_config_get_int (buf);
+  gkb->n = gnome_config_get_int ("gkb/num=0");
 
   if (gkb->n == 0)
     {
       actdata = loadprop (gkb, 0);
-      gkb->maps->data = actdata;
+      gkb->maps = g_list_append (gkb->maps, actdata);
       gkb->n++;
 
       actdata = loadprop (gkb, 1);
@@ -208,17 +206,13 @@ load_properties (GKB * gkb)
     for (i = 0; i < gkb->n; i++)
       {
 	actdata = loadprop (gkb, i);
-        if (i == 0)
-          gkb->maps->data = actdata;
-         else
-	  gkb->maps = g_list_append (gkb->maps, actdata);
+	gkb->maps = g_list_append (gkb->maps, actdata);
       }
 
   gnome_config_pop_prefix ();
 
-  applet_save_session (gkb->propbox,
-		       APPLET_WIDGET (gkb->applet)->privcfgpath,
-		       APPLET_WIDGET (gkb->applet)->globcfgpath, gkb);
+  /* tell the panel to save our configuration data */
+  applet_widget_sync_config(APPLET_WIDGET(gkb->applet));
 }
 
 void
@@ -349,7 +343,7 @@ help_cb (AppletWidget * applet, gpointer data)
   gnome_help_display (NULL, &help_entry);
 }
 
-int
+static gboolean
 applet_save_session (GtkWidget * w,
 		     const char *privcfgpath,
 		     const char *globcfgpath, GKB * gkb)
@@ -360,18 +354,19 @@ applet_save_session (GtkWidget * w,
   GList * list = gkb->maps;
 
   gnome_config_push_prefix (privcfgpath);
-  sprintf (str, "gkb/num");
-  gnome_config_set_int (str, gkb->n);
+  gnome_config_set_int ("gkb/num", gkb->n);
 
   while (list)
     {
-      if(list->data) actdata = list->data;
-      sprintf (str, "map_%d/name", i);
-      gnome_config_set_string (str, actdata->name);
-      sprintf (str, "map_%d/image", i);
-      gnome_config_set_string (str, actdata->iconpath);
-      sprintf (str, "map_%d/command", i);
-      gnome_config_set_string (str, actdata->command);
+      actdata = list->data;
+      if(actdata) {
+	      g_snprintf (str, sizeof(str), "map_%d/name", i);
+	      gnome_config_set_string (str, actdata->name);
+	      g_snprintf (str, sizeof(str), "map_%d/image", i);
+	      gnome_config_set_string (str, actdata->iconpath);
+	      g_snprintf (str, sizeof(str), "map_%d/command", i);
+	      gnome_config_set_string (str, actdata->command);
+      }
 
       list=list->next;
 
