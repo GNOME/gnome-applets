@@ -12,9 +12,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-applets 2.3.6\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=l10n\n"
-"POT-Creation-Date: 2003-08-19 00:53+0800\n"
-"PO-Revision-Date: 2003-08-19 00:55+0800\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-09-01 19:34+0800\n"
+"PO-Revision-Date: 2003-09-01 21:15+0800\n"
 "Last-Translator: Abel Cheung <maddog@linux.org.hk>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
 "MIME-Version: 1.0\n"
@@ -82,7 +82,7 @@ msgid "Utility"
 msgstr "公用程式"
 
 #: accessx-status/applet.c:135 battstat/battstat_applet.c:839
-#: cdplayer/cdplayer.c:575 charpick/charpick.c:582 drivemount/drivemount.c:515
+#: cdplayer/cdplayer.c:575 charpick/charpick.c:582 drivemount/drivemount.c:510
 #: geyes/geyes.c:228 gkb-new/gkb-applet.c:84 gtik/gtik.c:774
 #: gweather/gweather-about.c:44 mailcheck/mailcheck.c:2435
 #: mini-commander/src/about.c:48 mixer/mixer.c:1060
@@ -531,7 +531,7 @@ msgstr "當電量太低時發出警告(_W)"
 msgid "_Yellow:"
 msgstr "黃(_Y)︰"
 
-#: battstat/properties.c:296 drivemount/drivemount.c:473
+#: battstat/properties.c:296 drivemount/drivemount.c:468
 #: drivemount/properties.c:589 mailcheck/mailcheck.c:2291
 #: mailcheck/mailcheck.c:2540 mini-commander/src/preferences.c:393
 #: mixer/mixer.c:1167
@@ -749,15 +749,16 @@ msgid "List of available palettes"
 msgstr "可供選用的選字盤"
 
 #: charpick/charpick.schemas.in.h:4
-#, fuzzy
 msgid "List of strings containing the available palettes"
-msgstr "可供選用的選字盤"
+msgstr "列出所有可供選用的選字盤"
 
 #: charpick/charpick.schemas.in.h:5
 msgid ""
 "The string that the user had selected when the applet was last used. This "
 "string will be displayed when the user starts the applet."
 msgstr ""
+"這是使用者在上次啟動面板程式時選擇的字串。使用者下次啟動面板程式時會再顯示這"
+"個字串。"
 
 #: charpick/properties.c:88
 msgid "_Palette:"
@@ -812,7 +813,7 @@ msgid "Character Palette Preferences"
 msgstr "選字盤偏好設定"
 
 #: drivemount/GNOME_DriveMountApplet.server.in.in.h:1
-#: drivemount/drivemount.c:533
+#: drivemount/drivemount.c:528
 msgid "Disk Mounter"
 msgstr "檔案系統掛載程式"
 
@@ -836,41 +837,41 @@ msgstr "瀏覽(_B)..."
 msgid "_Eject"
 msgstr "退出碟片(_E)"
 
-#: drivemount/drivemount.c:414 mailcheck/mailcheck.c:659
+#: drivemount/drivemount.c:409 mailcheck/mailcheck.c:659
 #, c-format
 msgid "There was an error executing %s: %s"
 msgstr "執行 %s 時出現錯誤：%s"
 
-#: drivemount/drivemount.c:421
+#: drivemount/drivemount.c:416
 msgid "Cannot browse device"
 msgstr "無法瀏覽該裝置的內容"
 
-#: drivemount/drivemount.c:479 drivemount/properties.c:595
+#: drivemount/drivemount.c:474 drivemount/properties.c:595
 #: mailcheck/mailcheck.c:2297 mailcheck/mailcheck.c:2546
 msgid "Error displaying help"
 msgstr "顯示說明文件時出現錯誤"
 
-#: drivemount/drivemount.c:534
+#: drivemount/drivemount.c:529
 msgid "(C) 1999-2001 The GNOME Hackers\n"
 msgstr "版權所有 © 1999-2001 GNOME 開發人員\n"
 
-#: drivemount/drivemount.c:536
+#: drivemount/drivemount.c:531
 msgid "Applet for mounting and unmounting block volumes."
 msgstr "掛載及卸載檔案系統的面板程式。"
 
-#: drivemount/drivemount.c:736
+#: drivemount/drivemount.c:731
 msgid " mounted"
 msgstr " 已掛載"
 
-#: drivemount/drivemount.c:738
+#: drivemount/drivemount.c:733
 msgid " not mounted"
 msgstr " 未掛載"
 
-#: drivemount/drivemount.c:850
+#: drivemount/drivemount.c:845
 msgid "\" reported:\n"
 msgstr "”回傳錯誤訊息：\n"
 
-#: drivemount/drivemount.c:852
+#: drivemount/drivemount.c:847
 msgid ""
 "Drivemount command failed.\n"
 "\""
@@ -878,7 +879,7 @@ msgstr ""
 "掛載磁碟的指令發生錯誤。\n"
 "“"
 
-#: drivemount/drivemount.c:858
+#: drivemount/drivemount.c:853
 msgid "Cannot mount device"
 msgstr "無法掛載指定的裝置"
 
@@ -1855,7 +1856,7 @@ msgstr "日文 xkb 鍵盤對應表"
 
 #: gkb-new/descs/presets.xml.in.h:112
 msgid "Jordan"
-msgstr ""
+msgstr "約旦"
 
 #: gkb-new/descs/presets.xml.in.h:113
 msgid "Kuwait"
@@ -1903,9 +1904,6 @@ msgstr "馬其頓 xkb 鍵盤對應表"
 
 #: gkb-new/descs/presets.xml.in.h:128
 msgid "Marocco"
-msgstr "摩洛哥"
-
-msgid "Morocco"
 msgstr "摩洛哥"
 
 #: gkb-new/descs/presets.xml.in.h:129
@@ -2615,9 +2613,8 @@ msgid "Applet scrolls right to left when this key is set to true."
 msgstr ""
 
 #: gtik/gtik.schemas.in.h:2
-#, fuzzy
 msgid "Background color"
-msgstr "表示送出封包的背景顏色"
+msgstr "背景顏色"
 
 #: gtik/gtik.schemas.in.h:3
 msgid ""
@@ -2630,9 +2627,8 @@ msgid "Display only symbols and price"
 msgstr "只顯示股票代碼及股價"
 
 #: gtik/gtik.schemas.in.h:5
-#, fuzzy
 msgid "Font"
-msgstr "字型(_F)："
+msgstr "字型"
 
 #: gtik/gtik.schemas.in.h:6
 msgid ""
@@ -2642,26 +2638,23 @@ msgstr ""
 
 #: gtik/gtik.schemas.in.h:7
 msgid "Lowered color"
-msgstr ""
+msgstr "表示股值升高的顏色"
 
 #: gtik/gtik.schemas.in.h:8
-#, fuzzy
 msgid "Raised color"
-msgstr "使用預設色彩(_L)"
+msgstr "表示股值下降的顏色"
 
 #: gtik/gtik.schemas.in.h:9
-#, fuzzy
 msgid "Right to left scrolling"
-msgstr "若選用本設定，則文字會從右至左捲動"
+msgstr "從右至左捲動"
 
 #: gtik/gtik.schemas.in.h:10
 msgid "Shorter time means the stocks scroll by faster."
-msgstr ""
+msgstr "時間較短表示捲動股值的速度較快。"
 
 #: gtik/gtik.schemas.in.h:11
-#, fuzzy
 msgid "Show arrow buttons"
-msgstr "顯示按鈕"
+msgstr "顯示箭頭按鈕"
 
 #: gtik/gtik.schemas.in.h:12
 msgid ""
@@ -2708,29 +2701,25 @@ msgid "The time interval until when the applet updates the stock data."
 msgstr ""
 
 #: gtik/gtik.schemas.in.h:20
-#, fuzzy
 msgid "The width in pixels of the applet."
-msgstr "面板程式寬度"
+msgstr "面板程式寬度，以像素計算。"
 
 #: gtik/gtik.schemas.in.h:21
 msgid "Time in milliseconds for display update"
 msgstr ""
 
 #: gtik/gtik.schemas.in.h:22
-#, fuzzy
 msgid "Unchanged color"
-msgstr "背景顏色"
+msgstr "表示股值沒有變動的顏色"
 
 #: gtik/gtik.schemas.in.h:23 gweather/gweather.schemas.in.h:8
 #: modemlights/modemlights.schemas.in.h:31
-#, fuzzy
 msgid "Update interval"
-msgstr "更新周期(_U)："
+msgstr "更新周期"
 
 #: gtik/gtik.schemas.in.h:24
-#, fuzzy
 msgid "Use default theme fonts and colors"
-msgstr "使用預設的佈景主題字型及色彩(_D)"
+msgstr "使用預設的佈景主題字型及色彩"
 
 #: gtik/gtik.schemas.in.h:25
 msgid "Use default theme fonts and colors instead of custom ones"
@@ -2828,12 +2817,10 @@ msgid "Visibility:"
 msgstr "能見度："
 
 #: gweather/gweather-dialog.c:276
-#, fuzzy
 msgid "Current Conditions"
-msgstr "目前的天氣情況(_U)"
+msgstr "目前的天氣情況"
 
 #: gweather/gweather-dialog.c:290
-#, fuzzy
 msgid "Forecast Report"
 msgstr "天氣預報"
 
@@ -2854,9 +2841,8 @@ msgid "Click to Enter Weather.com"
 msgstr "請按這裡進入 Weather.com"
 
 #: gweather/gweather-dialog.c:334
-#, fuzzy
 msgid "Radar Map"
-msgstr "雷達圖(_R)"
+msgstr "雷達圖"
 
 #: gweather/gweather-dialog.c:410
 msgid ""
@@ -2878,9 +2864,8 @@ msgstr ""
 
 #. Accessible Name and Description for the components in Preference Dialog
 #: gweather/gweather-pref.c:149
-#, fuzzy
 msgid "Location view"
-msgstr "位置"
+msgstr "位置檢視模式"
 
 #: gweather/gweather-pref.c:149
 msgid "Select Location from the list"
@@ -2907,7 +2892,6 @@ msgid "Weather Preferences"
 msgstr "天氣程式偏好設定"
 
 #: gweather/gweather-pref.c:644 gweather/gweather-pref.c:709
-#, fuzzy
 msgid "_Automatically update every:"
 msgstr "自動更新相隔的時間(_A)："
 
@@ -2924,33 +2908,28 @@ msgid "Use cus_tom address for radar map"
 msgstr "自行指定雷達圖的地址(_T)"
 
 #: gweather/gweather-pref.c:691
-#, fuzzy
 msgid "A_ddress:"
 msgstr "地址(_D)："
 
 #: gweather/gweather-pref.c:774
-#, fuzzy
 msgid "_Select a location:"
-msgstr "選取動畫(_N)"
+msgstr "選取位置(_S)："
 
 #: gweather/gweather-pref.c:803
 msgid "Location"
 msgstr "位置"
 
 #: gweather/gweather.schemas.in.h:1
-#, fuzzy
 msgid ""
 "Determines whether the applet automatically updates its weather statistics "
 "or not."
 msgstr "決定面板程式會否自動更新天氣資料。"
 
 #: gweather/gweather.schemas.in.h:2
-#, fuzzy
 msgid "Display radar map"
-msgstr "啟用雷達圖(_R)"
+msgstr "顯示雷達圖"
 
 #: gweather/gweather.schemas.in.h:3
-#, fuzzy
 msgid "Fetch a radar map on each update."
 msgstr "每次更新時都擷取雷達圖。"
 
@@ -2963,40 +2942,35 @@ msgstr ""
 #: gweather/gweather.schemas.in.h:5
 #: mini-commander/src/mini-commander.schemas.in.h:14
 msgid "Not used anymore"
-msgstr ""
+msgstr "此項設定已不再使用"
 
 #: gweather/gweather.schemas.in.h:6
-#, fuzzy
 msgid "The custom url from where to retrieve a radar map."
-msgstr "使用自選的雷達圖 URL"
+msgstr "自行指定在哪個 URL 擷取雷達圖"
 
 #: gweather/gweather.schemas.in.h:7
 msgid "The interval, in seconds, between automatic updates."
-msgstr ""
+msgstr "每隔指定時間 (分鐘) 自動更新。"
 
 #: gweather/gweather.schemas.in.h:9
 msgid "Update the data automatically"
-msgstr ""
+msgstr "自動更新資料"
 
 #: gweather/gweather.schemas.in.h:10
-#, fuzzy
 msgid "Url for the radar map"
 msgstr "雷達圖的 URL"
 
 #: gweather/gweather.schemas.in.h:11
-#, fuzzy
 msgid "Use custom url for the radar map"
-msgstr "使用自選的雷達圖 URL"
+msgstr "使用自行指定的 URL 作為雷達圖位置"
 
 #: gweather/gweather.schemas.in.h:12
-#, fuzzy
 msgid "Use metric units"
-msgstr "使用公制單位(_M)"
+msgstr "使用公制單位"
 
 #: gweather/gweather.schemas.in.h:13
-#, fuzzy
 msgid "Use metric units instead of english units."
-msgstr "使用公制單位而不用英制單位"
+msgstr "使用公制單位而不用英制單位。"
 
 #: gweather/gweather.schemas.in.h:14
 msgid "weather location information."
@@ -3132,18 +3106,16 @@ msgid "Drizzle"
 msgstr "毛毛雨"
 
 #: gweather/weather.c:193
-#, fuzzy
 msgid "Light drizzle"
-msgstr "小陣雪"
+msgstr ""
 
 #: gweather/weather.c:193
 msgid "Moderate drizzle"
 msgstr "毛毛雨"
 
 #: gweather/weather.c:193
-#, fuzzy
 msgid "Heavy drizzle"
-msgstr "豪雨"
+msgstr ""
 
 #: gweather/weather.c:193
 msgid "Freezing drizzle"
@@ -3156,7 +3128,7 @@ msgstr "有雨"
 
 #: gweather/weather.c:194
 msgid "Light rain"
-msgstr ""
+msgstr "微雨"
 
 #: gweather/weather.c:194
 msgid "Moderate rain"
@@ -3189,11 +3161,11 @@ msgstr "降雪"
 
 #: gweather/weather.c:195
 msgid "Heavy snow"
-msgstr ""
+msgstr "大量降雪"
 
 #: gweather/weather.c:195
 msgid "Snowstorm"
-msgstr ""
+msgstr "暴風雪"
 
 #: gweather/weather.c:195
 msgid "Blowing snowfall"
@@ -3201,7 +3173,7 @@ msgstr "大風雪"
 
 #: gweather/weather.c:195
 msgid "Snow showers"
-msgstr ""
+msgstr "驟降雪"
 
 #: gweather/weather.c:195
 msgid "Drifting snow"
@@ -3210,7 +3182,7 @@ msgstr "風雪"
 #. SNOW_GRAINS
 #: gweather/weather.c:196
 msgid "Snow grains"
-msgstr ""
+msgstr "降雪粒"
 
 #: gweather/weather.c:196
 msgid "Light snow grains"
@@ -3222,7 +3194,7 @@ msgstr "降雪粒"
 
 #: gweather/weather.c:196
 msgid "Heavy snow grains"
-msgstr ""
+msgstr "大量雪粒"
 
 #. ICE_CRYSTALS
 #: gweather/weather.c:197
@@ -3261,7 +3233,7 @@ msgstr "冰雹"
 
 #: gweather/weather.c:199
 msgid "Hailstorm"
-msgstr ""
+msgstr "雹暴"
 
 #: gweather/weather.c:199
 msgid "Hail showers"
@@ -3283,7 +3255,7 @@ msgstr "驟降小冰雹"
 #. PRECIPITATION
 #: gweather/weather.c:201
 msgid "Unknown precipitation"
-msgstr ""
+msgstr "降水，情況不明"
 
 #. MIST
 #: gweather/weather.c:202
@@ -3377,12 +3349,12 @@ msgstr "鄰近地區有沙暴"
 
 #: gweather/weather.c:211
 msgid "Heavy sandstorm"
-msgstr ""
+msgstr "強烈沙暴"
 
 #. DUSTSTORM
 #: gweather/weather.c:212
 msgid "Duststorm"
-msgstr ""
+msgstr "塵暴"
 
 #: gweather/weather.c:212
 msgid "Duststorm in the vicinity"
@@ -3395,7 +3367,7 @@ msgstr "強烈塵暴"
 #. FUNNEL_CLOUD
 #: gweather/weather.c:213
 msgid "Funnel cloud"
-msgstr ""
+msgstr "漏斗雲"
 
 #. TORNADO
 #: gweather/weather.c:214
@@ -3977,9 +3949,8 @@ msgid "Color foreground red component"
 msgstr ""
 
 #: mini-commander/src/mini-commander.schemas.in.h:8
-#, fuzzy
 msgid "History list"
-msgstr "紀錄"
+msgstr "指令紀錄清單"
 
 #: mini-commander/src/mini-commander.schemas.in.h:9
 msgid "List of GConfValue entries containing strings for history entries."
@@ -3994,18 +3965,16 @@ msgid "List of GConfValue entries containing strings for the macro patterns."
 msgstr ""
 
 #: mini-commander/src/mini-commander.schemas.in.h:12
-#, fuzzy
 msgid "Macro command list"
-msgstr "指令列"
+msgstr "指令巨集清單"
 
 #: mini-commander/src/mini-commander.schemas.in.h:13
 msgid "Macro pattern list"
 msgstr ""
 
 #: mini-commander/src/mini-commander.schemas.in.h:15
-#, fuzzy
 msgid "Perform history autocompletion"
-msgstr "根據指令使用紀錄自動補齊(_N)"
+msgstr "根據指令紀錄自動補齊指令"
 
 #: mini-commander/src/mini-commander.schemas.in.h:16
 msgid "Show a frame surrounding the applet."
@@ -4016,59 +3985,48 @@ msgid "Show a handle so the applet can be detached from the panel."
 msgstr ""
 
 #: mini-commander/src/mini-commander.schemas.in.h:18
-#, fuzzy
 msgid "Show frame"
-msgstr "顯示邊框(_E)"
+msgstr "顯示邊框"
 
 #: mini-commander/src/mini-commander.schemas.in.h:19
-#, fuzzy
 msgid "Show handle"
-msgstr "顯示控制棒(_D)"
+msgstr "顯示控制棒元件"
 
 #: mini-commander/src/mini-commander.schemas.in.h:20
-#, fuzzy
 msgid "The blue component of the background color."
-msgstr "面板程式的背景顏色。"
+msgstr "背景顏色的藍色部分數值"
 
 #: mini-commander/src/mini-commander.schemas.in.h:21
-#, fuzzy
 msgid "The blue component of the foreground color."
-msgstr "表示接收封包的前景顏色"
+msgstr "文字顏色的藍色部分數值"
 
 #: mini-commander/src/mini-commander.schemas.in.h:22
-#, fuzzy
 msgid "The green component of the background color."
-msgstr "面板程式的背景顏色。"
+msgstr "背景顏色的綠色部分數值"
 
 #: mini-commander/src/mini-commander.schemas.in.h:23
-#, fuzzy
 msgid "The green component of the foreground color."
-msgstr "表示接收封包的前景顏色"
+msgstr "文字顏色的綠色部分數值"
 
 #: mini-commander/src/mini-commander.schemas.in.h:24
-#, fuzzy
 msgid "The red component of the background color."
-msgstr "面板程式的背景顏色。"
+msgstr "背景顏色的紅色部分數值"
 
 #: mini-commander/src/mini-commander.schemas.in.h:25
-#, fuzzy
 msgid "The red component of the foreground color."
-msgstr "表示接收封包的前景顏色"
+msgstr "文字顏色的紅色部分數值"
 
 #: mini-commander/src/mini-commander.schemas.in.h:26
-#, fuzzy
 msgid "Use the default theme colors"
-msgstr "使用預設佈景主題色彩(_U)"
+msgstr "使用預設佈景主題色彩"
 
 #: mini-commander/src/mini-commander.schemas.in.h:27
-#, fuzzy
 msgid "Use theme colors instead of custom ones."
 msgstr "使用預設的佈景主題字型及色彩，而不會自行指定"
 
 #: mini-commander/src/mini-commander.schemas.in.h:28
-#, fuzzy
 msgid "Width"
-msgstr "寬度(_W)："
+msgstr "寬度"
 
 #: mini-commander/src/mini-commander_applet.c:222
 #: mini-commander/src/mini-commander_applet.c:226
@@ -4345,14 +4303,12 @@ msgid "not connected"
 msgstr "沒有連線"
 
 #: modemlights/modemlights.schemas.in.h:1
-#, fuzzy
 msgid "Ask for confirmation when connecting/disconnecting"
-msgstr "當連線時令表示狀態的燈號閃爍(_L)"
+msgstr "嘗試連線/斷線前必須先得到用戶確認"
 
 #: modemlights/modemlights.schemas.in.h:2
-#, fuzzy
 msgid "Blink when connecting"
-msgstr "當連線時令表示狀態的燈號閃爍(_L)"
+msgstr "連線時令燈號閃爍"
 
 #: modemlights/modemlights.schemas.in.h:3
 msgid "Command executed when connecting"
@@ -4466,9 +4422,8 @@ msgid "The fraction of a second until the applet updates."
 msgstr ""
 
 #: modemlights/modemlights.schemas.in.h:29
-#, fuzzy
 msgid "The name of the modem device."
-msgstr "遠端伺服器中的帳號名稱"
+msgstr "數據機裝置名稱"
 
 #: modemlights/modemlights.schemas.in.h:30
 #, fuzzy
@@ -4489,9 +4444,8 @@ msgid "Use this command to connect the modem."
 msgstr "檢查郵件前執行的指令"
 
 #: modemlights/modemlights.schemas.in.h:35
-#, fuzzy
 msgid "Use this command to disconnect the modem."
-msgstr "檢查郵件前執行的指令"
+msgstr "令數據機斷線的指令"
 
 #: modemlights/modemlights.schemas.in.h:36
 msgid "Verify owner of lock file"
@@ -4682,34 +4636,28 @@ msgid "Applet refresh rate in milliseconds"
 msgstr ""
 
 #: multiload/multiload.schemas.in.h:2
-#, fuzzy
 msgid "CPU graph background color"
-msgstr "表示送出封包的背景顏色"
+msgstr "CPU 負載量背景顏色"
 
 #: multiload/multiload.schemas.in.h:3
-#, fuzzy
 msgid "Enable CPU load graph"
-msgstr "啟用雷達圖(_R)"
+msgstr ""
 
 #: multiload/multiload.schemas.in.h:4
-#, fuzzy
 msgid "Enable load average graph"
-msgstr "啟用雷達圖(_R)"
+msgstr ""
 
 #: multiload/multiload.schemas.in.h:5
-#, fuzzy
 msgid "Enable memory load graph"
-msgstr "啟用雷達圖(_R)"
+msgstr ""
 
 #: multiload/multiload.schemas.in.h:6
-#, fuzzy
 msgid "Enable network load graph"
-msgstr "啟用雷達圖(_R)"
+msgstr ""
 
 #: multiload/multiload.schemas.in.h:7
-#, fuzzy
 msgid "Enable swap load graph"
-msgstr "啟用雷達圖(_R)"
+msgstr ""
 
 #: multiload/multiload.schemas.in.h:8
 msgid ""
@@ -4775,24 +4723,20 @@ msgid "Graph size"
 msgstr ""
 
 #: multiload/multiload.schemas.in.h:23
-#, fuzzy
 msgid "Load graph background color"
-msgstr "表示送出封包的背景顏色"
+msgstr "系統負載量背景顏色"
 
 #: multiload/multiload.schemas.in.h:24
-#, fuzzy
 msgid "Memory graph background color"
-msgstr "文字背景顏色"
+msgstr "記憶體負載量背景顏色"
 
 #: multiload/multiload.schemas.in.h:25
-#, fuzzy
 msgid "Network graph background color"
-msgstr "背景顏色(_B)"
+msgstr "網路負載量背景顏色"
 
 #: multiload/multiload.schemas.in.h:26
-#, fuzzy
 msgid "Swap graph background color"
-msgstr "表示送出封包的背景顏色"
+msgstr "交換記憶負載量背景顏色"
 
 #: multiload/netload.c:49
 msgid "Net Load"
@@ -4916,42 +4860,42 @@ msgstr "交換檔負載"
 
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:2
 msgid "Create, view, and manage sticky notes on the desktop"
-msgstr ""
+msgstr "在桌面中製作、顯示和管理便條"
 
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:3
 #: stickynotes/stickynotes_applet.c:339
 #: stickynotes/stickynotes_applet_callbacks.c:180
 msgid "Sticky Notes"
-msgstr ""
+msgstr "便條"
 
 #: stickynotes/GNOME_StickyNotesApplet.server.in.in.h:4
 msgid "Sticky Notes Applet Factory"
-msgstr ""
+msgstr "便條面板程式工廠"
 
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:2
 msgid "_Delete Notes..."
-msgstr "刪除備忘(_D)..."
+msgstr "刪除便條(_D)..."
 
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:4
 msgid "_Lock Notes"
-msgstr "鎖定備忘(_L)"
+msgstr "鎖定便條(_L)"
 
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:5
 #: stickynotes/stickynotes.glade.h:44
 msgid "_New Note"
-msgstr "新增備忘(_N)"
+msgstr "新增便條(_N)"
 
 #: stickynotes/GNOME_StickyNotesApplet.xml.h:7
 msgid "_Show Notes"
-msgstr "顯示備忘(_S)"
+msgstr "顯示便條(_S)"
 
-#: stickynotes/stickynotes.c:313
+#: stickynotes/stickynotes.c:314
 msgid "Locked note"
-msgstr ""
+msgstr "鎖定便條內容"
 
-#: stickynotes/stickynotes.c:318
+#: stickynotes/stickynotes.c:319
 msgid "Unlocked note"
-msgstr ""
+msgstr "可以更改便條內容"
 
 #: stickynotes/stickynotes.glade.h:3
 msgid "<b>Behavior</b>"
@@ -4959,7 +4903,7 @@ msgstr "<b>運作方式</b>"
 
 #: stickynotes/stickynotes.glade.h:4
 msgid "<b>Default Note Properties</b>"
-msgstr ""
+msgstr "<b>預設的便條屬性</b>"
 
 #: stickynotes/stickynotes.glade.h:5
 msgid ""
@@ -4967,6 +4911,9 @@ msgid ""
 "\n"
 "Changes will be saved instantly."
 msgstr ""
+"<b>是否刪除 *所有* 便條？</b>\n"
+"\n"
+"這將會立即生效。"
 
 #: stickynotes/stickynotes.glade.h:8
 msgid ""
@@ -4974,6 +4921,9 @@ msgid ""
 "\n"
 "Changes will be saved instantly."
 msgstr ""
+"<b>是否刪除這條便條？</b>\n"
+"\n"
+"這將會立即生效。"
 
 #: stickynotes/stickynotes.glade.h:11
 msgid "<b>Properties</b>"
@@ -4985,97 +4935,91 @@ msgstr "色彩(_O)："
 
 #: stickynotes/stickynotes.glade.h:13
 msgid "Choose a base color to use for all sticky notes"
-msgstr ""
+msgstr "選取所有便條使用的基本顏色"
 
 #: stickynotes/stickynotes.glade.h:14
-#, fuzzy
 msgid "Choose a color for the note"
-msgstr "使用系統指定的色彩(_L)"
+msgstr "選取便條顏色"
 
 #: stickynotes/stickynotes.glade.h:15
-#, fuzzy
 msgid "Choose a font for the note"
-msgstr "新的備忘的預設字型"
+msgstr "選取便條字型"
 
 #: stickynotes/stickynotes.glade.h:16
 msgid "Choose a font to use for all sticky notes"
-msgstr ""
+msgstr "選取所有便條使用的字型"
 
 #: stickynotes/stickynotes.glade.h:17
 msgid "Choose if notes are visible on ALL workspaces"
-msgstr ""
+msgstr "選擇便條會否在所有桌面中出現"
 
 #: stickynotes/stickynotes.glade.h:18
-#, fuzzy
 msgid "Choose if the default style is forced on all notes"
-msgstr "指定新的備忘的預設寬度(像素)"
+msgstr "指定是否強迫所有便條使用預設的樣式"
 
 #: stickynotes/stickynotes.glade.h:19
 msgid "Clic_k:"
-msgstr ""
+msgstr "按下時(_K)："
 
 #: stickynotes/stickynotes.glade.h:20
 msgid "Close note"
-msgstr ""
+msgstr "關閉便條"
 
 #: stickynotes/stickynotes.glade.h:21
-#, fuzzy
 msgid "Force _default color and font on notes"
-msgstr "新的備忘的預設字型"
+msgstr "強制便條使用某種預設色彩和字型(_D)"
 
 #: stickynotes/stickynotes.glade.h:22
-#, fuzzy
 msgid "H_eight:"
-msgstr "高度(_H)："
+msgstr "高度(_E)："
 
 #: stickynotes/stickynotes.glade.h:23
 msgid "Lock/Unlock note"
-msgstr ""
+msgstr "鎖定/不鎖定便條內容"
 
 #: stickynotes/stickynotes.glade.h:24
 msgid "Pick a color for the sticky note"
-msgstr ""
+msgstr "選取便條的顏色"
 
 #: stickynotes/stickynotes.glade.h:25
 msgid "Pick a default sticky note color"
-msgstr ""
+msgstr "選取預設的便條顏色"
 
 #: stickynotes/stickynotes.glade.h:26
 msgid "Pick a default sticky note font"
-msgstr ""
+msgstr "選取預設的便條字型"
 
 #: stickynotes/stickynotes.glade.h:27
 msgid "Pick a font for the sticky note"
-msgstr ""
+msgstr "選取便條的字型"
 
 #: stickynotes/stickynotes.glade.h:28
 msgid "Resize note"
-msgstr "調整備忘大小"
+msgstr "更改便條尺寸"
 
 #: stickynotes/stickynotes.glade.h:29
-#, fuzzy
 msgid "Specify a title for the note"
-msgstr "新的備忘的預設寬度"
+msgstr "指定便條的標題"
 
 #: stickynotes/stickynotes.glade.h:30
 msgid "Specify the default height (in pixels) of new notes"
-msgstr "指定新的備忘的預設高度(像素)"
+msgstr "指定新的便條的預設高度(像素)"
 
 #: stickynotes/stickynotes.glade.h:31
 msgid "Specify the default width (in pixels) of new notes"
-msgstr "指定新的備忘的預設寬度(像素)"
+msgstr "指定新的便條的預設寬度(像素)"
 
 #: stickynotes/stickynotes.glade.h:32
 msgid "Sticky Note"
-msgstr ""
+msgstr "便條"
 
 #: stickynotes/stickynotes.glade.h:33
 msgid "Sticky Note Properties"
-msgstr ""
+msgstr "便條屬性"
 
 #: stickynotes/stickynotes.glade.h:34
 msgid "Sticky Notes Preferences"
-msgstr ""
+msgstr "便條偏好設定"
 
 #: stickynotes/stickynotes.glade.h:35
 msgid "Use co_lor from the system theme"
@@ -5103,11 +5047,11 @@ msgstr "全部刪除(_D)"
 
 #: stickynotes/stickynotes.glade.h:41
 msgid "_Delete Note..."
-msgstr "刪除備忘(_D)..."
+msgstr "刪除便條(_D)..."
 
 #: stickynotes/stickynotes.glade.h:43
 msgid "_Lock Note"
-msgstr ""
+msgstr "鎖定便條內容(_L)"
 
 #: stickynotes/stickynotes.glade.h:45
 msgid "_Properties..."
@@ -5115,7 +5059,7 @@ msgstr "屬性(_P)..."
 
 #: stickynotes/stickynotes.glade.h:46
 msgid "_Put notes on all workspaces"
-msgstr "在所有工作區中顯示備忘(_P)"
+msgstr "在所有工作區中顯示便條(_P)"
 
 #: stickynotes/stickynotes.glade.h:47
 msgid "_Title:"
@@ -5123,17 +5067,15 @@ msgstr "標題(_T)："
 
 #: stickynotes/stickynotes.glade.h:49
 msgid "_lock/unlock all notes"
-msgstr ""
+msgstr "鎖定/不鎖定所有便條內容(_L)"
 
 #: stickynotes/stickynotes.glade.h:50
-#, fuzzy
 msgid "_show/hide all notes"
-msgstr "隱藏所有備忘(_H)"
+msgstr "顯示/隱藏所有便條(_S)"
 
 #: stickynotes/stickynotes.glade.h:51
-#, fuzzy
 msgid "create a _new note"
-msgstr "新增備忘(_N)"
+msgstr "新增便條(_N)"
 
 #: stickynotes/stickynotes.schemas.in.h:1
 msgid "Autosave timeout in minutes"
@@ -5148,57 +5090,61 @@ msgstr ""
 
 #: stickynotes/stickynotes.schemas.in.h:3
 msgid "Date format of note's title"
-msgstr ""
+msgstr "便條標題的日期格式"
 
 #: stickynotes/stickynotes.schemas.in.h:4
 msgid "Default click behavior of the applet"
-msgstr ""
+msgstr "點選面板程式時預設會進行甚麼程序"
 
 #: stickynotes/stickynotes.schemas.in.h:5
 msgid "Default color for new notes"
-msgstr ""
+msgstr "新便條預設使用的顏色"
 
 #: stickynotes/stickynotes.schemas.in.h:6
 msgid ""
 "Default color for new sticky notes. This should be in html hex "
 "specification, for example \"#30FF50\"."
 msgstr ""
+"新便條預設使用的顏色。它應該使用像 HTML 中的 16 進制數字來表示，例如"
+"“#30FF50”"
 
 #: stickynotes/stickynotes.schemas.in.h:7
 msgid "Default font for new notes"
-msgstr "新的備忘的預設字型"
+msgstr "新便條預設使用的字型"
 
 #: stickynotes/stickynotes.schemas.in.h:8
 msgid ""
 "Default font for new sticky notes. This should be a Pango Font Name, for "
 "example \"Sans Italic 10\""
 msgstr ""
+"新便條預設使用的字型。它應該使用 Pango 格式的字型名稱，例如"
+"‘Sans Italic 10”"
 
 #: stickynotes/stickynotes.schemas.in.h:9
 msgid "Default height for new notes"
-msgstr "新的備忘的預設高度"
+msgstr "新的便條的預設高度"
 
 #: stickynotes/stickynotes.schemas.in.h:10
 msgid "Default height for new sticky notes in pixels."
-msgstr "新的備忘的預設高度，以像素計算。"
+msgstr "新的便條的預設高度，以像素計算。"
 
 #: stickynotes/stickynotes.schemas.in.h:11
 msgid "Default width for new notes"
-msgstr "新的備忘的預設寬度"
+msgstr "新的便條的預設寬度"
 
 #: stickynotes/stickynotes.schemas.in.h:12
 msgid "Default width for new sticky notes in pixels."
-msgstr "新的備忘的預設寬度，以像素計算。"
+msgstr "新的便條的預設寬度，以像素計算。"
 
 #: stickynotes/stickynotes.schemas.in.h:13
 msgid "Empty notes are always deleted without confirmation"
-msgstr ""
+msgstr "便條如果沒有內容，刪除前不需要確認"
 
 #: stickynotes/stickynotes.schemas.in.h:14
 msgid ""
 "Every time the specified number of minutes pass, the sticky notes are "
 "automatically saved."
-msgstr ""
+msgstr "每隔指定時間 (分鐘) 自動儲存便條內容"
 
 #: stickynotes/stickynotes.schemas.in.h:15
 msgid ""
@@ -5253,11 +5199,11 @@ msgstr ""
 
 #: stickynotes/stickynotes.schemas.in.h:25
 msgid "Whether to ask for confirmation when deleting a note"
-msgstr ""
+msgstr "刪除便條前是否需要確認"
 
 #: stickynotes/stickynotes.schemas.in.h:26
 msgid "Whether to force the default color and font on all notes"
-msgstr ""
+msgstr "是否強迫所有便條使用預設顏色和字型"
 
 #: stickynotes/stickynotes.schemas.in.h:27
 msgid "Whether to use the default system color"
@@ -5277,7 +5223,7 @@ msgid_plural ""
 "%d notes"
 msgstr[0] ""
 "%s\n"
-"%d 張備忘錄"
+"%d 張便條錄"
 
 #: stickynotes/stickynotes_applet_callbacks.c:182
 msgid "(c) 2002-2003 Loban A Rahman"
@@ -5327,6 +5273,9 @@ msgstr "無線網路連線監控偏好設定"
 #: wireless/wireless-applet.glade.h:3
 msgid "_Monitored device:"
 msgstr "受監控的裝置(_M)："
+
+#~ msgid "Morocco"
+#~ msgstr "摩洛哥"
 
 #~ msgid "Horizontal"
 #~ msgstr "水平"
@@ -5385,484 +5334,6 @@ msgstr "受監控的裝置(_M)："
 #~ msgid "Downloading Countries..."
 #~ msgstr "正在下載國家清單..."
 
-#~ msgid "Drizzle in the vicinity"
-#~ msgstr "??"
-
-#~ msgid "Shallow drizzle"
-#~ msgstr "??"
-
-#~ msgid "Patches of drizzle"
-#~ msgstr "??"
-
-#~ msgid "Partial drizzle"
-#~ msgstr "??"
-
-#~ msgid "Windy drizzle"
-#~ msgstr "??"
-
-#~ msgid "Drifting drizzle"
-#~ msgstr "??"
-
-#~ msgid "Rain in the vicinity"
-#~ msgstr "??"
-
-#~ msgid "Patches of rain"
-#~ msgstr "??"
-
-#~ msgid "Partial rainfall"
-#~ msgstr "??"
-
-#~ msgid "Blowing rainfall"
-#~ msgstr "??"
-
-#~ msgid "Drifting rain"
-#~ msgstr "??"
-
-#~ msgid "Snow in the vicinity"
-#~ msgstr "??"
-
-#~ msgid "Shallow snow"
-#~ msgstr "??"
-
-#~ msgid "Patches of snow"
-#~ msgstr "??"
-
-#~ msgid "Partial snowfall"
-#~ msgstr "??"
-
-#~ msgid "Freezing snow"
-#~ msgstr "??"
-
-#~ msgid "Snow grains in the vicinity"
-#~ msgstr "??"
-
-#~ msgid "Shallow snow grains"
-#~ msgstr "??"
-
-#~ msgid "Patches of snow grains"
-#~ msgstr "??"
-
-#~ msgid "Partial snow grains"
-#~ msgstr "??"
-
-#~ msgid "Blowing snow grains"
-#~ msgstr "??"
-
-#~ msgid "Snow grain showers"
-#~ msgstr "??"
-
-#~ msgid "Drifting snow grains"
-#~ msgstr "??"
-
-#~ msgid "Freezing snow grains"
-#~ msgstr "??"
-
-#~ msgid "Ice crystals in the vicinity"
-#~ msgstr "??"
-
-#~ msgid "Few ice crystals"
-#~ msgstr "??"
-
-#~ msgid "Moderate ice crystals"
-#~ msgstr "降冰晶"
-
-#~ msgid "Heavy ice crystals"
-#~ msgstr "??"
-
-#~ msgid "Patches of ice crystals"
-#~ msgstr "??"
-
-#~ msgid "Partial ice crystals"
-#~ msgstr "??"
-
-#~ msgid "Ice crystal storm"
-#~ msgstr "??"
-
-#~ msgid "Blowing ice crystals"
-#~ msgstr "??"
-
-#~ msgid "Showers of ice crystals"
-#~ msgstr "??"
-
-#~ msgid "Drifting ice crystals"
-#~ msgstr "??"
-
-#~ msgid "Freezing ice crystals"
-#~ msgstr "??"
-
-#~ msgid "Ice pellets in the vicinity"
-#~ msgstr "??"
-
-#~ msgid "Shallow ice pellets"
-#~ msgstr "??"
-
-#~ msgid "Patches of ice pellets"
-#~ msgstr "??"
-
-#~ msgid "Partial ice pellets"
-#~ msgstr "??"
-
-#~ msgid "Blowing ice pellets"
-#~ msgstr "??"
-
-#~ msgid "Drifting ice pellets"
-#~ msgstr "??"
-
-#~ msgid "Freezing ice pellets"
-#~ msgstr "??"
-
-#~ msgid "Hail in the vicinity"
-#~ msgstr "??"
-
-#~ msgid "Moderate hail"
-#~ msgstr "冰雹"
-
-#, fuzzy
-#~ msgid "Heavy hail"
-#~ msgstr "豪雨"
-
-#~ msgid "Patches of hail"
-#~ msgstr "??"
-
-#~ msgid "Partial hail"
-#~ msgstr "??"
-
-#~ msgid "Blowing hail"
-#~ msgstr "??"
-
-#~ msgid "Drifting hail"
-#~ msgstr "??"
-
-#~ msgid "Freezing hail"
-#~ msgstr "??"
-
-#~ msgid "Small hail in the vicinity"
-#~ msgstr "??"
-
-#~ msgid "Moderate small hail"
-#~ msgstr "小冰雹"
-
-#~ msgid "Shallow small hail"
-#~ msgstr "??"
-
-#~ msgid "Patches of small hail"
-#~ msgstr "??"
-
-#~ msgid "Partial small hail"
-#~ msgstr "??"
-
-#~ msgid "Blowing small hail"
-#~ msgstr "??"
-
-#~ msgid "Drifting small hail"
-#~ msgstr "??"
-
-#~ msgid "Freezing small hail"
-#~ msgstr "??"
-
-#~ msgid "Showers, type unknown"
-#~ msgstr "??"
-
-#~ msgid "Mist in the vicinity"
-#~ msgstr "??"
-
-#~ msgid "Thick mist"
-#~ msgstr "??"
-
-#~ msgid "Shallow mist"
-#~ msgstr "??"
-
-#~ msgid "Partial mist"
-#~ msgstr "??"
-
-#~ msgid "Mist with wind"
-#~ msgstr "??"
-
-#~ msgid "Drifting mist"
-#~ msgstr "??"
-
-#~ msgid "Freezing mist"
-#~ msgstr "??"
-
-#~ msgid "Light fog"
-#~ msgstr "??"
-
-#~ msgid "Moderate fog"
-#~ msgstr "有霧"
-
-#~ msgid "Thick fog"
-#~ msgstr "??"
-
-#~ msgid "Fog with wind"
-#~ msgstr "??"
-
-#~ msgid "Drifting fog"
-#~ msgstr "??"
-
-#~ msgid "Smoke in the vicinity"
-#~ msgstr "??"
-
-#~ msgid "Thin smoke"
-#~ msgstr "??"
-
-#~ msgid "Moderate smoke"
-#~ msgstr "煙塵"
-
-#~ msgid "Thick smoke"
-#~ msgstr "??"
-
-#~ msgid "Patches of smoke"
-#~ msgstr "??"
-
-#~ msgid "Partial smoke"
-#~ msgstr "??"
-
-#~ msgid "Smoke w/ thunders"
-#~ msgstr "??"
-
-#~ msgid "Smoke with wind"
-#~ msgstr "??"
-
-#~ msgid "Drifting smoke"
-#~ msgstr "??"
-
-#~ msgid "Volcanic ash in the vicinity"
-#~ msgstr "??"
-
-#~ msgid "Moderate volcanic ash"
-#~ msgstr "火山灰"
-
-#~ msgid "Thick volcanic ash"
-#~ msgstr "??"
-
-#~ msgid "Shallow volcanic ash"
-#~ msgstr "??"
-
-#~ msgid "Patches of volcanic ash"
-#~ msgstr "??"
-
-#~ msgid "Partial volcanic ash"
-#~ msgstr "??"
-
-#~ msgid "Volcanic ash w/ thunders"
-#~ msgstr "??"
-
-#~ msgid "Blowing volcanic ash"
-#~ msgstr "??"
-
-#~ msgid "Showers of volcanic ash "
-#~ msgstr "??"
-
-#~ msgid "Drifting volcanic ash"
-#~ msgstr "??"
-
-#~ msgid "Freezing volcanic ash"
-#~ msgstr "??"
-
-#~ msgid "Sand in the vicinity"
-#~ msgstr "??"
-
-#~ msgid "Light sand"
-#~ msgstr "??"
-
-#~ msgid "Moderate sand"
-#~ msgstr "沙塵"
-
-#~ msgid "Patches of sand"
-#~ msgstr "??"
-
-#~ msgid "Haze in the vicinity"
-#~ msgstr "??"
-
-#~ msgid "Light haze"
-#~ msgstr "??"
-
-#~ msgid "Moderate haze"
-#~ msgstr "煙霞"
-
-#~ msgid "Thick haze"
-#~ msgstr "??"
-
-#~ msgid "Patches of haze"
-#~ msgstr "??"
-
-#~ msgid "Haze with wind"
-#~ msgstr "??"
-
-#~ msgid "Drifting haze"
-#~ msgstr "??"
-
-#~ msgid "Freezing haze"
-#~ msgstr "??"
-
-#~ msgid "Sprays in the vicinity"
-#~ msgstr "??"
-
-#~ msgid "Moderate sprays"
-#~ msgstr "??"
-
-#~ msgid "Shallow sprays"
-#~ msgstr "??"
-
-#~ msgid "Patches of sprays"
-#~ msgstr "??"
-
-#~ msgid "Partial sprays"
-#~ msgstr "??"
-
-#~ msgid "Drifting sprays"
-#~ msgstr "??"
-
-#~ msgid "Freezing sprays"
-#~ msgstr "??"
-
-#~ msgid "Dust in the vicinity"
-#~ msgstr "??"
-
-#~ msgid "Moderate dust"
-#~ msgstr "灰塵"
-
-#~ msgid "Patches of dust"
-#~ msgstr "??"
-
-#~ msgid "Partial dust"
-#~ msgstr "??"
-
-#~ msgid "Squall in the vicinity"
-#~ msgstr "??"
-
-#~ msgid "Light squall"
-#~ msgstr "??"
-
-#~ msgid "Moderate squall"
-#~ msgstr "??"
-
-#~ msgid "Partial squall"
-#~ msgstr "??"
-
-#~ msgid "Thunderous squall"
-#~ msgstr "??"
-
-#~ msgid "Blowing squall"
-#~ msgstr "??"
-
-#~ msgid "Drifting squall"
-#~ msgstr "??"
-
-#~ msgid "Freezing squall"
-#~ msgstr "??"
-
-#~ msgid "Light standstorm"
-#~ msgstr "??"
-
-#~ msgid "Moderate sandstorm"
-#~ msgstr "沙暴"
-
-#~ msgid "Shallow sandstorm"
-#~ msgstr "??"
-
-#~ msgid "Partial sandstorm"
-#~ msgstr "??"
-
-#~ msgid "Blowing sandstorm"
-#~ msgstr "??"
-
-#~ msgid "Drifting sandstorm"
-#~ msgstr "??"
-
-#~ msgid "Freezing sandstorm"
-#~ msgstr "??"
-
-#~ msgid "Light duststorm"
-#~ msgstr "??"
-
-#~ msgid "Moderate duststorm"
-#~ msgstr "塵暴"
-
-#~ msgid "Shallow duststorm"
-#~ msgstr "??"
-
-#~ msgid "Partial duststorm"
-#~ msgstr "??"
-
-#~ msgid "Blowing duststorm"
-#~ msgstr "??"
-
-#~ msgid "Drifting duststorm"
-#~ msgstr "??"
-
-#~ msgid "Freezing duststorm"
-#~ msgstr "??"
-
-#~ msgid "Funnel cloud in the vicinity"
-#~ msgstr "??"
-
-#~ msgid "Light funnel cloud"
-#~ msgstr "??"
-
-#~ msgid "Moderate funnel cloud"
-#~ msgstr "??"
-
-#~ msgid "Thick funnel cloud"
-#~ msgstr "??"
-
-#~ msgid "Shallow funnel cloud"
-#~ msgstr "??"
-
-#~ msgid "Patches of funnel clouds"
-#~ msgstr "??"
-
-#~ msgid "Partial funnel clouds"
-#~ msgstr "??"
-
-#~ msgid "Funnel cloud w/ wind"
-#~ msgstr "??"
-
-#~ msgid "Drifting funnel cloud"
-#~ msgstr "??"
-
-#~ msgid "Tornado in the vicinity"
-#~ msgstr "??"
-
-#~ msgid "Moderate tornado"
-#~ msgstr "??"
-
-#~ msgid "Raging tornado"
-#~ msgstr "??"
-
-#~ msgid "Partial tornado"
-#~ msgstr "??"
-
-#~ msgid "Drifting tornado"
-#~ msgstr "??"
-
-#~ msgid "Freezing tornado"
-#~ msgstr "??"
-
-#~ msgid "Light dust whirls"
-#~ msgstr "??"
-
-#~ msgid "Moderate dust whirls"
-#~ msgstr "塵旋風"
-
-#~ msgid "Heavy dust whirls"
-#~ msgstr "??"
-
-#~ msgid "Shallow dust whirls"
-#~ msgstr "??"
-
-#~ msgid "Patches of dust whirls"
-#~ msgstr "??"
-
-#~ msgid "Partial dust whirls"
-#~ msgstr "??"
-
-#~ msgid "Blowing dust whirls"
-#~ msgstr "??"
-
-#~ msgid "Drifting dust whirls"
-#~ msgstr "??"
-
 #~ msgid "Failed to get IWIN data.\n"
 #~ msgstr "無法獲取 IWIN 資料。\n"
 
@@ -5887,21 +5358,6 @@ msgstr "受監控的裝置(_M)："
 #~ msgid "Use the default theme colors for entry fg and bg"
 #~ msgstr "使用預設佈景主題色彩作為文字及背景顏色"
 
-#~ msgid "bg blue"
-#~ msgstr "背景色彩藍色部分數值"
-
-#~ msgid "bg red"
-#~ msgstr "背景色彩紅色部分數值"
-
-#~ msgid "fg blue"
-#~ msgstr "文字色彩藍色部分數值"
-
-#~ msgid "fg green"
-#~ msgstr "文字色彩綠色部分數值"
-
-#~ msgid "fg red"
-#~ msgstr "文字色彩紅色部分數值"
-
 #~ msgid "Device name of modem"
 #~ msgstr "代表數據機裝置的檔案名稱"
 
@@ -5918,30 +5374,6 @@ msgstr "受監控的裝置(_M)："
 #~ msgid "Drive Mount Applet Warning"
 #~ msgstr "檔案系統掛載面板程式的警告"
 
-#, fuzzy
-#~ msgid ""
-#~ "%s\n"
-#~ "Today: %s\n"
-#~ "Current temperature %d%s"
-#~ msgstr ""
-#~ "%s\n"
-#~ "今日：%s\n"
-#~ "目前溫度為 %d"
-
-#, fuzzy
-#~ msgid ""
-#~ "%s\n"
-#~ "%s: %s\n"
-#~ "Low %d%s, High %d%s"
-#~ msgstr ""
-#~ "%s\n"
-#~ "%s：%s\n"
-#~ "最低 %d，最高 %d"
-
-#, fuzzy
-#~ msgid "There was an error retrieving the forecast"
-#~ msgstr "執行 %s 時出現錯誤：%s"
-
 #~ msgid "Day"
 #~ msgstr "日期"
 
@@ -5951,15 +5383,7 @@ msgstr "受監控的裝置(_M)："
 #~ msgid "%s / %.1f %s"
 #~ msgstr "%s / %.1f %s"
 
-#, fuzzy
-#~ msgid "Display _temperatures"
-#~ msgstr "顯示每日平均溫度(_D)"
-
 #~ msgid "Number of _days to display:"
-#~ msgstr "顯示天氣預報的日數(_D)："
-
-#, fuzzy
-#~ msgid "Number of days spin button"
 #~ msgstr "顯示天氣預報的日數(_D)："
 
 #~ msgid "Current city:"
@@ -5970,10 +5394,6 @@ msgstr "受監控的裝置(_M)："
 
 #~ msgid "Available c_ities:"
 #~ msgstr "可選擇的城市(_I)："
-
-#, fuzzy
-#~ msgid "Number of days to forecast"
-#~ msgstr "顯示天氣預報的日數(_D)："
 
 #~ msgid "Windy"
 #~ msgstr "有風"
@@ -6036,7 +5456,7 @@ msgstr "受監控的裝置(_M)："
 #~ msgstr "進行詳細的系統監控(_R)"
 
 #~ msgid "_Delete All Notes"
-#~ msgstr "刪除所有備忘(_D)"
+#~ msgstr "刪除所有便條(_D)"
 
 #~ msgid "_Edit Title"
 #~ msgstr "修改標題(_E)"
