@@ -1558,10 +1558,14 @@ main(int argc, char *argv[])
       Window ww;
       
       atom = gdk_atom_intern("_GNOME_PAGER_ACTIVE", FALSE);
+      attr.window_type = GDK_WINDOW_TEMP;
+      attr.wclass = GDK_INPUT_OUTPUT;
       attr.x = -99;
       attr.y = -99;
       attr.width = 88;
       attr.height = 88;
+      attr.event_mask = 0;
+
       win = gdk_window_new(NULL, &attr, 0);
       ww = GDK_WINDOW_XWINDOW(win);
       gdk_property_change(GDK_ROOT_PARENT(), atom, (GdkAtom)XA_WINDOW, 32, 
