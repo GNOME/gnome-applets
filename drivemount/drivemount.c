@@ -307,7 +307,7 @@ static void update_pixmap(DriveData *dd, gint t)
 			height = ICON_HEIGHT;
 			}
 
-#ifdef HAVE_PANEL_SIZE
+#ifdef HAVE_PANEL_PIXEL_SIZE
 		if ( (dd->scale_applet && (dd->orient == ORIENT_LEFT || dd->orient == ORIENT_RIGHT) ) ||
 		     (!dd->scale_applet && dd->sizehint >= SIZEHINT_DEFAULT && (dd->orient == ORIENT_LEFT || dd->orient == ORIENT_RIGHT) ) ||
 		     (!dd->scale_applet && dd->sizehint < SIZEHINT_DEFAULT && (dd->orient == ORIENT_UP || dd->orient == ORIENT_DOWN)) )
@@ -539,8 +539,8 @@ static void applet_change_orient(GtkWidget *w, PanelOrientType o, gpointer data)
 	redraw_pixmap(dd);
 }
 
-#ifdef HAVE_PANEL_SIZE
-static void applet_change_size(GtkWidget *w, int size, gpointer data)
+#ifdef HAVE_PANEL_PIXEL_SIZE
+static void applet_change_pixel_size(GtkWidget *w, int size, gpointer data)
 {
 	/* resize the applet and set the proper pixmaps */
 	DriveData *dd = data;
@@ -588,7 +588,7 @@ static DriveData * create_drive_widget(GtkWidget *applet)
 
 	dd->orient = applet_widget_get_panel_orient(APPLET_WIDGET(applet));
 
-#ifdef HAVE_PANEL_SIZE
+#ifdef HAVE_PANEL_PIXEL_SIZE
 	dd->sizehint = applet_widget_get_panel_pixel_size(APPLET_WIDGET(applet));
 #else
 	dd->sizehint = SIZEHINT_DEFAULT;
@@ -618,9 +618,9 @@ static DriveData * create_drive_widget(GtkWidget *applet)
 	gtk_signal_connect(GTK_OBJECT(applet),"change_orient",
 				GTK_SIGNAL_FUNC(applet_change_orient),
 				dd);
-#ifdef HAVE_PANEL_SIZE
+#ifdef HAVE_PANEL_PIXEL_SIZE
 	gtk_signal_connect(GTK_OBJECT(applet),"change_pixel_size",
-				GTK_SIGNAL_FUNC(applet_change_size),
+				GTK_SIGNAL_FUNC(applet_change_pixel_size),
 				dd);
 #endif
 
