@@ -287,6 +287,31 @@ gkb_sized_render (GKB * gkb)
 
 }
 
+void gkb_update_handlers (GKB *gkb, gboolean disconnect)
+{
+  GdkWindow *root_window;
+
+  root_window = gdk_get_default_root_window ();
+
+  if (disconnect)
+  {
+    if (gkb->button_press_id != -1)
+      g_signal_handler_disconnect (gkb->eventbox, gkb->button_press_id);
+    gkb->button_press_id = -1;
+
+    gdk_window_remove_filter (root_window, event_filter, gkb);
+  }
+  else {
+    gdk_window_add_filter (root_window, event_filter, gkb);
+
+    if (gkb->button_press_id == -1)
+      gkb->button_press_id = g_signal_connect (gkb->eventbox, "button_press_event",
+                                               G_CALLBACK (gkb_button_press_event_cb), gkb);
+
+  }
+
+}
+
 /**
  * gkb_update:
  * @gkb: the GKB. global, so redundant
@@ -303,8 +328,10 @@ gkb_update (GKB * gkb, gboolean set_command)
    * keymap, so when the set_commadn is false, it means that we
    * have changed size. In other words, we can't change size &
    * keymap at the same time */
-  if (set_command)
+  if (set_command) {
+    gkb_update_handlers (gkb, TRUE);
     gkb_system_set_keymap (gkb);
+  }
   else
     gkb_sized_render (gkb);
 
@@ -539,8 +566,8 @@ create_gkb_widget (GKB *gkb)
 
   gkb->image = gtk_image_new ();
 
-  g_signal_connect (gkb->eventbox, "button_press_event",
-                    G_CALLBACK (gkb_button_press_event_cb), gkb);
+  gkb->button_press_id = g_signal_connect (gkb->eventbox, "button_press_event",
+                                           G_CALLBACK (gkb_button_press_event_cb), gkb);
 
   gkb->darea_frame = gtk_frame_new (NULL);
   gtk_frame_set_shadow_type (GTK_FRAME (gkb->darea_frame), GTK_SHADOW_OUT);

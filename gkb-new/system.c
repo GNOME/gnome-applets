@@ -56,6 +56,9 @@ gkb_system_set_keymap_idle (GKB *gkb)
     gnome_error_dialog (str);
     g_free (str);
    }
+
+  gkb_update_handlers (gkb, FALSE);
+
   return FALSE;
 }
 
