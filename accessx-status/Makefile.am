@@ -7,7 +7,8 @@ accessx_status_applet_SOURCES = \
 	applet.h
 
 accessx_status_applet_LDADD = \
-	$(GNOME_APPLETS_LIBS)
+	$(GNOME_APPLETS_LIBS) \
+        $(X_LIBS)
 
 serverdir       = $(libdir)/bonobo/servers
 server_in_files = GNOME_AccessxStatusApplet.server.in
