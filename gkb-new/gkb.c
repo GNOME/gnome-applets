@@ -253,7 +253,8 @@ gkb_button_press_event_cb (GtkWidget * widget,
     }
 
   gkb_draw (gkb);
-  system (gkb->dact->command);
+  if (system (gkb->dact->command))
+   gnome_error_dialog(_("The keymap switching command returned with error!"));
 }
 
 static int
