@@ -618,7 +618,7 @@ void property_show (BonoboUIComponent *uic,
 	gtk_size_group_add_widget (size_group, hbox3);
 	hbox3 = box_add_color (mldata, hbox2, _("Bac_kground:"), COLOR_TEXT_BG);
 	gtk_size_group_add_widget (size_group, hbox3);
-	hbox3 = box_add_color (mldata, vbox2, _("O_utline"), COLOR_TEXT_MID);
+	hbox3 = box_add_color (mldata, vbox2, _("O_utline:"), COLOR_TEXT_MID);
         gtk_size_group_add_widget (size_group, hbox3);
 
 	label = gtk_label_new (_("Colors"));
